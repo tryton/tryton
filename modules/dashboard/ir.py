@@ -4,14 +4,12 @@ import math
 
 from lxml import etree
 
-from trytond.cache import Cache
 from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
 
 
 class View(metaclass=PoolMeta):
     __name__ = 'ir.ui.view'
-    _dashboard_cache = Cache('ir.ui.view.dashboard_id')
 
     @staticmethod
     def dashboard_id():
@@ -121,9 +119,6 @@ class View(metaclass=PoolMeta):
         if Transaction().user == 0:
             return res
         dashboard_id = cls.dashboard_id()
-        if not dashboard_id:
-            # Restart the cache
-            cls._dashboard_cache.clear()
         if fields_names is None \
                 or 'arch' in fields_names:
             if dashboard_id in ids:
