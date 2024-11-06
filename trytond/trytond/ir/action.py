@@ -865,7 +865,7 @@ class ActionActWindow(ActionMixin, ModelSQL, ModelView):
                                 action=action.rec_name))
 
     def get_views(self, name):
-        return [(view.view.id, view.view.type)
+        return [(view.view.id, view.view.rng_type)
             for view in self.act_window_views]
 
     def get_domains(self, name):
