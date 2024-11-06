@@ -1,7 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from trytond.model import fields
-from trytond.pool import PoolMeta
+from trytond.model import ModelView, fields
+from trytond.pool import Pool, PoolMeta
 
 
 class User(metaclass=PoolMeta):
@@ -27,3 +27,14 @@ class User(metaclass=PoolMeta):
     @staticmethod
     def default_dashboard_layout():
         return 'square'
+
+    @classmethod
+    def write(cls, *args):
+        pool = Pool()
+        View = pool.get('ir.ui.view')
+        super().write(*args)
+        for values in args[1:None:2]:
+            if values.keys() & {'dashboard_layout', 'dashboard_actions'}:
+                View._view_get_cache.clear()
+                ModelView._fields_view_get_cache.clear()
+                break
