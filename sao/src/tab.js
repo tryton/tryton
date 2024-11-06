@@ -1593,6 +1593,9 @@
             this.name = name;
             this.dialogs = [];
             this.board = null;
+            this.create_tabcontent();
+            this.set_name(this.name);
+            this.title.text(this.name_el.text());
             UIView = new Sao.Model('ir.ui.view');
             this.view_prm = UIView.execute(
                 'view_get', [this.view_id], this.context);
@@ -1610,9 +1613,6 @@
                 });
                 this.content.append(this.board.el);
             });
-            this.create_tabcontent();
-            this.set_name(this.name);
-            this.title.text(this.name_el.text());
         },
         compare: function(attributes) {
             if (!attributes) {
