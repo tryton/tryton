@@ -111,6 +111,7 @@ TEMPLATE = '''<!DOCTYPE html>
     tinymce.init({
         selector: '#text',
         license_key: '%(license_key)s',
+        promotion: false,
         language: '%(language)s',
         plugins: 'autosave code %(plugins)s',
         removed_menuitems: 'newdocument',
