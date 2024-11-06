@@ -547,7 +547,7 @@ class Screen:
         views = self.views + self.view_to_load
         next_view_index = (self.view_index + 1) % len(views)
         next_view = views[next_view_index]
-        if not isinstance(next_view, str):
+        if next_view and not isinstance(next_view, str):
             next_view = next_view.view_type
         return next_view
 

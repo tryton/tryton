@@ -936,7 +936,7 @@
             var views = this.views.concat(this.view_to_load)
             var next_view_index = (this.view_index + 1) % views.length;
             var next_view = views[next_view_index];
-            if (typeof next_view != 'string') {
+            if (next_view && (typeof next_view != 'string')) {
                 next_view = next_view.view_type;
             }
             return next_view;
