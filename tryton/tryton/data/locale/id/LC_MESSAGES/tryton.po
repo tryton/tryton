@@ -139,7 +139,7 @@ msgstr "Tidak dapat terhubung ke server."
 
 #, fuzzy, python-format
 msgid "Error: \"%s\". Try again later."
-msgstr "Terlalu banyak permintaan. Coba lagi nanti."
+msgstr "Kesalahan: \"%s\". Coba lagi nanti."
 
 msgid "Too many requests. Try again later."
 msgstr "Terlalu banyak permintaan. Coba lagi nanti."

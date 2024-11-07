@@ -140,7 +140,7 @@ msgstr "Не вдалося підключитися до сервера."
 
 #, fuzzy, python-format
 msgid "Error: \"%s\". Try again later."
-msgstr "Дуже багато запитів. Спробуйте ще раз пізніше."
+msgstr "Помилка: \"%s\". Повторіть спробу пізніше."
 
 msgid "Too many requests. Try again later."
 msgstr "Дуже багато запитів. Спробуйте ще раз пізніше."

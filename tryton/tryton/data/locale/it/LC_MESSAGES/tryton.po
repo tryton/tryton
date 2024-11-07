@@ -144,7 +144,7 @@ msgstr "Impossibile connettersi al server."
 
 #, fuzzy, python-format
 msgid "Error: \"%s\". Try again later."
-msgstr "Troppe richieste. Riprovare più tardi."
+msgstr "Errore: \"%s\". Riprova più tardi."
 
 msgid "Too many requests. Try again later."
 msgstr "Troppe richieste. Riprovare più tardi."

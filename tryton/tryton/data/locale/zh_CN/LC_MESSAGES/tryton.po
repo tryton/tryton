@@ -142,7 +142,7 @@ msgstr "无法获取会话。"
 
 #, fuzzy, python-format
 msgid "Error: \"%s\". Try again later."
-msgstr "请求太多，请稍后重试."
+msgstr "错误：“%s”。请稍后重试。"
 
 msgid "Too many requests. Try again later."
 msgstr "请求太多，请稍后重试."

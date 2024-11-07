@@ -142,7 +142,7 @@ msgstr ""
 
 #, fuzzy, python-format
 msgid "Error: \"%s\". Try again later."
-msgstr "Demasiadas peticiones. Inténtalo de nuevo más tarde."
+msgstr "Error: \"%s\". Inténtalo de nuevo más tarde."
 
 msgid "Too many requests. Try again later."
 msgstr "Demasiadas peticiones. Inténtalo de nuevo más tarde."
