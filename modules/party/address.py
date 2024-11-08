@@ -73,6 +73,7 @@ class Address(
     @classmethod
     def __setup__(cls):
         super(Address, cls).__setup__()
+        cls.__access__.add('party')
         cls._order.insert(0, ('party', 'ASC'))
         cls.__rpc__.update(
             autocomplete_postal_code=RPC(instantiate=0, cache=dict(days=1)),

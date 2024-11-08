@@ -130,6 +130,7 @@ class ContactMechanism(
         cls.value.search_unaccented = False
         cls.value_compact.search_unaccented = False
         super(ContactMechanism, cls).__setup__()
+        cls.__access__.add('party')
         t = cls.__table__()
         cls._sql_indexes.add(
             Index(t, (Index.Unaccent(t.value_compact), Index.Similarity())))

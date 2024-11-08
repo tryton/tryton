@@ -818,6 +818,11 @@ class Identifier(sequence_ordered(), DeactivableMixin, ModelSQL, ModelView):
     code = fields.Char('Code', required=True)
 
     @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls.__access__.update(['party', 'address'])
+
+    @classmethod
     def __register__(cls, module_name):
         cursor = Transaction().connection.cursor()
         table = cls.__table__()
