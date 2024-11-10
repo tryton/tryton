@@ -27,6 +27,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">tryton-list</field>
             <field name="path">ui/icons/tryton-list.svg</field>
         </record>
+        <record model="ir.ui.icon" id="list_form_icon">
+            <field name="name">tryton-list-form</field>
+            <field name="path">ui/icons/tryton-list-form.svg</field>
+        </record>
         <record model="ir.ui.icon" id="settings_icon">
             <field name="name">tryton-settings</field>
             <field name="path">ui/icons/tryton-settings.svg</field>
