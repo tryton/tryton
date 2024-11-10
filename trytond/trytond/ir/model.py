@@ -982,6 +982,9 @@ class ModelButton(
             ('id', '!=', Eval('id', -1)),
             ])
     _reset_cache = Cache('ir.model.button.reset')
+    groups = fields.Many2Many(
+        'ir.model.button-res.group', 'button', 'group', "Groups")
+    _groups_cache = Cache('ir.model.button.groups')
     _view_attributes_cache = Cache(
         'ir.model.button.view_attributes', context=False)
 
@@ -1029,6 +1032,7 @@ class ModelButton(
         result = super(ModelButton, cls).create(vlist)
         cls._rules_cache.clear()
         cls._reset_cache.clear()
+        cls._groups_cache.clear()
         cls._view_attributes_cache.clear()
         return result
 
@@ -1037,6 +1041,7 @@ class ModelButton(
         super(ModelButton, cls).write(buttons, values, *args)
         cls._rules_cache.clear()
         cls._reset_cache.clear()
+        cls._groups_cache.clear()
         cls._view_attributes_cache.clear()
 
     @classmethod
@@ -1044,6 +1049,7 @@ class ModelButton(
         super(ModelButton, cls).delete(buttons)
         cls._rules_cache.clear()
         cls._reset_cache.clear()
+        cls._groups_cache.clear()
         cls._view_attributes_cache.clear()
 
     @classmethod
@@ -1098,6 +1104,27 @@ class ModelButton(
         return reset
 
     @classmethod
+    def get_groups(cls, model, name):
+        '''
+        Return a set of group ids for the named button on the model.
+        '''
+        key = (model, name)
+        groups = cls._groups_cache.get(key)
+        if groups is not None:
+            return groups
+        buttons = cls.search([
+                ('model.name', '=', model),
+                ('name', '=', name),
+                ])
+        if not buttons:
+            groups = set()
+        else:
+            button, = buttons
+            groups = set(g.id for g in button.groups)
+        cls._groups_cache.set(key, groups)
+        return groups
+
+    @classmethod
     def get_view_attributes(cls, model, name):
         "Return the view attributes of the named button of the model"
         key = (model, name, Transaction().language)
@@ -1121,6 +1148,37 @@ class ModelButton(
         return attributes
 
 
+class ModelButtonGroup(DeactivableMixin, ModelSQL):
+    "Model Button - Group"
+    __name__ = 'ir.model.button-res.group'
+    button = fields.Many2One(
+        'ir.model.button', "Button", ondelete='CASCADE', required=True)
+    group = fields.Many2One(
+        'res.group', "Group", ondelete='CASCADE', required=True)
+
+    @classmethod
+    def create(cls, vlist):
+        pool = Pool()
+        result = super().create(vlist)
+        # Restart the cache for get_groups
+        pool.get('ir.model.button')._groups_cache.clear()
+        return result
+
+    @classmethod
+    def write(cls, records, values, *args):
+        pool = Pool()
+        super().write(records, values, *args)
+        # Restart the cache for get_groups
+        pool.get('ir.model.button')._groups_cache.clear()
+
+    @classmethod
+    def delete(cls, records):
+        pool = Pool()
+        super().delete(records)
+        # Restart the cache for get_groups
+        pool.get('ir.model.button')._groups_cache.clear()
+
+
 class ModelButtonRule(ModelSQL, ModelView):
     __name__ = 'ir.model.button.rule'
     button = fields.Many2One(
@@ -1131,6 +1189,7 @@ class ModelButtonRule(ModelSQL, ModelView):
         "Condition",
         help='A PYSON statement evaluated with the record represented by '
         '"self"\nIt activate the rule if true.')
+    group = fields.Many2One('res.group', "Group", ondelete='CASCADE')
 
     @classmethod
     def __setup__(cls):
@@ -1205,6 +1264,7 @@ class ModelButtonClick(DeactivableMixin, ModelSQL, ModelView):
     button = fields.Many2One(
         'ir.model.button', "Button", required=True, ondelete='CASCADE')
     record_id = fields.Integer("Record ID", required=True)
+    user = fields.Many2One('res.user', "User", ondelete='CASCADE')
 
     @classmethod
     def __setup__(cls):

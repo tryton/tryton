@@ -35,6 +35,9 @@ class SequenceType(ModelSQL, ModelView):
     __name__ = 'ir.sequence.type'
 
     name = fields.Char('Sequence Name', required=True, translate=True)
+    groups = fields.Many2Many(
+        'ir.sequence.type-res.group', 'sequence_type', 'group', "Groups",
+        help="Groups allowed to edit the sequences of this type.")
 
     @classmethod
     def __register__(cls, module):
@@ -44,6 +47,15 @@ class SequenceType(ModelSQL, ModelView):
         # Migration from 5.8: remove code
         # We keep the column until ir.sequence has been migrated
         table_h.not_null_action('code', action='remove')
+
+
+class SequenceTypeGroup(ModelSQL):
+    'Sequence Type - Group'
+    __name__ = 'ir.sequence.type-res.group'
+    sequence_type = fields.Many2One(
+        'ir.sequence.type', "Sequence Type", ondelete='CASCADE', required=True)
+    group = fields.Many2One(
+        'res.group', "Group", ondelete='CASCADE', required=True)
 
 
 class Sequence(DeactivableMixin, ModelSQL, ModelView):

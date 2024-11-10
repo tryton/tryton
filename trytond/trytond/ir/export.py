@@ -3,6 +3,7 @@
 "Exports"
 from trytond.model import ModelSQL, ModelView, fields
 from trytond.pool import Pool
+from trytond.pyson import Eval
 from trytond.rpc import RPC
 from trytond.transaction import Transaction
 
@@ -30,6 +31,19 @@ class Export(_ClearCache, ModelSQL, ModelView):
     resource = fields.Char('Resource')
     user = fields.Many2One(
         'res.user', "User", required=True, ondelete='CASCADE')
+    groups = fields.Many2Many(
+        'ir.export-res.group', 'export', 'group', "Groups",
+        help="The user groups that can use the export.")
+    write_groups = fields.Many2Many(
+        'ir.export-write-res.group', 'export', 'group',
+        "Modification Groups",
+        domain=[
+            ('id', 'in', Eval('groups', [])),
+            ],
+        states={
+            'invisible': ~Eval('groups'),
+            },
+        help="The user groups that can modify the export.")
     header = fields.Boolean(
         "Header",
         help="Check to include field names on the export.")
@@ -139,3 +153,20 @@ class ExportLine(_ClearCache, ModelSQL, ModelView):
     def __setup__(cls):
         super().__setup__()
         cls.__access__.add('export')
+
+
+class ExportGroup(ModelSQL):
+    "Export Group"
+    __name__ = 'ir.export-res.group'
+
+    export = fields.Many2One(
+        'ir.export', "Export", required=True, ondelete='CASCADE')
+    group = fields.Many2One(
+        'res.group', "Group", required=True, ondelete='CASCADE')
+
+
+class ExportWriteGroup(ExportGroup):
+    "Export Modification Group"
+    __name__ = 'ir.export-write-res.group'
+    __string__ = None
+    _table = None  # Needed to reset Export_Group._table

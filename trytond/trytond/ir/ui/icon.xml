@@ -34,5 +34,21 @@
             action="act_icon_form"
             sequence="20"
             id="menu_icon_form"/>
+
+        <record model="ir.model.access" id="access_ui_icon">
+            <field name="model">ir.ui.icon</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_ui_icon_admin">
+            <field name="model">ir.ui.icon</field>
+            <field name="group" ref="res.group_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
     </data>
 </tryton>

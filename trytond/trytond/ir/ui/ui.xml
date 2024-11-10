@@ -45,6 +45,10 @@ this repository contains the full copyright notices and license terms. -->
             sequence="9999"
             id="menu_administration"
             icon="tryton-settings"/>
+        <record model="ir.ui.menu-res.group" id="menu_administration_group_admin">
+            <field name="menu" ref="menu_administration"/>
+            <field name="group" ref="res.group_admin"/>
+        </record>
         <menuitem
             name="User Interface"
             parent="menu_administration"

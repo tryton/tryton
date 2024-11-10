@@ -32,6 +32,22 @@ this repository contains the full copyright notices and license terms. -->
             action="act_message_form"
             sequence="20"
             id="menu_message_form"/>
+
+        <record model="ir.model.access" id="access_message">
+            <field name="model">ir.message</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_message_group_admin">
+            <field name="model">ir.message</field>
+            <field name="group" ref="res.group_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
     </data>
     <data grouped="1">
         <record model="ir.message" id="msg_ID">

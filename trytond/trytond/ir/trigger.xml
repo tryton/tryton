@@ -33,5 +33,27 @@ this repository contains the full copyright notices and license terms. -->
             sequence="50"
             id="menu_trigger_form"/>
 
+        <record model="ir.model.access" id="access_trigger">
+            <field name="model">ir.trigger</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_trigger_admin">
+            <field name="model">ir.trigger</field>
+            <field name="group" ref="res.group_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+    </data>
+    <data noupdate="1">
+        <record model="ir.cron" id="cron_trigger_time">
+            <field name="method">ir.trigger|trigger_time</field>
+            <field name="interval_number" eval="5"/>
+            <field name="interval_type">minutes</field>
+        </record>
     </data>
 </tryton>

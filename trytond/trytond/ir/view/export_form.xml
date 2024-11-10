@@ -15,5 +15,9 @@ this repository contains the full copyright notices and license terms. -->
     <label name="user"/>
     <field name="user"/>
 
+    <field name="groups" colspan="4"/>
+
+    <field name="write_groups" colspan="4"/>
+
     <field name="export_fields" colspan="4"/>
 </form>

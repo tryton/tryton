@@ -66,6 +66,9 @@ class Action(DeactivableMixin, ModelSQL, ModelView):
     keywords = fields.One2Many('ir.action.keyword', 'action',
             'Keywords')
     icon = fields.Many2One('ir.ui.icon', 'Icon')
+    groups = fields.Many2Many(
+        'ir.action-res.group', 'action', 'group', "Groups")
+    _groups_cache = Cache('ir.action.get_groups', context=False)
 
     @classmethod
     def __setup__(cls):
@@ -148,6 +151,47 @@ class Action(DeactivableMixin, ModelSQL, ModelView):
             return self.get_action_values(self.type, [action_id])[0]
 
 
+class ActionGroup(ModelSQL):
+    "Action - Group"
+    __name__ = 'ir.action-res.group'
+    action = fields.Many2One(
+        'ir.action', "Action", ondelete='CASCADE', required=True)
+    group = fields.Many2One(
+        'res.group', "Group", ondelete='CASCADE', required=True)
+
+    @classmethod
+    def create(cls, vlist):
+        pool = Pool()
+        Action = pool.get('ir.action')
+        vlist = [x.copy() for x in vlist]
+        for vals in vlist:
+            if vals.get('action'):
+                vals['action'] = Action.get_action_id(vals['action'])
+        Action._groups_cache.clear()
+        return super().create(vlist)
+
+    @classmethod
+    def write(cls, records, values, *args):
+        pool = Pool()
+        Action = pool.get('ir.action')
+        actions = iter((records, values) + args)
+        args = []
+        for records, values in zip(actions, actions):
+            if values.get('action'):
+                values = values.copy()
+                values['action'] = Action.get_action_id(values['action'])
+            args.extend((records, values))
+        Action._groups_cache.clear()
+        super().write(*args)
+
+    @classmethod
+    def delete(cls, records):
+        pool = Pool()
+        Action = pool.get('ir.action')
+        Action._groups_cache.clear()
+        super().delete(records)
+
+
 class ActionKeyword(ModelSQL, ModelView):
     __name__ = 'ir.action.keyword'
     keyword = fields.Selection([
@@ -160,6 +204,10 @@ class ActionKeyword(ModelSQL, ModelView):
     model = fields.Reference('Model', selection='models_get')
     action = fields.Many2One('ir.action', 'Action',
         ondelete='CASCADE')
+    groups = fields.Function(
+        fields.One2Many('res.group', None, "Groups"),
+        'get_groups', searcher='search_groups')
+
     _get_keyword_cache = Cache(
         'ir_action_keyword.get_keyword', context=False)
 
@@ -218,6 +266,13 @@ class ActionKeyword(ModelSQL, ModelView):
         pool = Pool()
         Model = pool.get('ir.model')
         return [(None, '')] + Model.get_name_items(ModelView)
+
+    def get_groups(self, name):
+        return [g.id for g in self.action.groups]
+
+    @classmethod
+    def search_groups(cls, name, clause):
+        return [('action.' + clause[0],) + tuple(clause[1:])]
 
     @classmethod
     def delete(cls, keywords):
@@ -379,6 +434,27 @@ class ActionMixin(ModelSQL):
     @classmethod
     def search_action(cls, name, clause):
         return [('action.' + clause[0],) + tuple(clause[1:])]
+
+    @classmethod
+    @without_check_access
+    def get_groups(cls, name, action_id=None):
+        pool = Pool()
+        Action = pool.get('ir.action')
+
+        key = (name, action_id)
+        groups = Action._groups_cache.get(key)
+        if groups is not None:
+            return set(groups)
+
+        domain = [
+            (cls._action_name, '=', name),
+            ]
+        if action_id:
+            domain.append(('id', '=', action_id))
+        actions = cls.search(domain)
+        groups = {g.id for a in actions for g in a.groups}
+        Action._groups_cache.set(key, list(groups))
+        return groups
 
     @classmethod
     def create(cls, vlist):

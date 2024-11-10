@@ -106,6 +106,8 @@ class UIMenu(
         filter=[
             ('keyword', '=', 'tree_open'),
             ])
+    groups = fields.Many2Many(
+        'ir.ui.menu-res.group', 'menu', 'group', "Groups")
     favorite = fields.Function(fields.Boolean('Favorite'), 'get_favorite')
     favorites = fields.Many2Many(
         'ir.ui.menu.favorite', 'menu', 'user', "Favorites")
@@ -260,6 +262,15 @@ class UIMenu(
             m.id: False if m.action_keywords else None for m in menus}
         menu2favorite.update(dict((f.menu.id, True) for f in favorites))
         return menu2favorite
+
+
+class UIMenuGroup(ModelSQL):
+    "UI Menu - Group"
+    __name__ = 'ir.ui.menu-res.group'
+    menu = fields.Many2One(
+        'ir.ui.menu', "Menu", ondelete='CASCADE', required=True)
+    group = fields.Many2One(
+        'res.group', "Group", ondelete='CASCADE', required=True)
 
 
 class UIMenuFavorite(ModelSQL):

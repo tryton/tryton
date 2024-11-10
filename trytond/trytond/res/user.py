@@ -355,6 +355,10 @@ class User(avatar_mixin(100, 'login'), DeactivableMixin, ModelSQL, ModelView):
         return vals
 
     @classmethod
+    def check_xml_record(cls, records, values):
+        pass
+
+    @classmethod
     def read(cls, ids, fields_names):
         result = super(User, cls).read(ids, fields_names)
         cache = Transaction().get_cache().get(cls.__name__)

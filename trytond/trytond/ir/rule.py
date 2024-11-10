@@ -66,6 +66,8 @@ class RuleGroup(
                 ()),
             ],
         help="Add this rule to all users by default.")
+    groups = fields.Many2Many(
+        'ir.rule.group-res.group', 'rule_group', 'group', "Groups")
     rules = fields.One2Many('ir.rule', 'rule_group', 'Tests',
         help="The rule is satisfied if at least one test is True.\n"
         "If there is no test defined, "
@@ -159,6 +161,15 @@ class RuleGroup(
         super(RuleGroup, cls).write(groups, vals, *args)
         # Restart the cache on the domain_get method of ir.rule
         Pool().get('ir.rule')._domain_get_cache.clear()
+
+
+class RuleGroup_Group(ModelSQL):
+    "Rule Group - Group"
+    __name__ = 'ir.rule.group-res.group'
+    rule_group = fields.Many2One(
+        'ir.rule.group', "Rule Group", ondelete='CASCADE', required=True)
+    group = fields.Many2One(
+        'res.group', "Group", ondelete='CASCADE', required=True)
 
 
 class Rule(ModelSQL, ModelView):

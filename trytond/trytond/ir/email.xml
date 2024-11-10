@@ -95,5 +95,21 @@ this repository contains the full copyright notices and license terms. -->
             action="act_email_template_form"
             sequence="50"
             id="menu_email_template_form"/>
+
+        <record model="ir.model.access" id="access_email_template">
+            <field name="model">ir.email.template</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_email_template_admin">
+            <field name="model">ir.email.template</field>
+            <field name="group" ref="res.group_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
     </data>
 </tryton>

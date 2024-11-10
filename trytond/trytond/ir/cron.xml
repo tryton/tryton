@@ -47,6 +47,26 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">run_once</field>
             <field name="string">Run Once</field>
         </record>
+        <record model="ir.model.button-res.group" id="cron_run_once_button_group_admin">
+            <field name="button" ref="cron_run_once_button"/>
+            <field name="group" ref="res.group_admin"/>
+        </record>
+
+        <record model="ir.model.access" id="access_cron">
+            <field name="model">ir.cron</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_cron_admin">
+            <field name="model">ir.cron</field>
+            <field name="group" ref="res.group_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
 
         <record model="ir.ui.view" id="cron_log_view_list">
             <field name="model">ir.cron.log</field>

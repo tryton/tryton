@@ -43,6 +43,17 @@ this repository contains the full copyright notices and license terms. -->
             sequence="10"
             id="menu_sequence_form"/>
 
+        <record model="ir.rule.group" id="rule_group_sequence">
+            <field name="name">User in groups</field>
+            <field name="model">ir.sequence</field>
+            <field name="global_p" eval="True"/>
+            <field name="perm_read" eval="False"/>
+        </record>
+        <record model="ir.rule" id="rule_sequence">
+            <field name="domain" eval="[('sequence_type.groups', 'in', Eval('groups', []))]" pyson="1"/>
+            <field name="rule_group" ref="rule_group_sequence"/>
+        </record>
+
         <record model="ir.ui.view" id="sequence_strict_view_form">
             <field name="model">ir.sequence.strict</field>
             <field name="type" eval="None"/>
@@ -78,6 +89,17 @@ this repository contains the full copyright notices and license terms. -->
             id="menu_sequence_strict_form"
             icon="tryton-list"/>
 
+        <record model="ir.rule.group" id="rule_group_sequence_strict">
+            <field name="name">User in groups</field>
+            <field name="model">ir.sequence.strict</field>
+            <field name="global_p" eval="True"/>
+            <field name="perm_read" eval="False"/>
+        </record>
+        <record model="ir.rule" id="rule_sequence_strict">
+            <field name="domain" eval="[('sequence_type.groups', 'in', Eval('groups', []))]" pyson="1"/>
+            <field name="rule_group" ref="rule_group_sequence_strict"/>
+        </record>
+
         <record model="ir.ui.view" id="sequence_type_view_form">
             <field name="model">ir.sequence.type</field>
             <field name="type">form</field>
@@ -111,5 +133,21 @@ this repository contains the full copyright notices and license terms. -->
             action="act_sequence_type_form"
             sequence="20"
             id="menu_ir_sequence_type"/>
+
+        <record model="ir.model.access" id="access_sequence_type">
+            <field name="model">ir.sequence.type</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_sequence_type_admin">
+            <field name="model">ir.sequence.type</field>
+            <field name="group" ref="res.group_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
     </data>
 </tryton>
