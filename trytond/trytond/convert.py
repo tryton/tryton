@@ -140,6 +140,10 @@ class MenuitemTagHandler:
                     values['icon'] = 'tryton-graph'
                 elif view_type == 'calendar':
                     values['icon'] = 'tryton-calendar'
+                elif view_type == 'board':
+                    values['icon'] = 'tryton-board'
+                elif view_type == 'list-form':
+                    values['icon'] = 'tryton-list-form'
             elif action_type == 'ir.action.url':
                 values['icon'] = 'tryton-public'
             else:
