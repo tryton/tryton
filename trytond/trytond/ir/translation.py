@@ -480,7 +480,7 @@ class Translation(
 
             to_save, to_delete = [], []
             for record, value in zip(records, values):
-                translations = name2translations.get(get_name(record))
+                translations = name2translations[get_name(record)]
                 if lang == INTERNAL_LANG:
                     src = value
                 else:
