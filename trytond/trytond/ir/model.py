@@ -1308,9 +1308,9 @@ class ModelData(
         super(ModelData, cls).__setup__()
         table = cls.__table__()
         cls._sql_constraints = [
-            ('fs_id_module_model_uniq',
-                Unique(table, table.fs_id, table.module, table.model),
-                'ir.msg_model_data_xml_id_model_unique'),
+            ('fs_id_module_unique',
+                Unique(table, table.fs_id, table.module),
+                'ir.msg_model_data_xml_id_module_unique'),
             ('db_id_model_unique',
                 Unique(table, table.db_id, table.model),
                 'is.msg_model_data_db_id_model_unique'),
@@ -1337,6 +1337,9 @@ class ModelData(
 
         # Migration from 5.0: remove required on db_id
         table_h.not_null_action('db_id', action='remove')
+
+        # Migration from 7.4: replace fs_id_module_model_uniq
+        table_h.drop_constraint('fs_id_module_model_uniq')
 
     @fields.depends('model_ref')
     def get_field_names(self):
@@ -1437,16 +1440,12 @@ class ModelData(
         id_ = cls._get_id_cache.get(key)
         if id_ is not None:
             return id_
-        data = cls.search([
+        data, = cls.search([
             ('module', '=', module),
             ('fs_id', '=', fs_id),
-            ], limit=1)
-        if not data:
-            raise KeyError("Reference to %s not found"
-                % ".".join([module, fs_id]))
-        id_ = cls.read([d.id for d in data], ['db_id'])[0]['db_id']
-        cls._get_id_cache.set(key, id_)
-        return id_
+            ])
+        cls._get_id_cache.set(key, data.db_id)
+        return data.db_id
 
     @classmethod
     def dump_values(cls, values):
