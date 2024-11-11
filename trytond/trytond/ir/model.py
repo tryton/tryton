@@ -1310,7 +1310,7 @@ class ModelData(
         cls._sql_constraints = [
             ('fs_id_module_model_uniq',
                 Unique(table, table.fs_id, table.module, table.model),
-                'The triple (fs_id, module, model) must be unique!'),
+                'ir.msg_model_data_xml_id_model_unique'),
             ]
         cls._sql_indexes.update({
                 Index(
