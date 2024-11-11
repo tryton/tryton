@@ -308,11 +308,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="group" ref="group_admin"/>
         </record>
         <record model="ir.model.button-res.group"
-            id="model_data_sync_button_group_admin">
-            <field name="button" ref="ir.model_data_sync_button"/>
-            <field name="group" ref="group_admin"/>
-        </record>
-        <record model="ir.model.button-res.group"
             id="view_show_button_group_admin">
             <field name="button" ref="ir.view_show_button"/>
             <field name="group" ref="group_admin"/>

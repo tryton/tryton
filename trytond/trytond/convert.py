@@ -10,7 +10,6 @@ from xml import sax
 
 from trytond import __version__
 from trytond.pyson import CONTEXT, PYSONEncoder
-from trytond.tools import grouped_slice
 from trytond.transaction import Transaction, inactive_records
 
 logger = logging.getLogger(__name__)
@@ -332,12 +331,10 @@ class FS2DBAccessor:
     Provide some helper function to ease cache access and management.
     """
 
-    def __init__(self, ModelData, pool):
-        self.fs2db = {}
+    def __init__(self, ModelData):
+        self.fs2db = defaultdict(lambda: defaultdict(dict))
         self.fetched_modules = []
         self.ModelData = ModelData
-        self.browserecord = {}
-        self.pool = pool
 
     def get(self, module, fs_id):
         if module not in self.fetched_modules:
@@ -349,71 +346,20 @@ class FS2DBAccessor:
             self.fetch_new_module(module)
         return fs_id in self.fs2db[module]
 
-    def get_browserecord(self, module, model_name, db_id):
+    def set(self, module, fs_id, record):
+        # We call the prefetch function here to.
+        # Like that we are sure not to erase data when get is called.
         if module not in self.fetched_modules:
             self.fetch_new_module(module)
-        if model_name in self.browserecord[module] \
-                and db_id in self.browserecord[module][model_name]:
-            return self.browserecord[module][model_name][db_id]
-        return None
-
-    def set(self, module, fs_id, values):
-        """
-        Whe call the prefetch function here to. Like that whe are sure
-        not to erase data when get is called.
-        """
-        if module not in self.fetched_modules:
-            self.fetch_new_module(module)
-        if fs_id not in self.fs2db[module]:
-            self.fs2db[module][fs_id] = {}
-        fs2db_val = self.fs2db[module][fs_id]
-        for key, val in values.items():
-            fs2db_val[key] = val
-
-    def reset_browsercord(self, module, model_name, ids=None):
-        if module not in self.fetched_modules:
-            return
-        self.browserecord[module].setdefault(model_name, {})
-        Model = self.pool.get(model_name)
-        if not ids:
-            ids = list(self.browserecord[module][model_name].keys())
-        models = Model.browse(ids)
-        for model in models:
-            if model.id in self.browserecord[module][model_name]:
-                for cache in Transaction().cache.values():
-                    if model_name in cache:
-                        cache[model_name].pop(model.id, None)
-            self.browserecord[module][model_name][model.id] = model
+        self.fs2db[module][fs_id] = record
 
     def fetch_new_module(self, module):
-        self.fs2db[module] = {}
-        module_data_ids = self.ModelData.search([
+        records = self.ModelData.search([
                 ('module', '=', module),
-                ], order=[('db_id', 'ASC')])
-
-        record_ids = {}
-        for rec in self.ModelData.browse(module_data_ids):
-            self.fs2db[rec.module][rec.fs_id] = {
-                "db_id": rec.db_id, "model": rec.model,
-                "id": rec.id, "values": rec.values
-                }
-            record_ids.setdefault(rec.model, [])
-            record_ids[rec.model].append(rec.db_id)
-
-        self.browserecord[module] = {}
-        for model_name in record_ids.keys():
-            try:
-                Model = self.pool.get(model_name)
-            except KeyError:
-                continue
-            self.browserecord[module][model_name] = {}
-            for sub_record_ids in grouped_slice(record_ids[model_name]):
-                with inactive_records():
-                    records = Model.search([
-                        ('id', 'in', list(sub_record_ids)),
-                        ], order=[('id', 'ASC')])
-                for model in records:
-                    self.browserecord[module][model_name][model.id] = model
+                ],
+            order=[('db_id', 'ASC')])
+        for record in records:
+            self.fs2db[record.module][record.fs_id] = record
         self.fetched_modules.append(module)
 
 
@@ -426,7 +372,7 @@ class TrytondXmlHandler(sax.handler.ContentHandler):
         self.pool = pool
         self.module = module
         self.ModelData = pool.get('ir.model.data')
-        self.fs2db = FS2DBAccessor(self.ModelData, pool)
+        self.fs2db = FS2DBAccessor(self.ModelData)
         self.to_delete = self.populate_to_delete()
         self.noupdate = None
         self.module_state = module_state
@@ -508,13 +454,12 @@ class TrytondXmlHandler(sax.handler.ContentHandler):
             for model, values in self.grouped_creations.items():
                 self.create_records(model, values.values(), values.keys())
             self.grouped_creations.clear()
-            for key, actions in self.grouped_write.items():
-                module, model = key
-                self.write_records(module, model, *actions)
+            for model, actions in self.grouped_write.items():
+                self.write_records(model, *actions)
             self.grouped_write.clear()
         if name == 'data' and self.grouped_model_data:
-            self.ModelData.write(*self.grouped_model_data)
-            del self.grouped_model_data[:]
+            self.ModelData.save(self.grouped_model_data)
+            self.grouped_model_data.clear()
 
         # Closing tag found, if we are in a delegation the handler
         # know what to do:
@@ -538,8 +483,8 @@ class TrytondXmlHandler(sax.handler.ContentHandler):
 
         if self.fs2db.get(module, xml_id) is None:
             raise ParsingError("%s.%s not found" % (module, xml_id))
-        value = self.fs2db.get(module, xml_id)
-        return value['model'], value["db_id"]
+        record = self.fs2db.get(module, xml_id)
+        return record.model, record.db_id
 
     @staticmethod
     def _clean_value(key, record):
@@ -584,112 +529,25 @@ class TrytondXmlHandler(sax.handler.ContentHandler):
             raise ValueError("missing fs_id")
 
         if '.' in fs_id:
-            assert len(fs_id.split('.')) == 2, ('"%s" contains too many dots. '
-                'file system ids should contain ot most one dot ! '
-                'These are used to refer to other modules data, '
-                'as in module.reference_id' % (fs_id))
-
             module, fs_id = fs_id.split('.')
             if not self.fs2db.get(module, fs_id):
                 raise ParsingError("%s.%s not found" % (module, fs_id))
 
-        Model = self.pool.get(model)
+        # Remove this record from the to_delete list.
+        # This means that the corresponding record have been found.
+        self.to_delete.discard(fs_id)
 
         if self.fs2db.exists(module, fs_id):
-
-            # Remove this record from the to_delete list. This means that
-            # the corresponding record have been found.
-            if module == self.module and fs_id in self.to_delete:
-                self.to_delete.remove(fs_id)
-
             if self.noupdate and self.module_state != 'to activate':
                 return
-
-            # this record is already in the db:
-            db_value = self.fs2db.get(module, fs_id)
-            db_id = db_value['db_id']
-            db_model = db_value['model']
-            mdata_id = db_value['id']
-            old_values = db_value['values']
-
+            mdata = self.fs2db.get(module, fs_id)
             # Check if record has not been deleted
-            if db_id is None:
+            if mdata.db_id is None:
                 return
-
-            if not old_values:
-                old_values = {}
-            else:
-                old_values = self.ModelData.load_values(old_values)
-
-            for key in old_values:
-                if isinstance(old_values[key], bytes):
-                    # Fix for migration to unicode
-                    old_values[key] = old_values[key].decode('utf-8')
-
-            if model != db_model:
-                raise ParsingError(
-                    "wrong model '%s': %s.%s" % (model, module, fs_id))
-
-            record = self.fs2db.get_browserecord(module, Model.__name__, db_id)
-            # Re-create record if it was deleted
-            if not record:
-                with Transaction().set_context(module=module):
-                    record, = Model.create([values])
-
-                # reset_browsercord
-                self.fs2db.reset_browsercord(
-                    module, Model.__name__, [record.id])
-
-                record = self.fs2db.get_browserecord(
-                    module, Model.__name__, record.id)
-
-                data = self.ModelData.search([
-                    ('fs_id', '=', fs_id),
-                    ('module', '=', module),
-                    ('model', '=', Model.__name__),
-                    ], limit=1)
-                self.ModelData.write(data, {
-                    'db_id': record.id,
-                    })
-                self.fs2db.get(module, fs_id)["db_id"] = record.id
-
-            to_update = {}
-            for key in values:
-
-                db_field = self._clean_value(key, record)
-
-                # if the fs value is the same as in the db, we ignore it
-                if db_field == values[key]:
-                    continue
-
-                # we cannot update a field if it was changed by a user...
-                if key not in old_values:
-                    expected_value = Model._defaults.get(key,
-                        lambda *a: None)()
-                else:
-                    expected_value = old_values[key]
-
-                # ... and we consider that there is an update if the
-                # expected value differs from the actual value, _and_
-                # if they are not false in a boolean context (ie None,
-                # False, {} or [])
-                if db_field != expected_value and (db_field or expected_value):
-                    logger.warning(
-                        "Field %s of %s@%s not updated (id: %s), because "
-                        "it has changed since the last update",
-                        key, record.id, model, fs_id)
-                    continue
-
-                # so, the field in the fs and in the db are different,
-                # and no user changed the value in the db:
-                to_update[key] = values[key]
-
             if self.grouped:
-                self.grouped_write[(module, model)].extend(
-                    (record, to_update, old_values, values, fs_id, mdata_id))
+                self.grouped_write[model].extend([mdata, values])
             else:
-                self.write_records(module, model,
-                    record, to_update, old_values, values, fs_id, mdata_id)
+                self.write_records(model, mdata, values)
         else:
             if self.grouped:
                 self.grouped_creations[model][fs_id] = values
@@ -698,89 +556,38 @@ class TrytondXmlHandler(sax.handler.ContentHandler):
 
     def create_records(self, model, vlist, fs_ids):
         Model = self.pool.get(model)
-
         records = Model.create(vlist)
-
-        mdata_values = []
         for record, values, fs_id in zip(records, vlist, fs_ids):
-            for key in values:
-                values[key] = self._clean_value(key, record)
+            mdata = self.ModelData(
+                fs_id=fs_id,
+                model=model,
+                module=self.module,
+                db_id=record.id,
+                field_names=tuple(values.keys()),
+                noupdate=self.noupdate,
+                )
+            self.fs2db.set(self.module, fs_id, mdata)
+            self.grouped_model_data.append(mdata)
 
-            mdata_values.append({
-                    'fs_id': fs_id,
-                    'model': model,
-                    'module': self.module,
-                    'db_id': record.id,
-                    'values': self.ModelData.dump_values(values),
-                    'fs_values': self.ModelData.dump_values(values),
-                    'noupdate': self.noupdate,
-                    })
-
-        models_data = self.ModelData.create(mdata_values)
-
-        for record, values, fs_id, mdata in zip(
-                records, vlist, fs_ids, models_data):
-            self.fs2db.set(self.module, fs_id, {
-                    'db_id': record.id,
-                    'model': model,
-                    'id': mdata.id,
-                    'values': self.ModelData.dump_values(values),
-                    })
-        self.fs2db.reset_browsercord(self.module, model,
-            [r.id for r in records])
-
-    def write_records(self, module, model,
-            record, values, old_values, new_values, fs_id, mdata_id, *args):
-        args = (record, values, old_values, new_values, fs_id, mdata_id) + args
+    def write_records(self, model, *actions):
         Model = self.pool.get(model)
-
-        actions = iter(args)
+        records = Model.browse([r.db_id for r in actions[::2]])
+        actions = iter(actions)
         to_update = []
-        for record, values, _, _, _, _ in zip(*((actions,) * 6)):
-            if values:
+        for record, mdata, values in zip(records, actions, actions):
+            new_values = {}
+            for field, value in values.items():
+                new_value = self._clean_value(field, record)
+                if new_value != value:
+                    new_values[field] = new_value
+            if new_values:
                 to_update += [[record], values]
-        # if there is values to update:
+            if values.keys() - set(mdata.field_names):
+                mdata.field_names = tuple(
+                    set(mdata.field_names) | values.keys())
+                self.grouped_model_data.append(mdata)
         if to_update:
-            # write the values in the db:
-            with Transaction().set_context(module=module):
-                Model.write(*to_update)
-            self.fs2db.reset_browsercord(
-                module, Model.__name__, sum(to_update[::2], []))
-
-        actions = iter(to_update)
-        for records, values in zip(actions, actions):
-            record, = records
-            # re-read it: this ensure that we store the real value
-            # in the model_data table:
-            record = self.fs2db.get_browserecord(
-                module, Model.__name__, record.id)
-            if not record:
-                record = Model(record.id)
-            for key in values:
-                values[key] = self._clean_value(key, record)
-
-        actions = iter(args)
-        for record, values, old_values, new_values, fs_id, mdata_id in zip(
-                *((actions,) * 6)):
-            temp_values = old_values.copy()
-            temp_values.update(values)
-            values = temp_values
-            fs_values = old_values.copy()
-            fs_values.update(new_values)
-
-            if old_values != values or values != fs_values:
-                self.grouped_model_data.extend(([self.ModelData(mdata_id)], {
-                            'fs_id': fs_id,
-                            'model': model,
-                            'module': module,
-                            'db_id': record.id,
-                            'values': self.ModelData.dump_values(values),
-                            'fs_values': self.ModelData.dump_values(fs_values),
-                            'noupdate': self.noupdate,
-                            }))
-
-        # reset_browsercord to keep cache memory low
-        self.fs2db.reset_browsercord(module, Model.__name__, args[::6])
+            Model.write(*to_update)
 
 
 def post_import(pool, module, to_delete):

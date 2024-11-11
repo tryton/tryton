@@ -122,18 +122,6 @@ Model Data
 
 The *Model Data* keeps track of the :class:`~trytond.model.ModelStorage`
 records created by modules via `XML files <topics-modules-tryton-cfg>`.
-If a *Model Data* is out of sync (i.e. the values in the database do not match
-the values in the XML definition), it is possible to force synchronisation
-using the :guilabel:`Sync` button.
-
-.. seealso::
-
-   Model Data are found by opening the main menu item:
-
-      |Administration --> Models --> Data|__
-
-      .. |Administration --> Models --> Data| replace:: :menuselection:`Administration --> Models --> Data`
-      __ https://demo.tryton.org/model/ir.model.data
 
 .. _model-ir.model.log:
 

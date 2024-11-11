@@ -1286,7 +1286,7 @@ class ModelData(
         fields.fmany2one(
             'module_ref', 'module', 'ir.module,name', "Module",
             required=True, ondelete='CASCADE'),
-        ModelSQL, ModelView):
+        ModelSQL):
     __name__ = 'ir.model.data'
     fs_id = fields.Char('Identifier on File System', required=True,
         help="The id of the record as known on the file system.")
@@ -1298,11 +1298,8 @@ class ModelData(
             'required': ~Eval('noupdate', False),
             },
         help="The id of the record in the database.")
-    values = fields.Text('Values')
-    fs_values = fields.Text('Values on File System')
     noupdate = fields.Boolean('No Update')
-    out_of_sync = fields.Function(fields.Boolean('Out of Sync'),
-        'get_out_of_sync', searcher='search_out_of_sync')
+    field_names = fields.MultiSelection('get_field_names', "Field Names")
     _get_id_cache = Cache('ir_model_data.get_id', context=False)
     _has_model_cache = Cache('ir_model_data.has_model', context=False)
 
@@ -1325,15 +1322,8 @@ class ModelData(
                     table,
                     (table.module, Index.Equality())),
                 })
-        cls._buttons.update({
-                'sync': {
-                    'invisible': ~Eval('out_of_sync'),
-                    'depends': ['out_of_sync'],
-                    },
-                })
         cls.__rpc__.update({
-                'sync': RPC(
-                    readonly=False, instantiate=0, fresh_session=True),
+                'get_id': RPC(),
                 })
 
     @classmethod
@@ -1345,23 +1335,15 @@ class ModelData(
         # Migration from 5.0: remove required on db_id
         table_h.not_null_action('db_id', action='remove')
 
+    @fields.depends('model_ref')
+    def get_field_names(self):
+        if not self.model_ref:
+            return []
+        return [(f.name, f.name) for f in self.model_ref.fields]
+
     @staticmethod
     def default_noupdate():
         return False
-
-    def get_out_of_sync(self, name):
-        return self.values != self.fs_values and self.fs_values is not None
-
-    @classmethod
-    def search_out_of_sync(cls, name, clause):
-        table = cls.__table__()
-        name, operator, value = clause
-        Operator = fields.SQL_OPERATORS[operator]
-        query = table.select(table.id,
-            where=Operator(
-                (table.fs_values != table.values) & (table.fs_values != Null),
-                value))
-        return [('id', 'in', query)]
 
     @classmethod
     def create(cls, *args):
@@ -1414,16 +1396,15 @@ class ModelData(
                                     **Model.__names__(record=record)),
                                 gettext('ir.msg_base_config_record'))
                     else:
-                        if not data.values or data.noupdate:
+                        if not data.field_names or data.noupdate:
                             continue
-                        xml_values = cls.load_values(data.values)
-                        for key, val in values.items():
-                            if key in xml_values and val != xml_values[key]:
+                        for field in values:
+                            if field in data.field_names:
                                 raise AccessError(
                                     gettext(
                                         'ir.msg_write_xml_record',
                                         **cls.__names__(
-                                            field=key, record=record)),
+                                            field=field, record=record)),
                                     gettext('ir.msg_base_config_record'))
 
     @classmethod
@@ -1473,47 +1454,6 @@ class ModelData(
     @classmethod
     def load_values(cls, values):
         return dict(json.loads(values, object_hook=JSONDecoder()))
-
-    @classmethod
-    @ModelView.button
-    def sync(cls, records):
-        def settable(Model, fieldname):
-            try:
-                field = Model._fields[fieldname]
-            except KeyError:
-                return False
-
-            if isinstance(field, fields.Function) and not field.setter:
-                return False
-
-            return True
-
-        with Transaction().set_user(0):
-            pool = Pool()
-            to_write = []
-            models_to_write = defaultdict(list)
-            for data in records:
-                try:
-                    Model = pool.get(data.model)
-                except KeyError:
-                    continue
-                values = cls.load_values(data.values)
-                fs_values = cls.load_values(data.fs_values)
-                # values could be the same once loaded
-                # if they come from version < 3.2
-                if values != fs_values:
-                    values = {f: v for f, v in fs_values.items()
-                        if settable(Model, f)}
-                    record = Model(data.db_id)
-                    models_to_write[Model].extend(([record], values))
-                to_write.extend([[data], {
-                            'values': cls.dump_values(fs_values),
-                            'fs_values': cls.dump_values(fs_values),
-                            }])
-            for Model, values_to_write in models_to_write.items():
-                Model.write(*values_to_write)
-            if to_write:
-                cls.write(*to_write)
 
 
 class Log(ResourceAccessMixin, ModelSQL, ModelView):

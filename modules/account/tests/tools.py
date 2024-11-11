@@ -56,13 +56,9 @@ def create_chart(
     if not company:
         company = get_company(config=config)
 
-    module, xml_id = chart.split('.')
-    data, = ModelData.find([
-            ('module', '=', module),
-            ('fs_id', '=', xml_id),
-            ], limit=1)
+    chart_id = ModelData.get_id(chart, config.context)
 
-    account_template = AccountTemplate(data.db_id)
+    account_template = AccountTemplate(chart_id)
 
     create_chart = Wizard('account.create_chart', config=config)
     create_chart.execute('account')

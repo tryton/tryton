@@ -13,12 +13,9 @@ def create_chart(company=None, config=None):
 
     if not company:
         company = get_company(config=config)
-    data, = ModelData.find([
-            ('module', '=', 'account_fr'),
-            ('fs_id', '=', 'root'),
-            ], limit=1)
+    chart_id = ModelData.get_id('account_fr', 'root', config.context)
 
-    account_template = AccountTemplate(data.db_id)
+    account_template = AccountTemplate(chart_id)
 
     create_chart = Wizard('account.create_chart', config=config)
     create_chart.execute('account')
