@@ -2,16 +2,19 @@
 <!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
 this repository contains the full copyright notices and license terms. -->
 <form>
+    <label name="string"/>
+    <field name="string"/>
     <label name="name"/>
     <field name="name"/>
+
     <label name="model_ref"/>
     <field name="model_ref"/>
+    <newline/>
+
     <label name="ttype"/>
     <field name="ttype"/>
     <label name="relation"/>
     <field name="relation"/>
-    <label name="field_description"/>
-    <field name="field_description" colspan="3"/>
     <label name="help" yfill="1"/>
     <field name="help" colspan="3"/>
     <label name="access"/>

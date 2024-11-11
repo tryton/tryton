@@ -24,7 +24,7 @@ CREATE TABLE ir_model_field (
     model VARCHAR NOT NULL,
     name VARCHAR NOT NULL,
     relation VARCHAR,
-    field_description VARCHAR,
+    string VARCHAR,
     ttype VARCHAR,
     help TEXT,
     module VARCHAR,

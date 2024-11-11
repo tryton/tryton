@@ -577,7 +577,7 @@ class FieldTranslate(Field):
             model_data = ModelData.__table__()
             model_field = ModelField.__table__()
             msg_trans = Translation.__table__()
-            if name == 'field_description':
+            if name == 'string':
                 type_ = 'field'
             else:
                 type_ = 'help'
@@ -633,7 +633,7 @@ class FieldTranslate(Field):
             res_id = -1
         elif Model.__name__ == 'ir.model.field':
             name_ = Concat(Concat(table.model, ','), table.name)
-            if name == 'field_description':
+            if name == 'string':
                 type_ = 'field'
             else:
                 type_ = 'help'

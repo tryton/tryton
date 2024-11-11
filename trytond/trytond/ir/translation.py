@@ -336,7 +336,7 @@ class Translation(
         if name.split(',')[0] in ('ir.model.field', 'ir.model'):
             field_name = name.split(',')[1]
             if name.split(',')[0] == 'ir.model.field':
-                if field_name == 'field_description':
+                if field_name == 'string':
                     ttype = 'field'
                 else:
                     ttype = 'help'
@@ -452,7 +452,7 @@ class Translation(
         model_name, field_name = name.split(',')
         if model_name in ('ir.model.field', 'ir.model'):
             if model_name == 'ir.model.field':
-                if field_name == 'field_description':
+                if field_name == 'string':
                     ttype = 'field'
                 else:
                     ttype = 'help'

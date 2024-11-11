@@ -248,6 +248,7 @@ class ModelField(
         ModelSQL, ModelView):
     "Model field"
     __name__ = 'ir.model.field'
+    _rec_name = 'string'
     name = fields.Char('Name', required=True,
         states={
             'readonly': Bool(Eval('module')),
@@ -263,12 +264,12 @@ class ModelField(
         states={
             'readonly': Bool(Eval('module')),
             })
-    field_description = fields.Char('Field Description', translate=True,
+    string = fields.Char(
+        "String", translate=True,
         loading='lazy',
         states={
             'readonly': Bool(Eval('module')),
-            },
-        depends=['module'])
+            })
     ttype = fields.Char('Field Type',
         states={
             'readonly': Bool(Eval('module')),
@@ -323,6 +324,9 @@ class ModelField(
                     where=table._temp_model == model.id))
             table_h.drop_column('_temp_model')
 
+        # Migration from 7.4: rename field_description into string
+        table_h.column_rename('field_description', 'string')
+
         super().__register__(module)
 
     @classmethod
@@ -335,7 +339,7 @@ class ModelField(
             .select(
                 ir_model_field.id.as_('id'),
                 ir_model_field.name.as_('name'),
-                ir_model_field.field_description.as_('field_description'),
+                ir_model_field.string.as_('string'),
                 ir_model_field.ttype.as_('ttype'),
                 ir_model_field.relation.as_('relation'),
                 ir_model_field.module.as_('module'),
@@ -357,7 +361,7 @@ class ModelField(
                 cursor.execute(*ir_model_field.insert([
                             ir_model_field.model,
                             ir_model_field.name,
-                            ir_model_field.field_description,
+                            ir_model_field.string,
                             ir_model_field.ttype,
                             ir_model_field.relation,
                             ir_model_field.help,
@@ -373,13 +377,13 @@ class ModelField(
                                 module_name,
                                 access,
                                 ]]))
-            elif (model_fields[field_name]['field_description'] != field.string
+            elif (model_fields[field_name]['string'] != field.string
                     or model_fields[field_name]['ttype'] != field._type
                     or model_fields[field_name]['relation'] != relation
                     or model_fields[field_name]['help'] != field.help
                     or model_fields[field_name]['access'] != access):
                 cursor.execute(*ir_model_field.update([
-                            ir_model_field.field_description,
+                            ir_model_field.string,
                             ir_model_field.ttype,
                             ir_model_field.relation,
                             ir_model_field.help,
@@ -417,17 +421,9 @@ class ModelField(
                         "could not delete field: %s.%s", model, field,
                         exc_info=True)
 
-    @staticmethod
-    def default_name():
-        return 'No Name'
-
-    @staticmethod
-    def default_field_description():
-        return 'No description available'
-
     def get_rec_name(self, name):
-        if self.field_description:
-            return '%s (%s)' % (self.field_description, self.name)
+        if self.string:
+            return '%s (%s)' % (self.string, self.name)
         else:
             return self.name
 
@@ -438,7 +434,7 @@ class ModelField(
         else:
             bool_op = 'OR'
         return [bool_op,
-            ('field_description',) + tuple(clause[1:]),
+            ('string',) + tuple(clause[1:]),
             ('name',) + tuple(clause[1:]),
             ]
 
@@ -452,7 +448,7 @@ class ModelField(
                     ], limit=1)
             if fields:
                 field, = fields
-                name = field.field_description
+                name = field.string
                 cls._get_name_cache.set((model, field), name)
             else:
                 name = field
@@ -465,8 +461,7 @@ class ModelField(
 
         to_delete = []
         if Transaction().context.get('language'):
-            if 'field_description' in fields_names \
-                    or 'help' in fields_names:
+            if 'string' in fields_names or 'help' in fields_names:
                 if 'model' not in fields_names:
                     fields_names.append('model')
                     to_delete.append('model')
@@ -477,11 +472,11 @@ class ModelField(
         res = super(ModelField, cls).read(ids, fields_names)
 
         if (Transaction().context.get('language')
-                and ('field_description' in fields_names
+                and ('string' in fields_names
                     or 'help' in fields_names)):
             trans_args = []
             for rec in res:
-                if 'field_description' in fields_names:
+                if 'string' in fields_names:
                     trans_args.append((
                             rec['model'] + ',' + rec['name'],
                             'field', Transaction().language, None))
@@ -491,12 +486,12 @@ class ModelField(
                             'help', Transaction().language, None))
             Translation.get_sources(trans_args)
             for rec in res:
-                if 'field_description' in fields_names:
+                if 'string' in fields_names:
                     res_trans = Translation.get_source(
                             rec['model'] + ',' + rec['name'],
                             'field', Transaction().language)
                     if res_trans:
-                        rec['field_description'] = res_trans
+                        rec['string'] = res_trans
                 if 'help' in fields_names:
                     res_trans = Translation.get_source(
                             rec['model'] + ',' + rec['name'],

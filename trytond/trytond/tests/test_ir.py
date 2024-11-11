@@ -64,11 +64,11 @@ class IrTestCase(ModuleTestCase):
         ModelField = pool.get('ir.model.field')
 
         field, = ModelField.search([
-                ('field_description', '=', "Name"),
+                ('string', '=', "Name"),
                 ('model', '=', 'ir.lang'),
                 ('module', '=', 'ir'),
                 ])
-        self.assertEqual(field.field_description, "Name")
+        self.assertEqual(field.string, "Name")
 
     @with_transaction()
     def test_model_field_search_order_description(self):
@@ -77,12 +77,11 @@ class IrTestCase(ModuleTestCase):
         ModelField = pool.get('ir.model.field')
 
         fields = ModelField.search([
-                ('field_description', 'in', ["Name", "Code"]),
+                ('string', 'in', ["Name", "Code"]),
                 ('model', '=', 'ir.lang'),
                 ('module', '=', 'ir'),
                 ])
-        self.assertEqual(
-            [f.field_description for f in fields], ["Code", "Name"])
+        self.assertEqual([f.string for f in fields], ["Code", "Name"])
 
     @with_transaction()
     def test_model_field_lazy(self):
@@ -91,11 +90,11 @@ class IrTestCase(ModuleTestCase):
         ModelField = pool.get('ir.model.field')
 
         field, = ModelField.search([
-                ('field_description', '=', "ID"),
+                ('string', '=', "ID"),
                 ('model', '=', 'ir.lang'),
                 ('module', '=', 'ir'),
                 ])
-        self.assertEqual(field.field_description, "ID")
+        self.assertEqual(field.string, "ID")
 
     @with_transaction()
     def test_sequence_substitutions(self):
