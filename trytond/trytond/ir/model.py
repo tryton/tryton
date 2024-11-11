@@ -1324,6 +1324,12 @@ class ModelData(
                 Index(
                     table,
                     (table.module, Index.Equality())),
+                Index(
+                    table,
+                    (table.model, Index.Equality()),
+                    (table.db_id, Index.Range()),
+                    (table.field_names, Index.Equality()),
+                    where=table.noupdate == Literal(False)),
                 })
         cls.__rpc__.update({
                 'get_id': RPC(),
@@ -1388,22 +1394,23 @@ class ModelData(
                 records, key=lambda r: r.__class__):
             for sub_records in grouped_slice(records):
                 id2record = {r.id: r for r in sub_records}
-                data = cls.search([
-                        ('model', '=', Model.__name__),
-                        ('db_id', 'in', list(id2record.keys())),
-                        ], order=[])
+                domain = [
+                    ('model', '=', Model.__name__),
+                    ('db_id', 'in', list(id2record.keys())),
+                    ('noupdate', '=', False),
+                    ]
+                if values is not None:
+                    domain.append(('field_names', '!=', None))
+                data = cls.search(domain, order=[])
                 for data in data:
                     record = id2record[data.db_id]
                     if values is None:
-                        if not data.noupdate:
-                            raise AccessError(
-                                gettext(
-                                    'ir.msg_delete_xml_record',
-                                    **Model.__names__(record=record)),
-                                gettext('ir.msg_base_config_record'))
+                        raise AccessError(
+                            gettext(
+                                'ir.msg_delete_xml_record',
+                                **Model.__names__(record=record)),
+                            gettext('ir.msg_base_config_record'))
                     else:
-                        if not data.field_names or data.noupdate:
-                            continue
                         for field in values:
                             if field in data.field_names:
                                 raise AccessError(
