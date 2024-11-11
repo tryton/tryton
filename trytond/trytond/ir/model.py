@@ -1311,6 +1311,9 @@ class ModelData(
             ('fs_id_module_model_uniq',
                 Unique(table, table.fs_id, table.module, table.model),
                 'ir.msg_model_data_xml_id_model_unique'),
+            ('db_id_model_unique',
+                Unique(table, table.db_id, table.model),
+                'is.msg_model_data_db_id_model_unique'),
             ]
         cls._sql_indexes.update({
                 Index(

@@ -432,5 +432,8 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_model_data_xml_id_model_unique">
             <field name="text">The XML ID must be unique per model.</field>
         </record>
+        <record model="ir.message" id="msg_model_data_db_id_model_unique">
+            <field name="text">The database ID must be unique per model.</field>
+        </record>
     </data>
 </tryton>
