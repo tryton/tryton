@@ -135,8 +135,9 @@ class User(avatar_mixin(100, 'login'), DeactivableMixin, ModelSQL, ModelView):
             },
         depends=['password_reset'])
     signature = fields.Text('Signature')
-    menu = fields.Many2One('ir.action', 'Menu Action',
-        domain=[('usage', '=', 'menu')], required=True)
+    menu = fields.Many2One(
+        'ir.action', "Menu",
+        domain=[('usage', '=', 'menu')])
     pyson_menu = fields.Function(fields.Char('PySON Menu'), 'get_pyson_menu')
     actions = fields.Many2Many('res.user-ir.action', 'user', 'action',
         'Actions', help='Actions that will be run at login.',
@@ -206,6 +207,7 @@ class User(avatar_mixin(100, 'login'), DeactivableMixin, ModelSQL, ModelView):
         pool = Pool()
         ModelData = pool.get('ir.model.data')
         model_data = ModelData.__table__()
+        table_h = cls.__table_handler__(module_name)
         cursor = Transaction().connection.cursor()
         super(User, cls).__register__(module_name)
 
@@ -216,20 +218,25 @@ class User(avatar_mixin(100, 'login'), DeactivableMixin, ModelSQL, ModelView):
                 & (model_data.module == 'res')
                 & (model_data.fs_id == 'user_admin')))
 
-    @staticmethod
-    def default_menu():
+        # Migration from 7.4: remove required on menu
+        table_h.not_null_action('menu', 'remove')
+
+    @classmethod
+    def default_menu(cls):
         pool = Pool()
-        Action = pool.get('ir.action')
-        actions = Action.search([
-            ('usage', '=', 'menu'),
-            ], limit=1)
-        if actions:
-            return actions[0]
-        return None
+        ModelData = pool.get('ir.model.data')
+        try:
+            return ModelData.get_id('ir', 'act_menu_tree')
+        except ValueError:
+            pass
 
     def get_pyson_menu(self, name):
+        pool = Pool()
+        Action = pool.get('ir.action')
         encoder = PYSONEncoder()
-        return encoder.encode(self.menu.get_action_value())
+        if not (menu := self.menu):
+            menu = Action(self.default_menu())
+        return encoder.encode(menu.get_action_value())
 
     def get_language_direction(self, name):
         pool = Pool()
