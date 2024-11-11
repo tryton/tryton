@@ -249,6 +249,9 @@ class ModelField(
             'module_ref', 'module', 'ir.module,name', "Module",
             readonly=True, ondelete='CASCADE',
             help="Module in which this field is defined."),
+        fields.fmany2one(
+            'relation_ref', 'relation', 'ir.model,name', "Relation",
+            ondelete='CASCADE'),
         ModelSQL, ModelView):
     __name__ = 'ir.model.field'
     _rec_name = 'string'
@@ -334,6 +337,7 @@ class ModelField(
 
     @classmethod
     def register(cls, model, module_name, model_id):
+        pool = Pool()
         cursor = Transaction().connection.cursor()
 
         ir_model_field = cls.__table__()
@@ -358,6 +362,11 @@ class ModelField(
                 relation = field.relation_name
             else:
                 relation = None
+
+            if relation:
+                Relation = pool.get(relation)
+                Model.register(Relation, module_name)
+
             access = field_name in model.__access__
 
             if field_name not in model_fields:

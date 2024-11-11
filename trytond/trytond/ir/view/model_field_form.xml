@@ -13,8 +13,9 @@ this repository contains the full copyright notices and license terms. -->
 
     <label name="ttype"/>
     <field name="ttype"/>
-    <label name="relation"/>
-    <field name="relation"/>
+    <label name="relation_ref"/>
+    <field name="relation_ref"/>
+
     <label name="help" yfill="1"/>
     <field name="help" colspan="3"/>
     <label name="access"/>
