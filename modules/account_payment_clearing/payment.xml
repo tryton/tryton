@@ -44,7 +44,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">succeed_wizard</field>
             <field name="string">Succeed</field>
         </record>
-
+    </data>
+    <data noupdate="1">
         <record model="ir.cron" id="cron_post_clearing_moves">
             <field name="method">account.payment.journal|cron_post_clearing_moves</field>
             <field name="interval_number" eval="1"/>

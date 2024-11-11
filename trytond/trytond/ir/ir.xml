@@ -2,8 +2,7 @@
 <!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
 this repository contains the full copyright notices and license terms. -->
 <tryton>
-    <data>
-
+    <data noupdate="1">
         <!--
         lang_en is defined here to be in translation lang selection
         -->

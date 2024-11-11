@@ -161,10 +161,6 @@ class Cron(DeactivableMixin, ModelSQL, ModelView):
         return running
 
     @classmethod
-    def check_xml_record(cls, crons, values):
-        pass
-
-    @classmethod
     def view_attributes(cls):
         return [(
                 '//label[@id="time_label"]', 'states', {

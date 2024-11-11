@@ -265,7 +265,7 @@ class ModelStorage(Model):
         all_records = []
         all_fields = set()
         for records, values in zip(actions, actions):
-            cls.check_xml_record(records, values)
+            cls.__check_xml_record(records, values)
             all_records += records
             all_fields.update(values.keys())
             if transaction.check_access and values:
@@ -332,7 +332,7 @@ class ModelStorage(Model):
         transaction = Transaction()
 
         ModelAccess.check(cls.__name__, 'delete')
-        cls.check_xml_record(records, None)
+        cls.__check_xml_record(records, None)
         if ModelData.has_model(cls.__name__):
             ModelData.clean(records)
 
@@ -1174,7 +1174,7 @@ class ModelStorage(Model):
         return count
 
     @classmethod
-    def check_xml_record(cls, records, values):
+    def __check_xml_record(cls, records, values):
         ModelData = Pool().get('ir.model.data')
         # Allow root user to update/delete
         if (Transaction().user == 0

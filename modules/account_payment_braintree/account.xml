@@ -121,18 +121,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="string">Braintree Pull</field>
         </record>
 
-        <record model="ir.cron" id="cron_transact_payment">
-            <field name="method">account.payment|braintree_transact</field>
-            <field name="interval_number" eval="15"/>
-            <field name="interval_type">minutes</field>
-        </record>
-
-        <record model="ir.cron" id="cron_pull_payment">
-            <field name="method">account.payment|braintree_pull</field>
-            <field name="interval_number" eval="15"/>
-            <field name="interval_type">minutes</field>
-        </record>
-
         <record model="ir.ui.view" id="refund_view_form">
             <field name="model">account.payment.braintree.refund</field>
             <field name="type">form</field>
@@ -229,18 +217,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="string">Approve</field>
         </record>
 
-        <record model="ir.cron" id="cron_refund">
-            <field name="method">account.payment.braintree.refund|braintree_refund</field>
-            <field name="interval_number" eval="15"/>
-            <field name="interval_type">minutes</field>
-        </record>
-
-        <record model="ir.cron" id="cron_pull_refund">
-            <field name="method">account.payment.braintree.refund|braintree_pull</field>
-            <field name="interval_number" eval="15"/>
-            <field name="interval_type">minutes</field>
-        </record>
-
         <record model="ir.ui.view" id="customer_view_form">
             <field name="model">account.payment.braintree.customer</field>
             <field name="type">form</field>
@@ -299,18 +275,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="string">Update</field>
         </record>
 
-        <record model="ir.cron" id="cron_create_customer">
-            <field name="method">account.payment.braintree.customer|braintree_create</field>
-            <field name="interval_number" eval="1"/>
-            <field name="interval_type">hours</field>
-        </record>
-
-        <record model="ir.cron" id="cron_delete_customer">
-            <field name="method">account.payment.braintree.customer|braintree_delete</field>
-            <field name="interval_number" eval="1"/>
-            <field name="interval_type">hours</field>
-        </record>
-
         <record model="ir.model.button" id="customer_payment_method_delete_button">
             <field name="model">account.payment.braintree.customer</field>
             <field name="name">delete_payment_method</field>
@@ -345,6 +309,43 @@ this repository contains the full copyright notices and license terms. -->
             <field name="report_name">account.payment.braintree.checkout</field>
             <field name="report">account_payment_braintree/checkout.html</field>
             <field name="template_extension">html</field>
+        </record>
+    </data>
+    <data grouped="1" noupdate="1">
+        <record model="ir.cron" id="cron_transact_payment">
+            <field name="method">account.payment|braintree_transact</field>
+            <field name="interval_number" eval="15"/>
+            <field name="interval_type">minutes</field>
+        </record>
+
+        <record model="ir.cron" id="cron_pull_payment">
+            <field name="method">account.payment|braintree_pull</field>
+            <field name="interval_number" eval="15"/>
+            <field name="interval_type">minutes</field>
+        </record>
+
+        <record model="ir.cron" id="cron_refund">
+            <field name="method">account.payment.braintree.refund|braintree_refund</field>
+            <field name="interval_number" eval="15"/>
+            <field name="interval_type">minutes</field>
+        </record>
+
+        <record model="ir.cron" id="cron_pull_refund">
+            <field name="method">account.payment.braintree.refund|braintree_pull</field>
+            <field name="interval_number" eval="15"/>
+            <field name="interval_type">minutes</field>
+        </record>
+
+        <record model="ir.cron" id="cron_create_customer">
+            <field name="method">account.payment.braintree.customer|braintree_create</field>
+            <field name="interval_number" eval="1"/>
+            <field name="interval_type">hours</field>
+        </record>
+
+        <record model="ir.cron" id="cron_delete_customer">
+            <field name="method">account.payment.braintree.customer|braintree_delete</field>
+            <field name="interval_number" eval="1"/>
+            <field name="interval_type">hours</field>
         </record>
     </data>
 </tryton>

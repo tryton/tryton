@@ -615,7 +615,7 @@ class ModelStorageTestCase(TestCase):
         Model = pool.get('test.modelstorage')
         record, = Model.create([{}])
 
-        Model.check_xml_record([record], {'name': "Test"})
+        Model.write([record], {'name': "Test"})
 
     @with_transaction()
     def test_check_xml_record_with_record_no_matching_fields(self):
@@ -633,7 +633,7 @@ class ModelStorageTestCase(TestCase):
                     'noupdate': False,
                     }])
 
-        Model.check_xml_record([record], {'name': "Test"})
+        Model.write([record], {'name': "Test"})
 
     @with_transaction()
     def test_check_xml_record_with_record_matching_fields(self):
@@ -652,7 +652,7 @@ class ModelStorageTestCase(TestCase):
                     }])
 
         with self.assertRaises(AccessError):
-            Model.check_xml_record([record], {'name': "Bar"})
+            Model.write([record], {'name': "Bar"})
 
     @with_transaction()
     def test_check_xml_record_with_record_matching_fields_noupdate(self):
@@ -670,7 +670,7 @@ class ModelStorageTestCase(TestCase):
                     'noupdate': True,
                     }])
 
-        Model.check_xml_record([record], {'name': "Bar"})
+        Model.write([record], {'name': "Bar"})
 
     @with_transaction(user=0)
     def test_check_xml_record_with_record_matching_fields_root(self):
@@ -688,7 +688,7 @@ class ModelStorageTestCase(TestCase):
                     'noupdate': False,
                     }])
 
-        Model.check_xml_record([record], {'name': "Bar"})
+        Model.write([record], {'name': "Bar"})
 
     @with_transaction()
     def test_check_xml_record_with_record_no_fields(self):
@@ -707,7 +707,7 @@ class ModelStorageTestCase(TestCase):
                     }])
 
         with self.assertRaises(AccessError):
-            Model.check_xml_record([record], None)
+            Model.delete([record])
 
     @with_transaction()
     def test_check_xml_record_with_record_no_fields_noupdate(self):
@@ -725,7 +725,7 @@ class ModelStorageTestCase(TestCase):
                     'noupdate': True,
                     }])
 
-        Model.check_xml_record([record], None)
+        Model.delete([record])
 
     @with_transaction()
     def test_delete_clear_db_id_model_data_noupdate(self):

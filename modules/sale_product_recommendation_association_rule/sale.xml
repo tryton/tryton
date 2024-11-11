@@ -49,7 +49,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
-
+    </data>
+    <data noupdate="1">
         <record model="ir.cron" id="cron_product_association_rule_compute">
             <field name="method">sale.product.association.rule|compute</field>
             <field name="interval_number" eval="1"/>

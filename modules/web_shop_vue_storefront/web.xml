@@ -8,7 +8,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="inherit" ref="web_shop.shop_view_form"/>
             <field name="name">shop_form</field>
         </record>
-
+    </data>
+    <data noupdate="1">
         <record model="ir.cron" id="cron_update">
             <field name="method">web.shop|vsf_update</field>
             <field name="interval_number" eval="1"/>

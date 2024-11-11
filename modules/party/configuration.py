@@ -110,10 +110,6 @@ class ConfigurationSequence(ModelSQL, ValueMixin):
     __name__ = 'party.configuration.party_sequence'
     party_sequence = party_sequence
 
-    @classmethod
-    def check_xml_record(cls, records, values):
-        pass
-
 
 class ConfigurationLang(ModelSQL, ValueMixin):
     __name__ = 'party.configuration.party_lang'

@@ -385,11 +385,6 @@ class Lang(DeactivableMixin, ModelSQL, ModelView):
                     n=n,
                     exception=exception)) from exception
 
-    @classmethod
-    def check_xml_record(cls, langs, values):
-        pass
-
-    @classmethod
     def get_translatable_languages(cls):
         res = cls._lang_cache.get('translatable_languages')
         if res is None:

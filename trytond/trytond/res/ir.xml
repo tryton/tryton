@@ -345,12 +345,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="rule_group" ref="rule_group_sequence_strict"/>
         </record>
 
-        <record model="ir.cron" id="cron_trigger_time">
-            <field name="method">ir.trigger|trigger_time</field>
-            <field name="interval_number" eval="5"/>
-            <field name="interval_type">minutes</field>
-        </record>
-
         <record model="ir.model.access" id="rule_default_view_tree_state">
             <field name="model">ir.ui.view_tree_state</field>
             <field name="perm_read" eval="False" />
@@ -457,6 +451,13 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_write" eval="True"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="True"/>
+        </record>
+    </data>
+    <data noupdate="1">
+        <record model="ir.cron" id="cron_trigger_time">
+            <field name="method">ir.trigger|trigger_time</field>
+            <field name="interval_number" eval="5"/>
+            <field name="interval_type">minutes</field>
         </record>
     </data>
 </tryton>

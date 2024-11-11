@@ -538,18 +538,6 @@ Class methods:
    The field names of values must be defined in ``fields_names``.
    It returns the number of imported records.
 
-.. classmethod:: ModelStorage.check_xml_record(records, values)
-
-   Raise an :exc:`~trytond.model.exceptions.AccessError` if the records can not
-   be modified because they originate from XML data.
-   ``values`` is a dictionary of written values or ``None`` for deletion.
-
-   It is used by :meth:`~ModelStorage.write` and :meth:`~ModelStorage.delete`
-   to prevent modification of data coming from XML files.
-
-   .. note::
-      This method must be overiden to change this behavior.
-
 .. classmethod:: ModelStorage.validate(records)
 
    Validate the integrity of records after creation and modification.

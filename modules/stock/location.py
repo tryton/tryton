@@ -330,10 +330,6 @@ class Location(DeactivableMixin, tree(), ModelSQL, ModelView):
     def default_type():
         return 'storage'
 
-    @classmethod
-    def check_xml_record(cls, records, values):
-        pass
-
     def get_warehouse(self, name):
         # Order by descending left to get the first one in the tree
         with inactive_records():

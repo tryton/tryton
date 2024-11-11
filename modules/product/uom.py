@@ -77,10 +77,6 @@ class Uom(SymbolMixin, DigitsMixin, DeactivableMixin, ModelSQL, ModelView):
             ]
         cls._order.insert(0, ('name', 'ASC'))
 
-    @classmethod
-    def check_xml_record(cls, records, values):
-        pass
-
     @staticmethod
     def default_rate():
         return 1.0

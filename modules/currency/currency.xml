@@ -138,7 +138,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">run</field>
             <field name="string">Run</field>
         </record>
-
+    </data>
+    <data noupdate="1">
         <record model="ir.cron" id="cron_cron">
             <field name="method">currency.cron|update</field>
             <field name="interval_number" eval="1"/>

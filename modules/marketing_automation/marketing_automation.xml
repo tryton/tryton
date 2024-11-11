@@ -308,7 +308,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="report">marketing_automation/unsubscribe.html</field>
             <field name="template_extension">html</field>
         </record>
-
+    </data>
+    <data noupdate="1">
        <record model="ir.cron" id="cron_scenario_trigger">
            <field name="method">marketing.automation.scenario|trigger</field>
            <field name="interval_number" eval="1"/>
@@ -319,6 +320,5 @@ this repository contains the full copyright notices and license terms. -->
            <field name="interval_number" eval="15"/>
            <field name="interval_type">minutes</field>
        </record>
-
     </data>
 </tryton>

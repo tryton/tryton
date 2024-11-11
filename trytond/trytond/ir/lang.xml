@@ -8,6 +8,8 @@ this repository contains the full copyright notices and license terms. -->
             parent="menu_administration"
             sequence="30"
             id="menu_localization"/>
+    </data>
+    <data grouped="1" noupdate="1">
          <record model="ir.lang" id="lang_bg">
             <field name="code">bg</field>
             <field name="name">Bulgarian</field>
@@ -556,7 +558,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="p_sep_by_space" eval="False"/>
             <field name="n_sep_by_space" eval="False"/>
         </record>
-
+    </data>
+    <data>
         <record model="ir.ui.view" id="lang_view_tree">
             <field name="model">ir.lang</field>
             <field name="type">tree</field>

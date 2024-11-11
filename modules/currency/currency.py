@@ -100,10 +100,6 @@ class Currency(
         return 2
 
     @classmethod
-    def check_xml_record(cls, records, values):
-        pass
-
-    @classmethod
     def search_global(cls, text):
         for record, rec_name, icon in super(Currency, cls).search_global(text):
             icon = icon or 'tryton-currency'
@@ -310,10 +306,6 @@ class CurrencyRate(ModelSQL, ModelView):
     def default_date():
         Date = Pool().get('ir.date')
         return Date.today()
-
-    @classmethod
-    def check_xml_record(cls, records, values):
-        pass
 
     def get_rec_name(self, name):
         return str(self.date)

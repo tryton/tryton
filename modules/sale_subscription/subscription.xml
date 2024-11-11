@@ -266,12 +266,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">line_consumption_create_start_form</field>
         </record>
 
-        <record model="ir.cron" id="cron_generate_line_consumption">
-            <field name="method">sale.subscription.line|generate_consumption</field>
-            <field name="interval_number" eval="1"/>
-            <field name="interval_type">days</field>
-        </record>
-
         <record model="ir.action.wizard" id="act_create_invoice">
             <field name="name">Create Subscription Invoices</field>
             <field name="wiz_name">sale.subscription.create_invoice</field>
@@ -293,12 +287,18 @@ this repository contains the full copyright notices and license terms. -->
             <field name="type">form</field>
             <field name="name">create_invoice_start_form</field>
         </record>
+    </data>
+    <data noupdate="1">
+        <record model="ir.cron" id="cron_generate_line_consumption">
+            <field name="method">sale.subscription.line|generate_consumption</field>
+            <field name="interval_number" eval="1"/>
+            <field name="interval_type">days</field>
+        </record>
 
         <record model="ir.cron" id="cron_generate_invoice">
             <field name="method">sale.subscription|generate_invoice</field>
             <field name="interval_number" eval="1"/>
             <field name="interval_type">days</field>
         </record>
-
     </data>
 </tryton>
