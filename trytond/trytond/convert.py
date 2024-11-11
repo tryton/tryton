@@ -379,7 +379,7 @@ class TrytondXmlHandler(sax.handler.ContentHandler):
         self.grouped = None
         self.grouped_creations = defaultdict(dict)
         self.grouped_write = defaultdict(list)
-        self.grouped_model_data = []
+        self.grouped_model_data = set()
         self.skip_data = False
         self.modules = modules
         self.languages = languages
@@ -567,7 +567,7 @@ class TrytondXmlHandler(sax.handler.ContentHandler):
                 noupdate=self.noupdate,
                 )
             self.fs2db.set(self.module, fs_id, mdata)
-            self.grouped_model_data.append(mdata)
+            self.grouped_model_data.add(mdata)
 
     def write_records(self, model, *actions):
         Model = self.pool.get(model)
@@ -585,7 +585,11 @@ class TrytondXmlHandler(sax.handler.ContentHandler):
             if values.keys() - set(mdata.field_names):
                 mdata.field_names = tuple(
                     set(mdata.field_names) | values.keys())
-                self.grouped_model_data.append(mdata)
+                self.grouped_model_data.add(mdata)
+            if (self.module == mdata.module
+                    and self.noupdate != mdata.noupdate):
+                mdata.noupdate = self.noupdate
+                self.grouped_model_data.add(mdata)
         if to_update:
             Model.write(*to_update)
 
