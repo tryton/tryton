@@ -1,7 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import datetime
-from collections import namedtuple
+from collections import defaultdict, namedtuple
 from decimal import Decimal
 from itertools import cycle, groupby
 
@@ -1203,8 +1203,13 @@ class _TaxKey(dict):
         return hash(self._key())
 
 
-_TaxableLine = namedtuple(
-    '_TaxableLine', ('taxes', 'unit_price', 'quantity', 'tax_date'))
+class _TaxableLine(namedtuple(
+            '_TaxableLine',
+            ('taxes', 'unit_price', 'quantity', 'tax_date'))):
+    @property
+    def _key(self):
+        base = self.unit_price * Decimal(str(self.quantity or 0))
+        return (tuple(self.taxes), base >= 0)
 
 
 class TaxableMixin(object):
@@ -1277,34 +1282,43 @@ class TaxableMixin(object):
         Tax = pool.get('account.tax')
         Configuration = pool.get('account.configuration')
 
-        taxes = {}
+        all_taxes = {}
         with Transaction().set_context(self._get_tax_context()):
             config = Configuration(1)
             tax_rounding = config.get_multivalue('tax_rounding')
-            taxable_lines = [_TaxableLine(*params)
-                for params in self.taxable_lines]
-            for line in taxable_lines:
-                assert all(t.company == self.company for t in line.taxes)
-                l_taxes = Tax.compute(Tax.browse(line.taxes), line.unit_price,
-                    line.quantity, line.tax_date or self.tax_date)
-                current_taxes = {}
-                for tax in l_taxes:
-                    taxline = self._compute_tax_line(**tax)
-                    # Base must always be rounded per line as there will be one
-                    # tax line per taxable_lines
-                    if self.currency:
-                        taxline['base'] = self.currency.round(taxline['base'])
-                    if taxline not in taxes:
-                        taxes[taxline] = taxline
-                    else:
-                        taxes[taxline]['base'] += taxline['base']
-                        taxes[taxline]['amount'] += taxline['amount']
-                    current_taxes[taxline] = taxes[taxline]
-                if tax_rounding == 'line':
-                    self._round_taxes(current_taxes)
-        if tax_rounding == 'document':
-            self._round_taxes(taxes)
-        return taxes
+            taxable_lines = defaultdict(list)
+            for params in self.taxable_lines:
+                taxable_line = _TaxableLine(*params)
+                taxable_lines[taxable_line._key].append(taxable_line)
+            for grouped_taxable_lines in taxable_lines.values():
+                taxes = {}
+                for line in grouped_taxable_lines:
+                    assert all(t.company == self.company for t in line.taxes)
+                    l_taxes = Tax.compute(
+                        Tax.browse(line.taxes), line.unit_price,
+                        line.quantity, line.tax_date or self.tax_date)
+                    current_taxes = {}
+                    for tax in l_taxes:
+                        taxline = self._compute_tax_line(**tax)
+                        # Base must always be rounded per line as there will be
+                        # one tax line per taxable_lines
+                        if self.currency:
+                            taxline['base'] = self.currency.round(
+                                taxline['base'])
+                        if taxline not in taxes:
+                            taxes[taxline] = taxline
+                        else:
+                            taxes[taxline]['base'] += taxline['base']
+                            taxes[taxline]['amount'] += taxline['amount']
+                        current_taxes[taxline] = taxes[taxline]
+                    if tax_rounding == 'line':
+                        self._round_taxes(current_taxes)
+                if tax_rounding == 'document':
+                    self._round_taxes(taxes)
+                if all_taxes.keys() & taxes.keys():
+                    raise ValueError("Duplicate tax line keys")
+                all_taxes.update(taxes)
+        return all_taxes
 
 
 class TaxLine(ModelSQL, ModelView):
