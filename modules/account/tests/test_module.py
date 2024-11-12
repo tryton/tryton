@@ -1458,6 +1458,50 @@ class AccountTestCase(
             self.assertEqual(taxline_3['amount'], Decimal('-0.30'))
 
     @with_transaction()
+    def test_taxable_mixin_tax_residual_rounding_per_same_taxes(self):
+        """Test TaxableMixin for rounding with residual amount only for same
+        taxes"""
+        pool = Pool()
+        Account = pool.get('account.account')
+        Tax = pool.get('account.tax')
+        Configuration = pool.get('account.configuration')
+        currency = create_currency('cur')
+
+        company = create_company()
+        with set_company(company):
+            create_chart(company)
+
+            config = Configuration(1)
+            config.tax_rounding = 'document'
+            config.save()
+
+            tax_account, = Account.search([
+                    ('code', '=', '6.3.6'),
+                    ])
+
+            tax = Tax()
+            tax.name = tax.description = "Tax"
+            tax.type = 'percentage'
+            tax.rate = Decimal('.06')
+            tax.invoice_account = tax_account
+            tax.credit_note_account = tax_account
+            tax.save()
+
+            taxable = self.Taxable(
+                currency=currency,
+                taxable_lines=[
+                    ([tax], Decimal('11.2736'), 1.04, None),
+                    ([tax], Decimal('0.4529'), -1, None),
+                    ],
+                company=company)
+
+            taxline_1, taxline_2 = taxable._get_taxes()
+            self.assertEqual(taxline_1['base'], Decimal('11.72'))
+            self.assertEqual(taxline_1['amount'], Decimal('0.7'))
+            self.assertEqual(taxline_2['base'], Decimal('-0.45'))
+            self.assertEqual(taxline_2['amount'], Decimal('-0.03'))
+
+    @with_transaction()
     def test_tax_compute_with_children_update_unit_price(self):
         "Test tax compute with children taxes modifying unit_price"
         pool = Pool()
