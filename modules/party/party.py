@@ -557,7 +557,6 @@ IDENTIFIER_TYPES = [
     ('cn_ric', "Chinese Resident Identity Card Number"),
     ('cn_uscc', "Chinese Unified Social Credit Code"),
     ('co_nit', "Colombian Identity Code"),
-    ('co_rut', "Colombian Business Tax Number"),
     ('cr_cpf', "Costa Rica Physical Person ID Number"),
     ('cr_cpj', "Costa Rica Tax Number"),
     ('cr_cr', "Costa Rica Foreigners ID Number"),
@@ -715,7 +714,7 @@ TAX_IDENTIFIER_TYPES = [
     'ch_vat',
     'cl_rut',
     'cn_uscc',
-    'co_rut',
+    'co_nit',
     'cr_cpj',
     'cz_dic',
     'de_vat',
@@ -836,6 +835,10 @@ class Identifier(sequence_ordered(), DeactivableMixin, ModelSQL, ModelView):
         # Migration from 7.2: Rename uy_ruc into uy_rut
         cursor.execute(*table.update([table.type], ['uy_rut'],
                 where=(table.type == 'uy_ruc')))
+
+        # Migration from 7.4: Rename co_rut into co_nit
+        cursor.execute(*table.update([table.type], ['co_nit'],
+                where=(table.type == 'co_rut')))
 
     @classmethod
     def get_types(cls):
