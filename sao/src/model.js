@@ -1804,7 +1804,7 @@
                             setdefault = false;
                         }
                     }
-                    if (setdefault && !pre_validate) {
+                    if (setdefault && jQuery.isEmptyObject(pre_validate)) {
                         this.set_client(record, value);
                         state_attrs.domain_readonly = domain_readonly;
                     }
@@ -2658,7 +2658,7 @@
             }
             for (const record2 of (record._values[this.name] || [])) {
                 if (!record2.get_loaded() && (record2.id >= 0) &&
-                        !pre_validate) {
+                        jQuery.isEmptyObject(pre_validate)) {
                     continue;
                 }
                 if (!record2.validate(null, softvalidation, ldomain, true)) {
