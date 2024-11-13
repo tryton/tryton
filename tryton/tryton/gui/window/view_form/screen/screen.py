@@ -817,7 +817,7 @@ class Screen:
                 record, remove=remove, modified=False,
                 force_remove=force_remove)
         # call only once
-        record.set_modified()
+        self.group.record_modified()
 
         if delete:
             for record in records:
