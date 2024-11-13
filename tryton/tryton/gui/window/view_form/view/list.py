@@ -1055,9 +1055,12 @@ class ViewTree(View):
         elif tree_sel.get_mode() == Gtk.SelectionMode.MULTIPLE:
             model, paths = tree_sel.get_selected_rows()
             if model and paths:
-                iter_ = model.get_iter(paths[0])
-                record = model.get_value(iter_, 0)
-                self.record = record
+                records = []
+                for path in paths:
+                    iter_ = model.get_iter(path)
+                    records.append(model.get_value(iter_, 0))
+                if self.record not in records:
+                    self.record = records[0]
             else:
                 self.record = None
 
