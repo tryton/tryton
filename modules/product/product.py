@@ -939,9 +939,8 @@ class ProductReplace(Wizard):
         destination = self.ask.destination
 
         source.replaced_by = destination
-        if source.can_be_deactivated():
-            source.active = False
         source.save()
+        self.model.deactivate_replaced([source])
         return 'end'
 
 
