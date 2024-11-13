@@ -370,7 +370,8 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
             product=product,
             unit=unit,
             quantity=quantity,
-            company=self.company)
+            company=self.company,
+            state=Move.default_state())
         if type == 'input':
             move.from_location = self.picking_location
             move.to_location = self.location
