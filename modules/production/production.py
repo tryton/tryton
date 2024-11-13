@@ -380,7 +380,8 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
             move.from_location = self.location
             move.to_location = self.output_location
             move.production_output = self
-        if move.on_change_with_unit_price_required():
+        move.unit_price_required = move.on_change_with_unit_price_required()
+        if move.unit_price_required:
             move.unit_price = Decimal(0)
             if self.company:
                 move.currency = self.company.currency
