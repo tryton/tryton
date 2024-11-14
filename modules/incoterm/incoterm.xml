@@ -45,6 +45,136 @@ this repository contains the full copyright notices and license terms. -->
         </record>
     </data>
     <data grouped="1">
+        <record model="incoterm.incoterm" id="incoterm_exw_2000">
+            <field name="name">Ex Works</field>
+            <field name="code">EXW</field>
+            <field name="version">2000</field>
+            <field name="mode" eval="None"/>
+            <field name="carrier">buyer</field>
+            <field name="risk">before</field>
+            <field name="location" eval="True"/>
+        </record>
+
+        <record model="incoterm.incoterm" id="incoterm_fca_2000">
+            <field name="name">Free Carrier</field>
+            <field name="code">FCA</field>
+            <field name="version">2000</field>
+            <field name="mode" eval="None"/>
+            <field name="carrier">buyer</field>
+            <field name="risk">before</field>
+            <field name="location" eval="True"/>
+        </record>
+
+        <record model="incoterm.incoterm" id="incoterm_cpt_2000">
+            <field name="name">Carriage Paid To</field>
+            <field name="code">CPT</field>
+            <field name="version">2000</field>
+            <field name="mode" eval="None"/>
+            <field name="carrier">seller</field>
+            <field name="risk">before</field>
+            <field name="location" eval="True"/>
+        </record>
+
+        <record model="incoterm.incoterm" id="incoterm_cip_2000">
+            <field name="name">Carriage and Insurance Paid To</field>
+            <field name="code">CIP</field>
+            <field name="version">2000</field>
+            <field name="mode" eval="None"/>
+            <field name="carrier">seller</field>
+            <field name="risk">before</field>
+            <field name="location" eval="True"/>
+        </record>
+
+        <record model="incoterm.incoterm" id="incoterm_daf_2000">
+            <field name="name">Delivered At Frontier</field>
+            <field name="code">DAF</field>
+            <field name="version">2000</field>
+            <field name="mode" eval="None"/>
+            <field name="carrier">seller</field>
+            <field name="risk">after</field>
+            <field name="location" eval="True"/>
+        </record>
+
+        <record model="incoterm.incoterm" id="incoterm_des_2000">
+            <field name="name">Delivered Ex Ship</field>
+            <field name="code">DES</field>
+            <field name="version">2000</field>
+            <field name="mode">waterway</field>
+            <field name="carrier">seller</field>
+            <field name="risk">after</field>
+            <field name="location" eval="True"/>
+        </record>
+
+        <record model="incoterm.incoterm" id="incoterm_deq_2000">
+            <field name="name">Delivered Ex Quay</field>
+            <field name="code">DEQ</field>
+            <field name="version">2000</field>
+            <field name="mode">waterway</field>
+            <field name="carrier">seller</field>
+            <field name="risk">after</field>
+            <field name="location" eval="True"/>
+        </record>
+
+        <record model="incoterm.incoterm" id="incoterm_ddu_2000">
+            <field name="name">Delivered Duty Unpaid</field>
+            <field name="code">DDU</field>
+            <field name="version">2010</field>
+            <field name="mode" eval="None"/>
+            <field name="carrier">seller</field>
+            <field name="risk">after</field>
+            <field name="location" eval="True"/>
+        </record>
+
+        <record model="incoterm.incoterm" id="incoterm_ddp_2000">
+            <field name="name">Delivered Duty Paid</field>
+            <field name="code">DDP</field>
+            <field name="version">2000</field>
+            <field name="mode" eval="None"/>
+            <field name="carrier">seller</field>
+            <field name="risk">after</field>
+            <field name="location" eval="True"/>
+        </record>
+
+        <record model="incoterm.incoterm" id="incoterm_fas_2000">
+            <field name="name">Free Alongside Ship</field>
+            <field name="code">FAS</field>
+            <field name="version">2000</field>
+            <field name="mode">waterway</field>
+            <field name="carrier">buyer</field>
+            <field name="risk">before</field>
+            <field name="location" eval="True"/>
+        </record>
+
+        <record model="incoterm.incoterm" id="incoterm_fob_2000">
+            <field name="name">Free On Board</field>
+            <field name="code">FOB</field>
+            <field name="version">2000</field>
+            <field name="mode">waterway</field>
+            <field name="carrier">buyer</field>
+            <field name="risk">before</field>
+            <field name="location" eval="True"/>
+        </record>
+
+        <record model="incoterm.incoterm" id="incoterm_cfr_2000">
+            <field name="name">Cost and Freight</field>
+            <field name="code">CFR</field>
+            <field name="version">2000</field>
+            <field name="mode">waterway</field>
+            <field name="carrier">seller</field>
+            <field name="risk">before</field>
+            <field name="location" eval="True"/>
+        </record>
+
+        <record model="incoterm.incoterm" id="incoterm_cif_2000">
+            <field name="name">Cost Insurance and Freight</field>
+            <field name="code">CIF</field>
+            <field name="version">2000</field>
+            <field name="mode">waterway</field>
+            <field name="carrier">seller</field>
+            <field name="risk">before</field>
+            <field name="location" eval="True"/>
+        </record>
+
         <record model="incoterm.incoterm" id="incoterm_exw_2010">
             <field name="name">Ex Works</field>
             <field name="code">EXW</field>
