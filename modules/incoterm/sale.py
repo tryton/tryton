@@ -36,14 +36,28 @@ class Sale(IncotermAvailableMixin, metaclass=PoolMeta):
             'incoterm', 'incoterm_location'}
 
     @property
-    @fields.depends('company', 'warehouse', 'shipment_address')
+    @fields.depends('company', 'warehouse', 'shipment_address', 'sale_date')
     def _incoterm_required(self):
         if self.company and self.company.incoterms:
             if (self.warehouse and self.warehouse.address
                     and self.shipment_address):
+                from_country = self.warehouse.address.country
+                if from_country:
+                    from_europe = from_country.is_member(
+                        'country.organization_eu',
+                        self.sale_date)
+                else:
+                    from_europe = None
+                to_country = self.shipment_address.country
+                if to_country:
+                    to_europe = to_country.is_member(
+                        'country.organization_eu',
+                        self.sale_date)
+                else:
+                    to_europe = None
                 return (
-                    self.warehouse.address.country
-                    != self.shipment_address.country)
+                    (from_country != to_country)
+                    and not (from_europe and to_europe))
         return False
 
     def check_for_quotation(self):
