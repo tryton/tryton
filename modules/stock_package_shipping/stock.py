@@ -212,9 +212,9 @@ class ShippingMixin:
         Warning = pool.get('res.user.warning')
         for shipment in shipments:
             if (not shipment.carrier
-                    and shipment.delivery_address
+                    and shipment.shipping_to_address
                     and shipment.warehouse not in
-                    shipment.delivery_address.warehouses):
+                    shipment.shipping_to_address.warehouses):
                 name = Warning.format('no_carrier', [shipment])
                 if Warning.check(name):
                     raise PackWarning(name,
