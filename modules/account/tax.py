@@ -1279,11 +1279,15 @@ class TaxableMixin(object):
         pool = Pool()
         Tax = pool.get('account.tax')
         Configuration = pool.get('account.configuration')
+        context = Transaction().context
 
         all_taxes = {}
         with Transaction().set_context(self._get_tax_context()):
             config = Configuration(1)
-            tax_rounding = config.get_multivalue('tax_rounding')
+            tax_rounding = config.get_multivalue(
+                'tax_rounding',
+                company=self.company.id if self.company
+                else context.get('company'))
             taxable_lines = defaultdict(list)
             for params in self.taxable_lines:
                 taxable_line = _TaxableLine(*params)
