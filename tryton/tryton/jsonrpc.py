@@ -302,6 +302,7 @@ class ServerProxy(xmlrpc.client.ServerProxy):
                             request,
                             verbose=self.__verbose
                             )
+                        break
                     except xmlrpc.client.ProtocolError as e:
                         if e.errcode == HTTPStatus.SERVICE_UNAVAILABLE:
                             try:
@@ -314,8 +315,8 @@ class ServerProxy(xmlrpc.client.ServerProxy):
                                 delay = i
                             delay = min(delay, 10)
                             time.sleep(delay)
-                            continue
-                    break
+                        else:
+                            raise
             except (socket.error, http.client.HTTPException) as v:
                 if (isinstance(v, socket.error)
                         and v.args[0] == errno.EPIPE):
