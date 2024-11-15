@@ -14,6 +14,10 @@ function eval_pyson(value){
 (function() {
     'use strict';
 
+    function remove_newline(value) {
+        return value.replace(/[\n\r]/gm, '')
+    }
+
     Sao.View.FormXMLViewParser = Sao.class_(Sao.View.XMLViewParser, {
         init: function(view, exclude_field, field_attrs) {
             Sao.View.FormXMLViewParser._super.init.call(
@@ -2644,7 +2648,7 @@ function eval_pyson(value){
         get_text: function() {
             var record = this.record;
             if (record) {
-                return record.field_get_client(this.field_name);
+                return remove_newline(record.field_get_client(this.field_name));
             }
             return '';
         },
@@ -2660,7 +2664,7 @@ function eval_pyson(value){
         set_value: function() {
             var record = this.record;
             var field = this.field;
-            if (field.get_client(record) != this.entry.val()) {
+            if (this.get_text() != this.entry.val()) {
                 field.set_client(record, this.value_from_id(null, ''));
                 this.entry.val('');
             }
@@ -2757,7 +2761,7 @@ function eval_pyson(value){
         get modified() {
             if (this.record && this.field) {
                 var value = this.entry.val();
-                return this.field.get_client(this.record) != value;
+                return this.get_text() != value;
             }
             return false;
         },
@@ -3085,7 +3089,7 @@ function eval_pyson(value){
                     name = '';
                 if (value) {
                     model = value[0];
-                    name = value[1];
+                    name = remove_newline(value[1]);
                 }
                 return ((model != this.get_model()) ||
                     (name != this.entry.val()));
@@ -3104,7 +3108,8 @@ function eval_pyson(value){
         get_text: function() {
             var record = this.record;
             if (record) {
-                return record.field_get_client(this.field_name)[1];
+                return remove_newline(
+                    record.field_get_client(this.field_name)[1]);
             }
             return '';
         },
@@ -3158,7 +3163,7 @@ function eval_pyson(value){
                 var model, name;
                 if (value instanceof Array) {
                     model = value[0];
-                    name = value[1];
+                    name = remove_newline(value[1]);
                 } else {
                     model = '';
                     name = '';
