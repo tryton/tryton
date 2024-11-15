@@ -55,6 +55,12 @@ documentation:
   variables:
     DOC_BASE_URL: ${CI_PROJECT_DIR}/docs
     DOC_DIR: doc
+    PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
+  cache:
+    paths:
+      - .cache/pip/http-v2
+  before_script:
+    - pip install setuptools
   script:
     - cd "${PACKAGE}"
     - python -m sphinx -T -E -n -b html ${DOC_DIR} _build/html
