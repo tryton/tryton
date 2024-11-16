@@ -80,7 +80,7 @@ Check project amounts::
     >>> project.amount_to_invoice
     Decimal('0.00')
     >>> project.invoiced_amount
-    Decimal('0')
+    Decimal('0.00')
 
 Do project and subproject::
 
@@ -95,7 +95,7 @@ Check project amounts::
     >>> project.amount_to_invoice
     Decimal('120.00')
     >>> project.invoiced_amount
-    Decimal('0')
+    Decimal('0.00')
 
 Invoice project::
 

@@ -131,7 +131,7 @@ Check project amounts::
 
     >>> project.reload()
     >>> project.invoiced_amount
-    Decimal('0')
+    Decimal('0.00')
     >>> project.amount_to_invoice
     Decimal('0.00')
 
@@ -144,7 +144,7 @@ Check project amounts::
 
     >>> project.reload()
     >>> project.invoiced_amount
-    Decimal('0')
+    Decimal('0.00')
     >>> project.amount_to_invoice
     Decimal('100.00')
 
