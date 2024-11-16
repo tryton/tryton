@@ -12,7 +12,8 @@ from email.utils import getaddresses
 from functools import partial
 
 from trytond.config import config
-from trytond.model import ModelSQL, ModelView, fields, sequence_ordered
+from trytond.model import (
+    ModelSQL, ModelStorage, ModelView, fields, sequence_ordered)
 from trytond.pool import Pool
 from trytond.pyson import Eval
 from trytond.transaction import Transaction
@@ -136,7 +137,9 @@ class Email(ModelSQL, ModelView):
 
     @classmethod
     def get_models(cls):
-        return [(None, "")] + Pool().get('ir.model').get_name_items()
+        pool = Pool()
+        Model = pool.get('ir.model')
+        return [(None, "")] + Model.get_name_items((ModelStorage, ModelView))
 
     @classmethod
     def from_webhook(cls, inbox, data, data_type):
