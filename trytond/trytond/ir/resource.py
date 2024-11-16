@@ -38,7 +38,7 @@ class ResourceAccessMixin(ModelStorage):
         pool = Pool()
         Model = pool.get('ir.model')
         ModelAccess = pool.get('ir.model.access')
-        models = Model.get_name_items()
+        models = Model.get_name_items((ModelStorage, ModelView))
         if Transaction().check_access:
             access = ModelAccess.get_access([m for m, _ in models])
             models = [(m, n) for m, n in models if access[m]['read']]
