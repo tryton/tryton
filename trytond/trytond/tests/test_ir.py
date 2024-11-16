@@ -429,7 +429,7 @@ class IrTestCase(ModuleTestCase):
         admin = User(1)
         admin.email = 'admin@example.com'
         admin.save()
-        model, = IrModel.search([('model', '=', 'res.user')])
+        model, = IrModel.search([('name', '=', 'res.user')])
         field, = IrModelField.search([
                 ('model', '=', 'res.user'),
                 ('name', '=', 'id'),
@@ -464,7 +464,7 @@ class IrTestCase(ModuleTestCase):
         admin = User(1)
         admin.email = 'admin@example.com'
         admin.save()
-        model, = IrModel.search([('model', '=', 'res.user')])
+        model, = IrModel.search([('name', '=', 'res.user')])
         field, = IrModelField.search([
                 ('model', '=', 'res.user'),
                 ('name', '=', 'id'),
@@ -490,7 +490,7 @@ class IrTestCase(ModuleTestCase):
         admin = User(1)
         admin.email = 'admin@example.com'
         admin.save()
-        model, = IrModel.search([('model', '=', 'res.user')])
+        model, = IrModel.search([('name', '=', 'res.user')])
         field, = IrModelField.search([
                 ('model', '=', 'res.user'),
                 ('name', '=', 'id'),
@@ -607,7 +607,7 @@ class IrCronTestCase(TestCase):
         Model = pool.get('ir.model')
         ModelWorkflowGraph = pool.get('ir.model.workflow_graph', type='report')
 
-        model, = Model.search([('model', '=', 'ir.error')])
+        model, = Model.search([('name', '=', 'ir.error')])
 
         oext, content, print_, filename = (
                 ModelWorkflowGraph.execute([model.id], {}))

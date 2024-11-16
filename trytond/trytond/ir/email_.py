@@ -330,7 +330,7 @@ class EmailTemplate(ModelSQL, ModelView):
     @fields.depends('model')
     def on_change_with_model_name(self, name=None):
         if self.model:
-            return self.model.model
+            return self.model.name
 
     @classmethod
     def validate_fields(cls, templates, field_names):
@@ -403,7 +403,7 @@ class EmailTemplate(ModelSQL, ModelView):
 
     def get(self, record):
         pool = Pool()
-        Model = pool.get(self.model.model)
+        Model = pool.get(self.model.name)
         record = Model(int(record))
 
         values = {}
@@ -485,12 +485,12 @@ class EmailTemplate(ModelSQL, ModelView):
         values = {}
 
         fields = Field.search([
-                ('model.model', '=', model),
+                ('model.name', '=', model),
                 ('name', 'not in', cls._get_default_exclude(record)),
                 ['OR',
                     ('relation', 'in', cls.email_models()),
                     [
-                        ('model.model', 'in', cls.email_models()),
+                        ('model.name', 'in', cls.email_models()),
                         ('name', '=', 'id'),
                         ],
                     ],

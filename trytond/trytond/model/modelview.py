@@ -356,7 +356,7 @@ class ModelView(Model):
             [('resource', '=', cls.__name__)],
             fields_names=['name', 'header', 'records', 'export_fields.name'])
         emails = Email.search_read(
-            [('model.model', '=', cls.__name__)],
+            [('model.name', '=', cls.__name__)],
             fields_names=['name'])
         result = {
             'print': prints,

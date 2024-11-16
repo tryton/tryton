@@ -41,7 +41,7 @@ class TriggerTestCase(TestCase):
         transaction = Transaction()
 
         model, = Model.search([
-                ('model', '=', 'test.triggered'),
+                ('name', '=', 'test.triggered'),
                 ])
 
         values = {
@@ -85,7 +85,7 @@ class TriggerTestCase(TestCase):
         Triggered = pool.get('test.triggered')
 
         model, = Model.search([
-                ('model', '=', 'test.triggered'),
+                ('name', '=', 'test.triggered'),
                 ])
 
         trigger, = Trigger.create([{
@@ -163,7 +163,7 @@ class TriggerTestCase(TestCase):
         Triggered = pool.get('test.triggered')
 
         model, = Model.search([
-                ('model', '=', 'test.triggered'),
+                ('name', '=', 'test.triggered'),
                 ])
 
         trigger, = Trigger.create([{
@@ -295,7 +295,7 @@ class TriggerTestCase(TestCase):
         TriggerLog = pool.get('ir.trigger.log')
 
         model, = Model.search([
-                ('model', '=', 'test.triggered'),
+                ('name', '=', 'test.triggered'),
                 ])
 
         triggered, = Triggered.create([{
@@ -386,7 +386,7 @@ class TriggerTestCase(TestCase):
         TriggerLog = pool.get('ir.trigger.log')
 
         model, = Model.search([
-                ('model', '=', 'test.triggered'),
+                ('name', '=', 'test.triggered'),
                 ])
 
         trigger, = Trigger.create([{

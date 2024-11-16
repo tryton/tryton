@@ -160,7 +160,7 @@ class ModelButton(metaclass=PoolMeta):
         if groups is not None:
             return groups
         buttons = cls.search([
-                ('model.model', '=', model),
+                ('model.name', '=', model),
                 ('name', '=', name),
                 ])
         if not buttons:

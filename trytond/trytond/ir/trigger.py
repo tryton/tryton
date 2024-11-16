@@ -90,7 +90,7 @@ class Trigger(DeactivableMixin, ModelSQL, ModelView):
             Model = pool.get('ir.model')
             model = Model.__table__()
             action_model = model.select(
-                model.model, where=model.id == sql_table.action_model)
+                model.name, where=model.id == sql_table.action_model)
             cursor.execute(*sql_table.update(
                     [sql_table.action],
                     [Concat(action_model, Concat(
@@ -162,7 +162,7 @@ class Trigger(DeactivableMixin, ModelSQL, ModelView):
             return cls.browse(trigger_ids)
 
         triggers = cls.search([
-                ('model.model', '=', model_name),
+                ('model.name', '=', model_name),
                 ('on_%s' % mode, '=', True),
                 ])
         cls._get_triggers_cache.set(key, list(map(int, triggers)))
@@ -192,7 +192,7 @@ class Trigger(DeactivableMixin, ModelSQL, ModelView):
         """
         pool = Pool()
         TriggerLog = pool.get('ir.trigger.log')
-        Model = pool.get(self.model.model)
+        Model = pool.get(self.model.name)
         model, method = self.action.split('|')
         ActionModel = pool.get(model)
         cursor = Transaction().connection.cursor()
@@ -271,7 +271,7 @@ class Trigger(DeactivableMixin, ModelSQL, ModelView):
                 ('on_time', '=', True),
                 ])
         for trigger in triggers:
-            Model = pool.get(trigger.model.model)
+            Model = pool.get(trigger.model.name)
             # TODO add a domain
             records = Model.search([])
             trigger.trigger_action(records)

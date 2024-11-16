@@ -4,8 +4,8 @@ this repository contains the full copyright notices and license terms. -->
 <form col="6">
     <label name="string"/>
     <field name="string"/>
-    <label name="model"/>
-    <field name="model"/>
+    <label name="name"/>
+    <field name="name"/>
     <label name="module_ref"/>
     <field name="module_ref"/>
     <label name="global_search_p"/>

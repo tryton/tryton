@@ -1530,7 +1530,7 @@ class ModelSQLTranslationTestCase(TranslationTestCase):
             self.assertEqual(values[0]['name'], "Foo")
 
             translated_model, = Model.search([
-                    ('model', '=', 'test.modelsql.name_translated'),
+                    ('name', '=', 'test.modelsql.name_translated'),
                     ])
             Model.write([translated_model], {'string': "NameTranslated"})
 

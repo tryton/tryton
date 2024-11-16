@@ -1029,7 +1029,7 @@ class ModuleTestCase(_DBTestCase):
             if not issubclass(model, ModelView):
                 continue
             ir_buttons = {b.name for b in Button.search([
-                        ('model.model', '=', model.__name__),
+                        ('model.name', '=', model.__name__),
                         ])}
             buttons = set(model._buttons)
             with self.subTest(model=mname):

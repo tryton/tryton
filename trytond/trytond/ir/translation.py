@@ -350,7 +350,7 @@ class Translation(
                 if ttype in ('field', 'help'):
                     name = record.model + ',' + record.name
                 else:
-                    name = record.model + ',' + field_name
+                    name = record.name + ',' + field_name
                 trans_args.append((name, ttype, lang, None))
             cls.get_sources(trans_args)
 
@@ -358,7 +358,7 @@ class Translation(
                 if ttype in ('field', 'help'):
                     name = record.model + ',' + record.name
                 else:
-                    name = record.model + ',' + field_name
+                    name = record.name + ',' + field_name
                 translations[record.id] = cls.get_source(name, ttype, lang)
                 if translations[record.id] is None:
                     with Transaction().set_context(language=lang):
@@ -375,7 +375,7 @@ class Translation(
                                 value = field.help
                         else:
                             try:
-                                model = pool.get(record.model)
+                                model = pool.get(record.name)
                             except KeyError:
                                 continue
                             if not model.__doc__:
@@ -467,7 +467,7 @@ class Translation(
                 if ttype in ('field', 'help'):
                     return record.model + ',' + record.name
                 else:
-                    return record.model + ',' + field_name
+                    return record.name + ',' + field_name
 
             name2translations = defaultdict(list)
             for translation in cls.search([

@@ -155,7 +155,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Complaints</field>
             <field name="res_model">sale.complaint</field>
             <field name="domain"
-                eval="[['OR', ('origin.id', 'in', Eval('active_ids'), 'sale.sale'), ('origin.sale', 'in', Eval('active_ids'), 'sale.line')], ('type.origin.model', 'in', ['sale.sale', 'sale.line'])]"
+                eval="[['OR', ('origin.id', 'in', Eval('active_ids'), 'sale.sale'), ('origin.sale', 'in', Eval('active_ids'), 'sale.line')], ('type.origin.name', 'in', ['sale.sale', 'sale.line'])]"
                 pyson="1"/>
         </record>
         <record model="ir.action.act_window.view"

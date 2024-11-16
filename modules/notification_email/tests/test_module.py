@@ -92,7 +92,7 @@ class NotificationEmailTestCase(CompanyTestMixin, ModuleTestCase):
         notification_email, = NotificationEmail.search([])
 
         model, = Model.search([
-                ('model', '=', User.__name__),
+                ('name', '=', User.__name__),
                 ])
         trigger, = Trigger.create([{
                     'name': 'Test creation',
@@ -143,7 +143,7 @@ class NotificationEmailTestCase(CompanyTestMixin, ModuleTestCase):
         notification_email, = NotificationEmail.search([])
 
         model, = Model.search([
-                ('model', '=', User.__name__),
+                ('name', '=', User.__name__),
                 ])
         trigger, = Trigger.create([{
                     'name': 'Test creation',
@@ -186,7 +186,7 @@ class NotificationEmailTestCase(CompanyTestMixin, ModuleTestCase):
         notification_email.save()
 
         model, = Model.search([
-                ('model', '=', User.__name__),
+                ('name', '=', User.__name__),
                 ])
         Trigger.create([{
                     'name': 'Test creation',
@@ -219,7 +219,7 @@ class NotificationEmailTestCase(CompanyTestMixin, ModuleTestCase):
 
         self._setup_notification()
         model, = Model.search([
-                ('model', '=', User.__name__),
+                ('name', '=', User.__name__),
                 ])
         en, = Language.search([('code', '=', 'en')])
 
@@ -228,7 +228,7 @@ class NotificationEmailTestCase(CompanyTestMixin, ModuleTestCase):
         attachment.report_name = 'notification_notification.test.report'
         attachment.template_extension = 'txt'
         attachment.report_content = b'attachment for ${records[0].name}'
-        attachment.model = model.model
+        attachment.model = model.name
         attachment.save()
 
         notification_email, = NotificationEmail.search([])
@@ -265,7 +265,7 @@ class NotificationEmailTestCase(CompanyTestMixin, ModuleTestCase):
 
         self._setup_notification()
         model, = Model.search([
-                ('model', '=', User.__name__),
+                ('name', '=', User.__name__),
                 ])
         en, = Language.search([('code', '=', 'en')])
 
@@ -291,7 +291,7 @@ class NotificationEmailTestCase(CompanyTestMixin, ModuleTestCase):
 
         self._setup_notification()
         model, = Model.search([
-                ('model', '=', User.__name__),
+                ('name', '=', User.__name__),
                 ])
         es, = Language.search([('code', '=', 'es')])
         Language.load_translations([es])
@@ -341,7 +341,7 @@ class NotificationEmailTestCase(CompanyTestMixin, ModuleTestCase):
         notification_email.save()
 
         model, = Model.search([
-                ('model', '=', User.__name__),
+                ('name', '=', User.__name__),
                 ])
         Trigger.create([{
                     'name': 'Test creation',
@@ -378,7 +378,7 @@ class NotificationEmailTestCase(CompanyTestMixin, ModuleTestCase):
         notification_email.save()
 
         model, = Model.search([
-                ('model', '=', User.__name__),
+                ('name', '=', User.__name__),
                 ])
         Trigger.create([{
                     'name': 'Test creation',

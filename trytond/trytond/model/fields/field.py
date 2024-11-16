@@ -628,7 +628,7 @@ class FieldTranslate(Field):
                 translation.name.as_('name'),
                 group_by=[translation.res_id, translation.name])
         if Model.__name__ == 'ir.model':
-            name_ = Concat(Concat(table.model, ','), name)
+            name_ = Concat(Concat(table.name, ','), name)
             type_ = 'model'
             res_id = -1
         elif Model.__name__ == 'ir.model.field':

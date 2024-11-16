@@ -40,18 +40,18 @@ Create complaint type::
     >>> Type = Model.get('sale.complaint.type')
     >>> IrModel = Model.get('ir.model')
     >>> sale_type = Type(name='Sale')
-    >>> sale_type.origin, = IrModel.find([('model', '=', 'sale.sale')])
+    >>> sale_type.origin, = IrModel.find([('name', '=', 'sale.sale')])
     >>> sale_type.save()
     >>> sale_line_type = Type(name='Sale Line')
-    >>> sale_line_type.origin, = IrModel.find([('model', '=', 'sale.line')])
+    >>> sale_line_type.origin, = IrModel.find([('name', '=', 'sale.line')])
     >>> sale_line_type.save()
     >>> invoice_type = Type(name='Invoice')
     >>> invoice_type.origin, = IrModel.find(
-    ...     [('model', '=', 'account.invoice')])
+    ...     [('name', '=', 'account.invoice')])
     >>> invoice_type.save()
     >>> invoice_line_type = Type(name='Invoice Line')
     >>> invoice_line_type.origin, = IrModel.find(
-    ...     [('model', '=', 'account.invoice.line')])
+    ...     [('name', '=', 'account.invoice.line')])
     >>> invoice_line_type.save()
 
 Create account category::

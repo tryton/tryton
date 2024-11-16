@@ -29,7 +29,8 @@ class Type(DeactivableMixin, ModelSQL, ModelView):
 
     name = fields.Char('Name', required=True)
     origin = fields.Many2One('ir.model', 'Origin', required=True,
-        domain=[('model', 'in', ['sale.sale', 'sale.line',
+        domain=[('name', 'in', [
+                    'sale.sale', 'sale.line',
                     'account.invoice', 'account.invoice.line'])])
 
 
@@ -241,7 +242,7 @@ class Complaint(Workflow, ModelSQL, ModelView):
     def get_origin(self):
         if self.type:
             origin = self.type.origin
-            return [('', ''), (origin.model, origin.name)]
+            return [('', ''), (origin.name, origin.name)]
         else:
             return []
 

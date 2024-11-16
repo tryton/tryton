@@ -94,7 +94,7 @@ class Email(ModelSQL, ModelView):
 
     triggers = fields.One2Many(
         'ir.trigger', 'notification_email', "Triggers",
-        domain=[('model.model', '=', Eval('model'))],
+        domain=[('model.name', '=', Eval('model'))],
         help="Add a trigger for the notification.")
     send_after = fields.TimeDelta(
         "Send After",
@@ -122,7 +122,7 @@ class Email(ModelSQL, ModelView):
             field.domain.append(['OR',
                     ('relation', 'in', EmailTemplate.email_models()),
                     [
-                        ('model.model', 'in', EmailTemplate.email_models()),
+                        ('model.name', 'in', EmailTemplate.email_models()),
                         ('name', '=', 'id'),
                         ],
                     ])

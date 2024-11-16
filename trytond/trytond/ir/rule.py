@@ -41,7 +41,7 @@ def _get_access_models(Model, names=None, model2field=None, path=None):
 
 class RuleGroup(
         fields.fmany2one(
-            'model_ref', 'model', 'ir.model,model', "Model",
+            'model_ref', 'model', 'ir.model,name', "Model",
             required=True, ondelete='CASCADE'),
         ModelSQL, ModelView):
     "Rule group"
@@ -96,7 +96,7 @@ class RuleGroup(
             table_h.column_rename('model', '_temp_model')
             table_h.add_column('model', 'VARCHAR')
             cursor.execute(*table.update(
-                    [table.model], [model.model],
+                    [table.model], [model.name],
                     from_=[model],
                     where=table._temp_model == model.id))
             table_h.drop_column('_temp_model')

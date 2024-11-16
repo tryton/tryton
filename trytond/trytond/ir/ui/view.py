@@ -26,7 +26,7 @@ class XMLError(ValidationError):
 
 class View(
         fields.fmany2one(
-            'model_ref', 'model', 'ir.model,model', "Model",
+            'model_ref', 'model', 'ir.model,name', "Model",
             ondelete='CASCADE'),
         fields.fmany2one(
             'field_children', 'field_childs,model',
@@ -445,7 +445,7 @@ class ShowView(Wizard):
 
 class ViewTreeWidth(
         fields.fmany2one(
-            'model_ref', 'model', 'ir.model,model', "Model",
+            'model_ref', 'model', 'ir.model,name', "Model",
             required=True, ondelete='CASCADE'),
         fields.fmany2one(
             'field_ref', 'field,model', 'ir.model.field,name,model', "Field",
@@ -534,7 +534,7 @@ class ViewTreeWidth(
 
 class ViewTreeOptional(
         fields.fmany2one(
-            'model_ref', 'model', 'ir.model,model', "Model",
+            'model_ref', 'model', 'ir.model,name', "Model",
             required=True, ondelete='CASCADE'),
         fields.fmany2one(
             'field_ref', 'field,model', 'ir.model.field,name,model', "Field",
@@ -644,7 +644,7 @@ class ViewTreeOptional(
 
 class ViewTreeState(
         fields.fmany2one(
-            'model_ref', 'model', 'ir.model,model', "Model",
+            'model_ref', 'model', 'ir.model,name', "Model",
             required=True, ondelete='CASCADE'),
         fields.fmany2one(
             'child_field', 'child_name,model', 'ir.model.field,name,model',
@@ -732,7 +732,7 @@ class ViewTreeState(
 
 class ViewSearch(
         fields.fmany2one(
-            'model_ref', 'model', 'ir.model,model', "Model",
+            'model_ref', 'model', 'ir.model,name', "Model",
             required=True, ondelete='CASCADE'),
         ModelSQL, ModelView):
     "View Search"

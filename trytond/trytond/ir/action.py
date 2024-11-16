@@ -465,7 +465,7 @@ class ActionMixin(ModelSQL):
 
 class ActionReport(
         fields.fmany2one(
-            'model_ref', 'model', 'ir.model,model', "Model",
+            'model_ref', 'model', 'ir.model,name', "Model",
             ondelete='CASCADE'),
         fields.fmany2one(
             'module_ref', 'module', 'ir.module,name', "Module",
@@ -729,10 +729,10 @@ class ActionReport(
 
 class ActionActWindow(
         fields.fmany2one(
-            'res_model_ref', 'res_model', 'ir.model,model', "Model",
+            'res_model_ref', 'res_model', 'ir.model,name', "Model",
             ondelete='CASCADE'),
         fields.fmany2one(
-            'context_model_ref', 'context_model', 'ir.model,model',
+            'context_model_ref', 'context_model', 'ir.model,name',
             "Context Model", ondelete='CASCADE'),
         ActionMixin, ModelSQL, ModelView):
     "Action act window"
@@ -1076,7 +1076,7 @@ class ActionActWindowDomain(
 
 class ActionWizard(
         fields.fmany2one(
-            'model_ref', 'model', 'ir.model,model', "Model",
+            'model_ref', 'model', 'ir.model,name', "Model",
             ondelete='CASCADE'),
         ActionMixin, ModelSQL, ModelView):
     "Action wizard"
