@@ -11,7 +11,7 @@ CREATE TABLE ir_configuration (
 CREATE TABLE ir_model (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     model VARCHAR,
-    name VARCHAR,
+    string VARCHAR,
     info TEXT,
     module VARCHAR,
     create_date TIMESTAMP,

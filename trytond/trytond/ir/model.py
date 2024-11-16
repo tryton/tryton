@@ -47,12 +47,12 @@ class Model(
         ModelSQL, ModelView):
     "Model"
     __name__ = 'ir.model'
-    _order_name = 'model'
-    name = fields.Char('Model Description', translate=True, loading='lazy',
+    _rec_name = 'string'
+    string = fields.Char(
+        "String", translate=True,
         states={
             'readonly': Bool(Eval('module')),
-            },
-        depends=['module'])
+            })
     model = fields.Char('Model Name', required=True,
         states={
             'readonly': Bool(Eval('module')),
@@ -86,6 +86,15 @@ class Model(
                 })
 
     @classmethod
+    def __register__(cls, module):
+        table_h = cls.__table_handler__(module)
+
+        # Migration from 7.4: rename column name into string
+        table_h.column_rename('name', 'string')
+
+        super().__register__(module)
+
+    @classmethod
     def register(cls, model, module_name):
         cursor = Transaction().connection.cursor()
 
@@ -101,7 +110,7 @@ class Model(
             model_id, = cursor.fetchone()
         if not model_id:
             cursor.execute(*ir_model.insert(
-                    [ir_model.model, ir_model.name, ir_model.info,
+                    [ir_model.model, ir_model.string, ir_model.info,
                         ir_model.module],
                     [[
                             model.__name__, model._get_name(), model.__doc__,
@@ -168,7 +177,7 @@ class Model(
         items = cls._get_names_cache.get('items')
         if items is None:
             models = cls.search([])
-            items = [(m.model, m.name) for m in models]
+            items = [(m.model, m.string) for m in models]
             cls._get_names_cache.set('items', items)
         return items
 

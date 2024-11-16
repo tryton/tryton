@@ -39,10 +39,10 @@ class IrTestCase(ModuleTestCase):
         Model = pool.get('ir.model')
 
         record, = Model.search([
-                ('name', '=', "Language"),
+                ('string', '=', "Language"),
                 ('module', '=', 'ir'),
                 ])
-        self.assertEqual(record.name, "Language")
+        self.assertEqual(record.string, "Language")
 
     @with_transaction()
     def test_model_search_order(self):
@@ -51,11 +51,11 @@ class IrTestCase(ModuleTestCase):
         Model = pool.get('ir.model')
 
         records = Model.search([
-                ('name', 'in', ["Language", "Module"]),
+                ('string', 'in', ["Language", "Module"]),
                 ('module', '=', 'ir'),
                 ],
-            order=[('name', 'ASC')])
-        self.assertEqual([r.name for r in records], ["Language", "Module"])
+            order=[('string', 'ASC')])
+        self.assertEqual([r.string for r in records], ["Language", "Module"])
 
     @with_transaction()
     def test_model_field_search_description(self):

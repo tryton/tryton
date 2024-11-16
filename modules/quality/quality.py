@@ -469,7 +469,7 @@ class Inspection(Workflow, ModelSQL, ModelView):
         models = IrModel.search([
                 ('model', 'in', models),
                 ])
-        return [(None, '')] + [(m.model, m.name) for m in models]
+        return [(None, '')] + [(m.model, m.string) for m in models]
 
     @fields.depends('control', 'points')
     def on_change_control(self):
@@ -695,7 +695,7 @@ class Alert(Workflow, ModelSQL, ModelView):
         models = IrModel.search([
                 ('model', 'in', models),
                 ])
-        return [(None, '')] + [(m.model, m.name) for m in models]
+        return [(None, '')] + [(m.model, m.string) for m in models]
 
     @classmethod
     @ModelView.button
