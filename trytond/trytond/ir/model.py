@@ -166,22 +166,30 @@ class Model(
             and model._on_change_notify_depends}
 
     @classmethod
-    def get_name_items(cls):
+    def get_name_items(cls, classes=None):
         "Return a list of couple mapping models to names"
-        items = cls._get_names_cache.get('items')
+        pool = Pool()
+        key = 'items', str(classes)
+        items = cls._get_names_cache.get(key)
         if items is None:
             models = cls.search([])
-            items = [(m.name, m.string) for m in models]
-            cls._get_names_cache.set('items', items)
+            items = ((m.name, m.string) for m in models)
+            if classes:
+                items = (
+                    (m, n) for m, n in items
+                    if issubclass(pool.get(m), classes))
+            items = list(items)
+            cls._get_names_cache.set(key, items)
         return items
 
     @classmethod
-    def get_names(cls):
+    def get_names(cls, classes=None):
         "Return a dictionary mapping models to names"
-        dict_ = cls._get_names_cache.get('dict')
+        key = 'dict', str(classes)
+        dict_ = cls._get_names_cache.get(key)
         if dict_ is None:
             dict_ = dict(cls.get_name_items())
-            cls._get_names_cache.set('dict', dict_)
+            cls._get_names_cache.set(key, dict_)
         return dict_
 
     @classmethod
