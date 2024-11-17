@@ -1,13 +1,13 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import http.client
+
 import json
 import logging
 
 import stripe
 
 from trytond.protocols.wrappers import (
-    Response, abort, with_pool, with_transaction)
+    HTTPStatus, Response, abort, with_pool, with_transaction)
 from trytond.wsgi import app
 
 logger = logging.getLogger(__name__)
@@ -26,13 +26,13 @@ def checkout(request, pool, model, id):
     elif model == Customer.__name__:
         Model = Customer
     else:
-        abort(403)
+        abort(HTTPStatus.FORBIDDEN)
     try:
         record, = Model.search([
                 ('stripe_checkout_id', '=', id),
                 ])
     except ValueError:
-        abort(403)
+        abort(HTTPStatus.NOT_FOUND)
     if request.method == 'GET':
         Report = pool.get('account.payment.stripe.checkout', type='report')
         # TODO language
@@ -43,11 +43,12 @@ def checkout(request, pool, model, id):
             data['payment_method'] = record.stripe_customer_payment_method
         ext, content, _, _ = Report.execute([record.id], data)
         assert ext == 'html'
-        return Response(content, 200, content_type='text/html')
+        return Response(content, HTTPStatus.OK, content_type='text/html')
     elif request.method == 'POST':
         record.stripe_intent_update()
         return Response(
-            '<body onload="window.close()">', 200, content_type='text/html')
+            '<body onload="window.close()">', HTTPStatus.OK,
+            content_type='text/html')
 
 
 @app.route(
@@ -68,9 +69,9 @@ def webhooks_endpoint(request, pool, account):
             stripe.Webhook.construct_event(
                 request_body, sig_header, account.webhook_signing_secret)
         except ValueError:  # Invalid payload
-            abort(http.client.BAD_REQUEST)
+            abort(HTTPStatus.BAD_REQUEST)
         except stripe.error.SignatureVerificationError:
-            abort(http.client.BAD_REQUEST)
+            abort(HTTPStatus.BAD_REQUEST)
     else:
         logger.warn("Stripe signature ignored")
 
@@ -79,5 +80,5 @@ def webhooks_endpoint(request, pool, account):
     if result is None:
         logger.info("No callback for payload type '%s'", payload['type'])
     elif not result:
-        return Response(status=http.client.NOT_FOUND)
-    return Response(status=http.client.NO_CONTENT)
+        return Response(status=HTTPStatus.NOT_FOUND)
+    return Response(status=HTTPStatus.NO_CONTENT)
