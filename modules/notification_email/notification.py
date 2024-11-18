@@ -201,9 +201,12 @@ class Email(ModelSQL, ModelView):
                     filename=('utf-8', '', name))
 
         set_from_header(msg, sender, from_)
-        msg['To'] = to
-        msg['Cc'] = cc
-        msg['Bcc'] = bcc
+        if to:
+            msg['To'] = to
+        if cc:
+            msg['Cc'] = cc
+        if bcc:
+            msg['Bcc'] = bcc
         msg['Subject'] = title
         msg['Auto-Submitted'] = 'auto-generated'
         return msg

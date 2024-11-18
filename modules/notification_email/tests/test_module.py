@@ -120,8 +120,8 @@ class NotificationEmailTestCase(CompanyTestMixin, ModuleTestCase):
 
         email, = Email.search([])
         self.assertEqual(email.recipients, 'Administrator <user@example.com>')
-        self.assertEqual(email.recipients_secondary, '')
-        self.assertEqual(email.recipients_hidden, '')
+        self.assertEqual(email.recipients_secondary, None)
+        self.assertEqual(email.recipients_hidden, None)
         self.assertEqual(email.subject, 'Notification Email')
         self.assertEqual(email.resource, user)
         self.assertEqual(email.notification_email, notification_email)
