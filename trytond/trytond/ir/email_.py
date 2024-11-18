@@ -154,9 +154,12 @@ class Email(ResourceAccessMixin, ModelSQL, ModelView):
                     filename=('utf-8', '', name))
         from_ = config.get('email', 'from')
         set_from_header(msg, from_, user.email or from_)
-        msg['To'] = [format_address(a, n) for n, a in getaddresses([to])]
-        msg['Cc'] = [format_address(a, n) for n, a in getaddresses([cc])]
-        msg['Bcc'] = [format_address(a, n) for n, a in getaddresses([bcc])]
+        if to:
+            msg['To'] = [format_address(a, n) for n, a in getaddresses([to])]
+        if cc:
+            msg['Cc'] = [format_address(a, n) for n, a in getaddresses([cc])]
+        if bcc:
+            msg['Bcc'] = [format_address(a, n) for n, a in getaddresses([bcc])]
         msg['Subject'] = subject
 
         send_message_transactional(msg, strict=True)
