@@ -20,7 +20,6 @@ def get_cost_price_methods(cls):
 
 
 class Configuration(ModelSingleton, ModelSQL, ModelView, MultiValueMixin):
-    'Product Configuration'
     __name__ = 'product.configuration'
 
     default_cost_price_method = fields.MultiValue(default_cost_price_method)
@@ -49,7 +48,6 @@ class Configuration(ModelSingleton, ModelSQL, ModelView, MultiValueMixin):
 
 
 class ConfigurationDefaultCostPriceMethod(ModelSQL, ValueMixin):
-    "Product Configuration Default Cost Price Method"
     __name__ = 'product.configuration.default_cost_price_method'
     default_cost_price_method = default_cost_price_method
     get_cost_price_methods = get_cost_price_methods

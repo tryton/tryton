@@ -23,7 +23,6 @@ class Configuration(metaclass=PoolMeta):
 
 
 class ConfigurationCostPriceWarehouse(ModelSQL, CompanyValueMixin):
-    "Product Configuration Cost Price per Warehouse"
     __name__ = 'product.configuration.cost_price_warehouse'
     cost_price_warehouse = cost_price_warehouse
 

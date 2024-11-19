@@ -111,7 +111,6 @@ class ShipmentInternal(ShipmentUnassignMixin, metaclass=PoolMeta):
 
 
 class ShipmentAssignManual(Wizard):
-    "Manual Assign Shipment"
     __name__ = 'stock.shipment.assign.manual'
     start_state = 'next_'
     next_ = StateTransition()
@@ -165,7 +164,6 @@ class ShipmentAssignManual(Wizard):
 
 
 class ShipmentAssignManualShow(ModelView):
-    "Manual Assign Shipment"
     __name__ = 'stock.shipment.assign.manual.show'
 
     skipped = fields.Many2Many(
@@ -321,7 +319,6 @@ class ShipmentAssignManualShow(ModelView):
 
 
 class ShipmentUnassignManual(Wizard):
-    "Manual Unassign Shipment"
     __name__ = 'stock.shipment.unassign.manual'
     start = StateTransition()
     show = StateView('stock.shipment.unassign.manual.show',
@@ -355,7 +352,6 @@ class ShipmentUnassignManual(Wizard):
 
 
 class ShipmentAssignedMove(ModelView):
-    "Shipment Assigned Move"
     __name__ = 'stock.shipment.assigned.move'
 
     move = fields.Many2One('stock.move', "Move", required=True)
@@ -417,7 +413,6 @@ class ShipmentAssignedMove(ModelView):
 
 
 class ShipmentUnassignManualShow(ModelView):
-    "Manually Unassign Shipment"
     __name__ = 'stock.shipment.unassign.manual.show'
 
     moves = fields.One2Many(

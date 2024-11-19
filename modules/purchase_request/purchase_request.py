@@ -24,7 +24,6 @@ STATES = {
 
 
 class PurchaseRequest(ModelSQL, ModelView):
-    'Purchase Request'
     __name__ = 'purchase.request'
 
     product = fields.Many2One(
@@ -346,7 +345,6 @@ class PurchaseRequest(ModelSQL, ModelView):
 
 
 class CreatePurchaseAskParty(ModelView):
-    'Create Purchase Ask Party'
     __name__ = 'purchase.request.create_purchase.ask_party'
     product = fields.Many2One('product.product', 'Product', readonly=True)
     description = fields.Text('Description', readonly=True)
@@ -355,7 +353,6 @@ class CreatePurchaseAskParty(ModelView):
 
 
 class CreatePurchase(Wizard):
-    'Create Purchase'
     __name__ = 'purchase.request.create_purchase'
     start = StateTransition()
     ask_party = StateView('purchase.request.create_purchase.ask_party',
@@ -525,7 +522,6 @@ class CreatePurchase(Wizard):
 
 
 class HandlePurchaseCancellationException(Wizard):
-    'Handle Purchase Cancellation Exception'
     __name__ = 'purchase.request.handle.purchase.cancellation'
 
     start = StateView('purchase.request.handle.purchase.cancellation.start',
@@ -552,5 +548,4 @@ class HandlePurchaseCancellationException(Wizard):
 
 
 class HandlePurchaseCancellationExceptionStart(ModelView):
-    'Handle Purchase Cancellation Exception - Start'
     __name__ = 'purchase.request.handle.purchase.cancellation.start'

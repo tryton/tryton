@@ -32,7 +32,6 @@ FREQUENCIES = {
 
 
 class RecurrenceRuleSet(ModelSQL, ModelView):
-    "Subscription Recurrence Rule Set"
     __name__ = 'sale.subscription.recurrence.rule.set'
 
     name = fields.Char(
@@ -66,7 +65,6 @@ class RecurrenceRuleSet(ModelSQL, ModelView):
 
 
 class RecurrenceRule(ModelSQL, ModelView):
-    "Subscription Recurrence Rule"
     __name__ = 'sale.subscription.recurrence.rule'
 
     set_ = fields.Many2One(
@@ -235,7 +233,6 @@ class RecurrenceRule(ModelSQL, ModelView):
 
 
 class TestRecurrenceRuleSet(Wizard):
-    "Test Subscription Recurrence Rule Set"
     __name__ = 'sale.subscription.recurrence.rule.set.test'
     start_state = 'test'
     test = StateView(
@@ -253,7 +250,6 @@ class TestRecurrenceRuleSet(Wizard):
 
 
 class TestRecurrenceRuleSetView(ModelView):
-    "Test Subscription Recurrence Rule Set"
     __name__ = 'sale.subscription.recurrence.rule.set.test'
     recurrence = fields.Many2One(
         'sale.subscription.recurrence.rule.set',
@@ -283,6 +279,5 @@ class TestRecurrenceRuleSetView(ModelView):
 
 
 class TestRecurrenceRuleSetViewResult(ModelView):
-    "Test Subscription Recurrence Rule Set Result"
     __name__ = 'sale.subscription.recurrence.rule.set.test.result'
     date = fields.Date("Date", readonly=True)

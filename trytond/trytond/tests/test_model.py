@@ -3,7 +3,7 @@
 
 from copy import copy
 
-from trytond.model.model import record
+from trytond.model.model import humanize, record
 from trytond.pool import Pool
 from trytond.tests.test_tryton import (
     TestCase, activate_module, with_transaction)
@@ -389,6 +389,21 @@ class ModelTestCase(TestCase):
                 Model.default_get(['target'], with_rec_name=False), {
                     'target': target.id,
                     })
+
+    def test_humanize(self):
+        "Test humanize name"
+        for name, result in [
+                ('res.foo', "Foo"),
+                ('ir.foo', "Foo"),
+                ('ir.foo-res.bar', "Foo - Bar"),
+                ('foo.foo', "Foo"),
+                ('foo.bar', "Foo Bar"),
+                ('foo_bar', "Foo Bar"),
+                ('foo-bar', "Foo - Bar"),
+                ('bar_foo.foo', "Bar Foo"),
+                ]:
+            with self.subTest(name=name):
+                self.assertEqual(humanize(name), result)
 
 
 class ModelTranslationTestCase(TestCase):

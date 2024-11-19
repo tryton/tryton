@@ -175,7 +175,6 @@ class StockMixin(object):
 
 
 class Move(Workflow, ModelSQL, ModelView):
-    "Stock Move"
     __name__ = 'stock.move'
     _order_name = 'product'
     product = fields.Many2One(

@@ -18,7 +18,6 @@ from trytond.transaction import Transaction
 
 
 class Agent(ModelView, ModelSQL):
-    "Commission Reporting per Agent"
     __name__ = 'commission.reporting.agent'
 
     agent = fields.Many2One('commission.agent', 'Agent')
@@ -151,7 +150,6 @@ class Agent(ModelView, ModelSQL):
 
 
 class AgentTimeseries(Agent):
-    "Commission Reporting per Agent"
     __name__ = 'commission.reporting.agent.time_series'
 
     date = fields.Date("Date")
@@ -187,7 +185,6 @@ class AgentTimeseries(Agent):
 
 
 class Context(ModelView):
-    "Commission Reporting Context"
     __name__ = 'commission.reporting.context'
 
     type = fields.Selection([

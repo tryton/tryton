@@ -96,7 +96,6 @@ class Cron(metaclass=PoolMeta):
 
 
 class CronCompany(ModelSQL):
-    'Cron - Company'
     __name__ = 'ir.cron-company.company'
     cron = fields.Many2One(
         'ir.cron', "Cron", ondelete='CASCADE', required=True)

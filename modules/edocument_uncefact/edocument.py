@@ -51,7 +51,6 @@ def remove_comment(stream):
 
 
 class Invoice(Model):
-    "EDocument UN/CEFACT Invoice"
     __name__ = 'edocument.uncefact.invoice'
     __slots__ = ('invoice',)
 

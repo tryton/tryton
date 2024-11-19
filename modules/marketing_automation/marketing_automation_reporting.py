@@ -14,7 +14,6 @@ from trytond.transaction import Transaction
 
 
 class Context(ModelView):
-    "Marketing Automation Reporting Context"
     __name__ = 'marketing.automation.reporting.context'
 
     from_date = fields.Date("From Date",
@@ -83,7 +82,6 @@ class Abstract(ModelSQL, ModelView):
 
 
 class Scenario(Abstract):
-    "Marketing Automation Reporting Scenario"
     __name__ = 'marketing.automation.reporting.scenario'
 
     scenario = fields.Many2One(
@@ -151,7 +149,6 @@ class Scenario(Abstract):
 
 
 class Activity(Abstract):
-    "Marketing Automation Reporting Activity"
     __name__ = 'marketing.automation.reporting.activity'
 
     activity = fields.Many2One(

@@ -85,7 +85,6 @@ class ConfigurationSequence(metaclass=PoolMeta):
 
 
 class Quotation(Workflow, ModelSQL, ModelView):
-    "Purchase Request For Quotation"
     __name__ = 'purchase.request.quotation'
     _rec_name = 'number'
 
@@ -279,7 +278,6 @@ class Quotation(Workflow, ModelSQL, ModelView):
 
 
 class QuotationLine(ModelSQL, ModelView):
-    "Purchase Request For Quotation Line"
     __name__ = 'purchase.request.quotation.line'
 
     supplier = fields.Function(fields.Many2One('party.party', 'Supplier'),
@@ -451,7 +449,6 @@ class PurchaseRequestQuotationReport(CompanyReport):
 
 
 class CreatePurchaseRequestQuotationAskSuppliers(ModelView):
-    'Create Purchase Request Quotation Ask Suppliers'
     __name__ = 'purchase.request.quotation.create.ask_suppliers'
 
     suppliers = fields.Many2Many('party.party', None, None, 'Suppliers',
@@ -459,7 +456,6 @@ class CreatePurchaseRequestQuotationAskSuppliers(ModelView):
 
 
 class CreatePurchaseRequestQuotationSucceed(ModelView):
-    'Create Purchase Request Quotation Succeed'
     __name__ = 'purchase.request.quotation.create.succeed'
 
     number_quotations = fields.Integer('Number of Created Quotations',
@@ -467,7 +463,6 @@ class CreatePurchaseRequestQuotationSucceed(ModelView):
 
 
 class CreatePurchaseRequestQuotation(Wizard):
-    'Create Purchase Request Quotation'
     __name__ = 'purchase.request.quotation.create'
 
     start = StateTransition()
@@ -630,7 +625,6 @@ class PurchaseRequest(metaclass=PoolMeta):
 
 
 class CreatePurchase(Wizard):
-    'Create Purchase'
     __name__ = 'purchase.request.create_purchase'
 
     init = StateTransition()

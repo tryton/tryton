@@ -7,7 +7,6 @@ from trytond.pyson import Eval
 
 
 class FieldContextParent(ModelSQL):
-    'Field Context Parent'
     __name__ = 'test.field_context.parent'
     name = fields.Char('Name')
     child = fields.Many2One('test.field_context.child', 'Child',
@@ -19,7 +18,6 @@ class FieldContextParent(ModelSQL):
 
 
 class FieldContextChild(ModelSQL):
-    'Field Context Child'
     __name__ = 'test.field_context.child'
 
 

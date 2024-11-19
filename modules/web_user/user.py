@@ -68,7 +68,6 @@ def _extract_params(url):
 
 
 class User(avatar_mixin(100), DeactivableMixin, ModelSQL, ModelView):
-    'Web User'
     __name__ = 'web.user'
     _rec_name = 'email'
 
@@ -427,7 +426,6 @@ class User(avatar_mixin(100), DeactivableMixin, ModelSQL, ModelView):
 
 
 class User_PartySecondary(ModelSQL):
-    "Web User - Secondary Party"
     __name__ = 'web.user-party.party.secondary'
 
     user = fields.Many2One(
@@ -437,13 +435,11 @@ class User_PartySecondary(ModelSQL):
 
 
 class UserAuthenticateAttempt(LoginAttempt):
-    'Web User Authenticate Attempt'
     __name__ = 'web.user.authenticate.attempt'
     _table = None  # Needed to reset LoginAttempt._table
 
 
 class UserSession(ModelSQL):
-    'Web User Session'
     __name__ = 'web.user.session'
     _rec_name = 'key'
 

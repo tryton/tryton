@@ -15,7 +15,6 @@ from .exceptions import PeriodCloseError
 
 
 class Period(Workflow, ModelSQL, ModelView):
-    'Stock Period'
     __name__ = 'stock.period'
     date = fields.Date('Date', required=True, states={
             'readonly': Eval('state') == 'closed',
@@ -166,11 +165,7 @@ class Period(Workflow, ModelSQL, ModelView):
 
 
 class Cache(ModelSQL, ModelView):
-    '''
-    Stock Period Cache
-
-    It is used to store cached computation of stock quantities.
-    '''
+    "It is used to store cached computation of stock quantities"
     __name__ = 'stock.period.cache'
     period = fields.Many2One(
         'stock.period', "Period",

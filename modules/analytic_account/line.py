@@ -15,7 +15,6 @@ from trytond.wizard import StateAction, Wizard
 
 
 class Line(ModelSQL, ModelView):
-    'Analytic Line'
     __name__ = 'analytic_account.line'
     debit = Monetary(
         "Debit", currency='currency', digits='currency', required=True)
@@ -280,7 +279,6 @@ class MoveLine(metaclass=PoolMeta):
 
 
 class OpenAccount(Wizard):
-    'Open Account'
     __name__ = 'analytic_account.line.open_account'
     start_state = 'open_'
     open_ = StateAction('analytic_account.act_line_form')

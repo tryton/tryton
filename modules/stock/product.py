@@ -564,7 +564,6 @@ class Product(StockMixin, object, metaclass=PoolMeta):
 
 
 class ProductByLocationContext(ModelView):
-    'Product by Location'
     __name__ = 'product.by_location.context'
 
     company = fields.Many2One('company.company', "Company", required=True)
@@ -593,7 +592,6 @@ class ProductByLocationContext(ModelView):
 
 
 class OpenProductQuantitiesByWarehouse(Wizard):
-    "Open Product Quantities By Warehouse"
     __name__ = 'stock.product_quantities_warehouse.open'
     start_state = 'open_'
     open_ = StateAction('stock.act_product_quantities_warehouse')
@@ -637,7 +635,6 @@ class OpenProductQuantitiesByWarehouse(Wizard):
 
 
 class ProductQuantitiesByWarehouse(ModelSQL, ModelView):
-    'Product Quantities By Warehouse'
     __name__ = 'stock.product_quantities_warehouse'
 
     class _Date(fields.Date):
@@ -869,7 +866,6 @@ class ProductQuantitiesByWarehouse(ModelSQL, ModelView):
 
 
 class ProductQuantitiesByWarehouseContext(ModelView):
-    'Product Quantities By Warehouse'
     __name__ = 'stock.product_quantities_warehouse.context'
 
     company = fields.Many2One('company.company', "Company", required=True)
@@ -897,7 +893,6 @@ class ProductQuantitiesByWarehouseContext(ModelView):
 
 
 class OpenProductQuantitiesByWarehouseMove(Wizard):
-    "Open Product Quantities By Warehouse Moves"
     __name__ = 'stock.product_quantities_warehouse.move.open'
     start_state = 'open_'
     open_ = StateAction('stock.act_product_quantities_warehouse_move')
@@ -914,7 +909,6 @@ class OpenProductQuantitiesByWarehouseMove(Wizard):
 
 
 class ProductQuantitiesByWarehouseMove(ModelSQL, ModelView):
-    "Product Quantities By Warehouse Moves"
     __name__ = 'stock.product_quantities_warehouse.move'
 
     product = fields.Reference("Product", [
@@ -1148,7 +1142,6 @@ class ProductQuantitiesByWarehouseMove(ModelSQL, ModelView):
 
 
 class RecomputeCostPrice(Wizard):
-    'Recompute Cost Price'
     __name__ = 'product.recompute_cost_price'
     start = StateView(
         'product.recompute_cost_price.start',
@@ -1190,13 +1183,11 @@ class RecomputeCostPrice(Wizard):
 
 
 class RecomputeCostPriceStart(ModelView):
-    "Recompute Cost Price"
     __name__ = 'product.recompute_cost_price.start'
     from_ = fields.Date("From")
 
 
 class ModifyCostPrice(Wizard):
-    "Modify Cost Price"
     __name__ = 'product.modify_cost_price'
     start = StateView(
         'product.modify_cost_price.start',
@@ -1263,7 +1254,6 @@ class ModifyCostPrice(Wizard):
 
 
 class ModifyCostPriceStart(ModelView):
-    "Modify Cost Price"
     __name__ = 'product.modify_cost_price.start'
     date = fields.Date("Date", required=True)
     cost_price = fields.Char(
@@ -1283,7 +1273,6 @@ class ModifyCostPriceStart(ModelView):
 
 
 class CostPriceRevision(ModelSQL, ModifyCostPriceStart):
-    "Product Cost Price Revision"
     __name__ = 'product.cost_price.revision'
     template = fields.Many2One(
         'product.template', "Product",

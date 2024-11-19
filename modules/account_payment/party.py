@@ -47,7 +47,6 @@ class Party(metaclass=PoolMeta):
 
 
 class PartyPaymentDirectDebit(ModelSQL, CompanyValueMixin):
-    "Party Payment Direct Debit"
     __name__ = 'party.party.payment_direct_debit'
     party = fields.Many2One(
         'party.party', "Party", ondelete='CASCADE',
@@ -60,7 +59,6 @@ class PartyPaymentDirectDebit(ModelSQL, CompanyValueMixin):
 
 class PartyReceptionDirectDebit(
         sequence_ordered(), MatchMixin, ModelView, ModelSQL):
-    "Party Reception Direct Debit"
     __name__ = 'party.party.reception_direct_debit'
 
     party = fields.Many2One(

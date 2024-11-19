@@ -61,7 +61,8 @@ class Reference(SelectionMixin, Field):
         self.__search_context = None
         self.search_context = search_context or {}
 
-    __init__.__doc__ += Field.__init__.__doc__
+    if __init__.__doc__:
+        __init__.__doc__ += Field.__init__.__doc__
 
     @property
     def domain(self):

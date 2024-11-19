@@ -209,7 +209,6 @@ class ShipmentInternal(metaclass=PoolMeta):
 
 
 class ShipmentInternal_Location(ModelSQL):
-    "Shipment Internal - Location"
     __name__ = 'stock.shipment.internal-location'
 
     shipment = fields.Many2One(

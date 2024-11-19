@@ -443,7 +443,6 @@ class Group(metaclass=PoolMeta):
 
 
 class Succeed(Wizard):
-    "Succeed Payment"
     __name__ = 'account.payment.succeed'
     start = StateView('account.payment.succeed.start',
         'account_payment_clearing.succeed_start_view_form', [
@@ -459,7 +458,6 @@ class Succeed(Wizard):
 
 
 class SucceedStart(ModelView):
-    "Succeed Payment"
     __name__ = 'account.payment.succeed.start'
     date = fields.Date("Date", required=True)
 

@@ -45,7 +45,6 @@ class Model(
             readonly=True, ondelete='CASCADE',
             help="Module in which this model is defined."),
         ModelSQL, ModelView):
-    "Model"
     __name__ = 'ir.model'
     _rec_name = 'string'
     string = fields.Char(
@@ -58,12 +57,7 @@ class Model(
         states={
             'readonly': Bool(Eval('module')),
             })
-    info = fields.Text('Information',
-        states={
-            'readonly': Bool(Eval('module')),
-            },
-        depends=['module'])
-    module = fields.Char("Module", readonly=True)
+    module = fields.Char('Module', readonly=True)
     global_search_p = fields.Boolean('Global Search')
     fields = fields.One2Many('ir.model.field', 'model_ref', "Fields")
     _get_names_cache = Cache('ir.model.get_names')
@@ -114,18 +108,14 @@ class Model(
             model_id, = cursor.fetchone()
         if not model_id:
             cursor.execute(*ir_model.insert(
-                    [ir_model.name, ir_model.string, ir_model.info,
-                        ir_model.module],
-                    [[
-                            model.__name__, model._get_name(), model.__doc__,
-                            module_name]]))
+                    [ir_model.name, ir_model.string, ir_model.module],
+                    [[model.__name__, model.__string__, module_name]]))
             cursor.execute(*ir_model.select(ir_model.id,
                     where=ir_model.name == model.__name__))
             (model_id,) = cursor.fetchone()
-        elif model.__doc__:
+        else:
             cursor.execute(*ir_model.update(
-                    [ir_model.string, ir_model.info],
-                    [model._get_name(), model.__doc__],
+                    [ir_model.string], [model.__string__],
                     where=ir_model.id == model_id))
         cls._get_names_cache.clear()
         return model_id
@@ -246,7 +236,6 @@ class ModelField(
             readonly=True, ondelete='CASCADE',
             help="Module in which this field is defined."),
         ModelSQL, ModelView):
-    "Model field"
     __name__ = 'ir.model.field'
     _rec_name = 'string'
     name = fields.Char('Name', required=True,
@@ -511,7 +500,6 @@ class ModelAccess(
             'model_ref', 'model', 'ir.model,name', "Model",
             required=True, ondelete='CASCADE'),
         DeactivableMixin, ModelSQL, ModelView):
-    "Model access"
     __name__ = 'ir.model.access'
     model = fields.Char("Model", required=True)
     group = fields.Many2One('res.group', 'Group',
@@ -769,7 +757,6 @@ class ModelFieldAccess(
                 ('model', '=', Eval('model')),
                 ]),
         DeactivableMixin, ModelSQL, ModelView):
-    "Model Field Access"
     __name__ = 'ir.model.field.access'
     model = fields.Char("Model", required=True)
     field = fields.Char("Field", required=True)
@@ -957,7 +944,6 @@ class ModelButton(
             'model_ref', 'model', 'ir.model,name', "Model",
             required=True, readonly=True, ondelete='CASCADE'),
         DeactivableMixin, ModelSQL, ModelView):
-    "Model Button"
     __name__ = 'ir.model.button'
     name = fields.Char('Name', required=True, readonly=True)
     string = fields.Char("Label", translate=True)
@@ -1122,7 +1108,6 @@ class ModelButton(
 
 
 class ModelButtonRule(ModelSQL, ModelView):
-    "Model Button Rule"
     __name__ = 'ir.model.button.rule'
     button = fields.Many2One(
         'ir.model.button', "Button", required=True, ondelete='CASCADE')
@@ -1202,7 +1187,6 @@ class ModelButtonRule(ModelSQL, ModelView):
 
 
 class ModelButtonClick(DeactivableMixin, ModelSQL, ModelView):
-    "Model Button Click"
     __name__ = 'ir.model.button.click'
     button = fields.Many2One(
         'ir.model.button', "Button", required=True, ondelete='CASCADE')
@@ -1272,7 +1256,6 @@ class ModelButtonClick(DeactivableMixin, ModelSQL, ModelView):
 
 
 class ModelButtonReset(ModelSQL):
-    "Model Button Reset"
     __name__ = 'ir.model.button-button.reset'
     button_ruled = fields.Many2One(
         'ir.model.button', "Button Ruled",
@@ -1290,7 +1273,6 @@ class ModelData(
             'module_ref', 'module', 'ir.module,name', "Module",
             required=True, ondelete='CASCADE'),
         ModelSQL, ModelView):
-    "Model data"
     __name__ = 'ir.model.data'
     fs_id = fields.Char('Identifier on File System', required=True,
         help="The id of the record as known on the file system.")
@@ -1599,7 +1581,6 @@ class Log(ResourceAccessMixin, ModelSQL, ModelView):
 
 
 class PrintModelGraphStart(ModelView):
-    'Print Model Graph'
     __name__ = 'ir.model.print_model_graph.start'
     level = fields.Integer('Level', required=True)
     filter = fields.Text('Filter', help="Entering a Python "

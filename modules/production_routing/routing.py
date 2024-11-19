@@ -5,7 +5,6 @@ from trytond.model import (
 
 
 class Routing(DeactivableMixin, ModelSQL, ModelView):
-    'Routing'
     __name__ = 'production.routing'
     name = fields.Char('Name', required=True, translate=True)
     steps = fields.One2Many('production.routing.step', 'routing', 'Steps')
@@ -14,13 +13,11 @@ class Routing(DeactivableMixin, ModelSQL, ModelView):
 
 
 class RoutingOperation(DeactivableMixin, ModelSQL, ModelView):
-    'Operation'
     __name__ = 'production.routing.operation'
     name = fields.Char('Operation', required=True, translate=True)
 
 
 class RoutingStep(sequence_ordered(), ModelSQL, ModelView):
-    'Route'
     __name__ = 'production.routing.step'
     operation = fields.Many2One('production.routing.operation', 'Operation',
         required=True)
@@ -41,7 +38,6 @@ class RoutingStep(sequence_ordered(), ModelSQL, ModelView):
 
 
 class Routing_BOM(ModelSQL):
-    'Routing - BOM'
     __name__ = 'production.routing-production.bom'
     routing = fields.Many2One('production.routing', 'Routing', required=True)
     bom = fields.Many2One('production.bom', 'BOM', required=True)

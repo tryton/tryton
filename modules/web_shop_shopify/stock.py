@@ -100,7 +100,6 @@ class ShipmentOut(metaclass=PoolMeta):
 
 
 class ShipmentShopifyIdentifier(IdentifierMixin, ModelSQL, ModelView):
-    "Shopify Shipment Identifier"
     __name__ = 'stock.shipment.shopify_identifier'
 
     shipment = fields.Reference("Shipment", [

@@ -155,7 +155,6 @@ class MeasurementsMixin:
 
 
 class Package(tree(), MeasurementsMixin, ModelSQL, ModelView):
-    'Stock Package'
     __name__ = 'stock.package'
     _rec_name = 'number'
     number = fields.Char("Number", readonly=True, required=True)
@@ -354,7 +353,6 @@ class Package(tree(), MeasurementsMixin, ModelSQL, ModelView):
 
 
 class Type(MeasurementsMixin, DeactivableMixin, ModelSQL, ModelView):
-    'Stock Package Type'
     __name__ = 'stock.package.type'
     name = fields.Char('Name', required=True)
 

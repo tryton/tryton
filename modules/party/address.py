@@ -25,7 +25,6 @@ from .exceptions import InvalidFormat
 class Address(
         DeactivableMixin, sequence_ordered(), _ContactMechanismMixin,
         ModelSQL, ModelView):
-    "Address"
     __name__ = 'party.address'
     party = fields.Many2One(
         'party.party', "Party", required=True, ondelete='CASCADE',
@@ -274,7 +273,6 @@ class Address(
 
 
 class AddressFormat(DeactivableMixin, MatchMixin, ModelSQL, ModelView):
-    "Address Format"
     __name__ = 'party.address.format'
     country_code = fields.Char("Country Code", size=2)
     language_code = fields.Char("Language Code", size=2)
@@ -407,7 +405,6 @@ ${COUNTRY}"""
 
 
 class SubdivisionType(DeactivableMixin, ModelSQL, ModelView):
-    "Address Subdivision Type"
     __name__ = 'party.address.subdivision_type'
     country_code = fields.Char("Country Code", size=2, required=True)
     types = fields.MultiSelection('get_subdivision_types', "Subdivision Types")

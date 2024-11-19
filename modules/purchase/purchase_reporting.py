@@ -164,7 +164,6 @@ class AbstractTimeseries(Abstract):
 
 
 class Context(ModelView):
-    "Purchase Reporting Context"
     __name__ = 'purchase.reporting.context'
 
     company = fields.Many2One('company.company', "Company", required=True)
@@ -225,7 +224,6 @@ class Context(ModelView):
 
 
 class Main(Abstract, ModelView):
-    "Purchase Reporting"
     __name__ = 'purchase.reporting.main'
 
     time_series = fields.Function(fields.One2Many(
@@ -243,7 +241,6 @@ class Main(Abstract, ModelView):
 
 
 class MainTimeseries(AbstractTimeseries, ModelView):
-    "Purchase Reporting"
     __name__ = 'purchase.reporting.main.time_series'
 
 
@@ -275,7 +272,6 @@ class SupplierMixin(object):
 
 
 class Supplier(SupplierMixin, Abstract, ModelView):
-    "Purchase Reporting per Supplier"
     __name__ = 'purchase.reporting.supplier'
 
     time_series = fields.One2Many(
@@ -294,7 +290,6 @@ class Supplier(SupplierMixin, Abstract, ModelView):
 
 
 class SupplierTimeseries(SupplierMixin, AbstractTimeseries, ModelView):
-    "Purchase Reporting per Supplier"
     __name__ = 'purchase.reporting.supplier.time_series'
 
 
@@ -350,7 +345,6 @@ class ProductMixin(object):
 
 
 class Product(ProductMixin, Abstract, ModelView):
-    "Purchase Reporting per Product"
     __name__ = 'purchase.reporting.product'
 
     time_series = fields.One2Many(
@@ -369,5 +363,4 @@ class Product(ProductMixin, Abstract, ModelView):
 
 
 class ProductTimeseries(ProductMixin, AbstractTimeseries, ModelView):
-    "Purchase Reporting per Product"
     __name__ = 'purchase.reporting.product.time_series'

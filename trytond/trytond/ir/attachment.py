@@ -22,7 +22,6 @@ else:
 
 
 class Attachment(ResourceMixin, ModelSQL, ModelView):
-    "Attachment"
     __name__ = 'ir.attachment'
     name = fields.Char('Name', required=True)
     type = fields.Selection([

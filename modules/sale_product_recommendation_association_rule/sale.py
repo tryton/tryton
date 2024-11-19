@@ -80,7 +80,6 @@ class Sale(metaclass=PoolMeta):
 
 
 class ProductAssociationRule(ModelSQL, ModelView):
-    "Product Association Rule"
     __name__ = 'sale.product.association.rule'
 
     antecedents = fields.Many2Many(
@@ -247,7 +246,6 @@ class ProductAssociationRule(ModelSQL, ModelView):
 
 
 class ProductAssociationRuleAntecedent(ModelSQL):
-    "Product Association Rule Antecedent"
     __name__ = 'sale.product.association.rule.antecedent'
 
     rule = fields.Many2One(
@@ -258,7 +256,6 @@ class ProductAssociationRuleAntecedent(ModelSQL):
 
 
 class ProductAssociationRuleConsequent(ModelSQL):
-    "Product Association Rule Consequent"
     __name__ = 'sale.product.association.rule.consequent'
 
     rule = fields.Many2One(

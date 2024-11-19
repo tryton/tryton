@@ -6,7 +6,6 @@ from trytond.pyson import Eval, Id
 
 
 class Configuration(metaclass=PoolMeta):
-    'Sale Configuration'
     __name__ = 'sale.configuration'
     sale_opportunity_sequence = fields.MultiValue(fields.Many2One(
             'ir.sequence', "Opportunity Sequence", required=True,

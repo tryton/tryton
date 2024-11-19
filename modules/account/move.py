@@ -83,7 +83,6 @@ class DescriptionOriginMixin:
 
 
 class Move(DescriptionOriginMixin, ModelSQL, ModelView):
-    'Account Move'
     __name__ = 'account.move'
     _rec_name = 'number'
     number = fields.Char('Number', required=True, readonly=True)
@@ -565,7 +564,6 @@ class Move(DescriptionOriginMixin, ModelSQL, ModelView):
 
 
 class Reconciliation(ModelSQL, ModelView):
-    'Account Move Reconciliation Lines'
     __name__ = 'account.move.reconciliation'
     _rec_name = 'number'
     number = fields.Char("Number", required=True)
@@ -900,7 +898,6 @@ class MoveLineMixin:
 
 
 class Line(DescriptionOriginMixin, MoveLineMixin, ModelSQL, ModelView):
-    'Account Move Line'
     __name__ = 'account.move.line'
 
     _states = {
@@ -1871,7 +1868,6 @@ class Line(DescriptionOriginMixin, MoveLineMixin, ModelSQL, ModelView):
 
 
 class LineReceivablePayableContext(ModelView):
-    "Receivable/Payable Line Context"
     __name__ = 'account.move.line.receivable_payable.context'
 
     reconciled = fields.Boolean("Reconciled")
@@ -1892,7 +1888,6 @@ class LineReceivablePayableContext(ModelView):
 
 
 class WriteOff(DeactivableMixin, ModelSQL, ModelView):
-    'Reconcile Write Off'
     __name__ = 'account.move.reconcile.write_off'
     company = fields.Many2One('company.company', "Company", required=True)
     name = fields.Char("Name", required=True, translate=True)
@@ -1928,7 +1923,6 @@ class WriteOff(DeactivableMixin, ModelSQL, ModelView):
 
 
 class OpenJournalAsk(ModelView):
-    'Open Journal Ask'
     __name__ = 'account.move.open_journal.ask'
     journal = fields.Many2One('account.journal', 'Journal', required=True)
     period = fields.Many2One('account.period', 'Period', required=True,
@@ -1949,7 +1943,6 @@ class OpenJournalAsk(ModelView):
 
 
 class OpenJournal(Wizard):
-    'Open Journal'
     __name__ = 'account.move.open_journal'
     start = StateTransition()
     ask = StateView('account.move.open_journal.ask',
@@ -2017,7 +2010,6 @@ class OpenJournal(Wizard):
 
 
 class OpenAccount(Wizard):
-    'Open Account'
     __name__ = 'account.move.open_account'
     start_state = 'open_'
     open_ = StateAction('account.act_move_line_form')
@@ -2067,7 +2059,6 @@ class OpenAccount(Wizard):
 
 
 class ReconcileLinesWriteOff(ModelView):
-    'Reconcile Lines Write-Off'
     __name__ = 'account.move.reconcile_lines.writeoff'
     company = fields.Many2One('company.company', "Company", readonly=True)
     writeoff = fields.Many2One('account.move.reconcile.write_off', "Write Off",
@@ -2088,7 +2079,6 @@ class ReconcileLinesWriteOff(ModelView):
 
 
 class ReconcileLines(Wizard):
-    'Reconcile Lines'
     __name__ = 'account.move.reconcile_lines'
     start = StateTransition()
     writeoff = StateView('account.move.reconcile_lines.writeoff',
@@ -2162,7 +2152,6 @@ class ReconcileLines(Wizard):
 
 
 class UnreconcileLines(Wizard):
-    'Unreconcile Lines'
     __name__ = 'account.move.unreconcile_lines'
     start_state = 'unreconcile'
     unreconcile = StateTransition()
@@ -2197,7 +2186,6 @@ class UnreconcileLines(Wizard):
 
 
 class Reconcile(Wizard):
-    'Reconcile'
     __name__ = 'account.reconcile'
     start = StateView(
         'account.reconcile.start',
@@ -2458,7 +2446,6 @@ class Reconcile(Wizard):
 
 
 class ReconcileStart(ModelView):
-    "Reconcile"
     __name__ = 'account.reconcile.start'
     automatic = fields.Boolean(
         "Automatic",
@@ -2477,7 +2464,6 @@ class ReconcileStart(ModelView):
 
 
 class ReconcileShow(ModelView):
-    'Reconcile'
     __name__ = 'account.reconcile.show'
     company = fields.Many2One('company.company', "Company", readonly=True)
     accounts = fields.Many2Many('account.account', None, None, 'Account',
@@ -2548,7 +2534,6 @@ class ReconcileShow(ModelView):
 
 
 class CancelMoves(Wizard):
-    'Cancel Moves'
     __name__ = 'account.move.cancel'
     start_state = 'default'
     default = StateView('account.move.cancel.default',
@@ -2610,7 +2595,6 @@ class CancelMoves(Wizard):
 
 
 class CancelMovesDefault(ModelView):
-    'Cancel Moves'
     __name__ = 'account.move.cancel.default'
     description = fields.Char('Description')
     reversal = fields.Boolean(
@@ -2623,7 +2607,6 @@ class CancelMovesDefault(ModelView):
 
 
 class GroupLines(Wizard):
-    "Group Lines"
     __name__ = 'account.move.line.group'
     start = StateView('account.move.line.group.start',
         'account.move_line_group_start_view_form', [
@@ -2799,7 +2782,6 @@ class GroupLines(Wizard):
 
 
 class GroupLinesStart(ModelView):
-    "Group Lines"
     __name__ = 'account.move.line.group.start'
 
     journal = fields.Many2One('account.journal', "Journal", required=True)
@@ -2807,7 +2789,6 @@ class GroupLinesStart(ModelView):
 
 
 class RescheduleLines(Wizard):
-    "Reschedule Lines"
     __name__ = 'account.move.line.reschedule'
     start = StateView('account.move.line.reschedule.start',
         'account.move_line_reschedule_start_view_form', [
@@ -3035,7 +3016,6 @@ class RescheduleLines(Wizard):
 
 
 class RescheduleLinesStart(ModelView):
-    "Reschedule Lines"
     __name__ = 'account.move.line.reschedule.start'
     start_date = fields.Date("Start Date", required=True)
     frequency = fields.Selection([
@@ -3098,7 +3078,6 @@ class RescheduleLinesStart(ModelView):
 
 
 class RescheduleLinesPreview(ModelView):
-    "Reschedule Lines"
     __name__ = 'account.move.line.reschedule.preview'
     journal = fields.Many2One('account.journal', "Journal", required=True)
     description = fields.Char("Description")
@@ -3111,7 +3090,6 @@ class RescheduleLinesPreview(ModelView):
 
 
 class RescheduleLinesTerm(ModelView):
-    "Reschedule Lines"
     __name__ = 'account.move.line.reschedule.term'
     date = fields.Date("Date", required=True)
     amount = Monetary(
@@ -3120,7 +3098,6 @@ class RescheduleLinesTerm(ModelView):
 
 
 class DelegateLines(Wizard):
-    "Delegate Lines"
     __name__ = 'account.move.line.delegate'
     start = StateView(
         'account.move.line.delegate.start',
@@ -3229,7 +3206,6 @@ class DelegateLines(Wizard):
 
 
 class DelegateLinesStart(ModelView):
-    "Delegate Lines"
     __name__ = 'account.move.line.delegate.start'
 
     journal = fields.Many2One('account.journal', "Journal", required=True)

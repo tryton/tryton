@@ -65,7 +65,8 @@ class One2Many(Field):
         self.__filter = None
         self.filter = filter
 
-    __init__.__doc__ += Field.__init__.__doc__
+    if __init__.__doc__:
+        __init__.__doc__ += Field.__init__.__doc__
 
     def _get_add_remove(self):
         return self.__add_remove

@@ -5,7 +5,6 @@ from trytond.pool import Pool
 
 
 class ModelMultiValue(ModelSQL, MultiValueMixin):
-    "Model MultiValue"
     __name__ = 'test.model_multivalue'
     value = fields.MultiValue(fields.Char("Value"))
     value_default = fields.MultiValue(fields.Char("Value Default"))
@@ -54,7 +53,6 @@ class ModelMultiValue(ModelSQL, MultiValueMixin):
 
 
 class ModelValue(ModelSQL, ValueMixin):
-    "Model Value"
     __name__ = 'test.model_multivalue.value'
     record = fields.Many2One(
         'test.model_multivalue', "Record")
@@ -76,7 +74,6 @@ class ModelValue(ModelSQL, ValueMixin):
 
 
 class ModelMultiValueTarget(ModelSQL):
-    "Model MultiValue Target"
     __name__ = 'test.model_multivalue.target'
     name = fields.Char("Name")
 

@@ -23,7 +23,6 @@ from trytond.transaction import Transaction
 class SaleOpportunity(
         Workflow, ModelSQL, ModelView,
         AttachmentCopyMixin, NoteCopyMixin):
-    'Sale Opportunity'
     __name__ = "sale.opportunity"
     _history = True
     _rec_name = 'number'
@@ -528,7 +527,6 @@ class SaleOpportunity(
 
 
 class SaleOpportunityLine(sequence_ordered(), ModelSQL, ModelView):
-    'Sale Opportunity Line'
     __name__ = "sale.opportunity.line"
     _history = True
     _states = {

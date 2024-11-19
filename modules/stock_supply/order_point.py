@@ -14,7 +14,6 @@ from trytond.transaction import Transaction
 
 class OrderPoint(ModelSQL, ModelView):
     """
-    Order Point
     Provide a way to define a supply policy for each
     product on each locations. Order points on warehouse are
     considered by the supply scheduler to generate purchase requests.

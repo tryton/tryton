@@ -338,7 +338,6 @@ class MoveLine(metaclass=PoolMeta):
 
 
 class CreateDirectDebit(Wizard):
-    "Create Direct Debit"
     __name__ = 'account.move.line.create_direct_debit'
 
     start = StateView('account.move.line.create_direct_debit.start',
@@ -359,7 +358,6 @@ class CreateDirectDebit(Wizard):
 
 
 class CreateDirectDebitStart(ModelView):
-    "Create Direct Debit"
     __name__ = 'account.move.line.create_direct_debit.start'
 
     date = fields.Date(
@@ -372,7 +370,6 @@ class CreateDirectDebitStart(ModelView):
 
 
 class PayLineStart(ModelView):
-    "Pay Line"
     __name__ = 'account.move.line.pay.start'
     date = fields.Date(
         "Date",
@@ -381,7 +378,6 @@ class PayLineStart(ModelView):
 
 
 class PayLineAskJournal(ModelView):
-    'Pay Line'
     __name__ = 'account.move.line.pay.ask_journal'
     company = fields.Many2One('company.company', 'Company', readonly=True)
     currency = fields.Many2One('currency.currency', 'Currency', readonly=True)
@@ -396,7 +392,6 @@ class PayLineAskJournal(ModelView):
 
 
 class PayLine(Wizard):
-    'Pay Line'
     __name__ = 'account.move.line.pay'
     start = StateView(
         'account.move.line.pay.start',
@@ -590,7 +585,6 @@ class Configuration(metaclass=PoolMeta):
 
 
 class ConfigurationPaymentSequence(ModelSQL, CompanyValueMixin):
-    "Account Configuration Payment Sequence"
     __name__ = 'account.configuration.payment_sequence'
     payment_sequence = fields.Many2One(
         'ir.sequence', "Payment Sequence", required=True,
@@ -612,7 +606,6 @@ class ConfigurationPaymentSequence(ModelSQL, CompanyValueMixin):
 
 
 class ConfigurationPaymentGroupSequence(ModelSQL, CompanyValueMixin):
-    "Account Configuration Payment Group Sequence"
     __name__ = 'account.configuration.payment_group_sequence'
     payment_group_sequence = fields.Many2One(
         'ir.sequence', "Payment Group Sequence", required=True,

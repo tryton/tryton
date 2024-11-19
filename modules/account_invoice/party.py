@@ -55,7 +55,6 @@ class Party(metaclass=PoolMeta):
 
 
 class PartyPaymentTerm(ModelSQL, ValueMixin):
-    "Party Payment Term"
     __name__ = 'party.party.payment_term'
     party = fields.Many2One(
         'party.party', "Party", ondelete='CASCADE')

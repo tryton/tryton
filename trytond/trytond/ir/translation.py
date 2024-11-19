@@ -138,7 +138,7 @@ class Translation(
             return
 
         name = model.__name__ + ',name'
-        src = model._get_name()
+        src = model.__string__
         if not src:
             return
         cursor.execute(*ir_translation.select(ir_translation.id,
@@ -380,7 +380,7 @@ class Translation(
                                 continue
                             if not model.__doc__:
                                 continue
-                            value = model._get_name()
+                            value = model.__string__
                         if isinstance(value, StringPartitioned):
                             for source in value:
                                 translations[record.id] += source

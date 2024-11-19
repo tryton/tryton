@@ -70,7 +70,6 @@ class Purchase(metaclass=PoolMeta):
 
 
 class PurchaseIgnoredInvoiceLine(ModelSQL):
-    'Purchase - Ignored Invoice Line'
     __name__ = 'purchase.purchase-ignored-account.invoice.line'
     purchase = fields.Many2One(
         'purchase.purchase', "Purchase", ondelete='CASCADE', required=True)

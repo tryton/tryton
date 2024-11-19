@@ -19,7 +19,6 @@ from .exceptions import TemplateError
 
 
 class Email(ModelSQL, ModelView):
-    "Email Notification"
     __name__ = 'notification.email'
 
     from_ = fields.Char(
@@ -328,7 +327,6 @@ class Email(ModelSQL, ModelView):
 
 
 class EmailAttachment(ModelSQL):
-    "Email Notification Attachment"
     __name__ = 'notification.email.attachment'
 
     notification = fields.Many2One(

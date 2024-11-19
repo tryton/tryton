@@ -25,7 +25,6 @@ class ConditionError(ValidationError):
 
 
 class Trigger(DeactivableMixin, ModelSQL, ModelView):
-    "Trigger"
     __name__ = 'ir.trigger'
     name = fields.Char('Name', required=True, translate=True)
     model = fields.Many2One('ir.model', 'Model', required=True)

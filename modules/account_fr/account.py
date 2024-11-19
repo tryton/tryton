@@ -67,7 +67,6 @@ class CreateChart(metaclass=PoolMeta):
 
 
 class FrFEC(Wizard):
-    'Generate FEC'
     __name__ = 'account.fr.fec'
 
     start = StateView('account.fr.fec.start',
@@ -307,7 +306,6 @@ class FrFEC(Wizard):
 
 
 class FrFECStart(ModelView):
-    'Generate FEC'
     __name__ = 'account.fr.fec.start'
 
     fiscalyear = fields.Many2One(
@@ -330,7 +328,6 @@ class FrFECStart(ModelView):
 
 
 class FrFECResult(ModelView):
-    'Generate FEC'
     __name__ = 'account.fr.fec.result'
 
     file = fields.Binary('File', readonly=True, filename='filename')

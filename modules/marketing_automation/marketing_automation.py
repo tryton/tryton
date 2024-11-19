@@ -95,7 +95,6 @@ def trend_mixin(model_name, field_name):
 class Scenario(
         trend_mixin('marketing.automation.reporting.scenario', 'scenario'),
         Workflow, ModelSQL, ModelView):
-    "Marketing Scenario"
     __name__ = 'marketing.automation.scenario'
 
     name = fields.Char("Name", translate=True)
@@ -315,7 +314,6 @@ class Scenario(
 class Activity(
         trend_mixin('marketing.automation.reporting.activity', 'activity'),
         ModelSQL, ModelView):
-    "Marketing Activity"
     __name__ = 'marketing.automation.activity'
 
     name = fields.Char("Name", translate=True, required=True)
@@ -764,7 +762,6 @@ class Activity(
 
 
 class Record(ModelSQL, ModelView):
-    "Marketing Record"
     __name__ = 'marketing.automation.record'
 
     scenario = fields.Many2One(
@@ -865,7 +862,6 @@ class Record(ModelSQL, ModelView):
 
 
 class RecordActivity(Workflow, ModelSQL, ModelView):
-    "Marketing Record Activity"
     __name__ = 'marketing.automation.record.activity'
 
     record = fields.Many2One(
@@ -1051,5 +1047,4 @@ class RecordActivity(Workflow, ModelSQL, ModelView):
 
 
 class Unsubscribe(Report):
-    "Marketing Automation Unsubscribe"
     __name__ = 'marketing.automation.unsubscribe'

@@ -38,7 +38,6 @@ class Party(MarketingAutomationMixin, metaclass=PoolMeta):
 
 
 class PartyUnsubscribedScenario(ModelSQL):
-    "Party Unsubscribed Scenario"
     __name__ = 'party.party-unsubscribed-marketing.automation.scenario'
 
     party = fields.Many2One(

@@ -20,7 +20,6 @@ class Party(metaclass=PoolMeta):
 
 
 class PartyPurchaseInvoiceLineStandalone(ModelSQL, ValueMixin):
-    "Party Purchase Invoice Line Standalone"
     __name__ = 'party.party.purchase_invoice_line_standalone'
 
     party = fields.Many2One(

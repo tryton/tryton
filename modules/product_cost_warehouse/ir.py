@@ -28,7 +28,6 @@ class Cron(metaclass=PoolMeta):
 
 
 class CronWarehouse(ModelSQL):
-    "Cron - Warehouse"
     __name__ = 'ir.cron-stock.warehouse'
     cron = fields.Many2One(
         'ir.cron', "Cron", ondelete='CASCADE', required=True)

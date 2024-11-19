@@ -22,7 +22,6 @@ class Configuration(metaclass=PoolMeta):
 
 
 class ConfigurationSaleDropLocation(ModelSQL, ValueMixin):
-    "Sale Configuration Sale Drop Location"
     __name__ = 'sale.configuration.sale_drop_location'
     sale_drop_location = sale_drop_location
 

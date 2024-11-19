@@ -43,7 +43,6 @@ class Product(metaclass=PoolMeta):
 
 
 class CategoryGoogle(ModelSQL, ModelView):
-    "Google Product Category"
     __name__ = 'product.category.google'
 
     code = fields.Char("Code", required=True)
@@ -51,7 +50,6 @@ class CategoryGoogle(ModelSQL, ModelView):
 
 
 class CategoryFacebook(ModelSQL, ModelView):
-    "Facebook Product Category"
     __name__ = 'product.category.facebook'
 
     code = fields.Char("Code", required=True)

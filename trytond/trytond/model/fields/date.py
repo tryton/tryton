@@ -107,7 +107,8 @@ class DateTime(Timestamp):
             depends=depends, context=context, loading=loading)
         self.format = format
 
-    __init__.__doc__ += Field.__init__.__doc__
+    if __init__.__doc__:
+        __init__.__doc__ += Field.__init__.__doc__
 
     def sql_format(self, value):
         value = super().sql_format(value)

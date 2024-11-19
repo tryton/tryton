@@ -26,7 +26,6 @@ from .exceptions import AccountValidationError
 class Account(
         DeactivableMixin, tree('distribution_parents'), tree(),
         ModelSQL, ModelView):
-    'Analytic Account'
     __name__ = 'analytic_account.account'
     name = fields.Char("Name", required=True, translate=True)
     code = fields.Char("Code")
@@ -336,14 +335,12 @@ class Account(
 
 
 class AccountContext(ModelView):
-    'Open Chart of Accounts'
     __name__ = 'analytic_account.account.context'
     start_date = fields.Date('Start Date')
     end_date = fields.Date('End Date')
 
 
 class AccountDistribution(ModelView, ModelSQL):
-    "Analytic Account Distribution"
     __name__ = 'analytic_account.account.distribution'
     parent = fields.Many2One(
         'analytic_account.account', "Parent", required=True)
@@ -372,7 +369,6 @@ class AccountDistribution(ModelView, ModelSQL):
 
 
 class AnalyticAccountEntry(ModelView, ModelSQL):
-    'Analytic Account Entry'
     __name__ = 'analytic.account.entry'
     origin = fields.Reference('Origin', selection='get_origin')
     root = fields.Many2One(

@@ -8,14 +8,12 @@ from trytond.pool import Pool
 
 
 class DateTime(ModelSQL):
-    'DateTime'
     __name__ = 'test.datetime'
     datetime = fields.DateTime(string='DateTime', help='Test datetime',
             required=False)
 
 
 class DateTimeDefault(ModelSQL):
-    'DateTime Default'
     __name__ = 'test.datetime_default'
     datetime = fields.DateTime(string='DateTime', help='Test datetime',
             required=False)
@@ -26,14 +24,12 @@ class DateTimeDefault(ModelSQL):
 
 
 class DateTimeRequired(ModelSQL):
-    'DateTime Required'
     __name__ = 'test.datetime_required'
     datetime = fields.DateTime(string='DateTime', help='Test datetime',
             required=True)
 
 
 class DateTimeFormat(ModelSQL):
-    'DateTime Format'
     __name__ = 'test.datetime_format'
     datetime = fields.DateTime(string='DateTime', format='%H:%M')
 

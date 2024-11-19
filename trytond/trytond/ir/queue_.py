@@ -19,7 +19,6 @@ batch_size = config.getint('queue', 'batch_size', default=20)
 
 
 class Queue(ModelSQL):
-    "Queue"
     __name__ = 'ir.queue'
     name = fields.Char("Name", required=True)
 

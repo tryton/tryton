@@ -17,7 +17,8 @@ class Boolean(Field):
             on_change=on_change, on_change_with=on_change_with,
             depends=depends, context=context, loading=loading)
 
-    __init__.__doc__ = Field.__init__.__doc__
+    if __init__.__doc__:
+        __init__.__doc__ = Field.__init__.__doc__
 
     def _domain_add_null(self, column, operator, value, expression):
         expression = super(Boolean, self)._domain_add_null(

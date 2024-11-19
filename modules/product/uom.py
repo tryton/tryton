@@ -21,7 +21,6 @@ uom_conversion_digits = (
 
 
 class UomCategory(ModelSQL, ModelView):
-    "Unit of Measure Category"
     __name__ = 'product.uom.category'
     name = fields.Char('Name', required=True, translate=True)
     uoms = fields.One2Many('product.uom', 'category', "Units of Measure")
@@ -33,7 +32,6 @@ class UomCategory(ModelSQL, ModelView):
 
 
 class Uom(SymbolMixin, DigitsMixin, DeactivableMixin, ModelSQL, ModelView):
-    "Unit of Measure"
     __name__ = 'product.uom'
     name = fields.Char("Name", size=None, required=True, translate=True)
     symbol = fields.Char(

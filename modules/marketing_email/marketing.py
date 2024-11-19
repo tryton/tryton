@@ -57,7 +57,6 @@ def _extract_params(url):
 
 
 class Email(DeactivableMixin, ModelSQL, ModelView):
-    "Marketing Email"
     __name__ = 'marketing.email'
     _rec_name = 'email'
 
@@ -243,7 +242,6 @@ class EmailUnsubscribe(Report):
 
 
 class EmailList(DeactivableMixin, ModelSQL, ModelView):
-    "Marketing Mailing List"
     __name__ = 'marketing.email.list'
 
     name = fields.Char("Name", required=True)
@@ -339,7 +337,6 @@ class EmailList(DeactivableMixin, ModelSQL, ModelView):
 
 
 class Message(Workflow, ModelSQL, ModelView):
-    "Marketing Email Message"
     __name__ = 'marketing.email.message'
     _rec_name = 'title'
 
@@ -529,7 +526,6 @@ class Message(Workflow, ModelSQL, ModelView):
 
 
 class SendTest(Wizard):
-    "Send Test Email"
     __name__ = 'marketing.email.send_test'
     start = StateView(
         'marketing.email.send_test',
@@ -557,7 +553,6 @@ class SendTest(Wizard):
 
 
 class SendTestView(ModelView):
-    "Send Test Email"
     __name__ = 'marketing.email.send_test'
 
     list_ = fields.Many2One(

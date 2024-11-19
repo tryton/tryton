@@ -8,7 +8,6 @@ from trytond.transaction import Transaction
 
 
 class Reference(ModelSQL):
-    'Reference'
     __name__ = 'test.reference'
     reference = fields.Reference('Reference', selection=[
             (None, ''),
@@ -17,13 +16,11 @@ class Reference(ModelSQL):
 
 
 class ReferenceTarget(ModelSQL):
-    'Reference Target'
     __name__ = 'test.reference.target'
     name = fields.Char('Name', required=True)
 
 
 class ReferenceRequired(ModelSQL):
-    'Reference Required'
     __name__ = 'test.reference_required'
     reference = fields.Reference('Reference', selection=[
             (None, ''),
@@ -32,7 +29,6 @@ class ReferenceRequired(ModelSQL):
 
 
 class ReferenceContext(ModelSQL):
-    "Reference Context"
     __name__ = 'test.reference_context'
     target = fields.Reference("Reference", selection=[
             (None, ''),
@@ -41,7 +37,6 @@ class ReferenceContext(ModelSQL):
 
 
 class ReferenceContextTarget(ModelSQL):
-    "Reference Context Target"
     __name__ = 'test.reference_context.target'
     context = fields.Function(fields.Char("context"), 'get_context')
 
@@ -51,36 +46,33 @@ class ReferenceContextTarget(ModelSQL):
 
 
 class ReferenceDomainValidation(ModelSQL):
-    "Reference Domain Validation"
-    __name__ = 'test.reference_domainvalidation'
+    __name__ = 'test.reference_domain_validation'
     reference = fields.Reference("Reference", selection=[
             (None, ''),
             ('test.reference.target', "Target"),
-            ('test.reference_domainvalidation.target', "Domain Target"),
+            ('test.reference_domain_validation.target', "Domain Target"),
             ],
         domain={
-            'test.reference_domainvalidation.target': [
+            'test.reference_domain_validation.target': [
                 ('value', '>', 5),
                 ],
             })
 
 
 class ReferenceDomainValidationTarget(ModelSQL):
-    "Reference Domain Validation Target"
-    __name__ = 'test.reference_domainvalidation.target'
+    __name__ = 'test.reference_domain_validation.target'
     value = fields.Integer("Value")
 
 
 class ReferenceDomainValidationPYSON(ModelSQL):
-    "Reference Domain Validation"
-    __name__ = 'test.reference_domainvalidation_pyson'
+    __name__ = 'test.reference_domain_validation_pyson'
     reference = fields.Reference("Reference", selection=[
             (None, ''),
             ('test.reference.target', "Target"),
-            ('test.reference_domainvalidation.target', "Domain Target"),
+            ('test.reference_domain_validation.target', "Domain Target"),
             ],
         domain={
-            'test.reference_domainvalidation.target': [
+            'test.reference_domain_validation.target': [
                 ('value', '>', Eval('value')),
                 ],
             },

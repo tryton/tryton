@@ -6,7 +6,6 @@ from trytond.pool import Pool
 
 
 class WorkflowedModel(Workflow, ModelSQL):
-    'Workflowed Model'
     __name__ = 'test.workflowed'
     state = fields.Selection([
             ('start', 'Start'),

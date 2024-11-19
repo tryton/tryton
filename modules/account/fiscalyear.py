@@ -29,7 +29,6 @@ STATES = {
 
 
 class FiscalYear(Workflow, ModelSQL, ModelView):
-    'Fiscal Year'
     __name__ = 'account.fiscalyear'
     name = fields.Char('Name', size=None, required=True)
     start_date = fields.Date('Starting Date', required=True, states=STATES,
@@ -375,7 +374,6 @@ class FiscalYear(Workflow, ModelSQL, ModelView):
 
 
 class BalanceNonDeferralStart(ModelView):
-    'Balance Non-Deferral'
     __name__ = 'account.fiscalyear.balance_non_deferral.start'
     fiscalyear = fields.Many2One('account.fiscalyear', 'Fiscal Year',
         required=True, domain=[('state', '=', 'open')])
@@ -417,7 +415,6 @@ class BalanceNonDeferralStart(ModelView):
 
 
 class BalanceNonDeferral(Wizard):
-    'Balance Non-Deferral'
     __name__ = 'account.fiscalyear.balance_non_deferral'
     start = StateView('account.fiscalyear.balance_non_deferral.start',
         'account.fiscalyear_balance_non_deferral_start_view_form', [
@@ -501,7 +498,6 @@ class BalanceNonDeferral(Wizard):
 
 
 class CreatePeriodsStart(ModelView):
-    "Create Periods Start"
     __name__ = 'account.fiscalyear.create_periods.start'
     frequency = fields.Selection([
             ('monthly', "Monthly"),
@@ -540,7 +536,6 @@ class CreatePeriodsStart(ModelView):
 
 
 class CreatePeriods(Wizard):
-    "Create Periods"
     __name__ = 'account.fiscalyear.create_periods'
     start = StateView('account.fiscalyear.create_periods.start',
         'account.fiscalyear_create_periods_start_view_form', [
@@ -561,7 +556,6 @@ def month_delta(d1, d2):
 
 
 class RenewFiscalYearStart(ModelView):
-    "Renew Fiscal Year Start"
     __name__ = 'account.fiscalyear.renew.start'
     name = fields.Char("Name", required=True)
     company = fields.Many2One('company.company', "Company", required=True)
@@ -614,7 +608,6 @@ class RenewFiscalYearStart(ModelView):
 
 
 class RenewFiscalYear(Wizard):
-    "Renew Fiscal Year"
     __name__ = 'account.fiscalyear.renew'
     start = StateView('account.fiscalyear.renew.start',
         'account.fiscalyear_renew_start_view_form', [

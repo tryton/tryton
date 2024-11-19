@@ -23,7 +23,6 @@ class Configuration(metaclass=PoolMeta):
 
 
 class ConfigurationSupplyPeriod(ModelSQL, ValueMixin):
-    "Production Configuration Supply Period"
     __name__ = 'production.configuration.supply_period'
     supply_period = supply_period
 

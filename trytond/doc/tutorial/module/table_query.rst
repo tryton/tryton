@@ -22,7 +22,6 @@ First we create a :class:`~trytond.model.ModelSQL` class which defines a
     from sql.functions import CurrentTimestamp, DateTrunc
     ...
     class OpportunityMonthly(ModelSQL, ModelView):
-        "Opportunity Monthly"
         __name__ = 'training.opportunity.monthly'
 
         month = fields.Date("Month")

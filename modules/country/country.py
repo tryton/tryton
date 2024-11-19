@@ -14,7 +14,6 @@ from trytond.transaction import Transaction
 
 
 class Organization(ModelSQL, ModelView):
-    "Organization"
     __name__ = 'country.organization'
 
     name = fields.Char("Name", required=True, translate=True)
@@ -30,7 +29,6 @@ class Organization(ModelSQL, ModelView):
 
 
 class OrganizationMember(ModelSQL, ModelView):
-    "Organization Member"
     __name__ = 'country.organization.member'
 
     organization = fields.Many2One(
@@ -105,7 +103,6 @@ class OrganizationMember(ModelSQL, ModelView):
 
 
 class Region(tree(), ModelSQL, ModelView):
-    "Region"
     __name__ = 'country.region'
 
     name = fields.Char("Name", required=True, translate=True)
@@ -141,7 +138,6 @@ class Region(tree(), ModelSQL, ModelView):
 
 
 class Country(DeactivableMixin, ModelSQL, ModelView):
-    'Country'
     __name__ = 'country.country'
     name = fields.Char(
         "Name", required=True, translate=True,
@@ -253,7 +249,6 @@ class Country(DeactivableMixin, ModelSQL, ModelView):
 
 
 class Subdivision(DeactivableMixin, ModelSQL, ModelView):
-    "Subdivision"
     __name__ = 'country.subdivision'
     country = fields.Many2One(
         'country.country', "Country", required=True,
@@ -484,7 +479,6 @@ class Subdivision(DeactivableMixin, ModelSQL, ModelView):
 
 
 class PostalCode(ModelSQL, ModelView):
-    "Postal Code"
     __name__ = 'country.postal_code'
     country = fields.Many2One(
         'country.country', "Country", required=True, ondelete='CASCADE',

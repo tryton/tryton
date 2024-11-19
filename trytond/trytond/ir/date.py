@@ -7,7 +7,6 @@ from trytond.rpc import RPC
 
 
 class Date(Model):
-    'Date'
     __name__ = 'ir.date'
 
     @classmethod

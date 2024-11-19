@@ -9,19 +9,16 @@ from trytond.transaction import Transaction
 
 
 class ModelStorage(ModelSQL):
-    'Model stored'
     __name__ = 'test.modelstorage'
     name = fields.Char('Name')
 
 
 class ModelStorageRequired(ModelSQL):
-    'Model stored'
     __name__ = 'test.modelstorage.required'
     name = fields.Char('Name', required=True)
 
 
 class ModelStorageSaveMany2One(ModelSQL):
-    "ModelStorage to test save with Many2One"
     __name__ = 'test.modelstorage.save_m2o'
     target = fields.Many2One('test.modelstorage.save_m2o.target', "Target")
     targets = fields.One2Many(
@@ -29,7 +26,6 @@ class ModelStorageSaveMany2One(ModelSQL):
 
 
 class ModelStorageSaveMany2OneTarget(ModelSQL):
-    "ModelStorage to test save with Many2One - Target"
     __name__ = 'test.modelstorage.save_m2o.target'
 
     parent = fields.Many2One('test.modelstorage.save_m2o', "Parent")
@@ -38,12 +34,10 @@ class ModelStorageSaveMany2OneTarget(ModelSQL):
 
 
 class ModelStorageSaveMany2OneTargetTarget(ModelSQL):
-    "ModelStorage to test save with Many2One - Target of Target"
     __name__ = 'test.modelstorage.save_m2o.o2m_target.target'
 
 
 class ModelStorageSave2Many(ModelSQL):
-    "Model Storage to test save with xxx2many"
     __name__ = 'test.modelstorage.save2many'
     targets = fields.One2Many(
         'test.modelstorage.save2many.target', 'parent', "Targets")
@@ -52,20 +46,17 @@ class ModelStorageSave2Many(ModelSQL):
 
 
 class ModelStorageSave2ManyTarget(ModelSQL):
-    "Model Storage to test save with xxx2many"
     __name__ = 'test.modelstorage.save2many.target'
     parent = fields.Many2One('test.modelstorage.save2many', "Parent")
 
 
 class ModelStorageSave2ManyRelation(ModelSQL):
-    "Model Storage to test save with xxx2many"
     __name__ = 'test.modelstorage.save2many.relation'
     parent = fields.Many2One('test.modelstorage.save2many', "Parent")
     target = fields.Many2One('test.modelstorage.save2many.target', "Target")
 
 
 class ModelStorageContext(ModelSQL):
-    'Model Storage to test Context'
     __name__ = 'test.modelstorage.context'
     context = fields.Function(fields.Dict(None, 'Context'), 'get_context')
 
@@ -74,7 +65,6 @@ class ModelStorageContext(ModelSQL):
 
 
 class ModelStoragePYSONDomain(ModelSQL):
-    "Model stored with PYSON domain"
     __name__ = 'test.modelstorage.pyson_domain'
     constraint = fields.Char("Constraint")
     value = fields.Char(
@@ -86,7 +76,6 @@ class ModelStoragePYSONDomain(ModelSQL):
 
 
 class ModelStorageRelationDomain(ModelSQL):
-    "Model stored containing a relation field with a domain"
     __name__ = 'test.modelstorage.relation_domain'
     relation = fields.Many2One(
         'test.modelstorage.relation_domain.target', "Value",
@@ -124,7 +113,6 @@ class ModelStorageRelationDomain(ModelSQL):
 
 
 class ModelStorageRelationDomainTarget(ModelSQL):
-    "Target of Model stored containing a relation field with a domain"
     __name__ = 'test.modelstorage.relation_domain.target'
     value = fields.Char("Value")
     valid = fields.Function(
@@ -142,7 +130,6 @@ class ModelStorageRelationDomainTarget(ModelSQL):
 
 
 class ModelStorageRelationMultiDomain(ModelSQL):
-    "Model stored containing a relation fields with multi domain"
     __name__ = 'test.modelstorage.relation_multi_domain'
     relation = fields.Many2One(
         'test.modelstorage.relation_multi_domain.target', "Value",
@@ -153,14 +140,12 @@ class ModelStorageRelationMultiDomain(ModelSQL):
 
 
 class ModelStorageRelationMultiDomainTarget(ModelSQL):
-    "Target of Model stored containing a relation field with multi domain"
     __name__ = 'test.modelstorage.relation_multi_domain.target'
     test1 = fields.Boolean("Test 1")
     test2 = fields.Boolean("Test 2")
 
 
 class ModelStorageRelationDomain2(ModelSQL):
-    "Model stored containing a relation field with a domain with 2 level"
     __name__ = 'test.modelstorage.relation_domain2'
     relation = fields.Many2One(
         'test.modelstorage.relation_domain2.target', "Relation",
@@ -170,14 +155,12 @@ class ModelStorageRelationDomain2(ModelSQL):
 
 
 class ModelStorageRelationDomain2Target(ModelSQL):
-    "First Target of Model stored containing a relation field with a domain"
     __name__ = 'test.modelstorage.relation_domain2.target'
     relation2 = fields.Many2One(
         'test.modelstorage.relation_domain.target', "Relation 2")
 
 
 class ModelStorageEvalEnvironment(ModelStorage_):
-    "Model for EvalEnvironment"
     __name__ = 'test.modelstorage.eval_environment'
     char = fields.Char("Name")
     reference = fields.Reference(
@@ -195,7 +178,6 @@ class ModelStorageEvalEnvironment(ModelStorage_):
 
 
 class ModelStorageDomainNotRequired(ModelSQL):
-    "Model for domain on not required field"
     __name__ = 'test.modelstorage.domain_not_required'
 
     domain_not_required = fields.Integer(

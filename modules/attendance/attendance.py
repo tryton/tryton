@@ -28,7 +28,6 @@ class SQLiteStrftime(Function):
 
 
 class Line(ModelSQL, ModelView):
-    "Attendance Line"
     __name__ = 'attendance.line'
 
     company = fields.Many2One('company.company', "Company", required=True,
@@ -157,7 +156,6 @@ class Line(ModelSQL, ModelView):
 
 
 class Period(Workflow, ModelSQL, ModelView):
-    "Attendance Period"
     __name__ = 'attendance.period'
     _states = {
         'readonly': Eval('state') == 'closed',
@@ -274,7 +272,6 @@ class Period(Workflow, ModelSQL, ModelView):
 
 
 class SheetLine(ModelSQL, ModelView):
-    "Attendance SheetLine"
     __name__ = 'attendance.sheet.line'
 
     company = fields.Many2One('company.company', "Company")
@@ -368,7 +365,6 @@ class SheetLine(ModelSQL, ModelView):
 
 
 class Sheet(ModelSQL, ModelView):
-    "Attendance Sheet"
     __name__ = 'attendance.sheet'
 
     company = fields.Many2One('company.company', "Company")

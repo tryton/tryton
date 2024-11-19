@@ -61,7 +61,7 @@ class FieldMany2OneTestCase(TestCase):
         "Test create many2one with valid domain"
         pool = Pool()
         Target = pool.get('test.many2one_target')
-        Many2One = pool.get('test.many2one_domainvalidation')
+        Many2One = pool.get('test.many2one_domain_validation')
         target, = Target.create([{'value': 6}])
 
         many2one, = Many2One.create([{
@@ -75,7 +75,7 @@ class FieldMany2OneTestCase(TestCase):
         "Test create many2one with invalid domain"
         pool = Pool()
         Target = pool.get('test.many2one_target')
-        Many2One = pool.get('test.many2one_domainvalidation')
+        Many2One = pool.get('test.many2one_domain_validation')
         target, = Target.create([{'value': 1}])
 
         with self.assertRaisesRegex(
@@ -92,7 +92,7 @@ class FieldMany2OneTestCase(TestCase):
         "Test create many2one with domain and inactive target"
         pool = Pool()
         Target = pool.get('test.many2one_target')
-        Many2One = pool.get('test.many2one_domainvalidation')
+        Many2One = pool.get('test.many2one_domain_validation')
         target, = Target.create([{'value': 6, 'active': False}])
 
         many2one, = Many2One.create([{

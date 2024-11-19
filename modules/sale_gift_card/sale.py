@@ -43,7 +43,6 @@ class Configuration(metaclass=PoolMeta):
 
 
 class ConfigurationGiftCardSequence(ModelSQL, CompanyValueMixin):
-    "Gift Card Configuration Sequence"
     __name__ = 'sale.configuration.gift_card.sequence'
     gift_card_sequence = fields.Many2One(
         'ir.sequence', "Gift Card Sequence",
@@ -55,7 +54,6 @@ class ConfigurationGiftCardSequence(ModelSQL, CompanyValueMixin):
 
 
 class GiftCard(ModelSQL, ModelView):
-    "Gift Card"
     __name__ = 'sale.gift_card'
     _rec_name = 'number'
 
@@ -557,7 +555,6 @@ class POSPay(metaclass=PoolMeta):
 
 
 class POSPayGiftCard(ModelView):
-    "POS Pay - Gift Card"
     __name__ = 'sale.point.sale.pay.gift_card'
 
     sale = fields.Many2One('sale.point.sale', "Sale")

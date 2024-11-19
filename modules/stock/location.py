@@ -22,7 +22,6 @@ from .exceptions import LocationValidationError
 
 
 class WarehouseWasteLocation(ModelSQL):
-    "Warehouse Waste Location"
     __name__ = 'stock.location.waste'
 
     warehouse = fields.Many2One(
@@ -34,7 +33,6 @@ class WarehouseWasteLocation(ModelSQL):
 
 
 class Location(DeactivableMixin, tree(), ModelSQL, ModelView):
-    "Stock Location"
     __name__ = 'stock.location'
     _default_warehouse_cache = Cache('stock.location.default_warehouse',
         context=False)
@@ -656,7 +654,6 @@ class Location(DeactivableMixin, tree(), ModelSQL, ModelView):
 
 
 class ProductsByLocationsContext(ModelView):
-    'Products by Locations'
     __name__ = 'stock.products_by_locations.context'
 
     company = fields.Many2One('company.company', "Company", required=True)
@@ -685,7 +682,6 @@ class ProductsByLocationsContext(ModelView):
 
 
 class ProductsByLocations(DeactivableMixin, ModelSQL, ModelView):
-    "Products by Locations"
     __name__ = 'stock.products_by_locations'
 
     product = fields.Many2One('product.product', "Product")
@@ -747,7 +743,6 @@ class ProductsByLocations(DeactivableMixin, ModelSQL, ModelView):
 
 
 class LocationLeadTime(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
-    'Location Lead Time'
     __name__ = 'stock.location.lead_time'
 
     warehouse_from = fields.Many2One('stock.location', 'Warehouse From',

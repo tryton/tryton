@@ -44,7 +44,6 @@ class Configuration(metaclass=PoolMeta):
 
 
 class ConfigurationShipmentTolerance(ModelSQL, ValueMixin):
-    "Sale Configuration Shipment Tolerance"
     __name__ = 'sale.configuration.shipment_tolerance'
     sale_under_shipment_tolerance = sale_under_shipment_tolerance
     sale_over_shipment_tolerance = sale_over_shipment_tolerance

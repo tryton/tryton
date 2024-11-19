@@ -78,7 +78,6 @@ class LotMixin:
 
 
 class Lot(DeactivableMixin, ModelSQL, ModelView, LotMixin, StockMixin):
-    "Stock Lot"
     __name__ = 'stock.lot'
     _rec_name = 'number'
 
@@ -178,9 +177,7 @@ class Lot(DeactivableMixin, ModelSQL, ModelView, LotMixin, StockMixin):
 
 
 class LotTrace(ModelSQL, ModelView):
-    "Lot Trace"
     __name__ = 'stock.lot.trace'
-
     product = fields.Many2One(
         'product.product', "Product",
         context={
@@ -324,7 +321,6 @@ class LotTrace(ModelSQL, ModelView):
 
 
 class LotByLocationContext(ModelView):
-    'Lot by Location'
     __name__ = 'stock.lots_by_location.context'
     forecast_date = fields.Date(
         'At Date', help=('Allow to compute expected '
@@ -347,7 +343,6 @@ class LotByLocationContext(ModelView):
 
 
 class LotsByLocations(ModelSQL, ModelView):
-    "Lots by Locations"
     __name__ = 'stock.lots_by_locations'
 
     lot = fields.Many2One('stock.lot', "Lot")
@@ -500,7 +495,6 @@ class Move(metaclass=PoolMeta):
 
 
 class MoveAddLots(Wizard):
-    "Add Lots"
     __name__ = 'stock.move.add.lots'
     start = StateView('stock.move.add.lots.start',
         'stock_lot.move_add_lots_start_view_form', [
@@ -568,7 +562,6 @@ class MoveAddLots(Wizard):
 
 
 class MoveAddLotsStart(ModelView):
-    "Add Lots"
     __name__ = 'stock.move.add.lots.start'
 
     product = fields.Many2One('product.product', "Product", readonly=True)
@@ -632,7 +625,6 @@ class MoveAddLotsStart(ModelView):
 
 
 class MoveAddLotsStartLot(ModelView, LotMixin):
-    "Add Lots"
     __name__ = 'stock.move.add.lots.start.lot'
 
     parent = fields.Many2One('stock.move.add.lots.start', "Parent")
@@ -808,12 +800,9 @@ class Period(metaclass=PoolMeta):
 
 
 class PeriodCacheLot(ModelSQL, ModelView):
-    '''
-    Stock Period Cache per Lot
-
-    It is used to store cached computation of stock quantities per lot.
-    '''
+    "It is used to store cached computation of stock quantities per lot"
     __name__ = 'stock.period.cache.lot'
+
     period = fields.Many2One(
         'stock.period', "Period",
         required=True, readonly=True, ondelete='CASCADE')

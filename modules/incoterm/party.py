@@ -86,7 +86,6 @@ class Address(metaclass=PoolMeta):
 
 
 class Incoterm(sequence_ordered(), ModelView, ModelSQL):
-    "Party Incoterm"
     __name__ = 'party.incoterm'
 
     party = fields.Many2One(

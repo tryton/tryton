@@ -7,7 +7,6 @@ from trytond.transaction import Transaction
 
 
 class Many2OneTarget(DeactivableMixin, ModelSQL):
-    "Many2One Domain Validation Target"
     __name__ = 'test.many2one_target'
     _order_name = 'value'
 
@@ -15,14 +14,12 @@ class Many2OneTarget(DeactivableMixin, ModelSQL):
 
 
 class Many2One(ModelSQL):
-    "Many2One"
     __name__ = 'test.many2one'
     many2one = fields.Many2One('test.many2one_target', 'many2one')
 
 
 class Many2OneDomainValidation(ModelSQL):
-    "Many2One Domain Validation"
-    __name__ = 'test.many2one_domainvalidation'
+    __name__ = 'test.many2one_domain_validation'
     many2one = fields.Many2One('test.many2one_target',
         'many2one',
         domain=[
@@ -32,24 +29,20 @@ class Many2OneDomainValidation(ModelSQL):
 
 
 class Many2OneNoForeignKey(ModelSQL):
-    "Many2One No Foreign Key"
     __name__ = 'test.many2one_no_foreign_key'
     many2one = fields.Many2One('test.many2one_target_storage', 'many2one')
 
 
 class Many2OneTargetStorage(ModelStorage):
-    "Many2One Target Storage"
     __name__ = 'test.many2one_target_storage'
 
 
 class Many2OneTree(ModelSQL):
-    'Many2One Tree'
     __name__ = 'test.many2one_tree'
     many2one = fields.Many2One('test.many2one_tree', 'many2one')
 
 
 class Many2OneMPTT(ModelSQL):
-    'Many2One MPTT'
     __name__ = 'test.many2one_mptt'
     many2one = fields.Many2One('test.many2one_mptt', 'many2one',
         left='left', right='right')
@@ -66,14 +59,12 @@ class Many2OneMPTT(ModelSQL):
 
 
 class Many2OnePath(ModelSQL):
-    "Many2One Path"
     __name__ = 'test.many2one_path'
     many2one = fields.Many2One('test.many2one_path', 'many2one', path='path')
     path = fields.Char("Path")
 
 
 class Many2OneContext(ModelSQL):
-    "Many2One Context"
     __name__ = 'test.many2one_context'
     target = fields.Many2One(
         'test.many2one_context.target', "target",
@@ -81,7 +72,6 @@ class Many2OneContext(ModelSQL):
 
 
 class Many2OneTargetContext(ModelSQL):
-    "Many2One Target Context"
     __name__ = 'test.many2one_context.target'
     context = fields.Function(fields.Char("context"), 'get_context')
 

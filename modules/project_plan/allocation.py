@@ -5,7 +5,6 @@ from trytond.pool import Pool
 
 
 class Allocation(ModelSQL, ModelView):
-    'Allocation'
     __name__ = 'project.allocation'
     employee = fields.Many2One(
         'company.employee', "Employee", required=True, ondelete='CASCADE')

@@ -138,7 +138,6 @@ class ShipmentCreateShipping(metaclass=PoolMeta):
 
 
 class ShipmentCreateShippingMyGLS(Wizard):
-    "Create MyGLS Shipping"
     __name__ = 'stock.shipment.create_shipping.mygls'
 
     start = StateTransition()

@@ -70,7 +70,6 @@ class Line(order_line_mixin('sale'), metaclass=PoolMeta):
 class LineComponent(
         order_line_component_mixin('sale'), ComponentMixin,
         ModelSQL, ModelView):
-    "Sale Line Component"
     __name__ = 'sale.line.component'
 
     @property
@@ -178,7 +177,6 @@ class LineComponent(
 
 
 class LineComponentIgnoredMove(ModelSQL):
-    'Sale Line Component - Ignored Move'
     __name__ = 'sale.line.component-ignored-stock.move'
     component = fields.Many2One(
         'sale.line.component', "Component",
@@ -188,7 +186,6 @@ class LineComponentIgnoredMove(ModelSQL):
 
 
 class LineComponentRecreatedMove(ModelSQL):
-    'Sale Line Component - Recreated Move'
     __name__ = 'sale.line.component-recreated-stock.move'
     component = fields.Many2One(
         'sale.line.component', "Sale Line Component",

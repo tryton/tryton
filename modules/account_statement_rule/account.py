@@ -62,7 +62,6 @@ class StatementOrigin(metaclass=PoolMeta):
 
 
 class StatementRule(sequence_ordered(), ModelSQL, ModelView):
-    "Account Statement Rule"
     __name__ = 'account.statement.rule'
 
     name = fields.Char("Name")
@@ -147,7 +146,6 @@ class StatementRule(sequence_ordered(), ModelSQL, ModelView):
 
 
 class StatementRuleInformation(sequence_ordered(), ModelSQL, ModelView):
-    "Account Statement Rule Information"
     __name__ = 'account.statement.rule.information'
 
     rule = fields.Many2One(
@@ -275,7 +273,6 @@ _add_range(StatementRuleInformation, 'number', fields.Numeric, "Numeric")
 
 
 class StatementRuleLine(sequence_ordered(), ModelSQL, ModelView):
-    "Account Statement Rule Line"
     __name__ = 'account.statement.rule.line'
 
     rule = fields.Many2One(

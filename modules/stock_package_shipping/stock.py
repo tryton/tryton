@@ -311,7 +311,6 @@ class ShipmentInReturn(ShippingMixin, metaclass=PoolMeta):
 
 
 class CreateShipping(Wizard):
-    'Create Shipping'
     __name__ = 'stock.shipment.create_shipping'
 
     start = StateTransition()
@@ -342,7 +341,6 @@ class ShippingLabel(Report):
 
 
 class PrintShippingLabel(Wizard):
-    "Print Shipping Label"
     __name__ = 'stock.shipment.print_shipping_label'
     start_state = 'print_'
     print_ = StateAction('stock_package_shipping.report_shipping_label')

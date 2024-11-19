@@ -6,13 +6,11 @@ from trytond.pool import Pool
 
 
 class Boolean(ModelSQL):
-    'Boolean'
     __name__ = 'test.boolean'
     boolean = fields.Boolean(string='Boolean', help='Test boolean')
 
 
 class BooleanDefault(ModelSQL):
-    'Boolean Default'
     __name__ = 'test.boolean_default'
     boolean = fields.Boolean(string='Boolean', help='Test boolean')
 

@@ -5,7 +5,6 @@ from trytond.pool import Pool
 
 
 class TestAccess(ModelSQL):
-    'Test Access'
     __name__ = 'test.access'
     field1 = fields.Char('Field 1')
     field2 = fields.Char('Field 2')
@@ -18,14 +17,12 @@ class TestAccess(ModelSQL):
 
 
 class TestAccessRelate(ModelSQL):
-    "Test Access"
     __name__ = 'test.access.relate'
     value = fields.Integer("Value")
     parent = fields.Many2One('test.access.relate', "Parent")
 
 
 class TestAccessModel(TestAccess):
-    "Test Access from Model"
     __name__ = 'test.access.model'
     access = fields.Many2One('test.access', "Access")
 

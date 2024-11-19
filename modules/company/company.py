@@ -42,7 +42,6 @@ _SUBSTITUTION_HELP = (
 
 
 class Company(ModelSQL, ModelView):
-    'Company'
     __name__ = 'company.company'
     party = fields.Many2One('party.party', 'Party', required=True,
             ondelete='CASCADE')
@@ -198,7 +197,6 @@ class Company(ModelSQL, ModelView):
 
 
 class CompanyLogoCache(ModelSQL):
-    "Company Logo Cache"
     __name__ = 'company.company.logo.cache'
 
     company = fields.Many2One(
@@ -228,7 +226,6 @@ class CompanyLogoCache(ModelSQL):
 
 
 class Employee(ModelSQL, ModelView):
-    'Employee'
     __name__ = 'company.employee'
     party = fields.Many2One('party.party', 'Party', required=True,
         context={
@@ -319,12 +316,10 @@ class Employee(ModelSQL, ModelView):
 
 
 class CompanyConfigStart(ModelView):
-    'Company Config'
     __name__ = 'company.company.config.start'
 
 
 class CompanyConfig(Wizard):
-    'Configure Company'
     __name__ = 'company.company.config'
     start = StateView('company.company.config.start',
         'company.company_config_start_view_form', [

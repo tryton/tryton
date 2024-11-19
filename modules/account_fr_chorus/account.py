@@ -103,7 +103,6 @@ class Configuration(_SyntaxMixin, metaclass=PoolMeta):
 
 
 class CredentialChorus(ModelSQL, CompanyValueMixin):
-    "Account Credential Chorus"
     __name__ = 'account.credential.chorus'
 
     chorus_piste_client_id = fields.Char("Piste Client ID", strip=False)
@@ -205,7 +204,6 @@ class Invoice(metaclass=PoolMeta):
 
 class InvoiceChorus(
         Workflow, ModelSQL, ModelView, _SyntaxMixin, metaclass=PoolMeta):
-    "Invoice Chorus"
     __name__ = 'account.invoice.chorus'
     _history = True
 

@@ -6,7 +6,6 @@ from trytond.pool import Pool
 
 
 class Selection(ModelSQL):
-    'Selection'
     __name__ = 'test.selection'
     select = fields.Selection([
             ('', ''), ('arabic', 'Arabic'), ('hexa', 'Hexadecimal')],
@@ -39,14 +38,12 @@ class Selection(ModelSQL):
 
 
 class SelectionRequired(ModelSQL):
-    'Selection Required'
     __name__ = 'test.selection_required'
     select = fields.Selection([('arabic', 'Arabic'), ('latin', 'Latin')],
         'Selection', required=True)
 
 
 class SelectionLabel(ModelSQL):
-    "Selection with different label"
     __name__ = 'test.selection_label'
     select = fields.Selection([
             ('a', "Z"),

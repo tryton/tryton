@@ -21,7 +21,6 @@ from .exceptions import FormulaError
 
 class AdvancePaymentTerm(
         DeactivableMixin, ModelSQL, ModelView):
-    "Advance Payment Term"
     __name__ = 'sale.advance_payment_term'
 
     name = fields.Char("Name", required=True, translate=True)
@@ -45,7 +44,6 @@ class AdvancePaymentTerm(
 
 
 class AdvancePaymentTermLine(ModelView, ModelSQL, CompanyMultiValueMixin):
-    "Advance Payment Term Line"
     __name__ = 'sale.advance_payment_term.line'
     _rec_name = 'description'
 
@@ -125,7 +123,6 @@ class AdvancePaymentTermLine(ModelView, ModelSQL, CompanyMultiValueMixin):
 
 
 class AdvancePaymentTermLineAccount(ModelSQL, CompanyValueMixin):
-    "Advance Payment Term Line Account"
     __name__ = 'sale.advance_payment_term.line.account'
 
     line = fields.Many2One(
@@ -143,7 +140,6 @@ class AdvancePaymentTermLineAccount(ModelSQL, CompanyValueMixin):
 
 
 class AdvancePaymentCondition(ModelSQL, ModelView):
-    "Advance Payment Condition"
     __name__ = 'sale.advance_payment.condition'
     _rec_name = 'description'
 

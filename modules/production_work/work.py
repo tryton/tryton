@@ -26,13 +26,11 @@ from .exceptions import PickerError
 
 
 class WorkCenterCategory(ModelSQL, ModelView):
-    'Work Center Category'
     __name__ = 'production.work.center.category'
     name = fields.Char('Name', required=True, translate=True)
 
 
 class WorkCenter(DeactivableMixin, tree(separator=' / '), ModelSQL, ModelView):
-    'Work Center'
     __name__ = 'production.work.center'
     name = fields.Char('Name', required=True, translate=True)
     parent = fields.Many2One('production.work.center', 'Parent',
@@ -102,7 +100,6 @@ class WorkCenter(DeactivableMixin, tree(separator=' / '), ModelSQL, ModelView):
 
 
 class Work(sequence_ordered(), ModelSQL, ModelView):
-    'Production Work'
     __name__ = 'production.work'
     operation = fields.Many2One('production.routing.operation', 'Operation',
         required=True)
@@ -308,7 +305,6 @@ def set_work_state(func):
 
 
 class WorkCycle(Workflow, ModelSQL, ModelView):
-    'Work Cycle'
     __name__ = 'production.work.cycle'
     work = fields.Many2One(
         'production.work', "Work", required=True, ondelete='CASCADE')

@@ -38,7 +38,6 @@ ROUNDING_OPPOSITES = {
 
 class Currency(
         SymbolMixin, DigitsMixin, DeactivableMixin, ModelSQL, ModelView):
-    'Currency'
     __name__ = 'currency.currency'
     name = fields.Char('Name', required=True, translate=True,
         help="The main identifier of the currency.")
@@ -268,7 +267,6 @@ class Currency(
 
 
 class CurrencyRate(ModelSQL, ModelView):
-    "Currency Rate"
     __name__ = 'currency.currency.rate'
     date = fields.Date(
         "Date", required=True,
@@ -326,7 +324,6 @@ class CronFetchError(Exception):
 
 
 class Cron(ModelSQL, ModelView):
-    "Currency Cron"
     __name__ = 'currency.cron'
 
     source = fields.Selection(
@@ -476,7 +473,6 @@ class Cron(ModelSQL, ModelView):
 
 
 class Cron_Currency(ModelSQL):
-    "Currency Cron - Currency"
     __name__ = 'currency.cron-currency.currency'
 
     cron = fields.Many2One(

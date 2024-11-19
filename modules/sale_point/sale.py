@@ -28,7 +28,6 @@ from .exceptions import SaleValidationError, SessionValidationError
 
 
 class POS(ModelSQL, ModelView):
-    "Point of Sale"
     __name__ = 'sale.point'
     name = fields.Char("Name", required=True)
     company = fields.Many2One('company.company', "Company", required=True)
@@ -94,7 +93,6 @@ class POS(ModelSQL, ModelView):
 
 
 class POSSale(Workflow, ModelSQL, ModelView, TaxableMixin):
-    "POS Sale"
     __name__ = 'sale.point.sale'
     _rec_name = 'number'
 
@@ -452,7 +450,6 @@ class POSSale(Workflow, ModelSQL, ModelView, TaxableMixin):
 
 
 class POSSaleLine(ModelSQL, ModelView, TaxableMixin):
-    "POS Sale Line"
     __name__ = 'sale.point.sale.line'
 
     _states = {
@@ -726,7 +723,6 @@ class POSSaleLine(ModelSQL, ModelView, TaxableMixin):
 
 
 class POSCashSession(Workflow, ModelSQL, ModelView):
-    "POS Cash Session"
     __name__ = 'sale.point.cash.session'
 
     point = fields.Many2One(
@@ -954,7 +950,6 @@ class POSCashSession(Workflow, ModelSQL, ModelView):
 
 
 class POSCashSessionRelation(ModelSQL):
-    "POS Session Relation"
     __name__ = 'sale.point.cash.session.relation'
 
     previous = fields.Many2One('sale.point.cash.session', "Previous")
@@ -976,7 +971,6 @@ class POSCashSessionRelation(ModelSQL):
 
 
 class POSPayment(ModelSQL, ModelView):
-    "POS Payment"
     __name__ = 'sale.point.payment'
 
     _states = {
@@ -1109,7 +1103,6 @@ class POSPayment(ModelSQL, ModelView):
 
 
 class POSPaymentMethod(DeactivableMixin, ModelSQL, ModelView):
-    "POS Payment Method"
     __name__ = 'sale.point.payment.method'
     company = fields.Many2One('company.company', "Company", required=True)
     name = fields.Char("Name", required=True, translate=True)
@@ -1141,7 +1134,6 @@ class POSPaymentMethod(DeactivableMixin, ModelSQL, ModelView):
 
 
 class POSPay(Wizard):
-    "POS Pay"
     __name__ = 'sale.point.sale.pay'
     start_state = 'payment'
     payment = StateView(
@@ -1185,7 +1177,6 @@ class POSPay(Wizard):
 
 
 class POSCashTransfer(Workflow, ModelSQL, ModelView):
-    "POS Cash Transfer"
     __name__ = 'sale.point.cash.transfer'
 
     _states = {
@@ -1346,7 +1337,6 @@ class POSCashTransfer(Workflow, ModelSQL, ModelView):
 
 
 class POSCashTransferType(ModelSQL, ModelView):
-    "POS Cash Transfer Type"
     __name__ = 'sale.point.cash.transfer.type'
 
     company = fields.Many2One('company.company', "Company", required=True)

@@ -20,7 +20,6 @@ party_lang = fields.Many2One("ir.lang", 'Party Language',
 
 
 class Configuration(ModelSingleton, ModelSQL, ModelView, MultiValueMixin):
-    'Party Configuration'
     __name__ = 'party.configuration'
 
     party_sequence = fields.MultiValue(party_sequence)
@@ -108,7 +107,6 @@ class Configuration(ModelSingleton, ModelSQL, ModelView, MultiValueMixin):
 
 
 class ConfigurationSequence(ModelSQL, ValueMixin):
-    'Party Configuration Sequence'
     __name__ = 'party.configuration.party_sequence'
     party_sequence = party_sequence
 
@@ -118,6 +116,5 @@ class ConfigurationSequence(ModelSQL, ValueMixin):
 
 
 class ConfigurationLang(ModelSQL, ValueMixin):
-    'Party Configuration Lang'
     __name__ = 'party.configuration.party_lang'
     party_lang = party_lang

@@ -33,7 +33,6 @@ def str2bigint(s):
 
 
 class Cron(DeactivableMixin, ModelSQL, ModelView):
-    "Cron"
     __name__ = "ir.cron"
     _states = {
         'readonly': Eval('running', False),

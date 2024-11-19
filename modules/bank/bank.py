@@ -21,7 +21,6 @@ from .exceptions import AccountValidationError, IBANValidationError, InvalidBIC
 
 
 class Bank(ModelSQL, ModelView):
-    'Bank'
     __name__ = 'bank'
     party = fields.Many2One('party.party', 'Party', required=True,
         ondelete='CASCADE')
@@ -88,7 +87,6 @@ class Bank(ModelSQL, ModelView):
 
 
 class Account(DeactivableMixin, ModelSQL, ModelView):
-    'Bank Account'
     __name__ = 'bank.account'
     bank = fields.Many2One(
         'bank', "Bank",
@@ -178,7 +176,6 @@ class Account(DeactivableMixin, ModelSQL, ModelView):
 
 
 class AccountNumber(DeactivableMixin, sequence_ordered(), ModelSQL, ModelView):
-    'Bank Account Number'
     __name__ = 'bank.account.number'
     _rec_name = 'number'
     account = fields.Many2One(
@@ -300,7 +297,6 @@ class AccountNumber(DeactivableMixin, sequence_ordered(), ModelSQL, ModelView):
 
 
 class AccountParty(ModelSQL):
-    'Bank Account - Party'
     __name__ = 'bank.account-party.party'
     account = fields.Many2One(
         'bank.account', "Account", ondelete='CASCADE', required=True)

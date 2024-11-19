@@ -18,7 +18,6 @@ from .exceptions import PaymentTermComputeError, PaymentTermValidationError
 
 
 class PaymentTerm(DeactivableMixin, ModelSQL, ModelView):
-    'Payment Term'
     __name__ = 'account.invoice.payment_term'
     name = fields.Char('Name', size=None, required=True, translate=True)
     description = fields.Text('Description', translate=True)
@@ -81,7 +80,6 @@ class PaymentTerm(DeactivableMixin, ModelSQL, ModelView):
 
 
 class PaymentTermLine(sequence_ordered(), ModelSQL, ModelView):
-    'Payment Term Line'
     __name__ = 'account.invoice.payment_term.line'
     payment = fields.Many2One('account.invoice.payment_term', 'Payment Term',
             required=True, ondelete="CASCADE")
@@ -221,7 +219,6 @@ class PaymentTermLine(sequence_ordered(), ModelSQL, ModelView):
 
 
 class PaymentTermLineRelativeDelta(sequence_ordered(), ModelSQL, ModelView):
-    'Payment Term Line Relative Delta'
     __name__ = 'account.invoice.payment_term.line.delta'
     line = fields.Many2One('account.invoice.payment_term.line',
         'Payment Term Line', required=True, ondelete='CASCADE')
@@ -310,7 +307,6 @@ class PaymentTermLineRelativeDelta(sequence_ordered(), ModelSQL, ModelView):
 
 
 class TestPaymentTerm(Wizard):
-    'Test Payment Term'
     __name__ = 'account.invoice.payment_term.test'
     start_state = 'test'
     test = StateView('account.invoice.payment_term.test',
@@ -326,7 +322,6 @@ class TestPaymentTerm(Wizard):
 
 
 class TestPaymentTermView(ModelView):
-    'Test Payment Term'
     __name__ = 'account.invoice.payment_term.test'
     payment_term = fields.Many2One('account.invoice.payment_term',
         'Payment Term', required=True)
@@ -365,7 +360,6 @@ class TestPaymentTermView(ModelView):
 
 
 class TestPaymentTermViewResult(ModelView):
-    'Test Payment Term'
     __name__ = 'account.invoice.payment_term.test.result'
     date = fields.Date('Date', readonly=True)
     amount = Monetary(

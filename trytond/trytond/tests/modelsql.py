@@ -10,7 +10,6 @@ from trytond.pyson import Eval
 
 
 class ModelSQLRead(ModelSQL):
-    "ModelSQL to test read"
     __name__ = 'test.modelsql.read'
     name = fields.Char("Name")
     target = fields.Many2One('test.modelsql.read.target', "Target")
@@ -20,7 +19,6 @@ class ModelSQLRead(ModelSQL):
 
 
 class ModelSQLReadTarget(ModelSQL):
-    "ModelSQL Target to test read"
     __name__ = 'test.modelsql.read.target'
     name = fields.Char("Name")
     parent = fields.Many2One('test.modelsql.read', "Parent")
@@ -28,7 +26,6 @@ class ModelSQLReadTarget(ModelSQL):
 
 
 class ModelSQLReadContextID(ModelSQL):
-    "ModelSQL to test read with ID in context"
     __name__ = 'test.modelsql.read.context_id'
     name = fields.Char("Name", context={
             'test': Eval('id'),
@@ -36,7 +33,6 @@ class ModelSQLReadContextID(ModelSQL):
 
 
 class ModelSQLReadLimit(ModelSQL):
-    "ModelSQL to test related limit"
     __name__ = 'test.modelsql.read.limit'
     name = fields.Char("Name")
     targets = fields.One2Many(
@@ -50,7 +46,6 @@ class ModelSQLReadLimit(ModelSQL):
 
 
 class ModelSQLReadLimitTarget(ModelSQL):
-    "ModelSQL to test related limit"
     __name__ = 'test.modelsql.read.limit.target'
     name = fields.Char("Name")
     integer = fields.Integer("Integer")
@@ -58,7 +53,6 @@ class ModelSQLReadLimitTarget(ModelSQL):
 
 
 class ModelSQLRequiredField(ModelSQL):
-    'model with a required field'
     __name__ = 'test.modelsql'
 
     integer = fields.Integer(string="integer", required=True)
@@ -66,12 +60,10 @@ class ModelSQLRequiredField(ModelSQL):
 
 
 class ModelSQLTimestamp(ModelSQL):
-    'Model to test timestamp'
     __name__ = 'test.modelsql.timestamp'
 
 
 class ModelSQLCreate(ModelSQL):
-    "Model to test creation"
     __name__ = 'test.modelsql.create'
 
     char = fields.Char("Char")
@@ -79,19 +71,16 @@ class ModelSQLCreate(ModelSQL):
 
 
 class ModelSQLWrite(ModelSQL):
-    "ModelSQL to test write"
     __name__ = 'test.modelsql.write'
     name = fields.Char("Name")
 
 
 class ModelSQLDelete(ModelSQL):
-    "ModelSQL to test delete"
     __name__ = 'test.modelsql.delete'
     name = fields.Char("Name")
 
 
 class ModelSQLFieldSet(ModelSQL):
-    'Model to test field set'
     __name__ = 'test.modelsql.field_set'
 
     field = fields.Function(fields.Integer('Field'),
@@ -106,27 +95,23 @@ class ModelSQLFieldSet(ModelSQL):
 
 
 class ModelSQLOne2Many(ModelSQL):
-    "ModelSQL One2Many"
     __name__ = 'test.modelsql.one2many'
     targets = fields.One2Many(
         'test.modelsql.one2many.target', 'origin', "Targets")
 
 
 class ModelSQLOne2ManyTarget(ModelSQL):
-    "ModelSQL One2Many Target"
     __name__ = 'test.modelsql.one2many.target'
     name = fields.Char("Name", required=True)
     origin = fields.Many2One('test.modelsql.one2many', "Origin")
 
 
 class ModelSQLSearch(ModelSQL):
-    "ModelSQL Search"
     __name__ = 'test.modelsql.search'
     name = fields.Char("Name")
 
 
 class ModelSQLSearchOR2Union(ModelSQL):
-    "ModelSQL Search OR to UNION optimization"
     __name__ = 'test.modelsql.search.or2union'
     name = fields.Char("Name")
     target = fields.Many2One('test.modelsql.search.or2union.target', "Target")
@@ -161,14 +146,12 @@ class ModelSQLSearchOR2Union(ModelSQL):
 
 
 class ModelSQLSearchOR2UnionTarget(ModelSQL):
-    "ModelSQL Target to test read"
     __name__ = 'test.modelsql.search.or2union.target'
     name = fields.Char("Name")
     parent = fields.Many2One('test.modelsql.search.or2union', "Parent")
 
 
 class ModelSQLSearchOR2UnionOrder(ModelSQL):
-    "ModelSQL Search OR to UNION optimization with class order"
     __name__ = 'test.modelsql.search.or2union.class_order'
     name = fields.Char("Name")
     reference = fields.Reference("Reference", [
@@ -186,7 +169,6 @@ class ModelSQLSearchOR2UnionOrder(ModelSQL):
 
 
 class ModelSQLSearchOR2UnionOrderTarget(ModelSQL):
-    "ModelSQL Target to test read"
     __name__ = 'test.modelsql.search.or2union.class_order.target'
     name = fields.Char("Name")
     parent = fields.Many2One(
@@ -194,7 +176,6 @@ class ModelSQLSearchOR2UnionOrderTarget(ModelSQL):
 
 
 class ModelSQLForeignKey(DeactivableMixin, ModelSQL):
-    "ModelSQL Foreign Key"
     __name__ = 'test.modelsql.fk'
 
     target_cascade = fields.Many2One(
@@ -206,12 +187,10 @@ class ModelSQLForeignKey(DeactivableMixin, ModelSQL):
 
 
 class ModelSQLForeignKeyTarget(ModelSQL):
-    "ModelSQL Foreign Key Target"
     __name__ = 'test.modelsql.fk.target'
 
 
 class ModelSQLForeignKeyTree(ModelSQL):
-    "ModelSQL Foreign Key Tree"
     __name__ = 'test.modelsql.fk.tree'
 
     parent_cascade = fields.Many2One(
@@ -223,26 +202,22 @@ class ModelSQLForeignKeyTree(ModelSQL):
 
 
 class NullOrder(ModelSQL):
-    "Null Order"
     __name__ = 'test.modelsql.null_order'
     integer = fields.Integer('Integer')
 
 
 class ModelTranslation(ModelSQL):
-    "ModelSQL with translated field"
     __name__ = 'test.modelsql.translation'
     name = fields.Char("Name", translate=True)
 
 
 class ModelTranslationName(ModelSQL):
-    "ModelSQL with the 'name' field translated"
     __name__ = 'test.modelsql.name_translated'
 
     name = fields.Char("Name", translate=True, help="Name help")
 
 
 class ModelCheck(ModelSQL):
-    "ModelSQL with check constraint"
     __name__ = 'test.modelsql.check'
     value = fields.Integer("Value")
 
@@ -256,7 +231,6 @@ class ModelCheck(ModelSQL):
 
 
 class ModelUnique(ModelSQL):
-    "ModelSQL with unique constraint"
     __name__ = 'test.modelsql.unique'
     value = fields.Integer("Value")
 
@@ -270,7 +244,6 @@ class ModelUnique(ModelSQL):
 
 
 class ModelExclude(ModelSQL):
-    "ModelSQL with exclude constraint"
     __name__ = 'test.modelsql.exclude'
     value = fields.Integer("Value")
     condition = fields.Boolean("Condition")
@@ -291,7 +264,6 @@ class ModelExclude(ModelSQL):
 
 
 class ModelLock(ModelSQL):
-    'Model to test lock'
     __name__ = 'test.modelsql.lock'
 
 

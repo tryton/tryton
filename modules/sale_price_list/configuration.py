@@ -21,7 +21,6 @@ class Configuration(CompanyMultiValueMixin, metaclass=PoolMeta):
 
 
 class ConfigurationSalePriceList(ModelSQL, CompanyValueMixin):
-    "Sale Configuration Sale PriceList"
     __name__ = 'sale.configuration.sale_price_list'
     sale_price_list = fields.Many2One(
         'product.price_list', "Sale Price List",

@@ -24,7 +24,6 @@ from .exceptions import ComplaintSimilarWarning
 
 
 class Type(DeactivableMixin, ModelSQL, ModelView):
-    'Customer Complaint Type'
     __name__ = 'sale.complaint.type'
 
     name = fields.Char('Name', required=True)
@@ -35,7 +34,6 @@ class Type(DeactivableMixin, ModelSQL, ModelView):
 
 
 class Complaint(Workflow, ModelSQL, ModelView):
-    'Customer Complaint'
     __name__ = 'sale.complaint'
     _rec_name = 'number'
 
@@ -434,7 +432,6 @@ class Complaint(Workflow, ModelSQL, ModelView):
 
 
 class Action(ModelSQL, ModelView):
-    'Customer Complaint Action'
     __name__ = 'sale.complaint.action'
 
     _states = {
@@ -781,7 +778,6 @@ class _Action_Line:
 
 
 class Action_SaleLine(_Action_Line, ModelView, ModelSQL):
-    'Customer Complaint Action - Sale Line'
     __name__ = 'sale.complaint.action-sale.line'
 
     line = fields.Many2One(
@@ -812,7 +808,6 @@ class Action_SaleLine(_Action_Line, ModelView, ModelSQL):
 
 
 class Action_InvoiceLine(_Action_Line, ModelView, ModelSQL):
-    'Customer Complaint Action - Invoice Line'
     __name__ = 'sale.complaint.action-account.invoice.line'
 
     line = fields.Many2One(

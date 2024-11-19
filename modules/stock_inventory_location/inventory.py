@@ -7,7 +7,6 @@ from trytond.wizard import Button, StateAction, StateView, Wizard
 
 
 class CreateInventoriesStart(ModelView):
-    'Create Inventories'
     __name__ = 'stock.inventory.create.start'
     date = fields.Date('Date', required=True)
     company = fields.Many2One('company.company', "Company", required=True)
@@ -50,7 +49,6 @@ class CreateInventoriesStart(ModelView):
 
 
 class CreateInventories(Wizard):
-    'Create Inventories'
     __name__ = 'stock.inventory.create'
     start = StateView('stock.inventory.create.start',
         'stock_inventory_location.inventory_create_start_view_form', [

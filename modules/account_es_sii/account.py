@@ -66,7 +66,6 @@ class Configuration(metaclass=PoolMeta):
 
 
 class CredentialSII(ModelSQL, CompanyValueMixin):
-    "Account Credential SII"
     __name__ = 'account.credential.sii'
 
     es_sii_url = fields.Selection(SII_URL, "SII URL", translate=False)
@@ -256,7 +255,6 @@ class Invoice(metaclass=PoolMeta):
 
 
 class InvoiceSII(ModelSQL, ModelView):
-    "Invoice SII"
     __name__ = 'account.invoice.sii'
 
     invoice = fields.Many2One(

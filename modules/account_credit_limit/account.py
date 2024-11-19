@@ -31,7 +31,6 @@ class Configuration(metaclass=PoolMeta):
 
 
 class ConfigurationDefaultCreditLimitAmount(ModelSQL, CompanyValueMixin):
-    "Account Configuration Default Credit Limit Amount"
     __name__ = 'account.configuration.default_credit_limit_amount'
     default_credit_limit_amount = default_credit_limit_amount
     default_credit_limit_amount_digits = fields.Function(

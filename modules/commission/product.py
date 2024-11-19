@@ -26,7 +26,6 @@ class Template(metaclass=PoolMeta):
 
 
 class Template_Agent(ModelSQL):
-    'Product Template - Commission Agent'
     __name__ = 'product.template-commission.agent'
     template = fields.Many2One(
         'product.template', "Template", required=True)

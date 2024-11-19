@@ -42,7 +42,6 @@ class ProductSupplier(metaclass=PoolMeta):
 
 
 class ProductSupplierDay(ModelSQL):
-    'Product Supplier Day'
     __name__ = 'purchase.product_supplier.day'
     product_supplier = fields.Many2One(
         'purchase.product_supplier', 'Supplier',

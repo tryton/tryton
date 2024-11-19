@@ -25,7 +25,6 @@ from .exceptions import InspectionError, InspectionValidationError
 
 class Configuration(
         ModelSingleton, CompanyMultiValueMixin, ModelSQL, ModelView):
-    "Quality Configuration"
     __name__ = 'quality.configuration'
 
     inspection_sequence = fields.MultiValue(fields.Many2One(
@@ -68,7 +67,6 @@ class Configuration(
 
 
 class ConfigurationSequence(CompanyValueMixin, ModelSQL):
-    "Quality Configuration Sequence"
     __name__ = 'quality.configuration.sequence'
     inspection_sequence = fields.Many2One(
         'ir.sequence', "Inspection Sequence", required=True,
@@ -160,7 +158,6 @@ class ControlledMixin(ModelStorage):
 
 
 class Control(DeactivableMixin, MatchMixin, ModelSQL, ModelView):
-    "Quality Control"
     __name__ = 'quality.control'
 
     name = fields.Char("Name", required=True, translate=True)
@@ -297,7 +294,6 @@ class Control(DeactivableMixin, MatchMixin, ModelSQL, ModelView):
 
 
 class ControlPoint(DictSchemaMixin, ModelSQL, ModelView):
-    "Quality Control Point"
     __name__ = 'quality.control.point'
 
     control = fields.Many2One(
@@ -341,7 +337,6 @@ class ControlPoint(DictSchemaMixin, ModelSQL, ModelView):
 
 
 class Inspection(Workflow, ModelSQL, ModelView):
-    "Quality Inspection"
     __name__ = 'quality.inspection'
     _rec_name = 'number'
 
@@ -607,7 +602,6 @@ class Inspection(Workflow, ModelSQL, ModelView):
 
 
 class Alert(Workflow, ModelSQL, ModelView):
-    "Quality Alert"
     __name__ = 'quality.alert'
     _rec_name = 'number'
 
@@ -761,7 +755,6 @@ class InspectStateView(StateView):
 
 
 class Inspect(Wizard):
-    "Inspect Quality"
     __name__ = 'quality.inspect'
 
     start = StateTransition()
@@ -855,7 +848,6 @@ class Inspect(Wizard):
 
 
 class InspectStore(ModelView):
-    "Inspect Quality"
     __name__ = 'quality.inspect.store'
 
     inspections = fields.Many2Many(

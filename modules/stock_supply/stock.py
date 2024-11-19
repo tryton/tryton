@@ -11,7 +11,6 @@ from .exceptions import SupplyWarning
 
 
 class Supply(Wizard):
-    "Supply Stock"
     __name__ = 'stock.supply'
     start = StateView(
         'stock.supply.start',
@@ -126,7 +125,6 @@ class Supply(Wizard):
 
 
 class SupplyStart(ModelView):
-    "Supply Stock"
     __name__ = 'stock.supply.start'
 
     warehouses = fields.Many2Many(

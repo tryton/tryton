@@ -7,14 +7,12 @@ from trytond.pyson import Eval
 
 
 class Float(ModelSQL):
-    'Float'
     __name__ = 'test.float'
     float = fields.Float(string='Float', help='Test float',
             required=False)
 
 
 class FloatDefault(ModelSQL):
-    'Float Default'
     __name__ = 'test.float_default'
     float = fields.Float(string='Float', help='Test float',
             required=False)
@@ -25,14 +23,12 @@ class FloatDefault(ModelSQL):
 
 
 class FloatRequired(ModelSQL):
-    'Float Required'
     __name__ = 'test.float_required'
     float = fields.Float(string='Float', help='Test float',
             required=True)
 
 
 class FloatDigits(ModelSQL):
-    'Float Digits'
     __name__ = 'test.float_digits'
     digits = fields.Integer('Digits')
     float = fields.Float(string='Float', help='Test float',

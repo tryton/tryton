@@ -14,7 +14,6 @@ class Configuration(metaclass=PoolMeta):
 
 
 class ConfigurationDefaultDunningProcedure(ModelSQL, ValueMixin):
-    "Account Configuration Default Dunning Procedure"
     __name__ = 'account.configuration.default_dunning_procedure'
     default_dunning_procedure = default_dunning_procedure
 

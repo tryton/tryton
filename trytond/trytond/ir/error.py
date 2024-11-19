@@ -45,7 +45,6 @@ def reset_user(*fields):
 
 
 class Error(Workflow, ModelView, ModelSQL):
-    "Error"
     __name__ = 'ir.error'
 
     origin = fields.Reference("Origin", [

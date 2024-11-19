@@ -6,12 +6,10 @@ from trytond.pool import Pool
 
 
 class DictSchema(DictSchemaMixin, ModelSQL):
-    'Dict Schema'
     __name__ = 'test.dict.schema'
 
 
 class Dict(ModelSQL):
-    'Dict'
     __name__ = 'test.dict'
     dico = fields.Dict('test.dict.schema', 'Test Dict')
     dico_string = dico.translated('dico')
@@ -19,7 +17,6 @@ class Dict(ModelSQL):
 
 
 class DictDefault(ModelSQL):
-    'Dict Default'
     __name__ = 'test.dict_default'
     dico = fields.Dict(None, 'Test Dict')
 
@@ -29,32 +26,27 @@ class DictDefault(ModelSQL):
 
 
 class DictRequired(ModelSQL):
-    'Dict Required'
     __name__ = 'test.dict_required'
     dico = fields.Dict(None, 'Test Dict', required=True)
 
 
 class DictText(ModelSQL):
-    'Dict TEXT'
     __name__ = 'test.dict_text'
     dico = fields.Dict('test.dict.schema', 'Test Dict')
     dico._sql_type = 'TEXT'
 
 
 class DictNoSchema(ModelSQL):
-    "Dict No Schema"
     __name__ = 'test.dict_noschema'
     dico = fields.Dict(None, "Dict")
 
 
 class DictUnaccentedOn(ModelSQL):
-    "Dict Unaccented On"
     __name__ = 'test.dict_unaccented_on'
     dico = fields.Dict(None, "Dict")
 
 
 class DictUnaccentedOff(ModelSQL):
-    "Dict Unaccented Off"
     __name__ = 'test.dict_unaccented_off'
     dico = fields.Dict(None, "Dict")
 

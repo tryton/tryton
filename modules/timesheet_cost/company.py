@@ -71,7 +71,6 @@ class Employee(metaclass=PoolMeta):
 
 
 class EmployeeCostPrice(ModelSQL, ModelView):
-    'Employee Cost Price'
     __name__ = 'company.employee_cost_price'
     date = fields.Date("Date", required=True)
     cost_price = fields.Numeric('Cost Price',

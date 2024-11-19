@@ -5,7 +5,6 @@ from trytond.pool import Pool
 
 
 class Path(DeactivableMixin, tree(), ModelSQL):
-    "Path"
     __name__ = 'test.path'
     name = fields.Char("Name", required=True)
     parent = fields.Many2One('test.path', "Parent", path='path')

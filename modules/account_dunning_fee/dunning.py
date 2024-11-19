@@ -10,7 +10,6 @@ from trytond.transaction import Transaction
 
 
 class Fee(DeactivableMixin, ModelSQL, ModelView):
-    'Account Dunning Fee'
     __name__ = 'account.dunning.fee'
     name = fields.Char('Name', required=True, translate=True)
     product = fields.Many2One('product.product', 'Product', required=True,
@@ -83,7 +82,6 @@ class Dunning(metaclass=PoolMeta):
 
 
 class FeeDunningLevel(ModelSQL, ModelView):
-    'Account Dunning Fee Dunning-Level'
     __name__ = 'account.dunning.fee.dunning_level'
 
     dunning = fields.Many2One(

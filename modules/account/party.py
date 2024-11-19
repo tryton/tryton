@@ -288,7 +288,6 @@ class Party(CompanyMultiValueMixin, metaclass=PoolMeta):
 
 
 class PartyAccount(ModelSQL, CompanyValueMixin):
-    "Party Account"
     __name__ = 'party.party.account'
     party = fields.Many2One(
         'party.party', "Party", ondelete='CASCADE',

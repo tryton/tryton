@@ -8,14 +8,12 @@ from trytond.pool import Pool
 
 
 class TimeDelta(ModelSQL):
-    'TimeDelta'
     __name__ = 'test.timedelta'
     timedelta = fields.TimeDelta(string='TimeDelta', help='Test timedelta',
         required=False)
 
 
 class TimeDeltaDefault(ModelSQL):
-    'TimeDelta Default'
     __name__ = 'test.timedelta_default'
     timedelta = fields.TimeDelta(string='TimeDelta', help='Test timedelta',
         required=False)
@@ -26,7 +24,6 @@ class TimeDeltaDefault(ModelSQL):
 
 
 class TimeDeltaRequired(ModelSQL):
-    'TimeDelta Required'
     __name__ = 'test.timedelta_required'
     timedelta = fields.TimeDelta(string='TimeDelta', help='Test timedelta',
         required=True)

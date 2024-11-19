@@ -9,7 +9,6 @@ from trytond.transaction import inactive_records
 
 
 class Carrier(DeactivableMixin, ModelSQL, ModelView):
-    'Carrier'
     __name__ = 'carrier'
     party = fields.Many2One('party.party', 'Party', required=True,
             ondelete='CASCADE', help="The party which represents the carrier.")
@@ -84,7 +83,6 @@ class Carrier(DeactivableMixin, ModelSQL, ModelView):
 
 class Selection(
         DeactivableMixin, sequence_ordered(), MatchMixin, ModelSQL, ModelView):
-    'Carrier Selection'
     __name__ = 'carrier.selection'
     _get_carriers_cache = Cache(
         'carrier.selection.get_carriers', context=False)

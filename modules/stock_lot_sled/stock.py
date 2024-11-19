@@ -40,7 +40,6 @@ class Configuration(metaclass=PoolMeta):
 
 
 class ConfigurationLotShelfLife(ModelSQL, ValueMixin):
-    "Stock Configuration Lot Shelf Life"
     __name__ = 'stock.location.lot.shelf_life'
     shelf_life_delay = shelf_life_delay
 

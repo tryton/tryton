@@ -473,7 +473,6 @@ class Payment(metaclass=PoolMeta):
 
 
 class Mandate(Workflow, ModelSQL, ModelView):
-    'SEPA Mandate'
     __name__ = 'account.payment.sepa.mandate'
     party = fields.Many2One(
         'party.party', "Party", required=True,
@@ -801,7 +800,6 @@ class MandateReport(CompanyReport):
 
 
 class Message(Workflow, ModelSQL, ModelView):
-    'SEPA Message'
     __name__ = 'account.payment.sepa.message'
     _states = {
         'readonly': Eval('state') != 'draft',

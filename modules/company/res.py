@@ -10,7 +10,6 @@ from trytond.transaction import Transaction
 
 
 class UserCompany(ModelSQL):
-    "User - Company"
     __name__ = 'res.user-company.company'
 
     user = fields.Many2One(
@@ -43,7 +42,6 @@ class UserCompany(ModelSQL):
 
 
 class UserEmployee(ModelSQL):
-    'User - Employee'
     __name__ = 'res.user-company.employee'
     user = fields.Many2One(
         'res.user', "User", ondelete='CASCADE', required=True)

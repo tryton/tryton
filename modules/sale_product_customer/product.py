@@ -12,7 +12,6 @@ from trytond.tools import is_full_text, lstrip_wildcard
 class ProductCustomer(
         sequence_ordered(), ProductDeactivatableMixin, MatchMixin,
         ModelSQL, ModelView):
-    'Product Customer'
     __name__ = 'sale.product_customer'
 
     template = fields.Many2One(

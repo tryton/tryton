@@ -8,13 +8,11 @@ from trytond.pool import Pool
 
 
 class Time(ModelSQL):
-    'Time'
     __name__ = 'test.time'
     time = fields.Time(string='Time', help='Test time', required=False)
 
 
 class TimeDefault(ModelSQL):
-    'Time Default'
     __name__ = 'test.time_default'
     time = fields.Time(string='Time', help='Test time', required=False)
 
@@ -24,19 +22,16 @@ class TimeDefault(ModelSQL):
 
 
 class TimeRequired(ModelSQL):
-    'Time'
     __name__ = 'test.time_required'
     time = fields.Time(string='Time', help='Test time', required=True)
 
 
 class TimeFormat(ModelSQL):
-    'Time Format'
     __name__ = 'test.time_format'
     time = fields.Time(string='Time', format='%H:%M')
 
 
 class TimePrecision(ModelSQL):
-    "Time precision"
     __name__ = 'test.time_precision'
     time = fields.Time(string="Time", format="%H:%M:%S.%f")
 

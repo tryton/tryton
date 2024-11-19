@@ -6,13 +6,11 @@ from trytond.pool import Pool
 
 
 class Binary(ModelSQL):
-    'Binary'
     __name__ = 'test.binary'
     binary = fields.Binary('Binary')
 
 
 class BinaryDefault(ModelSQL):
-    'Binary Default'
     __name__ = 'test.binary_default'
     binary = fields.Binary('Binary Default')
 
@@ -22,13 +20,11 @@ class BinaryDefault(ModelSQL):
 
 
 class BinaryRequired(ModelSQL):
-    'Binary Required'
     __name__ = 'test.binary_required'
     binary = fields.Binary('Binary Required', required=True)
 
 
 class BinaryFileStorage(ModelSQL):
-    "Binary in FileStorage"
     __name__ = 'test.binary_filestorage'
     binary = fields.Binary('Binary', file_id='binary_id')
     binary_id = fields.Char('Binary ID')

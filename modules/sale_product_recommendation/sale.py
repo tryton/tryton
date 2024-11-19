@@ -41,7 +41,6 @@ class Configuration(metaclass=PoolMeta):
 
 
 class ConfigurationProductRecommendation(ModelSQL, ValueMixin):
-    "Product Recommendation"
     __name__ = 'sale.configuration.product_recommendation'
 
     product_recommendation_method = fields.Selection(

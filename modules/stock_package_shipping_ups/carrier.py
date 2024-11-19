@@ -14,7 +14,6 @@ from .exceptions import UPSCredentialWarning
 
 
 class CredentialUPS(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
-    'UPS Credential'
     __name__ = 'carrier.credential.ups'
     _rec_name = 'account_number'
 

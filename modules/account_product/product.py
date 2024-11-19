@@ -255,7 +255,6 @@ class Category(CompanyMultiValueMixin, metaclass=PoolMeta):
 
 
 class CategoryAccount(ModelSQL, CompanyValueMixin):
-    "Category Account"
     __name__ = 'product.category.account'
     category = fields.Many2One(
         'product.category', "Category", ondelete='CASCADE',
@@ -278,7 +277,6 @@ class CategoryAccount(ModelSQL, CompanyValueMixin):
 
 
 class CategoryCustomerTax(ModelSQL):
-    'Category - Customer Tax'
     __name__ = 'product.category-customer-account.tax'
     category = fields.Many2One(
         'product.category', "Category", ondelete='CASCADE', required=True)
@@ -299,7 +297,6 @@ class CategoryCustomerTax(ModelSQL):
 
 
 class CategorySupplierTax(ModelSQL):
-    'Category - Supplier Tax'
     __name__ = 'product.category-supplier-account.tax'
     category = fields.Many2One(
         'product.category', "Category", ondelete='CASCADE', required=True)
@@ -412,7 +409,6 @@ class Product(metaclass=PoolMeta):
 
 
 class TemplateAccountCategory(ModelSQL):
-    "Template - Account Category"
     __name__ = 'product.template-product.category.account'
     template = fields.Many2One('product.template', 'Template')
     category = fields.Many2One('product.category', 'Category')

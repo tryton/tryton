@@ -161,7 +161,6 @@ class ShipmentCostSaleMixin:
 
 
 class ShipmentCostSale(ModelSQL):
-    "Shipment Cost Sale"
     __name__ = 'stock.shipment.cost_sale'
 
     shipment = fields.Reference(

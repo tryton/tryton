@@ -42,7 +42,9 @@ class MultiSelection(SelectionMixin, Field):
         self.sort = sort
         self.translate_selection = translate
         self.help_selection = help_selection
-    __init__.__doc__ += Field.__init__.__doc__
+
+    if __init__.__doc__:
+        __init__.__doc__ += Field.__init__.__doc__
 
     def set_rpc(self, model):
         super().set_rpc(model)

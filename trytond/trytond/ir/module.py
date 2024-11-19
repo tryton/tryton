@@ -35,7 +35,6 @@ def filter_state(state):
 
 
 class Module(ModelSQL, ModelView):
-    "Module"
     __name__ = "ir.module"
     name = fields.Char("Name", readonly=True, required=True)
     version = fields.Function(fields.Char('Version'), 'get_version')
@@ -271,7 +270,6 @@ class Module(ModelSQL, ModelView):
 
 
 class ModuleDependency(ModelSQL, ModelView):
-    "Module dependency"
     __name__ = "ir.module.dependency"
     name = fields.Char('Name')
     module = fields.Many2One('ir.module', 'Module',
@@ -310,8 +308,8 @@ class ModuleDependency(ModelSQL, ModelView):
 
 
 class ModuleConfigWizardItem(sequence_ordered(), ModelSQL, ModelView):
-    "Config wizard to run after activating a module"
     __name__ = 'ir.module.config_wizard.item'
+
     action = fields.Many2One('ir.action', 'Action', required=True,
         readonly=True)
     state = fields.Selection([
@@ -338,12 +336,10 @@ class ModuleConfigWizardItem(sequence_ordered(), ModelSQL, ModelView):
 
 
 class ModuleConfigWizardFirst(ModelView):
-    'Module Config Wizard First'
     __name__ = 'ir.module.config_wizard.first'
 
 
 class ModuleConfigWizardOther(ModelView):
-    'Module Config Wizard Other'
     __name__ = 'ir.module.config_wizard.other'
 
     percentage = fields.Float('Percentage', digits=(1, 2), readonly=True)
@@ -360,12 +356,10 @@ class ModuleConfigWizardOther(ModelView):
 
 
 class ModuleConfigWizardDone(ModelView):
-    'Module Config Wizard Done'
     __name__ = 'ir.module.config_wizard.done'
 
 
 class ModuleConfigWizard(Wizard):
-    'Run config wizards'
     __name__ = 'ir.module.config_wizard'
 
     class ConfigStateAction(StateAction):
@@ -436,18 +430,15 @@ class ModuleConfigWizard(Wizard):
 
 
 class ModuleActivateUpgradeStart(ModelView):
-    'Module Activate Upgrade Start'
     __name__ = 'ir.module.activate_upgrade.start'
     module_info = fields.Text('Modules to update', readonly=True)
 
 
 class ModuleActivateUpgradeDone(ModelView):
-    'Module Activate Upgrade Done'
     __name__ = 'ir.module.activate_upgrade.done'
 
 
 class ModuleActivateUpgrade(Wizard):
-    "Activate / Upgrade modules"
     __name__ = 'ir.module.activate_upgrade'
 
     start = StateView('ir.module.activate_upgrade.start',
@@ -522,7 +513,6 @@ class ModuleActivateUpgrade(Wizard):
 
 
 class ModuleConfig(Wizard):
-    'Configure Modules'
     __name__ = 'ir.module.config'
 
     start = StateView('ir.module.config.start',
@@ -544,7 +534,6 @@ class ModuleConfig(Wizard):
 
 
 class ModuleConfigStart(ModelView):
-    "Configure Modules"
     __name__ = 'ir.module.config.start'
 
     modules = fields.Many2Many(

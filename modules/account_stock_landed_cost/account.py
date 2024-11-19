@@ -45,7 +45,6 @@ class Configuration(metaclass=PoolMeta):
 
 
 class ConfigurationLandedCostSequence(ModelSQL, CompanyValueMixin):
-    "Account Configuration Landed Cost Sequence"
     __name__ = 'account.configuration.landed_cost_sequence'
     landed_cost_sequence = fields.Many2One(
         'ir.sequence', "Landed Cost Sequence", required=True,
@@ -67,7 +66,6 @@ class ConfigurationLandedCostSequence(ModelSQL, CompanyValueMixin):
 
 
 class LandedCost(Workflow, ModelSQL, ModelView, MatchMixin):
-    'Landed Cost'
     __name__ = 'account.landed_cost'
     _rec_name = 'number'
     number = fields.Char("Number", readonly=True)
@@ -445,7 +443,6 @@ class LandedCost(Workflow, ModelSQL, ModelView, MatchMixin):
 
 
 class LandedCost_Shipment(ModelSQL):
-    'Landed Cost - Shipment'
     __name__ = 'account.landed_cost-stock.shipment.in'
     landed_cost = fields.Many2One(
         'account.landed_cost', 'Landed Cost',
@@ -455,7 +452,6 @@ class LandedCost_Shipment(ModelSQL):
 
 
 class LandedCost_ProductCategory(ModelSQL):
-    "Landed Cost - Product Category"
     __name__ = 'account.landed_cost-product.category'
     landed_cost = fields.Many2One(
         'account.landed_cost', 'Landed Cost',
@@ -465,7 +461,6 @@ class LandedCost_ProductCategory(ModelSQL):
 
 
 class LandedCost_Product(ModelSQL):
-    "Landed Cost - Product"
     __name__ = 'account.landed_cost-product.product'
     landed_cost = fields.Many2One(
         'account.landed_cost', "Landed Cost",
@@ -501,7 +496,6 @@ class ShowLandedCostMixin(Wizard):
 
 
 class PostLandedCost(ShowLandedCostMixin):
-    "Post Landed Cost"
     __name__ = 'account.landed_cost.post'
     post = StateTransition()
 
@@ -519,7 +513,6 @@ class PostLandedCost(ShowLandedCostMixin):
 
 
 class ShowLandedCost(ShowLandedCostMixin):
-    "Show Landed Cost"
     __name__ = 'account.landed_cost.show'
 
     @classmethod
@@ -535,7 +528,6 @@ class ShowLandedCost(ShowLandedCostMixin):
 
 
 class LandedCostShow(ModelView):
-    "Landed Cost Show"
     __name__ = 'account.landed_cost.show'
 
     cost = fields.Numeric("Cost", digits=price_digits, readonly=True)
@@ -544,7 +536,6 @@ class LandedCostShow(ModelView):
 
 
 class LandedCostShowMove(ModelView):
-    "Landed Cost Show"
     __name__ = 'account.landed_cost.show.move'
 
     move = fields.Many2One('stock.move', "Move", readonly=True)

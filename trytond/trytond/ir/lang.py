@@ -64,8 +64,8 @@ def _replace(src, old, new, escape='%'):
 
 
 class Lang(DeactivableMixin, ModelSQL, ModelView):
-    "Language"
     __name__ = "ir.lang"
+    __string__ = "Language"
     name = fields.Char('Name', required=True, translate=True)
     code = fields.Char('Code', required=True, help="RFC 4646 tag.")
     translatable = fields.Boolean('Translatable', readonly=True)
@@ -615,9 +615,7 @@ class Lang(DeactivableMixin, ModelSQL, ModelView):
 
 
 class LangConfigStart(ModelView):
-    "Configure languages"
     __name__ = 'ir.lang.config.start'
-
     languages = fields.Many2Many('ir.lang', None, None, "Languages")
 
     @classmethod
@@ -628,7 +626,6 @@ class LangConfigStart(ModelView):
 
 
 class LangConfig(Wizard):
-    'Configure languages'
     __name__ = 'ir.lang.config'
 
     start = StateView('ir.lang.config.start',

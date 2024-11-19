@@ -66,7 +66,6 @@ class Promotion(metaclass=PoolMeta):
 
 
 class PromotionCoupon(ModelSQL, ModelView):
-    "Promotion Coupon"
     __name__ = 'sale.promotion.coupon'
 
     name = fields.Char("Name", required=True)
@@ -131,7 +130,6 @@ class PromotionCoupon(ModelSQL, ModelView):
 
 
 class PromotionCouponNumber(DeactivableMixin, ModelSQL, ModelView):
-    "Promotion Coupon Number"
     __name__ = 'sale.promotion.coupon.number'
     _rec_name = 'number'
 
@@ -386,7 +384,6 @@ class Sale(metaclass=PoolMeta):
 
 
 class Sale_PromotionCouponNumber(ModelSQL):
-    "Sale - Promotion Coupon Number"
     __name__ = 'sale.sale-sale.promotion.coupon.number'
 
     sale = fields.Many2One(

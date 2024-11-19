@@ -14,7 +14,6 @@ from trytond.wizard import Button, StateAction, StateView, Wizard
 
 
 class QuantityEarlyPlan(Workflow, ModelSQL, ModelView):
-    "Stock Quantity Early Plan"
     __name__ = 'stock.quantity.early_plan'
 
     company = fields.Many2One(
@@ -549,7 +548,6 @@ class Move(metaclass=PoolMeta):
 
 
 class QuantityEarlyPlanGenerate(Wizard):
-    "Stock Quantity Early Plan Generate"
     __name__ = 'stock.quantity.early_plan.generate'
     start = StateView(
         'stock.quantity.early_plan.generate.start',
@@ -570,7 +568,6 @@ class QuantityEarlyPlanGenerate(Wizard):
 
 
 class QuantityEarlyPlanGenerateStart(ModelView):
-    "Stock Quantity Early Plan Generate"
     __name__ = 'stock.quantity.early_plan.generate.start'
     warehouses = fields.Many2Many(
         'stock.location', None, None, "Warehouses",

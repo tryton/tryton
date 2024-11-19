@@ -30,7 +30,6 @@ class SubscriptionService(metaclass=PoolMeta):
 
 
 class SubscriptionServiceStockLot(ModelSQL):
-    "Subscription Service - Stock Lot Asset"
     __name__ = 'sale.subscription.service-stock.lot.asset'
 
     service = fields.Many2One(

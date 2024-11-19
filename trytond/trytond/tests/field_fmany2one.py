@@ -6,7 +6,6 @@ from trytond.pool import Pool
 
 
 class FMany2OneTarget(ModelSQL):
-    "FMany2One Target"
     __name__ = 'test.fmany2one_target'
 
     name = fields.Char("Name")
@@ -27,7 +26,6 @@ class FMany2OneTargetChild(
         fields.fmany2one(
             'parent', 'parent_name', 'test.fmany2one_target,name', "Parent"),
         ModelSQL):
-    "FMany2One Target Child"
     __name__ = 'test.fmany2one_target.child'
 
     name = fields.Char("Name")
@@ -51,7 +49,6 @@ class FMany2One(
             'child', 'child_name,target_name',
             'test.fmany2one_target.child,name,parent_name', "Child"),
         ModelSQL):
-    "FMany2One"
     __name__ = 'test.fmany2one'
 
     target_name = fields.Char("Target Name")
@@ -63,7 +60,6 @@ class FMany2OneRequired(
             'target', 'target_name', 'test.fmany2one_target,name', "Target",
             required=True),
         ModelSQL):
-    "FMany2One required"
     __name__ = 'test.fmany2one_required'
 
     target_name = fields.Char("Target Name", required=True)

@@ -53,7 +53,8 @@ class Function(Field):
             'loading must be "lazy" or "eager"'
         self.loading = loading
 
-    __init__.__doc__ += Field.__init__.__doc__
+    if __init__.__doc__:
+        __init__.__doc__ += Field.__init__.__doc__
 
     def __copy__(self):
         return Function(copy.copy(self._field), self.getter,

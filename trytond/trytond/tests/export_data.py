@@ -6,14 +6,12 @@ from trytond.pool import Pool, PoolMeta
 
 
 class ExportDataTarget(ModelSQL):
-    "Export Data Target"
     __name__ = 'test.export_data.target'
     name = fields.Char('Name')
     value = fields.Float("Value")
 
 
 class ExportData(ModelSQL):
-    "Export Data"
     __name__ = 'test.export_data'
     boolean = fields.Boolean('Boolean')
     integer = fields.Integer('Integer')
@@ -43,13 +41,11 @@ class ExportData(ModelSQL):
 
 
 class ExportDataTarget2(metaclass=PoolMeta):
-    'Export Date Target'
     __name__ = 'test.export_data.target'
     one2many = fields.Many2One('test.export_data', 'Export Data')
 
 
 class ExportDataRelation(ModelSQL):
-    "Export Data Many2Many"
     __name__ = 'test.export_data.relation'
     many2many = fields.Many2One('test.export_data', 'Export Data')
     target = fields.Many2One('test.export_data.target', 'Target')

@@ -5,7 +5,6 @@ from trytond.pool import Pool
 
 
 class TestHistory(ModelSQL):
-    'Test History'
     __name__ = 'test.history'
     _history = True
     value = fields.Integer('Value')
@@ -17,7 +16,6 @@ class TestHistory(ModelSQL):
 
 
 class TestHistoryLine(ModelSQL):
-    'Test History Line'
     __name__ = 'test.history.line'
     _history = True
     history = fields.Many2One('test.history', 'History')

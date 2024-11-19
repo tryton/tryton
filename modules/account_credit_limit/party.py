@@ -120,7 +120,6 @@ class Party(metaclass=PoolMeta):
 
 
 class PartyCreditLimitAmount(ModelSQL, CompanyValueMixin):
-    "Party Credit Limit Amount"
     __name__ = 'party.party.credit_limit_amount'
     party = fields.Many2One(
         'party.party', "Party", ondelete='CASCADE',

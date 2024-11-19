@@ -155,7 +155,6 @@ class CreateShipping(metaclass=PoolMeta):
 
 
 class CreateShippingUPS(Wizard):
-    'Create UPS Shipping'
     __name__ = 'stock.shipment.create_shipping.ups'
 
     start = StateTransition()

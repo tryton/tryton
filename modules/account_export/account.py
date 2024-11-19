@@ -42,7 +42,6 @@ class Configuration(_ExportTypes, metaclass=PoolMeta):
 
 
 class ConfigurationExport(_ExportTypes, ModelSQL, CompanyValueMixin):
-    "Account Configuration Export"
     __name__ = 'account.configuration.export'
 
     move_export_type = fields.Selection(
@@ -71,7 +70,6 @@ class Move(metaclass=PoolMeta):
 
 
 class MoveExport(Workflow, ModelSQL, ModelView):
-    "Account Move Export"
     __name__ = 'account.move.export'
 
     company = fields.Many2One('company.company', "Company", required=True)

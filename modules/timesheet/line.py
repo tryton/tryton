@@ -18,7 +18,6 @@ from .exceptions import DurationValidationError
 
 
 class Line(ModelSQL, ModelView):
-    'Timesheet Line'
     __name__ = 'timesheet.line'
     company = fields.Many2One('company.company', 'Company', required=True,
         help="The company on which the time is spent.")
@@ -161,7 +160,6 @@ class Line(ModelSQL, ModelView):
 
 
 class EnterLinesStart(ModelView):
-    'Enter Lines'
     __name__ = 'timesheet.line.enter.start'
     employee = fields.Many2One('company.employee', 'Employee', required=True,
         domain=[
@@ -191,7 +189,6 @@ class EnterLinesStart(ModelView):
 
 
 class EnterLines(Wizard):
-    'Enter Lines'
     __name__ = 'timesheet.line.enter'
     start = StateView('timesheet.line.enter.start',
         'timesheet.line_enter_start_view_form', [
@@ -226,7 +223,6 @@ class EnterLines(Wizard):
 
 
 class HoursEmployee(ModelSQL, ModelView):
-    'Hours per Employee'
     __name__ = 'timesheet.hours_employee'
     employee = fields.Many2One('company.employee', 'Employee')
     duration = fields.TimeDelta('Duration', 'company_work_time')
@@ -254,14 +250,12 @@ class HoursEmployee(ModelSQL, ModelView):
 
 
 class HoursEmployeeContext(ModelView):
-    'Hours per Employee Context'
     __name__ = 'timesheet.hours_employee.context'
     start_date = fields.Date('Start Date')
     end_date = fields.Date('End Date')
 
 
 class HoursEmployeeWeekly(ModelSQL, ModelView):
-    'Hours per Employee per Week'
     __name__ = 'timesheet.hours_employee_weekly'
     year = fields.Integer("Year")
     week = fields.Integer("Week")
@@ -298,7 +292,6 @@ class HoursEmployeeWeekly(ModelSQL, ModelView):
 
 
 class HoursEmployeeMonthly(ModelSQL, ModelView):
-    'Hours per Employee per Month'
     __name__ = 'timesheet.hours_employee_monthly'
     year = fields.Integer("Year")
     month = fields.Many2One('ir.calendar.month', "Month")

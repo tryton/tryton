@@ -6,7 +6,6 @@ from trytond.pool import Pool
 
 
 class MultiSelection(ModelSQL):
-    'MultiSelection'
     __name__ = 'test.multi_selection'
     selects = fields.MultiSelection([
             ('foo', "Foo"),
@@ -32,14 +31,12 @@ class MultiSelection(ModelSQL):
 
 
 class MultiSelectionRequired(ModelSQL):
-    "MultiSelection Required"
     __name__ = 'test.multi_selection_required'
     selects = fields.MultiSelection(
         [('foo', "Foo"), ('bar', "Bar")], "Selects", required=True)
 
 
 class MultiSelectionText(MultiSelection):
-    "MultiSelection TEXT"
     __name__ = 'test.multi_selection_text'
 
     @classmethod
@@ -51,7 +48,6 @@ class MultiSelectionText(MultiSelection):
 
 
 class MultiSelectionRequiredText(MultiSelectionRequired):
-    "MultiSelection Required Text"
     __name__ = 'test.multi_selection_required_text'
 
     @classmethod

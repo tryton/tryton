@@ -69,7 +69,6 @@ class ConfigurationSequence(metaclass=PoolMeta):
 
 
 class PurchaseRequisition(Workflow, ModelSQL, ModelView):
-    "Purchase Requisition"
     __name__ = 'purchase.requisition'
     _rec_name = 'number'
     _states = {
@@ -424,7 +423,6 @@ class PurchaseRequisition(Workflow, ModelSQL, ModelView):
 
 
 class PurchaseRequisitionLine(sequence_ordered(), ModelSQL, ModelView):
-    "Purchase Requisition Line"
     __name__ = 'purchase.requisition.line'
     _states = {
         'readonly': Eval('purchase_requisition_state') != 'draft',
@@ -680,7 +678,6 @@ class HandlePurchaseCancellationException(metaclass=PoolMeta):
 
 
 class CreatePurchase(Wizard):
-    'Create Purchase'
     __name__ = 'purchase.request.create_purchase'
 
     def _group_purchase_line_key(self, request):

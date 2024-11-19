@@ -54,7 +54,6 @@ class ConfigurationDefaultAccount(metaclass=PoolMeta):
 
 
 class InvoiceDeferred(Workflow, ModelSQL, ModelView):
-    "Invoice Deferred"
     __name__ = 'account.invoice.deferred'
 
     _states = {
@@ -388,7 +387,6 @@ class InvoiceDeferred(Workflow, ModelSQL, ModelView):
 
 
 class InvoiceDeferredCreateMoves(Wizard):
-    "Invoice Deferred Create Moves"
     __name__ = 'account.invoice.deferred.create_moves'
     start_state = 'create_moves'
     create_moves = StateTransition()

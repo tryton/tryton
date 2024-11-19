@@ -24,7 +24,6 @@ from trytond.wizard import Button, StateTransition, StateView, Wizard
 
 
 class Forecast(Workflow, ModelSQL, ModelView):
-    "Stock Forecast"
     __name__ = "stock.forecast"
 
     _states = {
@@ -253,7 +252,6 @@ class Forecast(Workflow, ModelSQL, ModelView):
 
 
 class ForecastLine(ModelSQL, ModelView):
-    'Stock Forecast Line'
     __name__ = 'stock.forecast.line'
     _states = {
         'readonly': Eval('forecast_state') != 'draft',
@@ -494,7 +492,6 @@ class ForecastLine(ModelSQL, ModelView):
 
 
 class ForecastCompleteAsk(ModelView):
-    'Complete Forecast'
     __name__ = 'stock.forecast.complete.ask'
     company = fields.Many2One('company.company', "Company", readonly=True)
     warehouse = fields.Many2One('stock.location', "Warehouse", readonly=True)
@@ -532,7 +529,6 @@ class ForecastCompleteAsk(ModelView):
 
 
 class ForecastComplete(Wizard):
-    'Complete Forecast'
     __name__ = 'stock.forecast.complete'
     start_state = 'ask'
     ask = StateView('stock.forecast.complete.ask',

@@ -58,9 +58,7 @@ def round_price(value, rounding=None):
 
 class Template(
         DeactivableMixin, ModelSQL, ModelView, CompanyMultiValueMixin):
-    "Product Template"
     __name__ = "product.template"
-    _order_name = 'rec_name'
     name = fields.Char(
         "Name", size=None, required=True, translate=True)
     code_readonly = fields.Function(
@@ -380,7 +378,6 @@ class ProductDeactivatableMixin(TemplateDeactivatableMixin):
 class Product(
         TemplateDeactivatableMixin, tree('replaced_by'), ModelSQL, ModelView,
         CompanyMultiValueMixin):
-    "Product Variant"
     __name__ = "product.product"
     _order_name = 'rec_name'
     template = fields.Many2One(
@@ -766,7 +763,6 @@ class Product(
 
 
 class ProductListPrice(ModelSQL, CompanyValueMixin):
-    "Product List Price"
     __name__ = 'product.list_price'
     template = fields.Many2One(
         'product.template', "Template", ondelete='CASCADE',
@@ -783,7 +779,6 @@ class ProductListPrice(ModelSQL, CompanyValueMixin):
 
 
 class ProductCostPriceMethod(ModelSQL, CompanyValueMixin):
-    "Product Cost Price Method"
     __name__ = 'product.cost_price_method'
     template = fields.Many2One(
         'product.template', "Template", ondelete='CASCADE',
@@ -805,7 +800,6 @@ class ProductCostPriceMethod(ModelSQL, CompanyValueMixin):
 
 
 class ProductCostPrice(ModelSQL, CompanyValueMixin):
-    "Product Cost Price"
     __name__ = 'product.cost_price'
     product = fields.Many2One(
         'product.product', "Product", ondelete='CASCADE',
@@ -823,7 +817,6 @@ class ProductCostPrice(ModelSQL, CompanyValueMixin):
 
 
 class TemplateCategory(ModelSQL):
-    'Template - Category'
     __name__ = 'product.template-product.category'
     template = fields.Many2One(
         'product.template', "Template", ondelete='CASCADE', required=True)
@@ -832,7 +825,6 @@ class TemplateCategory(ModelSQL):
 
 
 class TemplateCategoryAll(UnionMixin, ModelSQL):
-    "Template - Category All"
     __name__ = 'product.template-product.category.all'
     template = fields.Many2One('product.template', "Template")
     category = fields.Many2One('product.category', "Category")
@@ -843,7 +835,6 @@ class TemplateCategoryAll(UnionMixin, ModelSQL):
 
 
 class ProductIdentifier(sequence_ordered(), ModelSQL, ModelView):
-    "Product Identifier"
     __name__ = 'product.identifier'
     _rec_name = 'code'
     product = fields.Many2One(
@@ -924,7 +915,6 @@ class ProductIdentifier(sequence_ordered(), ModelSQL, ModelView):
 
 
 class ProductReplace(Wizard):
-    "Replace Product"
     __name__ = 'product.product.replace'
     start_state = 'ask'
     ask = StateView(
@@ -946,7 +936,6 @@ class ProductReplace(Wizard):
 
 
 class ProductReplaceAsk(ModelView):
-    "Replace Product"
     __name__ = 'product.product.replace.ask'
     source = fields.Many2One(
         'product.product', "Source", required=True,

@@ -23,7 +23,6 @@ from .exceptions import CostWarning
 
 
 class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
-    "Production"
     __name__ = 'production'
     _rec_name = 'number'
     _assign_moves_field = 'inputs'

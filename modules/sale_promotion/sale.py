@@ -84,7 +84,6 @@ class Line(metaclass=PoolMeta):
 
 class Promotion(
         DeactivableMixin, ModelSQL, ModelView, MatchMixin):
-    'Sale Promotion'
     __name__ = 'sale.promotion'
 
     name = fields.Char('Name', translate=True, required=True)
@@ -322,7 +321,6 @@ class Promotion(
 
 
 class Promotion_Product(ModelSQL):
-    'Sale Promotion - Product'
     __name__ = 'sale.promotion-product.product'
 
     promotion = fields.Many2One(
@@ -332,7 +330,6 @@ class Promotion_Product(ModelSQL):
 
 
 class Promotion_ProductCategory(ModelSQL):
-    "Sale Promotion - Product Category"
     __name__ = 'sale.promotion-product.category'
 
     promotion = fields.Many2One(

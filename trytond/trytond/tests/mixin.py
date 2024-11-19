@@ -22,12 +22,10 @@ class ReportMixin:
 
 
 class DeactivableModelView(DeactivableMixin, ModelView):
-    'Deactivable ModelView'
     __name__ = 'test.deactivable.modelview'
 
 
 class DeactivableModelSQL(DeactivableMixin, ModelSQL):
-    'Deactivable ModelView'
     __name__ = 'test.deactivable.modelsql'
 
 

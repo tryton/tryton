@@ -41,7 +41,6 @@ class CountryMatchMixin(MatchMixin):
 
 
 class TariffCode(DeactivableMixin, CountryMatchMixin, ModelSQL, ModelView):
-    'Tariff Code'
     __name__ = 'customs.tariff.code'
     _rec_name = 'code'
     code = fields.Char('Code', required=True,
@@ -143,7 +142,6 @@ class TariffCode(DeactivableMixin, CountryMatchMixin, ModelSQL, ModelView):
 
 
 class DutyRate(CountryMatchMixin, ModelSQL, ModelView):
-    'Duty Rate'
     __name__ = 'customs.duty.rate'
     tariff_code = fields.Many2One(
         'customs.tariff.code', "Tariff Code", required=True)

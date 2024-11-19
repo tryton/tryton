@@ -23,7 +23,6 @@ class Configuration(metaclass=PoolMeta):
 
 
 class ConfigurationDefaultLotSequence(ModelSQL, ValueMixin):
-    "Product Configuration Default Lot Sequence"
     __name__ = 'product.configuration.default_lot_sequence'
     default_lot_sequence = fields.Many2One(
         'ir.sequence', "Default Lot Sequence",

@@ -26,7 +26,6 @@ from .exceptions import InvalidRecurrence, InvoiceError
 
 
 class Subscription(Workflow, ModelSQL, ModelView):
-    "Subscription"
     __name__ = 'sale.subscription'
     _rec_name = 'number'
 
@@ -502,7 +501,6 @@ class Subscription(Workflow, ModelSQL, ModelView):
 
 
 class Line(sequence_ordered(), ModelSQL, ModelView):
-    "Subscription Line"
     __name__ = 'sale.subscription.line'
 
     subscription = fields.Many2One(
@@ -872,7 +870,6 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
 
 
 class LineConsumption(ModelSQL, ModelView):
-    "Subscription Line Consumption"
     __name__ = 'sale.subscription.line.consumption'
 
     line = fields.Many2One(
@@ -967,7 +964,6 @@ class LineConsumption(ModelSQL, ModelView):
 
 
 class CreateLineConsumption(Wizard):
-    "Create Subscription Line Consumption"
     __name__ = 'sale.subscription.line.consumption.create'
     start = StateView(
         'sale.subscription.line.consumption.create.start',
@@ -989,7 +985,6 @@ class CreateLineConsumption(Wizard):
 
 
 class CreateLineConsumptionStart(ModelView):
-    "Create Subscription Line Consumption"
     __name__ = 'sale.subscription.line.consumption.create.start'
 
     date = fields.Date("Date")
@@ -1002,7 +997,6 @@ class CreateLineConsumptionStart(ModelView):
 
 
 class CreateSubscriptionInvoice(Wizard):
-    "Create Subscription Invoice"
     __name__ = 'sale.subscription.create_invoice'
     start = StateView(
         'sale.subscription.create_invoice.start',
@@ -1020,7 +1014,6 @@ class CreateSubscriptionInvoice(Wizard):
 
 
 class CreateSubscriptionInvoiceStart(ModelView):
-    "Create Subscription Invoice"
     __name__ = 'sale.subscription.create_invoice.start'
 
     date = fields.Date("Date")

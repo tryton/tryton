@@ -6,7 +6,6 @@ from trytond.report import Report
 
 
 class TestReport(Report):
-    "Test Report"
     __name__ = 'test.test_report'
 
 

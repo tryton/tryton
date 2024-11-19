@@ -117,7 +117,6 @@ class InvoiceLine(metaclass=PoolMeta):
 
 
 class DepositRecall(Wizard):
-    'Recall deposit on Invoice'
     __name__ = 'account.invoice.recall_deposit'
     start = StateView('account.invoice.recall_deposit.start',
         'account_deposit.recall_deposit_start_view_form', [
@@ -138,7 +137,6 @@ class DepositRecall(Wizard):
 
 
 class DepositRecallStart(ModelView):
-    'Recall deposit on Invoice'
     __name__ = 'account.invoice.recall_deposit.start'
     company = fields.Many2One('company.company', 'Company', readonly=True)
     currency = fields.Many2One('currency.currency', "Currency", readonly=True)

@@ -22,7 +22,6 @@ class Party(metaclass=PoolMeta):
 
 
 class PartyPurchasePriceList(ModelSQL, CompanyValueMixin):
-    "Party Purchase Price List"
     __name__ = 'party.party.purchase_price_list'
 
     party = fields.Many2One(

@@ -533,7 +533,6 @@ class Payment(CheckoutMixin, BraintreeCustomerMethodMixin, metaclass=PoolMeta):
 
 
 class PaymentBraintreeRefund(Workflow, ModelSQL, ModelView):
-    "Braintree Payment Refund"
     __name__ = 'account.payment.braintree.refund'
 
     payment = fields.Many2One(
@@ -779,7 +778,6 @@ class PaymentBraintreeRefund(Workflow, ModelSQL, ModelView):
 
 
 class PaymentBraintreeAccount(ModelSQL, ModelView):
-    "Braintree Account"
     __name__ = 'account.payment.braintree.account'
 
     name = fields.Char("Name", required=True)
@@ -932,7 +930,6 @@ class PaymentBraintreeAccount(ModelSQL, ModelView):
 
 class PaymentBraintreeCustomer(
         CheckoutMixin, DeactivableMixin, ModelSQL, ModelView):
-    "Braintree Customer"
     __name__ = 'account.payment.braintree.customer'
     _history = True
     _rec_name = 'braintree_customer_id'
@@ -1201,7 +1198,6 @@ class PaymentBraintreeCustomer(
 
 
 class PaymentBraintreeCustomerIdentical(ModelSQL):
-    "Braintree Customer Identical"
     __name__ = 'account.payment.braintree.customer.identical'
     source = fields.Many2One('account.payment.braintree.customer', "Source")
     target = fields.Many2One('account.payment.braintree.customer', "Target")
@@ -1229,7 +1225,6 @@ class PaymentBraintreeCustomerIdentical(ModelSQL):
 
 
 class PaymentBraintreeCustomerPaymentMethodDelete(Wizard):
-    "Delete Customer Payment Method"
     __name__ = 'account.payment.braintree.customer.payment_method.delete'
     start_state = 'ask'
     ask = StateView(
@@ -1253,7 +1248,6 @@ class PaymentBraintreeCustomerPaymentMethodDelete(Wizard):
 
 
 class PaymentBraintreeCustomerPaymentMethodDeleteAsk(ModelView):
-    "Delete Customer Payment Method"
     __name__ = 'account.payment.braintree.customer.payment_method.delete.ask'
 
     customer = fields.Many2One(
@@ -1270,7 +1264,6 @@ class PaymentBraintreeCustomerPaymentMethodDeleteAsk(ModelView):
 
 
 class PaymentBraintreeCheckout(Wizard):
-    "Braintree Checkout"
     __name__ = 'account.payment.braintree.checkout'
     start_state = 'checkout'
     checkout = StateAction('account_payment_braintree.url_checkout')
@@ -1281,5 +1274,4 @@ class PaymentBraintreeCheckout(Wizard):
 
 
 class PaymentBraintreeCheckoutPage(Report):
-    "Braintree Checkout"
     __name__ = 'account.payment.braintree.checkout'

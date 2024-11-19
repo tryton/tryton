@@ -19,7 +19,6 @@ default_depth = config.getint('party_relationship', 'depth', default=7)
 
 
 class RelationType(ModelSQL, ModelView):
-    'Relation Type'
     __name__ = 'party.relation.type'
 
     name = fields.Char('Name', required=True, translate=True,
@@ -41,7 +40,6 @@ class RelationType(ModelSQL, ModelView):
 
 
 class Relation(ModelSQL):
-    'Party Relation'
     __name__ = 'party.relation'
 
     from_ = fields.Many2One(
@@ -126,7 +124,6 @@ class Relation(ModelSQL):
 
 
 class RelationAll(Relation, ModelView):
-    'Party Relation'
     __name__ = 'party.relation.all'
 
     @classmethod

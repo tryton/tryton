@@ -68,7 +68,6 @@ class _ContactMechanismMixin:
 class ContactMechanism(
         DeactivableMixin, sequence_ordered(), ModelSQL, ModelView,
         MultiValueMixin):
-    "Contact Mechanism"
     __name__ = 'party.contact_mechanism'
     _rec_name = 'value'
 
@@ -352,7 +351,6 @@ class ContactMechanism(
 
 
 class ContactMechanismLanguage(ModelSQL, ValueMixin):
-    "Contact Mechanism Language"
     __name__ = 'party.contact_mechanism.language'
     contact_mechanism = fields.Many2One(
         'party.contact_mechanism', "Contact Mechanism",

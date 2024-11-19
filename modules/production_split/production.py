@@ -70,7 +70,6 @@ class Production(metaclass=PoolMeta):
 
 
 class SplitProduction(Wizard):
-    'Split Production'
     __name__ = 'production.split'
     start = StateView('production.split.start',
         'production_split.split_start_view_form', [
@@ -92,7 +91,6 @@ class SplitProduction(Wizard):
 
 
 class SplitProductionStart(ModelView):
-    'Split Production'
     __name__ = 'production.split.start'
     count = fields.Integer('Count', help='The limit number of productions')
     quantity = fields.Float("Quantity", digits='unit', required=True)

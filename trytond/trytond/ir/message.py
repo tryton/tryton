@@ -8,7 +8,6 @@ from trytond.transaction import Transaction
 
 
 class Message(ModelSQL, ModelView):
-    "Message"
     __name__ = "ir.message"
 
     _message_cache = Cache('ir.message', context=False)

@@ -9,7 +9,6 @@ from trytond.pyson import Eval, Id
 
 class Configuration(
         ModelSingleton, ModelSQL, ModelView, CompanyMultiValueMixin):
-    'Production Configuration'
     __name__ = 'production.configuration'
 
     production_sequence = fields.MultiValue(fields.Many2One(
@@ -34,7 +33,6 @@ class Configuration(
 
 
 class ConfigurationProductionSequence(ModelSQL, CompanyValueMixin):
-    "Production Configuration Production Sequence"
     __name__ = 'production.configuration.production_sequence'
     production_sequence = fields.Many2One(
         'ir.sequence', "Production Sequence", required=True,

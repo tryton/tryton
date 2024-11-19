@@ -6,13 +6,11 @@ from trytond.pool import Pool
 
 
 class Copy(ModelSQL):
-    "Copy"
     __name__ = 'test.copy'
     name = fields.Char("Name")
 
 
 class CopyOne2Many(ModelSQL):
-    "Copy One2Many"
     __name__ = 'test.copy.one2many'
     name = fields.Char('Name')
     one2many = fields.One2Many('test.copy.one2many.target', 'one2many',
@@ -20,14 +18,12 @@ class CopyOne2Many(ModelSQL):
 
 
 class CopyOne2ManyTarget(ModelSQL):
-    "Copy One2Many Target"
     __name__ = 'test.copy.one2many.target'
     name = fields.Char('Name')
     one2many = fields.Many2One('test.copy.one2many', 'One2Many')
 
 
 class CopyOne2ManyReference(ModelSQL):
-    "Copy One2Many Reference"
     __name__ = 'test.copy.one2many_reference'
     name = fields.Char('Name')
     one2many = fields.One2Many('test.copy.one2many_reference.target',
@@ -35,7 +31,6 @@ class CopyOne2ManyReference(ModelSQL):
 
 
 class CopyOne2ManyReferenceTarget(ModelSQL):
-    "Copy One2Many ReferenceTarget"
     __name__ = 'test.copy.one2many_reference.target'
     name = fields.Char('Name')
     one2many = fields.Reference('One2Many', [
@@ -45,7 +40,6 @@ class CopyOne2ManyReferenceTarget(ModelSQL):
 
 
 class CopyMany2Many(ModelSQL):
-    "Copy Many2Many"
     __name__ = 'test.copy.many2many'
     name = fields.Char('Name')
     many2many = fields.Many2Many('test.copy.many2many.rel', 'many2many',
@@ -53,13 +47,11 @@ class CopyMany2Many(ModelSQL):
 
 
 class CopyMany2ManyTarget(ModelSQL):
-    "Copy Many2Many Target"
     __name__ = 'test.copy.many2many.target'
     name = fields.Char('Name')
 
 
 class CopyMany2ManyRelation(ModelSQL):
-    "Copy Many2Many Relation"
     __name__ = 'test.copy.many2many.rel'
     name = fields.Char('Name')
     many2many = fields.Many2One('test.copy.many2many', 'Many2Many')
@@ -68,7 +60,6 @@ class CopyMany2ManyRelation(ModelSQL):
 
 
 class CopyMany2ManyReference(ModelSQL):
-    "Copy Many2ManyReference"
     __name__ = 'test.copy.many2many_reference'
     name = fields.Char('Name')
     many2many = fields.Many2Many('test.copy.many2many_reference.rel',
@@ -76,13 +67,11 @@ class CopyMany2ManyReference(ModelSQL):
 
 
 class CopyMany2ManyReferenceTarget(ModelSQL):
-    "Copy Many2ManyReference Target"
     __name__ = 'test.copy.many2many_reference.target'
     name = fields.Char('Name')
 
 
 class CopyMany2ManyReferenceRelation(ModelSQL):
-    "Copy Many2ManyReference Relation"
     __name__ = 'test.copy.many2many_reference.rel'
     name = fields.Char('Name')
     many2many = fields.Reference('Many2Many', [
@@ -94,7 +83,6 @@ class CopyMany2ManyReferenceRelation(ModelSQL):
 
 
 class CopyBinary(ModelSQL):
-    "Copy Binary"
     __name__ = 'test.copy.binary'
     binary = fields.Binary("Binary")
     binary_id = fields.Binary("Binary with ID", file_id='file_id')
@@ -102,7 +90,6 @@ class CopyBinary(ModelSQL):
 
 
 class CopyAccess(ModelSQL):
-    "Copy with Access"
     __name__ = 'test.copy.access'
     name = fields.Char("Name")
 
@@ -112,7 +99,6 @@ class CopyAccess(ModelSQL):
 
 
 class CopyTranslate(ModelSQL):
-    "Copy Translate"
     __name__ = 'test.copy.translate'
     name = fields.Char("Name", translate=True)
 

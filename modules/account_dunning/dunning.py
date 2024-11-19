@@ -16,7 +16,6 @@ from trytond.wizard import (
 
 
 class Procedure(ModelSQL, ModelView):
-    'Account Dunning Procedure'
     __name__ = 'account.dunning.procedure'
     name = fields.Char('Name', required=True, translate=True,
         help="The main identifier of the Dunning Procedure.")
@@ -29,7 +28,6 @@ class Procedure(ModelSQL, ModelView):
 
 
 class Level(sequence_ordered(), ModelSQL, ModelView):
-    'Account Dunning Level'
     __name__ = 'account.dunning.level'
     procedure = fields.Many2One(
         'account.dunning.procedure', "Procedure", required=True)
@@ -51,7 +49,6 @@ _STATES = {
 
 
 class Dunning(ModelSQL, ModelView):
-    'Account Dunning'
     __name__ = 'account.dunning'
     company = fields.Many2One(
         'company.company', "Company", required=True, states=_STATES,
@@ -310,7 +307,6 @@ class Dunning(ModelSQL, ModelView):
 
 
 class CreateDunningStart(ModelView):
-    'Create Account Dunning'
     __name__ = 'account.dunning.create.start'
     date = fields.Date('Date', required=True,
         help="Create dunning up to this date.")
@@ -322,7 +318,6 @@ class CreateDunningStart(ModelView):
 
 
 class CreateDunning(Wizard):
-    'Create Account Dunning'
     __name__ = 'account.dunning.create'
     start = StateView('account.dunning.create.start',
         'account_dunning.dunning_create_start_view_form', [
@@ -339,12 +334,10 @@ class CreateDunning(Wizard):
 
 
 class ProcessDunningStart(ModelView):
-    'Create Account Dunning'
     __name__ = 'account.dunning.process.start'
 
 
 class ProcessDunning(Wizard):
-    'Process Account Dunning'
     __name__ = 'account.dunning.process'
     start = StateView('account.dunning.process.start',
         'account_dunning.dunning_process_start_view_form', [
@@ -375,7 +368,6 @@ class ProcessDunning(Wizard):
 
 
 class RescheduleDunning(Wizard):
-    "Reschedule Account Dunning"
     __name__ = 'account.dunning.reschedule'
     start = StateAction('account.act_reschedule_lines_wizard')
 

@@ -23,7 +23,6 @@ from trytond.wizard import Button, StateTransition, StateView, Wizard
 
 
 class IntrastatTransaction(DeactivableMixin, ModelSQL, ModelView):
-    "Intrastat Transaction"
     __name__ = 'account.stock.eu.intrastat.transaction'
     _rec_name = 'code'
 
@@ -78,7 +77,6 @@ class IntrastatTransaction(DeactivableMixin, ModelSQL, ModelView):
 
 
 class IntrastatTransport(DeactivableMixin, ModelSQL, ModelView):
-    "Intrastat Transport"
     __name__ = 'account.stock.eu.intrastat.transport'
 
     name = fields.Char("Name", translate=True, required=True)
@@ -86,7 +84,6 @@ class IntrastatTransport(DeactivableMixin, ModelSQL, ModelView):
 
 
 class IntrastatDeclaration(Workflow, ModelSQL, ModelView):
-    "Intrastat Declaration"
     __name__ = 'account.stock.eu.intrastat.declaration'
 
     _states = {
@@ -232,7 +229,6 @@ class IntrastatDeclaration(Workflow, ModelSQL, ModelView):
 
 
 class IntrastatDeclarationContext(ModelView):
-    "Intrastat Declaration Context"
     __name__ = 'account.stock.eu.intrastat.declaration.context'
 
     company = fields.Many2One('company.company', "Company", required=True)
@@ -266,7 +262,6 @@ class IntrastatDeclarationContext(ModelView):
 
 
 class IntrastatDeclarationLine(ModelSQL, ModelView):
-    "Intrastat Declaration Line"
     __name__ = 'account.stock.eu.intrastat.declaration.line'
 
     type = fields.Selection([
@@ -397,7 +392,6 @@ class IntrastatDeclarationLine_Incoterm(metaclass=PoolMeta):
 
 
 class IntrastatDeclarationExport(Wizard):
-    "Intrastat Declaration Export"
     __name__ = 'account.stock.eu.intrastat.declaration.export'
     start_state = 'generate'
 
@@ -473,7 +467,6 @@ class IntrastatDeclarationExport_Incoterm(metaclass=PoolMeta):
 
 
 class IntrastatDeclarationExportResult(ModelView):
-    "Intrastat Declaration Export"
     __name__ = 'account.stock.eu.intrastat.declaration.export.result'
 
     file = fields.Binary("File", readonly=True, filename='filename')

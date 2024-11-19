@@ -8,14 +8,12 @@ from trytond.pool import Pool
 
 
 class Date(ModelSQL):
-    'Date'
     __name__ = 'test.date'
     date = fields.Date(string='Date', help='Test date',
             required=False)
 
 
 class DateDefault(ModelSQL):
-    'Date Default'
     __name__ = 'test.date_default'
     date = fields.Date(string='Date', help='Test date',
             required=False)
@@ -26,7 +24,6 @@ class DateDefault(ModelSQL):
 
 
 class DateRequired(ModelSQL):
-    'Date Required'
     __name__ = 'test.date_required'
     date = fields.Date(string='Date', help='Test date',
             required=True)

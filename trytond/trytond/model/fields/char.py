@@ -45,7 +45,9 @@ class Char(FieldTranslate):
         self.translate = translate
         self.__size = None
         self.size = size
-    __init__.__doc__ += Field.__init__.__doc__
+
+    if __init__.__doc__:
+        __init__.__doc__ += Field.__init__.__doc__
 
     def _get_size(self):
         return self.__size

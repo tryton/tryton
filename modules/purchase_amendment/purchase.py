@@ -34,7 +34,6 @@ class Purchase(metaclass=PoolMeta):
 
 
 class Amendment(Workflow, ModelSQL, ModelView):
-    "Purchase Amendment"
     __name__ = 'purchase.amendment'
 
     purchase = fields.Many2One(
@@ -162,7 +161,6 @@ class Amendment(Workflow, ModelSQL, ModelView):
 
 
 class AmendmentLine(ModelSQL, ModelView):
-    "Purchase Amendment Line"
     __name__ = 'purchase.amendment.line'
 
     amendment = fields.Many2One(

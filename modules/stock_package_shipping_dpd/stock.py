@@ -112,7 +112,6 @@ class CreateShipping(metaclass=PoolMeta):
 
 
 class CreateDPDShipping(Wizard):
-    'Create DPD Shipping'
     __name__ = 'stock.shipment.create_shipping.dpd'
 
     start = StateTransition()

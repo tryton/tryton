@@ -11,7 +11,6 @@ from trytond.wizard import Button, StateView, Wizard
 
 
 class BOM(DeactivableMixin, ModelSQL, ModelView):
-    "Bill of Material"
     __name__ = 'production.bom'
 
     name = fields.Char('Name', required=True, translate=True)
@@ -116,7 +115,6 @@ class BOM(DeactivableMixin, ModelSQL, ModelView):
 
 
 class BOMInput(ModelSQL, ModelView):
-    "Bill of Material Input"
     __name__ = 'production.bom.input'
 
     bom = fields.Many2One(
@@ -198,8 +196,8 @@ class BOMInput(ModelSQL, ModelView):
 
 
 class BOMOutput(BOMInput):
-    "Bill of Material Output"
     __name__ = 'production.bom.output'
+    __string__ = None
     _table = None  # Needed to override BOMInput._table
 
     def compute_quantity(self, factor):
@@ -230,7 +228,6 @@ class BOMOutput(BOMInput):
 
 
 class BOMTree(ModelView):
-    'BOM Tree'
     __name__ = 'production.bom.tree'
 
     product = fields.Many2One('product.product', 'Product')
@@ -270,7 +267,6 @@ class BOMTree(ModelView):
 
 
 class OpenBOMTreeStart(ModelView):
-    'Open BOM Tree'
     __name__ = 'production.bom.tree.open.start'
 
     quantity = fields.Float('Quantity', digits='unit', required=True)
@@ -289,7 +285,6 @@ class OpenBOMTreeStart(ModelView):
 
 
 class OpenBOMTreeTree(ModelView):
-    'Open BOM Tree'
     __name__ = 'production.bom.tree.open.tree'
 
     bom_tree = fields.One2Many('production.bom.tree', None, 'BOM Tree',
@@ -319,7 +314,6 @@ class OpenBOMTreeTree(ModelView):
 
 
 class OpenBOMTree(Wizard):
-    'Open BOM Tree'
     __name__ = 'production.bom.tree.open'
 
     start = StateView('production.bom.tree.open.start',

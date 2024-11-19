@@ -6,74 +6,62 @@ from trytond.pool import Pool
 
 
 class ImportData(ModelSQL):
-    "Import Data"
     __name__ = 'test.import_data'
     name = fields.Char("Name")
     value = fields.Integer("Value")
 
 
 class ImportDataBoolean(ModelSQL):
-    "Import Data Boolean"
     __name__ = 'test.import_data.boolean'
     boolean = fields.Boolean('Boolean')
 
 
 class ImportDataInteger(ModelSQL):
-    "Import Data Integer"
     __name__ = 'test.import_data.integer'
     integer = fields.Integer('Integer')
 
 
 class ImportDataFloat(ModelSQL):
-    "Import Data Float"
     __name__ = 'test.import_data.float'
     float = fields.Float('Float')
 
 
 class ImportDataNumeric(ModelSQL):
-    "Import Data Numeric"
     __name__ = 'test.import_data.numeric'
     numeric = fields.Numeric('Numeric')
 
 
 class ImportDataChar(ModelSQL):
-    "Import Data Char"
     __name__ = 'test.import_data.char'
     char = fields.Char('Char')
 
 
 class ImportDataTranslate(ModelSQL):
-    "Import Data Translate"
     __name__ = 'test.import_data.translate'
     translate = fields.Char("Translate", translate=True)
 
 
 class ImportDataText(ModelSQL):
-    "Import Data Text"
     __name__ = 'test.import_data.text'
     text = fields.Text('Text')
 
 
 class ImportDataDate(ModelSQL):
-    "Import Data Date"
     __name__ = 'test.import_data.date'
     date = fields.Date('Date')
 
 
 class ImportDataDateTime(ModelSQL):
-    "Import Data DateTime"
     __name__ = 'test.import_data.datetime'
     datetime = fields.DateTime('DateTime')
 
 
 class ImportDataTimeDelta(ModelSQL):
-    "Import Data TimeDelta"
     __name__ = 'test.import_data.timedelta'
     timedelta = fields.TimeDelta('TimeDelta')
 
 
 class ImportDataSelection(ModelSQL):
-    "Import Data Selection"
     __name__ = 'test.import_data.selection'
     selection = fields.Selection([
             (None, ''),
@@ -83,40 +71,34 @@ class ImportDataSelection(ModelSQL):
 
 
 class ImportDataMany2OneTarget(ModelSQL):
-    "Import Data Many2One Target"
     __name__ = 'test.import_data.many2one.target'
     name = fields.Char('Name')
 
 
 class ImportDataMany2One(ModelSQL):
-    "Import Data Many2One"
     __name__ = 'test.import_data.many2one'
     many2one = fields.Many2One('test.import_data.many2one.target',
             'Many2One')
 
 
 class ImportDataMany2ManyTarget(ModelSQL):
-    "Import Data Many2Many Target"
     __name__ = 'test.import_data.many2many.target'
     name = fields.Char('Name')
 
 
 class ImportDataMany2Many(ModelSQL):
-    "Import Data Many2Many"
     __name__ = 'test.import_data.many2many'
     many2many = fields.Many2Many('test.import_data.many2many.relation',
             'many2many', 'target', 'Many2Many')
 
 
 class ImportDataMany2ManyRelation(ModelSQL):
-    "Import Data Many2Many Relation"
     __name__ = 'test.import_data.many2many.relation'
     many2many = fields.Many2One('test.import_data.many2many', 'Many2One')
     target = fields.Many2One('test.import_data.many2many.target', 'Target')
 
 
 class ImportDataOne2Many(ModelSQL):
-    "Import Data One2Many"
     __name__ = 'test.import_data.one2many'
     name = fields.Char('Name')
     one2many = fields.One2Many('test.import_data.one2many.target', 'one2many',
@@ -124,14 +106,12 @@ class ImportDataOne2Many(ModelSQL):
 
 
 class ImportDataOne2ManyTarget(ModelSQL):
-    "Import Data One2Many Target"
     __name__ = 'test.import_data.one2many.target'
     name = fields.Char('Name')
     one2many = fields.Many2One('test.import_data.one2many', 'One2Many')
 
 
 class ImportDataOne2Manies(ModelSQL):
-    "Import Data One2Manies"
     __name__ = 'test.import_data.one2manies'
     name = fields.Char("Name")
     one2many1 = fields.One2Many(
@@ -141,33 +121,28 @@ class ImportDataOne2Manies(ModelSQL):
 
 
 class ImportDataOne2Many1Target(ModelSQL):
-    "Import Data One2Many 1 Target"
     __name__ = 'test.import_data.one2many1.target'
     name = fields.Char("Name")
     one2many = fields.Many2One('test.import_data.one2manies', "One2Many")
 
 
 class ImportDataOne2Many2Target(ModelSQL):
-    "Import Data One2Many 2 Target"
     __name__ = 'test.import_data.one2many2.target'
     name = fields.Char("Name")
     one2many = fields.Many2One('test.import_data.one2manies', "One2Many")
 
 
 class ImportDataBinary(ModelSQL):
-    "Import Data Binary"
     __name__ = 'test.import_data.binary'
     data = fields.Binary("Data")
 
 
 class ImportDataReferenceSelection(ModelSQL):
-    "Import Data Reference Selection"
     __name__ = 'test.import_data.reference.selection'
     name = fields.Char('Name')
 
 
 class ImportDataReference(ModelSQL):
-    "Import Data Reference"
     __name__ = 'test.import_data.reference'
     reference = fields.Reference('Reference', [
             (None, ''),
@@ -176,7 +151,6 @@ class ImportDataReference(ModelSQL):
 
 
 class ImportDataUpdate(ModelSQL):
-    "Import Data for Update"
     __name__ = 'test.import_data.update'
     name = fields.Char("Name")
 

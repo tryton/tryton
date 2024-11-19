@@ -254,7 +254,6 @@ class BudgetLineMixin(
 
 
 class BudgetContext(ModelView):
-    "Account Budget Context"
     __name__ = 'account.budget.context'
 
     budget = fields.Many2One('account.budget', "Budget", required=True)
@@ -298,7 +297,6 @@ class BudgetContext(ModelView):
 
 
 class Budget(BudgetMixin, ModelSQL, ModelView):
-    "Account Budget"
     __name__ = 'account.budget'
 
     fiscalyear = fields.Many2One(
@@ -438,7 +436,6 @@ class Budget(BudgetMixin, ModelSQL, ModelView):
 
 
 class BudgetLine(BudgetLineMixin, ModelSQL, ModelView):
-    "Account Budget Line"
     __name__ = 'account.budget.line'
 
     budget = fields.Many2One(
@@ -610,7 +607,6 @@ class BudgetLine(BudgetLineMixin, ModelSQL, ModelView):
 
 
 class BudgetLinePeriod(AmountMixin, ModelSQL, ModelView):
-    "Account Budget Line Period"
     __name__ = 'account.budget.line.period'
 
     budget_line = fields.Many2One(
@@ -794,7 +790,6 @@ class CopyBudgetStartMixin:
 
 
 class CopyBudget(CopyBudgetMixin, Wizard):
-    "Copy Budget"
     __name__ = 'account.budget.copy'
 
     start = StateView('account.budget.copy.start',
@@ -816,7 +811,6 @@ class CopyBudget(CopyBudgetMixin, Wizard):
 
 
 class CopyBudgetStart(CopyBudgetStartMixin, ModelView):
-    "Copy Budget"
     __name__ = 'account.budget.copy.start'
 
     fiscalyear = fields.Many2One(
@@ -828,7 +822,6 @@ class CopyBudgetStart(CopyBudgetStartMixin, ModelView):
 
 
 class CreatePeriods(Wizard):
-    "Create Periods"
     __name__ = 'account.budget.line.create_periods'
 
     start = StateView('account.budget.line.create_periods.start',
@@ -852,7 +845,6 @@ class CreatePeriods(Wizard):
 
 
 class CreatePeriodsStart(ModelView):
-    "Create Periods"
     __name__ = 'account.budget.line.create_periods.start'
 
     method = fields.Selection([

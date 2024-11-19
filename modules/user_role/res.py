@@ -8,7 +8,6 @@ from trytond.pyson import Bool, Eval, If
 
 
 class Role(ModelSQL, ModelView):
-    "Role"
     __name__ = 'res.role'
     name = fields.Char("Name", required=True, translate=True)
     groups = fields.Many2Many('res.role-res.group', 'role', 'group', "Groups")
@@ -27,7 +26,6 @@ class Role(ModelSQL, ModelView):
 
 
 class RoleGroup(ModelSQL):
-    "Role - Group"
     __name__ = 'res.role-res.group'
     role = fields.Many2One(
         'res.role', "Role", ondelete='CASCADE', required=True)
@@ -85,7 +83,6 @@ class User(metaclass=PoolMeta):
 
 
 class UserRole(ModelSQL, ModelView):
-    "User Role"
     __name__ = 'res.user.role'
     user = fields.Many2One(
         'res.user', "User", ondelete='CASCADE', required=True)

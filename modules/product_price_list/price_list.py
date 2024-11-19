@@ -41,7 +41,6 @@ for op in _OPERATORS:
 
 
 class PriceList(DeactivableMixin, ModelSQL, ModelView):
-    'Price List'
     __name__ = 'product.price_list'
 
     name = fields.Char('Name', required=True, translate=True,
@@ -144,7 +143,6 @@ class PriceList(DeactivableMixin, ModelSQL, ModelView):
 
 
 class PriceListLine(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
-    'Price List Line'
     __name__ = 'product.price_list.line'
 
     price_list = fields.Many2One('product.price_list', 'Price List',
@@ -226,5 +224,4 @@ class PriceListLine(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
 
 
 class PriceListLineContext(ModelView):
-    "Price List Line Context"
     __name__ = 'product.price_list.line.context'

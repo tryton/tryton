@@ -43,7 +43,6 @@ def default_sequence(name):
 
 class Configuration(
         ModelSingleton, ModelSQL, ModelView, CompanyMultiValueMixin):
-    'Stock Configuration'
     __name__ = 'stock.configuration'
     shipment_in_sequence = fields.MultiValue(fields.Many2One(
             'ir.sequence', "Supplier Shipment Sequence", required=True,
@@ -128,7 +127,6 @@ class Configuration(
 
 
 class ConfigurationSequence(ModelSQL, CompanyValueMixin):
-    "Stock Configuration Sequence"
     __name__ = 'stock.configuration.sequence'
     shipment_in_sequence = fields.Many2One(
         'ir.sequence', "Supplier Shipment Sequence", required=True,
@@ -185,7 +183,6 @@ class ConfigurationSequence(ModelSQL, CompanyValueMixin):
 
 
 class ConfigurationLocation(ModelSQL, ValueMixin):
-    "Stock Configuration Location"
     __name__ = 'stock.configuration.location'
     shipment_internal_transit = shipment_internal_transit
 

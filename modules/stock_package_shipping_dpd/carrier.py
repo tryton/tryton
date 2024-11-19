@@ -16,7 +16,6 @@ from .exceptions import DPDCredentialWarning, DPDError
 
 
 class CredentialDPD(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
-    'DPD Credential'
     __name__ = 'carrier.credential.dpd'
 
     company = fields.Many2One('company.company', 'Company')

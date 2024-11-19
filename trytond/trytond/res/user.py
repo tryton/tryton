@@ -112,7 +112,6 @@ class UserValidationError(ValidationError):
 
 
 class User(avatar_mixin(100, 'login'), DeactivableMixin, ModelSQL, ModelView):
-    "User"
     __name__ = "res.user"
     name = fields.Char('Name')
     login = fields.Char('Login', required=True)
@@ -828,11 +827,8 @@ class User(avatar_mixin(100, 'login'), DeactivableMixin, ModelSQL, ModelView):
 
 
 class LoginAttempt(ModelSQL):
-    """Login Attempt
-
-    This class is separated from the res.user one in order to prevent locking
-    the res.user table when in a long running process.
-    """
+    """This class is separated from the res.user one in order to prevent
+    locking the res.user table when in a long running process."""
     __name__ = 'res.user.login.attempt'
     login = fields.Char('Login', size=512)
     device_cookie = fields.Char("Device Cookie", strip=False)
@@ -915,7 +911,6 @@ class LoginAttempt(ModelSQL):
 
 
 class UserDevice(ModelSQL):
-    "User Device"
     __name__ = 'res.user.device'
 
     login = fields.Char("Login", required=True)
@@ -971,7 +966,6 @@ class UserDevice(ModelSQL):
 
 
 class UserAction(ModelSQL):
-    'User - Action'
     __name__ = 'res.user-ir.action'
     user = fields.Many2One('res.user', 'User', ondelete='CASCADE',
         required=True)
@@ -1002,7 +996,6 @@ class UserAction(ModelSQL):
 
 
 class UserGroup(ModelSQL):
-    'User - Group'
     __name__ = 'res.user-res.group'
     user = fields.Many2One('res.user', 'User', ondelete='CASCADE',
         required=True)
@@ -1049,9 +1042,7 @@ class UserGroup(ModelSQL):
 
 
 class Warning_(ModelSQL, ModelView):
-    'User Warning'
     __name__ = 'res.user.warning'
-
     user = fields.Many2One('res.user', 'User', required=True)
     name = fields.Char('Name', required=True)
     always = fields.Boolean('Always')
@@ -1100,7 +1091,6 @@ class Warning_(ModelSQL, ModelView):
 
 
 class UserApplication(Workflow, ModelSQL, ModelView):
-    "User Application"
     __name__ = 'res.user.application'
     _rec_name = 'key'
 
@@ -1218,12 +1208,10 @@ class EmailResetPassword(Report):
 
 
 class UserConfigStart(ModelView):
-    'User Config Init'
     __name__ = 'res.user.config.start'
 
 
 class UserConfig(Wizard):
-    'Configure users'
     __name__ = 'res.user.config'
 
     start = StateView('res.user.config.start',

@@ -5,20 +5,17 @@ from trytond.pool import Pool
 
 
 class TestRule(ModelSQL):
-    "Test Rule"
     __name__ = 'test.rule'
     field = fields.Char("Field")
     relation = fields.Many2One('test.rule.relation', "Relation")
 
 
 class TestRuleRelation(ModelSQL):
-    "Test Rule Relation"
     __name__ = 'test.rule.relation'
     field = fields.Char("Field")
 
 
 class TestRuleModel(ModelSQL):
-    "Test Rule from Model"
     __name__ = 'test.rule.model'
     __access__ = 'test.rule'
 

@@ -60,7 +60,6 @@ class InvoiceReportMixin:
 
 
 class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin, InvoiceReportMixin):
-    'Invoice'
     __name__ = 'account.invoice'
     _rec_name = 'number'
     _order_name = 'number'
@@ -2123,7 +2122,6 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin, InvoiceReportMixin):
 
 
 class InvoiceAdditionalMove(ModelSQL):
-    "Invoice Additional Move"
     __name__ = 'account.invoice-additional-account.move'
     invoice = fields.Many2One(
         'account.invoice', "Invoice", ondelete='CASCADE', required=True)
@@ -2132,7 +2130,6 @@ class InvoiceAdditionalMove(ModelSQL):
 
 
 class AlternativePayee(ModelSQL):
-    "Invoice Alternative Payee"
     __name__ = 'account.invoice.alternative_payee'
 
     invoice = fields.Many2One(
@@ -2142,7 +2139,6 @@ class AlternativePayee(ModelSQL):
 
 
 class InvoicePaymentLine(ModelSQL):
-    'Invoice - Payment Line'
     __name__ = 'account.invoice-account.move.line'
     invoice = fields.Many2One(
         'account.invoice', "Invoice", ondelete='CASCADE', required=True)
@@ -2199,7 +2195,6 @@ class InvoicePaymentLine(ModelSQL):
 
 
 class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
-    'Invoice Line'
     __name__ = 'account.invoice.line'
     _states = {
         'readonly': Eval('invoice_state') != 'draft',
@@ -2962,7 +2957,6 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
 
 
 class InvoiceLineTax(ModelSQL):
-    'Invoice Line - Tax'
     __name__ = 'account.invoice.line-account.tax'
     line = fields.Many2One(
         'account.invoice.line', "Invoice Line",
@@ -2988,7 +2982,6 @@ class InvoiceLineTax(ModelSQL):
 
 
 class InvoiceTax(sequence_ordered(), ModelSQL, ModelView):
-    'Invoice Tax'
     __name__ = 'account.invoice.tax'
     _rec_name = 'description'
     _states = {
@@ -3275,7 +3268,6 @@ class InvoiceTax(sequence_ordered(), ModelSQL, ModelView):
 
 
 class PaymentMethod(DeactivableMixin, ModelSQL, ModelView):
-    'Payment Method'
     __name__ = 'account.invoice.payment.method'
     company = fields.Many2One('company.company', "Company", required=True)
     name = fields.Char("Name", required=True, translate=True)
@@ -3312,7 +3304,6 @@ class PaymentMethod(DeactivableMixin, ModelSQL, ModelView):
 
 
 class InvoiceReportRevision(ModelSQL, ModelView, InvoiceReportMixin):
-    "Invoice Report Revision"
     __name__ = 'account.invoice.report.revision'
     invoice = fields.Many2One(
         'account.invoice', "Invoice", required=True, ondelete='CASCADE')
@@ -3358,7 +3349,6 @@ class InvoiceReportRevision(ModelSQL, ModelView, InvoiceReportMixin):
 
 
 class RefreshInvoiceReport(Wizard):
-    "Refresh Invoice Report"
     __name__ = 'account.invoice.refresh_invoice_report'
     start_state = 'archive'
     archive = StateTransition()
@@ -3429,7 +3419,6 @@ class InvoiceReport(Report):
 
 
 class PayInvoiceStart(ModelView):
-    'Pay Invoice'
     __name__ = 'account.invoice.pay.start'
 
     payee = fields.Many2One(
@@ -3471,7 +3460,6 @@ class PayInvoiceStart(ModelView):
 
 
 class PayInvoiceAsk(ModelView):
-    'Pay Invoice'
     __name__ = 'account.invoice.pay.ask'
     type = fields.Selection([
             ('writeoff', "Write-Off"),
@@ -3552,7 +3540,6 @@ class PayInvoiceAsk(ModelView):
 
 
 class PayInvoice(Wizard):
-    'Pay Invoice'
     __name__ = 'account.invoice.pay'
     start = StateView('account.invoice.pay.start',
         'account_invoice.pay_start_view_form', [
@@ -3703,7 +3690,6 @@ class PayInvoice(Wizard):
 
 
 class CreditInvoiceStart(ModelView):
-    'Credit Invoice'
     __name__ = 'account.invoice.credit.start'
     invoice_date = fields.Date("Invoice Date")
     with_refund = fields.Boolean('With Refund',
@@ -3716,7 +3702,6 @@ class CreditInvoiceStart(ModelView):
 
 
 class CreditInvoice(Wizard):
-    'Credit Invoice'
     __name__ = 'account.invoice.credit'
     start = StateView('account.invoice.credit.start',
         'account_invoice.credit_start_view_form', [
@@ -3757,7 +3742,6 @@ class CreditInvoice(Wizard):
 
 
 class RescheduleLinesToPay(Wizard):
-    "Reschedule Lines to Pay"
     __name__ = 'account.invoice.lines_to_pay.reschedule'
     start = StateAction('account.act_reschedule_lines_wizard')
 
@@ -3771,7 +3755,6 @@ class RescheduleLinesToPay(Wizard):
 
 
 class DelegateLinesToPay(Wizard):
-    "Delegate Lines to Pay"
     __name__ = 'account.invoice.lines_to_pay.delegate'
     start = StateAction('account.act_delegate_lines_wizard')
 

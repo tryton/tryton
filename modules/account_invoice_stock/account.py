@@ -32,7 +32,6 @@ class Invoice(metaclass=PoolMeta):
 
 
 class InvoiceLineStockMove(ModelSQL):
-    'Invoice Line - Stock Move'
     __name__ = 'account.invoice.line-stock.move'
 
     invoice_line = fields.Many2One(

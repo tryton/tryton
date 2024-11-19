@@ -33,7 +33,6 @@ class CreateChart(metaclass=PoolMeta):
 
 
 class BEVATCustomer(ModelSQL, ModelView):
-    "Belgian VAT Customer"
     __name__ = 'account.be.vat_customer'
 
     company_tax_identifier = fields.Many2One(
@@ -118,7 +117,6 @@ class BEVATCustomer(ModelSQL, ModelView):
 
 
 class BEVATCustomerContext(ModelView):
-    "Belgian VAT Customer Context"
     __name__ = 'account.be.vat_customer.context'
 
     company = fields.Many2One('company.company', "Company", required=True)

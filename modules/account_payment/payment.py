@@ -34,7 +34,6 @@ KINDS = [
 
 
 class Journal(DeactivableMixin, ModelSQL, ModelView):
-    'Payment Journal'
     __name__ = 'account.payment.journal'
     name = fields.Char('Name', required=True)
     currency = fields.Many2One('currency.currency', 'Currency', required=True)
@@ -61,7 +60,6 @@ class Journal(DeactivableMixin, ModelSQL, ModelView):
 
 
 class Group(ModelSQL, ModelView):
-    'Payment Group'
     __name__ = 'account.payment.group'
     _rec_name = 'number'
     number = fields.Char('Number', required=True, readonly=True)
@@ -271,7 +269,6 @@ _STATES = {
 
 
 class Payment(Workflow, ModelSQL, ModelView):
-    'Payment'
     __name__ = 'account.payment'
     _rec_name = 'number'
     number = fields.Char("Number", required=True, readonly=True)
@@ -713,7 +710,6 @@ class Payment(Workflow, ModelSQL, ModelView):
 
 
 class ProcessPayment(Wizard):
-    'Process Payment'
     __name__ = 'account.payment.process'
     start_state = 'process'
     process = StateAction('account_payment.act_payment_group_form')

@@ -26,7 +26,6 @@ else:
 
 
 class Inbox(ModelSQL, ModelView):
-    "Inbound Email Inbox"
     __name__ = 'inbound.email.inbox'
 
     name = fields.Char("Name", required=True)
@@ -105,7 +104,6 @@ def _email_attachments(message):
 
 
 class Email(ModelSQL, ModelView):
-    "Inbound Email"
     __name__ = 'inbound.email'
 
     inbox = fields.Many2One(
@@ -234,7 +232,6 @@ class Email(ModelSQL, ModelView):
 
 
 class Rule(sequence_ordered(), ModelSQL, ModelView):
-    "Inbound Email Rule"
     __name__ = 'inbound.email.rule'
 
     inbox = fields.Many2One(
@@ -305,7 +302,6 @@ class Rule(sequence_ordered(), ModelSQL, ModelView):
 
 
 class RuleHeader(ModelSQL, ModelView):
-    "Inbound Email Rule Header"
     __name__ = 'inbound.email.rule.header'
 
     rule = fields.Many2One(

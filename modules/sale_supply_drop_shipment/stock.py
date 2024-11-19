@@ -68,7 +68,6 @@ class ConfigurationSequence(metaclass=PoolMeta):
 
 class ShipmentDrop(
         ShipmentCheckQuantity, ShipmentMixin, Workflow, ModelSQL, ModelView):
-    "Drop Shipment"
     __name__ = 'stock.shipment.drop'
 
     company = fields.Many2One('company.company', 'Company', required=True,

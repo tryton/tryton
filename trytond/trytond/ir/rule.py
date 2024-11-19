@@ -44,7 +44,6 @@ class RuleGroup(
             'model_ref', 'model', 'ir.model,name', "Model",
             required=True, ondelete='CASCADE'),
         ModelSQL, ModelView):
-    "Rule group"
     __name__ = 'ir.rule.group'
     name = fields.Char(
         "Name", translate=True, required=True,
@@ -148,7 +147,6 @@ class RuleGroup(
 
 
 class Rule(ModelSQL, ModelView):
-    "Rule"
     __name__ = 'ir.rule'
     rule_group = fields.Many2One('ir.rule.group', 'Group',
        required=True, ondelete="CASCADE")

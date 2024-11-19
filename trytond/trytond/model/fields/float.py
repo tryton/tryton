@@ -46,7 +46,8 @@ class Float(Field):
         self.__digits = None
         self.digits = digits
 
-    __init__.__doc__ += Field.__init__.__doc__
+    if __init__.__doc__:
+        __init__.__doc__ += Field.__init__.__doc__
 
     def _get_digits(self):
         return self.__digits

@@ -23,7 +23,6 @@ _STATES = {
 
 
 class Period(Workflow, ModelSQL, ModelView):
-    'Period'
     __name__ = 'account.period'
     name = fields.Char('Name', required=True)
     start_date = fields.Date('Starting Date', required=True, states=_STATES,

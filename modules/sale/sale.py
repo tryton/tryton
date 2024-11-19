@@ -72,7 +72,6 @@ def search_shipments_returns(model_name):
 class Sale(
         Workflow, ModelSQL, ModelView, TaxableMixin,
         AttachmentCopyMixin, NoteCopyMixin):
-    'Sale'
     __name__ = 'sale.sale'
     _rec_name = 'number'
     company = fields.Many2One(
@@ -1227,7 +1226,6 @@ class Sale(
 
 
 class SaleIgnoredInvoice(ModelSQL):
-    'Sale - Ignored Invoice'
     __name__ = 'sale.sale-ignored-account.invoice'
     sale = fields.Many2One(
         'sale.sale', "Sale", ondelete='CASCADE', required=True)
@@ -1247,7 +1245,6 @@ class SaleIgnoredInvoice(ModelSQL):
 
 
 class SaleRecreatedInvoice(ModelSQL):
-    'Sale - Recreated Invoice'
     __name__ = 'sale.sale-recreated-account.invoice'
     sale = fields.Many2One(
         'sale.sale', "Sale", ondelete='CASCADE', required=True)
@@ -1267,7 +1264,6 @@ class SaleRecreatedInvoice(ModelSQL):
 
 
 class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
-    'Sale Line'
     __name__ = 'sale.line'
     sale = fields.Many2One(
         'sale.sale', "Sale", ondelete='CASCADE', required=True,
@@ -2186,7 +2182,6 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
 
 
 class SaleLineTax(ModelSQL):
-    'Sale Line - Tax'
     __name__ = 'sale.line-account.tax'
     line = fields.Many2One(
         'sale.line', "Sale Line", ondelete='CASCADE', required=True)
@@ -2210,7 +2205,6 @@ class SaleLineTax(ModelSQL):
 
 
 class SaleLineIgnoredMove(ModelSQL):
-    'Sale Line - Ignored Move'
     __name__ = 'sale.line-ignored-stock.move'
     sale_line = fields.Many2One(
         'sale.line', "Sale Line", ondelete='CASCADE', required=True)
@@ -2230,7 +2224,6 @@ class SaleLineIgnoredMove(ModelSQL):
 
 
 class SaleLineRecreatedMove(ModelSQL):
-    'Sale Line - Recreated Move'
     __name__ = 'sale.line-recreated-stock.move'
     sale_line = fields.Many2One(
         'sale.line', "Sale Line", ondelete='CASCADE', required=True)
@@ -2270,7 +2263,6 @@ class SaleReport(CompanyReport):
 
 
 class HandleShipmentExceptionAsk(ModelView):
-    'Handle Shipment Exception'
     __name__ = 'sale.handle.shipment.exception.ask'
     recreate_moves = fields.Many2Many(
         'stock.move', None, None, "Stock Moves to Recreate",
@@ -2291,7 +2283,6 @@ class HandleShipmentExceptionAsk(ModelView):
 
 
 class HandleShipmentException(Wizard):
-    'Handle Shipment Exception'
     __name__ = 'sale.handle.shipment.exception'
     start_state = 'ask'
     ask = StateView('sale.handle.shipment.exception.ask',
@@ -2339,7 +2330,6 @@ class HandleShipmentException(Wizard):
 
 
 class HandleInvoiceExceptionAsk(ModelView):
-    'Handle Invoice Exception'
     __name__ = 'sale.handle.invoice.exception.ask'
     recreate_invoices = fields.Many2Many(
         'account.invoice', None, None, "Invoices to Recreate",
@@ -2360,7 +2350,6 @@ class HandleInvoiceExceptionAsk(ModelView):
 
 
 class HandleInvoiceException(Wizard):
-    'Handle Invoice Exception'
     __name__ = 'sale.handle.invoice.exception'
     start_state = 'ask'
     ask = StateView('sale.handle.invoice.exception.ask',
@@ -2399,12 +2388,10 @@ class HandleInvoiceException(Wizard):
 
 
 class ReturnSaleStart(ModelView):
-    'Return Sale'
     __name__ = 'sale.return_sale.start'
 
 
 class ReturnSale(Wizard):
-    'Return Sale'
     __name__ = 'sale.return_sale'
     start = StateView('sale.return_sale.start',
         'sale.return_sale_start_view_form', [
@@ -2440,7 +2427,6 @@ class ModifyHeaderStateView(StateView):
 
 
 class ModifyHeader(Wizard):
-    "Modify Header"
     __name__ = 'sale.modify_header'
     start = ModifyHeaderStateView('sale.sale',
         'sale.modify_header_form', [

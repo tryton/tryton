@@ -5,7 +5,6 @@ from trytond.pyson import Eval
 
 
 class Service(DeactivableMixin, ModelSQL, ModelView):
-    "Subscription Service"
     __name__ = 'sale.subscription.service'
 
     product = fields.Many2One(

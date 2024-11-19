@@ -34,7 +34,6 @@ KINDS = [
 
 
 class TaxGroup(ModelSQL, ModelView):
-    'Tax Group'
     __name__ = 'account.tax.group'
     name = fields.Char('Name', size=None, required=True)
     code = fields.Char('Code', size=None, required=True)
@@ -46,7 +45,6 @@ class TaxGroup(ModelSQL, ModelView):
 
 
 class TaxCodeTemplate(PeriodMixin, tree(), ModelSQL, ModelView):
-    'Tax Code Template'
     __name__ = 'account.tax.code.template'
     name = fields.Char('Name', required=True)
     code = fields.Char('Code')
@@ -125,7 +123,6 @@ class TaxCodeTemplate(PeriodMixin, tree(), ModelSQL, ModelView):
 
 class TaxCode(
         ContextCompanyMixin, ActivePeriodMixin, tree(), ModelSQL, ModelView):
-    'Tax Code'
     __name__ = 'account.tax.code'
     _states = {
         'readonly': (Bool(Eval('template', -1))
@@ -307,7 +304,6 @@ class TaxCode(
 
 
 class TaxCodeLineTemplate(ModelSQL, ModelView):
-    "Tax Code Line Template"
     __name__ = 'account.tax.code.line.template'
 
     code = fields.Many2One('account.tax.code.template', "Code", required=True)
@@ -365,7 +361,6 @@ class TaxCodeLineTemplate(ModelSQL, ModelView):
 
 
 class TaxCodeLine(ModelSQL, ModelView):
-    "Tax Code Line"
     __name__ = 'account.tax.code.line'
     _states = {
         'readonly': (Bool(Eval('template', -1))
@@ -476,7 +471,6 @@ class TaxCodeLine(ModelSQL, ModelView):
 
 
 class TaxCodeContext(ModelView):
-    "Tax Code Context"
     __name__ = 'account.tax.code.context'
 
     company = fields.Many2One('company.company', "Company", required=True)
@@ -590,7 +584,6 @@ class TaxCodeContext(ModelView):
 
 
 class TaxTemplate(sequence_ordered(), ModelSQL, ModelView, DeactivableMixin):
-    'Account Tax Template'
     __name__ = 'account.tax.template'
     name = fields.Char('Name', required=True)
     description = fields.Char('Description', required=True)
@@ -750,14 +743,10 @@ class TaxTemplate(sequence_ordered(), ModelSQL, ModelView, DeactivableMixin):
 
 
 class Tax(sequence_ordered(), ModelSQL, ModelView, DeactivableMixin):
-    '''
-    Account Tax
-
-    Type:
-        percentage: tax = price * rate
-        fixed: tax = amount
-        none: tax = none
-    '''
+    """Type:
+           percentage: tax = price * rate
+           fixed: tax = amount
+           none: tax = none"""
     __name__ = 'account.tax'
     _states = {
         'readonly': (Bool(Eval('template', -1))
@@ -1308,7 +1297,6 @@ class TaxableMixin(object):
 
 
 class TaxLine(ModelSQL, ModelView):
-    'Tax Line'
     __name__ = 'account.tax.line'
     currency = fields.Function(fields.Many2One(
             'currency.currency', "Currency"),
@@ -1426,7 +1414,6 @@ class TaxLine(ModelSQL, ModelView):
 
 
 class TaxRuleTemplate(ModelSQL, ModelView):
-    'Tax Rule Template'
     __name__ = 'account.tax.rule.template'
     name = fields.Char('Name', required=True)
     kind = fields.Selection(KINDS, 'Kind', required=True)
@@ -1484,7 +1471,6 @@ class TaxRuleTemplate(ModelSQL, ModelView):
 
 
 class TaxRule(ModelSQL, ModelView):
-    'Tax Rule'
     __name__ = 'account.tax.rule'
     _states = {
         'readonly': (Bool(Eval('template', -1))
@@ -1564,7 +1550,6 @@ class TaxRule(ModelSQL, ModelView):
 
 
 class TaxRuleLineTemplate(sequence_ordered(), ModelSQL, ModelView):
-    'Tax Rule Line Template'
     __name__ = 'account.tax.rule.line.template'
     rule = fields.Many2One('account.tax.rule.template', 'Rule', required=True,
             ondelete='CASCADE')
@@ -1681,7 +1666,6 @@ class TaxRuleLineTemplate(sequence_ordered(), ModelSQL, ModelView):
 
 
 class TaxRuleLine(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
-    'Tax Rule Line'
     __name__ = 'account.tax.rule.line'
     _states = {
         'readonly': (Bool(Eval('template', -1))
@@ -1838,7 +1822,6 @@ class TaxRuleLine(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
 
 
 class OpenTaxCode(Wizard):
-    'Open Code'
     __name__ = 'account.tax.open_code'
     start_state = 'open_'
     open_ = StateAction('account.act_tax_line_form')
@@ -1860,7 +1843,6 @@ class OpenTaxCode(Wizard):
 
 
 class TestTax(Wizard):
-    "Test Tax"
     __name__ = 'account.tax.test'
     start_state = 'test'
     test = StateView(
@@ -1877,7 +1859,6 @@ class TestTax(Wizard):
 
 
 class TestTaxView(ModelView, TaxableMixin):
-    "Test Tax"
     __name__ = 'account.tax.test'
     tax_date = fields.Date("Date")
     taxes = fields.One2Many('account.tax', None, "Taxes",
@@ -1935,7 +1916,6 @@ class TestTaxView(ModelView, TaxableMixin):
 
 
 class TestTaxViewResult(ModelView):
-    "Test Tax"
     __name__ = 'account.tax.test.result'
     tax = fields.Many2One('account.tax', "Tax")
     description = fields.Char("Description")

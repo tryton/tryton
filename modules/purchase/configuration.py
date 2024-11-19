@@ -22,7 +22,6 @@ def get_purchase_methods(field_name):
 
 class Configuration(
         ModelSingleton, ModelSQL, ModelView, CompanyMultiValueMixin):
-    'Purchase Configuration'
     __name__ = 'purchase.configuration'
     purchase_sequence = fields.MultiValue(fields.Many2One(
             'ir.sequence', "Purchase Sequence", required=True,
@@ -65,7 +64,6 @@ class Configuration(
 
 
 class ConfigurationSequence(ModelSQL, CompanyValueMixin):
-    "Purchase Configuration Sequence"
     __name__ = 'purchase.configuration.sequence'
     purchase_sequence = fields.Many2One(
         'ir.sequence', "Purchase Sequence", required=True,
@@ -86,7 +84,6 @@ class ConfigurationSequence(ModelSQL, CompanyValueMixin):
 
 
 class ConfigurationPurchaseMethod(ModelSQL, ValueMixin):
-    "Purchase Configuration Purchase Method"
     __name__ = 'purchase.configuration.purchase_method'
     purchase_invoice_method = purchase_invoice_method
     get_purchase_invoice_method = get_purchase_methods('invoice_method')

@@ -49,7 +49,6 @@ class Configuration(metaclass=PoolMeta):
 
 
 class ConfigurationCashRoundingAccount(ModelSQL, CompanyValueMixin):
-    "Account Configuration Cash Rounding Account"
     __name__ = 'account.configuration.cash_rounding_account'
 
     cash_rounding = fields.Boolean("Cash Rounding")

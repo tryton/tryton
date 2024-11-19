@@ -17,7 +17,6 @@ from .exceptions import CompanyValidationError
 
 
 class Work(ModelSQL, ModelView):
-    'Work'
     __name__ = 'timesheet.work'
     name = fields.Char('Name',
         states={
@@ -174,7 +173,6 @@ class Work(ModelSQL, ModelView):
 
 
 class WorkContext(ModelView):
-    'Work Context'
     __name__ = 'timesheet.work.context'
     from_date = fields.Date('From Date',
         help="Do not take into account lines before the date.")

@@ -52,10 +52,8 @@ class User(metaclass=PoolMeta):
 
 
 class UserLoginSMSCode(ModelSQL):
-    """SMS Code
-
-    This class is separated from the res.user one in order to prevent locking
-    the res.user table when in a long running process.
+    """This class is separated from the res.user one in order to prevent
+    locking the res.user table when in a long running process.
     """
     __name__ = 'res.user.login.sms_code'
 

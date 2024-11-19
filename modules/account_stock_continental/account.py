@@ -17,7 +17,6 @@ class Configuration(metaclass=PoolMeta):
 
 
 class ConfigurationStockJournal(ModelSQL, ValueMixin):
-    "Account Configuration Stock Journal"
     __name__ = 'account.configuration.stock_journal'
     stock_journal = stock_journal
 

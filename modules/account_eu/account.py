@@ -35,7 +35,6 @@ class Tax(metaclass=PoolMeta):
 
 
 class ECSalesList(ModelSQL, ModelView):
-    "EC Sales List"
     __name__ = 'account.ec_sales_list'
 
     company_tax_identifier = fields.Many2One(
@@ -109,7 +108,6 @@ class ECSalesList(ModelSQL, ModelView):
 
 
 class ECSalesListContext(ModelView):
-    "EC Sales List Context"
     __name__ = 'account.ec_sales_list.context'
 
     company = fields.Many2One('company.company', "Company", required=True)

@@ -132,7 +132,6 @@ class Line(metaclass=PoolMeta):
 
 
 class Carriage(sequence_ordered(), ModelSQL, ModelView):
-    "Sale Carriage"
     __name__ = 'sale.carriage'
 
     _states = {

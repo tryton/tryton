@@ -67,17 +67,14 @@ class Parameter(DeactivableMixin, ModelSQL, ModelView):
 
 
 class Campaign(Parameter):
-    "Marketing Campaign"
     __name__ = 'marketing.campaign'
 
 
 class Medium(Parameter):
-    "Marketing Medium"
     __name__ = 'marketing.medium'
 
 
 class Source(Parameter):
-    "Marketing Source"
     __name__ = 'marketing.source'
 
 

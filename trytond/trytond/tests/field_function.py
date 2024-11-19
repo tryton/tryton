@@ -7,7 +7,6 @@ from trytond.transaction import Transaction
 
 
 class FunctionDefinition(ModelStorage):
-    "Function Definition"
     __name__ = 'test.function.definition'
     function = fields.Function(
         fields.Integer("Integer"),
@@ -22,7 +21,6 @@ class FunctionDefinition(ModelStorage):
 
 
 class FunctionAccessor(ModelSQL):
-    "Function Accessor"
     __name__ = 'test.function.accessor'
 
     target = fields.Many2One('test.function.accessor.target', "Target")
@@ -37,12 +35,10 @@ class FunctionAccessor(ModelSQL):
 
 
 class FunctionAccessorTarget(ModelSQL):
-    "Function Accessor Target"
     __name__ = 'test.function.accessor.target'
 
 
 class FunctonGetter(ModelSQL):
-    "Function Getter"
     __name__ = 'test.function.getter'
 
     function_class = fields.Function(
@@ -74,7 +70,6 @@ class FunctonGetter(ModelSQL):
 
 
 class FunctionGetterContext(ModelSQL):
-    "Function Getter Context"
     __name__ = 'test.function.getter_context'
 
     function_with_context = fields.Function(
@@ -91,7 +86,6 @@ class FunctionGetterContext(ModelSQL):
 
 
 class FunctionGetterLocalCache(ModelSQL):
-    "Function Getter with local cache"
     __name__ = 'test.function.getter_local_cache'
 
     function1 = fields.Function(

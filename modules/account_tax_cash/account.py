@@ -82,7 +82,6 @@ class Period(metaclass=PoolMeta):
 
 
 class TaxGroupCash(ModelSQL):
-    "Tax Group On Cash Basis"
     __name__ = 'account.tax.group.cash'
 
     fiscalyear = fields.Many2One(
@@ -356,7 +355,6 @@ class InvoiceTax(metaclass=PoolMeta):
 
 
 class InvoiceTaxGroupCash(ModelSQL):
-    "Tax Group on Cash Basis per Invoice"
     __name__ = 'account.invoice.tax.group.cash'
 
     invoice = fields.Many2One(

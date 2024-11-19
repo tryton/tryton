@@ -8,7 +8,6 @@ from trytond.model import (
 
 
 class Category(DeactivableMixin, tree(separator=' / '), ModelSQL, ModelView):
-    "Category"
     __name__ = 'party.category'
     name = fields.Char(
         "Name", required=True, translate=True,

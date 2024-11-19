@@ -85,7 +85,6 @@ class Product(metaclass=PoolMeta):
 
 
 class ProductBom(sequence_ordered(), MatchMixin, ModelSQL, ModelView):
-    'Product - BOM'
     __name__ = 'product.product-production.bom'
 
     product = fields.Many2One(
@@ -110,7 +109,6 @@ class ProductBom(sequence_ordered(), MatchMixin, ModelSQL, ModelView):
 
 
 class ProductionLeadTime(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
-    'Production Lead Time'
     __name__ = 'production.lead_time'
 
     product = fields.Many2One(

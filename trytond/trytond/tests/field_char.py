@@ -7,7 +7,6 @@ from trytond.pyson import Eval
 
 
 class Char(ModelSQL):
-    'Char'
     __name__ = 'test.char'
     char = fields.Char("Char")
     char_lstripped = fields.Char("Char", strip='leading')
@@ -16,7 +15,6 @@ class Char(ModelSQL):
 
 
 class CharDefault(ModelSQL):
-    'Char Default'
     __name__ = 'test.char_default'
     char = fields.Char("Char")
 
@@ -26,19 +24,16 @@ class CharDefault(ModelSQL):
 
 
 class CharRequired(ModelSQL):
-    'Char Required'
     __name__ = 'test.char_required'
     char = fields.Char("Char", required=True)
 
 
 class CharSize(ModelSQL):
-    'Char Size'
     __name__ = 'test.char_size'
     char = fields.Char("Char", size=5)
 
 
 class CharSizePYSON(ModelSQL):
-    "Char PYSON Size"
     __name__ = 'test.char_size_pyson'
     char = fields.Char(
         "Char", size=Eval('size', 0),
@@ -47,7 +42,6 @@ class CharSizePYSON(ModelSQL):
 
 
 class CharTranslate(ModelSQL):
-    'Char Translate'
     __name__ = 'test.char_translate'
     char = fields.Char("Char", translate=True)
     char_lstripped = fields.Char("Char", strip='leading', translate=True)
@@ -57,13 +51,11 @@ class CharTranslate(ModelSQL):
 
 
 class CharUnaccentedOn(ModelSQL):
-    'Char Unaccented'
     __name__ = 'test.char_unaccented_on'
     char = fields.Char("Char")
 
 
 class CharUnaccentedOff(ModelSQL):
-    'Char Unaccented'
     __name__ = 'test.char_unaccented_off'
     char = fields.Char("Char")
 
@@ -74,7 +66,6 @@ class CharUnaccentedOff(ModelSQL):
 
 
 class CharUnaccentedTranslate(ModelSQL):
-    'Char Unaccented Translate'
     __name__ = 'test.char_unaccented_translate'
     char = fields.Char("Char", translate=True)
 

@@ -17,13 +17,11 @@ class Trigger(metaclass=PoolMeta):
 
 
 class Triggered(ModelSQL):
-    'Triggered'
     __name__ = 'test.triggered'
     name = fields.Char('Name')
 
 
 class TriggerAction(ModelSQL):
-    'Trigger Action Model'
     __name__ = 'test.trigger_action'
 
     @staticmethod

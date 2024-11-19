@@ -16,7 +16,6 @@ class UIMenu(metaclass=PoolMeta):
 
 
 class UIMenuGroup(ModelSQL):
-    "UI Menu - Group"
     __name__ = 'ir.ui.menu-res.group'
     menu = fields.Many2One('ir.ui.menu', 'Menu', ondelete='CASCADE',
         required=True)
@@ -25,7 +24,6 @@ class UIMenuGroup(ModelSQL):
 
 
 class ActionGroup(ModelSQL):
-    "Action - Group"
     __name__ = 'ir.action-res.group'
     action = fields.Many2One('ir.action', 'Action', ondelete='CASCADE',
         required=True)
@@ -173,7 +171,6 @@ class ModelButton(metaclass=PoolMeta):
 
 
 class ModelButtonGroup(DeactivableMixin, ModelSQL):
-    "Model Button - Group"
     __name__ = 'ir.model.button-res.group'
     button = fields.Many2One('ir.model.button', 'Button',
         ondelete='CASCADE', required=True)
@@ -221,7 +218,6 @@ class RuleGroup(metaclass=PoolMeta):
 
 
 class RuleGroupGroup(ModelSQL):
-    "Rule Group - Group"
     __name__ = 'ir.rule.group-res.group'
     rule_group = fields.Many2One('ir.rule.group', 'Rule Group',
         ondelete='CASCADE', required=True)
@@ -255,7 +251,6 @@ class SequenceType(metaclass=PoolMeta):
 
 
 class SequenceTypeGroup(ModelSQL):
-    'Sequence Type - Group'
     __name__ = 'ir.sequence.type-res.group'
     sequence_type = fields.Many2One('ir.sequence.type', 'Sequence Type',
         ondelete='CASCADE', required=True)
@@ -283,9 +278,7 @@ class Export(metaclass=PoolMeta):
 
 
 class Export_Group(ModelSQL):
-    "Export Group"
     __name__ = 'ir.export-res.group'
-
     export = fields.Many2One(
         'ir.export', "Export", required=True, ondelete='CASCADE')
     group = fields.Many2One(
@@ -293,6 +286,6 @@ class Export_Group(ModelSQL):
 
 
 class Export_Write_Group(Export_Group):
-    "Export Modification Group"
     __name__ = 'ir.export-write-res.group'
+    __string__ = None
     _table = None  # Needed to reset Export_Group._table

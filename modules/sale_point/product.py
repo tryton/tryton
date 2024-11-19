@@ -46,7 +46,6 @@ class Product(metaclass=PoolMeta):
 
 
 class GrossPrice(ModelSQL, CompanyValueMixin):
-    "Product Gross Price"
     __name__ = 'product.gross_price'
     template = fields.Many2One(
         'product.template', "Template", ondelete='CASCADE')

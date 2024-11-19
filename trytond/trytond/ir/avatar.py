@@ -39,7 +39,6 @@ class ImageMixin:
 
 
 class Avatar(ImageMixin, ResourceMixin, ModelSQL):
-    "Avatar"
     __name__ = 'ir.avatar'
 
     uuid = fields.Char("UUID", required=True)
@@ -162,7 +161,6 @@ class Avatar(ImageMixin, ResourceMixin, ModelSQL):
 
 
 class AvatarCache(ImageMixin, ModelSQL):
-    "Avatar Cache"
     __name__ = 'ir.avatar.cache'
 
     avatar = fields.Many2One(

@@ -599,7 +599,6 @@ class Shop(metaclass=PoolMeta):
 
 
 class ShopShopifyIdentifier(IdentifierMixin, ModelSQL, ModelView):
-    "Shopify Identifier"
     __name__ = 'web.shop.shopify_identifier'
 
     record = fields.Reference("Record", 'get_records', required=True)
@@ -709,7 +708,6 @@ class Shop_Attribute(metaclass=PoolMeta):
 
 class ShopShopifyPaymentJournal(
         sequence_ordered(), MatchMixin, ModelSQL, ModelView):
-    "Shopify Payment Journal"
     __name__ = 'web.shop.shopify_payment_journal'
 
     shop = fields.Many2One(

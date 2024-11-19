@@ -64,7 +64,6 @@ class Party(CompanyMultiValueMixin, metaclass=PoolMeta):
 
 
 class PartySaleMethod(ModelSQL, CompanyValueMixin):
-    "Party Sale Method"
     __name__ = 'party.party.sale_method'
 
     party = fields.Many2One(
@@ -83,7 +82,6 @@ class PartySaleMethod(ModelSQL, CompanyValueMixin):
 
 
 class PartyCustomerCurrency(ModelSQL, ValueMixin):
-    "Party Customer Currency"
     __name__ = 'party.party.customer_currency'
     party = fields.Many2One(
         'party.party', "Party", ondelete='CASCADE')

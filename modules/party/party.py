@@ -32,7 +32,6 @@ logger = logging.getLogger(__name__)
 class Party(
         DeactivableMixin, _ContactMechanismMixin, ModelSQL, ModelView,
         MultiValueMixin):
-    "Party"
     __name__ = 'party.party'
 
     _contact_mechanism_states = {
@@ -433,7 +432,6 @@ class Party(
 
 
 class PartyLang(ModelSQL, ValueMixin):
-    "Party Lang"
     __name__ = 'party.party.lang'
     party = fields.Many2One(
         'party.party', "Party", ondelete='CASCADE')
@@ -441,7 +439,6 @@ class PartyLang(ModelSQL, ValueMixin):
 
 
 class PartyCategory(ModelSQL):
-    'Party - Category'
     __name__ = 'party.party-party.category'
     party = fields.Many2One(
         'party.party', "Party", ondelete='CASCADE', required=True)
@@ -797,7 +794,6 @@ TAX_IDENTIFIER_TYPES = list(map(replace_vat, TAX_IDENTIFIER_TYPES))
 
 
 class Identifier(sequence_ordered(), DeactivableMixin, ModelSQL, ModelView):
-    'Party Identifier'
     __name__ = 'party.identifier'
     _rec_name = 'code'
     party = fields.Many2One(
@@ -918,7 +914,6 @@ class Identifier(sequence_ordered(), DeactivableMixin, ModelSQL, ModelView):
 
 
 class CheckVIESResult(ModelView):
-    'Check VIES'
     __name__ = 'party.check_vies.result'
     parties_succeed = fields.Many2Many('party.party', None, None,
         'Parties Succeed', readonly=True, states={
@@ -931,7 +926,6 @@ class CheckVIESResult(ModelView):
 
 
 class CheckVIES(Wizard):
-    'Check VIES'
     __name__ = 'party.check_vies'
     start_state = 'check'
 
@@ -983,7 +977,6 @@ class CheckVIES(Wizard):
 
 
 class Replace(Wizard):
-    "Replace Party"
     __name__ = 'party.replace'
     start_state = 'ask'
     ask = StateView('party.replace.ask', 'party.replace_ask_view_form', [
@@ -1086,7 +1079,6 @@ class Replace(Wizard):
 
 
 class ReplaceAsk(ModelView):
-    "Replace Party"
     __name__ = 'party.replace.ask'
     source = fields.Many2One('party.party', "Source", required=True,
         help="The party to be replaced.")
@@ -1109,7 +1101,6 @@ class ReplaceAsk(ModelView):
 
 
 class Erase(Wizard):
-    "Erase Party"
     __name__ = 'party.erase'
     start_state = 'ask'
     ask = StateView('party.erase.ask', 'party.erase_ask_view_form', [
@@ -1215,7 +1206,6 @@ class Erase(Wizard):
 
 
 class EraseAsk(ModelView):
-    "Erase Party"
     __name__ = 'party.erase.ask'
     party = fields.Many2One('party.party', "Party", required=True,
         help="The party to be erased.")

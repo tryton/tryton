@@ -25,7 +25,6 @@ class Party(metaclass=PoolMeta):
 
 
 class PartySaleInvoiceGroupingMethod(ModelSQL, ValueMixin):
-    "Party Sale Invoice Grouping Method"
     __name__ = 'party.party.sale_invoice_grouping_method'
     party = fields.Many2One(
         'party.party', "Party", ondelete='CASCADE')

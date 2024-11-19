@@ -27,12 +27,10 @@ else:
 
 
 class IncomingConfiguration(ModelSingleton, ModelSQL, ModelView):
-    "Incoming Document Configuration"
     __name__ = 'document.incoming.configuration'
 
 
 class Incoming(DeactivableMixin, Workflow, ModelSQL, ModelView):
-    "Incoming Document"
     __name__ = 'document.incoming'
 
     _states = {
@@ -298,7 +296,6 @@ def iter_pages(expression, size):
 
 
 class IncomingSplit(Wizard):
-    "Split Incoming Document"
     __name__ = 'document.incoming.split'
 
     start = StateView(
@@ -356,7 +353,6 @@ class IncomingSplit(Wizard):
 
 
 class IncomingSplitStart(ModelView):
-    "Split Incoming Document"
     __name__ = 'document.incoming.split.start'
 
     data = fields.Binary("Data", readonly=True)

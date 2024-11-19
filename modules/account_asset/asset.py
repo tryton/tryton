@@ -51,7 +51,6 @@ def normalized_delta(start, end):
 
 
 class Asset(Workflow, ModelSQL, ModelView):
-    'Asset'
     __name__ = 'account.asset'
     _rec_name = 'number'
     number = fields.Char("Number", readonly=True)
@@ -723,7 +722,6 @@ class Asset(Workflow, ModelSQL, ModelView):
 
 
 class AssetLine(ModelSQL, ModelView):
-    'Asset Line'
     __name__ = 'account.asset.line'
     asset = fields.Many2One('account.asset', 'Asset', required=True,
         ondelete='CASCADE', readonly=True)
@@ -758,7 +756,6 @@ class AssetLine(ModelSQL, ModelView):
 
 
 class AssetUpdateMove(ModelSQL):
-    'Asset - Update - Move'
     __name__ = 'account.asset-update-account.move'
     asset = fields.Many2One(
         'account.asset', "Asset", ondelete='CASCADE', required=True)
@@ -766,7 +763,6 @@ class AssetUpdateMove(ModelSQL):
 
 
 class CreateMovesStart(ModelView):
-    'Create Moves Start'
     __name__ = 'account.asset.create_moves.start'
     date = fields.Date('Date')
 
@@ -777,7 +773,6 @@ class CreateMovesStart(ModelView):
 
 
 class CreateMoves(Wizard):
-    'Create Moves'
     __name__ = 'account.asset.create_moves'
     start = StateView('account.asset.create_moves.start',
         'account_asset.asset_create_moves_start_view_form', [
@@ -800,7 +795,6 @@ class CreateMoves(Wizard):
 
 
 class UpdateAssetShowDepreciation(ModelView):
-    'Update Asset Show Depreciation'
     __name__ = 'account.asset.update.show_depreciation'
     amount = fields.Numeric('Amount', readonly=True)
     date = fields.Date('Date', required=True,
@@ -820,7 +814,6 @@ class UpdateAssetShowDepreciation(ModelView):
 
 
 class UpdateAsset(Wizard):
-    'Update Asset'
     __name__ = 'account.asset.update'
     start = StateView('account.asset.revision',
         'account_asset.asset_revision_view_form', [
@@ -935,7 +928,6 @@ class UpdateAsset(Wizard):
 
 
 class AssetRevision(ModelSQL, ModelView):
-    "Asset Revision"
     __name__ = 'account.asset.revision'
     currency = fields.Function(
         fields.Many2One('currency.currency', "Currency"),
@@ -983,7 +975,6 @@ class AssetRevision(ModelSQL, ModelView):
 
 
 class AssetDepreciationTable(CompanyReport):
-    'Asset Depreciation Table'
     __name__ = 'account.asset.depreciation_table'
 
     @classmethod
@@ -1147,7 +1138,6 @@ class AssetDepreciationTable(CompanyReport):
 
 
 class PrintDepreciationTableStart(ModelView):
-    'Asset Depreciation Table Start'
     __name__ = 'account.asset.print_depreciation_table.start'
 
     start_date = fields.Date('Start Date', required=True,
@@ -1165,7 +1155,6 @@ class PrintDepreciationTableStart(ModelView):
 
 
 class PrintDepreciationTable(Wizard):
-    'Asset Depreciation Table'
     __name__ = 'account.asset.print_depreciation_table'
     start = StateView('account.asset.print_depreciation_table.start',
         'account_asset.print_depreciation_table_start_view_form', [

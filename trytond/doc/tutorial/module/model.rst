@@ -21,7 +21,6 @@ Our model in :file:`opportunity.py` file currently looks like this:
     from trytond.model import ModelSQL, fields
 
     class Opportunity(ModelSQL):
-        "Opportunity"
         __name__ = 'training.opportunity'
         _rec_name = 'description'
 

@@ -219,7 +219,6 @@ class ComponentMixin(sequence_ordered(), ModelStorage):
 
 
 class Component(ComponentMixin, ModelSQL, ModelView):
-    "Product Component"
     __name__ = "product.component"
 
     parent_template = fields.Many2One(

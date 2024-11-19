@@ -30,7 +30,6 @@ from .exceptions import FormulaError
 
 
 class Agent(DeactivableMixin, ModelSQL, ModelView):
-    'Commission Agent'
     __name__ = 'commission.agent'
     party = fields.Many2One('party.party', "Party", required=True,
         context={
@@ -179,7 +178,6 @@ class Agent(DeactivableMixin, ModelSQL, ModelView):
 
 
 class AgentSelection(sequence_ordered(), MatchMixin, ModelSQL, ModelView):
-    "Agent Selection"
     __name__ = 'commission.agent.selection'
     agent = fields.Many2One(
         'commission.agent', "Agent", required=True,
@@ -248,7 +246,6 @@ class AgentSelection(sequence_ordered(), MatchMixin, ModelSQL, ModelView):
 
 
 class Plan(ModelSQL, ModelView):
-    'Commission Plan'
     __name__ = 'commission.plan'
     name = fields.Char('Name', required=True, translate=True)
     commission_product = fields.Many2One('product.product',
@@ -304,7 +301,6 @@ class Plan(ModelSQL, ModelView):
 
 
 class PlanLines(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
-    'Commission Plan Line'
     __name__ = 'commission.plan.line'
     plan = fields.Many2One('commission.plan', 'Plan', required=True,
         ondelete='CASCADE',
@@ -366,7 +362,6 @@ class PlanLines(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
 
 
 class Commission(ModelSQL, ModelView):
-    'Commission'
     __name__ = 'commission'
     _readonly_states = {
         'readonly': Bool(Eval('invoice_line')),
@@ -608,7 +603,6 @@ class Commission(ModelSQL, ModelView):
 
 
 class CreateInvoice(Wizard):
-    'Create Commission Invoice'
     __name__ = 'commission.create_invoice'
     start_state = 'ask'
     ask = StateView('commission.create_invoice.ask',
@@ -646,7 +640,6 @@ class CreateInvoice(Wizard):
 
 
 class CreateInvoiceAsk(ModelView):
-    'Create Commission Invoice'
     __name__ = 'commission.create_invoice.ask'
     from_ = fields.Date('From',
         domain=[

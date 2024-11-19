@@ -21,7 +21,6 @@ logger = logging.getLogger(__name__)
 
 
 class ShortenedURL(ModelSQL, ModelView):
-    "Short URL"
     __name__ = 'web.shortened_url'
 
     shortened_url = fields.Function(
@@ -125,7 +124,6 @@ class ShortenedURL(ModelSQL, ModelView):
 
 
 class URLAccess(ModelSQL):
-    "URL Access"
     __name__ = 'web.shortened_url.access'
 
     url = fields.Many2One('web.shortened_url', "URL", required=True)

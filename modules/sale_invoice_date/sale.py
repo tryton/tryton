@@ -8,7 +8,6 @@ from trytond.pool import Pool, PoolMeta
 
 
 class InvoiceTerm(DeactivableMixin, ModelSQL, ModelView):
-    "Invoice Term"
     __name__ = 'sale.invoice.term'
 
     name = fields.Char(
@@ -28,7 +27,6 @@ class InvoiceTerm(DeactivableMixin, ModelSQL, ModelView):
 
 
 class InvoiceTermRelativeDelta(sequence_ordered(), ModelSQL, ModelView):
-    "Invoice Term Delta"
     __name__ = 'sale.invoice.term.relative_delta'
 
     term = fields.Many2One(

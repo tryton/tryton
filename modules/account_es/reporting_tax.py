@@ -334,7 +334,6 @@ class AEAT303(AEATReport):
 
 
 class PrintAEATStart(ModelView):
-    'Print AEAT Start'
     __name__ = 'account.reporting.aeat.start'
 
     report = fields.Selection([
@@ -347,7 +346,6 @@ class PrintAEATStart(ModelView):
 
 
 class PrintAEAT(Wizard):
-    'Print AEAT'
     __name__ = 'account.reporting.aeat'
     start = StateView('account.reporting.aeat.start',
         'account_es.print_aeat_start_view_form', [
@@ -379,7 +377,6 @@ class PrintAEAT(Wizard):
 
 
 class ESVATList(ModelSQL, ModelView):
-    "Spanish VAT List"
     __name__ = 'account.reporting.vat_list_es'
 
     company_tax_identifier = fields.Many2One(
@@ -510,7 +507,6 @@ class ESVATList(ModelSQL, ModelView):
 
 
 class ESVATListContext(ModelView):
-    "Spanish VAT List Context"
     __name__ = 'account.reporting.vat_list_es.context'
 
     company = fields.Many2One('company.company', "Company", required=True)
@@ -561,7 +557,6 @@ class AEAT347(Report):
 
 
 class ECOperationList(ECSalesList):
-    "EC Operation List"
     __name__ = 'account.reporting.es_ec_operation_list'
 
     @classmethod
@@ -633,7 +628,6 @@ class ECOperationList(ECSalesList):
 
 
 class ECOperationListContext(ECSalesListContext):
-    "EC Operation List Context"
     __name__ = 'account.reporting.es_ec_operation_list.context'
 
     start_date = fields.Date("Start Date",
@@ -713,7 +707,6 @@ class AEAT349(Report):
 
 
 class ESVATBookContext(ModelView):
-    "Spanish VAT Book Context"
     __name__ = 'account.reporting.vat_book_es.context'
 
     company = fields.Many2One('company.company', "Company", required=True)
@@ -761,7 +754,6 @@ class ESVATBookContext(ModelView):
 
 
 class ESVATBook(ModelSQL, ModelView):
-    "Spanish VAT Book"
     __name__ = 'account.reporting.vat_book_es'
 
     invoice = fields.Many2One('account.invoice', "Invoice")

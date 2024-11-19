@@ -7,7 +7,6 @@ from trytond.pool import Pool
 
 
 class Incoterm(MatchMixin, ModelSQL, ModelView):
-    "Incoterm"
     __name__ = 'incoterm.incoterm'
     _rec_name = 'code'
 
@@ -65,7 +64,6 @@ class Incoterm(MatchMixin, ModelSQL, ModelView):
 
 
 class Incoterm_Company(ModelSQL):
-    "Incoterm - Company"
     __name__ = 'incoterm.incoterm-company.company'
 
     incoterm = fields.Many2One('incoterm.incoterm', "Incoterm", required=True)

@@ -10,7 +10,5 @@ this repository contains the full copyright notices and license terms. -->
     <field name="module_ref"/>
     <label name="global_search_p"/>
     <field name="global_search_p"/>
-    <separator name="info" colspan="6"/>
-    <field name="info" colspan="6"/>
     <field name="fields" colspan="6" readonly="1"/>
 </form>

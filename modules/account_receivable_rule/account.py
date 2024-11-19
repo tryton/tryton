@@ -360,7 +360,6 @@ class AccountRuleAccountAbstract(sequence_ordered(), ModelSQL, ModelView):
 
 
 class AccountReceivableRule(AccountRuleAbstract):
-    "Account Receivable Rule"
     __name__ = 'account.account.receivable.rule'
 
     accounts = fields.One2Many(
@@ -387,7 +386,6 @@ class AccountReceivableRule(AccountRuleAbstract):
 
 
 class AccountReceivableRuleAccount(AccountRuleAccountAbstract):
-    "Account Receivable Rule Account"
     __name__ = 'account.account.receivable.rule.account'
 
     rule = fields.Many2One(

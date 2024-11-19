@@ -9,7 +9,6 @@ from .account import AnalyticMixin
 
 
 class Rule(sequence_ordered(), MatchMixin, AnalyticMixin, ModelSQL, ModelView):
-    "Analytic Rule"
     __name__ = 'analytic_account.rule'
 
     company = fields.Many2One(

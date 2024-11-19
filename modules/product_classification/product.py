@@ -71,12 +71,10 @@ class Product(metaclass=PoolMeta):
 
 
 class ClassificationDummy(ClassificationMixin, ModelStorage, ModelView):
-    'Dummy Product Classification'
     __name__ = 'product.classification.dummy'
 
 
 class ClassificationTreeDummy(
         classification_tree('product.classification_tree.dummy'),
         ModelStorage, ModelView):
-    'Dummy Product Classification Tree'
     __name__ = 'product.classification_tree.dummy'

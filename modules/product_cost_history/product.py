@@ -61,7 +61,6 @@ class CostPrice(metaclass=PoolMeta):
 
 
 class ProductCostHistory(ModelSQL, ModelView):
-    'History of Product Cost'
     __name__ = 'product.product.cost_history'
     product = fields.Many2One('product.product', "Product")
     date = fields.Date('Date')

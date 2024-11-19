@@ -6,7 +6,7 @@ import copy
 import sys
 from collections import defaultdict
 from functools import total_ordering
-from itertools import chain
+from itertools import chain, groupby
 
 from trytond.i18n import lazy_gettext
 from trytond.model import fields
@@ -17,6 +17,15 @@ from trytond.transaction import Transaction
 from trytond.url import URLMixin
 
 __all__ = ['Model']
+
+
+def humanize(name):
+    if name.startswith('test.'):
+        name = name[len('test.'):]
+    parts = name.replace('_', '.').replace('-', '.-.').split('.')
+    parts = (p for p in parts if p not in {'res', 'ir'})
+    parts = [k for k, _ in groupby(parts)]
+    return ' '.join(parts).title()
 
 
 class ModelMeta(PoolMeta):
@@ -35,6 +44,7 @@ class Model(URLMixin, PoolBase, metaclass=ModelMeta):
     __slots__ = (
         '_id', '_values', '_init_values', '_removed', '_deleted',
         '__weakref__')
+    __string__ = None
     _rec_name = 'name'
 
     id = fields.Integer(lazy_gettext('ir.msg_ID'), readonly=True)
@@ -42,6 +52,8 @@ class Model(URLMixin, PoolBase, metaclass=ModelMeta):
     @classmethod
     def __setup__(cls):
         super(Model, cls).__setup__()
+        if not cls.__string__:
+            cls.__string__ = humanize(cls.__name__)
         cls.__rpc__ = {
             'default_get': RPC(cache=dict(seconds=5 * 60)),
             'fields_get': RPC(cache=dict(days=1)),
@@ -100,18 +112,6 @@ class Model(URLMixin, PoolBase, metaclass=ModelMeta):
                 assert field.name == name, (
                     'Duplicate fields on %s: %s, %s'
                     % (cls, field.name, name))
-
-    @classmethod
-    def _get_name(cls):
-        '''
-        Returns the first non-empty line of the model docstring.
-        '''
-        assert cls.__doc__, '%s has no docstring' % cls
-        lines = cls.__doc__.splitlines()
-        for line in lines:
-            line = line.strip()
-            if line:
-                return line
 
     @classmethod
     def __register__(cls, module_name):

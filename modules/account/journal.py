@@ -28,7 +28,6 @@ class Journal(
         DeactivableMixin, MatchMixin,
         sequence_ordered('matching_sequence', "Matching Sequence"),
         ModelSQL, ModelView, CompanyMultiValueMixin):
-    'Journal'
     __name__ = 'account.journal'
     name = fields.Char('Name', size=None, required=True, translate=True)
     code = fields.Char('Code', size=None)
@@ -187,7 +186,6 @@ class Journal(
 
 
 class JournalSequence(ModelSQL, CompanyValueMixin):
-    "Journal Sequence"
     __name__ = 'account.journal.sequence'
     journal = fields.Many2One(
         'account.journal', "Journal", ondelete='CASCADE',
@@ -215,7 +213,6 @@ class JournalSequence(ModelSQL, CompanyValueMixin):
 
 
 class JournalCashContext(ModelView):
-    'Journal Cash Context'
     __name__ = 'account.journal.open_cash.context'
     start_date = fields.Date('Start Date', required=True)
     end_date = fields.Date('End Date', required=True)
@@ -227,7 +224,6 @@ class JournalCashContext(ModelView):
 
 
 class JournalPeriod(Workflow, ModelSQL, ModelView):
-    'Journal - Period'
     __name__ = 'account.journal.period'
     journal = fields.Many2One(
         'account.journal', 'Journal', required=True, ondelete='CASCADE',

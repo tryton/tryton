@@ -294,7 +294,6 @@ class Product(IdentifiersMixin, metaclass=PoolMeta):
 
 
 class ShopifyInventoryItem(IdentifiersMixin, ModelSQL, ModelView):
-    "Shopify Inventory Item"
     __name__ = 'product.shopify_inventory_item'
 
     product = fields.Function(

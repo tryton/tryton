@@ -588,7 +588,6 @@ class Work(tree(parent='successors'), metaclass=PoolMeta):
 
 
 class PredecessorSuccessor(ModelSQL):
-    'Predecessor - Successor'
     __name__ = 'project.predecessor_successor'
     predecessor = fields.Many2One(
         'project.work', "Predecessor", ondelete='CASCADE', required=True)
@@ -642,7 +641,6 @@ class PredecessorSuccessor(ModelSQL):
 
 
 class Leveling(Wizard):
-    'Tasks Leveling'
     __name__ = 'project_plan.work.leveling'
     start_state = 'leveling'
     leveling = StateTransition()

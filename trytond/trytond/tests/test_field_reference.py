@@ -484,8 +484,8 @@ class FieldReferenceTestCase(TestCase):
     def test_domain_valid(self):
         "Test reference with valid domain"
         pool = Pool()
-        Reference = pool.get('test.reference_domainvalidation')
-        Target = pool.get('test.reference_domainvalidation.target')
+        Reference = pool.get('test.reference_domain_validation')
+        Target = pool.get('test.reference_domain_validation.target')
         target = Target(value=42)
         target.save()
 
@@ -498,8 +498,8 @@ class FieldReferenceTestCase(TestCase):
     def test_domain_invalid(self):
         "Test reference with invalid domain"
         pool = Pool()
-        Reference = pool.get('test.reference_domainvalidation')
-        Target = pool.get('test.reference_domainvalidation.target')
+        Reference = pool.get('test.reference_domain_validation')
+        Target = pool.get('test.reference_domain_validation.target')
         target = Target(value=1)
         target.save()
 
@@ -515,7 +515,7 @@ class FieldReferenceTestCase(TestCase):
     def test_no_domain(self):
         "Test reference with no domain"
         pool = Pool()
-        Reference = pool.get('test.reference_domainvalidation')
+        Reference = pool.get('test.reference_domain_validation')
         Target = pool.get('test.reference.target')
         target = Target(name="Test")
         target.save()
@@ -529,7 +529,7 @@ class FieldReferenceTestCase(TestCase):
     def test_domain_none_value(self):
         "Test reference with domain and None value"
         pool = Pool()
-        Reference = pool.get('test.reference_domainvalidation')
+        Reference = pool.get('test.reference_domain_validation')
 
         reference, = Reference.create([{
                     'reference': None,
@@ -540,7 +540,7 @@ class FieldReferenceTestCase(TestCase):
     def test_domain_no_id_value(self):
         "Test reference with domain and no id"
         pool = Pool()
-        Reference = pool.get('test.reference_domainvalidation')
+        Reference = pool.get('test.reference_domain_validation')
 
         reference, = Reference.create([{
                     'reference': 'test.reference.target,',
@@ -551,7 +551,7 @@ class FieldReferenceTestCase(TestCase):
     def test_domain_negative_id_value(self):
         "Test reference with domain and negative id"
         pool = Pool()
-        Reference = pool.get('test.reference_domainvalidation')
+        Reference = pool.get('test.reference_domain_validation')
 
         reference, = Reference.create([{
                     'reference': 'test.reference.target,-1',
@@ -562,11 +562,11 @@ class FieldReferenceTestCase(TestCase):
     def test_domain_different_targets(self):
         "Test reference with domain and different targets"
         pool = Pool()
-        Reference = pool.get('test.reference_domainvalidation')
+        Reference = pool.get('test.reference_domain_validation')
         Target1 = pool.get('test.reference.target')
         target1 = Target1(name="Test")
         target1.save()
-        Target2 = pool.get('test.reference_domainvalidation.target')
+        Target2 = pool.get('test.reference_domain_validation.target')
         target2 = Target2(value=6)
         target2.save()
 
@@ -581,8 +581,8 @@ class FieldReferenceTestCase(TestCase):
     def test_domain_pyson(self):
         "Test reference with pyson domain"
         pool = Pool()
-        Reference = pool.get('test.reference_domainvalidation_pyson')
-        Target = pool.get('test.reference_domainvalidation.target')
+        Reference = pool.get('test.reference_domain_validation_pyson')
+        Target = pool.get('test.reference_domain_validation.target')
         target = Target(value=42)
         target.save()
 
@@ -596,7 +596,7 @@ class FieldReferenceTestCase(TestCase):
     def test_domain_pyson_no_id_value(self):
         "Test reference with pyson domain and no id"
         pool = Pool()
-        Reference = pool.get('test.reference_domainvalidation_pyson')
+        Reference = pool.get('test.reference_domain_validation_pyson')
 
         reference, = Reference.create([{
                     'reference': 'test.reference.target,',
@@ -607,7 +607,7 @@ class FieldReferenceTestCase(TestCase):
     def test_domain_pyson_negative_id_value(self):
         "Test reference with pyson domain and negative id"
         pool = Pool()
-        Reference = pool.get('test.reference_domainvalidation_pyson')
+        Reference = pool.get('test.reference_domain_validation_pyson')
 
         reference, = Reference.create([{
                     'reference': 'test.reference.target,-1',
@@ -618,11 +618,11 @@ class FieldReferenceTestCase(TestCase):
     def test_domain_pyson_different_targets(self):
         "Test reference with pyson domain and different targets"
         pool = Pool()
-        Reference = pool.get('test.reference_domainvalidation_pyson')
+        Reference = pool.get('test.reference_domain_validation_pyson')
         Target1 = pool.get('test.reference.target')
         target1 = Target1(name="Test")
         target1.save()
-        Target2 = pool.get('test.reference_domainvalidation.target')
+        Target2 = pool.get('test.reference_domain_validation.target')
         target2 = Target2(value=42)
         target2.save()
 

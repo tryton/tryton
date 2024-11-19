@@ -62,7 +62,9 @@ class Many2One(Field):
         self.search_order = search_order
         self.__search_context = None
         self.search_context = search_context or {}
-    __init__.__doc__ += Field.__init__.__doc__
+
+    if __init__.__doc__:
+        __init__.__doc__ += Field.__init__.__doc__
 
     def __get_required(self):
         return self.__required

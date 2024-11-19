@@ -7,7 +7,6 @@ from trytond.pyson import Eval, If
 
 
 class ModelViewChangedValues(ModelView):
-    'ModelView Changed Values'
     __name__ = 'test.modelview.changed_values'
     name = fields.Char('Name')
     target = fields.Many2One('test.modelview.changed_values.target', 'Target')
@@ -34,39 +33,33 @@ class ModelViewChangedValues(ModelView):
 
 
 class ModelViewChangedValuesDictSchema(DictSchemaMixin, ModelSQL):
-    'ModelView Changed Values Dict Schema'
     __name__ = 'test.modelview.changed_values.dictionary'
 
 
 class ModelViewChangedValuesTarget(ModelView):
-    'ModelView Changed Values Target'
     __name__ = 'test.modelview.changed_values.target'
     name = fields.Char('Name')
     parent = fields.Many2One('test.modelview.changed_values', 'Parent')
 
 
 class ModelViewChangedValuesStoredTarget(ModelSQL):
-    "ModelSQL Changed Values Target"
     __name__ = 'test.modelview.changed_values.stored_target'
     name = fields.Char("Name")
 
 
 class ModelViewStoredChangedValues(ModelSQL, ModelView):
-    "ModelView Stored Changed Values Stored"
     __name__ = 'test.modelview.stored.changed_values'
     targets = fields.One2Many(
         'test.modelview.stored.changed_values.target', 'parent', "Targets")
 
 
 class ModelViewStoredChangedValuesTarget(ModelSQL, ModelView):
-    "ModelSQL Stored Changed Values Target"
     __name__ = 'test.modelview.stored.changed_values.target'
     name = fields.Char("Name")
     parent = fields.Many2One('test.modelview.stored.changed_values', "Parent")
 
 
 class ModelViewButton(ModelView):
-    'ModelView Button'
     __name__ = 'test.modelview.button'
     value = fields.Integer("Value")
 
@@ -88,7 +81,6 @@ class ModelViewButton(ModelView):
 
 
 class ModelViewButtonDepends(ModelView):
-    'ModelView Button Depends'
     __name__ = 'test.modelview.button_depends'
     value = fields.Integer("Value")
 
@@ -108,7 +100,6 @@ class ModelViewButtonDepends(ModelView):
 
 
 class ModelViewButtonAction(ModelView):
-    'ModelView Button Action'
     __name__ = 'test.modelview.button_action'
 
     @classmethod
@@ -130,7 +121,6 @@ class ModelViewButtonAction(ModelView):
 
 
 class ModelViewButtonChange(ModelView):
-    "ModelView Button Change"
     __name__ = 'test.modelview.button_change'
 
     name = fields.Char("Name")
@@ -153,17 +143,14 @@ class ModelViewButtonChange(ModelView):
 
 
 class ModelViewLink(ModelView):
-    "ModelView Link"
     __name__ = 'test.modelview.link'
 
 
 class ModelViewLinkTarget(ModelSQL):
-    "ModelView Link Target"
     __name__ = 'test.modelview.link.target'
 
 
 class ModelViewRPC(ModelView):
-    'ModelView RPC'
     __name__ = 'test.modelview.rpc'
 
     selection = fields.Selection([('a', 'A')], 'Selection')
@@ -215,12 +202,10 @@ class ModelViewRPC(ModelView):
 
 
 class ModelViewEmptyPage(ModelView):
-    'ModelView Empty Page'
     __name__ = 'test.modelview.empty_page'
 
 
 class ModelViewCircularDepends(ModelView):
-    'ModelView Circular Depends'
     __name__ = 'test.modelview.circular_depends'
 
     foo = fields.Char("Char", depends=['bar'])
@@ -229,7 +214,6 @@ class ModelViewCircularDepends(ModelView):
 
 
 class ModeViewDependsDepends(ModelView):
-    "ModelView depends of depends"
     __name__ = 'test.modelview.depends_depends'
 
     foo = fields.Char("Foo", depends=['bar'])
@@ -238,7 +222,6 @@ class ModeViewDependsDepends(ModelView):
 
 
 class ModelViewViewAttributes(ModelView):
-    'ModelView View Attributes'
     __name__ = 'test.modelview.view_attributes'
 
     foo = fields.Char("Char")
@@ -252,7 +235,6 @@ class ModelViewViewAttributes(ModelView):
 
 
 class ModelViewViewAttributesDepends(ModelView):
-    'ModelView View Attributes Depends'
     __name__ = 'test.modelview.view_attributes_depends'
 
     foo = fields.Char("Char")
@@ -267,7 +249,6 @@ class ModelViewViewAttributesDepends(ModelView):
 
 
 class ModelViewStatesDepends(ModelView):
-    "ModelView States Depends"
     __name__ = 'test.modelview.states_depends'
 
     foo = fields.Char("Foo",
@@ -282,14 +263,12 @@ class ModelViewStatesDepends(ModelView):
 
 
 class ModelViewAutocomplete(ModelView):
-    "ModelView Autocomplete"
     __name__ = 'test.modelview.autocomplete'
 
     name = fields.Char("Name")
 
 
 class ModelViewAutocompleteStorage(ModelSQL, ModelViewAutocomplete):
-    "ModelView Autocomplete Storage"
     __name__ = 'test.modelview.autocomplete.storage'
 
 

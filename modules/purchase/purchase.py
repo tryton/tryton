@@ -71,7 +71,6 @@ def search_shipments_returns(model_name):
 class Purchase(
         Workflow, ModelSQL, ModelView, TaxableMixin,
         AttachmentCopyMixin, NoteCopyMixin):
-    'Purchase'
     __name__ = 'purchase.purchase'
     _rec_name = 'number'
 
@@ -1089,7 +1088,6 @@ class Purchase(
 
 
 class PurchaseIgnoredInvoice(ModelSQL):
-    'Purchase - Ignored Invoice'
     __name__ = 'purchase.purchase-ignored-account.invoice'
     purchase = fields.Many2One(
         'purchase.purchase', "Purchase", ondelete='CASCADE', required=True)
@@ -1109,7 +1107,6 @@ class PurchaseIgnoredInvoice(ModelSQL):
 
 
 class PurchaseRecreatedInvoice(ModelSQL):
-    'Purchase - Recreated Invoice'
     __name__ = 'purchase.purchase-recreated-account.invoice'
     purchase = fields.Many2One(
         'purchase.purchase', "Purchase", ondelete='CASCADE', required=True)
@@ -1129,7 +1126,6 @@ class PurchaseRecreatedInvoice(ModelSQL):
 
 
 class Line(sequence_ordered(), ModelSQL, ModelView):
-    'Purchase Line'
     __name__ = 'purchase.line'
     purchase = fields.Many2One(
         'purchase.purchase', "Purchase", ondelete='CASCADE', required=True,
@@ -2135,7 +2131,6 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
 
 
 class LineTax(ModelSQL):
-    'Purchase Line - Tax'
     __name__ = 'purchase.line-account.tax'
     line = fields.Many2One(
         'purchase.line', "Purchase Line", ondelete='CASCADE', required=True,
@@ -2162,7 +2157,6 @@ class LineTax(ModelSQL):
 
 
 class LineIgnoredMove(ModelSQL):
-    'Purchase Line - Ignored Move'
     __name__ = 'purchase.line-ignored-stock.move'
     purchase_line = fields.Many2One(
         'purchase.line', "Purchase Line", ondelete='CASCADE', required=True)
@@ -2182,7 +2176,6 @@ class LineIgnoredMove(ModelSQL):
 
 
 class LineRecreatedMove(ModelSQL):
-    'Purchase Line - Ignored Move'
     __name__ = 'purchase.line-recreated-stock.move'
     purchase_line = fields.Many2One(
         'purchase.line', "Purchase Line", ondelete='CASCADE', required=True)
@@ -2222,7 +2215,6 @@ class PurchaseReport(CompanyReport):
 
 
 class HandleShipmentExceptionAsk(ModelView):
-    'Handle Shipment Exception'
     __name__ = 'purchase.handle.shipment.exception.ask'
     recreate_moves = fields.Many2Many(
         'stock.move', None, None, "Stock Moves to Recreate",
@@ -2243,7 +2235,6 @@ class HandleShipmentExceptionAsk(ModelView):
 
 
 class HandleShipmentException(Wizard):
-    'Handle Shipment Exception'
     __name__ = 'purchase.handle.shipment.exception'
     start_state = 'ask'
     ask = StateView('purchase.handle.shipment.exception.ask',
@@ -2291,7 +2282,6 @@ class HandleShipmentException(Wizard):
 
 
 class HandleInvoiceExceptionAsk(ModelView):
-    'Handle Invoice Exception'
     __name__ = 'purchase.handle.invoice.exception.ask'
     recreate_invoices = fields.Many2Many(
         'account.invoice', None, None, "Invoices to Recreate",
@@ -2312,7 +2302,6 @@ class HandleInvoiceExceptionAsk(ModelView):
 
 
 class HandleInvoiceException(Wizard):
-    'Handle Invoice Exception'
     __name__ = 'purchase.handle.invoice.exception'
     start_state = 'ask'
     ask = StateView('purchase.handle.invoice.exception.ask',
@@ -2362,7 +2351,6 @@ class ModifyHeaderStateView(StateView):
 
 
 class ModifyHeader(Wizard):
-    "Modify Header"
     __name__ = 'purchase.modify_header'
     start = ModifyHeaderStateView('purchase.purchase',
         'purchase.modify_header_form', [
@@ -2415,12 +2403,10 @@ class ModifyHeader(Wizard):
 
 
 class ReturnPurchaseStart(ModelView):
-    "Return Purchase"
     __name__ = 'purchase.return_purchase.start'
 
 
 class ReturnPurchase(Wizard):
-    "Return Purchase"
     __name__ = 'purchase.return_purchase'
     start = StateView('purchase.return_purchase.start',
         'purchase.return_purchase_start_view_form', [

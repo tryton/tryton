@@ -90,7 +90,6 @@ class CreateShipping(metaclass=PoolMeta):
 
 
 class CreateShippingSendcloud(Wizard):
-    "Create Sendcloud Shipping"
     __name__ = 'stock.shipment.create_shipping.sendcloud'
 
     start = StateTransition()

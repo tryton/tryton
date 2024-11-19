@@ -704,7 +704,6 @@ class Payment(StripeCustomerMethodMixin, CheckoutMixin, metaclass=PoolMeta):
 
 
 class Refund(Workflow, ModelSQL, ModelView):
-    "Stripe Payment Refund"
     __name__ = 'account.payment.stripe.refund'
 
     payment = fields.Many2One(
@@ -963,7 +962,6 @@ class Refund(Workflow, ModelSQL, ModelView):
 
 
 class Account(ModelSQL, ModelView):
-    "Stripe Account"
     __name__ = 'account.payment.stripe.account'
 
     name = fields.Char("Name", required=True)
@@ -1411,7 +1409,6 @@ class Account(ModelSQL, ModelView):
 
 
 class Customer(CheckoutMixin, DeactivableMixin, ModelSQL, ModelView):
-    "Stripe Customer"
     __name__ = 'account.payment.stripe.customer'
     _history = True
     _rec_name = 'stripe_customer_id'
@@ -1879,7 +1876,6 @@ class Customer(CheckoutMixin, DeactivableMixin, ModelSQL, ModelView):
 
 
 class CustomerFingerprint(ModelSQL):
-    "Stripe Customer Fingerprint"
     __name__ = 'account.payment.stripe.customer.fingerprint'
     customer = fields.Many2One(
         'account.payment.stripe.customer', "Customer",
@@ -1898,7 +1894,6 @@ class CustomerFingerprint(ModelSQL):
 
 
 class CustomerIdentical(ModelSQL):
-    "Stripe Customer Identical"
     __name__ = 'account.payment.stripe.customer.identical'
     source = fields.Many2One('account.payment.stripe.customer', "Source")
     target = fields.Many2One('account.payment.stripe.customer', "Target")
@@ -1924,7 +1919,6 @@ class CustomerIdentical(ModelSQL):
 
 
 class Checkout(Wizard):
-    "Stripe Checkout"
     __name__ = 'account.payment.stripe.checkout'
     start_state = 'checkout'
     checkout = StateAction('account_payment_stripe.url_checkout')
@@ -1935,12 +1929,10 @@ class Checkout(Wizard):
 
 
 class CheckoutPage(Report):
-    "Stripe Checkout"
     __name__ = 'account.payment.stripe.checkout'
 
 
 class CustomerSourceDetach(Wizard):
-    "Detach Customer Source"
     __name__ = 'account.payment.stripe.customer.source.detach'
     start_state = 'ask'
     ask = StateView(
@@ -1963,7 +1955,6 @@ class CustomerSourceDetach(Wizard):
 
 
 class CustomerSourceDetachAsk(ModelView):
-    "Detach Customer Source"
     __name__ = 'account.payment.stripe.customer.source.detach.ask'
 
     customer = fields.Many2One(

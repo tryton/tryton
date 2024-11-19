@@ -23,6 +23,11 @@ Class attributes are:
 
    The a unique name to reference the model throughout the platform.
 
+.. attribute:: Model.__string__
+
+   A string for the label of the model.
+   The default value is built from :attr:`~Model.__name__`.
+
 .. attribute:: Model.__access__
 
    A set that contains the names of relation field for which the access rights

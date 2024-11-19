@@ -8,7 +8,6 @@ from trytond.wizard import (
 
 
 class TestWizardStart(ModelSQL, ModelView):
-    'Test Wizard'
     __name__ = 'test.test_wizard.start'
     name = fields.Char('Test me')
     user = fields.Many2One('res.user', 'User')
@@ -20,7 +19,6 @@ class TestWizardStart(ModelSQL, ModelView):
 
 
 class TestWizard(Wizard):
-    'Test Wizard'
     __name__ = 'test.test_wizard'
     start = StateView('test.test_wizard.start',
         'tests.test_wizard_start_view_form', [

@@ -304,7 +304,6 @@ class AbstractConversionTimeseries(AbstractConversion, AbstractTimeseries):
 
 
 class Context(ModelView):
-    "Sale Opportunity Reporting Context"
     __name__ = 'sale.opportunity.reporting.context'
 
     company = fields.Many2One('company.company', "Company", required=True)
@@ -354,7 +353,6 @@ class Context(ModelView):
 
 
 class Main(Abstract, ModelView):
-    "Sale Opportunity Reporting"
     __name__ = 'sale.opportunity.reporting.main'
 
     time_series = fields.Function(fields.One2Many(
@@ -372,12 +370,10 @@ class Main(Abstract, ModelView):
 
 
 class MainTimeseries(AbstractTimeseries, ModelView):
-    "Sale Opportunity Reporting"
     __name__ = 'sale.opportunity.reporting.main.time_series'
 
 
 class Conversion(AbstractConversion, ModelView):
-    "Sale Opportunity Reporting Conversion"
     __name__ = 'sale.opportunity.reporting.conversion'
 
     time_series = fields.Function(fields.One2Many(
@@ -396,7 +392,6 @@ class Conversion(AbstractConversion, ModelView):
 
 
 class ConversionTimeseries(AbstractConversionTimeseries, ModelView):
-    "Sale Opportunity Reporting Conversion"
     __name__ = 'sale.opportunity.reporting.conversion.time_series'
 
 
@@ -427,7 +422,6 @@ class EmployeeMixin:
 
 
 class ConversionEmployee(EmployeeMixin, AbstractConversion, ModelView):
-    "Sale Opportunity Reporting Conversion per Employee"
     __name__ = 'sale.opportunity.reporting.conversion.employee'
 
     time_series = fields.One2Many(
@@ -454,5 +448,4 @@ class ConversionEmployee(EmployeeMixin, AbstractConversion, ModelView):
 
 class ConversionEmployeeTimeseries(
         EmployeeMixin, AbstractConversionTimeseries, ModelView):
-    "Sale Opportunity Reporting Conversion per Employee"
     __name__ = 'sale.opportunity.reporting.conversion.employee.time_series'

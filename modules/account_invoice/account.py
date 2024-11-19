@@ -32,7 +32,6 @@ class Configuration(metaclass=PoolMeta):
 
 
 class ConfigurationDefaultPaymentTerm(ModelSQL, CompanyValueMixin):
-    "Account Configuration Default Payment Term"
     __name__ = 'account.configuration.default_payment_term'
 
     default_customer_payment_term = fields.Many2One(
@@ -81,7 +80,6 @@ class Period(metaclass=PoolMeta):
 
 
 class InvoiceSequence(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
-    'Invoice Sequence'
     __name__ = 'account.fiscalyear.invoice_sequence'
     company = fields.Many2One('company.company', "Company", required=True)
     fiscalyear = fields.Many2One(

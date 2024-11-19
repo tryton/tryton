@@ -52,7 +52,6 @@ class _Calendar(ModelSQL):
 
 
 class Month(_Calendar):
-    "Month"
     __name__ = 'ir.calendar.month'
     _min_index = 1
     _max_index = 12
@@ -60,7 +59,6 @@ class Month(_Calendar):
 
 
 class Day(_Calendar):
-    "Day"
     __name__ = 'ir.calendar.day'
     _min_index = 0
     _max_index = 6

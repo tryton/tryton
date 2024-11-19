@@ -14,7 +14,6 @@ _reset_interval = _session_timeout // 10
 
 
 class Session(ModelSQL):
-    "Session"
     __name__ = 'ir.session'
     _rec_name = 'key'
 
@@ -159,7 +158,6 @@ class Session(ModelSQL):
 
 
 class SessionWizard(ModelSQL):
-    "Session Wizard"
     __name__ = 'ir.session.wizard'
 
     data = fields.Text('Data')

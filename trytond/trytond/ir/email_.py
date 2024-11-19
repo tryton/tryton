@@ -58,7 +58,6 @@ def _formataddr(pair):
 
 
 class Email(ResourceAccessMixin, ModelSQL, ModelView):
-    "Email"
     __name__ = 'ir.email'
 
     user = fields.Function(fields.Char("User"), 'get_user')
@@ -230,7 +229,6 @@ class Email(ResourceAccessMixin, ModelSQL, ModelView):
 
 
 class EmailAddress(ModelSQL):
-    "Email Address"
     __name__ = 'ir.email.address'
 
     email = fields.Many2One(
@@ -239,7 +237,6 @@ class EmailAddress(ModelSQL):
 
 
 class EmailTemplate(ModelSQL, ModelView):
-    "Email Template"
     __name__ = 'ir.email.template'
 
     model = fields.Many2One('ir.model', "Model", required=True)
@@ -579,7 +576,6 @@ class EmailTemplate(ModelSQL, ModelView):
 
 
 class EmailTemplate_Report(ModelSQL):
-    "Email Template - Report"
     __name__ = 'ir.email.template-ir.action.report'
 
     template = fields.Many2One(

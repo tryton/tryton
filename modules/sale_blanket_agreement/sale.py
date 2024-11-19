@@ -57,7 +57,6 @@ def blanket_agreement_quantity_warning():
 
 
 class Configuration(metaclass=PoolMeta):
-    "Sale Configuration"
     __name__ = 'sale.configuration'
 
     blanket_agreement_sequence = fields.MultiValue(fields.Many2One(
@@ -86,7 +85,6 @@ class Configuration(metaclass=PoolMeta):
 
 
 class ConfigurationSequence(metaclass=PoolMeta):
-    "Sale Configuration Sequence"
     __name__ = 'sale.configuration.sequence'
     blanket_agreement_sequence = fields.Many2One(
         'ir.sequence', "Blanket Agreement Sequence", required=True,
@@ -109,7 +107,6 @@ class ConfigurationSequence(metaclass=PoolMeta):
 
 
 class BlanketAgreement(Workflow, ModelSQL, ModelView):
-    "Sale Blanket Agreement"
     __name__ = 'sale.blanket_agreement'
     _rec_name = 'number'
 
@@ -432,7 +429,6 @@ class BlanketAgreement(Workflow, ModelSQL, ModelView):
 
 
 class BlanketAgreementLine(ModelSQL, ModelView):
-    "Sale Blanket Agreement Line"
     __name__ = 'sale.blanket_agreement.line'
 
     _states = {
@@ -784,7 +780,6 @@ class Line(metaclass=PoolMeta):
 
 
 class BlanketAgreementCreateSale(Wizard):
-    "Create Sale"
     __name__ = 'sale.blanket_agreement.create_sale'
     start = StateView(
         'sale.blanket_agreement.create_sale.start',
@@ -814,7 +809,6 @@ class BlanketAgreementCreateSale(Wizard):
 
 
 class BlanketAgreementCreateSaleStart(ModelView):
-    "Create Sale"
     __name__ = 'sale.blanket_agreement.create_sale.start'
 
     blanket_agreement = fields.Many2One('sale.blanket_agreement', "Agreement")

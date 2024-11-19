@@ -207,7 +207,6 @@ class ImageMixin(_ImageMixin):
 
 
 class Image(ImageMixin, sequence_ordered(), ModelSQL, ModelView, MatchMixin):
-    "Product Image"
     __name__ = 'product.image'
     template = fields.Many2One(
         'product.template', "Product",
@@ -256,7 +255,6 @@ class ImageCacheMixin(_ImageMixin):
 
 
 class ImageCache(ImageCacheMixin, ModelSQL):
-    "Product Image Cache"
     __name__ = 'product.image.cache'
     product_image = fields.Many2One(
         'product.image', "Product Image", required=True, ondelete='CASCADE')
@@ -295,7 +293,6 @@ class Category(ImageURLMixin, metaclass=PoolMeta):
 
 class CategoryImage(
         ImageMixin, sequence_ordered(), ModelSQL, ModelView, MatchMixin):
-    "Category Image"
     __name__ = 'product.category.image'
     category = fields.Many2One(
         'product.category', "Category",
@@ -316,7 +313,6 @@ class CategoryImage(
 
 
 class CategoryImageCache(ImageCacheMixin, ModelSQL):
-    "Category Image Cache"
     __name__ = 'product.category.image.cache'
     category_image = fields.Many2One(
         'product.category.image', "Category Image", required=True,

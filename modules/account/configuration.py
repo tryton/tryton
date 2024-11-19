@@ -14,7 +14,6 @@ tax_roundings = [
 
 class Configuration(
         ModelSingleton, ModelSQL, ModelView, CompanyMultiValueMixin):
-    'Account Configuration'
     __name__ = 'account.configuration'
     default_account_receivable = fields.MultiValue(fields.Many2One(
             'account.account', "Default Account Receivable",
@@ -111,7 +110,6 @@ class Configuration(
 
 
 class ConfigurationDefaultAccount(ModelSQL, CompanyValueMixin):
-    "Account Configuration Default Account"
     __name__ = 'account.configuration.default_account'
     default_account_receivable = fields.Many2One(
         'account.account', "Default Account Receivable",
@@ -146,7 +144,6 @@ class ConfigurationDefaultAccount(ModelSQL, CompanyValueMixin):
 
 
 class DefaultTaxRule(ModelSQL, CompanyValueMixin):
-    "Account Configuration Default Tax Rule"
     __name__ = 'account.configuration.default_tax_rule'
     default_customer_tax_rule = fields.Many2One(
         'account.tax.rule', "Default Customer Tax Rule",
@@ -163,7 +160,6 @@ class DefaultTaxRule(ModelSQL, CompanyValueMixin):
 
 
 class ConfigurationTaxRounding(ModelSQL, CompanyValueMixin):
-    'Account Configuration Tax Rounding'
     __name__ = 'account.configuration.tax_rounding'
     configuration = fields.Many2One('account.configuration', 'Configuration',
         required=True, ondelete='CASCADE',
@@ -179,7 +175,6 @@ class ConfigurationTaxRounding(ModelSQL, CompanyValueMixin):
 
 
 class Sequence(ModelSQL, CompanyValueMixin):
-    "Account Configuration Sequence"
     __name__ = 'account.configuration.sequence'
     reconciliation_sequence = fields.Many2One(
         'ir.sequence', "Reconciliation Sequence", required=True,
@@ -201,7 +196,6 @@ class Sequence(ModelSQL, CompanyValueMixin):
 
 
 class Journal(ModelSQL, CompanyValueMixin):
-    "Account Configuration Journal"
     __name__ = 'account.configuration.journal'
     currency_exchange_journal = fields.Many2One(
         'account.journal', "Currency Exchange Journal",

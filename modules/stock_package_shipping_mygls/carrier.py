@@ -10,7 +10,6 @@ from .exceptions import MyGLSCredentialWarning
 
 
 class CredentialMyGLS(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
-    "MyGLS Credential"
     __name__ = 'carrier.credential.mygls'
 
     company = fields.Many2One('company.company', "Company")

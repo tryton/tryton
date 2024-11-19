@@ -50,7 +50,6 @@ class Configuration(metaclass=PoolMeta):
 
 
 class ConfigurationMeasurement(ModelSQL, CompanyValueMixin):
-    "Stock Configuration Measurement"
     __name__ = 'stock.configuration.measurement'
 
     measurement_weight_uom = fields.Many2One(

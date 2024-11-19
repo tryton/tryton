@@ -65,7 +65,6 @@ class Line(metaclass=PoolMeta):
 
 
 class Extra(DeactivableMixin, ModelSQL, ModelView, MatchMixin):
-    'Sale Extra'
     __name__ = 'sale.extra'
 
     name = fields.Char('Name', translate=True, required=True)
@@ -160,7 +159,6 @@ class Extra(DeactivableMixin, ModelSQL, ModelView, MatchMixin):
 
 
 class ExtraLine(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
-    'Sale Extra Line'
     __name__ = 'sale.extra.line'
 
     extra = fields.Many2One('sale.extra', 'Extra', required=True,

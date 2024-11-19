@@ -38,7 +38,6 @@ class Party(CompanyMultiValueMixin, metaclass=PoolMeta):
 
 
 class CustomerCode(ModelSQL, CompanyValueMixin):
-    "Party Customer Code"
     __name__ = 'party.party.customer_code'
     party = fields.Many2One(
         'party.party', "Party", ondelete='CASCADE',
@@ -50,7 +49,6 @@ class CustomerCode(ModelSQL, CompanyValueMixin):
 
 
 class SupplierLeadTime(ModelSQL, CompanyValueMixin):
-    "Supplier Lead Time"
     __name__ = 'party.party.supplier_lead_time'
     party = fields.Many2One(
         'party.party', "Party", ondelete='CASCADE',
@@ -62,7 +60,6 @@ class SupplierLeadTime(ModelSQL, CompanyValueMixin):
 
 
 class PartySupplierCurrency(ModelSQL, ValueMixin):
-    "Party Supplier Currency"
     __name__ = 'party.party.supplier_currency'
     party = fields.Many2One(
         'party.party', "Party", ondelete='CASCADE')

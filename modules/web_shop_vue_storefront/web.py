@@ -518,7 +518,6 @@ class ShopShipmentCost(metaclass=PoolMeta):
 
 
 class ShopVSFIdentifier(ModelSQL):
-    "Web Shop Vue Storefront Identifier"
     __name__ = 'web.shop.vsf_identifier'
 
     record = fields.Reference("Record", 'get_records', required=True)

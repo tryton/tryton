@@ -20,7 +20,6 @@ from .exceptions import (
 
 
 class Inventory(Workflow, ModelSQL, ModelView):
-    'Stock Inventory'
     __name__ = 'stock.inventory'
     _rec_name = 'number'
 
@@ -356,7 +355,6 @@ class Inventory(Workflow, ModelSQL, ModelView):
 
 
 class InventoryLine(ModelSQL, ModelView):
-    'Stock Inventory Line'
     __name__ = 'stock.inventory.line'
     _states = {
         'readonly': Eval('inventory_state') != 'draft',
@@ -552,7 +550,6 @@ class InventoryLine(ModelSQL, ModelView):
 
 
 class Count(Wizard):
-    "Stock Inventory Count"
     __name__ = 'stock.inventory.count'
     start_state = 'search'
 
@@ -625,7 +622,6 @@ class Count(Wizard):
 
 
 class CountSearch(ModelView):
-    "Stock Inventory Count"
     __name__ = 'stock.inventory.count.search'
 
     search = fields.Reference(
@@ -647,7 +643,6 @@ class CountSearch(ModelView):
 
 
 class CountQuantity(ModelView):
-    "Stock Inventory Count"
     __name__ = 'stock.inventory.count.quantity'
 
     line = fields.Many2One(

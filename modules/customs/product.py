@@ -152,7 +152,6 @@ class Template(metaclass=PoolMeta):
 
 
 class Product_TariffCode(sequence_ordered(), ModelSQL, ModelView):
-    'Product - Tariff Code'
     __name__ = 'product-customs.tariff.code'
     product = fields.Reference('Product', selection=[
             ('product.template', 'Template'),

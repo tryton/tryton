@@ -33,7 +33,6 @@ class Configuration(metaclass=PoolMeta):
 
 
 class ConfigurationGiftCardAccount(ModelSQL, CompanyValueMixin):
-    "Account Configuration Gift Card Account"
     __name__ = 'account.configuration.gift_card_account'
 
     gift_card_account_expense = fields.Many2One(

@@ -21,7 +21,6 @@ from .exceptions import (
 
 
 class MoveTemplate(DeactivableMixin, ModelSQL, ModelView):
-    'Account Move Template'
     __name__ = 'account.move.template'
     name = fields.Char('Name', required=True, translate=True)
     keywords = fields.One2Many('account.move.template.keyword', 'move',
@@ -96,7 +95,6 @@ class MoveTemplate(DeactivableMixin, ModelSQL, ModelView):
 
 
 class MoveTemplateKeyword(sequence_ordered(), ModelSQL, ModelView):
-    'Account Move Template Keyword'
     __name__ = 'account.move.template.keyword'
     name = fields.Char('Name', required=True)
     string = fields.Char('String', required=True, translate=True)
@@ -200,7 +198,6 @@ class MoveTemplateKeyword(sequence_ordered(), ModelSQL, ModelView):
 
 
 class MoveLineTemplate(ModelSQL, ModelView):
-    'Account Move Line Template'
     __name__ = 'account.move.line.template'
     move = fields.Many2One(
         'account.move.template', "Move", required=True, ondelete='CASCADE')
@@ -288,7 +285,6 @@ class MoveLineTemplate(ModelSQL, ModelView):
 
 
 class TaxLineTemplate(ModelSQL, ModelView):
-    'Account Tax Line Template'
     __name__ = 'account.tax.line.template'
     line = fields.Many2One(
         'account.move.line.template', "Line",
@@ -370,7 +366,6 @@ class KeywordStateView(StateView):
 
 
 class CreateMove(Wizard):
-    'Create Move from Template'
     __name__ = 'account.move.template.create'
     start = StateTransition()
     template = StateView('account.move.template.create.template',
@@ -426,7 +421,6 @@ class CreateMove(Wizard):
 
 
 class CreateMoveTemplate(ModelView):
-    'Create Move from Template'
     __name__ = 'account.move.template.create.template'
     template = fields.Many2One('account.move.template', 'Template',
         required=True,
@@ -493,6 +487,5 @@ class CreateMoveTemplate(ModelView):
 
 
 class CreateMoveKeywords(ModelView):
-    'Create Move from Template'
     __no_slots__ = True
     __name__ = 'account.move.template.create.keywords'

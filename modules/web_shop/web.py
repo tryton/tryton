@@ -44,7 +44,6 @@ class Inactivate(ModelSQL, DeactivableMixin):
 
 
 class Shop(DeactivableMixin, ModelSQL, ModelView):
-    "Web Shop"
     __name__ = 'web.shop'
 
     name = fields.Char("Name", required=True)
@@ -314,7 +313,6 @@ class Shop_TaxRuleCountry(metaclass=PoolMeta):
 
 
 class Shop_Warehouse(ModelSQL):
-    "Web Shop - Warehouse"
     __name__ = 'web.shop-stock.location'
 
     shop = fields.Many2One(
@@ -327,7 +325,6 @@ class Shop_Warehouse(ModelSQL):
 
 
 class Shop_Country(ModelSQL):
-    "Web Shop - Country"
     __name__ = 'web.shop-country.country'
 
     shop = fields.Many2One(
@@ -337,7 +334,6 @@ class Shop_Country(ModelSQL):
 
 
 class Shop_Product(Inactivate):
-    "Web Shop - Product"
     __name__ = 'web.shop-product.product'
 
     shop = fields.Many2One(
@@ -347,7 +343,6 @@ class Shop_Product(Inactivate):
 
 
 class Shop_ProductCategory(Inactivate):
-    "Web Shop - Product Category"
     __name__ = 'web.shop-product.category'
 
     shop = fields.Many2One(
@@ -376,7 +371,6 @@ class ShopAttribute(metaclass=PoolMeta):
 
 
 class Shop_Attribute(Inactivate):
-    "Web Shop - Attribute"
     __name__ = 'web.shop-product.attribute'
 
     shop = fields.Many2One(

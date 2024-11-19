@@ -134,7 +134,6 @@ def TypeMixin(template=False):
 class TypeTemplate(
         TypeMixin(template=True), sequence_ordered(), tree(separator='\\'),
         ModelSQL, ModelView):
-    'Account Type Template'
     __name__ = 'account.account.type.template'
     parent = fields.Many2One(
         'account.account.type.template', "Parent", ondelete='RESTRICT',
@@ -221,7 +220,6 @@ class TypeTemplate(
 class Type(
         TypeMixin(), sequence_ordered(), tree(separator='\\'),
         ModelSQL, ModelView):
-    'Account Type'
     __name__ = 'account.account.type'
 
     parent = fields.Many2One('account.account.type', 'Parent',
@@ -445,7 +443,6 @@ class Type(
 
 
 class OpenType(Wizard):
-    'Open Type'
     __name__ = 'account.account.open_type'
     start = StateTransition()
     account = StateAction('account.act_account_balance_sheet')
@@ -661,7 +658,6 @@ def AccountMixin(template=False):
 
 class AccountTemplate(
         AccountMixin(template=True), PeriodMixin, tree(), ModelSQL, ModelView):
-    'Account Template'
     __name__ = 'account.account.template'
     type = fields.Many2One(
         'account.account.type.template', "Type", ondelete="RESTRICT")
@@ -833,7 +829,6 @@ class AccountTemplate(
 
 
 class AccountTemplateTaxTemplate(ModelSQL):
-    'Account Template - Tax Template'
     __name__ = 'account.account.template-account.tax.template'
     account = fields.Many2One(
         'account.account.template', "Account Template",
@@ -853,7 +848,6 @@ class AccountTemplateTaxTemplate(ModelSQL):
 class Account(
         AccountMixin(), ContextCompanyMixin, ActivePeriodMixin, tree(),
         ModelSQL, ModelView):
-    'Account'
     __name__ = 'account.account'
     _states = {
         'readonly': (Bool(Eval('template', -1))
@@ -1464,7 +1458,6 @@ class Account(
 
 
 class AccountParty(ActivePeriodMixin, ModelSQL):
-    "Account Party"
     __name__ = 'account.account.party'
     account = fields.Many2One('account.account', "Account")
     party = fields.Many2One(
@@ -1690,11 +1683,7 @@ class AccountParty(ActivePeriodMixin, ModelSQL):
 
 
 class AccountDeferral(ModelSQL, ModelView):
-    '''
-    Account Deferral
-
-    It is used to deferral the debit/credit of account by fiscal year.
-    '''
+    "Used to defer the debit/credit of accounts by fiscal year"
     __name__ = 'account.account.deferral'
     account = fields.Many2One('account.account', "Account", required=True)
     fiscalyear = fields.Many2One(
@@ -1839,7 +1828,6 @@ class AccountDeferral(ModelSQL, ModelView):
 
 
 class AccountTax(ModelSQL):
-    'Account - Tax'
     __name__ = 'account.account-account.tax'
     account = fields.Many2One(
         'account.account', "Account", ondelete='CASCADE', required=True)
@@ -1855,7 +1843,6 @@ class AccountTax(ModelSQL):
 
 
 class AccountContext(ModelView):
-    'Account Context'
     __name__ = 'account.account.context'
 
     company = fields.Many2One('company.company', "Company", required=True)
@@ -2150,7 +2137,6 @@ class _GeneralLedgerAccount(ActivePeriodMixin, ModelSQL, ModelView):
 
 
 class GeneralLedgerAccount(_GeneralLedgerAccount):
-    'General Ledger Account'
     __name__ = 'account.general_ledger.account'
 
     type = fields.Many2One('account.account.type', "Type")
@@ -2167,7 +2153,6 @@ class GeneralLedgerAccount(_GeneralLedgerAccount):
 
 
 class GeneralLedgerAccountContext(ModelView):
-    'General Ledger Account Context'
     __name__ = 'account.general_ledger.account.context'
     fiscalyear = fields.Many2One('account.fiscalyear', 'Fiscal Year',
         required=True,
@@ -2324,7 +2309,6 @@ class GeneralLedgerAccountContext(ModelView):
 
 
 class GeneralLedgerAccountParty(_GeneralLedgerAccount):
-    "General Ledger Account Party"
     __name__ = 'account.general_ledger.account.party'
 
     party = fields.Many2One(
@@ -2360,7 +2344,6 @@ class GeneralLedgerAccountParty(_GeneralLedgerAccount):
 
 
 class OpenGeneralLedgerAccountParty(Wizard):
-    "Open General Ledger Account Party"
     __name__ = 'account.general_ledger.account.party.open'
     start_state = 'open'
     open = StateAction('account.act_general_ledger_line_form')
@@ -2380,7 +2363,6 @@ class OpenGeneralLedgerAccountParty(Wizard):
 
 
 class GeneralLedgerLine(DescriptionOriginMixin, ModelSQL, ModelView):
-    'General Ledger Line'
     __name__ = 'account.general_ledger.line'
 
     move = fields.Many2One('account.move', 'Move')
@@ -2578,7 +2560,6 @@ class GeneralLedgerLine(DescriptionOriginMixin, ModelSQL, ModelView):
 
 
 class GeneralLedgerLineContext(GeneralLedgerAccountContext):
-    'General Ledger Line Context'
     __name__ = 'account.general_ledger.line.context'
 
     party_cumulate = fields.Boolean('Cumulate per Party')
@@ -2656,7 +2637,6 @@ class TrialBalance(Report):
 
 
 class BalanceSheetContext(ModelView):
-    'Balance Sheet Context'
     __name__ = 'account.balance_sheet.context'
     date = fields.Date('Date', required=True)
     company = fields.Many2One('company.company', 'Company', required=True)
@@ -2677,7 +2657,6 @@ class BalanceSheetContext(ModelView):
 
 
 class BalanceSheetComparisionContext(BalanceSheetContext):
-    'Balance Sheet Context'
     __name__ = 'account.balance_sheet.comparison.context'
     comparison = fields.Boolean('Comparison')
     date_cmp = fields.Date('Date', states={
@@ -2705,7 +2684,6 @@ class BalanceSheetComparisionContext(BalanceSheetContext):
 
 
 class IncomeStatementContext(ModelView):
-    'Income Statement Context'
     __name__ = 'account.income_statement.context'
     fiscalyear = fields.Many2One('account.fiscalyear', 'Fiscal Year',
         required=True,
@@ -2912,7 +2890,6 @@ class IncomeStatementContext(ModelView):
 
 
 class AgedBalanceContext(ModelView):
-    'Aged Balance Context'
     __name__ = 'account.aged_balance.context'
     type = fields.Selection([
             ('customer', 'Customers'),
@@ -2988,7 +2965,6 @@ class AgedBalanceContext(ModelView):
 
 
 class AgedBalance(ModelSQL, ModelView):
-    'Aged Balance'
     __name__ = 'account.aged_balance'
 
     party = fields.Many2One(
@@ -3165,12 +3141,10 @@ class AgedBalanceReport(Report):
 
 
 class CreateChartStart(ModelView):
-    'Create Chart'
     __name__ = 'account.create_chart.start'
 
 
 class CreateChartAccount(ModelView):
-    'Create Chart'
     __name__ = 'account.create_chart.account'
     company = fields.Many2One('company.company', 'Company', required=True)
     account_template = fields.Many2One('account.account.template',
@@ -3182,7 +3156,6 @@ class CreateChartAccount(ModelView):
 
 
 class CreateChartProperties(ModelView):
-    'Create Chart'
     __name__ = 'account.create_chart.properties'
     company = fields.Many2One('company.company', 'Company')
     account_receivable = fields.Many2One('account.account',
@@ -3204,7 +3177,6 @@ class CreateChartProperties(ModelView):
 
 
 class CreateChart(Wizard):
-    'Create Chart'
     __name__ = 'account.create_chart'
     start = StateView('account.create_chart.start',
         'account.create_chart_start_view_form', [
@@ -3354,7 +3326,6 @@ class CreateChart(Wizard):
 
 
 class UpdateChartStart(ModelView):
-    'Update Chart'
     __name__ = 'account.update_chart.start'
     account = fields.Many2One(
         'account.account', "Root Account", required=True,
@@ -3365,12 +3336,10 @@ class UpdateChartStart(ModelView):
 
 
 class UpdateChartSucceed(ModelView):
-    'Update Chart'
     __name__ = 'account.update_chart.succeed'
 
 
 class UpdateChart(Wizard):
-    'Update Chart'
     __name__ = 'account.update_chart'
     start = StateView('account.update_chart.start',
         'account.update_chart_start_view_form', [

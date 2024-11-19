@@ -12,7 +12,6 @@ from trytond.tools import is_full_text, lstrip_wildcard
 
 
 class Category(tree(separator=' / '), ModelSQL, ModelView):
-    "Product Category"
     __name__ = "product.category"
     name = fields.Char('Name', required=True, translate=True)
     code = fields.Char(

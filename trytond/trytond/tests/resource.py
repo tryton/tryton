@@ -6,7 +6,6 @@ from trytond.pool import Pool
 
 
 class TestResource(ModelSQL, NoteCopyMixin):
-    "Test Resource"
     __name__ = 'test.resource'
 
     @classmethod
@@ -15,7 +14,6 @@ class TestResource(ModelSQL, NoteCopyMixin):
 
 
 class TestResourceOther(ModelSQL):
-    "Test Resource Other"
     __name__ = 'test.resource.other'
 
 

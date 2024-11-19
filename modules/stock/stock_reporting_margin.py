@@ -262,7 +262,6 @@ class AbstractTimeseries(Abstract):
 
 
 class Context(ModelView):
-    "Stock Reporting Margin Context"
     __name__ = 'stock.reporting.margin.context'
 
     company = fields.Many2One('company.company', "Company", required=True)
@@ -320,7 +319,6 @@ class Context(ModelView):
 
 
 class Main(Abstract, ModelView):
-    "Stock Reporting Margin"
     __name__ = 'stock.reporting.margin.main'
 
     time_series = fields.Function(fields.One2Many(
@@ -337,7 +335,6 @@ class Main(Abstract, ModelView):
 
 
 class MainTimeseries(AbstractTimeseries, ModelView):
-    "Stock Reporting Margin"
     __name__ = 'stock.reporting.margin.main.time_series'
 
 
@@ -411,7 +408,6 @@ class ProductMixin:
 
 
 class Product(ProductMixin, Abstract, ModelView):
-    "Stock Reporting Margin per Product"
     __name__ = 'stock.reporting.margin.product'
 
     time_series = fields.One2Many(
@@ -429,7 +425,6 @@ class Product(ProductMixin, Abstract, ModelView):
 
 
 class ProductTimeseries(ProductMixin, AbstractTimeseries, ModelView):
-    "Stock Reporting Margin per Product"
     __name__ = 'stock.reporting.margin.product.time_series'
 
 
@@ -499,7 +494,6 @@ class CategoryMixin:
 
 
 class Category(CategoryMixin, Abstract, ModelView):
-    "Stock Reporting Margin per Category"
     __name__ = 'stock.reporting.margin.category'
 
     time_series = fields.One2Many(
@@ -518,12 +512,10 @@ class Category(CategoryMixin, Abstract, ModelView):
 
 
 class CategoryTimeseries(CategoryMixin, AbstractTimeseries, ModelView):
-    "Stock Reporting Margin per Category"
     __name__ = 'stock.reporting.margin.category.time_series'
 
 
 class CategoryTree(ModelSQL, ModelView):
-    "Stock Reporting Margin per Category"
     __name__ = 'stock.reporting.margin.category.tree'
 
     name = fields.Function(

@@ -306,7 +306,6 @@ class ShipmentCheckQuantity:
 
 class ShipmentIn(
         ShipmentCheckQuantity, ShipmentMixin, Workflow, ModelSQL, ModelView):
-    "Supplier Shipment"
     __name__ = 'stock.shipment.in'
 
     company = fields.Many2One(
@@ -768,7 +767,6 @@ class ShipmentIn(
 
 
 class ShipmentInReturn(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
-    "Supplier Return Shipment"
     __name__ = 'stock.shipment.in.return'
     _assign_moves_field = 'moves'
 
@@ -1133,7 +1131,6 @@ class ShipmentInReturn(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
 class ShipmentOut(
         ShipmentCheckQuantity, ShipmentAssignMixin, Workflow, ModelSQL,
         ModelView):
-    "Customer Shipment"
     __name__ = 'stock.shipment.out'
     _assign_moves_field = 'moves'
     company = fields.Many2One(
@@ -1859,7 +1856,6 @@ class ShipmentOut(
 
 class ShipmentOutReturn(
         ShipmentCheckQuantity, ShipmentMixin, Workflow, ModelSQL, ModelView):
-    "Customer Return Shipment"
     __name__ = 'stock.shipment.out.return'
 
     company = fields.Many2One(
@@ -2300,7 +2296,6 @@ class ShipmentOutReturn(
 class ShipmentInternal(
         ShipmentCheckQuantity, ShipmentAssignMixin, Workflow, ModelSQL,
         ModelView):
-    "Internal Shipment"
     __name__ = 'stock.shipment.internal'
     _assign_moves_field = 'moves'
     effective_start_date = fields.Date('Effective Start Date',
@@ -3009,7 +3004,6 @@ class ShipmentInternal(
 
 
 class Assign(Wizard):
-    "Assign Shipment"
     __name__ = 'stock.shipment.assign'
     start = StateTransition()
     partial = StateView(
@@ -3058,7 +3052,6 @@ class Assign(Wizard):
 
 
 class AssignPartial(ModelView):
-    "Assign Shipment"
     __name__ = 'stock.shipment.assign.partial'
     moves = fields.Many2Many(
         'stock.move', None, None, "Moves", readonly=True,
@@ -3083,7 +3076,6 @@ class ShipmentReport(CompanyReport):
 
 
 class DeliveryNote(ShipmentReport):
-    'Delivery Note'
     __name__ = 'stock.shipment.out.delivery_note'
 
     @classmethod
@@ -3102,7 +3094,6 @@ class DeliveryNote(ShipmentReport):
 
 
 class PickingList(ShipmentReport):
-    'Picking List'
     __name__ = 'stock.shipment.out.picking_list'
 
     @classmethod
@@ -3120,7 +3111,6 @@ class PickingList(ShipmentReport):
 
 
 class SupplierRestockingList(ShipmentReport):
-    'Supplier Restocking List'
     __name__ = 'stock.shipment.in.restocking_list'
 
     @classmethod
@@ -3138,7 +3128,6 @@ class SupplierRestockingList(ShipmentReport):
 
 
 class CustomerReturnRestockingList(ShipmentReport):
-    'Customer Return Restocking List'
     __name__ = 'stock.shipment.out.return.restocking_list'
 
     @classmethod
@@ -3156,7 +3145,6 @@ class CustomerReturnRestockingList(ShipmentReport):
 
 
 class InteralShipmentReport(ShipmentReport):
-    'Interal Shipment Report'
     __name__ = 'stock.shipment.internal.report'
 
     @classmethod

@@ -75,7 +75,6 @@ class Move(metaclass=PoolMeta):
 
 
 class SplitMoveStart(ModelView):
-    'Split Move'
     __name__ = 'stock.move.split.start'
     count = fields.Integer('Counts', help='The limit number of moves.')
     quantity = fields.Float("Quantity", digits='unit', required=True)
@@ -90,7 +89,6 @@ class SplitMoveStart(ModelView):
 
 
 class SplitMove(Wizard):
-    'Split Move'
     __name__ = 'stock.move.split'
     start = StateView('stock.move.split.start',
         'stock_split.split_start_view_form', [
@@ -143,7 +141,6 @@ class ShipmentInternal(_ShipmentSplit, metaclass=PoolMeta):
 
 
 class SplitShipment(Wizard):
-    "Split Shipment"
     __name__ = 'stock.shipment.split'
     start = StateView('stock.shipment.split.start',
         'stock_split.shipment_split_start_view_form', [
@@ -190,7 +187,6 @@ class SplitShipment(Wizard):
 
 
 class SplitShipmentStart(ModelView):
-    "Split Shipment"
     __name__ = 'stock.shipment.split.start'
     moves = fields.Many2Many(
         'stock.move', None, None, "Moves",

@@ -19,7 +19,6 @@ class Configuration(metaclass=PoolMeta):
 
 
 class ConfigurationSepaMandateSequence(ModelSQL, CompanyValueMixin):
-    "Account Configuration SEPA Mandate Sequence"
     __name__ = 'account.configuration.sepa_mandate_sequence'
     sepa_mandate_sequence = fields.Many2One(
         'ir.sequence', "SEPA Mandate Sequence",

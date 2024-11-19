@@ -16,7 +16,6 @@ class Template(metaclass=PoolMeta):
 
 
 class Taxon(classification_tree('product.taxon'), ModelSQL, ModelView):
-    'Taxon'
     __name__ = 'product.taxon'
     rank = fields.Selection([
             (None, ""),
@@ -38,7 +37,6 @@ class Taxon(classification_tree('product.taxon'), ModelSQL, ModelView):
 
 
 class Cultivar(ClassificationMixin, ModelSQL, ModelView):
-    'Cultivar'
     __name__ = 'product.cultivar'
     taxon = fields.Many2One('product.taxon', 'Taxon', required=True)
     groups = fields.Many2Many('product.cultivar-product.cultivar.group',
@@ -46,7 +44,6 @@ class Cultivar(ClassificationMixin, ModelSQL, ModelView):
 
 
 class CultivarGroup(DeactivableMixin, ModelSQL, ModelView):
-    'Cultivar Group'
     __name__ = 'product.cultivar.group'
     name = fields.Char('Name', translate=True)
     cultivars = fields.Many2Many('product.cultivar-product.cultivar.group',
@@ -54,7 +51,6 @@ class CultivarGroup(DeactivableMixin, ModelSQL, ModelView):
 
 
 class Cultivar_CultivarGroup(ModelSQL):
-    'Cultivar-CultivarGroup'
     __name__ = 'product.cultivar-product.cultivar.group'
     cultivar = fields.Many2One(
         'product.cultivar', "Cultivar", required=True)

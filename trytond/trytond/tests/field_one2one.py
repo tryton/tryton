@@ -6,20 +6,17 @@ from trytond.pool import Pool
 
 
 class One2One(ModelSQL):
-    'One2One'
     __name__ = 'test.one2one'
     one2one = fields.One2One('test.one2one.relation', 'origin', 'target',
             string='One2One', help='Test one2one', required=False)
 
 
 class One2OneTarget(ModelSQL):
-    'One2One Target'
     __name__ = 'test.one2one.target'
     name = fields.Char('Name')
 
 
 class One2OneRelation(ModelSQL):
-    'One2One Relation'
     __name__ = 'test.one2one.relation'
     origin = fields.Many2One('test.one2one', 'Origin')
     target = fields.Many2One('test.one2one.target', 'Target')
@@ -37,14 +34,12 @@ class One2OneRelation(ModelSQL):
 
 
 class One2OneRequired(ModelSQL):
-    'One2One'
     __name__ = 'test.one2one_required'
     one2one = fields.One2One('test.one2one_required.relation', 'origin',
         'target', string='One2One', help='Test one2one', required=True)
 
 
 class One2OneRequiredRelation(ModelSQL):
-    'One2One Relation'
     __name__ = 'test.one2one_required.relation'
     origin = fields.Many2One('test.one2one_required', 'Origin')
     target = fields.Many2One('test.one2one.target', 'Target')
@@ -62,7 +57,6 @@ class One2OneRequiredRelation(ModelSQL):
 
 
 class One2OneDomain(ModelSQL):
-    'One2One'
     __name__ = 'test.one2one_domain'
     one2one = fields.One2One('test.one2one_domain.relation', 'origin',
         'target', string='One2One', help='Test one2one',
@@ -70,7 +64,6 @@ class One2OneDomain(ModelSQL):
 
 
 class One2OneDomainRelation(ModelSQL):
-    'One2One Relation'
     __name__ = 'test.one2one_domain.relation'
     origin = fields.Many2One('test.one2one_domain', 'Origin')
     target = fields.Many2One('test.one2one.target', 'Target')

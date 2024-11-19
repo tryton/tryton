@@ -9,7 +9,6 @@ from trytond.pool import Pool
 
 
 class MPTT(DeactivableMixin, tree(), ModelSQL, ModelView):
-    'Modified Preorder Tree Traversal'
     __name__ = 'test.mptt'
     name = fields.Char('Name', required=True)
     parent = fields.Many2One('test.mptt', "Parent", left="left", right="right")

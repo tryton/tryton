@@ -236,7 +236,6 @@ class AbstractTimeseries(Abstract):
 
 
 class Context(ModelView):
-    "Sale Reporting Context"
     __name__ = 'sale.reporting.context'
 
     company = fields.Many2One('company.company', "Company", required=True)
@@ -295,7 +294,6 @@ class Context(ModelView):
 
 
 class Main(Abstract, ModelView):
-    "Sale Reporting"
     __name__ = 'sale.reporting.main'
 
     time_series = fields.Function(fields.One2Many(
@@ -313,7 +311,6 @@ class Main(Abstract, ModelView):
 
 
 class MainTimeseries(AbstractTimeseries, ModelView):
-    "Sale Reporting"
     __name__ = 'sale.reporting.main.time_series'
 
 
@@ -347,7 +344,6 @@ class CustomerMixin(object):
 
 
 class Customer(CustomerMixin, Abstract, ModelView):
-    "Sale Reporting per Customer"
     __name__ = 'sale.reporting.customer'
 
     time_series = fields.One2Many(
@@ -373,7 +369,6 @@ class Customer(CustomerMixin, Abstract, ModelView):
 
 
 class CustomerTimeseries(CustomerMixin, AbstractTimeseries, ModelView):
-    "Sale Reporting per Customer"
     __name__ = 'sale.reporting.customer.time_series'
 
 
@@ -435,7 +430,6 @@ class CustomerCategoryMixin:
 
 
 class CustomerCategory(CustomerCategoryMixin, Abstract, ModelView):
-    "Sale Reporting per Customer Category"
     __name__ = 'sale.reporting.customer.category'
 
     time_series = fields.One2Many(
@@ -455,12 +449,10 @@ class CustomerCategory(CustomerCategoryMixin, Abstract, ModelView):
 
 class CustomerCategoryTimeseries(
         CustomerCategoryMixin, AbstractTimeseries, ModelView):
-    "Sale Reporting per Customer Category"
     __name__ = 'sale.reporting.customer.category.time_series'
 
 
 class CustomerCategoryTree(ModelSQL, ModelView):
-    "Sale Reporting per Customer Category"
     __name__ = 'sale.reporting.customer.category.tree'
 
     name = fields.Function(
@@ -589,7 +581,6 @@ class ProductMixin(object):
 
 
 class Product(ProductMixin, Abstract, ModelView):
-    "Sale Reporting per Product"
     __name__ = 'sale.reporting.product'
 
     time_series = fields.One2Many(
@@ -608,7 +599,6 @@ class Product(ProductMixin, Abstract, ModelView):
 
 
 class ProductTimeseries(ProductMixin, AbstractTimeseries, ModelView):
-    "Sale Reporting per Product"
     __name__ = 'sale.reporting.product.time_series'
 
 
@@ -682,7 +672,6 @@ class ProductCategoryMixin(object):
 
 
 class ProductCategory(ProductCategoryMixin, Abstract, ModelView):
-    "Sale Reporting per Product Category"
     __name__ = 'sale.reporting.product.category'
 
     time_series = fields.One2Many(
@@ -702,12 +691,10 @@ class ProductCategory(ProductCategoryMixin, Abstract, ModelView):
 
 class ProductCategoryTimeseries(
         ProductCategoryMixin, AbstractTimeseries, ModelView):
-    "Sale Reporting per Product Category"
     __name__ = 'sale.reporting.product.category.time_series'
 
 
 class ProductCategoryTree(ModelSQL, ModelView):
-    "Sale Reporting per Product Category"
     __name__ = 'sale.reporting.product.category.tree'
 
     name = fields.Function(
@@ -844,7 +831,6 @@ class CountryMixin(object):
 
 
 class RegionTree(ModelSQL, ModelView):
-    "Sale Reporting per Region"
     __name__ = 'sale.reporting.region.tree'
 
     name = fields.Function(
@@ -927,7 +913,6 @@ class RegionTree(ModelSQL, ModelView):
 
 
 class OpenRegionTree(Wizard):
-    "Open Region"
     __name__ = 'sale.reporting.region.tree.open'
 
     start = StateAction('sale.act_reporting_country_tree')
@@ -953,7 +938,6 @@ class OpenRegionTree(Wizard):
 
 
 class Country(CountryMixin, Abstract):
-    "Sale Reporting per Country"
     __name__ = 'sale.reporting.country'
 
     time_series = fields.One2Many(
@@ -972,7 +956,6 @@ class Country(CountryMixin, Abstract):
 
 
 class CountryTimeseries(CountryMixin, AbstractTimeseries, ModelView):
-    "Sale Reporting per Country"
     __name__ = 'sale.reporting.country.time_series'
 
 
@@ -1008,7 +991,6 @@ class SubdivisionMixin(CountryMixin):
 
 
 class Subdivision(SubdivisionMixin, Abstract):
-    "Sale Reporting per Subdivision"
     __name__ = 'sale.reporting.country.subdivision'
 
     time_series = fields.One2Many(
@@ -1027,12 +1009,10 @@ class Subdivision(SubdivisionMixin, Abstract):
 
 
 class SubdivisionTimeseries(SubdivisionMixin, AbstractTimeseries, ModelView):
-    "Sale Reporting per Subdivision"
     __name__ = 'sale.reporting.country.subdivision.time_series'
 
 
 class CountryTree(UnionMixin, Abstract, ModelView):
-    "Sale Reporting per Country"
     __name__ = 'sale.reporting.country.tree'
 
     region = fields.Function(fields.Char("Region"), 'get_rec_name')
@@ -1074,7 +1054,6 @@ class CountryTree(UnionMixin, Abstract, ModelView):
 
 
 class OpenCountryTree(Wizard):
-    "Open Country"
     __name__ = 'sale.reporting.country.tree.open'
 
     start = StateTransition()

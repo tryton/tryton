@@ -4,7 +4,6 @@ from trytond.model import ModelSQL, Unique, fields
 
 
 class Cache(ModelSQL):
-    "Cache"
     __name__ = 'ir.cache'
     name = fields.Char('Name', required=True)
     timestamp = fields.Timestamp("Timestamp")

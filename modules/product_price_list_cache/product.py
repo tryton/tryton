@@ -88,7 +88,6 @@ class PriceList(metaclass=PoolMeta):
 
 
 class PriceListCache(ModelSQL):
-    "Price List Cache"
     __name__ = 'product.price_list.cache'
 
     price_list = fields.Many2One(

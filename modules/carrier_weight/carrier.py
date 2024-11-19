@@ -77,7 +77,6 @@ class Carrier(metaclass=PoolMeta):
 
 
 class WeightPriceList(ModelSQL, ModelView):
-    'Carrier Weight Price List'
     __name__ = 'carrier.weight_price_list'
     carrier = fields.Many2One(
         'carrier', "Carrier", required=True,

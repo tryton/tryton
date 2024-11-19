@@ -7,7 +7,6 @@ from trytond.pyson import Eval, If
 
 
 class ProductLocationPlace(ModelSQL, ModelView):
-    "Product Location Place"
     __name__ = 'stock.product.location.place'
     _rec_name = 'place'
 

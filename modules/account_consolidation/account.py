@@ -145,7 +145,6 @@ class Invoice(metaclass=PoolMeta):
 
 class Consolidation(
         sequence_ordered(), tree(separator='\\'), ModelSQL, ModelView):
-    "Account Consolidation"
     __name__ = 'account.consolidation'
 
     parent = fields.Many2One(
@@ -293,7 +292,6 @@ class Consolidation(
 
 
 class ConsolidationBalanceSheetContext(ModelView):
-    "Consolidation Balance Sheet Context"
     __name__ = 'account.consolidation.balance_sheet.context'
     date = fields.Date("Date", required=True)
     posted = fields.Boolean("Posted Moves", help="Only include posted moves.")
@@ -352,7 +350,6 @@ class ConsolidationBalanceSheetContext(ModelView):
 
 
 class ConsolidationIncomeStatementContext(ModelView):
-    "Consolidation Income Statement Context"
     __name__ = 'account.consolidation.income_statement.context'
     from_date = fields.Date(
         "From Date",

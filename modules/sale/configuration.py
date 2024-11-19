@@ -33,7 +33,6 @@ def default_func(field_name):
 
 class Configuration(
         ModelSingleton, ModelSQL, ModelView, CompanyMultiValueMixin):
-    'Sale Configuration'
     __name__ = 'sale.configuration'
     sale_sequence = fields.MultiValue(fields.Many2One(
             'ir.sequence', "Sale Sequence", required=True,
@@ -71,7 +70,6 @@ class Configuration(
 
 
 class ConfigurationSequence(ModelSQL, CompanyValueMixin):
-    "Sale Configuration Sequence"
     __name__ = 'sale.configuration.sequence'
     sale_sequence = fields.Many2One(
         'ir.sequence', "Sale Sequence", required=True,
@@ -91,7 +89,6 @@ class ConfigurationSequence(ModelSQL, CompanyValueMixin):
 
 
 class ConfigurationSaleMethod(ModelSQL, ValueMixin):
-    "Sale Configuration Sale Method"
     __name__ = 'sale.configuration.sale_method'
     sale_invoice_method = sale_invoice_method
     get_sale_invoice_methods = get_sale_methods('invoice_method')

@@ -64,7 +64,6 @@ class Party(metaclass=PoolMeta):
 
 
 class PartyLocation(ModelSQL, ValueMixin):
-    "Party Location"
     __name__ = 'party.party.location'
     party = fields.Many2One('party.party', "Party", ondelete='CASCADE')
     supplier_location = supplier_location
@@ -90,7 +89,6 @@ class PartyLocation(ModelSQL, ValueMixin):
 
 
 class PartyDeliveredToWarehouse(ModelSQL):
-    "Party Delivered to Warehouse"
     __name__ = 'party.party-delivered_to-stock.location'
 
     party = fields.Many2One(

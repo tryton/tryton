@@ -32,7 +32,6 @@ class SQLSequenceError(ValidationError):
 
 
 class SequenceType(ModelSQL, ModelView):
-    "Sequence type"
     __name__ = 'ir.sequence.type'
 
     name = fields.Char('Sequence Name', required=True, translate=True)
@@ -48,7 +47,6 @@ class SequenceType(ModelSQL, ModelView):
 
 
 class Sequence(DeactivableMixin, ModelSQL, ModelView):
-    "Sequence"
     __name__ = 'ir.sequence'
 
     _strict = False
@@ -456,7 +454,6 @@ class Sequence(DeactivableMixin, ModelSQL, ModelView):
 
 
 class SequenceStrict(Sequence):
-    "Sequence Strict"
     __name__ = 'ir.sequence.strict'
     _table = None  # Needed to reset Sequence._table
     _strict = True

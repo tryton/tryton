@@ -68,7 +68,6 @@ class Context(MarketingCampaignMixin, metaclass=PoolMeta):
 
 
 class MarketingContext(BaseContext):
-    "Sale Reporting Context"
     __name__ = 'sale.reporting.marketing.context'
 
     group_by_marketing_campaign = fields.Boolean(
@@ -80,7 +79,6 @@ class MarketingContext(BaseContext):
 
 
 class Marketing(MarketingCampaignMixin, Abstract, ModelView):
-    "Sale Reporting per Marketing"
     __name__ = 'sale.reporting.marketing'
 
     @classmethod

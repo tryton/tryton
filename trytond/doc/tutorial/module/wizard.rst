@@ -20,7 +20,6 @@ First we define a :class:`~trytond.model.ModelView` class in
 .. code-block:: python
 
     class ConvertStart(ModelView):
-        "Convert Opportunities"
         __name__ = 'training.opportunity.convert.start'
 
         end_date = fields.Date("End Date", required=True)
@@ -81,7 +80,6 @@ Now we can define the :class:`~trytond.wizard.Wizard` with a ``start``
                 })
     ...
     class Convert(Wizard):
-        "Convert Opportunities"
         __name__ = 'training.opportunity.convert'
 
         start = StateView(

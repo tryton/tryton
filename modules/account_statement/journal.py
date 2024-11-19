@@ -8,7 +8,6 @@ from trytond.transaction import Transaction
 
 
 class Journal(DeactivableMixin, ModelSQL, ModelView):
-    'Statement Journal'
     __name__ = 'account.statement.journal'
     name = fields.Char('Name', required=True)
     journal = fields.Many2One(

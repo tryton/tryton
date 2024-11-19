@@ -7,10 +7,7 @@ from trytond.pyson import Bool, Eval, If
 
 
 class ProductLocation(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
-    '''
-    Product Location
-    It defines the default storage location by warehouse for a product.
-    '''
+    "It defines the default storage location by warehouse for a product"
     __name__ = 'stock.product.location'
     template = fields.Many2One(
         'product.template', "Product",

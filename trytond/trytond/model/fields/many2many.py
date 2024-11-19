@@ -59,7 +59,8 @@ class Many2Many(Field):
         self.__filter = None
         self.filter = filter
 
-    __init__.__doc__ += Field.__init__.__doc__
+    if __init__.__doc__:
+        __init__.__doc__ += Field.__init__.__doc__
 
     def _get_size(self):
         return self.__size

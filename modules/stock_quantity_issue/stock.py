@@ -19,7 +19,6 @@ from .exceptions import QuantityIssueError
 class QuantityIssue(
         sequence_ordered('priority', "Priority", "ASC NULLS LAST"),
         Workflow, ModelSQL, ModelView):
-    "Stock Quantity Issue"
     __name__ = 'stock.quantity.issue'
 
     company = fields.Many2One(
@@ -347,7 +346,6 @@ class QuantityIssueProduction(metaclass=PoolMeta):
 
 
 class QuantityIssueProduct(ModelSQL):
-    "Stock Quantity Issue Product"
     __name__ = 'stock.quantity.issue.product'
 
     issue = fields.Many2One(
@@ -391,7 +389,6 @@ class QuantityIssueProduct(ModelSQL):
 
 
 class QuantityIssueGenerate(Wizard):
-    "Stock Quantity Issue Generate"
     __name__ = 'stock.quantity.issue.generate'
     start = StateView(
         'stock.quantity.issue.generate.start',
@@ -409,7 +406,6 @@ class QuantityIssueGenerate(Wizard):
 
 
 class QuantityIssueGenerateStart(ModelView):
-    "Stock Quantity Issue Generate"
     __name__ = 'stock.quantity.issue.generate.start'
     warehouses = fields.Many2Many(
         'stock.location', None, None, "Warehouses",

@@ -24,13 +24,11 @@ class PurchaseConfiguration(metaclass=PoolMeta):
 
 
 class PurchaseConfigurationSupplyPeriod(ModelSQL, ValueMixin):
-    "Purchase Configuration Supply Period"
     __name__ = 'purchase.configuration.supply_period'
     supply_period = supply_period
 
 
 class PurchaseRequest(metaclass=PoolMeta):
-    'Purchase Request'
     __name__ = 'purchase.request'
 
     @classmethod

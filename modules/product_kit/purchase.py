@@ -76,7 +76,6 @@ class Line(order_line_mixin('purchase'), metaclass=PoolMeta):
 class LineComponent(
         order_line_component_mixin('purchase'), ComponentMixin,
         ModelSQL, ModelView):
-    "Purchase Line Component"
     __name__ = 'purchase.line.component'
 
     def get_move(self, move_type):
@@ -152,7 +151,6 @@ class LineComponent(
 
 
 class LineComponentIgnoredMove(ModelSQL):
-    'Purchase Line Component - Ignored Move'
     __name__ = 'purchase.line.component-ignored-stock.move'
     component = fields.Many2One(
         'purchase.line.component', "Component",
@@ -162,7 +160,6 @@ class LineComponentIgnoredMove(ModelSQL):
 
 
 class LineComponentRecreatedMove(ModelSQL):
-    'Purchase Line Component - Recreated Move'
     __name__ = 'purchase.line.component-recreated-stock.move'
     component = fields.Many2One(
         'purchase.line.component', "Component",

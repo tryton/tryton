@@ -8,7 +8,6 @@ from trytond.modules.sale.sale_reporting import Abstract
 
 
 class Promotion(Abstract, ModelView):
-    "Sale Reporting per Promotion"
     __name__ = 'sale.reporting.promotion'
 
     promotion = fields.Many2One('sale.promotion', "Promotion")

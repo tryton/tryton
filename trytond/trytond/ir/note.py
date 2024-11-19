@@ -18,7 +18,6 @@ __all__ = ['NoteCopyMixin']
 
 
 class Note(ResourceMixin, ModelSQL, ModelView):
-    "Note"
     __name__ = 'ir.note'
     message = fields.Text('Message', states={
             'readonly': Eval('id', 0) > 0,
@@ -113,7 +112,6 @@ class Note(ResourceMixin, ModelSQL, ModelView):
 
 
 class NoteRead(ModelSQL):
-    "Note Read"
     __name__ = 'ir.note.read'
     note = fields.Many2One('ir.note', 'Note', required=True,
         ondelete='CASCADE')

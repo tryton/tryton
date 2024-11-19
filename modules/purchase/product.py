@@ -310,7 +310,6 @@ class Product(metaclass=PoolMeta):
 class ProductSupplier(
         sequence_ordered(), ProductDeactivatableMixin, MatchMixin,
         ModelSQL, ModelView):
-    'Product Supplier'
     __name__ = 'purchase.product_supplier'
     template = fields.Many2One(
         'product.template', "Product",
@@ -515,7 +514,6 @@ class ProductSupplier(
 
 class ProductSupplierPrice(
         sequence_ordered(), ModelSQL, ModelView, MatchMixin):
-    'Product Supplier Price'
     __name__ = 'purchase.product_supplier.price'
     product_supplier = fields.Many2One('purchase.product_supplier',
             'Supplier', required=True, ondelete='CASCADE')

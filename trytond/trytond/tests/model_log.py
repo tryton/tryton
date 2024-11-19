@@ -7,7 +7,6 @@ from trytond.wizard import StateTransition, Wizard
 
 
 class Model(Workflow, ModelSQL, ModelView):
-    "Model"
     __name__ = 'test.model_log.model'
 
     name = fields.Char("Name")
@@ -42,7 +41,6 @@ class Model(Workflow, ModelSQL, ModelView):
 
 
 class Wizard(Wizard):
-    "Wizard"
     __name__ = 'test.model_log.wizard'
     no_modification = StateTransition()
     modification = StateTransition()

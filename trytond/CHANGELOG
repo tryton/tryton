@@ -1,3 +1,4 @@
+* Replace usage of docstring of Model by __string__ attribute
 * Rename ir.model.field 'field_description' into 'string'
 * Replace docstring of models by __string__
 * Rename ir.model 'name' field into 'string' and 'model' into 'name'

@@ -84,7 +84,6 @@ class Configuration(metaclass=PoolMeta):
 
 
 class ConfigurationAssetSequence(ModelSQL, CompanyValueMixin):
-    "Account Configuration Asset Sequence"
     __name__ = 'account.configuration.asset_sequence'
     asset_sequence = fields.Many2One(
         'ir.sequence', "Asset Reference Sequence", required=True,
@@ -105,7 +104,6 @@ class ConfigurationAssetSequence(ModelSQL, CompanyValueMixin):
 
 
 class ConfigurationAssetDate(ModelSQL, CompanyValueMixin):
-    "Account Configuration Asset Date"
     __name__ = 'account.configuration.asset_date'
     asset_bymonthday = asset_bymonthday
     asset_bymonth = asset_bymonth
@@ -120,7 +118,6 @@ class ConfigurationAssetDate(ModelSQL, CompanyValueMixin):
 
 
 class ConfigurationAssetFrequency(ModelSQL, CompanyValueMixin):
-    "Account Configuration Asset Frequency"
     __name__ = 'account.configuration.asset_frequency'
     asset_frequency = asset_frequency
     get_asset_frequencies = get_asset_selection('frequency')

@@ -36,7 +36,6 @@ class Configuration(metaclass=PoolMeta):
 
 
 class ConfigurationShipmentCostSequence(ModelSQL, CompanyValueMixin):
-    "Account Configuration Shipment Cost Sequence"
     __name__ = 'account.configuration.shipment_cost_sequence'
     shipment_cost_sequence = fields.Many2One(
         'ir.sequence', "Shipment Cost Sequence", required=True,
@@ -59,7 +58,6 @@ class ConfigurationShipmentCostSequence(ModelSQL, CompanyValueMixin):
 
 
 class ShipmentCost(Workflow, ModelSQL, ModelView):
-    "Shipment Cost"
     __name__ = 'account.shipment_cost'
     _rec_name = 'number'
 
@@ -338,7 +336,6 @@ class ShipmentCost(Workflow, ModelSQL, ModelView):
 
 
 class ShipmentCost_Shipment(ModelSQL):
-    "Shipment Cost - Shipment"
     __name__ = 'account.shipment_cost-stock.shipment.out'
     shipment_cost = fields.Many2One(
         'account.shipment_cost', "Shipment Cost",
@@ -348,7 +345,6 @@ class ShipmentCost_Shipment(ModelSQL):
 
 
 class ShipmentCost_ShipmentReturn(ModelSQL):
-    "Shipment Cost - Shipment Return"
     __name__ = 'account.shipment_cost-stock.shipment.out.return'
     shipment_cost = fields.Many2One(
         'account.shipment_cost', "Shipment Cost",
@@ -384,7 +380,6 @@ class ShowShipmentCostMixin(Wizard):
 
 
 class PostShipmentCost(ShowShipmentCostMixin):
-    "Post Shipment Cost"
     __name__ = 'account.shipment_cost.post'
     post = StateTransition()
 
@@ -402,7 +397,6 @@ class PostShipmentCost(ShowShipmentCostMixin):
 
 
 class ShowShipmentCost(ShowShipmentCostMixin):
-    "Show Shipment Cost"
     __name__ = 'account.shipment_cost.show'
 
     @classmethod
@@ -418,7 +412,6 @@ class ShowShipmentCost(ShowShipmentCostMixin):
 
 
 class ShipmentCostShow(ModelView):
-    "Shipment Cost Show"
     __name__ = 'account.shipment_cost.show'
 
     cost = fields.Numeric("Cost", digits=price_digits, readonly=True)
@@ -428,7 +421,6 @@ class ShipmentCostShow(ModelView):
 
 
 class ShipmentCostShowShipment(ModelView):
-    "Post Shipment Cost"
     __name__ = 'account.shipment_cost.show.shipment'
 
     shipment = fields.Reference("Shipments", [

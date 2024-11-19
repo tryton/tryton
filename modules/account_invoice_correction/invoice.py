@@ -29,7 +29,6 @@ class Invoice(metaclass=PoolMeta):
 
 
 class InvoiceCorrectStart(ModelView):
-    "Correct Invoice"
     __name__ = 'account.invoice.correct.start'
 
     invoice = fields.Many2One('account.invoice', 'Invoice', readonly=True)
@@ -42,7 +41,6 @@ class InvoiceCorrectStart(ModelView):
 
 
 class InvoiceCorrect(Wizard):
-    "Correct Invoice"
     __name__ = 'account.invoice.correct'
 
     start = StateView('account.invoice.correct.start',

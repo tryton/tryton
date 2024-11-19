@@ -50,7 +50,6 @@ class Unequal(object):
 
 
 class Statement(Workflow, ModelSQL, ModelView):
-    'Account Statement'
     __name__ = 'account.statement'
 
     _states = {'readonly': Eval('state') != 'draft'}
@@ -740,7 +739,6 @@ _states = {
 
 
 class Line(origin_mixin(_states), sequence_ordered(), ModelSQL, ModelView):
-    'Account Statement Line'
     __name__ = 'account.statement.line'
 
     move = fields.Many2One('account.move', 'Account Move', readonly=True,
@@ -1090,7 +1088,6 @@ del _states
 
 
 class LineGroup(ModelSQL, ModelView):
-    'Account Statement Line Group'
     __name__ = 'account.statement.line.group'
     _rec_name = 'number'
     statement = fields.Many2One('account.statement', 'Statement')
@@ -1175,7 +1172,6 @@ _states = {
 
 
 class Origin(origin_mixin(_states), ModelSQL, ModelView):
-    "Account Statement Origin"
     __name__ = 'account.statement.origin'
     _rec_name = 'number'
 
@@ -1258,12 +1254,10 @@ del _states
 
 
 class OriginInformation(DictSchemaMixin, ModelSQL, ModelView):
-    "Statement Origin Information"
     __name__ = 'account.statement.origin.information'
 
 
 class ImportStatementStart(ModelView):
-    "Statement Import Start"
     __name__ = 'account.statement.import.start'
     company = fields.Many2One('company.company', "Company", required=True)
     file_ = fields.Binary("File", required=True)
@@ -1280,7 +1274,6 @@ class ImportStatementStart(ModelView):
 
 
 class ImportStatement(Wizard):
-    "Statement Import"
     __name__ = 'account.statement.import'
     start = StateView('account.statement.import.start',
         'account_statement.statement_import_start_view_form', [
@@ -1305,7 +1298,6 @@ class ImportStatement(Wizard):
 
 
 class ReconcileStatement(Wizard):
-    "Statement Reconcile"
     __name__ = 'account.statement.reconcile'
     start = StateAction('account.act_reconcile')
 

@@ -583,7 +583,7 @@ class ModelSQLTestCase(TestCase):
             record.save()
         err = cm.exception
         self.assertIn(TargetModel.name.string, err.message)
-        self.assertIn(TargetModel.__doc__, err.message)
+        self.assertIn(TargetModel.__string__, err.message)
 
     @with_transaction()
     def test_write_no_exist(self):
@@ -683,7 +683,7 @@ class ModelSQLTestCase(TestCase):
             Target.delete([target])
         err = cm.exception
         self.assertIn(Model.target_null.string, err.message)
-        self.assertIn(Model.__doc__, err.message)
+        self.assertIn(Model.__string__, err.message)
 
     @with_transaction()
     def test_foreign_key_restrict(self):
@@ -701,7 +701,7 @@ class ModelSQLTestCase(TestCase):
             Target.delete([target])
         err = cm.exception
         self.assertIn(Model.target_restrict.string, err.message)
-        self.assertIn(Model.__doc__, err.message)
+        self.assertIn(Model.__string__, err.message)
 
     @with_transaction()
     def test_foreign_key_restrict_inactive(self):
@@ -719,7 +719,7 @@ class ModelSQLTestCase(TestCase):
             Target.delete([target])
         err = cm.exception
         self.assertIn(Model.target_restrict.string, err.message)
-        self.assertIn(Model.__doc__, err.message)
+        self.assertIn(Model.__string__, err.message)
 
     @with_transaction()
     def test_foreign_key_restrict_tree(self):

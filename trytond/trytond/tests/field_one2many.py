@@ -8,41 +8,35 @@ from trytond.transaction import Transaction
 
 
 class One2Many(ModelSQL):
-    'One2Many Relation'
     __name__ = 'test.one2many'
     targets = fields.One2Many('test.one2many.target', 'origin', 'Targets')
 
 
 class One2ManyTarget(ModelSQL):
-    'One2Many Target'
     __name__ = 'test.one2many.target'
     name = fields.Char('Name')
     origin = fields.Many2One('test.one2many', 'Origin')
 
 
 class One2ManyRequired(ModelSQL):
-    'One2Many Required'
     __name__ = 'test.one2many_required'
     targets = fields.One2Many('test.one2many_required.target', 'origin',
         'Targets', required=True)
 
 
 class One2ManyRequiredTarget(ModelSQL):
-    'One2Many Required Target'
     __name__ = 'test.one2many_required.target'
     name = fields.Char('Name')
     origin = fields.Many2One('test.one2many_required', 'Origin')
 
 
 class One2ManyReference(ModelSQL):
-    'One2Many Reference Relation'
     __name__ = 'test.one2many_reference'
     targets = fields.One2Many('test.one2many_reference.target', 'origin',
         'Targets')
 
 
 class One2ManyReferenceTarget(ModelSQL):
-    'One2Many Reference Target'
     __name__ = 'test.one2many_reference.target'
     name = fields.Char('Name')
     origin = fields.Reference('Origin', [
@@ -52,20 +46,17 @@ class One2ManyReferenceTarget(ModelSQL):
 
 
 class One2ManySize(ModelSQL):
-    'One2Many Size Relation'
     __name__ = 'test.one2many_size'
     targets = fields.One2Many('test.one2many_size.target', 'origin', 'Targets',
         size=3)
 
 
 class One2ManySizeTarget(ModelSQL):
-    'One2Many Size Target'
     __name__ = 'test.one2many_size.target'
     origin = fields.Many2One('test.one2many_size', 'Origin')
 
 
 class One2ManySizePYSON(ModelSQL):
-    'One2Many Size PYSON Relation'
     __name__ = 'test.one2many_size_pyson'
     limit = fields.Integer('Limit')
     targets = fields.One2Many('test.one2many_size_pyson.target', 'origin',
@@ -73,13 +64,11 @@ class One2ManySizePYSON(ModelSQL):
 
 
 class One2ManySizePYSONTarget(ModelSQL):
-    'One2Many Size PYSON Target'
     __name__ = 'test.one2many_size_pyson.target'
     origin = fields.Many2One('test.one2many_size_pyson', 'Origin')
 
 
 class One2ManyDomain(ModelSQL):
-    "One2Many Domain"
     __name__ = 'test.one2many_domain'
     targets = fields.One2Many(
         'test.one2many_domain.target', 'origin', "Targets",
@@ -89,14 +78,12 @@ class One2ManyDomain(ModelSQL):
 
 
 class One2ManyDomainTarget(ModelSQL):
-    "One2Many Domain Target"
     __name__ = 'test.one2many_domain.target'
     origin = fields.Many2One('test.one2many_domain', "Origin")
     value = fields.Integer("Value")
 
 
 class One2ManyFilter(ModelSQL):
-    'One2Many Filter Relation'
     __name__ = 'test.one2many_filter'
     targets = fields.One2Many('test.one2many_filter.target', 'origin',
         'Targets')
@@ -105,14 +92,12 @@ class One2ManyFilter(ModelSQL):
 
 
 class One2ManyFilterTarget(ModelSQL):
-    'One2Many Filter Target'
     __name__ = 'test.one2many_filter.target'
     origin = fields.Many2One('test.one2many_filter', 'Origin')
     value = fields.Integer('Value')
 
 
 class One2ManyFilterDomain(ModelSQL):
-    'One2Many Filter Relation'
     __name__ = 'test.one2many_filter_domain'
     targets = fields.One2Many('test.one2many_filter_domain.target', 'origin',
         'Targets', domain=[('value', '<', 10)])
@@ -122,14 +107,12 @@ class One2ManyFilterDomain(ModelSQL):
 
 
 class One2ManyFilterDomainTarget(ModelSQL):
-    'One2Many Filter Domain Target'
     __name__ = 'test.one2many_filter_domain.target'
     origin = fields.Many2One('test.one2many_filter_domain', 'Origin')
     value = fields.Integer('Value')
 
 
 class One2ManyContext(ModelSQL):
-    "One2Many Context"
     __name__ = 'test.one2many_context'
     targets = fields.One2Many(
         'test.one2many_context.target', 'origin', "Targets",
@@ -137,7 +120,6 @@ class One2ManyContext(ModelSQL):
 
 
 class One2ManyContextTarget(ModelSQL):
-    "One2Many Context Target"
     __name__ = 'test.one2many_context.target'
     origin = fields.Many2One('test.one2many_context', "Origin")
     context = fields.Function(fields.Integer("context"), 'get_context')
@@ -148,7 +130,6 @@ class One2ManyContextTarget(ModelSQL):
 
 
 class One2ManyOrder(ModelSQL):
-    "One2Many Order"
     __name__ = 'test.one2many_order'
     targets = fields.One2Many(
         'test.one2many_order.target', 'origin', "Targets")
@@ -158,7 +139,6 @@ class One2ManyOrder(ModelSQL):
 
 
 class One2ManyOrderTarget(ModelSQL):
-    "One2Many Order Target"
     __name__ = 'test.one2many_order.target'
     origin = fields.Many2One('test.one2many_order', "Origin")
 

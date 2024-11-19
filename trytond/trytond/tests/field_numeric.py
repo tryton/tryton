@@ -9,14 +9,12 @@ from trytond.pyson import Eval
 
 
 class Numeric(ModelSQL):
-    'Numeric'
     __name__ = 'test.numeric'
     numeric = fields.Numeric(string='Numeric', help='Test numeric',
             required=False)
 
 
 class NumericDefault(ModelSQL):
-    'Numeric Default'
     __name__ = 'test.numeric_default'
     numeric = fields.Numeric(string='Numeric', help='Test numeric',
             required=False)
@@ -27,14 +25,12 @@ class NumericDefault(ModelSQL):
 
 
 class NumericRequired(ModelSQL):
-    'Numeric Required'
     __name__ = 'test.numeric_required'
     numeric = fields.Numeric(string='Numeric', help='Test numeric',
             required=True)
 
 
 class NumericDigits(ModelSQL):
-    'Numeric Digits'
     __name__ = 'test.numeric_digits'
     digits = fields.Integer('Digits')
     numeric = fields.Numeric(string='Numeric', help='Test numeric',

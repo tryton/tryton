@@ -17,7 +17,6 @@ from .exceptions import WorkProgressValidationError
 
 
 class WorkStatus(DeactivableMixin, sequence_ordered(), ModelSQL, ModelView):
-    'Work Status'
     __name__ = 'project.work.status'
 
     _get_default_status_cache = Cache('project_work_status.get_default_status')
@@ -118,7 +117,6 @@ class WorkStatus(DeactivableMixin, sequence_ordered(), ModelSQL, ModelView):
 
 
 class Work(sequence_ordered(), tree(separator='\\'), ModelSQL, ModelView):
-    'Work Effort'
     __name__ = 'project.work'
     name = fields.Char("Name", required=True)
     type = fields.Selection([

@@ -51,7 +51,6 @@ ACTION_SELECTION = [
 
 
 class Action(DeactivableMixin, ModelSQL, ModelView):
-    "Action"
     __name__ = 'ir.action'
     name = fields.Char('Name', required=True, translate=True)
     type = fields.Selection(
@@ -151,7 +150,6 @@ class Action(DeactivableMixin, ModelSQL, ModelView):
 
 
 class ActionKeyword(ModelSQL, ModelView):
-    "Action keyword"
     __name__ = 'ir.action.keyword'
     keyword = fields.Selection([
             ('tree_open', 'Open tree'),
@@ -471,7 +469,6 @@ class ActionReport(
             'module_ref', 'module', 'ir.module,name', "Module",
             readonly=True, ondelete='CASCADE'),
         ActionMixin, ModelSQL, ModelView):
-    "Action report"
     __name__ = 'ir.action.report'
     _action_name = 'report_name'
     model = fields.Char('Model')
@@ -735,7 +732,6 @@ class ActionActWindow(
             'context_model_ref', 'context_model', 'ir.model,name',
             "Context Model", ondelete='CASCADE'),
         ActionMixin, ModelSQL, ModelView):
-    "Action act window"
     __name__ = 'ir.action.act_window'
     domain = fields.Char('Domain Value')
     context = fields.Char('Context Value')
@@ -937,7 +933,6 @@ class ActionActWindow(
 
 class ActionActWindowView(
         sequence_ordered(), DeactivableMixin, ModelSQL, ModelView):
-    "Action act window view"
     __name__ = 'ir.action.act_window.view'
     view = fields.Many2One(
         'ir.ui.view', "View", required=True, ondelete='CASCADE',
@@ -989,7 +984,6 @@ class ActionActWindowView(
 
 class ActionActWindowDomain(
         sequence_ordered(), DeactivableMixin, ModelSQL, ModelView):
-    "Action act window domain"
     __name__ = 'ir.action.act_window.domain'
     name = fields.Char('Name', translate=True)
     domain = fields.Char('Domain')
@@ -1115,7 +1109,6 @@ class ActionWizard(
 
 
 class ActionURL(ActionMixin, ModelSQL, ModelView):
-    "Action URL"
     __name__ = 'ir.action.url'
     url = fields.Char('Action Url', required=True)
 

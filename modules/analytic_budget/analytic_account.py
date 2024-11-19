@@ -14,7 +14,6 @@ from trytond.wizard import Button, StateAction, StateView, Wizard
 
 
 class BudgetContext(ModelView):
-    "Analytic Budget Context"
     __name__ = 'analytic_account.budget.context'
 
     budget = fields.Many2One(
@@ -39,7 +38,6 @@ class BudgetContext(ModelView):
 
 
 class Budget(BudgetMixin, ModelSQL, ModelView):
-    "Analytic Budget"
     __name__ = 'analytic_account.budget'
 
     start_date = fields.Date(
@@ -135,7 +133,6 @@ class Budget(BudgetMixin, ModelSQL, ModelView):
 
 
 class BudgetLine(BudgetLineMixin, ModelSQL, ModelView):
-    "Analytic Budget"
     __name__ = 'analytic_account.budget.line'
 
     budget = fields.Many2One(
@@ -200,7 +197,6 @@ class BudgetLine(BudgetLineMixin, ModelSQL, ModelView):
 
 
 class CopyBudget(CopyBudgetMixin, Wizard):
-    "Copy Analytic Budget"
     __name__ = 'analytic_account.budget.copy'
 
     start = StateView('analytic_account.budget.copy.start',
@@ -224,7 +220,6 @@ class CopyBudget(CopyBudgetMixin, Wizard):
 
 
 class CopyBudgetStart(CopyBudgetStartMixin, ModelView):
-    "Copy Analytic Budget"
     __name__ = 'analytic_account.budget.copy.start'
 
     start_date = fields.Date(

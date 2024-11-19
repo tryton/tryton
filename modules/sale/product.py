@@ -29,7 +29,6 @@ class Configuration(metaclass=PoolMeta):
 
 
 class DefaultLeadTime(ModelSQL, ValueMixin):
-    "Product Default Lead Time"
     __name__ = 'product.configuration.default_lead_time'
     default_lead_time = default_lead_time
 
@@ -95,7 +94,6 @@ class Template(metaclass=PoolMeta):
 
 
 class ProductLeadTime(ModelSQL, ValueMixin):
-    "Product Lead Time"
     __name__ = 'product.lead_time'
 
     template = fields.Many2One(
@@ -220,7 +218,6 @@ class Product(metaclass=PoolMeta):
 
 
 class SaleContext(ModelView):
-    "Product Sale Context"
     __name__ = 'product.sale.context'
 
     locations = fields.Many2Many(
