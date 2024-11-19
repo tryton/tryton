@@ -131,7 +131,9 @@ class Move(metaclass=PoolMeta):
             return self.intrastat_tariff_code.intrastat_uom
 
     @property
-    @fields.depends('from_location', 'shipment')
+    @fields.depends(
+        'from_location', 'to_location', 'shipment',
+        methods=['intrastat_to_country'])
     def intrastat_from_country(self):
         if self.from_location:
             if self.from_warehouse and self.from_warehouse.address:
@@ -140,11 +142,14 @@ class Move(metaclass=PoolMeta):
                     and hasattr(self.shipment, 'intrastat_from_country')):
                 return self.shipment.intrastat_from_country
             elif self.from_location.type == 'lost_found':
-                if self.to_location.type != 'lost_found':
+                if (self.to_location
+                        and self.to_location.type != 'lost_found'):
                     return self.intrastat_to_country
 
     @property
-    @fields.depends('to_location', 'shipment')
+    @fields.depends(
+        'to_location', 'from_location', 'shipment',
+        methods=['intrastat_from_country'])
     def intrastat_to_country(self):
         if self.to_location:
             if self.to_warehouse and self.to_warehouse.address:
@@ -153,7 +158,8 @@ class Move(metaclass=PoolMeta):
                     and hasattr(self.shipment, 'intrastat_to_country')):
                 return self.shipment.intrastat_to_country
             elif self.to_location.type == 'lost_found':
-                if self.from_location.type != 'lost_found':
+                if (self.from_location
+                        and self.from_location.type != 'lost_found'):
                     return self.intrastat_from_country
 
     @classmethod
