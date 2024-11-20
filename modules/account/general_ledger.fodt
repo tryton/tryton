@@ -910,7 +910,7 @@
       <text:p text:style-name="P32"><text:placeholder text:placeholder-type="text">&lt;format_currency(line.balance, user.language, company.currency)&gt;</text:placeholder></text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Lines.F6" office:value-type="string">
-      <text:p text:style-name="Table_20_Contents"><text:placeholder text:placeholder-type="text">&lt;line.description or &apos;&apos;&gt;</text:placeholder><text:line-break/><text:placeholder text:placeholder-type="text">&lt;line.move_description_used or &apos;&apos;&gt;</text:placeholder></text:p>
+      <text:p text:style-name="Table_20_Contents"><text:placeholder text:placeholder-type="text">&lt;line.description or &apos;&apos;&gt;</text:placeholder></text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Lines.G6" office:value-type="string">
       <text:p text:style-name="Table_20_Contents"><text:placeholder text:placeholder-type="text">&lt;getattr(line.origin, &apos;rec_name&apos;, &apos;&apos;)&gt;</text:placeholder></text:p>

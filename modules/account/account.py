@@ -2409,10 +2409,6 @@ class GeneralLedgerLine(DescriptionOriginMixin, ModelSQL, ModelView):
         'get_balance')
     origin = fields.Reference('Origin', selection='get_origin')
     description = fields.Char('Description')
-    move_description_used = fields.Function(
-        fields.Char("Move Description"),
-        'get_move_field',
-        searcher='search_move_field')
     amount_second_currency = Monetary(
         "Amount Second Currency",
         currency='second_currency', digits='second_currency')
@@ -2466,10 +2462,11 @@ class GeneralLedgerLine(DescriptionOriginMixin, ModelSQL, ModelView):
                                 'internal_balance')
                 else:
                     column = (line.debit - line.credit).as_('internal_balance')
-            elif fname == 'move_description':
-                column = Column(move, 'description').as_(fname)
             elif fname == 'party_required':
                 column = Column(account, 'party_required').as_(fname)
+            elif fname in {'origin', 'description'}:
+                column = Coalesce(
+                    Column(line, fname), Column(move, fname)).as_(fname)
             elif (not field_line
                     or fname == 'state'
                     or isinstance(field_line, fields.Function)):
@@ -2484,24 +2481,6 @@ class GeneralLedgerLine(DescriptionOriginMixin, ModelSQL, ModelView):
             ).join(account, condition=line.account == account.id
                 ).select(*columns, where=line_query)
 
-    def get_move_field(self, name):
-        field = getattr(self.__class__, name)
-        if name.startswith('move_'):
-            name = name[5:]
-        value = getattr(self.move, name)
-        if isinstance(value, ModelSQL):
-            if field._type == 'reference':
-                return str(value)
-            return value.id
-        return value
-
-    @classmethod
-    def search_move_field(cls, name, clause):
-        nested = clause[0][len(name):]
-        if name.startswith('move_'):
-            name = name[5:]
-        return [('move.' + name + nested, *clause[1:])]
-
     def get_currency(self, name):
         return self.company.currency.id
 
@@ -2511,8 +2490,10 @@ class GeneralLedgerLine(DescriptionOriginMixin, ModelSQL, ModelView):
 
     @classmethod
     def get_origin(cls):
-        Line = Pool().get('account.move.line')
-        return Line.get_origin()
+        pool = Pool()
+        Move = pool.get('account.move')
+        Line = pool.get('account.move.line')
+        return list(set(Move.get_origin()) | set(Line.get_origin()))
 
     def get_balance(self, name):
         pool = Pool()
