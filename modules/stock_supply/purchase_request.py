@@ -56,7 +56,7 @@ class PurchaseRequest(metaclass=PoolMeta):
         if not company:
             return
 
-        if warehouses is None:
+        if not warehouses:
             # fetch warehouses:
             warehouses = Location.search([
                     ('type', '=', 'warehouse'),

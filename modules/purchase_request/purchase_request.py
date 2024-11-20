@@ -407,8 +407,7 @@ class CreatePurchase(Wizard):
 
         requests = self.records
 
-        if (getattr(self.ask_party, 'party', None)
-                and getattr(self.ask_party, 'company', None)):
+        if self.ask_party.party and self.ask_party.company:
             def compare_string(first, second):
                 return (first or '') == (second or '')
 

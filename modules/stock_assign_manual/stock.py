@@ -131,7 +131,7 @@ class ShipmentAssignManual(Wizard):
                     self.show.move = move
                     return move
 
-        if getattr(self.show, 'skipped', None) is None:
+        if self.show.skipped is None:
             self.show.skipped = []
 
         if not next_move():

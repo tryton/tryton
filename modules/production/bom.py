@@ -332,18 +332,18 @@ class OpenBOMTree(Wizard):
         defaults = {}
         product = self.record
         defaults['category'] = product.default_uom.category.id
-        if getattr(self.start, 'unit', None):
+        if self.start.unit:
             defaults['unit'] = self.start.unit.id
         else:
             defaults['unit'] = product.default_uom.id
         defaults['product'] = product.id
-        if getattr(self.start, 'bom', None):
+        if self.start.bom:
             defaults['bom'] = self.start.bom.id
         else:
             bom = product.get_bom()
             if bom:
                 defaults['bom'] = bom.id
-        defaults['quantity'] = getattr(self.start, 'quantity', None)
+        defaults['quantity'] = self.start.quantity
         return defaults
 
     def default_tree(self, fields):

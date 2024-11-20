@@ -346,7 +346,7 @@ class KeywordStateView(StateView):
             'type': 'form',
             'fields': fields,
             }
-        if not hasattr(wizard.template, 'template'):
+        if not wizard.template.template:
             return view
         template = wizard.template.template
         field_template = ('<label name=%(name)s/>'

@@ -32,7 +32,7 @@ class ShipmentInternal(ModelSQL, ModelView):
         if not company:
             return
 
-        if warehouses is None:
+        if not warehouses:
             warehouses = Location.search([
                     ('type', '=', 'warehouse'),
                     ])

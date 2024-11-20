@@ -462,10 +462,10 @@ class PayLine(Wizard):
 
     def _get_journals(self):
         journals = {}
-        for journal in getattr(self.ask_journal, 'journals', []):
-            journals[self._get_journal_key(journal)] = journal
-        if getattr(self.ask_journal, 'journal', None):
-            journal = self.ask_journal.journal
+        if self.ask_journal.journals:
+            for journal in self.ask_journal.journals:
+                journals[self._get_journal_key(journal)] = journal
+        if journal := self.ask_journal.journal:
             journals[self._get_journal_key(journal)] = journal
         return journals
 

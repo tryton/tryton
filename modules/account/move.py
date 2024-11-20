@@ -2161,9 +2161,9 @@ class ReconcileLines(Wizard):
     def transition_reconcile(self):
         self.model.reconcile(
             self.records,
-            writeoff=getattr(self.writeoff, 'writeoff', None),
-            date=getattr(self.writeoff, 'date', None),
-            description=getattr(self.writeoff, 'description', None))
+            writeoff=self.writeoff.writeoff,
+            date=self.writeoff.date,
+            description=self.writeoff.description)
         return 'end'
 
 
