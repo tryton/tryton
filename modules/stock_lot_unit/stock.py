@@ -145,7 +145,7 @@ class InventoryCount(metaclass=PoolMeta):
         if line.lot and line.lot.unit:
             values['quantity'] = UoM.compute_qty(
                 line.lot.unit, line.lot.unit_quantity,
-                line.uom)
+                line.unit)
         return values
 
 
