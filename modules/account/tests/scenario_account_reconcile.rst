@@ -102,14 +102,14 @@ Run Reconcile for only balanced::
 
     >>> reconcile = Wizard('account.reconcile')
     >>> reconcile.form.only_balanced = True
-    >>> reconcile.execute('next_')
+    >>> reconcile.execute('setup')
     >>> reconcile.state
     'end'
 
 Run Reconcile wizard::
 
     >>> reconcile = Wizard('account.reconcile')
-    >>> reconcile.execute('next_')
+    >>> reconcile.execute('setup')
     >>> assertEqual(reconcile.form.party, (customer if party_required else None))
     >>> reconcile.form.write_off_amount
     Decimal('0.00')

@@ -75,7 +75,7 @@ Run Reconcile wizard::
 
     >>> reconcile = Wizard('account.reconcile')
     >>> reconcile.form.automatic = True
-    >>> reconcile.execute('next_')
+    >>> reconcile.execute('setup')
 
     >>> lines = Line.find([('account', '=', accounts['receivable'].id)])
     >>> len(lines)

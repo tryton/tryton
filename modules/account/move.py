@@ -2207,8 +2207,9 @@ class Reconcile(Wizard):
         'account.reconcile.start',
         'account.reconcile_start_view_form', [
             Button("Cancel", 'end', 'tryton-cancel'),
-            Button("Reconcile", 'next_', 'tryton-ok', default=True),
+            Button("Reconcile", 'setup', 'tryton-ok', default=True),
             ])
+    setup = StateTransition()
     next_ = StateTransition()
     show = StateView('account.reconcile.show',
         'account.reconcile_show_view_form', [
@@ -2324,8 +2325,11 @@ class Reconcile(Wizard):
                 having=having))
         return [p for p, in cursor]
 
+    def transition_setup(self):
+        return self.transition_next_(first=True)
+
     @check_access
-    def transition_next_(self):
+    def transition_next_(self, first=False):
         pool = Pool()
         Line = pool.get('account.move.line')
 
@@ -2359,20 +2363,18 @@ class Reconcile(Wizard):
             self.show.currencies = currencies
             return currency
 
-        if getattr(self.show, 'accounts', None) is None:
+        if first:
             self.show.accounts = self.get_accounts()
             account = next_account()
             if not account or (not next_party() and account.party_required):
                 return 'end'
-        if self.show.account.party_required:
-            if getattr(self.show, 'parties', None) is None:
+            if self.show.account.party_required:
                 self.show.parties = self.get_parties(self.show.account)
                 if not next_party():
                     return 'end'
-        else:
-            self.show.parties = []
-            self.show.party = None
-        if getattr(self.show, 'currencies', None) is None:
+            else:
+                self.show.parties = []
+                self.show.party = None
             self.show.currencies = self.get_currencies(
                 self.show.account, self.show.party)
 
