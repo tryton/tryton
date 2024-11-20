@@ -524,7 +524,7 @@ class TableHandler(TableHandlerInterface):
             return
         cursor = Transaction().connection.cursor()
         cursor.execute(
-            SQL('ALTER TABLE {} DROP CONSTRAINT {}').format(
+            SQL('ALTER TABLE {} DROP CONSTRAINT {} CASCADE').format(
                 Identifier(self.table_name), Identifier(ident)))
         self._update_definitions(constraints=True)
 
