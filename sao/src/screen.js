@@ -839,12 +839,8 @@
                             'class': 'col-md-12'
                         }).append(this.context_screen.screen_container.el))
                         .prependTo(this.screen_container.filter_box);
-                        return this.context_screen.new_(false).then(function(record) {
-                            // Set manually default to get context_screen_prm
-                            // resolved when default is set.
-                            return record.default_get();
-                        });
-                    }.bind(this));
+                        return this.context_screen.new_();
+                    });
             }
 
             if (!attributes.row_activate) {
