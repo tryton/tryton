@@ -131,41 +131,61 @@ class Model(URLMixin, PoolBase, metaclass=ModelMeta):
         Translation.register_fields(cls, module_name)
 
     @classmethod
-    def default_get(cls, fields_names, with_rec_name=True):
+    def default_get(cls, fields_names, with_rec_name=True, with_default=True):
         '''
         Return a dict with the default values for each field in fields_names.
         If with_rec_name is True, rec_name will be added.
         '''
         pool = Pool()
-        value = {}
+        values = {}
         context = Transaction().context
 
         default_rec_name = context.get('default_rec_name')
         if (default_rec_name
                 and cls._rec_name in cls._fields
                 and cls._rec_name in fields_names):
-            value[cls._rec_name] = default_rec_name
+            values[cls._rec_name] = default_rec_name
 
-        # get the default values defined in the object
         for field_name in fields_names:
+            field = cls._fields[field_name]
             default_name = f'default_{field_name}'
             if field_name in cls._fields and default_name in context:
-                value[field_name] = context.get(default_name)
-            elif field_name in cls._defaults:
-                value[field_name] = cls._defaults[field_name]()
-            field = cls._fields[field_name]
-            if (field._type == 'boolean'
-                    and field_name not in value):
-                value[field_name] = False
-            if (with_rec_name
-                    and field._type in ('many2one',)
-                    and value.get(field_name)):
-                Target = pool.get(field.model_name)
-                if 'rec_name' in Target._fields:
-                    value.setdefault(
-                        field_name + '.', {})['rec_name'] = Target(
-                            value[field_name]).rec_name
-        return value
+                value = context.get(default_name)
+            elif with_default and field_name in cls._defaults:
+                value = cls._defaults[field_name]()
+            elif field._type == 'boolean':
+                value = False
+            else:
+                continue
+            if field._type in {'many2one', 'one2one', 'reference'}:
+                if isinstance(value, Model):
+                    if with_rec_name and 'rec_name' in value._fields:
+                        values.setdefault(
+                            f'{field_name}.', {})['rec_name'] = value.rec_name
+                    if field._type == 'reference':
+                        value = str(value)
+                    else:
+                        value = int(value)
+                elif value and with_rec_name:
+                    if field._type == 'reference':
+                        target_name, target_id = value.split(',')
+                        Target = pool.get(target_name)
+                    else:
+                        Target = field.get_target()
+                        target_id = value
+                    if 'rec_name' in Target._fields:
+                        target = Target(target_id)
+                        values.setdefault(
+                            field_name + '.', {})['rec_name'] = target.rec_name
+            elif field._type in 'many2many':
+                if value:
+                    value = [int(r) for r in value]
+            elif field._type == 'one2many':
+                if value:
+                    if isinstance(value[0], Model):
+                        value = [r._changed_values() for r in value]
+            values[field_name] = value
+        return values
 
     @classmethod
     def fields_get(cls, fields_names=None, level=0):

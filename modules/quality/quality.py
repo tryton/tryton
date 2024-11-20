@@ -9,8 +9,8 @@ from sql.functions import CharLength
 
 from trytond.i18n import gettext, lazy_gettext
 from trytond.model import (
-    DeactivableMixin, DictSchemaMixin, MatchMixin, Model, ModelSingleton,
-    ModelSQL, ModelStorage, ModelView, Workflow, dualmethod, fields)
+    DeactivableMixin, DictSchemaMixin, MatchMixin, ModelSingleton, ModelSQL,
+    ModelStorage, ModelView, Workflow, dualmethod, fields)
 from trytond.model.exceptions import AccessError, ButtonActionException
 from trytond.modules.company.model import (
     CompanyMultiValueMixin, CompanyValueMixin, employee_field, reset_employee,
@@ -820,16 +820,7 @@ class Inspect(Wizard):
         inspection = self.store.inspections[0]
         values = {}
         for fieldname in fields:
-            value = getattr(inspection, fieldname)
-            if isinstance(value, Model):
-                field = getattr(inspection.__class__, fieldname)
-                if field._type == 'reference':
-                    value = str(value)
-                else:
-                    value = value.id
-            elif isinstance(value, (list, tuple)):
-                value = [r.id for r in value]
-            values[fieldname] = value
+            values[fieldname] = getattr(inspection, fieldname)
 
         if 'points' in fields:
             # Convert ImmutableDict to dict

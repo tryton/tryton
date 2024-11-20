@@ -224,7 +224,7 @@ class User(avatar_mixin(100, 'login'), DeactivableMixin, ModelSQL, ModelView):
             ('usage', '=', 'menu'),
             ], limit=1)
         if actions:
-            return actions[0].id
+            return actions[0]
         return None
 
     def get_pyson_menu(self, name):

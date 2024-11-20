@@ -85,14 +85,20 @@ Class methods:
    <model-ir.model.field>`.
    See :meth:`trytond.pool.PoolBase.__register__`.
 
-.. classmethod:: Model.default_get(fields_names[, with_rec_name])
+.. classmethod:: Model.default_get(fields_names[[, with_rec_name], with_default])
 
    Return a dictionary with the default values for each field in
    ``fields_names``.
-   Default values are defined by the returned value of each instance method
-   with the pattern ``default_<field name>()``.
+   Default values are defined by the returned value of each class method with
+   the pattern ``default_<field name>()``.
 
-   ``with_rec_name`` allow to add ``rec_name`` value for each many2one field.
+   ``with_rec_name`` allow to add ``rec_name`` value for each
+   :class:`~trytond.model.fields.Many2One`,
+   :class:`~trytond.model.fields.One2One`,
+   :class:`~trytond.model.fields.Reference` field.
+
+   ``with_default`` allows to not use the value from the ``default_<field
+   name>`` methods.
 
    The ``default_rec_name`` key in the context can be used to define the value
    of the :attr:`~Model._rec_name` field.

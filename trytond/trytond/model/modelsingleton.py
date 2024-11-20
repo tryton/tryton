@@ -125,7 +125,8 @@ class ModelSingleton(ModelStorage):
             if with_rec_name:
                 fields_names = fields_names[:]
                 for field in fields_names[:]:
-                    if cls._fields[field]._type in ('many2one',):
+                    if cls._fields[field]._type in [
+                            'many2one', 'one2one', 'reference']:
                         fields_names.append(field + '.rec_name')
             default, = cls.read([singleton.id], fields_names=fields_names)
             del default['id']

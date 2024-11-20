@@ -1514,7 +1514,7 @@ class TranslationUpdateStart(ModelView):
                     ('code', '=', code),
                     ('translatable', '=', True),
                     ], limit=1)
-            return lang.id
+            return lang
         except ValueError:
             return None
 
@@ -1739,7 +1739,7 @@ class TranslationExportStart(ModelView):
         domain = [('code', '=', code)] + cls.language.domain
         try:
             lang, = Lang.search(domain, limit=1)
-            return lang.id
+            return lang
         except ValueError:
             return None
 

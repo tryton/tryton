@@ -89,35 +89,28 @@ class StateView(State):
         '''
         pool = Pool()
         Model_ = pool.get(self.model_name)
-        defaults = Model_.default_get(fields)
-        default = getattr(wizard, 'default_%s' % state_name, None)
-        if default:
-            defaults.update(default(fields))
-            self._complete_values(defaults)
-        return defaults
+        transaction = Transaction()
+        context = transaction.context
+        default_ctx = {}
+        if default_func := getattr(wizard, f'default_{state_name}', None):
+            for name, value in default_func(fields).items():
+                name = f'default_{name}'
+                if name not in context:
+                    default_ctx[name] = value
+        with transaction.set_context(default_ctx):
+            return Model_.default_get(fields)
 
     def get_values(self, wizard, state_name, fields):
         "Return values for the fields"
-        values = {}
-        value = getattr(wizard, 'value_%s' % state_name, None)
-        if value:
-            values.update(value(fields))
-        self._complete_values(values)
-        return values
-
-    def _complete_values(self, values):
         pool = Pool()
         Model_ = pool.get(self.model_name)
-        for field_name, value in list(values.items()):
-            if '.' in field_name:
-                continue
-            field = Model_._fields[field_name]
-            if value and field._type == 'many2one':
-                Target = field.get_target()
-                if 'rec_name' in Target._fields:
-                    values.setdefault(
-                        field_name + '.', {})['rec_name'] = Target(
-                            value).rec_name
+        transaction = Transaction()
+        default_ctx = {}
+        if value_func := getattr(wizard, f'value_{state_name}', None):
+            for name, value in value_func(fields).items():
+                default_ctx[f'default_{name}'] = value
+        with transaction.set_context(default_ctx):
+            return Model_.default_get(fields, with_default=False)
 
     def get_buttons(self, wizard, state_name):
         '''

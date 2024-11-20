@@ -15,8 +15,7 @@ from trytond.i18n import gettext
 from trytond.ir.attachment import AttachmentCopyMixin
 from trytond.ir.note import NoteCopyMixin
 from trytond.model import (
-    Index, Model, ModelSQL, ModelView, Unique, Workflow, fields,
-    sequence_ordered)
+    Index, ModelSQL, ModelView, Unique, Workflow, fields, sequence_ordered)
 from trytond.model.exceptions import AccessError
 from trytond.modules.account.tax import TaxableMixin
 from trytond.modules.account_product.exceptions import AccountError
@@ -2446,16 +2445,7 @@ class ModifyHeader(Wizard):
         sale = self.get_sale()
         values = {}
         for fieldname in fields:
-            value = getattr(sale, fieldname)
-            if isinstance(value, Model):
-                if getattr(sale.__class__, fieldname)._type == 'reference':
-                    value = str(value)
-                else:
-                    value = value.id
-            elif isinstance(value, (list, tuple)):
-                value = [r.id for r in value]
-            values[fieldname] = value
-
+            values[fieldname] = getattr(sale, fieldname)
         # Mimic an empty sale in draft state to get the fields' states right
         values['lines'] = []
         return values
