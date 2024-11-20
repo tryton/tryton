@@ -1,3 +1,4 @@
+* Fill wizard state view instance with default value
 * Replace passlib by pwdlib
 * Add size limit for RPC arguments
 * Store the ignore search limit option of export

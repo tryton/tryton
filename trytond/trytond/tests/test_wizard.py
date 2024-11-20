@@ -47,11 +47,9 @@ class WizardTestCase(TestCase):
         session, = Session.create([{}])
         wizard = Wizard(session.id)
         self.assertEqual(wizard.start.id, None)
-        self.assertRaises(AttributeError, getattr, wizard.start, 'name')
-        self.assertEqual(hasattr(wizard.start, 'name'), False)
+        self.assertEqual(wizard.start.name, None)
         wizard.start.name = 'Test'
-        self.assertRaises(AttributeError, getattr, wizard.start, 'user')
-        self.assertEqual(hasattr(wizard.start, 'user'), False)
+        self.assertEqual(wizard.start.user.id, Transaction().user)
         wizard.start.user = transaction.user
         group_a, = Group.create([{
                     'name': 'Group A',

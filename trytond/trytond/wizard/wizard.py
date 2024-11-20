@@ -7,6 +7,7 @@ __all__ = ['Wizard',
 
 import copy
 import json
+from collections import defaultdict
 
 from trytond.i18n import gettext
 from trytond.model import ModelSQL
@@ -393,12 +394,18 @@ class Wizard(URLMixin, PoolBase):
         Session = pool.get('ir.session.wizard')
         self._session_id = session_id
         session = Session(session_id)
-        data = json.loads(session.data, object_hook=JSONDecoder())
+        data = defaultdict(dict)
+        data.update(json.loads(session.data, object_hook=JSONDecoder()))
         for state_name, state in self.states.items():
             if isinstance(state, StateView):
-                Target = pool.get(state.model_name)
-                data.setdefault(state_name, {})
-                setattr(self, state_name, Target(**data[state_name]))
+                View = pool.get(state.model_name)
+                view_data = data[state_name]
+                default_values = View.default_get(
+                    View._fields.keys(), with_rec_name=False)
+                for field_name in View._fields:
+                    view_data.setdefault(
+                        field_name, default_values.get(field_name))
+                setattr(self, state_name, View(**view_data))
 
     def _save(self):
         "Save the session in database"
