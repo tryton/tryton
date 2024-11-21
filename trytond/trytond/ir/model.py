@@ -1736,12 +1736,9 @@ class ModelWorkflowGraph(Report):
         Model = pool.get('ir.model')
         ActionReport = pool.get('ir.action.report')
 
-        action_report_ids = ActionReport.search([
+        action_report, = ActionReport.search([
             ('report_name', '=', cls.__name__)
-            ])
-        if not action_report_ids:
-            raise Exception('Error', 'Report (%s) not find!' % cls.__name__)
-        action_report = ActionReport(action_report_ids[0])
+            ], limit=1)
 
         models = Model.browse(ids)
 
