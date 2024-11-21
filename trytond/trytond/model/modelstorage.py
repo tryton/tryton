@@ -1624,8 +1624,9 @@ class ModelStorage(Model):
         if id is not None:
             id = int(id)
         if _ids is not None:
-            self._ids = _ids
             assert id in _ids
+            assert all(isinstance(i, int) for i in _ids)
+            self._ids = _ids
         else:
             self._ids = [id]
 
