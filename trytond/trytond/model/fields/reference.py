@@ -170,6 +170,7 @@ class Reference(SelectionMixin, Field):
         if not isinstance(value, (Model, type(None))):
             if isinstance(value, str):
                 target, value = value.split(',')
+                value = int(value)
             else:
                 target, value = value
             Target = Pool().get(target)
