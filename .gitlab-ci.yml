@@ -2,6 +2,8 @@ workflow:
   rules:
     - if: $CI_COMMIT_BRANCH =~ /^topic\/.*/ && $CI_PIPELINE_SOURCE == "push"
       when: never
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event" && $CI_MERGE_REQUEST_TITLE =~ /^(\[Draft\]|\(Draft\)|Draft:)/
+      when: never
     - when: always
 
 stages:
