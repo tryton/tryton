@@ -8,6 +8,9 @@ Main
 :doc:`Server <trytond:index>`
    The main application.
 
+   :ref:`Migration <index-migration>`
+      Manual step when upgrading between series.
+
 :doc:`Desktop Client <tryton:index>`
    The application to connect to the server.
 

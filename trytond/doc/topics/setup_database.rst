@@ -40,7 +40,7 @@ To upgrade to a new series, the command line is:
     Prior to upgrade see if there is no manual action to take on the `migration
     topic`_.
 
-.. _`migration topic`: https://discuss.tryton.org/c/migration
+.. _`migration topic`: https://docs.tryton.org/migration
 
 To activate a new language on an existing database, the command line is:
 
