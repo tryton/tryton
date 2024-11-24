@@ -11,6 +11,20 @@ a database from another series.
 .. note::
    If you skip a series, all actions between them must be performed.
 
+7.6
+---
+
+Before
+~~~~~~
+
+* Rename columns of ``ir.model`` and ``ir.model.field``:
+
+  .. code-block:: SQL
+
+     ALTER TABLE IF EXISTS "ir_model" RENAME COLUMN "name" TO "string";
+     ALTER TABLE IF EXISTS "ir_model" RENAME COLUMN "model" TO "name";
+     ALTER TABLE IF EXISTS "ir_model_field" RENAME COLUMN "field_description" TO "string";
+
 7.4
 ---
 
