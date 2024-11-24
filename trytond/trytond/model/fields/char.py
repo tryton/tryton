@@ -114,12 +114,17 @@ class Char(FieldTranslate):
 
     def _domain_column(self, operator, column):
         column = super(Char, self)._domain_column(operator, column)
+        column = Coalesce(column, '')
         if self.search_unaccented and operator.endswith('ilike'):
             database = Transaction().database
             column = database.unaccent(column)
         return column
 
     def _domain_value(self, operator, value):
+        if operator in {'in', 'not in'}:
+            value = [v if v is not None else '' for v in value]
+        elif value is None:
+            value = ''
         value = super(Char, self)._domain_value(operator, value)
         if self.search_unaccented and operator.endswith('ilike'):
             database = Transaction().database

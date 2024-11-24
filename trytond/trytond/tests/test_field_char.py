@@ -74,6 +74,34 @@ class CommonTestCaseMixin:
         self.assertListEqual(chars, [char])
 
     @with_transaction()
+    def test_search_none_equals_empty(self):
+        "Test search char None equals empty"
+        Char = self.Char()
+        char, = Char.create([{
+                    'char': None,
+                    }])
+
+        chars = Char.search([
+                ('char', '=', ''),
+                ])
+
+        self.assertListEqual(chars, [char])
+
+    @with_transaction()
+    def test_search_empty_equals_none(self):
+        "Test search char empty equals none"
+        Char = self.Char()
+        char, = Char.create([{
+                    'char': '',
+                    }])
+
+        chars = Char.search([
+                ('char', '=', None),
+                ])
+
+        self.assertListEqual(chars, [char])
+
+    @with_transaction()
     def test_search_equals_unicode(self):
         "Test search char equals unicode"
         Char = self.Char()

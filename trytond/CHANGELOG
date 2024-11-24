@@ -1,3 +1,4 @@
+* Convert None as empty string when searching on Char or Text
 * Support instances as default value
 * Add metadata columns to ModelSQL with table query
 * Add report data to header_key
