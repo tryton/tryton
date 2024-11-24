@@ -14,7 +14,6 @@ def register():
         purchase.PurchaseRequisitionLine,
         purchase.Configuration,
         purchase.ConfigurationSequence,
-        purchase.Purchase,
         module='purchase_requisition', type_='model')
     Pool.register(
         purchase.HandlePurchaseCancellationException,

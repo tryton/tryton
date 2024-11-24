@@ -220,7 +220,7 @@ Cancel the purchase order::
     'exception'
     >>> requisition.reload()
     >>> requisition.state
-    'done'
+    'processing'
 
 Handle request exception::
 
@@ -237,7 +237,7 @@ Handle request exception::
     'purchased'
     >>> requisition.reload()
     >>> requisition.state
-    'processing'
+    'done'
 
 Confirm the purchase order::
 
@@ -248,7 +248,7 @@ Confirm the purchase order::
     >>> purchase.click('quote')
     >>> requisition.reload()
     >>> requisition.state
-    'processing'
+    'done'
     >>> purchase.click('confirm')
     >>> purchase.reload()
     >>> purchase.state
@@ -314,6 +314,17 @@ Create purchase requisition with two different suppliers::
     ...         ])
     >>> purchase.click('quote')
     >>> purchase.click('confirm')
+    >>> requisition.reload()
+    >>> requisition.state
+    'processing'
+    >>> pr = pr[1]
+    >>> pr.state
+    'exception'
+    >>> handle_exception = Wizard(
+    ...     'purchase.request.handle.purchase.cancellation', [pr])
+    >>> handle_exception.execute('cancel_request')
+    >>> pr.state
+    'cancelled'
     >>> requisition.reload()
     >>> requisition.state
     'done'

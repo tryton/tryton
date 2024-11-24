@@ -16,7 +16,7 @@ from trytond.modules.currency.fields import Monetary
 from trytond.modules.product import price_digits, round_price
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Bool, Eval, Id, If
-from trytond.tools import firstline, grouped_slice
+from trytond.tools import firstline
 from trytond.transaction import Transaction
 from trytond.wizard import Wizard
 
@@ -418,7 +418,7 @@ class PurchaseRequisition(Workflow, ModelSQL, ModelView):
 
     def is_done(self):
         return all(
-            r.purchase and r.purchase.state in {'cancelled', 'confirmed'}
+            r.state in {'purchased', 'done', 'cancelled'}
             for l in self.lines for r in l.purchase_requests)
 
 
@@ -658,6 +658,20 @@ class PurchaseRequest(metaclass=PoolMeta):
             return self.origin.requisition.currency
         return currency
 
+    @classmethod
+    def update_state(cls, requests):
+        pool = Pool()
+        Requisition = pool.get('purchase.requisition')
+        RequisitionLine = pool.get('purchase.requisition.line')
+
+        super().update_state(requests)
+
+        if requisitions := {
+                r.origin.requisition for r in requests
+                if isinstance(r.origin, RequisitionLine) and r.origin.id >= 0}:
+            requisitions = Requisition.browse(requisitions)
+            Requisition.__queue__.process(requisitions)
+
 
 class HandlePurchaseCancellationException(metaclass=PoolMeta):
     __name__ = 'purchase.request.handle.purchase.cancellation'
@@ -708,41 +722,3 @@ class CreatePurchase(Wizard):
                     key_values['unit_price'],
                     line.unit))
         return line
-
-
-class Purchase(metaclass=PoolMeta):
-    __name__ = 'purchase.purchase'
-
-    @classmethod
-    def _process_requisition(cls, purchases):
-        pool = Pool()
-        Request = pool.get('purchase.request')
-        Requisition = pool.get('purchase.requisition')
-
-        requests = []
-        for sub_purchases in grouped_slice(purchases):
-            requests.append(Request.search([
-                        ('purchase_line.purchase.id', 'in',
-                            [x.id for x in sub_purchases]),
-                        ('origin', 'like', 'purchase.requisition.line,%'),
-                        ]))
-        requests = list(chain(*requests))
-
-        if requests:
-            requisition_ids = list(set(req.origin.requisition
-                for req in requests))
-            Requisition.process(Requisition.browse(requisition_ids))
-
-    @classmethod
-    @ModelView.button
-    @Workflow.transition('confirmed')
-    def confirm(cls, purchases):
-        super(Purchase, cls).confirm(purchases)
-        cls._process_requisition(purchases)
-
-    @classmethod
-    @ModelView.button
-    @Workflow.transition('cancelled')
-    def cancel(cls, purchases):
-        super(Purchase, cls).cancel(purchases)
-        cls._process_requisition(purchases)
