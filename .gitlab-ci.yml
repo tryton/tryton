@@ -274,6 +274,9 @@ check-account-chart:
     - name: ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/postgres
       alias: postgresql
       command: ["-c", "fsync=off", "-c", "synchronous_commit=off", "-c", "full_page_writes=off"]
+  parallel:
+    matrix:
+      - PYTHON_VERSION: ["3.12"]
 
 .test-postgis:
   extends: .test-db
