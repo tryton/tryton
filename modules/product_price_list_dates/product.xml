@@ -26,6 +26,8 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.ui.view" id="price_list_line_context_view_form">
             <field name="model">product.price_list.line.context</field>
+            <!-- Migration from 7.2: Force empty type for inherit -->
+            <field name="type" eval="None"/>
             <field name="inherit" ref="product_price_list.price_list_line_context_view_form"/>
             <field name="name">price_list_line_context_form</field>
         </record>
