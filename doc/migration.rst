@@ -11,6 +11,19 @@ a database from another series.
 .. note::
    If you skip a series, all actions between them must be performed.
 
+7.4
+---
+
+Before
+~~~~~~
+
+* If ``product_price_list`` and ``product_price_list_dates`` are activated,
+  remove ``open_lines`` button:
+
+  .. code-block:: SQL
+
+     DELETE FROM "ir_model_button" WHERE "name" = 'open_lines' AND "model" = 'product.price_list';
+
 7.2
 ---
 
