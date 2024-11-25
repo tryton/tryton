@@ -10,7 +10,8 @@ from trytond.transaction import Transaction
 
 class Carrier(metaclass=PoolMeta):
     __name__ = 'carrier'
-    percentage = fields.Numeric('Percentage', digits=(16, 8),
+    percentage = fields.Numeric(
+        "Percentage", digits=(None, 8),
         states={
             'invisible': Eval('carrier_cost_method') != 'percentage',
             },

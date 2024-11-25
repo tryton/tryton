@@ -52,12 +52,12 @@ class Move(metaclass=PoolMeta):
         'customs.tariff.code', "Intrastat Tariff Code",
         ondelete='RESTRICT', states=_states)
     intrastat_value = fields.Numeric(
-        "Intrastat Value", digits=(16, 2), readonly=True, states=_states)
+        "Intrastat Value", digits=(None, 2), readonly=True, states=_states)
     intrastat_transaction = fields.Many2One(
         'account.stock.eu.intrastat.transaction', "Intrastat Transaction",
         ondelete='RESTRICT', states=_states)
     intrastat_additional_unit = fields.Float(
-        "Intrastat Additional Unit", digits=(16, 3),
+        "Intrastat Additional Unit", digits=(None, 3),
         states={
             'required': (
                 _states['required'] & Eval('intrastat_tariff_code_uom')),

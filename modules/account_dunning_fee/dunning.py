@@ -23,7 +23,8 @@ class Fee(DeactivableMixin, ModelSQL, ModelView):
             ('percentage', 'Percentage'),
             ], 'Compute Method', required=True,
         help='Method to compute the fee amount')
-    percentage = fields.Numeric('Percentage', digits=(16, 8),
+    percentage = fields.Numeric(
+        "Percentage", digits=(None, 8),
         states={
             'invisible': Eval('compute_method') != 'percentage',
             'required': Eval('compute_method') == 'percentage',

@@ -179,7 +179,7 @@ class Work(sequence_ordered(), tree(separator='\\'), ModelSQL, ModelView):
             ],
         help='Estimated progress for this work.')
     total_progress = fields.Function(fields.Float('Total Progress',
-            digits=(16, 4),
+            digits=(None, 4),
             help='Estimated total progress for this work and the sub-works.',
             states={
                 'invisible': (

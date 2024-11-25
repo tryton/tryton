@@ -10,7 +10,8 @@ class Allocation(ModelSQL, ModelView):
         'company.employee', "Employee", required=True, ondelete='CASCADE')
     work = fields.Many2One(
         'project.work', "Work", required=True, ondelete='CASCADE')
-    percentage = fields.Float('Percentage', digits=(16, 2), required=True,
+    percentage = fields.Float(
+        "Percentage", digits=(None, 2), required=True,
         domain=[('percentage', '>', 0.0)])
 
     @staticmethod

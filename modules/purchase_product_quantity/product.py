@@ -14,14 +14,14 @@ class ProductSupplier(metaclass=PoolMeta):
 
     quantity_minimal = fields.Float(
         "Minimal Quantity",
-        digits=(16, Eval('quantity_digits', 0)),
+        digits=(None, Eval('quantity_digits', None)),
         domain=['OR',
             ('quantity_minimal', '=', None),
             ('quantity_minimal', '>', 0),
             ])
     quantity_rounding = fields.Float(
         "Rounding Quantity",
-        digits=(16, Eval('quantity_digits', 0)),
+        digits=(None, Eval('quantity_digits', None)),
         domain=['OR',
             ('quantity_rounding', '=', None),
             ('quantity_rounding', '>', 0),

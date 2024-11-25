@@ -45,7 +45,7 @@ COST_PRICE_METHODS = [
     ('average', 'Average'),
     ]
 
-price_digits = (16, price_decimal)
+price_digits = (None, price_decimal)
 
 
 def round_price(value, rounding=None):

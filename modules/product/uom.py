@@ -57,7 +57,8 @@ class Uom(SymbolMixin, DigitsMixin, DeactivableMixin, ModelSQL, ModelView):
         help="The coefficient for the formula:\n"
         "coefficient (base unit) = 1 (this unit)")
     rounding = fields.Float(
-        "Rounding Precision", digits=(12, Eval('digits', 12)), required=True,
+        "Rounding Precision",
+        digits=(None, Eval('digits', None)), required=True,
         domain=[
             ('rounding', '>', 0),
             ],

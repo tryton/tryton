@@ -33,7 +33,7 @@ class AmountMixin:
         'get_amount')
     percentage = fields.Function(
         fields.Numeric(
-            "Percentage", digits=(16, 4),
+            "Percentage", digits=(None, 4),
             help="The percentage of booked amount of the budget line."),
         'get_amount')
 

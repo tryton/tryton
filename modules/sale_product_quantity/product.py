@@ -13,7 +13,7 @@ class Template(metaclass=PoolMeta):
 
     sale_quantity_minimal = fields.Float(
         "Sale Minimal Quantity",
-        digits=(16, Eval('sale_quantity_digits', 0)),
+        digits=(None, Eval('sale_quantity_digits', None)),
         states={
             'invisible': ~Eval('salable', False),
             },
@@ -23,7 +23,7 @@ class Template(metaclass=PoolMeta):
             ])
     sale_quantity_rounding = fields.Float(
         "Sale Rounding Quantity",
-        digits=(16, Eval('sale_quantity_digits', 0)),
+        digits=(None, Eval('sale_quantity_digits', None)),
         states={
             'invisible': ~Eval('salable', False),
             },

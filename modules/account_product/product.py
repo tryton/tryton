@@ -121,7 +121,7 @@ class Category(CompanyMultiValueMixin, metaclass=PoolMeta):
             },
         help="The taxes to apply when purchasing products of this category.")
     supplier_taxes_deductible_rate = fields.Numeric(
-        "Supplier Taxes Deductible Rate", digits=(14, 10),
+        "Supplier Taxes Deductible Rate", digits=(None, 10),
         domain=[
             ('supplier_taxes_deductible_rate', '>=', 0),
             ('supplier_taxes_deductible_rate', '<=', 1),

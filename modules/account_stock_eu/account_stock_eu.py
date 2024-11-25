@@ -271,11 +271,11 @@ class IntrastatDeclarationLine(ModelSQL, ModelView):
     country = fields.Many2One('country.country', "Country")
     subdivision = fields.Many2One('country.subdivision', "Subdivision")
     tariff_code = fields.Many2One('customs.tariff.code', "Tariff Code")
-    weight = fields.Float("Weight", digits=(16, 3))
-    value = fields.Numeric("Value", digits=(16, 2))
+    weight = fields.Float("Weight", digits=(None, 3))
+    value = fields.Numeric("Value", digits=(None, 2))
     transaction = fields.Many2One(
         'account.stock.eu.intrastat.transaction', "Transaction")
-    additional_unit = fields.Float("Additional Unit", digits=(16, 3))
+    additional_unit = fields.Float("Additional Unit", digits=(None, 3))
     country_of_origin = fields.Many2One('country.country', "Country of Origin")
     vat = fields.Many2One(
         'party.identifier', "VAT",

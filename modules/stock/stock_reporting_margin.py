@@ -35,7 +35,7 @@ class Abstract(ModelSQL, ModelView):
         currency='currency', digits='currency')
     margin = fields.Numeric(
         lazy_gettext('stock.msg_stock_reporting_margin'),
-        digits=(14, 4),
+        digits=(None, 4),
         states={
             'invisible': ~Eval('margin'),
             })
@@ -537,7 +537,7 @@ class CategoryTree(ModelSQL, ModelView):
         'get_total')
     margin = fields.Function(Monetary(
             lazy_gettext('stock.msg_stock_reporting_margin'),
-            digits=(14, 4)),
+            digits=(None, 4)),
         'get_margin')
 
     currency = fields.Function(fields.Many2One(

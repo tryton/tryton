@@ -594,12 +594,14 @@ class TaxTemplate(sequence_ordered(), ModelSQL, ModelView, DeactivableMixin):
             })
     start_date = fields.Date('Starting Date')
     end_date = fields.Date('Ending Date')
-    amount = fields.Numeric('Amount', digits=(16, 8),
+    amount = fields.Numeric(
+        "Amount", digits=(None, 8),
         states={
             'required': Eval('type') == 'fixed',
             'invisible': Eval('type') != 'fixed',
             })
-    rate = fields.Numeric('Rate', digits=(14, 10),
+    rate = fields.Numeric(
+        "Rate", digits=(None, 10),
         states={
             'required': Eval('type') == 'percentage',
             'invisible': Eval('type') != 'percentage',
@@ -762,13 +764,15 @@ class Tax(sequence_ordered(), ModelSQL, ModelView, DeactivableMixin):
             })
     start_date = fields.Date('Starting Date', states=_states)
     end_date = fields.Date('Ending Date', states=_states)
-    amount = fields.Numeric('Amount', digits=(16, 8),
+    amount = fields.Numeric(
+        "Amount", digits=(None, 8),
         states={
             'required': Eval('type') == 'fixed',
             'invisible': Eval('type') != 'fixed',
             'readonly': _states['readonly'],
             }, help='In company\'s currency.')
-    rate = fields.Numeric('Rate', digits=(14, 10),
+    rate = fields.Numeric(
+        "Rate", digits=(None, 10),
         states={
             'required': Eval('type') == 'percentage',
             'invisible': Eval('type') != 'percentage',

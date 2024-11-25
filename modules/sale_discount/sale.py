@@ -20,7 +20,7 @@ class Line(metaclass=PoolMeta):
             })
 
     discount_rate = fields.Function(fields.Numeric(
-            "Discount Rate", digits=(16, 4),
+            "Discount Rate", digits=(None, 4),
             states={
                 'invisible': Eval('type') != 'line',
                 'readonly': Eval('sale_state') != 'draft',

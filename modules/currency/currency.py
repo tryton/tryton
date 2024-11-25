@@ -54,7 +54,7 @@ class Currency(
     rates = fields.One2Many('currency.currency.rate', 'currency', 'Rates',
         help="Add floating exchange rates for the currency.")
     rounding = fields.Numeric('Rounding factor', required=True,
-        digits=(12, Eval('digits', 6)),
+        digits=(None, Eval('digits', None)),
         domain=[
             ('rounding', '>', 0),
             ],

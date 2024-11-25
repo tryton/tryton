@@ -2360,7 +2360,7 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
             },
         depends={'invoice'})
     taxes_deductible_rate = fields.Numeric(
-        "Taxes Deductible Rate", digits=(14, 10),
+        "Taxes Deductible Rate", digits=(None, 10),
         domain=[
             ('taxes_deductible_rate', '>=', 0),
             ('taxes_deductible_rate', '<=', 1),
