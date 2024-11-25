@@ -14,7 +14,7 @@ And of course, a model would be useless without its :ref:`fields
 
 Let's start with a simple model to store the opportunities with a description,
 a start and end date, a link to a party and an optional comment.
-Our model in :file:`opportunity.py` file currently looks like this:
+Create a file called :file:`opportunity.py` and add the following model to it:
 
 .. code-block:: python
 
