@@ -66,7 +66,9 @@ class RuleGroup(
             ],
         help="Add this rule to all users by default.")
     rules = fields.One2Many('ir.rule', 'rule_group', 'Tests',
-        help="The rule is satisfied if at least one test is True.")
+        help="The rule is satisfied if at least one test is True.\n"
+        "If there is no test defined, "
+        "the rule is always satisfied if not global.")
     perm_read = fields.Boolean('Read Access')
     perm_write = fields.Boolean('Write Access')
     perm_create = fields.Boolean('Create Access')
