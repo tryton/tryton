@@ -8,6 +8,7 @@ this repository contains the full copyright notices and license terms. -->
     <field name="perm_delete"/>
     <field name="model_ref" expand="1"/>
     <field name="name" expand="1"/>
+    <field name="groups"/>
     <field name="global_p"/>
     <field name="default_p"/>
 </tree>

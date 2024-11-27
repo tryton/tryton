@@ -20,5 +20,6 @@ this repository contains the full copyright notices and license terms. -->
     </group>
     <label name="name"/>
     <field name="name" colspan="5"/>
+    <field name="groups" colspan="6"/>
     <field name="rules" colspan="6"/>
 </form>
