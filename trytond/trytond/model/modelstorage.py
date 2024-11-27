@@ -1773,9 +1773,8 @@ class ModelStorage(Model):
                 self._cache.size_limit, self._local_cache.size_limit,
                 self._transaction.database.IN_MAX))
         index = self._ids.index(self.id)
-        ids = chain(islice(self._ids, index, None),
-            islice(self._ids, 0, max(index - 1, 0)))
-        ids = islice(unique(filter(filter_, ids)), read_size)
+        ids = islice(self._ids, index, index + read_size)
+        ids = unique(filter(filter_, ids))
 
         kwargs_cache = {}
         pysoned_ctx = {}
@@ -1849,9 +1848,7 @@ class ModelStorage(Model):
                     and ffields.keys() <= set(self._cache[self.id]._keys())):
                 # Use values from cache
                 read_data = []
-                for id_ in islice(chain(islice(self._ids, index, None),
-                            islice(self._ids, 0, max(index - 1, 0))),
-                        read_size):
+                for id_ in islice(self._ids, index, index + read_size):
                     if id_ in self._cache:
                         data = {'id': id_}
                         for fname in ffields:
