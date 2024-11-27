@@ -2021,12 +2021,14 @@ class ModelStorage(Model):
                     if to_create:
                         news = cls.create([save_values[r] for r in to_create])
                         new_ids = []
+                        new_local_cache = local_cache(cls, transaction)
                         for record, new in zip(to_create, news):
                             record._ids.remove(record.id)
                             record._id = new.id
                             # Group all records that are alone
                             if not record._ids:
                                 record._ids = new_ids
+                                record._local_cache = new_local_cache
                             record._ids.append(record.id)
                     if to_write:
                         cls.write(*sum(
