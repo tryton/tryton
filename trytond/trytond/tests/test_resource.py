@@ -1,6 +1,9 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 
+import json
+
+from trytond.model.exceptions import AccessError
 from trytond.pool import Pool
 from trytond.tests.test_tryton import (
     TestCase, activate_module, with_transaction)
@@ -103,3 +106,131 @@ class ResourceTestCase(TestCase):
             self.assertEqual(notes, [note2])
             self.assertEqual(count, 1)
             self.assertTrue(query)
+
+    @with_transaction()
+    def test_resource_with_access(self):
+        "Test create/write/read/delete on resource with access"
+        pool = Pool()
+        Note = pool.get('ir.note')
+        Resource = pool.get('test.resource')
+        ModelAccess = pool.get('ir.model.access')
+
+        ModelAccess.create([{
+                    'model': Resource.__name__,
+                    'group': None,
+                    'perm_write': True,
+                    'perm_read': True,
+                    }])
+        record, = Resource.create([{}])
+
+        with Transaction().set_context(_check_access=True):
+            note_id, = Note.create([{
+                        'resource': record,
+                        'message': "Foo",
+                        }])
+            Note.write([note_id], {'message': "Bar"})
+            Note.read([note_id], ['message'])
+            Note.delete([note_id])
+
+    @with_transaction()
+    def test_resource_without_access(self):
+        "Test create/write/read/delete on resource without access"
+        pool = Pool()
+        Note = pool.get('ir.note')
+        Resource = pool.get('test.resource')
+        ModelAccess = pool.get('ir.model.access')
+
+        ModelAccess.create([{
+                    'model': Resource.__name__,
+                    'group': None,
+                    'perm_write': False,
+                    'perm_read': False,
+                    }])
+        record, = Resource.create([{}])
+
+        note_id, = Note.create([{
+                    'resource': record,
+                    'message': "Message",
+                    }])
+
+        with Transaction().set_context(_check_access=True):
+            with self.assertRaises(AccessError):
+                Note.create([{
+                            'resource': record,
+                            'message': "Message",
+                            }])
+
+            with self.assertRaises(AccessError):
+                Note.write([note_id], {'message': "Bar"})
+            with self.assertRaises(AccessError):
+                Note.read([note_id], ['message'])
+            with self.assertRaises(AccessError):
+                Note.delete([note_id])
+
+    @with_transaction()
+    def test_resource_with_rule(self):
+        "Test create/write/read/delete on resource with rule"
+        pool = Pool()
+        Note = pool.get('ir.note')
+        Resource = pool.get('test.resource')
+        RuleGroup = pool.get('ir.rule.group')
+
+        RuleGroup.create([{
+                    'name': "Test",
+                    'model': Resource.__name__,
+                    'global_p': True,
+                    'perm_write': True,
+                    'rules': [('create', [{
+                                    'domain': json.dumps(
+                                        [('id', '>=', 0)]),
+                                    }])],
+                    }])
+        record, = Resource.create([{}])
+
+        with Transaction().set_context(_check_access=True):
+            note_id, = Note.create([{
+                        'resource': record,
+                        'message': "Foo",
+                        }])
+            Note.write([note_id], {'message': "Bar"})
+            Note.read([note_id], ['message'])
+            Note.delete([note_id])
+
+    @with_transaction()
+    def test_resource_without_rule(self):
+        "Test create/write/read/delete on resource without rule"
+        pool = Pool()
+        Note = pool.get('ir.note')
+        Resource = pool.get('test.resource')
+        RuleGroup = pool.get('ir.rule.group')
+
+        RuleGroup.create([{
+                    'name': "Test",
+                    'model': Resource.__name__,
+                    'global_p': True,
+                    'perm_write': True,
+                    'rules': [('create', [{
+                                    'domain': json.dumps(
+                                        [('id', '<', 0)]),
+                                    }])],
+                    }])
+        record, = Resource.create([{}])
+
+        note_id, = Note.create([{
+                    'resource': record,
+                    'message': "Message",
+                    }])
+
+        with Transaction().set_context(_check_access=True):
+            with self.assertRaises(AccessError):
+                Note.create([{
+                            'resource': record,
+                            'message': "Message",
+                            }])
+
+            with self.assertRaises(AccessError):
+                Note.write([note_id], {'message': "Bar"})
+            with self.assertRaises(AccessError):
+                Note.read([note_id], ['message'])
+            with self.assertRaises(AccessError):
+                Note.delete([note_id])

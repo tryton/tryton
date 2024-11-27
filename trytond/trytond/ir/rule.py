@@ -7,9 +7,10 @@ from sql import Literal
 from trytond.cache import Cache
 from trytond.i18n import gettext
 from trytond.model import Check, Index, ModelSQL, ModelView, fields
-from trytond.model.exceptions import ValidationError
+from trytond.model.exceptions import AccessError, ValidationError
 from trytond.pool import Pool
 from trytond.pyson import Eval, If, PYSONDecoder
+from trytond.tools import grouped_slice
 from trytond.transaction import Transaction, inactive_records
 
 
@@ -340,6 +341,48 @@ class Rule(ModelSQL, ModelView):
         # Use root to prevent infinite recursion
         with Transaction().set_user(0, set_context=True), inactive_records():
             return Model.search(domain, order=[], query=True)
+
+    @classmethod
+    def check(cls, model_name, ids, mode='read'):
+        pool = Pool()
+        Model = pool.get(model_name)
+        transaction = Transaction()
+
+        def test_domain(ids, domain):
+            wrong_ids = []
+            # Use root to prevent infinite recursion
+            with transaction.set_user(0, set_context=True), inactive_records():
+                for sub_ids in grouped_slice(ids):
+                    sub_ids = list(sub_ids)
+                    records = Model.search([
+                            ('id', 'in', sub_ids),
+                            domain,
+                            ], order=[])
+                    wrong_ids.extend(
+                        set(sub_ids).difference(map(int, records)))
+            return wrong_ids
+
+        domain = cls.domain_get(model_name, mode=mode)
+        forbidden = test_domain(ids, domain)
+        if forbidden:
+            ids = ', '.join(map(str, forbidden[:5]))
+            if len(forbidden) > 5:
+                ids += '...'
+            rules = []
+            clause, clause_global = cls.get(model_name, mode=mode)
+            if clause:
+                dom = list(clause.values())
+                dom.insert(0, 'OR')
+                if test_domain(forbidden, dom):
+                    rules.extend(clause.keys())
+                for rule, dom in clause_global.items():
+                    if test_domain(forbidden, dom):
+                        rules.append(rule)
+            raise AccessError(gettext(
+                    f'ir.msg_{mode}_rule_error',
+                    ids=ids,
+                    rules='\n'.join(r.name for r in rules),
+                    **Model.__names__()))
 
     @classmethod
     def delete(cls, rules):

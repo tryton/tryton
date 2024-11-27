@@ -48,18 +48,20 @@ class ResourceAccessMixin(ModelStorage):
     def check_access(cls, ids, mode='read'):
         pool = Pool()
         ModelAccess = pool.get('ir.model.access')
+        Rule = pool.get('ir.rule')
         transaction = Transaction()
         if transaction.user == 0 or not transaction.check_access:
             return
-        model_names = set()
+        records = defaultdict(set)
         with without_check_access():
             for record in cls.browse(ids):
                 if record.resource:
-                    model_names.add(str(record.resource).split(',')[0])
-        for model_name in model_names:
+                    records[record.resource.__name__].add(record.resource.id)
+        for model_name, ids in records.items():
             checks = cls._convert_check_access(model_name, mode)
-            for model, check_mode in checks:
-                ModelAccess.check(model, mode=check_mode)
+            for model_name, check_mode in checks:
+                ModelAccess.check(model_name, mode=check_mode)
+                Rule.check(model_name, ids, mode=check_mode)
 
     @classmethod
     def _convert_check_access(cls, model, mode):
