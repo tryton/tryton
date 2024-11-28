@@ -271,7 +271,7 @@ class AEAT303(AEATReport):
         context = super().get_context(records, header, data)
         amounts = context['amounts']
 
-        periods = records
+        periods = sorted(records, key=attrgetter('start_date'))
         start_date = periods[0].start_date
         end_date = periods[-1].end_date
 
