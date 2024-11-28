@@ -337,6 +337,15 @@ depending on the parameters.
 
 Default: ``60``
 
+.. _config-request.records_limit:
+
+records_limit
+~~~~~~~~~~~~~
+
+The maximal number of records processed by requests.
+
+Default: ``None``
+
 .. _config-cache:
 
 cache

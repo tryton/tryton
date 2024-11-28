@@ -6,6 +6,7 @@ from functools import wraps
 from lxml import etree
 
 from trytond.cache import Cache
+from trytond.config import config
 from trytond.exceptions import UserError
 from trytond.i18n import gettext
 from trytond.pool import Pool
@@ -19,6 +20,7 @@ from .fields import on_change_result
 from .model import Model
 
 __all__ = ['ModelView']
+_request_records_limit = config.getint('request', 'records_limit')
 
 
 class AccessButtonError(UserError):
@@ -84,15 +86,24 @@ class ModelView(Model):
     @classmethod
     def __setup__(cls):
         super(ModelView, cls).__setup__()
-        cls.__rpc__['fields_view_get'] = RPC(cache=dict(days=1))
-        cls.__rpc__['view_toolbar_get'] = RPC(cache=dict(days=1))
-        cls.__rpc__['on_change'] = RPC(instantiate=0, result=on_change_result)
-        cls.__rpc__['on_change_with'] = RPC(
-            instantiate=0, result=on_change_result)
-        cls.__rpc__['on_change_notify'] = RPC(instantiate=0)
-        cls.__rpc__['on_scan_code'] = RPC(
-            instantiate=0, result=on_change_result)
-        cls.__rpc__['autocomplete'] = RPC()
+        cls.__rpc__.update({
+                'fields_view_get': RPC(
+                    cache=dict(days=1),
+                    size_limits={
+                        2: 1,
+                        }),
+                'view_toolbar_get': RPC(cache=dict(days=1)),
+                'on_change': RPC(instantiate=0, result=on_change_result),
+                'on_change_with': RPC(
+                    instantiate=0, result=on_change_result),
+                'on_change_notify': RPC(instantiate=0),
+                'on_scan_code': RPC(
+                    instantiate=0, result=on_change_result),
+                'autocomplete': RPC(
+                    size_limits={
+                        2: _request_records_limit,
+                        }),
+                })
         cls._buttons = {}
 
         fields_ = {}

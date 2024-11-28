@@ -2,6 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 from unittest.mock import DEFAULT, Mock, call
 
+from trytond.protocols.wrappers import exceptions
 from trytond.rpc import RPC
 from trytond.tests.test_tryton import (
     TestCase, activate_module, with_transaction)
@@ -142,3 +143,47 @@ class RPCTestCase(TestCase):
         self.assertEqual(
             rpc_with_access.convert(None, {}),
             ([], {}, {'_check_access': True}, None))
+
+    @with_transaction()
+    def test_size_limits_integer(self):
+        "Test size_limits integer"
+        obj = Mock()
+        rpc = RPC(size_limits={0: 42})
+
+        rpc.convert(obj, list(range(10)), {})
+
+        with self.assertRaises(exceptions.RequestEntityTooLarge):
+            rpc.convert(obj, list(range(43)), {})
+
+    @with_transaction()
+    def test_size_limits_slice(self):
+        "Test size_limits slice"
+        obj = Mock()
+        rpc = RPC(size_limits={(0, None, 2): 42})
+
+        rpc.convert(obj, list(range(10)), None, list(range(10)), {})
+
+        with self.assertRaises(exceptions.RequestEntityTooLarge):
+            rpc.convert(obj, list(range(30)), None, list(range(30)), {})
+
+    @with_transaction()
+    def test_size_limits_integer_number(self):
+        "Test size_limits integer number"
+        obj = Mock()
+        rpc = RPC(size_limits={0: 42})
+
+        rpc.convert(obj, 10, {})
+
+        with self.assertRaises(exceptions.RequestEntityTooLarge):
+            rpc.convert(obj, 43, {})
+
+    @with_transaction()
+    def test_size_limits_slice_number(self):
+        "Test size_limits slice"
+        obj = Mock()
+        rpc = RPC(size_limits={(0, None, 2): 42})
+
+        rpc.convert(obj, 10, None, 10, {})
+
+        with self.assertRaises(exceptions.RequestEntityTooLarge):
+            rpc.convert(obj, 30, None, 30, {})

@@ -34,6 +34,8 @@ from .modelstorage import (
     ValidationError, is_leaf)
 from .modelview import ModelView
 
+_request_records_limit = config.getint('request', 'records_limit')
+
 
 class ForeignKeyError(ValidationError):
     pass
@@ -352,7 +354,10 @@ class ModelSQL(ModelStorage):
         cls._order = [('id', None)]
         if issubclass(cls, ModelView):
             cls.__rpc__.update({
-                    'history_revisions': RPC(),
+                    'history_revisions': RPC(
+                        size_limits={
+                            0: _request_records_limit,
+                            }),
                     })
         if cls._history:
             history_table = cls.__table_history__()

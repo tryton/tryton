@@ -41,6 +41,7 @@ _cache_count_timeout = config.getint(
 _cache_count_clear = config.getint(
     'cache', 'count_clear', default=1000)
 _request_timeout = config.getint('request', 'timeout', default=0)
+_request_records_limit = config.getint('request', 'records_limit')
 
 
 def local_cache(Model, transaction=None):
@@ -132,26 +133,74 @@ class ModelStorage(Model):
         super(ModelStorage, cls).__setup__()
         if issubclass(cls, ModelView):
             cls.__rpc__.update({
-                    'create': RPC(readonly=False,
+                    'create': RPC(
+                        readonly=False,
+                        size_limits={
+                            0: _request_records_limit,
+                            },
                         result=lambda r: list(map(int, r))),
-                    'read': RPC(timeout=_request_timeout),
-                    'write': RPC(readonly=False,
-                        instantiate=slice(0, None, 2)),
-                    'delete': RPC(readonly=False, instantiate=0),
-                    'copy': RPC(readonly=False, instantiate=0, unique=False,
+                    'read': RPC(
+                        timeout=_request_timeout,
+                        size_limits={
+                            0: _request_records_limit,
+                            }),
+                    'write': RPC(
+                        readonly=False,
+                        instantiate=slice(0, None, 2),
+                        size_limits={
+                            (0, None, 2), _request_records_limit,
+                            }),
+                    'delete': RPC(
+                        readonly=False,
+                        instantiate=0,
+                        size_limits={
+                            (0, None, 2): _request_records_limit,
+                            }),
+                    'copy': RPC(
+                        readonly=False,
+                        instantiate=0,
+                        unique=False,
+                        size_limits={
+                            0: _request_records_limit,
+                            },
                         result=lambda r: list(map(int, r))),
                     'search': RPC(
                         result=lambda r: list(map(int, r)),
+                        size_limits={
+                            2: _request_records_limit,
+                            },
                         timeout=_request_timeout),
-                    'search_count': RPC(timeout=_request_timeout),
-                    'search_read': RPC(timeout=_request_timeout),
+                    'search_count': RPC(
+                        timeout=_request_timeout,
+                        size_limits={
+                            2: _request_records_limit,
+                            }),
+                    'search_read': RPC(
+                        timeout=_request_timeout,
+                        size_limits={
+                            2: _request_records_limit,
+                            }),
                     'resources': RPC(
-                        instantiate=0, unique=False,
+                        instantiate=0,
+                        unique=False,
                         timeout=_request_timeout),
-                    'export_data_domain': RPC(timeout=_request_timeout),
+                    'export_data_domain': RPC(
+                        timeout=_request_timeout,
+                        size_limits={
+                            4: _request_records_limit,
+                            }),
                     'export_data': RPC(
-                        instantiate=0, unique=False, timeout=_request_timeout),
-                    'import_data': RPC(readonly=False),
+                        instantiate=0,
+                        unique=False,
+                        size_limits={
+                            0: _request_records_limit,
+                            },
+                        timeout=_request_timeout),
+                    'import_data': RPC(
+                        readonly=False,
+                        size_limits={
+                            1: _request_records_limit,
+                            }),
                     })
         if cls._log is None:
             cls._log = not cls.__name__.startswith('ir.')

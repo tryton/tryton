@@ -2,8 +2,10 @@
 # this repository contains the full copyright notices and license terms.
 import copy
 import datetime as dt
+from collections.abc import Sized
 
 from trytond.exceptions import TrytonException
+from trytond.protocols.wrappers import HTTPStatus, abort
 from trytond.transaction import Transaction
 
 
@@ -17,16 +19,19 @@ class RPC(object):
     check_access: If access right must be checked
     fresh_session: If a fresh session is required
     unique: Check instances are unique
+    timeout: The timeout in second
+    size_limits: A dictionary with size limits
     '''
 
     __slots__ = (
         'readonly', 'instantiate', 'decorator', 'result',
-        'check_access', 'fresh_session', 'unique', 'cache', 'timeout')
+        'check_access', 'fresh_session', 'unique', 'cache', 'timeout',
+        'size_limits')
 
     def __init__(
             self, readonly=True, instantiate=None, decorator=None, result=None,
             check_access=True, fresh_session=False, unique=True, cache=None,
-            timeout=None):
+            timeout=None, size_limits=None):
         self.readonly = readonly
         self.instantiate = instantiate
         self.decorator = decorator
@@ -42,6 +47,7 @@ class RPC(object):
                 cache = RPCCache(**cache)
         self.cache = cache
         self.timeout = timeout
+        self.size_limits = size_limits
 
     def convert(self, obj, *args, **kwargs):
         args = list(args)
@@ -87,7 +93,33 @@ class RPC(object):
                 args[self.instantiate] = instance(data)
         if self.check_access:
             context['_check_access'] = True
+        self._check_size_limits(args, kwargs)
         return args, kwargs, context, timestamp
+
+    def _check_size_limits(self, args, kwargs):
+        if not self.size_limits:
+            return
+        for arg_spec, limit in self.size_limits.items():
+            if not limit:
+                continue
+            if isinstance(arg_spec, int):
+                try:
+                    selection = [args[arg_spec]]
+                except IndexError:
+                    continue
+            else:
+                selection = args[slice(*arg_spec)]
+            test = 0
+            for arg in selection:
+                if isinstance(arg, Sized):
+                    test += len(arg)
+                else:
+                    try:
+                        test += arg
+                    except TypeError:
+                        pass
+            if test > limit:
+                abort(HTTPStatus.REQUEST_ENTITY_TOO_LARGE)
 
     def decorate(self, func):
         if self.decorator:

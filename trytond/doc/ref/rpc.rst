@@ -4,7 +4,7 @@
 RPC
 ===
 
-.. class:: RPC([readonly[, instantiate[, [decorator, result[, check_access[, unique[, fresh_session[, cache[, timeout]]]]]]]]])
+.. class:: RPC([readonly[, instantiate[, [decorator, result[, check_access[, unique[, fresh_session[, cache[, timeout[, size_limits]]]]]]]]]])
 
    Define the behavior of Remote Procedure Call.
 
@@ -52,6 +52,11 @@ Instance attributes are:
    ``0`` or ``None`` means no timeout is applied.
    Default is ``None``.
 
+.. attribute:: RPC.size_limits
+
+    A dictionary with size limits for the arguments.
+    The key of the dictionary define the position of the argument when it is an
+    integer, or a slice of arguments when it is a tuple.
 
 RPCCache
 --------
