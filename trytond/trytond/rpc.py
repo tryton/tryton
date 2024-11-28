@@ -55,14 +55,18 @@ class RPC(object):
         if 'context' in kwargs:
             context = kwargs.pop('context')
             if not isinstance(context, dict):
-                raise TypeError("context must be a dictionary")
+                abort(
+                    HTTPStatus.UNPROCESSABLE_ENTITY,
+                    "context must be a dictionary")
         else:
             try:
                 context = args.pop()
             except IndexError:
                 context = None
             if not isinstance(context, dict):
-                raise ValueError("Missing context argument")
+                abort(
+                    HTTPStatus.UNPROCESSABLE_ENTITY,
+                    "Missing context argument")
         context = copy.deepcopy(context)
         timestamp = None
         for key in list(context.keys()):
@@ -81,7 +85,9 @@ class RPC(object):
                         return obj(**data)
                     else:
                         if self.unique and len(data) != len(set(data)):
-                            raise ValueError("Duplicate ids")
+                            abort(
+                                HTTPStatus.UNPROCESSABLE_ENTITY,
+                                "Duplicate records")
                         return obj.browse(data)
             if isinstance(self.instantiate, slice):
                 for i, data in enumerate(args[self.instantiate]):
