@@ -358,6 +358,7 @@ class Record(SignalEvent):
         return self.id
 
     def default_get(self, rec_name=None):
+        vals = {}
         if len(self.group.fields):
             context = self.get_context()
             context.setdefault('default_rec_name', rec_name)
@@ -365,7 +366,7 @@ class Record(SignalEvent):
                 vals = RPCExecute('model', self.model_name, 'default_get',
                     list(self.group.fields.keys()), context=context)
             except RPCException:
-                return
+                return vals
             if (self.parent
                     and self.parent_name in self.group.fields):
                 parent_field = self.group.fields[self.parent_name]
