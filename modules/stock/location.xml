@@ -56,6 +56,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_location_tree">
             <field name="name">Locations</field>
             <field name="res_model">stock.location</field>
+            <field name="search_value" eval="[('type', 'in', ['storage', 'view', 'warehouse'])]" pyson="1"/>
             <field name="domain" eval="[('parent', '=', None)]" pyson="1"/>
         </record>
         <record model="ir.action.act_window.view" id="act_location_tree_view1">
@@ -73,6 +74,27 @@ this repository contains the full copyright notices and license terms. -->
             action="act_location_tree"
             sequence="30"
             id="menu_location_tree"/>
+
+        <record model="ir.action.act_window" id="act_location_list">
+            <field name="name">Locations</field>
+            <field name="res_model">stock.location</field>
+            <field name="search_value" eval="[('type', 'in', ['storage', 'view', 'warehouse'])]" pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_location_list_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="location_view_list_warehouse"/>
+            <field name="act_window" ref="act_location_list"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_location_list_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="location_view_form"/>
+            <field name="act_window" ref="act_location_list"/>
+        </record>
+        <menuitem
+            parent="menu_location_tree"
+            action="act_location_list"
+            sequence="10"
+            id="menu_location_list"/>
 
         <record model="ir.action.act_window" id="act_location_form">
             <field name="name">Locations</field>
@@ -93,11 +115,6 @@ this repository contains the full copyright notices and license terms. -->
             action="act_location_form"
             sequence="20"
             id="menu_location_form"/>
-        <menuitem
-            parent="menu_location_tree"
-            action="act_location_form"
-            sequence="10"
-            id="menu_location_form2"/>
 
         <record model="ir.ui.view"
                 id="products_by_locations_context_view_form">

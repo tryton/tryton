@@ -2,7 +2,8 @@
 <!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
 this repository contains the full copyright notices and license terms. -->
 <tree>
-    <field name="name" expand="1"/>
+    <field name="name" expand="2"/>
+    <field name="type" expand="1" optional="1"/>
     <field name="quantity" symbol="quantity_uom"/>
     <field name="forecast_quantity" symbol="quantity_uom"/>
     <field name="cost_value"/>
