@@ -75,7 +75,9 @@ class Group(metaclass=PoolMeta):
         pool = Pool()
         Payment = pool.get('account.payment')
         for payment in self.payments:
-            if not payment.stripe_token and not payment.stripe_customer:
+            if (not payment.stripe_token
+                    and not payment.stripe_payment_intent_id
+                    and not payment.stripe_customer):
                 account = payment.journal.stripe_account
                 for customer in payment.party.stripe_customers:
                     if (customer.stripe_account == account
@@ -421,12 +423,14 @@ class Payment(StripeCustomerMethodMixin, CheckoutMixin, metaclass=PoolMeta):
             'stripe_version': STRIPE_VERSION,
             'amount': self.stripe_amount,
             'currency': self.currency.code,
+            'automatic_payment_methods': {
+                'enabled': True,
+                },
             'capture_method': 'automatic' if self.stripe_capture else 'manual',
             'customer': (self.stripe_customer.stripe_customer_id
                 if self.stripe_customer else None),
             'description': self.description,
             'off_session': off_session,
-            'payment_method_types': ['card'],
             'idempotency_key': idempotency_key,
             }
         if self.stripe_customer_payment_method:
@@ -685,7 +689,7 @@ class Payment(StripeCustomerMethodMixin, CheckoutMixin, metaclass=PoolMeta):
     def stripe_update(self, charge):
         assert (
             (charge.id == self.stripe_charge_id)
-            or (charge.payment_intent.id == self.stripe_payment_intent_id))
+            or (charge.payment_intent == self.stripe_payment_intent_id))
         amount = charge.amount - charge.amount_refunded
         if (self.state not in {'succeeded', 'failed'}
                 or self.stripe_amount != amount
@@ -1763,6 +1767,27 @@ class Customer(CheckoutMixin, DeactivableMixin, ModelSQL, ModelView):
         elif payment_method.type == 'sepa_debit':
             name = '****' + payment_method.sepa_debit.last4
         return name
+
+    def get_session(self):
+        if self.stripe_customer_id:
+            return stripe.CustomerSession.create(
+                api_key=self.stripe_account.secret_key,
+                customer=self.stripe_customer_id,
+                components={
+                    'payment_element': {
+                        'enabled': True,
+                        'features': self._session_payment_element_features,
+                        },
+                    })
+
+    @property
+    def _session_payment_element_features(self):
+        return {
+            'payment_method_redisplay': 'enabled',
+            'payment_method_save': 'enabled',
+            'payment_method_save_usage': 'on_session',
+            'payment_method_remove': 'enabled',
+            }
 
     @property
     def stripe_setup_intent(self):

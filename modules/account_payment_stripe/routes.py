@@ -15,7 +15,7 @@ logger = logging.getLogger(__name__)
 
 @app.route(
     '/<database_name>/account_payment_stripe/checkout/<model>/<id>',
-    methods=['GET', 'POST'])
+    methods=['GET'])
 @with_pool
 @with_transaction(context={'_skip_warnings': True})
 def checkout(request, pool, model, id):
@@ -33,22 +33,46 @@ def checkout(request, pool, model, id):
                 ])
     except ValueError:
         abort(HTTPStatus.NOT_FOUND)
-    if request.method == 'GET':
-        Report = pool.get('account.payment.stripe.checkout', type='report')
-        # TODO language
-        data = {
-            'model': Model.__name__,
-            }
-        if model == Payment.__name__ and record.stripe_customer_payment_method:
-            data['payment_method'] = record.stripe_customer_payment_method
-        ext, content, _, _ = Report.execute([record.id], data)
-        assert ext == 'html'
-        return Response(content, HTTPStatus.OK, content_type='text/html')
-    elif request.method == 'POST':
-        record.stripe_intent_update()
-        return Response(
-            '<body onload="window.close()">', HTTPStatus.OK,
-            content_type='text/html')
+    customer_session_client_secret = ''
+    if model == Payment.__name__ and record.stripe_customer:
+        if customer_session := record.stripe_customer.get_session():
+            customer_session_client_secret = customer_session.client_secret
+    Report = pool.get('account.payment.stripe.checkout', type='report')
+    # TODO language
+    data = {
+        'model': Model.__name__,
+        'customer_session_client_secret': customer_session_client_secret,
+        'return_url': request.base_url + '/end'
+        }
+    ext, content, _, _ = Report.execute([record.id], data)
+    assert ext == 'html'
+    return Response(content, HTTPStatus.OK, content_type='text/html')
+
+
+@app.route(
+    '/<database_name>/account_payment_stripe/checkout/<model>/<id>/end',
+    methods=['GET'])
+@with_pool
+@with_transaction(readonly=False, context={'_skip_warnings': True})
+def checkout_end(request, pool, model, id):
+    Payment = pool.get('account.payment')
+    Customer = pool.get('account.payment.stripe.customer')
+    if model == Payment.__name__:
+        Model = Payment
+    elif model == Customer.__name__:
+        Model = Customer
+    else:
+        abort(HTTPStatus.FORBIDDEN)
+    try:
+        record, = Model.search([
+                ('stripe_checkout_id', '=', id),
+                ])
+    except ValueError:
+        abort(HTTPStatus.NOT_FOUND)
+    record.stripe_intent_update()
+    return Response(
+        '<body onload="window.close()">', HTTPStatus.OK,
+        content_type='text/html')
 
 
 @app.route(

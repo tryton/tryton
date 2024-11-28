@@ -21,125 +21,64 @@
                 color: #fff;
                 display: block;
                 font-size:2em;
-                margin: 0 auto;
+                margin: 10px auto;
                 padding: 0.5em 1em;
             }
-            .wrapper {
+            form {
                 width: 670px;
                 margin: 0 auto;
                 height: 100%;
             }
-            .StripeElement {
-                background-color: white;
-                border-radius: 4px;
-                border: 1px solid transparent;
-                box-shadow: 0 1px 3px 0 #e6ebf1;
-                box-sizing: border-box;
-                height: 40px;
-                padding: 10px 12px;
-                transition: box-shadow 150ms ease;
-            }
-            .StripeElement--focus {
-                box-shadow: 0 1px 3px 0 #cfd7df;
-            }
-            .StripeElement--invalid {
-                border-color: #fa755a;
-            }
-            .StripeElement--webkit-autofill {
-                background-color: #fefde5 !important;
-            }
-            #card-errors {
+            #payment-errors {
                 padding: 4px 0;
                 color: #fa755a;
             }
         </style>
     </head>
-    <body>
-        <py:for each="record in records[:1]">
-        <py:with vars="intent = record.stripe_intent">
+    <body py:with="intent = record.stripe_intent">
         <h1>${record.party.rec_name}</h1>
-        <div class="wrapper">
-            <form method="POST" id="form">
-                <div>
-                    <py:if test="not data.get('payment_method')">
-                    <label for="card-element">
-                        Credit or debit card
-                    </label>
-                    <div id="card-element">
-                    </div>
-                    </py:if>
-                    <div id="card-errors" role="alert">
-                    </div>
-                </div>
-                <button id="card-button" data-secret="${intent.client_secret}" data-model="${data['model']}">
-                    <py:choose test="data['model']">
-                    <py:when test="'account.payment'">
-                    Pay ${record.currency.symbol}${record.amount}
-                    </py:when>
-                    <py:when test="'account.payment.stripe.customer'">
-                    Register card
-                    </py:when>
-                    </py:choose>
-                </button>
-            </form>
-        </div>
+        <form id="payment-form">
+            <div id="payment-element">
+            </div>
+            <div id="payment-error">
+            </div>
+            <button id="payment-submit" data-model="${data['model']}">
+                Submit
+            </button>
+        </form>
         <script>
-            var stripe = Stripe('${record.stripe_account.publishable_key}');
-            var elements = stripe.elements();
-            var style = {
-                base: {
-                    color: '#32325d',
-                    fontSize: '16px',
-                    '::placeholder': {
-                        color: '#aab7c4'
-                    }
-                },
-                invalid: {
-                    color: '#fa755a',
-                    iconColor: '#fa755a'
-                }
-            };
-            var card;
-            if (document.getElementById('card-element')) {
-                card = elements.create('card', {style: style});
-                card.mount('#card-element');
-
-                card.addEventListener('change', function(event) {
-                    var displayError = document.getElementById('card-errors');
-                    if (event.error) {
-                        displayError.textContent = event.error.message;
-                    } else {
-                        displayError.textContent = '';
-                    }
-                });
-            } else {
-                card = {payment_method: '${data.get('payment_method', '')}'}
-            }
-
-            var cardButton = document.getElementById('card-button');
-            var clientSecret = cardButton.dataset.secret;
-            var model = cardButton.dataset.model;
-            var form = document.getElementById('form');
+            const model = '${data['model']}';
+            const customer_session_client_secret = '${data['customer_session_client_secret']}';
+            const stripe = Stripe('${record.stripe_account.publishable_key}');
+            const elements = stripe.elements({
+                'clientSecret': '${intent.client_secret}',
+                'customerSessionClientSecret': customer_session_client_secret || null,
+            });
+            const paymentElement = elements.create('payment', {
+            });
+            paymentElement.mount('#payment-element');
+            const form = document.getElementById('payment-form');
             form.addEventListener('submit', function(event) {
                 event.preventDefault();
-
-                var prm;
+                const options = {
+                    elements,
+                    confirmParams: {
+                        return_url: '${data['return_url']}',
+                    },
+                }
+                let prm;
                 if (model == 'account.payment.stripe.customer') {
-                    prm = stripe.handleCardSetup(clientSecret, card);
+                   prm  = stripe.confirmSetup(options);
                 } else {
-                    prm = stripe.handleCardPayment(clientSecret, card);
+                   prm = stripe.confirmPayment(options);
                 }
                 prm.then(function(result) {
                     if (result.error) {
-                        var errorElement = document.getElementById('card-errors');
-                        errorElement.textContent = result.error.message;
-                    } else {
-                        form.submit();
+                        const messageContainer = document.getElementById('payment-error');
+                        messageContainer.textContent = result.error.message;
                     }
                 });
             });
         </script>
-        </py:with>
-        </py:for>
     </body>
 </html>

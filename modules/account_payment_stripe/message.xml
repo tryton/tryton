@@ -7,7 +7,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="text">Are you sure you want to modify the keys of the Stripe account?</field>
         </record>
         <record model="ir.message" id="msg_no_stripe_token">
-            <field name="text">To process payment "%(payment)s" you must set a Stripe token or customer.</field>
+            <field name="text">To process payment "%(payment)s" you must set a Stripe token, payment intent or customer.</field>
         </record>
         <record model="ir.message" id="msg_stripe_receivable">
             <field name="text">To pay "%(payment)s", you cannot use a stripe journal "%(journal)s".</field>
