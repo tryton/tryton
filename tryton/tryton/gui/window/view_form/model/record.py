@@ -406,6 +406,7 @@ class Record:
         return self.id
 
     def default_get(self, defaults=None):
+        vals = {}
         if len(self.group.fields):
             context = self.get_context()
             if defaults is not None:
@@ -415,7 +416,7 @@ class Record:
                 vals = RPCExecute('model', self.model_name, 'default_get',
                     list(self.group.fields.keys()), context=context)
             except RPCException:
-                return
+                return vals
             if (self.parent
                     and self.parent_name in self.group.fields):
                 parent_field = self.group.fields[self.parent_name]
