@@ -69,7 +69,8 @@ def send_message(
             logger.error('fail to send email', exc_info=True)
         except smtplib.SMTPResponseException as e:
             if count and 400 <= e.smtp_code <= 499 and hasattr(server, 'uri'):
-                server.quit()
+                if e.smtp_code != 421:
+                    server.quit()
                 server = get_smtp_server(server.uri, strict=strict)
                 if server:
                     continue
