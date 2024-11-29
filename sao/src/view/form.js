@@ -4095,7 +4095,8 @@ function eval_pyson(value){
         },
         set_readonly: function(readonly) {
             Sao.View.Form.Binary._super.set_readonly.call(this, readonly);
-            this.but_select.prop('disabled', readonly);
+            this.but_select.toggleClass('disabled', readonly);
+            this.input_select.toggle(!readonly);
             this.but_clear.prop('disabled', readonly);
             if (this.text) {
                 this.text.prop('readonly', readonly);
