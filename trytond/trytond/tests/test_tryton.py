@@ -432,12 +432,18 @@ class ModuleTestCase(_DBTestCase):
                         directory, 'view', view.name + '.xml'))
             if not view.model:
                 continue
-            with self.subTest(view=view):
+            name = view.name
+            while not name or not view:
+                if view.model:
+                    name = f'{view.model} ({view.type})'
+                else:
+                    view = view.inherit
+            with self.subTest(view=name):
                 if not view.inherit or view.inherit.model == view.model:
                     self.assertTrue(view.arch,
                         msg='missing architecture for view "%(name)s" '
                         'of model "%(model)s"' % {
-                            'name': view.name or str(view.id),
+                            'name': name,
                             'model': view.model,
                             })
                 if view.inherit and view.inherit.model == view.model:
