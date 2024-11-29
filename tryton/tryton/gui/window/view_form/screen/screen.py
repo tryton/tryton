@@ -800,6 +800,9 @@ class Screen:
             record.group.remove(
                 record, remove=remove, modified=False,
                 force_remove=force_remove)
+        # set current_record to None to prevent __select_changed
+        # to set deleted record as current_record
+        self.current_record = None
         # call only once
         record.set_modified()
 
