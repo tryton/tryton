@@ -738,7 +738,7 @@ class _BinarySelect(_BinaryIcon):
         invisible = field.get_state_attrs(record).get('invisible', False)
         readonly = self.attrs.get('readonly',
             field.get_state_attrs(record).get('readonly', False))
-        if readonly and size:
+        if readonly or size:
             cell.set_property('visible', False)
         else:
             cell.set_property('visible', not invisible)
