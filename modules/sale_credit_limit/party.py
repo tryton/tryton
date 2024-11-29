@@ -40,9 +40,13 @@ class Party(metaclass=PoolMeta):
                         continue
                     invoice = invoice_line.invoice
                     if invoice and invoice.move:
-                        quantity -= Uom.compute_qty(
-                            invoice_line.unit, invoice_line.quantity,
-                            line.unit, round=False)
+                        if line.unit:
+                            quantity -= Uom.compute_qty(
+                                invoice_line.unit or line.unit,
+                                invoice_line.quantity,
+                                line.unit, round=False)
+                        else:
+                            quantity -= invoice_line.quantity
                 amount += Currency.compute(
                     sale.currency,
                     Decimal(str(quantity)) * line.unit_price, currency,
