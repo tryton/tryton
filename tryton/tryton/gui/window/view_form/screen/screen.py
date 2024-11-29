@@ -773,6 +773,9 @@ class Screen(SignalEvent):
             self.current_record = None
             record.group.remove(record, remove=remove, signal=False,
                 force_remove=force_remove)
+        # set current_record to None to prevent __select_changed
+        # to set deleted record as current_record
+        self.current_record = None
         # send record-changed only once
         record.signal('record-changed')
 
