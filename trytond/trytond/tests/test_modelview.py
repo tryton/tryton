@@ -184,7 +184,7 @@ class ModelView(unittest.TestCase):
         Model = pool.get('test.modelview.changed_values')
         Target = pool.get('test.modelview.changed_values.target')
 
-        record = Model(targets=[], m2m_targets=[], m2m_function=[])
+        record = Model(id=-1, targets=[], m2m_targets=[], m2m_function=[])
 
         self.assertEqual(record._changed_values, {})
 
@@ -207,7 +207,7 @@ class ModelView(unittest.TestCase):
                 'dictionary': {'key': 'value'},
                 })
 
-        record = Model(name='test', target=1, targets=[
+        record = Model(id=-1, name='test', target=1, targets=[
                 {'id': 1, 'name': 'foo'},
                 {'id': 2},
                 ],
@@ -242,7 +242,7 @@ class ModelView(unittest.TestCase):
                 })
 
         # change only one2many record
-        record = Model(targets=[{'id': 1, 'name': 'foo'}])
+        record = Model(id=-1, targets=[{'id': 1, 'name': 'foo'}])
         self.assertEqual(record._changed_values, {})
 
         target, = record.targets
@@ -255,7 +255,7 @@ class ModelView(unittest.TestCase):
                 })
 
         # no initial value
-        record = Model(targets=[], m2m_targets=[], m2m_function=[])
+        record = Model(id=-1, targets=[], m2m_targets=[], m2m_function=[])
         record._values = record._record()
         target = Target(id=1)
         record._values['targets'] = [target]
@@ -264,6 +264,34 @@ class ModelView(unittest.TestCase):
                 'targets': {
                     'add': [(0, {'id': 1, 'name': 'foo'})],
                     },
+                })
+
+    @with_transaction()
+    def test_changed_values_with_no_id(self):
+        "Test changed values with no id"
+        pool = Pool()
+        Model = pool.get('test.modelview.changed_values')
+        Target = pool.get('test.modelview.changed_values.target')
+
+        record = Model(
+            name='foo',
+            target=Target(1),
+            ref_target=Target(2),
+            targets=[Target(name='bar')],
+            multiselection=['a'],
+            dictionary={'key': 'value'})
+
+        self.assertEqual(record._changed_values, {
+                'name': 'foo',
+                'target': 1,
+                'ref_target': 'test.modelview.changed_values.target,2',
+                'targets': {
+                    'add': [
+                        (0, {'id': None, 'name': 'bar'}),
+                        ],
+                    },
+                'multiselection': ('a',),
+                'dictionary': {'key': 'value'},
                 })
 
     @with_transaction()
@@ -314,7 +342,7 @@ class ModelView(unittest.TestCase):
         Target = pool.get('test.modelview.changed_values.target')
 
         target = Target(1)
-        record = Model(targets=[target])
+        record = Model(id=-1, targets=[target])
         Model.targets.remove(record, [target])
 
         self.assertEqual(record._changed_values, {
@@ -331,7 +359,7 @@ class ModelView(unittest.TestCase):
         Target = pool.get('test.modelview.changed_values.target')
 
         target = Target(1)
-        record = Model(m2m_targets=[target])
+        record = Model(id=-1, m2m_targets=[target])
         Model.m2m_targets.delete(record, [target])
 
         self.assertEqual(record._changed_values, {
