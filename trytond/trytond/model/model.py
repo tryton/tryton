@@ -284,6 +284,8 @@ class Model(URLMixin, PoolBase, metaclass=ModelMeta):
             id = int(id)
         self._id = id
         self._deleted = self._removed = None
+        self._values = None
+        self._init_values = None
         if kwargs:
             self._values = self._record()
             parent_values = defaultdict(dict)
@@ -305,10 +307,8 @@ class Model(URLMixin, PoolBase, metaclass=ModelMeta):
             # to ensure it was evaluated with all the fields
             for name, value in has_context.items():
                 setattr(self, name, value)
-            self._init_values = self._values._copy()
-        else:
-            self._values = None
-            self._init_values = None
+            if id is not None:
+                self._init_values = self._values._copy()
 
     def __copy__(self):
         copied = self.__class__(self.id)

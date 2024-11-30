@@ -870,7 +870,9 @@ class ModelView(Model):
                         value = value.id
             elif field._type in ['one2many', 'many2many']:
                 targets = value
-                if fname in init_values:
+                if self.id is None:
+                    init_targets = []
+                elif fname in init_values:
                     init_targets = init_values._get(fname)
                 elif isinstance(field, fields.Function):
                     init_targets = []
@@ -898,14 +900,7 @@ class ModelView(Model):
                                     value['update'].append(target_changed)
                         else:
                             if isinstance(target, ModelView):
-                                # Ensure initial values are returned because
-                                # target was instantiated on server side.
-                                target_init_values = target._init_values
-                                target._init_values = None
-                                try:
-                                    added_values = target._changed_values()
-                                finally:
-                                    target._init_values = target_init_values
+                                added_values = target._changed_values()
                             else:
                                 added_values = target._default_values
                             added_values['id'] = target.id
