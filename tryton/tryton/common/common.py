@@ -1556,7 +1556,7 @@ def setup_window(window):
 
 def play_sound(self, sound='success'):
     try:
-        from playsound import playsound
+        from playsound3 import playsound
         playsound(os.path.join(SOUNDS_DIR, f'{sound}.wav'))
     except ImportError:
         pass
