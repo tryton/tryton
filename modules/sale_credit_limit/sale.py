@@ -13,7 +13,10 @@ class Sale(metaclass=PoolMeta):
     @property
     def credit_limit_amount(self):
         "Amount to check against credit limit"
-        return self.untaxed_amount
+        pool = Pool()
+        Currency = pool.get('currency.currency')
+        return Currency.compute(
+            self.currency, self.untaxed_amount, self.company.currency)
 
     @classmethod
     @ModelView.button
