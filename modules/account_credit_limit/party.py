@@ -56,6 +56,9 @@ class Party(metaclass=PoolMeta):
         Lang = pool.get('ir.lang')
         Warning = pool.get('res.user.warning')
 
+        if amount <= 0:
+            return
+
         credit_limit_amount = self.get_multivalue(
             'credit_limit_amount', company=company.id)
         if credit_limit_amount is None:
