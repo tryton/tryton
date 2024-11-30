@@ -382,7 +382,6 @@ class FormXMLViewParser(XMLViewParser):
         group = Container.constructor(
             int(attributes.get('col', 4)),
             attributes.get('homogeneous', False))
-        self.parse_child(node, group)
 
         if 'name' in attributes and attributes['name'] == self.exclude_field:
             self.container.add(None, attributes)
@@ -406,6 +405,9 @@ class FormXMLViewParser(XMLViewParser):
                 bool(attributes.get('yexpand'))))
         self.view.state_widgets.append(widget)
         self.container.add(widget, attributes)
+        # Parse the children at the end to preserve the order of the state
+        # widgets
+        self.parse_child(node, group)
 
     def _parse_hpaned(self, node, attributes):
         self._parse_paned(node, attributes, Gtk.HPaned)
