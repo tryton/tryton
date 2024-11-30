@@ -85,7 +85,7 @@ class Party(metaclass=PoolMeta):
                         '.msg_party_credit_limit_amount',
                         party=self.rec_name,
                         limit=limit))
-            warning_name = 'credit_limit_amount_%s' % origin
+            warning_name = Warning.format('credit_limit_amount', [origin])
             if Warning.check(warning_name):
                 raise CreditLimitWarning(warning_name,
                     gettext('account_credit_limit'
@@ -107,7 +107,7 @@ class Party(metaclass=PoolMeta):
                             '.msg_party_credit_limit_dunning',
                             party=self.rec_name,
                             dunning=dunning.rec_name))
-                warning_name = 'credit_limit_dunning_%s' % origin
+                warning_name = Warning.format('credit_limit_dunning', [origin])
                 if Warning.check(warning_name):
                     raise CreditLimitWarning(warning_name,
                         gettext('account_credit_limit'
