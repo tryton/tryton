@@ -63,24 +63,24 @@ class AccountCreditLimitTestCase(CompanyTestMixin, ModuleTestCase):
                         }])
             self.assertEqual(party.credit_amount, Decimal(100))
             self.assertEqual(party.credit_limit_amount, None)
-            party.check_credit_limit(Decimal(0))
-            party.check_credit_limit(Decimal(0), 'test')
-            party.check_credit_limit(Decimal(100))
-            party.check_credit_limit(Decimal(100), 'test')
+            party.check_credit_limit(Decimal(0), company)
+            party.check_credit_limit(Decimal(0), company, 'test')
+            party.check_credit_limit(Decimal(100), company)
+            party.check_credit_limit(Decimal(100), company, 'test')
             party.credit_limit_amount = Decimal(0)
             party.save()
             self.assertRaises(UserError, party.check_credit_limit,
-                Decimal(0))
+                Decimal(0), company)
             self.assertRaises(UserWarning, party.check_credit_limit,
-                Decimal(0), 'test')
+                Decimal(0), company, 'test')
             party.credit_limit_amount = Decimal(200)
             party.save()
-            party.check_credit_limit(Decimal(0))
-            party.check_credit_limit(Decimal(0), 'test')
+            party.check_credit_limit(Decimal(0), company)
+            party.check_credit_limit(Decimal(0), company, 'test')
             self.assertRaises(UserError, party.check_credit_limit,
-                Decimal(150))
+                Decimal(150), company)
             self.assertRaises(UserWarning, party.check_credit_limit,
-                Decimal(150), 'test')
+                Decimal(150), company, 'test')
 
 
 del ModuleTestCase

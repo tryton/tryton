@@ -39,7 +39,7 @@ class Party(metaclass=PoolMeta):
         'Return models to lock when checking credit limit'
         return ['account.move.line']
 
-    def check_credit_limit(self, amount, origin=None):
+    def check_credit_limit(self, amount, company, origin=None):
         '''
         Check if amount will not reach credit limit for party
         If origin is set and user is in group credit_limit then a warning will
@@ -53,16 +53,13 @@ class Party(metaclass=PoolMeta):
             Dunning = None
         User = pool.get('res.user')
         Group = pool.get('res.group')
-        Company = pool.get('company.company')
         Lang = pool.get('ir.lang')
         Warning = pool.get('res.user.warning')
 
-        if self.credit_limit_amount is None:
+        credit_limit_amount = self.get_multivalue(
+            'credit_limit_amount', company=company.id)
+        if credit_limit_amount is None:
             return
-        company_id = Transaction().context.get('company')
-        if company_id is None or company_id < 0:
-            return
-        company = Company(company_id)
 
         def in_group():
             group = Group(ModelData.get_id('account_credit_limit',

@@ -23,7 +23,7 @@ class Sale(metaclass=PoolMeta):
             if sale.must_check_credit_limit():
                 party = sale.invoice_party or sale.party
                 party.check_credit_limit(
-                    sale.credit_limit_amount, origin=str(sale))
+                    sale.credit_limit_amount, sale.company, origin=str(sale))
         super(Sale, cls).confirm(sales)
 
 
