@@ -181,7 +181,6 @@ function eval_pyson(value){
             var group = new Sao.View.Form.Container(
                 Number(node.getAttribute('col') || 4));
             this.view.containers.push(group);
-            this.parse_child(node, group);
 
             if (attributes.xalign === undefined) {
                 attributes.xalign = 0.5;
@@ -206,6 +205,9 @@ function eval_pyson(value){
 
             this.view.state_widgets.push(widget);
             this.container.add(widget, attributes);
+            // Parse the children at the end to preserve the order of the state
+            // widgets
+            this.parse_child(node, group);
         },
         _parse_hpaned: function(node, attributes) {
             this._parse_paned(node, attributes, 'horizontal');
