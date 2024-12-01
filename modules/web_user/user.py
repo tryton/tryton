@@ -1,13 +1,10 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import datetime
-import hashlib
 import logging
 import random
-import string
 import time
 import urllib.parse
-import warnings
 from secrets import token_hex
 
 try:
@@ -233,63 +230,12 @@ class User(avatar_mixin(100), DeactivableMixin, ModelSQL, ModelView):
         '''Hash given password in the form
         <hash_method>$<password>$<salt>...'''
         if not password:
-            return ''
+            return None
         return PASSWORD_HASH.hash(password)
 
     @classmethod
     def check_password(cls, password, hash_):
-        if not hash_:
-            return False, None
-        try:
-            return PASSWORD_HASH.verify_and_update(password, hash_)
-        except ValueError:
-            hash_method = hash_.split('$', 1)[0]
-            warnings.warn(
-                "Use deprecated hash method %s" % hash_method,
-                DeprecationWarning)
-            valid = getattr(cls, 'check_' + hash_method)(password, hash_)
-            if valid:
-                new_hash = PASSWORD_HASH.hash(password)
-            else:
-                new_hash = None
-            return valid, new_hash
-
-    @classmethod
-    def hash_sha1(cls, password):
-        salt = ''.join(random.sample(string.ascii_letters + string.digits, 8))
-        salted_password = password + salt
-        if isinstance(salted_password, str):
-            salted_password = salted_password.encode('utf-8')
-        hash_ = hashlib.sha1(salted_password).hexdigest()
-        return '$'.join(['sha1', hash_, salt])
-
-    @classmethod
-    def check_sha1(cls, password, hash_):
-        if isinstance(password, str):
-            password = password.encode('utf-8')
-        hash_method, hash_, salt = hash_.split('$', 2)
-        salt = salt or ''
-        if isinstance(salt, str):
-            salt = salt.encode('utf-8')
-        assert hash_method == 'sha1'
-        return hash_ == hashlib.sha1(password + salt).hexdigest()
-
-    @classmethod
-    def hash_bcrypt(cls, password):
-        if isinstance(password, str):
-            password = password.encode('utf-8')
-        hash_ = bcrypt.hashpw(password, bcrypt.gensalt()).decode('utf-8')
-        return '$'.join(['bcrypt', hash_])
-
-    @classmethod
-    def check_bcrypt(cls, password, hash_):
-        if isinstance(password, str):
-            password = password.encode('utf-8')
-        hash_method, hash_ = hash_.split('$', 1)
-        if isinstance(hash_, str):
-            hash_ = hash_.encode('utf-8')
-        assert hash_method == 'bcrypt'
-        return hash_ == bcrypt.hashpw(password, hash_)
+        return PASSWORD_HASH.verify_and_update(password, hash_)
 
     def new_session(self):
         pool = Pool()
