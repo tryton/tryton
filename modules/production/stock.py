@@ -50,7 +50,7 @@ class Move(metaclass=PoolMeta):
         domain=[
             ('company', '=', Eval('company', -1)),
             If(Eval('production_output', None),
-                ('production_input', '=', None),
+                ('id', '=', None),
                 ()),
             ],
         states={
@@ -61,7 +61,7 @@ class Move(metaclass=PoolMeta):
         domain=[
             ('company', '=', Eval('company', -1)),
             If(Eval('production_input', None),
-                ('production_output', '=', None),
+                ('id', '=', None),
                 ()),
             ],
         states={
