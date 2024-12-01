@@ -24,20 +24,13 @@ from functools import wraps
 from itertools import groupby
 from operator import attrgetter
 
-from passlib.context import CryptContext
+import bcrypt
+import pwdlib
+import pwdlib.hashers.argon2
 from sql import Literal, Null
 from sql.aggregate import Count
 from sql.conditionals import Case
 from sql.functions import CurrentTimestamp
-
-try:
-    import bcrypt
-except ImportError:
-    bcrypt = None
-try:
-    import argon2
-except ImportError:
-    argon2 = None
 
 from trytond.cache import Cache
 from trytond.config import config
@@ -63,17 +56,15 @@ logger = logging.getLogger(__name__)
 _has_password = 'password' in re.split('[,+]', config.get(
     'session', 'authentications', default='password'))
 
-passlib_path = config.get('password', 'passlib')
-if passlib_path:
-    CRYPT_CONTEXT = CryptContext.from_path(passlib_path)
-else:
-    schemes = ['pbkdf2_sha512']
-    if bcrypt:
-        schemes.insert(0, 'bcrypt')
-    schemes.insert(0, 'scrypt')
-    if argon2:
-        schemes.insert(0, 'argon2')
-    CRYPT_CONTEXT = CryptContext(schemes=schemes)
+PASSWORD_HASH = pwdlib.PasswordHash([
+        pwdlib.hashers.argon2.Argon2Hasher(),
+        ])
+
+try:
+    import pwdlib.hashers.bcrypt
+    PASSWORD_HASH.hashers.append(pwdlib.hashers.bcrypt.BcryptHasher())
+except pwdlib.exceptions.HasherNotAvailable:
+    pass
 
 
 def gen_password(length=8):
@@ -780,14 +771,14 @@ class User(avatar_mixin(100, 'login'), DeactivableMixin, ModelSQL, ModelView):
         <hash_method>$<password>$<salt>...'''
         if not password:
             return None
-        return CRYPT_CONTEXT.hash(password)
+        return PASSWORD_HASH.hash(password)
 
     @classmethod
     def check_password(cls, password, hash_):
         if not hash_:
             return False
         try:
-            return CRYPT_CONTEXT.verify_and_update(password, hash_)
+            return PASSWORD_HASH.verify_and_update(password, hash_)
         except ValueError:
             hash_method = hash_.split('$', 1)[0]
             warnings.warn(
@@ -795,7 +786,7 @@ class User(avatar_mixin(100, 'login'), DeactivableMixin, ModelSQL, ModelView):
                 DeprecationWarning)
             valid = getattr(cls, 'check_' + hash_method)(password, hash_)
             if valid:
-                new_hash = CRYPT_CONTEXT.hash(password)
+                new_hash = PASSWORD_HASH.hash(password)
             else:
                 new_hash = None
             return valid, new_hash

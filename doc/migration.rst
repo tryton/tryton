@@ -25,6 +25,9 @@ Before
      ALTER TABLE IF EXISTS "ir_model" RENAME COLUMN "model" TO "name";
      ALTER TABLE IF EXISTS "ir_model_field" RENAME COLUMN "field_description" TO "string";
 
+* ``pbkdf2_sha512`` and ``scrypt`` password hashes are no more supported.
+  Make sure to enable ``argon2`` and update old passwords by logging in.
+
 After
 ~~~~~
 

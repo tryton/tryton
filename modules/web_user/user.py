@@ -32,7 +32,7 @@ from trytond.model import (
 from trytond.pool import Pool
 from trytond.pyson import Eval
 from trytond.report import Report, get_email
-from trytond.res.user import CRYPT_CONTEXT, LoginAttempt
+from trytond.res.user import PASSWORD_HASH, LoginAttempt
 from trytond.sendmail import send_message_transactional
 from trytond.tools.email_ import (
     EmailNotValidError, normalize_email, set_from_header, validate_email)
@@ -234,14 +234,14 @@ class User(avatar_mixin(100), DeactivableMixin, ModelSQL, ModelView):
         <hash_method>$<password>$<salt>...'''
         if not password:
             return ''
-        return CRYPT_CONTEXT.hash(password)
+        return PASSWORD_HASH.hash(password)
 
     @classmethod
     def check_password(cls, password, hash_):
         if not hash_:
             return False, None
         try:
-            return CRYPT_CONTEXT.verify_and_update(password, hash_)
+            return PASSWORD_HASH.verify_and_update(password, hash_)
         except ValueError:
             hash_method = hash_.split('$', 1)[0]
             warnings.warn(
@@ -249,7 +249,7 @@ class User(avatar_mixin(100), DeactivableMixin, ModelSQL, ModelView):
                 DeprecationWarning)
             valid = getattr(cls, 'check_' + hash_method)(password, hash_)
             if valid:
-                new_hash = CRYPT_CONTEXT.hash(password)
+                new_hash = PASSWORD_HASH.hash(password)
             else:
                 new_hash = None
             return valid, new_hash
