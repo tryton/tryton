@@ -1251,7 +1251,7 @@ class Wizard(object):
             if 'view' in result:
                 view = result['view']
                 self.form = Model.get(
-                    view['fields_view']['model'], self._config)()
+                    view['fields_view']['model'], self._config)(_default=False)
                 if 'defaults' in view:
                     self.form._default_set(view['defaults'])
                 if 'values' in view:
