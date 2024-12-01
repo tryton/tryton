@@ -1367,7 +1367,7 @@ class TranslationClean(Wizard):
             if (not hasattr(field, 'translate')
                     or not field.translate):
                 return True
-        elif field_name not in ('name'):
+        elif field_name != 'string':
             return True
 
     @staticmethod
