@@ -80,6 +80,8 @@ Class methods are:
 
    Returns the content of the `Report <model-ir.action.report>` rendered by the
    templating engine.
+   And add ``gettext`` and ``ngettext`` to the evaluation context for
+   translatable reports.
 
 .. classmethod:: Report.convert(report, data, [timeout[, retry]])
 
