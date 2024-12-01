@@ -73,6 +73,8 @@ Class methods are:
       - :meth:`~Report.barcode`
       - :meth:`~Report.qrcode`
       - ``set_lang``
+      - :meth:`~trytond.i18n.gettext` as ``msg_gettext``
+      - :meth:`~trytond.i18n.ngettext` as ``msg_ngettext``
 
 .. classmethod:: Report.render(report, report_context)
 

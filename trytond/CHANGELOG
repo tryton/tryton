@@ -1,3 +1,4 @@
+* Add msg_gettext and msg_ngettext to Report context
 * Support plural translation of messages
 * Support plural translations in report
 * Add plural source to translations

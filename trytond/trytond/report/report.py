@@ -34,7 +34,7 @@ from genshi.filters import Translator
 from genshi.template.text import TextTemplate
 
 from trytond.config import config
-from trytond.i18n import gettext
+from trytond.i18n import gettext, ngettext
 from trytond.model.exceptions import AccessError
 from trytond.pool import Pool, PoolBase
 from trytond.rpc import RPC
@@ -368,6 +368,8 @@ class Report(URLMixin, PoolBase):
                 language = language.code
             Transaction().set_context(language=language)
         report_context['set_lang'] = set_lang
+        report_context['msg_gettext'] = gettext
+        report_context['msg_ngettext'] = ngettext
 
         return report_context
 
