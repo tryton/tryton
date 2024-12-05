@@ -3,7 +3,7 @@
 this repository contains the full copyright notices and license terms. -->
 <form>
     <label name="coupon"/>
-    <field name="coupon"/>
+    <field name="coupon" create="0"/>
     <label name="company"/>
     <field name="company"/>
 
