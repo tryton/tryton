@@ -41,7 +41,6 @@ class ContextError(ValidationError):
     pass
 
 
-EMAIL_REFKEYS = set(('cc', 'to', 'subject'))
 ACTION_SELECTION = [
     ('ir.action.report', "Report"),
     ('ir.action.act_window', "Window"),
