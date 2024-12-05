@@ -33,10 +33,11 @@ this repository contains the full copyright notices and license terms. -->
     <field name="quantity"/>
     <label name="unit"/>
     <field name="unit"/>
-    <newline/>
 
-    <group id="categories_products" col="-1" colspan="6" yexpand="1">
-        <field name="categories"/>
-        <field name="products" view_ids="product.product_view_tree_simple"/>
-    </group>
+    <notebook colspan="6">
+        <page id="products" string="Products">
+            <field name="categories" colspan="2"/>
+            <field name="products" colspan="2" view_ids="product.product_view_tree_simple"/>
+        </page>
+    </notebook>
 </form>

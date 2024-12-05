@@ -2,7 +2,9 @@
 <!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
 this repository contains the full copyright notices and license terms. -->
 <data>
-    <xpath expr="//field[@name='products']" position="after">
-        <field name="coupons"/>
+    <xpath expr="//page[@id='products']" position="after">
+        <page name="coupons">
+            <field name="coupons" mode="form,tree"/>
+        </page>
     </xpath>
 </data>
