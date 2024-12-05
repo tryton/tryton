@@ -263,3 +263,26 @@ class FieldDependsTestCase(TestCase):
                 ]:
             with self.subTest(value=value):
                 self.assertEqual(fields.get_eval_fields(value), result)
+
+    def test_depends_function_getter(self):
+        "Tests depends on Function field with on_change_with getter"
+
+        class Model(ModelView):
+            __name__ = 'test.modelview.function_getter_depends'
+
+            test = fields.Char("Test")
+            foo = fields.Function(fields.Char("Foo"), 'on_change_with_foo')
+            bar = fields.Char("Bar")
+
+            @fields.depends('foo')
+            def on_change_test(self):
+                pass
+
+            @fields.depends('bar')
+            def on_change_with_foo(self, name=None):
+                pass
+
+        Model.__setup__()
+        Model.__post_setup__()
+
+        self.assertEqual(Model.test.on_change, {'foo', 'bar'})
