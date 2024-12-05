@@ -4,7 +4,6 @@ this repository contains the full copyright notices and license terms. -->
 <tree>
     <field name="company" expand="1" optional="1"/>
     <field name="promotion" expand="1"/>
-    <field name="name" expand="1"/>
     <field name="number_of_use"/>
     <field name="per_party"/>
 </tree>

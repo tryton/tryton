@@ -56,7 +56,7 @@ Create Promotion with coupon::
     >>> Promotion = Model.get('sale.promotion')
     >>> promotion = Promotion(name="10%")
     >>> promotion.formula = '0.9 * unit_price'
-    >>> coupon = promotion.coupons.new(name="Promo")
+    >>> coupon = promotion.coupons.new()
     >>> coupon.number_of_use = 0
     >>> number = coupon.numbers.new(number="CODE10")
     >>> promotion.save()

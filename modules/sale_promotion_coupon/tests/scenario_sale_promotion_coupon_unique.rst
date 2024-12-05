@@ -27,7 +27,7 @@ Create a promotion with coupon::
 
     >>> promotion1 = Promotion(name="Promotion 1")
     >>> promotion1.formula = 'unit_price'
-    >>> coupon = promotion1.coupons.new(name="Coupon 1")
+    >>> coupon = promotion1.coupons.new()
     >>> number = coupon.numbers.new(number="TEST", start_date=None)
     >>> promotion1.save()
 
@@ -35,7 +35,7 @@ Try to create a second promotion with same coupon number::
 
     >>> promotion2 = Promotion(name="Promotion 2")
     >>> promotion2.formula = 'unit_price'
-    >>> coupon = promotion2.coupons.new(name="Coupon 2")
+    >>> coupon = promotion2.coupons.new()
     >>> number = coupon.numbers.new(number="TEST")
     >>> promotion2.save()
     Traceback (most recent call last):

@@ -68,7 +68,6 @@ class Promotion(metaclass=PoolMeta):
 class PromotionCoupon(ModelSQL, ModelView):
     __name__ = 'sale.promotion.coupon'
 
-    name = fields.Char("Name", required=True)
     number_of_use = fields.Integer(
         "Number of Use", required=True,
         help="How much times a coupon number can be used.\n"
@@ -116,6 +115,9 @@ class PromotionCoupon(ModelSQL, ModelView):
                             promotion.company,
                             where=promotion.id == table.promotion)]))
 
+        # Migration from 7.4: remove name
+        table_h.not_null_action('name', 'remove')
+
     @classmethod
     def default_company(cls):
         return Transaction().context.get('company')
@@ -127,6 +129,13 @@ class PromotionCoupon(ModelSQL, ModelView):
     @classmethod
     def default_per_party(cls):
         return False
+
+    def get_rec_name(self, name):
+        return self.promotion.rec_name
+
+    @classmethod
+    def search_rec_name(cls, name, clause):
+        return [('promotion.rec_name', *clause[1:])]
 
 
 class PromotionCouponNumber(DeactivableMixin, ModelSQL, ModelView):
