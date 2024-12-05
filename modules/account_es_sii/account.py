@@ -484,7 +484,7 @@ class InvoiceSII(ModelSQL, ModelView):
                     'Repercutida' if invoice.type == 'out' else 'Soportada')),
             ('sii_key', tax.es_sii_tax_key or ''),
             ('operation_key', tax.es_sii_operation_key or ''),
-            ('excluded', tax.es_exclude_from_sii),
+            ('excluded', bool(tax.es_exclude_from_sii)),
             ('product_key', product_type),
             )
 
