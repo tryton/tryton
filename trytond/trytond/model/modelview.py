@@ -150,6 +150,17 @@ class ModelView(Model):
 
             meth_names = list(methods['depend_methods'][function_name])
             meth_done = set()
+
+            for depend in getattr(field, attribute):
+                if '.' in depend:
+                    depend, _ = depend.split('.', 1)
+                if depend.startswith('_parent_'):
+                    depend = depend[len('_parent_'):]
+                if dep_field := getattr(cls, depend, None):
+                    if (isinstance(dep_field, fields.Function)
+                            and dep_field.getter.startswith('on_change_with')):
+                        meth_names.append(dep_field.getter)
+
             while meth_names:
                 meth_name = meth_names.pop()
                 method = getattr(cls, meth_name)
