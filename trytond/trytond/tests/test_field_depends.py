@@ -223,7 +223,6 @@ class FieldDependsTestCase(TestCase):
         "Tests depends on a property"
 
         class Model(ModelView):
-            "ModelView Property Depends"
             __name__ = 'test.modelview.property_depends'
 
             foo = fields.Char("Foo")
