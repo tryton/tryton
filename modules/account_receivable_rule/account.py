@@ -156,7 +156,7 @@ class AccountRuleAbstract(DeactivableMixin, ModelSQL, ModelView):
                     moves.append(self._move_overflow(amount, party))
         return moves
 
-    def _reconcile(self, line, amount, delegate=None):
+    def _reconcile(self, line, amount, delegate=None, date=None):
         pool = Pool()
         Date = pool.get('ir.date')
         Move = pool.get('account.move')
@@ -164,8 +164,9 @@ class AccountRuleAbstract(DeactivableMixin, ModelSQL, ModelView):
         Period = pool.get('account.period')
         debit, credit = self._debit_credit(amount)
 
-        with Transaction().set_context(company=self.company.id):
-            date = Date.today()
+        if date is None:
+            with Transaction().set_context(company=self.company.id):
+                date = Date.today()
         period = Period.find(self.company, date=date)
 
         move = Move(
@@ -213,7 +214,7 @@ class AccountRuleAbstract(DeactivableMixin, ModelSQL, ModelView):
             [line, lines[1]], delegate_to=lines[-1] if delegate else None)
         return move
 
-    def _move_overflow(self, amount, party):
+    def _move_overflow(self, amount, party, date=None):
         pool = Pool()
         Date = pool.get('ir.date')
         Line = pool.get('account.move.line')
@@ -221,8 +222,9 @@ class AccountRuleAbstract(DeactivableMixin, ModelSQL, ModelView):
         Period = pool.get('account.period')
         debit, credit = self._debit_credit(amount)
 
-        with Transaction().set_context(company=self.company.id):
-            date = Date.today()
+        if date is None:
+            with Transaction().set_context(company=self.company.id):
+                date = Date.today()
         period = Period.find(self.company, date=date)
 
         lines = [
