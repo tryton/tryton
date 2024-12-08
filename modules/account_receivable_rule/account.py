@@ -158,12 +158,20 @@ class AccountRuleAbstract(DeactivableMixin, ModelSQL, ModelView):
 
     def _reconcile(self, line, amount, delegate=None):
         pool = Pool()
+        Date = pool.get('ir.date')
         Move = pool.get('account.move')
         Line = pool.get('account.move.line')
+        Period = pool.get('account.period')
         debit, credit = self._debit_credit(amount)
+
+        with Transaction().set_context(company=self.company.id):
+            date = Date.today()
+        period = Period.find(self.company, date=date)
 
         move = Move(
             journal=self.journal,
+            period=period,
+            date=date,
             origin=self,
             company=self.company,
             )
@@ -207,9 +215,15 @@ class AccountRuleAbstract(DeactivableMixin, ModelSQL, ModelView):
 
     def _move_overflow(self, amount, party):
         pool = Pool()
+        Date = pool.get('ir.date')
         Line = pool.get('account.move.line')
         Move = pool.get('account.move')
+        Period = pool.get('account.period')
         debit, credit = self._debit_credit(amount)
+
+        with Transaction().set_context(company=self.company.id):
+            date = Date.today()
+        period = Period.find(self.company, date=date)
 
         lines = [
             Line(
@@ -227,6 +241,8 @@ class AccountRuleAbstract(DeactivableMixin, ModelSQL, ModelView):
             ]
         move = Move(
             journal=self.journal,
+            period=period,
+            date=date,
             origin=self,
             company=self.company,
             lines=lines
