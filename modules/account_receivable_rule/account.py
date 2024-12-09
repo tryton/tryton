@@ -136,27 +136,57 @@ class AccountRuleAbstract(DeactivableMixin, ModelSQL, ModelView):
         moves = []
         for rule in rules:
             moves.extend(rule._apply())
-        Move.save(moves)
         Move.post(moves)
 
     def _apply(self):
+        pool = Pool()
+        Move = pool.get('account.move')
+        Line = pool.get('account.move.line')
+
         moves = []
+        lines = []
+        to_reconcile = []
+        to_reconcile_delegate = []
         for party, amount in self._amounts():
             for line in self._lines_to_reconcile(party):
                 line_amount = -self._amount(line)
                 account_rule = self.get_account_rule(line.account)
                 if line_amount <= amount:
-                    moves.append(self._reconcile(line, line_amount))
+                    move, m_lines, reconcile, delegate_to = self._reconcile(
+                        line, line_amount)
+                    moves.append(move)
+                    lines.extend(m_lines)
+                    if reconcile:
+                        if delegate_to:
+                            to_reconcile_delegate.append(
+                                (reconcile, delegate_to))
+                        else:
+                            to_reconcile.append(reconcile)
                     amount -= line_amount
                     if amount > 0:
                         continue
                 elif not account_rule.only_reconcile:
-                    moves.append(self._reconcile(
-                            line, amount, delegate=line_amount - amount))
+                    move, m_lines, reconcile, delegate_to = self._reconcile(
+                        line, amount, delegate=line_amount - amount)
+                    moves.append(move)
+                    lines.extend(m_lines)
+                    if reconcile:
+                        if delegate_to:
+                            to_reconcile_delegate.append(
+                                (reconcile, delegate_to))
+                        else:
+                            to_reconcile.append(reconcile)
                 break
             else:
                 if amount > 0 and self.overflow_account:
-                    moves.append(self._move_overflow(amount, party))
+                    move, m_lines = self._move_overflow(amount, party)
+                    moves.append(move)
+                    lines.extend(m_lines)
+        Move.save(moves)
+        Line.save(lines)
+        Line.reconcile(*to_reconcile)
+        for lines, delegate_to in to_reconcile_delegate:
+            Line.reconcile(lines, delegate_to=delegate_to)
         return moves
 
     def _reconcile(self, line, amount, delegate=None, date=None):
@@ -179,7 +209,6 @@ class AccountRuleAbstract(DeactivableMixin, ModelSQL, ModelView):
             origin=self,
             company=self.company,
             )
-        move.save()
 
         lines = [
             Line(
@@ -211,11 +240,7 @@ class AccountRuleAbstract(DeactivableMixin, ModelSQL, ModelView):
                     maturity_date=line.maturity_date,
                     ),
                 )
-
-        Line.save(lines)
-        Line.reconcile(
-            [line, lines[1]], delegate_to=lines[-1] if delegate else None)
-        return move
+        return move, lines, [line, lines[1]], lines[-1] if delegate else None
 
     def _move_overflow(self, amount, party, date=None):
         pool = Pool()
@@ -230,29 +255,31 @@ class AccountRuleAbstract(DeactivableMixin, ModelSQL, ModelView):
                 date = Date.today()
         period = Period.find(self.company, date=date)
 
-        lines = [
-            Line(
-                account=self.account,
-                credit=credit,
-                debit=debit,
-                party=party if self.account.party_required else None,
-                ),
-            Line(
-                account=self.overflow_account,
-                credit=debit,
-                debit=credit,
-                party=party if self.overflow_account.party_required else None,
-                ),
-            ]
         move = Move(
             journal=self.journal,
             period=period,
             date=date,
             origin=self,
             company=self.company,
-            lines=lines
             )
-        return move
+
+        lines = [
+            Line(
+                move=move,
+                account=self.account,
+                credit=credit,
+                debit=debit,
+                party=party if self.account.party_required else None,
+                ),
+            Line(
+                move=move,
+                account=self.overflow_account,
+                credit=debit,
+                debit=credit,
+                party=party if self.overflow_account.party_required else None,
+                ),
+            ]
+        return move, lines
 
     def _amounts(self):
         "Yield party id and amount to dispatch"
