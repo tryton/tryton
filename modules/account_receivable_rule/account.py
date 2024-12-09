@@ -45,7 +45,10 @@ class AccountRuleAbstract(DeactivableMixin, ModelSQL, ModelView):
         'account.journal', "Journal", required=True, ondelete='CASCADE',
         domain=[
             ('type', '=', 'general'),
-            ])
+            ],
+        context={
+            'company': Eval('company', -1),
+            })
     priorities = fields.Selection([
             ('maturity_date|account', "Maturity Date, Account"),
             ('account|maturity_date', "Account, Maturity Date"),
