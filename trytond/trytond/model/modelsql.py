@@ -561,7 +561,7 @@ class ModelSQL(ModelStorage):
             field = cls._fields[field_name]
             # Check required fields
             if (field.required
-                    and field.sql_type()
+                    and not hasattr(field, 'set')
                     and field_name not in ('create_uid', 'create_date')):
                 if values.get(field_name) is None:
                     raise RequiredValidationError(

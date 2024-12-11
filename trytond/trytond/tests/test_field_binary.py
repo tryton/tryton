@@ -8,7 +8,8 @@ from sql import Literal
 
 from trytond.config import config
 from trytond.model import fields
-from trytond.model.exceptions import RequiredValidationError
+from trytond.model.exceptions import (
+    RequiredValidationError, SQLConstraintError)
 from trytond.pool import Pool
 from trytond.tests.test_tryton import activate_module, with_transaction
 from trytond.transaction import Transaction
@@ -86,6 +87,22 @@ class FieldBinaryTestCase(unittest.TestCase):
         with self.assertRaises(RequiredValidationError):
             binary, = Binary.create([{
                         'binary': cast(b''),
+                        }])
+
+    @with_transaction()
+    def test_create_required_with_invalid_sql_constraint(self):
+        "Test create required binary with invalid SQL constraint"
+        Binary = Pool().get('test.binary_required_sql_constraint')
+
+        binary, = Binary.create([{
+                    'binary': cast(b'foo'),
+                    'constraint': True,
+                    }])
+
+        with self.assertRaises(SQLConstraintError):
+            binary, = Binary.create([{
+                        'binary': cast(b'foo'),
+                        'constraint': False,
                         }])
 
     @with_transaction()
