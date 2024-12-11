@@ -6,5 +6,8 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_test">
             <field name="text">Message</field>
         </record>
+        <record model="ir.message" id="msg_binary_required_sql_constraint">
+            <field name="text">Constraint must be checked.</field>
+        </record>
     </data>
 </tryton>
