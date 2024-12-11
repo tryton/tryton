@@ -465,10 +465,10 @@ class Inspection(Workflow, ModelSQL, ModelView):
     @fields.depends('control', 'points')
     def on_change_control(self):
         if self.control:
-            if self.points is None:
-                self.points = {}
-            self.points.update(
+            points = dict(self.points) if self.points is not None else {}
+            points.update(
                 (p.name, None) for p in self.control.points)
+            self.points = points
 
     def validate_points(self):
         points = {p.name: p.string for p in self.control.points}
