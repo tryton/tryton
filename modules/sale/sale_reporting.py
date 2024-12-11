@@ -140,7 +140,7 @@ class Abstract(ModelSQL):
             line.company.as_('company'),
             revenue.as_('revenue'),
             Count(line.order, distinct=True).as_('number'),
-            line.currency.as_('currency'),
+            currency.id.as_('currency'),
             ]
 
     @classmethod
@@ -152,7 +152,7 @@ class Abstract(ModelSQL):
     def _group_by(cls, tables, withs):
         line = tables['line']
         currency = tables['line.company.currency']
-        return [line.company, line.currency, currency.digits]
+        return [line.company, currency.id, currency.digits]
 
     @classmethod
     def _where(cls, tables, withs):
