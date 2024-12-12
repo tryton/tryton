@@ -1,3 +1,6 @@
+* Add Brazillian Company Identifier as tax identifier
+* Add Canadian Business Number as tax identifier
+* Add Croatian Identification Number as tax identifier
 * Replace co_rut for co_nit as tax identifier
 
 Version 7.4.0 - 2024-11-04
