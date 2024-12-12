@@ -567,6 +567,24 @@ class Payment(Workflow, ModelSQL, ModelView):
         field_name = 'process_method'
         return Journal.fields_get([field_name])[field_name]['selection']
 
+    def get_rec_name(self, name):
+        items = [self.number]
+        if self.reference:
+            items.append(f'[{self.reference}]')
+        return ' '.join(items)
+
+    @classmethod
+    def search_rec_name(cls, name, clause):
+        _, operator, value = clause
+        if operator.startswith('!') or operator.startswith('not '):
+            bool_op = 'AND'
+        else:
+            bool_op = 'OR'
+        return [bool_op,
+            ('number', *clause[1:]),
+            ('reference', *clause[1:]),
+            ]
+
     @classmethod
     def view_attributes(cls):
         context = Transaction().context
