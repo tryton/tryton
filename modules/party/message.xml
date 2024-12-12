@@ -12,6 +12,9 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_contact_mechanism_change_party">
             <field name="text">You cannot change the party of contact mechanism "%(contact)s".</field>
         </record>
+        <record model="ir.message" id="msg_party_contact_mechanism_duplicate">
+            <field name="text">The party "%(party)s" has the same %(type)s "%(value)s".</field>
+        </record>
         <record model="ir.message" id="msg_invalid_phone_number">
             <field name="text">The phone number "%(phone)s" for party "%(party)s" is not valid.</field>
         </record>

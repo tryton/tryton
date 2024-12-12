@@ -72,6 +72,7 @@ class ContactMechanism(
     _rec_name = 'value'
 
     type = fields.Selection(_TYPES, "Type", required=True, sort=False)
+    type_string = type.translated('type')
     value = fields.Char(
         "Value",
         # Add all function fields to ensure to always fill them via on_change
@@ -349,6 +350,30 @@ class ContactMechanism(
             for name, desc in cls.fields_get(_fields).items():
                 usages.append((name, desc['string']))
         return usages
+
+    @fields.depends(methods=['_notify_duplicate'])
+    def on_change_notify(self):
+        notifications = super().on_change_notify()
+        notifications.extend(self._notify_duplicate())
+        return notifications
+
+    @fields.depends('value', 'type', methods=['format_value_compact'])
+    def _notify_duplicate(self):
+        cls = self.__class__
+        if self.value and self.type:
+            value_compact = self.format_value_compact(self.value, self.type)
+            others = cls.search([
+                    ('id', '!=', self.id),
+                    ('type', '=', self.type),
+                    ('value_compact', '=', value_compact),
+                    ], limit=1)
+            if others:
+                other, = others
+                yield ('warning', gettext(
+                        'party.msg_party_contact_mechanism_duplicate',
+                        party=other.party.rec_name,
+                        type=other.type_string,
+                        value=other.value))
 
 
 class ContactMechanismLanguage(ModelSQL, ValueMixin):
