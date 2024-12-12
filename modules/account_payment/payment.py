@@ -387,6 +387,8 @@ class Payment(Workflow, ModelSQL, ModelView):
 
     @classmethod
     def __setup__(cls):
+        cls.number.search_unaccented = False
+        cls.reference.search_unaccented = False
         super(Payment, cls).__setup__()
         t = cls.__table__()
         cls._sql_indexes.update({
