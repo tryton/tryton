@@ -2184,6 +2184,7 @@
             this.el_add_field_names.prop('checked', export_.values.header);
             this.selected_records.val(
                 JSON.stringify(export_.values.records == 'selected'));
+            this.selected_records.change();
         },
         _traverse: function(fields, prefix, parents, i) {
             var field, item;
