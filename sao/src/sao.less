@@ -769,23 +769,29 @@ img.icon {
                 text-align: end;
             }
         }
-        > thead > tr:first-child th {
-            background-color: @body-bg;
+        > thead > tr:first-child {
             position: sticky;
             top: 0;
             z-index: 100;
+
+            th {
+                background-color: @body-bg;
+            }
         }
-        > tfoot > tr th {
-            background-color: @body-bg;
+        > tfoot > tr {
             bottom: 0;
             position: sticky;
             z-index: 100;
-            & > label {
-                display: none;
-            }
-            & > div.value {
-                .user-select(text);
-                white-space: pre;
+
+            th {
+                background-color: @body-bg;
+                & > label {
+                    display: none;
+                }
+                & > div.value {
+                    .user-select(text);
+                    white-space: pre;
+                }
             }
         }
         > tbody > tr > td {
@@ -1394,7 +1400,7 @@ input.column-boolean {
         min-width: unset !important;
         /* Hide table headers (but not display: none; for accessiblity) */
         > thead > tr {
-            position: absolute;
+            position: absolute !important;
             top: -9999px;
             left: -9999px;
         }
