@@ -699,6 +699,17 @@ class Record:
             except RPCException:
                 return
             self.set_on_change(changed)
+        notification_fields = common.MODELNOTIFICATION.get(self.model_name)
+        if set(field_names) & set(notification_fields):
+            values = self._get_on_change_args(notification_fields)
+            try:
+                notifications = RPCExecute(
+                    'model', self.model_name, 'on_change_notify', values,
+                    context=self.get_context())
+            except RPCException:
+                pass
+            else:
+                self.group.record_notify(notifications)
 
     def autocomplete_with(self, field_name):
         for fieldname, fieldinfo in self.group.fields.items():

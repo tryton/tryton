@@ -1223,6 +1223,14 @@
                 }
                 this.set_on_change(changed);
             }
+            let notification_fields = Sao.common.MODELNOTIFICATION.get(
+                this.model.name);
+            if (new Set(field_names).intersection(new Set(notification_fields)).size) {
+                values = this._get_on_change_args(notification_fields);
+                this.model.execute(
+                    'on_change_notify', [values], this.get_context())
+                    .then(this.group.record_notify.bind(this.group));
+            }
         },
         set_on_change: function(values) {
             var fieldname, value;
