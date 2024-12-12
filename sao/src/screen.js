@@ -1255,8 +1255,10 @@
             }
         },
         record_notify: function(notifications) {
+            let notified = false;
             for (const window_ of this.windows) {
                 if (window_.info_bar) {
+                    notified = true;
                     window_.info_bar.refresh('notification');
                     for (const notification of notifications) {
                         const type = notification[0];
@@ -1264,6 +1266,9 @@
                         window_.info_bar.add(message, type, 'notification');
                     }
                 }
+            }
+            if (!notified && this.group.parent) {
+                this.group.parent.group.record_notify(notifications);
             }
         },
         record_message: function(position, size, max_size, record_id) {

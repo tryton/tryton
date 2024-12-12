@@ -450,8 +450,10 @@ class Screen:
             self.display()
 
     def record_notify(self, notifications):
+        notified = False
         for window in self.windows:
             if isinstance(window, InfoBar):
+                notified = True
                 window.info_bar_refresh('notification')
                 for type_, message in notifications:
                     type_ = {
@@ -460,6 +462,8 @@ class Screen:
                         'error': Gtk.MessageType.ERROR,
                         }.get(type_, Gtk.MessageType.WARNING)
                     window.info_bar_add(message, type_, 'notification')
+        if not notified and self.group.parent:
+            self.group.parent.group.record_notify(notifications)
 
     def record_message(self, position, size, max_size, record_id):
         for window in self.windows:
