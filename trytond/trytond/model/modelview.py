@@ -363,8 +363,10 @@ class ModelView(Model):
         prints = Action.get_keyword('form_print', (cls.__name__, -1))
         actions = Action.get_keyword('form_action', (cls.__name__, -1))
         relates = Action.get_keyword('form_relate', (cls.__name__, -1))
-        exports = Export.search_read(
-            [('resource', '=', cls.__name__)],
+        exports = Export.search_read([
+                ('resource', '=', cls.__name__),
+                ('ignore_search_limit', '=', False),
+                ],
             fields_names=['name', 'header', 'records', 'export_fields.name'])
         emails = Email.search_read(
             [('model.name', '=', cls.__name__)],

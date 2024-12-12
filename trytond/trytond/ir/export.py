@@ -52,6 +52,11 @@ class Export(_ClearCache, ModelSQL, ModelView):
             ('listed', "Listed"),
             ], "Records",
         help="The records on which the export runs.")
+    ignore_search_limit = fields.Boolean(
+        "Ignore Search Limit",
+        states={
+            'invisible': Eval('records') != 'listed',
+            })
     export_fields = fields.One2Many('ir.export.line', 'export',
        'Fields')
 
@@ -86,6 +91,10 @@ class Export(_ClearCache, ModelSQL, ModelView):
     @classmethod
     def default_records(cls):
         return 'selected'
+
+    @classmethod
+    def default_ignore_search_limit(cls):
+        return False
 
     @classmethod
     def get(cls, resource, fields_names):

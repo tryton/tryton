@@ -2053,8 +2053,9 @@
             Sao.rpc({
                 'method': 'model.ir.export.get',
                 'params': [
-                    this.screen.model_name,
-                    ['name', 'header', 'records', 'export_fields.name'],
+                    this.screen.model_name, [
+                        'name', 'header', 'records', 'ignore_search_limit',
+                        'export_fields.name'],
                     this.context,
                 ],
             }, this.session).done(exports => {
@@ -2106,6 +2107,8 @@
                     'records': (
                         JSON.parse(this.selected_records.val()) ?
                         'selected' : 'listed'),
+                    'ignore_search_limit': this.ignore_search_limit.is(
+                        ':checked'),
                 };
                 if (!pref_id) {
                     values.name = name;
@@ -2185,6 +2188,8 @@
             this.selected_records.val(
                 JSON.stringify(export_.values.records == 'selected'));
             this.selected_records.change();
+            this.ignore_search_limit.prop(
+                'checked', export_.values.ignore_search_limit);
         },
         _traverse: function(fields, prefix, parents, i) {
             var field, item;

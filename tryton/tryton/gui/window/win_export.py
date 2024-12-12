@@ -238,8 +238,9 @@ class WinExport(WinCSV, InfoBar):
     def fill_predefwin(self):
         try:
             exports = RPCExecute(
-                'model', 'ir.export', 'get', self.model,
-                ['name', 'header', 'records', 'export_fields.name'],
+                'model', 'ir.export', 'get', self.model, [
+                    'name', 'header', 'records', 'ignore_search_limit',
+                    'export_fields.name'],
                 context=self.context)
         except RPCException:
             return
@@ -282,6 +283,7 @@ class WinExport(WinCSV, InfoBar):
                 'records': (
                     'selected' if self.selected_records.get_active()
                     else 'listed'),
+                'ignore_search_limit': self.ignore_search_limit.get_active(),
                 }
             if not pref_id:
                 values.update({
@@ -350,6 +352,8 @@ class WinExport(WinCSV, InfoBar):
         self.add_field_names.set_active(values.get('header'))
         self.selected_records.set_active(
             int(values.get('records') == 'selected'))
+        self.ignore_search_limit.set_active(
+            values.get('ignore_search_limit'))
 
     def sel_field(self, name):
         string_, relation = self.fields[name]
