@@ -7,8 +7,8 @@ this repository contains the full copyright notices and license terms. -->
         <button name="braintree_do_settle_payment"/>
         <button name="braintree_do_pull"/>
     </xpath>
-    <xpath expr="//field[@name='date']" position="after">
-        <group id="braintree" string="Braintree" colspan="4">
+    <xpath expr="//page[@id='payment']" position="after">
+        <page id="braintree" string="Braintree">
             <label name="braintree_transaction_id" string="Transaction ID:"/>
             <field name="braintree_transaction_id" colspan="3"/>
 
@@ -16,7 +16,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="braintree_customer" colspan="3"/>
 
             <field name="braintree_customer_method" colspan="4" invisible="1"/>
-
             <label name="braintree_customer_method_selection" string="Payment Method:"/>
             <field name="braintree_customer_method_selection" colspan="3"/>
 
@@ -32,20 +31,16 @@ this repository contains the full copyright notices and license terms. -->
             <field name="braintree_settle_payment"/>
             <label name="braintree_payment_settled" string="Settled:"/>
             <field name="braintree_payment_settled"/>
-        </group>
-    </xpath>
-    <xpath expr="//field[@name='reference']" position="after">
-        <label name="braintree_error_message"/>
-        <field name="braintree_error_message" colspan="3" yexpand="0" height="80"/>
 
-        <label name="braintree_dispute_reason"/>
-        <field name="braintree_dispute_reason"/>
-        <label name="braintree_dispute_status"/>
-        <field name="braintree_dispute_status"/>
-    </xpath>
-    <xpath expr="//page[@id='payment']" position="after">
-        <page name="braintree_refunds" col="1">
-            <field name="braintree_refunds"/>
+            <label name="braintree_error_message"/>
+            <field name="braintree_error_message" colspan="3" yexpand="0" height="80"/>
+
+            <label name="braintree_dispute_reason"/>
+            <field name="braintree_dispute_reason"/>
+            <label name="braintree_dispute_status"/>
+            <field name="braintree_dispute_status"/>
+
+            <field name="braintree_refunds" colspan="4"/>
         </page>
     </xpath>
 </data>

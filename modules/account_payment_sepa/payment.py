@@ -454,9 +454,11 @@ class Payment(metaclass=PoolMeta):
     @classmethod
     def view_attributes(cls):
         return super().view_attributes() + [
+            ('//page[@id="sepa"]', 'states', {
+                    'invisible': Eval('process_method') != 'sepa',
+                    }),
             ('//separator[@id="sepa_return_reason"]', 'states', {
-                    'invisible': ((Eval('process_method') != 'sepa')
-                        | (Eval('state') != 'failed')),
+                    'invisible': Eval('state') != 'failed',
                     }),
             ]
 

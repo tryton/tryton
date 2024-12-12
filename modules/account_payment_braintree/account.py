@@ -249,7 +249,7 @@ class Payment(CheckoutMixin, BraintreeCustomerMethodMixin, metaclass=PoolMeta):
     @classmethod
     def view_attributes(cls):
         return super().view_attributes() + [
-            ('//group[@id="braintree"]', 'states', {
+            ('//page[@id="braintree"]', 'states', {
                     'invisible': Eval('process_method') != 'braintree',
                     }),
             ]

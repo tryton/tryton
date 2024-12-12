@@ -301,7 +301,7 @@ class Payment(StripeCustomerMethodMixin, CheckoutMixin, metaclass=PoolMeta):
     @classmethod
     def view_attributes(cls):
         return super().view_attributes() + [
-            ('//group[@id="stripe"]', 'states', {
+            ('//page[@id="stripe"]', 'states', {
                     'invisible': Eval('process_method') != 'stripe',
                     }),
             ]
