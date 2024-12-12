@@ -606,6 +606,7 @@ class Record:
                 continue
             values.update(self._get_on_change_args(on_change))
 
+        modified = set(fieldnames)
         if values:
             values['id'] = self.id
             try:
@@ -625,9 +626,10 @@ class Record:
             else:
                 for change in changes:
                     self.set_on_change(change)
+                    modified.update(change)
 
         notification_fields = common.MODELNOTIFICATION.get(self.model_name)
-        if set(fieldnames) & set(notification_fields):
+        if modified & set(notification_fields):
             values = self._get_on_change_args(notification_fields)
             try:
                 notifications = RPCExecute(

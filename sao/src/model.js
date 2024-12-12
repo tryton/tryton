@@ -1096,6 +1096,7 @@
                         this._get_on_change_args(on_change));
                 }
             }
+            let modified = new Set(fieldnames);
             if (!jQuery.isEmptyObject(values)) {
                 values.id = this.id;
                 var changes;
@@ -1116,13 +1117,17 @@
                 } catch (e) {
                     return;
                 }
-                changes.forEach(this.set_on_change, this);
+                changes.forEach((values) => {
+                    this.set_on_change(values);
+                    for (let fieldname in values) {
+                        modified.add(fieldname);
+                    }
+                });
             }
 
             var notification_fields = Sao.common.MODELNOTIFICATION.get(
                 this.model.name);
-            var notification_fields_set = new Set(notification_fields);
-            if (fieldnames.some(field => notification_fields_set.has(field))) {
+            if (modified.intersection(new Set(notification_fields)).size) {
                 values = this._get_on_change_args(notification_fields);
                 this.model.execute(
                     'on_change_notify', [values], this.get_context())
