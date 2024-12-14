@@ -158,19 +158,18 @@ class SQLiteExtract(Function):
         raise ValueError
 
 
-def date_trunc(_type, date):
+def date_trunc(_type, source):
     if not _type:
-        return date
-    if date is None:
+        return source
+    if source is None:
         return None
-    for format_ in [
-            '%Y-%m-%d %H:%M:%S.%f',
-            '%Y-%m-%d %H:%M:%S',
-            '%Y-%m-%d',
-            '%H:%M:%S',
+    for fromisoformat in [
+            dt.date.fromisoformat,
+            dt.time.fromisoformat,
+            dt.datetime.fromisoformat,
             ]:
         try:
-            value = dt.datetime.strptime(date, format_)
+            value = fromisoformat(source)
         except ValueError:
             continue
         else:
@@ -224,13 +223,16 @@ _nows = WeakKeyDictionary()
 
 
 def to_char(value, format):
-    try:
-        value = dt.datetime.strptime(value, '%Y-%m-%d %H:%M:%S.%f')
-    except ValueError:
+    for fromisoformat in [
+            dt.date.fromisoformat,
+            dt.time.fromisoformat,
+            dt.datetime.fromisoformat,
+            ]:
         try:
-            value = dt.datetime.strptime(value, '%Y-%m-%d').date()
+            value = fromisoformat(value)
         except ValueError:
-            pass
+            continue
+        break
     if isinstance(value, dt.date):
         # Convert SQL pattern into compatible Python
         return value.strftime(format
