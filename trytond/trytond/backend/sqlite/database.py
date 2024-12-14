@@ -1,6 +1,5 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import datetime
 import datetime as dt
 import logging
 import math
@@ -171,7 +170,7 @@ def date_trunc(_type, date):
             '%H:%M:%S',
             ]:
         try:
-            value = datetime.datetime.strptime(date, format_)
+            value = dt.datetime.strptime(date, format_)
         except ValueError:
             continue
         else:
@@ -218,7 +217,7 @@ def replace(text, pattern, replacement):
 def now():
     transaction = Transaction()
     return _nows.setdefault(transaction, {}).setdefault(
-        transaction.started_at, datetime.datetime.now().isoformat(' '))
+        transaction.started_at, dt.datetime.now().isoformat(' '))
 
 
 _nows = WeakKeyDictionary()
@@ -226,13 +225,13 @@ _nows = WeakKeyDictionary()
 
 def to_char(value, format):
     try:
-        value = datetime.datetime.strptime(value, '%Y-%m-%d %H:%M:%S.%f')
+        value = dt.datetime.strptime(value, '%Y-%m-%d %H:%M:%S.%f')
     except ValueError:
         try:
-            value = datetime.datetime.strptime(value, '%Y-%m-%d').date()
+            value = dt.datetime.strptime(value, '%Y-%m-%d').date()
         except ValueError:
             pass
-    if isinstance(value, datetime.date):
+    if isinstance(value, dt.date):
         # Convert SQL pattern into compatible Python
         return value.strftime(format
             .replace('%', '%%')
@@ -262,7 +261,7 @@ def to_char(value, format):
             .replace('D', '%w')
             .replace('TZ', '%Z')
             )
-    elif isinstance(value, datetime.timedelta):
+    elif isinstance(value, dt.timedelta):
         raise NotImplementedError
     else:
         raise NotImplementedError
@@ -722,10 +721,10 @@ def adapt_timedelta(val):
 
 
 sqlite.register_adapter(Decimal, adapt_decimal)
-sqlite.register_adapter(datetime.date, adapt_date)
-sqlite.register_adapter(datetime.datetime, adapt_datetime)
-sqlite.register_adapter(datetime.time, adapt_time)
-sqlite.register_adapter(datetime.timedelta, adapt_timedelta)
+sqlite.register_adapter(dt.date, adapt_date)
+sqlite.register_adapter(dt.datetime, adapt_datetime)
+sqlite.register_adapter(dt.time, adapt_time)
+sqlite.register_adapter(dt.timedelta, adapt_timedelta)
 
 
 def convert_numeric(val):
@@ -733,29 +732,29 @@ def convert_numeric(val):
 
 
 def convert_date(val):
-    return datetime.date.fromisoformat(val.decode())
+    return dt.date.fromisoformat(val.decode())
 
 
 def convert_datetime(val):
-    return datetime.datetime.fromisoformat(val.decode())
+    return dt.datetime.fromisoformat(val.decode())
 
 
 def convert_time(val):
-    return datetime.time.fromisoformat(val.decode())
+    return dt.time.fromisoformat(val.decode())
 
 
 def convert_interval(value):
     value = float(value)
     # It is not allowed to instatiate timedelta with the min/max total seconds
     if value >= _interval_max:
-        return datetime.timedelta.max
+        return dt.timedelta.max
     elif value <= _interval_min:
-        return datetime.timedelta.min
-    return datetime.timedelta(seconds=value)
+        return dt.timedelta.min
+    return dt.timedelta(seconds=value)
 
 
-_interval_max = datetime.timedelta.max.total_seconds()
-_interval_min = datetime.timedelta.min.total_seconds()
+_interval_max = dt.timedelta.max.total_seconds()
+_interval_min = dt.timedelta.min.total_seconds()
 
 
 sqlite.register_converter('NUMERIC', convert_numeric)
