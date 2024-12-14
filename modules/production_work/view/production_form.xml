@@ -6,7 +6,7 @@ this repository contains the full copyright notices and license terms. -->
         <label name="work_center"/>
         <field name="work_center"/>
     </xpath>
-    <xpath expr="/form/notebook/page[@id='lines']" position="after">
+    <xpath expr="/form/notebook/page[@id='other']" position="before">
         <page name="works">
             <field name="works" colspan="4"
                 view_ids="production_work.work_view_list_sequence"/>

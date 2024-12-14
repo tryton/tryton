@@ -113,7 +113,8 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
             })
     cost = fields.Function(fields.Numeric('Cost', digits=price_digits,
             readonly=True), 'get_cost')
-    inputs = fields.One2Many('stock.move', 'production_input', 'Inputs',
+    inputs = fields.One2Many(
+        'stock.move', 'production_input', "Input Materials",
         domain=[
             ('shipment', '=', None),
             ('from_location', 'child_of', [Eval('warehouse', -1)], 'parent'),
@@ -124,7 +125,8 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
             'readonly': (~Eval('state').in_(['request', 'draft', 'waiting'])
                 | ~Eval('warehouse') | ~Eval('location')),
             })
-    outputs = fields.One2Many('stock.move', 'production_output', 'Outputs',
+    outputs = fields.One2Many(
+        'stock.move', 'production_output', "Output Materials",
         domain=[
             ('shipment', '=', None),
             ('from_location', '=', Eval('location', -1)),

@@ -21,8 +21,9 @@ class BOM(DeactivableMixin, ModelSQL, ModelView):
             })
     code_readonly = fields.Function(
         fields.Boolean("Code Readonly"), 'get_code_readonly')
-    inputs = fields.One2Many('production.bom.input', 'bom', 'Inputs')
-    outputs = fields.One2Many('production.bom.output', 'bom', 'Outputs')
+    inputs = fields.One2Many('production.bom.input', 'bom', "Input Materials")
+    outputs = fields.One2Many(
+        'production.bom.output', 'bom', "Output Materials")
     output_products = fields.Many2Many('production.bom.output',
         'bom', 'product', 'Output Products')
 
