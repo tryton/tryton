@@ -2,9 +2,10 @@
 # this repository contains the full copyright notices and license terms.
 import datetime as dt
 import math
+from decimal import Decimal
 
 from sql import Cast, Literal, Select, Table, functions
-from sql.functions import CurrentTimestamp, DateTrunc, ToChar
+from sql.functions import CurrentTimestamp, DateTrunc, Extract, ToChar
 
 from trytond.model import fields
 from trytond.sql.functions import NumRange
@@ -280,3 +281,61 @@ class BackendTestCase(TestCase):
         count = database.estimated_count(connection, query)
 
         self.assertEqual(count, 1)
+
+    @with_transaction()
+    def test_function_extract(self):
+        "Test Extract function"
+        cursor = Transaction().connection.cursor()
+        for lookup, source, result in [
+                ('CENTURY', dt.datetime(2000, 12, 16, 12, 21, 13), 20),
+                ('CENTURY', dt.datetime(2001, 2, 16, 20, 38, 40), 21),
+                ('CENTURY', dt.date(1, 1, 1), 1),
+                ('CENTURY', dt.timedelta(days=2001 * 365), 0),
+                ('DAY', dt.datetime(2001, 2, 16, 20, 38, 40), 16),
+                ('DAY', dt.timedelta(40, 1), 40),
+                ('DECADE', dt.datetime(2001, 2, 16, 20, 38, 40), 200),
+                ('DOW', dt.datetime(2001, 2, 16, 20, 38, 40), 5),
+                ('DOY', dt.datetime(2001, 2, 16, 20, 38, 40), 47),
+                ('EPOCH', dt.datetime(2001, 2, 16, 20, 38, 40, 120000),
+                    982355920.120000),
+                ('EPOCH', dt.date(2001, 2, 16), 982281600.000000),
+                ('EPOCH', dt.timedelta(days=5, hours=3), 442800.000000),
+                ('HOUR', dt.datetime(2001, 2, 16, 20, 38, 40), 20),
+                ('HOUR', dt.timedelta(hours=20, minutes=38, seconds=40), 20),
+                ('ISODOW', dt.datetime(2001, 2, 18, 20, 38, 40), 7),
+                ('ISOYEAR', dt.date(2006, 1, 1), 2005),
+                ('ISOYEAR', dt.date(2006, 1, 2), 2006),
+                ('MICROSECONDS', dt.time(17, 12, 28, 500000), 28500000),
+                ('MICROSECONDS', dt.timedelta(hours=1, seconds=28.5),
+                    28500000),
+                ('MILLENNIUM', dt.datetime(2001, 2, 16, 20, 38, 40), 3),
+                ('MILLENNIUM', dt.timedelta(2001 * 365), 0),
+                ('MILLISECONDS', dt.time(17, 12, 28, 500000), 28500.000),
+                ('MILLISECONDS', dt.timedelta(seconds=28, microseconds=500000),
+                    28500.000),
+                ('MINUTE', dt.datetime(2001, 2, 16, 20, 38, 40), 38),
+                ('MINUTE', dt.timedelta(seconds=60), 1),
+                ('MINUTE', dt.timedelta(seconds=61), 1),
+                ('MINUTE', dt.timedelta(seconds=120), 2),
+                ('MONTH', dt.datetime(2001, 2, 16, 20, 38, 40), 2),
+                ('MONTH', dt.timedelta(60), 0),
+                ('QUARTER', dt.datetime(2001, 2, 16, 20, 38, 40), 1),
+                ('QUARTER', dt.timedelta(1), 1),
+                ('QUARTER', dt.timedelta(365), 1),
+                ('SECOND', dt.datetime(2001, 2, 16, 20, 38, 40), 40.000000),
+                ('SECOND', dt.time(17, 12, 28, 500000), 28.500000),
+                ('SECOND', dt.timedelta(
+                        hours=17, minutes=12, seconds=28, microseconds=500000),
+                    28.500000),
+                ('WEEK', dt.datetime(2001, 2, 16, 20, 38, 40), 7),
+                ('YEAR', dt.datetime(2001, 2, 16, 20, 38, 40), 2001),
+                ('YEAR', dt.timedelta(days=366), 0),
+                ]:
+            for lookup in [lookup.lower(), lookup.upper()]:
+                with self.subTest(lookup=lookup, source=source):
+                    cursor.execute(*Select([Extract(lookup, source)]))
+                    value, = cursor.fetchone()
+                    # in PostgreSQL some value are numeric
+                    if isinstance(value, Decimal):
+                        value = float(value)
+                    self.assertEqual(value, result)

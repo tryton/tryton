@@ -1,13 +1,13 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import datetime
+import datetime as dt
 import logging
 import math
 import os
 import random
 import sqlite3 as sqlite
 import threading
-import time
 import urllib.parse
 import warnings
 from decimal import Decimal
@@ -51,44 +51,112 @@ class SQLiteExtract(Function):
     _function = 'EXTRACT'
 
     @staticmethod
-    def extract(lookup_type, date):
-        if date is None:
+    def extract(lookup_type, source):
+        if source is None:
             return None
-        if len(date) == 10:
-            year, month, day = map(int, date.split('-'))
-            date = datetime.date(year, month, day)
+
+        if isinstance(source, (int, float)):  # interval
+            source = dt.timedelta(seconds=source)
         else:
-            datepart, timepart = date.split(" ")
-            year, month, day = map(int, datepart.split("-"))
-            timepart_full = timepart.split(".")
-            hours, minutes, seconds = map(int, timepart_full[0].split(":"))
-            if len(timepart_full) == 2:
-                microseconds = int(timepart_full[1])
+            for fromisoformat in [
+                    dt.date.fromisoformat,
+                    dt.time.fromisoformat,
+                    dt.datetime.fromisoformat,
+                    ]:
+                try:
+                    source = fromisoformat(source)
+                except ValueError:
+                    continue
+                break
             else:
-                microseconds = 0
-            date = datetime.datetime(year, month, day, hours, minutes, seconds,
-                microseconds)
-        if lookup_type.lower() == 'century':
-            return date.year / 100 + (date.year % 100 and 1 or 0)
-        elif lookup_type.lower() == 'decade':
-            return date.year / 10
-        elif lookup_type.lower() == 'dow':
-            return (date.weekday() + 1) % 7
-        elif lookup_type.lower() == 'doy':
-            return date.timetuple().tm_yday
-        elif lookup_type.lower() == 'epoch':
-            return int(time.mktime(date.timetuple()))
-        elif lookup_type.lower() == 'microseconds':
-            return date.microsecond
-        elif lookup_type.lower() == 'millennium':
-            return date.year / 1000 + (date.year % 1000 and 1 or 0)
-        elif lookup_type.lower() == 'milliseconds':
-            return date.microsecond / 1000
-        elif lookup_type.lower() == 'quarter':
-            return date.month / 4 + 1
-        elif lookup_type.lower() == 'week':
-            return date.isocalendar()[1]
-        return getattr(date, lookup_type.lower())
+                raise ValueError
+        lookup_type = lookup_type.lower()
+        if lookup_type == 'century':
+            if isinstance(source, dt.date):
+                return source.year // 100 + (source.year % 100 and 1 or 0)
+            elif isinstance(source, dt.timedelta):
+                return 0
+        elif lookup_type == 'day':
+            if isinstance(source, dt.date):
+                return source.day
+            elif isinstance(source, dt.timedelta):
+                return source.days
+        elif lookup_type == 'decade':
+            if isinstance(source, dt.date):
+                return source.year // 10
+        elif lookup_type == 'dow':
+            if isinstance(source, dt.date):
+                return (source.weekday() + 1) % 7
+        elif lookup_type == 'doy':
+            if isinstance(source, dt.date):
+                return source.timetuple().tm_yday
+        elif lookup_type == 'epoch':
+            if isinstance(source, dt.datetime):
+                return source.timestamp()
+            elif isinstance(source, dt.date):
+                return int(dt.datetime.combine(source, dt.time()).timestamp())
+            elif isinstance(source, dt.timedelta):
+                return (
+                    source.days * 24 * 60 * 60
+                    + source.seconds
+                    + source.microseconds / 1_000_000)
+        elif lookup_type == 'hour':
+            if isinstance(source, (dt.datetime, dt.time)):
+                return source.hour
+            elif isinstance(source, dt.timedelta):
+                return source.seconds // 60 // 60
+        elif lookup_type == 'isodow':
+            if isinstance(source, dt.date):
+                return source.isoweekday()
+        elif lookup_type == 'isoyear':
+            if isinstance(source, dt.date):
+                return source.isocalendar()[0]
+        elif lookup_type == 'microseconds':
+            if isinstance(source, (dt.datetime, dt.time)):
+                return source.second * 1_000_000 + source.microsecond
+            elif isinstance(source, dt.timedelta):
+                return (source.seconds % 60) * 1_000_000 + source.microseconds
+        elif lookup_type == 'millennium':
+            if isinstance(source, dt.date):
+                return source.year // 1000 + (source.year % 1000 and 1 or 0)
+            elif isinstance(source, dt.timedelta):
+                return 0
+        elif lookup_type == 'milliseconds':
+            if isinstance(source, (dt.datetime, dt.time)):
+                return source.second * 1_000 + source.microsecond / 1_000
+            elif isinstance(source, dt.timedelta):
+                return (
+                    (source.seconds % 60) * 1_000
+                    + source.microseconds / 1_000)
+        elif lookup_type == 'minute':
+            if isinstance(source, (dt.datetime, dt.time)):
+                return source.minute
+            elif isinstance(source, dt.timedelta):
+                return source.seconds // 60
+        elif lookup_type == 'month':
+            if isinstance(source, dt.date):
+                return source.month
+            elif isinstance(source, dt.timedelta):
+                return 0
+        elif lookup_type == 'quarter':
+            if isinstance(source, dt.date):
+                return source.month // 4 + 1
+            elif isinstance(source, dt.timedelta):
+                return 1
+        elif lookup_type == 'second':
+            if isinstance(source, (dt.datetime, dt.time)):
+                return source.second + source.microsecond / 1_000_000
+            elif isinstance(source, dt.timedelta):
+                return (source.seconds % 60) + source.microseconds / 1_000_000
+        elif lookup_type == 'week':
+            if isinstance(source, dt.date):
+                return source.isocalendar()[1]
+        elif lookup_type == 'year':
+            if isinstance(source, dt.date):
+                return source.year
+            elif isinstance(source, dt.timedelta):
+                return 0
+        raise ValueError
 
 
 def date_trunc(_type, date):
