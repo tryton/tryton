@@ -312,6 +312,9 @@ test-trytond-postgresql:
   variables:
     PACKAGE: trytond
     TAG_PATTERN: '/^trytond-.*/'
+  parallel:
+    matrix:
+      - PYTHON_VERSION: ["3.8", "3.9", "3.10", "3.11", "3.12"]
 
 check-doc-trytond-gis:
   extends: .check-doc
