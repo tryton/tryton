@@ -110,6 +110,11 @@ this repository contains the full copyright notices and license terms. -->
                     });
                 });
             }
+            if (navigator.userAgent.indexOf('iPhone') > -1) {
+                let viewport = document.querySelector('[name=viewport]');
+                viewport.setAttribute('content',
+                    [viewport.getAttribute('content'), 'maximum-scale=1'].join(', '));
+            }
         </script>
     </body>
 </html>
