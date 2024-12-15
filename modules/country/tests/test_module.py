@@ -78,5 +78,38 @@ class CountryTestCase(ModuleTestCase):
         self.assertFalse(country.is_member(organization, dt.date.min))
         self.assertFalse(country.is_member(organization, dt.date.max))
 
+    @with_transaction()
+    def test_subdivision_code_search(self):
+        "Test search on subdivision code"
+        pool = Pool()
+        Country = pool.get('country.country')
+        Subdivision = pool.get('country.subdivision')
+
+        fr, = Country.create([{'name': 'France'}])
+        paris, nord = Subdivision.create([{
+                    'name': 'Paris',
+                    'code': 'FR-75',
+                    'country': fr,
+                    }, {
+                    'name': 'Nord',
+                    'code': 'FR-59',
+                    'country': fr,
+                    }])
+
+        for domain, result in [
+                ([('code', '=', 'FR-59')], [nord]),
+                ([('code', '!=', 'FR-59')], [paris]),
+                ([('code', '=', '59')], []),
+                ([('code', '!=', '59')], [nord, paris]),
+                ([('code', 'like', '59%')], [nord]),
+                ([('code', 'not like', '59%')], [paris]),
+                ([('code', 'ilike', '59%')], [nord]),
+                ([('code', 'not like', '59%')], [paris]),
+                ]:
+            with self.subTest(domain=domain):
+                self.assertEqual(Subdivision.search(
+                        domain, order=[('name', 'ASC')]),
+                    result)
+
 
 del ModuleTestCase
