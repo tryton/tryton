@@ -7,6 +7,7 @@ import datetime as dt
 import gettext
 import os
 import sys
+import warnings
 from argparse import ArgumentParser
 
 import pycountry
@@ -483,9 +484,8 @@ def update_subdivisions(countries, subdivisions):
         else:
             record.type = None
             if type_ not in unknown_types:
-                print(
-                    "Unknown subdivision type: %s" % subdivision.type,
-                    file=sys.stderr)
+                warnings.warn(
+                    f"Unknown subdivision type: {subdivision.type!r}")
                 unknown_types.add(type_)
         records.append(record)
 
