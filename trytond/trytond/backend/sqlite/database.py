@@ -161,6 +161,8 @@ class SQLiteExtract(Function):
 def date_trunc(field, source):
     if field is None or source is None:
         return None
+    if isinstance(source, (int, float)):  # interval
+        return _date_trunc_interval(field, source)
     for fromisoformat in [
             dt.date.fromisoformat,
             dt.time.fromisoformat,
@@ -197,6 +199,22 @@ def date_trunc(field, source):
         return adapt_datetime(value)
     else:
         return adapt_timedelta(value)
+
+
+def _date_trunc_interval(field, source):
+    value = dt.timedelta(seconds=source)
+    field = field.lower()
+    for attribute, delta in [
+            ('microseconds', value.microseconds),
+            ('seconds', value.seconds % 60),
+            ('minutes', (value.seconds // 60) % 60),
+            ('hours', (value.seconds // (60 * 60)) % 24),
+            ('days', value.days),
+            ]:
+        if field.startswith(attribute[:-1]):
+            break
+        value -= dt.timedelta(**{attribute: delta})
+    return adapt_timedelta(value)
 
 
 def split_part(text, delimiter, count):

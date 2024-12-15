@@ -229,6 +229,32 @@ class BackendTestCase(TestCase):
                     self.assertEqual(value, result)
 
     @with_transaction()
+    def test_function_date_trunc_timedelta(self):
+        "Test DateTrunc function with timedelta"
+        cursor = Transaction().connection.cursor()
+        date = dt.timedelta(
+            days=16, hours=20, minutes=38, seconds=40, microseconds=100)
+        for type_, result in [
+                ('microsecond', dt.timedelta(
+                        days=16, hours=20, minutes=38, seconds=40,
+                        microseconds=100)),
+                ('second', dt.timedelta(
+                        days=16, hours=20, minutes=38, seconds=40)),
+                ('minute', dt.timedelta(days=16, hours=20, minutes=38)),
+                ('hour', dt.timedelta(days=16, hours=20)),
+                ('day', dt.timedelta(days=16)),
+                ('month', dt.timedelta()),
+                ]:
+            for type_ in [type_.lower(), type_.upper()]:
+                with self.subTest(type_=type_):
+                    query = Select([DateTrunc(type_, date).as_('value')])
+                    if backend.name == 'sqlite':
+                        sqlite_apply_types(query, ['INTERVAL'])
+                    cursor.execute(*query)
+                    value, = cursor.fetchone()
+                    self.assertEqual(value, result)
+
+    @with_transaction()
     def test_function_date_trunc_null(self):
         "test DateTrunc function with NULL"
         cursor = Transaction().connection.cursor()
