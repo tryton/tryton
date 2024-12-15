@@ -84,25 +84,6 @@ class PaymentGroup(metaclass=PoolMeta):
         cls._buttons['succeed']['invisible'] |= (
             Eval('process_method') == 'braintree')
 
-    def process_braintree(self):
-        pool = Pool()
-        Payment = pool.get('account.payment')
-        for payment in self.payments:
-            if not payment.braintree_nonce and not payment.braintree_customer:
-                account = payment.journal.braintree_account
-                for customer in payment.party.braintree_customers:
-                    if (customer.braintree_account == account
-                            and customer.braintree_customer_id):
-                        payment.braintree_customer = customer
-                        break
-                else:
-                    raise ProcessError(
-                        gettext(
-                            'account_payment_braintree.msg_no_braintree_nonce',
-                            payment=payment.rec_name))
-        Payment.save(self.payments)
-        Payment.__queue__.braintree_transact(self.payments)
-
 
 class CheckoutMixin:
     __slots__ = ()
@@ -321,6 +302,23 @@ class Payment(CheckoutMixin, BraintreeCustomerMethodMixin, metaclass=PoolMeta):
                 payment.braintree_nonce = None
                 payment.braintree_device_data = None
         cls.save(payments)
+
+    def process_braintree(self):
+        assert self.process_method == 'braintree'
+        if not self.braintree_nonce and not self.braintree_customer:
+            account = self.journal.braintree_account
+            for customer in self.party.braintree_customers:
+                if (customer.braintree_account == account
+                        and customer.braintree_customer_id):
+                    self.braintree_customer = customer
+                    break
+            else:
+                raise ProcessError(
+                    gettext(
+                        'account_payment_braintree.msg_no_braintree_nonce',
+                        self=self.rec_name))
+        self.save()
+        self.__class__.__queue__.braintree_transact([self])
 
     @classmethod
     def braintree_transact(cls, payments=None):

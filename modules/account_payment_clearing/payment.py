@@ -3,6 +3,7 @@
 from collections import defaultdict
 from functools import wraps
 
+from sql import Null
 from sql.aggregate import BoolAnd, Min
 from sql.conditionals import Coalesce
 
@@ -417,6 +418,7 @@ class Group(metaclass=PoolMeta):
 
         query = payment.select(
             payment.group,
+            where=payment.group != Null,
             having=Operator(column, value),
             group_by=payment.group)
         return [('id', 'in', query)]

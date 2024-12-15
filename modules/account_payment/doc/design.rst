@@ -72,7 +72,7 @@ Payment Group
 =============
 
 A *Payment Group* contains `Payments <model-account.payment>` processed
-together at the same time.
+together at the same time for methods that need it.
 The payment group is used to follow the processing of the payments.
 
 .. seealso::

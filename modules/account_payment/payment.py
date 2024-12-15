@@ -136,6 +136,9 @@ class Group(ModelSQL, ModelView):
     def search_process_method(cls, name, clause):
         return [('journal.' + clause[0],) + tuple(clause[1:])]
 
+    def process_manual(self):
+        pass
+
     @classmethod
     def create(cls, vlist):
         pool = Pool()
@@ -340,6 +343,8 @@ class Payment(Workflow, ModelSQL, ModelView):
             },
         domain=[
             ('company', '=', Eval('company', -1)),
+            ('journal', '=', Eval('journal', -1)),
+            ('kind', '=', Eval('kind')),
             ])
     process_method = fields.Function(
         fields.Selection('get_process_methods', "Process Method"),
@@ -457,6 +462,8 @@ class Payment(Workflow, ModelSQL, ModelView):
                 'approve': RPC(
                     readonly=False, instantiate=0, fresh_session=True),
                 })
+        cls.group.states['required'] &= Eval('process_method').in_(
+            cls.process_method_with_group())
 
     @classmethod
     def __register__(cls, module):
@@ -653,30 +660,32 @@ class Payment(Workflow, ModelSQL, ModelView):
         pass
 
     @classmethod
+    def process_method_with_group(cls):
+        return ['manual']
+
+    @classmethod
     @Workflow.transition('processing')
-    def process(cls, payments, group):
-        pool = Pool()
-        Group = pool.get('account.payment.group')
+    def process(cls, payments, group=None):
         if payments:
-            group = group()
-            cls.write(payments, {
-                    'group': group.id,
-                    })
+            if group:
+                group = group()
+                cls.write(payments, {
+                        'group': group.id,
+                        })
             # Set state before calling process method
             # as it may set a different state directly
             cls.proceed(payments)
-            process_method = getattr(Group,
-                'process_%s' % group.journal.process_method, None)
-            if process_method:
-                process_method(group)
-                group.save()
+            if group:
+                getattr(group, f'process_{group.process_method}')()
+            else:
+                for payment in payments:
+                    getattr(payment, f'process_{payment.process_method}')()
             return group
 
     @classmethod
     @ModelView.button
     @Workflow.transition('processing')
     def proceed(cls, payments):
-        assert all(p.group for p in payments)
         cls._check_reconciled(
             [p for p in payments if p.state not in {'succeeded', 'failed'}])
 
@@ -716,8 +725,8 @@ class ProcessPayment(Wizard):
 
     def _group_payment_key(self, payment):
         return (
-            ('company', payment.company.id),
-            ('journal', payment.journal.id),
+            ('company', payment.company),
+            ('journal', payment.journal),
             ('kind', payment.kind),
             )
 
@@ -745,18 +754,25 @@ class ProcessPayment(Wizard):
                             payment=payment.rec_name,
                             line=payment.line.rec_name))
 
+        process_method_with_group = Payment.process_method_with_group()
         groups = []
         payments = sorted(
             payments, key=sortable_values(self._group_payment_key))
         for key, grouped_payments in groupby(payments,
                 key=self._group_payment_key):
             def group():
-                group = self._new_group(dict(key))
+                group = self._new_group(key)
                 group.save()
-                groups.append(group)
                 return group
-            Payment.process(list(grouped_payments), group)
+            key = dict(key)
+            process_method = key['journal'].process_method
+            group = Payment.process(
+                list(grouped_payments),
+                group if process_method in process_method_with_group else None)
+            if group:
+                groups.append(group)
 
-        return action, {
-            'res_id': [g.id for g in groups],
-            }
+        if groups:
+            return action, {
+                'res_id': [g.id for g in groups],
+                }

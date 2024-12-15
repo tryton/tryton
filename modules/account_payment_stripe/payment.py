@@ -71,26 +71,6 @@ class Group(metaclass=PoolMeta):
         cls._buttons['succeed']['invisible'] |= (
             Eval('process_method') == 'stripe')
 
-    def process_stripe(self):
-        pool = Pool()
-        Payment = pool.get('account.payment')
-        for payment in self.payments:
-            if (not payment.stripe_token
-                    and not payment.stripe_payment_intent_id
-                    and not payment.stripe_customer):
-                account = payment.journal.stripe_account
-                for customer in payment.party.stripe_customers:
-                    if (customer.stripe_account == account
-                            and customer.stripe_customer_id):
-                        payment.stripe_customer = customer
-                        break
-                else:
-                    raise ProcessError(
-                        gettext('account_payment_stripe.msg_no_stripe_token',
-                            payment=payment.rec_name))
-        Payment.save(self.payments)
-        Payment.__queue__.stripe_charge(self.payments)
-
 
 class CheckoutMixin:
     __slots__ = ()
@@ -381,6 +361,24 @@ class Payment(StripeCustomerMethodMixin, CheckoutMixin, metaclass=PoolMeta):
                 payment.stripe_token = None
                 payment.stripe_payment_intent_id = None
         cls.save(payments)
+
+    def process_stripe(self):
+        assert self.process_method == 'stripe'
+        if (not self.stripe_token
+                and not self.stripe_payment_intent_id
+                and not self.stripe_customer):
+            account = self.journal.stripe_account
+            for customer in self.party.stripe_customers:
+                if (customer.stripe_account == account
+                        and customer.stripe_customer_id):
+                    self.stripe_customer = customer
+                    break
+            else:
+                raise ProcessError(
+                    gettext('account_payment_stripe.msg_no_stripe_token',
+                        self=self.rec_name))
+        self.save()
+        self.__class__.__queue__.stripe_charge([self])
 
     @classmethod
     def stripe_checkout(cls, payments):

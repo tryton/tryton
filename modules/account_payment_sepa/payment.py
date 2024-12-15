@@ -216,6 +216,7 @@ class Group(metaclass=PoolMeta):
         pool = Pool()
         Payment = pool.get('account.payment')
         Mandate = pool.get('account.payment.sepa.mandate')
+        assert self.process_method == 'sepa'
         if self.kind == 'receivable':
             payments = list(self.payments)
             mandates = Payment.get_sepa_mandates(payments)
@@ -259,11 +260,11 @@ class Group(metaclass=PoolMeta):
         if to_write:
             Payment.write(*to_write)
         self.sepa_id = uuid.uuid4().hex
-        self.sepa_generate_message(_save=False)
+        self.sepa_generate_message()
 
     @dualmethod
     @ModelView.button
-    def sepa_generate_message(cls, groups, _save=True):
+    def sepa_generate_message(cls, groups):
         pool = Pool()
         Message = pool.get('account.payment.sepa.message')
         for group in groups:
@@ -280,8 +281,7 @@ class Group(metaclass=PoolMeta):
             message = Message(message=message, type='out', state='waiting',
                 company=group.company)
             group.sepa_messages += (message,)
-        if _save:
-            cls.save(groups)
+        cls.save(groups)
 
     @property
     def sepa_initiating_party(self):
@@ -382,6 +382,10 @@ class Payment(metaclass=PoolMeta):
             default = default.copy()
         default.setdefault('sepa_mandate_sequence_type', None)
         return super(Payment, cls).copy(payments, default=default)
+
+    @classmethod
+    def process_method_with_group(cls):
+        return super().process_method_with_group() + ['sepa']
 
     @classmethod
     def get_sepa_mandates(cls, payments):
