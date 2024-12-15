@@ -69,6 +69,8 @@ def checkout_end(request, pool, model, id):
                 ])
     except ValueError:
         abort(HTTPStatus.NOT_FOUND)
+    if model == Payment.__name__:
+        Payment.process([record])
     record.stripe_intent_update()
     return Response(
         '<body onload="window.close()">', HTTPStatus.OK,

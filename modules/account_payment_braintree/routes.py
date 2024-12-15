@@ -46,6 +46,8 @@ def checkout(request, pool, model, id):
         record.braintree_set_nonce(
             request.form['payment_method_nonce'],
             request.form.get('device_data'))
+        if model == Payment.__name__:
+            Payment.process([record])
         return Response(
             '<body onload="window.close();"></body>',
             HTTPStatus.OK,
