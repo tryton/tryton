@@ -1208,11 +1208,17 @@ def drop_create(name=DB_NAME, lang='en'):
 
 
 def doctest_setup(test):
-    return drop_create()
+    if pythonwarnings := os.getenv('TEST_PYTHONWARNINGS'):
+        cm = warnings.catch_warnings()
+        cm.__enter__()
+        test._tryton_cleanup = [(cm.__exit__, cm, None, None, None)]
+        TestCase.setUpClassWarning(pythonwarnings.split(','))
 
 
 def doctest_teardown(test):
     unittest.mock.patch.stopall()
+    for cleanup in getattr(test, '_tryton_cleanup', []):
+        cleanup[0](cleanup[1:])
     return drop_db()
 
 
@@ -1266,7 +1272,8 @@ def load_doc_tests(name, path, loader, tests, pattern, skips=None):
             for globs in configs:
                 tests.addTests(doctest.DocFileSuite(
                         scenario, package=name, globs=globs,
-                        tearDown=doctest_teardown, encoding='utf-8',
+                        setUp=doctest_setup, tearDown=doctest_teardown,
+                        encoding='utf-8',
                         checker=doctest_checker,
                         optionflags=s_optionflags))
     finally:

@@ -140,16 +140,8 @@ doctest helpers
 
 .. function:: doctest_setup
 
-   Prepare the run of the `doctest`_ by creating a database and dropping it
-   beforehand if necessary.
+   Prepare the run of the doctest_.
    This function should be used as the ``setUp`` parameter.
-
-   .. deprecated:: 4.2
-
-      The ``doctest_setup`` function should not be used anymore to set up
-      :py:func:`~doctest.DocFileSuite`.
-      New modules should use :func:`~trytond.tests.tools.activate_modules`
-      instead.
 
 .. function:: doctest_teardown()
 
