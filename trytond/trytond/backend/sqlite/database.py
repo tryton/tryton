@@ -158,10 +158,8 @@ class SQLiteExtract(Function):
         raise ValueError
 
 
-def date_trunc(_type, source):
-    if not _type:
-        return source
-    if source is None:
+def date_trunc(field, source):
+    if field is None or source is None:
         return None
     for fromisoformat in [
             dt.date.fromisoformat,
@@ -176,17 +174,29 @@ def date_trunc(_type, source):
             break
     else:
         return None
+    field = field.lower()
     for attribute, replace in [
             ('microsecond', 0),
             ('second', 0),
             ('minute', 0),
             ('hour', 0),
             ('day', 1),
-            ('month', 1)]:
-        if _type.lower().startswith(attribute):
+            ('month', 1),
+            ]:
+        if field.startswith(attribute):
             break
-        value = value.replace(**{attribute: replace})
-    return str(value)
+        if hasattr(value, attribute):
+            value = value.replace(**{attribute: replace})
+    if isinstance(value, dt.date) and not isinstance(value, dt.datetime):
+        value = dt.datetime.combine(value, dt.time())
+    elif isinstance(value, dt.time):
+        value = (
+            dt.datetime.combine(dt.date.min, value)
+            - dt.datetime.min)
+    if isinstance(value, dt.datetime):
+        return adapt_datetime(value)
+    else:
+        return adapt_timedelta(value)
 
 
 def split_part(text, delimiter, count):
