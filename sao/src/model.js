@@ -2526,8 +2526,7 @@
             if (record.model.name == this.description.relation) {
                 model = record.model;
             }
-            var context = record.expr_eval(this.description.context || {});
-            var group = Sao.Group(model, context, []);
+            var group = Sao.Group(model, {}, []);
             group.set_parent(record);
             group.parent_name = this.description.relation_field;
             group.child_name = this.name;

@@ -619,12 +619,10 @@ class O2MField(Field):
         from .group import Group
         parent_name = self.attrs.get('relation_field', '')
         fields = fields or {}
-        context = record.expr_eval(self.attrs.get('context', {}))
         group = Group(self.attrs['relation'], fields,
                 parent=record,
                 parent_name=parent_name,
                 child_name=self.name,
-                context=context,
                 parent_datetime_field=self.attrs.get('datetime_field'))
         if not fields and record.model_name == self.attrs['relation']:
             group.fields = record.group.fields
