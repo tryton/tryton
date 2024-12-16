@@ -76,7 +76,8 @@ class Group(ModelSQL, ModelView):
         domain=[
             ('company', '=', Eval('company', -1)),
             ('journal', '=', Eval('journal', -1)),
-            ])
+            ],
+        order=[('date', 'ASC'), ('id', 'ASC')])
     currency = fields.Function(fields.Many2One(
             'currency.currency', "Currency"),
         'on_change_with_currency', searcher='search_currency')
