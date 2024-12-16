@@ -34,7 +34,7 @@ class Date(metaclass=PoolMeta):
         pool = Pool()
         Company = pool.get('company.company')
         company_id = Transaction().context.get('company')
-        if timezone is None and company_id:
+        if timezone is None and company_id is not None and company_id >= 0:
             company = Company(company_id)
             if company.timezone:
                 timezone = tz.ZoneInfo(company.timezone)
