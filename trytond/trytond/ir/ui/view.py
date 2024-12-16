@@ -627,6 +627,7 @@ class ViewTreeOptional(
         records = cls.search([
                 ('view', '=', view.id),
                 ('user', '=', user),
+                ('field', 'in', list(fields)),
                 ])
         cls.delete(records)
         to_create = []
