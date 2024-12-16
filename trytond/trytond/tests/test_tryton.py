@@ -937,6 +937,13 @@ class ModuleTestCase(_DBTestCase):
                                 'model': model.__name__,
                                 'field': field_name,
                                 })
+                        if func_name == field.getter:
+                            if func_name.startswith('on_change_with'):
+                                self.assertEqual(
+                                    func_name, f'on_change_with_{field_name}',
+                                    msg=f"Wrong getter {func_name!r} "
+                                    f"on model {model.__name__!r} "
+                                    f"for field {field_name!r}")
                         if func_name == field.searcher:
                             domain = getattr(model, field.searcher)(
                                 field_name, (field_name, '=', None))
