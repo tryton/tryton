@@ -2,8 +2,10 @@
 # this repository contains the full copyright notices and license terms.
 
 import datetime as dt
+import unittest
 from collections import defaultdict
 from contextlib import contextmanager
+from unittest.mock import patch
 
 from trytond.model import ModelStorage, ModelView
 from trytond.modules.company.model import CompanyMultiValueMixin
@@ -12,6 +14,7 @@ from trytond.modules.party.tests import PartyCheckEraseMixin
 from trytond.pool import Pool, isregisteredby
 from trytond.pyson import Eval, PYSONEncoder
 from trytond.tests.test_tryton import ModuleTestCase, with_transaction
+from trytond.tools import timezone as tz
 from trytond.transaction import Transaction
 
 
@@ -410,6 +413,24 @@ class CompanyTestCase(
             self.assertEqual(Employee.search([
                         ('active', '=', True),
                         ]), [])
+
+    @unittest.skipUnless(
+        'CET' in tz.available_timezones(), "missing CET timezone")
+    @with_transaction()
+    def test_today(self):
+        "Test today is using the timezone of the contextual company"
+        pool = Pool()
+        Date = pool.get('ir.date')
+
+        company = create_company()
+        company.timezone = 'CET'
+        company.save()
+
+        with patch('datetime.datetime') as datetime:
+            with Transaction().set_context(company=company.id):
+                Date.today()
+
+        datetime.now.assert_called_with(tz.ZoneInfo('CET'))
 
 
 del ModuleTestCase
