@@ -14,6 +14,12 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">statement_journal_tree</field>
         </record>
 
+        <record model="ir.ui.view" id="statement_journal_view_list_reporting">
+            <field name="model">account.statement.journal</field>
+            <field name="type">tree</field>
+            <field name="name">statement_journal_list_reporting</field>
+        </record>
+
         <record model="ir.action.act_window" id="act_statement_journal_form">
             <field name="name">Statement Journals</field>
             <field name="res_model">account.statement.journal</field>
@@ -33,6 +39,22 @@ this repository contains the full copyright notices and license terms. -->
             action="act_statement_journal_form"
             sequence="10"
             id="menu_statement_journal_form"/>
+
+        <record model="ir.action.act_window" id="act_statement_journal_list_reporting">
+            <field name="name">Statement Journals</field>
+            <field name="res_model">account.statement.journal</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_statement_journal_list_reporting_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="statement_journal_view_list_reporting"/>
+            <field name="act_window" ref="act_statement_journal_list_reporting"/>
+        </record>
+        <menuitem
+            parent="account.menu_reporting"
+            sequence="50"
+            action="act_statement_journal_list_reporting"
+            id="menu_statement_journal_reporting"/>
+
 
         <record model="ir.model.access" id="access_statement_journal">
             <field name="model">account.statement.journal</field>

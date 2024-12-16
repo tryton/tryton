@@ -1,9 +1,18 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+
+from sql import Window
+from sql.aggregate import Max
+from sql.functions import FirstValue
+
+from trytond import backend
 from trytond.model import DeactivableMixin, ModelSQL, ModelView, Unique, fields
+from trytond.modules.currency.fields import Monetary
 from trytond.pool import Pool
 from trytond.pyson import Eval
 from trytond.rpc import RPC
+from trytond.tools import (
+    cursor_dict, grouped_slice, reduce_ids, sqlite_apply_types)
 from trytond.transaction import Transaction
 
 
@@ -48,6 +57,14 @@ class Journal(DeactivableMixin, ModelSQL, ModelView):
             ('company', '=', Eval('company', -1)),
             ('party_required', '=', False),
             ])
+
+    last_date = fields.Function(fields.Date("Last Date"), 'get_last_statement')
+    last_amount = fields.Function(Monetary(
+            "Last Amount", currency='currency', digits='currency',
+            states={
+                'invisible': ~Eval('validation').in_(['balance']),
+                }),
+        'get_last_statement')
 
     @classmethod
     def __setup__(cls):
@@ -101,3 +118,68 @@ class Journal(DeactivableMixin, ModelSQL, ModelView):
         if journals:
             journal, = journals
             return journal
+
+    @classmethod
+    def get_last_statement(cls, journals, names):
+        pool = Pool()
+        Statement = pool.get('account.statement')
+        statement = Statement.__table__()
+        transaction = Transaction()
+        database = transaction.database
+        cursor = transaction.connection.cursor()
+
+        id2currency = {j.id: j.currency for j in journals}
+
+        result = {}
+        for name in names:
+            result[name] = dict.fromkeys(id2currency.keys(), None)
+
+        for sub_ids in grouped_slice(id2currency.keys()):
+            columns = [statement.journal]
+            if database.has_window_functions():
+                w = Window(
+                    partition=[statement.journal],
+                    order_by=[statement.date.desc, statement.id.desc])
+                if 'last_amount' in names:
+                    columns.append(
+                        FirstValue(statement.end_balance,
+                            window=w).as_('last_amount'))
+                if 'last_date' in names:
+                    columns.append(
+                        FirstValue(statement.date, window=w).as_('last_date'))
+                query = statement.select(*columns,
+                        distinct=True,
+                        where=reduce_ids(statement.journal, sub_ids)
+                        & (statement.state != 'cancelled'))
+            else:
+                if 'last_amount' in names:
+                    columns.append(statement.end_balance).as_('last_amount')
+                if 'last_date' in names:
+                    columns.append(statement.date.as_('last_date'))
+                maxdate = statement.select(
+                    statement.journal,
+                    Max(statement.date).as_('date'),
+                    group_by=statement.journal)
+                query = statement.join(maxdate,
+                    condition=maxdate.journal == statement.journal,
+                    ).select(*columns,
+                        where=reduce_ids(statement.journal, sub_ids)
+                        & (maxdate.date == statement.date)
+                        & (statement.state != 'cancelled'),
+                        order_by=statement.id.asc)
+            if backend.name == 'sqlite':
+                types = [None]
+                if 'last_amount' in names:
+                    types.append('NUMERIC')
+                if 'last_date' in names:
+                    types.append('DATE')
+                sqlite_apply_types(query, types)
+            cursor.execute(*query)
+            for row in cursor_dict(cursor):
+                journal = row['journal']
+                if 'last_amount' in names:
+                    result['last_amount'][journal] = (
+                        id2currency[journal].round(row['last_amount']))
+                if 'last_date' in names:
+                    result['last_date'][journal] = row['last_date']
+        return result

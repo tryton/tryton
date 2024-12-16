@@ -122,10 +122,14 @@ Create statement::
     ... )
     >>> statement_journal.save()
 
+    >>> statement_journal.last_date
+    >>> statement_journal.last_amount
+
     >>> statement = Statement(name='test',
     ...     journal=statement_journal,
     ...     start_balance=Decimal('0'),
     ...     end_balance=Decimal('80'),
+    ...     date=today,
     ... )
 
 Received 180 from customer::
@@ -193,6 +197,11 @@ Try to overpay supplier invoice::
 
     >>> statement.save()
 
+    >>> statement_journal.reload()
+    >>> assertEqual(statement_journal.last_date, today)
+    >>> statement_journal.last_amount
+    Decimal('80.00')
+
 Validate statement::
 
     >>> statement.click('validate_statement')
@@ -215,6 +224,10 @@ Cancel statement::
     >>> [l.move for l in statement.lines if l.move]
     []
 
+    >>> statement_journal.reload()
+    >>> statement_journal.last_date
+    >>> statement_journal.last_amount
+
 Reset to draft, validate and post statement::
 
     >>> statement.click('draft')
@@ -226,6 +239,11 @@ Reset to draft, validate and post statement::
     >>> statement.click('post')
     >>> statement.state
     'posted'
+
+    >>> statement_journal.reload()
+    >>> assertEqual(statement_journal.last_date, today)
+    >>> statement_journal.last_amount
+    Decimal('80.00')
 
 Test posted moves::
 

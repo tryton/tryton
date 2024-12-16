@@ -202,22 +202,10 @@ class Statement(Workflow, ModelSQL, ModelView):
         Date = Pool().get('ir.date')
         return Date.today()
 
-    @fields.depends('journal', 'state', 'lines')
+    @fields.depends('journal')
     def on_change_journal(self):
-        if not self.journal:
-            return
-
-        statements = self.search([
-                ('journal', '=', self.journal.id),
-                ], order=[
-                ('date', 'DESC'),
-                ('id', 'DESC'),
-                ], limit=1)
-        if not statements:
-            return
-
-        statement, = statements
-        self.start_balance = statement.end_balance
+        if self.journal and self.journal.validation == 'balance':
+            self.start_balance = self.journal.last_amount
 
     @fields.depends('journal')
     def on_change_with_currency(self, name=None):
