@@ -2,14 +2,16 @@
 # this repository contains the full copyright notices and license terms.
 from trytond.model import fields
 from trytond.pool import PoolMeta
-from trytond.pyson import Eval
+from trytond.pyson import Eval, If
 
 
 class Production(metaclass=PoolMeta):
     __name__ = 'production'
     routing = fields.Many2One('production.routing', 'Routing',
         domain=[
-            ('boms', '=', Eval('bom', 0)),
+            If(Eval('state').in_(['request', 'draft']),
+                ('boms', '=', Eval('bom', 0)),
+                ()),
             ],
         states={
             'readonly': ~Eval('state').in_(['request', 'draft']),
