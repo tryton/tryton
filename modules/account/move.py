@@ -2271,6 +2271,8 @@ class Reconcile(Wizard):
             & (line.account == account.id))
         if party:
             where &= (line.party == party.id)
+        else:
+            where &= (line.party != Null)
         cursor.execute(*line.select(line.party,
                 where=where,
                 group_by=line.party))
@@ -2354,19 +2356,28 @@ class Reconcile(Wizard):
 
         if getattr(self.show, 'accounts', None) is None:
             self.show.accounts = self.get_accounts()
-            if not (next_account() and next_party()):
+            account = next_account()
+            if not account or (not next_party() and account.party_required):
                 return 'end'
-        if getattr(self.show, 'parties', None) is None:
-            self.show.parties = self.get_parties(self.show.account)
-            if not next_party():
-                return 'end'
+        if self.show.account.party_required:
+            if getattr(self.show, 'parties', None) is None:
+                self.show.parties = self.get_parties(self.show.account)
+                if not next_party():
+                    return 'end'
+        else:
+            self.show.parties = []
+            self.show.party = None
         if getattr(self.show, 'currencies', None) is None:
             self.show.currencies = self.get_currencies(
                 self.show.account, self.show.party)
 
         while True:
             while not next_currency():
-                while not next_party():
+                if self.show.account.party_required or True:
+                    while not next_party():
+                        if not next_account():
+                            return 'end'
+                else:
                     if not next_account():
                         return 'end'
             if self.start.automatic or self.start.only_balanced:
