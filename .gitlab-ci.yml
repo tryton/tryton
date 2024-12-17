@@ -12,6 +12,9 @@ stages:
   - test
   - build
 
+variables:
+  TMPDIR: /tmp
+
 packages:
   stage: preparation
   rules:
@@ -151,8 +154,8 @@ check-eslint:
 check-ci-modules:
   extends: .check
   script:
-    - python .gitlab-scripts/generate-ci.py $TMPDIR/gitab-ci-modules.yml
-    - cmp .gitlab-ci-modules.yml $TMPDIR/gitab-ci-modules.yml
+    - python .gitlab-scripts/generate-ci.py "${TMPDIR}/gitab-ci-modules.yml"
+    - cmp .gitlab-ci-modules.yml "${TMPDIR}/gitab-ci-modules.yml"
 
 check-cookiecutter-module:
   extends: .check
@@ -164,9 +167,9 @@ check-cookiecutter-module:
   before_script:
     - pip install cookiecutter
   script:
-    - cookiecutter --no-input cookiecutter-module -o /tmp
-    - flake8 /tmp/my_module
-    - isort --multi-line VERTICAL_GRID --check --diff /tmp/my_module
+    - cookiecutter --no-input cookiecutter-module -o "${TMPDIR}"
+    - flake8 "${TMPDIR}/my_module"
+    - isort --multi-line VERTICAL_GRID --check --diff "${TMPDIR}/my_module"
   rules:
     - changes:
         - cookiecutter-module/**/*
@@ -221,7 +224,7 @@ check-template-modules:
 .test-db:
   extends: .test-tox
   variables:
-    DB_CACHE: /tmp/cache
+    DB_CACHE: "${TMPDIR}/cache"
   script:
     - tox -e "py${PYTHON_VERSION/./}-${DATABASE}" -c "${PACKAGE}" -- -v --output-file junit.xml
 
@@ -370,8 +373,8 @@ test-demo:
     - pip install packages/trytond* packages/proteus*
   script:
     - touch /tmp/demo.sqlite
-    - echo "admin" > /tmp/password
-    - TRYTONPASSFILE=/tmp/password trytond-admin --database demo --all --email admin@example.com
+    - echo "admin" > "${TMPDIR}/password"
+    - TRYTONPASSFILE="${TMPDIR}/password" trytond-admin --database demo --all --email admin@example.com
     - python -m demo --database demo
   rules:
     - changes:
