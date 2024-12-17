@@ -364,7 +364,7 @@ test-demo:
   stage: test
   image: ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/python:3.8
   variables:
-    TRYTOND_DATABASE__PATH: /tmp
+    TRYTOND_DATABASE__PATH: /dev/shm
     PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
   cache:
     paths:
@@ -372,7 +372,7 @@ test-demo:
   before_script:
     - pip install packages/trytond* packages/proteus*
   script:
-    - touch /tmp/demo.sqlite
+    - touch "${TRYTOND_DATABASE__PATH}/demo.sqlite"
     - echo "admin" > "${TMPDIR}/password"
     - TRYTONPASSFILE="${TMPDIR}/password" trytond-admin --database demo --all --email admin@example.com
     - python -m demo --database demo
