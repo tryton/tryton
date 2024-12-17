@@ -5,7 +5,6 @@ from functools import wraps
 
 from sql.operators import NotIn
 
-from trytond.cache import Cache
 from trytond.exceptions import UserError
 from trytond.i18n import gettext
 from trytond.model import ModelSQL, ModelView, Unique, fields, sequence_ordered
@@ -487,7 +486,6 @@ class ModuleActivateUpgrade(Wizard):
             lang = [x.code for x in langs]
         if update:
             pool.init(update=update, lang=lang)
-            Cache.refresh_pool(transaction)
         return 'done'
 
     def transition_next_(self):
