@@ -117,7 +117,6 @@ class Pool(object):
         '''
         with cls._lock:
             cls._pools.pop(database_name, None)
-            cls._pool_instances.clear()
 
     @classmethod
     def database_list(cls):
@@ -147,6 +146,7 @@ class Pool(object):
             self._pools[self.database_name] = self._pool
             self._pool_modules[self.database_name] = self._modules
             self._pool_instances.clear()
+            self._pool_instances.add(self)
             if restart:
                 self.init()
 
