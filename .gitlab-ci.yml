@@ -12,6 +12,9 @@ stages:
   - test
   - build
 
+variables:
+  TMPDIR: /tmp
+
 packages:
   stage: preparation
   rules:
@@ -128,8 +131,8 @@ check-eslint:
 check-ci-modules:
   extends: .check
   script:
-    - python .gitlab-scripts/generate-ci.py $TMPDIR/gitab-ci-modules.yml
-    - cmp .gitlab-ci-modules.yml $TMPDIR/gitab-ci-modules.yml
+    - python .gitlab-scripts/generate-ci.py "${TMPDIR}/gitab-ci-modules.yml"
+    - cmp .gitlab-ci-modules.yml "${TMPDIR}/gitab-ci-modules.yml"
 
 .test:
   stage: test
@@ -162,7 +165,7 @@ check-ci-modules:
 .test-db:
   extends: .test-tox
   variables:
-    DB_CACHE: /tmp/cache
+    DB_CACHE: "${TMPDIR}/cache"
   script:
     - tox -e "py${PYTHON_VERSION/./}-${DATABASE}" -c "${PACKAGE}"
 
