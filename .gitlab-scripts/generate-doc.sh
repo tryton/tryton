@@ -7,7 +7,7 @@ mkdir -p "${OUTPUTDIR}"
 : ${MAX_PROCS:=$(( `nproc` * 2 ))}
 export DOC_BASE_URL
 
-requirements=$(mktemp /tmp/requirements-doc-XXXXXXXXXX.txt)
+requirements=$(mktemp "${TMPDIR}/requirements-doc-XXXXXXXXXX.txt")
 find . -name 'cookiecutter*' -prune -o -path '*/doc/requirements-doc.txt' -exec cat {} + | sort | uniq > "${requirements}"
 pip install setuptools
 pip install -r "${requirements}"
