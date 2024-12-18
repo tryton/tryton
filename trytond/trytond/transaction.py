@@ -197,7 +197,7 @@ class Transaction(object):
             count = 0
             while True:
                 if count:
-                    time.sleep(0.002 * (_retry - count))
+                    time.sleep(0.02 * (_retry - count))
                 try:
                     lock_tables = extras.get('_lock_tables', [])
                     for table in lock_tables:
