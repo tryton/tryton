@@ -7,6 +7,7 @@ import selectors
 import threading
 from collections import OrderedDict, defaultdict
 from copy import deepcopy
+from uuid import uuid4
 from weakref import WeakKeyDictionary
 
 from sql import Conflict, Table
@@ -25,6 +26,8 @@ _clean_timeout = config.getint('cache', 'clean_timeout')
 _select_timeout = config.getint('cache', 'select_timeout')
 _default_size_limit = config.getint('cache', 'default')
 logger = logging.getLogger(__name__)
+
+REFRESH_POOL_MSG = "refresh pool"
 
 
 def _cast(column):
@@ -69,6 +72,7 @@ class _CacheLocal(local):
     def __init__(self):
         self.listeners = {}
         self.listener_lock = threading.Lock()
+        self.portable_id = str(uuid4())
 
 
 class BaseCache(object):
@@ -374,10 +378,11 @@ class MemoryCache(BaseCache):
         if not _clean_timeout and database.has_channel():
             database = backend.Database(dbname)
             conn = database.get_connection()
+            process_id = cls._local.portable_id
+            payload = f"{REFRESH_POOL_MSG} {process_id}"
             try:
                 cursor = conn.cursor()
-                cursor.execute(
-                    'NOTIFY "%s", %%s' % cls._channel, ('refresh pool',))
+                cursor.execute(f'NOTIFY "{cls._channel}", %s', (payload,))
                 conn.commit()
             finally:
                 database.put_connection(conn)
@@ -410,11 +415,14 @@ class MemoryCache(BaseCache):
                 conn.poll()
                 while conn.notifies:
                     notification = conn.notifies.pop()
-                    if notification.payload == 'refresh pool':
-                        Pool.refresh(dbname, _get_modules(cursor))
-                    elif notification.payload:
-                        reset = json.loads(notification.payload)
-                        for name in reset:
+                    payload = notification.payload
+                    if payload and payload.startswith(REFRESH_POOL_MSG):
+                        remote_id = payload[len(REFRESH_POOL_MSG) + 1:]
+                        process_id = cls._local.portable_id
+                        if remote_id != process_id:
+                            Pool.refresh(dbname, _get_modules(cursor))
+                    elif payload:
+                        for name in json.loads(payload):
                             inst = cls._instances[name]
                             inst._clear(dbname)
                 cls._clean_last = dt.datetime.now()
