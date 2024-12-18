@@ -318,6 +318,20 @@ html[theme="default"] {
     flex: 1;
 }
 
+@media screen and (max-width: @screen-sm-max) {
+    .attachment-preview {
+        visibility: collapse;
+    }
+    #tabcontent[data-view-type="form"] {
+        > .tab-pane > .panel > .panel-body {
+            flex-direction: column-reverse;
+        }
+        .attachment-preview {
+            visibility: unset;
+        }
+    }
+}
+
 @media screen and (min-width: @screen-sm-min) {
     #global-search-entry {
         width: 10em;
