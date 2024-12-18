@@ -75,7 +75,8 @@ class Screen:
         self.__current_record = None
         self.new_group(context or {})
         self.current_record = None
-        self.screen_container = ScreenContainer(attributes.get('tab_domain'))
+        self.screen_container = ScreenContainer(
+            self, attributes.get('tab_domain'))
         self.screen_container.alternate_view = attributes.get(
             'alternate_view', False)
         self.widget = self.screen_container.widget_get()
@@ -163,7 +164,6 @@ class Screen:
 
     def search_active(self, active=True):
         if active and not self.parent:
-            self.screen_container.set_screen(self)
             self.screen_container.show_filter()
         else:
             self.screen_container.hide_filter()
