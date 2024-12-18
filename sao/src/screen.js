@@ -4,7 +4,8 @@
     'use strict';
 
     Sao.ScreenContainer = Sao.class_(Object, {
-        init: function(tab_domain) {
+        init: function(screen, tab_domain) {
+            this.screen = screen;
             this.alternate_viewport = jQuery('<div/>', {
                 'class': 'screen-container'
             });
@@ -384,13 +385,10 @@
         do_search: function() {
             return this.screen.search_filter(this.get_text());
         },
-        set_screen: function(screen) {
-            this.screen = screen;
-            this.but_bookmark.prop('disabled',
-                    jQuery.isEmptyObject(this.bookmarks()));
-            this.bookmark_match();
-        },
         show_filter: function() {
+            this.but_bookmark.prop(
+                'disabled', jQuery.isEmptyObject(this.bookmarks()));
+            this.bookmark_match();
             this.filter_box.show();
             if (this.tab) {
                 this.tab.show();
@@ -821,7 +819,7 @@
             this.new_group(attributes.context || {});
             this.current_record = null;
             this.screen_container = new Sao.ScreenContainer(
-                attributes.tab_domain);
+                this, attributes.tab_domain);
             this.breadcrumb = attributes.breadcrumb || [];
 
             this.context_screen = null;
@@ -1730,7 +1728,6 @@
         },
         search_active: function(active) {
             if (active && !this.group.parent) {
-                this.screen_container.set_screen(this);
                 this.screen_container.show_filter();
             } else {
                 this.screen_container.hide_filter();
