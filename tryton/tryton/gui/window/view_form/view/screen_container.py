@@ -185,7 +185,8 @@ class Selection(Gtk.ScrolledWindow):
 
 class ScreenContainer(object):
 
-    def __init__(self, tab_domain):
+    def __init__(self, screen, tab_domain):
+        self.screen = screen
         self.viewport = Gtk.Viewport()
         self.viewport.set_shadow_type(Gtk.ShadowType.NONE)
         self.vbox = Gtk.VBox(spacing=3)
@@ -351,12 +352,9 @@ class ScreenContainer(object):
     def widget_get(self):
         return self.vbox
 
-    def set_screen(self, screen):
-        self.screen = screen
+    def show_filter(self):
         self.but_bookmark.set_sensitive(bool(list(self.bookmarks())))
         self.bookmark_match()
-
-    def show_filter(self):
         if self.filter_vbox:
             self.filter_vbox.show()
         if self.notebook:
