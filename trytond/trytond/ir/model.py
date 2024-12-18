@@ -175,9 +175,15 @@ class Model(
             models = cls.search([])
             items = ((m.name, m.string) for m in models)
             if classes:
+                def pool_get(model):
+                    # During update existing model may not yet be in the pool
+                    try:
+                        return pool.get(model)
+                    except KeyError:
+                        return object
                 items = (
                     (m, n) for m, n in items
-                    if issubclass(pool.get(m), classes))
+                    if issubclass(pool_get(m), classes))
             items = list(items)
             cls._get_names_cache.set(key, items)
         return items
