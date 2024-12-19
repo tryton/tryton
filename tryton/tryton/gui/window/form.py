@@ -88,6 +88,10 @@ class Form(TabContent):
     def create_tabcontent(self):
         super().create_tabcontent()
 
+        self.sidebar = Gtk.VBox()
+        self.sidebar.show()
+        self.main.pack2(self.sidebar, resize=False, shrink=True)
+
         self.attachment_preview = Gtk.Viewport()
         self.attachment_preview.set_shadow_type(Gtk.ShadowType.NONE)
         self.attachment_preview.show()
@@ -97,7 +101,8 @@ class Form(TabContent):
             Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.AUTOMATIC)
         scrolledwindow.add(self.attachment_preview)
         scrolledwindow.set_size_request(300, -1)
-        self.main.pack2(scrolledwindow, resize=False, shrink=True)
+        self.sidebar.pack_start(
+            scrolledwindow, expand=True, fill=True, padding=0)
 
     def widget_get(self):
         return self.screen.widget

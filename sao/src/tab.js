@@ -789,9 +789,19 @@
         },
         create_tabcontent: function() {
             Sao.Tab.Form._super.create_tabcontent.call(this);
-            this.attachment_preview = jQuery('<div/>', {
-                'class': 'attachment-preview',
+
+            this.sidebar = jQuery('<div/>', {
+                'class': 'sidebar',
             }).hide().appendTo(this.main);
+            this.sidebar_content = jQuery('<div/>', {
+                'class': 'sidebar-content',
+            }).appendTo(jQuery('<div/>', {
+                'class': 'sidebar-resizer',
+            }).appendTo(this.sidebar));
+        },
+        update_sidebar: function() {
+            this.sidebar.toggle(
+                this.sidebar_content.children().length > 0);
         },
         compare: function(attributes) {
             if (!attributes) {
@@ -1121,16 +1131,16 @@
                 });
             };
             const preview = () => {
-                if (this.attachment_preview.children().length) {
-                    this.attachment_preview.empty();
-                    this.attachment_preview.hide();
+                let attachment_preview = this.sidebar_content.find('.attachment-preview');
+                if (attachment_preview.length) {
+                    attachment_preview.remove();
                     this.attachment_screen = null;
                 } else {
-                    this.attachment_preview.append(
+                    this.sidebar_content.prepend(
                         this._attachment_preview_el());
-                    this.attachment_preview.show();
                     this.refresh_attachment_preview();
                 }
+                this.update_sidebar();
             };
             var dropdown = this.buttons.attach.parents('.dropdown');
             if (!evt) {
@@ -1286,14 +1296,11 @@
         },
         _attachment_preview_el: function() {
             var el = jQuery('<div/>', {
-                'class': 'preview-resizer',
+                'class': 'attachment-preview',
             });
-            var content = jQuery('<div/>', {
-                'class': 'preview-resizer-content',
-            }).appendTo(el);
             var buttons = jQuery('<div/>', {
                 'class': 'btn-group center-block',
-            }).appendTo(content);
+            }).appendTo(el);
 
             var but_prev = jQuery('<button/>', {
                 'class': 'btn btn-default btn-sm',
@@ -1345,7 +1352,7 @@
             screen.windows.push(preview);
 
             screen.switch_view().done(function() {
-                content.append(screen.screen_container.el);
+                el.append(screen.screen_container.el);
             });
             return el;
         },

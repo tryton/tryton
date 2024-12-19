@@ -311,6 +311,44 @@ html[theme="default"] {
         display: flex;
         flex: 1;
     }
+
+    .sidebar {
+        border-color: @panel-default-border;
+        border-style: solid;
+        border-width: 0 0 0 1px;
+        flex: 1;
+        overflow: unset;
+
+        .sidebar-resizer {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            max-width: 100vw;
+            min-width: 100%;
+            overflow: hidden;
+            resize: inline;
+            transform: scaleX(-1);
+        }
+
+        .sidebar-content {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            transform: scaleX(-1);
+        }
+    }
+}
+
+@media screen and (max-width: @screen-xs-max) {
+    #tabcontent {
+        .sidebar:not(:empty) {
+            flex: 2;
+
+            > .sidebar-resizer {
+                resize: none;
+            }
+        }
+    }
 }
 
 #tabcontent[data-view-type="tree"] {
@@ -319,14 +357,16 @@ html[theme="default"] {
 }
 
 @media screen and (max-width: @screen-sm-max) {
-    .attachment-preview {
-        visibility: collapse;
+    #tabcontent {
+        .sidebar {
+            visibility: collapse;
+        }
     }
     #tabcontent[data-view-type="form"] {
         > .tab-pane > .panel > .panel-body {
-            flex-direction: column-reverse;
+            flex-direction: column;
         }
-        .attachment-preview {
+        .sidebar {
             visibility: unset;
         }
     }
@@ -365,6 +405,12 @@ html[theme="default"] {
             width: 15px;
         }
     }
+}
+
+.attachment-preview {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
 }
 
 .list-group-item-variant(selected; @state-selected-bg; @state-selected-text);
@@ -594,44 +640,8 @@ img.icon {
     min-height: 0;
 }
 
-.attachment-preview {
-    border-color: @panel-default-border;
-    border-style: solid;
-    border-width: 0 0 0 1px;
-    flex: 1;
-    overflow: unset;
-
-    > div.preview-resizer {
-        display: flex;
-        flex-direction: column;
-        height: 100%;
-        max-width: 100vw;
-        min-width: 100%;
-        overflow: hidden;
-        resize: inline;
-        transform: scaleX(-1);
-
-        > div.preview-resizer-content {
-            display: flex;
-            flex-direction: column;
-            flex: 1;
-            transform: scaleX(-1);
-        }
-    }
-}
-
 .wizard-form {
     width: 100%;
-}
-
-@media screen and (max-width: @screen-xs-max) {
-    .attachment-preview:not(:empty) {
-        flex: 2;
-
-        > div.preview-resizer {
-            resize: none;
-        }
-    }
 }
 
 .list-form {
