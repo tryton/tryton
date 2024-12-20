@@ -168,11 +168,11 @@ class Product(StockMixin, object, metaclass=PoolMeta):
             products = [p for p in products
                 if p.create_date <= context['_datetime']]
         with Transaction().set_context(context):
-            for product in cls.browse(products):
+            for product, h_product in zip(products, cls.browse(products)):
                 # The product may not have a cost price
-                if product.cost_price is not None:
+                if h_product.cost_price is not None:
                     cost_values[product.id] = round_price(
-                        Decimal(str(product.quantity)) * product.cost_price)
+                        Decimal(str(product.quantity)) * h_product.cost_price)
         return cost_values
 
     @classmethod
