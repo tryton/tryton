@@ -3,16 +3,6 @@
 from trytond.pool import PoolMeta
 
 
-class Party(metaclass=PoolMeta):
-    __name__ = 'party.party'
-    _history = True
-
-
-class Address(metaclass=PoolMeta):
-    __name__ = 'party.address'
-    _history = True
-
-
 class Replace(metaclass=PoolMeta):
     __name__ = 'party.replace'
 

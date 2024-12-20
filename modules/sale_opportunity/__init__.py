@@ -3,9 +3,7 @@
 
 from trytond.pool import Pool
 
-from . import (
-    account, company, configuration, opportunity, opportunity_reporting, party,
-    product, sale)
+from . import configuration, opportunity, opportunity_reporting, party, sale
 
 
 def register():
@@ -22,14 +20,6 @@ def register():
         configuration.Configuration,
         configuration.ConfigurationSequence,
         sale.Sale,
-        party.Party,
-        party.Address,
-        account.PaymentTerm,
-        account.PaymentTermLine,
-        product.Template,
-        product.Product,
-        company.Company,
-        company.Employee,
         module='sale_opportunity', type_='model')
     Pool.register(
         party.Replace,
