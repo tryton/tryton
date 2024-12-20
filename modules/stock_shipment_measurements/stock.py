@@ -4,9 +4,9 @@ from collections import defaultdict
 from functools import wraps
 from itertools import groupby
 
-from sql import Literal, Null
+from sql import Column, Literal, Null
 from sql.aggregate import Sum
-from sql.conditionals import Coalesce
+from sql.conditionals import Case, Coalesce
 from sql.operators import Concat
 
 from trytond.model import Index, ModelSQL, ModelView, Workflow, fields
@@ -336,16 +336,16 @@ class MeasurementsMixin(object):
         query = table.join(
             move, type_='LEFT',
             condition=cls._measurements_move_condition(table, move)
-            & (move.state != 'cancelled')
-            ).join(
-                location,
-                condition=cls._measurements_location_condition(
-                    table, move, location)
-                ).select(
-                    table.id,
-                    Sum(Coalesce(move.internal_weight, 0)),
-                    Sum(Coalesce(move.internal_volume, 0)),
-                    group_by=[table.id])
+            & (move.state != 'cancelled'))
+        location_condition = cls._measurements_location_condition(
+            table, move, location)
+        if location_condition:
+            query = query.join(location, condition=location_condition)
+        query = query.select(
+            table.id,
+            cls._measurements_column('weight', table, move),
+            cls._measurements_column('volume', table, move),
+            group_by=[table.id])
 
         weights, volumes = {}, {}
         states = cls._measurements_states()
@@ -377,45 +377,19 @@ class MeasurementsMixin(object):
     @classmethod
     def search_measurements(cls, name, clause):
         pool = Pool()
-        Configuration = pool.get('stock.configuration')
         Location = pool.get('stock.location')
-        ModelData = pool.get('ir.model.data')
         Move = pool.get('stock.move')
-        Uom = pool.get('product.uom')
 
         table = cls.__table__()
         move = Move.__table__()
         location = Location.__table__()
-        configuration = Configuration(1)
-        uom = configuration.get_multivalue('measurement_%s_uom' % name)
 
         _, operator, value = clause
 
         Operator = fields.SQL_OPERATORS[operator]
-        if name == 'weight':
-            measurement = Sum(Coalesce(move.internal_weight, 0))
-            column = table.internal_weight
-            if value is not None:
-                kg = Uom(ModelData.get_id('product', 'uom_kilogram'))
-                if isinstance(value, (int, float)):
-                    value = Uom.compute_qty(uom, value, kg, round=False)
-                else:
-                    value = [
-                        Uom.compute_qty(uom, v, kg, round=False)
-                        if v is not None else v
-                        for v in value]
-        else:
-            measurement = Sum(Coalesce(move.internal_volume, 0))
-            column = table.internal_volume
-            if value is not None:
-                liter = Uom(ModelData.get_id('product', 'uom_liter'))
-                if isinstance(value, (int, float)):
-                    value = Uom.compute_qty(uom, value, liter, round=False)
-                else:
-                    value = [
-                        Uom.compute_qty(uom, v, liter, round=False)
-                        if v is not None else v
-                        for v in value]
+        measurement = cls._measurements_column(name, table, move)
+        column = Column(table, f'internal_{name}')
+        value = cls._measurements_value(name, value)
 
         if states := cls._measurements_states():
             state_clause = table.state.in_(states)
@@ -425,18 +399,18 @@ class MeasurementsMixin(object):
         query = table.join(
             move, type_='LEFT',
             condition=cls._measurements_move_condition(table, move)
-            & (move.state != 'cancelled')
-            ).join(
-                location,
-                condition=cls._measurements_location_condition(
-                    table, move, location)
-                ).select(
-                    table.id,
-                    where=~state_clause
-                    | (table.internal_weight == Null)
-                    | (table.internal_volume == Null),
-                    group_by=[table.id],
-                    having=Operator(measurement, value))
+            & (move.state != 'cancelled'))
+        location_condition = cls._measurements_location_condition(
+            table, move, location)
+        if location_condition:
+            query = query.join(location, condition=location_condition)
+        query = query.select(
+            table.id,
+            where=~state_clause
+            | (table.internal_weight == Null)
+            | (table.internal_volume == Null),
+            group_by=[table.id],
+            having=Operator(measurement, value))
         query |= table.select(
             table.id,
             where=state_clause
@@ -444,6 +418,42 @@ class MeasurementsMixin(object):
             & (table.internal_volume != Null)
             & Operator(column, value))
         return [('id', 'in', query)]
+
+    @classmethod
+    def _measurements_column(cls, name, table, move):
+        if name == 'weight':
+            return Sum(Coalesce(move.internal_weight, 0))
+        elif name == 'volume':
+            return Sum(Coalesce(move.internal_volume, 0))
+
+    @classmethod
+    def _measurements_value(cls, name, value):
+        pool = Pool()
+        Configuration = pool.get('stock.configuration')
+        ModelData = pool.get('ir.model.data')
+        Uom = pool.get('product.uom')
+        if value is not None:
+            configuration = Configuration(1)
+            uom = configuration.get_multivalue('measurement_%s_uom' % name)
+            if name == 'weight':
+                kg = Uom(ModelData.get_id('product', 'uom_kilogram'))
+                if isinstance(value, (int, float)):
+                    value = Uom.compute_qty(uom, value, kg, round=False)
+                else:
+                    value = [
+                        Uom.compute_qty(uom, v, kg, round=False)
+                        if v is not None else v
+                        for v in value]
+            elif name == 'volume':
+                liter = Uom(ModelData.get_id('product', 'uom_liter'))
+                if isinstance(value, (int, float)):
+                    value = Uom.compute_qty(uom, value, liter, round=False)
+                else:
+                    value = [
+                        Uom.compute_qty(uom, v, liter, round=False)
+                        if v is not None else v
+                        for v in value]
+        return value
 
     @classmethod
     def _measurements_move_condition(cls, table, move):
