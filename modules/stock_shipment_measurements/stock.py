@@ -599,7 +599,24 @@ class ShipmentOutReturn(MeasurementsMixin, object, metaclass=PoolMeta):
     def cancel(cls, shipments):
         super().cancel(shipments)
 
-# TODO ShipmentInternal
+
+class ShipmentInternal(MeasurementsMixin, metaclass=PoolMeta):
+    __name__ = 'stock.shipment.internal'
+
+    @classmethod
+    def _measurements_location_condition(cls, shipment, move, location):
+        return
+
+    @classmethod
+    def _measurements_column(cls, name, table, move):
+        column = super()._measurements_column(name, table, move)
+        if column:
+            column = Case(
+                ((table.internal_transit_location != Null)
+                    & ~table.state.in_(['request', 'draft']),
+                    column / 2),
+                else_=column)
+        return column
 
 
 class Package(MeasurementsMixin, object, metaclass=PoolMeta):

@@ -242,5 +242,64 @@ class StockShipmentMeasurementsTestCase(CompanyTestMixin, ModuleTestCase):
                 msg = 'clause: %s' % clause
                 self.assertEqual(Shipment.search(clause), result, msg=msg)
 
+    @with_transaction()
+    def test_shipment_internal_measurements(self):
+        "Test shipment internal measurements"
+        pool = Pool()
+        Uom = pool.get('product.uom')
+        Template = pool.get('product.template')
+        Product = pool.get('product.product')
+        Location = pool.get('stock.location')
+        Move = pool.get('stock.move')
+        Shipment = pool.get('stock.shipment.internal')
+
+        kg, = Uom.search([('name', '=', 'Kilogram')])
+        liter, = Uom.search([('name', '=', 'Liter')])
+        warehouse1, = Location.search([('type', '=', 'warehouse')])
+        warehouse2, = Location.copy([warehouse1])
+        company = create_company()
+
+        template, = Template.create([{
+                    'name': "Test measurements",
+                    'type': 'goods',
+                    'default_uom': kg,
+                    'volume': 0.2,
+                    'volume_uom': liter,
+                    }])
+        product, = Product.create([{
+                    'template': template.id,
+                    }])
+
+        with set_company(company):
+            shipment = Shipment()
+            shipment.from_location = warehouse1.storage_location
+            shipment.to_location = warehouse2.storage_location
+            shipment.save()
+
+            # without moves
+            self.assertEqual(shipment.weight, 0)
+            self.assertEqual(shipment.volume, 0)
+
+            shipment.moves = [Move(
+                    product=product,
+                    unit=kg,
+                    quantity=10,
+                    from_location=shipment.from_location,
+                    to_location=shipment.to_location,
+                    company=company,
+                    )]
+            shipment.save()
+
+            # without transit
+            self.assertEqual(shipment.weight, 10)
+            self.assertEqual(shipment.volume, 2)
+
+            Shipment.wait([shipment])
+            self.assertEqual(len(shipment.moves), 2)
+
+            # with transit
+            self.assertEqual(shipment.weight, 10)
+            self.assertEqual(shipment.volume, 2)
+
 
 del ModuleTestCase
