@@ -607,6 +607,7 @@ class Record:
             values.update(self._get_on_change_args(on_change))
 
         if values:
+            values['id'] = self.id
             try:
                 if len(fieldnames) == 1 or 'id' not in values:
                     changes = []
@@ -668,6 +669,7 @@ class Record:
                                 'on_change_with_' + fieldname,
                                 values, context=self.get_context()))
                 else:
+                    values['id'] = self.id
                     changed = RPCExecute(
                         'model', self.model_name, 'on_change_with',
                         values, list(fieldnames), context=self.get_context())
@@ -690,6 +692,7 @@ class Record:
                                 'on_change_with_' + fieldname,
                                 values, context=self.get_context()))
                 else:
+                    values['id'] = self.id
                     changed = RPCExecute(
                         'model', self.model_name, 'on_change_with',
                         values, list(later), context=self.get_context())
@@ -721,6 +724,7 @@ class Record:
     def on_scan_code(self, code, depends):
         depends = self.expr_eval(depends)
         values = self._get_on_change_args(depends)
+        values['id'] = self.id
         try:
             changes = RPCExecute(
                 'model', self.model_name, 'on_scan_code', values, code,

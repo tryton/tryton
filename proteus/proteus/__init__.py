@@ -925,6 +925,7 @@ class Model(object):
         else:
             record, = records
             values = record._on_change_args(change)
+            values['id'] = record.id
             changes = getattr(proxy, button)(values, context)
             record._set_on_change(changes)
 
@@ -1151,6 +1152,7 @@ class Model(object):
                     on_change)
             values.update(self._on_change_args(on_change))
         if values:
+            values['id'] = self.id
             context = self._context
             change = getattr(self._proxy, 'on_change')(values, names, context)
             self._set_on_change(change)
@@ -1171,6 +1173,7 @@ class Model(object):
             to_change.add(field)
             values.update(self._on_change_args(on_change_with + [field]))
         if to_change:
+            values['id'] = self.id
             context = self._context
             changes = getattr(self._proxy, 'on_change_with')(values,
                 list(to_change), context)
@@ -1180,6 +1183,7 @@ class Model(object):
             for field in later:
                 on_change_with = self._fields[field]['on_change_with']
                 values.update(self._on_change_args(on_change_with + [field]))
+            values['id'] = self.id
             context = self._context
             changes = getattr(self._proxy, 'on_change_with')(
                 values, list(later), context)

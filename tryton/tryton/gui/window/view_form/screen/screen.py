@@ -1263,6 +1263,7 @@ class Screen:
         record = self.current_record
         args = record.expr_eval(button.get('change', []))
         values = record._get_on_change_args(args)
+        values['id'] = record.id
         try:
             changes = RPCExecute('model', self.model_name, button['name'],
                 values, context=self.context)
