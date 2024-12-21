@@ -1097,6 +1097,7 @@
                 }
             }
             if (!jQuery.isEmptyObject(values)) {
+                values.id = this.id;
                 var changes;
                 try {
                     if ((fieldnames.length == 1) ||
@@ -1179,6 +1180,7 @@
                                     [values], this.get_context(), false));
                         }
                     } else {
+                        values.id = this.id;
                         changed = this.model.execute(
                             'on_change_with',
                             [values, fieldnames], this.get_context(), false);
@@ -1211,6 +1213,7 @@
                                     [values], this.get_context(), false));
                         }
                     } else {
+                        values.id = this.id;
                         changed = this.model.execute(
                             'on_change_with',
                             [values, fieldnames], this.get_context(), false);
@@ -1266,6 +1269,7 @@
         on_scan_code: function(code, depends) {
             depends = this.expr_eval(depends);
             var values = this._get_on_change_args(depends);
+            values.id = this.id;
             return this.model.execute(
                 'on_scan_code', [values, code], this.get_context(),
                 true, false).then((changes) => {
