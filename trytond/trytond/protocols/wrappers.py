@@ -203,6 +203,8 @@ def with_pool(func):
                 raise
             else:
                 abort(HTTPStatus.BAD_REQUEST, e)
+        except exceptions.HTTPException:
+            raise
         except Exception as e:
             if request.rpc_method:
                 raise
