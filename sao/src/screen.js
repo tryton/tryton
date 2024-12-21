@@ -2016,6 +2016,7 @@
                     if (attributes.type === 'instance') {
                         var args = record.expr_eval(attributes.change || []);
                         var values = record._get_on_change_args(args);
+                        values.id = record.id;
                         return record.model.execute(attributes.name, [values],
                             this.context).then(function(changes) {
                             record.set_on_change(changes);
