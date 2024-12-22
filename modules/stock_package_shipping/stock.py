@@ -310,6 +310,63 @@ class ShipmentInReturn(ShippingMixin, metaclass=PoolMeta):
         return self.delivery_address
 
 
+class ShipmentInternal(ShippingMixin, metaclass=PoolMeta):
+    __name__ = 'stock.shipment.internal'
+
+    carrier = fields.Many2One(
+        'carrier', "Carrier",
+        states={
+            'invisible': ~Eval('transit_location'),
+            'readonly': ~Eval('state').in_(['draft', 'waiting', 'assigned']),
+            })
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        shipping_invisible = ~Eval('transit_location')
+        for field in [
+                cls.shipping_reference,
+                cls.shipping_description,
+                cls.has_shipping_service]:
+            field.states['invisible'] = shipping_invisible
+        cls._buttons['create_shipping']['invisible'] |= shipping_invisible
+
+    @classmethod
+    @ModelView.button
+    @Workflow.transition('packed')
+    def pack(cls, shipments):
+        super().pack(shipments)
+        pool = Pool()
+        Warning = pool.get('res.user.warning')
+        for shipment in shipments:
+            if not shipment.transit_location:
+                continue
+            if not shipment.carrier:
+                name = Warning.format('no_carrier', [shipment])
+                if Warning.check(name):
+                    raise PackWarning(
+                        gettext('stock_package_shipping'
+                            '.msg_shipment_without_carrier',
+                            shipment=shipment.rec_name))
+
+    @property
+    def shipping_allowed(self):
+        return {'packed', 'shipped'}
+
+    @property
+    def shipping_warehouse(self):
+        return self.warehouse
+
+    @property
+    def shipping_to(self):
+        return self.company.party
+
+    @property
+    def shipping_to_address(self):
+        if self.to_location.warehouse:
+            return self.to_location.warehouse.address
+
+
 class CreateShipping(Wizard):
     __name__ = 'stock.shipment.create_shipping'
 
