@@ -170,10 +170,11 @@ class Model(URLMixin, PoolBase, metaclass=ModelMeta):
                     if field._type == 'reference':
                         target_name, target_id = value.split(',')
                         Target = pool.get(target_name)
+                        target_id = int(target_id)
                     else:
                         Target = field.get_target()
                         target_id = value
-                    if 'rec_name' in Target._fields:
+                    if 'rec_name' in Target._fields and target_id >= 0:
                         target = Target(target_id)
                         values.setdefault(
                             field_name + '.', {})['rec_name'] = target.rec_name

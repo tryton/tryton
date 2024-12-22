@@ -69,6 +69,9 @@ class ModelDefault(Model):
     name = fields.Char("Name")
     description = fields.Char("Description")
     target = fields.Many2One('test.model', "Target")
+    reference = fields.Reference("Reference", [
+            ('test.model', "Model"),
+            ])
 
     @classmethod
     def default_description(cls):

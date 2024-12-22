@@ -375,6 +375,18 @@ class ModelTestCase(TestCase):
                     })
 
     @with_transaction()
+    def test_default_get_with_model_reference_rec_name(self):
+        "Test default_get with model reference and rec_name"
+        pool = Pool()
+        Model = pool.get('test.model.default')
+
+        with Transaction().set_context(default_reference='test.model,-1'):
+            self.assertEqual(
+                Model.default_get(['reference'], with_rec_name=True), {
+                    'reference': 'test.model,-1',
+                    })
+
+    @with_transaction()
     def test_default_get_without_rec_name(self):
         "Test default_get without rec_name"
         pool = Pool()
