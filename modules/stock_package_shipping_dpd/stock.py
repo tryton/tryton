@@ -37,22 +37,14 @@ class Package(metaclass=PoolMeta):
     __name__ = 'stock.package'
 
     def get_shipping_tracking_url(self, name):
-        pool = Pool()
-        ShipmentOut = pool.get('stock.shipment.out')
-        ShipmentInReturn = pool.get('stock.shipment.in.return')
         url = super().get_shipping_tracking_url(name)
         if (self.shipping_reference
                 and self.shipment
                 and self.shipment.id >= 0
                 and self.shipment.carrier
                 and self.shipment.carrier.shipping_service == 'dpd'):
-            party = address = None
-            if isinstance(self.shipment, ShipmentOut):
-                party = self.shipment.customer
-                address = self.shipment.delivery_address
-            elif isinstance(self.shipment, ShipmentInReturn):
-                party = self.shipment.supplier
-                address = self.shipment.delivery_address
+            party = self.shipment.shipping_to
+            address = self.shipment.shipping_to_address
             if party and party.lang:
                 lang_code = party.lang.code
             else:
@@ -80,14 +72,6 @@ class ShippingDPDMixin:
                     '.msg_warehouse_address_required',
                     shipment=self.rec_name,
                     warehouse=warehouse.rec_name))
-
-
-class ShipmentOut(ShippingDPDMixin, metaclass=PoolMeta):
-    __name__ = 'stock.shipment.out'
-
-
-class ShipmentInReturn(ShippingDPDMixin, metaclass=PoolMeta):
-    __name__ = 'stock.shipment.in.return'
 
 
 class CreateShipping(metaclass=PoolMeta):

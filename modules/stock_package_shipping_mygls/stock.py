@@ -108,14 +108,6 @@ class ShippingMyGLSMixin:
                         address=shipping_to_address.rec_name))
 
 
-class ShipmentOut(ShippingMyGLSMixin, metaclass=PoolMeta):
-    __name__ = 'stock.shipment.out'
-
-
-class ShipmentInReturn(ShippingMyGLSMixin, metaclass=PoolMeta):
-    __name__ = 'stock.shipment.in.return'
-
-
 class ShipmentCreateShipping(metaclass=PoolMeta):
     __name__ = 'stock.shipment.create_shipping'
 

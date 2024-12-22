@@ -66,22 +66,14 @@ class Package(metaclass=PoolMeta):
     __name__ = 'stock.package'
 
     def get_shipping_tracking_url(self, name):
-        pool = Pool()
-        ShipmentOut = pool.get('stock.shipment.out')
-        ShipmentInReturn = pool.get('stock.shipment.in.return')
         url = super().get_shipping_tracking_url(name)
         if (self.shipping_reference
                 and self.shipment
                 and self.shipment.id >= 0
                 and self.shipment.carrier
                 and self.shipment.carrier.shipping_service == 'ups'):
-            party = address = None
-            if isinstance(self.shipment, ShipmentOut):
-                party = self.shipment.customer
-                address = self.shipment.delivery_address
-            elif isinstance(self.shipment, ShipmentInReturn):
-                party = self.shipment.supplier
-                address = self.shipment.delivery_address
+            party = self.shipment.shipping_to
+            address = self.shipment.shipping_to_address
             parts = urllib.parse.urlsplit(TRACKING_URL)
             query = urllib.parse.parse_qsl(parts.query)
             if party and party.lang and address and address.country:
@@ -106,7 +98,7 @@ class ShippingUPSMixin:
                     '.msg_warehouse_address_required',
                     shipment=self.rec_name,
                     warehouse=warehouse.rec_name))
-        if warehouse.address.country != self.delivery_address.country:
+        if warehouse.address.country != self.shipping_to_address.country:
             for address in [self.shipping_to_address, warehouse.address]:
                 if not address.contact_mechanism_get(
                         {'phone', 'mobile'}, usage=usage):
@@ -123,14 +115,6 @@ class ShippingUPSMixin:
                         gettext('stock_package_shipping_ups'
                             '.msg_shipping_description_required',
                             shipment=self.rec_name))
-
-
-class ShipmentOut(ShippingUPSMixin, metaclass=PoolMeta):
-    __name__ = 'stock.shipment.out'
-
-
-class ShipmentInReturn(ShippingUPSMixin, metaclass=PoolMeta):
-    __name__ = 'stock.shipment.in.return'
 
 
 class CreateShipping(metaclass=PoolMeta):
