@@ -216,7 +216,7 @@ class ShippingMixin:
                     and shipment.delivery_address
                     and shipment.warehouse not in
                     shipment.delivery_address.warehouses):
-                name = 'shipment_out_no_carrier_%s' % shipment
+                name = Warning.format('no_carrier', [shipment])
                 if Warning.check(name):
                     raise PackWarning(name,
                         gettext('stock_package_shipping'
