@@ -6,7 +6,7 @@ from trytond.pool import PoolMeta
 from trytond.pyson import Eval
 
 
-class AttributeSet(ModelSQL, ModelView, metaclass=PoolMeta):
+class AttributeSet(ModelSQL, ModelView):
     __name__ = 'product.attribute.set'
     name = fields.Char('Name', required=True, translate=True,
         help="The main identifier of product attribute set.")
@@ -15,14 +15,14 @@ class AttributeSet(ModelSQL, ModelView, metaclass=PoolMeta):
         help="Add attributes to the set.")
 
 
-class Attribute(DictSchemaMixin, ModelSQL, ModelView, metaclass=PoolMeta):
+class Attribute(DictSchemaMixin, ModelSQL, ModelView):
     __name__ = 'product.attribute'
     sets = fields.Many2Many('product.attribute-product.attribute-set',
         'attribute', 'attribute_set', 'Sets',
         help="Add sets to the attribute.")
 
 
-class AttributeAttributeSet(ModelSQL, metaclass=PoolMeta):
+class AttributeAttributeSet(ModelSQL):
     __name__ = 'product.attribute-product.attribute-set'
     attribute = fields.Many2One(
         'product.attribute', "Attribute",
