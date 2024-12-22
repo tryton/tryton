@@ -179,10 +179,7 @@ class Package(tree(), MeasurementsMixin, ModelSQL, ModelView):
             })
     moves = fields.One2Many('stock.move', 'package', 'Moves',
         domain=[
-            ('company', '=', Eval('company', -1)),
-            ('shipment', '=', Eval('shipment')),
-            ('to_location.type', 'in', ['customer', 'supplier']),
-            ('state', '!=', 'cancelled'),
+            ('id', 'in', Eval('allowed_moves', [])),
             ],
         filter=[
             ('quantity', '!=', 0),
@@ -193,6 +190,9 @@ class Package(tree(), MeasurementsMixin, ModelSQL, ModelView):
         states={
             'readonly': Eval('state') == 'closed',
             })
+    allowed_moves = fields.Function(
+        fields.Many2Many('stock.move', None, None, "Allowed Moves"),
+        'on_change_with_allowed_moves')
     parent = fields.Many2One(
         'stock.package', "Parent", ondelete='CASCADE',
         domain=[
@@ -276,6 +276,7 @@ class Package(tree(), MeasurementsMixin, ModelSQL, ModelView):
         return [
             'stock.shipment.out',
             'stock.shipment.in.return',
+            'stock.shipment.internal',
             ]
 
     @classmethod
@@ -285,6 +286,11 @@ class Package(tree(), MeasurementsMixin, ModelSQL, ModelView):
         get_name = Model.get_name
         models = cls._get_shipment()
         return [(None, '')] + [(m, get_name(m)) for m in models]
+
+    @fields.depends('shipment')
+    def on_change_with_allowed_moves(self, name=None):
+        if self.shipment:
+            return self.shipment.packages_moves
 
     @fields.depends('shipment')
     def on_change_with_state(self, name=None):
@@ -509,4 +515,30 @@ class ShipmentInReturn(PackageMixin, object, metaclass=PoolMeta):
     def packages_moves(self):
         return [
             m for m in self.moves
+            if m.state != 'cancelled' and m.quantity]
+
+
+class ShipmentInternal(PackageMixin, object, metaclass=PoolMeta):
+    __name__ = 'stock.shipment.internal'
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        packages_readonly = Eval('state') != 'waiting'
+        packages_invisible = ~Eval('transit_location')
+        for field in [cls.packages, cls.root_packages]:
+            field.states['readonly'] = packages_readonly
+            field.states['invisible'] = packages_invisible
+
+    @classmethod
+    @ModelView.button
+    @Workflow.transition('packed')
+    def pack(cls, shipments):
+        super().pack(shipments)
+        cls.check_packages(shipments)
+
+    @property
+    def packages_moves(self):
+        return [
+            m for m in self.outgoing_moves
             if m.state != 'cancelled' and m.quantity]

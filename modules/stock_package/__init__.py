@@ -15,4 +15,5 @@ def register():
         stock.Move,
         stock.ShipmentOut,
         stock.ShipmentInReturn,
+        stock.ShipmentInternal,
         module='stock_package', type_='model')
