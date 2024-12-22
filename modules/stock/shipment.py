@@ -2458,6 +2458,7 @@ class ShipmentInternal(
             help="The moves that receive the stock in."),
         'get_incoming_moves', setter='set_moves')
     assigned_by = employee_field("Received By")
+    packed_by = employee_field("Packed By")
     shipped_by = employee_field("Shipped By")
     done_by = employee_field("Done By")
     state = fields.Selection([
@@ -2465,6 +2466,7 @@ class ShipmentInternal(
             ('draft', 'Draft'),
             ('waiting', 'Waiting'),
             ('assigned', 'Assigned'),
+            ('packed', "Packed"),
             ('shipped', 'Shipped'),
             ('done', 'Done'),
             ('cancelled', 'Cancelled'),
@@ -2489,8 +2491,10 @@ class ShipmentInternal(
                 ('draft', 'waiting'),
                 ('waiting', 'waiting'),
                 ('waiting', 'assigned'),
-                ('assigned', 'shipped'),
+                ('assigned', 'packed'),
                 ('assigned', 'done'),
+                ('packed', 'shipped'),
+                ('packed', 'waiting'),
                 ('shipped', 'done'),
                 ('waiting', 'draft'),
                 ('assigned', 'waiting'),
@@ -2527,8 +2531,14 @@ class ShipmentInternal(
                             'tryton-forward')),
                     'depends': ['state'],
                     },
+                'pack': {
+                    'invisible': (
+                        (Eval('state') != 'assigned')
+                        | ~Eval('transit_location')),
+                    'depends': ['state', 'transit_location'],
+                    },
                 'ship': {
-                    'invisible': ((Eval('state') != 'assigned')
+                    'invisible': ((Eval('state') != 'packed')
                         | ~Eval('transit_location')),
                     'depends': ['state', 'transit_location'],
                     },
@@ -2695,6 +2705,7 @@ class ShipmentInternal(
         default.setdefault('moves.planned_date', partial(
                 shipment_field, name='planned_date'))
         default.setdefault('assigned_by', None)
+        default.setdefault('packed_by', None)
         default.setdefault('shipped_by', None)
         default.setdefault('done_by', None)
         return super().copy(shipments, default=default)
@@ -2868,6 +2879,18 @@ class ShipmentInternal(
         pool = Pool()
         Move = pool.get('stock.move')
         Move.assign([m for s in shipments for m in s.assign_moves])
+
+    @classmethod
+    @ModelView.button
+    @Workflow.transition('packed')
+    @set_employee('packed_by')
+    def pack(cls, shipments):
+        pool = Pool()
+        Move = pool.get('stock.move')
+        Move.delete([
+                m for s in shipments for m in s.outgoing_moves
+                if m.state == 'staging' or not m.quantity])
+        cls._sync_moves(shipments)
 
     @classmethod
     @ModelView.button

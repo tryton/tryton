@@ -84,6 +84,7 @@ Create Internal Shipment with lead time::
 
     >>> shipment.click('assign_force')
     >>> shipment.effective_start_date = yesterday
+    >>> shipment.click('pack')
     >>> shipment.click('ship')
     >>> incoming_move, = shipment.incoming_moves
     >>> incoming_move.quantity

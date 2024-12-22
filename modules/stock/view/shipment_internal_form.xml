@@ -33,6 +33,8 @@ this repository contains the full copyright notices and license terms. -->
         <page string="Other Info" id="other">
             <label name="assigned_by"/>
             <field name="assigned_by"/>
+            <label name="packed_by"/>
+            <field name="packed_by"/>
             <label name="shipped_by"/>
             <field name="shipped_by"/>
             <label name="done_by"/>
@@ -46,6 +48,7 @@ this repository contains the full copyright notices and license terms. -->
         <button name="draft"/>
         <button name="wait"/>
         <button name="assign_wizard" icon="tryton-forward"/>
+        <button name="pack" icon="tryton-forward"/>
         <button name="ship" icon="tryton-ok"/>
         <button name="do" icon="tryton-ok"/>
     </group>
