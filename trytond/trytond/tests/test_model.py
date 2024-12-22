@@ -375,6 +375,25 @@ class ModelTestCase(TestCase):
                     })
 
     @with_transaction()
+    def test_default_get_with_instance_rec_name(self):
+        "Test default_get with instance and rec_name"
+        pool = Pool()
+        Model = pool.get('test.model.default')
+        Target = pool.get('test.model')
+
+        target = Target(name="Target")
+        target.save()
+
+        with Transaction().set_context(default_target=target):
+            self.assertEqual(
+                Model.default_get(['target'], with_rec_name=True), {
+                    'target': target.id,
+                    'target.': {
+                        'rec_name': "Target",
+                        },
+                    })
+
+    @with_transaction()
     def test_default_get_with_model_reference_rec_name(self):
         "Test default_get with model reference and rec_name"
         pool = Pool()
