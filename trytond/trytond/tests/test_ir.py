@@ -529,6 +529,27 @@ class IrTestCase(ModuleTestCase):
     @unittest.skipUnless(
         pydot and shutil.which('dot'), "pydot is needed to generate graph")
     @with_transaction()
+    def test_model_graph(self):
+        "Test model graph"
+        pool = Pool()
+        Model = pool.get('ir.model')
+        ModelGraph = pool.get('ir.model.graph', type='report')
+
+        models = Model.search([])
+
+        oext, content, print_, filename = (
+            ModelGraph.execute([m.id for m in models], {
+                    'level': 1,
+                    'filter': '',
+                    }))
+        self.assertEqual(oext, 'png')
+        self.assertTrue(content)
+        self.assertFalse(print_)
+        self.assertEqual(filename, "Graph")
+
+    @unittest.skipUnless(
+        pydot and shutil.which('dot'), "pydot is needed to generate graph")
+    @with_transaction()
     def test_workflow_graph(self):
         "Test workflow graph"
         pool = Pool()
