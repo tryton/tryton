@@ -408,10 +408,16 @@ class FloatField(Field):
                     self._digits[digits_id] = digits
             else:
                 return
-        if not digits or any(d is None for d in digits):
+        if not digits:
             return
         shift = int(round(math.log(abs(factor), 10)))
-        return (digits[0] + shift, digits[1] - shift)
+        int_size = digits[0]
+        if int_size is not None:
+            int_size += shift
+        dec_size = digits[1]
+        if dec_size is not None:
+            dec_size -= shift
+        return (int_size, dec_size)
 
     def get_symbol(self, record, symbol):
         if record and symbol in record.group.fields:
