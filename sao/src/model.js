@@ -2003,7 +2003,7 @@
             }
             var dec_size = digits[1];
             if (dec_size !== null) {
-                dec_size += shift;
+                dec_size -= shift;
             }
             return [int_size, dec_size];
         },
