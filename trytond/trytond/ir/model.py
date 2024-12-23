@@ -1693,7 +1693,7 @@ class ModelGraph(Report):
                 if field.name in ('create_uid', 'write_uid',
                         'create_date', 'write_date', 'id'):
                     continue
-                label += '+ ' + field.name + ': ' + field.ttype
+                label += f'+ {field.name} : {field.ttype}'
                 if field.relation:
                     label += ' ' + field.relation
                 label += '\\l'
