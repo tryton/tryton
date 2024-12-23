@@ -1,6 +1,13 @@
+#############################
 Product Classification Module
 #############################
 
-The Product Classification module defines the tools for other modules to create
-classifications of products.
-It adds a reference field *classification* to the product template.
+The *Product Classification Module* provides the tools for other modules to
+implemented classifications of products.
+
+.. toctree::
+   :maxdepth: 2
+
+   design
+   reference
+   releases
