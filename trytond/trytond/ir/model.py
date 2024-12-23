@@ -1676,7 +1676,7 @@ class ModelGraph(Report):
                         sub_models.add(field.relation)
             if sub_models:
                 model_ids = Model.search([
-                    ('model', 'in', list(sub_models)),
+                    ('name', 'in', list(sub_models)),
                     ])
                 sub_models = Model.browse(model_ids)
                 if set(sub_models) != set(models):
