@@ -10,6 +10,7 @@ import logging
 import os
 import platform
 import re
+import ssl
 import subprocess
 import unicodedata
 import xml.etree.ElementTree as ET
@@ -41,10 +42,6 @@ import tryton.translate as translate
 from tryton.cache import CacheDict
 from tryton.config import CONFIG, PIXMAPS_DIR, SOUNDS_DIR, TRYTON_ICON
 
-try:
-    import ssl
-except ImportError:
-    ssl = None
 import zipfile
 
 from gi.repository import Gdk, GdkPixbuf, Gio, GLib, GObject, Gtk
@@ -965,8 +962,8 @@ def check_version(box, version=__version__):
 
     logger.info(_("Check URL: %s"), url)
     try:
-        urllib.request.urlopen(
-            HeadRequest(url), timeout=5, cafile=rpc._CA_CERTS)
+        context = ssl.create_default_context(cafile=rpc._CA_CERTS)
+        urllib.request.urlopen(HeadRequest(url), timeout=5, context=context)
     except (urllib.error.HTTPError, socket.timeout):
         return True
     except Exception:
