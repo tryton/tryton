@@ -526,6 +526,24 @@ class IrTestCase(ModuleTestCase):
                 'cc': ['fallback@example.com'],
                 })
 
+    @unittest.skipUnless(
+        pydot and shutil.which('dot'), "pydot is needed to generate graph")
+    @with_transaction()
+    def test_workflow_graph(self):
+        "Test workflow graph"
+        pool = Pool()
+        Model = pool.get('ir.model')
+        ModelWorkflowGraph = pool.get('ir.model.workflow_graph', type='report')
+
+        model, = Model.search([('name', '=', 'ir.error')])
+
+        oext, content, print_, filename = (
+                ModelWorkflowGraph.execute([model.id], {}))
+        self.assertEqual(oext, 'png')
+        self.assertTrue(content)
+        self.assertFalse(print_)
+        self.assertEqual(filename, "Workflow Graph")
+
 
 class IrCronTestCase(TestCase):
     "Test ir.cron features"
@@ -607,24 +625,6 @@ class IrCronTestCase(TestCase):
         cron = self._get_cron()
 
         self.assertIsInstance(cron.get_timezone('timezone'), str)
-
-    @unittest.skipUnless(
-            pydot and shutil.which('dot'), "pydot is needed to generate graph")
-    @with_transaction()
-    def test_workflow_graph(self):
-        "Test workflow graph"
-        pool = Pool()
-        Model = pool.get('ir.model')
-        ModelWorkflowGraph = pool.get('ir.model.workflow_graph', type='report')
-
-        model, = Model.search([('name', '=', 'ir.error')])
-
-        oext, content, print_, filename = (
-                ModelWorkflowGraph.execute([model.id], {}))
-        self.assertEqual(oext, 'png')
-        self.assertTrue(content)
-        self.assertFalse(print_)
-        self.assertEqual(filename, "Workflow Graph")
 
 
 del ModuleTestCase
