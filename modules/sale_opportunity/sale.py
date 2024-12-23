@@ -37,8 +37,12 @@ class Sale(metaclass=PoolMeta):
         actions = iter(args)
         for sales, values in zip(actions, actions):
             if 'origin' in values:
+                origin = values['origin']
+                if not isinstance(origin, str):
+                    origin = '%s,%s' % tuple(origin)
                 for sale in sales:
-                    if isinstance(sale.origin, Opportunity):
+                    if (isinstance(sale.origin, Opportunity)
+                            and str(sale.origin) != origin):
                         raise AccessError(gettext(
                                 'sale_opportunity'
                                 '.msg_modify_origin_opportunity',
