@@ -1994,6 +1994,9 @@
                 }
             }
             var shift = Math.round(Math.log(Math.abs(factor)) / Math.LN10);
+            if (!digits) {
+                return;
+            }
             var int_size = digits[0];
             if (int_size !== null) {
                 int_size += shift;
