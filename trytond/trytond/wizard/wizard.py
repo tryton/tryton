@@ -106,11 +106,13 @@ class StateView(State):
         Model_ = pool.get(self.model_name)
         transaction = Transaction()
         default_ctx = {}
+        value_fields = []
         if value_func := getattr(wizard, f'value_{state_name}', None):
             for name, value in value_func(fields).items():
                 default_ctx[f'default_{name}'] = value
+                value_fields.append(name)
         with transaction.set_context(default_ctx):
-            return Model_.default_get(fields, with_default=False)
+            return Model_.default_get(value_fields, with_default=False)
 
     def get_buttons(self, wizard, state_name):
         '''
