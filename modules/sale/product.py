@@ -242,10 +242,13 @@ class SaleContext(ModelView):
     def default_locations(cls):
         pool = Pool()
         Location = pool.get('stock.location')
-        locations = []
-        warehouse = Location.get_default_warehouse()
-        if warehouse:
-            locations.append(warehouse)
+        context = Transaction().context
+        locations = context.get('locations')
+        if locations is None:
+            locations = []
+            warehouse = Location.get_default_warehouse()
+            if warehouse:
+                locations.append(warehouse)
         return locations
 
     @classmethod
@@ -256,10 +259,26 @@ class SaleContext(ModelView):
     def default_currency(cls):
         pool = Pool()
         Company = pool.get('company.company')
-        company_id = cls.default_company()
-        if company_id:
-            company = Company(company_id)
-            return company.currency.id
+        context = Transaction().context
+        currency = context.get('currency')
+        if currency is None:
+            company_id = cls.default_company()
+            if company_id:
+                company = Company(company_id)
+                currency = company.currency.id
+        return currency
+
+    @classmethod
+    def default_customer(cls):
+        return Transaction().context.get('customer')
+
+    @classmethod
+    def default_sale_date(cls):
+        return Transaction().context.get('sale_date')
+
+    @classmethod
+    def default_quantity(cls):
+        return Transaction().context.get('quantity')
 
     @fields.depends('sale_date')
     def on_change_with_stock_date_end(self, name=None):

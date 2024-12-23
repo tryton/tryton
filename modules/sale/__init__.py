@@ -61,6 +61,7 @@ def register():
         sale.HandleInvoiceException,
         sale.ReturnSale,
         sale.ModifyHeader,
+        sale.OpenProduct,
         party.Replace,
         party.Erase,
         sale_reporting.OpenRegionTree,

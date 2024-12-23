@@ -542,5 +542,16 @@ this repository contains the full copyright notices and license terms. -->
                 eval="Eval('context', {}).get('modify_header', False)"
                 pyson="1"/>
         </record>
+
+        <record model="ir.action.wizard" id="wizard_sale_open_product">
+            <field name="name">Products</field>
+            <field name="wiz_name">sale.open_product</field>
+            <field name="model">sale.sale</field>
+        </record>
+        <record model="ir.action.keyword" id="wizard_sale_open_product_keyword1">
+            <field name="keyword">form_relate</field>
+            <field name="model">sale.sale,-1</field>
+            <field name="action" ref="wizard_sale_open_product"/>
+        </record>
     </data>
 </tryton>

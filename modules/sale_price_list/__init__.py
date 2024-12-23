@@ -18,3 +18,6 @@ def register():
         configuration.Configuration,
         configuration.ConfigurationSalePriceList,
         module='sale_price_list', type_='model')
+    Pool.register(
+        sale.OpenProduct,
+        module='sale_price_list', type_='wizard')

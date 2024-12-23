@@ -25,7 +25,7 @@ from trytond.modules.company.model import (
 from trytond.modules.currency.fields import Monetary
 from trytond.modules.product import price_digits
 from trytond.pool import Pool
-from trytond.pyson import Bool, Eval, If
+from trytond.pyson import Bool, Eval, If, PYSONEncoder
 from trytond.tools import cached_property, firstline, sortable_values
 from trytond.transaction import Transaction
 from trytond.wizard import (
@@ -2467,3 +2467,50 @@ class ModifyHeader(Wizard):
         Line.save(sale.lines)
 
         return 'end'
+
+
+class OpenProduct(Wizard):
+    __name__ = 'sale.open_product'
+
+    start = StateAction('sale.act_product')
+
+    def _context(self):
+        context = {
+            'stock_skip_warehouse': True,
+            'locations': [],
+            }
+        companies = set()
+        currencies = set()
+        customers = set()
+        sale_dates = set()
+        for record in self.records:
+            companies.add(record.company.id)
+            currencies.add(record.currency.id)
+            customers.add(record.party.id)
+            sale_dates.add(record.sale_date)
+            if self.record.warehouse:
+                context['locations'].append(self.record.warehouse.id)
+        if len(companies) == 1:
+            context['company'], = companies
+        if len(currencies) == 1:
+            context['currency'], = currencies
+        if len(customers) == 1:
+            context['customer'], = customers
+        if len(sale_dates) == 1:
+            context['sale_date'], = sale_dates
+        return context
+
+    def do_start(self, action):
+        product_ids = {
+            l.product.id for r in self.records for l in r.lines if l.product}
+        encoder = PYSONEncoder()
+        domain = [
+            ('id', 'in', list(product_ids)),
+            ]
+        action['pyson_domain'] = encoder.encode(domain)
+        action['pyson_context'] = encoder.encode(self._context())
+        name_suffix = ', '.join(r.rec_name for r in self.records[:5])
+        if len(self.records) > 5:
+            name_suffix += ',...'
+        action['name'] += f' ({name_suffix})'
+        return action, {}

@@ -66,3 +66,16 @@ class Line(metaclass=PoolMeta):
             if getattr(self.sale, 'price_list', None):
                 context['price_list'] = self.sale.price_list.id
         return context
+
+
+class OpenProduct(metaclass=PoolMeta):
+    __name__ = 'sale.open_product'
+
+    def _context(self):
+        context = super()._context()
+        price_lists = {r.price_list for r in self.records}
+        if len(price_lists) == 1:
+            price_list, = price_lists
+            if price_list:
+                context['price_list'] = price_list.id
+        return context

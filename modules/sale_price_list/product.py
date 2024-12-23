@@ -63,10 +63,14 @@ class SaleContext(metaclass=PoolMeta):
     def default_price_list(cls, **pattern):
         pool = Pool()
         Configuration = pool.get('sale.configuration')
-        config = Configuration(1)
-        price_list = config.get_multivalue('sale_price_list', **pattern)
-        if price_list:
-            return price_list.id
+        context = Transaction().context
+        price_list = context.get('price_list')
+        if price_list is None:
+            config = Configuration(1)
+            price_list = config.get_multivalue('sale_price_list', **pattern)
+            if price_list:
+                price_list = price_list.id
+        return price_list
 
     @fields.depends(methods=['on_change_customer'])
     def on_change_company(self):
