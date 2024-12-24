@@ -1317,9 +1317,12 @@ class TaxableMixin(object):
                         self._round_taxes(current_taxes)
                 if tax_rounding == 'document':
                     self._round_taxes(taxes)
-                if all_taxes.keys() & taxes.keys():
-                    raise ValueError("Duplicate tax line keys")
-                all_taxes.update(taxes)
+                for key, taxline in taxes.items():
+                    if key not in all_taxes:
+                        all_taxes[key] = taxline
+                    else:
+                        all_taxes[key]['base'] += taxline['base']
+                        all_taxes[key]['amount'] += taxline['amount']
         return all_taxes
 
 
