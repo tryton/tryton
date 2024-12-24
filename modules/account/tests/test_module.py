@@ -1233,6 +1233,37 @@ class AccountTestCase(
         self.assertEqual(tax['amount'], Decimal('20.02'))
 
     @with_transaction()
+    def test_taxable_mixin_many_taxable_lines(self):
+        "Test TaxableMixin with many taxable lines"
+        pool = Pool()
+        Tax = pool.get('account.tax')
+        currency = create_currency('cur')
+
+        company = create_company()
+        with set_company(company):
+            create_chart(company, tax=True)
+            tax2, = Tax.search([])
+            tax1, = Tax.copy([tax2], default={'rate': Decimal('0.1')})
+
+            taxable = self.Taxable(
+                currency=currency,
+                taxable_lines=[
+                    ([tax1], Decimal('10'), 1, None),
+                    ([tax1, tax2], Decimal('20'), 1, None),
+                    ],
+                company=company)
+
+            taxes = taxable._get_taxes()
+
+        self.assertEqual(len(taxes), 2)
+        tax_line1, = [t for t in taxes if t['tax'] == tax1.id]
+        tax_line2, = [t for t in taxes if t['tax'] == tax2.id]
+        self.assertEqual(tax_line1['base'], Decimal('30.00'))
+        self.assertEqual(tax_line1['amount'], Decimal('3.00'))
+        self.assertEqual(tax_line2['base'], Decimal('20.00'))
+        self.assertEqual(tax_line2['amount'], Decimal('4.00'))
+
+    @with_transaction()
     def test_taxable_mixin_tax_residual_rounding(self):
         "Test TaxableMixin for rounding with residual amount"
         pool = Pool()
