@@ -368,12 +368,11 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
         pool = Pool()
         Move = pool.get('stock.move')
         assert type in {'input', 'output'}
-        move = Move(
-            product=product,
-            unit=unit,
-            quantity=quantity,
-            company=self.company,
-            state=Move.default_state())
+        move = Move(**Move.default_get(with_rec_name=False))
+        move.product = product
+        move.unit = unit
+        move.quantity = quantity
+        move.company = self.company
         if type == 'input':
             move.from_location = self.picking_location
             move.to_location = self.location
@@ -387,6 +386,9 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
             move.unit_price = Decimal(0)
             if self.company:
                 move.currency = self.company.currency
+        else:
+            move.unit_price = None
+            move.currency = None
         return move
 
     @fields.depends(
