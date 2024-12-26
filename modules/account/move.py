@@ -97,16 +97,16 @@ class Move(DescriptionOriginMixin, ModelSQL, ModelView):
             If(Eval('state') == 'draft',
                 ('state', '=', 'open'),
                 ()),
-            If(Eval('date'), [
-                    ('start_date', '<=', Eval('date')),
-                    ('end_date', '>=', Eval('date')),
+            If(Eval('date', None), [
+                    ('start_date', '<=', Eval('date', None)),
+                    ('end_date', '>=', Eval('date', None)),
                     ],
                 []),
             ],
         states=_MOVE_STATES)
     journal = fields.Many2One('account.journal', 'Journal', required=True,
         states={
-            'readonly': Eval('number') & Eval('journal'),
+            'readonly': Eval('number') & Eval('journal', None),
             },
         context={
             'company': Eval('company', -1),
@@ -124,9 +124,9 @@ class Move(DescriptionOriginMixin, ModelSQL, ModelView):
     lines = fields.One2Many('account.move.line', 'move', 'Lines',
         states=_MOVE_STATES, depends={'company'},
         context={
-            'journal': Eval('journal'),
-            'period': Eval('period'),
-            'date': Eval('date'),
+            'journal': Eval('journal', -1),
+            'period': Eval('period', -1),
+            'date': Eval('date', None),
             })
 
     @classmethod
