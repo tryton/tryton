@@ -1,3 +1,4 @@
+* Make field_names optional in Model.default_get
 * Remove check_xml_record from ModelStorage
 * Always synchronize XML data with database
 * Convert None as empty string when searching on Char or Text

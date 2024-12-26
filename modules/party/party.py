@@ -390,12 +390,13 @@ class Party(
         return result
 
     @classmethod
-    def default_get(cls, fields_names, with_rec_name=True, with_default=True):
+    def default_get(
+            cls, fields_names=None, with_rec_name=True, with_default=True):
         pool = Pool()
         Country = pool.get('country.country')
 
         values = super().default_get(
-            fields_names,
+            fields_names=fields_names,
             with_rec_name=with_rec_name,
             with_default=with_default)
         eu_vat = get_cc_module('eu', 'vat')

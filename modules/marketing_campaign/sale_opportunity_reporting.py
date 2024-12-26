@@ -55,11 +55,12 @@ class Context(MarketingCampaignMixin, metaclass=PoolMeta):
     __name__ = 'sale.opportunity.reporting.context'
 
     @classmethod
-    def default_get(cls, fields_names, with_rec_name=True, with_default=True):
+    def default_get(
+            cls, fields_names=None, with_rec_name=True, with_default=True):
         transaction = Transaction()
         context = transaction.context
         default = super().default_get(
-            fields_names,
+            fields_names=fields_names,
             with_rec_name=with_rec_name,
             with_default=with_default)
         for fname in cls.marketing_campaign_fields():

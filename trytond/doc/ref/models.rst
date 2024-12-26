@@ -85,10 +85,10 @@ Class methods:
    <model-ir.model.field>`.
    See :meth:`trytond.pool.PoolBase.__register__`.
 
-.. classmethod:: Model.default_get(fields_names[[, with_rec_name], with_default])
+.. classmethod:: Model.default_get([fields_names[[, with_rec_name], with_default]])
 
    Return a dictionary with the default values for each field in
-   ``fields_names``.
+   ``fields_names`` or all fields if not specified.
    Default values are defined by the returned value of each class method with
    the pattern ``default_<field name>()``.
 

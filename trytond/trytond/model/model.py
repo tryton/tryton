@@ -131,7 +131,8 @@ class Model(URLMixin, PoolBase, metaclass=ModelMeta):
         Translation.register_fields(cls, module_name)
 
     @classmethod
-    def default_get(cls, fields_names, with_rec_name=True, with_default=True):
+    def default_get(
+            cls, fields_names=None, with_rec_name=True, with_default=True):
         '''
         Return a dict with the default values for each field in fields_names.
         If with_rec_name is True, rec_name will be added.
@@ -139,6 +140,9 @@ class Model(URLMixin, PoolBase, metaclass=ModelMeta):
         pool = Pool()
         values = {}
         context = Transaction().context
+
+        if fields_names is None:
+            fields_names = cls._fields.keys()
 
         default_rec_name = context.get('default_rec_name')
         if (default_rec_name
