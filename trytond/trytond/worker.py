@@ -189,7 +189,7 @@ def run_task(pool, task_id):
                     duration = (task.scheduled_at - task.enqueued_at) * 2
                 else:
                     duration = dt.timedelta(seconds=2 * retry)
-                duration = max(duration, dt.timedelta(hours=1))
+                duration = min(duration, dt.timedelta(hours=1))
                 scheduled_at = dt.datetime.now() + duration * random.random()
                 Queue.push(task.name, task.data, scheduled_at=scheduled_at)
         except Exception:
