@@ -134,11 +134,13 @@ class MarketingCampaignMixin(Model):
                     yield fname
 
     @classmethod
-    def default_get(cls, fields_names, with_rec_name=True):
+    def default_get(cls, fields_names, with_rec_name=True, with_default=True):
         transaction = Transaction()
         context = transaction.context
         default = super().default_get(
-            fields_names, with_rec_name=with_rec_name)
+            fields_names,
+            with_rec_name=with_rec_name,
+            with_default=with_default)
         for fname in cls.marketing_campaign_fields():
             if (isinstance(context.get(fname), str)
                     and context[fname]

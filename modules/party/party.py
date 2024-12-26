@@ -390,11 +390,14 @@ class Party(
         return result
 
     @classmethod
-    def default_get(cls, fields_names, with_rec_name=True):
+    def default_get(cls, fields_names, with_rec_name=True, with_default=True):
         pool = Pool()
         Country = pool.get('country.country')
 
-        values = super().default_get(fields_names, with_rec_name=with_rec_name)
+        values = super().default_get(
+            fields_names,
+            with_rec_name=with_rec_name,
+            with_default=with_default)
         eu_vat = get_cc_module('eu', 'vat')
         eu_types = {'eu_vat'} | {f'{m}_vat' for m in EU_MEMBER_STATES}
         for identifier in values.get('identifiers') or []:
