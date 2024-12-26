@@ -182,6 +182,14 @@ class Move(Workflow, ModelSQL, ModelView):
         context={
             'company': Eval('company', -1),
             },
+        search_context={
+            'locations': If(Eval('from_location'),
+                [Eval('from_location', -1)], []),
+            'stock_date_end': (
+                If(Eval('effective_date'),
+                    Eval('effective_date', None),
+                    Eval('planned_date', None))),
+            },
         depends={'company'},
         help="The product that the move is associated with.")
     product_uom_category = fields.Function(
