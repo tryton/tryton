@@ -59,7 +59,7 @@ class Move(ModelSQL, ModelView):
         select=True)
     journal = fields.Many2One('account.journal', 'Journal', required=True,
         states={
-            'readonly': Eval('number') & Eval('journal'),
+            'readonly': Eval('number') & Eval('journal', None),
             },
         context={
             'company': Eval('company', -1),
@@ -79,9 +79,9 @@ class Move(ModelSQL, ModelView):
     lines = fields.One2Many('account.move.line', 'move', 'Lines',
         states=_MOVE_STATES, depends=_MOVE_DEPENDS + ['company'],
         context={
-            'journal': Eval('journal'),
-            'period': Eval('period'),
-            'date': Eval('date'),
+            'journal': Eval('journal', -1),
+            'period': Eval('period', -1),
+            'date': Eval('date', None),
             })
 
     @classmethod
