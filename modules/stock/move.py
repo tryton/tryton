@@ -228,6 +228,14 @@ class Move(Workflow, ModelSQL, ModelView):
             LOCATION_DOMAIN,
             ('id', '!=', Eval('to_location', -1)),
             ],
+        search_context={
+            'company': Eval('company', -1),
+            'product': Eval('product', -1),
+            'stock_date_end': (
+                If(Eval('effective_date'),
+                    Eval('effective_date', None),
+                    Eval('planned_date', None))),
+            },
         help="Where the stock is moved from.")
     from_location_name = fields.Function(fields.Char(
             "From Location"),
@@ -239,6 +247,14 @@ class Move(Workflow, ModelSQL, ModelView):
             LOCATION_DOMAIN,
             ('id', '!=', Eval('from_location', -1)),
             ],
+        search_context={
+            'company': Eval('company', -1),
+            'product': Eval('product', -1),
+            'stock_date_end': (
+                If(Eval('effective_date'),
+                    Eval('effective_date', None),
+                    Eval('planned_date', None))),
+            },
         help="Where the stock is moved to.")
     to_location_name = fields.Function(fields.Char(
             "To Location"),
