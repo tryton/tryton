@@ -80,7 +80,7 @@ class Relation(ModelSQL):
         pool = Pool()
         Date = pool.get('ir.date')
         context = Transaction().context
-        date = context.get('date', Date.today())
+        date = context.get('date') or Date.today()
         start_date = self.start_date or dt.date.min
         end_date = self.end_date or dt.date.max
         return start_date <= date <= end_date
@@ -90,7 +90,7 @@ class Relation(ModelSQL):
         pool = Pool()
         Date = pool.get('ir.date')
         context = Transaction().context
-        date = context.get('date', Date.today())
+        date = context.get('date') or Date.today()
         table, _ = tables[None]
         _, operator, value = domain
 
