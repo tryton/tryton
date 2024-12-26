@@ -15,6 +15,13 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">lot_tree</field>
         </record>
 
+        <record model="ir.ui.view" id="lot_view_list_stock_move">
+            <field name="model">stock.lot</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="20"/>
+            <field name="name">lot_list_stock_move</field>
+        </record>
+
         <record model="ir.action.act_window" id="act_lot_form">
             <field name="name">Lots</field>
             <field name="res_model">stock.lot</field>

@@ -4,7 +4,7 @@ this repository contains the full copyright notices and license terms. -->
 <data>
     <xpath expr="/form/field[@name='product']" position="after">
         <label name="lot"/>
-        <field name="lot"/>
+        <field name="lot" view_ids="stock_lot.lot_view_list_stock_move"/>
     </xpath>
     <xpath expr="/form/group[@id='buttons']" position="inside">
         <button name="add_lots_wizard" icon="tryton-add"/>

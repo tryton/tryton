@@ -18,7 +18,7 @@ from trytond.model.exceptions import (
 from trytond.modules.stock import StockMixin
 from trytond.modules.stock.exceptions import ShipmentCheckQuantityWarning
 from trytond.pool import Pool, PoolMeta
-from trytond.pyson import Bool, Eval, Len
+from trytond.pyson import Bool, Eval, If, Len
 from trytond.tools import grouped_slice
 from trytond.transaction import Transaction
 from trytond.wizard import Button, StateTransition, StateView, Wizard
@@ -426,6 +426,14 @@ class Move(metaclass=PoolMeta):
             ],
         states={
             'readonly': Eval('state').in_(['cancelled', 'done']),
+            },
+        search_context={
+            'locations': If(Eval('from_location'),
+                [Eval('from_location', -1)], []),
+            'stock_date_end': (
+                If(Eval('effective_date'),
+                    Eval('effective_date', None),
+                    Eval('planned_date', None))),
             })
 
     @classmethod
