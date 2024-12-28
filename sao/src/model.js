@@ -1326,11 +1326,13 @@
             });
         },
         validate: function(fields, softvalidation, pre_validate) {
-            this._check_load(fields);
             var result = true;
             for (var fname in this.model.fields) {
                 var field = this.model.fields[fname];
                 if (fields && !~fields.indexOf(fname)) {
+                    continue;
+                }
+                if (!this.get_loaded([fname])) {
                     continue;
                 }
                 if (field.description.readonly) {

@@ -437,10 +437,11 @@ class Record:
             return ''
 
     def validate(self, fields=None, softvalidation=False, pre_validate=None):
-        self._check_load(fields)
         res = True
         for field_name, field in list(self.group.fields.items()):
             if fields is not None and field_name not in fields:
+                continue
+            if not self.get_loaded([field_name]):
                 continue
             if field.attrs.get('readonly'):
                 continue
