@@ -15,7 +15,7 @@ logger = logging.getLogger(__name__)
 
 
 def get_x2m_sub_fields(f_attrs, prefix):
-    if f_attrs['loading'] == 'eager' and f_attrs.get('views'):
+    if f_attrs.get('visible') and f_attrs.get('views'):
         sub_fields = functools.reduce(
             operator.or_,
             (v.get('fields', {}) for v in f_attrs['views'].values()),

@@ -63,8 +63,8 @@ function eval_pyson(value){
                 return;
             }
 
-            if (attributes.loading == 'eager') {
-                this.field_attrs[name].loading = 'eager';
+            if (attributes.visible) {
+                this.field_attrs[name].visible = true;
             }
 
             var WidgetFactory = Sao.View.FormXMLViewParser.WIDGETS[

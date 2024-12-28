@@ -60,7 +60,7 @@ class ModelView(TestCase):
         self.assertEqual(
             ['OK', 'OK', 'OK', 'OK'],
             [n.attrib['name']
-                for n in group_tree.xpath("//field[@loading='eager']")])
+                for n in group_tree.xpath("//field[@visible='1']")])
 
     def test_mark_visible_x2m_notebook(self):
         "Test marking visible x2m fields in notebook"
@@ -108,7 +108,7 @@ class ModelView(TestCase):
         self.assertEqual(
             ['OK', 'OK', 'OK', 'OK', 'OK'],
             [n.attrib['name']
-                for n in nb_tree.xpath("//field[@loading='eager']")])
+                for n in nb_tree.xpath("//field[@visible='1']")])
 
     def test_mark_visible_x2m_notebook_group(self):
         "Test marking visible x2m fields in notebook and groups"
@@ -176,7 +176,7 @@ class ModelView(TestCase):
         self.assertEqual(
             ['OK', 'OK', 'OK', 'OK'],
             [n.attrib['name']
-                for n in ng_tree.xpath("//field[@loading='eager']")])
+                for n in ng_tree.xpath("//field[@visible='1']")])
 
     @with_transaction()
     def test_changed_values(self):
