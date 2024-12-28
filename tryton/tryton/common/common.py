@@ -33,20 +33,18 @@ import urllib.error
 import urllib.parse
 import urllib.request
 import webbrowser
+import zipfile
 from functools import wraps
 from string import Template
 from threading import Lock, Thread
 
-import tryton.rpc as rpc
-import tryton.translate as translate
-from tryton.cache import CacheDict
-from tryton.config import CONFIG, PIXMAPS_DIR, SOUNDS_DIR, TRYTON_ICON
-
-import zipfile
-
 from gi.repository import Gdk, GdkPixbuf, Gio, GLib, GObject, Gtk
 
+import tryton.rpc as rpc
+import tryton.translate as translate
 from tryton import __version__
+from tryton.cache import CacheDict
+from tryton.config import CONFIG, PIXMAPS_DIR, SOUNDS_DIR, TRYTON_ICON
 from tryton.exceptions import TrytonError, TrytonServerError
 from tryton.pyson import PYSONEncoder
 
