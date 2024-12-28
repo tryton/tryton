@@ -554,7 +554,6 @@ class Record:
         else:
             for field in fields:
                 self[field]
-        self.validate(fields or [])
 
     def reset(self, value):
         self.cancel()
