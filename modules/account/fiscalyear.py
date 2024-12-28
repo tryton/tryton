@@ -622,15 +622,19 @@ class RenewFiscalYear(Wizard):
         fiscalyear, = FiscalYear.copy(
             [self.start.previous_fiscalyear],
             default=self.fiscalyear_defaults())
-        periods = [p for p in self.start.previous_fiscalyear.periods
+        periods = [
+            p for p in self.start.previous_fiscalyear.periods
             if p.type == 'standard']
-        months = month_delta(fiscalyear.end_date, fiscalyear.start_date) + 1
-        interval = months / len(periods)
-        end_day = max(p.end_date.day
-            for p in self.start.previous_fiscalyear.periods
-            if p.type == 'standard')
-        if interval.is_integer():
-            FiscalYear.create_period([fiscalyear], interval, end_day)
+        if periods:
+            months = month_delta(fiscalyear.end_date, fiscalyear.start_date)
+            months += 1
+            interval = months / len(periods)
+            end_day = max(
+                p.end_date.day
+                for p in self.start.previous_fiscalyear.periods
+                if p.type == 'standard')
+            if interval.is_integer():
+                FiscalYear.create_period([fiscalyear], interval, end_day)
         return fiscalyear
 
     def do_create_(self, action):
