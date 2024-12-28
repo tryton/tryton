@@ -365,9 +365,8 @@ attributes:
    ``rounded`` or ``circle``.
    The default value is ``square``.
 
-``loading``
-   Override the :attr:`~trytond.model.fields.Field.loading` of the field.
-   When ``eager`` for :class:`~trytond.model.fields.One2Many` and
+``visible``
+   When set to ``1`` for :class:`~trytond.model.fields.One2Many` and
    :class:`~trytond.model.fields.Many2Many` the client may try to read the
    fields of the related model using dotted notation.
    This result in less round trip between the client and the server at the

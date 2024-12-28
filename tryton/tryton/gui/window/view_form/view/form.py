@@ -230,8 +230,8 @@ class FormXMLViewParser(XMLViewParser):
             self.container.add(None, attributes)
             return
 
-        if attributes.get('loading') == 'eager':
-            self.field_attrs[name]['loading'] = 'eager'
+        if int(attributes.get('visible', 0)):
+            self.field_attrs[name]['visible'] = True
 
         widget = self.WIDGETS[attributes['widget']](self.view, attributes)
         self.view.widgets[name].append(widget)

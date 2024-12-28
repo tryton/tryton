@@ -579,11 +579,11 @@
   </define>
   <define name="attlist.field" combine="interleave">
     <optional>
-      <attribute>
-        <name ns="">loading</name>
+      <attribute a:defaultValue="0">
+        <name ns="">visible</name>
         <choice>
-          <value>lazy</value>
-          <value>eager</value>
+          <value>0</value>
+          <value>1</value>
         </choice>
       </attribute>
     </optional>
