@@ -56,7 +56,7 @@ def set_visible(node, fields, loading='eager'):
             set_visible(node[0], fields, loading)
     elif node.tag == 'field':
         if node.attrib['name'] in fields:
-            node.attrib['loading'] = 'eager'
+            node.attrib['visible'] = '1'
     else:
         for child in node:
             set_visible(child, fields, loading)

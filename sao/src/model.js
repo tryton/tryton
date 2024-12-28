@@ -4,7 +4,7 @@
     'use strict';
 
     function get_x2m_sub_fields(f_attrs, prefix) {
-        if (f_attrs.loading == 'eager' && f_attrs.views) {
+        if (f_attrs.visible && f_attrs.views) {
             // There's only one key but we don't know its value
             const [[, view],] = Object.entries(f_attrs.views);
 
