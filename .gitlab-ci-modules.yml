@@ -332,12 +332,14 @@ test-modules-account_fr_chorus-sqlite:
   variables:
     PACKAGE: modules/account_fr_chorus
     TAG_PATTERN: '/^account_fr_chorus-.*/'
+  resource_group: chorus
 
 test-modules-account_fr_chorus-postgresql:
   extends: .test-postgresql
   variables:
     PACKAGE: modules/account_fr_chorus
     TAG_PATTERN: '/^account_fr_chorus-.*/'
+  resource_group: chorus
 
 check-doc-modules-account_invoice:
   extends: .check-doc

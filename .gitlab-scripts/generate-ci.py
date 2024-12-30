@@ -25,6 +25,7 @@ test-${name}-postgresql:
     TAG_PATTERN: '/^${tag_name}-.*/'
 ${extra}""")
 RESOURCE_GROUPS = {
+    'account_fr_chorus': 'chorus',
     'account_payment_stripe': 'stripe',
     'web_shop_shopify': 'shopify',
     }
