@@ -521,6 +521,9 @@ class Action(ModelSQL, ModelView):
                     'sale.line', 'account.invoice.line'}:
                 if self.quantity is not None:
                     quantity = self.quantity
+                elif (self.complaint.origin_model == 'sale.line'
+                        and self.complaint.origin.actual_quantity is not None):
+                    quantity = self.complaint.origin.actual_quantity
                 else:
                     quantity = self.complaint.origin.quantity
                 if self.unit_price is not None:
@@ -534,7 +537,18 @@ class Action(ModelSQL, ModelView):
             elif self.complaint.origin_model == 'sale.sale':
                 if not self.sale_lines:
                     if self.complaint and self.complaint.origin:
-                        return self.complaint.origin.untaxed_amount
+                        sale = self.complaint.origin
+                        amount = 0
+                        for line in sale.lines:
+                            if line.type != 'line':
+                                continue
+                            if line.actual_quantity is not None:
+                                quantity = line.actual_quantity
+                            else:
+                                quantity = line.quantity
+                            amount += sale.currency.round(
+                                Decimal(str(quantity)) * line.unit_price)
+                        return amount
                 else:
                     return sum(
                         getattr(l, 'amount', None) or Decimal(0)
@@ -613,12 +627,21 @@ class Action(ModelSQL, ModelView):
                     default['unit_price'] = lambda o: line2price.get(o['id'])
                 else:
                     sale_lines = [l for l in sale.lines if l.type == 'line']
+                    default['quantity'] = lambda o: (
+                        o['actual_quantity']
+                        if o['actual_quantity'] is not None
+                        else o['quantity'])
             elif isinstance(self.complaint.origin, Line):
                 sale_line = self.complaint.origin
                 sale = sale_line.sale
                 sale_lines = [sale_line]
                 if self.quantity is not None:
                     default['quantity'] = self.quantity
+                else:
+                    default['quantity'] = (
+                        sale_line.actual_quantity
+                        if sale_line.actual_quantity is not None
+                        else sale_line.quantity)
                 if self.unit_price is not None:
                     default['unit_price'] = self.unit_price
             return_sale, = Sale.copy([sale], default={'lines': None})
@@ -797,7 +820,10 @@ class Action_SaleLine(_Action_Line, ModelView, ModelSQL):
         if self.quantity is not None:
             return self.quantity
         elif self.line:
-            return self.line.quantity
+            if self.line.actual_quantity is not None:
+                return self.line.actual_quantity
+            else:
+                return self.line.quantity
 
     @fields.depends('unit_price', 'line')
     def get_unit_price(self):
