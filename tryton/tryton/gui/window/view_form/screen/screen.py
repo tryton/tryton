@@ -559,7 +559,8 @@ class Screen:
         return next_view
 
     def switch_view(
-            self, view_type=None, view_id=None, creatable=None, display=True):
+            self, view_type=None, view_id=None, creatable=None,
+            searchable=None, display=True):
         if view_id is not None:
             view_id = int(view_id)
         if self.current_view:
@@ -585,6 +586,9 @@ class Screen:
                 result &= self.current_view.view_id == view_id
             if creatable is not None:
                 result &= self.current_view.creatable == creatable
+            if searchable is not None:
+                result &= (self.current_view.view_type in {
+                        'tree', 'graph', 'calendar'}) == searchable
             return result
         for i in range(len(self.views) + len(self.view_to_load)):
             if len(self.view_to_load):

@@ -221,6 +221,12 @@
             }
             this.el.append(this.content_box);
         },
+        grab_focus: function() {
+            this.filter_box.toggleClass('hidden-xs', false);
+            window.setTimeout(() => {
+                this.search_entry.focus();
+            }, 0);
+        },
         set_text: function(value) {
             this.search_entry.val(value);
             this.bookmark_match();
@@ -937,7 +943,8 @@
             return next_view;
         },
         switch_view: function(
-            view_type=null, view_id=null, creatable=null, display=true) {
+            view_type=null, view_id=null, creatable=null, searchable=null,
+            display=true) {
             if (view_id !== null) {
                 view_id = Number(view_id);
             }
@@ -970,6 +977,10 @@
                 }
                 if (creatable !== null) {
                     result &= this.current_view.creatable == creatable;
+                }
+                if (searchable !== null) {
+                    result &= Boolean(~['tree', 'graph', 'calendar'].indexOf(
+                        this.current_view.view_type)) == searchable;
                 }
                 return result;
             };

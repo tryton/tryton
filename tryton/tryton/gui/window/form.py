@@ -556,9 +556,11 @@ class Form(TabContent):
             self.buttons['copy_url'].props.active = True
 
     def sig_search(self, widget):
-        search_container = self.screen.screen_container
-        if hasattr(search_container, 'search_entry'):
-            search_container.search_entry.grab_focus()
+        if not self.modified_save():
+            return
+        self.screen.switch_view(searchable=True, display=False)
+        self.screen.display()
+        self.screen.screen_container.grab_focus()
 
     def action_popup(self, widget):
         button, = widget.get_children()

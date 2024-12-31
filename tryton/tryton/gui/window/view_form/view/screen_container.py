@@ -349,6 +349,9 @@ class ScreenContainer(object):
 
         tooltips.enable()
 
+    def grab_focus(self):
+        self.search_entry.grab_focus()
+
     def widget_get(self):
         return self.vbox
 

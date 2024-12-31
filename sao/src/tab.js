@@ -987,14 +987,14 @@
             });
         },
         search: function() {
-            var search_entry = this.screen.screen_container.search_entry;
-            search_entry.parents('.filter-box').toggleClass('hidden-xs');
-            if (search_entry.is(':visible')) {
-                window.setTimeout(function() {
-                    search_entry.focus();
-                }, 0);
-            }
-            return jQuery.when();
+            return this.modified_save().then(() => {
+                return this.screen.switch_view(
+                    null, null, null, true, false).then(() => {
+                        return this.screen.display().done(() => {
+                            this.screen.screen_container.grab_focus();
+                        });
+                    });
+            });
         },
         logs: function() {
             var record = this.screen.current_record;
