@@ -45,7 +45,7 @@ INSERT INTO ir_model_data (id, db_id, fs_id, model, module, noupdate, fs_values,
 
 CREATE TABLE ir_ui_view (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    model VARCHAR NOT NULL,
+    model VARCHAR,
     "type" VARCHAR,
     data TEXT,
     field_childs VARCHAR,
