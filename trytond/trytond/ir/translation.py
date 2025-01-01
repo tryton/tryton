@@ -511,7 +511,7 @@ class Translation(
                     if not src and not value:
                         continue
                     translation = cls()
-                    translation.name = name
+                    translation.name = get_name(record)
                     translation.lang = lang
                     translation.type = ttype
                     translations.append(translation)
