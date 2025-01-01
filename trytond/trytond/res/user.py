@@ -227,7 +227,7 @@ class User(avatar_mixin(100, 'login'), DeactivableMixin, ModelSQL, ModelView):
         ModelData = pool.get('ir.model.data')
         try:
             return ModelData.get_id('ir', 'act_menu_tree')
-        except ValueError:
+        except KeyError:
             pass
 
     def get_pyson_menu(self, name):

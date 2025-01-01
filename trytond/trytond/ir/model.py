@@ -1515,10 +1515,14 @@ class ModelData(
         id_ = cls._get_id_cache.get(key)
         if id_ is not None:
             return id_
-        data, = cls.search([
-            ('module', '=', module),
-            ('fs_id', '=', fs_id),
-            ])
+        try:
+            data, = cls.search([
+                ('module', '=', module),
+                ('fs_id', '=', fs_id),
+                ])
+        except ValueError:
+            raise KeyError(f"Reference to '{module}.{fs_id}' not found")
+
         cls._get_id_cache.set(key, data.db_id)
         return data.db_id
 
