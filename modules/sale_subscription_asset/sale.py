@@ -111,7 +111,7 @@ class SubscriptionLine(metaclass=PoolMeta):
             default = {}
         else:
             default = default.copy()
-        default.setdefault('lot')
+        default.setdefault('asset_lot')
         return super(SubscriptionLine, cls).copy(lines, default)
 
     @classmethod
