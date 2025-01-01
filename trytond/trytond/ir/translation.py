@@ -153,7 +153,7 @@ class Translation(
         if not model.__doc__:
             return
 
-        name = model.__name__ + ',name'
+        name = model.__name__ + ',string'
         src = model.__string__
         if not src:
             return
