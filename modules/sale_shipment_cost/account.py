@@ -15,5 +15,5 @@ class InvoiceLine(metaclass=PoolMeta):
     @classmethod
     def copy(cls, lines, default=None):
         default = default.copy() if default is not None else {}
-        default.setdefault('cost_shipments', None)
+        default.setdefault('cost_sale_shipments', None)
         return super().copy(lines, default=default)
