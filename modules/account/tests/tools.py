@@ -5,6 +5,7 @@ import datetime
 from dateutil.relativedelta import relativedelta
 
 from proteus import Model, Wizard
+from proteus.config import get_config
 from trytond.modules.company.tests.tools import get_company
 
 __all__ = ['create_fiscalyear', 'create_chart', 'get_accounts',
@@ -50,6 +51,8 @@ def create_fiscalyear(company=None, today=None, config=None):
 def create_chart(
         company=None, chart='account.account_template_root_en', config=None):
     "Create chart of accounts"
+    if config is None:
+        config = get_config()
     AccountTemplate = Model.get('account.account.template', config=config)
     ModelData = Model.get('ir.model.data', config=config)
 
