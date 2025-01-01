@@ -75,18 +75,10 @@ Register card::
     >>> customer.save()
 
     >>> _ = customer.click('stripe_checkout')
-    >>> payment_method = stripe.PaymentMethod.create(
-    ...     type='card',
-    ...     card={
-    ...         'number': '4000000000003055',
-    ...         'exp_month': 12,
-    ...         'exp_year': today.year + 1,
-    ...         'cvc': '123',
-    ...         })
     >>> setup_intent = stripe.SetupIntent.confirm(
     ...     customer.stripe_setup_intent_id,
     ...     return_url='http://localhost/',
-    ...     payment_method=payment_method)
+    ...     payment_method='pm_card_visa')
     >>> cron_update_intent, = Cron.find([
     ...     ('method', '=', 'account.payment.stripe.customer|stripe_intent_update'),
     ...     ])
@@ -106,7 +98,7 @@ Create submitted payment::
     >>> payment.amount = Decimal('42')
     >>> payment.description = 'Testing'
     >>> payment.stripe_customer = customer
-    >>> payment.stripe_customer_payment_method = payment_method.id
+    >>> payment.stripe_customer_payment_method = 'pm_card_visa'
     >>> payment.click('submit')
     >>> payment.state
     'submitted'
@@ -159,7 +151,7 @@ Cancel payment intent::
     >>> payment.amount = Decimal('42')
     >>> payment.description = 'Testing canceled'
     >>> payment.stripe_customer = customer
-    >>> payment.stripe_customer_payment_method = payment_method.id
+    >>> payment.stripe_customer_payment_method = 'pm_card_visa'
     >>> payment.stripe_capture = False
     >>> payment.click('submit')
     >>> payment.state
