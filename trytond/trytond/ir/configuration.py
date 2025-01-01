@@ -6,7 +6,6 @@ from trytond.model import ModelSingleton, ModelSQL, fields
 
 
 class Configuration(ModelSingleton, ModelSQL):
-    'Configuration'
     __name__ = 'ir.configuration'
     language = fields.Char('language')
     hostname = fields.Char("Hostname", strip=False)

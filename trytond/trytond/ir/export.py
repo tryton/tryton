@@ -156,7 +156,6 @@ class ExportLine(_ClearCache, ModelSQL, ModelView):
 
 
 class ExportGroup(ModelSQL):
-    "Export Group"
     __name__ = 'ir.export-res.group'
 
     export = fields.Many2One(
@@ -166,7 +165,6 @@ class ExportGroup(ModelSQL):
 
 
 class ExportWriteGroup(ExportGroup):
-    "Export Modification Group"
     __name__ = 'ir.export-write-res.group'
     __string__ = None
     _table = None  # Needed to reset Export_Group._table

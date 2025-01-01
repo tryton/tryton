@@ -50,7 +50,6 @@ class SequenceType(ModelSQL, ModelView):
 
 
 class SequenceTypeGroup(ModelSQL):
-    'Sequence Type - Group'
     __name__ = 'ir.sequence.type-res.group'
     sequence_type = fields.Many2One(
         'ir.sequence.type', "Sequence Type", ondelete='CASCADE', required=True)

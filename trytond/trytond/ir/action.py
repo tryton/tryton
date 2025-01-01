@@ -152,7 +152,6 @@ class Action(DeactivableMixin, ModelSQL, ModelView):
 
 
 class ActionGroup(ModelSQL):
-    "Action - Group"
     __name__ = 'ir.action-res.group'
     action = fields.Many2One(
         'ir.action', "Action", ondelete='CASCADE', required=True)
@@ -1148,7 +1147,6 @@ class ActionWizard(
             'model_ref', 'model', 'ir.model,name', "Model",
             ondelete='CASCADE'),
         ActionMixin, ModelSQL, ModelView):
-    "Action wizard"
     __name__ = 'ir.action.wizard'
     _action_name = 'wiz_name'
     wiz_name = fields.Char('Wizard name', required=True)

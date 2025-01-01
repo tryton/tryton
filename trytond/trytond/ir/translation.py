@@ -64,7 +64,6 @@ class Translation(
             'overriding_module_ref', 'overriding_module', 'ir.module,name',
             "Overriding Module", readonly=True),
         ModelSQL, ModelView):
-    "Translation"
     __name__ = "ir.translation"
 
     name = fields.Char('Field Name', required=True)
@@ -1049,17 +1048,14 @@ class Translation(
 
 
 class TranslationSetStart(ModelView):
-    "Set Translation"
     __name__ = 'ir.translation.set.start'
 
 
 class TranslationSetSucceed(ModelView):
-    "Set Translation"
     __name__ = 'ir.translation.set.succeed'
 
 
 class TranslationSet(Wizard):
-    "Set Translation"
     __name__ = "ir.translation.set"
 
     start = StateView('ir.translation.set.start',
@@ -1302,17 +1298,14 @@ class TranslationSet(Wizard):
 
 
 class TranslationCleanStart(ModelView):
-    'Clean translation'
     __name__ = 'ir.translation.clean.start'
 
 
 class TranslationCleanSucceed(ModelView):
-    'Clean translation'
     __name__ = 'ir.translation.clean.succeed'
 
 
 class TranslationClean(Wizard):
-    "Clean translation"
     __name__ = 'ir.translation.clean'
 
     start = StateView('ir.translation.clean.start',
@@ -1493,7 +1486,6 @@ class TranslationClean(Wizard):
 
 
 class TranslationUpdateStart(ModelView):
-    "Update translation"
     __name__ = 'ir.translation.update.start'
 
     language = fields.Many2One('ir.lang', 'Language', required=True,
@@ -1514,7 +1506,6 @@ class TranslationUpdateStart(ModelView):
 
 
 class TranslationUpdate(Wizard):
-    "Update translation"
     __name__ = "ir.translation.update"
 
     _source_types = ['report', 'view', 'wizard_button', 'selection']
@@ -1713,7 +1704,6 @@ class TranslationUpdate(Wizard):
 
 
 class TranslationExportStart(ModelView):
-    "Export translation"
     __name__ = 'ir.translation.export.start'
 
     language = fields.Many2One('ir.lang', 'Language', required=True,
@@ -1739,7 +1729,6 @@ class TranslationExportStart(ModelView):
 
 
 class TranslationExportResult(ModelView):
-    "Export translation"
     __name__ = 'ir.translation.export.result'
 
     language = fields.Many2One('ir.lang', 'Language', readonly=True)
@@ -1749,7 +1738,6 @@ class TranslationExportResult(ModelView):
 
 
 class TranslationExport(Wizard):
-    "Export translation"
     __name__ = "ir.translation.export"
 
     start = StateView('ir.translation.export.start',
@@ -1783,7 +1771,6 @@ class TranslationExport(Wizard):
 
 
 class TranslationReport(Wizard):
-    "Open translations of report"
     __name__ = 'ir.translation.report'
     start_state = 'open_'
     open_ = StateAction('ir.act_translation_report')

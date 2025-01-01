@@ -164,7 +164,6 @@ class RuleGroup(
 
 
 class RuleGroup_Group(ModelSQL):
-    "Rule Group - Group"
     __name__ = 'ir.rule.group-res.group'
     rule_group = fields.Many2One(
         'ir.rule.group', "Rule Group", ondelete='CASCADE', required=True)

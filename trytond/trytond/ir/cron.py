@@ -309,7 +309,6 @@ class Cron(DeactivableMixin, ModelSQL, ModelView):
 
 
 class Log(ModelSQL, ModelView):
-    "Cron Log"
     __name__ = 'ir.cron.log'
 
     cron = fields.Many2One(

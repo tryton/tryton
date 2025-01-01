@@ -15,7 +15,6 @@ class Icon(
             'module_ref', 'module', 'ir.module,name', "Module",
             readonly=True, required=True, ondelete='CASCADE'),
         sequence_ordered(), ModelSQL, ModelView):
-    'Icon'
     __name__ = 'ir.ui.icon'
 
     name = fields.Char('Name', required=True)

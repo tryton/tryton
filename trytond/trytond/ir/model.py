@@ -1158,7 +1158,6 @@ class ModelButton(
 
 
 class ModelButtonGroup(DeactivableMixin, ModelSQL):
-    "Model Button - Group"
     __name__ = 'ir.model.button-res.group'
     button = fields.Many2One(
         'ir.model.button', "Button", ondelete='CASCADE', required=True)
@@ -1535,7 +1534,6 @@ class ModelData(
 
 
 class Log(ResourceAccessMixin, ModelSQL, ModelView):
-    "Log"
     __name__ = 'ir.model.log'
 
     user = fields.Many2One(

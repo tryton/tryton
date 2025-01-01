@@ -84,7 +84,6 @@ class UIMenu(
         sequence_ordered(order='ASC NULLS LAST'),
         tree(separator=' / '),
         ModelSQL, ModelView):
-    "UI menu"
     __name__ = 'ir.ui.menu'
 
     name = fields.Char('Menu', required=True, translate=True)
@@ -265,7 +264,6 @@ class UIMenu(
 
 
 class UIMenuGroup(ModelSQL):
-    "UI Menu - Group"
     __name__ = 'ir.ui.menu-res.group'
     menu = fields.Many2One(
         'ir.ui.menu', "Menu", ondelete='CASCADE', required=True)
@@ -274,7 +272,6 @@ class UIMenuGroup(ModelSQL):
 
 
 class UIMenuFavorite(ModelSQL):
-    "Menu Favorite"
     __name__ = 'ir.ui.menu.favorite'
 
     menu = fields.Many2One('ir.ui.menu', 'Menu', required=True,

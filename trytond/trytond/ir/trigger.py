@@ -312,7 +312,6 @@ class Trigger(DeactivableMixin, ModelSQL, ModelView):
 
 
 class TriggerLog(ModelSQL):
-    'Trigger Log'
     __name__ = 'ir.trigger.log'
     trigger = fields.Many2One(
         'ir.trigger', 'Trigger', required=True, ondelete='CASCADE')
