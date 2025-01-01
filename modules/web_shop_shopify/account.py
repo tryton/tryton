@@ -4,7 +4,7 @@ from collections import defaultdict
 from decimal import Decimal
 
 from trytond.model import Unique
-from trytond.pool import Pool, PoolMeta
+from trytond.pool import PoolMeta
 
 from .common import IdentifierMixin
 
@@ -21,6 +21,9 @@ class Payment(IdentifierMixin, metaclass=PoolMeta):
                 Unique(t, t.shopify_identifier_signed),
                 'web_shop_shopify.msg_identifier_payment_unique'),
             ]
+
+    def process_shopify(self):
+        pass
 
     @classmethod
     def _get_shopify_payment_journal_pattern(cls, sale, transaction):
@@ -45,9 +48,6 @@ class Payment(IdentifierMixin, metaclass=PoolMeta):
 
     @classmethod
     def get_from_shopify(cls, sale, order):
-        pool = Pool()
-        Group = pool.get('account.payment.group')
-
         id2payments = {}
         to_process = defaultdict(list)
         transactions = [
@@ -72,13 +72,8 @@ class Payment(IdentifierMixin, metaclass=PoolMeta):
         cls.save(list(id2payments.values()))
 
         for (company, journal), payments in to_process.items():
-            group = Group(
-                company=company,
-                journal=journal,
-                kind='receivable')
-            group.save()
             cls.submit(payments)
-            cls.process(payments, lambda: group)
+            cls.process(payments)
 
         captured = defaultdict(Decimal)
         voided = defaultdict(Decimal)
