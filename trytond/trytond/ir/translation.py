@@ -150,9 +150,6 @@ class Translation(
         cursor = Transaction().connection.cursor()
         ir_translation = cls.__table__()
 
-        if not model.__doc__:
-            return
-
         name = model.__name__ + ',string'
         src = model.__string__
         if not src:
@@ -399,8 +396,6 @@ class Translation(
                             try:
                                 model = pool.get(record.name)
                             except KeyError:
-                                continue
-                            if not model.__doc__:
                                 continue
                             value = model.__string__
                         if isinstance(value, StringPartitioned):
