@@ -538,8 +538,8 @@ class CreatePurchaseRequestQuotation(Wizard):
                     line.quotation = quotation
                     lines.append(line)
                 quotations.append(quotation)
-        QuotationLine.save(lines)
         Quotation.save(quotations)
+        QuotationLine.save(lines)
 
         self.model.update_state(requests)
         self.succeed.number_quotations = len(quotations)
