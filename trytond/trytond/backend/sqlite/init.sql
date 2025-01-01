@@ -35,7 +35,7 @@ CREATE TABLE ir_model_data (
     fs_id VARCHAR,
     model VARCHAR NOT NULL,
     module VARCHAR NOT NULL,
-    noupdate BOOL,
+    noupdate BOOLEAN,
     fs_values TEXT,
     "values" TEXT
 );
