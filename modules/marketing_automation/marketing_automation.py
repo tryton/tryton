@@ -1007,7 +1007,7 @@ class RecordActivity(Workflow, ModelSQL, ModelView):
     def _on_event(self, event):
         cls = self.__class__
         record_activities = cls.search([
-                ('record', '=', str(self.record)),
+                ('record', '=', self.record),
                 ('activity', 'in', [
                         c.id for c in self.activity.children
                         if c.event == event and not c.negative]),
