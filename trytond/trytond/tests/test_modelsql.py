@@ -1521,6 +1521,7 @@ class ModelSQLTranslationTestCase(TranslationTestCase):
         pool = Pool()
         NameTranslated = pool.get('test.modelsql.name_translated')
         Model = pool.get('ir.model')
+        Translation = pool.get('ir.translation')
 
         record, = NameTranslated.create([{'name': "Bar"}])
         with Transaction().set_context(language=self.other_language):
@@ -1536,6 +1537,14 @@ class ModelSQLTranslationTestCase(TranslationTestCase):
 
             values = NameTranslated.read([record.id], ['name'])
             self.assertEqual(values[0]['name'], "Foo")
+
+        translation, = Translation.search([
+                ('type', '=', 'model'),
+                ('name', '=', 'test.modelsql.name_translated,string'),
+                ('res_id', '=', -1),
+                ])
+        self.assertEqual(translation.src, "NameTranslated")
+        self.assertEqual(translation.value, "NameTranslated")
 
     @with_transaction()
     def test_write_ir_model_field(self):
@@ -1555,10 +1564,10 @@ class ModelSQLTranslationTestCase(TranslationTestCase):
         translation, = Translation.search([
                 ('type', '=', 'help'),
                 ('name', '=', 'test.modelsql.name_translated,name'),
-                ('type', '=', 'help'),
+                ('res_id', '=', -1),
                 ])
+        self.assertEqual(translation.src, "Translated help")
         self.assertEqual(translation.value, "Translated help")
-        self.assertEqual(translation.res_id, -1)
 
     @with_transaction()
     def test_write_default_language_with_other_language(self):
