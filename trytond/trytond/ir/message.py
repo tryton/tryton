@@ -52,14 +52,18 @@ class Message(ModelSQL, ModelView):
         text = cls._message_cache.get(key)
         if text is None:
             message = cls(ModelData.get_id(module, message_id))
+            if not index:
+                fallback = message.text
+            else:
+                fallback = message.text_plural or message.text
             translation = message._get_translation(language)
             if translation:
                 values = [
                     translation.value, translation.value_1,
                     translation.value_2, translation.value_3]
-                text = values[index] or message.text
+                text = values[index] or fallback
             else:
-                text = message.text
+                text = fallback
             cls._message_cache.set(key, text)
         return text if not variables else text % variables
 
