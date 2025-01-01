@@ -1034,14 +1034,13 @@ class Translation(
                 entry.msgid_plural = translation.src_plural
                 entry.msgstr = ''
                 entry.msgstr_plural = {}
-                if translation.value:
-                    entry.msgstr_plural[0] = translation.value
+                entry.msgstr_plural[0] = translation.value or ''
                 if translation.value_1:
                     entry.msgstr_plural[1] = translation.value_1
-                if translation.value_2:
-                    entry.msgstr_plural[2] = translation.value_2
-                if translation.value_3:
-                    entry.msgstr_plural[3] = translation.value_3
+                    if translation.value_2:
+                        entry.msgstr_plural[2] = translation.value_2
+                        if translation.value_3:
+                            entry.msgstr_plural[3] = translation.value_3
             else:
                 entry.msgstr = translation.value or ''
             if entry.msgid or entry.msgstr or entry.msgstr_plural:
