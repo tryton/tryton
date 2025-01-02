@@ -288,4 +288,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">action_line_list</field>
         </record>
     </data>
+    <data depends="sale_promotion_coupon">
+        <record model="ir.ui.view" id="action_view_form_promotion_coupon">
+            <field name="model">sale.complaint.action</field>
+            <field name="inherit" ref="action_view_form"/>
+            <field name="name">action_form_promotion_coupon</field>
+        </record>
+    </data>
 </tryton>

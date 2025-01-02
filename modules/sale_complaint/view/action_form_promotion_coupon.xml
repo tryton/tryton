@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<data>
+    <xpath expr="//field[@name='invoice_lines']" position="after">
+        <label name="promotion_coupon"/>
+        <field name="promotion_coupon"/>
+        <label name="promotion_coupon_number"/>
+        <field name="promotion_coupon_number"/>
+
+        <label name="promotion_coupon_duration"/>
+        <field name="promotion_coupon_duration"/>
+        <newline/>
+    </xpath>
+</data>

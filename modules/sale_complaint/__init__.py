@@ -18,3 +18,8 @@ def register():
         sale.Sale,
         account.InvoiceLine,
         module='sale_complaint', type_='model')
+    Pool.register(
+        complaint.Complaint_PromotionCoupon,
+        complaint.Action_PromotionCoupon,
+        module='sale_complaint', type_='model',
+        depends=['sale_promotion_coupon'])

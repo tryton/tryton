@@ -1,6 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 
+import datetime as dt
 from collections import defaultdict
 from decimal import Decimal
 
@@ -15,7 +16,7 @@ from trytond.modules.company.model import (
     employee_field, reset_employee, set_employee)
 from trytond.modules.currency.fields import Monetary
 from trytond.modules.product import price_digits
-from trytond.pool import Pool
+from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Bool, Eval, If
 from trytond.tools import grouped_slice
 from trytond.transaction import Transaction
@@ -497,6 +498,9 @@ class Action(ModelSQL, ModelView):
     complaint_state = fields.Function(
         fields.Selection('get_complaint_states', "Complaint State"),
         'on_change_with_complaint_state')
+    company = fields.Function(
+        fields.Many2One('company.company', "Company"),
+        'on_change_with_company')
 
     @classmethod
     def __setup__(cls):
@@ -582,6 +586,11 @@ class Action(ModelSQL, ModelView):
     def on_change_with_complaint_state(self, name=None):
         if self.complaint:
             return self.complaint.state
+
+    @fields.depends('complaint', '_parent_complaint.company')
+    def on_change_with_company(self, name=None):
+        if self.complaint:
+            return self.complaint.company
 
     @classmethod
     def _get_result(cls):
@@ -861,3 +870,67 @@ class Action_InvoiceLine(_Action_Line, ModelView, ModelSQL):
             return self.unit_price
         elif self.line:
             return self.line.unit_price
+
+
+class Complaint_PromotionCoupon(metaclass=PoolMeta):
+    __name__ = 'sale.complaint'
+
+    @classmethod
+    def _actions_domains(cls):
+        domains = super()._actions_domains()
+        for name, domain in domains.items():
+            domain.append('promotion_coupon')
+        return domains
+
+
+class Action_PromotionCoupon(metaclass=PoolMeta):
+    __name__ = 'sale.complaint.action'
+
+    _promtion_coupon_states = {
+        'invisible': Eval('action') != 'promotion_coupon',
+        'required': Eval('action') == 'promotion_coupon',
+        }
+
+    promotion_coupon = fields.Many2One(
+        'sale.promotion.coupon', "Promotion Coupon",
+        domain=[
+            ('company', '=', Eval('company', -1)),
+            ('number_of_use', '=', 1),
+            ('per_party', '=', False),
+            ],
+        states=_promtion_coupon_states)
+    promotion_coupon_number = fields.Char(
+        "Number", states=_promtion_coupon_states)
+    promotion_coupon_duration = fields.TimeDelta(
+        "Duration", states=_promtion_coupon_states)
+
+    del _promtion_coupon_states
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls.action.selection.append(('promotion_coupon', "Promotion Coupon"))
+
+    @classmethod
+    def default_promotion_coupon_duration(cls):
+        return dt.timedelta(days=90)
+
+    @classmethod
+    def _get_result(cls):
+        return super()._get_result() + ['sale.promotion.coupon.number']
+
+    def do_promotion_coupon(self):
+        pool = Pool()
+        PromotionCouponNumber = pool.get('sale.promotion.coupon.number')
+        Date = pool.get('ir.date')
+
+        with Transaction().set_context(company=self.company.id):
+            today = Date.today()
+
+        return PromotionCouponNumber(
+            number=self.promotion_coupon_number,
+            coupon=self.promotion_coupon,
+            company=self.company,
+            start_date=today,
+            end_date=today + self.promotion_coupon_duration,
+            )
