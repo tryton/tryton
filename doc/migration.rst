@@ -50,7 +50,7 @@ After
 * If ``product_price_list`` module is activated, add a default price list line
   if price list does not have one and it was relying on the fallback price.
 
-6.2
+6.0
 ---
 
 Before
