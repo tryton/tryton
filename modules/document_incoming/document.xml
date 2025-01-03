@@ -106,6 +106,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_document_incoming_form">
             <field name="name">Incoming Documents</field>
             <field name="res_model">document.incoming</field>
+            <field name="order" eval="[('id', 'DESC')]" pyson="1"/>
         </record>
         <record model="ir.action.act_window.view" id="act_document_incoming_form_view1">
             <field name="sequence" eval="10"/>
