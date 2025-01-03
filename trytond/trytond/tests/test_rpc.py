@@ -13,6 +13,7 @@ class RPCTestCase(TestCase):
 
     @classmethod
     def setUpClass(cls):
+        super().setUpClass()
         activate_module('ir')
 
     @with_transaction()

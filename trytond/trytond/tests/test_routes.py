@@ -16,6 +16,7 @@ class RoutesTestCase(TestCase):
 
     @classmethod
     def setUpClass(cls):
+        super().setUpClass()
         drop_db()
         activate_module(['ir', 'res'], 'fr')
         pool = Pool(DB_NAME)

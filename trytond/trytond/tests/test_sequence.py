@@ -15,6 +15,7 @@ class SequenceTestCase(TestCase):
 
     @classmethod
     def setUpClass(cls):
+        super().setUpClass()
         activate_module('tests')
 
     @staticmethod

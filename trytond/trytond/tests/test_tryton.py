@@ -356,12 +356,12 @@ class _DBTestCase(TestCase):
 
     @classmethod
     def setUpClass(cls):
+        super().setUpClass()
         drop_db()
         modules = [cls.module]
         if cls.extras:
             modules.extend(cls.extras)
         activate_module(modules, lang=cls.language)
-        super().setUpClass()
 
     @classmethod
     def tearDownClass(cls):

@@ -31,6 +31,7 @@ class UserTestCase(TestCase):
 
     @classmethod
     def setUpClass(cls):
+        super().setUpClass()
         activate_module('res')
 
     def setUp(self):

@@ -15,6 +15,7 @@ class ModelTestCase(TestCase):
 
     @classmethod
     def setUpClass(cls):
+        super().setUpClass()
         activate_module('tests')
 
     @with_transaction()
@@ -444,6 +445,7 @@ class ModelTranslationTestCase(TestCase):
 
     @classmethod
     def setUpClass(cls):
+        super().setUpClass()
         activate_module('tests')
         cls.setup_language()
 

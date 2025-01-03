@@ -15,6 +15,7 @@ class FieldDictTestCase(TestCase):
 
     @classmethod
     def setUpClass(cls):
+        super().setUpClass()
         activate_module('tests')
 
     def create_schema(self):
@@ -881,8 +882,8 @@ class FieldDictUnaccentedTestCase(ExtensionTestCase):
 
     @classmethod
     def setUpClass(cls):
-        activate_module('tests')
         super().setUpClass()
+        activate_module('tests')
 
     @with_transaction()
     def test_search_unaccented_off(self):

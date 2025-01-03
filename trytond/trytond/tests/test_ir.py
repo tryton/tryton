@@ -571,9 +571,9 @@ class IrCronTestCase(TestCase):
 
     @classmethod
     def setUpClass(cls):
+        super().setUpClass()
         drop_db()
         activate_module(['ir'])
-        super().setUpClass()
 
     @classmethod
     def tearDownClass(cls):

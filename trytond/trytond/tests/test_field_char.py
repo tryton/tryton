@@ -415,6 +415,7 @@ class FieldCharTestCase(TestCase, CommonTestCaseMixin):
 
     @classmethod
     def setUpClass(cls):
+        super().setUpClass()
         activate_module('tests')
 
     def Char(self):
@@ -641,6 +642,7 @@ class FieldCharTranslatedTestCase(TestCase, CommonTestCaseMixin):
 
     @classmethod
     def setUpClass(cls):
+        super().setUpClass()
         activate_module('tests')
 
     def Char(self):
@@ -711,8 +713,8 @@ class FieldCharUnaccentedTestCase(ExtensionTestCase):
 
     @classmethod
     def setUpClass(cls):
-        activate_module('tests')
         super().setUpClass()
+        activate_module('tests')
 
     @with_transaction()
     def test_normal_search(self):
@@ -791,8 +793,8 @@ class FieldCharSimilarityTestCase(ExtensionTestCase):
 
     @classmethod
     def setUpClass(cls):
-        activate_module('tests')
         super().setUpClass()
+        activate_module('tests')
 
     def _test_search(self, Model):
         record1, record2 = Model.create([{

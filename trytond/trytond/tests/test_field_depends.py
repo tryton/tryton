@@ -12,6 +12,7 @@ class FieldDependsTestCase(TestCase):
 
     @classmethod
     def setUpClass(cls):
+        super().setUpClass()
         activate_module('tests')
 
     def test_empty_depends(self):

@@ -16,6 +16,7 @@ class _ModelAccessTestCase(TestCase):
 
     @classmethod
     def setUpClass(cls):
+        super().setUpClass()
         activate_module('tests')
 
     model_name = model_access_name = 'test.access'
@@ -413,6 +414,7 @@ class _ModelFieldAccessTestCase(TestCase):
 
     @classmethod
     def setUpClass(cls):
+        super().setUpClass()
         activate_module('tests')
 
     @property
@@ -1024,6 +1026,7 @@ class MenuActionAccessReadTestCase(TestCase):
 
     @classmethod
     def setUpClass(cls):
+        super().setUpClass()
         activate_module('tests')
 
     def create_menu(self, access=None):

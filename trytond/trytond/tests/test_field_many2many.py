@@ -379,6 +379,7 @@ class FieldMany2ManyTestCase(TestCase, CommonTestCaseMixin):
 
     @classmethod
     def setUpClass(cls):
+        super().setUpClass()
         activate_module('tests')
 
     def Many2Many(self):
@@ -785,6 +786,7 @@ class FieldMany2ManyReferenceTestCase(TestCase, CommonTestCaseMixin):
 
     @classmethod
     def setUpClass(cls):
+        super().setUpClass()
         activate_module('tests')
 
     def Many2Many(self):

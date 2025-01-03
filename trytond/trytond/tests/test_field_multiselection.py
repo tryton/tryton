@@ -13,6 +13,7 @@ class FieldMultiSelectionTestCase(TestCase):
 
     @classmethod
     def setUpClass(cls):
+        super().setUpClass()
         activate_module('tests')
 
     @property

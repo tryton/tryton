@@ -20,6 +20,7 @@ class ModelView(TestCase):
 
     @classmethod
     def setUpClass(cls):
+        super().setUpClass()
         activate_module('tests')
 
     def test_set_visible(self):

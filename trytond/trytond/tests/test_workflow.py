@@ -10,6 +10,7 @@ class WorkflowTestCase(TestCase):
 
     @classmethod
     def setUpClass(cls):
+        super().setUpClass()
         activate_module('tests')
 
     # TODO add test for Workflow.transition

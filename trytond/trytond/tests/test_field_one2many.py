@@ -456,6 +456,7 @@ class FieldOne2ManyTestCase(
 
     @classmethod
     def setUpClass(cls):
+        super().setUpClass()
         activate_module('tests')
 
     def One2Many(self):
@@ -725,6 +726,7 @@ class FieldOne2ManyReferenceTestCase(
 
     @classmethod
     def setUpClass(cls):
+        super().setUpClass()
         activate_module('tests')
 
     def One2Many(self):
@@ -740,6 +742,7 @@ class FieldOne2ManyExistsTestCase(TestCase, SearchTestCaseMixin):
 
     @classmethod
     def setUpClass(cls):
+        super().setUpClass()
         activate_module('tests')
 
     def setUp(self):
@@ -764,6 +767,7 @@ class FieldOne2ManyReferenceExistsTestCase(
 
     @classmethod
     def setUpClass(cls):
+        super().setUpClass()
         activate_module('tests')
 
     def setUp(self):

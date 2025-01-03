@@ -27,6 +27,7 @@ class CacheTestCase(TestCase):
 
     @classmethod
     def setUpClass(cls):
+        super().setUpClass()
         activate_module('tests')
 
     def testFreeze(self):
@@ -101,6 +102,7 @@ class MemoryCacheTestCase(TestCase):
 
     @classmethod
     def setUpClass(cls):
+        super().setUpClass()
         activate_module('tests')
 
     def setUp(self):
@@ -320,6 +322,7 @@ class LRUDictTransactionTestCase(TestCase):
 
     @classmethod
     def setUpClass(cls):
+        super().setUpClass()
         activate_module('tests')
 
     @with_transaction()

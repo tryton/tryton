@@ -19,6 +19,7 @@ class TriggerTestCase(TestCase):
 
     @classmethod
     def setUpClass(cls):
+        super().setUpClass()
         activate_module('tests')
 
     def setUp(self):

@@ -15,6 +15,7 @@ class TreeTestCaseMixin:
 
     @classmethod
     def setUpClass(cls):
+        super().setUpClass()
         activate_module('tests')
 
     def create(self):
@@ -177,6 +178,7 @@ class TreeMixinTestCase(TestCase):
 
     @classmethod
     def setUpClass(cls):
+        super().setUpClass()
         activate_module('tests')
 
     @with_transaction()
@@ -435,6 +437,11 @@ class TreeMixinTestCase(TestCase):
 
 class TreeTestCase(TestCase):
     "Test Tree"
+
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        activate_module('tests')
 
     @with_transaction()
     def test_sum_tree(self):

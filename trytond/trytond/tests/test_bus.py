@@ -79,8 +79,8 @@ class BusTestCase(TestCase):
 
     @classmethod
     def setUpClass(cls):
-        activate_module('ir')
         super().setUpClass()
+        activate_module('ir')
 
     def setUp(self):
         super().setUp()

@@ -18,6 +18,7 @@ class MPTTTestCase(TreeTestCaseMixin, TestCase):
 
     @classmethod
     def setUpClass(cls):
+        super().setUpClass()
         activate_module('tests')
 
     def check_tree(self, parent_id=None, left=-1, right=sys.maxsize):

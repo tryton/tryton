@@ -14,6 +14,7 @@ class FieldMany2OneTestCase(TestCase):
 
     @classmethod
     def setUpClass(cls):
+        super().setUpClass()
         activate_module('tests')
 
     @with_transaction()
@@ -267,6 +268,7 @@ class FieldMany2OneTreeTestCase(TestCase):
 
     @classmethod
     def setUpClass(cls):
+        super().setUpClass()
         activate_module('tests')
 
     def create_tree(self, Many2One):
