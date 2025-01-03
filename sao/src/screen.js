@@ -838,7 +838,7 @@
                         }).append(this.context_screen.screen_container.el))
                         .prependTo(this.screen_container.filter_box);
                         return this.context_screen.new_();
-                    });
+                    }.bind(this));
             }
 
             if (!attributes.row_activate) {
