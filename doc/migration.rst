@@ -11,6 +11,36 @@ a database from another series.
 .. note::
    If you skip a series, all actions between them must be performed.
 
+6.0
+---
+
+Before
+~~~~~~
+
+* Add access on field:
+
+  .. code-block:: SQL
+
+     ALTER TABLE IF EXISTS "ir_model_field" ADD COLUMN IF NOT EXISTS "access" BOOLEAN;
+
+* If ``account_invoice`` module is activated, fix ``currency``,
+  ``invoice_type`` and ``party`` on ``account.invoice.line``:
+
+  .. code-block:: SQL
+
+     UPDATE "account_invoice_line" SET "currency" = (SELECT "currency" FROM "account_invoice" WHERE "id" = "account_invoice_line"."invoice") WHERE "invoice" IS NOT NULL;
+     UPDATE "account_invoice_line" SET "invoice_type" = (SELECT "type" FROM "account_invoice" WHERE "id" = "account_invoice_line"."invoice") WHERE "invoice_type" IS NOT NULL AND "invoice" IS NOT NULL;
+     UPDATE "account_invoice_line" SET "party" = (SELECT "party" FROM "account_invoice" WHERE "id" = "account_invoice_line"."invoice") WHERE "party" IS NOT NULL AND "invoice" IS NOT NULL;
+
+After
+~~~~~
+
+* Remove code column on ``ir.sequence.type``:
+
+  .. code-block:: SQL
+
+     ALTER TABLE IF EXISTS "ir_sequence_type" DROP COLUMN IF EXISTS "code";
+
 5.6
 ---
 
