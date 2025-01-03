@@ -381,17 +381,6 @@ class ProductSupplier(
                 Index(t, (t.code, Index.Similarity())),
                 })
 
-    @classmethod
-    def __register__(cls, module_name):
-        table = cls.__table_handler__(module_name)
-
-        # Migration from 5.0: add product/template
-        if (table.column_exist('product')
-                and not table.column_exist('template')):
-            table.column_rename('product', 'template')
-
-        super().__register__(module_name)
-
     @staticmethod
     def default_company():
         return Transaction().context.get('company')

@@ -18,21 +18,6 @@ class Invoice(metaclass=PoolMeta):
         'get_history_datetime')
 
     @classmethod
-    def __register__(cls, module_name):
-        super().__register__(module_name)
-        table_h = cls.__table_handler__(module_name)
-        table = cls.__table__()
-        cursor = Transaction().connection.cursor()
-
-        # Migration from 5.2: rename open_date into numbered_at
-        if table_h.column_exist('open_date'):
-            cursor.execute(
-                *table.update(
-                    [table.numbered_at],
-                    [table.open_date]))
-            table_h.drop_column('open_date')
-
-    @classmethod
     def __setup__(cls):
         super().__setup__()
         cls._check_modify_exclude.add('numbered_at')

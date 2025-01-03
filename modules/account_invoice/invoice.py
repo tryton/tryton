@@ -490,20 +490,8 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin, InvoiceReportMixin):
 
     @classmethod
     def __register__(cls, module_name):
-        sql_table = cls.__table__()
-
         super().__register__(module_name)
-        transaction = Transaction()
-        cursor = transaction.connection.cursor()
         table = cls.__table_handler__(module_name)
-
-        # Migration from 5.6: rename state cancel to cancelled
-        cursor.execute(*sql_table.update(
-                [sql_table.state], ['cancelled'],
-                where=sql_table.state == 'cancel'))
-
-        # Migration from 5.8: drop foreign key for sequence
-        table.drop_fk('sequence')
 
         # Migration from 6.6: drop not null on journal
         table.not_null_action('journal', 'remove')
@@ -2426,14 +2414,6 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
                 ('type.expense', '=', True),
                 ('type.debt', '=', True),
                 ]
-
-    @classmethod
-    def __register__(cls, module_name):
-        super().__register__(module_name)
-        table = cls.__table_handler__(module_name)
-        # Migration from 5.0: remove check constraints
-        table.drop_constraint('type_account')
-        table.drop_constraint('type_invoice')
 
     @classmethod
     def get_invoice_types(cls):

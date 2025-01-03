@@ -6,7 +6,6 @@ import time
 from sql import Literal, Select
 from sql.aggregate import Count, Max
 from sql.functions import CurrentTimestamp
-from sql.operators import Concat
 
 from trytond.cache import Cache
 from trytond.i18n import gettext
@@ -89,29 +88,6 @@ class Trigger(DeactivableMixin, ModelSQL, ModelView):
                 'ir.msg_trigger_exclusive'),
             ]
         cls._order.insert(0, ('name', 'ASC'))
-
-    @classmethod
-    def __register__(cls, module_name):
-        super().__register__(module_name)
-
-        cursor = Transaction().connection.cursor()
-        table_h = cls.__table_handler__(module_name)
-        sql_table = cls.__table__()
-
-        # Migration from 5.4: merge action
-        if (table_h.column_exist('action_model')
-                and table_h.column_exist('action_function')):
-            pool = Pool()
-            Model = pool.get('ir.model')
-            model = Model.__table__()
-            action_model = model.select(
-                model.name, where=model.id == sql_table.action_model)
-            cursor.execute(*sql_table.update(
-                    [sql_table.action],
-                    [Concat(action_model, Concat(
-                                '|', sql_table.action_function))]))
-            table_h.drop_column('action_model')
-            table_h.drop_column('action_function')
 
     @classmethod
     def validate_fields(cls, triggers, field_names):

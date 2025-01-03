@@ -4,7 +4,6 @@
 from string import Template
 
 from sql import Literal
-from sql.functions import Substring
 from sql.operators import Equal
 
 from trytond.cache import Cache
@@ -79,15 +78,6 @@ class Address(
             autocomplete_postal_code=RPC(instantiate=0, cache=dict(days=1)),
             autocomplete_city=RPC(instantiate=0, cache=dict(days=1)),
             )
-
-    @classmethod
-    def __register__(cls, module_name):
-        table = cls.__table_handler__(module_name)
-
-        # Migration from 5.8: rename zip to postal code
-        table.column_rename('zip', 'postal_code')
-
-        super().__register__(module_name)
 
     @fields.depends('street')
     def on_change_with_street_single_line(self, name=None):
@@ -297,40 +287,6 @@ class AddressFormat(DeactivableMixin, MatchMixin, ModelSQL, ModelView):
         super().__setup__()
         cls._order.insert(0, ('country_code', 'ASC NULLS LAST'))
         cls._order.insert(1, ('language_code', 'ASC NULLS LAST'))
-
-    @classmethod
-    def __register__(cls, module_name):
-        pool = Pool()
-        Country = pool.get('country.country')
-        Language = pool.get('ir.lang')
-        country = Country.__table__()
-        language = Language.__table__()
-        table = cls.__table__()
-        cursor = Transaction().connection.cursor()
-
-        super().__register__(module_name)
-
-        table_h = cls.__table_handler__()
-
-        # Migration from 5.2: replace country by country_code
-        if table_h.column_exist('country'):
-            query = table.update(
-                [table.country_code],
-                country.select(
-                    country.code,
-                    where=country.id == table.country))
-            cursor.execute(*query)
-            table_h.drop_column('country')
-
-        # Migration from 5.2: replace language by language_code
-        if table_h.column_exist('language'):
-            query = table.update(
-                [table.language_code],
-                language.select(
-                    Substring(language.code, 0, 2),
-                    where=language.id == table.language))
-            cursor.execute(*query)
-            table_h.drop_column('language')
 
     @classmethod
     def default_format_(cls):

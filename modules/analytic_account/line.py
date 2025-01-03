@@ -56,14 +56,6 @@ class Line(ModelSQL, ModelView):
                 })
         cls._order.insert(0, ('date', 'ASC'))
 
-    @classmethod
-    def __register__(cls, module_name):
-        super().__register__(module_name)
-        table = cls.__table_handler__(module_name)
-
-        # Migration from 5.0: replace credit_debit constraint by credit_debit_
-        table.drop_constraint('credit_debit')
-
     @staticmethod
     def default_date():
         Date = Pool().get('ir.date')

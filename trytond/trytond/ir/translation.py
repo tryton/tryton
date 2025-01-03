@@ -134,17 +134,6 @@ class Translation(
                 })
 
     @classmethod
-    def __register__(cls, module_name):
-        table = cls.__table_handler__(module_name)
-
-        # Migration from 5.0: remove src_md5
-        if table.column_exist('src_md5'):
-            table.drop_constraint('translation_md5_uniq')
-            table.drop_column('src_md5')
-
-        super().__register__(module_name)
-
-    @classmethod
     def register_model(cls, model, module_name):
         cursor = Transaction().connection.cursor()
         ir_translation = cls.__table__()
@@ -841,9 +830,6 @@ class Translation(
                 ('module', '=', module),
                 ], order=[])
         for translation in module_translations:
-            # Migration from 5.0: ignore error type
-            if translation.type == 'error':
-                continue
             key = translation.unique_key
             if not key:
                 raise ValueError('Unknow translation type: %s' %
@@ -906,9 +892,6 @@ class Translation(
                     if entry.obsolete:
                         continue
                     translation, res_id = cls.from_poentry(entry)
-                    # Migration from 5.0: ignore error type
-                    if translation.type == 'error':
-                        continue
                     translation.lang = lang
                     translation.module = module
                     noupdate = False

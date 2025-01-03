@@ -833,10 +833,6 @@ class Identifier(sequence_ordered(), DeactivableMixin, ModelSQL, ModelView):
 
         super().__register__(module_name)
 
-        # Migration from 5.8: Rename cn_rit into cn_ric
-        cursor.execute(*table.update([table.type], ['cn_ric'],
-                where=(table.type == 'cn_rit')))
-
         # Migration from 6.8: Use vat alias
         for old in IDENTIFIER_VAT:
             new = replace_vat(old)

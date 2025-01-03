@@ -30,15 +30,6 @@ class Icon(
                 'list_icons': RPC(),
                 })
 
-    @classmethod
-    def __register__(cls, module_name):
-        super().__register__(module_name)
-
-        table = cls.__table_handler__(module_name)
-
-        # Migration from 5.0: remove required on sequence
-        table.not_null_action('sequence', 'remove')
-
     @staticmethod
     def default_module():
         return Transaction().context.get('module') or ''

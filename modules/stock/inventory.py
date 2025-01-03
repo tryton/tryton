@@ -100,22 +100,6 @@ class Inventory(Workflow, ModelSQL, ModelView):
                 })
 
     @classmethod
-    def __register__(cls, module_name):
-        super().__register__(module_name)
-
-        cursor = Transaction().connection.cursor()
-        table = cls.__table_handler__(module_name)
-        sql_table = cls.__table__()
-
-        # Migration from 5.4: remove lost_found
-        table.not_null_action('lost_found', 'remove')
-
-        # Migration from 5.6: rename state cancel to cancelled
-        cursor.execute(*sql_table.update(
-                [sql_table.state], ['cancelled'],
-                where=sql_table.state == 'cancel'))
-
-    @classmethod
     def order_number(cls, tables):
         table, _ = tables[None]
         return [

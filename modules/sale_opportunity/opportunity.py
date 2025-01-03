@@ -138,9 +138,6 @@ class SaleOpportunity(
 
         super().__register__(module_name)
 
-        # Migration from 5.0: drop required on description
-        table.not_null_action('description', action='remove')
-
         # Migration from 6.4: store currency
         if not currency_exists:
             value = company.select(

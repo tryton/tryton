@@ -115,20 +115,6 @@ class Cron(DeactivableMixin, ModelSQL, ModelView):
         cls._sql_indexes.add(Index(table, (table.next_call, Index.Range())))
 
     @classmethod
-    def __register__(cls, module_name):
-        super().__register__(module_name)
-
-        table_h = cls.__table_handler__(module_name)
-
-        # Migration from 5.0: remove fields
-        for column in ['name', 'user', 'request_user', 'number_calls',
-                'repeat_missed', 'model', 'function', 'args']:
-            table_h.drop_column(column)
-
-        # Migration from 5.0: remove required on next_call
-        table_h.not_null_action('next_call', 'remove')
-
-    @classmethod
     def default_timezone(cls):
         return tz.SERVER.tzname(datetime.datetime.now())
 

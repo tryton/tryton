@@ -143,23 +143,6 @@ class ShipmentDrop(
             ], "State", readonly=True, sort=False)
 
     @classmethod
-    def __register__(cls, module_name):
-        table = cls.__table__()
-        cursor = Transaction().connection.cursor()
-
-        table_h = cls.__table_handler__(module_name)
-        # Migration from 5.8: rename code into number
-        if table_h.column_exist('code'):
-            table_h.column_rename('code', 'number')
-
-        super().__register__(module_name)
-
-        # Migration from 5.6: rename state cancel to cancelled
-        cursor.execute(*table.update(
-                [table.state], ['cancelled'],
-                where=table.state == 'cancel'))
-
-    @classmethod
     def __setup__(cls):
         super().__setup__()
         t = cls.__table__()

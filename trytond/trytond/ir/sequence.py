@@ -39,15 +39,6 @@ class SequenceType(ModelSQL, ModelView):
         'ir.sequence.type-res.group', 'sequence_type', 'group', "Groups",
         help="Groups allowed to edit the sequences of this type.")
 
-    @classmethod
-    def __register__(cls, module):
-        super().__register__(module)
-        table_h = cls.__table_handler__(module)
-
-        # Migration from 5.8: remove code
-        # We keep the column until ir.sequence has been migrated
-        table_h.not_null_action('code', action='remove')
-
 
 class SequenceTypeGroup(ModelSQL):
     __name__ = 'ir.sequence.type-res.group'
@@ -131,27 +122,6 @@ class Sequence(DeactivableMixin, ModelSQL, ModelView):
                 Check(table, table.timestamp_rounding > 0),
                 'Timestamp rounding should be greater than 0'),
             ]
-
-    @classmethod
-    def __register__(cls, module):
-        pool = Pool()
-        SequenceType = pool.get('ir.sequence.type')
-        cursor = Transaction().connection.cursor()
-        table = cls.__table__()
-        sequence_type = SequenceType.__table__()
-
-        super().__register__(module)
-
-        table_h = cls.__table_handler__(module)
-
-        # Migration from 5.8: replace code by sequence_type
-        if table_h.column_exist('code'):
-            cursor.execute(*table.update(
-                    [table.sequence_type],
-                    sequence_type.select(
-                        sequence_type.id,
-                        where=sequence_type.code == table.code)))
-            table_h.drop_column('code')
 
     @staticmethod
     def default_type():

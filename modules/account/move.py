@@ -573,33 +573,13 @@ class Reconciliation(ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
-        cursor = Transaction().connection.cursor()
         table = cls.__table_handler__(module_name)
-        sql_table = cls.__table__()
-        pool = Pool()
-        Move = pool.get('account.move')
-        Line = pool.get('account.move.line')
-        move = Move.__table__()
-        line = Line.__table__()
-        line_h = Line.__table_handler__(module_name)
-
-        company_exist = table.column_exist('company')
 
         # Migration from 6.6: rename name to number
         if table.column_exist('name') and not table.column_exist('number'):
             table.column_rename('name', 'number')
 
         super().__register__(module_name)
-
-        # Migration from 5.8: add company field
-        if not company_exist and line_h.column_exist('reconciliation'):
-            value = (line
-                .join(move, condition=line.move == move.id)
-                .select(
-                    move.company,
-                    where=line.reconciliation == sql_table.id,
-                    group_by=move.company))
-            cursor.execute(*sql_table.update([sql_table.company], [value]))
 
     @classmethod
     def order_number(cls, tables):

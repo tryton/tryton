@@ -2,8 +2,6 @@
 # this repository contains the full copyright notices and license terms.
 import mimetypes
 
-from sql import Column
-
 from trytond.config import config
 from trytond.i18n import gettext
 from trytond.model import ModelView, Workflow, fields
@@ -61,36 +59,6 @@ class Package(metaclass=PoolMeta):
                 'invisible': ~Eval('shipping_label'),
                 'depends': ['shipping_label'],
                 })
-
-    @classmethod
-    def __register__(cls, module_name):
-        pool = Pool()
-        PackageType = pool.get('stock.package.type')
-        cursor = Transaction().connection.cursor()
-        table = cls.__table__()
-        package_type = PackageType.__table__()
-        table_h = cls.__table_handler__(module_name)
-        dimension_columns = [
-            'length', 'length_uom',
-            'height', 'height_uom',
-            'width', 'width_uom']
-        dimension_exists = any(
-            table_h.column_exist(c) for c in dimension_columns)
-
-        super().__register__(module_name)
-
-        # Migration from 5.8: Update dimensions on package from package_type
-        if not dimension_exists:
-            columns = []
-            values = []
-            for c in dimension_columns:
-                columns.append(Column(table, c))
-                values.append(package_type.select(
-                        Column(package_type, c),
-                        where=package_type.id == table.type))
-            cursor.execute(*table.update(
-                    columns=columns,
-                    values=values))
 
     @fields.depends('shipment')
     def on_change_with_has_shipping_service(self, name=None):

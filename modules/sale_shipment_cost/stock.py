@@ -181,14 +181,6 @@ class ShipmentOut(ShipmentCostSaleMixin, metaclass=PoolMeta):
         cursor = Transaction().connection.cursor()
         table = cls.__table__()
 
-        # Migration from 5.8: rename cost into cost_sale
-        if (table_h.column_exist('cost')
-                and not table_h.column_exist('cost_sale')):
-            table_h.column_rename('cost', 'cost_sale')
-        if (table_h.column_exist('cost_currency')
-                and not table_h.column_exist('cost_sale_currency')):
-            table_h.column_rename('cost_currency', 'cost_sale_currency')
-
         # Migration from 7.2: use suffix sale
         table_h.column_rename('cost_method', 'cost_sale_method')
         table_h.column_rename('cost_invoice_line', 'cost_sale_invoice_line')

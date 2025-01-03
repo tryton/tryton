@@ -169,18 +169,6 @@ class LandedCost(Workflow, ModelSQL, ModelView, MatchMixin):
                 })
 
     @classmethod
-    def __register__(cls, module_name):
-        cursor = Transaction().connection.cursor()
-        sql_table = cls.__table__()
-
-        super().__register__(module_name)
-
-        # Migration from 5.6: rename state cancel to cancelled
-        cursor.execute(*sql_table.update(
-                [sql_table.state], ['cancelled'],
-                where=sql_table.state == 'cancel'))
-
-    @classmethod
     def order_number(cls, tables):
         table, _ = tables[None]
         return [CharLength(table.number), table.number]

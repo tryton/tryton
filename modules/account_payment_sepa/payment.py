@@ -138,14 +138,6 @@ class Journal(metaclass=PoolMeta):
         sql_table = cls.__table__()
         super().__register__(module_name)
 
-        # Migration from 5.4: sepa identifier merged into eu_at_02
-        for name in {'payable', 'receivable'}:
-            column = getattr(sql_table, 'sepa_%s_initiator_id' % name)
-            cursor.execute(*sql_table.update(
-                    columns=[column],
-                    values=['eu_at_02'],
-                    where=column == 'sepa'))
-
         # Migration from 6.8: es_nif renamed into es_vat
         cursor.execute(*sql_table.update(
                 [sql_table.sepa_payable_initiator_id],
@@ -592,18 +584,6 @@ class Mandate(Workflow, ModelSQL, ModelView):
                 t, (t.state, Index.Equality(cardinality='low')),
                 where=t.state.in_(['draft', 'requested'])))
 
-    @classmethod
-    def __register__(cls, module_name):
-        cursor = Transaction().connection.cursor()
-        table = cls.__table__()
-
-        super().__register__(module_name)
-
-        # Migration from 5.6: rename state canceled to cancelled
-        cursor.execute(*table.update(
-                [table.state], ['cancelled'],
-                where=table.state == 'canceled'))
-
     @staticmethod
     def default_company():
         return Transaction().context.get('company')
@@ -867,19 +847,6 @@ class Message(Workflow, ModelSQL, ModelView):
                     'depends': ['state'],
                     },
                 })
-
-    @classmethod
-    def __register__(cls, module_name):
-        transaction = Transaction()
-        cursor = transaction.connection.cursor()
-        table = cls.__table__()
-
-        super().__register__(module_name)
-
-        # Migration from 5.6: rename state canceled to cancelled
-        cursor.execute(*table.update(
-                [table.state], ['cancelled'],
-                where=table.state == 'canceled'))
 
     @staticmethod
     def default_type():

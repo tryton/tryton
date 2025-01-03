@@ -498,11 +498,6 @@ class ShipmentIn(
 
         super().__register__(module_name)
 
-        # Migration from 5.6: rename state cancel to cancelled
-        cursor.execute(*sql_table.update(
-                [sql_table.state], ['cancelled'],
-                where=sql_table.state == 'cancel'))
-
         # Migration from 6.6: fill warehouse locations
         cursor.execute(*sql_table.update(
                 [sql_table.warehouse_input],
@@ -912,18 +907,6 @@ class ShipmentInReturn(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
                 'assign_try': {},
                 'assign_force': {},
                 })
-
-    @classmethod
-    def __register__(cls, module_name):
-        cursor = Transaction().connection.cursor()
-        sql_table = cls.__table__()
-
-        super().__register__(module_name)
-
-        # Migration from 5.6: rename state cancel to cancelled
-        cursor.execute(*sql_table.update(
-                [sql_table.state], ['cancelled'],
-                where=sql_table.state == 'cancel'))
 
     @staticmethod
     def default_state():
@@ -1377,20 +1360,10 @@ class ShipmentOut(
         pool = Pool()
         Location = pool.get('stock.location')
         cursor = Transaction().connection.cursor()
-        table = cls.__table_handler__(module_name)
         sql_table = cls.__table__()
         location = Location.__table__()
 
-        # Migration from 5.6: rename assigned_by into picked_by
-        if table.column_exist('assigned_by'):
-            table.column_rename('assigned_by', 'picked_by')
-
         super().__register__(module_name)
-
-        # Migration from 5.6: rename state cancel to cancelled
-        cursor.execute(*sql_table.update(
-                [sql_table.state], ['cancelled'],
-                where=sql_table.state == 'cancel'))
 
         # Migration from 6.6: fill warehouse locations
         cursor.execute(*sql_table.update(
@@ -2035,11 +2008,6 @@ class ShipmentOutReturn(
 
         super().__register__(module_name)
 
-        # Migration from 5.6: rename state cancel to cancelled
-        cursor.execute(*sql_table.update(
-                [sql_table.state], ['cancelled'],
-                where=sql_table.state == 'cancel'))
-
         # Migration from 6.4: remove required on contact_address
         table.not_null_action('contact_address', 'remove')
 
@@ -2556,17 +2524,6 @@ class ShipmentInternal(
                 'assign_try': {},
                 'assign_force': {},
                 })
-
-    @classmethod
-    def __register__(cls, module_name):
-        cursor = Transaction().connection.cursor()
-        sql_table = cls.__table__()
-
-        super().__register__(module_name)
-        # Migration from 5.6: rename state cancel to cancelled
-        cursor.execute(*sql_table.update(
-                [sql_table.state], ['cancelled'],
-                where=sql_table.state == 'cancel'))
 
     @classmethod
     def order_effective_date(cls, tables):

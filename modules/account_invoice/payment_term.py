@@ -4,7 +4,6 @@ from decimal import Decimal
 
 from dateutil.relativedelta import relativedelta
 
-from trytond import backend
 from trytond.i18n import gettext
 from trytond.model import (
     Check, DeactivableMixin, ModelSQL, ModelView, fields, sequence_ordered)
@@ -239,50 +238,6 @@ class PaymentTermLineRelativeDelta(sequence_ordered(), ModelSQL, ModelView):
     def __setup__(cls):
         super().__setup__()
         cls.__access__.add('line')
-
-    @classmethod
-    def __register__(cls, module_name):
-        transaction = Transaction()
-        cursor = transaction.connection.cursor()
-        pool = Pool()
-        Month = pool.get('ir.calendar.month')
-        Day = pool.get('ir.calendar.day')
-        sql_table = cls.__table__()
-        month = Month.__table__()
-        day = Day.__table__()
-        table_h = cls.__table_handler__(module_name)
-
-        # Migration from 5.0: use ir.calendar
-        migrate_calendar = False
-        if (backend.TableHandler.table_exist(cls._table)
-                and table_h.column_exist('month')
-                and table_h.column_exist('weekday')):
-            migrate_calendar = (
-                table_h.column_is_type('month', 'VARCHAR')
-                or table_h.column_is_type('weekday', 'VARCHAR'))
-            if migrate_calendar:
-                table_h.column_rename('month', '_temp_month')
-                table_h.column_rename('weekday', '_temp_weekday')
-
-        super().__register__(module_name)
-
-        table_h = cls.__table_handler__(module_name)
-
-        # Migration from 5.0: use ir.calendar
-        if migrate_calendar:
-            update = transaction.connection.cursor()
-            cursor.execute(*month.select(month.id, month.index))
-            for month_id, index in cursor:
-                update.execute(*sql_table.update(
-                        [sql_table.month], [month_id],
-                        where=sql_table._temp_month == str(index)))
-            table_h.drop_column('_temp_month')
-            cursor.execute(*day.select(day.id, day.index))
-            for day_id, index in cursor:
-                update.execute(*sql_table.update(
-                        [sql_table.weekday], [day_id],
-                        where=sql_table._temp_weekday == str(index)))
-            table_h.drop_column('_temp_weekday')
 
     @staticmethod
     def default_months():

@@ -4,7 +4,6 @@ from trytond.i18n import gettext
 from trytond.model import fields
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
-from trytond.transaction import Transaction
 
 from .exceptions import PartyIdentificationdError
 
@@ -77,18 +76,6 @@ class PartyIdentifier(metaclass=PoolMeta):
         states={
             'invisible': Eval('type') != 'es_vat',
             })
-
-    @classmethod
-    def __register__(cls, module_name):
-        cursor = Transaction().connection.cursor()
-        sql_table = cls.__table__()
-        super().__register__(module_name)
-
-        # Migration from 5.4: sepa identifier merged into eu_at_02
-        cursor.execute(*sql_table.update(
-                columns=[sql_table.type],
-                values=['eu_at_02'],
-                where=sql_table.type == 'sepa'))
 
     @property
     def sepa_identifier(self):

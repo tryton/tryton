@@ -149,14 +149,6 @@ class TypeTemplate(
     childs = fields.One2Many(
         'account.account.type.template', 'parent', "Children")
 
-    @classmethod
-    def __register__(cls, module_name):
-        super().__register__(module_name)
-        table_h = cls.__table_handler__(module_name)
-
-        # Migration from 5.0: remove display_balance
-        table_h.drop_column('display_balance')
-
     def _get_type_value(self, type=None):
         '''
         Set the values for account creation.
@@ -274,14 +266,6 @@ class Type(
                     (table.id, Index.Range(cardinality='high')),
                     where=table.receivable | table.payable),
                 })
-
-    @classmethod
-    def __register__(cls, module_name):
-        super().__register__(module_name)
-        table_h = cls.__table_handler__(module_name)
-
-        # Migration from 5.0: remove display_balance
-        table_h.drop_column('display_balance')
 
     @classmethod
     def default_template_override(cls):
@@ -698,15 +682,6 @@ class AccountTemplate(
                     table, (table.debit_type + table.credit_type) == Null),
                 'account.msg_only_one_debit_credit_types'))
 
-    @classmethod
-    def __register__(cls, module_name):
-        super().__register__(module_name)
-
-        table_h = cls.__table_handler__(module_name)
-
-        # Migration from 5.0: remove kind
-        table_h.drop_column('kind')
-
     def _get_account_value(self, account=None):
         '''
         Set the values for account creation.
@@ -1002,15 +977,6 @@ class Account(
                 table,
                 (table.left, Index.Range(cardinality='high')),
                 (table.right, Index.Range(cardinality='high'))))
-
-    @classmethod
-    def __register__(cls, module_name):
-        super().__register__(module_name)
-
-        table_h = cls.__table_handler__(module_name)
-
-        # Migration from 5.0: remove kind
-        table_h.drop_column('kind')
 
     @classmethod
     def validate_fields(cls, accounts, field_names):

@@ -317,15 +317,6 @@ class ModuleConfigWizardItem(sequence_ordered(), ModelSQL, ModelView):
         ('done', 'Done'),
         ], string="State", required=True, sort=False)
 
-    @classmethod
-    def __register__(cls, module_name):
-        super().__register__(module_name)
-
-        table = cls.__table_handler__(module_name)
-
-        # Migration from 5.0: remove required on sequence
-        table.not_null_action('sequence', 'remove')
-
     @staticmethod
     def default_state():
         return 'open'

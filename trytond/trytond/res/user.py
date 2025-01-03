@@ -193,19 +193,8 @@ class User(avatar_mixin(100, 'login'), DeactivableMixin, ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
-        pool = Pool()
-        ModelData = pool.get('ir.model.data')
-        model_data = ModelData.__table__()
         table_h = cls.__table_handler__(module_name)
-        cursor = Transaction().connection.cursor()
         super().__register__(module_name)
-
-        # Migration from 5.6: Set noupdate to admin
-        cursor.execute(*model_data.update(
-                [model_data.noupdate], [True],
-                where=(model_data.model == cls.__name__)
-                & (model_data.module == 'res')
-                & (model_data.fs_id == 'user_admin')))
 
         # Migration from 7.4: remove required on menu
         table_h.not_null_action('menu', 'remove')

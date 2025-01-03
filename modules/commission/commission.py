@@ -66,30 +66,6 @@ class Agent(DeactivableMixin, ModelSQL, ModelView):
             'company': Eval('company', -1),
             })
 
-    @classmethod
-    def __register__(cls, module_name):
-        pool = Pool()
-        Company = pool.get('company.company')
-        sql_table = cls.__table__()
-        company = Company.__table__()
-
-        super().__register__(module_name)
-        transaction = Transaction()
-        cursor = transaction.connection.cursor()
-        table = cls.__table_handler__(module_name)
-
-        # Migration from 5.4: Ensure currency is set
-        # Don't use UPDATE FROM because SQLite does not support it
-        cursor.execute(*sql_table.update(
-                columns=[sql_table.currency],
-                values=[company.select(
-                        company.currency,
-                        where=company.id == sql_table.company)],
-                where=(sql_table.currency == Null)))
-
-        # Migration from 5.4: Add not null on currency
-        table.not_null_action('currency', 'add')
-
     @fields.depends('active', 'selections', 'company')
     def on_change_active(self):
         pool = Pool()

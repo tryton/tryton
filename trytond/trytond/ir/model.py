@@ -1416,9 +1416,6 @@ class ModelData(
 
         table_h = cls.__table_handler__(module_name)
 
-        # Migration from 5.0: remove required on db_id
-        table_h.not_null_action('db_id', action='remove')
-
         # Migration from 7.4: replace fs_id_module_model_uniq
         table_h.drop_constraint('fs_id_module_model_uniq')
 

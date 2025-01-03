@@ -274,14 +274,6 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
 
         super().__register__(module_name)
 
-        table = cls.__table__()
-        cursor = Transaction().connection.cursor()
-
-        # Migration from 5.6: rename state cancel to cancelled
-        cursor.execute(*table.update(
-                [table.state], ['cancelled'],
-                where=table.state == 'cancel'))
-
     @classmethod
     def order_number(cls, tables):
         table, _ = tables[None]

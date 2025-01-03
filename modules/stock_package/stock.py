@@ -1,7 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from sql import Cast, Literal
-from sql.functions import CharLength, Position, Substring
+from sql.functions import CharLength
 
 from trytond.i18n import gettext
 from trytond.model import (
@@ -233,33 +232,13 @@ class Package(tree(), MeasurementsMixin, ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module):
-        pool = Pool()
         table_h = cls.__table_handler__(module)
-        table = cls.__table__()
-        company_exist = table_h.column_exist('company')
-        cursor = Transaction().connection.cursor()
 
         # Migration from 6.8: rename code to number
         if table_h.column_exist('code'):
             table_h.column_rename('code', 'number')
 
         super().__register__(module)
-
-        # Migration from 5.8: add company
-        if not company_exist:
-            shipment_id = Cast(Substring(
-                    table.shipment,
-                    Position(',', table.shipment) + Literal(1)),
-                cls.id.sql_type().base)
-            for name in cls._get_shipment():
-                Shipment = pool.get(name)
-                shipment = Shipment.__table__()
-                value = (shipment
-                    .select(shipment.company,
-                        where=shipment.id == shipment_id))
-                cursor.execute(*table.update(
-                        [table.company], [value],
-                        where=table.shipment.like(name + ',%')))
 
     @classmethod
     def order_number(cls, tables):

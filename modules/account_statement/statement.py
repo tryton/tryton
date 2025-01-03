@@ -179,19 +179,6 @@ class Statement(Workflow, ModelSQL, ModelView):
                     readonly=False, instantiate=0, fresh_session=True),
                 })
 
-    @classmethod
-    def __register__(cls, module_name):
-        transaction = Transaction()
-        cursor = transaction.connection.cursor()
-        sql_table = cls.__table__()
-
-        super().__register__(module_name)
-
-        # Migration from 5.6: rename state cancel to cancelled
-        cursor.execute(*sql_table.update(
-                [sql_table.state], ['cancelled'],
-                where=sql_table.state == 'cancel'))
-
     @staticmethod
     def default_company():
         return Transaction().context.get('company')
@@ -1196,15 +1183,6 @@ class Origin(origin_mixin(_states), ModelSQL, ModelView):
         'on_change_with_pending_amount', searcher='search_pending_amount')
     information = fields.Dict(
         'account.statement.origin.information', "Information", readonly=True)
-
-    @classmethod
-    def __register__(cls, module_name):
-        table = cls.__table_handler__(module_name)
-
-        # Migration from 5.0: rename informations into information
-        table.column_rename('informations', 'information')
-
-        super().__register__(module_name)
 
     @fields.depends('statement', '_parent_statement.id')
     def on_change_with_statement_id(self, name=None):

@@ -479,8 +479,6 @@ class Move(Workflow, ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
-        cursor = Transaction().connection.cursor()
-        sql_table = cls.__table__()
         table_h = cls.__table_handler__(module_name)
 
         # Migration from 6.8: rename uom to unit
@@ -489,11 +487,6 @@ class Move(Workflow, ModelSQL, ModelView):
             table_h.column_rename('uom', 'unit')
 
         super().__register__(module_name)
-
-        # Migration from 5.6: rename state cancel to cancelled
-        cursor.execute(*sql_table.update(
-                [sql_table.state], ['cancelled'],
-                where=sql_table.state == 'cancel'))
 
     @classmethod
     def get_product_types(cls):

@@ -505,22 +505,6 @@ class Product(
                     getattr(cls, attr).setter = '_set_template_function'
 
     @classmethod
-    def __register__(cls, module):
-        table = cls.__table__()
-        table_h = cls.__table_handler__(module)
-        fill_suffix_code = (
-            table_h.column_exist('code')
-            and not table_h.column_exist('suffix_code'))
-        super().__register__(module)
-        cursor = Transaction().connection.cursor()
-
-        # Migration from 5.4: split code into prefix/suffix
-        if fill_suffix_code:
-            cursor.execute(*table.update(
-                    [table.suffix_code],
-                    [table.code]))
-
-    @classmethod
     def _set_template_function(cls, products, name, value):
         # Prevent NotImplementedError for One2Many
         pass

@@ -360,11 +360,6 @@ class Purchase(
 
         super().__register__(module_name)
 
-        # Migration from 5.6: rename state cancel to cancelled
-        cursor.execute(*sql_table.update(
-                [sql_table.state], ['cancelled'],
-                where=sql_table.state == 'cancel'))
-
         # Migration from 6.6: rename invoice state waiting to pending
         cursor.execute(*sql_table.update(
                 [sql_table.invoice_state], ['pending'],

@@ -1,6 +1,5 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from sql import Null
 
 from trytond.cache import Cache
 from trytond.model import ModelSQL, fields
@@ -118,34 +117,6 @@ class User(metaclass=PoolMeta):
         cls._context_fields.insert(0, 'company')
         cls._context_fields.insert(0, 'employee')
         cls._context_fields.insert(0, 'company_filter')
-
-    @classmethod
-    def __register__(cls, module):
-        pool = Pool()
-        UserCompany = pool.get('res.user-company.company')
-        transaction = Transaction()
-        table = cls.__table__()
-        user_company = UserCompany.__table__()
-
-        super().__register__(module)
-
-        table_h = cls.__table_handler__(module)
-        cursor = transaction.connection.cursor()
-
-        # Migration from 5.8: remove main_company
-        if table_h.column_exist('main_company'):
-            cursor.execute(*user_company.insert(
-                    [user_company.user, user_company.company],
-                    table.select(
-                        table.id, table.main_company,
-                        where=table.main_company != Null)))
-            cursor.execute(*user_company.insert(
-                    [user_company.user, user_company.company],
-                    table.select(
-                        table.id, table.company,
-                        where=(table.company != Null)
-                        & (table.company != table.main_company))))
-            table_h.drop_column('main_company')
 
     @classmethod
     def default_companies(cls):

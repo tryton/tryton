@@ -123,7 +123,6 @@ class PurchaseRequest(ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
-        request = cls.__table__()
         table_h = cls.__table_handler__(module_name)
 
         # Migration from 6.8: rename uom to unit
@@ -137,13 +136,6 @@ class PurchaseRequest(ModelSQL, ModelView):
             table_h.column_rename('computed_uom', 'computed_unit')
 
         super().__register__(module_name)
-
-        cursor = Transaction().connection.cursor()
-
-        # Migration from 5.6: rename state cancel to cancelled
-        cursor.execute(*request.update(
-                [request.state], ['cancelled'],
-                where=request.state == 'cancel'))
 
     def get_rec_name(self, name):
         pool = Pool()

@@ -484,10 +484,6 @@ class ModelSQL(ModelStorage):
             if cls._history:
                 history_table.add_column(field_name, field._sql_type)
 
-            if isinstance(field, (fields.Integer, fields.Float)):
-                # migration from tryton 2.2
-                table.db_default(field_name, None)
-
             if isinstance(field, (fields.Boolean)):
                 table.db_default(field_name, False)
 
@@ -505,10 +501,7 @@ class ModelSQL(ModelStorage):
                             backend.TableHandler(ref_model)
                     else:
                         ref = None
-                if field_name in ['create_uid', 'write_uid']:
-                    # migration from 3.6
-                    table.drop_fk(field_name)
-                elif ref:
+                if ref and field_name not in ['create_uid', 'write_uid']:
                     table.add_fk(field_name, ref, on_delete=field.ondelete)
 
             required = field.required

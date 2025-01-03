@@ -103,15 +103,6 @@ class Account(
         cls._order.insert(0, ('code', 'ASC'))
         cls._order.insert(1, ('name', 'ASC'))
 
-    @classmethod
-    def __register__(cls, module_name):
-        super().__register__(module_name)
-        table = cls.__table_handler__(module_name)
-
-        # Migration from 5.0: remove display_balance
-        table.drop_column('display_balance')
-
-    @staticmethod
     def default_company():
         return Transaction().context.get('company')
 

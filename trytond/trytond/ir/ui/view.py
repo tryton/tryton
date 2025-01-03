@@ -753,14 +753,6 @@ class ViewSearch(
                 'unset': RPC(check_access=False, readonly=False),
                 })
 
-    @classmethod
-    def __register__(cls, module):
-        super().__register__(module)
-        table_h = cls.__table_handler__(module)
-
-        # Migration from 5.6: remove user required
-        table_h.not_null_action('user', 'remove')
-
     @staticmethod
     def default_user():
         return Transaction().user

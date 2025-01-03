@@ -7,7 +7,6 @@ from sql import Literal
 from sql.conditionals import Coalesce
 from sql.functions import Position, Substring
 
-from trytond import backend
 from trytond.model import DeactivableMixin, ModelSQL, ModelView, fields, tree
 from trytond.pool import Pool
 from trytond.pyson import Eval, If
@@ -171,19 +170,6 @@ class Country(DeactivableMixin, ModelSQL, ModelView):
     def __setup__(cls):
         super().__setup__()
         cls._order.insert(0, ('name', 'ASC'))
-
-    @classmethod
-    def __register__(cls, module_name):
-        pool = Pool()
-        Data = pool.get('ir.model.data')
-        data = Data.__table__()
-        cursor = Transaction().connection.cursor()
-
-        super().__register__(module_name)
-
-        # Migration from 5.2: remove country data
-        cursor.execute(*data.delete(where=(data.module == 'country')
-                & (data.model == cls.__name__)))
 
     @fields.depends('code')
     def on_change_with_flag(self, name=None):
@@ -426,18 +412,9 @@ class Subdivision(DeactivableMixin, ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
-        pool = Pool()
-        Data = pool.get('ir.model.data')
-        data = Data.__table__()
-        cursor = Transaction().connection.cursor()
-
         super().__register__(module_name)
 
         table_h = cls.__table_handler__(module_name)
-
-        # Migration from 5.2: remove country data
-        cursor.execute(*data.delete(where=(data.module == 'country')
-                & (data.model == cls.__name__)))
 
         # Migration from 6.2: remove type required
         table_h.not_null_action('type', action='remove')
@@ -525,15 +502,6 @@ class PostalCode(ModelSQL, ModelView):
         super().__setup__()
         cls._order.insert(0, ('country', 'ASC'))
         cls._order.insert(0, ('postal_code', 'ASC'))
-
-    @classmethod
-    def __register__(cls, module):
-        # Migration from 5.8: rename zip to postal_code
-        backend.TableHandler.table_rename('country_zip', cls._table)
-        table_h = cls.__table_handler__(module)
-        table_h.column_rename('zip', 'postal_code')
-
-        super().__register__(module)
 
     def get_rec_name(self, name):
         if self.city and self.postal_code:

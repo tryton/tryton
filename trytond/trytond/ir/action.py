@@ -1022,15 +1022,6 @@ class ActionActWindowView(
         super().__setup__()
         cls.__access__.add('act_window')
 
-    @classmethod
-    def __register__(cls, module_name):
-        super().__register__(module_name)
-
-        table = cls.__table_handler__(module_name)
-
-        # Migration from 5.0: remove required on sequence
-        table.not_null_action('sequence', 'remove')
-
     @fields.depends('act_window', '_parent_act_window.res_model')
     def on_change_with_model(self, name=None):
         if self.act_window:
@@ -1069,15 +1060,6 @@ class ActionActWindowDomain(
     def __setup__(cls):
         super().__setup__()
         cls.__access__.add('act_window')
-
-    @classmethod
-    def __register__(cls, module_name):
-        super().__register__(module_name)
-
-        table = cls.__table_handler__(module_name)
-
-        # Migration from 5.0: remove required on sequence
-        table.not_null_action('sequence', 'remove')
 
     @classmethod
     def default_count(cls):

@@ -3,8 +3,7 @@
 import datetime
 
 from trytond.model import ModelSQL, fields
-from trytond.pool import Pool, PoolMeta
-from trytond.transaction import Transaction
+from trytond.pool import PoolMeta
 
 
 class ProductSupplier(metaclass=PoolMeta):
@@ -47,25 +46,3 @@ class ProductSupplierDay(ModelSQL):
         'purchase.product_supplier', 'Supplier',
         required=True, ondelete='CASCADE')
     day = fields.Many2One('ir.calendar.day', "Day", required=True)
-
-    @classmethod
-    def __register__(cls, module_name):
-        pool = Pool()
-        Day = pool.get('ir.calendar.day')
-        day = Day.__table__()
-        transaction = Transaction()
-        table = cls.__table__()
-
-        super().__register__(module_name)
-        table_h = cls.__table_handler__(module_name)
-
-        # Migration from 5.0: replace weekday by day
-        if table_h.column_exist('weekday'):
-            cursor = transaction.connection.cursor()
-            update = transaction.connection.cursor()
-            cursor.execute(*day.select(day.id, day.index))
-            for day_id, index in cursor:
-                update.execute(*table.update(
-                        [table.day], [day_id],
-                        where=table.weekday == str(index)))
-            table_h.drop_column('weekday')

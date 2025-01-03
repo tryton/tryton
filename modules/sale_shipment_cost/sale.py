@@ -96,9 +96,6 @@ class Sale(metaclass=PoolMeta):
         table = cls.__table__()
 
         super().__register__(module)
-        table_h = cls.__table_handler__(module)
-        # Migration from 5.8: remove required on shipment_cost_method
-        table_h.not_null_action('shipment_cost_method', 'remove')
 
         # Migration from 6.6: shipment_cost_method domain
         cursor.execute(*table.update(

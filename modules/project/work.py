@@ -230,9 +230,6 @@ class Work(sequence_ordered(), tree(separator='\\'), ModelSQL, ModelView):
 
         super().__register__(module_name)
 
-        # Migration from 5.4: replace state by status
-        table_project_work.not_null_action('state', action='remove')
-
         # Migration from 6.0: remove left and right
         table_project_work.drop_column('left')
         table_project_work.drop_column('right')

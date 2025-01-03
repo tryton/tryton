@@ -192,18 +192,6 @@ class PurchaseRequisition(Workflow, ModelSQL, ModelView):
             'processing', 'cancelled']
 
     @classmethod
-    def __register__(cls, module_name):
-        cursor = Transaction().connection.cursor()
-        table = cls.__table__()
-
-        super().__register__(module_name)
-
-        # Migration from 5.6: rename state cancel to cancelled
-        cursor.execute(*table.update(
-                [table.state], ['cancelled'],
-                where=table.state == 'cancel'))
-
-    @classmethod
     def order_number(cls, tables):
         table, _ = tables[None]
         return [

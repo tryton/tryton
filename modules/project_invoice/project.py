@@ -9,8 +9,6 @@ from itertools import groupby
 
 from sql import Cast, Null
 from sql.aggregate import Sum
-from sql.conditionals import NullIf
-from sql.functions import Extract
 from sql.operators import Concat
 
 from trytond import backend
@@ -673,29 +671,6 @@ class WorkInvoicedProgress(ModelView, ModelSQL):
             ])
     invoice_line = fields.Many2One('account.invoice.line', 'Invoice Line',
         ondelete='CASCADE')
-
-    @classmethod
-    def __register__(cls, module_name):
-        cursor = Transaction().connection.cursor()
-        table = cls.__table_handler__(module_name)
-        sql_table = cls.__table__()
-        pool = Pool()
-        Work = pool.get('project.work')
-        work = Work.__table__()
-
-        created_progress = not table.column_exist('progress')
-        effort_exist = table.column_exist('effort_duration')
-
-        super().__register__(module_name)
-
-        # Migration from 5.0: Effort renamed into to progress
-        if created_progress and effort_exist:
-            # Don't use UPDATE FROM because SQLite does not support it.
-            value = work.select(
-                (Extract('EPOCH', sql_table.effort_duration)
-                    / NullIf(Extract('EPOCH', work.effort_duration), 0)),
-                where=work.id == sql_table.work)
-            cursor.execute(*sql_table.update([sql_table.progress], [value]))
 
 
 class OpenInvoice(Wizard):

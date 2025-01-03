@@ -110,23 +110,6 @@ class Forecast(Workflow, ModelSQL, ModelView):
                 })
         cls._active_field = 'active'
 
-    @classmethod
-    def __register__(cls, module_name):
-        cursor = Transaction().connection.cursor()
-        sql_table = cls.__table__()
-
-        super().__register__(module_name)
-
-        table = cls.__table_handler__(module_name)
-
-        # Migration from 5.0: remove check_from_to_date
-        table.drop_constraint('check_from_to_date')
-
-        # Migration from 5.6: rename state cancel to cancelled
-        cursor.execute(*sql_table.update(
-                [sql_table.state], ['cancelled'],
-                where=sql_table.state == 'cancel'))
-
     @staticmethod
     def default_state():
         return 'draft'
@@ -319,12 +302,6 @@ class ForecastLine(ModelSQL, ModelView):
             table_h.column_rename('uom', 'unit')
 
         super().__register__(module_name)
-
-        table_h = cls.__table_handler__(module_name)
-
-        # Migration from 5.0: remove check on quantity
-        table_h.drop_constraint('check_line_qty_pos')
-        table_h.drop_constraint('check_line_minimal_qty')
 
     @staticmethod
     def default_minimal_quantity():

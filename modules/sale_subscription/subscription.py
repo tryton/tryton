@@ -4,7 +4,7 @@ import datetime
 from itertools import groupby
 
 from sql import Literal, Null, operators
-from sql.conditionals import Case, Coalesce
+from sql.conditionals import Coalesce
 from sql.functions import CharLength
 
 from trytond.i18n import gettext
@@ -209,18 +209,6 @@ class Subscription(Workflow, ModelSQL, ModelView):
                     'depends': ['state'],
                     },
                 })
-
-    @classmethod
-    def __register__(cls, module_name):
-        cursor = Transaction().connection.cursor()
-        table = cls.__table__()
-
-        super().__register__(module_name)
-
-        # Migration from 5.6: rename state canceled to cancelled
-        cursor.execute(*table.update(
-                [table.state], ['cancelled'],
-                where=table.state == 'canceled'))
 
     @classmethod
     def order_number(cls, tables):
@@ -611,24 +599,6 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
     def __setup__(cls):
         super().__setup__()
         cls.__access__.add('subscription')
-
-    @classmethod
-    def __register__(cls, module):
-        transaction = Transaction()
-        cursor = transaction.connection.cursor()
-        table = cls.__table__()
-
-        super().__register__(module)
-        table_h = cls.__table_handler__(module)
-
-        # Migration from 5.2: replace consumed by consumed_until
-        if table_h.column_exist('consumed'):
-            cursor.execute(*table.update(
-                    [table.consumed_until],
-                    [Case((table.consumed, Coalesce(
-                                    table.next_consumption_date,
-                                    table.end_date)), else_=Null)]))
-            table_h.drop_column('consumed')
 
     @classmethod
     def get_subscription_states(cls):

@@ -34,15 +34,6 @@ class ProductLocation(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
                     [Eval('warehouse')], [])),
             ])
 
-    @classmethod
-    def __register__(cls, module_name):
-        table = cls.__table_handler__(module_name)
-
-        super().__register__(module_name)
-
-        # Migration from 5.6: Add template on locations
-        table.not_null_action('product', 'remove')
-
     @fields.depends('product', '_parent_product.template')
     def on_change_product(self):
         if self.product:
