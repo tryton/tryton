@@ -7,7 +7,7 @@ import time
 
 from sql import Table
 
-from trytond import __version__, backend, security
+from trytond import __series__, backend, security
 from trytond.config import config, get_hostname
 from trytond.exceptions import (
     ConcurrencyException, LoginException, RateLimitException, UserError,
@@ -94,7 +94,7 @@ def reset_password(request, database_name, user, language=None):
 @app.route('/', methods=['POST'])
 def root(request, *args):
     methods = {
-        'common.server.version': lambda *a: __version__,
+        'common.server.version': lambda *a: __series__,
         'common.db.list': db_list,
         'common.authentication.services': authentication_services,
         }
