@@ -554,7 +554,9 @@ class Purchase(
                     total_amount[purchase.id] = purchase.total_amount_cache
             else:
                 untaxed_amount[purchase.id] = sum(
-                    (line.amount for line in purchase.line_lines), Decimal(0))
+                    (line.amount for line in purchase.line_lines
+                        if line.amount is not None),
+                    Decimal(0))
                 if compute_taxes:
                     tax_amount[purchase.id] = purchase.get_tax_amount()
                     total_amount[purchase.id] = (
