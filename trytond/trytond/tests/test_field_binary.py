@@ -5,7 +5,7 @@ import tempfile
 
 from sql import Literal
 
-from trytond.config import config
+from trytond import filestore
 from trytond.model import fields
 from trytond.model.exceptions import (
     RequiredValidationError, SQLConstraintError)
@@ -25,10 +25,11 @@ class FieldBinaryTestCase(TestCase):
         activate_module('tests')
 
     def setUp(self):
-        path = config.get('database', 'path')
+        super().setUp()
+        path = filestore.PATH
         dtemp = tempfile.mkdtemp()
-        config.set('database', 'path', dtemp)
-        self.addCleanup(config.set, 'database', 'path', path)
+        filestore.PATH = dtemp
+        self.addCleanup(setattr, filestore, 'PATH', path)
         self.addCleanup(shutil.rmtree, dtemp)
 
     @with_transaction()
