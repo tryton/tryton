@@ -8,6 +8,8 @@ from trytond.tools import resolve
 
 __all__ = ['filestore']
 
+PATH = os.path.normpath(config.get('database', 'path'))
+
 
 class FileStore(object):
 
@@ -51,10 +53,9 @@ class FileStore(object):
         return [self.set(d, prefix) for d in data]
 
     def _filename(self, id, prefix):
-        path = os.path.normpath(config.get('database', 'path'))
-        filename = os.path.join(path, prefix, id[0:2], id[2:4], id)
+        filename = os.path.join(PATH, prefix, id[0:2], id[2:4], id)
         filename = os.path.normpath(filename)
-        if not filename.startswith(path):
+        if not filename.startswith(PATH):
             raise ValueError('Bad prefix')
         return filename
 
