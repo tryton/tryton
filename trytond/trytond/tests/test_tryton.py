@@ -156,6 +156,15 @@ def _sqlite_copy(file_, restore=False):
             or (not restore and os.path.exists(file_))):
         return False
 
+    if restore:
+        database = backend.Database()
+        database.connect()
+        connection = database.get_connection(autocommit=True)
+        try:
+            database.create(connection, DB_NAME)
+        finally:
+            database.put_connection(connection, True)
+
     with Transaction().start(DB_NAME, 0) as transaction, \
             sqlite.connect(file_) as conn2:
         conn1 = transaction.connection
