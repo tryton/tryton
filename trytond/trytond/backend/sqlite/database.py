@@ -596,8 +596,14 @@ class Database(DatabaseInterface):
             return
         if os.sep in database_name:
             return
-        os.remove(os.path.join(config.get('database', 'path'),
-            database_name + '.sqlite'))
+        file = os.path.join(
+            config.get('database', 'path'), database_name + '.sqlite')
+        os.remove(file)
+        for suffix in ['-shm', '-wal']:
+            try:
+                os.remove(file + suffix)
+            except FileNotFoundError:
+                pass
 
     def list(self, hostname=None):
         res = []
