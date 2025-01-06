@@ -371,7 +371,12 @@ class AccountDistribution(ModelView, ModelSQL):
 
 class AnalyticAccountEntry(ModelView, ModelSQL):
     __name__ = 'analytic.account.entry'
-    origin = fields.Reference('Origin', selection='get_origin')
+
+    _states = {
+        'readonly': ~Eval('editable', True),
+        }
+    origin = fields.Reference(
+        "Origin", selection='get_origin', states=_states)
     root = fields.Many2One(
         'analytic_account.account', "Root Analytic", required=True,
         domain=[
@@ -380,15 +385,20 @@ class AnalyticAccountEntry(ModelView, ModelSQL):
                 (),
                 ('company', '=', Eval('company', -1))),
             ('type', '=', 'root'),
-            ])
+            ],
+        states=_states)
     account = fields.Many2One('analytic_account.account', 'Account',
         ondelete='RESTRICT',
         domain=[
             ('root', '=', Eval('root', -1)),
             ('type', 'in', ['normal', 'distribution']),
-            ])
+            ],
+        states=_states)
     company = fields.Function(fields.Many2One('company.company', 'Company'),
         'on_change_with_company', searcher='search_company')
+    editable = fields.Function(
+        fields.Boolean("Editable"), 'on_change_with_editable')
+    del _states
 
     @classmethod
     def __setup__(cls):
@@ -417,6 +427,10 @@ class AnalyticAccountEntry(ModelView, ModelSQL):
     @classmethod
     def search_company(cls, name, clause):
         return []
+
+    @fields.depends()
+    def on_change_with_editable(self, name=None):
+        return True
 
     def get_analytic_lines(self, line, date):
         "Yield analytic lines for the accounting line and the date"

@@ -59,3 +59,13 @@ class AnalyticAccountEntry(metaclass=PoolMeta):
         domain.append(('origin.sale.' + clause[0],
                 *clause[1:3], 'sale.line', *clause[3:]))
         return domain
+
+    @fields.depends('origin')
+    def on_change_with_editable(self, name=None):
+        pool = Pool()
+        SaleLine = pool.get('sale.line')
+        editable = super().on_change_with_editable(name=name)
+        if isinstance(self.origin, SaleLine):
+            if self.origin.sale_state != 'draft':
+                editable = False
+        return editable

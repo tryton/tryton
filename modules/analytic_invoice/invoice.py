@@ -116,3 +116,22 @@ class AnalyticAccountEntry(metaclass=PoolMeta):
         except KeyError:
             pass
         return domain
+
+    @fields.depends('origin')
+    def on_change_with_editable(self, name=None):
+        pool = Pool()
+        InvoiceLine = pool.get('account.invoice.line')
+        try:
+            Asset = pool.get('account.asset')
+        except KeyError:
+            Asset = None
+
+        editable = super().on_change_with_editable(name=name)
+
+        if isinstance(self.origin, InvoiceLine):
+            if self.origin.invoice_state != 'draft':
+                editable = False
+        elif Asset and isinstance(self.origin, Asset):
+            if self.origin.state != 'draft':
+                editable = False
+        return editable
