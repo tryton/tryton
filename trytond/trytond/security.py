@@ -5,6 +5,13 @@ import logging
 import random
 import time
 
+try:
+    from http import HTTPStatus
+except ImportError:
+    from http import client as HTTPStatus
+
+from werkzeug.exceptions import abort
+
 from trytond import backend
 from trytond.config import config
 from trytond.exceptions import LoginException, RateLimitException
@@ -16,6 +23,10 @@ logger = logging.getLogger(__name__)
 
 def _get_pool(dbname):
     database_list = Pool.database_list()
+    if dbname not in database_list:
+        db_list = Transaction().database.list()
+        if dbname not in db_list:
+            abort(HTTPStatus.NOT_FOUND)
     pool = Pool(dbname)
     if dbname not in database_list:
         pool.init()

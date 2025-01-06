@@ -51,7 +51,7 @@ class DatabaseInterface(object):
     def init(self):
         raise NotImplementedError
 
-    def test(self, hostname=None):
+    def test(self, hostname=None, series=False):
         '''
         Test if it is a Tryton database.
         '''

@@ -8,7 +8,7 @@ from getpass import getpass
 
 from sql import Literal, Table
 
-from trytond import backend
+from trytond import __series__, backend
 from trytond.config import config
 from trytond.pool import Pool
 from trytond.sendmail import send_test_email
@@ -129,6 +129,9 @@ def run(options):
                     User = pool.get('res.user')
                     Configuration = pool.get('ir.configuration')
                     configuration = Configuration(1)
+                    if init[db_name]:
+                        configuration.series = __series__
+
                     with inactive_records():
                         admin, = User.search([('login', '=', 'admin')])
 

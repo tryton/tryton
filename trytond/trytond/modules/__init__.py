@@ -13,6 +13,7 @@ from sql.functions import CurrentTimestamp
 
 import trytond.convert as convert
 import trytond.tools as tools
+from trytond import __series__
 from trytond.config import config
 from trytond.const import MODULES_GROUP
 from trytond.exceptions import MissingDependenciesException
@@ -22,6 +23,7 @@ logger = logging.getLogger(__name__)
 
 ir_module = Table('ir_module')
 ir_model_data = Table('ir_model_data')
+ir_configuration = Table('ir_configuration')
 
 MODULES_PATH = os.path.abspath(os.path.dirname(__file__))
 
@@ -288,6 +290,8 @@ def load_module_graph(graph, pool, update=None, lang=None, indexes=None):
                     model._update_sql_indexes(concurrently=concurrently)
 
         if update:
+            cursor.execute(*ir_configuration.update(
+                    [ir_configuration.series], [__series__]))
             if indexes or indexes is None:
                 create_indexes(concurrently=False)
             else:

@@ -7,6 +7,7 @@ from trytond.model import ModelSingleton, ModelSQL, fields
 
 class Configuration(ModelSingleton, ModelSQL):
     __name__ = 'ir.configuration'
+    series = fields.Char("Series")
     language = fields.Char('language')
     hostname = fields.Char("Hostname", strip=False)
     _get_language_cache = Cache('ir_configuration.get_language')

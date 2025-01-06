@@ -27,8 +27,8 @@ from psycopg2 import DataError as DatabaseDataError
 from psycopg2 import IntegrityError as DatabaseIntegrityError
 from psycopg2 import InterfaceError
 from psycopg2 import OperationalError as DatabaseOperationalError
-from psycopg2 import ProgrammingError
 from psycopg2.errors import QueryCanceled as DatabaseTimeoutError
+from psycopg2.errors import UndefinedColumn
 from psycopg2.extras import register_default_json, register_default_jsonb
 from sql import Cast, Flavor, For, Literal, Table
 from sql.aggregate import Count
@@ -36,6 +36,7 @@ from sql.conditionals import Coalesce
 from sql.functions import Function
 from sql.operators import BinaryOperator, Concat
 
+from trytond import __series__
 from trytond.backend.database import DatabaseInterface, SQLType
 from trytond.config import config, parse_uri
 from trytond.sql.operators import RangeOperator
@@ -345,18 +346,19 @@ class Database(DatabaseInterface):
         if res and abs(timestamp - now) < timeout:
             return res
 
+        res = []
         connection = self.get_connection()
         try:
             cursor = connection.cursor()
             cursor.execute('SELECT datname FROM pg_database '
                 'WHERE datistemplate = false ORDER BY datname')
-            res = []
             for db_name, in cursor:
                 try:
                     conn = connect(**self._connection_params(db_name))
                     try:
                         with conn:
-                            if self._test(conn, hostname=hostname):
+                            if self._test(
+                                    conn, hostname=hostname, series=True):
                                 res.append(db_name)
                     finally:
                         conn.close()
@@ -401,36 +403,38 @@ class Database(DatabaseInterface):
         finally:
             self.put_connection(connection)
 
-    def test(self, hostname=None):
+    def test(self, hostname=None, series=False):
         try:
             connection = self.get_connection()
         except Exception:
             logger.debug('Test failed for "%s"', self.name, exc_info=True)
             return False
         try:
-            return self._test(connection, hostname=hostname)
+            return self._test(connection, hostname=hostname, series=series)
         finally:
             self.put_connection(connection, close=True)
 
     @classmethod
-    def _test(cls, connection, hostname=None):
+    def _test(cls, connection, hostname=None, series=False):
         cursor = connection.cursor()
-        tables = ('ir_model', 'ir_model_field', 'ir_ui_view', 'ir_ui_menu',
-            'res_user', 'res_group', 'ir_module', 'ir_module_dependency',
-            'ir_translation', 'ir_lang', 'ir_configuration')
-        cursor.execute('SELECT table_name FROM information_schema.tables '
-            'WHERE table_name IN %s', (tables,))
-        if len(cursor.fetchall()) != len(tables):
+        cursor.execute(
+            'SELECT table_name FROM information_schema.tables '
+            'WHERE table_name = %s', ('ir_configuration',))
+        if not cursor.rowcount:
             return False
-        if hostname:
-            try:
-                cursor.execute(
-                    'SELECT hostname FROM ir_configuration')
+        try:
+            if series:
+                cursor.execute('SELECT series FROM ir_configuration')
+                config_series = {s for s, in cursor if s}
+                if config_series and __series__ not in config_series:
+                    return False
+            if hostname:
+                cursor.execute('SELECT hostname FROM ir_configuration')
                 hostnames = {h for h, in cursor if h}
                 if hostnames and hostname not in hostnames:
                     return False
-            except ProgrammingError:
-                pass
+        except UndefinedColumn:
+            return False
         return True
 
     def nextid(self, connection, table, count=1):

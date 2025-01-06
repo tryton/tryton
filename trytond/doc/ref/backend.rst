@@ -59,11 +59,13 @@ Database
 
    Initialize the database schema.
 
-.. method:: Database.test([hostname])
+.. method:: Database.test([hostname[, series]])
 
    Return if the database is a Tryton database.
    If ``hostname`` is set, it checks also if it has the same configured
    hostname.
+   If ``series`` is ``True``, it checks also if it has the same series from the
+   last update.
 
 .. method:: Database.nextid(connection, table[, count])
 

@@ -7,6 +7,7 @@ import os
 import random
 import sqlite3 as sqlite
 import threading
+import time
 import urllib.parse
 import warnings
 from decimal import Decimal
@@ -23,6 +24,7 @@ from sql.functions import (
     Substring, Trim)
 from sql.operators import Equal
 
+from trytond import __series__
 from trytond.backend.database import DatabaseInterface, SQLType
 from trytond.config import config, parse_uri
 from trytond.tools import safe_join
@@ -438,6 +440,8 @@ class Database(DatabaseInterface):
 
     _local = threading.local()
     _conn = None
+    _list_cache = {}
+    _list_cache_timestamp = {}
     flavor = Flavor(
         paramstyle='qmark', function_mapping=MAPPING, null_ordering=False,
         max_limit=-1)
@@ -599,24 +603,33 @@ class Database(DatabaseInterface):
         with sqlite.connect(path) as conn:
             cursor = conn.cursor()
             cursor.close()
+        cls._list_cache.clear()
 
     @classmethod
     def drop(cls, connection, database_name):
-        if database_name == ':memory:':
-            cls._local.memory_database._conn = None
-            return
         if os.sep in database_name:
             return
-        file = os.path.join(
-            config.get('database', 'path'), database_name + '.sqlite')
-        os.remove(file)
-        for suffix in ['-shm', '-wal']:
-            try:
-                os.remove(file + suffix)
-            except FileNotFoundError:
-                pass
+        if database_name == ':memory:':
+            cls._local.memory_database._conn = None
+        else:
+            file = os.path.join(
+                config.get('database', 'path'), database_name + '.sqlite')
+            os.remove(file)
+            for suffix in ['-shm', '-wal']:
+                try:
+                    os.remove(file + suffix)
+                except FileNotFoundError:
+                    pass
+        cls._list_cache.clear()
 
     def list(self, hostname=None):
+        now = time.time()
+        timeout = config.getint('session', 'timeout')
+        res = self.__class__._list_cache.get(hostname)
+        timestamp = self.__class__._list_cache_timestamp.get(hostname, now)
+        if res and abs(timestamp - now) < timeout:
+            return res
+
         res = []
         listdir = [':memory:']
         try:
@@ -635,9 +648,12 @@ class Database(DatabaseInterface):
                     logger.debug(
                         'Test failed for "%s"', db_name, exc_info=True)
                     continue
-                if database.test(hostname=hostname):
+                if database.test(hostname=hostname, series=True):
                     res.append(db_name)
                 database.close()
+
+        self.__class__._list_cache[hostname] = res
+        self.__class__._list_cache_timestamp[hostname] = now
         return res
 
     def init(self):
@@ -673,28 +689,29 @@ class Database(DatabaseInterface):
                     cursor.execute(*insert)
             conn.commit()
 
-    def test(self, hostname=None):
-        Flavor.set(self.flavor)
-        tables = ['ir_model', 'ir_model_field', 'ir_ui_view', 'ir_ui_menu',
-            'res_user', 'res_group', 'ir_module', 'ir_module_dependency',
-            'ir_translation', 'ir_lang', 'ir_configuration']
-        sqlite_master = Table('sqlite_master')
-        select = sqlite_master.select(sqlite_master.name)
-        select.where = sqlite_master.type == 'table'
-        select.where &= sqlite_master.name.in_(tables)
+    def test(self, hostname=None, series=False):
         with self._conn as conn:
             cursor = conn.cursor()
             try:
-                cursor.execute(*select)
+                cursor.execute(
+                    'SELECT name FROM sqlite_master '
+                    'WHERE type = ? AND name = ?',
+                    ('table', 'ir_configuration'))
             except Exception:
                 return False
-            if len(cursor.fetchall()) != len(tables):
+            if not cursor.fetchall():
                 return False
-            if hostname:
-                configuration = Table('ir_configuration')
+            if series:
                 try:
-                    cursor.execute(*configuration.select(
-                            configuration.hostname))
+                    cursor.execute('SELECT series FROM ir_configuration')
+                except Exception:
+                    return False
+                config_series = {s for s, in cursor if s}
+                if config_series and __series__ not in config_series:
+                    return False
+            if hostname:
+                try:
+                    cursor.execute('SELECT hostname FROM ir_configuration')
                 except Exception:
                     return False
                 hostnames = {h for h, in cursor if h}
