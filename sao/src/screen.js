@@ -1250,6 +1250,11 @@
                     window_.record_modified();
                 }
             }
+            if (this.group.parent) {
+                for (let screen of this.group.parent.group.screens) {
+                    screen.record_modified(display);
+                }
+            }
             if (display) {
                 return this.display();
             }

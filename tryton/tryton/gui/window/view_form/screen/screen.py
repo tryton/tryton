@@ -446,6 +446,9 @@ class Screen:
         for window in self.windows:
             if hasattr(window, 'record_modified'):
                 window.record_modified()
+        if self.parent:
+            for screen in self.parent.group.screens:
+                screen.record_modified(display=display)
         if display:
             self.display()
 
