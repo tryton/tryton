@@ -304,6 +304,7 @@ class One2Many(Widget):
             r.deleted or r.removed for r in self.screen.selected_records)
         view_type = self.screen.current_view.view_type
         has_views = self.screen.number_of_views > 1
+        has_form = 'form' in self.attrs.get('mode', 'tree,form').split(',')
 
         self.but_switch.set_sensitive(
             (self._position or view_type == 'form') and has_views)
@@ -323,7 +324,8 @@ class One2Many(Widget):
                 and self._position))
         self.but_open.set_sensitive(bool(
                 self._position
-                and self.read_access))
+                and self.read_access
+                and has_form))
         self.but_next.set_sensitive(bool(
                 self._length
                 and not last))

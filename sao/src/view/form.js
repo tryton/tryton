@@ -3501,6 +3501,9 @@ function eval_pyson(value){
                 this.screen.selected_records.some((r) => r.deleted || r.removed);
             const view_type = this.screen.current_view.view_type;
             const has_views = this.screen.number_of_views > 1;
+            let has_form =
+                (this.attributes.mode || 'tree,form').split(',')
+                .includes('form');
 
             this.but_switch.prop(
                 'disabled',
@@ -3530,7 +3533,8 @@ function eval_pyson(value){
                 'disabled',
                 !record ||
                 !this._position ||
-                !this.read_access);
+                !this.read_access ||
+                !has_form);
             this.but_next.prop(
                 'disabled',
                 !record ||
