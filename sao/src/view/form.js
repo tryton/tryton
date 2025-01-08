@@ -1774,6 +1774,35 @@ function eval_pyson(value){
         }
     });
 
+    Sao.View.Form.Color = Sao.class_(Sao.View.Form.Char, {
+        class_: 'form-color',
+        init: function(view, attributes) {
+            Sao.View.Form.Color._super.init.call(this, view, attributes);
+
+            this.color_input = jQuery('<input/>', {
+                'class': 'btn btn-default btn-sm',
+                'type': 'color',
+                'title': Sao.i18n.gettext(
+                    'Select a color for "%1"', attributes.string),
+            }).appendTo(jQuery('<span/>', {
+                'class': 'input-group-btn',
+            }).appendTo(this.group));
+            this.color_input.change(this.set_color.bind(this));
+        },
+        set_color: function() {
+            this.input.val(this.color_input.val());
+            this.focus_out();
+        },
+        set_readonly: function(readonly) {
+            Sao.View.Form.Color._super.set_readonly.call(this, readonly);
+            this.color_input.prop('disabled', readonly);
+        },
+        display: function() {
+            Sao.View.Form.Color._super.display.call(this);
+            this.color_input.val(this.get_client_value());
+        },
+    });
+
     Sao.View.Form.Date = Sao.class_(Sao.View.Form.Widget, {
         class_: 'form-date',
         _input: 'date',
@@ -5354,7 +5383,9 @@ function eval_pyson(value){
         get_entries: function(type) {
             switch (type) {
                 case 'char':
-                    return Sao.View.Form.Dict.Entry;
+                    return Sao.View.Form.Dict.Char;
+                case 'color':
+                    return Sao.View.Form.Dict.Color;
                 case 'boolean':
                     return Sao.View.Form.Dict.Boolean;
                 case 'selection':
@@ -5434,6 +5465,32 @@ function eval_pyson(value){
             return (JSON.stringify(this.get_value()) !=
                 JSON.stringify(value[this.name] || ""));
         }
+    });
+
+    Sao.View.Form.Dict.Color = Sao.class_(Sao.View.Form.Dict.Char, {
+        class_: 'dict-color',
+        create_widget: function() {
+            Sao.View.Form.Dict.Color._super.create_widget.call(this);
+            this.color_input = jQuery('<input/>', {
+                'class': 'btn btn-default btn-sm',
+                'type': 'color',
+                'title': Sao.i18n.gettext(
+                    'Select a color for "%1"', this.definition.string),
+            }).prependTo(this.el.find('.input-group-btn'));
+            this.color_input.change(this.set_color.bind(this));
+        },
+        set_color: function() {
+            this.input.val(this.color_input.val());
+            this.parent_widget.focus_out();
+        },
+        set_value: function(value) {
+            Sao.View.Form.Dict.Color._super.set_value.call(this, value);
+            this.color_input.val(value || '');
+        },
+        set_readonly: function(readonly) {
+            Sao.View.Form.Dict.Color._super.set_readonly.call(this, readonly);
+            this.color_input.prop('disabled', readonly);
+        },
     });
 
     Sao.View.Form.Dict.Boolean = Sao.class_(Sao.View.Form.Dict.Entry, {
@@ -5800,6 +5857,7 @@ function eval_pyson(value){
         'boolean': Sao.View.Form.Boolean,
         'callto': Sao.View.Form.CallTo,
         'char': Sao.View.Form.Char,
+        'color': Sao.View.Form.Color,
         'date': Sao.View.Form.Date,
         'datetime': Sao.View.Form.DateTime,
         'dict': Sao.View.Form.Dict,

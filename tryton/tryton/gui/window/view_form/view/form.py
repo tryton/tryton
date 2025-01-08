@@ -17,7 +17,7 @@ from tryton.gui.window.code_scanner import CodeScanner
 from . import View, XMLViewParser
 from .form_gtk.binary import Binary
 from .form_gtk.calendar_ import Date, DateTime, Time
-from .form_gtk.char import Char, Password
+from .form_gtk.char import Char, Color, Password
 from .form_gtk.checkbox import CheckBox
 from .form_gtk.dictionary import DictWidget
 from .form_gtk.document import Document
@@ -167,6 +167,7 @@ class FormXMLViewParser(XMLViewParser):
         'boolean': CheckBox,
         'callto': CallTo,
         'char': Char,
+        'color': Color,
         'date': Date,
         'datetime': DateTime,
         'dict': DictWidget,

@@ -1,3 +1,4 @@
+* Add color widget to form view
 * Limit access to database from the same series
 * Fill wizard state view instance with default value
 * Replace passlib by pwdlib

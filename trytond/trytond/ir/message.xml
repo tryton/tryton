@@ -98,6 +98,9 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_dict_schema_char">
             <field name="text">Char</field>
         </record>
+        <record model="ir.message" id="msg_dict_schema_color">
+            <field name="text">Color</field>
+        </record>
         <record model="ir.message" id="msg_dict_schema_float">
             <field name="text">Float</field>
         </record>

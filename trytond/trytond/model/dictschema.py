@@ -40,6 +40,7 @@ class DictSchemaMixin(object):
             ('boolean', lazy_gettext('ir.msg_dict_schema_boolean')),
             ('integer', lazy_gettext('ir.msg_dict_schema_integer')),
             ('char', lazy_gettext('ir.msg_dict_schema_char')),
+            ('color', lazy_gettext('ir.msg_dict_schema_color')),
             ('float', lazy_gettext('ir.msg_dict_schema_float')),
             ('numeric', lazy_gettext('ir.msg_dict_schema_numeric')),
             ('date', lazy_gettext('ir.msg_dict_schema_date')),

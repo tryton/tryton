@@ -930,6 +930,7 @@ Class attributes are:
    * boolean
    * integer
    * char
+   * color
    * float
    * numeric
    * date

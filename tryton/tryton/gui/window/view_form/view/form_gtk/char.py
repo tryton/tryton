@@ -2,7 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 import gettext
 
-from gi.repository import GLib, Gtk
+from gi.repository import Gdk, GLib, Gtk
 
 from tryton.common import IconFactory, Tooltips
 from tryton.common.entry_position import reset_position
@@ -177,3 +177,40 @@ class Password(Char):
         else:
             entry = self.entry
         entry.props.visibility = not self.entry.props.visibility
+
+
+class Color(Char):
+
+    def __init__(self, view, attrs):
+        super().__init__(view, attrs)
+
+        self.color_button = Gtk.ColorButton()
+        self.color_button.connect('color-set', self.set_color)
+        self.color_button.set_title(
+            _('Select a color for "%s"') % attrs['string'])
+        Tooltips().set_tip(self.color_button, _("Select a color"))
+        self.widget.pack_start(
+            self.color_button, expand=False, fill=True, padding=0)
+
+    def set_color(self, button):
+        if self.autocomplete:
+            entry = self.entry.get_child()
+        else:
+            entry = self.entry
+        rgba = self.color_button.get_rgba()
+        rgb = list(map(lambda x: int(x * 255), list(rgba)[:3]))
+        entry.set_text('#{:02X}{:02X}{:02X}'.format(*rgb))
+        self._focus_out()
+
+    def _readonly_set(self, value):
+        super()._readonly_set(value)
+        self.color_button.set_sensitive(not value)
+
+    def display(self):
+        super().display()
+        if self.field and self.record:
+            value = self.field.get_client(self.record)
+            rgba = Gdk.RGBA()
+            if value:
+                rgba.parse(value)
+            self.color_button.set_rgba(rgba)

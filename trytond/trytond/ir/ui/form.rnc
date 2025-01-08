@@ -48,6 +48,7 @@ attlist.field &=
     | "boolean"
     | "callto"
     | "char"
+    | "color"
     | "date"
     | "datetime"
     | "dict"

@@ -226,6 +226,7 @@
           <value>boolean</value>
           <value>callto</value>
           <value>char</value>
+          <value>color</value>
           <value>date</value>
           <value>datetime</value>
           <value>dict</value>

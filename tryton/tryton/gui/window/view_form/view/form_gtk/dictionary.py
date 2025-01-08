@@ -9,7 +9,7 @@ import operator
 from collections import defaultdict
 from decimal import Decimal
 
-from gi.repository import GLib, GObject, Gtk
+from gi.repository import Gdk, GLib, GObject, Gtk
 
 from tryton.common import (
     IconFactory, Tooltips, timezoned_date, untimezoned_date)
@@ -81,6 +81,42 @@ class DictCharEntry(DictEntry):
 
     def modified(self, value):
         return self.get_value() != (value.get(self.name, '') or '')
+
+
+class DictColorEntry(DictCharEntry):
+
+    def create_widget(self):
+        self.entry = super().create_widget()
+        widget = Gtk.HBox()
+        widget.pack_start(self.entry, expand=True, fill=True, padding=0)
+        self.button = Gtk.ColorButton()
+        self.button.connect('color-set', self.set_color)
+        self.button.set_title(
+            _('Select a color for "%s"') % self.definition['string'])
+        Tooltips().set_tip(self.button, _("Select a color"))
+        widget.pack_start(self.button, expand=False, fill=True, padding=0)
+        return widget
+
+    def set_color(self, button):
+        rgba = self.button.get_rgba()
+        rgb = map(lambda x: int(x * 255), list(rgba)[:3])
+        self.entry.set_text('#{:02X}{:02X}{:02X}'.format(*rgb))
+        self.parent_widget._focus_out()
+
+    def get_value(self):
+        return self.entry.get_text()
+
+    def set_value(self, value):
+        self.entry.set_text(str(value or ''))
+        reset_position(self.entry)
+        rgba = Gdk.RGBA()
+        if value:
+            rgba.parse(value)
+        self.button.set_rgba(rgba)
+
+    def set_readonly(self, readonly):
+        self.entry.set_editable(not readonly)
+        self.button.set_sensitive(not readonly)
 
 
 class DictBooleanEntry(DictEntry):
@@ -417,6 +453,7 @@ class DictDateEntry(DictEntry):
 
 DICT_ENTRIES = {
     'char': DictCharEntry,
+    'color': DictColorEntry,
     'boolean': DictBooleanEntry,
     'selection': DictSelectionEntry,
     'multiselection': DictMultiSelectionEntry,
