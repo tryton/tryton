@@ -181,14 +181,17 @@ class Incoming(DeactivableMixin, Workflow, ModelSQL, ModelView):
 
     @classmethod
     def from_inbound_email(cls, email_, rule):
+        def sanitize_name(value):
+            for forbidden_char in cls.name.forbidden_chars:
+                value = value.replace(forbidden_char, ' ')
+            return value
+
         message = email_.as_dict()
         active = not message.get('attachments')
         data = message.get('text', message.get('html'))
         if isinstance(data, str):
             data = data.encode()
-        name = message.get('subject') or 'No Subject'
-        for forbidden_char in cls.name.forbidden_chars:
-            name = name.replace(forbidden_char, ' ')
+        name = sanitize_name(message.get('subject') or 'No Subject')
         document = cls(
             active=active,
             name=name,
@@ -200,7 +203,7 @@ class Incoming(DeactivableMixin, Workflow, ModelSQL, ModelView):
         children = []
         for attachment in message.get('attachments', []):
             child = cls(
-                name=attachment['filename'] or 'data.bin',
+                name=sanitize_name(attachment['filename'] or 'data.bin'),
                 company=rule.document_incoming_company,
                 data=attachment['data'],
                 type=rule.document_incoming_type,
