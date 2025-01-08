@@ -105,7 +105,8 @@ Account Configuration
 
 When the *Account Payment SEPA Module* is activated, the *Account
 Configuration* gains a property for the `Sequence <trytond:model-ir.sequence>`
-to use for the `Mandates <model-account.payment.sepa.mandate>`.
+to use to fill automatically the :guilabel:`Identification` of the `Mandates
+<model-account.payment.sepa.mandate>` if left empty.
 
 .. seealso::
 
