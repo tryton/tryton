@@ -3,7 +3,6 @@
 import datetime as dt
 import json
 import logging
-import os
 import selectors
 import threading
 from collections import OrderedDict, defaultdict
@@ -18,6 +17,7 @@ from trytond import backend
 from trytond.config import config
 from trytond.pool import Pool
 from trytond.tools import grouped_slice, resolve
+from trytond.tools.multiprocessing import local
 from trytond.transaction import Transaction
 
 __all__ = ['BaseCache', 'Cache', 'LRUDict', 'LRUDictTransaction']
@@ -62,6 +62,13 @@ def _get_modules(cursor):
             where=ir_module.state.in_(
                 ['activated', 'to upgrade', 'to remove'])))
     return {m for m, in cursor}
+
+
+class _CacheLocal(local):
+
+    def __init__(self):
+        self.listeners = {}
+        self.listener_lock = threading.Lock()
 
 
 class BaseCache(object):
@@ -155,8 +162,7 @@ class MemoryCache(BaseCache):
     _reset = WeakKeyDictionary()
     _clean_last = None
     _default_lower = Transaction.monotonic_time()
-    _listener = {}
-    _listener_lock = defaultdict(threading.Lock)
+    _local = _CacheLocal()
     _table = 'ir_cache'
     _channel = _table
 
@@ -238,11 +244,11 @@ class MemoryCache(BaseCache):
         database = transaction.database
         dbname = database.name
         if not _clean_timeout and database.has_channel():
-            pid = os.getpid()
-            with cls._listener_lock[pid]:
-                if (pid, dbname) not in cls._listener:
-                    cls._listener[pid, dbname] = listener = threading.Thread(
+            with cls._local.listener_lock:
+                if dbname not in cls._local.listeners:
+                    listener = threading.Thread(
                         target=cls._listen, args=(dbname,), daemon=True)
+                    cls._local.listeners[dbname] = listener
                     listener.start()
             return
         last_clean = (dt.datetime.now() - cls._clean_last).total_seconds()
@@ -344,9 +350,8 @@ class MemoryCache(BaseCache):
 
     @classmethod
     def drop(cls, dbname):
-        pid = os.getpid()
-        with cls._listener_lock[pid]:
-            listener = cls._listener.pop((pid, dbname), None)
+        with cls._local.listener_lock:
+            listener = cls._local.listeners.pop(dbname, None)
         if listener:
             database = backend.Database(dbname)
             conn = database.get_connection()
@@ -380,7 +385,6 @@ class MemoryCache(BaseCache):
     @classmethod
     def _listen(cls, dbname):
         current_thread = threading.current_thread()
-        pid = os.getpid()
 
         conn, selector = None, None
         try:
@@ -401,7 +405,7 @@ class MemoryCache(BaseCache):
             current_thread.listening = True
 
             selector.register(conn, selectors.EVENT_READ)
-            while cls._listener.get((pid, dbname)) == current_thread:
+            while cls._local.listeners.get(dbname) == current_thread:
                 selector.select(timeout=_select_timeout)
                 conn.poll()
                 while conn.notifies:
@@ -425,9 +429,9 @@ class MemoryCache(BaseCache):
                 selector.close()
             if conn:
                 database.put_connection(conn)
-            with cls._listener_lock[pid]:
-                if cls._listener.get((pid, dbname)) == current_thread:
-                    del cls._listener[pid, dbname]
+            with cls._local.listener_lock:
+                if cls._local.listeners.get(dbname) == current_thread:
+                    del cls._local.listeners[dbname]
 
 
 if config.get('cache', 'class'):

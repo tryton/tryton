@@ -2,7 +2,6 @@
 # this repository contains the full copyright notices and license terms.
 
 import datetime as dt
-import os
 import time
 import unittest
 from unittest.mock import patch
@@ -256,9 +255,8 @@ class MemoryCacheChannelTestCase(MemoryCacheTestCase):
             time.sleep(.01)
 
     def wait_cache_listening(self):
-        pid = os.getpid()
         dbname = Transaction().database.name
-        listener = MemoryCache._listener.get((pid, dbname))
+        listener = MemoryCache._local.listeners[dbname]
         while (not getattr(listener, 'listening', False)
                 and listener.is_alive()):
             time.sleep(.01)
