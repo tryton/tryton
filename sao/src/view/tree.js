@@ -2312,6 +2312,12 @@
                         } else {
                             img_tag.removeAttr('src');
                         }
+                    } else if (this.attributes.icon_type == 'color') {
+                        img_tag.attr('src', Sao.common.image_url());
+                        // clean previous color if the new one is not valid
+                        img_tag.css('background-color', '');
+                        img_tag.css('background-color', value);
+                        img_tag.toggle(Boolean(value));
                     } else {
                         Sao.common.ICONFACTORY.get_icon_url(value)
                             .done(url => {

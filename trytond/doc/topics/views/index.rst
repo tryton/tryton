@@ -392,7 +392,7 @@ image
 Display an image with those attributes:
 
 ``type``
-   The type of image source. Available values are ``icon`` or ``url``.
+   The type of image source. Available values are ``icon``, ``url`` or ``color``.
    The default value is ``icon``.
 
 ``name``
@@ -400,6 +400,7 @@ Display an image with those attributes:
    For the ``icon`` type it must be the name of an `Icon <model-ir.ui.icon>`
    record.
    For the ``url`` type it must be the URL. It can be relative to the server.
+   For the ``color`` type it must be the color in ``#rrggbb`` hexadecimal.
 
 ``url_size``
    The name of the size parameter to add to the URL.
@@ -754,9 +755,10 @@ displayed in the same column with the attributes:
    For the ``icon`` type it must be the name of an `Icon <model-ir.ui.icon>`
    record.
    For the ``url`` type it must be the URL and it can be relative to the server.
+   For the ``color`` type it must be the color in ``#rrggbb`` hexadecimal.
 
 ``icon_type``
-   The type of icon source. Available values are ``icon`` or ``url``.
+   The type of icon source. Available values are ``icon``, ``url`` or ``color``.
    The default value is ``icon``.
 
 ``url_size``

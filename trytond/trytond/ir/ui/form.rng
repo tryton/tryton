@@ -609,6 +609,7 @@
         <choice>
           <value>icon</value>
           <value>url</value>
+          <value>color</value>
         </choice>
       </attribute>
     </optional>

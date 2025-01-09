@@ -233,6 +233,49 @@ class IconFactory:
 IconFactory.load_local_icons()
 
 
+class SolidColorFactory:
+    _pixbufs = defaultdict(dict)
+
+    @staticmethod
+    def _create_pixbuf(red, green, blue, width, height):
+        pixbuf = GdkPixbuf.Pixbuf.new(
+            GdkPixbuf.Colorspace.RGB, False, 8, width, height)
+        pixels = bytearray(pixbuf.get_pixels())
+        rowstride = pixbuf.get_rowstride()
+        for y in range(height):
+            for x in range(width):
+                offset = y * rowstride + x * 3
+                pixels[offset:offset + 3] = bytes([red, green, blue])
+        return GdkPixbuf.Pixbuf.new_from_data(
+            pixels, GdkPixbuf.Colorspace.RGB, False, 8, width, height,
+            rowstride)
+
+    @staticmethod
+    def hex_to_rgb(color):
+        color = color.lstrip('#')
+        if len(color) == 3:
+            color = ''.join([c * 2 for c in color])
+        if len(color) != 6:
+            return
+        try:
+            red = int(color[0:2], 16)
+            green = int(color[2:4], 16)
+            blue = int(color[4:6], 16)
+        except ValueError:
+            return
+        return red, green, blue
+
+    @classmethod
+    def get_pixbuf(cls, color, width=16, height=16):
+        rgb = cls.hex_to_rgb(color)
+        if rgb is None:
+            return
+        if rgb not in cls._pixbufs[width, height]:
+            cls._pixbufs[width, height][rgb] = cls._create_pixbuf(
+                *rgb, width, height)
+        return cls._pixbufs[width, height][rgb]
+
+
 class ModelAccess(object):
 
     batchnum = 100

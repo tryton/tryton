@@ -221,6 +221,8 @@ class Affix(Cell):
                 pixbuf = common.IconFactory.get_pixbuf_url(
                     value, size_param=self.attrs.get('url_size'),
                     callback=callback)
+            elif self.attrs.get('icon_type') == 'color':
+                pixbuf = common.SolidColorFactory.get_pixbuf(value)
             else:
                 pixbuf = common.IconFactory.get_pixbuf(
                     value, Gtk.IconSize.BUTTON)

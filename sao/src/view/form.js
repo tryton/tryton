@@ -1254,6 +1254,11 @@ function eval_pyson(value){
                 } else {
                     this.img.removeAttr('src');
                 }
+            } else if (this.attributes.type == 'color') {
+                this.img.attr('src', Sao.common.image_url());
+                // clean previous color if the new one is not valid
+                this.img.css('background-color', '');
+                this.img.css('background-color', name);
             } else {
                 Sao.common.ICONFACTORY.get_icon_url(name)
                     .done(url => {

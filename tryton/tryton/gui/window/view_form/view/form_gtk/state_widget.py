@@ -72,6 +72,8 @@ class Image(StateMixin, Gtk.Image):
         if self.attrs.get('type') == 'url':
             pixbuf = common.IconFactory.get_pixbuf_url(
                 name, size=size, size_param=self.attrs.get('url_size'))
+        elif self.attrs.get('type') == 'color':
+            pixbuf = common.SolidColorFactory.get_pixbuf(name, size, size)
         else:
             pixbuf = common.IconFactory.get_pixbuf(name, size)
         self.set_from_pixbuf(pixbuf)
