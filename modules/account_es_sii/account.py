@@ -264,6 +264,7 @@ class InvoiceSII(ModelSQL, ModelView):
             },
         domain=[
             ('state', 'in', ['posted', 'paid', 'cancelled']),
+            ('move.state', '=', 'posted'),
             ])
     csv = fields.Char("CSV", readonly=True,
         help="A secure validation code that confirms the delivery of the "
