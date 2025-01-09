@@ -3,7 +3,6 @@
 import os
 import shutil
 import tempfile
-from unittest.mock import patch
 
 import trytond.config as config
 from trytond.filestore import filestore
@@ -73,24 +72,23 @@ class FileStoreTestCase(TestCase):
         with self.assertRaises(ValueError):
             filestore.set(self.data(), prefix='../')
 
-    def test_duplicate(self):
-        "Test duplicate"
+    def test_delete(self):
+        "Test deletion"
         data = self.data()
-        id = filestore.set(data, prefix='test')
-        self.assertEqual(filestore.set(data, prefix='test'), id)
+        id_ = filestore.set(data, prefix='test')
+        filestore.delete(id_, prefix='test')
+        with self.assertRaises(IOError):
+            filestore.get(id_, prefix='test')
 
-    def test_collision(self):
-        "Test collision"
-        data1 = self.data()
-        data2 = self.data()
+    def test_delete_many(self):
+        "Test multiple deletions"
+        id1, id2, id3 = filestore.setmany(
+            [self.data(), self.data(), self.data()],
+            prefix='test')
+        filestore.delete_many([id1, id2], prefix='test')
 
-        id1 = filestore.set(data1, prefix='test')
+        for id_ in [id1, id2]:
+            with self.assertRaises(IOError):
+                filestore.get(id_, prefix='test')
 
-        with patch.object(filestore, '_id') as _id:
-            _id.return_value = id1
-
-            id2 = filestore.set(data2, prefix='test')
-
-        self.assertNotEqual(id1, id2)
-        self.assertEqual(filestore.get(id1, prefix='test'), data1)
-        self.assertEqual(filestore.get(id2, prefix='test'), data2)
+        self.assertTrue(filestore.get(id3, prefix='test'))

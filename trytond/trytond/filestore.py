@@ -1,7 +1,8 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import hashlib
+
 import os
+import uuid
 from functools import cache
 
 import trytond.config as config
@@ -38,20 +39,9 @@ class FileStore(object):
         filename = self._filename(id, prefix)
         dirname = os.path.dirname(filename)
         os.makedirs(dirname, mode=0o770, exist_ok=True)
-
-        collision = 0
-        while True:
-            basename = os.path.basename(filename)
-            if os.path.exists(filename):
-                if data != self.get(basename, prefix):
-                    collision += 1
-                    filename = self._filename(
-                        '%s-%s' % (id, collision), prefix)
-                    continue
-            else:
-                with open(filename, 'wb')as fp:
-                    fp.write(data)
-            return basename
+        with open(filename, 'wb')as fp:
+            fp.write(data)
+        return os.path.basename(filename)
 
     def setmany(self, data, prefix=''):
         return [self.set(d, prefix) for d in data]
@@ -69,7 +59,22 @@ class FileStore(object):
         return filename
 
     def _id(self, data):
-        return hashlib.md5(data).hexdigest()
+        return str(uuid.uuid4())
+
+    def delete(self, id, prefix=''):
+        # Older file ids didn't have a dash in the filename. We want to keep
+        # those as we don't know which resource might point to them.
+        if '-' not in id:
+            return
+
+        try:
+            os.remove(self._filename(id, prefix))
+        except FileNotFoundError:
+            pass
+
+    def delete_many(self, ids, prefix=''):
+        for id_ in ids:
+            self.delete(id_, prefix)
 
 
 if config.get('database', 'class'):

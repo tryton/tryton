@@ -37,6 +37,15 @@ FileStore
 
    Store the sequence of data and return a list of identifiers.
 
+.. method:: FileStore.delete(id[, prefix])
+
+   Remove the data identified by ``id`` in the prefixed directory.
+
+.. method:: FileStore.delete_many(ids[, prefix])
+
+   Remove the sequence of data identified by the sequence of ``ids`` in the
+   prefixed directory.
+
 .. note::
    The class can be overridden by setting a fully qualified name of a
    alternative class defined in the configuration ``class`` of the ``database``

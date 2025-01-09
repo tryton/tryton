@@ -1,3 +1,4 @@
+* Add delete and delete_many to Filestore
 * Deprecate ``grouped_slice`` without size
 * Replace ``Database.IN_MAX`` by ``backend.MAX_QUERY_PARAMS``
 * Deprecate ``reduce_ids`` for ``SQL_OPERATORS['in']``
