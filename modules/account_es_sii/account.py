@@ -621,6 +621,7 @@ class InvoiceSII(ModelSQL, ModelView):
         return detail
 
     def get_invoice_payload(self):
+        # Use taxes from move lines to have amount in company currency
         tax_lines = list(chain(*(
                     l.tax_lines for l in self.invoice.move.lines)))
         tax_lines = sorted(tax_lines, key=self.tax_grouping_key)
