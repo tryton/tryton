@@ -274,7 +274,7 @@ class AccountPaymentSepaTestCase(CompanyTestMixin, ModuleTestCase):
             bank_account = BankAccount(
                 numbers=[other_account_number, iban_account_number])
             party = Party(
-                bank_accounts=[bank_account])
+                bank_accounts_used=[bank_account])
             payment = Payment(kind='payable', party=party)
 
             self.assertEqual(id(payment.sepa_bank_account_number),

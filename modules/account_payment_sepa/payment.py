@@ -435,7 +435,7 @@ class Payment(metaclass=PoolMeta):
             if self.sepa_mandate:
                 return self.sepa_mandate.account_number
         else:
-            for account in self.party.bank_accounts:
+            for account in self.party.bank_accounts_used:
                 for number in account.numbers:
                     if number.type == 'iban':
                         return number

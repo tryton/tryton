@@ -8,7 +8,9 @@ from trytond.transaction import Transaction
 class Party(metaclass=PoolMeta):
     __name__ = 'party.party'
     bank_accounts = fields.Many2Many(
-        'bank.account-party.party', 'owner', 'account', "Bank Accounts",
+        'bank.account-party.party', 'owner', 'account', "Bank Accounts")
+    bank_accounts_used = fields.Many2Many(
+        'bank.account-party.party', 'owner', 'account', "Bank Accounts Used",
         filter=[('active', '=', True)])
 
     @classmethod
