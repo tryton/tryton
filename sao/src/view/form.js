@@ -4623,7 +4623,7 @@ function eval_pyson(value){
             Sao.View.Form.Binary._super.set_readonly.call(this, readonly);
             var record = this.record;
             this.but_select.toggleClass('disabled', readonly || !record);
-            this.input_select.toggle(!readonly && record);
+            this.input_select.toggle(!readonly && Boolean(record));
             this.but_clear.prop('disabled', readonly || !record);
             if (this.text) {
                 this.text.prop('readonly', readonly);
