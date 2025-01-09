@@ -4339,7 +4339,8 @@
 
     Sao.common.image_url = function(data) {
         if (!data) {
-            return null;
+            return (
+                'data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D');
         }
         var type = '';
         try {
