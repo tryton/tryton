@@ -24,13 +24,15 @@ class Message(ModelSQL, ModelView):
     def gettext(cls, *args, **variables):
         pool = Pool()
         ModelData = pool.get('ir.model.data')
+        context = Transaction().context
         module, message_id, language = args
+        fuzzy = bool(context.get('fuzzy_translation', False))
 
-        key = (module, message_id, language)
+        key = (module, message_id, language, fuzzy)
         text = cls._message_cache.get(key)
         if text is None:
             message = cls(ModelData.get_id(module, message_id))
-            translation = message._get_translation(language)
+            translation = message._get_translation(language, fuzzy=fuzzy)
             if translation:
                 text = translation.value or message.text
             else:
@@ -43,12 +45,14 @@ class Message(ModelSQL, ModelView):
         pool = Pool()
         ModelData = pool.get('ir.model.data')
         Lang = pool.get('ir.lang')
+        context = Transaction().context
         module, message_id, n, language = args
+        fuzzy = bool(context.get('fuzzy_translation', False))
 
         lang = Lang.get(language)
         index = lang.get_plural(n)
 
-        key = (module, message_id, index, language)
+        key = (module, message_id, index, language, fuzzy)
         text = cls._message_cache.get(key)
         if text is None:
             message = cls(ModelData.get_id(module, message_id))
@@ -56,7 +60,7 @@ class Message(ModelSQL, ModelView):
                 fallback = message.text
             else:
                 fallback = message.text_plural or message.text
-            translation = message._get_translation(language)
+            translation = message._get_translation(language, fuzzy=fuzzy)
             if translation:
                 values = [
                     translation.value, translation.value_1,
@@ -67,11 +71,10 @@ class Message(ModelSQL, ModelView):
             cls._message_cache.set(key, text)
         return text if not variables else text % variables
 
-    def _get_translation(self, language):
+    def _get_translation(self, language, fuzzy=False):
         pool = Pool()
         Translation = pool.get('ir.translation')
-        context = Transaction().context
-        if context.get('fuzzy_translation', False):
+        if fuzzy:
             fuzzy_clause = []
         else:
             fuzzy_clause = [('fuzzy', '=', False)]
