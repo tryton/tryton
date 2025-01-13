@@ -129,7 +129,7 @@ class View(
 
     @staticmethod
     def default_module():
-        return Transaction().context.get('module') or ''
+        return Transaction().context.get('module')
 
     def get_basis(self, name):
         return not self.inherit or self.model != self.inherit.model
