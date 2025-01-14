@@ -11,6 +11,7 @@ class One2One(Many2Many):
     Define one2one field (``int``).
     '''
     _type = 'one2one'
+    _py_type = None
 
     def get(self, ids, model, name, values=None):
         '''
