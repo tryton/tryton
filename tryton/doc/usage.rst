@@ -480,10 +480,9 @@ Values
 The format of the value depends on the type of the field.
 A list of values can be set using `;` as separator.
 
-    For example: ``Name: Michael; Pam``
+   For example: ``Name: Michael; Pam``
 
-    It will find all records having the `Name` starting with `Michael` or
-    `Pam`.
+   It will find all records with ``Name`` equal to ``Michael`` or ``Pam``.
 
 A range of number values can be set using `..`.
 
