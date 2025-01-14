@@ -8,6 +8,7 @@ from trytond.pool import Pool
 
 class One2One(Many2Many):
     _type = 'one2one'
+    _py_type = None
 
     def get(self, ids, model, name, values=None):
         '''
