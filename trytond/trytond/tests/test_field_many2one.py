@@ -221,6 +221,46 @@ class FieldMany2OneTestCase(TestCase):
         self.assertListEqual(result, [record])
 
     @with_transaction()
+    def test_set_instance(self):
+        "Test set instance"
+        pool = Pool()
+        Many2One = pool.get('test.many2one')
+        Target = pool.get('test.many2one_target')
+
+        record = Many2One()
+        record.many2one = target = Target()
+
+        self.assertIs(record.many2one, target)
+
+    @with_transaction()
+    def test_set_dict(self):
+        "Test set dictionary"
+        pool = Pool()
+        Many2One = pool.get('test.many2one')
+        Target = pool.get('test.many2one_target')
+
+        record = Many2One()
+        record.many2one = {'value': 42}
+
+        self.assertIsInstance(record.many2one, Target)
+        self.assertEqual(record.many2one.value, 42)
+
+    @with_transaction()
+    def test_set_integer(self):
+        "Test set integer"
+        pool = Pool()
+        Many2One = pool.get('test.many2one')
+        Target = pool.get('test.many2one_target')
+
+        target = Target(value=42)
+        target.save()
+        record = Many2One()
+        record.many2one = target.id
+
+        self.assertIsInstance(record.many2one, Target)
+        self.assertEqual(record.many2one.value, 42)
+
+    @with_transaction()
     def test_context_attribute(self):
         "Test context on many2one attribute"
         pool = Pool()

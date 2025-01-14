@@ -321,3 +321,43 @@ class FieldOne2OneTestCase(TestCase):
             One2One.write([one2one2], {
                     'one2one': target.id,
                     })
+
+    @with_transaction()
+    def test_set_instance(self):
+        "Test set instance"
+        pool = Pool()
+        One2One = pool.get('test.one2one')
+        Target = pool.get('test.one2one.target')
+
+        record = One2One()
+        record.one2one = target = Target()
+
+        self.assertIs(record.one2one, target)
+
+    @with_transaction()
+    def test_set_dict(self):
+        "Test set dictionary"
+        pool = Pool()
+        One2One = pool.get('test.one2one')
+        Target = pool.get('test.one2one.target')
+
+        record = One2One()
+        record.one2one = {'name': "Test"}
+
+        self.assertIsInstance(record.one2one, Target)
+        self.assertEqual(record.one2one.name, "Test")
+
+    @with_transaction()
+    def test_set_integer(self):
+        "Test set integer"
+        pool = Pool()
+        One2One = pool.get('test.one2one')
+        Target = pool.get('test.one2one.target')
+
+        target = Target(name="Test")
+        target.save()
+        record = One2One()
+        record.one2one = target.id
+
+        self.assertIsInstance(record.one2one, Target)
+        self.assertEqual(record.one2one.name, "Test")
