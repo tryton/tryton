@@ -96,20 +96,17 @@ class CredentialSendcloud(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
         self._addresses_sender_cache.set(self.id, addresses)
         return addresses
 
-    def get_sender_address(self, shipment_or_warehouse):
+    def get_sender_address(self, shipment_or_warehouse, pattern=None):
+        pattern = pattern.copy() if pattern is not None else {}
         if shipment_or_warehouse.__name__ == 'stock.location':
-            pattern = {'warehouse': shipment_or_warehouse.id}
+            warehouse = shipment_or_warehouse
+            pattern['warehouse'] = warehouse.id
         else:
-            pattern = self._get_sender_address_pattern(shipment_or_warehouse)
+            shipment = shipment_or_warehouse
+            pattern['warehouse'] = shipment.shipping_warehouse.id
         for address in self.addresses:
             if address.match(pattern):
                 return int(address.address) if address.address else None
-
-    @classmethod
-    def _get_sender_address_pattern(cls, shipment):
-        return {
-            'warehouse': shipment.shipping_warehouse.id,
-            }
 
     @sendcloud_api
     def get_shipping_methods(
@@ -284,14 +281,14 @@ class SendcloudShippingMethod(
         'get_shipping_methods', "Shipping Method")
 
     @fields.depends('sendcloud', 'warehouse', '_parent_sendcloud.id')
-    def get_shipping_methods(self):
+    def get_shipping_methods(self, pattern=None):
         methods = [(None, '')]
         if (self.sendcloud
                 and self.sendcloud.id is not None
                 and self.sendcloud.id >= 0):
             if self.warehouse:
                 sender_address = self.sendcloud.get_sender_address(
-                    self.warehouse)
+                    self.warehouse, pattern=pattern)
             else:
                 sender_address = None
             methods += [
