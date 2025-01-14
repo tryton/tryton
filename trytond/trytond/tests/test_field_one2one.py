@@ -361,3 +361,44 @@ class FieldOne2OneTestCase(TestCase):
 
         self.assertIsInstance(record.one2one, Target)
         self.assertEqual(record.one2one.name, "Test")
+
+    @with_transaction()
+    def test_context_attribute(self):
+        "Test context on one2one attribute"
+        pool = Pool()
+        One2One = pool.get('test.one2one_context')
+        Target = pool.get('test.one2one_context.target')
+
+        target, = Target.create([{}])
+        record, = One2One.create([{
+                    'one2one': target.id,
+                    }])
+
+        self.assertEqual(record.one2one.context, 'foo')
+
+    @with_transaction()
+    def test_context_read(self):
+        "Test context on one2one read"
+        pool = Pool()
+        One2One = pool.get('test.one2one_context')
+        Target = pool.get('test.one2one_context.target')
+
+        target, = Target.create([{}])
+        record, = One2One.create([{
+                    'one2one': target.id,
+                    }])
+        data, = One2One.read([record.id], ['one2one.context'])
+
+        self.assertEqual(data['one2one.']['context'], 'foo')
+
+    @with_transaction()
+    def test_context_set(self):
+        "Test context on one2one set"
+        pool = Pool()
+        One2One = pool.get('test.one2one_context')
+        Target = pool.get('test.one2one_context.target')
+
+        target, = Target.create([{}])
+        record = One2One(one2one=target.id)
+
+        self.assertEqual(record.one2one.context, 'foo')

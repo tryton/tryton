@@ -3,6 +3,7 @@
 
 from trytond.model import ModelSQL, Unique, fields
 from trytond.pool import Pool
+from trytond.transaction import Transaction
 
 
 class One2One(ModelSQL):
@@ -80,6 +81,39 @@ class One2OneDomainRelation(ModelSQL):
             ]
 
 
+class One2OneContext(ModelSQL):
+    __name__ = 'test.one2one_context'
+    one2one = fields.One2One(
+        'test.one2one_context.relation', 'origin', 'target', "One2One",
+        context={'test': 'foo'})
+
+
+class One2OneContextTarget(ModelSQL):
+    __name__ = 'test.one2one_context.target'
+    context = fields.Function(fields.Char("context"), 'get_context')
+
+    def get_context(self, name):
+        context = Transaction().context
+        return context.get('test')
+
+
+class One2OneContextRelation(ModelSQL):
+    __name__ = 'test.one2one_context.relation'
+    origin = fields.Many2One('test.one2one_context', 'Origin')
+    target = fields.Many2One('test.one2one_context.target', 'Target')
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        table = cls.__table__()
+        cls._sql_constraints += [
+            ('origin_unique', Unique(table, table.origin),
+                'tests.msg_one2one_relation_origin_unique'),
+            ('target_unique', Unique(table, table.target),
+                'tests.msg_one2one_relation_target_unique'),
+            ]
+
+
 def register(module):
     Pool.register(
         One2One,
@@ -89,4 +123,7 @@ def register(module):
         One2OneRequiredRelation,
         One2OneDomain,
         One2OneDomainRelation,
+        One2OneContext,
+        One2OneContextTarget,
+        One2OneContextRelation,
         module=module, type_='model')
