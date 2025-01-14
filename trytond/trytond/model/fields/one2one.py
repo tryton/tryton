@@ -54,7 +54,7 @@ class One2One(Many2Many):
     def __set__(self, inst, value):
         Target = self.get_target()
         if isinstance(value, dict):
-            value = Target(*value)
+            value = Target(**value)
         elif isinstance(value, int):
             value = Target(value)
         assert isinstance(value, (Target, type(None)))
