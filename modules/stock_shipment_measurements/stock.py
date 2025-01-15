@@ -84,8 +84,10 @@ class Move(metaclass=PoolMeta):
         "Internal Volume", readonly=True,
         help="The volume of the moved product in liter.")
 
-    @classmethod
-    def _get_internal_weight(cls, quantity, unit, product):
+    @fields.depends(
+        'quantity', 'unit', 'product',
+        methods=['on_change_with_internal_quantity'])
+    def on_change_with_internal_weight(self):
         pool = Pool()
         Uom = pool.get('product.uom')
         ModelData = pool.get('ir.model.data')
@@ -94,19 +96,22 @@ class Move(metaclass=PoolMeta):
 
         # Use first the weight from product_measurements
         # as it could include some handling weight
-        if product.weight is not None:
-            internal_quantity = cls._get_internal_quantity(
-                quantity, unit, product)
-            return Uom.compute_qty(
-                product.weight_uom, internal_quantity * product.weight, kg,
-                round=False)
-        elif unit.category == kg.category:
-            return Uom.compute_qty(unit, quantity, kg, round=False)
-        else:
-            return None
+        if self.product and self.product.weight is not None:
+            internal_quantity = self.on_change_with_internal_quantity()
+            if internal_quantity is not None:
+                return Uom.compute_qty(
+                    self.product.weight_uom,
+                    internal_quantity * self.product.weight,
+                    kg,
+                    round=False)
+        elif (self.quantity is not None
+                and self.unit and self.unit.category == kg.category):
+            return Uom.compute_qty(self.unit, self.quantity, kg, round=False)
 
-    @classmethod
-    def _get_internal_volume(cls, quantity, unit, product):
+    @fields.depends(
+        'quantity', 'unit', 'product',
+        methods=['on_change_with_internal_quantity'])
+    def on_change_with_internal_volume(self):
         pool = Pool()
         Uom = pool.get('product.uom')
         ModelData = pool.get('ir.model.data')
@@ -115,61 +120,33 @@ class Move(metaclass=PoolMeta):
 
         # Use first the volume from product_measurements
         # as it could include some handling volume
-        if product.volume is not None:
-            internal_quantity = cls._get_internal_quantity(
-                quantity, unit, product)
+        if self.product and self.product.volume is not None:
+            internal_quantity = self.on_change_with_internal_quantity()
+            if internal_quantity is not None:
+                return Uom.compute_qty(
+                    self.product.volume_uom,
+                    internal_quantity * self.product.volume,
+                    liter,
+                    round=False)
+        elif (self.quantity is not None
+                and self.unit and self.unit.category == liter.category):
             return Uom.compute_qty(
-                product.volume_uom, internal_quantity * product.volume, liter,
-                round=False)
-        elif unit.category == liter.category:
-            return Uom.compute_qty(unit, quantity, liter, round=False)
-        else:
-            return None
+                self.unit, self.quantity, liter, round=False)
 
-    @classmethod
-    def create(cls, vlist):
-        pool = Pool()
-        Product = pool.get('product.product')
-        Uom = pool.get('product.uom')
-
-        vlist = [v.copy() for v in vlist]
-        for values in vlist:
-            product = Product(values['product'])
-            unit = Uom(values['unit'])
-            quantity = values['quantity']
-            internal_weight = cls._get_internal_weight(quantity, unit, product)
-            if internal_weight is not None:
+    def compute_fields(self, field_names=None):
+        cls = self.__class__
+        values = super().compute_fields(field_names=field_names)
+        if (not field_names
+                or (cls.internal_weight.on_change_with & field_names)):
+            internal_weight = self.on_change_with_internal_weight()
+            if self.internal_weight != internal_weight:
                 values['internal_weight'] = internal_weight
-            internal_volume = cls._get_internal_volume(quantity, unit, product)
-            if internal_volume is not None:
+        if (not field_names
+                or (cls.internal_volume.on_change_with & field_names)):
+            internal_volume = self.on_change_with_internal_volume()
+            if getattr(self, 'internal_volume', None) != internal_volume:
                 values['internal_volume'] = internal_volume
-        return super().create(vlist)
-
-    @classmethod
-    def write(cls, *args):
-        super().write(*args)
-
-        to_write = []
-        actions = iter(args)
-        for moves, values in zip(actions, actions):
-            for move in moves:
-                write = {}
-                internal_weight = cls._get_internal_weight(
-                    move.quantity, move.unit, move.product)
-                if (internal_weight is not None
-                        and internal_weight != move.internal_weight
-                        and internal_weight != values.get('internal_weight')):
-                    write['internal_weight'] = internal_weight
-                internal_volume = cls._get_internal_volume(
-                    move.quantity, move.unit, move.product)
-                if (internal_volume is not None
-                        and internal_volume != move.internal_volume
-                        and internal_volume != values.get('internal_volume')):
-                    write['internal_volume'] = internal_volume
-                if write:
-                    to_write.extend(([move], write))
-        if to_write:
-            cls.write(*to_write)
+        return values
 
     @classmethod
     @ModelView.button

@@ -538,6 +538,19 @@ class Move(Workflow, ModelSQL, ModelView):
     def on_change_with_product_uom_category(self, name=None):
         return self.product.default_uom_category if self.product else None
 
+    @classmethod
+    def default_internal_quantity(cls):
+        # default value before compute of the field
+        return 0
+
+    @fields.depends('quantity', 'unit', 'product')
+    def on_change_with_internal_quantity(self):
+        pool = Pool()
+        UoM = pool.get('product.uom')
+        if self.quantity is not None and self.unit and self.product:
+            return UoM.compute_qty(
+                self.unit, self.quantity, self.product.default_uom, round=True)
+
     @fields.depends('from_location')
     def on_change_with_from_location_name(self, name=None):
         if self.from_location:
@@ -723,13 +736,6 @@ class Move(Workflow, ModelSQL, ModelView):
         elif direction == 'out':
             new_cost_price = cost_price
         return round_price(new_cost_price)
-
-    @staticmethod
-    def _get_internal_quantity(quantity, unit, product):
-        Uom = Pool().get('product.uom')
-        internal_quantity = Uom.compute_qty(
-            unit, quantity, product.default_uom, round=True)
-        return internal_quantity
 
     def set_effective_date(self):
         pool = Pool()
@@ -974,33 +980,36 @@ class Move(Workflow, ModelSQL, ModelView):
         default.setdefault('outcome_moves', None)
         return super().copy(moves, default=default)
 
+    def compute_fields(self, field_names=None):
+        cls = self.__class__
+        values = super().compute_fields(field_names=field_names)
+        if (not field_names
+                or (cls.internal_quantity.on_change_with & field_names)):
+            internal_quantity = self.on_change_with_internal_quantity()
+            if getattr(self, 'internal_quantity', None) != internal_quantity:
+                values['internal_quantity'] = internal_quantity
+        return values
+
     @classmethod
     def create(cls, vlist):
         pool = Pool()
         Product = pool.get('product.product')
-        Uom = pool.get('product.uom')
         context = Transaction().context
 
         vlist = [x.copy() for x in vlist]
         # Use ordered dict to optimize cache alignment
-        products, units = OrderedDict(), OrderedDict()
+        products = OrderedDict()
         for vals in vlist:
             if vals.get('product') is not None:
                 products[vals['product']] = None
-            if vals.get('unit') is not None:
-                units[vals['unit']] = None
         id2product = {p.id: p for p in Product.browse(products.keys())}
-        id2unit = {u.id: u for u in Uom.browse(units.keys())}
         for vals in vlist:
             assert vals.get('state', cls.default_state()
                 ) in ['draft', 'staging']
-            product = id2product[int(vals['product'])]
-            unit = id2unit[int(vals['unit'])]
-            internal_quantity = cls._get_internal_quantity(
-                vals['quantity'], unit, product)
-            vals['internal_quantity'] = internal_quantity
-            if context.get('_product_replacement', True):
-                vals['product'] = product.replacement.id
+            if vals.get('product') is not None:
+                product = id2product[int(vals['product'])]
+                if context.get('_product_replacement', True):
+                    vals['product'] = product.replacement.id
         moves = super().create(vlist)
         cls.check_period_closed(moves)
         return moves
@@ -1025,28 +1034,17 @@ class Move(Workflow, ModelSQL, ModelView):
 
         super().write(*args)
 
-        to_write = []
         unit_price_update = []
         actions = iter(args)
         for moves, values in zip(actions, actions):
             if any(f not in cls._allow_modify_closed_period for f in values):
                 cls.check_period_closed(moves)
             for move in moves:
-                internal_quantity = cls._get_internal_quantity(
-                    move.quantity, move.unit, move.product)
-                if (internal_quantity != move.internal_quantity
-                        and internal_quantity
-                        != values.get('internal_quantity')):
-                    to_write.extend(([move], {
-                            'internal_quantity': internal_quantity,
-                            }))
                 if (move.state == 'done'
                         and ('unit_price' in values
                             or 'currency' in values)):
                     unit_price_update.append(move)
 
-        if to_write:
-            cls.write(*to_write)
         if unit_price_update:
             cls.write(unit_price_update, {'unit_price_updated': True})
 
