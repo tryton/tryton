@@ -184,6 +184,19 @@ class ModelStorageDomainNotRequired(ModelSQL):
         "Domain Not Required", domain=[('domain_not_required', '>', 0)])
 
 
+class ModelStorageComputeFields(ModelSQL):
+    __name__ = 'test.modelstorage.compute_fields'
+
+    value = fields.Integer("Value", required=True)
+    computed_value = fields.Integer("Value", readonly=True)
+
+    def compute_fields(self, field_names=None):
+        values = super().compute_fields(field_names=field_names)
+        if not field_names or 'value' in field_names:
+            values['computed_value'] = self.value + 1
+        return values
+
+
 def register(module):
     Pool.register(
         ModelStorage,
@@ -204,4 +217,5 @@ def register(module):
         ModelStorageRelationDomain2Target,
         ModelStorageEvalEnvironment,
         ModelStorageDomainNotRequired,
+        ModelStorageComputeFields,
         module=module, type_='model')

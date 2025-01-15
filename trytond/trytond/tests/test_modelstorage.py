@@ -880,3 +880,48 @@ class EvalEnvironmentTestCase(TestCase):
             record = Model(record.id)
 
             self.assertEqual(record.name, "Test")
+
+    @with_transaction()
+    def test_compute_fields_on_create(self):
+        "Test compute fields on create"
+        pool = Pool()
+        Model = pool.get('test.modelstorage.compute_fields')
+
+        record, = Model.create([{'value': 1}])
+
+        self.assertEqual(record.computed_value, 2)
+
+    @with_transaction()
+    def test_compute_fields_on_write(self):
+        "Test compute fields on write"
+        pool = Pool()
+        Model = pool.get('test.modelstorage.compute_fields')
+
+        record, = Model.create([{'value': 1}])
+        Model.write([record], {'value': 2})
+
+        self.assertEqual(record.computed_value, 3)
+
+    @with_transaction()
+    def test_compute_fields_in_save_values(self):
+        "Test compute fields in save values"
+        pool = Pool()
+        Model = pool.get('test.modelstorage.compute_fields')
+
+        record = Model()
+        record.value = 1
+
+        self.assertEqual(record._save_values(), {
+                'value': 1,
+                'computed_value': 2,
+                })
+
+    @with_transaction()
+    def test_compute_fields_in_save_values_without_attribute(self):
+        "Test compute fields in save values"
+        pool = Pool()
+        Model = pool.get('test.modelstorage.compute_fields')
+
+        record = Model()
+
+        self.assertEqual(record._save_values(), {})

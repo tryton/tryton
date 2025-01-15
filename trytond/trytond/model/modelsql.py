@@ -1048,6 +1048,7 @@ class ModelSQL(ModelStorage):
             cls._validate(sub_records)
 
         cls.trigger_create(records)
+        cls._compute_fields(records)
         return records
 
     @classmethod
@@ -1483,6 +1484,7 @@ class ModelSQL(ModelStorage):
             cls._validate(sub_records, field_names=all_field_names)
 
         cls.trigger_write(trigger_eligibles)
+        cls._compute_fields(all_records, all_field_names)
 
     @classmethod
     @no_table_query

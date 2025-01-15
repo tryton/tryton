@@ -538,6 +538,11 @@ Class methods:
    The field names of values must be defined in ``fields_names``.
    It returns the number of imported records.
 
+.. classmethod:: ModelStorage.compute_fields(record[, field_names])
+
+   Returns a dictionary of values to be stored if any field of ``field_names``
+   has been modified.
+
 .. classmethod:: ModelStorage.validate(records)
 
    Validate the integrity of records after creation and modification.

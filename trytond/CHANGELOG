@@ -1,3 +1,4 @@
+* Add compute fields to ModelStorage
 * Add configuration of select timeout for cache channels
 * Add color as type of icon and image
 * Add color widget to form view

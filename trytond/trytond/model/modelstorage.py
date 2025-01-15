@@ -1232,6 +1232,20 @@ class ModelStorage(Model):
         ModelData.can_modify(records, values)
 
     @classmethod
+    @without_check_access
+    def _compute_fields(cls, records, field_names=None):
+        to_write = []
+        for record in records:
+            values = record.compute_fields(field_names)
+            if values:
+                to_write.extend([[record], values])
+        if to_write:
+            cls.write(*to_write)
+
+    def compute_fields(self, field_names=None):
+        return {}
+
+    @classmethod
     def validate(cls, records):
         pass
 
@@ -2023,6 +2037,11 @@ class ModelStorage(Model):
                 if to_write:
                     value.extend(to_write)
             values[fname] = value
+        try:
+            values.update(self.compute_fields(values.keys()))
+        except AttributeError:
+            if self.id is not None and self.id >= 0:
+                raise
         return values
 
     @dualmethod
