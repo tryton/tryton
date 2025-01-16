@@ -905,7 +905,8 @@ class Screen:
                     for widget in widgets:
                         if hasattr(widget, 'screen'):
                             widget.screen.save_tree_state(store)
-                if len(self.views) == 1 and self.current_record:
+            if view == self.current_view and view.view_type == 'form':
+                if self.current_record:
                     path = self.current_record.id
                     if path < 0:
                         path = -self.current_record.group.index(
@@ -919,8 +920,9 @@ class Screen:
                 else:
                     paths = []
                 selected_paths = view.get_selected_paths()
-                self.tree_states[parent][view.children_field] = (
-                    paths, selected_paths)
+                if view == self.current_view:
+                    self.tree_states[parent][view.children_field] = (
+                        paths, selected_paths)
                 if (store
                         and int(view.attributes.get('tree_state', False))
                         and CONFIG['client.save_tree_state']):

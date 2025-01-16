@@ -2153,7 +2153,9 @@
                             }
                         }
                     }
-                    if ((this.views.length == 1) && this.current_record) {
+                }
+                if ((view === this.current_view) && (view.view_type == 'form')) {
+                    if (this.current_record) {
                         if (!(parent_ in this.tree_states)) {
                             this.tree_states[parent_] = {};
                         }
@@ -2169,11 +2171,13 @@
                         paths = [];
                     }
                     var selected_paths = view.get_selected_paths();
-                    if (!(parent_ in this.tree_states)) {
-                        this.tree_states[parent_] = {};
+                    if (view === this.current_view) {
+                        if (!(parent_ in this.tree_states)) {
+                            this.tree_states[parent_] = {};
+                        }
+                        this.tree_states[parent_][view.children_field || null] = [
+                            paths, selected_paths];
                     }
-                    this.tree_states[parent_][view.children_field || null] = [
-                        paths, selected_paths];
                     if (store && parseInt(view.attributes.tree_state, 10)) {
                         var tree_state_model = new Sao.Model(
                                 'ir.ui.view_tree_state');
