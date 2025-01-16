@@ -857,11 +857,12 @@ class Screen:
         parent = self.parent.id if self.parent else None
         if parent is not None and parent < 0:
             return
-        expanded_nodes, selected_nodes = [], []
+        state = self.tree_states[parent][view.children_field]
+        if state:
+            expanded_nodes, selected_nodes = state
+        else:
+            expanded_nodes, selected_nodes = [], []
         if view.view_type in {'tree', 'list-form'}:
-            state = self.tree_states[parent][view.children_field]
-            if state:
-                expanded_nodes, selected_nodes = state
             if (state is None
                     and CONFIG['client.save_tree_state']
                     and int(view.attributes.get('tree_state', False))):
