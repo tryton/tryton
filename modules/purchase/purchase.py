@@ -1823,8 +1823,8 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
                     gettext('purchase'
                         '.msg_purchase_missing_account_expense',
                         purchase=self.purchase.rec_name))
-        if samesign(self.quantity, invoice_line.quantity):
-            invoice_line.stock_moves = self._get_invoice_line_moves()
+        invoice_line.stock_moves = self._get_invoice_line_moves(
+            invoice_line.quantity)
         return [invoice_line]
 
     def _get_invoice_line_quantity(self):
@@ -1872,12 +1872,13 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
                     quantity += invoice_line.quantity
         return quantity
 
-    def _get_invoice_line_moves(self):
+    def _get_invoice_line_moves(self, quantity):
         'Return the stock moves that should be invoiced'
         moves = []
         if self.purchase.invoice_method in {'order', 'manual'}:
             moves.extend(self.moves)
-        elif self.purchase.invoice_method == 'shipment':
+        elif (self.purchase.invoice_method == 'shipment'
+                and samesign(self.quantity, quantity)):
             for move in self.moves:
                 if move.state == 'done':
                     if move.invoiced_quantity < move.quantity:
@@ -1974,8 +1975,9 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
             lines = self.invoice_lines
         else:
             lines = filter(lambda l: not l.stock_moves, self.invoice_lines)
-        return list(filter(
-                lambda l: samesign(self.quantity, l.quantity), lines))
+            lines = filter(
+                lambda l: samesign(self.quantity, l.quantity), lines)
+        return list(lines)
 
     def set_actual_quantity(self):
         pool = Pool()

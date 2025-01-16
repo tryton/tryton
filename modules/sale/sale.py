@@ -1859,8 +1859,8 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
                 raise AccountError(
                     gettext('sale.msg_sale_missing_account_revenue',
                         sale=self.sale.rec_name))
-        if samesign(self.quantity, invoice_line.quantity):
-            invoice_line.stock_moves = self._get_invoice_line_moves()
+        invoice_line.stock_moves = self._get_invoice_line_moves(
+            invoice_line.quantity)
         return [invoice_line]
 
     def _get_invoice_line_quantity(self):
@@ -1908,13 +1908,14 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
                     quantity += invoice_line.quantity
         return quantity
 
-    def _get_invoice_line_moves(self):
+    def _get_invoice_line_moves(self, quantity):
         'Return the stock moves that should be invoiced'
         moves = []
         if self.sale.invoice_method in {'order', 'manual'}:
             if self.sale.shipment_method not in {'order', 'manual'}:
                 moves.extend(self.moves)
-        elif self.sale.invoice_method == 'shipment':
+        elif (self.sale.invoice_method == 'shipment'
+                and samesign(self.quantity, quantity)):
             for move in self.moves:
                 if move.state == 'done':
                     if move.invoiced_quantity < move.quantity:
@@ -2027,11 +2028,11 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
         elif self.sale.shipment_method == 'invoice':
             for invoice_line in self.invoice_lines:
                 if (invoice_line.invoice
-                        and invoice_line.invoice.state == 'paid'):
+                        and invoice_line.invoice.state == 'paid'
+                        and samesign(self.quantity, invoice_line.quantity)):
                     if invoice_line.moved_quantity < invoice_line.quantity:
                         invoice_lines.append(invoice_line)
-        return list(filter(
-                lambda l: samesign(self.quantity, l.quantity), invoice_lines))
+        return invoice_lines
 
     def set_actual_quantity(self):
         pool = Pool()
