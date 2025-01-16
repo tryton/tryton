@@ -986,6 +986,11 @@
             };
             const _switch = () => {
                 const set_container = () => {
+                    // set view type before display
+                    // to scroll using the final scrollable elements.
+                    let tab = Sao.Tab.tabs.get_current();
+                    Sao.Tab.set_view_type(tab ? tab.current_view_type : null);
+
                     this.screen_container.set(this.current_view.el);
                     var prm;
                     if (display) {
@@ -999,8 +1004,6 @@
                         if (this.switch_callback) {
                             this.switch_callback();
                         }
-                        const tab = Sao.Tab.tabs.get_current();
-                        Sao.Tab.set_view_type(tab ? tab.current_view_type : null);
                     });
                 };
                 const set_current_view = () => {

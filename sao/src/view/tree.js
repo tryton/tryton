@@ -1341,6 +1341,7 @@
             const focus = () => {
                 row = this.find_row(path);
                 if (row) {
+                    Sao.common.scrollIntoViewIfNeeded(row.el);
                     column = row.next_column(null, new_);
                     if (column !== null) {
                         td = row._get_column_td(column);
@@ -1709,6 +1710,9 @@
 
             var row_id_path = this.get_id_path();
             this.set_selection(Sao.common.contains(selected, row_id_path));
+            if (selected.length && Sao.common.compare(selected[0], row_id_path)) {
+                Sao.common.scrollIntoViewIfNeeded(this.el);
+            }
             if (this.children_field) {
                 var depth = this.path.split('.').length;
                 var margin = 'margin-left';
