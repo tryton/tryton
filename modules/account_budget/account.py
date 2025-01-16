@@ -763,7 +763,7 @@ class CopyBudgetMixin:
         default = {'name': self.start.name}
         factor = self.start.factor
         if factor != 1:
-            currency = self.start.company.currency
+            currency = self.record.company.currency
             default['lines.amount'] = (
                 lambda data: currency.round(data['amount'] * factor)
                 if data['amount'] else data['amount'])
