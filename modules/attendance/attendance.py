@@ -2,8 +2,6 @@
 # this repository contains the full copyright notices and license terms.
 import copy
 import datetime as dt
-from collections import defaultdict
-from itertools import chain
 
 from sql import Column, Window
 from sql.aggregate import Min, Sum
@@ -89,31 +87,15 @@ class Line(ModelSQL, ModelView):
         lang = Lang.get()
         return '%s@%s' % (self.employee.rec_name, lang.strftime(self.at))
 
-    @classmethod
-    def create(cls, vlist):
-        lines = super().create(vlist)
-        to_write = defaultdict(list)
-        for line in lines:
-            date = line.on_change_with_date()
-            if line.date != date:
-                to_write[date].append(line)
-        if to_write:
-            cls.write(*chain([l, {'date': d}] for d, l in to_write.items()))
-        return lines
-
-    @classmethod
-    def write(cls, *args):
-        super().write(*args)
-
-        to_write = defaultdict(list)
-        actions = iter(args)
-        for lines, values in zip(actions, actions):
-            for line in lines:
-                date = line.on_change_with_date()
-                if line.date != date:
-                    to_write[date].append(line)
-        if to_write:
-            cls.write(*chain([l, {'date': d}] for d, l in to_write.items()))
+    def compute_fields(self, field_names=None):
+        cls = self.__class__
+        values = super().compute_fields(field_names=field_names)
+        if (not field_names
+                or (cls.date.on_change_with & field_names)):
+            date = self.on_change_with_date()
+            if getattr(self, 'date', None) != date:
+                values['date'] = date
+        return values
 
     @classmethod
     def delete(cls, records):
