@@ -250,41 +250,19 @@ class AccountNumber(DeactivableMixin, sequence_ordered(), ModelSQL, ModelView):
         return (iban.compact(self.number) if self.type == 'iban'
             else self.number)
 
-    @classmethod
-    def create(cls, vlist):
-        vlist = [v.copy() for v in vlist]
-        for values in vlist:
-            if values.get('type') == 'iban' and 'number' in values:
-                values['number'] = iban.format(values['number'])
-                values['number_compact'] = iban.compact(values['number'])
-        return super().create(vlist)
-
-    @classmethod
-    def write(cls, *args):
-        actions = iter(args)
-        args = []
-        for numbers, values in zip(actions, actions):
-            values = values.copy()
-            if values.get('type') == 'iban' and 'number' in values:
-                values['number'] = iban.format(values['number'])
-                values['number_compact'] = iban.compact(values['number'])
-            args.extend((numbers, values))
-
-        super().write(*args)
-
-        to_write = []
-        for number in sum(args[::2], []):
-            if number.type == 'iban':
-                formated_number = iban.format(number.number)
-                compacted_number = iban.compact(number.number)
-                if ((formated_number != number.number)
-                        or (compacted_number != number.number_compact)):
-                    to_write.extend(([number], {
-                                'number': formated_number,
-                                'number_compact': compacted_number,
-                                }))
-        if to_write:
-            cls.write(*to_write)
+    def compute_fields(self, field_names=None):
+        values = super().compute_fields(field_names=field_names)
+        if ((not field_names or {'type', 'number'} & field_names)
+                and getattr(self, 'type', None) == 'iban'):
+            number = getattr(self, 'number', None)
+            if number:
+                number = iban.format(number)
+                number_compact = iban.compact(number)
+                if getattr(self, 'number') != number:
+                    values['number'] = number
+                if getattr(self, 'number_compact', None) != number_compact:
+                    values['number_compact'] = number_compact
+        return values
 
     @fields.depends('type', 'number')
     def pre_validate(self):
