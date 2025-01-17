@@ -164,21 +164,6 @@ class Move(metaclass=PoolMeta):
 
     @classmethod
     @without_check_access
-    def _update_intrastat(cls, moves):
-        moves = cls.browse(moves)
-        for move in moves:
-            if move.state not in {'done', 'cancelled'}:
-                intrastat_type = move.on_change_with_intrastat_type()
-                if move.intrastat_type != intrastat_type:
-                    move.intrastat_type = intrastat_type
-            if move.state == 'done':
-                intrastat_value = move._intrastat_value()
-                if move.intrastat_value != intrastat_value:
-                    move.intrastat_value = intrastat_value
-        cls.save(moves)
-
-    @classmethod
-    @without_check_access
     def _reopen_intrastat(cls, *args):
         pool = Pool()
         IntrastatDeclaration = pool.get(
@@ -203,18 +188,26 @@ class Move(metaclass=PoolMeta):
                     }),
             ]
 
-    @classmethod
-    def create(cls, vlist):
-        moves = super().create(vlist)
-        cls._update_intrastat(moves)
-        return moves
+    def compute_fields(self, field_names=None):
+        cls = self.__class__
+        values = super().compute_fields(field_names=field_names)
+        if (self.state not in {'done', 'cancelled'}
+                and (not field_names
+                    or (cls.intrastat_type.on_change_with & field_names))):
+            intrastat_type = self.on_change_with_intrastat_type()
+            if getattr(self, 'intrastat_type', None) != intrastat_type:
+                values['intrastat_type'] = intrastat_type
+        if (not field_names
+                or (cls.intrastat_value.on_change_with & field_names)):
+            intrastat_value = self.on_change_with_intrastat_value()
+            if getattr(self, 'intrastat_value', None) != intrastat_value:
+                values['intrastat_value'] = intrastat_value
+        return values
 
     @classmethod
     def write(cls, *args):
         cls._reopen_intrastat(*args)
-        moves = sum(args[0:None:2], [])
         super().write(*args)
-        cls._update_intrastat(moves)
         cls._reopen_intrastat(*args)
 
     @classmethod
@@ -283,7 +276,7 @@ class Move(metaclass=PoolMeta):
         if not self.intrastat_type:
             return
         self.set_effective_date()
-        self.intrastat_value = self._intrastat_value()
+        self.intrastat_value = self.on_change_with_intrastat_value()
         if self.intrastat_type == 'arrival':
             if not self.intrastat_warehouse_country:
                 self.intrastat_warehouse_country = self.intrastat_to_country
@@ -420,10 +413,13 @@ class Move(metaclass=PoolMeta):
         elif isinstance(self.shipment, ShipmentOutReturn):
             return '21'
 
-    def _intrastat_value(self):
+    @fields.depends(
+        'state', 'unit_price', 'currency', 'quantity', 'effective_date',
+        'planned_date', 'company')
+    def on_change_with_intrastat_value(self):
         pool = Pool()
         Currency = pool.get('currency.currency')
-        if self.unit_price is not None:
+        if self.state == 'done' and self.unit_price is not None:
             ndigits = self.__class__.intrastat_value.digits[1]
             with Transaction().set_context(
                     date=self.effective_date or self.planned_date):
