@@ -271,24 +271,18 @@ class ContactMechanism(
             ('value_compact',) + tuple(clause[1:]),
             ]
 
-    @classmethod
-    def _format_values(cls, mechanisms):
-        for mechanism in mechanisms:
-            value = mechanism.format_value(
-                value=mechanism.value, type_=mechanism.type)
-            if value != mechanism.value:
-                mechanism.value = value
-            value_compact = mechanism.format_value_compact(
-                value=mechanism.value, type_=mechanism.type)
-            if value_compact != mechanism.value_compact:
-                mechanism.value_compact = value_compact
-        cls.save(mechanisms)
-
-    @classmethod
-    def create(cls, vlist):
-        mechanisms = super().create(vlist)
-        cls._format_values(mechanisms)
-        return mechanisms
+    def compute_fields(self, field_names=None):
+        values = super().compute_fields(field_names=field_names)
+        if not field_names or {'value', 'type'} & field_names:
+            if getattr(self, 'value', None) and getattr(self, 'type', None):
+                value = self.format_value(value=self.value, type_=self.type)
+                if self.value != value:
+                    values['value'] = value
+                value_compact = self.format_value_compact(
+                    value=self.value, type_=self.type)
+                if getattr(self, 'value_compact', None) != value_compact:
+                    values['value_compact'] = value_compact
+        return values
 
     @classmethod
     def write(cls, *args):
@@ -305,7 +299,6 @@ class ContactMechanism(
                                 'contact': mechanism.rec_name,
                                 })
         super().write(*args)
-        cls._format_values(all_mechanisms)
 
     @classmethod
     def validate_fields(cls, mechanisms, field_names):
