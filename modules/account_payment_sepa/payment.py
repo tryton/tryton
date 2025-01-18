@@ -5,6 +5,7 @@ import os
 import unicodedata
 from itertools import groupby
 from io import BytesIO
+from operator import attrgetter
 
 import genshi
 import genshi.template
@@ -208,8 +209,9 @@ class Group(metaclass=PoolMeta):
         pool = Pool()
         Payment = pool.get('account.payment')
         if self.kind == 'receivable':
+            payments = sorted(self.payments, key=attrgetter('date', 'id'))
             mandates = Payment.get_sepa_mandates(self.payments)
-            for payment, mandate in zip(self.payments, mandates):
+            for payment, mandate in zip(payments, mandates):
                 if not mandate:
                     raise ProcessError(
                         gettext('account_payment_sepa'
