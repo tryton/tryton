@@ -6,6 +6,7 @@ import unicodedata
 import uuid
 from io import BytesIO
 from itertools import groupby
+from operator import attrgetter
 
 import genshi
 import genshi.template
@@ -218,7 +219,7 @@ class Group(metaclass=PoolMeta):
         Mandate = pool.get('account.payment.sepa.mandate')
         assert self.process_method == 'sepa'
         if self.kind == 'receivable':
-            payments = list(self.payments)
+            payments = sorted(self.payments, key=attrgetter('date', 'id'))
             mandates = Payment.get_sepa_mandates(payments)
             Mandate.lock(list(filter(None, mandates)))
             sequence_types = {}
