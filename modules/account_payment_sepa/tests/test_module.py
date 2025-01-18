@@ -1,5 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+
+import datetime as dt
 import os
 from decimal import Decimal
 from io import BytesIO, open
@@ -355,6 +357,66 @@ class AccountPaymentSepaTestCase(CompanyTestMixin, ModuleTestCase):
                 self.assertEqual(payment.sepa_mandate_sequence_type, 'RCUR')
                 self.assertTrue(payment.sepa_info_id)
             self.assertIsNotNone(payment.group.sepa_id)
+
+    @with_transaction()
+    def test_payment_sequence_type_ordered_date(self):
+        "Test sequence type by ordered date"
+        pool = Pool()
+        Date = pool.get('ir.date')
+        Payment = pool.get('account.payment')
+        ProcessPayment = pool.get('account.payment.process', type='wizard')
+
+        environment = setup_environment()
+        company = environment['company']
+        bank = environment['bank']
+        customer = environment['customer']
+        with set_company(company):
+            company_account, customer_account = setup_accounts(
+                bank, company, customer)
+            mandate = setup_mandate(company, customer, customer_account)
+            journal = setup_journal('pain.008.001.02', 'receivable',
+                company, company_account)
+
+            self.assertEqual(mandate.sequence_type, 'FRST')
+
+            payments = Payment.create([{
+                        'company': company,
+                        'party': customer,
+                        'journal': journal,
+                        'kind': 'receivable',
+                        'amount': Decimal('1000.0'),
+                        'state': 'submitted',
+                        'description': 'PAYMENT',
+                        'date': Date.today() + dt.timedelta(days=1),
+                        }, {
+                        'company': company,
+                        'party': customer,
+                        'journal': journal,
+                        'kind': 'receivable',
+                        'amount': Decimal('1500.0'),
+                        'state': 'submitted',
+                        'description': 'PAYMENT',
+                        'date': Date.today(),
+                        }, {
+                        'company': company,
+                        'party': customer,
+                        'journal': journal,
+                        'kind': 'receivable',
+                        'amount': Decimal('2000.0'),
+                        'state': 'submitted',
+                        'description': 'PAYMENT',
+                        'date': Date.today(),
+                        }])
+
+            session_id, _, _ = ProcessPayment.create()
+            process_payment = ProcessPayment(session_id)
+            payment_ids = [p.id for p in payments]
+            with Transaction().set_context(
+                    active_model=Payment.__name__, active_ids=payment_ids):
+                _, data = process_payment.do_process(None)
+            self.assertEqual(
+                [p.sepa_mandate_sequence_type for p in payments],
+                ['RCUR', 'FRST', 'RCUR'])
 
     @with_transaction()
     def handle_camt054(self, flavor):
