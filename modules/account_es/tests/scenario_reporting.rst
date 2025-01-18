@@ -162,10 +162,10 @@ Create invoices::
 
 Generate aeat reports::
 
-    >>> Period = Model.get('account.period')
     >>> aeat = Wizard('account.reporting.aeat')
     >>> aeat.form.report = '111'
-    >>> aeat.form.periods.append(Period(period.id))
+    >>> aeat.form.start_period = period
+    >>> aeat.form.end_period = period
     >>> aeat.execute('choice')
     >>> extension, content, _, name = aeat.actions[0]
     >>> extension
@@ -177,8 +177,8 @@ Generate aeat reports::
 
     >>> aeat = Wizard('account.reporting.aeat')
     >>> aeat.form.report = '115'
-    >>> period = Period(period.id)
-    >>> aeat.form.periods.append(Period(period.id))
+    >>> aeat.form.start_period = period
+    >>> aeat.form.end_period = period
     >>> aeat.execute('choice')
     >>> extension, content, _, name = aeat.actions[0]
     >>> extension
@@ -190,7 +190,8 @@ Generate aeat reports::
 
     >>> aeat = Wizard('account.reporting.aeat')
     >>> aeat.form.report = '303'
-    >>> aeat.form.periods.append(Period(period.id))
+    >>> aeat.form.start_period = period
+    >>> aeat.form.end_period = period
     >>> aeat.execute('choice')
     >>> extension, content, _, name = aeat.actions[0]
     >>> extension

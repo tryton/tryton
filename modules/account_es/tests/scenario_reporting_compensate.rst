@@ -123,10 +123,10 @@ Create previous period compensation move::
 
 Generate aeat 303 report::
 
-    >>> Period = Model.get('account.period')
     >>> aeat = Wizard('account.reporting.aeat')
     >>> aeat.form.report = '303'
-    >>> aeat.form.periods.append(Period(period.id))
+    >>> aeat.form.start_period = period
+    >>> aeat.form.end_period = period
     >>> aeat.execute('choice')
     >>> extension, content, _, name = aeat.actions[0]
     >>> extension

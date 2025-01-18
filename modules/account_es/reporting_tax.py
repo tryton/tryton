@@ -5,7 +5,6 @@ import unicodedata
 from collections import defaultdict
 from decimal import Decimal
 from io import BytesIO, TextIOWrapper
-from operator import attrgetter
 
 import phonenumbers
 from dateutil.relativedelta import relativedelta
@@ -102,10 +101,8 @@ def strip_accents(s):
 class AEATReport(Report):
 
     @classmethod
-    def get_context(cls, records, header, data):
-        context = super().get_context(records, header, data)
-
-        periods = sorted(records, key=attrgetter('start_date'))
+    def get_context(cls, periods, header, data):
+        context = super().get_context(periods, header, data)
 
         context['year'] = str(periods[0].start_date.year)
         context['company'] = periods[0].fiscalyear.company
@@ -263,15 +260,14 @@ class AEAT303(AEATReport):
         return amounts
 
     @classmethod
-    def get_context(cls, records, header, data):
+    def get_context(cls, periods, header, data):
         pool = Pool()
         Account = pool.get('account.account')
         TaxCodeLine = pool.get('account.tax.code.line')
         transaction = Transaction()
-        context = super().get_context(records, header, data)
+        context = super().get_context(periods, header, data)
         amounts = context['amounts']
 
-        periods = sorted(records, key=attrgetter('start_date'))
         start_date = periods[0].start_date
         end_date = periods[-1].end_date
 
@@ -341,8 +337,27 @@ class PrintAEATStart(ModelView):
             ('115', "Model 115"),
             ('303', "Model 303"),
             ], "Report", required=True)
-    periods = fields.Many2Many('account.period', None, None, 'Periods',
-        required=True)
+    company = fields.Many2One('company.company', "Company", required=True)
+    start_period = fields.Many2One(
+        'account.period', "Start Period",
+        required=True,
+        domain=[
+            ('type', '=', 'standard'),
+            ('fiscalyear.company', '=', Eval('company')),
+            ('start_date', '<=', (Eval('end_period'), 'start_date')),
+            ])
+    end_period = fields.Many2One(
+        'account.period', "End Period",
+        required=True,
+        domain=[
+            ('type', '=', 'standard'),
+            ('fiscalyear.company', '=', Eval('company')),
+            ('start_date', '>=', (Eval('start_period'), 'start_date'))
+            ])
+
+    @classmethod
+    def default_company(cls):
+        return Transaction().context.get('company')
 
 
 class PrintAEAT(Wizard):
@@ -364,14 +379,24 @@ class PrintAEAT(Wizard):
         return 'model_%s' % self.start.report
 
     def open_report(self, action):
-        return action, {'ids': [p.id for p in self.start.periods]}
+        pool = Pool()
+        Period = pool.get('account.period')
+        periods = Period.search([
+                ('type', '=', 'standard'),
+                ('company', '=', self.start.start_period.fiscalyear.company),
+                ('start_date', '>=', self.start.start_period.start_date),
+                ('end_date', '<=', self.start.end_period.end_date),
+                ],
+            order=[('start_date', 'ASC')])
+        return action, {'ids': [p.id for p in periods]}
 
     do_model_111 = open_report
     do_model_115 = open_report
     do_model_303 = open_report
 
     def validate_303(self):
-        if len(set(p.fiscalyear for p in self.start.periods)) > 1:
+        if (self.start.start_period.fiscalyear
+                != self.start.end_period.fiscalyear):
             raise PrintError(
                 gettext('account_es.msg_report_same_fiscalyear'))
 
