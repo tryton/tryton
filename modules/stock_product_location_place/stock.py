@@ -123,11 +123,19 @@ class Move(metaclass=PoolMeta):
                 filter(None, [name, self.to_place.rec_name])).strip()
         return name
 
-    @classmethod
-    def create(cls, vlist):
-        moves = super().create(vlist)
-        cls._sync_places(moves)
-        return moves
+    def compute_fields(self, field_names=None):
+        cls = self.__class__
+        values = super().compute_fields(field_names=field_names)
+        if getattr(self, 'state', None) not in {'done', 'cancelled'}:
+            if not field_names or cls.from_place.on_change_with & field_names:
+                from_place = self.on_change_with_from_place()
+                if getattr(self, 'from_place', None) != from_place:
+                    values['from_place'] = from_place
+            if not field_names or cls.to_place.on_change_with & field_names:
+                to_place = self.on_change_with_to_place()
+                if getattr(self, 'to_place', None) != to_place:
+                    values['to_place'] = to_place
+        return values
 
     @classmethod
     def write(cls, *args):
@@ -142,21 +150,6 @@ class Move(metaclass=PoolMeta):
             args.extend((moves, values))
 
         super().write(*args)
-        moves = sum(args[0:None:2], [])
-        cls._sync_places(moves)
-
-    @classmethod
-    def _sync_places(cls, moves):
-        for move in moves:
-            if move.state in {'done', 'cancelled'}:
-                continue
-            from_place = move.on_change_with_from_place()
-            to_place = move.on_change_with_to_place()
-            if (move.from_place != from_place
-                    or move.to_place != to_place):
-                move.from_place = from_place
-                move.to_place = to_place
-        cls.save(moves)
 
 
 class ShipmentIn(metaclass=PoolMeta):
