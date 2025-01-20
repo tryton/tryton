@@ -229,14 +229,17 @@ class Payment(metaclass=PoolMeta):
 
     @property
     def clearing_account(self):
-        if self.line:
-            return self.line.account
-        elif self.account:
-            return self.account
-        elif self.kind == 'payable':
-            return self.party.account_payable_used
-        elif self.kind == 'receivable':
-            return self.party.account_receivable_used
+        transaction = Transaction()
+        context = transaction.context
+        with transaction.set_context(date=context.get('clearing_date')):
+            if self.line:
+                return self.line.account.current()
+            elif self.account:
+                return self.account.current()
+            elif self.kind == 'payable':
+                return self.party.account_payable_used
+            elif self.kind == 'receivable':
+                return self.party.account_receivable_used
 
     @property
     def clearing_party(self):
@@ -308,7 +311,7 @@ class Payment(metaclass=PoolMeta):
             counterpart.debit, counterpart.credit = 0, local_amount
         else:
             counterpart.debit, counterpart.credit = local_amount, 0
-        counterpart.account = self.journal.clearing_account
+        counterpart.account = self.journal.clearing_account.current(date)
         if not local_currency:
             counterpart.amount_second_currency = self.amount.copy_sign(
                 counterpart.debit - counterpart.credit)
