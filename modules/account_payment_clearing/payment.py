@@ -233,6 +233,10 @@ class Payment(metaclass=PoolMeta):
             return self.line.account
         elif self.account:
             return self.account
+        elif self.kind == 'payable':
+            return self.party.account_payable_used
+        elif self.kind == 'receivable':
+            return self.party.account_receivable_used
 
     @property
     def clearing_party(self):
@@ -263,8 +267,6 @@ class Payment(metaclass=PoolMeta):
         Period = pool.get('account.period')
         Date = pool.get('ir.date')
 
-        if not self.clearing_account:
-            return
         if (not self.journal.clearing_account
                 or not self.journal.clearing_journal):
             return
