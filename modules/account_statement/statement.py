@@ -71,7 +71,10 @@ class Statement(Workflow, ModelSQL, ModelView):
 
     name = fields.Char('Name', required=True)
     company = fields.Many2One(
-        'company.company', "Company", required=True, states=_states)
+        'company.company', "Company", required=True,
+        states={
+            'readonly': (Eval('state') != 'draft') | Eval('lines', [0]),
+            })
     journal = fields.Many2One(
         'account.statement.journal', "Journal", required=True,
         domain=[
