@@ -1778,7 +1778,7 @@ class ModelStorage(Model):
 
         kwargs_cache = {}
         pysoned_ctx = {}
-        transaction = Transaction()
+        transaction = self._transaction
 
         def create_instances(Model, value, cache_key=None):
             cache_key = (Model, cache_key)
@@ -1839,11 +1839,11 @@ class ModelStorage(Model):
         model2ids = {}
         model2cache = {}
         # Read the data
-        with Transaction().set_current_transaction(self._transaction), \
+        with Transaction().set_current_transaction(transaction), \
                 self._transaction.set_user(self._user), \
                 self._transaction.reset_context(), \
                 self._transaction.set_context(self._context), \
-                without_check_access() as transaction:
+                without_check_access():
             if (self.id in self._cache and name in self._cache[self.id]
                     and ffields.keys() <= set(self._cache[self.id]._keys())):
                 # Use values from cache
