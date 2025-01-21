@@ -158,7 +158,8 @@ class ImageMixin(_ImageMixin):
             raise ValueError(f"Invalid size {size}")
         for cache in self.cache:
             if (cache.width, cache.height) == size:
-                return cache.image
+                # re-instantiate to fetch only one image
+                return cache.__class__(cache.id).image
         with Transaction().new_transaction():
             cache = self._store_cache(size, self._resize(size))
             # Save cache only if record is already committed
