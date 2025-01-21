@@ -166,7 +166,8 @@ class Image(ImageMixin, sequence_ordered(), ModelSQL, ModelView, MatchMixin):
             raise ValueError("Invalid size")
         for cache in self.cache:
             if cache.size == size:
-                return cache.image
+                # re-instantiate to fetch only one image
+                return cache.__class__(cache.id).image
         with Transaction().new_transaction():
             cache = self._store_cache(size, self._resize(size))
             # Save cache only if record is already committed

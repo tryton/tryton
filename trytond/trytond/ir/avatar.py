@@ -100,7 +100,8 @@ class Avatar(ImageMixin, ResourceMixin, ModelSQL):
             raise ValueError("Invalid size")
         for avatar in self.cache:
             if avatar.size == size:
-                return avatar.image
+                # re-instantiate to fetch only one image
+                return avatar.__class__(avatar.id).image
         if not self.image:
             return None
         if PIL:
