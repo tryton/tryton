@@ -51,6 +51,7 @@ def register():
         journal.JournalCashContext,
         journal.JournalPeriod,
         move.Move,
+        move.MoveContext,
         move.Reconciliation,
         configuration.ConfigurationTaxRounding,
         move.Line,

@@ -24,10 +24,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_account_move_export_form">
             <field name="name">Move Exports</field>
             <field name="res_model">account.move.export</field>
-            <field
-                name="domain"
-                eval="[('company', '=', Eval('context', {}).get('company', -1))]"
-                pyson="1"/>
+            <field name="domain" eval="None"/>
         </record>
         <record model="ir.action.act_window.view" id="act_account_move_export_form_view1">
             <field name="sequence" eval="10"/>

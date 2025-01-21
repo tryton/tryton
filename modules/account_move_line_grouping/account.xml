@@ -79,11 +79,9 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Payable/Receivable Lines (Grouped)</field>
             <field name="res_model">account.move.line.group</field>
             <field name="context_model">account.move.line.receivable_payable.context</field>
-            <field name="domain"
-                eval="[('party', 'in', Eval('active_ids')), ('company', '=', Eval('context', {}).get('company', -1))]"
-                pyson="1"/>
+            <field name="domain" eval="[('party', 'in', Eval('active_ids'))]" pyson="1"/>
             <field name="context_domain"
-                eval="[['OR', If(Eval('receivable', True), ('account.type.receivable', '=', True), ('id', '&lt;', 0)), If(Eval('payable', True), ('account.type.payable', '=', True), ('id', '&lt;', 0))], If(Eval('reconciled', False), (), ('reconciled', '=', False))]"
+                eval="[('company', '=', Eval('company', -1)), ['OR', If(Eval('receivable', True), ('account.type.receivable', '=', True), ('id', '&lt;', 0)), If(Eval('payable', True), ('account.type.payable', '=', True), ('id', '&lt;', 0))], If(Eval('reconciled', False), (), ('reconciled', '=', False))]"
                 pyson="1"/>
             <field name="search_value"></field>
             <field name="order" eval="[('maturity_date', 'ASC'), ('date', 'DESC'), ('id', 'DESC')]" pyson="1"/>

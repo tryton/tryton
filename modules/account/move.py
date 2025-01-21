@@ -563,6 +563,16 @@ class Move(DescriptionOriginMixin, ModelSQL, ModelView):
             Line.reconcile(*to_reconcile)
 
 
+class MoveContext(ModelView):
+    __name__ = 'account.move.context'
+
+    company = fields.Many2One('company.company', "Company", required=True)
+
+    @classmethod
+    def default_company(cls):
+        return Transaction().context.get('company')
+
+
 class Reconciliation(ModelSQL, ModelView):
     __name__ = 'account.move.reconciliation'
     _rec_name = 'number'
@@ -1886,9 +1896,14 @@ class Line(DescriptionOriginMixin, MoveLineMixin, ModelSQL, ModelView):
 class LineReceivablePayableContext(ModelView):
     __name__ = 'account.move.line.receivable_payable.context'
 
+    company = fields.Many2One('company.company', "Company", required=True)
     reconciled = fields.Boolean("Reconciled")
     receivable = fields.Boolean("Receivable")
     payable = fields.Boolean("Payable")
+
+    @classmethod
+    def default_company(cls):
+        return Transaction().context.get('company')
 
     @classmethod
     def default_reconciled(cls):
@@ -1940,22 +1955,32 @@ class WriteOff(DeactivableMixin, ModelSQL, ModelView):
 
 class OpenJournalAsk(ModelView):
     __name__ = 'account.move.open_journal.ask'
-    journal = fields.Many2One('account.journal', 'Journal', required=True)
+    company = fields.Many2One('company.company', "Company", required=True)
+    journal = fields.Many2One(
+        'account.journal', 'Journal', required=True,
+        context={
+            'company': Eval('company', None),
+            })
     period = fields.Many2One('account.period', 'Period', required=True,
         domain=[
+            ('company', '=', Eval('company', -1)),
             ('state', '!=', 'closed'),
             ])
+
+    @classmethod
+    def default_company(cls):
+        return Transaction().context.get('company')
 
     @classmethod
     def default_period(cls):
         pool = Pool()
         Period = pool.get('account.period')
-        company = Transaction().context.get('company')
-        try:
-            period = Period.find(company)
-        except PeriodNotFoundError:
-            return None
-        return period.id
+        if company := cls.default_company():
+            try:
+                period = Period.find(company)
+            except PeriodNotFoundError:
+                return None
+            return period.id
 
 
 class OpenJournal(Wizard):
@@ -1980,6 +2005,7 @@ class OpenJournal(Wizard):
                 and self.model.__name__ == 'account.journal.period'
                 and self.record):
             return {
+                'company': self.record.company.id,
                 'journal': self.record.journal.id,
                 'period': self.record.period.id,
                 }

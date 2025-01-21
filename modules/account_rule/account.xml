@@ -18,7 +18,8 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_account_rule_form">
             <field name="name">Account Rules</field>
             <field name="res_model">account.account.rule</field>
-            <field name="domain" eval="[('company', '=', Eval('company', -1))]" pyson="1"/>
+            <!-- Migration from 7.4: force empty domain for multi company -->
+            <field name="domain" eval="None"/>
         </record>
         <record model="ir.action.act_window.view" id="act_account_rule_form_view1">
             <field name="sequence" eval="10"/>

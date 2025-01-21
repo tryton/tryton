@@ -16,9 +16,10 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_move_form">
             <field name="name">Account Moves</field>
             <field name="res_model">account.move</field>
-            <field name="domain"
-                eval="[('company', '=', Eval('context', {}).get('company', -1))]"
-                pyson="1"/>
+            <field name="context_model">account.move.context</field>
+            <!-- Migration from 7.4: force empty domain for multi company -->
+            <field name="domain" eval="None"/>
+            <field name="context_domain" eval="[('company', '=', Eval('company', -1))]" pyson="1"/>
             <field name="search_value"
                 eval="[('create_date', '>=', DateTime(hour=0, minute=0, second=0, microsecond=0, delta_years=-1))]"
                 pyson="1"/>
@@ -83,6 +84,12 @@ this repository contains the full copyright notices and license terms. -->
             id="sequence_type_account_move_group_account_admin">
             <field name="sequence_type" ref="sequence_type_account_move"/>
             <field name="group" ref="group_account_admin"/>
+        </record>
+
+        <record model="ir.ui.view" id="move_context_view_form">
+            <field name="model">account.move.context</field>
+            <field name="type">form</field>
+            <field name="name">move_context_form</field>
         </record>
 
         <record model="ir.ui.view" id="move_reconciliation_view_form">
@@ -244,11 +251,9 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Payable/Receivable Lines</field>
             <field name="res_model">account.move.line</field>
             <field name="context_model">account.move.line.receivable_payable.context</field>
-            <field name="domain"
-                eval="[('party', 'in', Eval('active_ids')), ('company', '=', Eval('context', {}).get('company', -1))]"
-                pyson="1"/>
+            <field name="domain" eval="[('party', 'in', Eval('active_ids'))]" pyson="1"/>
             <field name="context_domain"
-                eval="[['OR', If(Eval('receivable', True), ('account.type.receivable', '=', True), ('id', '&lt;', 0)), If(Eval('payable', True), ('account.type.payable', '=', True), ('id', '&lt;', 0))], If(Eval('reconciled', False), (), ('reconciliation', '=', None))]"
+                eval="[('company', '=', Eval('company', -1)), ['OR', If(Eval('receivable', True), ('account.type.receivable', '=', True), ('id', '&lt;', 0)), If(Eval('payable', True), ('account.type.payable', '=', True), ('id', '&lt;', 0))], If(Eval('reconciled', False), (), ('reconciliation', '=', None))]"
                 pyson="1"/>
             <field name="search_value"></field>
             <field name="order" eval="[('maturity_date', 'ASC'), ('date', 'DESC'), ('id', 'DESC')]" pyson="1"/>

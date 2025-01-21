@@ -22,9 +22,8 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_period_form">
             <field name="name">Periods</field>
             <field name="res_model">account.period</field>
-            <field name="domain"
-                eval="[('company', '=', Eval('context', {}).get('company', -1))]"
-                pyson="1"/>
+            <!-- Migration from 7.4: force empty domain for multi company -->
+            <field name="domain" eval="None"/>
         </record>
         <record model="ir.action.act_window.view" id="act_period_form_view1">
             <field name="sequence" eval="10"/>
