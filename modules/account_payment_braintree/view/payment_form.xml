@@ -34,7 +34,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="braintree_payment_settled"/>
         </group>
     </xpath>
-    <xpath expr="//field[@name='description']" position="after">
+    <xpath expr="//field[@name='reference']" position="after">
         <label name="braintree_error_message"/>
         <field name="braintree_error_message" colspan="3" yexpand="0" height="80"/>
 
@@ -43,7 +43,7 @@ this repository contains the full copyright notices and license terms. -->
         <label name="braintree_dispute_status"/>
         <field name="braintree_dispute_status"/>
     </xpath>
-    <xpath expr="//page[@id='description']" position="after">
+    <xpath expr="//page[@id='payment']" position="after">
         <page name="braintree_refunds" col="1">
             <field name="braintree_refunds"/>
         </page>

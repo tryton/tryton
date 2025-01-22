@@ -31,10 +31,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="stripe_chargeable"/>
         </group>
     </xpath>
-    <xpath expr="//field[@name='description']" position="after">
-        <label name="stripe_error_message"/>
-        <field name="stripe_error_message"/>
+    <xpath expr="//page[@id='payment']" position="inside">
         <newline/>
+        <label name="stripe_error_message"/>
+        <field name="stripe_error_message" colspan="3"/>
+
         <label name="stripe_error_code"/>
         <field name="stripe_error_code"/>
         <label name="stripe_error_param"/>
@@ -44,7 +45,7 @@ this repository contains the full copyright notices and license terms. -->
         <label name="stripe_dispute_reason"/>
         <field name="stripe_dispute_reason"/>
     </xpath>
-    <xpath expr="//page[@id='description']" position="after">
+    <xpath expr="//page[@id='payment']" position="after">
         <page name="stripe_refunds" col="1">
             <field name="stripe_refunds"/>
         </page>

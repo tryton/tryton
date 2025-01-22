@@ -20,9 +20,9 @@ this repository contains the full copyright notices and license terms. -->
     <label name="date"/>
     <field name="date"/>
     <notebook colspan="4">
-        <page string="Description" id="description">
-            <label name="description"/>
-            <field name="description" colspan="3"/>
+        <page string="Payment" id="payment">
+            <label name="reference"/>
+            <field name="reference" colspan="3"/>
         </page>
         <page string="Other Info" id="info">
             <label name="group"/>

@@ -96,7 +96,7 @@ Create submitted payment::
     >>> payment.kind = 'receivable'
     >>> payment.party = party
     >>> payment.amount = Decimal('42')
-    >>> payment.description = 'Testing'
+    >>> payment.reference = 'Testing'
     >>> payment.stripe_customer = customer
     >>> payment.stripe_customer_payment_method = 'pm_card_visa'
     >>> payment.click('submit')
@@ -149,7 +149,7 @@ Cancel payment intent::
     >>> payment.kind = 'receivable'
     >>> payment.party = party
     >>> payment.amount = Decimal('42')
-    >>> payment.description = 'Testing canceled'
+    >>> payment.reference = 'Testing canceled'
     >>> payment.stripe_customer = customer
     >>> payment.stripe_customer_payment_method = 'pm_card_visa'
     >>> payment.stripe_capture = False

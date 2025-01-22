@@ -68,7 +68,7 @@ Create fully disputed payment::
     >>> payment.kind = 'receivable'
     >>> payment.party = customer
     >>> payment.amount = Decimal('42')
-    >>> payment.description = 'Testing'
+    >>> payment.reference = 'Testing'
     >>> payment.click('submit')
     >>> payment.state
     'submitted'
@@ -162,7 +162,7 @@ Create partial disputed payment::
     >>> payment.kind = 'receivable'
     >>> payment.party = customer
     >>> payment.amount = Decimal('42')
-    >>> payment.description = 'Testing'
+    >>> payment.reference = 'Testing'
     >>> payment.click('submit')
     >>> payment.state
     'submitted'
@@ -234,7 +234,7 @@ Create won disputed payment::
     >>> payment.kind = 'receivable'
     >>> payment.party = customer
     >>> payment.amount = Decimal('42')
-    >>> payment.description = 'Testing'
+    >>> payment.reference = 'Testing'
     >>> payment.click('submit')
     >>> payment.state
     'submitted'

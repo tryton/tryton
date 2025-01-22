@@ -127,7 +127,7 @@ def validate_file(flavor, kind, xsd=None):
                     'kind': kind,
                     'amount': Decimal('1000.0'),
                     'state': 'approved' if kind == 'payable' else 'submitted',
-                    'description': 'PAYMENT',
+                    'reference': 'PAYMENT',
                     'date': Date.today(),
                     }])
 
@@ -312,7 +312,7 @@ class AccountPaymentSepaTestCase(CompanyTestMixin, ModuleTestCase):
                         'kind': 'receivable',
                         'amount': Decimal('1000.0'),
                         'state': 'submitted',
-                        'description': 'PAYMENT',
+                        'reference': 'PAYMENT',
                         'date': Date.today(),
                         }])
 
@@ -332,7 +332,7 @@ class AccountPaymentSepaTestCase(CompanyTestMixin, ModuleTestCase):
                         'kind': 'receivable',
                         'amount': Decimal('2000.0'),
                         'state': 'submitted',
-                        'description': 'PAYMENT',
+                        'reference': 'PAYMENT',
                         'date': Date.today(),
                         }, {
                         'company': company,
@@ -341,7 +341,7 @@ class AccountPaymentSepaTestCase(CompanyTestMixin, ModuleTestCase):
                         'kind': 'receivable',
                         'amount': Decimal('3000.0'),
                         'state': 'submitted',
-                        'description': 'PAYMENT',
+                        'reference': 'PAYMENT',
                         'date': Date.today(),
                         },
                     ])
@@ -386,7 +386,7 @@ class AccountPaymentSepaTestCase(CompanyTestMixin, ModuleTestCase):
                         'kind': 'receivable',
                         'amount': Decimal('1000.0'),
                         'state': 'submitted',
-                        'description': 'PAYMENT',
+                        'reference': 'PAYMENT',
                         'date': Date.today() + dt.timedelta(days=1),
                         }, {
                         'company': company,
@@ -395,7 +395,7 @@ class AccountPaymentSepaTestCase(CompanyTestMixin, ModuleTestCase):
                         'kind': 'receivable',
                         'amount': Decimal('1500.0'),
                         'state': 'submitted',
-                        'description': 'PAYMENT',
+                        'reference': 'PAYMENT',
                         'date': Date.today(),
                         }, {
                         'company': company,
@@ -404,7 +404,7 @@ class AccountPaymentSepaTestCase(CompanyTestMixin, ModuleTestCase):
                         'kind': 'receivable',
                         'amount': Decimal('2000.0'),
                         'state': 'submitted',
-                        'description': 'PAYMENT',
+                        'reference': 'PAYMENT',
                         'date': Date.today(),
                         }])
 

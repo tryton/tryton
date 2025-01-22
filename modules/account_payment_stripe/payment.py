@@ -427,7 +427,7 @@ class Payment(StripeCustomerMethodMixin, CheckoutMixin, metaclass=PoolMeta):
             'capture_method': 'automatic' if self.stripe_capture else 'manual',
             'customer': (self.stripe_customer.stripe_customer_id
                 if self.stripe_customer else None),
-            'description': self.description,
+            'description': self.reference,
             'off_session': off_session,
             'idempotency_key': idempotency_key,
             }
@@ -537,7 +537,7 @@ class Payment(StripeCustomerMethodMixin, CheckoutMixin, metaclass=PoolMeta):
             'amount': self.stripe_amount,
             'currency': self.currency.code,
             'capture': bool(self.stripe_capture),
-            'description': self.description,
+            'description': self.reference,
             'customer': customer,
             'source': source,
             'idempotency_key': idempotency_key,

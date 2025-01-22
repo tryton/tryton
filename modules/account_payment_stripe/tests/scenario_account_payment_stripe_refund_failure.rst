@@ -69,7 +69,7 @@ Submit a payment::
     >>> payment.kind = 'receivable'
     >>> payment.party = party
     >>> payment.amount = Decimal('42')
-    >>> payment.description = "Testing"
+    >>> payment.reference = "Testing"
     >>> payment.click('submit')
     >>> payment.state
     'submitted'

@@ -276,6 +276,7 @@ class Payment(Workflow, ModelSQL, ModelView):
     __name__ = 'account.payment'
     _rec_name = 'number'
     number = fields.Char("Number", required=True, readonly=True)
+    reference = fields.Char("Reference", states=_STATES)
     company = fields.Many2One(
         'company.company', "Company", required=True, states=_STATES)
     journal = fields.Many2One('account.payment.journal', 'Journal',
@@ -331,7 +332,6 @@ class Payment(Workflow, ModelSQL, ModelView):
             ('move_state', '=', 'posted'),
             ],
         states=_STATES)
-    description = fields.Char('Description', states=_STATES)
     origin = fields.Reference(
         "Origin", selection='get_origin',
         states={
@@ -472,6 +472,10 @@ class Payment(Workflow, ModelSQL, ModelView):
         table = cls.__table__()
         table_h = cls.__table_handler__(module)
         number_exist = table_h.column_exist('number')
+
+        # Migration from 7.4: rename description into reference
+        if table_h.column_exist('description'):
+            table_h.column_rename('description', 'reference')
 
         super().__register__(module)
 
