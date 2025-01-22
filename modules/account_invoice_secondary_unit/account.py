@@ -106,7 +106,8 @@ class InvoiceLine(metaclass=PoolMeta):
         self.on_change_secondary_unit_price()
 
     def get_product_secondary_uom_category(self, name):
-        return None
+        if isinstance(self.origin, self.__class__):
+            return self.origin.product_secondary_uom_category
 
     @classmethod
     def set_secondary(cls, lines, name, value):
@@ -114,8 +115,15 @@ class InvoiceLine(metaclass=PoolMeta):
 
     @property
     def secondary_uom_factor(self):
-        return None
+        if isinstance(self.origin, self.__class__):
+            return self.origin.secondary_uom_factor
 
     @property
     def secondary_uom_rate(self):
-        return None
+        if isinstance(self.origin, self.__class__):
+            return self.origin.secondary_uom_rate
+
+    def _credit(self):
+        line = super()._credit()
+        line.secondary_unit = self.secondary_unit
+        return line
