@@ -281,6 +281,27 @@ class PartyTestCase(PartyCheckEraseMixin, ModuleTestCase):
                 self.assertEqual(address.street, result)
 
     @with_transaction()
+    def test_address_numbers(self):
+        "Test address numbers"
+        pool = Pool()
+        Party = pool.get('party.party')
+        Address = pool.get('party.address')
+
+        party = Party(name="Dunder Mifflin")
+        party.save()
+        address = Address(
+            party=party,
+            street_name="St sample",
+            building_number="15",
+            unit_number="B",
+            floor_number=1,
+            room_number=3,
+            )
+        address.save()
+
+        self.assertEqual(address.numbers, "15/B/1/3")
+
+    @with_transaction()
     def test_address_autocomplete_postal_code(self):
         "Test autocomplete of postal code"
         pool = Pool()

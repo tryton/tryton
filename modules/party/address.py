@@ -315,6 +315,18 @@ class Address(
             ('room_number', *clause[1:]),
             ]
 
+    @property
+    def numbers(self):
+        pool = Pool()
+        AddressFormat = pool.get('party.address.format')
+
+        format_ = AddressFormat.get_street_format(self)
+        substitutions = {
+            k: v if k.lower().endswith('_number') else ''
+            for k, v in self._get_street_substitutions().items()}
+        numbers = Template(format_).substitute(**substitutions)
+        return self._strip(numbers, doublespace=True)
+
     @fields.depends(
         'country', 'street_name', 'building_number', 'unit_number',
         'floor_number', 'room_number', 'post_box', 'private_bag',
