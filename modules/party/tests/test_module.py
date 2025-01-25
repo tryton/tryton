@@ -201,6 +201,31 @@ class PartyTestCase(PartyCheckEraseMixin, ModuleTestCase):
                         })
 
     @with_transaction()
+    def test_address_strip(self):
+        "Test address strip"
+        pool = Pool()
+        Address = pool.get('party.address')
+        for value, result in [
+                ('', ''),
+                (' ', ''),
+                ('\n', ''),
+                (' \n  \n', ''),
+                ('foo\n\n', 'foo'),
+                (',foo', 'foo'),
+                (',,foo', 'foo'),
+                (', , foo', 'foo'),
+                ('foo, , bar', 'foo, bar'),
+                ('foo,,', 'foo'),
+                ('foo, , ', 'foo'),
+                (',/–foo,/–', 'foo'),
+                ('foo, /bar', 'foo/bar'),
+                ('foo, /, bar', 'foo, bar'),
+                ('foo,/bar\nfoo, –\n/bar, foo', 'foo/bar\nfoo\nbar, foo'),
+                ]:
+            with self.subTest(value=value):
+                self.assertEqual(Address._strip(value), result)
+
+    @with_transaction()
     def test_address(self):
         'Create address'
         pool = Pool()
@@ -225,6 +250,35 @@ class PartyTestCase(PartyCheckEraseMixin, ModuleTestCase):
                 "Party 1\n"
                 "St sample, 15\n"
                 "City")
+
+    @with_transaction()
+    def test_address_structured(self):
+        "Test address structured"
+        pool = Pool()
+        Address = pool.get('party.address')
+        Country = pool.get('country.country')
+
+        us = Country(code='US', name="US")
+        us.save()
+        be = Country(code='BE', name="BE")
+        be.save()
+
+        address = Address(
+            street_name="St sample",
+            building_number="15",
+            unit_number="B",
+            floor_number=1,
+            room_number=3,
+            )
+
+        for country, result in [
+                (None, "St sample 15/B/1/3"),
+                (us, "15 St sample B"),
+                (be, "St sample 15 box B"),
+                ]:
+            with self.subTest(country=country.code if country else None):
+                address.country = country
+                self.assertEqual(address.street, result)
 
     @with_transaction()
     def test_address_autocomplete_postal_code(self):

@@ -147,85 +147,379 @@ this repository contains the full copyright notices and license terms. -->
 
     </data>
     <data noupdate="1" grouped="1">
-        <!-- From https://en.wikipedia.org/wiki/Address_(geography) -->
+        <!-- From https://en.wikipedia.org/wiki/Address_(geography)
+        and https://www.upu.int/en/Postal-Solutions/Programmes-Services/Addressing-Solutions -->
+
+        <record model="party.address.format" id="address_format_af">
+            <field name="country_code">AF</field>
+            <field name="format_">${attn} ${party_name}
+${street}
+${city}
+${subdivision}
+${postal_code}
+${COUNTRY}</field>
+            <field name="street_format">${street_name}
+${building_number}</field>
+            <field name="building_number_format">House No. {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_ad_es">
+            <field name="country_code">AD</field>
+            <field name="language_code">ES</field>
+            <field name="format_">${party_name}
+${attn}
+${STREET}
+${postal_code} ${CITY}
+${COUNTRY}</field>
+            <field name="street_format">${unit_number} ${floor_number} ${room_number}
+${building_name}
+${street_name} ${building_number}</field>
+            <field name="unit_number_format">AP {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_ad">
+            <field name="country_code">AD</field>
+            <!-- from address_format_fr -->
+            <field name="format_">${party_name}
+${attn}
+${STREET}
+${POSTAL_CODE} ${CITY}
+${COUNTRY}</field>
+            <field name="street_format">${unit_number} ${floor_number} ${room_number}
+${building_name}
+${building_number} ${street_name}
+${post_box}</field>
+            <field name="post_box_format">BP {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_ae">
+            <field name="country_code">AE</field>
+            <field name="format_">${party_name}
+${street}
+${CITY}
+${COUNTRY}</field>
+            <field name="street_format">${post_box}</field>
+            <field name="post_box_format">PO BOX {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_ai">
+            <field name="country_code">AI</field>
+            <field name="format_">${party_name}
+${street}
+${city}
+${COUNTRY_CODE}-${postal_code}
+${COUNTRY}</field>
+            <field name="street_format">${unit_number}</field>
+            <field name="unit_number_format">P.O. {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_al">
+            <field name="country_code">AL</field>
+            <field name="format_">${party_name}
+${street}
+${postal_code}
+${city}
+${subdivision}
+${COUNTRY}</field>
+            <field name="street_format">${street_name}
+${building_number} ${floor_number} ${room_number}</field>
+            <field name="building_number_format">Pallati {}</field>
+            <field name="floor_number_format">Shkalla {}</field>
+            <field name="room_number_format">Apartamenti {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_am">
+            <field name="country_code">AM</field>
+            <field name="format_">${party_name}
+${street}
+${postal_code} ${CITY}
+${COUNTRY}</field>
+            <field name="street_format">${street_name} ${building_number} ${unit_number}</field>
+            <field name="unit_number_format">apt {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_ao">
+            <field name="country_code">AO</field>
+            <field name="format_">${party_name}
+${street}
+${city}
+${COUNTRY}</field>
+            <field name="street_format">${street_name} ${building_number}–${floor_number}</field>
+            <field name="floor_number_format">{}o</field>
+        </record>
+
         <record model="party.address.format" id="address_format_ar">
             <field name="country_code">AR</field>
             <field name="format_">${party_name}
-${name}
+${attn}
 ${street}
-${subdivision}
 ${POSTAL_CODE}, ${city}
 ${COUNTRY}</field>
-        </record>
-
-        <record model="party.address.format" id="address_format_au">
-            <field name="country_code">AU</field>
-            <field name="format_">${party_name}
-${attn}
-${name}
-${street}
-${CITY} ${SUBDIVISION} ${POSTAL_CODE}
-${COUNTRY}</field>
+            <field name="street_format">${street_name} ${building_number}
+${floor_number} ${room_number}
+${post_box}
+${post_office}</field>
+            <field name="post_box_format">CASILLA DE CORREOS {}</field>
         </record>
 
         <record model="party.address.format" id="address_format_at">
             <field name="country_code">AT</field>
             <field name="format_">${party_name}
 ${attn}
-${name}
 ${street}
-${postal_code} ${city}
+${postal_code} ${CITY}
 ${COUNTRY}</field>
+            <field name="street_format">${street_name} ${building_number}/${unit_number}/${room_number}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_au">
+            <field name="country_code">AU</field>
+            <field name="format_">${party_name}
+${attn}
+${street}
+${CITY} ${SUBDIVISION_CODE} ${POSTAL_CODE}
+${COUNTRY}</field>
+            <field name="street_format">${building_name}
+${room_number}/${floor_number}/${unit_number}/${building_number} ${street_name}
+${post_box}</field>
+            <field name="post_box_format">PO BOX {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_aw">
+            <field name="country_code">AW</field>
+            <field name="format_">${party_name}
+${street}
+${city}
+${COUNTRY}</field>
+            <field name="street_format">${building_name}
+${street_name} ${building_number}</field>
+            <field name="building_number_format">#{}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_az">
+            <field name="country_code">AZ</field>
+            <field name="format_">${party_name}
+${street}
+${COUNTRY_CODE}${postal_code} ${city}
+${subdivision}
+${COUNTRY}</field>
+            <field name="street_format">${street_name} ${building_number}
+${post_box}</field>
+            <field name="post_box_format">a/q {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_ba">
+            <field name="country_code">BA</field>
+            <field name="format_">${party_name}
+${street}
+${postal_code} ${CITY}
+${COUNTRY}</field>
+            <field name="street_format">${building_name}
+${street_name} ${building_number}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_bb">
+            <field name="country_code">BB</field>
+            <field name="format_">${party_name}
+${street}
+${city} ${COUNTRY_CODE}${postal_code}
+${COUNTRY}</field>
+            <field name="street_format">${building_number}
+${street_name}
+${building_name}</field>
+            <field name="building_number_format">#{}</field>
         </record>
 
         <record model="party.address.format" id="address_format_bd">
             <field name="country_code">BD</field>
             <field name="format_">${party_name}
-${attn}
-${name}
 ${street}
-${city}-${postal_code}
+${CITY} - ${postal_code}
 ${COUNTRY}</field>
-        </record>
-
-        <record model="party.address.format" id="address_format_by">
-            <field name="country_code">BY</field>
-            <field name="format_">${party_name}
-${name}
-${street}
-${postal_code}, ${city}
-${subdivision}
-${COUNTRY}</field>
+            <field name="street_format">${unit_number}/${floor_number}/${room_number} ${building_name}
+${street_name} ${building_number}</field>
         </record>
 
         <record model="party.address.format" id="address_format_be">
             <field name="country_code">BE</field>
             <field name="format_">${attn}
 ${party_name}
-${name}
 ${street}
 ${postal_code} ${city}
 ${COUNTRY}</field>
+            <field name="street_format">${building_name}
+${street_name} ${building_number} ${unit_number}
+${post_box}</field>
+            <field name="unit_number_format">box {}</field>
+            <field name="post_box_format">bpack {}</field>
         </record>
 
-        <record model="party.address.format" id="address_format_br">
-            <field name="country_code">BR</field>
+        <record model="party.address.format" id="address_format_bf">
+            <field name="country_code">BF</field>
             <field name="format_">${party_name}
 ${street}
-${name}
-${city} - ${subdivision_code}
-${postal_code}
+${postal_code} ${CITY}
 ${COUNTRY}</field>
+            <field name="street_format">${building_name}
+${building_number} ${street_name}
+${post_box} ${post_office}</field>
+            <field name="post_box_format">BP {}</field>
         </record>
 
         <record model="party.address.format" id="address_format_bg">
             <field name="country_code">BG</field>
             <field name="format_">${party_name}
 ${street}
-${name}
-${postal_code} ${city}
+${postal_code} ${CITY}
+${SUBDIVISION}
+${COUNTRY}</field>
+            <field name="street_format">${street_name} ${building_number}, ${unit_number}, ${floor_number}, ${room_number}
+${building_name}</field>
+            <field name="building_number_format">No. {}</field>
+            <field name="unit_number_format">бл. {}</field>
+            <field name="floor_number_format">ет. {}</field>
+            <field name="room_number_format">ап. {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_bh">
+            <field name="country_code">BH</field>
+            <field name="format_">${party_name}
+${street}
+${CITY} ${postal_code}
+${COUNTRY}</field>
+            <field name="street_format">${building_number}
+${street_name}
+${post_box}</field>
+            <field name="building_number_format">House {}</field>
+            <field name="post_box_format">P.O Box {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_bi">
+            <field name="country_code">BI</field>
+            <field name="format_">${party_name}
+${street}
+${CITY}
+${COUNTRY}</field>
+            <field name="street_format">${post_box}</field>
+            <field name="post_box_format">BP {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_bj">
+            <field name="country_code">BJ</field>
+            <field name="format_">${party_name}
+${street}
+${CITY}
+${COUNTRY}</field>
+            <field name="street_format">${building_number} ${street_name}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_bm">
+            <field name="country_code">BM</field>
+            <field name="format_">${party_name}
+${street}
+${CITY} ${POSTAL_CODE}
+${COUNTRY}</field>
+            <field name="street_format">${building_number}
+${unit_number}
+${building_number} ${street_name}
+${post_box}</field>
+            <field name="post_box_format">PO Box {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_bn">
+            <field name="country_code">BN</field>
+            <field name="format_">${PARTY_NAME}
+${STREET}
+${CITY}
+${SUBDIVISION} ${POSTAL_CODE}
+${COUNTRY}</field>
+            <field name="street_format">${building_number}, ${floor_number}, ${street_name}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_bo">
+            <field name="country_code">BO</field>
+            <field name="format_">${attn}
+${party_name}
+${street}
+${CITY}
+BOLIVIA</field>
+            <field name="street_format">${STREET_NAME} ${BUILDING_NUMBER}
+${building_name}
+${post_box}</field>
+            <field name="post_box_format">Casilla Postal {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_br">
+            <field name="country_code">BR</field>
+            <field name="format_">${party_name}
+${street}
+${CITY} - ${SUBDIVISION_CODE}
+${postal_code}
+${COUNTRY}</field>
+            <field name="street_format">${street_name}, ${building_number}, ${unit_number}/${floor_number}/${room_number}
+${building_name}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_bs">
+            <field name="country_code">BS</field>
+            <field name="format_">${party_name}
+${street}
+${city}
+${COUNTRY}</field>
+            <field name="street_format">${post_office} ${post_box}</field>
+            <field name="post_office_format">P.O. Box {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_bt">
+            <field name="country_code">BT</field>
+            <field name="format_">${party_name}
+${street}
+${city} ${postal_code}
+${COUNTRY}</field>
+            <field name="street_format">${street_name}, ${building_number}
+${unit_number}
+${room_number}
+${building_name}
+${post_box}
+${post_office}</field>
+            <field name="unit_number_format">House No. {}</field>
+            <field name="room_number_format">Flat No. {}</field>
+            <field name="post_box_format">P.O Box {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_bw">
+            <field name="country_code">BW</field>
+            <field name="format_">${party_name}
+${street}
+${CITY}
+${COUNTRY}</field>
+            <field name="street_format">${post_box}
+${private_bag}</field>
+            <field name="post_box_format">P.O. Box {}</field>
+            <field name="private_bag_format">P/Bag {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_by">
+            <field name="country_code">BY</field>
+            <field name="format_">${party_name}
+${street}
+${postal_code}, ${city}
 ${subdivision}
 ${COUNTRY}</field>
+            <field name="street_format">${street_name}, ${building_number}, ${unit_number}, ${floor_number}, ${room_number}</field>
+            <field name="building_number_format">d. {}</field>
+            <field name="unit_number_format">bud. {}</field>
+            <field name="room_number_format">kv. {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_bz">
+            <field name="country_code">BZ</field>
+            <field name="format_">${party_name}
+${street}
+${CITY}
+${COUNTRY}</field>
+            <field name="street_format">${building_number} ${street_name}  ${room_number}</field>
+            <field name="room_number_format">Apt {}</field>
         </record>
 
         <record model="party.address.format" id="address_format_ca_fr">
@@ -233,53 +527,194 @@ ${COUNTRY}</field>
             <field name="language_code">fr</field>
             <field name="format_">${attn}
 ${party_name}
-${name}
 ${street}
 ${city} (${subdivision}) ${postal_code}
 ${COUNTRY}</field>
+            <field name="street_format">${building_name}
+${unit_number}–${building_number}, ${street_name}</field>
         </record>
 
         <record model="party.address.format" id="address_format_ca">
             <field name="country_code">CA</field>
             <field name="format_">${ATTN}
 ${PARTY_NAME}
-${NAME}
 ${STREET}
 ${CITY} ${SUBDIVISION_CODE} ${POSTAL_CODE}
 ${COUNTRY}</field>
+            <field name="street_format">${building_name}
+${unit_number}–${building_number} ${street_name}
+${post_box} ${post_office}</field>
+            <field name="post_box_format">PO BOX {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_cd">
+            <field name="country_code">CD</field>
+            <field name="format_">${party_name}
+${street}
+${CITY}
+${postal_code} ${SUBDIVISION}
+CONGO (REP.)</field>
+            <field name="street_format">${street_name} ${building_number}
+${post_box}</field>
+            <field name="building_number_format">N°{}</field>
+            <field name="post_box_format">B.P {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_cf">
+            <field name="country_code">CF</field>
+            <field name="format_">${attn}
+${party_name}
+${street}
+${CITY}
+${COUNTRY}</field>
+            <field name="street_format">${post_box}</field>
+            <field name="post_box_format">BP {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_cg">
+            <field name="country_code">CG</field>
+            <field name="format_">${party_name}
+${street}
+${CITY}
+${COUNTRY}</field>
+            <field name="street_format">${building_number}, ${street_name}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_ch">
+            <field name="country_code">CH</field>
+            <field name="format_">${party_name}
+${street}
+${postal_code} ${CITY}
+${COUNTRY}</field>
+            <field name="street_format">${street_name} ${building_number}
+${post_box}</field>
+            <field name="post_box_format">Case postale {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_ci">
+            <field name="country_code">CI</field>
+            <field name="format_">${attn}
+${party_name}
+${street_name}
+${post_office} ${street} ${CITY} ${post_office}
+${COUNTRY}</field>
+            <field name="street_format">${post_box}</field>
+            <field name="post_box_format">B.P. {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_ck">
+            <field name="country_code">CK</field>
+            <field name="format_">${party_name}
+${street}, ${city}
+${SUBDIVISION}
+${COUNTRY}</field>
+            <field name="street_format">${post_box}
+${street_name}</field>
+            <field name="post_box_format">PO Box {}</field>
         </record>
 
         <record model="party.address.format" id="address_format_cl">
             <field name="country_code">CL</field>
+            <field name="format_">${attn}
+${party_name}
+${street}
+${postal_code} ${CITY}
+${SUBDIVISION}
+${COUNTRY}</field>
+            <field name="street_format">${street_name} ${building_number}, ${unit_number}, ${floor_number}, ${room_number}
+${building_name}</field>
+            <field name="building_number_format">N° {}</field>
+            <field name="unit_number_format">Dep. {}</field>
+            <field name="floor_number_format">Piso {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_cm">
+            <field name="country_code">CM</field>
             <field name="format_">${party_name}
 ${street}
-${name}
-${postal_code}
-${city}
+${CITY}
 ${COUNTRY}</field>
+            <field name="street_format">${post_box}</field>
+            <field name="post_box_format">BP {}</field>
         </record>
 
         <record model="party.address.format" id="address_format_cn_zh_CN">
             <field name="country_code">CN</field>
             <field name="language_code">zh</field>
             <field name="format_">${COUNTRY} ${POSTAL_CODE}
-${subdivision}${city}${street}${name}
+${subdivision}${city}${street}
 ${party_name}</field>
+            <field name="street_format">${building_number}${unit_number}${floor_number}${room_number}${building_name}</field>
         </record>
 
         <record model="party.address.format" id="address_format_cn">
             <field name="country_code">CN</field>
-            <field name="format_">${COUNTRY} ${POSTAL_CODE}
-${subdivision}, ${city}, ${street}, ${name}
-${party_name}</field>
-        </record>
-
-        <record model="party.address.format" id="address_format_hr">
-            <field name="country_code">HR</field>
             <field name="format_">${party_name}
 ${street}
-${COUNTRY_CODE}-${POSTAL_CODE} ${city}
+${city}
+${postal_code} ${SUBDIVISION}
 ${COUNTRY}</field>
+            <field name="street_format">${room_number}, ${floor_number}, ${unit_number}
+${building_number}, ${street_name}</field>
+            <field name="room_number_format">Room {}</field>
+            <field name="floor_number_format">Floor {}</field>
+            <field name="unit_number_format">Building {}</field>
+            <field name="building_number_format">No. {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_co">
+            <field name="country_code">CO</field>
+            <field name="format_">${party_name}
+${street}
+${CITY} ${postal_code}
+${COUNTRY}</field>
+            <field name="street_format">${building_name}
+${street_name} ${building_number} ${unit_number}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_cr">
+            <field name="country_code">CR</field>
+            <field name="format_">${party_name}
+${street}
+${subdivision}
+${post_box}-${postal_code}
+${COUNTRY}</field>
+            <field name="street_format">${street_name} ${building_number}
+${post_office}-${post_box}</field>
+            <field name="building_number_format"># {}</field>
+            <field name="post_box_format">Apdo {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_cu">
+            <field name="country_code">CU</field>
+            <field name="format_">${party_name}
+${street}
+${city}
+${POSTAL_CODE} ${SUBDIVISION}
+${COUNTRY}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_cv">
+            <field name="country_code">CV</field>
+            <field name="format_">${party_name}
+${street}
+${postal_code} ${CITY}
+${SUBDIVISION}
+${COUNTRY}</field>
+            <field name="street_format">${street_name} ${building_number}
+${post_box}</field>
+            <field name="post_box_format">C.P. {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_cy">
+            <field name="country_code">CY</field>
+            <field name="format_">${party_name}
+${street}
+${COUNTRY_CODE}-${postal_code} ${city}
+${COUNTRY}</field>
+            <field name="street_format">${street_name} ${building_number}
+${post_box}</field>
+            <field name="post_box_format">P.O. Box {}</field>
         </record>
 
         <record model="party.address.format" id="address_format_cz">
@@ -287,24 +722,149 @@ ${COUNTRY}</field>
             <field name="format_">${party_name}
 ${attn}
 ${street}
-${COUNTRY_CODE}-${POSTAL_CODE} ${city}
+${postal_code} ${CITY} ${POST_OFFICE}
 ${COUNTRY}</field>
+            <field name="street_format">${street_name} ${building_number}
+${post_box}</field>
+            <field name="post_box_format">poštovní přihrádka {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_de">
+            <field name="country_code">DE</field>
+            <field name="format_">${party_name}
+${attn}
+${street}
+${postal_code} ${city}
+${COUNTRY}</field>
+            <field name="street_format">${street_name} ${building_number} // ${unit_number}
+${post_box}</field>
+            <field name="unit_number_format">Appartement {}</field>
+            <field name="post_box_format">Postfach {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_dj">
+            <field name="country_code">DJ</field>
+            <field name="format_">${party_name}
+${street}
+${postal_code} ${CITY}
+${COUNTRY}</field>
+            <field name="street_format">${post_box}</field>
+            <field name="post_box_format">BP {}</field>
         </record>
 
         <record model="party.address.format" id="address_format_dk">
             <field name="country_code">DK</field>
             <field name="format_">${party_name}
 ${street}
+${postal_code} ${CITY}
+${COUNTRY}</field>
+            <field name="street_format">${street_name} ${building_number}, ${floor_number}
+${post_box}</field>
+            <field name="post_box_format">Postboks {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_dm">
+            <field name="country_code">DM</field>
+            <field name="format_">${party_name}
+${street}
+${CITY}
+${COUNTRY}</field>
+            <field name="street_format">${street_name}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_do">
+            <field name="country_code">DO</field>
+            <field name="format_">${party_name}
+${street}
+${postal_code} ${CITY}
+${COUNTRY}</field>
+            <field name="street_format">${street_name} ${building_number}
+${building_name}</field>
+            <field name="building_number_format"># {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_dz">
+            <field name="country_code">DZ</field>
+            <field name="format_">${party_name}
+${street}
 ${postal_code} ${city}
 ${COUNTRY}</field>
+            <field name="street_format">${building_number}, ${street_name}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_ec">
+            <field name="country_code">EC</field>
+            <field name="format_">${party_name}
+${street}
+${postal_code} - ${CITY}
+${COUNTRY}</field>
+            <field name="street_format">${street_name} ${building_number}
+${building_name}, ${floor_number}</field>
+            <field name="floor_number_format">piso {}</field>
         </record>
 
         <record model="party.address.format" id="address_format_ee">
             <field name="country_code">EE</field>
             <field name="format_">${party_name}
 ${street}
-${postal_code} ${city}
+${postal_code} ${CITY}
 ${COUNTRY}</field>
+            <field name="street_format">${building_name}
+${street_name} ${building_number}–${unit_number}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_eg">
+            <field name="country_code">EG</field>
+            <field name="format_">${party_name}
+${street}
+${city}
+${subdivision}
+${postal_code}
+${COUNTRY}</field>
+            <field name="street_format">${building_number} ${street_name} - ${building_name}
+${post_box}
+${post_office}</field>
+            <field name="post_box_format">P. O. Box {}</field>
+            <field name="post_office_format">{} post office</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_er">
+            <field name="country_code">ER</field>
+            <field name="format_">${party_name}
+${street}
+${CITY}
+${COUNTRY}</field>
+            <field name="street_format">${street_name} ${building_number}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_es">
+            <field name="country_code">ES</field>
+            <field name="format_">${party_name}
+${street}
+${postal_code} ${CITY}
+${SUBDIVISION}
+${COUNTRY}</field>
+            <field name="street_format">${building_name}
+${street_name}, ${building_number}, ${floor_number}, ${room_number}
+${post_box}</field>
+            <field name="post_box_format">Apartado {}</field>
+        </record>
+
+        <record model="party.address.subdivision_type" id="address_subdivision_es">
+            <field name="country_code">ES</field>
+            <field name="types" eval="['province', 'autonomous city']"/>
+        </record>
+
+        <record model="party.address.format" id="address_format_et">
+            <field name="country_code">ET</field>
+            <field name="format_">${party_name}
+${street}
+${postal_code} ${CITY}
+${COUNTRY}</field>
+            <field name="street_format">${street_name} ${building_number}
+${post_box}</field>
+            <field name="building_number_format">house no {}</field>
+            <field name="post_box_format">P.O. Box {}</field>
         </record>
 
         <record model="party.address.format" id="address_format_fi">
@@ -312,83 +872,373 @@ ${COUNTRY}</field>
             <field name="format_">${attn}
 ${party_name}
 ${street}
-${postal_code} ${city}
+${postal_code} ${CITY}
 ${COUNTRY}</field>
+            <field name="street_format">${street_name} ${building_number} ${unit_number}</field>
+            <field name="unit_number_format">as {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_fj">
+            <field name="country_code">FJ</field>
+            <field name="format_">${party_name}
+${STREET}
+${CITY}
+${COUNTRY}</field>
+            <field name="street_format">${building_number} ${street_name}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_fk">
+            <field name="country_code">FK</field>
+            <field name="format_">${party_name}
+${street}
+${CITY}
+${POSTAL_CODE}
+${COUNTRY}</field>
+            <field name="street_format">${building_number} ${street_name}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_fm">
+            <field name="country_code">FM</field>
+            <!-- copy of address_format_us -->
+            <field name="format_">${attn}
+${party_name}
+${street}
+${CITY} ${SUBDIVISION_CODE} ${postal_code}
+MICRONESIA (FEDERATED STATES OF)</field>
+            <field name="street_format">${building_name}
+${building_number} ${street_name} ${unit_number}
+${post_box}</field>
+            <field name="post_box_format">PO Box {}</field>
         </record>
 
         <record model="party.address.format" id="address_format_fr">
             <field name="country_code">FR</field>
             <field name="format_">${party_name}
 ${attn}
-${name}
+${STREET}
+${POSTAL_CODE} ${CITY}
+${COUNTRY}</field>
+            <field name="street_format">${unit_number} ${floor_number} ${room_number}
+${building_name}
+${building_number} ${street_name}
+${post_box}</field>
+            <field name="post_box_format">BP {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_ga">
+            <field name="country_code">GA</field>
+            <field name="format_">${party_name}
+${STREET}
+${postal_code} ${CITY} ${POST_OFFICE}
+${COUNTRY}</field>
+            <field name="street_format">${street_name}
+${post_box}</field>
+            <field name="post_box_format">BP {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_gb">
+            <field name="country_code">GB</field>
+            <field name="format_">${attn}
+${party_name}
 ${street}
+${CITY}
+${POSTAL_CODE}
+${COUNTRY}</field>
+            <field name="street_format">${building_name}
+${building_number} ${street_name}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_gd">
+            <field name="country_code">GD</field>
+            <field name="format_">${party_name}
+${street}
+${city}
+${SUBDIVISION}
+${COUNTRY}</field>
+            <field name="street_format">${post_box}</field>
+            <field name="post_box_format">P.O. BOX {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_ge">
+            <field name="country_code">GE</field>
+            <field name="format_">${party_name}
+${street}
+${postal_code} ${CITY}
+${COUNTRY}</field>
+            <field name="street_format">${street_name} ${building_number}, ${unit_number}</field>
+            <field name="building_number_format">#{}</field>
+            <field name="unit_number_format">flat {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_gf">
+            <field name="country_code">GF</field>
+            <!-- from address_format_fr with country FRANCE-->
+            <field name="format_">${party_name}
+${attn}
+${STREET}
+${POSTAL_CODE} ${CITY}
+FRANCE</field>
+            <field name="street_format">${unit_number} ${floor_number} ${room_number}
+${building_name}
+${building_number} ${street_name}
+${post_box}</field>
+            <field name="post_box_format">BP {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_gh">
+            <field name="country_code">GH</field>
+            <field name="format_">${party_name}
+${street}
+${city} ${postal_code}
+${SUBDIVISION}
+${COUNTRY}</field>
+            <field name="street_format">${building_name}
+${building_number} ${street_name}</field>
+            <field name="building_number_format">No. {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_gi">
+            <field name="country_code">GI</field>
+            <field name="format_">${party_name}
+${street}
+${city}
+${postal_code}
+${COUNTRY}</field>
+            <field name="street_format">${building_name}
+${building_number} ${street_name}
+${post_box}</field>
+            <field name="post_box_format">PO Box {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_gm">
+            <field name="country_code">GM</field>
+            <field name="format_">${party_name}
+${street}
+${CITY}
+${COUNTRY}</field>
+            <field name="street_format">${building_number} ${street_name}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_gn">
+            <field name="country_code">GN</field>
+            <field name="format_">${party_name}
 ${POSTAL_CODE} ${CITY}
 ${COUNTRY}</field>
         </record>
 
-        <record model="party.address.format" id="address_format_de">
-            <field name="country_code">DE</field>
+        <record model="party.address.format" id="address_format_gp">
+            <field name="country_code">GP</field>
+            <!-- from address_format_fr with country FRANCE-->
             <field name="format_">${party_name}
 ${attn}
-${name}
-${street}
-${postal_code} ${city}
-${COUNTRY}</field>
+${STREET}
+${POSTAL_CODE} ${CITY}
+FRANCE</field>
+            <field name="street_format">${unit_number} ${floor_number} ${room_number}
+${building_name}
+${building_number} ${street_name}
+${post_box}</field>
+            <field name="post_box_format">BP {}</field>
         </record>
 
         <record model="party.address.format" id="address_format_gr">
             <field name="country_code">GR</field>
             <field name="format_">${party_name}
-${street}
+${STREET}
 ${COUNTRY_CODE}-${POSTAL_CODE} ${CITY}
 ${COUNTRY}</field>
+            <field name="street_format">${building_number}, ${street_name}
+${post_box}</field>
+            <field name="post_box_format">P.O. BOX {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_gs">
+            <field name="country_code">GS</field>
+            <field name="format_">${party_name}
+${street}
+${CITY}
+${POSTAL_CODE}
+SOUTH GEORGIA ISLAND</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_gt">
+            <field name="country_code">GT</field>
+            <field name="format_">${party_name}
+${street}
+${postal_code} - ${city}
+${COUNTRY}, ${SUBDIVISION_CODE}</field>
+            <field name="street_format">${street_name} {building_number}
+${unit_number} ${floor_number} ${room_number}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_gq">
+            <field name="country_code">GQ</field>
+            <field name="format_">${attn}
+${party_name}
+${street}
+${SUBDIVISION}, ${CITY}
+${COUNTRY}</field>
+            <field name="street_format">${street_name}
+${post_box}</field>
+            <field name="post_box_format">Apartado postal {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_gw">
+            <field name="country_code">GW</field>
+            <field name="format_">${party_name}
+${street}
+${postal_code} ${CITY}
+${COUNTRY}</field>
+            <field name="street_format">${street_name} ${building_number}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_hk_zh">
+            <field name="country_code">HK</field>
+            <field name="language_code">zh</field>
+            <field name="format_">${COUNTRY}
+${subdivision}
+${street}
+${party_name}</field>
+            <field name="street_format">${building_number}${building_number}
+${building_name}${floor_number}${unit_number}</field>
         </record>
 
         <record model="party.address.format" id="address_format_hk">
             <field name="country_code">HK</field>
             <field name="format_">${party_name}
-${name}
+${room_number}, ${floor_number}
 ${street}
-${subdivision}
+${CITY}
 ${COUNTRY}</field>
+            <field name="street_format">${building_name}
+${building_number} ${street_name}
+${post_box}
+${POST_OFFICE}</field>
+            <field name="room_number_format">Flat {}</field>
+            <field name="post_box_format">P.O. Box {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_hn">
+            <field name="country_code">HN</field>
+            <field name="format_">${party_name}
+${street}
+${POSTAL_CODE} ${CITY}, ${SUBDIVISION}
+${COUNTRY}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_hr">
+            <field name="country_code">HR</field>
+            <field name="format_">${party_name}
+${street}
+${COUNTRY_CODE}-${POSTAL_CODE} ${CITY}
+${COUNTRY}</field>
+            <field name="street_format">${street_name} ${building_number} ${floor_number} ${room_number}
+${post_box}</field>
+            <field name="floor_number_format">{} kat</field>
+            <field name="room_number_format">stan {}</field>
+            <field name="post_box_format">P.P. {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_ht">
+            <field name="country_code">HT</field>
+            <field name="format_">${party_name}
+${street}
+${COUNTRY_CODE}${postal_code} ${CITY}
+${COUNTRY}</field>
+            <field name="street_format">${street_name} ${building_number}</field>
         </record>
 
         <record model="party.address.format" id="address_format_hu">
             <field name="country_code">HU</field>
             <field name="format_">${party_name}
-${city}
-${street}
+${CITY}
+${STREET}
 ${postal_code}
 ${COUNTRY}</field>
+            <field name="street_format">${street_name} ${building_number} ${unit_number} ${floor_number}/${room_number}
+${post_box}</field>
+            <field name="unit_number_format">hrsz {}</field>
+            <field name="floor_number_format">fszt {}</field>
+            <field name="post_box_format">PF. {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_ie">
+            <field name="country_code">IE</field>
+            <field name="format_">${party_name}
+${street}
+${CITY}
+${POSTAL_CODE}
+${COUNTRY}</field>
+            <field name="street_format">${building_name} ${building_number} ${street_name}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_il">
+            <field name="country_code">IL</field>
+            <field name="format_">${party_name}
+${street}
+${postal_code} ${CITY}
+${COUNTRY}</field>
+            <field name="street_format">${building_number}/${unit_number} ${street_name}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_in">
+            <field name="country_code">IN</field>
+            <field name="format_">${party_name}
+${street}
+${city}
+${subdivision}
+${postal_code}
+${COUNTRY}</field>
+            <field name="street_format">${unit_number}, ${building_name}
+${building_number}, ${street_name}</field>
         </record>
 
         <record model="party.address.format" id="address_format_is">
             <field name="country_code">IS</field>
             <field name="format_">${party_name}
 ${street}
-${name}
-${postal_code} ${city}
+${postal_code} ${CITY}
 ${COUNTRY}</field>
+            <field name="street_format">${street_name} ${building_number}
+${post_box}</field>
+            <field name="unit_number_format">íbúð {}</field>
+            <field name="post_box_format">Pósthólf {}</field>
         </record>
 
-        <record model="party.address.format" id="address_format_in">
-            <field name="country_code">IN</field>
-            <field name="format_">${party_name}
-${name}
-${street}
-${CITY} ${postal_code}
-${subdivision}
+        <record model="party.address.format" id="address_format_it">
+            <field name="country_code">IT</field>
+            <field name="format_">${PARTY_NAME}
+${ATTN}
+${STREET}
+${POSTAL_CODE} ${CITY} ${SUBDIVISION_CODE}
 ${COUNTRY}</field>
+            <field name="street_format">${building_name}
+${unit_number} ${floor_number} ${room_number}
+${street_name} ${building_number}
+${post_office}
+${post_box}</field>
+            <field name="post_box_format">CASELLA POSTALE {}</field>
         </record>
+
+        <record model="party.address.subdivision_type" id="address_subdivision_it">
+            <field name="country_code">IT</field>
+            <field name="types" eval="['province']"/>
+        </record>
+
 
         <record model="party.address.format" id="address_format_id">
             <field name="country_code">ID</field>
             <field name="format_">${party_name}
-${name}
 ${street}
-${city} ${postal_code}
-${subdivision}
+${CITY} ${postal_code}
+${SUBDIVISION}
 ${COUNTRY}</field>
+            <field name="street_format">${building_name} ${room_number}
+${street_name} ${building_number} ${unit_number}
+${POST_BOX}
+${POST_OFFICE}</field>
+            <field name="building_number_format">No. {}</field>
+            <field name="post_box_format">PO BOX {}</field>
         </record>
 
         <record model="party.address.subdivision_type" id="address_subdivision_type_id">
@@ -399,53 +1249,51 @@ ${COUNTRY}</field>
         <record model="party.address.format" id="address_format_ir">
             <field name="country_code">IR</field>
             <field name="format_">${party_name}
-${name}
 ${city}
 ${street}
 ${subdivision}
 ${postal_code}
-${COUNTRY}</field>
+IRAN (ISLAMIC REP.)</field>
+            <field name="street_format">${street_name}
+${building_number}/${unit_number}/${floor_number}/${room_number}
+${building_name}</field>
         </record>
 
         <record model="party.address.format" id="address_format_iq">
             <field name="country_code">IQ</field>
             <field name="format_">${party_name}
 ${street}
-${name}
-${subdivision}
+${SUBDIVISION}
 ${postal_code}
 ${COUNTRY}</field>
+            <field name="street_format">${building_number} ${street_name}
+${post_box}</field>
+            <field name="post_box_format">P.O. box {}</field>
         </record>
 
-        <record model="party.address.format" id="address_format_ie">
-            <field name="country_code">IE</field>
+        <record model="party.address.format" id="address_format_jm">
+            <field name="country_code">JM</field>
             <field name="format_">${party_name}
 ${street}
-${city} ${postal_code}
+${city}
+${subdivision}
 ${COUNTRY}</field>
+            <field name="street_format">${building_name}
+${building_number} ${street_name}
+${post_box}
+${post_office}</field>
+            <field name="post_box_format">P.O. Box {}</field>
         </record>
 
-        <record model="party.address.format" id="address_format_il">
-            <field name="country_code">IL</field>
+        <record model="party.address.format" id="address_format_jo">
+            <field name="country_code">JO</field>
             <field name="format_">${party_name}
 ${street}
-${city} ${postal_code}
+${CITY} ${postal_code}
 ${COUNTRY}</field>
-        </record>
-
-        <record model="party.address.format" id="address_format_it">
-            <field name="country_code">IT</field>
-            <field name="format_">${party_name}
-${attn}
-${name}
-${street}
-${postal_code} ${city} ${SUBDIVISION_CODE}
-${COUNTRY}</field>
-        </record>
-
-        <record model="party.address.subdivision_type" id="address_subdivision_it">
-            <field name="country_code">IT</field>
-            <field name="types" eval="['province']"/>
+            <field name="street_format">${building_name}
+${street_name}
+${building_number}–${unit_number}</field>
         </record>
 
         <record model="party.address.format" id="address_format_jp_jp">
@@ -455,23 +1303,95 @@ ${COUNTRY}</field>
 ${postal_code}
 ${subdivision}${city}${street}
 ${party_name}</field>
+            <field name="street_format">${street_name}${building_number}${building_name}${floor_number}</field>
         </record>
 
         <record model="party.address.format" id="address_format_jp">
             <field name="country_code">JP</field>
             <field name="format_">${party_name}
 ${street}
-${city}, ${SUBDIVISION} ${postal_code}
+${city}, ${SUBDIVISION}
+${postal_code}
 ${COUNTRY}</field>
+            <field name="street_format">${floor_number}–${building_name}–${building_number}, ${street_name}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_ke">
+            <field name="country_code">KE</field>
+            <field name="format_">${party_name}
+${street}
+${postal_code}
+${CITY}
+${COUNTRY}</field>
+            <field name="street_format">${post_box} – ${post_office}</field>
+            <field name="post_box_format">P O BOX {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_kg">
+            <field name="country_code">KG</field>
+            <field name="format_">${party_name}
+${street}
+${postal_code} ${CITY}
+${SUBDIVISION}
+${COUNTRY}</field>
+            <field name="street_format">${building_number}, ${street_name}, ${unit_number}
+${post_box}
+${post_office}</field>
+            <field name="post_box_format">PO-{}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_kh">
+            <field name="country_code">KH</field>
+            <field name="format_">${party_name}
+${street}
+${city}
+${SUBDIVISION} ${postal_code}
+${COUNTRY}</field>
+            <field name="street_format">${building_number} ${street_name}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_ki">
+            <field name="country_code">KI</field>
+            <field name="format_">${party_name}
+${street}
+${city}
+${subdivision} ${postal_code}
+${COUNTRY}</field>
+            <field name="street_format">${post_box}
+${post_office}</field>
+            <field name="post_box_format">PO Box {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_km">
+            <field name="country_code">KM</field>
+            <field name="format_">${party_name}
+${street}
+${CITY}
+${COUNTRY}</field>
+            <field name="street_format">${post_box}</field>
+            <field name="post_box_format">BP {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_kn">
+            <field name="country_code">KN</field>
+            <field name="format_">${party_name}
+${street}
+${city}
+${subdivision}
+${postal_code}
+ST. KITTS AND NEVIS</field>
+            <field name="street_format">${building_number} ${street_name}</field>
         </record>
 
         <record model="party.address.format" id="address_format_kr_ko">
             <field name="country_code">KR</field>
             <field name="language_code">ko</field>
-            <field name="format_">${COUNTRY}
+            <field name="format_">REP. OF KOREA
 ${street}
 ${party_name}
 ${postal_code}</field>
+            <field name="street_format">${street_name} ${building_number}/${unit_number}/${floor_number}/${room_number}
+${post_box}</field>
         </record>
 
         <record model="party.address.format" id="address_format_kr">
@@ -479,217 +1399,95 @@ ${postal_code}</field>
             <field name="format_">${party_name}
 ${street}
 ${city}, ${subdivision} ${postal_code}
-${COUNTRY}</field>
+REP. OF KOREA</field>
+            <field name="street_format">${street_name} ${building_number}/${unit_number}/${floor_number}/${room_number}
+${post_box}</field>
+            <field name="post_box_format">P.O. Box {}</field>
         </record>
 
-        <record model="party.address.format" id="address_format_lv">
-            <field name="country_code">LV</field>
+        <record model="party.address.format" id="address_format_kw">
+            <field name="country_code">KW</field>
             <field name="format_">${party_name}
-${street}
-${city}
-${subdivision}
-${COUNTRY_CODE}-${POSTAL_CODE}
-${COUNTRY}</field>
-        </record>
-
-        <record model="party.address.format" id="address_format_mo_zh_CN">
-            <field name="country_code">MO</field>
-            <field name="language_code">zh</field>
-            <field name="format_">${COUNTRY}
-${city}
-${street}
-${party_name}</field>
-        </record>
-
-        <record model="party.address.format" id="address_format_mo">
-            <field name="country_code">MO</field>
-            <field name="format_">${party_name}
-${street}
-${city}
-${COUNTRY}</field>
-        </record>
-
-        <record model="party.address.format" id="address_format_my">
-            <field name="country_code">MY</field>
-            <field name="format_">${attn}
-${party_name}
-${name}
 ${street}
 ${postal_code} ${CITY}
-${SUBDIVISION}
 ${COUNTRY}</field>
+            <field name="street_format">${unit_number}, ${street_name}, ${building_number}</field>
+            <field name="unit_number_format">Parcelle {}</field>
+            <field name="building_number_format">immeuble {}</field>
         </record>
 
-        <record model="party.address.format" id="address_format_mx">
-            <field name="country_code">MX</field>
+        <record model="party.address.format" id="address_format_ky">
+            <field name="country_code">KY</field>
             <field name="format_">${attn}
 ${party_name}
 ${street}
-${name}
-${postal_code}, ${city}, ${subdivision}
+${subdivision}  ${COUNTRY_CODE}${postal_code}
 ${COUNTRY}</field>
+            <field name="street_format">${post_box}
+${post_office}</field>
+            <field name="post_box_format">P.O. Box {}</field>
         </record>
 
-        <record model="party.address.format" id="address_format_nl">
-            <field name="country_code">NL</field>
-            <field name="format_">${party_name}
-${attn}
-${name}
-${street}
-${postal_code} ${CITY}
-${COUNTRY}</field>
-        </record>
-
-        <record model="party.address.format" id="address_format_nz">
-            <field name="country_code">NZ</field>
-            <field name="format_">${party_name}
-${street}
-${city} ${postal_code}
-${COUNTRY}</field>
-        </record>
-
-        <record model="party.address.format" id="address_format_no">
-            <field name="country_code">NO</field>
-            <field name="format_">${party_name}
-${street}
-${postal_code} ${CITY}
-${COUNTRY}</field>
-        </record>
-
-        <record model="party.address.format" id="address_format_om">
-            <field name="country_code">OM</field>
-            <field name="format_">${party_name}
-${street}
-${city}
-${COUNTRY}</field>
-        </record>
-
-        <record model="party.address.format" id="address_format_pk">
-            <field name="country_code">PK</field>
-            <field name="format_">${party_name}
-${street}
-${city}
-${postal_code}
-${subdivision}
-${COUNTRY}</field>
-        </record>
-
-        <record model="party.address.format" id="address_format_pe">
-            <field name="country_code">PE</field>
-            <field name="format_">${party_name}
-${street}
-${name}
-${city}
-${subdivision}
-${COUNTRY}</field>
-        </record>
-
-        <record model="party.address.format" id="address_format_ph">
-            <field name="country_code">PH</field>
-            <field name="format_">${party_name}
-${street}
-${postal_code} ${CITY}
-${COUNTRY}</field>
-        </record>
-
-        <record model="party.address.format" id="address_format_pl">
-            <field name="country_code">PL</field>
-            <field name="format_">${attn} ${party_name}
-${street}
-${postal_code} ${city}
-${COUNTRY}</field>
-        </record>
-
-        <record model="party.address.format" id="address_format_pt">
-            <field name="country_code">PT</field>
-            <field name="format_">${party_name}
-${street}
-${postal_code} ${city}
-${COUNTRY}</field>
-        </record>
-
-        <record model="party.address.format" id="address_format_qa">
-            <field name="country_code">QA</field>
-            <field name="format_">${party_name}
-${street}
-${city}
-${COUNTRY}</field>
-        </record>
-
-        <record model="party.address.format" id="address_format_ro">
-            <field name="country_code">RO</field>
-            <field name="format_">${attn} ${party_name}
-${street}
-${city}
-${postal_code}
-${COUNTRY}</field>
-        </record>
-
-        <record model="party.address.format" id="address_format_ru">
-            <field name="country_code">RU</field>
-            <field name="format_">${party_name}
-${street}
-${city}
-${subdivision}
-${COUNTRY}
-${postal_code}</field>
-        </record>
-
-        <record model="party.address.format" id="address_format_sa">
-            <field name="country_code">SA</field>
-            <field name="format_">${party_name}
-${street}
-${city} ${postal_code}
-${COUNTRY}</field>
-        </record>
-
-        <record model="party.address.format" id="address_format_rs">
-            <field name="country_code">RS</field>
-            <field name="format_">${party_name}
-${street}
-${postal_code} ${city}
-${COUNTRY}</field>
-        </record>
-
-        <record model="party.address.format" id="address_format_sg">
-            <field name="country_code">SG</field>
-            <field name="format_">${party_name}
-${street}
-${name}
-${CITY} ${POSTAL_CODE}
-${COUNTRY}</field>
-        </record>
-
-        <record model="party.address.format" id="address_format_sk">
-            <field name="country_code">SK</field>
+        <record model="party.address.format" id="address_format_kz">
+            <field name="country_code">KZ</field>
             <field name="format_">${attn}
 ${party_name}
 ${street}
-${postal_code} ${city}
+${POSTAL_CODE} ${CITY}
 ${COUNTRY}</field>
+            <field name="street_format">${street_name}, ${building_number}, {unit_number}
+${post_box}</field>
+            <field name="building_number_format">dom {}</field>
+            <field name="unit_number_format">kv {}</field>
+            <field name="post_box_format">a/ya {}</field>
         </record>
 
-        <record model="party.address.format" id="address_format_sl">
-            <field name="country_code">SL</field>
-            <field name="format_">${party_name}
-${attn}
-${street}
-${postal_code} ${city}
-${COUNTRY}</field>
-        </record>
-
-        <record model="party.address.format" id="address_format_es">
-            <field name="country_code">ES</field>
+        <record model="party.address.format" id="address_format_la">
+            <field name="country_code">LA</field>
             <field name="format_">${party_name}
 ${street}
-${postal_code} ${city}
-${subdivision}
-${COUNTRY}</field>
+${postal_code} ${CITY}
+LAO (PEOPLE'S DEM. REP.)</field>
+            <field name="street_format">${building_number}, ${street_name}</field>
         </record>
 
-        <record model="party.address.subdivision_type" id="address_subdivision_es">
-            <field name="country_code">ES</field>
-            <field name="types" eval="['province', 'autonomous city']"/>
+        <record model="party.address.format" id="address_format_lb">
+            <field name="country_code">LB</field>
+            <field name="format_">${attn}
+${party_name}
+${street}
+${CITY} ${SUBDIVISION}
+${COUNTRY}</field>
+            <field name="street_format">${building_number}, ${floor_number}, ${room_number}
+${street_name}
+${post_box}</field>
+            <field name="post_box_format">P.O. Box {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_lc">
+            <field name="country_code">LC</field>
+            <field name="format_">${attn}
+${party_name}
+${street}
+${SUBDIVISION}, ${POSTAL_CODE}
+${COUNTRY}</field>
+            <field name="street_format">${unit_number}, ${building_number}
+${street_name}
+${post_box}
+${post_office}</field>
+            <field name="post_box_format">P.O Box {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_li">
+            <field name="country_code">LI</field>
+            <!-- copy of address_format_ch -->
+            <field name="format_">${party_name}
+${street}
+${postal_code} ${CITY}
+${COUNTRY}</field>
+            <field name="street_format">${street_name} ${building_number}
+${post_box}</field>
+            <field name="post_box_format">Case postale {}</field>
         </record>
 
         <record model="party.address.format" id="address_format_lk">
@@ -699,31 +1497,1085 @@ ${street}
 ${CITY}
 ${postal_code}
 ${COUNTRY}</field>
+            <field name="street_format">${building_number} ${street_name}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_lr">
+            <field name="country_code">LR</field>
+            <field name="format_">${party_name}
+${street}
+${postal_code} ${city}
+${COUNTRY}</field>
+            <field name="street_format">${street_name}
+${post_box}</field>
+            <field name="post_box_format">P O Box {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_ls">
+            <field name="country_code">LS</field>
+            <field name="format_">${party_name}
+${street}
+${CITY} ${postal_code}
+${COUNTRY}</field>
+            <field name="street_format">${post_box}</field>
+            <field name="post_box_format">P.O. Box {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_lt">
+            <field name="country_code">LT</field>
+            <field name="format_">${party_name}
+${street}
+${city}
+${COUNTRY_CODE}–${postal_code} ${SUBDIVISION}
+${COUNTRY}</field>
+            <field name="street_format">${street_name} ${building_number}-${unit_number}
+${post_box}
+${post_office}</field>
+            <field name="post_box_format">P. d. {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_lu">
+            <field name="country_code">LU</field>
+            <field name="format_">${attn}
+${party_name}
+${unit_number}
+${street}
+L-${postal_code} ${CITY}
+${COUNTRY}</field>
+            <field name="street_format">${private_bag}
+${building_number}, ${street_name}
+${post_box}</field>
+            <field name="post_box_format">BP {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_lv">
+            <field name="country_code">LV</field>
+            <field name="format_">${party_name}
+${street}
+${city}, ${COUNTRY_CODE}-${POSTAL_CODE}
+${COUNTRY}</field>
+            <field name="street_format">${street_name} ${building_number}–${unit_number}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_ly">
+            <field name="country_code">LY</field>
+            <field name="format_">${party_name}
+${street}
+${CITY}
+${COUNTRY}</field>
+            <field name="street_format">${street_name} ${building_number}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_ma">
+            <field name="country_code">MA</field>
+            <field name="format_">${PARTY_NAME}
+${UNIT_NUMBER}
+${STREET}
+${POSTAL_CODE} ${CITY}
+${COUNTRY}</field>
+            <field name="street_format">${building_name}
+${building_number} ${street_name}
+${post_box}
+${post_office}</field>
+            <field name="unit_number_format">APARTMENT N° {}</field>
+            <field name="post_box_format">P.O {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_mc">
+            <field name="country_code">MC</field>
+            <!-- from address_format_fr -->
+            <field name="format_">${party_name}
+${attn}
+${STREET}
+${POSTAL_CODE} ${CITY}
+${COUNTRY}</field>
+            <field name="street_format">${unit_number} ${floor_number} ${room_number}
+${building_name}
+${building_number} ${street_name}
+${post_box}</field>
+            <field name="post_box_format">BP {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_md">
+            <field name="country_code">MD</field>
+            <field name="format_">${party_name}
+${street}
+${POSTAL_CODE}, ${CITY}
+MOLDOVA</field>
+            <field name="street_format">${street_name}, ${building_number}, ${unit_number}
+${post_box}
+${post_office}</field>
+            <field name="building_number_format">nr. {}</field>
+            <field name="unit_number_format">ap. {}</field>
+            <field name="post_box_format">Căsuţa poştăla {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_me">
+            <field name="country_code">ME</field>
+            <field name="format_">${party_name}
+${street}
+${postal_code} ${CITY}
+${COUNTRY}</field>
+            <field name="street_format">${street_name} ${building_number} / ${unit_number}
+${post_box}
+${post_office}</field>
+            <field name="post_box_format">PP {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_mg">
+            <field name="country_code">MG</field>
+            <field name="format_">${attn}
+${party_name}
+${street}
+${postal_code} ${CITY}
+${COUNTRY}</field>
+            <field name="street_format">${unit_number} ${building_number} ${building_name}
+${post_box}</field>
+            <field name="post_box_format">B.P. {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_mh">
+            <field name="country_code">MH</field>
+            <!-- copy of address_format_us -->
+            <field name="format_">${attn}
+${party_name}
+${street}
+${CITY} ${SUBDIVISION_CODE} ${postal_code}
+${COUNTRY}</field>
+            <field name="street_format">${building_name}
+${building_number} ${street_name} ${unit_number}
+${post_box}</field>
+            <field name="post_box_format">PO Box {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_mk">
+            <field name="country_code">MK</field>
+            <field name="format_">${party_name}
+${street}
+${postal_code} ${city}
+${COUNTRY}</field>
+            <field name="street_format">${street_name} ${building_number}
+${post_box}</field>
+            <field name="post_box_format">P. fah {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_ml">
+            <field name="country_code">ML</field>
+            <field name="format_">${attn}
+${party_name}
+${street}
+${CITY}
+${COUNTRY}</field>
+            <field name="street_format">${street_name} – ${building_number}</field>
+            <field name="building_number_format">Porte {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_mm">
+            <field name="country_code">MM</field>
+            <field name="format_">${attn}
+${party_name}
+${street}
+${CITY} ${POST_OFFICE}, ${postal_code}
+${subdivision}
+${COUNTRY}</field>
+            <field name="street_format">${building_number}, ${street_name}
+${post_box}</field>
+            <field name="building_number_format">No. {}</field>
+            <field name="post_box_format">P.O Box ({})</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_mn">
+            <field name="country_code">MN</field>
+            <field name="format_">${party_name}
+${street}
+${city}
+${SUBDIVISION} ${postal_code}
+${COUNTRY}</field>
+            <field name="street_format">${street_name} ${building_number}
+${post_box} ${post_office}</field>
+            <field name="post_box_format">PO.Box {}</field>
+            <field name="post_office_format">PO {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_mo_zh_CN">
+            <field name="country_code">MO</field>
+            <field name="language_code">zh</field>
+            <field name="format_">${COUNTRY}
+${city}
+${street}
+${party_name}</field>
+            <field name="street_format">${street_name} ${building_number}
+${building_name}${floor_number}${room_number}
+${post_box}
+${post_office}</field>
+            <field name="post_box_format">P.O. Box {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_mo">
+            <field name="country_code">MO</field>
+            <field name="format_">${party_name}
+${street}
+${city}
+${COUNTRY}</field>
+            <field name="street_format">${street_name}, ${building_number}, ${building_name}, ${floor_number}, ${room_number}
+${post_box}
+${post_office}</field>
+            <field name="building_number_format">n.o {}</field>
+            <field name="floor_number_format">{} andar</field>
+            <field name="room_number_format">moradia {}</field>
+            <field name="post_box_format">P.O. Box {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_mq">
+            <field name="country_code">MQ</field>
+            <!-- from address_format_fr with country FRANCE-->
+            <field name="format_">${party_name}
+${attn}
+${STREET}
+${POSTAL_CODE} ${CITY}
+${COUNTRY}</field>
+            <field name="street_format">${unit_number} ${floor_number} ${room_number}
+${building_name}
+${building_number} ${street_name}
+${post_box}</field>
+            <field name="post_box_format">BP {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_mr">
+            <field name="country_code">MR</field>
+            <field name="format_">${party_name}
+${street}
+${CITY}
+${COUNTRY}</field>
+            <field name="street_format">${post_box}</field>
+            <field name="post_box_format">B.P. {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_ms">
+            <field name="country_code">MS</field>
+            <field name="format_">${party_name}
+${street}
+${city}, ${POSTAL_CODE}
+${COUNTRY}</field>
+            <field name="street_format">${street_name}
+${post_box}</field>
+            <field name="post_box_format">PO Box {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_mt">
+            <field name="country_code">MT</field>
+            <field name="format_">${party_name}
+${street}
+${CITY}
+${POSTAL_CODE}
+${COUNTRY}</field>
+            <field name="street_format">${building_number} ${street_name}
+${post_box}</field>
+            <field name="post_box_format">Kaxxa Postali {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_mu">
+            <field name="country_code">MU</field>
+            <field name="format_">${attn}
+${party_name}
+${street}
+${city} ${postal_code}
+${COUNTRY}</field>
+            <field name="street_format">${building_number}, ${street_name}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_mv">
+            <field name="country_code">MV</field>
+            <field name="format_">${party_name}
+${STREET}
+${CITY} ${postal_code}
+${COUNTRY}</field>
+            <field name="street_format">${building_number}, ${street_name}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_mw">
+            <field name="country_code">MW</field>
+            <field name="format_">${attn}
+${party_name}
+${street}
+${city}
+${postal_code} ${SUBDIVISION}
+${COUNTRY}</field>
+            <field name="street_format">${building_name}
+${building_number} ${street_name}
+${post_box}</field>
+            <field name="post_box_format">P. O. Box {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_mx">
+            <field name="country_code">MX</field>
+            <field name="format_">${attn}
+${party_name}
+${street}
+${postal_code} ${CITY}, ${SUBDIVISION_CODE}
+${COUNTRY}</field>
+            <field name="street_format">${street_name} ${building_number} ${unit_number} ${floor_number} ${room_number}
+${building_name}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_my">
+            <field name="country_code">MY</field>
+            <field name="format_">${attn}
+${party_name}
+${street}
+${postal_code} ${CITY}
+${SUBDIVISION}
+${COUNTRY}</field>
+            <field name="street_format">${unit_number}, ${floor_number}, ${room_number}, ${building_name}
+${building_number}, ${street_name}
+${post_box}</field>
+            <field name="post_box_format">Peti surat {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_mz">
+            <field name="country_code">MZ</field>
+            <field name="format_">${party_name}
+${street}
+${postal_code} ${CITY}
+${SUBDIVISION}
+${COUNTRY}</field>
+            <field name="street_format">${street_name}
+${building_number}, ${floor_number}, ${room_number}
+${post_box}</field>
+            <field name="post_box_format">P.O Box {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_na">
+            <field name="country_code">NA</field>
+            <field name="format_">${attn}
+${party_name}
+${street}
+${CITY}
+${postal_code}
+${COUNTRY}</field>
+            <field name="street_format">${building_name}
+${building_number}/${unit_number} ${street_name}
+${post_box}
+${POST_OFFICE}</field>
+            <field name="post_box_format">PO Box {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_nc">
+            <field name="country_code">NC</field>
+            <field name="format_">${party_name}
+${unit_number}
+${street}
+${postal_code} ${CITY}
+${COUNTRY}</field>
+            <field name="street_format">${building_name}
+${building_number} ${street_name}
+${post_box}</field>
+            <field name="unit_number_format">APPARTEMENT {}</field>
+            <field name="post_box_format">BP {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_ne">
+            <field name="country_code">NE</field>
+            <field name="format_">${party_name}
+${street}
+${postal_code} ${CITY}
+${COUNTRY}</field>
+            <field name="street_format">${post_box}</field>
+            <field name="post_box_format">BP {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_nf">
+            <field name="country_code">NF</field>
+            <!-- copy of address_format_au -->
+            <field name="format_">${party_name}
+${attn}
+${street}
+${CITY} ${SUBDIVISION_CODE} ${POSTAL_CODE}
+${COUNTRY}</field>
+            <field name="street_format">${building_name}
+${room_number}/${floor_number}/${unit_number}/${building_number} ${street_name}
+${post_box}</field>
+            <field name="post_box_format">PO BOX {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_ng">
+            <field name="country_code">NG</field>
+            <field name="format_">${attn}
+${party_name}
+${street}
+${city} ${postal_code}
+${SUBDIVISION}
+${COUNTRY}</field>
+            <field name="street_format">${building_number} ${street_name}
+${post_box}</field>
+            <field name="post_box_format">P.O.Box. {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_ni">
+            <field name="country_code">NI</field>
+            <field name="format_">${party_name}
+${street}
+${postal_code}
+${city}, ${subdivision}
+${COUNTRY}</field>
+            <field name="street_format">${street_name}, ${building_number}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_nl">
+            <field name="country_code">NL</field>
+            <field name="format_">${party_name}
+${attn}
+${street}
+${POSTAL_CODE} ${CITY}
+${COUNTRY}</field>
+            <field name="street_format">${building_name}
+${street_name} ${building_number}
+${post_box}</field>
+            <field name="post_box_format">Postbus {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_no">
+            <field name="country_code">NO</field>
+            <field name="format_">${party_name}
+${attn}
+${street}
+${postal_code} ${CITY}
+${COUNTRY}</field>
+            <field name="street_format">${building_name}
+${street_name} ${building_number}
+${post_box} ${post_office}</field>
+            <field name="post_box_format">Postboks {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_np">
+            <field name="country_code">NP</field>
+            <field name="format_">${party_name}
+${street}
+${CITY} ${postal_code}
+${COUNTRY}</field>
+            <field name="street_format">${building_number}, ${street_name}
+${building_name}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_nr">
+            <field name="country_code">NR</field>
+            <field name="format_">${party_name}
+${STREET}
+${SUBDIVISION}
+${POSTAL_CODE}
+${COUNTRY}</field>
+            <field name="street_format">${building_name}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_nz">
+            <field name="country_code">NZ</field>
+            <field name="format_">${attn}
+${party_name}
+${street}
+${CITY} ${postal_code}
+${COUNTRY}</field>
+            <field name="street_format">${unit_number}/${building_number} ${street_name}
+${building_name}</field>
+            <field name="post_box_format">PO Box {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_om">
+            <field name="country_code">OM</field>
+            <field name="format_">${party_name}
+${street}
+${postal_code}
+${CITY}
+${COUNTRY}</field>
+            <field name="street_format">${building_number} ${street_name}</field>
+            <field name="post_box_format">BP {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_pa">
+            <field name="country_code">PA</field>
+            <field name="format_">${ATTN}
+${PARTY_NAME}
+${STREET}
+${CITY}
+${SUBDIVISION}
+${COUNTRY}</field>
+            <field name="street_format">${street_name} ${building_number}
+${building_name}
+${post_box}
+${post_office}
+${private_bag}</field>
+            <field name="post_box_format">APARTADO POSTAL {}</field>
+            <field name="private_bag_format">Private Bag {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_pe">
+            <field name="country_code">PE</field>
+            <field name="format_">${party_name}
+${street}, ${city}
+${postal_code}
+${SUBDIVISION}
+${COUNTRY}</field>
+            <field name="street_format">${street_name} ${building_number}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_pf">
+            <field name="country_code">PF</field>
+            <!-- from address_format_fr but with island name after city -->
+            <field name="format_">${party_name}
+${attn}
+${STREET}
+${POSTAL_CODE} ${CITY} ${SUBDIVISION}
+${COUNTRY}</field>
+            <field name="street_format">${unit_number} ${floor_number} ${room_number}
+${building_name}
+${building_number} ${street_name}
+${post_box}</field>
+            <field name="post_box_format">BP {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_pg">
+            <field name="country_code">PG</field>
+            <field name="format_">${party_name}
+${street}
+${CITY} ${POSTAL_CODE}
+${COUNTRY}</field>
+            <field name="street_format">${post_box}</field>
+            <field name="post_box_format">P.O. Box {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_ph">
+            <field name="country_code">PH</field>
+            <field name="format_">${party_name}
+${street}
+${postal_code} ${CITY}
+${COUNTRY}</field>
+            <field name="street_format">${building_number} ${street_name}
+${post_box}, ${post_office}</field>
+            <field name="post_box_format">P.O. Box {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_pk">
+            <field name="country_code">PK</field>
+            <field name="format_">${party_name}
+${street}
+${CITY}–${postal_code}
+${COUNTRY}</field>
+            <field name="street_format">${building_number}
+${street_name}
+${unit_number}</field>
+            <field name="building_number_format">House No {}</field>
+            <field name="unit_number_format">Sector {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_pl">
+            <field name="country_code">PL</field>
+            <field name="format_">${attn} ${party_name}
+${street}
+${postal_code} ${CITY}
+${COUNTRY}</field>
+            <field name="street_format">${street_name} ${building_number}/${unit_number}
+${post_box}</field>
+            <field name="post_box_format">Skrytka pocztowa {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_pm">
+            <field name="country_code">PM</field>
+            <!-- from address_format_fr with country FRANCE-->
+            <field name="format_">${party_name}
+${attn}
+${STREET}
+${POSTAL_CODE} ${CITY}
+FRANCE</field>
+            <field name="street_format">${unit_number} ${floor_number} ${room_number}
+${building_name}
+${building_number} ${street_name}
+${post_box}</field>
+            <field name="post_box_format">BP {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_pn">
+            <field name="country_code">PN</field>
+            <field name="format_">${attn}
+${party_name}
+${street}
+${CITY}
+${POSTAL_CODE}
+${COUNTRY}</field>
+            <field name="street_format">${building_name}
+${building_number} ${street_name}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_pt">
+            <field name="country_code">PT</field>
+            <field name="format_">${party_name}
+${street}
+${postal_code} ${CITY}
+${COUNTRY}</field>
+            <field name="street_format">${street_name} ${building_number} ${unit_number}
+${building_name}
+${post_box}
+${post_office}</field>
+            <field name="post_box_format">APARTADO {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_pw">
+            <field name="country_code">PW</field>
+            <!-- copy of address_format_us -->
+            <field name="format_">${attn}
+${party_name}
+${street}
+${CITY} ${SUBDIVISION_CODE} ${postal_code}
+${COUNTRY}</field>
+            <field name="street_format">${building_name}
+${building_number} ${street_name} ${unit_number}
+${post_box}</field>
+            <field name="post_box_format">PO Box {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_py">
+            <field name="country_code">PY</field>
+            <field name="format_">${party_name}
+${street}
+${floor_number}, ${room_number}
+${postal_code} ${CITY}, ${SUBDIVISION}
+${COUNTRY}</field>
+            <field name="street_format">${street_name} ${building_number}
+${building_name}</field>
+            <field name="building_number_format">Nº {}</field>
+            <field name="floor_number_format">Piso {}</field>
+            <field name="room_number_format">Depto. {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_qa">
+            <field name="country_code">QA</field>
+            <field name="format_">${party_name}
+${attn}
+${street}
+${CITY}
+${COUNTRY}</field>
+            <field name="street_format">${unit_number}, ${street_name} ${building_number}
+${post_box}</field>
+            <field name="post_box_format">P.O. Box {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_re">
+            <field name="country_code">RE</field>
+            <!-- from address_format_fr with country FRANCE -->
+            <field name="format_">${party_name}
+${attn}
+${STREET}
+${POSTAL_CODE} ${CITY}
+FRANCE</field>
+            <field name="street_format">${unit_number} ${floor_number} ${room_number}
+${building_name}
+${building_number} ${street_name}
+${post_box}</field>
+            <field name="post_box_format">BP {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_ro">
+            <field name="country_code">RO</field>
+            <field name="format_">${attn} ${party_name}
+${street}
+${postal_code} ${CITY}
+${COUNTRY}</field>
+            <field name="street_format">${street_name}, ${building_number}, ${unit_number}, ${floor_number}, ${room_number}
+${building_name}</field>
+            <field name="building_number_format">nr. {}</field>
+            <field name="unit_number_format">bl. {}</field>
+            <field name="floor_number_format">sc. {}</field>
+            <field name="room_number_format">ap. {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_ru">
+            <field name="country_code">RU</field>
+            <field name="format_">${party_name}
+${street}
+${city}
+${SUBDIVISION}
+${COUNTRY}
+${postal_code}</field>
+            <field name="street_format">${street_name}, ${building_number}, ${unit_number}, ${room_number}</field>
+            <field name="building_number_format">d. {}</field>
+            <field name="unit_number_format">kv. {}</field>
+            <field name="room_number_format">kv. {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_rs">
+            <field name="country_code">RS</field>
+            <field name="format_">${party_name}
+${street}
+${CITY}
+${UNIT_NUMBER}
+${POSTAL_CODE}
+${COUNTRY}</field>
+            <field name="street_format">${street_name} ${building_number}/${room_number}
+${post_box}</field>
+            <field name="post_box_format">PP {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_rw">
+            <field name="country_code">RW</field>
+            <field name="format_">${party_name}
+${street}
+${CITY}
+${COUNTRY}</field>
+            <field name="street_format">${post_box}</field>
+            <field name="post_box_format">B.P. {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_sa">
+            <field name="country_code">SA</field>
+            <field name="format_">${party_name}
+${street}
+${postal_code}
+${CITY}
+${COUNTRY}</field>
+            <field name="street_format">${building_number} ${street_name}
+${post_box}</field>
+            <field name="post_box_format">P.O. Box {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_sb">
+            <field name="country_code">SB</field>
+            <field name="format_">${party_name}
+${street}
+${CITY}
+${COUNTRY}</field>
+            <field name="street_format">${post_box}</field>
+            <field name="post_box_format">P.O. Box {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_sc">
+            <field name="country_code">SC</field>
+            <field name="format_">${party_name}
+${street}
+${unit_number}
+${city}
+${SUBDIVISION}
+${COUNTRY}</field>
+            <field name="street_format">${post_box}
+${building_name}
+${building_number}
+${street_name}</field>
+            <field name="post_box_format">P.O.Box {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_sd">
+            <field name="country_code">SD</field>
+            <field name="format_">${party_name}
+${street}
+${postal_code}
+${CITY}
+${COUNTRY}</field>
+            <field name="street_format">${building_name}
+${street_name}
+${unit_number}</field>
+            <field name="unit_number_format">B.P. {}</field>
         </record>
 
         <record model="party.address.format" id="address_format_se">
             <field name="country_code">SE</field>
+            <field name="format_">${PARTY_NAME}
+${STREET}
+${POSTAL_CODE} ${CITY}
+${COUNTRY}</field>
+            <field name="street_format">${street_name} ${building_number}
+${post_box}</field>
+            <field name="post_box_format">BOX {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_sg">
+            <field name="country_code">SG</field>
             <field name="format_">${party_name}
 ${street}
-${postal_code} ${city}
+${CITY} ${POSTAL_CODE}
+${COUNTRY}</field>
+            <field name="street_format">${building_number} ${unit_number} ${street_name}
+${floor_number}–${room_number} ${building_name}</field>
+            <field name="floor_number_format"># {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_sh">
+            <field name="country_code">SH</field>
+            <field name="format_">${party_name}
+${street}
+${CITY}
+${POSTAL_CODE}
+SOUTH ATLANTIC OCEAN
+VIA CAPE TOWN, SOUTH AFRICA</field>
+            <field name="street_format">${building_number} ${street_name}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_si">
+            <field name="country_code">SI</field>
+            <field name="format_">${attn}
+${party_name}
+${street}
+${postal_code} ${CITY}
+${COUNTRY}</field>
+            <field name="street_format">${street_name} ${building_number}
+${post_box}</field>
+            <field name="post_box_format">p.p. {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_sk">
+            <field name="country_code">SK</field>
+            <field name="format_">${attn}
+${party_name}
+${street}
+${postal_code} ${CITY}
+${COUNTRY}</field>
+            <field name="street_format">${street_name} ${building_number}
+${building_name}
+${post_box}</field>
+            <field name="post_box_format">P.O. Box {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_sl">
+            <field name="country_code">SL</field>
+            <field name="format_">${party_name}
+${street}
+${CITY}
+${COUNTRY}</field>
+            <field name="street_format">${street_name} ${building_number}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_sm">
+            <field name="country_code">SM</field>
+            <!-- from address_format_it -->
+            <field name="format_">${PARTY_NAME}
+${ATTN}
+${STREET}
+${POSTAL_CODE} ${CITY} ${SUBDIVISION_CODE}
+${COUNTRY}</field>
+            <field name="street_format">${building_name}
+${unit_number} ${floor_number} ${room_number}
+${street_name} ${building_number}
+${post_office}
+${post_box}</field>
+            <field name="post_box_format">CASELLA POSTALE {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_sn">
+            <field name="country_code">SN</field>
+            <field name="format_">${party_name}
+${street}
+${postal_code} ${CITY}
+${COUNTRY}</field>
+            <field name="street_format">${room_number}
+${building_name}
+${building_number} ${street_name}
+${unit_number}
+${post_box}</field>
+            <field name="room_number_format">Appartement {}</field>
+            <field name="unit_number_format">BP {}</field>
+            <field name="post_box_format">BP {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_so">
+            <field name="country_code">SO</field>
+            <field name="format_">${party_name}
+${street}
+${CITY}, ${POSTAL_CODE}
+${COUNTRY}</field>
+            <field name="street_format">${post_box}</field>
+            <field name="post_box_format">P.O. Box {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_sr">
+            <field name="country_code">SR</field>
+            <field name="format_">${party_name}
+${street}
+${city}
+${SUBDIVISION}
+${COUNTRY}</field>
+            <field name="street_format">${street_name} ${building_number}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_st">
+            <field name="country_code">ST</field>
+            <field name="format_">${party_name}
+${street}
 ${COUNTRY}</field>
         </record>
 
-        <record model="party.address.format" id="address_format_ch">
-            <field name="country_code">CH</field>
+        <record model="party.address.format" id="address_format_sv">
+            <field name="country_code">SV</field>
+            <field name="format_">${party_name}
+${STREET}
+${postal_code} ${CITY}
+${COUNTRY}</field>
+            <field name="street_format">${street_name} ${building_number}
+${building_name}
+${post_box}
+${post_office}</field>
+            <field name="post_box_format">APARTADO POSTAL {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_sz">
+            <field name="country_code">SZ</field>
             <field name="format_">${party_name}
 ${street}
-${postal_code} ${city}
+${CITY}
+${postal_code}
 ${COUNTRY}</field>
+            <field name="street_format">${post_box}</field>
+            <field name="post_box_format">P.O. Box {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_sy">
+            <field name="country_code">SY</field>
+            <field name="format_">${party_name}
+${street}
+${postal_code} ${CITY}
+${COUNTRY}</field>
+            <field name="street_format">${floor_number} ${room_number}
+${street_name} ${building_number}
+${unit_number}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_tc">
+            <field name="country_code">TC</field>
+            <!-- from address_format_gb -->
+            <field name="format_">${attn}
+${party_name}
+${street}
+${CITY}
+${POSTAL_CODE}
+${COUNTRY}</field>
+            <field name="street_format">${building_name}
+${building_number} ${street_name}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_td">
+            <field name="country_code">TD</field>
+            <field name="format_">${party_name}
+${street}
+${CITY}
+${COUNTRY}</field>
+            <field name="street_format">${post_box}</field>
+            <field name="post_box_format">BP {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_tg">
+            <field name="country_code">TG</field>
+            <field name="format_">${party_name}
+${street}
+${CITY}
+${COUNTRY}</field>
+            <field name="street_format">${post_box}</field>
+            <field name="post_box_format">B.P. {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_th">
+            <field name="country_code">TH</field>
+            <field name="format_">${party_name}
+${street}
+${subdivision}
+${postal_code}
+${COUNTRY}</field>
+            <field name="street_format">${building_name}
+${building_number}/${unit_number} ${street_name}
+${post_box}
+${post_office}</field>
+            <field name="post_box_format">PO Box {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_tj">
+            <field name="country_code">TJ</field>
+            <field name="format_">${party_name}
+${street}
+${postal_code} ${CITY}
+${COUNTRY}</field>
+            <field name="street_format">${street_name} ${building_number} street</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_tl">
+            <field name="country_code">TL</field>
+            <field name="format_">${party_name}
+${STREET}
+${CITY} ${POSTAL_CODE}
+${post_box}
+${COUNTRY}</field>
+            <field name="street_format">${building_name}
+${street_name} ${building_number}</field>
+            <field name="post_box_format">PO Box {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_tm">
+            <field name="country_code">TM</field>
+            <field name="format_">${party_name}
+${street}
+${city}
+${SUBDIVISION}
+${postal_code}
+${COUNTRY}</field>
+            <field name="street_format">${street_name} ${building_number} ${unit_number}
+${building_name}
+${post_box}</field>
+            <field name="unit_number_format">otag {}</field>
+            <field name="post_box_format">m/g {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_tn">
+            <field name="country_code">TN</field>
+            <field name="format_">${party_name}
+${street}
+${postal_code} ${CITY}
+${COUNTRY}</field>
+            <field name="street_format">${building_number} ${street_name}
+${post_box}</field>
+            <field name="post_box_format">BOITE PRIVEE {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_tr">
+            <field name="country_code">TR</field>
+            <field name="format_">${attn}
+${party_name}
+${street}
+${postal_code} ${CITY}/${SUBDIVISION}
+${COUNTRY}</field>
+            <field name="street_format">${street_name} ${building_number}
+${building_name}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_tt">
+            <field name="country_code">TT</field>
+            <field name="format_">${attn}
+${party_name}
+${street}
+${CITY} ${postal_code}
+${COUNTRY}</field>
+            <field name="street_format">${building_number} ${street_name}
+${post_box}
+${private_bag}</field>
+            <field name="post_box_format">PO Box {}</field>
+            <field name="private_bag_format">PO BAG {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_tv">
+            <field name="country_code">TV</field>
+            <field name="format_">${attn}
+${party_name}
+${street}
+${POSTAL_CODE} ${city}
+${SUBDIVISION}
+${COUNTRY}</field>
+            <field name="street_format">${street_name} ${building_number}
+${post_box}</field>
+            <field name="post_box_format">P.O.Box {}</field>
         </record>
 
         <record model="party.address.format" id="address_format_tw_zh_CN">
             <field name="country_code">TW</field>
             <field name="language_code">zh</field>
-            <field name="format_">${COUNTRY}
+            <field name="format_">Taiwan (R.O.C.)
 ${postal_code}
 ${street}
 ${party_name}</field>
+            <field name="street_format">${street_name}
+${building_number}
+${floor_number}</field>
         </record>
 
         <record model="party.address.format" id="address_format_tw">
@@ -731,46 +2583,48 @@ ${party_name}</field>
             <field name="format_">${party_name}
 ${street}
 ${city}, ${subdivision} ${postal_code}
-${COUNTRY}</field>
+Taiwan (R.O.C.)</field>
+            <field name="street_format">${floor_number}, ${building_number}, ${street_name}</field>
         </record>
 
-        <record model="party.address.format" id="address_format_th">
-            <field name="country_code">TH</field>
-            <field name="format_">${party_name}
+        <record model="party.address.format" id="address_format_tz">
+            <field name="country_code">TZ</field>
+            <field name="format_">${attn}
+${party_name}
 ${street}
-${name}
-${subdivision}
-${COUNTRY}
-${postal_code}</field>
-        </record>
-
-        <record model="party.address.format" id="address_format_tr">
-            <field name="country_code">TR</field>
-            <field name="format_">${party_name}
-${attn}
-${street}
-${name}
-${postal_code} ${city} ${subdivision}
-${COUNTRY}</field>
+${postal_code} ${CITY}
+${SUBDIVISION}
+TANZANIA</field>
+            <field name="street_format">${unit_number}
+${building_number} ${street_name}
+${post_box}
+${private_bag}</field>
+            <field name="post_box_format">P.O. Box {}</field>
+            <field name="private_bag_format">Private Bag {}</field>
         </record>
 
         <record model="party.address.format" id="address_format_ua">
             <field name="country_code">UA</field>
-            <field name="format_">${party_name}
+            <field name="format_">${attn}
+${party_name}
 ${street}
-${city}
-${subdivision}
+${CITY}
+${SUBDIVISION}
 ${postal_code}
 ${COUNTRY}</field>
+            <field name="street_format">${street_name}, ${building_number}, ${unit_number}, ${room_number}</field>
+            <field name="building_number_format">d. {}</field>
+            <field name="unit_number_format">kv. {}</field>
         </record>
 
-        <record model="party.address.format" id="address_format_gb">
-            <field name="country_code">GB</field>
+        <record model="party.address.format" id="address_format_ug">
+            <field name="country_code">UG</field>
             <field name="format_">${party_name}
 ${street}
 ${CITY}
-${postal_code}
 ${COUNTRY}</field>
+            <field name="street_format">${post_box}</field>
+            <field name="post_box_format">P.O. Box {}</field>
         </record>
 
         <record model="party.address.format" id="address_format_us">
@@ -778,17 +2632,202 @@ ${COUNTRY}</field>
             <field name="format_">${attn}
 ${party_name}
 ${street}
-${city}, ${subdivision_code} ${postal_code}
+${CITY} ${SUBDIVISION_CODE} ${postal_code}
 ${COUNTRY}</field>
+            <field name="street_format">${building_name}
+${building_number} ${street_name} ${unit_number}
+${post_box}</field>
+            <field name="post_box_format">PO Box {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_uy">
+            <field name="country_code">UY</field>
+            <field name="format_">${party_name}
+${attn}
+${street}
+${postal_code} – ${CITY}, ${SUBDIVISION}
+${COUNTRY}</field>
+            <field name="street_format">${street_name} ${building_number} ${unit_number} ${floor_number} ${room_number}
+${building_name}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_uz">
+            <field name="country_code">UZ</field>
+            <field name="format_">${attn}
+${party_name}
+${street}
+${postal_code}, ${city}
+${COUNTRY}</field>
+            <field name="street_format">${street_name}, ${building_number}, ${unit_number}
+${building_name}
+${post_box}
+${post_office}</field>
+            <field name="building_number_format">d. {}</field>
+            <field name="unit_number_format">kv. {}</field>
+            <field name="post_box_format">a/ya. {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_vc">
+            <field name="country_code">VC</field>
+            <field name="format_">${PARTY_NAME}
+${STREET}
+${CITY}
+${POSTAL_CODE}
+${COUNTRY}</field>
+            <field name="street_format">${street_name}
+${post_box}</field>
+            <field name="post_box_format">P.O BOX {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_va">
+            <field name="country_code">VA</field>
+            <!-- from address_format_it without SUBDIVISION_CODE -->
+            <field name="format_">${PARTY_NAME}
+${ATTN}
+${STREET}
+${POSTAL_CODE} ${CITY}
+VATICAN</field>
+            <field name="street_format">${building_name}
+${unit_number} ${floor_number} ${room_number}
+${street_name} ${building_number}
+${post_office}
+${post_box}</field>
+            <field name="post_box_format">CASELLA POSTALE {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_ve">
+            <field name="country_code">VE</field>
+            <field name="format_">${PARTY_NAME}
+${STREET}
+${CITY} ${postal_code}, ${SUBDIVISION}
+VENEZUELA</field>
+            <field name="street_format">${street_name}
+${building_number}
+${floor_number}, ${room_number}
+${building_name}
+${post_box}</field>
+            <field name="floor_number_format">PISO {}</field>
+            <field name="room_number_format">APARTAMENTO {}</field>
+            <field name="post_box_format">APARTADO POSTAL Nº {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_vg">
+            <field name="country_code">VG</field>
+            <field name="format_">${party_name}
+${street}
+${CITY} ${POSTAL_CODE}
+BRITISH VIRGIN ISLANDS</field>
+            <field name="street_format">${post_box}
+${building_number} ${street_name}</field>
+            <field name="building_number_format">#{}</field>
+            <field name="post_box_format">P.O. Box {}</field>
         </record>
 
         <record model="party.address.format" id="address_format_vn">
             <field name="country_code">VN</field>
             <field name="format_">${party_name}
+${unit_number}
 ${street}
 ${city}
-${subdivision}
+${SUBDIVISION} ${postal_code}
 ${COUNTRY}</field>
+            <field name="street_format">${building_number} ${street_name}
+${building_name}</field>
+            <field name="unit_number_format">GPO {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_wf">
+            <field name="country_code">WF</field>
+            <!-- from address_format_fr with country FRANCE -->
+            <field name="format_">${party_name}
+${attn}
+${STREET}
+${POSTAL_CODE} ${CITY}
+FRANCE</field>
+            <field name="street_format">${unit_number} ${floor_number} ${room_number}
+${building_name}
+${building_number} ${street_name}
+${post_box}</field>
+            <field name="post_box_format">BP {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_ws">
+            <field name="country_code">WS</field>
+            <field name="format_">${party_name}
+${street}
+${city} ${POSTAL_CODE}
+${COUNTRY}</field>
+            <field name="street_format">${post_box}</field>
+            <field name="post_box_format">PO Box {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_ye">
+            <field name="country_code">YE</field>
+            <field name="format_">${party_name}
+${street}
+${SUBDIVISION}
+${COUNTRY}</field>
+            <field name="street_format">${post_box}</field>
+            <field name="post_box_format">B.P. {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_yt">
+            <field name="country_code">YT</field>
+            <!-- from address_format_fr with country FRANCE -->
+            <field name="format_">${party_name}
+${attn}
+${STREET}
+${POSTAL_CODE} ${CITY}
+FRANCE</field>
+            <field name="street_format">${unit_number} ${floor_number} ${room_number}
+${building_name}
+${building_number} ${street_name}
+${post_box}</field>
+            <field name="post_box_format">BP {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_za">
+            <field name="country_code">ZA</field>
+            <field name="format_">${attn}
+${party_name}
+${street}
+${CITY}
+${postal_code}
+${COUNTRY}</field>
+            <field name="street_format">${unit_number} ${building_name}
+${building_number} ${street_name}
+${post_box}
+${private_bag}
+${post_office}</field>
+            <field name="post_box_format">PO Box {}</field>
+            <field name="private_bag_format">Private Bag {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_zm">
+            <field name="country_code">ZM</field>
+            <field name="format_">${attn}
+${party_name}
+${street}
+${CITY} ${postal_code}
+${COUNTRY}</field>
+            <field name="street_format">${building_name}
+${building_number} ${street_name}
+${post_box}
+${private_bag}</field>
+            <field name="post_box_format">P.O. Box {}</field>
+            <field name="private_bag_format">Private Bag {}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_zw">
+            <field name="country_code">ZW</field>
+            <field name="format_">${party_name}
+${street}
+${city}
+${SUBDIVISION}
+${COUNTRY}</field>
+            <field name="street_format">${building_number}–${unit_number} ${street_name}
+${post_box}</field>
+            <field name="post_box_format">P.O. Box {}</field>
         </record>
     </data>
 </tryton>

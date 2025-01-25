@@ -1,3 +1,5 @@
+* Add structured address
+* Rename address name to building name
 * Remove support for Python 3.8
 * Add support for Python 3.13
 * Notify for duplicate contact mechanism

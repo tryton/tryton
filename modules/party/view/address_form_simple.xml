@@ -15,12 +15,36 @@ this repository contains the full copyright notices and license terms. -->
         <field name="sequence"/>
     </group>
     <newline/>
-    <label name="name"/>
-    <field name="name"/>
-    <newline/>
-    <label name="street" yalign="0"/>
-    <field name="street" colspan="3" height="80"/>
-    <newline/>
+
+    <label name="street"/>
+    <group id="street" colspan="5" col="2">
+        <field name="street" yexpand="1"/>
+        <group id="street_structured" yalign="0" yexpand="1">
+            <label name="street_name"/>
+            <field name="street_name" colspan="3"/>
+
+            <label name="building_name"/>
+            <field name="building_name" colspan="3"/>
+
+            <label name="building_number"/>
+            <field name="building_number"/>
+            <label name="unit_number"/>
+            <field name="unit_number"/>
+
+            <label name="floor_number"/>
+            <field name="floor_number"/>
+            <label name="room_number"/>
+            <field name="room_number"/>
+
+            <label name="post_box"/>
+            <field name="post_box"/>
+            <label name="private_bag"/>
+            <field name="private_bag"/>
+            <label name="post_office"/>
+            <field name="post_office" colspan="3"/>
+        </group>
+    </group>
+
     <label name="postal_code"/>
     <field name="postal_code"/>
     <label name="city"/>

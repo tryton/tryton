@@ -8,4 +8,20 @@
     <field name="active"/>
     <separator name="format_" colspan="6"/>
     <field name="format_" colspan="6"/>
+    <separator name="street_format" colspan="6"/>
+    <field name="street_format" colspan="6"/>
+    <label name="building_number_format"/>
+    <field name="building_number_format" colspan="5"/>
+    <label name="unit_number_format"/>
+    <field name="unit_number_format" colspan="5"/>
+    <label name="floor_number_format"/>
+    <field name="floor_number_format" colspan="5"/>
+    <label name="room_number_format"/>
+    <field name="room_number_format" colspan="5"/>
+    <label name="post_box_format"/>
+    <field name="post_box_format" colspan="5"/>
+    <label name="private_bag_format"/>
+    <field name="private_bag_format" colspan="5"/>
+    <label name="post_office_format"/>
+    <field name="post_office_format" colspan="5"/>
 </form>

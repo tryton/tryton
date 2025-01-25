@@ -1,6 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 'Address'
+import re
 from string import Template
 
 from sql import Literal
@@ -33,8 +34,84 @@ class Address(
     party_name = fields.Char(
         "Party Name",
         help="If filled, replace the name of the party for address formatting")
-    name = fields.Char("Building Name")
-    street = fields.Text("Street")
+
+    street = fields.Function(fields.Text(
+            "Street",
+            states={
+                'readonly': (
+                    Eval('street_name')
+                    | Eval('building_number')
+                    | Eval('unit_number')
+                    | Eval('floor_number')
+                    | Eval('room_number')
+                    | Eval('post_box')
+                    | Eval('post_office')
+                    | Eval('private_bag')),
+                }),
+        'on_change_with_street', setter='set_street', searcher='search_street')
+    street_unstructured = fields.Text(
+        "Street",
+        states={
+            'invisible': (
+                (Eval('street_name')
+                    | Eval('building_number')
+                    | Eval('unit_number')
+                    | Eval('floor_number')
+                    | Eval('room_number')
+                    | Eval('post_box')
+                    | Eval('post_office')
+                    | Eval('private_bag'))
+                & ~Eval('street_unstructured')),
+            })
+
+    street_name = fields.Char(
+        "Street Name",
+        states={
+            'invisible': Eval('street_unstructured') & ~Eval('street_name'),
+            })
+    building_name = fields.Char(
+        "Building Name",
+        states={
+            'invisible': Eval('street_unstructured') & ~Eval('building_name'),
+            })
+    building_number = fields.Char(
+        "Building Number",
+        states={
+            'invisible': (
+                Eval('street_unstructured') & ~Eval('building_number')),
+            })
+    unit_number = fields.Char(
+        "Unit Number",
+        states={
+            'invisible': Eval('street_unstructured') & ~Eval('unit_number'),
+            })
+    floor_number = fields.Char(
+        "Floor Number",
+        states={
+            'invisible': Eval('street_unstructured') & ~Eval('floor_number'),
+            })
+    room_number = fields.Char(
+        "Room Number",
+        states={
+            'invisible': Eval('street_unstructured') & ~Eval('room_number'),
+            })
+
+    post_box = fields.Char(
+        "Post Box",
+        states={
+            'invisible': Eval('street_unstructured') & ~Eval('post_box'),
+            })
+    private_bag = fields.Char(
+        "Private Bag",
+        states={
+            'invisible': Eval('street_unstructured') & ~Eval('private_bag'),
+            })
+    post_office = fields.Char(
+        "Post Office",
+        states={
+            'invisible': Eval('street_unstructured') & ~Eval('post_office'),
+            })
+
     street_single_line = fields.Function(
         fields.Char("Street"),
         'on_change_with_street_single_line',
@@ -78,6 +155,17 @@ class Address(
             autocomplete_postal_code=RPC(instantiate=0, cache=dict(days=1)),
             autocomplete_city=RPC(instantiate=0, cache=dict(days=1)),
             )
+
+    @classmethod
+    def __register__(cls, module_name):
+        table = cls.__table_handler__(module_name)
+
+        # Migration from 7.4: rename street to street_unstructured
+        # and name to building_name
+        table.column_rename('street', 'street_unstructured')
+        table.column_rename('name', 'building_name')
+
+        super().__register__(module_name)
 
     @fields.depends('street')
     def on_change_with_street_single_line(self, name=None):
@@ -137,8 +225,7 @@ class Address(
         AddressFormat = pool.get('party.address.format')
         full_address = Template(AddressFormat.get_format(self)).substitute(
             **self._get_address_substitutions())
-        return '\n'.join(
-            filter(None, (x.strip() for x in full_address.splitlines())))
+        return self._strip(full_address)
 
     def _get_address_substitutions(self):
         pool = Pool()
@@ -157,7 +244,6 @@ class Address(
         substitutions = {
             'party_name': '',
             'attn': '',
-            'name': getattr(self, 'name', None) or '',
             'street': getattr(self, 'street', None) or '',
             'postal_code': getattr(self, 'postal_code', None) or '',
             'city': getattr(self, 'city', None) or '',
@@ -179,7 +265,101 @@ class Address(
                 context['address_attention_party'].full_name)
         for key, value in list(substitutions.items()):
             substitutions[key.upper()] = value.upper()
+        substitutions.update(self._get_street_substitutions())
         return substitutions
+
+    @fields.depends('street', 'street_unstructured')
+    def on_change_street(self):
+        self.street_unstructured = self.street
+
+    @fields.depends(
+        'street_unstructured', 'country',
+        methods=['_get_street_substitutions'])
+    def on_change_with_street(self, name=None):
+        pool = Pool()
+        AddressFormat = pool.get('party.address.format')
+
+        format_ = AddressFormat.get_street_format(self)
+        street = Template(format_).substitute(
+            **self._get_street_substitutions())
+        if not (street := self._strip(street, doublespace=True)):
+            street = self.street_unstructured
+        return street
+
+    @classmethod
+    def set_street(cls, addresses, name, value):
+        addresses = [a for a in addresses if a.street != value]
+        cls.write(addresses, {
+                'street_unstructured': value,
+                'street_name': None,
+                'building_name': None,
+                'building_number': None,
+                'unit_number': None,
+                'floor_number': None,
+                'room_number': None,
+                })
+
+    @classmethod
+    def search_street(cls, name, clause):
+        if clause[1].startswith('!') or clause[1].startswith('not '):
+            bool_op = 'AND'
+        else:
+            bool_op = 'OR'
+        return [bool_op,
+            ('street_unstructured', *clause[1:]),
+            ('street_name', *clause[1:]),
+            ('building_name', *clause[1:]),
+            ('building_number', *clause[1:]),
+            ('unit_number', *clause[1:]),
+            ('floor_number', *clause[1:]),
+            ('room_number', *clause[1:]),
+            ]
+
+    @fields.depends(
+        'country', 'street_name', 'building_number', 'unit_number',
+        'floor_number', 'room_number', 'post_box', 'private_bag',
+        'post_office')
+    def _get_street_substitutions(self):
+        pool = Pool()
+        AddressFormat = pool.get('party.address.format')
+
+        substitutions = {
+            'street_name': getattr(self, 'street_name', None) or '',
+            'building_name': getattr(self, 'building_name', None) or '',
+            'building_number': getattr(self, 'building_number', None) or '',
+            'unit_number': getattr(self, 'unit_number', None) or '',
+            'floor_number': getattr(self, 'floor_number', None) or '',
+            'room_number': getattr(self, 'room_number', None) or '',
+            'post_box': getattr(self, 'post_box', None) or '',
+            'private_bag': getattr(self, 'private_bag', None) or '',
+            'post_office': getattr(self, 'post_office', None) or '',
+            }
+        for number in [
+                'building_number',
+                'unit_number',
+                'floor_number',
+                'room_number',
+                'post_box',
+                'private_bag',
+                'post_office',
+                ]:
+            if (substitutions[number]
+                    and (format_ := AddressFormat.get_number_format(
+                            number, self))):
+                substitutions[number] = format_.format(substitutions[number])
+        for key, value in list(substitutions.items()):
+            substitutions[key.upper()] = value.upper()
+        return substitutions
+
+    @classmethod
+    def _strip(cls, value, doublespace=False):
+        value = re.sub(
+            r'[\,\/,–][\s,\,\/]*([\,\/,–])', r'\1', value, flags=re.MULTILINE)
+        if doublespace:
+            value = re.sub(r' {1,}', r' ', value, flags=re.MULTILINE)
+        value = value.splitlines()
+        value = map(lambda x: x.strip(' ,/–'), value)
+        return '\n'.join(filter(None, value))
 
     @property
     def party_full_name(self):
@@ -203,7 +383,6 @@ class Address(
         return ', '.join(
             filter(None, [
                     party,
-                    self.name,
                     street,
                     self.postal_code,
                     self.city,
@@ -217,7 +396,6 @@ class Address(
             bool_op = 'OR'
         return [bool_op,
             ('party',) + tuple(clause[1:]),
-            ('name',) + tuple(clause[1:]),
             ('street',) + tuple(clause[1:]),
             ('postal_code',) + tuple(clause[1:]),
             ('city',) + tuple(clause[1:]),
@@ -267,9 +445,8 @@ class AddressFormat(DeactivableMixin, MatchMixin, ModelSQL, ModelView):
     country_code = fields.Char("Country Code", size=2)
     language_code = fields.Char("Language Code", size=2)
     format_ = fields.Text("Format", required=True,
-        help="Available variables (also in upper case):\n"
+        help="Available variables (also in upper case and street variables):\n"
         "- ${party_name}\n"
-        "- ${name}\n"
         "- ${attn}\n"
         "- ${street}\n"
         "- ${postal_code}\n"
@@ -278,6 +455,39 @@ class AddressFormat(DeactivableMixin, MatchMixin, ModelSQL, ModelView):
         "- ${subdivision_code}\n"
         "- ${country}\n"
         "- ${country_code}")
+    street_format = fields.Text("Street Format", required=True,
+        help="Available variables (also in upper case):\n"
+        "- ${street_name}\n"
+        "- ${building_name}\n"
+        "- ${building_number}\n"
+        "- ${unit_number}\n"
+        "- ${floor_number}\n"
+        "- ${room_number}\n"
+        "- ${post_box}\n"
+        "- ${private_bag}\n"
+        "- ${post_office}\n")
+    building_number_format = fields.Char(
+        "Building Number Format",
+        help="Use {} as placeholder for the number.")
+    unit_number_format = fields.Char(
+        "Unit Number Format",
+        help="Use {} as placeholder for the number.")
+    floor_number_format = fields.Char(
+        "Floor Number Format",
+        help="Use {} as placeholder for the number.")
+    room_number_format = fields.Char(
+        "Room Number Format",
+        help="Use {} as placeholder for the number.")
+
+    post_box_format = fields.Char(
+        "Post Box Format",
+        help="Use {} as placeholder for the number.")
+    private_bag_format = fields.Char(
+        "Post Box Format",
+        help="Use {} as placeholder for the number.")
+    post_office_format = fields.Char(
+        "Post Box Format",
+        help="Use {} as placeholder for the number.")
 
     _get_format_cache = Cache('party.address.format.get_format')
 
@@ -291,7 +501,6 @@ class AddressFormat(DeactivableMixin, MatchMixin, ModelSQL, ModelView):
     def default_format_(cls):
         return """${attn}
 ${party_name}
-${name}
 ${street}
 ${postal_code} ${city}
 ${subdivision}
@@ -303,9 +512,18 @@ ${COUNTRY}"""
         cls._get_format_cache.clear()
 
     @classmethod
+    def default_street_format(cls):
+        return (
+            "${street_name} ${building_name} ${building_number}"
+            "/${unit_number}/${floor_number}/${room_number}\n"
+            "${post_box} ${private_bag} ${post_office}")
+
+    @classmethod
     def validate_fields(cls, formats, field_names):
         super().validate_fields(formats, field_names)
         cls.check_format(formats, field_names)
+        cls.check_street_format(formats, field_names)
+        cls.check_number_format(formats, field_names)
 
     @classmethod
     def check_format(cls, formats, field_names=None):
@@ -324,7 +542,53 @@ ${COUNTRY}"""
                         exception=exception)) from exception
 
     @classmethod
+    def check_street_format(cls, formats, field_names=None):
+        pool = Pool()
+        Address = pool.get('party.address')
+        if field_names and 'street_format' not in field_names:
+            return
+        address = Address()
+        substitutions = address._get_street_substitutions()
+        for format_ in formats:
+            try:
+                Template(format_.street_format).substitute(**substitutions)
+            except Exception as exception:
+                raise InvalidFormat(gettext('party.msg_invalid_format',
+                        format=format_.street_format,
+                        exception=exception)) from exception
+
+    @classmethod
+    def check_number_format(cls, formats, field_names=None):
+        fields = [
+            'building_number_format', 'floor_number_format',
+            'unit_number_format', 'room_number_format',
+            'post_box_format', 'private_bag_format', 'post_office_format']
+        if field_names and not (field_names & set(fields)):
+            return
+        for format_ in formats:
+            for field in fields:
+                if number_format := getattr(format_, field):
+                    try:
+                        number_format.format('')
+                    except Exception as exception:
+                        raise InvalidFormat(gettext('party.msg_invalid_format',
+                                format=number_format,
+                                exception=exception)) from exception
+
+    @classmethod
     def get_format(cls, address, pattern=None):
+        return cls._get_format('format_', address, pattern=pattern)
+
+    @classmethod
+    def get_street_format(cls, address, pattern=None):
+        return cls._get_format('street_format', address, pattern=pattern)
+
+    @classmethod
+    def get_number_format(cls, number, address, pattern=None):
+        return cls._get_format(f'{number}_format', address, pattern=pattern)
+
+    @classmethod
+    def _get_format(cls, field, address, pattern=None):
         if pattern is None:
             pattern = {}
         else:
@@ -333,17 +597,17 @@ ${COUNTRY}"""
             'country_code', address.country.code if address.country else None)
         pattern.setdefault('language_code', Transaction().language[:2])
 
-        key = tuple(sorted(pattern.items()))
+        key = (field, *sorted(pattern.items()))
         format_ = cls._get_format_cache.get(key)
         if format_ is not None:
             return format_
 
         for record in cls.search([]):
             if record.match(pattern):
-                format_ = record.format_
+                format_ = getattr(record, field)
                 break
         else:
-            format_ = cls.default_format_()
+            format_ = getattr(cls, f'default_{field}', lambda: '')()
 
         cls._get_format_cache.set(key, format_)
         return format_
