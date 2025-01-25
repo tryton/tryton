@@ -347,7 +347,7 @@ ${COUNTRY}"""
             Template(self.format_).substitute(
                 **address._get_address_substitutions())
         except Exception as exception:
-            raise InvalidFormat(gettext('party.invalid_format',
+            raise InvalidFormat(gettext('party.msg_invalid_format',
                     format=self.format_,
                     exception=exception)) from exception
 
