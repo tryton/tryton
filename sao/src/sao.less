@@ -979,7 +979,10 @@ img.icon {
         }
     }
     .form-text, .form-richtext {
+        display: flex;
+
         .input-group {
+            display: flex;
             width: 100%;
 
             textarea, .richtext {
@@ -988,6 +991,10 @@ img.icon {
                 min-height: 12.5ex;
                 overflow: auto;
                 resize: vertical;
+            }
+
+            > span {
+                flex-basis: fit-content;
             }
         }
     }
