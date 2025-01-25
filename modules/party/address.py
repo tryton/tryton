@@ -376,7 +376,7 @@ ${COUNTRY}"""
             try:
                 Template(format_.format_).substitute(**substitutions)
             except Exception as exception:
-                raise InvalidFormat(gettext('party.invalid_format',
+                raise InvalidFormat(gettext('party.msg_invalid_format',
                         format=format_.format_,
                         exception=exception)) from exception
 
