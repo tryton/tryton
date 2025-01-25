@@ -104,7 +104,11 @@ def get_parser_cron():
 
 
 def get_parser_admin():
-    from trytond.tools.email_ import validate_email
+    from trytond.tools.email_ import validate_email as _validate_email
+
+    def validate_email(value):
+        if value:
+            return _validate_email(value)
     parser = get_parser()
 
     parser.add_argument(
