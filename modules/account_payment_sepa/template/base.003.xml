@@ -49,8 +49,11 @@ this repository contains the full copyright notices and license terms. -->
     </py:def>
     <py:def function="PostalAddress(address)">
         <Ctry py:if="address.country">${normalize('NFKD', address.country.code).encode('ascii', 'replace')}</Ctry>
-        <AdrLine py:if="address.street">${normalize('NFKD', ' '.join(address.street.splitlines()[0:1])).encode('ascii', 'replace')[:70]}</AdrLine>
-        <AdrLine py:if="address.street and len(address.street.splitlines()) > 1">${normalize('NFKD', ' '.join(address.street.splitlines()[1:])).encode('ascii', 'replace')[:70]}</AdrLine>
+        <py:if test="address.street">
+            <py:for each="line in address.street.splitlines()[1:8]">
+                <AdrLine py:if="address.street">${normalize('NFKD', line).encode('ascii', 'replace')[:70]}</AdrLine>
+            </py:for>
+        </py:if>
     </py:def>
     <py:def function="Account(account_number, with_ccy=True)">
         <Id>

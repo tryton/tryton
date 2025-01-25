@@ -48,13 +48,17 @@ this repository contains the full copyright notices and license terms. -->
         <!-- AdrTp -->
         <!-- Dept -->
         <!-- SubDept -->
-        <StrtNm py:if="address.street">${address.street[:70]}</StrtNm>
+        <StrtNm py:if="address.street">${address.street.splitlines()[0:1][:70]}</StrtNm>
         <!-- BldgNb -->
         <PstCd py:if="address.postal_code">${address.postal_code[:16]}</PstCd>
         <TwnNm py:if="address.city">${address.city[:35]}</TwnNm>
         <CtrySubDvsn py:if="address.subdivision">${address.subdivision.rec_name[:35]}</CtrySubDvsn>
         <Ctry py:if="address.country">${address.country.code}</Ctry>
-        <!-- AdrLine -->
+        <py:if test="address.street">
+            <py:for each="line in address.street.splitlines()[1:8]">
+                <AdrLine py:if="line">${line[:70]}</AdrLine>
+            </py:for>
+        </py:if>
     </py:def>
     <py:def function="Account(account_number, currency=True)">
         <Id>
