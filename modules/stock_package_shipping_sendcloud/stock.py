@@ -160,6 +160,8 @@ class CreateShippingSendcloud(Wizard):
             'address': street_lines[0] if street_lines else '',
             'address_2': (
                 ' '.join(street_lines[1:]) if len(street_lines) > 1 else ''),
+            'house_number': address.numbers,
+            'to_post_number': address.post_box,
             'city': address.city,
             'postal_code': address.postal_code,
             'country': address.country.code if address.country else None,

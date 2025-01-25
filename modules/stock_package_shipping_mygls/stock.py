@@ -222,11 +222,21 @@ class ShipmentCreateShippingMyGLS(Wizard):
             }
 
     def get_address(self, party, address, usage=None):
+        if address.street_unstructured:
+            street_name = address.street_single_line
+            house_number = ''
+            house_number_info = ''
+        else:
+            street_name = address.street_name or ''
+            house_number = address.numbers or ''
+            house_number_info = address.building_name or ''
         phone = address.contact_mechanism_get({'phone', 'mobile'}, usage=usage)
         email = address.contact_mechanism_get('email', usage=usage)
         return {
             'Name': address.party_full_name,
-            'Street': ' '.join((address.street or '').splitlines()),
+            'Street': street_name,
+            'HouseNumber': house_number,
+            'HouseNumberInfo': house_number_info,
             'City': address.city,
             'ZipCode': address.postal_code,
             'CountryIsoCode': address.country.code,

@@ -252,6 +252,8 @@ class CreateShippingUPS(Wizard):
                 'CountryCode': address.country.code if address.country else '',
                 },
             }
+        if address.post_box:
+            shipping_party['Address']['POBoxIndicator'] = True
         phone = address.contact_mechanism_get({'phone', 'mobile'}, usage=usage)
         if phone:
             shipping_party['Phone'] = {

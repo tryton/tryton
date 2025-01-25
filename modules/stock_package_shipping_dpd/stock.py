@@ -203,10 +203,17 @@ class CreateDPDShipping(Wizard):
             }
 
     def shipping_party(self, party, address, usage=None):
+        if address.street_unstructured:
+            street = address.street_single_line
+            house_no = ''
+        else:
+            street = address.street_name or ''
+            house_no = address.numbers
         shipping_party = {
             'name1': address.party_full_name[:35],
             'name2': '',
-            'street': ' '.join((address.street or '').splitlines())[:35],
+            'street': street[:35],
+            'houseNo': house_no[:8],
             'country': address.country.code if address.country else '',
             'zipCode': address.postal_code[:9],
             'city': address.city[:35],
