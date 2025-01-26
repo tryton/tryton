@@ -151,7 +151,19 @@ class Tax(metaclass=PoolMeta):
             ('E4', "E4"),
             ('E5', "E5"),
             ('E6', "E6"),
-            ], "SII Tax Key", translate=False, sort=False, states=_states)
+            ], "SII Tax Key", translate=False, sort=False, states=_states,
+        help_selection={
+            'S1': "Not exempt - No passive subject investment",
+            'S2': "Not exempt - With passive subject investment",
+            'S3': ("Not exempt - Without investment by the taxpayer "
+                "and with investment by the taxpayer"),
+            'E1': "Exempt by Art. 20",
+            'E2': "Exempt by Art. 21",
+            'E3': "Exempt by Art. 22",
+            'E4': "Exempt by Art. 24",
+            'E5': "Exempt by Art. 25",
+            'E6': "Exempt others",
+            })
     es_sii_operation_key = fields.Selection(
         [(None, '')]
         + [(x, x) for x in ('{:02}'.format(i) for i in range(1, 18))],
