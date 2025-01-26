@@ -204,7 +204,7 @@ class Translation(
                     continue
                 if isinstance(val, LazyString):
                     continue
-                assert type not in {'field', 'help'} or not inserted, (
+                assert type != 'field' or not inserted, (
                     "More than one resource "
                     f"for {type} of {name} in {module_name}")
                 cursor.execute(
@@ -218,11 +218,13 @@ class Translation(
             name = model.__name__ + ',' + field_name
             insert(field, 'field', name, field.string)
             insert(field, 'help', name, field.help)
-            if (hasattr(field, 'selection')
-                    and isinstance(field.selection, (tuple, list))
-                    and getattr(field, 'translate_selection', True)):
-                selection = [s for _, s in field.selection]
-                insert(field, 'selection', name, selection)
+            if hasattr(field, 'selection'):
+                if (isinstance(field.selection, (tuple, list))
+                        and getattr(field, 'translate_selection', True)):
+                    selection = [s for _, s in field.selection]
+                    insert(field, 'selection', name, selection)
+                if field.help_selection:
+                    insert(field, 'help', name, field.help_selection.values())
 
     @classmethod
     def register_wizard(cls, wizard, module_name):
@@ -1378,9 +1380,11 @@ class TranslationClean(Wizard):
         field = Model._fields.get(field_name)
         if not field:
             return True
-        if not field.help:
+        help_ = field.help
+        help_selection = list(getattr(field, 'help_selection', {}).values())
+        if not help_ and not help_selection:
             return True
-        if translation.src not in list(field.help):
+        if translation.src not in list(help_) + help_selection:
             return True
 
     def transition_clean(self):
