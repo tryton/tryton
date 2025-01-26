@@ -29,8 +29,8 @@ class SelectionMixin(Field):
         pool = Pool()
         Translation = pool.get('ir.translation')
         definition = super().definition(model, language)
+        name = '%s,%s' % (model.__name__, self.name)
         if not isinstance(self.selection, str) and self.translate_selection:
-            name = '%s,%s' % (model.__name__, self.name)
             selection = []
             for key, source in self.selection:
                 if not isinstance(source, LazyString):
