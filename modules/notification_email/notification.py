@@ -36,7 +36,7 @@ class Email(ModelSQL, ModelView):
             ],
         help="The field that contains the recipient(s).")
     fallback_recipients = fields.Many2One(
-        'res.user', "Recipients Fallback User",
+        'res.user', "Recipients Fallback",
         domain=[
             ('email', '!=', None),
             ],
@@ -48,7 +48,7 @@ class Email(ModelSQL, ModelView):
             ],
         help="The field that contains the secondary recipient(s).")
     fallback_recipients_secondary = fields.Many2One(
-        'res.user', "Secondary Recipients Fallback User",
+        'res.user', "Secondary Recipients Fallback",
         domain=[
             ('email', '!=', None),
             ],
@@ -60,7 +60,7 @@ class Email(ModelSQL, ModelView):
             ],
         help="The field that contains the hidden recipient(s).")
     fallback_recipients_hidden = fields.Many2One(
-        'res.user', "Hidden Recipients Fallback User",
+        'res.user', "Hidden Recipients Fallback",
         domain=[
             ('email', '!=', None),
             ],
