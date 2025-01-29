@@ -227,7 +227,10 @@ class Model(
 class ModelField(
         fields.fmany2one(
             'model_ref', 'model', 'ir.model,model', "Model",
-            required=True, ondelete='CASCADE'),
+            required=True, ondelete='CASCADE',
+            states={
+                'readonly': Bool(Eval('module')),
+                }),
         fields.fmany2one(
             'module_ref', 'module', 'ir.module,name', "Module",
             readonly=True, ondelete='CASCADE',
