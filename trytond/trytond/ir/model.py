@@ -244,14 +244,20 @@ class Model(
 class ModelField(
         fields.fmany2one(
             'model_ref', 'model', 'ir.model,name', "Model",
-            required=True, ondelete='CASCADE'),
+            required=True, ondelete='CASCADE',
+            states={
+                'readonly': Bool(Eval('module')),
+                }),
         fields.fmany2one(
             'module_ref', 'module', 'ir.module,name', "Module",
             readonly=True, ondelete='CASCADE',
             help="Module in which this field is defined."),
         fields.fmany2one(
             'relation_ref', 'relation', 'ir.model,name', "Relation",
-            ondelete='CASCADE'),
+            ondelete='CASCADE',
+            states={
+                'readonly': Bool(Eval('module')),
+                }),
         ModelSQL, ModelView):
     __name__ = 'ir.model.field'
     _rec_name = 'string'
