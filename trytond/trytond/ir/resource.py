@@ -73,10 +73,12 @@ class ResourceAccessMixin(ModelStorage):
             cls, domain, offset=0, limit=None, order=None, count=False,
             query=False):
         transaction = Transaction()
+        enforce_access = (
+            not query and transaction.user and transaction.check_access)
         result = super().search(
             domain, offset=offset, limit=limit, order=order,
-            count=False if not query else count, query=query)
-        if not query and transaction.user and transaction.check_access:
+            count=False if enforce_access else count, query=query)
+        if enforce_access:
             records = result
             resources = defaultdict(set)
             allowed = set()
