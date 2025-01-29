@@ -4492,10 +4492,14 @@ function eval_pyson(value){
             var editable = !this.text.prop('readonly');
             if (evt.which == Sao.common.F3_KEYCODE && editable) {
                 evt.preventDefault();
-                this.new_();
+                this.select();
             } else if (evt.which == Sao.common.F2_KEYCODE) {
                 evt.preventDefault();
-                this.open();
+                if (this.filename) {
+                    this.open();
+                } else {
+                    this.save_as();
+                }
             }
         },
         set_value: function() {
