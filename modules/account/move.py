@@ -2116,7 +2116,9 @@ class Reconcile(Wizard):
             .join(account_type, condition=account.type == account_type.id)
             .select(
                 account.id,
-                where=((line.reconciliation == Null) & account.reconcile
+                where=((line.reconciliation == Null)
+                    & (line.state == 'valid')
+                    & account.reconcile
                     & account.id.in_(account_rule)),
                 group_by=[account.id,
                     account_type.receivable, account_type.payable],
@@ -2144,6 +2146,7 @@ class Reconcile(Wizard):
             return list({l.party for l in lines if l.account == account})
 
         where = ((line.reconciliation == Null)
+            & (line.state == 'valid')
             & (line.account == account.id))
         if party:
             where &= (line.party == party.id)
@@ -2181,6 +2184,7 @@ class Reconcile(Wizard):
                     else_=False)
                 )
         where = ((line.reconciliation == Null)
+            & (line.state == 'valid')
             & (line.account == account.id)
             & (line.party == (party.id if party else None)))
         currency_expr = Coalesce(line.second_currency, account.currency.id)
@@ -2293,6 +2297,7 @@ class Reconcile(Wizard):
                         ],
                     ('second_currency', '=', self.show.currency.id),
                     ],
+                ('state', '=', 'valid'),
                 ],
             order=[])
 
