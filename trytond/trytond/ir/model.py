@@ -296,6 +296,7 @@ class ModelField(
     access = fields.Boolean(
         "Access",
         states={
+            'readonly': Bool(Eval('module')),
             'invisible': ~Eval('relation'),
             },
         depends=['relation'],
