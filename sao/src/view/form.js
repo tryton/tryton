@@ -4080,11 +4080,15 @@ function eval_pyson(value){
         key_press: function(evt) {
             var editable = !this.text.prop('readonly');
             if (evt.which == Sao.common.F3_KEYCODE && editable) {
-                this.new_();
                 evt.preventDefault();
+                this.select();
             } else if (evt.which == Sao.common.F2_KEYCODE) {
-                this.open();
                 evt.preventDefault();
+                if (this.filename) {
+                    this.open();
+                } else {
+                    this.save_as();
+                }
             }
         },
         set_value: function() {
