@@ -361,7 +361,7 @@ class Translation(ModelSQL, ModelView):
                             try:
                                 field = getattr(
                                     pool.get(record.model.model), record.name)
-                            except KeyError:
+                            except (KeyError, AttributeError):
                                 continue
                             translations[record.id] = ''
                             if ttype == 'field':
