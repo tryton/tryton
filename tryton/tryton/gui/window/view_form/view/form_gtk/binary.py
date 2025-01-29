@@ -182,13 +182,13 @@ class Binary(BinaryMixin, Widget):
     def sig_key_press(self, widget, event, *args):
         editable = self.wid_text and self.wid_text.get_editable()
         if event.keyval == Gdk.KEY_F3 and editable:
-            self.sig_new(widget)
+            self.select(widget)
             return True
         elif event.keyval == Gdk.KEY_F2:
             if self.filename:
-                self.sig_open(widget)
+                self.open_()
             else:
-                self.sig_save_as(widget)
+                self.save_as()
             return True
         return False
 
