@@ -9,17 +9,18 @@ this repository contains the full copyright notices and license terms. -->
 
     <label name="model_ref"/>
     <field name="model_ref"/>
-    <newline/>
+    <label name="module_ref"/>
+    <field name="module_ref"/>
 
     <label name="ttype"/>
     <field name="ttype"/>
     <label name="relation_ref"/>
     <field name="relation_ref"/>
 
-    <label name="help" yfill="1"/>
-    <field name="help" colspan="3"/>
     <label name="access"/>
     <field name="access"/>
-    <label name="module_ref"/>
-    <field name="module_ref"/>
+    <newline/>
+
+    <label name="help" yfill="1"/>
+    <field name="help" colspan="3"/>
 </form>
