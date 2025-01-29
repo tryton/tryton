@@ -179,7 +179,7 @@ class Move(metaclass=PoolMeta):
         super().cancel(moves)
         shipments = defaultdict(set)
         for move in moves:
-            if issubclass(move.shipment, MeasurementsMixin):
+            if isinstance(move.shipment, MeasurementsMixin):
                 shipments[move.shipment.__class__].add(move.shipment)
         for Shipment, shipments in shipments.items():
             Shipment.set_measurements(shipments)
