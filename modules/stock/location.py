@@ -55,7 +55,20 @@ class Location(DeactivableMixin, tree(), ModelSQL, ModelView):
         ('production', 'Production'),
         ('drop', 'Drop'),
         ('view', 'View'),
-        ], "Type")
+        ], "Type",
+        help_selection={
+            'supplier': "Used as the source of stock received from suppliers.",
+            'customer': "Used as the destination for stock sent to customers.",
+            'lost_found': "Used for damages, discrepancies and wastage.",
+            'warehouse': (
+                "Regroup storage locations under a logistics warehouse."),
+            'storage': "Used to physically store goods.",
+            'production': (
+                "Used as the destination of components and the source of "
+                "finished products."),
+            'drop': "Used during the drop shipping process.",
+            'view': "Group locations logically.",
+            })
     type_string = type.translated('type')
     parent = fields.Many2One(
         "stock.location", "Parent", ondelete='CASCADE',
