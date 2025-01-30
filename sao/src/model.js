@@ -563,38 +563,37 @@
             var prm = jQuery.when();
             if ((this.id < 0) || this.modified) {
                 var values = this.get();
-                if (this.id < 0) {
-                    // synchronous call to avoid multiple creation
-                    try {
+                try {
+                    // synchronous call to avoid multiple creation or save
+                    if (this.id < 0) {
                         this.id = this.model.execute(
                             'create', [[values]], context,  false)[0];
-                    } catch (e) {
-                        if (e.promise) {
-                            return e.then(() => this.save(force_reload));
-                        } else {
-                            return jQuery.Deferred().reject();
+
+                    } else {
+                        if (!jQuery.isEmptyObject(values)) {
+                            context._timestamp = this.get_timestamp();
+                            this.model.execute(
+                                'write', [[this.id], values], context, false);
                         }
                     }
-                } else {
-                    if (!jQuery.isEmptyObject(values)) {
-                        context._timestamp = this.get_timestamp();
-                        prm = this.model.execute('write', [[this.id], values],
-                            context);
+                } catch (e) {
+                    if (e.promise) {
+                        return e.then(() => this.save(force_reload));
+                    } else {
+                        return jQuery.Deferred().reject();
                     }
                 }
-                prm = prm.done(() => {
-                    this.cancel();
-                    if (force_reload) {
-                        return this.reload();
-                    }
-                });
+                this.cancel();
+                if (force_reload) {
+                    return this.reload();
+                }
                 if (this.group) {
-                    prm = prm.done(() => this.group.written(this.id));
+                    prm = prm.then(() => this.group.written(this.id));
                 }
             }
             if (this.group.parent) {
                 delete this.group.parent.modified_fields[this.group.child_name];
-                prm = prm.done(() => this.group.parent.save(force_reload));
+                prm = prm.then(() => this.group.parent.save(force_reload));
             }
             return prm;
         },
