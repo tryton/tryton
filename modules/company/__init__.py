@@ -12,6 +12,7 @@ __all__ = ['register', 'CompanyReport']
 def register():
     Pool.register(
         company.Company,
+        company.CompanyTaxIdentifier,
         company.CompanyLogoCache,
         company.Employee,
         company.CompanyConfigStart,

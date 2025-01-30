@@ -12,10 +12,11 @@ except ImportError:
     PIL = None
 
 from trytond.config import config
-from trytond.model import ModelSQL, ModelView, Unique, fields
+from trytond.model import (
+    MatchMixin, ModelSQL, ModelView, Unique, fields, sequence_ordered)
 from trytond.model.exceptions import SQLConstraintError
 from trytond.pool import Pool
-from trytond.pyson import Eval, If
+from trytond.pyson import Bool, Eval, If
 from trytond.report import Report
 from trytond.tools import timezone as tz
 from trytond.transaction import Transaction
@@ -60,6 +61,10 @@ class Company(ModelSQL, ModelView):
         help="Used to compute the today date.")
     employees = fields.One2Many('company.employee', 'company', 'Employees',
         help="Add employees to the company.")
+    tax_identifiers = fields.One2Many(
+        'company.company.tax_identifier', 'company', "Tax Identifiers",
+        help="Uses the first identifier that matches the criteria.\n"
+        "If none match, uses the party's tax identifier.")
 
     @property
     def header_used(self):
@@ -194,6 +199,80 @@ class Company(ModelSQL, ModelView):
         Cache = cls.logo_cache.get_target()
         caches = [c for r in companies for c in r.logo_cache]
         Cache.delete(caches)
+
+    def get_tax_identifier(self, pattern=None):
+        if pattern is None:
+            pattern = {}
+        for record in self.tax_identifiers:
+            if record.match(pattern):
+                return record.tax_identifier
+        return self.party.tax_identifier
+
+
+class CompanyTaxIdentifier(
+        MatchMixin, sequence_ordered(), ModelSQL, ModelView):
+    __name__ = 'company.company.tax_identifier'
+
+    company = fields.Many2One(
+        'company.company', "Company", required=True, ondelete='CASCADE')
+    company_party = fields.Function(
+        fields.Many2One(
+            'party.party', "Company Party",
+            context={
+                'company': Eval('company', None),
+                }),
+        'on_change_with_company_party')
+
+    country = fields.Many2One(
+        'country.country', "Country", ondelete='RESTRICT',
+        states={
+            'invisible': Bool(Eval('organization')),
+            },
+        help="Applies only to addresses in this country.")
+    organization = fields.Many2One(
+        'country.organization', "Organization",
+        states={
+            'invisible': Bool(Eval('country')),
+            },
+        help="Applies only to addresses in this organization.")
+
+    tax_identifier = fields.Many2One(
+        'party.identifier', "Tax Identifier",
+        help="The identifier used for tax report.")
+
+    @classmethod
+    def __setup__(cls):
+        pool = Pool()
+        Party = pool.get('party.party')
+        super().__setup__()
+        cls.__access__.add('company')
+        tax_identifier_types = Party.tax_identifier_types()
+        cls.tax_identifier.domain = [
+            ('party', '=', Eval('company_party', -1)),
+            ('type', 'in', tax_identifier_types),
+            ]
+
+    @classmethod
+    def default_company(cls):
+        return Transaction().context.get('company')
+
+    @fields.depends('company', '_parent_company.party')
+    def on_change_with_company_party(self, name=None):
+        if self.company:
+            return self.company.party
+
+    def match(self, pattern, match_none=False):
+        if 'country' in pattern:
+            pattern = pattern.copy()
+            country = pattern.pop('country')
+            if country is not None or match_none:
+                if self.country and self.country.id != country:
+                    return False
+                if (self.organization
+                        and country not in [
+                            c.id for c in self.organization.countries]):
+                    return False
+        return super().match(pattern, match_none=match_none)
 
 
 class CompanyLogoCache(ModelSQL):

@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form cursor="tax_identifier">
+    <label name="company"/>
+    <field name="company"/>
+    <label name="sequence"/>
+    <field name="sequence"/>
+
+    <label name="tax_identifier"/>
+    <field name="tax_identifier" colspan="3"/>
+
+    <separator id="pattern" colspan="4"/>
+
+    <label name="country"/>
+    <field name="country"/>
+    <label name="organization"/>
+    <field name="organization"/>
+</form>

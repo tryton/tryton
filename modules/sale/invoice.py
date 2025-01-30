@@ -64,6 +64,17 @@ class Invoice(metaclass=PoolMeta):
         return [('lines.origin.sale' + clause[0][len(name):],
                 *clause[1:3], 'sale.line', *clause[3:])]
 
+    def get_tax_identifier(self, pattern=None):
+        if self.sales:
+            pattern = pattern.copy() if pattern is not None else {}
+            shipment_countries = {
+                s.shipment_address.country for s in self.sales
+                if s.shipment_address and s.shipment_address.country}
+            if len(shipment_countries) == 1:
+                shipment_country, = shipment_countries
+                pattern.setdefault('country', shipment_country.id)
+        return super().get_tax_identifier(pattern=pattern)
+
     @classmethod
     @process_sale
     def delete(cls, invoices):

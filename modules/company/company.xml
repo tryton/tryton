@@ -96,6 +96,18 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_delete" eval="True"/>
         </record>
 
+        <record model="ir.ui.view" id="company_tax_identifier_view_form">
+            <field name="model">company.company.tax_identifier</field>
+            <field name="type">form</field>
+            <field name="name">company_tax_identifier_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="company_tax_identifier_view_list">
+            <field name="model">company.company.tax_identifier</field>
+            <field name="type">tree</field>
+            <field name="name">company_tax_identifier_list</field>
+        </record>
+
         <record model="ir.ui.view" id="user_view_form">
             <field name="model">res.user</field>
             <field name="inherit" ref="res.user_view_form"/>

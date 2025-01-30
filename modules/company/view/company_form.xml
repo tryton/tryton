@@ -12,6 +12,9 @@ this repository contains the full copyright notices and license terms. -->
         <page name="employees" col="1">
             <field name="employees"/>
         </page>
+        <page name="tax_identifiers">
+            <field name="tax_identifiers" colspan="4"/>
+        </page>
         <page string="Reports" col="1" id="reports">
             <separator name="logo"/>
             <field name="logo" widget="image" width="800" height="400"/>

@@ -432,5 +432,68 @@ class CompanyTestCase(
 
         datetime.now.assert_called_with(tz.ZoneInfo('CET'))
 
+    @with_transaction()
+    def test_company_tax_identifier(self):
+        "Test company tax identifier"
+        pool = Pool()
+        Country = pool.get('country.country')
+        Organization = pool.get('country.organization')
+        Identifier = pool.get('party.identifier')
+        TaxIdentifier = pool.get('company.company.tax_identifier')
+
+        company = create_company()
+
+        fr_vat = Identifier(
+            party=company.party, type='fr_vat', code="FR23334175221")
+        fr_vat.save()
+        be_vat = Identifier(
+            party=company.party, type='be_vat', code="BE403019261")
+        be_vat.save()
+
+        belgium = Country(name="Belgium")
+        belgium.save()
+        france = Country(name="France")
+        france.save()
+        germany = Country(name="Germany")
+        germany.save()
+        switzerland = Country(name="Switzerland")
+        switzerland.save()
+        europe = Organization(
+            name="Europe",
+            members=[
+                {'country': belgium},
+                {'country': france},
+                {'country': germany},
+                ])
+        europe.save()
+
+        TaxIdentifier.create([{
+                    'company': company,
+                    'country': france,
+                    'tax_identifier': fr_vat,
+                    }, {
+                    'company': company,
+                    'country': belgium,
+                    'tax_identifier': be_vat,
+                    }, {
+                    'company': company,
+                    'organization': europe,
+                    'tax_identifier': be_vat,
+                    }])
+
+        self.assertEqual(company.party.tax_identifier, fr_vat)
+        self.assertEqual(company.get_tax_identifier({
+                    'country': france.id,
+                    }), fr_vat)
+        self.assertEqual(company.get_tax_identifier({
+                    'country': belgium.id,
+                    }), be_vat)
+        self.assertEqual(company.get_tax_identifier({
+                    'country': germany.id,
+                    }), be_vat)
+        self.assertEqual(company.get_tax_identifier({
+                    'country': switzerland,
+                    }), fr_vat)
+
 
 del ModuleTestCase

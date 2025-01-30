@@ -1383,9 +1383,12 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin, InvoiceReportMixin):
         "Returns the field name of invoice_sequence to use"
         return f'{self.type}_{self.sequence_type}_sequence'
 
-    def get_tax_identifier(self):
+    def get_tax_identifier(self, pattern=None):
         "Return the default computed tax identifier"
-        return self.company.party.tax_identifier
+        pattern = pattern.copy() if pattern is not None else {}
+        if self.invoice_address and self.invoice_address.country:
+            pattern.setdefault('country', self.invoice_address.country.id)
+        return self.company.get_tax_identifier(pattern)
 
     @property
     def invoice_report_versioned(self):

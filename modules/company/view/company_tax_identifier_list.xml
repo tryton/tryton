@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tree sequence="sequence">
+    <field name="company" expand="1"/>
+    <field name="country" expand="1"/>
+    <field name="organization" expand="1"/>
+    <field name="tax_identifier" expand="2"/>
+</tree>
