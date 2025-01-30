@@ -98,7 +98,10 @@ class RecurrenceRule(ModelSQL, ModelView):
         help="A comma separated list of integers.")
     week_start_day = fields.Many2One('ir.calendar.day', "Week Start Day")
 
-    exclusive = fields.Boolean("Exclusive")
+    exclusive = fields.Boolean(
+        "Exclusive",
+        help="If checked, dates which are part of this recurrence rule "
+        "will not be generated.")
 
     @classmethod
     def __setup__(cls):
