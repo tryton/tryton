@@ -1568,6 +1568,7 @@
         },
         save_current: function() {
             var current_record = this.current_record;
+            let new_record = current_record.id < 0;
             if (!current_record) {
                 if (this.current_view &&
                     (this.current_view.view_type == 'tree') &&
@@ -1610,6 +1611,9 @@
                 if (path && current_record && current_record.id) {
                     path.splice(-1, 1,
                             [path[path.length - 1][0], current_record.id]);
+                }
+                if (new_record && this.switch_callback) {
+                    this.switch_callback();
                 }
                 return this.group.get_by_path(path).then(function(record) {
                     this.current_record = record;
