@@ -354,6 +354,7 @@ class AccountDistribution(ModelView, ModelSQL):
         'analytic_account.account', "Account", required=True,
         domain=[
             ('root', '=', Eval('root', -1)),
+            ('type', 'in', ['normal', 'distribution']),
             ])
     ratio = fields.Numeric("Ratio", required=True,
         domain=[
