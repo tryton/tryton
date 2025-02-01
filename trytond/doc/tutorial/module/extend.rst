@@ -3,8 +3,8 @@
 Extend model
 ============
 
-Sometimes we want to extend an existing :class:`~trytond.model.Model` to add
-:class:`~trytond.model.fields.Field` or methods.
+Sometimes we want to extend an existing :class:`~trytond.model.Model` to add or
+modify a :class:`~trytond.model.fields.Field` or a method.
 This can be done using the extension mechanism of Tryton which can combine
 classes with the same ``__name__`` that are registered in the
 :class:`~trytond.pool.Pool`.
@@ -37,6 +37,33 @@ So in :file:`__init__.py` we add:
             ...,
             party.Party,
             module='opportunity', type_='model')
+
+Change a field of the Party model
+`````````````````````````````````
+
+To change an existing :class:`~trytond.model.fields.Field`, you need to change
+its properties in the :meth:`~trytond.model.Model.__setup__` method.
+Let's change the ``active`` field on the ``party.party`` model to be
+``readonly`` when there are ``opportunities``.
+The ``__setup__`` class method is added to the :file:`party.py` file:
+
+.. code-block:: python
+
+    from trytond.pyson import Eval
+
+    class Party(metaclass=PoolMeta):
+        ...
+
+        @classmethod
+        def __setup__(cls):
+            super().__setup__()
+            cls.active.states['readonly'] = (
+                cls.active.states['readonly']
+                | Eval('opportunities', []))
+
+.. note::
+   You must always call the ``super()`` method when extending an existing
+   method.
 
 Extend the Party view
 ---------------------
@@ -102,7 +129,9 @@ with:
    $ trytond-admin -d test --all
 
 And restart the server and reconnect with the client to see the new field on
-the party:
+the party.
+You will also notice that the :guilabel:`Active` field become read only when
+the party has opportunities.
 
 .. code-block:: console
 
