@@ -9335,3 +9335,4 @@ fdf9580358bc0eb8b45eb3d57d46b90762aedc25 trytond-7.0.25
 a0bff0c16fc9eec5355c4812ed9e2e40e688132f sale_opportunity-7.0.4
 98bc01252467a6a82c091fd1f73a73bc17fd79aa document_incoming-7.0.3
 c24787275ab917ce3830e8a318d108090f3d2b04 account_payment_sepa-7.0.1
+af807310dc0b8f075011fa8d33f63e463103eb5b account_payment_clearing-7.0.4
