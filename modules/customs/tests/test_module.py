@@ -4,11 +4,13 @@
 from datetime import date
 from decimal import Decimal
 
+from trytond.modules.company.tests import CompanyTestMixin, create_company
 from trytond.pool import Pool
 from trytond.tests.test_tryton import ModuleTestCase, with_transaction
+from trytond.transaction import Transaction
 
 
-class CustomsTestCase(ModuleTestCase):
+class CustomsTestCase(CompanyTestMixin, ModuleTestCase):
     'Test Customs module'
     module = 'customs'
 
@@ -259,6 +261,55 @@ class CustomsTestCase(ModuleTestCase):
             Product_TariffCode.search([
                     ('id', '=', product_tariff_code.id),
                     ]), [])
+
+    @with_transaction()
+    def test_agent_selection(self):
+        "Test agent selection"
+        pool = Pool()
+        Party = pool.get('party.party')
+        Identifier = pool.get('party.identifier')
+        Agent = pool.get('customs.agent')
+        Country = pool.get('country.country')
+        Selection = pool.get('customs.agent.selection')
+
+        party = Party(name="Agent", addresses=[{}])
+        party.save()
+        address, = party.addresses
+        tax_identifier = Identifier(
+            party=party, type='be_vat', code="BE403019261")
+        tax_identifier.save()
+        agent1 = Agent(
+            party=party,
+            address=address,
+            tax_identifier=tax_identifier)
+        agent1.save()
+        agent2 = Agent(
+            party=party,
+            address=address,
+            tax_identifier=tax_identifier)
+        agent2.save()
+
+        country1 = Country(name="Country 1")
+        country1.save()
+        country2 = Country(name="Country 2")
+        country2.save()
+
+        company = create_company()
+
+        with Transaction().set_context(company=company.id):
+            Selection.create([{
+                        'to_country': country1,
+                        'agent': agent1,
+                        }, {
+                        'agent': agent2,
+                        }])
+
+            self.assertEqual(Selection.get_agent(company, {
+                        'to_country': country1.id,
+                        }), agent1)
+            self.assertEqual(Selection.get_agent(company, {
+                        'to_country': country2.id,
+                        }), agent2)
 
 
 del ModuleTestCase

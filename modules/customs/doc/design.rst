@@ -44,6 +44,40 @@ The rate can be expressed as a fixed amount or an amount per `Unit of Measure
    .. |Customs --> Duty Rates| replace:: :menuselection:`Customs --> Duty Rates`
    __ https://demo.tryton.org/model/customs.duty.rate
 
+.. _model-customs.agent:
+
+Agent
+=====
+
+The *Agent* defines a `Party <party:model-party.party>` as a import or export
+agent.
+
+.. seealso::
+
+   The *Agents* can be found by opening the main menu item:
+
+   |Customs --> Agents|__
+
+   .. |Customs --> Agents| replace:: :menuselection:`Customs --> Agents`
+   __ https://demo.tryton.org/model/customs.agent
+
+.. _model-customs.agent.selection:
+
+Agent Selection
+===============
+
+The *Agent Selection* defines which agent to use based on criteria such as the
+origin and destination `Countries <country:model-country.country>`.
+
+.. seealso::
+
+   The *Agent Selections* can be found by opening the main menu item:
+
+   |Customs --> Agents --> Selection|__
+
+   .. |Customs --> Agents --> Selection| replace:: :menuselection:`Customs --> Agents --> Selection`
+   __ https://demo.tryton.org/model/customs.agent.selection
+
 .. _concept-product:
 
 Product

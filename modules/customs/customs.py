@@ -7,7 +7,8 @@ from sql import Null
 
 from trytond import backend
 from trytond.model import (
-    DeactivableMixin, MatchMixin, ModelSQL, ModelView, fields)
+    DeactivableMixin, MatchMixin, ModelSQL, ModelView, fields,
+    sequence_ordered)
 from trytond.modules.product import price_digits
 from trytond.pool import Pool
 from trytond.pyson import Bool, Eval, If
@@ -229,3 +230,81 @@ class DutyRate(CountryMatchMixin, ModelSQL, ModelView):
         amount = Uom.compute_price(self.uom, self.amount, uom)
         amount *= Decimal(str(quantity))
         return Currency.compute(self.currency, amount, currency)
+
+
+class Agent(DeactivableMixin, ModelSQL, ModelView):
+    __name__ = 'customs.agent'
+
+    party = fields.Many2One(
+        'party.party', "Party", required=True, ondelete='CASCADE',
+        help="The party which represents the import/export agent.")
+    address = fields.Many2One(
+        'party.address', "Address", required=True, ondelete='RESTRICT',
+        domain=[
+            ('party', '=', Eval('party', -1)),
+            ],
+        help="The address of the agent.")
+    tax_identifier = fields.Many2One(
+        'party.identifier', "Tax Identifier",
+        required=True, ondelete='RESTRICT',
+        help="The identifier of the agent for tax report.")
+
+    @classmethod
+    def __setup__(cls):
+        pool = Pool()
+        Party = pool.get('party.party')
+        super().__setup__()
+        tax_identifier_types = Party.tax_identifier_types()
+        cls.tax_identifier.domain = [
+            ('party', '=', Eval('party', -1)),
+            ('type', 'in', tax_identifier_types),
+            ]
+
+    @fields.depends('party', 'address', 'tax_identifier')
+    def on_change_party(self):
+        if self.party:
+            if not self.address or self.address.party != self.party:
+                self.address = self.party.address_get()
+            if (not self.tax_identifier
+                    or self.tax_identifier.party != self.party):
+                self.tax_identifier = self.party.tax_identifier
+        else:
+            self.address = self.tax_identifier = None
+
+    def get_rec_name(self, name):
+        return self.party.rec_name
+
+    @classmethod
+    def search_rec_name(cls, name, clause):
+        return [('party.rec_name', *clause[1:])]
+
+
+class AgentSelection(
+        DeactivableMixin, sequence_ordered(), MatchMixin, ModelSQL, ModelView):
+    __name__ = 'customs.agent.selection'
+
+    company = fields.Many2One(
+        'company.company', "Company", required=True)
+    from_country = fields.Many2One(
+        'country.country', "From Country", ondelete='RESTRICT',
+        help="Apply only when shipping from this country.\n"
+        "Leave empty for any countries.")
+    to_country = fields.Many2One(
+        'country.country', "To Country", ondelete='RESTRICT',
+        help="Apply only when shipping to this country.\n"
+        "Leave empty for any countries.")
+    agent = fields.Many2One(
+        'customs.agent', "Agent", required=True, ondelete='CASCADE',
+        help="The selected agent.")
+
+    @classmethod
+    def default_company(cls):
+        return Transaction().context.get('company')
+
+    @classmethod
+    def get_agent(cls, company, pattern):
+        for selection in cls.search([
+                    ('company', '=', company),
+                    ]):
+            if selection.match(pattern):
+                return selection.agent

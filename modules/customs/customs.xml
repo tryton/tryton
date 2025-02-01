@@ -135,5 +135,119 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_create" eval="True"/>
             <field name="perm_delete" eval="True"/>
         </record>
+
+        <record model="ir.ui.view" id="customs_agent_view_form">
+            <field name="model">customs.agent</field>
+            <field name="type">form</field>
+            <field name="name">customs_agent_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="customs_agent_view_list">
+            <field name="model">customs.agent</field>
+            <field name="type">tree</field>
+            <field name="name">customs_agent_list</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_customs_agent_form">
+            <field name="name">Agents</field>
+            <field name="res_model">customs.agent</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_customs_agent_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="customs_agent_view_list"/>
+            <field name="act_window" ref="act_customs_agent_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_customs_agent_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="customs_agent_view_form"/>
+            <field name="act_window" ref="act_customs_agent_form"/>
+        </record>
+        <menuitem
+            parent="menu_customs"
+            action="act_customs_agent_form"
+            sequence="20"
+            id="menu_customs_agent_form"/>
+
+        <record model="ir.model.access" id="access_customs_agent">
+            <field name="model">customs.agent</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_customs_agent_admin">
+            <field name="model">customs.agent</field>
+            <field name="group" ref="group_customs_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.ui.view" id="customs_agent_selection_view_form">
+            <field name="model">customs.agent.selection</field>
+            <field name="type">form</field>
+            <field name="name">customs_agent_selection_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="customs_agent_selection_view_list">
+            <field name="model">customs.agent.selection</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="10"/>
+            <field name="name">customs_agent_selection_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="customs_agent_selection_view_list_sequence">
+            <field name="model">customs.agent.selection</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="20"/>
+            <field name="name">customs_agent_selection_list_sequence</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_customs_agent_selection_form">
+            <field name="name">Selection</field>
+            <field name="res_model">customs.agent.selection</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_customs_agent_selection_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="customs_agent_selection_view_list_sequence"/>
+            <field name="act_window" ref="act_customs_agent_selection_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_customs_agent_selection_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="customs_agent_selection_view_form"/>
+            <field name="act_window" ref="act_customs_agent_selection_form"/>
+        </record>
+        <menuitem
+            parent="menu_customs_agent_form"
+            action="act_customs_agent_selection_form"
+            sequence="10"
+            id="menu_customs_agent_selection_form"/>
+
+        <record model="ir.model.access" id="access_customs_agent_selection">
+            <field name="model">customs.agent.selection</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_customs_agent_selection_admin">
+            <field name="model">customs.agent.selection</field>
+            <field name="group" ref="group_customs_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_customs_agent_selection_companies">
+            <field name="name">User in companies</field>
+            <field name="model">customs.agent.selection</field>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_customs_agent_selection_companies">
+            <field name="domain" eval="[('company', 'in', Eval('companies', []))]" pyson="1"/>
+            <field name="rule_group" ref="rule_group_customs_agent_selection_companies"/>
+        </record>
     </data>
 </tryton>
