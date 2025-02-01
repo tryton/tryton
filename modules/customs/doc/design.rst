@@ -17,9 +17,9 @@ The *Tariff Code* stores the `Harmonized System`_ code for a `Country
 
    The *Tariff Codes* can be found by opening the main menu item:
 
-   |Products --> Customs --> Tariff Codes|__
+   |Customs --> Tariff Codes|__
 
-   .. |Products --> Customs --> Tariff Codes| replace:: :menuselection:`Products --> Customs --> Tariff Codes`
+   .. |Customs --> Tariff Codes| replace:: :menuselection:`Customs --> Tariff Codes`
    __ https://demo.tryton.org/model/customs.tariff.code
 
 .. _model-customs.duty.rate:
@@ -39,9 +39,9 @@ The rate can be expressed as a fixed amount or an amount per `Unit of Measure
 
    The *Duty Rates* can be found by opening the main menu item:
 
-   |Products --> Customs --> Duty Rates|__
+   |Customs --> Duty Rates|__
 
-   .. |Products --> Customs --> Duty Rates| replace:: :menuselection:`Products --> Customs --> Duty Rates`
+   .. |Customs --> Duty Rates| replace:: :menuselection:`Customs --> Duty Rates`
    __ https://demo.tryton.org/model/customs.duty.rate
 
 .. _concept-product:
