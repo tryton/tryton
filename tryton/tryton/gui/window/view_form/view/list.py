@@ -8,9 +8,9 @@ import sys
 from collections import defaultdict
 from functools import wraps
 from io import StringIO
+from weakref import WeakValueDictionary
 
 from gi.repository import Gdk, GLib, GObject, Gtk
-from pygtkcompat.generictreemodel import GenericTreeModel
 
 import tryton.common as common
 from tryton.common import (
@@ -63,14 +63,29 @@ def path_convert_id2pos(model, id_path):
     return tuple(indexes)
 
 
-class AdaptModelGroup(GenericTreeModel):
+class ModelGroup(GObject.GObject, Gtk.TreeModel):
 
     def __init__(self, group, children_field=None):
-        super(AdaptModelGroup, self).__init__()
+        super().__init__()
+        self._pool = WeakValueDictionary()
         self.group = group
-        self.set_property('leak_references', False)
         self.children_field = children_field
         self.__removed = None  # XXX dirty hack to allow update of has_child
+
+    def _get_user_data(self, iter):
+        return self._pool.get(iter.user_data)
+
+    def _set_user_data(self, iter, data):
+        if data is not None:
+            iter.user_data = id(data)
+            self._pool[iter.user_data] = data
+        else:
+            iter.user_data = None
+
+    def _create_tree_iter(self, data):
+        iter = Gtk.TreeIter()
+        self._set_user_data(iter, data)
+        return iter
 
     def added(self, group, record):
         if (group is self.group
@@ -103,7 +118,6 @@ class AdaptModelGroup(GenericTreeModel):
     def remove(self, iter_):
         record = self.get_value(iter_, 0)
         record.group.remove(record)
-        self.invalidate_iters()
 
     def __move(self, record, path, offset=0):
         iter_ = self.get_iter(path)
@@ -172,43 +186,51 @@ class AdaptModelGroup(GenericTreeModel):
     def __len__(self):
         return len(self.group)
 
-    def on_get_flags(self):
+    def do_get_flags(self):
         if not self.children_field:
             return Gtk.TreeModelFlags.LIST_ONLY
         return 0
 
-    def on_get_n_columns(self):
+    def do_get_n_columns(self):
         # XXX
         return 1
 
-    def on_get_column_type(self, index):
+    def do_get_column_type(self, index):
         # XXX
         return GObject.TYPE_PYOBJECT
 
-    def on_get_path(self, record):
-        return record.get_index_path(self.group)
+    def do_get_path(self, iter):
+        record = self._get_user_data(iter)
+        path = record.get_index_path(self.group)
+        if path is None:
+            return None
+        else:
+            return Gtk.TreePath(path)
 
-    def on_get_iter(self, path):
+    def do_get_iter(self, path):
         group = self.group
         record = None
         for i in path:
             if group is None or i >= len(group):
-                return None
+                return (False, None)
             record = group[i]
             if not self.children_field:
                 break
             group = record.children_group(self.children_field)
-        return record
+        return (True, self._create_tree_iter(record))
 
-    def on_get_value(self, record, column):
-        return record
+    def do_get_value(self, iter, column):
+        return self._get_user_data(iter)
 
-    def on_iter_next(self, record):
-        if record is None:
-            return None
-        return record.next.get(id(record.group))
+    def do_iter_next(self, iter):
+        record = self._get_user_data(iter)
+        if record is not None:
+            record = record.next.get(id(record.group))
+        self._set_user_data(iter, record)
+        return record is not None
 
-    def on_iter_has_child(self, record):
+    def do_iter_has_child(self, parent):
+        record = self._get_user_data(parent) if parent else None
         if record is None or not self.children_field:
             return False
         children = record.children_group(self.children_field)
@@ -219,40 +241,49 @@ class AdaptModelGroup(GenericTreeModel):
             length -= 1
         return bool(length)
 
-    def on_iter_children(self, record):
+    def do_iter_children(self, parent):
+        record = self._get_user_data(parent) if parent else None
+        child = None
         if record is None:
             if self.group:
-                return self.group[0]
-            else:
-                return None
-        if self.children_field:
+                child = self.group[0]
+        elif self.children_field:
             children = record.children_group(self.children_field)
             if children:
-                return children[0]
-        return None
+                child = children[0]
+        if child:
+            return (True, self._create_tree_iter(child))
+        else:
+            return (False, None)
 
-    def on_iter_n_children(self, record):
+    def do_iter_n_children(self, iter):
+        record = self._get_user_data(iter) if iter else None
         if record is None:
             return len(self.group)
         if not self.children_field:
             return 0
         return len(record.children_group(self.children_field))
 
-    def on_iter_nth_child(self, record, nth):
+    def do_iter_nth_child(self, parent, n):
+        record = self._get_user_data(parent) if parent else None
+        child = None
         if record is None:
-            if nth < len(self.group):
-                return self.group[nth]
-            return None
-        if not self.children_field:
-            return None
-        if nth < len(record.children_group(self.children_field)):
-            return record.children_group(self.children_field)[nth]
-        return None
+            if n < len(self.group):
+                child = self.group[n]
+        elif self.children_field:
+            if n < len(record.children_group(self.children_field)):
+                child = record.children_group(self.children_field)[n]
+        if child:
+            return (True, self._create_tree_iter(child))
+        else:
+            return (False, None)
 
-    def on_iter_parent(self, record):
-        if record is None:
-            return None
-        return record.parent
+    def do_iter_parent(self, child):
+        record = self._get_user_data(child) if child else None
+        if record and record.parent:
+            return (True, self._create_tree_iter(record.parent))
+        else:
+            return (False, None)
 
 
 class TreeXMLViewParser(XMLViewParser):
@@ -1146,7 +1177,7 @@ class ViewTree(View):
         if (force
                 or not self.treeview.get_model()
                 or self.group != self.treeview.get_model().group):
-            model = AdaptModelGroup(self.group, self.children_field)
+            model = ModelGroup(self.group, self.children_field)
             self.treeview.set_model(model)
             # __select_changed resets current_record to None
             self.record = current_record

@@ -137,7 +137,7 @@ dist = setup(name=name,
     install_requires=[
         'pycairo',
         "python-dateutil",
-        'PyGObject>=3.19,<3.51',
+        'PyGObject>=3.19',
         ],
     extras_require={
         'calendar': ['GooCalendar>=0.7'],
