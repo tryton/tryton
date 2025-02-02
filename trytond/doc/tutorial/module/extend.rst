@@ -49,7 +49,7 @@ The ``__setup__`` class method is added to the :file:`party.py` file:
 
 .. code-block:: python
 
-    from trytond.pyson import Eval
+    from trytond.pyson import Bool, Eval
 
     class Party(metaclass=PoolMeta):
         ...
@@ -57,9 +57,7 @@ The ``__setup__`` class method is added to the :file:`party.py` file:
         @classmethod
         def __setup__(cls):
             super().__setup__()
-            cls.active.states['readonly'] = (
-                cls.active.states['readonly']
-                | Eval('opportunities', []))
+            cls.active.states['readonly'] = Bool(Eval('opportunities', []))
 
 .. note::
    You must always call the ``super()`` method when extending an existing
