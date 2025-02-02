@@ -24,8 +24,14 @@ A database can be initialized using this command line:
 
     $ trytond-admin -c <config file> -d <database name> --all
 
-At the end of the process, ``trytond-admin`` will ask to set the password for
-the ``admin`` user.
+At the end of the process, ``trytond-admin`` will ask you to set the email and
+password for the ``admin`` `user <model-res.user>` that will be used to connect
+to the server from one of the clients for the first time.
+
+.. note::
+
+   These users are different from the database user used in
+   :ref:`config-database.uri` of the database section.
 
 Update a database
 =================
