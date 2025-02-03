@@ -1,7 +1,9 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import phonenumbers
-from phonenumbers import NumberParseException
+try:
+    import phonenumbers
+except ImportError:
+    phonenumbers = None
 
 from trytond.pool import PoolMeta
 
@@ -11,18 +13,25 @@ class Company(metaclass=PoolMeta):
 
     @property
     def es_aeat_contact_phone(self):
-        phone = None
+        phone = ''
         for contact_mechanism in self.party.contact_mechanisms:
             if contact_mechanism.type in {'phone', 'mobile'}:
-                try:
-                    phonenumber = phonenumbers.parse(
-                        contact_mechanism.value, None)
-                except NumberParseException:
-                    continue
-                if phonenumber and phonenumber.country_code == 34:
+                if phonenumbers:
+                    try:
+                        phonenumber = phonenumbers.parse(
+                            contact_mechanism.value, 'ES')
+                    except phonenumbers.NumberParseException:
+                        continue
+                    if phonenumber and phonenumber.country_code == 34:
+                        phone = phonenumbers.format_number(
+                            phonenumber,
+                            phonenumbers.PhoneNumberFormat.NATIONAL)
+                        break
+                elif contact_mechanism.value:
                     phone = contact_mechanism.value
                     break
-        return phone
+        phone = phone.replace(' ', '')
+        return phone[:9].rjust(9, '0')
 
     @property
     def es_tax_identifier(self):

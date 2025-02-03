@@ -23,14 +23,21 @@ Activate modules::
     ...     'account_es',
     ...     create_company, partial(create_chart, chart='account_es.pgc_0_pyme'))
 
+    >>> Country = Model.get('country.country')
+
 Setup company::
 
+    >>> spain = Country(code="ES", name="Spain")
+    >>> spain.save()
     >>> company = get_company()
+    >>> address, = company.party.addresses
+    >>> address.country = spain
+    >>> address.save()
     >>> tax_identifier = company.party.identifiers.new()
     >>> tax_identifier.type = 'eu_vat'
     >>> tax_identifier.code = 'ESB01000009'
     >>> phone = company.party.contact_mechanisms.new()
-    >>> phone.value = '+34 666 66 66 66'
+    >>> phone.value = '666 66 66 66'
     >>> company.party.save()
 
 Create fiscal year::
