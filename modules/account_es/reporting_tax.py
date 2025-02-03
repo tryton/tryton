@@ -343,16 +343,16 @@ class PrintAEATStart(ModelView):
         required=True,
         domain=[
             ('type', '=', 'standard'),
-            ('fiscalyear.company', '=', Eval('company')),
-            ('start_date', '<=', (Eval('end_period'), 'start_date')),
+            ('fiscalyear.company', '=', Eval('company', -1)),
+            ('start_date', '<=', (Eval('end_period', None), 'start_date')),
             ])
     end_period = fields.Many2One(
         'account.period', "End Period",
         required=True,
         domain=[
             ('type', '=', 'standard'),
-            ('fiscalyear.company', '=', Eval('company')),
-            ('start_date', '>=', (Eval('start_period'), 'start_date'))
+            ('fiscalyear.company', '=', Eval('company', -1)),
+            ('start_date', '>=', (Eval('start_period', None), 'start_date'))
             ])
 
     @classmethod
@@ -650,14 +650,14 @@ class ECOperationListContext(ECSalesListContext):
     start_date = fields.Date("Start Date",
         domain=[
             If(Eval('end_date'),
-                ('start_date', '<=', Eval('end_date')),
+                ('start_date', '<=', Eval('end_date', None)),
                 (),
                 ),
             ])
     end_date = fields.Date("End Date",
         domain=[
             If(Eval('start_date'),
-                ('end_date', '>=', Eval('start_date')),
+                ('end_date', '>=', Eval('start_date', None)),
                 (),
                 ),
             ])
