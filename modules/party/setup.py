@@ -50,7 +50,7 @@ for dep in info.get('depends', []):
         requires.append(get_require_version('trytond_%s' % dep))
 requires.append(get_require_version('trytond'))
 
-tests_require = [get_require_version('proteus'), 'phonenumbers']
+tests_require = [get_require_version('proteus'), 'phonenumberslite']
 
 setup(name=name,
     version=version,
@@ -124,6 +124,7 @@ setup(name=name,
     extras_require={
         'test': tests_require,
         'VIES': ['python-stdnum[SOAP]'],
+        'phonenumbers-lite': ['phonenumberslite'],
         'phonenumbers': ['phonenumbers'],
         },
     zip_safe=False,
