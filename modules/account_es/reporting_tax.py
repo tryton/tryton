@@ -118,6 +118,7 @@ class AEATReport(Report):
         context['format_decimal'] = format_decimal
         context['format_integer'] = format_integer
         context['format_percentage'] = format_percentage
+        context['strip_accents'] = strip_accents
 
         with Transaction().set_context(periods=data['ids']):
             context['amounts'] = cls.compute_amounts()
