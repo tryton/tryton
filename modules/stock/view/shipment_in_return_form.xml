@@ -18,6 +18,10 @@ this repository contains the full copyright notices and license terms. -->
     <field name="planned_date"/>
     <label name="effective_date"/>
     <field name="effective_date"/>
+    <label name="company"/>
+    <field name="company"/>
+    <label name="warehouse"/>
+    <field name="warehouse"/>
     <notebook colspan="4">
         <page name="moves">
             <field name="moves" colspan="4" view_ids="stock.move_view_list_shipment"/>
