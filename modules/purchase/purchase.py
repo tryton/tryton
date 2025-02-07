@@ -89,6 +89,11 @@ class Purchase(
     number = fields.Char("Number", readonly=True)
     reference = fields.Char("Reference")
     description = fields.Char('Description', size=None, states=_states)
+    quotation_expire = fields.Date(
+        "Quotation Expire",
+        states={
+            'invisible': ~Eval('state').in_(['draft', 'quotation']),
+            })
     purchase_date = fields.Date('Purchase Date',
         states={
             'readonly': ~Eval('state').in_(['draft', 'quotation']),

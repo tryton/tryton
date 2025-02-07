@@ -5,6 +5,7 @@ this repository contains the full copyright notices and license terms. -->
     <field name="company" expand="1" optional="1"/>
     <field name="number" expand="1"/>
     <field name="reference" expand="1" optional="0"/>
+    <field name="quotation_expire" optional="1"/>
     <field name="purchase_date" optional="0"/>
     <field name="party" expand="2"/>
     <field name="warehouse" optional="1"/>
