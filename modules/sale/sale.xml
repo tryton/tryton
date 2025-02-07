@@ -554,4 +554,12 @@ this repository contains the full copyright notices and license terms. -->
             <field name="action" ref="wizard_sale_open_product"/>
         </record>
     </data>
+
+    <data noupdate="1">
+        <record model="ir.cron" id="cron_cancel_expired_quotation">
+            <field name="method">sale.sale|cancel_expired_quotation</field>
+            <field name="interval_number" eval="1"/>
+            <field name="interval_type">days</field>
+        </record>
+    </data>
 </tryton>

@@ -7,7 +7,8 @@ from decimal import Decimal
 from functools import partial
 from itertools import chain, groupby
 
-from sql import Null
+from sql import Literal, Null, operators
+from sql.conditionals import Coalesce
 from sql.functions import CharLength
 
 from trytond import backend
@@ -89,7 +90,39 @@ class Sale(
         states={
             'readonly': Eval('state') != 'draft',
             })
+    quotation_date = fields.Date(
+        "Quotation Date",
+        states={
+            'readonly': (
+                (Eval('state') != 'draft')
+                | (Eval('number') & Eval('lines'))),
+            'invisible': ~Eval('state').in_(['draft', 'quotation']),
+            },
+        help="When the quotation was edited.")
+    quotation_validity = fields.TimeDelta(
+        "Quotation Validity",
+        domain=['OR',
+            ('quotation_validity', '>=', datetime.timedelta()),
+            ('quotation_validity', '=', None),
+            ],
+        states={
+            'readonly': Eval('state') != 'draft',
+            'invisible': ~Eval('state').in_(['draft', 'quotation']),
+            },
+        help="How much time the quotation is valid.")
+    quotation_expire = fields.Function(fields.Date(
+            "Quotation Expire",
+            states={
+                'invisible': ~Eval('state').in_(['draft', 'quotation']),
+                },
+            help="Until when the quotation is still valid."),
+        'on_change_with_quotation_expire')
     sale_date = fields.Date('Sale Date',
+        domain=[
+            If(Eval('quotation_expire') & (Eval('state') == 'confirmed'),
+                ('sale_date', '<=', Eval('quotation_expire')),
+                ()),
+            ],
         states={
             'readonly': ~Eval('state').in_(['draft', 'quotation']),
             'required': ~Eval('state').in_(
@@ -437,12 +470,51 @@ class Sale(
 
     @fields.depends('company')
     def on_change_company(self):
+        self.quotation_validity = self.default_quotation_validity(
+            company=self.company.id if self.company else None)
         self.payment_term = self.default_payment_term(
             company=self.company.id if self.company else None)
         self.invoice_method = self.default_invoice_method(
             company=self.company.id if self.company else None)
         self.shipment_method = self.default_shipment_method(
             company=self.company.id if self.company else None)
+
+    @classmethod
+    def default_quotation_validity(cls, **pattern):
+        Config = Pool().get('sale.configuration')
+        config = Config(1)
+        return config.get_multivalue('sale_quotation_validity', **pattern)
+
+    @fields.depends('company', 'quotation_date', 'quotation_validity')
+    def on_change_with_quotation_expire(self, name=None):
+        pool = Pool()
+        Date = pool.get('ir.date')
+        if self.quotation_validity is not None:
+            with Transaction().set_context(
+                    company=self.company.id if self.company else None):
+                today = Date.today()
+            return (self.quotation_date or today) + self.quotation_validity
+
+    @classmethod
+    def domain_quotation_expire(cls, domain, tables):
+        pool = Pool()
+        Date = pool.get('ir.date')
+        today = Date.today()
+        field = cls.quotation_expire._field
+        table, _ = tables[None]
+        name, operator, value = domain
+        Operator = fields.SQL_OPERATORS[operator]
+        column = (
+            Coalesce(table.quotation_date, today) + Coalesce(
+                table.quotation_validity, datetime.timedelta()))
+        expression = Operator(column, field._domain_value(operator, value))
+        if isinstance(expression, operators.In) and not expression.right:
+            expression = Literal(False)
+        elif isinstance(expression, operators.NotIn) and not expression.right:
+            expression = Literal(True)
+        expression = field._domain_add_null(
+            column, operator, value, expression)
+        return expression
 
     @staticmethod
     def default_state():
@@ -1061,8 +1133,16 @@ class Sale(
     @Workflow.transition('quotation')
     @set_employee('quoted_by')
     def quote(cls, sales):
-        for sale in sales:
-            sale.check_for_quotation()
+        pool = Pool()
+        Date = pool.get('ir.date')
+        for company, c_sales in groupby(sales, key=lambda s: s.company):
+            with Transaction().set_context(company=company.id):
+                today = Date.today()
+            for sale in c_sales:
+                sale.check_for_quotation()
+                if not sale.quotation_date:
+                    sale.quotation_date = today
+        cls.save(sales)
         cls.set_number(sales)
 
     @property
@@ -1222,6 +1302,18 @@ class Sale(
     @ModelView.button_action('sale.wizard_modify_header')
     def modify_header(cls, sales):
         pass
+
+    @classmethod
+    def cancel_expired_quotation(cls):
+        pool = Pool()
+        Date = pool.get('ir.date')
+        today = Date.today()
+        sales = cls.search([
+                ('state', '=', 'quotation'),
+                ('quotation_expire', '<', today),
+                ('company', '=', Transaction().context.get('company', -1)),
+                ])
+        cls.cancel(sales)
 
 
 class SaleIgnoredInvoice(ModelSQL):

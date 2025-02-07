@@ -1,5 +1,8 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+
+import datetime as dt
+
 from trytond.model import (
     ModelSingleton, ModelSQL, ModelView, ValueMixin, fields)
 from trytond.modules.company.model import (
@@ -11,6 +14,12 @@ sale_invoice_method = fields.Selection(
     'get_sale_invoice_methods', "Sale Invoice Method")
 sale_shipment_method = fields.Selection(
     'get_sale_shipment_methods', "Sale Shipment Method")
+sale_quotation_validity = fields.TimeDelta(
+    "Sale Quotation Validity",
+    domain=['OR',
+        ('sale_quotation_validity', '>=', dt.timedelta()),
+        ('sale_quotation_validity', '=', None),
+        ])
 
 
 def get_sale_methods(field_name):
@@ -41,6 +50,7 @@ class Configuration(
                     [Eval('context', {}).get('company', -1), None]),
                 ('sequence_type', '=', Id('sale', 'sequence_type_sale')),
                 ]))
+    sale_quotation_validity = fields.MultiValue(sale_quotation_validity)
     sale_invoice_method = fields.MultiValue(sale_invoice_method)
     get_sale_invoice_methods = get_sale_methods('invoice_method')
     sale_shipment_method = fields.MultiValue(sale_shipment_method)
@@ -62,6 +72,8 @@ class Configuration(
             return pool.get('sale.configuration.sale_method')
         if field == 'sale_sequence':
             return pool.get('sale.configuration.sequence')
+        elif field == 'sale_quotation_validity':
+            return pool.get('sale.configuration.quotation')
         return super(Configuration, cls).multivalue_model(field)
 
     default_sale_sequence = default_func('sale_sequence')
@@ -102,3 +114,8 @@ class ConfigurationSaleMethod(ModelSQL, ValueMixin):
     @classmethod
     def default_sale_shipment_method(cls):
         return 'order'
+
+
+class ConfigurationQuotation(ModelSQL, ValueMixin):
+    __name__ = 'sale.configuration.quotation'
+    sale_quotation_validity = sale_quotation_validity

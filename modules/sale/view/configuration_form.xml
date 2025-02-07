@@ -10,6 +10,8 @@ this repository contains the full copyright notices and license terms. -->
     <label name="sale_shipment_method" />
     <field name="sale_shipment_method" />
     <newline/>
+    <label name="sale_quotation_validity"/>
+    <field name="sale_quotation_validity"/>
     <label name="sale_process_after"/>
     <field name="sale_process_after"/>
 </form>

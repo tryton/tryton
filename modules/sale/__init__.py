@@ -4,12 +4,17 @@
 from trytond.pool import Pool
 
 from . import (
-    configuration, invoice, party, product, sale, sale_reporting, stock)
+    configuration, invoice, ir, party, product, sale, sale_reporting, stock)
 
 
 def register():
     Pool.register(
+        ir.Cron,
         stock.Move,
+        configuration.Configuration,
+        configuration.ConfigurationSequence,
+        configuration.ConfigurationSaleMethod,
+        configuration.ConfigurationQuotation,
         sale.Sale,
         sale.SaleIgnoredInvoice,
         sale.SaleRecreatedInvoice,
@@ -31,9 +36,6 @@ def register():
         sale.HandleShipmentExceptionAsk,
         sale.HandleInvoiceExceptionAsk,
         sale.ReturnSaleStart,
-        configuration.Configuration,
-        configuration.ConfigurationSequence,
-        configuration.ConfigurationSaleMethod,
         sale_reporting.Context,
         sale_reporting.Main,
         sale_reporting.MainTimeseries,

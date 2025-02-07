@@ -28,6 +28,30 @@ In order to change these without needing to remove the sales lines you can use
 the :guilabel:`Modify Header` button to start the
 `Modify Header <wizard-sale.modify_header>` wizard.
 
+.. _Sending a quotation:
+
+Sending a quotation
+===================
+
+A draft `Sale <model-sale.sale>` can be set to a quotation state with a
+validity period to calculate an expiration date based from the quotation date.
+The quotation can then be sent to the customer for confirmation.
+
+The validity of a quotation can be extended by resetting to draft and edit the
+:guilabel:`Quotation Validity`.
+In order to change the quotation date, you can use the :guilabel:`Modify
+Header` button to start the `Modify Header <wizard-sale.modify_header>` wizard
+which will update the prices.
+
+.. note::
+
+   A quotation with a sale date after the expiration date cannot be confirmed.
+
+.. note::
+
+   If an quotation reaches its expiration without being confirmed, it will be
+   automatically cancelled by a `scheduled task <trytond:model-ir.cron>`.
+
 .. _Shipping a sale:
 
 Shipping a sale

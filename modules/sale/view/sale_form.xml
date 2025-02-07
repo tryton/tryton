@@ -25,18 +25,29 @@ this repository contains the full copyright notices and license terms. -->
     <field name="reference"/>
 
     <notebook colspan="6">
-        <page string="Sale" id="sale">
+        <page string="Sale" id="sale" col="6">
             <label name="sale_date"/>
             <field name="sale_date"/>
             <label name="payment_term"/>
             <field name="payment_term"/>
-            <label name="warehouse"/>
-            <field name="warehouse"/>
             <label name="currency"/>
             <field name="currency"/>
-            <field name="lines" colspan="4"
-                view_ids="sale.sale_line_view_tree_sequence"/>
-            <group col="2" colspan="2" id="states" yfill="1">
+
+            <label name="quotation_date"/>
+            <field name="quotation_date"/>
+            <label name="quotation_validity"/>
+            <field name="quotation_validity"/>
+            <label name="quotation_expire"/>
+            <field name="quotation_expire"/>
+
+            <label name="warehouse"/>
+            <field name="warehouse"/>
+            <label name="shipping_date"/>
+            <field name="shipping_date"/>
+
+            <field name="lines" colspan="6" view_ids="sale.sale_line_view_tree_sequence"/>
+
+            <group col="2" colspan="3" id="states" yfill="1">
                 <label name="invoice_state"/>
                 <field name="invoice_state"/>
                 <label name="shipment_state"/>
@@ -44,7 +55,7 @@ this repository contains the full copyright notices and license terms. -->
                 <label name="state"/>
                 <field name="state"/>
             </group>
-            <group col="10" colspan="2" id="amount" yfill="1">
+            <group col="10" colspan="3" id="amount" yfill="1">
                 <label name="untaxed_amount" xalign="1.0" xexpand="1" xfill="0"/>
                 <field name="untaxed_amount" xalign="1.0" xexpand="0"/>
                 <newline/>
@@ -62,13 +73,12 @@ this repository contains the full copyright notices and license terms. -->
             <field name="company"/>
             <label name="origin"/>
             <field name="origin"/>
+
             <label name="invoice_method"/>
             <field name="invoice_method"/>
             <label name="shipment_method"/>
             <field name="shipment_method"/>
-            <label name="shipping_date"/>
-            <field name="shipping_date"/>
-            <newline/>
+
             <label name="quoted_by"/>
             <field name="quoted_by"/>
             <label name="confirmed_by"/>
