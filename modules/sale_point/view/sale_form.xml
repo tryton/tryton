@@ -16,11 +16,11 @@ this repository contains the full copyright notices and license terms. -->
                 <field name="state"/>
             </group>
             <group col="2" colspan="2" id="amounts" yfill="1">
-                <label name="total_tax" xalign="1.0" xexpand="1"/>
+                <label name="total_tax" xalign="1.0" xexpand="1" xfill="0"/>
                 <field name="total_tax" xalign="1.0" xexpand="0"/>
-                <label name="total" xalign="1.0" xexpand="1"/>
+                <label name="total" xalign="1.0" xexpand="1" xfill="0"/>
                 <field name="total" xalign="1.0" xexpand="0"/>
-                <label name="amount_to_pay" xalign="1.0" xexpand="1"/>
+                <label name="amount_to_pay" xalign="1.0" xexpand="1" xfill="0"/>
                 <field name="amount_to_pay" xalign="1.0" xexpand="0"/>
             </group>
         </page>

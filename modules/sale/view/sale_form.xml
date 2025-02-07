@@ -45,15 +45,15 @@ this repository contains the full copyright notices and license terms. -->
                 <field name="state"/>
             </group>
             <group col="-1" colspan="2" id="amount" yfill="1">
-                <label name="untaxed_amount" xalign="1.0" xexpand="1"/>
+                <label name="untaxed_amount" xalign="1.0" xexpand="1" xfill="0"/>
                 <field name="untaxed_amount" xalign="1.0" xexpand="0"/>
                 <newline/>
 
-                <label name="tax_amount" xalign="1.0" xexpand="1"/>
+                <label name="tax_amount" xalign="1.0" xexpand="1" xfill="0"/>
                 <field name="tax_amount" xalign="1.0" xexpand="0"/>
                 <newline/>
 
-                <label name="total_amount" xalign="1.0" xexpand="1"/>
+                <label name="total_amount" xalign="1.0" xexpand="1" xfill="0"/>
                 <field name="total_amount" xalign="1.0" xexpand="0"/>
             </group>
         </page>

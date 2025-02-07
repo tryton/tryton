@@ -21,7 +21,7 @@ this repository contains the full copyright notices and license terms. -->
                 view_ids="purchase_requisition.purchase_requisition_line_view_list_sequence"/>
             <label id="empty" colspan="2"/>
             <group col="2" colspan="2" id="amount" yfill="1">
-                <label name="total_amount" xalign="1.0" xexpand="1"/>
+                <label name="total_amount" xalign="1.0" xexpand="1" xfill="0"/>
                 <field name="total_amount" xalign="1.0" xexpand="0"/>
             </group>
         </page>
