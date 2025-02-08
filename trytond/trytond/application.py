@@ -9,12 +9,11 @@ from io import StringIO
 __all__ = ['app']
 
 # Logging must be set before importing
-logging_config = os.environ.get('TRYTOND_LOGGING_CONFIG')
-logging_level = int(os.environ.get(
-        'TRYTOND_LOGGING_LEVEL', default=logging.ERROR))
-if logging_config:
+if logging_config := os.environ.get('TRYTOND_LOGGING_CONFIG'):
     logging.config.fileConfig(logging_config)
 else:
+    logging_level = int(
+        os.environ.get('TRYTOND_LOGGING_LEVEL') or logging.ERROR)
     logformat = ('%(process)s %(thread)s [%(asctime)s] '
         '%(levelname)s %(name)s %(message)s')
     level = max(logging_level, logging.NOTSET)

@@ -188,8 +188,9 @@ def config_log(options):
     else:
         logformat = ('%(process)s %(thread)s [%(asctime)s] '
             '%(levelname)s %(name)s %(message)s')
-        if not options.verbose and 'TRYTOND_LOGGING_LEVEL' in os.environ:
-            logging_level = int(os.environ['TRYTOND_LOGGING_LEVEL'])
+        if not options.verbose:
+            logging_level = int(
+                os.environ.get('TRYTOND_LOGGING_LEVEL') or logging.ERROR)
             level = max(logging_level, logging.NOTSET)
         else:
             level = max(logging.ERROR - options.verbose * 10, logging.NOTSET)
