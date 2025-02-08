@@ -25,6 +25,24 @@ Before
      ALTER TABLE IF EXISTS "ir_model" RENAME COLUMN "model" TO "name";
      ALTER TABLE IF EXISTS "ir_model_field" RENAME COLUMN "field_description" TO "string";
 
+After
+~~~~~
+
+* If ``stock`` module is activated with internal shipment using transit
+  location, fill the internal transit location with the ``trytond-console``:
+
+  .. code-block:: python
+
+     Shipment = pool.get('stock.shipment.internal')
+     shipments = Shipment.search([('state', 'not in', ['request', 'draft'])])
+     for shipment in shipments:
+         state = shipment.state
+         shipment.state = 'draft'
+         shipment.internal_transit_location = shipment.transit_location
+         shipment.state = state
+     Shipment.save(shipments)
+     transaction.commit()
+
 7.4
 ---
 

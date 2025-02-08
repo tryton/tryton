@@ -2350,6 +2350,15 @@ class ShipmentInternal(
             help="Where the stock is located while it is in transit between "
             "the warehouses."),
         'on_change_with_transit_location')
+    internal_transit_location = fields.Many2One(
+        'stock.location', "Internal Transit Location",
+        readonly=True,
+        domain=[
+            ('type', '=', 'storage'),
+            ('parent', '=', None),
+            ('id', 'not in', [
+                    Eval('from_location', -1), Eval('to_location', -1)]),
+            ])
     warehouse = fields.Function(
         fields.Many2One(
             'stock.location', "Warehouse",
@@ -2564,18 +2573,25 @@ class ShipmentInternal(
     def default_company():
         return Transaction().context.get('company')
 
-    @fields.depends('from_location', 'to_location', 'company')
+    @fields.depends(
+        'state', 'from_location', 'to_location', 'company',
+        'internal_transit_location')
     def on_change_with_transit_location(self, name=None):
         pool = Pool()
         Config = pool.get('stock.configuration')
-        if (self.from_location
-                and self.to_location
-                and self.from_location.warehouse != self.to_location.warehouse
-                and self.from_location.warehouse
-                and self.to_location.warehouse):
-            return Config(1).get_multivalue(
-                'shipment_internal_transit',
-                company=self.company.id if self.company else None)
+        if self.state in {'request', 'draft'}:
+            from_ = self.from_location
+            to = self.to_location
+            if (from_
+                    and to
+                    and from_.warehouse != to.warehouse
+                    and from_.warehouse
+                    and to.warehouse):
+                return Config(1).get_multivalue(
+                    'shipment_internal_transit',
+                    company=self.company.id if self.company else None)
+        else:
+            return self.internal_transit_location
 
     @fields.depends('from_location')
     def on_change_with_warehouse(self, name=None):
@@ -2840,6 +2856,10 @@ class ShipmentInternal(
         cls.set_number(shipments)
         cls._set_transit(shipments)
         cls._sync_moves(shipments)
+        for shipment in shipments:
+            shipment.internal_transit_location = shipment.transit_location
+            shipment.state = 'waiting'
+        cls.save(shipments)
 
     @classmethod
     @Workflow.transition('assigned')
