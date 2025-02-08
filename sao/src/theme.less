@@ -232,7 +232,9 @@ input[type="radio"],
 .radio input[type="radio"],
 .radio-inline input[type="radio"] {
     position: relative;
+    vertical-align: top;
     border: none;
+    background-color: transparent;
     -webkit-appearance: none;
     appearance: none;
     cursor: pointer;
@@ -247,9 +249,6 @@ input[type="radio"],
         display: block;
         width: 18px;
         height: 18px;
-        left: 50%;
-        margin: auto;
-        margin-left: -9px;
         border-radius: 50%;
         .transition(240ms);
     }
@@ -261,12 +260,19 @@ input[type="radio"],
 
     &:before {
         position: absolute;
+        left: 0;
+        top: -3px;
         background-color: @brand-primary;
         .scale(0);
     }
 
+    &.form-control:before {
+        left: 4px;
+    }
+
     &:after {
         position: relative;
+        top: -3px;
         border: 2px solid @gray;
     }
 
@@ -295,10 +301,15 @@ input[type="checkbox"],
 .checkbox-inline input[type="checkbox"] {
     position: relative;
     border: none;
+    margin-bottom: -4px;
     -webkit-appearance: none;
     appearance: none;
     cursor: pointer;
-    width: 18px;
+    width: 18px !important;
+
+    &.form-control {
+        margin-bottom: 0;
+    }
 
     &:focus {
         outline: none;
@@ -308,45 +319,44 @@ input[type="checkbox"],
         border-color: @brand-primary;
     }
 
-    &:before {
+    &:after {
         content: "";
         display: block;
         width: 18px;
         height: 18px;
-        margin: auto;
+        margin-top: -2px;
         border: 2px solid @gray;
         border-radius: 2px;
         .transition(240ms);
     }
 
-    &.form-control:before {
+    &.form-control:after {
         position: absolute;
         top: 6px;
         left: 0;
         right: 0;
     }
 
-    &:checked:after {
+    &:checked:before {
         content: "";
         position: absolute;
-        top: 1px;
-        left: 50%;
+        top: 0;
+        left: 6px;
         display: table;
         width: 6px;
         height: 12px;
-        margin: auto;
-        margin-left: -3px;
         border: 2px solid #fff;
         border-top-width: 0;
         border-left-width: 0;
         .rotate(45deg);
+        z-index: 100;
     }
 
-    &.form-control:after {
+    &.form-control:before {
         top: 6px;
     }
 
-    &:indeterminate:after {
+    &:indeterminate:before {
         content: "";
         position: absolute;
         top: 50%;
@@ -358,19 +368,19 @@ input[type="checkbox"],
         background: #fff;
     }
 
-    &:checked:before,
-    &:indeterminate:before {
+    &:checked:after,
+    &:indeterminate:after {
         background-color: @brand-primary;
         border-color: @brand-primary;
     }
 
-    &:disabled:before,
-    &[readonly]:before {
+    &:disabled:after,
+    &[readonly]:after {
         border-color: @gray-light;
     }
 
-    &:disabled:checked:before,
-    &[readonly]:checked:before {
+    &:disabled:checked:after,
+    &[readonly]:checked:after{
         background-color: @gray-light;
         border-color: transparent;
     }

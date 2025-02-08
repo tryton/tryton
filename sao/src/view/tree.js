@@ -301,13 +301,14 @@
                     'role': 'presentation',
                 }).append(jQuery('<a/>', {
                     'role': 'menuitem',
-                }).append(jQuery('<label/>', {
+                }).append(jQuery('<div/>', {
                     'class': 'checkbox',
+                }).append(jQuery('<label/>', {
                 }).append(jQuery('<input/>', {
                     'type': 'checkbox',
                     'checked': visible,
                 }).change(columns, toggle))
-                    .append(' ' + string))));
+                    .append(' ' + string)))));
             }
             if (!jQuery.isEmptyObject(this.optionals)) {
                 menu.append(jQuery('<li/>', {

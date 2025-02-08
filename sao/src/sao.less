@@ -58,6 +58,12 @@ html[theme="default"] {
     }
 }
 
+.radio,
+.checkbox {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
 .btn-horizontal {
     .text-overflow()
 }
@@ -667,6 +673,12 @@ img.icon {
         td.draggable-handle {
             cursor: grab;
         }
+        th.selection-state {
+            > input {
+                margin-top: 0;
+                margin-bottom: 0;
+            }
+        }
         th.selection-state, td.selection-state {
             > input {
                 .center-block();
@@ -679,12 +691,6 @@ img.icon {
             &.tree-menu {
                 cursor: pointer;
                 overflow: visible;
-
-                .dropdown {
-                    input[type="checkbox"] {
-                        margin-left: 5px;
-                    }
-                }
             }
             overflow: hidden;
             text-overflow: ellipsis;
@@ -798,6 +804,10 @@ img.icon {
             > * {
                 overflow: hidden;
                 text-overflow: ellipsis;
+            }
+            > input[type="checkbox"],
+            > input[type="radio"] {
+                overflow: unset;
             }
         }
        .prefix {
