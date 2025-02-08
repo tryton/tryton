@@ -4,7 +4,7 @@
 @import "bootstrap-rtl";
 @import "sao-variables";
 html {
-    user-select: none;
+    .user-select(none);
 }
 
 html[theme="default"] {
@@ -132,7 +132,7 @@ html[theme="default"] {
 }
 
 .alert {
-    user-select: text;
+    .user-select(text);
 }
 
 #tablist {
@@ -247,7 +247,7 @@ html[theme="default"] {
     .treeview {
         height: auto;
         .cell {
-            user-select: none;
+            .user-select(none);
         }
     }
     @media (min-width: @screen-md-min) {
@@ -780,7 +780,7 @@ img.icon {
     .cell {
         display: flex;
         justify-content: space-between;
-        user-select: text;
+        .user-select(text);
 
         > * {
             align-self: center;
