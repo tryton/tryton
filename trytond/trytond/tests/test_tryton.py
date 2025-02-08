@@ -62,13 +62,12 @@ Pool.test = True
 Pool.start()
 USER = 1
 CONTEXT = {}
-if 'DB_NAME' in os.environ:
-    DB_NAME = os.environ['DB_NAME']
-elif backend.name == 'sqlite':
-    DB_NAME = ':memory:'
-else:
-    DB_NAME = 'test_' + str(int(time.time()))
-os.environ['DB_NAME'] = DB_NAME
+if not (DB_NAME := os.environ.get('DB_NAME')):
+    if backend.name == 'sqlite':
+        DB_NAME = ':memory:'
+    else:
+        DB_NAME = 'test_' + str(int(time.time()))
+    os.environ['DB_NAME'] = DB_NAME
 DB_CACHE = os.environ.get('DB_CACHE')
 
 
