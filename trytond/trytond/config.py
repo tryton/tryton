@@ -117,11 +117,15 @@ class TrytonConfigParser(configparser.ConfigParser):
             self.set(section, option, value)
 
     def update_etc(self, configfile=os.environ.get('TRYTOND_CONFIG')):
+        if not configfile:
+            return []
         if isinstance(configfile, str):
             configfile = [configfile]
-        if not configfile or not [_f for _f in configfile if _f]:
+        configfile = [
+            os.path.expanduser(filename) for filename in configfile
+            if filename]
+        if not configfile:
             return []
-        configfile = [os.path.expanduser(filename) for filename in configfile]
         read_files = self.read(configfile)
         logger.info('using %s as configuration files', ', '.join(read_files))
         if configfile != read_files:
