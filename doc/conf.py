@@ -50,6 +50,13 @@ info = get_info()
 
 html_theme = 'sphinx_book_theme'
 html_theme_options = {
+    'logo': {
+        'alt_text': "Tryton Documenation",
+        'image_light': 'https://docs.tryton.org/logo-light.svg',
+        'image_dark': 'https://docs.tryton.org/logo-dark.svg',
+        'link': base_url,
+        },
+    'home_page_in_toc': True,
     'repository_provider': 'gitlab',
     'repository_url': 'https://code.tryton.org/tryton',
     'repository_branch': info['branch'],
