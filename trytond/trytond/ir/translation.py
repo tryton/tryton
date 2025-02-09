@@ -1374,7 +1374,10 @@ class TranslationClean(Wizard):
         if not field:
             return True
         help_ = field.help
-        help_selection = list(getattr(field, 'help_selection', {}).values())
+        if help_selection := getattr(field, 'help_selection', {}):
+            help_selection = list(help_selection.values())
+        else:
+            help_selection = []
         if not help_ and not help_selection:
             return True
         if translation.src not in list(help_) + help_selection:
