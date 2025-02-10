@@ -71,7 +71,8 @@ In Tryton you would set this up by creating a payment term like this::
    Name: 30 Days
    Line 1:
       Type: Remainder
-      Number of Days: 30
+      Delta 1:
+         Number of Days: 30
 
 You may want to request payment at the end of the month that the invoice
 was raised in, you can do this with::
@@ -79,7 +80,19 @@ was raised in, you can do this with::
    Name: End Of Month
    Line 1:
       Type: Remainder
-      Day of Month: 31
+      Delta 1:
+         Day of Month: 31
+
+You can use multiple deltas from more complex calculations such as "End of the
+Month after 45 Days"::
+
+   Name: EOM after 45 Days
+   Line 1:
+      Type: Remainder
+      Delta 1:
+         Number of Days: 45
+      Delta 2:
+         Day of Month: 31
 
 You can also define payment terms in which the payment is expected in stages.
 For example, to require a fixed amount of 100 immediately, then 50% of what
