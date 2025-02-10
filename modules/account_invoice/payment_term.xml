@@ -122,4 +122,130 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">payment_term_test_result_list</field>
         </record>
     </data>
+
+    <data noupdate="1">
+        <record model="account.invoice.payment_term" id="payment_term_0">
+            <field name="name">Upon Receipt</field>
+        </record>
+        <record model="account.invoice.payment_term.line" id="payment_term_0_line1">
+            <field name="payment" ref="payment_term_0"/>
+            <field name="sequence" eval="10"/>
+            <field name="type">remainder</field>
+        </record>
+
+        <record model="account.invoice.payment_term" id="payment_term_net10">
+            <field name="name">Net 10 days</field>
+        </record>
+        <record model="account.invoice.payment_term.line" id="payment_term_net10_line1">
+            <field name="payment" ref="payment_term_net10"/>
+            <field name="sequence" eval="10"/>
+            <field name="type">remainder</field>
+        </record>
+        <record model="account.invoice.payment_term.line.delta" id="payment_term_net10_line1_delta1">
+            <field name="line" ref="payment_term_net10_line1"/>
+            <field name="sequence" eval="10"/>
+            <field name="days" eval="10"/>
+        </record>
+
+        <record model="account.invoice.payment_term" id="payment_term_net15">
+            <field name="name">Net 15 days</field>
+        </record>
+        <record model="account.invoice.payment_term.line" id="payment_term_net15_line1">
+            <field name="payment" ref="payment_term_net15"/>
+            <field name="sequence" eval="10"/>
+            <field name="type">remainder</field>
+        </record>
+        <record model="account.invoice.payment_term.line.delta" id="payment_term_net15_line1_delta1">
+            <field name="line" ref="payment_term_net15_line1"/>
+            <field name="sequence" eval="10"/>
+            <field name="days" eval="15"/>
+        </record>
+
+        <record model="account.invoice.payment_term" id="payment_term_net30">
+            <field name="name">Net 30 days</field>
+        </record>
+        <record model="account.invoice.payment_term.line" id="payment_term_net30_line1">
+            <field name="payment" ref="payment_term_net30"/>
+            <field name="sequence" eval="10"/>
+            <field name="type">remainder</field>
+        </record>
+        <record model="account.invoice.payment_term.line.delta" id="payment_term_net30_line1_delta1">
+            <field name="line" ref="payment_term_net30_line1"/>
+            <field name="sequence" eval="10"/>
+            <field name="days" eval="30"/>
+        </record>
+
+        <record model="account.invoice.payment_term" id="payment_term_net60">
+            <field name="name">Net 60 days</field>
+        </record>
+        <record model="account.invoice.payment_term.line" id="payment_term_net60_line1">
+            <field name="payment" ref="payment_term_net60"/>
+            <field name="sequence" eval="10"/>
+            <field name="type">remainder</field>
+        </record>
+        <record model="account.invoice.payment_term.line.delta" id="payment_term_net60_line1_delta1">
+            <field name="line" ref="payment_term_net60_line1"/>
+            <field name="sequence" eval="10"/>
+            <field name="days" eval="60"/>
+        </record>
+
+        <record model="account.invoice.payment_term" id="payment_term_eom">
+            <field name="name">End of Month</field>
+        </record>
+        <record model="account.invoice.payment_term.line" id="payment_term_eom_line1">
+            <field name="payment" ref="payment_term_eom"/>
+            <field name="sequence" eval="10"/>
+            <field name="type">remainder</field>
+        </record>
+        <record model="account.invoice.payment_term.line.delta" id="payment_term_eom_line1_delta1">
+            <field name="line" ref="payment_term_eom_line1"/>
+            <field name="sequence" eval="10"/>
+            <field name="day" eval="31"/>
+        </record>
+
+        <record model="account.invoice.payment_term" id="payment_term_eom_following">
+            <field name="name">End of Month Following</field>
+        </record>
+        <record model="account.invoice.payment_term.line" id="payment_term_eom_following_line1">
+            <field name="payment" ref="payment_term_eom_following"/>
+            <field name="sequence" eval="10"/>
+            <field name="type">remainder</field>
+        </record>
+        <record model="account.invoice.payment_term.line.delta" id="payment_term_eom_following_line1_delta1">
+            <field name="line" ref="payment_term_eom_following_line1"/>
+            <field name="sequence" eval="10"/>
+            <field name="months" eval="1"/>
+            <field name="day" eval="31"/>
+        </record>
+
+        <record model="account.invoice.payment_term" id="payment_term_30_eom">
+            <field name="name">Net 30 days End of Month</field>
+        </record>
+        <record model="account.invoice.payment_term.line" id="payment_term_30_eom_line1">
+            <field name="payment" ref="payment_term_30_eom"/>
+            <field name="sequence" eval="10"/>
+            <field name="type">remainder</field>
+        </record>
+        <record model="account.invoice.payment_term.line.delta" id="payment_term_30_eom_line1_delta1">
+            <field name="line" ref="payment_term_30_eom_line1"/>
+            <field name="sequence" eval="10"/>
+            <field name="day" eval="31"/>
+            <field name="days" eval="30"/>
+        </record>
+
+        <record model="account.invoice.payment_term" id="payment_term_60_eom">
+            <field name="name">Net 60 days End of Month</field>
+        </record>
+        <record model="account.invoice.payment_term.line" id="payment_term_60_eom_line1">
+            <field name="payment" ref="payment_term_60_eom"/>
+            <field name="sequence" eval="10"/>
+            <field name="type">remainder</field>
+        </record>
+        <record model="account.invoice.payment_term.line.delta" id="payment_term_60_eom_line1_delta1">
+            <field name="line" ref="payment_term_60_eom_line1"/>
+            <field name="sequence" eval="10"/>
+            <field name="day" eval="31"/>
+            <field name="days" eval="60"/>
+        </record>
+    </data>
 </tryton>

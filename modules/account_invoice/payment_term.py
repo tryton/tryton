@@ -36,6 +36,8 @@ class PaymentTerm(DeactivableMixin, ModelSQL, ModelView):
 
     @classmethod
     def check_remainder(cls, terms, field_names=None):
+        if Transaction().user == 0:
+            return
         if field_names and 'lines' not in field_names:
             return
         for term in terms:
