@@ -610,6 +610,9 @@ def post_import(pool, module, to_delete):
 
     for mrec in mdata:
         model, db_id, fs_id = mrec.model, mrec.db_id, mrec.fs_id
+        if db_id is None:
+            mdata_delete.append(mrec)
+            continue
 
         try:
             # Deletion of the record
