@@ -56,11 +56,11 @@ Create a budget::
 
     >>> revenue_budget, = BudgetLine.find(
     ...     [('account', '=', accounts['revenue'].id)])
-    >>> revenue_budget.amount = Decimal(-150)
+    >>> revenue_budget.amount = Decimal(150)
     >>> revenue_budget.save()
     >>> expense_budget, = BudgetLine.find(
     ...     [('account', '=', accounts['expense'].id)])
-    >>> expense_budget.amount = Decimal(50)
+    >>> expense_budget.amount = Decimal(-50)
     >>> expense_budget.save()
 
     >>> budget.click('update_lines')
@@ -103,21 +103,21 @@ Check actual amount of the budget::
 
     >>> pl_budget, = budget.root_lines
     >>> pl_budget.total_amount
-    Decimal('-100.00')
+    Decimal('100.00')
     >>> pl_budget.actual_amount
-    Decimal('-70.00')
+    Decimal('70.00')
     >>> pl_budget.percentage
     Decimal('0.7000')
     >>> revenue_budget.total_amount
-    Decimal('-150.00')
+    Decimal('150.00')
     >>> revenue_budget.actual_amount
-    Decimal('-130.00')
+    Decimal('130.00')
     >>> revenue_budget.percentage
     Decimal('0.8667')
     >>> expense_budget.total_amount
-    Decimal('50.00')
+    Decimal('-50.00')
     >>> expense_budget.actual_amount
-    Decimal('60.00')
+    Decimal('-60.00')
     >>> expense_budget.percentage
     Decimal('1.2000')
 
@@ -129,20 +129,20 @@ Create periods::
     >>> len(pl_budget.periods)
     12
     >>> {p.total_amount for p in pl_budget.periods}
-    {Decimal('-8.33')}
+    {Decimal('8.33')}
     >>> len(revenue_budget.periods)
     12
     >>> {p.total_amount for p in revenue_budget.periods}
-    {Decimal('-12.50')}
+    {Decimal('12.50')}
     >>> len(expense_budget.periods)
     12
     >>> {p.total_amount for p in expense_budget.periods}
-    {Decimal('4.16')}
+    {Decimal('-4.16')}
 
 Check the budget's periods::
 
     >>> pl_budget.periods[0].actual_amount
-    Decimal('-70.00')
+    Decimal('70.00')
     >>> pl_budget.periods[0].percentage
     Decimal('8.4034')
     >>> pl_budget.periods[1].actual_amount
@@ -150,7 +150,7 @@ Check the budget's periods::
     >>> pl_budget.periods[1].percentage
     Decimal('0.0000')
     >>> revenue_budget.periods[0].actual_amount
-    Decimal('-130.00')
+    Decimal('130.00')
     >>> revenue_budget.periods[0].percentage
     Decimal('10.4000')
     >>> revenue_budget.periods[1].actual_amount
@@ -158,7 +158,7 @@ Check the budget's periods::
     >>> revenue_budget.periods[1].percentage
     Decimal('0.0000')
     >>> expense_budget.periods[0].actual_amount
-    Decimal('60.00')
+    Decimal('-60.00')
     >>> expense_budget.periods[0].percentage
     Decimal('14.4231')
     >>> expense_budget.periods[1].actual_amount
@@ -190,7 +190,7 @@ Copy the budget without amounts::
     'New Budget'
     >>> new_pl_budget, = new_budget.root_lines
     >>> new_pl_budget.total_amount
-    Decimal('-125.00')
+    Decimal('125.00')
     >>> new_pl_budget.actual_amount
     Decimal('0.00')
     >>> new_pl_budget.percentage

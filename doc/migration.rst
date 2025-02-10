@@ -46,6 +46,18 @@ After
      Shipment.save(shipments)
      transaction.commit()
 
+* If ``account_budget`` module is activated, invert amount sign:
+
+   .. code-block:: SQL
+
+      UPDATE "account_budget_line" SET amount = -amount;
+
+* If ``analytic_budget`` module is activated, invert amount sign:
+
+   .. code-block:: SQL
+
+      UPDATE "analytic_account_budget_line" SET amount = -amount;
+
 7.4
 ---
 

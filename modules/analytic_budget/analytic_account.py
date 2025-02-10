@@ -178,7 +178,7 @@ class BudgetLine(BudgetLineMixin, ModelSQL, ModelView):
         table = cls.__table__()
         children = cls.__table__()
 
-        balance = Sum(Coalesce(line.debit, 0) - Coalesce(line.credit, 0))
+        balance = Sum(Coalesce(line.credit, 0) - Coalesce(line.debit, 0))
         red_sql = reduce_ids(table.id, [r.id for r in records])
         with Transaction().set_context(context):
             query_where = Line.query_get(line)

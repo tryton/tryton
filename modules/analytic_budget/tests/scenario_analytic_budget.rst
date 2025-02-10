@@ -64,12 +64,12 @@ Create a budget::
     >>> analytic_budget, = BudgetLine.find(
     ...     [('account', '=', analytic_account.id)])
     >>> analytic_budget.sequence = 1
-    >>> analytic_budget.amount = Decimal(-70)
+    >>> analytic_budget.amount = Decimal(70)
     >>> analytic_budget.save()
     >>> other_analytic_budget, = BudgetLine.find(
     ...     [('account', '=', other_analytic_account.id)])
     >>> other_analytic_budget.sequence = 2
-    >>> other_analytic_budget.amount = Decimal(-50)
+    >>> other_analytic_budget.amount = Decimal(50)
     >>> other_analytic_budget.save()
 
     >>> budget.click('update_lines')
@@ -103,15 +103,15 @@ Create moves to test the budget::
 Check actual amount the budget::
 
     >>> analytic_budget.total_amount
-    Decimal('-70.00')
+    Decimal('70.00')
     >>> analytic_budget.actual_amount
-    Decimal('-60.00')
+    Decimal('60.00')
     >>> analytic_budget.percentage
     Decimal('0.8571')
     >>> other_analytic_budget.total_amount
-    Decimal('-50.00')
+    Decimal('50.00')
     >>> other_analytic_budget.actual_amount
-    Decimal('-40.00')
+    Decimal('40.00')
     >>> other_analytic_budget.percentage
     Decimal('0.8000')
 
@@ -127,7 +127,7 @@ Copy the budget without amounts::
     >>> assertEqual(new_budget.end_date, next_period.end_date)
     >>> analytic_budget, other_analytic_budget = new_budget.lines
     >>> analytic_budget.total_amount
-    Decimal('-84.00')
+    Decimal('84.00')
     >>> analytic_budget.actual_amount
     Decimal('0.00')
     >>> analytic_budget.percentage

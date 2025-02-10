@@ -547,7 +547,7 @@ class BudgetLine(BudgetLineMixin, ModelSQL, ModelView):
         children = cls.__table__()
         line = Line.__table__()
 
-        amount = Sum(Coalesce(line.debit, 0) - Coalesce(line.credit, 0))
+        amount = Sum(Coalesce(line.credit, 0) - Coalesce(line.debit, 0))
         red_sql = reduce_ids(table.id, [r.id for r in records])
         periods = Transaction().context.get('periods')
         if not periods:
@@ -691,7 +691,7 @@ class BudgetLinePeriod(AmountMixin, ModelSQL, ModelView):
         move = Move.__table__()
         line = MoveLine.__table__()
 
-        amount = Sum(Coalesce(line.debit, 0) - Coalesce(line.credit, 0))
+        amount = Sum(Coalesce(line.credit, 0) - Coalesce(line.debit, 0))
         red_sql = reduce_ids(table.id, [r.id for r in records])
         periods = Transaction().context.get('periods')
         if not periods:
