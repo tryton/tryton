@@ -12,7 +12,6 @@ def setup(config, modules, company):
     AccountTemplate = Model.get('account.account.template')
     Account = Model.get('account.account')
     FiscalYear = Model.get('account.fiscalyear')
-    Sequence = Model.get('ir.sequence')
     SequenceStrict = Model.get('ir.sequence.strict')
     SequenceType = Model.get('ir.sequence.type')
     Party = Model.get('party.party')
@@ -63,11 +62,12 @@ def setup(config, modules, company):
         fiscalyear.start_date = start_date
         fiscalyear.end_date = start_date + relativedelta(month=12, day=31)
         fiscalyear.company = company
-        post_move_sequence = Sequence(name='%s' % start_date.year,
+        move_sequence = SequenceStrict(
+            name='%s' % start_date.year,
             sequence_type=move_sequence_type,
             company=company)
-        post_move_sequence.save()
-        fiscalyear.post_move_sequence = post_move_sequence
+        move_sequence.save()
+        fiscalyear.move_sequence = move_sequence
         invoice_sequence, = fiscalyear.invoice_sequences
         if 'account_invoice' in modules:
             for attr, name in (('out_invoice_sequence', 'Invoice'),

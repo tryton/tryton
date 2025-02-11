@@ -18,8 +18,8 @@ this repository contains the full copyright notices and license terms. -->
             </group>
         </page>
         <page string="Sequences" id="sequences">
-            <label name="post_move_sequence"/>
-            <field name="post_move_sequence"/>
+            <label name="move_sequence"/>
+            <field name="move_sequence"/>
         </page>
     </notebook>
     <label name="state" colspan="3"/>

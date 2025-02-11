@@ -36,7 +36,8 @@ class Period(Workflow, ModelSQL, ModelView):
             ('closed', 'Closed'),
             ('locked', 'Locked'),
             ], 'State', readonly=True, required=True, sort=False)
-    post_move_sequence = fields.Many2One('ir.sequence', 'Post Move Sequence',
+    move_sequence = fields.Many2One(
+        'ir.sequence.strict', "Move Sequence",
         domain=[
             ('sequence_type', '=',
                 Id('account', 'sequence_type_account_move')),
@@ -44,7 +45,9 @@ class Period(Workflow, ModelSQL, ModelView):
                 ('company', '=', None),
                 ('company', '=', Eval('company', -1)),
                 ],
-            ])
+            ],
+        help="Used to generate the move number when posting.\n"
+        "Leave empty to use the fiscal year sequence.")
     type = fields.Selection([
             ('standard', 'Standard'),
             ('adjustment', 'Adjustment'),
@@ -67,11 +70,11 @@ class Period(Workflow, ModelSQL, ModelView):
                     (DateRange(t.start_date, t.end_date, '[]'), RangeOverlap),
                     where=t.type == 'standard'),
                 'account.msg_period_standard_overlap'),
-            ('post_move_sequence_unique',
+            ('move_sequence_unique',
                 Exclude(t,
-                    (t.post_move_sequence, Equal),
+                    (t.move_sequence, Equal),
                     (t.fiscalyear, NotEqual)),
-                'account.msg_period_post_move_sequence_unique'),
+                'account.msg_period_move_sequence_unique'),
             ]
         cls._sql_indexes.add(
             Index(
@@ -102,12 +105,66 @@ class Period(Workflow, ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module):
+        pool = Pool()
+        FiscalYear = pool.get('account.fiscalyear')
+        Sequence = pool.get('ir.sequence')
+        SequenceStrict = pool.get('ir.sequence.strict')
+
+        table_h = cls.__table_handler__(module)
         cursor = Transaction().connection.cursor()
         t = cls.__table__()
+
+        migrate_move_sequence = not table_h.column_exist('move_sequence')
+
         super().__register__(module)
         # Migration from 6.8: rename state close to closed
         cursor.execute(
             *t.update([t.state], ['closed'], where=t.state == 'close'))
+
+        # Migrationn from 7.4: use strict sequence
+        if (table_h.column_exist('post_move_sequence')
+                and migrate_move_sequence):
+            table_h.not_null_action('post_move_sequence', 'remove')
+
+            fiscalyear_h = FiscalYear.__table_handler__(module)
+            fiscalyear = FiscalYear.__table__()
+            old2new = {}
+            fiscalyear_migrated = (
+                fiscalyear_h.column_exist('post_move_sequence')
+                and fiscalyear_h.column_exist('move_sequence'))
+            if fiscalyear_migrated:
+                cursor.execute(*fiscalyear.select(
+                        fiscalyear.post_move_sequence,
+                        fiscalyear.move_sequence))
+                old2new.update(cursor)
+
+            cursor.execute(*t.select(t.post_move_sequence, distinct=True))
+            for sequence_id, in cursor:
+                if sequence_id not in old2new:
+                    sequence = Sequence(sequence_id)
+                    new_sequence = SequenceStrict(
+                        name=sequence.name,
+                        sequence_type=sequence.sequence_type,
+                        prefix=sequence.prefix,
+                        suffix=sequence.suffix,
+                        type=sequence.type,
+                        number_next_internal=sequence.number_next_internal,
+                        number_increment=sequence.number_increment,
+                        padding=sequence.padding,
+                        timestamp_rounding=sequence.timestamp_rounding,
+                        timestamp_offset=sequence.timestamp_offset,
+                        last_timestamp=sequence.last_timestamp)
+                    new_sequence.save()
+                    old2new[sequence_id] = new_sequence.id
+
+            for old_id, new_id in old2new.items():
+                cursor.execute(*t.update(
+                        [t.move_sequence], [new_id],
+                        where=t.post_move_sequence == old_id))
+
+            if fiscalyear_migrated:
+                table_h.drop_column('post_move_sequence')
+                fiscalyear_h.drop_column('post_move_sequence')
 
     @staticmethod
     def default_state():
@@ -273,9 +330,6 @@ class Period(Workflow, ModelSQL, ModelView):
                     raise AccessError(
                         gettext('account.msg_create_period_closed_fiscalyear',
                             fiscalyear=fiscalyear.rec_name))
-                if not vals.get('post_move_sequence'):
-                    vals['post_move_sequence'] = (
-                        fiscalyear.post_move_sequence.id)
         periods = super(Period, cls).create(vlist)
         cls._find_cache.clear()
         return periods
@@ -294,18 +348,18 @@ class Period(Workflow, ModelSQL, ModelView):
                                 'account.msg_open_period_closed_fiscalyear',
                                 period=period.rec_name,
                                 fiscalyear=period.fiscalyear.rec_name))
-            if values.get('post_move_sequence'):
+            if values.get('move_sequence'):
                 for period in periods:
-                    if (period.post_move_sequence
-                            and period.post_move_sequence.id
-                            != values['post_move_sequence']):
+                    if (period.move_sequence
+                            and period.move_sequence.id
+                            != values['move_sequence']):
                         if Move.search([
                                     ('period', '=', period.id),
                                     ('state', '=', 'posted'),
                                     ]):
                             raise AccessError(
                                 gettext('account'
-                                    '.msg_change_period_post_move_sequence',
+                                    '.msg_change_period_move_sequence',
                                     period=period.rec_name))
             args.extend((periods, values))
         super(Period, cls).write(*args)
@@ -375,5 +429,5 @@ class Period(Workflow, ModelSQL, ModelView):
         pass
 
     @property
-    def post_move_sequence_used(self):
-        return self.post_move_sequence or self.fiscalyear.post_move_sequence
+    def move_sequence_used(self):
+        return self.move_sequence or self.fiscalyear.move_sequence

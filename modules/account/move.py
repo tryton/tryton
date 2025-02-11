@@ -512,7 +512,7 @@ class Move(DescriptionOriginMixin, ModelSQL, ModelView):
                 move.state = 'posted'
                 if not move.number:
                     move.post_date = today
-                    missing_number[move.period.post_move_sequence_used].append(
+                    missing_number[move.period.move_sequence_used].append(
                         move)
 
             for sequence, m_moves in missing_number.items():

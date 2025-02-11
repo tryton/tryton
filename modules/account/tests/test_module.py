@@ -92,7 +92,7 @@ def create_chart(company, tax=False, chart='account.account_template_root_en'):
 
 def get_fiscalyear(company, today=None, start_date=None, end_date=None):
     pool = Pool()
-    Sequence = pool.get('ir.sequence')
+    Sequence = pool.get('ir.sequence.strict')
     SequenceType = pool.get('ir.sequence.type')
     FiscalYear = pool.get('account.fiscalyear')
 
@@ -114,7 +114,7 @@ def get_fiscalyear(company, today=None, start_date=None, end_date=None):
     fiscalyear = FiscalYear(name='%s' % today.year, company=company)
     fiscalyear.start_date = start_date
     fiscalyear.end_date = end_date
-    fiscalyear.post_move_sequence = sequence
+    fiscalyear.move_sequence = sequence
     return fiscalyear
 
 

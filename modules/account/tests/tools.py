@@ -15,7 +15,7 @@ __all__ = ['create_fiscalyear', 'create_chart', 'get_accounts',
 def create_fiscalyear(company=None, today=None, config=None):
     "Create a fiscal year for the company on today or range"
     FiscalYear = Model.get('account.fiscalyear', config=config)
-    Sequence = Model.get('ir.sequence', config=config)
+    Sequence = Model.get('ir.sequence.strict', config=config)
     SequenceType = Model.get('ir.sequence.type', config=config)
 
     if not company:
@@ -39,12 +39,12 @@ def create_fiscalyear(company=None, today=None, config=None):
 
     sequence_type, = SequenceType.find(
         [('name', '=', "Account Move")], limit=1)
-    post_move_sequence = Sequence(
+    move_sequence = Sequence(
         name=str(today.year),
         sequence_type=sequence_type,
         company=company)
-    post_move_sequence.save()
-    fiscalyear.post_move_sequence = post_move_sequence
+    move_sequence.save()
+    fiscalyear.move_sequence = move_sequence
     return fiscalyear
 
 

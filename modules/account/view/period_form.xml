@@ -16,8 +16,8 @@ this repository contains the full copyright notices and license terms. -->
     <field name="fiscalyear"/>
     <label name="type"/>
     <field name="type"/>
-    <label name="post_move_sequence"/>
-    <field name="post_move_sequence"/>
+    <label name="move_sequence"/>
+    <field name="move_sequence"/>
     <newline/>
     <label name="state" colspan="3"/>
     <field name="state"/>
