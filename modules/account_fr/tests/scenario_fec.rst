@@ -79,7 +79,7 @@ Create some moves::
     >>> move.save()
     >>> Move.write([move.id], {
     ...         'post_date': period_previous.start_date,
-    ...         'post_number': '1',
+    ...         'number': '1',
     ...         }, config.context)
     >>> move.click('post')
 
@@ -102,7 +102,7 @@ With an empty line::
     >>> move.save()
     >>> Move.write([move.id], {
     ...         'post_date': period.start_date,
-    ...         'post_number': '1',
+    ...         'number': '1',
     ...         }, config.context)
     >>> move.click('post')
 
@@ -123,7 +123,7 @@ With reconciliation::
     >>> reconcile1, = [l for l in move.lines if l.account == receivable]
     >>> Move.write([move.id], {
     ...         'post_date': period.start_date,
-    ...         'post_number': '2',
+    ...         'number': '2',
     ...         }, config.context)
     >>> move.click('post')
     >>> move = Move()
@@ -140,7 +140,7 @@ With reconciliation::
     >>> move.save()
     >>> Move.write([move.id], {
     ...         'post_date': period.start_date,
-    ...         'post_number': '3',
+    ...         'number': '3',
     ...         }, config.context)
     >>> move.click('post')
     >>> reconcile2, = [l for l in move.lines if l.account == receivable]
@@ -152,14 +152,10 @@ With reconciliation::
 
 Balance non-deferral::
 
-    >>> Sequence = Model.get('ir.sequence')
     >>> Period = Model.get('account.period')
     >>> Account = Model.get('account.account')
 
     >>> journal_closing = Journal(name="Closing", code="CLO", type='situation')
-    >>> journal_closing.sequence, = Sequence.find([
-    ...         ('name', '=', "Default Account Journal"),
-    ...         ])
     >>> journal_closing.save()
 
     >>> period_closing = Period(name="Closing")

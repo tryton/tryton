@@ -154,11 +154,7 @@ Create Moves for writeoff reconciliation::
 
 Create a write-off payment method::
 
-    >>> Sequence = Model.get('ir.sequence')
-    >>> sequence_journal, = Sequence.find(
-    ...     [('sequence_type.name', '=', "Account Journal")], limit=1)
-    >>> journal_writeoff = Journal(name='Write-Off', type='write-off',
-    ...     sequence=sequence_journal)
+    >>> journal_writeoff = Journal(name='Write-Off', type='write-off')
     >>> journal_writeoff.save()
     >>> WriteOff = Model.get('account.move.reconcile.write_off')
     >>> writeoff_method = WriteOff()

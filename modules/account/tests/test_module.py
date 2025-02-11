@@ -120,7 +120,6 @@ def get_fiscalyear(company, today=None, start_date=None, end_date=None):
 
 def close_fiscalyear(fiscalyear):
     pool = Pool()
-    Sequence = pool.get('ir.sequence')
     Journal = pool.get('account.journal')
     Period = pool.get('account.period')
     Account = pool.get('account.account')
@@ -130,14 +129,10 @@ def close_fiscalyear(fiscalyear):
         'account.fiscalyear.balance_non_deferral', type='wizard')
 
     # Balance non-deferral
-    journal_sequence, = Sequence.search([
-            ('sequence_type.name', '=', "Account Journal"),
-            ], limit=1)
     journal_closing, = Journal.create([{
                 'name': 'Closing',
                 'code': 'CLO',
                 'type': 'situation',
-                'sequence': journal_sequence.id,
                 }])
     period_closing, = Period.create([{
                 'name': 'Closing',

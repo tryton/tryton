@@ -64,7 +64,6 @@ Create payment method::
 
     >>> Journal = Model.get('account.journal')
     >>> PaymentMethod = Model.get('account.invoice.payment.method')
-    >>> Sequence = Model.get('ir.sequence')
     >>> journal_cash, = Journal.find([('type', '=', 'cash')])
     >>> payment_method = PaymentMethod()
     >>> payment_method.name = 'Cash'
@@ -76,10 +75,7 @@ Create payment method::
 Create writeoff method::
 
     >>> WriteOff = Model.get('account.move.reconcile.write_off')
-    >>> sequence_journal, = Sequence.find(
-    ...     [('sequence_type.name', '=', "Account Journal")])
-    >>> journal_writeoff = Journal(name='Write-Off', type='write-off',
-    ...     sequence=sequence_journal)
+    >>> journal_writeoff = Journal(name='Write-Off', type='write-off')
     >>> journal_writeoff.save()
     >>> writeoff = WriteOff()
     >>> writeoff.name = 'Rate loss'

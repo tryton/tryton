@@ -10,8 +10,7 @@ Imports::
     >>> from trytond.modules.account.tests.tools import (
     ...     create_chart, create_fiscalyear, get_accounts)
     >>> from trytond.modules.company.tests.tools import create_company
-    >>> from trytond.tests.tools import (
-    ...     activate_modules, assertEqual, assertNotEqual, assertTrue)
+    >>> from trytond.tests.tools import activate_modules, assertEqual, assertNotEqual
 
 Activate modules::
 
@@ -57,8 +56,7 @@ Create a posted move::
 Copy move on open period::
 
     >>> copy_move, = move.duplicate()
-    >>> assertTrue(copy_move.number)
-    >>> copy_move.post_number
+    >>> copy_move.number
     >>> copy_move.state
     'draft'
     >>> copy_move.post_date
@@ -79,8 +77,7 @@ Copy move on closed period::
 
     >>> config.skip_warning = True
     >>> copy_move, = move.duplicate()
-    >>> assertTrue(copy_move.number)
-    >>> copy_move.post_number
+    >>> copy_move.number
     >>> copy_move.state
     'draft'
     >>> copy_move.post_date

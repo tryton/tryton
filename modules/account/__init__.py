@@ -47,7 +47,6 @@ def register():
         configuration.Journal,
         period.Period,
         journal.Journal,
-        journal.JournalSequence,
         journal.JournalCashContext,
         journal.JournalPeriod,
         move.Move,

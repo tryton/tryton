@@ -250,7 +250,7 @@ class FrFEC(Wizard):
             domain,
             order=[
                 ('move.post_date', 'ASC'),
-                ('move.post_number', 'ASC'),
+                ('move.number', 'ASC'),
                 ('id', 'ASC'),
                 ])
 
@@ -269,7 +269,7 @@ class FrFEC(Wizard):
         return [
             line.move.journal.code or line.move.journal.name,
             line.move.journal.name,
-            line.move.post_number,
+            line.move.number,
             format_date(line.move.date),
             line.account.code,
             line.account.name,

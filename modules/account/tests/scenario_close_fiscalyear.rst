@@ -43,14 +43,10 @@ Get accounts::
 
 Prepare the closing settings for fiscalyear close::
 
-    >>> journal_sequence, = Sequence.find([
-    ...         ('sequence_type.name', '=', "Account Journal"),
-    ...         ], limit=1)
     >>> journal_closing = Journal()
     >>> journal_closing.name = 'Closing'
     >>> journal_closing.code = 'CLO'
     >>> journal_closing.type = 'situation'
-    >>> journal_closing.sequence = journal_sequence
     >>> journal_closing.save()
     >>> period_closing = Period()
     >>> period_closing.name = 'Closing'

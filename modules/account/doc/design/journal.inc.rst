@@ -7,8 +7,7 @@ A *Journal* represents a book of original entry from traditional manual
 accounting.
 In Tryton it allows `Account Moves <model-account.move>` of the same class
 to be grouped together.
-Every account move gets associated with a journal, and the journal defines
-what sequence is then used to number the account move.
+Every account move gets associated with a journal.
 
 Among the journal's properties is a type.
 This limits where the journal can be used.

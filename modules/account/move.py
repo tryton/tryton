@@ -85,8 +85,8 @@ class DescriptionOriginMixin:
 class Move(DescriptionOriginMixin, ModelSQL, ModelView):
     __name__ = 'account.move'
     _rec_name = 'number'
-    number = fields.Char('Number', required=True, readonly=True)
-    post_number = fields.Char('Post Number', readonly=True,
+    number = fields.Char(
+        "Number", readonly=True,
         help='Also known as Folio Number.')
     company = fields.Many2One('company.company', 'Company', required=True,
         states=_MOVE_STATES)
@@ -103,10 +103,8 @@ class Move(DescriptionOriginMixin, ModelSQL, ModelView):
                 []),
             ],
         states=_MOVE_STATES)
-    journal = fields.Many2One('account.journal', 'Journal', required=True,
-        states={
-            'readonly': Eval('number') & Eval('journal', None),
-            },
+    journal = fields.Many2One(
+        'account.journal', "Journal", required=True, states=_MOVE_STATES,
         context={
             'company': Eval('company', -1),
             },
@@ -131,7 +129,6 @@ class Move(DescriptionOriginMixin, ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         cls.number.search_unaccented = False
-        cls.post_number.search_unaccented = False
         super(Move, cls).__setup__()
         t = cls.__table__()
         cls.create_date.select = True
@@ -158,14 +155,18 @@ class Move(DescriptionOriginMixin, ModelSQL, ModelView):
                 })
 
     @classmethod
+    def __register__(cls, module):
+        table_h = cls.__table_handler__(module)
+        if (table_h.column_exist('number')
+                and table_h.column_exist('post_number')):
+            table_h.drop_column('number')
+            table_h.column_rename('post_number', 'number')
+        super().__register__(module)
+
+    @classmethod
     def order_number(cls, tables):
         table, _ = tables[None]
         return [CharLength(table.number), table.number]
-
-    @classmethod
-    def order_post_number(cls, tables):
-        table, _ = tables[None]
-        return [CharLength(table.post_number), table.post_number]
 
     @staticmethod
     def default_company():
@@ -276,16 +277,11 @@ class Move(DescriptionOriginMixin, ModelSQL, ModelView):
                     gettext('account.msg_modify_posted_moved',
                         move=move.rec_name))
 
-    @classmethod
-    def search_rec_name(cls, name, clause):
-        if clause[1].startswith('!') or clause[1].startswith('not '):
-            bool_op = 'AND'
+    def get_rec_name(self, name):
+        if self.number:
+            return self.number
         else:
-            bool_op = 'OR'
-        return [bool_op,
-            ('post_number',) + tuple(clause[1:]),
-            (cls._rec_name,) + tuple(clause[1:]),
-            ]
+            return f'({self.id})'
 
     @classmethod
     def write(cls, *args):
@@ -300,30 +296,6 @@ class Move(DescriptionOriginMixin, ModelSQL, ModelView):
                 cls.check_modify(moves)
             args.extend((moves, values))
         super(Move, cls).write(*args)
-
-    @classmethod
-    def create(cls, vlist):
-        pool = Pool()
-        Journal = pool.get('account.journal')
-        context = Transaction().context
-
-        default_company = cls.default_company()
-        vlist = [x.copy() for x in vlist]
-        missing_number = defaultdict(list)
-        for vals in vlist:
-            if not vals.get('number'):
-                journal_id = vals.get('journal', context.get('journal'))
-                company_id = vals.get('company', default_company)
-                if journal_id:
-                    missing_number[(journal_id, company_id)].append(vals)
-        for (journal_id, company_id), values in missing_number.items():
-            journal = Journal(journal_id)
-            sequence = journal.get_multivalue('sequence', company=company_id)
-            with Transaction().set_context(company=company_id):
-                for vals, number in zip(
-                        values, sequence.get_many(len(values))):
-                    vals['number'] = number
-        return super().create(vlist)
 
     @classmethod
     def delete(cls, moves):
@@ -374,7 +346,6 @@ class Move(DescriptionOriginMixin, ModelSQL, ModelView):
                 return origin['date']
 
         default.setdefault('number', None)
-        default.setdefault('post_number', None)
         default.setdefault('state', cls.default_state())
         default.setdefault('post_date', None)
         default.setdefault('period', default_period)
@@ -539,7 +510,7 @@ class Move(DescriptionOriginMixin, ModelSQL, ModelView):
             missing_number = defaultdict(list)
             for move in c_moves:
                 move.state = 'posted'
-                if not move.post_number:
+                if not move.number:
                     move.post_date = today
                     missing_number[move.period.post_move_sequence_used].append(
                         move)
@@ -547,7 +518,7 @@ class Move(DescriptionOriginMixin, ModelSQL, ModelView):
             for sequence, m_moves in missing_number.items():
                 for move, number in zip(
                         m_moves, sequence.get_many(len(m_moves))):
-                    move.post_number = number
+                    move.number = number
 
         cls.save(moves)
 

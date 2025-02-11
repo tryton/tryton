@@ -164,18 +164,13 @@ Check analytic lines are created on posting::
 
 Prepare to balance non-deferral accounts::
 
-    >>> Sequence = Model.get('ir.sequence')
     >>> Period = Model.get('account.period')
     >>> AccountType = Model.get('account.account.type')
     >>> Account = Model.get('account.account')
-    >>> journal_sequence, = Sequence.find([
-    ...         ('name', '=', "Default Account Journal"),
-    ...         ])
     >>> journal_closing = Journal()
     >>> journal_closing.code = 'CLO'
     >>> journal_closing.type = 'situation'
     >>> journal_closing.name = "Closing"
-    >>> journal_closing.sequence = journal_sequence
     >>> journal_closing.save()
     >>> period_closing = Period()
     >>> period_closing.name = "Closing"

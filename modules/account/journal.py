@@ -9,11 +9,9 @@ from trytond.model import (
     DeactivableMixin, MatchMixin, ModelSQL, ModelView, Unique, Workflow,
     fields, sequence_ordered)
 from trytond.model.exceptions import AccessError
-from trytond.modules.company.model import (
-    CompanyMultiValueMixin, CompanyValueMixin)
 from trytond.modules.currency.fields import Monetary
 from trytond.pool import Pool
-from trytond.pyson import Bool, Eval, Id
+from trytond.pyson import Eval
 from trytond.tools import (
     grouped_slice, is_full_text, lstrip_wildcard, reduce_ids,
     sqlite_apply_types)
@@ -27,7 +25,7 @@ STATES = {
 class Journal(
         DeactivableMixin, MatchMixin,
         sequence_ordered('matching_sequence', "Matching Sequence"),
-        ModelSQL, ModelView, CompanyMultiValueMixin):
+        ModelSQL, ModelView):
     __name__ = 'account.journal'
     name = fields.Char('Name', size=None, required=True, translate=True)
     code = fields.Char('Code', size=None)
@@ -39,19 +37,6 @@ class Journal(
             ('situation', "Situation"),
             ('write-off', "Write-Off"),
             ], 'Type', required=True)
-    sequence = fields.MultiValue(fields.Many2One(
-            'ir.sequence', "Sequence",
-            domain=[
-                ('sequence_type', '=',
-                    Id('account', 'sequence_type_account_journal')),
-                ('company', 'in', [
-                        Eval('context', {}).get('company', -1), None]),
-                ],
-            states={
-                'required': Bool(Eval('context', {}).get('company', -1)),
-                }))
-    sequences = fields.One2Many(
-        'account.journal.sequence', 'journal', "Sequences")
     debit = fields.Function(Monetary(
             "Debit", currency='currency', digits='currency'),
         'get_debit_credit_balance')
@@ -69,10 +54,6 @@ class Journal(
     def __setup__(cls):
         super(Journal, cls).__setup__()
         cls._order.insert(0, ('name', 'ASC'))
-
-    @classmethod
-    def default_sequence(cls, **pattern):
-        return cls.multivalue_model('sequence').default_sequence()
 
     @classmethod
     def search_rec_name(cls, name, clause):
@@ -183,33 +164,6 @@ class Journal(
                                 'account.msg_journal_account_moves',
                                 journal=move.journal.rec_name))
         super().write(*args)
-
-
-class JournalSequence(ModelSQL, CompanyValueMixin):
-    __name__ = 'account.journal.sequence'
-    journal = fields.Many2One(
-        'account.journal', "Journal", ondelete='CASCADE',
-        context={
-            'company': Eval('company', -1),
-            },
-        depends={'company'})
-    sequence = fields.Many2One(
-        'ir.sequence', "Sequence",
-        domain=[
-            ('sequence_type', '=',
-                Id('account', 'sequence_type_account_journal')),
-            ('company', 'in', [Eval('company', -1), None]),
-            ],
-        depends={'company'})
-
-    @classmethod
-    def default_sequence(cls):
-        pool = Pool()
-        ModelData = pool.get('ir.model.data')
-        try:
-            return ModelData.get_id('account', 'sequence_account_journal')
-        except KeyError:
-            return None
 
 
 class JournalCashContext(ModelView):

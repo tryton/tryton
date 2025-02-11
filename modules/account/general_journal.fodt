@@ -515,7 +515,7 @@
      <table:table-header-rows>
       <table:table-row table:style-name="Table4.1">
        <table:table-cell table:style-name="Table4.A1" office:value-type="string">
-        <text:p text:style-name="Table_20_Heading">Journal Entry:<text:line-break/><text:placeholder text:placeholder-type="text">&lt;move.number&gt;</text:placeholder></text:p>
+        <text:p text:style-name="Table_20_Heading">Journal Entry:<text:line-break/><text:placeholder text:placeholder-type="text">&lt;move.rec_name&gt;</text:placeholder></text:p>
        </table:table-cell>
        <table:table-cell table:style-name="Table4.C1" office:value-type="string">
         <text:p text:style-name="Table_20_Heading">Date:<text:line-break/> <text:placeholder text:placeholder-type="text">&lt;format_date(move.date, user.language)&gt;</text:placeholder></text:p>
@@ -527,7 +527,7 @@
        </table:table-cell>
        <table:table-cell table:style-name="Table4.D1" table:number-columns-spanned="2" office:value-type="string">
         <text:p text:style-name="Table_20_Heading"><text:placeholder text:placeholder-type="text">&lt;if test=&quot;move.state == &apos;posted&apos;&quot;&gt;</text:placeholder></text:p>
-        <text:p text:style-name="Table_20_Heading">Posted <text:placeholder text:placeholder-type="text">&lt;move.post_number&gt;</text:placeholder><text:line-break/><text:placeholder text:placeholder-type="text">&lt;format_date(move.post_date, user.language)&gt;</text:placeholder></text:p>
+        <text:p text:style-name="Table_20_Heading">Posted<text:line-break/><text:placeholder text:placeholder-type="text">&lt;format_date(move.post_date, user.language)&gt;</text:placeholder></text:p>
         <text:p text:style-name="Table_20_Heading"><text:placeholder text:placeholder-type="text">&lt;/if&gt;</text:placeholder></text:p>
         <text:p text:style-name="Table_20_Heading"><text:placeholder text:placeholder-type="text">&lt;if test=&quot;move.state == &apos;draft&apos;&quot;&gt;</text:placeholder></text:p>
         <text:p text:style-name="Table_20_Heading">Draft</text:p>

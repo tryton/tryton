@@ -14,24 +14,14 @@ def setup(config, modules, company):
     Statement = Model.get('account.statement')
     AccountJournal = Model.get('account.journal')
     Account = Model.get('account.account')
-    Sequence = Model.get('ir.sequence')
-    SequenceType = Model.get('ir.sequence.type')
     Invoice = Model.get('account.invoice')
-
-    sequence_type, = SequenceType.find([('name', '=', "Account Journal")])
-    sequence = Sequence(name='Statement',
-        sequence_type=sequence_type,
-        company=company)
-    sequence.save()
 
     cash, = Account.find([
             ('company', '=', company.id),
             ('code', '=', '1.1.1'),
             ])
 
-    account_journal = AccountJournal(name='Bank',
-        type='statement',
-        sequence=sequence)
+    account_journal = AccountJournal(name='Bank', type='statement')
     account_journal.save()
 
     journal = Journal(name='Bank',

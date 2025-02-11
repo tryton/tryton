@@ -4,11 +4,9 @@ this repository contains the full copyright notices and license terms. -->
 <form cursor="journal">
     <label name="company"/>
     <field name="company"/>
-    <newline/>
     <label name="number"/>
     <field name="number"/>
-    <label name="post_number"/>
-    <field name="post_number"/>
+
     <label name="journal"/>
     <field name="journal" widget="selection"/>
     <label name="period"/>

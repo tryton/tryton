@@ -132,7 +132,7 @@ class Move(metaclass=PoolMeta):
         if isinstance(self.origin, Invoice):
             number = self.origin.number
         else:
-            number = self.post_number
+            number = self.number
         return re.sub(r'[^0-9]', '', number)
 
 
