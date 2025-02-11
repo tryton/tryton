@@ -777,9 +777,10 @@ class Line(metaclass=PoolMeta):
         pool = Pool()
         Uom = pool.get('product.uom')
         if self.unit.category == line.unit.category:
-            return Uom.compute_qty(
-                self.unit, (self.actual_quantity or self.quantity), line.unit,
-                round=round)
+            quantity = (
+                self.actual_quantity if self.actual_quantity is not None
+                else self.quantity)
+            return Uom.compute_qty(self.unit, quantity, line.unit, round=round)
         return 0
 
 
