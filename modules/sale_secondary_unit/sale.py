@@ -300,8 +300,11 @@ class LineBlanketAgreement(metaclass=PoolMeta):
         quantity = super().quantity_for_blanket_agreement(line, round=round)
         if (self.secondary_unit
                 and self.secondary_unit.category == line.unit.category):
+            sale_line_quantity = (
+                self.actual_quantity if self.actual_quantity is not None
+                else self.quantity)
             quantity = Uom.compute_qty(
-                self.unit, (self.actual_quantity or self.quantity), line.unit,
+                self.unit, sale_line_quantity, line.unit,
                 factor=self.secondary_uom_factor,
                 rate=self.secondary_uom_rate,
                 round=round)
