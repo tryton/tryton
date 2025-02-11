@@ -45,7 +45,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Customer Invoices</field>
             <field name="res_model">account.invoice</field>
             <field name="domain" eval="[('type', '=', 'out')]" pyson="1"/>
-            <field name="context" eval="{'type': 'out'}" pyson="1"/>
+            <field name="context" eval="None"/>
             <field name="search_value"></field>
         </record>
         <record model="ir.action.act_window.view" id="act_invoice_out_form_view1">
@@ -95,7 +95,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Supplier Invoices</field>
             <field name="res_model">account.invoice</field>
             <field name="domain" eval="[('type', '=', 'in')]" pyson="1"/>
-            <field name="context" eval="{'type': 'in'}" pyson="1"/>
+            <field name="context" eval="None"/>
             <field name="search_value"></field>
         </record>
         <record model="ir.action.act_window.view" id="act_invoice_in_form_view1">
