@@ -93,7 +93,11 @@ dist = setup(name=name,
     packages=find_packages(),
     package_data=package_data,
     data_files=data_files,
-    scripts=['bin/tryton'],
+    entry_points={
+        'console_scripts': [
+            'tryton = tryton.__main__:main',
+        ],
+    },
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Environment :: X11 Applications :: GTK',
