@@ -2418,12 +2418,10 @@
                 (expression.length > 2) &&
                 (typeof expression[1] == 'string'));
         },
-        constrained_leaf: function(part, boolop) {
-            if (boolop === undefined) {
-                boolop = this.and;
-            }
+        constrained_leaf: function(part) {
             var operand = part[1];
-            if ((operand === '=') & (boolop === this.and)) {
+            let value = part[2];
+            if ((operand === '=') || ((operand == 'in') && (value.length == 1))) {
                 // We should consider that other domain inversion will set a
                 // correct value to this field
                 return true;
@@ -3049,8 +3047,7 @@
                         ((field in context) &&
                             (this.domain_inversion.eval_leaf(
                                 part, context, this.domain_inversion.and) ||
-                                this.domain_inversion.constrained_leaf(
-                                    part, this.domain_inversion.and)))) {
+                                this.domain_inversion.constrained_leaf(part)))) {
                         result.push(true);
                     } else {
                         return false;
@@ -3105,9 +3102,7 @@
                     field = this.base(field);
                     if ((field in context) &&
                         (this.domain_inversion.eval_leaf(
-                            part, context, this.domain_inversion.or)) ||
-                        this.domain_inversion.constrained_leaf(
-                            part, this.domain_inversion.or)) {
+                            part, context, this.domain_inversion.or))) {
                         return true;
                     } else if ((field in context) &&
                             !this.domain_inversion.eval_leaf(part, context,

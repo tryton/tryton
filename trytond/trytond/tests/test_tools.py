@@ -596,6 +596,39 @@ class DomainInversionTestCase(TestCase):
         domain = [['x.id', '>', 5]]
         self.assertEqual(domain_inversion(domain, 'x'), [['x.id', '>', 5]])
 
+    def test_unconstrained_inversion(self):
+        domain = [['x', '=', 3], ['y', 'in', ['a', 'b']]]
+
+        self.assertEqual(domain_inversion(domain, 'x'), [['x', '=', 3]])
+        self.assertEqual(
+            domain_inversion(domain, 'x', {'y': 'a'}),
+            [['x', '=', 3]])
+        self.assertEqual(
+            domain_inversion(domain, 'x', {'y': 'c'}),
+            False)
+
+    def test_constrained_equal_inversion(self):
+        domain = [['x', '=', 3], ['y', '=', 'a']]
+
+        self.assertEqual(domain_inversion(domain, 'x'), [['x', '=', 3]])
+        self.assertEqual(
+            domain_inversion(domain, 'x', {'y': 'a'}),
+            [['x', '=', 3]])
+        self.assertEqual(
+            domain_inversion(domain, 'x', {'y': 'c'}),
+            [['x', '=', 3]])
+
+    def test_constrained_in_inversion(self):
+        domain = [['x', '=', 3], ['y', 'in', ['a']]]
+
+        self.assertEqual(domain_inversion(domain, 'x'), [['x', '=', 3]])
+        self.assertEqual(
+            domain_inversion(domain, 'x', {'y': 'a'}),
+            [['x', '=', 3]])
+        self.assertEqual(
+            domain_inversion(domain, 'x', {'y': 'c'}),
+            [['x', '=', 3]])
+
     def test_and_inversion(self):
         domain = [['x', '=', 3], ['y', '>', 5]]
         self.assertEqual(domain_inversion(domain, 'x'), [['x', '=', 3]])
