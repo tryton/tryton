@@ -106,7 +106,10 @@
                     }
                     this.__processing = false;
                 }.bind(this), function(result) {
-                    // TODO end for server error.
+                    if (!result || !this.screen) {
+                        this.state = this.end_state;
+                        this.end();
+                    }
                     this.__processing = false;
                 }.bind(this));
             };
