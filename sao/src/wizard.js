@@ -114,7 +114,10 @@
                     this.__processing = false;
                     return jQuery.when.apply(jQuery, prms);
                 }, result => {
-                    // TODO end for server error.
+                    if (!result || !this.screen) {
+                        this.state = this.end_state;
+                        this.end();
+                    }
                     this.__processing = false;
                 });
             };
