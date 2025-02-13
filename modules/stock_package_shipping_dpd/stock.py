@@ -161,7 +161,7 @@ class CreateDPDShipping(Wizard):
                     message=message))
 
         labels = []
-        labels_pdf = BytesIO(shipment_response.parcellabelsPDF)
+        labels_pdf = BytesIO(shipment_response.output.content)
         reader = PdfReader(labels_pdf)
         for page in iter_pdf_pages(reader):
             new_pdf = PdfWriter()
@@ -198,8 +198,11 @@ class CreateDPDShipping(Wizard):
 
     def get_print_options(self, shipment):
         return {
-            'printerLanguage': shipment.carrier.dpd_printer_language,
-            'paperFormat': shipment.carrier.dpd_paper_format,
+            'printOption': [{
+                    'outputFormat': shipment.carrier.dpd_output_format,
+                    'paperFormat': shipment.carrier.dpd_paper_format,
+                    },
+                ],
             }
 
     def shipping_party(self, party, address, usage=None):
@@ -210,21 +213,24 @@ class CreateDPDShipping(Wizard):
             street = address.street_name or ''
             house_no = address.numbers
         shipping_party = {
-            'name1': address.party_full_name[:35],
+            'name1': address.party_full_name[:50],
             'name2': '',
-            'street': street[:35],
+            'street': street[:50],
             'houseNo': house_no[:8],
             'country': address.country.code if address.country else '',
             'zipCode': address.postal_code[:9],
-            'city': address.city[:35],
+            'city': address.city[:50],
             'contact': party.full_name[:35],
             }
 
         phone = address.contact_mechanism_get({'phone', 'mobile'}, usage=usage)
         if phone and len(phone.value) <= 30:
             shipping_party['phone'] = phone.value
+        mobile = address.contact_mechanism_get('mobile', usage=usage)
+        if mobile and len(mobile.value) <= 30:
+            shipping_party['mobile'] = mobile.value
         email = address.contact_mechanism_get('email', usage=usage)
-        if email and len(email.value) <= 50:
+        if email and 5 <= len(email.value) <= 100:
             shipping_party['email'] = email.value
 
         return shipping_party
@@ -256,7 +262,7 @@ class CreateDPDShipping(Wizard):
                     package.width_uom, package.width, cm, round=False))
             height = ceil(UoM.compute_qty(
                     package.height_uom, package.height, cm, round=False))
-            if length < 1000 and width < 1000 and height < 1000:
+            if 1 <= length < 1000 and 1 <= width < 1000 and 1 <= height < 1000:
                 parcel['volume'] = int(
                     '%03i%03i%03i' % (length, width, height))
 

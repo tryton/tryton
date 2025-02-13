@@ -13,7 +13,7 @@ SERVER_URLS = {
     }
 
 LOGIN_SERVICE = 'LoginService/V2_0/?wsdl'
-SHIPMENT_SERVICE = 'ShipmentService/V3_2/?wsdl'
+SHIPMENT_SERVICE = 'ShipmentService/V4_4/?wsdl'
 
 
 def get_client(server, service):

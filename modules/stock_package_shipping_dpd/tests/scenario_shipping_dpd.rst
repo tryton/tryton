@@ -170,7 +170,7 @@ Create a DPD Carrier and the related credential::
     >>> carrier.carrier_product = carrier_product
     >>> carrier.shipping_service = 'dpd'
     >>> carrier.dpd_product = 'CL'
-    >>> carrier.dpd_printer_language = 'PDF'
+    >>> carrier.dpd_output_format = 'PDF'
     >>> carrier.dpd_paper_format = 'A6'
     >>> carrier.dpd_notification = 'sms'
     >>> carrier.save()

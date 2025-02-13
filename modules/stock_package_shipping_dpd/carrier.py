@@ -80,19 +80,19 @@ class Carrier(metaclass=PoolMeta):
             ('E12', "DPD 12:00"),
             ('E18', "DPD 18:00"),
             ('IE2', "DPD EXPRESS"),
-            ('PL', "DPD PARCEL Letter"),
-            ('PL+', "DPD PARCEL Letter Plus"),
             ('MAIL', "DPD International Mail"),
+            ('MAX', "DPD MAX"),
+            ('PL', "DPD PARCEL Letter"),
+            ('PM4', "DPD Priority"),
             ], "Product", sort=False, translate=False,
         states={
             'required': Eval('shipping_service') == 'dpd',
             'invisible': Eval('shipping_service') != 'dpd',
             })
-    dpd_printer_language = fields.Selection([
+    dpd_output_format = fields.Selection([
             (None, ''),
             ('PDF', "PDF"),
-            ('ZPL', "ZPL"),
-            ], "Printer Language", sort=False, translate=False,
+            ], "Output Format", sort=False, translate=False,
         states={
             'required': Eval('shipping_service') == 'dpd',
             'invisible': Eval('shipping_service') != 'dpd',
@@ -123,6 +123,15 @@ class Carrier(metaclass=PoolMeta):
     def __setup__(cls):
         super().__setup__()
         cls.shipping_service.selection.append(('dpd', 'DPD'))
+
+    @classmethod
+    def __register__(cls, module):
+        table_h = cls.__table_handler__(module)
+
+        # Migration from 7.4: rename dpd_printer_language to dpd_output_format
+        table_h.column_rename('dpd_printer_language', 'dpd_output_format')
+
+        super().__register__(module)
 
     @classmethod
     def view_attributes(cls):

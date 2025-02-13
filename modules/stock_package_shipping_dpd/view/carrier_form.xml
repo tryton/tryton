@@ -9,8 +9,8 @@ this repository contains the full copyright notices and license terms. -->
         <label name="dpd_notification"/>
         <field name="dpd_notification"/>
 
-        <label name="dpd_printer_language"/>
-        <field name="dpd_printer_language"/>
+        <label name="dpd_output_format"/>
+        <field name="dpd_output_format"/>
         <label name="dpd_paper_format"/>
         <field name="dpd_paper_format"/>
     </xpath>

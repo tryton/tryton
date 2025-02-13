@@ -6,7 +6,7 @@ using the DPD webservices.
 DPD has many different web services, the module supports:
 
 - `LoginService 2.0 <https://esolutions.dpd.com/dokumente/LoginService_V2_0.pdf>`_
-- `ShipmentService 3.2 <https://esolutions.dpd.com/dokumente/ShipmentService_V3_2.pdf>`_
+- `ShipmentService 4.4 <https://esolutions.dpd.com/dokumente/ShipmentService_V4_4.pdf>`_
 
 Carrier Credential
 ******************
