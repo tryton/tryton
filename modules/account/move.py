@@ -785,6 +785,39 @@ class MoveLineMixin:
             currency = self.account.currency
         return currency.id
 
+    @fields.depends('maturity_date', 'date')
+    def on_change_with_payable_receivable_date(self, name=None):
+        return self.maturity_date or self.date
+
+    @classmethod
+    def domain_payable_receivable_date(cls, domain, tables):
+        pool = Pool()
+        Move = pool.get('account.move')
+        table, _ = tables[None]
+        move = tables.get('move')
+        if move is None:
+            move = Move.__table__()
+            tables['move'] = {
+                None: (move, move.id == table.move),
+                }
+        _, operator, operand = domain
+        Operator = fields.SQL_OPERATORS[operator]
+        date = Coalesce(table.maturity_date, move.date)
+        return Operator(date, operand)
+
+    @classmethod
+    def order_payable_receivable_date(cls, tables):
+        pool = Pool()
+        Move = pool.get('account.move')
+        table, _ = tables[None]
+        move = tables.get('move')
+        if move is None:
+            move = Move.__table__()
+            tables['move'] = {
+                None: (move, move.id == table.move),
+                }
+        return [Coalesce(table.maturity_date, move.date)]
+
     @classmethod
     def get_payable_receivable_balance(cls, lines, name):
         pool = Pool()
@@ -803,6 +836,8 @@ class MoveLineMixin:
         move = Move.__table__()
 
         balances = dict.fromkeys(map(int, lines))
+
+        date = Coalesce(line.maturity_date, move.date)
 
         for company, lines in groupby(lines, lambda l: l.company):
             for sub_lines in grouped_slice(lines):
@@ -835,11 +870,7 @@ class MoveLineMixin:
                     balance = Sum(balance,
                         window=Window(
                             [line.party, currency],
-                            order_by=[
-                                Coalesce(line.maturity_date, move.date).asc,
-                                move.date.desc,
-                                line.id.desc,
-                                ]))
+                            order_by=[date.asc.nulls_first, line.id.desc]))
 
                 party_where = Literal(False)
                 parties = {l.party for l in sub_lines}
@@ -1045,6 +1076,10 @@ class Line(DescriptionOriginMixin, MoveLineMixin, ModelSQL, ModelView):
                     | ~Eval('delegated_amount', 0)),
                 }),
         'get_delegated_amount')
+
+    payable_receivable_date = fields.Function(
+        fields.Date("Payable/Receivable Date"),
+        'on_change_with_payable_receivable_date')
     payable_receivable_balance = fields.Function(
         Monetary(
             "Payable/Receivable Balance",
