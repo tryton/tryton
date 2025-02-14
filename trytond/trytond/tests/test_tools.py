@@ -10,7 +10,10 @@ import unittest
 from copy import deepcopy
 from decimal import Decimal
 from io import BytesIO
+from multiprocessing import Process
+from multiprocessing.managers import SharedMemoryManager
 from unittest.mock import patch
+from uuid import uuid4
 
 import sql
 import sql.operators
@@ -35,6 +38,7 @@ from trytond.tools.domain_inversion import (
     prepare_reference_domain, simplify, sort, unique_value)
 from trytond.tools.immutabledict import ImmutableDict
 from trytond.tools.logging import format_args
+from trytond.tools.multiprocessing import local
 from trytond.tools.string_ import LazyString, StringPartitioned
 
 try:
@@ -1486,6 +1490,87 @@ class EmailTestCase(TestCase):
                 ]:
             with self.subTest(address=address, name=name):
                 self.assertEqual(email_.format_address(address, name), result)
+
+
+class ProcessLocalTestCase(TestCase):
+
+    def test_without_fork(self):
+        mydata = local()
+        mydata.number = 42
+        self.assertEqual(mydata.number, 42)
+        self.assertEqual(mydata.__dict__, {'number': 42})
+
+    def test_fork(self):
+        mydata = local()
+        mydata.number = 42
+
+        def f(l, num):
+            mydata.number = num
+            l[0] = mydata.number
+
+        with SharedMemoryManager() as smm:
+            sl = smm.ShareableList([None])
+            p = Process(target=f, args=(sl, 1))
+            p.start()
+            p.join()
+            self.assertEqual(list(sl), [1])
+
+        self.assertEqual(mydata.number, 42)
+
+    def test_inheritance_setattr(self):
+        class MyLocal(local):
+            number = 2
+
+            def __init__(self):
+                self.id = uuid4()
+
+            def squared(self):
+                return self.number ** 2
+
+        mydata = MyLocal()
+
+        def f_setattr(l, num):
+            mydata.number = num
+            l[0] = mydata.squared()
+
+        with SharedMemoryManager() as smm:
+            sl = smm.ShareableList([None, 'x' * len(str(uuid4()))])
+            p = Process(target=f_setattr, args=(sl, 3))
+            p.start()
+            p.join()
+
+            sl = list(sl)
+
+        self.assertEqual(sl[0], 9)
+        self.assertEqual(mydata.number, 2)
+        self.assertEqual(mydata.squared(), 4)
+
+    def test_inheritance_getattr(self):
+        class MyLocal(local):
+            number = 2
+
+            def __init__(self):
+                self.id = uuid4()
+
+            def squared(self):
+                return self.number ** 2
+
+        mydata = MyLocal()
+
+        def f_getattr(l, num):
+            l[1] = str(mydata.id)
+
+        with SharedMemoryManager() as smm:
+            sl = smm.ShareableList([None, 'x' * len(str(uuid4()))])
+            p = Process(target=f_getattr, args=(sl, 3))
+            p.start()
+            p.join()
+
+            sl = list(sl)
+
+        self.assertNotEqual(sl[1], str(mydata.id))
+        self.assertEqual(mydata.number, 2)
+        self.assertEqual(mydata.squared(), 4)
 
 
 def load_tests(loader, tests, pattern):

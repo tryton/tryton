@@ -15,6 +15,7 @@ Tools API reference.
    immutabledict
    logging
    misc
+   multiprocessing
    qrcode
    singleton
    timezone
