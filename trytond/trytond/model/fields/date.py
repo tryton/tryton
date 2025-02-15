@@ -50,6 +50,11 @@ class Date(Field):
             expression = AtTimeZone(expression, timezone)
         return super(Date, self).sql_cast(expression)
 
+    def __set__(self, inst, value):
+        if isinstance(value, str):
+            value = datetime.date.fromisoformat(value)
+        super().__set__(inst, value)
+
 
 class FormatMixin(Field):
 
@@ -92,6 +97,11 @@ class Timestamp(FormatMixin, Field):
         if backend.name == 'sqlite':
             return SQLite_DateTime(expression)
         return super().sql_cast(expression)
+
+    def __set__(self, inst, value):
+        if isinstance(value, str):
+            value = datetime.datetime.fromisoformat(value)
+        super().__set__(inst, value)
 
 
 class DateTime(Timestamp):
@@ -157,6 +167,11 @@ class Time(FormatMixin, Field):
             return SQLite_Time(expression)
         return super(Time, self).sql_cast(expression)
 
+    def __set__(self, inst, value):
+        if isinstance(value, str):
+            value = datetime.time.fromisoformat(value)
+        super().__set__(inst, value)
+
 
 class TimeDelta(Field):
     '''
@@ -184,13 +199,19 @@ class TimeDelta(Field):
         if isinstance(value, (int, float)):
             value = datetime.timedelta(seconds=value)
         elif isinstance(value, str):
-            if not value.find(':'):
-                raise ValueError(
-                    "TimeDelta requires a string '%H:%M:%S.%f' or '%H:%M'")
             hours, minutes, seconds = (value.split(":") + ['00'])[:3]
             value = datetime.timedelta(
                 hours=int(hours), minutes=int(minutes), seconds=float(seconds))
         return super().sql_format(value)
+
+    def __set__(self, inst, value):
+        if isinstance(value, (int, float)):
+            value = datetime.timedelta(seconds=value)
+        elif isinstance(value, str):
+            hours, minutes, seconds = (value.split(":") + ['00'])[:3]
+            value = datetime.timedelta(
+                hours=int(hours), minutes=int(minutes), seconds=float(seconds))
+        super().__set__(inst, value)
 
     @classmethod
     def get(cls, ids, model, name, values=None):

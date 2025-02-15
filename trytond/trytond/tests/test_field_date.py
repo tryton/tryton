@@ -26,6 +26,17 @@ class FieldDateTestCase(unittest.TestCase):
         activate_module('tests')
 
     @with_transaction()
+    def test_set_string(self):
+        "Test set string"
+        pool = Pool()
+        Model = pool.get('test.date')
+
+        record = Model()
+        record.date = str(today)
+
+        self.assertEqual(record.date, today)
+
+    @with_transaction()
     def test_create(self):
         "Test create date"
         Date = Pool().get('test.date')
