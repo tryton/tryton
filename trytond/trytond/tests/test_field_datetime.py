@@ -24,6 +24,17 @@ class FieldDateTimeTestCase(TestCase):
         activate_module('tests')
 
     @with_transaction()
+    def test_set_string(self):
+        "Test set string"
+        pool = Pool()
+        Model = pool.get('test.datetime')
+
+        record = Model()
+        record.datetime = str(today)
+
+        self.assertEqual(record.datetime, today)
+
+    @with_transaction()
     def test_create(self):
         "Test create datetime"
         DateTime = Pool().get('test.datetime')

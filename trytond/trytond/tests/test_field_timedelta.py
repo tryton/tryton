@@ -21,6 +21,30 @@ class FieldTimeDeltaTestCase(TestCase):
         activate_module('tests')
 
     @with_transaction()
+    def test_set_string(self):
+        "Test set string"
+        pool = Pool()
+        Model = pool.get('test.timedelta')
+
+        record = Model()
+        record.timedelta = '1:20:30.5'
+
+        self.assertEqual(
+            record.timedelta,
+            datetime.timedelta(hours=1, minutes=20, seconds=30.5))
+
+    @with_transaction()
+    def test_set_integer(self):
+        "Test set integer"
+        pool = Pool()
+        Model = pool.get('test.timedelta')
+
+        record = Model()
+        record.timedelta = 42
+
+        self.assertEqual(record.timedelta, datetime.timedelta(seconds=42))
+
+    @with_transaction()
     def test_create(self):
         "Test create timedelta"
         TimeDelta = Pool().get('test.timedelta')
