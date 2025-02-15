@@ -9,7 +9,7 @@ from trytond.i18n import gettext
 from trytond.tools import is_instance_method
 from trytond.transaction import Transaction, without_check_access
 
-from .field import Field, domain_method
+from .field import Field, domain_method, order_method
 
 
 def getter_context(func):
@@ -99,6 +99,10 @@ class Function(Field):
         raise NotImplementedError(gettext(
                 'ir.msg_search_function_missing',
                 **Model.__names__(self.name)))
+
+    @order_method
+    def convert_order(self, name, tables, Model):
+        raise NotImplementedError
 
     @getter_context
     @without_check_access
