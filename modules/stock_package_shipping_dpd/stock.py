@@ -2,6 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 
 import locale
+from decimal import Decimal
 from io import BytesIO
 from itertools import zip_longest
 from math import ceil
@@ -235,7 +236,7 @@ class CreateDPDShipping(Wizard):
 
         return shipping_party
 
-    def get_parcel(self, package):
+    def get_parcel(self, shipment, package):
         pool = Pool()
         UoM = pool.get('product.uom')
         ModelData = pool.get('ir.model.data')
@@ -269,22 +270,38 @@ class CreateDPDShipping(Wizard):
         return parcel
 
     def get_shipment_data(self, credential, shipment, packages):
+        pool = Pool()
+        UoM = pool.get('product.uom')
+        ModelData = pool.get('ir.model.data')
+
+        cm3 = UoM(ModelData.get_id('product', 'uom_cubic_centimeter'))
+        kg = UoM(ModelData.get_id('product', 'uom_kilogram'))
+
+        volume = round(UoM.compute_qty(
+                shipment.volume_uom, shipment.volume, cm3, round=False))
+        weight = round(UoM.compute_qty(
+                shipment.weight_uom, shipment.weight, kg, round=False), 2)
         return {
             'generalShipmentData': {
                 'identificationNumber': shipment.number,
                 'sendingDepot': credential.depot,
                 'product': shipment.carrier.dpd_product,
+                'mpsVolume': int(volume),
+                'mpsWeight': int(weight * 100),
                 'sender': self.shipping_party(
                     shipment.company.party,
                     shipment.shipping_warehouse.address),
                 'recipient': self.shipping_party(
                     shipment.shipping_to, shipment.shipping_to_address),
                 },
-            'parcels': [self.get_parcel(p) for p in packages],
-            'productAndServiceData': {
-                'orderType': 'consignment',
-                **self.get_notification(shipment),
-                },
+            'parcels': [self.get_parcel(shipment, p) for p in packages],
+            'productAndServiceData': self.get_product_and_service(shipment),
+            }
+
+    def get_product_and_service(self, shipment):
+        return {
+            'orderType': 'consignment',
+            **self.get_notification(shipment),
             }
 
     def get_notification(self, shipment, usage=None):
@@ -324,3 +341,97 @@ class CreateDPDShipping(Wizard):
                     },
                 }
         return {}
+
+
+class CreateDPDShipping_Customs(metaclass=PoolMeta):
+    __name__ = 'stock.shipment.create_shipping.dpd'
+
+    def get_product_and_service(self, shipment):
+        pool = Pool()
+        Date = pool.get('ir.date')
+        Currency = pool.get('currency.currency')
+
+        with Transaction().set_context(company=shipment.company.id):
+            today = Date.today()
+
+        product_and_service = super().get_product_and_service(shipment)
+
+        if shipment.customs_international:
+            invoice_date = shipment.effective_date or today
+            currency, = {m.currency for m in shipment.customs_moves}
+
+            amount = sum(
+                Currency.compute(
+                    curr, Decimal(str(v['quantity'])) * price, currency,
+                    round=False)
+                for (product, price, curr, _), v in
+                shipment.customs_products.items())
+
+            international = {
+                'parcelType': 0,
+                'customsAmount': int(
+                    amount.quantize(Decimal('.01')) * Decimal(100)),
+                'customsCurrency': currency.code,
+                'customsTerms': self.get_customs_terms(shipment),
+                'customsPaper': 'A',
+                'customsInvoice': shipment.number[:20],
+                'customsInvoiceDate': invoice_date.strftime('%Y%m%d'),
+                }
+            if customs_agent := shipment.customs_agent:
+                international.update({
+                        'commercialInvoiceConsigneeVatNumber': (
+                            customs_agent.tax_identifier.code)[:20],
+                        'commercialInvoiceConsignee': self.shipping_party(
+                            customs_agent.party,
+                            customs_agent.address),
+                        })
+            if shipment.tax_identifier:
+                international['commercialInvoiceConsignorVatNumber'] = (
+                    shipment.tax_identifier.code[:17])
+            international['commercialInvoiceConsignor'] = self.shipping_party(
+                shipment.company.party, shipment.customs_from_address)
+            international['additionalInvoiceLines'] = [
+                {'customsInvoicePosition': i,
+                    **self.get_international_invoice_line(shipment, *k, **v)}
+                for i, (k, v) in enumerate(
+                    shipment.customs_products.items(), 1)]
+            international['numberOfArticle'] = len(
+                international['additionalInvoiceLines'])
+            product_and_service['international'] = international
+        return product_and_service
+
+    def get_customs_terms(self, shipment):
+        if shipment and shipment.incoterm:
+            if shipment.incoterm.code == 'DAP':
+                return '01'
+            elif shipment.incoterm.code == 'DDP':
+                return '03'
+            elif shipment.incoterm.code == 'EXW':
+                return '05'
+
+    def get_international_invoice_line(
+            self, shipment, product, price, currency, unit, quantity, weight):
+        tariff_code = product.get_tariff_code({
+                'date': shipment.effective_date or shipment.planned_date,
+                'country': (
+                    shipment.customs_to_country.id
+                    if shipment.customs_to_country else None),
+                })
+
+        weight = round(weight, 2)
+
+        value = price * Decimal(str(quantity))
+        if not quantity.is_integer():
+            quantity = 1
+
+        return {
+            'quantityItems': int(quantity),
+            'customsContent': product.name[:200],
+            'customsTarif': tariff_code.code if tariff_code else None,
+            'customsAmountLine': int(
+                value.quantize(Decimal('.01')) * Decimal(100)),
+            'customsOrigin': (
+                product.country_of_origin.code_numeric
+                if product.country_of_origin else None),
+            'customsGrossWeight': int(weight * 100),
+            }
