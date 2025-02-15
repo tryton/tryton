@@ -10,6 +10,8 @@ def load_tests(*args, **kwargs):
     if (not TEST_NETWORK
             or not (os.getenv('SENDCLOUD_PUBLIC_KEY')
                 and os.getenv('SENDCLOUD_SECRET_KEY'))):
-        kwargs.setdefault('skips', set()).add(
-            'scenario_stock_package_shipping_sendcloud.rst')
+        kwargs.setdefault('skips', set()).update([
+                'scenario_stock_package_shipping_sendcloud.rst',
+                'scenario_stock_package_shipping_sendcloud_international.rst',
+                ])
     return load_doc_tests(__name__, __file__, *args, **kwargs)

@@ -1,5 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+
+from decimal import Decimal
 from itertools import zip_longest
 from math import ceil
 
@@ -205,3 +207,129 @@ class CreateShippingSendcloud(Wizard):
         else:
             parcel['apply_shipping_rules'] = True
         return parcel
+
+
+class CreateShippingSendcloud_Customs(metaclass=PoolMeta):
+    __name__ = 'stock.shipment.create_shipping.sendcloud'
+
+    def get_parcel(self, shipment, package, credential, usage=None):
+        parcel = super().get_parcel(shipment, package, credential, usage=usage)
+        if shipment.customs_international:
+            parcel['customs_invoice_nr'] = shipment.number
+            parcel['customs_shipment_type'] = self.get_customs_shipment_type(
+                shipment, credential)
+            parcel['export_type'] = self.get_export_type(shipment, credential)
+            if description := shipment.shipping_description_used:
+                parcel['general_notes'] = description[:500]
+            parcel['tax_numbers'] = {
+                'sender': list(self.get_tax_numbers(
+                        shipment, shipment.company.party, credential)),
+                'receiver': list(self.get_tax_numbers(
+                        shipment, shipment.shipping_to, credential)),
+                }
+            if shipment.customs_agent:
+                parcel['importer_of_record'] = self.get_importer_of_record(
+                    shipment, shipment.customs_agent, credential)
+                parcel['tax_numbers']['importer_of_record'] = list(
+                    self.get_tax_numbers(
+                        shipment, shipment.customs_agent.party, credential))
+
+            parcel_items = []
+            for k, v in shipment.customs_products.items():
+                parcel_items.append(self.get_parcel_item(shipment, *k, **v))
+            parcel['parcel_items'] = parcel_items
+        return parcel
+
+    def get_customs_shipment_type(self, shipment, credential):
+        return {
+            'stock.shipment.out': 2,
+            'stock.shipment.in.return': 4,
+            }.get(shipment.__class__.__name__)
+
+    def get_export_type(self, shipment, credential):
+        if shipment.shipping_to.tax_identifier:
+            return 'commercial_b2b'
+        else:
+            return 'commercial_b2c'
+
+    def get_importer_of_record(
+            self, shipment, customs_agent, credential, usage=None):
+        address = customs_agent.address
+        phone = address.contact_mechanism_get(
+            {'phone', 'mobile'}, usage=usage)
+        email = address.contact_mechanism_get('email', usage=usage)
+        street_lines = (address.street or '').splitlines()
+        return {
+            'name': customs_agent.party.full_name[:75],
+            'address_1': street_lines[0] if street_lines else '',
+            'address_2': street_lines[1] if len(street_lines) > 1 else '',
+            'house_number': None,  # TODO
+            'city': address.city,
+            'postal_code': address.postal_code,
+            'country_code': address.country.code if address.country else None,
+            'country_state': (
+                address.subdivision.split('-', 1)[1]
+                if address.subdivision else None),
+            'telephone': phone.value if phone else None,
+            'email': email.value if email else None,
+            }
+
+    def get_tax_numbers(self, shipment, party, credential):
+        for tax_identifier in party.identifiers:
+            if tax_identifier.type == 'br_vat':
+                yield {
+                    'name': 'CNP',
+                    'country_code': 'BR',
+                    'value': tax_identifier.code[:100],
+                    }
+            elif tax_identifier.type == 'ru_vat':
+                yield {
+                    'name': 'INN',
+                    'country_code': 'RU',
+                    'value': tax_identifier.code[:100],
+                    }
+            elif tax_identifier.type == 'eu_vat':
+                yield {
+                    'name': 'VAT',
+                    'country_code': tax_identifier.code[:2],
+                    'value': tax_identifier.code[2:][:100],
+                    }
+            elif tax_identifier.type.endswith('_vat'):
+                yield {
+                    'name': 'VAT',
+                    'country_code': tax_identifier.type[:2].upper(),
+                    'value': tax_identifier.code[:100],
+                    }
+            elif tax_identifier.type in {'us_ein', 'us_ssn'}:
+                country, name = tax_identifier.type.upper().split('_')
+                yield {
+                    'name': name,
+                    'country_code': country,
+                    'value': tax_identifier.code[:100],
+                    }
+
+    def get_parcel_item(
+            self, shipment, product, price, currency, unit, quantity, weight):
+        tariff_code = product.get_tariff_code({
+                'date': shipment.effective_date or shipment.planned_date,
+                'country': (
+                    shipment.customs_to_country.id
+                    if shipment.customs_to_country else None),
+                })
+        if not quantity.is_integer():
+            value = price * Decimal(str(quantity))
+            quantity = 1
+        else:
+            value = price
+
+        return {
+            'hs_code': tariff_code.code if tariff_code else None,
+            'weight': weight,
+            'quantity': quantity,
+            'description': product.name[:255],
+            'origin_country': (
+                product.country_of_origin.code if product.country_of_origin
+                else None),
+            'value': float(value.quantize(Decimal('.01'))),
+            'product_id': product.code,
+            }
