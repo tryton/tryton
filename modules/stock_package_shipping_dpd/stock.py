@@ -226,9 +226,8 @@ class CreateDPDShipping(Wizard):
             'country': address.country.code if address.country else '',
             'zipCode': address.postal_code[:9],
             'city': address.city[:35],
+            'contact': party.full_name[:35],
             }
-        if party.full_name != address.party_full_name:
-            shipping_party['name2'] = party.full_name[:35]
 
         phone = address.contact_mechanism_get({'phone', 'mobile'}, usage=usage)
         if phone and len(phone.value) <= 30:
