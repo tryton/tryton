@@ -264,14 +264,17 @@ class ShipmentOut(ShippingMixin, metaclass=PoolMeta):
         return {'packed', 'done'}
 
     @property
+    @fields.depends('warehouse')
     def shipping_warehouse(self):
         return self.warehouse
 
     @property
+    @fields.depends('customer')
     def shipping_to(self):
         return self.customer
 
     @property
+    @fields.depends('delivery_address')
     def shipping_to_address(self):
         return self.delivery_address
 
@@ -297,14 +300,17 @@ class ShipmentInReturn(ShippingMixin, metaclass=PoolMeta):
         return {'assigned', 'done'}
 
     @property
+    @fields.depends('shipping_warehouse')
     def shipping_warehouse(self):
         return self.from_location.warehouse
 
     @property
+    @fields.depends('supplier')
     def shipping_to(self):
         return self.supplier
 
     @property
+    @fields.depends('delivery_address')
     def shipping_to_address(self):
         return self.delivery_address
 

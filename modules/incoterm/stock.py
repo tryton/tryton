@@ -2,7 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 
 from trytond.i18n import gettext
-from trytond.model import ModelView, Workflow
+from trytond.model import ModelView, Workflow, fields
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
 
@@ -13,6 +13,7 @@ from .exceptions import DifferentIncotermWarning
 class ShipmentMixin(IncotermMixin):
 
     @property
+    @fields.depends('incoterm', 'incoterm_location')
     def shipping_to(self):
         party = super().shipping_to
         if self.incoterm and self.incoterm_location:
@@ -20,6 +21,7 @@ class ShipmentMixin(IncotermMixin):
         return party
 
     @property
+    @fields.depends('incoterm', 'incoterm_location')
     def shipping_to_address(self):
         address = super().shipping_to_address
         if self.incoterm and self.incoterm_location:
