@@ -251,12 +251,15 @@ class CreateDPDShipping(Wizard):
         ModelData = pool.get('ir.model.data')
 
         cm = UoM(ModelData.get_id('product', 'uom_centimeter'))
+        kg = UoM(ModelData.get_id('product', 'uom_kilogram'))
 
         parcel = {}
 
         if package.total_weight:
             # in grams rounded in 10 gram units
-            weight = int(package.total_weight * 10) * 10
+            weight = UoM.compute_qty(
+                package.weight_uom, package.total_weight, kg, round=False)
+            weight = int(round(weight, 2) * 100)
             if weight < 1000000000:
                 parcel['weight'] = weight
 
