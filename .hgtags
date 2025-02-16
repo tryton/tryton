@@ -9348,3 +9348,4 @@ de5f820d28241f3c1cbfd43a3a297b8c88f525f5 trytond-7.0.26
 21d84ec56679624c33af08194b604f9e5e74fa23 party-7.0.6
 858df27954f12bbb8186164eb746e5dca12c1a69 analytic_account-7.0.3
 515afca99dfe97a9e7db3924118fa18a6b14efcd account_payment_sepa-7.0.2
+c8307551c3b9f3c798be3cef4566a33a819e1540 account_payment_clearing-7.0.5
