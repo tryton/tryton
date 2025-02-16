@@ -289,7 +289,8 @@ class Package(tree(), MeasurementsMixin, ModelSQL, ModelView):
     @fields.depends('shipment')
     def on_change_with_state(self, name=None):
         if (self.shipment
-                and self.shipment.state in {'packed', 'done', 'cancelled'}):
+                and self.shipment.state in {
+                    'packed', 'shipped', 'done', 'cancelled'}):
             return 'closed'
         return 'open'
 
