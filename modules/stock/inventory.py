@@ -284,7 +284,7 @@ class Inventory(Workflow, ModelSQL, ModelView):
         Product = pool.get('product.product')
 
         grouping = cls.grouping()
-        to_create, to_write = [], []
+        to_save, to_delete = [], []
         for inventory in inventories:
             # Once done computation is wrong because include created moves
             if inventory.state == 'done':
@@ -306,17 +306,10 @@ class Inventory(Workflow, ModelSQL, ModelView):
                                 grouping=grouping,
                                 grouping_filter=(list(product_ids),)))
 
-            # Index some data
-            product2type = {}
-            product2consumable = {}
-            for product in Product.browse({line[1] for line in pbl}):
-                product2type[product.id] = product.type
-                product2consumable[product.id] = product.consumable
-
             # Update existing lines
             for line in inventory.lines:
                 if line.product.type != 'goods':
-                    Line.delete([line])
+                    to_delete.append(line)
                     continue
 
                 key = (inventory.location.id,) + line.unique_key
@@ -324,29 +317,38 @@ class Inventory(Workflow, ModelSQL, ModelView):
                     quantity = pbl.pop(key)
                 else:
                     quantity = 0.0
-                values = line.update_values4complete(quantity)
-                if values:
-                    to_write.extend(([line], values))
+                line.update_for_complete(quantity)
+                to_save.append(line)
 
             if not fill:
                 continue
+
+            product_idx = grouping.index('product') + 1
+            # Index some data
+            product2type = {}
+            product2consumable = {}
+            for product in Product.browse({line[product_idx] for line in pbl}):
+                product2type[product.id] = product.type
+                product2consumable[product.id] = product.consumable
+
             # Create lines if needed
             for key, quantity in pbl.items():
-                product_id = key[grouping.index('product') + 1]
+                product_id = key[product_idx]
                 if (product2type[product_id] != 'goods'
                         or product2consumable[product_id]):
                     continue
                 if not quantity:
                     continue
 
-                values = Line.create_values4complete(inventory, quantity)
-                for i, fname in enumerate(grouping, 1):
-                    values[fname] = key[i]
-                to_create.append(values)
-        if to_create:
-            Line.create(to_create)
-        if to_write:
-            Line.write(*to_write)
+                line = Line(
+                    inventory=inventory,
+                    **{fname: key[i] for i, fname in enumerate(grouping, 1)})
+                line.update_for_complete(quantity)
+                to_save.append(line)
+        if to_delete:
+            Line.delete(to_delete)
+        if to_save:
+            Line.save(to_save)
 
     @classmethod
     @ModelView.button_action('stock.wizard_inventory_count')
@@ -522,26 +524,10 @@ class InventoryLine(ModelSQL, ModelView):
             origin=self,
             )
 
-    def update_values4complete(self, quantity):
-        '''
-        Return update values to complete inventory
-        '''
-        values = {}
-        # if nothing changed, no update
-        if self.expected_quantity == quantity:
-            return values
-        values['expected_quantity'] = quantity
-        return values
-
-    @classmethod
-    def create_values4complete(cls, inventory, quantity):
-        '''
-        Return create values to complete inventory
-        '''
-        return {
-            'inventory': inventory.id,
-            'expected_quantity': quantity,
-        }
+    @fields.depends('expected_quantity')
+    def update_for_complete(self, quantity):
+        if self.expected_quantity != quantity:
+            self.expected_quantity = quantity
 
     @classmethod
     def delete(cls, lines):
@@ -586,7 +572,9 @@ class Count(Wizard):
                 raise InventoryCountWarning(warning_name,
                     gettext('stock.msg_inventory_count_create_line',
                         search=self.search.search.rec_name))
-            line, = InventoryLine.create([self.get_line_values(self.record)])
+            line = self.get_line()
+            line.update_for_complete(0)
+            line.save()
         else:
             line, = lines
         values['line'] = line.id
@@ -606,14 +594,15 @@ class Count(Wizard):
             domain.append(('product', '=', self.search.search.id))
         return domain
 
-    def get_line_values(self, inventory):
+    def get_line(self):
         pool = Pool()
         Product = pool.get('product.product')
         InventoryLine = pool.get('stock.inventory.line')
-        values = InventoryLine.create_values4complete(inventory, 0)
+
+        line = InventoryLine(inventory=self.record)
         if isinstance(self.search.search, Product):
-            values['product'] = self.search.search.id
-        return values
+            line.product = self.search.search
+        return line
 
     def transition_add(self):
         if self.quantity.line and self.quantity.quantity:

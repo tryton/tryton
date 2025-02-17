@@ -900,15 +900,16 @@ class InventoryCount(metaclass=PoolMeta):
             domain.append(('lot', '=', self.search.search.id))
         return domain
 
-    def get_line_values(self, inventory):
+    def get_line(self):
         pool = Pool()
         Lot = pool.get('stock.lot')
-        values = super(InventoryCount, self).get_line_values(inventory)
+
+        line = super().get_line()
         if isinstance(self.search.search, Lot):
             lot = self.search.search
-            values['product'] = lot.product.id
-            values['lot'] = lot.id
-        return values
+            line.product = lot.product
+            line.lot = lot
+        return line
 
 
 class InventoryCountSearch(metaclass=PoolMeta):
