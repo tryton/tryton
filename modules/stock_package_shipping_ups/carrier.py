@@ -22,6 +22,7 @@ class CredentialUPS(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
     client_secret = fields.Char("Client Secret", required=True)
     account_number = fields.Char('Account Number', required=True)
     use_metric = fields.Boolean('Use Metric')
+    use_international_forms = fields.Boolean("Use International Forms")
     server = fields.Selection([
             ('testing', 'Testing'),
             ('production', 'Production'),
@@ -40,6 +41,10 @@ class CredentialUPS(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
     @classmethod
     def default_use_metric(cls):
         return True
+
+    @classmethod
+    def default_use_international_forms(cls):
+        return False
 
     @classmethod
     def default_server(cls):

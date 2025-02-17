@@ -175,7 +175,7 @@ Create a UPS Carrier and the related credential::
     >>> carrier.party = ups
     >>> carrier.carrier_product = carrier_product
     >>> carrier.shipping_service = 'ups'
-    >>> carrier.ups_service_type = '65'
+    >>> carrier.ups_service_type = '11'
     >>> carrier.ups_label_image_format = 'GIF'
     >>> carrier.ups_notifications = ['5', '7', '012']
     >>> carrier.save()
@@ -204,7 +204,6 @@ Create the packs and ship the shipment::
 
     >>> Package = Model.get('stock.package')
     >>> shipment, = sale.shipments
-    >>> shipment.shipping_description = 'Football Players'
     >>> shipment.click('assign_try')
     >>> shipment.click('pick')
     >>> pack = shipment.packages.new()

@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="product_uom_view_form">
+            <field name="model">product.uom</field>
+            <field name="inherit" ref="product.uom_view_form"/>
+            <field name="name">product_uom_form</field>
+        </record>
+    </data>
+    <data noupdate="1">
+        <record model="product.uom" id="product.uom_unit">
+            <field name="ups_code">PC</field>
+        </record>
+        <record model="product.uom" id="product.uom_kilogram">
+            <field name="ups_code">KG</field>
+        </record>
+        <record model="product.uom" id="product.uom_pound">
+            <field name="ups_code">LB</field>
+        </record>
+        <record model="product.uom" id="product.uom_meter">
+            <field name="ups_code">M</field>
+        </record>
+        <record model="product.uom" id="product.uom_centimeter">
+            <field name="ups_code">CM</field>
+        </record>
+        <record model="product.uom" id="product.uom_yard">
+            <field name="ups_code">YD</field>
+        </record>
+        <record model="product.uom" id="product.uom_liter">
+            <field name="ups_code">L</field>
+        </record>
+        <record model="product.uom" id="product.uom_square_meter">
+            <field name="ups_code">SME</field>
+        </record>
+        <record model="product.uom" id="product.uom_square_yard">
+            <field name="ups_code">SYD</field>
+        </record>
+    </data>
+</tryton>

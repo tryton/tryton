@@ -7,6 +7,7 @@ from trytond.tests.test_tryton import ModuleTestCase
 class ShippingUpsTestCase(ModuleTestCase):
     'Test Shipping Ups module'
     module = 'stock_package_shipping_ups'
+    extras = ['customs', 'incoterm', 'stock_shipment_customs']
 
 
 del ModuleTestCase

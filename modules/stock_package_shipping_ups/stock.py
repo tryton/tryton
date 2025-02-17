@@ -5,6 +5,7 @@ import base64
 import re
 import ssl
 import urllib.parse
+from decimal import Decimal
 from itertools import zip_longest
 from math import ceil
 
@@ -396,3 +397,126 @@ class CreateShippingUPS(Wizard):
                     }
                 },
             }
+
+
+class CreateShippingUPS_Customs_Incoterm(metaclass=PoolMeta):
+    __name__ = 'stock.shipment.create_shipping.ups'
+
+    def get_request(self, shipment, packages, credential):
+        request = super().get_request(shipment, packages, credential)
+        if (shipment.customs_international
+                and credential.use_international_forms):
+            international_form = self.get_international_form(
+                shipment, credential)
+            request['ShipmentRequest']['Shipment'].setdefault(
+                'ShipmentServiceOptions', {})['InternationalForms'] = (
+                    international_form)
+        return request
+
+    def get_international_form(self, shipment, credential):
+        form_type = self.get_international_form_type(shipment, credential)
+        return getattr(self, f'get_international_form_{form_type}')(
+            credential.use_metric, shipment)
+
+    def get_international_form_type(self, shipment, credential):
+        return 'invoice'
+
+    def get_international_form_invoice(self, use_metric, shipment):
+        pool = Pool()
+        Date = pool.get('ir.date')
+
+        with Transaction().set_context(company=shipment.company.id):
+            today = Date.today()
+
+        if customs_agent := shipment.customs_agent:
+            sold_to_party = customs_agent.party
+            sold_to_address = customs_agent.address
+        else:
+            sold_to_party = shipment.shipping_to
+            sold_to_address = shipment.shipping_to_address
+
+        invoice_date = shipment.effective_date or today
+        currency, = {m.currency for m in shipment.customs_moves}
+        sold_to = self.get_shipping_party(sold_to_party, sold_to_address)
+        if customs_agent:
+            sold_to['AccountNumber'] = customs_agent.ups_account_number
+        return {
+            'FormType': '01',  # Invoice
+            'Contacts': {
+                'SoldTo': sold_to,
+                },
+            'Product': [
+                self.get_international_form_invoice_product(
+                    use_metric, shipment, *k, **v)
+                for k, v in shipment.customs_products.items()],
+            'InvoiceNumber': shipment.number[-35:],
+            'InvoiceDate': invoice_date.strftime('%Y%m%d'),
+            'TermsOfShipment': (
+                shipment.incoterm.code if shipment.incoterm else None),
+            'ReasonForExport': self.get_international_form_invoice_reason(
+                shipment),
+            'CurrencyCode': currency.code,
+            }
+
+    def get_international_form_invoice_product(
+            self, use_metric, shipment, product, price, currency, unit,
+            quantity, weight):
+        pool = Pool()
+        UoM = pool.get('product.uom')
+        ModelData = pool.get('ir.model.data')
+
+        kg = UoM(ModelData.get_id('product', 'uom_kilogram'))
+        lb = UoM(ModelData.get_id('product', 'uom_pound'))
+
+        tariff_code = product.get_tariff_code({
+                'date': shipment.effective_date or shipment.planned_date,
+                'country': (
+                    shipment.customs_to_country.id
+                    if shipment.customs_to_country else None),
+                })
+        weight = UoM.compute_qty(
+            kg, weight, kg if use_metric else lb, round=False)
+        if len(str(weight)) > 5:
+            weight = ceil(weight)
+
+        if not quantity.is_integer():
+            value = price * Decimal(str(quantity))
+            quantity = 1
+            unit_code = 'OTH'
+        else:
+            value = price
+            unit_code = unit.ups_code
+
+        for i in range(6, -1, -1):
+            value = str(price.quantize(Decimal(10) ** -i)).rstrip('0')
+            if len(value) <= 19:
+                break
+        return {
+            'Description': product.name[:35],
+            'Unit': {
+                'Number': '%i' % quantity,
+                'UnitOfMeasurement': {
+                    'Code': unit_code,
+                    'Description': (
+                        unit.ups_code if unit.ups_code != 'OTH'
+                        else unit.name)[:3],
+                    },
+                'Value': value,
+                },
+            'CommodityCode': tariff_code.code if tariff_code else None,
+            'OriginCountryCode': (
+                product.country_of_origin.code if product.country_of_origin
+                else None),
+            'ProductWeight': {
+                'UnitOfMeasurement': {
+                    'Code': 'KGS' if use_metric else 'LBS',
+                    },
+                'Weight': str(weight),
+                },
+            }
+
+    def get_international_form_invoice_reason(self, shipment):
+        return {
+            'stock.shipment.out': 'SALE',
+            'stock.shipment.in.return': 'RETURN',
+            }.get(shipment.__class__.__name__)
