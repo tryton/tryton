@@ -213,3 +213,28 @@ class ShipmentInternal(metaclass=PoolMeta):
 
         i = cls.incoming_moves.order.index(('to_location', 'ASC'))
         cls.incoming_moves.order.insert(i + 1, ('to_place', 'ASC'))
+
+
+class InventoryLine(metaclass=PoolMeta):
+    __name__ = 'stock.inventory.line'
+
+    place = fields.Many2One(
+        'stock.product.location.place', "Place",
+        domain=['OR',
+            ('template.products', '=', Eval('product', -1)),
+            ('product', '=', Eval('product', -1)),
+            ])
+
+    @fields.depends(
+        'inventory_location', 'product',
+        methods=['on_change_with_inventory_location'])
+    def on_change_with_place(self):
+        location = (self.inventory_location
+            or self.on_change_with_inventory_location())
+        if self.product and location:
+            return self.product.get_place(location)
+
+    @fields.depends(methods=['on_change_with_place'])
+    def update_for_complete(self, quantity):
+        super().update_for_complete(quantity)
+        self.place = self.on_change_with_place()

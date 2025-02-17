@@ -17,6 +17,7 @@ def register():
         stock.ShipmentOut,
         stock.ShipmentOutReturn,
         stock.ShipmentInternal,
+        stock.InventoryLine,
         product.Template,
         product.Product,
         module='stock_product_location_place', type_='model')
