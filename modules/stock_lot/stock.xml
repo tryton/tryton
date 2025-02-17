@@ -379,16 +379,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">inventory_line_form</field>
         </record>
 
-        <record model="ir.ui.view" id="inventory_line_view_tree">
+        <record model="ir.ui.view" id="inventory_line_view_list">
             <field name="model">stock.inventory.line</field>
-            <field name="inherit" ref="stock.inventory_line_view_tree"/>
-            <field name="name">inventory_line_tree</field>
-        </record>
-
-        <record model="ir.ui.view" id="inventory_line_view_list_simple">
-            <field name="model">stock.inventory.line</field>
-            <field name="inherit" ref="stock.inventory_line_view_list_simple"/>
-            <field name="name">inventory_line_tree</field>
+            <field name="inherit" ref="stock.inventory_line_view_list"/>
+            <field name="name">inventory_line_list</field>
         </record>
 
         <record model="ir.ui.view" id="inventory_count_quantity_view_form">
