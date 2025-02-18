@@ -430,6 +430,12 @@ class Product(
             'invisible': ~Eval('replaced_by'),
             },
         help="The product replacing this one.")
+    replacing = fields.One2Many(
+        'product.product', 'replaced_by', "Replacing", readonly=True,
+        states={
+            'invisible': ~Eval('replacing'),
+            },
+        help="The products that this one is replacing.")
 
     @classmethod
     def __setup__(cls):
@@ -629,8 +635,8 @@ class Product(
             ('identifiers.code', operator, code_value, *extra),
             ('template.name', operator, operand, *extra),
             ('template.code', operator, code_value, *extra),
-            ('replaced_by.code', operator, code_value, *extra),
-            ('replaced_by.identifiers.code', operator, code_value, *extra),
+            ('replacing.code', operator, code_value, *extra),
+            ('replacing.identifiers.code', operator, code_value, *extra),
             ]
 
     @staticmethod
@@ -709,6 +715,7 @@ class Product(
             default = default.copy()
         default.setdefault('suffix_code', None)
         default.setdefault('code', None)
+        default.setdefault('replacing')
         return super().copy(products, default=default)
 
     @property
