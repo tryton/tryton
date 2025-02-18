@@ -715,6 +715,7 @@ class Product(
             default = default.copy()
         default.setdefault('suffix_code', None)
         default.setdefault('code', None)
+        default.setdefault('replaced_by')
         default.setdefault('replacing')
         return super().copy(products, default=default)
 
