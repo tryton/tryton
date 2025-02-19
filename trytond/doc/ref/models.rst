@@ -436,6 +436,10 @@ Class methods:
 
       It is used to trigger actions based on what has been modified.
 
+.. classmethod:: ModelStorage.on_delete(records)
+
+   Returns a list of methods to call once the records have been deleted.
+
 .. classmethod:: ModelStorage.copy(records[, default])
 
    Duplicate the records.

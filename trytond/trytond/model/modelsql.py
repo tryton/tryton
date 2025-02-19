@@ -1472,7 +1472,7 @@ class ModelSQL(ModelStorage):
         cursor = transaction.connection.cursor()
         pool = Pool()
 
-        ids = cls._before_delete(records)
+        ids, on_delete = cls._before_delete(records)
         if not ids:
             return
 
@@ -1581,7 +1581,7 @@ class ModelSQL(ModelStorage):
 
         cls._update_mptt(list(tree_ids.keys()), list(tree_ids.values()))
 
-        cls._after_delete(ids)
+        cls._after_delete(ids, on_delete)
 
     @classmethod
     def __check_domain_rule(cls, ids, mode):

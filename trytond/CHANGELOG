@@ -1,3 +1,4 @@
+* Add on_delete to ModelStorage
 * Add check_modification to ModelStorage
 * Add on_modification to ModelStorage
 * Add preprocess_values to ModelStorage

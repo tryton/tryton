@@ -430,6 +430,7 @@ class ModelStorage(Model):
                 ModelData.clean(records)
             if check_access:
                 cls.log(records, 'delete')
+            on_delete = cls.on_delete(records)
             cls.on_modification('delete', records)
 
             triggers = Trigger.get_triggers(cls.__name__, 'delete')
@@ -469,7 +470,7 @@ class ModelStorage(Model):
                     except ValueError:
                         break
         transaction.delete_records[cls.__name__].update(ids)
-        return ids
+        return ids, on_delete
 
     @classmethod
     def delete(cls, records):
@@ -478,12 +479,14 @@ class ModelStorage(Model):
 
     @classmethod
     @without_check_access
-    def _after_delete(cls, ids):
+    def _after_delete(cls, ids, on_delete):
         pool = Pool()
         Translation = pool.get('ir.translation')
         if any(getattr(f, 'translate', False) and not hasattr(f, 'set')
                 for f in cls._fields.values()):
             Translation.delete_ids(cls.__name__, 'model', ids)
+        for meth in on_delete:
+            meth()
 
     @classmethod
     def check_modification(cls, mode, records, values=None, external=False):
@@ -492,6 +495,10 @@ class ModelStorage(Model):
     @classmethod
     def on_modification(cls, mode, records, field_names=None):
         assert mode in {'create', 'write', 'delete'}
+
+    @classmethod
+    def on_delete(cls, records):
+        return []
 
     @classmethod
     def copy(cls, records, default=None):
