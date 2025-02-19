@@ -1,3 +1,4 @@
+* Add on_modification to ModelStorage
 * Add preprocess_values to ModelStorage
 * Remove trigger methods on ModelStorage
 * Add compute fields to ModelStorage

@@ -291,6 +291,7 @@ class ModelStorage(Model):
             records = cls.browse(sub_ids)
             cls._validate(records)
             cls._compute_fields(records)
+            cls.on_modification('create', records)
             if triggers:
                 for trigger in triggers:
                     trigger.queue_trigger_action(records)
@@ -397,6 +398,7 @@ class ModelStorage(Model):
             records = cls.browse(sub_ids)
             cls._validate(records, field_names=field_names)
             cls._compute_fields(records, field_names=field_names)
+            cls.on_modification('write', records, field_names)
 
         for trigger, records in trigger_eligibles.items():
             trigger.queue_trigger_action(records)
@@ -422,6 +424,7 @@ class ModelStorage(Model):
                 ModelData.clean(records)
             if check_access:
                 cls.log(records, 'delete')
+            cls.on_modification('delete', records)
 
             triggers = Trigger.get_triggers(cls.__name__, 'delete')
             if triggers:
@@ -475,6 +478,10 @@ class ModelStorage(Model):
         if any(getattr(f, 'translate', False) and not hasattr(f, 'set')
                 for f in cls._fields.values()):
             Translation.delete_ids(cls.__name__, 'model', ids)
+
+    @classmethod
+    def on_modification(cls, mode, records, field_names=None):
+        assert mode in {'create', 'write', 'delete'}
 
     @classmethod
     def copy(cls, records, default=None):

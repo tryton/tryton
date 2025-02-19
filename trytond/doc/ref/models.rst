@@ -414,6 +414,17 @@ Class methods:
 
    Delete records.
 
+.. classmethod:: ModelStorage.on_modification(mode, records[, field_names])
+
+   Method called after ``records`` have been modified.
+   ``mode`` can be either ``create``, ``write`` or ``delete``.
+   When the ``mode`` is ``write``, ``field_names`` is a :py:class:`set <set>`
+   containing modified fields.
+
+   .. note::
+
+      It is used to trigger actions based on what has been modified.
+
 .. classmethod:: ModelStorage.copy(records[, default])
 
    Duplicate the records.
