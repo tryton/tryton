@@ -48,7 +48,7 @@ class TriggerTestCase(TestCase):
         values = {
             'name': 'Test',
             'model': model.id,
-            'on_time': True,
+            'on_time_': True,
             'condition': 'true',
             'action': 'test.trigger_action|trigger',
             }
@@ -62,7 +62,7 @@ class TriggerTestCase(TestCase):
                     ['create', 'write', 'delete'], i):
                 combination_values = values.copy()
                 for mode in combination:
-                    combination_values['on_%s' % mode] = True
+                    combination_values['on_%s_' % mode] = True
                 self.assertRaises(
                     (SQLConstraintError, DomainValidationError),
                     Trigger.create,
@@ -94,7 +94,7 @@ class TriggerTestCase(TestCase):
         trigger, = Trigger.create([{
                     'name': 'Test',
                     'model': model.id,
-                    'on_create': True,
+                    'on_create_': True,
                     'condition': 'true',
                     'action': 'test.trigger_action|trigger',
                     }])
@@ -172,7 +172,7 @@ class TriggerTestCase(TestCase):
         trigger, = Trigger.create([{
                     'name': 'Test',
                     'model': model.id,
-                    'on_write': True,
+                    'on_write_': True,
                     'condition': 'true',
                     'action': 'test.trigger_action|trigger',
                     }])
@@ -308,7 +308,7 @@ class TriggerTestCase(TestCase):
         trigger, = Trigger.create([{
                     'name': 'Test',
                     'model': model.id,
-                    'on_delete': True,
+                    'on_delete_': True,
                     'condition': 'true',
                     'action': 'test.trigger_action|trigger',
                     }])
@@ -395,7 +395,7 @@ class TriggerTestCase(TestCase):
         trigger, = Trigger.create([{
                     'name': 'Test',
                     'model': model.id,
-                    'on_time': True,
+                    'on_time_': True,
                     'condition': 'true',
                     'action': 'test.trigger_action|trigger',
                     }])

@@ -27,34 +27,34 @@ class Trigger(DeactivableMixin, ModelSQL, ModelView):
     __name__ = 'ir.trigger'
     name = fields.Char('Name', required=True, translate=True)
     model = fields.Many2One('ir.model', 'Model', required=True)
-    on_time = fields.Boolean(
+    on_time_ = fields.Boolean(
         "On Time",
         domain=[
-            If(Eval('on_create', False)
-                | Eval('on_write', False)
-                | Eval('on_delete', False),
-                ('on_time', '=', False),
+            If(Eval('on_create_', False)
+                | Eval('on_write_', False)
+                | Eval('on_delete_', False),
+                ('on_time_', '=', False),
                 ()),
             ])
-    on_create = fields.Boolean(
+    on_create_ = fields.Boolean(
         "On Create",
         domain=[
-            If(Eval('on_time', False),
-                ('on_create', '=', False),
+            If(Eval('on_time_', False),
+                ('on_create_', '=', False),
                 ()),
             ])
-    on_write = fields.Boolean(
+    on_write_ = fields.Boolean(
         "On Write",
         domain=[
-            If(Eval('on_time', False),
-                ('on_write', '=', False),
+            If(Eval('on_time_', False),
+                ('on_write_', '=', False),
                 ()),
             ])
-    on_delete = fields.Boolean(
+    on_delete_ = fields.Boolean(
         "On Delete",
         domain=[
-            If(Eval('on_time', False),
-                ('on_delete', '=', False),
+            If(Eval('on_time_', False),
+                ('on_delete_', '=', False),
                 ()),
             ])
     condition = fields.Char('Condition', required=True,
@@ -81,13 +81,23 @@ class Trigger(DeactivableMixin, ModelSQL, ModelView):
         t = cls.__table__()
         cls._sql_constraints += [
             ('on_exclusive',
-                Check(t, ~((t.on_time == Literal(True))
-                        & ((t.on_create == Literal(True))
-                            | (t.on_write == Literal(True))
-                            | (t.on_delete == Literal(True))))),
+                Check(t, ~((t.on_time_ == Literal(True))
+                        & ((t.on_create_ == Literal(True))
+                            | (t.on_write_ == Literal(True))
+                            | (t.on_delete_ == Literal(True))))),
                 'ir.msg_trigger_exclusive'),
             ]
         cls._order.insert(0, ('name', 'ASC'))
+
+    @classmethod
+    def __register__(cls, module_name):
+        table_h = cls.__table_handler__(module_name)
+
+        # Migration from 7.4: rename on_<event>
+        for name in ['on_time', 'on_create', 'on_write', 'on_delete']:
+            table_h.column_rename(name, name + '_')
+
+        super().__register__(module_name)
 
     @classmethod
     def validate_fields(cls, triggers, field_names):
@@ -114,27 +124,27 @@ class Trigger(DeactivableMixin, ModelSQL, ModelView):
     def default_limit_number():
         return 0
 
-    @fields.depends('on_time')
-    def on_change_on_time(self):
-        if self.on_time:
-            self.on_create = False
-            self.on_write = False
-            self.on_delete = False
+    @fields.depends('on_time_')
+    def on_change_on_time_(self):
+        if self.on_time_:
+            self.on_create_ = False
+            self.on_write_ = False
+            self.on_delete_ = False
 
-    @fields.depends('on_create')
-    def on_change_on_create(self):
-        if self.on_create:
-            self.on_time = False
+    @fields.depends('on_create_')
+    def on_change_on_create_(self):
+        if self.on_create_:
+            self.on_time_ = False
 
-    @fields.depends('on_write')
-    def on_change_on_write(self):
-        if self.on_write:
-            self.on_time = False
+    @fields.depends('on_write_')
+    def on_change_on_write_(self):
+        if self.on_write_:
+            self.on_time_ = False
 
-    @fields.depends('on_delete')
-    def on_change_on_delete(self):
-        if self.on_delete:
-            self.on_time = False
+    @fields.depends('on_delete_')
+    def on_change_on_delete_(self):
+        if self.on_delete_:
+            self.on_time_ = False
 
     @classmethod
     def get_triggers(cls, model_name, mode):
@@ -154,7 +164,7 @@ class Trigger(DeactivableMixin, ModelSQL, ModelView):
 
         triggers = cls.search([
                 ('model.name', '=', model_name),
-                ('on_%s' % mode, '=', True),
+                (f'on_{mode}_', '=', True),
                 ])
         cls._get_triggers_cache.set(key, list(map(int, triggers)))
         return triggers
@@ -259,7 +269,7 @@ class Trigger(DeactivableMixin, ModelSQL, ModelView):
         '''
         pool = Pool()
         triggers = cls.search([
-                ('on_time', '=', True),
+                ('on_time_', '=', True),
                 ])
         for trigger in triggers:
             Model = pool.get(trigger.model.name)
