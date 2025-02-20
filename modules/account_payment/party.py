@@ -165,7 +165,10 @@ class PartyReceptionDirectDebit(
             ('reconciliation', '=', None),
             ('payment_amount', '!=', 0),
             ('move_state', '=', 'posted'),
-            ('maturity_date', '<=', date),
+            ['OR',
+                ('maturity_date', '<=', date),
+                ('maturity_date', '=', None),
+                ],
             ('payment_blocked', '!=', True),
             ]
 
