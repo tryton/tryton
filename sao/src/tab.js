@@ -942,7 +942,8 @@
             });
         },
         delete_: function() {
-            if (!Sao.common.MODELACCESS.get(this.screen.model_name)['delete']) {
+            if (!Sao.common.MODELACCESS.get(this.screen.model_name)['delete']
+                || !this.screen.deletable) {
                 return jQuery.when();
             }
             var msg;
