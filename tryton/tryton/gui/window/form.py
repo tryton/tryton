@@ -469,9 +469,9 @@ class Form(TabContent):
         if widget:
             # Called from button so we must save the tree state
             self.screen.save_tree_state()
-        if not (common.MODELACCESS[self.model]['write']
-                or common.MODELACCESS[self.model]['create']
-                or self.screen.writable):
+        if (self.screen.readonly
+                or not (common.MODELACCESS[self.model]['write']
+                    or common.MODELACCESS[self.model]['create'])):
             return
         if self.screen.save_current():
             self.info_bar_add(_('Record saved.'), Gtk.MessageType.INFO)

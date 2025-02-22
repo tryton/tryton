@@ -887,7 +887,7 @@
                 this.screen.save_tree_state();
             }
             var access = Sao.common.MODELACCESS.get(this.screen.model_name);
-            if (!(access.write || access.create)) {
+            if (this.screen.readonly || !(access.write || access.create)) {
                 return jQuery.Deferred().reject();
             }
             return this.screen.save_current().then(
