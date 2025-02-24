@@ -1,7 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import datetime
-from decimal import Decimal
 from functools import partial
 from itertools import groupby
 
@@ -10,7 +9,6 @@ from trytond.model import Index, ModelSQL, ModelView, fields
 from trytond.model.exceptions import AccessError
 from trytond.modules.company.model import (
     employee_field, reset_employee, set_employee)
-from trytond.modules.product import round_price
 from trytond.pool import Pool
 from trytond.pyson import Bool, Eval, If
 from trytond.tools import firstline, sortable_values
@@ -494,8 +492,6 @@ class CreatePurchase(Wizard):
         for f, v in key:
             setattr(line, f, v)
         line.on_change_quantity()
-        if line.unit_price is None:
-            line.unit_price = round_price(Decimal(0))
         return line
 
     @classmethod
