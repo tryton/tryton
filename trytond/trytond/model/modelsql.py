@@ -1379,8 +1379,8 @@ class ModelSQL(ModelStorage):
         Translation = pool.get('ir.translation')
         Config = pool.get('ir.configuration')
 
-        ids, field_names, trigger_eligibles, *args = cls._before_write(
-            records, values, *args)
+        ids, field_names, on_write, trigger_eligibles, *args = (
+            cls._before_write(records, values, *args))
 
         table = cls.__table__()
 
@@ -1462,7 +1462,7 @@ class ModelSQL(ModelStorage):
 
         cls.__check_domain_rule(ids, 'write')
 
-        cls._after_write(ids, field_names, trigger_eligibles)
+        cls._after_write(ids, field_names, on_write, trigger_eligibles)
 
     @classmethod
     @no_table_query

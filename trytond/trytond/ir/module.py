@@ -62,7 +62,7 @@ class Module(ModelSQL, ModelView):
         ]
         cls._order.insert(0, ('name', 'ASC'))
         cls.__rpc__.update({
-                'on_write': RPC(instantiate=0),
+                'on_written': RPC(instantiate=0),
                 })
         cls._buttons.update({
                 'activate': {
@@ -135,7 +135,7 @@ class Module(ModelSQL, ModelView):
         return super().delete(records)
 
     @classmethod
-    def on_write(cls, modules):
+    def on_written(cls, modules):
         dependencies = set()
 
         def get_parents(module):

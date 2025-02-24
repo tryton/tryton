@@ -1089,7 +1089,7 @@ class Line(DescriptionOriginMixin, MoveLineMixin, ModelSQL, ModelView):
                 'account.msg_line_second_currency_sign'),
             ]
         cls.__rpc__.update({
-                'on_write': RPC(instantiate=0),
+                'on_written': RPC(instantiate=0),
                 })
         # Do not cache default_date nor default_move
         cls.__rpc__['default_get'].cache = None
@@ -1392,7 +1392,7 @@ class Line(DescriptionOriginMixin, MoveLineMixin, ModelSQL, ModelView):
             fiscalyear_ids)
 
     @classmethod
-    def on_write(cls, lines):
+    def on_written(cls, lines):
         return list(set(l.id for line in lines for l in line.move.lines))
 
     @classmethod

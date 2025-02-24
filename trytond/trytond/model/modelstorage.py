@@ -345,6 +345,7 @@ class ModelStorage(Model):
         actions = iter(args)
         args = []
         field_names = set()
+        on_write = []
         all_records, ids = [], []
         for records, values in zip(actions, actions):
             cls.__check_xml_record(records, values)
@@ -352,6 +353,7 @@ class ModelStorage(Model):
             with without_check_access():
                 cls.check_modification(
                     'write', records, values, external=check_access)
+                on_write.extend(cls.on_write(records, values))
                 args.append(records)
                 args.append(cls.preprocess_values('write', values))
                 if check_access and values:
@@ -385,7 +387,7 @@ class ModelStorage(Model):
                 for record in all_records:
                     cache_cls.pop(record.id, None)
 
-        return ids, field_names, trigger_eligibles, *args
+        return ids, field_names, on_write, trigger_eligibles, *args
 
     @classmethod
     def write(cls, records, values, *args):
@@ -396,7 +398,7 @@ class ModelStorage(Model):
 
     @classmethod
     @without_check_access
-    def _after_write(cls, ids, field_names, trigger_eligibles):
+    def _after_write(cls, ids, field_names, on_write, trigger_eligibles):
         transaction = Transaction()
 
         for sub_ids in grouped_slice(ids, record_cache_size(transaction)):
@@ -404,9 +406,15 @@ class ModelStorage(Model):
             cls._validate(records, field_names=field_names)
             cls._compute_fields(records, field_names=field_names)
             cls.on_modification('write', records, field_names)
+        for meth in on_write:
+            meth()
 
         for trigger, records in trigger_eligibles.items():
             trigger.queue_trigger_action(records)
+
+    @classmethod
+    def on_write(cls, records, values):
+        return []
 
     @classmethod
     def index_set_field(cls, name):

@@ -436,6 +436,13 @@ Class methods:
 
       It is used to trigger actions based on what has been modified.
 
+.. classmethod:: ModelStorage.on_write(records, values):
+
+   Returns a list of methods to call once the records have been modified.
+
+   ``values`` is a dictionary with fields names as key and writen values as
+   value.
+
 .. classmethod:: ModelStorage.on_delete(records)
 
    Returns a list of methods to call once the records have been deleted.

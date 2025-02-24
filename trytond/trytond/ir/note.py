@@ -105,11 +105,11 @@ class Note(ResourceMixin, ModelSQL, ModelView):
             super().write(notes, values, *args)
         else:
             # Check access write and clean cache
-            ids, field_names, trigger_eligibles, *args = (
+            ids, field_names, on_write, trigger_eligibles, *args = (
                 cls._before_write(notes, values))
             cls.set_unread(notes, 'unread', values['unread'])
             cls._after_write(
-                ids, field_names, trigger_eligibles)
+                ids, field_names, on_write, trigger_eligibles)
 
 
 class NoteRead(ModelSQL):
