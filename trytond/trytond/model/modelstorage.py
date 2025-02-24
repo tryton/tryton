@@ -245,6 +245,11 @@ class ModelStorage(Model):
                     **extra))
 
     @classmethod
+    def preprocess_values(cls, mode, values):
+        assert mode in {'create', 'write'}
+        return values.copy()
+
+    @classmethod
     def _before_create(cls, vlist):
         pool = Pool()
         ModelAccess = pool.get('ir.model.access')
@@ -265,7 +270,9 @@ class ModelStorage(Model):
                 cls._count_cache.set(cls.__name__, None)
             else:
                 cls._count_cache.set(cls.__name__, count + len(vlist))
-        return vlist
+        with without_check_access():
+            return [
+                cls.preprocess_values('create', values) for values in vlist]
 
     @classmethod
     def create(cls, vlist):
@@ -332,12 +339,15 @@ class ModelStorage(Model):
         ModelAccess.check(cls.__name__, 'write')
 
         actions = iter(args)
+        args = []
         field_names = set()
         all_records, ids = [], []
         for records, values in zip(actions, actions):
             cls.__check_xml_record(records, values)
             ModelFieldAccess.check(cls.__name__, values.keys(), 'write')
             with without_check_access():
+                args.append(records)
+                args.append(cls.preprocess_values('write', values))
                 if check_access and values:
                     cls.log(records, 'write', ','.join(sorted(values.keys())))
                 field_names.update(values.keys())

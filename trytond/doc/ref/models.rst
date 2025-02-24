@@ -356,6 +356,13 @@ Class methods:
 
    Log event for records.
 
+.. classmethod:: ModelStorage.preprocess_values(cls, mode, values)
+
+   Returns a copy of ``values`` to be used for :meth:`~ModelStorage.create` and
+   :meth:`~ModelStorage.write`.
+
+   ``mode`` is either ``create`` or ``write``.
+
 .. classmethod:: ModelStorage.create(vlist)
 
    Create records.

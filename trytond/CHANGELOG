@@ -1,3 +1,4 @@
+* Add preprocess_values to ModelStorage
 * Remove trigger methods on ModelStorage
 * Add compute fields to ModelStorage
 * Add configuration of select timeout for cache channels
