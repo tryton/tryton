@@ -3,6 +3,7 @@
 import datetime as dt
 import urllib.parse
 from decimal import Decimal
+from operator import attrgetter
 
 import pyactiveresource
 import shopify
@@ -667,7 +668,9 @@ class Shop_Warehouse(ModelView, metaclass=PoolMeta):
         '_parent_shop.shopify_password')
     def get_shopify_locations(self):
         locations = [(None, "")]
-        if self.shop:
+        session = attrgetter(
+            'shopify_url', 'shopify_version', 'shopify_password')
+        if self.shop and all(session(self.shop)):
             locations_cache = self._shopify_locations_cache.get(self.shop.id)
             if locations_cache is not None:
                 return locations_cache
