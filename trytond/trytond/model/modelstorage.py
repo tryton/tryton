@@ -148,7 +148,7 @@ class ModelStorage(Model):
                         readonly=False,
                         instantiate=slice(0, None, 2),
                         size_limits={
-                            (0, None, 2), _request_records_limit,
+                            (0, None, 2): _request_records_limit,
                             }),
                     'delete': RPC(
                         readonly=False,
