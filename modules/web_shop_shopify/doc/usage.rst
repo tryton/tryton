@@ -17,6 +17,8 @@ with, as a minimum, the :guilabel:`Admin API access scopes`:
 
    * Inventory: Read and write
 
+   * Locations: Read
+
    * Merchant-managed fulfillment orders: Read and write
 
    * Orders: Read and write
