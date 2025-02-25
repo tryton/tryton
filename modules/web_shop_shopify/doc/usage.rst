@@ -11,21 +11,21 @@ First you must create a new `custom app
 <https://help.shopify.com/en/manual/apps/app-types>`_ for your Shopify store
 with, as a minimum, the :guilabel:`Admin API access scopes`:
 
-   * Assigned fulfillment: Read and write
+   * :guilabel:`Assigned fulfillment`: Read and write
 
-   * Fulfillment services: Read and write
+   * :guilabel:`Fulfillment services`: Read and write
 
-   * Inventory: Read and write
+   * :guilabel:`Inventory`: Read and write
 
-   * Locations: Read
+   * :guilabel:`Locations`: Read
 
-   * Merchant-managed fulfillment orders: Read and write
+   * :guilabel:`Merchant-managed fulfillment orders`: Read and write
 
-   * Orders: Read and write
+   * :guilabel:`Orders`: Read and write
 
-   * Product listings: Read and write
+   * :guilabel:`Product listings`: Read and write
 
-   * Products: Read and write
+   * :guilabel:`Products`: Read and write
 
 You also need to copy the :guilabel:`Admin API access token` that is generated
 when installing the app.
