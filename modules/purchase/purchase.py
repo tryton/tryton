@@ -1411,7 +1411,14 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super().__setup__()
+        t = cls.__table__()
         cls.__access__.add('purchase')
+        cls._sql_indexes.update({
+                Index(t,
+                    (t.product, Index.Range()),
+                    (t.purchase, Index.Equality()),
+                    where=t.type == 'line'),
+                })
         cls._order.insert(0, ('purchase.purchase_date', 'DESC NULLS FIRST'))
         cls._order.insert(1, ('purchase.id', 'DESC'))
 

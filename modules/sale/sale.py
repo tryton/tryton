@@ -1579,7 +1579,14 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super().__setup__()
+        t = cls.__table__()
         cls.__access__.add('sale')
+        cls._sql_indexes.update({
+                Index(t,
+                    (t.product, Index.Range()),
+                    (t.sale, Index.Equality()),
+                    where=t.type == 'line'),
+                })
         cls._order.insert(0, ('sale.sale_date', 'DESC NULLS FIRST'))
         cls._order.insert(1, ('sale.id', 'DESC'))
 
