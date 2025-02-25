@@ -25,11 +25,13 @@ with, as a minimum, the :guilabel:`Admin API access scopes`:
 
    * Products: Read and write
 
-You also need to copy the password that is generated.
+You also need to copy the :guilabel:`Admin API access token` that is generated
+when installing the app.
 
 When setting the :doc:`Web Shop <web_shop:index>`'s type to  "Shopify", you
-must fill in the "Shop URL" (e.g. ``https://<store-name>.myshopify.com``) and
-the "Password" with the copied one.
+must fill in the :guilabel:`Shop URL` (e.g.
+``https://<store-name>.myshopify.com``), the :guilabel:`Access Token` with the
+copied one and select the :guilabel:`Version`.
 
 .. note::
 
@@ -39,6 +41,7 @@ the "Password" with the copied one.
 Different scheduled tasks are responsible for uploading products and
 inventories and fetching and updating orders as `Sales <sale:model-sale.sale>`.
 
-You can also register a `webhook
-<https://shopify.dev/docs/apps/build/webhooks>`_ for each order event to get
-updates when they happen.
+You can also register a :abbr:`JSON (JavaScript Object Notation)` `webhook
+<https://shopify.dev/docs/apps/build/webhooks>`_ from the
+:guilabel:`Notifications` settings for each order event to get updates when
+they happen.
