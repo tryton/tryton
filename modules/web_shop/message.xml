@@ -9,8 +9,8 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_sale_invalid_party">
             <field name="text">To process the sale "%(sale)s" you must select another party instead of the guest "%(party)s".</field>
         </record>
-        <record model="ir.message" id="msg_sale_web_id_unique">
-            <field name="text">The web ID on the sale must be unique.</field>
+        <record model="ir.message" id="msg_sale_web_shop_id_unique">
+            <field name="text">The web ID on the sale must be unique per shop.</field>
         </record>
     </data>
 </tryton>

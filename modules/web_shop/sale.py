@@ -28,9 +28,20 @@ class Sale(metaclass=PoolMeta):
         super().__setup__()
         t = cls.__table__()
         cls._sql_constraints += [
-            ('web_id', Exclude(t, (NullIf(t.web_id, ''), Equal)),
-                'web_shop.msg_sale_web_id_unique')
+            ('web_shop_id_unique',
+                Exclude(t,
+                    (t.web_shop, Equal),
+                    (NullIf(t.web_id, ''), Equal)),
+                'web_shop.msg_sale_web_shop_id_unique')
             ]
+
+    @classmethod
+    def __register__(cls, module):
+        table_h = cls.__table_handler__(module)
+        super().__register__(module)
+
+        # Migration from 7.4: replace web_id constraint by web_shop_id_unique
+        table_h.drop_constraint('web_id')
 
     @fields.depends('web_shop', 'web_id')
     def on_change_web_shop(self, nbytes=None):
