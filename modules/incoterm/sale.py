@@ -38,7 +38,7 @@ class Sale(IncotermAvailableMixin, metaclass=PoolMeta):
     @property
     @fields.depends('company', 'warehouse', 'shipment_address')
     def _incoterm_required(self):
-        if self.company.incoterms:
+        if self.company and self.company.incoterms:
             if (self.warehouse and self.warehouse.address
                     and self.shipment_address):
                 return (
