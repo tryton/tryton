@@ -3193,7 +3193,7 @@ class InteralShipmentReport(ShipmentReport):
     @classmethod
     def execute(cls, ids, data):
         with Transaction().set_context(address_with_party=True):
-            return super(ShipmentReport, cls).execute(ids, data)
+            return super().execute(ids, data)
 
     @classmethod
     def moves(cls, shipment):
