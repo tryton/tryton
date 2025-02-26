@@ -4,7 +4,7 @@
 from trytond.pool import Pool
 
 from . import (
-    account, account_stock_eu, carrier, company, country, customs, stock)
+    account, account_stock_eu, carrier, company, country, customs, sale, stock)
 
 __all__ = ['register']
 
@@ -38,6 +38,10 @@ def register():
         stock.Move_Incoterm,
         module='account_stock_eu', type_='model',
         depends=['incoterm'])
+    Pool.register(
+        sale.Sale_Incoterm,
+        module='account_stock_eu', type_='model',
+        depends=['sale', 'incoterm'])
     Pool.register(
         stock.Move_Consignment,
         module='account_stock_eu', type_='model',
