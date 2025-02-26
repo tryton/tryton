@@ -11,6 +11,8 @@ class MatchMixin(object):
         and matching value as value'''
         for field_name, pattern_value in pattern.items():
             value = getattr(self, field_name)
+            if value == '':
+                value = None
             if not match_none and value is None:
                 continue
             field = self._fields[field_name]

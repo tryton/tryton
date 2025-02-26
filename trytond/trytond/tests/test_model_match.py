@@ -35,7 +35,9 @@ class ModelMatchMixinTestCase(TestCase):
                 (Model(f=(fields.Char("F"), 'foo')), {'f': 'bar'}, False),
                 (Model(f=(fields.Char("F"), 'foo')), {'f': None}, False),
                 (Model(f=(fields.Char("F"), None)), {'f': 'foo'}, True),
+                (Model(f=(fields.Char("F"), '')), {'f': 'foo'}, True),
                 (Model(f=(fields.Char("F"), None)), {'f': None}, True),
+                (Model(f=(fields.Char("F"), '')), {'f': None}, True),
                 ]:
             with self.subTest(record=record, pattern=pattern):
                 self.assertEqual(record.match(pattern), result)
@@ -47,7 +49,9 @@ class ModelMatchMixinTestCase(TestCase):
                 (Model(f=(fields.Char("F"), 'foo')), {'f': 'bar'}, False),
                 (Model(f=(fields.Char("F"), 'foo')), {'f': None}, False),
                 (Model(f=(fields.Char("F"), None)), {'f': 'foo'}, False),
+                (Model(f=(fields.Char("F"), '')), {'f': 'foo'}, False),
                 (Model(f=(fields.Char("F"), None)), {'f': None}, True),
+                (Model(f=(fields.Char("F"), '')), {'f': None}, True),
                 ]:
             with self.subTest(record=record, pattern=pattern):
                 self.assertEqual(
