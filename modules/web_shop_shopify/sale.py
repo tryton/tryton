@@ -62,6 +62,7 @@ class Sale(IdentifierMixin, metaclass=PoolMeta):
 
         if not sale:
             sale = shop.get_sale(party=party)
+            sale.web_id = str(order.id)
             sale.shopify_identifier = order.id
         assert sale.shopify_identifier == order.id
         if order.location_id:
