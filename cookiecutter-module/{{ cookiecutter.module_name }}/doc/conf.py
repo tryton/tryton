@@ -64,7 +64,7 @@ html_theme = 'sphinx_book_theme'
 {%- if not cookiecutter.prefix %}
 html_theme_options = {
     'logo': {
-        'alt_text': "Tryton Documenation",
+        'alt_text': "Tryton Documentation",
         'image_light': 'https://docs.tryton.org/logo-light.svg',
         'image_dark': 'https://docs.tryton.org/logo-dark.svg',
         'link': base_url,
