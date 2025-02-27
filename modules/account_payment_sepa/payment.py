@@ -210,7 +210,7 @@ class Group(metaclass=PoolMeta):
         Payment = pool.get('account.payment')
         if self.kind == 'receivable':
             payments = sorted(self.payments, key=attrgetter('date', 'id'))
-            mandates = Payment.get_sepa_mandates(self.payments)
+            mandates = Payment.get_sepa_mandates(payments)
             for payment, mandate in zip(payments, mandates):
                 if not mandate:
                     raise ProcessError(
