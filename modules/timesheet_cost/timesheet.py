@@ -3,7 +3,6 @@
 
 from trytond.model import fields
 from trytond.pool import PoolMeta
-from trytond.transaction import without_check_access
 
 from .company import price_digits
 
@@ -26,22 +25,12 @@ class Line(metaclass=PoolMeta):
         for values in vlist:
             values.pop('cost_price', None)
         lines = super().create(vlist)
-        cls.sync_cost(lines)
         return lines
 
     @classmethod
-    def write(cls, *args):
-        super().write(*args)
-        cls.sync_cost(sum(args[0:None:2], []))
-
-    @classmethod
-    @without_check_access
-    def sync_cost(cls, lines):
-        to_write = []
-        lines = cls.browse(lines)
-        for line in lines:
-            cost_price = line.employee.compute_cost_price(date=line.date)
-            if cost_price != line.cost_price:
-                to_write.extend([[line], {'cost_price': cost_price}])
-        if to_write:
-            cls.write(*to_write)
+    def compute_fields(self, field_names=None):
+        values = super().compute_fields(field_names=field_names)
+        cost_price = self.employee.compute_cost_price(date=self.date)
+        if getattr(self, 'cost_price', None) != cost_price:
+            values['cost_price'] = cost_price
+        return values
