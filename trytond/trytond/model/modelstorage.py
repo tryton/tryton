@@ -280,24 +280,27 @@ class ModelStorage(Model):
         raise NotImplementedError
 
     @classmethod
-    @without_check_access
     def _after_create(cls, ids):
         Trigger = Pool().get('ir.trigger')
         transaction = Transaction()
+        check_access = transaction.user and transaction.check_access
 
-        triggers = Trigger.get_triggers(cls.__name__, 'create')
+        with without_check_access():
+            triggers = Trigger.get_triggers(cls.__name__, 'create')
 
-        for sub_ids in grouped_slice(ids, record_cache_size(transaction)):
-            records = cls.browse(sub_ids)
-            cls._validate(records)
-            cls._compute_fields(records)
-            cls.on_modification('create', records)
-            if triggers:
-                for trigger in triggers:
-                    trigger.queue_trigger_action(records)
+            for sub_ids in grouped_slice(ids, record_cache_size(transaction)):
+                records = cls.browse(sub_ids)
+                cls._validate(records)
+                cls.check_modification(
+                    'create', records, external=check_access)
+                cls._compute_fields(records)
+                cls.on_modification('create', records)
+                if triggers:
+                    for trigger in triggers:
+                        trigger.queue_trigger_action(records)
 
-        transaction.create_records[cls.__name__].update(ids)
-        return ids
+            transaction.create_records[cls.__name__].update(ids)
+            return ids
 
     @classmethod
     def _before_read(cls, ids, fields_names):
@@ -347,6 +350,8 @@ class ModelStorage(Model):
             cls.__check_xml_record(records, values)
             ModelFieldAccess.check(cls.__name__, values.keys(), 'write')
             with without_check_access():
+                cls.check_modification(
+                    'write', records, values, external=check_access)
                 args.append(records)
                 args.append(cls.preprocess_values('write', values))
                 if check_access and values:
@@ -420,6 +425,7 @@ class ModelStorage(Model):
         ModelAccess.check(cls.__name__, 'delete')
         cls.__check_xml_record(records, None)
         with without_check_access():
+            cls.check_modification('delete', records, external=check_access)
             if ModelData.has_model(cls.__name__):
                 ModelData.clean(records)
             if check_access:
@@ -478,6 +484,10 @@ class ModelStorage(Model):
         if any(getattr(f, 'translate', False) and not hasattr(f, 'set')
                 for f in cls._fields.values()):
             Translation.delete_ids(cls.__name__, 'model', ids)
+
+    @classmethod
+    def check_modification(cls, mode, records, values=None, external=False):
+        assert mode in {'create', 'write', 'delete'}
 
     @classmethod
     def on_modification(cls, mode, records, field_names=None):

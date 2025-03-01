@@ -414,6 +414,17 @@ Class methods:
 
    Delete records.
 
+.. classmethod:: ModelStorage.check_modification(mode, record[, values[, external]])
+
+   Method called after ``records`` are created and before ``records`` are
+   modified with ``values`` or deleted.
+   ``external`` specifies whether remote access check must be enforced.
+
+   .. note::
+
+      It is used to prevent some kind of modification by raising an
+      :exc:`~trytond.model.exceptions.AccessError`.
+
 .. classmethod:: ModelStorage.on_modification(mode, records[, field_names])
 
    Method called after ``records`` have been modified.
