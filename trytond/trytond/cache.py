@@ -413,6 +413,8 @@ class MemoryCache(BaseCache):
                             inst = cls._instances[name]
                             inst._clear(dbname)
                 cls._clean_last = dt.datetime.now()
+                # Keep connected
+                cursor.execute('SELECT 1')
         except Exception:
             logger.error(
                 "cache listener on '%s' crashed", dbname, exc_info=True)
