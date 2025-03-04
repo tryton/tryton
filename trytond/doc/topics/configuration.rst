@@ -412,6 +412,15 @@ channels if the back-end supports them.
 
 Default: ``300``
 
+.. _config-cache.select_timeout:
+
+select_timeout
+~~~~~~~~~~~~~~
+
+The timeout duration of the select call when using channels.
+
+Default: ``60``
+
 .. _config-cache.count_timeout:
 
 count_timeout

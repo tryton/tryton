@@ -22,6 +22,7 @@ from trytond.transaction import Transaction
 
 __all__ = ['BaseCache', 'Cache', 'LRUDict', 'LRUDictTransaction']
 _clear_timeout = config.getint('cache', 'clean_timeout', default=5 * 60)
+_select_timeout = config.getint('cache', 'select_timeout')
 _default_size_limit = config.getint('cache', 'default')
 logger = logging.getLogger(__name__)
 
@@ -401,7 +402,7 @@ class MemoryCache(BaseCache):
 
             selector.register(conn, selectors.EVENT_READ)
             while cls._listener.get((pid, dbname)) == current_thread:
-                selector.select(timeout=60)
+                selector.select(timeout=_select_timeout)
                 conn.poll()
                 while conn.notifies:
                     notification = conn.notifies.pop()
