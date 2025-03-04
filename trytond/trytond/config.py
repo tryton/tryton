@@ -75,6 +75,7 @@ class TrytonConfigParser(configparser.ConfigParser):
         self.set('cache', 'default', '1024')
         self.set('cache', 'ir.message', '10240')
         self.set('cache', 'ir.translation', '10240')
+        self.set('cache', 'clean_timeout', '300')
         self.set('cache', 'select_timeout', '60')
         self.add_section('queue')
         self.set('queue', 'worker', 'False')

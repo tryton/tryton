@@ -21,7 +21,7 @@ from trytond.tools import grouped_slice, resolve
 from trytond.transaction import Transaction
 
 __all__ = ['BaseCache', 'Cache', 'LRUDict', 'LRUDictTransaction']
-_clear_timeout = config.getint('cache', 'clean_timeout', default=5 * 60)
+_clean_timeout = config.getint('cache', 'clean_timeout')
 _select_timeout = config.getint('cache', 'select_timeout')
 _default_size_limit = config.getint('cache', 'default')
 logger = logging.getLogger(__name__)
@@ -237,7 +237,7 @@ class MemoryCache(BaseCache):
 
         database = transaction.database
         dbname = database.name
-        if not _clear_timeout and database.has_channel():
+        if not _clean_timeout and database.has_channel():
             pid = os.getpid()
             with cls._listener_lock[pid]:
                 if (pid, dbname) not in cls._listener:
@@ -246,7 +246,7 @@ class MemoryCache(BaseCache):
                     listener.start()
             return
         last_clean = (dt.datetime.now() - cls._clean_last).total_seconds()
-        if last_clean < _clear_timeout:
+        if last_clean < _clean_timeout:
             return
         connection = database.get_connection(readonly=True, autocommit=True)
         try:
@@ -282,7 +282,7 @@ class MemoryCache(BaseCache):
             return
         database = transaction.database
         dbname = database.name
-        if not _clear_timeout and transaction.database.has_channel():
+        if not _clean_timeout and transaction.database.has_channel():
             with transaction.connection.cursor() as cursor:
                 # The count computed as
                 # 8000 (max notify size) / 64 (max name data len)
@@ -366,7 +366,7 @@ class MemoryCache(BaseCache):
     def refresh_pool(cls, transaction):
         database = transaction.database
         dbname = database.name
-        if not _clear_timeout and database.has_channel():
+        if not _clean_timeout and database.has_channel():
             database = backend.Database(dbname)
             conn = database.get_connection()
             try:
