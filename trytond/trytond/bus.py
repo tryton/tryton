@@ -171,6 +171,8 @@ class LongPollingBus:
                     for event in events:
                         event.set()
                 now = time.time()
+                # Keep connected
+                cursor.execute('SELECT 1')
         except Exception:
             logger.error('bus listener on "%s" crashed', database,
                 exc_info=True)
