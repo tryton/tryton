@@ -320,7 +320,8 @@ class Move(metaclass=PoolMeta):
                 if add_join(sub_query.from_, lot):
                     clause = (
                         (lot.shelf_life_expiration_date == Null)
-                        | (lot.shelf_life_expiration_date >= expiration_date))
+                        | (lot.shelf_life_expiration_date >= expiration_date)
+                        | (lot.shelf_life_expiration_date < today))
                     if sub_query.where:
                         sub_query.where &= clause
                     else:
@@ -338,10 +339,11 @@ class Move(metaclass=PoolMeta):
                     for sub_query in find_queries(union_expired):
                         lot = Lot.__table__()
                         if add_join(sub_query.from_, lot):
-                            # only lot expiring during the period
+                            # only lot expiring during the future part of the
+                            # period
                             clause = (
                                 (lot.shelf_life_expiration_date
-                                    >= stock_date_start)
+                                    >= max(stock_date_start, today))
                                 & (lot.shelf_life_expiration_date
                                     < stock_date_end))
                             if sub_query.where:
