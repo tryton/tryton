@@ -9,5 +9,8 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_shipment_cost_post_same_parties">
             <field name="text">The shipment "%(shipment)s" of shipment cost "%(shipment_cost)s" has already shipment cost from the same party "%(other)s".</field>
         </record>
+        <record model="ir.message" id="msg_shipment_cost_delete_cancel">
+            <field name="text">To delete shipment cost "%(shipment_cost)s" you must cancel it.</field>
+        </record>
     </data>
 </tryton>

@@ -219,6 +219,13 @@ Check shipment cost::
     >>> shipment2.cost
     Decimal('5.0000')
 
+Can not delete posted shipment cost::
+
+    >>> shipment_cost1.delete()
+    Traceback (most recent call last):
+        ...
+    AccessError: ...
+
 Cancel shipment cost remove the price::
 
     >>> shipment_cost1.click('cancel')
@@ -234,3 +241,7 @@ Check shipment cost::
     >>> shipment2.reload()
     >>> shipment2.cost
     Decimal('0.0000')
+
+Can delete cancelled shipment cost::
+
+    >>> shipment_cost1.delete()

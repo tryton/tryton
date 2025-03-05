@@ -7,6 +7,7 @@ from sql.functions import CharLength
 
 from trytond.i18n import gettext
 from trytond.model import Index, ModelSQL, ModelView, Workflow, fields
+from trytond.model.exceptions import AccessError
 from trytond.modules.company.model import CompanyValueMixin
 from trytond.modules.product import price_digits, round_price
 from trytond.pool import Pool, PoolMeta
@@ -333,6 +334,16 @@ class ShipmentCost(Workflow, ModelSQL, ModelView):
                     'shipment_cost_sequence',
                     company=values.get('company', default_company)).get()
         return super().create(vlist)
+
+    @classmethod
+    def delete(cls, shipment_costs):
+        for shipment_cost in shipment_costs:
+            if shipment_cost.state not in {'cancelled', 'draft'}:
+                raise AccessError(
+                    gettext('account_stock_shipment_cost'
+                        '.msg_shipment_cost_delete_cancel',
+                        shipment_cost=shipment_cost.rec_name))
+        super().delete(shipment_costs)
 
 
 class ShipmentCost_Shipment(ModelSQL):
