@@ -1131,6 +1131,13 @@ img.icon {
             content: "☑ ";
         }
     }
+
+    &.yexpand {
+        select {
+            min-height: 150px;
+            max-height: 400px;
+        }
+    }
 }
 
 .form-integer, .form-float, .form-timedelta,
@@ -1247,6 +1254,13 @@ input.column-boolean {
     }
     .close {
         float: none;
+    }
+}
+
+.filter-window {
+    select[multiple] {
+        min-height: 150px;
+        max-height: 400px;
     }
 }
 

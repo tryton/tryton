@@ -454,6 +454,7 @@
                 this.search_modal = dialog.modal;
                 this.search_form = dialog.content;
                 this.search_form.addClass('form-horizontal');
+                this.search_form.addClass('filter-window');
                 this.search_form.submit(function(e) {
                     e.preventDefault();
                     search();
@@ -503,6 +504,7 @@
                             entry = new Sao.ScreenContainer.Selection(
                                     field.selection, prefix + field.name);
                             input = entry.el;
+                            input.prop('size', field.selection.length);
                             break;
                         case 'date':
                             format = Sao.common.date_format(
