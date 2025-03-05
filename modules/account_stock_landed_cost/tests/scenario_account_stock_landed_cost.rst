@@ -203,6 +203,13 @@ Landed cost is cleared when duplicated invoice::
     >>> len(landed_cost.invoice_lines)
     1
 
+Can not delete posted landed cost::
+
+    >>> landed_cost.delete()
+    Traceback (most recent call last):
+        ...
+    AccessError: ...
+
 Cancel landed cost reset unit price::
 
     >>> landed_cost.click('cancel')
@@ -214,3 +221,7 @@ Cancel landed cost reset unit price::
     >>> shipment.reload()
     >>> sorted([m.unit_price for m in shipment.incoming_moves if m.quantity])
     [Decimal('10'), Decimal('100.0000')]
+
+Can delete cancelled landed cost::
+
+    >>> landed_cost.delete()

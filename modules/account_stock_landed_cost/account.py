@@ -9,6 +9,7 @@ from sql.functions import CharLength
 from trytond.i18n import gettext
 from trytond.model import (
     Index, MatchMixin, ModelSQL, ModelView, Workflow, fields)
+from trytond.model.exceptions import AccessError
 from trytond.modules.company.model import CompanyValueMixin
 from trytond.modules.product import price_digits, round_price
 from trytond.pool import Pool, PoolMeta
@@ -434,6 +435,16 @@ class LandedCost(Workflow, ModelSQL, ModelView, MatchMixin):
                     'landed_cost_sequence',
                     company=values.get('company', default_company)).get()
         return super(LandedCost, cls).create(vlist)
+
+    @classmethod
+    def delete(cls, landed_costs):
+        for landed_cost in landed_costs:
+            if landed_cost.state not in {'cancelled', 'draft'}:
+                raise AccessError(
+                    gettext('account_stock_landed_cost'
+                        '.msg_landed_cost_delete_cancel',
+                        landed_cost=landed_cost.rec_name))
+        super().delete(landed_costs)
 
     @classmethod
     def copy(cls, landed_costs, default=None):
