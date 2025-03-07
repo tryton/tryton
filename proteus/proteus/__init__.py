@@ -1312,6 +1312,28 @@ class Report(object):
         return self._proxy.execute(ids, data, self._context)
 
 
+def launch_action(xml_id, records, context=None, config=None):
+    if records:
+        assert len({type(x) for x in records}) == 1
+    if context is None:
+        context = {}
+
+    if isinstance(xml_id, str):
+        ModelData = Model.get('ir.model.data')
+
+        if not config:
+            config = proteus.config.get_config()
+        context = config.context
+
+        action_id = ModelData.get_id(*xml_id.split('.'), context)
+    elif isinstance(xml_id, int):
+        action_id = xml_id
+
+    Action = Model.get('ir.action')
+    action = Action.get_action_value(action_id, context)
+    return _convert_action(action, records, context=context, config=config)
+
+
 def _convert_action(action, data=None, *, context=None, config=None):
     if config is None:
         config = proteus.config.get_config()
