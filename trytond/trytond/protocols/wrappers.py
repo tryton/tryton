@@ -246,7 +246,7 @@ def with_transaction(readonly=None, user=0, context=None, timeout=None):
             transaction_extras = {}
             while True:
                 if count:
-                    time.sleep(0.02 * (retry - count))
+                    time.sleep(0.02 * count)
                 with Transaction().start(
                         pool.database_name, user_, readonly=readonly_,
                         context=context_, timeout=timeout,
