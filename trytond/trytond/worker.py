@@ -130,7 +130,7 @@ def run_task(pool, task_id):
         transaction_extras = {}
         while True:
             if count:
-                time.sleep(0.02 * (retry - count))
+                time.sleep(0.02 * count)
             with Transaction().start(
                     pool.database_name, 0,
                     **transaction_extras) as transaction:

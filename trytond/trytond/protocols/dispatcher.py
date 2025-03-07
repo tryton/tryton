@@ -182,7 +182,7 @@ def _dispatch(request, pool, *args, **kwargs):
     transaction_extras = {}
     while True:
         if count:
-            time.sleep(0.02 * (retry - count))
+            time.sleep(0.02 * count)
         with Transaction().start(
                 pool.database_name, user, readonly=rpc.readonly,
                 **transaction_extras) as transaction:
