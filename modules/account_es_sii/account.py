@@ -105,8 +105,22 @@ class CredentialSII(ModelSQL, CompanyValueMixin):
 class TaxTemplate(metaclass=PoolMeta):
     __name__ = 'account.tax.template'
 
-    es_sii_tax_key = fields.Char("SII Tax Key")
-    es_sii_operation_key = fields.Char("SII Operation Key")
+    es_sii_tax_key = fields.Selection([
+            (None, ''),
+            ('S1', "S1"),
+            ('S2', "S2"),
+            ('S3', "S3"),
+            ('E1', "E1"),
+            ('E2', "E2"),
+            ('E3', "E3"),
+            ('E4', "E4"),
+            ('E5', "E5"),
+            ('E6', "E6"),
+            ], "SII Tax Key", translate=False, sort=False)
+    es_sii_operation_key = fields.Selection(
+        [(None, '')]
+        + [(x, x) for x in ('{:02}'.format(i) for i in range(1, 18))],
+        "SII Operation Key", translate=False, sort=False)
     es_exclude_from_sii = fields.Boolean("Exclude from SII")
 
     def _get_tax_value(self, tax=None):
@@ -126,8 +140,22 @@ class Tax(metaclass=PoolMeta):
         'readonly': (Bool(Eval('template', -1))
             & ~Eval('template_override', False)),
         }
-    es_sii_tax_key = fields.Char("SII Tax Key", states=_states)
-    es_sii_operation_key = fields.Char("SII Operation Key", states=_states)
+    es_sii_tax_key = fields.Selection([
+            (None, ''),
+            ('S1', "S1"),
+            ('S2', "S2"),
+            ('S3', "S3"),
+            ('E1', "E1"),
+            ('E2', "E2"),
+            ('E3', "E3"),
+            ('E4', "E4"),
+            ('E5', "E5"),
+            ('E6', "E6"),
+            ], "SII Tax Key", translate=False, sort=False, states=_states)
+    es_sii_operation_key = fields.Selection(
+        [(None, '')]
+        + [(x, x) for x in ('{:02}'.format(i) for i in range(1, 18))],
+        "SII Operation Key", translate=False, sort=False, states=_states)
     es_exclude_from_sii = fields.Boolean("Exclude from SII", states=_states)
     del _states
 
@@ -450,7 +478,7 @@ class InvoiceSII(ModelSQL, ModelView):
         tax_identifier = key['tax_identifier']
         if tax_identifier:
             owner = tax_identifier.es_sii_values()
-        owner['NombreRazon'] = key['company'].rec_name
+        owner['NombreRazon'] = key['company'].rec_name[:120]
         return {
             'IDVersionSii': '1.1',
             'Titular': owner,
@@ -568,11 +596,11 @@ class InvoiceSII(ModelSQL, ModelView):
         tax_identifier = self.invoice.es_sii_party_tax_identifier
         if tax_identifier:
             counterpart = tax_identifier.es_sii_values()
-        counterpart['NombreRazon'] = self.invoice.party.name
+        counterpart['NombreRazon'] = self.invoice.party.rec_name[:120]
         detail = {
             'TipoFactura': invoice_type,
-            'DescripcionOperacion': self.operation_description,
-            'RefExterna': self.invoice.rec_name,
+            'DescripcionOperacion': self.operation_description[:500],
+            'RefExterna': self.invoice.rec_name[:60],
             'Contraparte': counterpart,
             'ImporteTotal': str(total_amount),
             # XXX: Set FechaOperacion from stock moves
@@ -580,6 +608,7 @@ class InvoiceSII(ModelSQL, ModelView):
         if invoice_type.startswith('R'):
             detail['TipoRectificativa'] = 'I'
         for idx, value in enumerate(operation_keys):
+            assert idx <= 2
             key = 'ClaveRegimenEspecialOTrascendencia'
             if idx:
                 key = '%sAdicional%d' % (key, idx)
@@ -659,10 +688,10 @@ class InvoiceSII(ModelSQL, ModelView):
     def get_payload(self):
         if self.invoice.type == 'in':
             tax_identifier = self.invoice.es_sii_party_tax_identifier
-            number = self.invoice.reference or self.invoice.number
+            number = self.invoice.reference or self.invoice.number or ''
         else:
             tax_identifier = self.invoice.tax_identifier
-            number = self.invoice.number
+            number = self.invoice.number or ''
 
         date = self.invoice.invoice_date
         payload = {
@@ -673,7 +702,7 @@ class InvoiceSII(ModelSQL, ModelView):
             'IDFactura': {
                 'IDEmisorFactura': (tax_identifier.es_sii_values()
                     if tax_identifier else {}),
-                'NumSerieFacturaEmisor': number,
+                'NumSerieFacturaEmisor': number[-60:],
                 'FechaExpedicionFacturaEmisor': date.strftime('%d-%m-%Y'),
                 },
             }
