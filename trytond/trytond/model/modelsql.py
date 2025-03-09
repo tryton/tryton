@@ -615,10 +615,10 @@ class ModelSQL(ModelStorage):
                 if values.get(field_name) is None:
                     raise RequiredValidationError(
                         gettext('ir.msg_required_validation',
-                            **cls.__names__(field_name)))
+                            **cls.__names__(field_name))) from exception
         for name, constraint, error in cls._sql_constraints:
             if backend.TableHandler.convert_name(name) in str(exception):
-                raise SQLConstraintError(gettext(error))
+                raise SQLConstraintError(gettext(error)) from exception
         for _, constraint, error in cls._sql_constraints:
             if (isinstance(constraint, (Unique, Exclude))
                     and all(
@@ -627,7 +627,7 @@ class ModelSQL(ModelStorage):
                     and all(
                         c.name in str(exception)
                         for c in constraint.columns)):
-                raise SQLConstraintError(gettext(error))
+                raise SQLConstraintError(gettext(error)) from exception
 
         # Check foreign key in last because this can raise false positive
         # if the target is created during the same transaction.
@@ -648,9 +648,9 @@ class ModelSQL(ModelStorage):
                         and (values[field_name] not in delete_records)):
                     error_args = cls.__names__(field_name)
                     error_args['value'] = values[field_name]
-                    raise ForeignKeyError(
-                            gettext('ir.msg_foreign_model_missing',
-                                **error_args))
+                    raise ForeignKeyError(gettext(
+                            'ir.msg_foreign_model_missing',
+                            **error_args)) from exception
 
     @classmethod
     @without_check_access
@@ -675,8 +675,9 @@ class ModelSQL(ModelStorage):
                     error_args['value'] = value
                     error_args['size'] = size
                     error_args['max_size'] = field.size
-                    raise SizeValidationError(
-                        gettext('ir.msg_size_validation', **error_args))
+                    raise SizeValidationError(gettext(
+                            'ir.msg_size_validation',
+                            **error_args)) from exception
 
     @classmethod
     def estimated_count(cls):
