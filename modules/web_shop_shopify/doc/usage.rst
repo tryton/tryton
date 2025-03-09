@@ -47,3 +47,20 @@ You can also register a :abbr:`JSON (JavaScript Object Notation)` `webhook
 <https://shopify.dev/docs/apps/build/webhooks>`_ from the
 :guilabel:`Notifications` settings for each order event to get updates when
 they happen.
+
+.. _Setup Shopify Variants:
+
+Setup Shopify Variants
+======================
+
+To create variants of a product in Shopify, you need to set an `Attribute
+Set <product_attribute:model-product.attribute.set>` on the `Product Template
+<product:model-product.template>`.
+This *Attribute Set* must have at least one of the three :guilabel:`Shopify
+Options` selected with an `Attribute
+<product_attribute:model-product.attribute>`.
+
+.. note::
+
+   For each variant of a product, the value of the :guilabel:`Shopify Options`
+   attributes must be unique.
