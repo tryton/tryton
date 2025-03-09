@@ -40,6 +40,7 @@ by this pattern::
     .. note::
       Negative operators match records for which any of the field before the
       last dot is empty.
+      Except if the operand is or contains ``None``.
 
 .. warning::
     For :class:`trytond.model.fields.Reference`, an extra ending clause is

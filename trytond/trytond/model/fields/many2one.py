@@ -236,7 +236,10 @@ class Many2One(Field):
                 target_domain = [target_domain, rule_domain]
             _, expression = Target.search_domain(
                 target_domain, tables=target_tables)
-        if operator.startswith('not') or operator == '!=':
+        if ((operator.startswith('not') and not (
+                        operator == 'not in'
+                        and None in value))
+                or (operator == '!=' and value is not None)):
             expression |= column == Null
         return expression
 
