@@ -109,8 +109,10 @@ Move pallet from storage1 to storage2 with lead_time::
     >>> shipment.locations.append(Location(pallet.id))
     >>> shipment.click('wait')
     >>> shipment.click('assign_try')
-
+    >>> shipment.click('pack')
     >>> shipment.click('ship')
+    >>> shipment.state
+    'shipped'
     >>> pallet.reload()
     >>> assertEqual(pallet.parent, shipment.transit_location)
 

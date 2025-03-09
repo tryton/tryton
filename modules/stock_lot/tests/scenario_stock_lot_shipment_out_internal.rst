@@ -111,6 +111,7 @@ Set 2 lots::
 Ship the shipment::
 
     >>> shipment.effective_start_date = yesterday
+    >>> shipment.click('pack')
     >>> shipment.click('ship')
     >>> shipment.state
     'shipped'

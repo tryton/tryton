@@ -117,6 +117,7 @@ Transfer 1 product between warehouses::
     >>> shipment.click('wait')
     >>> shipment.click('assign_force')
 
+    >>> shipment.click('pack')
     >>> shipment.click('ship')
     >>> shipment.state
     'shipped'

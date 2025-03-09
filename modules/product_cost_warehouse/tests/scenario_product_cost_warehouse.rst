@@ -171,6 +171,7 @@ Transfer 1 product between warehouses::
     >>> shipment.state
     'assigned'
 
+    >>> shipment.click('pack')
     >>> shipment.click('ship')
     >>> shipment.state
     'shipped'
