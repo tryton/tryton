@@ -217,7 +217,10 @@ class Reference(SelectionMixin, Field):
         expression = (
             self.sql_id(column, Model).in_(query)
             & column.like(target + ',%'))
-        if operator.startswith('not') or operator == '!=':
+        if ((operator.startswith('not') and not (
+                        operator == 'not in'
+                        and None in value))
+                or (operator == '!=' and value is not None)):
             expression |= column == Null
         return expression
 

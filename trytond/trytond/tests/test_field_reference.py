@@ -374,6 +374,25 @@ class FieldReferenceTestCase(unittest.TestCase):
 
         self.assertListEqual(result, [reference])
 
+        result = Reference.search([
+                ('reference.name', '!=', None, Target.__name__),
+                ])
+
+        self.assertListEqual(result, [])
+
+        result = Reference.search([
+                ('reference.name', 'not in', ["Target"], Target.__name__),
+                ])
+
+        self.assertListEqual(result, [reference])
+
+        result = Reference.search([
+                ('reference.name', 'not in', ["Target", None],
+                    Target.__name__),
+                ])
+
+        self.assertListEqual(result, [])
+
     @with_transaction()
     def test_write_string(self):
         "Test write reference string"
