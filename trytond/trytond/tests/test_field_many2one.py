@@ -219,6 +219,21 @@ class FieldMany2OneTestCase(TestCase):
                 ])
         self.assertListEqual(result, [record])
 
+        result = Many2One.search([
+                ('many2one.value', '!=', None),
+                ])
+        self.assertListEqual(result, [])
+
+        result = Many2One.search([
+                ('many2one.value', 'not in', [1]),
+                ])
+        self.assertListEqual(result, [record])
+
+        result = Many2One.search([
+                ('many2one.value', 'not in', [1, None]),
+                ])
+        self.assertListEqual(result, [])
+
     @with_transaction()
     def test_context_attribute(self):
         "Test context on many2one attribute"
