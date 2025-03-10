@@ -5568,8 +5568,7 @@ function eval_pyson(value){
             return this._parse(this.format, this.input.val());
         },
         set_value: function(value) {
-            if ((value instanceof Sao.DateTime) ||
-                (value instanceof Sao.Date)) {
+            if (value && (value.isDate || value.isDateTime)) {
                 value = this._format(this.format, value);
             } else {
                 value = '';
