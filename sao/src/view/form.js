@@ -5719,7 +5719,6 @@ function eval_pyson(value){
         _parse: Sao.common.parse_date,
         create_widget: function() {
             Sao.View.Form.Dict.Date._super.create_widget.call(this);
-            var group = this.input.parent().find('.input-group-btn');
             this.input_date = jQuery('<input/>', {
                 'type': this._input,
                 'role': 'button',
@@ -5740,12 +5739,15 @@ function eval_pyson(value){
                 }
             });
             if (this.input_date[0].type == this._input) {
-                var icon = jQuery('<button/>', {
-                    'class': 'btn btn-default',
-                    'type': 'button',
+                var group = jQuery('<div/>', {
+                    'class': 'input-icon input-icon-secondary',
+                }).prependTo(this.input.parent());
+                this.input.appendTo(group);
+                var icon = jQuery('<div/>', {
+                    'class': 'icon-input icon-secondary',
                     'aria-label': Sao.i18n.gettext("Open the calendar"),
                     'title': Sao.i18n.gettext("Open the calendar"),
-                }).prependTo(group);
+                }).appendTo(group);
                 this.input_date.appendTo(icon);
                 Sao.common.ICONFACTORY.get_icon_img('tryton-date')
                     .appendTo(icon);
