@@ -2340,7 +2340,8 @@ class ModifyHeader(Wizard):
                     value = str(value)
                 else:
                     value = value.id
-            elif isinstance(value, (list, tuple)):
+            elif (value and isinstance(value, (list, tuple))
+                    and isinstance(value[0], Model)):
                 value = [r.id for r in value]
             values[fieldname] = value
 
