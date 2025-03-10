@@ -396,7 +396,7 @@ class Purchase(
     def default_currency():
         Company = Pool().get('company.company')
         company = Transaction().context.get('company')
-        if company:
+        if company is not None and company >= 0:
             company = Company(company)
             return company.currency.id
 
