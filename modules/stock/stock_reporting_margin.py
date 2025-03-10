@@ -619,7 +619,7 @@ class CategoryTree(ModelSQL, ModelView):
         pool = Pool()
         Company = pool.get('company.company')
         company = Transaction().context.get('company')
-        if company:
+        if company is not None and company >= 0:
             return Company(company).currency.id
 
     @classmethod

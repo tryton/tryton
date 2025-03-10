@@ -320,7 +320,7 @@ class ConsolidationBalanceSheetContext(ModelView):
         pool = Pool()
         Company = pool.get('company.company')
         company_id = Transaction().context.get('company')
-        if company_id:
+        if company_id is not None and company_id >= 0:
             return Company(company_id).currency.id
 
     @classmethod
@@ -403,7 +403,7 @@ class ConsolidationIncomeStatementContext(ModelView):
         pool = Pool()
         Company = pool.get('company.company')
         company_id = Transaction().context.get('company')
-        if company_id:
+        if company_id is not None and company_id >= 0:
             return Company(company_id).currency.id
 
     @classmethod

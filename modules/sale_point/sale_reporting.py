@@ -20,7 +20,7 @@ class AbstractMixin:
         line = Line.__table__()
         point = Point.__table__()
         sale = Sale.__table__()
-        if company_id is not None:
+        if company_id is not None and company_id >= 0:
             company = Company(company_id)
             currency_id = company.currency.id
         else:

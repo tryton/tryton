@@ -195,7 +195,7 @@ class Product(StockMixin, object, metaclass=PoolMeta):
             context['_datetime'] = datetime.datetime.combine(
                 trans_context['stock_date_end'], datetime.time.max)
             company = trans_context.get('company')
-            if company:
+            if company is not None and company >= 0:
                 company = Company(company)
                 if company.timezone:
                     timezone = tz.ZoneInfo(company.timezone)

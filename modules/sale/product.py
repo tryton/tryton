@@ -263,7 +263,7 @@ class SaleContext(ModelView):
         currency = context.get('currency')
         if currency is None:
             company_id = cls.default_company()
-            if company_id:
+            if company_id is not None and company_id >= 0:
                 company = Company(company_id)
                 currency = company.currency.id
         return currency

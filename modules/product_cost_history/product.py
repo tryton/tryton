@@ -25,7 +25,7 @@ class Product(metaclass=PoolMeta):
             datetime = context['_datetime']
             company = pattern.get(
                 'company', Transaction().context.get('company'))
-            if company:
+            if company is not None and company >= 0:
                 company = Company(company)
                 if company.timezone:
                     timezone = tz.ZoneInfo(company.timezone)

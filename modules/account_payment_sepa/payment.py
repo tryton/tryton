@@ -153,7 +153,7 @@ class Journal(metaclass=PoolMeta):
         pool = Pool()
         Company = pool.get('company.company')
         company_id = cls.default_company()
-        if company_id:
+        if company_id is not None and company_id >= 0:
             return Company(company_id).party.id
 
     @fields.depends('company')

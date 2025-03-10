@@ -219,7 +219,7 @@ class PurchaseRequisition(Workflow, ModelSQL, ModelView):
     def default_currency(cls):
         Company = Pool().get('company.company')
         company = Transaction().context.get('company')
-        if company:
+        if company is not None and company >= 0:
             return Company(company).currency.id
 
     @fields.depends('lines', 'currency')
