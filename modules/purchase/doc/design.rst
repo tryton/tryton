@@ -106,6 +106,11 @@ Some fields on a draft purchase become read-only when lines are added to it.
 The *Modify Header* wizard allows the values in these fields to be safely
 updated.
 
+.. note::
+
+   When the header is modified, some of the properties of the lines will be
+   recalculated.
+
 .. _wizard-purchase.return_purchase:
 
 Return Purchase
