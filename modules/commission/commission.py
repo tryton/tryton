@@ -119,7 +119,7 @@ class Agent(DeactivableMixin, ModelSQL, ModelView):
         pool = Pool()
         Company = pool.get('company.company')
         company = cls.default_company()
-        if company:
+        if company is not None and company >= 0:
             return Company(company).currency.id
 
     @fields.depends('company', 'currency')

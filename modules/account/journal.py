@@ -95,7 +95,7 @@ class Journal(
         pool = Pool()
         Company = pool.get('company.company')
         company_id = Transaction().context.get('company')
-        if company_id:
+        if company_id is not None and company_id >= 0:
             company = Company(company_id)
             currency_id = company.currency.id
         else:
