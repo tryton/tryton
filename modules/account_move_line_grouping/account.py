@@ -118,7 +118,7 @@ class MoveLineGroup(MoveLineMixin, ModelSQL, ModelView):
 
     lines = fields.Many2Many(
         'account.move.line.group-move.line', 'group', 'line', "Lines",
-        readonly=True)
+        readonly=True, order=[('id', 'DESC')])
 
     currency = fields.Function(fields.Many2One(
             'currency.currency', "Currency"), 'on_change_with_currency')
