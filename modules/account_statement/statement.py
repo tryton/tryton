@@ -648,7 +648,7 @@ def origin_mixin(_states):
         company_currency = fields.Function(
             fields.Many2One('currency.currency', "Company Currency"),
             'on_change_with_company_currency')
-        number = fields.Char("Number")
+        number = fields.Char("Number", states=_states)
         date = fields.Date(
             "Date", required=True, states=_states)
         amount = Monetary(
