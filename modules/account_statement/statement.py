@@ -791,11 +791,9 @@ class Line(origin_mixin(_states), sequence_ordered(), ModelSQL, ModelView):
     def __setup__(cls):
         super(Line, cls).__setup__()
         table = cls.__table__()
-        cls.date.states = {
-            'readonly': (
-                (Eval('statement_state') != 'draft')
-                | Bool(Eval('origin', 0))),
-            }
+        cls.date.states['readonly'] = (
+            cls.date.states.get('readonly', False)
+            | Bool(Eval('origin', 0)))
         cls.account.required = True
         cls.party.states['required'] = (
             cls.party.states.get('required', False)
