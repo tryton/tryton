@@ -796,10 +796,10 @@ class Line(origin_mixin(_states), sequence_ordered(), ModelSQL, ModelView):
                 | Bool(Eval('origin', 0))),
             }
         cls.account.required = True
-        cls.party.states = {
-            'required': (Eval('party_required', False)
-                & (Eval('statement_state') == 'draft')),
-            }
+        cls.party.states['required'] = (
+            cls.party.states.get('required', False)
+            | (Eval('party_required', False)
+                & (Eval('statement_state') == 'draft')))
         cls._sql_constraints += [
             ('second_currency_sign',
                 Check(
