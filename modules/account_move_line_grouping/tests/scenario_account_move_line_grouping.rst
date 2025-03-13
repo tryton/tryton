@@ -119,6 +119,14 @@ Check lines grouped::
     ... else:
     ...     2
     2
+    >>> line.payable_receivable_balance == Decimal('42.00')
+    True
+
+    >>> with config.set_context(reconciled=False):
+    ...     line = LineGroup(line.id)
+    >>> line.payable_receivable_balance == Decimal('20.00')
+    True
+
     >>> line, = LineGroup.find([
     ...         ('account', '=', accounts['receivable'].id),
     ...         ('credit', '=', Decimal('22')),

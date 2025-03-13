@@ -171,10 +171,16 @@ class MoveLineGroup(MoveLineMixin, ModelSQL, ModelView):
 
     @classmethod
     def _aggregated_columns(cls, line):
+        context = Transaction().context
+        if not context.get('reconciled', True):
+            filter_ = line.reconciliation == Null
+        else:
+            filter_ = None
         return [
-            Sum(line.debit).as_('debit'),
-            Sum(line.credit).as_('credit'),
-            Sum(line.amount_second_currency).as_('amount_second_currency'),
+            Sum(line.debit, filter_=filter_).as_('debit'),
+            Sum(line.credit, filter_=filter_).as_('credit'),
+            Sum(line.amount_second_currency, filter_=filter_).as_(
+                'amount_second_currency'),
             BoolOr(line.reconciliation != Null).as_('partially_reconciled'),
             BoolAnd(line.reconciliation != Null).as_('reconciled'),
             Sum(
