@@ -24,6 +24,7 @@ from trytond.modules.account_payment.exceptions import ProcessError
 from trytond.modules.company import CompanyReport
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval, If
+from trytond.report import Report
 from trytond.tools import (
     grouped_slice, is_full_text, lstrip_wildcard, reduce_ids, sortable_values)
 from trytond.transaction import Transaction
@@ -905,6 +906,12 @@ class Message(Workflow, ModelSQL, ModelView):
         models = cls._get_origin()
         return [(None, '')] + [(m, get_name(m)) for m in models]
 
+    def get_rec_name(self, name):
+        if self.origin:
+            return self.origin.rec_name
+        else:
+            return f'({self.id})'
+
     @classmethod
     @ModelView.button
     @Workflow.transition('draft')
@@ -966,3 +973,12 @@ class Message(Workflow, ModelSQL, ModelView):
 
     def send(self):
         pass
+
+
+class MessageReport(Report):
+    __name__ = 'account.payment.sepa.message'
+
+    @classmethod
+    def render(cls, action, report_context):
+        record = report_context['record']
+        return record.message

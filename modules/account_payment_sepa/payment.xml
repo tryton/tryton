@@ -303,6 +303,20 @@ this repository contains the full copyright notices and license terms. -->
             <field name="string">Generate SEPA Message</field>
         </record>
 
+        <record model="ir.action.report" id="report_message">
+            <field name="name">Message</field>
+            <field name="model">account.payment.sepa.message</field>
+            <field name="report_name">account.payment.sepa.message</field>
+            <field name="single" eval="True"/>
+            <field name="translatable" eval="False"/>
+            <field name="template_extension">xml</field>
+        </record>
+        <record model="ir.action.keyword" id="report_message_keyword">
+            <field name="keyword">form_print</field>
+            <field name="model">account.payment.sepa.message,-1</field>
+            <field name="action" ref="report_message"/>
+        </record>
+
         <record model="ir.action.report" id="report_mandate">
             <field name="name">Mandate</field>
             <field name="model">account.payment.sepa.mandate</field>
