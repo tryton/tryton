@@ -821,7 +821,12 @@ class Message(Workflow, ModelSQL, ModelView):
         states={
             'readonly': Eval('state') != 'draft',
             })
-    origin = fields.Reference("Origin", selection='get_origin', states=_states)
+    origin = fields.Reference(
+        "Origin", selection='get_origin',
+        states={
+            'readonly': _states['readonly'],
+            'invisible': Eval('type') == 'in',
+            })
     state = fields.Selection([
             ('draft', 'Draft'),
             ('waiting', 'Waiting'),
