@@ -359,6 +359,7 @@ class ModelSQL(ModelStorage):
                         gettext('ir.msg_required_validation_record',
                             **cls.__names__(field_name)))
         for name, _, error in cls._sql_constraints:
+            name = cls._table + '_' + name
             if backend.TableHandler.convert_name(name) in str(exception):
                 raise SQLConstraintError(gettext(error))
         # Check foreign key in last because this can raise false positive
