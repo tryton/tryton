@@ -246,7 +246,6 @@ class Many2Many(Widget):
 
         def callback(result):
             if result:
-                screen.current_record.save()
                 added = 'id' in self.screen.current_record.modified_fields
                 # Force a reload on next display
                 self.screen.current_record.cancel()
@@ -255,7 +254,7 @@ class Many2Many(Widget):
                 # Force a display to clear the CellCache
                 self.screen.display()
             self._popup = False
-        WinForm(screen, callback)
+        WinForm(screen, callback, save_current=True)
 
     def _sig_new(self, defaults=None):
         if self._popup:

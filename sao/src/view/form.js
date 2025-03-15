@@ -4340,14 +4340,13 @@ function eval_pyson(value){
             var screen = this._get_screen_form();
             const callback = result => {
                 if (result) {
-                    screen.current_record.save().done(() => {
-                        var added = 'id' in this.screen.current_record.modified_fields;
-                        // Force a reload on next display
-                        this.screen.current_record.cancel();
-                        if (added) {
-                            this.screen.current_record.modified_fields.id = true;
-                        }
-                    });
+                    var added = 'id' in this.screen.current_record.modified_fields;
+                    // Force a reload on next display
+                    this.screen.current_record.cancel();
+                    if (added) {
+                        this.screen.current_record.modified_fields.id = true;
+                    }
+                    this.screen.display();
                 }
                 this._popup = false;
             };
@@ -4355,7 +4354,9 @@ function eval_pyson(value){
                 screen.load([this.screen.current_record.id]);
                 screen.current_record = screen.group.get(
                     this.screen.current_record.id);
-                new Sao.Window.Form(screen, callback);
+                new Sao.Window.Form(screen, callback, {
+                    save_current: true,
+                });
             });
         },
         new_: function(defaults=null) {
