@@ -604,6 +604,7 @@ class ModelSQL(ModelStorage):
                         gettext('ir.msg_required_validation',
                             **cls.__names__(field_name)))
         for name, constraint, error in cls._sql_constraints:
+            name = cls._table + '_' + name
             if backend.TableHandler.convert_name(name) in str(exception):
                 raise SQLConstraintError(gettext(error))
         for _, constraint, error in cls._sql_constraints:
