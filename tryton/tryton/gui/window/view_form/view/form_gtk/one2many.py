@@ -166,6 +166,7 @@ class One2Many(Widget):
             order=attrs.get('order'),
             row_activate=self._on_activate,
             exclude_field=attrs.get('relation_field', None),
+            readonly=self.view.screen.group.readonly,
             limit=None,
             context=self.view.screen.context,
             breadcrumb=breadcrumb)

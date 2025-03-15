@@ -3442,6 +3442,7 @@ function eval_pyson(value){
                 order: attributes.order,
                 row_activate: this.activate.bind(this),
                 exclude_field: attributes.relation_field || null,
+                readonly: this.view.screen.group.readonly,
                 limit: null,
                 context: this.view.screen.context,
                 pre_validate: attributes.pre_validate,

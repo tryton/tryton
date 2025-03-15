@@ -1249,6 +1249,7 @@
                 }
             }
             this.group.exclude_field = this.exclude_field;
+            this.group.readonly = this.__readonly;
         },
         new_group: function(context) {
             if (!context) {

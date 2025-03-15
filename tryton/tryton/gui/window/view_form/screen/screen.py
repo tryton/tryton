@@ -429,6 +429,7 @@ class Screen:
         for name, views in fields_views.items():
             self.__group.fields[name].views.update(views)
         self.__group.exclude_field = self.exclude_field
+        self.__group.readonly = self.__readonly
 
     group = property(__get_group, __set_group)
 
