@@ -6,5 +6,8 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_label_value">
             <field name="text">%(label)s: %(value)s</field>
         </record>
+        <record model="ir.message" id="msg_product_attribute_name_unique">
+            <field name="text">The name of the product attribute must be unique.</field>
+        </record>
     </data>
 </tryton>

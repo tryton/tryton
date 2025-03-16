@@ -1,7 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from trytond.i18n import gettext
-from trytond.model import DictSchemaMixin, ModelSQL, ModelView, fields
+from trytond.model import DictSchemaMixin, ModelSQL, ModelView, Unique, fields
 from trytond.pool import PoolMeta
 from trytond.pyson import Eval
 
@@ -20,6 +20,15 @@ class Attribute(DictSchemaMixin, ModelSQL, ModelView):
     sets = fields.Many2Many('product.attribute-product.attribute-set',
         'attribute', 'attribute_set', 'Sets',
         help="Add sets to the attribute.")
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        t = cls.__table__()
+        cls._sql_constraints += [
+            ('name_unique', Unique(t, t.name),
+                'product_attribute.msg_product_attribute_name_unique'),
+            ]
 
 
 class AttributeAttributeSet(ModelSQL):
