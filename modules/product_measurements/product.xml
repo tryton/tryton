@@ -11,4 +11,11 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
     </data>
+    <data depends="product_price_list">
+        <record model="ir.ui.view" id="product_price_list_line_view_form">
+            <field name="model">product.price_list.line</field>
+            <field name="inherit" ref="product_price_list.price_list_line_view_form"/>
+            <field name="name">product_price_list_line_form</field>
+        </record>
+    </data>
 </tryton>

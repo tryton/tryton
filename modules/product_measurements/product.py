@@ -1,5 +1,8 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+
+from decimal import Decimal
+
 from trytond.model import fields
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Bool, Eval, Id
@@ -120,3 +123,70 @@ class Template(metaclass=PoolMeta):
 
 class Product(metaclass=PoolMeta):
     __name__ = 'product.product'
+
+
+class PriceList(metaclass=PoolMeta):
+    __name__ = 'product.price_list'
+
+    def get_context_formula(self, product, quantity, uom, pattern=None):
+        pool = Pool()
+        UoM = pool.get('product.uom')
+        ModelData = pool.get('ir.model.data')
+
+        liter = UoM(ModelData.get_id('product', 'uom_liter'))
+        kilogram = UoM(ModelData.get_id('product', 'uom_kilogram'))
+
+        context = super().get_context_formula(
+            product, quantity, uom, pattern=pattern)
+        volume = weight = 0
+        if product:
+            if product.volume is not None:
+                volume = UoM.compute_qty(
+                    product.volume_uom, product.volume, liter, round=False)
+            if product.weight is not None:
+                weight = UoM.compute_qty(
+                    product.weight_uom, product.weight, kilogram, round=False)
+        context['names']['volume'] = Decimal(str(volume))
+        context['names']['weight'] = Decimal(str(weight))
+        return context
+
+
+class PriceListLine(metaclass=PoolMeta):
+    __name__ = 'product.price_list.line'
+
+    volume_uom = fields.Many2One(
+        'product.uom', "Volume UoM",
+        domain=[('category', '=', Id('product', 'uom_cat_volume'))],
+        help="Leave empty for liter.")
+    weight_uom = fields.Many2One(
+        'product.uom', "Weight UoM",
+        domain=[('category', '=', Id('product', 'uom_cat_weight'))],
+        help="Leave empty for kilogram.")
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls.formula.help += ("\n"
+            "-volume: the volume of 1 unit of product\n"
+            "-weight: the weight of 1 unit of product")
+
+    def get_unit_price(self, **context):
+        pool = Pool()
+        UoM = pool.get('product.uom')
+        ModelData = pool.get('ir.model.data')
+
+        if self.volume_uom:
+            context['names'] = context['names'].copy()
+            liter = UoM(ModelData.get_id('product', 'uom_liter'))
+            volume = UoM.compute_qty(
+                liter, float(context['names']['volume']), self.volume_uom,
+                round=False)
+            context['names']['volume'] = Decimal(str(volume))
+        if self.weight_uom:
+            context['names'] = context['names'].copy()
+            kilogram = UoM(ModelData.get_id('product', 'uom_kilogram'))
+            weight = UoM.compute_qty(
+                kilogram, float(context['names']['weight']), self.weight_uom,
+                round=False)
+            context['names']['weight'] = Decimal(str(weight))
+        return super().get_unit_price(**context)
