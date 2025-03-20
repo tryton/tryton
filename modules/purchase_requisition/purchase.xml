@@ -239,7 +239,7 @@ this repository contains the full copyright notices and license terms.
             <field name="name">Own requisition</field>
             <field name="model">purchase.requisition</field>
             <field name="global_p" eval="False"/>
-            <field name="default_p" eval="True"/>
+            <field name="default_p" eval="False"/>
             <field name="perm_read" eval="False"/>
         </record>
          <record model="ir.rule" id="rule_requisition_employees">
