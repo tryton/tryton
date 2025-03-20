@@ -1312,7 +1312,7 @@ class Report(object):
         return self._proxy.execute(ids, data, self._context)
 
 
-def _convert_action(action, data=None, context=None, config=None):
+def _convert_action(action, data=None, *, context=None, config=None):
     if config is None:
         config = proteus.config.get_config()
     records = None
