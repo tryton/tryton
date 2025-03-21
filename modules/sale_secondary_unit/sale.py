@@ -260,7 +260,8 @@ class LineBlanketAgreement(metaclass=PoolMeta):
 
     @fields.depends(
         'blanket_agreement_line', '_parent_blanket_agreement_line.unit',
-        '_parent_blanket_agreement_line.unit_price', 'unit', 'secondary_unit')
+        '_parent_blanket_agreement_line.unit_price', 'unit', 'secondary_unit',
+        'secondary_uom_rate', 'secondary_uom_factor')
     def compute_unit_price(self):
         pool = Pool()
         Uom = pool.get('product.uom')
