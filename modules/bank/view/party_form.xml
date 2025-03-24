@@ -4,7 +4,7 @@ this repository contains the full copyright notices and license terms. -->
 <data>
     <xpath expr="/form/notebook" position="inside">
         <page string="Banking" id="banking">
-            <field name="bank_accounts" colspan="4" widget="one2many"/>
+            <field name="bank_accounts" colspan="4" widget="one2many" view_ids="bank.bank_account_view_list_owners_sequence"/>
         </page>
     </xpath>
 </data>

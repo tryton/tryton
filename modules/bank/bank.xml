@@ -78,7 +78,14 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.ui.view" id="bank_account_view_list">
             <field name="model">bank.account</field>
             <field name="type">tree</field>
+            <field name="priority" eval="10"/>
             <field name="name">bank_account_list</field>
+        </record>
+        <record model="ir.ui.view" id="bank_account_view_list_owners_sequence">
+            <field name="model">bank.account</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="20"/>
+            <field name="name">bank_account_list_owners_sequence</field>
         </record>
 
         <record model="ir.action.act_window" id="act_bank_account_form">

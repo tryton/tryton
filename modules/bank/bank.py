@@ -12,7 +12,8 @@ except ImportError:
 
 from trytond.i18n import gettext
 from trytond.model import (
-    DeactivableMixin, Exclude, ModelSQL, ModelView, fields, sequence_ordered)
+    DeactivableMixin, Exclude, Index, ModelSQL, ModelView, fields,
+    sequence_ordered)
 from trytond.pool import Pool
 from trytond.pyson import Eval, If
 from trytond.tools import is_full_text, lstrip_wildcard
@@ -93,6 +94,7 @@ class Account(DeactivableMixin, ModelSQL, ModelView):
         help="The bank where the account is open.")
     owners = fields.Many2Many('bank.account-party.party', 'account', 'owner',
         'Owners')
+    owners_sequence = fields.Integer("Owners Sequence")
     currency = fields.Many2One('currency.currency', 'Currency')
     numbers = fields.One2Many(
         'bank.account.number', 'account', 'Numbers',
@@ -100,6 +102,15 @@ class Account(DeactivableMixin, ModelSQL, ModelView):
             If(~Eval('active'), ('active', '=', False), ()),
             ],
         help="Add the numbers which identify the bank account.")
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        table = cls.__table__()
+        cls._sql_indexes.add(
+            Index(table,
+                (table.owners_sequence, Index.Range(order='ASC NULLS FIRST')),
+                (table.id, Index.Range(order='ASC'))))
 
     def get_rec_name(self, name):
         for number in self.numbers:

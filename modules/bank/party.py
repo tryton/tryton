@@ -8,10 +8,18 @@ from trytond.transaction import Transaction
 class Party(metaclass=PoolMeta):
     __name__ = 'party.party'
     bank_accounts = fields.Many2Many(
-        'bank.account-party.party', 'owner', 'account', "Bank Accounts")
+        'bank.account-party.party', 'owner', 'account', "Bank Accounts",
+        order=[
+            ('account.owners_sequence', 'ASC NULLS FIRST'),
+            ('account.id', 'ASC'),
+            ])
     bank_accounts_used = fields.Many2Many(
         'bank.account-party.party', 'owner', 'account', "Bank Accounts Used",
-        filter=[('active', '=', True)])
+        filter=[('active', '=', True)],
+        order=[
+            ('account.owners_sequence', 'ASC NULLS FIRST'),
+            ('account.id', 'ASC'),
+            ])
 
     @classmethod
     def search_rec_name(cls, name, clause):
