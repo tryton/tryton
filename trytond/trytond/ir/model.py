@@ -344,7 +344,6 @@ class ModelField(
 
     @classmethod
     def register(cls, model, module_name, model_id):
-        pool = Pool()
         cursor = Transaction().connection.cursor()
 
         ir_model_field = cls.__table__()
@@ -363,16 +362,12 @@ class ModelField(
         model_fields = {f['name']: f for f in cursor_dict(cursor)}
 
         for field_name, field in model._fields.items():
-            if hasattr(field, 'model_name'):
-                relation = field.model_name
-            elif hasattr(field, 'relation_name'):
-                relation = field.relation_name
+            if hasattr(field, 'get_target'):
+                Relation = field.get_target()
+                relation = Relation.__name__
+                Model.register(Relation, module_name)
             else:
                 relation = None
-
-            if relation:
-                Relation = pool.get(relation)
-                Model.register(Relation, module_name)
 
             access = field_name in model.__access__
 
