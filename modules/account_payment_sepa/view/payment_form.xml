@@ -6,8 +6,14 @@ this repository contains the full copyright notices and license terms. -->
         <page id="sepa" string="SEPA">
             <label name="sepa_mandate"/>
             <field name="sepa_mandate"/>
+            <newline/>
+
+            <label name="sepa_payable_bank_account_number"/>
+            <field name="sepa_payable_bank_account_number"/>
+            <newline/>
+
             <label name="sepa_info_id"/>
-            <field name="sepa_info_id"/>
+            <field name="sepa_info_id" colspan="3"/>
 
             <separator id="sepa_return_reason" string="Return Reason" colspan="4"/>
             <label name="sepa_return_reason_code" string="Code"/>

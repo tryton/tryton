@@ -275,10 +275,18 @@ class AccountPaymentSepaTestCase(CompanyTestMixin, ModuleTestCase):
                 numbers=[other_account_number, iban_account_number])
             party = Party(
                 bank_accounts_used=[bank_account])
-            payment = Payment(kind='payable', party=party)
+            payment = Payment(
+                kind='payable', party=party,
+                sepa_payable_bank_account_number=None)
 
             self.assertEqual(id(payment.sepa_bank_account_number),
                 id(iban_account_number))
+
+            payment.sepa_payable_bank_account_number = iban_account_number
+            party.bank_accounts_used = []
+            self.assertEqual(
+                payment.sepa_bank_account_number,
+                iban_account_number)
 
     @with_transaction()
     def test_payment_sequence_type(self):

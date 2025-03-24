@@ -232,6 +232,12 @@ class Group(metaclass=PoolMeta):
                 payment.sepa_mandate = mandate
                 payment.sepa_mandate_sequence_type = sequence_type
             Payment.save(payments)
+        elif self.kind == 'payable':
+            for payment in self.payments:
+                if not payment.sepa_payable_bank_account_number:
+                    payment.sepa_payable_bank_account_number = (
+                        payment.sepa_bank_account_number)
+            Payment.save(self.payments)
         for payment in self.payments:
             if not payment.sepa_bank_account_number:
                 raise ProcessError(
@@ -329,6 +335,17 @@ class Group(metaclass=PoolMeta):
 class Payment(metaclass=PoolMeta):
     __name__ = 'account.payment'
 
+    sepa_payable_bank_account_number = fields.Many2One(
+        'bank.account.number', "Bank Account Number",
+        states={
+            'invisible': (
+                (Eval('process_method') != 'sepa')
+                | (Eval('kind') != 'payable')),
+            },
+        domain=[
+            ('type', '=', 'iban'),
+            ('account.owners', '=', Eval('party', -1)),
+            ])
     sepa_mandate = fields.Many2One('account.payment.sepa.mandate', 'Mandate',
         ondelete='RESTRICT',
         states={
@@ -427,6 +444,8 @@ class Payment(metaclass=PoolMeta):
         if self.kind == 'receivable':
             if self.sepa_mandate:
                 return self.sepa_mandate.account_number
+        elif self.sepa_payable_bank_account_number:
+            return self.sepa_payable_bank_account_number
         else:
             for account in self.party.bank_accounts_used:
                 for number in account.numbers:

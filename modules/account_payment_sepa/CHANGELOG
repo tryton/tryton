@@ -1,3 +1,4 @@
+* Store payable bank account number
 * Remove support for Python 3.8
 * Add support for Python 3.13
 * Allow messages to be downloaded at once
