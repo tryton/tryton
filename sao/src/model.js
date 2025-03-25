@@ -586,6 +586,7 @@
             this.autocompletion = {};
             this.exception = false;
             this.destroyed = false;
+            this._save_prm = jQuery.when();
         },
         get modified() {
             if (!jQuery.isEmptyObject(this.modified_fields)) {
@@ -599,33 +600,28 @@
         },
         save: function(force_reload=false) {
             var context = this.get_context();
+            if (this._save_prm.state() == 'pending') {
+                return this._save_prm.then(() => this.save(force_reload));
+            }
             var prm = jQuery.when();
             if ((this.id < 0) || this.modified) {
                 var values = this.get();
-                try {
-                    // synchronous call to avoid multiple creation or save
-                    if (this.id < 0) {
-                        this.id = this.model.execute(
-                            'create', [[values]], context,  false)[0];
-
-                    } else {
-                        if (!jQuery.isEmptyObject(values)) {
-                            context._timestamp = this.get_timestamp();
-                            this.model.execute(
-                                'write', [[this.id], values], context, false);
-                        }
-                    }
-                } catch (e) {
-                    if (e.promise) {
-                        return e.then(() => this.save(force_reload));
-                    } else {
-                        return jQuery.Deferred().reject();
+                if (this.id < 0) {
+                    prm = this.model.execute('create', [[values]], context)
+                        .then(ids => this.id = ids[0]);
+                } else {
+                    if (!jQuery.isEmptyObject(values)) {
+                        context._timestamp = this.get_timestamp();
+                        prm = this.model.execute(
+                            'write', [[this.id], values], context);
                     }
                 }
-                this.cancel();
-                if (force_reload) {
-                    return this.reload();
-                }
+                prm = prm.then(() => {
+                    this.cancel();
+                    if (force_reload) {
+                        return this.reload();
+                    }
+                });
                 if (this.group) {
                     prm = prm.then(() => this.group.written(this.id));
                 }
@@ -634,6 +630,7 @@
                 delete this.group.parent.modified_fields[this.group.child_name];
                 prm = prm.then(() => this.group.parent.save(force_reload));
             }
+            this._save_prm = prm;
             return prm;
         },
         reload: function(fields, async=true) {
