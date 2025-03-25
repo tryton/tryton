@@ -34,7 +34,7 @@ The Tryton template can be rendered into a module with:
 
 .. code-block:: console
 
-   $ cookiecutter hg+https://code.tryton.org/tryton --directory cookiecutter-module
+   $ cookiecutter hg+https://code.tryton.org/tryton --directory cookiecutter-module --checkout x.y
    module_name [my_module]: opportunity
    prefix []: tuto
    package_name [tuto_opportunity]:
@@ -48,8 +48,8 @@ The Tryton template can be rendered into a module with:
    test_with_scenario []:
 
 .. note::
-   The version number must use the same two first numbers as the Tryton series
-   wanted.
+   The version number ``x.y`` must use the same two first numbers as the Tryton
+   series wanted.
 
 Install module
 --------------
