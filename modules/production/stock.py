@@ -79,6 +79,7 @@ class Move(metaclass=PoolMeta):
                         | (t.production_output == Null))),
                 'production.msg_stock_move_production_single'),
             ]
+        cls._allow_modify_closed_period.add('production_cost_price_updated')
 
     @fields.depends('production_output', '_parent_production_output.company')
     def on_change_production_output(self):
