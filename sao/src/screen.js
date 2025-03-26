@@ -2261,7 +2261,8 @@
                 if (view.view_type == 'tree') {
                     return view.display(selected_nodes, expanded_nodes);
                 } else {
-                    if (!jQuery.isEmptyObject(selected_nodes)) {
+                    if (!jQuery.isEmptyObject(selected_nodes) &&
+                        !this.current_record) {
                         for (var i = 0; i < selected_nodes[0].length; i++) {
                             var new_record = this.group.get(selected_nodes[0][i]);
                             if (!new_record) {
