@@ -2287,7 +2287,8 @@
                     return view.display(selected_nodes);
                 } else {
                     var record;
-                    if (!jQuery.isEmptyObject(selected_nodes)) {
+                    if (!jQuery.isEmptyObject(selected_nodes) &&
+                        !this.current_record) {
                         for (const id of selected_nodes[0]) {
                             const new_record = this.group.get(id);
                             if (!new_record) {

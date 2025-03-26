@@ -898,7 +898,7 @@ class Screen:
                 view.expand_nodes(expanded_nodes)
             view.select_nodes(selected_nodes)
         else:
-            if selected_nodes:
+            if selected_nodes and not self.current_record:
                 record = None
                 for node in selected_nodes[0]:
                     new_record = self.group.get(node)
