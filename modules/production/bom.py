@@ -192,6 +192,10 @@ class BOMInput(ModelSQL, ModelView):
     def compute_quantity(self, factor):
         return self.unit.ceil(self.quantity * factor)
 
+    def prepare_move(self, production, move):
+        "Update stock move for the production"
+        return move
+
 
 class BOMOutput(BOMInput):
     __name__ = 'production.bom.output'

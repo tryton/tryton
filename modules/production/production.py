@@ -399,7 +399,7 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
             quantity = input_.compute_quantity(factor)
             move = self._move('input', input_.product, input_.unit, quantity)
             if move:
-                inputs.append(move)
+                inputs.append(input_.prepare_move(self, move))
                 quantity = Uom.compute_qty(
                     input_.unit, quantity, input_.product.default_uom,
                     round=False)
@@ -410,7 +410,7 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
             quantity = output.compute_quantity(factor)
             move = self._move('output', output.product, output.unit, quantity)
             if move:
-                outputs.append(move)
+                outputs.append(output.prepare_move(self, move))
         self.outputs = outputs
 
     @fields.depends('warehouse')
@@ -510,7 +510,7 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
                     'input', product, input_.unit, quantity)
                 move.planned_date = input_date
                 if move:
-                    to_save.append(move)
+                    to_save.append(input_.prepare_move(production, move))
 
             for output in production.bom.outputs:
                 quantity = output.compute_quantity(factor)
@@ -519,7 +519,7 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
                     'output', product, output.unit, quantity)
                 move.planned_date = output_date
                 if move:
-                    to_save.append(move)
+                    to_save.append(output.prepare_move(production, move))
         Move.save(to_save)
 
     @classmethod
