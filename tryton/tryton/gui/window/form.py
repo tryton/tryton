@@ -458,7 +458,7 @@ class Form(SignalEvent, TabContent):
             delimiter = ';'
         fileno, fname = tempfile.mkstemp(
             '.csv', common.slugify(export['name']) + '_')
-        with open(fname, 'w') as fp:
+        with open(fname, 'w', newline='') as fp:
             writer = csv.writer(fp, delimiter=delimiter)
             writer.writerow(fields)
             for row, path in zip_longest(data, paths or []):
