@@ -398,19 +398,17 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
         for input_ in self.bom.inputs:
             quantity = input_.compute_quantity(factor)
             move = self._move('input', input_.product, input_.unit, quantity)
-            if move:
-                inputs.append(input_.prepare_move(self, move))
-                quantity = Uom.compute_qty(
-                    input_.unit, quantity, input_.product.default_uom,
-                    round=False)
+            inputs.append(input_.prepare_move(self, move))
+            quantity = Uom.compute_qty(
+                input_.unit, quantity, input_.product.default_uom,
+                round=False)
         self.inputs = inputs
 
         outputs = []
         for output in self.bom.outputs:
             quantity = output.compute_quantity(factor)
             move = self._move('output', output.product, output.unit, quantity)
-            if move:
-                outputs.append(output.prepare_move(self, move))
+            outputs.append(output.prepare_move(self, move))
         self.outputs = outputs
 
     @fields.depends('warehouse')
@@ -497,8 +495,7 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
                         'output', production.product, production.unit,
                         production.quantity)
                     move.planned_date = output_date
-                    if move:
-                        to_save.append(move)
+                    to_save.append(move)
                 continue
 
             factor = production.bom.compute_factor(
@@ -509,8 +506,7 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
                 move = production._move(
                     'input', product, input_.unit, quantity)
                 move.planned_date = input_date
-                if move:
-                    to_save.append(input_.prepare_move(production, move))
+                to_save.append(input_.prepare_move(production, move))
 
             for output in production.bom.outputs:
                 quantity = output.compute_quantity(factor)
@@ -518,8 +514,7 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
                 move = production._move(
                     'output', product, output.unit, quantity)
                 move.planned_date = output_date
-                if move:
-                    to_save.append(output.prepare_move(production, move))
+                to_save.append(output.prepare_move(production, move))
         Move.save(to_save)
 
     @classmethod
