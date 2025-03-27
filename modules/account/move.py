@@ -711,6 +711,10 @@ class Reconciliation(ModelSQL, ModelView):
 class MoveLineMixin:
     __slots__ = ()
 
+    payable_receivable_date = fields.Function(
+        fields.Date("Payable/Receivable Date"),
+        'on_change_with_payable_receivable_date')
+
     @classmethod
     def get_move_origin(cls):
         Move = Pool().get('account.move')
@@ -1077,9 +1081,6 @@ class Line(DescriptionOriginMixin, MoveLineMixin, ModelSQL, ModelView):
                 }),
         'get_delegated_amount')
 
-    payable_receivable_date = fields.Function(
-        fields.Date("Payable/Receivable Date"),
-        'on_change_with_payable_receivable_date')
     payable_receivable_balance = fields.Function(
         Monetary(
             "Payable/Receivable Balance",

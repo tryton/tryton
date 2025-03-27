@@ -4,8 +4,8 @@ this repository contains the full copyright notices and license terms. -->
 <form>
     <label name="party"/>
     <field name="party"/>
-    <label name="maturity_date"/>
-    <field name="maturity_date"/>
+    <label name="payable_receivable_date"/>
+    <field name="payable_receivable_date" string="Date"/>
 
     <label name="amount"/>
     <field name="amount"/>

@@ -84,7 +84,7 @@ this repository contains the full copyright notices and license terms. -->
                 eval="[('company', '=', Eval('company', -1)), ['OR', If(Eval('receivable', True), ('account.type.receivable', '=', True), ('id', '&lt;', 0)), If(Eval('payable', True), ('account.type.payable', '=', True), ('id', '&lt;', 0))], If(Eval('reconciled', False), (), ('reconciled', '=', False))]"
                 pyson="1"/>
             <field name="search_value"></field>
-            <field name="order" eval="[('maturity_date', 'ASC'), ('date', 'DESC'), ('id', 'DESC')]" pyson="1"/>
+            <field name="order" eval="[('payable_receivable_date', 'ASC NULLS FIRST'), ('date', 'DESC'), ('id', 'DESC')]" pyson="1"/>
         </record>
         <record model="ir.action.act_window.view" id="act_move_line_group_payable_receivable_view1">
             <field name="sequence" eval="10"/>
