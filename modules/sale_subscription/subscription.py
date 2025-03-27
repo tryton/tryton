@@ -33,7 +33,11 @@ class Subscription(Workflow, ModelSQL, ModelView):
     company = fields.Many2One(
         'company.company', "Company", required=True,
         states={
-            'readonly': (Eval('state') != 'draft') | Eval('party', True),
+            'readonly': (
+                (Eval('state') != 'draft')
+                | Eval('lines', [0])
+                | Eval('party', True)
+                | Eval('invoice_party', True)),
             },
         help="Make the subscription belong to the company.")
 
