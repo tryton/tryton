@@ -73,6 +73,10 @@ class DatabaseInterface(object):
     def lock(cls, connection, table):
         raise NotImplementedError
 
+    @classmethod
+    def lock_records(cls, connection, table, ids):
+        raise NotImplementedError
+
     def lock_id(self, id, timeout=None):
         raise NotImplementedError
 

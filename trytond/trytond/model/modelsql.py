@@ -6,8 +6,8 @@ from functools import wraps
 from itertools import chain, groupby, islice, product, repeat
 
 from sql import (
-    Asc, Column, Desc, Expression, For, Literal, Null, NullsFirst, NullsLast,
-    Table, Union, Window, With)
+    Asc, Column, Desc, Expression, Literal, Null, NullsFirst, NullsLast, Table,
+    Union, Window, With)
 from sql.aggregate import Count, Max
 from sql.conditionals import Coalesce
 from sql.functions import CurrentTimestamp, Extract, RowNumber, Substring
@@ -2248,17 +2248,10 @@ class ModelSQL(ModelStorage):
     @dualmethod
     def lock(cls, records=None):
         transaction = Transaction()
-        database = transaction.database
-        connection = transaction.connection
-        table = cls.__table__()
-
-        if records is not None and database.has_select_for():
-            for sub_records in grouped_slice(records):
-                where = reduce_ids(table.id, sub_records)
-                query = table.select(
-                    Literal(1), where=where, for_=For('UPDATE', nowait=True))
-                with connection.cursor() as cursor:
-                    cursor.execute(*query)
+        if records is not None:
+            new_ids = transaction.create_records[cls.__name__]
+            ids = [id_ for id_ in map(int, records) if id_ not in new_ids]
+            transaction.lock_records(cls._table, ids)
         else:
             transaction.lock_table(cls._table)
 

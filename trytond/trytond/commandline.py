@@ -160,6 +160,12 @@ def get_parser_admin():
     return parser
 
 
+def _convert_records(s):
+    table, ids = s.split('=', 1)
+    ids = list(map(int, ids.split(',')))
+    return table, ids
+
+
 def get_parser_console():
     parser = get_base_parser()
     parser.add_argument(
@@ -173,6 +179,10 @@ def get_parser_console():
     parser.add_argument(
         "--lock-table", dest="lock_tables", nargs='+', default=[],
         metavar='TABLE', help="lock tables")
+    parser.register('type', 'records', _convert_records)
+    parser.add_argument(
+        "--lock-records", dest="lock_records", type='records', nargs='+',
+        default=[], metavar='TABLE=id,id', help="lock record ids from TABLE")
     parser.epilog = "To store changes, `transaction.commit()` must be called."
     return parser
 

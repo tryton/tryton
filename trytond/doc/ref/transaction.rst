@@ -112,6 +112,11 @@ Transaction
    Raise a :exc:`TransactionError` to retry the transaction if the table has
    not been locked at the start.
 
+.. method:: Transaction.lock_records(table, ids)
+
+   Raise a :exc:`TransactionError` to retry the transaction if the ``ids`` of
+   the ``table`` has not been locked at the start.
+
 .. method:: Transaction.set_current_transaction(transaction)
 
    Add a specific ``transaction`` on the top of the transaction stack.

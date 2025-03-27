@@ -40,6 +40,7 @@ from trytond import __series__
 from trytond.backend.database import DatabaseInterface, SQLType
 from trytond.config import config, parse_uri
 from trytond.sql.operators import RangeOperator
+from trytond.tools import grouped_slice, reduce_ids
 from trytond.tools.gevent import is_gevent_monkey_patched
 
 from .table import index_method
@@ -474,10 +475,21 @@ class Database(DatabaseInterface):
             cursor.execute(*from_item.select(Count(Literal('*'))))
         return cursor.fetchone()[0]
 
-    def lock(self, connection, table):
+    @classmethod
+    def lock(cls, connection, table):
         cursor = connection.cursor()
         cursor.execute(SQL('LOCK {} IN EXCLUSIVE MODE NOWAIT').format(
                 Identifier(table)))
+
+    @classmethod
+    def lock_records(cls, connection, table, ids):
+        table = Table(table)
+        cursor = connection.cursor()
+        for sub_ids in grouped_slice(ids):
+            where = reduce_ids(table.id, sub_ids)
+            query = table.select(
+                Literal(1), where=where, for_=For('UPDATE', nowait=True))
+            cursor.execute(*query)
 
     def lock_id(self, id, timeout=None):
         if not timeout:
