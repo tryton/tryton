@@ -146,8 +146,11 @@ class Subscription(Workflow, ModelSQL, ModelView):
     lines = fields.One2Many(
         'sale.subscription.line', 'subscription', "Lines",
         states={
-            'readonly': ((Eval('state') != 'draft')
-                | ~Eval('start_date')),
+            'readonly': (
+                (Eval('state') != 'draft')
+                | ~Eval('start_date')
+                | ~Eval('company')
+                | ~Eval('currency')),
             })
 
     quoted_by = employee_field(
