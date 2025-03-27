@@ -150,8 +150,14 @@ class Purchase(
             'readonly': ((Eval('state') != 'draft')
                 | (Eval('lines', [0]) & Eval('currency'))),
             })
-    lines = fields.One2Many('purchase.line', 'purchase', 'Lines',
-        states=_states)
+    lines = fields.One2Many(
+        'purchase.line', 'purchase', "Lines",
+        states={
+            'readonly': (
+                (Eval('state') != 'draft')
+                | ~Eval('company')
+                | ~Eval('currency')),
+            })
     comment = fields.Text('Comment')
     untaxed_amount = fields.Function(Monetary(
             "Untaxed", currency='currency', digits='currency'),
