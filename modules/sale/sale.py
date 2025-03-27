@@ -181,10 +181,14 @@ class Sale(
             'readonly': ((Eval('state') != 'draft')
                 | (Eval('lines', [0]) & Eval('currency', 0))),
             })
-    lines = fields.One2Many('sale.line', 'sale', 'Lines', states={
-            'readonly': Eval('state') != 'draft',
-            },
-        depends={'party'})
+    lines = fields.One2Many(
+        'sale.line', 'sale', "Lines",
+        states={
+            'readonly': (
+                (Eval('state') != 'draft')
+                | ~Eval('company')
+                | ~Eval('currency')),
+            })
     line_lines = fields.One2Many(
         'sale.line', 'sale', "Line - Lines", readonly=True,
         filter=[
