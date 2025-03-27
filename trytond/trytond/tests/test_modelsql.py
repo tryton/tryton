@@ -856,13 +856,28 @@ class ModelSQLTestCase(unittest.TestCase):
         record_id = Model.create([{}])[0].id
         transaction.commit()
 
-        with transaction.new_transaction():
-            record = Model(record_id)
-            record.lock()
-            with transaction.new_transaction():
+        args1 = {}
+        while True:
+            with transaction.new_transaction(**args1):
                 record = Model(record_id)
-                with self.assertRaises(backend.DatabaseOperationalError):
+                try:
                     record.lock()
+                except TransactionError as e:
+                    e.fix(args1)
+                    continue
+                with self.assertRaises(
+                        backend.DatabaseOperationalError):
+                    args2 = {}
+                    while True:
+                        with transaction.new_transaction(**args2):
+                            record = Model(record_id)
+                            try:
+                                record.lock()
+                            except TransactionError as e:
+                                e.fix(args2)
+                                continue
+                            break
+                break
 
     @unittest.skipIf(backend.name == 'sqlite',
         'SQLite does not have lock at table level but on file')
@@ -893,6 +908,19 @@ class ModelSQLTestCase(unittest.TestCase):
                                 continue
                             break
                 break
+
+    @with_transaction()
+    def test_record_lock_with_table_lock(self):
+        "Test not locking record when table is locked"
+        pool = Pool()
+        Model = pool.get('test.modelsql.lock')
+        transaction = Transaction()
+        record_id = Model.create([{}])[0].id
+        transaction.commit()
+
+        with transaction.new_transaction(_lock_tables=[Model._table]):
+            record = Model(record_id)
+            record.lock()
 
     @with_transaction()
     def test_search_or_to_union(self):

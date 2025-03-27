@@ -27,13 +27,14 @@ from psycopg2 import IntegrityError as DatabaseIntegrityError
 from psycopg2 import OperationalError as DatabaseOperationalError
 from psycopg2 import ProgrammingError
 from psycopg2.extras import register_default_json, register_default_jsonb
-from sql import Cast, Flavor, For, Table
+from sql import Cast, Flavor, For, Literal, Table
 from sql.conditionals import Coalesce
 from sql.functions import Function
 from sql.operators import BinaryOperator, Concat
 
 from trytond.backend.database import DatabaseInterface, SQLType
 from trytond.config import config, parse_uri
+from trytond.tools import grouped_slice, reduce_ids
 from trytond.tools.gevent import is_gevent_monkey_patched
 
 __all__ = [
@@ -440,10 +441,21 @@ class Database(DatabaseInterface):
         cursor.execute(f"SELECT last_value FROM {sequence_name}")
         return cursor.fetchone()[0]
 
-    def lock(self, connection, table):
+    @classmethod
+    def lock(cls, connection, table):
         cursor = connection.cursor()
         cursor.execute(SQL('LOCK {} IN EXCLUSIVE MODE NOWAIT').format(
                 Identifier(table)))
+
+    @classmethod
+    def lock_records(cls, connection, table, ids):
+        table = Table(table)
+        cursor = connection.cursor()
+        for sub_ids in grouped_slice(ids):
+            where = reduce_ids(table.id, sub_ids)
+            query = table.select(
+                Literal(1), where=where, for_=For('UPDATE', nowait=True))
+            cursor.execute(*query)
 
     def lock_id(self, id, timeout=None):
         if not timeout:

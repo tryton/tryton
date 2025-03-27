@@ -38,6 +38,18 @@ class _TransactionLockError(TransactionError):
         extras.setdefault('_lock_tables', []).append(self._table)
 
 
+class _TransactionLockRecordsError(TransactionError):
+    def __init__(self, table, ids):
+        super().__init__()
+        self._table = table
+        self._ids = ids
+
+    def fix(self, extras):
+        super().fix(extras)
+        extras.setdefault('_lock_records', {}).setdefault(
+            self._table, []).extend(self._ids)
+
+
 def record_cache_size(transaction):
     return transaction.context.get('_record_cache_size', _cache_record)
 
@@ -203,6 +215,11 @@ class Transaction(object):
                     for table in lock_tables:
                         self.database.lock(self.connection, table)
                     self._locked_tables = set(lock_tables)
+                    locked_records = defaultdict(set)
+                    for table, ids in extras.get('_lock_records', {}).items():
+                        self.database.lock_records(self.connection, table, ids)
+                        locked_records[table].update(ids)
+                    self._locked_records = locked_records
                 except backend.DatabaseOperationalError:
                     if count < _retry:
                         self.connection.rollback()
@@ -295,6 +312,11 @@ class Transaction(object):
     def lock_table(self, table):
         if table not in self._locked_tables:
             raise _TransactionLockError(table)
+
+    def lock_records(self, table, ids):
+        if table not in self._locked_tables:
+            if missing := (set(ids) - self._locked_records[table]):
+                raise _TransactionLockRecordsError(table, missing)
 
     def set_current_transaction(self, transaction):
         self._local.transactions.append(transaction)

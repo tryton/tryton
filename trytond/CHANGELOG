@@ -1,3 +1,4 @@
+* Lock records on transaction start
 
 Version 7.0.37 - 2025-10-02
 ---------------------------
