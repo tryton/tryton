@@ -1061,6 +1061,9 @@ class ViewTree(View):
                     records.append(model.get_value(iter_, 0))
                 if self.record not in records:
                     self.record = records[0]
+                else:
+                    # Force record_message
+                    self.record = self.record
             else:
                 self.record = None
 
