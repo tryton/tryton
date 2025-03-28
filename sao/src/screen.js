@@ -1606,7 +1606,6 @@
         },
         save_current: function() {
             var current_record = this.current_record;
-            let new_record = current_record.id < 0;
             if (!current_record) {
                 if (this.current_view &&
                     (this.current_view.view_type == 'tree') &&
@@ -1617,6 +1616,7 @@
                     return jQuery.when();
                 }
             }
+            let new_record = current_record.id < 0;
             if (this.current_view) {
                 this.current_view.set_value();
                 var fields = this.current_view.get_fields();
