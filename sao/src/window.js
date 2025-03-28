@@ -101,9 +101,10 @@
             });
         },
         clear: function() {
-            var kinds = this.el.children().each(
-                (i, el) => jQuery(el).data('kind'));
-            new Set(kinds).forEach(kind => {
+            let kinds = new Set();
+            this.el.children().each(
+                (i, el) => kinds.add(jQuery(el).data('kind')));
+            kinds.forEach(kind => {
                 this.refresh(kind);
             });
             this.__messages.clear();
