@@ -3260,7 +3260,7 @@ function eval_pyson(value){
 
             this._readonly = true;
             this._required = false;
-            this._position = 0;
+            this._position = undefined;
             this._length = 0;
 
             this.el = jQuery('<div/>', {
@@ -3563,7 +3563,7 @@ function eval_pyson(value){
                 !record ||
                 size_limit ||
                 !undeletable ||
-                !this._position);
+                (typeof this._position != 'number'));
             this.but_open.prop(
                 'disabled',
                 !record ||
@@ -3593,7 +3593,7 @@ function eval_pyson(value){
                     'disabled',
                     this._readonly ||
                     !record ||
-                    !this.position ||
+                    (typeof this._position != 'number') ||
                     !this.write_access ||
                     !this.read_access);
             }

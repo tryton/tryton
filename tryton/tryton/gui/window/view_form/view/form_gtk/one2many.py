@@ -31,7 +31,7 @@ class One2Many(Widget):
         self.widget.add(vbox)
         self._readonly = True
         self._required = False
-        self._position = 0
+        self._position = None
         self._length = 0
 
         self.title_box = hbox = Gtk.HBox(homogeneous=False, spacing=0)
@@ -317,14 +317,14 @@ class One2Many(Widget):
                 not self._readonly
                 and self.delete_access
                 and deletable
-                and self._position))
+                and self._position is not None))
         self.but_undel.set_sensitive(bool(
                 not self._readonly
                 and not size_limit
                 and undeletable
-                and self._position))
+                and self._position is not None))
         self.but_open.set_sensitive(bool(
-                self._position
+                self._position is not None
                 and self.read_access
                 and has_form))
         self.but_next.set_sensitive(bool(
@@ -341,7 +341,7 @@ class One2Many(Widget):
                     and self.read_access))
             self.but_remove.set_sensitive(bool(
                     not self._readonly
-                    and self._position
+                    and self._position is not None
                     and self.write_access
                     and self.read_access))
             self.wid_text.set_sensitive(self.but_add.get_sensitive())
