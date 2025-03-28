@@ -26,6 +26,10 @@ class WinForm(NoModal, InfoBar):
             save_current=False, title='', defaults=None):
         tooltips = common.Tooltips()
         NoModal.__init__(self)
+
+        self._position = None
+        self._length = 0
+
         self.screen = screen
         self.callback = callback
         self.many = many
@@ -171,13 +175,14 @@ class WinForm(NoModal, InfoBar):
             hbox.set_halign(Gtk.Align.END)
             access = common.MODELACCESS[screen.model_name]
 
-            but_switch = Gtk.Button()
-            tooltips.set_tip(but_switch, _('Switch'))
-            but_switch.connect('clicked', self.switch_view)
-            but_switch.add(common.IconFactory.get_image(
+            self.but_switch = Gtk.Button()
+            tooltips.set_tip(self.but_switch, _('Switch'))
+            self.but_switch.connect('clicked', self.switch_view)
+            self.but_switch.add(common.IconFactory.get_image(
                     'tryton-switch', Gtk.IconSize.SMALL_TOOLBAR))
-            but_switch.set_relief(Gtk.ReliefStyle.NONE)
-            hbox.pack_start(but_switch, expand=False, fill=False, padding=0)
+            self.but_switch.set_relief(Gtk.ReliefStyle.NONE)
+            hbox.pack_start(
+                self.but_switch, expand=False, fill=False, padding=0)
 
             self.but_pre = Gtk.Button()
             tooltips.set_tip(self.but_pre, _('Previous'))
@@ -266,7 +271,7 @@ class WinForm(NoModal, InfoBar):
             if not access['delete'] or readonly:
                 self.but_undel.set_sensitive(False)
 
-            but_switch.props.sensitive = screen.number_of_views > 1
+            self.but_switch.props.sensitive = screen.number_of_views > 1
 
             tooltips.enable()
             hbox.show_all()
@@ -353,43 +358,72 @@ class WinForm(NoModal, InfoBar):
         win.show()
 
     def record_message(self, position, size, *args):
-        if self.view_type != 'tree':
-            return
-        name = '_'
-        access = common.MODELACCESS[self.screen.model_name]
-        deletable = True
-        if self.screen.current_record:
-            deletable = self.screen.current_record.deletable
-        readonly = self.screen.group.readonly
-        if position >= 1:
-            name = str(position)
-            if self.domain is not None:
-                self.but_remove.set_sensitive(True)
-            if position < size:
-                self.but_next.set_sensitive(True)
-            else:
-                self.but_next.set_sensitive(False)
-            if position > 1:
-                self.but_pre.set_sensitive(True)
-            else:
-                self.but_pre.set_sensitive(False)
-            self.but_del.set_sensitive(bool(
-                    not readonly
-                    and access['delete']
-                    and deletable))
-            self.but_undel.set_sensitive(bool(not readonly))
-        else:
-            self.but_del.set_sensitive(False)
-            self.but_undel.set_sensitive(False)
-            self.but_next.set_sensitive(False)
-            self.but_pre.set_sensitive(False)
-            if self.domain is not None:
-                self.but_remove.set_sensitive(False)
-        line = '(%s/%s)' % (name, position)
-        self.label.set_text(line)
+        self._position = position
+        self._length = size
+        name = str(position) if position else '_'
+        selected = len(self.screen.selected_records)
+        if selected > 1:
+            name += '#%i' % selected
+        name = '(%s/%s)' % (name, common.humanize(size))
+        self.label.set_text(name)
+        self._set_button_sensitive()
 
     def record_modified(self, *args):
         self.info_bar_refresh()
+        self._set_button_sensitive()
+
+    def _set_button_sensitive(self):
+        if self.view_type != 'tree':
+            return
+        access = common.MODELACCESS[self.screen.model_name]
+
+        first = last = False
+        if isinstance(self._position, int):
+            first = self._position <= 1
+            last = self._position >= self._length
+        deletable = (
+            self.screen.deletable
+            and any(
+                not r.deleted and not r.removed
+                for r in self.screen.selected_records))
+        undeletable = any(
+            r.deleted or r.removed for r in self.screen.selected_records)
+        view_type = self.screen.current_view.view_type
+        has_views = self.screen.number_of_views > 1
+        readonly = self.screen.group.readonly
+
+        self.but_switch.set_sensitive(
+            (self._position or view_type == 'form') and has_views)
+        self.but_new.set_sensitive(bool(
+                not readonly
+                and access['create']))
+        self.but_del.set_sensitive(bool(
+                not readonly
+                and access['delete']
+                and deletable
+                and self._position is not None))
+        self.but_undel.set_sensitive(bool(
+                not readonly
+                and undeletable
+                and self._position is not None))
+        self.but_next.set_sensitive(bool(
+                self._length
+                and not last))
+        self.but_pre.set_sensitive(bool(
+                self._length
+                and not first))
+        if self.domain is not None:
+            self.but_add.set_sensitive(bool(
+                    not readonly
+                    and self.write_access
+                    and access['read']))
+            self.but_remove.set_sensitive(bool(
+                    not readonly
+                    and self._position is not None
+                    and access['write']
+                    and access['read']))
+            self.wid_text.set_sensitive(self.but_add.get_sensitive())
+            self.wid_text.set_editable(self.but_add.get_sensitive())
 
     def close(self, widget):
         widget.stop_emission_by_name('close')

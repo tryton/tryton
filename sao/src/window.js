@@ -113,6 +113,10 @@
     Sao.Window.Form = Sao.class_(Object, {
         init: function(screen, callback, kwargs) {
             kwargs = kwargs || {};
+
+            this._position = undefined;
+            this._length = 0;
+
             this.screen = screen;
             this.callback = callback;
             this.many = kwargs.many || 0;
@@ -400,40 +404,84 @@
             });
         },
         record_message: function(position, size) {
-            if (this.view_type != 'tree') {
-                return;
-            }
-            var name = '_';
-            var access = Sao.common.MODELACCESS.get(this.screen.model_name);
-            var deletable = this.screen.deletable;
-            var readonly = this.screen.group.readonly;
-            if (position >= 1) {
-                name = position;
-                if (this.domain) {
-                    this.but_remove.prop('disabled', false);
-                }
-                this.but_next.prop('disabled', position >= size);
-                this.but_previous.prop('disabled', position <= 1);
-                this.but_del.prop(
-                    'disabled',
-                    readonly ||
-                    !access.delete ||
-                    !deletable);
-                this.but_undel.prop('disabled', readonly);
-            } else {
-                this.but_del.prop('disabled', true);
-                this.but_undel.prop('disabled', true);
-                this.but_next.prop('disabled', true);
-                this.but_previous.prop('disabled', true);
-                if (this.domain) {
-                    this.but_remove.prop('disabled', true);
+            this._position = position;
+            this._length = size;
+            let name = '_';
+            if (position) {
+                let selected = this.screen.selected_records.length;
+                name = ' ' + position;
+                if (selected > 1) {
+                    name += '#' + selected;
                 }
             }
-            var message = name + '/' + size;
+            let message = name + '/' + Sao.common.humanize(size);
             this.label.text(message).attr('title', message);
+            this._set_button_sensitive();
         },
         record_modified: function() {
             this.info_bar.refresh();
+            this._set_button_sensitive();
+        },
+        _set_button_sensitive: function() {
+            if (this.view_type != 'tree') {
+                return;
+            }
+            let access = Sao.common.MODELACCESS.get(this.screen.model_name);
+
+            let first = false,
+                last = false;
+            if (typeof this._position == 'number') {
+                first = this._position <= 1;
+                last = this._position >= this._length;
+            }
+            var deletable =
+                this.screen.deletable &&
+                this.screen.selected_records.some((r) => !r.deleted && !r.removed);
+            let undeletable =
+                this.screen.selected_records.some((r) => r.deleted || r.removed);
+            let view_type = this.screen.current_view.view_type;
+            let has_views = this.screen.number_of_views > 1;
+            let readonly = this.screen.group.readonly;
+
+            this.but_switch.prop(
+                'disabled',
+                !((this._position || (view_type == 'form')) && has_views));
+            this.but_new.prop(
+                'disabled',
+                readonly ||
+                !access.create);
+            this.but_del.prop(
+                'disabled',
+                readonly ||
+                !access.delete ||
+                !deletable);
+            this.but_undel.prop(
+                'disabled',
+                readonly ||
+                !undeletable ||
+                (typeof this._position != 'number'));
+            this.but_next.prop(
+                'disabled',
+                !this._length ||
+                last);
+            this.but_previous.prop(
+                'disabled',
+                !this._length ||
+                first);
+            if (this.domain) {
+                this.but_add.prop(
+                    'disabled',
+                    readonly ||
+                    !access.write_access ||
+                    !access.readonly);
+                this.wid_text.prop('disabled', this.but_add.prop('disabled'));
+                this.but_remove.prop(
+                    'disabled',
+                    readonly ||
+                    (typeof this._position != 'number') ||
+                    !access.write ||
+                    !access.read);
+            }
         },
         add: function() {
             var domain = jQuery.extend([], this.domain);
