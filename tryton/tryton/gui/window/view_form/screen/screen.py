@@ -486,8 +486,6 @@ class Screen:
         return self.__current_record
 
     def __set_current_record(self, record):
-        if self.__current_record == record and record:
-            return
         self.__current_record = record
         if record:
             try:
