@@ -12,22 +12,11 @@ Imports::
     >>> from trytond.modules.account_invoice.tests.tools import (
     ...     create_payment_term, set_fiscalyear_invoice_sequences)
     >>> from trytond.modules.company.tests.tools import create_company
-    >>> from trytond.tests.tools import activate_modules, assertEqual, set_user
+    >>> from trytond.tests.tools import activate_modules, assertEqual
 
 Activate modules::
 
     >>> config = activate_modules('analytic_purchase', create_company, create_chart)
-
-Create purchase user::
-
-    >>> User = Model.get('res.user')
-    >>> Group = Model.get('res.group')
-    >>> purchase_user = User()
-    >>> purchase_user.name = 'Purchase'
-    >>> purchase_user.login = 'purchase'
-    >>> purchase_group, = Group.find([('name', '=', 'Purchase')])
-    >>> purchase_user.groups.append(purchase_group)
-    >>> purchase_user.save()
 
 Create fiscal year::
 
@@ -87,7 +76,6 @@ Create payment term::
 
 Purchase with analytic accounts::
 
-    >>> set_user(purchase_user)
     >>> Purchase = Model.get('purchase.purchase')
     >>> purchase = Purchase()
     >>> purchase.party = supplier
@@ -115,7 +103,6 @@ Check invoice analytic accounts::
 
 Purchase with an empty analytic account::
 
-    >>> set_user(purchase_user)
     >>> Purchase = Model.get('purchase.purchase')
     >>> purchase = Purchase()
     >>> purchase.party = supplier

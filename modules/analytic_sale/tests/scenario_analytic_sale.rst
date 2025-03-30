@@ -12,22 +12,11 @@ Imports::
     >>> from trytond.modules.account_invoice.tests.tools import (
     ...     create_payment_term, set_fiscalyear_invoice_sequences)
     >>> from trytond.modules.company.tests.tools import create_company
-    >>> from trytond.tests.tools import activate_modules, assertEqual, set_user
+    >>> from trytond.tests.tools import activate_modules, assertEqual
 
 Activate modules::
 
     >>> config = activate_modules('analytic_sale', create_company, create_chart)
-
-Create sale user::
-
-    >>> User = Model.get('res.user')
-    >>> Group = Model.get('res.group')
-    >>> sale_user = User()
-    >>> sale_user.name = 'Sale'
-    >>> sale_user.login = 'sale'
-    >>> sale_group, = Group.find([('name', '=', 'Sales')])
-    >>> sale_user.groups.append(sale_group)
-    >>> sale_user.save()
 
 Create fiscal year::
 
@@ -87,7 +76,6 @@ Create payment term::
 
 Sale with analytic accounts::
 
-    >>> set_user(sale_user)
     >>> Sale = Model.get('sale.sale')
     >>> SaleLine = Model.get('sale.line')
     >>> sale = Sale()
@@ -115,7 +103,6 @@ Check analytic accounts on invoice::
 
 Sale with an empty analytic account::
 
-    >>> set_user(sale_user)
     >>> Sale = Model.get('sale.sale')
     >>> SaleLine = Model.get('sale.line')
     >>> sale = Sale()
@@ -140,7 +127,6 @@ Check invoice analytic accounts::
 
 Return sales using the wizard::
 
-    >>> set_user(sale_user)
     >>> return_sale = Wizard('sale.return_sale', [sale])
     >>> return_sale.execute('return_')
     >>> returned_sale, = Sale.find([

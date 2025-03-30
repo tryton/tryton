@@ -16,7 +16,6 @@ Activate modules::
     >>> config = activate_modules(
     ...     ['purchase_product_quantity', 'purchase_request'],
     ...     create_company, create_chart)
-    >>> user = config.user
 
     >>> Location = Model.get('stock.location')
     >>> Party = Model.get('party.party')
@@ -77,7 +76,7 @@ Create the purchase request below minimal::
     ...             'unit': gr,
     ...             'warehouse': warehouse_loc.id,
     ...             }], ctx)
-    >>> set_user(user)
+    >>> set_user()
     >>> purchase_request = PurchaseRequest(pr_id)
 
 Create purchase::
@@ -103,7 +102,7 @@ Create the purchase request wrong rounding::
     ...             'unit': gr,
     ...             'warehouse': warehouse_loc.id,
     ...             }], ctx)
-    >>> set_user(user)
+    >>> set_user()
     >>> purchase_request = PurchaseRequest(pr_id)
 
 Create purchase::

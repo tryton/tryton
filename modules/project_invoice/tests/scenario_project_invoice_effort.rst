@@ -11,34 +11,11 @@ Imports::
     >>> from trytond.modules.account.tests.tools import create_chart, get_accounts
     >>> from trytond.modules.account_invoice.tests.tools import create_payment_term
     >>> from trytond.modules.company.tests.tools import create_company
-    >>> from trytond.tests.tools import activate_modules, set_user
+    >>> from trytond.tests.tools import activate_modules
 
 Activate modules::
 
     >>> config = activate_modules('project_invoice', create_company, create_chart)
-
-Create project user::
-
-    >>> User = Model.get('res.user')
-    >>> Group = Model.get('res.group')
-    >>> project_user = User()
-    >>> project_user.name = 'Project'
-    >>> project_user.login = 'project'
-    >>> project_group, = Group.find([('name', '=', 'Project Administration')])
-    >>> timesheet_group, = Group.find([('name', '=', 'Timesheet Administration')])
-    >>> project_user.groups.extend([project_group, timesheet_group])
-    >>> project_user.save()
-
-Create project invoice user::
-
-    >>> project_invoice_user = User()
-    >>> project_invoice_user.name = 'Project Invoice'
-    >>> project_invoice_user.login = 'project_invoice'
-    >>> project_invoice_group, = Group.find([('name', '=', 'Project Invoice')])
-    >>> project_group, = Group.find([('name', '=', 'Project Administration')])
-    >>> project_invoice_user.groups.extend(
-    ...     [project_invoice_group, project_group])
-    >>> project_invoice_user.save()
 
 Get accounts::
 
@@ -101,7 +78,6 @@ Create products::
 
 Create a Project::
 
-    >>> set_user(project_user)
     >>> ProjectWork = Model.get('project.work')
     >>> project = ProjectWork()
     >>> project.name = 'Test effort'
@@ -150,7 +126,6 @@ Check project amounts::
 
 Invoice project::
 
-    >>> set_user(project_invoice_user)
     >>> project.click('invoice')
     >>> project.amount_to_invoice
     Decimal('0.00')
@@ -159,7 +134,6 @@ Invoice project::
 
 Do project::
 
-    >>> set_user(project_user)
     >>> task_no_effort.progress = 1
     >>> task_no_effort.save()
     >>> task_fixed.progress = 1
@@ -177,7 +151,6 @@ Check project amounts::
 
 Invoice again project::
 
-    >>> set_user(project_invoice_user)
     >>> project.click('invoice')
     >>> project.amount_to_invoice
     Decimal('0.00')
@@ -186,7 +159,6 @@ Invoice again project::
 
 Try to change invoice line quantity::
 
-    >>> set_user(1)
     >>> ProjectWork = Model.get('project.work')
     >>> task = ProjectWork(task.id)
     >>> task.invoice_line.quantity = 1

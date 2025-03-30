@@ -11,49 +11,12 @@ Imports::
     >>> from trytond.modules.account.tests.tools import (
     ...     create_chart, create_fiscalyear, get_accounts)
     >>> from trytond.modules.company.tests.tools import create_company
-    >>> from trytond.tests.tools import activate_modules, set_user
+    >>> from trytond.tests.tools import activate_modules
 
 Activate modules::
 
     >>> config = activate_modules(
     ...     'account_dunning_letter', create_company, create_chart)
-
-Reload the context::
-
-    >>> User = Model.get('res.user')
-    >>> Group = Model.get('res.group')
-    >>> config._context = User.get_preferences(True, config.context)
-
-Create account admin user::
-
-    >>> account_admin_user = User()
-    >>> account_admin_user.name = 'Account Admin'
-    >>> account_admin_user.login = 'account_admin'
-    >>> account_admin_group, = Group.find([
-    ...         ('name', '=', 'Accounting Administration'),
-    ...         ])
-    >>> account_admin_user.groups.append(account_admin_group)
-    >>> account_admin_user.save()
-
-Create account user::
-
-    >>> account_user = User()
-    >>> account_user.name = 'Account'
-    >>> account_user.login = 'account'
-    >>> account_group, = Group.find([
-    ...         ('name', '=', 'Accounting'),
-    ...         ])
-    >>> account_user.groups.append(account_group)
-    >>> account_user.save()
-
-Create dunning user::
-
-    >>> dunning_user = User()
-    >>> dunning_user.name = 'Dunning'
-    >>> dunning_user.login = 'dunning'
-    >>> dunning_group, = Group.find([('name', '=', 'Dunning')])
-    >>> dunning_user.groups.append(dunning_group)
-    >>> dunning_user.save()
 
 Create fiscal year::
 
@@ -70,7 +33,6 @@ Get accounts::
 
 Create dunning procedure::
 
-    >>> set_user(account_admin_user)
     >>> Procedure = Model.get('account.dunning.procedure')
     >>> procedure = Procedure(name='Procedure')
     >>> level = procedure.levels.new()
@@ -88,7 +50,6 @@ Create parties::
 
 Create some moves::
 
-    >>> set_user(account_user)
     >>> Journal = Model.get('account.journal')
     >>> Move = Model.get('account.move')
     >>> journal_revenue, = Journal.find([
@@ -164,7 +125,6 @@ Add partial payment of 50::
 
 Create dunnings::
 
-    >>> set_user(dunning_user)
     >>> Dunning = Model.get('account.dunning')
     >>> create_dunning = Wizard('account.dunning.create')
     >>> create_dunning.form.date = period.start_date + dt.timedelta(days=5)

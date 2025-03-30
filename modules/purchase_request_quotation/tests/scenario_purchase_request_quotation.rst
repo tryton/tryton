@@ -20,39 +20,26 @@ Activate purchase_request_quotation Module::
     ...     ['purchase_request_quotation', 'purchase_requisition'],
     ...     create_company, create_chart)
 
+    >>> Employee = Model.get('company.employee')
+    >>> Party = Model.get('party.party')
+    >>> User = Model.get('res.user')
+
+Set employee::
+
+    >>> employee_party = Party(name="Employee")
+    >>> employee_party.save()
+    >>> employee = Employee(party=employee_party)
+    >>> employee.save()
+    >>> user = User(config.user)
+    >>> user.employees.append(employee)
+    >>> user.employee = employee
+    >>> user.save()
+    >>> set_user(user.id)
+
 Get accounts::
 
     >>> accounts = get_accounts()
     >>> expense = accounts['expense']
-
-Create purchase user which is also in requisition approval group::
-
-    >>> User = Model.get('res.user')
-    >>> Group = Model.get('res.group')
-    >>> Party = Model.get('party.party')
-    >>> Employee = Model.get('company.employee')
-    >>> purchase_user = User()
-    >>> purchase_user.name = 'Purchase'
-    >>> purchase_user.login = 'purchase'
-    >>> purchase_group, = Group.find([('name', '=', 'Purchase')])
-    >>> purchase_user.groups.append(purchase_group)
-    >>> purchase_request_group, = Group.find(
-    ...     [('name', '=', 'Purchase Request')])
-    >>> purchase_user.groups.append(purchase_request_group)
-    >>> requisition_group, = Group.find([
-    ...         ('name', '=', 'Purchase Requisition')])
-    >>> purchase_user.groups.append(requisition_group)
-    >>> requisition_approval_group, = Group.find([
-    ...         ('name', '=', 'Purchase Requisition Approval')])
-    >>> purchase_user.groups.append(requisition_approval_group)
-    >>> employee_party = Party(name='Employee')
-    >>> employee_party.save()
-    >>> employee = Employee(party=employee_party)
-    >>> employee.save()
-    >>> purchase_user.employees.append(employee)
-    >>> purchase_user.employee = employee
-    >>> purchase_user.save()
-
 
 Create suppliers::
 
@@ -90,7 +77,6 @@ Create product::
 
 Create purchase requisition::
 
-    >>> set_user(purchase_user)
     >>> Location = Model.get('stock.location')
     >>> warehouse_loc, = Location.find([('code', '=', 'WH')])
     >>> PurchaseRequisition = Model.get('purchase.requisition')
@@ -181,7 +167,7 @@ with a quotation not having the minimum price unit::
 
     >>> set_user(0)
     >>> prequest2, = prequest.duplicate()
-    >>> set_user(purchase_user)
+    >>> set_user()
     >>> prequest2.preferred_quotation_line = sorted(
     ...     prequest2.quotation_lines, key=lambda q: q.unit_price)[-1]
     >>> prequest2.preferred_quotation_line.unit_price

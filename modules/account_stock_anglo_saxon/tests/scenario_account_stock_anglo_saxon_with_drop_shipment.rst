@@ -17,7 +17,7 @@ Imports::
     >>> from trytond.modules.account_stock_continental.tests.tools import (
     ...     add_stock_accounts)
     >>> from trytond.modules.company.tests.tools import create_company
-    >>> from trytond.tests.tools import activate_modules, set_user
+    >>> from trytond.tests.tools import activate_modules
 
     >>> today = dt.date.today()
 
@@ -30,47 +30,6 @@ Activate modules::
     ...         'purchase',
     ...         ],
     ...     create_company, create_chart)
-
-Create sale user::
-
-    >>> User = Model.get('res.user')
-    >>> Group = Model.get('res.group')
-    >>> sale_user = User()
-    >>> sale_user.name = 'Sale'
-    >>> sale_user.login = 'sale'
-    >>> sale_group, = Group.find([('name', '=', 'Sales')])
-    >>> sale_user.groups.append(sale_group)
-    >>> sale_user.save()
-
-Create purchase user::
-
-    >>> purchase_user = User()
-    >>> purchase_user.name = 'Purchase'
-    >>> purchase_user.login = 'purchase'
-    >>> purchase_group, = Group.find([('name', '=', 'Purchase')])
-    >>> purchase_user.groups.append(purchase_group)
-    >>> purchase_request_group, = Group.find(
-    ...     [('name', '=', 'Purchase Request')])
-    >>> purchase_user.groups.append(purchase_request_group)
-    >>> purchase_user.save()
-
-Create stock user::
-
-    >>> stock_user = User()
-    >>> stock_user.name = 'Stock'
-    >>> stock_user.login = 'stock'
-    >>> stock_group, = Group.find([('name', '=', 'Stock')])
-    >>> stock_user.groups.append(stock_group)
-    >>> stock_user.save()
-
-Create account user::
-
-    >>> account_user = User()
-    >>> account_user.name = 'Account'
-    >>> account_user.login = 'account'
-    >>> account_group, = Group.find([('name', '=', 'Accounting')])
-    >>> account_user.groups.append(account_group)
-    >>> account_user.save()
 
 Create fiscal year::
 
@@ -147,7 +106,6 @@ Create payment term::
 
 Sale 50 products::
 
-    >>> set_user(sale_user)
     >>> Sale = Model.get('sale.sale')
     >>> sale = Sale()
     >>> sale.party = customer
@@ -162,7 +120,6 @@ Sale 50 products::
 
 Create Purchase from Request::
 
-    >>> set_user(purchase_user)
     >>> Purchase = Model.get('purchase.purchase')
     >>> PurchaseRequest = Model.get('purchase.request')
     >>> purchase_request, = PurchaseRequest.find()
@@ -176,7 +133,6 @@ Create Purchase from Request::
     >>> purchase.click('confirm')
     >>> purchase.state
     'processing'
-    >>> set_user(sale_user)
     >>> sale.reload()
     >>> sale.shipments
     []
@@ -184,12 +140,10 @@ Create Purchase from Request::
 
 Receive 50 products::
 
-    >>> set_user(stock_user)
     >>> shipment.click('ship')
     >>> shipment.click('do')
     >>> shipment.state
     'done'
-    >>> set_user(account_user)
     >>> stock_in.reload()
     >>> stock_in.debit
     Decimal('0.00')
@@ -208,10 +162,8 @@ Receive 50 products::
 
 Open supplier invoice::
 
-    >>> set_user(purchase_user)
     >>> purchase.reload()
     >>> invoice, = purchase.invoices
-    >>> set_user(account_user)
     >>> invoice.invoice_date = today
     >>> invoice.click('post')
     >>> invoice.state
@@ -234,10 +186,8 @@ Open supplier invoice::
 
 Open customer invoice::
 
-    >>> set_user(sale_user)
     >>> sale.reload()
     >>> invoice, = sale.invoices
-    >>> set_user(account_user)
     >>> invoice.click('post')
     >>> invoice.state
     'posted'

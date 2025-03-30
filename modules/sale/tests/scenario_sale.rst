@@ -18,11 +18,12 @@ Activate modules::
 
     >>> config = activate_modules('sale', create_company, create_chart)
 
+    >>> Employee = Model.get('company.employee')
+    >>> Party = Model.get('party.party')
+    >>> User = Model.get('res.user')
+
 Set employee::
 
-    >>> User = Model.get('res.user')
-    >>> Party = Model.get('party.party')
-    >>> Employee = Model.get('company.employee')
     >>> employee_party = Party(name="Employee")
     >>> employee_party.save()
     >>> employee = Employee(party=employee_party)

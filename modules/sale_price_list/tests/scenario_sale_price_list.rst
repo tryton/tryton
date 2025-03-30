@@ -12,32 +12,11 @@ Imports::
     >>> from trytond.modules.account_invoice.tests.tools import (
     ...     create_payment_term, set_fiscalyear_invoice_sequences)
     >>> from trytond.modules.company.tests.tools import create_company
-    >>> from trytond.tests.tools import activate_modules, assertEqual, set_user
+    >>> from trytond.tests.tools import activate_modules, assertEqual
 
 Activate modules::
 
     >>> config = activate_modules('sale_price_list', create_company, create_chart)
-
-Create sale user::
-
-    >>> User = Model.get('res.user')
-    >>> Group = Model.get('res.group')
-    >>> sale_user = User()
-    >>> sale_user.name = 'Sale'
-    >>> sale_user.login = 'sale'
-    >>> sale_group, = Group.find([('name', '=', 'Sales')])
-    >>> sale_user.groups.append(sale_group)
-    >>> sale_user.save()
-
-    >>> sale_admin = User()
-    >>> sale_admin.name = 'Sale Admin'
-    >>> sale_admin.login = 'sale_admin'
-    >>> sale_admin_group, = Group.find([('name', '=', 'Sales Administrator')])
-    >>> sale_admin.groups.append(sale_admin_group)
-    >>> product_admin_group, = Group.find(
-    ...     [('name', '=', 'Product Administration')])
-    >>> sale_admin.groups.append(product_admin_group)
-    >>> sale_admin.save()
 
 Create fiscal year::
 
@@ -117,7 +96,6 @@ Create a price List and assign it to customer::
 
 Use the price list on sale::
 
-    >>> set_user(sale_user)
     >>> Sale = Model.get('sale.sale')
     >>> sale = Sale()
     >>> sale.party = customer
@@ -140,7 +118,6 @@ Use the price list on sale::
 
 Create a sale price List and assign to configuration::
 
-    >>> set_user(sale_admin)
     >>> sale_price_list = PriceList(name='Sale price List')
     >>> sale_price_list_line = sale_price_list.lines.new()
     >>> sale_price_list_line.formula = 'unit_price * 0.5'
@@ -152,6 +129,5 @@ Create a sale price List and assign to configuration::
 
 Use the sale price list on sale::
 
-    >>> set_user(sale_user)
     >>> sale.party = customer_without_price_list
     >>> assertEqual(sale.price_list, sale_price_list)

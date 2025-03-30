@@ -12,46 +12,13 @@ Imports::
     >>> from trytond.modules.account_invoice.tests.tools import (
     ...     create_payment_term, set_fiscalyear_invoice_sequences)
     >>> from trytond.modules.company.tests.tools import create_company
-    >>> from trytond.tests.tools import activate_modules, set_user
+    >>> from trytond.tests.tools import activate_modules
 
 Activate modules::
 
     >>> config = activate_modules(
     ...     ['sale_supply', 'sale', 'purchase'],
     ...     create_company, create_chart)
-
-Create sale user::
-
-    >>> User = Model.get('res.user')
-    >>> Group = Model.get('res.group')
-    >>> admin_user, = User.find([('login', '=', 'admin')])
-    >>> sale_user = User()
-    >>> sale_user.name = 'Sale'
-    >>> sale_user.login = 'sale'
-    >>> sale_group, = Group.find([('name', '=', 'Sales')])
-    >>> sale_user.groups.append(sale_group)
-    >>> sale_user.save()
-
-Create purchase user::
-
-    >>> purchase_user = User()
-    >>> purchase_user.name = 'Purchase'
-    >>> purchase_user.login = 'purchase'
-    >>> purchase_group, = Group.find([('name', '=', 'Purchase')])
-    >>> purchase_user.groups.append(purchase_group)
-    >>> purchase_request_group, = Group.find(
-    ...     [('name', '=', 'Purchase Request')])
-    >>> purchase_user.groups.append(purchase_request_group)
-    >>> purchase_user.save()
-
-Create stock user::
-
-    >>> stock_user = User()
-    >>> stock_user.name = 'Stock'
-    >>> stock_user.login = 'stock'
-    >>> stock_group, = Group.find([('name', '=', 'Stock')])
-    >>> stock_user.groups.append(stock_group)
-    >>> stock_user.save()
 
 Create fiscal year::
 
@@ -106,7 +73,6 @@ Create payment term::
 
 Sale 250 products::
 
-    >>> set_user(sale_user)
     >>> Sale = Model.get('sale.sale')
     >>> sale = Sale()
     >>> sale.party = customer
@@ -128,7 +94,6 @@ Sale 250 products::
 
 Delete Purchase Request::
 
-    >>> set_user(purchase_user)
     >>> PurchaseRequest = Model.get('purchase.request')
     >>> purchase_request, = PurchaseRequest.find()
     >>> purchase_request.quantity
@@ -140,7 +105,6 @@ Delete Purchase Request::
 
 Create Purchase from Request::
 
-    >>> set_user(purchase_user)
     >>> Purchase = Model.get('purchase.purchase')
     >>> purchase_request, = PurchaseRequest.find()
     >>> purchase_request.quantity
@@ -157,7 +121,6 @@ Create Purchase from Request::
     >>> purchase.click('confirm')
     >>> purchase.state
     'processing'
-    >>> set_user(sale_user)
     >>> sale.reload()
     >>> shipment, = sale.shipments
     >>> move, = shipment.outgoing_moves
@@ -169,7 +132,6 @@ Create Purchase from Request::
 
 Receive 100 products::
 
-    >>> set_user(stock_user)
     >>> ShipmentIn = Model.get('stock.shipment.in')
     >>> Move = Model.get('stock.move')
     >>> shipment = ShipmentIn(supplier=supplier)
@@ -180,7 +142,6 @@ Receive 100 products::
     >>> shipment.click('do')
     >>> shipment.state
     'done'
-    >>> set_user(sale_user)
     >>> sale.reload()
     >>> shipment, = sale.shipments
     >>> move, = [x for x in shipment.inventory_moves
@@ -195,7 +156,6 @@ Receive 100 products::
 Switching from not supplying on sale to supplying on sale for product should
 not create a new purchase request::
 
-    >>> set_user(admin_user)
 
     >>> changing_template = ProductTemplate()
     >>> changing_template.name = 'product'
@@ -209,7 +169,6 @@ not create a new purchase request::
     >>> changing_template.save()
     >>> changing_product, = changing_template.products
 
-    >>> set_user(sale_user)
     >>> Sale = Model.get('sale.sale')
     >>> sale = Sale()
     >>> sale.party = customer
@@ -222,7 +181,6 @@ not create a new purchase request::
     >>> sale.state
     'processing'
     >>> shipment, = sale.shipments
-    >>> set_user(stock_user)
     >>> Inventory = Model.get('stock.inventory')
     >>> Location = Model.get('stock.location')
     >>> storage, = Location.find([
@@ -243,12 +201,9 @@ not create a new purchase request::
     >>> shipment.click('pick')
     >>> shipment.click('pack')
 
-    >>> set_user(admin_user)
     >>> changing_template.supply_on_sale = 'always'
     >>> changing_template.save()
 
-    >>> set_user(stock_user)
     >>> shipment.click('do')
-    >>> set_user(purchase_user)
     >>> len(PurchaseRequest.find([('product', '=', changing_product.id)]))
     0

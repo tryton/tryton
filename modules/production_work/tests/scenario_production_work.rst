@@ -17,10 +17,21 @@ Activate modules::
 
     >>> config = activate_modules('production_work', create_company)
 
-    >>> Employee = Model.get('company.employee')
-    >>> Group = Model.get('res.group')
-    >>> Party = Model.get('party.party')
     >>> User = Model.get('res.user')
+    >>> Party = Model.get('party.party')
+    >>> Employee = Model.get('company.employee')
+
+Set employee::
+
+    >>> employee_party = Party(name="Employee")
+    >>> employee_party.save()
+    >>> employee = Employee(party=employee_party)
+    >>> employee.save()
+    >>> user = User(config.user)
+    >>> user.employees.append(employee)
+    >>> user.employee = employee
+    >>> user.save()
+    >>> set_user(user.id)
 
 Create product::
 
@@ -144,24 +155,6 @@ Create an Inventory::
     >>> inventory.click('confirm')
     >>> inventory.state
     'done'
-
-Create production user::
-
-    >>> production_user = User()
-    >>> production_user.name = "Production"
-    >>> production_user.login = 'production'
-    >>> production_user.groups.extend(Group.find([
-    ...             ('name', '=', 'Production'),
-    ...             ]))
-    >>> employee_party = Party(name="Employee")
-    >>> employee_party.save()
-    >>> employee = Employee(party=employee_party)
-    >>> employee.save()
-    >>> production_user.employees.append(employee)
-    >>> production_user.employee = employee
-    >>> production_user.save()
-
-    >>> set_user(production_user)
 
 Make a production::
 

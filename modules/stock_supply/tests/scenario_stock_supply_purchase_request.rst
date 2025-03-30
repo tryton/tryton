@@ -11,7 +11,7 @@ Imports::
     >>> from trytond.modules.account.tests.tools import create_chart, get_accounts
     >>> from trytond.modules.company.tests.tools import create_company
     >>> from trytond.modules.currency.tests.tools import get_currency
-    >>> from trytond.tests.tools import activate_modules, assertEqual, set_user
+    >>> from trytond.tests.tools import activate_modules, assertEqual
 
     >>> today = dt.date.today()
 
@@ -39,50 +39,6 @@ Configure supply period::
     >>> purchase_config.supply_period = dt.timedelta(days=30)
     >>> purchase_config.save()
 
-Create stock admin user::
-
-    >>> User = Model.get('res.user')
-    >>> Group = Model.get('res.group')
-    >>> stock_admin_user = User()
-    >>> stock_admin_user.name = 'Stock Admin'
-    >>> stock_admin_user.login = 'stock_admin'
-    >>> stock_admin_group, = Group.find([('name', '=', 'Stock Administration')])
-    >>> stock_admin_user.groups.append(stock_admin_group)
-    >>> stock_admin_user.save()
-
-Create stock user::
-
-    >>> stock_user = User()
-    >>> stock_user.name = 'Stock'
-    >>> stock_user.login = 'stock'
-    >>> stock_group, = Group.find([('name', '=', 'Stock')])
-    >>> stock_user.groups.append(stock_group)
-    >>> stock_user.save()
-
-Create product user::
-
-    >>> product_admin_user = User()
-    >>> product_admin_user.name = 'Product'
-    >>> product_admin_user.login = 'product'
-    >>> product_admin_group, = Group.find([
-    ...         ('name', '=', 'Account Product Administration'),
-    ...         ])
-    >>> product_admin_user.groups.append(product_admin_group)
-    >>> product_admin_user.save()
-
-Create purchase user::
-
-    >>> purchase_user = User()
-    >>> purchase_user.name = 'Purchase'
-    >>> purchase_user.login = 'purchase'
-    >>> purchase_groups = Group.find(['OR',
-    ...     ('name', '=', "Purchase"),
-    ...     ('name', '=', "Purchase Request"),
-    ...     ])
-    >>> purchase_user.groups.extend(purchase_groups)
-    >>> purchase_user.save()
-
-
 Create account category::
 
     >>> ProductCategory = Model.get('product.category')
@@ -93,7 +49,6 @@ Create account category::
 
 Create product::
 
-    >>> set_user(product_admin_user)
     >>> ProductUom = Model.get('product.uom')
     >>> ProductTemplate = Model.get('product.template')
     >>> unit, = ProductUom.find([('name', '=', 'Unit')])
@@ -110,7 +65,6 @@ Create product::
 
 Define a product supplier::
 
-    >>> set_user(purchase_user)
     >>> ProductSupplier = Model.get('purchase.product_supplier')
     >>> product_supplier = ProductSupplier(template=template)
     >>> product_supplier.party = supplier
@@ -119,7 +73,6 @@ Define a product supplier::
 
 Get stock locations::
 
-    >>> set_user(stock_admin_user)
     >>> Location = Model.get('stock.location')
     >>> warehouse_loc, = Location.find([('code', '=', 'WH')])
     >>> supplier_loc, = Location.find([('code', '=', 'SUP')])
@@ -129,7 +82,6 @@ Get stock locations::
 
 Create needs for missing product::
 
-    >>> set_user(stock_user)
     >>> ShipmentOut = Model.get('stock.shipment.out')
     >>> shipment_out = ShipmentOut()
     >>> shipment_out.planned_date = today
@@ -153,19 +105,16 @@ Create needs for missing product::
 There is no purchase request::
 
     >>> PurchaseRequest = Model.get('purchase.request')
-    >>> set_user(purchase_user)
     >>> PurchaseRequest.find([])
     []
 
 Create the purchase request::
 
-    >>> set_user(stock_admin_user)
     >>> create_pr = Wizard('stock.supply')
     >>> create_pr.execute('create_')
 
 There is now a draft purchase request::
 
-    >>> set_user(purchase_user)
     >>> pr, = PurchaseRequest.find([('state', '=', 'draft')])
     >>> assertEqual(pr.product, product)
     >>> pr.quantity
@@ -173,7 +122,6 @@ There is now a draft purchase request::
 
 Create an order point with negative minimal quantity::
 
-    >>> set_user(stock_admin_user)
     >>> OrderPoint = Model.get('stock.order_point')
     >>> order_point = OrderPoint()
     >>> order_point.type = 'purchase'
@@ -190,13 +138,11 @@ Create purchase request::
 
 There is no more purchase request::
 
-    >>> set_user(purchase_user)
     >>> PurchaseRequest.find([])
     []
 
 Set a positive minimal quantity on order point create purchase request::
 
-    >>> set_user(stock_admin_user)
     >>> order_point.min_quantity = 5
     >>> order_point.save()
     >>> create_pr = Wizard('stock.supply')
@@ -204,7 +150,6 @@ Set a positive minimal quantity on order point create purchase request::
 
 There is now a draft purchase request::
 
-    >>> set_user(purchase_user)
     >>> pr, = PurchaseRequest.find([('state', '=', 'draft')])
     >>> assertEqual(pr.product, product)
     >>> pr.quantity
@@ -212,7 +157,6 @@ There is now a draft purchase request::
 
 Using zero as minimal quantity on order point also creates purchase request::
 
-    >>> set_user(stock_admin_user)
     >>> order_point.min_quantity = 0
     >>> order_point.save()
     >>> create_pr = Wizard('stock.supply')
@@ -220,7 +164,6 @@ Using zero as minimal quantity on order point also creates purchase request::
 
 There is now a draft purchase request::
 
-    >>> set_user(purchase_user)
     >>> pr, = PurchaseRequest.find([('state', '=', 'draft')])
     >>> assertEqual(pr.product, product)
     >>> pr.quantity
@@ -232,10 +175,8 @@ Re-run with purchased request::
     >>> pr.state
     'purchased'
 
-    >>> set_user(stock_admin_user)
     >>> create_pr = Wizard('stock.supply')
     >>> create_pr.execute('create_')
 
-    >>> set_user(purchase_user)
     >>> len(PurchaseRequest.find([('state', '=', 'draft')]))
     0

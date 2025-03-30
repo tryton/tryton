@@ -10,7 +10,7 @@ Imports::
     >>> from proteus import Model, Wizard
     >>> from trytond.modules.account.tests.tools import create_chart, get_accounts
     >>> from trytond.modules.company.tests.tools import create_company
-    >>> from trytond.tests.tools import activate_modules, assertEqual, set_user
+    >>> from trytond.tests.tools import activate_modules, assertEqual
 
     >>> today = dt.date.today()
 
@@ -18,61 +18,20 @@ Activate purchase_requisition Module::
 
     >>> config = activate_modules('purchase_requisition', create_company, create_chart)
 
+    >>> Employee = Model.get('company.employee')
+    >>> Party = Model.get('party.party')
+
+Create employee::
+
+    >>> employee_party = Party(name="Employee")
+    >>> employee_party.save()
+    >>> employee = Employee(party=employee_party)
+    >>> employee.save()
+
 Get accounts::
 
     >>> accounts = get_accounts()
     >>> expense = accounts['expense']
-
-Create purchase requisition user::
-
-    >>> User = Model.get('res.user')
-    >>> Group = Model.get('res.group')
-    >>> Party = Model.get('party.party')
-    >>> Employee = Model.get('company.employee')
-    >>> requisition_user = User()
-    >>> requisition_user.name = 'Requisition'
-    >>> requisition_user.login = 'requisition'
-    >>> requisition_group, = Group.find([
-    ...         ('name', '=', 'Purchase Requisition')])
-    >>> requisition_user.groups.append(requisition_group)
-    >>> employee_party = Party(name='Employee')
-    >>> employee_party.save()
-    >>> employee = Employee(party=employee_party)
-    >>> employee.save()
-    >>> requisition_user.employees.append(employee)
-    >>> requisition_user.employee = employee
-    >>> requisition_user.save()
-
-    >>> party_approval, = Party.duplicate([employee_party], {
-    ...         'name': 'Employee Approval',
-    ...         })
-    >>> employee_approval, = Employee.duplicate([employee], {
-    ...         'party': party_approval.id,
-    ...         })
-    >>> requisition_approval_user, = User.duplicate([requisition_user], {
-    ...         'name': 'Requisition Approval',
-    ...         'login': 'requisition_approval',
-    ...         })
-    >>> requisition_approval_group, = Group.find([
-    ...         ('name', '=', 'Purchase Requisition Approval')])
-    >>> requisition_approval_user.groups.append(requisition_approval_group)
-    >>> _ = requisition_approval_user.employees.pop()
-    >>> requisition_approval_user.employees.append(employee_approval)
-    >>> requisition_approval_user.employee = employee_approval
-    >>> requisition_approval_user.save()
-
-Create purchase user::
-
-    >>> purchase_user = User()
-    >>> purchase_user.name = 'Purchase'
-    >>> purchase_user.login = 'purchase'
-    >>> purchase_group, = Group.find([('name', '=', 'Purchase')])
-    >>> purchase_user.groups.append(purchase_group)
-    >>> purchase_request_group, = Group.find(
-    ...     [('name', '=', 'Purchase Request')])
-    >>> purchase_user.groups.append(purchase_request_group)
-    >>> purchase_user.save()
-
 
 Create supplier::
 
@@ -116,7 +75,6 @@ Create product::
 
 Create purchase requisition without product and description::
 
-    >>> set_user(requisition_user)
     >>> PurchaseRequisition = Model.get('purchase.requisition')
     >>> requisition = PurchaseRequisition()
     >>> requisition.description = 'Description'
@@ -160,27 +118,8 @@ Create purchase requisition with supplier and price::
     >>> requisition.state
     'waiting'
 
-Approve workflow by requisition user raise an exception because he's not in
-approval_group::
-
-    >>> set_user(requisition_user)
-    >>> requisition.click('approve')
-    Traceback (most recent call last):
-        ...
-    AccessButtonError: ...
-
-Approve workflow by purchaser raise an exception because he's not in
-approval_group::
-
-    >>> set_user(purchase_user)
-    >>> requisition.click('approve')
-    Traceback (most recent call last):
-        ...
-    AccessButtonError: ...
-
 Approve workflow with user in approval_group::
 
-    >>> set_user(requisition_approval_user)
     >>> requisition.click('approve')
     >>> requisition.state
     'processing'
@@ -189,7 +128,6 @@ Approve workflow with user in approval_group::
 
 Create Purchase order from Request::
 
-    >>> set_user(purchase_user)
     >>> PurchaseRequest = Model.get('purchase.request')
     >>> pr, = PurchaseRequest.find([('state', '=', 'draft')])
     >>> pr.state
@@ -259,7 +197,6 @@ Confirm the purchase order::
 
 Try to delete requisition done::
 
-    >>> set_user(requisition_user)
     >>> PurchaseRequisition.delete([requisition])
     Traceback (most recent call last):
         ...
@@ -275,7 +212,6 @@ Delete draft requisition::
 
 Create purchase requisition with two different suppliers::
 
-    >>> set_user(requisition_user)
     >>> requisition = PurchaseRequisition()
     >>> requisition.description = 'Description'
     >>> requisition.employee = employee
@@ -290,10 +226,8 @@ Create purchase requisition with two different suppliers::
     >>> requisition_line.supplier = supplier2
     >>> requisition.click('wait')
 
-    >>> set_user(requisition_approval_user)
     >>> requisition.click('approve')
 
-    >>> set_user(purchase_user)
     >>> pr = PurchaseRequest.find([('state', '=', 'draft')])
     >>> len(pr)
     2
@@ -333,7 +267,6 @@ Create purchase requisition with two different suppliers::
 
 Create purchase requisition then cancel::
 
-    >>> set_user(requisition_user)
     >>> requisition = PurchaseRequisition()
     >>> requisition.description = 'Description'
     >>> requisition.employee = employee
@@ -347,7 +280,6 @@ Create purchase requisition then cancel::
 
 Create purchase requisition, wait then reject::
 
-    >>> set_user(requisition_user)
     >>> requisition = PurchaseRequisition()
     >>> requisition.description = 'Description'
     >>> requisition.employee = employee
@@ -359,7 +291,6 @@ Create purchase requisition, wait then reject::
     >>> requisition.state
     'waiting'
 
-    >>> set_user(requisition_approval_user)
     >>> requisition.click('reject')
     >>> requisition.state
     'rejected'

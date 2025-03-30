@@ -12,23 +12,12 @@ Imports::
     >>> from trytond.modules.account_invoice.tests.tools import (
     ...     create_payment_term, set_fiscalyear_invoice_sequences)
     >>> from trytond.modules.company.tests.tools import create_company
-    >>> from trytond.tests.tools import activate_modules, set_user
+    >>> from trytond.tests.tools import activate_modules
 
 Activate modules::
 
     >>> current_config = activate_modules(
     ...     'purchase_invoice_line_standalone', create_company, create_chart)
-
-Create an accountant user::
-
-    >>> User = Model.get('res.user')
-    >>> Group = Model.get('res.group')
-    >>> accountant = User()
-    >>> accountant.name = 'Accountant'
-    >>> accountant.login = 'accountant'
-    >>> account_group, = Group.find([('name', '=', 'Accounting')])
-    >>> accountant.groups.append(account_group)
-    >>> accountant.save()
 
 Create fiscal year::
 
@@ -139,7 +128,6 @@ Create a supplier invoice::
 
 Create a supplier invoice with an accountant::
 
-    >>> set_user(accountant)
     >>> Invoice = Model.get('account.invoice')
     >>> Partner = Model.get('party.party')
     >>> supplier, = Partner.find([('name', '=', 'Supplier')])

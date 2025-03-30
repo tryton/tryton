@@ -13,7 +13,7 @@ Imports::
     >>> from trytond.modules.account_invoice.tests.tools import (
     ...     create_payment_term, set_fiscalyear_invoice_sequences)
     >>> from trytond.modules.company.tests.tools import create_company
-    >>> from trytond.tests.tools import activate_modules, assertEqual, set_user
+    >>> from trytond.tests.tools import activate_modules, assertEqual
 
     >>> today = dt.date.today()
 
@@ -25,55 +25,6 @@ Activate modules::
     ...         'purchase',
     ...         ],
     ...     create_company, create_chart)
-
-Create sale user::
-
-    >>> User = Model.get('res.user')
-    >>> Group = Model.get('res.group')
-    >>> sale_user = User()
-    >>> sale_user.name = 'Sale'
-    >>> sale_user.login = 'sale'
-    >>> sale_group, = Group.find([('name', '=', 'Sales')])
-    >>> sale_user.groups.append(sale_group)
-    >>> sale_user.save()
-
-Create purchase user::
-
-    >>> purchase_user = User()
-    >>> purchase_user.name = 'Purchase'
-    >>> purchase_user.login = 'purchase'
-    >>> purchase_group, = Group.find([('name', '=', 'Purchase')])
-    >>> purchase_user.groups.append(purchase_group)
-    >>> purchase_request_group, = Group.find(
-    ...     [('name', '=', 'Purchase Request')])
-    >>> purchase_user.groups.append(purchase_request_group)
-    >>> purchase_user.save()
-
-Create stock user::
-
-    >>> stock_user = User()
-    >>> stock_user.name = 'Stock'
-    >>> stock_user.login = 'stock'
-    >>> stock_group, = Group.find([('name', '=', 'Stock')])
-    >>> stock_force_group, = Group.find([
-    ...     ('name', '=', 'Stock Force Assignment'),
-    ...     ])
-    >>> product_admin_group, = Group.find([
-    ...     ('name', '=', "Product Administration"),
-    ...     ])
-    >>> stock_user.groups.append(stock_group)
-    >>> stock_user.groups.append(stock_force_group)
-    >>> stock_user.groups.append(product_admin_group)
-    >>> stock_user.save()
-
-Create account user::
-
-    >>> account_user = User()
-    >>> account_user.name = "Account"
-    >>> account_user.login = 'account'
-    >>> account_group, = Group.find([('name', '=', "Accounting")])
-    >>> account_user.groups.append(account_group)
-    >>> account_user.save()
 
 Create fiscal year::
 
@@ -138,7 +89,6 @@ Create payment term::
 
 Sale 250 products::
 
-    >>> set_user(sale_user)
     >>> Sale = Model.get('sale.sale')
     >>> sale = Sale()
     >>> sale.party = customer
@@ -157,7 +107,6 @@ Sale 250 products::
 
 Create Purchase from Request::
 
-    >>> set_user(purchase_user)
     >>> Purchase = Model.get('purchase.purchase')
     >>> PurchaseRequest = Model.get('purchase.request')
     >>> purchase_request, = PurchaseRequest.find()
@@ -176,7 +125,6 @@ Create Purchase from Request::
     >>> purchase.state
     'processing'
 
-    >>> set_user(sale_user)
     >>> sale.reload()
     >>> sale.shipments
     []
@@ -184,7 +132,6 @@ Create Purchase from Request::
 
 Receiving only 100 products::
 
-    >>> set_user(stock_user)
     >>> move, = shipment.supplier_moves
     >>> move.quantity = 100
     >>> move.unit_price
@@ -196,7 +143,6 @@ Receiving only 100 products::
     >>> move.unit_price
     Decimal('10.0000')
     >>> move.cost_price
-    >>> set_user(sale_user)
     >>> sale.reload()
     >>> sale.shipments
     []
@@ -205,14 +151,12 @@ Receiving only 100 products::
     >>> shipment, = [s for s in sale.drop_shipments
     ...     if s.state == 'shipped']
 
-    >>> set_user(stock_user)
     >>> shipment.click('do')
     >>> shipment.state
     'done'
     >>> move, = shipment.customer_moves
     >>> move.cost_price
     Decimal('3.0000')
-    >>> set_user(sale_user)
     >>> sale.reload()
     >>> sale.shipments
     []
@@ -221,7 +165,6 @@ Receiving only 100 products::
 
 The purchase is now waiting for his new drop shipment::
 
-    >>> set_user(purchase_user)
     >>> purchase.reload()
     >>> purchase.shipment_state
     'partially shipped'
@@ -239,10 +182,8 @@ The purchase is now waiting for his new drop shipment::
 Let's cancel the shipment and handle the issue on the purchase.
 As a consequence the sale order is now in exception::
 
-    >>> set_user(stock_user)
     >>> shipment.click('cancel')
 
-    >>> set_user(purchase_user)
     >>> purchase.reload()
     >>> purchase.shipment_state
     'exception'
@@ -254,21 +195,18 @@ As a consequence the sale order is now in exception::
     >>> purchase.shipment_state
     'received'
 
-    >>> set_user(sale_user)
     >>> sale.reload()
     >>> sale.shipment_state
     'exception'
 
 Receive purchase invoice at different price::
 
-    >>> set_user(account_user)
     >>> invoice, = purchase.invoices
     >>> invoice_line, = invoice.lines
     >>> invoice_line.unit_price = Decimal('4.0000')
     >>> invoice.invoice_date = today
     >>> invoice.click('post')
 
-    >>> set_user(stock_user)
 
     >>> recompute = Wizard('product.recompute_cost_price', [product])
     >>> recompute.execute('recompute')
@@ -284,7 +222,6 @@ Receive purchase invoice at different price::
 
 Cancelling the workflow on the purchase step::
 
-    >>> set_user(sale_user)
     >>> sale = Sale()
     >>> sale.party = customer
     >>> sale.payment_term = payment_term
@@ -301,7 +238,6 @@ Cancelling the workflow on the purchase step::
     >>> sale.drop_shipments
     []
 
-    >>> set_user(purchase_user)
     >>> purchase_request, = PurchaseRequest.find([('purchase_line', '=', None)])
     >>> purchase_request.quantity
     125.0
@@ -341,7 +277,6 @@ the sale::
 
 The sale is then in exception::
 
-    >>> set_user(sale_user)
     >>> sale.reload()
     >>> sale.shipment_state
     'exception'
@@ -358,13 +293,11 @@ from stock::
 
     >>> shipment, = sale.shipments
 
-    >>> set_user(stock_user)
     >>> shipment.click('assign_force')
     >>> shipment.click('pick')
     >>> shipment.click('pack')
     >>> shipment.click('do')
 
-    >>> set_user(sale_user)
     >>> sale.reload()
     >>> sale.shipment_state
     'sent'

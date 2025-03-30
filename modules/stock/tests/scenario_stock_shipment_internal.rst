@@ -20,6 +20,22 @@ Activate modules::
 
     >>> config = activate_modules('stock', create_company)
 
+    >>> Employee = Model.get('company.employee')
+    >>> Party = Model.get('party.party')
+    >>> User = Model.get('res.user')
+
+Set employee::
+
+    >>> employee_party = Party(name="Employee")
+    >>> employee_party.save()
+    >>> employee = Employee(party=employee_party)
+    >>> employee.save()
+    >>> user = User(config.user)
+    >>> user.employees.append(employee)
+    >>> user.employee = employee
+    >>> user.save()
+    >>> set_user(user.id)
+
 Create product::
 
     >>> ProductUom = Model.get('product.uom')
@@ -43,28 +59,8 @@ Get stock locations::
     ...     name="Internal", type='storage', parent=storage_loc.parent)
     >>> internal_loc.save()
 
-Create stock user::
-
-    >>> User = Model.get('res.user')
-    >>> Group = Model.get('res.group')
-    >>> Party = Model.get('party.party')
-    >>> Employee = Model.get('company.employee')
-    >>> stock_user = User()
-    >>> stock_user.name = 'Stock'
-    >>> stock_user.login = 'stock'
-    >>> stock_group, = Group.find([('name', '=', 'Stock')])
-    >>> stock_user.groups.append(stock_group)
-    >>> employee_party = Party(name="Employee")
-    >>> employee_party.save()
-    >>> employee = Employee(party=employee_party)
-    >>> employee.save()
-    >>> stock_user.employees.append(employee)
-    >>> stock_user.employee = employee
-    >>> stock_user.save()
-
 Create Internal Shipment::
 
-    >>> set_user(stock_user)
     >>> Shipment = Model.get('stock.shipment.internal')
     >>> StockMove = Model.get('stock.move')
     >>> shipment = Shipment()
@@ -136,7 +132,6 @@ Reschedule shipment::
 
     >>> shipment_copy.planned_date = yesterday
     >>> shipment_copy.click('wait')
-    >>> set_user(1)
     >>> Cron = Model.get('ir.cron')
     >>> cron = Cron(method='stock.shipment.internal|reschedule')
     >>> cron.interval_number = 1

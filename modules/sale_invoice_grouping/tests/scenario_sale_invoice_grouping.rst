@@ -12,32 +12,12 @@ Imports::
     >>> from trytond.modules.account_invoice.tests.tools import (
     ...     create_payment_term, set_fiscalyear_invoice_sequences)
     >>> from trytond.modules.company.tests.tools import create_company
-    >>> from trytond.tests.tools import activate_modules, set_user
+    >>> from trytond.tests.tools import activate_modules
 
 Activate modules::
 
     >>> config = activate_modules(
     ...     'sale_invoice_grouping', create_company, create_chart)
-
-Create sale user::
-
-    >>> User = Model.get('res.user')
-    >>> Group = Model.get('res.group')
-    >>> sale_user = User()
-    >>> sale_user.name = 'Sale'
-    >>> sale_user.login = 'sale'
-    >>> sale_group, = Group.find([('name', '=', 'Sales')])
-    >>> sale_user.groups.append(sale_group)
-    >>> sale_user.save()
-
-Create account user::
-
-    >>> account_user = User()
-    >>> account_user.name = 'Account'
-    >>> account_user.login = 'account'
-    >>> account_group, = Group.find([('name', '=', 'Accounting')])
-    >>> account_user.groups.append(account_group)
-    >>> account_user.save()
 
 Create fiscal year::
 
@@ -91,7 +71,6 @@ Create payment term::
 
 Sale some products::
 
-    >>> set_user(sale_user)
     >>> Sale = Model.get('sale.sale')
     >>> sale = Sale()
     >>> sale.party = customer
@@ -115,7 +94,6 @@ Make another sale::
 
 Check the invoices::
 
-    >>> set_user(account_user)
     >>> Invoice = Model.get('account.invoice')
     >>> invoices = Invoice.find([('party', '=', customer.id)])
     >>> len(invoices)
@@ -129,7 +107,6 @@ Check the invoices::
 
 Now we'll use the same scenario with the grouped customer::
 
-    >>> set_user(sale_user)
     >>> sale = Sale()
     >>> sale.party = customer_grouped
     >>> sale.payment_term = payment_term
@@ -158,7 +135,6 @@ Make another sale::
 
 Check the invoices::
 
-    >>> set_user(account_user)
     >>> invoices = Invoice.find([
     ...     ('party', '=', customer_grouped.id),
     ...     ('state', '=', 'draft'),
@@ -185,7 +161,6 @@ Create a manual invoice::
 
 Check that a new sale won't be grouped with the manual invoice::
 
-    >>> set_user(sale_user)
     >>> sale = Sale()
     >>> sale.party = customer_grouped
     >>> sale.payment_term = payment_term
@@ -200,7 +175,6 @@ Check that a new sale won't be grouped with the manual invoice::
 
 Check the invoices::
 
-    >>> set_user(account_user)
     >>> invoices = Invoice.find([
     ...     ('party', '=', customer_grouped.id),
     ...     ('state', '=', 'draft'),

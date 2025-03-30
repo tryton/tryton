@@ -33,50 +33,6 @@ Create parties::
     >>> supplier = Party(name='Supplier')
     >>> supplier.save()
 
-Create stock admin user::
-
-    >>> User = Model.get('res.user')
-    >>> Group = Model.get('res.group')
-    >>> stock_admin_user = User()
-    >>> stock_admin_user.name = 'Stock Admin'
-    >>> stock_admin_user.login = 'stock_admin'
-    >>> stock_admin_group, = Group.find([('name', '=', 'Stock Administration')])
-    >>> stock_admin_user.groups.append(stock_admin_group)
-    >>> stock_admin_user.save()
-
-Create stock user::
-
-    >>> stock_user = User()
-    >>> stock_user.name = 'Stock'
-    >>> stock_user.login = 'stock'
-    >>> stock_group, = Group.find([('name', '=', 'Stock')])
-    >>> stock_group_admin, = Group.find([('name', '=', 'Stock Administration')])
-    >>> stock_user.groups.extend([stock_group, stock_group_admin])
-    >>> stock_user.save()
-
-Create product user::
-
-    >>> product_admin_user = User()
-    >>> product_admin_user.name = 'Product'
-    >>> product_admin_user.login = 'product'
-    >>> product_admin_group, = Group.find([
-    ...         ('name', '=', "Account Product Administration")
-    ...         ])
-    >>> product_admin_user.groups.append(product_admin_group)
-    >>> product_admin_user.save()
-
-Create purchase user::
-
-    >>> purchase_user = User()
-    >>> purchase_user.name = 'Purchase'
-    >>> purchase_user.login = 'purchase'
-    >>> purchase_groups = Group.find(['OR',
-    ...     ('name', '=', "Purchase"),
-    ...     ('name', '=', "Purchase Request"),
-    ...     ])
-    >>> purchase_user.groups.extend(purchase_groups)
-    >>> purchase_user.save()
-
 Create account category::
 
     >>> ProductCategory = Model.get('product.category')
@@ -87,7 +43,6 @@ Create account category::
 
 Create product::
 
-    >>> set_user(product_admin_user)
     >>> ProductUom = Model.get('product.uom')
     >>> ProductTemplate = Model.get('product.template')
     >>> unit, = ProductUom.find([('name', '=', 'Unit')])
@@ -106,7 +61,6 @@ Create product::
 
 Get stock locations::
 
-    >>> set_user(stock_admin_user)
     >>> Location = Model.get('stock.location')
     >>> warehouse_loc, = Location.find([('code', '=', 'WH')])
     >>> supplier_loc, = Location.find([('code', '=', 'SUP')])
@@ -116,7 +70,6 @@ Get stock locations::
 
 Create a need for missing product::
 
-    >>> set_user(stock_user)
     >>> ShipmentOut = Model.get('stock.shipment.out')
     >>> shipment_out = ShipmentOut()
     >>> shipment_out.planned_date = today
@@ -136,20 +89,17 @@ Create a need for missing product::
 
 There is no purchase request::
 
-    >>> set_user(purchase_user)
     >>> PurchaseRequest = Model.get('purchase.request')
     >>> PurchaseRequest.find([])
     []
 
 Create the purchase request::
 
-    >>> set_user(stock_user)
     >>> create_pr = Wizard('stock.supply')
     >>> create_pr.execute('create_')
 
 There is now a draft purchase request::
 
-    >>> set_user(purchase_user)
     >>> pr, = PurchaseRequest.find([('state', '=', 'draft')])
     >>> assertEqual(pr.product, product)
     >>> pr.quantity
@@ -199,7 +149,6 @@ Handle again the exception::
 
 Re-create the purchase request::
 
-    >>> set_user(stock_user)
     >>> create_pr = Wizard('stock.supply')
     >>> create_pr.execute('create_')
 
@@ -214,11 +163,11 @@ Create a second purchase request manually::
     ...             'warehouse': warehouse_loc.id,
     ...             'origin': 'stock.order_point,-1',
     ...             }], ctx)
+    >>> set_user()
     >>> pr = PurchaseRequest(pr_id)
 
 There is now 2 draft purchase requests::
 
-    >>> set_user(purchase_user)
     >>> prs = PurchaseRequest.find([('state', '=', 'draft')])
     >>> len(prs)
     2
@@ -248,6 +197,7 @@ Create a purchase request without product::
     ...             'quantity': 1,
     ...             'origin': 'stock.order_point,-1',
     ...             }], ctx)
+    >>> set_user()
     >>> pr = PurchaseRequest(pr_id)
     >>> pr.save()
 

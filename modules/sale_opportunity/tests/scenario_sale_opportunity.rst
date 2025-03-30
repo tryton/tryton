@@ -11,13 +11,22 @@ Imports::
     ...     create_chart, create_tax, get_accounts)
     >>> from trytond.modules.account_invoice.tests.tools import create_payment_term
     >>> from trytond.modules.company.tests.tools import create_company
-    >>> from trytond.tests.tools import activate_modules, assertEqual, set_user
+    >>> from trytond.tests.tools import activate_modules, assertEqual
 
 Activate modules::
 
     >>> config = activate_modules('sale_opportunity', create_company, create_chart)
 
     >>> Sale = Model.get('sale.sale')
+    >>> Employee = Model.get('company.employee')
+    >>> Party = Model.get('party.party')
+
+Create employee::
+
+    >>> employee_party = Party(name="Employee")
+    >>> employee_party.save()
+    >>> employee = Employee(party=employee_party)
+    >>> employee.save()
 
 Get accounts::
 
@@ -28,37 +37,6 @@ Create tax::
 
     >>> tax = create_tax(Decimal('.10'))
     >>> tax.save()
-
-Create sale opportunity user::
-
-    >>> User = Model.get('res.user')
-    >>> Group = Model.get('res.group')
-    >>> sale_opportunity_user = User()
-    >>> sale_opportunity_user.name = 'Sale Opportunity'
-    >>> sale_opportunity_user.login = 'sale_opportunity'
-    >>> sale_opportunity_group, = Group.find(
-    ...     [('name', '=', 'Sale Opportunity')])
-    >>> sale_opportunity_user.groups.append(sale_opportunity_group)
-
-    >>> Employee = Model.get('company.employee')
-    >>> Party = Model.get('party.party')
-    >>> employee_party = Party(name='Employee')
-    >>> employee_party.save()
-    >>> employee = Employee(party=employee_party)
-    >>> employee.save()
-    >>> sale_opportunity_user.employees.append(employee)
-    >>> sale_opportunity_user.employee = employee
-
-    >>> sale_opportunity_user.save()
-
-Create sale user::
-
-    >>> sale_user = User()
-    >>> sale_user.name = 'Sale'
-    >>> sale_user.login = 'sale'
-    >>> sale_group, = Group.find([('name', '=', 'Sales')])
-    >>> sale_user.groups.append(sale_group)
-    >>> sale_user.save()
 
 Create party::
 
@@ -98,7 +76,6 @@ Create payment term::
 
 Create an lead::
 
-    >>> set_user(sale_opportunity_user)
     >>> Opportunity = Model.get('sale.opportunity')
     >>> opportunity = Opportunity()
     >>> opportunity.description = 'Opportunity'
@@ -126,7 +103,6 @@ Add a line::
 
 Convert to sale::
 
-    >>> set_user(sale_user)
     >>> sale, = opportunity.click('convert')
     >>> opportunity.state
     'converted'
@@ -147,7 +123,6 @@ Quote different quantity::
 
 Check opportunity amount updated::
 
-    >>> set_user(sale_opportunity_user)
     >>> opportunity.reload()
     >>> opportunity.amount
     Decimal('90.00')
@@ -156,7 +131,6 @@ Check opportunity amount updated::
 
 Add a second quotation::
 
-    >>> set_user(sale_user)
     >>> second_sale = Sale()
     >>> second_sale.origin = opportunity
     >>> second_sale.party = customer
@@ -168,7 +142,6 @@ Add a second quotation::
 
 Check opportunity amount updated::
 
-    >>> set_user(sale_opportunity_user)
     >>> opportunity.reload()
     >>> opportunity.amount
     Decimal('100.00')
@@ -177,14 +150,12 @@ Check opportunity amount updated::
 
 Cancel second quotation::
 
-    >>> set_user(sale_user)
     >>> second_sale.click('cancel')
     >>> second_sale.state
     'cancelled'
 
 Check opportunity amount updated::
 
-    >>> set_user(sale_opportunity_user)
     >>> opportunity.reload()
     >>> opportunity.amount
     Decimal('90.00')
@@ -193,16 +164,13 @@ Check opportunity amount updated::
 
 Won opportunity::
 
-    >>> set_user(sale_user)
     >>> sale.click('confirm')
-    >>> set_user(sale_opportunity_user)
     >>> opportunity.reload()
     >>> opportunity.state
     'won'
 
 Check opportunity state updated::
 
-    >>> set_user(sale_opportunity_user)
     >>> opportunity.reload()
     >>> opportunity.state
     'won'

@@ -11,7 +11,7 @@ Imports::
     >>> from trytond.modules.account.tests.tools import create_chart, get_accounts
     >>> from trytond.modules.account_invoice.tests.tools import create_payment_term
     >>> from trytond.modules.company.tests.tools import create_company
-    >>> from trytond.tests.tools import activate_modules, set_user
+    >>> from trytond.tests.tools import activate_modules
 
     >>> today = dt.date.today()
     >>> yesterday = today - dt.timedelta(days=1)
@@ -19,30 +19,6 @@ Imports::
 Activate modules::
 
     >>> config = activate_modules('project_invoice', create_company, create_chart)
-
-Create project user::
-
-    >>> User = Model.get('res.user')
-    >>> Group = Model.get('res.group')
-    >>> project_user = User()
-    >>> project_user.name = 'Project'
-    >>> project_user.login = 'project'
-    >>> project_group, = Group.find([('name', '=', 'Project Administration')])
-    >>> timesheet_group, = Group.find([('name', '=', 'Timesheet Administration')])
-    >>> project_user.groups.extend([project_group, timesheet_group])
-    >>> project_user.save()
-
-Create project invoice user::
-
-    >>> project_invoice_user = User()
-    >>> project_invoice_user.name = 'Project Invoice'
-    >>> project_invoice_user.login = 'project_invoice'
-    >>> project_invoice_group, = Group.find([('name', '=', 'Project Invoice')])
-    >>> project_group, = Group.find([('name', '=', 'Project Administration')])
-    >>> invoice_group, = Group.find([('name', '=', 'Accounting')])
-    >>> project_invoice_user.groups.extend(
-    ...     [project_invoice_group, project_group, invoice_group])
-    >>> project_invoice_user.save()
 
 Get accounts::
 
@@ -95,7 +71,6 @@ Create product::
 
 Create a Project::
 
-    >>> set_user(project_user)
     >>> ProjectWork = Model.get('project.work')
     >>> project = ProjectWork()
     >>> project.name = 'Test timesheet'
@@ -146,10 +121,8 @@ Check project amounts::
 
 Invoice project up to yesterday::
 
-    >>> set_user(project_user)
     >>> project.project_invoice_timesheet_up_to = yesterday
     >>> project.save()
-    >>> set_user(project_invoice_user)
     >>> project.click('invoice')
     >>> project.amount_to_invoice
     Decimal('0.00')
@@ -161,7 +134,6 @@ Invoice project up to yesterday::
     >>> project.amount_to_invoice
     Decimal('40.00')
 
-    >>> set_user(project_invoice_user)
     >>> Invoice = Model.get('account.invoice')
     >>> invoice, = Invoice.find([])
     >>> invoice.total_amount
@@ -169,24 +141,20 @@ Invoice project up to yesterday::
 
 Invoice all project::
 
-    >>> set_user(project_user)
     >>> project.project_invoice_timesheet_up_to = None
     >>> project.save()
-    >>> set_user(project_invoice_user)
     >>> project.click('invoice')
     >>> project.amount_to_invoice
     Decimal('0.00')
     >>> project.invoiced_amount
     Decimal('100.00')
 
-    >>> set_user(project_invoice_user)
     >>> _, invoice = Invoice.find([], order=[('id', 'ASC')])
     >>> invoice.total_amount
     Decimal('40.00')
 
 Create more timesheets::
 
-    >>> set_user(project_user)
     >>> TimesheetLine = Model.get('timesheet.line')
     >>> line = TimesheetLine()
     >>> line.employee = employee
@@ -204,21 +172,18 @@ Check project amounts::
 
 Invoice again project::
 
-    >>> set_user(project_invoice_user)
     >>> project.click('invoice')
     >>> project.amount_to_invoice
     Decimal('0.00')
     >>> project.invoiced_amount
     Decimal('180.00')
 
-    >>> set_user(project_invoice_user)
     >>> _, _, invoice = Invoice.find([], order=[('id', 'ASC')])
     >>> invoice.total_amount
     Decimal('80.00')
 
 Try to change invoice line quantity::
 
-    >>> set_user(1)
     >>> TimesheetLine = Model.get('timesheet.line')
     >>> line = TimesheetLine(line.id)
     >>> line.invoice_line.quantity = 5

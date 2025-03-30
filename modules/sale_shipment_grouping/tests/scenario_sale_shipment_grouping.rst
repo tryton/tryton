@@ -12,32 +12,12 @@ Imports::
     >>> from trytond.modules.account_invoice.tests.tools import (
     ...     create_payment_term, set_fiscalyear_invoice_sequences)
     >>> from trytond.modules.company.tests.tools import create_company
-    >>> from trytond.tests.tools import activate_modules, set_user
+    >>> from trytond.tests.tools import activate_modules
 
 Activate modules::
 
     >>> config = activate_modules(
     ...     'sale_shipment_grouping', create_company, create_chart)
-
-Create sale user::
-
-    >>> User = Model.get('res.user')
-    >>> Group = Model.get('res.group')
-    >>> sale_user = User()
-    >>> sale_user.name = 'Sale'
-    >>> sale_user.login = 'sale'
-    >>> sale_group, = sale_user.groups.find([('name', '=', 'Sales')])
-    >>> sale_user.groups.append(sale_group)
-    >>> sale_user.save()
-
-Create stock user::
-
-    >>> stock_user = User()
-    >>> stock_user.name = 'Stock'
-    >>> stock_user.login = 'stock'
-    >>> stock_group, = Group.find([('name', '=', 'Stock')])
-    >>> stock_user.groups.append(stock_group)
-    >>> stock_user.save()
 
 Create fiscal year::
 
@@ -91,7 +71,6 @@ Create payment term::
 
 Create an inventory::
 
-    >>> set_user(stock_user)
     >>> Inventory = Model.get('stock.inventory')
     >>> InventoryLine = Model.get('stock.inventory.line')
     >>> Location = Model.get('stock.location')
@@ -110,7 +89,6 @@ Create an inventory::
 
 Sell some products::
 
-    >>> set_user(sale_user)
     >>> Sale = Model.get('sale.sale')
     >>> sale = Sale()
     >>> sale.party = customer
@@ -134,7 +112,6 @@ Make another sale::
 
 Check the shipments::
 
-    >>> set_user(stock_user)
     >>> ShipmentOut = Model.get('stock.shipment.out')
     >>> shipments = ShipmentOut.find([('customer', '=', customer.id)])
     >>> len(shipments)
@@ -147,7 +124,6 @@ Check the shipments::
 
 Now we'll use the same scenario with the grouped customer::
 
-    >>> set_user(sale_user)
     >>> sale = Sale()
     >>> sale.party = customer_grouped
     >>> sale.payment_term = payment_term
@@ -176,7 +152,6 @@ Make another sale::
 
 Check the shipments::
 
-    >>> set_user(stock_user)
     >>> shipments = ShipmentOut.find([
     ...     ('customer', '=', customer_grouped.id),
     ...     ('state', '=', 'waiting'),

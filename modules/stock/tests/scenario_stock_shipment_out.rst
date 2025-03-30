@@ -20,6 +20,22 @@ Activate modules::
 
     >>> config = activate_modules('stock', create_company)
 
+    >>> Employee = Model.get('company.employee')
+    >>> Party = Model.get('party.party')
+    >>> User = Model.get('res.user')
+
+Set employee::
+
+    >>> employee_party = Party(name="Employee")
+    >>> employee_party.save()
+    >>> employee = Employee(party=employee_party)
+    >>> employee.save()
+    >>> user = User(config.user)
+    >>> user.employees.append(employee)
+    >>> user.employee = employee
+    >>> user.save()
+    >>> set_user(user.id)
+
 Get currency::
 
     >>> currency = get_currency()
@@ -43,27 +59,6 @@ Create product::
     >>> template.list_price = Decimal('20')
     >>> template.save()
     >>> product, = template.products
-
-Create stock user::
-
-    >>> User = Model.get('res.user')
-    >>> Group = Model.get('res.group')
-    >>> Employee = Model.get('company.employee')
-    >>> stock_user = User()
-    >>> stock_user.name = "Stock"
-    >>> stock_user.login = 'stock'
-    >>> stock_user.groups.extend(Group.find([
-    ...             ('name', '=', 'Stock'),
-    ...             ]))
-    >>> employee_party = Party(name="Employee")
-    >>> employee_party.save()
-    >>> employee = Employee(party=employee_party)
-    >>> employee.save()
-    >>> stock_user.employees.append(employee)
-    >>> stock_user.employee = employee
-    >>> stock_user.save()
-
-    >>> set_user(stock_user)
 
 Get stock locations::
 
@@ -280,7 +275,6 @@ Reschedule shipment::
     >>> shipment_copy, = shipment_out.duplicate()
     >>> shipment_copy.planned_date = yesterday
     >>> shipment_copy.click('wait')
-    >>> set_user(1)
     >>> Cron = Model.get('ir.cron')
     >>> cron = Cron(method='stock.shipment.out|reschedule')
     >>> cron.interval_number = 1

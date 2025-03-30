@@ -8,46 +8,14 @@ Imports::
 
     >>> from proteus import Model, Wizard
     >>> from trytond.modules.company.tests.tools import create_company
-    >>> from trytond.tests.tools import activate_modules, set_user
+    >>> from trytond.tests.tools import activate_modules
 
 Activate modules::
 
     >>> config = activate_modules('stock_supply', create_company)
 
-Create stock admin user::
-
-    >>> User = Model.get('res.user')
-    >>> Group = Model.get('res.group')
-    >>> stock_admin_user = User()
-    >>> stock_admin_user.name = 'Stock Admin'
-    >>> stock_admin_user.login = 'stock_admin'
-    >>> stock_admin_group, = Group.find([('name', '=', 'Stock Administration')])
-    >>> stock_admin_user.groups.append(stock_admin_group)
-    >>> stock_admin_user.save()
-
-Create stock user::
-
-    >>> stock_user = User()
-    >>> stock_user.name = 'Stock'
-    >>> stock_user.login = 'stock'
-    >>> stock_group, = Group.find([('name', '=', 'Stock')])
-    >>> stock_user.groups.append(stock_group)
-    >>> stock_user.save()
-
-Create product user::
-
-    >>> product_admin_user = User()
-    >>> product_admin_user.name = 'Product'
-    >>> product_admin_user.login = 'product'
-    >>> product_admin_group, = Group.find([
-    ...         ('name', '=', 'Product Administration')
-    ...         ])
-    >>> product_admin_user.groups.append(product_admin_group)
-    >>> product_admin_user.save()
-
 Create product::
 
-    >>> set_user(product_admin_user)
     >>> ProductUom = Model.get('product.uom')
     >>> ProductTemplate = Model.get('product.template')
     >>> unit, = ProductUom.find([('name', '=', 'Unit')])
@@ -62,7 +30,6 @@ Create product::
 
 Get stock locations::
 
-    >>> set_user(stock_admin_user)
     >>> Location = Model.get('stock.location')
     >>> warehouse_loc, = Location.find([('code', '=', 'WH')])
     >>> supplier_loc, = Location.find([('code', '=', 'SUP')])
@@ -103,7 +70,6 @@ Create internal order point::
 
 Create inventory to add enough quantity in Provisioning Location::
 
-    >>> set_user(stock_user)
     >>> Inventory = Model.get('stock.inventory')
     >>> inventory = Inventory()
     >>> inventory.location = provisioning_loc
@@ -117,9 +83,7 @@ Create inventory to add enough quantity in Provisioning Location::
 Execute internal supply::
 
     >>> ShipmentInternal = Model.get('stock.shipment.internal')
-    >>> set_user(stock_admin_user)
     >>> Wizard('stock.supply').execute('create_')
-    >>> set_user(stock_user)
     >>> shipment, = ShipmentInternal.find([])
     >>> shipment.state
     'request'
@@ -149,9 +113,7 @@ Create negative quantity in Second Storage::
 
 Execute internal supply::
 
-    >>> set_user(stock_admin_user)
     >>> Wizard('stock.supply').execute('create_')
-    >>> set_user(stock_user)
     >>> shipment, = ShipmentInternal.find(
     ...     [('to_location', '=', sec_storage_loc.id)])
     >>> shipment.state
@@ -171,8 +133,6 @@ Execute internal supply::
 Create stock_supply cron and execute it::
 
     >>> Cron = Model.get('ir.cron')
-    >>> admin_user, = User.find([('login', '=', 'admin')])
-    >>> set_user(admin_user)
     >>> shipment.delete()
     >>> cron = Cron(method='stock.order_point|supply_stock')
     >>> cron.interval_number = 1

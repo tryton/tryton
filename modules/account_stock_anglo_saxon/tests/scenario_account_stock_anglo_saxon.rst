@@ -17,7 +17,7 @@ Imports::
     >>> from trytond.modules.account_stock_continental.tests.tools import (
     ...     add_stock_accounts)
     >>> from trytond.modules.company.tests.tools import create_company
-    >>> from trytond.tests.tools import activate_modules, set_user
+    >>> from trytond.tests.tools import activate_modules
 
     >>> today = dt.date.today()
 
@@ -29,38 +29,6 @@ Activate modules::
     ...         'purchase',
     ...         ],
     ...     create_company, create_chart)
-
-Create the required users::
-
-    >>> User = Model.get('res.user')
-    >>> Group = Model.get('res.group')
-    >>> accountant = User()
-    >>> accountant.name = 'Accountant'
-    >>> accountant.login = 'accountant'
-    >>> account_group, = Group.find([('name', '=', 'Accounting')])
-    >>> accountant.groups.append(account_group)
-    >>> accountant.save()
-
-    >>> product_user = User()
-    >>> product_user.name = 'Product User'
-    >>> product_user.login = 'product_user'
-    >>> product_group, = Group.find([('name', '=', 'Account Product Administration')])
-    >>> product_user.groups.append(product_group)
-    >>> product_user.save()
-
-    >>> purchase_user = User()
-    >>> purchase_user.name = 'Purchase User'
-    >>> purchase_user.login = 'purchase_user'
-    >>> purchase_group, = Group.find([('name', '=', 'Purchase')])
-    >>> purchase_user.groups.append(purchase_group)
-    >>> purchase_user.save()
-
-    >>> stock_user = User()
-    >>> stock_user.name = 'Sale User'
-    >>> stock_user.login = 'stock_user'
-    >>> stock_group, = Group.find([('name', '=', 'Stock')])
-    >>> stock_user.groups.append(stock_group)
-    >>> stock_user.save()
 
 Create fiscal year::
 
@@ -303,7 +271,6 @@ Now create a supplier invoice with an accountant::
     >>> purchase.state
     'processing'
 
-    >>> set_user(accountant)
     >>> for invoice in purchase.invoices:
     ...     invoice.invoice_date = today
     >>> Invoice.save(purchase.invoices)
@@ -331,7 +298,6 @@ Create customer invoice with negative quantity::
 
 Now we will use a product with different unit of measure::
 
-    >>> set_user(product_user)
     >>> UomCategory = Model.get('product.uom.category')
     >>> unit_category, = UomCategory.find([('name', '=', 'Units')])
     >>> unit_5 = ProductUom(name='5', symbol='5', category=unit_category,
@@ -355,7 +321,6 @@ Now we will use a product with different unit of measure::
     >>> template_by5.save()
     >>> product_by5, = template_by5.products
 
-    >>> set_user(purchase_user)
     >>> purchase = Purchase()
     >>> purchase.party = supplier
     >>> purchase.payment_term = payment_term
@@ -367,7 +332,6 @@ Now we will use a product with different unit of measure::
     >>> purchase.click('quote')
     >>> purchase.click('confirm')
 
-    >>> set_user(stock_user)
     >>> shipment = ShipmentIn(supplier=supplier)
     >>> move = Move(purchase.moves[0].id)
     >>> move.in_anglo_saxon_quantity
@@ -376,7 +340,6 @@ Now we will use a product with different unit of measure::
     >>> shipment.click('receive')
     >>> shipment.click('do')
 
-    >>> set_user(accountant)
     >>> purchase.reload()
     >>> invoice, = purchase.invoices
     >>> invoice.invoice_date = today
@@ -384,7 +347,6 @@ Now we will use a product with different unit of measure::
     >>> invoice.state
     'posted'
 
-    >>> set_user(stock_user)
     >>> move = Move(purchase.moves[0].id)
     >>> move.in_anglo_saxon_quantity
     1.0
