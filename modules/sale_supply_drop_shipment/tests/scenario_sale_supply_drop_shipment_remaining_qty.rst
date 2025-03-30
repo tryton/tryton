@@ -75,6 +75,8 @@ Create product::
     >>> product_supplier.party = supplier
     >>> product_supplier.drop_shipment = True
     >>> product_supplier.lead_time = dt.timedelta(0)
+    >>> supplier_price = product_supplier.prices.new()
+    >>> supplier_price.unit_price = Decimal('5.0000')
     >>> product_supplier.save()
 
 Create payment term::

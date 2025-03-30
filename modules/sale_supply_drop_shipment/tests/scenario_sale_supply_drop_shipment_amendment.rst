@@ -64,9 +64,11 @@ Create product::
     >>> product_supplier = template.product_suppliers.new()
     >>> product_supplier.party = supplier
     >>> product_supplier.drop_shipment = True
+    >>> supplier_price = product_supplier.prices.new()
+    >>> supplier_price.unit_price = Decimal('5.0000')
     >>> template.save()
     >>> product, = template.products
-    >>> product_supplier.save()
+    >>> product.cost_price = Decimal('5.0000')
 
 Sale 5 products::
 

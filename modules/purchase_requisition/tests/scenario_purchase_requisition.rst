@@ -312,6 +312,8 @@ Create purchase requisition with two different suppliers::
     ...         ('state', '=', 'draft'),
     ...         ('party', '=', supplier2.id),
     ...         ])
+    >>> purchase_line, = purchase.lines
+    >>> purchase_line.unit_price = Decimal('8.0000')
     >>> purchase.click('quote')
     >>> purchase.click('confirm')
     >>> requisition.reload()
