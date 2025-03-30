@@ -151,6 +151,8 @@ Create Purchase from Request::
     >>> create_purchase.execute('start')
     >>> purchase, = Purchase.find()
     >>> purchase.payment_term = payment_term
+    >>> purchase_line, = purchase.lines
+    >>> purchase_line.unit_price = Decimal('5.0000')
     >>> purchase.click('quote')
     >>> purchase.click('confirm')
     >>> purchase.state
