@@ -30,7 +30,7 @@ Create account admin user::
     >>> account_admin_user.name = 'Account Admin'
     >>> account_admin_user.login = 'account_admin'
     >>> account_admin_group, = Group.find([
-    ...         ('name', '=', 'Account Administration'),
+    ...         ('name', '=', 'Accounting Administration'),
     ...         ])
     >>> account_admin_user.groups.append(account_admin_group)
     >>> account_admin_user.save()
@@ -41,7 +41,7 @@ Create account user::
     >>> account_user.name = 'Account'
     >>> account_user.login = 'account'
     >>> account_group, = Group.find([
-    ...         ('name', '=', 'Account'),
+    ...         ('name', '=', 'Accounting'),
     ...         ])
     >>> account_user.groups.append(account_group)
     >>> account_user.save()

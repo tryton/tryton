@@ -39,7 +39,7 @@ Create project invoice user::
     >>> project_invoice_user.login = 'project_invoice'
     >>> project_invoice_group, = Group.find([('name', '=', 'Project Invoice')])
     >>> project_group, = Group.find([('name', '=', 'Project Administration')])
-    >>> invoice_group, = Group.find([('name', '=', 'Account')])
+    >>> invoice_group, = Group.find([('name', '=', 'Accounting')])
     >>> project_invoice_user.groups.extend(
     ...     [project_invoice_group, project_group, invoice_group])
     >>> project_invoice_user.save()

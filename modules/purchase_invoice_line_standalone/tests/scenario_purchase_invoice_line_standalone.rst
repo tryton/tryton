@@ -26,7 +26,7 @@ Create an accountant user::
     >>> accountant = User()
     >>> accountant.name = 'Accountant'
     >>> accountant.login = 'accountant'
-    >>> account_group, = Group.find([('name', '=', 'Account')])
+    >>> account_group, = Group.find([('name', '=', 'Accounting')])
     >>> accountant.groups.append(account_group)
     >>> accountant.save()
 
