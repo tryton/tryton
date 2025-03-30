@@ -50,7 +50,7 @@ def _get_config():
     return pconfig.set_trytond()
 
 
-def set_user(user, config=None):
+def set_user(user=1, config=None):
     if not config:
         config = pconfig.get_config()
     User = Model.get('res.user', config=config)

@@ -182,7 +182,7 @@ Tools
    The following arguments are functions sequentially called at the end of the
    activation with the proteus configuration as ``config`` keyword argument.
 
-.. function:: set_user(user, config)
+.. function:: set_user([user[, config]])
 
    Set the user of the ``config`` proteus connection to ``user``.
 
