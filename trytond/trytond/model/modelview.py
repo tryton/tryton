@@ -636,8 +636,9 @@ class ModelView(Model):
                     element.attrib.pop('mode', None) or 'tree,form').split(',')
                 widget = element.attrib.get('widget', field._type)
                 views = get_views(relation, widget, view_ids, mode)
-                element.attrib['mode'] = ','.join(mode)
-                fields_attrs[fname].setdefault('views', {}).update(views)
+                if views:
+                    element.attrib['mode'] = ','.join(mode)
+                    fields_attrs[fname].setdefault('views', {}).update(views)
 
             if type == 'tree':
                 if element.get('name') in fields_width:
