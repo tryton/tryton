@@ -234,9 +234,12 @@ class Sale(IdentifierMixin, metaclass=PoolMeta):
                     order = shopify.Order.find(self.shopify_identifier)
                     Payment.get_from_shopify(self, order)
 
+            order = shopify.Order.find(self.shopify_identifier)
             if self.state == 'done':
-                order = shopify.Order.find(self.shopify_identifier)
-                order.close()
+                if not order.closed_at:
+                    order.close()
+            elif order.closed_at:
+                order.open()
 
     def get_shopify_refund(self, shipping):
         order = shopify.Order.find(self.shopify_identifier)
