@@ -553,9 +553,39 @@ Make a partial shipment::
     >>> order.financial_status
     'paid'
 
-Cancel remaining shipment::
+Ship and cancel remaining shipment::
 
     >>> shipment, = [s for s in sale.shipments if s.state != 'done']
+    >>> shipment.click('pick')
+    >>> shipment.click('pack')
+    >>> shipment.click('ship')
+    >>> shipment.state
+    'shipped'
+
+    >>> order.reload()
+    >>> order.fulfillment_status
+    'fulfilled'
+    >>> len(order.fulfillments)
+    2
+
+    >>> shipment.click('cancel')
+    >>> shipment.state
+    'cancelled'
+
+    >>> order.reload()
+    >>> order.fulfillment_status
+    'partial'
+    >>> len(order.fulfillments)
+    2
+
+    >>> shipment_exception = sale.click('handle_shipment_exception')
+    >>> shipment_exception.form.recreate_moves.extend(
+    ...     shipment_exception.form.ignore_moves.find())
+    >>> shipment_exception.execute('handle')
+
+Cancel remaining shipment::
+
+    >>> shipment, = [s for s in sale.shipments if s.state not in {'done', 'cancelled'}]
     >>> shipment.click('cancel')
     >>> shipment.state
     'cancelled'
@@ -570,7 +600,7 @@ Cancel remaining shipment::
     >>> order.fulfillment_status
     'partial'
     >>> len(order.fulfillments)
-    1
+    2
     >>> order.financial_status
     'paid'
 
@@ -585,7 +615,7 @@ Ignore shipment exception::
     >>> order.fulfillment_status
     'fulfilled'
     >>> len(order.fulfillments)
-    1
+    2
     >>> order.financial_status
     'partially_refunded'
 

@@ -6,6 +6,7 @@ from itertools import zip_longest
 
 import dateutil
 import shopify
+from shopify.resources.fulfillment import FulfillmentV2
 
 from trytond.i18n import gettext
 from trytond.model import ModelView, Unique, fields
@@ -216,6 +217,15 @@ class Sale(IdentifierMixin, metaclass=PoolMeta):
                                     fulfillment.errors.full_messages())))
                     shipment.set_shopify_identifier(self, fulfillment.id)
                     Transaction().commit()
+                elif shipment.state == 'cancelled':
+                    fulfillment_id = shipment.get_shopify_identifier(self)
+                    if fulfillment_id:
+                        fulfillment = shopify.Fulfillment.find(
+                            fulfillment_id, order_id=self.shopify_identifier)
+                        if fulfillment.status != 'cancelled':
+                            fulfillment = FulfillmentV2()
+                            fulfillment.id = fulfillment_id
+                            fulfillment.post('cancel')
 
             # TODO: manage drop shipment
 
