@@ -22,7 +22,7 @@ class ShipmentOut(metaclass=PoolMeta):
         lazy_gettext('web_shop_shopify.msg_shopify_identifiers'))
 
     def get_shopify(self, sale):
-        if self.state != 'done':
+        if self.state not in {'shipped', 'done'}:
             return
         shopify_id = self.get_shopify_identifier(sale)
         if shopify_id:
