@@ -833,7 +833,7 @@
                 });
             }
         };
-        this._selection_prm.done(_update_selection);
+        this._selection_prm.always(_update_selection);
     };
     Sao.common.selection_mixin.filter_selection = function(
             domain, record, field) {
