@@ -51,7 +51,7 @@ class ResponseError(xmlrpc.client.ResponseError):
 class Fault(xmlrpc.client.Fault):
 
     def __init__(self, faultCode, faultString='', **extra):
-        super(Fault, self).__init__(faultCode, faultString, **extra)
+        super().__init__(faultCode, faultString, **extra)
         self.args = faultString
 
     def __str__(self):
@@ -119,7 +119,7 @@ class JSONEncoder(json.JSONEncoder):
             return {'__class__': 'Decimal',
                 'decimal': str(obj),
                 }
-        return super(JSONEncoder, self).default(obj)
+        return super().default(obj)
 
 
 class JSONParser(object):

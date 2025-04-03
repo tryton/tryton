@@ -156,7 +156,7 @@ class ResourceMixin(ResourceAccessMixin, ModelStorage, ModelView):
 
     @classmethod
     def __setup__(cls):
-        super(ResourceMixin, cls).__setup__()
+        super().__setup__()
         cls._order.insert(0, ('last_modification', 'DESC'))
         cls.resource.required = True
 

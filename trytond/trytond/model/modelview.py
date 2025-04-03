@@ -85,7 +85,7 @@ class ModelView(Model):
 
     @classmethod
     def __setup__(cls):
-        super(ModelView, cls).__setup__()
+        super().__setup__()
         cls.__rpc__.update({
                 'fields_view_get': RPC(
                     cache=dict(days=1),
@@ -116,7 +116,7 @@ class ModelView(Model):
 
     @classmethod
     def __post_setup__(cls):
-        super(ModelView, cls).__post_setup__()
+        super().__post_setup__()
 
         methods = {
             '_done': set(),

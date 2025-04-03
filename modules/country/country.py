@@ -169,7 +169,7 @@ class Country(DeactivableMixin, ModelSQL, ModelView):
 
     @classmethod
     def __setup__(cls):
-        super(Country, cls).__setup__()
+        super().__setup__()
         cls._order.insert(0, ('name', 'ASC'))
 
     @classmethod
@@ -179,7 +179,7 @@ class Country(DeactivableMixin, ModelSQL, ModelView):
         data = Data.__table__()
         cursor = Transaction().connection.cursor()
 
-        super(Country, cls).__register__(module_name)
+        super().__register__(module_name)
 
         # Migration from 5.2: remove country data
         cursor.execute(*data.delete(where=(data.module == 'country')
@@ -235,7 +235,7 @@ class Country(DeactivableMixin, ModelSQL, ModelView):
             for code in {'code', 'code3', 'code_numeric'}:
                 if code in vals and vals[code]:
                     vals[code] = vals[code].upper()
-        return super(Country, cls).create(vlist)
+        return super().create(vlist)
 
     @classmethod
     def write(cls, *args):
@@ -247,7 +247,7 @@ class Country(DeactivableMixin, ModelSQL, ModelView):
                     values = values.copy()
                     values[code] = values[code].upper()
             args.extend((countries, values))
-        super(Country, cls).write(*args)
+        super().write(*args)
 
 
 class Subdivision(DeactivableMixin, ModelSQL, ModelView):
@@ -421,7 +421,7 @@ class Subdivision(DeactivableMixin, ModelSQL, ModelView):
 
     @classmethod
     def __setup__(cls):
-        super(Subdivision, cls).__setup__()
+        super().__setup__()
         cls._order.insert(0, ('code', 'ASC'))
 
     @classmethod
@@ -493,7 +493,7 @@ class Subdivision(DeactivableMixin, ModelSQL, ModelView):
         for vals in vlist:
             if 'code' in vals and vals['code']:
                 vals['code'] = vals['code'].upper()
-        return super(Subdivision, cls).create(vlist)
+        return super().create(vlist)
 
     @classmethod
     def write(cls, *args):
@@ -504,7 +504,7 @@ class Subdivision(DeactivableMixin, ModelSQL, ModelView):
                 values = values.copy()
                 values['code'] = values['code'].upper()
             args.extend((subdivisions, values))
-        super(Subdivision, cls).write(*args)
+        super().write(*args)
 
 
 class PostalCode(ModelSQL, ModelView):

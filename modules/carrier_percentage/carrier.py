@@ -19,7 +19,7 @@ class Carrier(metaclass=PoolMeta):
 
     @classmethod
     def __setup__(cls):
-        super(Carrier, cls).__setup__()
+        super().__setup__()
         selection = ('percentage', 'Percentage')
         if selection not in cls.carrier_cost_method.selection:
             cls.carrier_cost_method.selection.append(selection)
@@ -33,7 +33,7 @@ class Carrier(metaclass=PoolMeta):
         return currency.round(price), currency_id
 
     def get_sale_price(self):
-        price, currency_id = super(Carrier, self).get_sale_price()
+        price, currency_id = super().get_sale_price()
         if self.carrier_cost_method == 'percentage':
             amount = Transaction().context.get('amount', Decimal(0))
             currency_id = Transaction().context.get('currency', currency_id)
@@ -42,7 +42,7 @@ class Carrier(metaclass=PoolMeta):
         return price, currency_id
 
     def get_purchase_price(self):
-        price, currency_id = super(Carrier, self).get_purchase_price()
+        price, currency_id = super().get_purchase_price()
         if self.carrier_cost_method == 'percentage':
             amount = Transaction().context.get('amount', Decimal(0))
             currency_id = Transaction().context.get('currency', currency_id)

@@ -64,7 +64,7 @@ class Sale(metaclass=PoolMeta):
     @ModelView.button
     @Workflow.transition('draft')
     def draft(cls, sales):
-        super(Sale, cls).draft(sales)
+        super().draft(sales)
         # Reset to draft unit price
         for sale in sales:
             sale.unapply_promotion()
@@ -74,7 +74,7 @@ class Sale(metaclass=PoolMeta):
     @ModelView.button
     @Workflow.transition('quotation')
     def quote(cls, sales):
-        super(Sale, cls).quote(sales)
+        super().quote(sales)
         # Store draft unit price before changing it
         for sale in sales:
             sale.apply_promotion()

@@ -17,7 +17,7 @@ class Board(TabContent):
     'Board'
 
     def __init__(self, model, name='', **attributes):
-        super(Board, self).__init__(**attributes)
+        super().__init__(**attributes)
 
         context = attributes.get('context')
         self.view_id, = attributes.get('view_ids')

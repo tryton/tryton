@@ -54,7 +54,7 @@ class Module(ModelSQL, ModelView):
 
     @classmethod
     def __setup__(cls):
-        super(Module, cls).__setup__()
+        super().__setup__()
         table = cls.__table__()
         cls._sql_constraints = [
             ('name_uniq', Unique(table, table.name),
@@ -132,7 +132,7 @@ class Module(ModelSQL, ModelView):
                     'to activate',
                     ):
                 raise AccessError(gettext('ir.msg_module_delete_state'))
-        return super(Module, cls).delete(records)
+        return super().delete(records)
 
     @classmethod
     def on_write(cls, modules):
@@ -285,7 +285,7 @@ class ModuleDependency(ModelSQL, ModelView):
 
     @classmethod
     def __setup__(cls):
-        super(ModuleDependency, cls).__setup__()
+        super().__setup__()
         cls.__access__.add('module')
         table = cls.__table__()
         cls._sql_constraints += [
@@ -319,7 +319,7 @@ class ModuleConfigWizardItem(sequence_ordered(), ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
-        super(ModuleConfigWizardItem, cls).__register__(module_name)
+        super().__register__(module_name)
 
         table = cls.__table_handler__(module_name)
 
@@ -458,7 +458,7 @@ class ModuleActivateUpgrade(Wizard):
     def check_access(cls):
         # Use new transaction to prevent lock when activating modules
         with Transaction().new_transaction():
-            super(ModuleActivateUpgrade, cls).check_access()
+            super().check_access()
 
     @staticmethod
     def default_start(fields):

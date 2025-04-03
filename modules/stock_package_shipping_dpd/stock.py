@@ -81,7 +81,7 @@ class CreateShipping(metaclass=PoolMeta):
         'stock_package_shipping_dpd.act_create_shipping_dpd_wizard')
 
     def transition_start(self):
-        next_state = super(CreateShipping, self).transition_start()
+        next_state = super().transition_start()
         if self.record.carrier.shipping_service == 'dpd':
             next_state = 'dpd'
         return next_state

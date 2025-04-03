@@ -137,7 +137,7 @@ class Category(CompanyMultiValueMixin, metaclass=PoolMeta):
 
     @classmethod
     def __setup__(cls):
-        super(Category, cls).__setup__()
+        super().__setup__()
         cls.parent.domain = [
             ('accounting', '=', Eval('accounting', False)),
             cls.parent.domain or []]
@@ -150,7 +150,7 @@ class Category(CompanyMultiValueMixin, metaclass=PoolMeta):
         pool = Pool()
         if field in {'account_expense', 'account_revenue'}:
             return pool.get('product.category.account')
-        return super(Category, cls).multivalue_model(field)
+        return super().multivalue_model(field)
 
     @classmethod
     def default_accounting(cls):
@@ -230,7 +230,7 @@ class Category(CompanyMultiValueMixin, metaclass=PoolMeta):
 
     @classmethod
     def view_attributes(cls):
-        return super(Category, cls).view_attributes() + [
+        return super().view_attributes() + [
             ('/form/notebook/page[@id="accounting"]', 'states', {
                     'invisible': ~Eval('accounting', False),
                     }),
@@ -430,5 +430,5 @@ class TemplateCategoryAll(metaclass=PoolMeta):
 
     @classmethod
     def union_models(cls):
-        return super(TemplateCategoryAll, cls).union_models() + [
+        return super().union_models() + [
             'product.template-product.category.account']

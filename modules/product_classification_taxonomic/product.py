@@ -11,7 +11,7 @@ class Template(metaclass=PoolMeta):
 
     @classmethod
     def _get_classification(cls):
-        return super(Template, cls)._get_classification() + [
+        return super()._get_classification() + [
             'product.taxon', 'product.cultivar']
 
 

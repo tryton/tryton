@@ -20,7 +20,7 @@ class Production(metaclass=PoolMeta):
 
     @fields.depends('bom', 'routing')
     def on_change_bom(self):
-        super(Production, self).on_change_bom()
+        super().on_change_bom()
         if self.bom:
             if self.routing:
                 if self.bom not in self.routing.boms:
@@ -39,7 +39,7 @@ class Production(metaclass=PoolMeta):
     def compute_request(
             cls, product, warehouse, quantity, date, company,
             order_point=None, bom_pattern=None):
-        production = super(Production, cls).compute_request(
+        production = super().compute_request(
             product, warehouse, quantity, date, company,
             order_point=order_point, bom_pattern=bom_pattern)
         if bom := product.get_bom(bom_pattern):

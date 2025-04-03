@@ -51,7 +51,7 @@ class Model(URLMixin, PoolBase, metaclass=ModelMeta):
 
     @classmethod
     def __setup__(cls):
-        super(Model, cls).__setup__()
+        super().__setup__()
         if not cls.__string__:
             cls.__string__ = humanize(cls.__name__)
         cls.__rpc__ = {
@@ -84,7 +84,7 @@ class Model(URLMixin, PoolBase, metaclass=ModelMeta):
 
     @classmethod
     def __post_setup__(cls):
-        super(Model, cls).__post_setup__()
+        super().__post_setup__()
 
         # Set _fields
         cls._fields = {}
@@ -122,7 +122,7 @@ class Model(URLMixin, PoolBase, metaclass=ModelMeta):
         """
         Add model in ir.model and ir.model.field.
         """
-        super(Model, cls).__register__(module_name)
+        super().__register__(module_name)
         pool = Pool()
         Translation = pool.get('ir.translation')
         Model_ = pool.get('ir.model')
@@ -308,7 +308,7 @@ class Model(URLMixin, PoolBase, metaclass=ModelMeta):
         return names
 
     def __init__(self, id=None, **kwargs):
-        super(Model, self).__init__()
+        super().__init__()
         if id is not None:
             id = int(id)
         self._id = id

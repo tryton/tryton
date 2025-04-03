@@ -68,7 +68,7 @@ class ProductCostHistory(ModelSQL, ModelView):
 
     @classmethod
     def __setup__(cls):
-        super(ProductCostHistory, cls).__setup__()
+        super().__setup__()
         cls._order.insert(0, ('date', 'DESC'))
 
     @classmethod

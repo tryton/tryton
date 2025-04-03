@@ -31,7 +31,7 @@ class CreateChart(metaclass=PoolMeta):
     def transition_create_properties(self):
         pool = Pool()
         Configuration = pool.get('account.configuration')
-        state = super(CreateChart, self).transition_create_properties()
+        state = super().transition_create_properties()
 
         with Transaction().set_context(company=self.properties.company.id):
             config = Configuration(1)
@@ -47,7 +47,7 @@ class CreateChart(metaclass=PoolMeta):
         pool = Pool()
         Account = pool.get('account.account')
 
-        defaults = super(CreateChart, self).default_properties(fields)
+        defaults = super().default_properties(fields)
         expense_accounts = Account.search([
                 ('type.expense', '=', True),
                 ('company', '=', self.account.company.id),

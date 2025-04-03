@@ -47,7 +47,7 @@ class ShipmentOut(metaclass=PoolMeta):
                         gettext('sale.msg_sale_move_reset_draft',
                             move=move.rec_name))
 
-        return super(ShipmentOut, cls).draft(shipments)
+        return super().draft(shipments)
 
     @classmethod
     @ModelView.button
@@ -68,7 +68,7 @@ class ShipmentOut(metaclass=PoolMeta):
     @Workflow.transition('cancelled')
     @process_sale('outgoing_moves')
     def cancel(cls, shipments):
-        super(ShipmentOut, cls).cancel(shipments)
+        super().cancel(shipments)
 
 
 class ShipmentOutReturn(metaclass=PoolMeta):
@@ -87,7 +87,7 @@ class ShipmentOutReturn(metaclass=PoolMeta):
                         gettext('sale.msg_sale_move_reset_draft',
                             move=move.rec_name))
 
-        return super(ShipmentOutReturn, cls).draft(shipments)
+        return super().draft(shipments)
 
     @classmethod
     @ModelView.button
@@ -100,7 +100,7 @@ class ShipmentOutReturn(metaclass=PoolMeta):
             for move in shipment.incoming_moves:
                 if isinstance(move.origin, SaleLine):
                     move.origin.check_move_quantity()
-        super(ShipmentOutReturn, cls).receive(shipments)
+        super().receive(shipments)
 
 
 def process_sale_move(func):
@@ -142,13 +142,13 @@ class Move(metaclass=PoolMeta):
 
     @classmethod
     def _get_origin(cls):
-        models = super(Move, cls)._get_origin()
+        models = super()._get_origin()
         models.append('sale.line')
         return models
 
     @classmethod
     def check_origin_types(cls):
-        types = super(Move, cls).check_origin_types()
+        types = super().check_origin_types()
         types.add('customer')
         return types
 
@@ -216,7 +216,7 @@ class Move(metaclass=PoolMeta):
     def origin_name(self):
         pool = Pool()
         SaleLine = pool.get('sale.line')
-        name = super(Move, self).origin_name
+        name = super().origin_name
         if isinstance(self.origin, SaleLine) and self.origin.id >= 0:
             name = self.origin.sale.rec_name
         return name
@@ -226,9 +226,9 @@ class Move(metaclass=PoolMeta):
     @Workflow.transition('cancelled')
     @process_sale_move
     def cancel(cls, moves):
-        super(Move, cls).cancel(moves)
+        super().cancel(moves)
 
     @classmethod
     @process_sale_move
     def delete(cls, moves):
-        super(Move, cls).delete(moves)
+        super().delete(moves)

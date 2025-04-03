@@ -14,7 +14,7 @@ class MenuMany2Many(fields.Many2Many):
 
     def get(self, ids, model, name, values=None):
         Menu = self.get_target()
-        res = super(MenuMany2Many, self).get(ids, model, name,
+        res = super().get(ids, model, name,
                 values=values)
         menu_ids = list(set(chain(*res.values())))
         test_ids = []
@@ -49,7 +49,7 @@ class Group(DeactivableMixin, tree(), ModelSQL, ModelView):
 
     @classmethod
     def __setup__(cls):
-        super(Group, cls).__setup__()
+        super().__setup__()
         table = cls.__table__()
         cls._sql_constraints += [
             ('name_uniq', Unique(table, table.name),
@@ -79,7 +79,7 @@ class Group(DeactivableMixin, tree(), ModelSQL, ModelView):
                     break
                 i += 1
             default['name'] = name
-            new_groups.extend(super(Group, cls).copy([group], default=default))
+            new_groups.extend(super().copy([group], default=default))
         return new_groups
 
     @classmethod

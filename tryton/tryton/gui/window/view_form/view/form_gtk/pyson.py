@@ -11,7 +11,7 @@ from .char import Char
 class PYSON(Char):
 
     def __init__(self, view, attrs):
-        super(PYSON, self).__init__(view, attrs)
+        super().__init__(view, attrs)
         self.encoder = PYSONEncoder()
         self.decoder = PYSONDecoder(noeval=True)
         self.entry.connect('key-release-event', self.validate_pyson)
@@ -36,7 +36,7 @@ class PYSON(Char):
         self.field.set_client(self.record, value)
 
     def get_client_value(self):
-        value = super(PYSON, self).get_client_value()
+        value = super().get_client_value()
         if value:
             value = repr(self.decoder.decode(value))
         return value
@@ -51,4 +51,4 @@ class PYSON(Char):
 
     def _focus_out(self):
         self.validate_pyson()
-        super(PYSON, self)._focus_out()
+        super()._focus_out()

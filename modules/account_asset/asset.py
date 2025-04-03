@@ -198,7 +198,7 @@ class Asset(Workflow, ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         cls.number.search_unaccented = False
-        super(Asset, cls).__setup__()
+        super().__setup__()
         table = cls.__table__()
         cls._sql_constraints = [
             ('invoice_line_uniq', Unique(table, table.supplier_invoice_line),
@@ -709,7 +709,7 @@ class Asset(Workflow, ModelSQL, ModelView):
         default.setdefault('supplier_invoice_line', None)
         default.setdefault('move')
         default.setdefault('revisions', [])
-        return super(Asset, cls).copy(assets, default=default)
+        return super().copy(assets, default=default)
 
     @classmethod
     def delete(cls, assets):
@@ -718,7 +718,7 @@ class Asset(Workflow, ModelSQL, ModelView):
                 raise AccessError(
                     gettext('account_asset.msg_asset_delete_draft',
                         asset=asset.rec_name))
-        return super(Asset, cls).delete(assets)
+        return super().delete(assets)
 
 
 class AssetLine(ModelSQL, ModelView):
@@ -746,7 +746,7 @@ class AssetLine(ModelSQL, ModelView):
 
     @classmethod
     def __setup__(cls):
-        super(AssetLine, cls).__setup__()
+        super().__setup__()
         cls.__access__.add('asset')
         cls._order.insert(0, ('date', 'ASC'))
 

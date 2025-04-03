@@ -13,7 +13,7 @@ class Invoice(metaclass=PoolMeta):
 
     @classmethod
     def __setup__(cls):
-        super(Invoice, cls).__setup__()
+        super().__setup__()
         cls._buttons.update({
                 'correct': {
                     'invisible': Eval('state') != 'posted',

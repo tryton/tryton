@@ -9,7 +9,7 @@ class Invoice(metaclass=PoolMeta):
 
     @classmethod
     def __setup__(cls):
-        super(Invoice, cls).__setup__()
+        super().__setup__()
         add_remove = [
             ('invoice', '=', None),
         ]

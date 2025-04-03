@@ -8,7 +8,7 @@ class User(metaclass=PoolMeta):
 
     @classmethod
     def _get_preferences(cls, user, context_only=False):
-        res = super(User, cls)._get_preferences(user,
+        res = super()._get_preferences(user,
             context_only=context_only)
         if user.company:
             time = {

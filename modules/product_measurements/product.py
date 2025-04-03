@@ -112,7 +112,7 @@ class Template(metaclass=PoolMeta):
 
     @classmethod
     def view_attributes(cls):
-        return super(Template, cls).view_attributes() + [
+        return super().view_attributes() + [
             ('//page[@id="measurements"]', 'states', {
                     'invisible': Eval('type').in_(NON_MEASURABLE),
                     })]

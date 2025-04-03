@@ -94,4 +94,4 @@ class LetterReport(Report):
     @classmethod
     def execute(cls, ids, data):
         with Transaction().set_context(address_with_party=True):
-            return super(LetterReport, cls).execute(ids, data)
+            return super().execute(ids, data)

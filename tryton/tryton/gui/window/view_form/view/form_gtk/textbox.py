@@ -20,7 +20,7 @@ class TextBox(Widget, TranslateMixin):
     expand = True
 
     def __init__(self, view, attrs):
-        super(TextBox, self).__init__(view, attrs)
+        super().__init__(view, attrs)
 
         self.widget = Gtk.VBox()
         self.scrolledwindow = Gtk.ScrolledWindow()
@@ -92,7 +92,7 @@ class TextBox(Widget, TranslateMixin):
         textview.props.sensitive = not value
 
     def _readonly_set(self, value):
-        super(TextBox, self)._readonly_set(value)
+        super()._readonly_set(value)
         self.textview.set_editable(not value)
 
     @property
@@ -120,7 +120,7 @@ class TextBox(Widget, TranslateMixin):
         return buf.get_text(iter_start, iter_end, False)
 
     def display(self):
-        super(TextBox, self).display()
+        super().display()
         value = self.field and self.field.get(self.record)
         if not value:
             value = ''
@@ -153,7 +153,7 @@ class TextBufferLimitSize(Gtk.TextBuffer):
         }
 
     def __init__(self, max_length):
-        super(TextBufferLimitSize, self).__init__()
+        super().__init__()
         self.max_length = max_length
 
     def do_insert_text(self, iter, text, length):

@@ -55,7 +55,7 @@ class Subscription(metaclass=PoolMeta):
         sub_lines = [l for s in subscriptions for l in s.lines if l.asset_lot]
         SubscriptionLine.write(sub_lines, {'asset_lot': None})
 
-        super(Subscription, cls).cancel(subscriptions)
+        super().cancel(subscriptions)
 
     @classmethod
     @ModelView.button
@@ -63,7 +63,7 @@ class Subscription(metaclass=PoolMeta):
     def run(cls, subscriptions):
         pool = Pool()
         Line = pool.get('sale.subscription.line')
-        super(Subscription, cls).run(subscriptions)
+        super().run(subscriptions)
         lines = [l for s in subscriptions for l in s.lines]
         Line._validate(lines, ['asset_lot'])
 
@@ -87,7 +87,7 @@ class SubscriptionLine(metaclass=PoolMeta):
 
     @classmethod
     def __setup__(cls):
-        super(SubscriptionLine, cls).__setup__()
+        super().__setup__()
         t = cls.__table__()
         cls._sql_constraints += [
             ('dates_asset_lot_overlap',
@@ -118,4 +118,4 @@ class SubscriptionLine(metaclass=PoolMeta):
         else:
             default = default.copy()
         default.setdefault('asset_lot')
-        return super(SubscriptionLine, cls).copy(lines, default)
+        return super().copy(lines, default)

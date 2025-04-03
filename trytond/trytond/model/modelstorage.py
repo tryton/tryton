@@ -130,7 +130,7 @@ class ModelStorage(Model):
     @classmethod
     def __setup__(cls):
         from .modelview import ModelView
-        super(ModelStorage, cls).__setup__()
+        super().__setup__()
         if issubclass(cls, ModelView):
             cls.__rpc__.update({
                     'create': RPC(
@@ -1690,7 +1690,7 @@ class ModelStorage(Model):
         else:
             self._local_cache = local_cache(self.__class__, transaction)
 
-        super(ModelStorage, self).__init__(id, **kwargs)
+        super().__init__(id, **kwargs)
 
     @property
     def _cache(self):
@@ -1698,7 +1698,7 @@ class ModelStorage(Model):
 
     def __getattr__(self, name):
         try:
-            return super(ModelStorage, self).__getattr__(name)
+            return super().__getattr__(name)
         except AttributeError:
             if name.startswith('_') or self.id is None or self.id < 0:
                 raise
@@ -2094,7 +2094,7 @@ class EvalEnvironment(dict):
     __slots__ = ('_record', '_model')
 
     def __init__(self, record, Model):
-        super(EvalEnvironment, self).__init__()
+        super().__init__()
         self._record = record
         self._model = Model
 
@@ -2115,7 +2115,7 @@ class EvalEnvironment(dict):
                 return [r.id for r in value]
             else:
                 return value
-        return super(EvalEnvironment, self).__getitem__(item)
+        return super().__getitem__(item)
 
     def __getattr__(self, item):
         try:
@@ -2128,7 +2128,7 @@ class EvalEnvironment(dict):
             return self.__getitem__(item)
         except Exception:
             pass
-        return super(EvalEnvironment, self).get(item, default)
+        return super().get(item, default)
 
     def __bool__(self):
         return bool(self._record)

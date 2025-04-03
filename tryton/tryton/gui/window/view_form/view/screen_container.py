@@ -151,7 +151,7 @@ class Numbers(Between):
 class Selection(Gtk.ScrolledWindow):
 
     def __init__(self, selections):
-        super(Selection, self).__init__()
+        super().__init__()
         self.treeview = Gtk.TreeView()
         model = Gtk.ListStore(GObject.TYPE_STRING)
         for selection in selections:

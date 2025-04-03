@@ -204,7 +204,7 @@ class SharedDataMiddlewareIndex(SharedDataMiddleware):
     def __call__(self, environ, start_response):
         if environ['REQUEST_METHOD'] not in {'GET', 'HEAD'}:
             return self.app(environ, start_response)
-        return super(SharedDataMiddlewareIndex, self).__call__(
+        return super().__call__(
             environ, start_response)
 
     def get_directory_loader(self, directory):

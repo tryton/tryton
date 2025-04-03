@@ -79,7 +79,7 @@ class Dunning(metaclass=PoolMeta):
         FeeDunningLevel.save(fees)
         FeeDunningLevel.process(fees)
 
-        super(Dunning, cls).process(dunnings)
+        super().process(dunnings)
 
 
 class FeeDunningLevel(ModelSQL, ModelView):
@@ -95,7 +95,7 @@ class FeeDunningLevel(ModelSQL, ModelView):
 
     @classmethod
     def __setup__(cls):
-        super(FeeDunningLevel, cls).__setup__()
+        super().__setup__()
         t = cls.__table__()
         cls._sql_constraints = [
             ('dunning_level_unique', Unique(t, t.dunning, t.level),
@@ -174,14 +174,14 @@ class Letter(metaclass=PoolMeta):
 
     @classmethod
     def get_party_letter(cls):
-        PartyLetter = super(Letter, cls).get_party_letter()
+        PartyLetter = super().get_party_letter()
 
         class PartyLetterFee(PartyLetter):
 
             @property
             def fees(self):
                 fees = defaultdict(int)
-                fees.update(super(PartyLetterFee, self).fees)
+                fees.update(super().fees)
                 for dunning in self.dunnings:
                     for fee in dunning.fees:
                         fees[fee.currency] += fee.amount

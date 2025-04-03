@@ -124,7 +124,7 @@ class CreateShipping(metaclass=PoolMeta):
         'stock_package_shipping_ups.act_create_shipping_ups_wizard')
 
     def transition_start(self):
-        next_state = super(CreateShipping, self).transition_start()
+        next_state = super().transition_start()
         if self.record.carrier.shipping_service == 'ups':
             next_state = 'ups'
         return next_state

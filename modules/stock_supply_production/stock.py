@@ -15,7 +15,7 @@ class OrderPoint(metaclass=PoolMeta):
 
     @classmethod
     def __setup__(cls):
-        super(OrderPoint, cls).__setup__()
+        super().__setup__()
 
         cls.product.domain = [
             cls.product.domain,
@@ -45,7 +45,7 @@ class LocationLeadTime(metaclass=PoolMeta):
         Configuration = pool.get('production.configuration')
         config = Configuration(1)
         supply_period = config.get_multivalue('supply_period')
-        extra = super(LocationLeadTime, cls)._get_extra_lead_times()
+        extra = super()._get_extra_lead_times()
         extra.append(supply_period or datetime.timedelta(0))
         return extra
 
@@ -57,7 +57,7 @@ class StockSupply(metaclass=PoolMeta):
 
     @classmethod
     def types(cls):
-        return super(StockSupply, cls).types() + ['production']
+        return super().types() + ['production']
 
     def transition_create_(self):
         pool = Pool()
@@ -82,7 +82,7 @@ class StockSupply(metaclass=PoolMeta):
                 raise SupplyWarning(
                     key,
                     gettext('stock_supply_production.msg_late_productions'))
-        return super(StockSupply, self).transition_create_()
+        return super().transition_create_()
 
     @property
     def _production_parameters(self):

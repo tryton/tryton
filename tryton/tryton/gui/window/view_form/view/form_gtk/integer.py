@@ -12,7 +12,7 @@ class Integer(Widget):
     "Integer"
 
     def __init__(self, view, attrs):
-        super(Integer, self).__init__(view, attrs)
+        super().__init__(view, attrs)
         self.widget = Gtk.HBox()
         self.entry = self.mnemonic_widget = NumberEntry(
             monetary=attrs.get('monetary', False))

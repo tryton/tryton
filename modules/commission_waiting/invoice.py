@@ -19,7 +19,7 @@ class Invoice(metaclass=PoolMeta):
         pool = Pool()
         Commission = pool.get('commission')
 
-        commissions = super(Invoice, cls).create_commissions(invoices)
+        commissions = super().create_commissions(invoices)
 
         Commission.create_waiting_move(commissions)
         return commissions
@@ -47,7 +47,7 @@ class InvoiceLine(metaclass=PoolMeta):
         pool = Pool()
         MoveLine = pool.get('account.move.line')
 
-        lines = super(InvoiceLine, self).get_move_lines()
+        lines = super().get_move_lines()
         if self.from_commissions:
             amounts = defaultdict(int)
             for commission in self.from_commissions:

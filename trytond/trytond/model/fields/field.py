@@ -675,7 +675,7 @@ class FieldTranslate(Field):
     @domain_method
     def convert_domain(self, domain, tables, Model):
         if not self.translate:
-            return super(FieldTranslate, self).convert_domain(
+            return super().convert_domain(
                 domain, tables, Model)
         table, _ = tables[None]
         name, operator, value = domain

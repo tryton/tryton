@@ -22,7 +22,7 @@ class URL(Char):
     "url"
 
     def __init__(self, view, attrs):
-        super(URL, self).__init__(view, attrs)
+        super().__init__(view, attrs)
 
         self.tooltips = common.Tooltips()
         self.button = Gtk.Button()
@@ -34,7 +34,7 @@ class URL(Char):
             self.button, expand=False, fill=False, padding=0)
 
     def display(self):
-        super(URL, self).display()
+        super().display()
         self.set_tooltips()
         if self.record and 'icon' in self.attrs:
             icon = self.attrs['icon']

@@ -88,7 +88,7 @@ class Party(CompanyMultiValueMixin, metaclass=PoolMeta):
         pool = Pool()
         if field in account_names:
             return pool.get('party.party.account')
-        return super(Party, cls).multivalue_model(field)
+        return super().multivalue_model(field)
 
     @classmethod
     def _default_tax_rule(cls, type_, **pattern):
@@ -332,7 +332,7 @@ class PartyReplace(metaclass=PoolMeta):
 
     @classmethod
     def fields_to_replace(cls):
-        return super(PartyReplace, cls).fields_to_replace() + [
+        return super().fields_to_replace() + [
             ('account.move.line', 'party'),
             ]
 
@@ -341,7 +341,7 @@ class PartyErase(metaclass=PoolMeta):
     __name__ = 'party.erase'
 
     def check_erase_company(self, party, company):
-        super(PartyErase, self).check_erase_company(party, company)
+        super().check_erase_company(party, company)
         if party.receivable or party.payable:
             raise EraseError(
                 gettext('account.msg_erase_party_receivable_payable',

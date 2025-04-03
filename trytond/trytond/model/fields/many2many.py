@@ -41,7 +41,7 @@ class Many2Many(Field):
         :param search_context: The context to use when searching for a record
         :param filter: A domain to filter target records.
         '''
-        super(Many2Many, self).__init__(string=string, help=help,
+        super().__init__(string=string, help=help,
             required=required, readonly=readonly, domain=domain, states=states,
             on_change=on_change, on_change_with=on_change_with,
             depends=depends, context=context, loading=loading)
@@ -317,7 +317,7 @@ class Many2Many(Field):
         ctx = instantiate_context(self, inst)
         with Transaction().set_context(ctx):
             records = instanciate_values(Target, value)
-        super(Many2Many, self).__set__(inst, records)
+        super().__set__(inst, records)
 
     def delete(self, inst, records):
         records = set(records)

@@ -201,7 +201,7 @@ class PriceListLine(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
             if (self.category is not None
                     and self.category.id not in categories):
                 return False
-        return super(PriceListLine, self).match(pattern)
+        return super().match(pattern)
 
     def get_unit_price(self, **context):
         'Return unit price (as Decimal)'

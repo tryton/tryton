@@ -16,7 +16,7 @@ class TableHandler(PGTableHandler):
         if abstract_type.startswith('GIS_'):
             column_adder = self.add_geometry_column
         else:
-            column_adder = super(TableHandler, self).add_column
+            column_adder = super().add_column
         column_adder(column_name, abstract_type, default, comment)
 
     def add_geometry_column(self, column_name, abstract_type, default_fun=None,

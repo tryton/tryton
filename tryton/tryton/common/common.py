@@ -387,7 +387,7 @@ class ViewSearch(object):
             def default(self, obj):
                 if isinstance(obj, Decimal):
                     return float(obj)
-                return super(Encoder, self).default(obj)
+                return super().default(obj)
         self.encoder = Encoder()
 
     def load_searches(self):
@@ -759,7 +759,7 @@ class MessageDialog(UniqueDialog):
         return dialog
 
     def __call__(self, message, *args, **kwargs):
-        return super(MessageDialog, self).__call__(message, *args, **kwargs)
+        return super().__call__(message, *args, **kwargs)
 
 
 message = MessageDialog()
@@ -892,7 +892,7 @@ class ConcurrencyDialog(UniqueDialog):
         return dialog
 
     def __call__(self, model, id_, context):
-        res = super(ConcurrencyDialog, self).__call__()
+        res = super().__call__()
 
         if res == Gtk.ResponseType.OK:
             return True
@@ -970,7 +970,7 @@ class ErrorDialog(UniqueDialog):
             title = "%s: %s" % (title.__class__.__name__, title)
         details += '\n' + title
         logger.error(details)
-        return super(ErrorDialog, self).__call__(title, details)
+        return super().__call__(title, details)
 
 
 error = ErrorDialog()
@@ -1287,7 +1287,7 @@ def generateColorscheme(masterColor, keys, light=0.1):
 class RPCException(Exception):
 
     def __init__(self, exception):
-        super(RPCException, self).__init__(exception)
+        super().__init__(exception)
         self.exception = exception
 
 

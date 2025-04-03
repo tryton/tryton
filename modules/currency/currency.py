@@ -67,7 +67,7 @@ class Currency(
 
     @classmethod
     def __setup__(cls):
-        super(Currency, cls).__setup__()
+        super().__setup__()
         cls._order.insert(0, ('code', 'ASC'))
         cls.__rpc__.update({
                 'compute': RPC(instantiate=slice(0, 3, 2)),
@@ -80,7 +80,7 @@ class Currency(
         data = Data.__table__()
         cursor = Transaction().connection.cursor()
 
-        super(Currency, cls).__register__(module_name)
+        super().__register__(module_name)
 
         table_h = cls.__table_handler__(module_name)
 
@@ -101,7 +101,7 @@ class Currency(
 
     @classmethod
     def search_global(cls, text):
-        for record, rec_name, icon in super(Currency, cls).search_global(text):
+        for record, rec_name, icon in super().search_global(text):
             icon = icon or 'tryton-currency'
             yield record, rec_name, icon
 

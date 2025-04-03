@@ -36,7 +36,7 @@ class Configuration(metaclass=PoolMeta):
         pool = Pool()
         if field == 'sale_shipment_cost_method':
             return pool.get('sale.configuration.sale_method')
-        return super(Configuration, cls).multivalue_model(field)
+        return super().multivalue_model(field)
 
     @classmethod
     def default_sale_shipment_cost_method(cls, **pattern):
@@ -153,7 +153,7 @@ class Sale(metaclass=PoolMeta):
 
     @fields.depends('carrier', methods=['on_change_with_available_carriers'])
     def on_change_party(self):
-        super(Sale, self).on_change_party()
+        super().on_change_party()
         if self.party and self.party.sale_shipment_cost_method != 'default':
             self.shipment_cost_method = self.party.sale_shipment_cost_method
         else:
@@ -170,7 +170,7 @@ class Sale(metaclass=PoolMeta):
         'carrier', 'shipment_cost_method',
         methods=['on_change_with_available_carriers'])
     def on_change_shipment_party(self):
-        super(Sale, self).on_change_shipment_party()
+        super().on_change_shipment_party()
         self.available_carriers = self.on_change_with_available_carriers()
         if not self.available_carriers:
             self.carrier = None
@@ -187,7 +187,7 @@ class Sale(metaclass=PoolMeta):
         methods=['on_change_with_available_carriers'])
     def on_change_shipment_address(self):
         try:
-            super_on_change = super(Sale, self).on_change_shipment_address
+            super_on_change = super().on_change_shipment_address
         except AttributeError:
             pass
         else:
@@ -225,7 +225,7 @@ class Sale(metaclass=PoolMeta):
             removed.extend(sale.set_shipment_cost())
         Line.delete(removed)
         cls.save(sales)
-        super(Sale, cls).quote(sales)
+        super().quote(sales)
 
     @classmethod
     @ModelView.button
@@ -237,7 +237,7 @@ class Sale(metaclass=PoolMeta):
                     gettext('sale_shipment_cost.msg_sale_invalid_carrier',
                         sale=sale.rec_name,
                         carrier=sale.carrier.rec_name))
-        super(Sale, cls).confirm(sales)
+        super().confirm(sales)
 
     @classmethod
     @ModelView.button
@@ -480,7 +480,7 @@ class ReturnSale(metaclass=PoolMeta):
         pool = Pool()
         Sale = pool.get('sale.sale')
         SaleLine = pool.get('sale.line')
-        action, data = super(ReturnSale, self).do_return_(action)
+        action, data = super().do_return_(action)
 
         return_sales = Sale.browse(data['res_id'])
         lines = []
@@ -508,7 +508,7 @@ class Promotion(metaclass=PoolMeta):
         return False
 
     def get_context_formula(self, sale_line):
-        context = super(Promotion, self).get_context_formula(sale_line)
+        context = super().get_context_formula(sale_line)
         if sale_line and sale_line.shipment_cost is not None:
             context['names']['unit_price'] = sale_line.shipment_cost
         return context

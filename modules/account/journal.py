@@ -52,7 +52,7 @@ class Journal(
 
     @classmethod
     def __setup__(cls):
-        super(Journal, cls).__setup__()
+        super().__setup__()
         cls._order.insert(0, ('name', 'ASC'))
 
     @classmethod
@@ -199,7 +199,7 @@ class JournalPeriod(Workflow, ModelSQL, ModelView):
 
     @classmethod
     def __setup__(cls):
-        super(JournalPeriod, cls).__setup__()
+        super().__setup__()
         t = cls.__table__()
         cls._sql_constraints += [
             ('journal_period_uniq', Unique(t, t.journal, t.period),
@@ -285,7 +285,7 @@ class JournalPeriod(Workflow, ModelSQL, ModelView):
                         gettext('account'
                             '.msg_create_journal_period_closed_period',
                             period=period.rec_name))
-        return super(JournalPeriod, cls).create(vlist)
+        return super().create(vlist)
 
     @classmethod
     def write(cls, *args):
@@ -302,12 +302,12 @@ class JournalPeriod(Workflow, ModelSQL, ModelView):
                                 '.msg_open_journal_period_closed_period',
                                 journal_period=journal_period.rec_name,
                                 period=journal_period.period.rec_name))
-        super(JournalPeriod, cls).write(*args)
+        super().write(*args)
 
     @classmethod
     def delete(cls, periods):
         cls._check(periods)
-        super(JournalPeriod, cls).delete(periods)
+        super().delete(periods)
 
     @classmethod
     @ModelView.button

@@ -14,7 +14,7 @@ class StateMixin(object):
 
     def __init__(self, *args, **kwargs):
         self.attrs = kwargs.pop('attrs')
-        super(StateMixin, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
 
     def state_set(self, record):
         if record:
@@ -30,7 +30,7 @@ class StateMixin(object):
 class Label(StateMixin, Gtk.Label):
 
     def state_set(self, record):
-        super(Label, self).state_set(record)
+        super().state_set(record)
         if 'name' in self.attrs and record:
             field = record.group.fields[self.attrs['name']]
         else:
@@ -61,7 +61,7 @@ class VBox(StateMixin, Gtk.VBox):
 class Image(StateMixin, Gtk.Image):
 
     def state_set(self, record):
-        super(Image, self).state_set(record)
+        super().state_set(record)
         if not record:
             return
         name = self.attrs['name']
@@ -84,7 +84,7 @@ class Frame(StateMixin, Gtk.Frame):
     def __init__(self, label=None, attrs=None):
         if not label:  # label must be None to have no label widget
             label = None
-        super(Frame, self).__init__(label=label, attrs=attrs)
+        super().__init__(label=label, attrs=attrs)
         if not label:
             self.set_shadow_type(Gtk.ShadowType.NONE)
         self.set_border_width(0)
@@ -95,7 +95,7 @@ class ScrolledWindow(StateMixin, Gtk.ScrolledWindow):
     def state_set(self, record):
         # Force to show first to ensure it is displayed in the Notebook
         self.show()
-        super(ScrolledWindow, self).state_set(record)
+        super().state_set(record)
 
 
 class Notebook(StateMixin, Gtk.Notebook):
@@ -107,7 +107,7 @@ class Expander(StateMixin, Gtk.Expander):
     def __init__(self, label=None, attrs=None):
         if not label:
             label = None
-        super(Expander, self).__init__(label=label, attrs=attrs)
+        super().__init__(label=label, attrs=attrs)
 
 
 class Link(StateMixin, Gtk.Button):

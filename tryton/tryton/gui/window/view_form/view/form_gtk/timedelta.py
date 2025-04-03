@@ -10,7 +10,7 @@ from .widget import Widget
 class TimeDelta(Widget):
 
     def __init__(self, view, attrs):
-        super(TimeDelta, self).__init__(view, attrs)
+        super().__init__(view, attrs)
 
         self.widget = Gtk.HBox()
         self.entry = self.mnemonic_widget = Gtk.Entry()
@@ -37,7 +37,7 @@ class TimeDelta(Widget):
         return self.entry.get_text()
 
     def display(self):
-        super(TimeDelta, self).display()
+        super().display()
         if not self.field:
             value = ''
         else:
@@ -46,5 +46,5 @@ class TimeDelta(Widget):
         reset_position(self.entry)
 
     def _readonly_set(self, value):
-        super(TimeDelta, self)._readonly_set(value)
+        super()._readonly_set(value)
         self.entry.set_editable(not value)

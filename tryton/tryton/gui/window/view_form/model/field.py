@@ -228,7 +228,7 @@ class CharField(Field):
         super().set(record, value)
 
     def get(self, record):
-        return super(CharField, self).get(record) or self._default
+        return super().get(record) or self._default
 
     def set_client(self, record, value, force_change=False):
         if isinstance(value, bytes):
@@ -301,11 +301,11 @@ class DateTimeField(Field):
             value = datetime.datetime.combine(value, time)
         if value:
             value = common.untimezoned_date(value)
-        super(DateTimeField, self).set_client(record, value,
+        super().set_client(record, value,
             force_change=force_change)
 
     def get_client(self, record):
-        value = super(DateTimeField, self).get_client(record)
+        value = super().get_client(record)
         if value:
             return common.timezoned_date(value)
 
@@ -325,7 +325,7 @@ class DateField(Field):
         if isinstance(value, datetime.datetime):
             assert value.time() == datetime.time()
             value = value.date()
-        super(DateField, self).set_client(record, value,
+        super().set_client(record, value,
             force_change=force_change)
 
     def date_format(self, record):
@@ -343,7 +343,7 @@ class TimeField(Field):
     def set_client(self, record, value, force_change=False):
         if isinstance(value, datetime.datetime):
             value = value.time()
-        super(TimeField, self).set_client(record, value,
+        super().set_client(record, value,
             force_change=force_change)
 
     def time_format(self, record):
@@ -363,11 +363,11 @@ class TimeDeltaField(Field):
     def set_client(self, record, value, force_change=False):
         if isinstance(value, str):
             value = common.timedelta.parse(value, self.converter(record.group))
-        super(TimeDeltaField, self).set_client(
+        super().set_client(
             record, value, force_change=force_change)
 
     def get_client(self, record):
-        value = super(TimeDeltaField, self).get_client(record)
+        value = super().get_client(record)
         return common.timedelta.format(value, self.converter(record.group))
 
 
@@ -468,7 +468,7 @@ class FloatField(Field):
 
     def set_client(self, record, value, force_change=False, factor=1):
         value = self.apply_factor(record, self.convert(value), factor)
-        super(FloatField, self).set_client(record, value,
+        super().set_client(record, value,
             force_change=force_change)
 
     def get_client(self, record, factor=1, grouping=True):
@@ -501,11 +501,11 @@ class NumericField(FloatField):
     _convert = Decimal
 
     def set_client(self, record, value, force_change=False, factor=1):
-        return super(NumericField, self).set_client(record, value,
+        return super().set_client(record, value,
             force_change=force_change, factor=Decimal(str(factor)))
 
     def get_client(self, record, factor=1, grouping=True):
-        return super(NumericField, self).get_client(record,
+        return super().get_client(record,
             factor=Decimal(str(factor)), grouping=grouping)
 
 
@@ -514,11 +514,11 @@ class IntegerField(FloatField):
     _convert = int
 
     def set_client(self, record, value, force_change=False, factor=1):
-        return super(IntegerField, self).set_client(record, value,
+        return super().set_client(record, value,
             force_change=force_change, factor=int(factor))
 
     def get_client(self, record, factor=1, grouping=True):
-        return super(IntegerField, self).get_client(
+        return super().get_client(
             record, factor=int(factor), grouping=grouping)
 
 
@@ -528,7 +528,7 @@ class BooleanField(Field):
 
     def set_client(self, record, value, force_change=False):
         value = bool(value)
-        super(BooleanField, self).set_client(record, value,
+        super().set_client(record, value,
             force_change=force_change)
 
     def get(self, record):
@@ -567,7 +567,7 @@ class M2OField(Field):
         if value and value < 0 and self.name != record.parent_name:
             value, rec_name = None, ''
         record.value.setdefault(self.name + '.', {})['rec_name'] = rec_name
-        super(M2OField, self).set_client(record, value,
+        super().set_client(record, value,
             force_change=force_change)
 
     def set(self, record, value):
@@ -583,7 +583,7 @@ class M2OField(Field):
         record.value[self.name] = value
 
     def get_context(self, record, record_context=None, local=False):
-        context = super(M2OField, self).get_context(
+        context = super().get_context(
             record, record_context=record_context, local=local)
         if self.attrs.get('datetime_field'):
             context['_datetime'] = record.get_eval(
@@ -603,7 +603,7 @@ class M2OField(Field):
         if record.parent_name == self.name and record.parent:
             return record.parent.get_on_change_value(
                 skip={record.group.child_name})
-        return super(M2OField, self).get_on_change_value(record)
+        return super().get_on_change_value(record)
 
 
 class O2OField(M2OField):
@@ -619,7 +619,7 @@ class O2MField(Field):
     _single_value = False
 
     def __init__(self, attrs):
-        super(O2MField, self).__init__(attrs)
+        super().__init__(attrs)
 
     def _set_default_value(self, record, fields=None):
         if record.value.get(self.name) is not None:
@@ -910,7 +910,7 @@ class O2MField(Field):
             if not record2.validate(softvalidation=softvalidation,
                     pre_validate=ldomain):
                 invalid = 'children'
-        test = super(O2MField, self).validate(record, softvalidation,
+        test = super().validate(record, softvalidation,
             pre_validate)
         if test and invalid:
             self.get_state_attrs(record)['invalid'] = invalid
@@ -919,7 +919,7 @@ class O2MField(Field):
 
     def state_set(self, record, states=('readonly', 'required', 'invisible')):
         self._set_default_value(record)
-        super(O2MField, self).state_set(record, states=states)
+        super().state_set(record, states=states)
 
     def get_removed_ids(self, record):
         return [x.id for x in record.value[self.name].record_removed]
@@ -942,7 +942,7 @@ class ReferenceField(Field):
     _default = None
 
     def _is_empty(self, record):
-        result = super(ReferenceField, self)._is_empty(record)
+        result = super()._is_empty(record)
         if not result and (record.value[self.name] is None
                 or record.value[self.name][1] < 0):
             result = True
@@ -984,7 +984,7 @@ class ReferenceField(Field):
                     rec_name = ''
             record.value.setdefault(self.name + '.', {})['rec_name'] = rec_name
             value = (ref_model, ref_id)
-        super(ReferenceField, self).set_client(record, value,
+        super().set_client(record, value,
             force_change=force_change)
 
     def set(self, record, value):
@@ -1019,7 +1019,7 @@ class ReferenceField(Field):
         record.value.setdefault(self.name + '.', {})['rec_name'] = rec_name
 
     def get_context(self, record, record_context=None, local=False):
-        context = super(ReferenceField, self).get_context(
+        context = super().get_context(
             record, record_context, local=local)
         if self.attrs.get('datetime_field'):
             context['_datetime'] = record.get_eval(
@@ -1030,7 +1030,7 @@ class ReferenceField(Field):
         if record.parent_name == self.name and record.parent:
             return record.parent.model_name, record.parent.get_on_change_value(
                 skip={record.group.child_name})
-        return super(ReferenceField, self).get_on_change_value(record)
+        return super().get_on_change_value(record)
 
     def validation_domains(self, record, pre_validate=None):
         screen_domain, attr_domain = self.domains_get(record, pre_validate)
@@ -1178,7 +1178,7 @@ class DictField(Field):
     _single_value = False
 
     def __init__(self, attrs):
-        super(DictField, self).__init__(attrs)
+        super().__init__(attrs)
         self.keys = {}
 
     def get(self, record):
@@ -1237,7 +1237,7 @@ class DictField(Field):
         return new_keys
 
     def validate(self, record, softvalidation=False, pre_validate=None):
-        valid = super(DictField, self).validate(
+        valid = super().validate(
             record, softvalidation, pre_validate)
 
         if self.attrs.get('readonly'):

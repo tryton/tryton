@@ -64,7 +64,7 @@ class WorkCenter(DeactivableMixin, tree(separator=' / '), ModelSQL, ModelView):
 
     @classmethod
     def __setup__(cls):
-        super(WorkCenter, cls).__setup__()
+        super().__setup__()
         cls._order.insert(0, ('name', 'ASC'))
 
     @classmethod
@@ -274,7 +274,7 @@ class Work(sequence_ordered(), ModelSQL, ModelView):
 
     @classmethod
     def create(cls, values):
-        works = super(Work, cls).create(values)
+        works = super().create(values)
         cls.set_state(works)
         return works
 
@@ -291,7 +291,7 @@ class Work(sequence_ordered(), ModelSQL, ModelView):
                 raise AccessError(
                     gettext('production_work.msg_delete_request',
                         work=work.rec_name))
-        super(Work, cls).delete(works)
+        super().delete(works)
 
 
 def set_work_state(func):
@@ -340,7 +340,7 @@ class WorkCycle(Workflow, ModelSQL, ModelView):
 
     @classmethod
     def __setup__(cls):
-        super(WorkCycle, cls).__setup__()
+        super().__setup__()
         t = cls.__table__()
         cls._sql_indexes.add(
             Index(

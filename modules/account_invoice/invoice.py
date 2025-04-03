@@ -361,7 +361,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin, InvoiceReportMixin):
         Party = pool.get('party.party')
         cls.number.search_unaccented = False
         cls.reference.search_unaccented = False
-        super(Invoice, cls).__setup__()
+        super().__setup__()
         t = cls.__table__()
         cls._sql_indexes.update({
                 Index(t, (t.reference, Index.Similarity())),
@@ -492,7 +492,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin, InvoiceReportMixin):
     def __register__(cls, module_name):
         sql_table = cls.__table__()
 
-        super(Invoice, cls).__register__(module_name)
+        super().__register__(module_name)
         transaction = Transaction()
         cursor = transaction.connection.cursor()
         table = cls.__table_handler__(module_name)
@@ -1481,7 +1481,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin, InvoiceReportMixin):
                 raise AccessError(
                     gettext('account_invoice.msg_invoice_delete_numbered',
                         invoice=invoice.rec_name))
-        super(Invoice, cls).delete(invoices)
+        super().delete(invoices)
 
     @classmethod
     def create(cls, vlist):
@@ -1498,7 +1498,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin, InvoiceReportMixin):
                 cls.check_modify(invoices)
             all_invoices += invoices
         update_tax = [i for i in all_invoices if i.state == 'draft']
-        super(Invoice, cls).write(*args)
+        super().write(*args)
         if update_tax:
             cls.update_taxes(update_tax)
 
@@ -1541,11 +1541,11 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin, InvoiceReportMixin):
         default.setdefault('validated_by')
         default.setdefault('posted_by')
         default.setdefault('invoice_report_revisions', None)
-        return super(Invoice, cls).copy(invoices, default=default)
+        return super().copy(invoices, default=default)
 
     @classmethod
     def validate(cls, invoices):
-        super(Invoice, cls).validate(invoices)
+        super().validate(invoices)
         for invoice in invoices:
             invoice.check_payment_lines()
 
@@ -2167,7 +2167,7 @@ class InvoicePaymentLine(ModelSQL):
 
     @classmethod
     def __setup__(cls):
-        super(InvoicePaymentLine, cls).__setup__()
+        super().__setup__()
         t = cls.__table__()
         cls._sql_constraints = [
             ('line_unique', Unique(t, t.line),
@@ -2389,7 +2389,7 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
 
     @classmethod
     def __setup__(cls):
-        super(InvoiceLine, cls).__setup__()
+        super().__setup__()
         cls._check_modify_exclude = {'note', 'origin', 'description'}
 
         # Set account domain dynamically for kind
@@ -2429,7 +2429,7 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
 
     @classmethod
     def __register__(cls, module_name):
-        super(InvoiceLine, cls).__register__(module_name)
+        super().__register__(module_name)
         table = cls.__table_handler__(module_name)
         # Migration from 5.0: remove check constraints
         table.drop_constraint('type_account')
@@ -2845,14 +2845,14 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
     @classmethod
     def delete(cls, lines):
         cls.check_modify(lines)
-        super(InvoiceLine, cls).delete(lines)
+        super().delete(lines)
 
     @classmethod
     def write(cls, *args):
         actions = iter(args)
         for lines, values in zip(actions, actions):
             cls.check_modify(lines, set(values))
-        super(InvoiceLine, cls).write(*args)
+        super().write(*args)
 
     @classmethod
     def create(cls, vlist):
@@ -2864,7 +2864,7 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
                 raise AccessError(
                     gettext('account_invoice.msg_invoice_line_create_draft',
                         invoice=invoice.rec_name))
-        return super(InvoiceLine, cls).create(vlist)
+        return super().create(vlist)
 
     @classmethod
     def copy(cls, lines, default=None):
@@ -2873,7 +2873,7 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
         else:
             default = default.copy()
         default.setdefault('origin', None)
-        return super(InvoiceLine, cls).copy(lines, default=default)
+        return super().copy(lines, default=default)
 
     def _compute_taxes(self):
         pool = Pool()
@@ -3177,14 +3177,14 @@ class InvoiceTax(sequence_ordered(), ModelSQL, ModelView):
     @classmethod
     def delete(cls, taxes):
         cls.check_modify(taxes)
-        super(InvoiceTax, cls).delete(taxes)
+        super().delete(taxes)
 
     @classmethod
     def write(cls, *args):
         actions = iter(args)
         for taxes, values in zip(actions, actions):
             cls.check_modify(taxes, set(values))
-        super(InvoiceTax, cls).write(*args)
+        super().write(*args)
 
     @classmethod
     def create(cls, vlist):
@@ -3196,7 +3196,7 @@ class InvoiceTax(sequence_ordered(), ModelSQL, ModelView):
                 raise AccessError(
                     gettext('account_invoice.msg_invoice_tax_create_draft',
                         invoice=invoice.rec_name))
-        return super(InvoiceTax, cls).create(vlist)
+        return super().create(vlist)
 
     def get_move_lines(self):
         '''
@@ -3374,7 +3374,7 @@ class InvoiceReport(Report):
 
     @classmethod
     def __setup__(cls):
-        super(InvoiceReport, cls).__setup__()
+        super().__setup__()
         cls.__rpc__['execute'] = RPC(False)
 
     @classmethod
@@ -3560,7 +3560,7 @@ class PayInvoice(Wizard):
 
     @classmethod
     def __setup__(cls):
-        super(PayInvoice, cls).__setup__()
+        super().__setup__()
         cls.__rpc__['create'].fresh_session = True
 
     def get_reconcile_lines_for_amount(self, invoice, amount, currency):

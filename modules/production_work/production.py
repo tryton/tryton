@@ -41,7 +41,7 @@ class Production(metaclass=PoolMeta):
     def draft(cls, productions):
         pool = Pool()
         Work = pool.get('production.work')
-        super(Production, cls).draft(productions)
+        super().draft(productions)
         Work.delete([w for p in productions for w in p.works
                 if w.state in ['request', 'draft']])
 
@@ -51,7 +51,7 @@ class Production(metaclass=PoolMeta):
     def cancel(cls, productions):
         pool = Pool()
         Work = pool.get('production.work')
-        super(Production, cls).cancel(productions)
+        super().cancel(productions)
         Work.delete([w for p in productions for w in p.works
                 if w.state in ['request', 'draft']])
 
@@ -65,7 +65,7 @@ class Production(metaclass=PoolMeta):
 
         draft_productions = [p for p in productions if p.state == 'draft']
 
-        super(Production, cls).wait(productions)
+        super().wait(productions)
 
         work_center_picker = WorkCenter.get_picker()
         works = []
@@ -87,7 +87,7 @@ class Production(metaclass=PoolMeta):
         pool = Pool()
         Work = pool.get('production.work')
 
-        super(Production, cls).run(productions)
+        super().run(productions)
 
         Work.set_state([w for p in productions for w in p.works])
 

@@ -19,7 +19,7 @@ class Widget(object):
     default_width_chars = 8
 
     def __init__(self, view, attrs):
-        super(Widget, self).__init__()
+        super().__init__()
         self.view = view
         self.attrs = attrs
         self.widget = None

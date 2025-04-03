@@ -152,7 +152,7 @@ class User(avatar_mixin(100, 'login'), DeactivableMixin, ModelSQL, ModelView):
 
     @classmethod
     def __setup__(cls):
-        super(User, cls).__setup__()
+        super().__setup__()
         cls.__rpc__.update({
                 'get_preferences': RPC(check_access=False),
                 'set_preferences': RPC(
@@ -198,7 +198,7 @@ class User(avatar_mixin(100, 'login'), DeactivableMixin, ModelSQL, ModelView):
         model_data = ModelData.__table__()
         table_h = cls.__table_handler__(module_name)
         cursor = Transaction().connection.cursor()
-        super(User, cls).__register__(module_name)
+        super().__register__(module_name)
 
         # Migration from 5.6: Set noupdate to admin
         cursor.execute(*model_data.update(
@@ -356,7 +356,7 @@ class User(avatar_mixin(100, 'login'), DeactivableMixin, ModelSQL, ModelView):
 
     @classmethod
     def read(cls, ids, fields_names):
-        result = super(User, cls).read(ids, fields_names)
+        result = super().read(ids, fields_names)
         cache = Transaction().get_cache().get(cls.__name__)
         for values in result:
             if 'password_hash' in values:
@@ -383,7 +383,7 @@ class User(avatar_mixin(100, 'login'), DeactivableMixin, ModelSQL, ModelView):
     @classmethod
     def create(cls, vlist):
         vlist = [cls._convert_vals(vals) for vals in vlist]
-        return super(User, cls).create(vlist)
+        return super().create(vlist)
 
     @classmethod
     def write(cls, users, values, *args):
@@ -404,7 +404,7 @@ class User(avatar_mixin(100, 'login'), DeactivableMixin, ModelSQL, ModelView):
                 session_to_clear += users
                 users_to_clear += [u.login for u in users]
 
-        super(User, cls).write(*args)
+        super().write(*args)
 
         Session.clear(session_to_clear)
         UserDevice.clear(users_to_clear)
@@ -447,7 +447,7 @@ class User(avatar_mixin(100, 'login'), DeactivableMixin, ModelSQL, ModelView):
         new_users = []
         for user in users:
             default['login'] = user.login + ' (copy)'
-            new_user, = super(User, cls).copy([user], default)
+            new_user, = super().copy([user], default)
             new_users.append(new_user)
         return new_users
 
@@ -934,7 +934,7 @@ class UserAction(ModelSQL):
     @classmethod
     def create(cls, vlist):
         vlist = [cls._convert_values(values) for values in vlist]
-        return super(UserAction, cls).create(vlist)
+        return super().create(vlist)
 
     @classmethod
     def write(cls, records, values, *args):
@@ -942,7 +942,7 @@ class UserAction(ModelSQL):
         args = []
         for records, values in zip(actions, actions):
             args.extend((records, cls._convert_values(values)))
-        super(UserAction, cls).write(*args)
+        super().write(*args)
 
 
 class UserGroup(ModelSQL):
@@ -1055,7 +1055,7 @@ class UserApplication(Workflow, ModelSQL, ModelView):
 
     @classmethod
     def __setup__(cls):
-        super(UserApplication, cls).__setup__()
+        super().__setup__()
         cls._transitions |= set((
                 ('requested', 'validated'),
                 ('requested', 'cancelled'),
@@ -1134,7 +1134,7 @@ class UserApplication(Workflow, ModelSQL, ModelView):
             # Ensure we get a different key for each record
             # default methods are called only once
             values.setdefault('key', cls.default_key())
-        applications = super(UserApplication, cls).create(vlist)
+        applications = super().create(vlist)
         return applications
 
 

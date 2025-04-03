@@ -106,7 +106,7 @@ class PurchaseRequest(ModelSQL, ModelView):
 
     @classmethod
     def __setup__(cls):
-        super(PurchaseRequest, cls).__setup__()
+        super().__setup__()
         t = cls.__table__()
         cls._sql_indexes.add(
             Index(
@@ -136,7 +136,7 @@ class PurchaseRequest(ModelSQL, ModelView):
                 and not table_h.column_exist('computed_unit')):
             table_h.column_rename('computed_uom', 'computed_unit')
 
-        super(PurchaseRequest, cls).__register__(module_name)
+        super().__register__(module_name)
 
         cursor = Transaction().connection.cursor()
 
@@ -281,7 +281,7 @@ class PurchaseRequest(ModelSQL, ModelView):
         if transaction.user and transaction.check_access:
             raise AccessError(
                 gettext('purchase_request.msg_request_no_create'))
-        return super(PurchaseRequest, cls).create(vlist)
+        return super().create(vlist)
 
     @classmethod
     def delete(cls, requests):
@@ -290,7 +290,7 @@ class PurchaseRequest(ModelSQL, ModelView):
                 raise AccessError(
                     gettext('purchase_request.msg_request_delete_purchased',
                         request=request.rec_name))
-        super(PurchaseRequest, cls).delete(requests)
+        super().delete(requests)
 
     @classmethod
     def copy(cls, requests, default=None):

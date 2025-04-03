@@ -16,7 +16,7 @@ class CompanyMultiValueMixin(MultiValueMixin):
 
     def multivalue_records(self, field):
         Value = self.multivalue_model(field)
-        records = super(CompanyMultiValueMixin, self).multivalue_records(field)
+        records = super().multivalue_records(field)
         if issubclass(Value, CompanyValueMixin):
             # Sort to get record with empty company at the end
             # and so give priority to record with company filled.
@@ -27,14 +27,14 @@ class CompanyMultiValueMixin(MultiValueMixin):
         Value = self.multivalue_model(name)
         if issubclass(Value, CompanyValueMixin):
             pattern.setdefault('company', Transaction().context.get('company'))
-        return super(CompanyMultiValueMixin, self).get_multivalue(
+        return super().get_multivalue(
             name, **pattern)
 
     def set_multivalue(self, name, value, save=True, **pattern):
         Value = self.multivalue_model(name)
         if issubclass(Value, CompanyValueMixin):
             pattern.setdefault('company', Transaction().context.get('company'))
-        return super(CompanyMultiValueMixin, self).set_multivalue(
+        return super().set_multivalue(
             name, value, save=save, **pattern)
 
 

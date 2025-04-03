@@ -38,7 +38,7 @@ class Configuration(metaclass=PoolMeta):
         pool = Pool()
         if field == 'purchase_requisition_sequence':
             return pool.get('purchase.configuration.sequence')
-        return super(Configuration, cls).multivalue_model(field)
+        return super().multivalue_model(field)
 
     @classmethod
     def default_purchase_requisition_sequence(cls, **pattern):
@@ -130,7 +130,7 @@ class PurchaseRequisition(Workflow, ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         cls.number.search_unaccented = False
-        super(PurchaseRequisition, cls).__setup__()
+        super().__setup__()
         t = cls.__table__()
         cls._sql_indexes.add(
             Index(
@@ -307,7 +307,7 @@ class PurchaseRequisition(Workflow, ModelSQL, ModelView):
                 values['number'] = config.get_multivalue(
                     'purchase_requisition_sequence',
                     company=values.get('company', default_company)).get()
-        return super(PurchaseRequisition, cls).create(vlist)
+        return super().create(vlist)
 
     @classmethod
     def delete(cls, requisitions):
@@ -318,7 +318,7 @@ class PurchaseRequisition(Workflow, ModelSQL, ModelView):
                 raise AccessError(
                     gettext('purchase_requisition.msg_delete_cancel',
                         requisition=requisition.rec_name))
-        super(PurchaseRequisition, cls).delete(requisitions)
+        super().delete(requisitions)
 
     def check_for_waiting(self):
         if not self.warehouse:
@@ -339,7 +339,7 @@ class PurchaseRequisition(Workflow, ModelSQL, ModelView):
         default.setdefault('approved_by')
         default.setdefault('rejected_by')
         default.setdefault('total_amount_cache')
-        return super(PurchaseRequisition, cls).copy(
+        return super().copy(
             requisitions, default=default)
 
     @classmethod
@@ -637,7 +637,7 @@ class PurchaseRequisitionLine(sequence_ordered(), ModelSQL, ModelView):
         else:
             default = default.copy()
         default.setdefault('purchase_requests')
-        return super(PurchaseRequisitionLine, cls).copy(lines, default=default)
+        return super().copy(lines, default=default)
 
 
 class PurchaseRequest(metaclass=PoolMeta):
@@ -645,14 +645,14 @@ class PurchaseRequest(metaclass=PoolMeta):
 
     @classmethod
     def _get_origin(cls):
-        return (super(PurchaseRequest, cls)._get_origin()
+        return (super()._get_origin()
             | {'purchase.requisition.line'})
 
     @property
     def currency(self):
         pool = Pool()
         RequisitionLine = pool.get('purchase.requisition.line')
-        currency = super(PurchaseRequest, self).currency
+        currency = super().currency
         if (isinstance(self.origin, RequisitionLine)
                 and self.origin.requisition.currency):
             return self.origin.requisition.currency
@@ -697,7 +697,7 @@ class CreatePurchase(Wizard):
     def _group_purchase_line_key(self, request):
         pool = Pool()
         RequisitionLine = pool.get('purchase.requisition.line')
-        key = super(CreatePurchase, self)._group_purchase_line_key(request)
+        key = super()._group_purchase_line_key(request)
         if isinstance(request.origin, RequisitionLine):
             unit_price = request.origin.request_unit_price
             if unit_price:

@@ -27,7 +27,7 @@ class NotificationEmailTestCase(CompanyTestMixin, ModuleTestCase):
     extras = ['company', 'commission', 'party', 'web_user']
 
     def setUp(self):
-        super(NotificationEmailTestCase, self).setUp()
+        super().setUp()
         reset_from = config.get('email', 'from', default='')
         config.set('email', 'from', FROM)
         self.addCleanup(lambda: config.set('email', 'from', reset_from))

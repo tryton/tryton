@@ -33,7 +33,7 @@ encodings = ["ascii", "big5", "big5hkscs", "cp037", "cp424", "cp437", "cp500",
 
 class WinCSV(NoModal):
     def __init__(self, *args, **kwargs):
-        super(WinCSV, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
 
         self.languages = RPCExecute(
             'model', 'ir.lang', 'search_read', [
@@ -310,7 +310,7 @@ class WinCSV(NoModal):
         return self.csv_enc.get_active_text() or 'utf_8'
 
     def destroy(self):
-        super(WinCSV, self).destroy()
+        super().destroy()
         self.dialog.destroy()
 
     def show(self):

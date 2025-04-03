@@ -402,7 +402,7 @@ class Work(Effort, Progress, Timesheet, metaclass=PoolMeta):
 
     @classmethod
     def __setup__(cls):
-        super(Work, cls).__setup__()
+        super().__setup__()
         cls._buttons.update({
                 'invoice': {
                     'invisible': ((Eval('type') != 'project')
@@ -425,7 +425,7 @@ class Work(Effort, Progress, Timesheet, metaclass=PoolMeta):
         else:
             default = default.copy()
         default.setdefault('invoice_line', None)
-        return super(Work, cls).copy(records, default=default)
+        return super().copy(records, default=default)
 
     @classmethod
     def write(cls, *args):

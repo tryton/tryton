@@ -42,7 +42,7 @@ class Template(metaclass=PoolMeta):
     @fields.depends('default_uom', 'purchase_uom', 'purchasable')
     def on_change_default_uom(self):
         try:
-            super(Template, self).on_change_default_uom()
+            super().on_change_default_uom()
         except AttributeError:
             pass
         if self.default_uom:
@@ -54,7 +54,7 @@ class Template(metaclass=PoolMeta):
 
     @classmethod
     def view_attributes(cls):
-        return super(Template, cls).view_attributes() + [
+        return super().view_attributes() + [
             ('//page[@id="suppliers"]', 'states', {
                     'invisible': ~Eval('purchasable'),
                     })]
@@ -84,7 +84,7 @@ class Template(metaclass=PoolMeta):
                     if Warning.check(name):
                         raise PurchaseUOMWarning(
                             name, gettext('purchase.msg_change_purchase_uom'))
-        super(Template, cls).write(*args)
+        super().write(*args)
 
     @classmethod
     def copy(cls, templates, default=None):
@@ -390,7 +390,7 @@ class ProductSupplier(
                 and not table.column_exist('template')):
             table.column_rename('product', 'template')
 
-        super(ProductSupplier, cls).__register__(module_name)
+        super().__register__(module_name)
 
     @staticmethod
     def default_company():
@@ -562,4 +562,4 @@ class ProductSupplierPrice(
             self.product_supplier.unit, self.quantity, unit)
         if test_quantity > abs(quantity):
             return False
-        return super(ProductSupplierPrice, self).match(pattern)
+        return super().match(pattern)

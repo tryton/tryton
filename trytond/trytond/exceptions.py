@@ -23,7 +23,7 @@ class UserWarning(TrytonException):
     "Exception that will be displayed as a warning message in the client."
 
     def __init__(self, name, message, description=''):
-        super(UserWarning, self).__init__('UserWarning', (name, message,
+        super().__init__('UserWarning', (name, message,
                 description))
         self.name = name
         self.message = message
@@ -40,7 +40,7 @@ class LoginException(TrytonException):
     """
 
     def __init__(self, name, message, type='password'):
-        super(LoginException, self).__init__(
+        super().__init__(
             'LoginException', (name, message, type))
         self.name = name
         self.message = message
@@ -51,7 +51,7 @@ class LoginException(TrytonException):
 class ConcurrencyException(TrytonException):
 
     def __init__(self, message):
-        super(ConcurrencyException, self).__init__('ConcurrencyException',
+        super().__init__('ConcurrencyException',
             message)
         self.message = message
         self.code = 4

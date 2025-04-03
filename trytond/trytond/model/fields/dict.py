@@ -29,7 +29,7 @@ class Dict(Field):
             readonly=False, domain=None, states=None,
             on_change=None, on_change_with=None, depends=None,
             context=None, loading='lazy'):
-        super(Dict, self).__init__(string, help, required, readonly, domain,
+        super().__init__(string, help, required, readonly, domain,
             states, on_change, on_change_with, depends, context, loading)
         self.schema_model = schema_model
         self.search_unaccented = True

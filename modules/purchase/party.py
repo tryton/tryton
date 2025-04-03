@@ -71,7 +71,7 @@ class PartyReplace(metaclass=PoolMeta):
 
     @classmethod
     def fields_to_replace(cls):
-        return super(PartyReplace, cls).fields_to_replace() + [
+        return super().fields_to_replace() + [
             ('purchase.product_supplier', 'party'),
             ('purchase.purchase', 'party'),
             ('purchase.purchase', 'invoice_party'),
@@ -84,7 +84,7 @@ class PartyErase(metaclass=PoolMeta):
     def check_erase_company(self, party, company):
         pool = Pool()
         Purchase = pool.get('purchase.purchase')
-        super(PartyErase, self).check_erase_company(party, company)
+        super().check_erase_company(party, company)
 
         purchases = Purchase.search([
                 ('party', '=', party.id),

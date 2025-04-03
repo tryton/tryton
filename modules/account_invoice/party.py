@@ -27,7 +27,7 @@ class ContactMechanism(metaclass=PoolMeta):
         if _fields is None:
             _fields = []
         _fields.append('invoice')
-        return super(ContactMechanism, cls).usages(_fields=_fields)
+        return super().usages(_fields=_fields)
 
 
 class Party(metaclass=PoolMeta):
@@ -42,7 +42,7 @@ class Party(metaclass=PoolMeta):
         pool = Pool()
         if field in {'customer_payment_term', 'supplier_payment_term'}:
             return pool.get('party.party.payment_term')
-        return super(Party, cls).multivalue_model(field)
+        return super().multivalue_model(field)
 
     @classmethod
     def default_customer_payment_term(cls, **pattern):

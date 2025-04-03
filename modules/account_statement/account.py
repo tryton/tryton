@@ -11,7 +11,7 @@ class Journal(metaclass=PoolMeta):
 
     @classmethod
     def __setup__(cls):
-        super(Journal, cls).__setup__()
+        super().__setup__()
         cls.type.selection.append(('statement', "Statement"))
 
 
@@ -20,7 +20,7 @@ class Move(metaclass=PoolMeta):
 
     @classmethod
     def _get_origin(cls):
-        return super(Move, cls)._get_origin() + ['account.statement']
+        return super()._get_origin() + ['account.statement']
 
     @dualmethod
     @ModelView.button

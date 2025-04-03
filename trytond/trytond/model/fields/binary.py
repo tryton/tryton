@@ -30,7 +30,7 @@ class Binary(Field):
         self.filename = filename
         self.file_id = file_id
         self.store_prefix = store_prefix
-        super(Binary, self).__init__(string=string, help=help,
+        super().__init__(string=string, help=help,
             required=required, readonly=readonly, domain=domain, states=states,
             on_change=on_change, on_change_with=on_change_with,
             depends=depends, context=context, loading=loading)

@@ -68,7 +68,7 @@ class Inventory(Workflow, ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         cls.number.search_unaccented = False
-        super(Inventory, cls).__setup__()
+        super().__setup__()
         t = cls.__table__()
         cls._sql_indexes.add(
             Index(
@@ -101,7 +101,7 @@ class Inventory(Workflow, ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
-        super(Inventory, cls).__register__(module_name)
+        super().__register__(module_name)
 
         cursor = Transaction().connection.cursor()
         table = cls.__table_handler__(module_name)
@@ -172,7 +172,7 @@ class Inventory(Workflow, ModelSQL, ModelView):
                 raise AccessError(
                     gettext('stock.msg_inventory_delete_cancel',
                         inventory=inventory.rec_name))
-        super(Inventory, cls).delete(inventories)
+        super().delete(inventories)
 
     @classmethod
     @ModelView.button
@@ -242,7 +242,7 @@ class Inventory(Workflow, ModelSQL, ModelView):
                 values['number'] = config.get_multivalue(
                     'inventory_sequence',
                     company=values.get('company', default_company)).get()
-        inventories = super(Inventory, cls).create(vlist)
+        inventories = super().create(vlist)
         cls.complete_lines(inventories, fill=False)
         return inventories
 
@@ -406,7 +406,7 @@ class InventoryLine(ModelSQL, ModelView):
 
     @classmethod
     def __setup__(cls):
-        super(InventoryLine, cls).__setup__()
+        super().__setup__()
         cls.__access__.add('inventory')
         t = cls.__table__()
         cls._sql_constraints += [
@@ -537,7 +537,7 @@ class InventoryLine(ModelSQL, ModelView):
                     gettext('stock.msg_inventory_line_delete_cancel',
                         line=line.rec_name,
                         inventory=line.inventory.rec_name))
-        super(InventoryLine, cls).delete(lines)
+        super().delete(lines)
 
 
 class Count(Wizard):

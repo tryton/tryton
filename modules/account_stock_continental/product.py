@@ -70,7 +70,7 @@ class Category(metaclass=PoolMeta):
         pool = Pool()
         if field in account_names:
             return pool.get('product.category.account')
-        return super(Category, cls).multivalue_model(field)
+        return super().multivalue_model(field)
 
     @property
     @account_used('account_stock')
@@ -142,7 +142,7 @@ class Template(metaclass=PoolMeta):
 
     @classmethod
     def __setup__(cls):
-        super(Template, cls).__setup__()
+        super().__setup__()
         cls._modify_no_move.append(
             ('cost_price',
                 'account_stock_continental.msg_product_change_cost_price'))

@@ -450,7 +450,7 @@ class ShipmentIn(
 
     @classmethod
     def __setup__(cls):
-        super(ShipmentIn, cls).__setup__()
+        super().__setup__()
         t = cls.__table__()
         cls._sql_indexes.update({
                 Index(
@@ -496,7 +496,7 @@ class ShipmentIn(
         sql_table = cls.__table__()
         location = Location.__table__()
 
-        super(ShipmentIn, cls).__register__(module_name)
+        super().__register__(module_name)
 
         # Migration from 5.6: rename state cancel to cancelled
         cursor.execute(*sql_table.update(
@@ -626,14 +626,14 @@ class ShipmentIn(
 
     @classmethod
     def create(cls, vlist):
-        shipments = super(ShipmentIn, cls).create(vlist)
+        shipments = super().create(vlist)
         cls.set_number(shipments)
         cls._set_move_planned_date(shipments)
         return shipments
 
     @classmethod
     def write(cls, *args):
-        super(ShipmentIn, cls).write(*args)
+        super().write(*args)
         cls._set_move_planned_date(sum(args[::2], []))
 
     @classmethod
@@ -645,7 +645,7 @@ class ShipmentIn(
         default.setdefault('moves.origin', None)
         default.setdefault('received_by', None)
         default.setdefault('done_by', None)
-        return super(ShipmentIn, cls).copy(shipments, default=default)
+        return super().copy(shipments, default=default)
 
     def _get_inventory_move(self, incoming_move):
         'Return inventory move for the incoming move'
@@ -698,7 +698,7 @@ class ShipmentIn(
                     gettext('stock.msg_shipment_delete_cancel',
                         shipment=shipment.rec_name))
         Move.delete([m for s in shipments for m in s.moves])
-        super(ShipmentIn, cls).delete(shipments)
+        super().delete(shipments)
 
     @classmethod
     @ModelView.button
@@ -857,7 +857,7 @@ class ShipmentInReturn(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
 
     @classmethod
     def __setup__(cls):
-        super(ShipmentInReturn, cls).__setup__()
+        super().__setup__()
         t = cls.__table__()
         cls._sql_indexes.update({
                 Index(
@@ -918,7 +918,7 @@ class ShipmentInReturn(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
         cursor = Transaction().connection.cursor()
         sql_table = cls.__table__()
 
-        super(ShipmentInReturn, cls).__register__(module_name)
+        super().__register__(module_name)
 
         # Migration from 5.6: rename state cancel to cancelled
         cursor.execute(*sql_table.update(
@@ -974,13 +974,13 @@ class ShipmentInReturn(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
 
     @classmethod
     def create(cls, vlist):
-        shipments = super(ShipmentInReturn, cls).create(vlist)
+        shipments = super().create(vlist)
         cls._set_move_planned_date(shipments)
         return shipments
 
     @classmethod
     def write(cls, *args):
-        super(ShipmentInReturn, cls).write(*args)
+        super().write(*args)
         cls._set_move_planned_date(sum(args[::2], []))
 
     @classmethod
@@ -994,7 +994,7 @@ class ShipmentInReturn(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
                     gettext('stock.msg_shipment_delete_cancel',
                         shipment=shipment.rec_name))
         Move.delete([m for s in shipments for m in s.moves])
-        super(ShipmentInReturn, cls).delete(shipments)
+        super().delete(shipments)
 
     @classmethod
     def copy(cls, shipments, default=None):
@@ -1005,7 +1005,7 @@ class ShipmentInReturn(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
         default.setdefault('moves.origin', None)
         default.setdefault('assigned_by', None)
         default.setdefault('done_by', None)
-        return super(ShipmentInReturn, cls).copy(shipments, default=default)
+        return super().copy(shipments, default=default)
 
     @classmethod
     @ModelView.button
@@ -1277,7 +1277,7 @@ class ShipmentOut(
 
     @classmethod
     def __setup__(cls):
-        super(ShipmentOut, cls).__setup__()
+        super().__setup__()
         t = cls.__table__()
         cls._sql_indexes.update({
                 Index(
@@ -1385,7 +1385,7 @@ class ShipmentOut(
         if table.column_exist('assigned_by'):
             table.column_rename('assigned_by', 'picked_by')
 
-        super(ShipmentOut, cls).__register__(module_name)
+        super().__register__(module_name)
 
         # Migration from 5.6: rename state cancel to cancelled
         cursor.execute(*sql_table.update(
@@ -1767,13 +1767,13 @@ class ShipmentOut(
 
     @classmethod
     def create(cls, vlist):
-        shipments = super(ShipmentOut, cls).create(vlist)
+        shipments = super().create(vlist)
         cls._set_move_planned_date(shipments)
         return shipments
 
     @classmethod
     def write(cls, *args):
-        super(ShipmentOut, cls).write(*args)
+        super().write(*args)
         cls._set_move_planned_date(sum(args[::2], []))
 
     @classmethod
@@ -1786,7 +1786,7 @@ class ShipmentOut(
         default.setdefault('picked_by', None)
         default.setdefault('packed_by', None)
         default.setdefault('done_by', None)
-        return super(ShipmentOut, cls).copy(shipments, default=default)
+        return super().copy(shipments, default=default)
 
     @classmethod
     def delete(cls, shipments):
@@ -1799,7 +1799,7 @@ class ShipmentOut(
                     gettext('stock.msg_shipment_delete_cancel',
                         shipment=shipment.rec_name))
         Move.delete([m for s in shipments for m in s.moves])
-        super(ShipmentOut, cls).delete(shipments)
+        super().delete(shipments)
 
     @classmethod
     @ModelView.button_action('stock.wizard_shipment_out_assign')
@@ -1985,7 +1985,7 @@ class ShipmentOutReturn(
 
     @classmethod
     def __setup__(cls):
-        super(ShipmentOutReturn, cls).__setup__()
+        super().__setup__()
         t = cls.__table__()
         cls._sql_indexes.update({
                 Index(
@@ -2033,7 +2033,7 @@ class ShipmentOutReturn(
         # Migration from 6.4: rename delivery_address to contact_address
         table.column_rename('delivery_address', 'contact_address')
 
-        super(ShipmentOutReturn, cls).__register__(module_name)
+        super().__register__(module_name)
 
         # Migration from 5.6: rename state cancel to cancelled
         cursor.execute(*sql_table.update(
@@ -2156,14 +2156,14 @@ class ShipmentOutReturn(
 
     @classmethod
     def create(cls, vlist):
-        shipments = super(ShipmentOutReturn, cls).create(vlist)
+        shipments = super().create(vlist)
         cls.set_number(shipments)
         cls._set_move_planned_date(shipments)
         return shipments
 
     @classmethod
     def write(cls, *args):
-        super(ShipmentOutReturn, cls).write(*args)
+        super().write(*args)
         cls._set_move_planned_date(sum(args[::2], []))
 
     @classmethod
@@ -2174,7 +2174,7 @@ class ShipmentOutReturn(
         default.setdefault('moves.origin', None)
         default.setdefault('received_by', None)
         default.setdefault('done_by', None)
-        return super(ShipmentOutReturn, cls).copy(shipments, default=default)
+        return super().copy(shipments, default=default)
 
     @classmethod
     def delete(cls, shipments):
@@ -2187,7 +2187,7 @@ class ShipmentOutReturn(
                     gettext('stock.msg_shipment_delete_cancel',
                         shipment=shipment.rec_name))
         Move.delete([m for s in shipments for m in s.moves])
-        super(ShipmentOutReturn, cls).delete(shipments)
+        super().delete(shipments)
 
     @classmethod
     @ModelView.button
@@ -2476,7 +2476,7 @@ class ShipmentInternal(
 
     @classmethod
     def __setup__(cls):
-        super(ShipmentInternal, cls).__setup__()
+        super().__setup__()
         t = cls.__table__()
         cls._sql_indexes.update({
                 Index(
@@ -2562,7 +2562,7 @@ class ShipmentInternal(
         cursor = Transaction().connection.cursor()
         sql_table = cls.__table__()
 
-        super(ShipmentInternal, cls).__register__(module_name)
+        super().__register__(module_name)
         # Migration from 5.6: rename state cancel to cancelled
         cursor.execute(*sql_table.update(
                 [sql_table.state], ['cancelled'],
@@ -2676,7 +2676,7 @@ class ShipmentInternal(
                     gettext('stock.msg_shipment_delete_cancel',
                         shipment=shipment.rec_name))
         Move.delete([m for s in shipments for m in s.moves])
-        super(ShipmentInternal, cls).delete(shipments)
+        super().delete(shipments)
 
     @classmethod
     def copy(cls, shipments, default=None):
@@ -3124,7 +3124,7 @@ class DeliveryNote(ShipmentReport):
     @classmethod
     def execute(cls, ids, data):
         with Transaction().set_context(address_with_party=False):
-            return super(DeliveryNote, cls).execute(ids, data)
+            return super().execute(ids, data)
 
     @classmethod
     def moves(cls, shipment):

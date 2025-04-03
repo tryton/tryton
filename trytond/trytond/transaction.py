@@ -108,7 +108,7 @@ class Transaction(object):
     def __new__(cls, new=False):
         transactions = cls._local.transactions
         if new or not transactions:
-            instance = super(Transaction, cls).__new__(cls)
+            instance = super().__new__(cls)
             instance.database = None
             instance.readonly = False
             instance.connection = None

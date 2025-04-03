@@ -118,7 +118,7 @@ class FieldDependsTestCase(TestCase):
 
             @fields.depends('bar')
             def on_change_name(self):
-                super(Model, self).on_change_name()
+                super().on_change_name()
 
         Model.__setup__()
         Model.__post_setup__()

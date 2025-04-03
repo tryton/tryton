@@ -42,7 +42,7 @@ class Work(metaclass=PoolMeta):
     def __setup__(cls):
         pool = Pool()
 
-        super(Work, cls).__setup__()
+        super().__setup__()
 
         try:
             pool.get('purchase.line')

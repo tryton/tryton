@@ -21,7 +21,7 @@ def tree(parent='parent', name='name', separator=None):
         if separator:
             @classmethod
             def __setup__(cls):
-                super(TreeMixin, cls).__setup__()
+                super().__setup__()
                 field = getattr(cls, name)
                 clause = ['OR',
                     (name, 'not like', '%' + escape_wildcard(separator) + '%'),
@@ -101,8 +101,8 @@ def tree(parent='parent', name='name', separator=None):
             Function that checks if there is no recursion in the tree
             composed with parent as parent field name.
             '''
-            if hasattr(super(TreeMixin, cls), 'check_recursion'):
-                super(TreeMixin, cls).check_recursion(records, field_names)
+            if hasattr(super(), 'check_recursion'):
+                super().check_recursion(records, field_names)
 
             if field_names and parent not in field_names:
                 return

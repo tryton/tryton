@@ -160,7 +160,7 @@ class UIMenu(
                     return False
             return True
 
-        menus = super(UIMenu, cls).search(domain, offset=offset, limit=limit,
+        menus = super().search(domain, offset=offset, limit=limit,
                 order=order, count=False, query=query)
         if query:
             return menus
@@ -281,7 +281,7 @@ class UIMenuFavorite(ModelSQL):
 
     @classmethod
     def __setup__(cls):
-        super(UIMenuFavorite, cls).__setup__()
+        super().__setup__()
         cls.__rpc__.update({
                 'get': RPC(check_access=False),
                 'set': RPC(check_access=False, readonly=False),

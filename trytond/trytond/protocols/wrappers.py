@@ -93,7 +93,7 @@ class Request(_Request):
 
     @cached_property
     def authorization(self):
-        authorization = super(Request, self).authorization
+        authorization = super().authorization
         if authorization is None:
             header = self.headers.get('Authorization')
             return parse_authorization_header(header)

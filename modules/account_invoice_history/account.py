@@ -34,7 +34,7 @@ class Invoice(metaclass=PoolMeta):
 
     @classmethod
     def __setup__(cls):
-        super(Invoice, cls).__setup__()
+        super().__setup__()
         cls._check_modify_exclude.add('numbered_at')
         cls.party.datetime_field = 'history_datetime'
         cls.party_tax_identifier.datetime_field = 'history_datetime'
@@ -82,7 +82,7 @@ class Invoice(metaclass=PoolMeta):
     @classmethod
     def set_number(cls, invoices):
         numbered = [i for i in invoices if not i.number or not i.numbered_at]
-        super(Invoice, cls).set_number(invoices)
+        super().set_number(invoices)
         if numbered:
             cls.write(numbered, {
                     'numbered_at': CurrentTimestamp(),
@@ -92,7 +92,7 @@ class Invoice(metaclass=PoolMeta):
     @ModelView.button
     @Workflow.transition('draft')
     def draft(cls, invoices):
-        super(Invoice, cls).draft(invoices)
+        super().draft(invoices)
         cls.write(invoices, {
                 'numbered_at': None,
                 })
@@ -104,4 +104,4 @@ class Invoice(metaclass=PoolMeta):
         else:
             default = default.copy()
         default.setdefault('numbered_at', None)
-        return super(Invoice, cls).copy(invoices, default=default)
+        return super().copy(invoices, default=default)

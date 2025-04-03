@@ -49,7 +49,7 @@ class Many2One(Field):
         if ondelete not in ('CASCADE', 'RESTRICT', 'SET NULL'):
             raise Exception('Bad arguments')
         self.ondelete = ondelete
-        super(Many2One, self).__init__(string=string, help=help,
+        super().__init__(string=string, help=help,
             required=required, readonly=readonly, domain=domain, states=states,
             on_change=on_change, on_change_with=on_change_with,
             depends=depends, context=context, loading=loading)
@@ -115,7 +115,7 @@ class Many2One(Field):
                 elif isinstance(value, int):
                     value = Target(value)
         assert isinstance(value, (Target, type(None)))
-        super(Many2One, self).__set__(inst, value)
+        super().__set__(inst, value)
 
     def sql_format(self, value):
         from ..model import Model
@@ -257,7 +257,7 @@ class Many2One(Field):
                 return expression
 
             if not isinstance(value, str):
-                return super(Many2One, self).convert_domain(domain, tables,
+                return super().convert_domain(domain, tables,
                     Model)
             else:
                 warnings.warn(

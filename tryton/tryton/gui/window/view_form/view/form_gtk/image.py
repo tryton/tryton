@@ -16,7 +16,7 @@ _ = gettext.gettext
 class Image(BinaryMixin, Widget):
 
     def __init__(self, view, attrs):
-        super(Image, self).__init__(view, attrs)
+        super().__init__(view, attrs)
 
         self.height = int(attrs.get('height', 100))
         self.width = int(attrs.get('width', 300))
@@ -49,7 +49,7 @@ class Image(BinaryMixin, Widget):
 
     @property
     def filters(self):
-        filters = super(Image, self).filters
+        filters = super().filters
         filter_image = Gtk.FileFilter()
         filter_image.set_name(_('Images'))
         for mime in ("image/png", "image/jpeg", "image/gif"):
@@ -65,7 +65,7 @@ class Image(BinaryMixin, Widget):
         self.but_clear.set_sensitive(not value)
 
     def clear(self, widget=None):
-        super(Image, self).clear(widget=widget)
+        super().clear(widget=widget)
         self.update_img()
 
     def drag_motion(self, widget, context, x, y, timestamp):
@@ -110,6 +110,6 @@ class Image(BinaryMixin, Widget):
         return bool(value)
 
     def display(self):
-        super(Image, self).display()
+        super().display()
         value = self.update_img()
         self.update_buttons(bool(value))

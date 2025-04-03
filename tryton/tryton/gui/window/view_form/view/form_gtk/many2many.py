@@ -21,7 +21,7 @@ class Many2Many(Widget):
     expand = True
 
     def __init__(self, view, attrs):
-        super(Many2Many, self).__init__(view, attrs)
+        super().__init__(view, attrs)
 
         self.widget = Gtk.Frame()
         self.widget.set_shadow_type(Gtk.ShadowType.NONE)
@@ -330,7 +330,7 @@ class Many2Many(Widget):
         self._set_button_sensitive()
 
     def display(self):
-        super(Many2Many, self).display()
+        super().display()
         if not self.field:
             self.screen.new_group()
             self.screen.current_record = None

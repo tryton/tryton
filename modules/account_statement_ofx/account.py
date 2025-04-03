@@ -14,7 +14,7 @@ class StatementImportStart(metaclass=PoolMeta):
 
     @classmethod
     def __setup__(cls):
-        super(StatementImportStart, cls).__setup__()
+        super().__setup__()
         cls.file_format.selection.append(('ofx', "OFX"))
 
 

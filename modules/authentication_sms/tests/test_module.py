@@ -24,7 +24,7 @@ class AuthenticationSMSTestCase(ModuleTestCase):
     module = 'authentication_sms'
 
     def setUp(self):
-        super(AuthenticationSMSTestCase, self).setUp()
+        super().setUp()
         methods = config.get('session', 'authentications', default='')
         config.set('session', 'authentications', 'sms')
         self.addCleanup(config.set, 'session', 'authentications', methods)

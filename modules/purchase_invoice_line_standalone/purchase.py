@@ -48,7 +48,7 @@ class Purchase(metaclass=PoolMeta):
         super()._save_invoice(non_standalone)
 
     def get_invoice_state(self):
-        state = super(Purchase, self).get_invoice_state()
+        state = super().get_invoice_state()
         skips = set(self.invoice_lines_ignored)
         standalone_lines = [
             l for l in self.invoice_lines if l not in skips and not l.invoice]
@@ -66,7 +66,7 @@ class Purchase(metaclass=PoolMeta):
         else:
             default = default.copy()
         default.setdefault('invoice_lines_ignored', None)
-        return super(Purchase, cls).copy(purchases, default=default)
+        return super().copy(purchases, default=default)
 
 
 class PurchaseIgnoredInvoiceLine(ModelSQL):
@@ -89,7 +89,7 @@ class HandleInvoiceException(metaclass=PoolMeta):
     __name__ = 'purchase.handle.invoice.exception'
 
     def transition_handle(self):
-        state = super(HandleInvoiceException, self).transition_handle()
+        state = super().transition_handle()
 
         invoice_lines = []
         for invoice_line in self.record.invoice_lines:

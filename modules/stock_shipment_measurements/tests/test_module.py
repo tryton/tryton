@@ -18,7 +18,7 @@ class StockShipmentMeasurementsTestCase(CompanyTestMixin, ModuleTestCase):
 
     @classmethod
     def setUpClass(cls):
-        super(StockShipmentMeasurementsTestCase, cls).setUpClass()
+        super().setUpClass()
         activate_module('stock_package')
 
     @with_transaction()

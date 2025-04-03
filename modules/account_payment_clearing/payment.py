@@ -167,7 +167,7 @@ class Payment(metaclass=PoolMeta):
 
     @classmethod
     def __setup__(cls):
-        super(Payment, cls).__setup__()
+        super().__setup__()
         line_invisible = Eval('account') & ~Eval('line')
         if 'invisible' in cls.line.states:
             cls.line.states['invisible'] &= line_invisible
@@ -212,7 +212,7 @@ class Payment(metaclass=PoolMeta):
         pool = Pool()
         Line = pool.get('account.move.line')
 
-        super(Payment, cls).succeed(payments)
+        super().succeed(payments)
 
         cls.set_clearing_move(payments)
         to_reconcile = []
@@ -332,7 +332,7 @@ class Payment(metaclass=PoolMeta):
     @Workflow.transition('failed')
     @cancel_clearing_move
     def fail(cls, payments):
-        super(Payment, cls).fail(payments)
+        super().fail(payments)
 
     @classmethod
     def update_reconciled(cls, payments):
@@ -379,7 +379,7 @@ class Payment(metaclass=PoolMeta):
         else:
             default = default.copy()
         default.setdefault('clearing_move')
-        return super(Payment, cls).copy(payments, default=default)
+        return super().copy(payments, default=default)
 
 
 class Group(metaclass=PoolMeta):

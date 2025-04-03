@@ -112,7 +112,7 @@ class BOM(DeactivableMixin, ModelSQL, ModelView):
             default = default.copy()
         default.setdefault('code', None)
         default.setdefault('output_products', None)
-        return super(BOM, cls).copy(records, default=default)
+        return super().copy(records, default=default)
 
 
 class BOMInput(ModelSQL, ModelView):
@@ -137,7 +137,7 @@ class BOMInput(ModelSQL, ModelView):
 
     @classmethod
     def __setup__(cls):
-        super(BOMInput, cls).__setup__()
+        super().__setup__()
         cls.product.domain = [('type', 'in', cls.get_product_types())]
         cls.__access__.add('bom')
 
@@ -182,7 +182,7 @@ class BOMInput(ModelSQL, ModelView):
 
     @classmethod
     def validate(cls, boms):
-        super(BOMInput, cls).validate(boms)
+        super().validate(boms)
         for bom in boms:
             bom.check_bom_recursion()
 
@@ -209,7 +209,7 @@ class BOMOutput(BOMInput):
         pool = Pool()
         ProductBOM = pool.get('product.product-production.bom')
         bom_products = [b for o in outputs for b in o.product.boms]
-        super(BOMOutput, cls).delete(outputs)
+        super().delete(outputs)
         # Validate that output_products domain on bom is still valid
         ProductBOM._validate(bom_products, ['bom'])
 

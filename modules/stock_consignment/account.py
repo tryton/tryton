@@ -10,7 +10,7 @@ class InvoiceLine(metaclass=PoolMeta):
     def origin_name(self):
         pool = Pool()
         Move = pool.get('stock.move')
-        name = super(InvoiceLine, self).origin_name
+        name = super().origin_name
         if (isinstance(self.origin, Move)
                 and self.origin.id >= 0
                 and self.origin.shipment):
@@ -19,4 +19,4 @@ class InvoiceLine(metaclass=PoolMeta):
 
     @classmethod
     def _get_origin(cls):
-        return super(InvoiceLine, cls)._get_origin() + ['stock.move']
+        return super()._get_origin() + ['stock.move']

@@ -15,7 +15,7 @@ class Group(list):
     def __init__(self, model_name, fields, ids=None, parent=None,
             parent_name='', child_name='', context=None, domain=None,
             readonly=False, parent_datetime_field=None):
-        super(Group, self).__init__()
+        super().__init__()
         if domain is None:
             domain = []
         self.__domain = domain
@@ -101,7 +101,7 @@ class Group(list):
             record.next[id(self)] = self.__getitem__(pos)
         else:
             record.next[id(self)] = None
-        super(Group, self).insert(pos, record)
+        super().insert(pos, record)
         self.__id2record[record.id] = record
         if not self.lock_signal:
             self._group_list_changed('record-added', record, pos)
@@ -111,7 +111,7 @@ class Group(list):
         if self.__len__() >= 1:
             self.__getitem__(self.__len__() - 1).next[id(self)] = record
         record.next[id(self)] = None
-        super(Group, self).append(record)
+        super().append(record)
         self.__id2record[record.id] = record
         if not self.lock_signal:
             self._group_list_changed(
@@ -126,7 +126,7 @@ class Group(list):
             else:
                 self.__getitem__(idx - 1).next[id(self)] = None
         self._group_list_changed('record-removed', record, idx)
-        super(Group, self).remove(record)
+        super().remove(record)
         del self.__id2record[record.id]
         record.destroy()
 

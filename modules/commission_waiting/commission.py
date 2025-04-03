@@ -26,7 +26,7 @@ class Commission(metaclass=PoolMeta):
 
     @classmethod
     def __setup__(cls):
-        super(Commission, cls).__setup__()
+        super().__setup__()
         cls.amount.states['readonly'] |= Bool(Eval('waiting_move'))
 
     @classmethod
@@ -36,7 +36,7 @@ class Commission(metaclass=PoolMeta):
         else:
             default = default.copy()
         default.setdefault('waiting_move', None)
-        return super(Commission, cls).copy(commissions, default=default)
+        return super().copy(commissions, default=default)
 
     @classmethod
     def create_waiting_move(cls, commissions):

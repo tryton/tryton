@@ -114,7 +114,7 @@ class Carrier(metaclass=PoolMeta):
 
     @classmethod
     def view_attributes(cls):
-        return super(Carrier, cls).view_attributes() + [
+        return super().view_attributes() + [
             ("/form/separator[@id='mygls']", 'states', {
                     'invisible': Eval('shipping_service') != 'mygls',
                     }),

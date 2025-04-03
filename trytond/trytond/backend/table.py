@@ -29,7 +29,7 @@ class TableHandlerInterface(object):
         :param module_name: the module name
         :param history: a boolean to define if it is a history table
         '''
-        super(TableHandlerInterface, self).__init__()
+        super().__init__()
         if history:
             self.table_name = model._table + '__history'
         else:

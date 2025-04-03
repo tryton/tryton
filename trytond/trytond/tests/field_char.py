@@ -61,7 +61,7 @@ class CharUnaccentedOff(ModelSQL):
 
     @classmethod
     def __setup__(cls):
-        super(CharUnaccentedOff, cls).__setup__()
+        super().__setup__()
         cls.char.search_unaccented = False
 
 

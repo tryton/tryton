@@ -23,7 +23,7 @@ class Configuration(metaclass=PoolMeta):
         pool = Pool()
         if field == 'complaint_sequence':
             return pool.get('sale.configuration.sequence')
-        return super(Configuration, cls).multivalue_model(field)
+        return super().multivalue_model(field)
 
     @classmethod
     def default_complaint_sequence(cls, **pattern):
@@ -56,4 +56,4 @@ class Sale(metaclass=PoolMeta):
 
     @classmethod
     def _get_origin(cls):
-        return super(Sale, cls)._get_origin() + ['sale.complaint']
+        return super()._get_origin() + ['sale.complaint']

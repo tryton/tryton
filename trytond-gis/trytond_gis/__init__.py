@@ -10,7 +10,7 @@ __version__ = "7.5.0"
 class _GeoJSON(dict):
 
     def __init__(self, *args, **kwargs):
-        super(_GeoJSON, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         if 'meta' not in self:
             self['meta'] = {}
         if 'srid' not in self['meta']:

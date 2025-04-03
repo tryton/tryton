@@ -43,7 +43,7 @@ class Record:
     id = -1
 
     def __init__(self, model_name, obj_id, group=None):
-        super(Record, self).__init__()
+        super().__init__()
         self.model_name = model_name
         if obj_id is None:
             self.id = Record.id

@@ -96,7 +96,7 @@ class Account(
     @classmethod
     def __setup__(cls):
         cls.code.search_unaccented = False
-        super(Account, cls).__setup__()
+        super().__setup__()
         t = cls.__table__()
         cls._sql_indexes.add(
             Index(t, (t.code, Index.Similarity())))
@@ -105,7 +105,7 @@ class Account(
 
     @classmethod
     def __register__(cls, module_name):
-        super(Account, cls).__register__(module_name)
+        super().__register__(module_name)
         table = cls.__table_handler__(module_name)
 
         # Migration from 5.0: remove display_balance
@@ -361,7 +361,7 @@ class AccountDistribution(ModelView, ModelSQL):
 
     @classmethod
     def __setup__(cls):
-        super(AccountDistribution, cls).__setup__()
+        super().__setup__()
         cls._order.insert(0, ('ratio', 'DESC'))
 
     @fields.depends('parent', '_parent_parent.root')
@@ -402,7 +402,7 @@ class AnalyticAccountEntry(ModelView, ModelSQL):
 
     @classmethod
     def __setup__(cls):
-        super(AnalyticAccountEntry, cls).__setup__()
+        super().__setup__()
         t = cls.__table__()
         cls._sql_constraints += [
             ('root_origin_uniq', Unique(t, t.origin, t.root),

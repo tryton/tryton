@@ -8,6 +8,6 @@ class FiscalYear(metaclass=PoolMeta):
 
     @classmethod
     def __setup__(cls):
-        super(FiscalYear, cls).__setup__()
+        super().__setup__()
         cls.account_stock_method.selection.append(
             ('anglo_saxon', 'Anglo-Saxon'))

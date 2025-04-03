@@ -11,7 +11,7 @@ class InvoiceLine(AnalyticMixin, metaclass=PoolMeta):
 
     @classmethod
     def __setup__(cls):
-        super(InvoiceLine, cls).__setup__()
+        super().__setup__()
         cls.analytic_accounts.domain = [
             ('company', '=', Eval('company', -1)),
             ]
@@ -24,7 +24,7 @@ class InvoiceLine(AnalyticMixin, metaclass=PoolMeta):
         pool = Pool()
         AnalyticAccountEntry = pool.get('analytic.account.entry')
 
-        line = super(InvoiceLine, self)._credit()
+        line = super()._credit()
         if self.analytic_accounts:
             new_entries = AnalyticAccountEntry.copy(self.analytic_accounts,
                 default={
@@ -34,7 +34,7 @@ class InvoiceLine(AnalyticMixin, metaclass=PoolMeta):
         return line
 
     def get_move_lines(self):
-        lines = super(InvoiceLine, self).get_move_lines()
+        lines = super().get_move_lines()
         if self.invoice and self.invoice.type:
             type_ = self.invoice.type
         else:
@@ -76,7 +76,7 @@ class AnalyticAccountEntry(metaclass=PoolMeta):
     @classmethod
     def _get_origin(cls):
         pool = Pool()
-        origins = super(AnalyticAccountEntry, cls)._get_origin()
+        origins = super()._get_origin()
         origins.append('account.invoice.line')
         try:
             pool.get('account.asset')
@@ -102,7 +102,7 @@ class AnalyticAccountEntry(metaclass=PoolMeta):
     @classmethod
     def search_company(cls, name, clause):
         pool = Pool()
-        domain = super(AnalyticAccountEntry, cls).search_company(name, clause),
+        domain = super().search_company(name, clause),
         domain = ['OR',
             domain,
             (('origin.' + clause[0],) + tuple(clause[1:3])

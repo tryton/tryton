@@ -27,7 +27,7 @@ class ShipmentIn(metaclass=PoolMeta):
     @fields.depends('carrier', 'incoming_moves',
         methods=['_group_parcel_key', '_parcel_weight'])
     def _get_carrier_context(self):
-        context = super(ShipmentIn, self)._get_carrier_context()
+        context = super()._get_carrier_context()
         if not self.carrier:
             return context
         if self.carrier.carrier_cost_method != 'weight':
@@ -63,7 +63,7 @@ class ShipmentOut(metaclass=PoolMeta):
         'warehouse_storage', 'warehouse_output',
         methods=['_group_parcel_key', '_parcel_weight'])
     def _get_carrier_context(self):
-        context = super(ShipmentOut, self)._get_carrier_context()
+        context = super()._get_carrier_context()
         if not self.carrier:
             return context
         if self.carrier.carrier_cost_method != 'weight':

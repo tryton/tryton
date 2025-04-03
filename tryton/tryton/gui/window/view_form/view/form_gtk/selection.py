@@ -11,7 +11,7 @@ from .widget import Widget
 class Selection(Widget, SelectionMixin, PopdownMixin):
 
     def __init__(self, view, attrs):
-        super(Selection, self).__init__(view, attrs)
+        super().__init__(view, attrs)
 
         self.widget = Gtk.HBox(spacing=3)
         self.entry = Gtk.ComboBox(has_entry=True)
@@ -47,7 +47,7 @@ class Selection(Widget, SelectionMixin, PopdownMixin):
             combobox.stop_emission_by_name('move-active')
 
     def _readonly_set(self, value):
-        super(Selection, self)._readonly_set(value)
+        super()._readonly_set(value)
         self.entry.get_child().set_editable(not value)
         self.entry.set_button_sensitivity(
             Gtk.SensitivityType.OFF if value else Gtk.SensitivityType.AUTO)
@@ -77,7 +77,7 @@ class Selection(Widget, SelectionMixin, PopdownMixin):
             # When setting no item GTK doesn't clear the entry
             self.entry.get_child().set_text('')
             return
-        super(Selection, self).display()
+        super().display()
         value = self.field.get(self.record)
         if isinstance(value, (list, tuple)):
             # Compatibility with Many2One

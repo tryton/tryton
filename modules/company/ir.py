@@ -17,7 +17,7 @@ class Sequence(metaclass=PoolMeta):
 
     @classmethod
     def __setup__(cls):
-        super(Sequence, cls).__setup__()
+        super().__setup__()
         cls._order.insert(0, ('company', 'ASC'))
 
     @staticmethod
@@ -41,7 +41,7 @@ class Date(metaclass=PoolMeta):
             company = Company(company_id)
             if company.timezone:
                 timezone = tz.ZoneInfo(company.timezone)
-        return super(Date, cls).today(timezone=timezone)
+        return super().today(timezone=timezone)
 
 
 class Rule(metaclass=PoolMeta):
@@ -83,11 +83,11 @@ class Cron(metaclass=PoolMeta):
     def run_once(cls, crons):
         for cron in crons:
             if not cron.companies:
-                super(Cron, cls).run_once([cron])
+                super().run_once([cron])
             else:
                 for company in cron.companies:
                     with Transaction().set_context(company=company.id):
-                        super(Cron, cls).run_once([cron])
+                        super().run_once([cron])
 
     @staticmethod
     def default_companies():

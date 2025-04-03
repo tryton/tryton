@@ -69,7 +69,7 @@ class Invoice(metaclass=PoolMeta):
     @classmethod
     @process_purchase
     def delete(cls, invoices):
-        super(Invoice, cls).delete(invoices)
+        super().delete(invoices)
 
     @classmethod
     @ModelView.button
@@ -81,7 +81,7 @@ class Invoice(metaclass=PoolMeta):
                     gettext('purchase.msg_purchase_invoice_reset_draft',
                         invoice=invoice.rec_name))
 
-        return super(Invoice, cls).draft(invoices)
+        return super().draft(invoices)
 
     @classmethod
     @process_purchase
@@ -91,12 +91,12 @@ class Invoice(metaclass=PoolMeta):
     @classmethod
     @process_purchase
     def paid(cls, invoices):
-        super(Invoice, cls).paid(invoices)
+        super().paid(invoices)
 
     @classmethod
     @process_purchase
     def cancel(cls, invoices):
-        super(Invoice, cls).cancel(invoices)
+        super().cancel(invoices)
 
 
 class InvoiceLine(metaclass=PoolMeta):
@@ -148,14 +148,14 @@ class InvoiceLine(metaclass=PoolMeta):
     def origin_name(self):
         pool = Pool()
         PurchaseLine = pool.get('purchase.line')
-        name = super(InvoiceLine, self).origin_name
+        name = super().origin_name
         if isinstance(self.origin, PurchaseLine) and self.origin.id >= 0:
             name = self.origin.purchase.rec_name
         return name
 
     @classmethod
     def _get_origin(cls):
-        models = super(InvoiceLine, cls)._get_origin()
+        models = super()._get_origin()
         models.append('purchase.line')
         return models
 
@@ -169,7 +169,7 @@ class InvoiceLine(metaclass=PoolMeta):
             invoices = (l.invoice for l in cls.browse(lines)
                 if l.type == 'line' and l.invoice)
             purchases = set(p for i in invoices for p in i.purchases)
-        super(InvoiceLine, cls).delete(lines)
+        super().delete(lines)
         if purchases:
             with transaction.set_context(
                     queue_batch=context.get('queue_batch', True)):

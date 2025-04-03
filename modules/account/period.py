@@ -60,7 +60,7 @@ class Period(Workflow, ModelSQL, ModelView):
 
     @classmethod
     def __setup__(cls):
-        super(Period, cls).__setup__()
+        super().__setup__()
         t = cls.__table__()
         cls.__access__.add('fiscalyear')
         cls._sql_constraints += [
@@ -316,7 +316,7 @@ class Period(Workflow, ModelSQL, ModelView):
                     process_args(args[i])
                 i += 1
         process_args(args)
-        return super(Period, cls).search(args, offset=offset, limit=limit,
+        return super().search(args, offset=offset, limit=limit,
             order=order, count=count, query=query)
 
     @classmethod
@@ -330,7 +330,7 @@ class Period(Workflow, ModelSQL, ModelView):
                     raise AccessError(
                         gettext('account.msg_create_period_closed_fiscalyear',
                             fiscalyear=fiscalyear.rec_name))
-        periods = super(Period, cls).create(vlist)
+        periods = super().create(vlist)
         cls._find_cache.clear()
         return periods
 
@@ -362,12 +362,12 @@ class Period(Workflow, ModelSQL, ModelView):
                                     '.msg_change_period_move_sequence',
                                     period=period.rec_name))
             args.extend((periods, values))
-        super(Period, cls).write(*args)
+        super().write(*args)
         cls._find_cache.clear()
 
     @classmethod
     def delete(cls, periods):
-        super(Period, cls).delete(periods)
+        super().delete(periods)
         cls._find_cache.clear()
 
     @classmethod

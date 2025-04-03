@@ -15,7 +15,7 @@ class Party(metaclass=PoolMeta):
 
     @classmethod
     def search_rec_name(cls, name, clause):
-        domain = super(Party, cls).search_rec_name(name, clause)
+        domain = super().search_rec_name(name, clause)
         if clause[1].startswith('!') or clause[1].startswith('not '):
             bool_op = 'AND'
         else:

@@ -19,12 +19,12 @@ class Move(metaclass=PoolMeta):
     @ModelView.button
     @Workflow.transition('done')
     def do(cls, moves):
-        super(Move, cls).do(moves)
+        super().do(moves)
         cls.check_over_shipment(moves)
 
     @classmethod
     @ModelView.button
     @Workflow.transition('assigned')
     def assign(cls, moves):
-        super(Move, cls).assign(moves)
+        super().assign(moves)
         cls.check_over_shipment(moves)

@@ -123,7 +123,7 @@ class InvoiceSequence(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
 
     @classmethod
     def __setup__(cls):
-        super(InvoiceSequence, cls).__setup__()
+        super().__setup__()
         cls._order.insert(0, ('fiscalyear', 'ASC'))
 
     @classmethod
@@ -136,7 +136,7 @@ class Move(metaclass=PoolMeta):
 
     @classmethod
     def _get_origin(cls):
-        return super(Move, cls)._get_origin() + ['account.invoice']
+        return super()._get_origin() + ['account.invoice']
 
 
 class MoveLine(metaclass=PoolMeta):
@@ -163,7 +163,7 @@ class MoveLine(metaclass=PoolMeta):
 
     @classmethod
     def __setup__(cls):
-        super(MoveLine, cls).__setup__()
+        super().__setup__()
         cls._check_modify_exclude.add('invoice_payment')
 
     @classmethod
@@ -257,7 +257,7 @@ class Reconciliation(metaclass=PoolMeta):
         Invoice = Pool().get('account.invoice')
         transaction = Transaction()
         context = transaction.context
-        reconciliations = super(Reconciliation, cls).create(vlist)
+        reconciliations = super().create(vlist)
         with transaction.set_context(
                 queue_batch=context.get('queue_batch', True)):
             Invoice.__queue__.process(
@@ -270,7 +270,7 @@ class Reconciliation(metaclass=PoolMeta):
         transaction = Transaction()
         context = transaction.context
         invoices_to_process = _invoices_to_process(reconciliations)
-        super(Reconciliation, cls).delete(reconciliations)
+        super().delete(reconciliations)
         with transaction.set_context(
                 queue_batch=context.get('queue_batch', True)):
             Invoice.__queue__.process(list(invoices_to_process))
@@ -280,7 +280,7 @@ class RenewFiscalYear(metaclass=PoolMeta):
     __name__ = 'account.fiscalyear.renew'
 
     def fiscalyear_defaults(self):
-        defaults = super(RenewFiscalYear, self).fiscalyear_defaults()
+        defaults = super().fiscalyear_defaults()
         defaults['invoice_sequences'] = None
         return defaults
 
@@ -293,7 +293,7 @@ class RenewFiscalYear(metaclass=PoolMeta):
         pool = Pool()
         Sequence = pool.get('ir.sequence.strict')
         InvoiceSequence = pool.get('account.fiscalyear.invoice_sequence')
-        fiscalyear = super(RenewFiscalYear, self).create_fiscalyear()
+        fiscalyear = super().create_fiscalyear()
 
         def standard_period(period):
             return period.type == 'standard'

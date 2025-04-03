@@ -296,7 +296,7 @@ class Payment(CheckoutMixin, BraintreeCustomerMethodMixin, metaclass=PoolMeta):
     @ModelView.button
     @Workflow.transition('draft')
     def draft(cls, payments):
-        super(Payment, cls).draft(payments)
+        super().draft(payments)
         for payment in payments:
             if payment.braintree_nonce:
                 payment.braintree_nonce = None

@@ -8,5 +8,5 @@ class Journal(metaclass=PoolMeta):
 
     @classmethod
     def __setup__(cls):
-        super(Journal, cls).__setup__()
+        super().__setup__()
         cls.type.selection.append(('commission', "Commission"))

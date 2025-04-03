@@ -54,7 +54,7 @@ class Period(metaclass=PoolMeta):
         pool = Pool()
         MoveLine = pool.get('account.move.line')
         Warning = pool.get('res.user.warning')
-        super(Period, cls).close(periods)
+        super().close(periods)
         for period in periods:
             if (period.tax_group_on_cash_basis
                     or period.fiscalyear.tax_group_on_cash_basis):
@@ -101,7 +101,7 @@ class Tax(metaclass=PoolMeta):
     def _amount_where(cls, tax_line, move_line, move):
         context = Transaction().context
         periods = context.get('periods', [])
-        where = super(Tax, cls)._amount_where(tax_line, move_line, move)
+        where = super()._amount_where(tax_line, move_line, move)
         return ((where
                 & (tax_line.on_cash_basis == Literal(False))
                 | (tax_line.on_cash_basis == Null))
@@ -112,7 +112,7 @@ class Tax(metaclass=PoolMeta):
     def _amount_domain(cls):
         context = Transaction().context
         periods = context.get('periods', [])
-        domain = super(Tax, cls)._amount_domain()
+        domain = super()._amount_domain()
         return ['OR',
             [domain,
                 ('on_cash_basis', '=', False),
@@ -158,7 +158,7 @@ class TaxLine(metaclass=PoolMeta):
 
     @property
     def period_checked(self):
-        period = super(TaxLine, self).period_checked
+        period = super().period_checked
         if self.on_cash_basis:
             period = self.period
         return period
@@ -216,7 +216,7 @@ class Move(metaclass=PoolMeta):
     def post(cls, moves):
         pool = Pool()
         TaxLine = pool.get('account.tax.line')
-        super(Move, cls).post(moves)
+        super().post(moves)
 
         tax_lines = []
         for move in moves:
@@ -244,7 +244,7 @@ class Invoice(metaclass=PoolMeta):
 
     @fields.depends('party', 'type', 'tax_group_on_cash_basis')
     def on_change_party(self):
-        super(Invoice, self).on_change_party()
+        super().on_change_party()
         if self.type == 'in' and self.party:
             self.tax_group_on_cash_basis = (
                 self.party.supplier_tax_group_on_cash_basis)
@@ -252,7 +252,7 @@ class Invoice(metaclass=PoolMeta):
             self.tax_group_on_cash_basis = []
 
     def get_move(self):
-        move = super(Invoice, self).get_move()
+        move = super().get_move()
         if self.tax_group_on_cash_basis:
             for line in move.lines:
                 for tax_line in getattr(line, 'tax_lines', []):
@@ -284,7 +284,7 @@ class Invoice(metaclass=PoolMeta):
 
     @classmethod
     def write(cls, *args):
-        super(Invoice, cls).write(*args)
+        super().write(*args)
 
         invoices = []
         actions = iter(args)
@@ -296,14 +296,14 @@ class Invoice(metaclass=PoolMeta):
 
     @classmethod
     def process(cls, invoices):
-        super(Invoice, cls).process(invoices)
+        super().process(invoices)
         cls._update_tax_cash_basis(invoices)
 
     @classmethod
     @ModelView.button
     @Workflow.transition('cancelled')
     def cancel(cls, invoices):
-        super(Invoice, cls).cancel(invoices)
+        super().cancel(invoices)
         cls._update_tax_cash_basis(invoices)
 
     @classmethod

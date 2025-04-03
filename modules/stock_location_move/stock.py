@@ -125,14 +125,14 @@ class ShipmentInternal(metaclass=PoolMeta):
     @Workflow.transition('draft')
     @clear_location_assignation
     def draft(cls, shipments):
-        super(ShipmentInternal, cls).draft(shipments)
+        super().draft(shipments)
 
     @classmethod
     @ModelView.button
     @Workflow.transition('waiting')
     @clear_location_assignation
     def wait(cls, shipments):
-        super(ShipmentInternal, cls).wait(shipments)
+        super().wait(shipments)
 
     @classmethod
     @Workflow.transition('assigned')
@@ -161,7 +161,7 @@ class ShipmentInternal(metaclass=PoolMeta):
                             })
         if locations:
             Location.save(list(locations))
-        super(ShipmentInternal, cls).assign(shipments)
+        super().assign(shipments)
 
     @classmethod
     @ModelView.button
@@ -179,7 +179,7 @@ class ShipmentInternal(metaclass=PoolMeta):
                     })
         if to_write:
             Location.write(*to_write)
-        super(ShipmentInternal, cls).ship(shipments)
+        super().ship(shipments)
 
     @classmethod
     @ModelView.button
@@ -205,7 +205,7 @@ class ShipmentInternal(metaclass=PoolMeta):
     @Workflow.transition('cancelled')
     @clear_location_assignation
     def cancel(cls, shipments):
-        super(ShipmentInternal, cls).cancel(shipments)
+        super().cancel(shipments)
 
 
 class ShipmentInternal_Location(ModelSQL):
@@ -263,4 +263,4 @@ class Supply(metaclass=PoolMeta):
 
     def transition_create_(self):
         with Transaction().set_context(forecast_location_move=True):
-            return super(Supply, self).transition_create_()
+            return super().transition_create_()

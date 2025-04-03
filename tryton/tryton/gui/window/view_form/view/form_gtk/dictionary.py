@@ -468,7 +468,7 @@ DICT_ENTRIES = {
 class DictWidget(Widget):
 
     def __init__(self, view, attrs):
-        super(DictWidget, self).__init__(view, attrs)
+        super().__init__(view, attrs)
         self.schema_model = attrs['schema_model']
         self.fields = {}
         self.buttons = {}
@@ -641,7 +641,7 @@ class DictWidget(Widget):
         self.buttons[key] = remove_but
 
     def display(self):
-        super(DictWidget, self).display()
+        super().display()
 
         if not self.field:
             return

@@ -56,7 +56,7 @@ class Invoice(Model):
 
     @classmethod
     def __setup__(cls):
-        super(Invoice, cls).__setup__()
+        super().__setup__()
         cls.__rpc__.update({
                 'render': RPC(instantiate=0),
                 })

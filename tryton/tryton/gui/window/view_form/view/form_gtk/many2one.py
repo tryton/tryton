@@ -22,7 +22,7 @@ class Many2One(Widget):
     default_width_chars = 12
 
     def __init__(self, view, attrs):
-        super(Many2One, self).__init__(view, attrs)
+        super().__init__(view, attrs)
 
         self.widget = Gtk.HBox(spacing=0)
         self.widget.set_property('sensitive', True)
@@ -306,7 +306,7 @@ class Many2One(Widget):
 
     def display(self):
         self.changed = False
-        super(Many2One, self).display()
+        super().display()
 
         self._set_button_sensitive()
         self._set_completion()

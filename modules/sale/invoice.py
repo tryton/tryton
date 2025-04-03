@@ -78,7 +78,7 @@ class Invoice(metaclass=PoolMeta):
     @classmethod
     @process_sale
     def delete(cls, invoices):
-        super(Invoice, cls).delete(invoices)
+        super().delete(invoices)
 
     @classmethod
     @process_sale
@@ -88,12 +88,12 @@ class Invoice(metaclass=PoolMeta):
     @classmethod
     @process_sale
     def paid(cls, invoices):
-        super(Invoice, cls).paid(invoices)
+        super().paid(invoices)
 
     @classmethod
     @process_sale
     def cancel(cls, invoices):
-        super(Invoice, cls).cancel(invoices)
+        super().cancel(invoices)
 
     @classmethod
     @Workflow.transition('draft')
@@ -104,7 +104,7 @@ class Invoice(metaclass=PoolMeta):
                     gettext('sale.msg_sale_invoice_reset_draft',
                         invoice=invoice.rec_name))
 
-        return super(Invoice, cls).draft(invoices)
+        return super().draft(invoices)
 
 
 class Line(metaclass=PoolMeta):

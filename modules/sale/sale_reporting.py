@@ -209,12 +209,12 @@ class AbstractTimeseries(Abstract):
 
     @classmethod
     def __setup__(cls):
-        super(AbstractTimeseries, cls).__setup__()
+        super().__setup__()
         cls._order = [('date', 'ASC')]
 
     @classmethod
     def _columns(cls, tables, withs):
-        return super(AbstractTimeseries, cls)._columns(tables, withs) + [
+        return super()._columns(tables, withs) + [
             cls._column_date(tables, withs).as_('date')]
 
     @classmethod
@@ -227,7 +227,7 @@ class AbstractTimeseries(Abstract):
 
     @classmethod
     def _group_by(cls, tables, withs):
-        return super(AbstractTimeseries, cls)._group_by(tables, withs) + [
+        return super()._group_by(tables, withs) + [
             cls._column_date(tables, withs)]
 
 
@@ -322,13 +322,13 @@ class CustomerMixin(object):
     @classmethod
     def _columns(cls, tables, withs):
         line = tables['line']
-        return super(CustomerMixin, cls)._columns(tables, withs) + [
+        return super()._columns(tables, withs) + [
             line.customer.as_('customer')]
 
     @classmethod
     def _group_by(cls, tables, withs):
         line = tables['line']
-        return super(CustomerMixin, cls)._group_by(tables, withs) + [
+        return super()._group_by(tables, withs) + [
             line.customer]
 
     def get_rec_name(self, name):
@@ -552,19 +552,19 @@ class ProductMixin(object):
     @classmethod
     def _columns(cls, tables, withs):
         line = tables['line']
-        return super(ProductMixin, cls)._columns(tables, withs) + [
+        return super()._columns(tables, withs) + [
             line.product.as_('product')]
 
     @classmethod
     def _group_by(cls, tables, withs):
         line = tables['line']
-        return super(ProductMixin, cls)._group_by(tables, withs) + [
+        return super()._group_by(tables, withs) + [
             line.product]
 
     @classmethod
     def _where(cls, tables, withs):
         line = tables['line']
-        where = super(ProductMixin, cls)._where(tables, withs)
+        where = super()._where(tables, withs)
         where &= line.product != Null
         return where
 
@@ -790,7 +790,7 @@ class CountryMixin(object):
     def _joins(cls):
         pool = Pool()
         Address = pool.get('party.address')
-        from_item, tables, withs = super(CountryMixin, cls)._joins()
+        from_item, tables, withs = super()._joins()
         if 'line.shipment_address' not in tables:
             address = Address.__table__()
             tables['line.shipment_address'] = address
@@ -802,19 +802,19 @@ class CountryMixin(object):
     @classmethod
     def _columns(cls, tables, withs):
         address = tables['line.shipment_address']
-        return super(CountryMixin, cls)._columns(tables, withs) + [
+        return super()._columns(tables, withs) + [
             address.country.as_('country')]
 
     @classmethod
     def _group_by(cls, tables, withs):
         address = tables['line.shipment_address']
-        return super(CountryMixin, cls)._group_by(tables, withs) + [
+        return super()._group_by(tables, withs) + [
             address.country]
 
     @classmethod
     def _where(cls, tables, withs):
         address = tables['line.shipment_address']
-        where = super(CountryMixin, cls)._where(tables, withs)
+        where = super()._where(tables, withs)
         where &= address.country != Null
         return where
 
@@ -962,19 +962,19 @@ class SubdivisionMixin(CountryMixin):
     @classmethod
     def _columns(cls, tables, withs):
         address = tables['line.shipment_address']
-        return super(SubdivisionMixin, cls)._columns(tables, withs) + [
+        return super()._columns(tables, withs) + [
             address.subdivision.as_('subdivision')]
 
     @classmethod
     def _group_by(cls, tables, withs):
         address = tables['line.shipment_address']
-        return super(SubdivisionMixin, cls)._group_by(tables, withs) + [
+        return super()._group_by(tables, withs) + [
             address.subdivision]
 
     @classmethod
     def _where(cls, tables, withs):
         address = tables['line.shipment_address']
-        where = super(SubdivisionMixin, cls)._where(tables, withs)
+        where = super()._where(tables, withs)
         where &= address.subdivision != Null
         return where
 

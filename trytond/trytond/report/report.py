@@ -140,7 +140,7 @@ class Report(URLMixin, PoolBase):
 
     @classmethod
     def __setup__(cls):
-        super(Report, cls).__setup__()
+        super().__setup__()
         cls.__rpc__ = {
             'execute': RPC(),
             }

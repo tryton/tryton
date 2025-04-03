@@ -228,7 +228,7 @@ class Work(sequence_ordered(), tree(separator='\\'), ModelSQL, ModelView):
     def __register__(cls, module_name):
         table_project_work = cls.__table_handler__(module_name)
 
-        super(Work, cls).__register__(module_name)
+        super().__register__(module_name)
 
         # Migration from 5.4: replace state by status
         table_project_work.not_null_action('state', action='remove')
@@ -255,14 +255,14 @@ class Work(sequence_ordered(), tree(separator='\\'), ModelSQL, ModelView):
 
     @classmethod
     def index_set_field(cls, name):
-        index = super(Work, cls).index_set_field(name)
+        index = super().index_set_field(name)
         if name in {'timesheet_start_date', 'timesheet_end_date'}:
             index = cls.index_set_field('timesheet_available') + 1
         return index
 
     @classmethod
     def validate(cls, works):
-        super(Work, cls).validate(works)
+        super().validate(works)
         for work in works:
             work.check_work_progress()
 
@@ -438,7 +438,7 @@ class Work(sequence_ordered(), tree(separator='\\'), ModelSQL, ModelView):
         timesheet_works = [
             w for pw in project_works for w in pw.timesheet_works]
 
-        super(Work, cls).delete(project_works)
+        super().delete(project_works)
 
         if timesheet_works:
             with without_check_access():
@@ -446,6 +446,6 @@ class Work(sequence_ordered(), tree(separator='\\'), ModelSQL, ModelView):
 
     @classmethod
     def search_global(cls, text):
-        for record, rec_name, icon in super(Work, cls).search_global(text):
+        for record, rec_name, icon in super().search_global(text):
             icon = icon or 'tryton-project'
             yield record, rec_name, icon

@@ -15,7 +15,7 @@ class Sale(metaclass=PoolMeta):
     __name__ = 'sale.sale'
 
     def is_done(self):
-        done = super(Sale, self).is_done()
+        done = super().is_done()
         if done:
             if any(l.supply_state == 'requested'
                     for l in self.lines if l.supply_on_sale):

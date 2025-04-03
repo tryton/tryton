@@ -66,7 +66,7 @@ class Line(ModelSQL, ModelView):
 
     @classmethod
     def __setup__(cls):
-        super(Line, cls).__setup__()
+        super().__setup__()
         cls._order = [
             ('date', 'DESC'),
             ('id', 'DESC'),
@@ -260,7 +260,7 @@ class HoursEmployeeWeekly(ModelSQL, ModelView):
 
     @classmethod
     def __setup__(cls):
-        super(HoursEmployeeWeekly, cls).__setup__()
+        super().__setup__()
         cls._order.insert(0, ('year', 'DESC'))
         cls._order.insert(1, ('week', 'DESC'))
         cls._order.insert(2, ('employee', 'ASC'))
@@ -292,7 +292,7 @@ class HoursEmployeeMonthly(ModelSQL, ModelView):
 
     @classmethod
     def __setup__(cls):
-        super(HoursEmployeeMonthly, cls).__setup__()
+        super().__setup__()
         cls._order.insert(0, ('year', 'DESC'))
         cls._order.insert(1, ('month.index', 'DESC'))
         cls._order.insert(2, ('employee', 'ASC'))

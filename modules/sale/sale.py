@@ -328,7 +328,7 @@ class Sale(
     def __setup__(cls):
         cls.number.search_unaccented = False
         cls.reference.search_unaccented = False
-        super(Sale, cls).__setup__()
+        super().__setup__()
         t = cls.__table__()
         cls._sql_indexes.update({
                 Index(t, (t.reference, Index.Similarity())),
@@ -431,7 +431,7 @@ class Sale(
         cursor = Transaction().connection.cursor()
         sql_table = cls.__table__()
 
-        super(Sale, cls).__register__(module_name)
+        super().__register__(module_name)
 
         # Migration from 5.6: rename state cancel to cancelled
         cursor.execute(*sql_table.update(
@@ -904,7 +904,7 @@ class Sale(
         default.setdefault('untaxed_amount_cache')
         default.setdefault('tax_amount_cache')
         default.setdefault('total_amount_cache')
-        return super(Sale, cls).copy(sales, default=default)
+        return super().copy(sales, default=default)
 
     def check_for_quotation(self):
         if not self.invoice_address:
@@ -1109,7 +1109,7 @@ class Sale(
                 raise AccessError(
                     gettext('sale.msg_sale_delete_cancel',
                         sale=sale.rec_name))
-        super(Sale, cls).delete(sales)
+        super().delete(sales)
 
     @classmethod
     @ModelView.button
@@ -2264,7 +2264,7 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
                     gettext('sale.msg_sale_line_delete_cancel_draft',
                         line=line.rec_name,
                         sale=line.sale.rec_name))
-        super(SaleLine, cls).delete(lines)
+        super().delete(lines)
 
     @classmethod
     def copy(cls, lines, default=None):
@@ -2277,7 +2277,7 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
         default.setdefault('moves_recreated', None)
         default.setdefault('invoice_lines', None)
         default.setdefault('actual_quantity')
-        return super(SaleLine, cls).copy(lines, default=default)
+        return super().copy(lines, default=default)
 
 
 class SaleLineTax(ModelSQL):
@@ -2347,7 +2347,7 @@ class SaleReport(CompanyReport):
     @classmethod
     def execute(cls, ids, data):
         with Transaction().set_context(address_with_party=True):
-            return super(SaleReport, cls).execute(ids, data)
+            return super().execute(ids, data)
 
     @classmethod
     def get_context(cls, records, header, data):
@@ -2518,7 +2518,7 @@ class ReturnSale(Wizard):
 class ModifyHeaderStateView(StateView):
     def get_view(self, wizard, state_name):
         with Transaction().set_context(modify_header=True):
-            return super(ModifyHeaderStateView, self).get_view(
+            return super().get_view(
                 wizard, state_name)
 
     def get_defaults(self, wizard, state_name, fields):

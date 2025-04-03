@@ -10,11 +10,11 @@ class UNCEFACTInvoice(metaclass=PoolMeta):
     def render(self, template):
         if Transaction().context.get('account_fr_chorus') and not template:
             template = '16B-CII'
-        return super(UNCEFACTInvoice, self).render(template)
+        return super().render(template)
 
     @classmethod
     def party_legal_ids(cls, party, address):
-        ids = super(UNCEFACTInvoice, cls).party_legal_ids(party, address)
+        ids = super().party_legal_ids(party, address)
         if Transaction().context.get('account_fr_chorus') and address:
             ids.append((address.siret.code, {'schemeID': '1'}))
         return ids

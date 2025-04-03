@@ -150,7 +150,7 @@ class Message(ModelSQL, ModelView):
 
     @classmethod
     def write(cls, messages, values, *args):
-        super(Message, cls).write(messages, values, *args)
+        super().write(messages, values, *args)
         cls._set_translations(messages)
         cls._message_cache.clear()
 
@@ -159,7 +159,7 @@ class Message(ModelSQL, ModelView):
         pool = Pool()
         Translation = pool.get('ir.translation')
         ids = [m.id for m in messages]
-        super(Message, cls).delete(messages)
+        super().delete(messages)
         Translation.delete_ids(cls.__name__, 'model', ids)
         cls._message_cache.clear()
 

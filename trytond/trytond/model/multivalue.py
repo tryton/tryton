@@ -113,7 +113,7 @@ class ValueMixin(MatchMixin, ModelStorage):
     __caches_lock = Lock()
 
     def match(self, pattern, match_none=True):
-        return super(ValueMixin, self).match(pattern, match_none=match_none)
+        return super().match(pattern, match_none=match_none)
 
     @classmethod
     def _values_cache(cls):

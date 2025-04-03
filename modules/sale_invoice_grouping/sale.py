@@ -40,7 +40,7 @@ class Sale(metaclass=PoolMeta):
     def _get_invoice_sale(self):
         transaction = Transaction()
         context = transaction.context
-        invoice = super(Sale, self)._get_invoice_sale()
+        invoice = super()._get_invoice_sale()
         if (not context.get('skip_grouping', False)
                 and self.invoice_grouping_method):
             with transaction.set_context(skip_grouping=True):

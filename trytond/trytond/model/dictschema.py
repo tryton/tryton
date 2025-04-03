@@ -92,7 +92,7 @@ class DictSchemaMixin(object):
 
     @classmethod
     def __setup__(cls):
-        super(DictSchemaMixin, cls).__setup__()
+        super().__setup__()
         cls.__rpc__.update({
                 'get_keys': RPC(
                     instantiate=0,

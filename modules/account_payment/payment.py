@@ -153,7 +153,7 @@ class Group(ModelSQL, ModelView):
                 values['number'] = config.get_multivalue(
                     'payment_group_sequence',
                     company=values.get('company', default_company)).get()
-        return super(Group, cls).create(vlist)
+        return super().create(vlist)
 
     @classmethod
     def copy(cls, groups, default=None):
@@ -163,7 +163,7 @@ class Group(ModelSQL, ModelView):
             default = default.copy()
         default.setdefault('number', None)
         default.setdefault('payments', None)
-        return super(Group, cls).copy(groups, default=default)
+        return super().copy(groups, default=default)
 
     @classmethod
     @ModelView.button
@@ -389,7 +389,7 @@ class Payment(Workflow, ModelSQL, ModelView):
     def __setup__(cls):
         cls.number.search_unaccented = False
         cls.reference.search_unaccented = False
-        super(Payment, cls).__setup__()
+        super().__setup__()
         t = cls.__table__()
         cls._sql_indexes.update({
                 Index(
@@ -654,7 +654,7 @@ class Payment(Workflow, ModelSQL, ModelView):
                     gettext('account_payment.msg_payment_delete_draft',
                         payment=payment.rec_name))
         lines = {p.line for p in payments if p.line}
-        super(Payment, cls).delete(payments)
+        super().delete(payments)
         if lines:
             Line.set_payment_amount(list(lines))
 

@@ -135,7 +135,7 @@ class Complaint(Workflow, ModelSQL, ModelView):
     def __setup__(cls):
         cls.number.search_unaccented = False
         cls.reference.search_unaccented = False
-        super(Complaint, cls).__setup__()
+        super().__setup__()
         t = cls.__table__()
         cls._sql_indexes.update({
                 Index(t, (t.reference, Index.Similarity())),
@@ -204,7 +204,7 @@ class Complaint(Workflow, ModelSQL, ModelView):
                 and not table_h.column_exist('submitted_by')):
             table_h.column_rename('employee', 'submitted_by')
 
-        super(Complaint, cls).__register__(module_name)
+        super().__register__(module_name)
 
     @classmethod
     def _actions_domains(cls):
@@ -291,7 +291,7 @@ class Complaint(Workflow, ModelSQL, ModelView):
                 values['number'] = config.get_multivalue(
                     'complaint_sequence',
                     company=values.get('company', default_company)).get()
-        return super(Complaint, cls).create(vlist)
+        return super().create(vlist)
 
     @classmethod
     def copy(cls, complaints, default=None):
@@ -304,7 +304,7 @@ class Complaint(Workflow, ModelSQL, ModelView):
         default.setdefault('approved_by')
         default.setdefault('rejected_by')
         default.setdefault('cancelled_by')
-        return super(Complaint, cls).copy(complaints, default=default)
+        return super().copy(complaints, default=default)
 
     @classmethod
     def delete(cls, complaints):
@@ -313,7 +313,7 @@ class Complaint(Workflow, ModelSQL, ModelView):
                 raise AccessError(
                     gettext('sale_complaint.msg_complaint_delete_draft',
                         complaint=complaint.rec_name))
-        super(Complaint, cls).delete(complaints)
+        super().delete(complaints)
 
     @classmethod
     @ModelView.button
@@ -727,7 +727,7 @@ class Action(ModelSQL, ModelView):
                 raise AccessError(
                     gettext('sale_complaint.msg_action_delete_result',
                         action=action.rec_name))
-        super(Action, cls).delete(actions)
+        super().delete(actions)
 
 
 class _Action_Line:

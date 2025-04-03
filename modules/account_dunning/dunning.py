@@ -119,7 +119,7 @@ class Dunning(ModelSQL, ModelView):
 
     @classmethod
     def __setup__(cls):
-        super(Dunning, cls).__setup__()
+        super().__setup__()
         table = cls.__table__()
         cls._sql_constraints = [
             ('line_unique', Unique(table, table.line),
@@ -363,7 +363,7 @@ class ProcessDunning(Wizard):
 
     @classmethod
     def __setup__(cls):
-        super(ProcessDunning, cls).__setup__()
+        super().__setup__()
 
         # _actions is the list that define the order of each state to process
         # after the 'process' state.

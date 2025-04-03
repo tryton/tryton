@@ -39,7 +39,7 @@ class Carrier(metaclass=PoolMeta):
 
     @classmethod
     def __setup__(cls):
-        super(Carrier, cls).__setup__()
+        super().__setup__()
         selection = ('weight', 'Weight')
         if selection not in cls.carrier_cost_method.selection:
             cls.carrier_cost_method.selection.append(selection)
@@ -64,13 +64,13 @@ class Carrier(metaclass=PoolMeta):
         return weight_price, self.weight_currency.id
 
     def get_sale_price(self):
-        price, currency_id = super(Carrier, self).get_sale_price()
+        price, currency_id = super().get_sale_price()
         if self.carrier_cost_method == 'weight':
             price, currency_id = self._get_weight_price()
         return price, currency_id
 
     def get_purchase_price(self):
-        price, currency_id = super(Carrier, self).get_purchase_price()
+        price, currency_id = super().get_purchase_price()
         if self.carrier_cost_method == 'weight':
             price, currency_id = self._get_weight_price()
         return price, currency_id
@@ -102,7 +102,7 @@ class WeightPriceList(ModelSQL, ModelView):
 
     @classmethod
     def __setup__(cls):
-        super(WeightPriceList, cls).__setup__()
+        super().__setup__()
         cls._order.insert(0, ('weight', 'ASC'))
 
     @fields.depends('carrier', '_parent_carrier.weight_currency')

@@ -72,7 +72,7 @@ class Address(
 
     @classmethod
     def __setup__(cls):
-        super(Address, cls).__setup__()
+        super().__setup__()
         cls.__access__.add('party')
         cls._order.insert(0, ('party', 'ASC'))
         cls.__rpc__.update(
@@ -87,7 +87,7 @@ class Address(
         # Migration from 5.8: rename zip to postal code
         table.column_rename('zip', 'postal_code')
 
-        super(Address, cls).__register__(module_name)
+        super().__register__(module_name)
 
     @fields.depends('street')
     def on_change_with_street_single_line(self, name=None):
@@ -244,7 +244,7 @@ class Address(
                         raise AccessError(
                             gettext('party.msg_address_change_party',
                                 address=address.rec_name))
-        super(Address, cls).write(*args)
+        super().write(*args)
 
     @fields.depends('subdivision', 'country')
     def on_change_country(self):
@@ -294,7 +294,7 @@ class AddressFormat(DeactivableMixin, MatchMixin, ModelSQL, ModelView):
 
     @classmethod
     def __setup__(cls):
-        super(AddressFormat, cls).__setup__()
+        super().__setup__()
         cls._order.insert(0, ('country_code', 'ASC NULLS LAST'))
         cls._order.insert(1, ('language_code', 'ASC NULLS LAST'))
 
@@ -344,18 +344,18 @@ ${COUNTRY}"""
 
     @classmethod
     def create(cls, *args, **kwargs):
-        records = super(AddressFormat, cls).create(*args, **kwargs)
+        records = super().create(*args, **kwargs)
         cls._get_format_cache.clear()
         return records
 
     @classmethod
     def write(cls, *args, **kwargs):
-        super(AddressFormat, cls).write(*args, **kwargs)
+        super().write(*args, **kwargs)
         cls._get_format_cache.clear()
 
     @classmethod
     def delete(cls, *args, **kwargs):
-        super(AddressFormat, cls).delete(*args, **kwargs)
+        super().delete(*args, **kwargs)
         cls._get_format_cache.clear()
 
     @classmethod

@@ -39,7 +39,7 @@ class Float(Field):
         :param digits: a list of two integers defining the total
             of digits and the number of decimals of the float.
         '''
-        super(Float, self).__init__(string=string, help=help,
+        super().__init__(string=string, help=help,
             required=required, readonly=readonly, domain=domain, states=states,
             on_change=on_change, on_change_with=on_change_with,
             depends=depends, context=context, loading=loading)

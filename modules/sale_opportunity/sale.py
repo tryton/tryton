@@ -28,7 +28,7 @@ class Sale(metaclass=PoolMeta):
 
     @classmethod
     def _get_origin(cls):
-        return super(Sale, cls)._get_origin() + ['sale.opportunity']
+        return super()._get_origin() + ['sale.opportunity']
 
     @classmethod
     def write(cls, *args):
@@ -52,29 +52,29 @@ class Sale(metaclass=PoolMeta):
     @classmethod
     @process_opportunity
     def delete(cls, sales):
-        super(Sale, cls).delete(sales)
+        super().delete(sales)
 
     @classmethod
     @process_opportunity
     def cancel(cls, sales):
-        super(Sale, cls).cancel(sales)
+        super().cancel(sales)
 
     @classmethod
     @process_opportunity
     def quote(cls, sales):
-        super(Sale, cls).quote(sales)
+        super().quote(sales)
 
     @classmethod
     @process_opportunity
     def confirm(cls, sales):
-        super(Sale, cls).confirm(sales)
+        super().confirm(sales)
 
     @classmethod
     @process_opportunity
     def proceed(cls, sales):
-        super(Sale, cls).proceed(sales)
+        super().proceed(sales)
 
     @classmethod
     @process_opportunity
     def do(cls, sales):
-        super(Sale, cls).do(sales)
+        super().do(sales)

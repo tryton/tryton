@@ -145,7 +145,7 @@ class Line(Graph):
         cr.restore()
 
     def drawLegend(self, cr, widht, height):
-        super(Line, self).drawLegend(cr, widht, height)
+        super().drawLegend(cr, widht, height)
         cr.save()
         for point in self.points:
             if point.highlight:
@@ -237,7 +237,7 @@ class Line(Graph):
                     int(maxx - minx + 1), int(maxy - miny + 1))
 
     def updateXY(self):
-        super(Line, self).updateXY()
+        super().updateXY()
         if self.xrange != 0:
             self.xrange -= 1
             if self.xrange == 0:
@@ -246,18 +246,18 @@ class Line(Graph):
                 self.xscale = 1.0 / self.xrange
 
     def drawAxis(self, cr, width, height):
-        super(Line, self).drawAxis(cr, width, height)
+        super().drawAxis(cr, width, height)
         self.drawLine(cr, 1.0, 0)
 
     def action(self):
-        super(Line, self).action()
+        super().action()
         for point in self.points:
             if point.highlight:
                 ids = self.ids[point.xname]
                 self.action_keyword(ids)
 
     def YLabels(self):
-        ylabels = super(Line, self).YLabels()
+        ylabels = super().YLabels()
         if all('timedelta' in f for f in self.yfields):
             converter = {f.get('timedelta') for f in self.yfields}
             if len(converter) == 1:

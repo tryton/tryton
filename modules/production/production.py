@@ -163,7 +163,7 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
     def __setup__(cls):
         cls.number.search_unaccented = False
         cls.reference.search_unaccented = False
-        super(Production, cls).__setup__()
+        super().__setup__()
         t = cls.__table__()
         cls._sql_indexes.update({
                 Index(t, (t.reference, Index.Similarity())),
@@ -272,7 +272,7 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
                 and not table_h.column_exist('unit')):
             table_h.column_rename('uom', 'unit')
 
-        super(Production, cls).__register__(module_name)
+        super().__register__(module_name)
 
         table = cls.__table__()
         cursor = Transaction().connection.cursor()
@@ -659,13 +659,13 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
 
     @classmethod
     def create(cls, vlist):
-        productions = super(Production, cls).create(vlist)
+        productions = super().create(vlist)
         cls._set_move_planned_date(productions)
         return productions
 
     @classmethod
     def write(cls, *args):
-        super(Production, cls).write(*args)
+        super().write(*args)
         cls._set_move_planned_date(sum(args[::2], []))
 
     @classmethod
@@ -680,7 +680,7 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
         default.setdefault('done_by')
         default.setdefault('inputs.origin', None)
         default.setdefault('outputs.origin', None)
-        return super(Production, cls).copy(productions, default=default)
+        return super().copy(productions, default=default)
 
     def _get_move_planned_date(self):
         "Return the planned dates for input and output moves"

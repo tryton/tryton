@@ -65,7 +65,7 @@ class ModelViewButton(ModelView):
 
     @classmethod
     def __setup__(cls):
-        super(ModelViewButton, cls).__setup__()
+        super().__setup__()
         cls._buttons = {
             'test': {},
             }
@@ -86,7 +86,7 @@ class ModelViewButtonDepends(ModelView):
 
     @classmethod
     def __setup__(cls):
-        super(ModelViewButtonDepends, cls).__setup__()
+        super().__setup__()
         cls._buttons = {
             'test': {
                 'depends': ['value'],

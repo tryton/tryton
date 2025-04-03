@@ -18,7 +18,7 @@ class Product(metaclass=PoolMeta):
         if forecast_location_move:
             date = context.get('stock_date_end') or datetime.date.max
             restore = Location.forecast_location_move(date)
-        quantities = super(Product, cls).products_by_location(*args, **kwargs)
+        quantities = super().products_by_location(*args, **kwargs)
         if forecast_location_move:
             restore()
         return quantities

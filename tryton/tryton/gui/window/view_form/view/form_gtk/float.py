@@ -21,4 +21,4 @@ class Float(Integer):
 
     def display(self):
         self.entry.digits = self.digits
-        super(Float, self).display()
+        super().display()

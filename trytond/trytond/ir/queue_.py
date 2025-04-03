@@ -59,7 +59,7 @@ class Queue(ModelSQL):
         default.setdefault('enqueued_at')
         default.setdefault('dequeued_at')
         default.setdefault('finished_at')
-        return super(Queue, cls).copy(records, default=default)
+        return super().copy(records, default=default)
 
     @classmethod
     def push(cls, name, data, scheduled_at=None, expected_at=None):

@@ -9,4 +9,4 @@ class Move(metaclass=PoolMeta):
 
     @classmethod
     def _get_origin(cls):
-        return super(Move, cls)._get_origin() + ['commission']
+        return super()._get_origin() + ['commission']

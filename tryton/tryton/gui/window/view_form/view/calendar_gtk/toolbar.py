@@ -16,7 +16,7 @@ _ = gettext.gettext
 class Toolbar(Gtk.Toolbar):
 
     def __init__(self, goocalendar):
-        super(Toolbar, self).__init__()
+        super().__init__()
         self.goocalendar = goocalendar
         self.accel_group = Main().accel_group
 

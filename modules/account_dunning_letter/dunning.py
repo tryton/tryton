@@ -22,7 +22,7 @@ class ProcessDunning(metaclass=PoolMeta):
 
     @classmethod
     def __setup__(cls):
-        super(ProcessDunning, cls).__setup__()
+        super().__setup__()
         cls._actions.append('print_letter')
 
     def do_print_letter(self, action):
@@ -48,7 +48,7 @@ class Letter(CompanyReport, metaclass=PoolMeta):
     @classmethod
     def execute(cls, ids, data):
         with Transaction().set_context(address_with_party=True):
-            return super(Letter, cls).execute(ids, data)
+            return super().execute(ids, data)
 
     @classmethod
     def get_context(cls, records, header, data):

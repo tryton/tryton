@@ -64,7 +64,7 @@ class Forecast(Workflow, ModelSQL, ModelView):
 
     @classmethod
     def __setup__(cls):
-        super(Forecast, cls).__setup__()
+        super().__setup__()
         t = cls.__table__()
         cls._sql_constraints += [
             ('dates_done_overlap',
@@ -115,7 +115,7 @@ class Forecast(Workflow, ModelSQL, ModelView):
         cursor = Transaction().connection.cursor()
         sql_table = cls.__table__()
 
-        super(Forecast, cls).__register__(module_name)
+        super().__register__(module_name)
 
         table = cls.__table_handler__(module_name)
 
@@ -207,7 +207,7 @@ class Forecast(Workflow, ModelSQL, ModelView):
                 raise AccessError(
                     gettext('stock_forecast.msg_forecast_delete_cancel',
                         forecast=forecast.rec_name))
-        super(Forecast, cls).delete(forecasts)
+        super().delete(forecasts)
 
     @classmethod
     @ModelView.button
@@ -301,7 +301,7 @@ class ForecastLine(ModelSQL, ModelView):
 
     @classmethod
     def __setup__(cls):
-        super(ForecastLine, cls).__setup__()
+        super().__setup__()
         cls.__access__.add('forecast')
         t = cls.__table__()
         cls._sql_constraints += [
@@ -412,7 +412,7 @@ class ForecastLine(ModelSQL, ModelView):
         else:
             default = default.copy()
         default.setdefault('moves', None)
-        return super(ForecastLine, cls).copy(lines, default=default)
+        return super().copy(lines, default=default)
 
     def get_moves(self):
         'Get stock moves for the forecast line'

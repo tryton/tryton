@@ -14,7 +14,7 @@ class ProductSupplier(metaclass=PoolMeta):
         "Week Days")
 
     def compute_supply_date(self, date=None):
-        date = super(ProductSupplier, self).compute_supply_date(date=date)
+        date = super().compute_supply_date(date=date)
         earlier_date = None
         if date != datetime.date.max:
             for weekday in self.weekdays:
@@ -38,7 +38,7 @@ class ProductSupplier(metaclass=PoolMeta):
             later_date = new_date
         if later_date:
             date = later_date
-        return super(ProductSupplier, self).compute_purchase_date(date)
+        return super().compute_purchase_date(date)
 
 
 class ProductSupplierDay(ModelSQL):

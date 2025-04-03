@@ -33,7 +33,7 @@ class PurchaseRequest(metaclass=PoolMeta):
 
     @classmethod
     def _get_origin(cls):
-        origins = super(PurchaseRequest, cls)._get_origin()
+        origins = super()._get_origin()
         return origins | {'stock.order_point'}
 
     @classmethod

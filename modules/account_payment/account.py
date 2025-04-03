@@ -74,7 +74,7 @@ class MoveLine(metaclass=PoolMeta):
 
     @classmethod
     def __setup__(cls):
-        super(MoveLine, cls).__setup__()
+        super().__setup__()
         t = cls.__table__()
         cls._sql_indexes.update({
                 Index(
@@ -238,7 +238,7 @@ class MoveLine(metaclass=PoolMeta):
         else:
             default = default.copy()
         default.setdefault('payments', None)
-        return super(MoveLine, cls).copy(lines, default=default)
+        return super().copy(lines, default=default)
 
     @classmethod
     @ModelView.button_action('account_payment.act_pay_line')
@@ -743,12 +743,12 @@ class Invoice(metaclass=PoolMeta):
 
     @fields.depends('party')
     def on_change_party(self):
-        super(Invoice, self).on_change_party()
+        super().on_change_party()
         if self.party:
             self.payment_direct_debit = self.party.payment_direct_debit
 
     def _get_move_line(self, date, amount):
-        line = super(Invoice, self)._get_move_line(date, amount)
+        line = super()._get_move_line(date, amount)
         line.payment_direct_debit = self.payment_direct_debit
         return line
 
@@ -759,7 +759,7 @@ class Invoice(metaclass=PoolMeta):
         Date = pool.get('ir.date')
         context = Transaction().context
 
-        amounts = super(Invoice, cls).get_amount_to_pay(invoices, name)
+        amounts = super().get_amount_to_pay(invoices, name)
 
         if context.get('with_payment', True):
             for company, c_invoices in groupby(
@@ -881,7 +881,7 @@ class StatementLine(metaclass=PoolMeta):
 
     @fields.depends('party', methods=['payment'])
     def on_change_party(self):
-        super(StatementLine, self).on_change_party()
+        super().on_change_party()
         if self.payment:
             if self.payment.party != self.party:
                 self.payment = None

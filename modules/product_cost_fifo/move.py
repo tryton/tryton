@@ -28,7 +28,7 @@ class Move(metaclass=PoolMeta):
 
     @classmethod
     def __setup__(cls):
-        super(Move, cls).__setup__()
+        super().__setup__()
         cls._allow_modify_closed_period.add('fifo_quantity')
 
         t = cls.__table__()
@@ -119,7 +119,7 @@ class Move(metaclass=PoolMeta):
         return cost_price, average_cost_price, to_save
 
     def _do(self):
-        cost_price, to_save = super(Move, self)._do()
+        cost_price, to_save = super()._do()
         cost_price_method = self.product.get_multivalue(
             'cost_price_method', **self._cost_price_pattern)
         if (self.from_location.type != 'storage'

@@ -21,7 +21,7 @@ class One2One(Many2Many):
         :param values: a dictionary with the read values
         :return: a dictionary with ids as key and target id as value
         '''
-        res = super(One2One, self).get(ids, model, name, values=values)
+        res = super().get(ids, model, name, values=values)
         for i, vals in res.items():
             res[i] = vals[0] if vals else None
         return res

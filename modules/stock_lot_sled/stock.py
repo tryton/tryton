@@ -36,7 +36,7 @@ class Configuration(metaclass=PoolMeta):
         pool = Pool()
         if field == 'shelf_life_delay':
             return pool.get('stock.location.lot.shelf_life')
-        return super(Configuration, cls).multivalue_model(field)
+        return super().multivalue_model(field)
 
 
 class ConfigurationLotShelfLife(ModelSQL, ValueMixin):
@@ -105,7 +105,7 @@ class Lot(LotSledMixin, metaclass=PoolMeta):
 
     @classmethod
     def write(cls, *args):
-        super(Lot, cls).write(*args)
+        super().write(*args)
 
         actions = iter(args)
         for lots, values in zip(actions, actions):
@@ -165,7 +165,7 @@ class Move(metaclass=PoolMeta):
     @ModelView.button
     @Workflow.transition('done')
     def do(cls, moves):
-        super(Move, cls).do(moves)
+        super().do(moves)
         cls.check_expiration_dates(moves)
 
     @classmethod
@@ -244,7 +244,7 @@ class Move(metaclass=PoolMeta):
         Lot = pool.get('stock.lot')
         Config = pool.get('stock.configuration')
 
-        query = super(Move, cls).compute_quantities_query(
+        query = super().compute_quantities_query(
             location_ids, with_childs=with_childs, grouping=grouping,
             grouping_filter=grouping_filter)
 
@@ -376,7 +376,7 @@ class Period(metaclass=PoolMeta):
         move = Move.__table__()
         lot = Lot.__table__()
 
-        super(Period, cls).close(periods)
+        super().close(periods)
 
         # Don't allow to close a period if all products at this date
         # are not yet expired

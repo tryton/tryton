@@ -52,7 +52,7 @@ class OverriddenError(UserError):
 class TrytonPOFile(polib.POFile):
 
     def sort(self):
-        return super(TrytonPOFile, self).sort(
+        return super().sort(
             key=lambda x: (x.msgctxt, x.msgid))
 
 
@@ -142,7 +142,7 @@ class Translation(
             table.drop_constraint('translation_md5_uniq')
             table.drop_column('src_md5')
 
-        super(Translation, cls).__register__(module_name)
+        super().__register__(module_name)
 
     @classmethod
     def register_model(cls, model, module_name):

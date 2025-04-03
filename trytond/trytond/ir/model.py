@@ -64,7 +64,7 @@ class Model(
 
     @classmethod
     def __setup__(cls):
-        super(Model, cls).__setup__()
+        super().__setup__()
         table = cls.__table__()
         cls._sql_constraints += [
             ('name_unique', Unique(table, table.name),
@@ -307,7 +307,7 @@ class ModelField(
 
     @classmethod
     def __setup__(cls):
-        super(ModelField, cls).__setup__()
+        super().__setup__()
         cls.__access__.add('model_ref')
         table = cls.__table__()
         cls._sql_constraints += [
@@ -488,7 +488,7 @@ class ModelField(
                     fields_names.append('name')
                     to_delete.append('name')
 
-        res = super(ModelField, cls).read(ids, fields_names)
+        res = super().read(ids, fields_names)
 
         if (Transaction().context.get('language')
                 and ('string' in fields_names
@@ -543,7 +543,7 @@ class ModelAccess(
 
     @classmethod
     def __setup__(cls):
-        super(ModelAccess, cls).__setup__()
+        super().__setup__()
         cls.__access__.add('model_ref')
         cls.__rpc__.update({
                 'get_access': RPC(),
@@ -755,14 +755,14 @@ class ModelAccess(
 
     @classmethod
     def write(cls, accesses, values, *args):
-        super(ModelAccess, cls).write(accesses, values, *args)
+        super().write(accesses, values, *args)
         # Restart the cache
         cls._get_access_cache.clear()
         ModelView._fields_view_get_cache.clear()
 
     @classmethod
     def create(cls, vlist):
-        res = super(ModelAccess, cls).create(vlist)
+        res = super().create(vlist)
         # Restart the cache
         cls._get_access_cache.clear()
         ModelView._fields_view_get_cache.clear()
@@ -770,7 +770,7 @@ class ModelAccess(
 
     @classmethod
     def delete(cls, accesses):
-        super(ModelAccess, cls).delete(accesses)
+        super().delete(accesses)
         # Restart the cache
         cls._get_access_cache.clear()
         ModelView._fields_view_get_cache.clear()
@@ -948,14 +948,14 @@ class ModelFieldAccess(
 
     @classmethod
     def write(cls, field_accesses, values, *args):
-        super(ModelFieldAccess, cls).write(field_accesses, values, *args)
+        super().write(field_accesses, values, *args)
         # Restart the cache
         cls._get_access_cache.clear()
         ModelView._fields_view_get_cache.clear()
 
     @classmethod
     def create(cls, vlist):
-        res = super(ModelFieldAccess, cls).create(vlist)
+        res = super().create(vlist)
         # Restart the cache
         cls._get_access_cache.clear()
         ModelView._fields_view_get_cache.clear()
@@ -963,7 +963,7 @@ class ModelFieldAccess(
 
     @classmethod
     def delete(cls, field_accesses):
-        super(ModelFieldAccess, cls).delete(field_accesses)
+        super().delete(field_accesses)
         # Restart the cache
         cls._get_access_cache.clear()
         ModelView._fields_view_get_cache.clear()
@@ -1032,7 +1032,7 @@ class ModelButton(
 
     @classmethod
     def __setup__(cls):
-        super(ModelButton, cls).__setup__()
+        super().__setup__()
         cls.__access__.add('model_ref')
         t = cls.__table__()
         cls._sql_constraints += [
@@ -1045,7 +1045,7 @@ class ModelButton(
 
     @classmethod
     def create(cls, vlist):
-        result = super(ModelButton, cls).create(vlist)
+        result = super().create(vlist)
         cls._rules_cache.clear()
         cls._reset_cache.clear()
         cls._groups_cache.clear()
@@ -1054,7 +1054,7 @@ class ModelButton(
 
     @classmethod
     def write(cls, buttons, values, *args):
-        super(ModelButton, cls).write(buttons, values, *args)
+        super().write(buttons, values, *args)
         cls._rules_cache.clear()
         cls._reset_cache.clear()
         cls._groups_cache.clear()
@@ -1062,7 +1062,7 @@ class ModelButton(
 
     @classmethod
     def delete(cls, buttons):
-        super(ModelButton, cls).delete(buttons)
+        super().delete(buttons)
         cls._rules_cache.clear()
         cls._reset_cache.clear()
         cls._groups_cache.clear()
@@ -1075,7 +1075,7 @@ class ModelButton(
         else:
             default = default.copy()
         default.setdefault('clicks')
-        return super(ModelButton, cls).copy(buttons, default=default)
+        return super().copy(buttons, default=default)
 
     @classmethod
     @without_check_access
@@ -1252,7 +1252,7 @@ class ModelButtonRule(ModelSQL, ModelView):
     def create(cls, vlist):
         pool = Pool()
         ModelButton = pool.get('ir.model.button')
-        result = super(ModelButtonRule, cls).create(vlist)
+        result = super().create(vlist)
         # Restart the cache for get_rules
         ModelButton._rules_cache.clear()
         return result
@@ -1261,7 +1261,7 @@ class ModelButtonRule(ModelSQL, ModelView):
     def write(cls, buttons, values, *args):
         pool = Pool()
         ModelButton = pool.get('ir.model.button')
-        super(ModelButtonRule, cls).write(buttons, values, *args)
+        super().write(buttons, values, *args)
         # Restart the cache for get_rules
         ModelButton._rules_cache.clear()
 
@@ -1269,7 +1269,7 @@ class ModelButtonRule(ModelSQL, ModelView):
     def delete(cls, buttons):
         pool = Pool()
         ModelButton = pool.get('ir.model.button')
-        super(ModelButtonRule, cls).delete(buttons)
+        super().delete(buttons)
         # Restart the cache for get_rules
         ModelButton._rules_cache.clear()
 
@@ -1283,7 +1283,7 @@ class ModelButtonClick(DeactivableMixin, ModelSQL, ModelView):
 
     @classmethod
     def __setup__(cls):
-        super(ModelButtonClick, cls).__setup__()
+        super().__setup__()
         cls.__access__.add('button')
         cls.__rpc__.update({
                 'get_click': RPC(),
@@ -1380,7 +1380,7 @@ class ModelData(
 
     @classmethod
     def __setup__(cls):
-        super(ModelData, cls).__setup__()
+        super().__setup__()
         table = cls.__table__()
         cls._sql_constraints = [
             ('fs_id_module_unique',
@@ -1412,7 +1412,7 @@ class ModelData(
 
     @classmethod
     def __register__(cls, module_name):
-        super(ModelData, cls).__register__(module_name)
+        super().__register__(module_name)
 
         table_h = cls.__table_handler__(module_name)
 
@@ -1434,20 +1434,20 @@ class ModelData(
 
     @classmethod
     def create(cls, *args):
-        records = super(ModelData, cls).create(*args)
+        records = super().create(*args)
         cls._has_model_cache.clear()
         return records
 
     @classmethod
     def write(cls, data, values, *args):
-        super(ModelData, cls).write(data, values, *args)
+        super().write(data, values, *args)
         # Restart the cache for get_id
         cls._get_id_cache.clear()
         cls._has_model_cache.clear()
 
     @classmethod
     def delete(cls, records):
-        super(ModelData, cls).delete(records)
+        super().delete(records)
         cls._has_model_cache.clear()
 
     @classmethod

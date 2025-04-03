@@ -19,7 +19,7 @@ _ = gettext.gettext
 class Action:
 
     def __init__(self, view, attrs=None):
-        super(Action, self).__init__()
+        super().__init__()
         self.name = attrs['name']
         self.view = view
 

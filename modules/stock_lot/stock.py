@@ -95,7 +95,7 @@ class Lot(DeactivableMixin, ModelSQL, ModelView, LotMixin, StockMixin):
 
     @classmethod
     def __setup__(cls):
-        super(Lot, cls).__setup__()
+        super().__setup__()
         cls._modify_no_move = [
             ('product', None, 'stock_lot.msg_change_product'),
             ]
@@ -163,7 +163,7 @@ class Lot(DeactivableMixin, ModelSQL, ModelView, LotMixin, StockMixin):
     @classmethod
     @check_no_move
     def write(cls, *args):
-        super(Lot, cls).write(*args)
+        super().write(*args)
 
     @classmethod
     @ModelView.button_action('stock_lot.act_lot_trace_upward_relate')
@@ -792,12 +792,12 @@ class Period(metaclass=PoolMeta):
 
     @classmethod
     def groupings(cls):
-        return super(Period, cls).groupings() + [('product', 'lot')]
+        return super().groupings() + [('product', 'lot')]
 
     @classmethod
     def get_cache(cls, grouping):
         pool = Pool()
-        Cache = super(Period, cls).get_cache(grouping)
+        Cache = super().get_cache(grouping)
         if grouping == ('product', 'lot'):
             return pool.get('stock.period.cache.lot')
         return Cache
@@ -841,7 +841,7 @@ class Inventory(metaclass=PoolMeta):
 
     @classmethod
     def grouping(cls):
-        return super(Inventory, cls).grouping() + ('lot', )
+        return super().grouping() + ('lot', )
 
 
 class InventoryLine(metaclass=PoolMeta):
@@ -856,17 +856,17 @@ class InventoryLine(metaclass=PoolMeta):
 
     @classmethod
     def __setup__(cls):
-        super(InventoryLine, cls).__setup__()
+        super().__setup__()
         cls._order.insert(1, ('lot', 'ASC'))
 
     def get_rec_name(self, name):
-        rec_name = super(InventoryLine, self).get_rec_name(name)
+        rec_name = super().get_rec_name(name)
         if self.lot:
             rec_name += ' - %s' % self.lot.rec_name
         return rec_name
 
     def get_move(self):
-        move = super(InventoryLine, self).get_move()
+        move = super().get_move()
         if move:
             move.lot = self.lot
         return move
@@ -887,7 +887,7 @@ class InventoryCount(metaclass=PoolMeta):
                 raise RequiredValidationError(
                     gettext('stock_lot.msg_only_lot',
                         product=product.rec_name))
-        values = super(InventoryCount, self).default_quantity(fields)
+        values = super().default_quantity(fields)
         line = InventoryLine(values['line'])
         values['lot'] = line.lot.id if line.lot else None
         return values
@@ -895,7 +895,7 @@ class InventoryCount(metaclass=PoolMeta):
     def get_line_domain(self, inventory):
         pool = Pool()
         Lot = pool.get('stock.lot')
-        domain = super(InventoryCount, self).get_line_domain(inventory)
+        domain = super().get_line_domain(inventory)
         if isinstance(self.search.search, Lot):
             domain.append(('lot', '=', self.search.search.id))
         return domain
@@ -917,7 +917,7 @@ class InventoryCountSearch(metaclass=PoolMeta):
 
     @classmethod
     def __setup__(cls):
-        super(InventoryCountSearch, cls).__setup__()
+        super().__setup__()
         cls.search.selection.append(('stock.lot', "Lot"))
 
 

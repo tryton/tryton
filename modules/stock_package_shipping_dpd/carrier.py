@@ -119,7 +119,7 @@ class Carrier(metaclass=PoolMeta):
 
     @classmethod
     def __setup__(cls):
-        super(Carrier, cls).__setup__()
+        super().__setup__()
         cls.shipping_service.selection.append(('dpd', 'DPD'))
 
     @classmethod

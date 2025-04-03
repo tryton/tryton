@@ -12,7 +12,7 @@ class Asset(AnalyticMixin, metaclass=PoolMeta):
 
     @classmethod
     def __setup__(cls):
-        super(Asset, cls).__setup__()
+        super().__setup__()
         cls.analytic_accounts.domain = [
             ('company', '=', Eval('company', -1)),
             ]
@@ -22,7 +22,7 @@ class Asset(AnalyticMixin, metaclass=PoolMeta):
         pool = Pool()
         Entry = pool.get('analytic.account.entry')
 
-        super(Asset, self).on_change_supplier_invoice_line()
+        super().on_change_supplier_invoice_line()
         if self.supplier_invoice_line:
             entries = []
             for entry in self.supplier_invoice_line.analytic_accounts:
@@ -35,7 +35,7 @@ class Asset(AnalyticMixin, metaclass=PoolMeta):
             self.analytic_accounts = entries
 
     def get_move(self, line):
-        move = super(Asset, self).get_move(line)
+        move = super().get_move(line)
         self.set_analytic_lines(move, self.product.account_expense_used)
         return move
 

@@ -11,7 +11,7 @@ class MultiSelection(Widget, SelectionMixin):
     expand = True
 
     def __init__(self, view, attrs):
-        super(MultiSelection, self).__init__(view, attrs)
+        super().__init__(view, attrs)
 
         if int(attrs.get('yexpand', self.expand)):
             self.widget = Gtk.ScrolledWindow()
@@ -51,7 +51,7 @@ class MultiSelection(Widget, SelectionMixin):
         cell.set_property('active', selection.iter_is_selected(iter_))
 
     def _readonly_set(self, readonly):
-        super(MultiSelection, self)._readonly_set(readonly)
+        super()._readonly_set(readonly)
         selection = self.tree.get_selection()
         selection.set_select_function(lambda *a: not readonly)
 
@@ -101,6 +101,6 @@ class MultiSelection(Widget, SelectionMixin):
             values = self.field.get_eval(self.record)
             for value in values:
                 selection.select_path(value2path[value])
-            super(MultiSelection, self).display()
+            super().display()
         finally:
             selection.handler_unblock_by_func(self.changed)

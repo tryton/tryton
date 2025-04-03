@@ -96,7 +96,7 @@ class ShipmentIn(ShipmentCostMixin, metaclass=PoolMeta):
                 allocation_method = \
                     Carrier.default_carrier_cost_allocation_method()
             getattr(shipment, 'allocate_cost_by_%s' % allocation_method)()
-        super(ShipmentIn, cls).receive(shipments)
+        super().receive(shipments)
 
     @classmethod
     @ModelView.button
@@ -138,7 +138,7 @@ class Move(metaclass=PoolMeta):
         pool = Pool()
         AccountMoveLine = pool.get('account.move.line')
         Currency = pool.get('currency.currency')
-        move_lines = super(Move, self)._get_account_stock_move_lines(type_)
+        move_lines = super()._get_account_stock_move_lines(type_)
         if (type_.startswith('in_')
                 and self.unit_shipment_cost
                 and self.shipment
@@ -169,7 +169,7 @@ class Move(metaclass=PoolMeta):
         pool = Pool()
         Currency = pool.get('currency.currency')
         Uom = pool.get('product.uom')
-        for move, qty, cost_price in super(Move, cls)._get_anglo_saxon_move(
+        for move, qty, cost_price in super()._get_anglo_saxon_move(
                 moves, quantity, type_):
             if (type_.startswith('in_')
                     and move.unit_shipment_cost):

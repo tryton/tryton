@@ -75,7 +75,7 @@ class Graph(Gtk.DrawingArea):
     __gsignals__ = {"draw": "override"}
 
     def __init__(self, view, xfield, yfields):
-        super(Graph, self).__init__()
+        super().__init__()
         self.view = view
         self.xfield = xfield
         self.yfields = yfields
@@ -99,7 +99,7 @@ class Graph(Gtk.DrawingArea):
 
     def destroy(self):
         self.popup.destroy()
-        super(Graph, self).destroy()
+        super().destroy()
 
     def motion(self, widget, event):
         self.popup.set_position(self, event.x, event.y)

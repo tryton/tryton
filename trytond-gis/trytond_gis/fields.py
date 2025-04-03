@@ -21,7 +21,7 @@ class Geometry(fields.Field):
     _geometry_type = 'GEOMETRY'
 
     def __init__(self, string="", dimension=2, loading='lazy', **kwargs):
-        super(Geometry, self).__init__(
+        super().__init__(
             string=string, loading=loading, **kwargs)
         self.dimension = dimension
 
@@ -34,7 +34,7 @@ class Geometry(fields.Field):
     def sql_format(self, value):
         if isinstance(value, dict):
             return _GeoJSON(value)
-        return super(Geometry, self).sql_format(value)
+        return super().sql_format(value)
 
     def convert_domain(self, domain, tables, Model):
         table, _ = tables[None]

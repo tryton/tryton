@@ -62,7 +62,7 @@ class FiscalYear(Workflow, ModelSQL, ModelView):
 
     @classmethod
     def __setup__(cls):
-        super(FiscalYear, cls).__setup__()
+        super().__setup__()
         t = cls.__table__()
         cls._sql_constraints += [
             ('dates_overlap',
@@ -228,14 +228,14 @@ class FiscalYear(Workflow, ModelSQL, ModelView):
                                 gettext('account.'
                                     'msg_change_fiscalyear_move_sequence',
                                     fiscalyear=fiscalyear.rec_name))
-        super(FiscalYear, cls).write(*args)
+        super().write(*args)
         cls._find_cache.clear()
 
     @classmethod
     def delete(cls, fiscalyears):
         Period = Pool().get('account.period')
         Period.delete([p for f in fiscalyears for p in f.periods])
-        super(FiscalYear, cls).delete(fiscalyears)
+        super().delete(fiscalyears)
         cls._find_cache.clear()
 
     @classmethod

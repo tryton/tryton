@@ -5,7 +5,7 @@
 class EvalEnvironment(dict):
 
     def __init__(self, parent, eval_type='eval'):
-        super(EvalEnvironment, self).__init__()
+        super().__init__()
         self.parent = parent
         assert eval_type in ('eval', 'on_change')
         self.eval_type = eval_type
@@ -33,7 +33,7 @@ class EvalEnvironment(dict):
             return self.__getitem__(item)
         except KeyError:
             pass
-        return super(EvalEnvironment, self).get(item, default)
+        return super().get(item, default)
 
     def __bool__(self):
         return True

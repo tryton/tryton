@@ -72,7 +72,7 @@ class Action(DeactivableMixin, ModelSQL, ModelView):
 
     @classmethod
     def __setup__(cls):
-        super(Action, cls).__setup__()
+        super().__setup__()
         cls.__rpc__.update({
                 'get_action_value': RPC(instantiate=0, cache=dict(days=1)),
                 })
@@ -91,7 +91,7 @@ class Action(DeactivableMixin, ModelSQL, ModelView):
     @classmethod
     def write(cls, actions, values, *args):
         pool = Pool()
-        super(Action, cls).write(actions, values, *args)
+        super().write(actions, values, *args)
         pool.get('ir.action.keyword')._get_keyword_cache.clear()
 
     @classmethod
@@ -212,7 +212,7 @@ class ActionKeyword(ModelSQL, ModelView):
 
     @classmethod
     def __setup__(cls):
-        super(ActionKeyword, cls).__setup__()
+        super().__setup__()
         cls.__access__.add('action')
         table = cls.__table__()
 
@@ -277,7 +277,7 @@ class ActionKeyword(ModelSQL, ModelView):
     def delete(cls, keywords):
         ModelView._view_toolbar_get_cache.clear()
         cls._get_keyword_cache.clear()
-        super(ActionKeyword, cls).delete(keywords)
+        super().delete(keywords)
 
     @classmethod
     def create(cls, vlist):
@@ -286,7 +286,7 @@ class ActionKeyword(ModelSQL, ModelView):
         new_vlist = []
         for vals in vlist:
             new_vlist.append(cls._convert_vals(vals))
-        return super(ActionKeyword, cls).create(new_vlist)
+        return super().create(new_vlist)
 
     @classmethod
     def write(cls, keywords, values, *args):
@@ -294,7 +294,7 @@ class ActionKeyword(ModelSQL, ModelView):
         args = []
         for keywords, values in zip(actions, actions):
             args.extend((keywords, cls._convert_vals(values)))
-        super(ActionKeyword, cls).write(*args)
+        super().write(*args)
         ModelView._view_toolbar_get_cache.clear()
         cls._get_keyword_cache.clear()
 
@@ -373,7 +373,7 @@ class ActionMixin(ModelSQL):
     @classmethod
     def __setup__(cls):
         pool = Pool()
-        super(ActionMixin, cls).__setup__()
+        super().__setup__()
         cls.__access__.add('action')
         cls.action.domain = [
             ('type', '=', cls.__name__),
@@ -486,7 +486,7 @@ class ActionMixin(ModelSQL):
                 values['action'] = action.id
             else:
                 action = Action(values['action'])
-            record, = super(ActionMixin, cls).create([values])
+            record, = super().create([values])
             cursor.execute(*ir_action.update(
                     [ir_action.id], [action.id],
                     where=ir_action.id == record.id))
@@ -501,7 +501,7 @@ class ActionMixin(ModelSQL):
     def write(cls, records, values, *args):
         pool = Pool()
         ActionKeyword = pool.get('ir.action.keyword')
-        super(ActionMixin, cls).write(records, values, *args)
+        super().write(records, values, *args)
         ModelView._view_toolbar_get_cache.clear()
         ActionKeyword._get_keyword_cache.clear()
 
@@ -511,7 +511,7 @@ class ActionMixin(ModelSQL):
         ModelView._view_toolbar_get_cache.clear()
         Action = pool.get('ir.action')
         actions = [x.action for x in records]
-        super(ActionMixin, cls).delete(records)
+        super().delete(records)
         Action.delete(actions)
 
     @classmethod
@@ -524,7 +524,7 @@ class ActionMixin(ModelSQL):
         new_records = []
         for record in records:
             default['action'] = Action.copy([record.action])[0].id
-            new_records.extend(super(ActionMixin, cls).copy([record],
+            new_records.extend(super().copy([record],
                     default=default))
         return new_records
 
@@ -769,7 +769,7 @@ class ActionReport(
             reports, values = args[:2]
             args = args[2:]
         cls._template_cache.clear()
-        super(ActionReport, cls).write(reports, values, *args)
+        super().write(reports, values, *args)
 
     def get_template_cached(self):
         return self._template_cache.get(self.id)
@@ -833,7 +833,7 @@ class ActionActWindow(
 
     @classmethod
     def __setup__(cls):
-        super(ActionActWindow, cls).__setup__()
+        super().__setup__()
         cls.__rpc__.update({
                 'get': RPC(cache=dict(days=1)),
                 })
@@ -852,7 +852,7 @@ class ActionActWindow(
 
     @classmethod
     def validate(cls, actions):
-        super(ActionActWindow, cls).validate(actions)
+        super().validate(actions)
         cls.check_views(actions)
 
     @classmethod
@@ -1039,20 +1039,20 @@ class ActionActWindowView(
     @classmethod
     def create(cls, vlist):
         pool = Pool()
-        windows = super(ActionActWindowView, cls).create(vlist)
+        windows = super().create(vlist)
         pool.get('ir.action.keyword')._get_keyword_cache.clear()
         return windows
 
     @classmethod
     def write(cls, windows, values, *args):
         pool = Pool()
-        super(ActionActWindowView, cls).write(windows, values, *args)
+        super().write(windows, values, *args)
         pool.get('ir.action.keyword')._get_keyword_cache.clear()
 
     @classmethod
     def delete(cls, windows):
         pool = Pool()
-        super(ActionActWindowView, cls).delete(windows)
+        super().delete(windows)
         pool.get('ir.action.keyword')._get_keyword_cache.clear()
 
 
@@ -1125,20 +1125,20 @@ class ActionActWindowDomain(
     @classmethod
     def create(cls, vlist):
         pool = Pool()
-        domains = super(ActionActWindowDomain, cls).create(vlist)
+        domains = super().create(vlist)
         pool.get('ir.action.keyword')._get_keyword_cache.clear()
         return domains
 
     @classmethod
     def write(cls, domains, values, *args):
         pool = Pool()
-        super(ActionActWindowDomain, cls).write(domains, values, *args)
+        super().write(domains, values, *args)
         pool.get('ir.action.keyword')._get_keyword_cache.clear()
 
     @classmethod
     def delete(cls, domains):
         pool = Pool()
-        super(ActionActWindowDomain, cls).delete(domains)
+        super().delete(domains)
         pool.get('ir.action.keyword')._get_keyword_cache.clear()
 
 

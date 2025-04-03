@@ -85,7 +85,7 @@ class AdvancePaymentTermLine(ModelView, ModelSQL, CompanyMultiValueMixin):
 
     @fields.depends('formula', 'description')
     def pre_validate(self, **names):
-        super(AdvancePaymentTermLine, self).pre_validate()
+        super().pre_validate()
         names['total_amount'] = names['untaxed_amount'] = 0
         try:
             if not isinstance(self.compute_amount(**names), Decimal):
@@ -183,7 +183,7 @@ class AdvancePaymentCondition(ModelSQL, ModelView):
 
     @classmethod
     def __setup__(cls):
-        super(AdvancePaymentCondition, cls).__setup__()
+        super().__setup__()
         cls._order.insert(0, ('amount', 'ASC'))
         cls.__access__.add('sale')
 
@@ -213,7 +213,7 @@ class AdvancePaymentCondition(ModelSQL, ModelView):
         else:
             default = default.copy()
         default.setdefault('invoice_lines', [])
-        return super(AdvancePaymentCondition, cls).copy(conditions, default)
+        return super().copy(conditions, default)
 
     def create_invoice(self):
         invoice = self.sale._get_invoice_sale()
@@ -305,7 +305,7 @@ class Sale(metaclass=PoolMeta):
         pool = Pool()
         AdvancePaymentCondition = pool.get('sale.advance_payment.condition')
 
-        super(Sale, cls).quote(sales)
+        super().quote(sales)
 
         AdvancePaymentCondition.delete(
             list(chain(*(s.advance_payment_conditions for s in sales))))
@@ -321,7 +321,7 @@ class Sale(metaclass=PoolMeta):
         else:
             default = default.copy()
         default.setdefault('advance_payment_conditions', None)
-        return super(Sale, cls).copy(sales, default=default)
+        return super().copy(sales, default=default)
 
     def set_advance_payment_term(self):
         pool = Pool()
@@ -400,7 +400,7 @@ class Sale(metaclass=PoolMeta):
         super()._process_invoice(sales)
 
     def create_invoice(self):
-        invoice = super(Sale, self).create_invoice()
+        invoice = super().create_invoice()
 
         if (invoice is not None
                 and self.advance_payment_eligible()
@@ -449,7 +449,7 @@ class SaleLine(metaclass=PoolMeta):
     __name__ = 'sale.line'
 
     def get_move(self, shipment_type):
-        move = super(SaleLine, self).get_move(shipment_type)
+        move = super().get_move(shipment_type)
         if (self.sale.advance_payment_eligible(shipment_type)
                 and self.sale.supply_blocked):
             return None
@@ -463,7 +463,7 @@ class SaleLine(metaclass=PoolMeta):
         return request
 
     def get_invoice_line(self):
-        lines = super(SaleLine, self).get_invoice_line()
+        lines = super().get_invoice_line()
         if (self.sale.advance_payment_eligible()
                 and not self.sale.advance_payment_completed):
             return []
@@ -474,7 +474,7 @@ class HandleInvoiceException(metaclass=PoolMeta):
     __name__ = 'sale.handle.invoice.exception'
 
     def default_ask(self, fields):
-        default = super(HandleInvoiceException, self).default_ask(fields)
+        default = super().default_ask(fields)
         invoices = default['domain_invoices']
 
         sale = self.record

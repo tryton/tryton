@@ -6,7 +6,7 @@ from gi.repository import GObject, Gtk
 class CellRendererText(Gtk.CellRendererText):
 
     def __init__(self):
-        super(CellRendererText, self).__init__()
+        super().__init__()
         self.connect('editing-started', self.__class__.on_editing_started)
 
     def on_editing_started(self, editable, path):
@@ -16,7 +16,7 @@ class CellRendererText(Gtk.CellRendererText):
 class CellRendererTextCompletion(CellRendererText):
 
     def __init__(self, set_completion):
-        super(CellRendererTextCompletion, self).__init__()
+        super().__init__()
         self.set_completion = set_completion
 
     def on_editing_started(self, editable, path):

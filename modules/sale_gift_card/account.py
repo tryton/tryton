@@ -93,5 +93,5 @@ class InvoiceLine(metaclass=PoolMeta):
 
     @classmethod
     def _account_domain(cls, type_):
-        domain = super(InvoiceLine, cls)._account_domain(type_)
+        domain = super()._account_domain(type_)
         return domain + [('type.gift_card', '=', True)]

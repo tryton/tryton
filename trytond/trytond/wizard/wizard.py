@@ -159,7 +159,7 @@ class StateAction(StateTransition):
         '''
         action_id is a string containing ``module.xml_id``
         '''
-        super(StateAction, self).__init__()
+        super().__init__()
         self.action_id = action_id
 
     def get_action(self):
@@ -178,7 +178,7 @@ class StateReport(StateAction):
     'An report state of a wizard'
 
     def __init__(self, report_name):
-        super(StateReport, self).__init__(None)
+        super().__init__(None)
         self.report_name = report_name
 
     def get_action(self):
@@ -201,7 +201,7 @@ class Wizard(URLMixin, PoolBase):
 
     @classmethod
     def __setup__(cls):
-        super(Wizard, cls).__setup__()
+        super().__setup__()
         cls.__rpc__ = {
             'create': RPC(readonly=False),
             'delete': RPC(readonly=False),
@@ -225,7 +225,7 @@ class Wizard(URLMixin, PoolBase):
 
     @classmethod
     def __post_setup__(cls):
-        super(Wizard, cls).__post_setup__()
+        super().__post_setup__()
         # Set states
         cls.states = {}
         for attr in dir(cls):
@@ -236,7 +236,7 @@ class Wizard(URLMixin, PoolBase):
 
     @classmethod
     def __register__(cls, module_name):
-        super(Wizard, cls).__register__(module_name)
+        super().__register__(module_name)
         pool = Pool()
         Translation = pool.get('ir.translation')
         Translation.register_wizard(cls, module_name)

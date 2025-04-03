@@ -36,7 +36,7 @@ class Category(metaclass=PoolMeta):
         pool = Pool()
         if field in {'account_depreciation', 'account_asset'}:
             return pool.get('product.category.account')
-        return super(Category, cls).multivalue_model(field)
+        return super().multivalue_model(field)
 
     @property
     @account_used('account_depreciation')

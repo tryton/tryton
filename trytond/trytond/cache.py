@@ -161,7 +161,7 @@ class MemoryCache(BaseCache):
     _channel = _table
 
     def __init__(self, *args, **kwargs):
-        super(MemoryCache, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self._database_cache = defaultdict(lambda: LRUDict(self.size_limit))
         self._transaction_cache = WeakKeyDictionary()
         self._transaction_lower = {}
@@ -452,13 +452,13 @@ class LRUDict(OrderedDict):
             *args, **kwargs):
         assert size_limit > 0
         self.size_limit = size_limit
-        super(LRUDict, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.default_factory = default_factory
         self.default_factory_with_key = default_factory_with_key
         self._check_size_limit()
 
     def __setitem__(self, key, value):
-        super(LRUDict, self).__setitem__(key, value)
+        super().__setitem__(key, value)
         self._check_size_limit()
 
     def __missing__(self, key):
@@ -472,11 +472,11 @@ class LRUDict(OrderedDict):
         return value
 
     def update(self, *args, **kwargs):
-        super(LRUDict, self).update(*args, **kwargs)
+        super().update(*args, **kwargs)
         self._check_size_limit()
 
     def setdefault(self, key, default=None):
-        default = super(LRUDict, self).setdefault(key, default=default)
+        default = super().setdefault(key, default=default)
         self._check_size_limit()
         return default
 
@@ -493,12 +493,12 @@ class LRUDictTransaction(LRUDict):
     __slots__ = ('transaction', 'counter')
 
     def __init__(self, *args, **kwargs):
-        super(LRUDictTransaction, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.transaction = Transaction()
         self.counter = self.transaction.counter
 
     def clear(self):
-        super(LRUDictTransaction, self).clear()
+        super().clear()
         self.counter = self.transaction.counter
 
     def refresh(self):

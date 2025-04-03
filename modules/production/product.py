@@ -47,7 +47,7 @@ class Product(metaclass=PoolMeta):
 
     @classmethod
     def validate(cls, products):
-        super(Product, cls).validate(products)
+        super().validate(products)
         for product in products:
             product.check_bom_recursion()
 
@@ -74,7 +74,7 @@ class Product(metaclass=PoolMeta):
             default = default.copy()
         default.setdefault('boms', None)
         default.setdefault('production_lead_times', None)
-        return super(Product, cls).copy(products, default=default)
+        return super().copy(products, default=default)
 
     def get_bom(self, pattern=None):
         if pattern is None:
@@ -131,5 +131,5 @@ class ProductionLeadTime(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
 
     @classmethod
     def __setup__(cls):
-        super(ProductionLeadTime, cls).__setup__()
+        super().__setup__()
         cls._order.insert(0, ('product', 'ASC'))

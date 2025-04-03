@@ -24,7 +24,7 @@ class Cron(metaclass=PoolMeta):
             else:
                 for warehouse in cron.warehouses:
                     with Transaction().set_context(warehouse=warehouse.id):
-                        super(Cron, cls).run_once([cron])
+                        super().run_once([cron])
 
 
 class CronWarehouse(ModelSQL):

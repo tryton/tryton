@@ -36,7 +36,7 @@ class Configuration(metaclass=PoolMeta):
         pool = Pool()
         if field == 'shipment_drop_sequence':
             return pool.get('stock.configuration.sequence')
-        return super(Configuration, cls).multivalue_model(field)
+        return super().multivalue_model(field)
 
     @classmethod
     def default_shipment_drop_sequence(cls, **pattern):
@@ -152,7 +152,7 @@ class ShipmentDrop(
         if table_h.column_exist('code'):
             table_h.column_rename('code', 'number')
 
-        super(ShipmentDrop, cls).__register__(module_name)
+        super().__register__(module_name)
 
         # Migration from 5.6: rename state cancel to cancelled
         cursor.execute(*table.update(
@@ -161,7 +161,7 @@ class ShipmentDrop(
 
     @classmethod
     def __setup__(cls):
-        super(ShipmentDrop, cls).__setup__()
+        super().__setup__()
         t = cls.__table__()
         cls._sql_indexes.update({
                 Index(
@@ -271,13 +271,13 @@ class ShipmentDrop(
             values['number'] = config.get_multivalue(
                 'shipment_drop_sequence',
                 company=values.get('company', default_company)).get()
-        shipments = super(ShipmentDrop, cls).create(vlist)
+        shipments = super().create(vlist)
         cls._set_move_planned_date(shipments)
         return shipments
 
     @classmethod
     def write(cls, *args):
-        super(ShipmentDrop, cls).write(*args)
+        super().write(*args)
         cls._set_move_planned_date(sum(args[::2], []))
 
     @classmethod
@@ -289,7 +289,7 @@ class ShipmentDrop(
         default.setdefault('moves', None)
         default.setdefault('supplier_moves', None)
         default.setdefault('customer_moves', None)
-        return super(ShipmentDrop, cls).copy(shipments, default=default)
+        return super().copy(shipments, default=default)
 
     @classmethod
     def delete(cls, shipments):
@@ -305,7 +305,7 @@ class ShipmentDrop(
                         shipment=shipment.rec_name,
                         ))
         Move.delete([m for s in shipments for m in s.supplier_moves])
-        super(ShipmentDrop, cls).delete(shipments)
+        super().delete(shipments)
 
     @classmethod
     @ModelView.button
@@ -612,7 +612,7 @@ class Move(metaclass=PoolMeta):
 
     @classmethod
     def _get_shipment(cls):
-        models = super(Move, cls)._get_shipment()
+        models = super()._get_shipment()
         models.append('stock.shipment.drop')
         return models
 

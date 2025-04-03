@@ -87,7 +87,7 @@ class User(avatar_mixin(100), DeactivableMixin, ModelSQL, ModelView):
 
     @classmethod
     def __setup__(cls):
-        super(User, cls).__setup__()
+        super().__setup__()
         table = cls.__table__()
         cls._sql_constraints += [
             ('email_exclude',
@@ -161,13 +161,13 @@ class User(avatar_mixin(100), DeactivableMixin, ModelSQL, ModelView):
 
     @classmethod
     def create(cls, vlist):
-        users = super(User, cls).create(vlist)
+        users = super().create(vlist)
         cls._format_email(users)
         return users
 
     @classmethod
     def write(cls, *args):
-        super(User, cls).write(*args)
+        super().write(*args)
         users = sum(args[0:None:2], [])
         cls._format_email(users)
 
@@ -395,7 +395,7 @@ class UserSession(ModelSQL):
 
     @classmethod
     def __setup__(cls):
-        super(UserSession, cls).__setup__()
+        super().__setup__()
         table = cls.__table__()
         cls.__rpc__ = {}
         cls._sql_constraints += [
@@ -474,7 +474,7 @@ class UserSession(ModelSQL):
             # Ensure to get a different key for each record
             # default methods are called only once
             values.setdefault('key', cls.default_key())
-        return super(UserSession, cls).create(vlist)
+        return super().create(vlist)
 
 
 class EmailValidation(Report):

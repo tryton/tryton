@@ -114,7 +114,7 @@ class EDocumentUNCEFACTTestCase(ModuleTestCase):
 
     @classmethod
     def setUpClass(cls):
-        super(EDocumentUNCEFACTTestCase, cls).setUpClass()
+        super().setUpClass()
         activate_module('account_invoice')
 
     @with_transaction()

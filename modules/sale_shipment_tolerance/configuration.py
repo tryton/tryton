@@ -35,7 +35,7 @@ class Configuration(metaclass=PoolMeta):
                 'sale_under_shipment_tolerance',
                 'sale_over_shipment_tolerance'}:
             return pool.get('sale.configuration.shipment_tolerance')
-        return super(Configuration, cls).multivalue_model(field)
+        return super().multivalue_model(field)
 
     default_sale_under_shipment_tolerance = default_func(
         'sale_under_shipment_tolerance')
@@ -50,7 +50,7 @@ class ConfigurationShipmentTolerance(ModelSQL, ValueMixin):
 
     @classmethod
     def __setup__(cls):
-        super(ConfigurationShipmentTolerance, cls).__setup__()
+        super().__setup__()
         cls.sale_under_shipment_tolerance.domain = [
             'OR',
             ('sale_under_shipment_tolerance', '=', None),

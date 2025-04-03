@@ -202,7 +202,7 @@ class InvoiceLine(metaclass=PoolMeta):
 
     @fields.depends('product', 'principal')
     def on_change_product(self):
-        super(InvoiceLine, self).on_change_product()
+        super().on_change_product()
         if self.product:
             if self.product.principals:
                 if self.principal not in self.product.principals:
@@ -212,7 +212,7 @@ class InvoiceLine(metaclass=PoolMeta):
 
     @classmethod
     def view_attributes(cls):
-        return super(InvoiceLine, cls).view_attributes() + [
+        return super().view_attributes() + [
             ('//page[@id="commissions"]', 'states', {
                     'invisible': Eval('type') != 'line',
                     })]
@@ -225,7 +225,7 @@ class InvoiceLine(metaclass=PoolMeta):
             default = default.copy()
         default.setdefault('commissions', None)
         default.setdefault('from_commissions', None)
-        return super(InvoiceLine, cls).copy(lines, default=default)
+        return super().copy(lines, default=default)
 
 
 class CreditInvoiceStart(metaclass=PoolMeta):

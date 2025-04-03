@@ -11,7 +11,7 @@ class Date(Model):
 
     @classmethod
     def __setup__(cls):
-        super(Date, cls).__setup__()
+        super().__setup__()
         cls.__rpc__.update({
                 'today': RPC(),
                 })

@@ -10,7 +10,7 @@ class LandedCost(metaclass=PoolMeta):
 
     @classmethod
     def __setup__(cls):
-        super(LandedCost, cls).__setup__()
+        super().__setup__()
         cls.allocation_method.selection.append(('weight', 'By Weight'))
 
     def allocate_cost_by_weight(self):

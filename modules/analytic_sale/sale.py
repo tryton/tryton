@@ -39,7 +39,7 @@ class AnalyticAccountEntry(metaclass=PoolMeta):
 
     @classmethod
     def _get_origin(cls):
-        origins = super(AnalyticAccountEntry, cls)._get_origin()
+        origins = super()._get_origin()
         return origins + ['sale.line']
 
     @fields.depends('origin')
@@ -53,7 +53,7 @@ class AnalyticAccountEntry(metaclass=PoolMeta):
 
     @classmethod
     def search_company(cls, name, clause):
-        domain = super(AnalyticAccountEntry, cls).search_company(name, clause),
+        domain = super().search_company(name, clause),
         if domain:
             domain = ['OR', domain]
         domain.append(('origin.sale.' + clause[0],

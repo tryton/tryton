@@ -12,7 +12,7 @@ class Move(metaclass=PoolMeta):
 
     @classmethod
     def __setup__(cls):
-        super(Move, cls).__setup__()
+        super().__setup__()
         cls._buttons.update({
                 'split_wizard': {
                     'readonly': ~Eval('state').in_(['draft', 'assigned']),
@@ -113,7 +113,7 @@ class _ShipmentSplit(ModelView):
 
     @classmethod
     def __setup__(cls):
-        super(_ShipmentSplit, cls).__setup__()
+        super().__setup__()
         cls._buttons.update({
                 'split_wizard': {
                     'readonly': Eval('state') != 'draft',

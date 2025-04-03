@@ -79,7 +79,7 @@ class EmployeeCostPrice(ModelSQL, ModelView):
 
     @classmethod
     def __setup__(cls):
-        super(EmployeeCostPrice, cls).__setup__()
+        super().__setup__()
         t = cls.__table__()
         cls._sql_constraints = [
             ('employee_date_cost_price_uniq',
@@ -108,18 +108,18 @@ class EmployeeCostPrice(ModelSQL, ModelView):
     @classmethod
     def delete(cls, prices):
         Employee = Pool().get('company.employee')
-        super(EmployeeCostPrice, cls).delete(prices)
+        super().delete(prices)
         Employee._cost_prices_cache.clear()
 
     @classmethod
     def create(cls, vlist):
         Employee = Pool().get('company.employee')
-        prices = super(EmployeeCostPrice, cls).create(vlist)
+        prices = super().create(vlist)
         Employee._cost_prices_cache.clear()
         return prices
 
     @classmethod
     def write(cls, *args):
         Employee = Pool().get('company.employee')
-        super(EmployeeCostPrice, cls).write(*args)
+        super().write(*args)
         Employee._cost_prices_cache.clear()

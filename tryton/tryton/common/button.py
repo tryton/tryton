@@ -14,7 +14,7 @@ class Button(Gtk.Button):
     def __init__(self, attrs=None):
         self.attrs = attrs or {}
         self.label = '_' + attrs.get('string', '').replace('_', '__')
-        super(Button, self).__init__(label=self.label, stock=None,
+        super().__init__(label=self.label, stock=None,
             use_underline=True)
         self._set_icon(attrs.get('icon'))
 

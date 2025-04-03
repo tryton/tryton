@@ -51,7 +51,7 @@ class Sale(metaclass=PoolMeta):
     def _get_shipment_sale(self, Shipment, values):
         transaction = Transaction()
         context = transaction.context
-        shipment = super(Sale, self)._get_shipment_sale(Shipment, values)
+        shipment = super()._get_shipment_sale(Shipment, values)
         if (not context.get('skip_grouping', False)
                 and self.shipment_grouping_method):
             with transaction.set_context(skip_grouping=True):

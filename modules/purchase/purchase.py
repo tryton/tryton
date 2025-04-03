@@ -257,7 +257,7 @@ class Purchase(
     def __setup__(cls):
         cls.number.search_unaccented = False
         cls.reference.search_unaccented = False
-        super(Purchase, cls).__setup__()
+        super().__setup__()
         t = cls.__table__()
         cls._sql_indexes.update({
                 Index(t, (t.reference, Index.Similarity())),
@@ -358,7 +358,7 @@ class Purchase(
         cursor = Transaction().connection.cursor()
         sql_table = cls.__table__()
 
-        super(Purchase, cls).__register__(module_name)
+        super().__register__(module_name)
 
         # Migration from 5.6: rename state cancel to cancelled
         cursor.execute(*sql_table.update(
@@ -754,7 +754,7 @@ class Purchase(
         default.setdefault('untaxed_amount_cache')
         default.setdefault('tax_amount_cache')
         default.setdefault('total_amount_cache')
-        return super(Purchase, cls).copy(purchases, default=default)
+        return super().copy(purchases, default=default)
 
     def check_for_quotation(self):
         for line in self.line_lines:
@@ -908,7 +908,7 @@ class Purchase(
                 raise AccessError(
                     gettext('purchase.msg_purchase_delete_cancel',
                         purchase=purchase.rec_name))
-        super(Purchase, cls).delete(purchases)
+        super().delete(purchases)
 
     @classmethod
     @ModelView.button
@@ -2215,7 +2215,7 @@ class PurchaseReport(CompanyReport):
     @classmethod
     def execute(cls, ids, data):
         with Transaction().set_context(address_with_party=True):
-            return super(PurchaseReport, cls).execute(ids, data)
+            return super().execute(ids, data)
 
     @classmethod
     def get_context(cls, records, header, data):
@@ -2358,7 +2358,7 @@ class HandleInvoiceException(Wizard):
 class ModifyHeaderStateView(StateView):
     def get_view(self, wizard, state_name):
         with Transaction().set_context(modify_header=True):
-            return super(ModifyHeaderStateView, self).get_view(
+            return super().get_view(
                 wizard, state_name)
 
     def get_defaults(self, wizard, state_name, fields):

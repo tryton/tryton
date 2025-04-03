@@ -21,7 +21,7 @@ class _EvalEnvironment(dict):
     __slots__ = ('parent', 'eval_type')
 
     def __init__(self, parent, eval_type='eval'):
-        super(_EvalEnvironment, self).__init__()
+        super().__init__()
         self.parent = parent
         assert eval_type in ('eval', 'on_change')
         self.eval_type = eval_type
@@ -49,7 +49,7 @@ class _EvalEnvironment(dict):
             return self.__getitem__(item)
         except KeyError:
             pass
-        return super(_EvalEnvironment, self).get(item, default)
+        return super().get(item, default)
 
     def __bool__(self):
         return True
@@ -109,7 +109,7 @@ class FieldDescriptor(object):
     default = None
 
     def __init__(self, name, definition):
-        super(FieldDescriptor, self).__init__()
+        super().__init__()
         self.name = name
         self.definition = definition
         self.__doc__ = definition['string']
@@ -137,7 +137,7 @@ class BooleanDescriptor(FieldDescriptor):
 
     def __set__(self, instance, value):
         assert isinstance(value, bool)
-        super(BooleanDescriptor, self).__set__(instance, value)
+        super().__set__(instance, value)
 
 
 class CharDescriptor(FieldDescriptor):
@@ -152,7 +152,7 @@ class CharDescriptor(FieldDescriptor):
                 value = value.rstrip()
             else:
                 value = value.strip()
-        super(CharDescriptor, self).__set__(instance, value or '')
+        super().__set__(instance, value or '')
 
 
 class BinaryDescriptor(FieldDescriptor):
@@ -160,14 +160,14 @@ class BinaryDescriptor(FieldDescriptor):
 
     def __set__(self, instance, value):
         assert isinstance(value, (bytes, bytearray)) or value is None
-        super(BinaryDescriptor, self).__set__(instance, value)
+        super().__set__(instance, value)
 
 
 class IntegerDescriptor(FieldDescriptor):
 
     def __set__(self, instance, value):
         assert isinstance(value, (int, type(None)))
-        super(IntegerDescriptor, self).__set__(instance, value)
+        super().__set__(instance, value)
 
 
 class FloatDescriptor(FieldDescriptor):
@@ -176,7 +176,7 @@ class FloatDescriptor(FieldDescriptor):
         assert isinstance(value, (int, float, Decimal, type(None)))
         if value is not None:
             value = float(value)
-        super(FloatDescriptor, self).__set__(instance, value)
+        super().__set__(instance, value)
 
 
 class NumericDescriptor(FieldDescriptor):
@@ -184,7 +184,7 @@ class NumericDescriptor(FieldDescriptor):
     def __set__(self, instance, value):
         assert isinstance(value, (type(None), Decimal))
         # TODO add digits validation
-        super(NumericDescriptor, self).__set__(instance, value)
+        super().__set__(instance, value)
 
 
 class SelectionDescriptor(FieldDescriptor):
@@ -205,7 +205,7 @@ class MultiSelectionDescriptor(FieldDescriptor):
 
 class ReferenceDescriptor(FieldDescriptor):
     def __get__(self, instance, owner):
-        value = super(ReferenceDescriptor, self).__get__(instance, owner)
+        value = super().__get__(instance, owner)
         if isinstance(value, str):
             model_name, id = value.split(',', 1)
             if model_name:
@@ -223,12 +223,12 @@ class ReferenceDescriptor(FieldDescriptor):
             assert value.startswith(',')
         elif isinstance(value, Model):
             assert value._config == instance._config
-        super(ReferenceDescriptor, self).__set__(instance, value)
+        super().__set__(instance, value)
 
 
 class DateDescriptor(FieldDescriptor):
     def __get__(self, instance, owner):
-        value = super(DateDescriptor, self).__get__(instance, owner)
+        value = super().__get__(instance, owner)
         if isinstance(value, datetime.datetime):
             value = value.date()
             instance._values[self.name] = value
@@ -236,43 +236,43 @@ class DateDescriptor(FieldDescriptor):
 
     def __set__(self, instance, value):
         assert isinstance(value, datetime.date) or value is None
-        super(DateDescriptor, self).__set__(instance, value)
+        super().__set__(instance, value)
 
 
 class DateTimeDescriptor(FieldDescriptor):
     def __set__(self, instance, value):
         assert isinstance(value, datetime.datetime) or value is None
-        super(DateTimeDescriptor, self).__set__(instance, value)
+        super().__set__(instance, value)
 
 
 class TimeDescriptor(FieldDescriptor):
     def __set__(self, instance, value):
         assert isinstance(value, datetime.time) or value is None
-        super(TimeDescriptor, self).__set__(instance, value)
+        super().__set__(instance, value)
 
 
 class TimeDeltaDescriptor(FieldDescriptor):
     def __set__(self, instance, value):
         assert isinstance(value, datetime.timedelta) or value is None
-        super(TimeDeltaDescriptor, self).__set__(instance, value)
+        super().__set__(instance, value)
 
 
 class DictDescriptor(FieldDescriptor):
     def __get__(self, instance, owner):
-        value = super(DictDescriptor, self).__get__(instance, owner)
+        value = super().__get__(instance, owner)
         if value:
             value = value.copy()
         return value
 
     def __set__(self, instance, value):
         assert isinstance(value, dict) or value is None
-        super(DictDescriptor, self).__set__(instance, value)
+        super().__set__(instance, value)
 
 
 class Many2OneDescriptor(FieldDescriptor):
     def __get__(self, instance, owner):
         Relation = Model.get(self.definition['relation'], instance._config)
-        value = super(Many2OneDescriptor, self).__get__(instance, owner)
+        value = super().__get__(instance, owner)
         if isinstance(value, int):
             config = Relation._config
             with config.reset_context(), config.set_context(instance._context):
@@ -285,7 +285,7 @@ class Many2OneDescriptor(FieldDescriptor):
         assert isinstance(value, (Model, type(None)))
         if value:
             assert value._config == instance._config
-        super(Many2OneDescriptor, self).__set__(instance, value)
+        super().__set__(instance, value)
 
 
 class One2OneDescriptor(Many2OneDescriptor):
@@ -298,7 +298,7 @@ class One2ManyDescriptor(FieldDescriptor):
     def __get__(self, instance, owner):
         from .pyson import PYSONDecoder
         Relation = Model.get(self.definition['relation'], instance._config)
-        value = super(One2ManyDescriptor, self).__get__(instance, owner)
+        value = super().__get__(instance, owner)
         if not isinstance(value, ModelList):
             ctx = instance._context.copy() if instance._context else {}
             if self.definition.get('context'):
@@ -321,7 +321,7 @@ class Many2ManyDescriptor(One2ManyDescriptor):
 
 class ValueDescriptor(object):
     def __init__(self, name, definition):
-        super(ValueDescriptor, self).__init__()
+        super().__init__()
         self.name = name
         self.definition = definition
 
@@ -331,7 +331,7 @@ class ValueDescriptor(object):
 
 class ReferenceValueDescriptor(ValueDescriptor):
     def __get__(self, instance, owner):
-        value = super(ReferenceValueDescriptor, self).__get__(instance, owner)
+        value = super().__get__(instance, owner)
         if isinstance(value, Model):
             value = '%s,%s' % (value.__class__.__name__, value.id)
         return value or None
@@ -339,7 +339,7 @@ class ReferenceValueDescriptor(ValueDescriptor):
 
 class Many2OneValueDescriptor(ValueDescriptor):
     def __get__(self, instance, owner):
-        value = super(Many2OneValueDescriptor, self).__get__(instance, owner)
+        value = super().__get__(instance, owner)
         return value and value.id or None
 
 
@@ -385,7 +385,7 @@ class Many2ManyValueDescriptor(One2ManyValueDescriptor):
 
 class EvalDescriptor(object):
     def __init__(self, name, definition):
-        super(EvalDescriptor, self).__init__()
+        super().__init__()
         self.name = name
         self.definition = definition
 
@@ -395,7 +395,7 @@ class EvalDescriptor(object):
 
 class ReferenceEvalDescriptor(EvalDescriptor):
     def __get__(self, instance, owner):
-        value = super(ReferenceEvalDescriptor, self).__get__(instance, owner)
+        value = super().__get__(instance, owner)
         if isinstance(value, Model):
             value = '%s,%s' % (value.__class__.__name__, value.id)
         return value or None
@@ -403,7 +403,7 @@ class ReferenceEvalDescriptor(EvalDescriptor):
 
 class Many2OneEvalDescriptor(EvalDescriptor):
     def __get__(self, instance, owner):
-        value = super(Many2OneEvalDescriptor, self).__get__(instance, owner)
+        value = super().__get__(instance, owner)
         if value:
             return value.id
         return None
@@ -469,7 +469,7 @@ class MetaModelFactory(object):
     }
 
     def __init__(self, model_name, config=None):
-        super(MetaModelFactory, self).__init__()
+        super().__init__()
         self.model_name = model_name
         self.config = config or proteus.config.get_config()
 
@@ -537,7 +537,7 @@ class ModelList(list):
         self.search_context = definition.get('search_context', '{}')
         self.record_removed = set()
         self.record_deleted = set()
-        result = super(ModelList, self).__init__(sequence)
+        result = super().__init__(sequence)
         assert len(self) == len(set(self))
         self.__check(self, on_change=False)
         return result
@@ -605,7 +605,7 @@ class ModelList(list):
     def pop(self, index=-1, _changed=True):
         self.record_removed.add(self[index])
         self[index]._group = None
-        res = super(ModelList, self).pop(index)
+        res = super().pop(index)
         if _changed:
             self._changed()
         return res
@@ -615,7 +615,7 @@ class ModelList(list):
         if record.id >= 0:
             self.record_deleted.add(record)
         record._group = None
-        res = super(ModelList, self).remove(record)
+        res = super().remove(record)
         if _changed:
             self._changed()
         return res
@@ -698,7 +698,7 @@ class Model(object):
     _fields = None
 
     def __init__(self, id=None, _default=True, _group=None, **kwargs):
-        super(Model, self).__init__()
+        super().__init__()
         if id is not None:
             assert not kwargs
         self.__id = id if id is not None else Model.__counter
@@ -1208,7 +1208,7 @@ class Wizard(object):
             context=None):
         if models:
             assert len(set(type(x) for x in models)) == 1
-        super(Wizard, self).__init__()
+        super().__init__()
         self.name = name
         self.form = None
         self.form_state = None
@@ -1287,7 +1287,7 @@ class Report(object):
     __slots__ = ('name', '_config', '_context', '_proxy')
 
     def __init__(self, name, config=None, context=None):
-        super(Report, self).__init__()
+        super().__init__()
         self.name = name
         self._config = config or proteus.config.get_config()
         self._context = self._config.context

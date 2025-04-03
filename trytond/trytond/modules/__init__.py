@@ -65,7 +65,7 @@ class Graph(dict):
 
 class Node(list):
     def __init__(self, name):
-        super(Node, self).__init__()
+        super().__init__()
         self.name = name
         self.info = None
         self.__depth = 0
@@ -87,7 +87,7 @@ class Node(list):
     def append(self, node):
         assert isinstance(node, Node)
         node.depth = self.depth + 1
-        super(Node, self).append(node)
+        super().append(node)
 
 
 def create_graph(modules):

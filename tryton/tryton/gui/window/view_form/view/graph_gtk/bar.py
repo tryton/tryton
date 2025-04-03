@@ -17,7 +17,7 @@ from .graph import Graph
 class Bar(Graph):
 
     def __init__(self, *args, **kwargs):
-        super(Bar, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.bars = []
 
     def drawGraph(self, cr, width, height):
@@ -63,7 +63,7 @@ class Bar(Graph):
         return linear
 
     def motion(self, widget, event):
-        super(Bar, self).motion(widget, event)
+        super().motion(widget, event)
 
         if not getattr(self, 'area', None):
             return
@@ -127,7 +127,7 @@ class Bar(Graph):
                     maxx - minx + 2, maxy - miny + 2)
 
     def action(self):
-        super(Bar, self).action()
+        super().action()
         for bar in self.bars:
             if bar.highlight:
                 ids = self.ids[bar.xname]
@@ -171,11 +171,11 @@ class VerticalBar(Bar):
             i += 1
 
     def XLabels(self):
-        xlabels = super(VerticalBar, self).XLabels()
+        xlabels = super().XLabels()
         return [(x[0] + (self.xscale / 2), x[1]) for x in xlabels]
 
     def YLabels(self):
-        ylabels = super(VerticalBar, self).YLabels()
+        ylabels = super().YLabels()
         if all('timedelta' in f for f in self.yfields):
             converter = {f.get('timedelta') for f in self.yfields}
             if len(converter) == 1:
@@ -227,11 +227,11 @@ class HorizontalBar(Bar):
             i += 1
 
     def YLabels(self):
-        xlabels = super(HorizontalBar, self).XLabels()
+        xlabels = super().XLabels()
         return [(1 - (x[0] + (self.xscale / 2)), x[1]) for x in xlabels]
 
     def XLabels(self):
-        ylabels = super(HorizontalBar, self).YLabels()
+        ylabels = super().YLabels()
         if all('timedelta' in f for f in self.yfields):
             converter = {f.get('timedelta') for f in self.yfields}
             if len(converter) == 1:

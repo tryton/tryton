@@ -74,7 +74,7 @@ class Configuration(
             return pool.get('sale.configuration.sequence')
         elif field == 'sale_quotation_validity':
             return pool.get('sale.configuration.quotation')
-        return super(Configuration, cls).multivalue_model(field)
+        return super().multivalue_model(field)
 
     default_sale_sequence = default_func('sale_sequence')
     default_sale_invoice_method = default_func('sale_invoice_method')

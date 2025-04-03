@@ -25,7 +25,7 @@ class Icon(
 
     @classmethod
     def __setup__(cls):
-        super(Icon, cls).__setup__()
+        super().__setup__()
         cls.__rpc__.update({
                 'list_icons': RPC(),
                 })

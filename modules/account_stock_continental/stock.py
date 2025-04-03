@@ -171,7 +171,7 @@ class Move(metaclass=PoolMeta):
     def do(cls, moves):
         pool = Pool()
         AccountMove = pool.get('account.move')
-        super(Move, cls).do(moves)
+        super().do(moves)
         account_moves = []
         for move in moves:
             account_move = move._get_account_stock_move()

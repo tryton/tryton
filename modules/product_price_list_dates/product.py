@@ -106,7 +106,7 @@ class PriceListLine(metaclass=PoolMeta):
             return False
         if self.end_date and self.end_date < date:
             return False
-        return super(PriceListLine, self).match(pattern)
+        return super().match(pattern)
 
 
 class PriceListLineContext(metaclass=PoolMeta):

@@ -246,7 +246,7 @@ for name in [
 class MultiValue(Function):
 
     def __init__(self, field, loading='lazy'):
-        super(MultiValue, self).__init__(
+        super().__init__(
             field, '_multivalue_getter', setter='_multivalue_setter',
             loading=loading)
 

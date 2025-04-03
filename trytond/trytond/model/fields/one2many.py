@@ -46,7 +46,7 @@ class One2Many(Field):
         :param search_context: The context to use when searching for a record
         :param filter: A domain to filter target records.
         '''
-        super(One2Many, self).__init__(string=string, help=help,
+        super().__init__(string=string, help=help,
             required=required, readonly=readonly, domain=domain, states=states,
             on_change=on_change, on_change_with=on_change_with,
             depends=depends, context=context, loading=loading)
@@ -310,7 +310,7 @@ class One2Many(Field):
             extra[self.field] = inst
         with Transaction().set_context(ctx):
             records = instanciate_values(Target, value, **extra)
-        super(One2Many, self).__set__(inst, records)
+        super().__set__(inst, records)
 
     def remove(self, inst, records):
         records = set(records)

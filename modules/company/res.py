@@ -114,7 +114,7 @@ class User(metaclass=PoolMeta):
 
     @classmethod
     def __setup__(cls):
-        super(User, cls).__setup__()
+        super().__setup__()
         cls._context_fields.insert(0, 'company')
         cls._context_fields.insert(0, 'employee')
         cls._context_fields.insert(0, 'company_filter')
@@ -168,7 +168,7 @@ class User(metaclass=PoolMeta):
     def get_status_bar(self, name):
         def same_company(record):
             return record.company == self.company
-        status = super(User, self).get_status_bar(name)
+        status = super().get_status_bar(name)
         if (self.employee
                 and len(list(filter(same_company, self.employees))) > 1):
             status += ' - %s' % self.employee.rec_name
@@ -209,7 +209,7 @@ class User(metaclass=PoolMeta):
 
     @classmethod
     def _get_preferences(cls, user, context_only=False):
-        res = super(User, cls)._get_preferences(user,
+        res = super()._get_preferences(user,
             context_only=context_only)
         if not context_only:
             res['companies'] = [c.id for c in user.companies]
@@ -263,7 +263,7 @@ class User(metaclass=PoolMeta):
         user_id = Transaction().user
         if user_id == 0 and 'user' in Transaction().context:
             user_id = Transaction().context['user']
-        result = super(User, cls).read(ids, fields_names)
+        result = super().read(ids, fields_names)
         if (fields_names
                 and ((
                         'company' in fields_names

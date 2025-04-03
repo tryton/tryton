@@ -8,5 +8,5 @@ class Move(metaclass=PoolMeta):
 
     @classmethod
     def _get_origin(cls):
-        return super(Move, cls)._get_origin() + [
+        return super()._get_origin() + [
             'account.dunning.fee.dunning_level']

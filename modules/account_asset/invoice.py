@@ -23,7 +23,7 @@ class InvoiceLine(metaclass=PoolMeta):
 
     @classmethod
     def __setup__(cls):
-        super(InvoiceLine, cls).__setup__()
+        super().__setup__()
         table = cls.__table__()
         cls._sql_constraints += [
             ('asset_uniq', Unique(table, table.asset),
@@ -40,7 +40,7 @@ class InvoiceLine(metaclass=PoolMeta):
     @fields.depends('product', 'invoice', 'invoice_type',
         '_parent_invoice.invoice_date', '_parent_invoice.accounting_date')
     def on_change_product(self):
-        super(InvoiceLine, self).on_change_product()
+        super().on_change_product()
         if self.invoice and self.invoice.type:
             type_ = self.invoice.type
         else:
@@ -79,4 +79,4 @@ class InvoiceLine(metaclass=PoolMeta):
         if self.asset:
             date = self.invoice.accounting_date or self.invoice.invoice_date
             Asset.close([self.asset], account=self.account, date=date)
-        return super(InvoiceLine, self).get_move_lines()
+        return super().get_move_lines()

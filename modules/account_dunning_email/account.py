@@ -79,7 +79,7 @@ class ProcessDunning(metaclass=PoolMeta):
 
     @classmethod
     def __setup__(cls):
-        super(ProcessDunning, cls).__setup__()
+        super().__setup__()
         cls._actions.append('send_email')
 
     def transition_send_email(self):

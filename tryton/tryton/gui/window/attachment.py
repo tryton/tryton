@@ -25,13 +25,13 @@ class Attachment(WinForm):
         screen = Screen('ir.attachment', domain=[
             ('resource', '=', self.resource),
             ], mode=['tree', 'form'])
-        super(Attachment, self).__init__(screen, self.callback,
+        super().__init__(screen, self.callback,
             view_type='tree', title=title)
         screen.search_filter()
 
     def destroy(self):
         self.prev_view.save_width()
-        super(Attachment, self).destroy()
+        super().destroy()
 
     def callback(self, result):
         if result:

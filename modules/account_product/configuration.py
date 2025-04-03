@@ -27,7 +27,7 @@ class Configuration(metaclass=PoolMeta):
         if field in {'default_category_account_expense',
                 'default_category_account_revenue'}:
             return pool.get('account.configuration.default_account')
-        return super(Configuration, cls).multivalue_model(field)
+        return super().multivalue_model(field)
 
 
 class ConfigurationDefaultAccount(metaclass=PoolMeta):

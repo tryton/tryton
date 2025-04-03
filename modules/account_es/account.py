@@ -17,7 +17,7 @@ class TaxCodeTemplate(metaclass=PoolMeta):
             ], "AEAT Report")
 
     def _get_tax_code_value(self, code=None):
-        value = super(TaxCodeTemplate, self)._get_tax_code_value(code=code)
+        value = super()._get_tax_code_value(code=code)
         value['aeat_report'] = self.aeat_report
         return value
 

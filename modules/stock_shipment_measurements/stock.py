@@ -143,11 +143,11 @@ class Move(metaclass=PoolMeta):
             internal_volume = cls._get_internal_volume(quantity, unit, product)
             if internal_volume is not None:
                 values['internal_volume'] = internal_volume
-        return super(Move, cls).create(vlist)
+        return super().create(vlist)
 
     @classmethod
     def write(cls, *args):
-        super(Move, cls).write(*args)
+        super().write(*args)
 
         to_write = []
         actions = iter(args)

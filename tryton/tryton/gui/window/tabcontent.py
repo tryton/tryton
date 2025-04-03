@@ -37,7 +37,7 @@ class ToolbarItem(object):
 class TabContent(InfoBar):
 
     def __init__(self, **attributes):
-        super(TabContent, self).__init__()
+        super().__init__()
         self.attributes = attributes.copy()
 
     @property

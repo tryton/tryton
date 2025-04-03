@@ -132,7 +132,7 @@ class LandedCost(Workflow, ModelSQL, ModelView, MatchMixin):
     @classmethod
     def __setup__(cls):
         cls.number.search_unaccented = False
-        super(LandedCost, cls).__setup__()
+        super().__setup__()
         t = cls.__table__()
         cls._sql_indexes.add(
             Index(
@@ -173,7 +173,7 @@ class LandedCost(Workflow, ModelSQL, ModelView, MatchMixin):
         cursor = Transaction().connection.cursor()
         sql_table = cls.__table__()
 
-        super(LandedCost, cls).__register__(module_name)
+        super().__register__(module_name)
 
         # Migration from 5.6: rename state cancel to cancelled
         cursor.execute(*sql_table.update(
@@ -434,7 +434,7 @@ class LandedCost(Workflow, ModelSQL, ModelView, MatchMixin):
                 values['number'] = config.get_multivalue(
                     'landed_cost_sequence',
                     company=values.get('company', default_company)).get()
-        return super(LandedCost, cls).create(vlist)
+        return super().create(vlist)
 
     @classmethod
     def delete(cls, landed_costs):
@@ -563,7 +563,7 @@ class InvoiceLine(metaclass=PoolMeta):
 
     @classmethod
     def __setup__(cls):
-        super(InvoiceLine, cls).__setup__()
+        super().__setup__()
         cls._check_modify_exclude.add('landed_cost')
 
     @classmethod
@@ -573,4 +573,4 @@ class InvoiceLine(metaclass=PoolMeta):
         else:
             default = default.copy()
         default.setdefault('landed_cost', None)
-        return super(InvoiceLine, cls).copy(lines, default=default)
+        return super().copy(lines, default=default)

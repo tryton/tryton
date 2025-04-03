@@ -28,7 +28,7 @@ class WinImport(WinCSV):
         self.fields_data = {}
         self.fields = {}
         self.fields_invert = {}
-        super(WinImport, self).__init__()
+        super().__init__()
         self.dialog.set_title(_('CSV Import: %s') % name)
 
         button_cancel = self.dialog.add_button(

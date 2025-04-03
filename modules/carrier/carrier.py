@@ -69,7 +69,7 @@ class Carrier(DeactivableMixin, ModelSQL, ModelView):
     def create(cls, *args, **kwargs):
         pool = Pool()
         CarrierSelection = pool.get('carrier.selection')
-        carriers = super(Carrier, cls).create(*args, **kwargs)
+        carriers = super().create(*args, **kwargs)
         CarrierSelection._get_carriers_cache.clear()
         return carriers
 
@@ -77,7 +77,7 @@ class Carrier(DeactivableMixin, ModelSQL, ModelView):
     def delete(cls, *args, **kwargs):
         pool = Pool()
         CarrierSelection = pool.get('carrier.selection')
-        super(Carrier, cls).delete(*args, **kwargs)
+        super().delete(*args, **kwargs)
         CarrierSelection._get_carriers_cache.clear()
 
 

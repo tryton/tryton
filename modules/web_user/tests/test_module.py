@@ -19,7 +19,7 @@ class WebUserTestCase(PartyCheckEraseMixin, ModuleTestCase):
     module = 'web_user'
 
     def setUp(self):
-        super(WebUserTestCase, self).setUp()
+        super().setUp()
         validation_url = config.get('web', 'email_validation_url', default='')
         config.set('web', 'email_validation_url', VALIDATION_URL)
         self.addCleanup(

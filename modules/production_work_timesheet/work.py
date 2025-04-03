@@ -59,13 +59,13 @@ class Work(metaclass=PoolMeta):
 
     @classmethod
     def create(cls, vlist):
-        works = super(Work, cls).create(vlist)
+        works = super().create(vlist)
         cls._set_timesheet_work(works)
         return works
 
     @classmethod
     def write(cls, *args):
-        super(Work, cls).write(*args)
+        super().write(*args)
         works = sum(args[0:None:2], [])
         cls._set_timesheet_work(works)
 
@@ -76,7 +76,7 @@ class Work(metaclass=PoolMeta):
 
         timesheet_works = [w for pw in works for w in pw.timesheet_works]
 
-        super(Work, cls).delete(works)
+        super().delete(works)
 
         if timesheet_works:
             TimesheetWork.delete(timesheet_works)

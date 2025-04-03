@@ -16,7 +16,7 @@ class Invoice(metaclass=PoolMeta):
 
     @classmethod
     def __setup__(cls):
-        super(Invoice, cls).__setup__()
+        super().__setup__()
         cls._buttons.update({
                 'recall_deposit': {
                     'invisible': Eval('state') != 'draft',
@@ -112,7 +112,7 @@ class InvoiceLine(metaclass=PoolMeta):
 
     @classmethod
     def _account_domain(cls, type_):
-        domain = super(InvoiceLine, cls)._account_domain(type_)
+        domain = super()._account_domain(type_)
         return domain + [('type.deposit', '=', True)]
 
 

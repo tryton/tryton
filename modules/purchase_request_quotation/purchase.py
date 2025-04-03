@@ -51,7 +51,7 @@ class Configuration(metaclass=PoolMeta):
         pool = Pool()
         if field == 'purchase_request_quotation_sequence':
             return pool.get('purchase.configuration.sequence')
-        return super(Configuration, cls).multivalue_model(field)
+        return super().multivalue_model(field)
 
     @classmethod
     def default_purchase_request_quotation_sequence(cls, **pattern):
@@ -134,7 +134,7 @@ class Quotation(Workflow, ModelSQL, ModelView):
     def __setup__(cls):
         cls.number.search_unaccented = False
         cls.reference.search_unaccented = False
-        super(Quotation, cls).__setup__()
+        super().__setup__()
         t = cls.__table__()
         cls._sql_indexes.update({
                 Index(t, (t.reference, Index.Similarity())),
@@ -236,7 +236,7 @@ class Quotation(Workflow, ModelSQL, ModelView):
             default = default.copy()
         default.setdefault('number', None)
         default.setdefault('revision', cls.default_revision())
-        return super(Quotation, cls).copy(groups, default=default)
+        return super().copy(groups, default=default)
 
     @property
     def delivery_full_address(self):
@@ -415,7 +415,7 @@ class QuotationLine(ModelSQL, ModelView):
         pool = Pool()
         Request = pool.get('purchase.request')
         requests = [l.request for l in quotationlines]
-        super(QuotationLine, cls).delete(quotationlines)
+        super().delete(quotationlines)
         Request.update_state(requests)
 
     def get_product(self, name):
@@ -592,7 +592,7 @@ class PurchaseRequest(metaclass=PoolMeta):
 
     @property
     def currency(self):
-        currency = super(PurchaseRequest, self).currency
+        currency = super().currency
         if self.best_quotation_line:
             return self.best_quotation_line.currency
         return currency
@@ -608,14 +608,14 @@ class PurchaseRequest(metaclass=PoolMeta):
 
     @classmethod
     def __setup__(cls):
-        super(PurchaseRequest, cls).__setup__()
+        super().__setup__()
         selection = [('quotation', 'Quotation'), ('received', 'Received')]
         for s in selection:
             if s not in cls.state.selection:
                 cls.state.selection.append(s)
 
     def get_state(self):
-        state = super(PurchaseRequest, self).get_state()
+        state = super().get_state()
         if state == 'draft' and self.quotation_lines:
             state = 'quotation'
             if any(l.quotation_state == 'received'
@@ -631,7 +631,7 @@ class CreatePurchase(Wizard):
 
     @classmethod
     def __setup__(cls):
-        super(CreatePurchase, cls).__setup__()
+        super().__setup__()
 
     def transition_start(self):
         to_save = []
@@ -643,7 +643,7 @@ class CreatePurchase(Wizard):
                 to_save.append(self.apply_quotation(req))
         if to_save:
             self.model.save(to_save)
-        state = super(CreatePurchase, self).transition_start()
+        state = super().transition_start()
         return state
 
     def apply_quotation(self, request):
@@ -656,7 +656,7 @@ class CreatePurchase(Wizard):
 
     @classmethod
     def compute_purchase_line(cls, key, requests, purchase):
-        line = super(CreatePurchase, cls).compute_purchase_line(key,
+        line = super().compute_purchase_line(key,
                     requests, purchase)
         try:
             line.unit_price = min(req.best_quotation_line.unit_price

@@ -95,7 +95,7 @@ class Party(
     @classmethod
     def __setup__(cls):
         cls.code.search_unaccented = False
-        super(Party, cls).__setup__()
+        super().__setup__()
         t = cls.__table__()
         cls._sql_constraints = [
             ('code_uniq', Unique(t, t.code), 'party.msg_party_code_unique')
@@ -298,7 +298,7 @@ class Party(
                 for values, code in zip(
                         missing_code, sequence.get_many(len(missing_code))):
                     values['code'] = code
-        return super(Party, cls).create(vlist)
+        return super().create(vlist)
 
     @classmethod
     def copy(cls, parties, default=None):
@@ -307,11 +307,11 @@ class Party(
         else:
             default = default.copy()
         default.setdefault('code', None)
-        return super(Party, cls).copy(parties, default=default)
+        return super().copy(parties, default=default)
 
     @classmethod
     def search_global(cls, text):
-        for record, rec_name, icon in super(Party, cls).search_global(text):
+        for record, rec_name, icon in super().search_global(text):
             icon = icon or 'tryton-party'
             yield record, rec_name, icon
 

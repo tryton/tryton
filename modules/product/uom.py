@@ -27,7 +27,7 @@ class UomCategory(ModelSQL, ModelView):
 
     @classmethod
     def __setup__(cls):
-        super(UomCategory, cls).__setup__()
+        super().__setup__()
         cls._order.insert(0, ('name', 'ASC'))
 
 
@@ -69,7 +69,7 @@ class Uom(SymbolMixin, DigitsMixin, DeactivableMixin, ModelSQL, ModelView):
 
     @classmethod
     def __setup__(cls):
-        super(Uom, cls).__setup__()
+        super().__setup__()
         t = cls.__table__()
         cls._sql_constraints += [
             ('non_zero_rate_factor', Check(t, (t.rate != 0) | (t.factor != 0)),
@@ -152,7 +152,7 @@ class Uom(SymbolMixin, DigitsMixin, DeactivableMixin, ModelSQL, ModelView):
     @classmethod
     def write(cls, *args):
         if Transaction().user == 0:
-            super(Uom, cls).write(*args)
+            super().write(*args)
             return
 
         all_uoms = sum(args[0:None:2], [])
@@ -160,7 +160,7 @@ class Uom(SymbolMixin, DigitsMixin, DeactivableMixin, ModelSQL, ModelView):
             uom.id: (uom.factor, uom.rate, uom.category) for uom in all_uoms}
         old_digits = {uom.id: uom.digits for uom in all_uoms}
 
-        super(Uom, cls).write(*args)
+        super().write(*args)
 
         for uom in all_uoms:
             for i, field in enumerate(['factor', 'rate', 'category']):

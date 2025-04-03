@@ -223,7 +223,7 @@ class ModelCheck(ModelSQL):
 
     @classmethod
     def __setup__(cls):
-        super(ModelCheck, cls).__setup__()
+        super().__setup__()
         t = cls.__table__()
         cls._sql_constraints = [
             ('check', Check(t, (t.value > 42)), 'tests.msg_modelsql_check'),
@@ -236,7 +236,7 @@ class ModelUnique(ModelSQL):
 
     @classmethod
     def __setup__(cls):
-        super(ModelUnique, cls).__setup__()
+        super().__setup__()
         t = cls.__table__()
         cls._sql_constraints = [
             ('unique', Unique(t, t.value), 'tests.msg_modelsql_unique'),
@@ -254,7 +254,7 @@ class ModelExclude(ModelSQL):
 
     @classmethod
     def __setup__(cls):
-        super(ModelExclude, cls).__setup__()
+        super().__setup__()
         t = cls.__table__()
         cls._sql_constraints = [
             ('exclude', Exclude(t, (t.value, Equal),

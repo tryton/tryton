@@ -18,13 +18,13 @@ class Note(WinForm):
         screen = Screen('ir.note', domain=[
                 ('resource', '=', self.resource),
                 ], mode=['tree', 'form'])
-        super(Note, self).__init__(screen, self.callback, view_type='tree',
+        super().__init__(screen, self.callback, view_type='tree',
             title=title)
         screen.search_filter()
 
     def destroy(self):
         self.prev_view.save_width()
-        super(Note, self).destroy()
+        super().destroy()
 
     def callback(self, result):
         if result:

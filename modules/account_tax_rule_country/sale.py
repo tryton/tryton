@@ -11,7 +11,7 @@ class Sale(metaclass=PoolMeta):
 
     @classmethod
     def __setup__(cls):
-        super(Sale, cls).__setup__()
+        super().__setup__()
         for field in (cls.shipment_party, cls.shipment_address, cls.warehouse):
             field.states['readonly'] |= (
                 Eval('lines', [0]) & Eval('shipment_address'))

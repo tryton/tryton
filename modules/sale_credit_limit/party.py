@@ -18,7 +18,7 @@ class Party(metaclass=PoolMeta):
         Sale = pool.get('sale.sale')
         Uom = pool.get('product.uom')
 
-        amounts = super(Party, cls).get_credit_amount(parties, name)
+        amounts = super().get_credit_amount(parties, name)
 
         company_id = Transaction().context.get('company')
 
@@ -63,5 +63,5 @@ class Party(metaclass=PoolMeta):
 
     @classmethod
     def _credit_limit_to_lock(cls):
-        return super(Party, cls)._credit_limit_to_lock() + [
+        return super()._credit_limit_to_lock() + [
             'sale.sale', 'sale.line']

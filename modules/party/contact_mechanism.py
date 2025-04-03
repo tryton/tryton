@@ -130,7 +130,7 @@ class ContactMechanism(
     def __setup__(cls):
         cls.value.search_unaccented = False
         cls.value_compact.search_unaccented = False
-        super(ContactMechanism, cls).__setup__()
+        super().__setup__()
         cls.__access__.add('party')
         t = cls.__table__()
         cls._sql_indexes.add(
@@ -286,7 +286,7 @@ class ContactMechanism(
 
     @classmethod
     def create(cls, vlist):
-        mechanisms = super(ContactMechanism, cls).create(vlist)
+        mechanisms = super().create(vlist)
         cls._format_values(mechanisms)
         return mechanisms
 
@@ -304,7 +304,7 @@ class ContactMechanism(
                             '.msg_contact_mechanism_change_party') % {
                                 'contact': mechanism.rec_name,
                                 })
-        super(ContactMechanism, cls).write(*args)
+        super().write(*args)
         cls._format_values(all_mechanisms)
 
     @classmethod

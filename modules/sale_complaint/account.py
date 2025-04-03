@@ -9,4 +9,4 @@ class InvoiceLine(metaclass=PoolMeta):
 
     @classmethod
     def _get_origin(cls):
-        return super(InvoiceLine, cls)._get_origin() + ['sale.complaint']
+        return super()._get_origin() + ['sale.complaint']

@@ -27,7 +27,7 @@ class Sale(metaclass=PoolMeta):
                 party = sale.invoice_party or sale.party
                 party.check_credit_limit(
                     sale.credit_limit_amount, sale.company, origin=sale)
-        super(Sale, cls).confirm(sales)
+        super().confirm(sales)
 
 
 class Line(metaclass=PoolMeta):

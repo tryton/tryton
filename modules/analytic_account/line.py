@@ -43,7 +43,7 @@ class Line(ModelSQL, ModelView):
 
     @classmethod
     def __setup__(cls):
-        super(Line, cls).__setup__()
+        super().__setup__()
         t = cls.__table__()
         cls._sql_constraints += [
             ('credit_debit_',
@@ -58,7 +58,7 @@ class Line(ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
-        super(Line, cls).__register__(module_name)
+        super().__register__(module_name)
         table = cls.__table_handler__(module_name)
 
         # Migration from 5.0: replace credit_debit constraint by credit_debit_
@@ -116,7 +116,7 @@ class Line(ModelSQL, ModelView):
     def create(cls, vlist):
         pool = Pool()
         MoveLine = pool.get('account.move.line')
-        lines = super(Line, cls).create(vlist)
+        lines = super().create(vlist)
         move_lines = [l.move_line for l in lines]
         MoveLine.set_analytic_state(move_lines)
         MoveLine.save(move_lines)
@@ -126,7 +126,7 @@ class Line(ModelSQL, ModelView):
     def write(cls, *args):
         pool = Pool()
         MoveLine = pool.get('account.move.line')
-        super(Line, cls).write(*args)
+        super().write(*args)
         lines = sum(args[0:None:2], [])
         move_lines = [l.move_line for l in lines]
         MoveLine.set_analytic_state(move_lines)
@@ -137,7 +137,7 @@ class Line(ModelSQL, ModelView):
         pool = Pool()
         MoveLine = pool.get('account.move.line')
         move_lines = [l.move_line for l in lines]
-        super(Line, cls).delete(lines)
+        super().delete(lines)
         MoveLine.set_analytic_state(move_lines)
         MoveLine.save(move_lines)
 
@@ -150,7 +150,7 @@ class Move(metaclass=PoolMeta):
     def post(cls, moves):
         pool = Pool()
         MoveLine = pool.get('account.move.line')
-        super(Move, cls).post(moves)
+        super().post(moves)
         lines = [l for m in moves for l in m.lines]
         MoveLine.apply_rule(lines)
         MoveLine.set_analytic_state(lines)
@@ -182,7 +182,7 @@ class MoveLine(metaclass=PoolMeta):
 
     @classmethod
     def __setup__(cls):
-        super(MoveLine, cls).__setup__()
+        super().__setup__()
         cls._buttons.update({
             'apply_analytic_rules': {
                 'invisible': Eval('analytic_state') != 'draft',

@@ -62,7 +62,7 @@ class Configuration(metaclass=PoolMeta):
         pool = Pool()
         if field in {'asset_bymonthday', 'asset_bymonth'}:
             return pool.get('account.configuration.asset_date')
-        return super(Configuration, cls).multivalue_model(field)
+        return super().multivalue_model(field)
 
     @classmethod
     def default_asset_sequence(cls, **pattern):
@@ -170,7 +170,7 @@ class Move(metaclass=PoolMeta):
 
     @classmethod
     def _get_origin(cls):
-        origins = super(Move, cls)._get_origin()
+        origins = super()._get_origin()
         origins.append('account.asset')
         origins.append('account.asset.line')
         return origins
@@ -207,7 +207,7 @@ class Period(metaclass=PoolMeta):
     def close(cls, periods):
         for period in periods:
             period.check_asset_line_running()
-        super(Period, cls).close(periods)
+        super().close(periods)
 
 
 class Journal(metaclass=PoolMeta):
@@ -215,5 +215,5 @@ class Journal(metaclass=PoolMeta):
 
     @classmethod
     def __setup__(cls):
-        super(Journal, cls).__setup__()
+        super().__setup__()
         cls.type.selection.append(('asset', "Asset"))

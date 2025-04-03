@@ -391,7 +391,7 @@ class Type(
         types = cls.search([
                 ('parent', 'child_of', [t.id for t in types]),
                 ])
-        super(Type, cls).delete(types)
+        super().delete(types)
 
     def update_type(self, template2type=None):
         '''
@@ -689,7 +689,7 @@ class AccountTemplate(
 
     @classmethod
     def __setup__(cls):
-        super(AccountTemplate, cls).__setup__()
+        super().__setup__()
         cls._order.insert(0, ('code', 'ASC'))
         cls._order.insert(1, ('name', 'ASC'))
         table = cls.__table__()
@@ -984,7 +984,7 @@ class Account(
 
     @classmethod
     def __setup__(cls):
-        super(Account, cls).__setup__()
+        super().__setup__()
         for date in [cls.start_date, cls.end_date]:
             date.states = {
                 'readonly': (Bool(Eval('template', -1))
@@ -1310,7 +1310,7 @@ class Account(
             default = default.copy()
         default.setdefault('template', None)
         default.setdefault('deferrals', [])
-        new_accounts = super(Account, cls).copy(accounts, default=default)
+        new_accounts = super().copy(accounts, default=default)
         cls._rebuild_tree('parent', None, 0)
         return new_accounts
 
@@ -1327,7 +1327,7 @@ class Account(
             raise AccessError(
                 gettext('account.msg_delete_account_with_move_lines',
                     account=lines[0].account.rec_name))
-        super(Account, cls).delete(accounts)
+        super().delete(accounts)
 
     def update_account(self, template2account=None, template2type=None):
         '''
@@ -1726,7 +1726,7 @@ class AccountDeferral(ModelSQL, ModelView):
 
     @classmethod
     def __setup__(cls):
-        super(AccountDeferral, cls).__setup__()
+        super().__setup__()
         t = cls.__table__()
         cls._sql_constraints += [
             ('deferral_uniq', Unique(t, t.account, t.fiscalyear),
@@ -2426,7 +2426,7 @@ class GeneralLedgerLine(DescriptionOriginMixin, ModelSQL, ModelView):
 
     @classmethod
     def __setup__(cls):
-        super(GeneralLedgerLine, cls).__setup__()
+        super().__setup__()
         cls.__access__.add('account')
         cls._order.insert(0, ('date', 'ASC'))
         cls.description_used.setter = None
@@ -2987,7 +2987,7 @@ class AgedBalance(ModelSQL, ModelView):
 
     @classmethod
     def __setup__(cls):
-        super(AgedBalance, cls).__setup__()
+        super().__setup__()
         cls._order.insert(0, ('party', 'ASC'))
 
     @classmethod

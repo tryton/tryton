@@ -8,5 +8,5 @@ class UserApplication(metaclass=PoolMeta):
 
     @classmethod
     def __setup__(cls):
-        super(UserApplication, cls).__setup__()
+        super().__setup__()
         cls.application.selection.append(('timesheet', 'Timesheet'))

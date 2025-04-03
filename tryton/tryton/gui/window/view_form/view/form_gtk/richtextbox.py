@@ -15,7 +15,7 @@ from .textbox import TextBox
 class RichTextBox(TextBox):
 
     def __init__(self, view, attrs):
-        super(RichTextBox, self).__init__(view, attrs)
+        super().__init__(view, attrs)
         self.toolbar = None
         self.tag_widgets = WeakKeyDictionary()
         self.tags = {}
@@ -32,12 +32,12 @@ class RichTextBox(TextBox):
                 self.toolbar, expand=False, fill=True, padding=0)
 
     def _get_textview(self):
-        textview = super(RichTextBox, self)._get_textview()
+        textview = super()._get_textview()
         register_format(textview)
         return textview
 
     def translate_widget(self):
-        widget = super(RichTextBox, self).translate_widget()
+        widget = super().translate_widget()
         textview = widget.get_children()[-1].get_child()
         if self.toolbar:
             widget.pack_start(
@@ -45,7 +45,7 @@ class RichTextBox(TextBox):
         return widget
 
     def translate_widget_set_readonly(self, widget, value):
-        super(RichTextBox, self).translate_widget_set_readonly(widget, value)
+        super().translate_widget_set_readonly(widget, value)
         if self.toolbar:
             toolbar = widget.get_children()[0]
             for n in range(toolbar.get_n_items()):
@@ -74,6 +74,6 @@ class RichTextBox(TextBox):
         return get_content(textview)
 
     def _readonly_set(self, value):
-        super(RichTextBox, self)._readonly_set(value)
+        super()._readonly_set(value)
         if self.toolbar:
             self.toolbar.set_sensitive(not value)

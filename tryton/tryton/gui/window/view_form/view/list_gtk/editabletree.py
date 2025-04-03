@@ -29,7 +29,7 @@ class TreeView(Gtk.TreeView):
     display_counter = 0
 
     def __init__(self, view):
-        super(TreeView, self).__init__()
+        super().__init__()
         self.view = view
 
     def next_column(
@@ -153,7 +153,7 @@ class EditableTreeView(TreeView):
         if cell:
             self.set_cursor_on_cell(path, focus_column, cell, start_editing)
         else:
-            super(EditableTreeView, self).set_cursor(
+            super().set_cursor(
                 path, focus_column, start_editing)
 
     def set_value(self):

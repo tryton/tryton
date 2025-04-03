@@ -157,12 +157,12 @@ class Carrier(metaclass=PoolMeta):
 
     @classmethod
     def __setup__(cls):
-        super(Carrier, cls).__setup__()
+        super().__setup__()
         cls.shipping_service.selection.append(('ups', 'UPS'))
 
     @classmethod
     def view_attributes(cls):
-        return super(Carrier, cls).view_attributes() + [
+        return super().view_attributes() + [
             ("/form/separator[@id='ups']", 'states', {
                     'invisible': Eval('shipping_service') != 'ups',
                     }),

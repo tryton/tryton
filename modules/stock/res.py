@@ -15,7 +15,7 @@ class User(metaclass=PoolMeta):
 
     @classmethod
     def __setup__(cls):
-        super(User, cls).__setup__()
+        super().__setup__()
         cls._context_fields.insert(0, 'warehouse')
 
     @classmethod

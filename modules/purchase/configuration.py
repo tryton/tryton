@@ -50,7 +50,7 @@ class Configuration(
             return pool.get('purchase.configuration.purchase_method')
         if field == 'purchase_sequence':
             return pool.get('purchase.configuration.sequence')
-        return super(Configuration, cls).multivalue_model(field)
+        return super().multivalue_model(field)
 
     @classmethod
     def default_purchase_sequence(cls, **pattern):

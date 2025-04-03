@@ -57,7 +57,7 @@ class TaxCodeTemplate(PeriodMixin, tree(), ModelSQL, ModelView):
 
     @classmethod
     def __setup__(cls):
-        super(TaxCodeTemplate, cls).__setup__()
+        super().__setup__()
         cls._order.insert(0, ('code', 'ASC'))
         cls._order.insert(0, ('account', 'ASC'))
 
@@ -159,7 +159,7 @@ class TaxCode(
     @classmethod
     def __setup__(cls):
         cls.code.search_unaccented = False
-        super(TaxCode, cls).__setup__()
+        super().__setup__()
         t = cls.__table__()
         cls._sql_indexes.add(
             Index(t, (t.code, Index.Similarity())))
@@ -241,14 +241,14 @@ class TaxCode(
         else:
             default = default.copy()
         default.setdefault('template', None)
-        return super(TaxCode, cls).copy(codes, default=default)
+        return super().copy(codes, default=default)
 
     @classmethod
     def delete(cls, codes):
         codes = cls.search([
                 ('parent', 'child_of', [c.id for c in codes]),
                 ])
-        super(TaxCode, cls).delete(codes)
+        super().delete(codes)
 
     @classmethod
     def update_tax_code(cls, company_id, template2tax_code=None):
@@ -641,7 +641,7 @@ class TaxTemplate(sequence_ordered(), ModelSQL, ModelView, DeactivableMixin):
 
     @classmethod
     def __setup__(cls):
-        super(TaxTemplate, cls).__setup__()
+        super().__setup__()
         cls._order.insert(0, ('account', 'ASC'))
 
     @classmethod
@@ -979,7 +979,7 @@ class Tax(sequence_ordered(), ModelSQL, ModelView, DeactivableMixin):
         else:
             default = default.copy()
         default.setdefault('template', None)
-        return super(Tax, cls).copy(taxes, default=default)
+        return super().copy(taxes, default=default)
 
     def _process_tax(self, price_unit):
         if self.type == 'percentage':
@@ -1360,7 +1360,7 @@ class TaxLine(ModelSQL, ModelView):
             table_h = cls.__table_handler__(module_name)
             migrate_type = not table_h.column_exist('type')
 
-        super(TaxLine, cls).__register__(module_name)
+        super().__register__(module_name)
 
         table_h = cls.__table_handler__(module_name)
 
@@ -1398,7 +1398,7 @@ class TaxLine(ModelSQL, ModelView):
             return self.move_line.account.company
 
     def get_rec_name(self, name):
-        name = super(TaxLine, self).get_rec_name(name)
+        name = super().get_rec_name(name)
         if self.tax:
             name = self.tax.rec_name
         return name
@@ -1409,7 +1409,7 @@ class TaxLine(ModelSQL, ModelView):
 
     @classmethod
     def create(cls, vlist):
-        lines = super(TaxLine, cls).create(vlist)
+        lines = super().create(vlist)
         cls.check_modify(lines)
         return lines
 
@@ -1417,12 +1417,12 @@ class TaxLine(ModelSQL, ModelView):
     def write(cls, *args):
         lines = sum(args[0:None:2], [])
         cls.check_modify(lines)
-        super(TaxLine, cls).write(*args)
+        super().write(*args)
 
     @classmethod
     def delete(cls, lines):
         cls.check_modify(lines)
-        super(TaxLine, cls).delete(lines)
+        super().delete(lines)
 
     @property
     def period_checked(self):
@@ -1528,7 +1528,7 @@ class TaxRule(ModelSQL, ModelView):
         else:
             default = default.copy()
         default.setdefault('template', None)
-        return super(TaxRule, cls).copy(rules, default=default)
+        return super().copy(rules, default=default)
 
     def apply(self, tax, pattern):
         '''
@@ -1623,7 +1623,7 @@ class TaxRuleLineTemplate(sequence_ordered(), ModelSQL, ModelView):
 
     @classmethod
     def __setup__(cls):
-        super(TaxRuleLineTemplate, cls).__setup__()
+        super().__setup__()
         cls.__access__.add('rule')
         cls._order.insert(1, ('rule', 'ASC'))
 
@@ -1752,7 +1752,7 @@ class TaxRuleLine(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
 
     @classmethod
     def __setup__(cls):
-        super(TaxRuleLine, cls).__setup__()
+        super().__setup__()
         cls.__access__.add('rule')
         cls._order.insert(1, ('rule', 'ASC'))
 
@@ -1763,7 +1763,7 @@ class TaxRuleLine(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
         else:
             default = default.copy()
         default.setdefault('template', None)
-        return super(TaxRuleLine, cls).copy(lines, default=default)
+        return super().copy(lines, default=default)
 
     def match(self, pattern):
         pool = Pool()
@@ -1779,7 +1779,7 @@ class TaxRuleLine(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
             return False
         if self.end_date and date > self.end_date:
             return False
-        return super(TaxRuleLine, self).match(pattern)
+        return super().match(pattern)
 
     def get_taxes(self, origin_tax):
         '''

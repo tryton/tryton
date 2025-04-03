@@ -11,7 +11,7 @@ class Production(metaclass=PoolMeta):
 
     @classmethod
     def __setup__(cls):
-        super(Production, cls).__setup__()
+        super().__setup__()
         cls._buttons.update({
                 'split_wizard': {
                     'invisible': (~Eval('state').in_(['request', 'draft'])

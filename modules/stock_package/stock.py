@@ -29,7 +29,7 @@ class Configuration(metaclass=PoolMeta):
         pool = Pool()
         if field == 'package_sequence':
             return pool.get('stock.configuration.sequence')
-        return super(Configuration, cls).multivalue_model(field)
+        return super().multivalue_model(field)
 
     @classmethod
     def default_package_sequence(cls, **pattern):
@@ -347,7 +347,7 @@ class Package(tree(), MeasurementsMixin, ModelSQL, ModelView):
             values['number'] = config.get_multivalue(
                 'package_sequence',
                 company=values.get('company', default_company)).get()
-        return super(Package, cls).create(vlist)
+        return super().create(vlist)
 
     @classmethod
     def copy(cls, packages, default=None):
@@ -454,7 +454,7 @@ class ShipmentOut(PackageMixin, object, metaclass=PoolMeta):
     @ModelView.button
     @Workflow.transition('packed')
     def pack(cls, shipments):
-        super(ShipmentOut, cls).pack(shipments)
+        super().pack(shipments)
         cls.check_packages(shipments)
 
     @classmethod

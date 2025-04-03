@@ -28,7 +28,7 @@ class Allocation(ModelSQL, ModelView):
     @classmethod
     def write(cls, *args):
         Work = Pool().get('project.work')
-        super(Allocation, cls).write(*args)
+        super().write(*args)
 
         works = Work.search([
                 ('allocations', 'in',
@@ -42,7 +42,7 @@ class Allocation(ModelSQL, ModelView):
 
     @classmethod
     def create(cls, vlist):
-        allocations = super(Allocation, cls).create(vlist)
+        allocations = super().create(vlist)
         for allocation in allocations:
             allocation.work.reset_leveling()
             allocation.work.compute_dates()
@@ -51,7 +51,7 @@ class Allocation(ModelSQL, ModelView):
     @classmethod
     def delete(cls, allocations):
         works = [a.work for a in allocations]
-        super(Allocation, cls).delete(allocations)
+        super().delete(allocations)
 
         for work in works:
             work.reset_leveling()

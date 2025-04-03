@@ -130,4 +130,4 @@ class InvoiceLine(metaclass=PoolMeta):
             with without_check_access():
                 WorkInvoicedProgress.delete(progress)
 
-        super(InvoiceLine, cls).delete(lines)
+        super().delete(lines)

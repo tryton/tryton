@@ -26,7 +26,7 @@ class Location(metaclass=PoolMeta):
 
     @classmethod
     def _parent_domain(cls):
-        domain = super(Location, cls)._parent_domain()
+        domain = super()._parent_domain()
         domain['supplier'].append('storage')
         domain['storage'].append('customer')
         return domain
@@ -49,7 +49,7 @@ class LocationLeadTime(metaclass=PoolMeta):
 
     @classmethod
     def __setup__(cls):
-        super(LocationLeadTime, cls).__setup__()
+        super().__setup__()
         cls.warehouse_to.domain = ['OR',
             cls.warehouse_to.domain,
             ('type', '=', 'storage'),
@@ -147,11 +147,11 @@ class Move(metaclass=PoolMeta):
 
     @classmethod
     def _get_origin(cls):
-        return super(Move, cls)._get_origin() + ['account.invoice.line']
+        return super()._get_origin() + ['account.invoice.line']
 
     @fields.depends('from_location')
     def on_change_with_assignation_required(self, name=None):
-        required = super(Move, self).on_change_with_assignation_required(
+        required = super().on_change_with_assignation_required(
             name=name)
         if self.from_location:
             if (self.quantity
@@ -283,28 +283,28 @@ class Move(metaclass=PoolMeta):
     @Workflow.transition('draft')
     @unset_origin_consignment('draft')
     def draft(cls, moves):
-        super(Move, cls).draft(moves)
+        super().draft(moves)
 
     @classmethod
     @ModelView.button
     @Workflow.transition('assigned')
     @set_origin_consignment('assigned')
     def assign(cls, moves):
-        super(Move, cls).assign(moves)
+        super().assign(moves)
 
     @classmethod
     @ModelView.button
     @Workflow.transition('done')
     @set_origin_consignment('done')
     def do(cls, moves):
-        super(Move, cls).do(moves)
+        super().do(moves)
 
     @classmethod
     @ModelView.button
     @Workflow.transition('cancelled')
     @unset_origin_consignment('cancelled')
     def cancel(cls, moves):
-        super(Move, cls).cancel(moves)
+        super().cancel(moves)
 
     @classmethod
     def copy(cls, moves, default=None):
@@ -334,7 +334,7 @@ class Move(metaclass=PoolMeta):
         default['unit_price'] = consigment_moves_cleared('unit_price', default)
         default['currency'] = consigment_moves_cleared('currency', default)
 
-        moves = super(Move, cls).copy(moves, default=default)
+        moves = super().copy(moves, default=default)
         if not Transaction().context.get('_stock_move_split'):
             to_save = []
             for move in moves:
@@ -351,7 +351,7 @@ class ShipmentInternal(metaclass=PoolMeta):
 
     @classmethod
     def __setup__(cls):
-        super(ShipmentInternal, cls).__setup__()
+        super().__setup__()
         cls.from_location.domain = ['OR',
             cls.from_location.domain,
             ('type', '=', 'supplier'),
@@ -367,7 +367,7 @@ class ShipmentInternal(metaclass=PoolMeta):
             pattern = {}
         if self.to_location and not self.to_location.warehouse:
             pattern.setdefault('location_to', self.to_location.id)
-        return super(ShipmentInternal, self).on_change_with_planned_start_date(
+        return super().on_change_with_planned_start_date(
             pattern=pattern)
 
 
@@ -376,7 +376,7 @@ class Inventory(metaclass=PoolMeta):
 
     @classmethod
     def __setup__(cls):
-        super(Inventory, cls).__setup__()
+        super().__setup__()
         cls.location.domain = ['OR',
             cls.location.domain,
             ('type', '=', 'supplier'),
@@ -388,7 +388,7 @@ class OrderPoint(metaclass=PoolMeta):
 
     @classmethod
     def __setup__(cls):
-        super(OrderPoint, cls).__setup__()
+        super().__setup__()
         cls.provisioning_location.domain = ['OR',
             cls.provisioning_location.domain,
             ('type', '=', 'supplier'),

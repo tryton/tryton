@@ -143,7 +143,7 @@ class Config(object):
     'Config interface'
 
     def __init__(self):
-        super(Config, self).__init__()
+        super().__init__()
         self._context = {}
 
     @property
@@ -175,7 +175,7 @@ class Config(object):
 class _TrytondMethod(object):
 
     def __init__(self, name, model, config):
-        super(_TrytondMethod, self).__init__()
+        super().__init__()
         self._name = name
         self._object = model
         self._config = config
@@ -238,7 +238,7 @@ class TrytondProxy(object):
     'Proxy for function call for trytond'
 
     def __init__(self, name, config, type='model'):
-        super(TrytondProxy, self).__init__()
+        super().__init__()
         self._config = config
         self._object = config.pool.get(name, type=type)
     __init__.__doc__ = object.__init__.__doc__
@@ -252,7 +252,7 @@ class TrytondConfig(Config):
     'Configuration for trytond'
 
     def __init__(self, database=None, user='admin', config_file=None):
-        super(TrytondConfig, self).__init__()
+        super().__init__()
         if not database:
             database = os.environ.get('TRYTOND_DATABASE_URI')
         elif (os.environ.get('TRYTOND_DATABASE_URI')
@@ -337,7 +337,7 @@ class XmlrpcProxy(object):
     'Proxy for function call for XML-RPC'
 
     def __init__(self, name, config, type='model'):
-        super(XmlrpcProxy, self).__init__()
+        super().__init__()
         self._config = config
         self._object = getattr(config.server, '%s.%s' % (type, name))
     __init__.__doc__ = object.__init__.__doc__
@@ -351,7 +351,7 @@ class XmlrpcConfig(Config):
     'Configuration for XML-RPC'
 
     def __init__(self, url, **kwargs):
-        super(XmlrpcConfig, self).__init__()
+        super().__init__()
         self.url = url
         self.server = xmlrpc.client.ServerProxy(
             url, allow_none=True, use_builtin_types=True, **kwargs)

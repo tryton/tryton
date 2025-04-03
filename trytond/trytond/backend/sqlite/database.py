@@ -433,7 +433,7 @@ class SQLiteCursor(sqlite.Cursor):
 class SQLiteConnection(sqlite.Connection):
 
     def cursor(self):
-        return super(SQLiteConnection, self).cursor(SQLiteCursor)
+        return super().cursor(SQLiteCursor)
 
 
 class Database(DatabaseInterface):
@@ -462,7 +462,7 @@ class Database(DatabaseInterface):
         return DatabaseInterface.__new__(cls, name=name)
 
     def __init__(self, name=_default_name):
-        super(Database, self).__init__(name=name)
+        super().__init__(name=name)
         if name == ':memory:':
             Database._local.memory_database = self
 

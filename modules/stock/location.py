@@ -194,7 +194,7 @@ class Location(DeactivableMixin, tree(), ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         cls.code.search_unaccented = False
-        super(Location, cls).__setup__()
+        super().__setup__()
         t = cls.__table__()
         cls._sql_indexes.update({
                 Index(t, (t.code, Index.Similarity())),
@@ -546,14 +546,14 @@ class Location(DeactivableMixin, tree(), ModelSQL, ModelView):
 
     @classmethod
     def create(cls, vlist):
-        locations = super(Location, cls).create(vlist)
+        locations = super().create(vlist)
         cls._set_warehouse_parent(locations)
         cls._default_warehouse_cache.clear()
         return locations
 
     @classmethod
     def write(cls, *args):
-        super(Location, cls).write(*args)
+        super().write(*args)
         locations = sum(args[::2], [])
         cls._set_warehouse_parent(locations)
         cls._default_warehouse_cache.clear()
@@ -614,7 +614,7 @@ class Location(DeactivableMixin, tree(), ModelSQL, ModelView):
                 wh_default['storage_location'] = None
                 wh_default['childs'] = None
 
-                new_location, = super(Location, cls).copy([location],
+                new_location, = super().copy([location],
                     default=wh_default)
 
                 with Transaction().set_context(
@@ -630,7 +630,7 @@ class Location(DeactivableMixin, tree(), ModelSQL, ModelView):
                         'type': 'warehouse',
                         })
             else:
-                new_location, = super(Location, cls).copy([location],
+                new_location, = super().copy([location],
                     default=default)
                 warehouse_locations = Transaction().context.get(
                     'cp_warehouse_locations') or {}

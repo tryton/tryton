@@ -106,7 +106,7 @@ class Package(metaclass=PoolMeta):
             bool_op = 'AND'
         else:
             bool_op = 'OR'
-        domain = super(Package, cls).search_rec_name(name, clause)
+        domain = super().search_rec_name(name, clause)
         return [bool_op,
             domain,
             ('shipping_reference', *clause[1:]),
@@ -120,7 +120,7 @@ class Package(metaclass=PoolMeta):
             default = default.copy()
         default.setdefault('shipping_reference', None)
         default.setdefault('shipping_label', None)
-        return super(Package, cls).copy(packages, default=default)
+        return super().copy(packages, default=default)
 
     @classmethod
     @ModelView.button_action('stock_package_shipping.report_shipping_label')

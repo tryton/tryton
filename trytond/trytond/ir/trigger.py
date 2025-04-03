@@ -78,7 +78,7 @@ class Trigger(DeactivableMixin, ModelSQL, ModelView):
 
     @classmethod
     def __setup__(cls):
-        super(Trigger, cls).__setup__()
+        super().__setup__()
         t = cls.__table__()
         cls._sql_constraints += [
             ('on_exclusive',
@@ -92,7 +92,7 @@ class Trigger(DeactivableMixin, ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
-        super(Trigger, cls).__register__(module_name)
+        super().__register__(module_name)
 
         cursor = Transaction().connection.cursor()
         table_h = cls.__table_handler__(module_name)
@@ -293,20 +293,20 @@ class Trigger(DeactivableMixin, ModelSQL, ModelView):
 
     @classmethod
     def create(cls, vlist):
-        res = super(Trigger, cls).create(vlist)
+        res = super().create(vlist)
         # Restart the cache on the get_triggers method of ir.trigger
         cls._get_triggers_cache.clear()
         return res
 
     @classmethod
     def write(cls, triggers, values, *args):
-        super(Trigger, cls).write(triggers, values, *args)
+        super().write(triggers, values, *args)
         # Restart the cache on the get_triggers method of ir.trigger
         cls._get_triggers_cache.clear()
 
     @classmethod
     def delete(cls, records):
-        super(Trigger, cls).delete(records)
+        super().delete(records)
         # Restart the cache on the get_triggers method of ir.trigger
         cls._get_triggers_cache.clear()
 

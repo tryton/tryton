@@ -45,14 +45,14 @@ class Sale(metaclass=PoolMeta):
     @Workflow.transition('cancelled')
     @no_payment('sale_payment.msg_sale_cancel_payment')
     def cancel(cls, sales):
-        super(Sale, cls).cancel(sales)
+        super().cancel(sales)
 
     @classmethod
     @ModelView.button
     @Workflow.transition('draft')
     @no_payment('sale_payment.msg_sale_draft_payment')
     def draft(cls, sales):
-        super(Sale, cls).draft(sales)
+        super().draft(sales)
 
     @classmethod
     def copy(cls, sales, default=None):
@@ -61,7 +61,7 @@ class Sale(metaclass=PoolMeta):
         else:
             default = default.copy()
         default.setdefault('payments', None)
-        return super(Sale, cls).copy(sales, default=default)
+        return super().copy(sales, default=default)
 
     @property
     def payment_amount_authorized(self):

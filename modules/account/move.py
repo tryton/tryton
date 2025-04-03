@@ -129,7 +129,7 @@ class Move(DescriptionOriginMixin, ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         cls.number.search_unaccented = False
-        super(Move, cls).__setup__()
+        super().__setup__()
         t = cls.__table__()
         cls.create_date.select = True
         cls._check_modify_exclude = ['lines']
@@ -295,14 +295,14 @@ class Move(DescriptionOriginMixin, ModelSQL, ModelView):
             if len(keys):
                 cls.check_modify(moves)
             args.extend((moves, values))
-        super(Move, cls).write(*args)
+        super().write(*args)
 
     @classmethod
     def delete(cls, moves):
         MoveLine = Pool().get('account.move.line')
         cls.check_modify(moves)
         MoveLine.delete([l for m in moves for l in m.lines])
-        super(Move, cls).delete(moves)
+        super().delete(moves)
 
     @classmethod
     def copy(cls, moves, default=None):
@@ -589,7 +589,7 @@ class Reconciliation(ModelSQL, ModelView):
         if table.column_exist('name') and not table.column_exist('number'):
             table.column_rename('name', 'number')
 
-        super(Reconciliation, cls).__register__(module_name)
+        super().__register__(module_name)
 
         # Migration from 5.8: add company field
         if not company_exist and line_h.column_exist('reconciliation'):
@@ -624,7 +624,7 @@ class Reconciliation(ModelSQL, ModelView):
                     'reconciliation_sequence',
                     company=vals.get('company', default_company)).get()
 
-        return super(Reconciliation, cls).create(vlist)
+        return super().create(vlist)
 
     @classmethod
     def write(cls, moves, values, *args):
@@ -632,7 +632,7 @@ class Reconciliation(ModelSQL, ModelView):
 
     @classmethod
     def validate(cls, reconciliations):
-        super(Reconciliation, cls).validate(reconciliations)
+        super().validate(reconciliations)
         cls.check_lines(reconciliations)
 
     @classmethod
@@ -1091,7 +1091,7 @@ class Line(DescriptionOriginMixin, MoveLineMixin, ModelSQL, ModelView):
 
     @classmethod
     def __setup__(cls):
-        super(Line, cls).__setup__()
+        super().__setup__()
         cls.__access__.add('move')
         cls._check_modify_exclude = {
             'maturity_date', 'reconciliation', 'tax_lines'}
@@ -1417,7 +1417,7 @@ class Line(DescriptionOriginMixin, MoveLineMixin, ModelSQL, ModelView):
 
     @classmethod
     def validate_fields(cls, lines, field_names):
-        super(Line, cls).validate(lines)
+        super().validate(lines)
         cls.check_account(lines, field_names)
 
     @classmethod
@@ -1515,7 +1515,7 @@ class Line(DescriptionOriginMixin, MoveLineMixin, ModelSQL, ModelView):
         cls.check_modify(lines)
         cls.check_reconciliation(lines)
         moves = [x.move for x in lines]
-        super(Line, cls).delete(lines)
+        super().delete(lines)
         Move.validate_move(moves)
 
     @classmethod
@@ -1533,7 +1533,7 @@ class Line(DescriptionOriginMixin, MoveLineMixin, ModelSQL, ModelView):
             all_lines.extend(lines)
             args.extend((lines, values))
 
-        super(Line, cls).write(*args)
+        super().write(*args)
 
         Transaction().timestamp = {}
         Move.validate_move(list(set(l.move for l in all_lines) | set(moves)))
@@ -1570,7 +1570,7 @@ class Line(DescriptionOriginMixin, MoveLineMixin, ModelSQL, ModelView):
                 # prevent default value for field with set_move_field
                 for fname in move_fields(move_name=False):
                     vals.setdefault(fname, None)
-        lines = super(Line, cls).create(vlist)
+        lines = super().create(vlist)
         period_and_journals = set((line.period, line.journal)
             for line in lines)
         for period, journal in period_and_journals:
@@ -1590,14 +1590,14 @@ class Line(DescriptionOriginMixin, MoveLineMixin, ModelSQL, ModelView):
         default.setdefault('move', None)
         default.setdefault('reconciliation', None)
         default.setdefault('reconciliations_delegated', [])
-        return super(Line, cls).copy(lines, default=default)
+        return super().copy(lines, default=default)
 
     @classmethod
     def view_toolbar_get(cls):
         pool = Pool()
         Template = pool.get('account.move.template')
 
-        toolbar = super(Line, cls).view_toolbar_get()
+        toolbar = super().view_toolbar_get()
 
         # Add a wizard entry for each templates
         context = Transaction().context

@@ -136,7 +136,7 @@ class SaleOpportunity(
         table = cls.__table_handler__(module_name)
         currency_exists = table.column_exist('currency')
 
-        super(SaleOpportunity, cls).__register__(module_name)
+        super().__register__(module_name)
 
         # Migration from 5.0: drop required on description
         table.not_null_action('description', action='remove')
@@ -154,7 +154,7 @@ class SaleOpportunity(
     def __setup__(cls):
         cls.number.search_unaccented = False
         cls.reference.search_unaccented = False
-        super(SaleOpportunity, cls).__setup__()
+        super().__setup__()
         t = cls.__table__()
         cls._sql_indexes.update({
                 Index(t, (t.reference, Index.Similarity())),
@@ -315,7 +315,7 @@ class SaleOpportunity(
                 vals['number'] = config.get_multivalue(
                     'sale_opportunity_sequence',
                     company=vals.get('company', default_company)).get()
-        return super(SaleOpportunity, cls).create(vlist)
+        return super().create(vlist)
 
     @classmethod
     def copy(cls, opportunities, default=None):
@@ -326,7 +326,7 @@ class SaleOpportunity(
         default.setdefault('number', None)
         default.setdefault('sales', None)
         default.setdefault('converted_by')
-        return super(SaleOpportunity, cls).copy(opportunities, default=default)
+        return super().copy(opportunities, default=default)
 
     @fields.depends('party', 'amount', 'company')
     def on_change_party(self):
@@ -383,7 +383,7 @@ class SaleOpportunity(
                 raise AccessError(
                     gettext('sale_opportunity.msg_opportunity_delete_cancel',
                         opportunity=opportunity.rec_name))
-        super(SaleOpportunity, cls).delete(opportunities)
+        super().delete(opportunities)
 
     @classmethod
     @ModelView.button

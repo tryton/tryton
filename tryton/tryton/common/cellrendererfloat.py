@@ -10,7 +10,7 @@ from .cellrendererinteger import CellRendererInteger
 class CellRendererFloat(CellRendererInteger):
 
     def __init__(self):
-        super(CellRendererFloat, self).__init__()
+        super().__init__()
         self.digits = None
         self.monetary = False
         self.convert = float

@@ -127,7 +127,7 @@ class Journal(metaclass=PoolMeta):
 
     @classmethod
     def __setup__(cls):
-        super(Journal, cls).__setup__()
+        super().__setup__()
         sepa_method = ('sepa', 'SEPA')
         if sepa_method not in cls.process_method.selection:
             cls.process_method.selection.append(sepa_method)
@@ -200,7 +200,7 @@ class Group(metaclass=PoolMeta):
 
     @classmethod
     def __setup__(cls):
-        super(Group, cls).__setup__()
+        super().__setup__()
         cls._buttons.update({
                 'sepa_generate_message': {
                     'invisible': Eval('process_method') != 'sepa',
@@ -383,7 +383,7 @@ class Payment(metaclass=PoolMeta):
         else:
             default = default.copy()
         default.setdefault('sepa_mandate_sequence_type', None)
-        return super(Payment, cls).copy(payments, default=default)
+        return super().copy(payments, default=default)
 
     @classmethod
     def process_method_with_group(cls):
@@ -555,7 +555,7 @@ class Mandate(Workflow, ModelSQL, ModelView):
 
     @classmethod
     def __setup__(cls):
-        super(Mandate, cls).__setup__()
+        super().__setup__()
         cls._transitions |= set((
                 ('draft', 'requested'),
                 ('requested', 'validated'),
@@ -676,7 +676,7 @@ class Mandate(Workflow, ModelSQL, ModelView):
             # Prevent raising false unique constraint
             if values.get('identification') == '':
                 values['identification'] = None
-        return super(Mandate, cls).create(vlist)
+        return super().create(vlist)
 
     @classmethod
     def write(cls, *args):
@@ -688,7 +688,7 @@ class Mandate(Workflow, ModelSQL, ModelView):
                 values = values.copy()
                 values['identification'] = None
             args.extend((mandates, values))
-        super(Mandate, cls).write(*args)
+        super().write(*args)
 
     @classmethod
     def copy(cls, mandates, default=None):
@@ -699,7 +699,7 @@ class Mandate(Workflow, ModelSQL, ModelView):
         default.setdefault('payments', [])
         default.setdefault('signature_date', None)
         default.setdefault('identification', None)
-        return super(Mandate, cls).copy(mandates, default=default)
+        return super().copy(mandates, default=default)
 
     @property
     def is_valid(self):
@@ -795,7 +795,7 @@ class Mandate(Workflow, ModelSQL, ModelView):
                     gettext('account_payment_sepa'
                         '.msg_mandate_delete_draft_cancelled',
                         mandate=mandate.rec_name))
-        super(Mandate, cls).delete(mandates)
+        super().delete(mandates)
 
 
 class MandateReport(CompanyReport):
@@ -836,7 +836,7 @@ class Message(Workflow, ModelSQL, ModelView):
 
     @classmethod
     def __setup__(cls):
-        super(Message, cls).__setup__()
+        super().__setup__()
         t = cls.__table__()
         cls._sql_indexes.add(
             Index(
@@ -874,7 +874,7 @@ class Message(Workflow, ModelSQL, ModelView):
         cursor = transaction.connection.cursor()
         table = cls.__table__()
 
-        super(Message, cls).__register__(module_name)
+        super().__register__(module_name)
 
         # Migration from 5.6: rename state canceled to cancelled
         cursor.execute(*table.update(

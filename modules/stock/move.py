@@ -391,7 +391,7 @@ class Move(Workflow, ModelSQL, ModelView):
 
     @classmethod
     def __setup__(cls):
-        super(Move, cls).__setup__()
+        super().__setup__()
         cls.product.domain = [
             If(Bool(Eval('product_uom_category'))
                 & ~Eval('state').in_(['done', 'cancelled']),
@@ -488,7 +488,7 @@ class Move(Workflow, ModelSQL, ModelView):
                 and not table_h.column_exist('unit')):
             table_h.column_rename('uom', 'unit')
 
-        super(Move, cls).__register__(module_name)
+        super().__register__(module_name)
 
         # Migration from 5.6: rename state cancel to cancelled
         cursor.execute(*sql_table.update(
@@ -1008,7 +1008,7 @@ class Move(Workflow, ModelSQL, ModelView):
             vals['internal_quantity'] = internal_quantity
             if context.get('_product_replacement', True):
                 vals['product'] = product.replacement.id
-        moves = super(Move, cls).create(vlist)
+        moves = super().create(vlist)
         cls.check_period_closed(moves)
         return moves
 
@@ -1030,7 +1030,7 @@ class Move(Workflow, ModelSQL, ModelView):
                             gettext('stock.msg_move_modify_%s' % move.state,
                                 move=move.rec_name))
 
-        super(Move, cls).write(*args)
+        super().write(*args)
 
         to_write = []
         unit_price_update = []
@@ -1065,7 +1065,7 @@ class Move(Workflow, ModelSQL, ModelView):
                 raise AccessError(
                     gettext('stock.msg_move_delete_draft_cancel',
                         move=move.rec_name))
-        super(Move, cls).delete(moves)
+        super().delete(moves)
 
     @staticmethod
     def check_origin_types():

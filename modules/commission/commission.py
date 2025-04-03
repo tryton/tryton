@@ -358,7 +358,7 @@ class PlanLines(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
             if (self.category is not None
                     and self.category.id not in categories):
                 return False
-        return super(PlanLines, self).match(pattern)
+        return super().match(pattern)
 
 
 class Commission(ModelSQL, ModelView):
@@ -404,7 +404,7 @@ class Commission(ModelSQL, ModelView):
 
     @classmethod
     def __setup__(cls):
-        super(Commission, cls).__setup__()
+        super().__setup__()
         cls.__access__.add('agent')
         cls._buttons.update({
                 'invoice': {
@@ -473,7 +473,7 @@ class Commission(ModelSQL, ModelView):
         else:
             default = default.copy()
         default.setdefault('invoice_line', None)
-        return super(Commission, cls).copy(commissions, default=default)
+        return super().copy(commissions, default=default)
 
     @classmethod
     @ModelView.button

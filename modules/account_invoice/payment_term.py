@@ -26,7 +26,7 @@ class PaymentTerm(DeactivableMixin, ModelSQL, ModelView):
 
     @classmethod
     def __setup__(cls):
-        super(PaymentTerm, cls).__setup__()
+        super().__setup__()
         cls._order.insert(0, ('name', 'ASC'))
 
     @classmethod
@@ -264,7 +264,7 @@ class PaymentTermLineRelativeDelta(sequence_ordered(), ModelSQL, ModelView):
                 table_h.column_rename('month', '_temp_month')
                 table_h.column_rename('weekday', '_temp_weekday')
 
-        super(PaymentTermLineRelativeDelta, cls).__register__(module_name)
+        super().__register__(module_name)
 
         table_h = cls.__table_handler__(module_name)
 

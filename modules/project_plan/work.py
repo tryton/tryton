@@ -67,7 +67,7 @@ class Work(tree(parent='successors'), metaclass=PoolMeta):
 
     @classmethod
     def __setup__(cls):
-        super(Work, cls).__setup__()
+        super().__setup__()
 
     @staticmethod
     def default_leveling_delay():
@@ -551,7 +551,7 @@ class Work(tree(parent='successors'), metaclass=PoolMeta):
 
     @classmethod
     def write(cls, *args):
-        super(Work, cls).write(*args)
+        super().write(*args)
 
         actions = iter(args)
         for works, values in zip(actions, actions):
@@ -566,7 +566,7 @@ class Work(tree(parent='successors'), metaclass=PoolMeta):
 
     @classmethod
     def create(cls, vlist):
-        works = super(Work, cls).create(vlist)
+        works = super().create(vlist)
         for work in works:
             work.reset_leveling()
             work.compute_dates()
@@ -580,7 +580,7 @@ class Work(tree(parent='successors'), metaclass=PoolMeta):
                 to_update.add(work.parent)
                 to_update.update(c for c in work.parent.children
                     if c not in works)
-        super(Work, cls).delete(works)
+        super().delete(works)
 
         for work in to_update:
             work.reset_leveling()
@@ -597,7 +597,7 @@ class PredecessorSuccessor(ModelSQL):
     @classmethod
     def write(cls, *args):
         Work = Pool().get('project.work')
-        super(PredecessorSuccessor, cls).write(*args)
+        super().write(*args)
 
         work_ids = [v for values in args[1::2]
             for k, v in values.values()
@@ -619,7 +619,7 @@ class PredecessorSuccessor(ModelSQL):
             if pred_succ.predecessor.parent:
                 parents.add(pred_succ.predecessor.parent)
 
-        super(PredecessorSuccessor, cls).delete(pred_succs)
+        super().delete(pred_succs)
 
         for work in works:
             work.reset_leveling()
@@ -629,7 +629,7 @@ class PredecessorSuccessor(ModelSQL):
 
     @classmethod
     def create(cls, vlist):
-        pred_succs = super(PredecessorSuccessor, cls).create(vlist)
+        pred_succs = super().create(vlist)
 
         for pred_succ in pred_succs:
             pred_succ.predecessor.reset_leveling()

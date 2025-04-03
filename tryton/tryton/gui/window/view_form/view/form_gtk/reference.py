@@ -15,7 +15,7 @@ _ = gettext.gettext
 class Reference(Many2One, SelectionMixin, PopdownMixin):
 
     def __init__(self, view, attrs):
-        super(Reference, self).__init__(view, attrs)
+        super().__init__(view, attrs)
 
         self.widget_combo = Gtk.ComboBox(has_entry=True)
         child = self.widget_combo.get_child()
@@ -54,7 +54,7 @@ class Reference(Many2One, SelectionMixin, PopdownMixin):
             combobox.stop_emission_by_name('move-active')
 
     def _set_button_sensitive(self):
-        super(Reference, self)._set_button_sensitive()
+        super()._set_button_sensitive()
         self.widget_combo.get_child().set_editable(not self._readonly)
         self.widget_combo.set_button_sensitivity(
             Gtk.SensitivityType.OFF if self._readonly
@@ -129,7 +129,7 @@ class Reference(Many2One, SelectionMixin, PopdownMixin):
             model, value = value
         else:
             model, value = None, None
-        super(Reference, self).set_text(value)
+        super().set_text(value)
         self.widget_combo.handler_block_by_func(self.sig_changed_combo)
         if not self.set_popdown_value(self.widget_combo, model):
             text = self.get_inactive_selection(model)
@@ -141,4 +141,4 @@ class Reference(Many2One, SelectionMixin, PopdownMixin):
     def display(self):
         self.update_selection(self.record, self.field)
         self.set_popdown(self.selection, self.widget_combo)
-        super(Reference, self).display()
+        super().display()

@@ -11,7 +11,7 @@ from tryton.common import RPCException, RPCExecute, eval_domain
 class SelectionMixin(object):
 
     def __init__(self, *args, **kwargs):
-        super(SelectionMixin, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.nullable_widget = True
         self.selection = None
         self.inactive_selection = []

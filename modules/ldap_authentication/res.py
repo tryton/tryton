@@ -126,7 +126,7 @@ class User(metaclass=PoolMeta):
                 tocheck.append(values['login'])
         if tocheck:
             cls._check_passwd_ldap_user(tocheck)
-        return super(User, cls).create(vlist)
+        return super().create(vlist)
 
     @classmethod
     def write(cls, *args):
@@ -135,7 +135,7 @@ class User(metaclass=PoolMeta):
             if values.get('password'):
                 logins = [x.login for x in users]
                 cls._check_passwd_ldap_user(logins)
-        super(User, cls).write(*args)
+        super().write(*args)
 
     @classmethod
     def _login_ldap(cls, login, parameters):

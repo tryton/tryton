@@ -106,7 +106,7 @@ class Purchase(metaclass=PoolMeta):
 
     @property
     def delivery_full_address(self):
-        address = super(Purchase, self).delivery_full_address
+        address = super().delivery_full_address
         if self.customer and self.delivery_address:
             address = self.delivery_address.full_address
         return address
@@ -115,7 +115,7 @@ class Purchase(metaclass=PoolMeta):
     search_drop_shipments = search_shipments_returns('stock.shipment.drop')
 
     def check_for_quotation(self):
-        super(Purchase, self).check_for_quotation()
+        super().check_for_quotation()
         if self.customer and not self.delivery_address:
             raise RequiredValidationError(
                 gettext('sale_supply_drop_shipment'

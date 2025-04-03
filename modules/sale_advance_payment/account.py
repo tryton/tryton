@@ -51,7 +51,7 @@ class Invoice(metaclass=PoolMeta):
         pool = Pool()
         AdvancePaymentCondition = pool.get('sale.advance_payment.condition')
 
-        sales = set(super(Invoice, self).get_sales(name))
+        sales = set(super().get_sales(name))
         for line in self.lines:
             if isinstance(line.origin, AdvancePaymentCondition):
                 sales.add(line.origin.sale.id)
@@ -92,7 +92,7 @@ class InvoiceLine(metaclass=PoolMeta):
 
     @classmethod
     def _get_origin(cls):
-        return (super(InvoiceLine, cls)._get_origin()
+        return (super()._get_origin()
             + ['sale.advance_payment.condition'])
 
     @classmethod

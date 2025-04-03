@@ -23,7 +23,7 @@ class CAMT054(SEPAHandler):
 
     def __init__(self, source, Payment):
         self.Payment = Payment
-        super(CAMT054, self).__init__(source)
+        super().__init__(source)
 
     def handle(self, event, element):
         tag = etree.QName(element)

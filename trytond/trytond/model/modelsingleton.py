@@ -31,7 +31,7 @@ class ModelSingleton(ModelStorage):
         '''
         Return the instance of the unique record if there is one.
         '''
-        singletons = super(ModelSingleton, cls).search([], limit=1)
+        singletons = super().search([], limit=1)
         if singletons:
             return singletons[0]
 
@@ -42,7 +42,7 @@ class ModelSingleton(ModelStorage):
         if not singleton:
             if issubclass(cls, ModelSQL):
                 cls.lock()
-            return super(ModelSingleton, cls).create(vlist)
+            return super().create(vlist)
         cls.write([singleton], vlist[0])
         return [singleton]
 
@@ -62,7 +62,7 @@ class ModelSingleton(ModelStorage):
             res['_write'] = True
             res['_delete'] = True
             return [res]
-        res = super(ModelSingleton, cls).read([singleton.id], fields_names)
+        res = super().read([singleton.id], fields_names)
         res[0]['id'] = ids[0]
         return res
 
@@ -78,7 +78,7 @@ class ModelSingleton(ModelStorage):
         args = []
         for values in actions[1:None:2]:
             args.extend(([singleton], values))
-        super(ModelSingleton, cls).write(*args)
+        super().write(*args)
         # Clean local cache of original records
         for record in sum(actions[0:None:2], []):
             record._local_cache.pop(record.id, None)
@@ -91,7 +91,7 @@ class ModelSingleton(ModelStorage):
     def delete(cls, records):
         singleton = cls.get_singleton()
         if singleton:
-            super(ModelSingleton, cls).delete([singleton])
+            super().delete([singleton])
         # Clean transaction cache of all ids
         for cache in Transaction().cache.values():
             if cls.__name__ in cache:
@@ -105,7 +105,7 @@ class ModelSingleton(ModelStorage):
 
     @classmethod
     def search(cls, domain, offset=0, limit=None, order=None, count=False):
-        res = super(ModelSingleton, cls).search(domain, offset=offset,
+        res = super().search(domain, offset=offset,
                 limit=limit, order=order, count=count)
         if not res and not domain:
             if count:
@@ -118,7 +118,7 @@ class ModelSingleton(ModelStorage):
         if '_timestamp' in fields_names:
             fields_names = list(fields_names)
             fields_names.remove('_timestamp')
-        default = super(ModelSingleton, cls).default_get(fields_names,
+        default = super().default_get(fields_names,
                 with_rec_name=with_rec_name)
         singleton = cls.get_singleton()
         if singleton:

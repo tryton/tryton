@@ -27,4 +27,4 @@ class ShipmentOut(metaclass=PoolMeta):
                 raise ShippingBlocked(
                     gettext('sale_advance_payment.msg_shipping_blocked',
                         sale=sale.rec_name))
-        super(ShipmentOut, cls).pack(shipments)
+        super().pack(shipments)

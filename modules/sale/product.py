@@ -75,7 +75,7 @@ class Template(metaclass=PoolMeta):
     @fields.depends('default_uom', 'sale_uom', 'salable')
     def on_change_default_uom(self):
         try:
-            super(Template, self).on_change_default_uom()
+            super().on_change_default_uom()
         except AttributeError:
             pass
         if self.default_uom:
@@ -87,7 +87,7 @@ class Template(metaclass=PoolMeta):
 
     @classmethod
     def view_attributes(cls):
-        return super(Template, cls).view_attributes() + [
+        return super().view_attributes() + [
             ('//page[@id="customers"]', 'states', {
                     'invisible': ~Eval('salable'),
                     })]

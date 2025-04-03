@@ -24,7 +24,7 @@ class One2OneRelation(ModelSQL):
 
     @classmethod
     def __setup__(cls):
-        super(One2OneRelation, cls).__setup__()
+        super().__setup__()
         table = cls.__table__()
         cls._sql_constraints += [
             ('origin_unique', Unique(table, table.origin),
@@ -47,7 +47,7 @@ class One2OneRequiredRelation(ModelSQL):
 
     @classmethod
     def __setup__(cls):
-        super(One2OneRequiredRelation, cls).__setup__()
+        super().__setup__()
         table = cls.__table__()
         cls._sql_constraints += [
             ('origin_unique', Unique(table, table.origin),
@@ -71,7 +71,7 @@ class One2OneDomainRelation(ModelSQL):
 
     @classmethod
     def __setup__(cls):
-        super(One2OneDomainRelation, cls).__setup__()
+        super().__setup__()
         table = cls.__table__()
         cls._sql_constraints += [
             ('origin_unique', Unique(table, table.origin),

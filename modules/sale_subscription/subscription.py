@@ -162,7 +162,7 @@ class Subscription(Workflow, ModelSQL, ModelView):
     def __setup__(cls):
         cls.number.search_unaccented = False
         cls.reference.search_unaccented = False
-        super(Subscription, cls).__setup__()
+        super().__setup__()
         t = cls.__table__()
         cls._sql_indexes.update({
                 Index(t, (t.reference, Index.Similarity())),
@@ -350,7 +350,7 @@ class Subscription(Workflow, ModelSQL, ModelView):
         default.setdefault('next_invoice_date', None)
         default.setdefault('quoted_by')
         default.setdefault('run_by')
-        return super(Subscription, cls).copy(subscriptions, default=default)
+        return super().copy(subscriptions, default=default)
 
     @classmethod
     def view_attributes(cls):
@@ -618,7 +618,7 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
         cursor = transaction.connection.cursor()
         table = cls.__table__()
 
-        super(Line, cls).__register__(module)
+        super().__register__(module)
         table_h = cls.__table_handler__(module)
 
         # Migration from 5.2: replace consumed by consumed_until
@@ -866,7 +866,7 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
             default = default.copy()
         default.setdefault('next_consumption_date', None)
         default.setdefault('consumed_until', None)
-        return super(Line, cls).copy(lines, default=default)
+        return super().copy(lines, default=default)
 
 
 class LineConsumption(ModelSQL, ModelView):
@@ -883,7 +883,7 @@ class LineConsumption(ModelSQL, ModelView):
 
     @classmethod
     def __setup__(cls):
-        super(LineConsumption, cls).__setup__()
+        super().__setup__()
         cls.__access__.add('line')
         cls._order.insert(0, ('date', 'DESC'))
 
@@ -898,7 +898,7 @@ class LineConsumption(ModelSQL, ModelView):
         else:
             default = default.copy()
         default.setdefault('invoice_line', None)
-        return super(LineConsumption, cls).copy(consumptions, default=default)
+        return super().copy(consumptions, default=default)
 
     @classmethod
     def write(cls, *args):
@@ -909,7 +909,7 @@ class LineConsumption(ModelSQL, ModelView):
                         gettext('sale_subscription'
                             '.msg_consumption_modify_invoiced',
                             consumption=consumption.rec_name))
-        super(LineConsumption, cls).write(*args)
+        super().write(*args)
 
     @classmethod
     def delete(cls, consumptions):
@@ -919,7 +919,7 @@ class LineConsumption(ModelSQL, ModelView):
                     gettext('sale_subscription'
                         '.msg_consumption_modify_invoiced',
                         consumption=consumption.rec_name))
-        super(LineConsumption, cls).delete(consumptions)
+        super().delete(consumptions)
 
     @classmethod
     def get_invoice_lines(cls, consumptions, invoice):

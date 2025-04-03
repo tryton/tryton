@@ -14,7 +14,7 @@ class Journal(metaclass=PoolMeta):
 
     @classmethod
     def __setup__(cls):
-        super(Journal, cls).__setup__()
+        super().__setup__()
         payable_flavor_cfonb = ('pain.001.001.03-cfonb',
             'pain.001.001.03 CFONB')
         receivable_flavor_cfonb = ('pain.008.001.02-cfonb',
@@ -45,4 +45,4 @@ class Group(metaclass=PoolMeta):
         if (self.kind == 'receivable'
                 and self.journal.sepa_receivable_flavor.endswith('-cfonb')):
             return loader.load('%s.xml' % self.journal.sepa_receivable_flavor)
-        return super(Group, self).get_sepa_template()
+        return super().get_sepa_template()

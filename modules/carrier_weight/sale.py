@@ -23,7 +23,7 @@ class Sale(metaclass=PoolMeta):
             return parcel_weight(parcel, self.carrier.weight_uom, 'unit')
 
     def _get_carrier_context(self, carrier):
-        context = super(Sale, self)._get_carrier_context(carrier)
+        context = super()._get_carrier_context(carrier)
 
         if not carrier or carrier.carrier_cost_method != 'weight':
             return context

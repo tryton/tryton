@@ -8,6 +8,6 @@ class UserApplication(metaclass=PoolMeta):
 
     @classmethod
     def __setup__(cls):
-        super(UserApplication, cls).__setup__()
+        super().__setup__()
         cls.application.selection.append(
             ('document_incoming', "Incoming Document"))

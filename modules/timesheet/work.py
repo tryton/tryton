@@ -59,7 +59,7 @@ class Work(ModelSQL, ModelView):
 
     @classmethod
     def __setup__(cls):
-        super(Work, cls).__setup__()
+        super().__setup__()
         t = cls.__table__()
         cls._sql_constraints += [
             ('origin_unique', Unique(t, t.origin, t.company),
@@ -145,11 +145,11 @@ class Work(ModelSQL, ModelView):
         else:
             default = default.copy()
         default.setdefault('timesheet_lines', None)
-        return super(Work, cls).copy(works, default=default)
+        return super().copy(works, default=default)
 
     @classmethod
     def validate(cls, works):
-        super(Work, cls).validate(works)
+        super().validate(works)
         for work in works:
             if work.origin and not work._validate_company():
                 raise CompanyValidationError(
@@ -161,7 +161,7 @@ class Work(ModelSQL, ModelView):
 
     @classmethod
     def search_global(cls, text):
-        for record, rec_name, icon in super(Work, cls).search_global(text):
+        for record, rec_name, icon in super().search_global(text):
             icon = icon or 'tryton-clock'
             yield record, rec_name, icon
 

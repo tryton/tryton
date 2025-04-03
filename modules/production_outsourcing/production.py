@@ -97,7 +97,7 @@ class Routing(metaclass=PoolMeta):
 
     @classmethod
     def view_attributes(cls):
-        return super(Routing, cls).view_attributes() + [
+        return super().view_attributes() + [
             ('//page[@id="supplier"]', 'states', {
                     'invisible': ~Eval('supplier'),
                     }),
@@ -117,7 +117,7 @@ class Production(metaclass=PoolMeta):
     def get_cost(self, name):
         pool = Pool()
         Currency = pool.get('currency.currency')
-        cost = super(Production, self).get_cost(name)
+        cost = super().get_cost(name)
         for line in self.purchase_lines:
             if line.purchase.state != 'cancelled' and line.amount:
                 cost += Currency.compute(
@@ -131,7 +131,7 @@ class Production(metaclass=PoolMeta):
     def draft(cls, productions):
         pool = Pool()
         PurchaseLine = pool.get('purchase.line')
-        super(Production, cls).draft(productions)
+        super().draft(productions)
         PurchaseLine.delete([l for p in productions for l in p.purchase_lines
                 if l.purchase_state in {'draft', 'cancelled'}])
 
@@ -141,7 +141,7 @@ class Production(metaclass=PoolMeta):
     def cancel(cls, productions):
         pool = Pool()
         PurchaseLine = pool.get('purchase.line')
-        super(Production, cls).cancel(productions)
+        super().cancel(productions)
         PurchaseLine.delete([l for p in productions for l in p.purchase_lines
                 if l.purchase_state in {'draft', 'cancelled'}])
 
@@ -156,7 +156,7 @@ class Production(metaclass=PoolMeta):
 
         draft_productions = [p for p in productions if p.state == 'draft']
 
-        super(Production, cls).wait(productions)
+        super().wait(productions)
 
         purchases = []
         lines = []

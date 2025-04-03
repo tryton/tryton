@@ -62,7 +62,7 @@ class TaxRuleLineTemplate(_TaxRuleLineMixin, metaclass=PoolMeta):
     __name__ = 'account.tax.rule.line.template'
 
     def _get_tax_rule_line_value(self, rule_line=None):
-        value = super(TaxRuleLineTemplate, self)._get_tax_rule_line_value(
+        value = super()._get_tax_rule_line_value(
             rule_line=rule_line)
         if not rule_line or rule_line.from_country != self.from_country:
             value['from_country'] = (
@@ -121,7 +121,7 @@ class InvoiceLine(metaclass=PoolMeta):
         except KeyError:
             Move = ShipmentOut = ShipmentOutReturn = None
 
-        pattern = super(InvoiceLine, self)._get_tax_rule_pattern()
+        pattern = super()._get_tax_rule_pattern()
 
         from_country = from_subdivision = to_country = to_subdivision = None
         if (SaleLine

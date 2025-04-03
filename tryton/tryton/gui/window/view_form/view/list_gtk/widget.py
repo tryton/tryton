@@ -186,7 +186,7 @@ class Affix(Cell):
     expand = False
 
     def __init__(self, view, attrs, protocol=None):
-        super(Affix, self).__init__()
+        super().__init__()
         self.attrs = attrs
         self.protocol = protocol
         self.icon = attrs.get('icon')
@@ -286,7 +286,7 @@ class GenericText(Cell):
     editing = None
 
     def __init__(self, view, attrs, renderer=None):
-        super(GenericText, self).__init__()
+        super().__init__()
         self.attrs = attrs
         if renderer is None:
             renderer = CellRendererText
@@ -397,7 +397,7 @@ class Char(GenericText):
     @realized
     @CellCache.cache
     def setter(self, column, cell, store, iter_, user_data=None):
-        super(Char, self).setter(column, cell, store, iter_, user_data)
+        super().setter(column, cell, store, iter_, user_data)
         cell.set_property('single-paragraph-mode', True)
 
 
@@ -411,7 +411,7 @@ class Int(GenericText):
     def __init__(self, view, attrs, renderer=None):
         if renderer is None:
             renderer = CellRendererInteger
-        super(Int, self).__init__(view, attrs, renderer=renderer)
+        super().__init__(view, attrs, renderer=renderer)
         self.factor = float(attrs.get('factor', 1))
         self.symbol = attrs.get('symbol')
         self.grouping = bool(int(attrs.get('grouping', 1)))
@@ -451,7 +451,7 @@ class Boolean(GenericText):
             renderer=None):
         if renderer is None:
             renderer = CellRendererToggle
-        super(Boolean, self).__init__(view, attrs, renderer=renderer)
+        super().__init__(view, attrs, renderer=renderer)
         self.renderer.connect('toggled', self._sig_toggled)
 
     def _sig_toggled(self, renderer, path):
@@ -473,7 +473,7 @@ class URL(Char):
     @realized
     @CellCache.cache
     def setter(self, column, cell, store, iter_, user_data=None):
-        super(URL, self).setter(column, cell, store, iter_, user_data)
+        super().setter(column, cell, store, iter_, user_data)
         record, field = self._get_record_field_from_iter(iter_, store)
         field.state_set(record, states=('readonly',))
         readonly = field.get_state_attrs(record).get('readonly', False)
@@ -485,13 +485,13 @@ class Date(GenericText):
     def __init__(self, view, attrs, renderer=None):
         if renderer is None:
             renderer = CellRendererDate
-        super(Date, self).__init__(view, attrs, renderer=renderer)
+        super().__init__(view, attrs, renderer=renderer)
 
     @realized
     def setter(self, column, cell, store, iter_, user_data=None):
         record, field = self._get_record_field_from_iter(iter_, store)
         self.renderer.props.format = self.get_format(record, field)
-        super(Date, self).setter(column, cell, store, iter_, user_data)
+        super().setter(column, cell, store, iter_, user_data)
 
     def get_format(self, record, field):
         if field and record:
@@ -525,7 +525,7 @@ class Time(Date):
     def __init__(self, view, attrs, renderer=None):
         if renderer is None:
             renderer = CellRendererTime
-        super(Time, self).__init__(view, attrs, renderer=renderer)
+        super().__init__(view, attrs, renderer=renderer)
 
     def get_format(self, record, field):
         if field and record:
@@ -560,12 +560,12 @@ class Float(Int):
     def __init__(self, view, attrs, renderer=None):
         if renderer is None:
             renderer = CellRendererFloat
-        super(Float, self).__init__(view, attrs, renderer=renderer)
+        super().__init__(view, attrs, renderer=renderer)
         self.renderer.monetary = attrs.get('monetary', False)
 
     @realized
     def setter(self, column, cell, store, iter_, user_data=None):
-        super(Float, self).setter(column, cell, store, iter_, user_data)
+        super().setter(column, cell, store, iter_, user_data)
         record, field = self._get_record_field_from_iter(iter_, store)
         digits = field.digits(record, factor=self.factor)
         cell.digits = digits
@@ -577,7 +577,7 @@ class Binary(GenericText):
     def __init__(self, view, attrs, renderer=None):
         if renderer is None:
             renderer = CellRendererText
-        super(Binary, self).__init__(view, attrs, renderer=renderer)
+        super().__init__(view, attrs, renderer=renderer)
         self.renderer.set_property('editable', False)
         self.renderer.set_property('xalign', self.align)
         self._cell_save = _BinarySave(self)
@@ -784,7 +784,7 @@ class Image(GenericText):
     def __init__(self, view, attrs=None, renderer=None):
         if renderer is None:
             renderer = Gtk.CellRendererPixbuf
-        super(Image, self).__init__(view, attrs, renderer)
+        super().__init__(view, attrs, renderer)
         self.height = int(attrs.get('height', 100))
         self.width = int(attrs.get('width', 300))
         self.renderer.set_fixed_size(self.width, self.height)
@@ -827,7 +827,7 @@ class M2O(GenericText):
     def __init__(self, view, attrs, renderer=None):
         if renderer is None and int(attrs.get('completion', 1)):
             renderer = partial(CellRendererTextCompletion, self.set_completion)
-        super(M2O, self).__init__(view, attrs, renderer=renderer)
+        super().__init__(view, attrs, renderer=renderer)
         self._popup = False
 
     def get_model(self, record, field):
@@ -861,7 +861,7 @@ class M2O(GenericText):
                 win.show()
 
     def editing_started(self, cell, editable, path):
-        super(M2O, self).editing_started(cell, editable, path)
+        super().editing_started(cell, editable, path)
         record, field = self._get_record_field_from_path(path)
         model = self.get_model(record, field)
 
@@ -1142,7 +1142,7 @@ class Selection(GenericText, SelectionMixin, PopdownMixin):
     def __init__(self, *args, **kwargs):
         if 'renderer' not in kwargs:
             kwargs['renderer'] = CellRendererCombo
-        super(Selection, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         if self.view and self.view.editable:
             self.init_selection()
             # Use a variable let Python holding reference when calling
@@ -1182,7 +1182,7 @@ class Selection(GenericText, SelectionMixin, PopdownMixin):
         self.set_popdown_value(self.editable, value)
 
     def editing_started(self, cell, editable, path):
-        super(Selection, self).editing_started(cell, editable, path)
+        super().editing_started(cell, editable, path)
         record, field = self._get_record_field_from_path(path)
         gdk_backend = get_gdk_backend()
         if gdk_backend == 'x11':
@@ -1268,7 +1268,7 @@ class MultiSelection(GenericText, SelectionMixin):
 class Reference(M2O):
 
     def __init__(self, view, attrs, renderer=None):
-        super(Reference, self).__init__(view, attrs, renderer=renderer)
+        super().__init__(view, attrs, renderer=renderer)
         self._cell_selection = _ReferenceSelection(view, attrs)
 
     @property
@@ -1359,7 +1359,7 @@ class ProgressBar(Cell):
         }
 
     def __init__(self, view, attrs):
-        super(ProgressBar, self).__init__()
+        super().__init__()
         self.view = view
         self.attrs = attrs
         self.renderer = Gtk.CellRendererProgress()
@@ -1404,7 +1404,7 @@ class ProgressBar(Cell):
 class Button(Cell):
 
     def __init__(self, view, attrs):
-        super(Button, self).__init__()
+        super().__init__()
         self.attrs = attrs
         self.renderer = CellRendererButton(attrs.get('string', _('Unknown')))
         self.view = view

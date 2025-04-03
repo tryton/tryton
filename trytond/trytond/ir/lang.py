@@ -131,7 +131,7 @@ class Lang(DeactivableMixin, ModelSQL, ModelView):
 
     @classmethod
     def __setup__(cls):
-        super(Lang, cls).__setup__()
+        super().__setup__()
 
         table = cls.__table__()
         cls._sql_constraints += [
@@ -161,7 +161,7 @@ class Lang(DeactivableMixin, ModelSQL, ModelView):
         pool = Pool()
         Translation = pool.get('ir.translation')
         Config = pool.get('ir.configuration')
-        res = super(Lang, cls).read(ids, fields_names)
+        res = super().read(ids, fields_names)
         if (Transaction().context.get('translate_name')
                 and (not fields_names or 'name' in fields_names)):
             with Transaction().set_context(
@@ -401,7 +401,7 @@ class Lang(DeactivableMixin, ModelSQL, ModelView):
         Translation = pool.get('ir.translation')
         # Clear cache
         cls._lang_cache.clear()
-        languages = super(Lang, cls).create(vlist)
+        languages = super().create(vlist)
         Translation._get_language_cache.clear()
         _parents.clear()
         return languages
@@ -413,7 +413,7 @@ class Lang(DeactivableMixin, ModelSQL, ModelView):
         # Clear cache
         cls._lang_cache.clear()
         cls._code_cache.clear()
-        super(Lang, cls).write(langs, values, *args)
+        super().write(langs, values, *args)
         Translation._get_language_cache.clear()
         _parents.clear()
 
@@ -430,7 +430,7 @@ class Lang(DeactivableMixin, ModelSQL, ModelView):
         # Clear cache
         cls._lang_cache.clear()
         cls._code_cache.clear()
-        super(Lang, cls).delete(langs)
+        super().delete(langs)
         Translation._get_language_cache.clear()
         _parents.clear()
 

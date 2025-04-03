@@ -25,7 +25,7 @@ logger = logging.getLogger(__name__)
 class Wizard(InfoBar):
 
     def __init__(self, name=''):
-        super(Wizard, self).__init__()
+        super().__init__()
         self.widget = Gtk.VBox(spacing=3)
         self.widget.show()
         self.name = name or _('Wizard')
@@ -255,7 +255,7 @@ class WizardForm(Wizard, TabContent):
     "Wizard"
 
     def __init__(self, name=''):
-        super(WizardForm, self).__init__(name=name)
+        super().__init__(name=name)
         self.hbuttonbox = Gtk.HButtonBox()
         self.hbuttonbox.set_spacing(5)
         self.hbuttonbox.set_layout(Gtk.ButtonBoxStyle.END)
@@ -267,19 +267,19 @@ class WizardForm(Wizard, TabContent):
         }
 
     def clean(self):
-        super(WizardForm, self).clean()
+        super().clean()
         for button in self.hbuttonbox.get_children():
             self.hbuttonbox.remove(button)
 
     def _get_button(self, state):
-        button = super(WizardForm, self)._get_button(state)
+        button = super()._get_button(state)
         response = len(self.states)
         button.connect('clicked', self.response, response)
         self.hbuttonbox.pack_start(button, expand=True, fill=True, padding=0)
         return button
 
     def update(self, view, buttons):
-        super(WizardForm, self).update(view, buttons)
+        super().update(view, buttons)
         self.widget.pack_start(
             self.hbuttonbox, expand=False, fill=True, padding=0)
 
@@ -289,14 +289,14 @@ class WizardForm(Wizard, TabContent):
         return self.state == self.end_state
 
     def destroy(self, action=None):
-        super(WizardForm, self).destroy(action=action)
+        super().destroy(action=action)
         if action == 'reload menu':
             RPCContextReload(Main().sig_win_menu)
         elif action == 'reload context':
             RPCContextReload()
 
     def end(self, callback=None):
-        super(WizardForm, self).end(callback=callback)
+        super().end(callback=callback)
         Main()._win_del(self.widget)
 
     def set_cursor(self):
@@ -331,13 +331,13 @@ class WizardDialog(Wizard, NoModal):
         self.register()
 
     def clean(self):
-        super(WizardDialog, self).clean()
+        super().clean()
         while self._buttons:
             button = self._buttons.pop()
             button.get_parent().remove(button)
 
     def _get_button(self, definition):
-        button = super(WizardDialog, self)._get_button(definition)
+        button = super()._get_button(definition)
         response = len(self.states)
         self.dia.add_action_widget(button, response)
         self._buttons.add(button)
@@ -353,7 +353,7 @@ class WizardDialog(Wizard, NoModal):
         return button
 
     def update(self, view, buttons):
-        super(WizardDialog, self).update(view, buttons)
+        super().update(view, buttons)
         current_view = self.screen.current_view
         self.scrolledwindow.set_policy(
             Gtk.PolicyType.NEVER, Gtk.PolicyType.NEVER)
@@ -368,7 +368,7 @@ class WizardDialog(Wizard, NoModal):
                 Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC)
 
     def destroy(self, action=None):
-        super(WizardDialog, self).destroy(action=action)
+        super().destroy(action=action)
         self.dia.destroy()
         NoModal.destroy(self)
         main = Main()

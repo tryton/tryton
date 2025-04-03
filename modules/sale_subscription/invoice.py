@@ -10,13 +10,13 @@ class InvoiceLine(metaclass=PoolMeta):
     def origin_name(self):
         pool = Pool()
         SubscriptionLine = pool.get('sale.subscription.line')
-        name = super(InvoiceLine, self).origin_name
+        name = super().origin_name
         if isinstance(self.origin, SubscriptionLine) and self.origin.id >= 0:
             name = self.origin.subscription.rec_name
         return name
 
     @classmethod
     def _get_origin(cls):
-        models = super(InvoiceLine, cls)._get_origin()
+        models = super()._get_origin()
         models.append('sale.subscription.line')
         return models

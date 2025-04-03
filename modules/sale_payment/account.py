@@ -40,7 +40,7 @@ class Payment(metaclass=PoolMeta):
 
     @classmethod
     def _get_origin(cls):
-        return super(Payment, cls)._get_origin() + ['sale.sale']
+        return super()._get_origin() + ['sale.sale']
 
     @fields.depends('origin')
     def on_change_origin(self):
@@ -71,7 +71,7 @@ class Payment(metaclass=PoolMeta):
 
     @classmethod
     def create(cls, vlist):
-        payments = super(Payment, cls).create(vlist)
+        payments = super().create(vlist)
         cls.trigger_authorized([p for p in payments if p.is_authorized])
         return payments
 
@@ -79,7 +79,7 @@ class Payment(metaclass=PoolMeta):
     def write(cls, *args):
         payments = sum(args[0:None:2], [])
         unauthorized = {p for p in payments if not p.is_authorized}
-        super(Payment, cls).write(*args)
+        super().write(*args)
         authorized = {p for p in payments if p.is_authorized}
         cls.trigger_authorized(cls.browse(unauthorized & authorized))
 

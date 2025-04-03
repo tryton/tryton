@@ -17,7 +17,7 @@ class Char(Widget, TranslateMixin, PopdownMixin):
     "Char"
 
     def __init__(self, view, attrs):
-        super(Char, self).__init__(view, attrs)
+        super().__init__(view, attrs)
 
         self.widget = Gtk.HBox()
         self.autocomplete = bool(attrs.get('autocomplete'))
@@ -105,7 +105,7 @@ class Char(Widget, TranslateMixin, PopdownMixin):
         return value
 
     def display(self):
-        super(Char, self).display()
+        super().display()
         if self.autocomplete:
             if self.record:
                 if self.field_name not in self.record.autocompletion:
@@ -150,7 +150,7 @@ class Char(Widget, TranslateMixin, PopdownMixin):
             True: Gtk.SensitivityType.OFF,
             False: Gtk.SensitivityType.AUTO,
             }
-        super(Char, self)._readonly_set(value)
+        super()._readonly_set(value)
         if self.autocomplete:
             entry_editable = self.entry.get_child()
             self.entry.set_button_sensitivity(sensitivity[value])
@@ -162,7 +162,7 @@ class Char(Widget, TranslateMixin, PopdownMixin):
 class Password(Char):
 
     def __init__(self, view, attrs):
-        super(Password, self).__init__(view, attrs)
+        super().__init__(view, attrs)
         self.entry.props.visibility = False
 
         self.visibility_checkbox = Gtk.CheckButton()

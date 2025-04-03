@@ -24,7 +24,7 @@ class Sale(metaclass=PoolMeta):
     def quote(cls, sales):
         # Check before setting the number
         cls._check_stock_quantity(sales)
-        super(Sale, cls).quote(sales)
+        super().quote(sales)
 
     @classmethod
     @ModelView.button
@@ -32,7 +32,7 @@ class Sale(metaclass=PoolMeta):
     def confirm(cls, sales):
         # Check before queueing the process task
         cls._check_stock_quantity(sales)
-        super(Sale, cls).confirm(sales)
+        super().confirm(sales)
 
     @classmethod
     def _check_stock_quantity(cls, sales):

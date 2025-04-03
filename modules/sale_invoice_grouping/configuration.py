@@ -28,7 +28,7 @@ class Configuration(metaclass=PoolMeta):
         pool = Pool()
         if field == 'sale_invoice_grouping_method':
             return pool.get('sale.configuration.sale_method')
-        return super(Configuration, cls).multivalue_model(field)
+        return super().multivalue_model(field)
 
 
 class ConfigurationSaleMethod(metaclass=PoolMeta):

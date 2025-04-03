@@ -131,7 +131,7 @@ class Statement(Workflow, ModelSQL, ModelView):
 
     @classmethod
     def __setup__(cls):
-        super(Statement, cls).__setup__()
+        super().__setup__()
         t = cls.__table__()
         cls._sql_indexes.update({
                 Index(
@@ -185,7 +185,7 @@ class Statement(Workflow, ModelSQL, ModelView):
         cursor = transaction.connection.cursor()
         sql_table = cls.__table__()
 
-        super(Statement, cls).__register__(module_name)
+        super().__register__(module_name)
 
         # Migration from 5.6: rename state cancel to cancelled
         cursor.execute(*sql_table.update(
@@ -389,7 +389,7 @@ class Statement(Workflow, ModelSQL, ModelView):
                 raise AccessError(
                     gettext('account_statement.msg_statement_delete_cancel',
                         statement=statement.rec_name))
-        super(Statement, cls).delete(statements)
+        super().delete(statements)
 
     @classmethod
     @ModelView.button
@@ -789,7 +789,7 @@ class Line(origin_mixin(_states), sequence_ordered(), ModelSQL, ModelView):
 
     @classmethod
     def __setup__(cls):
-        super(Line, cls).__setup__()
+        super().__setup__()
         table = cls.__table__()
         cls.date.states['readonly'] = (
             cls.date.states.get('readonly', False)
@@ -961,7 +961,7 @@ class Line(origin_mixin(_states), sequence_ordered(), ModelSQL, ModelView):
     @fields.depends('origin', '_parent_origin.statement_state')
     def on_change_with_statement_state(self, name=None):
         try:
-            state = super(Line, self).on_change_with_statement_state()
+            state = super().on_change_with_statement_state()
         except AttributeError:
             state = None
         if self.origin:
@@ -995,7 +995,7 @@ class Line(origin_mixin(_states), sequence_ordered(), ModelSQL, ModelView):
             default = default.copy()
         default.setdefault('move', None)
         default.setdefault('related_to', None)
-        return super(Line, cls).copy(lines, default=default)
+        return super().copy(lines, default=default)
 
     @classmethod
     def reconcile(cls, move_lines):
@@ -1117,7 +1117,7 @@ class LineGroup(ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         cls.number.search_unaccented = False
-        super(LineGroup, cls).__setup__()
+        super().__setup__()
         cls.__access__.add('statement')
         cls._order.insert(0, ('date', 'DESC'))
 
@@ -1204,7 +1204,7 @@ class Origin(origin_mixin(_states), ModelSQL, ModelView):
         # Migration from 5.0: rename informations into information
         table.column_rename('informations', 'information')
 
-        super(Origin, cls).__register__(module_name)
+        super().__register__(module_name)
 
     @fields.depends('statement', '_parent_statement.id')
     def on_change_with_statement_id(self, name=None):

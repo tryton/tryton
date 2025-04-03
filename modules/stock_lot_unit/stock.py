@@ -57,7 +57,7 @@ class Lot(LotUnitMixin, metaclass=PoolMeta):
 
     @classmethod
     def __setup__(cls):
-        super(Lot, cls).__setup__()
+        super().__setup__()
         cls._modify_no_move += [
             ('unit', 'done', 'stock_lot_unit.msg_change_unit'),
             ('unit_quantity', 'done',
@@ -95,7 +95,7 @@ class Move(metaclass=PoolMeta):
     def check_lot(self):
         pool = Pool()
         UoM = pool.get('product.uom')
-        super(Move, self).check_lot()
+        super().check_lot()
         if (self.state == 'done'
                 and self.lot
                 and self.lot.unit):
@@ -130,7 +130,7 @@ class Inventory(metaclass=PoolMeta):
                             unit=line.lot.unit.symbol,
                             lot=line.lot.rec_name,
                             name=line.rec_name))
-        super(Inventory, cls).confirm(inventories)
+        super().confirm(inventories)
 
 
 class InventoryCount(metaclass=PoolMeta):
@@ -140,7 +140,7 @@ class InventoryCount(metaclass=PoolMeta):
         pool = Pool()
         InventoryLine = pool.get('stock.inventory.line')
         UoM = pool.get('product.uom')
-        values = super(InventoryCount, self).default_quantity(fields)
+        values = super().default_quantity(fields)
         line = InventoryLine(values['line'])
         if line.lot and line.lot.unit:
             values['quantity'] = UoM.compute_qty(
@@ -158,7 +158,7 @@ class LotUnitMixin(object):
         pool = Pool()
         UoM = pool.get('product.uom')
 
-        super(LotUnitMixin, cls).validate(shipments)
+        super().validate(shipments)
 
         for shipment in shipments:
             for move_attribute in cls._lot_unit_moves:

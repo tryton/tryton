@@ -127,7 +127,7 @@ class TaxTemplate(metaclass=PoolMeta):
             ['unece_category_code'])['unece_category_code']['selection']
 
     def _get_tax_value(self, tax=None):
-        value = super(TaxTemplate, self)._get_tax_value(tax=tax)
+        value = super()._get_tax_value(tax=tax)
         for field in ['unece_code', 'unece_category_code']:
             if not tax or getattr(tax, field) != getattr(self, field):
                 value[field] = getattr(self, field)

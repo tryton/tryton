@@ -59,7 +59,7 @@ class InvoiceLine(metaclass=PoolMeta):
         Period = pool.get('account.period')
         Warning = pool.get('res.user.warning')
 
-        result = super(InvoiceLine, self).get_move_lines()
+        result = super().get_move_lines()
 
         if self.type != 'line':
             return result

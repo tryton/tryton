@@ -13,7 +13,7 @@ class Template(metaclass=PoolMeta):
 
     @classmethod
     def __setup__(cls):
-        super(Template, cls).__setup__()
+        super().__setup__()
         new_sel = ('fifo', 'FIFO')
         if new_sel not in cls.cost_price_method.selection:
             cls.cost_price_method._field.selection.append(new_sel)

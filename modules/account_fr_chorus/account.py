@@ -99,7 +99,7 @@ class Configuration(_SyntaxMixin, metaclass=PoolMeta):
                 'chorus_piste_client_id', 'chorus_piste_client_secret',
                 'chorus_login', 'chorus_password', 'chorus_service'}:
             return pool.get('account.credential.chorus')
-        return super(Configuration, cls).multivalue_model(field)
+        return super().multivalue_model(field)
 
 
 class CredentialChorus(ModelSQL, CompanyValueMixin):
@@ -241,7 +241,7 @@ class InvoiceChorus(
     @classmethod
     def __setup__(cls):
         cls.number.search_unaccented = False
-        super(InvoiceChorus, cls).__setup__()
+        super().__setup__()
 
         t = cls.__table__()
         cls._sql_constraints = [
@@ -302,7 +302,7 @@ class InvoiceChorus(
 
     @classmethod
     def validate(cls, records):
-        super(InvoiceChorus, cls).validate(records)
+        super().validate(records)
         for record in records:
             addresses = [
                 record.invoice.company.party.address_get('invoice'),
@@ -322,7 +322,7 @@ class InvoiceChorus(
                 raise AccessError(
                     gettext('account_fr_chorus.msg_invoice_delete_sent',
                         invoice=record.invoice.rec_name))
-        super(InvoiceChorus, cls).delete(records)
+        super().delete(records)
 
     def _send_context(self):
         return {

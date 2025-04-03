@@ -32,7 +32,7 @@ class Move(metaclass=PoolMeta):
 
     @classmethod
     def __setup__(cls):
-        super(Move, cls).__setup__()
+        super().__setup__()
         cls._allow_modify_closed_period.update(['in_anglo_saxon_quantity',
                 'out_anglo_saxon_quantity'])
 
@@ -59,7 +59,7 @@ class Move(metaclass=PoolMeta):
         Uom = pool.get('product.uom')
         AccountMoveLine = pool.get('account.move.line')
         Currency = pool.get('currency.currency')
-        lines = super(Move, self)._get_account_stock_move_lines(type_)
+        lines = super()._get_account_stock_move_lines(type_)
         cost_price_method = self.product.get_multivalue(
             'cost_price_method', **self._cost_price_pattern)
         if type_.endswith('supplier') and cost_price_method == 'fixed':
@@ -186,7 +186,7 @@ class Move(metaclass=PoolMeta):
         for prefix in ('in_', 'out_'):
             default.setdefault(prefix + 'anglo_saxon_quantity',
                 getattr(cls, 'default_%sanglo_saxon_quantity' % prefix)())
-        return super(Move, cls).copy(moves, default=default)
+        return super().copy(moves, default=default)
 
     @classmethod
     @ModelView.button

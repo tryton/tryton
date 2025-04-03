@@ -36,7 +36,7 @@ class Form(TabContent):
     "Form"
 
     def __init__(self, model, res_id=None, name='', **attributes):
-        super(Form, self).__init__(**attributes)
+        super().__init__(**attributes)
 
         self.model = model
         self.res_id = res_id
@@ -686,7 +686,7 @@ class Form(TabContent):
         Main().sig_win_close(widget)
 
     def create_toolbar(self, toolbars):
-        gtktoolbar = super(Form, self).create_toolbar(toolbars)
+        gtktoolbar = super().create_toolbar(toolbars)
 
         attach_btn = self.buttons['attach']
         attach_btn.drag_dest_set(

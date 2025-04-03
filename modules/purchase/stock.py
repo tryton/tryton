@@ -36,7 +36,7 @@ class ShipmentIn(metaclass=PoolMeta):
 
     @classmethod
     def __setup__(cls):
-        super(ShipmentIn, cls).__setup__()
+        super().__setup__()
         add_remove = [
             ('supplier', '=', Eval('supplier')),
             ]
@@ -62,7 +62,7 @@ class ShipmentIn(metaclass=PoolMeta):
                         gettext('purchase.msg_purchase_move_reset_draft',
                             move=move.rec_name))
 
-        return super(ShipmentIn, cls).draft(shipments)
+        return super().draft(shipments)
 
     @classmethod
     @ModelView.button
@@ -75,14 +75,14 @@ class ShipmentIn(metaclass=PoolMeta):
             for move in shipment.incoming_moves:
                 if isinstance(move.origin, PurchaseLine):
                     move.origin.check_move_quantity()
-        super(ShipmentIn, cls).receive(shipments)
+        super().receive(shipments)
 
     @classmethod
     @ModelView.button
     @Workflow.transition('cancelled')
     @process_purchase('incoming_moves')
     def cancel(cls, shipments):
-        super(ShipmentIn, cls).cancel(shipments)
+        super().cancel(shipments)
 
 
 class ShipmentInReturn(metaclass=PoolMeta):
@@ -101,7 +101,7 @@ class ShipmentInReturn(metaclass=PoolMeta):
                         gettext('purchase.msg_purchase_move_reset_draft',
                             move=move.rec_name))
 
-        return super(ShipmentInReturn, cls).draft(shipments)
+        return super().draft(shipments)
 
     @classmethod
     @ModelView.button
@@ -162,13 +162,13 @@ class Move(metaclass=PoolMeta):
 
     @classmethod
     def _get_origin(cls):
-        models = super(Move, cls)._get_origin()
+        models = super()._get_origin()
         models.append('purchase.line')
         return models
 
     @classmethod
     def check_origin_types(cls):
-        types = super(Move, cls).check_origin_types()
+        types = super().check_origin_types()
         types.add('supplier')
         return types
 
@@ -210,7 +210,7 @@ class Move(metaclass=PoolMeta):
     def on_change_with_product_uom_category(self, name=None):
         pool = Pool()
         PurchaseLine = pool.get('purchase.line')
-        category = super(Move, self).on_change_with_product_uom_category(
+        category = super().on_change_with_product_uom_category(
             name=name)
         # Enforce the same unit category as they are used to compute the
         # remaining quantity to receive and the quantity to invoice.
@@ -224,7 +224,7 @@ class Move(metaclass=PoolMeta):
     def origin_name(self):
         pool = Pool()
         PurchaseLine = pool.get('purchase.line')
-        name = super(Move, self).origin_name
+        name = super().origin_name
         if isinstance(self.origin, PurchaseLine) and self.origin.id >= 0:
             name = self.origin.purchase.rec_name
         return name
@@ -246,12 +246,12 @@ class Move(metaclass=PoolMeta):
     @Workflow.transition('cancelled')
     @process_purchase_move(without_shipment=True)
     def cancel(cls, moves):
-        super(Move, cls).cancel(moves)
+        super().cancel(moves)
 
     @classmethod
     @process_purchase_move()
     def delete(cls, moves):
-        super(Move, cls).delete(moves)
+        super().delete(moves)
 
 
 class Location(metaclass=PoolMeta):

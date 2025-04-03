@@ -31,7 +31,7 @@ class Promotion(metaclass=PoolMeta):
             ])
 
     def get_pattern(self, sale):
-        pattern = super(Promotion, self).get_pattern(sale)
+        pattern = super().get_pattern(sale)
         if sale.coupons:
             pattern['coupons'] = [c.coupon.id for c in sale.coupons]
         return pattern
@@ -42,7 +42,7 @@ class Promotion(metaclass=PoolMeta):
             coupons = pattern.pop('coupons', [])
             if not set(coupons).intersection({c.id for c in self.coupons}):
                 return False
-        return super(Promotion, self).match(pattern)
+        return super().match(pattern)
 
     @classmethod
     def write(cls, *args):
@@ -166,7 +166,7 @@ class PromotionCouponNumber(DeactivableMixin, ModelSQL, ModelView):
 
     @classmethod
     def __setup__(cls):
-        super(PromotionCouponNumber, cls).__setup__()
+        super().__setup__()
         t = cls.__table__()
         cls._sql_constraints += [
             ('dates_number_overlap',
@@ -389,7 +389,7 @@ class Sale(metaclass=PoolMeta):
             if sale.coupons:
                 sale.coupons = []
         cls.save(sales)
-        super(Sale, cls).cancel(sales)
+        super().cancel(sales)
 
 
 class Sale_PromotionCouponNumber(ModelSQL):

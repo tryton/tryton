@@ -79,7 +79,7 @@ class RuleGroup(
 
     @classmethod
     def __setup__(cls):
-        super(RuleGroup, cls).__setup__()
+        super().__setup__()
         t = cls.__table__()
 
         cls._order.insert(0, ('model', 'ASC'))
@@ -145,20 +145,20 @@ class RuleGroup(
 
     @classmethod
     def delete(cls, groups):
-        super(RuleGroup, cls).delete(groups)
+        super().delete(groups)
         # Restart the cache on the domain_get method of ir.rule
         Pool().get('ir.rule')._domain_get_cache.clear()
 
     @classmethod
     def create(cls, vlist):
-        res = super(RuleGroup, cls).create(vlist)
+        res = super().create(vlist)
         # Restart the cache on the domain_get method of ir.rule
         Pool().get('ir.rule')._domain_get_cache.clear()
         return res
 
     @classmethod
     def write(cls, groups, vals, *args):
-        super(RuleGroup, cls).write(groups, vals, *args)
+        super().write(groups, vals, *args)
         # Restart the cache on the domain_get method of ir.rule
         Pool().get('ir.rule')._domain_get_cache.clear()
 
@@ -396,19 +396,19 @@ class Rule(ModelSQL, ModelView):
 
     @classmethod
     def delete(cls, rules):
-        super(Rule, cls).delete(rules)
+        super().delete(rules)
         # Restart the cache on the domain_get method of ir.rule
         cls._domain_get_cache.clear()
 
     @classmethod
     def create(cls, vlist):
-        res = super(Rule, cls).create(vlist)
+        res = super().create(vlist)
         # Restart the cache on the domain_get method of ir.rule
         cls._domain_get_cache.clear()
         return res
 
     @classmethod
     def write(cls, rules, vals, *args):
-        super(Rule, cls).write(rules, vals, *args)
+        super().write(rules, vals, *args)
         # Restart the cache on the domain_get method
         cls._domain_get_cache.clear()

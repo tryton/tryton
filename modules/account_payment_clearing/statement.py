@@ -61,7 +61,7 @@ class Statement(metaclass=PoolMeta):
         return payments
 
     def _group_key(self, line):
-        key = super(Statement, self)._group_key(line)
+        key = super()._group_key(line)
         if hasattr(line, 'payment'):
             key += (('payment', line.payment),)
         return key
@@ -72,7 +72,7 @@ class StatementLine(metaclass=PoolMeta):
 
     @classmethod
     def __setup__(cls):
-        super(StatementLine, cls).__setup__()
+        super().__setup__()
         cls.related_to.domain['account.payment'] = [
             cls.related_to.domain.get('account.payment', []),
             If(Eval('statement_state') == 'draft',
@@ -151,13 +151,13 @@ class StatementLine(metaclass=PoolMeta):
 
     @fields.depends('party', methods=['payment'])
     def on_change_party(self):
-        super(StatementLine, self).on_change_party()
+        super().on_change_party()
         if self.party:
             self.payment_group = None
 
     @fields.depends('account', methods=['payment', 'payment_group'])
     def on_change_account(self):
-        super(StatementLine, self).on_change_account()
+        super().on_change_account()
         if self.payment:
             clearing_account = self.payment.journal.clearing_account
         elif self.payment_group:
@@ -171,7 +171,7 @@ class StatementLine(metaclass=PoolMeta):
     def post_move(cls, lines):
         pool = Pool()
         Move = pool.get('account.move')
-        super(StatementLine, cls).post_move(lines)
+        super().post_move(lines)
         Move.post([l.payment.clearing_move for l in lines
                 if l.payment
                 and l.payment.clearing_move

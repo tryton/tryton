@@ -17,7 +17,7 @@ class Sale(metaclass=PoolMeta):
 
     @classmethod
     def __setup__(cls):
-        super(Sale, cls).__setup__()
+        super().__setup__()
         cls.party.states['readonly'] = (cls.party.states['readonly']
             | Eval('lines', [0]))
         cls.lines.states['readonly'] = (cls.lines.states['readonly']
@@ -27,7 +27,7 @@ class Sale(metaclass=PoolMeta):
     def on_change_party(self):
         pool = Pool()
         Configuration = pool.get('sale.configuration')
-        super(Sale, self).on_change_party()
+        super().on_change_party()
         if self.party and self.party.sale_price_list:
             self.price_list = self.party.sale_price_list
         else:

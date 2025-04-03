@@ -75,7 +75,7 @@ class TariffCode(DeactivableMixin, CountryMatchMixin, ModelSQL, ModelView):
 
     @classmethod
     def __setup__(cls):
-        super(TariffCode, cls).__setup__()
+        super().__setup__()
         cls._order.insert(0, ('code', 'ASC'))
 
     @classmethod
@@ -185,7 +185,7 @@ class DutyRate(CountryMatchMixin, ModelSQL, ModelView):
 
     @classmethod
     def __setup__(cls):
-        super(DutyRate, cls).__setup__()
+        super().__setup__()
         cls._order.insert(0, ('start_date', 'ASC'))
         cls._order.insert(0, ('end_date', 'ASC'))
 
@@ -210,7 +210,7 @@ class DutyRate(CountryMatchMixin, ModelSQL, ModelView):
             end = self.end_date or datetime.date.max
             if not (start <= pattern.pop('date') <= end):
                 return False
-        return super(DutyRate, self).match(pattern)
+        return super().match(pattern)
 
     def compute(self, currency, quantity, uom, **kwargs):
         return getattr(self, 'compute_%s' % self.computation_type)(

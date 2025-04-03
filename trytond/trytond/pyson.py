@@ -116,7 +116,7 @@ class PYSONEncoder(json.JSONEncoder):
             return TimeDelta(obj.days, obj.seconds, obj.microseconds)
         elif isinstance(obj, Decimal):
             return float(obj)
-        return super(PYSONEncoder, self).default(obj)
+        return super().default(obj)
 
 
 class PYSONDecoder(json.JSONDecoder):
@@ -124,7 +124,7 @@ class PYSONDecoder(json.JSONDecoder):
     def __init__(self, context=None, noeval=False):
         self.__context = context or {}
         self.noeval = noeval
-        super(PYSONDecoder, self).__init__(object_hook=self._object_hook)
+        super().__init__(object_hook=self._object_hook)
 
     def _object_hook(self, dct):
         if '__class__' in dct:
@@ -142,7 +142,7 @@ class PYSONDecoder(json.JSONDecoder):
 class Eval(PYSON):
 
     def __init__(self, v, d=''):
-        super(Eval, self).__init__()
+        super().__init__()
         self._value = v
         self._default = d
 
@@ -189,7 +189,7 @@ class Eval(PYSON):
 class Not(PYSON):
 
     def __init__(self, v):
-        super(Not, self).__init__()
+        super().__init__()
         if isinstance(v, PYSON):
             if v.types() != {bool}:
                 v = Bool(v)
@@ -229,7 +229,7 @@ class Not(PYSON):
 class Bool(PYSON):
 
     def __init__(self, v):
-        super(Bool, self).__init__()
+        super().__init__()
         self._value = v
 
     @property
@@ -255,7 +255,7 @@ class And(PYSON):
     _binary_operator = '&'
 
     def __init__(self, *statements, **kwargs):
-        super(And, self).__init__()
+        super().__init__()
         statements = list(statements) + kwargs.get('s', [])
         for i, statement in enumerate(list(statements)):
             if isinstance(statement, PYSON):
@@ -288,7 +288,7 @@ class Or(And):
     _binary_operator = '|'
 
     def pyson(self):
-        res = super(Or, self).pyson()
+        res = super().pyson()
         res['__class__'] = 'Or'
         return res
 
@@ -302,7 +302,7 @@ class Equal(PYSON):
 
     def __init__(self, s1, s2):
         statement1, statement2 = s1, s2
-        super(Equal, self).__init__()
+        super().__init__()
         if isinstance(statement1, PYSON):
             types1 = statement1.types()
         else:
@@ -338,7 +338,7 @@ class Greater(PYSON):
 
     def __init__(self, s1, s2, e=False):
         statement1, statement2, equal = s1, s2, e
-        super(Greater, self).__init__()
+        super().__init__()
         for i in (statement1, statement2):
             if isinstance(i, PYSON):
                 assert i.types().issubset({
@@ -416,7 +416,7 @@ class Less(Greater):
         return '<=' if self._equal else '<'
 
     def pyson(self):
-        res = super(Less, self).pyson()
+        res = super().pyson()
         res['__class__'] = 'Less'
         return res
 
@@ -435,7 +435,7 @@ class If(PYSON):
 
     def __init__(self, c, t, e=None):
         condition, then_statement, else_statement = c, t, e
-        super(If, self).__init__()
+        super().__init__()
         if isinstance(condition, PYSON):
             if condition.types() != {bool}:
                 condition = Bool(condition)
@@ -481,7 +481,7 @@ class Get(PYSON):
 
     def __init__(self, v, k, d=''):
         obj, key, default = v, k, d
-        super(Get, self).__init__()
+        super().__init__()
         if isinstance(obj, PYSON):
             assert obj.types() == {dict}, 'obj must be a dict'
         else:
@@ -525,7 +525,7 @@ class In(PYSON):
 
     def __init__(self, k, v):
         key, obj = k, v
-        super(In, self).__init__()
+        super().__init__()
         if isinstance(key, PYSON):
             assert key.types().issubset({str, int}), \
                 'key must be a string or an integer or a long'
@@ -590,7 +590,7 @@ class Date(PYSON):
         delta_years = kwargs.get('dy', delta_years)
         delta_months = kwargs.get('dM', delta_months)
         delta_days = kwargs.get('dd', delta_days)
-        super(Date, self).__init__()
+        super().__init__()
         for i in (year, month, day, delta_years, delta_months, delta_days):
             if isinstance(i, PYSON):
                 assert i.types().issubset({int, type(None)}), \
@@ -659,7 +659,7 @@ class DateTime(Date):
         delta_minutes = kwargs.get('dm', delta_minutes)
         delta_seconds = kwargs.get('ds', delta_seconds)
         delta_microseconds = kwargs.get('dms', delta_microseconds)
-        super(DateTime, self).__init__(year=year, month=month, day=day,
+        super().__init__(year=year, month=month, day=day,
                 delta_years=delta_years, delta_months=delta_months,
                 delta_days=delta_days, start=start, **kwargs)
         for i in (hour, minute, second, microsecond,
@@ -681,7 +681,7 @@ class DateTime(Date):
 
     @property
     def __repr_params__(self):
-        date_params = super(DateTime, self).__repr_params__
+        date_params = super().__repr_params__
         return (date_params[:3]
             + (self._hour, self._minute, self._second, self._microsecond)
             + date_params[3:-1]
@@ -690,7 +690,7 @@ class DateTime(Date):
             + date_params[-1:])
 
     def pyson(self):
-        res = super(DateTime, self).pyson()
+        res = super().pyson()
         res['__class__'] = 'DateTime'
         res['h'] = self._hour
         res['m'] = self._minute
@@ -773,7 +773,7 @@ class TimeDelta(PYSON):
 class Len(PYSON):
 
     def __init__(self, v):
-        super(Len, self).__init__()
+        super().__init__()
         if isinstance(v, PYSON):
             assert v.types().issubset({dict, list, str}), \
                 'value must be a dict or a list or a string'
@@ -804,7 +804,7 @@ class Id(PYSON):
     """The database id for filesystem id"""
 
     def __init__(self, module, fs_id):
-        super(Id, self).__init__()
+        super().__init__()
         self._module = module
         self._fs_id = fs_id
 

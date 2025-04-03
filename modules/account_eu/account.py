@@ -17,7 +17,7 @@ class TaxTemplate(metaclass=PoolMeta):
     ec_sales_list_code = fields.Char("EC Sales List Code")
 
     def _get_tax_value(self, tax=None):
-        value = super(TaxTemplate, self)._get_tax_value(tax=tax)
+        value = super()._get_tax_value(tax=tax)
         if not tax or tax.ec_sales_list_code != self.ec_sales_list_code:
             value['ec_sales_list_code'] = self.ec_sales_list_code
         return value

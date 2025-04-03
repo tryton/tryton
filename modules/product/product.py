@@ -142,7 +142,7 @@ class Template(
             return pool.get('product.list_price')
         elif field == 'cost_price_method':
             return pool.get('product.cost_price_method')
-        return super(Template, cls).multivalue_model(field)
+        return super().multivalue_model(field)
 
     @classmethod
     def order_code(cls, tables):
@@ -253,7 +253,7 @@ class Template(
                 for values, code in zip(
                         missing_code, sequence.get_many(len(missing_code))):
                     values['code'] = code
-        templates = super(Template, cls).create(vlist)
+        templates = super().create(vlist)
         products = sum((t.products for t in templates), ())
         Product.sync_code(products)
         return templates
@@ -278,7 +278,7 @@ class Template(
 
     @classmethod
     def search_global(cls, text):
-        for record, rec_name, icon in super(Template, cls).search_global(text):
+        for record, rec_name, icon in super().search_global(text):
             icon = icon or 'tryton-product'
             yield record, rec_name, icon
 
@@ -286,7 +286,7 @@ class Template(
 class TemplateFunction(fields.Function):
 
     def __init__(self, field):
-        super(TemplateFunction, self).__init__(
+        super().__init__(
             field, 'get_template', searcher='search_template')
         # Disable on_change as it is managed by on_change_template
         self.on_change = set()
@@ -459,7 +459,7 @@ class Product(
                 continue
             product_fields[attr] = field
 
-        super(Product, cls).__setup__()
+        super().__setup__()
         cls.__access__.add('template')
         cls._order.insert(0, ('rec_name', 'ASC'))
 
@@ -576,7 +576,7 @@ class Product(
         pool = Pool()
         if field == 'cost_price':
             return pool.get('product.cost_price')
-        return super(Product, cls).multivalue_model(field)
+        return super().multivalue_model(field)
 
     def set_multivalue(self, name, value, save=True, **pattern):
         context = Transaction().context
@@ -659,7 +659,7 @@ class Product(
 
     @classmethod
     def search_global(cls, text):
-        for id_, rec_name, icon in super(Product, cls).search_global(text):
+        for id_, rec_name, icon in super().search_global(text):
             icon = icon or 'tryton-product'
             yield id_, rec_name, icon
 

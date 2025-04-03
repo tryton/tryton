@@ -111,7 +111,7 @@ class Configuration(
             return pool.get('stock.configuration.sequence')
         if field == 'shipment_internal_transit':
             return pool.get('stock.configuration.location')
-        return super(Configuration, cls).multivalue_model(field)
+        return super().multivalue_model(field)
 
     default_shipment_in_sequence = default_func('shipment_in_sequence')
     default_shipment_in_return_sequence = default_func(

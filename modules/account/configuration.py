@@ -92,7 +92,7 @@ class Configuration(
             return pool.get('account.configuration.sequence')
         elif field == 'currency_exchange_journal':
             return pool.get('account.configuration.journal')
-        return super(Configuration, cls).multivalue_model(field)
+        return super().multivalue_model(field)
 
     @classmethod
     def default_tax_rounding(cls, **pattern):

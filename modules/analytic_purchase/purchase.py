@@ -11,7 +11,7 @@ class PurchaseLine(AnalyticMixin, metaclass=PoolMeta):
 
     @classmethod
     def __setup__(cls):
-        super(PurchaseLine, cls).__setup__()
+        super().__setup__()
         cls.analytic_accounts.domain = [
             ('company', '=', Eval('company', -1)),
             ]
@@ -24,7 +24,7 @@ class PurchaseLine(AnalyticMixin, metaclass=PoolMeta):
         pool = Pool()
         AnalyticAccountEntry = pool.get('analytic.account.entry')
 
-        invoice_lines = super(PurchaseLine, self).get_invoice_line()
+        invoice_lines = super().get_invoice_line()
         for invoice_line in invoice_lines:
             new_entries = AnalyticAccountEntry.copy(self.analytic_accounts,
                 default={
@@ -39,7 +39,7 @@ class AnalyticAccountEntry(metaclass=PoolMeta):
 
     @classmethod
     def _get_origin(cls):
-        origins = super(AnalyticAccountEntry, cls)._get_origin()
+        origins = super()._get_origin()
         return origins + ['purchase.line']
 
     @fields.depends('origin')
@@ -53,7 +53,7 @@ class AnalyticAccountEntry(metaclass=PoolMeta):
 
     @classmethod
     def search_company(cls, name, clause):
-        domain = super(AnalyticAccountEntry, cls).search_company(name, clause)
+        domain = super().search_company(name, clause)
         if domain:
             domain = ['OR', domain]
         domain.append(

@@ -22,7 +22,7 @@ def sequence_ordered(
 
         @classmethod
         def __setup__(cls):
-            super(SequenceOrderedMixin, cls).__setup__()
+            super().__setup__()
             table = cls.__table__()
             cls._order = [(field_name, order)] + cls._order
             cls._sql_indexes.add(

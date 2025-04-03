@@ -9,7 +9,7 @@ class Move(metaclass=PoolMeta):
 
     @classmethod
     def _get_origin(cls):
-        models = super(Move, cls)._get_origin()
+        models = super()._get_origin()
         return models + ['account.payment']
 
 

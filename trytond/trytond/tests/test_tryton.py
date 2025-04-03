@@ -1329,7 +1329,7 @@ class TestSuite(unittest.TestSuite):
                 # Retry on connection error
                 sys.stderr.write(str(err))
                 time.sleep(1)
-        result = super(TestSuite, self).run(*args, **kwargs)
+        result = super().run(*args, **kwargs)
         if not exist:
             drop_db()
         return result

@@ -124,7 +124,7 @@ class Sequence(DeactivableMixin, ModelSQL, ModelView):
 
     @classmethod
     def __setup__(cls):
-        super(Sequence, cls).__setup__()
+        super().__setup__()
         table = cls.__table__()
         cls._sql_constraints += [
             ('check_timestamp_rounding',
@@ -196,7 +196,7 @@ class Sequence(DeactivableMixin, ModelSQL, ModelView):
 
     @classmethod
     def set_number_next(cls, sequences, name, value):
-        super(Sequence, cls).write(sequences, {
+        super().write(sequences, {
                 'number_next_internal': value,
                 })
 
@@ -214,7 +214,7 @@ class Sequence(DeactivableMixin, ModelSQL, ModelView):
 
     @classmethod
     def create(cls, vlist):
-        sequences = super(Sequence, cls).create(vlist)
+        sequences = super().create(vlist)
         for sequence, values in zip(sequences, vlist):
             if sql_sequence and not cls._strict:
                 sequence.update_sql_sequence(values.get('number_next',
@@ -241,7 +241,7 @@ class Sequence(DeactivableMixin, ModelSQL, ModelView):
         if sql_sequence and not cls._strict:
             for sequence in sequences:
                 sequence.delete_sql_sequence()
-        return super(Sequence, cls).delete(sequences)
+        return super().delete(sequences)
 
     @classmethod
     def validate(cls, sequences):

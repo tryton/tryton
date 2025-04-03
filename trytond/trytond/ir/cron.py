@@ -103,7 +103,7 @@ class Cron(DeactivableMixin, ModelSQL, ModelView):
 
     @classmethod
     def __setup__(cls):
-        super(Cron, cls).__setup__()
+        super().__setup__()
         table = cls.__table__()
 
         cls._buttons.update({

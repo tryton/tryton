@@ -137,7 +137,7 @@ class InvoiceLine(metaclass=PoolMeta):
         default.setdefault('correction', False)
         if not Transaction().context.get('_account_invoice_correction'):
             default.setdefault('stock_moves', None)
-        return super(InvoiceLine, cls).copy(lines, default=default)
+        return super().copy(lines, default=default)
 
     def _credit(self):
         line = super()._credit()

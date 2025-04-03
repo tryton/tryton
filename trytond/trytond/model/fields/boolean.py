@@ -12,7 +12,7 @@ class Boolean(Field):
     def __init__(self, string='', help='', readonly=False, domain=None,
             states=None, on_change=None, on_change_with=None,
             depends=None, context=None, loading='eager'):
-        super(Boolean, self).__init__(string=string, help=help, required=False,
+        super().__init__(string=string, help=help, required=False,
             readonly=readonly, domain=domain, states=states,
             on_change=on_change, on_change_with=on_change_with,
             depends=depends, context=context, loading=loading)
@@ -21,7 +21,7 @@ class Boolean(Field):
         __init__.__doc__ = Field.__init__.__doc__
 
     def _domain_add_null(self, column, operator, value, expression):
-        expression = super(Boolean, self)._domain_add_null(
+        expression = super()._domain_add_null(
             column, operator, value, expression)
         if operator in ('=', '!='):
             conv = {

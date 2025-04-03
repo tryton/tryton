@@ -65,7 +65,7 @@ class JSONEncoder(json.JSONEncoder):
 
     def default(self, obj):
         marshaller = self.serializers.get(type(obj),
-            super(JSONEncoder, self).default)
+            super().default)
         return marshaller(obj)
 
 

@@ -101,7 +101,7 @@ class View(
 
     @classmethod
     def __setup__(cls):
-        super(View, cls).__setup__()
+        super().__setup__()
         table = cls.__table__()
         cls.priority.required = True
 
@@ -199,7 +199,7 @@ class View(
 
     @classmethod
     def validate(cls, views):
-        super(View, cls).validate(views)
+        super().validate(views)
         cls.check_xml(views)
 
     @classmethod
@@ -267,14 +267,14 @@ class View(
 
     @classmethod
     def delete(cls, views):
-        super(View, cls).delete(views)
+        super().delete(views)
         # Restart the cache
         cls._view_get_cache.clear()
         ModelView._fields_view_get_cache.clear()
 
     @classmethod
     def create(cls, vlist):
-        views = super(View, cls).create(vlist)
+        views = super().create(vlist)
         # Restart the cache
         cls._view_get_cache.clear()
         ModelView._fields_view_get_cache.clear()
@@ -282,7 +282,7 @@ class View(
 
     @classmethod
     def write(cls, views, values, *args):
-        super(View, cls).write(views, values, *args)
+        super().write(views, values, *args)
         # Restart the cache
         cls._view_get_cache.clear()
         ModelView._fields_view_get_cache.clear()
@@ -464,7 +464,7 @@ class ViewTreeWidth(
 
     @classmethod
     def __setup__(cls):
-        super(ViewTreeWidth, cls).__setup__()
+        super().__setup__()
         table = cls.__table__()
         cls.__rpc__.update({
                 'set_width': RPC(readonly=False),
@@ -494,17 +494,17 @@ class ViewTreeWidth(
     @classmethod
     def delete(cls, records):
         ModelView._fields_view_get_cache.clear()
-        super(ViewTreeWidth, cls).delete(records)
+        super().delete(records)
 
     @classmethod
     def create(cls, vlist):
-        res = super(ViewTreeWidth, cls).create(vlist)
+        res = super().create(vlist)
         ModelView._fields_view_get_cache.clear()
         return res
 
     @classmethod
     def write(cls, records, values, *args):
-        super(ViewTreeWidth, cls).write(records, values, *args)
+        super().write(records, values, *args)
         ModelView._fields_view_get_cache.clear()
 
     @classmethod
@@ -667,7 +667,7 @@ class ViewTreeState(
 
     @classmethod
     def __setup__(cls):
-        super(ViewTreeState, cls).__setup__()
+        super().__setup__()
         cls.__rpc__.update({
                 'set': RPC(readonly=False, check_access=False),
                 'get': RPC(check_access=False, cache=dict(days=1)),
@@ -746,7 +746,7 @@ class ViewSearch(
 
     @classmethod
     def __setup__(cls):
-        super(ViewSearch, cls).__setup__()
+        super().__setup__()
         cls.__rpc__.update({
                 'get': RPC(check_access=False),
                 'set': RPC(check_access=False, readonly=False),

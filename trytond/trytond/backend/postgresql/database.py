@@ -247,7 +247,7 @@ class Database(DatabaseInterface):
             return inst
 
     def __init__(self, name=_default_name):
-        super(Database, self).__init__(name)
+        super().__init__(name)
 
     @classmethod
     def _connection_params(cls, name):

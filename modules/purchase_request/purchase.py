@@ -35,7 +35,7 @@ class Purchase(metaclass=PoolMeta):
     @classmethod
     def delete(cls, purchases):
         cls.check_delete_purchase_request(purchases)
-        super(Purchase, cls).delete(purchases)
+        super().delete(purchases)
 
     @classmethod
     @without_check_access
@@ -53,7 +53,7 @@ class Purchase(metaclass=PoolMeta):
     def confirm(cls, purchases):
         for purchase in purchases:
             purchase.check_request_warehouse()
-        super(Purchase, cls).confirm(purchases)
+        super().confirm(purchases)
 
     def check_request_warehouse(self):
         pool = Pool()
@@ -78,7 +78,7 @@ class Purchase(metaclass=PoolMeta):
     @process_request
     @Workflow.transition('cancelled')
     def cancel(cls, purchases):
-        super(Purchase, cls).cancel(purchases)
+        super().cancel(purchases)
 
     @classmethod
     @ModelView.button

@@ -56,7 +56,7 @@ class Journal(metaclass=PoolMeta):
 
     @classmethod
     def __setup__(cls):
-        super(Journal, cls).__setup__()
+        super().__setup__()
         stripe_method = ('stripe', 'Stripe')
         if stripe_method not in cls.process_method.selection:
             cls.process_method.selection.append(stripe_method)
@@ -194,7 +194,7 @@ class Payment(StripeCustomerMethodMixin, CheckoutMixin, metaclass=PoolMeta):
 
     @classmethod
     def __setup__(cls):
-        super(Payment, cls).__setup__()
+        super().__setup__()
 
         cls.stripe_customer.states['readonly'] = (
             ~Eval('state').in_(['draft', 'submitted', 'approved'])
@@ -331,7 +331,7 @@ class Payment(StripeCustomerMethodMixin, CheckoutMixin, metaclass=PoolMeta):
             # default methods are called only once
             values.setdefault('stripe_idempotency_key',
                 cls.default_stripe_idempotency_key())
-        return super(Payment, cls).create(vlist)
+        return super().create(vlist)
 
     @classmethod
     def copy(cls, payments, default=None):
@@ -349,13 +349,13 @@ class Payment(StripeCustomerMethodMixin, CheckoutMixin, metaclass=PoolMeta):
         default.setdefault('stripe_captured', False)
         default.setdefault('stripe_chargeable', False)
         default.setdefault('stripe_capturable', False)
-        return super(Payment, cls).copy(payments, default=default)
+        return super().copy(payments, default=default)
 
     @classmethod
     @ModelView.button
     @Workflow.transition('draft')
     def draft(cls, payments):
-        super(Payment, cls).draft(payments)
+        super().draft(payments)
         for payment in payments:
             if payment.stripe_token:
                 payment.stripe_token = None
@@ -991,7 +991,7 @@ class Account(ModelSQL, ModelView):
 
     @classmethod
     def __setup__(cls):
-        super(Account, cls).__setup__()
+        super().__setup__()
         cls._buttons.update({
                 'new_identifier': {
                     'icon': 'tryton-refresh',
@@ -1475,7 +1475,7 @@ class Customer(CheckoutMixin, DeactivableMixin, ModelSQL, ModelView):
 
     @classmethod
     def __setup__(cls):
-        super(Customer, cls).__setup__()
+        super().__setup__()
         cls._buttons.update({
                 'stripe_checkout': {
                     'invisible': ~Eval('stripe_checkout_needed', False),
@@ -1501,7 +1501,7 @@ class Customer(CheckoutMixin, DeactivableMixin, ModelSQL, ModelView):
             or not self.stripe_setup_intent_id)
 
     def get_rec_name(self, name):
-        name = super(Customer, self).get_rec_name(name)
+        name = super().get_rec_name(name)
         return self.stripe_customer_id if self.stripe_customer_id else name
 
     @classmethod
@@ -1524,7 +1524,7 @@ class Customer(CheckoutMixin, DeactivableMixin, ModelSQL, ModelView):
             default = default.copy()
         default.setdefault('stripe_token', None)
         default.setdefault('stripe_customer_id', None)
-        return super(Customer, cls).copy(customers, default=default)
+        return super().copy(customers, default=default)
 
     @classmethod
     def stripe_checkout(cls, customers):

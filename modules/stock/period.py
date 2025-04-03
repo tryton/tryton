@@ -33,7 +33,7 @@ class Period(Workflow, ModelSQL, ModelView):
 
     @classmethod
     def __setup__(cls):
-        super(Period, cls).__setup__()
+        super().__setup__()
         t = cls.__table__()
         cls._sql_indexes.add(
             Index(

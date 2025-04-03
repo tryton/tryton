@@ -188,7 +188,7 @@ class Template(metaclass=PoolMeta):
     @check_no_move
     @check_no_stock_if_inactive
     def write(cls, *args):
-        super(Template, cls).write(*args)
+        super().write(*args)
 
     @classmethod
     def recompute_cost_price(cls, templates, start=None):
@@ -265,7 +265,7 @@ class Product(StockMixin, object, metaclass=PoolMeta):
     @check_no_move
     @check_no_stock_if_inactive
     def write(cls, *args):
-        super(Product, cls).write(*args)
+        super().write(*args)
 
     def can_be_deactivated(self):
         pool = Pool()
@@ -661,7 +661,7 @@ class ProductQuantitiesByWarehouse(ModelSQL, ModelView):
 
     @classmethod
     def __setup__(cls):
-        super(ProductQuantitiesByWarehouse, cls).__setup__()
+        super().__setup__()
         cls._order.insert(0, ('date', 'ASC'))
 
     @classmethod

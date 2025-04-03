@@ -31,7 +31,7 @@ class Category(metaclass=PoolMeta):
 
     @classmethod
     def __setup__(cls):
-        super(Category, cls).__setup__()
+        super().__setup__()
         cls.parent.domain = [
             ('customs', '=', Eval('customs', False)),
             cls.parent.domain or []]
@@ -69,7 +69,7 @@ class Category(metaclass=PoolMeta):
 
     @classmethod
     def view_attributes(cls):
-        return super(Category, cls).view_attributes() + [
+        return super().view_attributes() + [
             ('/form/notebook/page[@id="customs"]', 'states', {
                     'invisible': ~Eval('customs', False),
                     }),
@@ -81,7 +81,7 @@ class Category(metaclass=PoolMeta):
         Product_TariffCode = pool.get('product-customs.tariff.code')
         products = [str(t) for t in categories]
 
-        super(Category, cls).delete(categories)
+        super().delete(categories)
 
         for products in grouped_slice(products):
             product_tariffcodes = Product_TariffCode.search([
@@ -138,7 +138,7 @@ class Template(metaclass=PoolMeta):
 
     @classmethod
     def view_attributes(cls):
-        return super(Template, cls).view_attributes() + [
+        return super().view_attributes() + [
             ('//page[@id="customs"]', 'states', {
                     'invisible': Eval('type') == 'service',
                     }),
@@ -150,7 +150,7 @@ class Template(metaclass=PoolMeta):
         Product_TariffCode = pool.get('product-customs.tariff.code')
         products = [str(t) for t in templates]
 
-        super(Template, cls).delete(templates)
+        super().delete(templates)
 
         for products in grouped_slice(products):
             product_tariffcodes = Product_TariffCode.search([

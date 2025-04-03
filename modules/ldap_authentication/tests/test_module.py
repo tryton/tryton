@@ -20,7 +20,7 @@ class LDAPAuthenticationTestCase(ModuleTestCase):
     module = 'ldap_authentication'
 
     def setUp(self):
-        super(LDAPAuthenticationTestCase, self).setUp()
+        super().setUp()
         methods = config.get('session', 'authentications', default='')
         config.set('session', 'authentications', 'ldap')
         self.addCleanup(config.set, 'session', 'authentications', methods)

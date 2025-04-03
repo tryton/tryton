@@ -12,13 +12,13 @@ _ = gettext.gettext
 class CheckBox(Widget):
 
     def __init__(self, view, attrs):
-        super(CheckBox, self).__init__(view, attrs)
+        super().__init__(view, attrs)
         self.widget = self.mnemonic_widget = Gtk.CheckButton()
         self.widget.connect('focus-out-event', lambda x, y: self._focus_out())
         self.widget.connect_after('toggled', self.sig_activate)
 
     def _readonly_set(self, value):
-        super(CheckBox, self)._readonly_set(value)
+        super()._readonly_set(value)
         # TODO find a better solution to accept focus
         self.widget.set_sensitive(not value)
 
@@ -26,7 +26,7 @@ class CheckBox(Widget):
         self.field.set_client(self.record, self.widget.get_active())
 
     def display(self):
-        super(CheckBox, self).display()
+        super().display()
         if not self.field:
             self.widget.set_active(False)
             return False

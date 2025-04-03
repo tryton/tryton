@@ -23,7 +23,7 @@ class Database(PGDatabase):
 
     @classmethod
     def create(cls, connection, database_name):
-        super(Database, cls).create(connection, database_name)
+        super().create(connection, database_name)
 
         database = cls(database_name)
         with database.get_connection() as db_connection:

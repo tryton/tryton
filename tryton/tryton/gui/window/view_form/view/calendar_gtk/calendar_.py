@@ -17,7 +17,7 @@ class Calendar_(goocalendar.Calendar):
     'Calendar'
 
     def __init__(self, attrs, view, fields, event_store=None):
-        super(Calendar_, self).__init__(
+        super().__init__(
             event_store, attrs.get('mode', 'month'))
         self.props.selected_border_color = _colors[1]
         if hasattr(self.props, 'selected_text_color'):

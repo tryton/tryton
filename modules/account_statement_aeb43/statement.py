@@ -14,7 +14,7 @@ class ImportStatementStart(metaclass=PoolMeta):
 
     @classmethod
     def __setup__(cls):
-        super(ImportStatementStart, cls).__setup__()
+        super().__setup__()
         aeb43 = ('aeb43', 'AEB Norm 43')
         cls.file_format.selection.append(aeb43)
 

@@ -18,7 +18,7 @@ _ = gettext.gettext
 class BinaryMixin(Widget):
 
     def __init__(self, view, attrs):
-        super(BinaryMixin, self).__init__(view, attrs)
+        super().__init__(view, attrs)
         self.filename = attrs.get('filename')
 
     def toolbar(self):
@@ -148,7 +148,7 @@ class Binary(BinaryMixin, Widget):
     "Binary"
 
     def __init__(self, view, attrs):
-        super(Binary, self).__init__(view, attrs)
+        super().__init__(view, attrs)
 
         self.widget = Gtk.HBox(spacing=0)
         self.wid_size = Gtk.Entry()
@@ -198,7 +198,7 @@ class Binary(BinaryMixin, Widget):
             self.open_()
 
     def display(self):
-        super(Binary, self).display()
+        super().display()
         if not self.field:
             if self.wid_text:
                 self.wid_text.set_text('')

@@ -22,7 +22,7 @@ class Sale(metaclass=PoolMeta):
         pool = Pool()
         Line = pool.get('sale.line')
 
-        super(Sale, cls).quote(sales)
+        super().quote(sales)
 
         # State must be draft to add or delete lines
         # because extra must be set after to have correct amount

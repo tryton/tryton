@@ -68,7 +68,7 @@ class Check(Constraint):
     __slots__ = ('_expression',)
 
     def __init__(self, table, expression):
-        super(Check, self).__init__(table)
+        super().__init__(table)
         assert isinstance(expression, Expression)
         self._expression = expression
 
@@ -88,7 +88,7 @@ class Unique(Constraint):
     __slots__ = ('_columns',)
 
     def __init__(self, table, *columns):
-        super(Unique, self).__init__(table)
+        super().__init__(table)
         assert all(isinstance(col, Column) for col in columns)
         self._columns = tuple(columns)
 
@@ -115,7 +115,7 @@ class Exclude(Constraint):
     __slots__ = ('_excludes', '_where')
 
     def __init__(self, table, *excludes, **kwargs):
-        super(Exclude, self).__init__(table)
+        super().__init__(table)
         assert all(isinstance(c, Expression) and issubclass(o, Operator)
             for c, o in excludes), excludes
         self._excludes = tuple(excludes)
@@ -333,7 +333,7 @@ class ModelSQL(ModelStorage):
         assert cls._table[-9:] != '__history', \
             'Model _table %s cannot end with "__history"' % cls._table
 
-        super(ModelSQL, cls).__setup__()
+        super().__setup__()
 
         cls._sql_constraints = []
         cls._sql_indexes = set()
@@ -449,7 +449,7 @@ class ModelSQL(ModelStorage):
     @classmethod
     def __register__(cls, module_name):
         cursor = Transaction().connection.cursor()
-        super(ModelSQL, cls).__register__(module_name)
+        super().__register__(module_name)
 
         if callable(cls.table_query):
             return
@@ -876,7 +876,7 @@ class ModelSQL(ModelStorage):
         pool = Pool()
         Translation = pool.get('ir.translation')
 
-        super(ModelSQL, cls).create(vlist)
+        super().create(vlist)
 
         table = cls.__table__()
         modified_fields = set()
@@ -1062,7 +1062,7 @@ class ModelSQL(ModelStorage):
         pool = Pool()
         Rule = pool.get('ir.rule')
         Translation = pool.get('ir.translation')
-        super(ModelSQL, cls).read(ids, fields_names=fields_names)
+        super().read(ids, fields_names=fields_names)
         transaction = Transaction()
         cursor = Transaction().connection.cursor()
 
@@ -1403,7 +1403,7 @@ class ModelSQL(ModelStorage):
         # Call before cursor cache cleaning
         trigger_eligibles = cls.trigger_write_get_eligibles(all_records)
 
-        super(ModelSQL, cls).write(records, values, *args)
+        super().write(records, values, *args)
 
         table = cls.__table__()
 
@@ -1612,7 +1612,7 @@ class ModelSQL(ModelStorage):
                         gettext('ir.msg_foreign_model_exist',
                             **error_args))
 
-            super(ModelSQL, cls).delete(list(sub_records))
+            super().delete(list(sub_records))
 
             try:
                 cursor.execute(*table.delete(where=red_sql))
@@ -1862,7 +1862,7 @@ class ModelSQL(ModelStorage):
         transaction = Transaction()
         cursor = transaction.connection.cursor()
 
-        super(ModelSQL, cls).search(
+        super().search(
             domain, offset=offset, limit=limit, order=order, count=count)
 
         if order is None or order is False:
@@ -2222,7 +2222,7 @@ class ModelSQL(ModelStorage):
 
     @classmethod
     def validate(cls, records):
-        super(ModelSQL, cls).validate(records)
+        super().validate(records)
         transaction = Transaction()
         database = transaction.database
         has_constraint = database.has_constraint

@@ -30,7 +30,7 @@ class User(metaclass=PoolMeta):
 
     @classmethod
     def __setup__(cls):
-        super(User, cls).__setup__()
+        super().__setup__()
         cls._preferences_fields.append('mobile')
 
     @classmethod

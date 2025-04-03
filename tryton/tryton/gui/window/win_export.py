@@ -34,7 +34,7 @@ class WinExport(WinCSV, InfoBar):
         self.name = name
         self.screen = screen
         self.fields = {}
-        super(WinExport, self).__init__()
+        super().__init__()
         self.dialog.set_title(_('CSV Export: %s') % name)
         self.dialog.vbox.pack_start(
             self.create_info_bar(), expand=False, fill=True, padding=0)

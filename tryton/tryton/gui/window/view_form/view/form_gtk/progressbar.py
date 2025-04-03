@@ -19,7 +19,7 @@ class ProgressBar(Widget):
         }
 
     def __init__(self, view, attrs):
-        super(ProgressBar, self).__init__(view, attrs)
+        super().__init__(view, attrs)
         self.widget = self.mnemonic_widget = Gtk.ProgressBar()
         orientation, inverted = self.orientations.get(
             attrs.get('orientation', 'left_to_right'))
@@ -28,7 +28,7 @@ class ProgressBar(Widget):
         self.widget.set_show_text(True)
 
     def display(self):
-        super(ProgressBar, self).display()
+        super().display()
         if not self.field:
             self.widget.set_text('')
             self.widget.set_fraction(0.0)

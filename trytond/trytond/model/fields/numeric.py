@@ -31,7 +31,7 @@ class Numeric(Float):
         return column
 
     def _domain_value(self, operator, value):
-        value = super(Numeric, self)._domain_value(operator, value)
+        value = super()._domain_value(operator, value)
         if backend.name == 'sqlite':
             if isinstance(value, (Select, CombiningQuery)):
                 return value

@@ -110,7 +110,7 @@ class Pie(Graph):
         cr.restore()
 
     def motion(self, widget, event):
-        super(Pie, self).motion(widget, event)
+        super().motion(widget, event)
 
         if not getattr(self, 'area', None):
             return
@@ -172,7 +172,7 @@ class Pie(Graph):
                     self.queue_draw()
 
     def action(self):
-        super(Pie, self).action()
+        super().action()
         for slice in self.slices:
             if slice.highlight:
                 ids = self.ids[slice.xname]

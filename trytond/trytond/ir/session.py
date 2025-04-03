@@ -22,7 +22,7 @@ class Session(ModelSQL):
 
     @classmethod
     def __setup__(cls):
-        super(Session, cls).__setup__()
+        super().__setup__()
         table = cls.__table__()
         cls.__rpc__ = {}
         cls._sql_indexes.update({
@@ -154,7 +154,7 @@ class Session(ModelSQL):
             # Ensure to get a different key for each record
             # default methods are called only once
             values.setdefault('key', cls.default_key())
-        return super(Session, cls).create(vlist)
+        return super().create(vlist)
 
 
 class SessionWizard(ModelSQL):
@@ -164,7 +164,7 @@ class SessionWizard(ModelSQL):
 
     @classmethod
     def __setup__(cls):
-        super(SessionWizard, cls).__setup__()
+        super().__setup__()
         cls.__rpc__ = {}
 
     @staticmethod

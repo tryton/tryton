@@ -20,7 +20,7 @@ class Date(Widget):
     _changed_signal = 'date-changed'
 
     def __init__(self, view, attrs, _entry=DateEntry):
-        super(Date, self).__init__(view, attrs)
+        super().__init__(view, attrs)
 
         self.widget = Gtk.HBox()
         self.entry = self.mnemonic_widget = add_operators(_entry())
@@ -83,7 +83,7 @@ class Date(Widget):
         self.entry.props.format = format_
 
     def display(self):
-        super(Date, self).display()
+        super().display()
         if self.field and self.record:
             value = self.field.get_client(self.record)
         else:
@@ -101,7 +101,7 @@ class Time(Date):
     _changed_signal = 'time-changed'
 
     def __init__(self, view, attrs):
-        super(Time, self).__init__(view, attrs, _entry=TimeEntry)
+        super().__init__(view, attrs, _entry=TimeEntry)
         self.entry.connect('move-active', _move_active)
         self.entry.connect(
             'scroll-event',
@@ -121,7 +121,7 @@ class Time(Date):
         return self.entry.get_child()
 
     def display(self):
-        super(Time, self).display()
+        super().display()
 
     def set_format(self):
         if self.field and self.record:

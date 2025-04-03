@@ -33,7 +33,7 @@ class ShipmentIn(metaclass=PoolMeta):
 
     @fields.depends('carrier', 'incoming_moves', 'company')
     def _get_carrier_context(self):
-        context = super(ShipmentIn, self)._get_carrier_context()
+        context = super()._get_carrier_context()
         if not self.carrier or not self.company:
             return context
         if self.carrier.carrier_cost_method != 'percentage':
@@ -49,7 +49,7 @@ class ShipmentOut(metaclass=PoolMeta):
 
     @fields.depends('carrier', 'inventory_moves', 'company')
     def _get_carrier_context(self):
-        context = super(ShipmentOut, self)._get_carrier_context()
+        context = super()._get_carrier_context()
         if not self.carrier or not self.company:
             return context
         if self.carrier.carrier_cost_method != 'percentage':
