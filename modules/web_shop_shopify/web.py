@@ -579,7 +579,18 @@ class Shop(metaclass=PoolMeta):
                 Decimal(order.current_total_price) - sale.total_amount)
         Sale.store_cache(to_update.keys())
         Amendment._clear_sale(to_update.keys())
-        Sale.__queue__.process(to_update.keys())
+        to_process, to_quote = [], []
+        for sale in to_update:
+            if sale.payment_amount_authorized >= sale.amount_to_pay:
+                to_process.append(sale)
+            else:
+                to_quote.append(sale)
+        if to_process:
+            Sale.__queue__.process(to_process)
+        if to_quote:
+            # Use write because there is no transition
+            Sale.write(to_quote, {'state': 'quotation'})
+            cls.log(to_quote, 'transition', 'state:quotation')
 
     @classmethod
     def write(cls, *args):
