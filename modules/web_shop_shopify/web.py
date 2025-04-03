@@ -321,13 +321,9 @@ class Shop(metaclass=PoolMeta):
         if not shopify_id:
             return
         if shopify.Product.exists(shopify_id):
-            shopify.Product.find(shopify_id).destroy()
-        template.set_shopify_identifier(self)
-        for product in template.products:
-            product.set_shopify_identifier(self)
-        if getattr(template, 'images', None):
-            for image in template.images:
-                image.set_shopify_identifier(self)
+            product = shopify.Product.find(shopify_id)
+            product.status = 'archived'
+            product.save()
 
     def __shopify_update_images(self, template, shopify_product):
         if not getattr(template, 'images', None):

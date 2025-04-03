@@ -409,9 +409,10 @@ Run update product::
     1
     >>> product2.reload()
     >>> len(product2.shopify_identifiers)
-    0
-    >>> len(product2.template.shopify_identifiers)
-    0
+    1
+    >>> identifier, = product2.template.shopify_identifiers
+    >>> shopify.Product.find(identifier.shopify_identifier).status
+    'archived'
     >>> variant1.reload()
     >>> len(variant1.shopify_identifiers)
     1

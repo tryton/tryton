@@ -103,6 +103,9 @@ class Template(IdentifiersMixin, metaclass=PoolMeta):
                 product = shopify.Product.find(shopify_id)
             except pyactiveresource.connection.ResourceNotFound:
                 pass
+            else:
+                if product.status == 'archived':
+                    product.status = 'active'
         if product is None:
             product = shopify.Product()
         product.title = self.name
