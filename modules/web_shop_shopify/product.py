@@ -106,7 +106,8 @@ class Template(IdentifiersMixin, metaclass=PoolMeta):
         if product is None:
             product = shopify.Product()
         product.title = self.name
-        product.body_html = self.web_shop_description
+        if self.web_shop_description:
+            product.body_html = self.web_shop_description
         options = []
         for attribute in self.shopify_attributes:
             options.append({'name': attribute.string})
