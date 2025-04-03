@@ -7,7 +7,7 @@ from sql.conditionals import Case
 
 from trytond.pool import Pool
 from trytond.rpc import RPC
-from trytond.tools import is_instance_method
+from trytond.tools import cached_property, is_instance_method
 from trytond.tools.string_ import LazyString
 from trytond.transaction import Transaction
 
@@ -17,6 +17,10 @@ from .field import Field, order_method
 class SelectionMixin(Field):
     translate_selection = True
     sort = True
+
+    @cached_property
+    def edition_depends(self):
+        return super().edition_depends | set(self.selection_change_with)
 
     def translated(self, name=None):
         "Return a descriptor for the translated value of the field"
