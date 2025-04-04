@@ -1,5 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+import math
 from shlex import shlex
 from types import GeneratorType
 import gettext
@@ -334,17 +335,18 @@ def format_value(field, value, target=None, context=None, _quote_empty=False):
                     or isinstance(value, bool))):
             return ''
         digit = 0
-        if isinstance(value, Decimal):
-            cast = Decimal
-        else:
-            cast = float
-        factor = cast(field.get('factor', 1))
-        string_ = str(value * factor)
+        string_ = str(value)
         if 'e' in string_:
             string_, exp = string_.split('e')
             digit -= int(exp)
         if '.' in string_:
             digit += len(string_.rstrip('0').split('.')[1])
+        if isinstance(value, Decimal):
+            cast = Decimal
+        else:
+            cast = float
+        factor = cast(field.get('factor', 1))
+        digit -= round(math.log10(factor))
         return locale.localize(
             '{0:.{1}f}'.format(value * factor or 0, digit), True)
 
