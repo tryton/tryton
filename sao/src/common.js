@@ -2138,8 +2138,7 @@
                     return '';
                 }
                 var digit = 0;
-                var factor = Number(field.factor || 1);
-                var string = String(value * factor);
+                var string = String(value);
                 if (string.contains('e')) {
                     var exp = string.split('e')[1];
                     string = string.split('e')[0];
@@ -2148,6 +2147,8 @@
                 if (string.contains('.')) {
                     digit += string.replace(/0+$/, '').split('.')[1].length;
                 }
+                var factor = Number(field.factor || 1);
+                digit -= Math.round(Math.log10(factor));
                 return (value * factor).toFixed(digit);
             };
             var format_selection = function() {
