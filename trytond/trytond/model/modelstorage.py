@@ -245,13 +245,11 @@ class ModelStorage(Model):
                     **extra))
 
     @classmethod
-    def create(cls, vlist):
-        '''
-        Returns the list of created records.
-        '''
+    def _before_create(cls, vlist):
         pool = Pool()
         ModelAccess = pool.get('ir.model.access')
         ModelFieldAccess = pool.get('ir.model.field.access')
+        transaction = Transaction()
 
         ModelAccess.check(cls.__name__, 'create')
 
@@ -259,7 +257,7 @@ class ModelStorage(Model):
         ModelFieldAccess.check(cls.__name__, all_fields, 'write')
 
         # Increase transaction counter
-        Transaction().counter += 1
+        transaction.counter += 1
 
         count = cls._count_cache.get(cls.__name__)
         if count is not None:
@@ -267,32 +265,53 @@ class ModelStorage(Model):
                 cls._count_cache.set(cls.__name__, None)
             else:
                 cls._count_cache.set(cls.__name__, count + len(vlist))
+        return vlist
+
+    @classmethod
+    def create(cls, vlist):
+        "Returns the list of created records."
+        raise NotImplementedError
 
     @classmethod
     @without_check_access
-    def trigger_create(cls, records):
-        '''
-        Trigger create actions
-        '''
+    def _after_create(cls, ids):
         Trigger = Pool().get('ir.trigger')
+        transaction = Transaction()
+
         triggers = Trigger.get_triggers(cls.__name__, 'create')
-        if not triggers:
-            return
-        for trigger in triggers:
-            trigger.queue_trigger_action(records)
+
+        for sub_ids in grouped_slice(ids, record_cache_size(transaction)):
+            records = cls.browse(sub_ids)
+            cls._validate(records)
+            cls._compute_fields(records)
+            if triggers:
+                for trigger in triggers:
+                    trigger.queue_trigger_action(records)
+
+        transaction.create_records[cls.__name__].update(ids)
+        return ids
 
     @classmethod
-    def read(cls, ids, fields_names):
-        '''
-        Read fields_names of record ids.
-        The order is not guaranteed.
-        '''
+    def _before_read(cls, ids, fields_names):
         pool = Pool()
         ModelAccess = pool.get('ir.model.access')
         ModelFieldAccess = pool.get('ir.model.field.access')
         ModelAccess.check(cls.__name__, 'read')
         ModelFieldAccess.check(cls.__name__, fields_names, 'read')
-        return []
+        return ids, fields_names
+
+    @classmethod
+    def read(cls, ids, fields_names):
+        """
+        Read fields_names of record ids.
+        The order is not guaranteed.
+        """
+        raise NotImplementedError
+
+    @classmethod
+    @without_check_access
+    def _after_read(cls, vlist):
+        return vlist
 
     @classmethod
     def index_get_field(cls, name):
@@ -300,69 +319,76 @@ class ModelStorage(Model):
         return 0
 
     @classmethod
-    def write(cls, records, values, *args):
-        '''
-        Write values on records.
-        '''
+    def _before_write(cls, *args):
         pool = Pool()
         ModelAccess = pool.get('ir.model.access')
         ModelFieldAccess = pool.get('ir.model.field.access')
+        Trigger = pool.get('ir.trigger')
         transaction = Transaction()
+        check_access = transaction.user and transaction.check_access
 
         assert not len(args) % 2
-        actions = iter((records, values) + args)
-        all_records = []
-        all_fields = set()
-        for records, values in zip(actions, actions):
-            cls.__check_xml_record(records, values)
-            all_records += records
-            all_fields.update(values.keys())
-            if transaction.check_access and values:
-                cls.log(records, 'write', ','.join(sorted(values.keys())))
 
         ModelAccess.check(cls.__name__, 'write')
-        ModelFieldAccess.check(cls.__name__, all_fields, 'write')
+
+        actions = iter(args)
+        field_names = set()
+        all_records, ids = [], []
+        for records, values in zip(actions, actions):
+            cls.__check_xml_record(records, values)
+            ModelFieldAccess.check(cls.__name__, values.keys(), 'write')
+            with without_check_access():
+                if check_access and values:
+                    cls.log(records, 'write', ','.join(sorted(values.keys())))
+                field_names.update(values.keys())
+                all_records.extend(records)
+                ids.extend(map(int, records))
+
+        trigger_eligibles = {}
+        with without_check_access():
+            # Call before cursor cache cleaning
+            triggers = Trigger.get_triggers(cls.__name__, 'write')
+            if triggers:
+                for trigger in triggers:
+                    trigger_eligibles[trigger] = []
+                    for record in all_records:
+                        if not Trigger.eval(trigger, record):
+                            trigger_eligibles[trigger].append(record)
 
         # Increase transaction counter
-        Transaction().counter += 1
+        transaction.counter += 1
 
         # Clean local cache
         for record in all_records:
             record._local_cache.pop(record.id, None)
 
         # Clean transaction cache
-        for cache in Transaction().cache.values():
+        for cache in transaction.cache.values():
             if cls.__name__ in cache:
                 cache_cls = cache[cls.__name__]
                 for record in all_records:
                     cache_cls.pop(record.id, None)
 
+        return ids, field_names, trigger_eligibles, *args
+
     @classmethod
-    @without_check_access
-    def trigger_write_get_eligibles(cls, records):
+    def write(cls, records, values, *args):
         '''
-        Return eligible records for write actions by triggers
+        Write values on records.
         '''
-        Trigger = Pool().get('ir.trigger')
-        triggers = Trigger.get_triggers(cls.__name__, 'write')
-        if not triggers:
-            return {}
-        eligibles = {}
-        for trigger in triggers:
-            eligibles[trigger] = []
-            for record in records:
-                if not Trigger.eval(trigger, record):
-                    eligibles[trigger].append(record)
-        return eligibles
+        raise NotImplementedError
 
     @classmethod
     @without_check_access
-    def trigger_write(cls, eligibles):
-        '''
-        Trigger write actions.
-        eligibles is a dictionary of the lists of eligible records by triggers
-        '''
-        for trigger, records in eligibles.items():
+    def _after_write(cls, ids, field_names, trigger_eligibles):
+        transaction = Transaction()
+
+        for sub_ids in grouped_slice(ids, record_cache_size(transaction)):
+            records = cls.browse(sub_ids)
+            cls._validate(records, field_names=field_names)
+            cls._compute_fields(records, field_names=field_names)
+
+        for trigger, records in trigger_eligibles.items():
             trigger.queue_trigger_action(records)
 
     @classmethod
@@ -371,22 +397,27 @@ class ModelStorage(Model):
         return 0
 
     @classmethod
-    def delete(cls, records):
-        '''
-        Delete records.
-        '''
+    def _before_delete(cls, records):
         pool = Pool()
         ModelAccess = pool.get('ir.model.access')
         ModelData = pool.get('ir.model.data')
+        Trigger = pool.get('ir.trigger')
         transaction = Transaction()
+        check_access = transaction.user and transaction.check_access
 
         ModelAccess.check(cls.__name__, 'delete')
         cls.__check_xml_record(records, None)
-        if ModelData.has_model(cls.__name__):
-            ModelData.clean(records)
+        with without_check_access():
+            if ModelData.has_model(cls.__name__):
+                ModelData.clean(records)
+            if check_access:
+                cls.log(records, 'delete')
 
-        if transaction.check_access:
-            cls.log(records, 'delete')
+            triggers = Trigger.get_triggers(cls.__name__, 'delete')
+            if triggers:
+                for trigger in triggers:
+                    # Do not queue because records will be deleted
+                    trigger.trigger_action(records)
 
         # Increase transaction counter
         transaction.counter += 1
@@ -396,7 +427,7 @@ class ModelStorage(Model):
             record._local_cache.pop(record.id, None)
 
         # Clean transaction cache
-        for cache in Transaction().cache.values():
+        for cache in transaction.cache.values():
             if cls.__name__ in cache:
                 cache_cls = cache[cls.__name__]
                 for record in records:
@@ -409,19 +440,31 @@ class ModelStorage(Model):
             else:
                 cls._count_cache.set(cls.__name__, count - len(records))
 
+        ids = [r.id for r in records]
+        if cls.__name__ in transaction.delete_records:
+            ids = ids[:]
+            for del_id in transaction.delete_records[cls.__name__]:
+                while ids:
+                    try:
+                        ids.remove(del_id)
+                    except ValueError:
+                        break
+        transaction.delete_records[cls.__name__].update(ids)
+        return ids
+
+    @classmethod
+    def delete(cls, records):
+        "Delete records"
+        raise NotImplementedError
+
     @classmethod
     @without_check_access
-    def trigger_delete(cls, records):
-        '''
-        Trigger delete actions
-        '''
-        Trigger = Pool().get('ir.trigger')
-        triggers = Trigger.get_triggers(cls.__name__, 'delete')
-        if not triggers:
-            return
-        for trigger in triggers:
-            # Do not queue because records will be deleted
-            trigger.trigger_action(records)
+    def _after_delete(cls, ids):
+        pool = Pool()
+        Translation = pool.get('ir.translation')
+        if any(getattr(f, 'translate', False) and not hasattr(f, 'set')
+                for f in cls._fields.values()):
+            Translation.delete_ids(cls.__name__, 'model', ids)
 
     @classmethod
     def copy(cls, records, default=None):
@@ -1254,12 +1297,8 @@ class ModelStorage(Model):
         pass
 
     @classmethod
-    @without_check_access
     def _validate(cls, records, field_names=None):
         pool = Pool()
-        # Ensure only records to validate are read,
-        # also convert iterator to list
-        records = cls.browse(records)
 
         def is_pyson(test):
             if isinstance(test, PYSON):

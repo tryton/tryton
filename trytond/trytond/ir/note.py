@@ -6,7 +6,7 @@ from sql import Null
 from sql.conditionals import Case
 
 from trytond.i18n import lazy_gettext
-from trytond.model import ModelSQL, ModelStorage, ModelView, fields
+from trytond.model import ModelSQL, ModelView, fields
 from trytond.pool import Pool
 from trytond.pyson import Eval
 from trytond.tools import grouped_slice, reduce_ids
@@ -105,10 +105,11 @@ class Note(ResourceMixin, ModelSQL, ModelView):
             super().write(notes, values, *args)
         else:
             # Check access write and clean cache
-            # Use __func__ to directly access ModelStorage's write method and
-            # pass it the right class
-            ModelStorage.write.__func__(cls, notes, values)
+            ids, field_names, trigger_eligibles, *args = (
+                cls._before_write(notes, values))
             cls.set_unread(notes, 'unread', values['unread'])
+            cls._after_write(
+                ids, field_names, trigger_eligibles)
 
 
 class NoteRead(ModelSQL):

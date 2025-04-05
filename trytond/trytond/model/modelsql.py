@@ -1,7 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import datetime
-from collections import OrderedDict, defaultdict
+from collections import defaultdict
 from functools import wraps
 from itertools import chain, groupby, islice, product, repeat
 
@@ -869,7 +869,7 @@ class ModelSQL(ModelStorage):
         pool = Pool()
         Translation = pool.get('ir.translation')
 
-        super().create(vlist)
+        vlist = cls._before_create(vlist)
 
         table = cls.__table__()
         modified_fields = set()
@@ -998,8 +998,6 @@ class ModelSQL(ModelStorage):
                 new_ids.extend(db_insert(
                         current_columns, to_insert, current_column_names))
 
-        transaction.create_records[cls.__name__].update(new_ids)
-
         # Update path before fields_to_set which could create children
         if cls._path_fields:
             field_names = list(sorted(cls._path_fields))
@@ -1042,26 +1040,20 @@ class ModelSQL(ModelStorage):
         cls._insert_history(new_ids)
 
         cls.__check_domain_rule(new_ids, 'create')
-        records = cls.browse(new_ids)
-        for sub_records in grouped_slice(
-                records, record_cache_size(transaction)):
-            cls._validate(sub_records)
-
-        cls.trigger_create(records)
-        cls._compute_fields(records)
-        return records
+        return cls.browse(cls._after_create(new_ids))
 
     @classmethod
     def read(cls, ids, fields_names):
         pool = Pool()
         Rule = pool.get('ir.rule')
         Translation = pool.get('ir.translation')
-        super().read(ids, fields_names=fields_names)
         transaction = Transaction()
         cursor = Transaction().connection.cursor()
 
+        ids, fields_names = cls._before_read(ids, fields_names)
+
         if not ids:
-            return []
+            return cls._after_read([])
 
         # construct a clause for the rules :
         domain = Rule.domain_get(cls.__name__, mode='read')
@@ -1376,7 +1368,7 @@ class ModelSQL(ModelStorage):
         for row, field in product(result, to_del):
             del row[field]
 
-        return result
+        return cls._after_read(result)
 
     @classmethod
     @no_table_query
@@ -1387,25 +1379,16 @@ class ModelSQL(ModelStorage):
         Translation = pool.get('ir.translation')
         Config = pool.get('ir.configuration')
 
-        assert not len(args) % 2
-        # Remove possible duplicates from all records
-        all_records = list(OrderedDict.fromkeys(
-                sum(((records, values) + args)[0:None:2], [])))
-        all_ids = [r.id for r in all_records]
-        all_field_names = set()
-
-        # Call before cursor cache cleaning
-        trigger_eligibles = cls.trigger_write_get_eligibles(all_records)
-
-        super().write(records, values, *args)
+        ids, field_names, trigger_eligibles, *args = cls._before_write(
+            records, values, *args)
 
         table = cls.__table__()
 
-        cls.__check_timestamp(all_ids)
-        cls.__check_domain_rule(all_ids, 'write')
+        cls.__check_timestamp(ids)
+        cls.__check_domain_rule(ids, 'write')
 
         fields_to_set = {}
-        actions = iter((records, values) + args)
+        actions = iter(args)
         for records, values in zip(actions, actions):
             ids = [r.id for r in records]
             values = values.copy()
@@ -1469,22 +1452,17 @@ class ModelSQL(ModelStorage):
                 cls._update_mptt(
                     list(sorted(mptt_fields)), repeat(ids, len(mptt_fields)),
                     values)
-            all_field_names |= values.keys()
 
         for fname in sorted(fields_to_set, key=cls.index_set_field):
             fargs = fields_to_set[fname]
             field = cls._fields[fname]
             field.set(cls, fname, *fargs)
 
-        cls._insert_history(all_ids)
+        cls._insert_history(ids)
 
-        cls.__check_domain_rule(all_ids, 'write')
-        for sub_records in grouped_slice(
-                all_records, record_cache_size(transaction)):
-            cls._validate(sub_records, field_names=all_field_names)
+        cls.__check_domain_rule(ids, 'write')
 
-        cls.trigger_write(trigger_eligibles)
-        cls._compute_fields(all_records, all_field_names)
+        cls._after_write(ids, field_names, trigger_eligibles)
 
     @classmethod
     @no_table_query
@@ -1493,22 +1471,12 @@ class ModelSQL(ModelStorage):
         in_max = transaction.database.IN_MAX
         cursor = transaction.connection.cursor()
         pool = Pool()
-        Translation = pool.get('ir.translation')
-        ids = list(map(int, records))
 
+        ids = cls._before_delete(records)
         if not ids:
             return
 
         table = cls.__table__()
-
-        if cls.__name__ in transaction.delete_records:
-            ids = ids[:]
-            for del_id in transaction.delete_records[cls.__name__]:
-                while ids:
-                    try:
-                        ids.remove(del_id)
-                    except ValueError:
-                        break
 
         cls.__check_timestamp(ids)
         cls.__check_domain_rule(ids, 'delete')
@@ -1521,10 +1489,6 @@ class ModelSQL(ModelStorage):
                 where = reduce_ids(field.sql_column(table), sub_ids)
                 cursor.execute(*table.select(table.id, where=where))
                 tree_ids[fname] += [x[0] for x in cursor]
-
-        has_translation = any(
-            getattr(f, 'translate', False) and not hasattr(f, 'set')
-            for f in cls._fields.values())
 
         foreign_keys_tocheck = []
         foreign_keys_toupdate = []
@@ -1545,9 +1509,6 @@ class ModelSQL(ModelStorage):
                             foreign_keys_toupdate.append((model, field_name))
                     else:
                         foreign_keys_tocheck.append((model, field_name))
-
-        transaction.delete_records[cls.__name__].update(ids)
-        cls.trigger_delete(records)
 
         if len(records) > in_max:
             # Clean self referencing foreign keys
@@ -1607,8 +1568,6 @@ class ModelSQL(ModelStorage):
                         gettext('ir.msg_foreign_model_exist',
                             **error_args))
 
-            super().delete(list(sub_records))
-
             try:
                 cursor.execute(*table.delete(where=red_sql))
             except backend.DatabaseIntegrityError as exception:
@@ -1618,12 +1577,11 @@ class ModelSQL(ModelStorage):
                         exception, {}, transaction=transaction)
                     raise
 
-        if has_translation:
-            Translation.delete_ids(cls.__name__, 'model', ids)
-
         cls._insert_history(ids, deleted=True)
 
         cls._update_mptt(list(tree_ids.keys()), list(tree_ids.values()))
+
+        cls._after_delete(ids)
 
     @classmethod
     def __check_domain_rule(cls, ids, mode):

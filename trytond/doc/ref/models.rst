@@ -363,12 +363,6 @@ Class methods:
    ``vlist`` is list of dictionaries with fields names as key and created
    values as value and return the list of new instances.
 
-.. classmethod:: ModelStorage.trigger_create(records)
-
-   Trigger create actions.
-   It calls actions defined in the `Trigger <model-ir.trigger>` where
-   ``on_create`` is set and the ``condition`` is true.
-
 .. classmethod:: ModelStorage.read(ids, fields_names)
 
    Return a list of dictionary for the record ids.
@@ -405,18 +399,6 @@ Class methods:
    ``values`` is a dictionary with fields names as key and writen values as
    value.
 
-.. classmethod:: ModelStorage.trigger_write_get_eligibles(records)
-
-   Return eligible records for write actions by triggers.
-   This dictionary is to pass to :meth:`~ModelStorage.trigger_write`.
-
-.. classmethod:: ModelStorage.trigger_write(eligibles)
-
-   Trigger write actions.
-   It calls actions defined in `Trigger <model-ir.trigger>` where ``on_write``
-   is set and the ``condition`` was false before :meth:`~ModelStorage.write`
-   and true after.
-
 .. classmethod:: ModelStorage.index_set_field(name)
 
    Return the index to order of the calls to field set.
@@ -424,12 +406,6 @@ Class methods:
 .. classmethod:: ModelStorage.delete(records)
 
    Delete records.
-
-.. classmethod:: ModelStorage.trigger_delete(records)
-
-   Trigger delete actions.
-   It calls actions defined in `Trigger <model-ir.trigger>` where ``on_delete``
-   is set and ``condition`` is true.
 
 .. classmethod:: ModelStorage.copy(records[, default])
 
