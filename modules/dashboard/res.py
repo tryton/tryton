@@ -29,12 +29,11 @@ class User(metaclass=PoolMeta):
         return 'square'
 
     @classmethod
-    def write(cls, *args):
+    def on_modification(cls, mode, users, field_names=None):
         pool = Pool()
         View = pool.get('ir.ui.view')
-        super().write(*args)
-        for values in args[1:None:2]:
-            if values.keys() & {'dashboard_layout', 'dashboard_actions'}:
-                View._view_get_cache.clear()
-                ModelView._fields_view_get_cache.clear()
-                break
+        super().on_modification(mode, users, field_names=field_names)
+        if (mode == 'write'
+                and field_names & {'dashboard_layout', 'dashboard_actions'}):
+            View._view_get_cache.clear()
+            ModelView._fields_view_get_cache.clear()

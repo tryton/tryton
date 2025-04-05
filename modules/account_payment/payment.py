@@ -141,19 +141,18 @@ class Group(ModelSQL, ModelView):
         pass
 
     @classmethod
-    def create(cls, vlist):
+    def preprocess_values(cls, mode, values):
         pool = Pool()
-        Config = pool.get('account.configuration')
-
-        vlist = [v.copy() for v in vlist]
-        config = Config(1)
-        default_company = cls.default_company()
-        for values in vlist:
-            if values.get('number') is None:
-                values['number'] = config.get_multivalue(
-                    'payment_group_sequence',
-                    company=values.get('company', default_company)).get()
-        return super().create(vlist)
+        Configuration = pool.get('account.configuration')
+        values = super().preprocess_values(mode, values)
+        if mode == 'create' and not values.get('number'):
+            configuration = Configuration(1)
+            company_id = values.get('company', cls.default_company())
+            if company_id is not None:
+                if sequence := configuration.get_multivalue(
+                        'payment_group_sequence', company=company_id):
+                    values['number'] = sequence.get()
+        return values
 
     @classmethod
     def copy(cls, groups, default=None):
@@ -610,53 +609,58 @@ class Payment(Workflow, ModelSQL, ModelView):
         return super().copy(payments, default=default)
 
     @classmethod
-    def create(cls, vlist):
+    def preprocess_values(cls, mode, values):
         pool = Pool()
-        Line = pool.get('account.move.line')
-        Config = pool.get('account.configuration')
-
-        vlist = [v.copy() for v in vlist]
-        config = Config(1)
-        default_company = cls.default_company()
-        for values in vlist:
-            if values.get('number') is None:
-                values['number'] = config.get_multivalue(
-                    'payment_sequence',
-                    company=values.get('company', default_company)).get()
-        payments = super().create(vlist)
-        lines = {p.line for p in payments if p.line}
-        if lines:
-            Line.set_payment_amount(list(lines))
-        return payments
+        Configuration = pool.get('account.configuration')
+        values = super().preprocess_values(mode, values)
+        if mode == 'create' and not values.get('number'):
+            configuration = Configuration(1)
+            company_id = values.get('company', cls.default_company())
+            if company_id is not None:
+                if sequence := configuration.get_multivalue(
+                        'payment_sequence', company=company_id):
+                    values['number'] = sequence.get()
+        return values
 
     @classmethod
-    def write(cls, *args):
-        pool = Pool()
-        Line = pool.get('account.move.line')
-        actions = iter(args)
-        lines = set()
-        for payments, values in zip(actions, actions):
-            if values.keys() & {'line', 'amount', 'state'}:
-                lines.update(p.line for p in payments if p.line)
-            if line := values.get('line'):
-                lines.add(Line(line))
-        super().write(*args)
-        if lines:
-            Line.set_payment_amount(list(lines))
+    def check_modification(cls, mode, payments, values=None, external=False):
+        super().check_modification(
+            mode, payments, values=values, external=external)
+        if mode == 'delete':
+            for payment in payments:
+                if payment.state != 'draft':
+                    raise AccessError(gettext(
+                            'account_payment.msg_payment_delete_draft',
+                            payment=payment.rec_name))
 
     @classmethod
-    def delete(cls, payments):
+    def on_modification(cls, mode, payments, field_names=None):
         pool = Pool()
         Line = pool.get('account.move.line')
-        for payment in payments:
-            if payment.state != 'draft':
-                raise AccessError(
-                    gettext('account_payment.msg_payment_delete_draft',
-                        payment=payment.rec_name))
-        lines = {p.line for p in payments if p.line}
-        super().delete(payments)
-        if lines:
-            Line.set_payment_amount(list(lines))
+        super().on_modification(mode, payments, field_names=field_names)
+        if mode in {'create', 'write'}:
+            if not field_names or 'line' in field_names:
+                if lines := Line.browse({p.line for p in payments if p.line}):
+                    Line.set_payment_amount(lines)
+
+    @classmethod
+    def on_write(cls, payments, values):
+        pool = Pool()
+        Line = pool.get('account.move.line')
+        callback = super().on_write(payments, values)
+        if values.keys() & {'line', 'amount', 'state'}:
+            if lines := Line.browse({p.line for p in payments if p.line}):
+                callback.append(lambda: Line.set_payment_amount(lines))
+        return callback
+
+    @classmethod
+    def on_delete(cls, payments):
+        pool = Pool()
+        Line = pool.get('account.move.line')
+        callback = super().on_delete(payments)
+        if lines := Line.browse({p.line for p in payments if p.line}):
+            callback.append(lambda: Line.set_payment_amount(lines))
+        return callback
 
     @classmethod
     @ModelView.button

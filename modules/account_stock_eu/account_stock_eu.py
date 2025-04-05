@@ -60,19 +60,8 @@ class IntrastatTransaction(DeactivableMixin, ModelSQL, ModelView):
         return transaction
 
     @classmethod
-    def create(cls, vlist):
-        transactions = super().create(vlist)
-        cls._code_cache.clear()
-        return transactions
-
-    @classmethod
-    def write(cls, *args):
-        super().write(*args)
-        cls._code_cache.clear()
-
-    @classmethod
-    def delete(cls, transactions):
-        super().delete(transactions)
+    def on_modification(cls, mode, transactions, field_names=None):
+        super().on_modification(mode, transactions, field_names=field_names)
         cls._code_cache.clear()
 
 
@@ -212,19 +201,8 @@ class IntrastatDeclaration(Workflow, ModelSQL, ModelView):
         cls.close(declarations)
 
     @classmethod
-    def create(cls, vlist):
-        declarations = super().create(vlist)
-        cls._get_cache.clear()
-        return declarations
-
-    @classmethod
-    def write(cls, *args):
-        super().write(*args)
-        cls._get_cache.clear()
-
-    @classmethod
-    def delete(cls, declarations):
-        super().delete(declarations)
+    def on_modification(cls, mode, declarations, field_names=None):
+        super().on_modification(mode, declarations, field_names=field_names)
         cls._get_cache.clear()
 
 

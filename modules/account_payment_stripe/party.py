@@ -21,26 +21,29 @@ class Party(metaclass=PoolMeta):
         return parties
 
     @classmethod
-    def write(cls, *args):
+    def on_write(cls, parties, values):
         pool = Pool()
         Customer = pool.get('account.payment.stripe.customer')
         transaction = Transaction()
         context = transaction.context
 
-        parties = sum(args[0:None:2], [])
+        callback = super().on_write(parties, values)
+
         customers = sum((p.stripe_customers for p in parties), ())
-        customer2params = {c: c._customer_parameters() for c in customers}
+        if customers:
+            customer2params = {c: c._customer_parameters() for c in customers}
 
-        super().write(*args)
-
-        to_update = []
-        for customer, params in customer2params.items():
-            if customer._customer_parameters() != params:
-                to_update.append(customer)
-        if to_update:
-            with transaction.set_context(
-                    queue_batch=context.get('queue_batch', True)):
-                Customer.__queue__.stripe_update(to_update)
+            def update():
+                to_update = []
+                for customer, params in customer2params.items():
+                    if customer._customer_parameters() != params:
+                        to_update.append(customer)
+                if to_update:
+                    with transaction.set_context(
+                            queue_batch=context.get('queue_batch', True)):
+                        Customer.__queue__.stripe_update(to_update)
+            callback.append(update)
+        return callback
 
 
 class PartyReceptionDirectDebit(

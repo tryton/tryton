@@ -61,17 +61,6 @@ class Icon(
             return fp.read()
 
     @classmethod
-    def create(cls, vlist):
-        icons = super().create(vlist)
-        cls._list_icons.clear()
-        return icons
-
-    @classmethod
-    def write(cls, *args):
-        super().write(*args)
-        cls._list_icons.clear()
-
-    @classmethod
-    def delete(cls, icons):
-        super().delete(icons)
+    def on_modification(cls, mode, records, field_names=None):
+        super().on_modification(mode, records, field_names=field_names)
         cls._list_icons.clear()

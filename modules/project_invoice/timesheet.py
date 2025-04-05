@@ -21,10 +21,11 @@ class Line(metaclass=PoolMeta):
         return super().copy(records, default=default)
 
     @classmethod
-    def write(cls, *args):
-        actions = iter(args)
-        for lines, values in zip(actions, actions):
-            if (('duration' in values or 'work' in values)
+    def check_modification(cls, mode, lines, values=None, external=False):
+        super().check_modification(
+            mode, lines, values=values, external=external)
+        if mode == 'write':
+            if (values.keys() & {'duration', 'work'}
                     and any(l.invoice_line for l in lines)):
                 line = next(l for l in lines if l.invoice_line)
                 if 'duration' in values:
@@ -34,13 +35,9 @@ class Line(metaclass=PoolMeta):
                 raise AccessError(gettext(
                         f'project_invoice.{msg}',
                         line=line.rec_name))
-        super().write(*args)
-
-    @classmethod
-    def delete(cls, lines):
-        if any(r.invoice_line for r in lines):
-            line = next((l for l in lines if l.invoice_line))
-            raise AccessError(gettext(
-                    'project_invoice.msg_invoiced_timesheet_line_delete',
-                    line=line.rec_name))
-        super().delete(lines)
+        elif mode == 'delete':
+            if any(r.invoice_line for r in lines):
+                line = next((l for l in lines if l.invoice_line))
+                raise AccessError(gettext(
+                        'project_invoice.msg_invoiced_timesheet_line_delete',
+                        line=line.rec_name))

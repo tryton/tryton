@@ -214,8 +214,8 @@ class Type(
         ModelSQL, ModelView):
     __name__ = 'account.account.type'
 
-    parent = fields.Many2One('account.account.type', 'Parent',
-        ondelete="RESTRICT",
+    parent = fields.Many2One(
+        'account.account.type', 'Parent', ondelete='CASCADE',
         states={
             'readonly': (Bool(Eval('template', -1))
                 & ~Eval('template_override', False)),
@@ -369,13 +369,6 @@ class Type(
             default = default.copy()
         default.setdefault('template', None)
         return super().copy(types, default=default)
-
-    @classmethod
-    def delete(cls, types):
-        types = cls.search([
-                ('parent', 'child_of', [t.id for t in types]),
-                ])
-        super().delete(types)
 
     def update_type(self, template2type=None):
         '''
@@ -1279,21 +1272,6 @@ class Account(
         new_accounts = super().copy(accounts, default=default)
         cls._rebuild_tree('parent', None, 0)
         return new_accounts
-
-    @classmethod
-    def delete(cls, accounts):
-        MoveLine = Pool().get('account.move.line')
-        childs = cls.search([
-                ('parent', 'child_of', [a.id for a in accounts]),
-                ])
-        lines = MoveLine.search([
-                ('account', 'in', [a.id for a in childs]),
-                ])
-        if lines:
-            raise AccessError(
-                gettext('account.msg_delete_account_with_move_lines',
-                    account=lines[0].account.rec_name))
-        super().delete(accounts)
 
     def update_account(self, template2account=None, template2type=None):
         '''

@@ -322,16 +322,17 @@ class IncomingOCRService(metaclass=PoolMeta):
             return str(line.base)
 
     @classmethod
-    def write(cls, *args):
+    def check_modification(cls, mode, services, values=None, external=False):
         pool = Pool()
         Warning = pool.get('res.user.warning')
-        actions = iter(args)
-        for services, values in zip(actions, actions):
-            if 'typless_api_key' in values.keys():
-                warning_name = Warning.format('typless_credential', services)
-                if Warning.check(warning_name):
-                    raise TyplessCredentialWarning(
-                        warning_name,
-                        gettext('document_incoming_ocr_typless'
-                            '.msg_typless_credential_modified'))
-        return super().write(*args)
+
+        super().check_modification(
+            mode, services, values=values, external=external)
+
+        if mode == 'write' and external and 'typless_api_key' in values:
+            warning_name = Warning.format('typless_credential', services)
+            if Warning.check(warning_name):
+                raise TyplessCredentialWarning(
+                    warning_name,
+                    gettext('document_incoming_ocr_typless'
+                        '.msg_typless_credential_modified'))

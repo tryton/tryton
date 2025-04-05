@@ -92,6 +92,19 @@ class Message(ModelSQL, ModelView):
             language = get_parent(language)
 
     @classmethod
+    def on_modification(cls, mode, messages, field_names=None):
+        pool = Pool()
+        Translation = pool.get('ir.translation')
+        super().on_modification(mode, messages, field_names=field_names)
+        if mode in {'create', 'write'}:
+            cls._set_translations(messages)
+        if mode in {'write', 'delete'}:
+            cls._message_cache.clear()
+        if mode == 'delete':
+            Translation.delete_ids(
+                cls.__name__, 'model', [m.id for m in messages])
+
+    @classmethod
     def _set_translations(cls, messages):
         pool = Pool()
         Translation = pool.get('ir.translation')
@@ -141,27 +154,6 @@ class Message(ModelSQL, ModelView):
 
         if to_save:
             Translation.save(to_save)
-
-    @classmethod
-    def create(cls, vlist):
-        messages = super().create(vlist)
-        cls._set_translations(messages)
-        return messages
-
-    @classmethod
-    def write(cls, messages, values, *args):
-        super().write(messages, values, *args)
-        cls._set_translations(messages)
-        cls._message_cache.clear()
-
-    @classmethod
-    def delete(cls, messages):
-        pool = Pool()
-        Translation = pool.get('ir.translation')
-        ids = [m.id for m in messages]
-        super().delete(messages)
-        Translation.delete_ids(cls.__name__, 'model', ids)
-        cls._message_cache.clear()
 
     @classmethod
     def search_rec_name(cls, name, clause):

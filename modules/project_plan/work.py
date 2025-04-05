@@ -6,7 +6,7 @@ from functools import reduce
 from heapq import heappop, heappush
 
 from trytond.model import ModelSQL, fields, tree
-from trytond.pool import Pool, PoolMeta
+from trytond.pool import PoolMeta
 from trytond.pyson import Eval
 from trytond.wizard import StateTransition, Wizard
 
@@ -550,41 +550,33 @@ class Work(tree(parent='successors'), metaclass=PoolMeta):
             self.parent.compute_dates()
 
     @classmethod
-    def write(cls, *args):
-        super().write(*args)
-
-        actions = iter(args)
-        for works, values in zip(actions, actions):
-            if 'effort' in values:
-                for work in works:
+    def on_modification(cls, mode, works, field_names=None):
+        super().on_modification(mode, works, field_names=field_names)
+        if mode in {'create', 'write'}:
+            for work in works:
+                if not field_names or 'effort' in field_names:
                     work.reset_leveling()
-            fields = ('constraint_start_time', 'constraint_finish_time',
-                      'effort')
-            if reduce(lambda x, y: x or y in values, fields, False):
-                for work in works:
+                if not field_names or field_names & {
+                        'constraint_start_time', 'constraint_finish_time',
+                        'effort'}:
                     work.compute_dates()
 
     @classmethod
-    def create(cls, vlist):
-        works = super().create(vlist)
-        for work in works:
-            work.reset_leveling()
-            work.compute_dates()
-        return works
-
-    @classmethod
-    def delete(cls, works):
+    def on_delete(cls, works):
+        callback = super().on_delete(works)
         to_update = set()
         for work in works:
             if work.parent and work.parent not in works:
                 to_update.add(work.parent)
-                to_update.update(c for c in work.parent.children
-                    if c not in works)
-        super().delete(works)
+                to_update.update(
+                    c for c in work.parent.children if c not in works)
 
-        for work in to_update:
-            work.reset_leveling()
-            work.compute_dates()
+        def replan():
+            for work in to_update:
+                work.reset_leveling()
+                work.compute_dates()
+        callback.append(replan)
+        return callback
 
 
 class PredecessorSuccessor(ModelSQL):
@@ -595,49 +587,35 @@ class PredecessorSuccessor(ModelSQL):
         'project.work', "Successor", ondelete='CASCADE', required=True)
 
     @classmethod
-    def write(cls, *args):
-        Work = Pool().get('project.work')
-        super().write(*args)
-
-        work_ids = [v for values in args[1::2]
-            for k, v in values.values()
-            if k in ('predecessor', 'successor')]
-        works = Work.browse(work_ids)
-        for work in works:
-            work.reset_leveling()
-        for work in works:
-            work.compute_dates()
+    def on_modification(cls, mode, records, field_names=None):
+        super().on_modification(mode, records, field_names=field_names)
+        if mode == 'create':
+            if not field_names or field_names & {
+                    'predecessor', 'successor', 'parent'}:
+                for record in records:
+                    record.predecessor.reset_leveling()
+                    record.successor.reset_leveling()
+                    if record.predecessor.parent:
+                        record.predecessor.parent.compute_dates()
 
     @classmethod
-    def delete(cls, pred_succs):
+    def on_delete(cls, records):
+        callback = super().on_delete(records)
         works = set()
         parents = set()
-        for pred_succ in pred_succs:
-            works.update((pred_succ.predecessor,
-                    pred_succ.successor))
+        for record in records:
+            works.add(record.predecessor)
+            works.add(record.successor)
+            if record.predecessor.parent:
+                parents.add(record.predecessor.parent)
 
-            if pred_succ.predecessor.parent:
-                parents.add(pred_succ.predecessor.parent)
-
-        super().delete(pred_succs)
-
-        for work in works:
-            work.reset_leveling()
-
-        for parent in parents:
-            parent.compute_dates()
-
-    @classmethod
-    def create(cls, vlist):
-        pred_succs = super().create(vlist)
-
-        for pred_succ in pred_succs:
-            pred_succ.predecessor.reset_leveling()
-            pred_succ.successor.reset_leveling()
-
-            if pred_succ.predecessor.parent:
-                pred_succ.predecessor.parent.compute_dates()
-        return pred_succs
+        def replan():
+            for work in works:
+                work.reset_leveling()
+            for parent in parents:
+                parent.compute_dates()
+        callback.append(replan)
+        return callback
 
 
 class Leveling(Wizard):

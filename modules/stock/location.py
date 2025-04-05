@@ -545,43 +545,23 @@ class Location(DeactivableMixin, tree(), ModelSQL, ModelView):
         cls.save(to_save)
 
     @classmethod
-    def create(cls, vlist):
-        locations = super().create(vlist)
-        cls._set_warehouse_parent(locations)
+    def on_modification(cls, mode, locations, field_names=None):
+        super().on_modification(mode, locations, field_names=field_names)
+        if mode in {'create', 'write'}:
+            cls._set_warehouse_parent(locations)
         cls._default_warehouse_cache.clear()
-        return locations
 
     @classmethod
-    def write(cls, *args):
-        super().write(*args)
-        locations = sum(args[::2], [])
-        cls._set_warehouse_parent(locations)
-        cls._default_warehouse_cache.clear()
-
-        ids = [l.id for l in locations]
-        warehouses = cls.search([
-                ('type', '=', 'warehouse'),
-                ['OR',
-                    ('storage_location', 'in', ids),
-                    ('input_location', 'in', ids),
-                    ('output_location', 'in', ids),
-                    ]])
-
-        fields = ('storage_location', 'input_location', 'output_location')
-        wh2childs = {}
-        for warehouse in warehouses:
-            in_out_sto = (getattr(warehouse, f).id for f in fields)
-            for location in locations:
-                if location.id not in in_out_sto:
-                    continue
-                childs = wh2childs.setdefault(warehouse.id, cls.search([
-                            ('parent', 'child_of', warehouse.id),
-                            ]))
-                if location not in childs:
-                    raise LocationValidationError(
-                        gettext('stock.msg_location_child_of_warehouse',
-                            location=location.rec_name,
-                            warehouse=warehouse.rec_name))
+    def check_modification(cls, mode, locations, values=None, external=False):
+        super().check_modification(
+            mode, locations, values=values, external=external)
+        if mode == 'write' and 'parent' in values:
+            warehouses = cls.search([
+                    ('type', '=', 'warehouse'),
+                    ])
+            cls.validate_fields(
+                warehouses,
+                {'storage_location', 'input_location', 'output_location'})
 
     @classmethod
     def delete(cls, locations):
@@ -594,7 +574,6 @@ class Location(DeactivableMixin, tree(), ModelSQL, ModelView):
                         location.storage_location,
                         ]))
         super().delete(locations + extra_locations)
-        cls._default_warehouse_cache.clear()
 
     @classmethod
     def copy(cls, locations, default=None):

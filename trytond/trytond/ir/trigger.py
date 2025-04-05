@@ -278,22 +278,8 @@ class Trigger(DeactivableMixin, ModelSQL, ModelView):
             trigger.trigger_action(records)
 
     @classmethod
-    def create(cls, vlist):
-        res = super().create(vlist)
-        # Restart the cache on the get_triggers method of ir.trigger
-        cls._get_triggers_cache.clear()
-        return res
-
-    @classmethod
-    def write(cls, triggers, values, *args):
-        super().write(triggers, values, *args)
-        # Restart the cache on the get_triggers method of ir.trigger
-        cls._get_triggers_cache.clear()
-
-    @classmethod
-    def delete(cls, records):
-        super().delete(records)
-        # Restart the cache on the get_triggers method of ir.trigger
+    def on_modification(cls, mode, records, field_names=None):
+        super().on_modification(mode, records, field_names=field_names)
         cls._get_triggers_cache.clear()
 
 

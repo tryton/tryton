@@ -19,11 +19,12 @@ def process_sale(func):
         context = transaction.context
         with without_check_access():
             sales = set(s for i in cls.browse(invoices) for s in i.sales)
-        func(cls, invoices)
+        result = func(cls, invoices)
         if sales:
             with transaction.set_context(
                     queue_batch=context.get('queue_batch', True)):
                 Sale.__queue__.process(sales)
+        return result
     return wrapper
 
 
@@ -77,8 +78,8 @@ class Invoice(metaclass=PoolMeta):
 
     @classmethod
     @process_sale
-    def delete(cls, invoices):
-        super().delete(invoices)
+    def on_delete(cls, invoices):
+        return super().on_delete(invoices)
 
     @classmethod
     @process_sale
@@ -158,7 +159,7 @@ class Line(metaclass=PoolMeta):
         return models
 
     @classmethod
-    def delete(cls, lines):
+    def on_delete(cls, lines):
         pool = Pool()
         Sale = pool.get('sale.sale')
         transaction = Transaction()
@@ -167,8 +168,8 @@ class Line(metaclass=PoolMeta):
             invoices = (l.invoice for l in cls.browse(lines)
                 if l.type == 'line' and l.invoice)
             sales = set(s for i in invoices for s in i.sales)
-        super().delete(lines)
         if sales:
             with transaction.set_context(
                     queue_batch=context.get('queue_batch', True)):
                 Sale.__queue__.process(sales)
+        return super().on_delete(lines)

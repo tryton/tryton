@@ -315,18 +315,18 @@ class Package(tree(), MeasurementsMixin, ModelSQL, ModelView):
                         children_volume, self.packaging_volume_uom)))
 
     @classmethod
-    def create(cls, vlist):
+    def preprocess_values(cls, mode, values):
         pool = Pool()
-        Config = pool.get('stock.configuration')
-
-        vlist = [v.copy() for v in vlist]
-        config = Config(1)
-        default_company = cls.default_company()
-        for values in vlist:
-            values['number'] = config.get_multivalue(
-                'package_sequence',
-                company=values.get('company', default_company)).get()
-        return super().create(vlist)
+        Configuration = pool.get('stock.configuration')
+        values = super().preprocess_values(mode, values)
+        if mode == 'create' and not values.get('number'):
+            company_id = values.get('company', cls.default_company())
+            if company_id is not None:
+                configuration = Configuration(1)
+                if sequence := configuration.get_multivalue(
+                        'package_sequence', company=company_id):
+                    values['number'] = sequence.get()
+        return values
 
     @classmethod
     def copy(cls, packages, default=None):

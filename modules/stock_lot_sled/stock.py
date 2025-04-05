@@ -104,14 +104,13 @@ class Lot(LotSledMixin, metaclass=PoolMeta):
     __name__ = 'stock.lot'
 
     @classmethod
-    def write(cls, *args):
-        super().write(*args)
-
-        actions = iter(args)
-        for lots, values in zip(actions, actions):
-            if any(f in ['shelf_life_expiration_date', 'expiration_date']
-                    for f in values):
-                cls.check_sled_period_closed(lots)
+    def check_modification(cls, mode, lots, values=None, external=False):
+        super().check_modification(
+            mode, lots, values=values, external=external)
+        if (mode == 'write'
+                and values.keys() & {
+                    'shelf_life_expiration_date', 'expiration_date'}):
+            cls.check_sled_period_closed(lots)
 
     @classmethod
     def check_sled_period_closed(cls, lots):

@@ -123,25 +123,17 @@ class ImageMixin(_ImageMixin):
         return set()
 
     @classmethod
-    def create(cls, vlist):
-        vlist = [v.copy() for v in vlist]
-        for values in vlist:
-            if values.get('image'):
-                values['image'] = cls.convert(values['image'])
-        return super().create(vlist)
+    def preprocess_values(cls, mode, values):
+        values = super().preprocess_values(mode, values)
+        if values.get('image'):
+            values['image'] = cls.convert(values['image'])
+        return values
 
     @classmethod
-    def write(cls, *args):
-        actions = iter(args)
-        args = []
-        for images, values in zip(actions, actions):
-            if values.get('image'):
-                values = values.copy()
-                values['image'] = cls.convert(values['image'])
-            args.append(images)
-            args.append(values)
-        super().write(*args)
-        cls.clear_cache(sum(args[0:None:2], []))
+    def on_modification(cls, mode, images, field_names=None):
+        super().on_modification(mode, images, field_names=field_names)
+        if mode == 'write':
+            cls.clear_cache(images)
 
     @classmethod
     def _round_size(cls, size):

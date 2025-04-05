@@ -125,19 +125,12 @@ class Move(metaclass=PoolMeta):
         super().set_effective_date()
 
     @classmethod
-    def write(cls, *args):
-        super().write(*args)
-        cost_price_update = []
-        actions = iter(args)
-        for moves, values in zip(actions, actions):
-            for move in moves:
-                if (move.state == 'done'
-                        and move.production_input
-                        and 'cost_price' in values):
-                    cost_price_update.append(move)
-        if cost_price_update:
+    def on_modification(cls, mode, moves, field_names=None):
+        super().on_modification(mode, moves, field_names=field_names)
+        if mode == 'write' and 'cost_price' in field_names:
             cls.write(
-                cost_price_update, {'production_cost_price_updated': True})
+                [m for m in moves if m.state == 'done' and m.production_input],
+                {'production_cost_price_updated': True})
 
 
 class ProductQuantitiesByWarehouseMove(metaclass=PoolMeta):

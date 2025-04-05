@@ -60,7 +60,7 @@ class Move(metaclass=PoolMeta):
     @classmethod
     def __setup__(cls):
         super().__setup__()
-        cls._check_modify_exclude.append('export')
+        cls._check_modify_exclude.add('export')
 
     @classmethod
     def copy(cls, moves, default=None):
@@ -209,11 +209,13 @@ class MoveExport(Workflow, ModelSQL, ModelView):
         return super().copy(exports, default=default)
 
     @classmethod
-    def delete(cls, exports):
-        for export in exports:
-            if export.state != 'draft':
-                raise AccessError(
-                    gettext(
-                        'account_export.msg_account_move_export_delete_draft',
-                        export=export.rec_name))
-        super().delete(exports)
+    def check_modification(cls, mode, exports, values=None, external=False):
+        super().check_modification(
+            mode, exports, values=values, external=external)
+        if mode == 'delete':
+            for export in exports:
+                if export.state != 'draft':
+                    raise AccessError(gettext(
+                            'account_export.'
+                            'msg_account_move_export_delete_draft',
+                            export=export.rec_name))

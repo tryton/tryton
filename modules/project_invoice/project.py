@@ -426,25 +426,22 @@ class Work(Effort, Progress, Timesheet, metaclass=PoolMeta):
         return super().copy(records, default=default)
 
     @classmethod
-    def write(cls, *args):
-        actions = iter(args)
-        for works, values in zip(actions, actions):
+    def check_modification(cls, mode, works, values=None, external=False):
+        super().check_modification(
+            mode, works, values=values, external=external)
+        if mode == 'write':
             if ('effort_duration' in values
                     and any(w.invoice_line for w in works)):
                 work = next((w for w in works if w.invoice_line))
                 raise AccessError(gettext(
                         'project_invoice.msg_invoiced_work_modify_effort',
                         work=work.rec_name))
-        super().write(*args)
-
-    @classmethod
-    def delete(cls, works):
-        if any(w.invoice_line for w in works):
-            work = next((w for w in works if w.invoice_line))
-            raise AccessError(gettext(
-                    'project_invoice.msg_invoiced_work_delete',
-                    work=work.rec_name))
-        super().delete(works)
+        elif mode == 'delete':
+            if any(w.invoice_line for w in works):
+                work = next((w for w in works if w.invoice_line))
+                raise AccessError(gettext(
+                        'project_invoice.msg_invoiced_work_delete',
+                        work=work.rec_name))
 
     @classmethod
     def get_invoice_methods(cls):

@@ -123,16 +123,18 @@ class Module(ModelSQL, ModelView):
         return child_ids
 
     @classmethod
-    def delete(cls, records):
-        for module in records:
-            if module.state in (
-                    'activated',
-                    'to upgrade',
-                    'to remove',
-                    'to activate',
-                    ):
-                raise AccessError(gettext('ir.msg_module_delete_state'))
-        return super().delete(records)
+    def check_modification(cls, mode, records, values=None, external=False):
+        super().check_modification(
+            mode, records, values=values, external=external)
+        if mode == 'delete':
+            for module in records:
+                if module.state in (
+                        'activated',
+                        'to upgrade',
+                        'to remove',
+                        'to activate',
+                        ):
+                    raise AccessError(gettext('ir.msg_module_delete_state'))
 
     @classmethod
     def on_written(cls, modules):

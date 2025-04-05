@@ -31,23 +31,11 @@ class Parameter(DeactivableMixin, ModelSQL, ModelView):
         return self.name.title()
 
     @classmethod
-    def create(cls, vlist):
-        vlist = [v.copy() for v in vlist]
-        for values in vlist:
-            if values.get('name'):
-                values['name'] = values['name'].lower()
-        return super().create(vlist)
-
-    @classmethod
-    def write(cls, *args):
-        actions = iter(args)
-        args = []
-        for parameters, values in zip(actions, actions):
-            if values.get('name'):
-                values = values.copy()
-                values['name'] = values['name'].lower()
-            args.extend((parameters, values))
-        super().write(*args)
+    def preprocess_values(cls, mode, values):
+        values = super().preprocess_values(mode, values)
+        if values.get('name'):
+            values['name'] = values['name'].lower()
+        return values
 
     @classmethod
     def from_name(cls, name, create=True):

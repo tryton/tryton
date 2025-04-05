@@ -3,7 +3,7 @@
 import copy
 import datetime
 import operator
-from collections import OrderedDict, defaultdict
+from collections import defaultdict
 from decimal import Decimal
 from itertools import groupby
 
@@ -991,72 +991,52 @@ class Move(Workflow, ModelSQL, ModelView):
         return values
 
     @classmethod
-    def create(cls, vlist):
+    def preprocess_values(cls, mode, values):
         pool = Pool()
         Product = pool.get('product.product')
         context = Transaction().context
-
-        vlist = [x.copy() for x in vlist]
-        # Use ordered dict to optimize cache alignment
-        products = OrderedDict()
-        for vals in vlist:
-            if vals.get('product') is not None:
-                products[vals['product']] = None
-        id2product = {p.id: p for p in Product.browse(products.keys())}
-        for vals in vlist:
-            assert vals.get('state', cls.default_state()
-                ) in ['draft', 'staging']
-            if vals.get('product') is not None:
-                product = id2product[int(vals['product'])]
-                if context.get('_product_replacement', True):
-                    vals['product'] = product.replacement.id
-        moves = super().create(vlist)
-        cls.check_period_closed(moves)
-        return moves
+        values = super().preprocess_values(mode, values)
+        if mode == 'create':
+            assert values.get('state', cls.default_state()) in {
+                'draft', 'staging'}
+            if context.get('_product_replacement', True):
+                product_id = values.get('product')
+                if product_id is not None:
+                    product = Product(product_id)
+                    values['product'] = product.replacement.id
+        elif mode == 'write':
+            if {'unit_price', 'currency'} & values.keys():
+                values['unit_price_updated'] = True
+        return values
 
     @classmethod
-    def write(cls, *args):
-        actions = iter(args)
-        for moves, values in zip(actions, actions):
-            vals_set = set(values)
-            if cls._deny_modify_assigned & vals_set:
+    def check_modification(cls, mode, moves, values=None, external=False):
+        super().check_modification(
+            mode, moves, values=values, external=external)
+        if mode == 'create':
+            cls.check_period_closed(moves)
+        elif mode == 'write':
+            if values.keys() - cls._allow_modify_closed_period:
+                cls.check_period_closed(moves)
+            if values.keys() & cls._deny_modify_assigned:
                 for move in moves:
                     if move.state == 'assigned':
-                        raise AccessError(
-                            gettext('stock.msg_move_modify_assigned',
+                        raise AccessError(gettext(
+                                'stock.msg_move_modify_assigned',
                                 move=move.rec_name))
-            if cls._deny_modify_done_cancel & vals_set:
+            if values.keys() & cls._deny_modify_done_cancel:
                 for move in moves:
-                    if move.state in ('done', 'cancelled'):
-                        raise AccessError(
-                            gettext('stock.msg_move_modify_%s' % move.state,
+                    if move.state in {'done', 'cancelled'}:
+                        raise AccessError(gettext(
+                                'stock.msg_move_modify_%s' % move.state,
                                 move=move.rec_name))
-
-        super().write(*args)
-
-        unit_price_update = []
-        actions = iter(args)
-        for moves, values in zip(actions, actions):
-            if any(f not in cls._allow_modify_closed_period for f in values):
-                cls.check_period_closed(moves)
+        elif mode == 'delete':
             for move in moves:
-                if (move.state == 'done'
-                        and ('unit_price' in values
-                            or 'currency' in values)):
-                    unit_price_update.append(move)
-
-        if unit_price_update:
-            cls.write(unit_price_update, {'unit_price_updated': True})
-
-    @classmethod
-    def delete(cls, moves):
-        for move in moves:
-            if (move.state not in {'staging', 'draft', 'cancelled'}
-                    and move.quantity):
-                raise AccessError(
-                    gettext('stock.msg_move_delete_draft_cancel',
-                        move=move.rec_name))
-        super().delete(moves)
+                if (move.state not in {'staging', 'draft', 'cancelled'}
+                        and move.quantity):
+                    raise AccessError(gettext(
+                            'stock.msg_move_delete_draft_cancel',
+                            move=move.rec_name))
 
     @staticmethod
     def check_origin_types():

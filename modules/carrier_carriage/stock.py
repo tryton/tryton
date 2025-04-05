@@ -83,13 +83,15 @@ class Carriage(sequence_ordered(), ShipmentCostMixin, ModelSQL, ModelView):
         return f'{self.carrier.rec_name} @ {self.shipment.rec_name}'
 
     @classmethod
-    def delete(cls, carriages):
-        for carriage in carriages:
-            if carriage.shipment_cost_readonly:
-                raise AccessError(
-                    gettext('carrier_carriages.msg_shipment_carriage_delete',
-                        carriage=carriage.rec_name))
-        super().delete(carriages)
+    def check_modification(cls, mode, carriages, values=None, external=False):
+        super().check_modification(
+            mode, carriages, values=values, external=external)
+        if mode == 'delete':
+            for carriage in carriages:
+                if carriage.shipment_cost_readonly:
+                    raise AccessError(gettext(
+                            'carrier_carriages.msg_shipment_carriage_delete',
+                            carriage=carriage.rec_name))
 
 
 class _ShipmentMixin:
@@ -127,12 +129,14 @@ class _ShipmentMixin:
         return cost
 
     @classmethod
-    def delete(cls, shipments):
+    def on_delete(cls, shipments):
         pool = Pool()
         Carriage = pool.get('stock.shipment.carriage')
+        callback = super().on_delete(shipments)
         carriages = sum((s.carriages for s in shipments), ())
-        super().delete(shipments)
-        Carriage.delete(carriages)
+        if carriages:
+            callback.append(lambda: Carriage.delete(carriages))
+        return callback
 
     @classmethod
     def copy(cls, shipments, default=None):

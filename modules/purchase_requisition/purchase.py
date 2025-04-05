@@ -283,30 +283,31 @@ class PurchaseRequisition(Workflow, ModelSQL, ModelView):
             ]
 
     @classmethod
-    def create(cls, vlist):
+    def preprocess_values(cls, mode, values):
         pool = Pool()
-        Config = pool.get('purchase.configuration')
-
-        config = Config(1)
-        vlist = [v.copy() for v in vlist]
-        default_company = cls.default_company()
-        for values in vlist:
-            if values.get('number') is None:
-                values['number'] = config.get_multivalue(
-                    'purchase_requisition_sequence',
-                    company=values.get('company', default_company)).get()
-        return super().create(vlist)
+        Configuration = pool.get('purchase.configuration')
+        values = super().preprocess_values(mode, values)
+        if mode == 'create' and not values.get('number'):
+            company_id = values.get('company', cls.default_company())
+            if company_id is not None:
+                configuration = Configuration(1)
+                if sequence := configuration.get_multivalue(
+                        'purchase_requisition_sequence',
+                        company=company_id):
+                    values['number'] = sequence.get()
+        return values
 
     @classmethod
-    def delete(cls, requisitions):
-        # Cancel before delete
-        cls.cancel(requisitions)
-        for requisition in requisitions:
-            if requisition.state != 'cancelled':
-                raise AccessError(
-                    gettext('purchase_requisition.msg_delete_cancel',
-                        requisition=requisition.rec_name))
-        super().delete(requisitions)
+    def check_modification(
+            cls, mode, requisitions, values=None, external=False):
+        super().check_modification(
+            mode, requisitions, values=values, external=external)
+        if mode == 'delete':
+            for requisition in requisitions:
+                if requisition.state not in {'cancelled', 'draft'}:
+                    raise AccessError(gettext(
+                            'purchase_requisition.msg_delete_cancel',
+                            requisition=requisition.rec_name))
 
     def check_for_waiting(self):
         if not self.warehouse:

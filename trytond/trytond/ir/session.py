@@ -42,9 +42,9 @@ class Session(ModelSQL):
         return token_hex(nbytes)
 
     @classmethod
-    def write(cls, *args):
-        super().write(*args)
-        for sessions in args[0:None:2]:
+    def on_modification(cls, mode, sessions, field_names=None):
+        super().on_modification(mode, sessions, field_names=field_names)
+        if mode == 'write':
             for session in sessions:
                 cls._session_reset_cache.set(session.key, session.write_date)
 
@@ -148,13 +148,11 @@ class Session(ModelSQL):
         cls.delete(sessions)
 
     @classmethod
-    def create(cls, vlist):
-        vlist = [v.copy() for v in vlist]
-        for values in vlist:
-            # Ensure to get a different key for each record
-            # default methods are called only once
-            values.setdefault('key', cls.default_key())
-        return super().create(vlist)
+    def preprocess_values(cls, mode, values):
+        values = super().preprocess_values(mode, values)
+        if mode == 'create' and 'key' not in values:
+            values['key'] = cls.default_key()
+        return values
 
 
 class SessionWizard(ModelSQL):

@@ -19,13 +19,12 @@ class Line(metaclass=PoolMeta):
         return 0
 
     @classmethod
-    def create(cls, vlist):
-        # XXX Remove cost_price because proteus set it as default value
-        vlist = [v.copy() for v in vlist]
-        for values in vlist:
+    def preprocess_values(cls, mode, values):
+        values = super().preprocess_values(mode, values)
+        if mode == 'create':
+            # XXX Remove cost_price because proteus set it as default value
             values.pop('cost_price', None)
-        lines = super().create(vlist)
-        return lines
+        return values
 
     @classmethod
     def compute_fields(self, field_names=None):

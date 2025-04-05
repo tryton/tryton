@@ -266,24 +266,8 @@ class View(
         cls.write(views, {'data': value})
 
     @classmethod
-    def delete(cls, views):
-        super().delete(views)
-        # Restart the cache
-        cls._view_get_cache.clear()
-        ModelView._fields_view_get_cache.clear()
-
-    @classmethod
-    def create(cls, vlist):
-        views = super().create(vlist)
-        # Restart the cache
-        cls._view_get_cache.clear()
-        ModelView._fields_view_get_cache.clear()
-        return views
-
-    @classmethod
-    def write(cls, views, values, *args):
-        super().write(views, values, *args)
-        # Restart the cache
+    def on_modification(cls, mode, records, field_names=None):
+        super().on_modification(mode, records, field_names=field_names)
         cls._view_get_cache.clear()
         ModelView._fields_view_get_cache.clear()
 
@@ -492,19 +476,8 @@ class ViewTreeWidth(
             ]
 
     @classmethod
-    def delete(cls, records):
-        ModelView._fields_view_get_cache.clear()
-        super().delete(records)
-
-    @classmethod
-    def create(cls, vlist):
-        res = super().create(vlist)
-        ModelView._fields_view_get_cache.clear()
-        return res
-
-    @classmethod
-    def write(cls, records, values, *args):
-        super().write(records, values, *args)
+    def on_modification(cls, mode, records, field_names=None):
+        super().on_modification(mode, records, field_names=field_names)
         ModelView._fields_view_get_cache.clear()
 
     @classmethod
@@ -602,20 +575,9 @@ class ViewTreeOptional(
                         view=record.view.rec_name))
 
     @classmethod
-    def create(cls, vlist):
-        records = super().create(vlist)
+    def on_modification(cls, mode, record, field_names=None):
+        super().on_modification(mode, record, field_names=field_names)
         ModelView._fields_view_get_cache.clear()
-        return records
-
-    @classmethod
-    def write(cls, *args):
-        super().write(*args)
-        ModelView._fields_view_get_cache.clear()
-
-    @classmethod
-    def delete(cls, records):
-        ModelView._fields_view_get_cache.clear()
-        super().delete(records)
 
     @classmethod
     def set_optional(cls, view_id, fields):

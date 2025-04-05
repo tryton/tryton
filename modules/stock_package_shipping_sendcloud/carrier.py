@@ -184,20 +184,22 @@ class CredentialSendcloud(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
         return response.content
 
     @classmethod
-    def write(cls, *args):
+    def check_modification(
+            cls, mode, credentials, values=None, external=False):
         pool = Pool()
         Warning = pool.get('res.user.warning')
-        actions = iter(args)
-        for credentials, values in zip(actions, actions):
-            if {'public_key', 'secret_key'} & values.keys():
-                warning_name = Warning.format(
-                    'sendcloud_credential', credentials)
-                if Warning.check(warning_name):
-                    raise SendcloudCredentialWarning(
-                        warning_name,
-                        gettext('stock_package_shipping_sendcloud'
-                            '.msg_sendcloud_credential_modified'))
-        return super().write(*args)
+        super().check_modification(
+            mode, credentials, values=values, external=external)
+        if (mode == 'write'
+                and external
+                and values.keys() & {'public_key', 'secret_key'}):
+            warning_name = Warning.format(
+                'sendcloud_credential', credentials)
+            if Warning.check(warning_name):
+                raise SendcloudCredentialWarning(
+                    warning_name,
+                    gettext('stock_package_shipping_sendcloud'
+                        '.msg_sendcloud_credential_modified'))
 
 
 class SendcloudAddress(sequence_ordered(), ModelSQL, ModelView, MatchMixin):

@@ -895,15 +895,15 @@ class Purchase(
                         if l.moves_progress is not None))))
 
     @classmethod
-    def delete(cls, purchases):
-        # Cancel before delete
-        cls.cancel(purchases)
-        for purchase in purchases:
-            if purchase.state != 'cancelled':
-                raise AccessError(
-                    gettext('purchase.msg_purchase_delete_cancel',
-                        purchase=purchase.rec_name))
-        super().delete(purchases)
+    def check_modification(cls, mode, purchases, values=None, external=False):
+        super().check_modification(
+            mode, purchases, values=values, external=external)
+        if mode == 'delete':
+            for purchase in purchases:
+                if purchase.state not in {'cancelled', 'draft'}:
+                    raise AccessError(gettext(
+                            'purchase.msg_purchase_delete_cancel',
+                            purchase=purchase.rec_name))
 
     @classmethod
     @ModelView.button
@@ -2105,26 +2105,22 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
             ]
 
     @classmethod
-    def create(cls, vlist):
-        pool = Pool()
-        Purchase = pool.get('purchase.purchase')
-        purchase_ids = filter(None, {v.get('purchase') for v in vlist})
-        for purchase in Purchase.browse(list(purchase_ids)):
-            if purchase.state != 'draft':
-                raise AccessError(
-                    gettext('purchase.msg_purchase_line_create_draft',
-                        purchase=purchase.rec_name))
-        return super().create(vlist)
-
-    @classmethod
-    def delete(cls, lines):
-        for line in lines:
-            if line.purchase_state not in {'cancelled', 'draft'}:
-                raise AccessError(
-                    gettext('purchase.msg_purchase_line_delete_cancel_draft',
-                        line=line.rec_name,
-                        purchase=line.purchase.rec_name))
-        super().delete(lines)
+    def check_modification(cls, mode, lines, values=None, external=False):
+        super().check_modification(
+            mode, lines, values=values, external=external)
+        if mode == 'create':
+            for line in lines:
+                if line.purchase.state != 'draft':
+                    raise AccessError(gettext(
+                            'purchase.msg_purchase_line_create_draft',
+                            purchase=line.purchase.rec_name))
+        elif mode == 'delete':
+            for line in lines:
+                if line.purchase_state not in {'cancelled', 'draft'}:
+                    raise AccessError(gettext(
+                            'purchase.msg_purchase_line_delete_cancel_draft',
+                            line=line.rec_name,
+                            purchase=line.purchase.rec_name))
 
     @classmethod
     def copy(cls, lines, default=None):

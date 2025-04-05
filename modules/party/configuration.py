@@ -64,19 +64,8 @@ class Configuration(ModelSingleton, ModelSQL, ModelView, MultiValueMixin):
         return selection
 
     @classmethod
-    def create(cls, vlist):
-        records = super().create(vlist)
-        ModelView._fields_view_get_cache.clear()
-        return records
-
-    @classmethod
-    def write(cls, *args):
-        super().write(*args)
-        ModelView._fields_view_get_cache.clear()
-
-    @classmethod
-    def delete(cls, records):
-        super().delete(records)
+    def on_modification(cls, mode, configurations, field_names=None):
+        super().on_modification(mode, configurations, field_names=field_names)
         ModelView._fields_view_get_cache.clear()
 
     @classmethod

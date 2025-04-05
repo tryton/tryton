@@ -106,20 +106,8 @@ class EmployeeCostPrice(ModelSQL, ModelView):
         return str(self.date)
 
     @classmethod
-    def delete(cls, prices):
-        Employee = Pool().get('company.employee')
-        super().delete(prices)
-        Employee._cost_prices_cache.clear()
-
-    @classmethod
-    def create(cls, vlist):
-        Employee = Pool().get('company.employee')
-        prices = super().create(vlist)
-        Employee._cost_prices_cache.clear()
-        return prices
-
-    @classmethod
-    def write(cls, *args):
-        Employee = Pool().get('company.employee')
-        super().write(*args)
+    def on_modification(cls, mode, prices, field_names=None):
+        pool = Pool()
+        Employee = pool.get('company.employee')
+        super().on_modification(mode, prices, field_names=field_names)
         Employee._cost_prices_cache.clear()

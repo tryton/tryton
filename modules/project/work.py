@@ -11,7 +11,7 @@ from trytond.model import (
     sum_tree, tree)
 from trytond.pool import Pool
 from trytond.pyson import Bool, Eval, If, PYSONEncoder, TimeDelta
-from trytond.transaction import Transaction, without_check_access
+from trytond.transaction import Transaction
 
 from .exceptions import WorkProgressValidationError
 
@@ -68,22 +68,10 @@ class WorkStatus(DeactivableMixin, sequence_ordered(), ModelSQL, ModelView):
         return status
 
     @classmethod
-    def create(cls, vlist):
+    def on_modification(cls, mode, records, field_names=None):
+        super().on_modification(mode, records, field_names=field_names)
         cls._get_default_status_cache.clear()
         cls._get_window_domains_cache.clear()
-        return super().create(vlist)
-
-    @classmethod
-    def write(cls, *args):
-        super().write(*args)
-        cls._get_default_status_cache.clear()
-        cls._get_window_domains_cache.clear()
-
-    @classmethod
-    def delete(cls, status):
-        cls._get_default_status_cache.clear()
-        cls._get_window_domains_cache.clear()
-        super().delete(status)
 
     @classmethod
     def get_window_domains(cls, action):
@@ -428,18 +416,16 @@ class Work(sequence_ordered(), tree(separator='\\'), ModelSQL, ModelView):
         return new_works
 
     @classmethod
-    def delete(cls, project_works):
-        TimesheetWork = Pool().get('timesheet.work')
-
-        # Get the timesheet works linked to the project works
-        timesheet_works = [
-            w for pw in project_works for w in pw.timesheet_works]
-
-        super().delete(project_works)
-
+    def on_delete(cls, project_works):
+        pool = Pool()
+        TimesheetWork = pool.get('timesheet.work')
+        callback = super().on_delete(project_works)
+        timesheet_works = {
+            w for pw in project_works for w in pw.timesheet_works}
         if timesheet_works:
-            with without_check_access():
-                TimesheetWork.delete(timesheet_works)
+            timesheet_works = TimesheetWork.browse(timesheet_works)
+            callback.append(lambda: TimesheetWork.delete(timesheet_works))
+        return callback
 
     @classmethod
     def search_global(cls, text):

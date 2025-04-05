@@ -19,13 +19,14 @@ def process_request(func):
     def wrapper(cls, purchases):
         pool = Pool()
         Request = pool.get('purchase.request')
-        func(cls, purchases)
+        result = func(cls, purchases)
         with without_check_access():
             requests = [
                 r for p in cls.browse(purchases)
                 for l in p.lines
                 for r in l.requests]
             Request.update_state(requests)
+        return result
     return wrapper
 
 
@@ -33,19 +34,16 @@ class Purchase(metaclass=PoolMeta):
     __name__ = 'purchase.purchase'
 
     @classmethod
-    def delete(cls, purchases):
-        cls.check_delete_purchase_request(purchases)
-        super().delete(purchases)
-
-    @classmethod
-    @without_check_access
-    def check_delete_purchase_request(cls, purchases):
-        for purchase in purchases:
-            for line in purchase.lines:
-                if line.requests:
-                    raise AccessError(
-                        gettext('purchase_request.msg_purchase_delete_request',
-                            purchase=purchase.rec_name))
+    def check_modification(cls, mode, purchases, values=None, external=False):
+        super().check_modification(
+            mode, purchases, values=values, external=external)
+        if mode == 'delete':
+            for purchase in purchases:
+                for line in purchase.lines:
+                    if line.requests:
+                        raise AccessError(gettext(
+                                'purchase_request.msg_purchase_delete_request',
+                                purchase=purchase.rec_name))
 
     @classmethod
     @ModelView.button
@@ -103,11 +101,12 @@ class Line(metaclass=PoolMeta):
         return super().copy(lines, default=default)
 
     @classmethod
-    def delete(cls, lines):
+    def on_delete(cls, lines):
         pool = Pool()
         Request = pool.get('purchase.request')
-        with without_check_access():
-            requests = [r for l in cls.browse(lines) for r in l.requests]
-        super().delete(lines)
-        with without_check_access():
-            Request.update_state(requests)
+        callback = super().on_delete(lines)
+        requests = {r for l in lines for r in l.requests}
+        if requests:
+            requests = Request.browse(requests)
+            callback.append(lambda: Request.update_state(requests))
+        return callback

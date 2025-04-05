@@ -18,25 +18,10 @@ class UserCompany(ModelSQL):
         ondelete='CASCADE', required=True)
 
     @classmethod
-    def create(cls, vlist):
+    def on_modification(cls, mode, records, field_names=None):
         pool = Pool()
         User = pool.get('res.user')
-        records = super().create(vlist)
-        User._get_companies_cache.clear()
-        return records
-
-    @classmethod
-    def write(cls, *args):
-        pool = Pool()
-        User = pool.get('res.user')
-        super().write(*args)
-        User._get_companies_cache.clear()
-
-    @classmethod
-    def delete(cls, records):
-        pool = Pool()
-        User = pool.get('res.user')
-        super().delete(records)
+        super().on_modification(mode, records, field_names=field_names)
         User._get_companies_cache.clear()
 
 
@@ -48,25 +33,10 @@ class UserEmployee(ModelSQL):
         'company.employee', "Employee", ondelete='CASCADE', required=True)
 
     @classmethod
-    def create(cls, vlist):
+    def on_modification(cls, mode, records, field_names=None):
         pool = Pool()
         User = pool.get('res.user')
-        records = super().create(vlist)
-        User._get_employees_cache.clear()
-        return records
-
-    @classmethod
-    def write(cls, *args):
-        pool = Pool()
-        User = pool.get('res.user')
-        super().write(*args)
-        User._get_employees_cache.clear()
-
-    @classmethod
-    def delete(cls, records):
-        pool = Pool()
-        User = pool.get('res.user')
-        super().delete(records)
+        super().on_modification(mode, records, field_names=field_names)
         User._get_employees_cache.clear()
 
 
@@ -277,7 +247,8 @@ class User(metaclass=PoolMeta):
         return result
 
     @classmethod
-    def write(cls, *args):
-        super().write(*args)
-        cls._get_companies_cache.clear()
-        cls._get_employees_cache.clear()
+    def on_modification(cls, mode, users, field_names=None):
+        super().on_modification(mode, users, field_names=field_names)
+        if mode == 'write':
+            cls._get_companies_cache.clear()
+            cls._get_employees_cache.clear()

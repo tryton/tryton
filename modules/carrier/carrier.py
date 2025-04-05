@@ -66,19 +66,12 @@ class Carrier(DeactivableMixin, ModelSQL, ModelView):
         return None, None
 
     @classmethod
-    def create(cls, *args, **kwargs):
+    def on_modification(cls, mode, carriers, field_names=None):
         pool = Pool()
         CarrierSelection = pool.get('carrier.selection')
-        carriers = super().create(*args, **kwargs)
-        CarrierSelection._get_carriers_cache.clear()
-        return carriers
-
-    @classmethod
-    def delete(cls, *args, **kwargs):
-        pool = Pool()
-        CarrierSelection = pool.get('carrier.selection')
-        super().delete(*args, **kwargs)
-        CarrierSelection._get_carriers_cache.clear()
+        super().on_modification(mode, carriers, field_names=field_names)
+        if mode in {'create', 'delete'}:
+            CarrierSelection._get_carriers_cache.clear()
 
 
 class Selection(sequence_ordered(), MatchMixin, ModelSQL, ModelView):
@@ -96,22 +89,6 @@ class Selection(sequence_ordered(), MatchMixin, ModelSQL, ModelView):
         "Leave empty for any countries.")
     carrier = fields.Many2One('carrier', 'Carrier', required=True,
         ondelete='CASCADE', help="The selected carrier.")
-
-    @classmethod
-    def create(cls, *args, **kwargs):
-        selections = super().create(*args, **kwargs)
-        cls._get_carriers_cache.clear()
-        return selections
-
-    @classmethod
-    def write(cls, *args, **kwargs):
-        super().write(*args, **kwargs)
-        cls._get_carriers_cache.clear()
-
-    @classmethod
-    def delete(cls, *args, **kwargs):
-        super().delete(*args, **kwargs)
-        cls._get_carriers_cache.clear()
 
     @classmethod
     def get_carriers(cls, pattern):
@@ -136,3 +113,8 @@ class Selection(sequence_ordered(), MatchMixin, ModelSQL, ModelView):
 
         cls._get_carriers_cache.set(key, list(map(int, carriers)))
         return carriers
+
+    @classmethod
+    def on_modification(cls, mode, selections, field_names=None):
+        super().on_modification(mode, selections, field_names=field_names)
+        cls._get_carriers_cache.clear()

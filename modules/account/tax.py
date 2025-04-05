@@ -132,7 +132,8 @@ class TaxCode(
     code = fields.Char('Code', states=_states)
     company = fields.Many2One('company.company', 'Company', required=True)
     parent = fields.Many2One(
-        'account.tax.code', "Parent", states=_states,
+        'account.tax.code', "Parent", ondelete='CASCADE',
+        states=_states,
         domain=[
             ('company', '=', Eval('company', -1)),
             ])
@@ -242,13 +243,6 @@ class TaxCode(
             default = default.copy()
         default.setdefault('template', None)
         return super().copy(codes, default=default)
-
-    @classmethod
-    def delete(cls, codes):
-        codes = cls.search([
-                ('parent', 'child_of', [c.id for c in codes]),
-                ])
-        super().delete(codes)
 
     @classmethod
     def update_tax_code(cls, company_id, template2tax_code=None):
@@ -1407,34 +1401,19 @@ class TaxLine(ModelSQL, ModelView):
     def search_rec_name(cls, name, clause):
         return [('tax',) + tuple(clause[1:])]
 
-    @classmethod
-    def create(cls, vlist):
-        lines = super().create(vlist)
-        cls.check_modify(lines)
-        return lines
-
-    @classmethod
-    def write(cls, *args):
-        lines = sum(args[0:None:2], [])
-        cls.check_modify(lines)
-        super().write(*args)
-
-    @classmethod
-    def delete(cls, lines):
-        cls.check_modify(lines)
-        super().delete(lines)
-
     @property
     def period_checked(self):
         return self.move_line.period
 
     @classmethod
-    def check_modify(cls, lines):
+    def check_modification(cls, mode, lines, values=None, external=False):
+        super().check_modification(
+            mode, lines, values=values, external=external)
         for line in lines:
             period = line.period_checked
             if period and period.state != 'open':
-                raise AccessError(
-                    gettext('account.msg_modify_tax_line_closed_period',
+                raise AccessError(gettext(
+                        'account.msg_modify_tax_line_closed_period',
                         period=period.rec_name))
 
 

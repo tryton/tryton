@@ -182,15 +182,15 @@ class Forecast(Workflow, ModelSQL, ModelView):
             ]
 
     @classmethod
-    def delete(cls, forecasts):
-        # Cancel before delete
-        cls.cancel(forecasts)
-        for forecast in forecasts:
-            if forecast.state != 'cancelled':
-                raise AccessError(
-                    gettext('stock_forecast.msg_forecast_delete_cancel',
-                        forecast=forecast.rec_name))
-        super().delete(forecasts)
+    def check_modification(cls, mode, forecasts, values=None, external=False):
+        super().check_modification(
+            mode, forecasts, values=values, external=external)
+        if mode == 'delete':
+            for forecast in forecasts:
+                if forecast.state not in {'cancelled', 'draft'}:
+                    raise AccessError(gettext(
+                            'stock_forecast.msg_forecast_delete_cancel',
+                            forecast=forecast.rec_name))
 
     @classmethod
     @ModelView.button

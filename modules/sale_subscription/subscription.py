@@ -871,25 +871,17 @@ class LineConsumption(ModelSQL, ModelView):
         return super().copy(consumptions, default=default)
 
     @classmethod
-    def write(cls, *args):
-        for consumptions in args[::2]:
+    def check_modification(
+            cls, mode, consumptions, values=None, external=False):
+        super().check_modification(
+            mode, consumptions, values=values, external=external)
+        if mode in {'write', 'delete'}:
             for consumption in consumptions:
                 if consumption.invoice_line:
-                    raise AccessError(
-                        gettext('sale_subscription'
-                            '.msg_consumption_modify_invoiced',
+                    raise AccessError(gettext(
+                            'sale_subscription.'
+                            'msg_consumption_modify_invoiced',
                             consumption=consumption.rec_name))
-        super().write(*args)
-
-    @classmethod
-    def delete(cls, consumptions):
-        for consumption in consumptions:
-            if consumption.invoice_line:
-                raise AccessError(
-                    gettext('sale_subscription'
-                        '.msg_consumption_modify_invoiced',
-                        consumption=consumption.rec_name))
-        super().delete(consumptions)
 
     @classmethod
     def get_invoice_lines(cls, consumptions, invoice):

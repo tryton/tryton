@@ -148,17 +148,6 @@ class Inventory(Workflow, ModelSQL, ModelView):
             ]
 
     @classmethod
-    def delete(cls, inventories):
-        # Cancel before delete
-        cls.cancel(inventories)
-        for inventory in inventories:
-            if inventory.state != 'cancelled':
-                raise AccessError(
-                    gettext('stock.msg_inventory_delete_cancel',
-                        inventory=inventory.rec_name))
-        super().delete(inventories)
-
-    @classmethod
     @ModelView.button
     @Workflow.transition('done')
     def confirm(cls, inventories):
@@ -215,26 +204,36 @@ class Inventory(Workflow, ModelSQL, ModelView):
         Line.cancel_move([l for i in inventories for l in i.lines])
 
     @classmethod
-    def create(cls, vlist):
+    def preprocess_values(cls, mode, values):
         pool = Pool()
         Configuration = pool.get('stock.configuration')
-        config = Configuration(1)
-        vlist = [x.copy() for x in vlist]
-        default_company = cls.default_company()
-        for values in vlist:
-            if values.get('number') is None:
-                values['number'] = config.get_multivalue(
-                    'inventory_sequence',
-                    company=values.get('company', default_company)).get()
-        inventories = super().create(vlist)
-        cls.complete_lines(inventories, fill=False)
-        return inventories
+        values = super().preprocess_values(mode, values)
+        if mode == 'create' and not values.get('number'):
+            company_id = values.get('company', cls.default_company())
+            if company_id is not None:
+                configuration = Configuration(1)
+                if sequence := configuration.get_multivalue(
+                        'inventory_sequence', company=company_id):
+                    values['number'] = sequence.get()
+        return values
 
     @classmethod
-    def write(cls, *args):
-        super().write(*args)
-        inventories = cls.browse(set(sum(args[::2], [])))
-        cls.complete_lines(inventories, fill=False)
+    def on_modification(cls, mode, inventories, field_names=None):
+        super().on_modification(mode, inventories, field_names=field_names)
+        if mode in {'create', 'write'}:
+            cls.complete_lines(inventories, fill=False)
+
+    @classmethod
+    def check_modification(
+            cls, mode, inventories, values=None, external=False):
+        super().check_modification(
+            mode, inventories, values=values, external=external)
+        if mode == 'delete':
+            for inventory in inventories:
+                if inventory.state not in {'cancelled', 'draft'}:
+                    raise AccessError(gettext(
+                            'stock.msg_inventory_delete_cancel',
+                            inventory=inventory.rec_name))
 
     @classmethod
     def copy(cls, inventories, default=None):
@@ -249,9 +248,7 @@ class Inventory(Workflow, ModelSQL, ModelView):
         default.setdefault('lines.moves', None)
         default.setdefault('number', None)
 
-        new_inventories = super().copy(inventories, default=default)
-        cls.complete_lines(new_inventories, fill=False)
-        return new_inventories
+        return super().copy(inventories, default=default)
 
     @staticmethod
     def grouping():
@@ -514,14 +511,16 @@ class InventoryLine(ModelSQL, ModelView):
             self.expected_quantity = quantity
 
     @classmethod
-    def delete(cls, lines):
-        for line in lines:
-            if line.inventory_state not in {'cancelled', 'draft'}:
-                raise AccessError(
-                    gettext('stock.msg_inventory_line_delete_cancel',
-                        line=line.rec_name,
-                        inventory=line.inventory.rec_name))
-        super().delete(lines)
+    def check_modification(cls, mode, lines, values=None, external=False):
+        super().check_modification(
+            mode, lines, values=values, external=external)
+        if mode == 'delete':
+            for line in lines:
+                if line.inventory_state not in {'cancelled', 'draft'}:
+                    raise AccessError(gettext(
+                            'stock.msg_inventory_line_delete_cancel',
+                            line=line.rec_name,
+                            inventory=line.inventory.rec_name))
 
 
 class Count(Wizard):

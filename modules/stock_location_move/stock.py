@@ -226,13 +226,14 @@ def deactivate_empty_location(func):
     def wrapper(cls, shipments, *args, **kwargs):
         pool = Pool()
         Location = pool.get('stock.location')
-        func(cls, shipments, *args, **kwargs)
+        result = func(cls, shipments, *args, **kwargs)
         locations = set()
         for shipment in shipments:
             locations.update(
                 move.from_location for move in shipment.moves
                 if move.from_location.movable)
         Location.deactivate_empty(list(locations))
+        return result
     return wrapper
 
 

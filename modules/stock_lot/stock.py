@@ -3,7 +3,6 @@
 import datetime
 from collections import defaultdict
 from copy import copy
-from functools import wraps
 
 from sql import Cast, Column, Null
 from sql.conditionals import Case
@@ -22,37 +21,6 @@ from trytond.pyson import Bool, Eval, If, Len
 from trytond.tools import grouped_slice
 from trytond.transaction import Transaction
 from trytond.wizard import Button, StateTransition, StateView, Wizard
-
-
-def check_no_move(func):
-    def find_moves(cls, records, state=None):
-        pool = Pool()
-        Move = pool.get('stock.move')
-        for sub_records in grouped_slice(records):
-            domain = [
-                ('lot', 'in', [r.id for r in sub_records])
-                ]
-            if state:
-                domain.append(('state', '=', state))
-            moves = Move.search(domain, limit=1, order=[])
-            if moves:
-                return True
-        return False
-
-    @wraps(func)
-    def decorator(cls, *args):
-        transaction = Transaction()
-        if transaction.user and transaction.check_access:
-            actions = iter(args)
-            for records, values in zip(actions, actions):
-                for field, state, error in cls._modify_no_move:
-                    if field in values:
-                        if find_moves(cls, records, state):
-                            raise AccessError(gettext(error))
-                        # No moves for those records
-                        break
-        func(cls, *args)
-    return decorator
 
 
 class LotMixin:
@@ -144,26 +112,46 @@ class Lot(DeactivableMixin, ModelSQL, ModelView, LotMixin, StockMixin):
         return super().copy(lots, default=default)
 
     @classmethod
-    def create(cls, vlist):
+    def preprocess_values(cls, mode, values):
         pool = Pool()
         Product = pool.get('product.product')
-        vlist = [v.copy() for v in vlist]
-        missing_number = defaultdict(list)
-        for values in vlist:
-            if not values.get('number') and values.get('product') is not None:
-                product = Product(values['product'])
+        values = super().preprocess_values(mode, values)
+        if mode == 'create' and not values.get('number'):
+            product_id = values.get('product')
+            if product_id is not None:
+                product = Product(product_id)
                 if product.lot_sequence:
-                    missing_number[product.lot_sequence].append(values)
-
-        for sequence, values in missing_number.items():
-            for vals, number in zip(values, sequence.get_many(len(values))):
-                vals['number'] = number
-        return super().create(vlist)
+                    values['number'] = product.lot_sequence.get()
+        return values
 
     @classmethod
-    @check_no_move
-    def write(cls, *args):
-        super().write(*args)
+    def check_modification(cls, mode, lots, values=None, external=False):
+        pool = Pool()
+        Move = pool.get('stock.move')
+        transaction = Transaction()
+
+        def find_moves(cls, state=None):
+            for sub_records in grouped_slice(lots):
+                domain = [
+                    ('lot', 'in', [r.id for r in sub_records])
+                    ]
+                if state:
+                    domain.append(('state', '=', state))
+                moves = Move.search(domain, limit=1, order=[])
+                if moves:
+                    return True
+            return False
+
+        super().check_modification(
+            mode, lots, values=values, external=external)
+        if mode == 'write':
+            if transaction.user and transaction.check_access:
+                for field, state, error in cls._modify_no_move:
+                    if field in values:
+                        if find_moves(state):
+                            raise AccessError(gettext(error))
+                        # No moves
+                        break
 
     @classmethod
     @ModelView.button_action('stock_lot.act_lot_trace_upward_relate')

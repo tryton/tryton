@@ -321,29 +321,31 @@ class ShipmentCost(Workflow, ModelSQL, ModelView):
                     })
 
     @classmethod
-    def create(cls, vlist):
+    def preprocess_values(cls, mode, values):
         pool = Pool()
         Config = pool.get('account.configuration')
-
-        vlist = [v.copy() for v in vlist]
-        config = Config(1)
-        default_company = cls.default_company()
-        for values in vlist:
-            if values.get('number') is None:
-                values['number'] = config.get_multivalue(
-                    'shipment_cost_sequence',
-                    company=values.get('company', default_company)).get()
-        return super().create(vlist)
+        values = super().preprocess_values(mode, values)
+        if values.get('number') is None:
+            config = Config(1)
+            company_id = values.get('company', cls.default_company())
+            if company_id is not None:
+                if sequence := config.get_multivalue(
+                        'shipment_cost_sequence', company=company_id):
+                    values['number'] = sequence.get()
+        return values
 
     @classmethod
-    def delete(cls, shipment_costs):
-        for shipment_cost in shipment_costs:
-            if shipment_cost.state not in {'cancelled', 'draft'}:
-                raise AccessError(
-                    gettext('account_stock_shipment_cost'
-                        '.msg_shipment_cost_delete_cancel',
-                        shipment_cost=shipment_cost.rec_name))
-        super().delete(shipment_costs)
+    def check_modification(
+            cls, mode, shipment_costs, values=None, external=False):
+        super().check_modification(
+            mode, shipment_costs, values=values, external=external)
+        if mode == 'delete':
+            for shipment_cost in shipment_costs:
+                if shipment_cost.state not in {'cancelled', 'draft'}:
+                    raise AccessError(
+                        gettext('account_stock_shipment_cost'
+                            '.msg_shipment_cost_delete_cancel',
+                            shipment_cost=shipment_cost.rec_name))
 
 
 class ShipmentCost_Shipment(ModelSQL):

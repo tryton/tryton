@@ -45,16 +45,12 @@ class Promotion(metaclass=PoolMeta):
         return super().match(pattern)
 
     @classmethod
-    def write(cls, *args):
+    def on_modification(cls, mode, promotions, field_names=None):
         pool = Pool()
         Number = pool.get('sale.promotion.coupon.number')
-        super().write(*args)
-        actions = iter(args)
-        numbers = []
-        for promotions, values in zip(actions, actions):
-            if {'start_date', 'end_date'} & values.keys():
-                numbers.extend(cls._update_coupon_number_dates(promotions))
-        Number.save(numbers)
+        super().on_modification(mode, promotions, field_names=field_names)
+        if mode == 'write' and field_names & {'start_date', 'end_date'}:
+            Number.save(list(cls._update_coupon_number_dates(promotions)))
 
     @classmethod
     def _update_coupon_number_dates(cls, promotions):

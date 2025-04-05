@@ -22,11 +22,12 @@ def process_sale(moves_field):
             with without_check_access():
                 sales = set(m.sale for s in cls.browse(shipments)
                     for m in getattr(s, moves_field) if m.sale)
-            func(cls, shipments)
+            result = func(cls, shipments)
             if sales:
                 with transaction.set_context(
                         queue_batch=context.get('queue_batch', True)):
                     Sale.__queue__.process(sales)
+            return result
         return wrapper
     return _process_sale
 
@@ -112,11 +113,12 @@ def process_sale_move(func):
         context = transaction.context
         with without_check_access():
             sales = set(m.sale for m in cls.browse(moves) if m.sale)
-        func(cls, moves)
+        result = func(cls, moves)
         if sales:
             with transaction.set_context(
                     queue_batch=context.get('queue_batch', True)):
                 Sale.__queue__.process(sales)
+        return result
     return wrapper
 
 
@@ -230,5 +232,5 @@ class Move(metaclass=PoolMeta):
 
     @classmethod
     @process_sale_move
-    def delete(cls, moves):
-        super().delete(moves)
+    def on_delete(cls, moves):
+        return super().on_delete(moves)

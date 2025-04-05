@@ -72,24 +72,24 @@ class POS(ModelSQL, ModelView):
         return True
 
     @classmethod
-    def write(cls, *args):
+    def check_modification(cls, mode, points, values=None, external=False):
         pool = Pool()
         Sale = pool.get('sale.point.sale')
-        transaction = Transaction()
-        if transaction.user and transaction.check_access:
-            actions = iter(args)
-            for points, values in zip(actions, actions):
-                if 'tax_included' in values:
-                    for sub_points in grouped_slice(points):
-                        if Sale.search([
-                                    ('point', 'in',
-                                        list(map(int, sub_points))),
-                                    ],
-                                limit=1, order=[]):
-                            raise AccessError(gettext(
-                                    'sale_point.msg_point_change_tax_included')
-                                )
-        super().write(*args)
+
+        super().check_modification(
+            mode, points, values=values, external=external)
+
+        if mode == 'write':
+            if 'tax_included' in values:
+                for sub_points in grouped_slice(points):
+                    if Sale.search([
+                                ('point', 'in',
+                                    list(map(int, sub_points))),
+                                ],
+                            limit=1, order=[]):
+                        raise AccessError(gettext(
+                                'sale_point.'
+                                'msg_point_change_tax_included'))
 
 
 class POSSale(Workflow, ModelSQL, ModelView, TaxableMixin):
@@ -276,13 +276,15 @@ class POSSale(Workflow, ModelSQL, ModelView, TaxableMixin):
         return super().copy(sales, default=default)
 
     @classmethod
-    def delete(cls, sales):
-        for sale in sales:
-            if sale.number:
-                raise AccessError(
-                    gettext('sale_point.msg_sale_delete_numbered',
-                        sale=sale.rec_name))
-        super().delete(sales)
+    def check_modification(cls, mode, sales, values=None, external=False):
+        super().check_modification(
+            mode, sales, values=values, external=external)
+        if mode == 'delete':
+            for sale in sales:
+                if sale.number:
+                    raise AccessError(gettext(
+                            'sale_point.msg_sale_delete_numbered',
+                            sale=sale.rec_name))
 
     @classmethod
     def validate(cls, sales):
@@ -909,14 +911,21 @@ class POSCashSession(Workflow, ModelSQL, ModelView):
                             session.currency)))
 
     @classmethod
-    def delete(cls, sessions):
-        cls.open(sessions)
-        for session in sessions:
-            if session.state != 'open':
-                raise AccessError(
-                    gettext('sale_point.msg_cash_session_delete_open',
-                        session=session.rec_name))
-        super().delete(sessions)
+    def on_modification(cls, mode, sessions, field_names=None):
+        super().on_modification(mode, sessions, field_names=field_names)
+        if mode == 'delete':
+            cls.open(sessions)
+
+    @classmethod
+    def check_modification(cls, mode, sessions, values=None, external=False):
+        super().check_modification(
+            mode, sessions, values=values, external=external)
+        if mode == 'delete':
+            for session in sessions:
+                if session.state != 'open':
+                    raise AccessError(gettext(
+                            'sale_point.msg_cash_session_delete_open',
+                            session=session.rec_name))
 
     @classmethod
     @ModelView.button
@@ -1054,34 +1063,36 @@ class POSPayment(ModelSQL, ModelView):
             return self.method.cash
 
     @classmethod
-    def create(cls, vlist):
+    def preprocess_values(cls, mode, values):
         pool = Pool()
         Method = pool.get('sale.point.payment.method')
         Sale = pool.get('sale.point.sale')
         Session = pool.get('sale.point.cash.session')
-        vlist = [v.copy() for v in vlist]
-        for values in vlist:
+        values = super().preprocess_values(mode, values)
+        if mode == 'create':
             if values.get('method') and values.get('sale'):
                 method = Method(values['method'])
                 if method.cash:
                     sale = Sale(values['sale'])
                     values['session'] = Session.get_current(sale.point)
-        return super().create(vlist)
+        return values
 
     @classmethod
-    def delete(cls, payments):
-        for payment in payments:
-            if payment.sale.state != 'open':
-                raise AccessError(
-                    gettext('sale_point.msg_payment_delete_sale_open',
-                        payment=payment.rec_name,
-                        sale=payment.sale.rec_name))
-            if payment.session and payment.session.state != 'open':
-                raise AccessError(
-                    gettext('sale_point.msg_payment_delete_session_open',
-                        payment=payment.rec_name,
-                        session=payment.session.rec_name))
-        super().delete(payments)
+    def check_modification(cls, mode, payments, values=None, external=False):
+        super().check_modification(
+            mode, payments, values=values, external=external)
+        if mode == 'delete':
+            for payment in payments:
+                if payment.sale.state != 'open':
+                    raise AccessError(gettext(
+                            'sale_point.msg_payment_delete_sale_open',
+                            payment=payment.rec_name,
+                            sale=payment.sale.rec_name))
+                if payment.session and payment.session.state != 'open':
+                    raise AccessError(gettext(
+                            'sale_point.msg_payment_delete_session_open',
+                            payment=payment.rec_name,
+                            session=payment.session.rec_name))
 
     def get_account_move_lines(self):
         "Return account move lines"
@@ -1258,18 +1269,20 @@ class POSCashTransfer(Workflow, ModelSQL, ModelView):
         return self.point.company.currency if self.point else None
 
     @classmethod
-    def delete(cls, transfers):
-        for transfer in transfers:
-            if transfer.state == 'posted':
-                raise AccessError(
-                    gettext('sale_point.msg_transfer_delete_posted',
-                        transfer=transfer.rec_name))
-            if transfer.session.state != 'open':
-                raise AccessError(
-                    gettext('sale_point.msg_transfer_delete_session_open',
-                        transfer=transfer.rec_name,
-                        session=transfer.session.rec_name))
-        super().delete(transfers)
+    def check_modification(cls, mode, transfers, values=None, external=False):
+        super().check_modification(
+            mode, transfers, values=values, external=external)
+        if mode == 'delete':
+            for transfer in transfers:
+                if transfer.state == 'posted':
+                    raise AccessError(gettext(
+                            'sale_point.msg_transfer_delete_posted',
+                            transfer=transfer.rec_name))
+                if transfer.session.state != 'open':
+                    raise AccessError(gettext(
+                            'sale_point.msg_transfer_delete_session_open',
+                            transfer=transfer.rec_name,
+                            session=transfer.session.rec_name))
 
     @classmethod
     @ModelView.button
@@ -1320,16 +1333,16 @@ class POSCashTransfer(Workflow, ModelSQL, ModelView):
         return move
 
     @classmethod
-    def create(cls, vlist):
+    def preprocess_values(cls, mode, values):
         pool = Pool()
         Point = pool.get('sale.point')
         Session = pool.get('sale.point.cash.session')
-        vlist = [v.copy() for v in vlist]
-        for values in vlist:
-            if values.get('point') and not values.get('session'):
+        values = super().preprocess_values(mode, values)
+        if mode == 'create':
+            if values.get('point') is not None and not values.get('session'):
                 point = Point(values['point'])
                 values['session'] = Session.get_current(point)
-        return super().create(vlist)
+        return values
 
 
 class POSCashTransferType(ModelSQL, ModelView):

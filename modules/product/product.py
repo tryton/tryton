@@ -239,33 +239,23 @@ class Template(
         return config.template_sequence
 
     @classmethod
-    def create(cls, vlist):
-        pool = Pool()
-        Product = pool.get('product.product')
-        vlist = [v.copy() for v in vlist]
-        missing_code = []
-        for values in vlist:
+    def preprocess_values(cls, mode, values):
+        values = super().preprocess_values(mode, values)
+        if mode == 'create':
             values.setdefault('products', None)
             if not values.get('code'):
-                missing_code.append(values)
-        if missing_code:
-            if sequence := cls._code_sequence():
-                for values, code in zip(
-                        missing_code, sequence.get_many(len(missing_code))):
-                    values['code'] = code
-        templates = super().create(vlist)
-        products = sum((t.products for t in templates), ())
-        Product.sync_code(products)
-        return templates
+                if sequence := cls._code_sequence():
+                    values['code'] = sequence.get()
+        return values
 
     @classmethod
-    def write(cls, *args):
+    def on_modification(cls, mode, templates, field_names=None):
         pool = Pool()
         Product = pool.get('product.product')
-        super().write(*args)
-        templates = sum(args[0:None:2], [])
-        products = sum((t.products for t in templates), ())
-        Product.sync_code(products)
+        super().on_modification(mode, templates, field_names=field_names)
+        if mode in {'create', 'write'}:
+            products = sum((t.products for t in templates), ())
+            Product.sync_code(products)
 
     @classmethod
     def copy(cls, templates, default=None):
@@ -673,23 +663,18 @@ class Product(
         return config.product_sequence
 
     @classmethod
-    def create(cls, vlist):
-        vlist = [x.copy() for x in vlist]
-        missing_code = [v for v in vlist if not v.get('suffix_code')]
-        if missing_code:
+    def preprocess_values(cls, mode, values):
+        values = super().preprocess_values(mode, values)
+        if mode == 'create' and not values.get('suffix_code'):
             if sequence := cls._code_sequence():
-                for values, code in zip(
-                        missing_code, sequence.get_many(len(missing_code))):
-                    values['suffix_code'] = code
-        products = super().create(vlist)
-        cls.sync_code(products)
-        return products
+                values['suffix_code'] = sequence.get()
+        return values
 
     @classmethod
-    def write(cls, *args):
-        super().write(*args)
-        products = sum(args[0:None:2], [])
-        cls.sync_code(products)
+    def on_modification(cls, mode, products, field_names=None):
+        super().on_modification(mode, products, field_names=field_names)
+        if mode in {'create', 'write'}:
+            cls.sync_code(products)
 
     @classmethod
     def copy(cls, products, default=None):

@@ -16,7 +16,7 @@ from trytond.modules.stock.exceptions import (
     ProductStockWarning)
 from trytond.pool import Pool
 from trytond.tests.test_tryton import ModuleTestCase, with_transaction
-from trytond.transaction import Transaction
+from trytond.transaction import Transaction, check_access
 
 
 class StockTestCase(
@@ -1609,11 +1609,12 @@ class StockTestCase(
                         'currency': company.currency.id,
                         'company': company.id,
                         }])
-            with self.assertRaises(ProductStockWarning):
-                Product.write(products, {'active': False})
+            with check_access():
+                with self.assertRaises(ProductStockWarning):
+                    Product.write(products, {'active': False})
 
-            with self.assertRaises(ProductStockWarning):
-                Template.write([template], {'active': False})
+                with self.assertRaises(ProductStockWarning):
+                    Template.write([template], {'active': False})
 
             Move.create([{
                         'product': product.id,
@@ -1634,8 +1635,9 @@ class StockTestCase(
                         'currency': company.currency.id,
                         'company': company.id,
                         }])
-            Template.write([template], {'active': False})
-            Product.write(products, {'active': False})
+            with check_access():
+                Template.write([template], {'active': False})
+                Product.write(products, {'active': False})
 
     @with_transaction()
     def test_inactive_products_one_with_stock(self):
@@ -1670,11 +1672,12 @@ class StockTestCase(
                         'currency': company.currency.id,
                         'company': company.id,
                         }])
-            with self.assertRaises(ProductStockWarning):
-                Product.write(products, {'active': False})
+            with check_access():
+                with self.assertRaises(ProductStockWarning):
+                    Product.write(products, {'active': False})
 
-            with self.assertRaises(ProductStockWarning):
-                Template.write([template], {'active': False})
+                with self.assertRaises(ProductStockWarning):
+                    Template.write([template], {'active': False})
 
             Move.create([{
                         'product': product.id,
@@ -1686,8 +1689,9 @@ class StockTestCase(
                         'currency': company.currency.id,
                         'company': company.id,
                         }])
-            Template.write([template], {'active': False})
-            Product.write(products, {'active': False})
+            with check_access():
+                Template.write([template], {'active': False})
+                Product.write(products, {'active': False})
 
     @with_transaction()
     def test_location_inactive_with_consumable_product(self):

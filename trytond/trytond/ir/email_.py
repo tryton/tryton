@@ -562,20 +562,10 @@ class EmailTemplate(ModelSQL, ModelView):
             return record.language
 
     @classmethod
-    def create(cls, vlist):
-        ModelView._view_toolbar_get_cache.clear()
-        return super().create(vlist)
-
-    @classmethod
-    def write(cls, *args):
-        if any({'name', 'model'} & v.keys() for v in args[1:None:2]):
+    def on_modification(cls, mode, records, field_names=None):
+        super().on_modification(mode, records, field_names=field_names)
+        if not field_names or {'name', 'model'} & set(field_names):
             ModelView._view_toolbar_get_cache.clear()
-        super().write(*args)
-
-    @classmethod
-    def delete(cls, records):
-        ModelView._view_toolbar_get_cache.clear()
-        super().delete(records)
 
 
 class EmailTemplate_Report(ModelSQL):

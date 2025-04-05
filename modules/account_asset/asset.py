@@ -712,13 +712,15 @@ class Asset(Workflow, ModelSQL, ModelView):
         return super().copy(assets, default=default)
 
     @classmethod
-    def delete(cls, assets):
-        for asset in assets:
-            if asset.state != 'draft':
-                raise AccessError(
-                    gettext('account_asset.msg_asset_delete_draft',
-                        asset=asset.rec_name))
-        return super().delete(assets)
+    def check_modification(cls, mode, assets, values=None, external=False):
+        super().check_modification(
+            mode, assets, values=values, external=external)
+        if mode == 'delete':
+            for asset in assets:
+                if asset.state != 'draft':
+                    raise AccessError(gettext(
+                            'account_asset.msg_asset_delete_draft',
+                            asset=asset.rec_name))
 
 
 class AssetLine(ModelSQL, ModelView):

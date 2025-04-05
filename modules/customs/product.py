@@ -76,18 +76,24 @@ class Category(metaclass=PoolMeta):
             ]
 
     @classmethod
-    def delete(cls, categories):
+    def on_delete(cls, categories):
         pool = Pool()
         Product_TariffCode = pool.get('product-customs.tariff.code')
+
+        callback = super().on_delete(categories)
+
+        product_tariffcodes = set()
         products = [str(t) for t in categories]
-
-        super().delete(categories)
-
         for products in grouped_slice(products):
-            product_tariffcodes = Product_TariffCode.search([
-                    'product', 'in', list(products),
-                    ])
-            Product_TariffCode.delete(product_tariffcodes)
+            product_tariffcodes.update(Product_TariffCode.search([
+                        'product', 'in', list(products),
+                        ]))
+        if product_tariffcodes:
+            product_tariffcodes = Product_TariffCode.browse(
+                product_tariffcodes)
+            callback.append(
+                lambda: Product_TariffCode.delete(product_tariffcodes))
+        return callback
 
 
 class Template(metaclass=PoolMeta):
@@ -145,18 +151,24 @@ class Template(metaclass=PoolMeta):
             ]
 
     @classmethod
-    def delete(cls, templates):
+    def on_delete(cls, templates):
         pool = Pool()
         Product_TariffCode = pool.get('product-customs.tariff.code')
+
+        callback = super().on_delete(templates)
+
+        product_tariffcodes = set()
         products = [str(t) for t in templates]
-
-        super().delete(templates)
-
         for products in grouped_slice(products):
-            product_tariffcodes = Product_TariffCode.search([
-                    'product', 'in', list(products),
-                    ])
-            Product_TariffCode.delete(product_tariffcodes)
+            product_tariffcodes.update(Product_TariffCode.search([
+                        'product', 'in', list(products),
+                        ]))
+        if product_tariffcodes:
+            product_tariffcodes = Product_TariffCode.browse(
+                product_tariffcodes)
+            callback.append(
+                lambda: Product_TariffCode.delete(product_tariffcodes))
+        return callback
 
 
 class Product_TariffCode(sequence_ordered(), ModelSQL, ModelView):

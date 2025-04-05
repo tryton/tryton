@@ -38,7 +38,7 @@ class Request(metaclass=PoolMeta):
         return super().copy(requests, default=default)
 
     @classmethod
-    def delete(cls, requests):
+    def on_delete(cls, requests):
         pool = Pool()
         Sale = pool.get('sale.sale')
         SaleLine = pool.get('sale.line')
@@ -54,9 +54,8 @@ class Request(metaclass=PoolMeta):
                         'purchase_request': None,
                         })
 
-        super().delete(requests)
-
         if sales:
             with transaction.set_context(
                     queue_batch=context.get('queue_batch', True)):
                 Sale.__queue__.process(sales)
+        return super().on_delete(requests)

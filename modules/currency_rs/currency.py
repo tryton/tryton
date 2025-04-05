@@ -100,16 +100,19 @@ class Cron(metaclass=PoolMeta):
             if r.Date == date.strftime('%d.%m.%Y')}
 
     @classmethod
-    def write(cls, *args):
+    def check_modification(cls, mode, crons, values=None, external=False):
         pool = Pool()
         Warning = pool.get('res.user.warning')
-        actions = iter(args)
-        for crons, values in zip(actions, actions):
-            if ({'rs_username', 'rs_password', 'rs_license_id'}
-                    & values.keys()):
-                warning_name = Warning.format('rs_credential', crons)
-                if Warning.check(warning_name):
-                    raise RSCredentialWarning(
-                        warning_name,
-                        gettext('currency_rs.msg_rs_credential_modified'))
-        return super().write(*args)
+
+        super().check_modification(
+            mode, crons, values=values, external=external)
+
+        if (mode == 'write'
+                and external
+                and values.keys() & {
+                    'rs_username', 'rs_password', 'rs_license_id'}):
+            warning_name = Warning.format('rs_credential', crons)
+            if Warning.check(warning_name):
+                raise RSCredentialWarning(
+                    warning_name,
+                    gettext('currency_rs.msg_rs_credential_modified'))

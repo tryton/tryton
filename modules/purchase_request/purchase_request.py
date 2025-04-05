@@ -268,21 +268,19 @@ class PurchaseRequest(ModelSQL, ModelView):
             ]
 
     @classmethod
-    def create(cls, vlist):
-        transaction = Transaction()
-        if transaction.user and transaction.check_access:
-            raise AccessError(
-                gettext('purchase_request.msg_request_no_create'))
-        return super().create(vlist)
-
-    @classmethod
-    def delete(cls, requests):
-        for request in requests:
-            if request.purchase_line:
+    def check_modification(cls, mode, requests, values=None, external=False):
+        super().check_modification(
+            mode, requests, values=values, external=external)
+        if mode == 'create':
+            if external:
                 raise AccessError(
-                    gettext('purchase_request.msg_request_delete_purchased',
-                        request=request.rec_name))
-        super().delete(requests)
+                    gettext('purchase_request.msg_request_no_create'))
+        elif mode == 'delete':
+            for request in requests:
+                if request.purchase_line:
+                    raise AccessError(gettext(
+                            'purchase_request.msg_request_delete_purchased',
+                            request=request.rec_name))
 
     @classmethod
     def copy(cls, requests, default=None):

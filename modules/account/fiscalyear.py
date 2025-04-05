@@ -204,38 +204,28 @@ class FiscalYear(Workflow, ModelSQL, ModelView):
         Period.check_fiscalyear_dates(periods, field_names={'fiscalyear'})
 
     @classmethod
-    def create(cls, vlist):
-        fiscalyears = super().create(vlist)
-        cls._find_cache.clear()
-        return fiscalyears
-
-    @classmethod
-    def write(cls, *args):
+    def check_modification(
+            cls, mode, fiscalyears, values=None, external=False):
         pool = Pool()
         Move = pool.get('account.move')
-        actions = iter(args)
-        for fiscalyears, values in zip(actions, actions):
-            if values.get('move_sequence'):
-                for fiscalyear in fiscalyears:
-                    if (fiscalyear.move_sequence
-                            and fiscalyear.move_sequence.id
-                            != values['move_sequence']):
+        super().check_modification(
+            mode, fiscalyears, values=values, external=external)
+        if mode == 'write' and 'move_sequence' in values:
+            for fiscalyear in fiscalyears:
+                if sequence := fiscalyear.move_sequence:
+                    if sequence.id != values['move_sequence']:
                         if Move.search([
                                     ('period.fiscalyear', '=', fiscalyear.id),
                                     ('state', '=', 'posted'),
-                                    ]):
+                                    ], limit=1):
                             raise AccessError(
                                 gettext('account.'
                                     'msg_change_fiscalyear_move_sequence',
                                     fiscalyear=fiscalyear.rec_name))
-        super().write(*args)
-        cls._find_cache.clear()
 
     @classmethod
-    def delete(cls, fiscalyears):
-        Period = Pool().get('account.period')
-        Period.delete([p for f in fiscalyears for p in f.periods])
-        super().delete(fiscalyears)
+    def on_modification(cls, mode, records, field_names=None):
+        super().on_modification(mode, records, field_names=field_names)
         cls._find_cache.clear()
 
     @classmethod

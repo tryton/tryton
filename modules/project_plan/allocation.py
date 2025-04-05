@@ -1,7 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from trytond.model import ModelSQL, ModelView, fields
-from trytond.pool import Pool
 
 
 class Allocation(ModelSQL, ModelView):
@@ -26,34 +25,21 @@ class Allocation(ModelSQL, ModelView):
         return [('employee.rec_name',) + tuple(clause[1:])]
 
     @classmethod
-    def write(cls, *args):
-        Work = Pool().get('project.work')
-        super().write(*args)
-
-        works = Work.search([
-                ('allocations', 'in',
-                    [a.id for allocations in args[::2] for a in allocations]),
-                ])
-
-        for work in works:
-            work.reset_leveling()
-        for work in works:
-            work.compute_dates()
+    def on_modification(cls, mode, allocations, field_names=None):
+        super().on_modification(mode, allocations, field_names=field_names)
+        if mode in {'create', 'write'}:
+            for allocation in allocations:
+                allocation.work.reset_leveling()
+                allocation.work.compute_dates()
 
     @classmethod
-    def create(cls, vlist):
-        allocations = super().create(vlist)
-        for allocation in allocations:
-            allocation.work.reset_leveling()
-            allocation.work.compute_dates()
-        return allocations
-
-    @classmethod
-    def delete(cls, allocations):
+    def on_delete(cls, allocations):
+        callback = super().on_delete(allocations)
         works = [a.work for a in allocations]
-        super().delete(allocations)
 
-        for work in works:
-            work.reset_leveling()
-        for work in works:
-            work.compute_dates()
+        def replan():
+            for work in works:
+                work.reset_leveling()
+                work.compute_dates()
+        callback.append(replan)
+        return callback

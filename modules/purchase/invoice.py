@@ -21,11 +21,12 @@ def process_purchase(func):
         with without_check_access():
             purchases = set(
                 p for i in cls.browse(invoices) for p in i.purchases)
-        func(cls, invoices)
+        result = func(cls, invoices)
         if purchases:
             with transaction.set_context(
                     queue_batch=context.get('queue_batch', True)):
                 Purchase.__queue__.process(purchases)
+        return result
     return wrapper
 
 
@@ -68,8 +69,8 @@ class Invoice(metaclass=PoolMeta):
 
     @classmethod
     @process_purchase
-    def delete(cls, invoices):
-        super().delete(invoices)
+    def on_delete(cls, invoices):
+        return super().on_delete(invoices)
 
     @classmethod
     @ModelView.button
@@ -160,7 +161,7 @@ class InvoiceLine(metaclass=PoolMeta):
         return models
 
     @classmethod
-    def delete(cls, lines):
+    def on_delete(cls, lines):
         pool = Pool()
         Purchase = pool.get('purchase.purchase')
         transaction = Transaction()
@@ -169,8 +170,8 @@ class InvoiceLine(metaclass=PoolMeta):
             invoices = (l.invoice for l in cls.browse(lines)
                 if l.type == 'line' and l.invoice)
             purchases = set(p for i in invoices for p in i.purchases)
-        super().delete(lines)
         if purchases:
             with transaction.set_context(
                     queue_batch=context.get('queue_batch', True)):
                 Purchase.__queue__.process(purchases)
+        return super().on_delete(lines)

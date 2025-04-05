@@ -582,21 +582,22 @@ class Shop(metaclass=PoolMeta):
         Sale.__queue__.process(to_update.keys())
 
     @classmethod
-    def write(cls, *args):
+    def check_modification(cls, mode, shops, values=None, external=False):
         pool = Pool()
         Warning = pool.get('res.user.warning')
-        actions = iter(args)
-        for shops, values in zip(actions, actions):
-            if ({'shopify_url', 'shopify_password',
-                    'shopify_webhook_shared_secret'}
-                    & values.keys()):
-                warning_name = Warning.format('shopify_credential', shops)
-                if Warning.check(warning_name):
-                    raise ShopifyCredentialWarning(
-                        warning_name,
-                        gettext('web_shop_shopify'
-                            '.msg_shopidy_credential_modified'))
-        return super().write(*args)
+        super().check_modification(
+            mode, shops, values=values, external=external)
+        if (mode == 'write'
+                and external
+                and values.keys() & {
+                    'shopify_url', 'shopify_password',
+                    'shopify_webhook_shared_secret'}):
+            warning_name = Warning.format('shopify_credential', shops)
+            if Warning.check(warning_name):
+                raise ShopifyCredentialWarning(
+                    warning_name,
+                    gettext('web_shop_shopify'
+                        '.msg_shopidy_credential_modified'))
 
 
 class ShopShopifyIdentifier(IdentifierMixin, ModelSQL, ModelView):

@@ -155,13 +155,15 @@ class Move(metaclass=PoolMeta):
         super().cancel(moves)
 
     @classmethod
-    def delete(cls, moves):
-        for move in moves:
-            if move.fifo_quantity:
-                raise AccessError(
-                    gettext('product_cost_fifo.msg_move_delete_fifo',
-                        move=move.rec_name))
-        super().delete(moves)
+    def check_modification(cls, mode, moves, values=None, external=False):
+        super().check_modification(
+            mode, moves, values=values, external=external)
+        if mode == 'delete':
+            for move in moves:
+                if move.fifo_quantity:
+                    raise AccessError(gettext(
+                            'product_cost_fifo.msg_move_delete_fifo',
+                            move=move.rec_name))
 
     @classmethod
     def copy(cls, moves, default=None):

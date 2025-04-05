@@ -94,15 +94,12 @@ class BOM(DeactivableMixin, ModelSQL, ModelView):
         return config.bom_sequence
 
     @classmethod
-    def create(cls, vlist):
-        vlist = [v.copy() for v in vlist]
-        missing_code = [v for v in vlist if not v.get('code')]
-        if missing_code:
+    def preprocess_values(cls, mode, values):
+        values = super().preprocess_values(mode, values)
+        if mode == 'create' and not values.get('code'):
             if sequence := cls._code_sequence():
-                for values, code in zip(
-                        missing_code, sequence.get_many(len(missing_code))):
-                    values['code'] = code
-        return super().create(vlist)
+                values['code'] = sequence.get()
+        return values
 
     @classmethod
     def copy(cls, records, default=None):
@@ -205,27 +202,28 @@ class BOMOutput(BOMInput):
         return self.unit.floor(self.quantity * factor)
 
     @classmethod
-    def delete(cls, outputs):
+    def on_delete(cls, outputs):
         pool = Pool()
         ProductBOM = pool.get('product.product-production.bom')
+
+        callback = super().on_delete(outputs)
+
         bom_products = [b for o in outputs for b in o.product.boms]
-        super().delete(outputs)
         # Validate that output_products domain on bom is still valid
-        ProductBOM._validate(bom_products, ['bom'])
+        callback.append(lambda: ProductBOM._validate(bom_products, ['bom']))
+        return callback
 
     @classmethod
-    def write(cls, *args):
+    def on_write(cls, outputs, values):
         pool = Pool()
         ProductBOM = pool.get('product.product-production.bom')
-        actions = iter(args)
-        bom_products = []
-        for outputs, values in zip(actions, actions):
-            if 'product' in values:
-                bom_products.extend(
-                    [b for o in outputs for b in o.product.boms])
-        super().write(*args)
+
+        callback = super().on_write(outputs, values)
+
+        bom_products = [b for o in outputs for b in o.product.boms]
         # Validate that output_products domain on bom is still valid
-        ProductBOM._validate(bom_products, ['bom'])
+        callback.append(lambda: ProductBOM._validate(bom_products, ['bom']))
+        return callback
 
 
 class BOMTree(ModelView):

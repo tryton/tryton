@@ -145,14 +145,6 @@ class User(avatar_mixin(100), DeactivableMixin, ModelSQL, ModelView):
             self.email = self.party.email
 
     @classmethod
-    def _format_email(cls, users):
-        for user in users:
-            email = normalize_email(user.email).lower()
-            if email != user.email:
-                user.email = email
-        cls.save(users)
-
-    @classmethod
     def copy(cls, users, default=None):
         default = default.copy() if default is not None else {}
         default['password_hash'] = None
@@ -160,16 +152,11 @@ class User(avatar_mixin(100), DeactivableMixin, ModelSQL, ModelView):
         return super().copy(users, default=default)
 
     @classmethod
-    def create(cls, vlist):
-        users = super().create(vlist)
-        cls._format_email(users)
-        return users
-
-    @classmethod
-    def write(cls, *args):
-        super().write(*args)
-        users = sum(args[0:None:2], [])
-        cls._format_email(users)
+    def preprocess_values(cls, mode, values):
+        values = super().preprocess_values(mode, values)
+        if values.get('email'):
+            values['email'] = normalize_email(values['email']).lower()
+        return values
 
     @classmethod
     def validate_fields(cls, users, fields_names):
@@ -468,13 +455,13 @@ class UserSession(ModelSQL):
         cls.write(sessions, {})
 
     @classmethod
-    def create(cls, vlist):
-        vlist = [v.copy() for v in vlist]
-        for values in vlist:
+    def preprocess_values(cls, mode, values):
+        values = super().preprocess_values(mode, values)
+        if mode == 'create':
             # Ensure to get a different key for each record
             # default methods are called only once
             values.setdefault('key', cls.default_key())
-        return super().create(vlist)
+        return values
 
 
 class EmailValidation(Report):

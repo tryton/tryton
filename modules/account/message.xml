@@ -95,9 +95,6 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_only_one_debit_credit_types">
             <field name="text">Account can have only one of the debit or credit type set.</field>
         </record>
-        <record model="ir.message" id="msg_delete_account_with_move_lines">
-            <field name="text">You cannot delete account "%(account)s" because it has move lines.</field>
-        </record>
         <record model="ir.message" id="msg_account_invalid_type_second_currency">
             <field name="text">To set a second currency for account "%(account)s", it must not have a type "payable", "revenue", "receivable" nor "expense".</field>
         </record>

@@ -240,14 +240,16 @@ class InvoiceDeferred(Workflow, ModelSQL, ModelView):
                 and deferral.moves[-1].period.end_date >= deferral.end_date)
 
     @classmethod
-    def delete(cls, deferrals):
-        for deferral in deferrals:
-            if deferral.state != 'draft':
-                raise AccessError(
-                    gettext('account_invoice_defer'
-                        '.msg_invoice_deferred_delete_draft',
-                        deferral=deferral.rec_name))
-        return super().delete(deferrals)
+    def check_modification(cls, mode, deferrals, values=None, external=False):
+        super().check_modification(
+            mode, deferrals, values=values, external=external)
+        if mode == 'delete':
+            for deferral in deferrals:
+                if deferral.state != 'draft':
+                    raise AccessError(gettext(
+                            'account_invoice_defer'
+                            '.msg_invoice_deferred_delete_draft',
+                            deferral=deferral.rec_name))
 
     @classmethod
     def defer_amount(cls, deferrals):

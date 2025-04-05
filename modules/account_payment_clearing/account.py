@@ -40,18 +40,9 @@ class MoveReconciliation(metaclass=PoolMeta):
     __name__ = 'account.move.reconciliation'
 
     @classmethod
-    def create(cls, vlist):
+    def on_modification(cls, mode, reconciliations, field_names=None):
         pool = Pool()
         Payment = pool.get('account.payment')
-        reconciliations = super().create(vlist)
+        super().on_modification(mode, reconciliations, field_names=field_names)
         Payment.__queue__.update_reconciled(
             list(_payments_to_update(reconciliations)))
-        return reconciliations
-
-    @classmethod
-    def delete(cls, reconciliations):
-        pool = Pool()
-        Payment = pool.get('account.payment')
-        payments = _payments_to_update(reconciliations)
-        super().delete(reconciliations)
-        Payment.__queue__.update_reconciled(list(payments))

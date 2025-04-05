@@ -324,14 +324,15 @@ class Payment(StripeCustomerMethodMixin, CheckoutMixin, metaclass=PoolMeta):
                         payment=payment.rec_name))
 
     @classmethod
-    def create(cls, vlist):
-        vlist = [v.copy() for v in vlist]
-        for values in vlist:
-            # Ensure to get a different key for each record
-            # default methods are called only once
-            values.setdefault('stripe_idempotency_key',
-                cls.default_stripe_idempotency_key())
-        return super().create(vlist)
+    def preprocess_values(cls, mode, values):
+        values = super().preprocess_values(mode, values)
+        if mode == 'create':
+            if 'stripe_idempotency_key' not in values:
+                # Ensure to get a different key for each record
+                # default methods are called only once
+                values['stripe_idempotency_key'] = (
+                    cls.default_stripe_idempotency_key())
+        return values
 
     @classmethod
     def copy(cls, payments, default=None):
@@ -839,13 +840,15 @@ class Refund(Workflow, ModelSQL, ModelView):
         return 'draft'
 
     @classmethod
-    def create(cls, vlist):
-        vlist = [v.copy() for v in vlist]
-        for values in vlist:
-            values.setdefault(
-                'stripe_idempotency_key',
-                cls.default_stripe_idempotency_key())
-        return super().create(vlist)
+    def preprocess_values(cls, mode, values):
+        values = super().preprocess_values(mode, values)
+        if mode == 'create':
+            if 'stripe_idempotency_key' not in values:
+                # Ensure to get a different key for each record
+                # default methods are called only once
+                values['stripe_idempotency_key'] = (
+                    cls.default_stripe_idempotency_key())
+        return values
 
     @classmethod
     def copy(cls, refunds, default=None):
@@ -1394,19 +1397,22 @@ class Account(ModelSQL, ModelView):
         cls.save(accounts)
 
     @classmethod
-    def write(cls, *args):
+    def check_modification(cls, mode, accounts, values=None, external=False):
         pool = Pool()
         Warning = pool.get('res.user.warning')
-        actions = iter(args)
-        for accounts, values in zip(actions, actions):
-            if {'secret_key', 'publishable_key'} & values.keys():
-                warning_name = Warning.format('stripe_key', accounts)
-                if Warning.check(warning_name):
-                    raise StripeAccountWarning(
-                        warning_name,
-                        gettext('account_payment_stripe'
-                            '.msg_stripe_key_modified'))
-        return super().write(*args)
+
+        super().check_modification(
+            mode, accounts, values=values, external=external)
+
+        if (mode == 'write'
+                and external
+                and values.keys() & {'secret_key', 'publishable_key'}):
+            warning_name = Warning.format('stripe_key', accounts)
+            if Warning.check(warning_name):
+                raise StripeAccountWarning(
+                    warning_name,
+                    gettext('account_payment_stripe'
+                        '.msg_stripe_key_modified'))
 
 
 class Customer(CheckoutMixin, DeactivableMixin, ModelSQL, ModelView):
@@ -1505,16 +1511,19 @@ class Customer(CheckoutMixin, DeactivableMixin, ModelSQL, ModelView):
         return self.stripe_customer_id if self.stripe_customer_id else name
 
     @classmethod
-    def write(cls, *args, **kwargs):
-        super().write(*args, **kwargs)
-        cls._sources_cache.clear()
-        cls._payment_methods_cache.clear()
+    def on_modification(cls, mode, customers, field_names=None):
+        super().on_modification(mode, customers, field_names=field_names)
+        if mode == 'write':
+            cls._sources_cache.clear()
+            cls._payment_methods_cache.clear()
 
     @classmethod
     def delete(cls, customers):
+        ids, on_delete = cls._before_delete(customers)
         cls.write(customers, {
                 'active': False,
                 })
+        cls._after_delete(ids, on_delete)
 
     @classmethod
     def copy(cls, customers, default=None):

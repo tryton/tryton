@@ -639,36 +639,32 @@ class Mandate(Workflow, ModelSQL, ModelView):
             ]
 
     @classmethod
-    def create(cls, vlist):
+    def preprocess_values(cls, mode, values):
         pool = Pool()
         Configuration = pool.get('account.configuration')
-
-        config = Configuration(1)
-        vlist = [v.copy() for v in vlist]
-        default_company = cls.default_company()
-        for values in vlist:
-            if not values.get('identification'):
-                sequence = config.get_multivalue(
-                    'sepa_mandate_sequence',
-                    company=values.get('company', default_company))
-                if sequence:
+        values = super().preprocess_values(mode, values)
+        if mode == 'create' and not values.get('identification'):
+            configuration = Configuration(1)
+            company_id = values.get('company', cls.default_company())
+            if company_id is not None:
+                if sequence := configuration.get_multivalue(
+                        'sepa_mandate_sequence', company=company_id):
                     values['identification'] = sequence.get()
-            # Prevent raising false unique constraint
-            if values.get('identification') == '':
-                values['identification'] = None
-        return super().create(vlist)
+        if values.get('identification') == '':
+            values['identification'] = None
+        return values
 
     @classmethod
-    def write(cls, *args):
-        actions = iter(args)
-        args = []
-        for mandates, values in zip(actions, actions):
-            # Prevent raising false unique constraint
-            if values.get('identification') == '':
-                values = values.copy()
-                values['identification'] = None
-            args.extend((mandates, values))
-        super().write(*args)
+    def check_modification(cls, mode, mandates, values=None, external=False):
+        super().check_modification(
+            mode, mandates, values=values, external=external)
+        if mode == 'delete':
+            for mandate in mandates:
+                if mandate.state not in {'draft', 'cancelled'}:
+                    raise AccessError(gettext(
+                            'account_payment_sepa'
+                            '.msg_mandate_delete_draft_cancelled',
+                            mandate=mandate.rec_name))
 
     @classmethod
     def copy(cls, mandates, default=None):
@@ -766,16 +762,6 @@ class Mandate(Workflow, ModelSQL, ModelView):
     def cancel(cls, mandates):
         # TODO must be automaticaly cancelled 13 months after last collection
         pass
-
-    @classmethod
-    def delete(cls, mandates):
-        for mandate in mandates:
-            if mandate.state not in ('draft', 'cancelled'):
-                raise AccessError(
-                    gettext('account_payment_sepa'
-                        '.msg_mandate_delete_draft_cancelled',
-                        mandate=mandate.rec_name))
-        super().delete(mandates)
 
 
 class MandateReport(CompanyReport):

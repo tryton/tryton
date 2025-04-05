@@ -10,7 +10,6 @@ from trytond.model import (
     Check, DeactivableMixin, DigitsMixin, ModelSQL, ModelView, SymbolMixin,
     fields)
 from trytond.pyson import Eval, If
-from trytond.transaction import Transaction
 
 from .exceptions import UOMAccessError, UOMValidationError
 
@@ -150,30 +149,30 @@ class Uom(SymbolMixin, DigitsMixin, DeactivableMixin, ModelSQL, ModelView):
                         uom=uom.rec_name))
 
     @classmethod
-    def write(cls, *args):
-        if Transaction().user == 0:
-            super().write(*args)
-            return
-
-        all_uoms = sum(args[0:None:2], [])
-        old_uom = {
-            uom.id: (uom.factor, uom.rate, uom.category) for uom in all_uoms}
-        old_digits = {uom.id: uom.digits for uom in all_uoms}
-
-        super().write(*args)
-
-        for uom in all_uoms:
-            for i, field in enumerate(['factor', 'rate', 'category']):
-                if getattr(uom, field) != old_uom[uom.id][i]:
-                    raise UOMAccessError(
-                        gettext('product.msg_uom_modify_%s' % field,
-                            uom=uom.rec_name),
-                        gettext('product.msg_uom_modify_options'))
-            if uom.digits < old_digits[uom.id]:
-                raise UOMAccessError(
-                    gettext('product.msg_uom_decrease_digits',
-                        uom=uom.rec_name),
-                    gettext('product.msg_uom_modify_options'))
+    def check_modification(cls, mode, uoms, values=None, external=False):
+        super().check_modification(
+            mode, uoms, values=values, external=external)
+        if (mode == 'write'
+                and values.keys() & {'factor', 'rate', 'category', 'digits'}):
+            for uom in uoms:
+                for field_name in values.keys() & {'factor', 'rate'}:
+                    if values[field_name] != getattr(uom, field_name):
+                        raise UOMAccessError(gettext(
+                                'product.msg_uom_modify_%s' % field_name,
+                                uom=uom.rec_name),
+                            gettext('product.msg_uom_modify_options'))
+                if 'category' in values:
+                    if values['category'] != uom.category.id:
+                        raise UOMAccessError(gettext(
+                                'product.msg_uom_modify_category',
+                                uom=uom.rec_name),
+                            gettext('product.msg_uom_modify_options'))
+                if 'digits' in values:
+                    if values['digits'] < uom.digits:
+                        raise UOMAccessError(gettext(
+                                'product.msg_uom_decrease_digits',
+                                uom=uom.rec_name),
+                            gettext('product.msg_uom_modify_options'))
 
     @property
     def accurate_field(self):

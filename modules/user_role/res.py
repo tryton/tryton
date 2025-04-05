@@ -13,16 +13,15 @@ class Role(ModelSQL, ModelView):
     groups = fields.Many2Many('res.role-res.group', 'role', 'group', "Groups")
 
     @classmethod
-    def write(cls, *args):
+    def on_modification(cls, mode, roles, field_names=None):
         pool = Pool()
         User = pool.get('res.user')
-        roles = sum(args[0:None:2], [])
-        super().write(*args)
-
-        users = User.search([
-                ('roles.role', 'in', [r.id for r in roles]),
-                ])
-        User.sync_roles(users)
+        super().on_modification(mode, roles, field_names=field_names)
+        if mode == 'write':
+            users = User.search([
+                    ('roles.role', 'in', [r.id for r in roles]),
+                    ])
+            User.sync_roles(users)
 
 
 class RoleGroup(ModelSQL):
@@ -48,16 +47,10 @@ class User(metaclass=PoolMeta):
         cls._context_fields.append('roles')
 
     @classmethod
-    def create(cls, vlist):
-        users = super().create(vlist)
-        cls.sync_roles(users)
-        return users
-
-    @classmethod
-    def write(cls, *args):
-        users = sum(args[0:None:2], [])
-        super().write(*args)
-        cls.sync_roles(users)
+    def on_modification(cls, mode, users, field_names=None):
+        super().on_modification(mode, users, field_names=field_names)
+        if mode in {'create', 'write'}:
+            cls.sync_roles(users)
 
     @classmethod
     def sync_roles(cls, users=None, date=None):

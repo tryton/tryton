@@ -37,23 +37,11 @@ def fmany2one(
                 on_delete=getattr(cls, name).ondelete)
 
         @classmethod
-        def create(cls, vlist):
-            vlist = [v.copy() for v in vlist]
-            for values in vlist:
-                if name in values:
-                    values[sources[0]] = convert_value(values.pop(name))
-            return super().create(vlist)
-
-        @classmethod
-        def write(cls, *args):
-            actions = iter(args)
-            args = []
-            for records, values in zip(actions, actions):
-                if name in values:
-                    values = values.copy()
-                    values[sources[0]] = convert_value(values.pop(name))
-                args.extend((records, values))
-            super().write(*args)
+        def preprocess_values(cls, mode, values):
+            values = super().preprocess_values(mode, values)
+            if name in values:
+                values[sources[0]] = convert_value(values.pop(name))
+            return values
 
     @classmethod
     def getter(cls, records, name):

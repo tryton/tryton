@@ -305,24 +305,25 @@ class Account(
             return result
 
     @classmethod
-    def write(cls, *args):
+    def check_modification(cls, mode, accounts, values=None, external=False):
         pool = Pool()
         Entry = pool.get('analytic.account.entry')
-        actions = iter(args)
-        for records, values in zip(actions, actions):
-            if 'root' in values:
-                for sub_records in grouped_slice(records):
-                    entries = Entry.search([
-                            ('account', 'in', list(map(int, sub_records))),
-                            ],
-                        limit=1, order=[])
-                    if entries:
-                        entry, = entries
-                        raise AccessError(gettext(
-                                'analytic_account'
-                                '.msg_analytic_account_root_change',
-                                account=entry.account.rec_name))
-        super().write(*args)
+
+        super().check_modification(
+            mode, accounts, values=values, external=external)
+
+        if mode == 'write' and 'root' in values:
+            for sub_records in grouped_slice(accounts):
+                entries = Entry.search([
+                        ('account', 'in', list(map(int, sub_records))),
+                        ],
+                    limit=1, order=[])
+                if entries:
+                    entry, = entries
+                    raise AccessError(gettext(
+                            'analytic_account'
+                            '.msg_analytic_account_root_change',
+                            account=entry.account.rec_name))
 
 
 class AccountContext(ModelView):

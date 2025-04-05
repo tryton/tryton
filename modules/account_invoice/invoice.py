@@ -1404,17 +1404,6 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin, InvoiceReportMixin):
             or (self.state == 'cancelled'
                 and (self.move or self.cancel_move or self.number)))
 
-    @classmethod
-    def check_modify(cls, invoices):
-        '''
-        Check if the invoices can be modified
-        '''
-        for invoice in invoices:
-            if not invoice.is_modifiable:
-                raise AccessError(
-                    gettext('account_invoice.msg_invoice_modify',
-                        invoice=invoice.rec_name))
-
     def get_rec_name(self, name):
         items = []
         if self.number:
@@ -1456,39 +1445,34 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin, InvoiceReportMixin):
             ]
 
     @classmethod
-    def delete(cls, invoices):
-        cls.check_modify(invoices)
-        # Cancel before delete
-        cls.cancel(invoices)
-        for invoice in invoices:
-            if invoice.state != 'cancelled':
-                raise AccessError(
-                    gettext('account_invoice.msg_invoice_delete_cancel',
-                        invoice=invoice.rec_name))
-            if invoice.number:
-                raise AccessError(
-                    gettext('account_invoice.msg_invoice_delete_numbered',
-                        invoice=invoice.rec_name))
-        super().delete(invoices)
+    def check_modification(cls, mode, invoices, values=None, external=False):
+        super().check_modification(
+            mode, invoices, values=values, external=external)
+        if (mode == 'delete'
+                or (mode == 'write'
+                    and values.keys() - cls._check_modify_exclude)):
+            for invoice in invoices:
+                if not invoice.is_modifiable:
+                    raise AccessError(gettext(
+                            'account_invoice.msg_invoice_modify',
+                            invoice=invoice.rec_name))
+        if mode == 'delete':
+            for invoice in invoices:
+                if invoice.state not in {'cancelled', 'draft'}:
+                    raise AccessError(gettext(
+                            'account_invoice.msg_invoice_delete_cancel',
+                            invoice=invoice.rec_name))
+                if invoice.number:
+                    raise AccessError(gettext(
+                            'account_invoice.msg_invoice_delete_numbered',
+                            invoice=invoice.rec_name))
 
     @classmethod
-    def create(cls, vlist):
-        invoices = super().create(vlist)
-        cls.update_taxes(invoices)
-        return invoices
-
-    @classmethod
-    def write(cls, *args):
-        actions = iter(args)
-        all_invoices = []
-        for invoices, values in zip(actions, actions):
-            if set(values) - cls._check_modify_exclude:
-                cls.check_modify(invoices)
-            all_invoices += invoices
-        update_tax = [i for i in all_invoices if i.state == 'draft']
-        super().write(*args)
-        if update_tax:
-            cls.update_taxes(update_tax)
+    def on_modification(cls, mode, invoices, field_names=None):
+        super().on_modification(mode, invoices, field_names=field_names)
+        if mode != 'delete':
+            if draft_invoices := [i for i in invoices if i.state == 'draft']:
+                cls.update_taxes(draft_invoices)
 
     @classmethod
     def copy(cls, invoices, default=None):
@@ -2804,15 +2788,22 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
             ]
 
     @classmethod
-    def check_modify(cls, lines, fields=None):
-        '''
-        Check if the lines can be modified
-        '''
-        if fields is None or fields - cls._check_modify_exclude:
+    def check_modification(cls, mode, lines, values=None, external=False):
+        super().check_modification(
+            mode, lines, values=values, external=external)
+        if mode == 'create':
+            for line in lines:
+                if line.invoice.state != 'draft':
+                    raise AccessError(gettext(
+                            'account_invoice.msg_invoice_line_create_draft',
+                            invoice=line.invoice.rec_name))
+        elif (mode == 'delete'
+                or (mode == 'write'
+                    and values.keys() - cls._check_modify_exclude)):
             for line in lines:
                 if line.invoice and not line.invoice.is_modifiable:
-                    raise AccessError(
-                        gettext('account_invoice.msg_invoice_line_modify',
+                    raise AccessError(gettext(
+                            'account_invoice.msg_invoice_line_modify',
                             line=line.rec_name,
                             invoice=line.invoice.rec_name))
 
@@ -2821,30 +2812,6 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
         return super().view_attributes() + [
             ('/form//field[@name="note"]|/form//field[@name="description"]',
                 'spell', Eval('party_lang'))]
-
-    @classmethod
-    def delete(cls, lines):
-        cls.check_modify(lines)
-        super().delete(lines)
-
-    @classmethod
-    def write(cls, *args):
-        actions = iter(args)
-        for lines, values in zip(actions, actions):
-            cls.check_modify(lines, set(values))
-        super().write(*args)
-
-    @classmethod
-    def create(cls, vlist):
-        pool = Pool()
-        Invoice = pool.get('account.invoice')
-        invoice_ids = filter(None, {v.get('invoice') for v in vlist})
-        for invoice in Invoice.browse(list(invoice_ids)):
-            if invoice.state != 'draft':
-                raise AccessError(
-                    gettext('account_invoice.msg_invoice_line_create_draft',
-                        invoice=invoice.rec_name))
-        return super().create(vlist)
 
     @classmethod
     def copy(cls, lines, default=None):
@@ -3134,15 +3101,22 @@ class InvoiceTax(sequence_ordered(), ModelSQL, ModelView):
         return (account_id, tax_id, (getattr(self, 'base', 0) or 0) >= 0)
 
     @classmethod
-    def check_modify(cls, taxes, fields=None):
-        '''
-        Check if the taxes can be modified
-        '''
-        if fields is None or fields - cls._check_modify_exclude:
+    def check_modification(cls, mode, taxes, values=None, external=False):
+        super().check_modification(
+            mode, taxes, values=values, external=external)
+        if mode == 'create':
+            for tax in taxes:
+                if tax.invoice.state != 'draft':
+                    raise AccessError(gettext(
+                            'account_invoice.msg_invoice_line_create_draft',
+                            invoice=tax.invoice.rec_name))
+        elif (mode == 'delete'
+                or (mode == 'write'
+                    and values.keys() - cls._check_modify_exclude)):
             for tax in taxes:
                 if not tax.invoice.is_modifiable:
-                    raise AccessError(
-                        gettext('account_invoice.msg_invoice_tax_modify',
+                    raise AccessError(gettext(
+                            'account_invoice.msg_invoice_tax_modify',
                             tax=tax.rec_name,
                             invoice=tax.invoice.rec_name))
 
@@ -3153,30 +3127,6 @@ class InvoiceTax(sequence_ordered(), ModelSQL, ModelView):
                 return i
             i += 1
         return 0
-
-    @classmethod
-    def delete(cls, taxes):
-        cls.check_modify(taxes)
-        super().delete(taxes)
-
-    @classmethod
-    def write(cls, *args):
-        actions = iter(args)
-        for taxes, values in zip(actions, actions):
-            cls.check_modify(taxes, set(values))
-        super().write(*args)
-
-    @classmethod
-    def create(cls, vlist):
-        pool = Pool()
-        Invoice = pool.get('account.invoice')
-        invoice_ids = filter(None, {v.get('invoice') for v in vlist})
-        for invoice in Invoice.browse(list(invoice_ids)):
-            if invoice.state != 'draft':
-                raise AccessError(
-                    gettext('account_invoice.msg_invoice_tax_create_draft',
-                        invoice=invoice.rec_name))
-        return super().create(vlist)
 
     def get_move_lines(self):
         '''

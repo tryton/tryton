@@ -9,20 +9,11 @@ from trytond.transaction import Transaction
 
 
 class _ClearCache(ModelSQL):
-    @classmethod
-    def create(cls, vlist):
-        ModelView._view_toolbar_get_cache.clear()
-        return super().create(vlist)
 
     @classmethod
-    def write(cls, *args):
+    def on_modification(cls, mode, records, field_names=None):
+        super().on_modification(mode, records, field_names=field_names)
         ModelView._view_toolbar_get_cache.clear()
-        super().write(*args)
-
-    @classmethod
-    def delete(cls, records):
-        ModelView._view_toolbar_get_cache.clear()
-        super().delete(records)
 
 
 class Export(_ClearCache, ModelSQL, ModelView):

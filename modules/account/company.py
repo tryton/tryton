@@ -133,20 +133,17 @@ class Company(metaclass=PoolMeta):
         return [('id', 'in', query)]
 
     @classmethod
-    def write(cls, *args):
+    def check_modification(cls, mode, companies, values=None, external=False):
         pool = Pool()
         Move = pool.get('account.move')
-        transaction = Transaction()
-        if transaction.user and transaction.check_access:
-            actions = iter(args)
-            for companies, values in zip(actions, actions):
-                if 'currency' in values:
-                    moves = Move.search([
-                            ('company', 'in', [c.id for c in companies]),
-                            ],
-                        limit=1, order=[])
-                    if moves:
-                        raise AccessError(gettext(
-                                'account.msg_company_change_currency'))
-
-        super().write(*args)
+        super().check_modification(
+            mode, companies, values=values, external=external)
+        if mode == 'write':
+            if 'currency' in values:
+                moves = Move.search([
+                        ('company', 'in', [c.id for c in companies]),
+                        ],
+                    limit=1, order=[])
+                if moves:
+                    raise AccessError(gettext(
+                            'account.msg_company_change_currency'))

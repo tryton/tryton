@@ -10,7 +10,7 @@ from trytond.model import Index, ModelView, Workflow, fields
 from trytond.modules.account.exceptions import FiscalYearNotFoundError
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
-from trytond.transaction import Transaction, without_check_access
+from trytond.transaction import Transaction
 
 from .exceptions import CounterPartyNotFound, CountryNotFound
 
@@ -163,19 +163,13 @@ class Move(metaclass=PoolMeta):
                     return self.intrastat_from_country
 
     @classmethod
-    @without_check_access
-    def _reopen_intrastat(cls, *args):
+    def _reopen_intrastat(cls, moves):
         pool = Pool()
         IntrastatDeclaration = pool.get(
             'account.stock.eu.intrastat.declaration')
-        declarations = set()
-        actions = iter(args)
-        for moves, values in zip(actions, actions):
-            moves = cls.browse(moves)
-            if any(k.startswith('intrastat_') for k in values.keys()):
-                declarations.update(
-                    m.intrastat_declaration for m in moves
-                    if m.intrastat_declaration)
+        declarations = {
+            m.intrastat_declaration for m in moves
+            if m.intrastat_declaration}
         if declarations:
             IntrastatDeclaration.open(
                 IntrastatDeclaration.browse(declarations))
@@ -205,10 +199,12 @@ class Move(metaclass=PoolMeta):
         return values
 
     @classmethod
-    def write(cls, *args):
-        cls._reopen_intrastat(*args)
-        super().write(*args)
-        cls._reopen_intrastat(*args)
+    def on_write(cls, moves, values):
+        callback = super().on_write(moves, values)
+        callback.append(lambda: cls._reopen_intrastat(moves))
+        if any(f.startswith('intrastat_') for f in values):
+            cls._reopen_intrastat(moves)
+        return callback
 
     @classmethod
     def copy(cls, moves, default=None):

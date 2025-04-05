@@ -22,11 +22,12 @@ def process_purchase(moves_field):
             with without_check_access():
                 purchases = set(m.purchase for s in cls.browse(shipments)
                     for m in getattr(s, moves_field) if m.purchase)
-            func(cls, shipments)
+            result = func(cls, shipments)
             if purchases:
                 with transaction.set_context(
                         queue_batch=context.get('queue_batch', True)):
                     Purchase.__queue__.process(purchases)
+            return result
         return wrapper
     return _process_purchase
 
@@ -124,11 +125,11 @@ def process_purchase_move(without_shipment=False):
                 if without_shipment:
                     p_moves = [m for m in p_moves if not m.shipment]
                 purchases = set(m.purchase for m in p_moves if m.purchase)
-            func(cls, moves)
             if purchases:
                 with transaction.set_context(
                         queue_batch=context.get('queue_batch', True)):
                     Purchase.__queue__.process(purchases)
+            return func(cls, moves)
         return wrapper
     return _process_purchase_move
 
@@ -250,8 +251,8 @@ class Move(metaclass=PoolMeta):
 
     @classmethod
     @process_purchase_move()
-    def delete(cls, moves):
-        super().delete(moves)
+    def on_delete(cls, moves):
+        return super().on_delete(moves)
 
 
 class Location(metaclass=PoolMeta):

@@ -279,19 +279,29 @@ class Complaint(Workflow, ModelSQL, ModelView):
             ]
 
     @classmethod
-    def create(cls, vlist):
+    def preprocess_values(cls, mode, values):
         pool = Pool()
         Configuration = pool.get('sale.configuration')
+        values = super().preprocess_values(mode, values)
+        if mode == 'create' and not values.get('number'):
+            company_id = values.get('company', cls.default_company())
+            if company_id is not None:
+                configuration = Configuration(1)
+                if sequence := configuration.get_multivalue(
+                        'complaint_sequence', company=company_id):
+                    values['number'] = sequence.get()
+        return values
 
-        config = Configuration(1)
-        vlist = [v.copy() for v in vlist]
-        default_company = cls.default_company()
-        for values in vlist:
-            if values.get('number') is None:
-                values['number'] = config.get_multivalue(
-                    'complaint_sequence',
-                    company=values.get('company', default_company)).get()
-        return super().create(vlist)
+    @classmethod
+    def check_modification(cls, mode, complaints, values=None, external=False):
+        super().check_modification(
+            mode, complaints, values=values, external=external)
+        if mode == 'delete':
+            for complaint in complaints:
+                if complaint.state != 'draft':
+                    raise AccessError(gettext(
+                            'sale_complaint.msg_complaint_delete_draft',
+                            complaint=complaint.rec_name))
 
     @classmethod
     def copy(cls, complaints, default=None):
@@ -305,15 +315,6 @@ class Complaint(Workflow, ModelSQL, ModelView):
         default.setdefault('rejected_by')
         default.setdefault('cancelled_by')
         return super().copy(complaints, default=default)
-
-    @classmethod
-    def delete(cls, complaints):
-        for complaint in complaints:
-            if complaint.state != 'draft':
-                raise AccessError(
-                    gettext('sale_complaint.msg_complaint_delete_draft',
-                        complaint=complaint.rec_name))
-        super().delete(complaints)
 
     @classmethod
     @ModelView.button
@@ -721,13 +722,15 @@ class Action(ModelSQL, ModelView):
         return credit_note
 
     @classmethod
-    def delete(cls, actions):
-        for action in actions:
-            if action.result:
-                raise AccessError(
-                    gettext('sale_complaint.msg_action_delete_result',
-                        action=action.rec_name))
-        super().delete(actions)
+    def check_modification(cls, mode, actions, values=None, external=False):
+        super().check_modification(
+            mode, actions, values=values, external=external)
+        if mode == 'delete':
+            for action in actions:
+                if action.result:
+                    raise AccessError(gettext(
+                            'sale_complaint.msg_action_delete_result',
+                            action=action.rec_name))
 
 
 class _Action_Line:

@@ -17,9 +17,10 @@ def process_opportunity(func):
             opportunities = Opportunity.browse(
                 set(s.origin for s in cls.browse(sales)
                     if isinstance(s.origin, Opportunity)))
-        func(cls, sales)
+        result = func(cls, sales)
         with without_check_access():
             Opportunity.process(opportunities)
+        return result
     return wrapper
 
 
@@ -31,28 +32,24 @@ class Sale(metaclass=PoolMeta):
         return super()._get_origin() + ['sale.opportunity']
 
     @classmethod
-    def write(cls, *args):
+    def check_modification(cls, mode, sales, values=None, external=False):
         pool = Pool()
         Opportunity = pool.get('sale.opportunity')
-        actions = iter(args)
-        for sales, values in zip(actions, actions):
-            if 'origin' in values:
-                origin = values['origin']
-                if origin and not isinstance(origin, str):
-                    origin = '%s,%s' % tuple(origin)
-                for sale in sales:
-                    if (isinstance(sale.origin, Opportunity)
-                            and str(sale.origin) != origin):
-                        raise AccessError(gettext(
-                                'sale_opportunity'
-                                '.msg_modify_origin_opportunity',
-                                sale=sale.rec_name))
-        super().write(*args)
 
-    @classmethod
-    @process_opportunity
-    def delete(cls, sales):
-        super().delete(sales)
+        super().check_modification(
+            mode, sales, values=values, external=external)
+
+        if mode == 'write' and 'origin' in values:
+            origin = values['origin']
+            if origin and not isinstance(origin, str):
+                origin = '%s,%s' % tuple(origin)
+            for sale in sales:
+                if (isinstance(sale.origin, Opportunity)
+                        and str(sale.origin) != origin):
+                    raise AccessError(gettext(
+                            'sale_opportunity'
+                            '.msg_modify_origin_opportunity',
+                            sale=sale.rec_name))
 
     @classmethod
     @process_opportunity

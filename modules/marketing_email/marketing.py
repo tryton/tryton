@@ -113,29 +113,15 @@ class Email(DeactivableMixin, ModelSQL, ModelView):
         return result
 
     @classmethod
-    def _format_email(cls, records):
-        for record in records:
-            email = normalize_email(record.email).lower()
-            if email != record.email:
-                record.email = email
-        cls.save(records)
-
-    @classmethod
-    def create(cls, vlist):
-        vlist = [v.copy() for v in vlist]
-        for values in vlist:
+    def preprocess_values(cls, mode, values):
+        values = super().preprocess_values(mode, values)
+        if mode == 'create':
             # Ensure to get a different token for each record
             # default methods are called only once
             values.setdefault('email_token', cls.default_email_token())
-        records = super().create(vlist)
-        cls._format_email(records)
-        return records
-
-    @classmethod
-    def write(cls, *args):
-        super().write(*args)
-        records = sum(args[0:None:2], [])
-        cls._format_email(records)
+        if values.get('email'):
+            values['email'] = normalize_email(values['email']).lower()
+        return values
 
     @classmethod
     def validate_fields(cls, records, fields_names):

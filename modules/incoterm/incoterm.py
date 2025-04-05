@@ -70,23 +70,8 @@ class Incoterm_Company(ModelSQL):
     company = fields.Many2One('company.company', "Company", required=True)
 
     @classmethod
-    def create(cls, *args, **kwargs):
+    def on_modification(cls, mode, records, field_names=None):
         pool = Pool()
         Incoterm = pool.get('incoterm.incoterm')
-        records = super().create(*args, **kwargs)
-        Incoterm._get_incoterms_cache.clear()
-        return records
-
-    @classmethod
-    def write(cls, *args, **kwargs):
-        pool = Pool()
-        Incoterm = pool.get('incoterm.incoterm')
-        super().write(*args, **kwargs)
-        Incoterm._get_incoterms_cache.clear()
-
-    @classmethod
-    def delete(cls, *args, **kwargs):
-        pool = Pool()
-        Incoterm = pool.get('incoterm.incoterm')
-        super().delete(*args, **kwargs)
+        super().on_modification(mode, records, field_names=field_names)
         Incoterm._get_incoterms_cache.clear()

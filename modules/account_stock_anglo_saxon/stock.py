@@ -201,11 +201,14 @@ class Move(metaclass=PoolMeta):
         super().cancel(moves)
 
     @classmethod
-    def delete(cls, moves):
-        for move in moves:
-            if move.in_anglo_saxon_quantity or move.out_anglo_saxon_quantity:
-                raise AccessError(
-                    gettext('account_stock_anglo_saxon'
-                        '.msg_move_delete_anglo_saxon',
-                        move=move.rec_name))
-        super().delete(moves)
+    def check_modification(cls, mode, moves, values=None, external=False):
+        super().check_modification(
+            mode, moves, values=values, external=external)
+        if mode == 'delete':
+            for move in moves:
+                if (move.in_anglo_saxon_quantity
+                        or move.out_anglo_saxon_quantity):
+                    raise AccessError(gettext(
+                            'account_stock_anglo_saxon'
+                            '.msg_move_delete_anglo_saxon',
+                            move=move.rec_name))

@@ -99,27 +99,21 @@ class Company(ModelSQL, ModelView):
         return [('party.rec_name',) + tuple(clause[1:])]
 
     @classmethod
-    def create(cls, vlist):
-        vlist = [v.copy() for v in vlist]
-        for values in vlist:
-            if logo := values.get('logo'):
-                values['logo'] = cls._logo_convert(logo)
-        return super().create(vlist)
+    def preprocess_values(cls, mode, values):
+        values = super().preprocess_values(mode, values)
+        if logo := values.get('logo'):
+            values['logo'] = cls._logo_convert(logo)
+        return values
 
     @classmethod
-    def write(cls, *args):
-        actions = iter(args)
-        args = []
-        for companies, values in zip(actions, actions):
-            if logo := values.get('logo'):
-                values = values.copy()
-                values['logo'] = cls._logo_convert(logo)
-            args.append(companies)
-            args.append(values)
-        super().write(*args)
-        cls._logo_clear_cache(sum(args[0:None:2], []))
-        # Restart the cache on the domain_get method
-        Pool().get('ir.rule')._domain_get_cache.clear()
+    def on_modification(cls, mode, companies, field_names=None):
+        pool = Pool()
+        Rule = pool.get('ir.rule')
+        super().on_modification(mode, companies, field_names=field_names)
+        if mode == 'write':
+            if not field_names or 'logo' in field_names:
+                cls._logo_clear_cache(companies)
+            Rule._domain_get_cache.clear()
 
     @classmethod
     def _logo_convert(cls, image, **_params):

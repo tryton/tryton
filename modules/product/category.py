@@ -97,15 +97,12 @@ class Category(tree(separator=' / '), ModelSQL, ModelView):
         return config.category_sequence
 
     @classmethod
-    def create(cls, vlist):
-        vlist = [v.copy() for v in vlist]
-        missing_code = [v for v in vlist if not v.get('code')]
-        if missing_code:
+    def preprocess_values(cls, mode, values):
+        values = super().preprocess_values(mode, values)
+        if mode == 'create' and not values.get('code'):
             if sequence := cls._code_sequence():
-                for values, code in zip(
-                        missing_code, sequence.get_many(len(missing_code))):
-                    values['code'] = code
-        return super().create(vlist)
+                values['code'] = sequence.get()
+        return values
 
     @classmethod
     def copy(cls, categories, default=None):

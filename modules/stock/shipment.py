@@ -148,6 +148,34 @@ class ShipmentMixin:
         default.setdefault('number')
         return super().copy(shipments, default=default)
 
+    @classmethod
+    def on_modification(cls, mode, shipments, field_names=None):
+        pool = Pool()
+        Move = pool.get('stock.move')
+        super().on_modification(mode, shipments, field_names=field_names)
+        if (mode in {'create', 'write'}
+                and (not field_names or 'planned_date' in field_names)):
+            cls._set_move_planned_date(shipments)
+        elif mode == 'delete':
+            if hasattr(cls, 'moves'):
+                moves = [m for s in shipments for m in s.moves]
+                Move.delete(moves)
+
+    @classmethod
+    def check_modification(cls, mode, shipments, values=None, external=False):
+        super().check_modification(
+            mode, shipments, values=values, external=external)
+        if mode == 'delete':
+            for shipment in shipments:
+                if shipment.state not in {'cancelled', 'request', 'draft'}:
+                    raise AccessError(gettext(
+                            'stock.msg_shipment_delete_cancel',
+                            shipment=shipment.rec_name))
+
+    @classmethod
+    def _set_move_planned_date(cls, shipments):
+        raise NotImplementedError
+
 
 class ShipmentAssignMixin(ShipmentMixin):
     __slots__ = ()
@@ -620,16 +648,18 @@ class ShipmentIn(
                     (m.origin_name for m in self.incoming_moves))))
 
     @classmethod
-    def create(cls, vlist):
-        shipments = super().create(vlist)
-        cls.set_number(shipments)
-        cls._set_move_planned_date(shipments)
-        return shipments
-
-    @classmethod
-    def write(cls, *args):
-        super().write(*args)
-        cls._set_move_planned_date(sum(args[::2], []))
+    def preprocess_values(cls, mode, values):
+        pool = Pool()
+        Configuration = pool.get('stock.configuration')
+        values = super().preprocess_values(mode, values)
+        if mode == 'create' and not values.get('number'):
+            company_id = values.get('company', cls.default_company())
+            if company_id is not None:
+                configuration = Configuration(1)
+                if sequence := configuration.get_multivalue(
+                        'shipment_in_sequence', company=company_id):
+                    values['number'] = sequence.get()
+        return values
 
     @classmethod
     def copy(cls, shipments, default=None):
@@ -681,19 +711,6 @@ class ShipmentIn(
                     moves.append(move)
             shipment.moves = moves
         cls.save(shipments)
-
-    @classmethod
-    def delete(cls, shipments):
-        Move = Pool().get('stock.move')
-        # Cancel before delete
-        cls.cancel(shipments)
-        for shipment in shipments:
-            if shipment.state != 'cancelled':
-                raise AccessError(
-                    gettext('stock.msg_shipment_delete_cancel',
-                        shipment=shipment.rec_name))
-        Move.delete([m for s in shipments for m in s.moves])
-        super().delete(shipments)
 
     @classmethod
     @ModelView.button
@@ -954,30 +971,6 @@ class ShipmentInReturn(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
     def get_origins(self, name):
         return ', '.join(set(filter(None,
                     (m.origin_name for m in self.moves))))
-
-    @classmethod
-    def create(cls, vlist):
-        shipments = super().create(vlist)
-        cls._set_move_planned_date(shipments)
-        return shipments
-
-    @classmethod
-    def write(cls, *args):
-        super().write(*args)
-        cls._set_move_planned_date(sum(args[::2], []))
-
-    @classmethod
-    def delete(cls, shipments):
-        Move = Pool().get('stock.move')
-        # Cancel before delete
-        cls.cancel(shipments)
-        for shipment in shipments:
-            if shipment.state != 'cancelled':
-                raise AccessError(
-                    gettext('stock.msg_shipment_delete_cancel',
-                        shipment=shipment.rec_name))
-        Move.delete([m for s in shipments for m in s.moves])
-        super().delete(shipments)
 
     @classmethod
     def copy(cls, shipments, default=None):
@@ -1739,17 +1732,6 @@ class ShipmentOut(
             Move.write(*to_write)
 
     @classmethod
-    def create(cls, vlist):
-        shipments = super().create(vlist)
-        cls._set_move_planned_date(shipments)
-        return shipments
-
-    @classmethod
-    def write(cls, *args):
-        super().write(*args)
-        cls._set_move_planned_date(sum(args[::2], []))
-
-    @classmethod
     def copy(cls, shipments, default=None):
         if default is None:
             default = {}
@@ -1760,19 +1742,6 @@ class ShipmentOut(
         default.setdefault('packed_by', None)
         default.setdefault('done_by', None)
         return super().copy(shipments, default=default)
-
-    @classmethod
-    def delete(cls, shipments):
-        Move = Pool().get('stock.move')
-        # Cancel before delete
-        cls.cancel(shipments)
-        for shipment in shipments:
-            if shipment.state != 'cancelled':
-                raise AccessError(
-                    gettext('stock.msg_shipment_delete_cancel',
-                        shipment=shipment.rec_name))
-        Move.delete([m for s in shipments for m in s.moves])
-        super().delete(shipments)
 
     @classmethod
     @ModelView.button_action('stock.wizard_shipment_out_assign')
@@ -2123,16 +2092,18 @@ class ShipmentOutReturn(
                     (m.origin_name for m in self.incoming_moves))))
 
     @classmethod
-    def create(cls, vlist):
-        shipments = super().create(vlist)
-        cls.set_number(shipments)
-        cls._set_move_planned_date(shipments)
-        return shipments
-
-    @classmethod
-    def write(cls, *args):
-        super().write(*args)
-        cls._set_move_planned_date(sum(args[::2], []))
+    def preprocess_values(cls, mode, values):
+        pool = Pool()
+        Configuration = pool.get('stock.configuration')
+        values = super().preprocess_values(mode, values)
+        if mode == 'create' and not values.get('number'):
+            company_id = values.get('company', cls.default_company())
+            if company_id is not None:
+                configuration = Configuration(1)
+                if sequence := configuration.get_multivalue(
+                        'shipment_out_return_sequence', company=company_id):
+                    values['number'] = sequence.get()
+        return values
 
     @classmethod
     def copy(cls, shipments, default=None):
@@ -2143,19 +2114,6 @@ class ShipmentOutReturn(
         default.setdefault('received_by', None)
         default.setdefault('done_by', None)
         return super().copy(shipments, default=default)
-
-    @classmethod
-    def delete(cls, shipments):
-        Move = Pool().get('stock.move')
-        # Cance before delete
-        cls.cancel(shipments)
-        for shipment in shipments:
-            if shipment.state != 'cancelled':
-                raise AccessError(
-                    gettext('stock.msg_shipment_delete_cancel',
-                        shipment=shipment.rec_name))
-        Move.delete([m for s in shipments for m in s.moves])
-        super().delete(shipments)
 
     @classmethod
     @ModelView.button
@@ -2610,30 +2568,6 @@ class ShipmentInternal(
         cls.write(shipments, {
                 'moves': value,
                 })
-
-    @classmethod
-    def create(cls, vlist):
-        shipments = super().create(vlist)
-        cls._set_move_planned_date(shipments)
-        return shipments
-
-    @classmethod
-    def write(cls, *args):
-        super().write(*args)
-        cls._set_move_planned_date(sum(args[::2], []))
-
-    @classmethod
-    def delete(cls, shipments):
-        Move = Pool().get('stock.move')
-        # Cancel before delete
-        cls.cancel(shipments)
-        for shipment in shipments:
-            if shipment.state != 'cancelled':
-                raise AccessError(
-                    gettext('stock.msg_shipment_delete_cancel',
-                        shipment=shipment.rec_name))
-        Move.delete([m for s in shipments for m in s.moves])
-        super().delete(shipments)
 
     @classmethod
     def copy(cls, shipments, default=None):

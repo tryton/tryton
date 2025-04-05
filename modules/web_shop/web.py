@@ -35,12 +35,13 @@ class Inactivate(ModelSQL, DeactivableMixin):
             domain, active_test=active_test, tables=tables)
 
     @classmethod
-    def delete(cls, records):
-        cls.copy([r for r in records if r.active and r.shop.to_sync],
-            default={
-                'active': False,
-                })
-        super().delete(records)
+    def on_modification(cls, mode, records, field_names=None):
+        super().on_modification(mode, records, field_names=field_names)
+        if mode == 'delete':
+            cls.copy([r for r in records if r.active and r.shop.to_sync],
+                default={
+                    'active': False,
+                    })
 
 
 class Shop(DeactivableMixin, ModelSQL, ModelView):
@@ -157,14 +158,10 @@ class Shop(DeactivableMixin, ModelSQL, ModelView):
         return super().copy(shops, default=default)
 
     @classmethod
-    def write(cls, *args):
-        cls._name_cache.clear()
-        super().write(*args)
-
-    @classmethod
-    def delete(cls, shops):
-        cls._name_cache.clear()
-        super().delete(shops)
+    def on_modification(cls, mode, shops, field_names=None):
+        super().on_modification(mode, shops, field_names=field_names)
+        if mode == 'delete' or (mode == 'write' and 'name' in field_names):
+            cls._name_cache.clear()
 
     @property
     def to_sync(self):

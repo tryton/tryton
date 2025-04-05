@@ -132,7 +132,7 @@ class Move(DescriptionOriginMixin, ModelSQL, ModelView):
         super().__setup__()
         t = cls.__table__()
         cls.create_date.select = True
-        cls._check_modify_exclude = ['lines']
+        cls._check_modify_exclude = {'lines'}
         cls._order.insert(0, ('date', 'DESC'))
         cls._order.insert(1, ('number', 'DESC'))
         cls._buttons.update({
@@ -269,40 +269,17 @@ class Move(DescriptionOriginMixin, ModelSQL, ModelView):
         return [(None, '')] + [(m, get_name(m)) for m in models]
 
     @classmethod
-    def check_modify(cls, moves):
-        'Check posted moves for modifications.'
-        for move in moves:
-            if move.state == 'posted':
-                raise AccessError(
-                    gettext('account.msg_modify_posted_moved',
-                        move=move.rec_name))
-
-    def get_rec_name(self, name):
-        if self.number:
-            return self.number
-        else:
-            return f'({self.id})'
-
-    @classmethod
-    def write(cls, *args):
-        actions = iter(args)
-        args = []
-        for moves, values in zip(actions, actions):
-            keys = list(values.keys())
-            for key in cls._check_modify_exclude:
-                if key in keys:
-                    keys.remove(key)
-            if len(keys):
-                cls.check_modify(moves)
-            args.extend((moves, values))
-        super().write(*args)
-
-    @classmethod
-    def delete(cls, moves):
-        MoveLine = Pool().get('account.move.line')
-        cls.check_modify(moves)
-        MoveLine.delete([l for m in moves for l in m.lines])
-        super().delete(moves)
+    def check_modification(cls, mode, moves, values=None, external=False):
+        super().check_modification(
+            mode, moves, values=values, external=external)
+        if (mode == 'delete'
+                or (mode == 'write'
+                    and values.keys() - cls._check_modify_exclude)):
+            for move in moves:
+                if move.state == 'posted':
+                    raise AccessError(gettext(
+                            'account.msg_modify_posted_moved',
+                            move=move.rec_name))
 
     @classmethod
     def copy(cls, moves, default=None):
@@ -591,20 +568,49 @@ class Reconciliation(ModelSQL, ModelView):
         return Transaction().context.get('company')
 
     @classmethod
-    def create(cls, vlist):
+    def preprocess_values(cls, mode, values):
         pool = Pool()
         Configuration = pool.get('account.configuration')
-        configuration = Configuration(1)
+        values = super().preprocess_values(mode, values)
+        if mode == 'create' and not values.get('number'):
+            company_id = values.get('company', cls.default_company())
+            if company_id is not None:
+                configuration = Configuration(1)
+                if sequence := configuration.get_multivalue(
+                        'reconciliation_sequence', company=company_id):
+                    values['number'] = sequence.get()
+        return values
 
-        vlist = [x.copy() for x in vlist]
-        default_company = cls.default_company()
-        for vals in vlist:
-            if 'number' not in vals:
-                vals['number'] = configuration.get_multivalue(
-                    'reconciliation_sequence',
-                    company=vals.get('company', default_company)).get()
+    @classmethod
+    def check_modification(
+            cls, mode, reconciliations, values=None, external=False):
+        pool = Pool()
+        Warning = pool.get('res.user.warning')
 
-        return super().create(vlist)
+        super().check_modification(
+            mode, reconciliations, values=values, external=external)
+
+        if mode == 'delete':
+            for reconciliation in reconciliations:
+                if reconciliation.delegate_to:
+                    key = Warning.format('delete.delegated', [reconciliation])
+                    if Warning.check(key):
+                        raise ReconciliationDeleteWarning(key, gettext(
+                                'account.msg_reconciliation_delete_delegated',
+                                reconciliation=reconciliation.rec_name,
+                                line=reconciliation.delegate_to.rec_name,
+                                move=reconciliation.delegate_to.move.rec_name))
+                for line in reconciliation.lines:
+                    if line.move.journal.type == 'write-off':
+                        key = Warning.format(
+                            'delete.write-off', [reconciliation])
+                        if Warning.check(key):
+                            raise ReconciliationDeleteWarning(key, gettext(
+                                    'account.'
+                                    'msg_reconciliation_delete_write_off',
+                                    reconciliation=reconciliation.rec_name,
+                                    line=line.rec_name,
+                                    move=line.move.rec_name))
 
     @classmethod
     def write(cls, moves, values, *args):
@@ -614,31 +620,6 @@ class Reconciliation(ModelSQL, ModelView):
     def validate(cls, reconciliations):
         super().validate(reconciliations)
         cls.check_lines(reconciliations)
-
-    @classmethod
-    def delete(cls, reconciliations):
-        pool = Pool()
-        Warning = pool.get('res.user.warning')
-        for reconciliation in reconciliations:
-            if reconciliation.delegate_to:
-                key = Warning.format('delete.delegated', [reconciliation])
-                if Warning.check(key):
-                    raise ReconciliationDeleteWarning(key,
-                        gettext('account.msg_reconciliation_delete_delegated',
-                            reconciliation=reconciliation.rec_name,
-                            line=reconciliation.delegate_to.rec_name,
-                            move=reconciliation.delegate_to.move.rec_name))
-            for line in reconciliation.lines:
-                if line.move.journal.type == 'write-off':
-                    key = Warning.format('delete.write-off', [reconciliation])
-                    if Warning.check(key):
-                        raise ReconciliationDeleteWarning(key,
-                            gettext(
-                                'account.msg_reconciliation_delete_write_off',
-                                reconciliation=reconciliation.rec_name,
-                                line=line.rec_name,
-                                move=line.move.rec_name))
-        super().delete(reconciliations)
 
     @classmethod
     def check_lines(cls, reconciliations):
@@ -1441,36 +1422,50 @@ class Line(DescriptionOriginMixin, MoveLineMixin, ModelSQL, ModelView):
                         }])
 
     @classmethod
-    def check_modify(cls, lines, modified_fields=None):
-        '''
-        Check if the lines can be modified
-        '''
-        if (modified_fields is not None
-                and modified_fields <= cls._check_modify_exclude):
-            return
-        journal_period_done = []
-        for line in lines:
-            if line.move.state == 'posted':
-                raise AccessError(
-                    gettext('account.msg_modify_line_posted_move',
-                        line=line.rec_name,
-                        move=line.move.rec_name))
-            journal_period = (line.journal.id, line.period.id)
-            if journal_period not in journal_period_done:
-                cls.check_journal_period_modify(line.period,
-                        line.journal)
-                journal_period_done.append(journal_period)
+    def check_modification(cls, mode, lines, values=None, external=False):
+        pool = Pool()
+        Move = pool.get('account.move')
+
+        super().check_modification(
+            mode, lines, values=values, external=external)
+
+        if (mode in {'create', 'delete'}
+                or (mode == 'write'
+                    and values.keys() - cls._check_modify_exclude)):
+            journal_period_done = set()
+            for line in lines:
+                if line.move.state == 'posted':
+                    raise AccessError(gettext(
+                            'account.msg_modify_line_posted_move',
+                            line=line.rec_name,
+                            move=line.move.rec_name))
+                journal_period = (line.journal.id, line.period.id)
+                if journal_period not in journal_period_done:
+                    cls.check_journal_period_modify(
+                        line.period, line.journal)
+                    journal_period_done.add(journal_period)
+
+        if (mode == 'delete'
+                or (mode == 'write'
+                    and values.keys() & cls._reconciliation_modify_disallow)):
+            for line in lines:
+                if line.reconciliation:
+                    raise AccessError(gettext(
+                            'account.msg_modify_line_reconciled',
+                            line=line.rec_name))
+
+        if mode in {'create', 'write'}:
+            moves = Move.browse({l.move for l in lines})
+            Move.validate_move(moves)
 
     @classmethod
-    def check_reconciliation(cls, lines, modified_fields=None):
-        if (modified_fields is not None
-                and not modified_fields & cls._reconciliation_modify_disallow):
-            return
-        for line in lines:
-            if line.reconciliation:
-                raise AccessError(
-                    gettext('account.msg_modify_line_reconciled',
-                        line=line.rec_name))
+    def on_delete(cls, lines):
+        pool = Pool()
+        Move = pool.get('account.move')
+        callback = super().on_delete(lines)
+        moves = Move.browse({l.move for l in lines})
+        callback.append(lambda: Move.validate_move(moves))
+        return callback
 
     @classmethod
     def view_attributes(cls):
@@ -1488,35 +1483,6 @@ class Line(DescriptionOriginMixin, MoveLineMixin, ModelSQL, ModelView):
         ModelData = pool.get('ir.model.data')
         return {ModelData.get_id(
                 'account', 'move_line_view_list_payable_receivable')}
-
-    @classmethod
-    def delete(cls, lines):
-        Move = Pool().get('account.move')
-        cls.check_modify(lines)
-        cls.check_reconciliation(lines)
-        moves = [x.move for x in lines]
-        super().delete(lines)
-        Move.validate_move(moves)
-
-    @classmethod
-    def write(cls, *args):
-        Move = Pool().get('account.move')
-
-        actions = iter(args)
-        args = []
-        moves = []
-        all_lines = []
-        for lines, values in zip(actions, actions):
-            cls.check_modify(lines, set(values.keys()))
-            cls.check_reconciliation(lines, set(values.keys()))
-            moves.extend((x.move for x in lines))
-            all_lines.extend(lines)
-            args.extend((lines, values))
-
-        super().write(*args)
-
-        Transaction().timestamp = {}
-        Move.validate_move(list(set(l.move for l in all_lines) | set(moves)))
 
     @classmethod
     def create(cls, vlist):
@@ -1550,16 +1516,7 @@ class Line(DescriptionOriginMixin, MoveLineMixin, ModelSQL, ModelView):
                 # prevent default value for field with set_move_field
                 for fname in move_fields(move_name=False):
                     vals.setdefault(fname, None)
-        lines = super().create(vlist)
-        period_and_journals = set((line.period, line.journal)
-            for line in lines)
-        for period, journal in period_and_journals:
-            cls.check_journal_period_modify(period, journal)
-        # Re-browse for cache alignment
-        moves = Move.browse(list(set(line.move for line in lines)))
-        Move.check_modify(moves)
-        Move.validate_move(moves)
-        return lines
+        return super().create(vlist)
 
     @classmethod
     def copy(cls, lines, default=None):

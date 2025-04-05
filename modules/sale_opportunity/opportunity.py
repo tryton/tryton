@@ -300,19 +300,30 @@ class SaleOpportunity(
             }
 
     @classmethod
-    def create(cls, vlist):
+    def preprocess_values(cls, mode, values):
         pool = Pool()
-        Config = pool.get('sale.configuration')
+        Configuration = pool.get('sale.configuration')
+        values = super().preprocess_values(mode, values)
+        if mode == 'create' and not values.get('number'):
+            company_id = values.get('company', cls.default_company())
+            if company_id is not None:
+                configuration = Configuration(1)
+                if sequence := configuration.get_multivalue(
+                        'sale_opportunity_sequence', company=company_id):
+                    values['number'] = sequence.get()
+        return values
 
-        config = Config(1)
-        vlist = [x.copy() for x in vlist]
-        default_company = cls.default_company()
-        for vals in vlist:
-            if vals.get('number') is None:
-                vals['number'] = config.get_multivalue(
-                    'sale_opportunity_sequence',
-                    company=vals.get('company', default_company)).get()
-        return super().create(vlist)
+    @classmethod
+    def check_modification(
+            cls, mode, opportunities, values=None, external=False):
+        super().check_modification(
+            mode, opportunities, values=values, external=external)
+        if mode == 'delete':
+            for opportunity in opportunities:
+                if opportunity.state not in {'cancelled', 'draft'}:
+                    raise AccessError(gettext(
+                            'sale_opportunity.msg_opportunity_delete_cancel',
+                            opportunity=opportunity.rec_name))
 
     @classmethod
     def copy(cls, opportunities, default=None):
@@ -370,17 +381,6 @@ class SaleOpportunity(
             sale_lines.append(line.get_sale_line(sale))
         sale.lines = sale_lines
         return sale
-
-    @classmethod
-    def delete(cls, opportunities):
-        # Cancel before delete
-        cls.cancel(opportunities)
-        for opportunity in opportunities:
-            if opportunity.state != 'cancelled':
-                raise AccessError(
-                    gettext('sale_opportunity.msg_opportunity_delete_cancel',
-                        opportunity=opportunity.rec_name))
-        super().delete(opportunities)
 
     @classmethod
     @ModelView.button

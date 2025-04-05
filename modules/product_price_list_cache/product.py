@@ -180,16 +180,6 @@ class PriceListCache(ModelSQL):
                                 cache.product, [p.id for p in sub_products])))
 
     @classmethod
-    def create(cls, vlist):
+    def on_modification(cls, mode, records, field_names=None):
+        super().on_modification(mode, records, field_names=field_names)
         cls._get_cache.clear()
-        return super().create(vlist)
-
-    @classmethod
-    def write(cls, *args):
-        cls._get_cache.clear()
-        return super().write(*args)
-
-    @classmethod
-    def delete(cls, records):
-        cls._get_cache.clear()
-        return super().delete(records)

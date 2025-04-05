@@ -98,9 +98,11 @@ class Line(ModelSQL, ModelView):
         return values
 
     @classmethod
-    def delete(cls, records):
-        cls.check_closed_period(records, msg='delete')
-        super().delete(records)
+    def check_modification(cls, mode, lines, values=None, external=False):
+        super().check_modification(
+            mode, lines, values=values, external=external)
+        if mode == 'delete':
+            cls.check_closed_period(lines, msg='delete')
 
     @classmethod
     def validate_fields(cls, records, field_names):

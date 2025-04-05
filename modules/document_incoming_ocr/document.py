@@ -478,17 +478,6 @@ class IncomingOCRService(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
             getattr(self, f'_send_feedback_{self.type}')(document)
 
     @classmethod
-    def create(cls, *args, **kwargs):
-        services = super().create(*args, **kwargs)
-        cls._get_service_cache.clear()
-        return services
-
-    @classmethod
-    def write(cls, *args, **kwargs):
-        super().write(*args, **kwargs)
-        cls._get_service_cache.clear()
-
-    @classmethod
-    def delete(cls, *args, **kwargs):
-        super().delete(*args, **kwargs)
+    def on_modification(cls, mode, services, field_names=None):
+        super().on_modification(mode, services, field_names=field_names)
         cls._get_service_cache.clear()

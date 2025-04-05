@@ -852,13 +852,13 @@ class Record(ModelSQL, ModelView):
             return '(%s)' % self.id
 
     @classmethod
-    def create(cls, vlist):
-        vlist = [v.copy() for v in vlist]
-        for values in vlist:
+    def preprocess_values(cls, mode, values):
+        values = super().preprocess_values(mode, values)
+        if mode == 'create':
             # Ensure to get a different uuid for each record
             # default methods are called only once
             values.setdefault('uuid', cls.default_uuid())
-        return super().create(vlist)
+        return values
 
 
 class RecordActivity(Workflow, ModelSQL, ModelView):

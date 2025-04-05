@@ -253,27 +253,18 @@ class Reconciliation(metaclass=PoolMeta):
     __name__ = 'account.move.reconciliation'
 
     @classmethod
-    def create(cls, vlist):
-        Invoice = Pool().get('account.invoice')
+    def on_modification(cls, mode, reconciliations, field_names=None):
+        pool = Pool()
+        Invoice = pool.get('account.invoice')
         transaction = Transaction()
         context = transaction.context
-        reconciliations = super().create(vlist)
+
+        super().on_modification(mode, reconciliations, field_names=field_names)
+
         with transaction.set_context(
                 queue_batch=context.get('queue_batch', True)):
             Invoice.__queue__.process(
                 list(_invoices_to_process(reconciliations)))
-        return reconciliations
-
-    @classmethod
-    def delete(cls, reconciliations):
-        Invoice = Pool().get('account.invoice')
-        transaction = Transaction()
-        context = transaction.context
-        invoices_to_process = _invoices_to_process(reconciliations)
-        super().delete(reconciliations)
-        with transaction.set_context(
-                queue_batch=context.get('queue_batch', True)):
-            Invoice.__queue__.process(list(invoices_to_process))
 
 
 class RenewFiscalYear(metaclass=PoolMeta):

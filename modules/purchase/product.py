@@ -65,13 +65,14 @@ class Template(metaclass=PoolMeta):
                 yield product_supplier
 
     @classmethod
-    def write(cls, *args):
+    def check_modification(cls, mode, templates, values=None, external=False):
         pool = Pool()
         Warning = pool.get('res.user.warning')
-        actions = iter(args)
-        for templates, values in zip(actions, actions):
-            if not values.get("purchase_uom"):
-                continue
+
+        super().check_modification(
+            mode, templates, values=values, external=external)
+
+        if mode == 'write' and values.get("purchase_uom"):
             for template in templates:
                 if not template.purchase_uom:
                     continue
@@ -84,7 +85,6 @@ class Template(metaclass=PoolMeta):
                     if Warning.check(name):
                         raise PurchaseUOMWarning(
                             name, gettext('purchase.msg_change_purchase_uom'))
-        super().write(*args)
 
     @classmethod
     def copy(cls, templates, default=None):

@@ -58,17 +58,17 @@ class Avatar(ImageMixin, ResourceMixin, ModelSQL):
         return uuid.uuid4().hex
 
     @classmethod
-    def create(cls, vlist):
-        vlist = [v.copy() for v in vlist]
-        for values in vlist:
-            values.setdefault('uuid', cls.default_uuid())
-        return super().create(vlist)
+    def preprocess_values(cls, mode, values):
+        values = super().preprocess_values(mode, values)
+        if mode == 'create' and 'uuid' not in values:
+            values['uuid'] = cls.default_uuid()
+        return values
 
     @classmethod
-    def write(cls, *args):
-        avatars = sum(args[0:None:2], [])
-        super().write(*args)
-        cls.clear_cache(avatars)
+    def on_modification(cls, mode, avatars, field_names=None):
+        super().on_modification(mode, avatars, field_names=field_names)
+        if mode == 'write':
+            cls.clear_cache(avatars)
 
     @classmethod
     def copy(cls, avatars, default=None):

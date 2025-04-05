@@ -58,11 +58,11 @@ class Group(DeactivableMixin, tree(), ModelSQL, ModelView):
         cls._order.insert(0, ('name', 'ASC'))
 
     @classmethod
-    def write(cls, *args):
-        super().write(*args)
+    def on_modification(cls, mode, groups, field_names=None):
         pool = Pool()
-        # Restart the cache for get_groups
-        pool.get('res.user')._get_groups_cache.clear()
+        User = pool.get('res.user')
+        super().on_modification(mode, groups, field_names=field_names)
+        User._get_groups_cache.clear()
 
     @classmethod
     def copy(cls, groups, default=None):

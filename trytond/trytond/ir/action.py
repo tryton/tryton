@@ -89,10 +89,11 @@ class Action(DeactivableMixin, ModelSQL, ModelView):
         return None
 
     @classmethod
-    def write(cls, actions, values, *args):
+    def on_modification(cls, mode, actions, field_names=None):
         pool = Pool()
-        super().write(actions, values, *args)
-        pool.get('ir.action.keyword')._get_keyword_cache.clear()
+        ActionKeyword = pool.get('ir.action.keyword')
+        super().on_modification(mode, actions, field_names=field_names)
+        ActionKeyword._get_keyword_cache.clear()
 
     @classmethod
     @inactive_records
@@ -159,36 +160,20 @@ class ActionGroup(ModelSQL):
         'res.group', "Group", ondelete='CASCADE', required=True)
 
     @classmethod
-    def create(cls, vlist):
+    def preprocess_values(cls, mode, values):
         pool = Pool()
         Action = pool.get('ir.action')
-        vlist = [x.copy() for x in vlist]
-        for vals in vlist:
-            if vals.get('action'):
-                vals['action'] = Action.get_action_id(vals['action'])
-        Action._groups_cache.clear()
-        return super().create(vlist)
+        values = super().preprocess_values(mode, values)
+        if values.get('action') is not None:
+            values['action'] = Action.get_action_id(values['action'])
+        return values
 
     @classmethod
-    def write(cls, records, values, *args):
+    def on_modification(cls, mode, records, field_names=None):
         pool = Pool()
         Action = pool.get('ir.action')
-        actions = iter((records, values) + args)
-        args = []
-        for records, values in zip(actions, actions):
-            if values.get('action'):
-                values = values.copy()
-                values['action'] = Action.get_action_id(values['action'])
-            args.extend((records, values))
+        super().on_modification(mode, records, field_names=field_names)
         Action._groups_cache.clear()
-        super().write(*args)
-
-    @classmethod
-    def delete(cls, records):
-        pool = Pool()
-        Action = pool.get('ir.action')
-        Action._groups_cache.clear()
-        super().delete(records)
 
 
 class ActionKeyword(ModelSQL, ModelView):
@@ -251,14 +236,20 @@ class ActionKeyword(ModelSQL, ModelView):
                                 gettext('ir.msg_action_wrong_wizard_model',
                                     name=action_wizard.rec_name))
 
-    @staticmethod
-    def _convert_vals(vals):
-        vals = vals.copy()
+    @classmethod
+    def preprocess_values(cls, mode, values):
         pool = Pool()
         Action = pool.get('ir.action')
-        if 'action' in vals:
-            vals['action'] = Action.get_action_id(vals['action'])
-        return vals
+        values = super().preprocess_values(mode, values)
+        if values.get('action') is not None:
+            values['action'] = Action.get_action_id(values['action'])
+        return values
+
+    @classmethod
+    def on_modification(cls, mode, keywords, field_names=None):
+        super().on_modification(mode, keywords, field_names=field_names)
+        ModelView._view_toolbar_get_cache.clear()
+        cls._get_keyword_cache.clear()
 
     @staticmethod
     def models_get():
@@ -272,31 +263,6 @@ class ActionKeyword(ModelSQL, ModelView):
     @classmethod
     def search_groups(cls, name, clause):
         return [('action.' + clause[0],) + tuple(clause[1:])]
-
-    @classmethod
-    def delete(cls, keywords):
-        ModelView._view_toolbar_get_cache.clear()
-        cls._get_keyword_cache.clear()
-        super().delete(keywords)
-
-    @classmethod
-    def create(cls, vlist):
-        ModelView._view_toolbar_get_cache.clear()
-        cls._get_keyword_cache.clear()
-        new_vlist = []
-        for vals in vlist:
-            new_vlist.append(cls._convert_vals(vals))
-        return super().create(new_vlist)
-
-    @classmethod
-    def write(cls, keywords, values, *args):
-        actions = iter((keywords, values) + args)
-        args = []
-        for keywords, values in zip(actions, actions):
-            args.extend((keywords, cls._convert_vals(values)))
-        super().write(*args)
-        ModelView._view_toolbar_get_cache.clear()
-        cls._get_keyword_cache.clear()
 
     @classmethod
     def get_keyword(cls, keyword, value):
@@ -456,9 +422,20 @@ class ActionMixin(ModelSQL):
         return groups
 
     @classmethod
+    def on_modification(cls, mode, records, field_names=None):
+        pool = Pool()
+        Action = pool.get('ir.action')
+        ActionKeyword = pool.get('ir.action.keyword')
+        super().on_modification(mode, records, field_names=field_names)
+        ModelView._view_toolbar_get_cache.clear()
+        ActionKeyword._get_keyword_cache.clear()
+        if mode == 'delete':
+            actions = [x.action for x in records]
+            Action.delete(actions)
+
+    @classmethod
     def create(cls, vlist):
         pool = Pool()
-        ModelView._view_toolbar_get_cache.clear()
         Action = pool.get('ir.action')
         ir_action = cls.__table__()
         new_records = []
@@ -496,23 +473,6 @@ class ActionMixin(ModelSQL):
         if to_write:
             cls.write(*to_write)
         return new_records
-
-    @classmethod
-    def write(cls, records, values, *args):
-        pool = Pool()
-        ActionKeyword = pool.get('ir.action.keyword')
-        super().write(records, values, *args)
-        ModelView._view_toolbar_get_cache.clear()
-        ActionKeyword._get_keyword_cache.clear()
-
-    @classmethod
-    def delete(cls, records):
-        pool = Pool()
-        ModelView._view_toolbar_get_cache.clear()
-        Action = pool.get('ir.action')
-        actions = [x.action for x in records]
-        super().delete(records)
-        Action.delete(actions)
 
     @classmethod
     def copy(cls, records, default=None):
@@ -757,19 +717,18 @@ class ActionReport(
         return super().copy(reports, default=default)
 
     @classmethod
-    def write(cls, reports, values, *args):
+    def preprocess_values(cls, mode, values):
         context = Transaction().context
-        if 'module' in context:
-            actions = iter((reports, values) + args)
-            args = []
-            for reports, values in zip(actions, actions):
-                values = values.copy()
-                values['module'] = context['module']
-                args.extend((reports, values))
-            reports, values = args[:2]
-            args = args[2:]
-        cls._template_cache.clear()
-        super().write(reports, values, *args)
+        values = super().preprocess_values(mode, values)
+        if 'module' in context and not values.get('module'):
+            values['module'] = context['module']
+        return values
+
+    @classmethod
+    def on_modification(cls, mode, reports, field_names=None):
+        super().on_modification(mode, reports, field_names=field_names)
+        if mode == 'write':
+            cls._template_cache.clear()
 
     def get_template_cached(self):
         return self._template_cache.get(self.id)
@@ -1028,23 +987,11 @@ class ActionActWindowView(
             return self.act_window.res_model
 
     @classmethod
-    def create(cls, vlist):
+    def on_modification(cls, mode, records, field_names=None):
         pool = Pool()
-        windows = super().create(vlist)
-        pool.get('ir.action.keyword')._get_keyword_cache.clear()
-        return windows
-
-    @classmethod
-    def write(cls, windows, values, *args):
-        pool = Pool()
-        super().write(windows, values, *args)
-        pool.get('ir.action.keyword')._get_keyword_cache.clear()
-
-    @classmethod
-    def delete(cls, windows):
-        pool = Pool()
-        super().delete(windows)
-        pool.get('ir.action.keyword')._get_keyword_cache.clear()
+        Keyword = pool.get('ir.action.keyword')
+        super().on_modification(mode, records, field_names=field_names)
+        Keyword._get_keyword_cache.clear()
 
 
 class ActionActWindowDomain(
@@ -1105,23 +1052,11 @@ class ActionActWindowDomain(
                             action=action.rec_name)) from exception
 
     @classmethod
-    def create(cls, vlist):
+    def on_modification(cls, mode, records, field_names=None):
         pool = Pool()
-        domains = super().create(vlist)
-        pool.get('ir.action.keyword')._get_keyword_cache.clear()
-        return domains
-
-    @classmethod
-    def write(cls, domains, values, *args):
-        pool = Pool()
-        super().write(domains, values, *args)
-        pool.get('ir.action.keyword')._get_keyword_cache.clear()
-
-    @classmethod
-    def delete(cls, domains):
-        pool = Pool()
-        super().delete(domains)
-        pool.get('ir.action.keyword')._get_keyword_cache.clear()
+        Keyword = pool.get('ir.action.keyword')
+        super().on_modification(mode, records, field_names=field_names)
+        Keyword._get_keyword_cache.clear()
 
 
 class ActionWizard(

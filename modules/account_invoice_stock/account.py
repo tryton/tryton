@@ -115,18 +115,18 @@ class InvoiceLine(metaclass=PoolMeta):
         return ', '.join(sorted(shipments))
 
     @classmethod
-    def write(cls, *args):
+    def on_modification(cls, mode, lines, field_names=None):
         pool = Pool()
         Move = pool.get('stock.move')
         transaction = Transaction()
         context = transaction.context
-        super().write(*args)
-        lines = sum(args[0:None:2], [])
-        moves = sum((l.stock_moves for l in lines), ())
-        if moves:
-            with transaction.set_context(
-                    queue_batch=context.get('queue_batch', True)):
-                Move.__queue__.update_unit_price(moves)
+        super().on_modification(mode, lines, field_names=field_names)
+        if mode == 'write':
+            moves = sum((l.stock_moves for l in lines), ())
+            if moves:
+                with transaction.set_context(
+                        queue_batch=context.get('queue_batch', True)):
+                    Move.__queue__.update_unit_price(moves)
 
     @classmethod
     def copy(cls, lines, default=None):

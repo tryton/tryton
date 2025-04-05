@@ -147,23 +147,22 @@ class Journal(
                 return journal
 
     @classmethod
-    def write(cls, *args):
+    def check_modification(cls, mode, journals, values=None, external=False):
         pool = Pool()
         Move = pool.get('account.move')
-        actions = iter(args)
-        for journals, values in zip(actions, actions):
-            if 'type' in values:
-                for sub_journals in grouped_slice(journals):
-                    moves = Move.search([
-                            ('journal', 'in', [j.id for j in sub_journals]),
-                            ('state', '=', 'posted')
-                            ], order=[], limit=1)
-                    if moves:
-                        move, = moves
-                        raise AccessError(gettext(
-                                'account.msg_journal_account_moves',
-                                journal=move.journal.rec_name))
-        super().write(*args)
+        super().check_modification(
+            mode, journals, values=values, external=external)
+        if mode == 'write' and 'type' in values:
+            for sub_journals in grouped_slice(journals):
+                moves = Move.search([
+                        ('journal', 'in', [j.id for j in sub_journals]),
+                        ('state', '=', 'posted')
+                        ], order=[], limit=1)
+                if moves:
+                    move, = moves
+                    raise AccessError(gettext(
+                            'account.msg_journal_account_moves',
+                            journal=move.journal.rec_name))
 
 
 class JournalCashContext(ModelView):
@@ -275,39 +274,26 @@ class JournalPeriod(Workflow, ModelSQL, ModelView):
                         journal_period=period.rec_name))
 
     @classmethod
-    def create(cls, vlist):
-        Period = Pool().get('account.period')
-        for vals in vlist:
-            if vals.get('period'):
-                period = Period(vals['period'])
-                if period.state != 'open':
-                    raise AccessError(
-                        gettext('account'
-                            '.msg_create_journal_period_closed_period',
-                            period=period.rec_name))
-        return super().create(vlist)
-
-    @classmethod
-    def write(cls, *args):
-        actions = iter(args)
-        for journal_periods, values in zip(actions, actions):
-            if (values != {'state': 'closed'}
-                    and values != {'state': 'open'}):
-                cls._check(journal_periods)
-            if values.get('state') == 'open':
-                for journal_period in journal_periods:
-                    if journal_period.period.state != 'open':
-                        raise AccessError(
-                            gettext('account'
-                                '.msg_open_journal_period_closed_period',
-                                journal_period=journal_period.rec_name,
-                                period=journal_period.period.rec_name))
-        super().write(*args)
-
-    @classmethod
-    def delete(cls, periods):
-        cls._check(periods)
-        super().delete(periods)
+    def check_modification(cls, mode, records, values=None, external=False):
+        super().check_modification(
+            mode, records, values=values, external=external)
+        if mode == 'create':
+            for record in records:
+                if record.period.state != 'open':
+                    raise AccessError(gettext(
+                            'account.msg_create_journal_period_closed_period',
+                            period=record.period.rec_name))
+        elif mode in {'write', 'delete'}:
+            if values != {'state': 'closed'} and values != {'state': 'open'}:
+                cls._check(records)
+            if mode == 'write' and values.get('state') == 'open':
+                for record in records:
+                    if record.period.state != 'open':
+                        raise AccessError(gettext(
+                                'account.'
+                                'msg_open_journal_period_closed_period',
+                                journal_period=record.rec_name,
+                                period=record.period.rec_name))
 
     @classmethod
     @ModelView.button

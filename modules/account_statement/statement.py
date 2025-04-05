@@ -368,15 +368,15 @@ class Statement(Workflow, ModelSQL, ModelView):
             ]
 
     @classmethod
-    def delete(cls, statements):
-        # Cancel before delete
-        cls.cancel(statements)
-        for statement in statements:
-            if statement.state != 'cancelled':
-                raise AccessError(
-                    gettext('account_statement.msg_statement_delete_cancel',
-                        statement=statement.rec_name))
-        super().delete(statements)
+    def check_modification(cls, mode, statements, values=None, external=False):
+        super().check_modification(
+            mode, statements, values=values, external=external)
+        if mode == 'delete':
+            for statement in statements:
+                if statement.state not in {'cancelled', 'draft'}:
+                    raise AccessError(gettext(
+                            'account_statement.msg_statement_delete_cancel',
+                            statement=statement.rec_name))
 
     @classmethod
     @ModelView.button
@@ -963,16 +963,17 @@ class Line(origin_mixin(_states), sequence_ordered(), ModelSQL, ModelView):
         return [('statement.rec_name',) + tuple(clause[1:])]
 
     @classmethod
-    def delete(cls, lines):
-        for line in lines:
-            if line.statement_state not in {'cancelled', 'draft'}:
-                raise AccessError(
-                    gettext(
-                        'account_statement.'
-                        'msg_statement_line_delete_cancel_draft',
-                        line=line.rec_name,
-                        sale=line.statement.rec_name))
-        super().delete(lines)
+    def check_modification(cls, mode, lines, values=None, external=False):
+        super().check_modification(
+            mode, lines, values=values, external=external)
+        if mode == 'delete':
+            for line in lines:
+                if line.statement_state not in {'cancelled', 'draft'}:
+                    raise AccessError(gettext(
+                            'account_statement.'
+                            'msg_statement_line_delete_cancel_draft',
+                            line=line.rec_name,
+                            sale=line.statement.rec_name))
 
     @classmethod
     def copy(cls, lines, default=None):
@@ -1214,16 +1215,17 @@ class Origin(origin_mixin(_states), ModelSQL, ModelView):
         return [('id', 'in', query)]
 
     @classmethod
-    def delete(cls, origins):
-        for origin in origins:
-            if origin.statement_state not in {'cancelled', 'draft'}:
-                raise AccessError(
-                    gettext(
-                        'account_statement.'
-                        'msg_statement_origin_delete_cancel_draft',
-                        origin=origin.rec_name,
-                        sale=origin.statement.rec_name))
-        super().delete(origins)
+    def check_modification(cls, mode, origins, values=None, external=False):
+        super().check_modification(
+            mode, origins, values=values, external=external)
+        if mode == 'delete':
+            for origin in origins:
+                if origin.statement_state not in {'cancelled', 'draft'}:
+                    raise AccessError(gettext(
+                            'account_statement.'
+                            'msg_statement_origin_delete_cancel_draft',
+                            origin=origin.rec_name,
+                            sale=origin.statement.rec_name))
 
     @classmethod
     def copy(cls, origins, default=None):

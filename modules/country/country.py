@@ -215,25 +215,12 @@ class Country(DeactivableMixin, ModelSQL, ModelView):
         return self in organization.countries
 
     @classmethod
-    def create(cls, vlist):
-        vlist = [x.copy() for x in vlist]
-        for vals in vlist:
-            for code in {'code', 'code3', 'code_numeric'}:
-                if code in vals and vals[code]:
-                    vals[code] = vals[code].upper()
-        return super().create(vlist)
-
-    @classmethod
-    def write(cls, *args):
-        actions = iter(args)
-        args = []
-        for countries, values in zip(actions, actions):
-            for code in {'code', 'code3', 'code_numeric'}:
-                if values.get(code):
-                    values = values.copy()
-                    values[code] = values[code].upper()
-            args.extend((countries, values))
-        super().write(*args)
+    def preprocess_values(cls, mode, values):
+        values = super().preprocess_values(mode, values)
+        for code in {'code', 'code3', 'code_numeric'}:
+            if values.get(code):
+                values[code] = values[code].upper()
+        return values
 
 
 class Subdivision(DeactivableMixin, ModelSQL, ModelView):
@@ -465,23 +452,11 @@ class Subdivision(DeactivableMixin, ModelSQL, ModelView):
         return Operator(column, value)
 
     @classmethod
-    def create(cls, vlist):
-        vlist = [x.copy() for x in vlist]
-        for vals in vlist:
-            if 'code' in vals and vals['code']:
-                vals['code'] = vals['code'].upper()
-        return super().create(vlist)
-
-    @classmethod
-    def write(cls, *args):
-        actions = iter(args)
-        args = []
-        for subdivisions, values in zip(actions, actions):
-            if values.get('code'):
-                values = values.copy()
-                values['code'] = values['code'].upper()
-            args.extend((subdivisions, values))
-        super().write(*args)
+    def preprocess_values(cls, mode, values):
+        values = super().preprocess_values(mode, values)
+        if values.get('code'):
+            values['code'] = values['code'].upper()
+        return values
 
 
 class PostalCode(ModelSQL, ModelView):

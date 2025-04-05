@@ -52,19 +52,21 @@ class CredentialDPD(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
         self.save()
 
     @classmethod
-    def write(cls, *args):
+    def check_modification(
+            cls, mode, credentials, values=None, external=False):
         pool = Pool()
         Warning = pool.get('res.user.warning')
-        actions = iter(args)
-        for credentials, values in zip(actions, actions):
-            if {'user_id', 'password', 'server'} & values.keys():
-                warning_name = Warning.format('dpd_credential', credentials)
-                if Warning.check(warning_name):
-                    raise DPDCredentialWarning(
-                        warning_name,
-                        gettext('stock_package_shipping_dpd'
-                            '.msg_dpd_credential_modified'))
-        return super().write(*args)
+        super().check_modification(
+            mode, credentials, values=values, external=external)
+        if (mode == 'write'
+                and external
+                and values.keys() & {'user_id', 'password', 'server'}):
+            warning_name = Warning.format('dpd_credential', credentials)
+            if Warning.check(warning_name):
+                raise DPDCredentialWarning(
+                    warning_name,
+                    gettext('stock_package_shipping_dpd'
+                        '.msg_dpd_credential_modified'))
 
 
 class Carrier(metaclass=PoolMeta):

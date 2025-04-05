@@ -12,7 +12,6 @@ from trytond.exceptions import LoginException
 from trytond.i18n import gettext
 from trytond.model.exceptions import AccessError
 from trytond.pool import PoolMeta
-from trytond.transaction import without_check_access
 
 logger = logging.getLogger(__name__)
 section = 'ldap_authentication'
@@ -100,7 +99,6 @@ class User(metaclass=PoolMeta):
                 for e in result]
 
     @classmethod
-    @without_check_access
     def _check_passwd_ldap_user(cls, logins):
         find = False
         try:
@@ -119,23 +117,18 @@ class User(metaclass=PoolMeta):
                     user=login))
 
     @classmethod
-    def create(cls, vlist):
-        tocheck = []
-        for values in vlist:
-            if values.get('password') and 'login' in values:
-                tocheck.append(values['login'])
-        if tocheck:
-            cls._check_passwd_ldap_user(tocheck)
-        return super().create(vlist)
+    def preprocess_values(cls, mode, values):
+        values = super().preprocess_values(mode, values)
+        if mode == 'create' and values.get('password') and 'login' in values:
+            cls._check_passwd_ldap_user([values['login']])
+        return values
 
     @classmethod
-    def write(cls, *args):
-        actions = iter(args)
-        for users, values in zip(actions, actions):
-            if values.get('password'):
-                logins = [x.login for x in users]
-                cls._check_passwd_ldap_user(logins)
-        super().write(*args)
+    def check_modification(cls, mode, users, values=None, external=False):
+        super().check_modification(
+            mode, users, values=values, external=external)
+        if mode == 'write' and values.get('password'):
+            cls._check_passwd_ldap_user([u.login for u in users])
 
     @classmethod
     def _login_ldap(cls, login, parameters):

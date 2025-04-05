@@ -283,16 +283,10 @@ class Invoice(metaclass=PoolMeta):
         return ratio
 
     @classmethod
-    def write(cls, *args):
-        super().write(*args)
-
-        invoices = []
-        actions = iter(args)
-        for records, values in zip(actions, actions):
-            if 'payment_lines' in values:
-                invoices.extend(records)
-        invoices = cls.browse(invoices)
-        cls._update_tax_cash_basis(invoices)
+    def on_modification(cls, mode, invoices, field_names=None):
+        super().on_modification(mode, invoices, field_names=field_names)
+        if mode == 'write' and 'payment_lines' in field_names:
+            cls._update_tax_cash_basis(invoices)
 
     @classmethod
     def process(cls, invoices):

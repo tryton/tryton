@@ -51,17 +51,6 @@ class TemplateCategory(IdentifiersUpdateMixin, metaclass=PoolMeta):
         cls._shopify_fields.update(['template', 'category'])
 
     @classmethod
-    def create(cls, vlist):
-        records = super().create(vlist)
-        cls.set_shopify_to_update(records)
-        return records
-
-    @classmethod
-    def delete(cls, records):
-        cls.set_shopify_to_update(records)
-        super().delete(records)
-
-    @classmethod
     def get_shopify_identifier_to_update(cls, records):
         return sum((list(r.template.shopify_identifiers) for r in records), [])
 
@@ -280,17 +269,16 @@ class Product(IdentifiersMixin, metaclass=PoolMeta):
             factor=self.shopify_uom_factor, rate=self.shopify_uom_rate)
 
     @classmethod
-    def write(cls, *args):
-        actions = iter(args)
-        for products, values in zip(actions, actions):
-            if 'template' in values:
-                for product in products:
-                    if (product.template.id != values.get('template')
-                            and product.shopify_identifiers):
-                        raise AccessError(gettext(
-                                'web_shop_shopify.msg_product_change_template',
-                                product=product.rec_name))
-        super().write(*args)
+    def check_modification(cls, mode, products, values=None, external=False):
+        super().check_modification(
+            mode, products, values=values, external=external)
+        if mode == 'write' and 'template' in values:
+            for product in products:
+                if (product.template.id != values.get('template')
+                        and product.shopify_identifiers):
+                    raise AccessError(gettext(
+                            'web_shop_shopify.msg_product_change_template',
+                            product=product.rec_name))
 
 
 class ShopifyInventoryItem(IdentifiersMixin, ModelSQL, ModelView):
@@ -377,17 +365,6 @@ class Product_TariffCode(IdentifiersUpdateMixin, metaclass=PoolMeta):
         cls._shopify_fields.update(['product', 'tariff_code'])
 
     @classmethod
-    def create(cls, vlist):
-        identifiers = super().create(vlist)
-        cls.set_shopify_to_update(identifiers)
-        return identifiers
-
-    @classmethod
-    def delete(cls, records):
-        cls.set_shopify_to_update(records)
-        super().delete(records)
-
-    @classmethod
     def get_shopify_identifier_to_update(cls, records):
         pool = Pool()
         Template = pool.get('product.template')
@@ -416,17 +393,6 @@ class ProductIdentifier(IdentifiersUpdateMixin, metaclass=PoolMeta):
     def __setup__(cls):
         super().__setup__()
         cls._shopify_fields.update(['product', 'code'])
-
-    @classmethod
-    def create(cls, vlist):
-        identifiers = super().create(vlist)
-        cls.set_shopify_to_update(identifiers)
-        return identifiers
-
-    @classmethod
-    def delete(cls, identifiers):
-        cls.set_shopify_to_update(identifiers)
-        super().delete(identifiers)
 
     @classmethod
     def get_shopify_identifier_to_update(cls, identifiers):
@@ -549,28 +515,17 @@ class Image(IdentifiersMixin, metaclass=PoolMeta):
         cls._shopify_fields.update(['template', 'product', 'attributes'])
 
     @classmethod
-    def create(cls, vlist):
-        images = super().create(vlist)
-        cls.set_shopify_to_update(images)
-        return images
-
-    @classmethod
-    def write(cls, *args):
+    def on_write(cls, images, values):
         pool = Pool()
         Identifier = pool.get('web.shop.shopify_identifier')
-        actions = iter(args)
-        to_delete = []
-        for images, values in zip(actions, actions):
-            if values.keys() & {'image', 'template', 'web_shop'}:
-                for image in images:
-                    to_delete.extend(image.shopify_identifiers)
-        super().write(*args)
-        Identifier.delete(to_delete)
-
-    @classmethod
-    def delete(cls, images):
-        cls.set_shopify_to_update(images)
-        super().delete(images)
+        callback = super().on_write(images, values)
+        if values.keys() & {'image', 'template', 'web_shop'}:
+            to_delete = []
+            for image in images:
+                to_delete.extend(image.shopify_identifiers)
+            if to_delete:
+                callback.append(lambda: Identifier.delete(to_delete))
+        return callback
 
     @classmethod
     def get_shopify_identifier_to_update(cls, images):

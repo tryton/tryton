@@ -229,17 +229,16 @@ class Period(metaclass=PoolMeta):
         help="Check to create SII records for the invoices in the period.")
 
     @classmethod
-    def write(cls, *args):
-        actions = iter(args)
-        to_check = []
-        for periods, values in zip(actions, actions):
-            if 'es_sii_send_invoices' in values:
-                for period in periods:
-                    if (period.es_sii_send_invoices
-                            != values['es_sii_send_invoices']):
-                        to_check.append(period)
-        cls.check_es_sii_posted_invoices(to_check)
-        super().write(*args)
+    def check_modification(cls, mode, periods, values=None, external=False):
+        super().check_modification(
+            mode, periods, values=values, external=external)
+        if mode == 'write' and 'es_sii_send_invoices' in values:
+            to_check = []
+            for period in periods:
+                if (period.es_sii_send_invoices
+                        != values['es_sii_send_invoices']):
+                    to_check.append(period)
+            cls.check_es_sii_posted_invoices(to_check)
 
     @classmethod
     def check_es_sii_posted_invoices(cls, periods):
@@ -248,11 +247,11 @@ class Period(metaclass=PoolMeta):
         for sub_ids in grouped_slice(list(map(int, periods))):
             invoices = Invoice.search([
                     ('move.period', 'in', sub_ids),
-                    ], limit=1)
+                    ], limit=1, order=[])
             if invoices:
                 invoice, = invoices
-                raise ESSIIPostedInvoicesError(
-                    gettext('account_es_sii.msg_es_sii_posted_invoices',
+                raise ESSIIPostedInvoicesError(gettext(
+                        'account_es_sii.msg_es_sii_posted_invoices',
                         period=invoice.move.period.rec_name))
 
 
@@ -352,13 +351,15 @@ class InvoiceSII(ModelSQL, ModelView):
         return [('invoice.rec_name',) + tuple(clause[1:])]
 
     @classmethod
-    def delete(cls, records):
-        for record in records:
-            if record.csv:
-                raise AccessError(
-                    gettext('account_es_sii.msg_es_sii_invoice_delete_sent',
-                        invoice=record.invoice.rec_name))
-        super().delete(records)
+    def check_modification(cls, mode, invoices, values=None, external=False):
+        super().check_modification(
+            mode, invoices, values=values, external=external)
+        if mode == 'delete':
+            for invoice in invoices:
+                if invoice.csv:
+                    raise AccessError(gettext(
+                            'account_es_sii.msg_es_sii_invoice_delete_sent',
+                            invoice=invoice.rec_name))
 
     @property
     def endpoint(self):

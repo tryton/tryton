@@ -87,15 +87,9 @@ def avatar_mixin(size=64, default=None):
         if default:
 
             @classmethod
-            def create(cls, vlist):
-                records = super().create(vlist)
-                cls.generate_avatar(records, field=default)
-                return records
-
-            @classmethod
-            def write(cls, *args):
-                records = sum(args[0:None:2], [])
-                super().write(*args)
-                cls.generate_avatar(records, field=default)
+            def on_modification(cls, mode, records, field_names=None):
+                super().on_modification(mode, records, field_names=field_names)
+                if mode in {'create', 'write'}:
+                    cls.generate_avatar(records, field=default)
 
     return AvatarMixin

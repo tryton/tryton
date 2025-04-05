@@ -909,20 +909,23 @@ class PaymentBraintreeAccount(ModelSQL, ModelView):
         return bool(payments)
 
     @classmethod
-    def write(cls, *args):
+    def check_modification(cls, mode, accounts, values=None, external=False):
         pool = Pool()
         Warning = pool.get('res.user.warning')
-        actions = iter(args)
-        for accounts, values in zip(actions, actions):
-            if ({'environment', 'merchant_id', 'public_key', 'private_key'}
-                    & values.keys()):
-                warning_name = Warning.format('braintree_key', accounts)
-                if Warning.check(warning_name):
-                    raise BraintreeAccountWarning(
-                        warning_name,
-                        gettext('account_payment_braintree'
-                            '.msg_braintree_key_modified'))
-        return super().write(*args)
+
+        super().check_modification(
+            mode, accounts, values=values, external=external)
+
+        if (mode == 'write'
+                and external
+                and values.keys()
+                & {'environment', 'merchant_id', 'public_key', 'private_key'}):
+            warning_name = Warning.format('braintree_key', accounts)
+            if Warning.check(warning_name):
+                raise BraintreeAccountWarning(
+                    warning_name,
+                    gettext('account_payment_braintree'
+                        '.msg_braintree_key_modified'))
 
 
 class PaymentBraintreeCustomer(
@@ -992,9 +995,11 @@ class PaymentBraintreeCustomer(
 
     @classmethod
     def delete(cls, customers):
+        ids, on_delete = cls._before_delete(customers)
         cls.write(customers, {
                 'active': False,
                 })
+        cls._after_delete(ids, on_delete)
 
     @classmethod
     def copy(cls, customers, default=None):

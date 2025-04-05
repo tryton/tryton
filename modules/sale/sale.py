@@ -1096,15 +1096,15 @@ class Sale(
                         if l.moves_progress is not None))))
 
     @classmethod
-    def delete(cls, sales):
-        # Cancel before delete
-        cls.cancel(sales)
-        for sale in sales:
-            if sale.state != 'cancelled':
-                raise AccessError(
-                    gettext('sale.msg_sale_delete_cancel',
-                        sale=sale.rec_name))
-        super().delete(sales)
+    def check_modification(cls, mode, sales, values=None, external=False):
+        super().check_modification(
+            mode, sales, values=values, external=external)
+        if mode == 'delete':
+            for sale in sales:
+                if sale.state not in {'cancelled', 'draft'}:
+                    raise AccessError(gettext(
+                            'sale.msg_sale_delete_cancel',
+                            sale=sale.rec_name))
 
     @classmethod
     @ModelView.button
@@ -2240,26 +2240,22 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
                 'spell', Eval('_parent_sale', {}).get('party_lang'))]
 
     @classmethod
-    def create(cls, vlist):
-        pool = Pool()
-        Sale = pool.get('sale.sale')
-        sale_ids = filter(None, {v.get('sale') for v in vlist})
-        for sale in Sale.browse(list(sale_ids)):
-            if sale.state != 'draft':
-                raise AccessError(
-                    gettext('sale.msg_sale_line_create_draft',
-                        sale=sale.rec_name))
-        return super().create(vlist)
-
-    @classmethod
-    def delete(cls, lines):
-        for line in lines:
-            if line.sale_state not in {'cancelled', 'draft'}:
-                raise AccessError(
-                    gettext('sale.msg_sale_line_delete_cancel_draft',
-                        line=line.rec_name,
-                        sale=line.sale.rec_name))
-        super().delete(lines)
+    def check_modification(cls, mode, lines, values=None, external=False):
+        super().check_modification(
+            mode, lines, values=values, external=external)
+        if mode == 'create':
+            for line in lines:
+                if line.sale.state != 'draft':
+                    raise AccessError(gettext(
+                            'sale.msg_sale_line_create_draft',
+                            sale=line.sale.rec_name))
+        elif mode == 'delete':
+            for line in lines:
+                if line.sale_state not in {'cancelled', 'draft'}:
+                    raise AccessError(gettext(
+                            'sale.msg_sale_line_delete_cancel_draft',
+                            line=line.rec_name,
+                            sale=line.sale.rec_name))
 
     @classmethod
     def copy(cls, lines, default=None):

@@ -285,20 +285,15 @@ class ContactMechanism(
         return values
 
     @classmethod
-    def write(cls, *args):
-        actions = iter(args)
-        all_mechanisms = []
-        for mechanisms, values in zip(actions, actions):
-            all_mechanisms.extend(mechanisms)
-            if 'party' in values:
-                for mechanism in mechanisms:
-                    if mechanism.party.id != values['party']:
-                        raise AccessError(
-                            gettext('party'
-                            '.msg_contact_mechanism_change_party') % {
-                                'contact': mechanism.rec_name,
-                                })
-        super().write(*args)
+    def check_modification(cls, mode, mechanisms, values=None, external=False):
+        super().check_modification(
+            mode, mechanisms, values=values, external=external)
+        if mode == 'write' and 'party' in values:
+            for mechanism in mechanisms:
+                if mechanism.party.id != values['party']:
+                    raise AccessError(gettext(
+                            'party.msg_contact_mechanism_change_party',
+                            contact=mechanism.rec_name))
 
     @classmethod
     def validate_fields(cls, mechanisms, field_names):

@@ -26,9 +26,6 @@ You must use the "Modify Cost Price" wizard.</field>
             <field name="text">You cannot change the type of location "%(location)s" to "%(type)s"
 because the type does not support moves and location has existing moves.</field>
         </record>
-        <record model="ir.message" id="msg_location_child_of_warehouse">
-            <field name="text">To set location "%(location)s" as storage/input/output of warehouse "%(warehouse)s", it must be in the warehouse.</field>
-        </record>
         <record model="ir.message" id="msg_location_inactive_not_empty">
             <field name="text">To inactivate location "%(location)s", you must empty it.</field>
         </record>

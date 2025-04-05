@@ -15,6 +15,7 @@ from trytond.exceptions import UserError
 from trytond.i18n import gettext
 from trytond.model import (
     Check, DeactivableMixin, ModelSQL, ModelView, Unique, fields)
+from trytond.model.exceptions import AccessError
 from trytond.modules import create_graph, load_translations
 from trytond.pool import Pool
 from trytond.pyson import Eval
@@ -40,7 +41,7 @@ class TranslatableError(UserError):
     pass
 
 
-class DeleteDefaultError(UserError):
+class DeleteDefaultError(AccessError):
     pass
 
 
@@ -396,43 +397,34 @@ class Lang(DeactivableMixin, ModelSQL, ModelView):
         return res
 
     @classmethod
-    def create(cls, vlist):
-        pool = Pool()
-        Translation = pool.get('ir.translation')
-        # Clear cache
-        cls._lang_cache.clear()
-        languages = super().create(vlist)
-        Translation._get_language_cache.clear()
-        _parents.clear()
-        return languages
-
-    @classmethod
-    def write(cls, langs, values, *args):
-        pool = Pool()
-        Translation = pool.get('ir.translation')
-        # Clear cache
-        cls._lang_cache.clear()
-        cls._code_cache.clear()
-        super().write(langs, values, *args)
-        Translation._get_language_cache.clear()
-        _parents.clear()
-
-    @classmethod
-    def delete(cls, langs):
+    def check_modification(cls, mode, languages, values=None, external=False):
         pool = Pool()
         Config = pool.get('ir.configuration')
+
+        super().check_modification(
+            mode, languages, values=values, external=external)
+
+        if mode == 'write' and 'code' in values:
+            for language in languages:
+                if (language.code == Config.get_language()
+                        and (not values
+                            or language.code != values['code'])):
+                    raise DeleteDefaultError(
+                        gettext('ir.msg_language_delete_default',
+                            language=language.rec_name))
+
+    @classmethod
+    def on_modification(cls, mode, languages, field_names=None):
+        pool = Pool()
         Translation = pool.get('ir.translation')
-        for lang in langs:
-            if lang.code == Config.get_language():
-                raise DeleteDefaultError(
-                    gettext('ir.msg_language_delete_default',
-                        language=lang.rec_name))
-        # Clear cache
+
+        super().on_modification(mode, languages, field_names=field_names)
+
         cls._lang_cache.clear()
-        cls._code_cache.clear()
-        super().delete(langs)
         Translation._get_language_cache.clear()
         _parents.clear()
+        if mode in {'write', 'delete'}:
+            cls._code_cache.clear()
 
     @classmethod
     @inactive_records

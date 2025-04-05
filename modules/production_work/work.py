@@ -264,25 +264,21 @@ class Work(sequence_ordered(), ModelSQL, ModelView):
         return costs
 
     @classmethod
-    def create(cls, values):
-        works = super().create(values)
-        cls.set_state(works)
-        return works
+    def on_modification(cls, mode, works, field_names=None):
+        super().on_modification(mode, works, field_names=field_names)
+        if mode in {'create', 'write'}:
+            cls.set_state(works)
 
     @classmethod
-    def write(cls, *args):
-        super().write(*args)
-        works = sum(args[0:None:2], [])
-        cls.set_state(works)
-
-    @classmethod
-    def delete(cls, works):
-        for work in works:
-            if work.state not in {'request', 'draft'}:
-                raise AccessError(
-                    gettext('production_work.msg_delete_request',
-                        work=work.rec_name))
-        super().delete(works)
+    def check_modification(cls, mode, works, values=None, external=False):
+        super().check_modification(
+            mode, works, values=values, external=external)
+        if mode == 'delete':
+            for work in works:
+                if work.state not in {'request', 'draft'}:
+                    raise AccessError(
+                        gettext('production_work.msg_delete_request',
+                            work=work.rec_name))
 
 
 def set_work_state(func):
@@ -290,8 +286,9 @@ def set_work_state(func):
     def wrapper(cls, cycles):
         pool = Pool()
         Work = pool.get('production.work')
-        func(cls, cycles)
+        result = func(cls, cycles)
         Work.set_state(Work.browse({c.work.id for c in cycles}))
+        return result
     return wrapper
 
 

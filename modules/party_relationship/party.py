@@ -195,8 +195,9 @@ class RelationAll(Relation, ModelView):
     def create(cls, vlist):
         pool = Pool()
         Relation = pool.get('party.relation')
+        vlist = cls._before_create(vlist)
         relations = Relation.create(vlist)
-        return cls.browse([r.id * 2 for r in relations])
+        return cls.browse(cls._after_create([r.id * 2 for r in relations]))
 
     @classmethod
     def write(cls, *args):
@@ -204,23 +205,19 @@ class RelationAll(Relation, ModelView):
         Relation = pool.get('party.relation')
         RelationType = pool.get('party.relation.type')
 
-        all_records = sum(args[0:None:2], [])
+        ids, field_names, on_write, trigger_eligibles, *args = (
+            cls._before_write(*args))
 
-        # Increase transaction counter
-        Transaction().counter += 1
-
-        # Clean local cache
-        for record in all_records:
-            for record_id in (record.id, record.reverse_id):
-                record._local_cache.pop(record_id, None)
-
-        # Clean cursor cache
+        relations = cls.browse(ids)
+        # Clean local cache of reverse
+        for relation in relations:
+            relation._local_cache.pop(relation.reverse_id, None)
+        # Clean cursor cache of reverse
         for cache in Transaction().cache.values():
             if cls.__name__ in cache:
                 cache_cls = cache[cls.__name__]
-                for record in all_records:
-                    for record_id in (record.id, record.reverse_id):
-                        cache_cls.pop(record_id, None)
+                for relation in relations:
+                    cache_cls.pop(relation.reverse_id, None)
 
         actions = iter(args)
         args = []
@@ -247,25 +244,23 @@ class RelationAll(Relation, ModelView):
                     (cls.convert_instances(reverse_relations), reverse_values))
         Relation.write(*args)
 
+        cls._after_write(ids, field_names, on_write, trigger_eligibles)
+
     @classmethod
     def delete(cls, relations):
         pool = Pool()
         Relation = pool.get('party.relation')
+        ids, on_delete = cls._before_delete(relations)
 
-        # Increase transaction counter
-        Transaction().counter += 1
-
-        # Clean cursor cache
+        # Clean cursor cache of reverse
         for cache in list(Transaction().cache.values()):
-            for cache in (cache,
-                    list(cache.get('_language_cache', {}).values())):
-                if cls.__name__ in cache:
-                    cache_cls = cache[cls.__name__]
-                    for record in relations:
-                        for record_id in (record.id, record.reverse_id):
-                            cache_cls.pop(record_id, None)
+            if cls.__name__ in cache:
+                cache_cls = cache[cls.__name__]
+                for relation in relations:
+                    cache_cls.pop(relation.reverse_id, None)
 
         Relation.delete(cls.convert_instances(relations))
+        cls._after_delete(ids, on_delete)
 
 
 class Party(metaclass=PoolMeta):

@@ -27,9 +27,10 @@ def process_request(func):
     def wrapper(cls, quotations):
         pool = Pool()
         Request = pool.get('purchase.request')
-        func(cls, quotations)
+        result = func(cls, quotations)
         requests = [l.request for q in quotations for l in q.lines]
         Request.update_state(requests)
+        return result
     return wrapper
 
 
@@ -411,12 +412,15 @@ class QuotationLine(ModelSQL, ModelView):
         return domain
 
     @classmethod
-    def delete(cls, quotationlines):
+    def on_delete(cls, lines):
         pool = Pool()
         Request = pool.get('purchase.request')
-        requests = [l.request for l in quotationlines]
-        super().delete(quotationlines)
-        Request.update_state(requests)
+        callback = super().on_delete(lines)
+        requests = {l.request for l in lines}
+        if requests:
+            requests = Request.browse(requests)
+            callback.append(lambda: Request.update_state(requests))
+        return callback
 
     def get_product(self, name):
         if self.request and self.request.product:

@@ -563,19 +563,30 @@ class Inspection(Workflow, ModelSQL, ModelView):
             origin=self)
 
     @classmethod
-    def create(cls, vlist):
+    def preprocess_values(cls, mode, values):
         pool = Pool()
         Configuration = pool.get('quality.configuration')
+        values = super().preprocess_values(mode, values)
+        if mode == 'create' and not values.get('number'):
+            company_id = values.get('company', cls.default_company())
+            if company_id is not None:
+                configuration = Configuration(1)
+                if sequence := configuration.get_multivalue(
+                        'inspection_sequence', company=company_id):
+                    values['number'] = sequence.get()
+        return values
 
-        config = Configuration(1)
-        default_company = cls.default_company()
-        vlist = [v.copy() for v in vlist]
-        for values in vlist:
-            if not values.get('number'):
-                values['number'] = config.get_multivalue(
-                    'inspection_sequence',
-                    company=values.get('company', default_company)).get()
-        return super().create(vlist)
+    @classmethod
+    def check_modification(
+            cls, mode, inspections, values=None, external=False):
+        super().check_modification(
+            mode, inspections, values=values, external=external)
+        if mode == 'delete':
+            for inspection in inspections:
+                if inspection.state != 'pending':
+                    raise AccessError(gettext(
+                            'quality.msg_inspection_delete_non_pending',
+                            inspection=inspection.rec_name))
 
     @classmethod
     def copy(cls, inspections, default=None):
@@ -586,15 +597,6 @@ class Inspection(Workflow, ModelSQL, ModelView):
         default.setdefault('passed_by')
         default.setdefault('failed_by')
         return super().copy(inspections, default=default)
-
-    @classmethod
-    def delete(cls, inspections):
-        for inspection in inspections:
-            if inspection.state != 'pending':
-                raise AccessError(
-                    gettext('quality.msg_inspection_delete_non_pending',
-                        inspection=inspection.rec_name))
-        super().delete(inspections)
 
     @classmethod
     def get_from_control(cls, control, origin=None):
@@ -721,19 +723,18 @@ class Alert(Workflow, ModelSQL, ModelView):
         pass
 
     @classmethod
-    def create(cls, vlist):
+    def preprocess_values(cls, mode, values):
         pool = Pool()
         Configuration = pool.get('quality.configuration')
-
-        config = Configuration(1)
-        default_company = cls.default_company()
-        vlist = [v.copy() for v in vlist]
-        for values in vlist:
-            if not values.get('number'):
-                values['number'] = config.get_multivalue(
-                    'alert_sequence',
-                    company=values.get('company', default_company)).get()
-        return super().create(vlist)
+        values = super().preprocess_values(mode, values)
+        if mode == 'create' and not values.get('number'):
+            company_id = values.get('company', cls.default_company())
+            if company_id is not None:
+                configuration = Configuration(1)
+                if sequence := configuration.get_multivalue(
+                        'alert_sequence', company=company_id):
+                    values['number'] = sequence.get()
+        return values
 
     @classmethod
     def copy(cls, inspections, default=None):

@@ -57,7 +57,7 @@ class Move(metaclass=PoolMeta):
     @classmethod
     def __setup__(cls):
         super().__setup__()
-        cls._check_modify_exclude.append('consolidation_company')
+        cls._check_modify_exclude.add('consolidation_company')
 
 
 class MoveLine(metaclass=PoolMeta):

@@ -225,16 +225,15 @@ class Address(
             ]
 
     @classmethod
-    def write(cls, *args):
-        actions = iter(args)
-        for addresses, values in zip(actions, actions):
-            if 'party' in values:
-                for address in addresses:
-                    if address.party.id != values['party']:
-                        raise AccessError(
-                            gettext('party.msg_address_change_party',
-                                address=address.rec_name))
-        super().write(*args)
+    def check_modification(cls, mode, addresses, values=None, external=False):
+        super().check_modification(
+            mode, addresses, values=values, external=external)
+        if mode == 'write' and 'party' in values:
+            for address in addresses:
+                if address.party.id != values['party']:
+                    raise AccessError(gettext(
+                            'party.msg_address_change_party',
+                            address=address.rec_name))
 
     @fields.depends('subdivision', 'country')
     def on_change_country(self):
@@ -299,19 +298,8 @@ ${subdivision}
 ${COUNTRY}"""
 
     @classmethod
-    def create(cls, *args, **kwargs):
-        records = super().create(*args, **kwargs)
-        cls._get_format_cache.clear()
-        return records
-
-    @classmethod
-    def write(cls, *args, **kwargs):
-        super().write(*args, **kwargs)
-        cls._get_format_cache.clear()
-
-    @classmethod
-    def delete(cls, *args, **kwargs):
-        super().delete(*args, **kwargs)
+    def on_modification(cls, mode, formats, field_names=None):
+        super().on_modification(mode, formats, field_names=field_names)
         cls._get_format_cache.clear()
 
     @classmethod
@@ -387,22 +375,6 @@ class SubdivisionType(DeactivableMixin, ModelSQL, ModelView):
         return [(k, v) for k, v in selection if k is not None]
 
     @classmethod
-    def create(cls, *args, **kwargs):
-        records = super().create(*args, **kwargs)
-        cls._get_types_cache.clear()
-        return records
-
-    @classmethod
-    def write(cls, *args, **kwargs):
-        super().write(*args, **kwargs)
-        cls._get_types_cache.clear()
-
-    @classmethod
-    def delete(cls, *args, **kwargs):
-        super().delete(*args, **kwargs)
-        cls._get_types_cache.clear()
-
-    @classmethod
     def get_types(cls, country):
         key = country.code if country else None
         types = cls._get_types_cache.get(key)
@@ -420,3 +392,8 @@ class SubdivisionType(DeactivableMixin, ModelSQL, ModelView):
 
         cls._get_types_cache.set(key, types)
         return types
+
+    @classmethod
+    def on_modification(cls, mode, types, field_names=None):
+        super().on_modification(mode, types, field_names=field_names)
+        cls._get_types_cache.clear()

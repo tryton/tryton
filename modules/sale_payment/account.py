@@ -70,18 +70,20 @@ class Payment(metaclass=PoolMeta):
                 self.currency = currency
 
     @classmethod
-    def create(cls, vlist):
-        payments = super().create(vlist)
-        cls.trigger_authorized([p for p in payments if p.is_authorized])
-        return payments
+    def on_modification(cls, mode, payments, field_names=None):
+        super().on_modification(mode, payments, field_names=field_names)
+        if mode == 'create':
+            cls.trigger_authorized([p for p in payments if p.is_authorized])
 
     @classmethod
-    def write(cls, *args):
-        payments = sum(args[0:None:2], [])
-        unauthorized = {p for p in payments if not p.is_authorized}
-        super().write(*args)
-        authorized = {p for p in payments if p.is_authorized}
-        cls.trigger_authorized(cls.browse(unauthorized & authorized))
+    def on_write(cls, payments, values):
+        callback = super().on_write(payments, values)
+        if unauthorized := {p for p in payments if not p.is_authorized}:
+            def trigger():
+                authorized = {p for p in payments if p.is_authorized}
+                cls.trigger_authorized(cls.browse(unauthorized & authorized))
+            callback.append(trigger)
+        return callback
 
     @property
     def is_authorized(self):  # TODO: move to account_payment

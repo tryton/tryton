@@ -163,11 +163,12 @@ class CredentialChorus(ModelSQL, CompanyValueMixin):
         return resp.json()
 
     @classmethod
-    def write(cls, *args):
+    def check_modification(cls, mode, records, values=None, external=False):
         pool = Pool()
         Warning = pool.get('res.user.warning')
-        actions = iter(args)
-        for records, values in zip(actions, actions):
+        super().check_modification(
+            mode, records, values=values, external=external)
+        if mode == 'write' and external:
             for record in records:
                 for field in [
                         'chorus_piste_client_id', 'chorus_piste_client_secret',
@@ -182,7 +183,6 @@ class CredentialChorus(ModelSQL, CompanyValueMixin):
                                 warning_name,
                                 gettext('account_fr_chorus'
                                     '.msg_chorus_credential_modified'))
-        return super().write(*args)
 
 
 class Invoice(metaclass=PoolMeta):
@@ -300,6 +300,9 @@ class InvoiceChorus(
         table, _ = tables[None]
         return [CharLength(table.number), table.number]
 
+    def get_rec_name(self, name):
+        return self.invoice.rec_name
+
     @classmethod
     def validate(cls, records):
         super().validate(records)
@@ -316,13 +319,15 @@ class InvoiceChorus(
                             address=address.rec_name))
 
     @classmethod
-    def delete(cls, records):
-        for record in records:
-            if record.number:
-                raise AccessError(
-                    gettext('account_fr_chorus.msg_invoice_delete_sent',
-                        invoice=record.invoice.rec_name))
-        super().delete(records)
+    def check_modification(cls, mode, invoices, values=None, external=False):
+        super().check_modification(
+            mode, invoices, values=values, external=external)
+        if mode == 'delete':
+            for invoice in invoices:
+                if invoice.number:
+                    raise AccessError(gettext(
+                            'account_fr_chorus.msg_invoice_delete_sent',
+                            invoice=invoice.rec_name))
 
     def _send_context(self):
         return {

@@ -328,16 +328,36 @@ class User(avatar_mixin(100, 'login'), DeactivableMixin, ModelSQL, ModelView):
                             attrgetter('create_uid.id'))))
         return result
 
-    @staticmethod
-    def _convert_vals(vals):
-        vals = vals.copy()
+    @classmethod
+    def preprocess_values(cls, mode, values):
         pool = Pool()
         Action = pool.get('ir.action')
-        if 'menu' in vals:
-            vals['menu'] = Action.get_action_id(vals['menu'])
-        if vals.get('email'):
-            vals['email'] = normalize_email(vals['email'])
-        return vals
+        values = super().preprocess_values(mode, values)
+        if values.get('menu') is not None:
+            values['menu'] = Action.get_action_id(values['menu'])
+        if values.get('email'):
+            values['email'] = normalize_email(values['email'])
+        return values
+
+    @classmethod
+    def on_modification(cls, mode, users, field_names=None):
+        pool = Pool()
+        Session = pool.get('ir.session')
+        UserDevice = pool.get('res.user.device')
+
+        super().on_modification(mode, users, field_names=field_names)
+
+        if mode == 'write':
+            if (field_names is None
+                    or {'active', 'password'} & set(field_names)):
+                Session.clear(users)
+                UserDevice.clear([u.login for u in users])
+
+            # Clean cursor cache as it could be filled by domain_get
+            for cache in Transaction().cache.values():
+                if cls.__name__ in cache:
+                    for user in users:
+                        cache[cls.__name__].pop(user.id, None)
 
     @classmethod
     def check_xml_record(cls, records, values):
@@ -368,41 +388,6 @@ class User(avatar_mixin(100, 'login'), DeactivableMixin, ModelSQL, ModelView):
                     if user.id in cache:
                         cache[user.id]['password_hash'] = None
         return users
-
-    @classmethod
-    def create(cls, vlist):
-        vlist = [cls._convert_vals(vals) for vals in vlist]
-        return super().create(vlist)
-
-    @classmethod
-    def write(cls, users, values, *args):
-        pool = Pool()
-        Session = pool.get('ir.session')
-        UserDevice = pool.get('res.user.device')
-
-        actions = iter((users, values) + args)
-        all_users = []
-        session_to_clear = []
-        users_to_clear = []
-        args = []
-        for users, values in zip(actions, actions):
-            all_users += users
-            args.extend((users, cls._convert_vals(values)))
-
-            if values.keys() & {'active', 'password'}:
-                session_to_clear += users
-                users_to_clear += [u.login for u in users]
-
-        super().write(*args)
-
-        Session.clear(session_to_clear)
-        UserDevice.clear(users_to_clear)
-
-        # Clean cursor cache as it could be filled by domain_get
-        for cache in Transaction().cache.values():
-            if cls.__name__ in cache:
-                for user in all_users:
-                    cache[cls.__name__].pop(user.id, None)
 
     @classmethod
     def delete(cls, users):
@@ -911,27 +896,14 @@ class UserAction(ModelSQL):
     action = fields.Many2One('ir.action', 'Action', ondelete='CASCADE',
         required=True)
 
-    @staticmethod
-    def _convert_values(values):
+    @classmethod
+    def preprocess_values(cls, mode, values):
         pool = Pool()
         Action = pool.get('ir.action')
-        values = values.copy()
-        if values.get('action'):
+        values = super().preprocess_values(mode, values)
+        if values.get('action') is not None:
             values['action'] = Action.get_action_id(values['action'])
         return values
-
-    @classmethod
-    def create(cls, vlist):
-        vlist = [cls._convert_values(values) for values in vlist]
-        return super().create(vlist)
-
-    @classmethod
-    def write(cls, records, values, *args):
-        actions = iter((records, values) + args)
-        args = []
-        for records, values in zip(actions, actions):
-            args.extend((records, cls._convert_values(values)))
-        super().write(*args)
 
 
 class UserGroup(ModelSQL):
@@ -942,26 +914,11 @@ class UserGroup(ModelSQL):
         required=True)
 
     @classmethod
-    def create(cls, vlist):
-        records = super().create(vlist)
+    def on_modification(cls, mode, records, field_names=None):
         pool = Pool()
-        # Restart the cache for get_groups
-        pool.get('res.user')._get_groups_cache.clear()
-        return records
-
-    @classmethod
-    def write(cls, groups, values, *args):
-        super().write(groups, values, *args)
-        pool = Pool()
-        # Restart the cache for get_groups
-        pool.get('res.user')._get_groups_cache.clear()
-
-    @classmethod
-    def delete(cls, groups):
-        super().delete(groups)
-        pool = Pool()
-        # Restart the cache for get_groups
-        pool.get('res.user')._get_groups_cache.clear()
+        User = pool.get('res.user')
+        super().on_modification(mode, records, field_names=field_names)
+        User._get_groups_cache.clear()
 
     @classmethod
     def user_group_all_table(cls):
@@ -1117,14 +1074,13 @@ class UserApplication(Workflow, ModelSQL, ModelView):
         return record
 
     @classmethod
-    def create(cls, vlist):
-        vlist = [v.copy() for v in vlist]
-        for values in vlist:
+    def preprocess_values(cls, mode, values):
+        values = super().preprocess_values(mode, values)
+        if 'key' not in values:
             # Ensure we get a different key for each record
             # default methods are called only once
-            values.setdefault('key', cls.default_key())
-        applications = super().create(vlist)
-        return applications
+            values['key'] = cls.default_key()
+        return values
 
 
 class EmailResetPassword(Report):

@@ -243,25 +243,18 @@ class ShipmentDrop(
             Move.write(*to_write)
 
     @classmethod
-    def create(cls, vlist):
+    def preprocess_values(cls, mode, values):
         pool = Pool()
-        Config = pool.get('stock.configuration')
-
-        vlist = [x.copy() for x in vlist]
-        config = Config(1)
-        default_company = cls.default_company()
-        for values in vlist:
-            values['number'] = config.get_multivalue(
-                'shipment_drop_sequence',
-                company=values.get('company', default_company)).get()
-        shipments = super().create(vlist)
-        cls._set_move_planned_date(shipments)
-        return shipments
-
-    @classmethod
-    def write(cls, *args):
-        super().write(*args)
-        cls._set_move_planned_date(sum(args[::2], []))
+        Configuration = pool.get('stock.configuration')
+        values = super().preprocess_values(mode, values)
+        if mode == 'create' and not values.get('number'):
+            company_id = values.get('company', cls.default_company())
+            if company_id is not None:
+                configuration = Configuration(1)
+                if sequence := configuration.get_multivalue(
+                        'shipment_drop_sequence', company=company_id):
+                    values['number'] = sequence.get()
+        return values
 
     @classmethod
     def copy(cls, shipments, default=None):
@@ -273,22 +266,6 @@ class ShipmentDrop(
         default.setdefault('supplier_moves', None)
         default.setdefault('customer_moves', None)
         return super().copy(shipments, default=default)
-
-    @classmethod
-    def delete(cls, shipments):
-        pool = Pool()
-        Move = pool.get('stock.move')
-
-        cls.cancel(shipments)
-        for shipment in shipments:
-            if shipment.state != 'cancelled':
-                raise AccessError(
-                    gettext('sale_supply_drop_shipment'
-                        '.msg_drop_shipment_delete_cancel',
-                        shipment=shipment.rec_name,
-                        ))
-        Move.delete([m for s in shipments for m in s.supplier_moves])
-        super().delete(shipments)
 
     @classmethod
     @ModelView.button

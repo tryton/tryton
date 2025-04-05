@@ -707,26 +707,16 @@ class Translation(
         return super().copy(translations, default=default)
 
     @classmethod
-    def delete(cls, translations):
-        cls.__clear_cache_for(translations)
-        return super().delete(translations)
+    def preprocess_values(cls, mode, values):
+        context = Transaction().context
+        values = super().preprocess_values(mode, values)
+        if mode == 'create' and not values.get('module'):
+            values['module'] = context.get('module')
+        return values
 
     @classmethod
-    def create(cls, vlist):
-        vlist = [x.copy() for x in vlist]
-
-        for vals in vlist:
-            if not vals.get('module'):
-                if Transaction().context.get('module'):
-                    vals['module'] = Transaction().context['module']
-        translations = super().create(vlist)
-        cls.__clear_cache_for(translations)
-        return translations
-
-    @classmethod
-    def write(cls, *args):
-        super().write(*args)
-        translations = sum(args[0:None:2], [])
+    def on_modification(cls, mode, translations, field_names=None):
+        super().on_modification(mode, translations, field_names=field_names)
         cls.__clear_cache_for(translations)
 
     @classmethod

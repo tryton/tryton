@@ -754,24 +754,8 @@ class ModelAccess(
             return True
 
     @classmethod
-    def write(cls, accesses, values, *args):
-        super().write(accesses, values, *args)
-        # Restart the cache
-        cls._get_access_cache.clear()
-        ModelView._fields_view_get_cache.clear()
-
-    @classmethod
-    def create(cls, vlist):
-        res = super().create(vlist)
-        # Restart the cache
-        cls._get_access_cache.clear()
-        ModelView._fields_view_get_cache.clear()
-        return res
-
-    @classmethod
-    def delete(cls, accesses):
-        super().delete(accesses)
-        # Restart the cache
+    def on_modification(cls, mode, records, field_names=None):
+        super().on_modification(mode, records, field_names=field_names)
         cls._get_access_cache.clear()
         ModelView._fields_view_get_cache.clear()
 
@@ -947,24 +931,8 @@ class ModelFieldAccess(
         return True
 
     @classmethod
-    def write(cls, field_accesses, values, *args):
-        super().write(field_accesses, values, *args)
-        # Restart the cache
-        cls._get_access_cache.clear()
-        ModelView._fields_view_get_cache.clear()
-
-    @classmethod
-    def create(cls, vlist):
-        res = super().create(vlist)
-        # Restart the cache
-        cls._get_access_cache.clear()
-        ModelView._fields_view_get_cache.clear()
-        return res
-
-    @classmethod
-    def delete(cls, field_accesses):
-        super().delete(field_accesses)
-        # Restart the cache
+    def on_modification(cls, mode, records, field_names=None):
+        super().on_modification(mode, records, field_names=field_names)
         cls._get_access_cache.clear()
         ModelView._fields_view_get_cache.clear()
 
@@ -1044,25 +1012,8 @@ class ModelButton(
         cls._order.insert(0, ('model', 'ASC'))
 
     @classmethod
-    def create(cls, vlist):
-        result = super().create(vlist)
-        cls._rules_cache.clear()
-        cls._reset_cache.clear()
-        cls._groups_cache.clear()
-        cls._view_attributes_cache.clear()
-        return result
-
-    @classmethod
-    def write(cls, buttons, values, *args):
-        super().write(buttons, values, *args)
-        cls._rules_cache.clear()
-        cls._reset_cache.clear()
-        cls._groups_cache.clear()
-        cls._view_attributes_cache.clear()
-
-    @classmethod
-    def delete(cls, buttons):
-        super().delete(buttons)
+    def on_modification(cls, mode, records, field_names=None):
+        super().on_modification(mode, records, field_names=field_names)
         cls._rules_cache.clear()
         cls._reset_cache.clear()
         cls._groups_cache.clear()
@@ -1172,26 +1123,11 @@ class ModelButtonGroup(DeactivableMixin, ModelSQL):
         'res.group', "Group", ondelete='CASCADE', required=True)
 
     @classmethod
-    def create(cls, vlist):
+    def on_modification(cls, mode, records, field_names=None):
         pool = Pool()
-        result = super().create(vlist)
-        # Restart the cache for get_groups
-        pool.get('ir.model.button')._groups_cache.clear()
-        return result
-
-    @classmethod
-    def write(cls, records, values, *args):
-        pool = Pool()
-        super().write(records, values, *args)
-        # Restart the cache for get_groups
-        pool.get('ir.model.button')._groups_cache.clear()
-
-    @classmethod
-    def delete(cls, records):
-        pool = Pool()
-        super().delete(records)
-        # Restart the cache for get_groups
-        pool.get('ir.model.button')._groups_cache.clear()
+        Button = pool.get('ir.model.button')
+        super().on_modification(mode, records, field_names=field_names)
+        Button._groups_cache.clear()
 
 
 class ModelButtonRule(ModelSQL, ModelView):
@@ -1249,28 +1185,10 @@ class ModelButtonRule(ModelSQL, ModelView):
         return len(users) >= self.number_user
 
     @classmethod
-    def create(cls, vlist):
+    def on_modification(cls, mode, records, field_names=None):
         pool = Pool()
         ModelButton = pool.get('ir.model.button')
-        result = super().create(vlist)
-        # Restart the cache for get_rules
-        ModelButton._rules_cache.clear()
-        return result
-
-    @classmethod
-    def write(cls, buttons, values, *args):
-        pool = Pool()
-        ModelButton = pool.get('ir.model.button')
-        super().write(buttons, values, *args)
-        # Restart the cache for get_rules
-        ModelButton._rules_cache.clear()
-
-    @classmethod
-    def delete(cls, buttons):
-        pool = Pool()
-        ModelButton = pool.get('ir.model.button')
-        super().delete(buttons)
-        # Restart the cache for get_rules
+        super().on_modification(mode, records, field_names=field_names)
         ModelButton._rules_cache.clear()
 
 
@@ -1430,22 +1348,11 @@ class ModelData(
         return False
 
     @classmethod
-    def create(cls, *args):
-        records = super().create(*args)
+    def on_modification(cls, mode, records, field_names=None):
+        super().on_modification(mode, records, field_names=field_names)
         cls._has_model_cache.clear()
-        return records
-
-    @classmethod
-    def write(cls, data, values, *args):
-        super().write(data, values, *args)
-        # Restart the cache for get_id
-        cls._get_id_cache.clear()
-        cls._has_model_cache.clear()
-
-    @classmethod
-    def delete(cls, records):
-        super().delete(records)
-        cls._has_model_cache.clear()
+        if mode == 'write':
+            cls._get_id_cache.clear()
 
     @classmethod
     def has_model(cls, model):

@@ -156,15 +156,15 @@ class Account(DeactivableMixin, ModelSQL, ModelView):
                         bic=iban.bic))
 
     @classmethod
-    def create(cls, vlist):
-        accounts = super().create(vlist)
-        for account in accounts:
-            if not account.bank:
-                bank = account.guess_bank()
-                if bank:
-                    account.bank = bank
-        cls.save(accounts)
-        return accounts
+    def on_modification(cls, mode, accounts, field_names=None):
+        super().on_modification(mode, accounts, field_names=field_names)
+        if mode == 'create':
+            for account in accounts:
+                if not account.bank:
+                    bank = account.guess_bank()
+                    if bank:
+                        account.bank = bank
+            cls.save(accounts)
 
     def guess_bank(self):
         pool = Pool()

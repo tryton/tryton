@@ -650,15 +650,18 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
         cls.save(productions)
 
     @classmethod
-    def create(cls, vlist):
-        productions = super().create(vlist)
-        cls._set_move_planned_date(productions)
-        return productions
-
-    @classmethod
-    def write(cls, *args):
-        super().write(*args)
-        cls._set_move_planned_date(sum(args[::2], []))
+    def on_modification(cls, mode, productions, field_names=None):
+        pool = Pool()
+        Move = pool.get('stock.move')
+        super().on_modification(mode, productions, field_names=field_names)
+        if mode in {'create', 'write'}:
+            cls._set_move_planned_date(productions)
+        elif mode == 'delete':
+            moves = []
+            for production in productions:
+                moves.extend(production.inputs)
+                moves.extend(production.outputs)
+            Move.delete(moves)
 
     @classmethod
     def copy(cls, productions, default=None):

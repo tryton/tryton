@@ -105,33 +105,27 @@ class Line(ModelSQL, ModelView):
         return clause
 
     @classmethod
-    def create(cls, vlist):
+    def on_modification(cls, mode, lines, field_names=None):
         pool = Pool()
         MoveLine = pool.get('account.move.line')
-        lines = super().create(vlist)
-        move_lines = [l.move_line for l in lines]
-        MoveLine.set_analytic_state(move_lines)
-        MoveLine.save(move_lines)
-        return lines
+        super().on_modification(mode, lines, field_names=field_names)
+        if mode in {'create', 'write'}:
+            move_lines = MoveLine.browse({l.move_line for l in lines})
+            MoveLine.set_analytic_state(move_lines)
+            MoveLine.save(move_lines)
 
     @classmethod
-    def write(cls, *args):
+    def on_delete(cls, lines):
         pool = Pool()
         MoveLine = pool.get('account.move.line')
-        super().write(*args)
-        lines = sum(args[0:None:2], [])
-        move_lines = [l.move_line for l in lines]
-        MoveLine.set_analytic_state(move_lines)
-        MoveLine.save(move_lines)
-
-    @classmethod
-    def delete(cls, lines):
-        pool = Pool()
-        MoveLine = pool.get('account.move.line')
-        move_lines = [l.move_line for l in lines]
-        super().delete(lines)
-        MoveLine.set_analytic_state(move_lines)
-        MoveLine.save(move_lines)
+        callback = super().on_delete(lines)
+        move_lines = MoveLine.browse({l.move_line for l in lines})
+        if move_lines:
+            def set_state():
+                MoveLine.set_analytic_state(move_lines)
+                MoveLine.save(move_lines)
+            callback.append(set_state)
+        return callback
 
 
 class Move(metaclass=PoolMeta):

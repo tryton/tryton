@@ -76,7 +76,7 @@ def cancel_clearing_move(func):
         Line = pool.get('account.move.line')
         Reconciliation = pool.get('account.move.reconciliation')
 
-        func(cls, payments, *args, **kwargs)
+        result = func(cls, payments, *args, **kwargs)
 
         to_delete = []
         to_reconcile = defaultdict(lambda: defaultdict(list))
@@ -110,6 +110,7 @@ def cancel_clearing_move(func):
             for lines in to_reconcile[party].values():
                 Line.reconcile(lines)
         cls.update_reconciled(payments)
+        return result
     return wrapper
 
 

@@ -58,28 +58,19 @@ class Work(metaclass=PoolMeta):
                     })
 
     @classmethod
-    def create(cls, vlist):
-        works = super().create(vlist)
-        cls._set_timesheet_work(works)
-        return works
+    def on_modification(cls, mode, works, field_names=None):
+        super().on_modification(mode, works, field_names=field_names)
+        if mode in {'create', 'write'}:
+            cls._set_timesheet_work(works)
 
     @classmethod
-    def write(cls, *args):
-        super().write(*args)
-        works = sum(args[0:None:2], [])
-        cls._set_timesheet_work(works)
-
-    @classmethod
-    def delete(cls, works):
+    def on_delete(cls, works):
         pool = Pool()
         TimesheetWork = pool.get('timesheet.work')
-
+        callback = super().on_delete(works)
         timesheet_works = [w for pw in works for w in pw.timesheet_works]
-
-        super().delete(works)
-
-        if timesheet_works:
-            TimesheetWork.delete(timesheet_works)
+        callback.append(lambda: TimesheetWork.delete(timesheet_works))
+        return callback
 
     @classmethod
     def _set_timesheet_work(cls, works):

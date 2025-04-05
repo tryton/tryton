@@ -410,29 +410,31 @@ class LandedCost(Workflow, ModelSQL, ModelView, MatchMixin):
         cls.save(landed_costs)
 
     @classmethod
-    def create(cls, vlist):
+    def preprocess_values(cls, mode, values):
         pool = Pool()
         Config = pool.get('account.configuration')
-
-        vlist = [v.copy() for v in vlist]
-        config = Config(1)
-        default_company = cls.default_company()
-        for values in vlist:
-            if values.get('number') is None:
-                values['number'] = config.get_multivalue(
-                    'landed_cost_sequence',
-                    company=values.get('company', default_company)).get()
-        return super().create(vlist)
+        values = super().preprocess_values(mode, values)
+        if values.get('number') is None:
+            config = Config(1)
+            company_id = values.get('company', cls.default_company())
+            if company_id is not None:
+                if sequence := config.get_multivalue(
+                        'landed_cost_sequence', company=company_id):
+                    values['number'] = sequence.get()
+        return values
 
     @classmethod
-    def delete(cls, landed_costs):
-        for landed_cost in landed_costs:
-            if landed_cost.state not in {'cancelled', 'draft'}:
-                raise AccessError(
-                    gettext('account_stock_landed_cost'
-                        '.msg_landed_cost_delete_cancel',
-                        landed_cost=landed_cost.rec_name))
-        super().delete(landed_costs)
+    def check_modification(
+            cls, mode, landed_costs, values=None, external=False):
+        super().check_modification(
+            mode, landed_costs, values=values, external=external)
+        if mode == 'delete':
+            for landed_cost in landed_costs:
+                if landed_cost.state not in {'cancelled', 'draft'}:
+                    raise AccessError(
+                        gettext('account_stock_landed_cost'
+                            '.msg_landed_cost_delete_cancel',
+                            landed_cost=landed_cost.rec_name))
 
     @classmethod
     def copy(cls, landed_costs, default=None):

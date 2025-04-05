@@ -30,7 +30,8 @@ class Period(Workflow, ModelSQL, ModelView):
     end_date = fields.Date('Ending Date', required=True, states=_STATES,
         domain=[('end_date', '>=', Eval('start_date', None))])
     fiscalyear = fields.Many2One(
-        'account.fiscalyear', "Fiscal Year", required=True, states=_STATES)
+        'account.fiscalyear', "Fiscal Year", required=True, ondelete='CASCADE',
+        states=_STATES)
     state = fields.Selection([
             ('open', 'Open'),
             ('closed', 'Closed'),
@@ -320,26 +321,29 @@ class Period(Workflow, ModelSQL, ModelView):
             order=order, count=count, query=query)
 
     @classmethod
-    def create(cls, vlist):
-        FiscalYear = Pool().get('account.fiscalyear')
-        vlist = [x.copy() for x in vlist]
-        for vals in vlist:
-            if vals.get('fiscalyear'):
-                fiscalyear = FiscalYear(vals['fiscalyear'])
-                if fiscalyear.state != 'open':
-                    raise AccessError(
-                        gettext('account.msg_create_period_closed_fiscalyear',
-                            fiscalyear=fiscalyear.rec_name))
-        periods = super().create(vlist)
-        cls._find_cache.clear()
-        return periods
+    def preprocess_values(cls, mode, values):
+        pool = Pool()
+        FiscalYear = pool.get('account.fiscalyear')
+        values = super().preprocess_values(mode, values)
+        if mode == 'create' and values.get('fiscalyear') is not None:
+            fiscalyear = FiscalYear(values['fiscalyear'])
+            if values.get('move_sequence') is None:
+                values['move_sequence'] = fiscalyear.move_sequence.id
+        return values
 
     @classmethod
-    def write(cls, *args):
-        Move = Pool().get('account.move')
-        actions = iter(args)
-        args = []
-        for periods, values in zip(actions, actions):
+    def check_modification(cls, mode, periods, values=None, external=False):
+        pool = Pool()
+        Move = pool.get('account.move')
+        super().check_modification(
+            mode, periods, values=values, external=external)
+        if mode == 'create':
+            for period in periods:
+                if period.fiscalyear.state != 'open':
+                    raise AccessError(
+                        gettext('account.msg_create_period_closed_fiscalyear',
+                            fiscalyear=period.fiscalyear.rec_name))
+        elif mode == 'write':
             if values.get('state') == 'open':
                 for period in periods:
                     if period.fiscalyear.state != 'open':
@@ -348,26 +352,22 @@ class Period(Workflow, ModelSQL, ModelView):
                                 'account.msg_open_period_closed_fiscalyear',
                                 period=period.rec_name,
                                 fiscalyear=period.fiscalyear.rec_name))
-            if values.get('move_sequence'):
+            if 'move_sequence' in values:
                 for period in periods:
-                    if (period.move_sequence
-                            and period.move_sequence.id
-                            != values['move_sequence']):
-                        if Move.search([
-                                    ('period', '=', period.id),
-                                    ('state', '=', 'posted'),
-                                    ]):
-                            raise AccessError(
-                                gettext('account'
-                                    '.msg_change_period_move_sequence',
-                                    period=period.rec_name))
-            args.extend((periods, values))
-        super().write(*args)
-        cls._find_cache.clear()
+                    if sequence := period.move_sequence:
+                        if sequence.id != values['move_sequence']:
+                            if Move.search([
+                                        ('period', '=', period.id),
+                                        ('state', '=', 'posted'),
+                                        ], limit=1, order=[]):
+                                raise AccessError(gettext(
+                                        'account.'
+                                        'msg_change_period_move_sequence',
+                                        period=period.rec_name))
 
     @classmethod
-    def delete(cls, periods):
-        super().delete(periods)
+    def on_modification(cls, mode, periods, field_names=None):
+        super().on_modification(mode, periods, field_names=field_names)
         cls._find_cache.clear()
 
     @classmethod

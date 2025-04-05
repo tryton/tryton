@@ -77,15 +77,13 @@ class IdentifiersUpdateMixin:
         raise NotImplementedError
 
     @classmethod
-    def write(cls, *args):
-        actions = iter(args)
-        to_update = set()
-        for records, values in zip(actions, actions):
-            if values.keys() & cls._shopify_fields:
-                to_update.update(records)
-        if to_update:
-            cls.set_shopify_to_update(cls.browse(list(to_update)))
-        super().write(*args)
+    def on_modification(cls, mode, records, field_names=None):
+        super().on_modification(mode, records, field_names=field_names)
+        if mode in {'create', 'delete'}:
+            cls.set_shopify_to_update(records)
+        elif mode == 'write':
+            if field_names & cls._shopify_fields:
+                cls.set_shopify_to_update(records)
 
 
 class IdentifiersMixin(IdentifiersUpdateMixin):
@@ -148,11 +146,13 @@ class IdentifiersMixin(IdentifiersUpdateMixin):
         return super().copy(records, default=default)
 
     @classmethod
-    def delete(cls, records):
+    def on_modification(cls, mode, records, field_names=None):
         pool = Pool()
         Identifier = pool.get('web.shop.shopify_identifier')
-        Identifier.delete(sum((r.shopify_identifiers for r in records), ()))
-        super().delete(records)
+        super().on_modification(mode, records, field_names=field_names)
+        if mode == 'delete':
+            Identifier.delete(
+                sum((r.shopify_identifiers for r in records), ()))
 
     @classmethod
     def get_shopify_identifier_to_update(cls, records):

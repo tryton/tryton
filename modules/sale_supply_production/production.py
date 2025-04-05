@@ -26,11 +26,12 @@ def process_sale_supply(func):
                 sales.update([s.id for s in Sale.search([
                                 ('lines.productions', 'in', ids),
                                 ])])
-        func(cls, productions)
+        result = func(cls, productions)
         if sales:
             with transaction.set_context(
                     queue_batch=context.get('queue_batch', True)):
                 Sale.__queue__.process(sales)
+        return result
     return wrapper
 
 
@@ -43,8 +44,8 @@ class Production(metaclass=PoolMeta):
 
     @classmethod
     @process_sale_supply
-    def delete(cls, productions):
-        super().delete(productions)
+    def on_delete(cls, productions):
+        return super().on_delete(productions)
 
     @classmethod
     @ModelView.button

@@ -117,13 +117,13 @@ class ResourceAccessMixin(ModelStorage):
 
     @classmethod
     def write(cls, records, values, *args):
-        all_records = []
+        all_ids = []
         actions = iter((records, values) + args)
         for other_records, _ in zip(actions, actions):
-            all_records += other_records
-        cls.check_access([a.id for a in all_records], mode='write')
+            all_ids.extend(r.id for r in other_records)
+        cls.check_access(all_ids, mode='write')
         super().write(records, values, *args)
-        cls.check_access(all_records, mode='write')
+        cls.check_access(all_ids, mode='write')
 
     @classmethod
     def create(cls, vlist):

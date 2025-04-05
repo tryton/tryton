@@ -286,19 +286,14 @@ class Party(
         return config.get_multivalue('party_sequence', **pattern)
 
     @classmethod
-    def create(cls, vlist):
-        vlist = [x.copy() for x in vlist]
-        missing_code = []
-        for values in vlist:
+    def preprocess_values(cls, mode, values):
+        values = super().preprocess_values(mode, values)
+        if mode == 'create':
             if not values.get('code'):
-                missing_code.append(values)
+                if sequence := cls._code_sequence():
+                    values['code'] = sequence.get()
             values.setdefault('addresses', None)
-        if missing_code:
-            if sequence := cls._code_sequence():
-                for values, code in zip(
-                        missing_code, sequence.get_many(len(missing_code))):
-                    values['code'] = code
-        return super().create(vlist)
+        return values
 
     @classmethod
     def copy(cls, parties, default=None):

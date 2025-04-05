@@ -1,7 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import datetime
-import functools
 from collections import defaultdict
 from copy import deepcopy
 from decimal import Decimal
@@ -29,124 +28,73 @@ from .move import StockMixin
 from .shipment import ShipmentAssignMixin
 
 
-def check_no_move(func):
-
-    def find_moves(cls, records):
-        pool = Pool()
-        Move = pool.get('stock.move')
-        if cls.__name__ == 'product.template':
-            field = 'product.template'
-        else:
-            field = 'product'
-        for sub_records in grouped_slice(records):
-            moves = Move.search([
-                    (field, 'in', list(map(int, sub_records))),
-                    ],
-                limit=1, order=[])
-            if moves:
-                return moves
-        return False
-
-    @functools.wraps(func)
-    def decorator(cls, *args):
-        pool = Pool()
-        Template = pool.get('product.template')
-        transaction = Transaction()
-        if transaction.user and transaction.check_access:
-            actions = iter(args)
-            for records, values in zip(actions, actions):
-                for field, msg in Template._modify_no_move:
-                    if field in values:
-                        if find_moves(cls, records):
-                            raise AccessError(gettext(msg))
-                        # No moves for those records
-                        break
-
-                if not values.get('template'):
-                    continue
-                template = Template(values['template'])
-                for record in records:
-                    for field, msg in Template._modify_no_move:
-                        if isinstance(
-                                getattr(Template, field), fields.Function):
-                            continue
-                        if getattr(record, field) != getattr(template, field):
-                            if find_moves(cls, [record]):
-                                raise AccessError(gettext(msg))
-                            # No moves for this record
-                            break
-        func(cls, *args)
-    return decorator
+def _find_moves(cls, records):
+    pool = Pool()
+    Move = pool.get('stock.move')
+    if cls.__name__ == 'product.template':
+        field = 'product.template'
+    else:
+        field = 'product'
+    for sub_records in grouped_slice(records):
+        moves = Move.search([
+                (field, 'in', list(map(int, sub_records))),
+                ],
+            limit=1, order=[])
+        if moves:
+            return moves
+    return False
 
 
-def check_no_stock_if_inactive(func):
+def _check_no_stock(cls, records):
+    pool = Pool()
+    Company = pool.get('company.company')
+    Location = pool.get('stock.location')
+    Product = pool.get('product.product')
+    Warning = pool.get('res.user.warning')
 
-    def get_product_locations(
-            company, location_ids, sub_products, grouping=('product',)):
-        pool = Pool()
-        Product = pool.get('product.product')
-
-        product2locations = defaultdict(list)
-        product_ids = list(map(int, sub_products))
+    def get_record_locations(company, location_ids, records, grouping):
+        record2locations = defaultdict(list)
+        record_ids = list(map(int, records))
         with Transaction().set_context(company=company.id):
             quantities = Product.products_by_location(
                 location_ids, with_childs=True,
-                grouping=grouping, grouping_filter=(product_ids,))
+                grouping=grouping, grouping_filter=(record_ids,))
         for key, quantity in quantities.items():
             location_id, product_id, = key
             if quantity:
-                product2locations[product_id].append(location_id)
-        return product2locations
+                record2locations[product_id].append(location_id)
+        return record2locations
 
-    def raise_warning(cls, company, product2locations):
-        pool = Pool()
-        Location = pool.get('stock.location')
-        Warning = pool.get('res.user.warning')
-
-        for product_id, location_ids in product2locations.items():
-            product = cls(product_id)
+    def raise_warning(cls, company, record2locations):
+        for record_id, location_ids in record2locations.items():
+            record = cls(record_id)
             locations = ','.join(
                 l.rec_name for l in Location.browse(location_ids[:5]))
             if len(location_ids) > 5:
                 locations += '...'
             warning_name = Warning.format(
-                'deactivate_product_with_stock', [product])
+                'deactivate_product_with_stock', [record])
             if Warning.check(warning_name):
                 raise ProductStockWarning(warning_name,
                     gettext(
                         'stock.msg_product_location_quantity',
-                        product=product.rec_name,
+                        product=record.rec_name,
                         company=company.rec_name,
                         locations=locations),
                     gettext('stock.msg_product_location_quantity_description'))
 
-    @functools.wraps(func)
-    def decorator(cls, *args):
-        pool = Pool()
-        Company = pool.get('company.company')
-        Location = pool.get('stock.location')
+    if cls.__name__ == 'product.template':
+        grouping = ('product.template',)
+    else:
+        grouping = ('product',)
 
-        if cls.__name__ == 'product.template':
-            grouping = ('product.template',)
-        else:
-            grouping = ('product',)
-
-        to_check = []
-        actions = iter(args)
-        for products, values in zip(actions, actions):
-            if not values.get('active', True):
-                to_check.extend(products)
-        if to_check:
-            with without_check_access():
-                locations = Location.search([('type', '=', 'storage')])
-                location_ids = list(map(int, locations))
-                for company in Company.search([]):
-                    for sub_products in grouped_slice(to_check):
-                        product2locations = get_product_locations(
-                            company, location_ids, sub_products, grouping)
-                        raise_warning(cls, company, product2locations)
-        return func(cls, *args)
-    return decorator
+    locations = Location.search([('type', '=', 'storage')])
+    location_ids = list(map(int, locations))
+    for company in Company.search([]):
+        for sub_records in grouped_slice(records):
+            record2locations = get_record_locations(
+                company, location_ids, sub_records, grouping)
+            raise_warning(cls, company, record2locations)
 
 
 class Template(metaclass=PoolMeta):
@@ -185,10 +133,19 @@ class Template(metaclass=PoolMeta):
             ]
 
     @classmethod
-    @check_no_move
-    @check_no_stock_if_inactive
-    def write(cls, *args):
-        super().write(*args)
+    def check_modification(cls, mode, templates, values=None, external=False):
+        super().check_modification(
+            mode, templates, values=values, external=external)
+        if mode == 'write' and external:
+            for field_name, msg in cls._modify_no_move:
+                if field_name in values:
+                    if _find_moves(cls, templates):
+                        raise AccessError(gettext(msg))
+                    # No moves for those records
+                    break
+
+            if not values.get('active', True):
+                _check_no_stock(cls, templates)
 
     @classmethod
     def recompute_cost_price(cls, templates, start=None):
@@ -262,10 +219,36 @@ class Product(StockMixin, object, metaclass=PoolMeta):
         return cost_values
 
     @classmethod
-    @check_no_move
-    @check_no_stock_if_inactive
-    def write(cls, *args):
-        super().write(*args)
+    def check_modification(cls, mode, products, values=None, external=False):
+        pool = Pool()
+        Template = pool.get('product.template')
+        super().check_modification(
+            mode, products, values=values, external=external)
+        if mode == 'write' and external:
+            for field_name, msg in Template._modify_no_move:
+                if field_name in values:
+                    if _find_moves(cls, products):
+                        raise AccessError(gettext(msg))
+                    # No moves for those records
+                    break
+
+            if values.get('template'):
+                template = Template(values['template'])
+                for product in products:
+                    for field_name, msg in Template._modify_no_move:
+                        if isinstance(
+                                getattr(Template, field_name),
+                                fields.Function):
+                            continue
+                        if (getattr(product, field_name)
+                                != getattr(template, field_name)):
+                            if _find_moves(cls, [product]):
+                                raise AccessError(gettext(msg))
+                            # No moves for this record
+                            break
+
+            if not values.get('active', True):
+                _check_no_stock(cls, products)
 
     def can_be_deactivated(self):
         pool = Pool()
