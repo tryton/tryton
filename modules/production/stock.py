@@ -90,10 +90,27 @@ class Move(metaclass=PoolMeta):
                 'production.msg_stock_move_production_single'),
             ]
 
-    @fields.depends('production_output', '_parent_production_output.company')
+    @fields.depends(
+        'production_output', '_parent_production_output.company',
+        'to_location')
     def on_change_production_output(self):
-        if self.production_output and self.production_output.company:
-            self.currency = self.production_output.company.currency
+        if self.production_output:
+            if self.production_output.company:
+                self.currency = self.production_output.company.currency
+            if self.to_location and self.to_location.type == 'lost_found':
+                self.currency = None
+
+    @fields.depends(
+        'production_output', '_parent_production_output.id', 'to_location')
+    def on_change_to_location(self):
+        try:
+            super().on_change_to_location()
+        except AttributeError:
+            pass
+        if (self.production_output
+                and self.to_location
+                and self.to_location.type == 'lost_found'):
+            self.currency = None
 
     @fields.depends(
         'production_input', '_parent_production_input.id',
