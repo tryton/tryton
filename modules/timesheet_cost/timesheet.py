@@ -26,7 +26,6 @@ class Line(metaclass=PoolMeta):
             values.pop('cost_price', None)
         return values
 
-    @classmethod
     def compute_fields(self, field_names=None):
         values = super().compute_fields(field_names=field_names)
         cost_price = self.employee.compute_cost_price(date=self.date)
