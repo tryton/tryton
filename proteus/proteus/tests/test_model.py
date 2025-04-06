@@ -336,11 +336,11 @@ class TestModel(ProteusTestCase):
 
         trigger = Trigger()
 
-        trigger.on_time = True
-        self.assertEqual(trigger.on_create, False)
+        trigger.on_time_ = True
+        self.assertEqual(trigger.on_create_, False)
 
-        trigger.on_create = True
-        self.assertEqual(trigger.on_time, False)
+        trigger.on_create_ = True
+        self.assertEqual(trigger.on_time_, False)
 
     def test_on_change_with(self):
         Attachment = Model.get('ir.attachment')

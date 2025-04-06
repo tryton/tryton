@@ -97,7 +97,7 @@ class NotificationEmailTestCase(CompanyTestMixin, ModuleTestCase):
         trigger, = Trigger.create([{
                     'name': 'Test creation',
                     'model': model.id,
-                    'on_create': True,
+                    'on_create_': True,
                     'condition': 'true',
                     'notification_email': notification_email.id,
                     'action': 'notification.email|trigger',
@@ -148,7 +148,7 @@ class NotificationEmailTestCase(CompanyTestMixin, ModuleTestCase):
         trigger, = Trigger.create([{
                     'name': 'Test creation',
                     'model': model.id,
-                    'on_create': True,
+                    'on_create_': True,
                     'condition': 'true',
                     'notification_email': notification_email.id,
                     'action': 'notification.email|trigger',
@@ -191,7 +191,7 @@ class NotificationEmailTestCase(CompanyTestMixin, ModuleTestCase):
         Trigger.create([{
                     'name': 'Test creation',
                     'model': model.id,
-                    'on_create': True,
+                    'on_create_': True,
                     'condition': 'true',
                     'notification_email': notification_email.id,
                     'action': 'notification.email|trigger',
@@ -346,7 +346,7 @@ class NotificationEmailTestCase(CompanyTestMixin, ModuleTestCase):
         Trigger.create([{
                     'name': 'Test creation',
                     'model': model.id,
-                    'on_create': True,
+                    'on_create_': True,
                     'condition': 'true',
                     'notification_email': notification_email.id,
                     'action': 'notification.email|trigger',
@@ -383,7 +383,7 @@ class NotificationEmailTestCase(CompanyTestMixin, ModuleTestCase):
         Trigger.create([{
                     'name': 'Test creation',
                     'model': model.id,
-                    'on_create': True,
+                    'on_create_': True,
                     'condition': 'true',
                     'notification_email': notification_email.id,
                     'action': 'notification.email|trigger',
