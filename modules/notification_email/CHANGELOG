@@ -1,3 +1,4 @@
+* Add support for Python 3.13
 * Allow setting fallback user without corresponding field
 
 Version 7.4.0 - 2024-11-04

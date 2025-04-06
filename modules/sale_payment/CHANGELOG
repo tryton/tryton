@@ -1,3 +1,4 @@
+* Add support for Python 3.13
 * Add scheduled task to confirm sales based on payment
 
 Version 7.4.0 - 2024-11-04

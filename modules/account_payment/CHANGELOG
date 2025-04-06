@@ -1,3 +1,4 @@
+* Add support for Python 3.13
 * Rename payment description into reference
 * Group is optional per process method
 

@@ -1,3 +1,4 @@
+* Add support for Python 3.13
 * Add launch_action helper function
 
 Version 7.4.0 - 2024-11-04

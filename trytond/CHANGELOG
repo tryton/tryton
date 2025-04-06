@@ -1,3 +1,4 @@
+* Add support for Python 3.13
 * Add on_write to ModelStorage
 * Add on_delete to ModelStorage
 * Add check_modification to ModelStorage

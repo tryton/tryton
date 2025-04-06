@@ -1,3 +1,4 @@
+* Add support for Python 3.13
 * Add promotion coupon as action
 * Use actual quantity of sale line
 

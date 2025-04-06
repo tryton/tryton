@@ -1,3 +1,4 @@
+* Add support for Python 3.13
 * Use strict sequence to number moves
 * Rename post number to number
 * Remove number on move and its sequence on journal

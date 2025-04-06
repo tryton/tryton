@@ -1,3 +1,4 @@
+* Add support for Python 3.13
 * Notify for duplicate contact mechanism
 * Add Brazillian Company Identifier as tax identifier
 * Add Canadian Business Number as tax identifier
