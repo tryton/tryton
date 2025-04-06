@@ -1,3 +1,4 @@
+* Remove support for Python 3.8
 * Add support for Python 3.13
 * Display quantity when searching location for move
 * Display quantity when searching product for move

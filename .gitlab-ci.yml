@@ -252,7 +252,7 @@ check-account-chart:
         path: ${PACKAGE}/coverage.xml
   parallel:
     matrix:
-      - PYTHON_VERSION: ["3.8", "3.9", "3.10", "3.11", "3.12", "3.13"]
+      - PYTHON_VERSION: ["3.9", "3.10", "3.11", "3.12", "3.13"]
 
 .test-db:
   extends: .test-tox
@@ -350,7 +350,7 @@ test-trytond-postgresql:
     TAG_PATTERN: '/^trytond-.*/'
   parallel:
     matrix:
-      - PYTHON_VERSION: ["3.8", "3.9", "3.10", "3.11", "3.12", "3.13"]
+      - PYTHON_VERSION: ["3.9", "3.10", "3.11", "3.12", "3.13"]
 
 check-doc-trytond-gis:
   extends: .check-doc
@@ -395,7 +395,7 @@ test-sao:
 
 test-demo:
   stage: test
-  image: ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/python:3.8
+  image: ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/python:3.9
   variables:
     TRYTOND_DATABASE__PATH: "$TMPDIR"
     PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"

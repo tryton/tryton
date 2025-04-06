@@ -1,3 +1,4 @@
+* Remove support for Python 3.8
 * Add support for Python 3.13
 * Use statement date to compute the start balance
 * Add reporting with latest date and amount per journal
