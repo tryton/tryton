@@ -141,6 +141,7 @@ Sale 2 more products with not enough stock::
 
 Clean sales::
 
+    >>> Sale.click(Sale.find([]), 'draft')
     >>> Sale.delete(Sale.find([]))
 
 Sale 6 products with not enough stock::
@@ -198,4 +199,5 @@ Sale 2 products with enough forecast::
     >>> sale_line.product = product
     >>> sale_line.quantity = 2.0
     >>> sale.click('quote')
+    >>> sale.click('draft')
     >>> sale.delete()

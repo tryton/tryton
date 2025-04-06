@@ -94,6 +94,7 @@ Check the shipments::
 
 Check grouping after deleting shipments::
 
+    >>> shipment.click('draft')
     >>> shipment.delete()
     >>> shipment, = ShipmentOut.find([
     ...         ('state', '=', 'waiting'),
