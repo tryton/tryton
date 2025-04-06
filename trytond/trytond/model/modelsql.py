@@ -1379,13 +1379,13 @@ class ModelSQL(ModelStorage):
         Translation = pool.get('ir.translation')
         Config = pool.get('ir.configuration')
 
-        ids, field_names, on_write, trigger_eligibles, *args = (
+        all_ids, field_names, on_write, trigger_eligibles, *args = (
             cls._before_write(records, values, *args))
 
         table = cls.__table__()
 
-        cls.__check_timestamp(ids)
-        cls.__check_domain_rule(ids, 'write')
+        cls.__check_timestamp(all_ids)
+        cls.__check_domain_rule(all_ids, 'write')
 
         fields_to_set = {}
         actions = iter(args)
@@ -1458,11 +1458,11 @@ class ModelSQL(ModelStorage):
             field = cls._fields[fname]
             field.set(cls, fname, *fargs)
 
-        cls._insert_history(ids)
+        cls._insert_history(all_ids)
 
-        cls.__check_domain_rule(ids, 'write')
+        cls.__check_domain_rule(all_ids, 'write')
 
-        cls._after_write(ids, field_names, on_write, trigger_eligibles)
+        cls._after_write(all_ids, field_names, on_write, trigger_eligibles)
 
     @classmethod
     @no_table_query
