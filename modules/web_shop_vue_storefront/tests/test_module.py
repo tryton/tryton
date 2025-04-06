@@ -117,7 +117,7 @@ class WebVueStorefrontTestCase(CompanyTestMixin, ModuleTestCase):
 
         promotion = Promotion(name="10%")
         promotion.formula = '0.9 * unit_price'
-        promotion.coupons = coupon, = [Coupon(name="Promo")]
+        promotion.coupons = coupon, = [Coupon()]
         coupon.numbers = [{'number': code}]
         promotion.save()
 
