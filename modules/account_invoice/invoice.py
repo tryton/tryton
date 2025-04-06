@@ -2793,7 +2793,7 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
             mode, lines, values=values, external=external)
         if mode == 'create':
             for line in lines:
-                if line.invoice.state != 'draft':
+                if line.invoice and line.invoice.state != 'draft':
                     raise AccessError(gettext(
                             'account_invoice.msg_invoice_line_create_draft',
                             invoice=line.invoice.rec_name))
