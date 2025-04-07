@@ -1970,6 +1970,15 @@
             if (!context) {
                 context = {};
             }
+            function atof(string) {
+                if (!string) {
+                    throw("empty string");
+                }
+                let { format } = new Intl.NumberFormat(
+                    Sao.i18n.BC47(Sao.i18n.getlang()));
+                let [, decimalSign] = /^0(.)1$/.exec(format(0.1));
+                return Number(string.replace(decimalSign, '.'));
+            }
             var convert_selection = function() {
                 if (typeof value == 'string') {
                     for (var i = 0; i < field.selection.length; i++) {
@@ -2001,8 +2010,12 @@
                 },
                 'float': function() {
                     var factor = Number(field.factor || 1);
-                    var result = Number(value);
-                    if (isNaN(result) || value === '' || value === null) {
+                    try {
+                        var result = atof(value);
+                    } catch (e) {
+                        return null;
+                    }
+                    if (isNaN(result)) {
                         return null;
                     } else {
                         return result / factor;
@@ -2010,18 +2023,25 @@
                 },
                 'integer': function() {
                     var factor = Number(field.factor || 1, 10);
-                    var result = parseInt(value, 10);
+                    try {
+                        var result = atof(value);
+                    } catch (e) {
+                        return null;
+                    }
                     if (isNaN(result)) {
                         return null;
                     } else {
-                        return result / factor;
+                        return parseInt(result / factor, 10);
                     }
                 },
                 'numeric': function() {
                     var factor = Number(field.factor || 1);
-                    var result = Number(value);
-                    if (isNaN(result.valueOf()) ||
-                            value === '' || value === null) {
+                    try {
+                        var result = atof(value);
+                    } catch (e) {
+                        return null;
+                    }
+                    if (isNaN(result)) {
                         return null;
                     } else {
                         return new Sao.Decimal(result / factor);
@@ -2096,7 +2116,12 @@
                 }
                 var factor = Number(field.factor || 1);
                 digit -= Math.round(Math.log10(factor));
-                return (value * factor).toFixed(digit);
+                return (value * factor).toLocaleString(
+                    Sao.i18n.BC47(Sao.i18n.getlang()), {
+                        useGrouping: true,
+                        minimumFractionDigits: digit,
+                        maximumFractionDigits: digit,
+                    });
             };
             var format_selection = function() {
                 if (field.selection instanceof Array) {
