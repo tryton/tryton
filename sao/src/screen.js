@@ -627,7 +627,7 @@
             Sao.ScreenContainer.BetweenDates._super.init.call(this, id);
             this.from.change(this._from_changed.bind(this));
         },
-        _get_value: function(entry, value) {
+        _get_value: function(entry) {
             return entry.find('input[type=text]').val();
         },
         _set_value: function(entry, value) {
@@ -740,11 +740,17 @@
                 'class': 'form-control input-sm',
                 'type': 'number',
                 'step': 'any',
+                'lang': Sao.i18n.getlang(),
             }).appendTo(el);
             return entry;
         },
-        _get_value: function(entry, value) {
-            return entry.val();
+        _get_value: function(entry) {
+            let value = entry.val();
+            if (value) {
+                value = Number(value).toLocaleString(
+                    Sao.i18n.BC47(Sao.i18n.getlang()))
+            }
+            return value;
         },
         _set_value: function(entry, value) {
             return entry.val(value);
