@@ -1,5 +1,8 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+
+from decimal import Decimal
+from functools import total_ordering
 from io import BytesIO
 from tokenize import NAME, NUMBER, OP, STRING, tokenize, untokenize
 
@@ -45,3 +48,26 @@ def decistmt(s):
         else:
             result.append((toknum, tokval))
     return untokenize(result).decode('utf-8')
+
+
+@total_ordering
+class DecimalNull(Decimal):
+    def __eq__(self, other):
+        if isinstance(other, DecimalNull) or other is None:
+            return True
+        return False
+
+    def __lt__(self, other):
+        return 0 < other
+
+
+def _return_self(self, *args, **kwargs):
+    return self
+
+
+_OPERATORS = (
+    'add sub mul matmul truediv floordiv mod divmod pow lshift rshift and xor '
+    'or'.split())
+for op in _OPERATORS:
+    setattr(DecimalNull, '__%s__' % op, _return_self)
+    setattr(DecimalNull, '__r%s__' % op, _return_self)

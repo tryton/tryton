@@ -11,6 +11,7 @@ Tools API reference.
 
    barcode
    chart
+   decimal
    email
    immutabledict
    logging
