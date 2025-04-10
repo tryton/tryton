@@ -97,7 +97,7 @@
         view_type: 'tree',
         xml_parser: Sao.View.TreeXMLViewParser,
         draggable: false,
-        display_size: Sao.config.display_size,
+        display_size: null,
         init: function(view_id, screen, xml, children_field) {
             this.children_field = children_field;
             this.optionals = {};
@@ -353,7 +353,7 @@
             Sao.Screen.tree_column_optional[this.view_id] = fields;
         },
         reset: function() {
-            this.display_size = Sao.config.display_size;
+            this.display_size = null;
         },
         get editable() {
             return (parseInt(this.attributes.editable || 0, 10) &&
@@ -730,13 +730,21 @@
             return buttons;
         },
         display: function(selected, expanded) {
+            if ((this.display_size === null) && this.screen.group.length) {
+                if (this.screen.group.parent) {
+                    this.display_size = 0;
+                } else {
+                    this.display_size = Sao.config.display_size;
+                }
+            }
+            let display_size = this.display_size || 0;
             var current_record = this.record;
             if (jQuery.isEmptyObject(selected) && current_record) {
                 selected = this.get_selected_paths();
                 if (this.selection.prop('checked') &&
                     !this.selection.prop('indeterminate')) {
                     for (const record of this.screen.group.slice(
-                        this.rows.length, this.display_size)) {
+                        this.rows.length, display_size)) {
                         selected.push([record.id]);
                     }
                 } else {
@@ -784,7 +792,7 @@
                 return records;
             };
             var min_display_size = Math.min(
-                    this.group.length, this.display_size);
+                    this.group.length, display_size);
             if (this.children_field) {
                 if (!Sao.common.compare(
                     group_records(this.group.slice(0, min_display_size), []),
@@ -936,7 +944,7 @@
                 }));
                 this.update_selection(); // update after new rows has been added
                 this.update_visible();
-                if ((this.display_size < this.group.length) &&
+                if ((display_size < this.group.length) &&
                     (!this.tbody.children().last().hasClass('more-row'))) {
                     var more_row = jQuery('<tr/>', {
                         'class': 'more-row',
@@ -989,7 +997,7 @@
             // The rows are added to tbody after being rendered
             // to minimize browser reflow
             for (const record of this.group.slice(
-                this.rows.length, this.display_size)) {
+                this.rows.length, this.display_size || 0)) {
                 var RowBuilder;
                 if (this.editable) {
                     RowBuilder = Sao.View.Tree.RowEditable;
