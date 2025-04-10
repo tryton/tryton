@@ -1,3 +1,4 @@
+* Transaction.check_warnings is now a directory mapping the key to the warnings
 * Store target of field as relation
 * Remove support for Python 3.8
 * Add support for Python 3.13

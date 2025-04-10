@@ -4,6 +4,7 @@ import logging
 import time
 from collections import defaultdict, deque
 from functools import wraps
+from itertools import chain
 from threading import local
 from weakref import WeakValueDictionary
 
@@ -187,7 +188,7 @@ class Transaction(object):
             self.delete_records = defaultdict(set)
             self.trigger_records = defaultdict(set)
             self.log_records = []
-            self.check_warnings = set()
+            self.check_warnings = defaultdict(set)
             self.timestamp = {}
             self.counter = 0
             self._datamanagers = []
@@ -320,10 +321,25 @@ class Transaction(object):
         if self.log_records:
             self.log_records.clear()
 
+    def _remove_warnings(self):
+        from trytond.pool import Pool
+        if self.check_warnings:
+            pool = Pool()
+            Warning_ = pool.get('res.user.warning')
+            with without_check_access():
+                warnings = Warning_.browse(
+                    chain.from_iterable(self.check_warnings.values()))
+                Warning_.delete(warnings)
+        self._clear_warnings()
+
+    def _clear_warnings(self):
+        self.check_warnings.clear()
+
     def commit(self):
         from trytond.cache import Cache
         try:
             self._store_log_records()
+            self._remove_warnings()
             if self._datamanagers:
                 for datamanager in self._datamanagers:
                     datamanager.tpc_begin(self)
@@ -356,6 +372,7 @@ class Transaction(object):
             datamanager.tpc_abort(self)
         Cache.rollback(self)
         self._clear_log_records()
+        self._clear_warnings()
         if self.connection:
             self.connection.rollback()
 

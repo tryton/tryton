@@ -46,7 +46,8 @@ Transaction
 
 .. attribute:: Transaction.check_warnings
 
-    The set of warnings already checked.
+    The dictionary of warnings already checked with user and warning
+    name as key and a set of `Warnings <model-res.user.warning>` ids.
 
 .. attribute:: Transaction.timestamp
 
