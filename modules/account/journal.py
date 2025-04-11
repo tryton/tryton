@@ -3,6 +3,7 @@
 from decimal import Decimal
 
 from sql.aggregate import Sum
+from sql.conditionals import Coalesce
 
 from trytond.i18n import gettext
 from trytond.model import (
@@ -128,8 +129,8 @@ class Journal(
         account_type = AccountType.__table__()
         where = ((move.date >= context.get('start_date'))
             & (move.date <= context.get('end_date'))
-            & ~account_type.receivable
-            & ~account_type.payable
+            & ~Coalesce(account_type.receivable, False)
+            & ~Coalesce(account_type.payable, False)
             & (move.company == company.id))
         for sub_journals in grouped_slice(journals):
             sub_journals = list(sub_journals)
