@@ -24,5 +24,8 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_no_assets">
             <field name="text">There is no started asset.</field>
         </record>
+        <record model="ir.message" id="msg_revision_asset_origin_unique">
+            <field name="text">A revision origin can be used only once per asset.</field>
+        </record>
     </data>
 </tryton>

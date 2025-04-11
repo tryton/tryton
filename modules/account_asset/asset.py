@@ -948,6 +948,11 @@ class AssetRevision(ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super().__setup__()
+        table = cls.__table__()
+        cls._sql_constraints += [
+            ('asset_origin_unique', Unique(table, table.asset, table.origin),
+                'account_asset.msg_revision_asset_origin_unique'),
+            ]
         cls.__access__.add('asset')
 
     @fields.depends('asset', '_parent_asset.currency')
