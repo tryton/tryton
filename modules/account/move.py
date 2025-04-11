@@ -2246,10 +2246,12 @@ class Reconcile(Wizard):
                 having=((
                         Sum(Case((balance > 0, 1), else_=0)) > 0)
                     & (Sum(Case((balance < 0, 1), else_=0)) > 0)
-                    | Case((account_type.receivable & ~account_type.payable,
+                    | Case((account_type.receivable
+                            & ~Coalesce(account_type.payable, False),
                             Sum(balance) < 0),
                         else_=False)
-                    | Case((account_type.payable & ~account_type.receivable,
+                    | Case((account_type.payable
+                            & ~Coalesce(account_type.receivable, False),
                             Sum(balance) > 0),
                         else_=False)
                     )))
