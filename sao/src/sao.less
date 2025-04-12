@@ -1261,6 +1261,13 @@ input.column-boolean {
     select[multiple] {
         min-height: 150px;
         max-height: 400px;
+
+        option:before {
+            content: "☐ ";
+        }
+        option:checked:before {
+            content: "☑ ";
+        }
     }
 }
 

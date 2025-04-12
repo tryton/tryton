@@ -159,6 +159,9 @@ class Selection(Gtk.ScrolledWindow):
         self.treeview.set_model(model)
 
         column = Gtk.TreeViewColumn()
+        select_cell = Gtk.CellRendererToggle()
+        select_cell.set_sensitive(False)
+        column.pack_start(select_cell, expand=False)
         cell = Gtk.CellRendererText()
         column.pack_start(cell, expand=True)
         column.add_attribute(cell, 'text', 0)
