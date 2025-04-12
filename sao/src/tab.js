@@ -1363,7 +1363,7 @@
             screen.windows.push(preview);
 
             screen.switch_view().done(function() {
-                el.append(screen.screen_container.el);
+                el.prepend(screen.screen_container.el);
             });
             return el;
         },
