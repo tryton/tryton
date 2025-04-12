@@ -2,6 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 from .active import DeactivableMixin
 from .avatar import avatar_mixin
+from .chat import ChatMixin
 from .descriptors import dualmethod
 from .dictschema import DictSchemaMixin
 from .digits import DigitsMixin
@@ -23,4 +24,4 @@ __all__ = ['Model', 'ModelView', 'ModelStorage', 'ModelSingleton', 'ModelSQL',
     'Workflow', 'DictSchemaMixin', 'MatchMixin', 'UnionMixin', 'dualmethod',
     'MultiValueMixin', 'ValueMixin', 'SymbolMixin', 'DigitsMixin',
     'EvalEnvironment', 'sequence_ordered', 'sort', 'DeactivableMixin', 'tree',
-    'sum_tree', 'avatar_mixin']
+    'sum_tree', 'avatar_mixin', 'ChatMixin']

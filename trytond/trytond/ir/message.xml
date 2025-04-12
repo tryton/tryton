@@ -454,5 +454,20 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_model_data_db_id_model_unique">
             <field name="text">The database ID must be unique per model.</field>
         </record>
+        <record model="ir.message" id="msg_chat_channel_resource_unique">
+            <field name="text">Only one channel per resource is allowed.</field>
+        </record>
+        <record model="ir.message" id="msg_chat_user_or_email">
+            <field name="text">Only user or email can be filled.</field>
+        </record>
+        <record model="ir.message" id="msg_chat_follower_channel_user_unique">
+            <field name="text">A user can follow a channel only once.</field>
+        </record>
+        <record model="ir.message" id="msg_chat_follower_channel_email_unique">
+            <field name="text">An email can follow a channel only once.</field>
+        </record>
+        <record model="ir.message" id="msg_chat_author_email_invalid">
+            <field name="text">The email address "%(email)s" is not valid.</field>
+        </record>
     </data>
 </tryton>
