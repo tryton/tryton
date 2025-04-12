@@ -158,10 +158,13 @@ class Selection(Gtk.ScrolledWindow):
             model.append((selection,))
         self.treeview.set_model(model)
 
+        t_selection = self.treeview.get_selection()
         column = Gtk.TreeViewColumn()
         select_cell = Gtk.CellRendererToggle()
         select_cell.set_sensitive(False)
         column.pack_start(select_cell, expand=False)
+        column.set_cell_data_func(
+            select_cell, self._select_data_func, t_selection)
         cell = Gtk.CellRendererText()
         column.pack_start(cell, expand=True)
         column.add_attribute(cell, 'text', 0)
@@ -184,6 +187,9 @@ class Selection(Gtk.ScrolledWindow):
             iter_ = model.get_iter(path)
             values.append(model.get_value(iter_, 0))
         return ';'.join(quote(v) for v in values)
+
+    def _select_data_func(self, column, cell, model, iter_, selection):
+        cell.set_property('active', selection.iter_is_selected(iter_))
 
 
 class ScreenContainer(object):

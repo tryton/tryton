@@ -770,6 +770,10 @@
                     text: s[1]
                 }).appendTo(this.el);
             }
+            this.el.on('mousedown', 'option', (evt) => {
+                evt.preventDefault();
+                evt.target.selected = !evt.target.selected;
+            });
         },
         get_value: function(quote) {
             var value = this.el.val();
