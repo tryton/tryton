@@ -21,7 +21,10 @@ export default [
             },
         },
         rules: {
-            "no-unused-vars": ["error", { "args": "none" }],
+            "no-unused-vars": ["error", {
+                "caughtErrors": "none",
+                "args": "none",
+            }],
         },
     }, {
         files: ['tests/**/*.js'],
