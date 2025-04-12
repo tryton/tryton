@@ -876,6 +876,12 @@
         get count_limit() {
             return this.limit * 100 + this.offset;
         },
+        get current_reference() {
+            if (this.current_record && (this.current_record.id > 0)) {
+                return `${this.model_name},${this.current_record.id}`;
+            }
+            return null;
+        },
         load_next_view: function() {
             if (!jQuery.isEmptyObject(this.view_to_load)) {
                 var view_id;

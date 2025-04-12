@@ -12,6 +12,7 @@ from gi.repository import Gdk, GLib, Gtk
 import tryton.common as common
 from tryton import plugins
 from tryton.action import Action
+from tryton.chat import Chat
 from tryton.common import RPCException, RPCExecute, sur, sur_3b, tempfile
 from tryton.common.common import selection as selection_
 from tryton.common.popup_menu import popup
@@ -104,6 +105,11 @@ class Form(TabContent):
         self.sidebar.pack_start(
             scrolledwindow, expand=True, fill=True, padding=0)
 
+        self.chat = Gtk.HBox()
+        self.chat.props.width_request = 300
+        self._chat = None
+        self.sidebar.pack_start(self.chat, expand=True, fill=True, padding=0)
+
     def widget_get(self):
         return self.screen.widget
 
@@ -191,7 +197,7 @@ class Form(TabContent):
         vbox.set_margin_start(4)
         hbox = Gtk.HBox(homogeneous=False, spacing=0)
         hbox.set_halign(Gtk.Align.CENTER)
-        vbox.pack_start(hbox, expand=False, fill=True, padding=0)
+        vbox.pack_end(hbox, expand=False, fill=True, padding=0)
         hbox.set_border_width(2)
         tooltips = common.Tooltips()
 
@@ -251,6 +257,24 @@ class Form(TabContent):
             if group:
                 self.attachment_screen.current_record = group[0]
                 self.attachment_screen.display()
+
+    def sig_chat(self, widget=None):
+        button = self.buttons['chat']
+        if widget != button:
+            if button.props.sensitive:
+                button.props.active = True
+            return
+
+        if button.get_active():
+            self._chat = Chat(self.screen.current_reference)
+            self.chat.pack_start(self._chat.widget, True, True, padding=3)
+            self.chat.show_all()
+            self._chat.refresh()
+        else:
+            self.chat.hide()
+            self.chat.remove(self._chat.widget)
+            self._chat.unregister()
+            self._chat = None
 
     def sig_note(self, widget=None):
         record = self.screen.current_record
@@ -590,8 +614,11 @@ class Form(TabContent):
         has_views = self.screen.number_of_views > 1
         if selected > 1:
             name += '#%i' % selected
-        for button_id in ['print', 'relate', 'email', 'open', 'attach']:
-            button = self.buttons[button_id]
+        for button_id in [
+                'print', 'relate', 'email', 'open', 'attach', 'chat']:
+            button = self.buttons.get(button_id)
+            if not button:
+                continue
             can_be_sensitive = getattr(button, '_can_be_sensitive', True)
             if button_id in {'print', 'relate', 'email', 'open'}:
                 action_type = button_id
@@ -620,6 +647,14 @@ class Form(TabContent):
         self.info_bar_clear()
         self.set_buttons_sensitive()
         self.refresh_attachment_preview()
+        if self._chat:
+            self._chat.unregister()
+            self.chat.remove(self._chat.widget)
+            if self.screen.current_reference:
+                self._chat = Chat(self.screen.current_reference)
+                self.chat.add(self._chat.widget)
+                self.chat.show_all()
+                self._chat.refresh()
 
     def record_modified(self):
         def _record_modified():
@@ -657,7 +692,12 @@ class Form(TabContent):
         for dialog in reversed(self.dialogs[:]):
             dialog.destroy()
         modified_save = self.modified_save()
-        return True if modified_save is None else modified_save
+        can_close = True if modified_save is None else modified_save
+        if can_close and self._chat:
+            self._chat.unregister()
+            self.chat.remove(self._chat.widget)
+            self._chat = None
+        return can_close
 
     def _action(self, action, atype):
         if not self.modified_save():

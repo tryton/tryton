@@ -12,7 +12,7 @@ except ImportError:
 
 from functools import partial
 
-from tryton import bus, device_cookie, fingerprints
+from tryton import device_cookie, fingerprints
 from tryton.config import CONFIG, get_config_dir
 from tryton.exceptions import TrytonServerError, TrytonServerUnavailable
 from tryton.jsonrpc import Fault, ServerPool, ServerProxy
@@ -35,8 +35,9 @@ ServerPool = partial(ServerPool, fingerprints=fingerprints,
 
 
 def context_reset():
+    from tryton.bus import Bus
     CONTEXT.clear()
-    CONTEXT['client'] = bus.ID
+    CONTEXT['client'] = Bus.ID
 
 
 context_reset()
@@ -83,6 +84,7 @@ def authentication_services(host, port):
 
 def set_service_session(parameters):
     from tryton import common
+    from tryton.bus import Bus
     global CONNECTION, _USER
     host = CONFIG['login.host']
     hostname = common.get_hostname(host)
@@ -104,11 +106,12 @@ def set_service_session(parameters):
         CONNECTION.close()
     CONNECTION = ServerPool(
         hostname, port, database, session=session, cache=not CONFIG['dev'])
-    bus.listen(CONNECTION)
+    Bus.listen(CONNECTION)
 
 
 def login(parameters):
     from tryton import common
+    from tryton.bus import Bus
     global CONNECTION, _USER
     host = CONFIG['login.host']
     hostname = common.get_hostname(host)
@@ -128,7 +131,7 @@ def login(parameters):
     CONNECTION = ServerPool(
         hostname, port, database, session=session, cache=not CONFIG['dev'])
     device_cookie.renew()
-    bus.listen(CONNECTION)
+    Bus.listen(CONNECTION)
 
 
 def logout():

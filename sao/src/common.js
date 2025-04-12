@@ -585,6 +585,25 @@
     });
     Sao.common.MODELNOTIFICATION = new Sao.common.ModelNotification();
 
+    Sao.common.ModelChat = Sao.class_(Object, {
+        init: function() {
+            this._models = null;
+        },
+        load_names: function() {
+            this._models = Object.fromEntries(Sao.rpc({
+                'method': 'model.ir.chat.channel.get_models',
+                'params': [{}],
+            }, Sao.Session.current_session, false));
+        },
+        hasOwn: function(model) {
+            if (jQuery.isEmptyObject(this._models)) {
+                this.load_names();
+            }
+            return Object.prototype.hasOwnProperty.call(this._models, model);
+        },
+    });
+    Sao.common.MODELCHAT = new Sao.common.ModelChat();
+
     Sao.common.ViewSearch = Sao.class_(Object, {
         init: function() {
             this.encoder = new Sao.PYSON.Encoder();
@@ -3068,6 +3087,7 @@
         'tryton-bookmarks',
         'tryton-bookmark',
         'tryton-cancel',
+        'tryton-chat',
         'tryton-clear',
         'tryton-close',
         'tryton-copy',

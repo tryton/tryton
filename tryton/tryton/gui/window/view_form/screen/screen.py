@@ -162,6 +162,12 @@ class Screen:
     def count_limit(self):
         return self.limit * 100 + self.offset
 
+    @property
+    def current_reference(self):
+        if self.current_record and self.current_record.id > 0:
+            return f"{self.model_name},{self.current_record.id}"
+        return None
+
     def search_active(self, active=True):
         if active and not self.parent:
             self.screen_container.show_filter()

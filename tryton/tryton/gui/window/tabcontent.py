@@ -119,6 +119,13 @@ class TabContent(InfoBar):
                 icon_name='tryton-note',
                 accel_path='<tryton>/Form/Notes'),
             ToolbarItem(
+                id='chat' if self.model in common.MODELCHAT else None,
+                label=_("C_hat"),
+                tooltip=_("Chat on the record"),
+                icon_name='tryton-chat',
+                accel_path='<tryton>/Form/Chat',
+                toggle=True),
+            ToolbarItem(
                 id='action',
                 label=_("_Actions..."),
                 icon_name='tryton-launch',

@@ -4,6 +4,7 @@
 from sql import Null
 from sql.conditionals import NullIf
 
+from trytond.bus import Bus
 from trytond.i18n import gettext
 from trytond.model import ChatMixin, Check, ModelSQL, Unique, fields
 from trytond.model.exceptions import ValidationError
@@ -121,6 +122,15 @@ class Channel(ModelSQL):
             content=content,
             audience=audience)
         message.save()
+
+        Bus.publish(
+            f'chat:{str(resource)}', {
+                'type': 'message',
+                'message': message.as_dict(),
+                })
+        for follower in channel.followers:
+            follower.notify(message)
+
         return message
 
     @classmethod
@@ -241,6 +251,9 @@ class Follower(AuthorMixin, ModelSQL):
                     ('channel', '=', channel),
                     ('email', '=', email),
                     ]))
+
+    def notify(self, message):
+        pass
 
 
 class Message(AuthorMixin, ModelSQL):

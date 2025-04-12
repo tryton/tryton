@@ -85,6 +85,13 @@
                     label: Sao.i18n.gettext('Note'),
                     tooltip: Sao.i18n.gettext('Add a note to the record'),
                 }, {
+                    id: (this.screen &&
+                        Sao.common.MODELCHAT.hasOwn(this.screen.model_name)) ?
+                        'chat' : null,
+                    icon: 'tryton-chat',
+                    label: Sao.i18n.gettext("Chat"),
+                    tooltip: Sao.i18n.gettext("Chat on the record"),
+                }, {
                     id: 'action',
                     icon: 'tryton-launch',
                     label: Sao.i18n.gettext('Action'),
@@ -341,6 +348,9 @@
                     Sao.set_url();
                 }
                 tabs.trigger('ready');
+                if (this._chat) {
+                    this._chat.unregister();
+                }
             });
         },
         _close_allowed: function() {
@@ -1382,6 +1392,17 @@
                 });
             }
         },
+        chat: function(evt) {
+            let chat = this.sidebar_content.find('.chat');
+            if (chat.length) {
+                chat.remove();
+            } else {
+                this._chat = new Sao.Chat(this.screen.current_reference);
+                this._chat.refresh();
+                this.sidebar_content.append(this._chat.el);
+            }
+            this.update_sidebar();
+        },
         note: function() {
             var record = this.screen.current_record;
             if (!record || (record.id < 0)) {
@@ -1513,9 +1534,12 @@
             const view_type = this.screen.current_view.view_type;
             var next_view_type = this.screen.next_view_type;
             const has_views = this.screen.number_of_views > 1;
-            var buttons = ['print', 'relate', 'email', 'attach'];
+            var buttons = ['print', 'relate', 'email', 'attach', 'chat'];
             for (const button_id of buttons) {
                 const button = this.buttons[button_id];
+                if (!button) {
+                    continue;
+                }
                 let can_be_sensitive = button._can_be_sensitive;
                 if (can_be_sensitive === undefined) {
                     can_be_sensitive = true;
@@ -1555,6 +1579,17 @@
             this.info_bar.clear();
             this.set_buttons_sensitive();
             this.refresh_attachment_preview();
+
+            if (this._chat) {
+                let chat = this.sidebar_content.find('.chat');
+                this._chat.unregister();
+                chat.remove();
+                if (this.screen.current_reference) {
+                    this._chat = new Sao.Chat(this.screen.current_reference);
+                    this._chat.refresh();
+                    this.sidebar_content.append(this._chat.el);
+                }
+            }
         },
         record_modified: function() {
             this.set_buttons_sensitive();

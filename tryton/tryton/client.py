@@ -33,6 +33,13 @@ def main():
     label.warning {
         color: @warning_color;
     }
+    label.dim {
+        font-size: smaller;
+        font-weight: lighter;
+    }
+    .chat-content-internal {
+        font-weight: lighter;
+    }
     .window-title, .wizard-title {
         font-size: large;
         font-weight: bold;

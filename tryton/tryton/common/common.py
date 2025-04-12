@@ -379,6 +379,25 @@ class ModelNotification:
 MODELNOTIFICATION = ModelNotification()
 
 
+class ModelChat:
+    _models = None
+
+    def load_names(self):
+        try:
+            self._models = dict(rpc.execute(
+                    'model', 'ir.chat.channel', 'get_models', rpc.CONTEXT))
+        except TrytonServerError:
+            pass
+
+    def __contains__(self, model):
+        if self._models is None:
+            self.load_names()
+        return model in self._models
+
+
+MODELCHAT = ModelChat()
+
+
 class ViewSearch(object):
     searches = {}
 

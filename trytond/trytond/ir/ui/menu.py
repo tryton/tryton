@@ -34,6 +34,7 @@ CLIENT_ICONS = [(x, x) for x in [
         'tryton-close',
         'tryton-copy',
         'tryton-create',
+        'tryton-chat',
         'tryton-date',
         'tryton-delete',
         'tryton-download',
