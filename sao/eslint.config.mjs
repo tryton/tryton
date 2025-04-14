@@ -5,7 +5,7 @@ export default [
     js.configs.recommended,
     {
         languageOptions: {
-            ecmaVersion: 6,
+            ecmaVersion: 8,
             sourceType: "script",
             globals: {
                 Mousetrap: "readonly",

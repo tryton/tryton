@@ -10,103 +10,13 @@ var Sao = {
 (function() {
     'use strict';
 
-    // Browser compatibility: polyfill
     if (!('contains' in String.prototype)) {
         String.prototype.contains = function(str, startIndex) {
             return -1 !== String.prototype.indexOf.call(this, str, startIndex);
         };
     }
-    if (!String.prototype.startsWith) {
-        Object.defineProperty(String.prototype, 'startsWith', {
-            enumerable: false,
-            configurable: false,
-            writable: false,
-            value: function(searchString, position) {
-                position = position || 0;
-                return this.indexOf(searchString, position) === position;
-            }
-        });
-    }
-    if (!String.prototype.endsWith) {
-        Object.defineProperty(String.prototype, 'endsWith', {
-            enumerable: false,
-            configurable: false,
-            writable: false,
-            value: function(searchString, position) {
-                position = position || this.length;
-                position = position - searchString.length;
-                var lastIndex = this.lastIndexOf(searchString);
-                return lastIndex !== -1 && lastIndex === position;
-            }
-        });
-    }
-    if (!String.prototype.padEnd) {
-        String.prototype.padEnd = function padEnd(targetLength, padString) {
-            targetLength = targetLength >> 0;
-            padString = String(
-                typeof padString !== 'undefined' ? padString : ' ');
-            if (this.length > targetLength) {
-                return String(this);
-            } else {
-                targetLength = targetLength - this.length;
-                if (targetLength > padString.length) {
-                    padString += padString.repeat(
-                        targetLength / padString.length);
-                }
-                return String(this) + padString.slice(0, targetLength);
-            }
-        };
-    }
-    if (!String.prototype.padStart) {
-        String.prototype.padStart = function padStart(targetLength, padString) {
-            targetLength = targetLength >> 0;
-            padString = String(
-                typeof padString !== 'undefined' ? padString : ' ');
-            if (this.length > targetLength) {
-                return String(this);
-            } else {
-                targetLength = targetLength - this.length;
-                if (targetLength > padString.length) {
-                    padString += padString.repeat(
-                        targetLength / padString.length);
-                }
-                return padString.slice(0, targetLength) + String(this);
-            }
-        };
-    }
-    if (!Array.prototype.some) {
-        Array.prototype.some = function(fun /*, thisp */) {
-            if (this === null) {
-                throw new TypeError();
-            }
-            var thisp, i,
-                t = Object(this),
-                len = t.length >>> 0;
-            if (typeof fun !== 'function') {
-                throw new TypeError();
-            }
-            thisp = arguments[1];
-            for (i = 0; i < len; i++) {
-                if (i in t && fun.call(thisp, t[i], i, t)) {
-                    return true;
-                }
-            }
-            return false;
-        };
-    }
 
-    if (!Array.from) {
-        Array.from = function (value) {
-            // Implementation is not strictly equivalent but works for most
-            // cases
-            var result = [];
-            for (const e of value) {
-                result.push(e);
-            }
-            return result;
-        };
-    }
-
+    // Browser compatibility: polyfill
     if (!Set.prototype.intersection) {
         Set.prototype.intersection = function(other) {
             if (this === null) {
