@@ -15,6 +15,7 @@ Activate modules::
 
     >>> config = activate_modules([
     ...     'sale_amendment',
+    ...     'sale_product_customer',
     ...     'sale_secondary_unit',
     ...     'account_invoice_secondary_unit',
     ...     'stock_secondary_unit'],
@@ -53,13 +54,20 @@ Create product::
     >>> template.type = 'goods'
     >>> template.salable = True
     >>> template.sale_secondary_uom = gr
-    >>> template.sale_secondary_uom_factor = 200
+    >>> template.sale_secondary_uom_factor = 100
     >>> template.sale_secondary_uom_rate
-    0.005
+    0.01
     >>> template.list_price = Decimal('10')
     >>> template.account_category = account_category
     >>> template.save()
     >>> product, = template.products
+    >>> product_customer = product.product_customers.new()
+    >>> product_customer.party = customer
+    >>> product_customer.sale_secondary_uom = gr
+    >>> product_customer.sale_secondary_uom_factor = 200
+    >>> product_customer.sale_secondary_uom_rate
+    0.005
+    >>> product.save()
 
 Sale product::
 
@@ -75,6 +83,10 @@ Sale product::
 
 Check secondary unit::
 
+    >>> assertEqual(line.secondary_unit, gr)
+    >>> line.secondary_quantity
+    2000.0
+    >>> line.secondary_quantity = None
     >>> line.secondary_unit = kg
     >>> line.secondary_quantity
     2.0
