@@ -2219,6 +2219,7 @@
                 } else if (~['tree', 'list-form'].indexOf(view.view_type)) {
                     var paths;
                     if (view.view_type == 'tree') {
+                        view.save_width();
                         paths = view.get_expanded_paths();
                     } else {
                         paths = [];
@@ -2345,5 +2346,6 @@
             });
         }
     });
+    Sao.Screen.tree_column_width = {};
     Sao.Screen.tree_column_optional = {};
 }());

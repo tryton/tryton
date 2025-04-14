@@ -708,6 +708,15 @@ img.icon {
     display: flex;
     flex-direction: column;
     min-height: 0;
+
+    .tree-dragged-image {
+        display: block;
+        height: 0;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 0;
+    }
 }
 
 .wizard-form {
@@ -724,6 +733,11 @@ img.icon {
     > table.tree {
         width: 100%;
         table-layout: fixed;
+        border: 1px solid transparent;
+
+        &.table-bordered {
+            border-color: @table-border-color;
+        }
 
         col.selection-state, col.favorite, col.tree-menu {
             width: 30px;
@@ -749,15 +763,37 @@ img.icon {
             }
         }
         > thead > tr > th {
-            > label.sortable {
-                cursor: pointer;
+            position: relative;
+            padding: 5px;
+
+            > label {
+                display: inline-block;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                margin: 0;
+
+                &.sortable {
+                    cursor: pointer;
+                }
             }
+
+            > div.resizer {
+                z-index: 1;
+                position: absolute;
+                top: 0;
+                inset-inline-end: -5px;
+                width: 2px;
+                height: 100%;
+                cursor: ew-resize;
+                padding: 0 4px;
+                background-color: transparent;
+            }
+
             &.tree-menu {
                 cursor: pointer;
                 overflow: visible;
             }
-            overflow: hidden;
-            text-overflow: ellipsis;
             text-align: center;
             &.char, &.text, &.many2one, &.one2one, &.date, &.time, &.selection,
             &.reference, &.url, &.email, &.callto, &.sip {
@@ -775,7 +811,14 @@ img.icon {
             z-index: 100;
 
             th {
+                border: 1px solid transparent;
+                border-bottom: 2px solid @table-border-color;
                 background-color: @body-bg;
+            }
+
+            &:hover th {
+                border: 1px solid @table-border-color;
+                border-bottom-width: 2px;
             }
         }
         > tfoot > tr {
@@ -919,6 +962,26 @@ img.icon {
     .btn {
         padding-top: 0;
         padding-bottom: 0;
+    }
+
+    > table.table-bordered {
+        border: 1px solid @table-border-color;
+        > thead,
+        > tbody,
+        > tfoot {
+            > tr:first-child {
+                > th,
+                > td {
+                    border: 1px solid @table-border-color;
+                }
+            }
+        }
+        > thead > tr:first-child {
+            > th,
+            > td {
+                border-bottom-width: 2px;
+            }
+        }
     }
 }
 
