@@ -19,6 +19,15 @@ from trytond.wizard import Button, StateView, Wizard
 
 from ..action import DomainError, ViewError
 
+# Numbers taken from Bootstrap's breakpoints
+WIDTH_BREAKPOINTS = [
+    1400,
+    1200,
+    992,
+    768,
+    576,
+    ]
+
 
 class XMLError(ValidationError):
     pass
@@ -444,6 +453,7 @@ class ViewTreeWidth(
     field = fields.Char('Field', required=True)
     user = fields.Many2One('res.user', 'User', required=True,
         ondelete='CASCADE')
+    screen_width = fields.Integer("Screen Width")
     width = fields.Integer('Width', required=True)
 
     @classmethod
@@ -482,35 +492,95 @@ class ViewTreeWidth(
         ModelView._fields_view_get_cache.clear()
 
     @classmethod
-    def set_width(cls, model, fields):
+    def get_width(cls, model, width):
+        for screen_width in WIDTH_BREAKPOINTS:
+            if width >= screen_width:
+                break
+        else:
+            screen_width = 0
+
+        user = Transaction().user
+        records = cls.search([
+            ('user', '=', user),
+            ('model', '=', model),
+            ('screen_width', '=', screen_width),
+            ])
+
+        if not records:
+            records = cls.search([
+                ('user', '=', user),
+                ('model', '=', model),
+                ['OR',
+                    ('screen_width', '<=', screen_width),
+                    ('screen_width', '=', None),
+                    ],
+                ],
+                order=[
+                    ('screen_width', 'DESC NULLS LAST'),
+                    ])
+        widths = {}
+        for width in records:
+            if width.field not in widths:
+                widths[width.field] = width.width
+        return widths
+
+    @classmethod
+    def set_width(cls, model, fields, width):
         '''
         Set width for the current user on the model.
         fields is a dictionary with key: field name and value: width.
         '''
-        records = cls.search([
-            ('user', '=', Transaction().user),
-            ('model', '=', model),
-            ('field', 'in', list(fields.keys())),
-            ])
-        cls.delete(records)
+        for screen_width in WIDTH_BREAKPOINTS:
+            if width >= screen_width:
+                break
+        else:
+            screen_width = 0
 
-        to_create = []
-        for field in list(fields.keys()):
-            to_create.append({
-                    'model': model,
-                    'field': field,
-                    'user': Transaction().user,
-                    'width': fields[field],
-                    })
-        if to_create:
-            cls.create(to_create)
-
-    @classmethod
-    def reset_width(cls, model, width):
         user_id = Transaction().user
         records = cls.search([
                 ('user', '=', user_id),
                 ('model', '=', model),
+                ('field', 'in', list(fields.keys())),
+                ['OR',
+                    ('screen_width', '=', screen_width),
+                    ('screen_width', '=', None),
+                    ],
+                ])
+
+        fields = fields.copy()
+        to_save = []
+        for tree_width in records:
+            if tree_width.screen_width == screen_width:
+                tree_width.width = fields.pop(tree_width.field)
+                to_save.append(tree_width)
+
+        for name, width in fields.items():
+            to_save.append(cls(
+                    user=user_id,
+                    model=model,
+                    field=name,
+                    screen_width=screen_width,
+                    width=width))
+
+        if to_save:
+            cls.save(to_save)
+
+    @classmethod
+    def reset_width(cls, model, width):
+        for screen_width in WIDTH_BREAKPOINTS:
+            if width >= screen_width:
+                break
+        else:
+            screen_width = 0
+
+        user_id = Transaction().user
+        records = cls.search([
+                ('user', '=', user_id),
+                ('model', '=', model),
+                ['OR',
+                    ('screen_width', '=', screen_width),
+                    ('screen_width', '=', None),
+                    ],
                 ])
         cls.delete(records)
 

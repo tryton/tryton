@@ -1631,3 +1631,18 @@ def get_gdk_backend():
         if 'wayland' in dm_class_name:
             return 'wayland'
         return 'x11'
+
+
+def get_monitor_size():
+    from tryton.gui import Main
+
+    main_gdk_window = Main().window.get_window()
+    if not main_gdk_window:
+        return None, None
+
+    display = Gdk.Display.get_default()
+    monitor = display.get_monitor_at_window(main_gdk_window)
+    geometry = monitor.get_geometry()
+    return (
+        geometry.width / monitor.get_scale_factor(),
+        geometry.height / monitor.get_scale_factor())

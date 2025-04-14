@@ -494,15 +494,13 @@ class ModelView(Model):
 
         if type == 'tree':
             user = Transaction().user
+            width, _ = Transaction().context.get('screen_size', (None, None))
             if Transaction().context.get('view_tree_width'):
                 ViewTreeWidth = pool.get('ir.ui.view_tree_width')
-                viewtreewidths = ViewTreeWidth.search([
-                    ('model', '=', cls.__name__),
-                    ('user', '=', user),
-                    ])
-                for viewtreewidth in viewtreewidths:
-                    if viewtreewidth.width > 0:
-                        fields_width[viewtreewidth.field] = viewtreewidth.width
+                col_widths = ViewTreeWidth.get_width(cls.__name__, width)
+                fields_width.update({fname: w
+                        for fname, w in col_widths.items()
+                        if w > 0})
 
             if view_id:
                 ViewTreeOptional = pool.get('ir.ui.view_tree_optional')

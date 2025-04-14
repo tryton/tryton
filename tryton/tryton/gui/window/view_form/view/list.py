@@ -14,8 +14,8 @@ from gi.repository import Gdk, GLib, GObject, Gtk
 
 import tryton.common as common
 from tryton.common import (
-    RPCException, RPCExecute, Tooltips, domain_inversion, node_attributes,
-    simplify, unique_value)
+    RPCException, RPCExecute, Tooltips, domain_inversion, get_monitor_size,
+    node_attributes, simplify, unique_value)
 from tryton.common.cellrendererbutton import CellRendererButton
 from tryton.common.popup_menu import populate, popup
 from tryton.config import CONFIG
@@ -593,9 +593,10 @@ class ViewTree(View):
 
     def reset_width(self, menuitem):
         try:
+            screen_width, _ = get_monitor_size()
             RPCExecute(
                 'model', 'ir.ui.view_tree_width', 'reset_width',
-                self.screen.model_name)
+                self.screen.model_name, screen_width)
         except RPCException:
             pass
         self.screen.tree_column_width.pop(self.screen.model_name, None)
@@ -1101,11 +1102,12 @@ class ViewTree(View):
         if last_col and last_col.name in fields:
             del fields[last_col.name]
 
+        screen_width, _ = get_monitor_size()
         if fields and any(fields.values()):
             model_name = self.screen.model_name
             try:
                 RPCExecute('model', 'ir.ui.view_tree_width', 'set_width',
-                    model_name, fields)
+                    model_name, fields, screen_width)
             except RPCException:
                 pass
             self.screen.tree_column_width[model_name].update(fields)

@@ -900,8 +900,14 @@
             } else if (!view_id && this.views_preload[view_type]) {
                 view = this.views_preload[view_type];
             } else {
+                let context = this.context;
+                context.screen_size = [
+                    window.visualViewport.width,
+                    window.visualViewport.height,
+                ];
+                context.view_tree_width = true;
                 var prm = this.model.execute('fields_view_get',
-                        [view_id, view_type], this.context);
+                        [view_id, view_type], context);
                 return prm.pipe(this.add_view.bind(this));
             }
             this.add_view(view);
@@ -1806,8 +1812,14 @@
                 return this._domain_parser[view_id];
             }
             if (!(view_id in this.fields_view_tree)) {
+                let context = this.context;
+                context.screen_size = [
+                    window.visualViewport.width,
+                    window.visualViewport.height,
+                ];
+                context.view_tree_width = true;
                 view_tree = this.model.execute('fields_view_get', [false, 'tree'],
-                    this.context, false);
+                    context, false);
                 this.fields_view_tree[view_id] = view_tree;
             } else {
                 view_tree = this.fields_view_tree[view_id];

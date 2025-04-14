@@ -8,6 +8,9 @@ this repository contains the full copyright notices and license terms. -->
     <field name="field_ref"/>
     <label name="user"/>
     <field name="user"/>
+    <label name="screen_width"/>
+    <field name="screen_width"/>
+
     <label name="width"/>
     <field name="width"/>
 </form>
