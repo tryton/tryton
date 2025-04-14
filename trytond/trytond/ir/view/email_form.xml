@@ -6,6 +6,10 @@ this repository contains the full copyright notices and license terms. -->
     <field name="user"/>
     <label name="at"/>
     <field name="at"/>
+
+    <label name="message_id"/>
+    <field name="message_id" colspan="3"/>
+
     <label name="recipients"/>
     <field name="recipients" colspan="3"/>
     <label name="recipients_secondary"/>

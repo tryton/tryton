@@ -69,6 +69,7 @@ class Email(ResourceAccessMixin, ModelSQL, ModelView):
         'ir.email.address', 'email', "Addresses", readonly=True)
     subject = fields.Char("Subject", readonly=True)
     body = fields.Text("Body", readonly=True)
+    message_id = fields.Char("Message-ID", readonly=True)
 
     @classmethod
     def __setup__(cls):
@@ -228,6 +229,7 @@ class Email(ResourceAccessMixin, ModelSQL, ModelView):
             recipients_hidden=msg['Bcc'],
             addresses=[{'address': a} for a in to_addrs],
             subject=msg['Subject'],
+            message_id=msg['Message-ID'],
             **values)
 
 

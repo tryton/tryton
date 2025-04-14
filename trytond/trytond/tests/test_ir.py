@@ -520,9 +520,13 @@ class IrTestCase(ModuleTestCase):
             )
         report.save()
 
+        def set_message_id(msg, *args, **kwargs):
+            msg['Message-ID'] = 'test'
+
         with patch(
                 'trytond.ir.email_.send_message_transactional'
                 ) as send_message:
+            send_message.side_effect = set_message_id
             email = Email.send(
                 to='"John Doe" <john@example.com>, Jane <jane@example.com>',
                 cc='User <user@example.com>',
@@ -551,6 +555,7 @@ class IrTestCase(ModuleTestCase):
         self.assertEqual(
             [a.address for a in email.addresses],
             addresses)
+        self.assertEqual(email.message_id, 'test')
         self.assertEqual(email.subject, "Email subject")
         self.assertEqual(email.body, '<p>Hello</p>')
         self.assertEqual(len(attachments), 2)

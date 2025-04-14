@@ -5,11 +5,12 @@ import smtplib
 import ssl
 import time
 from email.message import EmailMessage, Message
-from email.utils import formatdate
+from email.utils import formatdate, make_msgid
 from urllib.parse import parse_qs, unquote_plus
 
 from trytond.config import config, parse_uri
 from trytond.transaction import Transaction
+from trytond.url import host
 
 __all__ = [
     'sendmail_transactional', 'sendmail',
@@ -29,6 +30,8 @@ def sendmail_transactional(
 def send_message_transactional(
         msg, from_addr=None, to_addrs=None, transaction=None, datamanager=None,
         strict=False):
+    if not msg['Message-ID']:
+        msg['Message-ID'] = make_msgid(domain=host())
     if transaction is None:
         transaction = Transaction()
     assert isinstance(transaction, Transaction), transaction
@@ -44,6 +47,8 @@ def sendmail(from_addr, to_addrs, msg, server=None, strict=False):
 
 def send_message(
         msg, from_addr=None, to_addrs=None, server=None, strict=False):
+    if not msg['Message-ID']:
+        msg['Message-ID'] = make_msgid(domain=host())
     if server is None:
         server = get_smtp_server(strict=strict)
         if not server:

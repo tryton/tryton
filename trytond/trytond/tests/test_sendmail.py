@@ -1,7 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import smtplib
-from email.message import Message
+from email.message import EmailMessage, Message
 from unittest.mock import ANY, MagicMock, Mock, call, patch
 
 from trytond.sendmail import (
@@ -22,7 +22,7 @@ class SendmailTestCase(TestCase):
     @with_transaction()
     def test_sendmail_transactional(self):
         'Test sendmail_transactional'
-        message = MagicMock()
+        message = EmailMessage()
         datamanager = Mock()
         sendmail_transactional(
             'tryton@example.com', 'foo@example.com', message,
@@ -30,16 +30,42 @@ class SendmailTestCase(TestCase):
 
         datamanager.put.assert_called_once_with(
             'tryton@example.com', 'foo@example.com', message)
+        self.assertTrue(message['Message-ID'])
+
+    @with_transaction()
+    def test_sendmail_transactional_keeps_message_id(self):
+        "Test sendmail_transactional keeps Message-ID"
+        message = EmailMessage()
+        message['Message-ID'] = 'test'
+
+        datamanager = Mock()
+        sendmail_transactional(
+            'tryton@example.com', 'foo@example.com', message,
+            datamanager=datamanager)
+
+        self.assertEqual(message['Message-ID'], 'test')
 
     def test_sendmail(self):
         'Test sendmail'
-        message = MagicMock()
+        message = EmailMessage()
         server = Mock()
         sendmail(
             'tryton@example.com', 'foo@example.com', message, server=server)
         server.send_message.assert_called_with(
             message, 'tryton@example.com', 'foo@example.com')
         server.quit.assert_not_called()
+        self.assertTrue(message['Message-ID'])
+
+    def test_sendmail_keeps_message_id(self):
+        "Test sendmail keeps Message-ID"
+        message = EmailMessage()
+        message['Message-ID'] = 'test'
+
+        server = Mock()
+        sendmail(
+            'tryton@example.com', 'foo@example.com', message, server=server)
+
+        self.assertEqual(message['Message-ID'], 'test')
 
     def test_get_smtp_server(self):
         'Test get_smtp_server'
