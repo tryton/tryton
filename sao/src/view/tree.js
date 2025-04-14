@@ -763,7 +763,8 @@
                         'class': 'btn btn-default btn-block',
                         'type': 'button'
                     }).text(Sao.i18n.gettext('More')
-                    ).click(function() {
+                    ).one('click', function() {
+                        this.tbody.find('tr.more-row').remove();
                         var height = this.table.height();
                         this.display_size += Sao.config.display_size;
                         this.display();
