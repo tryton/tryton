@@ -179,6 +179,7 @@ class PartyReceptionDirectDebit(
             ('party', '=', self.party.id),
             ('currency', '=', self.currency.id),
             ('state', 'not in', ['succeeded', 'failed']),
+            ('line', '=', None),
             ]
 
 
