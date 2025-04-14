@@ -983,7 +983,8 @@
                         'type': 'button',
                         'title': Sao.i18n.gettext("More"),
                     }).text(Sao.i18n.gettext('More')
-                    ).click(() => {
+                    ).one('click', () => {
+                        this.tbody.find('tr.more-row').remove();
                         var height = this.table.height();
                         this.display_size += Sao.config.display_size;
                         this.display();
