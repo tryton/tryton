@@ -85,9 +85,10 @@ Purchase product::
 
 Check secondary unit::
 
-    >>> line.product_supplier = product_supplier
-    >>> line.quantity = 10
-
+    >>> assertEqual(line.secondary_unit, gr)
+    >>> line.secondary_quantity
+    2000.0
+    >>> line.secondary_quantity = None
     >>> line.secondary_unit = kg
     >>> line.secondary_quantity
     2.0

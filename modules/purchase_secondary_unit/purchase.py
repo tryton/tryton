@@ -143,15 +143,19 @@ class Line(metaclass=PoolMeta):
     def set_secondary(cls, lines, name, value):
         pass
 
-    @fields.depends('secondary_unit',
+    @fields.depends(
+        'secondary_unit', 'product',
         methods=['on_change_with_secondary_quantity', '_secondary_record'])
     def on_change_product(self):
         super().on_change_product()
         secondary_record = self._secondary_record()
-        if secondary_record and self.secondary_unit:
-            if (self.secondary_unit.category
-                    != secondary_record.purchase_secondary_uom.category):
-                self.secondary_unit = None
+        if secondary_record:
+            secondary_uom = secondary_record.purchase_secondary_uom
+            if self.secondary_unit and secondary_uom:
+                if self.secondary_unit.category != secondary_uom.category:
+                    self.secondary_unit = None
+            if not self.secondary_unit and secondary_record != self.product:
+                self.secondary_unit = secondary_uom
 
         if secondary_record:
             self.secondary_uom_factor = (
