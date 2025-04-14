@@ -428,6 +428,34 @@
                     this.on_copy();
                     menu.dropdown('toggle');
                 })));
+            menu.append(jQuery('<li/>', {
+                'role': 'presentation',
+            }).append(jQuery('<a/>', {
+                'role': 'menuitem',
+                'href': '#',
+                'tabindex': -1,
+            }).text(' ' + Sao.i18n.gettext("Reset Column Widths"))
+                .prepend(
+                    Sao.common.ICONFACTORY.get_icon_img('tryton-refresh', {
+                        'aria-hidden': 'true',
+                    }))
+                .click((evt) => {
+                    evt.preventDefault();
+                    let TreeWidth = new Sao.Model('ir.ui.view_tree_width');
+                    TreeWidth.execute(
+                        'reset_width',
+                        [this.screen.model_name, window.screen.width],
+                        {});
+
+                    for (let column of this.columns) {
+                        if (column.col.data('computed-width')) {
+                            column.col.css(
+                                'width', column.col.data('computed-width'));
+                        }
+                    }
+                    delete Sao.Screen.tree_column_width[this.screen.model_name];
+                    menu.dropdown('toggle');
+                })));
         },
         save_optional: function(store=true) {
             if (jQuery.isEmptyObject(this.optionals)) {
@@ -999,7 +1027,26 @@
                     !column.col.hasClass('optional') &&
                     !column.col.hasClass('selection-state') &&
                     !column.col.hasClass('favorite')) {
-                    var width, c_width;
+                    let width, c_width, computed_width;
+                    let default_width = {
+                        'integer': 8,
+                        'selection': 9,
+                        'reference': 20,
+                        'one2many': 5,
+                        'many2many': 5,
+                        'boolean': 3,
+                        'binary': 20,
+                    }[column.attributes.widget] || 10;
+                    if (column.attributes.symbol) {
+                        default_width += 2;
+                    }
+                    var factor = 1;
+                    if (column.attributes.expand) {
+                        factor += parseInt(column.attributes.expand, 10);
+                    }
+                    computed_width = default_width * 100 * factor  + '%';
+                    column.col.data('computed-width', computed_width);
+
                     width = tree_column_width[name];
                     if (width) {
                         c_width = width;
@@ -1007,25 +1054,10 @@
                     } else if (column.attributes.width) {
                         width = c_width = column.attributes.width;
                         min_width.push(width + 'px');
+                        column.col.data('computed-width', `${width}px`);
                     } else {
-                        width = {
-                            'integer': 8,
-                            'selection': 9,
-                            'reference': 20,
-                            'one2many': 5,
-                            'many2many': 5,
-                            'boolean': 3,
-                            'binary': 20,
-                        }[column.attributes.widget] || 10;
-                        if (column.attributes.symbol) {
-                            width += 2;
-                        }
-                        var factor = 1;
-                        if (column.attributes.expand) {
-                            factor += parseInt(column.attributes.expand, 10);
-                        }
-                        c_width = width * 100 * factor  + '%';
-                        min_width.push(width + 'em');
+                        c_width = computed_width;
+                        min_width.push(`${default_width}em`);
                     }
                     column.col.css('width', c_width);
                     column.col.show();

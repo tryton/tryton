@@ -1,3 +1,4 @@
+* Allow column widths to be reset
 * Add simple chat widget on sidebar
 * Remove support for Python 3.8
 * Add support for Python 3.13

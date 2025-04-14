@@ -452,6 +452,7 @@ class ViewTreeWidth(
         table = cls.__table__()
         cls.__rpc__.update({
                 'set_width': RPC(readonly=False),
+                'reset_width': RPC(readonly=False),
                 })
         cls._sql_indexes.add(
             Index(
@@ -503,6 +504,15 @@ class ViewTreeWidth(
                     })
         if to_create:
             cls.create(to_create)
+
+    @classmethod
+    def reset_width(cls, model, width):
+        user_id = Transaction().user
+        records = cls.search([
+                ('user', '=', user_id),
+                ('model', '=', model),
+                ])
+        cls.delete(records)
 
 
 class ViewTreeOptional(

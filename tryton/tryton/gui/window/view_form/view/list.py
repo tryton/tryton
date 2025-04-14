@@ -438,19 +438,23 @@ class TreeXMLViewParser(XMLViewParser):
             'binary': 200,
             }
 
+        field_attrs = self.field_attrs.get(attributes['name'], {})
+        if field_attrs:
+            computed_width = default_width.get(field_attrs['type'], 100)
+            if attributes.get('symbol'):
+                computed_width += 20
+        else:
+            computed_width = 80
+
         screen = self.view.screen
         width = screen.tree_column_width[screen.model_name].get(column.name)
-        field_attrs = self.field_attrs.get(attributes['name'], {})
         if not width:
             if 'width' in attributes:
-                width = int(attributes['width'])
-            elif field_attrs:
-                width = default_width.get(field_attrs['type'], 100)
-                if attributes.get('symbol'):
-                    width += 20
+                computed_width = width = int(attributes['width'])
             else:
-                width = 80
+                width = computed_width
         column.width = width
+        column.computed_width = computed_width
         if width > 0:
             column.set_fixed_width(width)
         column.set_min_width(1)
@@ -568,6 +572,11 @@ class ViewTree(View):
             menuitem.set_active(visible)
             menuitem.connect('toggled', toggle, columns)
             menu.add(menuitem)
+        if self.optionals:
+            menu.add(Gtk.SeparatorMenuItem())
+        menuitem = Gtk.MenuItem(label=_("Reset Column Widths"))
+        menuitem.connect('activate', self.reset_width)
+        menu.add(menuitem)
         popup(menu, widget)
 
     def save_optional(self):
@@ -581,6 +590,19 @@ class ViewTree(View):
         except RPCException:
             pass
         self.screen.tree_column_optional[self.view_id] = fields
+
+    def reset_width(self, menuitem):
+        try:
+            RPCExecute(
+                'model', 'ir.ui.view_tree_width', 'reset_width',
+                self.screen.model_name)
+        except RPCException:
+            pass
+        self.screen.tree_column_width.pop(self.screen.model_name, None)
+
+        for col in self.treeview.get_columns():
+            if col.name:
+                col.set_fixed_width(col.computed_width)
 
     def get_column_widget(self, column):
         'Return the widget of the column'
