@@ -2472,7 +2472,7 @@
                         if (record2) {
                             var vals_to_set = {};
                             for (var key in vals) {
-                                if (!(key in new_field_names)) {
+                                if (!Object.prototype.hasOwnProperty.call(new_field_names, key)) {
                                     vals_to_set[key] = vals[key];
                                 }
                             }
