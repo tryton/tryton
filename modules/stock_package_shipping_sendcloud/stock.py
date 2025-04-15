@@ -161,7 +161,6 @@ class CreateShippingSendcloud(Wizard):
             'address_2': (
                 ' '.join(street_lines[1:]) if len(street_lines) > 1 else ''),
             'house_number': address.numbers,
-            'to_post_number': address.post_box,
             'city': address.city,
             'postal_code': address.postal_code,
             'country': address.country.code if address.country else None,
@@ -192,6 +191,8 @@ class CreateShippingSendcloud(Wizard):
                 * 100) / 100,
             'request_label': True,
             }
+        if address.post_box:
+            parcel['to_post_number'] = address.post_box
         shipping_method = credential.get_shipping_method(
             shipment, package=package)
         if shipping_method:
