@@ -2566,7 +2566,11 @@
                         }
                         const record2 = group.get(vals.id);
                         if (record2) {
-                            record2.set_on_change(vals);
+                            let to_update = Object.fromEntries(
+                                Object.entries(vals).filter(
+                                    ([k, v]) => !Object.prototype.hasOwnProperty.call(vals_to_set, k)
+                                ));
+                            record2.set_on_change(to_update);
                         }
                     }
                 }
