@@ -1705,9 +1705,8 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin, InvoiceReportMixin):
         '''
         InvoiceReport = Pool().get('account.invoice', type='report')
         for invoice in invoices:
-            if invoice.invoice_report_cache:
-                return
-            InvoiceReport.execute([invoice.id], {})
+            if not invoice.invoice_report_cache:
+                InvoiceReport.execute([invoice.id], {})
 
     def _credit(self, **values):
         '''
