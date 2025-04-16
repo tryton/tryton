@@ -167,7 +167,6 @@ def reset_password():
 
 
 def execute(*args):
-    global CONNECTION, _USER
     if CONNECTION is None:
         raise TrytonServerError('403')
     try:

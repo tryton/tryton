@@ -14,7 +14,6 @@ MODULES = []
 
 
 def register():
-    global MODULES
     paths = [
         os.path.join(get_config_dir(), 'plugins'),
         os.path.join(CURRENT_DIR, 'plugins'),
