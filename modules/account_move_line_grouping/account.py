@@ -2,6 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 from sql import As, Literal, Null, Select, Window
 from sql.aggregate import BoolAnd, BoolOr, Min, Sum
+from sql.conditionals import Coalesce
 from sql.functions import CurrentTimestamp, FirstValue
 
 from trytond.model import ModelSQL, ModelView, fields
@@ -177,8 +178,8 @@ class MoveLineGroup(MoveLineMixin, ModelSQL, ModelView):
         else:
             filter_ = None
         return [
-            Sum(line.debit, filter_=filter_).as_('debit'),
-            Sum(line.credit, filter_=filter_).as_('credit'),
+            Coalesce(Sum(line.debit, filter_=filter_), 0).as_('debit'),
+            Coalesce(Sum(line.credit, filter_=filter_), 0).as_('credit'),
             Sum(line.amount_second_currency, filter_=filter_).as_(
                 'amount_second_currency'),
             BoolOr(line.reconciliation != Null).as_('partially_reconciled'),
