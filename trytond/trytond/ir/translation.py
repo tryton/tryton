@@ -1431,8 +1431,7 @@ class TranslationClean(Wizard):
         for translation in translations:
             if getattr(self, '_clean_%s' % translation.type)(translation):
                 to_delete.append(translation.id)
-            elif translation.type in ('field', 'model', 'wizard_button',
-                    'help'):
+            elif translation.type in {'field', 'model', 'wizard_button'}:
                 key = (translation.module, translation.lang, translation.type,
                     translation.name, translation.res_id)
                 if key in keys:
