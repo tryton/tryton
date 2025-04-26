@@ -9,7 +9,6 @@ from functools import wraps
 from io import StringIO
 
 from gi.repository import Gdk, GLib, GObject, Gtk
-from pygtkcompat.generictreemodel import GenericTreeModel
 
 import tryton.common as common
 from tryton.common import (
@@ -23,6 +22,7 @@ from tryton.pyson import PYSONDecoder
 
 from . import View, XMLViewParser
 from .list_gtk.editabletree import EditableTreeView, TreeView
+from .list_gtk.generictreemodel import GenericTreeModel
 from .list_gtk.widget import (
     M2M, M2O, O2M, O2O, URL, Affix, Binary, Boolean, Button, Char, Date, Dict,
     Float, Image, Int, MultiSelection, ProgressBar, Reference, Selection, Text,
