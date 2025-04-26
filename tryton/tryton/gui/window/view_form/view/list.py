@@ -7,7 +7,6 @@ import gettext
 from functools import wraps
 
 from gi.repository import Gdk, GLib, GObject, Gtk
-from pygtkcompat.generictreemodel import GenericTreeModel
 
 from tryton.config import CONFIG
 from tryton.common.cellrendererbutton import CellRendererButton
@@ -19,6 +18,7 @@ from tryton.pyson import PYSONDecoder
 import tryton.common as common
 from . import View, XMLViewParser
 from .list_gtk.editabletree import EditableTreeView, TreeView
+from .list_gtk.generictreemodel import GenericTreeModel
 from .list_gtk.widget import (Affix, Char, Text, Int, Boolean, URL, Date,
     Time, Float, TimeDelta, Binary, M2O, O2O, O2M, M2M, Selection,
     MultiSelection, Reference, Dict, ProgressBar, Button, Image)
