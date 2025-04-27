@@ -54,7 +54,7 @@ Get accounts::
 Create addresses::
 
     >>> warehouse_address = Address(
-    ...     party=company.party, name="Warehouse", country=belgium)
+    ...     party=company.party, building_name="Warehouse", country=belgium)
     >>> warehouse_address.save()
 
     >>> port = Party(name="Port of Fuzhou")
