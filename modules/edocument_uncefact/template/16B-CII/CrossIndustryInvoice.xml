@@ -25,19 +25,21 @@ this repository contains the full copyright notices and license terms. -->
     </py:def>
     <py:def function="TradeAddress(address)">
         <ram:PostcodeCode py:if="address.postal_code">${address.postal_code}</ram:PostcodeCode>
-        <ram:BuildingName py:if="address.name">${address.name}</ram:BuildingName>
-        <py:with vars="lines = (address.street or '').splitlines()">
+        <ram:BuildingName py:if="address.building_name">${address.building_name}</ram:BuildingName>
+        <py:with vars="lines = (address.street_unstructured or '').splitlines()">
             <ram:LineOne py:if="len(lines) > 0">${lines[0]}</ram:LineOne>
             <ram:LineTwo py:if="len(lines) > 1">${lines[1]}</ram:LineTwo>
             <ram:LineThree  py:if="len(lines) > 2">${lines[2]}</ram:LineThree>
             <ram:LineFour py:if="len(lines) > 3">${lines[3]}</ram:LineFour>
             <ram:LineFive py:if="len(lines) > 4">${lines[4]}</ram:LineFive>
         </py:with>
+        <ram:StreetName py:if="address.street_name">${address.street_name}</ram:StreetName>
         <ram:CityName py:if="address.city">${address.city}</ram:CityName>
         <ram:CountryID py:if="address.country">${address.country.code}</ram:CountryID>
         <ram:CountryName py:if="address.country">${address.country.name}</ram:CountryName>
         <ram:CountrySubDivisionID py:if="address.subdivision">${address.subdivision.code}</ram:CountrySubDivisionID>
         <ram:CountrySubDivisionName py:if="address.subdivision">${address.subdivision.name}</ram:CountrySubDivisionName>
+        <ram:BuildingNumber py:if="address.building_number">${address.building_number}</ram:BuildingNumber>
     </py:def>
     <py:def function="TradeTax(tax, amount=None, base=None)">
         <ram:ApplicableTradeTax>

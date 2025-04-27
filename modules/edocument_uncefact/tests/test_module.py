@@ -30,21 +30,21 @@ def get_invoice():
     Uom = pool.get('product.uom')
 
     address = Mock(spec=Address,
-        street="St sample, 15",
+        street_unstructured="St sample, 15",
         city="Scranton",
         postal_code="1000",
         subdivision=None,
         country=Mock(spec=Country,
             code='US'),
         )
-    address.name = "Building A"
+    address.building_name = "Building A"
     address.country.name = "United States"
     party = Mock(spec=Party, addresses=[address])
     party.name = "Michael Scott"
     company = Mock(spec=Company,
         party=Mock(spec=Party,
         addresses=[Mock(spec=Address,
-                    street="Main street, 42",
+                    street_unstructured="Main street, 42",
                     country=Mock(spec=Country,
                         code='US'))]))
     company.party.name = "Dunder Mifflin"
