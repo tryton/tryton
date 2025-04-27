@@ -10,10 +10,9 @@ msgctxt "field:product.product,producible:"
 msgid "Producible"
 msgstr "Produzível"
 
-#, fuzzy
 msgctxt "field:product.product,production_lead_times:"
 msgid "Lead Times"
-msgstr "Tempo de Espera"
+msgstr "Tempo de Entregas"
 
 msgctxt "field:product.product-production.bom,bom:"
 msgid "BOM"
@@ -27,10 +26,9 @@ msgctxt "field:product.template,producible:"
 msgid "Producible"
 msgstr "Produzível"
 
-#, fuzzy
 msgctxt "field:production,assigned_by:"
 msgid "Assigned By"
-msgstr "Atribuído"
+msgstr "Atribuído Por"
 
 msgctxt "field:production,bom:"
 msgid "BOM"
@@ -44,18 +42,17 @@ msgctxt "field:production,cost:"
 msgid "Cost"
 msgstr "Custo"
 
-#, fuzzy
 msgctxt "field:production,done_by:"
 msgid "Done By"
-msgstr "Done"
+msgstr "Feito Por"
 
 msgctxt "field:production,effective_start_date:"
 msgid "Effective Start Date"
 msgstr "Data Efetiva de Início"
 
 msgctxt "field:production,inputs:"
-msgid "Inputs"
-msgstr "Entradas"
+msgid "Input Materials"
+msgstr "Matérias primas"
 
 msgctxt "field:production,location:"
 msgid "Location"
@@ -67,16 +64,15 @@ msgstr "Número"
 
 msgctxt "field:production,origin:"
 msgid "Origin"
-msgstr ""
+msgstr "Origem"
 
 msgctxt "field:production,outputs:"
-msgid "Outputs"
+msgid "Output Materials"
 msgstr "Saídas"
 
-#, fuzzy
 msgctxt "field:production,partially_assigned:"
 msgid "Partially Assigned"
-msgstr "Atribuído"
+msgstr "Atribuído Parcialmente"
 
 msgctxt "field:production,planned_start_date:"
 msgid "Planned Start Date"
@@ -96,21 +92,19 @@ msgstr "Referência"
 
 msgctxt "field:production,run_by:"
 msgid "Run By"
-msgstr ""
+msgstr "Executado Por"
 
 msgctxt "field:production,state:"
 msgid "State"
 msgstr "Estado"
 
-#, fuzzy
 msgctxt "field:production,unit:"
 msgid "Unit"
 msgstr "Unidade"
 
-#, fuzzy
 msgctxt "field:production,uom_category:"
 msgid "UoM Category"
-msgstr "Categoria da UDM"
+msgstr "Categoria da UdM"
 
 msgctxt "field:production,warehouse:"
 msgid "Warehouse"
@@ -118,15 +112,15 @@ msgstr "Almoxarifado"
 
 msgctxt "field:production.bom,code:"
 msgid "Code"
-msgstr ""
+msgstr "Código"
 
 msgctxt "field:production.bom,code_readonly:"
 msgid "Code Readonly"
-msgstr ""
+msgstr "Código Apenas Leitura"
 
 msgctxt "field:production.bom,inputs:"
-msgid "Inputs"
-msgstr "Entradas"
+msgid "Input Materials"
+msgstr "Matérias primas"
 
 msgctxt "field:production.bom,name:"
 msgid "Name"
@@ -137,8 +131,8 @@ msgid "Output Products"
 msgstr "Entradas"
 
 msgctxt "field:production.bom,outputs:"
-msgid "Outputs"
-msgstr "Produtos de saída"
+msgid "Output Materials"
+msgstr "Saídas"
 
 msgctxt "field:production.bom.input,bom:"
 msgid "BOM"
@@ -152,7 +146,6 @@ msgctxt "field:production.bom.input,quantity:"
 msgid "Quantity"
 msgstr "Quantidade"
 
-#, fuzzy
 msgctxt "field:production.bom.input,unit:"
 msgid "Unit"
 msgstr "Unidade"
@@ -173,7 +166,6 @@ msgctxt "field:production.bom.output,quantity:"
 msgid "Quantity"
 msgstr "Quantidade"
 
-#, fuzzy
 msgctxt "field:production.bom.output,unit:"
 msgid "Unit"
 msgstr "Unidade"
@@ -194,7 +186,6 @@ msgctxt "field:production.bom.tree,quantity:"
 msgid "Quantity"
 msgstr "Quantidade"
 
-#, fuzzy
 msgctxt "field:production.bom.tree,unit:"
 msgid "Unit"
 msgstr "Unidade"
@@ -215,7 +206,6 @@ msgctxt "field:production.bom.tree.open.start,quantity:"
 msgid "Quantity"
 msgstr "Quantidade"
 
-#, fuzzy
 msgctxt "field:production.bom.tree.open.start,unit:"
 msgid "Unit"
 msgstr "Unidade"
@@ -224,10 +214,9 @@ msgctxt "field:production.bom.tree.open.tree,bom_tree:"
 msgid "BOM Tree"
 msgstr "Listagem da lista de materiais"
 
-#, fuzzy
 msgctxt "field:production.configuration,bom_sequence:"
 msgid "BOM Sequence"
-msgstr "Sequência"
+msgstr "Sequência da Lista de Materiais"
 
 msgctxt "field:production.configuration,production_sequence:"
 msgid "Production Sequence"
@@ -258,34 +247,29 @@ msgctxt "field:stock.location,production_location:"
 msgid "Production"
 msgstr "Produção"
 
-#, fuzzy
 msgctxt "field:stock.location,production_output_location:"
 msgid "Production Output"
-msgstr "Saída da produção"
+msgstr "Saída da Produção"
 
-#, fuzzy
 msgctxt "field:stock.location,production_picking_location:"
 msgid "Production Picking"
-msgstr "Produção"
+msgstr "Local de Retirada"
 
-#, fuzzy
 msgctxt "field:stock.lot.trace,production_input:"
 msgid "Production Input"
-msgstr "Entrada da produção"
+msgstr "Local de Entrada"
 
-#, fuzzy
 msgctxt "field:stock.lot.trace,production_output:"
 msgid "Production Output"
-msgstr "Saída da produção"
+msgstr "Saída da Produção"
 
-#, fuzzy
 msgctxt "field:stock.move,production:"
 msgid "Production"
 msgstr "Produção"
 
 msgctxt "field:stock.move,production_cost_price_updated:"
 msgid "Cost Price Updated"
-msgstr ""
+msgstr "Preço de Custo Atualizado"
 
 msgctxt "field:stock.move,production_input:"
 msgid "Production Input"
@@ -297,31 +281,35 @@ msgstr "Saída da produção"
 
 msgctxt "help:production,number:"
 msgid "The main identifier for the shipment."
-msgstr ""
+msgstr "Identificador principal do envio."
 
 msgctxt "help:production,reference:"
 msgid "The external identifier for the shipment."
-msgstr ""
+msgstr "Identificador externo do envio."
 
 msgctxt "help:production,uom_category:"
 msgid "The category of Unit of Measure."
-msgstr ""
+msgstr "Categoria de Unidade de Medida."
 
 msgctxt "help:production.configuration,bom_sequence:"
 msgid "Used to generate the BOM code."
-msgstr ""
+msgstr "Utilizado para gerar o código da lista de materiais."
 
 msgctxt "help:stock.location,production_output_location:"
 msgid ""
 "Where the produced goods are stored.\n"
 "Leave empty to use the warehouse storage location."
 msgstr ""
+"Onde os bens produzidos são armazenados.\n"
+"Deixe vazio para utilizar a localização do galpão de armazenamento."
 
 msgctxt "help:stock.location,production_picking_location:"
 msgid ""
 "Where the production components are picked from.\n"
 "Leave empty to use the warehouse storage location."
 msgstr ""
+"Onde os componentes da produção são recolhidos.\n"
+"Deixe vazio para utilizar a localização do galpão de armazenamento."
 
 msgctxt "model:ir.action,name:act_bom_form"
 msgid "BOM"
@@ -339,7 +327,6 @@ msgctxt "model:ir.action,name:act_production_calendar"
 msgid "Productions"
 msgstr "Produções"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_production_configuration_form"
 msgid "Configuration"
 msgstr "Configuração"
@@ -352,7 +339,6 @@ msgctxt "model:ir.action,name:wizard_bom_tree_open"
 msgid "BOM Tree"
 msgstr "Listagem da lista de materiais"
 
-#, fuzzy
 msgctxt "model:ir.action,name:wizard_production_assign"
 msgid "Assign Production"
 msgstr "Atribuir Produção"
@@ -377,11 +363,10 @@ msgctxt ""
 msgid "Assigned"
 msgstr "Atribuído"
 
-#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_production_list_domain_available"
 msgid "Partially Assigned"
-msgstr "Atribuído"
+msgstr "Atribuído parcialmente"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_production_list_domain_draft"
@@ -403,43 +388,44 @@ msgctxt ""
 msgid "Waiting"
 msgstr "Esperando"
 
-#, fuzzy, python-format
+#, python-format
 msgctxt "model:ir.message,text:msg_missing_product_list_price"
 msgid ""
 "The product \"%(product)s\" on production \"%(production)s\" does not have "
 "any list price defined."
 msgstr ""
-"Os custos das saídas (%(outputs)s) de produção \"%(production)s\" não "
-"coincidem com o custo da produção (%(costs)s)."
+"O produto \"%(product)s\" da produção \"%(production)s\" carece da definição"
+" de uma lista de preços."
 
 #, python-format
 msgctxt "model:ir.message,text:msg_recursive_bom"
 msgid "You cannot create a recursive BOM for product \"%(product)s\"."
 msgstr ""
+"Não é possível criar uma Lista de Materiais para o produto \"%(product)s\"."
 
 msgctxt "model:ir.message,text:msg_stock_move_production_single"
 msgid "Move can not be used for production input and output."
-msgstr ""
+msgstr "Movimento não pode ser utilizado para entrada e saída de produções."
 
 msgctxt "model:ir.model.button,confirm:production_done_button"
 msgid "Are you sure you want to complete the production?"
-msgstr ""
+msgstr "Tem certeza que quer completar a produção?"
 
 msgctxt "model:ir.model.button,string:production_assign_wizard_button"
 msgid "Assign"
-msgstr "Assign"
+msgstr "Atribuir"
 
 msgctxt "model:ir.model.button,string:production_cancel_button"
 msgid "Cancel"
-msgstr "Cancel"
+msgstr "Cancelar"
 
 msgctxt "model:ir.model.button,string:production_done_button"
 msgid "Complete"
-msgstr ""
+msgstr "Completar"
 
 msgctxt "model:ir.model.button,string:production_draft_button"
 msgid "Draft"
-msgstr "Draft"
+msgstr "Rascunho"
 
 msgctxt "model:ir.model.button,string:production_reset_bom_button"
 msgid "Reset to BOM"
@@ -447,21 +433,20 @@ msgstr "Reset to BOM"
 
 msgctxt "model:ir.model.button,string:production_run_button"
 msgid "Run"
-msgstr "Run"
+msgstr "Executar"
 
 msgctxt "model:ir.model.button,string:production_wait_button"
 msgid "Wait"
-msgstr "Wait"
+msgstr "Espere"
 
 msgctxt "model:ir.rule.group,name:rule_group_production_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "Usuário em companhias"
 
 msgctxt "model:ir.sequence,name:sequence_production"
 msgid "Production"
 msgstr "Produção"
 
-#, fuzzy
 msgctxt "model:ir.sequence.type,name:sequence_type_bom"
 msgid "BOM"
 msgstr "Lista de Materiais"
@@ -478,7 +463,6 @@ msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
 msgstr "Configuração"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_production"
 msgid "Productions"
 msgstr "Produções"
@@ -487,7 +471,6 @@ msgctxt "model:ir.ui.menu,name:menu_production_calendar"
 msgid "Productions"
 msgstr "Produções"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_production_configuration"
 msgid "Configuration"
 msgstr "Configuração"
@@ -496,47 +479,47 @@ msgctxt "model:ir.ui.menu,name:menu_production_list"
 msgid "Productions"
 msgstr "Produções"
 
-msgctxt "model:product.product-production.bom,name:"
-msgid "Product - BOM"
-msgstr "Produto - Lista de materiais"
+msgctxt "model:product.product-production.bom,string:"
+msgid "Product - Production Bom"
+msgstr "Produto - Lista de Materiais (BOM)"
 
-msgctxt "model:production,name:"
+msgctxt "model:production,string:"
 msgid "Production"
 msgstr "Produção"
 
-msgctxt "model:production.bom,name:"
-msgid "Bill of Material"
-msgstr "Lista de materiais"
+msgctxt "model:production.bom,string:"
+msgid "Production Bom"
+msgstr "Lista de Materiais da Produção"
 
-msgctxt "model:production.bom.input,name:"
-msgid "Bill of Material Input"
-msgstr "Entrada da lista de materiais"
+msgctxt "model:production.bom.input,string:"
+msgid "Production Bom Input"
+msgstr "Lista de Materiais de Entrada"
 
-msgctxt "model:production.bom.output,name:"
-msgid "Bill of Material Output"
-msgstr "Reservar produções"
+msgctxt "model:production.bom.output,string:"
+msgid "Production Bom Output"
+msgstr "Lista de Materiais de Saída"
 
-msgctxt "model:production.bom.tree,name:"
-msgid "BOM Tree"
-msgstr "Saída da lista de materiais"
+msgctxt "model:production.bom.tree,string:"
+msgid "Production Bom Tree"
+msgstr "Árvore de Lista de Materiais"
 
-msgctxt "model:production.bom.tree.open.start,name:"
-msgid "Open BOM Tree"
-msgstr "Abrir listagem da lista de materiais"
+msgctxt "model:production.bom.tree.open.start,string:"
+msgid "Production Bom Tree Open Start"
+msgstr "Início Árvore Lista de Materiais"
 
-msgctxt "model:production.bom.tree.open.tree,name:"
-msgid "Open BOM Tree"
-msgstr "Abrir listagem da lista de materiais"
+msgctxt "model:production.bom.tree.open.tree,string:"
+msgid "Production Bom Tree Open Tree"
+msgstr "Início da Árvore da Lista de Materiais"
 
-msgctxt "model:production.configuration,name:"
+msgctxt "model:production.configuration,string:"
 msgid "Production Configuration"
 msgstr "Configuração de produção"
 
-msgctxt "model:production.configuration.production_sequence,name:"
+msgctxt "model:production.configuration.production_sequence,string:"
 msgid "Production Configuration Production Sequence"
 msgstr "Configuração de Produção Sequência de Produção"
 
-msgctxt "model:production.lead_time,name:"
+msgctxt "model:production.lead_time,string:"
 msgid "Production Lead Time"
 msgstr "Tempo de Espera da Produção"
 
@@ -552,23 +535,21 @@ msgctxt "model:stock.location,name:location_production"
 msgid "Production"
 msgstr "Produção"
 
-#, fuzzy
 msgctxt "selection:ir.cron,method:"
 msgid "Reschedule Productions"
-msgstr "Produções"
+msgstr "Reprogramar Produções"
 
 msgctxt "selection:ir.cron,method:"
 msgid "Set Cost from Moves"
-msgstr ""
+msgstr "Definir Custo de Movimentos"
 
 msgctxt "selection:production,state:"
 msgid "Assigned"
 msgstr "Atribuído"
 
-#, fuzzy
 msgctxt "selection:production,state:"
 msgid "Cancelled"
-msgstr "Cancelado"
+msgstr "Cancelado por"
 
 msgctxt "selection:production,state:"
 msgid "Done"
@@ -590,7 +571,6 @@ msgctxt "selection:production,state:"
 msgid "Waiting"
 msgstr "Espera"
 
-#, fuzzy
 msgctxt "view:product.template:"
 msgid "Production"
 msgstr "Produção"
@@ -598,10 +578,6 @@ msgstr "Produção"
 msgctxt "view:production.bom:"
 msgid "Lines"
 msgstr "Linhas"
-
-msgctxt "view:production:"
-msgid "Lines"
-msgstr "Reservado"
 
 msgctxt "view:production:"
 msgid "Other Info"

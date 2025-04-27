@@ -114,18 +114,22 @@ msgctxt "model:ir.message,text:msg_image_cache_size_unique"
 msgid "The size of cached image must be unique."
 msgstr "La mida d'una imatge en cache ha de ser única."
 
-msgctxt "model:product.category.image,name:"
-msgid "Category Image"
-msgstr "Imatge Categoria"
+#, fuzzy
+msgctxt "model:product.category.image,string:"
+msgid "Product Category Image"
+msgstr "Categoria Imatge"
 
-msgctxt "model:product.category.image.cache,name:"
-msgid "Category Image Cache"
+#, fuzzy
+msgctxt "model:product.category.image.cache,string:"
+msgid "Product Category Image Cache"
 msgstr "Cache imatge categoría"
 
-msgctxt "model:product.image,name:"
+#, fuzzy
+msgctxt "model:product.image,string:"
 msgid "Product Image"
 msgstr "Imatge del producte"
 
-msgctxt "model:product.image.cache,name:"
+#, fuzzy
+msgctxt "model:product.image.cache,string:"
 msgid "Product Image Cache"
 msgstr "Memòria cau de la imatge del producte"

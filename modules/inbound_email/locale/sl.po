@@ -115,19 +115,23 @@ msgctxt "help:inbound.email.rule.header,value:"
 msgid "A regular expression to match the header value."
 msgstr ""
 
-msgctxt "model:inbound.email,name:"
+#, fuzzy
+msgctxt "model:inbound.email,string:"
 msgid "Inbound Email"
 msgstr "Vhodna e-pošta"
 
-msgctxt "model:inbound.email.inbox,name:"
+#, fuzzy
+msgctxt "model:inbound.email.inbox,string:"
 msgid "Inbound Email Inbox"
 msgstr "Prejeta vhodna e-pošta"
 
-msgctxt "model:inbound.email.rule,name:"
+#, fuzzy
+msgctxt "model:inbound.email.rule,string:"
 msgid "Inbound Email Rule"
 msgstr "Pravilo za vhodno e-pošto"
 
-msgctxt "model:inbound.email.rule.header,name:"
+#, fuzzy
+msgctxt "model:inbound.email.rule.header,string:"
 msgid "Inbound Email Rule Header"
 msgstr "Pravilo za glavo vhodno e-pošto"
 

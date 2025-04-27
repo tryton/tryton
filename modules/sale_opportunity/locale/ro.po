@@ -408,48 +408,51 @@ msgctxt "model:res.group,name:group_opportunity"
 msgid "Sale Opportunity"
 msgstr "Oportunitate de vânzare"
 
-msgctxt "model:sale.opportunity,name:"
+#, fuzzy
+msgctxt "model:sale.opportunity,string:"
 msgid "Sale Opportunity"
 msgstr "Oportunitate de vânzare"
 
 #, fuzzy
-msgctxt "model:sale.opportunity.line,name:"
+msgctxt "model:sale.opportunity.line,string:"
 msgid "Sale Opportunity Line"
 msgstr "Rând de oportunități de vânzare"
 
 #, fuzzy
-msgctxt "model:sale.opportunity.reporting.context,name:"
+msgctxt "model:sale.opportunity.reporting.context,string:"
 msgid "Sale Opportunity Reporting Context"
 msgstr "Context de raportare a oportunităților de vânzare"
 
 #, fuzzy
-msgctxt "model:sale.opportunity.reporting.conversion,name:"
+msgctxt "model:sale.opportunity.reporting.conversion,string:"
 msgid "Sale Opportunity Reporting Conversion"
 msgstr "Conversie de raportare a oportunităților de vânzare"
 
 #, fuzzy
-msgctxt "model:sale.opportunity.reporting.conversion.employee,name:"
-msgid "Sale Opportunity Reporting Conversion per Employee"
+msgctxt "model:sale.opportunity.reporting.conversion.employee,string:"
+msgid "Sale Opportunity Reporting Conversion Employee"
 msgstr "Conversie de raportare a oportunităților de vânzare per angajat"
 
 #, fuzzy
 msgctxt ""
-"model:sale.opportunity.reporting.conversion.employee.time_series,name:"
-msgid "Sale Opportunity Reporting Conversion per Employee"
+"model:sale.opportunity.reporting.conversion.employee.time_series,string:"
+msgid "Sale Opportunity Reporting Conversion Employee Time Series"
 msgstr "Conversie de raportare a oportunităților de vânzare per angajat"
 
 #, fuzzy
-msgctxt "model:sale.opportunity.reporting.conversion.time_series,name:"
-msgid "Sale Opportunity Reporting Conversion"
+msgctxt "model:sale.opportunity.reporting.conversion.time_series,string:"
+msgid "Sale Opportunity Reporting Conversion Time Series"
 msgstr "Conversie de raportare a oportunităților de vânzare"
 
-msgctxt "model:sale.opportunity.reporting.main,name:"
-msgid "Sale Opportunity Reporting"
+#, fuzzy
+msgctxt "model:sale.opportunity.reporting.main,string:"
+msgid "Sale Opportunity Reporting Main"
 msgstr "Raportarea oportunităților de vânzare"
 
-msgctxt "model:sale.opportunity.reporting.main.time_series,name:"
-msgid "Sale Opportunity Reporting"
-msgstr "Raportarea oportunităților de vânzare"
+#, fuzzy
+msgctxt "model:sale.opportunity.reporting.main.time_series,string:"
+msgid "Sale Opportunity Reporting Main Time Series"
+msgstr "Conversie de raportare a oportunităților de vânzare"
 
 msgctxt "selection:sale.opportunity,state:"
 msgid "Cancelled"

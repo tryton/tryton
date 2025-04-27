@@ -54,13 +54,13 @@ msgctxt "help:account.dunning.fee,compute_method:"
 msgid "Method to compute the fee amount"
 msgstr "Método para calcular el importe del gasto"
 
-msgctxt "model:account.dunning.fee,name:"
+msgctxt "model:account.dunning.fee,string:"
 msgid "Account Dunning Fee"
-msgstr "Cuenta de los gastos de reclamación"
+msgstr "Gastos de reclamación contable"
 
-msgctxt "model:account.dunning.fee.dunning_level,name:"
-msgid "Account Dunning Fee Dunning-Level"
-msgstr "Cuenta de los gatos de reclamación - Nivel"
+msgctxt "model:account.dunning.fee.dunning_level,string:"
+msgid "Account Dunning Fee Dunning Level"
+msgstr "Gatos de reclamación contable - Nivel"
 
 msgctxt "model:ir.action,name:act_dunning_fee_form"
 msgid "Fees"

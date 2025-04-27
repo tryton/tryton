@@ -1,4 +1,5 @@
 #
+#, fuzzy
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -221,25 +222,25 @@ msgctxt "help:account.payment.braintree.account,webhook_endpoint:"
 msgid "The URL to be called by Braintree."
 msgstr ""
 
-msgctxt "model:account.payment.braintree.account,name:"
-msgid "Braintree Account"
+msgctxt "model:account.payment.braintree.account,string:"
+msgid "Account Payment Braintree Account"
 msgstr ""
 
-msgctxt "model:account.payment.braintree.customer,name:"
-msgid "Braintree Customer"
+msgctxt "model:account.payment.braintree.customer,string:"
+msgid "Account Payment Braintree Customer"
 msgstr ""
 
-msgctxt "model:account.payment.braintree.customer.identical,name:"
-msgid "Braintree Customer Identical"
+msgctxt "model:account.payment.braintree.customer.identical,string:"
+msgid "Account Payment Braintree Customer Identical"
 msgstr ""
 
 msgctxt ""
-"model:account.payment.braintree.customer.payment_method.delete.ask,name:"
-msgid "Delete Customer Payment Method"
+"model:account.payment.braintree.customer.payment_method.delete.ask,string:"
+msgid "Account Payment Braintree Customer Payment Method Delete Ask"
 msgstr ""
 
-msgctxt "model:account.payment.braintree.refund,name:"
-msgid "Braintree Payment Refund"
+msgctxt "model:account.payment.braintree.refund,string:"
+msgid "Account Payment Braintree Refund"
 msgstr ""
 
 msgctxt "model:ir.action,name:act_account_form"
@@ -461,7 +462,7 @@ msgstr ""
 
 msgctxt "view:account.payment:"
 msgid "Customer:"
-msgstr ""
+msgstr "Cliente:"
 
 msgctxt "view:account.payment:"
 msgid "Device Data:"
@@ -489,11 +490,11 @@ msgstr ""
 
 msgctxt "view:party.party.reception_direct_debit:"
 msgid "Customer:"
-msgstr ""
+msgstr "Cliente:"
 
 msgctxt "view:party.party.reception_direct_debit:"
 msgid "Payment Method:"
-msgstr ""
+msgstr "Método de Pagamento:"
 
 msgctxt ""
 "wizard_button:account.payment.braintree.customer.payment_method.delete,ask,delete_:"

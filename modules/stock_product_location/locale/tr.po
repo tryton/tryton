@@ -28,6 +28,7 @@ msgctxt "field:stock.product.location,warehouse:"
 msgid "Warehouse"
 msgstr "Depo"
 
-msgctxt "model:stock.product.location,name:"
-msgid "Product Location"
+#, fuzzy
+msgctxt "model:stock.product.location,string:"
+msgid "Stock Product Location"
 msgstr "Ürün Konumu"

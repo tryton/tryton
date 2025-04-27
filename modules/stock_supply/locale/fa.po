@@ -154,17 +154,19 @@ msgctxt "model:ir.ui.menu,name:menu_stock_supply"
 msgid "Supply Stock"
 msgstr "عرضه موجودی"
 
-msgctxt "model:purchase.configuration.supply_period,name:"
+#, fuzzy
+msgctxt "model:purchase.configuration.supply_period,string:"
 msgid "Purchase Configuration Supply Period"
 msgstr "پیکربندی خرید ؛ دوره تامین"
 
-msgctxt "model:stock.order_point,name:"
-msgid "Order Point"
+#, fuzzy
+msgctxt "model:stock.order_point,string:"
+msgid "Stock Order Point"
 msgstr "نقطه سفارش"
 
-msgctxt "model:stock.supply.start,name:"
-msgid "Supply Stock"
-msgstr "عرضه موجودی"
+msgctxt "model:stock.supply.start,string:"
+msgid "Stock Supply Start"
+msgstr ""
 
 #, fuzzy
 msgctxt "selection:ir.cron,method:"

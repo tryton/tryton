@@ -212,13 +212,13 @@ msgctxt "model:ir.ui.menu,name:menu_purchase_requisition_form"
 msgid "Requisitions"
 msgstr "Bestellanforderungen"
 
-msgctxt "model:purchase.requisition,name:"
+msgctxt "model:purchase.requisition,string:"
 msgid "Purchase Requisition"
-msgstr "Bestellanforderung"
+msgstr "Einkauf Bestellanforderung"
 
-msgctxt "model:purchase.requisition.line,name:"
+msgctxt "model:purchase.requisition.line,string:"
 msgid "Purchase Requisition Line"
-msgstr "Bestellanforderungsposition"
+msgstr "Einkauf Bestellanforderungsposition"
 
 msgctxt "model:res.group,name:group_purchase_requisition"
 msgid "Purchase Requisition"

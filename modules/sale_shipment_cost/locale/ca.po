@@ -126,8 +126,9 @@ msgstr ""
 "Per facturar el cost de l'enviament \"%(shipment)s\" heu de definir un "
 "compte d'ingressos pel producte \"%(product)s\"."
 
-msgctxt "model:stock.shipment.cost_sale,name:"
-msgid "Shipment Cost Sale"
+#, fuzzy
+msgctxt "model:stock.shipment.cost_sale,string:"
+msgid "Stock Shipment Cost Sale"
 msgstr "Cost de venda dels enviaments"
 
 msgctxt "selection:sale.sale,shipment_cost_method:"

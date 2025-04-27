@@ -32,16 +32,19 @@ msgctxt "field:notification.email,content:"
 msgid "Content"
 msgstr "Contenuto"
 
+#, fuzzy
 msgctxt "field:notification.email,fallback_recipients:"
-msgid "Recipients Fallback User"
+msgid "Recipients Fallback"
 msgstr "Utenti destinatari di ripiego"
 
+#, fuzzy
 msgctxt "field:notification.email,fallback_recipients_hidden:"
-msgid "Hidden Recipients Fallback User"
+msgid "Hidden Recipients Fallback"
 msgstr "Utenti destinatari di ripiego nascosti"
 
+#, fuzzy
 msgctxt "field:notification.email,fallback_recipients_secondary:"
-msgid "Secondary Recipients Fallback User"
+msgid "Secondary Recipients Fallback"
 msgstr "Utenti destinatari secondari di ripiego"
 
 msgctxt "field:notification.email,from_:"
@@ -179,12 +182,14 @@ msgctxt "model:ir.ui.menu,name:menu_email_form"
 msgid "Notification Emails"
 msgstr "Email di notifica"
 
-msgctxt "model:notification.email,name:"
-msgid "Email Notification"
-msgstr "Notifica Email"
+#, fuzzy
+msgctxt "model:notification.email,string:"
+msgid "Notification Email"
+msgstr "Email di notifica"
 
-msgctxt "model:notification.email.attachment,name:"
-msgid "Email Notification Attachment"
+#, fuzzy
+msgctxt "model:notification.email.attachment,string:"
+msgid "Notification Email Attachment"
 msgstr "Allegato E-mail di notifica"
 
 msgctxt "selection:ir.trigger,action:"

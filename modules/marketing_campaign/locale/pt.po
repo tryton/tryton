@@ -1,4 +1,5 @@
 #
+#, fuzzy
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -28,7 +29,7 @@ msgstr ""
 
 msgctxt "field:sale.opportunity.reporting.marketing.context,to_date:"
 msgid "To Date"
-msgstr ""
+msgstr "Até a Data"
 
 msgctxt "field:sale.reporting.marketing.context,company:"
 msgid "Company"
@@ -44,7 +45,7 @@ msgstr ""
 
 msgctxt "field:sale.reporting.marketing.context,to_date:"
 msgid "To Date"
-msgstr ""
+msgstr "Até a Data"
 
 msgctxt "field:sale.reporting.marketing.context,warehouse:"
 msgid "Warehouse"
@@ -98,31 +99,31 @@ msgctxt "model:ir.ui.menu,name:menu_source_form"
 msgid "Sources"
 msgstr ""
 
-msgctxt "model:marketing.campaign,name:"
+msgctxt "model:marketing.campaign,string:"
 msgid "Marketing Campaign"
 msgstr ""
 
-msgctxt "model:marketing.medium,name:"
+msgctxt "model:marketing.medium,string:"
 msgid "Marketing Medium"
 msgstr ""
 
-msgctxt "model:marketing.source,name:"
+msgctxt "model:marketing.source,string:"
 msgid "Marketing Source"
 msgstr ""
 
-msgctxt "model:sale.opportunity.reporting.marketing,name:"
-msgid "Sale Opportunity Reporting per Marketing"
+msgctxt "model:sale.opportunity.reporting.marketing,string:"
+msgid "Sale Opportunity Reporting Marketing"
 msgstr ""
 
-msgctxt "model:sale.opportunity.reporting.marketing.context,name:"
+msgctxt "model:sale.opportunity.reporting.marketing.context,string:"
 msgid "Sale Opportunity Reporting Context"
 msgstr ""
 
-msgctxt "model:sale.reporting.marketing,name:"
-msgid "Sale Reporting per Marketing"
+msgctxt "model:sale.reporting.marketing,string:"
+msgid "Sale Reporting Marketing"
 msgstr ""
 
-msgctxt "model:sale.reporting.marketing.context,name:"
+msgctxt "model:sale.reporting.marketing.context,string:"
 msgid "Sale Reporting Context"
 msgstr ""
 

@@ -118,16 +118,19 @@ msgctxt "help:account.consolidation.income_statement.context,posted:"
 msgid "Only include posted moves."
 msgstr "Mostra només assentaments comptabilitzats."
 
-msgctxt "model:account.consolidation,name:"
+#, fuzzy
+msgctxt "model:account.consolidation,string:"
 msgid "Account Consolidation"
 msgstr "Consolidació comptable"
 
-msgctxt "model:account.consolidation.balance_sheet.context,name:"
-msgid "Consolidation Balance Sheet Context"
+#, fuzzy
+msgctxt "model:account.consolidation.balance_sheet.context,string:"
+msgid "Account Consolidation Balance Sheet Context"
 msgstr "Context del balanç consolidat"
 
-msgctxt "model:account.consolidation.income_statement.context,name:"
-msgid "Consolidation Income Statement Context"
+#, fuzzy
+msgctxt "model:account.consolidation.income_statement.context,string:"
+msgid "Account Consolidation Income Statement Context"
 msgstr "Context del pérdues i guanys consolidat"
 
 msgctxt "model:ir.action,name:act_consolidation_balance_sheet_tree"

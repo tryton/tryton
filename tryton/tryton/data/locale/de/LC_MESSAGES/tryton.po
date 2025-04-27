@@ -6,6 +6,12 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgid "Make this an _internal message"
+msgstr "In _interne Nachricht umwandeln"
+
+msgid "Send"
+msgstr "Senden"
+
 msgid "specify alternate config file"
 msgstr "Alternative Konfigurationsdatei angeben"
 
@@ -129,9 +135,6 @@ msgstr "Überprüfung der URL: %s"
 
 msgid "Unable to check for new version."
 msgstr "Es war nicht möglich nach einer neuen Version zu suchen."
-
-msgid "A new version is available!"
-msgstr "Eine neue Version ist verfügbar!"
 
 msgid "Download"
 msgstr "Herunterladen"
@@ -362,7 +365,7 @@ msgid ""
 "The following action requires to close all tabs.\n"
 "Do you want to continue?"
 msgstr ""
-"Die folgende Aktion erfordert die Schließung aller Registerkarten.\n"
+"Die folgende Aktion erfordert das Schließen aller Registerkarten.\n"
 "Fortfahren?"
 
 msgid "Application Shortcuts"
@@ -630,9 +633,6 @@ msgstr "Anhänge"
 msgid "Files"
 msgstr "Dateien"
 
-msgid "Send"
-msgstr "Senden"
-
 msgid "Select File"
 msgstr "Datei auswählen"
 
@@ -694,7 +694,7 @@ msgid "Launch action"
 msgstr "Aktion ausführen"
 
 msgid "Relate"
-msgstr "Beziehung"
+msgstr "Verknüpfen"
 
 msgid "Open related records"
 msgstr "Datensätze einer Beziehung öffnen"
@@ -839,6 +839,12 @@ msgstr "_Notizen..."
 msgid "Add a note to the record"
 msgstr "Eine Notiz zu einem Datensatz hinzufügen"
 
+msgid "C_hat"
+msgstr "C_hat"
+
+msgid "Chat on the record"
+msgstr "Chat über den Datensatz"
+
 msgid "_Actions..."
 msgstr "_Aktion ausführen..."
 
@@ -957,11 +963,9 @@ msgstr "Definition von '%s' nicht berücksichtigen?"
 
 #, python-format
 msgid "%d record saved."
-msgstr "%d Datensatz gespeichert."
-
-#, python-format
-msgid "%d records saved."
-msgstr "%d Datensätze gespeichert."
+msgid_plural "%d records saved."
+msgstr[0] "%d Datensatz gespeichert."
+msgstr[1] "%d Datensätze gespeichert."
 
 msgid "Export failed"
 msgstr "Export fehlgeschlagen"
@@ -1042,11 +1046,9 @@ msgstr "Import fehlgeschlagen"
 
 #, python-format
 msgid "%d record imported."
-msgstr "%d Datensatz importiert."
-
-#, python-format
-msgid "%d records imported."
-msgstr "%d Datensätze importiert."
+msgid_plural "%d records imported."
+msgstr[0] "%d Datensatz importiert."
+msgstr[1] "%d Datensätze importiert."
 
 msgid "Search"
 msgstr "Suchen"
@@ -1117,6 +1119,9 @@ msgstr "Speichern unter…"
 
 msgid "Image size too large."
 msgstr "Bild ist zu groß."
+
+msgid "Reset Column Widths"
+msgstr "Spaltenbreiten zurücksetzen"
 
 msgid "Copy"
 msgstr "Kopieren"
@@ -1195,6 +1200,10 @@ msgstr "Alle Dateien"
 
 msgid "Show plain text"
 msgstr "Klartext anzeigen"
+
+#, python-format
+msgid "Select a color for \"%s\""
+msgstr "Eine Farbe auswählen für \"%s\""
 
 msgid "Add value"
 msgstr "Wert hinzufügen"

@@ -155,17 +155,17 @@ msgstr ""
 "Leer lassen, um die Gruppe mit dem Namen 'party' aus dem regulären Ausdruck "
 "zu verwenden."
 
-msgctxt "model:account.statement.rule,name:"
+msgctxt "model:account.statement.rule,string:"
 msgid "Account Statement Rule"
-msgstr "Kontoauszugsregel"
+msgstr "Buchhaltung Kontoauszugsregel"
 
-msgctxt "model:account.statement.rule.information,name:"
+msgctxt "model:account.statement.rule.information,string:"
 msgid "Account Statement Rule Information"
-msgstr "Kontoauszugsregelinformation"
+msgstr "Buchhaltung Kontoauszugsregel Information"
 
-msgctxt "model:account.statement.rule.line,name:"
+msgctxt "model:account.statement.rule.line,string:"
 msgid "Account Statement Rule Line"
-msgstr "Kontoauszugsregelzeile"
+msgstr "Buchhaltung Kontoauszugsregelzeile"
 
 msgctxt "model:ir.action,name:act_rule_form"
 msgid "Rules"

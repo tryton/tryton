@@ -11,10 +11,9 @@ msgctxt "field:sale.complaint,approved_by:"
 msgid "Approved By"
 msgstr "Approved"
 
-#, fuzzy
 msgctxt "field:sale.complaint,cancelled_by:"
 msgid "Cancelled By"
-msgstr "Cancelado"
+msgstr "Cancelado Por"
 
 msgctxt "field:sale.complaint,company:"
 msgid "Company"
@@ -77,6 +76,11 @@ msgctxt "field:sale.complaint.action,amount:"
 msgid "Amount"
 msgstr ""
 
+#, fuzzy
+msgctxt "field:sale.complaint.action,company:"
+msgid "Company"
+msgstr "Empresa"
+
 msgctxt "field:sale.complaint.action,complaint:"
 msgid "Complaint"
 msgstr "Reclamação"
@@ -93,6 +97,20 @@ msgstr ""
 msgctxt "field:sale.complaint.action,invoice_lines:"
 msgid "Invoice Lines"
 msgstr "Linhas da fatura"
+
+msgctxt "field:sale.complaint.action,promotion_coupon:"
+msgid "Promotion Coupon"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:sale.complaint.action,promotion_coupon_duration:"
+msgid "Duration"
+msgstr "Descrição"
+
+#, fuzzy
+msgctxt "field:sale.complaint.action,promotion_coupon_number:"
+msgid "Number"
+msgstr "Número"
 
 msgctxt "field:sale.complaint.action,quantity:"
 msgid "Quantity"
@@ -355,24 +373,29 @@ msgctxt "model:ir.ui.menu,name:menu_type"
 msgid "Types"
 msgstr "Types"
 
-msgctxt "model:sale.complaint,name:"
-msgid "Customer Complaint"
-msgstr "Reclamação do Cliente"
+#, fuzzy
+msgctxt "model:sale.complaint,string:"
+msgid "Sale Complaint"
+msgstr "Reclamação"
 
-msgctxt "model:sale.complaint.action,name:"
-msgid "Customer Complaint Action"
+#, fuzzy
+msgctxt "model:sale.complaint.action,string:"
+msgid "Sale Complaint Action"
 msgstr "Ação da Reclamação do Cliente"
 
-msgctxt "model:sale.complaint.action-account.invoice.line,name:"
-msgid "Customer Complaint Action - Invoice Line"
+#, fuzzy
+msgctxt "model:sale.complaint.action-account.invoice.line,string:"
+msgid "Sale Complaint Action - Account Invoice Line"
 msgstr "Ação de Reclamação do Cliente - Linha de Fatura"
 
-msgctxt "model:sale.complaint.action-sale.line,name:"
-msgid "Customer Complaint Action - Sale Line"
+#, fuzzy
+msgctxt "model:sale.complaint.action-sale.line,string:"
+msgid "Sale Complaint Action - Sale Line"
 msgstr "Ação de Reclamação do Cliente - Linha de Venda"
 
-msgctxt "model:sale.complaint.type,name:"
-msgid "Customer Complaint Type"
+#, fuzzy
+msgctxt "model:sale.complaint.type,string:"
+msgid "Sale Complaint Type"
 msgstr "Tipo de Reclamação do Cliente"
 
 msgctxt "selection:sale.complaint,state:"
@@ -406,6 +429,10 @@ msgstr "Criar Nota de Crédito"
 msgctxt "selection:sale.complaint.action,action:"
 msgid "Create Sale Return"
 msgstr "Criar uma Devolução de Venda"
+
+msgctxt "selection:sale.complaint.action,action:"
+msgid "Promotion Coupon"
+msgstr ""
 
 msgctxt "view:sale.complaint:"
 msgid "Complaint"

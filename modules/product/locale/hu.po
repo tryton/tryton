@@ -186,6 +186,10 @@ msgctxt "field:product.product,replaced_by:"
 msgid "Replaced By"
 msgstr ""
 
+msgctxt "field:product.product,replacing:"
+msgid "Replacing"
+msgstr ""
+
 msgctxt "field:product.product,suffix_code:"
 msgid "Suffix Code"
 msgstr ""
@@ -418,6 +422,10 @@ msgstr "A termék értékesítésekor használt alapár."
 
 msgctxt "help:product.product,replaced_by:"
 msgid "The product replacing this one."
+msgstr ""
+
+msgctxt "help:product.product,replacing:"
+msgid "The products that this one is replacing."
 msgstr ""
 
 msgctxt "help:product.product,suffix_code:"
@@ -672,60 +680,65 @@ msgctxt "model:ir.ui.menu,name:menu_uom_form"
 msgid "Units of Measure"
 msgstr "Mértékegységek"
 
-msgctxt "model:product.category,name:"
+#, fuzzy
+msgctxt "model:product.category,string:"
 msgid "Product Category"
 msgstr "Termék kategória"
 
 #, fuzzy
-msgctxt "model:product.configuration,name:"
+msgctxt "model:product.configuration,string:"
 msgid "Product Configuration"
 msgstr "Product Configuration"
 
-msgctxt "model:product.configuration.default_cost_price_method,name:"
+#, fuzzy
+msgctxt "model:product.configuration.default_cost_price_method,string:"
 msgid "Product Configuration Default Cost Price Method"
-msgstr ""
-
-msgctxt "model:product.cost_price,name:"
-msgid "Product Cost Price"
-msgstr ""
-
-msgctxt "model:product.cost_price_method,name:"
-msgid "Product Cost Price Method"
-msgstr ""
+msgstr "Product Configuration"
 
 #, fuzzy
-msgctxt "model:product.identifier,name:"
+msgctxt "model:product.cost_price,string:"
+msgid "Product Cost Price"
+msgstr "Költségár"
+
+#, fuzzy
+msgctxt "model:product.cost_price_method,string:"
+msgid "Product Cost Price Method"
+msgstr "Költségár számítás módja"
+
+#, fuzzy
+msgctxt "model:product.identifier,string:"
 msgid "Product Identifier"
 msgstr "Cikk sablon"
 
-msgctxt "model:product.list_price,name:"
+#, fuzzy
+msgctxt "model:product.list_price,string:"
 msgid "Product List Price"
-msgstr ""
-
-msgctxt "model:product.product,name:"
-msgid "Product Variant"
-msgstr "Cikk változat"
+msgstr "Listaár"
 
 #, fuzzy
-msgctxt "model:product.product.replace.ask,name:"
-msgid "Replace Product"
+msgctxt "model:product.product,string:"
+msgid "Product"
 msgstr "Termék"
 
-msgctxt "model:product.template,name:"
+#, fuzzy
+msgctxt "model:product.product.replace.ask,string:"
+msgid "Product Replace Ask"
+msgstr "Terméksablon"
+
+#, fuzzy
+msgctxt "model:product.template,string:"
 msgid "Product Template"
 msgstr "Terméksablon"
 
-msgctxt "model:product.template-product.category,name:"
-msgid "Template - Category"
-msgstr ""
+#, fuzzy
+msgctxt "model:product.template-product.category,string:"
+msgid "Product Template - Product Category"
+msgstr "Cikk mértékegységének kategóriája"
 
-msgctxt "model:product.template-product.category.all,name:"
-msgid "Template - Category All"
-msgstr ""
-
-msgctxt "model:product.uom,name:"
-msgid "Unit of Measure"
-msgstr "Mértékegység"
+#, fuzzy
+msgctxt "model:product.template-product.category.all,string:"
+msgid "Product Template - Product Category All"
+msgstr "Cikk mértékegységének kategóriája"
 
 msgctxt "model:product.uom,name:uom_are"
 msgid "Are"
@@ -868,6 +881,11 @@ msgctxt "model:product.uom,name:uom_yard"
 msgid "Yard"
 msgstr "Yard"
 
+#, fuzzy
+msgctxt "model:product.uom,string:"
+msgid "Product Uom"
+msgstr "Termék"
+
 msgctxt "model:product.uom,symbol:uom_are"
 msgid "a"
 msgstr "a"
@@ -1008,11 +1026,6 @@ msgctxt "model:product.uom,symbol:uom_yard"
 msgid "yd"
 msgstr "yd"
 
-#, fuzzy
-msgctxt "model:product.uom.category,name:"
-msgid "Unit of Measure Category"
-msgstr "Mértékegység"
-
 msgctxt "model:product.uom.category,name:uom_cat_energy"
 msgid "Energy"
 msgstr ""
@@ -1040,6 +1053,11 @@ msgstr "Térfogat"
 msgctxt "model:product.uom.category,name:uom_cat_weight"
 msgid "Weight"
 msgstr "Súly"
+
+#, fuzzy
+msgctxt "model:product.uom.category,string:"
+msgid "Product Uom Category"
+msgstr "Cikk mértékegységének kategóriája"
 
 #, fuzzy
 msgctxt "model:res.group,name:group_product_admin"

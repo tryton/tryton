@@ -68,8 +68,8 @@ msgctxt ""
 msgid "Compute product cost price for each warehouse."
 msgstr ""
 
-msgctxt "model:ir.cron-stock.warehouse,name:"
-msgid "Cron - Warehouse"
+msgctxt "model:ir.cron-stock.warehouse,string:"
+msgid "Cron - Stock Warehouse"
 msgstr ""
 
 #, python-format
@@ -79,6 +79,6 @@ msgid ""
 "internal shipment transit location."
 msgstr ""
 
-msgctxt "model:product.configuration.cost_price_warehouse,name:"
-msgid "Product Configuration Cost Price per Warehouse"
+msgctxt "model:product.configuration.cost_price_warehouse,string:"
+msgid "Product Configuration Cost Price Warehouse"
 msgstr ""

@@ -72,7 +72,7 @@ msgstr "Sources"
 
 msgctxt "model:ir.message,text:msg_marketing_campaign"
 msgid "Marketing Campaign"
-msgstr "Campagne de marketing"
+msgstr "Campagne marketing"
 
 msgctxt "model:ir.message,text:msg_marketing_medium"
 msgid "Marketing Medium"
@@ -98,33 +98,33 @@ msgctxt "model:ir.ui.menu,name:menu_source_form"
 msgid "Sources"
 msgstr "Sources"
 
-msgctxt "model:marketing.campaign,name:"
+msgctxt "model:marketing.campaign,string:"
 msgid "Marketing Campaign"
-msgstr "Campagne de marketing"
+msgstr "Campagne marketing"
 
-msgctxt "model:marketing.medium,name:"
+msgctxt "model:marketing.medium,string:"
 msgid "Marketing Medium"
-msgstr "Médium de marketing"
+msgstr "Support marketing"
 
-msgctxt "model:marketing.source,name:"
+msgctxt "model:marketing.source,string:"
 msgid "Marketing Source"
-msgstr "Source de marketing"
+msgstr "Source marketing"
 
-msgctxt "model:sale.opportunity.reporting.marketing,name:"
-msgid "Sale Opportunity Reporting per Marketing"
-msgstr "Rapports sur les opportunités de vente par marketing"
+msgctxt "model:sale.opportunity.reporting.marketing,string:"
+msgid "Sale Opportunity Reporting Marketing"
+msgstr "Rapports d'opportunités de vente et marketing"
 
-msgctxt "model:sale.opportunity.reporting.marketing.context,name:"
+msgctxt "model:sale.opportunity.reporting.marketing.context,string:"
 msgid "Sale Opportunity Reporting Context"
 msgstr "Contexte de rapport sur les opportunités de vente"
 
-msgctxt "model:sale.reporting.marketing,name:"
-msgid "Sale Reporting per Marketing"
-msgstr "Rapports de vente par marketing"
+msgctxt "model:sale.reporting.marketing,string:"
+msgid "Sale Reporting Marketing"
+msgstr "Rapports de vente marketing"
 
-msgctxt "model:sale.reporting.marketing.context,name:"
+msgctxt "model:sale.reporting.marketing.context,string:"
 msgid "Sale Reporting Context"
-msgstr "Contexte de rapports de vente"
+msgstr "Contexte de rapport de vente"
 
 msgctxt "selection:sale.opportunity.reporting.marketing.context,period:"
 msgid "Day"
@@ -156,7 +156,7 @@ msgstr "Campagne"
 
 msgctxt "view:marketing.automation.activity:"
 msgid "Marketing Campaign"
-msgstr "Campagne de marketing"
+msgstr "Campagne marketing"
 
 msgctxt "view:marketing.automation.activity:"
 msgid "Medium"
@@ -172,7 +172,7 @@ msgstr "Campagne"
 
 msgctxt "view:marketing.email.message:"
 msgid "Marketing Campaign"
-msgstr "Campagne de marketing"
+msgstr "Campagne marketing"
 
 msgctxt "view:marketing.email.message:"
 msgid "Medium"
@@ -184,7 +184,7 @@ msgstr "Source"
 
 msgctxt "view:sale.opportunity.reporting.context:"
 msgid "Marketing Campaign"
-msgstr "Campagne de marketing"
+msgstr "Campagne marketing"
 
 msgctxt "view:sale.opportunity.reporting.marketing.context:"
 msgid "Group by:"
@@ -196,7 +196,7 @@ msgstr "Campagne"
 
 msgctxt "view:sale.opportunity:"
 msgid "Marketing Campaign"
-msgstr "Campagne de marketing"
+msgstr "Campagne marketing"
 
 msgctxt "view:sale.opportunity:"
 msgid "Medium"
@@ -212,7 +212,7 @@ msgstr "Campagne"
 
 msgctxt "view:sale.point.sale:"
 msgid "Marketing Campaign"
-msgstr "Campagne de marketing"
+msgstr "Campagne marketing"
 
 msgctxt "view:sale.point.sale:"
 msgid "Medium"
@@ -224,7 +224,7 @@ msgstr "Source"
 
 msgctxt "view:sale.reporting.context:"
 msgid "Marketing Campaign"
-msgstr "Campagne de marketing"
+msgstr "Campagne marketing"
 
 msgctxt "view:sale.reporting.marketing.context:"
 msgid "Group by:"
@@ -236,7 +236,7 @@ msgstr "Campagne"
 
 msgctxt "view:sale.sale:"
 msgid "Marketing Campaign"
-msgstr "Campagne de marketing"
+msgstr "Campagne marketing"
 
 msgctxt "view:sale.sale:"
 msgid "Medium"

@@ -148,11 +148,13 @@ msgctxt "model:res.group,name:group_sale_amendment"
 msgid "Sale Amendment"
 msgstr "Modifiche sulla vendita"
 
-msgctxt "model:sale.amendment,name:"
+#, fuzzy
+msgctxt "model:sale.amendment,string:"
 msgid "Sale Amendment"
 msgstr "Modifiche sulla vendita"
 
-msgctxt "model:sale.amendment.line,name:"
+#, fuzzy
+msgctxt "model:sale.amendment.line,string:"
 msgid "Sale Amendment Line"
 msgstr "Riga di correzione della vendita"
 

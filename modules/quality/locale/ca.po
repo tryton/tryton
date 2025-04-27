@@ -40,7 +40,7 @@ msgstr "Títol"
 
 msgctxt "field:quality.configuration,alert_sequence:"
 msgid "Alert Sequence"
-msgstr "Seqüencia alertas"
+msgstr "Seqüència alertes"
 
 msgctxt "field:quality.configuration,inspection_sequence:"
 msgid "Inspection Sequence"
@@ -48,7 +48,7 @@ msgstr "Seqüència inspeccions"
 
 msgctxt "field:quality.configuration.sequence,alert_sequence:"
 msgid "Alert Sequence"
-msgstr "Seqüencia alertas"
+msgstr "Seqüència alertes"
 
 msgctxt "field:quality.configuration.sequence,company:"
 msgid "Company"
@@ -368,31 +368,38 @@ msgctxt "model:ir.ui.menu,name:menu_quality_inspection_form"
 msgid "Inspections"
 msgstr "Inspecions"
 
-msgctxt "model:quality.alert,name:"
+#, fuzzy
+msgctxt "model:quality.alert,string:"
 msgid "Quality Alert"
 msgstr "Alerta de qualitat"
 
-msgctxt "model:quality.configuration,name:"
+#, fuzzy
+msgctxt "model:quality.configuration,string:"
 msgid "Quality Configuration"
 msgstr "Configuració qualitat"
 
-msgctxt "model:quality.configuration.sequence,name:"
+#, fuzzy
+msgctxt "model:quality.configuration.sequence,string:"
 msgid "Quality Configuration Sequence"
 msgstr "Configuració Seqüencies qualitat"
 
-msgctxt "model:quality.control,name:"
+#, fuzzy
+msgctxt "model:quality.control,string:"
 msgid "Quality Control"
 msgstr "Control de qualitat"
 
-msgctxt "model:quality.control.point,name:"
+#, fuzzy
+msgctxt "model:quality.control.point,string:"
 msgid "Quality Control Point"
 msgstr "Punt de control de qualitat"
 
-msgctxt "model:quality.inspect.store,name:"
-msgid "Inspect Quality"
-msgstr "Inspeccionar qualitat"
+#, fuzzy
+msgctxt "model:quality.inspect.store,string:"
+msgid "Quality Inspect Store"
+msgstr "Inspecció de qualitat"
 
-msgctxt "model:quality.inspection,name:"
+#, fuzzy
+msgctxt "model:quality.inspection,string:"
 msgid "Quality Inspection"
 msgstr "Inspecció de qualitat"
 

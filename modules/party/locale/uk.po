@@ -6,6 +6,16 @@ msgctxt "field:ir.email.template,contact_mechanism:"
 msgid "Contact Mechanism"
 msgstr "Контактний механізм"
 
+#, fuzzy
+msgctxt "field:party.address,building_name:"
+msgid "Building Name"
+msgstr "Найменування будівлі"
+
+#, fuzzy
+msgctxt "field:party.address,building_number:"
+msgid "Building Number"
+msgstr "Найменування будівлі"
+
 msgctxt "field:party.address,city:"
 msgid "City"
 msgstr "Місто"
@@ -19,6 +29,11 @@ msgctxt "field:party.address,country:"
 msgid "Country"
 msgstr "Країна"
 
+#, fuzzy
+msgctxt "field:party.address,floor_number:"
+msgid "Floor Number"
+msgstr "Словацький номер народження"
+
 msgctxt "field:party.address,full_address:"
 msgid "Full Address"
 msgstr "Повна адреса"
@@ -26,10 +41,6 @@ msgstr "Повна адреса"
 msgctxt "field:party.address,identifiers:"
 msgid "Identifiers"
 msgstr "Ідентифікатори"
-
-msgctxt "field:party.address,name:"
-msgid "Building Name"
-msgstr "Найменування будівлі"
 
 msgctxt "field:party.address,party:"
 msgid "Party"
@@ -39,15 +50,43 @@ msgctxt "field:party.address,party_name:"
 msgid "Party Name"
 msgstr "Найменування особи"
 
+#, fuzzy
+msgctxt "field:party.address,post_box:"
+msgid "Post Box"
+msgstr "Поштовий індекс"
+
+msgctxt "field:party.address,post_office:"
+msgid "Post Office"
+msgstr ""
+
 msgctxt "field:party.address,postal_code:"
 msgid "Postal Code"
 msgstr "Поштовий індекс"
+
+msgctxt "field:party.address,private_bag:"
+msgid "Private Bag"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:party.address,room_number:"
+msgid "Room Number"
+msgstr "Румунський номер платника ПДВ"
 
 msgctxt "field:party.address,street:"
 msgid "Street"
 msgstr "Вулиця"
 
+#, fuzzy
+msgctxt "field:party.address,street_name:"
+msgid "Street Name"
+msgstr "Вулиця"
+
 msgctxt "field:party.address,street_single_line:"
+msgid "Street"
+msgstr "Вулиця"
+
+#, fuzzy
+msgctxt "field:party.address,street_unstructured:"
 msgid "Street"
 msgstr "Вулиця"
 
@@ -59,9 +98,23 @@ msgctxt "field:party.address,subdivision_types:"
 msgid "Subdivision Types"
 msgstr "Типи адмін.поділів"
 
+#, fuzzy
+msgctxt "field:party.address,unit_number:"
+msgid "Unit Number"
+msgstr "Датський номер платника ПДВ"
+
+#, fuzzy
+msgctxt "field:party.address.format,building_number_format:"
+msgid "Building Number Format"
+msgstr "Найменування будівлі"
+
 msgctxt "field:party.address.format,country_code:"
 msgid "Country Code"
 msgstr "Код країни"
+
+msgctxt "field:party.address.format,floor_number_format:"
+msgid "Floor Number Format"
+msgstr ""
 
 msgctxt "field:party.address.format,format_:"
 msgid "Format"
@@ -70,6 +123,31 @@ msgstr "Формат"
 msgctxt "field:party.address.format,language_code:"
 msgid "Language Code"
 msgstr "Код мови"
+
+msgctxt "field:party.address.format,post_box_format:"
+msgid "Post Box Format"
+msgstr ""
+
+msgctxt "field:party.address.format,post_office_format:"
+msgid "Post Box Format"
+msgstr ""
+
+msgctxt "field:party.address.format,private_bag_format:"
+msgid "Post Box Format"
+msgstr ""
+
+msgctxt "field:party.address.format,room_number_format:"
+msgid "Room Number Format"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:party.address.format,street_format:"
+msgid "Street Format"
+msgstr "Формати адрес"
+
+msgctxt "field:party.address.format,unit_number_format:"
+msgid "Unit Number Format"
+msgstr ""
 
 msgctxt "field:party.address.subdivision_type,country_code:"
 msgid "Country Code"
@@ -317,11 +395,19 @@ msgctxt "help:party.address,party_name:"
 msgid "If filled, replace the name of the party for address formatting"
 msgstr "Якщо заповнено, замінює найменування особи для форматування адреси"
 
+msgctxt "help:party.address.format,building_number_format:"
+msgid "Use {} as placeholder for the number."
+msgstr ""
+
+msgctxt "help:party.address.format,floor_number_format:"
+msgid "Use {} as placeholder for the number."
+msgstr ""
+
+#, fuzzy
 msgctxt "help:party.address.format,format_:"
 msgid ""
-"Available variables (also in upper case):\n"
+"Available variables (also in upper case and street variables):\n"
 "- ${party_name}\n"
-"- ${name}\n"
 "- ${attn}\n"
 "- ${street}\n"
 "- ${postal_code}\n"
@@ -342,6 +428,52 @@ msgstr ""
 "- ${subdivision_code}\n"
 "- ${country}\n"
 "- ${country_code}"
+
+msgctxt "help:party.address.format,post_box_format:"
+msgid "Use {} as placeholder for the number."
+msgstr ""
+
+msgctxt "help:party.address.format,post_office_format:"
+msgid "Use {} as placeholder for the number."
+msgstr ""
+
+msgctxt "help:party.address.format,private_bag_format:"
+msgid "Use {} as placeholder for the number."
+msgstr ""
+
+msgctxt "help:party.address.format,room_number_format:"
+msgid "Use {} as placeholder for the number."
+msgstr ""
+
+#, fuzzy
+msgctxt "help:party.address.format,street_format:"
+msgid ""
+"Available variables (also in upper case):\n"
+"- ${street_name}\n"
+"- ${building_name}\n"
+"- ${building_number}\n"
+"- ${unit_number}\n"
+"- ${floor_number}\n"
+"- ${room_number}\n"
+"- ${post_box}\n"
+"- ${private_bag}\n"
+"- ${post_office}\n"
+msgstr ""
+"Доступні змінні (також у верхньому регістрі):\n"
+"- ${party_name}\n"
+"- ${name}\n"
+"- ${attn}\n"
+"- ${street}\n"
+"- ${postal_code}\n"
+"- ${city}\n"
+"- ${subdivision}\n"
+"- ${subdivision_code}\n"
+"- ${country}\n"
+"- ${country_code}"
+
+msgctxt "help:party.address.format,unit_number_format:"
+msgid "Use {} as placeholder for the number."
+msgstr ""
 
 msgctxt "help:party.category,childs:"
 msgid "Add children below the category."
@@ -560,6 +692,11 @@ msgid "The code on party must be unique."
 msgstr "Код особи має бути унікальним."
 
 #, python-format
+msgctxt "model:ir.message,text:msg_party_contact_mechanism_duplicate"
+msgid "The party \"%(party)s\" has the same %(type)s \"%(value)s\"."
+msgstr ""
+
+#, python-format
 msgctxt "model:ir.message,text:msg_party_identifier_duplicate"
 msgid "The party \"%(party)s\" has the same %(type)s \"%(code)s\"."
 msgstr ""
@@ -625,69 +762,83 @@ msgctxt "model:ir.ui.menu,name:menu_party_form"
 msgid "Parties"
 msgstr "Особи"
 
-msgctxt "model:party.address,name:"
-msgid "Address"
+#, fuzzy
+msgctxt "model:party.address,string:"
+msgid "Party Address"
 msgstr "Адреса"
 
-msgctxt "model:party.address.format,name:"
-msgid "Address Format"
+#, fuzzy
+msgctxt "model:party.address.format,string:"
+msgid "Party Address Format"
 msgstr "Формат адреси"
 
-msgctxt "model:party.address.subdivision_type,name:"
-msgid "Address Subdivision Type"
+#, fuzzy
+msgctxt "model:party.address.subdivision_type,string:"
+msgid "Party Address Subdivision Type"
 msgstr "Тип адмін.поділу"
 
-msgctxt "model:party.category,name:"
-msgid "Category"
-msgstr "Категорія"
+#, fuzzy
+msgctxt "model:party.category,string:"
+msgid "Party Category"
+msgstr "Особа - Категорія"
 
-msgctxt "model:party.check_vies.result,name:"
-msgid "Check VIES"
-msgstr "Перевірити VIES"
+msgctxt "model:party.check_vies.result,string:"
+msgid "Party Check Vies Result"
+msgstr ""
 
-msgctxt "model:party.configuration,name:"
+#, fuzzy
+msgctxt "model:party.configuration,string:"
 msgid "Party Configuration"
 msgstr "Налаштування осіб"
 
-msgctxt "model:party.configuration.party_lang,name:"
-msgid "Party Configuration Lang"
+#, fuzzy
+msgctxt "model:party.configuration.party_lang,string:"
+msgid "Party Configuration Party Lang"
 msgstr "Мова налаштування осіб"
 
-msgctxt "model:party.configuration.party_sequence,name:"
-msgid "Party Configuration Sequence"
+#, fuzzy
+msgctxt "model:party.configuration.party_sequence,string:"
+msgid "Party Configuration Party Sequence"
 msgstr "Послідовність налаштування осіб"
 
-msgctxt "model:party.contact_mechanism,name:"
-msgid "Contact Mechanism"
+#, fuzzy
+msgctxt "model:party.contact_mechanism,string:"
+msgid "Party Contact Mechanism"
 msgstr "Контактний механізм"
 
-msgctxt "model:party.contact_mechanism.language,name:"
-msgid "Contact Mechanism Language"
+#, fuzzy
+msgctxt "model:party.contact_mechanism.language,string:"
+msgid "Party Contact Mechanism Language"
 msgstr "Мова контактного механізму"
 
-msgctxt "model:party.erase.ask,name:"
-msgid "Erase Party"
-msgstr "Видалити особу"
+#, fuzzy
+msgctxt "model:party.erase.ask,string:"
+msgid "Party Erase Ask"
+msgstr "Найменування особи"
 
-msgctxt "model:party.identifier,name:"
+#, fuzzy
+msgctxt "model:party.identifier,string:"
 msgid "Party Identifier"
 msgstr "Ідентифікатор особи"
 
-msgctxt "model:party.party,name:"
+#, fuzzy
+msgctxt "model:party.party,string:"
 msgid "Party"
 msgstr "Особа"
 
-msgctxt "model:party.party-party.category,name:"
-msgid "Party - Category"
+#, fuzzy
+msgctxt "model:party.party-party.category,string:"
+msgid "Party - Party Category"
 msgstr "Особа - Категорія"
 
-msgctxt "model:party.party.lang,name:"
+#, fuzzy
+msgctxt "model:party.party.lang,string:"
 msgid "Party Lang"
 msgstr "Мова особи"
 
-msgctxt "model:party.replace.ask,name:"
-msgid "Replace Party"
-msgstr "Замінити особу"
+msgctxt "model:party.replace.ask,string:"
+msgid "Party Replace Ask"
+msgstr ""
 
 msgctxt "model:res.group,name:group_party_admin"
 msgid "Party Administration"
@@ -799,10 +950,6 @@ msgstr "Китайський номер посвідчення особи рез
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Chinese Unified Social Credit Code"
 msgstr "Китайський єдиний код соціального кредиту"
-
-msgctxt "selection:party.configuration,identifier_types:"
-msgid "Colombian Business Tax Number"
-msgstr "Колумбійський податковий номер для бізнесу"
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Colombian Identity Code"

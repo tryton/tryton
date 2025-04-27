@@ -121,13 +121,13 @@ msgctxt "model:ir.ui.menu,name:menu_quantity_early_plan_generate"
 msgid "Generate Stock Quantity Early Planning"
 msgstr "Planung Frühere Verfügbarkeit Erstellen"
 
-msgctxt "model:stock.quantity.early_plan,name:"
+msgctxt "model:stock.quantity.early_plan,string:"
 msgid "Stock Quantity Early Plan"
-msgstr "Lager Plan Frühere Verfügbarkeit"
+msgstr "Lager Menge Plan Frühere Verfügbarkeit"
 
-msgctxt "model:stock.quantity.early_plan.generate.start,name:"
-msgid "Stock Quantity Early Plan Generate"
-msgstr "Lager Plan Frühere Verfügbarkeit Erstellen"
+msgctxt "model:stock.quantity.early_plan.generate.start,string:"
+msgid "Stock Quantity Early Plan Generate Start"
+msgstr "Lager Menge Plan Frühere Verfügbarkeit Start"
 
 msgctxt "selection:stock.quantity.early_plan,state:"
 msgid "Closed"

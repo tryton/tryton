@@ -764,81 +764,136 @@ msgctxt "help:company.company,purchase_taxes_expense:"
 msgid "Check to book purchase taxes as expense."
 msgstr "Aktivirajte za evidentiranje vstopnega davka kot odhodka."
 
-msgctxt "model:account.configuration.default_payment_term,name:"
+#, fuzzy
+msgctxt "model:account.configuration.default_payment_term,string:"
 msgid "Account Configuration Default Payment Term"
 msgstr "Računovodske nastavitve Privzeti plačilni pogoji"
 
-msgctxt "model:account.fiscalyear.invoice_sequence,name:"
-msgid "Invoice Sequence"
-msgstr "Številčna serija računov"
+#, fuzzy
+msgctxt "model:account.fiscalyear.invoice_sequence,string:"
+msgid "Account Fiscalyear Invoice Sequence"
+msgstr "Številčna serija prejetih računov"
 
-msgctxt "model:account.invoice,name:"
-msgid "Invoice"
-msgstr "Račun"
+#, fuzzy
+msgctxt "model:account.invoice,string:"
+msgid "Account Invoice"
+msgstr "Konto"
 
-msgctxt "model:account.invoice-account.move.line,name:"
-msgid "Invoice - Payment Line"
+msgctxt "model:account.invoice-account.move.line,string:"
+msgid "Account Invoice - Account Move Line"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:account.invoice-additional-account.move,string:"
+msgid "Account Invoice - Additional - Account Move"
+msgstr "Naslov plačnika"
+
+#, fuzzy
+msgctxt "model:account.invoice.alternative_payee,string:"
+msgid "Account Invoice Alternative Payee"
+msgstr "Alternativni plačniki fakture"
+
+msgctxt "model:account.invoice.credit.start,string:"
+msgid "Account Invoice Credit Start"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:account.invoice.line,string:"
+msgid "Account Invoice Line"
+msgstr "Postavka računa"
+
+#, fuzzy
+msgctxt "model:account.invoice.line-account.tax,string:"
+msgid "Account Invoice Line - Account Tax"
+msgstr "Postavka računa - Davek"
+
+#, fuzzy
+msgctxt "model:account.invoice.pay.ask,string:"
+msgid "Account Invoice Pay Ask"
+msgstr "Plačila fakture"
+
+#, fuzzy
+msgctxt "model:account.invoice.pay.start,string:"
+msgid "Account Invoice Pay Start"
+msgstr "Partner fakture"
+
+#, fuzzy
+msgctxt "model:account.invoice.payment.method,string:"
+msgid "Account Invoice Payment Method"
+msgstr "Plačilni pogoji fakture"
+
+msgctxt "model:account.invoice.payment_term,name:payment_term_0"
+msgid "Upon Receipt"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:account.invoice.payment_term,name:payment_term_30_eom"
+msgid "Net 30 days End of Month"
+msgstr "Dan v mesecu"
+
+#, fuzzy
+msgctxt "model:account.invoice.payment_term,name:payment_term_60_eom"
+msgid "Net 60 days End of Month"
+msgstr "Dan v mesecu"
+
+#, fuzzy
+msgctxt "model:account.invoice.payment_term,name:payment_term_eom"
+msgid "End of Month"
+msgstr "Dan v mesecu"
+
+msgctxt "model:account.invoice.payment_term,name:payment_term_eom_following"
+msgid "End of Month Following"
+msgstr ""
+
+msgctxt "model:account.invoice.payment_term,name:payment_term_net10"
+msgid "Net 10 days"
+msgstr ""
+
+msgctxt "model:account.invoice.payment_term,name:payment_term_net15"
+msgid "Net 15 days"
+msgstr ""
+
+msgctxt "model:account.invoice.payment_term,name:payment_term_net30"
+msgid "Net 30 days"
+msgstr ""
+
+msgctxt "model:account.invoice.payment_term,name:payment_term_net60"
+msgid "Net 60 days"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:account.invoice.payment_term,string:"
+msgid "Account Invoice Payment Term"
+msgstr "Plačilo fakture"
+
+#, fuzzy
+msgctxt "model:account.invoice.payment_term.line,string:"
+msgid "Account Invoice Payment Term Line"
 msgstr "Račun - Postavka plačila"
 
 #, fuzzy
-msgctxt "model:account.invoice-additional-account.move,name:"
-msgid "Invoice Additional Move"
-msgstr "Naslov plačnika"
+msgctxt "model:account.invoice.payment_term.line.delta,string:"
+msgid "Account Invoice Payment Term Line Delta"
+msgstr "Račun - Postavka plačila"
 
-msgctxt "model:account.invoice.alternative_payee,name:"
-msgid "Invoice Alternative Payee"
-msgstr "Alternativni plačniki fakture"
+#, fuzzy
+msgctxt "model:account.invoice.payment_term.test,string:"
+msgid "Account Invoice Payment Term Test"
+msgstr "Plačila fakture"
 
-msgctxt "model:account.invoice.credit.start,name:"
-msgid "Credit Invoice"
-msgstr "Dobropis računa"
+#, fuzzy
+msgctxt "model:account.invoice.payment_term.test.result,string:"
+msgid "Account Invoice Payment Term Test Result"
+msgstr "Plačilni pogoji fakture"
 
-msgctxt "model:account.invoice.line,name:"
-msgid "Invoice Line"
-msgstr "Postavka računa"
-
-msgctxt "model:account.invoice.line-account.tax,name:"
-msgid "Invoice Line - Tax"
-msgstr "Postavka računa - Davek"
-
-msgctxt "model:account.invoice.pay.ask,name:"
-msgid "Pay Invoice"
-msgstr "Plačilo računa"
-
-msgctxt "model:account.invoice.pay.start,name:"
-msgid "Pay Invoice"
-msgstr "Plačilo računa"
-
-msgctxt "model:account.invoice.payment.method,name:"
-msgid "Payment Method"
-msgstr "Plačilni pogoji"
-
-msgctxt "model:account.invoice.payment_term,name:"
-msgid "Payment Term"
-msgstr "Pogoji plačila"
-
-msgctxt "model:account.invoice.payment_term.line,name:"
-msgid "Payment Term Line"
-msgstr "Postavka plačilnega roka"
-
-msgctxt "model:account.invoice.payment_term.line.delta,name:"
-msgid "Payment Term Line Relative Delta"
-msgstr "Relativna razlika postavke plačilnega roka"
-
-msgctxt "model:account.invoice.payment_term.test,name:"
-msgid "Test Payment Term"
-msgstr "Preizkus plačilnega roka"
-
-msgctxt "model:account.invoice.payment_term.test.result,name:"
-msgid "Test Payment Term"
-msgstr "Preizkus plačilnega roka"
-
-msgctxt "model:account.invoice.report.revision,name:"
-msgid "Invoice Report Revision"
+#, fuzzy
+msgctxt "model:account.invoice.report.revision,string:"
+msgid "Account Invoice Report Revision"
 msgstr "Revizija poročila o računu"
 
-msgctxt "model:account.invoice.tax,name:"
-msgid "Invoice Tax"
+#, fuzzy
+msgctxt "model:account.invoice.tax,string:"
+msgid "Account Invoice Tax"
 msgstr "Davek računa"
 
 msgctxt "model:ir.action,name:act_delegate_lines_to_pay_wizard"
@@ -1162,6 +1217,11 @@ msgstr ""
 "Za izračun plačilnih pogojev \"%(payment_term)s\", je potrebno dodati "
 "vrstico za preostanek."
 
+#, fuzzy
+msgctxt "model:ir.message,text:msg_payment_term_non_zero_ratio_divisor"
+msgid "The ratio and divisor can not be both equal to zero."
+msgstr "Razmerje in delitelj nista skladna v vrstici \"%(line)s\"."
+
 msgctxt "model:ir.model.button,confirm:invoice_cancel_button"
 msgid "Are you sure you want to cancel the invoices?"
 msgstr "Ali ste prepričani, da želite preklicati račune?"
@@ -1258,7 +1318,8 @@ msgctxt "model:ir.ui.menu,name:menu_payment_terms_configuration"
 msgid "Payment Terms"
 msgstr "Pogoji plačilai"
 
-msgctxt "model:party.party.payment_term,name:"
+#, fuzzy
+msgctxt "model:party.party.payment_term,string:"
 msgid "Party Payment Term"
 msgstr "Pogoji plačila partnerja"
 

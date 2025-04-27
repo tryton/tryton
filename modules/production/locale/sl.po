@@ -54,8 +54,8 @@ msgid "Effective Start Date"
 msgstr "Dejanski začetek"
 
 msgctxt "field:production,inputs:"
-msgid "Inputs"
-msgstr "Vhodi"
+msgid "Input Materials"
+msgstr ""
 
 msgctxt "field:production,location:"
 msgid "Location"
@@ -69,8 +69,9 @@ msgctxt "field:production,origin:"
 msgid "Origin"
 msgstr "Izvor"
 
+#, fuzzy
 msgctxt "field:production,outputs:"
-msgid "Outputs"
+msgid "Output Materials"
 msgstr "Izhodi"
 
 #, fuzzy
@@ -125,8 +126,8 @@ msgid "Code Readonly"
 msgstr ""
 
 msgctxt "field:production.bom,inputs:"
-msgid "Inputs"
-msgstr "Vhodi"
+msgid "Input Materials"
+msgstr ""
 
 msgctxt "field:production.bom,name:"
 msgid "Name"
@@ -136,8 +137,9 @@ msgctxt "field:production.bom,output_products:"
 msgid "Output Products"
 msgstr "Izhodni izdelki"
 
+#, fuzzy
 msgctxt "field:production.bom,outputs:"
-msgid "Outputs"
+msgid "Output Materials"
 msgstr "Izhodi"
 
 msgctxt "field:production.bom.input,bom:"
@@ -513,47 +515,56 @@ msgctxt "model:ir.ui.menu,name:menu_production_list"
 msgid "Productions"
 msgstr "Productions"
 
-msgctxt "model:product.product-production.bom,name:"
-msgid "Product - BOM"
-msgstr "Izdelek - Kosovnica"
+msgctxt "model:product.product-production.bom,string:"
+msgid "Product - Production Bom"
+msgstr ""
 
-msgctxt "model:production,name:"
+#, fuzzy
+msgctxt "model:production,string:"
 msgid "Production"
+msgstr "Proizvodnja"
+
+#, fuzzy
+msgctxt "model:production.bom,string:"
+msgid "Production Bom"
+msgstr "Proizvodnja"
+
+#, fuzzy
+msgctxt "model:production.bom.input,string:"
+msgid "Production Bom Input"
+msgstr "Vhod proizvodnega naloga"
+
+#, fuzzy
+msgctxt "model:production.bom.output,string:"
+msgid "Production Bom Output"
+msgstr "Izhod proizvodnega naloga"
+
+#, fuzzy
+msgctxt "model:production.bom.tree,string:"
+msgid "Production Bom Tree"
+msgstr "Proizvodni dobavni rok"
+
+msgctxt "model:production.bom.tree.open.start,string:"
+msgid "Production Bom Tree Open Start"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:production.bom.tree.open.tree,string:"
+msgid "Production Bom Tree Open Tree"
 msgstr "Proizvodni nalog"
 
-msgctxt "model:production.bom,name:"
-msgid "Bill of Material"
-msgstr "Kosovnica"
-
-msgctxt "model:production.bom.input,name:"
-msgid "Bill of Material Input"
-msgstr "Vhod kosovnice"
-
-msgctxt "model:production.bom.output,name:"
-msgid "Bill of Material Output"
-msgstr "Izhod kosovnice"
-
-msgctxt "model:production.bom.tree,name:"
-msgid "BOM Tree"
-msgstr "Drevo kosovnice"
-
-msgctxt "model:production.bom.tree.open.start,name:"
-msgid "Open BOM Tree"
-msgstr "Odpri drevo kosovnice"
-
-msgctxt "model:production.bom.tree.open.tree,name:"
-msgid "Open BOM Tree"
-msgstr "Odpri drevo kosovnice"
-
-msgctxt "model:production.configuration,name:"
+#, fuzzy
+msgctxt "model:production.configuration,string:"
 msgid "Production Configuration"
 msgstr "Proizvodna konfiguracija"
 
-msgctxt "model:production.configuration.production_sequence,name:"
+#, fuzzy
+msgctxt "model:production.configuration.production_sequence,string:"
 msgid "Production Configuration Production Sequence"
 msgstr "Konfiguracija številčne serije proizvodnih nalogov"
 
-msgctxt "model:production.lead_time,name:"
+#, fuzzy
+msgctxt "model:production.lead_time,string:"
 msgid "Production Lead Time"
 msgstr "Proizvodni dobavni rok"
 
@@ -616,10 +627,6 @@ msgid "Production"
 msgstr "Proizvodnja"
 
 msgctxt "view:production.bom:"
-msgid "Lines"
-msgstr "Postavke"
-
-msgctxt "view:production:"
 msgid "Lines"
 msgstr "Postavke"
 

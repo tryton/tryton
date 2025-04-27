@@ -4,94 +4,79 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:account.invoice,sale_exception_state:"
 msgid "Exception State"
-msgstr "Estado da exceção"
+msgstr "Estado da Exceção"
 
 msgctxt "field:account.invoice,sales:"
 msgid "Sales"
 msgstr "Vendas"
 
-#, fuzzy
 msgctxt "field:party.party,customer_currencies:"
 msgid "Customer Currencies"
-msgstr "Clientes"
+msgstr "Moedas do Cliente"
 
-#, fuzzy
 msgctxt "field:party.party,customer_currency:"
 msgid "Customer Currency"
-msgstr "Moeda"
+msgstr "Moeda do Cliente"
 
-#, fuzzy
 msgctxt "field:party.party,sale_invoice_method:"
 msgid "Invoice Method"
-msgstr "Método da fatura"
+msgstr "Método da Fatura"
 
-#, fuzzy
 msgctxt "field:party.party,sale_methods:"
 msgid "Sale Methods"
-msgstr "Método da fatura da venda"
+msgstr "Métodos de Venda"
 
-#, fuzzy
 msgctxt "field:party.party,sale_shipment_method:"
 msgid "Shipment Method"
 msgstr "Método da Remessa"
 
-#, fuzzy
 msgctxt "field:party.party.customer_currency,customer_currency:"
 msgid "Customer Currency"
-msgstr "Moeda"
+msgstr "Moeda do Cliente"
 
-#, fuzzy
 msgctxt "field:party.party.customer_currency,party:"
 msgid "Party"
-msgstr "Parceiro"
+msgstr "Pessoa"
 
-#, fuzzy
 msgctxt "field:party.party.sale_method,company:"
 msgid "Company"
 msgstr "Empresa"
 
-#, fuzzy
 msgctxt "field:party.party.sale_method,party:"
 msgid "Party"
-msgstr "Parceiro"
+msgstr "Pessoa"
 
-#, fuzzy
 msgctxt "field:party.party.sale_method,sale_invoice_method:"
 msgid "Sale Invoice Method"
-msgstr "Método da fatura da venda"
+msgstr "Método da Fatura de Venda"
 
-#, fuzzy
 msgctxt "field:party.party.sale_method,sale_shipment_method:"
 msgid "Sale Shipment Method"
-msgstr "Método da expedição da venda"
+msgstr "Método de Envio da Venda"
 
-#, fuzzy
 msgctxt "field:product.configuration,default_lead_time:"
 msgid "Default Lead Time"
-msgstr "Tempo de Espera"
+msgstr "Tempo de Espera Padrão"
 
-#, fuzzy
 msgctxt "field:product.configuration.default_lead_time,default_lead_time:"
 msgid "Default Lead Time"
-msgstr "Tempo de Espera"
+msgstr "Tempo de Espera Padrão"
 
-#, fuzzy
 msgctxt "field:product.lead_time,lead_time:"
 msgid "Lead Time"
 msgstr "Tempo de Espera"
 
 msgctxt "field:product.lead_time,template:"
 msgid "Template"
-msgstr ""
+msgstr "Gabarito"
 
 msgctxt "field:product.product,lead_time:"
 msgid "Lead Time"
 msgstr "Tempo de Espera"
 
-#, fuzzy
 msgctxt "field:product.product,lead_times:"
 msgid "Lead Times"
-msgstr "Tempo de Espera"
+msgstr "Tempos de Espera"
 
 msgctxt "field:product.product,salable:"
 msgid "Salable"
@@ -101,62 +86,53 @@ msgctxt "field:product.product,sale_price_uom:"
 msgid "Sale Price"
 msgstr "Preço de Venda"
 
-#, fuzzy
 msgctxt "field:product.product,sale_uom:"
 msgid "Sale UoM"
-msgstr "UDM para venda"
+msgstr "UDM para Venda"
 
-#, fuzzy
 msgctxt "field:product.sale.context,company:"
 msgid "Company"
 msgstr "Empresa"
 
-#, fuzzy
 msgctxt "field:product.sale.context,currency:"
 msgid "Currency"
 msgstr "Moeda"
 
-#, fuzzy
 msgctxt "field:product.sale.context,customer:"
 msgid "Customer"
-msgstr "Clientes"
+msgstr "Cliente"
 
-#, fuzzy
 msgctxt "field:product.sale.context,locations:"
 msgid "Warehouses"
-msgstr "Almoxarifado"
+msgstr "Armazéms"
 
-#, fuzzy
 msgctxt "field:product.sale.context,quantity:"
 msgid "Quantity"
 msgstr "Quantidade"
 
-#, fuzzy
 msgctxt "field:product.sale.context,sale_date:"
 msgid "Sale Date"
-msgstr "Data da venda"
+msgstr "Data da Venda"
 
 msgctxt "field:product.sale.context,stock_date_end:"
 msgid "Stock End Date"
-msgstr ""
+msgstr "Data de Término do Estoque"
 
 msgctxt "field:product.template,lead_time:"
 msgid "Lead Time"
 msgstr "Tempo de Espera"
 
-#, fuzzy
 msgctxt "field:product.template,lead_times:"
 msgid "Lead Times"
-msgstr "Tempo de Espera"
+msgstr "Tempos de Espera"
 
 msgctxt "field:product.template,salable:"
 msgid "Salable"
 msgstr "Vendável"
 
-#, fuzzy
 msgctxt "field:product.template,sale_uom:"
 msgid "Sale UoM"
-msgstr "UM para venda"
+msgstr "UdM para Venda"
 
 msgctxt "field:sale.configuration,sale_invoice_method:"
 msgid "Sale Invoice Method"
@@ -164,7 +140,11 @@ msgstr "Método da fatura da venda"
 
 msgctxt "field:sale.configuration,sale_process_after:"
 msgid "Process Sale after"
-msgstr ""
+msgstr "Processar a Venda Após"
+
+msgctxt "field:sale.configuration,sale_quotation_validity:"
+msgid "Sale Quotation Validity"
+msgstr "Validade da Cotação de Venda"
 
 msgctxt "field:sale.configuration,sale_sequence:"
 msgid "Sale Sequence"
@@ -173,6 +153,10 @@ msgstr "Sequência de Venda"
 msgctxt "field:sale.configuration,sale_shipment_method:"
 msgid "Sale Shipment Method"
 msgstr "Método da expedição da venda"
+
+msgctxt "field:sale.configuration.quotation,sale_quotation_validity:"
+msgid "Sale Quotation Validity"
+msgstr "Validade da Cotação de Venda"
 
 msgctxt "field:sale.configuration.sale_method,sale_invoice_method:"
 msgid "Sale Invoice Method"
@@ -194,54 +178,45 @@ msgctxt "field:sale.handle.invoice.exception.ask,domain_invoices:"
 msgid "Domain Invoices"
 msgstr "Faturas do domínio"
 
-#, fuzzy
 msgctxt "field:sale.handle.invoice.exception.ask,ignore_invoices:"
 msgid "Invoices to Ignore"
-msgstr "Endereço para faturamento"
+msgstr "Faturas para Ignorar"
 
-#, fuzzy
 msgctxt "field:sale.handle.invoice.exception.ask,recreate_invoices:"
 msgid "Invoices to Recreate"
-msgstr "Escolhe as Faturas para recriar"
+msgstr "Faturas para Recriar"
 
-#, fuzzy
 msgctxt "field:sale.handle.shipment.exception.ask,domain_moves:"
 msgid "Domain Stock Moves"
-msgstr "Movimentações no domínio"
+msgstr "Domínio das Movimentações"
 
-#, fuzzy
 msgctxt "field:sale.handle.shipment.exception.ask,ignore_moves:"
 msgid "Stock Moves to Ignore"
-msgstr "Movimentações"
+msgstr "Movimentos serem Ignorados"
 
-#, fuzzy
 msgctxt "field:sale.handle.shipment.exception.ask,recreate_moves:"
 msgid "Stock Moves to Recreate"
-msgstr "Escolha as movimentações a recriar"
+msgstr "Movimentos para Recriar"
 
-#, fuzzy
 msgctxt "field:sale.line,actual_quantity:"
 msgid "Actual Quantity"
-msgstr "Quantidade"
+msgstr "Quantidade Atual"
 
 msgctxt "field:sale.line,amount:"
 msgid "Amount"
 msgstr "Quantidade"
 
-#, fuzzy
 msgctxt "field:sale.line,company:"
 msgid "Company"
 msgstr "Empresa"
 
-#, fuzzy
 msgctxt "field:sale.line,currency:"
 msgid "Currency"
 msgstr "Moeda"
 
-#, fuzzy
 msgctxt "field:sale.line,customer:"
 msgid "Customer"
-msgstr "Clientes"
+msgstr "Cliente"
 
 msgctxt "field:sale.line,description:"
 msgid "Description"
@@ -249,45 +224,39 @@ msgstr "Descrição"
 
 msgctxt "field:sale.line,from_location:"
 msgid "From Location"
-msgstr "Origem"
+msgstr "A Partir da Localização"
 
 msgctxt "field:sale.line,invoice_lines:"
 msgid "Invoice Lines"
 msgstr "Linhas da fatura"
 
-#, fuzzy
 msgctxt "field:sale.line,invoice_progress:"
 msgid "Invoice Progress"
-msgstr "Endereço para faturamento"
+msgstr "Andamento da Fatura"
 
 msgctxt "field:sale.line,movable:"
 msgid "Movable"
-msgstr ""
+msgstr "Móvel"
 
-#, fuzzy
 msgctxt "field:sale.line,moves:"
 msgid "Stock Moves"
-msgstr "Movimentações"
+msgstr "Movimentações de Estoque"
 
-#, fuzzy
 msgctxt "field:sale.line,moves_exception:"
 msgid "Moves Exception"
-msgstr "Exceção nas movimentações"
+msgstr "Exceção nas Movimentações"
 
-#, fuzzy
 msgctxt "field:sale.line,moves_ignored:"
 msgid "Ignored Stock Moves"
-msgstr "Movimentações ignoradas"
+msgstr "Movimentações de Estoque Ignoradas"
 
-#, fuzzy
 msgctxt "field:sale.line,moves_progress:"
 msgid "Moves Progress"
-msgstr "Movimentações feitas"
+msgstr "Progresso das Movimentações"
 
-#, fuzzy
 msgctxt "field:sale.line,moves_recreated:"
 msgid "Recreated Moves"
-msgstr "Recriar movimentações"
+msgstr "Recriar Movimentações"
 
 msgctxt "field:sale.line,note:"
 msgid "Note"
@@ -297,10 +266,9 @@ msgctxt "field:sale.line,product:"
 msgid "Product"
 msgstr "Produto"
 
-#, fuzzy
 msgctxt "field:sale.line,product_uom_category:"
 msgid "Product UoM Category"
-msgstr "Categoria da UDM do Produto"
+msgstr "Categoria da UdM do Produto"
 
 msgctxt "field:sale.line,quantity:"
 msgid "Quantity"
@@ -310,10 +278,9 @@ msgctxt "field:sale.line,sale:"
 msgid "Sale"
 msgstr "Venda"
 
-#, fuzzy
 msgctxt "field:sale.line,sale_date:"
 msgid "Sale Date"
-msgstr "Data da venda"
+msgstr "Data da Venda"
 
 msgctxt "field:sale.line,sale_state:"
 msgid "Sale State"
@@ -325,7 +292,7 @@ msgstr "Data da Remessa"
 
 msgctxt "field:sale.line,summary:"
 msgid "Summary"
-msgstr ""
+msgstr "Resumo"
 
 msgctxt "field:sale.line,taxes:"
 msgid "Taxes"
@@ -361,7 +328,7 @@ msgstr "Impostos"
 
 msgctxt "field:sale.line-ignored-stock.move,move:"
 msgid "Stock Move"
-msgstr ""
+msgstr "Movimentação do Estoque"
 
 msgctxt "field:sale.line-ignored-stock.move,sale_line:"
 msgid "Sale Line"
@@ -369,176 +336,159 @@ msgstr "Linha da fatura"
 
 msgctxt "field:sale.line-recreated-stock.move,move:"
 msgid "Stock Move"
-msgstr ""
+msgstr "Movimentação do Estoque"
 
 msgctxt "field:sale.line-recreated-stock.move,sale_line:"
 msgid "Sale Line"
 msgstr "Linha da fatura"
 
-#, fuzzy
 msgctxt "field:sale.reporting.context,company:"
 msgid "Company"
 msgstr "Empresa"
 
 msgctxt "field:sale.reporting.context,from_date:"
 msgid "From Date"
-msgstr ""
+msgstr "A Partir da Data"
 
 msgctxt "field:sale.reporting.context,period:"
 msgid "Period"
-msgstr ""
+msgstr "Período"
 
 msgctxt "field:sale.reporting.context,to_date:"
 msgid "To Date"
-msgstr ""
+msgstr "Até a Data"
 
-#, fuzzy
 msgctxt "field:sale.reporting.context,warehouse:"
 msgid "Warehouse"
-msgstr "Almoxarifado"
+msgstr "Armazém"
 
 msgctxt "field:sale.reporting.country,country:"
 msgid "Country"
-msgstr ""
+msgstr "País"
 
 msgctxt "field:sale.reporting.country.subdivision,country:"
 msgid "Country"
-msgstr ""
+msgstr "País"
 
 msgctxt "field:sale.reporting.country.subdivision,subdivision:"
 msgid "Subdivision"
-msgstr ""
+msgstr "Estado"
 
 msgctxt "field:sale.reporting.country.subdivision.time_series,country:"
 msgid "Country"
-msgstr ""
+msgstr "País"
 
 msgctxt "field:sale.reporting.country.subdivision.time_series,subdivision:"
 msgid "Subdivision"
-msgstr ""
+msgstr "Estado"
 
 msgctxt "field:sale.reporting.country.time_series,country:"
 msgid "Country"
-msgstr ""
+msgstr "País"
 
 msgctxt "field:sale.reporting.country.tree,children:"
 msgid "Children"
-msgstr ""
+msgstr "Filho"
 
 msgctxt "field:sale.reporting.country.tree,parent:"
 msgid "Parent"
-msgstr ""
+msgstr "Pai"
 
-#, fuzzy
 msgctxt "field:sale.reporting.country.tree,region:"
 msgid "Region"
-msgstr "Open Region"
+msgstr "Região"
 
-#, fuzzy
 msgctxt "field:sale.reporting.customer,customer:"
 msgid "Customer"
-msgstr "Clientes"
+msgstr "Cliente"
 
-#, fuzzy
 msgctxt "field:sale.reporting.customer.category,category:"
 msgid "Category"
-msgstr "Sales per Category"
+msgstr "Categoria"
 
-#, fuzzy
 msgctxt "field:sale.reporting.customer.category.time_series,category:"
 msgid "Category"
-msgstr "Sales per Category"
+msgstr "Categoria"
 
 msgctxt "field:sale.reporting.customer.category.tree,children:"
 msgid "Children"
-msgstr ""
+msgstr "Filho"
 
-#, fuzzy
 msgctxt "field:sale.reporting.customer.category.tree,currency:"
 msgid "Currency"
 msgstr "Moeda"
 
-#, fuzzy
 msgctxt "field:sale.reporting.customer.category.tree,name:"
 msgid "Name"
 msgstr "Nome"
 
 msgctxt "field:sale.reporting.customer.category.tree,parent:"
 msgid "Parent"
-msgstr ""
+msgstr "Pai"
 
 msgctxt "field:sale.reporting.customer.category.tree,revenue:"
 msgid "Revenue"
-msgstr ""
+msgstr "Receita"
 
-#, fuzzy
 msgctxt "field:sale.reporting.customer.time_series,customer:"
 msgid "Customer"
-msgstr "Clientes"
+msgstr "Cliente"
 
-#, fuzzy
 msgctxt "field:sale.reporting.product,product:"
 msgid "Product"
 msgstr "Produto"
 
-#, fuzzy
 msgctxt "field:sale.reporting.product.category,category:"
 msgid "Category"
-msgstr "Sales per Category"
+msgstr "Categoria"
 
-#, fuzzy
 msgctxt "field:sale.reporting.product.category.time_series,category:"
 msgid "Category"
-msgstr "Sales per Category"
+msgstr "Categoria"
 
 msgctxt "field:sale.reporting.product.category.tree,children:"
 msgid "Children"
-msgstr ""
+msgstr "Filhos"
 
-#, fuzzy
 msgctxt "field:sale.reporting.product.category.tree,currency:"
 msgid "Currency"
 msgstr "Moeda"
 
-#, fuzzy
 msgctxt "field:sale.reporting.product.category.tree,name:"
 msgid "Name"
 msgstr "Nome"
 
 msgctxt "field:sale.reporting.product.category.tree,parent:"
 msgid "Parent"
-msgstr ""
+msgstr "Pai"
 
 msgctxt "field:sale.reporting.product.category.tree,revenue:"
 msgid "Revenue"
-msgstr ""
+msgstr "Receita"
 
-#, fuzzy
 msgctxt "field:sale.reporting.product.time_series,product:"
 msgid "Product"
 msgstr "Produto"
 
-#, fuzzy
 msgctxt "field:sale.reporting.region.tree,currency:"
 msgid "Currency"
 msgstr "Moeda"
 
-#, fuzzy
 msgctxt "field:sale.reporting.region.tree,name:"
 msgid "Name"
 msgstr "Nome"
 
 msgctxt "field:sale.reporting.region.tree,parent:"
 msgid "Parent"
-msgstr ""
+msgstr "Pai"
 
 msgctxt "field:sale.reporting.region.tree,revenue:"
 msgid "Revenue"
-msgstr ""
+msgstr "Receita"
 
 msgctxt "field:sale.reporting.region.tree,subregions:"
 msgid "Subregions"
-msgstr ""
+msgstr "Sub-regiões"
 
 msgctxt "field:sale.sale,comment:"
 msgid "Comment"
@@ -548,14 +498,13 @@ msgctxt "field:sale.sale,company:"
 msgid "Company"
 msgstr "Empresa"
 
-#, fuzzy
 msgctxt "field:sale.sale,confirmed_by:"
 msgid "Confirmed By"
-msgstr "Confirmed"
+msgstr "Confirmado Por"
 
 msgctxt "field:sale.sale,contact:"
 msgid "Contact"
-msgstr ""
+msgstr "Contato"
 
 msgctxt "field:sale.sale,currency:"
 msgid "Currency"
@@ -573,10 +522,9 @@ msgctxt "field:sale.sale,invoice_method:"
 msgid "Invoice Method"
 msgstr "Método da fatura"
 
-#, fuzzy
 msgctxt "field:sale.sale,invoice_party:"
 msgid "Invoice Party"
-msgstr "Estado da fatura"
+msgstr "Fatura da Pessoa"
 
 msgctxt "field:sale.sale,invoice_state:"
 msgid "Invoice State"
@@ -594,19 +542,17 @@ msgctxt "field:sale.sale,invoices_recreated:"
 msgid "Recreated Invoices"
 msgstr "Faturas Recriadas"
 
-#, fuzzy
 msgctxt "field:sale.sale,line_lines:"
 msgid "Line - Lines"
-msgstr "Linhas da fatura"
+msgstr "Linhas da Linha"
 
 msgctxt "field:sale.sale,lines:"
 msgid "Lines"
 msgstr "Linhas"
 
-#, fuzzy
 msgctxt "field:sale.sale,moves:"
 msgid "Stock Moves"
-msgstr "Movimentações"
+msgstr "Movimentações de Estoque"
 
 msgctxt "field:sale.sale,number:"
 msgid "Number"
@@ -628,10 +574,21 @@ msgctxt "field:sale.sale,payment_term:"
 msgid "Payment Term"
 msgstr "Prazo de Pagamento"
 
-#, fuzzy
+msgctxt "field:sale.sale,quotation_date:"
+msgid "Quotation Date"
+msgstr "Data da Cotação"
+
+msgctxt "field:sale.sale,quotation_expire:"
+msgid "Quotation Expire"
+msgstr "Vencimento da Cotação"
+
+msgctxt "field:sale.sale,quotation_validity:"
+msgid "Quotation Validity"
+msgstr "Validade da cotação"
+
 msgctxt "field:sale.sale,quoted_by:"
 msgid "Quoted By"
-msgstr "Quote"
+msgstr "Cotado Por"
 
 msgctxt "field:sale.sale,reference:"
 msgid "Reference"
@@ -665,7 +622,6 @@ msgctxt "field:sale.sale,shipments:"
 msgid "Shipments"
 msgstr "Remessas"
 
-#, fuzzy
 msgctxt "field:sale.sale,shipping_date:"
 msgid "Shipping Date"
 msgstr "Data da Remessa"
@@ -686,10 +642,9 @@ msgctxt "field:sale.sale,total_amount:"
 msgid "Total"
 msgstr "Total"
 
-#, fuzzy
 msgctxt "field:sale.sale,total_amount_cache:"
 msgid "Total Cache"
-msgstr "Tributos Pré-calculados"
+msgstr "Cache Total"
 
 msgctxt "field:sale.sale,untaxed_amount:"
 msgid "Untaxed"
@@ -729,318 +684,303 @@ msgstr "Estado da exceção"
 
 msgctxt "help:party.party,customer_currency:"
 msgid "Default currency for sales to this party."
-msgstr ""
+msgstr "Moeda padrão para vendas a esta pessoa."
 
 msgctxt "help:party.party,sale_invoice_method:"
 msgid ""
 "The default sale invoice method for the customer.\n"
 "Leave empty to use the default value from the configuration."
 msgstr ""
+"O método de fatura de venda padrão para o cliente.\n"
+"Deixe em branco para usar o valor padrão da configuração."
 
 msgctxt "help:party.party,sale_shipment_method:"
 msgid ""
 "The default sale shipment method for the customer.\n"
 "Leave empty to use the default value from the configuration."
 msgstr ""
+"O método de envio de venda padrão para o cliente.\n"
+"Deixe em branco para usar o valor padrão da configuração."
 
 msgctxt "help:party.party.customer_currency,customer_currency:"
 msgid "Default currency for sales to this party."
-msgstr ""
+msgstr "Moeda padrão para vendas a esta pessoa."
 
 msgctxt "help:product.configuration,default_lead_time:"
 msgid ""
 "The time from confirming the sales order to sending the products.\n"
 "Used for products without a lead time."
 msgstr ""
+"Tempo entre a confirmação do pedido de venda e o envio dos produtos.\n"
+"Usado para produtos sem prazo de entrega."
 
 msgctxt "help:product.configuration.default_lead_time,default_lead_time:"
 msgid ""
 "The time from confirming the sales order to sending the products.\n"
 "Used for products without a lead time."
 msgstr ""
+"Tempo entre a confirmação do pedido de venda e o envio dos produtos.\n"
+"Usado para produtos sem prazo de entrega."
 
 msgctxt "help:product.product,lead_time:"
 msgid ""
 "The time from confirming the sales order to sending the products.\n"
 "If empty the default lead time from the configuration is used."
 msgstr ""
+"Tempo entre a confirmação do pedido de venda e o envio dos produtos.\n"
+"Se vazio, será utilizado o prazo de entrega padrão da configuração."
 
 msgctxt "help:product.product,sale_uom:"
 msgid "The default Unit of Measure for sales."
-msgstr ""
+msgstr "A unidade de medida padrão para vendas."
 
 msgctxt "help:product.template,lead_time:"
 msgid ""
 "The time from confirming the sales order to sending the products.\n"
 "If empty the default lead time from the configuration is used."
 msgstr ""
+"Tempo entre a confirmação do pedido de venda e o envio dos produtos.\n"
+"Se vazio, será utilizado o prazo de entrega padrão da configuração."
 
 msgctxt "help:product.template,sale_uom:"
 msgid "The default Unit of Measure for sales."
-msgstr ""
+msgstr "A unidade de medida padrão para vendas."
 
 msgctxt "help:sale.configuration,sale_process_after:"
 msgid ""
 "The grace period during which confirmed sale can still be reset to draft.\n"
 "Applied if a worker queue is activated."
 msgstr ""
+"O período durante o qual uma venda confirmada pode ser revertida a rascunho.\n"
+"Aplica-se quando uma fila de trabalho é ativada."
 
-#, fuzzy
 msgctxt "help:sale.handle.invoice.exception.ask,ignore_invoices:"
 msgid "The selected cancelled invoices will be ignored."
-msgstr ""
-"As faturas escolhidas serão recriadas. As demais faturas serão ignoradas"
+msgstr "As faturas canceladas selecionadas serão ignoradas."
 
-#, fuzzy
 msgctxt "help:sale.handle.invoice.exception.ask,recreate_invoices:"
 msgid "The selected cancelled invoices will be recreated."
-msgstr ""
-"As faturas escolhidas serão recriadas. As demais faturas serão ignoradas"
+msgstr "As faturas canceladas selecionadas serão recriadas."
 
-#, fuzzy
 msgctxt "help:sale.handle.shipment.exception.ask,ignore_moves:"
 msgid "The selected cancelled stock moves will be ignored."
-msgstr ""
-"As faturas escolhidas serão recriadas. As demais faturas serão ignoradas"
+msgstr "Os movimentos de stock cancelados selecionados serão ignorados."
 
-#, fuzzy
 msgctxt "help:sale.handle.shipment.exception.ask,recreate_moves:"
 msgid "The selected cancelled stock moves will be recreated."
-msgstr ""
-"As faturas escolhidas serão recriadas. As demais faturas serão ignoradas"
+msgstr "Os movimentos de stock cancelados selecionados serão recriados."
 
 msgctxt "help:sale.line,product_uom_category:"
 msgid "The category of Unit of Measure for the product."
-msgstr ""
+msgstr "A categoria de Unidade de Medida do produto."
+
+msgctxt "help:sale.sale,quotation_date:"
+msgid "When the quotation was edited."
+msgstr "Quando a citação foi editada."
+
+msgctxt "help:sale.sale,quotation_expire:"
+msgid "Until when the quotation is still valid."
+msgstr "Até quando a cotação ainda é válida."
+
+msgctxt "help:sale.sale,quotation_validity:"
+msgid "How much time the quotation is valid."
+msgstr "Por quanto tempo a cotação é válida."
 
 msgctxt "help:sale.sale,shipping_date:"
 msgid "When the shipping of goods should start."
-msgstr ""
+msgstr "Quando o envio das mercadorias deve começar."
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_invoice_form"
 msgid "Invoices"
-msgstr "Invoices"
+msgstr "Faturas"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_invoice_line_form"
 msgid "Invoice Lines"
-msgstr "Linhas da fatura"
+msgstr "Linhas da Fatura"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_product"
 msgid "Products"
-msgstr "Produto"
+msgstr "Produtos"
 
 msgctxt "model:ir.action,name:act_reporting_country_subdivision_time_series"
 msgid "Sales per Subdivision"
-msgstr "Sales per Subdivision"
+msgstr "Vendas por Estado"
 
 msgctxt "model:ir.action,name:act_reporting_country_time_series"
 msgid "Sales per Country"
-msgstr "Sales per Country"
+msgstr "Vendas por País"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_reporting_country_tree"
 msgid "Sales per Country"
-msgstr "Sales per Country"
+msgstr "Vendas por País"
 
 msgctxt "model:ir.action,name:act_reporting_customer"
 msgid "Sales per Customer"
-msgstr "Sales per Customer"
+msgstr "Vendas por Cliente"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_reporting_customer_category"
 msgid "Sales per Customer Category"
-msgstr "Sales per Category"
+msgstr "Vendas por Categoria de Cliente"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_reporting_customer_category_time_series"
 msgid "Sales per Party Category"
-msgstr "Sales per Category"
+msgstr "Vendas por Categoria da Pessoa"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_reporting_customer_category_tree"
 msgid "Sales per Customer Category"
-msgstr "Sales per Category"
+msgstr "Vendas por Categoria de Cliente"
 
 msgctxt "model:ir.action,name:act_reporting_customer_time_series"
 msgid "Sales per Customer"
-msgstr "Sales per Customer"
+msgstr "Vendas por Cliente"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_reporting_main"
 msgid "Sales"
 msgstr "Vendas"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_reporting_main_time_series"
 msgid "Sales"
 msgstr "Vendas"
 
 msgctxt "model:ir.action,name:act_reporting_product"
 msgid "Sales per Product"
-msgstr "Sales per Product"
+msgstr "Vendas por Produto"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_reporting_product_category"
 msgid "Sales per Product Category"
-msgstr "Sales per Category"
+msgstr "Vendas por Categoria de Produto"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_reporting_product_category_time_series"
 msgid "Sales per Product Category"
-msgstr "Sales per Category"
+msgstr "Vendas por Categoria de Produto"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_reporting_product_category_tree"
 msgid "Sales per Product Category"
-msgstr "Sales per Category"
+msgstr "Vendas por Categoria de Produto"
 
 msgctxt "model:ir.action,name:act_reporting_product_time_series"
 msgid "Sales per Product"
-msgstr "Sales per Product"
+msgstr "Vendas por Produto"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_reporting_region_tree"
 msgid "Sales per Region"
-msgstr "Sales per Region"
+msgstr "Vendas por Região"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_return_form"
 msgid "Returns"
-msgstr "Returns"
+msgstr "Devoluções"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_sale_configuration_form"
 msgid "Configuration"
-msgstr "Configuration"
+msgstr "Configuração"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_sale_form"
 msgid "Sales"
-msgstr "Sales"
+msgstr "Vendas"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_sale_line_relate"
 msgid "Sale Lines"
-msgstr "Linha da fatura"
+msgstr "Linhas de Venda"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_sale_move_relate"
 msgid "Stock Moves"
-msgstr "Movimentações"
+msgstr "Movimentações de Estoque"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_sale_relate"
 msgid "Sales"
 msgstr "Vendas"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_sale_relate_simple"
 msgid "Sales"
 msgstr "Vendas"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_shipment_form"
 msgid "Shipments"
-msgstr "Shipments"
+msgstr "Remessas"
 
-#, fuzzy
 msgctxt "model:ir.action,name:report_sale"
 msgid "Sale"
-msgstr "Sale"
+msgstr "Venda"
 
-#, fuzzy
 msgctxt "model:ir.action,name:wizard_invoice_handle_exception"
 msgid "Handle Invoice Exception"
-msgstr "Handle Invoice Exception"
+msgstr "Exceção da Fatura"
 
 msgctxt "model:ir.action,name:wizard_modify_header"
 msgid "Modify Header"
-msgstr "Modify Header"
+msgstr "Modificar Cabeçalho"
 
-#, fuzzy
 msgctxt "model:ir.action,name:wizard_reporting_country_tree_open"
 msgid "Open Region"
-msgstr "Open Region"
+msgstr "Abrir Região"
 
-#, fuzzy
 msgctxt "model:ir.action,name:wizard_reporting_region_tree_open"
 msgid "Open Region"
-msgstr "Open Region"
+msgstr "Abrir Região"
 
-#, fuzzy
 msgctxt "model:ir.action,name:wizard_return_sale"
 msgid "Return Sale"
-msgstr "Return Sale"
+msgstr "Criar Devolução de Venda"
 
-#, fuzzy
+msgctxt "model:ir.action,name:wizard_sale_open_product"
+msgid "Products"
+msgstr "Produtos"
+
 msgctxt "model:ir.action,name:wizard_shipment_handle_exception"
 msgid "Handle Shipment Exception"
-msgstr "Handle Shipment Exception"
+msgstr "Exceção da Remessa"
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_sale_form_domain_all"
 msgid "All"
-msgstr "All"
+msgstr "Todo"
 
-#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_sale_form_domain_confirmed"
 msgid "Confirmed"
-msgstr "Confirmed"
+msgstr "Confirmado"
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_sale_form_domain_draft"
 msgid "Draft"
-msgstr "Draft"
+msgstr "Rascunho"
 
-#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_sale_form_domain_exception"
 msgid "Exception"
 msgstr "Exceção"
 
-#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_sale_form_domain_processing"
 msgid "Processing"
-msgstr "Processing"
+msgstr "Processando"
 
-#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_sale_form_domain_quotation"
 msgid "Quotation"
-msgstr "Quotation"
+msgstr "Cotação"
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_sale_line_relate_all"
 msgid "All"
-msgstr "All"
+msgstr "Todas"
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_sale_line_relate_done"
 msgid "Done"
 msgstr "Feito"
 
 msgctxt "model:ir.action.act_window.domain,name:act_sale_line_relate_pending"
 msgid "Pending"
-msgstr ""
+msgstr "Pendente"
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_sale_relate_all"
 msgid "All"
-msgstr "All"
+msgstr "Todas"
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_sale_relate_done"
 msgid "Done"
 msgstr "Feito"
 
 msgctxt "model:ir.action.act_window.domain,name:act_sale_relate_pending"
 msgid "Pending"
-msgstr ""
+msgstr "Pendente"
 
 #, python-format
 msgctxt "model:ir.message,text:msg_erase_party_pending_sale"
@@ -1048,6 +988,8 @@ msgid ""
 "You cannot erase party \"%(party)s\" while they have pending sales with "
 "company \"%(company)s\"."
 msgstr ""
+"Não é possível deletar \"%(party)s\", pois há vendas pendentes na empresa "
+"\"%(company)s\"."
 
 #, python-format
 msgctxt "model:ir.message,text:msg_sale_customer_location_required"
@@ -1055,11 +997,13 @@ msgid ""
 "To process sale \"%(sale)s\" you must set a customer location on party "
 "\"%(party)s\"."
 msgstr ""
+"Para processar a venda \"%(sale)s\", é necessário configurar a localização "
+"de \"%(party)s\"."
 
 #, python-format
 msgctxt "model:ir.message,text:msg_sale_delete_cancel"
 msgid "To delete sale \"%(sale)s\" you must cancel it."
-msgstr ""
+msgstr "Para deletar a venda \"%(sale)s\", é necessário cancelar primeiro."
 
 #, python-format
 msgctxt "model:ir.message,text:msg_sale_invalid_method"
@@ -1067,12 +1011,16 @@ msgid ""
 "You cannot use together invoice \"%(invoice_method)s\" and shipment "
 "\"%(shipment_method)s\" on sale \"%(sale)s\"."
 msgstr ""
+"Não é possível utilizar o boleto \"%(invoice_method)s\" junto com envio "
+"\"%(shipment_method)s\" na venda \"%(sale)s\"."
 
 #, python-format
 msgctxt ""
 "model:ir.message,text:msg_sale_invoice_address_required_for_quotation"
 msgid "To get a quote for sale \"%(sale)s\" you must enter an invoice address."
 msgstr ""
+"Para uma cotação da venda \"%(sale)s\", é necessário configurar endereço de "
+"faturamento."
 
 #, python-format
 msgctxt "model:ir.message,text:msg_sale_invoice_reset_draft"
@@ -1080,6 +1028,8 @@ msgid ""
 "You cannot reset invoice \"%(invoice)s\" to draft because it was generated "
 "by a sale."
 msgstr ""
+"Não é possível reverter o faturamento \"%(invoice)s\" para rascunho, pois "
+"ele já gerou uma venda."
 
 #, python-format
 msgctxt "model:ir.message,text:msg_sale_line_create_draft"
@@ -1087,6 +1037,8 @@ msgid ""
 "You cannot add lines to sale \"%(sale)s\" because it is no longer in a draft"
 " state."
 msgstr ""
+"Não é possível adicionar linhas à venda \"%(sale)s\" , pois já não está em "
+"estado de rascunho."
 
 #, python-format
 msgctxt "model:ir.message,text:msg_sale_line_delete_cancel_draft"
@@ -1094,6 +1046,8 @@ msgid ""
 "To delete line \"%(line)s\" you must cancel or reset to draft sale "
 "\"%(sale)s\"."
 msgstr ""
+"Para deletar a linha \"%(line)s\" , é necessário cancelar ou reverter a "
+"venda \"%(sale)s\" para rascunho."
 
 #, python-format
 msgctxt "model:ir.message,text:msg_sale_line_move_quantity"
@@ -1101,20 +1055,26 @@ msgid ""
 "The sale line \"%(line)s\" is moving %(extra)s in addition to the "
 "%(quantity)s ordered."
 msgstr ""
+"A linha de venda \"%(line)s\" está movimentando %(extra)s , para além da "
+"%(quantity)s solicitada."
 
 msgctxt "model:ir.message,text:msg_sale_line_tax_unique"
 msgid "A tax can be added only once to a sale line."
-msgstr ""
+msgstr "Uma taxa só pode ser adicionada uma vez para uma linha de venda."
 
 #, python-format
 msgctxt "model:ir.message,text:msg_sale_missing_account_revenue"
 msgid "To invoice sale \"%(sale)s\" you must configure a default account revenue."
 msgstr ""
+"Para faturar a venda \"%(sale)s\" é necessário configurar uma conta de "
+"receita padrão."
 
 #, python-format
 msgctxt "model:ir.message,text:msg_sale_modify_header_draft"
 msgid "To modify the header of sale \"%(sale)s\", it must be in \"draft\" state."
 msgstr ""
+"Para modificar o cabeçalho da venda \"%(sale)s\", ele deve estar no estado "
+"\"rascunho\"."
 
 #, python-format
 msgctxt "model:ir.message,text:msg_sale_move_reset_draft"
@@ -1122,6 +1082,8 @@ msgid ""
 "You cannot reset move \"%(move)s\" to draft because it was generated by a "
 "sale."
 msgstr ""
+"Não é possível redefinir o movimento \"%(move)s\" para rascunho porque ele "
+"foi gerado por uma venda."
 
 #, python-format
 msgctxt "model:ir.message,text:msg_sale_product_missing_account_revenue"
@@ -1129,87 +1091,87 @@ msgid ""
 "To invoice sale \"%(sale)s\" you must define an account revenue for product "
 "\"%(product)s\"."
 msgstr ""
+"Para faturar a venda \"%(sale)s\", é necessário definir uma conta de receita"
+" para o produto \"%(product)s\"."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_sale_reporting_company"
 msgid "Company"
 msgstr "Empresa"
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_sale_reporting_currency"
 msgid "Currency"
 msgstr "Moeda"
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_sale_reporting_date"
 msgid "Date"
-msgstr "Data:"
+msgstr "Data"
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_sale_reporting_number"
 msgid "#"
 msgstr "#"
 
 msgctxt "model:ir.message,text:msg_sale_reporting_number_help"
 msgid "Number of sales"
-msgstr ""
+msgstr "Número de vendas"
 
 msgctxt "model:ir.message,text:msg_sale_reporting_revenue"
 msgid "Revenue"
-msgstr ""
+msgstr "Receita"
 
 msgctxt "model:ir.message,text:msg_sale_reporting_revenue_trend"
 msgid "Revenue Trend"
-msgstr ""
+msgstr "Tendência de receita"
 
 msgctxt "model:ir.message,text:msg_sale_reporting_time_series"
 msgid "Time Series"
-msgstr ""
+msgstr "Series Temporais"
 
 #, python-format
 msgctxt ""
 "model:ir.message,text:msg_sale_shipment_address_required_for_quotation"
 msgid "To get a quote for sale \"%(sale)s\" you must enter a shipment address."
 msgstr ""
+"Para obter uma cotação de venda \"%(sale)s\", é necessário inserir um "
+"endereço de entrega."
 
 #, python-format
 msgctxt "model:ir.message,text:msg_sale_warehouse_required_for_quotation"
 msgid "To get a quote for sale \"%(sale)s\" you must enter a warehouse."
 msgstr ""
+"Para obter uma cotação de venda \"%(sale)s\" é necessário informar um "
+"armazém."
 
 msgctxt "model:ir.model.button,string:sale_cancel_button"
 msgid "Cancel"
-msgstr "Cancel"
+msgstr "Cancelar"
 
 msgctxt "model:ir.model.button,string:sale_confirm_button"
 msgid "Confirm"
-msgstr "Confirm"
+msgstr "Confirmar"
 
 msgctxt "model:ir.model.button,string:sale_draft_button"
 msgid "Draft"
-msgstr "Draft"
+msgstr "Rascunho"
 
 msgctxt "model:ir.model.button,string:sale_handle_invoice_exception_button"
 msgid "Handle Invoice Exception"
-msgstr "Handle Invoice Exception"
+msgstr "Resolver Questão da Fatura"
 
 msgctxt "model:ir.model.button,string:sale_handle_shipment_exception_button"
 msgid "Handle Shipment Exception"
-msgstr "Handle Shipment Exception"
+msgstr "Resolver Questão de Envio"
 
-#, fuzzy
 msgctxt "model:ir.model.button,string:sale_manual_invoice_button"
 msgid "Create Invoice"
-msgstr "Recriar faturas"
+msgstr "Criar Fatura"
 
-#, fuzzy
 msgctxt "model:ir.model.button,string:sale_manual_shipment_button"
 msgid "Create Shipment"
-msgstr "Remessas"
+msgstr "Criar Remessa"
 
 msgctxt "model:ir.model.button,string:sale_modify_header_button"
 msgid "Modify Header"
-msgstr "Modify Header"
+msgstr "Modificar Cabeçalho"
 
 msgctxt "model:ir.model.button,string:sale_process_button"
 msgid "Process"
@@ -1217,285 +1179,268 @@ msgstr "Process"
 
 msgctxt "model:ir.model.button,string:sale_quote_button"
 msgid "Quote"
-msgstr "Quote"
+msgstr "Cotar"
 
 msgctxt ""
 "model:ir.rule.group,name:rule_group_reporting_country_subdivision_time_series_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "Usuário em empresas"
 
 msgctxt ""
 "model:ir.rule.group,name:rule_group_reporting_country_time_series_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "Usuário em empresas"
 
 msgctxt "model:ir.rule.group,name:rule_group_reporting_country_tree_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "Usuário em empresas"
 
 msgctxt ""
 "model:ir.rule.group,name:rule_group_reporting_customer_category_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "Usuário em empresas"
 
 msgctxt ""
 "model:ir.rule.group,name:rule_group_reporting_customer_category_time_series_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "Usuário em Empresas"
 
 msgctxt "model:ir.rule.group,name:rule_group_reporting_customer_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "Usuário em Empresas"
 
 msgctxt ""
 "model:ir.rule.group,name:rule_group_reporting_customer_time_series_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "Usuário em Empresas"
 
 msgctxt "model:ir.rule.group,name:rule_group_reporting_main_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "Usuário em Empresas"
 
 msgctxt ""
 "model:ir.rule.group,name:rule_group_reporting_main_time_series_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "Usuário em Empresas"
 
 msgctxt ""
 "model:ir.rule.group,name:rule_group_reporting_product_category_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "Usuário em Empresas"
 
 msgctxt ""
 "model:ir.rule.group,name:rule_group_reporting_product_category_time_series_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "Usuário em Empresas"
 
 msgctxt "model:ir.rule.group,name:rule_group_reporting_product_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "Usuário em Empresas"
 
 msgctxt ""
 "model:ir.rule.group,name:rule_group_reporting_product_time_series_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "Usuário em Empresas"
 
 msgctxt "model:ir.rule.group,name:rule_group_sale_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "Usuário em Empresas"
 
-#, fuzzy
 msgctxt "model:ir.sequence,name:sequence_sale"
-msgid "Sale"
-msgstr "Sale"
-
-#, fuzzy
-msgctxt "model:ir.sequence.type,name:sequence_type_sale"
-msgid "Sale"
-msgstr "Sale"
-
-#, fuzzy
-msgctxt "model:ir.ui.menu,name:menu_configuration"
-msgid "Configuration"
-msgstr "Configuration"
-
-#, fuzzy
-msgctxt "model:ir.ui.menu,name:menu_product"
-msgid "Products"
-msgstr "Produto"
-
-msgctxt "model:ir.ui.menu,name:menu_reporting"
-msgid "Reporting"
-msgstr "Reporting"
-
-msgctxt "model:ir.ui.menu,name:menu_reporting_sale"
-msgid "Sales"
-msgstr "Sales"
-
-#, fuzzy
-msgctxt "model:ir.ui.menu,name:menu_sale"
-msgid "Sales"
-msgstr "Sales"
-
-#, fuzzy
-msgctxt "model:ir.ui.menu,name:menu_sale_configuration"
-msgid "Configuration"
-msgstr "Configuration"
-
-#, fuzzy
-msgctxt "model:ir.ui.menu,name:menu_sale_form"
-msgid "Sales"
-msgstr "Sales"
-
-msgctxt "model:party.party.customer_currency,name:"
-msgid "Party Customer Currency"
-msgstr ""
-
-#, fuzzy
-msgctxt "model:party.party.sale_method,name:"
-msgid "Party Sale Method"
-msgstr "Configuração de Venda Método de Venda"
-
-msgctxt "model:product.configuration.default_lead_time,name:"
-msgid "Product Default Lead Time"
-msgstr ""
-
-#, fuzzy
-msgctxt "model:product.lead_time,name:"
-msgid "Product Lead Time"
-msgstr "Tempo de Espera"
-
-msgctxt "model:product.sale.context,name:"
-msgid "Product Sale Context"
-msgstr ""
-
-#, fuzzy
-msgctxt "model:res.group,name:group_sale"
-msgid "Sales"
-msgstr "Sales"
-
-#, fuzzy
-msgctxt "model:res.group,name:group_sale_admin"
-msgid "Sales Administrator"
-msgstr "Sales Administrator"
-
-msgctxt "model:sale.configuration,name:"
-msgid "Sale Configuration"
-msgstr "Configuração de vendas"
-
-msgctxt "model:sale.configuration.sale_method,name:"
-msgid "Sale Configuration Sale Method"
-msgstr "Configuração de Venda Método de Venda"
-
-msgctxt "model:sale.configuration.sequence,name:"
-msgid "Sale Configuration Sequence"
-msgstr "Configuração de Venda Sequência"
-
-msgctxt "model:sale.handle.invoice.exception.ask,name:"
-msgid "Handle Invoice Exception"
-msgstr "Exceção da fatura do punho"
-
-msgctxt "model:sale.handle.shipment.exception.ask,name:"
-msgid "Handle Shipment Exception"
-msgstr "Manejar Exceção da Remessa"
-
-msgctxt "model:sale.line,name:"
-msgid "Sale Line"
-msgstr "Linha da fatura"
-
-msgctxt "model:sale.line-account.tax,name:"
-msgid "Sale Line - Tax"
-msgstr "Linha da venda - Imposto"
-
-msgctxt "model:sale.line-ignored-stock.move,name:"
-msgid "Sale Line - Ignored Move"
-msgstr "Linha da venda - Movimentação ignorado"
-
-msgctxt "model:sale.line-recreated-stock.move,name:"
-msgid "Sale Line - Recreated Move"
-msgstr "Linha da Fatura - Recriar movimentação"
-
-msgctxt "model:sale.reporting.context,name:"
-msgid "Sale Reporting Context"
-msgstr ""
-
-msgctxt "model:sale.reporting.country,name:"
-msgid "Sale Reporting per Country"
-msgstr ""
-
-msgctxt "model:sale.reporting.country.subdivision,name:"
-msgid "Sale Reporting per Subdivision"
-msgstr ""
-
-msgctxt "model:sale.reporting.country.subdivision.time_series,name:"
-msgid "Sale Reporting per Subdivision"
-msgstr ""
-
-msgctxt "model:sale.reporting.country.time_series,name:"
-msgid "Sale Reporting per Country"
-msgstr ""
-
-#, fuzzy
-msgctxt "model:sale.reporting.country.tree,name:"
-msgid "Sale Reporting per Country"
-msgstr "Sales per Category"
-
-msgctxt "model:sale.reporting.customer,name:"
-msgid "Sale Reporting per Customer"
-msgstr ""
-
-#, fuzzy
-msgctxt "model:sale.reporting.customer.category,name:"
-msgid "Sale Reporting per Customer Category"
-msgstr "Sales per Category"
-
-#, fuzzy
-msgctxt "model:sale.reporting.customer.category.time_series,name:"
-msgid "Sale Reporting per Customer Category"
-msgstr "Sales per Category"
-
-#, fuzzy
-msgctxt "model:sale.reporting.customer.category.tree,name:"
-msgid "Sale Reporting per Customer Category"
-msgstr "Sales per Category"
-
-msgctxt "model:sale.reporting.customer.time_series,name:"
-msgid "Sale Reporting per Customer"
-msgstr ""
-
-#, fuzzy
-msgctxt "model:sale.reporting.main,name:"
-msgid "Sale Reporting"
-msgstr "Reporting"
-
-#, fuzzy
-msgctxt "model:sale.reporting.main.time_series,name:"
-msgid "Sale Reporting"
-msgstr "Reporting"
-
-msgctxt "model:sale.reporting.product,name:"
-msgid "Sale Reporting per Product"
-msgstr ""
-
-#, fuzzy
-msgctxt "model:sale.reporting.product.category,name:"
-msgid "Sale Reporting per Product Category"
-msgstr "Sales per Category"
-
-#, fuzzy
-msgctxt "model:sale.reporting.product.category.time_series,name:"
-msgid "Sale Reporting per Product Category"
-msgstr "Sales per Category"
-
-#, fuzzy
-msgctxt "model:sale.reporting.product.category.tree,name:"
-msgid "Sale Reporting per Product Category"
-msgstr "Sales per Category"
-
-msgctxt "model:sale.reporting.product.time_series,name:"
-msgid "Sale Reporting per Product"
-msgstr ""
-
-#, fuzzy
-msgctxt "model:sale.reporting.region.tree,name:"
-msgid "Sale Reporting per Region"
-msgstr "Sales per Category"
-
-msgctxt "model:sale.return_sale.start,name:"
-msgid "Return Sale"
-msgstr "Criar Devolução de Venda"
-
-msgctxt "model:sale.sale,name:"
 msgid "Sale"
 msgstr "Venda"
 
-msgctxt "model:sale.sale-ignored-account.invoice,name:"
-msgid "Sale - Ignored Invoice"
-msgstr "Venda - Fatura ignorada"
+msgctxt "model:ir.sequence.type,name:sequence_type_sale"
+msgid "Sale"
+msgstr "Venda"
 
-msgctxt "model:sale.sale-recreated-account.invoice,name:"
-msgid "Sale - Recreated Invoice"
-msgstr "Venda - Recriar fatura"
+msgctxt "model:ir.ui.menu,name:menu_configuration"
+msgid "Configuration"
+msgstr "Configuração"
+
+msgctxt "model:ir.ui.menu,name:menu_product"
+msgid "Products"
+msgstr "Produtos"
+
+msgctxt "model:ir.ui.menu,name:menu_reporting"
+msgid "Reporting"
+msgstr "Relatórios"
+
+msgctxt "model:ir.ui.menu,name:menu_reporting_sale"
+msgid "Sales"
+msgstr "Vendas"
+
+msgctxt "model:ir.ui.menu,name:menu_sale"
+msgid "Sales"
+msgstr "Vendas"
+
+msgctxt "model:ir.ui.menu,name:menu_sale_configuration"
+msgid "Configuration"
+msgstr "Configuração"
+
+msgctxt "model:ir.ui.menu,name:menu_sale_form"
+msgid "Sales"
+msgstr "Vendas"
+
+msgctxt "model:party.party.customer_currency,string:"
+msgid "Party Customer Currency"
+msgstr "Moeda do Cliente"
+
+msgctxt "model:party.party.sale_method,string:"
+msgid "Party Sale Method"
+msgstr "Método de Venda de Festa"
+
+msgctxt "model:product.configuration.default_lead_time,string:"
+msgid "Product Configuration Default Lead Time"
+msgstr "Tempo de entrega padrão da configuração do produto"
+
+msgctxt "model:product.lead_time,string:"
+msgid "Product Lead Time"
+msgstr "Prazo de entrega do produto"
+
+msgctxt "model:product.sale.context,string:"
+msgid "Product Sale Context"
+msgstr "Contexto da Venda do Produto"
+
+msgctxt "model:res.group,name:group_sale"
+msgid "Sales"
+msgstr "Vendas"
+
+msgctxt "model:res.group,name:group_sale_admin"
+msgid "Sales Administrator"
+msgstr "Administrador das Vendas"
+
+msgctxt "model:sale.configuration,string:"
+msgid "Sale Configuration"
+msgstr "Configuração das Vendas"
+
+msgctxt "model:sale.configuration.quotation,string:"
+msgid "Sale Configuration Quotation"
+msgstr "Configuração da Cotação da Venda"
+
+msgctxt "model:sale.configuration.sale_method,string:"
+msgid "Sale Configuration Sale Method"
+msgstr "Configuração do Método de Venda"
+
+msgctxt "model:sale.configuration.sequence,string:"
+msgid "Sale Configuration Sequence"
+msgstr "Configuração da Sequência de Venda"
+
+msgctxt "model:sale.handle.invoice.exception.ask,string:"
+msgid "Sale Handle Invoice Exception Ask"
+msgstr "Resolver Questão da Fatura de Venda"
+
+msgctxt "model:sale.handle.shipment.exception.ask,string:"
+msgid "Sale Handle Shipment Exception Ask"
+msgstr "Resolver Questão do Envio de Venda"
+
+msgctxt "model:sale.line,string:"
+msgid "Sale Line"
+msgstr "Linha da Venda"
+
+msgctxt "model:sale.line-account.tax,string:"
+msgid "Sale Line - Account Tax"
+msgstr "Linha da Venda - Conta de Imposto"
+
+msgctxt "model:sale.line-ignored-stock.move,string:"
+msgid "Sale Line - Ignored - Stock Move"
+msgstr "Linha da Venda - Movimentação Ignorado"
+
+msgctxt "model:sale.line-recreated-stock.move,string:"
+msgid "Sale Line - Recreated - Stock Move"
+msgstr "Linha da Fatura - Recriar Movimentação"
+
+msgctxt "model:sale.reporting.context,string:"
+msgid "Sale Reporting Context"
+msgstr "Contexto do Relatório de Vendas"
+
+msgctxt "model:sale.reporting.country,string:"
+msgid "Sale Reporting Country"
+msgstr "Relatório de Vendas por País"
+
+msgctxt "model:sale.reporting.country.subdivision,string:"
+msgid "Sale Reporting Country Subdivision"
+msgstr "Relatório de Vendas por Estado"
+
+msgctxt "model:sale.reporting.country.subdivision.time_series,string:"
+msgid "Sale Reporting Country Subdivision Time Series"
+msgstr "Relatório de Vendas - Subdivisão de País - Séries Temporais"
+
+msgctxt "model:sale.reporting.country.time_series,string:"
+msgid "Sale Reporting Country Time Series"
+msgstr "Relatório de Vendas - Séries Temporais por País"
+
+msgctxt "model:sale.reporting.country.tree,string:"
+msgid "Sale Reporting Country Tree"
+msgstr "Relatório de Vendas Por País"
+
+msgctxt "model:sale.reporting.customer,string:"
+msgid "Sale Reporting Customer"
+msgstr "Relatório de Vendas por Cliente"
+
+msgctxt "model:sale.reporting.customer.category,string:"
+msgid "Sale Reporting Customer Category"
+msgstr "Relatório de Vendas por Categoria de Cliente"
+
+msgctxt "model:sale.reporting.customer.category.time_series,string:"
+msgid "Sale Reporting Customer Category Time Series"
+msgstr "Relatório de Vendas Categoria de Cliente Série temporal"
+
+msgctxt "model:sale.reporting.customer.category.tree,string:"
+msgid "Sale Reporting Customer Category Tree"
+msgstr "Árvore de categorias de Clientes de Relatórios de Vendas"
+
+msgctxt "model:sale.reporting.customer.time_series,string:"
+msgid "Sale Reporting Customer Time Series"
+msgstr "Relatório de Vendas - Séries Temporais do Cliente"
+
+msgctxt "model:sale.reporting.main,string:"
+msgid "Sale Reporting Main"
+msgstr "Relatório de Vendas Principal"
+
+msgctxt "model:sale.reporting.main.time_series,string:"
+msgid "Sale Reporting Main Time Series"
+msgstr "Relatório de Vendas - Séries Temporais Principais"
+
+msgctxt "model:sale.reporting.product,string:"
+msgid "Sale Reporting Product"
+msgstr "Relatório de Vendas por Produtos"
+
+msgctxt "model:sale.reporting.product.category,string:"
+msgid "Sale Reporting Product Category"
+msgstr "Relatório de Vendas por Categoria de Produto"
+
+msgctxt "model:sale.reporting.product.category.time_series,string:"
+msgid "Sale Reporting Product Category Time Series"
+msgstr "Relatório de Vendas Categoria do Produto da Série Temporal"
+
+msgctxt "model:sale.reporting.product.category.tree,string:"
+msgid "Sale Reporting Product Category Tree"
+msgstr "Árvore de Categorias de Produtos do Relatórios das Vendas"
+
+msgctxt "model:sale.reporting.product.time_series,string:"
+msgid "Sale Reporting Product Time Series"
+msgstr "Séries Temporais de Produtos de Relatórios de Vendas"
+
+msgctxt "model:sale.reporting.region.tree,string:"
+msgid "Sale Reporting Region Tree"
+msgstr "Árvore de Regiões dos Relatórios de Vendas"
+
+msgctxt "model:sale.return_sale.start,string:"
+msgid "Sale Return Sale Start"
+msgstr "Inicio da Criação da Devolução de Venda"
+
+msgctxt "model:sale.sale,string:"
+msgid "Sale"
+msgstr "Venda"
+
+msgctxt "model:sale.sale-ignored-account.invoice,string:"
+msgid "Sale - Ignored - Account Invoice"
+msgstr "Venda - Fatura Ignorada"
+
+msgctxt "model:sale.sale-recreated-account.invoice,string:"
+msgid "Sale - Recreated - Account Invoice"
+msgstr "Venda - Fatura Recriada"
 
 msgctxt "report:sale.sale:"
 msgid ":"
@@ -1509,10 +1454,9 @@ msgctxt "report:sale.sale:"
 msgid "Date:"
 msgstr "Data:"
 
-#, fuzzy
 msgctxt "report:sale.sale:"
 msgid "Delivery Address:"
-msgstr "Endereço para faturamento"
+msgstr "Endereço de Entrega:"
 
 msgctxt "report:sale.sale:"
 msgid "Description"
@@ -1525,6 +1469,10 @@ msgstr "Descrição:"
 msgctxt "report:sale.sale:"
 msgid "Draft Sale Order"
 msgstr "Rascunho de Ordem de Venda"
+
+msgctxt "report:sale.sale:"
+msgid "Expiration Date:"
+msgstr "Data de Expiração:"
 
 msgctxt "report:sale.sale:"
 msgid "Quantity"
@@ -1548,7 +1496,7 @@ msgstr "Impostos"
 
 msgctxt "report:sale.sale:"
 msgid "Taxes:"
-msgstr "Tributos"
+msgstr "Impostos:"
 
 msgctxt "report:sale.sale:"
 msgid "Total (excl. taxes):"
@@ -1570,6 +1518,10 @@ msgctxt "selection:account.invoice,sale_exception_state:"
 msgid "Recreated"
 msgstr "Recriado"
 
+msgctxt "selection:ir.cron,method:"
+msgid "Cancel Expired Sale Quotation"
+msgstr "Cancelar Cotação de Venda Expirada"
+
 msgctxt "selection:sale.line,type:"
 msgid "Comment"
 msgstr "Comentário"
@@ -1588,15 +1540,15 @@ msgstr "Título"
 
 msgctxt "selection:sale.reporting.context,period:"
 msgid "Day"
-msgstr ""
+msgstr "Dia"
 
 msgctxt "selection:sale.reporting.context,period:"
 msgid "Month"
-msgstr ""
+msgstr "Mês"
 
 msgctxt "selection:sale.reporting.context,period:"
 msgid "Year"
-msgstr ""
+msgstr "Ano"
 
 msgctxt "selection:sale.sale,invoice_method:"
 msgid "Manual"
@@ -1612,7 +1564,7 @@ msgstr "No Envio da Remessa"
 
 msgctxt "selection:sale.sale,invoice_state:"
 msgid "Awaiting Payment"
-msgstr ""
+msgstr "Aguardando Pagamento"
 
 msgctxt "selection:sale.sale,invoice_state:"
 msgid "Exception"
@@ -1628,11 +1580,11 @@ msgstr "Pago"
 
 msgctxt "selection:sale.sale,invoice_state:"
 msgid "Partially Paid"
-msgstr ""
+msgstr "Parcialmente Pago"
 
 msgctxt "selection:sale.sale,invoice_state:"
 msgid "Pending"
-msgstr ""
+msgstr "Pendente"
 
 msgctxt "selection:sale.sale,shipment_method:"
 msgid "Manual"
@@ -1656,7 +1608,7 @@ msgstr "Nenhum"
 
 msgctxt "selection:sale.sale,shipment_state:"
 msgid "Partially Shipped"
-msgstr ""
+msgstr "Parcialmente Enviado"
 
 msgctxt "selection:sale.sale,shipment_state:"
 msgid "Sent"
@@ -1666,7 +1618,6 @@ msgctxt "selection:sale.sale,shipment_state:"
 msgid "Waiting"
 msgstr "Espera"
 
-#, fuzzy
 msgctxt "selection:sale.sale,state:"
 msgid "Cancelled"
 msgstr "Cancelado"
@@ -1677,7 +1628,7 @@ msgstr "Confirmado"
 
 msgctxt "selection:sale.sale,state:"
 msgid "Done"
-msgstr "Feito"
+msgstr "Pronto"
 
 msgctxt "selection:sale.sale,state:"
 msgid "Draft"
@@ -1707,42 +1658,37 @@ msgctxt "view:product.template:"
 msgid "Customers"
 msgstr "Clientes"
 
-#, fuzzy
 msgctxt "view:sale.handle.invoice.exception.ask:"
 msgid "Choose cancelled invoices to ignore or recreate:"
-msgstr "Escolhe as Faturas para recriar"
+msgstr "Selecione faturas canceladas para ignorar ou recriar:"
 
-#, fuzzy
 msgctxt "view:sale.handle.shipment.exception.ask:"
 msgid "Choose cancelled stock moves to ignore or recreate:"
-msgstr "Escolha as movimentações a recriar"
+msgstr "Selecione movimentos de stock cancelados para ignorar ou recriar:"
 
 msgctxt "view:sale.line:"
 msgid "General"
 msgstr "Geral"
 
-#, fuzzy
 msgctxt "view:sale.line:"
 msgid "Invoicing"
-msgstr "Fatura"
+msgstr "Faturamento"
 
 msgctxt "view:sale.line:"
 msgid "Notes"
 msgstr "Observação"
 
-#, fuzzy
 msgctxt "view:sale.line:"
 msgid "Shipping"
-msgstr "Data da Remessa"
+msgstr "Remessa"
 
 msgctxt "view:sale.line:"
 msgid "Taxes"
 msgstr "Impostos"
 
-#, fuzzy
 msgctxt "view:sale.return_sale.start:"
 msgid "Are you sure to return these/this sale(s)?"
-msgstr "Tem certeza que deseja devolver estes pedidos de venda?"
+msgstr "Tem certeza de que deseja devolver esta(s) venda(s)?"
 
 msgctxt "view:sale.sale:"
 msgid "Other Info"
@@ -1768,14 +1714,13 @@ msgctxt "wizard_button:sale.handle.shipment.exception,ask,handle:"
 msgid "OK"
 msgstr "OK"
 
-#, fuzzy
 msgctxt "wizard_button:sale.modify_header,start,end:"
 msgid "Cancel"
 msgstr "Cancelar"
 
 msgctxt "wizard_button:sale.modify_header,start,modify:"
 msgid "Modify"
-msgstr ""
+msgstr "Modificar"
 
 msgctxt "wizard_button:sale.return_sale,start,end:"
 msgid "Cancel"

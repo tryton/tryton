@@ -5,6 +5,12 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgid "Make this an _internal message"
+msgstr "Faça disso uma mensagem interna"
+
+msgid "Send"
+msgstr "Enviar"
+
 msgid "specify alternate config file"
 msgstr "especificar arquivo de configuração alternativo"
 
@@ -20,7 +26,7 @@ msgstr ""
 "CRITICAL"
 
 msgid "specify the file used to output logging information"
-msgstr ""
+msgstr "especificar o arquivo para registrar informações do sistema"
 
 msgid "specify the login user"
 msgstr "Especifique o nome do usuário"
@@ -29,11 +35,11 @@ msgid "specify the server hostname:port"
 msgstr "Especifique o servidor hostname:porta"
 
 msgid "disable thread usage"
-msgstr ""
+msgstr "desabilitar uso de fios"
 
 #, python-format
 msgid "Invalid response id (%s) expected %s"
-msgstr ""
+msgstr "Resposta inválida id (%s) esperava-se %s"
 
 #, python-format
 msgid "Unable to set locale %s"
@@ -43,7 +49,7 @@ msgid ", "
 msgstr ", "
 
 msgid ",..."
-msgstr ""
+msgstr ",..."
 
 #, python-format
 msgid "%s (%s)"
@@ -85,18 +91,17 @@ msgstr "Não"
 msgid "Yes"
 msgstr "Sim"
 
-#, fuzzy
 msgid "Concurrency Warning"
-msgstr "Exceção de concorrência"
+msgstr "Alerta de concorrência"
 
 msgid "This record has been modified while you were editing it."
 msgstr "Este registro foi modificado enquanto você o editava."
 
 msgid "Cancel saving"
-msgstr "Cancelar"
+msgstr "Cancelar Salvamento"
 
 msgid "Compare"
-msgstr "Comparar"
+msgstr "\"Escrever mesmo assim\" para gravar sua versão atual"
 
 msgid "See the modified version"
 msgstr "Ver versão modificada"
@@ -107,7 +112,7 @@ msgstr "Gravar mesmo assim"
 msgid "Save your current version"
 msgstr "Gravar sua versão atual"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Compare: %s"
 msgstr "Comparar: %s"
 
@@ -118,21 +123,17 @@ msgid "Application Error"
 msgstr "Erro no programa"
 
 msgid "Details"
-msgstr ""
+msgstr "Detalhes"
 
 msgid "Report Bug"
-msgstr "Reportar erro (bug)"
+msgstr "Relatar Erro"
 
 #, python-format
 msgid "Check URL: %s"
 msgstr "Verificar URL: %s"
 
-#, fuzzy
 msgid "Unable to check for new version."
-msgstr "Não foi possível verificar por nova versão"
-
-msgid "A new version is available!"
-msgstr "Nova versão disponível!"
+msgstr "Não foi possível verificar por nova versão."
 
 msgid "Download"
 msgstr "Baixar"
@@ -140,31 +141,31 @@ msgstr "Baixar"
 msgid "Concurrency Exception"
 msgstr "Exceção de concorrência"
 
-#, fuzzy
 msgid "Could not get a session."
-msgstr "Não foi possível se conectar ao servidor"
+msgstr "Não foi possível iniciar uma sessão."
 
 #, python-format
 msgid "Error: \"%s\". Try again later."
-msgstr ""
+msgstr "Erro: \"%s\". Tente novamente mais tarde."
 
 msgid "Too many requests. Try again later."
-msgstr ""
+msgstr "Muitas solicitações. Tente novamente depois."
 
-#, fuzzy
 msgid "Not Found."
-msgstr "Nenhum resultado encontrado."
+msgstr "Não Encontrado."
 
 msgid "Reset forgotten password"
-msgstr ""
+msgstr "Redefinir senha esquecida"
 
 msgid "Send you an email to reset your password."
-msgstr ""
+msgstr "Envie um email para redefinir a sua senha."
 
 msgid ""
 "A request to reset your password has been sent.\n"
 "Please check your mailbox."
 msgstr ""
+"Foi enviada uma solicitação para redefinir a sua senha.\n"
+"Verifique a sua caixa de entrada, por favor."
 
 msgid "..."
 msgstr "..."
@@ -175,7 +176,7 @@ msgstr "<i>Buscar...</i>"
 msgid "<i>Create...</i>"
 msgstr "<i>Criar...</i>"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Create \"%s\"..."
 msgstr "Crie \"%s\"..."
 
@@ -213,21 +214,19 @@ msgid "False"
 msgstr "Falso"
 
 msgid "Digits"
-msgstr ""
+msgstr "Dígitos"
 
 msgid "The number of decimal"
-msgstr ""
+msgstr "O número de decimais"
 
-#, fuzzy
 msgid "Template"
-msgstr "Relacionar"
+msgstr "Modelo"
 
 msgid "Edit..."
 msgstr "Editar..."
 
-#, fuzzy
 msgid "View Logs..."
-msgstr "Ver _Logs..."
+msgstr "Ver Logs..."
 
 msgid "Attachments..."
 msgstr "Anexos..."
@@ -251,28 +250,28 @@ msgid "Email..."
 msgstr "Email..."
 
 msgid "Bold"
-msgstr ""
+msgstr "Negrito"
 
 msgid "Italic"
-msgstr ""
+msgstr "Itálico"
 
 msgid "Underline"
-msgstr ""
+msgstr "Sublinhado"
 
 msgid "Align Left"
-msgstr ""
+msgstr "Alinhar à esquerda"
 
 msgid "Align Center"
-msgstr ""
+msgstr "Alinhar ao centro"
 
 msgid "Align Right"
-msgstr ""
+msgstr "Alinhar à direita"
 
 msgid "Justify"
-msgstr ""
+msgstr "Justificar"
 
 msgid "Foreground Color"
-msgstr ""
+msgstr "Cor de fundo"
 
 msgid "Select a color"
 msgstr "Selecione uma cor"
@@ -320,7 +319,7 @@ msgid "Form"
 msgstr "Formulário"
 
 msgid "Save Column Width"
-msgstr ""
+msgstr "Salvar largura da coluna"
 
 msgid "Save Tree State"
 msgstr "Gravar Estado da Árvore"
@@ -329,7 +328,7 @@ msgid "Spell Checking"
 msgstr "Verificar Ortografia"
 
 msgid "Play Sound for Code Scanner"
-msgstr ""
+msgstr "Executar Som do Código do Scanner"
 
 msgid "PDA Mode"
 msgstr "Modo dispositivo portátil"
@@ -343,9 +342,8 @@ msgstr "Verificar Versão"
 msgid "Options"
 msgstr "Opções"
 
-#, fuzzy
 msgid "Documentation..."
-msgstr "Ações..."
+msgstr "Documentação..."
 
 msgid "Keyboard Shortcuts..."
 msgstr "Atalhos..."
@@ -366,8 +364,8 @@ msgid ""
 "The following action requires to close all tabs.\n"
 "Do you want to continue?"
 msgstr ""
-"A ação seguinte requer que todas as abas sejam fechadas.\n"
-"Você deseja prosseguir?"
+"A seguinte ação requer que todas as abas sejam fechadas.\n"
+"Você deseja continuar?"
 
 msgid "Application Shortcuts"
 msgstr "Atalhos"
@@ -433,16 +431,16 @@ msgid "Switch view"
 msgstr "Alternar exibição"
 
 msgid "Create/Select new line"
-msgstr ""
+msgstr "Criar/Selecionar nova linha"
 
 msgid "Open relation"
 msgstr "Abrir relação"
 
 msgid "Mark line for deletion/removal"
-msgstr ""
+msgstr "Marcar linha para deletar/remover"
 
 msgid "Mark line for removal"
-msgstr ""
+msgstr "Marcar linha para remover"
 
 msgid "Unmark line for deletion"
 msgstr "Desmarcar linha para apagar"
@@ -480,16 +478,14 @@ msgstr "Mover para o final"
 msgid "Move to parent"
 msgstr "Mover para o pai"
 
-#, fuzzy
 msgid "Edition"
-msgstr "Editar"
+msgstr "Edição"
 
-#, fuzzy
 msgid "Copy selected rows"
-msgstr "Copiar o texto selecionado"
+msgstr "Copiar linhas selecionadas"
 
 msgid "Insert copied rows"
-msgstr ""
+msgstr "Inserir linhas copiadas"
 
 msgid "Select all"
 msgstr "Selecionar todos"
@@ -540,10 +536,10 @@ msgid "Attachments (%s)"
 msgstr "Anexos (%s)"
 
 msgid "Code Scanner"
-msgstr ""
+msgstr "Leitor de Código"
 
 msgid "Code"
-msgstr ""
+msgstr "Código"
 
 msgid "Profile Editor"
 msgstr "Editor de Perfil"
@@ -569,13 +565,11 @@ msgstr "Obtendo a lista de bancos de dados"
 msgid "Username:"
 msgstr "Usuário:"
 
-#, fuzzy
 msgid "Incompatible version of the server."
-msgstr "Versão do servidor incompatível"
+msgstr "Versão incompatível do servidor."
 
-#, fuzzy
 msgid "Could not connect to the server."
-msgstr "Não foi possível se conectar ao servidor"
+msgstr "Não foi possível conectar-se ao servidor."
 
 msgid "Login"
 msgstr "Entrar"
@@ -602,54 +596,44 @@ msgid "Host / Database information"
 msgstr "Informações do Servidor / Banco de Dados"
 
 msgid "User name:"
-msgstr "Nome de Usuário:"
+msgstr "Nome do Usuário:"
 
-#, fuzzy
 msgid "Unable to complete email entry"
-msgstr "Não é possível apagar o assistente %s"
+msgstr "Não é possível completar conteúdo do email"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Email %s"
 msgstr "Email %s"
 
 msgid "To:"
 msgstr "Para:"
 
-#, fuzzy
 msgid "Cc:"
-msgstr "CC:"
+msgstr "Cc:"
 
 msgid "Bcc:"
-msgstr ""
+msgstr "Cco:"
 
 msgid "Subject:"
 msgstr "Assunto:"
 
-#, fuzzy
 msgid "Body"
-msgstr "Conteúdo:"
+msgstr "Corpo do Conteúdo"
 
-#, fuzzy
 msgid "Reports"
-msgstr "Relatório"
+msgstr "Relatórios"
 
-#, fuzzy
 msgid "Attachments"
-msgstr "Anexo:"
+msgstr "Anexos"
 
 msgid "Files"
-msgstr ""
+msgstr "Arquivos"
 
-msgid "Send"
-msgstr ""
-
-#, fuzzy
 msgid "Select File"
-msgstr "Selecionar todos"
+msgstr "Selecionar Arquivo"
 
-#, fuzzy
 msgid "Remove File"
-msgstr "Remover <Del>"
+msgstr "Remover Arquivo"
 
 msgid "Select"
 msgstr "Selecionar"
@@ -657,9 +641,8 @@ msgstr "Selecionar"
 msgid "Add..."
 msgstr "Adicionar..."
 
-#, fuzzy
 msgid "Preview"
-msgstr "Anterior"
+msgstr "Pré-visualização"
 
 msgid "Previous"
 msgstr "Anterior"
@@ -667,16 +650,16 @@ msgstr "Anterior"
 msgid "Next"
 msgstr "Próximo"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Attachment (%s)"
-msgstr "Anexos (%s)"
+msgstr "Anexo (%s)"
 
 #, python-format
 msgid "Note (%d/%d)"
-msgstr ""
+msgstr "Nota (%d/%d)"
 
 msgid "You have to select one record."
-msgstr "Você precisa selecionar um registo."
+msgstr "É necessário selecionar um registro."
 
 msgid "Are you sure to remove this record?"
 msgstr "Você tem certeza que deseja apagar este registro?"
@@ -685,23 +668,23 @@ msgid "Are you sure to remove those records?"
 msgstr "Você tem certeza que deseja apagar estes registros?"
 
 msgid "Records not removed."
-msgstr "Registros não apagados."
+msgstr "Registros não excluídos."
 
 msgid "Records removed."
-msgstr "Registos apagados."
+msgstr "Registros excluídos."
 
 msgid "Working now on the duplicated record(s)."
-msgstr "Trabalhando agora no(s) registo(s) duplicado(s)"
+msgstr "Trabalhando agora no(s) registro(s) duplicado(s)."
 
 msgid "Record saved."
-msgstr "Registo gravado."
+msgstr "Registro salvo."
 
 msgid ""
 "This record has been modified\n"
 "do you want to save it?"
 msgstr ""
-"Este registo foi modificado\n"
-"você deseja gravá-lo?"
+"Este registro foi modificado\n"
+"você deseja salvá-lo?"
 
 msgid "Launch action"
 msgstr "Executar ação"
@@ -753,26 +736,22 @@ msgid "ID:"
 msgstr "ID:"
 
 msgid "Module:"
-msgstr ""
+msgstr "Módulo:"
 
 msgid "XML ID:"
-msgstr ""
+msgstr "ID do XML:"
 
-#, fuzzy
 msgid "Created by:"
-msgstr "Data de criação"
+msgstr "Criado por:"
 
-#, fuzzy
 msgid "Created at:"
-msgstr "Data de criação"
+msgstr "Criado em:"
 
-#, fuzzy
 msgid "Last Modified by:"
-msgstr "Última Modificação por:"
+msgstr "Modificado pela Última vez por:"
 
-#, fuzzy
 msgid "Last Modified at:"
-msgstr "Data da última modificação:"
+msgstr "Última Modificação em:"
 
 #, python-format
 msgid "Notes (%s)"
@@ -856,11 +835,18 @@ msgstr "_Notas..."
 msgid "Add a note to the record"
 msgstr "Adicionar uma nota ao registro"
 
+msgid "C_hat"
+msgstr "Bater Papo"
+
+#, fuzzy
+msgid "Chat on the record"
+msgstr "Adicionar uma nota ao registro"
+
 msgid "_Actions..."
 msgstr "_Ações..."
 
 msgid "_Relate..."
-msgstr "_Relacionar"
+msgstr "_Relacionar..."
 
 msgid "_Report..."
 msgstr "_Relatório..."
@@ -868,13 +854,11 @@ msgstr "_Relatório..."
 msgid "_Print..."
 msgstr "_Imprimir..."
 
-#, fuzzy
 msgid "_Email..."
-msgstr "Email..."
+msgstr "_Email..."
 
-#, fuzzy
 msgid "Send an email using the record"
-msgstr "Adicionar uma nota ao registro"
+msgstr "Enviar um email utilizando o registro"
 
 msgid "_Export Data..."
 msgstr "_Exportar Dados..."
@@ -916,7 +900,7 @@ msgid "Encoding:"
 msgstr "Codificação:"
 
 msgid "Use locale format"
-msgstr ""
+msgstr "Usar formato local"
 
 msgid "Field name"
 msgstr "Nome do campo"
@@ -931,9 +915,8 @@ msgstr "Abrir"
 msgid "_Save Export"
 msgstr "_Gravar exportação"
 
-#, fuzzy
 msgid "_URL Export"
-msgstr "_Gravar exportação"
+msgstr "_Exportar URL"
 
 msgid "_Delete Export"
 msgstr "_Apagar exportação"
@@ -944,20 +927,17 @@ msgstr "<b>Exportações pré-definidas</b>"
 msgid "Name"
 msgstr "Nome"
 
-#, fuzzy
 msgid "Listed Records"
-msgstr "Editar o registro selecionado <F2>"
+msgstr "Registros Listados"
 
-#, fuzzy
 msgid "Selected Records"
-msgstr "Editar o registro selecionado <F2>"
+msgstr "Registros Selecionados"
 
 msgid "Ignore search limit"
-msgstr ""
+msgstr "Ignorar o limite de busca"
 
-#, fuzzy
 msgid "Add field names"
-msgstr "Adicionar _nomes de campos"
+msgstr "Adicionar nomes de campos"
 
 #, python-format
 msgid "%s (string)"
@@ -967,9 +947,9 @@ msgstr "%s (texto)"
 msgid "%s (model name)"
 msgstr "%s (nome do modelo)"
 
-#, fuzzy, python-format
+#, python-format
 msgid "%s/Record Name"
-msgstr "%s (nome do registro)"
+msgstr "%s/Nome do registro"
 
 msgid "What is the name of this export?"
 msgstr "Qual é o nome dessa exportação?"
@@ -980,14 +960,12 @@ msgstr "Sobrescrever a definição '%s'?"
 
 #, python-format
 msgid "%d record saved."
-msgstr "%d registro gravado."
-
-#, python-format
-msgid "%d records saved."
-msgstr "%d registros gravados."
+msgid_plural "%d records saved."
+msgstr[0] "%d registro salvo."
+msgstr[1] "%d registros salvos."
 
 msgid "Export failed"
-msgstr ""
+msgstr "Falha na exportação"
 
 msgid "Link"
 msgstr "Vínculo"
@@ -996,14 +974,13 @@ msgid "Delete"
 msgstr "Apagar"
 
 msgid "Discard changes"
-msgstr ""
+msgstr "Descartar mudanças"
 
 msgid "Save and New"
-msgstr ""
+msgstr "Salvar e Novo"
 
-#, fuzzy
 msgid "Add and New"
-msgstr "Adicionar valor"
+msgstr "Adicionar e Novo"
 
 msgid "Save"
 msgstr "Gravar"
@@ -1012,7 +989,7 @@ msgid "Add"
 msgstr "Adicionar"
 
 msgid "Apply changes"
-msgstr ""
+msgstr "Aplicar mudanças"
 
 msgid "Switch"
 msgstr "Alternar"
@@ -1033,9 +1010,8 @@ msgstr "Recuperar o registro selecionado <Ins>"
 msgid "CSV Import: %s"
 msgstr "Importar CSV: %s"
 
-#, fuzzy
 msgid "Import"
-msgstr "Relatório"
+msgstr "Importar"
 
 msgid "_Auto-Detect"
 msgstr "_Auto-Detectar"
@@ -1050,28 +1026,26 @@ msgid "Lines to Skip:"
 msgstr "Linhas a ignorar:"
 
 msgid "You must select an import file first."
-msgstr "Primeiro você deve selecionar um arquivo para importar."
+msgstr "Você deve selecionar um arquivo para importar primeiro."
 
 msgid "Detection failed"
-msgstr ""
+msgstr "Falha da detecção"
 
 #, python-format
 msgid "Unknown column header \"%s\""
-msgstr ""
+msgstr "Cabeçalho \"%s\" desconhecido"
 
 msgid "Error"
 msgstr "Erro"
 
 msgid "Import failed"
-msgstr ""
+msgstr "Falha na importação"
 
 #, python-format
 msgid "%d record imported."
-msgstr "%d registros importados."
-
-#, python-format
-msgid "%d records imported."
-msgstr "%d registros importados."
+msgid_plural "%d records imported."
+msgstr[0] "%d registro importado."
+msgstr[1] "%d registros importados."
 
 msgid "Search"
 msgstr "Busca"
@@ -1089,36 +1063,32 @@ msgstr "Assistente"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgid "Created by"
-msgstr "Data de criação"
+msgstr "Criardo por"
 
-#, fuzzy
 msgid "Created at"
-msgstr "Data de criação"
+msgstr "Criado em"
 
-#, fuzzy
 msgid "Edited by"
-msgstr "Editar"
+msgstr "Editado por"
 
-#, fuzzy
 msgid "Edited at"
-msgstr "Editar"
+msgstr "Editado em"
 
 msgid "Unable to set view tree state"
 msgstr "Não foi possível definir o estado da visão em árvore"
 
-#, fuzzy, python-format
+#, python-format
 msgid "\"%s\" is not valid according to its domain."
-msgstr "\"%s\" não é válido de acordo com seu domínio"
+msgstr "\"%s\" não é válido de acordo com seu domínio."
 
-#, fuzzy, python-format
+#, python-format
 msgid "\"%s\" is required."
-msgstr "\"%s\" é obrigatório"
+msgstr "\"%s\" é obrigatório."
 
-#, fuzzy, python-format
+#, python-format
 msgid "The values of \"%s\" are not valid."
-msgstr "Os valores de \"%s\" não são válidos"
+msgstr "Os valores de \"%s\" não são válidos."
 
 msgid "Pre-validation"
 msgstr "Pré-validação"
@@ -1127,7 +1097,7 @@ msgid ":"
 msgstr ":"
 
 msgid "Scan"
-msgstr ""
+msgstr "Escaneamento"
 
 msgid "Image Size"
 msgstr "Tamanho da imagem"
@@ -1147,22 +1117,24 @@ msgstr "Salvar como"
 msgid "Image size too large."
 msgstr "Imagem muito grande."
 
+#, fuzzy
+msgid "Reset Column Widths"
+msgstr "Salvar largura da coluna"
+
 msgid "Copy"
-msgstr ""
+msgstr "Copiar"
 
-#, fuzzy
 msgid "Copy Row"
-msgstr "_Copiar URL"
+msgstr "Copiar Linha"
 
-#, fuzzy
 msgid "Copy Rows"
-msgstr "_Copiar URL"
+msgstr "Copiar Linhas"
 
 msgid "Copy Column"
-msgstr ""
+msgstr "Copiar Coluna"
 
 msgid "Paste Rows"
-msgstr ""
+msgstr "Colar Linhas"
 
 msgid ".."
 msgstr ".."
@@ -1207,14 +1179,13 @@ msgid "next year"
 msgstr "próximo ano"
 
 msgid "Day"
-msgstr ""
+msgstr "Dia"
 
 msgid "Week"
 msgstr "Semana"
 
-#, fuzzy
 msgid "Month"
-msgstr "Visão Mensal"
+msgstr "Mês"
 
 msgid "Select..."
 msgstr "Selecionar..."
@@ -1227,6 +1198,10 @@ msgstr "Todos os arquivos"
 
 msgid "Show plain text"
 msgstr "Mostrar em formato texto"
+
+#, python-format
+msgid "Select a color for \"%s\""
+msgstr "Selecione uma cor para \"%s\""
 
 msgid "Add value"
 msgstr "Adicionar valor"
@@ -1244,9 +1219,8 @@ msgstr "Adicionar um registro existente"
 msgid "Remove selected record"
 msgstr "Remover o registro selecionado"
 
-#, fuzzy
 msgid "Restore selected record"
-msgstr "Remover o registro selecionado"
+msgstr "Restaurar registro selecionado"
 
 msgid "Open the record <F2>"
 msgstr "Abrir o registro <F2>"
@@ -1257,24 +1231,21 @@ msgstr "Apagar o registro <Del>"
 msgid "Search a record <F2>"
 msgstr "Buscar um registro <F2>"
 
-#, fuzzy
 msgid "Edit selected record"
-msgstr "Editar o registro selecionado <F2>"
+msgstr "Editar registro selecionado"
 
-#, fuzzy
 msgid "Delete selected record"
-msgstr "Remover o registro selecionado"
+msgstr "Deletar registro selecionado"
 
-#, fuzzy
 msgid "Undelete selected record"
-msgstr "Remover o registro selecionado"
+msgstr "Desfazer deleção do registro selecionado"
 
 #, python-format
 msgid "%s%%"
 msgstr "%s%%"
 
 msgid "Choose a language"
-msgstr ""
+msgstr "Selecione um idioma"
 
 msgid "Translation"
 msgstr "Tradução"
@@ -1286,13 +1257,13 @@ msgid "Fuzzy"
 msgstr "Vago"
 
 msgid "You need to save the record before adding translations."
-msgstr "Você precisa salvar o registro antes de adicionar traduções."
+msgstr "É necessário salvar o registro antes de adicionar traduções."
 
 msgid "No other language available."
 msgstr "Não há outros idiomas disponíveis."
 
 msgid "#ERROR"
-msgstr ""
+msgstr "#ERRO"
 
 msgid "Translate view"
 msgstr "Traduzir visão"

@@ -89,12 +89,50 @@ msgctxt "help:account.period,es_sii_send_invoices:"
 msgid "Check to create SII records for the invoices in the period."
 msgstr "Marcar para crear registros SII para las facturas del periodo."
 
-msgctxt "model:account.credential.sii,name:"
-msgid "Account Credential SII"
+msgctxt "help:account.tax,es_sii_tax_key:"
+msgid "Exempt by Art. 20"
+msgstr "Exento por el Art. 20"
+
+msgctxt "help:account.tax,es_sii_tax_key:"
+msgid "Exempt by Art. 21"
+msgstr "Exento por el Art. 21"
+
+msgctxt "help:account.tax,es_sii_tax_key:"
+msgid "Exempt by Art. 22"
+msgstr "Exento por el Art. 22"
+
+msgctxt "help:account.tax,es_sii_tax_key:"
+msgid "Exempt by Art. 24"
+msgstr "Exento por el Art. 24"
+
+msgctxt "help:account.tax,es_sii_tax_key:"
+msgid "Exempt by Art. 25"
+msgstr "Exento por el Art. 25"
+
+msgctxt "help:account.tax,es_sii_tax_key:"
+msgid "Exempt others"
+msgstr "Extenta por otros motivos"
+
+msgctxt "help:account.tax,es_sii_tax_key:"
+msgid "Not exempt - No passive subject investment"
+msgstr "No exenta- Sin inversion sujeto pasivo"
+
+msgctxt "help:account.tax,es_sii_tax_key:"
+msgid "Not exempt - With passive subject investment"
+msgstr "No exenta- Con inversion sujeto pasivo"
+
+msgctxt "help:account.tax,es_sii_tax_key:"
+msgid ""
+"Not exempt - Without investment by the taxpayer and with investment by the "
+"taxpayer"
+msgstr "No exenta - Sin inversion sujeto pasivo y con inversion sujeto Pasivo"
+
+msgctxt "model:account.credential.sii,string:"
+msgid "Account Credential Sii"
 msgstr "Contabilidad Credenciales SII"
 
-msgctxt "model:account.invoice.sii,name:"
-msgid "Invoice SII"
+msgctxt "model:account.invoice.sii,string:"
+msgid "Account Invoice Sii"
 msgstr "Factura SII"
 
 msgctxt "model:ir.action,name:act_invoice_sii_form"

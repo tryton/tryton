@@ -2,21 +2,18 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-#, fuzzy
 msgctxt "field:account.configuration,default_customer_payment_term:"
 msgid "Default Customer Payment Term"
-msgstr "Prazo de Pagamento do Cliente"
+msgstr "Prazo Padrão de Pagamento do Cliente"
 
-#, fuzzy
 msgctxt "field:account.configuration.default_payment_term,company:"
 msgid "Company"
 msgstr "Empresa"
 
-#, fuzzy
 msgctxt ""
 "field:account.configuration.default_payment_term,default_customer_payment_term:"
 msgid "Default Customer Payment Term"
-msgstr "Prazo de Pagamento do Cliente"
+msgstr "Prazo Padrão de Pagamento do Cliente"
 
 msgctxt "field:account.fiscalyear,invoice_sequences:"
 msgid "Invoice Sequences"
@@ -52,7 +49,7 @@ msgstr "Período"
 
 msgctxt "field:account.invoice,account:"
 msgid "Account"
-msgstr "Contas"
+msgstr "Conta"
 
 msgctxt "field:account.invoice,accounting_date:"
 msgid "Accounting Date"
@@ -60,16 +57,15 @@ msgstr "Data de Contabilização"
 
 msgctxt "field:account.invoice,additional_moves:"
 msgid "Additional Moves"
-msgstr ""
+msgstr "Movimentos Adicionais"
 
-#, fuzzy
 msgctxt "field:account.invoice,allow_cancel:"
 msgid "Allow Cancel Invoice"
-msgstr "Cancel the invoice"
+msgstr "Permitir Cancelar Fatura"
 
 msgctxt "field:account.invoice,alternative_payees:"
 msgid "Alternative Payee"
-msgstr ""
+msgstr "Alternativa de Pagamento"
 
 msgctxt "field:account.invoice,amount_to_pay:"
 msgid "Amount to Pay"
@@ -107,19 +103,17 @@ msgctxt "field:account.invoice,description:"
 msgid "Description"
 msgstr "Descrição"
 
-#, fuzzy
 msgctxt "field:account.invoice,has_account_move:"
 msgid "Has Account Move"
-msgstr "Contas"
+msgstr "Tem Lançamentos Contábeis"
 
-#, fuzzy
 msgctxt "field:account.invoice,has_payment_method:"
 msgid "Has Payment Method"
-msgstr "Simulação do Prazo de Pagamento"
+msgstr "Tem Método de Pagamento"
 
 msgctxt "field:account.invoice,has_report_cache:"
 msgid "Has Report Cached"
-msgstr ""
+msgstr "Tem Relatório em Cache"
 
 msgctxt "field:account.invoice,invoice_address:"
 msgid "Invoice Address"
@@ -141,10 +135,9 @@ msgctxt "field:account.invoice,invoice_report_format:"
 msgid "Invoice Report Format"
 msgstr "Formato do Relatório de Faturas"
 
-#, fuzzy
 msgctxt "field:account.invoice,invoice_report_revisions:"
 msgid "Invoice Report Revisions"
-msgstr "Relatório de Faturas"
+msgstr "Revisões de Relatórios de Faturas"
 
 msgctxt "field:account.invoice,journal:"
 msgid "Journal"
@@ -152,7 +145,7 @@ msgstr "Diário"
 
 msgctxt "field:account.invoice,line_lines:"
 msgid "Line - Lines"
-msgstr ""
+msgstr "Linhas da Linha"
 
 msgctxt "field:account.invoice,lines:"
 msgid "Lines"
@@ -172,7 +165,7 @@ msgstr "Numero"
 
 msgctxt "field:account.invoice,origins:"
 msgid "Origins"
-msgstr "Origem"
+msgstr "Origens"
 
 msgctxt "field:account.invoice,party:"
 msgid "Party"
@@ -194,21 +187,18 @@ msgctxt "field:account.invoice,payment_term:"
 msgid "Payment Term"
 msgstr "Prazo de Pagamento"
 
-#, fuzzy
 msgctxt "field:account.invoice,payment_term_date:"
 msgid "Payment Term Date"
-msgstr "Prazo de Pagamento"
+msgstr "Data do prazo de pagamento"
 
-#, fuzzy
 msgctxt "field:account.invoice,posted_by:"
 msgid "Posted By"
-msgstr "Posted"
+msgstr "Contabilizado Por"
 
 msgctxt "field:account.invoice,reconciled:"
 msgid "Reconciled"
 msgstr "Conciliado"
 
-#, fuzzy
 msgctxt "field:account.invoice,reconciliation_lines:"
 msgid "Payment Lines"
 msgstr "Linhas de Pagamento"
@@ -217,14 +207,13 @@ msgctxt "field:account.invoice,reference:"
 msgid "Reference"
 msgstr "Referência"
 
-#, fuzzy
 msgctxt "field:account.invoice,sequence:"
 msgid "Sequence"
 msgstr "Sequência"
 
 msgctxt "field:account.invoice,sequence_type_cache:"
 msgid "Sequence Type Cache"
-msgstr ""
+msgstr "Cache de Tipo de Sequência"
 
 msgctxt "field:account.invoice,state:"
 msgid "State"
@@ -234,10 +223,9 @@ msgctxt "field:account.invoice,tax_amount:"
 msgid "Tax"
 msgstr "Impostos"
 
-#, fuzzy
 msgctxt "field:account.invoice,tax_amount_cache:"
 msgid "Tax Cache"
-msgstr "Código do Tributo"
+msgstr "Cache de Impostos"
 
 msgctxt "field:account.invoice,tax_identifier:"
 msgid "Tax Identifier"
@@ -251,10 +239,9 @@ msgctxt "field:account.invoice,total_amount:"
 msgid "Total"
 msgstr "Total"
 
-#, fuzzy
 msgctxt "field:account.invoice,total_amount_cache:"
 msgid "Total Cache"
-msgstr "Total"
+msgstr "Cache Total"
 
 msgctxt "field:account.invoice,type:"
 msgid "Type"
@@ -268,15 +255,13 @@ msgctxt "field:account.invoice,untaxed_amount:"
 msgid "Untaxed"
 msgstr "Não tributado"
 
-#, fuzzy
 msgctxt "field:account.invoice,untaxed_amount_cache:"
 msgid "Untaxed Cache"
-msgstr "Não tributado"
+msgstr "Cache sim Impostos"
 
-#, fuzzy
 msgctxt "field:account.invoice,validated_by:"
 msgid "Validated By"
-msgstr "Validated"
+msgstr "Validado Por"
 
 msgctxt "field:account.invoice-account.move.line,invoice:"
 msgid "Invoice"
@@ -284,41 +269,36 @@ msgstr "Fatura"
 
 msgctxt "field:account.invoice-account.move.line,invoice_account:"
 msgid "Invoice Account"
-msgstr ""
+msgstr "Conta da Fatura"
 
-#, fuzzy
 msgctxt "field:account.invoice-account.move.line,invoice_alternative_payees:"
 msgid "Invoice Alternative Payees"
-msgstr "Estado da Fatura"
+msgstr "Beneficiários Alternativos de Fatura"
 
-#, fuzzy
 msgctxt "field:account.invoice-account.move.line,invoice_party:"
 msgid "Invoice Party"
-msgstr "Data da Fatura"
+msgstr "Fatura da Pessoa"
 
 msgctxt "field:account.invoice-account.move.line,line:"
 msgid "Payment Line"
 msgstr "Linha de Pagamento"
 
-#, fuzzy
 msgctxt "field:account.invoice-additional-account.move,invoice:"
 msgid "Invoice"
 msgstr "Fatura"
 
 msgctxt "field:account.invoice-additional-account.move,move:"
 msgid "Additional Move"
-msgstr ""
+msgstr "Lançamento Adicional"
 
-#, fuzzy
 msgctxt "field:account.invoice.alternative_payee,invoice:"
 msgid "Invoice"
 msgstr "Fatura"
 
 msgctxt "field:account.invoice.alternative_payee,party:"
 msgid "Payee"
-msgstr ""
+msgstr "Beneficiário"
 
-#, fuzzy
 msgctxt "field:account.invoice.credit.start,invoice_date:"
 msgid "Invoice Date"
 msgstr "Data da Fatura"
@@ -333,7 +313,7 @@ msgstr "Com Devolução Permitida"
 
 msgctxt "field:account.invoice.line,account:"
 msgid "Account"
-msgstr "Contas"
+msgstr "Conta"
 
 msgctxt "field:account.invoice.line,amount:"
 msgid "Amount"
@@ -355,12 +335,10 @@ msgctxt "field:account.invoice.line,invoice:"
 msgid "Invoice"
 msgstr "Fatura"
 
-#, fuzzy
 msgctxt "field:account.invoice.line,invoice_description:"
 msgid "Invoice Description"
-msgstr "Descrição"
+msgstr "Descrição da Fatura"
 
-#, fuzzy
 msgctxt "field:account.invoice.line,invoice_party:"
 msgid "Party"
 msgstr "Pessoa"
@@ -397,10 +375,9 @@ msgctxt "field:account.invoice.line,product:"
 msgid "Product"
 msgstr "Produto"
 
-#, fuzzy
 msgctxt "field:account.invoice.line,product_uom_category:"
 msgid "Product UoM Category"
-msgstr "Categoria da UDM do Produto"
+msgstr "Categoria da UdM do Produto"
 
 msgctxt "field:account.invoice.line,quantity:"
 msgid "Quantity"
@@ -408,21 +385,19 @@ msgstr "Quantidade"
 
 msgctxt "field:account.invoice.line,summary:"
 msgid "Summary"
-msgstr ""
+msgstr "Sumário"
 
 msgctxt "field:account.invoice.line,taxes:"
 msgid "Taxes"
 msgstr "Impostos"
 
-#, fuzzy
 msgctxt "field:account.invoice.line,taxes_date:"
 msgid "Taxes Date"
-msgstr "Impostos"
+msgstr "Data dos Impostos"
 
-#, fuzzy
 msgctxt "field:account.invoice.line,taxes_deductible_rate:"
 msgid "Taxes Deductible Rate"
-msgstr "Impostos"
+msgstr "Taxa Dedutíveis de Impostos"
 
 msgctxt "field:account.invoice.line,type:"
 msgid "Type"
@@ -456,7 +431,6 @@ msgctxt "field:account.invoice.pay.ask,company:"
 msgid "Company"
 msgstr "Empresa"
 
-#, fuzzy
 msgctxt "field:account.invoice.pay.ask,currency:"
 msgid "Currency"
 msgstr "Moeda"
@@ -481,16 +455,14 @@ msgctxt "field:account.invoice.pay.ask,type:"
 msgid "Type"
 msgstr "Tipo"
 
-#, fuzzy
 msgctxt "field:account.invoice.pay.ask,writeoff:"
 msgid "Write Off"
-msgstr "Perdas e Lucros"
+msgstr "Baixa Contábil"
 
 msgctxt "field:account.invoice.pay.start,amount:"
 msgid "Amount"
 msgstr "Montante"
 
-#, fuzzy
 msgctxt "field:account.invoice.pay.start,company:"
 msgid "Company"
 msgstr "Empresa"
@@ -509,39 +481,36 @@ msgstr "Descrição"
 
 msgctxt "field:account.invoice.pay.start,invoice_account:"
 msgid "Invoice Account"
-msgstr ""
+msgstr "Conta da Fatura"
 
 msgctxt "field:account.invoice.pay.start,payee:"
 msgid "Payee"
-msgstr ""
+msgstr "Beneficiário"
 
 msgctxt "field:account.invoice.pay.start,payees:"
 msgid "Payees"
-msgstr ""
+msgstr "Beneficiários"
 
 msgctxt "field:account.invoice.pay.start,payment_method:"
 msgid "Payment Method"
-msgstr ""
+msgstr "Método de Pagamento"
 
-#, fuzzy
 msgctxt "field:account.invoice.payment.method,company:"
 msgid "Company"
 msgstr "Empresa"
 
 msgctxt "field:account.invoice.payment.method,credit_account:"
 msgid "Credit Account"
-msgstr ""
+msgstr "Conta de Crédito"
 
 msgctxt "field:account.invoice.payment.method,debit_account:"
 msgid "Debit Account"
-msgstr ""
+msgstr "Conta de Débito"
 
-#, fuzzy
 msgctxt "field:account.invoice.payment.method,journal:"
 msgid "Journal"
 msgstr "Diário"
 
-#, fuzzy
 msgctxt "field:account.invoice.payment.method,name:"
 msgid "Name"
 msgstr "Nome"
@@ -638,7 +607,6 @@ msgctxt "field:account.invoice.payment_term.test.result,amount:"
 msgid "Amount"
 msgstr "Montante"
 
-#, fuzzy
 msgctxt "field:account.invoice.payment_term.test.result,currency:"
 msgid "Currency"
 msgstr "Moeda"
@@ -647,39 +615,33 @@ msgctxt "field:account.invoice.payment_term.test.result,date:"
 msgid "Date"
 msgstr "Data"
 
-#, fuzzy
 msgctxt "field:account.invoice.report.revision,date:"
 msgid "Date"
 msgstr "Data"
 
-#, fuzzy
 msgctxt "field:account.invoice.report.revision,filename:"
 msgid "File Name"
-msgstr "Nome"
+msgstr "Nome do Arquivo"
 
-#, fuzzy
 msgctxt "field:account.invoice.report.revision,invoice:"
 msgid "Invoice"
 msgstr "Fatura"
 
-#, fuzzy
 msgctxt "field:account.invoice.report.revision,invoice_report_cache:"
 msgid "Invoice Report"
 msgstr "Relatório de Faturas"
 
-#, fuzzy
 msgctxt "field:account.invoice.report.revision,invoice_report_cache_id:"
 msgid "Invoice Report ID"
 msgstr "ID do Relatório de Faturas"
 
-#, fuzzy
 msgctxt "field:account.invoice.report.revision,invoice_report_format:"
 msgid "Invoice Report Format"
 msgstr "Formato do Relatório de Faturas"
 
 msgctxt "field:account.invoice.tax,account:"
 msgid "Account"
-msgstr "Contas"
+msgstr "Conta"
 
 msgctxt "field:account.invoice.tax,amount:"
 msgid "Amount"
@@ -689,7 +651,6 @@ msgctxt "field:account.invoice.tax,base:"
 msgid "Base"
 msgstr "Base"
 
-#, fuzzy
 msgctxt "field:account.invoice.tax,currency:"
 msgid "Currency"
 msgstr "Moeda"
@@ -724,26 +685,24 @@ msgstr "Impostos"
 
 msgctxt "field:account.move.line,invoice_payment:"
 msgid "Invoice Payment"
-msgstr ""
+msgstr "Pagamento de Fatura"
 
 msgctxt "field:account.move.line,invoice_payments:"
 msgid "Invoice Payments"
-msgstr ""
+msgstr "Pagamentos de Faturas"
 
-#, fuzzy
 msgctxt "field:company.company,cancel_invoice_out:"
 msgid "Cancel Customer Invoice"
-msgstr "Customer Invoices"
+msgstr "Cancelar Fatura do Cliente"
 
 msgctxt "field:company.company,purchase_taxes_expense:"
 msgid "Purchase Taxes as Expense"
-msgstr ""
+msgstr "Impostos de Compra como Despesa"
 
 msgctxt "field:party.address,invoice:"
 msgid "Invoice"
 msgstr "Fatura"
 
-#, fuzzy
 msgctxt "field:party.contact_mechanism,invoice:"
 msgid "Invoice"
 msgstr "Fatura"
@@ -777,244 +736,262 @@ msgid ""
 "The date from which the payment term is calculated.\n"
 "Leave empty to use the invoice date."
 msgstr ""
+"Data a partir da qual o prazo de pagamento é calculado.\n"
+"Deixe em branco para usar a data da fatura."
 
-#, fuzzy
 msgctxt "help:account.invoice.credit.start,with_refund:"
 msgid "If true, the current invoice(s) will be cancelled."
 msgstr "Se verdadeiro, as faturas atuais serão pagas."
 
 msgctxt "help:account.invoice.line,product_uom_category:"
 msgid "The category of Unit of Measure for the product."
-msgstr ""
+msgstr "A categoria de Unidade de Medida do produto."
 
 msgctxt "help:account.invoice.line,taxes_date:"
 msgid ""
 "The date at which the taxes are computed.\n"
 "Leave empty for the accounting date."
 msgstr ""
+"Data em que os impostos são calculados.\n"
+"Deixe em branco a data contábil."
 
 msgctxt "help:company.company,cancel_invoice_out:"
 msgid "Allow cancelling move of customer invoice."
-msgstr ""
+msgstr "Permitir o cancelamento dos lançamentos da fatura do cliente."
 
 msgctxt "help:company.company,purchase_taxes_expense:"
 msgid "Check to book purchase taxes as expense."
-msgstr ""
+msgstr "Marque para registrar os impostos de compra como despesa."
 
-msgctxt "model:account.configuration.default_payment_term,name:"
+msgctxt "model:account.configuration.default_payment_term,string:"
 msgid "Account Configuration Default Payment Term"
-msgstr ""
+msgstr "Configuração da conta Prazo de Pagamento Padrão"
 
-msgctxt "model:account.fiscalyear.invoice_sequence,name:"
-msgid "Invoice Sequence"
-msgstr "Sequência de Fatura"
+msgctxt "model:account.fiscalyear.invoice_sequence,string:"
+msgid "Account Fiscalyear Invoice Sequence"
+msgstr "Sequência de Faturas do ano fiscal da conta"
 
-msgctxt "model:account.invoice,name:"
-msgid "Invoice"
-msgstr "Fatura"
+msgctxt "model:account.invoice,string:"
+msgid "Account Invoice"
+msgstr "Contas da Fatura"
 
-msgctxt "model:account.invoice-account.move.line,name:"
-msgid "Invoice - Payment Line"
-msgstr "Fatura - Linha de Pagamento"
+msgctxt "model:account.invoice-account.move.line,string:"
+msgid "Account Invoice - Account Move Line"
+msgstr "Fatura de Conta - Linha de Lançamentos"
 
-#, fuzzy
-msgctxt "model:account.invoice-additional-account.move,name:"
-msgid "Invoice Additional Move"
-msgstr "Endereço para faturamento"
+msgctxt "model:account.invoice-additional-account.move,string:"
+msgid "Account Invoice - Additional - Account Move"
+msgstr "Fatura de Conta - Adicional - Lançamentos"
 
-#, fuzzy
-msgctxt "model:account.invoice.alternative_payee,name:"
-msgid "Invoice Alternative Payee"
-msgstr "Estado da Fatura"
+msgctxt "model:account.invoice.alternative_payee,string:"
+msgid "Account Invoice Alternative Payee"
+msgstr "Beneficiário Alternativo da Conta Fatura"
 
-msgctxt "model:account.invoice.credit.start,name:"
-msgid "Credit Invoice"
-msgstr "Creditar a Fatura"
+msgctxt "model:account.invoice.credit.start,string:"
+msgid "Account Invoice Credit Start"
+msgstr "Início do Crédito da Fatura"
 
-msgctxt "model:account.invoice.line,name:"
-msgid "Invoice Line"
-msgstr "Linha da fatura"
+msgctxt "model:account.invoice.line,string:"
+msgid "Account Invoice Line"
+msgstr "Linha da Conta da Fatura"
 
-msgctxt "model:account.invoice.line-account.tax,name:"
-msgid "Invoice Line - Tax"
-msgstr "Linha da Facura - Tributo"
+msgctxt "model:account.invoice.line-account.tax,string:"
+msgid "Account Invoice Line - Account Tax"
+msgstr "Linha da Fatura - Conta do Imposto"
 
-msgctxt "model:account.invoice.pay.ask,name:"
-msgid "Pay Invoice"
-msgstr "Pagar Fatura"
+msgctxt "model:account.invoice.pay.ask,string:"
+msgid "Account Invoice Pay Ask"
+msgstr "Forma a Pagar a Fatura"
 
-msgctxt "model:account.invoice.pay.start,name:"
-msgid "Pay Invoice"
-msgstr "Pagar Fatura"
+msgctxt "model:account.invoice.pay.start,string:"
+msgid "Account Invoice Pay Start"
+msgstr "Início do Pagamento da Fatura"
 
-msgctxt "model:account.invoice.payment.method,name:"
-msgid "Payment Method"
-msgstr ""
+msgctxt "model:account.invoice.payment.method,string:"
+msgid "Account Invoice Payment Method"
+msgstr "Método de pagamento da Fatura"
 
-msgctxt "model:account.invoice.payment_term,name:"
-msgid "Payment Term"
-msgstr "Prazo de Pagamento"
+msgctxt "model:account.invoice.payment_term,name:payment_term_0"
+msgid "Upon Receipt"
+msgstr "Após o Recebimento"
 
-msgctxt "model:account.invoice.payment_term.line,name:"
-msgid "Payment Term Line"
-msgstr "Linha do Prazo de Pagamento"
+msgctxt "model:account.invoice.payment_term,name:payment_term_30_eom"
+msgid "Net 30 days End of Month"
+msgstr "30 dias úteis a Fim de Mês"
 
-msgctxt "model:account.invoice.payment_term.line.delta,name:"
-msgid "Payment Term Line Relative Delta"
-msgstr "Linha de Prazo de Pagamento Delta Relativo"
+msgctxt "model:account.invoice.payment_term,name:payment_term_60_eom"
+msgid "Net 60 days End of Month"
+msgstr "60 dias úteis a Fim de Mês"
 
-msgctxt "model:account.invoice.payment_term.test,name:"
-msgid "Test Payment Term"
-msgstr "Simulação do Prazo de Pagamento"
+msgctxt "model:account.invoice.payment_term,name:payment_term_eom"
+msgid "End of Month"
+msgstr "Fim do Mês"
 
-msgctxt "model:account.invoice.payment_term.test.result,name:"
-msgid "Test Payment Term"
-msgstr "Simulação do Prazo de Pagamento"
+msgctxt "model:account.invoice.payment_term,name:payment_term_eom_following"
+msgid "End of Month Following"
+msgstr "Fim do Mês Seguinte"
 
-#, fuzzy
-msgctxt "model:account.invoice.report.revision,name:"
-msgid "Invoice Report Revision"
-msgstr "Relatório de Faturas"
+msgctxt "model:account.invoice.payment_term,name:payment_term_net10"
+msgid "Net 10 days"
+msgstr "10 dias úteis"
 
-msgctxt "model:account.invoice.tax,name:"
-msgid "Invoice Tax"
-msgstr "Tributo da Fatura"
+msgctxt "model:account.invoice.payment_term,name:payment_term_net15"
+msgid "Net 15 days"
+msgstr "15 dias úteis"
 
-#, fuzzy
+msgctxt "model:account.invoice.payment_term,name:payment_term_net30"
+msgid "Net 30 days"
+msgstr "30 dias úteis"
+
+msgctxt "model:account.invoice.payment_term,name:payment_term_net60"
+msgid "Net 60 days"
+msgstr "60 dias úteis"
+
+msgctxt "model:account.invoice.payment_term,string:"
+msgid "Account Invoice Payment Term"
+msgstr "Prazo de Pagamento da Fatura"
+
+msgctxt "model:account.invoice.payment_term.line,string:"
+msgid "Account Invoice Payment Term Line"
+msgstr "Linha de Prazo de Pagamento de Fatura"
+
+msgctxt "model:account.invoice.payment_term.line.delta,string:"
+msgid "Account Invoice Payment Term Line Delta"
+msgstr "Linha Delta do Prazo de Pagamento da Fatura"
+
+msgctxt "model:account.invoice.payment_term.test,string:"
+msgid "Account Invoice Payment Term Test"
+msgstr "Teste de Prazo de Pagamento da Fatura"
+
+msgctxt "model:account.invoice.payment_term.test.result,string:"
+msgid "Account Invoice Payment Term Test Result"
+msgstr "Resultado do Teste de Prazo de Pagamento da Fatura"
+
+msgctxt "model:account.invoice.report.revision,string:"
+msgid "Account Invoice Report Revision"
+msgstr "Revisão do Relatório de Fatura"
+
+msgctxt "model:account.invoice.tax,string:"
+msgid "Account Invoice Tax"
+msgstr "Imposto da Fatura"
+
 msgctxt "model:ir.action,name:act_delegate_lines_to_pay_wizard"
 msgid "Delegate Lines to Pay"
-msgstr "Linhas a Pagar"
+msgstr "Delegar Linhas de Pagamento"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_invoice_form"
 msgid "Invoices"
-msgstr "Invoices"
+msgstr "Faturas"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_invoice_in_form"
 msgid "Supplier Invoices"
-msgstr "Supplier Invoices"
+msgstr "Faturas de Fornecedores"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_invoice_out_form"
 msgid "Customer Invoices"
-msgstr "Customer Invoices"
+msgstr "Faturas de Clientes"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_invoice_relate"
 msgid "Invoices"
-msgstr "Invoices"
+msgstr "Faturas"
 
 msgctxt "model:ir.action,name:act_payment_method_form"
 msgid "Invoice Payment Methods"
-msgstr ""
+msgstr "Métodos de Pagamento de Faturas"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_payment_term_form"
 msgid "Payment Terms"
-msgstr "Payment Terms"
+msgstr "Condições de Pagamento"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_reschedule_lines_to_pay_wizard"
 msgid "Reschedule Lines to Pay"
-msgstr "Linhas a Pagar"
+msgstr "Reprogramar Linhas para Pagamento"
 
-#, fuzzy
 msgctxt "model:ir.action,name:credit"
 msgid "Credit"
-msgstr "Credit"
+msgstr "Crédito"
 
-#, fuzzy
 msgctxt "model:ir.action,name:refresh_invoice_report_wizard"
 msgid "Invoice (revised)"
-msgstr "Linha da fatura"
+msgstr "Fatura (revisada)"
 
-#, fuzzy
 msgctxt "model:ir.action,name:report_invoice"
 msgid "Invoice"
-msgstr "Invoice"
+msgstr "Fatura"
 
-#, fuzzy
 msgctxt "model:ir.action,name:wizard_pay"
 msgid "Pay Invoice"
-msgstr "Pay Invoice"
+msgstr "Pagar Fatura"
 
-#, fuzzy
 msgctxt "model:ir.action,name:wizard_payment_term_test"
 msgid "Test Payment Term"
-msgstr "Test Payment Term"
+msgstr "Simulação do Prazo de Pagamento"
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_invoice_in_domain_all"
 msgid "All"
-msgstr "All"
+msgstr "Todo"
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_invoice_in_domain_draft"
 msgid "Draft"
-msgstr "Draft"
+msgstr "Rascunho"
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_invoice_in_domain_posted"
 msgid "Posted"
-msgstr "Posted"
+msgstr "Contabilizado"
 
-#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_invoice_in_domain_validated"
 msgid "Validated"
-msgstr "Validated"
+msgstr "Validado"
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_invoice_out_domain_all"
 msgid "All"
-msgstr "All"
+msgstr "Todo"
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_invoice_out_domain_draft"
 msgid "Draft"
-msgstr "Draft"
+msgstr "Rascunho"
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_invoice_out_domain_posted"
 msgid "Posted"
-msgstr "Posted"
+msgstr "Contabilizado"
 
-#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_invoice_out_domain_validated"
 msgid "Validated"
-msgstr "Validated"
+msgstr "Validado"
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_invoice_relate_all"
 msgid "All"
-msgstr "All"
+msgstr "Todo"
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_invoice_relate_paid"
 msgid "Paid"
 msgstr "Pago"
 
 msgctxt "model:ir.action.act_window.domain,name:act_invoice_relate_pending"
 msgid "Pending"
-msgstr ""
+msgstr "Pendente"
 
 #, python-format
 msgctxt "model:ir.message,text:msg_cancel_invoice_move"
 msgid "The moves \"%(moves)s\" have the posted invoices \"%(invoices)s\" as origin."
 msgstr ""
+"Os movimentos \"%(moves)s\" têm como origem as faturas lançadas "
+"\"%(invoices)s\"."
 
 msgctxt "model:ir.message,text:msg_cancel_invoice_move_description"
 msgid ""
 "Cancelling them will reconcile the move lines thus paying the invoices. You "
 "might want to cancel the invoices first."
 msgstr ""
+"Cancelá-las reconciliará as linhas de movimentação, pagando assim as "
+"faturas. Talvez seja melhor cancelar as faturas primeiro."
 
 #, python-format
 msgctxt "model:ir.message,text:msg_close_period_non_posted_invoices"
 msgid "To close the periods you must post the invoices \"%(invoices)s\"."
-msgstr ""
+msgstr "Para fechar os períodos você deve lançar as faturas \"%(invoices)s\"."
 
 #, python-format
 msgctxt "model:ir.message,text:msg_erase_party_pending_invoice"
@@ -1022,11 +999,15 @@ msgid ""
 "You cannot erase party \"%(party)s\" while they have pending invoices with "
 "company \"%(company)s\"."
 msgstr ""
+"Você não pode apagar a parte \"%(party)s\" enquanto ela tiver faturas "
+"pendentes com a empresa \"%(company)s\"."
 
 #, python-format
 msgctxt "model:ir.message,text:msg_invoice_credit_refund_not_posted"
 msgid "You cannot refund invoice \"%(invoice)s\" because it is not posted."
 msgstr ""
+"Você não pode reembolsar a fatura \"%(invoice)s\" porque ela não foi "
+"lançada."
 
 #, python-format
 msgctxt ""
@@ -1035,6 +1016,8 @@ msgid ""
 "To post invoice \"%(invoice)s\", you must define a currency exchange credit "
 "account for \"%(company)s\"."
 msgstr ""
+"Para lançar a fatura \"%(invoice)s\", você deve definir uma conta de crédito"
+" de câmbio para \"%(company)s\"."
 
 #, python-format
 msgctxt ""
@@ -1043,44 +1026,46 @@ msgid ""
 "To post invoice \"%(invoice)s\", you must define a currency exchange debit "
 "account for \"%(company)s\"."
 msgstr ""
+"Para lançar a fatura \"%(invoice)s\", você deve definir uma conta de débito "
+"de câmbio para \"%(company)s\"."
 
-#, fuzzy, python-format
+#, python-format
 msgctxt "model:ir.message,text:msg_invoice_customer_cancel_move"
 msgid ""
 "You cannot cancel customer invoice \"%(invoice)s\" because it is posted and "
 "company setup does not allow it."
 msgstr ""
-"Você não pode adicionar a linha \"%(line)s\" à fatura \"%(invoice)s\" porque"
-" ela já foi confirmada, paga ou cancelada."
+"Você não pode cancelar a fatura do cliente \"%(invoice)s\" porque ela foi "
+"lançada e a configuração da empresa não permite."
 
 #, python-format
 msgctxt "model:ir.message,text:msg_invoice_date_future"
 msgid "The invoices \"%(invoices)s\" have an invoice date in the future."
-msgstr ""
+msgstr "As faturas \"%(invoices)s\" têm uma data de fatura no futuro."
 
 #, python-format
 msgctxt "model:ir.message,text:msg_invoice_default_taxes"
 msgid "The invoice \"%(invoice)s\" does not have the default taxes for %(lines)s."
-msgstr ""
+msgstr "A fatura \"%(invoice)s\" não possui os impostos padrão para %(lines)s."
 
 #, python-format
 msgctxt "model:ir.message,text:msg_invoice_delete_cancel"
 msgid "To delete invoice \"%(invoice)s\" you must cancel it."
-msgstr ""
+msgstr "Para excluir a fatura \"%(invoice)s\" você deve cancelá-la."
 
 #, python-format
 msgctxt "model:ir.message,text:msg_invoice_delete_numbered"
 msgid "You cannot delete invoice \"%(invoice)s\" because it has a number."
-msgstr ""
+msgstr "Você não pode excluir a fatura \"%(invoice)s\" porque ela tem um número."
 
-#, fuzzy, python-format
+#, python-format
 msgctxt "model:ir.message,text:msg_invoice_line_create_draft"
 msgid ""
 "You cannot add lines to invoice \"%(invoice)s\" because it is no longer in a"
 " draft state."
 msgstr ""
-"Você não pode adicionar a linha \"%(line)s\" à fatura \"%(invoice)s\" porque"
-" ela já foi confirmada, paga ou cancelada."
+"Você não pode adicionar linhas à fatura \"%(invoice)s\" porque ela não está "
+"mais em estado de rascunho."
 
 #, python-format
 msgctxt "model:ir.message,text:msg_invoice_line_modify"
@@ -1088,19 +1073,21 @@ msgid ""
 "You cannot modify line \"%(line)s\" because its invoice \"%(invoice)s\" is "
 "posted, paid or cancelled."
 msgstr ""
+"Você não pode modificar a linha \"%(line)s\" porque sua fatura "
+"\"%(invoice)s\" foi lançada, paga ou cancelada."
 
 msgctxt "model:ir.message,text:msg_invoice_line_tax_unique"
 msgid "A tax can be added only once to an invoice line."
-msgstr ""
+msgstr "Um imposto pode ser adicionado apenas uma vez a uma linha de fatura."
 
-#, fuzzy, python-format
+#, python-format
 msgctxt "model:ir.message,text:msg_invoice_modify"
 msgid ""
 "You cannot modify invoice \"%(invoice)s\" because it is posted, paid or "
 "cancelled."
 msgstr ""
-"Você não pode adicionar a linha \"%(line)s\" à fatura \"%(invoice)s\" porque"
-" ela já foi confirmada, paga ou cancelada."
+"Você não pode modificar a fatura \"%(invoice)s\" porque ela foi lançada, "
+"paga ou cancelada."
 
 #, python-format
 msgctxt "model:ir.message,text:msg_invoice_no_sequence"
@@ -1108,6 +1095,8 @@ msgid ""
 "To post invoice \"%(invoice)s\", you must define a sequence on fiscal year "
 "\"%(fiscalyear)s\"."
 msgstr ""
+"Para lançar a fatura \"%(invoice)s\", você deve definir uma sequência no ano"
+" fiscal \"%(fiscalyear)s\"."
 
 #, python-format
 msgctxt "model:ir.message,text:msg_invoice_number_after"
@@ -1116,15 +1105,18 @@ msgid ""
 "\"%(date)s\" because the sequence \"%(sequence)s\" has already been used for"
 " invoice \"%(after_invoice)s\"."
 msgstr ""
+"Para numerar a fatura \"%(invoice)s\", você deve definir uma data de fatura "
+"após \"%(date)s\", porque a sequência \"%(sequence)s\" já foi usada para a "
+"fatura \"%(after_invoice)s\"."
 
-#, fuzzy, python-format
+#, python-format
 msgctxt "model:ir.message,text:msg_invoice_overpay_paid"
 msgid ""
 "You cannot overpay invoice \"%(invoice)s\" because there is no more left to "
 "pay."
 msgstr ""
-"Você não pode adicionar a linha \"%(line)s\" à fatura \"%(invoice)s\" porque"
-" ela já foi confirmada, paga ou cancelada."
+"Você não pode pagar a mais a fatura \"%(invoice)s\" porque não há mais nada "
+"a pagar."
 
 #, python-format
 msgctxt "model:ir.message,text:msg_invoice_pay_amount_greater_amount_to_pay"
@@ -1132,15 +1124,19 @@ msgid ""
 "You cannot add a partial payment on invoice \"%(invoice)s\" with an amount "
 "greater than the amount to pay \"%(amount_to_pay)s\"."
 msgstr ""
+"Você não pode adicionar um pagamento parcial na fatura \"%(invoice)s\" com "
+"um valor maior que o valor a pagar \"%(amount_to_pay)s\"."
 
 msgctxt "model:ir.message,text:msg_invoice_payment_line_unique"
 msgid "A payment line can be linked to only one invoice."
-msgstr ""
+msgstr "Uma linha de pagamento pode ser vinculada a apenas uma fatura."
 
 #, python-format
 msgctxt "model:ir.message,text:msg_invoice_payment_lines_add_remove_paid"
 msgid "You cannot add/remove payment lines on paid invoice \"%(invoice)s\"."
 msgstr ""
+"Você não pode adicionar/remover linhas de pagamento na fatura paga "
+"\"%(invoice)s\"."
 
 #, python-format
 msgctxt "model:ir.message,text:msg_invoice_payment_lines_greater_amount"
@@ -1148,25 +1144,27 @@ msgid ""
 "Payment lines amount on invoice \"%(invoice)s\" can not be greater than the "
 "invoice amount."
 msgstr ""
+"O valor das linhas de pagamento na fatura \"%(invoice)s\" não pode ser maior"
+" que o valor da fatura."
 
 #, python-format
 msgctxt "model:ir.message,text:msg_invoice_payment_term_date_past"
 msgid "The invoice \"%(invoice)s\" generates a payment date \"%(date)s\" in the past."
-msgstr ""
+msgstr "A fatura \"%(invoice)s\" gera uma data de pagamento \"%(date)s\" no passado."
 
 #, python-format
 msgctxt "model:ir.message,text:msg_invoice_similar"
 msgid "The invoice \"%(invoice)s\" is similar to invoice \"%(similar)s\"."
-msgstr ""
+msgstr "A fatura \"%(invoice)s\" é semelhante à fatura \"%(similar)s\"."
 
-#, fuzzy, python-format
+#, python-format
 msgctxt "model:ir.message,text:msg_invoice_tax_create_draft"
 msgid ""
 "You cannot add taxes to invoice \"%(invoice)s\" because it is no longer in a"
 " draft state."
 msgstr ""
-"Você não pode adicionar a linha \"%(line)s\" à fatura \"%(invoice)s\" porque"
-" ela já foi confirmada, paga ou cancelada."
+"Você não pode adicionar impostos à fatura \"%(invoice)s\" porque ela não "
+"está mais em estado de rascunho."
 
 #, python-format
 msgctxt "model:ir.message,text:msg_invoice_tax_invalid"
@@ -1174,6 +1172,8 @@ msgid ""
 "The taxes on invoice \"%(invoice)s\" are not valid, you must save it again "
 "to force them to be recalculated."
 msgstr ""
+"Os impostos na fatura \"%(invoice)s\" não são válidos, você deve salvá-la "
+"novamente para forçar o recálculo."
 
 #, python-format
 msgctxt "model:ir.message,text:msg_invoice_tax_modify"
@@ -1181,11 +1181,13 @@ msgid ""
 "You cannot modify tax \"%(tax)s\" because its invoice \"%(invoice)s\" is "
 "posted, paid or cancelled."
 msgstr ""
+"Você não pode modificar o imposto \"%(tax)s\" porque sua fatura "
+"\"%(invoice)s\" foi lançada, paga ou cancelada."
 
 #, python-format
 msgctxt "model:ir.message,text:msg_payment_term_invalid_ratio_divisor"
 msgid "The ratio and divisor are not consistent on line \"%(line)s\"."
-msgstr ""
+msgstr "A razão e o divisor não são consistentes na linha \"%(line)s\"."
 
 #, python-format
 msgctxt "model:ir.message,text:msg_payment_term_missing_last_remainder"
@@ -1193,6 +1195,8 @@ msgid ""
 "To save payment term \"%(payment_term)s\", you must append a last remainder "
 "line."
 msgstr ""
+"Para salvar o prazo de pagamento \"%(payment_term)s\", você deve acrescentar"
+" uma última linha de restante."
 
 #, python-format
 msgctxt "model:ir.message,text:msg_payment_term_missing_remainder"
@@ -1200,40 +1204,44 @@ msgid ""
 "To compute terms, you must append a remainder line on payment term "
 "\"%(payment_term)s\"."
 msgstr ""
+"Para calcular os termos, você deve acrescentar uma linha de restante no "
+"termo de pagamento \"%(payment_term)s\"."
 
-#, fuzzy
+msgctxt "model:ir.message,text:msg_payment_term_non_zero_ratio_divisor"
+msgid "The ratio and divisor can not be both equal to zero."
+msgstr "A razão e o divisor não podem ser ambos iguais a zero."
+
 msgctxt "model:ir.model.button,confirm:invoice_cancel_button"
 msgid "Are you sure you want to cancel the invoices?"
-msgstr "Are you sure to cancel the invoice?"
+msgstr "Tem certeza de que deseja cancelar as faturas?"
 
-#, fuzzy
 msgctxt "model:ir.model.button,confirm:invoice_post_button"
 msgid "Are you sure you want to post the invoices?"
-msgstr "Are you sure to cancel the invoice?"
+msgstr "Tem certeza de que deseja publicar as faturas?"
 
 msgctxt "model:ir.model.button,help:invoice_cancel_button"
 msgid "Cancel the invoice"
-msgstr "Cancel the invoice"
+msgstr "Cancelar a Fatura"
 
 msgctxt "model:ir.model.button,help:invoice_validate_button"
 msgid "Also known as Pro Forma"
-msgstr "Also known as Pro Forma"
+msgstr "Também Conhecido como Pro Forma"
 
 msgctxt "model:ir.model.button,string:invoice_cancel_button"
 msgid "Cancel"
-msgstr "Cancel"
+msgstr "Cancelar"
 
 msgctxt "model:ir.model.button,string:invoice_delegate_lines_to_pay_button"
 msgid "Modify Payee"
-msgstr ""
+msgstr "Modificar Beneficiário"
 
 msgctxt "model:ir.model.button,string:invoice_draft_button"
 msgid "Draft"
-msgstr "Draft"
+msgstr "Rascunho"
 
 msgctxt "model:ir.model.button,string:invoice_pay_button"
 msgid "Pay"
-msgstr "Pay"
+msgstr "Pagar"
 
 msgctxt "model:ir.model.button,string:invoice_post_button"
 msgid "Post"
@@ -1241,72 +1249,65 @@ msgstr "Post"
 
 msgctxt "model:ir.model.button,string:invoice_process_button"
 msgid "Process"
-msgstr ""
+msgstr "Processo"
 
 msgctxt "model:ir.model.button,string:invoice_reschedule_lines_to_pay_button"
 msgid "Reschedule"
-msgstr ""
+msgstr "Reprogramar"
 
 msgctxt "model:ir.model.button,string:invoice_validate_button"
 msgid "Validate"
-msgstr "Validate"
+msgstr "Validar"
 
 msgctxt "model:ir.rule.group,name:rule_group_invoice_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "Usuário em Empresas"
 
 msgctxt "model:ir.rule.group,name:rule_group_invoice_line_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "Usuário em Empresas"
 
 msgctxt "model:ir.rule.group,name:rule_group_invoice_sequence_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "Usuário em Empresas"
 
 msgctxt "model:ir.rule.group,name:rule_group_payment_method_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "Usuário em Empresas"
 
-#, fuzzy
 msgctxt "model:ir.sequence.type,name:sequence_type_account_invoice"
 msgid "Invoice"
-msgstr "Invoice"
+msgstr "Fatura"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_invoice_in_form"
 msgid "Supplier Invoices"
-msgstr "Supplier Invoices"
+msgstr "Faturas de Fornecedores"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_invoice_out_form"
 msgid "Customer Invoices"
-msgstr "Customer Invoices"
+msgstr "Faturas de Clientes"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_invoices"
 msgid "Invoices"
-msgstr "Invoices"
+msgstr "Faturas"
 
 msgctxt "model:ir.ui.menu,name:menu_payment_method_form"
 msgid "Invoice Payment Methods"
-msgstr ""
+msgstr "Métodos de Pagamento de Faturas"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_payment_term_form"
 msgid "Payment Terms"
-msgstr "Payment Terms"
+msgstr "Condições de Pagamento"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_payment_term_test"
 msgid "Test Payment Term"
-msgstr "Test Payment Term"
+msgstr "Simulação do Prazo de Pagamento"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_payment_terms_configuration"
 msgid "Payment Terms"
-msgstr "Payment Terms"
+msgstr "Condições de Pagamento"
 
-msgctxt "model:party.party.payment_term,name:"
+msgctxt "model:party.party.payment_term,string:"
 msgid "Party Payment Term"
 msgstr "Prazo de Pagamento da Pessoa"
 
@@ -1390,17 +1391,14 @@ msgctxt "report:account.invoice:"
 msgid "Unit Price"
 msgstr "Preço unitário"
 
-#, fuzzy
 msgctxt "selection:account.invoice,sequence_type_cache:"
 msgid "Credit Note"
-msgstr "Creditar a Fatura"
+msgstr "Nota de Crédito"
 
-#, fuzzy
 msgctxt "selection:account.invoice,sequence_type_cache:"
 msgid "Invoice"
 msgstr "Fatura"
 
-#, fuzzy
 msgctxt "selection:account.invoice,state:"
 msgid "Cancelled"
 msgstr "Cancelado"
@@ -1445,10 +1443,9 @@ msgctxt "selection:account.invoice.line,type:"
 msgid "Title"
 msgstr "Título"
 
-#, fuzzy
 msgctxt "selection:account.invoice.pay.ask,type:"
 msgid "Overpayment"
-msgstr "Pagamento"
+msgstr "Pagamento em Excesso"
 
 msgctxt "selection:account.invoice.pay.ask,type:"
 msgid "Partial Payment"
@@ -1474,12 +1471,10 @@ msgctxt "selection:account.invoice.payment_term.line,type:"
 msgid "Remainder"
 msgstr "Remanescente"
 
-#, fuzzy
 msgctxt "view:account.invoice.credit.start:"
 msgid "Are you sure to credit these/this invoice(s)?"
-msgstr "Você tem certeza que quer creditas estas faturas?"
+msgstr "Tem certeza de que deseja creditar esta(s) fatura(s)?"
 
-#, fuzzy
 msgctxt "view:account.invoice.line:"
 msgid "%"
 msgstr "%"
@@ -1494,7 +1489,7 @@ msgstr "Observações"
 
 msgctxt "view:account.invoice.payment_term.line.delta:"
 msgid "Operations are applied in this displayed order."
-msgstr ""
+msgstr "As operações são aplicadas nesta ordem exibida."
 
 msgctxt "view:account.invoice.payment_term.line:"
 msgid "%"
@@ -1502,7 +1497,7 @@ msgstr "%"
 
 msgctxt "view:account.invoice.report.revision:"
 msgid "Time"
-msgstr ""
+msgstr "Tempo"
 
 msgctxt "view:account.invoice:"
 msgid "Invoice"
@@ -1516,12 +1511,10 @@ msgctxt "view:account.invoice:"
 msgid "Payment"
 msgstr "Pagamento"
 
-#, fuzzy
 msgctxt "view:account.invoice:"
 msgid "Tax Identifier:"
-msgstr "Identificador de Tributos"
+msgstr "Identificador de Impostos:"
 
-#, fuzzy
 msgctxt "view:company.company:"
 msgid "Invoice"
 msgstr "Fatura"

@@ -166,6 +166,10 @@ msgctxt "field:sale.configuration,sale_process_after:"
 msgid "Process Sale after"
 msgstr "Pauzė prieš parduodant"
 
+msgctxt "field:sale.configuration,sale_quotation_validity:"
+msgid "Sale Quotation Validity"
+msgstr ""
+
 msgctxt "field:sale.configuration,sale_sequence:"
 msgid "Sale Sequence"
 msgstr "Pardavimų numeruotė"
@@ -173,6 +177,10 @@ msgstr "Pardavimų numeruotė"
 msgctxt "field:sale.configuration,sale_shipment_method:"
 msgid "Sale Shipment Method"
 msgstr "Siuntimo parduodant būdas"
+
+msgctxt "field:sale.configuration.quotation,sale_quotation_validity:"
+msgid "Sale Quotation Validity"
+msgstr ""
 
 msgctxt "field:sale.configuration.sale_method,sale_invoice_method:"
 msgid "Sale Invoice Method"
@@ -634,6 +642,21 @@ msgid "Payment Term"
 msgstr "Mokėjimo sąlyga"
 
 #, fuzzy
+msgctxt "field:sale.sale,quotation_date:"
+msgid "Quotation Date"
+msgstr "Pasiūlymai"
+
+#, fuzzy
+msgctxt "field:sale.sale,quotation_expire:"
+msgid "Quotation Expire"
+msgstr "Pasiūlymai"
+
+#, fuzzy
+msgctxt "field:sale.sale,quotation_validity:"
+msgid "Quotation Validity"
+msgstr "Pasiūlymai"
+
+#, fuzzy
 msgctxt "field:sale.sale,quoted_by:"
 msgid "Quoted By"
 msgstr "Pasiūlymas"
@@ -811,6 +834,18 @@ msgctxt "help:sale.line,product_uom_category:"
 msgid "The category of Unit of Measure for the product."
 msgstr ""
 
+msgctxt "help:sale.sale,quotation_date:"
+msgid "When the quotation was edited."
+msgstr ""
+
+msgctxt "help:sale.sale,quotation_expire:"
+msgid "Until when the quotation is still valid."
+msgstr ""
+
+msgctxt "help:sale.sale,quotation_validity:"
+msgid "How much time the quotation is valid."
+msgstr ""
+
 msgctxt "help:sale.sale,shipping_date:"
 msgid "When the shipping of goods should start."
 msgstr ""
@@ -966,6 +1001,11 @@ msgstr "Atverti regioną"
 msgctxt "model:ir.action,name:wizard_return_sale"
 msgid "Return Sale"
 msgstr "Pardavimo grąžinimas"
+
+#, fuzzy
+msgctxt "model:ir.action,name:wizard_sale_open_product"
+msgid "Products"
+msgstr "Prekė"
 
 msgctxt "model:ir.action,name:wizard_shipment_handle_exception"
 msgid "Handle Shipment Exception"
@@ -1326,26 +1366,28 @@ msgctxt "model:ir.ui.menu,name:menu_sale_form"
 msgid "Sales"
 msgstr "Pardavimai"
 
-msgctxt "model:party.party.customer_currency,name:"
+#, fuzzy
+msgctxt "model:party.party.customer_currency,string:"
 msgid "Party Customer Currency"
-msgstr ""
+msgstr "Valiuta"
 
 #, fuzzy
-msgctxt "model:party.party.sale_method,name:"
+msgctxt "model:party.party.sale_method,string:"
 msgid "Party Sale Method"
 msgstr "Pardavimo metodas"
 
-msgctxt "model:product.configuration.default_lead_time,name:"
-msgid "Product Default Lead Time"
-msgstr ""
+#, fuzzy
+msgctxt "model:product.configuration.default_lead_time,string:"
+msgid "Product Configuration Default Lead Time"
+msgstr "Tiekimo laikas"
 
 #, fuzzy
-msgctxt "model:product.lead_time,name:"
+msgctxt "model:product.lead_time,string:"
 msgid "Product Lead Time"
 msgstr "Tiekimo laikas"
 
 #, fuzzy
-msgctxt "model:product.sale.context,name:"
+msgctxt "model:product.sale.context,string:"
 msgid "Product Sale Context"
 msgstr "Pauzė prieš parduodant"
 
@@ -1357,142 +1399,169 @@ msgctxt "model:res.group,name:group_sale_admin"
 msgid "Sales Administrator"
 msgstr "Pardavimų valdymas"
 
-msgctxt "model:sale.configuration,name:"
+#, fuzzy
+msgctxt "model:sale.configuration,string:"
 msgid "Sale Configuration"
 msgstr "Pardavimo nuostatos"
 
-msgctxt "model:sale.configuration.sale_method,name:"
+#, fuzzy
+msgctxt "model:sale.configuration.quotation,string:"
+msgid "Sale Configuration Quotation"
+msgstr "Pardavimo nuostatos"
+
+#, fuzzy
+msgctxt "model:sale.configuration.sale_method,string:"
 msgid "Sale Configuration Sale Method"
 msgstr "Pardavimo metodas"
 
-msgctxt "model:sale.configuration.sequence,name:"
+#, fuzzy
+msgctxt "model:sale.configuration.sequence,string:"
 msgid "Sale Configuration Sequence"
 msgstr "Pardavimo numeruotė"
 
-msgctxt "model:sale.handle.invoice.exception.ask,name:"
-msgid "Handle Invoice Exception"
+#, fuzzy
+msgctxt "model:sale.handle.invoice.exception.ask,string:"
+msgid "Sale Handle Invoice Exception Ask"
 msgstr "Tvarkyti sąskaitos faktūros išimtinę situaciją"
 
-msgctxt "model:sale.handle.shipment.exception.ask,name:"
-msgid "Handle Shipment Exception"
+#, fuzzy
+msgctxt "model:sale.handle.shipment.exception.ask,string:"
+msgid "Sale Handle Shipment Exception Ask"
 msgstr "Tvarkyti siuntimo išimtinę situaciją"
 
-msgctxt "model:sale.line,name:"
+#, fuzzy
+msgctxt "model:sale.line,string:"
 msgid "Sale Line"
 msgstr "Pardavimo eilutė"
 
-msgctxt "model:sale.line-account.tax,name:"
-msgid "Sale Line - Tax"
+#, fuzzy
+msgctxt "model:sale.line-account.tax,string:"
+msgid "Sale Line - Account Tax"
 msgstr "Pardavimo eilutė - PVM"
 
-msgctxt "model:sale.line-ignored-stock.move,name:"
-msgid "Sale Line - Ignored Move"
+#, fuzzy
+msgctxt "model:sale.line-ignored-stock.move,string:"
+msgid "Sale Line - Ignored - Stock Move"
 msgstr "Pardavimo eilutė - ignoruota operacija"
 
-msgctxt "model:sale.line-recreated-stock.move,name:"
-msgid "Sale Line - Recreated Move"
+#, fuzzy
+msgctxt "model:sale.line-recreated-stock.move,string:"
+msgid "Sale Line - Recreated - Stock Move"
 msgstr "Pardavimo eilutė - atkurta operacija"
 
-msgctxt "model:sale.reporting.context,name:"
+#, fuzzy
+msgctxt "model:sale.reporting.context,string:"
 msgid "Sale Reporting Context"
 msgstr "Pardavimo ataskaitos kontekstas"
 
-msgctxt "model:sale.reporting.country,name:"
-msgid "Sale Reporting per Country"
-msgstr "Pardavimo ataskaita pagal šalį"
-
-msgctxt "model:sale.reporting.country.subdivision,name:"
-msgid "Sale Reporting per Subdivision"
-msgstr "Pardavimo ataskaita pagal regioną"
-
-msgctxt "model:sale.reporting.country.subdivision.time_series,name:"
-msgid "Sale Reporting per Subdivision"
-msgstr "Pardavimo ataskaita pagal regioną"
-
-msgctxt "model:sale.reporting.country.time_series,name:"
-msgid "Sale Reporting per Country"
+#, fuzzy
+msgctxt "model:sale.reporting.country,string:"
+msgid "Sale Reporting Country"
 msgstr "Pardavimo ataskaita pagal šalį"
 
 #, fuzzy
-msgctxt "model:sale.reporting.country.tree,name:"
-msgid "Sale Reporting per Country"
+msgctxt "model:sale.reporting.country.subdivision,string:"
+msgid "Sale Reporting Country Subdivision"
+msgstr "Pardavimo ataskaita pagal regioną"
+
+#, fuzzy
+msgctxt "model:sale.reporting.country.subdivision.time_series,string:"
+msgid "Sale Reporting Country Subdivision Time Series"
+msgstr "Pardavimo ataskaita pagal regioną"
+
+#, fuzzy
+msgctxt "model:sale.reporting.country.time_series,string:"
+msgid "Sale Reporting Country Time Series"
 msgstr "Pardavimo ataskaita pagal šalį"
 
-msgctxt "model:sale.reporting.customer,name:"
-msgid "Sale Reporting per Customer"
+#, fuzzy
+msgctxt "model:sale.reporting.country.tree,string:"
+msgid "Sale Reporting Country Tree"
+msgstr "Pardavimo ataskaita pagal šalį"
+
+#, fuzzy
+msgctxt "model:sale.reporting.customer,string:"
+msgid "Sale Reporting Customer"
 msgstr "Pardavimo ataskaita pagal pirkėją"
 
 #, fuzzy
-msgctxt "model:sale.reporting.customer.category,name:"
-msgid "Sale Reporting per Customer Category"
+msgctxt "model:sale.reporting.customer.category,string:"
+msgid "Sale Reporting Customer Category"
 msgstr "Pardavimo ataskaita pagal kategoriją"
 
 #, fuzzy
-msgctxt "model:sale.reporting.customer.category.time_series,name:"
-msgid "Sale Reporting per Customer Category"
+msgctxt "model:sale.reporting.customer.category.time_series,string:"
+msgid "Sale Reporting Customer Category Time Series"
 msgstr "Pardavimo ataskaita pagal kategoriją"
 
 #, fuzzy
-msgctxt "model:sale.reporting.customer.category.tree,name:"
-msgid "Sale Reporting per Customer Category"
+msgctxt "model:sale.reporting.customer.category.tree,string:"
+msgid "Sale Reporting Customer Category Tree"
 msgstr "Pardavimo ataskaita pagal kategoriją"
 
-msgctxt "model:sale.reporting.customer.time_series,name:"
-msgid "Sale Reporting per Customer"
+#, fuzzy
+msgctxt "model:sale.reporting.customer.time_series,string:"
+msgid "Sale Reporting Customer Time Series"
 msgstr "Pardavimo ataskaita pagal pirkėją"
 
 #, fuzzy
-msgctxt "model:sale.reporting.main,name:"
-msgid "Sale Reporting"
+msgctxt "model:sale.reporting.main,string:"
+msgid "Sale Reporting Main"
 msgstr "Ataskaitos"
 
 #, fuzzy
-msgctxt "model:sale.reporting.main.time_series,name:"
-msgid "Sale Reporting"
-msgstr "Ataskaitos"
-
-msgctxt "model:sale.reporting.product,name:"
-msgid "Sale Reporting per Product"
-msgstr "Pardavimo ataskaita pagal prekę"
-
-#, fuzzy
-msgctxt "model:sale.reporting.product.category,name:"
-msgid "Sale Reporting per Product Category"
-msgstr "Pardavimo ataskaita pagal kategoriją"
-
-#, fuzzy
-msgctxt "model:sale.reporting.product.category.time_series,name:"
-msgid "Sale Reporting per Product Category"
-msgstr "Pardavimo ataskaita pagal kategoriją"
-
-#, fuzzy
-msgctxt "model:sale.reporting.product.category.tree,name:"
-msgid "Sale Reporting per Product Category"
-msgstr "Pardavimo ataskaita pagal kategoriją"
-
-msgctxt "model:sale.reporting.product.time_series,name:"
-msgid "Sale Reporting per Product"
-msgstr "Pardavimo ataskaita pagal prekę"
-
-#, fuzzy
-msgctxt "model:sale.reporting.region.tree,name:"
-msgid "Sale Reporting per Region"
+msgctxt "model:sale.reporting.main.time_series,string:"
+msgid "Sale Reporting Main Time Series"
 msgstr "Pardavimo ataskaita pagal regioną"
 
-msgctxt "model:sale.return_sale.start,name:"
-msgid "Return Sale"
+#, fuzzy
+msgctxt "model:sale.reporting.product,string:"
+msgid "Sale Reporting Product"
+msgstr "Pardavimo ataskaita pagal prekę"
+
+#, fuzzy
+msgctxt "model:sale.reporting.product.category,string:"
+msgid "Sale Reporting Product Category"
+msgstr "Pardavimo ataskaita pagal kategoriją"
+
+#, fuzzy
+msgctxt "model:sale.reporting.product.category.time_series,string:"
+msgid "Sale Reporting Product Category Time Series"
+msgstr "Pardavimo ataskaita pagal kategoriją"
+
+#, fuzzy
+msgctxt "model:sale.reporting.product.category.tree,string:"
+msgid "Sale Reporting Product Category Tree"
+msgstr "Pardavimo ataskaita pagal kategoriją"
+
+#, fuzzy
+msgctxt "model:sale.reporting.product.time_series,string:"
+msgid "Sale Reporting Product Time Series"
+msgstr "Pardavimo ataskaita pagal prekę"
+
+#, fuzzy
+msgctxt "model:sale.reporting.region.tree,string:"
+msgid "Sale Reporting Region Tree"
+msgstr "Pardavimo ataskaita pagal regioną"
+
+#, fuzzy
+msgctxt "model:sale.return_sale.start,string:"
+msgid "Sale Return Sale Start"
 msgstr "Pardavimo grąžinimas"
 
-msgctxt "model:sale.sale,name:"
+#, fuzzy
+msgctxt "model:sale.sale,string:"
 msgid "Sale"
 msgstr "Pardavimas"
 
-msgctxt "model:sale.sale-ignored-account.invoice,name:"
-msgid "Sale - Ignored Invoice"
+#, fuzzy
+msgctxt "model:sale.sale-ignored-account.invoice,string:"
+msgid "Sale - Ignored - Account Invoice"
 msgstr "Pardavimas - ignoruotos sąskaitos faktūros"
 
-msgctxt "model:sale.sale-recreated-account.invoice,name:"
-msgid "Sale - Recreated Invoice"
+#, fuzzy
+msgctxt "model:sale.sale-recreated-account.invoice,string:"
+msgid "Sale - Recreated - Account Invoice"
 msgstr "Pardavimas - atkurtos sąskaitos faktūros"
 
 msgctxt "report:sale.sale:"
@@ -1523,6 +1592,11 @@ msgstr "Aprašymas:"
 msgctxt "report:sale.sale:"
 msgid "Draft Sale Order"
 msgstr "Pardavimo juodraštis"
+
+#, fuzzy
+msgctxt "report:sale.sale:"
+msgid "Expiration Date:"
+msgstr "Išimtinė būsena"
 
 msgctxt "report:sale.sale:"
 msgid "Quantity"
@@ -1567,6 +1641,10 @@ msgstr "Ignoruota"
 msgctxt "selection:account.invoice,sale_exception_state:"
 msgid "Recreated"
 msgstr "Atkurta"
+
+msgctxt "selection:ir.cron,method:"
+msgid "Cancel Expired Sale Quotation"
+msgstr ""
 
 msgctxt "selection:sale.line,type:"
 msgid "Comment"

@@ -30,6 +30,10 @@ msgctxt "field:company.company,party:"
 msgid "Party"
 msgstr "Tercero"
 
+msgctxt "field:company.company,tax_identifiers:"
+msgid "Tax Identifiers"
+msgstr "Identificadores fiscales"
+
 msgctxt "field:company.company,timezone:"
 msgid "Timezone"
 msgstr "Zona horaria"
@@ -49,6 +53,26 @@ msgstr "Imagen"
 msgctxt "field:company.company.logo.cache,width:"
 msgid "Width"
 msgstr "Ancho"
+
+msgctxt "field:company.company.tax_identifier,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:company.company.tax_identifier,company_party:"
+msgid "Company Party"
+msgstr "Tercero de la empresa"
+
+msgctxt "field:company.company.tax_identifier,country:"
+msgid "Country"
+msgstr "País"
+
+msgctxt "field:company.company.tax_identifier,organization:"
+msgid "Organization"
+msgstr "Organización"
+
+msgctxt "field:company.company.tax_identifier,tax_identifier:"
+msgid "Tax Identifier"
+msgstr "Identificador fiscal"
 
 msgctxt "field:company.employee,active:"
 msgid "Active"
@@ -202,9 +226,29 @@ msgstr ""
 "- ${address}\n"
 "- ${tax_identifier}\n"
 
+msgctxt "help:company.company,tax_identifiers:"
+msgid ""
+"Uses the first identifier that matches the criteria.\n"
+"If none match, uses the party's tax identifier."
+msgstr ""
+"Utiliza el primer identificador que coincide con los criterios.\n"
+"Si no hay ninguno que coincida, utiliza el identificador fiscal del tercero."
+
 msgctxt "help:company.company,timezone:"
 msgid "Used to compute the today date."
 msgstr "Utilizado para calcular la fecha de hoy."
+
+msgctxt "help:company.company.tax_identifier,country:"
+msgid "Applies only to addresses in this country."
+msgstr "Aplica únicamente a direcciones en este país."
+
+msgctxt "help:company.company.tax_identifier,organization:"
+msgid "Applies only to addresses in this organization."
+msgstr "Aplica únicamente a direcciones de esta organización."
+
+msgctxt "help:company.company.tax_identifier,tax_identifier:"
+msgid "The identifier used for tax report."
+msgstr "El identificador utilizado con las autoridades impositivas."
 
 msgctxt "help:company.employee,company:"
 msgid "The company to which the employee belongs."
@@ -270,21 +314,25 @@ msgctxt "help:res.user,employees:"
 msgid "Add employees to grant the user access to them."
 msgstr "Añadir empleados a los que podrá acceder el usuario."
 
-msgctxt "model:company.company,name:"
+msgctxt "model:company.company,string:"
 msgid "Company"
 msgstr "Empresa"
 
-msgctxt "model:company.company.config.start,name:"
-msgid "Company Config"
-msgstr "Configuración empresa"
+msgctxt "model:company.company.config.start,string:"
+msgid "Company Config Start"
+msgstr "Inicio configuración empresa"
 
-msgctxt "model:company.company.logo.cache,name:"
+msgctxt "model:company.company.logo.cache,string:"
 msgid "Company Logo Cache"
 msgstr "Caché del logotipo de la empresa"
 
-msgctxt "model:company.employee,name:"
-msgid "Employee"
-msgstr "Empleado"
+msgctxt "model:company.company.tax_identifier,string:"
+msgid "Company Tax Identifier"
+msgstr "Identificador fiscal de la empresa"
+
+msgctxt "model:company.employee,string:"
+msgid "Company Employee"
+msgstr "Empleado de la empresa"
 
 msgctxt "model:ir.action,name:act_company_config"
 msgid "Configure Company"
@@ -306,7 +354,7 @@ msgctxt "model:ir.action,name:report_letter"
 msgid "Letter"
 msgstr "Carta"
 
-msgctxt "model:ir.cron-company.company,name:"
+msgctxt "model:ir.cron-company.company,string:"
 msgid "Cron - Company"
 msgstr "Planificador - Empresa"
 
@@ -343,12 +391,12 @@ msgctxt "model:res.group,name:group_employee_admin"
 msgid "Employee Administration"
 msgstr "Administración empleados"
 
-msgctxt "model:res.user-company.company,name:"
+msgctxt "model:res.user-company.company,string:"
 msgid "User - Company"
 msgstr "Usuario - Empresa"
 
-msgctxt "model:res.user-company.employee,name:"
-msgid "User - Employee"
+msgctxt "model:res.user-company.employee,string:"
+msgid "User - Company Employee"
 msgstr "Usuario - Empleado"
 
 msgctxt "report:party.letter:"

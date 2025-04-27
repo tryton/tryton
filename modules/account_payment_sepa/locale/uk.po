@@ -35,6 +35,10 @@ msgctxt "field:account.payment,sepa_mandate_sequence_type:"
 msgid "Mandate Sequence Type"
 msgstr ""
 
+msgctxt "field:account.payment,sepa_payable_bank_account_number:"
+msgid "Bank Account Number"
+msgstr ""
+
 msgctxt "field:account.payment,sepa_return_reason_code:"
 msgid "Return Reason Code"
 msgstr ""
@@ -187,16 +191,16 @@ msgctxt "help:account.payment.journal,sepa_receivable_initiator_id:"
 msgid "The identifier used for the initiating party."
 msgstr ""
 
-msgctxt "model:account.configuration.sepa_mandate_sequence,name:"
-msgid "Account Configuration SEPA Mandate Sequence"
+msgctxt "model:account.configuration.sepa_mandate_sequence,string:"
+msgid "Account Configuration Sepa Mandate Sequence"
 msgstr ""
 
-msgctxt "model:account.payment.sepa.mandate,name:"
-msgid "SEPA Mandate"
+msgctxt "model:account.payment.sepa.mandate,string:"
+msgid "Account Payment Sepa Mandate"
 msgstr ""
 
-msgctxt "model:account.payment.sepa.message,name:"
-msgid "SEPA Message"
+msgctxt "model:account.payment.sepa.message,string:"
+msgid "Account Payment Sepa Message"
 msgstr ""
 
 msgctxt "model:ir.action,name:act_mandate_form"
@@ -213,6 +217,10 @@ msgstr ""
 
 msgctxt "model:ir.action,name:report_mandate"
 msgid "Mandate"
+msgstr ""
+
+msgctxt "model:ir.action,name:report_message"
+msgid "Message"
 msgstr ""
 
 msgctxt "model:ir.action.act_window.domain,name:act_mandate_form_domain_all"
@@ -586,4 +594,8 @@ msgstr ""
 
 msgctxt "view:account.payment:"
 msgid "Return Reason"
+msgstr ""
+
+msgctxt "view:account.payment:"
+msgid "SEPA"
 msgstr ""

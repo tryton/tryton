@@ -265,13 +265,10 @@ msgctxt "model:ir.ui.menu,name:menu_work_tree"
 msgid "Works Efforts"
 msgstr "Works Efforts"
 
-msgctxt "model:project.work,name:"
-msgid "Work Effort"
-msgstr "Дейност"
-
-msgctxt "model:project.work.status,name:"
-msgid "Work Status"
-msgstr ""
+#, fuzzy
+msgctxt "model:project.work,string:"
+msgid "Project Work"
+msgstr "Проект"
 
 #, fuzzy
 msgctxt "model:project.work.status,name:work_done_status"
@@ -282,6 +279,10 @@ msgstr "Done"
 msgctxt "model:project.work.status,name:work_open_status"
 msgid "Open"
 msgstr "Opened"
+
+msgctxt "model:project.work.status,string:"
+msgid "Project Work Status"
+msgstr ""
 
 #, fuzzy
 msgctxt "model:res.group,name:group_project_admin"

@@ -88,11 +88,13 @@ msgctxt "model:ir.ui.menu,name:menu_extra"
 msgid "Extras"
 msgstr "اضافات"
 
-msgctxt "model:sale.extra,name:"
+#, fuzzy
+msgctxt "model:sale.extra,string:"
 msgid "Sale Extra"
 msgstr "فروش اضافی"
 
-msgctxt "model:sale.extra.line,name:"
+#, fuzzy
+msgctxt "model:sale.extra.line,string:"
 msgid "Sale Extra Line"
 msgstr "سطر فروش اضافی"
 

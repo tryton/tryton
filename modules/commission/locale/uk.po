@@ -395,39 +395,39 @@ msgctxt "model:account.journal,name:journal_commission"
 msgid "Commission"
 msgstr ""
 
-msgctxt "model:commission,name:"
+msgctxt "model:commission,string:"
 msgid "Commission"
 msgstr ""
 
-msgctxt "model:commission.agent,name:"
+msgctxt "model:commission.agent,string:"
 msgid "Commission Agent"
 msgstr ""
 
-msgctxt "model:commission.agent.selection,name:"
-msgid "Agent Selection"
+msgctxt "model:commission.agent.selection,string:"
+msgid "Commission Agent Selection"
 msgstr ""
 
-msgctxt "model:commission.create_invoice.ask,name:"
-msgid "Create Commission Invoice"
+msgctxt "model:commission.create_invoice.ask,string:"
+msgid "Commission Create Invoice Ask"
 msgstr ""
 
-msgctxt "model:commission.plan,name:"
+msgctxt "model:commission.plan,string:"
 msgid "Commission Plan"
 msgstr ""
 
-msgctxt "model:commission.plan.line,name:"
+msgctxt "model:commission.plan.line,string:"
 msgid "Commission Plan Line"
 msgstr ""
 
-msgctxt "model:commission.reporting.agent,name:"
-msgid "Commission Reporting per Agent"
+msgctxt "model:commission.reporting.agent,string:"
+msgid "Commission Reporting Agent"
 msgstr ""
 
-msgctxt "model:commission.reporting.agent.time_series,name:"
-msgid "Commission Reporting per Agent"
+msgctxt "model:commission.reporting.agent.time_series,string:"
+msgid "Commission Reporting Agent"
 msgstr ""
 
-msgctxt "model:commission.reporting.context,name:"
+msgctxt "model:commission.reporting.context,string:"
 msgid "Commission Reporting Context"
 msgstr ""
 
@@ -544,7 +544,7 @@ msgctxt "model:ir.ui.menu,name:menu_reporting_commission"
 msgid "Commissions"
 msgstr ""
 
-msgctxt "model:product.template-commission.agent,name:"
+msgctxt "model:product.template-commission.agent,string:"
 msgid "Product Template - Commission Agent"
 msgstr ""
 

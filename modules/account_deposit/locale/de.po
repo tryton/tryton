@@ -30,9 +30,9 @@ msgctxt "field:party.party,deposit:"
 msgid "Deposit"
 msgstr "Anzahlung"
 
-msgctxt "model:account.invoice.recall_deposit.start,name:"
-msgid "Recall deposit on Invoice"
-msgstr "Anzahlung auf Rechnung verrechnen"
+msgctxt "model:account.invoice.recall_deposit.start,string:"
+msgid "Account Invoice Recall Deposit Start"
+msgstr "Buchhaltung Rechnung Anzahlung verrechnen Start"
 
 msgctxt "model:ir.action,name:act_move_line_deposit"
 msgid "Deposit Lines"

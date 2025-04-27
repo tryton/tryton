@@ -152,13 +152,14 @@ msgid "Sale Amendment"
 msgstr "Amendament de vânzare"
 
 #, fuzzy
-msgctxt "model:sale.amendment,name:"
+msgctxt "model:sale.amendment,string:"
 msgid "Sale Amendment"
 msgstr "Amendament de vânzare"
 
-msgctxt "model:sale.amendment.line,name:"
+#, fuzzy
+msgctxt "model:sale.amendment.line,string:"
 msgid "Sale Amendment Line"
-msgstr ""
+msgstr "Amendament de vânzare"
 
 msgctxt "selection:sale.amendment,state:"
 msgid "Draft"

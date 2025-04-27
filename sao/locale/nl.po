@@ -312,6 +312,12 @@ msgstr "Voeg een bijlage toe aan het record"
 msgid "Add a note to the record"
 msgstr "Voeg een notitie toe aan het record"
 
+msgid "Chat"
+msgstr "Chat"
+
+msgid "Chat on the record"
+msgstr "Chat op de record"
+
 msgid "Email..."
 msgstr "Email..."
 
@@ -476,6 +482,9 @@ msgstr "Toon"
 msgid "Hide"
 msgstr "Verbergen"
 
+msgid "Select a color for \"%1\""
+msgstr "Selecteer een kleur voor \"%1\""
+
 msgid "Open the record"
 msgstr "Open het record"
 
@@ -530,6 +539,9 @@ msgstr "Menu"
 
 msgid "Copy Selected Rows"
 msgstr "Kopieer geselecteerde regels"
+
+msgid "Reset Column Widths"
+msgstr "Reset kolombreedtes"
 
 msgid "#ERROR"
 msgstr "#FOUT"
@@ -759,6 +771,15 @@ msgstr "Schakel geluid"
 
 msgid "Wizard"
 msgstr "Assistent"
+
+msgid "Enter a message"
+msgstr "Voer in bericht in"
+
+msgid "Submit the message"
+msgstr "Verzend het bericht"
+
+msgid "Make this an internal message"
+msgstr "Maak dit een intern bericht"
 
 msgid "Translate view"
 msgstr "Vertaal weergave"

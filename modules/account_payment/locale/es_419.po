@@ -106,10 +106,6 @@ msgctxt "field:account.payment,date:"
 msgid "Date"
 msgstr ""
 
-msgctxt "field:account.payment,description:"
-msgid "Description"
-msgstr ""
-
 msgctxt "field:account.payment,failed_by:"
 msgid "Failure Noted by"
 msgstr ""
@@ -144,6 +140,10 @@ msgstr ""
 
 msgctxt "field:account.payment,process_method:"
 msgid "Process Method"
+msgstr ""
+
+msgctxt "field:account.payment,reference:"
+msgid "Reference"
 msgstr ""
 
 msgctxt "field:account.payment,state:"
@@ -329,37 +329,48 @@ msgctxt "help:party.party.payment_direct_debit,payment_direct_debit:"
 msgid "Check if supplier does direct debit."
 msgstr ""
 
-msgctxt "model:account.configuration.payment_group_sequence,name:"
-msgid "Account Configuration Payment Group Sequence"
+msgctxt "help:party.party.reception_direct_debit,type:"
+msgid "Make a single payment."
 msgstr ""
 
-msgctxt "model:account.configuration.payment_sequence,name:"
+msgctxt "help:party.party.reception_direct_debit,type:"
+msgid "Make one payment per line."
+msgstr ""
+
+#, fuzzy
+msgctxt "model:account.configuration.payment_group_sequence,string:"
+msgid "Account Configuration Payment Group Sequence"
+msgstr "Libro diario de pago"
+
+msgctxt "model:account.configuration.payment_sequence,string:"
 msgid "Account Configuration Payment Sequence"
 msgstr ""
 
-msgctxt "model:account.move.line.create_direct_debit.start,name:"
-msgid "Create Direct Debit"
+msgctxt "model:account.move.line.create_direct_debit.start,string:"
+msgid "Account Move Line Create Direct Debit Start"
 msgstr ""
 
-msgctxt "model:account.move.line.pay.ask_journal,name:"
-msgid "Pay Line"
-msgstr "Pagar línea"
+msgctxt "model:account.move.line.pay.ask_journal,string:"
+msgid "Account Move Line Pay Ask Journal"
+msgstr ""
+
+msgctxt "model:account.move.line.pay.start,string:"
+msgid "Account Move Line Pay Start"
+msgstr ""
 
 #, fuzzy
-msgctxt "model:account.move.line.pay.start,name:"
-msgid "Pay Line"
-msgstr "Pagar línea"
+msgctxt "model:account.payment,string:"
+msgid "Account Payment"
+msgstr "Libro diario de pago"
 
-msgctxt "model:account.payment,name:"
-msgid "Payment"
-msgstr ""
+#, fuzzy
+msgctxt "model:account.payment.group,string:"
+msgid "Account Payment Group"
+msgstr "Libro diario de pago"
 
-msgctxt "model:account.payment.group,name:"
-msgid "Payment Group"
-msgstr ""
-
-msgctxt "model:account.payment.journal,name:"
-msgid "Payment Journal"
+#, fuzzy
+msgctxt "model:account.payment.journal,string:"
+msgid "Account Payment Journal"
 msgstr "Libro diario de pago"
 
 msgctxt "model:ir.action,name:act_move_line_form"
@@ -685,11 +696,11 @@ msgctxt "model:ir.ui.menu,name:menu_payments"
 msgid "Payments"
 msgstr ""
 
-msgctxt "model:party.party.payment_direct_debit,name:"
+msgctxt "model:party.party.payment_direct_debit,string:"
 msgid "Party Payment Direct Debit"
 msgstr ""
 
-msgctxt "model:party.party.reception_direct_debit,name:"
+msgctxt "model:party.party.reception_direct_debit,string:"
 msgid "Party Reception Direct Debit"
 msgstr ""
 
@@ -800,12 +811,13 @@ msgid "Total Amount"
 msgstr ""
 
 msgctxt "view:account.payment:"
-msgid "Description"
-msgstr ""
-
-msgctxt "view:account.payment:"
 msgid "Other Info"
 msgstr ""
+
+#, fuzzy
+msgctxt "view:account.payment:"
+msgid "Payment"
+msgstr "Libro diario de pago"
 
 msgctxt "wizard_button:account.move.line.create_direct_debit,start,create_:"
 msgid "Create"

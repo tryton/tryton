@@ -26,6 +26,11 @@ msgctxt "field:bank.account,owners:"
 msgid "Owners"
 msgstr "صاحبان"
 
+#, fuzzy
+msgctxt "field:bank.account,owners_sequence:"
+msgid "Owners Sequence"
+msgstr "ادامه"
+
 msgctxt "field:bank.account-party.party,account:"
 msgid "Account"
 msgstr "حساب"
@@ -54,6 +59,11 @@ msgctxt "field:party.party,bank_accounts:"
 msgid "Bank Accounts"
 msgstr "حساب های بانکی"
 
+#, fuzzy
+msgctxt "field:party.party,bank_accounts_used:"
+msgid "Bank Accounts Used"
+msgstr "حساب های بانکی"
+
 msgctxt "help:bank,bic:"
 msgid "Bank/Business Identifier Code."
 msgstr "کد شناسه بانک/کسب و کار."
@@ -70,19 +80,23 @@ msgctxt "help:bank.account.number,account:"
 msgid "The bank account which is identified by the number."
 msgstr "حساب بانکی که توسط شماره شناسایی می شود."
 
-msgctxt "model:bank,name:"
+#, fuzzy
+msgctxt "model:bank,string:"
 msgid "Bank"
 msgstr "بانک"
 
-msgctxt "model:bank.account,name:"
+#, fuzzy
+msgctxt "model:bank.account,string:"
 msgid "Bank Account"
 msgstr "حساب بانکی"
 
-msgctxt "model:bank.account-party.party,name:"
+#, fuzzy
+msgctxt "model:bank.account-party.party,string:"
 msgid "Bank Account - Party"
 msgstr "حساب بانکی - نهاد/سازمان"
 
-msgctxt "model:bank.account.number,name:"
+#, fuzzy
+msgctxt "model:bank.account.number,string:"
 msgid "Bank Account Number"
 msgstr "شماره حساب بانکی"
 

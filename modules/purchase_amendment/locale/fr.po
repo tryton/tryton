@@ -140,11 +140,11 @@ msgctxt "model:ir.ui.menu,name:menu_purchase_amendment"
 msgid "Amendments"
 msgstr "Amendements"
 
-msgctxt "model:purchase.amendment,name:"
+msgctxt "model:purchase.amendment,string:"
 msgid "Purchase Amendment"
 msgstr "Amendement d'achat"
 
-msgctxt "model:purchase.amendment.line,name:"
+msgctxt "model:purchase.amendment.line,string:"
 msgid "Purchase Amendment Line"
 msgstr "Ligne d'amendement d'achat"
 

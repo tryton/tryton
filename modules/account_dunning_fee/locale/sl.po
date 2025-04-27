@@ -54,12 +54,14 @@ msgctxt "help:account.dunning.fee,compute_method:"
 msgid "Method to compute the fee amount"
 msgstr "Načina izračuna višine stroška"
 
-msgctxt "model:account.dunning.fee,name:"
+#, fuzzy
+msgctxt "model:account.dunning.fee,string:"
 msgid "Account Dunning Fee"
 msgstr "Strošek izterjave"
 
-msgctxt "model:account.dunning.fee.dunning_level,name:"
-msgid "Account Dunning Fee Dunning-Level"
+#, fuzzy
+msgctxt "model:account.dunning.fee.dunning_level,string:"
+msgid "Account Dunning Fee Dunning Level"
 msgstr "Stopnja stroškov izterjave"
 
 #, fuzzy

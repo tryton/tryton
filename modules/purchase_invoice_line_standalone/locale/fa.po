@@ -44,10 +44,11 @@ msgid "Invoice Lines"
 msgstr "خطوط صورتحساب"
 
 #, fuzzy
-msgctxt "model:party.party.purchase_invoice_line_standalone,name:"
+msgctxt "model:party.party.purchase_invoice_line_standalone,string:"
 msgid "Party Purchase Invoice Line Standalone"
 msgstr "خرید - خط صورتحساب نادیده گرفته شده"
 
-msgctxt "model:purchase.purchase-ignored-account.invoice.line,name:"
-msgid "Purchase - Ignored Invoice Line"
+#, fuzzy
+msgctxt "model:purchase.purchase-ignored-account.invoice.line,string:"
+msgid "Purchase - Ignored - Account Invoice Line"
 msgstr "خرید - خط صورتحساب نادیده گرفته شده"

@@ -26,6 +26,11 @@ msgctxt "field:bank.account,owners:"
 msgid "Owners"
 msgstr "Proprietários"
 
+#, fuzzy
+msgctxt "field:bank.account,owners_sequence:"
+msgid "Owners Sequence"
+msgstr "Sequência"
+
 msgctxt "field:bank.account-party.party,account:"
 msgid "Account"
 msgstr "Contas"
@@ -54,6 +59,11 @@ msgctxt "field:party.party,bank_accounts:"
 msgid "Bank Accounts"
 msgstr "Contas Bancárias"
 
+#, fuzzy
+msgctxt "field:party.party,bank_accounts_used:"
+msgid "Bank Accounts Used"
+msgstr "Contas Bancárias"
+
 msgctxt "help:bank,bic:"
 msgid "Bank/Business Identifier Code."
 msgstr "Código Identificador do Banco/Negócio."
@@ -70,19 +80,19 @@ msgctxt "help:bank.account.number,account:"
 msgid "The bank account which is identified by the number."
 msgstr "A conta bancária a qual é identificada pelo número."
 
-msgctxt "model:bank,name:"
+msgctxt "model:bank,string:"
 msgid "Bank"
 msgstr "Banco"
 
-msgctxt "model:bank.account,name:"
+msgctxt "model:bank.account,string:"
 msgid "Bank Account"
 msgstr "Conta Bancária"
 
-msgctxt "model:bank.account-party.party,name:"
+msgctxt "model:bank.account-party.party,string:"
 msgid "Bank Account - Party"
 msgstr "Conta Bancária - Pessoa"
 
-msgctxt "model:bank.account.number,name:"
+msgctxt "model:bank.account.number,string:"
 msgid "Bank Account Number"
 msgstr "Número da Conta Bancária"
 
@@ -97,25 +107,25 @@ msgstr "Bancos"
 #, python-format
 msgctxt "model:ir.message,text:msg_account_iban_invalid_bic"
 msgid "The BIC of \"%(account)s\" is not valid with the \"%(bic)s\" from IBAN."
-msgstr ""
+msgstr "O BIC de “%(account)s” não é válido com o “%(bic)s” do IBAN."
 
 msgctxt "model:ir.message,text:msg_account_iban_unique"
 msgid "Account can have only one IBAN."
-msgstr ""
+msgstr "A conta só pode ter um IBAN."
 
-#, fuzzy, python-format
+#, python-format
 msgctxt "model:ir.message,text:msg_invalid_bic"
 msgid "The BIC \"%(bic)s\" is not valid."
-msgstr "O número IBAN \"%(number)s\" não é válido."
+msgstr "O BIC \"%(bic)s\" não é válido."
 
-#, fuzzy, python-format
+#, python-format
 msgctxt "model:ir.message,text:msg_invalid_iban"
 msgid "IBAN \"%(number)s\" is not valid."
 msgstr "O número IBAN \"%(number)s\" não é válido."
 
 msgctxt "model:ir.message,text:msg_number_iban_unique"
 msgid "IBAN must be unique."
-msgstr ""
+msgstr "O número do IBAN deve ser único."
 
 msgctxt "model:ir.ui.menu,name:menu_bank_account_form"
 msgid "Accounts"
@@ -141,10 +151,9 @@ msgctxt "selection:bank.account.number,type:"
 msgid "Other"
 msgstr "Nefropatia hereditária năo classificada em outra parte - outras"
 
-#, fuzzy
 msgctxt "view:bank.account:"
 msgid "Number"
-msgstr "Numero"
+msgstr "Número"
 
 msgctxt "view:party.party:"
 msgid "Banking"

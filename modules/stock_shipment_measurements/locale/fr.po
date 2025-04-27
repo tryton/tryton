@@ -126,6 +126,30 @@ msgctxt "field:stock.shipment.in.return,weight_uom:"
 msgid "Weight UoM"
 msgstr "UDM de poids"
 
+msgctxt "field:stock.shipment.internal,internal_volume:"
+msgid "Internal Volume"
+msgstr "Volume interne"
+
+msgctxt "field:stock.shipment.internal,internal_weight:"
+msgid "Internal Weight"
+msgstr "Poids interne"
+
+msgctxt "field:stock.shipment.internal,volume:"
+msgid "Volume"
+msgstr "Volume"
+
+msgctxt "field:stock.shipment.internal,volume_uom:"
+msgid "Volume UoM"
+msgstr "UdM de volume"
+
+msgctxt "field:stock.shipment.internal,weight:"
+msgid "Weight"
+msgstr "Poids"
+
+msgctxt "field:stock.shipment.internal,weight_uom:"
+msgid "Weight UoM"
+msgstr "UdM de poids"
+
 msgctxt "field:stock.shipment.out,internal_volume:"
 msgid "Internal Volume"
 msgstr "Volume interne"
@@ -270,6 +294,22 @@ msgctxt "help:stock.shipment.in.return,weight_uom:"
 msgid "The Unit of Measure of weight."
 msgstr "L'Unité De Mesure du poids."
 
+msgctxt "help:stock.shipment.internal,volume:"
+msgid "The total volume of the record's moves."
+msgstr "Le volume total des mouvements de l'enregistrement."
+
+msgctxt "help:stock.shipment.internal,volume_uom:"
+msgid "The Unit of Measure of volume."
+msgstr "L'Unité de Mesure du volume."
+
+msgctxt "help:stock.shipment.internal,weight:"
+msgid "The total weight of the record's moves."
+msgstr "Le poids total des mouvements de l'enregistrement."
+
+msgctxt "help:stock.shipment.internal,weight_uom:"
+msgid "The Unit of Measure of weight."
+msgstr "L'Unité de Mesure du poids."
+
 msgctxt "help:stock.shipment.out,packages_volume:"
 msgid "The total volume of the packages."
 msgstr "Le volume total des emballages."
@@ -310,9 +350,9 @@ msgctxt "help:stock.shipment.out.return,weight_uom:"
 msgid "The Unit of Measure of weight."
 msgstr "L'Unité De Mesure du poids."
 
-msgctxt "model:stock.configuration.measurement,name:"
+msgctxt "model:stock.configuration.measurement,string:"
 msgid "Stock Configuration Measurement"
-msgstr "Configuration de stock Mesure"
+msgstr "Configuration de mesure de stock"
 
 msgctxt "view:stock.configuration:"
 msgid "Measurements"
@@ -335,6 +375,10 @@ msgid "Measurements"
 msgstr "Mesures"
 
 msgctxt "view:stock.shipment.in:"
+msgid "Measurements"
+msgstr "Mesures"
+
+msgctxt "view:stock.shipment.internal:"
 msgid "Measurements"
 msgstr "Mesures"
 

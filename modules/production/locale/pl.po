@@ -52,10 +52,9 @@ msgctxt "field:production,effective_start_date:"
 msgid "Effective Start Date"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:production,inputs:"
-msgid "Inputs"
-msgstr "Wejścia"
+msgid "Input Materials"
+msgstr ""
 
 msgctxt "field:production,location:"
 msgid "Location"
@@ -71,7 +70,7 @@ msgstr ""
 
 #, fuzzy
 msgctxt "field:production,outputs:"
-msgid "Outputs"
+msgid "Output Materials"
 msgstr "Wyjścia"
 
 #, fuzzy
@@ -126,8 +125,8 @@ msgid "Code Readonly"
 msgstr ""
 
 msgctxt "field:production.bom,inputs:"
-msgid "Inputs"
-msgstr "Wejścia"
+msgid "Input Materials"
+msgstr ""
 
 msgctxt "field:production.bom,name:"
 msgid "Name"
@@ -137,8 +136,9 @@ msgctxt "field:production.bom,output_products:"
 msgid "Output Products"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:production.bom,outputs:"
-msgid "Outputs"
+msgid "Output Materials"
 msgstr "Wyjścia"
 
 msgctxt "field:production.bom.input,bom:"
@@ -513,49 +513,58 @@ msgctxt "model:ir.ui.menu,name:menu_production_list"
 msgid "Productions"
 msgstr "Productions"
 
-msgctxt "model:product.product-production.bom,name:"
-msgid "Product - BOM"
-msgstr "Produkt - BOM"
+msgctxt "model:product.product-production.bom,string:"
+msgid "Product - Production Bom"
+msgstr ""
 
-msgctxt "model:production,name:"
+#, fuzzy
+msgctxt "model:production,string:"
 msgid "Production"
 msgstr "Produkcja"
 
-msgctxt "model:production.bom,name:"
-msgid "Bill of Material"
-msgstr "Wielopoziomowa struktura produktu (BOM)"
+#, fuzzy
+msgctxt "model:production.bom,string:"
+msgid "Production Bom"
+msgstr "Produkcja"
 
-msgctxt "model:production.bom.input,name:"
-msgid "Bill of Material Input"
+#, fuzzy
+msgctxt "model:production.bom.input,string:"
+msgid "Production Bom Input"
+msgstr "Produkcja"
+
+#, fuzzy
+msgctxt "model:production.bom.output,string:"
+msgid "Production Bom Output"
+msgstr "Produkcja"
+
+#, fuzzy
+msgctxt "model:production.bom.tree,string:"
+msgid "Production Bom Tree"
+msgstr "Produkcja"
+
+msgctxt "model:production.bom.tree.open.start,string:"
+msgid "Production Bom Tree Open Start"
 msgstr ""
 
-msgctxt "model:production.bom.output,name:"
-msgid "Bill of Material Output"
-msgstr ""
+#, fuzzy
+msgctxt "model:production.bom.tree.open.tree,string:"
+msgid "Production Bom Tree Open Tree"
+msgstr "Sekwencja produkcji"
 
-msgctxt "model:production.bom.tree,name:"
-msgid "BOM Tree"
-msgstr "Drzewo BOM"
-
-msgctxt "model:production.bom.tree.open.start,name:"
-msgid "Open BOM Tree"
-msgstr "Otwórz drzewo BOM"
-
-msgctxt "model:production.bom.tree.open.tree,name:"
-msgid "Open BOM Tree"
-msgstr "Otwórz drzewo BOM"
-
-msgctxt "model:production.configuration,name:"
+#, fuzzy
+msgctxt "model:production.configuration,string:"
 msgid "Production Configuration"
 msgstr "Konfiguracja produkcji"
 
-msgctxt "model:production.configuration.production_sequence,name:"
+#, fuzzy
+msgctxt "model:production.configuration.production_sequence,string:"
 msgid "Production Configuration Production Sequence"
-msgstr ""
+msgstr "Konfiguracja produkcji"
 
-msgctxt "model:production.lead_time,name:"
+#, fuzzy
+msgctxt "model:production.lead_time,string:"
 msgid "Production Lead Time"
-msgstr ""
+msgstr "Sekwencja produkcji"
 
 #, fuzzy
 msgctxt "model:res.group,name:group_production"
@@ -619,10 +628,6 @@ msgid "Production"
 msgstr "Produkcja"
 
 msgctxt "view:production.bom:"
-msgid "Lines"
-msgstr ""
-
-msgctxt "view:production:"
 msgid "Lines"
 msgstr ""
 

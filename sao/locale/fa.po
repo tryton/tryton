@@ -333,6 +333,13 @@ msgstr "پیوست را به پرونده اضافه کنید"
 msgid "Add a note to the record"
 msgstr "یک یادداشت به پرونده اضافه کنید"
 
+msgid "Chat"
+msgstr ""
+
+#, fuzzy
+msgid "Chat on the record"
+msgstr "بازکردن پرونده <F2>"
+
 msgid "Email..."
 msgstr ""
 
@@ -507,6 +514,9 @@ msgstr "نمایش"
 msgid "Hide"
 msgstr "مخفی"
 
+msgid "Select a color for \"%1\""
+msgstr ""
+
 #, fuzzy
 msgid "Open the record"
 msgstr "بازکردن پرونده <F2>"
@@ -565,6 +575,9 @@ msgstr ""
 #, fuzzy
 msgid "Copy Selected Rows"
 msgstr "پرونده بعدی"
+
+msgid "Reset Column Widths"
+msgstr ""
 
 msgid "#ERROR"
 msgstr ""
@@ -814,6 +827,15 @@ msgstr ""
 
 msgid "Wizard"
 msgstr "دستیار نصب"
+
+msgid "Enter a message"
+msgstr ""
+
+msgid "Submit the message"
+msgstr ""
+
+msgid "Make this an internal message"
+msgstr ""
 
 msgid "Translate view"
 msgstr ""

@@ -26,6 +26,11 @@ msgctxt "field:bank.account,owners:"
 msgid "Owners"
 msgstr "Proprietari"
 
+#, fuzzy
+msgctxt "field:bank.account,owners_sequence:"
+msgid "Owners Sequence"
+msgstr "Sequenza"
+
 msgctxt "field:bank.account-party.party,account:"
 msgid "Account"
 msgstr "Conto"
@@ -54,6 +59,11 @@ msgctxt "field:party.party,bank_accounts:"
 msgid "Bank Accounts"
 msgstr "conti bancari"
 
+#, fuzzy
+msgctxt "field:party.party,bank_accounts_used:"
+msgid "Bank Accounts Used"
+msgstr "conti bancari"
+
 msgctxt "help:bank,bic:"
 msgid "Bank/Business Identifier Code."
 msgstr "Codice identificatore banca/azienda."
@@ -70,19 +80,23 @@ msgctxt "help:bank.account.number,account:"
 msgid "The bank account which is identified by the number."
 msgstr "Il conto bancario identificato dal numero."
 
-msgctxt "model:bank,name:"
+#, fuzzy
+msgctxt "model:bank,string:"
 msgid "Bank"
 msgstr "Banca"
 
-msgctxt "model:bank.account,name:"
+#, fuzzy
+msgctxt "model:bank.account,string:"
 msgid "Bank Account"
 msgstr "Conto bancario"
 
-msgctxt "model:bank.account-party.party,name:"
+#, fuzzy
+msgctxt "model:bank.account-party.party,string:"
 msgid "Bank Account - Party"
 msgstr "Conto bancario - controparte"
 
-msgctxt "model:bank.account.number,name:"
+#, fuzzy
+msgctxt "model:bank.account.number,string:"
 msgid "Bank Account Number"
 msgstr "Numero conto bancario"
 

@@ -54,61 +54,53 @@ msgctxt "field:product.taxon,selectable:"
 msgid "Selectable"
 msgstr "Selecionável"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_cultivar_form"
 msgid "Cultivars"
-msgstr "Cultivars"
+msgstr "Cultivares"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_cultivar_group_form"
 msgid "Groups"
 msgstr "Grupos"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_taxon_form"
 msgid "Taxons"
 msgstr "Taxons"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_taxon_tree"
 msgid "Taxons"
 msgstr "Taxons"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_cultivar"
 msgid "Cultivars"
-msgstr "Cultivars"
+msgstr "Cultivares"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_cultivar_group"
 msgid "Groups"
 msgstr "Grupos"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_taxon"
 msgid "Taxons"
 msgstr "Taxons"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_taxon_tree"
 msgid "Taxons"
 msgstr "Taxons"
 
-msgctxt "model:product.cultivar,name:"
-msgid "Cultivar"
-msgstr "Cultivar"
+msgctxt "model:product.cultivar,string:"
+msgid "Product Cultivar"
+msgstr "Cultivar do Produto"
 
-msgctxt "model:product.cultivar-product.cultivar.group,name:"
-msgid "Cultivar-CultivarGroup"
-msgstr "Cultivar-GrupoCultivar"
+msgctxt "model:product.cultivar-product.cultivar.group,string:"
+msgid "Product Cultivar - Product Cultivar Group"
+msgstr "Cultivar do Produto - Grupo"
 
-msgctxt "model:product.cultivar.group,name:"
-msgid "Cultivar Group"
-msgstr "Grupo Cultivar"
+msgctxt "model:product.cultivar.group,string:"
+msgid "Product Cultivar Group"
+msgstr "Grupo do Cultivar"
 
-msgctxt "model:product.taxon,name:"
-msgid "Taxon"
-msgstr "Táxon"
+msgctxt "model:product.taxon,string:"
+msgid "Product Taxon"
+msgstr "Taxon do Produto"
 
 msgctxt "selection:product.taxon,rank:"
 msgid "Class"

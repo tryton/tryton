@@ -152,29 +152,29 @@ msgctxt "help:account.dunning.procedure,name:"
 msgid "The main identifier of the Dunning Procedure."
 msgstr "El identificador principal del procedimiento de reclamación."
 
-msgctxt "model:account.configuration.default_dunning_procedure,name:"
+msgctxt "model:account.configuration.default_dunning_procedure,string:"
 msgid "Account Configuration Default Dunning Procedure"
 msgstr "Configuración del procedimiento de reclamación por defecto"
 
-msgctxt "model:account.dunning,name:"
+msgctxt "model:account.dunning,string:"
 msgid "Account Dunning"
 msgstr "Reclamación contable"
 
-msgctxt "model:account.dunning.create.start,name:"
-msgid "Create Account Dunning"
-msgstr "Crear reclamación"
+msgctxt "model:account.dunning.create.start,string:"
+msgid "Account Dunning Create Start"
+msgstr "Incio crear reclamaciones contables"
 
-msgctxt "model:account.dunning.level,name:"
+msgctxt "model:account.dunning.level,string:"
 msgid "Account Dunning Level"
 msgstr "Nivel de reclamación contable"
 
-msgctxt "model:account.dunning.procedure,name:"
+msgctxt "model:account.dunning.procedure,string:"
 msgid "Account Dunning Procedure"
 msgstr "Procedimiento de reclamación contable"
 
-msgctxt "model:account.dunning.process.start,name:"
-msgid "Create Account Dunning"
-msgstr "Crear reclamación contable"
+msgctxt "model:account.dunning.process.start,string:"
+msgid "Account Dunning Process Start"
+msgstr "Inicio processar reclamaciones contables"
 
 msgctxt "model:ir.action,name:act_dunning_form"
 msgid "Dunnings"
@@ -249,7 +249,7 @@ msgctxt "model:ir.ui.menu,name:menu_dunnings"
 msgid "Dunnings"
 msgstr "Reclamaciones"
 
-msgctxt "model:party.party.dunning_procedure,name:"
+msgctxt "model:party.party.dunning_procedure,string:"
 msgid "Party Dunning Procedure"
 msgstr "Procedimiento de reclamación por tercero"
 

@@ -38,10 +38,12 @@ msgctxt "model:ir.ui.menu,name:menu_classification"
 msgid "Classifications"
 msgstr "Klasifikacije"
 
-msgctxt "model:product.classification.dummy,name:"
-msgid "Dummy Product Classification"
+#, fuzzy
+msgctxt "model:product.classification.dummy,string:"
+msgid "Product Classification Dummy"
 msgstr "Navidezna klasifikacija izdelka"
 
-msgctxt "model:product.classification_tree.dummy,name:"
-msgid "Dummy Product Classification Tree"
+#, fuzzy
+msgctxt "model:product.classification_tree.dummy,string:"
+msgid "Product Classification Tree Dummy"
 msgstr "Navidezno klasifikacijsko drevo izdelka"

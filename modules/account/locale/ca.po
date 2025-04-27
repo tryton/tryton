@@ -675,6 +675,11 @@ msgctxt "field:account.fiscalyear,icon:"
 msgid "Icon"
 msgstr "Icona"
 
+#, fuzzy
+msgctxt "field:account.fiscalyear,move_sequence:"
+msgid "Move Sequence"
+msgstr "Seqüència d'assentament comptabilitzat"
+
 msgctxt "field:account.fiscalyear,name:"
 msgid "Name"
 msgstr "Nom"
@@ -682,10 +687,6 @@ msgstr "Nom"
 msgctxt "field:account.fiscalyear,periods:"
 msgid "Periods"
 msgstr "Períodes"
-
-msgctxt "field:account.fiscalyear,post_move_sequence:"
-msgid "Post Move Sequence"
-msgstr "Seqüència d'assentament comptabilitzat"
 
 msgctxt "field:account.fiscalyear,start_date:"
 msgid "Starting Date"
@@ -983,10 +984,6 @@ msgctxt "field:account.general_ledger.line,move:"
 msgid "Move"
 msgstr "Assentament"
 
-msgctxt "field:account.general_ledger.line,move_description_used:"
-msgid "Move Description"
-msgstr "Descripció de l'assentament"
-
 msgctxt "field:account.general_ledger.line,origin:"
 msgid "Origin"
 msgstr "Origen"
@@ -1127,14 +1124,6 @@ msgctxt "field:account.journal,name:"
 msgid "Name"
 msgstr "Nom"
 
-msgctxt "field:account.journal,sequence:"
-msgid "Sequence"
-msgstr "Seqüència"
-
-msgctxt "field:account.journal,sequences:"
-msgid "Sequences"
-msgstr "Seqüències"
-
 msgctxt "field:account.journal,type:"
 msgid "Type"
 msgstr "Tipus"
@@ -1166,18 +1155,6 @@ msgstr "Període"
 msgctxt "field:account.journal.period,state:"
 msgid "State"
 msgstr "Estat"
-
-msgctxt "field:account.journal.sequence,company:"
-msgid "Company"
-msgstr "Empresa"
-
-msgctxt "field:account.journal.sequence,journal:"
-msgid "Journal"
-msgstr "Diari"
-
-msgctxt "field:account.journal.sequence,sequence:"
-msgid "Sequence"
-msgstr "Seqüència"
 
 msgctxt "field:account.move,company:"
 msgid "Company"
@@ -1219,10 +1196,6 @@ msgctxt "field:account.move,post_date:"
 msgid "Post Date"
 msgstr "Data comptabilització"
 
-msgctxt "field:account.move,post_number:"
-msgid "Post Number"
-msgstr "Número comptabilització"
-
 msgctxt "field:account.move,state:"
 msgid "State"
 msgstr "Estat"
@@ -1234,6 +1207,11 @@ msgstr "Descripció"
 msgctxt "field:account.move.cancel.default,reversal:"
 msgid "Reversal"
 msgstr "Inverteix"
+
+#, fuzzy
+msgctxt "field:account.move.context,company:"
+msgid "Company"
+msgstr "Empresa"
 
 msgctxt "field:account.move.line,account:"
 msgid "Account"
@@ -1327,6 +1305,11 @@ msgctxt "field:account.move.line,payable_receivable_balance:"
 msgid "Payable/Receivable Balance"
 msgstr "Saldo a pagar/a cobrar"
 
+#, fuzzy
+msgctxt "field:account.move.line,payable_receivable_date:"
+msgid "Payable/Receivable Date"
+msgstr "Saldo a pagar/a cobrar"
+
 msgctxt "field:account.move.line,period:"
 msgid "Period"
 msgstr "Període"
@@ -1374,6 +1357,11 @@ msgstr "Descripció"
 msgctxt "field:account.move.line.group.start,journal:"
 msgid "Journal"
 msgstr "Diari"
+
+#, fuzzy
+msgctxt "field:account.move.line.receivable_payable.context,company:"
+msgid "Company"
+msgstr "Empresa"
 
 msgctxt "field:account.move.line.receivable_payable.context,payable:"
 msgid "Payable"
@@ -1474,6 +1462,11 @@ msgstr "Tercer obligatori"
 msgctxt "field:account.move.line.template,taxes:"
 msgid "Taxes"
 msgstr "Impostos"
+
+#, fuzzy
+msgctxt "field:account.move.open_journal.ask,company:"
+msgid "Company"
+msgstr "Empresa"
 
 msgctxt "field:account.move.open_journal.ask,journal:"
 msgid "Journal"
@@ -1623,13 +1616,14 @@ msgctxt "field:account.period,icon:"
 msgid "Icon"
 msgstr "Icona"
 
+#, fuzzy
+msgctxt "field:account.period,move_sequence:"
+msgid "Move Sequence"
+msgstr "Seqüència d'assentament comptabilitzat"
+
 msgctxt "field:account.period,name:"
 msgid "Name"
 msgstr "Nom"
-
-msgctxt "field:account.period,post_move_sequence:"
-msgid "Post Move Sequence"
-msgstr "Seqüència d'assentament comptabilitzat"
 
 msgctxt "field:account.period,start_date:"
 msgid "Starting Date"
@@ -2400,6 +2394,11 @@ msgctxt "help:account.configuration,default_supplier_tax_rule:"
 msgid "Default supplier tax rule for new parties."
 msgstr "Regla d'impost de proveïdor per als nous tercers."
 
+msgctxt "help:account.fiscalyear,move_sequence:"
+msgid ""
+"Used to generate the move number when posting if the period has no sequence."
+msgstr ""
+
 msgctxt "help:account.fiscalyear.create_periods.start,end_day:"
 msgid ""
 "The day of the month on which periods end.\n"
@@ -2440,7 +2439,8 @@ msgctxt "help:account.income_statement.context,posted:"
 msgid "Only include posted moves."
 msgstr "Mostra només assentaments comptabilitzats."
 
-msgctxt "help:account.move,post_number:"
+#, fuzzy
+msgctxt "help:account.move,number:"
 msgid "Also known as Folio Number."
 msgstr "També conegut com el número de foli."
 
@@ -2491,6 +2491,12 @@ msgid "Keyword value substitutions are identified by braces ('{' and '}')."
 msgstr ""
 "Les paraules clau a substituir per valors s'identifiquen escrivint-les dins "
 "de claus ('{' i '}')."
+
+msgctxt "help:account.period,move_sequence:"
+msgid ""
+"Used to generate the move number when posting.\n"
+"Leave empty to use the fiscal year sequence."
+msgstr ""
 
 msgctxt "help:account.reconcile.start,automatic:"
 msgid "Automatically reconcile suggestions."
@@ -2570,137 +2576,163 @@ msgctxt "help:party.party,supplier_tax_rule:"
 msgid "Apply this rule on taxes when party is supplier."
 msgstr "Aplica aquesta regla als impostos quan el tercer és un proveïdor."
 
-msgctxt "model:account.account,name:"
+#, fuzzy
+msgctxt "model:account.account,string:"
 msgid "Account"
 msgstr "Compte"
 
-msgctxt "model:account.account-account.tax,name:"
-msgid "Account - Tax"
+#, fuzzy
+msgctxt "model:account.account-account.tax,string:"
+msgid "Account - Account Tax"
 msgstr "Compte - Impost"
 
-msgctxt "model:account.account.context,name:"
+#, fuzzy
+msgctxt "model:account.account.context,string:"
 msgid "Account Context"
 msgstr "Context comptable"
 
-msgctxt "model:account.account.deferral,name:"
+#, fuzzy
+msgctxt "model:account.account.deferral,string:"
 msgid "Account Deferral"
 msgstr "Tancament comptable"
 
-msgctxt "model:account.account.party,name:"
+#, fuzzy
+msgctxt "model:account.account.party,string:"
 msgid "Account Party"
-msgstr "Compte a pagar"
+msgstr "Compte del tercer"
 
-msgctxt "model:account.account.template,name:"
+#, fuzzy
+msgctxt "model:account.account.template,string:"
 msgid "Account Template"
 msgstr "Plantilla de compte"
 
-msgctxt "model:account.account.template-account.tax.template,name:"
-msgid "Account Template - Tax Template"
+#, fuzzy
+msgctxt "model:account.account.template-account.tax.template,string:"
+msgid "Account Template - Account Tax Template"
 msgstr "Plantilla de compte - Plantilla d'impost"
 
-msgctxt "model:account.account.type,name:"
+#, fuzzy
+msgctxt "model:account.account.type,string:"
 msgid "Account Type"
 msgstr "Tipus de compte"
 
-msgctxt "model:account.account.type.template,name:"
+#, fuzzy
+msgctxt "model:account.account.type.template,string:"
 msgid "Account Type Template"
 msgstr "Plantilla de tipus de compte"
 
-msgctxt "model:account.aged_balance,name:"
-msgid "Aged Balance"
+#, fuzzy
+msgctxt "model:account.aged_balance,string:"
+msgid "Account Aged Balance"
 msgstr "Balanç històric"
 
-msgctxt "model:account.aged_balance.context,name:"
-msgid "Aged Balance Context"
+#, fuzzy
+msgctxt "model:account.aged_balance.context,string:"
+msgid "Account Aged Balance Context"
 msgstr "Context del balanç històric"
 
-msgctxt "model:account.balance_sheet.comparison.context,name:"
-msgid "Balance Sheet Context"
+#, fuzzy
+msgctxt "model:account.balance_sheet.comparison.context,string:"
+msgid "Account Balance Sheet Context"
 msgstr "Context del balanç de situació"
 
-msgctxt "model:account.balance_sheet.context,name:"
-msgid "Balance Sheet Context"
+#, fuzzy
+msgctxt "model:account.balance_sheet.context,string:"
+msgid "Account Balance Sheet Context"
 msgstr "Context del balanç de situació"
 
-msgctxt "model:account.configuration,name:"
+#, fuzzy
+msgctxt "model:account.configuration,string:"
 msgid "Account Configuration"
 msgstr "Configuració comptable"
 
-msgctxt "model:account.configuration.default_account,name:"
+#, fuzzy
+msgctxt "model:account.configuration.default_account,string:"
 msgid "Account Configuration Default Account"
 msgstr "Configuració de comptes per defecte"
 
-msgctxt "model:account.configuration.default_tax_rule,name:"
+#, fuzzy
+msgctxt "model:account.configuration.default_tax_rule,string:"
 msgid "Account Configuration Default Tax Rule"
 msgstr "Configuració de regles d'impost per defecte"
 
-msgctxt "model:account.configuration.journal,name:"
+#, fuzzy
+msgctxt "model:account.configuration.journal,string:"
 msgid "Account Configuration Journal"
 msgstr "Configuració diari comptable"
 
-msgctxt "model:account.configuration.sequence,name:"
+#, fuzzy
+msgctxt "model:account.configuration.sequence,string:"
 msgid "Account Configuration Sequence"
 msgstr "Configuració seqüències comptables"
 
-msgctxt "model:account.configuration.tax_rounding,name:"
+#, fuzzy
+msgctxt "model:account.configuration.tax_rounding,string:"
 msgid "Account Configuration Tax Rounding"
 msgstr "Configuració comptable de l'arrodoniment d'impostos"
 
-msgctxt "model:account.create_chart.account,name:"
-msgid "Create Chart"
+#, fuzzy
+msgctxt "model:account.create_chart.account,string:"
+msgid "Account Create Chart Account"
+msgstr "Configuració de comptes per defecte"
+
+msgctxt "model:account.create_chart.properties,string:"
+msgid "Account Create Chart Properties"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:account.create_chart.start,string:"
+msgid "Account Create Chart Start"
 msgstr "Crea pla comptable"
 
-msgctxt "model:account.create_chart.properties,name:"
-msgid "Create Chart"
-msgstr "Crea pla comptable"
+#, fuzzy
+msgctxt "model:account.fiscalyear,string:"
+msgid "Account Fiscalyear"
+msgstr "Exercici fiscal anterior"
 
-msgctxt "model:account.create_chart.start,name:"
-msgid "Create Chart"
-msgstr "Crea pla comptable"
+msgctxt "model:account.fiscalyear.balance_non_deferral.start,string:"
+msgid "Account Fiscalyear Balance Non Deferral Start"
+msgstr ""
 
-msgctxt "model:account.fiscalyear,name:"
-msgid "Fiscal Year"
-msgstr "Exercici fiscal"
-
-msgctxt "model:account.fiscalyear.balance_non_deferral.start,name:"
-msgid "Balance Non-Deferral"
-msgstr "Crea l'assentament de regularització"
-
-msgctxt "model:account.fiscalyear.create_periods.start,name:"
-msgid "Create Periods Start"
+#, fuzzy
+msgctxt "model:account.fiscalyear.create_periods.start,string:"
+msgid "Account Fiscalyear Create Periods Start"
 msgstr "Inici crea períodes"
 
-msgctxt "model:account.fiscalyear.renew.start,name:"
-msgid "Renew Fiscal Year Start"
+#, fuzzy
+msgctxt "model:account.fiscalyear.renew.start,string:"
+msgid "Account Fiscalyear Renew Start"
 msgstr "Inici renovar exercici fiscal"
 
-msgctxt "model:account.general_ledger.account,name:"
-msgid "General Ledger Account"
+#, fuzzy
+msgctxt "model:account.general_ledger.account,string:"
+msgid "Account General Ledger Account"
 msgstr "Compte llibre major"
 
-msgctxt "model:account.general_ledger.account.context,name:"
-msgid "General Ledger Account Context"
+#, fuzzy
+msgctxt "model:account.general_ledger.account.context,string:"
+msgid "Account General Ledger Account Context"
 msgstr "Context del compte llibre major"
 
-msgctxt "model:account.general_ledger.account.party,name:"
-msgid "General Ledger Account Party"
+#, fuzzy
+msgctxt "model:account.general_ledger.account.party,string:"
+msgid "Account General Ledger Account Party"
 msgstr "Tercer del compte llibre major"
 
-msgctxt "model:account.general_ledger.line,name:"
-msgid "General Ledger Line"
+#, fuzzy
+msgctxt "model:account.general_ledger.line,string:"
+msgid "Account General Ledger Line"
 msgstr "Apunt llibre major"
 
-msgctxt "model:account.general_ledger.line.context,name:"
-msgid "General Ledger Line Context"
-msgstr "Context de l'apunt llibre major"
+#, fuzzy
+msgctxt "model:account.general_ledger.line.context,string:"
+msgid "Account General Ledger Account Context"
+msgstr "Context del compte llibre major"
 
-msgctxt "model:account.income_statement.context,name:"
-msgid "Income Statement Context"
+#, fuzzy
+msgctxt "model:account.income_statement.context,string:"
+msgid "Account Income Statement Context"
 msgstr "Context del pèrdues i guanys"
-
-msgctxt "model:account.journal,name:"
-msgid "Journal"
-msgstr "Diari"
 
 msgctxt "model:account.journal,name:journal_cash"
 msgid "Cash"
@@ -2726,173 +2758,220 @@ msgctxt "model:account.journal,name:journal_stock"
 msgid "Stock"
 msgstr "Existències"
 
-msgctxt "model:account.journal.open_cash.context,name:"
-msgid "Journal Cash Context"
+#, fuzzy
+msgctxt "model:account.journal,string:"
+msgid "Account Journal"
+msgstr "Diari comptable"
+
+#, fuzzy
+msgctxt "model:account.journal.open_cash.context,string:"
+msgid "Account Journal Open Cash Context"
 msgstr "Context del diari de caixa"
 
-msgctxt "model:account.journal.period,name:"
-msgid "Journal - Period"
-msgstr "Diari - Període"
+#, fuzzy
+msgctxt "model:account.journal.period,string:"
+msgid "Account Journal Period"
+msgstr "Diari comptable"
 
-msgctxt "model:account.journal.sequence,name:"
-msgid "Journal Sequence"
-msgstr "Seqüencies del diari"
-
-msgctxt "model:account.move,name:"
+#, fuzzy
+msgctxt "model:account.move,string:"
 msgid "Account Move"
 msgstr "Assentament comptable"
 
-msgctxt "model:account.move.cancel.default,name:"
-msgid "Cancel Moves"
-msgstr "Cancel·la assentaments"
+#, fuzzy
+msgctxt "model:account.move.cancel.default,string:"
+msgid "Account Move Cancel Default"
+msgstr "Plantilla d'apunt comptable"
 
-msgctxt "model:account.move.line,name:"
+#, fuzzy
+msgctxt "model:account.move.context,string:"
+msgid "Account Move Context"
+msgstr "Context comptable"
+
+#, fuzzy
+msgctxt "model:account.move.line,string:"
 msgid "Account Move Line"
 msgstr "Apunt comptable"
 
-msgctxt "model:account.move.line.delegate.start,name:"
-msgid "Delegate Lines"
-msgstr "Línies delegades"
+#, fuzzy
+msgctxt "model:account.move.line.delegate.start,string:"
+msgid "Account Move Line Delegate Start"
+msgstr "Plantilla d'apunt comptable"
 
-msgctxt "model:account.move.line.group.start,name:"
-msgid "Group Lines"
-msgstr "Agrupa línies"
+#, fuzzy
+msgctxt "model:account.move.line.group.start,string:"
+msgid "Account Move Line Group Start"
+msgstr "Plantilla d'apunt comptable"
 
-msgctxt "model:account.move.line.receivable_payable.context,name:"
-msgid "Receivable/Payable Line Context"
+#, fuzzy
+msgctxt "model:account.move.line.receivable_payable.context,string:"
+msgid "Account Move Line Receivable Payable Context"
 msgstr "Context apunts a cobrar/a pagar"
 
-msgctxt "model:account.move.line.reschedule.preview,name:"
-msgid "Reschedule Lines"
-msgstr "Reprogramar apunts"
+#, fuzzy
+msgctxt "model:account.move.line.reschedule.preview,string:"
+msgid "Account Move Line Reschedule Preview"
+msgstr "Plantilla d'apunt comptable"
 
-msgctxt "model:account.move.line.reschedule.start,name:"
-msgid "Reschedule Lines"
-msgstr "Reprogramar apunts"
+#, fuzzy
+msgctxt "model:account.move.line.reschedule.start,string:"
+msgid "Account Move Line Reschedule Start"
+msgstr "Plantilla d'apunt comptable"
 
-msgctxt "model:account.move.line.reschedule.term,name:"
-msgid "Reschedule Lines"
-msgstr "Reprogramar apunts"
+#, fuzzy
+msgctxt "model:account.move.line.reschedule.term,string:"
+msgid "Account Move Line Reschedule Term"
+msgstr "Plantilla d'apunt comptable"
 
-msgctxt "model:account.move.line.template,name:"
+#, fuzzy
+msgctxt "model:account.move.line.template,string:"
 msgid "Account Move Line Template"
 msgstr "Plantilla d'apunt comptable"
 
-msgctxt "model:account.move.open_journal.ask,name:"
-msgid "Open Journal Ask"
+#, fuzzy
+msgctxt "model:account.move.open_journal.ask,string:"
+msgid "Account Move Open Journal Ask"
 msgstr "Demana el diari a obrir"
 
-msgctxt "model:account.move.reconcile.write_off,name:"
-msgid "Reconcile Write Off"
-msgstr "Desajust de concilació"
+#, fuzzy
+msgctxt "model:account.move.reconcile.write_off,string:"
+msgid "Account Move Reconcile Write Off"
+msgstr "Conciliació d'apunts comptables"
 
-msgctxt "model:account.move.reconcile_lines.writeoff,name:"
-msgid "Reconcile Lines Write-Off"
-msgstr "Concilia apunts amb desajust"
-
-msgctxt "model:account.move.reconciliation,name:"
-msgid "Account Move Reconciliation Lines"
+#, fuzzy
+msgctxt "model:account.move.reconcile_lines.writeoff,string:"
+msgid "Account Move Reconcile Lines Writeoff"
 msgstr "Línies de conciliació d'apunts comptables"
 
-msgctxt "model:account.move.template,name:"
+#, fuzzy
+msgctxt "model:account.move.reconciliation,string:"
+msgid "Account Move Reconciliation"
+msgstr "Conciliació d'apunts comptables"
+
+#, fuzzy
+msgctxt "model:account.move.template,string:"
 msgid "Account Move Template"
 msgstr "Plantilla d'assentament comptable"
 
-msgctxt "model:account.move.template.create.keywords,name:"
-msgid "Create Move from Template"
-msgstr "Crea assentament des de plantilla"
+#, fuzzy
+msgctxt "model:account.move.template.create.keywords,string:"
+msgid "Account Move Template Create Keywords"
+msgstr "Paraula clau de plantilla d'assentament comptable"
 
-msgctxt "model:account.move.template.create.template,name:"
-msgid "Create Move from Template"
-msgstr "Crea assentament des de plantilla"
+#, fuzzy
+msgctxt "model:account.move.template.create.template,string:"
+msgid "Account Move Template Create Template"
+msgstr "Plantilla de compte - Plantilla d'impost"
 
-msgctxt "model:account.move.template.keyword,name:"
+#, fuzzy
+msgctxt "model:account.move.template.keyword,string:"
 msgid "Account Move Template Keyword"
 msgstr "Paraula clau de plantilla d'assentament comptable"
 
-msgctxt "model:account.period,name:"
-msgid "Period"
-msgstr "Període"
+#, fuzzy
+msgctxt "model:account.period,string:"
+msgid "Account Period"
+msgstr "Compte del tercer"
 
-msgctxt "model:account.reconcile.show,name:"
-msgid "Reconcile"
-msgstr "Concilia"
+#, fuzzy
+msgctxt "model:account.reconcile.show,string:"
+msgid "Account Reconcile Show"
+msgstr "Compte a cobrar"
 
-msgctxt "model:account.reconcile.start,name:"
-msgid "Reconcile"
-msgstr "Concilia"
+#, fuzzy
+msgctxt "model:account.reconcile.start,string:"
+msgid "Account Reconcile Start"
+msgstr "Conciliació d'apunts comptables"
 
-msgctxt "model:account.tax,name:"
+#, fuzzy
+msgctxt "model:account.tax,string:"
 msgid "Account Tax"
 msgstr "Impost comptable"
 
-msgctxt "model:account.tax.code,name:"
-msgid "Tax Code"
-msgstr "Codi d'impost"
+#, fuzzy
+msgctxt "model:account.tax.code,string:"
+msgid "Account Tax Code"
+msgstr "Impost comptable"
 
-msgctxt "model:account.tax.code.context,name:"
-msgid "Tax Code Context"
+#, fuzzy
+msgctxt "model:account.tax.code.context,string:"
+msgid "Account Tax Code Context"
 msgstr "Context codi d'impost"
 
-msgctxt "model:account.tax.code.line,name:"
-msgid "Tax Code Line"
-msgstr "Línia codi d'impost"
+#, fuzzy
+msgctxt "model:account.tax.code.line,string:"
+msgid "Account Tax Code Line"
+msgstr "Apunt comptable"
 
-msgctxt "model:account.tax.code.line.template,name:"
-msgid "Tax Code Line Template"
-msgstr "Plantilla de línia codi d'impost"
+#, fuzzy
+msgctxt "model:account.tax.code.line.template,string:"
+msgid "Account Tax Code Line Template"
+msgstr "Plantilla de línia d'impost comptable"
 
-msgctxt "model:account.tax.code.template,name:"
-msgid "Tax Code Template"
-msgstr "Plantilla de codi d'impost"
+#, fuzzy
+msgctxt "model:account.tax.code.template,string:"
+msgid "Account Tax Code Template"
+msgstr "Plantilla d'impost comptable"
 
-msgctxt "model:account.tax.group,name:"
-msgid "Tax Group"
-msgstr "Grup d'impost"
+#, fuzzy
+msgctxt "model:account.tax.group,string:"
+msgid "Account Tax Group"
+msgstr "Impost comptable"
 
-msgctxt "model:account.tax.line,name:"
-msgid "Tax Line"
-msgstr "Línia d'impost"
+#, fuzzy
+msgctxt "model:account.tax.line,string:"
+msgid "Account Tax Line"
+msgstr "Impost comptable"
 
-msgctxt "model:account.tax.line.template,name:"
+#, fuzzy
+msgctxt "model:account.tax.line.template,string:"
 msgid "Account Tax Line Template"
 msgstr "Plantilla de línia d'impost comptable"
 
-msgctxt "model:account.tax.rule,name:"
-msgid "Tax Rule"
-msgstr "Regla d'impost"
+#, fuzzy
+msgctxt "model:account.tax.rule,string:"
+msgid "Account Tax Rule"
+msgstr "Impost comptable"
 
-msgctxt "model:account.tax.rule.line,name:"
-msgid "Tax Rule Line"
+#, fuzzy
+msgctxt "model:account.tax.rule.line,string:"
+msgid "Account Tax Rule Line"
 msgstr "Línia regla d'impost"
 
-msgctxt "model:account.tax.rule.line.template,name:"
-msgid "Tax Rule Line Template"
-msgstr "Plantilla de línia regla d'impost"
+#, fuzzy
+msgctxt "model:account.tax.rule.line.template,string:"
+msgid "Account Tax Rule Line Template"
+msgstr "Plantilla de línia d'impost comptable"
 
-msgctxt "model:account.tax.rule.template,name:"
-msgid "Tax Rule Template"
-msgstr "Plantilla de regla d'impost"
+#, fuzzy
+msgctxt "model:account.tax.rule.template,string:"
+msgid "Account Tax Rule Template"
+msgstr "Plantilla d'impost comptable"
 
-msgctxt "model:account.tax.template,name:"
+#, fuzzy
+msgctxt "model:account.tax.template,string:"
 msgid "Account Tax Template"
 msgstr "Plantilla d'impost comptable"
 
-msgctxt "model:account.tax.test,name:"
-msgid "Test Tax"
-msgstr "Impost de prova"
+#, fuzzy
+msgctxt "model:account.tax.test,string:"
+msgid "Account Tax Test"
+msgstr "Plantilla d'impost comptable"
 
-msgctxt "model:account.tax.test.result,name:"
-msgid "Test Tax"
-msgstr "Impost de prova"
+#, fuzzy
+msgctxt "model:account.tax.test.result,string:"
+msgid "Account Tax Test Result"
+msgstr "Plantilla d'impost comptable"
 
-msgctxt "model:account.update_chart.start,name:"
-msgid "Update Chart"
+#, fuzzy
+msgctxt "model:account.update_chart.start,string:"
+msgid "Account Update Chart Start"
 msgstr "Actualitza pla comptable"
 
-msgctxt "model:account.update_chart.succeed,name:"
-msgid "Update Chart"
-msgstr "Actualitza pla comptable"
+#, fuzzy
+msgctxt "model:account.update_chart.succeed,string:"
+msgid "Account Update Chart Succeed"
+msgstr "L'actualització del pla comptable s'ha realitzat correctament!"
 
 msgctxt "model:ir.action,name:act_account_balance_sheet"
 msgid "Accounts"
@@ -3224,20 +3303,20 @@ msgstr ""
 "El assentaments \"%(moves)s\" contenen apunts agrupats, si es cancel·len es "
 "desagrupara els apunts."
 
-#, python-format
-msgctxt "model:ir.message,text:msg_change_fiscalyear_post_move_sequence"
+#, fuzzy, python-format
+msgctxt "model:ir.message,text:msg_change_fiscalyear_move_sequence"
 msgid ""
-"You cannot change the post move sequence on fiscal year \"%(fiscalyear)s\" "
+"You cannot change the move sequence on fiscal year \"%(fiscalyear)s\" "
 "because it contains posted moves."
 msgstr ""
 "No es pot modificar la seqüència d'assentaments comptabilitzats de "
 "l'exercici fiscal \"%(fiscalyear)s\" perquè conté moviments comptabilitzats."
 
-#, python-format
-msgctxt "model:ir.message,text:msg_change_period_post_move_sequence"
+#, fuzzy, python-format
+msgctxt "model:ir.message,text:msg_change_period_move_sequence"
 msgid ""
-"You cannot change the post move sequence in period \"%(period)s\" because it"
-" has posted moves."
+"You cannot change the move sequence in period \"%(period)s\" because it has "
+"posted moves."
 msgstr ""
 "No es pot modificar la seqüència d'assentaments comptabilitzats del període "
 "\"%(period)s\" perquè conté moviments comptabilitzats."
@@ -3309,11 +3388,6 @@ msgid "You cannot delegate together lines with different origins."
 msgstr "No es pot delegar a la vegada línies amb orígens diferents."
 
 #, python-format
-msgctxt "model:ir.message,text:msg_delete_account_with_move_lines"
-msgid "You cannot delete account \"%(account)s\" because it has move lines."
-msgstr "No podeu eliminar el compte \"%(account)s\" perquè té apunts."
-
-#, python-format
 msgctxt "model:ir.message,text:msg_erase_party_receivable_payable"
 msgid ""
 "You cannot erase party \"%(party)s\" while they have pending "
@@ -3322,16 +3396,17 @@ msgstr ""
 "No podeu eliminar el tercer \"%(party)s\" mentre tingui imports a "
 "pagar/cobrar amb l'empresa \"%(company)s\"."
 
+#, fuzzy
+msgctxt "model:ir.message,text:msg_fiscalyear_move_sequence_unique"
+msgid "The move sequence of fiscal years must be unique."
+msgstr ""
+"La seqüència d'assentaments comptabilitzats dels exercicis fiscals ha de ser"
+" única."
+
 msgctxt "model:ir.message,text:msg_fiscalyear_overlap"
 msgid "The dates of fiscal years of the same company can not overlap."
 msgstr ""
 "Les dates dels exercicis fiscals d'una mateixa empresa no es poden solapar."
-
-msgctxt "model:ir.message,text:msg_fiscalyear_post_move_sequence_unique"
-msgid "The post move sequence of fiscal years must be unique."
-msgstr ""
-"La seqüència d'assentaments comptabilitzats dels exercicis fiscals ha de ser"
-" única."
 
 #, python-format
 msgctxt "model:ir.message,text:msg_group_line"
@@ -3457,23 +3532,23 @@ msgstr ""
 "No podeu afegir/modificar/eliminar línies d'impost al període tancat "
 "\"%(period)s\"."
 
-#, python-format
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_move_cancel_closed_period"
 msgid ""
 "The period of move \"%(move)s\" is closed.\n"
-"Use the current period to cancel the move?"
+"If you cancel the move, the current period will be used."
 msgstr ""
 "El període del assentament \"%(move)s\" està tancat.\n"
 "Voleu utilitzar el període actual per cancel·lar l'assentament?"
 
-#, python-format
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_move_copy_closed_period"
 msgid ""
 "The period of move \"%(move)s\" is closed.\n"
-"Use the current period to copy the move?"
+"If you copy the move, the current period will be used."
 msgstr ""
-"El període de moviment \"%(move)s\" està tancat.\n"
-"Voleu utilitzar el període actual per copiar el moviment?"
+"El període del assentament \"%(move)s\" està tancat.\n"
+"Voleu utilitzar el període actual per cancel·lar l'assentament?"
 
 #, python-format
 msgctxt "model:ir.message,text:msg_move_template_expression_not_number"
@@ -3599,9 +3674,9 @@ msgstr ""
 "Les dates del període \"%(period)s\" han d'incloure la data "
 "\"%(move_date)s\" del assentament \"%(move)s\"."
 
-msgctxt "model:ir.message,text:msg_period_post_move_sequence_unique"
-msgid ""
-"A post move sequence can be reused only by periods in the same fiscal year."
+#, fuzzy
+msgctxt "model:ir.message,text:msg_period_move_sequence_unique"
+msgid "A move sequence can be reused only by periods in the same fiscal year."
 msgstr ""
 "Una seqüència d'assentaments comptabilitzats només es pot reutilitzar per "
 "períodes del mateix exercici fiscal."
@@ -3896,17 +3971,9 @@ msgctxt "model:ir.rule.group,name:rule_group_tax_rule_companies"
 msgid "User in companies"
 msgstr "Usuari a les empreses"
 
-msgctxt "model:ir.sequence,name:sequence_account_journal"
-msgid "Default Account Journal"
-msgstr "Diari comptable per defecte"
-
 msgctxt "model:ir.sequence,name:sequence_account_move_reconciliation"
 msgid "Default Account Move Reconciliation"
 msgstr "Conciliació d'apunt per defecte"
-
-msgctxt "model:ir.sequence.type,name:sequence_type_account_journal"
-msgid "Account Journal"
-msgstr "Diari comptable"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_account_move"
 msgid "Account Move"
@@ -4121,16 +4188,19 @@ msgctxt "model:ir.ui.menu,name:menuitem_account_configuration"
 msgid "Configuration"
 msgstr "Configuració"
 
-msgctxt "model:party.party.account,name:"
+#, fuzzy
+msgctxt "model:party.party.account,string:"
 msgid "Party Account"
 msgstr "Compte del tercer"
 
+#, fuzzy
 msgctxt "model:res.group,name:group_account"
-msgid "Account"
+msgid "Accounting"
 msgstr "Comptabilitat"
 
+#, fuzzy
 msgctxt "model:res.group,name:group_account_admin"
-msgid "Account Administration"
+msgid "Accounting Administration"
 msgstr "Administració de comptabilitat"
 
 msgctxt "report:account.account.type.statement:"
@@ -4865,6 +4935,11 @@ msgctxt "view:account.move.line:"
 msgid "Balance"
 msgstr "Saldo"
 
+#, fuzzy
+msgctxt "view:account.move.line:"
+msgid "Date"
+msgstr "Data"
+
 msgctxt "view:account.move.line:"
 msgid "Other Info"
 msgstr "Informació addicional"
@@ -5050,7 +5125,8 @@ msgctxt "wizard_button:account.reconcile,start,end:"
 msgid "Cancel"
 msgstr "Cancel·la"
 
-msgctxt "wizard_button:account.reconcile,start,next_:"
+#, fuzzy
+msgctxt "wizard_button:account.reconcile,start,setup:"
 msgid "Reconcile"
 msgstr "Concilia"
 

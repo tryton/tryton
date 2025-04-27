@@ -2,9 +2,13 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "field:sale.line,draft_unit_price:"
-msgid "Draft Unit Price"
-msgstr "concept eenheids prijs"
+msgctxt "field:sale.line,original_amount:"
+msgid "Original Amount"
+msgstr "Oorspronkelijk bedrag"
+
+msgctxt "field:sale.line,original_unit_price:"
+msgid "Original Unit Price"
+msgstr "Oorspronkelijke eenheidsprijs"
 
 msgctxt "field:sale.line,promotion:"
 msgid "Promotion"
@@ -82,6 +86,18 @@ msgctxt "field:sale.reporting.promotion,promotion:"
 msgid "Promotion"
 msgstr "Promotie"
 
+msgctxt "field:sale.sale,original_tax_amount:"
+msgid "Original Tax"
+msgstr "Oorspronkelijke belasting"
+
+msgctxt "field:sale.sale,original_total_amount:"
+msgid "Original Total"
+msgstr "Oorspronkelijk totaal"
+
+msgctxt "field:sale.sale,original_untaxed_amount:"
+msgid "Original Untaxed"
+msgstr "Oorspronkelijk onbelast"
+
 msgctxt "help:sale.promotion,formula:"
 msgid ""
 "Python expression that will be evaluated with:\n"
@@ -127,18 +143,22 @@ msgctxt "model:ir.ui.menu,name:menu_promotion"
 msgid "Promotions"
 msgstr "Promoties"
 
-msgctxt "model:sale.promotion,name:"
+msgctxt "model:sale.promotion,string:"
 msgid "Sale Promotion"
-msgstr "Verkoopspromotie"
+msgstr "Verkoop reclame"
 
-msgctxt "model:sale.promotion-product.category,name:"
+msgctxt "model:sale.promotion-product.category,string:"
 msgid "Sale Promotion - Product Category"
-msgstr "Verkooppromotie - Productcategorie"
+msgstr "Verkoop reclame - Product categorie"
 
-msgctxt "model:sale.promotion-product.product,name:"
+msgctxt "model:sale.promotion-product.product,string:"
 msgid "Sale Promotion - Product"
-msgstr "Verkooppromotie - Product"
+msgstr "Verkoop reclame - Product"
 
-msgctxt "model:sale.reporting.promotion,name:"
-msgid "Sale Reporting per Promotion"
-msgstr "Rapportage verkoop per promotie"
+msgctxt "model:sale.reporting.promotion,string:"
+msgid "Sale Reporting Promotion"
+msgstr "Verkoop rapportage reclame"
+
+msgctxt "view:sale.promotion:"
+msgid "Products"
+msgstr "Producten"

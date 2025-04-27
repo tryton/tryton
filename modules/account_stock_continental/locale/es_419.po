@@ -47,7 +47,8 @@ msgctxt "field:stock.move,account_moves:"
 msgid "Account Moves"
 msgstr "Método de contabilización de inventario"
 
-msgctxt "model:account.configuration.stock_journal,name:"
+#, fuzzy
+msgctxt "model:account.configuration.stock_journal,string:"
 msgid "Account Configuration Stock Journal"
 msgstr "Configuración del diario de existencias"
 

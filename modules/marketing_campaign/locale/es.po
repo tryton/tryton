@@ -98,31 +98,31 @@ msgctxt "model:ir.ui.menu,name:menu_source_form"
 msgid "Sources"
 msgstr "Orígenes"
 
-msgctxt "model:marketing.campaign,name:"
+msgctxt "model:marketing.campaign,string:"
 msgid "Marketing Campaign"
 msgstr "Campaña de marketing"
 
-msgctxt "model:marketing.medium,name:"
+msgctxt "model:marketing.medium,string:"
 msgid "Marketing Medium"
-msgstr "Medio marketing"
+msgstr "Medio de marketing"
 
-msgctxt "model:marketing.source,name:"
+msgctxt "model:marketing.source,string:"
 msgid "Marketing Source"
-msgstr "Origen marketing"
+msgstr "Orgien de marketing"
 
-msgctxt "model:sale.opportunity.reporting.marketing,name:"
-msgid "Sale Opportunity Reporting per Marketing"
+msgctxt "model:sale.opportunity.reporting.marketing,string:"
+msgid "Sale Opportunity Reporting Marketing"
 msgstr "Informe de oportunidades de venta por marketing"
 
-msgctxt "model:sale.opportunity.reporting.marketing.context,name:"
+msgctxt "model:sale.opportunity.reporting.marketing.context,string:"
 msgid "Sale Opportunity Reporting Context"
 msgstr "Contexto informe oportunidades de venta"
 
-msgctxt "model:sale.reporting.marketing,name:"
-msgid "Sale Reporting per Marketing"
+msgctxt "model:sale.reporting.marketing,string:"
+msgid "Sale Reporting Marketing"
 msgstr "Informe de ventas por marketing"
 
-msgctxt "model:sale.reporting.marketing.context,name:"
+msgctxt "model:sale.reporting.marketing.context,string:"
 msgid "Sale Reporting Context"
 msgstr "Contexto informe de ventas"
 

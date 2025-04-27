@@ -33,17 +33,20 @@ msgctxt "field:notification.email,content:"
 msgid "Content"
 msgstr "Sisu"
 
+#, fuzzy
 msgctxt "field:notification.email,fallback_recipients:"
-msgid "Recipients Fallback User"
-msgstr ""
+msgid "Recipients Fallback"
+msgstr "Saajad"
 
+#, fuzzy
 msgctxt "field:notification.email,fallback_recipients_hidden:"
-msgid "Hidden Recipients Fallback User"
-msgstr ""
+msgid "Hidden Recipients Fallback"
+msgstr "Peidetud saajad"
 
+#, fuzzy
 msgctxt "field:notification.email,fallback_recipients_secondary:"
-msgid "Secondary Recipients Fallback User"
-msgstr ""
+msgid "Secondary Recipients Fallback"
+msgstr "Teised saajad"
 
 msgctxt "field:notification.email,from_:"
 msgid "From"
@@ -165,12 +168,13 @@ msgid "Notification Emails"
 msgstr "E-kirja teavitused"
 
 #, fuzzy
-msgctxt "model:notification.email,name:"
-msgid "Email Notification"
-msgstr "E-kirja teatis"
+msgctxt "model:notification.email,string:"
+msgid "Notification Email"
+msgstr "E-kirja teavitused"
 
-msgctxt "model:notification.email.attachment,name:"
-msgid "Email Notification Attachment"
+#, fuzzy
+msgctxt "model:notification.email.attachment,string:"
+msgid "Notification Email Attachment"
 msgstr "E-kirja teavituse manus"
 
 #, fuzzy

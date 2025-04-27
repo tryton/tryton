@@ -115,19 +115,19 @@ msgctxt "help:inbound.email.rule.header,value:"
 msgid "A regular expression to match the header value."
 msgstr "Ein regulärer Ausdruck der passende Header Werte auswählt."
 
-msgctxt "model:inbound.email,name:"
+msgctxt "model:inbound.email,string:"
 msgid "Inbound Email"
 msgstr "Eingehende E-Mail"
 
-msgctxt "model:inbound.email.inbox,name:"
+msgctxt "model:inbound.email.inbox,string:"
 msgid "Inbound Email Inbox"
 msgstr "Eingehende E-Mail Posteingang"
 
-msgctxt "model:inbound.email.rule,name:"
+msgctxt "model:inbound.email.rule,string:"
 msgid "Inbound Email Rule"
 msgstr "Eingehende E-Mail Regel"
 
-msgctxt "model:inbound.email.rule.header,name:"
+msgctxt "model:inbound.email.rule.header,string:"
 msgid "Inbound Email Rule Header"
 msgstr "Eingehende E-Mail Regel Header"
 

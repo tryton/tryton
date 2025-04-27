@@ -140,13 +140,13 @@ msgctxt "model:ir.ui.menu,name:menu_purchase_amendment"
 msgid "Amendments"
 msgstr "wijzigingen"
 
-msgctxt "model:purchase.amendment,name:"
+msgctxt "model:purchase.amendment,string:"
 msgid "Purchase Amendment"
-msgstr "Aankoopwijziging"
+msgstr "Inkoop wijziging"
 
-msgctxt "model:purchase.amendment.line,name:"
+msgctxt "model:purchase.amendment.line,string:"
 msgid "Purchase Amendment Line"
-msgstr "Aankoop wijzigingsregel"
+msgstr "Inkoop wijzigingsregel"
 
 msgctxt "model:res.group,name:group_purchase_amendment"
 msgid "Purchase Amendment"

@@ -248,13 +248,9 @@ msgctxt "model:ir.ui.menu,name:menu_work_tree"
 msgid "Works Efforts"
 msgstr "Árbol de proyectos y tareas"
 
-msgctxt "model:project.work,name:"
-msgid "Work Effort"
-msgstr "Proyecto y tarea"
-
-msgctxt "model:project.work.status,name:"
-msgid "Work Status"
-msgstr "Estado del trabajo"
+msgctxt "model:project.work,string:"
+msgid "Project Work"
+msgstr "Proyecto"
 
 msgctxt "model:project.work.status,name:work_done_status"
 msgid "Done"
@@ -263,6 +259,10 @@ msgstr "Finalizado"
 msgctxt "model:project.work.status,name:work_open_status"
 msgid "Open"
 msgstr "Abierto"
+
+msgctxt "model:project.work.status,string:"
+msgid "Project Work Status"
+msgstr "Estado del proyecto"
 
 msgctxt "model:res.group,name:group_project_admin"
 msgid "Project Administration"

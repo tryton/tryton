@@ -184,6 +184,10 @@ msgctxt "field:product.product,replaced_by:"
 msgid "Replaced By"
 msgstr ""
 
+msgctxt "field:product.product,replacing:"
+msgid "Replacing"
+msgstr ""
+
 msgctxt "field:product.product,suffix_code:"
 msgid "Suffix Code"
 msgstr ""
@@ -404,6 +408,10 @@ msgstr ""
 
 msgctxt "help:product.product,replaced_by:"
 msgid "The product replacing this one."
+msgstr ""
+
+msgctxt "help:product.product,replacing:"
+msgid "The products that this one is replacing."
 msgstr ""
 
 msgctxt "help:product.product,suffix_code:"
@@ -643,58 +651,63 @@ msgctxt "model:ir.ui.menu,name:menu_uom_form"
 msgid "Units of Measure"
 msgstr "Satuan Ukuran"
 
-msgctxt "model:product.category,name:"
+#, fuzzy
+msgctxt "model:product.category,string:"
 msgid "Product Category"
 msgstr "Kategori Produk"
 
-msgctxt "model:product.configuration,name:"
+#, fuzzy
+msgctxt "model:product.configuration,string:"
 msgid "Product Configuration"
 msgstr "Konfigurasi Produk"
 
-msgctxt "model:product.configuration.default_cost_price_method,name:"
+#, fuzzy
+msgctxt "model:product.configuration.default_cost_price_method,string:"
 msgid "Product Configuration Default Cost Price Method"
-msgstr ""
+msgstr "Konfigurasi Produk"
 
-msgctxt "model:product.cost_price,name:"
+#, fuzzy
+msgctxt "model:product.cost_price,string:"
 msgid "Product Cost Price"
-msgstr ""
+msgstr "Kategori Produk"
 
-msgctxt "model:product.cost_price_method,name:"
+msgctxt "model:product.cost_price_method,string:"
 msgid "Product Cost Price Method"
 msgstr ""
 
-msgctxt "model:product.identifier,name:"
+#, fuzzy
+msgctxt "model:product.identifier,string:"
 msgid "Product Identifier"
 msgstr "Pengenal Produk"
 
-msgctxt "model:product.list_price,name:"
+#, fuzzy
+msgctxt "model:product.list_price,string:"
 msgid "Product List Price"
-msgstr ""
-
-msgctxt "model:product.product,name:"
-msgid "Product Variant"
-msgstr ""
+msgstr "Daftar Harga"
 
 #, fuzzy
-msgctxt "model:product.product.replace.ask,name:"
-msgid "Replace Product"
+msgctxt "model:product.product,string:"
+msgid "Product"
 msgstr "Produk"
 
-msgctxt "model:product.template,name:"
+#, fuzzy
+msgctxt "model:product.product.replace.ask,string:"
+msgid "Product Replace Ask"
+msgstr "Urutan Produk"
+
+#, fuzzy
+msgctxt "model:product.template,string:"
 msgid "Product Template"
-msgstr ""
+msgstr "Kategori Produk"
 
-msgctxt "model:product.template-product.category,name:"
-msgid "Template - Category"
-msgstr ""
+#, fuzzy
+msgctxt "model:product.template-product.category,string:"
+msgid "Product Template - Product Category"
+msgstr "Kategori Produk"
 
-msgctxt "model:product.template-product.category.all,name:"
-msgid "Template - Category All"
+msgctxt "model:product.template-product.category.all,string:"
+msgid "Product Template - Product Category All"
 msgstr ""
-
-msgctxt "model:product.uom,name:"
-msgid "Unit of Measure"
-msgstr "Satuan Ukuran"
 
 msgctxt "model:product.uom,name:uom_are"
 msgid "Are"
@@ -837,6 +850,11 @@ msgctxt "model:product.uom,name:uom_yard"
 msgid "Yard"
 msgstr ""
 
+#, fuzzy
+msgctxt "model:product.uom,string:"
+msgid "Product Uom"
+msgstr "Produk"
+
 msgctxt "model:product.uom,symbol:uom_are"
 msgid "a"
 msgstr ""
@@ -977,10 +995,6 @@ msgctxt "model:product.uom,symbol:uom_yard"
 msgid "yd"
 msgstr ""
 
-msgctxt "model:product.uom.category,name:"
-msgid "Unit of Measure Category"
-msgstr "Kategori Satuan Ukuran"
-
 msgctxt "model:product.uom.category,name:uom_cat_energy"
 msgid "Energy"
 msgstr ""
@@ -1008,6 +1022,11 @@ msgstr ""
 msgctxt "model:product.uom.category,name:uom_cat_weight"
 msgid "Weight"
 msgstr "Berat"
+
+#, fuzzy
+msgctxt "model:product.uom.category,string:"
+msgid "Product Uom Category"
+msgstr "Kategori Produk"
 
 msgctxt "model:res.group,name:group_product_admin"
 msgid "Product Administration"

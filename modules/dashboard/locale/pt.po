@@ -18,7 +18,7 @@ msgctxt "field:res.user,dashboard_layout:"
 msgid "Dashboard Layout"
 msgstr "Layout do Painel"
 
-msgctxt "model:dashboard.action,name:"
+msgctxt "model:dashboard.action,string:"
 msgid "Dashboard Action"
 msgstr "Ação do Painel"
 

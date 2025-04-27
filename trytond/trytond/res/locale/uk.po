@@ -2,121 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "field:ir.action,groups:"
-msgid "Groups"
-msgstr "Групи"
-
-msgctxt "field:ir.action-res.group,action:"
-msgid "Action"
-msgstr "Дія"
-
-msgctxt "field:ir.action-res.group,group:"
-msgid "Group"
-msgstr "Група"
-
-msgctxt "field:ir.action.act_window,groups:"
-msgid "Groups"
-msgstr "Групи"
-
-msgctxt "field:ir.action.keyword,groups:"
-msgid "Groups"
-msgstr "Групи"
-
-msgctxt "field:ir.action.report,groups:"
-msgid "Groups"
-msgstr "Групи"
-
-msgctxt "field:ir.action.url,groups:"
-msgid "Groups"
-msgstr "Групи"
-
-msgctxt "field:ir.action.wizard,groups:"
-msgid "Groups"
-msgstr "Групи"
-
-msgctxt "field:ir.export,groups:"
-msgid "Groups"
-msgstr "Групи"
-
-msgctxt "field:ir.export,write_groups:"
-msgid "Modification Groups"
-msgstr "Групи модифікації"
-
-msgctxt "field:ir.export-res.group,export:"
-msgid "Export"
-msgstr "Експорт"
-
-msgctxt "field:ir.export-res.group,group:"
-msgid "Group"
-msgstr "Група"
-
-msgctxt "field:ir.export-write-res.group,export:"
-msgid "Export"
-msgstr "Експорт"
-
-msgctxt "field:ir.export-write-res.group,group:"
-msgid "Group"
-msgstr "Група"
-
-#, fuzzy
-msgctxt "field:ir.model.button,groups:"
-msgid "Groups"
-msgstr "Групи"
-
-msgctxt "field:ir.model.button-res.group,button:"
-msgid "Button"
-msgstr "Кнопка"
-
-msgctxt "field:ir.model.button-res.group,group:"
-msgid "Group"
-msgstr "Група"
-
-msgctxt "field:ir.model.button.click,user:"
-msgid "User"
-msgstr "Користувач"
-
-msgctxt "field:ir.model.button.rule,group:"
-msgid "Group"
-msgstr "Група"
-
-#, fuzzy
-msgctxt "field:ir.rule.group,groups:"
-msgid "Groups"
-msgstr "Групи"
-
-msgctxt "field:ir.rule.group-res.group,group:"
-msgid "Group"
-msgstr "Група"
-
-msgctxt "field:ir.rule.group-res.group,rule_group:"
-msgid "Rule Group"
-msgstr "Група правил"
-
-msgctxt "field:ir.sequence.type,groups:"
-msgid "User Groups"
-msgstr "Групи користувача"
-
-msgctxt "field:ir.sequence.type-res.group,group:"
-msgid "User Groups"
-msgstr "Групи користувача"
-
-msgctxt "field:ir.sequence.type-res.group,sequence_type:"
-msgid "Sequence Type"
-msgstr "Тип послідовності"
-
-#, fuzzy
-msgctxt "field:ir.ui.menu,groups:"
-msgid "Groups"
-msgstr "Групи"
-
-msgctxt "field:ir.ui.menu-res.group,group:"
-msgid "Group"
-msgstr "Група"
-
-msgctxt "field:ir.ui.menu-res.group,menu:"
-msgid "Menu"
-msgstr "Меню"
-
 msgctxt "field:res.group,buttons:"
 msgid "Buttons"
 msgstr "Кнопки"
@@ -181,9 +66,10 @@ msgctxt "field:res.user,login:"
 msgid "Login"
 msgstr "Логін"
 
+#, fuzzy
 msgctxt "field:res.user,menu:"
-msgid "Menu Action"
-msgstr "Дія меню"
+msgid "Menu"
+msgstr "Меню"
 
 msgctxt "field:res.user,name:"
 msgid "Name"
@@ -293,18 +179,6 @@ msgctxt "field:res.user.warning,user:"
 msgid "User"
 msgstr "Користувач"
 
-msgctxt "help:ir.export,groups:"
-msgid "The user groups that can use the export."
-msgstr "Групи користувачів, які можуть використовувати експорт."
-
-msgctxt "help:ir.export,write_groups:"
-msgid "The user groups that can modify the export."
-msgstr "Групи користувачів, які можуть змінювати експорт."
-
-msgctxt "help:ir.sequence.type,groups:"
-msgid "Groups allowed to edit the sequences of this type."
-msgstr "Групи, яким дозволено редагування послідовностей цього типу."
-
 msgctxt "help:res.group,parent:"
 msgid "The group to inherit accesses from."
 msgstr "Група для успадкування прав доступу."
@@ -329,18 +203,6 @@ msgctxt "model:ir.action,name:report_email_reset_password"
 msgid "Reset Password"
 msgstr "Скинути пароль"
 
-msgctxt "model:ir.action-res.group,name:"
-msgid "Action - Group"
-msgstr "Дія - Група"
-
-msgctxt "model:ir.export-res.group,name:"
-msgid "Export Group"
-msgstr "Експортувати групу"
-
-msgctxt "model:ir.export-write-res.group,name:"
-msgid "Export Modification Group"
-msgstr "Експортувати групу модифікації"
-
 #, python-format
 msgctxt "model:ir.message,text:msg_email_invalid"
 msgid "The email address \"%(email)s\" for \"%(user)s\" is not valid."
@@ -354,10 +216,13 @@ msgctxt "model:ir.message,text:msg_password_forbidden"
 msgid "The password is forbidden."
 msgstr "Пароль заборонений."
 
-#, python-format
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_password_length"
-msgid "The password must have at least %(length)i characters."
-msgstr "Пароль має містити принаймні %(length)i символів."
+msgid "The password must have at least %(length)i character."
+msgid_plural "The password must have at least %(length)i characters."
+msgstr[0] "Пароль має містити принаймні %(length)i символів."
+msgstr[1] "Пароль має містити принаймні %(length)i символів."
+msgstr[2] "Пароль має містити принаймні %(length)i символів."
 
 msgctxt "model:ir.message,text:msg_password_login"
 msgid "The password cannot be the same as user's login."
@@ -396,26 +261,6 @@ msgctxt "model:ir.model.button,string:user_reset_password_button"
 msgid "Reset Password"
 msgstr "Скинути пароль"
 
-msgctxt "model:ir.model.button-res.group,name:"
-msgid "Model Button - Group"
-msgstr "Кнопка моделі - Група"
-
-msgctxt "model:ir.rule.group,name:rule_group_action"
-msgid "User in groups"
-msgstr "Групи користувача"
-
-msgctxt "model:ir.rule.group,name:rule_group_menu"
-msgid "User in groups"
-msgstr "Групи користувача"
-
-msgctxt "model:ir.rule.group,name:rule_group_sequence"
-msgid "User in groups"
-msgstr "Групи користувача"
-
-msgctxt "model:ir.rule.group,name:rule_group_sequence_strict"
-msgid "User in groups"
-msgstr "Групи користувача"
-
 msgctxt "model:ir.rule.group,name:rule_group_user_application"
 msgid "Own user application"
 msgstr "Власна програма користувача"
@@ -427,14 +272,6 @@ msgstr "Будь-яка програма користувача"
 msgctxt "model:ir.rule.group,name:rule_group_user_warning"
 msgid "Own warning"
 msgstr "Власне попередження"
-
-msgctxt "model:ir.rule.group-res.group,name:"
-msgid "Rule Group - Group"
-msgstr "Група правил - Група"
-
-msgctxt "model:ir.sequence.type-res.group,name:"
-msgid "Sequence Type - Group"
-msgstr "Тип послідовності - Група"
 
 msgctxt "model:ir.ui.menu,name:menu_group_form"
 msgid "Groups"
@@ -448,47 +285,48 @@ msgctxt "model:ir.ui.menu,name:menu_user_form"
 msgid "Users"
 msgstr "Користувачі"
 
-msgctxt "model:ir.ui.menu-res.group,name:"
-msgid "UI Menu - Group"
-msgstr "Меню користувача - Група"
-
-msgctxt "model:res.group,name:"
+#, fuzzy
+msgctxt "model:res.group,string:"
 msgid "Group"
 msgstr "Група"
 
-msgctxt "model:res.group,name:group_admin"
-msgid "Administration"
-msgstr "Адміністрування"
-
-msgctxt "model:res.user,name:"
+#, fuzzy
+msgctxt "model:res.user,string:"
 msgid "User"
 msgstr "Користувач"
 
-msgctxt "model:res.user-ir.action,name:"
+#, fuzzy
+msgctxt "model:res.user-ir.action,string:"
 msgid "User - Action"
 msgstr "Користувач - Дія"
 
-msgctxt "model:res.user-res.group,name:"
+#, fuzzy
+msgctxt "model:res.user-res.group,string:"
 msgid "User - Group"
 msgstr "Користувач - Група"
 
-msgctxt "model:res.user.application,name:"
+#, fuzzy
+msgctxt "model:res.user.application,string:"
 msgid "User Application"
 msgstr "Програма користувача"
 
-msgctxt "model:res.user.config.start,name:"
-msgid "User Config Init"
+#, fuzzy
+msgctxt "model:res.user.config.start,string:"
+msgid "User Config Start"
 msgstr "Ініціалізація конфігурації користувача"
 
-msgctxt "model:res.user.device,name:"
+#, fuzzy
+msgctxt "model:res.user.device,string:"
 msgid "User Device"
 msgstr "Пристрій користувача"
 
-msgctxt "model:res.user.login.attempt,name:"
-msgid "Login Attempt"
+#, fuzzy
+msgctxt "model:res.user.login.attempt,string:"
+msgid "User Login Attempt"
 msgstr "Спроба входу"
 
-msgctxt "model:res.user.warning,name:"
+#, fuzzy
+msgctxt "model:res.user.warning,string:"
 msgid "User Warning"
 msgstr "Попередження користувача"
 

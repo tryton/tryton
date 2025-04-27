@@ -126,6 +126,30 @@ msgctxt "field:stock.shipment.in.return,weight_uom:"
 msgid "Weight UoM"
 msgstr "Gewichtsmaßeinheit"
 
+msgctxt "field:stock.shipment.internal,internal_volume:"
+msgid "Internal Volume"
+msgstr "Internes Volumen"
+
+msgctxt "field:stock.shipment.internal,internal_weight:"
+msgid "Internal Weight"
+msgstr "Internes Gewicht"
+
+msgctxt "field:stock.shipment.internal,volume:"
+msgid "Volume"
+msgstr "Volumen"
+
+msgctxt "field:stock.shipment.internal,volume_uom:"
+msgid "Volume UoM"
+msgstr "Volumenmaßeinheit"
+
+msgctxt "field:stock.shipment.internal,weight:"
+msgid "Weight"
+msgstr "Gewicht"
+
+msgctxt "field:stock.shipment.internal,weight_uom:"
+msgid "Weight UoM"
+msgstr "Gewichtsmaßeinheit"
+
 msgctxt "field:stock.shipment.out,internal_volume:"
 msgid "Internal Volume"
 msgstr "Internes Volumen"
@@ -270,6 +294,22 @@ msgctxt "help:stock.shipment.in.return,weight_uom:"
 msgid "The Unit of Measure of weight."
 msgstr "Die Maßeinheit für das Gewicht."
 
+msgctxt "help:stock.shipment.internal,volume:"
+msgid "The total volume of the record's moves."
+msgstr "Das Gesamtvolumen der Warenbewegungen des Datensatzes."
+
+msgctxt "help:stock.shipment.internal,volume_uom:"
+msgid "The Unit of Measure of volume."
+msgstr "Die Maßeinheit für das Volumen."
+
+msgctxt "help:stock.shipment.internal,weight:"
+msgid "The total weight of the record's moves."
+msgstr "Das Gesamtgewicht der Warenbewegungen des Datensatzes."
+
+msgctxt "help:stock.shipment.internal,weight_uom:"
+msgid "The Unit of Measure of weight."
+msgstr "Die Maßeinheit für das Gewicht."
+
 msgctxt "help:stock.shipment.out,packages_volume:"
 msgid "The total volume of the packages."
 msgstr "Das Gesamtvolumen der Pakete."
@@ -310,7 +350,7 @@ msgctxt "help:stock.shipment.out.return,weight_uom:"
 msgid "The Unit of Measure of weight."
 msgstr "Die Maßeinheit für das Gewicht."
 
-msgctxt "model:stock.configuration.measurement,name:"
+msgctxt "model:stock.configuration.measurement,string:"
 msgid "Stock Configuration Measurement"
 msgstr "Lager Einstellungen Abmessungen"
 
@@ -335,6 +375,10 @@ msgid "Measurements"
 msgstr "Abmessungen"
 
 msgctxt "view:stock.shipment.in:"
+msgid "Measurements"
+msgstr "Abmessungen"
+
+msgctxt "view:stock.shipment.internal:"
 msgid "Measurements"
 msgstr "Abmessungen"
 

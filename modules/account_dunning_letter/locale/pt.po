@@ -32,7 +32,7 @@ msgstr "Data de vencimento"
 
 msgctxt "report:account.dunning.letter:"
 msgid "Fees:"
-msgstr "Taxas"
+msgstr "Taxas:"
 
 msgctxt "report:account.dunning.letter:"
 msgid "Pending Payments Received"

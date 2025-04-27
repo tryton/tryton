@@ -312,6 +312,13 @@ msgstr "Afegeix un adjunt al registre"
 msgid "Add a note to the record"
 msgstr "Afegeix una nota al registre"
 
+msgid "Chat"
+msgstr ""
+
+#, fuzzy
+msgid "Chat on the record"
+msgstr "Obre el registre"
+
 msgid "Email..."
 msgstr "Correu electrònic..."
 
@@ -476,6 +483,9 @@ msgstr "Mostra"
 msgid "Hide"
 msgstr "Amaga"
 
+msgid "Select a color for \"%1\""
+msgstr ""
+
 msgid "Open the record"
 msgstr "Obre el registre"
 
@@ -530,6 +540,9 @@ msgstr "Menú"
 
 msgid "Copy Selected Rows"
 msgstr "Copia files seleccionades"
+
+msgid "Reset Column Widths"
+msgstr ""
 
 msgid "#ERROR"
 msgstr "#ERROR"
@@ -759,6 +772,15 @@ msgstr "Alterna so"
 
 msgid "Wizard"
 msgstr "Assistent"
+
+msgid "Enter a message"
+msgstr ""
+
+msgid "Submit the message"
+msgstr ""
+
+msgid "Make this an internal message"
+msgstr ""
 
 msgid "Translate view"
 msgstr "Tradueix la vista"

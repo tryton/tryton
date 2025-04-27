@@ -352,41 +352,43 @@ msgid "Timesheet Administration"
 msgstr "Timesheet Administration"
 
 #, fuzzy
-msgctxt "model:timesheet.hours_employee,name:"
-msgid "Hours per Employee"
+msgctxt "model:timesheet.hours_employee,string:"
+msgid "Timesheet Hours Employee"
 msgstr "Hours per Employee"
 
-msgctxt "model:timesheet.hours_employee.context,name:"
-msgid "Hours per Employee Context"
+msgctxt "model:timesheet.hours_employee.context,string:"
+msgid "Timesheet Hours Employee Context"
 msgstr ""
 
 #, fuzzy
-msgctxt "model:timesheet.hours_employee_monthly,name:"
-msgid "Hours per Employee per Month"
+msgctxt "model:timesheet.hours_employee_monthly,string:"
+msgid "Timesheet Hours Employee Monthly"
 msgstr "Hours per Employee per Month"
 
 #, fuzzy
-msgctxt "model:timesheet.hours_employee_weekly,name:"
-msgid "Hours per Employee per Week"
+msgctxt "model:timesheet.hours_employee_weekly,string:"
+msgid "Timesheet Hours Employee Weekly"
 msgstr "Hours per Employee per Week"
 
 #, fuzzy
-msgctxt "model:timesheet.line,name:"
+msgctxt "model:timesheet.line,string:"
 msgid "Timesheet Line"
 msgstr "Timesheet Lines"
 
-msgctxt "model:timesheet.line.enter.start,name:"
-msgid "Enter Lines"
-msgstr ""
+#, fuzzy
+msgctxt "model:timesheet.line.enter.start,string:"
+msgid "Timesheet Line Enter Start"
+msgstr "Timesheet Lines"
 
 #, fuzzy
-msgctxt "model:timesheet.work,name:"
-msgid "Work"
-msgstr "Works"
+msgctxt "model:timesheet.work,string:"
+msgid "Timesheet Work"
+msgstr "Timesheet"
 
-msgctxt "model:timesheet.work.context,name:"
-msgid "Work Context"
-msgstr ""
+#, fuzzy
+msgctxt "model:timesheet.work.context,string:"
+msgid "Timesheet Work Context"
+msgstr "Timesheet Lines"
 
 #, fuzzy
 msgctxt "selection:res.user.application,application:"

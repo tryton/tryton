@@ -117,12 +117,12 @@ msgid "Tasks Leveling"
 msgstr ""
 
 #, fuzzy
-msgctxt "model:project.allocation,name:"
-msgid "Allocation"
+msgctxt "model:project.allocation,string:"
+msgid "Project Allocation"
 msgstr "Allokatsioon"
 
-msgctxt "model:project.predecessor_successor,name:"
-msgid "Predecessor - Successor"
+msgctxt "model:project.predecessor_successor,string:"
+msgid "Project Predecessor Successor"
 msgstr ""
 
 #, fuzzy

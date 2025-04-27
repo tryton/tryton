@@ -19,7 +19,7 @@ msgid "Dashboard Layout"
 msgstr "Подреждане на табло"
 
 #, fuzzy
-msgctxt "model:dashboard.action,name:"
+msgctxt "model:dashboard.action,string:"
 msgid "Dashboard Action"
 msgstr "Действие на таблото"
 

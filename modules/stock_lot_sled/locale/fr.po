@@ -127,9 +127,9 @@ msgctxt "model:res.group,name:group_stock_force_expiration"
 msgid "Stock Force Expiration"
 msgstr "Force l'expiration des stocks"
 
-msgctxt "model:stock.location.lot.shelf_life,name:"
-msgid "Stock Configuration Lot Shelf Life"
-msgstr "Configuration de lot de stock Durée limite d'utilisation optimale"
+msgctxt "model:stock.location.lot.shelf_life,string:"
+msgid "Stock Location Lot Shelf Life"
+msgstr "Durée d'utilisation optimale de lot par emplacement de stock"
 
 msgctxt "selection:product.product,expiration_state:"
 msgid "None"

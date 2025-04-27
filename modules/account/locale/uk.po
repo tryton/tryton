@@ -685,6 +685,11 @@ msgctxt "field:account.fiscalyear,icon:"
 msgid "Icon"
 msgstr "Піктограма"
 
+#, fuzzy
+msgctxt "field:account.fiscalyear,move_sequence:"
+msgid "Move Sequence"
+msgstr "Послідовність проведених проводок"
+
 msgctxt "field:account.fiscalyear,name:"
 msgid "Name"
 msgstr "Назва"
@@ -692,10 +697,6 @@ msgstr "Назва"
 msgctxt "field:account.fiscalyear,periods:"
 msgid "Periods"
 msgstr "Періоди"
-
-msgctxt "field:account.fiscalyear,post_move_sequence:"
-msgid "Post Move Sequence"
-msgstr "Послідовність проведених проводок"
 
 msgctxt "field:account.fiscalyear,start_date:"
 msgid "Starting Date"
@@ -996,11 +997,6 @@ msgctxt "field:account.general_ledger.line,move:"
 msgid "Move"
 msgstr "Проводка"
 
-#, fuzzy
-msgctxt "field:account.general_ledger.line,move_description_used:"
-msgid "Move Description"
-msgstr "Опис проводки"
-
 msgctxt "field:account.general_ledger.line,origin:"
 msgid "Origin"
 msgstr "Походження"
@@ -1144,14 +1140,6 @@ msgctxt "field:account.journal,name:"
 msgid "Name"
 msgstr "Назва"
 
-msgctxt "field:account.journal,sequence:"
-msgid "Sequence"
-msgstr "Послідовність"
-
-msgctxt "field:account.journal,sequences:"
-msgid "Sequences"
-msgstr "Послідовності"
-
 msgctxt "field:account.journal,type:"
 msgid "Type"
 msgstr "Тип"
@@ -1184,18 +1172,6 @@ msgstr "Період"
 msgctxt "field:account.journal.period,state:"
 msgid "State"
 msgstr "Стан"
-
-msgctxt "field:account.journal.sequence,company:"
-msgid "Company"
-msgstr "Компанія"
-
-msgctxt "field:account.journal.sequence,journal:"
-msgid "Journal"
-msgstr "Журнал"
-
-msgctxt "field:account.journal.sequence,sequence:"
-msgid "Sequence"
-msgstr "Послідовність"
 
 msgctxt "field:account.move,company:"
 msgid "Company"
@@ -1238,10 +1214,6 @@ msgctxt "field:account.move,post_date:"
 msgid "Post Date"
 msgstr "Дата проведення"
 
-msgctxt "field:account.move,post_number:"
-msgid "Post Number"
-msgstr "Номер проведення"
-
 msgctxt "field:account.move,state:"
 msgid "State"
 msgstr "Стан"
@@ -1254,6 +1226,11 @@ msgstr "Опис"
 msgctxt "field:account.move.cancel.default,reversal:"
 msgid "Reversal"
 msgstr "кожні"
+
+#, fuzzy
+msgctxt "field:account.move.context,company:"
+msgid "Company"
+msgstr "Компанія"
 
 msgctxt "field:account.move.line,account:"
 msgid "Account"
@@ -1350,6 +1327,11 @@ msgctxt "field:account.move.line,payable_receivable_balance:"
 msgid "Payable/Receivable Balance"
 msgstr "Рядки кредит./дебіт. заборгованості"
 
+#, fuzzy
+msgctxt "field:account.move.line,payable_receivable_date:"
+msgid "Payable/Receivable Date"
+msgstr "Рядки кредит./дебіт. заборгованості"
+
 msgctxt "field:account.move.line,period:"
 msgid "Period"
 msgstr "Період"
@@ -1400,6 +1382,11 @@ msgstr "Опис"
 msgctxt "field:account.move.line.group.start,journal:"
 msgid "Journal"
 msgstr "Журнал"
+
+#, fuzzy
+msgctxt "field:account.move.line.receivable_payable.context,company:"
+msgid "Company"
+msgstr "Компанія"
 
 #, fuzzy
 msgctxt "field:account.move.line.receivable_payable.context,payable:"
@@ -1503,6 +1490,11 @@ msgstr "Особа обов'язкова"
 msgctxt "field:account.move.line.template,taxes:"
 msgid "Taxes"
 msgstr "Податки"
+
+#, fuzzy
+msgctxt "field:account.move.open_journal.ask,company:"
+msgid "Company"
+msgstr "Компанія"
 
 msgctxt "field:account.move.open_journal.ask,journal:"
 msgid "Journal"
@@ -1654,13 +1646,14 @@ msgctxt "field:account.period,icon:"
 msgid "Icon"
 msgstr "Піктограма"
 
+#, fuzzy
+msgctxt "field:account.period,move_sequence:"
+msgid "Move Sequence"
+msgstr "Послідовність проведених проводок"
+
 msgctxt "field:account.period,name:"
 msgid "Name"
 msgstr "Назва"
-
-msgctxt "field:account.period,post_move_sequence:"
-msgid "Post Move Sequence"
-msgstr "Послідовність проведених проводок"
 
 msgctxt "field:account.period,start_date:"
 msgid "Starting Date"
@@ -2441,6 +2434,11 @@ msgctxt "help:account.configuration,default_supplier_tax_rule:"
 msgid "Default supplier tax rule for new parties."
 msgstr "Правило оподаткування постачальника за умовчанням для нових осіб."
 
+msgctxt "help:account.fiscalyear,move_sequence:"
+msgid ""
+"Used to generate the move number when posting if the period has no sequence."
+msgstr ""
+
 msgctxt "help:account.fiscalyear.create_periods.start,end_day:"
 msgid ""
 "The day of the month on which periods end.\n"
@@ -2481,7 +2479,8 @@ msgctxt "help:account.income_statement.context,posted:"
 msgid "Only include posted moves."
 msgstr "Включити лише проведені проводки."
 
-msgctxt "help:account.move,post_number:"
+#, fuzzy
+msgctxt "help:account.move,number:"
 msgid "Also known as Folio Number."
 msgstr "Також відомий як номер фоліо."
 
@@ -2530,6 +2529,12 @@ msgstr "Рядок, якому делеговано статус звірки."
 msgctxt "help:account.move.template,description:"
 msgid "Keyword value substitutions are identified by braces ('{' and '}')."
 msgstr "Підстановки значень ключових слів позначаються дужками ('{' та '}')."
+
+msgctxt "help:account.period,move_sequence:"
+msgid ""
+"Used to generate the move number when posting.\n"
+"Leave empty to use the fiscal year sequence."
+msgstr ""
 
 msgctxt "help:account.reconcile.start,automatic:"
 msgid "Automatically reconcile suggestions."
@@ -2610,139 +2615,163 @@ msgctxt "help:party.party,supplier_tax_rule:"
 msgid "Apply this rule on taxes when party is supplier."
 msgstr "Застосувати це правило до податків, якщо особа є постачальником."
 
-msgctxt "model:account.account,name:"
+#, fuzzy
+msgctxt "model:account.account,string:"
 msgid "Account"
 msgstr "Рахунок"
 
-msgctxt "model:account.account-account.tax,name:"
-msgid "Account - Tax"
+#, fuzzy
+msgctxt "model:account.account-account.tax,string:"
+msgid "Account - Account Tax"
 msgstr "Рахунок - Податок"
 
 #, fuzzy
-msgctxt "model:account.account.context,name:"
+msgctxt "model:account.account.context,string:"
 msgid "Account Context"
 msgstr "Бухгалтерська проводка"
 
-msgctxt "model:account.account.deferral,name:"
+#, fuzzy
+msgctxt "model:account.account.deferral,string:"
 msgid "Account Deferral"
 msgstr "Рахунок відстрочки"
 
-msgctxt "model:account.account.party,name:"
+#, fuzzy
+msgctxt "model:account.account.party,string:"
 msgid "Account Party"
 msgstr "Особа рахунку"
 
-msgctxt "model:account.account.template,name:"
+#, fuzzy
+msgctxt "model:account.account.template,string:"
 msgid "Account Template"
 msgstr "Шаблон рахунку"
 
-msgctxt "model:account.account.template-account.tax.template,name:"
-msgid "Account Template - Tax Template"
+#, fuzzy
+msgctxt "model:account.account.template-account.tax.template,string:"
+msgid "Account Template - Account Tax Template"
 msgstr "Шаблон рахунку - Шаблон податків"
 
-msgctxt "model:account.account.type,name:"
+#, fuzzy
+msgctxt "model:account.account.type,string:"
 msgid "Account Type"
 msgstr "Тип рахунку"
 
-msgctxt "model:account.account.type.template,name:"
+#, fuzzy
+msgctxt "model:account.account.type.template,string:"
 msgid "Account Type Template"
 msgstr "Шаблон типу рахунку"
 
-msgctxt "model:account.aged_balance,name:"
-msgid "Aged Balance"
+#, fuzzy
+msgctxt "model:account.aged_balance,string:"
+msgid "Account Aged Balance"
 msgstr "Віковий баланс"
 
-msgctxt "model:account.aged_balance.context,name:"
-msgid "Aged Balance Context"
+#, fuzzy
+msgctxt "model:account.aged_balance.context,string:"
+msgid "Account Aged Balance Context"
 msgstr "Контекст вікового балансу"
 
-msgctxt "model:account.balance_sheet.comparison.context,name:"
-msgid "Balance Sheet Context"
+#, fuzzy
+msgctxt "model:account.balance_sheet.comparison.context,string:"
+msgid "Account Balance Sheet Context"
 msgstr "Контекст бухгалтерського балансу"
 
-msgctxt "model:account.balance_sheet.context,name:"
-msgid "Balance Sheet Context"
+#, fuzzy
+msgctxt "model:account.balance_sheet.context,string:"
+msgid "Account Balance Sheet Context"
 msgstr "Контекст бухгалтерського балансу"
 
-msgctxt "model:account.configuration,name:"
+#, fuzzy
+msgctxt "model:account.configuration,string:"
 msgid "Account Configuration"
 msgstr "Налаштування рахунку"
 
-msgctxt "model:account.configuration.default_account,name:"
+#, fuzzy
+msgctxt "model:account.configuration.default_account,string:"
 msgid "Account Configuration Default Account"
 msgstr "Рахунок за умовчанням у налаштуванні рахунку"
 
-msgctxt "model:account.configuration.default_tax_rule,name:"
+#, fuzzy
+msgctxt "model:account.configuration.default_tax_rule,string:"
 msgid "Account Configuration Default Tax Rule"
 msgstr "Правило оподаткування за умовчанням у налаштуванні рахунку"
 
 #, fuzzy
-msgctxt "model:account.configuration.journal,name:"
+msgctxt "model:account.configuration.journal,string:"
 msgid "Account Configuration Journal"
 msgstr "Налаштування рахунку"
 
-msgctxt "model:account.configuration.sequence,name:"
+#, fuzzy
+msgctxt "model:account.configuration.sequence,string:"
 msgid "Account Configuration Sequence"
 msgstr "Послідовність налаштування рахунку"
 
-msgctxt "model:account.configuration.tax_rounding,name:"
+#, fuzzy
+msgctxt "model:account.configuration.tax_rounding,string:"
 msgid "Account Configuration Tax Rounding"
 msgstr "Округлення податку у налаштуванні рахунку"
 
-msgctxt "model:account.create_chart.account,name:"
-msgid "Create Chart"
+#, fuzzy
+msgctxt "model:account.create_chart.account,string:"
+msgid "Account Create Chart Account"
+msgstr "Рахунок за умовчанням у налаштуванні рахунку"
+
+msgctxt "model:account.create_chart.properties,string:"
+msgid "Account Create Chart Properties"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:account.create_chart.start,string:"
+msgid "Account Create Chart Start"
 msgstr "Створити план"
 
-msgctxt "model:account.create_chart.properties,name:"
-msgid "Create Chart"
-msgstr "Створити план"
+#, fuzzy
+msgctxt "model:account.fiscalyear,string:"
+msgid "Account Fiscalyear"
+msgstr "Попередній фінансовий рік"
 
-msgctxt "model:account.create_chart.start,name:"
-msgid "Create Chart"
-msgstr "Створити план"
+msgctxt "model:account.fiscalyear.balance_non_deferral.start,string:"
+msgid "Account Fiscalyear Balance Non Deferral Start"
+msgstr ""
 
-msgctxt "model:account.fiscalyear,name:"
-msgid "Fiscal Year"
-msgstr "Фінансовий рік"
-
-msgctxt "model:account.fiscalyear.balance_non_deferral.start,name:"
-msgid "Balance Non-Deferral"
-msgstr "Невідстрочений баланс"
-
-msgctxt "model:account.fiscalyear.create_periods.start,name:"
-msgid "Create Periods Start"
+#, fuzzy
+msgctxt "model:account.fiscalyear.create_periods.start,string:"
+msgid "Account Fiscalyear Create Periods Start"
 msgstr "Створити початок періодів"
 
-msgctxt "model:account.fiscalyear.renew.start,name:"
-msgid "Renew Fiscal Year Start"
+#, fuzzy
+msgctxt "model:account.fiscalyear.renew.start,string:"
+msgid "Account Fiscalyear Renew Start"
 msgstr "Поновити початок фінансового року"
 
-msgctxt "model:account.general_ledger.account,name:"
-msgid "General Ledger Account"
+#, fuzzy
+msgctxt "model:account.general_ledger.account,string:"
+msgid "Account General Ledger Account"
 msgstr "Рахунок головної книги"
 
-msgctxt "model:account.general_ledger.account.context,name:"
-msgid "General Ledger Account Context"
+#, fuzzy
+msgctxt "model:account.general_ledger.account.context,string:"
+msgid "Account General Ledger Account Context"
 msgstr "Контекст рахунку головної книги"
 
-msgctxt "model:account.general_ledger.account.party,name:"
-msgid "General Ledger Account Party"
+#, fuzzy
+msgctxt "model:account.general_ledger.account.party,string:"
+msgid "Account General Ledger Account Party"
 msgstr "Особа рахунку головної книги"
 
-msgctxt "model:account.general_ledger.line,name:"
-msgid "General Ledger Line"
+#, fuzzy
+msgctxt "model:account.general_ledger.line,string:"
+msgid "Account General Ledger Line"
 msgstr "Рядок головної книги"
 
-msgctxt "model:account.general_ledger.line.context,name:"
-msgid "General Ledger Line Context"
-msgstr "Контекст рядка головної книги"
+#, fuzzy
+msgctxt "model:account.general_ledger.line.context,string:"
+msgid "Account General Ledger Account Context"
+msgstr "Контекст рахунку головної книги"
 
-msgctxt "model:account.income_statement.context,name:"
-msgid "Income Statement Context"
+#, fuzzy
+msgctxt "model:account.income_statement.context,string:"
+msgid "Account Income Statement Context"
 msgstr "Контекст довідки про доходи"
-
-msgctxt "model:account.journal,name:"
-msgid "Journal"
-msgstr "Журнал"
 
 msgctxt "model:account.journal,name:journal_cash"
 msgid "Cash"
@@ -2769,176 +2798,219 @@ msgctxt "model:account.journal,name:journal_stock"
 msgid "Stock"
 msgstr "Запаси"
 
-msgctxt "model:account.journal.open_cash.context,name:"
-msgid "Journal Cash Context"
+#, fuzzy
+msgctxt "model:account.journal,string:"
+msgid "Account Journal"
+msgstr "Журнал обліку"
+
+#, fuzzy
+msgctxt "model:account.journal.open_cash.context,string:"
+msgid "Account Journal Open Cash Context"
 msgstr "Контекст журналу готівки"
 
-msgctxt "model:account.journal.period,name:"
-msgid "Journal - Period"
-msgstr "Журнал - Період"
+#, fuzzy
+msgctxt "model:account.journal.period,string:"
+msgid "Account Journal Period"
+msgstr "Журнал обліку"
 
-msgctxt "model:account.journal.sequence,name:"
-msgid "Journal Sequence"
-msgstr "Послідовність журналу"
-
-msgctxt "model:account.move,name:"
+#, fuzzy
+msgctxt "model:account.move,string:"
 msgid "Account Move"
 msgstr "Бухгалтерська проводка"
 
-msgctxt "model:account.move.cancel.default,name:"
-msgid "Cancel Moves"
-msgstr "Скасувати проводки"
+#, fuzzy
+msgctxt "model:account.move.cancel.default,string:"
+msgid "Account Move Cancel Default"
+msgstr "Шаблон рядка бухгалтерської проводки"
 
-msgctxt "model:account.move.line,name:"
+#, fuzzy
+msgctxt "model:account.move.context,string:"
+msgid "Account Move Context"
+msgstr "Бухгалтерська проводка"
+
+#, fuzzy
+msgctxt "model:account.move.line,string:"
 msgid "Account Move Line"
 msgstr "Рядок бухгалтерської проводки"
 
 #, fuzzy
-msgctxt "model:account.move.line.delegate.start,name:"
-msgid "Delegate Lines"
-msgstr "Делегувати кому"
-
-msgctxt "model:account.move.line.group.start,name:"
-msgid "Group Lines"
-msgstr "Групові рядки"
+msgctxt "model:account.move.line.delegate.start,string:"
+msgid "Account Move Line Delegate Start"
+msgstr "Шаблон рядка бухгалтерської проводки"
 
 #, fuzzy
-msgctxt "model:account.move.line.receivable_payable.context,name:"
-msgid "Receivable/Payable Line Context"
+msgctxt "model:account.move.line.group.start,string:"
+msgid "Account Move Line Group Start"
+msgstr "Шаблон рядка бухгалтерської проводки"
+
+#, fuzzy
+msgctxt "model:account.move.line.receivable_payable.context,string:"
+msgid "Account Move Line Receivable Payable Context"
 msgstr "Контекст рядка головної книги"
 
-msgctxt "model:account.move.line.reschedule.preview,name:"
-msgid "Reschedule Lines"
-msgstr "Перепланувати рядки"
+#, fuzzy
+msgctxt "model:account.move.line.reschedule.preview,string:"
+msgid "Account Move Line Reschedule Preview"
+msgstr "Шаблон рядка бухгалтерської проводки"
 
-msgctxt "model:account.move.line.reschedule.start,name:"
-msgid "Reschedule Lines"
-msgstr "Перепланувати рядки"
+#, fuzzy
+msgctxt "model:account.move.line.reschedule.start,string:"
+msgid "Account Move Line Reschedule Start"
+msgstr "Шаблон рядка бухгалтерської проводки"
 
-msgctxt "model:account.move.line.reschedule.term,name:"
-msgid "Reschedule Lines"
-msgstr "Перепланувати рядки"
+#, fuzzy
+msgctxt "model:account.move.line.reschedule.term,string:"
+msgid "Account Move Line Reschedule Term"
+msgstr "Шаблон рядка бухгалтерської проводки"
 
-msgctxt "model:account.move.line.template,name:"
+#, fuzzy
+msgctxt "model:account.move.line.template,string:"
 msgid "Account Move Line Template"
 msgstr "Шаблон рядка бухгалтерської проводки"
 
-msgctxt "model:account.move.open_journal.ask,name:"
-msgid "Open Journal Ask"
+#, fuzzy
+msgctxt "model:account.move.open_journal.ask,string:"
+msgid "Account Move Open Journal Ask"
 msgstr "Відкрити запит журналу"
 
-msgctxt "model:account.move.reconcile.write_off,name:"
-msgid "Reconcile Write Off"
-msgstr "Звірити списання"
+#, fuzzy
+msgctxt "model:account.move.reconcile.write_off,string:"
+msgid "Account Move Reconcile Write Off"
+msgstr "Звірка бухгалтерських проводок"
 
-msgctxt "model:account.move.reconcile_lines.writeoff,name:"
-msgid "Reconcile Lines Write-Off"
-msgstr "Звірити рядки списання"
-
-msgctxt "model:account.move.reconciliation,name:"
-msgid "Account Move Reconciliation Lines"
+#, fuzzy
+msgctxt "model:account.move.reconcile_lines.writeoff,string:"
+msgid "Account Move Reconcile Lines Writeoff"
 msgstr "Рядки звірки бухгалтерської проводки"
 
-msgctxt "model:account.move.template,name:"
+#, fuzzy
+msgctxt "model:account.move.reconciliation,string:"
+msgid "Account Move Reconciliation"
+msgstr "Звірка бухгалтерських проводок"
+
+#, fuzzy
+msgctxt "model:account.move.template,string:"
 msgid "Account Move Template"
 msgstr "Шаблон бухгалтерської проводки"
 
-msgctxt "model:account.move.template.create.keywords,name:"
-msgid "Create Move from Template"
-msgstr "Створити проводку із шаблону"
+#, fuzzy
+msgctxt "model:account.move.template.create.keywords,string:"
+msgid "Account Move Template Create Keywords"
+msgstr "Ключове слово шаблону бухгалтерської проводки"
 
-msgctxt "model:account.move.template.create.template,name:"
-msgid "Create Move from Template"
-msgstr "Створити проводку із шаблону"
+#, fuzzy
+msgctxt "model:account.move.template.create.template,string:"
+msgid "Account Move Template Create Template"
+msgstr "Шаблон рахунку - Шаблон податків"
 
-msgctxt "model:account.move.template.keyword,name:"
+#, fuzzy
+msgctxt "model:account.move.template.keyword,string:"
 msgid "Account Move Template Keyword"
 msgstr "Ключове слово шаблону бухгалтерської проводки"
 
-msgctxt "model:account.period,name:"
-msgid "Period"
-msgstr "Період"
+#, fuzzy
+msgctxt "model:account.period,string:"
+msgid "Account Period"
+msgstr "Особа рахунку"
 
-msgctxt "model:account.reconcile.show,name:"
-msgid "Reconcile"
-msgstr "Звірити"
+#, fuzzy
+msgctxt "model:account.reconcile.show,string:"
+msgid "Account Reconcile Show"
+msgstr "Дебіт. заборгованість"
 
-msgctxt "model:account.reconcile.start,name:"
-msgid "Reconcile"
-msgstr "Звірити"
+#, fuzzy
+msgctxt "model:account.reconcile.start,string:"
+msgid "Account Reconcile Start"
+msgstr "Звірка бухгалтерських проводок"
 
-msgctxt "model:account.tax,name:"
+#, fuzzy
+msgctxt "model:account.tax,string:"
 msgid "Account Tax"
 msgstr "Податок на рахунок"
 
-msgctxt "model:account.tax.code,name:"
-msgid "Tax Code"
-msgstr "Податковий код"
+#, fuzzy
+msgctxt "model:account.tax.code,string:"
+msgid "Account Tax Code"
+msgstr "Податок на рахунок"
 
 #, fuzzy
-msgctxt "model:account.tax.code.context,name:"
-msgid "Tax Code Context"
+msgctxt "model:account.tax.code.context,string:"
+msgid "Account Tax Code Context"
 msgstr "Рядок податкового коду"
 
-msgctxt "model:account.tax.code.line,name:"
-msgid "Tax Code Line"
-msgstr "Рядок податкового коду"
+#, fuzzy
+msgctxt "model:account.tax.code.line,string:"
+msgid "Account Tax Code Line"
+msgstr "Рядок бухгалтерської проводки"
 
-msgctxt "model:account.tax.code.line.template,name:"
-msgid "Tax Code Line Template"
-msgstr "Шаблон рядка податкового коду"
+#, fuzzy
+msgctxt "model:account.tax.code.line.template,string:"
+msgid "Account Tax Code Line Template"
+msgstr "Шаблон рядка податку на рахунок"
 
-msgctxt "model:account.tax.code.template,name:"
-msgid "Tax Code Template"
-msgstr "Шаблон податкового коду"
+#, fuzzy
+msgctxt "model:account.tax.code.template,string:"
+msgid "Account Tax Code Template"
+msgstr "Шаблон податку на рахунок"
 
-msgctxt "model:account.tax.group,name:"
-msgid "Tax Group"
-msgstr "Група податків"
+#, fuzzy
+msgctxt "model:account.tax.group,string:"
+msgid "Account Tax Group"
+msgstr "Податок на рахунок"
 
-msgctxt "model:account.tax.line,name:"
-msgid "Tax Line"
-msgstr "Податковий рядок"
+#, fuzzy
+msgctxt "model:account.tax.line,string:"
+msgid "Account Tax Line"
+msgstr "Податок на рахунок"
 
-msgctxt "model:account.tax.line.template,name:"
+#, fuzzy
+msgctxt "model:account.tax.line.template,string:"
 msgid "Account Tax Line Template"
 msgstr "Шаблон рядка податку на рахунок"
 
-msgctxt "model:account.tax.rule,name:"
-msgid "Tax Rule"
-msgstr "Правило оподаткування"
+#, fuzzy
+msgctxt "model:account.tax.rule,string:"
+msgid "Account Tax Rule"
+msgstr "Податок на рахунок"
 
-msgctxt "model:account.tax.rule.line,name:"
-msgid "Tax Rule Line"
+#, fuzzy
+msgctxt "model:account.tax.rule.line,string:"
+msgid "Account Tax Rule Line"
 msgstr "Рядок правила оподаткування"
 
-msgctxt "model:account.tax.rule.line.template,name:"
-msgid "Tax Rule Line Template"
-msgstr "Шаблон рядка правила оподаткування"
+#, fuzzy
+msgctxt "model:account.tax.rule.line.template,string:"
+msgid "Account Tax Rule Line Template"
+msgstr "Шаблон рядка податку на рахунок"
 
-msgctxt "model:account.tax.rule.template,name:"
-msgid "Tax Rule Template"
-msgstr "Шаблон правила оподаткування"
+#, fuzzy
+msgctxt "model:account.tax.rule.template,string:"
+msgid "Account Tax Rule Template"
+msgstr "Шаблон податку на рахунок"
 
-msgctxt "model:account.tax.template,name:"
+#, fuzzy
+msgctxt "model:account.tax.template,string:"
 msgid "Account Tax Template"
 msgstr "Шаблон податку на рахунок"
 
-msgctxt "model:account.tax.test,name:"
-msgid "Test Tax"
-msgstr "Тестовий податок"
+#, fuzzy
+msgctxt "model:account.tax.test,string:"
+msgid "Account Tax Test"
+msgstr "Шаблон податку на рахунок"
 
-msgctxt "model:account.tax.test.result,name:"
-msgid "Test Tax"
-msgstr "Тестовий податок"
+#, fuzzy
+msgctxt "model:account.tax.test.result,string:"
+msgid "Account Tax Test Result"
+msgstr "Шаблон податку на рахунок"
 
-msgctxt "model:account.update_chart.start,name:"
-msgid "Update Chart"
+#, fuzzy
+msgctxt "model:account.update_chart.start,string:"
+msgid "Account Update Chart Start"
 msgstr "Оновити план"
 
-msgctxt "model:account.update_chart.succeed,name:"
-msgid "Update Chart"
-msgstr "Оновити план"
+msgctxt "model:account.update_chart.succeed,string:"
+msgid "Account Update Chart Succeed"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_account_balance_sheet"
 msgid "Accounts"
@@ -3280,20 +3352,20 @@ msgstr ""
 "Проводки \"%(moves)s\" містять групові рядки, їх скасування призведе до "
 "розгрупування рядків."
 
-#, python-format
-msgctxt "model:ir.message,text:msg_change_fiscalyear_post_move_sequence"
+#, fuzzy, python-format
+msgctxt "model:ir.message,text:msg_change_fiscalyear_move_sequence"
 msgid ""
-"You cannot change the post move sequence on fiscal year \"%(fiscalyear)s\" "
+"You cannot change the move sequence on fiscal year \"%(fiscalyear)s\" "
 "because it contains posted moves."
 msgstr ""
 "Ви не можете змінити послідовність проводок у фінансовому році "
 "\"%(fiscalyear)s\", оскільки він містить проведені проводки."
 
-#, python-format
-msgctxt "model:ir.message,text:msg_change_period_post_move_sequence"
+#, fuzzy, python-format
+msgctxt "model:ir.message,text:msg_change_period_move_sequence"
 msgid ""
-"You cannot change the post move sequence in period \"%(period)s\" because it"
-" has posted moves."
+"You cannot change the move sequence in period \"%(period)s\" because it has "
+"posted moves."
 msgstr ""
 "Ви не можете змінити послідовність проводок у періоді \"%(period)s\", "
 "оскільки він містить проведені проводки."
@@ -3368,13 +3440,6 @@ msgid "You cannot delegate together lines with different origins."
 msgstr "Ви не можете перепланувати рядки з різними походженнями."
 
 #, python-format
-msgctxt "model:ir.message,text:msg_delete_account_with_move_lines"
-msgid "You cannot delete account \"%(account)s\" because it has move lines."
-msgstr ""
-"Ви не можете видалити рахунок \"%(account)s\", оскільки він має рядки "
-"проводок."
-
-#, python-format
 msgctxt "model:ir.message,text:msg_erase_party_receivable_payable"
 msgid ""
 "You cannot erase party \"%(party)s\" while they have pending "
@@ -3383,12 +3448,12 @@ msgstr ""
 "Ви не можете видалити особу \"%(party)s\", якщо вона має невирішену "
 "дебіт./кредит. заборгованість компанії \"%(company)s\"."
 
-msgctxt "model:ir.message,text:msg_fiscalyear_overlap"
-msgid "The dates of fiscal years of the same company can not overlap."
+msgctxt "model:ir.message,text:msg_fiscalyear_move_sequence_unique"
+msgid "The move sequence of fiscal years must be unique."
 msgstr ""
 
-msgctxt "model:ir.message,text:msg_fiscalyear_post_move_sequence_unique"
-msgid "The post move sequence of fiscal years must be unique."
+msgctxt "model:ir.message,text:msg_fiscalyear_overlap"
+msgid "The dates of fiscal years of the same company can not overlap."
 msgstr ""
 
 #, python-format
@@ -3513,11 +3578,11 @@ msgstr ""
 "Ви не можете додати/змінити/видалити податкові рядки в закритому періоді "
 "\"%(period)s\"."
 
-#, python-format
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_move_cancel_closed_period"
 msgid ""
 "The period of move \"%(move)s\" is closed.\n"
-"Use the current period to cancel the move?"
+"If you cancel the move, the current period will be used."
 msgstr ""
 "Період проводки \"%(move)s\" закрито.\n"
 "Використати поточний період для скасування проводки?"
@@ -3526,7 +3591,7 @@ msgstr ""
 msgctxt "model:ir.message,text:msg_move_copy_closed_period"
 msgid ""
 "The period of move \"%(move)s\" is closed.\n"
-"Use the current period to copy the move?"
+"If you copy the move, the current period will be used."
 msgstr ""
 "Період проводки \"%(move)s\" закрито.\n"
 "Використати поточний період для скасування проводки?"
@@ -3652,9 +3717,8 @@ msgstr ""
 "Дати для періоду \"%(period)s\" мають бути між датами його фінансового року "
 "\"%(fiscalyear)s\"."
 
-msgctxt "model:ir.message,text:msg_period_post_move_sequence_unique"
-msgid ""
-"A post move sequence can be reused only by periods in the same fiscal year."
+msgctxt "model:ir.message,text:msg_period_move_sequence_unique"
+msgid "A move sequence can be reused only by periods in the same fiscal year."
 msgstr ""
 
 msgctxt "model:ir.message,text:msg_period_standard_overlap"
@@ -3946,17 +4010,9 @@ msgctxt "model:ir.rule.group,name:rule_group_tax_rule_companies"
 msgid "User in companies"
 msgstr "Користувач у компаніях"
 
-msgctxt "model:ir.sequence,name:sequence_account_journal"
-msgid "Default Account Journal"
-msgstr "Журнал обліку за умовчанням"
-
 msgctxt "model:ir.sequence,name:sequence_account_move_reconciliation"
 msgid "Default Account Move Reconciliation"
 msgstr "Звірка бухгалтерських проводок за умовчанням"
-
-msgctxt "model:ir.sequence.type,name:sequence_type_account_journal"
-msgid "Account Journal"
-msgstr "Журнал обліку"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_account_move"
 msgid "Account Move"
@@ -4174,16 +4230,19 @@ msgctxt "model:ir.ui.menu,name:menuitem_account_configuration"
 msgid "Configuration"
 msgstr "Налаштування"
 
-msgctxt "model:party.party.account,name:"
+#, fuzzy
+msgctxt "model:party.party.account,string:"
 msgid "Party Account"
 msgstr "Рахунок особи"
 
+#, fuzzy
 msgctxt "model:res.group,name:group_account"
-msgid "Account"
-msgstr "Рахунок"
+msgid "Accounting"
+msgstr "Облік"
 
+#, fuzzy
 msgctxt "model:res.group,name:group_account_admin"
-msgid "Account Administration"
+msgid "Accounting Administration"
 msgstr "Адміністрування рахунку"
 
 msgctxt "report:account.account.type.statement:"
@@ -4932,6 +4991,11 @@ msgctxt "view:account.move.line:"
 msgid "Balance"
 msgstr "Баланс"
 
+#, fuzzy
+msgctxt "view:account.move.line:"
+msgid "Date"
+msgstr "Дата"
+
 msgctxt "view:account.move.line:"
 msgid "Other Info"
 msgstr "Інша інформація"
@@ -5121,7 +5185,8 @@ msgctxt "wizard_button:account.reconcile,start,end:"
 msgid "Cancel"
 msgstr "Скасувати"
 
-msgctxt "wizard_button:account.reconcile,start,next_:"
+#, fuzzy
+msgctxt "wizard_button:account.reconcile,start,setup:"
 msgid "Reconcile"
 msgstr "Звірити"
 

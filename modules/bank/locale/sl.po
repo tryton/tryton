@@ -26,6 +26,11 @@ msgctxt "field:bank.account,owners:"
 msgid "Owners"
 msgstr "Imetniki"
 
+#, fuzzy
+msgctxt "field:bank.account,owners_sequence:"
+msgid "Owners Sequence"
+msgstr "Zap.št."
+
 msgctxt "field:bank.account-party.party,account:"
 msgid "Account"
 msgstr "Bančni račun"
@@ -54,6 +59,11 @@ msgctxt "field:party.party,bank_accounts:"
 msgid "Bank Accounts"
 msgstr "Bančni računi"
 
+#, fuzzy
+msgctxt "field:party.party,bank_accounts_used:"
+msgid "Bank Accounts Used"
+msgstr "Bančni računi"
+
 msgctxt "help:bank,bic:"
 msgid "Bank/Business Identifier Code."
 msgstr "Bančna/poslovna identifikacijska šifra (BIC)."
@@ -70,19 +80,23 @@ msgctxt "help:bank.account.number,account:"
 msgid "The bank account which is identified by the number."
 msgstr "Bančni račun, ki je identificiran s številko."
 
-msgctxt "model:bank,name:"
+#, fuzzy
+msgctxt "model:bank,string:"
 msgid "Bank"
 msgstr "Banka"
 
-msgctxt "model:bank.account,name:"
+#, fuzzy
+msgctxt "model:bank.account,string:"
 msgid "Bank Account"
 msgstr "Bančni račun"
 
-msgctxt "model:bank.account-party.party,name:"
+#, fuzzy
+msgctxt "model:bank.account-party.party,string:"
 msgid "Bank Account - Party"
 msgstr "Bančni račun - Partner"
 
-msgctxt "model:bank.account.number,name:"
+#, fuzzy
+msgctxt "model:bank.account.number,string:"
 msgid "Bank Account Number"
 msgstr "Številka bančnega računa"
 

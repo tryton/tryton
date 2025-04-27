@@ -34,10 +34,12 @@ msgctxt "model:ir.ui.menu,name:menu_shortened_url_form"
 msgid "Shortened URLs"
 msgstr "Lühendatud URL"
 
-msgctxt "model:web.shortened_url,name:"
-msgid "Short URL"
-msgstr "Lühike URL"
+#, fuzzy
+msgctxt "model:web.shortened_url,string:"
+msgid "Web Shortened Url"
+msgstr "Lühendatud URL"
 
-msgctxt "model:web.shortened_url.access,name:"
-msgid "URL Access"
-msgstr "URL-i juurdepääs"
+#, fuzzy
+msgctxt "model:web.shortened_url.access,string:"
+msgid "Web Shortened Url Access"
+msgstr "Lühendatud URL"

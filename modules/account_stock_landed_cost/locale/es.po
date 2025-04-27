@@ -119,32 +119,32 @@ msgctxt "help:account.landed_cost,products:"
 msgid "Apply only to these products."
 msgstr "Aplica solo a estos productos."
 
-msgctxt "model:account.configuration.landed_cost_sequence,name:"
+msgctxt "model:account.configuration.landed_cost_sequence,string:"
 msgid "Account Configuration Landed Cost Sequence"
 msgstr "Configuración de la secuencia de coste de recepción"
 
-msgctxt "model:account.landed_cost,name:"
-msgid "Landed Cost"
+msgctxt "model:account.landed_cost,string:"
+msgid "Account Landed Cost"
 msgstr "Coste de recepción"
 
-msgctxt "model:account.landed_cost-product.category,name:"
-msgid "Landed Cost - Product Category"
+msgctxt "model:account.landed_cost-product.category,string:"
+msgid "Account Landed Cost - Product Category"
 msgstr "Coste de recepción - Categoría de producto"
 
-msgctxt "model:account.landed_cost-product.product,name:"
-msgid "Landed Cost - Product"
+msgctxt "model:account.landed_cost-product.product,string:"
+msgid "Account Landed Cost - Product"
 msgstr "Coste de recepción - Producto"
 
-msgctxt "model:account.landed_cost-stock.shipment.in,name:"
-msgid "Landed Cost - Shipment"
-msgstr "Coste de recepción - Albarán"
+msgctxt "model:account.landed_cost-stock.shipment.in,string:"
+msgid "Account Landed Cost - Stock Shipment In"
+msgstr "Coste de recepción - Albarán de proveedor"
 
-msgctxt "model:account.landed_cost.show,name:"
-msgid "Landed Cost Show"
+msgctxt "model:account.landed_cost.show,string:"
+msgid "Account Landed Cost Show"
 msgstr "Mostrar coste de recepción"
 
-msgctxt "model:account.landed_cost.show.move,name:"
-msgid "Landed Cost Show"
+msgctxt "model:account.landed_cost.show.move,string:"
+msgid "Account Landed Cost Show Move"
 msgstr "Mostrar coste de recepción"
 
 msgctxt "model:ir.action,name:act_landed_cost_form"
@@ -177,6 +177,11 @@ msgctxt ""
 "model:ir.action.act_window.domain,name:act_landed_cost_form_domain_posted"
 msgid "Posted"
 msgstr "Contabilizado"
+
+#, python-format
+msgctxt "model:ir.message,text:msg_landed_cost_delete_cancel"
+msgid "To delete landed cost \"%(landed_cost)s\" you must cancel it."
+msgstr "Para eliminar el costo de recepción \"%(landed_cost)s\" debes cancelarlo."
 
 #, python-format
 msgctxt "model:ir.message,text:msg_landed_cost_post_no_stock_move"

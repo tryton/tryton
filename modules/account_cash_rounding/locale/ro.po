@@ -44,9 +44,9 @@ msgctxt "field:purchase.purchase,cash_rounding:"
 msgid "Cash Rounding"
 msgstr "Rotunjire Cash"
 
-msgctxt "model:account.configuration.cash_rounding_account,name:"
+msgctxt "model:account.configuration.cash_rounding_account,string:"
 msgid "Account Configuration Cash Rounding Account"
-msgstr "Configurare Cont Rotunjire Cash"
+msgstr "Configurare Cont Rotunjire Numerar"
 
 msgctxt "model:ir.message,text:msg_missing_cash_rounding_account"
 msgid "There is not cash rounding account configured."

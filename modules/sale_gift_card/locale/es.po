@@ -156,7 +156,7 @@ msgctxt "help:sale.point.sale.line,gift_card_email:"
 msgid "Leave empty for the customer email."
 msgstr "Dejar vacío para el correo electrónico del cliente."
 
-msgctxt "model:account.configuration.gift_card_account,name:"
+msgctxt "model:account.configuration.gift_card_account,string:"
 msgid "Account Configuration Gift Card Account"
 msgstr "Configuración cuentas contables tarjetas regalo"
 
@@ -228,16 +228,16 @@ msgctxt "model:res.group,name:group_gift_card_admin"
 msgid "Gift Card Administration"
 msgstr "Administración de tarjetas regalo"
 
-msgctxt "model:sale.configuration.gift_card.sequence,name:"
-msgid "Gift Card Configuration Sequence"
-msgstr "Configuración de secuèncias de tarjetas regalo"
+msgctxt "model:sale.configuration.gift_card.sequence,string:"
+msgid "Sale Configuration Gift Card Sequence"
+msgstr "Configuración cuentas contables tarjetas regalo"
 
-msgctxt "model:sale.gift_card,name:"
-msgid "Gift Card"
+msgctxt "model:sale.gift_card,string:"
+msgid "Sale Gift Card"
 msgstr "Tarjeta regalo"
 
-msgctxt "model:sale.point.sale.pay.gift_card,name:"
-msgid "POS Pay - Gift Card"
+msgctxt "model:sale.point.sale.pay.gift_card,string:"
+msgid "Sale Point Sale Pay Gift Card"
 msgstr "Pago TPV - Tarjeta regalo"
 
 msgctxt "report:sale.gift_card.email:"

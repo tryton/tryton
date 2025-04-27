@@ -366,45 +366,53 @@ msgctxt "help:product.template,depreciation_duration:"
 msgid "In months"
 msgstr "Aylarda"
 
-msgctxt "model:account.asset,name:"
-msgid "Asset"
-msgstr "Aktif"
+#, fuzzy
+msgctxt "model:account.asset,string:"
+msgid "Account Asset"
+msgstr "Aktifler Hesabı"
 
-msgctxt "model:account.asset-update-account.move,name:"
-msgid "Asset - Update - Move"
+#, fuzzy
+msgctxt "model:account.asset-update-account.move,string:"
+msgid "Account Asset - Update - Account Move"
 msgstr "Aktif - Güncelle - Hareket"
 
-msgctxt "model:account.asset.create_moves.start,name:"
-msgid "Create Moves Start"
+#, fuzzy
+msgctxt "model:account.asset.create_moves.start,string:"
+msgid "Account Asset Create Moves Start"
 msgstr "Hareketler Başlangıcı Oluştur"
 
-msgctxt "model:account.asset.line,name:"
-msgid "Asset Line"
-msgstr ""
+#, fuzzy
+msgctxt "model:account.asset.line,string:"
+msgid "Account Asset Line"
+msgstr "Aktifler Hesabı"
 
-msgctxt "model:account.asset.print_depreciation_table.start,name:"
-msgid "Asset Depreciation Table Start"
+#, fuzzy
+msgctxt "model:account.asset.print_depreciation_table.start,string:"
+msgid "Account Asset Print Depreciation Table Start"
 msgstr "Aktif Amortisman Tablosu Başlangıcı"
 
-msgctxt "model:account.asset.revision,name:"
-msgid "Asset Revision"
-msgstr ""
+#, fuzzy
+msgctxt "model:account.asset.revision,string:"
+msgid "Account Asset Revision"
+msgstr "Aktifler Hesabı"
 
-msgctxt "model:account.asset.update.show_depreciation,name:"
-msgid "Update Asset Show Depreciation"
+#, fuzzy
+msgctxt "model:account.asset.update.show_depreciation,string:"
+msgid "Account Asset Update Show Depreciation"
 msgstr "Aktif Amortisman Gösteri Güncelle"
 
 #, fuzzy
-msgctxt "model:account.configuration.asset_date,name:"
+msgctxt "model:account.configuration.asset_date,string:"
 msgid "Account Configuration Asset Date"
 msgstr "Aktif Sırası Düzenleme Hesabı"
 
 #, fuzzy
-msgctxt "model:account.configuration.asset_frequency,name:"
+msgctxt "model:account.configuration.asset_frequency,string:"
 msgid "Account Configuration Asset Frequency"
 msgstr "Aktif Sırası Düzenleme Hesabı"
 
-msgctxt "model:account.configuration.asset_sequence,name:"
+#, fuzzy
+msgctxt "model:account.configuration.asset_sequence,string:"
 msgid "Account Configuration Asset Sequence"
 msgstr "Aktif Sırası Düzenleme Hesabı"
 
@@ -492,6 +500,10 @@ msgctxt "model:ir.message,text:msg_purchase_product_missing_account_asset"
 msgid ""
 "To invoice purchase \"%(purchase)s\", you must set an account asset on "
 "product \"%(product)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_revision_asset_origin_unique"
+msgid "A revision origin can be used only once per asset."
 msgstr ""
 
 #, fuzzy

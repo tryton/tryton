@@ -46,9 +46,10 @@ msgctxt "field:stock.package.type,ups_code:"
 msgid "UPS Code"
 msgstr "Codi UPS"
 
-msgctxt "model:carrier.credential.ups,name:"
-msgid "UPS Credential"
-msgstr "Credencial UPS"
+#, fuzzy
+msgctxt "model:carrier.credential.ups,string:"
+msgid "Carrier Credential Ups"
+msgstr "Credencials UPS"
 
 msgctxt "model:ir.action,name:act_create_shipping_ups_wizard"
 msgid "Create UPS Shipping for Packages"

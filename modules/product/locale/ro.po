@@ -180,6 +180,10 @@ msgctxt "field:product.product,replaced_by:"
 msgid "Replaced By"
 msgstr ""
 
+msgctxt "field:product.product,replacing:"
+msgid "Replacing"
+msgstr ""
+
 msgctxt "field:product.product,suffix_code:"
 msgid "Suffix Code"
 msgstr "Cod Suffix"
@@ -407,6 +411,11 @@ msgstr "Prețul standard la care se vinde produsul."
 #, fuzzy
 msgctxt "help:product.product,replaced_by:"
 msgid "The product replacing this one."
+msgstr "Produsul identificat prin cod."
+
+#, fuzzy
+msgctxt "help:product.product,replacing:"
+msgid "The products that this one is replacing."
 msgstr "Produsul identificat prin cod."
 
 msgctxt "help:product.product,suffix_code:"
@@ -660,58 +669,65 @@ msgctxt "model:ir.ui.menu,name:menu_uom_form"
 msgid "Units of Measure"
 msgstr "Unitați de masura"
 
-msgctxt "model:product.category,name:"
+#, fuzzy
+msgctxt "model:product.category,string:"
 msgid "Product Category"
 msgstr "Categorie Produse"
 
-msgctxt "model:product.configuration,name:"
+#, fuzzy
+msgctxt "model:product.configuration,string:"
 msgid "Product Configuration"
 msgstr "Configurare Produs"
 
-msgctxt "model:product.configuration.default_cost_price_method,name:"
+#, fuzzy
+msgctxt "model:product.configuration.default_cost_price_method,string:"
 msgid "Product Configuration Default Cost Price Method"
 msgstr "Configurare de Produs Metodă Implicită pentru Cost"
 
-msgctxt "model:product.cost_price,name:"
+#, fuzzy
+msgctxt "model:product.cost_price,string:"
 msgid "Product Cost Price"
 msgstr "Cost al Produsului"
 
-msgctxt "model:product.cost_price_method,name:"
+#, fuzzy
+msgctxt "model:product.cost_price_method,string:"
 msgid "Product Cost Price Method"
 msgstr "Metodă Cost al Produsului"
 
-msgctxt "model:product.identifier,name:"
+#, fuzzy
+msgctxt "model:product.identifier,string:"
 msgid "Product Identifier"
 msgstr "Identificator Produs"
 
-msgctxt "model:product.list_price,name:"
+#, fuzzy
+msgctxt "model:product.list_price,string:"
 msgid "Product List Price"
 msgstr "Preţ de Lista Produs"
 
-msgctxt "model:product.product,name:"
-msgid "Product Variant"
-msgstr "Varianta Produs"
-
 #, fuzzy
-msgctxt "model:product.product.replace.ask,name:"
-msgid "Replace Product"
+msgctxt "model:product.product,string:"
+msgid "Product"
 msgstr "Produs"
 
-msgctxt "model:product.template,name:"
+#, fuzzy
+msgctxt "model:product.product.replace.ask,string:"
+msgid "Product Replace Ask"
+msgstr "Șablon Produs"
+
+#, fuzzy
+msgctxt "model:product.template,string:"
 msgid "Product Template"
 msgstr "Șablon Produs"
 
-msgctxt "model:product.template-product.category,name:"
-msgid "Template - Category"
+#, fuzzy
+msgctxt "model:product.template-product.category,string:"
+msgid "Product Template - Product Category"
 msgstr "Şablon - Categorie"
 
-msgctxt "model:product.template-product.category.all,name:"
-msgid "Template - Category All"
+#, fuzzy
+msgctxt "model:product.template-product.category.all,string:"
+msgid "Product Template - Product Category All"
 msgstr "Şablon - Categorie Toate"
-
-msgctxt "model:product.uom,name:"
-msgid "Unit of Measure"
-msgstr "Unitate de Măsură"
 
 msgctxt "model:product.uom,name:uom_are"
 msgid "Are"
@@ -853,6 +869,11 @@ msgctxt "model:product.uom,name:uom_yard"
 msgid "Yard"
 msgstr "Iard"
 
+#, fuzzy
+msgctxt "model:product.uom,string:"
+msgid "Product Uom"
+msgstr "Produs"
+
 msgctxt "model:product.uom,symbol:uom_are"
 msgid "a"
 msgstr "a"
@@ -993,10 +1014,6 @@ msgctxt "model:product.uom,symbol:uom_yard"
 msgid "yd"
 msgstr "yd"
 
-msgctxt "model:product.uom.category,name:"
-msgid "Unit of Measure Category"
-msgstr "Categorie Unitate de Măsura"
-
 msgctxt "model:product.uom.category,name:uom_cat_energy"
 msgid "Energy"
 msgstr "Energie"
@@ -1024,6 +1041,11 @@ msgstr "Volum"
 msgctxt "model:product.uom.category,name:uom_cat_weight"
 msgid "Weight"
 msgstr "Greutate"
+
+#, fuzzy
+msgctxt "model:product.uom.category,string:"
+msgid "Product Uom Category"
+msgstr "Categorie Produse"
 
 msgctxt "model:res.group,name:group_product_admin"
 msgid "Product Administration"

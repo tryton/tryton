@@ -82,13 +82,15 @@ msgctxt "help:account.account.receivable.rule.account,only_reconcile:"
 msgid "Distribute only to fully reconcile."
 msgstr "Distribuiți numai pentru a reconcilia pe deplin."
 
-msgctxt "model:account.account.receivable.rule,name:"
+#, fuzzy
+msgctxt "model:account.account.receivable.rule,string:"
 msgid "Account Receivable Rule"
-msgstr ""
+msgstr "Reguli Cont Client"
 
-msgctxt "model:account.account.receivable.rule.account,name:"
+#, fuzzy
+msgctxt "model:account.account.receivable.rule.account,string:"
 msgid "Account Receivable Rule Account"
-msgstr ""
+msgstr "Reguli Cont Client"
 
 msgctxt "model:ir.action,name:act_account_receivable_rule_form"
 msgid "Account Receivable Rules"

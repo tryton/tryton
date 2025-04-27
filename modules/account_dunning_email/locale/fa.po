@@ -29,12 +29,12 @@ msgstr "سطح"
 
 #, fuzzy
 msgctxt "help:account.configuration,dunning_email_fallback:"
-msgid "User notified when no email is found to send the dunning"
+msgid "User notified when no email is found to send the dunning."
 msgstr "ابلاغ شده به کاربر هنگامی که هیچ ایمیلی برای بازپرداخت ارسال نشده"
 
 #, fuzzy
 msgctxt "help:account.dunning.level,email_contact_mechanism:"
-msgid "Define which email to use from the party's contact mechanisms"
+msgid "Define which email to use from the party's contact mechanisms."
 msgstr "تعریف کدام ایمیل را از مکانیسم های تماس حزب استفاده کنید"
 
 msgctxt "help:account.dunning.level,email_from:"

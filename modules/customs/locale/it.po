@@ -188,12 +188,14 @@ msgctxt "help:product.template,tariff_codes_category:"
 msgid "Use the tariff codes defined on the category."
 msgstr "Utilizzare i codici doganali definiti nella categoria del padre."
 
-msgctxt "model:customs.duty.rate,name:"
-msgid "Duty Rate"
+#, fuzzy
+msgctxt "model:customs.duty.rate,string:"
+msgid "Customs Duty Rate"
 msgstr "aliquota dazio"
 
-msgctxt "model:customs.tariff.code,name:"
-msgid "Tariff Code"
+#, fuzzy
+msgctxt "model:customs.tariff.code,string:"
+msgid "Customs Tariff Code"
 msgstr "Codice dazio"
 
 msgctxt "model:ir.action,name:act_duty_rate_form"
@@ -224,8 +226,9 @@ msgctxt "model:ir.ui.menu,name:menu_tariff_code_form"
 msgid "Tariff Codes"
 msgstr "Codici doganali"
 
-msgctxt "model:product-customs.tariff.code,name:"
-msgid "Product - Tariff Code"
+#, fuzzy
+msgctxt "model:product-customs.tariff.code,string:"
+msgid "Product - Customs Tariff Code"
 msgstr "prodotto - codice tariffario"
 
 msgctxt "model:res.group,name:group_customs_admin"

@@ -2,8 +2,13 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "field:sale.line,draft_unit_price:"
-msgid "Draft Unit Price"
+msgctxt "field:sale.line,original_amount:"
+msgid "Original Amount"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:sale.line,original_unit_price:"
+msgid "Original Unit Price"
 msgstr "Rascunho de Preço Unitário"
 
 msgctxt "field:sale.line,promotion:"
@@ -64,9 +69,8 @@ msgstr ""
 
 msgctxt "field:sale.promotion-product.category,category:"
 msgid "Category"
-msgstr ""
+msgstr "Categoria"
 
-#, fuzzy
 msgctxt "field:sale.promotion-product.category,promotion:"
 msgid "Promotion"
 msgstr "Promoção"
@@ -83,6 +87,18 @@ msgstr "Promoção"
 msgctxt "field:sale.reporting.promotion,promotion:"
 msgid "Promotion"
 msgstr "Promoção"
+
+msgctxt "field:sale.sale,original_tax_amount:"
+msgid "Original Tax"
+msgstr ""
+
+msgctxt "field:sale.sale,original_total_amount:"
+msgid "Original Total"
+msgstr ""
+
+msgctxt "field:sale.sale,original_untaxed_amount:"
+msgid "Original Untaxed"
+msgstr ""
 
 msgctxt "help:sale.promotion,formula:"
 msgid ""
@@ -104,7 +120,7 @@ msgstr "Sale Promotions"
 
 msgctxt "model:ir.action,name:act_sale_relate"
 msgid "Sales"
-msgstr ""
+msgstr "Vendas"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_sale_reporting_promotion"
@@ -133,19 +149,27 @@ msgctxt "model:ir.ui.menu,name:menu_promotion"
 msgid "Promotions"
 msgstr "Promotions"
 
-msgctxt "model:sale.promotion,name:"
+#, fuzzy
+msgctxt "model:sale.promotion,string:"
 msgid "Sale Promotion"
 msgstr "Promoção de Venda"
 
-msgctxt "model:sale.promotion-product.category,name:"
+#, fuzzy
+msgctxt "model:sale.promotion-product.category,string:"
 msgid "Sale Promotion - Product Category"
-msgstr ""
+msgstr "Promoção de Venda - Produto"
 
-msgctxt "model:sale.promotion-product.product,name:"
+#, fuzzy
+msgctxt "model:sale.promotion-product.product,string:"
 msgid "Sale Promotion - Product"
 msgstr "Promoção de Venda - Produto"
 
 #, fuzzy
-msgctxt "model:sale.reporting.promotion,name:"
-msgid "Sale Reporting per Promotion"
+msgctxt "model:sale.reporting.promotion,string:"
+msgid "Sale Reporting Promotion"
 msgstr "Promoção de Venda"
+
+#, fuzzy
+msgctxt "view:sale.promotion:"
+msgid "Products"
+msgstr "Produtos"

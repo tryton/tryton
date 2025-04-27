@@ -44,10 +44,11 @@ msgid "Invoice Lines"
 msgstr "Arve read"
 
 #, fuzzy
-msgctxt "model:party.party.purchase_invoice_line_standalone,name:"
+msgctxt "model:party.party.purchase_invoice_line_standalone,string:"
 msgid "Party Purchase Invoice Line Standalone"
 msgstr "Ost - ignoreeritud arve read"
 
-msgctxt "model:purchase.purchase-ignored-account.invoice.line,name:"
-msgid "Purchase - Ignored Invoice Line"
+#, fuzzy
+msgctxt "model:purchase.purchase-ignored-account.invoice.line,string:"
+msgid "Purchase - Ignored - Account Invoice Line"
 msgstr "Ost - ignoreeritud arve read"

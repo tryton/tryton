@@ -230,13 +230,13 @@ msgctxt "model:ir.message,text:msg_shipment_carriage_delete"
 msgid "You cannot delete the carriage \"%(carriage)s\"."
 msgstr "Die Beförderung \"%(carriage)s\" kann nicht gelöscht werden."
 
-msgctxt "model:sale.carriage,name:"
+msgctxt "model:sale.carriage,string:"
 msgid "Sale Carriage"
 msgstr "Verkauf Beförderung"
 
-msgctxt "model:stock.shipment.carriage,name:"
-msgid "Shipment Carriage"
-msgstr "Lieferung Beförderung"
+msgctxt "model:stock.shipment.carriage,string:"
+msgid "Stock Shipment Carriage"
+msgstr "Lager Lieferung Beförderung"
 
 msgctxt "selection:incoterm.incoterm,after_carrier:"
 msgid "Buyer"

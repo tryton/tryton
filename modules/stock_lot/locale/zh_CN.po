@@ -333,36 +333,42 @@ msgctxt "model:ir.ui.menu,name:menu_lot_form"
 msgid "Lots"
 msgstr "批次"
 
-msgctxt "model:product.configuration.default_lot_sequence,name:"
+#, fuzzy
+msgctxt "model:product.configuration.default_lot_sequence,string:"
 msgid "Product Configuration Default Lot Sequence"
 msgstr "产品设置-默认批次序列"
 
-msgctxt "model:stock.lot,name:"
+#, fuzzy
+msgctxt "model:stock.lot,string:"
 msgid "Stock Lot"
 msgstr "库存批次"
 
-msgctxt "model:stock.lot.trace,name:"
-msgid "Lot Trace"
-msgstr "批次追踪"
+#, fuzzy
+msgctxt "model:stock.lot.trace,string:"
+msgid "Stock Lot Trace"
+msgstr "库存批次"
 
-msgctxt "model:stock.lots_by_location.context,name:"
-msgid "Lot by Location"
+#, fuzzy
+msgctxt "model:stock.lots_by_location.context,string:"
+msgid "Stock Lots By Location Context"
+msgstr "库位明细数量"
+
+#, fuzzy
+msgctxt "model:stock.lots_by_locations,string:"
+msgid "Stock Lots By Locations"
 msgstr "按库位划分的批次"
 
-msgctxt "model:stock.lots_by_locations,name:"
-msgid "Lots by Locations"
-msgstr "按库位划分的批次"
+msgctxt "model:stock.move.add.lots.start,string:"
+msgid "Stock Move Add Lots Start"
+msgstr ""
 
-msgctxt "model:stock.move.add.lots.start,name:"
-msgid "Add Lots"
-msgstr "增加批次"
+msgctxt "model:stock.move.add.lots.start.lot,string:"
+msgid "Stock Move Add Lots Start Lot"
+msgstr ""
 
-msgctxt "model:stock.move.add.lots.start.lot,name:"
-msgid "Add Lots"
-msgstr "增加批次"
-
-msgctxt "model:stock.period.cache.lot,name:"
-msgid "Stock Period Cache per Lot"
+#, fuzzy
+msgctxt "model:stock.period.cache.lot,string:"
+msgid "Stock Period Cache Lot"
 msgstr "每个批次的库存期缓存"
 
 msgctxt "selection:product.product,lot_required:"

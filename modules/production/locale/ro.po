@@ -51,8 +51,8 @@ msgid "Effective Start Date"
 msgstr "Data de începere efectivă"
 
 msgctxt "field:production,inputs:"
-msgid "Inputs"
-msgstr "Intrări"
+msgid "Input Materials"
+msgstr ""
 
 msgctxt "field:production,location:"
 msgid "Location"
@@ -66,8 +66,9 @@ msgctxt "field:production,origin:"
 msgid "Origin"
 msgstr "Origine"
 
+#, fuzzy
 msgctxt "field:production,outputs:"
-msgid "Outputs"
+msgid "Output Materials"
 msgstr "Ieșiri"
 
 msgctxt "field:production,partially_assigned:"
@@ -120,8 +121,8 @@ msgid "Code Readonly"
 msgstr "Cod numai pentru citit"
 
 msgctxt "field:production.bom,inputs:"
-msgid "Inputs"
-msgstr "Intrări"
+msgid "Input Materials"
+msgstr ""
 
 msgctxt "field:production.bom,name:"
 msgid "Name"
@@ -131,8 +132,9 @@ msgctxt "field:production.bom,output_products:"
 msgid "Output Products"
 msgstr "Produse de ieșire"
 
+#, fuzzy
 msgctxt "field:production.bom,outputs:"
-msgid "Outputs"
+msgid "Output Materials"
 msgstr "Ieșiri"
 
 msgctxt "field:production.bom.input,bom:"
@@ -482,51 +484,58 @@ msgctxt "model:ir.ui.menu,name:menu_production_list"
 msgid "Productions"
 msgstr "Producţie"
 
-msgctxt "model:product.product-production.bom,name:"
-msgid "Product - BOM"
-msgstr "Produs - BOM"
-
-msgctxt "model:production,name:"
-msgid "Production"
-msgstr "Producţie"
-
-msgctxt "model:production.bom,name:"
-msgid "Bill of Material"
-msgstr "Lista materialelor"
-
-msgctxt "model:production.bom.input,name:"
-msgid "Bill of Material Input"
-msgstr ""
-
-msgctxt "model:production.bom.output,name:"
-msgid "Bill of Material Output"
+msgctxt "model:product.product-production.bom,string:"
+msgid "Product - Production Bom"
 msgstr ""
 
 #, fuzzy
-msgctxt "model:production.bom.tree,name:"
-msgid "BOM Tree"
-msgstr "Arborele BOM"
+msgctxt "model:production,string:"
+msgid "Production"
+msgstr "Producţie"
 
-msgctxt "model:production.bom.tree.open.start,name:"
-msgid "Open BOM Tree"
-msgstr "Deschideți arborele BOM"
+#, fuzzy
+msgctxt "model:production.bom,string:"
+msgid "Production Bom"
+msgstr "Producţie"
 
-msgctxt "model:production.bom.tree.open.tree,name:"
-msgid "Open BOM Tree"
-msgstr "Deschideți arborele BOM"
+#, fuzzy
+msgctxt "model:production.bom.input,string:"
+msgid "Production Bom Input"
+msgstr "Intrari Producție"
 
-msgctxt "model:production.configuration,name:"
+#, fuzzy
+msgctxt "model:production.bom.output,string:"
+msgid "Production Bom Output"
+msgstr "Ieșiri Producţie"
+
+#, fuzzy
+msgctxt "model:production.bom.tree,string:"
+msgid "Production Bom Tree"
+msgstr "Producţie"
+
+msgctxt "model:production.bom.tree.open.start,string:"
+msgid "Production Bom Tree Open Start"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:production.bom.tree.open.tree,string:"
+msgid "Production Bom Tree Open Tree"
+msgstr "Secvența de producție"
+
+#, fuzzy
+msgctxt "model:production.configuration,string:"
 msgid "Production Configuration"
 msgstr "Configurația producției"
 
 #, fuzzy
-msgctxt "model:production.configuration.production_sequence,name:"
+msgctxt "model:production.configuration.production_sequence,string:"
 msgid "Production Configuration Production Sequence"
 msgstr "Configurația producției Secvența de producție"
 
-msgctxt "model:production.lead_time,name:"
+#, fuzzy
+msgctxt "model:production.lead_time,string:"
 msgid "Production Lead Time"
-msgstr ""
+msgstr "Secvența de producție"
 
 msgctxt "model:res.group,name:group_production"
 msgid "Production"
@@ -581,10 +590,6 @@ msgid "Production"
 msgstr "Producţie"
 
 msgctxt "view:production.bom:"
-msgid "Lines"
-msgstr "Rânduri"
-
-msgctxt "view:production:"
 msgid "Lines"
 msgstr "Rânduri"
 

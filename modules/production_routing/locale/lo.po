@@ -72,20 +72,18 @@ msgctxt "model:ir.ui.menu,name:menu_routing_list"
 msgid "Routings"
 msgstr "Routings"
 
-#, fuzzy
-msgctxt "model:production.routing,name:"
-msgid "Routing"
-msgstr "Routings"
-
-msgctxt "model:production.routing-production.bom,name:"
-msgid "Routing - BOM"
+msgctxt "model:production.routing,string:"
+msgid "Production Routing"
 msgstr ""
 
-#, fuzzy
-msgctxt "model:production.routing.operation,name:"
-msgid "Operation"
-msgstr "ການດຳເນີນການ"
+msgctxt "model:production.routing-production.bom,string:"
+msgid "Production Routing - Production Bom"
+msgstr ""
 
-msgctxt "model:production.routing.step,name:"
-msgid "Route"
+msgctxt "model:production.routing.operation,string:"
+msgid "Production Routing Operation"
+msgstr ""
+
+msgctxt "model:production.routing.step,string:"
+msgid "Production Routing Step"
 msgstr ""

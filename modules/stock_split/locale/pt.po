@@ -66,22 +66,21 @@ msgctxt "model:ir.model.button,string:shipment_out_split_wizard_button"
 msgid "Split"
 msgstr "Split"
 
-msgctxt "model:stock.move.split.start,name:"
-msgid "Split Move"
-msgstr "Dividir movimento"
+msgctxt "model:stock.move.split.start,string:"
+msgid "Stock Move Split Start"
+msgstr ""
 
-msgctxt "model:stock.shipment.split.start,name:"
-msgid "Split Shipment"
-msgstr "Dividir Remessa"
+msgctxt "model:stock.shipment.split.start,string:"
+msgid "Stock Shipment Split Start"
+msgstr ""
 
 msgctxt "view:stock.move:"
 msgid "Split"
 msgstr "Dividir"
 
-#, fuzzy
 msgctxt "view:stock.shipment.split.start:"
 msgid "Select moves to send in a new shipment:"
-msgstr "Escolher movimentações para enviar na nova remessa"
+msgstr "Selecione os movimentos para enviar uma nova remessa:"
 
 msgctxt "wizard_button:stock.move.split,start,end:"
 msgid "Cancel"

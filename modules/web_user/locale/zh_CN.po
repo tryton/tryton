@@ -116,19 +116,22 @@ msgctxt "model:ir.ui.menu,name:menu_user_form"
 msgid "Web Users"
 msgstr "Web 用户"
 
-msgctxt "model:web.user,name:"
+#, fuzzy
+msgctxt "model:web.user,string:"
 msgid "Web User"
 msgstr "Web 用户"
 
-msgctxt "model:web.user-party.party.secondary,name:"
-msgid "Web User - Secondary Party"
+#, fuzzy
+msgctxt "model:web.user-party.party.secondary,string:"
+msgid "Web User - Party Secondary"
 msgstr "web 用户 - 第二参与者"
 
-msgctxt "model:web.user.authenticate.attempt,name:"
-msgid "Web User Authenticate Attempt"
-msgstr "Web用户验证尝试"
+msgctxt "model:web.user.authenticate.attempt,string:"
+msgid "User Login Attempt"
+msgstr ""
 
-msgctxt "model:web.user.session,name:"
+#, fuzzy
+msgctxt "model:web.user.session,string:"
 msgid "Web User Session"
 msgstr "web 用户会话"
 

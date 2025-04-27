@@ -10,13 +10,24 @@ msgctxt "field:account.payment.journal,es_sepa_request_advancement:"
 msgid "Request Advancement"
 msgstr "Sol·licitar avançament"
 
-msgctxt "field:account.reporting.aeat.start,periods:"
-msgid "Periods"
-msgstr "Períodes"
+#, fuzzy
+msgctxt "field:account.reporting.aeat.start,company:"
+msgid "Company"
+msgstr "Empresa"
+
+#, fuzzy
+msgctxt "field:account.reporting.aeat.start,end_period:"
+msgid "End Period"
+msgstr "Període final"
 
 msgctxt "field:account.reporting.aeat.start,report:"
 msgid "Report"
 msgstr "Informe"
+
+#, fuzzy
+msgctxt "field:account.reporting.aeat.start,start_period:"
+msgid "Start Period"
+msgstr "Període inicial"
 
 msgctxt "field:account.reporting.es_ec_operation_list,amount:"
 msgid "Amount"
@@ -226,33 +237,35 @@ msgctxt "help:party.party,es_province_code:"
 msgid "Set 99 for non Spanish parties."
 msgstr "Utilitza '99' per tercers no espanyols."
 
-msgctxt "model:account.reporting.aeat.start,name:"
-msgid "Print AEAT Start"
-msgstr "Inici imprimeix informe AEAT"
+msgctxt "model:account.reporting.aeat.start,string:"
+msgid "Account Reporting Aeat Start"
+msgstr ""
 
-msgctxt "model:account.reporting.es_ec_operation_list,name:"
-msgid "EC Operation List"
-msgstr "Resum operacions intracomunitàries"
+msgctxt "model:account.reporting.es_ec_operation_list,string:"
+msgid "Account Ec Sales List"
+msgstr ""
 
-msgctxt "model:account.reporting.es_ec_operation_list.context,name:"
-msgid "EC Operation List Context"
-msgstr "Context resum operacions intracomunitàries"
-
-msgctxt "model:account.reporting.vat_book_es,name:"
-msgid "Spanish VAT Book"
-msgstr "Llibre d'IVA Espanyol"
-
-msgctxt "model:account.reporting.vat_book_es.context,name:"
-msgid "Spanish VAT Book Context"
-msgstr "Context del llibre d'IVA espanyol"
-
-msgctxt "model:account.reporting.vat_list_es,name:"
-msgid "Spanish VAT List"
-msgstr "Resum operacions terceres persones"
-
-msgctxt "model:account.reporting.vat_list_es.context,name:"
-msgid "Spanish VAT List Context"
+#, fuzzy
+msgctxt "model:account.reporting.es_ec_operation_list.context,string:"
+msgid "Account Ec Sales List Context"
 msgstr "Context resum operacions terceres persones"
+
+msgctxt "model:account.reporting.vat_book_es,string:"
+msgid "Account Reporting Vat Book Es"
+msgstr ""
+
+msgctxt "model:account.reporting.vat_book_es.context,string:"
+msgid "Account Reporting Vat Book Es Context"
+msgstr ""
+
+msgctxt "model:account.reporting.vat_list_es,string:"
+msgid "Account Reporting Vat List Es"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:account.reporting.vat_list_es.context,string:"
+msgid "Account Reporting Vat List Es Context"
+msgstr "Context resum operacions intracomunitàries"
 
 msgctxt "model:ir.action,name:act_es_ec_operation_list_form"
 msgid "EC Operation List"

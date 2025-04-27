@@ -10,13 +10,23 @@ msgctxt "field:account.payment.journal,es_sepa_request_advancement:"
 msgid "Request Advancement"
 msgstr ""
 
-msgctxt "field:account.reporting.aeat.start,periods:"
-msgid "Periods"
+msgctxt "field:account.reporting.aeat.start,company:"
+msgid "Company"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.reporting.aeat.start,end_period:"
+msgid "End Period"
 msgstr "دوره ها"
 
 msgctxt "field:account.reporting.aeat.start,report:"
 msgid "Report"
 msgstr "گزارش"
+
+#, fuzzy
+msgctxt "field:account.reporting.aeat.start,start_period:"
+msgid "Start Period"
+msgstr "دوره ها"
 
 msgctxt "field:account.reporting.es_ec_operation_list,amount:"
 msgid "Amount"
@@ -231,32 +241,32 @@ msgctxt "help:party.party,es_province_code:"
 msgid "Set 99 for non Spanish parties."
 msgstr ""
 
-msgctxt "model:account.reporting.aeat.start,name:"
-msgid "Print AEAT Start"
-msgstr "شروع پرینت AEAT"
-
-msgctxt "model:account.reporting.es_ec_operation_list,name:"
-msgid "EC Operation List"
+msgctxt "model:account.reporting.aeat.start,string:"
+msgid "Account Reporting Aeat Start"
 msgstr ""
 
-msgctxt "model:account.reporting.es_ec_operation_list.context,name:"
-msgid "EC Operation List Context"
+msgctxt "model:account.reporting.es_ec_operation_list,string:"
+msgid "Account Ec Sales List"
 msgstr ""
 
-msgctxt "model:account.reporting.vat_book_es,name:"
-msgid "Spanish VAT Book"
+msgctxt "model:account.reporting.es_ec_operation_list.context,string:"
+msgid "Account Ec Sales List Context"
 msgstr ""
 
-msgctxt "model:account.reporting.vat_book_es.context,name:"
-msgid "Spanish VAT Book Context"
+msgctxt "model:account.reporting.vat_book_es,string:"
+msgid "Account Reporting Vat Book Es"
 msgstr ""
 
-msgctxt "model:account.reporting.vat_list_es,name:"
-msgid "Spanish VAT List"
+msgctxt "model:account.reporting.vat_book_es.context,string:"
+msgid "Account Reporting Vat Book Es Context"
 msgstr ""
 
-msgctxt "model:account.reporting.vat_list_es.context,name:"
-msgid "Spanish VAT List Context"
+msgctxt "model:account.reporting.vat_list_es,string:"
+msgid "Account Reporting Vat List Es"
+msgstr ""
+
+msgctxt "model:account.reporting.vat_list_es.context,string:"
+msgid "Account Reporting Vat List Es Context"
 msgstr ""
 
 msgctxt "model:ir.action,name:act_es_ec_operation_list_form"

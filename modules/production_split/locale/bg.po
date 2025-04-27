@@ -36,10 +36,9 @@ msgctxt "model:ir.model.button,string:production_split_wizard_button"
 msgid "Split"
 msgstr "Split"
 
-#, fuzzy
-msgctxt "model:production.split.start,name:"
-msgid "Split Production"
-msgstr "Split Production"
+msgctxt "model:production.split.start,string:"
+msgid "Production Split Start"
+msgstr ""
 
 #, fuzzy
 msgctxt "wizard_button:production.split,start,end:"

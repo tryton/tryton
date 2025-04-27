@@ -1,5 +1,4 @@
 #
-#, fuzzy
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -47,8 +46,8 @@ msgstr ""
 "La expresión regular a coincidir con el origen del documento.\n"
 "Dejar en blanco para cualquier origen."
 
-msgctxt "model:document.incoming.ocr.service,name:"
-msgid "Incoming Document OCR Service"
+msgctxt "model:document.incoming.ocr.service,string:"
+msgid "Document Incoming Ocr Service"
 msgstr "Servicio OCR de documentos entrantes"
 
 msgctxt "model:ir.action,name:act_document_incoming_ocr_service_form"

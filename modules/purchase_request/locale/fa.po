@@ -202,17 +202,20 @@ msgctxt "model:ir.ui.menu,name:menu_purchase_request_form"
 msgid "Purchase Requests"
 msgstr "درخواست های خرید"
 
-msgctxt "model:purchase.request,name:"
+#, fuzzy
+msgctxt "model:purchase.request,string:"
 msgid "Purchase Request"
 msgstr "درخواست خرید"
 
-msgctxt "model:purchase.request.create_purchase.ask_party,name:"
-msgid "Create Purchase Ask Party"
+#, fuzzy
+msgctxt "model:purchase.request.create_purchase.ask_party,string:"
+msgid "Purchase Request Create Purchase Ask Party"
 msgstr "ایجاد خرید به درخواست نهاد/سازمان"
 
-msgctxt "model:purchase.request.handle.purchase.cancellation.start,name:"
-msgid "Handle Purchase Cancellation Exception - Start"
-msgstr "رسیدگی به لغو خریدهای اعتراضی - شروع"
+#, fuzzy
+msgctxt "model:purchase.request.handle.purchase.cancellation.start,string:"
+msgid "Purchase Request Handle Purchase Cancellation Start"
+msgstr "رسیدگی به لغو خریدها"
 
 msgctxt "model:res.group,name:group_purchase_request"
 msgid "Purchase Request"

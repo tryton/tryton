@@ -107,10 +107,6 @@ msgctxt "field:account.payment,date:"
 msgid "Date"
 msgstr "Data"
 
-msgctxt "field:account.payment,description:"
-msgid "Description"
-msgstr "Descriere"
-
 msgctxt "field:account.payment,failed_by:"
 msgid "Failure Noted by"
 msgstr "Eșec Remarcat de"
@@ -147,6 +143,10 @@ msgstr "Parte"
 msgctxt "field:account.payment,process_method:"
 msgid "Process Method"
 msgstr "Metoda de Procesare"
+
+msgctxt "field:account.payment,reference:"
+msgid "Reference"
+msgstr ""
 
 msgctxt "field:account.payment,state:"
 msgid "State"
@@ -327,38 +327,51 @@ msgctxt "help:party.party.payment_direct_debit,payment_direct_debit:"
 msgid "Check if supplier does direct debit."
 msgstr "Verificați dacă furnizorul efectuează debitare directă."
 
-msgctxt "model:account.configuration.payment_group_sequence,name:"
+msgctxt "help:party.party.reception_direct_debit,type:"
+msgid "Make a single payment."
+msgstr ""
+
+msgctxt "help:party.party.reception_direct_debit,type:"
+msgid "Make one payment per line."
+msgstr ""
+
+#, fuzzy
+msgctxt "model:account.configuration.payment_group_sequence,string:"
 msgid "Account Configuration Payment Group Sequence"
 msgstr "Secventa Grupului de Plaţi - Configurare Cont"
 
 #, fuzzy
-msgctxt "model:account.configuration.payment_sequence,name:"
+msgctxt "model:account.configuration.payment_sequence,string:"
 msgid "Account Configuration Payment Sequence"
 msgstr "Secventa Grupului de Plaţi - Configurare Cont"
 
-msgctxt "model:account.move.line.create_direct_debit.start,name:"
-msgid "Create Direct Debit"
-msgstr "Creare Debit Direct"
+#, fuzzy
+msgctxt "model:account.move.line.create_direct_debit.start,string:"
+msgid "Account Move Line Create Direct Debit Start"
+msgstr "Creare Debit Direct pentru Data de"
 
-msgctxt "model:account.move.line.pay.ask_journal,name:"
-msgid "Pay Line"
-msgstr "Rând de Plată"
+msgctxt "model:account.move.line.pay.ask_journal,string:"
+msgid "Account Move Line Pay Ask Journal"
+msgstr ""
 
-msgctxt "model:account.move.line.pay.start,name:"
-msgid "Pay Line"
-msgstr "Rând de Plată"
+msgctxt "model:account.move.line.pay.start,string:"
+msgid "Account Move Line Pay Start"
+msgstr ""
 
-msgctxt "model:account.payment,name:"
-msgid "Payment"
-msgstr "Plată"
+#, fuzzy
+msgctxt "model:account.payment,string:"
+msgid "Account Payment"
+msgstr "Grup de Plata in Cont"
 
-msgctxt "model:account.payment.group,name:"
-msgid "Payment Group"
-msgstr "Grup de Plati"
+#, fuzzy
+msgctxt "model:account.payment.group,string:"
+msgid "Account Payment Group"
+msgstr "Grup de Plata in Cont"
 
-msgctxt "model:account.payment.journal,name:"
-msgid "Payment Journal"
-msgstr "Jurnal de Plati"
+#, fuzzy
+msgctxt "model:account.payment.journal,string:"
+msgid "Account Payment Journal"
+msgstr "Grup de Plata in Cont"
 
 msgctxt "model:ir.action,name:act_move_line_form"
 msgid "Lines to Pay"
@@ -684,11 +697,13 @@ msgctxt "model:ir.ui.menu,name:menu_payments"
 msgid "Payments"
 msgstr "Plati"
 
-msgctxt "model:party.party.payment_direct_debit,name:"
+#, fuzzy
+msgctxt "model:party.party.payment_direct_debit,string:"
 msgid "Party Payment Direct Debit"
 msgstr "Debitare Directă de Plată a Părților"
 
-msgctxt "model:party.party.reception_direct_debit,name:"
+#, fuzzy
+msgctxt "model:party.party.reception_direct_debit,string:"
 msgid "Party Reception Direct Debit"
 msgstr "Parte Recepţie Debit Direct"
 
@@ -801,12 +816,13 @@ msgid "Total Amount"
 msgstr "Suma Totala"
 
 msgctxt "view:account.payment:"
-msgid "Description"
-msgstr "Descriere"
-
-msgctxt "view:account.payment:"
 msgid "Other Info"
 msgstr "Alte Informatii"
+
+#, fuzzy
+msgctxt "view:account.payment:"
+msgid "Payment"
+msgstr "Plată"
 
 msgctxt "wizard_button:account.move.line.create_direct_debit,start,create_:"
 msgid "Create"

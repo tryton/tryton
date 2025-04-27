@@ -418,49 +418,51 @@ msgctxt "model:res.group,name:group_opportunity"
 msgid "Sale Opportunity"
 msgstr "فرصت فروش"
 
-msgctxt "model:sale.opportunity,name:"
+#, fuzzy
+msgctxt "model:sale.opportunity,string:"
 msgid "Sale Opportunity"
 msgstr "فرصت فروش"
 
-msgctxt "model:sale.opportunity.line,name:"
+#, fuzzy
+msgctxt "model:sale.opportunity.line,string:"
 msgid "Sale Opportunity Line"
 msgstr "سطر فرصت فروش"
 
 #, fuzzy
-msgctxt "model:sale.opportunity.reporting.context,name:"
+msgctxt "model:sale.opportunity.reporting.context,string:"
 msgid "Sale Opportunity Reporting Context"
 msgstr "مفاد فرصت فروش در هر کارمند"
 
 #, fuzzy
-msgctxt "model:sale.opportunity.reporting.conversion,name:"
+msgctxt "model:sale.opportunity.reporting.conversion,string:"
 msgid "Sale Opportunity Reporting Conversion"
 msgstr "فرصت های فروش در هر ماه"
 
 #, fuzzy
-msgctxt "model:sale.opportunity.reporting.conversion.employee,name:"
-msgid "Sale Opportunity Reporting Conversion per Employee"
+msgctxt "model:sale.opportunity.reporting.conversion.employee,string:"
+msgid "Sale Opportunity Reporting Conversion Employee"
 msgstr "فرصت فروش در هر کارمند"
 
 #, fuzzy
 msgctxt ""
-"model:sale.opportunity.reporting.conversion.employee.time_series,name:"
-msgid "Sale Opportunity Reporting Conversion per Employee"
+"model:sale.opportunity.reporting.conversion.employee.time_series,string:"
+msgid "Sale Opportunity Reporting Conversion Employee Time Series"
 msgstr "فرصت فروش در هر کارمند"
 
 #, fuzzy
-msgctxt "model:sale.opportunity.reporting.conversion.time_series,name:"
-msgid "Sale Opportunity Reporting Conversion"
+msgctxt "model:sale.opportunity.reporting.conversion.time_series,string:"
+msgid "Sale Opportunity Reporting Conversion Time Series"
 msgstr "فرصت های فروش در هر ماه"
 
 #, fuzzy
-msgctxt "model:sale.opportunity.reporting.main,name:"
-msgid "Sale Opportunity Reporting"
+msgctxt "model:sale.opportunity.reporting.main,string:"
+msgid "Sale Opportunity Reporting Main"
 msgstr "سطر فرصت فروش"
 
 #, fuzzy
-msgctxt "model:sale.opportunity.reporting.main.time_series,name:"
-msgid "Sale Opportunity Reporting"
-msgstr "سطر فرصت فروش"
+msgctxt "model:sale.opportunity.reporting.main.time_series,string:"
+msgid "Sale Opportunity Reporting Main Time Series"
+msgstr "فرصت های فروش در هر ماه"
 
 msgctxt "selection:sale.opportunity,state:"
 msgid "Cancelled"

@@ -24,7 +24,7 @@ msgstr "Data Final"
 
 msgctxt "field:customs.duty.rate,organization:"
 msgid "Organization"
-msgstr ""
+msgstr "Organização"
 
 msgctxt "field:customs.duty.rate,start_date:"
 msgid "Start Date"
@@ -38,10 +38,9 @@ msgctxt "field:customs.duty.rate,type:"
 msgid "Type"
 msgstr "Tipo"
 
-#, fuzzy
 msgctxt "field:customs.duty.rate,uom:"
 msgid "UoM"
-msgstr "UDM"
+msgstr "Unidade de Medida"
 
 msgctxt "field:customs.tariff.code,code:"
 msgid "Code"
@@ -69,7 +68,7 @@ msgstr "Mês Final"
 
 msgctxt "field:customs.tariff.code,organization:"
 msgid "Organization"
-msgstr ""
+msgstr "Organização"
 
 msgctxt "field:customs.tariff.code,start_day:"
 msgid "Start Day"
@@ -79,35 +78,30 @@ msgctxt "field:customs.tariff.code,start_month:"
 msgid "Start Month"
 msgstr "Mês Inicial"
 
-#, fuzzy
 msgctxt "field:product-customs.tariff.code,country:"
 msgid "Country"
 msgstr "País"
 
-#, fuzzy
 msgctxt "field:product-customs.tariff.code,end_day:"
 msgid "End Day"
 msgstr "Dia Final"
 
-#, fuzzy
 msgctxt "field:product-customs.tariff.code,end_month:"
 msgid "End Month"
 msgstr "Mês Final"
 
 msgctxt "field:product-customs.tariff.code,organization:"
 msgid "Organization"
-msgstr ""
+msgstr "Organização"
 
 msgctxt "field:product-customs.tariff.code,product:"
 msgid "Product"
 msgstr "Produto"
 
-#, fuzzy
 msgctxt "field:product-customs.tariff.code,start_day:"
 msgid "Start Day"
 msgstr "Dia Inicial"
 
-#, fuzzy
 msgctxt "field:product-customs.tariff.code,start_month:"
 msgid "Start Month"
 msgstr "Mês Inicial"
@@ -128,7 +122,6 @@ msgctxt "field:product.category,tariff_codes_parent:"
 msgid "Use Parent's Tariff Codes"
 msgstr "Usar Códigos de Aduana do Pai"
 
-#, fuzzy
 msgctxt "field:product.product,country_of_origin:"
 msgid "Country"
 msgstr "País"
@@ -145,7 +138,6 @@ msgctxt "field:product.product,tariff_codes_category:"
 msgid "Use Category's Tariff Codes"
 msgstr "Utilizar os Códigos da Categoria de Tarifa"
 
-#, fuzzy
 msgctxt "field:product.template,country_of_origin:"
 msgid "Country"
 msgstr "País"
@@ -164,87 +156,76 @@ msgstr "Utilizar os Códigos da Categoria de Tarifa"
 
 msgctxt "help:customs.duty.rate,uom:"
 msgid "The Unit of Measure."
-msgstr ""
+msgstr "A Unidade de Medida."
 
-#, fuzzy
 msgctxt "help:customs.tariff.code,code:"
 msgid "The code from Harmonized System of Nomenclature."
-msgstr "O Código da Nomenclatura do Sistema Harmonizado"
+msgstr "O Código da Nomenclatura do Sistema Harmonizado."
 
-#, fuzzy
 msgctxt "help:product.category,tariff_codes_parent:"
 msgid "Use the tariff codes defined on the parent category."
-msgstr "Utilizar os códigos de aduana definidos na categoria pai"
+msgstr ""
+"Utilizar os códigos tarifários definidos na categoria principal ('pai')."
 
 msgctxt "help:product.product,country_of_origin:"
 msgid "The country of origin of the product."
-msgstr ""
+msgstr "O país de origem do produto."
 
-#, fuzzy
 msgctxt "help:product.product,tariff_codes_category:"
 msgid "Use the tariff codes defined on the category."
-msgstr "Usar os códifos de tarifa definidos na categoria"
+msgstr "Utilizar os códigos tarifários definidos na categoria."
 
 msgctxt "help:product.template,country_of_origin:"
 msgid "The country of origin of the product."
-msgstr ""
+msgstr "O país de origem do produto."
 
-#, fuzzy
 msgctxt "help:product.template,tariff_codes_category:"
 msgid "Use the tariff codes defined on the category."
-msgstr "Usar dos códifos de tarifa definidos na categoria"
+msgstr "Utilizar os códigos tarifários definidos na categoria principal."
 
-msgctxt "model:customs.duty.rate,name:"
-msgid "Duty Rate"
-msgstr "Taxa de Aduana"
+msgctxt "model:customs.duty.rate,string:"
+msgid "Customs Duty Rate"
+msgstr "Taxa de Imposto Alfandegário"
 
-msgctxt "model:customs.tariff.code,name:"
-msgid "Tariff Code"
-msgstr "Código da Tarifa"
+msgctxt "model:customs.tariff.code,string:"
+msgid "Customs Tariff Code"
+msgstr "Código da tarifa alfandegária"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_duty_rate_form"
 msgid "Duty Rates"
-msgstr "Duty Rates"
+msgstr "Taxas de Imposto"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_tariff_code_form"
 msgid "Tariff Codes"
-msgstr "Tariff Codes"
+msgstr "Códigos Tarifários"
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_duty_rate_domain_export"
 msgid "Export"
-msgstr "Export"
+msgstr "Exportar"
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_duty_rate_domain_import"
 msgid "Import"
-msgstr "Import"
+msgstr "Importar"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_customs"
 msgid "Customs"
-msgstr "Customs"
+msgstr "Alfândega"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_duty_rate_form"
 msgid "Duty Rates"
-msgstr "Duty Rates"
+msgstr "Taxas de Imposto"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_tariff_code_form"
 msgid "Tariff Codes"
-msgstr "Tariff Codes"
+msgstr "Códigos Tarifários"
 
-msgctxt "model:product-customs.tariff.code,name:"
-msgid "Product - Tariff Code"
-msgstr "Produto - Código de Tarifa"
+msgctxt "model:product-customs.tariff.code,string:"
+msgid "Product - Customs Tariff Code"
+msgstr "Produto - Código da Tarifa Alfandegária"
 
-#, fuzzy
 msgctxt "model:res.group,name:group_customs_admin"
 msgid "Customs Administration"
-msgstr "Customs Administration"
+msgstr "Administração de Alfândegas"
 
 msgctxt "selection:customs.duty.rate,computation_type:"
 msgid "Amount"

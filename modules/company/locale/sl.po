@@ -30,6 +30,10 @@ msgctxt "field:company.company,party:"
 msgid "Party"
 msgstr "Partner"
 
+msgctxt "field:company.company,tax_identifiers:"
+msgid "Tax Identifiers"
+msgstr ""
+
 msgctxt "field:company.company,timezone:"
 msgid "Timezone"
 msgstr "Časovni pas"
@@ -49,6 +53,28 @@ msgstr "Slika"
 msgctxt "field:company.company.logo.cache,width:"
 msgid "Width"
 msgstr "Širina"
+
+#, fuzzy
+msgctxt "field:company.company.tax_identifier,company:"
+msgid "Company"
+msgstr "Družba"
+
+#, fuzzy
+msgctxt "field:company.company.tax_identifier,company_party:"
+msgid "Company Party"
+msgstr "Družba"
+
+msgctxt "field:company.company.tax_identifier,country:"
+msgid "Country"
+msgstr ""
+
+msgctxt "field:company.company.tax_identifier,organization:"
+msgid "Organization"
+msgstr ""
+
+msgctxt "field:company.company.tax_identifier,tax_identifier:"
+msgid "Tax Identifier"
+msgstr ""
 
 msgctxt "field:company.employee,active:"
 msgid "Active"
@@ -202,9 +228,27 @@ msgstr ""
 "- ${address}\n"
 "- ${tax_identifier}\n"
 
+msgctxt "help:company.company,tax_identifiers:"
+msgid ""
+"Uses the first identifier that matches the criteria.\n"
+"If none match, uses the party's tax identifier."
+msgstr ""
+
 msgctxt "help:company.company,timezone:"
 msgid "Used to compute the today date."
 msgstr "Se uporablja za izračun današnjega datuma."
+
+msgctxt "help:company.company.tax_identifier,country:"
+msgid "Applies only to addresses in this country."
+msgstr ""
+
+msgctxt "help:company.company.tax_identifier,organization:"
+msgid "Applies only to addresses in this organization."
+msgstr ""
+
+msgctxt "help:company.company.tax_identifier,tax_identifier:"
+msgid "The identifier used for tax report."
+msgstr ""
 
 msgctxt "help:company.employee,company:"
 msgid "The company to which the employee belongs."
@@ -270,21 +314,30 @@ msgctxt "help:res.user,employees:"
 msgid "Add employees to grant the user access to them."
 msgstr "Dodajte zaposlence, da uporabniku omogočite dostop do njih."
 
-msgctxt "model:company.company,name:"
+#, fuzzy
+msgctxt "model:company.company,string:"
 msgid "Company"
 msgstr "Družba"
 
-msgctxt "model:company.company.config.start,name:"
-msgid "Company Config"
+#, fuzzy
+msgctxt "model:company.company.config.start,string:"
+msgid "Company Config Start"
 msgstr "Konfiguracija družbe"
 
-msgctxt "model:company.company.logo.cache,name:"
+#, fuzzy
+msgctxt "model:company.company.logo.cache,string:"
 msgid "Company Logo Cache"
 msgstr "Predpomnilnik logotipa družbe"
 
-msgctxt "model:company.employee,name:"
-msgid "Employee"
-msgstr "Zaposlenec"
+#, fuzzy
+msgctxt "model:company.company.tax_identifier,string:"
+msgid "Company Tax Identifier"
+msgstr "Filter družbe"
+
+#, fuzzy
+msgctxt "model:company.employee,string:"
+msgid "Company Employee"
+msgstr "Trenutni zaposlenec"
 
 msgctxt "model:ir.action,name:act_company_config"
 msgid "Configure Company"
@@ -306,7 +359,8 @@ msgctxt "model:ir.action,name:report_letter"
 msgid "Letter"
 msgstr "Pismo"
 
-msgctxt "model:ir.cron-company.company,name:"
+#, fuzzy
+msgctxt "model:ir.cron-company.company,string:"
 msgid "Cron - Company"
 msgstr "Časovni razporejevalnik - Družba"
 
@@ -342,12 +396,14 @@ msgctxt "model:res.group,name:group_employee_admin"
 msgid "Employee Administration"
 msgstr "Skrbništvo zaposlencev"
 
-msgctxt "model:res.user-company.company,name:"
+#, fuzzy
+msgctxt "model:res.user-company.company,string:"
 msgid "User - Company"
 msgstr "Uporabnik - Družba"
 
-msgctxt "model:res.user-company.employee,name:"
-msgid "User - Employee"
+#, fuzzy
+msgctxt "model:res.user-company.employee,string:"
+msgid "User - Company Employee"
 msgstr "Uporabnik - Zaposlenec"
 
 msgctxt "report:party.letter:"

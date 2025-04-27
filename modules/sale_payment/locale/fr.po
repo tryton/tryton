@@ -22,3 +22,7 @@ msgid "You cannot reset to draft sale \"%(sale)s\" because it has payments."
 msgstr ""
 "Vous ne pouvez pas réinitialiser à l'état brouillon la vente « %(sale)s » "
 "car elle a des paiements."
+
+msgctxt "selection:ir.cron,method:"
+msgid "Confirm sales based on payment"
+msgstr "Confirmer les ventes en fonction des paiements"

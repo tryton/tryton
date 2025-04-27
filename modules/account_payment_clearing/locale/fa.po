@@ -71,9 +71,9 @@ msgid ""
 "'payment_group'"
 msgstr "گروه پرداخت"
 
-msgctxt "model:account.payment.succeed.start,name:"
-msgid "Succeed Payment"
-msgstr "پرداخت موفق"
+msgctxt "model:account.payment.succeed.start,string:"
+msgid "Account Payment Succeed Start"
+msgstr ""
 
 msgctxt "model:ir.action,name:wizard_succeed"
 msgid "Succeed Payments"

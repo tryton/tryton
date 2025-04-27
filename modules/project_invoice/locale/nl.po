@@ -161,9 +161,9 @@ msgctxt "model:ir.model.button,string:work_invoice_button"
 msgid "Invoice"
 msgstr "Factuur"
 
-msgctxt "model:project.work.invoiced_progress,name:"
-msgid "Work Invoiced Progress"
-msgstr "Werk gefactureerde voortgang"
+msgctxt "model:project.work.invoiced_progress,string:"
+msgid "Project Work Invoiced Progress"
+msgstr "Project gefactureerde voortgang werkzaamheden"
 
 msgctxt "model:res.group,name:group_project_invoice"
 msgid "Project Invoice"

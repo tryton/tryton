@@ -45,7 +45,7 @@ msgid ""
 "shipped > %(maximal)s )."
 msgstr ""
 
-msgctxt "model:sale.configuration.shipment_tolerance,name:"
+msgctxt "model:sale.configuration.shipment_tolerance,string:"
 msgid "Sale Configuration Shipment Tolerance"
 msgstr ""
 

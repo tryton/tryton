@@ -45,6 +45,6 @@ msgstr ""
 "Die Datumsangaben von Abonnementpositionen mit demselben Vermögensgegenstand"
 " dürfen sich nicht überschneiden."
 
-msgctxt "model:sale.subscription.service-stock.lot.asset,name:"
-msgid "Subscription Service - Stock Lot Asset"
+msgctxt "model:sale.subscription.service-stock.lot.asset,string:"
+msgid "Sale Subscription Service - Stock Lot Asset"
 msgstr "Abonnement Dienstleistung - Charge Abonnement Objekt"

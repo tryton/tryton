@@ -389,42 +389,51 @@ msgctxt "model:res.group,name:group_opportunity"
 msgid "Sale Opportunity"
 msgstr "Iniciatives i oportunitats"
 
-msgctxt "model:sale.opportunity,name:"
+#, fuzzy
+msgctxt "model:sale.opportunity,string:"
 msgid "Sale Opportunity"
 msgstr "Oportunitat"
 
-msgctxt "model:sale.opportunity.line,name:"
+#, fuzzy
+msgctxt "model:sale.opportunity.line,string:"
 msgid "Sale Opportunity Line"
 msgstr "Línia d'oportunitat"
 
-msgctxt "model:sale.opportunity.reporting.context,name:"
+#, fuzzy
+msgctxt "model:sale.opportunity.reporting.context,string:"
 msgid "Sale Opportunity Reporting Context"
 msgstr "Context informe d'oportunitats"
 
-msgctxt "model:sale.opportunity.reporting.conversion,name:"
+#, fuzzy
+msgctxt "model:sale.opportunity.reporting.conversion,string:"
 msgid "Sale Opportunity Reporting Conversion"
 msgstr "Informe de conversions d'oportunitats"
 
-msgctxt "model:sale.opportunity.reporting.conversion.employee,name:"
-msgid "Sale Opportunity Reporting Conversion per Employee"
+#, fuzzy
+msgctxt "model:sale.opportunity.reporting.conversion.employee,string:"
+msgid "Sale Opportunity Reporting Conversion Employee"
 msgstr "Informe de conversions d'oportunitats per empleat"
 
+#, fuzzy
 msgctxt ""
-"model:sale.opportunity.reporting.conversion.employee.time_series,name:"
-msgid "Sale Opportunity Reporting Conversion per Employee"
+"model:sale.opportunity.reporting.conversion.employee.time_series,string:"
+msgid "Sale Opportunity Reporting Conversion Employee Time Series"
 msgstr "Informe de conversions d'oportunitats per empleat"
 
-msgctxt "model:sale.opportunity.reporting.conversion.time_series,name:"
-msgid "Sale Opportunity Reporting Conversion"
+#, fuzzy
+msgctxt "model:sale.opportunity.reporting.conversion.time_series,string:"
+msgid "Sale Opportunity Reporting Conversion Time Series"
 msgstr "Informe de conversions d'oportunitats"
 
-msgctxt "model:sale.opportunity.reporting.main,name:"
-msgid "Sale Opportunity Reporting"
+#, fuzzy
+msgctxt "model:sale.opportunity.reporting.main,string:"
+msgid "Sale Opportunity Reporting Main"
 msgstr "Informe d'oportunitats"
 
-msgctxt "model:sale.opportunity.reporting.main.time_series,name:"
-msgid "Sale Opportunity Reporting"
-msgstr "Informe d'oportunitats"
+#, fuzzy
+msgctxt "model:sale.opportunity.reporting.main.time_series,string:"
+msgid "Sale Opportunity Reporting Main Time Series"
+msgstr "Informe de conversions d'oportunitats"
 
 msgctxt "selection:sale.opportunity,state:"
 msgid "Cancelled"

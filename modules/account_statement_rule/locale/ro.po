@@ -146,17 +146,17 @@ msgid ""
 msgstr ""
 
 #, fuzzy
-msgctxt "model:account.statement.rule,name:"
+msgctxt "model:account.statement.rule,string:"
 msgid "Account Statement Rule"
 msgstr "Regulă extras de cont"
 
 #, fuzzy
-msgctxt "model:account.statement.rule.information,name:"
+msgctxt "model:account.statement.rule.information,string:"
 msgid "Account Statement Rule Information"
 msgstr "Informații despre regulile extrasului de cont"
 
 #, fuzzy
-msgctxt "model:account.statement.rule.line,name:"
+msgctxt "model:account.statement.rule.line,string:"
 msgid "Account Statement Rule Line"
 msgstr "Rândul regulii extras de cont"
 

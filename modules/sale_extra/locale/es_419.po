@@ -86,11 +86,11 @@ msgctxt "model:ir.ui.menu,name:menu_extra"
 msgid "Extras"
 msgstr ""
 
-msgctxt "model:sale.extra,name:"
+msgctxt "model:sale.extra,string:"
 msgid "Sale Extra"
 msgstr ""
 
-msgctxt "model:sale.extra.line,name:"
+msgctxt "model:sale.extra.line,string:"
 msgid "Sale Extra Line"
 msgstr ""
 

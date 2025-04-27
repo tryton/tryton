@@ -83,13 +83,13 @@ msgctxt "help:account.account.receivable.rule.account,only_reconcile:"
 msgid "Distribute only to fully reconcile."
 msgstr "Verdeel alleen om volledig af te letteren."
 
-msgctxt "model:account.account.receivable.rule,name:"
+msgctxt "model:account.account.receivable.rule,string:"
 msgid "Account Receivable Rule"
 msgstr "Grootboekrekening te ontvangen regel"
 
-msgctxt "model:account.account.receivable.rule.account,name:"
+msgctxt "model:account.account.receivable.rule.account,string:"
 msgid "Account Receivable Rule Account"
-msgstr "Grootboekrekening te ontvangen regel grootboekrekening"
+msgstr "Grootboek te ontvangen regel grootboekrekening"
 
 msgctxt "model:ir.action,name:act_account_receivable_rule_form"
 msgid "Account Receivable Rules"

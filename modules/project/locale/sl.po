@@ -248,13 +248,10 @@ msgctxt "model:ir.ui.menu,name:menu_work_tree"
 msgid "Works Efforts"
 msgstr "Delovna prizadevanja"
 
-msgctxt "model:project.work,name:"
-msgid "Work Effort"
-msgstr "Ocena naloge"
-
-msgctxt "model:project.work.status,name:"
-msgid "Work Status"
-msgstr "Stanje dela"
+#, fuzzy
+msgctxt "model:project.work,string:"
+msgid "Project Work"
+msgstr "Projekt"
 
 msgctxt "model:project.work.status,name:work_done_status"
 msgid "Done"
@@ -263,6 +260,11 @@ msgstr "Zaključeno"
 msgctxt "model:project.work.status,name:work_open_status"
 msgid "Open"
 msgstr "Odprto"
+
+#, fuzzy
+msgctxt "model:project.work.status,string:"
+msgid "Project Work Status"
+msgstr "Stanje dela"
 
 msgctxt "model:res.group,name:group_project_admin"
 msgid "Project Administration"

@@ -157,18 +157,18 @@ msgctxt "model:ir.ui.menu,name:menu_stock_supply"
 msgid "Supply Stock"
 msgstr "Supply Stock"
 
-msgctxt "model:purchase.configuration.supply_period,name:"
+msgctxt "model:purchase.configuration.supply_period,string:"
 msgid "Purchase Configuration Supply Period"
 msgstr ""
 
-msgctxt "model:stock.order_point,name:"
-msgid "Order Point"
+#, fuzzy
+msgctxt "model:stock.order_point,string:"
+msgid "Stock Order Point"
 msgstr "Точка заказа"
 
-#, fuzzy
-msgctxt "model:stock.supply.start,name:"
-msgid "Supply Stock"
-msgstr "Supply Stock"
+msgctxt "model:stock.supply.start,string:"
+msgid "Stock Supply Start"
+msgstr ""
 
 #, fuzzy
 msgctxt "selection:ir.cron,method:"

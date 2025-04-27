@@ -18,7 +18,8 @@ msgctxt "field:res.user,dashboard_layout:"
 msgid "Dashboard Layout"
 msgstr "Макет панелі інструментів"
 
-msgctxt "model:dashboard.action,name:"
+#, fuzzy
+msgctxt "model:dashboard.action,string:"
 msgid "Dashboard Action"
 msgstr "Дія панелі інструментів"
 

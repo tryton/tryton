@@ -90,6 +90,11 @@ msgctxt "field:account.move.line.group,payable_receivable_balance:"
 msgid "Payable/Receivable Balance"
 msgstr "Sold Furnizor/Client"
 
+#, fuzzy
+msgctxt "field:account.move.line.group,payable_receivable_date:"
+msgid "Payable/Receivable Date"
+msgstr "Sold Furnizor/Client"
+
 msgctxt "field:account.move.line.group,period:"
 msgid "Period"
 msgstr "Perioada"
@@ -114,11 +119,11 @@ msgctxt "field:account.move.line.group-move.line,line:"
 msgid "Line"
 msgstr "Rând"
 
-msgctxt "model:account.move.line.group,name:"
+msgctxt "model:account.move.line.group,string:"
 msgid "Account Move Line Group"
 msgstr ""
 
-msgctxt "model:account.move.line.group-move.line,name:"
+msgctxt "model:account.move.line.group-move.line,string:"
 msgid "Account Move Line Group - Move Line"
 msgstr ""
 
@@ -137,6 +142,10 @@ msgstr ""
 msgctxt "view:account.move.line.group:"
 msgid "Balance"
 msgstr "Balanta"
+
+msgctxt "view:account.move.line.group:"
+msgid "Date"
+msgstr ""
 
 msgctxt "view:account.move.line.group:"
 msgid "Other Info"

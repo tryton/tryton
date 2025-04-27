@@ -127,9 +127,9 @@ msgctxt "model:res.group,name:group_stock_force_expiration"
 msgid "Stock Force Expiration"
 msgstr "Voorraad dwingt houdbaarheidsdatum af"
 
-msgctxt "model:stock.location.lot.shelf_life,name:"
-msgid "Stock Configuration Lot Shelf Life"
-msgstr "Voorraadconfiguratie Batch Houdbaarheidstermijn"
+msgctxt "model:stock.location.lot.shelf_life,string:"
+msgid "Stock Location Lot Shelf Life"
+msgstr "Voorraad locatie batch houdbaarheid"
 
 msgctxt "selection:product.product,expiration_state:"
 msgid "None"

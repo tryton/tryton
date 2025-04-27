@@ -46,13 +46,13 @@ msgctxt "field:account.move.export,type:"
 msgid "Type"
 msgstr "Format"
 
-msgctxt "model:account.configuration.export,name:"
+msgctxt "model:account.configuration.export,string:"
 msgid "Account Configuration Export"
 msgstr "Buchhaltung Einstellungen Export"
 
-msgctxt "model:account.move.export,name:"
+msgctxt "model:account.move.export,string:"
 msgid "Account Move Export"
-msgstr "Buchungssatz Export"
+msgstr "Buchhaltung Buchungssatz Export"
 
 msgctxt "model:ir.action,name:act_account_move_export_form"
 msgid "Move Exports"

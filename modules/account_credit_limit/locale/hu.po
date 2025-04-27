@@ -40,10 +40,6 @@ msgctxt "field:party.party,credit_limit_amounts:"
 msgid "Credit Limit Amounts"
 msgstr "Hitelkeretek"
 
-msgctxt "field:party.party,credit_limit_digits:"
-msgid "Currency Digits"
-msgstr ""
-
 msgctxt "field:party.party.credit_limit_amount,company:"
 msgid "Company"
 msgstr "Cég"
@@ -52,8 +48,8 @@ msgctxt "field:party.party.credit_limit_amount,credit_limit_amount:"
 msgid "Credit Limit Amount"
 msgstr "Hitelkeret"
 
-msgctxt "field:party.party.credit_limit_amount,credit_limit_digits:"
-msgid "Currency Digits"
+msgctxt "field:party.party.credit_limit_amount,currency:"
+msgid "Currency"
 msgstr ""
 
 msgctxt "field:party.party.credit_limit_amount,party:"
@@ -79,24 +75,30 @@ msgstr ""
 "Jelenjen meg a hitelkeret ellenőrzésnél egy üzenet, hogy nyitott fizetési "
 "felszólítása van."
 
-msgctxt "model:account.configuration.default_credit_limit_amount,name:"
+#, fuzzy
+msgctxt "model:account.configuration.default_credit_limit_amount,string:"
 msgid "Account Configuration Default Credit Limit Amount"
-msgstr ""
+msgstr "Alapértelmezett hitelkeret"
 
-#, python-format
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_party_credit_limit_amount"
-msgid "Party \"%(party)s\" has reached their credit limit of %(limit)s."
+msgid ""
+"The party \"%(party)s\" will exceed their %(limit)s credit limit by "
+"%(amount)s."
 msgstr "A(z) „%(party)s” ügyfél kimerítette a %(limit)s hitelkeretét."
 
-#, python-format
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_party_credit_limit_dunning"
-msgid "Party \"%(party)s\" has reached the credit limit level of %(dunning)s."
+msgid ""
+"The party \"%(party)s\" has reached the credit limit level for dunning "
+"\"%(dunning)s\"."
 msgstr ""
 "A(z) „%(party)s” ügyfélnek van nyitott fizetési felszólítása, a %(dunning)s."
 
-msgctxt "model:party.party.credit_limit_amount,name:"
+#, fuzzy
+msgctxt "model:party.party.credit_limit_amount,string:"
 msgid "Party Credit Limit Amount"
-msgstr ""
+msgstr "Hitelkeret"
 
 msgctxt "model:res.group,name:group_credit_limit"
 msgid "Account Credit Limit"

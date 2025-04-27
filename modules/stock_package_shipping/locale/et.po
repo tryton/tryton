@@ -52,6 +52,25 @@ msgctxt "field:stock.shipment.in.return,shipping_reference:"
 msgid "Shipping Reference"
 msgstr "Lähetuse viide"
 
+msgctxt "field:stock.shipment.internal,carrier:"
+msgid "Carrier"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:stock.shipment.internal,has_shipping_service:"
+msgid "Has Shipping Service"
+msgstr "Tarne teenus"
+
+#, fuzzy
+msgctxt "field:stock.shipment.internal,shipping_description:"
+msgid "Shipping Description"
+msgstr "Lähetuse kirjeldus"
+
+#, fuzzy
+msgctxt "field:stock.shipment.internal,shipping_reference:"
+msgid "Shipping Reference"
+msgstr "Lähetuse viide"
+
 #, fuzzy
 msgctxt "field:stock.shipment.out,has_shipping_service:"
 msgid "Has Shipping Service"
@@ -98,6 +117,12 @@ msgstr "Lähetuse etikett"
 #, fuzzy
 msgctxt ""
 "model:ir.model.button,string:shipment_in_return_create_shipping_button"
+msgid "Create Shipping for Packages"
+msgstr "Loo saadetistele lähetus"
+
+#, fuzzy
+msgctxt ""
+"model:ir.model.button,string:shipment_internal_create_shipping_button"
 msgid "Create Shipping for Packages"
 msgstr "Loo saadetistele lähetus"
 

@@ -4,11 +4,11 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:account.account.type,fixed_asset:"
 msgid "Fixed Asset"
-msgstr ""
+msgstr "Ativo fixo"
 
 msgctxt "field:account.account.type.template,fixed_asset:"
 msgid "Fixed Asset"
-msgstr ""
+msgstr "Ativo Fixo"
 
 msgctxt "field:account.asset,account_journal:"
 msgid "Journal"
@@ -47,7 +47,7 @@ msgstr "Método de Depreciação"
 
 msgctxt "field:account.asset,end_date:"
 msgid "End Date"
-msgstr "Data de fim"
+msgstr "Data Final"
 
 msgctxt "field:account.asset,frequency:"
 msgid "Frequency"
@@ -160,11 +160,11 @@ msgstr "Lançamento Contábil"
 
 msgctxt "field:account.asset.print_depreciation_table.start,end_date:"
 msgid "End Date"
-msgstr "Data de fim"
+msgstr "Data Final"
 
 msgctxt "field:account.asset.print_depreciation_table.start,start_date:"
 msgid "Start Date"
-msgstr "Data de início"
+msgstr "Data de Início"
 
 #, fuzzy
 msgctxt "field:account.asset.revision,asset:"
@@ -364,45 +364,53 @@ msgctxt "help:product.template,depreciation_duration:"
 msgid "In months"
 msgstr "Em meses"
 
-msgctxt "model:account.asset,name:"
-msgid "Asset"
-msgstr "Ativo"
+#, fuzzy
+msgctxt "model:account.asset,string:"
+msgid "Account Asset"
+msgstr "Conta de Ativos"
 
-msgctxt "model:account.asset-update-account.move,name:"
-msgid "Asset - Update - Move"
+#, fuzzy
+msgctxt "model:account.asset-update-account.move,string:"
+msgid "Account Asset - Update - Account Move"
 msgstr "Ativo - Atualizar - Lançamento"
 
-msgctxt "model:account.asset.create_moves.start,name:"
-msgid "Create Moves Start"
+#, fuzzy
+msgctxt "model:account.asset.create_moves.start,string:"
+msgid "Account Asset Create Moves Start"
 msgstr "Criar Lançamentos - Início"
 
-msgctxt "model:account.asset.line,name:"
-msgid "Asset Line"
-msgstr "Linha do Ativo"
+#, fuzzy
+msgctxt "model:account.asset.line,string:"
+msgid "Account Asset Line"
+msgstr "Conta de Ativos"
 
-msgctxt "model:account.asset.print_depreciation_table.start,name:"
-msgid "Asset Depreciation Table Start"
+#, fuzzy
+msgctxt "model:account.asset.print_depreciation_table.start,string:"
+msgid "Account Asset Print Depreciation Table Start"
 msgstr "Tabela de Depreciação - Início"
 
 #, fuzzy
-msgctxt "model:account.asset.revision,name:"
-msgid "Asset Revision"
+msgctxt "model:account.asset.revision,string:"
+msgid "Account Asset Revision"
 msgstr "Linha do Ativo"
 
-msgctxt "model:account.asset.update.show_depreciation,name:"
-msgid "Update Asset Show Depreciation"
+#, fuzzy
+msgctxt "model:account.asset.update.show_depreciation,string:"
+msgid "Account Asset Update Show Depreciation"
 msgstr "Atualiza Ativos - Mostrar Depreciação"
 
-msgctxt "model:account.configuration.asset_date,name:"
+#, fuzzy
+msgctxt "model:account.configuration.asset_date,string:"
 msgid "Account Configuration Asset Date"
 msgstr "Configuração de Contas da Data do Ativo"
 
 #, fuzzy
-msgctxt "model:account.configuration.asset_frequency,name:"
+msgctxt "model:account.configuration.asset_frequency,string:"
 msgid "Account Configuration Asset Frequency"
 msgstr "Configuração de Contas Sequência de Ativo"
 
-msgctxt "model:account.configuration.asset_sequence,name:"
+#, fuzzy
+msgctxt "model:account.configuration.asset_sequence,string:"
 msgid "Account Configuration Asset Sequence"
 msgstr "Configuração de Contas Sequência de Ativo"
 
@@ -485,6 +493,11 @@ msgid ""
 msgstr ""
 "Para faturar a compra \"%(purchase)s\", você precisa definir uma conta de "
 "ativo no produto \"%(product)s\"."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_revision_asset_origin_unique"
+msgid "A revision origin can be used only once per asset."
+msgstr "A linha da fatura somente pode ser usada uma vez no ativo."
 
 #, fuzzy
 msgctxt "model:ir.model.button,confirm:asset_close_button"

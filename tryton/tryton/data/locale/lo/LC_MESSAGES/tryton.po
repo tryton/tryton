@@ -5,6 +5,12 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgid "Make this an _internal message"
+msgstr ""
+
+msgid "Send"
+msgstr ""
+
 msgid "specify alternate config file"
 msgstr "ລະບຸ config file ທີ່ສະຫຼັບກັນ"
 
@@ -130,9 +136,6 @@ msgid "Check URL: %s"
 msgstr ""
 
 msgid "Unable to check for new version."
-msgstr ""
-
-msgid "A new version is available!"
 msgstr ""
 
 msgid "Download"
@@ -655,9 +658,6 @@ msgstr "ເອກະສານຄັດຕິດ:"
 msgid "Files"
 msgstr ""
 
-msgid "Send"
-msgstr ""
-
 #, fuzzy
 msgid "Select File"
 msgstr "ເລືອກທັງໝົດ"
@@ -871,6 +871,13 @@ msgstr "_ຈົດບັນທຶກ..."
 msgid "Add a note to the record"
 msgstr "ເພີ່ມບັນທຶກຂໍ້ຄວາມໃສ່ແຖວຂໍ້ມູນ"
 
+msgid "C_hat"
+msgstr ""
+
+#, fuzzy
+msgid "Chat on the record"
+msgstr "ເພີ່ມບັນທຶກຂໍ້ຄວາມໃສ່ແຖວຂໍ້ມູນ"
+
 msgid "_Actions..."
 msgstr "_ດຳເນີນການ..."
 
@@ -993,13 +1000,10 @@ msgstr "ຊື່ຂອງການສົ່ງອອກນີ້ແມ່ນຫ
 msgid "Override '%s' definition?"
 msgstr "ຂຽນທັບ ຄຳອະທິບາຍ '%s' ນີ້ບໍ່?"
 
-#, python-format
+#, fuzzy, python-format
 msgid "%d record saved."
-msgstr "ແຖວຂໍ້ມູນ %d ຖືກບັນທຶກແລ້ວ!"
-
-#, python-format
-msgid "%d records saved."
-msgstr "ບັນດາແຖວຂໍ້ມູນ %d ຖືກບັນທຶກແລ້ວ!"
+msgid_plural "%d records saved."
+msgstr[0] "ແຖວຂໍ້ມູນ %d ຖືກບັນທຶກແລ້ວ!"
 
 msgid "Export failed"
 msgstr ""
@@ -1080,13 +1084,10 @@ msgstr "ຜິດພາດ"
 msgid "Import failed"
 msgstr ""
 
-#, python-format
+#, fuzzy, python-format
 msgid "%d record imported."
-msgstr "ແຖວຂໍ້ມູນ %d ຖືກນໍາເຂົ້າແລ້ວ!"
-
-#, python-format
-msgid "%d records imported."
-msgstr "ບັນດາແຖວຂໍ້ມູນ %d ຖືກນໍາເຂົ້າແລ້ວ!"
+msgid_plural "%d records imported."
+msgstr[0] "ແຖວຂໍ້ມູນ %d ຖືກນໍາເຂົ້າແລ້ວ!"
 
 msgid "Search"
 msgstr "ຊອກຫາ"
@@ -1161,6 +1162,9 @@ msgstr "ບັນທຶກເປັນ"
 
 msgid "Image size too large."
 msgstr "ຂະໜາດຮູບ ໃຫຍ່ໂພດ."
+
+msgid "Reset Column Widths"
+msgstr ""
 
 msgid "Copy"
 msgstr ""
@@ -1242,6 +1246,10 @@ msgstr "ຟາຍລ໌ ທັງໝົດ"
 
 msgid "Show plain text"
 msgstr "ສະແດງເປັນຂໍ້ຄວາມທຳມະດາ"
+
+#, fuzzy, python-format
+msgid "Select a color for \"%s\""
+msgstr "ເລືອກສີ"
 
 msgid "Add value"
 msgstr "ເພີ່ມຄ່າ"

@@ -23,3 +23,7 @@ msgid "You cannot reset to draft sale \"%(sale)s\" because it has payments."
 msgstr ""
 "Anda tidak dapat mengatur ulang ke konsep penjualan \"%(sale)s\" karena "
 "memiliki pembayaran."
+
+msgctxt "selection:ir.cron,method:"
+msgid "Confirm sales based on payment"
+msgstr ""

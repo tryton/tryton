@@ -485,40 +485,45 @@ msgctxt "model:ir.ui.menu,name:menu_scenario_form"
 msgid "Scenarios"
 msgstr "Scenari"
 
-msgctxt "model:marketing.automation.activity,name:"
-msgid "Marketing Activity"
-msgstr ""
-
-msgctxt "model:marketing.automation.record,name:"
-msgid "Marketing Record"
-msgstr ""
-
-msgctxt "model:marketing.automation.record.activity,name:"
-msgid "Marketing Record Activity"
-msgstr ""
+#, fuzzy
+msgctxt "model:marketing.automation.activity,string:"
+msgid "Marketing Automation Activity"
+msgstr "Automazione Marketing disiscrivi"
 
 #, fuzzy
-msgctxt "model:marketing.automation.reporting.activity,name:"
+msgctxt "model:marketing.automation.record,string:"
+msgid "Marketing Automation Record"
+msgstr "Automazione Marketing disiscrivi"
+
+#, fuzzy
+msgctxt "model:marketing.automation.record.activity,string:"
+msgid "Marketing Automation Record Activity"
+msgstr "Automazione Marketing disiscrivi"
+
+#, fuzzy
+msgctxt "model:marketing.automation.reporting.activity,string:"
 msgid "Marketing Automation Reporting Activity"
 msgstr "Automazione Marketing disiscrivi"
 
 #, fuzzy
-msgctxt "model:marketing.automation.reporting.context,name:"
+msgctxt "model:marketing.automation.reporting.context,string:"
 msgid "Marketing Automation Reporting Context"
 msgstr "Automazione Marketing disiscrivi"
 
 #, fuzzy
-msgctxt "model:marketing.automation.reporting.scenario,name:"
+msgctxt "model:marketing.automation.reporting.scenario,string:"
 msgid "Marketing Automation Reporting Scenario"
 msgstr "Automazione Marketing disiscrivi"
 
-msgctxt "model:marketing.automation.scenario,name:"
-msgid "Marketing Scenario"
-msgstr ""
+#, fuzzy
+msgctxt "model:marketing.automation.scenario,string:"
+msgid "Marketing Automation Scenario"
+msgstr "Automazione Marketing disiscrivi"
 
-msgctxt "model:party.party-unsubscribed-marketing.automation.scenario,name:"
-msgid "Party Unsubscribed Scenario"
-msgstr ""
+#, fuzzy
+msgctxt "model:party.party-unsubscribed-marketing.automation.scenario,string:"
+msgid "Party - Unsubscribed - Marketing Automation Scenario"
+msgstr "Automazione Marketing disiscrivi"
 
 msgctxt "report:marketing.automation.unsubscribe:"
 msgid "Unsubscribe"

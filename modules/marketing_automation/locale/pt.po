@@ -16,7 +16,7 @@ msgstr ""
 
 msgctxt "field:marketing.automation.activity,children:"
 msgid "Children"
-msgstr ""
+msgstr "Filhos"
 
 msgctxt "field:marketing.automation.activity,condition:"
 msgid "Condition"
@@ -449,36 +449,36 @@ msgctxt "model:ir.ui.menu,name:menu_scenario_form"
 msgid "Scenarios"
 msgstr ""
 
-msgctxt "model:marketing.automation.activity,name:"
-msgid "Marketing Activity"
+msgctxt "model:marketing.automation.activity,string:"
+msgid "Marketing Automation Activity"
 msgstr ""
 
-msgctxt "model:marketing.automation.record,name:"
-msgid "Marketing Record"
+msgctxt "model:marketing.automation.record,string:"
+msgid "Marketing Automation Record"
 msgstr ""
 
-msgctxt "model:marketing.automation.record.activity,name:"
-msgid "Marketing Record Activity"
+msgctxt "model:marketing.automation.record.activity,string:"
+msgid "Marketing Automation Record Activity"
 msgstr ""
 
-msgctxt "model:marketing.automation.reporting.activity,name:"
+msgctxt "model:marketing.automation.reporting.activity,string:"
 msgid "Marketing Automation Reporting Activity"
 msgstr ""
 
-msgctxt "model:marketing.automation.reporting.context,name:"
+msgctxt "model:marketing.automation.reporting.context,string:"
 msgid "Marketing Automation Reporting Context"
 msgstr ""
 
-msgctxt "model:marketing.automation.reporting.scenario,name:"
+msgctxt "model:marketing.automation.reporting.scenario,string:"
 msgid "Marketing Automation Reporting Scenario"
 msgstr ""
 
-msgctxt "model:marketing.automation.scenario,name:"
-msgid "Marketing Scenario"
+msgctxt "model:marketing.automation.scenario,string:"
+msgid "Marketing Automation Scenario"
 msgstr ""
 
-msgctxt "model:party.party-unsubscribed-marketing.automation.scenario,name:"
-msgid "Party Unsubscribed Scenario"
+msgctxt "model:party.party-unsubscribed-marketing.automation.scenario,string:"
+msgid "Party - Unsubscribed - Marketing Automation Scenario"
 msgstr ""
 
 msgctxt "report:marketing.automation.unsubscribe:"

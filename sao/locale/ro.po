@@ -313,6 +313,13 @@ msgstr "Adăugați un atașament la înregistrare"
 msgid "Add a note to the record"
 msgstr "Adăugați o notă la înregistrare"
 
+msgid "Chat"
+msgstr ""
+
+#, fuzzy
+msgid "Chat on the record"
+msgstr "Deschidere inregistrare"
+
 #, fuzzy
 msgid "Email..."
 msgstr "E-Mail..."
@@ -479,6 +486,9 @@ msgstr "Afișare"
 msgid "Hide"
 msgstr "Ascunde"
 
+msgid "Select a color for \"%1\""
+msgstr ""
+
 msgid "Open the record"
 msgstr "Deschidere inregistrare"
 
@@ -533,6 +543,9 @@ msgstr "Meniu"
 
 msgid "Copy Selected Rows"
 msgstr "Copiere Rânduri Selectate"
+
+msgid "Reset Column Widths"
+msgstr ""
 
 msgid "#ERROR"
 msgstr "#EROARE"
@@ -765,6 +778,15 @@ msgstr "Comutați sunetul"
 
 msgid "Wizard"
 msgstr "Asistent"
+
+msgid "Enter a message"
+msgstr ""
+
+msgid "Submit the message"
+msgstr ""
+
+msgid "Make this an internal message"
+msgstr ""
 
 msgid "Translate view"
 msgstr "Traducere vedere"

@@ -228,21 +228,25 @@ msgctxt "model:ir.ui.menu,name:menu_work_list"
 msgid "Works"
 msgstr "کارها"
 
-msgctxt "model:production.work,name:"
+#, fuzzy
+msgctxt "model:production.work,string:"
 msgid "Production Work"
 msgstr "کار تولید"
 
-msgctxt "model:production.work.center,name:"
-msgid "Work Center"
-msgstr "مرکز کار"
+#, fuzzy
+msgctxt "model:production.work.center,string:"
+msgid "Production Work Center"
+msgstr "کار تولید"
 
-msgctxt "model:production.work.center.category,name:"
-msgid "Work Center Category"
+#, fuzzy
+msgctxt "model:production.work.center.category,string:"
+msgid "Production Work Center Category"
 msgstr "دسته بندی مرکز کار"
 
-msgctxt "model:production.work.cycle,name:"
-msgid "Work Cycle"
-msgstr "چرخه کاری"
+#, fuzzy
+msgctxt "model:production.work.cycle,string:"
+msgid "Production Work Cycle"
+msgstr "کار تولید"
 
 msgctxt "selection:production.work,state:"
 msgid "Done"

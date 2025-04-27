@@ -39,7 +39,8 @@ msgstr ""
 "Il metodo di raggruppamento delle spedizioni predefinito per i nuovi "
 "clienti."
 
-msgctxt "model:party.party.sale_shipment_grouping_method,name:"
+#, fuzzy
+msgctxt "model:party.party.sale_shipment_grouping_method,string:"
 msgid "Party Sale Shipment Grouping Method"
 msgstr "Metodo di raggruppamento della spedizione alle controparti"
 

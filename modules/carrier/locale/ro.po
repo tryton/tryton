@@ -62,11 +62,11 @@ msgstr ""
 "Aplica numai la expedieri în aceasta ţara.\n"
 "Câmp gol pentru orice ţara."
 
-msgctxt "model:carrier,name:"
+msgctxt "model:carrier,string:"
 msgid "Carrier"
 msgstr "Curier"
 
-msgctxt "model:carrier.selection,name:"
+msgctxt "model:carrier.selection,string:"
 msgid "Carrier Selection"
 msgstr "Selecţie Curier"
 

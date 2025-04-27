@@ -30,16 +30,19 @@ msgctxt "field:notification.email,content:"
 msgid "Content"
 msgstr "Conţinut"
 
+#, fuzzy
 msgctxt "field:notification.email,fallback_recipients:"
-msgid "Recipients Fallback User"
+msgid "Recipients Fallback"
 msgstr "Destinatari Utilizator Alternativ"
 
+#, fuzzy
 msgctxt "field:notification.email,fallback_recipients_hidden:"
-msgid "Hidden Recipients Fallback User"
+msgid "Hidden Recipients Fallback"
 msgstr "Destinatari Ascunși Utilizator Alternativ"
 
+#, fuzzy
 msgctxt "field:notification.email,fallback_recipients_secondary:"
-msgid "Secondary Recipients Fallback User"
+msgid "Secondary Recipients Fallback"
 msgstr "Destinatari secundari Utilizator alternativ"
 
 msgctxt "field:notification.email,from_:"
@@ -174,12 +177,14 @@ msgctxt "model:ir.ui.menu,name:menu_email_form"
 msgid "Notification Emails"
 msgstr "E-mailuri de notificare"
 
-msgctxt "model:notification.email,name:"
-msgid "Email Notification"
-msgstr "Notificare Email"
+#, fuzzy
+msgctxt "model:notification.email,string:"
+msgid "Notification Email"
+msgstr "Email pentru Notificări"
 
-msgctxt "model:notification.email.attachment,name:"
-msgid "Email Notification Attachment"
+#, fuzzy
+msgctxt "model:notification.email.attachment,string:"
+msgid "Notification Email Attachment"
 msgstr "Atașament Email de Notificare"
 
 msgctxt "selection:ir.trigger,action:"

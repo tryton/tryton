@@ -103,10 +103,6 @@ msgctxt "field:account.payment,date:"
 msgid "Date"
 msgstr "Data"
 
-msgctxt "field:account.payment,description:"
-msgid "Description"
-msgstr "Descripció"
-
 msgctxt "field:account.payment,failed_by:"
 msgid "Failure Noted by"
 msgstr "Error marcat per"
@@ -142,6 +138,10 @@ msgstr "Tercer"
 msgctxt "field:account.payment,process_method:"
 msgid "Process Method"
 msgstr "Mètode per processar"
+
+msgctxt "field:account.payment,reference:"
+msgid "Reference"
+msgstr ""
 
 msgctxt "field:account.payment,state:"
 msgid "State"
@@ -324,37 +324,51 @@ msgctxt "help:party.party.payment_direct_debit,payment_direct_debit:"
 msgid "Check if supplier does direct debit."
 msgstr "Marca si es paga al proveïdor a través de domiciliació bancària."
 
-msgctxt "model:account.configuration.payment_group_sequence,name:"
+msgctxt "help:party.party.reception_direct_debit,type:"
+msgid "Make a single payment."
+msgstr ""
+
+msgctxt "help:party.party.reception_direct_debit,type:"
+msgid "Make one payment per line."
+msgstr ""
+
+#, fuzzy
+msgctxt "model:account.configuration.payment_group_sequence,string:"
 msgid "Account Configuration Payment Group Sequence"
 msgstr "Configuració de la seqüencia de grups de pagament"
 
-msgctxt "model:account.configuration.payment_sequence,name:"
+#, fuzzy
+msgctxt "model:account.configuration.payment_sequence,string:"
 msgid "Account Configuration Payment Sequence"
 msgstr "Configuració comptable de la seqüència de pagament"
 
-msgctxt "model:account.move.line.create_direct_debit.start,name:"
-msgid "Create Direct Debit"
-msgstr "Crear domiciliacions bancàries"
+#, fuzzy
+msgctxt "model:account.move.line.create_direct_debit.start,string:"
+msgid "Account Move Line Create Direct Debit Start"
+msgstr "Crea domiciliacions bancàries fins la data"
 
-msgctxt "model:account.move.line.pay.ask_journal,name:"
-msgid "Pay Line"
-msgstr "Paga efecte"
+msgctxt "model:account.move.line.pay.ask_journal,string:"
+msgid "Account Move Line Pay Ask Journal"
+msgstr ""
 
-msgctxt "model:account.move.line.pay.start,name:"
-msgid "Pay Line"
-msgstr "Paga efecte"
+msgctxt "model:account.move.line.pay.start,string:"
+msgid "Account Move Line Pay Start"
+msgstr ""
 
-msgctxt "model:account.payment,name:"
-msgid "Payment"
-msgstr "Pagament"
+#, fuzzy
+msgctxt "model:account.payment,string:"
+msgid "Account Payment"
+msgstr "Grups de pagaments"
 
-msgctxt "model:account.payment.group,name:"
-msgid "Payment Group"
-msgstr "Grup de pagaments"
+#, fuzzy
+msgctxt "model:account.payment.group,string:"
+msgid "Account Payment Group"
+msgstr "Grups de pagaments"
 
-msgctxt "model:account.payment.journal,name:"
-msgid "Payment Journal"
-msgstr "Diari de pagament"
+#, fuzzy
+msgctxt "model:account.payment.journal,string:"
+msgid "Account Payment Journal"
+msgstr "Grups de pagaments"
 
 msgctxt "model:ir.action,name:act_move_line_form"
 msgid "Lines to Pay"
@@ -378,11 +392,11 @@ msgstr "Pagaments"
 
 msgctxt "model:ir.action,name:act_payment_form_payable"
 msgid "Payable Payments"
-msgstr "Pagaments a pagar"
+msgstr "Pagaments"
 
 msgctxt "model:ir.action,name:act_payment_form_receivable"
 msgid "Receivable Payments"
-msgstr "Pagaments a cobrar"
+msgstr "Cobraments"
 
 msgctxt "model:ir.action,name:act_payment_form_relate_party"
 msgid "Payments"
@@ -678,11 +692,13 @@ msgctxt "model:ir.ui.menu,name:menu_payments"
 msgid "Payments"
 msgstr "Pagaments"
 
-msgctxt "model:party.party.payment_direct_debit,name:"
+#, fuzzy
+msgctxt "model:party.party.payment_direct_debit,string:"
 msgid "Party Payment Direct Debit"
 msgstr "Domiciliacions bancàries de tercers"
 
-msgctxt "model:party.party.reception_direct_debit,name:"
+#, fuzzy
+msgctxt "model:party.party.reception_direct_debit,string:"
 msgid "Party Reception Direct Debit"
 msgstr "Domiciliacions bancàries de tercers"
 
@@ -791,12 +807,13 @@ msgid "Total Amount"
 msgstr "Import total"
 
 msgctxt "view:account.payment:"
-msgid "Description"
-msgstr "Descripció"
-
-msgctxt "view:account.payment:"
 msgid "Other Info"
 msgstr "Informació addicional"
+
+#, fuzzy
+msgctxt "view:account.payment:"
+msgid "Payment"
+msgstr "Pagament"
 
 msgctxt "wizard_button:account.move.line.create_direct_debit,start,create_:"
 msgid "Create"

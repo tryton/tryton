@@ -34,10 +34,12 @@ msgctxt "model:ir.ui.menu,name:menu_shortened_url_form"
 msgid "Shortened URLs"
 msgstr "网址短名"
 
-msgctxt "model:web.shortened_url,name:"
-msgid "Short URL"
-msgstr "简短网址"
+#, fuzzy
+msgctxt "model:web.shortened_url,string:"
+msgid "Web Shortened Url"
+msgstr "网址短名"
 
-msgctxt "model:web.shortened_url.access,name:"
-msgid "URL Access"
-msgstr "URL访问"
+#, fuzzy
+msgctxt "model:web.shortened_url.access,string:"
+msgid "Web Shortened Url Access"
+msgstr "网址短名"

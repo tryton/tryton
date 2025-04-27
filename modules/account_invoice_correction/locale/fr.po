@@ -10,9 +10,9 @@ msgctxt "field:account.invoice.correct.start,lines:"
 msgid "Invoice Lines"
 msgstr "Lignes de facture"
 
-msgctxt "model:account.invoice.correct.start,name:"
-msgid "Correct Invoice"
-msgstr "Correction de facture"
+msgctxt "model:account.invoice.correct.start,string:"
+msgid "Account Invoice Correct Start"
+msgstr "Correction de facture comptable début"
 
 msgctxt "model:ir.action,name:wizard_invoice_correct"
 msgid "Correct"

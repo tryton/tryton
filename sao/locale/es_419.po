@@ -327,6 +327,13 @@ msgstr "Añadir un adjunto al registro"
 msgid "Add a note to the record"
 msgstr "Añadir una nota al registro"
 
+msgid "Chat"
+msgstr ""
+
+#, fuzzy
+msgid "Chat on the record"
+msgstr "Abrir registro"
+
 #, fuzzy
 msgid "Email..."
 msgstr "Correo electrónico..."
@@ -493,6 +500,9 @@ msgstr "Mostrar"
 msgid "Hide"
 msgstr "Ocultar"
 
+msgid "Select a color for \"%1\""
+msgstr ""
+
 msgid "Open the record"
 msgstr "Abrir registro"
 
@@ -548,6 +558,9 @@ msgstr ""
 #, fuzzy
 msgid "Copy Selected Rows"
 msgstr "Registros seleccionados"
+
+msgid "Reset Column Widths"
+msgstr ""
 
 msgid "#ERROR"
 msgstr ""
@@ -783,6 +796,15 @@ msgstr ""
 
 msgid "Wizard"
 msgstr "Asistente"
+
+msgid "Enter a message"
+msgstr ""
+
+msgid "Submit the message"
+msgstr ""
+
+msgid "Make this an internal message"
+msgstr ""
 
 msgid "Translate view"
 msgstr "Traducir vista"

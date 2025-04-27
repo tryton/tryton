@@ -223,12 +223,12 @@ msgctxt "model:ir.message,text:msg_shipment_carriage_delete"
 msgid "You cannot delete the carriage \"%(carriage)s\"."
 msgstr "Vous ne pouvez pas supprimer le transporteur « %(carriage)s »."
 
-msgctxt "model:sale.carriage,name:"
+msgctxt "model:sale.carriage,string:"
 msgid "Sale Carriage"
-msgstr "Transport de vente"
+msgstr "Transporteur de vente"
 
-msgctxt "model:stock.shipment.carriage,name:"
-msgid "Shipment Carriage"
+msgctxt "model:stock.shipment.carriage,string:"
+msgid "Stock Shipment Carriage"
 msgstr "Transport d'expédition"
 
 msgctxt "selection:incoterm.incoterm,after_carrier:"

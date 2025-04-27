@@ -328,6 +328,13 @@ msgstr "Dodaj załącznik do rekordu"
 msgid "Add a note to the record"
 msgstr "Dodaj notatkę do rekordu"
 
+msgid "Chat"
+msgstr ""
+
+#, fuzzy
+msgid "Chat on the record"
+msgstr "Otwórz rekord"
+
 #, fuzzy
 msgid "Email..."
 msgstr "E-mail..."
@@ -494,6 +501,9 @@ msgstr "Pokaż"
 msgid "Hide"
 msgstr "Ukryj"
 
+msgid "Select a color for \"%1\""
+msgstr ""
+
 msgid "Open the record"
 msgstr "Otwórz rekord"
 
@@ -548,6 +558,9 @@ msgstr "Menu"
 
 msgid "Copy Selected Rows"
 msgstr "Kopiuj wybrane rekordy"
+
+msgid "Reset Column Widths"
+msgstr ""
 
 msgid "#ERROR"
 msgstr "#BŁĄD"
@@ -780,6 +793,15 @@ msgstr "Przełącz dźwięk"
 
 msgid "Wizard"
 msgstr "Kreator"
+
+msgid "Enter a message"
+msgstr ""
+
+msgid "Submit the message"
+msgstr ""
+
+msgid "Make this an internal message"
+msgstr ""
 
 msgid "Translate view"
 msgstr "Widok tłumaczenia"

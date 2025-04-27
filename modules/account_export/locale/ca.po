@@ -46,11 +46,13 @@ msgctxt "field:account.move.export,type:"
 msgid "Type"
 msgstr "Tipus"
 
-msgctxt "model:account.configuration.export,name:"
+#, fuzzy
+msgctxt "model:account.configuration.export,string:"
 msgid "Account Configuration Export"
 msgstr "Configuració exportacions comptables"
 
-msgctxt "model:account.move.export,name:"
+#, fuzzy
+msgctxt "model:account.move.export,string:"
 msgid "Account Move Export"
 msgstr "Exportació asentaments comptables"
 

@@ -120,11 +120,6 @@ msgid "Date"
 msgstr "Dátum"
 
 #, fuzzy
-msgctxt "field:account.payment,description:"
-msgid "Description"
-msgstr "Leírás"
-
-#, fuzzy
 msgctxt "field:account.payment,failed_by:"
 msgid "Failure Noted by"
 msgstr "Által létrehozva "
@@ -164,6 +159,10 @@ msgstr "Partner"
 msgctxt "field:account.payment,process_method:"
 msgid "Process Method"
 msgstr "Process Payments"
+
+msgctxt "field:account.payment,reference:"
+msgid "Reference"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:account.payment,state:"
@@ -363,42 +362,49 @@ msgctxt "help:party.party.payment_direct_debit,payment_direct_debit:"
 msgid "Check if supplier does direct debit."
 msgstr ""
 
-msgctxt "model:account.configuration.payment_group_sequence,name:"
-msgid "Account Configuration Payment Group Sequence"
+msgctxt "help:party.party.reception_direct_debit,type:"
+msgid "Make a single payment."
 msgstr ""
 
-msgctxt "model:account.configuration.payment_sequence,name:"
+msgctxt "help:party.party.reception_direct_debit,type:"
+msgid "Make one payment per line."
+msgstr ""
+
+#, fuzzy
+msgctxt "model:account.configuration.payment_group_sequence,string:"
+msgid "Account Configuration Payment Group Sequence"
+msgstr "Account Payment Group"
+
+msgctxt "model:account.configuration.payment_sequence,string:"
 msgid "Account Configuration Payment Sequence"
 msgstr ""
 
-msgctxt "model:account.move.line.create_direct_debit.start,name:"
-msgid "Create Direct Debit"
+msgctxt "model:account.move.line.create_direct_debit.start,string:"
+msgid "Account Move Line Create Direct Debit Start"
+msgstr ""
+
+msgctxt "model:account.move.line.pay.ask_journal,string:"
+msgid "Account Move Line Pay Ask Journal"
+msgstr ""
+
+msgctxt "model:account.move.line.pay.start,string:"
+msgid "Account Move Line Pay Start"
 msgstr ""
 
 #, fuzzy
-msgctxt "model:account.move.line.pay.ask_journal,name:"
-msgid "Pay Line"
-msgstr "Pay Lines"
+msgctxt "model:account.payment,string:"
+msgid "Account Payment"
+msgstr "Account Payment Group"
 
 #, fuzzy
-msgctxt "model:account.move.line.pay.start,name:"
-msgid "Pay Line"
-msgstr "Pay Lines"
+msgctxt "model:account.payment.group,string:"
+msgid "Account Payment Group"
+msgstr "Account Payment Group"
 
 #, fuzzy
-msgctxt "model:account.payment,name:"
-msgid "Payment"
-msgstr "Payment"
-
-#, fuzzy
-msgctxt "model:account.payment.group,name:"
-msgid "Payment Group"
-msgstr "Payment Groups"
-
-#, fuzzy
-msgctxt "model:account.payment.journal,name:"
-msgid "Payment Journal"
-msgstr "Payment Journals"
+msgctxt "model:account.payment.journal,string:"
+msgid "Account Payment Journal"
+msgstr "Account Payment Group"
 
 msgctxt "model:ir.action,name:act_move_line_form"
 msgid "Lines to Pay"
@@ -735,11 +741,11 @@ msgctxt "model:ir.ui.menu,name:menu_payments"
 msgid "Payments"
 msgstr "Payments"
 
-msgctxt "model:party.party.payment_direct_debit,name:"
+msgctxt "model:party.party.payment_direct_debit,string:"
 msgid "Party Payment Direct Debit"
 msgstr ""
 
-msgctxt "model:party.party.reception_direct_debit,name:"
+msgctxt "model:party.party.reception_direct_debit,string:"
 msgid "Party Reception Direct Debit"
 msgstr ""
 
@@ -863,14 +869,14 @@ msgctxt "view:account.payment.group:"
 msgid "Total Amount"
 msgstr ""
 
-#, fuzzy
-msgctxt "view:account.payment:"
-msgid "Description"
-msgstr "Leírás"
-
 msgctxt "view:account.payment:"
 msgid "Other Info"
 msgstr ""
+
+#, fuzzy
+msgctxt "view:account.payment:"
+msgid "Payment"
+msgstr "Payment"
 
 #, fuzzy
 msgctxt "wizard_button:account.move.line.create_direct_debit,start,create_:"

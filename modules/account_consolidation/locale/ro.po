@@ -121,16 +121,17 @@ msgctxt "help:account.consolidation.income_statement.context,posted:"
 msgid "Only include posted moves."
 msgstr ""
 
-msgctxt "model:account.consolidation,name:"
+msgctxt "model:account.consolidation,string:"
 msgid "Account Consolidation"
 msgstr ""
 
-msgctxt "model:account.consolidation.balance_sheet.context,name:"
-msgid "Consolidation Balance Sheet Context"
-msgstr ""
+#, fuzzy
+msgctxt "model:account.consolidation.balance_sheet.context,string:"
+msgid "Account Consolidation Balance Sheet Context"
+msgstr "Bilanţ Prescurtat"
 
-msgctxt "model:account.consolidation.income_statement.context,name:"
-msgid "Consolidation Income Statement Context"
+msgctxt "model:account.consolidation.income_statement.context,string:"
+msgid "Account Consolidation Income Statement Context"
 msgstr ""
 
 msgctxt "model:ir.action,name:act_consolidation_balance_sheet_tree"

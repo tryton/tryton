@@ -50,13 +50,13 @@ msgid "EC Sales List Code"
 msgstr "Codul listei de vânzări CE"
 
 #, fuzzy
-msgctxt "model:account.ec_sales_list,name:"
-msgid "EC Sales List"
+msgctxt "model:account.ec_sales_list,string:"
+msgid "Account Ec Sales List"
 msgstr "Lista de vânzări CE"
 
 #, fuzzy
-msgctxt "model:account.ec_sales_list.context,name:"
-msgid "EC Sales List Context"
+msgctxt "model:account.ec_sales_list.context,string:"
+msgid "Account Ec Sales List Context"
 msgstr "Contextul listei de vânzări CE"
 
 #, fuzzy

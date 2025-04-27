@@ -79,6 +79,11 @@ msgid "Amount"
 msgstr ""
 
 #, fuzzy
+msgctxt "field:sale.complaint.action,company:"
+msgid "Company"
+msgstr "Organizacija"
+
+#, fuzzy
 msgctxt "field:sale.complaint.action,complaint:"
 msgid "Complaint"
 msgstr "Complaints"
@@ -95,6 +100,18 @@ msgstr ""
 msgctxt "field:sale.complaint.action,invoice_lines:"
 msgid "Invoice Lines"
 msgstr "Sąskaitos faktūros eilutės"
+
+msgctxt "field:sale.complaint.action,promotion_coupon:"
+msgid "Promotion Coupon"
+msgstr ""
+
+msgctxt "field:sale.complaint.action,promotion_coupon_duration:"
+msgid "Duration"
+msgstr ""
+
+msgctxt "field:sale.complaint.action,promotion_coupon_number:"
+msgid "Number"
+msgstr ""
 
 msgctxt "field:sale.complaint.action,quantity:"
 msgid "Quantity"
@@ -335,26 +352,27 @@ msgid "Types"
 msgstr "Types"
 
 #, fuzzy
-msgctxt "model:sale.complaint,name:"
-msgid "Customer Complaint"
-msgstr "Customer Complaint"
+msgctxt "model:sale.complaint,string:"
+msgid "Sale Complaint"
+msgstr "Complaints"
 
 #, fuzzy
-msgctxt "model:sale.complaint.action,name:"
-msgid "Customer Complaint Action"
+msgctxt "model:sale.complaint.action,string:"
+msgid "Sale Complaint Action"
 msgstr "Customer Complaint"
 
-msgctxt "model:sale.complaint.action-account.invoice.line,name:"
-msgid "Customer Complaint Action - Invoice Line"
-msgstr ""
-
-msgctxt "model:sale.complaint.action-sale.line,name:"
-msgid "Customer Complaint Action - Sale Line"
+msgctxt "model:sale.complaint.action-account.invoice.line,string:"
+msgid "Sale Complaint Action - Account Invoice Line"
 msgstr ""
 
 #, fuzzy
-msgctxt "model:sale.complaint.type,name:"
-msgid "Customer Complaint Type"
+msgctxt "model:sale.complaint.action-sale.line,string:"
+msgid "Sale Complaint Action - Sale Line"
+msgstr "Customer Complaint"
+
+#, fuzzy
+msgctxt "model:sale.complaint.type,string:"
+msgid "Sale Complaint Type"
 msgstr "Customer Complaint"
 
 #, fuzzy
@@ -391,6 +409,10 @@ msgstr ""
 
 msgctxt "selection:sale.complaint.action,action:"
 msgid "Create Sale Return"
+msgstr ""
+
+msgctxt "selection:sale.complaint.action,action:"
+msgid "Promotion Coupon"
 msgstr ""
 
 #, fuzzy

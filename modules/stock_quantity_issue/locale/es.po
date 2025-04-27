@@ -135,17 +135,17 @@ msgctxt "model:ir.ui.menu,name:menu_quantity_issue_generate"
 msgid "Generate Stock Quantity Issues"
 msgstr "Generar incidencias de abastecimiento"
 
-msgctxt "model:stock.quantity.issue,name:"
+msgctxt "model:stock.quantity.issue,string:"
 msgid "Stock Quantity Issue"
 msgstr "Incidencias de abastecimiento"
 
-msgctxt "model:stock.quantity.issue.generate.start,name:"
-msgid "Stock Quantity Issue Generate"
-msgstr "Generar incidencias de abastecimiento"
+msgctxt "model:stock.quantity.issue.generate.start,string:"
+msgid "Stock Quantity Issue Generate Start"
+msgstr "Inicio generar incidencias de abastecimiento"
 
-msgctxt "model:stock.quantity.issue.product,name:"
+msgctxt "model:stock.quantity.issue.product,string:"
 msgid "Stock Quantity Issue Product"
-msgstr "Productos con oncidencias de abastecimiento"
+msgstr "Productos con incidencias de abastecimiento"
 
 msgctxt "selection:ir.cron,method:"
 msgid "Generate Stock Quantity Issues"

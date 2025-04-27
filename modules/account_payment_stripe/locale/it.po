@@ -334,33 +334,34 @@ msgid "The Stripe's signing secret of the webhook."
 msgstr ""
 
 #, fuzzy
-msgctxt "model:account.payment.stripe.account,name:"
-msgid "Stripe Account"
+msgctxt "model:account.payment.stripe.account,string:"
+msgid "Account Payment Stripe Account"
 msgstr "Stripe Accounts"
 
 #, fuzzy
-msgctxt "model:account.payment.stripe.customer,name:"
-msgid "Stripe Customer"
+msgctxt "model:account.payment.stripe.customer,string:"
+msgid "Account Payment Stripe Customer"
+msgstr "Create Stripe Customer"
+
+#, fuzzy
+msgctxt "model:account.payment.stripe.customer.fingerprint,string:"
+msgid "Account Payment Stripe Customer Fingerprint"
 msgstr "Stripe Customers"
 
 #, fuzzy
-msgctxt "model:account.payment.stripe.customer.fingerprint,name:"
-msgid "Stripe Customer Fingerprint"
+msgctxt "model:account.payment.stripe.customer.identical,string:"
+msgid "Account Payment Stripe Customer Identical"
 msgstr "Stripe Customers"
 
 #, fuzzy
-msgctxt "model:account.payment.stripe.customer.identical,name:"
-msgid "Stripe Customer Identical"
+msgctxt "model:account.payment.stripe.customer.source.detach.ask,string:"
+msgid "Account Payment Stripe Customer Source Detach Ask"
 msgstr "Stripe Customers"
 
-msgctxt "model:account.payment.stripe.customer.source.detach.ask,name:"
-msgid "Detach Customer Source"
-msgstr ""
-
 #, fuzzy
-msgctxt "model:account.payment.stripe.refund,name:"
-msgid "Stripe Payment Refund"
-msgstr "Charge Stripe Payments"
+msgctxt "model:account.payment.stripe.refund,string:"
+msgid "Account Payment Stripe Refund"
+msgstr "Create Stripe Customer"
 
 msgctxt "model:ir.action,name:act_account_form"
 msgid "Stripe Accounts"
@@ -435,7 +436,8 @@ msgstr ""
 #, python-format
 msgctxt "model:ir.message,text:msg_no_stripe_token"
 msgid ""
-"To process payment \"%(payment)s\" you must set a Stripe token or customer."
+"To process payment \"%(payment)s\" you must set a Stripe token, payment "
+"intent or customer."
 msgstr ""
 
 msgctxt "model:ir.message,text:msg_stripe_key_modified"
@@ -511,22 +513,14 @@ msgctxt "model:ir.ui.menu,name:menu_refund_form"
 msgid "Stripe Refunds"
 msgstr "Stripe Accounts"
 
-msgctxt "report:account.payment.stripe.checkout:"
-msgid "Credit or debit card"
-msgstr ""
-
-msgctxt "report:account.payment.stripe.checkout:"
-msgid "Pay"
-msgstr ""
-
-msgctxt "report:account.payment.stripe.checkout:"
-msgid "Register card"
-msgstr ""
-
 #, fuzzy
 msgctxt "report:account.payment.stripe.checkout:"
 msgid "Stripe Checkout"
 msgstr "Stripe Checkout"
+
+msgctxt "report:account.payment.stripe.checkout:"
+msgid "Submit"
+msgstr ""
 
 msgctxt "report:account.payment.stripe.email_checkout:"
 msgid "Authorization needed"

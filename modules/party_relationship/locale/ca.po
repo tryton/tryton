@@ -90,17 +90,20 @@ msgctxt "model:ir.ui.menu,name:menu_relation_type"
 msgid "Relation Types"
 msgstr "Tipus de relació"
 
-msgctxt "model:party.relation,name:"
+#, fuzzy
+msgctxt "model:party.relation,string:"
 msgid "Party Relation"
 msgstr "Relació entre tercers"
 
-msgctxt "model:party.relation.all,name:"
+#, fuzzy
+msgctxt "model:party.relation.all,string:"
 msgid "Party Relation"
 msgstr "Relació entre tercers"
 
-msgctxt "model:party.relation.type,name:"
-msgid "Relation Type"
-msgstr "Tipus de relació"
+#, fuzzy
+msgctxt "model:party.relation.type,string:"
+msgid "Party Relation Type"
+msgstr "Tipus de relació entre tercers"
 
 msgctxt "view:party.party:"
 msgid "Relations"

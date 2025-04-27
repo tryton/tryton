@@ -2,41 +2,38 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-#, fuzzy
 msgctxt "field:currency.cron,currencies:"
 msgid "Currencies"
 msgstr "Moedas"
 
-#, fuzzy
 msgctxt "field:currency.cron,currency:"
 msgid "Currency"
 msgstr "Moeda"
 
 msgctxt "field:currency.cron,day:"
 msgid "Day of Month"
-msgstr ""
+msgstr "Dia do Mês"
 
 msgctxt "field:currency.cron,frequency:"
 msgid "Frequency"
-msgstr ""
+msgstr "Frequência"
 
 msgctxt "field:currency.cron,last_update:"
 msgid "Last Update"
-msgstr ""
+msgstr "Última Atualização"
 
 msgctxt "field:currency.cron,source:"
 msgid "Source"
-msgstr ""
+msgstr "Fonte"
 
 msgctxt "field:currency.cron,weekday:"
 msgid "Day of Week"
-msgstr ""
+msgstr "Dia da Semana"
 
 msgctxt "field:currency.cron-currency.currency,cron:"
 msgid "Cron"
-msgstr ""
+msgstr "Programador"
 
-#, fuzzy
 msgctxt "field:currency.cron-currency.currency,currency:"
 msgid "Currency"
 msgstr "Moeda"
@@ -55,15 +52,15 @@ msgstr "Nome"
 
 msgctxt "field:currency.currency,numeric_code:"
 msgid "Numeric Code"
-msgstr "Código numérico"
+msgstr "Código Numérico"
 
 msgctxt "field:currency.currency,rate:"
 msgid "Current rate"
-msgstr "Taxa de câmbio atual"
+msgstr "Taxa atual"
 
 msgctxt "field:currency.currency,rates:"
 msgid "Rates"
-msgstr "Taxas de câmbio"
+msgstr "Taxas"
 
 msgctxt "field:currency.currency,rounding:"
 msgid "Rounding factor"
@@ -85,24 +82,21 @@ msgctxt "field:currency.currency.rate,rate:"
 msgid "Rate"
 msgstr "Taxa"
 
-#, fuzzy
 msgctxt "help:currency.cron,currencies:"
 msgid "The currencies to update the rate."
-msgstr "A moeda a qual a taxa se aplica."
+msgstr "As moedas para atualizar a taxa."
 
-#, fuzzy
 msgctxt "help:currency.cron,currency:"
 msgid "The base currency to fetch rate."
-msgstr "A moeda a qual a taxa se aplica."
+msgstr "A moeda base para obter a taxa."
 
-#, fuzzy
 msgctxt "help:currency.cron,frequency:"
 msgid "How frequently rates must be updated."
-msgstr "A taxa da moeda deve ser positiva."
+msgstr "A frequência de atualização das taxas."
 
 msgctxt "help:currency.cron,source:"
 msgid "The external source for rates."
-msgstr ""
+msgstr "A fonte externa para obter as taxas."
 
 msgctxt "help:currency.currency,code:"
 msgid "The 3 chars ISO currency code."
@@ -144,27 +138,25 @@ msgctxt "help:currency.currency.rate,rate:"
 msgid "The floating exchange rate used to convert the currency."
 msgstr "A taxa de câmbio flutuante utilizada para converter a moeda."
 
-#, fuzzy
-msgctxt "model:currency.cron,name:"
+msgctxt "model:currency.cron,string:"
 msgid "Currency Cron"
-msgstr "Moeda"
+msgstr "Agendamento da Moeda"
 
-msgctxt "model:currency.cron-currency.currency,name:"
+msgctxt "model:currency.cron-currency.currency,string:"
 msgid "Currency Cron - Currency"
-msgstr ""
+msgstr "Agendamento da Moeda - Moeda"
 
-msgctxt "model:currency.currency,name:"
+msgctxt "model:currency.currency,string:"
 msgid "Currency"
 msgstr "Moeda"
 
-#, fuzzy
-msgctxt "model:currency.currency.rate,name:"
+msgctxt "model:currency.currency.rate,string:"
 msgid "Currency Rate"
-msgstr "Taxa de câmbio atual"
+msgstr "Taxa de Câmbio"
 
 msgctxt "model:ir.action,name:act_cron_form"
 msgid "Scheduled Rate Updates"
-msgstr ""
+msgstr "Atualizações Programadas da Taxa"
 
 msgctxt "model:ir.action,name:act_currency_form"
 msgid "Currencies"
@@ -183,13 +175,12 @@ msgstr ""
 
 msgctxt "model:ir.model.button,string:cron_run_button"
 msgid "Run"
-msgstr ""
+msgstr "Executar"
 
 msgctxt "model:ir.ui.menu,name:menu_cron_form"
 msgid "Scheduled Rate Updates"
-msgstr ""
+msgstr "Atualizações Programadas da Taxa"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_currency"
 msgid "Currencies"
 msgstr "Moedas"
@@ -200,28 +191,27 @@ msgstr "Moedas"
 
 msgctxt "model:res.group,name:group_currency_admin"
 msgid "Currency Administration"
-msgstr "Administração de moedas"
+msgstr "Administração de Moedas"
 
 msgctxt "selection:currency.cron,frequency:"
 msgid "Daily"
-msgstr ""
+msgstr "Diariamente"
 
 msgctxt "selection:currency.cron,frequency:"
 msgid "Monthly"
-msgstr ""
+msgstr "Mensal"
 
 msgctxt "selection:currency.cron,frequency:"
 msgid "Weekly"
-msgstr ""
+msgstr "Semanalmente"
 
 msgctxt "selection:currency.cron,source:"
 msgid "European Central Bank"
-msgstr ""
+msgstr "Banco Central Europeu"
 
-#, fuzzy
 msgctxt "selection:ir.cron,method:"
 msgid "Update Currency Rates"
-msgstr "Taxa de câmbio atual"
+msgstr "Atualizar Taxas de Câmbio"
 
 msgctxt "view:currency.currency:"
 msgid "Rates"

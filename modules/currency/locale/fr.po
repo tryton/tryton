@@ -138,21 +138,21 @@ msgctxt "help:currency.currency.rate,rate:"
 msgid "The floating exchange rate used to convert the currency."
 msgstr "Le taux d'échange flottant utilisé pour convertir la devise."
 
-msgctxt "model:currency.cron,name:"
+msgctxt "model:currency.cron,string:"
 msgid "Currency Cron"
 msgstr "Tâche planifiée de devise"
 
-msgctxt "model:currency.cron-currency.currency,name:"
+msgctxt "model:currency.cron-currency.currency,string:"
 msgid "Currency Cron - Currency"
 msgstr "Tâche planifiée de devise - Devise"
 
-msgctxt "model:currency.currency,name:"
+msgctxt "model:currency.currency,string:"
 msgid "Currency"
 msgstr "Devise"
 
-msgctxt "model:currency.currency.rate,name:"
+msgctxt "model:currency.currency.rate,string:"
 msgid "Currency Rate"
-msgstr "Taux de devise"
+msgstr "Taux de change"
 
 msgctxt "model:ir.action,name:act_cron_form"
 msgid "Scheduled Rate Updates"

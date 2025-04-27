@@ -235,29 +235,35 @@ msgctxt "help:account.budget.line.period,total_amount:"
 msgid "The total amount allocated to the budget and its children."
 msgstr ""
 
-msgctxt "model:account.budget,name:"
+#, fuzzy
+msgctxt "model:account.budget,string:"
 msgid "Account Budget"
 msgstr "Finančni načrt konta"
 
-msgctxt "model:account.budget.context,name:"
+#, fuzzy
+msgctxt "model:account.budget.context,string:"
 msgid "Account Budget Context"
 msgstr "Kontekst konta finančnega načrta"
 
-msgctxt "model:account.budget.copy.start,name:"
-msgid "Copy Budget"
-msgstr "Kopiraj finančni načrt"
+#, fuzzy
+msgctxt "model:account.budget.copy.start,string:"
+msgid "Account Budget Copy Start"
+msgstr "Kontekst konta finančnega načrta"
 
-msgctxt "model:account.budget.line,name:"
+#, fuzzy
+msgctxt "model:account.budget.line,string:"
 msgid "Account Budget Line"
 msgstr "Vrstica konta finančnega načrta"
 
-msgctxt "model:account.budget.line.create_periods.start,name:"
-msgid "Create Periods"
-msgstr "Ustvari obdobja"
+#, fuzzy
+msgctxt "model:account.budget.line.create_periods.start,string:"
+msgid "Account Budget Line Create Periods Start"
+msgstr "Vrstica konta finančnega načrta"
 
-msgctxt "model:account.budget.line.period,name:"
+#, fuzzy
+msgctxt "model:account.budget.line.period,string:"
 msgid "Account Budget Line Period"
-msgstr ""
+msgstr "Vrstica konta finančnega načrta"
 
 msgctxt "model:ir.action,name:act_budget_form"
 msgid "Budgets"

@@ -212,11 +212,11 @@ msgctxt "model:ir.ui.menu,name:menu_purchase_requisition_form"
 msgid "Requisitions"
 msgstr "Demandes d'employés"
 
-msgctxt "model:purchase.requisition,name:"
+msgctxt "model:purchase.requisition,string:"
 msgid "Purchase Requisition"
 msgstr "Demande d'achat d'employé"
 
-msgctxt "model:purchase.requisition.line,name:"
+msgctxt "model:purchase.requisition.line,string:"
 msgid "Purchase Requisition Line"
 msgstr "Ligne de demande d'achat d'employé"
 

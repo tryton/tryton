@@ -41,6 +41,7 @@ msgctxt "model:res.group,name:group_stock_location_movable"
 msgid "Stock Location Movable"
 msgstr "مکان موجودی قابل جابجایی"
 
-msgctxt "model:stock.shipment.internal-location,name:"
-msgid "Shipment Internal - Location"
+#, fuzzy
+msgctxt "model:stock.shipment.internal-location,string:"
+msgid "Stock Shipment Internal - Location"
 msgstr "مکان - محموله داخلی"

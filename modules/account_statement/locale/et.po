@@ -107,6 +107,16 @@ msgctxt "field:account.statement.journal,journal:"
 msgid "Journal"
 msgstr "Andmik"
 
+#, fuzzy
+msgctxt "field:account.statement.journal,last_amount:"
+msgid "Last Amount"
+msgstr "Väärtus"
+
+#, fuzzy
+msgctxt "field:account.statement.journal,last_date:"
+msgid "Last Date"
+msgstr "Muutmise kuupäev"
+
 msgctxt "field:account.statement.journal,name:"
 msgid "Name"
 msgstr "Nimetus"
@@ -303,32 +313,39 @@ msgctxt "model:account.journal,name:journal_statement"
 msgid "Statement"
 msgstr "Aruanne"
 
-msgctxt "model:account.statement,name:"
+#, fuzzy
+msgctxt "model:account.statement,string:"
 msgid "Account Statement"
 msgstr "Konto aruanne"
 
-msgctxt "model:account.statement.import.start,name:"
-msgid "Statement Import Start"
+#, fuzzy
+msgctxt "model:account.statement.import.start,string:"
+msgid "Account Statement Import Start"
 msgstr "Aruande impordi käivitus"
 
-msgctxt "model:account.statement.journal,name:"
-msgid "Statement Journal"
-msgstr "Aruande andmik"
+#, fuzzy
+msgctxt "model:account.statement.journal,string:"
+msgid "Account Statement Journal"
+msgstr "Konto aruand sisend"
 
-msgctxt "model:account.statement.line,name:"
+#, fuzzy
+msgctxt "model:account.statement.line,string:"
 msgid "Account Statement Line"
 msgstr "Konto aruande rida"
 
-msgctxt "model:account.statement.line.group,name:"
+#, fuzzy
+msgctxt "model:account.statement.line.group,string:"
 msgid "Account Statement Line Group"
 msgstr "Konto aruande rea grupp"
 
-msgctxt "model:account.statement.origin,name:"
+#, fuzzy
+msgctxt "model:account.statement.origin,string:"
 msgid "Account Statement Origin"
 msgstr "Konto aruand sisend"
 
-msgctxt "model:account.statement.origin.information,name:"
-msgid "Statement Origin Information"
+#, fuzzy
+msgctxt "model:account.statement.origin.information,string:"
+msgid "Account Statement Origin Information"
 msgstr "Aruande sisendinformatisoon"
 
 #, fuzzy
@@ -357,6 +374,11 @@ msgid "Statements"
 msgstr "Aruanded"
 
 msgctxt "model:ir.action,name:act_statement_journal_form"
+msgid "Statement Journals"
+msgstr "Aruande andmikud"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_statement_journal_list_reporting"
 msgid "Statement Journals"
 msgstr "Aruande andmikud"
 
@@ -543,6 +565,11 @@ msgstr "Impordi aruanded"
 msgctxt "model:ir.ui.menu,name:menu_statement_journal_form"
 msgid "Statement Journals"
 msgstr "Aruande andmik"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_statement_journal_reporting"
+msgid "Statement Journals"
+msgstr "Aruande andmikud"
 
 msgctxt "model:ir.ui.menu,name:menu_statements"
 msgid "Statements"

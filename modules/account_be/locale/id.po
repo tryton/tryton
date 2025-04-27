@@ -30,12 +30,12 @@ msgctxt "field:account.be.vat_customer.context,fiscalyear:"
 msgid "Fiscal Year"
 msgstr "Tahun Fiskal"
 
-msgctxt "model:account.be.vat_customer,name:"
-msgid "Belgian VAT Customer"
+msgctxt "model:account.be.vat_customer,string:"
+msgid "Account Be Vat Customer"
 msgstr ""
 
-msgctxt "model:account.be.vat_customer.context,name:"
-msgid "Belgian VAT Customer Context"
+msgctxt "model:account.be.vat_customer.context,string:"
+msgid "Account Be Vat Customer Context"
 msgstr ""
 
 msgctxt "model:ir.action,name:act_vat_customer_form"

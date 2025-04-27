@@ -10,9 +10,9 @@ msgctxt "field:account.invoice.correct.start,lines:"
 msgid "Invoice Lines"
 msgstr "Linhas de Faturas"
 
-msgctxt "model:account.invoice.correct.start,name:"
-msgid "Correct Invoice"
-msgstr "Fatura Correta"
+msgctxt "model:account.invoice.correct.start,string:"
+msgid "Account Invoice Correct Start"
+msgstr ""
 
 msgctxt "model:ir.action,name:wizard_invoice_correct"
 msgid "Correct"
@@ -22,10 +22,9 @@ msgctxt "model:ir.model.button,string:invoice_correct_button"
 msgid "Correct"
 msgstr "Correct"
 
-#, fuzzy
 msgctxt "view:account.invoice.correct.start:"
 msgid "Choose lines to correct:"
-msgstr "Escolha linhas para corrigir"
+msgstr "Escolha linhas para corrigir:"
 
 msgctxt "wizard_button:account.invoice.correct,start,correct:"
 msgid "Correct"

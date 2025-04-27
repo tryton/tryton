@@ -5,6 +5,12 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgid "Make this an _internal message"
+msgstr ""
+
+msgid "Send"
+msgstr ""
+
 msgid "specify alternate config file"
 msgstr "فایل پیکربندی جایگزین را مشخص کنید"
 
@@ -128,9 +134,6 @@ msgstr "بررسی URL : %s"
 #, fuzzy
 msgid "Unable to check for new version."
 msgstr "قادر به بررسی نسخه جدید نیست"
-
-msgid "A new version is available!"
-msgstr "نسخه جدید در دسترس می باشد!"
 
 msgid "Download"
 msgstr "دانلود"
@@ -641,9 +644,6 @@ msgstr "پیوست:"
 msgid "Files"
 msgstr ""
 
-msgid "Send"
-msgstr ""
-
 #, fuzzy
 msgid "Select File"
 msgstr "انتخاب همه"
@@ -857,6 +857,13 @@ msgstr "_یادداشت ها..."
 msgid "Add a note to the record"
 msgstr "یک یادداشت به پرونده اضافه کنید"
 
+msgid "C_hat"
+msgstr ""
+
+#, fuzzy
+msgid "Chat on the record"
+msgstr "یک یادداشت به پرونده اضافه کنید"
+
 msgid "_Actions..."
 msgstr "_اقدامات..."
 
@@ -979,13 +986,11 @@ msgstr "نام این فایل استخراجی چیست؟"
 msgid "Override '%s' definition?"
 msgstr "بازنویسی %s تعاریف؟"
 
-#, python-format
+#, fuzzy, python-format
 msgid "%d record saved."
-msgstr "%d پرونده ذخیره شد."
-
-#, python-format
-msgid "%d records saved."
-msgstr "%d پرونده های ذخیره شده."
+msgid_plural "%d records saved."
+msgstr[0] "%d پرونده ذخیره شد."
+msgstr[1] "%d پرونده ذخیره شد."
 
 msgid "Export failed"
 msgstr ""
@@ -1066,13 +1071,11 @@ msgstr "خطا"
 msgid "Import failed"
 msgstr ""
 
-#, python-format
+#, fuzzy, python-format
 msgid "%d record imported."
-msgstr "%d پرونده وارد شد."
-
-#, python-format
-msgid "%d records imported."
-msgstr "%d پرونده ها وارد شدند."
+msgid_plural "%d records imported."
+msgstr[0] "%d پرونده وارد شد."
+msgstr[1] "%d پرونده وارد شد."
 
 msgid "Search"
 msgstr "جستجو"
@@ -1147,6 +1150,9 @@ msgstr "ذخیره با نام"
 
 msgid "Image size too large."
 msgstr "اندازه تصویر بیش از حد بزرگ است."
+
+msgid "Reset Column Widths"
+msgstr ""
 
 msgid "Copy"
 msgstr ""
@@ -1228,6 +1234,10 @@ msgstr "همه فایل ها"
 
 msgid "Show plain text"
 msgstr "نمایش متن ساده"
+
+#, fuzzy, python-format
+msgid "Select a color for \"%s\""
+msgstr "انتخاب یک رنگ"
 
 msgid "Add value"
 msgstr "افزودن مقدار"

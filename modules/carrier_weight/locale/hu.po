@@ -72,7 +72,7 @@ msgid "The Unit of Measure of the weight."
 msgstr ""
 "A fuvarozási árlistában a súlyok ebben a mértékegységben vannak megadva."
 
-msgctxt "model:carrier.weight_price_list,name:"
+msgctxt "model:carrier.weight_price_list,string:"
 msgid "Carrier Weight Price List"
 msgstr ""
 

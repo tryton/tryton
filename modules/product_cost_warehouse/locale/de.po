@@ -69,8 +69,8 @@ msgctxt ""
 msgid "Compute product cost price for each warehouse."
 msgstr "Artikeleinstandskosten je Logistikstandort berechnen."
 
-msgctxt "model:ir.cron-stock.warehouse,name:"
-msgid "Cron - Warehouse"
+msgctxt "model:ir.cron-stock.warehouse,string:"
+msgid "Cron - Stock Warehouse"
 msgstr "Zeitplaner - Logistikstandort"
 
 #, python-format
@@ -82,6 +82,6 @@ msgstr ""
 "Um Artikel zwischen \"%(from_)s\" und \"%(to)s\" zu bewegen, muss der "
 "Transitlagerort für interne Lieferungen verwendet werden."
 
-msgctxt "model:product.configuration.cost_price_warehouse,name:"
-msgid "Product Configuration Cost Price per Warehouse"
-msgstr "Artikel Einstellungen Einstandskosten Pro Logistikstandort"
+msgctxt "model:product.configuration.cost_price_warehouse,string:"
+msgid "Product Configuration Cost Price Warehouse"
+msgstr "Artikel Einstellungen Einstandskosten Logistikstandort"

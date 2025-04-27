@@ -50,9 +50,9 @@ msgstr ""
 "Le canal de notification préféré.\n"
 "Laissez vide pour aucune notification."
 
-msgctxt "model:carrier.credential.dpd,name:"
-msgid "DPD Credential"
-msgstr "Identifiant DPD"
+msgctxt "model:carrier.credential.dpd,string:"
+msgid "Carrier Credential Dpd"
+msgstr "Identifiant du transporteur DPD"
 
 msgctxt "model:ir.action,name:act_create_shipping_dpd_wizard"
 msgid "Create DPD Shipping for Packages"

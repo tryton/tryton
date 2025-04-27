@@ -7,6 +7,16 @@ msgctxt "field:ir.email.template,contact_mechanism:"
 msgid "Contact Mechanism"
 msgstr "مکانیسم های تماس"
 
+#, fuzzy
+msgctxt "field:party.address,building_name:"
+msgid "Building Name"
+msgstr "نام ساختمان"
+
+#, fuzzy
+msgctxt "field:party.address,building_number:"
+msgid "Building Number"
+msgstr "نام ساختمان"
+
 msgctxt "field:party.address,city:"
 msgid "City"
 msgstr "شهر"
@@ -20,6 +30,10 @@ msgctxt "field:party.address,country:"
 msgid "Country"
 msgstr "کشور"
 
+msgctxt "field:party.address,floor_number:"
+msgid "Floor Number"
+msgstr ""
+
 msgctxt "field:party.address,full_address:"
 msgid "Full Address"
 msgstr "آدرس کامل"
@@ -28,10 +42,6 @@ msgstr "آدرس کامل"
 msgctxt "field:party.address,identifiers:"
 msgid "Identifiers"
 msgstr "شناسه ها"
-
-msgctxt "field:party.address,name:"
-msgid "Building Name"
-msgstr "نام ساختمان"
 
 msgctxt "field:party.address,party:"
 msgid "Party"
@@ -42,16 +52,43 @@ msgid "Party Name"
 msgstr "نام نهاد/سازمان"
 
 #, fuzzy
+msgctxt "field:party.address,post_box:"
+msgid "Post Box"
+msgstr "کشور"
+
+msgctxt "field:party.address,post_office:"
+msgid "Post Office"
+msgstr ""
+
+#, fuzzy
 msgctxt "field:party.address,postal_code:"
 msgid "Postal Code"
 msgstr "کشور"
+
+msgctxt "field:party.address,private_bag:"
+msgid "Private Bag"
+msgstr ""
+
+msgctxt "field:party.address,room_number:"
+msgid "Room Number"
+msgstr ""
 
 msgctxt "field:party.address,street:"
 msgid "Street"
 msgstr "خیابان"
 
 #, fuzzy
+msgctxt "field:party.address,street_name:"
+msgid "Street Name"
+msgstr "خیابان"
+
+#, fuzzy
 msgctxt "field:party.address,street_single_line:"
+msgid "Street"
+msgstr "خیابان"
+
+#, fuzzy
+msgctxt "field:party.address,street_unstructured:"
 msgid "Street"
 msgstr "خیابان"
 
@@ -64,10 +101,23 @@ msgctxt "field:party.address,subdivision_types:"
 msgid "Subdivision Types"
 msgstr "زیرمجموعه"
 
+msgctxt "field:party.address,unit_number:"
+msgid "Unit Number"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:party.address.format,building_number_format:"
+msgid "Building Number Format"
+msgstr "نام ساختمان"
+
 #, fuzzy
 msgctxt "field:party.address.format,country_code:"
 msgid "Country Code"
 msgstr "کشور"
+
+msgctxt "field:party.address.format,floor_number_format:"
+msgid "Floor Number Format"
+msgstr ""
 
 msgctxt "field:party.address.format,format_:"
 msgid "Format"
@@ -77,6 +127,31 @@ msgstr "قالب"
 msgctxt "field:party.address.format,language_code:"
 msgid "Language Code"
 msgstr "زبان"
+
+msgctxt "field:party.address.format,post_box_format:"
+msgid "Post Box Format"
+msgstr ""
+
+msgctxt "field:party.address.format,post_office_format:"
+msgid "Post Box Format"
+msgstr ""
+
+msgctxt "field:party.address.format,private_bag_format:"
+msgid "Post Box Format"
+msgstr ""
+
+msgctxt "field:party.address.format,room_number_format:"
+msgid "Room Number Format"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:party.address.format,street_format:"
+msgid "Street Format"
+msgstr "فرمت آدرس ها"
+
+msgctxt "field:party.address.format,unit_number_format:"
+msgid "Unit Number Format"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:party.address.subdivision_type,country_code:"
@@ -332,12 +407,19 @@ msgctxt "help:party.address,party_name:"
 msgid "If filled, replace the name of the party for address formatting"
 msgstr "اگر پر شود، نام نهاد/سازمان را برای قالب بندی آدرس جایگزین کنید"
 
+msgctxt "help:party.address.format,building_number_format:"
+msgid "Use {} as placeholder for the number."
+msgstr ""
+
+msgctxt "help:party.address.format,floor_number_format:"
+msgid "Use {} as placeholder for the number."
+msgstr ""
+
 #, fuzzy
 msgctxt "help:party.address.format,format_:"
 msgid ""
-"Available variables (also in upper case):\n"
+"Available variables (also in upper case and street variables):\n"
 "- ${party_name}\n"
-"- ${name}\n"
 "- ${attn}\n"
 "- ${street}\n"
 "- ${postal_code}\n"
@@ -357,6 +439,51 @@ msgstr ""
 "- ${کد بخش} \n"
 "- ${کشور} \n"
 "- ${کد کشور}"
+
+msgctxt "help:party.address.format,post_box_format:"
+msgid "Use {} as placeholder for the number."
+msgstr ""
+
+msgctxt "help:party.address.format,post_office_format:"
+msgid "Use {} as placeholder for the number."
+msgstr ""
+
+msgctxt "help:party.address.format,private_bag_format:"
+msgid "Use {} as placeholder for the number."
+msgstr ""
+
+msgctxt "help:party.address.format,room_number_format:"
+msgid "Use {} as placeholder for the number."
+msgstr ""
+
+#, fuzzy
+msgctxt "help:party.address.format,street_format:"
+msgid ""
+"Available variables (also in upper case):\n"
+"- ${street_name}\n"
+"- ${building_name}\n"
+"- ${building_number}\n"
+"- ${unit_number}\n"
+"- ${floor_number}\n"
+"- ${room_number}\n"
+"- ${post_box}\n"
+"- ${private_bag}\n"
+"- ${post_office}\n"
+msgstr ""
+"متغیر های موجود (همچنین در حروف بزرگ): \n"
+"- ${نام-سازمان}\n"
+"- ${نام}\n"
+"- ${خیابان} \n"
+"- ${کدپستی} \n"
+"- ${شهر} \n"
+"- ${بخش} \n"
+"- ${کد بخش} \n"
+"- ${کشور} \n"
+"- ${کد کشور}"
+
+msgctxt "help:party.address.format,unit_number_format:"
+msgid "Use {} as placeholder for the number."
+msgstr ""
 
 msgctxt "help:party.category,childs:"
 msgid "Add children below the category."
@@ -572,6 +699,11 @@ msgid "The code on party must be unique."
 msgstr "کد نهاد/سازمان باید منحصربفرد یاشد."
 
 #, python-format
+msgctxt "model:ir.message,text:msg_party_contact_mechanism_duplicate"
+msgid "The party \"%(party)s\" has the same %(type)s \"%(value)s\"."
+msgstr ""
+
+#, python-format
 msgctxt "model:ir.message,text:msg_party_identifier_duplicate"
 msgid "The party \"%(party)s\" has the same %(type)s \"%(code)s\"."
 msgstr ""
@@ -638,71 +770,83 @@ msgctxt "model:ir.ui.menu,name:menu_party_form"
 msgid "Parties"
 msgstr "نهادها / سازمان ها"
 
-msgctxt "model:party.address,name:"
-msgid "Address"
+#, fuzzy
+msgctxt "model:party.address,string:"
+msgid "Party Address"
 msgstr "آدرس"
 
-msgctxt "model:party.address.format,name:"
-msgid "Address Format"
+#, fuzzy
+msgctxt "model:party.address.format,string:"
+msgid "Party Address Format"
 msgstr "فرمت آدرس"
 
 #, fuzzy
-msgctxt "model:party.address.subdivision_type,name:"
-msgid "Address Subdivision Type"
+msgctxt "model:party.address.subdivision_type,string:"
+msgid "Party Address Subdivision Type"
 msgstr "زیرمجموعه"
 
-msgctxt "model:party.category,name:"
-msgid "Category"
-msgstr "دسته‌بندی‌"
+#, fuzzy
+msgctxt "model:party.category,string:"
+msgid "Party Category"
+msgstr "نهاد/سازمان - زیرمجموعه"
 
-msgctxt "model:party.check_vies.result,name:"
-msgid "Check VIES"
-msgstr "بررسی VIES"
+msgctxt "model:party.check_vies.result,string:"
+msgid "Party Check Vies Result"
+msgstr ""
 
-msgctxt "model:party.configuration,name:"
+#, fuzzy
+msgctxt "model:party.configuration,string:"
 msgid "Party Configuration"
 msgstr "پیکربندی نهاد/سازمان"
 
-msgctxt "model:party.configuration.party_lang,name:"
-msgid "Party Configuration Lang"
+#, fuzzy
+msgctxt "model:party.configuration.party_lang,string:"
+msgid "Party Configuration Party Lang"
 msgstr "پیکربندی زبان نهاد/سازمان"
 
-msgctxt "model:party.configuration.party_sequence,name:"
-msgid "Party Configuration Sequence"
+#, fuzzy
+msgctxt "model:party.configuration.party_sequence,string:"
+msgid "Party Configuration Party Sequence"
 msgstr "ادامه پیکربندی نهاد/سازمان"
 
-msgctxt "model:party.contact_mechanism,name:"
-msgid "Contact Mechanism"
+#, fuzzy
+msgctxt "model:party.contact_mechanism,string:"
+msgid "Party Contact Mechanism"
 msgstr "مکانیسم های تماس"
 
 #, fuzzy
-msgctxt "model:party.contact_mechanism.language,name:"
-msgid "Contact Mechanism Language"
+msgctxt "model:party.contact_mechanism.language,string:"
+msgid "Party Contact Mechanism Language"
 msgstr "مکانیسم های تماس"
 
-msgctxt "model:party.erase.ask,name:"
-msgid "Erase Party"
-msgstr "پاک کردن نهاد/سازمان"
+#, fuzzy
+msgctxt "model:party.erase.ask,string:"
+msgid "Party Erase Ask"
+msgstr "نام نهاد/سازمان"
 
-msgctxt "model:party.identifier,name:"
+#, fuzzy
+msgctxt "model:party.identifier,string:"
 msgid "Party Identifier"
 msgstr "شناسه نهاد/سازمان"
 
-msgctxt "model:party.party,name:"
+#, fuzzy
+msgctxt "model:party.party,string:"
 msgid "Party"
 msgstr "نهاد/سازمان"
 
-msgctxt "model:party.party-party.category,name:"
-msgid "Party - Category"
+#, fuzzy
+msgctxt "model:party.party-party.category,string:"
+msgid "Party - Party Category"
 msgstr "نهاد/سازمان - زیرمجموعه"
 
-msgctxt "model:party.party.lang,name:"
+#, fuzzy
+msgctxt "model:party.party.lang,string:"
 msgid "Party Lang"
 msgstr "زبان نهاد/سازمان"
 
-msgctxt "model:party.replace.ask,name:"
-msgid "Replace Party"
-msgstr "نهاد/سازمان جایگزین"
+msgctxt "model:party.replace.ask,string:"
+msgid "Party Replace Ask"
+msgstr ""
 
 msgctxt "model:res.group,name:group_party_admin"
 msgid "Party Administration"
@@ -810,10 +954,6 @@ msgstr ""
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Chinese Unified Social Credit Code"
-msgstr ""
-
-msgctxt "selection:party.configuration,identifier_types:"
-msgid "Colombian Business Tax Number"
 msgstr ""
 
 msgctxt "selection:party.configuration,identifier_types:"

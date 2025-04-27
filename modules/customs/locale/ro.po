@@ -199,13 +199,14 @@ msgctxt "help:product.template,tariff_codes_category:"
 msgid "Use the tariff codes defined on the category."
 msgstr "Utilizați codurile tarifare definite pe categorie."
 
-msgctxt "model:customs.duty.rate,name:"
-msgid "Duty Rate"
-msgstr ""
+#, fuzzy
+msgctxt "model:customs.duty.rate,string:"
+msgid "Customs Duty Rate"
+msgstr "Categoria vamală"
 
 #, fuzzy
-msgctxt "model:customs.tariff.code,name:"
-msgid "Tariff Code"
+msgctxt "model:customs.tariff.code,string:"
+msgid "Customs Tariff Code"
 msgstr "Codul de tarif"
 
 msgctxt "model:ir.action,name:act_duty_rate_form"
@@ -239,8 +240,8 @@ msgid "Tariff Codes"
 msgstr "Coduri tarifare"
 
 #, fuzzy
-msgctxt "model:product-customs.tariff.code,name:"
-msgid "Product - Tariff Code"
+msgctxt "model:product-customs.tariff.code,string:"
+msgid "Product - Customs Tariff Code"
 msgstr "Produs - Cod Tarif"
 
 msgctxt "model:res.group,name:group_customs_admin"

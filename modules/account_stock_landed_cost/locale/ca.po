@@ -119,32 +119,38 @@ msgctxt "help:account.landed_cost,products:"
 msgid "Apply only to these products."
 msgstr "Aplica només a aquests productes."
 
-msgctxt "model:account.configuration.landed_cost_sequence,name:"
+msgctxt "model:account.configuration.landed_cost_sequence,string:"
 msgid "Account Configuration Landed Cost Sequence"
-msgstr "Configuració de la seqüencia de cost de recepció"
+msgstr "Configuració de la seqüència de cost de recepció"
 
-msgctxt "model:account.landed_cost,name:"
-msgid "Landed Cost"
-msgstr "Cost de recepció"
+#, fuzzy
+msgctxt "model:account.landed_cost,string:"
+msgid "Account Landed Cost"
+msgstr "Unitat cost de recepció"
 
-msgctxt "model:account.landed_cost-product.category,name:"
-msgid "Landed Cost - Product Category"
+#, fuzzy
+msgctxt "model:account.landed_cost-product.category,string:"
+msgid "Account Landed Cost - Product Category"
 msgstr "Cost de recepcio - Categoria de producte"
 
-msgctxt "model:account.landed_cost-product.product,name:"
-msgid "Landed Cost - Product"
+#, fuzzy
+msgctxt "model:account.landed_cost-product.product,string:"
+msgid "Account Landed Cost - Product"
 msgstr "Cost de recepció - Producte"
 
-msgctxt "model:account.landed_cost-stock.shipment.in,name:"
-msgid "Landed Cost - Shipment"
+#, fuzzy
+msgctxt "model:account.landed_cost-stock.shipment.in,string:"
+msgid "Account Landed Cost - Stock Shipment In"
 msgstr "Cost de recepció - Albarà"
 
-msgctxt "model:account.landed_cost.show,name:"
-msgid "Landed Cost Show"
+#, fuzzy
+msgctxt "model:account.landed_cost.show,string:"
+msgid "Account Landed Cost Show"
 msgstr "Mostrar cost de recepció"
 
-msgctxt "model:account.landed_cost.show.move,name:"
-msgid "Landed Cost Show"
+#, fuzzy
+msgctxt "model:account.landed_cost.show.move,string:"
+msgid "Account Landed Cost Show Move"
 msgstr "Mostrar cost de recepció"
 
 msgctxt "model:ir.action,name:act_landed_cost_form"
@@ -177,6 +183,13 @@ msgctxt ""
 "model:ir.action.act_window.domain,name:act_landed_cost_form_domain_posted"
 msgid "Posted"
 msgstr "Comptabilitzat"
+
+#, fuzzy, python-format
+msgctxt "model:ir.message,text:msg_landed_cost_delete_cancel"
+msgid "To delete landed cost \"%(landed_cost)s\" you must cancel it."
+msgstr ""
+"El cost de recepció comptabilitzat \"%(landed_cost)s\" no té cap moviment "
+"d'existènices."
 
 #, python-format
 msgctxt "model:ir.message,text:msg_landed_cost_post_no_stock_move"

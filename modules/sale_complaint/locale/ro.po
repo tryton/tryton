@@ -76,6 +76,11 @@ msgctxt "field:sale.complaint.action,amount:"
 msgid "Amount"
 msgstr "Suma"
 
+#, fuzzy
+msgctxt "field:sale.complaint.action,company:"
+msgid "Company"
+msgstr "Companie"
+
 msgctxt "field:sale.complaint.action,complaint:"
 msgid "Complaint"
 msgstr "Reclamație"
@@ -91,6 +96,20 @@ msgstr "Monedă"
 msgctxt "field:sale.complaint.action,invoice_lines:"
 msgid "Invoice Lines"
 msgstr "Rânduri Factură"
+
+msgctxt "field:sale.complaint.action,promotion_coupon:"
+msgid "Promotion Coupon"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:sale.complaint.action,promotion_coupon_duration:"
+msgid "Duration"
+msgstr "Descriere"
+
+#, fuzzy
+msgctxt "field:sale.complaint.action,promotion_coupon_number:"
+msgid "Number"
+msgstr "Număr"
 
 msgctxt "field:sale.complaint.action,quantity:"
 msgid "Quantity"
@@ -332,27 +351,29 @@ msgctxt "model:ir.ui.menu,name:menu_type"
 msgid "Types"
 msgstr "Tipuri"
 
-msgctxt "model:sale.complaint,name:"
-msgid "Customer Complaint"
-msgstr "Reclamație client"
+#, fuzzy
+msgctxt "model:sale.complaint,string:"
+msgid "Sale Complaint"
+msgstr "Reclamație"
 
 #, fuzzy
-msgctxt "model:sale.complaint.action,name:"
-msgid "Customer Complaint Action"
+msgctxt "model:sale.complaint.action,string:"
+msgid "Sale Complaint Action"
 msgstr "Acțiune Reclamație Client"
 
 #, fuzzy
-msgctxt "model:sale.complaint.action-account.invoice.line,name:"
-msgid "Customer Complaint Action - Invoice Line"
+msgctxt "model:sale.complaint.action-account.invoice.line,string:"
+msgid "Sale Complaint Action - Account Invoice Line"
 msgstr "Acțiune Reclamație Client - Rând Factură"
 
-msgctxt "model:sale.complaint.action-sale.line,name:"
-msgid "Customer Complaint Action - Sale Line"
+#, fuzzy
+msgctxt "model:sale.complaint.action-sale.line,string:"
+msgid "Sale Complaint Action - Sale Line"
 msgstr "Acțiune Reclamație Client - Rând Vânzare"
 
 #, fuzzy
-msgctxt "model:sale.complaint.type,name:"
-msgid "Customer Complaint Type"
+msgctxt "model:sale.complaint.type,string:"
+msgid "Sale Complaint Type"
 msgstr "Tip Reclamație Client"
 
 msgctxt "selection:sale.complaint,state:"
@@ -388,6 +409,10 @@ msgstr "Creare notă de credit"
 msgctxt "selection:sale.complaint.action,action:"
 msgid "Create Sale Return"
 msgstr "Creare retur de vânzare"
+
+msgctxt "selection:sale.complaint.action,action:"
+msgid "Promotion Coupon"
+msgstr ""
 
 msgctxt "view:sale.complaint:"
 msgid "Complaint"

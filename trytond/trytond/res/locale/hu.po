@@ -2,122 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "field:ir.action,groups:"
-msgid "Groups"
-msgstr "Csoportok"
-
-msgctxt "field:ir.action-res.group,action:"
-msgid "Action"
-msgstr "Művelet"
-
-msgctxt "field:ir.action-res.group,group:"
-msgid "Group"
-msgstr "Csoport"
-
-msgctxt "field:ir.action.act_window,groups:"
-msgid "Groups"
-msgstr "Csoportok"
-
-msgctxt "field:ir.action.keyword,groups:"
-msgid "Groups"
-msgstr "Csoportok"
-
-msgctxt "field:ir.action.report,groups:"
-msgid "Groups"
-msgstr "Csoportok"
-
-msgctxt "field:ir.action.url,groups:"
-msgid "Groups"
-msgstr "Csoportok"
-
-msgctxt "field:ir.action.wizard,groups:"
-msgid "Groups"
-msgstr "Csoportok"
-
-msgctxt "field:ir.export,groups:"
-msgid "Groups"
-msgstr "Csoportok"
-
-#, fuzzy
-msgctxt "field:ir.export,write_groups:"
-msgid "Modification Groups"
-msgstr "Műveletcsoport"
-
-msgctxt "field:ir.export-res.group,export:"
-msgid "Export"
-msgstr "Exportálás"
-
-msgctxt "field:ir.export-res.group,group:"
-msgid "Group"
-msgstr "Csoport"
-
-msgctxt "field:ir.export-write-res.group,export:"
-msgid "Export"
-msgstr "Exportálás"
-
-msgctxt "field:ir.export-write-res.group,group:"
-msgid "Group"
-msgstr "Csoport"
-
-#, fuzzy
-msgctxt "field:ir.model.button,groups:"
-msgid "Groups"
-msgstr "Csoportok"
-
-msgctxt "field:ir.model.button-res.group,button:"
-msgid "Button"
-msgstr "Gomb"
-
-msgctxt "field:ir.model.button-res.group,group:"
-msgid "Group"
-msgstr "Csoport"
-
-msgctxt "field:ir.model.button.click,user:"
-msgid "User"
-msgstr "Felhasználó"
-
-msgctxt "field:ir.model.button.rule,group:"
-msgid "Group"
-msgstr "Csoport"
-
-#, fuzzy
-msgctxt "field:ir.rule.group,groups:"
-msgid "Groups"
-msgstr "Csoportok"
-
-msgctxt "field:ir.rule.group-res.group,group:"
-msgid "Group"
-msgstr "Csoport"
-
-msgctxt "field:ir.rule.group-res.group,rule_group:"
-msgid "Rule Group"
-msgstr "Szabályos csoport"
-
-msgctxt "field:ir.sequence.type,groups:"
-msgid "User Groups"
-msgstr "Felhasználócsoport"
-
-msgctxt "field:ir.sequence.type-res.group,group:"
-msgid "User Groups"
-msgstr "Felhasználócsoport"
-
-msgctxt "field:ir.sequence.type-res.group,sequence_type:"
-msgid "Sequence Type"
-msgstr "Sorszámozás típusa"
-
-#, fuzzy
-msgctxt "field:ir.ui.menu,groups:"
-msgid "Groups"
-msgstr "Csoportok"
-
-msgctxt "field:ir.ui.menu-res.group,group:"
-msgid "Group"
-msgstr "Csoport"
-
-msgctxt "field:ir.ui.menu-res.group,menu:"
-msgid "Menu"
-msgstr "Menü"
-
 #, fuzzy
 msgctxt "field:res.group,buttons:"
 msgid "Buttons"
@@ -183,9 +67,10 @@ msgctxt "field:res.user,login:"
 msgid "Login"
 msgstr "Felhasználónév"
 
+#, fuzzy
 msgctxt "field:res.user,menu:"
-msgid "Menu Action"
-msgstr "Menü művelet"
+msgid "Menu"
+msgstr "Menü"
 
 msgctxt "field:res.user,name:"
 msgid "Name"
@@ -295,19 +180,6 @@ msgctxt "field:res.user.warning,user:"
 msgid "User"
 msgstr "Felhasználó"
 
-msgctxt "help:ir.export,groups:"
-msgid "The user groups that can use the export."
-msgstr ""
-
-msgctxt "help:ir.export,write_groups:"
-msgid "The user groups that can modify the export."
-msgstr ""
-
-#, fuzzy
-msgctxt "help:ir.sequence.type,groups:"
-msgid "Groups allowed to edit the sequences of this type."
-msgstr "A típus számkörének feldolgozásához jogosult csoport"
-
 msgctxt "help:res.group,parent:"
 msgid "The group to inherit accesses from."
 msgstr ""
@@ -333,19 +205,6 @@ msgctxt "model:ir.action,name:report_email_reset_password"
 msgid "Reset Password"
 msgstr "Jelszó visszaállítása"
 
-msgctxt "model:ir.action-res.group,name:"
-msgid "Action - Group"
-msgstr "Műveletcsoport"
-
-#, fuzzy
-msgctxt "model:ir.export-res.group,name:"
-msgid "Export Group"
-msgstr "Felhasználócsoport"
-
-msgctxt "model:ir.export-write-res.group,name:"
-msgid "Export Modification Group"
-msgstr ""
-
 #, python-format
 msgctxt "model:ir.message,text:msg_email_invalid"
 msgid "The email address \"%(email)s\" for \"%(user)s\" is not valid."
@@ -361,8 +220,10 @@ msgstr "Ilyen jelszó nem engedélyezett."
 
 #, python-format
 msgctxt "model:ir.message,text:msg_password_length"
-msgid "The password must have at least %(length)i characters."
-msgstr ""
+msgid "The password must have at least %(length)i character."
+msgid_plural "The password must have at least %(length)i characters."
+msgstr[0] ""
+msgstr[1] ""
 
 msgctxt "model:ir.message,text:msg_password_login"
 msgid "The password cannot be the same as user's login."
@@ -399,26 +260,6 @@ msgctxt "model:ir.model.button,string:user_reset_password_button"
 msgid "Reset Password"
 msgstr "Jelszó visszaállítása"
 
-msgctxt "model:ir.model.button-res.group,name:"
-msgid "Model Button - Group"
-msgstr "Minta gomb- csoport"
-
-msgctxt "model:ir.rule.group,name:rule_group_action"
-msgid "User in groups"
-msgstr ""
-
-msgctxt "model:ir.rule.group,name:rule_group_menu"
-msgid "User in groups"
-msgstr ""
-
-msgctxt "model:ir.rule.group,name:rule_group_sequence"
-msgid "User in groups"
-msgstr ""
-
-msgctxt "model:ir.rule.group,name:rule_group_sequence_strict"
-msgid "User in groups"
-msgstr ""
-
 msgctxt "model:ir.rule.group,name:rule_group_user_application"
 msgid "Own user application"
 msgstr ""
@@ -430,14 +271,6 @@ msgstr ""
 msgctxt "model:ir.rule.group,name:rule_group_user_warning"
 msgid "Own warning"
 msgstr ""
-
-msgctxt "model:ir.rule.group-res.group,name:"
-msgid "Rule Group - Group"
-msgstr "Csoportszabály- csoport"
-
-msgctxt "model:ir.sequence.type-res.group,name:"
-msgid "Sequence Type - Group"
-msgstr "Sorszámozás típusa ‒ csoport"
 
 msgctxt "model:ir.ui.menu,name:menu_group_form"
 msgid "Groups"
@@ -451,47 +284,47 @@ msgctxt "model:ir.ui.menu,name:menu_user_form"
 msgid "Users"
 msgstr "Felhasználók"
 
-msgctxt "model:ir.ui.menu-res.group,name:"
-msgid "UI Menu - Group"
-msgstr "Menüfelület- csoport"
-
-msgctxt "model:res.group,name:"
+#, fuzzy
+msgctxt "model:res.group,string:"
 msgid "Group"
 msgstr "Csoport"
 
-msgctxt "model:res.group,name:group_admin"
-msgid "Administration"
-msgstr "Adminisztráció"
-
-msgctxt "model:res.user,name:"
+#, fuzzy
+msgctxt "model:res.user,string:"
 msgid "User"
 msgstr "Felhasználó"
 
-msgctxt "model:res.user-ir.action,name:"
+#, fuzzy
+msgctxt "model:res.user-ir.action,string:"
 msgid "User - Action"
 msgstr "Felhasználói művelet"
 
-msgctxt "model:res.user-res.group,name:"
+#, fuzzy
+msgctxt "model:res.user-res.group,string:"
 msgid "User - Group"
 msgstr "Felhasználócsoport"
 
-msgctxt "model:res.user.application,name:"
+#, fuzzy
+msgctxt "model:res.user.application,string:"
 msgid "User Application"
-msgstr ""
+msgstr "Külső alkalmazások"
 
-msgctxt "model:res.user.config.start,name:"
-msgid "User Config Init"
+#, fuzzy
+msgctxt "model:res.user.config.start,string:"
+msgid "User Config Start"
 msgstr "Felhasználó beállítások Init"
 
-msgctxt "model:res.user.device,name:"
+msgctxt "model:res.user.device,string:"
 msgid "User Device"
 msgstr ""
 
-msgctxt "model:res.user.login.attempt,name:"
-msgid "Login Attempt"
+#, fuzzy
+msgctxt "model:res.user.login.attempt,string:"
+msgid "User Login Attempt"
 msgstr "Bejelentkezés kísérlet"
 
-msgctxt "model:res.user.warning,name:"
+#, fuzzy
+msgctxt "model:res.user.warning,string:"
 msgid "User Warning"
 msgstr "Felhasználó figyelmeztetés"
 

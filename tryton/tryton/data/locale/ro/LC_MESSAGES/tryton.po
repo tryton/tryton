@@ -2,6 +2,12 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgid "Make this an _internal message"
+msgstr ""
+
+msgid "Send"
+msgstr "Trimite"
+
 msgid "specify alternate config file"
 msgstr "specificare alt fisier de configurare"
 
@@ -125,9 +131,6 @@ msgstr "Verificați adresa URL: %s"
 msgid "Unable to check for new version."
 msgstr "Nu se poate verifica dacă există o versiune nouă."
 
-msgid "A new version is available!"
-msgstr "O nouă versiune este disponibilă!"
-
 msgid "Download"
 msgstr "Descarca"
 
@@ -139,7 +142,7 @@ msgstr "Nu s-a putut găsi o sesiune."
 
 #, fuzzy, python-format
 msgid "Error: \"%s\". Try again later."
-msgstr "Eroare: „%s”. Încercați din nou mai târziu."
+msgstr "Prea multe cereri. Încercați mai târziu."
 
 msgid "Too many requests. Try again later."
 msgstr "Prea multe cereri. Încercați mai târziu."
@@ -618,9 +621,6 @@ msgstr "Atașamente"
 msgid "Files"
 msgstr "Fişiere"
 
-msgid "Send"
-msgstr "Trimite"
-
 msgid "Select File"
 msgstr "Selectare Fişier"
 
@@ -827,6 +827,13 @@ msgstr "Note..."
 msgid "Add a note to the record"
 msgstr "Adăugați o notă la înregistrare"
 
+msgid "C_hat"
+msgstr ""
+
+#, fuzzy
+msgid "Chat on the record"
+msgstr "Adăugați o notă la înregistrare"
+
 msgid "_Actions..."
 msgstr "_Acțiuni..."
 
@@ -945,13 +952,12 @@ msgstr "Care este numele acestui export?"
 msgid "Override '%s' definition?"
 msgstr "Trecere peste definiția '%s'?"
 
-#, python-format
+#, fuzzy, python-format
 msgid "%d record saved."
-msgstr "inregistrare %d salvata."
-
-#, python-format
-msgid "%d records saved."
-msgstr "inregistrari %d salvate."
+msgid_plural "%d records saved."
+msgstr[0] "inregistrare %d salvata."
+msgstr[1] "inregistrare %d salvata."
+msgstr[2] "inregistrare %d salvata."
 
 msgid "Export failed"
 msgstr "Export eşuat"
@@ -1031,13 +1037,12 @@ msgstr "Eroare"
 msgid "Import failed"
 msgstr "Import eşuat"
 
-#, python-format
+#, fuzzy, python-format
 msgid "%d record imported."
-msgstr "înregistrare %d importată."
-
-#, python-format
-msgid "%d records imported."
-msgstr "înregistrări %d importate."
+msgid_plural "%d records imported."
+msgstr[0] "înregistrare %d importată."
+msgstr[1] "înregistrare %d importată."
+msgstr[2] "înregistrare %d importată."
 
 msgid "Search"
 msgstr "Căutare"
@@ -1108,6 +1113,10 @@ msgstr "Salvează ca"
 
 msgid "Image size too large."
 msgstr "Dimensiunea imaginii este prea mare."
+
+#, fuzzy
+msgid "Reset Column Widths"
+msgstr "Salvați lățimea coloanei"
 
 msgid "Copy"
 msgstr "Copiere"
@@ -1189,6 +1198,10 @@ msgstr "Toate fișierele"
 
 msgid "Show plain text"
 msgstr "Afișare text simplu"
+
+#, fuzzy, python-format
+msgid "Select a color for \"%s\""
+msgstr "Selectare culoare"
 
 msgid "Add value"
 msgstr "Adaugă valoare"

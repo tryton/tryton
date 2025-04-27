@@ -62,13 +62,14 @@ msgstr ""
 "Berlaku hanya saat pengiriman ke negara ini.\n"
 "Biarkan kosong untuk negara mana pun."
 
-msgctxt "model:carrier,name:"
+msgctxt "model:carrier,string:"
 msgid "Carrier"
 msgstr ""
 
-msgctxt "model:carrier.selection,name:"
+#, fuzzy
+msgctxt "model:carrier.selection,string:"
 msgid "Carrier Selection"
-msgstr ""
+msgstr "Pilihan"
 
 msgctxt "model:ir.action,name:act_carrier_form"
 msgid "Carriers"

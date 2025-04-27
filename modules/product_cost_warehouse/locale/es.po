@@ -68,8 +68,8 @@ msgctxt ""
 msgid "Compute product cost price for each warehouse."
 msgstr "Calcular el precio de coste del producto para cada almacén."
 
-msgctxt "model:ir.cron-stock.warehouse,name:"
-msgid "Cron - Warehouse"
+msgctxt "model:ir.cron-stock.warehouse,string:"
+msgid "Cron - Stock Warehouse"
 msgstr "Tarea programada - Almacén"
 
 #, python-format
@@ -81,6 +81,6 @@ msgstr ""
 "Para mover productos entre \"%(from_)s\" y \"%(to)s\", se tiene que utilizar"
 " la ubicación de tránsito de los albaranes internos."
 
-msgctxt "model:product.configuration.cost_price_warehouse,name:"
-msgid "Product Configuration Cost Price per Warehouse"
+msgctxt "model:product.configuration.cost_price_warehouse,string:"
+msgid "Product Configuration Cost Price Warehouse"
 msgstr "Configuración del producto precio de coste por almacén"

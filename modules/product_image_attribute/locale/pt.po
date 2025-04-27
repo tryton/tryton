@@ -1,15 +1,16 @@
 #
+#, fuzzy
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:product.image,attribute_set:"
 msgid "Attribute Set"
-msgstr ""
+msgstr "Grupo de Atributos"
 
 msgctxt "field:product.image,attributes:"
 msgid "Attributes"
-msgstr ""
+msgstr "Atributos"
 
 msgctxt "field:product.image,attributes_name:"
 msgid "Attributes Name"
-msgstr ""
+msgstr "Nome dos Atributos"

@@ -84,10 +84,9 @@ msgctxt "field:account.statement.import.start,file_format:"
 msgid "File Format"
 msgstr "Formato do arquivo"
 
-#, fuzzy
 msgctxt "field:account.statement.journal,account:"
 msgid "Account"
-msgstr "Contas"
+msgstr "Conta"
 
 msgctxt "field:account.statement.journal,bank_account:"
 msgid "Bank Account"
@@ -109,6 +108,16 @@ msgctxt "field:account.statement.journal,journal:"
 msgid "Journal"
 msgstr "Diário"
 
+#, fuzzy
+msgctxt "field:account.statement.journal,last_amount:"
+msgid "Last Amount"
+msgstr "Quantidade"
+
+#, fuzzy
+msgctxt "field:account.statement.journal,last_date:"
+msgid "Last Date"
+msgstr "Data de gravação"
+
 msgctxt "field:account.statement.journal,name:"
 msgid "Name"
 msgstr "Nome"
@@ -119,7 +128,7 @@ msgstr "Tipo de Validação"
 
 msgctxt "field:account.statement.line,account:"
 msgid "Account"
-msgstr "Contas"
+msgstr "Conta"
 
 msgctxt "field:account.statement.line,amount:"
 msgid "Amount"
@@ -175,10 +184,9 @@ msgctxt "field:account.statement.line,related_to:"
 msgid "Related To"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:account.statement.line,second_currency:"
 msgid "Second Currency"
-msgstr "Moeda"
+msgstr "Moeda Secundária"
 
 msgctxt "field:account.statement.line,statement:"
 msgid "Statement"
@@ -220,10 +228,9 @@ msgctxt "field:account.statement.line.group,party:"
 msgid "Party"
 msgstr "Parceiro"
 
-#, fuzzy
 msgctxt "field:account.statement.line.group,second_currency:"
 msgid "Second Currency"
-msgstr "Moeda"
+msgstr "Moeda Secundária"
 
 msgctxt "field:account.statement.line.group,statement:"
 msgid "Statement"
@@ -250,7 +257,6 @@ msgctxt "field:account.statement.origin,company_currency:"
 msgid "Company Currency"
 msgstr "Pessoa da Empresa"
 
-#, fuzzy
 msgctxt "field:account.statement.origin,currency:"
 msgid "Currency"
 msgstr "Moeda"
@@ -284,10 +290,9 @@ msgctxt "field:account.statement.origin,pending_amount:"
 msgid "Pending Amount"
 msgstr "Montante Pendente"
 
-#, fuzzy
 msgctxt "field:account.statement.origin,second_currency:"
 msgid "Second Currency"
-msgstr "Moeda"
+msgstr "Moeda Secundária"
 
 msgctxt "field:account.statement.origin,statement:"
 msgid "Statement"
@@ -306,32 +311,39 @@ msgctxt "model:account.journal,name:journal_statement"
 msgid "Statement"
 msgstr "Extrato"
 
-msgctxt "model:account.statement,name:"
+#, fuzzy
+msgctxt "model:account.statement,string:"
 msgid "Account Statement"
 msgstr "Extrato Bancário"
 
-msgctxt "model:account.statement.import.start,name:"
-msgid "Statement Import Start"
+#, fuzzy
+msgctxt "model:account.statement.import.start,string:"
+msgid "Account Statement Import Start"
 msgstr "Iniciar Importação do Extrato"
 
-msgctxt "model:account.statement.journal,name:"
-msgid "Statement Journal"
-msgstr "Diário de Extratos"
+#, fuzzy
+msgctxt "model:account.statement.journal,string:"
+msgid "Account Statement Journal"
+msgstr "Origem do Extrato Bancário"
 
-msgctxt "model:account.statement.line,name:"
+#, fuzzy
+msgctxt "model:account.statement.line,string:"
 msgid "Account Statement Line"
 msgstr "Linha de Extrato Bancário"
 
-msgctxt "model:account.statement.line.group,name:"
+#, fuzzy
+msgctxt "model:account.statement.line.group,string:"
 msgid "Account Statement Line Group"
 msgstr "Grupo de Linhas do Extrato"
 
-msgctxt "model:account.statement.origin,name:"
+#, fuzzy
+msgctxt "model:account.statement.origin,string:"
 msgid "Account Statement Origin"
 msgstr "Origem do Extrato Bancário"
 
-msgctxt "model:account.statement.origin.information,name:"
-msgid "Statement Origin Information"
+#, fuzzy
+msgctxt "model:account.statement.origin.information,string:"
+msgid "Account Statement Origin Information"
 msgstr "Informação da Origem do Extrato"
 
 #, fuzzy
@@ -365,6 +377,11 @@ msgstr "Statements"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_statement_journal_form"
+msgid "Statement Journals"
+msgstr "Statement Journals"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_statement_journal_list_reporting"
 msgid "Statement Journals"
 msgstr "Statement Journals"
 
@@ -559,6 +576,11 @@ msgstr "Import Statement"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_statement_journal_form"
+msgid "Statement Journals"
+msgstr "Statement Journals"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_statement_journal_reporting"
 msgid "Statement Journals"
 msgstr "Statement Journals"
 

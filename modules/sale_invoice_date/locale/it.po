@@ -76,10 +76,12 @@ msgctxt "model:ir.ui.menu,name:menu_invoice_term_form"
 msgid "Invoice Terms"
 msgstr ""
 
-msgctxt "model:sale.invoice.term,name:"
-msgid "Invoice Term"
-msgstr ""
+#, fuzzy
+msgctxt "model:sale.invoice.term,string:"
+msgid "Sale Invoice Term"
+msgstr "Termine di fatturazione della vendita"
 
-msgctxt "model:sale.invoice.term.relative_delta,name:"
-msgid "Invoice Term Delta"
-msgstr ""
+#, fuzzy
+msgctxt "model:sale.invoice.term.relative_delta,string:"
+msgid "Sale Invoice Term Relative Delta"
+msgstr "Termine di fatturazione della vendita"

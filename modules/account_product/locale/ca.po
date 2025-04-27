@@ -166,21 +166,25 @@ msgctxt "model:ir.rule.group,name:rule_group_category_default"
 msgid "Not accounting category"
 msgstr "Categoria no comptable"
 
-msgctxt "model:product.category-customer-account.tax,name:"
-msgid "Category - Customer Tax"
-msgstr "Categoria - Impost de client"
+#, fuzzy
+msgctxt "model:product.category-customer-account.tax,string:"
+msgid "Product Category - Customer - Account Tax"
+msgstr "Plantilla de producte - Impost client"
 
-msgctxt "model:product.category-supplier-account.tax,name:"
-msgid "Category - Supplier Tax"
-msgstr "Categoria - Impost de proveïdor"
+#, fuzzy
+msgctxt "model:product.category-supplier-account.tax,string:"
+msgid "Product Category - Supplier - Account Tax"
+msgstr "Plantilla de producte - Impost proveïdor"
 
-msgctxt "model:product.category.account,name:"
-msgid "Category Account"
-msgstr "Comptes de la categoria"
+#, fuzzy
+msgctxt "model:product.category.account,string:"
+msgid "Product Category Account"
+msgstr "Categoria de producte"
 
-msgctxt "model:product.template-product.category.account,name:"
-msgid "Template - Account Category"
-msgstr "Plantilla - Categoria Comptable"
+#, fuzzy
+msgctxt "model:product.template-product.category.account,string:"
+msgid "Product Template - Product Category Account"
+msgstr "Comptes de la plantilla de producte"
 
 msgctxt "model:res.group,name:group_account_product_admin"
 msgid "Account Product Administration"

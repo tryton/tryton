@@ -43,8 +43,9 @@ msgid "Check to correct price of already posted invoice."
 msgstr ""
 "Marqueu per corregir el preu d'una factura que ja està comptabilitzada."
 
-msgctxt "model:account.invoice.line-stock.move,name:"
-msgid "Invoice Line - Stock Move"
+#, fuzzy
+msgctxt "model:account.invoice.line-stock.move,string:"
+msgid "Account Invoice Line - Stock Move"
 msgstr "Línia de factura - Moviment d'existències"
 
 msgctxt "view:account.invoice.line:"

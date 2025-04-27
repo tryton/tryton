@@ -2,6 +2,12 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgid "Make this an _internal message"
+msgstr ""
+
+msgid "Send"
+msgstr "Надіслати"
+
 msgid "specify alternate config file"
 msgstr "вкажіть альтернативний конфігураційний файл"
 
@@ -124,9 +130,6 @@ msgstr "Перевірка URL: %s"
 
 msgid "Unable to check for new version."
 msgstr "Неможливо перевірити наявність нової версії."
-
-msgid "A new version is available!"
-msgstr "Доступна нова версія!"
 
 msgid "Download"
 msgstr "Завантажити"
@@ -627,9 +630,6 @@ msgstr "Вкладення"
 msgid "Files"
 msgstr "Файли"
 
-msgid "Send"
-msgstr "Надіслати"
-
 msgid "Select File"
 msgstr "Вибрати файл"
 
@@ -836,6 +836,13 @@ msgstr "_Примітки..."
 msgid "Add a note to the record"
 msgstr "Додати примітку до запису"
 
+msgid "C_hat"
+msgstr ""
+
+#, fuzzy
+msgid "Chat on the record"
+msgstr "Додати примітку до запису"
+
 msgid "_Actions..."
 msgstr "_Дії..."
 
@@ -954,13 +961,12 @@ msgstr "Як називається цей експорт?"
 msgid "Override '%s' definition?"
 msgstr "Перевизначити визначення '%s'?"
 
-#, python-format
+#, fuzzy, python-format
 msgid "%d record saved."
-msgstr "%d запис збережено."
-
-#, python-format
-msgid "%d records saved."
-msgstr "%d записів збережено."
+msgid_plural "%d records saved."
+msgstr[0] "%d запис збережено."
+msgstr[1] "%d запис збережено."
+msgstr[2] "%d запис збережено."
 
 msgid "Export failed"
 msgstr "Помилка експорту"
@@ -1041,13 +1047,12 @@ msgstr "Помилка"
 msgid "Import failed"
 msgstr "Помилка імпорту"
 
-#, python-format
+#, fuzzy, python-format
 msgid "%d record imported."
-msgstr "%d запис імпортовано."
-
-#, python-format
-msgid "%d records imported."
-msgstr "%d записів імпортовано."
+msgid_plural "%d records imported."
+msgstr[0] "%d запис імпортовано."
+msgstr[1] "%d запис імпортовано."
+msgstr[2] "%d запис імпортовано."
 
 msgid "Search"
 msgstr "Пошук"
@@ -1118,6 +1123,10 @@ msgstr "Зберегти як"
 
 msgid "Image size too large."
 msgstr "Розмір зображення завеликий."
+
+#, fuzzy
+msgid "Reset Column Widths"
+msgstr "Зберегти ширину колонок"
 
 msgid "Copy"
 msgstr "Копіювати"
@@ -1200,6 +1209,10 @@ msgstr "Всі файли"
 
 msgid "Show plain text"
 msgstr "Показати звичайний текст"
+
+#, fuzzy, python-format
+msgid "Select a color for \"%s\""
+msgstr "Виберіть колір"
 
 msgid "Add value"
 msgstr "Додати значення"

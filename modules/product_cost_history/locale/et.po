@@ -18,6 +18,7 @@ msgctxt "model:ir.action,name:act_product_cost_history_form"
 msgid "Product Cost History"
 msgstr "Toote hinna ajalugu"
 
-msgctxt "model:product.product.cost_history,name:"
-msgid "History of Product Cost"
+#, fuzzy
+msgctxt "model:product.product.cost_history,string:"
+msgid "Product Cost History"
 msgstr "Toote hinna ajalugu"

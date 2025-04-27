@@ -897,6 +897,11 @@ msgctxt "field:stock.shipment.internal,incoming_moves:"
 msgid "Incoming Moves"
 msgstr ""
 
+#, fuzzy
+msgctxt "field:stock.shipment.internal,internal_transit_location:"
+msgid "Internal Transit Location"
+msgstr "Envío interno"
+
 msgctxt "field:stock.shipment.internal,moves:"
 msgid "Moves"
 msgstr ""
@@ -908,6 +913,11 @@ msgstr ""
 msgctxt "field:stock.shipment.internal,outgoing_moves:"
 msgid "Outgoing Moves"
 msgstr ""
+
+#, fuzzy
+msgctxt "field:stock.shipment.internal,packed_by:"
+msgid "Packed By"
+msgstr "Empacado"
 
 msgctxt "field:stock.shipment.internal,partially_assigned:"
 msgid "Partially Assigned"
@@ -1303,6 +1313,39 @@ msgctxt "help:stock.location,storage_location:"
 msgid "The top level location where stock is stored."
 msgstr ""
 
+msgctxt "help:stock.location,type:"
+msgid "Group locations logically."
+msgstr ""
+
+msgctxt "help:stock.location,type:"
+msgid "Regroup storage locations under a logistics warehouse."
+msgstr ""
+
+msgctxt "help:stock.location,type:"
+msgid "Used as the destination for stock sent to customers."
+msgstr ""
+
+msgctxt "help:stock.location,type:"
+msgid ""
+"Used as the destination of components and the source of finished products."
+msgstr ""
+
+msgctxt "help:stock.location,type:"
+msgid "Used as the source of stock received from suppliers."
+msgstr ""
+
+msgctxt "help:stock.location,type:"
+msgid "Used during the drop shipping process."
+msgstr ""
+
+msgctxt "help:stock.location,type:"
+msgid "Used for damages, discrepancies and wastage."
+msgstr ""
+
+msgctxt "help:stock.location,type:"
+msgid "Used to physically store goods."
+msgstr ""
+
 msgctxt "help:stock.location,waste_locations:"
 msgid "The locations used for waste products from the warehouse."
 msgstr ""
@@ -1638,6 +1681,11 @@ msgid "Location Lead Times"
 msgstr ""
 
 #, fuzzy
+msgctxt "model:ir.action,name:act_location_list"
+msgid "Locations"
+msgstr "Bodega de almacenamiento"
+
+#, fuzzy
 msgctxt "model:ir.action,name:act_location_quantity_list"
 msgid "Stock Locations List"
 msgstr "Bodega de almacenamiento"
@@ -1904,6 +1952,12 @@ msgctxt ""
 msgid "Draft"
 msgstr ""
 
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_shipment_internal_form_domain_packed"
+msgid "Packed"
+msgstr "Empacado"
+
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_internal_form_domain_requests"
 msgid "Requests"
@@ -2042,13 +2096,6 @@ msgctxt "model:ir.message,text:msg_inventory_missing_empty_quantity"
 msgid ""
 "To confirm the inventory \"%(inventory)s\" you must select an option for "
 "empty quantity."
-msgstr ""
-
-#, python-format
-msgctxt "model:ir.message,text:msg_location_child_of_warehouse"
-msgid ""
-"To set location \"%(location)s\" as storage/input/output of warehouse "
-"\"%(warehouse)s\", it must be in the warehouse."
 msgstr ""
 
 #, python-format
@@ -2387,6 +2434,11 @@ msgctxt "model:ir.model.button,string:shipment_internal_draft_button"
 msgid "Draft"
 msgstr ""
 
+#, fuzzy
+msgctxt "model:ir.model.button,string:shipment_internal_pack_button"
+msgid "Pack"
+msgstr "Empacado"
+
 msgctxt "model:ir.model.button,string:shipment_internal_ship_button"
 msgid "Ship"
 msgstr ""
@@ -2591,13 +2643,14 @@ msgctxt "model:ir.ui.menu,name:menu_location_form"
 msgid "Locations"
 msgstr ""
 
-msgctxt "model:ir.ui.menu,name:menu_location_form2"
-msgid "Locations"
-msgstr ""
-
 msgctxt "model:ir.ui.menu,name:menu_location_lead_time_form"
 msgid "Location Lead Times"
 msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_location_list"
+msgid "Locations"
+msgstr "Bodega de almacenamiento"
 
 msgctxt "model:ir.ui.menu,name:menu_location_tree"
 msgid "Locations"
@@ -2663,30 +2716,33 @@ msgid "Warehouses"
 msgstr "Bodega"
 
 #, fuzzy
-msgctxt "model:party.party-delivered_to-stock.location,name:"
-msgid "Party Delivered to Warehouse"
+msgctxt "model:party.party-delivered_to-stock.location,string:"
+msgid "Party - Delivered To - Stock Location"
 msgstr "Bodega"
 
-msgctxt "model:party.party.location,name:"
+#, fuzzy
+msgctxt "model:party.party.location,string:"
 msgid "Party Location"
-msgstr ""
-
-msgctxt "model:product.by_location.context,name:"
-msgid "Product by Location"
-msgstr ""
-
-msgctxt "model:product.cost_price.revision,name:"
-msgid "Product Cost Price Revision"
-msgstr ""
+msgstr "Bodega de almacenamiento"
 
 #, fuzzy
-msgctxt "model:product.modify_cost_price.start,name:"
-msgid "Modify Cost Price"
+msgctxt "model:product.by_location.context,string:"
+msgid "Product By Location Context"
+msgstr "Bodega de almacenamiento"
+
+#, fuzzy
+msgctxt "model:product.cost_price.revision,string:"
+msgid "Product Cost Price Revision"
 msgstr "Costo"
 
 #, fuzzy
-msgctxt "model:product.recompute_cost_price.start,name:"
-msgid "Recompute Cost Price"
+msgctxt "model:product.modify_cost_price.start,string:"
+msgid "Product Modify Cost Price Start"
+msgstr "Costo"
+
+#, fuzzy
+msgctxt "model:product.recompute_cost_price.start,string:"
+msgid "Product Recompute Cost Price Start"
 msgstr "Costo"
 
 #, fuzzy
@@ -2702,40 +2758,40 @@ msgctxt "model:res.group,name:group_stock_force_assignment"
 msgid "Stock Force Assignment"
 msgstr ""
 
-msgctxt "model:stock.configuration,name:"
+#, fuzzy
+msgctxt "model:stock.configuration,string:"
 msgid "Stock Configuration"
-msgstr ""
-
-msgctxt "model:stock.configuration.location,name:"
-msgid "Stock Configuration Location"
-msgstr ""
-
-msgctxt "model:stock.configuration.sequence,name:"
-msgid "Stock Configuration Sequence"
-msgstr ""
+msgstr "Bodega de almacenamiento"
 
 #, fuzzy
-msgctxt "model:stock.inventory,name:"
+msgctxt "model:stock.configuration.location,string:"
+msgid "Stock Configuration Location"
+msgstr "Bodega de almacenamiento"
+
+#, fuzzy
+msgctxt "model:stock.configuration.sequence,string:"
+msgid "Stock Configuration Sequence"
+msgstr "Bodega de almacenamiento"
+
+#, fuzzy
+msgctxt "model:stock.inventory,string:"
 msgid "Stock Inventory"
 msgstr "Línea de inventario de stock"
 
 #, fuzzy
-msgctxt "model:stock.inventory.count.quantity,name:"
-msgid "Stock Inventory Count"
+msgctxt "model:stock.inventory.count.quantity,string:"
+msgid "Stock Inventory Count Quantity"
 msgstr "Línea de inventario de stock"
 
 #, fuzzy
-msgctxt "model:stock.inventory.count.search,name:"
-msgid "Stock Inventory Count"
+msgctxt "model:stock.inventory.count.search,string:"
+msgid "Stock Inventory Count Search"
 msgstr "Línea de inventario de stock"
 
-msgctxt "model:stock.inventory.line,name:"
+#, fuzzy
+msgctxt "model:stock.inventory.line,string:"
 msgid "Stock Inventory Line"
 msgstr "Línea de inventario de stock"
-
-msgctxt "model:stock.location,name:"
-msgid "Stock Location"
-msgstr ""
 
 msgctxt "model:stock.location,name:location_customer"
 msgid "Customer"
@@ -2771,106 +2827,119 @@ msgctxt "model:stock.location,name:location_warehouse"
 msgid "Warehouse"
 msgstr "Bodega"
 
-msgctxt "model:stock.location.lead_time,name:"
-msgid "Location Lead Time"
-msgstr ""
-
 #, fuzzy
-msgctxt "model:stock.location.waste,name:"
-msgid "Warehouse Waste Location"
+msgctxt "model:stock.location,string:"
+msgid "Stock Location"
 msgstr "Bodega de almacenamiento"
 
-msgctxt "model:stock.move,name:"
+#, fuzzy
+msgctxt "model:stock.location.lead_time,string:"
+msgid "Stock Location Lead Time"
+msgstr "Bodega de almacenamiento"
+
+#, fuzzy
+msgctxt "model:stock.location.waste,string:"
+msgid "Stock Location Waste"
+msgstr "Bodega de almacenamiento"
+
+#, fuzzy
+msgctxt "model:stock.move,string:"
 msgid "Stock Move"
-msgstr ""
+msgstr "Stock"
 
-msgctxt "model:stock.period,name:"
+#, fuzzy
+msgctxt "model:stock.period,string:"
 msgid "Stock Period"
-msgstr ""
+msgstr "Stock"
 
-msgctxt "model:stock.period.cache,name:"
+msgctxt "model:stock.period.cache,string:"
 msgid "Stock Period Cache"
 msgstr ""
 
 #, fuzzy
-msgctxt "model:stock.product_quantities_warehouse,name:"
-msgid "Product Quantities By Warehouse"
-msgstr "Cantidades de producto por bodega"
-
-msgctxt "model:stock.product_quantities_warehouse.context,name:"
-msgid "Product Quantities By Warehouse"
+msgctxt "model:stock.product_quantities_warehouse,string:"
+msgid "Stock Product Quantities Warehouse"
 msgstr "Cantidades de producto por bodega"
 
 #, fuzzy
-msgctxt "model:stock.product_quantities_warehouse.move,name:"
-msgid "Product Quantities By Warehouse Moves"
+msgctxt "model:stock.product_quantities_warehouse.context,string:"
+msgid "Stock Product Quantities Warehouse Context"
 msgstr "Cantidades de producto por bodega"
 
 #, fuzzy
-msgctxt "model:stock.products_by_locations,name:"
-msgid "Products by Locations"
+msgctxt "model:stock.product_quantities_warehouse.move,string:"
+msgid "Stock Product Quantities Warehouse Move"
+msgstr "Cantidades de producto por bodega"
+
+#, fuzzy
+msgctxt "model:stock.products_by_locations,string:"
+msgid "Stock Products By Locations"
 msgstr "Bodega de almacenamiento"
 
-msgctxt "model:stock.products_by_locations.context,name:"
-msgid "Products by Locations"
+#, fuzzy
+msgctxt "model:stock.products_by_locations.context,string:"
+msgid "Stock Products By Locations Context"
+msgstr "Bodega de almacenamiento"
+
+msgctxt "model:stock.reporting.margin.category,string:"
+msgid "Stock Reporting Margin Category"
 msgstr ""
 
-msgctxt "model:stock.reporting.margin.category,name:"
-msgid "Stock Reporting Margin per Category"
+msgctxt "model:stock.reporting.margin.category.time_series,string:"
+msgid "Stock Reporting Margin Category Time Series"
 msgstr ""
 
-msgctxt "model:stock.reporting.margin.category.time_series,name:"
-msgid "Stock Reporting Margin per Category"
+msgctxt "model:stock.reporting.margin.category.tree,string:"
+msgid "Stock Reporting Margin Category Tree"
 msgstr ""
 
-msgctxt "model:stock.reporting.margin.category.tree,name:"
-msgid "Stock Reporting Margin per Category"
-msgstr ""
-
-msgctxt "model:stock.reporting.margin.context,name:"
+msgctxt "model:stock.reporting.margin.context,string:"
 msgid "Stock Reporting Margin Context"
 msgstr ""
 
-msgctxt "model:stock.reporting.margin.main,name:"
-msgid "Stock Reporting Margin"
+msgctxt "model:stock.reporting.margin.main,string:"
+msgid "Stock Reporting Margin Main"
 msgstr ""
 
-msgctxt "model:stock.reporting.margin.main.time_series,name:"
-msgid "Stock Reporting Margin"
+msgctxt "model:stock.reporting.margin.main.time_series,string:"
+msgid "Stock Reporting Margin Main Time Series"
 msgstr ""
 
-msgctxt "model:stock.reporting.margin.product,name:"
-msgid "Stock Reporting Margin per Product"
+msgctxt "model:stock.reporting.margin.product,string:"
+msgid "Stock Reporting Margin Product"
 msgstr ""
 
-msgctxt "model:stock.reporting.margin.product.time_series,name:"
-msgid "Stock Reporting Margin per Product"
+msgctxt "model:stock.reporting.margin.product.time_series,string:"
+msgid "Stock Reporting Margin Product Time Series"
+msgstr ""
+
+msgctxt "model:stock.shipment.assign.partial,string:"
+msgid "Stock Shipment Assign Partial"
 msgstr ""
 
 #, fuzzy
-msgctxt "model:stock.shipment.assign.partial,name:"
-msgid "Assign Shipment"
-msgstr "Reservar envío interno"
-
-msgctxt "model:stock.shipment.in,name:"
-msgid "Supplier Shipment"
-msgstr "Envío de proveedor"
-
-msgctxt "model:stock.shipment.in.return,name:"
-msgid "Supplier Return Shipment"
-msgstr "Devolución a proveedor"
-
-msgctxt "model:stock.shipment.internal,name:"
-msgid "Internal Shipment"
-msgstr "Envío interno"
-
-msgctxt "model:stock.shipment.out,name:"
-msgid "Customer Shipment"
+msgctxt "model:stock.shipment.in,string:"
+msgid "Stock Shipment In"
 msgstr "Envío a cliente"
 
-msgctxt "model:stock.shipment.out.return,name:"
-msgid "Customer Return Shipment"
-msgstr "Devolución de cliente"
+#, fuzzy
+msgctxt "model:stock.shipment.in.return,string:"
+msgid "Stock Shipment In Return"
+msgstr "Reservar envío interno"
+
+#, fuzzy
+msgctxt "model:stock.shipment.internal,string:"
+msgid "Stock Shipment Internal"
+msgstr "Reservar envío interno"
+
+#, fuzzy
+msgctxt "model:stock.shipment.out,string:"
+msgid "Stock Shipment Out"
+msgstr "Envío a cliente"
+
+msgctxt "model:stock.shipment.out.return,string:"
+msgid "Stock Shipment Out Return"
+msgstr ""
 
 msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "/"
@@ -3322,6 +3391,11 @@ msgstr "Realizar"
 msgctxt "selection:stock.shipment.internal,state:"
 msgid "Draft"
 msgstr ""
+
+#, fuzzy
+msgctxt "selection:stock.shipment.internal,state:"
+msgid "Packed"
+msgstr "Empacado"
 
 msgctxt "selection:stock.shipment.internal,state:"
 msgid "Request"

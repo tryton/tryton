@@ -98,20 +98,24 @@ msgctxt "help:attendance.period,state:"
 msgid "The current state of the attendance period."
 msgstr "L'estat actual del període d'assistència."
 
-msgctxt "model:attendance.line,name:"
+#, fuzzy
+msgctxt "model:attendance.line,string:"
 msgid "Attendance Line"
 msgstr "Linia d'assitència"
 
-msgctxt "model:attendance.period,name:"
+#, fuzzy
+msgctxt "model:attendance.period,string:"
 msgid "Attendance Period"
 msgstr "Període d'assistència"
 
-msgctxt "model:attendance.sheet,name:"
+#, fuzzy
+msgctxt "model:attendance.sheet,string:"
 msgid "Attendance Sheet"
 msgstr "Full d'assistència"
 
-msgctxt "model:attendance.sheet.line,name:"
-msgid "Attendance SheetLine"
+#, fuzzy
+msgctxt "model:attendance.sheet.line,string:"
+msgid "Attendance Sheet Line"
 msgstr "Línia de full d'assistència"
 
 msgctxt "model:ir.action,name:act_attendance"

@@ -62,12 +62,12 @@ msgid ""
 msgstr ""
 
 #, fuzzy
-msgctxt "model:carrier,name:"
+msgctxt "model:carrier,string:"
 msgid "Carrier"
 msgstr "Carrier"
 
 #, fuzzy
-msgctxt "model:carrier.selection,name:"
+msgctxt "model:carrier.selection,string:"
 msgid "Carrier Selection"
 msgstr "Carrier Selection"
 

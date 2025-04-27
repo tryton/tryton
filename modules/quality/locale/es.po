@@ -368,31 +368,31 @@ msgctxt "model:ir.ui.menu,name:menu_quality_inspection_form"
 msgid "Inspections"
 msgstr "Inspecciones"
 
-msgctxt "model:quality.alert,name:"
+msgctxt "model:quality.alert,string:"
 msgid "Quality Alert"
 msgstr "Alerta calidad"
 
-msgctxt "model:quality.configuration,name:"
+msgctxt "model:quality.configuration,string:"
 msgid "Quality Configuration"
 msgstr "Configuración calidad"
 
-msgctxt "model:quality.configuration.sequence,name:"
+msgctxt "model:quality.configuration.sequence,string:"
 msgid "Quality Configuration Sequence"
 msgstr "Configuración secuencias calidad"
 
-msgctxt "model:quality.control,name:"
+msgctxt "model:quality.control,string:"
 msgid "Quality Control"
 msgstr "Control Calidad"
 
-msgctxt "model:quality.control.point,name:"
+msgctxt "model:quality.control.point,string:"
 msgid "Quality Control Point"
 msgstr "Punto control de calidad"
 
-msgctxt "model:quality.inspect.store,name:"
-msgid "Inspect Quality"
-msgstr "Inspecionar calidad"
+msgctxt "model:quality.inspect.store,string:"
+msgid "Quality Inspect Store"
+msgstr "Almacenamiento inspección calidad"
 
-msgctxt "model:quality.inspection,name:"
+msgctxt "model:quality.inspection,string:"
 msgid "Quality Inspection"
 msgstr "Inspección calidad"
 

@@ -182,13 +182,10 @@ msgctxt "help:country.subdivision,parent:"
 msgid "Add subdivision below the parent."
 msgstr "在父区划下方添加子区划。"
 
-msgctxt "model:country.country,name:"
+#, fuzzy
+msgctxt "model:country.country,string:"
 msgid "Country"
 msgstr "国家"
-
-msgctxt "model:country.organization,name:"
-msgid "Organization"
-msgstr "组织"
 
 msgctxt "model:country.organization,name:organization_amu"
 msgid "Arab Maghreb Union"
@@ -266,17 +263,20 @@ msgctxt "model:country.organization,name:organization_safta"
 msgid "South Asian Free Trade Area"
 msgstr "南亚自由贸易区"
 
-msgctxt "model:country.organization.member,name:"
-msgid "Organization Member"
+#, fuzzy
+msgctxt "model:country.organization,string:"
+msgid "Country Organization"
+msgstr "组织"
+
+#, fuzzy
+msgctxt "model:country.organization.member,string:"
+msgid "Country Organization Member"
 msgstr "组织成员"
 
-msgctxt "model:country.postal_code,name:"
-msgid "Postal Code"
+#, fuzzy
+msgctxt "model:country.postal_code,string:"
+msgid "Country Postal Code"
 msgstr "邮政编码"
-
-msgctxt "model:country.region,name:"
-msgid "Region"
-msgstr "地区"
 
 msgctxt "model:country.region,name:region_africa"
 msgid "Africa"
@@ -410,8 +410,14 @@ msgctxt "model:country.region,name:region_world"
 msgid "World"
 msgstr "世界"
 
-msgctxt "model:country.subdivision,name:"
-msgid "Subdivision"
+#, fuzzy
+msgctxt "model:country.region,string:"
+msgid "Country Region"
+msgstr "中部地区"
+
+#, fuzzy
+msgctxt "model:country.subdivision,string:"
+msgid "Country Subdivision"
 msgstr "行政区划"
 
 msgctxt "model:ir.action,name:act_country_by_region"
@@ -683,6 +689,10 @@ msgid "Entity"
 msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
+msgid "European collectivity"
+msgstr ""
+
+msgctxt "selection:country.subdivision,type:"
 msgid "Federal Dependency"
 msgstr ""
 
@@ -700,6 +710,10 @@ msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Federal capital territory"
+msgstr ""
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Federal entity"
 msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
@@ -824,6 +838,10 @@ msgid "Overseas department"
 msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
+msgid "Overseas departmental collectivity"
+msgstr ""
+
+msgctxt "selection:country.subdivision,type:"
 msgid "Overseas region"
 msgstr ""
 
@@ -837,6 +855,10 @@ msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Overseas territory"
+msgstr ""
+
+msgctxt "selection:country.subdivision,type:"
+msgid "Overseas unique territorial collectivity"
 msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
@@ -945,6 +967,11 @@ msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "State"
+msgstr "状态"
+
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "State city"
 msgstr "状态"
 
 msgctxt "selection:country.subdivision,type:"

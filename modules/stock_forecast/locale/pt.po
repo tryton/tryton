@@ -16,7 +16,7 @@ msgstr "Destino"
 
 msgctxt "field:stock.forecast,from_date:"
 msgid "From Date"
-msgstr "Data de Início"
+msgstr "A Partir da Data"
 
 msgctxt "field:stock.forecast,lines:"
 msgid "Lines"
@@ -46,7 +46,7 @@ msgstr "Destino"
 
 msgctxt "field:stock.forecast.complete.ask,from_date:"
 msgid "From Date"
-msgstr "Desde a Data"
+msgstr "A Partir da Data"
 
 #, fuzzy
 msgctxt "field:stock.forecast.complete.ask,products:"
@@ -97,14 +97,6 @@ msgstr "Quantidade Executada"
 msgctxt "field:stock.forecast.line,unit:"
 msgid "Unit"
 msgstr ""
-
-msgctxt "field:stock.forecast.line-stock.move,line:"
-msgid "Forecast Line"
-msgstr "Linha de Previsão"
-
-msgctxt "field:stock.forecast.line-stock.move,move:"
-msgid "Move"
-msgstr "Movimentação"
 
 msgctxt "help:stock.forecast.line,product_uom_category:"
 msgid "The category of Unit of Measure for the product."
@@ -178,26 +170,24 @@ msgctxt "model:res.group,name:group_stock_forecast"
 msgid "Stock Forecast"
 msgstr "Stock Forecast"
 
-msgctxt "model:stock.forecast,name:"
+#, fuzzy
+msgctxt "model:stock.forecast,string:"
 msgid "Stock Forecast"
-msgstr "Previsão do Estoque"
+msgstr "Stock Forecast"
 
-msgctxt "model:stock.forecast.complete.ask,name:"
-msgid "Complete Forecast"
-msgstr "Pedir a Previsão Completa"
+#, fuzzy
+msgctxt "model:stock.forecast.complete.ask,string:"
+msgid "Stock Forecast Complete Ask"
+msgstr "Linha da Previsão de Estoque"
 
-msgctxt "model:stock.forecast.line,name:"
+#, fuzzy
+msgctxt "model:stock.forecast.line,string:"
 msgid "Stock Forecast Line"
 msgstr "Linha da Previsão de Estoque"
 
-msgctxt "model:stock.forecast.line-stock.move,name:"
-msgid "ForecastLine - Move"
-msgstr "Linha de Previsão - Movimentação"
-
-#, fuzzy
 msgctxt "selection:stock.forecast,state:"
 msgid "Cancelled"
-msgstr "Cancelar"
+msgstr "Cancelado"
 
 msgctxt "selection:stock.forecast,state:"
 msgid "Done"

@@ -689,6 +689,11 @@ msgctxt "field:account.fiscalyear,icon:"
 msgid "Icon"
 msgstr "Ikona"
 
+#, fuzzy
+msgctxt "field:account.fiscalyear,move_sequence:"
+msgid "Move Sequence"
+msgstr "Sekwencja dowodów zaksięgowanych"
+
 msgctxt "field:account.fiscalyear,name:"
 msgid "Name"
 msgstr "Nazwa"
@@ -696,10 +701,6 @@ msgstr "Nazwa"
 msgctxt "field:account.fiscalyear,periods:"
 msgid "Periods"
 msgstr "Okresy"
-
-msgctxt "field:account.fiscalyear,post_move_sequence:"
-msgid "Post Move Sequence"
-msgstr "Sekwencja dowodów zaksięgowanych"
 
 msgctxt "field:account.fiscalyear,start_date:"
 msgid "Starting Date"
@@ -1011,11 +1012,6 @@ msgctxt "field:account.general_ledger.line,move:"
 msgid "Move"
 msgstr "Dowód księgowy"
 
-#, fuzzy
-msgctxt "field:account.general_ledger.line,move_description_used:"
-msgid "Move Description"
-msgstr "Opis dowodu księgowego"
-
 msgctxt "field:account.general_ledger.line,origin:"
 msgid "Origin"
 msgstr "Dotyczy"
@@ -1157,14 +1153,6 @@ msgctxt "field:account.journal,name:"
 msgid "Name"
 msgstr "Nazwa"
 
-msgctxt "field:account.journal,sequence:"
-msgid "Sequence"
-msgstr "Sekwencja"
-
-msgctxt "field:account.journal,sequences:"
-msgid "Sequences"
-msgstr "Sekwencje"
-
 msgctxt "field:account.journal,type:"
 msgid "Type"
 msgstr "Typ"
@@ -1196,18 +1184,6 @@ msgstr "Okres"
 msgctxt "field:account.journal.period,state:"
 msgid "State"
 msgstr "Status"
-
-msgctxt "field:account.journal.sequence,company:"
-msgid "Company"
-msgstr "Firma"
-
-msgctxt "field:account.journal.sequence,journal:"
-msgid "Journal"
-msgstr "Dziennik"
-
-msgctxt "field:account.journal.sequence,sequence:"
-msgid "Sequence"
-msgstr "Sekwencja"
 
 msgctxt "field:account.move,company:"
 msgid "Company"
@@ -1249,10 +1225,6 @@ msgctxt "field:account.move,post_date:"
 msgid "Post Date"
 msgstr "Data księgowania"
 
-msgctxt "field:account.move,post_number:"
-msgid "Post Number"
-msgstr "Numer księgowania"
-
 msgctxt "field:account.move,state:"
 msgid "State"
 msgstr "Status"
@@ -1264,6 +1236,11 @@ msgstr "Opis"
 msgctxt "field:account.move.cancel.default,reversal:"
 msgid "Reversal"
 msgstr ""
+
+#, fuzzy
+msgctxt "field:account.move.context,company:"
+msgid "Company"
+msgstr "Firma"
 
 msgctxt "field:account.move.line,account:"
 msgid "Account"
@@ -1360,6 +1337,11 @@ msgctxt "field:account.move.line,payable_receivable_balance:"
 msgid "Payable/Receivable Balance"
 msgstr "Payable/Receivable Lines"
 
+#, fuzzy
+msgctxt "field:account.move.line,payable_receivable_date:"
+msgid "Payable/Receivable Date"
+msgstr "Payable/Receivable Lines"
+
 msgctxt "field:account.move.line,period:"
 msgid "Period"
 msgstr "Okres"
@@ -1407,6 +1389,11 @@ msgstr "Opis"
 msgctxt "field:account.move.line.group.start,journal:"
 msgid "Journal"
 msgstr "Dziennik"
+
+#, fuzzy
+msgctxt "field:account.move.line.receivable_payable.context,company:"
+msgid "Company"
+msgstr "Firma"
 
 msgctxt "field:account.move.line.receivable_payable.context,payable:"
 msgid "Payable"
@@ -1508,6 +1495,11 @@ msgstr "Wymagana strona"
 msgctxt "field:account.move.line.template,taxes:"
 msgid "Taxes"
 msgstr "Podatki"
+
+#, fuzzy
+msgctxt "field:account.move.open_journal.ask,company:"
+msgid "Company"
+msgstr "Firma"
 
 msgctxt "field:account.move.open_journal.ask,journal:"
 msgid "Journal"
@@ -1661,13 +1653,14 @@ msgctxt "field:account.period,icon:"
 msgid "Icon"
 msgstr "Ikona"
 
+#, fuzzy
+msgctxt "field:account.period,move_sequence:"
+msgid "Move Sequence"
+msgstr "Sekwencja dowodów zaksięgowanych"
+
 msgctxt "field:account.period,name:"
 msgid "Name"
 msgstr "Nazwa"
-
-msgctxt "field:account.period,post_move_sequence:"
-msgid "Post Move Sequence"
-msgstr "Sekwencja dowodów zaksięgowanych"
 
 msgctxt "field:account.period,start_date:"
 msgid "Starting Date"
@@ -2453,6 +2446,11 @@ msgctxt "help:account.configuration,default_supplier_tax_rule:"
 msgid "Default supplier tax rule for new parties."
 msgstr ""
 
+msgctxt "help:account.fiscalyear,move_sequence:"
+msgid ""
+"Used to generate the move number when posting if the period has no sequence."
+msgstr ""
+
 msgctxt "help:account.fiscalyear.create_periods.start,end_day:"
 msgid ""
 "The day of the month on which periods end.\n"
@@ -2493,7 +2491,7 @@ msgctxt "help:account.income_statement.context,posted:"
 msgid "Only include posted moves."
 msgstr "Uwzględnij tylko zaksięgowane dowody."
 
-msgctxt "help:account.move,post_number:"
+msgctxt "help:account.move,number:"
 msgid "Also known as Folio Number."
 msgstr ""
 
@@ -2540,6 +2538,12 @@ msgstr ""
 
 msgctxt "help:account.move.template,description:"
 msgid "Keyword value substitutions are identified by braces ('{' and '}')."
+msgstr ""
+
+msgctxt "help:account.period,move_sequence:"
+msgid ""
+"Used to generate the move number when posting.\n"
+"Leave empty to use the fiscal year sequence."
 msgstr ""
 
 msgctxt "help:account.reconcile.start,automatic:"
@@ -2620,147 +2624,163 @@ msgctxt "help:party.party,supplier_tax_rule:"
 msgid "Apply this rule on taxes when party is supplier."
 msgstr ""
 
-msgctxt "model:account.account,name:"
+#, fuzzy
+msgctxt "model:account.account,string:"
 msgid "Account"
 msgstr "Konto"
 
-msgctxt "model:account.account-account.tax,name:"
-msgid "Account - Tax"
+#, fuzzy
+msgctxt "model:account.account-account.tax,string:"
+msgid "Account - Account Tax"
 msgstr "Konto - Podatek"
 
 #, fuzzy
-msgctxt "model:account.account.context,name:"
+msgctxt "model:account.account.context,string:"
 msgid "Account Context"
 msgstr "Account Move"
 
-msgctxt "model:account.account.deferral,name:"
+#, fuzzy
+msgctxt "model:account.account.deferral,string:"
 msgid "Account Deferral"
 msgstr "Przeniesienie salda konta"
 
 #, fuzzy
-msgctxt "model:account.account.party,name:"
+msgctxt "model:account.account.party,string:"
 msgid "Account Party"
 msgstr "Konto zobowiązań"
 
-msgctxt "model:account.account.template,name:"
+#, fuzzy
+msgctxt "model:account.account.template,string:"
 msgid "Account Template"
-msgstr "Szablon konta"
+msgstr "Szablon kont"
 
-msgctxt "model:account.account.template-account.tax.template,name:"
-msgid "Account Template - Tax Template"
+#, fuzzy
+msgctxt "model:account.account.template-account.tax.template,string:"
+msgid "Account Template - Account Tax Template"
 msgstr "Szablon konta - Szablon podatku"
 
-msgctxt "model:account.account.type,name:"
+#, fuzzy
+msgctxt "model:account.account.type,string:"
 msgid "Account Type"
 msgstr "Typ konta"
 
-msgctxt "model:account.account.type.template,name:"
+#, fuzzy
+msgctxt "model:account.account.type.template,string:"
 msgid "Account Type Template"
 msgstr "Szablony typów kont"
 
-msgctxt "model:account.aged_balance,name:"
-msgid "Aged Balance"
+#, fuzzy
+msgctxt "model:account.aged_balance,string:"
+msgid "Account Aged Balance"
 msgstr "Wiekowanie należności"
 
-msgctxt "model:account.aged_balance.context,name:"
-msgid "Aged Balance Context"
-msgstr ""
+#, fuzzy
+msgctxt "model:account.aged_balance.context,string:"
+msgid "Account Aged Balance Context"
+msgstr "Account Move"
 
 #, fuzzy
-msgctxt "model:account.balance_sheet.comparison.context,name:"
-msgid "Balance Sheet Context"
+msgctxt "model:account.balance_sheet.comparison.context,string:"
+msgid "Account Balance Sheet Context"
 msgstr "Balance Sheet"
 
-msgctxt "model:account.balance_sheet.context,name:"
-msgid "Balance Sheet Context"
-msgstr ""
+#, fuzzy
+msgctxt "model:account.balance_sheet.context,string:"
+msgid "Account Balance Sheet Context"
+msgstr "Balance Sheet"
 
-msgctxt "model:account.configuration,name:"
+#, fuzzy
+msgctxt "model:account.configuration,string:"
 msgid "Account Configuration"
 msgstr "Konfiguracja kont"
 
-msgctxt "model:account.configuration.default_account,name:"
+#, fuzzy
+msgctxt "model:account.configuration.default_account,string:"
 msgid "Account Configuration Default Account"
-msgstr ""
+msgstr "Konfiguracja kont"
 
 #, fuzzy
-msgctxt "model:account.configuration.default_tax_rule,name:"
+msgctxt "model:account.configuration.default_tax_rule,string:"
 msgid "Account Configuration Default Tax Rule"
 msgstr "Konfiguracja kont"
 
 #, fuzzy
-msgctxt "model:account.configuration.journal,name:"
+msgctxt "model:account.configuration.journal,string:"
 msgid "Account Configuration Journal"
 msgstr "Konfiguracja kont"
 
 #, fuzzy
-msgctxt "model:account.configuration.sequence,name:"
+msgctxt "model:account.configuration.sequence,string:"
 msgid "Account Configuration Sequence"
 msgstr "Konfiguracja kont"
 
-msgctxt "model:account.configuration.tax_rounding,name:"
+#, fuzzy
+msgctxt "model:account.configuration.tax_rounding,string:"
 msgid "Account Configuration Tax Rounding"
-msgstr ""
-
-msgctxt "model:account.create_chart.account,name:"
-msgid "Create Chart"
-msgstr "Utwórz wykres"
-
-msgctxt "model:account.create_chart.properties,name:"
-msgid "Create Chart"
-msgstr "Utwórz wykres"
-
-msgctxt "model:account.create_chart.start,name:"
-msgid "Create Chart"
-msgstr "Utwórz wykres"
-
-msgctxt "model:account.fiscalyear,name:"
-msgid "Fiscal Year"
-msgstr "Rok podatkowy"
-
-msgctxt "model:account.fiscalyear.balance_non_deferral.start,name:"
-msgid "Balance Non-Deferral"
-msgstr "Bilans bez przeniesień sald"
+msgstr "Konfiguracja kont"
 
 #, fuzzy
-msgctxt "model:account.fiscalyear.create_periods.start,name:"
-msgid "Create Periods Start"
+msgctxt "model:account.create_chart.account,string:"
+msgid "Account Create Chart Account"
+msgstr "Stwórz plan kont z użyciem szablonu"
+
+msgctxt "model:account.create_chart.properties,string:"
+msgid "Account Create Chart Properties"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:account.create_chart.start,string:"
+msgid "Account Create Chart Start"
+msgstr "Utwórz wykres"
+
+#, fuzzy
+msgctxt "model:account.fiscalyear,string:"
+msgid "Account Fiscalyear"
+msgstr "Poprzedni rok podatkowy"
+
+msgctxt "model:account.fiscalyear.balance_non_deferral.start,string:"
+msgid "Account Fiscalyear Balance Non Deferral Start"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:account.fiscalyear.create_periods.start,string:"
+msgid "Account Fiscalyear Create Periods Start"
 msgstr "Create Monthly Periods"
 
-msgctxt "model:account.fiscalyear.renew.start,name:"
-msgid "Renew Fiscal Year Start"
+#, fuzzy
+msgctxt "model:account.fiscalyear.renew.start,string:"
+msgid "Account Fiscalyear Renew Start"
 msgstr "Początek otworzenia na nowo roku podatkowego"
 
 #, fuzzy
-msgctxt "model:account.general_ledger.account,name:"
-msgid "General Ledger Account"
-msgstr "General Ledger - Accounts"
-
-msgctxt "model:account.general_ledger.account.context,name:"
-msgid "General Ledger Account Context"
-msgstr ""
-
-#, fuzzy
-msgctxt "model:account.general_ledger.account.party,name:"
-msgid "General Ledger Account Party"
+msgctxt "model:account.general_ledger.account,string:"
+msgid "Account General Ledger Account"
 msgstr "General Ledger - Accounts"
 
 #, fuzzy
-msgctxt "model:account.general_ledger.line,name:"
-msgid "General Ledger Line"
+msgctxt "model:account.general_ledger.account.context,string:"
+msgid "Account General Ledger Account Context"
+msgstr "General Ledger - Accounts"
+
+#, fuzzy
+msgctxt "model:account.general_ledger.account.party,string:"
+msgid "Account General Ledger Account Party"
+msgstr "General Ledger - Accounts"
+
+#, fuzzy
+msgctxt "model:account.general_ledger.line,string:"
+msgid "Account General Ledger Line"
 msgstr "General Ledger - Lines"
 
-msgctxt "model:account.general_ledger.line.context,name:"
-msgid "General Ledger Line Context"
-msgstr ""
+#, fuzzy
+msgctxt "model:account.general_ledger.line.context,string:"
+msgid "Account General Ledger Account Context"
+msgstr "General Ledger - Accounts"
 
-msgctxt "model:account.income_statement.context,name:"
-msgid "Income Statement Context"
-msgstr ""
-
-msgctxt "model:account.journal,name:"
-msgid "Journal"
-msgstr "Dziennik"
+#, fuzzy
+msgctxt "model:account.income_statement.context,string:"
+msgid "Account Income Statement Context"
+msgstr "Rachunek zysków i strat"
 
 #, fuzzy
 msgctxt "model:account.journal,name:journal_cash"
@@ -2788,195 +2808,219 @@ msgctxt "model:account.journal,name:journal_stock"
 msgid "Stock"
 msgstr "Stock"
 
-msgctxt "model:account.journal.open_cash.context,name:"
-msgid "Journal Cash Context"
-msgstr ""
-
-msgctxt "model:account.journal.period,name:"
-msgid "Journal - Period"
-msgstr "Rejestr - Okres"
-
-msgctxt "model:account.journal.sequence,name:"
-msgid "Journal Sequence"
-msgstr ""
+#, fuzzy
+msgctxt "model:account.journal,string:"
+msgid "Account Journal"
+msgstr "Account Journal"
 
 #, fuzzy
-msgctxt "model:account.move,name:"
+msgctxt "model:account.journal.open_cash.context,string:"
+msgid "Account Journal Open Cash Context"
+msgstr "Account Journal"
+
+#, fuzzy
+msgctxt "model:account.journal.period,string:"
+msgid "Account Journal Period"
+msgstr "Account Journal"
+
+#, fuzzy
+msgctxt "model:account.move,string:"
 msgid "Account Move"
 msgstr "Account Move"
 
 #, fuzzy
-msgctxt "model:account.move.cancel.default,name:"
-msgid "Cancel Moves"
-msgstr "Cancel Moves"
+msgctxt "model:account.move.cancel.default,string:"
+msgid "Account Move Cancel Default"
+msgstr "Account Move Template"
 
-msgctxt "model:account.move.line,name:"
+#, fuzzy
+msgctxt "model:account.move.context,string:"
+msgid "Account Move Context"
+msgstr "Account Move"
+
+#, fuzzy
+msgctxt "model:account.move.line,string:"
 msgid "Account Move Line"
 msgstr "Zapis księgowy"
 
 #, fuzzy
-msgctxt "model:account.move.line.delegate.start,name:"
-msgid "Delegate Lines"
-msgstr "Konto Wn"
-
-msgctxt "model:account.move.line.group.start,name:"
-msgid "Group Lines"
-msgstr "Grupuj pozycje"
-
-msgctxt "model:account.move.line.receivable_payable.context,name:"
-msgid "Receivable/Payable Line Context"
-msgstr ""
+msgctxt "model:account.move.line.delegate.start,string:"
+msgid "Account Move Line Delegate Start"
+msgstr "Account Move Template"
 
 #, fuzzy
-msgctxt "model:account.move.line.reschedule.preview,name:"
-msgid "Reschedule Lines"
-msgstr "Reconcile Lines"
+msgctxt "model:account.move.line.group.start,string:"
+msgid "Account Move Line Group Start"
+msgstr "Account Move Template"
 
 #, fuzzy
-msgctxt "model:account.move.line.reschedule.start,name:"
-msgid "Reschedule Lines"
-msgstr "Reconcile Lines"
+msgctxt "model:account.move.line.receivable_payable.context,string:"
+msgid "Account Move Line Receivable Payable Context"
+msgstr "Account Move Template"
 
 #, fuzzy
-msgctxt "model:account.move.line.reschedule.term,name:"
-msgid "Reschedule Lines"
-msgstr "Reconcile Lines"
+msgctxt "model:account.move.line.reschedule.preview,string:"
+msgid "Account Move Line Reschedule Preview"
+msgstr "Account Move Template"
 
 #, fuzzy
-msgctxt "model:account.move.line.template,name:"
+msgctxt "model:account.move.line.reschedule.start,string:"
+msgid "Account Move Line Reschedule Start"
+msgstr "Account Move Template"
+
+#, fuzzy
+msgctxt "model:account.move.line.reschedule.term,string:"
+msgid "Account Move Line Reschedule Term"
+msgstr "Account Move Template"
+
+#, fuzzy
+msgctxt "model:account.move.line.template,string:"
 msgid "Account Move Line Template"
 msgstr "Account Move Template"
 
 #, fuzzy
-msgctxt "model:account.move.open_journal.ask,name:"
-msgid "Open Journal Ask"
+msgctxt "model:account.move.open_journal.ask,string:"
+msgid "Account Move Open Journal Ask"
 msgstr "Open Journal"
 
-msgctxt "model:account.move.reconcile.write_off,name:"
-msgid "Reconcile Write Off"
-msgstr ""
-
-msgctxt "model:account.move.reconcile_lines.writeoff,name:"
-msgid "Reconcile Lines Write-Off"
-msgstr ""
-
 #, fuzzy
-msgctxt "model:account.move.reconciliation,name:"
-msgid "Account Move Reconciliation Lines"
+msgctxt "model:account.move.reconcile.write_off,string:"
+msgid "Account Move Reconcile Write Off"
 msgstr "Account Move Reconciliation"
 
 #, fuzzy
-msgctxt "model:account.move.template,name:"
+msgctxt "model:account.move.reconcile_lines.writeoff,string:"
+msgid "Account Move Reconcile Lines Writeoff"
+msgstr "Account Move Reconciliation"
+
+#, fuzzy
+msgctxt "model:account.move.reconciliation,string:"
+msgid "Account Move Reconciliation"
+msgstr "Account Move Reconciliation"
+
+#, fuzzy
+msgctxt "model:account.move.template,string:"
 msgid "Account Move Template"
 msgstr "Account Move Template"
 
-msgctxt "model:account.move.template.create.keywords,name:"
-msgid "Create Move from Template"
-msgstr "Utwórz zapis z szablonu"
-
-msgctxt "model:account.move.template.create.template,name:"
-msgid "Create Move from Template"
-msgstr "Utwórz zapis z szablonu"
-
-msgctxt "model:account.move.template.keyword,name:"
-msgid "Account Move Template Keyword"
-msgstr ""
-
-msgctxt "model:account.period,name:"
-msgid "Period"
-msgstr "Okres"
-
-msgctxt "model:account.reconcile.show,name:"
-msgid "Reconcile"
-msgstr "Uzgodnij"
-
-msgctxt "model:account.reconcile.start,name:"
-msgid "Reconcile"
-msgstr "Uzgodnij"
+#, fuzzy
+msgctxt "model:account.move.template.create.keywords,string:"
+msgid "Account Move Template Create Keywords"
+msgstr "Account Move Template"
 
 #, fuzzy
-msgctxt "model:account.tax,name:"
+msgctxt "model:account.move.template.create.template,string:"
+msgid "Account Move Template Create Template"
+msgstr "Szablon konta - Szablon podatku"
+
+#, fuzzy
+msgctxt "model:account.move.template.keyword,string:"
+msgid "Account Move Template Keyword"
+msgstr "Account Move Template"
+
+#, fuzzy
+msgctxt "model:account.period,string:"
+msgid "Account Period"
+msgstr "Konto zobowiązań"
+
+#, fuzzy
+msgctxt "model:account.reconcile.show,string:"
+msgid "Account Reconcile Show"
+msgstr "Konto należności"
+
+#, fuzzy
+msgctxt "model:account.reconcile.start,string:"
+msgid "Account Reconcile Start"
+msgstr "Account Move Reconciliation"
+
+#, fuzzy
+msgctxt "model:account.tax,string:"
 msgid "Account Tax"
 msgstr "Konto - Podatek"
 
-msgctxt "model:account.tax.code,name:"
-msgid "Tax Code"
-msgstr "Kod podatku"
+#, fuzzy
+msgctxt "model:account.tax.code,string:"
+msgid "Account Tax Code"
+msgstr "Konto - Podatek"
 
 #, fuzzy
-msgctxt "model:account.tax.code.context,name:"
-msgid "Tax Code Context"
+msgctxt "model:account.tax.code.context,string:"
+msgid "Account Tax Code Context"
 msgstr "Tax Codes Templates"
 
-msgctxt "model:account.tax.code.line,name:"
-msgid "Tax Code Line"
-msgstr ""
+#, fuzzy
+msgctxt "model:account.tax.code.line,string:"
+msgid "Account Tax Code Line"
+msgstr "Zapis księgowy"
 
 #, fuzzy
-msgctxt "model:account.tax.code.line.template,name:"
-msgid "Tax Code Line Template"
-msgstr "Tax Rule Templates"
+msgctxt "model:account.tax.code.line.template,string:"
+msgid "Account Tax Code Line Template"
+msgstr "Account Move Template"
 
 #, fuzzy
-msgctxt "model:account.tax.code.template,name:"
-msgid "Tax Code Template"
-msgstr "Tax Codes Templates"
-
-msgctxt "model:account.tax.group,name:"
-msgid "Tax Group"
-msgstr "Grupa podatkowa"
+msgctxt "model:account.tax.code.template,string:"
+msgid "Account Tax Code Template"
+msgstr "Account Type Templates"
 
 #, fuzzy
-msgctxt "model:account.tax.line,name:"
-msgid "Tax Line"
-msgstr "Tax Lines"
+msgctxt "model:account.tax.group,string:"
+msgid "Account Tax Group"
+msgstr "Konto - Podatek"
 
 #, fuzzy
-msgctxt "model:account.tax.line.template,name:"
+msgctxt "model:account.tax.line,string:"
+msgid "Account Tax Line"
+msgstr "Konto - Podatek"
+
+#, fuzzy
+msgctxt "model:account.tax.line.template,string:"
 msgid "Account Tax Line Template"
 msgstr "Account Move Template"
 
 #, fuzzy
-msgctxt "model:account.tax.rule,name:"
-msgid "Tax Rule"
-msgstr "Tax Rules"
-
-msgctxt "model:account.tax.rule.line,name:"
-msgid "Tax Rule Line"
-msgstr ""
+msgctxt "model:account.tax.rule,string:"
+msgid "Account Tax Rule"
+msgstr "Konto - Podatek"
 
 #, fuzzy
-msgctxt "model:account.tax.rule.line.template,name:"
-msgid "Tax Rule Line Template"
-msgstr "Tax Rule Templates"
+msgctxt "model:account.tax.rule.line,string:"
+msgid "Account Tax Rule Line"
+msgstr "Zapis księgowy"
 
 #, fuzzy
-msgctxt "model:account.tax.rule.template,name:"
-msgid "Tax Rule Template"
-msgstr "Tax Rule Templates"
+msgctxt "model:account.tax.rule.line.template,string:"
+msgid "Account Tax Rule Line Template"
+msgstr "Account Move Template"
 
 #, fuzzy
-msgctxt "model:account.tax.template,name:"
+msgctxt "model:account.tax.rule.template,string:"
+msgid "Account Tax Rule Template"
+msgstr "Account Type Templates"
+
+#, fuzzy
+msgctxt "model:account.tax.template,string:"
 msgid "Account Tax Template"
 msgstr "Account Type Templates"
 
-msgctxt "model:account.tax.test,name:"
-msgid "Test Tax"
-msgstr "Testuj podatek"
-
-msgctxt "model:account.tax.test.result,name:"
-msgid "Test Tax"
-msgstr "Testuj podatek"
+#, fuzzy
+msgctxt "model:account.tax.test,string:"
+msgid "Account Tax Test"
+msgstr "Account Type Templates"
 
 #, fuzzy
-msgctxt "model:account.update_chart.start,name:"
-msgid "Update Chart"
-msgstr "Utwórz wykres"
+msgctxt "model:account.tax.test.result,string:"
+msgid "Account Tax Test Result"
+msgstr "Account Type Templates"
 
 #, fuzzy
-msgctxt "model:account.update_chart.succeed,name:"
-msgid "Update Chart"
+msgctxt "model:account.update_chart.start,string:"
+msgid "Account Update Chart Start"
 msgstr "Utwórz wykres"
+
+msgctxt "model:account.update_chart.succeed,string:"
+msgid "Account Update Chart Succeed"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_account_balance_sheet"
 msgid "Accounts"
@@ -3317,19 +3361,19 @@ msgid ""
 "the lines."
 msgstr ""
 
-#, python-format
-msgctxt "model:ir.message,text:msg_change_fiscalyear_post_move_sequence"
+#, fuzzy, python-format
+msgctxt "model:ir.message,text:msg_change_fiscalyear_move_sequence"
 msgid ""
-"You cannot change the post move sequence on fiscal year \"%(fiscalyear)s\" "
+"You cannot change the move sequence on fiscal year \"%(fiscalyear)s\" "
 "because it contains posted moves."
-msgstr ""
+msgstr "Nie można usunąć konta \"%s\" zawierającego zapisy księgowe."
 
-#, python-format
-msgctxt "model:ir.message,text:msg_change_period_post_move_sequence"
+#, fuzzy, python-format
+msgctxt "model:ir.message,text:msg_change_period_move_sequence"
 msgid ""
-"You cannot change the post move sequence in period \"%(period)s\" because it"
-" has posted moves."
-msgstr ""
+"You cannot change the move sequence in period \"%(period)s\" because it has "
+"posted moves."
+msgstr "Nie można usunąć konta \"%s\" zawierającego zapisy księgowe."
 
 #, python-format
 msgctxt "model:ir.message,text:msg_close_fiscalyear_account_balance_not_zero"
@@ -3392,11 +3436,6 @@ msgctxt "model:ir.message,text:msg_delegate_line_same_origins"
 msgid "You cannot delegate together lines with different origins."
 msgstr ""
 
-#, fuzzy, python-format
-msgctxt "model:ir.message,text:msg_delete_account_with_move_lines"
-msgid "You cannot delete account \"%(account)s\" because it has move lines."
-msgstr "Nie można usunąć konta \"%s\" zawierającego zapisy księgowe."
-
 #, python-format
 msgctxt "model:ir.message,text:msg_erase_party_receivable_payable"
 msgid ""
@@ -3404,12 +3443,12 @@ msgid ""
 "receivable/payable with company \"%(company)s\"."
 msgstr ""
 
-msgctxt "model:ir.message,text:msg_fiscalyear_overlap"
-msgid "The dates of fiscal years of the same company can not overlap."
+msgctxt "model:ir.message,text:msg_fiscalyear_move_sequence_unique"
+msgid "The move sequence of fiscal years must be unique."
 msgstr ""
 
-msgctxt "model:ir.message,text:msg_fiscalyear_post_move_sequence_unique"
-msgid "The post move sequence of fiscal years must be unique."
+msgctxt "model:ir.message,text:msg_fiscalyear_overlap"
+msgid "The dates of fiscal years of the same company can not overlap."
 msgstr ""
 
 #, python-format
@@ -3525,14 +3564,14 @@ msgstr ""
 msgctxt "model:ir.message,text:msg_move_cancel_closed_period"
 msgid ""
 "The period of move \"%(move)s\" is closed.\n"
-"Use the current period to cancel the move?"
+"If you cancel the move, the current period will be used."
 msgstr ""
 
 #, python-format
 msgctxt "model:ir.message,text:msg_move_copy_closed_period"
 msgid ""
 "The period of move \"%(move)s\" is closed.\n"
-"Use the current period to copy the move?"
+"If you copy the move, the current period will be used."
 msgstr ""
 
 #, python-format
@@ -3646,9 +3685,8 @@ msgid ""
 "of move \"%(move)s\"."
 msgstr ""
 
-msgctxt "model:ir.message,text:msg_period_post_move_sequence_unique"
-msgid ""
-"A post move sequence can be reused only by periods in the same fiscal year."
+msgctxt "model:ir.message,text:msg_period_move_sequence_unique"
+msgid "A move sequence can be reused only by periods in the same fiscal year."
 msgstr ""
 
 msgctxt "model:ir.message,text:msg_period_standard_overlap"
@@ -3922,18 +3960,10 @@ msgctxt "model:ir.rule.group,name:rule_group_tax_rule_companies"
 msgid "User in companies"
 msgstr ""
 
-msgctxt "model:ir.sequence,name:sequence_account_journal"
-msgid "Default Account Journal"
-msgstr "Default Account Journal"
-
 #, fuzzy
 msgctxt "model:ir.sequence,name:sequence_account_move_reconciliation"
 msgid "Default Account Move Reconciliation"
 msgstr "Uzgodnienie dowodu księgowego"
-
-msgctxt "model:ir.sequence.type,name:sequence_type_account_journal"
-msgid "Account Journal"
-msgstr "Account Journal"
 
 #, fuzzy
 msgctxt "model:ir.sequence.type,name:sequence_type_account_move"
@@ -4156,16 +4186,19 @@ msgctxt "model:ir.ui.menu,name:menuitem_account_configuration"
 msgid "Configuration"
 msgstr "Konfiguracja"
 
-msgctxt "model:party.party.account,name:"
+#, fuzzy
+msgctxt "model:party.party.account,string:"
 msgid "Party Account"
 msgstr "Konto strony"
 
+#, fuzzy
 msgctxt "model:res.group,name:group_account"
-msgid "Account"
+msgid "Accounting"
 msgstr "Księgowość"
 
+#, fuzzy
 msgctxt "model:res.group,name:group_account_admin"
-msgid "Account Administration"
+msgid "Accounting Administration"
 msgstr "Administracja ustawieniami księgowości"
 
 msgctxt "report:account.account.type.statement:"
@@ -4924,6 +4957,11 @@ msgctxt "view:account.move.line:"
 msgid "Balance"
 msgstr "Bilans"
 
+#, fuzzy
+msgctxt "view:account.move.line:"
+msgid "Date"
+msgstr "Data"
+
 msgctxt "view:account.move.line:"
 msgid "Other Info"
 msgstr "Inne informacje"
@@ -5110,9 +5148,10 @@ msgctxt "wizard_button:account.reconcile,start,end:"
 msgid "Cancel"
 msgstr "Anuluj"
 
-msgctxt "wizard_button:account.reconcile,start,next_:"
+#, fuzzy
+msgctxt "wizard_button:account.reconcile,start,setup:"
 msgid "Reconcile"
-msgstr "Uzgodnij"
+msgstr "Uzgodnienie"
 
 msgctxt "wizard_button:account.tax.test,test,end:"
 msgid "Close"

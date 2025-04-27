@@ -5,6 +5,12 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgid "Make this an _internal message"
+msgstr ""
+
+msgid "Send"
+msgstr ""
+
 msgid "specify alternate config file"
 msgstr "indica un altro file di configurazione"
 
@@ -128,9 +134,6 @@ msgstr "Controlla URL: %s"
 
 msgid "Unable to check for new version."
 msgstr "Impossibile verificare la presenza di una nuova versione."
-
-msgid "A new version is available!"
-msgstr "Una nuova versione è disponibile!"
 
 msgid "Download"
 msgstr "Scarica"
@@ -631,9 +634,6 @@ msgstr "Allegati"
 msgid "Files"
 msgstr ""
 
-msgid "Send"
-msgstr ""
-
 #, fuzzy
 msgid "Select File"
 msgstr "Seleziona tutto"
@@ -845,6 +845,13 @@ msgstr "_Appunti..."
 msgid "Add a note to the record"
 msgstr "Aggiungi un appunto sul record"
 
+msgid "C_hat"
+msgstr ""
+
+#, fuzzy
+msgid "Chat on the record"
+msgstr "Aggiungi un appunto sul record"
+
 msgid "_Actions..."
 msgstr "_Azioni..."
 
@@ -964,13 +971,11 @@ msgstr "Qual è il nome di questa esportazione?"
 msgid "Override '%s' definition?"
 msgstr "Sostituisci definizione '%s'?"
 
-#, python-format
+#, fuzzy, python-format
 msgid "%d record saved."
-msgstr "%d record salvato."
-
-#, python-format
-msgid "%d records saved."
-msgstr "%d record salvato."
+msgid_plural "%d records saved."
+msgstr[0] "%d record salvato."
+msgstr[1] "%d record salvato."
 
 msgid "Export failed"
 msgstr ""
@@ -1054,13 +1059,11 @@ msgstr "Errore"
 msgid "Import failed"
 msgstr ""
 
-#, python-format
+#, fuzzy, python-format
 msgid "%d record imported."
-msgstr "%d record importati."
-
-#, python-format
-msgid "%d records imported."
-msgstr "%d record importati."
+msgid_plural "%d records imported."
+msgstr[0] "%d record importati."
+msgstr[1] "%d record importati."
 
 msgid "Search"
 msgstr "Ricerca"
@@ -1134,6 +1137,10 @@ msgstr "Salva come"
 
 msgid "Image size too large."
 msgstr ""
+
+#, fuzzy
+msgid "Reset Column Widths"
+msgstr "Salva larghezza colonna"
 
 msgid "Copy"
 msgstr ""
@@ -1215,6 +1222,10 @@ msgstr "Tutti i files"
 
 msgid "Show plain text"
 msgstr "Mostra testo semplice"
+
+#, python-format
+msgid "Select a color for \"%s\""
+msgstr ""
 
 msgid "Add value"
 msgstr "Aggiungi valore"

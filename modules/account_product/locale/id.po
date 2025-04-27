@@ -166,20 +166,23 @@ msgctxt "model:ir.rule.group,name:rule_group_category_default"
 msgid "Not accounting category"
 msgstr ""
 
-msgctxt "model:product.category-customer-account.tax,name:"
-msgid "Category - Customer Tax"
+#, fuzzy
+msgctxt "model:product.category-customer-account.tax,string:"
+msgid "Product Category - Customer - Account Tax"
 msgstr "Kategori - Pajak Pelanggan"
 
-msgctxt "model:product.category-supplier-account.tax,name:"
-msgid "Category - Supplier Tax"
+#, fuzzy
+msgctxt "model:product.category-supplier-account.tax,string:"
+msgid "Product Category - Supplier - Account Tax"
 msgstr "Kategori - Pajak Pemasok"
 
-msgctxt "model:product.category.account,name:"
-msgid "Category Account"
-msgstr ""
+#, fuzzy
+msgctxt "model:product.category.account,string:"
+msgid "Product Category Account"
+msgstr "Kategori Produk"
 
-msgctxt "model:product.template-product.category.account,name:"
-msgid "Template - Account Category"
+msgctxt "model:product.template-product.category.account,string:"
+msgid "Product Template - Product Category Account"
 msgstr ""
 
 msgctxt "model:res.group,name:group_account_product_admin"

@@ -63,12 +63,13 @@ msgstr ""
 "Csak ebbe az országba érkező fuvarokra érvényes.\n"
 "Hagyja üresen, hogy minden országra érvényes legyen."
 
-msgctxt "model:carrier,name:"
+#, fuzzy
+msgctxt "model:carrier,string:"
 msgid "Carrier"
 msgstr "Fuvarozó"
 
 #, fuzzy
-msgctxt "model:carrier.selection,name:"
+msgctxt "model:carrier.selection,string:"
 msgid "Carrier Selection"
 msgstr "Carrier Selection"
 

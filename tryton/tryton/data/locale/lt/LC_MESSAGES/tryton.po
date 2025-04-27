@@ -5,6 +5,12 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgid "Make this an _internal message"
+msgstr ""
+
+msgid "Send"
+msgstr ""
+
 msgid "specify alternate config file"
 msgstr "nurodyti alternatyvų konfigūravimo failą"
 
@@ -128,9 +134,6 @@ msgstr "Pasirinkti URL: %s"
 #, fuzzy
 msgid "Unable to check for new version."
 msgstr "Negalima patikrinti naujos versijos"
-
-msgid "A new version is available!"
-msgstr "Yra prieinama nauja versija!"
 
 msgid "Download"
 msgstr "Atsisiųsti"
@@ -638,9 +641,6 @@ msgstr "Priedas:"
 msgid "Files"
 msgstr ""
 
-msgid "Send"
-msgstr ""
-
 #, fuzzy
 msgid "Select File"
 msgstr "Pasirinkti viską"
@@ -854,6 +854,13 @@ msgstr "Pastabos..."
 msgid "Add a note to the record"
 msgstr "Prisegti pastabą prie įrašo"
 
+msgid "C_hat"
+msgstr ""
+
+#, fuzzy
+msgid "Chat on the record"
+msgstr "Prisegti pastabą prie įrašo"
+
 msgid "_Actions..."
 msgstr "_Veiksmai..."
 
@@ -974,13 +981,12 @@ msgstr "Kokiu pavadinimu išsaugoti šį eksportavimo šabloną?"
 msgid "Override '%s' definition?"
 msgstr "Perrašyti '%s' apibrėžimą?"
 
-#, python-format
+#, fuzzy, python-format
 msgid "%d record saved."
-msgstr "%d įrašas išsaugotas."
-
-#, python-format
-msgid "%d records saved."
-msgstr "%d įrašai išsaugoti."
+msgid_plural "%d records saved."
+msgstr[0] "%d įrašas išsaugotas."
+msgstr[1] "%d įrašas išsaugotas."
+msgstr[2] "%d įrašas išsaugotas."
 
 msgid "Export failed"
 msgstr ""
@@ -1061,13 +1067,12 @@ msgstr "Klaida"
 msgid "Import failed"
 msgstr ""
 
-#, python-format
+#, fuzzy, python-format
 msgid "%d record imported."
-msgstr "%d įrašas importuotas."
-
-#, python-format
-msgid "%d records imported."
-msgstr "%d įrašai importuoti."
+msgid_plural "%d records imported."
+msgstr[0] "%d įrašas importuotas."
+msgstr[1] "%d įrašas importuotas."
+msgstr[2] "%d įrašas importuotas."
 
 msgid "Search"
 msgstr "Ieškoti"
@@ -1139,6 +1144,9 @@ msgstr "Įrašyti kaip"
 
 msgid "Image size too large."
 msgstr "Paveikslėlis yra per didelis."
+
+msgid "Reset Column Widths"
+msgstr ""
 
 msgid "Copy"
 msgstr "Kopijuoti"
@@ -1221,6 +1229,10 @@ msgstr "Visi failai"
 
 msgid "Show plain text"
 msgstr "Rodyti paprastą tekstą"
+
+#, fuzzy, python-format
+msgid "Select a color for \"%s\""
+msgstr "Pasirinkti spalvą"
 
 msgid "Add value"
 msgstr "Pridėti reikšmę"

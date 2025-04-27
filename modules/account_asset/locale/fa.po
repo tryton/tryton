@@ -363,45 +363,53 @@ msgctxt "help:product.template,depreciation_duration:"
 msgid "In months"
 msgstr "در ماه ها"
 
-msgctxt "model:account.asset,name:"
-msgid "Asset"
-msgstr "دارایی"
+#, fuzzy
+msgctxt "model:account.asset,string:"
+msgid "Account Asset"
+msgstr "حساب دارایی"
 
-msgctxt "model:account.asset-update-account.move,name:"
-msgid "Asset - Update - Move"
+#, fuzzy
+msgctxt "model:account.asset-update-account.move,string:"
+msgid "Account Asset - Update - Account Move"
 msgstr "دارایی - به روزرسانی - جابجایی"
 
-msgctxt "model:account.asset.create_moves.start,name:"
-msgid "Create Moves Start"
+#, fuzzy
+msgctxt "model:account.asset.create_moves.start,string:"
+msgid "Account Asset Create Moves Start"
 msgstr "ایجاد شروع جابجایی ها"
 
-msgctxt "model:account.asset.line,name:"
-msgid "Asset Line"
-msgstr "سطر دارایی"
+#, fuzzy
+msgctxt "model:account.asset.line,string:"
+msgid "Account Asset Line"
+msgstr "حساب دارایی"
 
-msgctxt "model:account.asset.print_depreciation_table.start,name:"
-msgid "Asset Depreciation Table Start"
+#, fuzzy
+msgctxt "model:account.asset.print_depreciation_table.start,string:"
+msgid "Account Asset Print Depreciation Table Start"
 msgstr "جدول شروع استهلاک دارایی"
 
 #, fuzzy
-msgctxt "model:account.asset.revision,name:"
-msgid "Asset Revision"
+msgctxt "model:account.asset.revision,string:"
+msgid "Account Asset Revision"
 msgstr "سطر دارایی"
 
-msgctxt "model:account.asset.update.show_depreciation,name:"
-msgid "Update Asset Show Depreciation"
+#, fuzzy
+msgctxt "model:account.asset.update.show_depreciation,string:"
+msgid "Account Asset Update Show Depreciation"
 msgstr "به روزرسانی نمایش استهلاک دارایی"
 
-msgctxt "model:account.configuration.asset_date,name:"
+#, fuzzy
+msgctxt "model:account.configuration.asset_date,string:"
 msgid "Account Configuration Asset Date"
 msgstr "پیکربندی حساب توالی دارایی"
 
 #, fuzzy
-msgctxt "model:account.configuration.asset_frequency,name:"
+msgctxt "model:account.configuration.asset_frequency,string:"
 msgid "Account Configuration Asset Frequency"
 msgstr "پیکربندی حساب توالی دارایی"
 
-msgctxt "model:account.configuration.asset_sequence,name:"
+#, fuzzy
+msgctxt "model:account.configuration.asset_sequence,string:"
 msgid "Account Configuration Asset Sequence"
 msgstr "پیکربندی حساب توالی دارایی"
 
@@ -488,6 +496,11 @@ msgid ""
 msgstr ""
 "برای صورتحساب خرید : \"%(purchase)s\" شما باید حساب دارایی را بر روی محصول :"
 " \"%(product)s\" تنظیم کنید."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_revision_asset_origin_unique"
+msgid "A revision origin can be used only once per asset."
+msgstr "سطر صورتحساب را می توان تنها یکبار در دارایی استفاده کرد."
 
 #, fuzzy
 msgctxt "model:ir.model.button,confirm:asset_close_button"

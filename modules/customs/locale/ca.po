@@ -182,12 +182,14 @@ msgctxt "help:product.template,tariff_codes_category:"
 msgid "Use the tariff codes defined on the category."
 msgstr "Utilitza els codis aranzelaris definits a la categoria."
 
-msgctxt "model:customs.duty.rate,name:"
-msgid "Duty Rate"
+#, fuzzy
+msgctxt "model:customs.duty.rate,string:"
+msgid "Customs Duty Rate"
 msgstr "Taxa d'aranzel"
 
-msgctxt "model:customs.tariff.code,name:"
-msgid "Tariff Code"
+#, fuzzy
+msgctxt "model:customs.tariff.code,string:"
+msgid "Customs Tariff Code"
 msgstr "Codi aranzelari"
 
 msgctxt "model:ir.action,name:act_duty_rate_form"
@@ -218,8 +220,9 @@ msgctxt "model:ir.ui.menu,name:menu_tariff_code_form"
 msgid "Tariff Codes"
 msgstr "Codis d'aranzel"
 
-msgctxt "model:product-customs.tariff.code,name:"
-msgid "Product - Tariff Code"
+#, fuzzy
+msgctxt "model:product-customs.tariff.code,string:"
+msgid "Product - Customs Tariff Code"
 msgstr "Producte - Codi aranzelari"
 
 msgctxt "model:res.group,name:group_customs_admin"

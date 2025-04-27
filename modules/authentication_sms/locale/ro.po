@@ -25,13 +25,13 @@ msgstr "Număr de telefon care acceptă primirea de SMS-uri."
 #, python-format
 msgctxt "model:ir.message,text:msg_sms_text"
 msgid "%(name)s code %(code)s"
-msgstr ""
+msgstr "%(name)s cod %(code)s"
 
 #, python-format
 msgctxt "model:ir.message,text:msg_user_sms_code"
 msgid "SMS Code for %(login)s"
 msgstr "Cod SMS pentru %(login)s"
 
-msgctxt "model:res.user.login.sms_code,name:"
-msgid "SMS Code"
-msgstr "Cod SMS"
+msgctxt "model:res.user.login.sms_code,string:"
+msgid "User Login Sms Code"
+msgstr "Cod SMS Logare Utilizator"

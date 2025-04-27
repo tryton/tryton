@@ -138,11 +138,11 @@ msgstr ""
 "Les incoterms disponibles pour une utilisation avec le client.\n"
 "Laissez vide pour tous."
 
-msgctxt "model:incoterm.incoterm,name:"
+msgctxt "model:incoterm.incoterm,string:"
 msgid "Incoterm"
 msgstr "Incoterm"
 
-msgctxt "model:incoterm.incoterm-company.company,name:"
+msgctxt "model:incoterm.incoterm-company.company,string:"
 msgid "Incoterm - Company"
 msgstr "Incoterm - Société"
 
@@ -193,7 +193,7 @@ msgctxt "model:ir.ui.menu,name:menu_incoterm"
 msgid "Incoterms"
 msgstr "Incoterms"
 
-msgctxt "model:party.incoterm,name:"
+msgctxt "model:party.incoterm,string:"
 msgid "Party Incoterm"
 msgstr "Incoterm de tiers"
 

@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:stock.move,quantity_early_plans:"
 msgid "Quantity Early Plans"
-msgstr "Plans anticipés de quantité"
+msgstr "Plans de quantités anticipées"
 
 msgctxt "field:stock.quantity.early_plan,closed_by:"
 msgid "Closed by"
@@ -28,11 +28,11 @@ msgstr "Pourcentage au plus tôt"
 
 msgctxt "field:stock.quantity.early_plan,early_date:"
 msgid "Early Date"
-msgstr "Date en avance"
+msgstr "Date anticipée"
 
 msgctxt "field:stock.quantity.early_plan,early_quantity:"
 msgid "Early Quantity"
-msgstr "Quantité en avance"
+msgstr "Quantité anticipée"
 
 msgctxt "field:stock.quantity.early_plan,ignored_by:"
 msgid "Ignored by"
@@ -72,11 +72,11 @@ msgstr "Si vide, tous les entrepôts sont utilisés."
 
 msgctxt "model:ir.action,name:act_quantity_early_plan_form"
 msgid "Quantity Early Planning"
-msgstr "Planification en avance des quantités"
+msgstr "Planification des quantités anticipées"
 
 msgctxt "model:ir.action,name:act_quantity_early_plan_generate"
 msgid "Generate Stock Quantity Early Planning"
-msgstr "Générer une planification en avance des quantités de stock"
+msgstr "Générer une planification des quantités anticipées de stock"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_quantity_early_plan_form_domain_all"
@@ -115,19 +115,19 @@ msgstr "Utilisateur dans les sociétés"
 
 msgctxt "model:ir.ui.menu,name:menu_quantity_early_plan_form"
 msgid "Quantity Early Planning"
-msgstr "Planification en avance des quantités"
+msgstr "Planification des quantités anticipées"
 
 msgctxt "model:ir.ui.menu,name:menu_quantity_early_plan_generate"
 msgid "Generate Stock Quantity Early Planning"
-msgstr "Générer une planification en avance des quantités de stock"
+msgstr "Générer une planification des quantités anticipées de stock"
 
-msgctxt "model:stock.quantity.early_plan,name:"
+msgctxt "model:stock.quantity.early_plan,string:"
 msgid "Stock Quantity Early Plan"
-msgstr "Plan en avance des quantités de stock"
+msgstr "Plan des quantités anticipées de stock"
 
-msgctxt "model:stock.quantity.early_plan.generate.start,name:"
-msgid "Stock Quantity Early Plan Generate"
-msgstr "Générer un plan en avance des quantités de stock"
+msgctxt "model:stock.quantity.early_plan.generate.start,string:"
+msgid "Stock Quantity Early Plan Generate Start"
+msgstr "Générer un plan des quantités anticipées de stock"
 
 msgctxt "selection:stock.quantity.early_plan,state:"
 msgid "Closed"
@@ -147,7 +147,7 @@ msgstr "En traitement"
 
 msgctxt "view:stock.quantity.early_plan.generate.start:"
 msgid "Generate Stock Quantity Early Planning?"
-msgstr "Générer une planification en avance des quantités de stock ?"
+msgstr "Générer une planification des quantités anticipées de stock ?"
 
 msgctxt "view:stock.quantity.early_plan:"
 msgid "Other Info"

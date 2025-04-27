@@ -350,45 +350,54 @@ msgctxt "help:product.template,depreciation_duration:"
 msgid "In months"
 msgstr "En mesos"
 
-msgctxt "model:account.asset,name:"
-msgid "Asset"
-msgstr "Actiu"
+#, fuzzy
+msgctxt "model:account.asset,string:"
+msgid "Account Asset"
+msgstr "Compte d'actiu"
 
-msgctxt "model:account.asset-update-account.move,name:"
-msgid "Asset - Update - Move"
+#, fuzzy
+msgctxt "model:account.asset-update-account.move,string:"
+msgid "Account Asset - Update - Account Move"
 msgstr "Actiu - Actualitza - Assentament"
 
-msgctxt "model:account.asset.create_moves.start,name:"
-msgid "Create Moves Start"
+#, fuzzy
+msgctxt "model:account.asset.create_moves.start,string:"
+msgid "Account Asset Create Moves Start"
 msgstr "Crea assentaments - Inici"
 
-msgctxt "model:account.asset.line,name:"
-msgid "Asset Line"
-msgstr "Línia d'actiu"
+#, fuzzy
+msgctxt "model:account.asset.line,string:"
+msgid "Account Asset Line"
+msgstr "Compte d'actiu"
 
-msgctxt "model:account.asset.print_depreciation_table.start,name:"
-msgid "Asset Depreciation Table Start"
+#, fuzzy
+msgctxt "model:account.asset.print_depreciation_table.start,string:"
+msgid "Account Asset Print Depreciation Table Start"
 msgstr "Taula d'amortització d'actiu - Inici"
 
-msgctxt "model:account.asset.revision,name:"
-msgid "Asset Revision"
+#, fuzzy
+msgctxt "model:account.asset.revision,string:"
+msgid "Account Asset Revision"
 msgstr "Revisió del actiu"
 
-msgctxt "model:account.asset.update.show_depreciation,name:"
-msgid "Update Asset Show Depreciation"
+#, fuzzy
+msgctxt "model:account.asset.update.show_depreciation,string:"
+msgid "Account Asset Update Show Depreciation"
 msgstr "Actualitza actius - Mostra amortització"
 
-msgctxt "model:account.configuration.asset_date,name:"
+#, fuzzy
+msgctxt "model:account.configuration.asset_date,string:"
 msgid "Account Configuration Asset Date"
 msgstr "Configuració de les dates dels actius"
 
-msgctxt "model:account.configuration.asset_frequency,name:"
+#, fuzzy
+msgctxt "model:account.configuration.asset_frequency,string:"
 msgid "Account Configuration Asset Frequency"
 msgstr "Configuració de la freqüència dels actius"
 
-msgctxt "model:account.configuration.asset_sequence,name:"
+msgctxt "model:account.configuration.asset_sequence,string:"
 msgid "Account Configuration Asset Sequence"
-msgstr "Configuració de la seqüencia dels actius"
+msgstr "Configuració de la seqüència dels actius"
 
 msgctxt "model:account.journal,name:journal_asset"
 msgid "Asset"
@@ -471,6 +480,11 @@ msgid ""
 msgstr ""
 "Es necessita un compte d'actiu pel producte \"%(product)s\" per poder "
 "facturar la compra \"%(purchase)s\"."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_revision_asset_origin_unique"
+msgid "A revision origin can be used only once per asset."
+msgstr "La línia de factura pot ser usada una sola vegada en un actiu."
 
 msgctxt "model:ir.model.button,confirm:asset_close_button"
 msgid "Are you sure you want to close the asset?"

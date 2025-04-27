@@ -316,6 +316,13 @@ msgstr "为当前记录添加附件"
 msgid "Add a note to the record"
 msgstr "为当前记录添加注释"
 
+msgid "Chat"
+msgstr ""
+
+#, fuzzy
+msgid "Chat on the record"
+msgstr "打开记录"
+
 #, fuzzy
 msgid "Email..."
 msgstr "用电子邮件发送..."
@@ -482,6 +489,9 @@ msgstr "显示"
 msgid "Hide"
 msgstr "隐藏"
 
+msgid "Select a color for \"%1\""
+msgstr ""
+
 msgid "Open the record"
 msgstr "打开记录"
 
@@ -537,6 +547,9 @@ msgstr "菜单"
 #, fuzzy
 msgid "Copy Selected Rows"
 msgstr "已选记录"
+
+msgid "Reset Column Widths"
+msgstr ""
 
 msgid "#ERROR"
 msgstr "#错误"
@@ -765,6 +778,15 @@ msgstr "切换声音"
 
 msgid "Wizard"
 msgstr "向导"
+
+msgid "Enter a message"
+msgstr ""
+
+msgid "Submit the message"
+msgstr ""
+
+msgid "Make this an internal message"
+msgstr ""
 
 msgid "Translate view"
 msgstr "翻译视图"

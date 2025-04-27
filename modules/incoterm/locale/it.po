@@ -134,11 +134,11 @@ msgid ""
 "Leave empty for all."
 msgstr ""
 
-msgctxt "model:incoterm.incoterm,name:"
+msgctxt "model:incoterm.incoterm,string:"
 msgid "Incoterm"
 msgstr ""
 
-msgctxt "model:incoterm.incoterm-company.company,name:"
+msgctxt "model:incoterm.incoterm-company.company,string:"
 msgid "Incoterm - Company"
 msgstr ""
 
@@ -183,7 +183,7 @@ msgctxt "model:ir.ui.menu,name:menu_incoterm"
 msgid "Incoterms"
 msgstr ""
 
-msgctxt "model:party.incoterm,name:"
+msgctxt "model:party.incoterm,string:"
 msgid "Party Incoterm"
 msgstr ""
 

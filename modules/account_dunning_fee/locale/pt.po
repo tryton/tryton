@@ -28,7 +28,7 @@ msgstr "Produto"
 
 msgctxt "field:account.dunning.fee.dunning_level,amount:"
 msgid "Amount"
-msgstr "Quantidade"
+msgstr "Montante"
 
 msgctxt "field:account.dunning.fee.dunning_level,currency:"
 msgid "Currency"
@@ -54,12 +54,14 @@ msgctxt "help:account.dunning.fee,compute_method:"
 msgid "Method to compute the fee amount"
 msgstr "Método para calcular o montante das taxas"
 
-msgctxt "model:account.dunning.fee,name:"
+#, fuzzy
+msgctxt "model:account.dunning.fee,string:"
 msgid "Account Dunning Fee"
 msgstr "Contabilidade Taxas das Cobranças"
 
-msgctxt "model:account.dunning.fee.dunning_level,name:"
-msgid "Account Dunning Fee Dunning-Level"
+#, fuzzy
+msgctxt "model:account.dunning.fee.dunning_level,string:"
+msgid "Account Dunning Fee Dunning Level"
 msgstr "Contabilidade Taxas das Cobranças Cobrança-Nível"
 
 #, fuzzy

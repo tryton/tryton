@@ -318,6 +318,13 @@ msgstr "Додати вкладення до запису"
 msgid "Add a note to the record"
 msgstr "Додати примітку до запису"
 
+msgid "Chat"
+msgstr ""
+
+#, fuzzy
+msgid "Chat on the record"
+msgstr "Відкрити запис"
+
 #, fuzzy
 msgid "Email..."
 msgstr "Ел.пошта..."
@@ -484,6 +491,9 @@ msgstr "Показати"
 msgid "Hide"
 msgstr "Сховати"
 
+msgid "Select a color for \"%1\""
+msgstr ""
+
 msgid "Open the record"
 msgstr "Відкрити запис"
 
@@ -539,6 +549,9 @@ msgstr ""
 #, fuzzy
 msgid "Copy Selected Rows"
 msgstr "Вибрані записи"
+
+msgid "Reset Column Widths"
+msgstr ""
 
 msgid "#ERROR"
 msgstr ""
@@ -777,6 +790,15 @@ msgstr ""
 
 msgid "Wizard"
 msgstr "Майстер"
+
+msgid "Enter a message"
+msgstr ""
+
+msgid "Submit the message"
+msgstr ""
+
+msgid "Make this an internal message"
+msgstr ""
 
 msgid "Translate view"
 msgstr "Переклад вкладки"

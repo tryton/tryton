@@ -10,8 +10,8 @@ msgctxt "field:account.invoice.correct.start,lines:"
 msgid "Invoice Lines"
 msgstr "Baris Faktur"
 
-msgctxt "model:account.invoice.correct.start,name:"
-msgid "Correct Invoice"
+msgctxt "model:account.invoice.correct.start,string:"
+msgid "Account Invoice Correct Start"
 msgstr ""
 
 msgctxt "model:ir.action,name:wizard_invoice_correct"

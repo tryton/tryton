@@ -38,8 +38,8 @@ msgctxt "help:company.employee_cost_price,cost_price:"
 msgid "Hourly cost price."
 msgstr "Einstandspreis pro Stunde."
 
-msgctxt "model:company.employee_cost_price,name:"
-msgid "Employee Cost Price"
+msgctxt "model:company.employee_cost_price,string:"
+msgid "Company Employee Cost Price"
 msgstr "Mitarbeiter Einstandspreis"
 
 msgctxt "model:ir.message,text:msg_employee_unique_cost_price_date"

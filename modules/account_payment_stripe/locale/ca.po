@@ -305,29 +305,35 @@ msgctxt "help:account.payment.stripe.account,webhook_signing_secret:"
 msgid "The Stripe's signing secret of the webhook."
 msgstr "El secret de firma de Stripe per al Webhook."
 
-msgctxt "model:account.payment.stripe.account,name:"
-msgid "Stripe Account"
+#, fuzzy
+msgctxt "model:account.payment.stripe.account,string:"
+msgid "Account Payment Stripe Account"
 msgstr "Compte Stripe"
 
-msgctxt "model:account.payment.stripe.customer,name:"
-msgid "Stripe Customer"
-msgstr "Client Stripe"
+#, fuzzy
+msgctxt "model:account.payment.stripe.customer,string:"
+msgid "Account Payment Stripe Customer"
+msgstr "Crea clients de Stripe"
 
-msgctxt "model:account.payment.stripe.customer.fingerprint,name:"
-msgid "Stripe Customer Fingerprint"
+#, fuzzy
+msgctxt "model:account.payment.stripe.customer.fingerprint,string:"
+msgid "Account Payment Stripe Customer Fingerprint"
 msgstr "Empremta digital del client de Strip"
 
-msgctxt "model:account.payment.stripe.customer.identical,name:"
-msgid "Stripe Customer Identical"
+#, fuzzy
+msgctxt "model:account.payment.stripe.customer.identical,string:"
+msgid "Account Payment Stripe Customer Identical"
 msgstr "Client de Stripe idèntic"
 
-msgctxt "model:account.payment.stripe.customer.source.detach.ask,name:"
-msgid "Detach Customer Source"
-msgstr "Separa l'origen del client"
+#, fuzzy
+msgctxt "model:account.payment.stripe.customer.source.detach.ask,string:"
+msgid "Account Payment Stripe Customer Source Detach Ask"
+msgstr "Origen client Stripe"
 
-msgctxt "model:account.payment.stripe.refund,name:"
-msgid "Stripe Payment Refund"
-msgstr "Devolució de pagament de Stripe"
+#, fuzzy
+msgctxt "model:account.payment.stripe.refund,string:"
+msgid "Account Payment Stripe Refund"
+msgstr "Crea devolucions de Stripe"
 
 msgctxt "model:ir.action,name:act_account_form"
 msgid "Stripe Accounts"
@@ -397,10 +403,11 @@ msgctxt "model:ir.message,text:msg_customer_fingerprint_unique"
 msgid "The fingerprint must be unique by customer."
 msgstr "L'empremta digital ha de ser única per client."
 
-#, python-format
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_no_stripe_token"
 msgid ""
-"To process payment \"%(payment)s\" you must set a Stripe token or customer."
+"To process payment \"%(payment)s\" you must set a Stripe token, payment "
+"intent or customer."
 msgstr ""
 "Per processar el pagament \"%(payment)s\" heu de definir-hi un client o un "
 "token de Stripe."
@@ -480,20 +487,13 @@ msgid "Stripe Refunds"
 msgstr "Devolucions stripe"
 
 msgctxt "report:account.payment.stripe.checkout:"
-msgid "Credit or debit card"
-msgstr "Targeta de crèdit o dèbit"
-
-msgctxt "report:account.payment.stripe.checkout:"
-msgid "Pay"
-msgstr "Paga"
-
-msgctxt "report:account.payment.stripe.checkout:"
-msgid "Register card"
-msgstr "Registra targeta"
-
-msgctxt "report:account.payment.stripe.checkout:"
 msgid "Stripe Checkout"
 msgstr "Procés de pagament de Stripe"
+
+#, fuzzy
+msgctxt "report:account.payment.stripe.checkout:"
+msgid "Submit"
+msgstr "Envia"
 
 msgctxt "report:account.payment.stripe.email_checkout:"
 msgid "Authorization needed"

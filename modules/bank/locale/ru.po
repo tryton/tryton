@@ -32,6 +32,11 @@ msgid "Owners"
 msgstr "Владелец"
 
 #, fuzzy
+msgctxt "field:bank.account,owners_sequence:"
+msgid "Owners Sequence"
+msgstr "Последовательность"
+
+#, fuzzy
 msgctxt "field:bank.account-party.party,account:"
 msgid "Account"
 msgstr "Счет"
@@ -64,6 +69,11 @@ msgctxt "field:party.party,bank_accounts:"
 msgid "Bank Accounts"
 msgstr ""
 
+#, fuzzy
+msgctxt "field:party.party,bank_accounts_used:"
+msgid "Bank Accounts Used"
+msgstr "Счет"
+
 msgctxt "help:bank,bic:"
 msgid "Bank/Business Identifier Code."
 msgstr ""
@@ -81,19 +91,20 @@ msgid "The bank account which is identified by the number."
 msgstr ""
 
 #, fuzzy
-msgctxt "model:bank,name:"
+msgctxt "model:bank,string:"
 msgid "Bank"
 msgstr "Banks"
 
-msgctxt "model:bank.account,name:"
+#, fuzzy
+msgctxt "model:bank.account,string:"
 msgid "Bank Account"
-msgstr ""
+msgstr "Счет"
 
-msgctxt "model:bank.account-party.party,name:"
+msgctxt "model:bank.account-party.party,string:"
 msgid "Bank Account - Party"
 msgstr ""
 
-msgctxt "model:bank.account.number,name:"
+msgctxt "model:bank.account.number,string:"
 msgid "Bank Account Number"
 msgstr ""
 

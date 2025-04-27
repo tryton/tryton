@@ -225,26 +225,30 @@ msgctxt "help:account.payment.braintree.account,webhook_endpoint:"
 msgid "The URL to be called by Braintree."
 msgstr "URL-ul ce trebuie apelat de catre Braintree."
 
-msgctxt "model:account.payment.braintree.account,name:"
-msgid "Braintree Account"
+#, fuzzy
+msgctxt "model:account.payment.braintree.account,string:"
+msgid "Account Payment Braintree Account"
 msgstr "Cont Braintree"
 
-msgctxt "model:account.payment.braintree.customer,name:"
-msgid "Braintree Customer"
-msgstr "Client Braintree"
+#, fuzzy
+msgctxt "model:account.payment.braintree.customer,string:"
+msgid "Account Payment Braintree Customer"
+msgstr "Creeaza Client Braintree"
 
-msgctxt "model:account.payment.braintree.customer.identical,name:"
-msgid "Braintree Customer Identical"
+#, fuzzy
+msgctxt "model:account.payment.braintree.customer.identical,string:"
+msgid "Account Payment Braintree Customer Identical"
 msgstr "Client Identic Braintree"
 
 msgctxt ""
-"model:account.payment.braintree.customer.payment_method.delete.ask,name:"
-msgid "Delete Customer Payment Method"
-msgstr "Stergere Metoda de Plata Client"
+"model:account.payment.braintree.customer.payment_method.delete.ask,string:"
+msgid "Account Payment Braintree Customer Payment Method Delete Ask"
+msgstr ""
 
-msgctxt "model:account.payment.braintree.refund,name:"
-msgid "Braintree Payment Refund"
-msgstr "Rambursare Plata Braintree"
+#, fuzzy
+msgctxt "model:account.payment.braintree.refund,string:"
+msgid "Account Payment Braintree Refund"
+msgstr "Rambursari Braintree"
 
 msgctxt "model:ir.action,name:act_account_form"
 msgid "Braintree Accounts"

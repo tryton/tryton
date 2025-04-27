@@ -134,8 +134,9 @@ msgctxt "model:res.group,name:group_stock_force_expiration"
 msgid "Stock Force Expiration"
 msgstr "تاریخ انقضاء موجودی"
 
-msgctxt "model:stock.location.lot.shelf_life,name:"
-msgid "Stock Configuration Lot Shelf Life"
+#, fuzzy
+msgctxt "model:stock.location.lot.shelf_life,string:"
+msgid "Stock Location Lot Shelf Life"
 msgstr "پیکربندی موجودی ؛ عمرمفید مصرف"
 
 msgctxt "selection:product.product,expiration_state:"

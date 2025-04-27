@@ -1,5 +1,4 @@
 #
-#, fuzzy
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -47,8 +46,8 @@ msgstr ""
 "De reguliere expressie die overeenkomt met de documentbron.\n"
 "Laat leeg om elke bron toe te staan."
 
-msgctxt "model:document.incoming.ocr.service,name:"
-msgid "Incoming Document OCR Service"
+msgctxt "model:document.incoming.ocr.service,string:"
+msgid "Document Incoming Ocr Service"
 msgstr "OCR service voor inkomende documenten"
 
 msgctxt "model:ir.action,name:act_document_incoming_ocr_service_form"

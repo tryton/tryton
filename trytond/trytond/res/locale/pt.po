@@ -2,131 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-#, fuzzy
-msgctxt "field:ir.action,groups:"
-msgid "Groups"
-msgstr "Grupos"
-
-msgctxt "field:ir.action-res.group,action:"
-msgid "Action"
-msgstr "Ação"
-
-msgctxt "field:ir.action-res.group,group:"
-msgid "Group"
-msgstr "Grupo"
-
-#, fuzzy
-msgctxt "field:ir.action.act_window,groups:"
-msgid "Groups"
-msgstr "Grupos"
-
-#, fuzzy
-msgctxt "field:ir.action.keyword,groups:"
-msgid "Groups"
-msgstr "Grupos"
-
-#, fuzzy
-msgctxt "field:ir.action.report,groups:"
-msgid "Groups"
-msgstr "Grupos"
-
-#, fuzzy
-msgctxt "field:ir.action.url,groups:"
-msgid "Groups"
-msgstr "Grupos"
-
-#, fuzzy
-msgctxt "field:ir.action.wizard,groups:"
-msgid "Groups"
-msgstr "Grupos"
-
-#, fuzzy
-msgctxt "field:ir.export,groups:"
-msgid "Groups"
-msgstr "Grupos"
-
-#, fuzzy
-msgctxt "field:ir.export,write_groups:"
-msgid "Modification Groups"
-msgstr "Ação - Grupo"
-
-msgctxt "field:ir.export-res.group,export:"
-msgid "Export"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:ir.export-res.group,group:"
-msgid "Group"
-msgstr "Grupo"
-
-msgctxt "field:ir.export-write-res.group,export:"
-msgid "Export"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:ir.export-write-res.group,group:"
-msgid "Group"
-msgstr "Grupo"
-
-#, fuzzy
-msgctxt "field:ir.model.button,groups:"
-msgid "Groups"
-msgstr "Grupos"
-
-msgctxt "field:ir.model.button-res.group,button:"
-msgid "Button"
-msgstr "Botão"
-
-msgctxt "field:ir.model.button-res.group,group:"
-msgid "Group"
-msgstr "Grupo"
-
-msgctxt "field:ir.model.button.click,user:"
-msgid "User"
-msgstr "Usuário"
-
-msgctxt "field:ir.model.button.rule,group:"
-msgid "Group"
-msgstr "Grupo"
-
-#, fuzzy
-msgctxt "field:ir.rule.group,groups:"
-msgid "Groups"
-msgstr "Grupos"
-
-msgctxt "field:ir.rule.group-res.group,group:"
-msgid "Group"
-msgstr "Grupo"
-
-msgctxt "field:ir.rule.group-res.group,rule_group:"
-msgid "Rule Group"
-msgstr "Regra do Grupo"
-
-msgctxt "field:ir.sequence.type,groups:"
-msgid "User Groups"
-msgstr "Grupos do Usuário"
-
-msgctxt "field:ir.sequence.type-res.group,group:"
-msgid "User Groups"
-msgstr "Grupos do Usuário"
-
-msgctxt "field:ir.sequence.type-res.group,sequence_type:"
-msgid "Sequence Type"
-msgstr "Tipo de Sequência"
-
-#, fuzzy
-msgctxt "field:ir.ui.menu,groups:"
-msgid "Groups"
-msgstr "Grupos"
-
-msgctxt "field:ir.ui.menu-res.group,group:"
-msgid "Group"
-msgstr "Grupo"
-
-msgctxt "field:ir.ui.menu-res.group,menu:"
-msgid "Menu"
-msgstr "Menu"
-
 msgctxt "field:res.group,buttons:"
 msgid "Buttons"
 msgstr "Botões"
@@ -149,7 +24,7 @@ msgstr "Nome"
 
 msgctxt "field:res.group,parent:"
 msgid "Parent"
-msgstr ""
+msgstr "Pai"
 
 msgctxt "field:res.group,rule_groups:"
 msgid "Rules"
@@ -169,7 +44,7 @@ msgstr "Aplicações"
 
 msgctxt "field:res.user,avatar_badge_url:"
 msgid "Avatar Badge URL"
-msgstr ""
+msgstr "URL do Emblema de Avatar"
 
 msgctxt "field:res.user,email:"
 msgid "Email"
@@ -192,8 +67,8 @@ msgid "Login"
 msgstr "Nome de Usuário"
 
 msgctxt "field:res.user,menu:"
-msgid "Menu Action"
-msgstr "Ação de Menu"
+msgid "Menu"
+msgstr "Menu"
 
 msgctxt "field:res.user,name:"
 msgid "Name"
@@ -269,16 +144,15 @@ msgstr "Usuário"
 
 msgctxt "field:res.user.device,cookie:"
 msgid "Cookie"
-msgstr ""
+msgstr "Cookie"
 
-#, fuzzy
 msgctxt "field:res.user.device,login:"
 msgid "Login"
-msgstr "Nome de Usuário"
+msgstr "Acessar"
 
 msgctxt "field:res.user.login.attempt,device_cookie:"
 msgid "Device Cookie"
-msgstr ""
+msgstr "Cookie de Dispositivo"
 
 msgctxt "field:res.user.login.attempt,ip_address:"
 msgid "IP Address"
@@ -304,27 +178,13 @@ msgctxt "field:res.user.warning,user:"
 msgid "User"
 msgstr "Usuário"
 
-msgctxt "help:ir.export,groups:"
-msgid "The user groups that can use the export."
-msgstr ""
-
-msgctxt "help:ir.export,write_groups:"
-msgid "The user groups that can modify the export."
-msgstr ""
-
-#, fuzzy
-msgctxt "help:ir.sequence.type,groups:"
-msgid "Groups allowed to edit the sequences of this type."
-msgstr "Grupos que possuem permissão para editar sequências deste tipo"
-
 msgctxt "help:res.group,parent:"
 msgid "The group to inherit accesses from."
-msgstr ""
+msgstr "O grupo para herdar os acessos."
 
-#, fuzzy
 msgctxt "help:res.user,actions:"
 msgid "Actions that will be run at login."
-msgstr "Ações que serão executadas ao entrar"
+msgstr "Ações que serão executadas ao acessar."
 
 msgctxt "model:ir.action,name:act_group_form"
 msgid "Groups"
@@ -340,25 +200,12 @@ msgstr "Usuários"
 
 msgctxt "model:ir.action,name:report_email_reset_password"
 msgid "Reset Password"
-msgstr "Reset Password"
-
-msgctxt "model:ir.action-res.group,name:"
-msgid "Action - Group"
-msgstr "Ação - Grupo"
-
-#, fuzzy
-msgctxt "model:ir.export-res.group,name:"
-msgid "Export Group"
-msgstr "Grupos de Usuários"
-
-msgctxt "model:ir.export-write-res.group,name:"
-msgid "Export Modification Group"
-msgstr ""
+msgstr "Restaurar Senha"
 
 #, python-format
 msgctxt "model:ir.message,text:msg_email_invalid"
 msgid "The email address \"%(email)s\" for \"%(user)s\" is not valid."
-msgstr ""
+msgstr "O endereço de email \"%(email)s\" de \"%(user)s\" é invalido."
 
 msgctxt "model:ir.message,text:msg_password_email"
 msgid "The password cannot be the same as user's email address."
@@ -370,8 +217,10 @@ msgstr "A senha é proibida."
 
 #, python-format
 msgctxt "model:ir.message,text:msg_password_length"
-msgid "The password must have at least %(length)i characters."
-msgstr ""
+msgid "The password must have at least %(length)i character."
+msgid_plural "The password must have at least %(length)i characters."
+msgstr[0] "A senha deve ter pelo menos %(length)i caractere."
+msgstr[1] "A senha deve ter pelo menos %(length)i caracteres."
 
 msgctxt "model:ir.message,text:msg_password_login"
 msgid "The password cannot be the same as user's login."
@@ -392,63 +241,35 @@ msgstr ""
 #, python-format
 msgctxt "model:ir.message,text:msg_user_password"
 msgid "Password for %(login)s"
-msgstr ""
+msgstr "Senha para %(login)s"
 
 msgctxt "model:ir.model.button,help:user_reset_password_button"
 msgid "Send by email a new temporary password to the user"
-msgstr "Send by email a new temporary password to the user"
+msgstr "Enviar por email nova senha temporária ao usuário"
 
 msgctxt "model:ir.model.button,string:user_application_cancel_button"
 msgid "Cancel"
-msgstr "Cancel"
+msgstr "Cancelar"
 
 msgctxt "model:ir.model.button,string:user_application_validate_button"
 msgid "Validate"
-msgstr "Validate"
+msgstr "Validar"
 
 msgctxt "model:ir.model.button,string:user_reset_password_button"
 msgid "Reset Password"
-msgstr "Reset Password"
-
-msgctxt "model:ir.model.button-res.group,name:"
-msgid "Model Button - Group"
-msgstr "Modelo Botão - Grupo"
-
-msgctxt "model:ir.rule.group,name:rule_group_action"
-msgid "User in groups"
-msgstr ""
-
-msgctxt "model:ir.rule.group,name:rule_group_menu"
-msgid "User in groups"
-msgstr ""
-
-msgctxt "model:ir.rule.group,name:rule_group_sequence"
-msgid "User in groups"
-msgstr ""
-
-msgctxt "model:ir.rule.group,name:rule_group_sequence_strict"
-msgid "User in groups"
-msgstr ""
+msgstr "Resetar Senha"
 
 msgctxt "model:ir.rule.group,name:rule_group_user_application"
 msgid "Own user application"
-msgstr ""
+msgstr "Aplicativo próprio do usuário"
 
 msgctxt "model:ir.rule.group,name:rule_group_user_application_admin"
 msgid "Any user application"
-msgstr ""
+msgstr "Qualquer aplicativo de usuário"
 
 msgctxt "model:ir.rule.group,name:rule_group_user_warning"
 msgid "Own warning"
-msgstr ""
-
-msgctxt "model:ir.rule.group-res.group,name:"
-msgid "Rule Group - Group"
-msgstr "Regra Grupo - Grupo"
-
-msgctxt "model:ir.sequence.type-res.group,name:"
-msgid "Sequence Type - Group"
-msgstr "Sequência Tipo - Grupo"
+msgstr "Advertência própria"
 
 msgctxt "model:ir.ui.menu,name:menu_group_form"
 msgid "Groups"
@@ -462,47 +283,39 @@ msgctxt "model:ir.ui.menu,name:menu_user_form"
 msgid "Users"
 msgstr "Usuários"
 
-msgctxt "model:ir.ui.menu-res.group,name:"
-msgid "UI Menu - Group"
-msgstr "UI Menu - Grupo"
-
-msgctxt "model:res.group,name:"
+msgctxt "model:res.group,string:"
 msgid "Group"
 msgstr "Grupo"
 
-msgctxt "model:res.group,name:group_admin"
-msgid "Administration"
-msgstr "Administração"
-
-msgctxt "model:res.user,name:"
+msgctxt "model:res.user,string:"
 msgid "User"
 msgstr "Usuário"
 
-msgctxt "model:res.user-ir.action,name:"
+msgctxt "model:res.user-ir.action,string:"
 msgid "User - Action"
 msgstr "Usuário - Ação"
 
-msgctxt "model:res.user-res.group,name:"
+msgctxt "model:res.user-res.group,string:"
 msgid "User - Group"
 msgstr "Usuário - Grupo"
 
-msgctxt "model:res.user.application,name:"
+msgctxt "model:res.user.application,string:"
 msgid "User Application"
 msgstr "Aplicação do Usuário"
 
-msgctxt "model:res.user.config.start,name:"
-msgid "User Config Init"
-msgstr "Init de Configuração de Usuário"
+msgctxt "model:res.user.config.start,string:"
+msgid "User Config Start"
+msgstr "Início Configuração de Usuário"
 
-msgctxt "model:res.user.device,name:"
+msgctxt "model:res.user.device,string:"
 msgid "User Device"
-msgstr ""
+msgstr "Dispositivo do usuário"
 
-msgctxt "model:res.user.login.attempt,name:"
-msgid "Login Attempt"
+msgctxt "model:res.user.login.attempt,string:"
+msgid "User Login Attempt"
 msgstr "Tentativa de Entrar"
 
-msgctxt "model:res.user.warning,name:"
+msgctxt "model:res.user.warning,string:"
 msgid "User Warning"
 msgstr "Alerta de Usuário"
 
@@ -516,19 +329,27 @@ msgid ""
 "                [7:%(http_host)s/#%(database)s][8:]\n"
 "                You must set a new one from the user's preferences.[9:]"
 msgstr ""
+"Olá,\n"
+"                recebemos uma solicitação para redefinir a senha da conta associada com [1:%(login)s]. Nenhuma mudança foi realizada na sua conta ainda.[2:]\n"
+"                Você pode acessar com essa senha provisória [3:%(password)s] em[4:]\n"
+"                [5:tryton://%(host)s/%(database)s][6:]\n"
+"                [7:%(http_host)s/#%(database)s][8:]\n"
+"                Você deve criar uma nova senha desde as preferências do usuário.[9:]"
 
 msgctxt "report:res.user.email_reset_password:"
 msgid "If you didn't make this request, you can safely ignore this email."
 msgstr ""
+"Caso você não tiver realizado essa solicitação, pode ignorar esta mensagem "
+"de email."
 
 msgctxt "report:res.user.email_reset_password:"
 msgid "Reset Password"
 msgstr "Redefinir senha"
 
-#, fuzzy, python-format
+#, python-format
 msgctxt "report:res.user.email_reset_password:"
 msgid "The password will expire in [1:%(datetime)s]."
-msgstr "A senha irá expirar em"
+msgstr "A senha irá expirar em [1:%(datetime)s]."
 
 msgctxt "selection:res.user.application,state:"
 msgid "Cancelled"
@@ -550,10 +371,9 @@ msgctxt "view:res.group:"
 msgid "Members"
 msgstr "Membros"
 
-#, fuzzy
 msgctxt "view:res.user.config.start:"
 msgid "Be careful that the login must be unique."
-msgstr "O nome de usuário deve ser único!"
+msgstr "Lembre que o nome de usuário deve ser único."
 
 msgctxt "view:res.user.config.start:"
 msgid "You can now add some users into the system."
@@ -569,7 +389,7 @@ msgstr "Ações"
 
 msgctxt "view:res.user:"
 msgid "Group Membership"
-msgstr "Grupos"
+msgstr "Integrantes do Grupo"
 
 msgctxt "view:res.user:"
 msgid "Preferences"

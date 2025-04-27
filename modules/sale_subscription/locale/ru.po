@@ -339,6 +339,12 @@ msgctxt "help:sale.subscription.recurrence.rule,byyearday:"
 msgid "A comma separated list of integers."
 msgstr ""
 
+msgctxt "help:sale.subscription.recurrence.rule,exclusive:"
+msgid ""
+"If checked, dates which are part of this recurrence rule will not be "
+"generated."
+msgstr ""
+
 msgctxt "help:sale.subscription.recurrence.rule,set_:"
 msgid "Add the rule below the set."
 msgstr ""
@@ -523,53 +529,53 @@ msgid "Subscriptions"
 msgstr "Subscriptions"
 
 #, fuzzy
-msgctxt "model:sale.subscription,name:"
-msgid "Subscription"
+msgctxt "model:sale.subscription,string:"
+msgid "Sale Subscription"
 msgstr "Subscription"
 
 #, fuzzy
-msgctxt "model:sale.subscription.create_invoice.start,name:"
-msgid "Create Subscription Invoice"
+msgctxt "model:sale.subscription.create_invoice.start,string:"
+msgid "Sale Subscription Create Invoice Start"
 msgstr "Create Subscription Invoices"
 
 #, fuzzy
-msgctxt "model:sale.subscription.line,name:"
-msgid "Subscription Line"
+msgctxt "model:sale.subscription.line,string:"
+msgid "Sale Subscription Line"
 msgstr "Subscription Services"
 
 #, fuzzy
-msgctxt "model:sale.subscription.line.consumption,name:"
-msgid "Subscription Line Consumption"
+msgctxt "model:sale.subscription.line.consumption,string:"
+msgid "Sale Subscription Line Consumption"
 msgstr "Generate Subscription Line Consumptions"
 
 #, fuzzy
-msgctxt "model:sale.subscription.line.consumption.create.start,name:"
-msgid "Create Subscription Line Consumption"
+msgctxt "model:sale.subscription.line.consumption.create.start,string:"
+msgid "Sale Subscription Line Consumption Create Start"
 msgstr "Generate Subscription Line Consumptions"
 
 #, fuzzy
-msgctxt "model:sale.subscription.recurrence.rule,name:"
-msgid "Subscription Recurrence Rule"
+msgctxt "model:sale.subscription.recurrence.rule,string:"
+msgid "Sale Subscription Recurrence Rule"
 msgstr "Subscription Recurrence Rule Sets"
 
 #, fuzzy
-msgctxt "model:sale.subscription.recurrence.rule.set,name:"
-msgid "Subscription Recurrence Rule Set"
+msgctxt "model:sale.subscription.recurrence.rule.set,string:"
+msgid "Sale Subscription Recurrence Rule Set"
 msgstr "Subscription Recurrence Rule Sets"
 
 #, fuzzy
-msgctxt "model:sale.subscription.recurrence.rule.set.test,name:"
-msgid "Test Subscription Recurrence Rule Set"
+msgctxt "model:sale.subscription.recurrence.rule.set.test,string:"
+msgid "Sale Subscription Recurrence Rule Set Test"
 msgstr "Subscription Recurrence Rule Sets"
 
 #, fuzzy
-msgctxt "model:sale.subscription.recurrence.rule.set.test.result,name:"
-msgid "Test Subscription Recurrence Rule Set Result"
+msgctxt "model:sale.subscription.recurrence.rule.set.test.result,string:"
+msgid "Sale Subscription Recurrence Rule Set Test Result"
 msgstr "Subscription Recurrence Rule Sets"
 
 #, fuzzy
-msgctxt "model:sale.subscription.service,name:"
-msgid "Subscription Service"
+msgctxt "model:sale.subscription.service,string:"
+msgid "Sale Subscription Service"
 msgstr "Subscription Services"
 
 #, fuzzy

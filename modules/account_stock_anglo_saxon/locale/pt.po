@@ -18,14 +18,14 @@ msgctxt "field:stock.move,out_anglo_saxon_quantity:"
 msgid "Output Anglo-Saxon Quantity"
 msgstr "Quantidade Anglo-Saxã de Saída"
 
-#, fuzzy, python-format
+#, python-format
 msgctxt "model:ir.message,text:msg_invoice_line_stock_move_different_product"
 msgid ""
 "The invoice line \"%(line)s\" is linked to stock moves of other products than \"%(product)s\".\n"
 "This may compute a wrong COGS."
 msgstr ""
-"A linha da fatura '%(line)s' está vinculada a movimentações de estoque de outros produtos que não '%(product)s'.\n"
-"Isso pode computar um COGS errado."
+"A linha da fatura \"%(line)s\" está vinculada a movimentações de estoque de outros produtos que não \"%(product)s\".\n"
+"Isso pode calcular um CPV incorreto."
 
 #, python-format
 msgctxt "model:ir.message,text:msg_move_cancel_anglo_saxon"
@@ -33,6 +33,8 @@ msgid ""
 "You cannot cancel move \"%(move)s\" because it is used for anglo-saxon "
 "accounting."
 msgstr ""
+"Você não pode cancelar o movimento \"%(move)s\" porque ele é usado para "
+"contabilidade anglo-saxônica."
 
 #, python-format
 msgctxt "model:ir.message,text:msg_move_delete_anglo_saxon"
@@ -40,11 +42,12 @@ msgid ""
 "You cannot delete move \"%(move)s\" because it is used for anglo-saxon "
 "accounting."
 msgstr ""
+"Você não pode excluir o movimento \"%(move)s\" porque ele é usado para "
+"contabilidade anglo-saxônica."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_move_quantity_greater"
 msgid "Anglo-Saxon quantity cannot be greater than quantity."
-msgstr "A quantidade anglo-saxã não pode ser maior do que a quantidade."
+msgstr "A quantidade anglo-saxônica não pode ser maior que a quantidade."
 
 msgctxt "selection:account.fiscalyear,account_stock_method:"
 msgid "Anglo-Saxon"

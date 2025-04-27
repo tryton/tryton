@@ -75,6 +75,11 @@ msgctxt "model:ir.message,text:msg_label_value"
 msgid "%(label)s: %(value)s"
 msgstr "%(label)s: %(value)s"
 
+#, fuzzy
+msgctxt "model:ir.message,text:msg_product_attribute_name_unique"
+msgid "The name of the product attribute must be unique."
+msgstr "El identificador principal del grup d'atribut de productes."
+
 msgctxt "model:ir.ui.menu,name:menu_attribute"
 msgid "Attributes"
 msgstr "Atributs"
@@ -83,15 +88,18 @@ msgctxt "model:ir.ui.menu,name:menu_attribute_set"
 msgid "Attribute Sets"
 msgstr "Grups d'atributs"
 
-msgctxt "model:product.attribute,name:"
+#, fuzzy
+msgctxt "model:product.attribute,string:"
 msgid "Product Attribute"
 msgstr "Atributs de producte"
 
-msgctxt "model:product.attribute-product.attribute-set,name:"
-msgid "Product Attribute - Set"
+#, fuzzy
+msgctxt "model:product.attribute-product.attribute-set,string:"
+msgid "Product Attribute - Product Attribute - Set"
 msgstr "Atribut de producte - Grup"
 
-msgctxt "model:product.attribute.set,name:"
+#, fuzzy
+msgctxt "model:product.attribute.set,string:"
 msgid "Product Attribute Set"
 msgstr "Grup atribut de producte"
 

@@ -18,6 +18,10 @@ msgctxt "field:analytic.account.entry,company:"
 msgid "Company"
 msgstr "Empresa"
 
+msgctxt "field:analytic.account.entry,editable:"
+msgid "Editable"
+msgstr ""
+
 msgctxt "field:analytic.account.entry,origin:"
 msgid "Origin"
 msgstr "Origen"
@@ -166,29 +170,35 @@ msgctxt "field:analytic_account.rule,party_visible:"
 msgid "Party Visible"
 msgstr "Tercer visible"
 
-msgctxt "model:analytic.account.entry,name:"
+#, fuzzy
+msgctxt "model:analytic.account.entry,string:"
 msgid "Analytic Account Entry"
 msgstr "Assentament compte analític"
 
-msgctxt "model:analytic_account.account,name:"
+#, fuzzy
+msgctxt "model:analytic_account.account,string:"
 msgid "Analytic Account"
 msgstr "Compte analític"
 
-msgctxt "model:analytic_account.account.context,name:"
-msgid "Open Chart of Accounts"
-msgstr "Obre pla comptable"
+#, fuzzy
+msgctxt "model:analytic_account.account.context,string:"
+msgid "Analytic Account Context"
+msgstr "Assentament compte analític"
 
-msgctxt "model:analytic_account.account.distribution,name:"
+#, fuzzy
+msgctxt "model:analytic_account.account.distribution,string:"
 msgid "Analytic Account Distribution"
 msgstr "Distribució de comptabilitat analítica"
 
-msgctxt "model:analytic_account.line,name:"
-msgid "Analytic Line"
-msgstr "Línia analítica"
+#, fuzzy
+msgctxt "model:analytic_account.line,string:"
+msgid "Analytic Account Line"
+msgstr "Mida comptes analítics"
 
-msgctxt "model:analytic_account.rule,name:"
-msgid "Analytic Rule"
-msgstr "Regla analítica"
+#, fuzzy
+msgctxt "model:analytic_account.rule,string:"
+msgid "Analytic Account Rule"
+msgstr "Compte analític"
 
 msgctxt "model:ir.action,name:act_account_list"
 msgid "Accounts"

@@ -234,27 +234,27 @@ msgctxt "help:account.budget.line.period,total_amount:"
 msgid "The total amount allocated to the budget and its children."
 msgstr "Le montant total alloué à la ligne budgétaire et à ses enfants."
 
-msgctxt "model:account.budget,name:"
+msgctxt "model:account.budget,string:"
 msgid "Account Budget"
 msgstr "Budget comptable"
 
-msgctxt "model:account.budget.context,name:"
+msgctxt "model:account.budget.context,string:"
 msgid "Account Budget Context"
 msgstr "Contexte de budget comptable"
 
-msgctxt "model:account.budget.copy.start,name:"
-msgid "Copy Budget"
-msgstr "Copier le budget"
+msgctxt "model:account.budget.copy.start,string:"
+msgid "Account Budget Copy Start"
+msgstr "Copie du budget comptable Début"
 
-msgctxt "model:account.budget.line,name:"
+msgctxt "model:account.budget.line,string:"
 msgid "Account Budget Line"
 msgstr "Ligne budgétaire comptable"
 
-msgctxt "model:account.budget.line.create_periods.start,name:"
-msgid "Create Periods"
-msgstr "Créer les périodes"
+msgctxt "model:account.budget.line.create_periods.start,string:"
+msgid "Account Budget Line Create Periods Start"
+msgstr "Création des périodes de ligne budgétaire comptable Début"
 
-msgctxt "model:account.budget.line.period,name:"
+msgctxt "model:account.budget.line.period,string:"
 msgid "Account Budget Line Period"
 msgstr "Période de ligne budgétaire comptable"
 

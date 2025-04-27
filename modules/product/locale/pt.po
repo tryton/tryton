@@ -2,23 +2,21 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-#, fuzzy
 msgctxt "field:ir.configuration,product_price_decimal:"
 msgid "Product Price Decimal"
-msgstr "Preço de Custo do Produto"
+msgstr "Preço decimal do produto"
 
 msgctxt "field:product.category,childs:"
 msgid "Children"
 msgstr "Filhos"
 
-#, fuzzy
 msgctxt "field:product.category,code:"
 msgid "Code"
 msgstr "Código"
 
 msgctxt "field:product.category,code_readonly:"
 msgid "Code Readonly"
-msgstr ""
+msgstr "Código Somente leitura"
 
 msgctxt "field:product.category,name:"
 msgid "Name"
@@ -28,12 +26,10 @@ msgctxt "field:product.category,parent:"
 msgid "Parent"
 msgstr "Pai"
 
-#, fuzzy
 msgctxt "field:product.category,templates:"
 msgid "Products"
 msgstr "Produtos"
 
-#, fuzzy
 msgctxt "field:product.configuration,category_sequence:"
 msgid "Category Sequence"
 msgstr "Modelo de produto"
@@ -42,15 +38,13 @@ msgctxt "field:product.configuration,default_cost_price_method:"
 msgid "Default Cost Method"
 msgstr "Método de Custo Padrão"
 
-#, fuzzy
 msgctxt "field:product.configuration,product_sequence:"
 msgid "Variant Sequence"
-msgstr "Modelo de produto"
+msgstr "Sequência de Variantes"
 
-#, fuzzy
 msgctxt "field:product.configuration,template_sequence:"
 msgid "Product Sequence"
-msgstr "Modelo de produto"
+msgstr "Sequência do produto"
 
 msgctxt ""
 "field:product.configuration.default_cost_price_method,default_cost_price_method:"
@@ -81,17 +75,14 @@ msgctxt "field:product.cost_price_method,template:"
 msgid "Template"
 msgstr "Modelo"
 
-#, fuzzy
 msgctxt "field:product.identifier,code:"
 msgid "Code"
 msgstr "Código"
 
-#, fuzzy
 msgctxt "field:product.identifier,product:"
 msgid "Product"
 msgstr "Produto"
 
-#, fuzzy
 msgctxt "field:product.identifier,type:"
 msgid "Type"
 msgstr "Tipo"
@@ -122,7 +113,7 @@ msgstr "Código"
 
 msgctxt "field:product.product,code_readonly:"
 msgid "Code Readonly"
-msgstr ""
+msgstr "Código Somente leitura"
 
 msgctxt "field:product.product,consumable:"
 msgid "Consumable"
@@ -148,15 +139,13 @@ msgctxt "field:product.product,cost_prices:"
 msgid "Cost Prices"
 msgstr "Preço de Custo"
 
-#, fuzzy
 msgctxt "field:product.product,default_uom:"
 msgid "Default UoM"
-msgstr "UDM padrão"
+msgstr "Unidade de Medida Padrão"
 
-#, fuzzy
 msgctxt "field:product.product,default_uom_category:"
 msgid "Default UoM Category"
-msgstr "Categoria Padrão para UDM"
+msgstr "Categoria Padrão para Unidade de Medida"
 
 msgctxt "field:product.product,description:"
 msgid "Description"
@@ -164,7 +153,7 @@ msgstr "Descrição"
 
 msgctxt "field:product.product,identifiers:"
 msgid "Identifiers"
-msgstr ""
+msgstr "Identificadores"
 
 msgctxt "field:product.product,list_price:"
 msgid "List Price"
@@ -184,15 +173,19 @@ msgstr "Nome"
 
 msgctxt "field:product.product,prefix_code:"
 msgid "Prefix Code"
-msgstr ""
+msgstr "Código do Prefixo"
 
 msgctxt "field:product.product,replaced_by:"
 msgid "Replaced By"
-msgstr ""
+msgstr "Substituído Por"
+
+msgctxt "field:product.product,replacing:"
+msgid "Replacing"
+msgstr "Substituição"
 
 msgctxt "field:product.product,suffix_code:"
 msgid "Suffix Code"
-msgstr ""
+msgstr "Código do Sufixo"
 
 msgctxt "field:product.product,template:"
 msgid "Product Template"
@@ -202,23 +195,21 @@ msgctxt "field:product.product,type:"
 msgid "Type"
 msgstr "Tipo"
 
-#, fuzzy
 msgctxt "field:product.product.replace.ask,destination:"
 msgid "Destination"
-msgstr "Descrição"
+msgstr "Destino"
 
 msgctxt "field:product.product.replace.ask,source:"
 msgid "Source"
-msgstr ""
+msgstr "Fonte"
 
-#, fuzzy
 msgctxt "field:product.product.replace.ask,source_default_uom_category:"
 msgid "Source Default UoM Category"
-msgstr "Categoria Padrão para UDM"
+msgstr "Categoria Padrão para Unidade de Medida"
 
 msgctxt "field:product.product.replace.ask,source_type:"
 msgid "Source Type"
-msgstr ""
+msgstr "Tipo de Fonte"
 
 msgctxt "field:product.template,categories:"
 msgid "Categories"
@@ -228,14 +219,13 @@ msgctxt "field:product.template,categories_all:"
 msgid "Categories"
 msgstr "Categorias"
 
-#, fuzzy
 msgctxt "field:product.template,code:"
 msgid "Code"
 msgstr "Código"
 
 msgctxt "field:product.template,code_readonly:"
 msgid "Code Readonly"
-msgstr ""
+msgstr "Código Apenas Leitura"
 
 msgctxt "field:product.template,consumable:"
 msgid "Consumable"
@@ -253,15 +243,13 @@ msgctxt "field:product.template,cost_price_methods:"
 msgid "Cost Price Methods"
 msgstr "Métodos dos preços de custo"
 
-#, fuzzy
 msgctxt "field:product.template,default_uom:"
 msgid "Default UoM"
-msgstr "UDM padrão"
+msgstr "Unidade de Medida Padrão"
 
-#, fuzzy
 msgctxt "field:product.template,default_uom_category:"
 msgid "Default UoM Category"
-msgstr "Categoria padrão para UDM"
+msgstr "Categoria padrão para Unidade de Medida"
 
 msgctxt "field:product.template,list_price:"
 msgid "List Price"
@@ -277,7 +265,7 @@ msgstr "Nome"
 
 msgctxt "field:product.template,products:"
 msgid "Variants"
-msgstr "Variante"
+msgstr "Variantes"
 
 msgctxt "field:product.template,type:"
 msgid "Type"
@@ -331,158 +319,172 @@ msgctxt "field:product.uom.category,name:"
 msgid "Name"
 msgstr "Nome"
 
-#, fuzzy
 msgctxt "field:product.uom.category,uoms:"
 msgid "Units of Measure"
 msgstr "Unidades de Medida"
 
 msgctxt "help:product.category,childs:"
 msgid "Used to add structure below the category."
-msgstr ""
+msgstr "Utilizado para adicionar estruturas internas à categoria."
 
 msgctxt "help:product.category,parent:"
 msgid "Used to add structure above the category."
-msgstr ""
+msgstr "Utilizado para adicionar estruturas superiores à categoria."
 
 msgctxt "help:product.configuration,category_sequence:"
 msgid "Used to generate the category code."
-msgstr ""
+msgstr "Utilizado para gerar o código da categoria."
 
 msgctxt "help:product.configuration,default_cost_price_method:"
 msgid "The default cost price method for new products."
-msgstr ""
+msgstr "O método de custeio padrão para novos produtos."
 
 msgctxt "help:product.configuration,product_sequence:"
 msgid "Used to generate the last part of the product code."
-msgstr ""
+msgstr "Utilizado para gerar a última parte do código do produto."
 
 msgctxt "help:product.configuration,template_sequence:"
 msgid "Used to generate the first part of the product code."
-msgstr ""
+msgstr "Utilizado para gerar a primeira parte do código do produto."
 
 msgctxt ""
 "help:product.configuration.default_cost_price_method,default_cost_price_method:"
 msgid "The default cost price method for new products."
-msgstr ""
+msgstr "O método de custeio padrão para novos produtos."
 
 msgctxt "help:product.identifier,product:"
 msgid "The product identified by the code."
-msgstr ""
+msgstr "O produto identificado pelo código."
 
 msgctxt "help:product.product,categories:"
 msgid ""
 "The categories that the product is in.\n"
 "Used to group similar products together."
 msgstr ""
+"Categorias em que o produto se insere.\n"
+"Utilizado para agrupar produtos similares."
 
 msgctxt "help:product.product,code:"
 msgid "A unique identifier for the variant."
-msgstr ""
+msgstr "Identificador único para a variante."
 
 msgctxt "help:product.product,consumable:"
 msgid "Check to allow stock moves to be assigned regardless of stock level."
 msgstr ""
+"Marque para permitir movimento de estoque independentemente dos níveis de "
+"estoque."
 
 msgctxt "help:product.product,cost_price:"
 msgid ""
 "The amount it costs to purchase or make the variant, or carry out the "
 "service."
-msgstr ""
+msgstr "Quanto custa comprar ou produzir a variante, ou executar o serviço."
 
 msgctxt "help:product.product,cost_price_method:"
 msgid "The method used to calculate the cost price."
-msgstr ""
+msgstr "Método utilizado para calcular o preço de custo."
 
 msgctxt "help:product.product,default_uom:"
 msgid ""
 "The standard Unit of Measure for the product.\n"
 "Used internally when calculating the stock levels of goods and assets."
 msgstr ""
+"Unidade de Medida padrão para o produto.\n"
+"Utilizada internamente para cálculo de níveis de estoque de bens e ativos."
 
-#, fuzzy
 msgctxt "help:product.product,default_uom_category:"
 msgid "The category of the default Unit of Measure."
-msgstr "Categoria de Unidade de Medida"
+msgstr "Categoria de Unidade de Medida."
 
 msgctxt "help:product.product,identifiers:"
 msgid "Other identifiers associated with the variant."
-msgstr ""
+msgstr "Outros identificadores associados à variante."
 
 msgctxt "help:product.product,list_price:"
 msgid "The standard price the product is sold at."
-msgstr ""
+msgstr "Preço padrão no qual o produto é vendido."
 
 msgctxt "help:product.product,replaced_by:"
 msgid "The product replacing this one."
-msgstr ""
+msgstr "Produto para substituir este."
+
+msgctxt "help:product.product,replacing:"
+msgid "The products that this one is replacing."
+msgstr "O produto que este está substituindo."
 
 msgctxt "help:product.product,suffix_code:"
 msgid "The unique identifier for the product (aka SKU)."
-msgstr ""
+msgstr "Identificador único para o produto (sigla do inglês, SKU)."
 
 msgctxt "help:product.product,template:"
 msgid ""
 "The product that defines the common properties inherited by the variant."
-msgstr ""
+msgstr "Produto que define as propriedades comuns herdadas pela variante."
 
 msgctxt "help:product.product.replace.ask,destination:"
 msgid "The product that replaces."
-msgstr ""
+msgstr "O produto que substitui."
 
 msgctxt "help:product.product.replace.ask,source:"
 msgid "The product to be replaced."
-msgstr ""
+msgstr "O produto a ser substituído."
 
 msgctxt "help:product.template,categories:"
 msgid ""
 "The categories that the product is in.\n"
 "Used to group similar products together."
 msgstr ""
+"Categorias em que o produto se insere.\n"
+"Utilizada para agrupar produtos semelhantes."
 
 msgctxt "help:product.template,consumable:"
 msgid "Check to allow stock moves to be assigned regardless of stock level."
 msgstr ""
+"Marque para permitir movimento de estoque independentemente dos níveis de "
+"estoque."
 
 msgctxt "help:product.template,cost_price:"
 msgid ""
 "The amount it costs to purchase or make the product, or carry out the "
 "service."
-msgstr ""
+msgstr "Quanto custa comprar ou produzir o produto, ou executar o serviço."
 
 msgctxt "help:product.template,cost_price_method:"
 msgid "The method used to calculate the cost price."
-msgstr ""
+msgstr "Método utilizado para calcular o preço de custo."
 
 msgctxt "help:product.template,default_uom:"
 msgid ""
 "The standard Unit of Measure for the product.\n"
 "Used internally when calculating the stock levels of goods and assets."
 msgstr ""
+"Unidade de Medida padrão para o produto.\n"
+"Utilizada internamente para calcular os níveis de estoque de bens e ativos."
 
-#, fuzzy
 msgctxt "help:product.template,default_uom_category:"
 msgid "The category of the default Unit of Measure."
-msgstr "Categoria de Unidade de Medida"
+msgstr "Categoria de Unidade de Medida."
 
 msgctxt "help:product.template,list_price:"
 msgid "The standard price the product is sold at."
-msgstr ""
+msgstr "Preço padrão no qual o produto é vendido."
 
 msgctxt "help:product.template,products:"
 msgid "The different variants the product comes in."
-msgstr ""
+msgstr "Diferentes variantes deste produto."
 
 msgctxt "help:product.uom,category:"
 msgid ""
 "The category that contains the unit of measure.\n"
 "Conversions between different units of measure can be done if they are in the same category."
 msgstr ""
+"Categoria que contém essa unidade de medida.\n"
+"Conversões entre diferentes unidades de medida podem ser feitas se estão na mesma categoria."
 
 msgctxt "help:product.uom,digits:"
 msgid "The number of digits to display after the decimal separator."
-msgstr ""
+msgstr "Número de dígitos a serem mostrados depois do separador decimal."
 
-#, fuzzy
 msgctxt "help:product.uom,factor:"
 msgid ""
 "The coefficient for the formula:\n"
@@ -501,26 +503,24 @@ msgstr ""
 
 msgctxt "help:product.uom,rounding:"
 msgid "The accuracy to which values are rounded."
-msgstr ""
+msgstr "Precisão de arredondamento dos valores."
 
 msgctxt "help:product.uom,symbol:"
 msgid "The symbol that represents the unit of measure."
-msgstr ""
+msgstr "Símbolo que representa a unidade de medida."
 
 msgctxt "model:ir.action,name:act_category_list"
 msgid "Categories"
 msgstr "Categorias"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_category_product"
 msgid "Add products"
-msgstr "Produtos"
+msgstr "Adicionar Produtos"
 
 msgctxt "model:ir.action,name:act_category_tree"
 msgid "Categories"
 msgstr "Categorias"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_product_configuration_form"
 msgid "Configuration"
 msgstr "Configuração"
@@ -541,7 +541,6 @@ msgctxt "model:ir.action,name:act_template_form"
 msgid "Products"
 msgstr "Produtos"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_uom_category_form"
 msgid "Categories"
 msgstr "Categorias"
@@ -552,72 +551,75 @@ msgstr "Unidades de Medida"
 
 msgctxt "model:ir.action,name:wizard_product_replace"
 msgid "Replace"
-msgstr ""
+msgstr "Substituir"
 
 msgctxt "model:ir.message,text:msg_category_code_unique"
 msgid "The code on product category must be unique."
-msgstr ""
+msgstr "O código da categoria de produto deve ser único."
 
 #, python-format
 msgctxt "model:ir.message,text:msg_invalid_code"
 msgid "The %(type)s \"%(code)s\" for product \"%(product)s\" is not valid."
-msgstr ""
+msgstr "O %(type)s \"%(code)s\" do produto \"%(product)s\" não é válido."
 
 msgctxt "model:ir.message,text:msg_product_code_unique"
 msgid "Code of active product must be unique."
-msgstr ""
+msgstr "O código do produto ativo deve ser único."
 
 #, python-format
 msgctxt "model:ir.message,text:msg_uom_decrease_digits"
 msgid "You cannot decrease the digits of the unit of measure \"%(uom)s\"."
-msgstr ""
+msgstr "Não é possível diminuir os dígitos da unidade de medida \"%(uom)s\"."
 
 #, python-format
 msgctxt "model:ir.message,text:msg_uom_incompatible_factor_rate"
 msgid "Incompatible factor and rate values on unit of measure\"%(uom)s\"."
 msgstr ""
+"Valores incompatíveis de fator e taxa de conversão para a unidade de medida "
+"\"%(uom)s\"."
 
 #, python-format
 msgctxt "model:ir.message,text:msg_uom_modify_category"
 msgid "You cannot modify the category of the unit of measure \"%(uom)s\"."
-msgstr ""
+msgstr "Não é possível modificar a categoria da unidade de medida \"%(uom)s\"."
 
 #, python-format
 msgctxt "model:ir.message,text:msg_uom_modify_factor"
 msgid "You cannot modify the factor of the unit of measure \"%(uom)s\"."
-msgstr ""
+msgstr "Não é possível modificar o fator da unidade de medida \"%(uom)s\"."
 
 msgctxt "model:ir.message,text:msg_uom_modify_options"
 msgid ""
 "If the unit of measure is still not used, you can delete it otherwise you "
 "can deactivate it and create a new one."
 msgstr ""
+"Se a unidade de medida ainda não está sendo usada, é possível deletar. Caso "
+"contrário, é possível desativar e criar uma nova."
 
 #, python-format
 msgctxt "model:ir.message,text:msg_uom_modify_rate"
 msgid "You cannot modify the rate of the unit of measure\"%(uom)s\"."
 msgstr ""
+"Não é possível modificar a taxa de conversão da unidade de medida "
+"\"%(uom)s\"."
 
 msgctxt "model:ir.message,text:msg_uom_no_zero_factor_rate"
 msgid "Rate and factor can not be both equal to zero."
 msgstr ""
+"O fator e a taxa de conversão não podem ser ambos nulos ao mesmo tempo."
 
-#, fuzzy
 msgctxt "model:ir.model.button,string:category_add_products_button"
 msgid "Add products"
-msgstr "Produtos"
+msgstr "Adicionar Produtos"
 
-#, fuzzy
 msgctxt "model:ir.sequence.type,name:sequence_type_category"
 msgid "Category"
 msgstr "Categoria"
 
-#, fuzzy
 msgctxt "model:ir.sequence.type,name:sequence_type_product"
 msgid "Variant"
 msgstr "Variante"
 
-#, fuzzy
 msgctxt "model:ir.sequence.type,name:sequence_type_template"
 msgid "Product"
 msgstr "Produto"
@@ -634,7 +636,6 @@ msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
 msgstr "Configuração"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_main_product"
 msgid "Products"
 msgstr "Produtos"
@@ -643,14 +644,13 @@ msgctxt "model:ir.ui.menu,name:menu_product"
 msgid "Variants"
 msgstr "Variantes"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_product_configuration"
 msgid "Configuration"
 msgstr "Configuração"
 
 msgctxt "model:ir.ui.menu,name:menu_reporting"
 msgid "Reporting"
-msgstr ""
+msgstr "Relatórios"
 
 msgctxt "model:ir.ui.menu,name:menu_template"
 msgid "Products"
@@ -664,60 +664,53 @@ msgctxt "model:ir.ui.menu,name:menu_uom_form"
 msgid "Units of Measure"
 msgstr "Unidades de Medida"
 
-msgctxt "model:product.category,name:"
+msgctxt "model:product.category,string:"
 msgid "Product Category"
 msgstr "Categoria do produto"
 
-msgctxt "model:product.configuration,name:"
+msgctxt "model:product.configuration,string:"
 msgid "Product Configuration"
-msgstr "Configuração do Produto"
+msgstr "Configuração de Produto"
 
-msgctxt "model:product.configuration.default_cost_price_method,name:"
+msgctxt "model:product.configuration.default_cost_price_method,string:"
 msgid "Product Configuration Default Cost Price Method"
-msgstr "Configuração do Produto Método de Preço de Custo Padrão"
+msgstr "Configuração de Produto Método de Preço de Custo Padrão"
 
-msgctxt "model:product.cost_price,name:"
+msgctxt "model:product.cost_price,string:"
 msgid "Product Cost Price"
 msgstr "Preço de Custo do Produto"
 
-msgctxt "model:product.cost_price_method,name:"
+msgctxt "model:product.cost_price_method,string:"
 msgid "Product Cost Price Method"
-msgstr "Método do preço de custo do produto"
+msgstr "Método do Preço de Custo"
 
-#, fuzzy
-msgctxt "model:product.identifier,name:"
+msgctxt "model:product.identifier,string:"
 msgid "Product Identifier"
-msgstr "Modelo de produto"
+msgstr "Identificador do Produto"
 
-msgctxt "model:product.list_price,name:"
+msgctxt "model:product.list_price,string:"
 msgid "Product List Price"
 msgstr "Preço de Tabela do Produto"
 
-msgctxt "model:product.product,name:"
-msgid "Product Variant"
-msgstr "Variante do Produto"
-
-#, fuzzy
-msgctxt "model:product.product.replace.ask,name:"
-msgid "Replace Product"
+msgctxt "model:product.product,string:"
+msgid "Product"
 msgstr "Produto"
 
-msgctxt "model:product.template,name:"
-msgid "Product Template"
-msgstr "Modelo de produto"
+msgctxt "model:product.product.replace.ask,string:"
+msgid "Product Replace Ask"
+msgstr "Solicitação de Substituição de Produto"
 
-msgctxt "model:product.template-product.category,name:"
-msgid "Template - Category"
+msgctxt "model:product.template,string:"
+msgid "Product Template"
+msgstr "Modelo de Produto"
+
+msgctxt "model:product.template-product.category,string:"
+msgid "Product Template - Product Category"
 msgstr "Modelo - Categoria"
 
-msgctxt "model:product.template-product.category.all,name:"
-msgid "Template - Category All"
+msgctxt "model:product.template-product.category.all,string:"
+msgid "Product Template - Product Category All"
 msgstr "Modelo - Todas as Categorias"
-
-#, fuzzy
-msgctxt "model:product.uom,name:"
-msgid "Unit of Measure"
-msgstr "Unidade de Medida"
 
 msgctxt "model:product.uom,name:uom_are"
 msgid "Are"
@@ -727,10 +720,9 @@ msgctxt "model:product.uom,name:uom_carat"
 msgid "Carat"
 msgstr "Quilate"
 
-#, fuzzy
 msgctxt "model:product.uom,name:uom_centimeter"
 msgid "Centimeter"
-msgstr "centímetro"
+msgstr "Centímetro"
 
 msgctxt "model:product.uom,name:uom_cubic_centimeter"
 msgid "Cubic centimeter"
@@ -754,19 +746,19 @@ msgstr "Dia"
 
 msgctxt "model:product.uom,name:uom_energy_joule"
 msgid "Joule"
-msgstr ""
+msgstr "Joule"
 
 msgctxt "model:product.uom,name:uom_energy_kwh"
 msgid "Kilowatt-hour"
-msgstr ""
+msgstr "Kilowatt-hora"
 
 msgctxt "model:product.uom,name:uom_energy_megajoule"
 msgid "Megajoule"
-msgstr ""
+msgstr "Megajoule"
 
 msgctxt "model:product.uom,name:uom_energy_mwh"
 msgid "Megawatt-hour"
-msgstr ""
+msgstr "Megawatt-hora"
 
 msgctxt "model:product.uom,name:uom_foot"
 msgid "Foot"
@@ -860,6 +852,10 @@ msgctxt "model:product.uom,name:uom_yard"
 msgid "Yard"
 msgstr "Jarda"
 
+msgctxt "model:product.uom,string:"
+msgid "Product Uom"
+msgstr "Unidade de Medida do Produto"
+
 msgctxt "model:product.uom,symbol:uom_are"
 msgid "a"
 msgstr "a"
@@ -894,19 +890,19 @@ msgstr "d"
 
 msgctxt "model:product.uom,symbol:uom_energy_joule"
 msgid "J"
-msgstr ""
+msgstr "J"
 
 msgctxt "model:product.uom,symbol:uom_energy_kwh"
 msgid "kW⋅h"
-msgstr ""
+msgstr "kWh"
 
 msgctxt "model:product.uom,symbol:uom_energy_megajoule"
 msgid "MJ"
-msgstr ""
+msgstr "MJ"
 
 msgctxt "model:product.uom,symbol:uom_energy_mwh"
 msgid "MW⋅h"
-msgstr ""
+msgstr "MWh"
 
 msgctxt "model:product.uom,symbol:uom_foot"
 msgid "ft"
@@ -1000,14 +996,9 @@ msgctxt "model:product.uom,symbol:uom_yard"
 msgid "yd"
 msgstr "yd"
 
-#, fuzzy
-msgctxt "model:product.uom.category,name:"
-msgid "Unit of Measure Category"
-msgstr "Unidade de Medida"
-
 msgctxt "model:product.uom.category,name:uom_cat_energy"
 msgid "Energy"
-msgstr ""
+msgstr "Energia"
 
 msgctxt "model:product.uom.category,name:uom_cat_length"
 msgid "Length"
@@ -1033,45 +1024,49 @@ msgctxt "model:product.uom.category,name:uom_cat_weight"
 msgid "Weight"
 msgstr "Peso"
 
+msgctxt "model:product.uom.category,string:"
+msgid "Product Uom Category"
+msgstr "Categoria da UDM do Produto"
+
 msgctxt "model:res.group,name:group_product_admin"
 msgid "Product Administration"
 msgstr "Administração de produtos"
 
 msgctxt "selection:ir.cron,method:"
 msgid "Deactivate Replaced Products"
-msgstr ""
+msgstr "Desativar Produtos Substituídos"
 
 msgctxt "selection:product.identifier,type:"
 msgid "Brand"
-msgstr ""
+msgstr "Marca"
 
 msgctxt "selection:product.identifier,type:"
 msgid "International Article Number"
-msgstr ""
+msgstr "Número de Artigo Internacional"
 
 msgctxt "selection:product.identifier,type:"
 msgid "International Securities Identification Number"
-msgstr ""
+msgstr "Número de Identificação de Segurança Internacional"
 
 msgctxt "selection:product.identifier,type:"
 msgid "International Standard Audiovisual Number"
-msgstr ""
+msgstr "Número Padrão Audiovisual Internacional"
 
 msgctxt "selection:product.identifier,type:"
 msgid "International Standard Book Number"
-msgstr ""
+msgstr "Número Padrão de Livros Internacional"
 
 msgctxt "selection:product.identifier,type:"
 msgid "International Standard Identifier for Libraries"
-msgstr ""
+msgstr "Identificador de Bibliotecas Padrão Internacional"
 
 msgctxt "selection:product.identifier,type:"
 msgid "International Standard Music Number"
-msgstr ""
+msgstr "Número de Música Padrão Internacional"
 
 msgctxt "selection:product.identifier,type:"
 msgid "Manufacturer Part Number"
-msgstr ""
+msgstr "Número de Peça do Fabricante"
 
 msgctxt "selection:product.product,cost_price_method:"
 msgid "Average"
@@ -1117,19 +1112,17 @@ msgctxt "view:product.category:"
 msgid "Children"
 msgstr "Filhos"
 
-#, fuzzy
 msgctxt "view:product.configuration:"
 msgid "Sequences"
-msgstr "Modelo de produto"
+msgstr "Códigos de produtos"
 
-#, fuzzy
 msgctxt "view:product.product.replace.ask:"
 msgid "Product"
 msgstr "Produto"
 
 msgctxt "view:product.product.replace.ask:"
 msgid "Replaced By"
-msgstr ""
+msgstr "Substituído por"
 
 msgctxt "view:product.template:"
 msgid "General"
@@ -1137,8 +1130,8 @@ msgstr "Geral"
 
 msgctxt "wizard_button:product.product.replace,ask,end:"
 msgid "Cancel"
-msgstr ""
+msgstr "Cancelar"
 
 msgctxt "wizard_button:product.product.replace,ask,replace:"
 msgid "Replace"
-msgstr ""
+msgstr "Substituir"

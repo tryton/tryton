@@ -229,21 +229,25 @@ msgctxt "model:ir.ui.menu,name:menu_work_list"
 msgid "Works"
 msgstr "Dela"
 
-msgctxt "model:production.work,name:"
+#, fuzzy
+msgctxt "model:production.work,string:"
 msgid "Production Work"
 msgstr "Naloga"
 
-msgctxt "model:production.work.center,name:"
-msgid "Work Center"
-msgstr "Delovni center"
+#, fuzzy
+msgctxt "model:production.work.center,string:"
+msgid "Production Work Center"
+msgstr "Naloga"
 
-msgctxt "model:production.work.center.category,name:"
-msgid "Work Center Category"
+#, fuzzy
+msgctxt "model:production.work.center.category,string:"
+msgid "Production Work Center Category"
 msgstr "Kategorija delovnega centra"
 
-msgctxt "model:production.work.cycle,name:"
-msgid "Work Cycle"
-msgstr "Delovni cikel"
+#, fuzzy
+msgctxt "model:production.work.cycle,string:"
+msgid "Production Work Cycle"
+msgstr "Naloga"
 
 msgctxt "selection:production.work,state:"
 msgid "Done"

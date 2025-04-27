@@ -28,14 +28,13 @@ msgctxt "field:account.create_chart.properties,category_account_revenue:"
 msgid "Default Revenue Account"
 msgstr "Conta de Receitas Padrão"
 
-#, fuzzy
 msgctxt "field:analytic_account.rule,product:"
 msgid "Product"
 msgstr "Produto"
 
 msgctxt "field:analytic_account.rule,product_category:"
 msgid "Product Category"
-msgstr ""
+msgstr "Categoria do Produto"
 
 msgctxt "field:product.category,account_expense:"
 msgid "Account Expense"
@@ -69,7 +68,6 @@ msgctxt "field:product.category,supplier_taxes:"
 msgid "Supplier Taxes"
 msgstr "Tributos do Fornecedor"
 
-#, fuzzy
 msgctxt "field:product.category,supplier_taxes_deductible_rate:"
 msgid "Supplier Taxes Deductible Rate"
 msgstr "Tributos do Fornecedor Utilizados"
@@ -134,7 +132,6 @@ msgctxt "help:product.category,account_parent:"
 msgid "Use the accounts defined on the parent category."
 msgstr "Utilize as contas definidas na categoria pai."
 
-#, fuzzy
 msgctxt "help:product.category,accounting:"
 msgid "Check to indicate the category is used for accounting."
 msgstr "Marque para usar as taxas definidas na categoria da conta."
@@ -154,42 +151,41 @@ msgstr "Utilize os tributos definidos na categoria pai."
 #, python-format
 msgctxt "model:ir.message,text:msg_missing_account"
 msgid "There is no \"%(field)s\" defined for \"%(name)s\"."
-msgstr ""
+msgstr "Não existe nenhum \"%(field)s\" definido para \"%(name)s\"."
 
 #, python-format
 msgctxt "model:ir.message,text:msg_missing_taxes"
 msgid "There is no account category defined on product \"%(name)s\"."
-msgstr ""
+msgstr "Não existe uma categoria de conta definida para o produto \"%(name)s\"."
 
 msgctxt "model:ir.rule.group,name:rule_group_category_accounting"
 msgid "Any category"
-msgstr ""
+msgstr "Qualquer Categoria"
 
 msgctxt "model:ir.rule.group,name:rule_group_category_default"
 msgid "Not accounting category"
-msgstr ""
+msgstr "Não Categoria Contábil"
 
-msgctxt "model:product.category-customer-account.tax,name:"
-msgid "Category - Customer Tax"
-msgstr "Categoria - Tributo do Cliente"
+msgctxt "model:product.category-customer-account.tax,string:"
+msgid "Product Category - Customer - Account Tax"
+msgstr "Categoria do Produto - Cliente - Imposto Sobre a Conta"
 
-msgctxt "model:product.category-supplier-account.tax,name:"
-msgid "Category - Supplier Tax"
-msgstr "Categoria - Tributo do Fornecedor"
+msgctxt "model:product.category-supplier-account.tax,string:"
+msgid "Product Category - Supplier - Account Tax"
+msgstr "Categoria do Produto - Fornecedor - Imposto sobre a Conta"
 
-msgctxt "model:product.category.account,name:"
-msgid "Category Account"
-msgstr "Categoria da Conta"
+msgctxt "model:product.category.account,string:"
+msgid "Product Category Account"
+msgstr "Categoria do Produto"
 
-msgctxt "model:product.template-product.category.account,name:"
-msgid "Template - Account Category"
-msgstr "Modelo - Categorias de Contas"
+msgctxt "model:product.template-product.category.account,string:"
+msgid "Product Template - Product Category Account"
+msgstr "Gabarito do Produto - Categoria do Produto"
 
 msgctxt "model:res.group,name:group_account_product_admin"
 msgid "Account Product Administration"
-msgstr ""
+msgstr "Administração de Produtos da Conta"
 
-#, fuzzy
 msgctxt "view:account.configuration:"
 msgid "Product"
 msgstr "Produto"

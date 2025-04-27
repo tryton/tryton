@@ -1,4 +1,5 @@
 #
+#, fuzzy
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -92,11 +93,11 @@ msgstr ""
 
 msgctxt "field:account.consolidation.income_statement.context,to_date:"
 msgid "To Date"
-msgstr ""
+msgstr "Até a Data"
 
 msgctxt "field:account.consolidation.income_statement.context,to_date_cmp:"
 msgid "To Date"
-msgstr ""
+msgstr "Até a Data"
 
 msgctxt "field:account.invoice,consolidation_company:"
 msgid "Consolidation Company"
@@ -118,16 +119,16 @@ msgctxt "help:account.consolidation.income_statement.context,posted:"
 msgid "Only include posted moves."
 msgstr ""
 
-msgctxt "model:account.consolidation,name:"
+msgctxt "model:account.consolidation,string:"
 msgid "Account Consolidation"
 msgstr ""
 
-msgctxt "model:account.consolidation.balance_sheet.context,name:"
-msgid "Consolidation Balance Sheet Context"
+msgctxt "model:account.consolidation.balance_sheet.context,string:"
+msgid "Account Consolidation Balance Sheet Context"
 msgstr ""
 
-msgctxt "model:account.consolidation.income_statement.context,name:"
-msgid "Consolidation Income Statement Context"
+msgctxt "model:account.consolidation.income_statement.context,string:"
+msgid "Account Consolidation Income Statement Context"
 msgstr ""
 
 msgctxt "model:ir.action,name:act_consolidation_balance_sheet_tree"

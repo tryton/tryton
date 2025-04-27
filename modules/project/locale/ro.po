@@ -253,14 +253,9 @@ msgid "Works Efforts"
 msgstr ""
 
 #, fuzzy
-msgctxt "model:project.work,name:"
-msgid "Work Effort"
-msgstr "Efort de muncă"
-
-#, fuzzy
-msgctxt "model:project.work.status,name:"
-msgid "Work Status"
-msgstr "Starea Lucrării"
+msgctxt "model:project.work,string:"
+msgid "Project Work"
+msgstr "Proiect"
 
 msgctxt "model:project.work.status,name:work_done_status"
 msgid "Done"
@@ -269,6 +264,11 @@ msgstr "Terminat"
 msgctxt "model:project.work.status,name:work_open_status"
 msgid "Open"
 msgstr "Deschis"
+
+#, fuzzy
+msgctxt "model:project.work.status,string:"
+msgid "Project Work Status"
+msgstr "Starea de lucru"
 
 msgctxt "model:res.group,name:group_project_admin"
 msgid "Project Administration"

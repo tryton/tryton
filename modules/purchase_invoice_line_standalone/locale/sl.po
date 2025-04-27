@@ -44,10 +44,11 @@ msgid "Invoice Lines"
 msgstr "Postavke računov"
 
 #, fuzzy
-msgctxt "model:party.party.purchase_invoice_line_standalone,name:"
+msgctxt "model:party.party.purchase_invoice_line_standalone,string:"
 msgid "Party Purchase Invoice Line Standalone"
 msgstr "Nabavni nalog - Postavka računa"
 
-msgctxt "model:purchase.purchase-ignored-account.invoice.line,name:"
-msgid "Purchase - Ignored Invoice Line"
+#, fuzzy
+msgctxt "model:purchase.purchase-ignored-account.invoice.line,string:"
+msgid "Purchase - Ignored - Account Invoice Line"
 msgstr "Nabavni nalog - Prezrta postavka računa"

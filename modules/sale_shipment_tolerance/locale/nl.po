@@ -47,9 +47,9 @@ msgstr ""
 "De verkoopregel \"%(line)s\" overschrijdt de tolerantiegrens voor verzending"
 " (%(shipped)s shipped > %(maximal)s ).."
 
-msgctxt "model:sale.configuration.shipment_tolerance,name:"
+msgctxt "model:sale.configuration.shipment_tolerance,string:"
 msgid "Sale Configuration Shipment Tolerance"
-msgstr "Verkoopconfiguratie Verzendtolerantie"
+msgstr "Verkoop configuratie verzendtolerantie"
 
 msgctxt "view:sale.configuration:"
 msgid "%"

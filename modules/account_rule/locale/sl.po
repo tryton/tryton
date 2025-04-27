@@ -43,7 +43,8 @@ msgctxt "help:account.account.rule,return_:"
 msgid "Check to limit to return operation."
 msgstr "Izberite, da pravilo konta omejite na izvajanje vračil."
 
-msgctxt "model:account.account.rule,name:"
+#, fuzzy
+msgctxt "model:account.account.rule,string:"
 msgid "Account Rule"
 msgstr "Pravilo konta"
 

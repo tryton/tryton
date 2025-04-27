@@ -359,45 +359,48 @@ msgid "In months"
 msgstr "In Luni"
 
 #, fuzzy
-msgctxt "model:account.asset,name:"
-msgid "Asset"
-msgstr "Activ"
+msgctxt "model:account.asset,string:"
+msgid "Account Asset"
+msgstr "Activ al Contului"
 
 #, fuzzy
-msgctxt "model:account.asset-update-account.move,name:"
-msgid "Asset - Update - Move"
+msgctxt "model:account.asset-update-account.move,string:"
+msgid "Account Asset - Update - Account Move"
 msgstr "Activ - Actualizare - Miscare"
 
-msgctxt "model:account.asset.create_moves.start,name:"
-msgid "Create Moves Start"
-msgstr ""
-
-msgctxt "model:account.asset.line,name:"
-msgid "Asset Line"
-msgstr "Rând Active"
-
-msgctxt "model:account.asset.print_depreciation_table.start,name:"
-msgid "Asset Depreciation Table Start"
+msgctxt "model:account.asset.create_moves.start,string:"
+msgid "Account Asset Create Moves Start"
 msgstr ""
 
 #, fuzzy
-msgctxt "model:account.asset.revision,name:"
-msgid "Asset Revision"
+msgctxt "model:account.asset.line,string:"
+msgid "Account Asset Line"
+msgstr "Activ al Contului"
+
+#, fuzzy
+msgctxt "model:account.asset.print_depreciation_table.start,string:"
+msgid "Account Asset Print Depreciation Table Start"
+msgstr "Amortizarea Contului"
+
+#, fuzzy
+msgctxt "model:account.asset.revision,string:"
+msgid "Account Asset Revision"
 msgstr "Revizuire Active"
 
-msgctxt "model:account.asset.update.show_depreciation,name:"
-msgid "Update Asset Show Depreciation"
-msgstr ""
+#, fuzzy
+msgctxt "model:account.asset.update.show_depreciation,string:"
+msgid "Account Asset Update Show Depreciation"
+msgstr "Amortizarea Contului"
 
-msgctxt "model:account.configuration.asset_date,name:"
+msgctxt "model:account.configuration.asset_date,string:"
 msgid "Account Configuration Asset Date"
 msgstr ""
 
-msgctxt "model:account.configuration.asset_frequency,name:"
+msgctxt "model:account.configuration.asset_frequency,string:"
 msgid "Account Configuration Asset Frequency"
 msgstr ""
 
-msgctxt "model:account.configuration.asset_sequence,name:"
+msgctxt "model:account.configuration.asset_sequence,string:"
 msgid "Account Configuration Asset Sequence"
 msgstr ""
 
@@ -485,6 +488,11 @@ msgid ""
 msgstr ""
 "Pentru a factura achiziția \"%(purchase)s\", trebuie să setați un activ de "
 "cont pe produsul \"%(product)s\"."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_revision_asset_origin_unique"
+msgid "A revision origin can be used only once per asset."
+msgstr "Linia de factură poate fi folosită o singură dată pe activ."
 
 #, fuzzy
 msgctxt "model:ir.model.button,confirm:asset_close_button"

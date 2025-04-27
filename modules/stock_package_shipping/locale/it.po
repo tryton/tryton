@@ -49,6 +49,26 @@ msgctxt "field:stock.shipment.in.return,shipping_reference:"
 msgid "Shipping Reference"
 msgstr "Shipping"
 
+#, fuzzy
+msgctxt "field:stock.shipment.internal,carrier:"
+msgid "Carrier"
+msgstr "Vettore"
+
+#, fuzzy
+msgctxt "field:stock.shipment.internal,has_shipping_service:"
+msgid "Has Shipping Service"
+msgstr "Shipping"
+
+#, fuzzy
+msgctxt "field:stock.shipment.internal,shipping_description:"
+msgid "Shipping Description"
+msgstr "Shipping"
+
+#, fuzzy
+msgctxt "field:stock.shipment.internal,shipping_reference:"
+msgid "Shipping Reference"
+msgstr "Shipping"
+
 msgctxt "field:stock.shipment.out,has_shipping_service:"
 msgid "Has Shipping Service"
 msgstr ""
@@ -94,6 +114,12 @@ msgstr "Shipping"
 #, fuzzy
 msgctxt ""
 "model:ir.model.button,string:shipment_in_return_create_shipping_button"
+msgid "Create Shipping for Packages"
+msgstr "Create Shipping for Packages"
+
+#, fuzzy
+msgctxt ""
+"model:ir.model.button,string:shipment_internal_create_shipping_button"
 msgid "Create Shipping for Packages"
 msgstr "Create Shipping for Packages"
 

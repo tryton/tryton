@@ -927,6 +927,11 @@ msgctxt "field:stock.shipment.internal,incoming_moves:"
 msgid "Incoming Moves"
 msgstr "Sissetulevad liikumised"
 
+#, fuzzy
+msgctxt "field:stock.shipment.internal,internal_transit_location:"
+msgid "Internal Transit Location"
+msgstr "Transiitasukoht"
+
 msgctxt "field:stock.shipment.internal,moves:"
 msgid "Moves"
 msgstr "Liikumised"
@@ -938,6 +943,11 @@ msgstr "Number"
 msgctxt "field:stock.shipment.internal,outgoing_moves:"
 msgid "Outgoing Moves"
 msgstr "Väljuvad liikumised"
+
+#, fuzzy
+msgctxt "field:stock.shipment.internal,packed_by:"
+msgid "Packed By"
+msgstr "Pakitud"
 
 #, fuzzy
 msgctxt "field:stock.shipment.internal,partially_assigned:"
@@ -1343,6 +1353,41 @@ msgctxt "help:stock.location,storage_location:"
 msgid "The top level location where stock is stored."
 msgstr "Kõrgema taseme asukohta kus kaupa hoiustatakse"
 
+msgctxt "help:stock.location,type:"
+msgid "Group locations logically."
+msgstr ""
+
+msgctxt "help:stock.location,type:"
+msgid "Regroup storage locations under a logistics warehouse."
+msgstr ""
+
+#, fuzzy
+msgctxt "help:stock.location,type:"
+msgid "Used as the destination for stock sent to customers."
+msgstr "Osapoolele saadetud lao vaikimis asukoht."
+
+msgctxt "help:stock.location,type:"
+msgid ""
+"Used as the destination of components and the source of finished products."
+msgstr ""
+
+#, fuzzy
+msgctxt "help:stock.location,type:"
+msgid "Used as the source of stock received from suppliers."
+msgstr "Hankijalt saadud kauba vaikimisi saabumise koht"
+
+msgctxt "help:stock.location,type:"
+msgid "Used during the drop shipping process."
+msgstr ""
+
+msgctxt "help:stock.location,type:"
+msgid "Used for damages, discrepancies and wastage."
+msgstr ""
+
+msgctxt "help:stock.location,type:"
+msgid "Used to physically store goods."
+msgstr ""
+
 #, fuzzy
 msgctxt "help:stock.location,waste_locations:"
 msgid "The locations used for waste products from the warehouse."
@@ -1692,6 +1737,11 @@ msgid "Location Lead Times"
 msgstr "Asukoha viiteaeg"
 
 #, fuzzy
+msgctxt "model:ir.action,name:act_location_list"
+msgid "Locations"
+msgstr "Asukohad"
+
+#, fuzzy
 msgctxt "model:ir.action,name:act_location_quantity_list"
 msgid "Stock Locations List"
 msgstr "Lao asukoht"
@@ -1956,6 +2006,12 @@ msgctxt ""
 msgid "Draft"
 msgstr "Mustand"
 
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_shipment_internal_form_domain_packed"
+msgid "Packed"
+msgstr "Pakitud"
+
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_internal_form_domain_requests"
 msgid "Requests"
@@ -2093,13 +2149,6 @@ msgctxt "model:ir.message,text:msg_inventory_missing_empty_quantity"
 msgid ""
 "To confirm the inventory \"%(inventory)s\" you must select an option for "
 "empty quantity."
-msgstr ""
-
-#, python-format
-msgctxt "model:ir.message,text:msg_location_child_of_warehouse"
-msgid ""
-"To set location \"%(location)s\" as storage/input/output of warehouse "
-"\"%(warehouse)s\", it must be in the warehouse."
 msgstr ""
 
 #, python-format
@@ -2456,6 +2505,11 @@ msgctxt "model:ir.model.button,string:shipment_internal_draft_button"
 msgid "Draft"
 msgstr "Mustand"
 
+#, fuzzy
+msgctxt "model:ir.model.button,string:shipment_internal_pack_button"
+msgid "Pack"
+msgstr "Pakitud"
+
 msgctxt "model:ir.model.button,string:shipment_internal_ship_button"
 msgid "Ship"
 msgstr "Tarni"
@@ -2670,13 +2724,14 @@ msgctxt "model:ir.ui.menu,name:menu_location_form"
 msgid "Locations"
 msgstr "Asukohad"
 
-msgctxt "model:ir.ui.menu,name:menu_location_form2"
-msgid "Locations"
-msgstr "Asukohad"
-
 msgctxt "model:ir.ui.menu,name:menu_location_lead_time_form"
 msgid "Location Lead Times"
 msgstr "Asukoha viiteaeg"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_location_list"
+msgid "Locations"
+msgstr "Asukohad"
 
 msgctxt "model:ir.ui.menu,name:menu_location_tree"
 msgid "Locations"
@@ -2741,30 +2796,33 @@ msgid "Warehouses"
 msgstr "Laod"
 
 #, fuzzy
-msgctxt "model:party.party-delivered_to-stock.location,name:"
-msgid "Party Delivered to Warehouse"
+msgctxt "model:party.party-delivered_to-stock.location,string:"
+msgid "Party - Delivered To - Stock Location"
 msgstr "Ladu"
 
-msgctxt "model:party.party.location,name:"
+#, fuzzy
+msgctxt "model:party.party.location,string:"
 msgid "Party Location"
 msgstr "Osapoole asukoht"
 
-msgctxt "model:product.by_location.context,name:"
-msgid "Product by Location"
+#, fuzzy
+msgctxt "model:product.by_location.context,string:"
+msgid "Product By Location Context"
 msgstr "Kaup asukoha järgi"
 
-msgctxt "model:product.cost_price.revision,name:"
-msgid "Product Cost Price Revision"
-msgstr ""
-
 #, fuzzy
-msgctxt "model:product.modify_cost_price.start,name:"
-msgid "Modify Cost Price"
+msgctxt "model:product.cost_price.revision,string:"
+msgid "Product Cost Price Revision"
 msgstr "Kuluväärtus"
 
 #, fuzzy
-msgctxt "model:product.recompute_cost_price.start,name:"
-msgid "Recompute Cost Price"
+msgctxt "model:product.modify_cost_price.start,string:"
+msgid "Product Modify Cost Price Start"
+msgstr "Kuluväärtus"
+
+#, fuzzy
+msgctxt "model:product.recompute_cost_price.start,string:"
+msgid "Product Recompute Cost Price Start"
 msgstr "Omahinna ümberarvutus"
 
 msgctxt "model:res.group,name:group_stock"
@@ -2779,39 +2837,40 @@ msgctxt "model:res.group,name:group_stock_force_assignment"
 msgid "Stock Force Assignment"
 msgstr ""
 
-msgctxt "model:stock.configuration,name:"
+#, fuzzy
+msgctxt "model:stock.configuration,string:"
 msgid "Stock Configuration"
 msgstr "Varude seadistus"
 
-msgctxt "model:stock.configuration.location,name:"
+#, fuzzy
+msgctxt "model:stock.configuration.location,string:"
 msgid "Stock Configuration Location"
-msgstr ""
+msgstr "Varude seadistus"
 
-msgctxt "model:stock.configuration.sequence,name:"
+#, fuzzy
+msgctxt "model:stock.configuration.sequence,string:"
 msgid "Stock Configuration Sequence"
-msgstr ""
+msgstr "Varude seadistus"
 
-msgctxt "model:stock.inventory,name:"
+#, fuzzy
+msgctxt "model:stock.inventory,string:"
 msgid "Stock Inventory"
 msgstr "Lao inventuur"
 
 #, fuzzy
-msgctxt "model:stock.inventory.count.quantity,name:"
-msgid "Stock Inventory Count"
+msgctxt "model:stock.inventory.count.quantity,string:"
+msgid "Stock Inventory Count Quantity"
 msgstr "Lao inventuuri rida"
 
 #, fuzzy
-msgctxt "model:stock.inventory.count.search,name:"
-msgid "Stock Inventory Count"
+msgctxt "model:stock.inventory.count.search,string:"
+msgid "Stock Inventory Count Search"
 msgstr "Lao inventuuri rida"
 
-msgctxt "model:stock.inventory.line,name:"
+#, fuzzy
+msgctxt "model:stock.inventory.line,string:"
 msgid "Stock Inventory Line"
 msgstr "Lao inventuuri rida"
-
-msgctxt "model:stock.location,name:"
-msgid "Stock Location"
-msgstr "Lao asukoht"
 
 msgctxt "model:stock.location,name:location_customer"
 msgid "Customer"
@@ -2846,105 +2905,119 @@ msgid "Warehouse"
 msgstr "Ladu"
 
 #, fuzzy
-msgctxt "model:stock.location.lead_time,name:"
-msgid "Location Lead Time"
+msgctxt "model:stock.location,string:"
+msgid "Stock Location"
+msgstr "Lao asukoht"
+
+#, fuzzy
+msgctxt "model:stock.location.lead_time,string:"
+msgid "Stock Location Lead Time"
 msgstr "Asukoha viiteaeg"
 
 #, fuzzy
-msgctxt "model:stock.location.waste,name:"
-msgid "Warehouse Waste Location"
-msgstr "Transiitasukoht"
+msgctxt "model:stock.location.waste,string:"
+msgid "Stock Location Waste"
+msgstr "Lao asukoht"
 
-msgctxt "model:stock.move,name:"
+#, fuzzy
+msgctxt "model:stock.move,string:"
 msgid "Stock Move"
 msgstr "Laoliikumine"
 
-msgctxt "model:stock.period,name:"
+#, fuzzy
+msgctxt "model:stock.period,string:"
 msgid "Stock Period"
 msgstr "Lao periood"
 
-msgctxt "model:stock.period.cache,name:"
+#, fuzzy
+msgctxt "model:stock.period.cache,string:"
 msgid "Stock Period Cache"
 msgstr "Lao perioodi vahemälu"
 
-msgctxt "model:stock.product_quantities_warehouse,name:"
-msgid "Product Quantities By Warehouse"
-msgstr "Toote kogused laos"
-
-msgctxt "model:stock.product_quantities_warehouse.context,name:"
-msgid "Product Quantities By Warehouse"
+#, fuzzy
+msgctxt "model:stock.product_quantities_warehouse,string:"
+msgid "Stock Product Quantities Warehouse"
 msgstr "Toote kogused laos"
 
 #, fuzzy
-msgctxt "model:stock.product_quantities_warehouse.move,name:"
-msgid "Product Quantities By Warehouse Moves"
+msgctxt "model:stock.product_quantities_warehouse.context,string:"
+msgid "Stock Product Quantities Warehouse Context"
 msgstr "Toote kogused ladude lõikes"
 
 #, fuzzy
-msgctxt "model:stock.products_by_locations,name:"
-msgid "Products by Locations"
+msgctxt "model:stock.product_quantities_warehouse.move,string:"
+msgid "Stock Product Quantities Warehouse Move"
+msgstr "Toote kogused ladude lõikes"
+
+#, fuzzy
+msgctxt "model:stock.products_by_locations,string:"
+msgid "Stock Products By Locations"
 msgstr "Kaubad asukohtade järgi"
 
-msgctxt "model:stock.products_by_locations.context,name:"
-msgid "Products by Locations"
+#, fuzzy
+msgctxt "model:stock.products_by_locations.context,string:"
+msgid "Stock Products By Locations Context"
 msgstr "Kaubad asukohtade järgi"
 
-msgctxt "model:stock.reporting.margin.category,name:"
-msgid "Stock Reporting Margin per Category"
+msgctxt "model:stock.reporting.margin.category,string:"
+msgid "Stock Reporting Margin Category"
 msgstr ""
 
-msgctxt "model:stock.reporting.margin.category.time_series,name:"
-msgid "Stock Reporting Margin per Category"
+msgctxt "model:stock.reporting.margin.category.time_series,string:"
+msgid "Stock Reporting Margin Category Time Series"
 msgstr ""
 
-msgctxt "model:stock.reporting.margin.category.tree,name:"
-msgid "Stock Reporting Margin per Category"
+msgctxt "model:stock.reporting.margin.category.tree,string:"
+msgid "Stock Reporting Margin Category Tree"
 msgstr ""
 
-msgctxt "model:stock.reporting.margin.context,name:"
+msgctxt "model:stock.reporting.margin.context,string:"
 msgid "Stock Reporting Margin Context"
 msgstr ""
 
-msgctxt "model:stock.reporting.margin.main,name:"
-msgid "Stock Reporting Margin"
+msgctxt "model:stock.reporting.margin.main,string:"
+msgid "Stock Reporting Margin Main"
 msgstr ""
 
-msgctxt "model:stock.reporting.margin.main.time_series,name:"
-msgid "Stock Reporting Margin"
+msgctxt "model:stock.reporting.margin.main.time_series,string:"
+msgid "Stock Reporting Margin Main Time Series"
 msgstr ""
 
-msgctxt "model:stock.reporting.margin.product,name:"
-msgid "Stock Reporting Margin per Product"
+msgctxt "model:stock.reporting.margin.product,string:"
+msgid "Stock Reporting Margin Product"
 msgstr ""
 
-msgctxt "model:stock.reporting.margin.product.time_series,name:"
-msgid "Stock Reporting Margin per Product"
+msgctxt "model:stock.reporting.margin.product.time_series,string:"
+msgid "Stock Reporting Margin Product Time Series"
+msgstr ""
+
+msgctxt "model:stock.shipment.assign.partial,string:"
+msgid "Stock Shipment Assign Partial"
 msgstr ""
 
 #, fuzzy
-msgctxt "model:stock.shipment.assign.partial,name:"
-msgid "Assign Shipment"
-msgstr "Omista sisemine lähetus"
-
-msgctxt "model:stock.shipment.in,name:"
-msgid "Supplier Shipment"
-msgstr "Tarne"
-
-msgctxt "model:stock.shipment.in.return,name:"
-msgid "Supplier Return Shipment"
-msgstr "Hankija tagastus"
-
-msgctxt "model:stock.shipment.internal,name:"
-msgid "Internal Shipment"
-msgstr "Sisemine lähetus"
-
-msgctxt "model:stock.shipment.out,name:"
-msgid "Customer Shipment"
+msgctxt "model:stock.shipment.in,string:"
+msgid "Stock Shipment In"
 msgstr "Lähetus"
 
-msgctxt "model:stock.shipment.out.return,name:"
-msgid "Customer Return Shipment"
-msgstr "Kliendi tagastus"
+#, fuzzy
+msgctxt "model:stock.shipment.in.return,string:"
+msgid "Stock Shipment In Return"
+msgstr "Omista sisemine lähetus"
+
+#, fuzzy
+msgctxt "model:stock.shipment.internal,string:"
+msgid "Stock Shipment Internal"
+msgstr "Omista sisemine lähetus"
+
+#, fuzzy
+msgctxt "model:stock.shipment.out,string:"
+msgid "Stock Shipment Out"
+msgstr "Lähetus"
+
+msgctxt "model:stock.shipment.out.return,string:"
+msgid "Stock Shipment Out Return"
+msgstr ""
 
 msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "/"
@@ -3403,6 +3476,11 @@ msgstr "Tehtud"
 msgctxt "selection:stock.shipment.internal,state:"
 msgid "Draft"
 msgstr "Mustand"
+
+#, fuzzy
+msgctxt "selection:stock.shipment.internal,state:"
+msgid "Packed"
+msgstr "Pakitud"
 
 msgctxt "selection:stock.shipment.internal,state:"
 msgid "Request"

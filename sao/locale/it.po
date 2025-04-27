@@ -318,6 +318,13 @@ msgstr "aggiungere un allegato al record"
 msgid "Add a note to the record"
 msgstr "Aggiungi un appunto sul record"
 
+msgid "Chat"
+msgstr ""
+
+#, fuzzy
+msgid "Chat on the record"
+msgstr "Aggiungi un appunto sul record"
+
 msgid "Email..."
 msgstr ""
 
@@ -489,6 +496,9 @@ msgstr ""
 msgid "Hide"
 msgstr ""
 
+msgid "Select a color for \"%1\""
+msgstr ""
+
 msgid "Open the record"
 msgstr ""
 
@@ -545,6 +555,9 @@ msgstr ""
 #, fuzzy
 msgid "Copy Selected Rows"
 msgstr "Record selezionati"
+
+msgid "Reset Column Widths"
+msgstr ""
 
 msgid "#ERROR"
 msgstr ""
@@ -785,6 +798,15 @@ msgstr ""
 
 msgid "Wizard"
 msgstr "wizard"
+
+msgid "Enter a message"
+msgstr ""
+
+msgid "Submit the message"
+msgstr ""
+
+msgid "Make this an internal message"
+msgstr ""
 
 msgid "Translate view"
 msgstr ""

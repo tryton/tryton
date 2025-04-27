@@ -318,6 +318,13 @@ msgstr "Dodaj prilogo zapisu"
 msgid "Add a note to the record"
 msgstr "Dodaj zapisu zabeležko"
 
+msgid "Chat"
+msgstr ""
+
+#, fuzzy
+msgid "Chat on the record"
+msgstr "Odpri zapis"
+
 #, fuzzy
 msgid "Email..."
 msgstr "E-pošta..."
@@ -484,6 +491,9 @@ msgstr "Pokaži"
 msgid "Hide"
 msgstr "Skrij"
 
+msgid "Select a color for \"%1\""
+msgstr ""
+
 msgid "Open the record"
 msgstr "Odpri zapis"
 
@@ -539,6 +549,9 @@ msgstr ""
 #, fuzzy
 msgid "Copy Selected Rows"
 msgstr "Izbrani zapisi"
+
+msgid "Reset Column Widths"
+msgstr ""
 
 msgid "#ERROR"
 msgstr "#NAPAKA"
@@ -773,6 +786,15 @@ msgstr ""
 
 msgid "Wizard"
 msgstr "Čarovnik"
+
+msgid "Enter a message"
+msgstr ""
+
+msgid "Submit the message"
+msgstr ""
+
+msgid "Make this an internal message"
+msgstr ""
 
 msgid "Translate view"
 msgstr "Prevedi pogled"

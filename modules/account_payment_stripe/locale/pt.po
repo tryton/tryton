@@ -215,10 +215,9 @@ msgctxt "field:account.payment.stripe.customer.source.detach.ask,source:"
 msgid "Source"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:account.payment.stripe.refund,amount:"
 msgid "Amount"
-msgstr "Conta"
+msgstr "Montante"
 
 msgctxt "field:account.payment.stripe.refund,approved_by:"
 msgid "Approved by"
@@ -327,33 +326,35 @@ msgctxt "help:account.payment.stripe.account,webhook_signing_secret:"
 msgid "The Stripe's signing secret of the webhook."
 msgstr "O código de assinatura do Stripe para o Webhook."
 
-msgctxt "model:account.payment.stripe.account,name:"
-msgid "Stripe Account"
+#, fuzzy
+msgctxt "model:account.payment.stripe.account,string:"
+msgid "Account Payment Stripe Account"
 msgstr "Conta Stripe"
 
-msgctxt "model:account.payment.stripe.customer,name:"
-msgid "Stripe Customer"
+#, fuzzy
+msgctxt "model:account.payment.stripe.customer,string:"
+msgid "Account Payment Stripe Customer"
+msgstr "Create Stripe Customer"
+
+#, fuzzy
+msgctxt "model:account.payment.stripe.customer.fingerprint,string:"
+msgid "Account Payment Stripe Customer Fingerprint"
 msgstr "Cliente Stripe"
 
 #, fuzzy
-msgctxt "model:account.payment.stripe.customer.fingerprint,name:"
-msgid "Stripe Customer Fingerprint"
-msgstr "Cliente Stripe"
-
-#, fuzzy
-msgctxt "model:account.payment.stripe.customer.identical,name:"
-msgid "Stripe Customer Identical"
+msgctxt "model:account.payment.stripe.customer.identical,string:"
+msgid "Account Payment Stripe Customer Identical"
 msgstr "ID do Cliente Stripe"
 
 #, fuzzy
-msgctxt "model:account.payment.stripe.customer.source.detach.ask,name:"
-msgid "Detach Customer Source"
+msgctxt "model:account.payment.stripe.customer.source.detach.ask,string:"
+msgid "Account Payment Stripe Customer Source Detach Ask"
 msgstr "Origem do Cliente Stripe"
 
 #, fuzzy
-msgctxt "model:account.payment.stripe.refund,name:"
-msgid "Stripe Payment Refund"
-msgstr "Charge Stripe Payments"
+msgctxt "model:account.payment.stripe.refund,string:"
+msgid "Account Payment Stripe Refund"
+msgstr "Create Stripe Customer"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_account_form"
@@ -433,7 +434,8 @@ msgstr ""
 #, python-format
 msgctxt "model:ir.message,text:msg_no_stripe_token"
 msgid ""
-"To process payment \"%(payment)s\" you must set a Stripe token or customer."
+"To process payment \"%(payment)s\" you must set a Stripe token, payment "
+"intent or customer."
 msgstr ""
 
 msgctxt "model:ir.message,text:msg_stripe_key_modified"
@@ -512,21 +514,12 @@ msgid "Stripe Refunds"
 msgstr "Token Stripe"
 
 msgctxt "report:account.payment.stripe.checkout:"
-msgid "Credit or debit card"
-msgstr ""
-
-msgctxt "report:account.payment.stripe.checkout:"
-msgid "Pay"
-msgstr "Pagar"
-
-#, fuzzy
-msgctxt "report:account.payment.stripe.checkout:"
-msgid "Register card"
-msgstr "Registrar"
-
-msgctxt "report:account.payment.stripe.checkout:"
 msgid "Stripe Checkout"
 msgstr "Checkout Stripe"
+
+msgctxt "report:account.payment.stripe.checkout:"
+msgid "Submit"
+msgstr ""
 
 msgctxt "report:account.payment.stripe.email_checkout:"
 msgid "Authorization needed"
@@ -633,25 +626,21 @@ msgctxt "view:account.payment:"
 msgid "Capturable:"
 msgstr ""
 
-#, fuzzy
 msgctxt "view:account.payment:"
 msgid "Capture:"
-msgstr "Captura Stripe"
+msgstr "Captura:"
 
-#, fuzzy
 msgctxt "view:account.payment:"
 msgid "Charge ID:"
-msgstr "ID de Cobrança Stripe"
+msgstr "ID de Cobrança:"
 
-#, fuzzy
 msgctxt "view:account.payment:"
 msgid "Chargeable:"
-msgstr "Cobrável com Stripe"
+msgstr "Cobrável:"
 
-#, fuzzy
 msgctxt "view:account.payment:"
 msgid "Customer:"
-msgstr "Cliente Stripe"
+msgstr "Cliente:"
 
 msgctxt "view:account.payment:"
 msgid "Payment Intent:"
@@ -674,15 +663,13 @@ msgctxt "view:account.payment:"
 msgid "Token:"
 msgstr ""
 
-#, fuzzy
 msgctxt "view:party.party.reception_direct_debit:"
 msgid "Customer:"
-msgstr "Cliente Stripe"
+msgstr "Cliente:"
 
-#, fuzzy
 msgctxt "view:party.party.reception_direct_debit:"
 msgid "Payment Method:"
-msgstr "Charge Stripe Payments"
+msgstr "Método de Pagamento:"
 
 msgctxt "view:party.party.reception_direct_debit:"
 msgid "Source:"

@@ -14,6 +14,7 @@ msgctxt "field:purchase.product_supplier.day,product_supplier:"
 msgid "Supplier"
 msgstr "Доставчик"
 
-msgctxt "model:purchase.product_supplier.day,name:"
-msgid "Product Supplier Day"
+#, fuzzy
+msgctxt "model:purchase.product_supplier.day,string:"
+msgid "Purchase Product Supplier Day"
 msgstr "Ден на доставчик на наличност"

@@ -43,10 +43,11 @@ msgid "Invoice Lines"
 msgstr "Righe fattura"
 
 #, fuzzy
-msgctxt "model:party.party.purchase_invoice_line_standalone,name:"
+msgctxt "model:party.party.purchase_invoice_line_standalone,string:"
 msgid "Party Purchase Invoice Line Standalone"
 msgstr "Acquisto - riga fattura"
 
-msgctxt "model:purchase.purchase-ignored-account.invoice.line,name:"
-msgid "Purchase - Ignored Invoice Line"
+#, fuzzy
+msgctxt "model:purchase.purchase-ignored-account.invoice.line,string:"
+msgid "Purchase - Ignored - Account Invoice Line"
 msgstr "Acquisto - riga fattura non considerata"

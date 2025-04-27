@@ -111,19 +111,19 @@ msgctxt "model:ir.ui.menu,name:menu_user_form"
 msgid "Web Users"
 msgstr "Usuarios web"
 
-msgctxt "model:web.user,name:"
+msgctxt "model:web.user,string:"
 msgid "Web User"
 msgstr "Usuario web"
 
-msgctxt "model:web.user-party.party.secondary,name:"
-msgid "Web User - Secondary Party"
+msgctxt "model:web.user-party.party.secondary,string:"
+msgid "Web User - Party Secondary"
 msgstr "Usuario web - Tercero secundario"
 
-msgctxt "model:web.user.authenticate.attempt,name:"
-msgid "Web User Authenticate Attempt"
-msgstr "Intento de identificación usuario web"
+msgctxt "model:web.user.authenticate.attempt,string:"
+msgid "User Login Attempt"
+msgstr "Intento de inicio de sesión del usuario"
 
-msgctxt "model:web.user.session,name:"
+msgctxt "model:web.user.session,string:"
 msgid "Web User Session"
 msgstr "Sesión usuario web"
 

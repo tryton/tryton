@@ -356,40 +356,41 @@ msgctxt "model:ir.ui.menu,name:menu_lot_form"
 msgid "Lots"
 msgstr "Lots"
 
-msgctxt "model:product.configuration.default_lot_sequence,name:"
+msgctxt "model:product.configuration.default_lot_sequence,string:"
 msgid "Product Configuration Default Lot Sequence"
 msgstr ""
 
-msgctxt "model:stock.lot,name:"
+#, fuzzy
+msgctxt "model:stock.lot,string:"
 msgid "Stock Lot"
 msgstr "Raktár Charge"
 
 #, fuzzy
-msgctxt "model:stock.lot.trace,name:"
-msgid "Lot Trace"
-msgstr "Caches Charge"
+msgctxt "model:stock.lot.trace,string:"
+msgid "Stock Lot Trace"
+msgstr "Raktár Charge"
 
-msgctxt "model:stock.lots_by_location.context,name:"
-msgid "Lot by Location"
+#, fuzzy
+msgctxt "model:stock.lots_by_location.context,string:"
+msgid "Stock Lots By Location Context"
+msgstr "Előrelátható mennyiség"
+
+#, fuzzy
+msgctxt "model:stock.lots_by_locations,string:"
+msgid "Stock Lots By Locations"
+msgstr "Hely"
+
+msgctxt "model:stock.move.add.lots.start,string:"
+msgid "Stock Move Add Lots Start"
+msgstr ""
+
+msgctxt "model:stock.move.add.lots.start.lot,string:"
+msgid "Stock Move Add Lots Start Lot"
 msgstr ""
 
 #, fuzzy
-msgctxt "model:stock.lots_by_locations,name:"
-msgid "Lots by Locations"
-msgstr "Hely"
-
-#, fuzzy
-msgctxt "model:stock.move.add.lots.start,name:"
-msgid "Add Lots"
-msgstr "Lots"
-
-#, fuzzy
-msgctxt "model:stock.move.add.lots.start.lot,name:"
-msgid "Add Lots"
-msgstr "Lots"
-
-msgctxt "model:stock.period.cache.lot,name:"
-msgid "Stock Period Cache per Lot"
+msgctxt "model:stock.period.cache.lot,string:"
+msgid "Stock Period Cache Lot"
 msgstr "Raktár Cache időszak Chargenként"
 
 #, fuzzy

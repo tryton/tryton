@@ -68,9 +68,10 @@ msgctxt ""
 msgid "Compute product cost price for each warehouse."
 msgstr "A termékek költségárát raktáranként tartsa nyilván a rendszer."
 
-msgctxt "model:ir.cron-stock.warehouse,name:"
-msgid "Cron - Warehouse"
-msgstr ""
+#, fuzzy
+msgctxt "model:ir.cron-stock.warehouse,string:"
+msgid "Cron - Stock Warehouse"
+msgstr "Költségár raktáranként"
 
 #, python-format
 msgctxt "model:ir.message,text:msg_move_storage_location_same_warehouse"
@@ -79,6 +80,7 @@ msgid ""
 "internal shipment transit location."
 msgstr ""
 
-msgctxt "model:product.configuration.cost_price_warehouse,name:"
-msgid "Product Configuration Cost Price per Warehouse"
-msgstr ""
+#, fuzzy
+msgctxt "model:product.configuration.cost_price_warehouse,string:"
+msgid "Product Configuration Cost Price Warehouse"
+msgstr "Költségár raktáranként"

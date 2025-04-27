@@ -52,6 +52,25 @@ msgctxt "field:stock.shipment.in.return,shipping_reference:"
 msgid "Shipping Reference"
 msgstr "Referência de Envio"
 
+msgctxt "field:stock.shipment.internal,carrier:"
+msgid "Carrier"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:stock.shipment.internal,has_shipping_service:"
+msgid "Has Shipping Service"
+msgstr "Serviço de Envio"
+
+#, fuzzy
+msgctxt "field:stock.shipment.internal,shipping_description:"
+msgid "Shipping Description"
+msgstr "Descrição do Envio"
+
+#, fuzzy
+msgctxt "field:stock.shipment.internal,shipping_reference:"
+msgid "Shipping Reference"
+msgstr "Referência de Envio"
+
 #, fuzzy
 msgctxt "field:stock.shipment.out,has_shipping_service:"
 msgid "Has Shipping Service"
@@ -99,6 +118,12 @@ msgstr "Etiquetas de envio"
 #, fuzzy
 msgctxt ""
 "model:ir.model.button,string:shipment_in_return_create_shipping_button"
+msgid "Create Shipping for Packages"
+msgstr "Create Shipping for Packages"
+
+#, fuzzy
+msgctxt ""
+"model:ir.model.button,string:shipment_internal_create_shipping_button"
 msgid "Create Shipping for Packages"
 msgstr "Create Shipping for Packages"
 

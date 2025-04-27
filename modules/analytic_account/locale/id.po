@@ -18,6 +18,10 @@ msgctxt "field:analytic.account.entry,company:"
 msgid "Company"
 msgstr "Perusahaan"
 
+msgctxt "field:analytic.account.entry,editable:"
+msgid "Editable"
+msgstr ""
+
 msgctxt "field:analytic.account.entry,origin:"
 msgid "Origin"
 msgstr "Asal"
@@ -169,30 +173,35 @@ msgctxt "field:analytic_account.rule,party_visible:"
 msgid "Party Visible"
 msgstr ""
 
-msgctxt "model:analytic.account.entry,name:"
-msgid "Analytic Account Entry"
-msgstr ""
-
-msgctxt "model:analytic_account.account,name:"
-msgid "Analytic Account"
-msgstr ""
-
 #, fuzzy
-msgctxt "model:analytic_account.account.context,name:"
-msgid "Open Chart of Accounts"
+msgctxt "model:analytic.account.entry,string:"
+msgid "Analytic Account Entry"
 msgstr "Buka Bagan Akun"
 
-msgctxt "model:analytic_account.account.distribution,name:"
+#, fuzzy
+msgctxt "model:analytic_account.account,string:"
+msgid "Analytic Account"
+msgstr "Buka Bagan Akun"
+
+#, fuzzy
+msgctxt "model:analytic_account.account.context,string:"
+msgid "Analytic Account Context"
+msgstr "Buka Bagan Akun"
+
+#, fuzzy
+msgctxt "model:analytic_account.account.distribution,string:"
 msgid "Analytic Account Distribution"
-msgstr ""
+msgstr "Buka Bagan Akun"
 
-msgctxt "model:analytic_account.line,name:"
-msgid "Analytic Line"
-msgstr ""
+#, fuzzy
+msgctxt "model:analytic_account.line,string:"
+msgid "Analytic Account Line"
+msgstr "Buka Bagan Akun"
 
-msgctxt "model:analytic_account.rule,name:"
-msgid "Analytic Rule"
-msgstr ""
+#, fuzzy
+msgctxt "model:analytic_account.rule,string:"
+msgid "Analytic Account Rule"
+msgstr "Buka Bagan Akun"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_account_list"

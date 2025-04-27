@@ -213,20 +213,20 @@ msgctxt "model:ir.ui.menu,name:menu_purchase_request_quotation_form"
 msgid "Quotations"
 msgstr "Presupuestos"
 
-msgctxt "model:purchase.request.quotation,name:"
-msgid "Purchase Request For Quotation"
+msgctxt "model:purchase.request.quotation,string:"
+msgid "Purchase Request Quotation"
 msgstr "Presupuesto de solicitud de compra"
 
-msgctxt "model:purchase.request.quotation.create.ask_suppliers,name:"
-msgid "Create Purchase Request Quotation Ask Suppliers"
+msgctxt "model:purchase.request.quotation.create.ask_suppliers,string:"
+msgid "Purchase Request Quotation Create Ask Suppliers"
 msgstr "Introducir proveedor de presupuesto de solicitud de compra"
 
-msgctxt "model:purchase.request.quotation.create.succeed,name:"
-msgid "Create Purchase Request Quotation Succeed"
+msgctxt "model:purchase.request.quotation.create.succeed,string:"
+msgid "Purchase Request Quotation Create Succeed"
 msgstr "Presupuesto de solicitud de compra creado con éxito"
 
-msgctxt "model:purchase.request.quotation.line,name:"
-msgid "Purchase Request For Quotation Line"
+msgctxt "model:purchase.request.quotation.line,string:"
+msgid "Purchase Request Quotation Line"
 msgstr "Linea de presupuesto de solicitud de compra"
 
 msgctxt "report:purchase.request.quotation:"

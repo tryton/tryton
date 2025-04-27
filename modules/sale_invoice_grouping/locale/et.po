@@ -35,7 +35,8 @@ msgctxt "help:sale.configuration.sale_method,sale_invoice_grouping_method:"
 msgid "The default invoice grouping method for new customers."
 msgstr "Vaikimisi uute klientide arvete grupeerimise meetod."
 
-msgctxt "model:party.party.sale_invoice_grouping_method,name:"
+#, fuzzy
+msgctxt "model:party.party.sale_invoice_grouping_method,string:"
 msgid "Party Sale Invoice Grouping Method"
 msgstr "Osapoole müügiarvete grupeerimise meetod"
 

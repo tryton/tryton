@@ -126,21 +126,21 @@ msgid "Web Users"
 msgstr "Web Users"
 
 #, fuzzy
-msgctxt "model:web.user,name:"
+msgctxt "model:web.user,string:"
 msgid "Web User"
 msgstr "Web Users"
 
 #, fuzzy
-msgctxt "model:web.user-party.party.secondary,name:"
-msgid "Web User - Secondary Party"
+msgctxt "model:web.user-party.party.secondary,string:"
+msgid "Web User - Party Secondary"
 msgstr "Sessione"
 
-msgctxt "model:web.user.authenticate.attempt,name:"
-msgid "Web User Authenticate Attempt"
+msgctxt "model:web.user.authenticate.attempt,string:"
+msgid "User Login Attempt"
 msgstr ""
 
 #, fuzzy
-msgctxt "model:web.user.session,name:"
+msgctxt "model:web.user.session,string:"
 msgid "Web User Session"
 msgstr "Sessione"
 

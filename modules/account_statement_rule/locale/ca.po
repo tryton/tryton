@@ -153,15 +153,18 @@ msgstr ""
 "Deixeu-ho en blanc per utilitzar el grup anomenat 'party' de les expressions"
 " regulars."
 
-msgctxt "model:account.statement.rule,name:"
+#, fuzzy
+msgctxt "model:account.statement.rule,string:"
 msgid "Account Statement Rule"
 msgstr "Regla d'extracte bancari"
 
-msgctxt "model:account.statement.rule.information,name:"
+#, fuzzy
+msgctxt "model:account.statement.rule.information,string:"
 msgid "Account Statement Rule Information"
 msgstr "Informació de la regla d'extracte bancari"
 
-msgctxt "model:account.statement.rule.line,name:"
+#, fuzzy
+msgctxt "model:account.statement.rule.line,string:"
 msgid "Account Statement Rule Line"
 msgstr "Línia de la regla d'extracte bancari"
 

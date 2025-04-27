@@ -10,24 +10,22 @@ msgctxt "field:production.configuration.supply_period,supply_period:"
 msgid "Supply Period"
 msgstr "Período de Abastecimento"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_production_request"
 msgid "Request Productions"
-msgstr "Request Productions"
+msgstr "Solicitar Produções"
 
-#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_order_point_form_domain_production"
 msgid "Production"
-msgstr "Production"
+msgstr "Produção"
 
 msgctxt "model:ir.message,text:msg_late_productions"
 msgid "There are some productions that are late."
-msgstr ""
+msgstr "Algumas produções estão atrasadas."
 
-msgctxt "model:production.configuration.supply_period,name:"
+msgctxt "model:production.configuration.supply_period,string:"
 msgid "Production Configuration Supply Period"
-msgstr "Configurações de Produção Período de Abastecimento"
+msgstr "Configurações do Período de Abastecimento na Produção"
 
 msgctxt "selection:stock.order_point,type:"
 msgid "Production"

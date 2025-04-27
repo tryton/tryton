@@ -66,8 +66,8 @@ msgctxt "model:ir.message,text:msg_vsf_identifier"
 msgid "Vue Storefront Identifier"
 msgstr "Identificador Vue Storefront"
 
-msgctxt "model:web.shop.vsf_identifier,name:"
-msgid "Web Shop Vue Storefront Identifier"
+msgctxt "model:web.shop.vsf_identifier,string:"
+msgid "Web Shop Vsf Identifier"
 msgstr "Identificador de la tienda Vue Storefront"
 
 msgctxt "selection:ir.cron,method:"

@@ -206,8 +206,8 @@ msgid ""
 "the guest \"%(party)s\"."
 msgstr ""
 
-msgctxt "model:ir.message,text:msg_sale_web_id_unique"
-msgid "The web ID on the sale must be unique."
+msgctxt "model:ir.message,text:msg_sale_web_shop_id_unique"
+msgid "The web ID on the sale must be unique per shop."
 msgstr ""
 
 msgctxt "model:ir.message,text:msg_shop_name_unique"
@@ -222,28 +222,28 @@ msgctxt "model:ir.ui.menu,name:menu_shop"
 msgid "Web Shops"
 msgstr ""
 
-msgctxt "model:web.shop,name:"
+msgctxt "model:web.shop,string:"
 msgid "Web Shop"
 msgstr ""
 
-msgctxt "model:web.shop-country.country,name:"
+msgctxt "model:web.shop-country.country,string:"
 msgid "Web Shop - Country"
 msgstr ""
 
-msgctxt "model:web.shop-product.attribute,name:"
-msgid "Web Shop - Attribute"
+msgctxt "model:web.shop-product.attribute,string:"
+msgid "Web Shop - Product Attribute"
 msgstr ""
 
-msgctxt "model:web.shop-product.category,name:"
+msgctxt "model:web.shop-product.category,string:"
 msgid "Web Shop - Product Category"
 msgstr ""
 
-msgctxt "model:web.shop-product.product,name:"
+msgctxt "model:web.shop-product.product,string:"
 msgid "Web Shop - Product"
 msgstr ""
 
-msgctxt "model:web.shop-stock.location,name:"
-msgid "Web Shop - Warehouse"
+msgctxt "model:web.shop-stock.location,string:"
+msgid "Web Shop - Stock Location"
 msgstr ""
 
 msgctxt "view:product.template:"

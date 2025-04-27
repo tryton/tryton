@@ -45,6 +45,6 @@ msgstr ""
 "Las fechas de líneas de suscripción con el mismo lote de activos no pueden "
 "superponerse."
 
-msgctxt "model:sale.subscription.service-stock.lot.asset,name:"
-msgid "Subscription Service - Stock Lot Asset"
+msgctxt "model:sale.subscription.service-stock.lot.asset,string:"
+msgid "Sale Subscription Service - Stock Lot Asset"
 msgstr "Servicio de suscripción - Lote del activo"

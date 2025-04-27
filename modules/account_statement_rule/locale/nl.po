@@ -155,17 +155,17 @@ msgstr ""
 "Laat leeg om de groep met de naam 'relatie' (party) uit de reguliere "
 "expressies te gebruiken."
 
-msgctxt "model:account.statement.rule,name:"
+msgctxt "model:account.statement.rule,string:"
 msgid "Account Statement Rule"
-msgstr "Boekhoudkundige regel"
+msgstr "Grootboek afschrift regel"
 
-msgctxt "model:account.statement.rule.information,name:"
+msgctxt "model:account.statement.rule.information,string:"
 msgid "Account Statement Rule Information"
-msgstr "Boekhoudkundige regel informatie"
+msgstr "Grootboek afschrift regel informatie"
 
-msgctxt "model:account.statement.rule.line,name:"
+msgctxt "model:account.statement.rule.line,string:"
 msgid "Account Statement Rule Line"
-msgstr "Boekhoudkundige regel lijn"
+msgstr "Grootboek afschrift regel"
 
 msgctxt "model:ir.action,name:act_rule_form"
 msgid "Rules"

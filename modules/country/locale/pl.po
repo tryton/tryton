@@ -182,13 +182,10 @@ msgctxt "help:country.subdivision,parent:"
 msgid "Add subdivision below the parent."
 msgstr "Dodaj jednostkę podrzędną."
 
-msgctxt "model:country.country,name:"
+#, fuzzy
+msgctxt "model:country.country,string:"
 msgid "Country"
 msgstr "Kraj"
-
-msgctxt "model:country.organization,name:"
-msgid "Organization"
-msgstr "Organizacja"
 
 msgctxt "model:country.organization,name:organization_amu"
 msgid "Arab Maghreb Union"
@@ -266,17 +263,20 @@ msgctxt "model:country.organization,name:organization_safta"
 msgid "South Asian Free Trade Area"
 msgstr "Strefa wolnego handlu w Azji Południowej"
 
-msgctxt "model:country.organization.member,name:"
-msgid "Organization Member"
+#, fuzzy
+msgctxt "model:country.organization,string:"
+msgid "Country Organization"
+msgstr "Organizacja"
+
+#, fuzzy
+msgctxt "model:country.organization.member,string:"
+msgid "Country Organization Member"
 msgstr "Członek organizacji"
 
-msgctxt "model:country.postal_code,name:"
-msgid "Postal Code"
+#, fuzzy
+msgctxt "model:country.postal_code,string:"
+msgid "Country Postal Code"
 msgstr "Kod pocztowy"
-
-msgctxt "model:country.region,name:"
-msgid "Region"
-msgstr "Region"
 
 msgctxt "model:country.region,name:region_africa"
 msgid "Africa"
@@ -410,9 +410,15 @@ msgctxt "model:country.region,name:region_world"
 msgid "World"
 msgstr "Świat"
 
-msgctxt "model:country.subdivision,name:"
-msgid "Subdivision"
-msgstr "Jednostka podrzędna"
+#, fuzzy
+msgctxt "model:country.region,string:"
+msgid "Country Region"
+msgstr "Kraje wg regionu"
+
+#, fuzzy
+msgctxt "model:country.subdivision,string:"
+msgid "Country Subdivision"
+msgstr "Jednostka administracyjna"
 
 msgctxt "model:ir.action,name:act_country_by_region"
 msgid "Countries by Region"
@@ -682,6 +688,11 @@ msgctxt "selection:country.subdivision,type:"
 msgid "Entity"
 msgstr "Jednostka"
 
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "European collectivity"
+msgstr "Wspólnota terytorialna"
+
 msgctxt "selection:country.subdivision,type:"
 msgid "Federal Dependency"
 msgstr "Dependencja federalna"
@@ -701,6 +712,11 @@ msgstr "Terytorium federalne"
 msgctxt "selection:country.subdivision,type:"
 msgid "Federal capital territory"
 msgstr "Federalne terytorium stołeczne"
+
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "Federal entity"
+msgstr "Terytorium federalne"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Free municipal consortium"
@@ -822,6 +838,11 @@ msgctxt "selection:country.subdivision,type:"
 msgid "Overseas department"
 msgstr "Zagraniczny oddział"
 
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "Overseas departmental collectivity"
+msgstr "Zagraniczna wspólnota terytorialna"
+
 msgctxt "selection:country.subdivision,type:"
 msgid "Overseas region"
 msgstr "Zagraniczny region"
@@ -837,6 +858,11 @@ msgstr "Zagraniczna wspólnota terytorialna"
 msgctxt "selection:country.subdivision,type:"
 msgid "Overseas territory"
 msgstr "Terytorium zamorskie"
+
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "Overseas unique territorial collectivity"
+msgstr "Zagraniczna wspólnota terytorialna"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Pakistan administered area"
@@ -944,6 +970,11 @@ msgstr "Strefa specjalna"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "State"
+msgstr "Stan"
+
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "State city"
 msgstr "Stan"
 
 msgctxt "selection:country.subdivision,type:"

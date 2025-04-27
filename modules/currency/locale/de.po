@@ -138,19 +138,19 @@ msgctxt "help:currency.currency.rate,rate:"
 msgid "The floating exchange rate used to convert the currency."
 msgstr "Der variable Kurs der zur Umrechnung der Währung genutzt wird."
 
-msgctxt "model:currency.cron,name:"
+msgctxt "model:currency.cron,string:"
 msgid "Currency Cron"
-msgstr "Zeitplaner Währungskurse"
+msgstr "Währung Zeitplaner"
 
-msgctxt "model:currency.cron-currency.currency,name:"
+msgctxt "model:currency.cron-currency.currency,string:"
 msgid "Currency Cron - Currency"
-msgstr "Zeitplaner Währungskurse - Währung"
+msgstr "Währung Zeitplaner - Währung"
 
-msgctxt "model:currency.currency,name:"
+msgctxt "model:currency.currency,string:"
 msgid "Currency"
 msgstr "Währung"
 
-msgctxt "model:currency.currency.rate,name:"
+msgctxt "model:currency.currency.rate,string:"
 msgid "Currency Rate"
 msgstr "Währungskurs"
 

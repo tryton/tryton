@@ -40,11 +40,11 @@ msgstr "Mètode de cost per defecte"
 
 msgctxt "field:product.configuration,product_sequence:"
 msgid "Variant Sequence"
-msgstr "Seqüencia de la variant"
+msgstr "Seqüència de la variant"
 
 msgctxt "field:product.configuration,template_sequence:"
 msgid "Product Sequence"
-msgstr "Seqüencia del producte"
+msgstr "Seqüència del producte"
 
 msgctxt ""
 "field:product.configuration.default_cost_price_method,default_cost_price_method:"
@@ -178,6 +178,11 @@ msgstr "Codi prefix"
 msgctxt "field:product.product,replaced_by:"
 msgid "Replaced By"
 msgstr "Substituït per"
+
+#, fuzzy
+msgctxt "field:product.product,replacing:"
+msgid "Replacing"
+msgstr "Substitueix"
 
 msgctxt "field:product.product,suffix_code:"
 msgid "Suffix Code"
@@ -404,6 +409,11 @@ msgstr "El preu al que normalment es ven el producte."
 msgctxt "help:product.product,replaced_by:"
 msgid "The product replacing this one."
 msgstr "El producte que substitueix aquest."
+
+#, fuzzy
+msgctxt "help:product.product,replacing:"
+msgid "The products that this one is replacing."
+msgstr "El producte que substitueix."
 
 msgctxt "help:product.product,suffix_code:"
 msgid "The unique identifier for the product (aka SKU)."
@@ -654,57 +664,65 @@ msgctxt "model:ir.ui.menu,name:menu_uom_form"
 msgid "Units of Measure"
 msgstr "Unitats de mesura"
 
-msgctxt "model:product.category,name:"
+#, fuzzy
+msgctxt "model:product.category,string:"
 msgid "Product Category"
 msgstr "Categoria de producte"
 
-msgctxt "model:product.configuration,name:"
+#, fuzzy
+msgctxt "model:product.configuration,string:"
 msgid "Product Configuration"
 msgstr "Configuració de productes"
 
-msgctxt "model:product.configuration.default_cost_price_method,name:"
+#, fuzzy
+msgctxt "model:product.configuration.default_cost_price_method,string:"
 msgid "Product Configuration Default Cost Price Method"
 msgstr "Configuració del mètode de cost per defecte del producte"
 
-msgctxt "model:product.cost_price,name:"
+#, fuzzy
+msgctxt "model:product.cost_price,string:"
 msgid "Product Cost Price"
 msgstr "Preu de cost del producte"
 
-msgctxt "model:product.cost_price_method,name:"
+#, fuzzy
+msgctxt "model:product.cost_price_method,string:"
 msgid "Product Cost Price Method"
 msgstr "Mètode de cost per producte"
 
-msgctxt "model:product.identifier,name:"
+#, fuzzy
+msgctxt "model:product.identifier,string:"
 msgid "Product Identifier"
 msgstr "Identificador de producte"
 
-msgctxt "model:product.list_price,name:"
+#, fuzzy
+msgctxt "model:product.list_price,string:"
 msgid "Product List Price"
 msgstr "Preu de venda del producte"
 
-msgctxt "model:product.product,name:"
-msgid "Product Variant"
-msgstr "Variant de producte"
+#, fuzzy
+msgctxt "model:product.product,string:"
+msgid "Product"
+msgstr "Producte"
 
-msgctxt "model:product.product.replace.ask,name:"
-msgid "Replace Product"
-msgstr "Substitueix el producte"
+#, fuzzy
+msgctxt "model:product.product.replace.ask,string:"
+msgid "Product Replace Ask"
+msgstr "Plantilla de producte"
 
-msgctxt "model:product.template,name:"
+#, fuzzy
+msgctxt "model:product.template,string:"
 msgid "Product Template"
 msgstr "Plantilla de producte"
 
-msgctxt "model:product.template-product.category,name:"
-msgid "Template - Category"
+#, fuzzy
+msgctxt "model:product.template-product.category,string:"
+msgid "Product Template - Product Category"
 msgstr "Plantilla - Categoria"
 
-msgctxt "model:product.template-product.category.all,name:"
-msgid "Template - Category All"
+#, fuzzy
+msgctxt "model:product.template-product.category.all,string:"
+msgid "Product Template - Product Category All"
 msgstr "Plantilla - Totes les categories"
-
-msgctxt "model:product.uom,name:"
-msgid "Unit of Measure"
-msgstr "Unitat de mesura"
 
 msgctxt "model:product.uom,name:uom_are"
 msgid "Are"
@@ -846,6 +864,11 @@ msgctxt "model:product.uom,name:uom_yard"
 msgid "Yard"
 msgstr "Iarda"
 
+#, fuzzy
+msgctxt "model:product.uom,string:"
+msgid "Product Uom"
+msgstr "Producte"
+
 msgctxt "model:product.uom,symbol:uom_are"
 msgid "a"
 msgstr "a"
@@ -986,10 +1009,6 @@ msgctxt "model:product.uom,symbol:uom_yard"
 msgid "yd"
 msgstr "yd"
 
-msgctxt "model:product.uom.category,name:"
-msgid "Unit of Measure Category"
-msgstr "Categoria de la unitat de mesura"
-
 msgctxt "model:product.uom.category,name:uom_cat_energy"
 msgid "Energy"
 msgstr "Energia"
@@ -1017,6 +1036,11 @@ msgstr "Volum"
 msgctxt "model:product.uom.category,name:uom_cat_weight"
 msgid "Weight"
 msgstr "Pes"
+
+#, fuzzy
+msgctxt "model:product.uom.category,string:"
+msgid "Product Uom Category"
+msgstr "Categoria d'UdM de producte"
 
 msgctxt "model:res.group,name:group_product_admin"
 msgid "Product Administration"

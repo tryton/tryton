@@ -187,18 +187,22 @@ msgctxt "model:ir.ui.menu,name:menu_advance_payment_term"
 msgid "Advance Payment Terms"
 msgstr "مدت پرداخت پیش پرداخت"
 
-msgctxt "model:sale.advance_payment.condition,name:"
-msgid "Advance Payment Condition"
+#, fuzzy
+msgctxt "model:sale.advance_payment.condition,string:"
+msgid "Sale Advance Payment Condition"
 msgstr "شرایط پرداخت پیش پرداخت"
 
-msgctxt "model:sale.advance_payment_term,name:"
-msgid "Advance Payment Term"
-msgstr "مدت پرداخت پیش پرداخت"
+#, fuzzy
+msgctxt "model:sale.advance_payment_term,string:"
+msgid "Sale Advance Payment Term"
+msgstr "نحوه پرداخت پیش پرداخت"
 
-msgctxt "model:sale.advance_payment_term.line,name:"
-msgid "Advance Payment Term Line"
+#, fuzzy
+msgctxt "model:sale.advance_payment_term.line,string:"
+msgid "Sale Advance Payment Term Line"
 msgstr "سطر مدت پرداخت پیش پرداخت"
 
-msgctxt "model:sale.advance_payment_term.line.account,name:"
-msgid "Advance Payment Term Line Account"
+#, fuzzy
+msgctxt "model:sale.advance_payment_term.line.account,string:"
+msgid "Sale Advance Payment Term Line Account"
 msgstr "حساب سطر مدت پرداخت پیش پرداخت"

@@ -98,14 +98,6 @@ msgctxt "field:stock.forecast.line,unit:"
 msgid "Unit"
 msgstr ""
 
-msgctxt "field:stock.forecast.line-stock.move,line:"
-msgid "Forecast Line"
-msgstr "Postavka napovedi"
-
-msgctxt "field:stock.forecast.line-stock.move,move:"
-msgid "Move"
-msgstr "Promet"
-
 msgctxt "help:stock.forecast.line,product_uom_category:"
 msgid "The category of Unit of Measure for the product."
 msgstr ""
@@ -178,21 +170,20 @@ msgctxt "model:res.group,name:group_stock_forecast"
 msgid "Stock Forecast"
 msgstr "Stock Forecast"
 
-msgctxt "model:stock.forecast,name:"
+#, fuzzy
+msgctxt "model:stock.forecast,string:"
 msgid "Stock Forecast"
-msgstr "Napoved zaloge"
+msgstr "Stock Forecast"
 
-msgctxt "model:stock.forecast.complete.ask,name:"
-msgid "Complete Forecast"
-msgstr "Izpolnitev napovedi"
-
-msgctxt "model:stock.forecast.line,name:"
-msgid "Stock Forecast Line"
+#, fuzzy
+msgctxt "model:stock.forecast.complete.ask,string:"
+msgid "Stock Forecast Complete Ask"
 msgstr "Postavka napovedi zaloge"
 
-msgctxt "model:stock.forecast.line-stock.move,name:"
-msgid "ForecastLine - Move"
-msgstr "Postavka napovedi - Promet"
+#, fuzzy
+msgctxt "model:stock.forecast.line,string:"
+msgid "Stock Forecast Line"
+msgstr "Postavka napovedi zaloge"
 
 #, fuzzy
 msgctxt "selection:stock.forecast,state:"

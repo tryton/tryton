@@ -111,29 +111,29 @@ msgctxt "help:account.shipment_cost,number:"
 msgid "The main identifier for the shipment cost."
 msgstr "El identificador principal del coste de envío."
 
-msgctxt "model:account.configuration.shipment_cost_sequence,name:"
+msgctxt "model:account.configuration.shipment_cost_sequence,string:"
 msgid "Account Configuration Shipment Cost Sequence"
-msgstr "Configuración de cuenta de secuencia de costes de envío"
+msgstr "Configuración de secuencia de costes de envío"
 
-msgctxt "model:account.shipment_cost,name:"
-msgid "Shipment Cost"
+msgctxt "model:account.shipment_cost,string:"
+msgid "Account Shipment Cost"
 msgstr "Coste de envío"
 
-msgctxt "model:account.shipment_cost-stock.shipment.out,name:"
-msgid "Shipment Cost - Shipment"
+msgctxt "model:account.shipment_cost-stock.shipment.out,string:"
+msgid "Account Shipment Cost - Stock Shipment Out"
 msgstr "Coste de envío - Albarán"
 
-msgctxt "model:account.shipment_cost-stock.shipment.out.return,name:"
-msgid "Shipment Cost - Shipment Return"
+msgctxt "model:account.shipment_cost-stock.shipment.out.return,string:"
+msgid "Account Shipment Cost - Stock Shipment Out Return"
 msgstr "Coste de envío - Devolución de albarán"
 
-msgctxt "model:account.shipment_cost.show,name:"
-msgid "Shipment Cost Show"
+msgctxt "model:account.shipment_cost.show,string:"
+msgid "Account Shipment Cost Show"
 msgstr "Mostrar coste envío"
 
-msgctxt "model:account.shipment_cost.show.shipment,name:"
-msgid "Post Shipment Cost"
-msgstr "Contabilizar coste envío"
+msgctxt "model:account.shipment_cost.show.shipment,string:"
+msgid "Account Shipment Cost Show Shipment"
+msgstr "Coste de envío mostrar Albarán"
 
 msgctxt "model:ir.action,name:act_shipment_cost_form"
 msgid "Shipment Costs"
@@ -165,6 +165,11 @@ msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_cost_form_domain_posted"
 msgid "Posted"
 msgstr "Contabilizado"
+
+#, python-format
+msgctxt "model:ir.message,text:msg_shipment_cost_delete_cancel"
+msgid "To delete shipment cost \"%(shipment_cost)s\" you must cancel it."
+msgstr "Para eliminar el costo de envío “%(shipment_cost)s” debes cancelarlo."
 
 #, python-format
 msgctxt "model:ir.message,text:msg_shipment_cost_post_no_shipment"

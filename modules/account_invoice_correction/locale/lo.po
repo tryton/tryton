@@ -10,9 +10,9 @@ msgctxt "field:account.invoice.correct.start,lines:"
 msgid "Invoice Lines"
 msgstr "ລາຍການເກັບເງິນ"
 
-msgctxt "model:account.invoice.correct.start,name:"
-msgid "Correct Invoice"
-msgstr "ກວດແກ້ໃບເກັບເງິນ"
+msgctxt "model:account.invoice.correct.start,string:"
+msgid "Account Invoice Correct Start"
+msgstr ""
 
 #, fuzzy
 msgctxt "model:ir.action,name:wizard_invoice_correct"

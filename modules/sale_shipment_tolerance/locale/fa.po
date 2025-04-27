@@ -45,7 +45,8 @@ msgid ""
 "shipped > %(maximal)s )."
 msgstr "سطر فروش : \"%s\" بیشتر از ظرفیت حمل و نقل میباشد."
 
-msgctxt "model:sale.configuration.shipment_tolerance,name:"
+#, fuzzy
+msgctxt "model:sale.configuration.shipment_tolerance,string:"
 msgid "Sale Configuration Shipment Tolerance"
 msgstr "پیکربندی فروش ؛ ظرفیت حمل تحمل"
 

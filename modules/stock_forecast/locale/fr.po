@@ -94,14 +94,6 @@ msgctxt "field:stock.forecast.line,unit:"
 msgid "Unit"
 msgstr "Unité"
 
-msgctxt "field:stock.forecast.line-stock.move,line:"
-msgid "Forecast Line"
-msgstr "Ligne de prévision"
-
-msgctxt "field:stock.forecast.line-stock.move,move:"
-msgid "Move"
-msgstr "Mouvement"
-
 msgctxt "help:stock.forecast.line,product_uom_category:"
 msgid "The category of Unit of Measure for the product."
 msgstr "La catégorie d'Unité De Mesure pour le produit."
@@ -168,21 +160,17 @@ msgctxt "model:res.group,name:group_stock_forecast"
 msgid "Stock Forecast"
 msgstr "Stock prévisionnel"
 
-msgctxt "model:stock.forecast,name:"
+msgctxt "model:stock.forecast,string:"
 msgid "Stock Forecast"
 msgstr "Stock prévisionnel"
 
-msgctxt "model:stock.forecast.complete.ask,name:"
-msgid "Complete Forecast"
-msgstr "Completer la prévision - Demander"
+msgctxt "model:stock.forecast.complete.ask,string:"
+msgid "Stock Forecast Complete Ask"
+msgstr "Compléter la prévision de stock Demande"
 
-msgctxt "model:stock.forecast.line,name:"
+msgctxt "model:stock.forecast.line,string:"
 msgid "Stock Forecast Line"
 msgstr "Ligne de prévision de stock"
-
-msgctxt "model:stock.forecast.line-stock.move,name:"
-msgid "ForecastLine - Move"
-msgstr "Ligne de prévision - Mouvement"
 
 msgctxt "selection:stock.forecast,state:"
 msgid "Cancelled"

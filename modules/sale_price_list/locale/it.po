@@ -58,13 +58,14 @@ msgctxt "help:sale.sale,price_list:"
 msgid "Use to compute the unit price of lines."
 msgstr "Utilizzare per calcolare il prezzo unitario delle righe."
 
-msgctxt "model:party.party.sale_price_list,name:"
+#, fuzzy
+msgctxt "model:party.party.sale_price_list,string:"
 msgid "Party Sale Price List"
 msgstr "Listino prezzi vendita della controparte"
 
 #, fuzzy
-msgctxt "model:sale.configuration.sale_price_list,name:"
-msgid "Sale Configuration Sale PriceList"
+msgctxt "model:sale.configuration.sale_price_list,string:"
+msgid "Sale Configuration Sale Price List"
 msgstr "Configurazione vendita listino di vendita"
 
 msgctxt "selection:product.price_list,unit:"

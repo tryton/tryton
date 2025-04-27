@@ -58,11 +58,11 @@ msgid ""
 "Leave empty for any countries."
 msgstr ""
 
-msgctxt "model:carrier,name:"
+msgctxt "model:carrier,string:"
 msgid "Carrier"
 msgstr ""
 
-msgctxt "model:carrier.selection,name:"
+msgctxt "model:carrier.selection,string:"
 msgid "Carrier Selection"
 msgstr ""
 

@@ -33,16 +33,19 @@ msgctxt "field:notification.email,content:"
 msgid "Content"
 msgstr "محتوا"
 
+#, fuzzy
 msgctxt "field:notification.email,fallback_recipients:"
-msgid "Recipients Fallback User"
+msgid "Recipients Fallback"
 msgstr "کاربردریافت کننده پاسخگو"
 
+#, fuzzy
 msgctxt "field:notification.email,fallback_recipients_hidden:"
-msgid "Hidden Recipients Fallback User"
+msgid "Hidden Recipients Fallback"
 msgstr "کاربردریافت کننده پاسخگو پنهان"
 
+#, fuzzy
 msgctxt "field:notification.email,fallback_recipients_secondary:"
-msgid "Secondary Recipients Fallback User"
+msgid "Secondary Recipients Fallback"
 msgstr "کاربردریافت کننده پاسخگو ثانویه"
 
 msgctxt "field:notification.email,from_:"
@@ -170,12 +173,13 @@ msgid "Notification Emails"
 msgstr "ایمیل‌های اطلاعیه"
 
 #, fuzzy
-msgctxt "model:notification.email,name:"
-msgid "Email Notification"
-msgstr "ایمیل اطلاعیه"
+msgctxt "model:notification.email,string:"
+msgid "Notification Email"
+msgstr "ایمیل‌های اطلاعیه"
 
-msgctxt "model:notification.email.attachment,name:"
-msgid "Email Notification Attachment"
+#, fuzzy
+msgctxt "model:notification.email.attachment,string:"
+msgid "Notification Email Attachment"
 msgstr "پیوست ایمیل اطلاعیه"
 
 #, fuzzy

@@ -60,11 +60,13 @@ msgid ""
 "Leave empty for any countries."
 msgstr ""
 
-msgctxt "model:carrier,name:"
+#, fuzzy
+msgctxt "model:carrier,string:"
 msgid "Carrier"
 msgstr "ຜູ້ໃຫ້ບໍລິການ"
 
-msgctxt "model:carrier.selection,name:"
+#, fuzzy
+msgctxt "model:carrier.selection,string:"
 msgid "Carrier Selection"
 msgstr "ການເລືອກຜູ້ໃຫ້ບໍລິການ"
 

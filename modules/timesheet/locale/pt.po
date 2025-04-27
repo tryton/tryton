@@ -12,11 +12,11 @@ msgstr "Empregado"
 
 msgctxt "field:timesheet.hours_employee.context,end_date:"
 msgid "End Date"
-msgstr "Data de término"
+msgstr "Data Final"
 
 msgctxt "field:timesheet.hours_employee.context,start_date:"
 msgid "Start Date"
-msgstr "Data de início"
+msgstr "Data de Início"
 
 msgctxt "field:timesheet.hours_employee_monthly,duration:"
 msgid "Duration"
@@ -72,7 +72,7 @@ msgstr "Empregado"
 
 msgctxt "field:timesheet.line,uuid:"
 msgid "UUID"
-msgstr ""
+msgstr "UUID"
 
 msgctxt "field:timesheet.line,work:"
 msgid "Work"
@@ -120,11 +120,11 @@ msgstr "Trabalho"
 
 msgctxt "field:timesheet.work.context,from_date:"
 msgid "From Date"
-msgstr "Desde a Data"
+msgstr "A Partir da Data"
 
 msgctxt "field:timesheet.work.context,to_date:"
 msgid "To Date"
-msgstr "À Data"
+msgstr "Até a Data"
 
 msgctxt "help:timesheet.line,company:"
 msgid "The company on which the time is spent."
@@ -190,53 +190,47 @@ msgctxt "help:timesheet.work.context,to_date:"
 msgid "Do not take into account lines after the date."
 msgstr "Não considere lançamentos após a data."
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_hours_employee_form"
 msgid "Hours per Employee"
-msgstr "Hours per Employee"
+msgstr "Horas por empregado"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_hours_employee_monthly_form"
 msgid "Hours per Employee per Month"
-msgstr "Hours per Employee per Month"
+msgstr "Horas por empregado por mês"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_hours_employee_weekly_form"
 msgid "Hours per Employee per Week"
-msgstr "Hours per Employee per Week"
+msgstr "Horas por Empregado por Semana"
 
 msgctxt "model:ir.action,name:act_line_enter"
 msgid "Enter Timesheet"
 msgstr "Digite Quadro de Horários"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_line_form"
 msgid "Lines"
-msgstr "Inserir as Linhas"
+msgstr "Linhas"
 
 msgctxt "model:ir.action,name:act_line_form_work"
 msgid "Timesheet Lines"
 msgstr "Linhas do Horário de Trabalho"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_work_list"
 msgid "Works"
-msgstr "Works"
+msgstr "Trabalhos"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_work_report"
 msgid "Works"
-msgstr "Works"
+msgstr "Trabalhos"
 
 msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_all"
 msgid "All"
-msgstr ""
+msgstr "Todos"
 
 msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_open"
 msgid "Open"
-msgstr ""
+msgstr "Abrir"
 
-#, fuzzy, python-format
+#, python-format
 msgctxt "model:ir.message,text:msg_line_duration_positive"
 msgid "The duration of line \"%(line)s\" must be positive."
 msgstr "A duração da linha \"%(line)s\" deve ser positiva."
@@ -249,148 +243,141 @@ msgstr "A UUID da linha do horário de trabalho deve ser única."
 msgctxt "model:ir.message,text:msg_work_company_different_origin"
 msgid "The companies associated with work \"%(work)s\" and its origin differ."
 msgstr ""
+"Há uma divergência entre as companhias associadas ao trabalho\"%(work)s\" e "
+"sua origem."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_work_origin_unique_company"
 msgid "Work origin must be unique by company."
-msgstr "A origem deve ser única por empresa."
+msgstr "A origem do trabalho deve ser única por empresa."
 
 msgctxt "model:ir.rule.group,name:rule_group_hours_employee_admin"
 msgid "Any employee hours"
-msgstr ""
+msgstr "Quaisquer horas de empregados"
 
 msgctxt "model:ir.rule.group,name:rule_group_hours_employee_monthly"
 msgid "Own hours"
-msgstr ""
+msgstr "Horas próprias"
 
 msgctxt "model:ir.rule.group,name:rule_group_hours_employee_monthly_admin"
 msgid "Any employee hours"
-msgstr ""
+msgstr "Quaisquer horas de empregados"
 
 msgctxt "model:ir.rule.group,name:rule_group_hours_employee_weekly"
 msgid "Own hours"
-msgstr ""
+msgstr "Horas próprias"
 
 msgctxt "model:ir.rule.group,name:rule_group_hours_employee_weekly_admin"
 msgid "Any employee hours"
-msgstr ""
+msgstr "Quaisquer horas de empregados"
 
 msgctxt "model:ir.rule.group,name:rule_group_hours_employees"
 msgid "Own hours"
-msgstr ""
+msgstr "Horas próprias"
 
 msgctxt "model:ir.rule.group,name:rule_group_hours_supervised_employees"
 msgid "Supervised employee's hours"
-msgstr ""
+msgstr "Horas de empregados supervisionadas"
 
 msgctxt ""
 "model:ir.rule.group,name:rule_group_hours_supervised_employees_monthly"
 msgid "Supervised employee's hours"
-msgstr ""
+msgstr "Horas de empregados supervisionadas"
 
 msgctxt ""
 "model:ir.rule.group,name:rule_group_hours_supervised_employees_weekly"
 msgid "Supervised employee's hours"
-msgstr ""
+msgstr "Horas de empregados supervisionadas"
 
 msgctxt "model:ir.rule.group,name:rule_group_line"
 msgid "Own timesheet line"
-msgstr ""
+msgstr "Linha de folha de tempo própria"
 
 msgctxt "model:ir.rule.group,name:rule_group_line_admin"
 msgid "Any timesheet line"
-msgstr ""
+msgstr "Linha de folha de tempo qualquer"
 
 msgctxt "model:ir.rule.group,name:rule_group_line_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "Usuário em companhia"
 
 msgctxt "model:ir.rule.group,name:rule_group_work_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "Usuário em companhia"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
-msgstr "Configuration"
+msgstr "Configuração"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_hours_employee"
 msgid "Hours per Employee"
-msgstr "Hours per Employee"
+msgstr "Horas por Empregado"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_hours_employee_open_monthly"
 msgid "Hours per Employee per Month"
-msgstr "Hours per Employee per Month"
+msgstr "Horas por Empregado por Mês"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_hours_employee_open_weekly"
 msgid "Hours per Employee per Week"
-msgstr "Hours per Employee per Week"
+msgstr "Horas por Empregado por Semana"
 
 msgctxt "model:ir.ui.menu,name:menu_line_enter"
 msgid "Enter Timesheet"
 msgstr "Digite Quadro de Horários"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_line_form"
 msgid "Lines"
-msgstr "Inserir as Linhas"
+msgstr "Linhas"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_reporting"
 msgid "Reporting"
-msgstr "Reporting"
+msgstr "Relatórios"
 
 msgctxt "model:ir.ui.menu,name:menu_timesheet"
 msgid "Timesheet"
 msgstr "Quadro de Horários"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_work_list"
 msgid "Works"
-msgstr "Works"
+msgstr "Trabalhos"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_work_report"
 msgid "Works"
-msgstr "Works"
+msgstr "Trabalhos"
 
 msgctxt "model:res.group,name:group_timesheet_admin"
 msgid "Timesheet Administration"
 msgstr "Administração do Quadro de Horários"
 
-msgctxt "model:timesheet.hours_employee,name:"
-msgid "Hours per Employee"
+msgctxt "model:timesheet.hours_employee,string:"
+msgid "Timesheet Hours Employee"
 msgstr "Horas por Empregado"
 
-msgctxt "model:timesheet.hours_employee.context,name:"
-msgid "Hours per Employee Context"
+msgctxt "model:timesheet.hours_employee.context,string:"
+msgid "Timesheet Hours Employee Context"
 msgstr "Contexto das Horas por Empregado"
 
-msgctxt "model:timesheet.hours_employee_monthly,name:"
-msgid "Hours per Employee per Month"
+msgctxt "model:timesheet.hours_employee_monthly,string:"
+msgid "Timesheet Hours Employee Monthly"
+msgstr "Horas por Empregado por Mês"
+
+msgctxt "model:timesheet.hours_employee_weekly,string:"
+msgid "Timesheet Hours Employee Weekly"
 msgstr "Horas por Empregado por Semana"
 
-msgctxt "model:timesheet.hours_employee_weekly,name:"
-msgid "Hours per Employee per Week"
-msgstr "Horas por empregado por semana"
-
-msgctxt "model:timesheet.line,name:"
+msgctxt "model:timesheet.line,string:"
 msgid "Timesheet Line"
 msgstr "Linha de Horário de Trabalho"
 
-msgctxt "model:timesheet.line.enter.start,name:"
-msgid "Enter Lines"
-msgstr "Inserir as Linhas"
+msgctxt "model:timesheet.line.enter.start,string:"
+msgid "Timesheet Line Enter Start"
+msgstr "Início do Horário de Trabalho"
 
-msgctxt "model:timesheet.work,name:"
-msgid "Work"
-msgstr "Trabalho"
+msgctxt "model:timesheet.work,string:"
+msgid "Timesheet Work"
+msgstr "Quadro de Horários"
 
-msgctxt "model:timesheet.work.context,name:"
-msgid "Work Context"
+msgctxt "model:timesheet.work.context,string:"
+msgid "Timesheet Work Context"
 msgstr "Contexto do Trabalho"
 
 msgctxt "selection:res.user.application,application:"

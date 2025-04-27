@@ -198,13 +198,10 @@ msgctxt "help:country.subdivision,parent:"
 msgid "Add subdivision below the parent."
 msgstr "زیر بخش را در زیر مجموعه کشور اضافه کنید."
 
-msgctxt "model:country.country,name:"
+#, fuzzy
+msgctxt "model:country.country,string:"
 msgid "Country"
 msgstr "کشور"
-
-msgctxt "model:country.organization,name:"
-msgid "Organization"
-msgstr ""
 
 msgctxt "model:country.organization,name:organization_amu"
 msgid "Arab Maghreb Union"
@@ -287,18 +284,18 @@ msgctxt "model:country.organization,name:organization_safta"
 msgid "South Asian Free Trade Area"
 msgstr ""
 
-msgctxt "model:country.organization.member,name:"
-msgid "Organization Member"
-msgstr ""
-
-msgctxt "model:country.postal_code,name:"
-msgid "Postal Code"
-msgstr ""
-
 #, fuzzy
-msgctxt "model:country.region,name:"
-msgid "Region"
-msgstr "منطقه"
+msgctxt "model:country.organization,string:"
+msgid "Country Organization"
+msgstr "منطقۀ مرکزی"
+
+msgctxt "model:country.organization.member,string:"
+msgid "Country Organization Member"
+msgstr ""
+
+msgctxt "model:country.postal_code,string:"
+msgid "Country Postal Code"
+msgstr ""
 
 #, fuzzy
 msgctxt "model:country.region,name:region_africa"
@@ -460,9 +457,15 @@ msgctxt "model:country.region,name:region_world"
 msgid "World"
 msgstr ""
 
-msgctxt "model:country.subdivision,name:"
-msgid "Subdivision"
-msgstr "تقسیمات"
+#, fuzzy
+msgctxt "model:country.region,string:"
+msgid "Country Region"
+msgstr "منطقۀ مرکزی"
+
+#, fuzzy
+msgctxt "model:country.subdivision,string:"
+msgid "Country Subdivision"
+msgstr "زیربخش"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_country_by_region"
@@ -744,6 +747,11 @@ msgctxt "selection:country.subdivision,type:"
 msgid "Entity"
 msgstr "وجود"
 
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "European collectivity"
+msgstr "جمعيت ارضی خارجي"
+
 msgctxt "selection:country.subdivision,type:"
 msgid "Federal Dependency"
 msgstr "فدرال وابسته"
@@ -765,6 +773,11 @@ msgstr "اراضی فدرال"
 msgctxt "selection:country.subdivision,type:"
 msgid "Federal capital territory"
 msgstr "قلمرو سرمایه استرالیا"
+
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "Federal entity"
+msgstr "اراضی فدرال"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Free municipal consortium"
@@ -891,6 +904,11 @@ msgctxt "selection:country.subdivision,type:"
 msgid "Overseas department"
 msgstr "بخش خارجی"
 
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "Overseas departmental collectivity"
+msgstr "جمعيت ارضی خارجي"
+
 msgctxt "selection:country.subdivision,type:"
 msgid "Overseas region"
 msgstr "منطقه خارجی"
@@ -907,6 +925,11 @@ msgstr "جمعيت ارضی خارجي"
 msgctxt "selection:country.subdivision,type:"
 msgid "Overseas territory"
 msgstr "منطقه خارجی"
+
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "Overseas unique territorial collectivity"
+msgstr "جمعيت ارضی خارجي"
 
 #, fuzzy
 msgctxt "selection:country.subdivision,type:"
@@ -1020,6 +1043,11 @@ msgstr "منطقه ویژه"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "State"
+msgstr "استان"
+
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "State city"
 msgstr "استان"
 
 msgctxt "selection:country.subdivision,type:"

@@ -29,14 +29,14 @@ msgstr "Szint"
 
 #, fuzzy
 msgctxt "help:account.configuration,dunning_email_fallback:"
-msgid "User notified when no email is found to send the dunning"
+msgid "User notified when no email is found to send the dunning."
 msgstr ""
 "Ez a felhasználó kapja meg azon vevők fizetési felszólításait, amelyeknek "
 "hiányzik az e-mail címe"
 
 #, fuzzy
 msgctxt "help:account.dunning.level,email_contact_mechanism:"
-msgid "Define which email to use from the party's contact mechanisms"
+msgid "Define which email to use from the party's contact mechanisms."
 msgstr ""
 "Adja meg, hogy a vevő kapcsolattartói közül melyik címre küldje a rendszer "
 "az e-mailt"

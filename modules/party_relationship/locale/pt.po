@@ -8,20 +8,19 @@ msgstr "Relações"
 
 msgctxt "field:party.relation,active:"
 msgid "Active"
-msgstr ""
+msgstr "Ativo"
 
 msgctxt "field:party.relation,end_date:"
 msgid "End Date"
-msgstr ""
+msgstr "Data Final"
 
 msgctxt "field:party.relation,from_:"
 msgid "From"
 msgstr "De"
 
-#, fuzzy
 msgctxt "field:party.relation,start_date:"
 msgid "Start Date"
-msgstr "Data de Edição"
+msgstr "Data de Início"
 
 msgctxt "field:party.relation,to:"
 msgid "To"
@@ -33,20 +32,19 @@ msgstr "Tipo"
 
 msgctxt "field:party.relation.all,active:"
 msgid "Active"
-msgstr ""
+msgstr "Ativo"
 
 msgctxt "field:party.relation.all,end_date:"
 msgid "End Date"
-msgstr ""
+msgstr "Data Final"
 
 msgctxt "field:party.relation.all,from_:"
 msgid "From"
 msgstr "De"
 
-#, fuzzy
 msgctxt "field:party.relation.all,start_date:"
 msgid "Start Date"
-msgstr "Data de Edição"
+msgstr "Data Inicial"
 
 msgctxt "field:party.relation.all,to:"
 msgid "To"
@@ -66,7 +64,7 @@ msgstr "Relação Reversa"
 
 msgctxt "field:party.relation.type,usages:"
 msgid "Usages"
-msgstr ""
+msgstr "Usos"
 
 msgctxt "help:party.relation.type,name:"
 msgid "The main identifier of the relation type."
@@ -76,7 +74,6 @@ msgctxt "help:party.relation.type,reverse:"
 msgid "Create automatically the reverse relation."
 msgstr "Criar a relação inversa automaticamente."
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_relation_all"
 msgid "Relations"
 msgstr "Relações"
@@ -85,7 +82,6 @@ msgctxt "model:ir.action,name:act_relation_type"
 msgid "Relation Types"
 msgstr "Tipos de Relação"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_relation_all"
 msgid "Relations"
 msgstr "Relações"
@@ -94,17 +90,20 @@ msgctxt "model:ir.ui.menu,name:menu_relation_type"
 msgid "Relation Types"
 msgstr "Tipos de Relação"
 
-msgctxt "model:party.relation,name:"
+#, fuzzy
+msgctxt "model:party.relation,string:"
 msgid "Party Relation"
 msgstr "Relação da Pessoa"
 
-msgctxt "model:party.relation.all,name:"
+#, fuzzy
+msgctxt "model:party.relation.all,string:"
 msgid "Party Relation"
 msgstr "Relação da Pessoa"
 
-msgctxt "model:party.relation.type,name:"
-msgid "Relation Type"
-msgstr "Tipo de Relação"
+#, fuzzy
+msgctxt "model:party.relation.type,string:"
+msgid "Party Relation Type"
+msgstr "Tipo de relação entre pessoas"
 
 msgctxt "view:party.party:"
 msgid "Relations"

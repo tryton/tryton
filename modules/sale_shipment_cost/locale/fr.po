@@ -126,9 +126,9 @@ msgstr ""
 "Pour facturer les frais d'expédition de « %(shipment)s », vous devez définir"
 " un compte de produits pour le produit « %(product)s »."
 
-msgctxt "model:stock.shipment.cost_sale,name:"
-msgid "Shipment Cost Sale"
-msgstr "Vente des frais d'expédition"
+msgctxt "model:stock.shipment.cost_sale,string:"
+msgid "Stock Shipment Cost Sale"
+msgstr "Vente de frais d'expédition de stock"
 
 msgctxt "selection:sale.sale,shipment_cost_method:"
 msgid "None"

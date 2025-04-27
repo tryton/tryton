@@ -365,36 +365,44 @@ msgctxt "model:res.group,name:group_timesheet_admin"
 msgid "Timesheet Administration"
 msgstr "Timesheet Administration"
 
-msgctxt "model:timesheet.hours_employee,name:"
-msgid "Hours per Employee"
-msgstr "Ore per dipendente"
+#, fuzzy
+msgctxt "model:timesheet.hours_employee,string:"
+msgid "Timesheet Hours Employee"
+msgstr "Hours per Employee"
 
-msgctxt "model:timesheet.hours_employee.context,name:"
-msgid "Hours per Employee Context"
+#, fuzzy
+msgctxt "model:timesheet.hours_employee.context,string:"
+msgid "Timesheet Hours Employee Context"
 msgstr "Context ore per dipendente"
 
-msgctxt "model:timesheet.hours_employee_monthly,name:"
-msgid "Hours per Employee per Month"
-msgstr "Ore per dipendente per mese"
+#, fuzzy
+msgctxt "model:timesheet.hours_employee_monthly,string:"
+msgid "Timesheet Hours Employee Monthly"
+msgstr "Hours per Employee per Month"
 
-msgctxt "model:timesheet.hours_employee_weekly,name:"
-msgid "Hours per Employee per Week"
-msgstr "Ore per dipendente per settimana"
+#, fuzzy
+msgctxt "model:timesheet.hours_employee_weekly,string:"
+msgid "Timesheet Hours Employee Weekly"
+msgstr "Hours per Employee per Week"
 
-msgctxt "model:timesheet.line,name:"
+#, fuzzy
+msgctxt "model:timesheet.line,string:"
 msgid "Timesheet Line"
 msgstr "Riga timesheet"
 
-msgctxt "model:timesheet.line.enter.start,name:"
-msgid "Enter Lines"
-msgstr "Inserire righe"
+#, fuzzy
+msgctxt "model:timesheet.line.enter.start,string:"
+msgid "Timesheet Line Enter Start"
+msgstr "inizio timesheet"
 
-msgctxt "model:timesheet.work,name:"
-msgid "Work"
-msgstr "Lavoro"
+#, fuzzy
+msgctxt "model:timesheet.work,string:"
+msgid "Timesheet Work"
+msgstr "Timesheet"
 
-msgctxt "model:timesheet.work.context,name:"
-msgid "Work Context"
+#, fuzzy
+msgctxt "model:timesheet.work.context,string:"
+msgid "Timesheet Work Context"
 msgstr "Context lavoro"
 
 msgctxt "selection:res.user.application,application:"

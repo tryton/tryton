@@ -218,21 +218,24 @@ msgctxt "model:ir.ui.menu,name:menu_purchase_request_quotation_form"
 msgid "Quotations"
 msgstr "Pakkumused"
 
-msgctxt "model:purchase.request.quotation,name:"
-msgid "Purchase Request For Quotation"
-msgstr "Ostupäring pakkumuse jaoks"
-
-msgctxt "model:purchase.request.quotation.create.ask_suppliers,name:"
-msgid "Create Purchase Request Quotation Ask Suppliers"
-msgstr ""
-
-msgctxt "model:purchase.request.quotation.create.succeed,name:"
-msgid "Create Purchase Request Quotation Succeed"
-msgstr ""
+#, fuzzy
+msgctxt "model:purchase.request.quotation,string:"
+msgid "Purchase Request Quotation"
+msgstr "Ostupäringu pakkumus"
 
 #, fuzzy
-msgctxt "model:purchase.request.quotation.line,name:"
-msgid "Purchase Request For Quotation Line"
+msgctxt "model:purchase.request.quotation.create.ask_suppliers,string:"
+msgid "Purchase Request Quotation Create Ask Suppliers"
+msgstr "Ostupäringu pakkumuse järjestus"
+
+#, fuzzy
+msgctxt "model:purchase.request.quotation.create.succeed,string:"
+msgid "Purchase Request Quotation Create Succeed"
+msgstr "Ostupäringu pakkumuse järjestus"
+
+#, fuzzy
+msgctxt "model:purchase.request.quotation.line,string:"
+msgid "Purchase Request Quotation Line"
 msgstr "Ostupäring pakkumuse jaoks"
 
 msgctxt "report:purchase.request.quotation:"

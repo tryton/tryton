@@ -5,6 +5,12 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgid "Make this an _internal message"
+msgstr ""
+
+msgid "Send"
+msgstr "Küldés"
+
 msgid "specify alternate config file"
 msgstr "adjon meg alternatív konfigurációs fájlt"
 
@@ -130,9 +136,6 @@ msgstr ""
 
 msgid "Unable to check for new version."
 msgstr ""
-
-msgid "A new version is available!"
-msgstr "Új verzió elérhető!"
 
 msgid "Download"
 msgstr "Letöltés"
@@ -632,9 +635,6 @@ msgstr "Mellékletek"
 msgid "Files"
 msgstr "Fájlok"
 
-msgid "Send"
-msgstr "Küldés"
-
 #, fuzzy
 msgid "Select File"
 msgstr "Mind kijelölése"
@@ -844,6 +844,13 @@ msgstr "Jegyzetek..."
 msgid "Add a note to the record"
 msgstr "Jegyzet hozzáadása a rekordhoz"
 
+msgid "C_hat"
+msgstr ""
+
+#, fuzzy
+msgid "Chat on the record"
+msgstr "Jegyzet hozzáadása a rekordhoz"
+
 msgid "_Actions..."
 msgstr "Műveletek..."
 
@@ -962,13 +969,11 @@ msgstr "Mi legyen az oszloplista neve?"
 msgid "Override '%s' definition?"
 msgstr "'%s' definiálásának figyelembe vétele?"
 
-#, python-format
+#, fuzzy, python-format
 msgid "%d record saved."
-msgstr "%d rekord elmentve."
-
-#, python-format
-msgid "%d records saved."
-msgstr "%d rekord elmentve."
+msgid_plural "%d records saved."
+msgstr[0] "%d rekord elmentve."
+msgstr[1] "%d rekord elmentve."
 
 msgid "Export failed"
 msgstr ""
@@ -1049,13 +1054,11 @@ msgstr "Hiba"
 msgid "Import failed"
 msgstr ""
 
-#, python-format
+#, fuzzy, python-format
 msgid "%d record imported."
-msgstr "%d rekord betöltve."
-
-#, python-format
-msgid "%d records imported."
-msgstr "%d rekord betöltve."
+msgid_plural "%d records imported."
+msgstr[0] "%d rekord betöltve."
+msgstr[1] "%d rekord betöltve."
 
 msgid "Search"
 msgstr "Keresés"
@@ -1128,6 +1131,9 @@ msgstr "Mentés másként"
 #, fuzzy
 msgid "Image size too large."
 msgstr "Kép túl nagy!"
+
+msgid "Reset Column Widths"
+msgstr ""
 
 msgid "Copy"
 msgstr "Másolás"
@@ -1210,6 +1216,10 @@ msgstr "Összes fájl"
 
 msgid "Show plain text"
 msgstr "Mutassa meg az elrejtett szöveget"
+
+#, python-format
+msgid "Select a color for \"%s\""
+msgstr ""
 
 msgid "Add value"
 msgstr "Érték hozzáadása"

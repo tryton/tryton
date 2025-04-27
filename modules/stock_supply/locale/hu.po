@@ -154,17 +154,18 @@ msgctxt "model:ir.ui.menu,name:menu_stock_supply"
 msgid "Supply Stock"
 msgstr "Áruellátás futtatása"
 
-msgctxt "model:purchase.configuration.supply_period,name:"
+msgctxt "model:purchase.configuration.supply_period,string:"
 msgid "Purchase Configuration Supply Period"
 msgstr ""
 
-msgctxt "model:stock.order_point,name:"
-msgid "Order Point"
+#, fuzzy
+msgctxt "model:stock.order_point,string:"
+msgid "Stock Order Point"
 msgstr "Újrarendelési pont"
 
-msgctxt "model:stock.supply.start,name:"
-msgid "Supply Stock"
-msgstr "Áruellátás futtatása"
+msgctxt "model:stock.supply.start,string:"
+msgid "Stock Supply Start"
+msgstr ""
 
 msgctxt "selection:ir.cron,method:"
 msgid "Supply Stock"

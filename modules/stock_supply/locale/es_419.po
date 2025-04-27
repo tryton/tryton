@@ -149,16 +149,16 @@ msgctxt "model:ir.ui.menu,name:menu_stock_supply"
 msgid "Supply Stock"
 msgstr ""
 
-msgctxt "model:purchase.configuration.supply_period,name:"
+msgctxt "model:purchase.configuration.supply_period,string:"
 msgid "Purchase Configuration Supply Period"
 msgstr ""
 
-msgctxt "model:stock.order_point,name:"
-msgid "Order Point"
+msgctxt "model:stock.order_point,string:"
+msgid "Stock Order Point"
 msgstr ""
 
-msgctxt "model:stock.supply.start,name:"
-msgid "Supply Stock"
+msgctxt "model:stock.supply.start,string:"
+msgid "Stock Supply Start"
 msgstr ""
 
 msgctxt "selection:ir.cron,method:"

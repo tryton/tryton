@@ -2,8 +2,13 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "field:sale.line,draft_unit_price:"
-msgid "Draft Unit Price"
+msgctxt "field:sale.line,original_amount:"
+msgid "Original Amount"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:sale.line,original_unit_price:"
+msgid "Original Unit Price"
 msgstr "پیش نویس واحد قیمت"
 
 msgctxt "field:sale.line,promotion:"
@@ -83,6 +88,18 @@ msgctxt "field:sale.reporting.promotion,promotion:"
 msgid "Promotion"
 msgstr "تبلیغ و ترویج"
 
+msgctxt "field:sale.sale,original_tax_amount:"
+msgid "Original Tax"
+msgstr ""
+
+msgctxt "field:sale.sale,original_total_amount:"
+msgid "Original Total"
+msgstr ""
+
+msgctxt "field:sale.sale,original_untaxed_amount:"
+msgid "Original Untaxed"
+msgstr ""
+
 msgctxt "help:sale.promotion,formula:"
 msgid ""
 "Python expression that will be evaluated with:\n"
@@ -127,19 +144,27 @@ msgctxt "model:ir.ui.menu,name:menu_promotion"
 msgid "Promotions"
 msgstr "ترویج ها و تبلیغات"
 
-msgctxt "model:sale.promotion,name:"
+#, fuzzy
+msgctxt "model:sale.promotion,string:"
 msgid "Sale Promotion"
 msgstr "تبلیغ و ترویج فروش"
 
-msgctxt "model:sale.promotion-product.category,name:"
+#, fuzzy
+msgctxt "model:sale.promotion-product.category,string:"
 msgid "Sale Promotion - Product Category"
 msgstr "دسته بندی محصولات - تبلیغ و ترویج فروش"
 
-msgctxt "model:sale.promotion-product.product,name:"
+#, fuzzy
+msgctxt "model:sale.promotion-product.product,string:"
 msgid "Sale Promotion - Product"
 msgstr "محصولات - تبلیغ و ترویج فروش"
 
 #, fuzzy
-msgctxt "model:sale.reporting.promotion,name:"
-msgid "Sale Reporting per Promotion"
+msgctxt "model:sale.reporting.promotion,string:"
+msgid "Sale Reporting Promotion"
 msgstr "تبلیغ و ترویج فروش"
+
+#, fuzzy
+msgctxt "view:sale.promotion:"
+msgid "Products"
+msgstr "محصولات"

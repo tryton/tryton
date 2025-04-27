@@ -2,6 +2,7 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "model:edocument.uncefact.invoice,name:"
-msgid "EDocument UN/CEFACT Invoice"
+#, fuzzy
+msgctxt "model:edocument.uncefact.invoice,string:"
+msgid "Edocument Uncefact Invoice"
 msgstr "Factura digital UN/CEFACT"

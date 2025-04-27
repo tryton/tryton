@@ -90,6 +90,10 @@ msgctxt "field:account.move.line.group,payable_receivable_balance:"
 msgid "Payable/Receivable Balance"
 msgstr "Balance à payer/recevoir"
 
+msgctxt "field:account.move.line.group,payable_receivable_date:"
+msgid "Payable/Receivable Date"
+msgstr "Date de paiement/d'échéance"
+
 msgctxt "field:account.move.line.group,period:"
 msgid "Period"
 msgstr "Période"
@@ -114,11 +118,11 @@ msgctxt "field:account.move.line.group-move.line,line:"
 msgid "Line"
 msgstr "Ligne"
 
-msgctxt "model:account.move.line.group,name:"
+msgctxt "model:account.move.line.group,string:"
 msgid "Account Move Line Group"
 msgstr "Groupe de lignes de mouvements comptables"
 
-msgctxt "model:account.move.line.group-move.line,name:"
+msgctxt "model:account.move.line.group-move.line,string:"
 msgid "Account Move Line Group - Move Line"
 msgstr "Groupe de lignes de mouvements comptables - Ligne de mouvement"
 
@@ -137,6 +141,10 @@ msgstr "Ouvrir le mouvement comptable (groupé)"
 msgctxt "view:account.move.line.group:"
 msgid "Balance"
 msgstr "Balance"
+
+msgctxt "view:account.move.line.group:"
+msgid "Date"
+msgstr "Date"
 
 msgctxt "view:account.move.line.group:"
 msgid "Other Info"

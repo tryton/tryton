@@ -20,3 +20,7 @@ msgstr ""
 msgctxt "model:ir.message,text:msg_sale_draft_payment"
 msgid "You cannot reset to draft sale \"%(sale)s\" because it has payments."
 msgstr ""
+
+msgctxt "selection:ir.cron,method:"
+msgid "Confirm sales based on payment"
+msgstr ""

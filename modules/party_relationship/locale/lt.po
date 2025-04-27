@@ -94,17 +94,20 @@ msgctxt "model:ir.ui.menu,name:menu_relation_type"
 msgid "Relation Types"
 msgstr "Sąryšių tipai"
 
-msgctxt "model:party.relation,name:"
+#, fuzzy
+msgctxt "model:party.relation,string:"
 msgid "Party Relation"
 msgstr "Kontrahento ryšiai"
 
-msgctxt "model:party.relation.all,name:"
+#, fuzzy
+msgctxt "model:party.relation.all,string:"
 msgid "Party Relation"
 msgstr "Kontrahento ryšiai"
 
-msgctxt "model:party.relation.type,name:"
-msgid "Relation Type"
-msgstr "Sąryšio tipas"
+#, fuzzy
+msgctxt "model:party.relation.type,string:"
+msgid "Party Relation Type"
+msgstr "Kontrahento ryšiai"
 
 msgctxt "view:party.party:"
 msgid "Relations"

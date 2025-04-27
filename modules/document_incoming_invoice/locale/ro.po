@@ -1,10 +1,11 @@
 #
+#, fuzzy
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:account.invoice,documents_incoming:"
 msgid "Incoming Documents"
-msgstr ""
+msgstr "Întrări (Documente)"
 
 msgctxt "field:document.incoming.configuration,default_supplier:"
 msgid "Default Supplier"

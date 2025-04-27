@@ -119,20 +119,22 @@ msgctxt "model:ir.ui.menu,name:menu_user_form"
 msgid "Web Users"
 msgstr "کاربران وب"
 
-msgctxt "model:web.user,name:"
+#, fuzzy
+msgctxt "model:web.user,string:"
 msgid "Web User"
 msgstr "کاربر وب"
 
 #, fuzzy
-msgctxt "model:web.user-party.party.secondary,name:"
-msgid "Web User - Secondary Party"
+msgctxt "model:web.user-party.party.secondary,string:"
+msgid "Web User - Party Secondary"
 msgstr "جلسه کاری کاربر وب"
 
-msgctxt "model:web.user.authenticate.attempt,name:"
-msgid "Web User Authenticate Attempt"
-msgstr "تلاش برای هوّیت سنجی کاربر وب"
+msgctxt "model:web.user.authenticate.attempt,string:"
+msgid "User Login Attempt"
+msgstr ""
 
-msgctxt "model:web.user.session,name:"
+#, fuzzy
+msgctxt "model:web.user.session,string:"
 msgid "Web User Session"
 msgstr "جلسه کاری کاربر وب"
 

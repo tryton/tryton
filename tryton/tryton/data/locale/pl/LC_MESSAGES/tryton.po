@@ -5,6 +5,12 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgid "Make this an _internal message"
+msgstr ""
+
+msgid "Send"
+msgstr "Wyślij"
+
 msgid "specify alternate config file"
 msgstr "podaj alternatywny plik konfiguracji"
 
@@ -126,9 +132,6 @@ msgstr "Sprawdź URL: %s"
 
 msgid "Unable to check for new version."
 msgstr "Nie można sprawdzić dostępności nowej wersji."
-
-msgid "A new version is available!"
-msgstr "Nowa wersja jest dostępna!"
 
 msgid "Download"
 msgstr "Pobierz"
@@ -622,9 +625,6 @@ msgstr "Załączniki"
 msgid "Files"
 msgstr "Pliki"
 
-msgid "Send"
-msgstr "Wyślij"
-
 msgid "Select File"
 msgstr "Wybierz plik"
 
@@ -831,6 +831,13 @@ msgstr "Notatki..."
 msgid "Add a note to the record"
 msgstr "Dodaj notatkę do rekordu"
 
+msgid "C_hat"
+msgstr ""
+
+#, fuzzy
+msgid "Chat on the record"
+msgstr "Dodaj notatkę do rekordu"
+
 msgid "_Actions..."
 msgstr "Akcje..."
 
@@ -949,13 +956,12 @@ msgstr "Jaka jest nazwa tego eksportu?"
 msgid "Override '%s' definition?"
 msgstr "Czy nadpisać definicję '%s'?"
 
-#, python-format
+#, fuzzy, python-format
 msgid "%d record saved."
-msgstr "%d rekord został zapisany."
-
-#, python-format
-msgid "%d records saved."
-msgstr "%d rekordy zostały zapisane."
+msgid_plural "%d records saved."
+msgstr[0] "%d rekord został zapisany."
+msgstr[1] "%d rekord został zapisany."
+msgstr[2] "%d rekord został zapisany."
 
 msgid "Export failed"
 msgstr "Eksport nie powiódł się"
@@ -1035,13 +1041,12 @@ msgstr "Błąd"
 msgid "Import failed"
 msgstr "Import nie powiódł się"
 
-#, python-format
+#, fuzzy, python-format
 msgid "%d record imported."
-msgstr "Rekord %d został zaimportowany."
-
-#, python-format
-msgid "%d records imported."
-msgstr "Rekordy %d zostały zaimportowane."
+msgid_plural "%d records imported."
+msgstr[0] "Rekord %d został zaimportowany."
+msgstr[1] "Rekord %d został zaimportowany."
+msgstr[2] "Rekord %d został zaimportowany."
 
 msgid "Search"
 msgstr "Szukaj"
@@ -1112,6 +1117,10 @@ msgstr "Zapisz jako"
 
 msgid "Image size too large."
 msgstr "Za duży rozmiar obrazka."
+
+#, fuzzy
+msgid "Reset Column Widths"
+msgstr "Zapisz szerokość kolumny"
 
 msgid "Copy"
 msgstr "Kopiuj"
@@ -1190,6 +1199,10 @@ msgstr "Wszystkie pliki"
 
 msgid "Show plain text"
 msgstr "Pokaż tekst"
+
+#, fuzzy, python-format
+msgid "Select a color for \"%s\""
+msgstr "Wybierz kolor"
 
 msgid "Add value"
 msgstr "Dodaj wartość"

@@ -21,7 +21,7 @@ msgid "Dashboard Layout"
 msgstr "Aspect tablou de bord"
 
 #, fuzzy
-msgctxt "model:dashboard.action,name:"
+msgctxt "model:dashboard.action,string:"
 msgid "Dashboard Action"
 msgstr "Acțiune tablou de bord"
 

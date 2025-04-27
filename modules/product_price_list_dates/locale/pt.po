@@ -4,17 +4,16 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:product.price_list.line,end_date:"
 msgid "End Date"
-msgstr "Data de término"
+msgstr "Data Final"
 
 msgctxt "field:product.price_list.line,start_date:"
 msgid "Start Date"
-msgstr "Data de início"
+msgstr "Data de Início"
 
 msgctxt "field:product.price_list.line.context,date:"
 msgid "Date"
 msgstr "Data"
 
-#, fuzzy
 msgctxt "field:product.sale.context,date:"
 msgid "Date"
 msgstr "Data"

@@ -72,8 +72,9 @@ msgctxt "field:account.invoice.line,deferrable:"
 msgid "Deferrable"
 msgstr "Diferible"
 
-msgctxt "model:account.invoice.deferred,name:"
-msgid "Invoice Deferred"
+#, fuzzy
+msgctxt "model:account.invoice.deferred,string:"
+msgid "Account Invoice Deferred"
 msgstr "Factura diferida"
 
 msgctxt "model:ir.action,name:act_invoice_deferred_in_form"

@@ -70,12 +70,16 @@ msgstr "Attribute"
 
 msgctxt "model:ir.action,name:act_attribute_set_form"
 msgid "Attribute Sets"
-msgstr "Attributssatz"
+msgstr "Attributssätze"
 
 #, python-format
 msgctxt "model:ir.message,text:msg_label_value"
 msgid "%(label)s: %(value)s"
 msgstr "%(label)s: %(value)s"
+
+msgctxt "model:ir.message,text:msg_product_attribute_name_unique"
+msgid "The name of the product attribute must be unique."
+msgstr "Der Name des Artikelattributs muss eindeutig sein."
 
 msgctxt "model:ir.ui.menu,name:menu_attribute"
 msgid "Attributes"
@@ -83,19 +87,19 @@ msgstr "Attribute"
 
 msgctxt "model:ir.ui.menu,name:menu_attribute_set"
 msgid "Attribute Sets"
-msgstr "Attributssatz"
+msgstr "Attributssätze"
 
-msgctxt "model:product.attribute,name:"
+msgctxt "model:product.attribute,string:"
 msgid "Product Attribute"
 msgstr "Artikelattribut"
 
-msgctxt "model:product.attribute-product.attribute-set,name:"
-msgid "Product Attribute - Set"
-msgstr "Artikelattribut - Satz"
+msgctxt "model:product.attribute-product.attribute-set,string:"
+msgid "Product Attribute - Product Attribute - Set"
+msgstr "Artikelattribut - Attributssatz"
 
-msgctxt "model:product.attribute.set,name:"
+msgctxt "model:product.attribute.set,string:"
 msgid "Product Attribute Set"
-msgstr "Attributssatz"
+msgstr "Artikel Attributssatz"
 
 msgctxt "view:product.template:"
 msgid "Attributes"

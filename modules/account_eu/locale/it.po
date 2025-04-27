@@ -46,12 +46,14 @@ msgctxt "field:account.tax.template,ec_sales_list_code:"
 msgid "EC Sales List Code"
 msgstr "Codice EC Sales List"
 
-msgctxt "model:account.ec_sales_list,name:"
-msgid "EC Sales List"
+#, fuzzy
+msgctxt "model:account.ec_sales_list,string:"
+msgid "Account Ec Sales List"
 msgstr "EC Sales List"
 
-msgctxt "model:account.ec_sales_list.context,name:"
-msgid "EC Sales List Context"
+#, fuzzy
+msgctxt "model:account.ec_sales_list.context,string:"
+msgid "Account Ec Sales List Context"
 msgstr "Contesto EC Sales List"
 
 msgctxt "model:ir.action,name:act_ec_sales_list_form"

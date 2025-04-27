@@ -156,7 +156,7 @@ msgstr "taken"
 
 msgctxt "model:ir.action,name:act_timesheet_line_form_work"
 msgid "Timesheet Lines"
-msgstr "Tijdregistratieregel"
+msgstr "Tijdregistratieregels"
 
 msgctxt "model:ir.action,name:act_work_list"
 msgid "Works Efforts"
@@ -248,13 +248,9 @@ msgctxt "model:ir.ui.menu,name:menu_work_tree"
 msgid "Works Efforts"
 msgstr "Werkt inspanningen"
 
-msgctxt "model:project.work,name:"
-msgid "Work Effort"
-msgstr "Arbeidsinspanning"
-
-msgctxt "model:project.work.status,name:"
-msgid "Work Status"
-msgstr "Werk status"
+msgctxt "model:project.work,string:"
+msgid "Project Work"
+msgstr "Project werkzaamheden"
 
 msgctxt "model:project.work.status,name:work_done_status"
 msgid "Done"
@@ -263,6 +259,10 @@ msgstr "Klaar"
 msgctxt "model:project.work.status,name:work_open_status"
 msgid "Open"
 msgstr "Open"
+
+msgctxt "model:project.work.status,string:"
+msgid "Project Work Status"
+msgstr "Project status werkzaamheden"
 
 msgctxt "model:res.group,name:group_project_admin"
 msgid "Project Administration"

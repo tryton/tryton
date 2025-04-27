@@ -44,7 +44,7 @@ msgctxt "field:purchase.purchase,cash_rounding:"
 msgid "Cash Rounding"
 msgstr "Barbetragsrundung"
 
-msgctxt "model:account.configuration.cash_rounding_account,name:"
+msgctxt "model:account.configuration.cash_rounding_account,string:"
 msgid "Account Configuration Cash Rounding Account"
 msgstr "Buchhaltung Einstellungen Barbetragsrundung Konto"
 

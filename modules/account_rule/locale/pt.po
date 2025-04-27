@@ -1,79 +1,80 @@
 #
+#, fuzzy
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:account.account.rule,account:"
 msgid "Substitution Account"
-msgstr ""
+msgstr "Conta de Substituição"
 
 msgctxt "field:account.account.rule,company:"
 msgid "Company"
-msgstr ""
+msgstr "Empresa"
 
 msgctxt "field:account.account.rule,end_date:"
 msgid "Ending Date"
-msgstr ""
+msgstr "Data de Término"
 
 msgctxt "field:account.account.rule,origin_account:"
 msgid "Original Account"
-msgstr ""
+msgstr "Conta Original"
 
 msgctxt "field:account.account.rule,return_:"
 msgid "Return"
-msgstr ""
+msgstr "Retornar"
 
 msgctxt "field:account.account.rule,start_date:"
 msgid "Starting Date"
-msgstr ""
+msgstr "Data de Inicio"
 
 msgctxt "field:account.account.rule,tax:"
 msgid "Tax"
-msgstr ""
+msgstr "Imposto"
 
 msgctxt "field:account.account.rule,type:"
 msgid "Type"
-msgstr ""
+msgstr "Tipo"
 
 msgctxt "field:account.account.rule,warehouse:"
 msgid "Warehouse"
-msgstr ""
+msgstr "Armazém"
 
 msgctxt "help:account.account.rule,return_:"
 msgid "Check to limit to return operation."
-msgstr ""
+msgstr "Marque para limitar a operação de retorno."
 
-msgctxt "model:account.account.rule,name:"
+msgctxt "model:account.account.rule,string:"
 msgid "Account Rule"
-msgstr ""
+msgstr "Regra da Conta"
 
 msgctxt "model:ir.action,name:act_account_rule_form"
 msgid "Account Rules"
-msgstr ""
+msgstr "Regras da Conta"
 
 msgctxt "model:ir.rule.group,name:rule_group_account_rule_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "Usuário em Empresas"
 
 msgctxt "model:ir.ui.menu,name:menu_account_rule_form"
 msgid "Account Rules"
-msgstr ""
+msgstr "Regras da Conta"
 
 msgctxt "selection:account.account.rule,type:"
 msgid "Expense"
-msgstr ""
+msgstr "Despesa"
 
 msgctxt "selection:account.account.rule,type:"
 msgid "Payable"
-msgstr ""
+msgstr "Pagável"
 
 msgctxt "selection:account.account.rule,type:"
 msgid "Receivable"
-msgstr ""
+msgstr "Recebível"
 
 msgctxt "selection:account.account.rule,type:"
 msgid "Revenue"
-msgstr ""
+msgstr "Receita"
 
 msgctxt "selection:account.account.rule,type:"
 msgid "Stock"
-msgstr ""
+msgstr "Estoque"

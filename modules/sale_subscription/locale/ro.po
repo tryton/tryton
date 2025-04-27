@@ -330,6 +330,12 @@ msgctxt "help:sale.subscription.recurrence.rule,byyearday:"
 msgid "A comma separated list of integers."
 msgstr ""
 
+msgctxt "help:sale.subscription.recurrence.rule,exclusive:"
+msgid ""
+"If checked, dates which are part of this recurrence rule will not be "
+"generated."
+msgstr ""
+
 msgctxt "help:sale.subscription.recurrence.rule,set_:"
 msgid "Add the rule below the set."
 msgstr ""
@@ -511,45 +517,53 @@ msgctxt "model:ir.ui.menu,name:menu_subscription_form"
 msgid "Subscriptions"
 msgstr ""
 
-msgctxt "model:sale.subscription,name:"
-msgid "Subscription"
+#, fuzzy
+msgctxt "model:sale.subscription,string:"
+msgid "Sale Subscription"
+msgstr "Descriere"
+
+#, fuzzy
+msgctxt "model:sale.subscription.create_invoice.start,string:"
+msgid "Sale Subscription Create Invoice Start"
+msgstr "Descriere"
+
+#, fuzzy
+msgctxt "model:sale.subscription.line,string:"
+msgid "Sale Subscription Line"
+msgstr "Descriere"
+
+msgctxt "model:sale.subscription.line.consumption,string:"
+msgid "Sale Subscription Line Consumption"
 msgstr ""
 
-msgctxt "model:sale.subscription.create_invoice.start,name:"
-msgid "Create Subscription Invoice"
+msgctxt "model:sale.subscription.line.consumption.create.start,string:"
+msgid "Sale Subscription Line Consumption Create Start"
 msgstr ""
 
-msgctxt "model:sale.subscription.line,name:"
-msgid "Subscription Line"
-msgstr ""
+#, fuzzy
+msgctxt "model:sale.subscription.recurrence.rule,string:"
+msgid "Sale Subscription Recurrence Rule"
+msgstr "Descriere"
 
-msgctxt "model:sale.subscription.line.consumption,name:"
-msgid "Subscription Line Consumption"
-msgstr ""
+#, fuzzy
+msgctxt "model:sale.subscription.recurrence.rule.set,string:"
+msgid "Sale Subscription Recurrence Rule Set"
+msgstr "Descriere"
 
-msgctxt "model:sale.subscription.line.consumption.create.start,name:"
-msgid "Create Subscription Line Consumption"
-msgstr ""
+#, fuzzy
+msgctxt "model:sale.subscription.recurrence.rule.set.test,string:"
+msgid "Sale Subscription Recurrence Rule Set Test"
+msgstr "Descriere"
 
-msgctxt "model:sale.subscription.recurrence.rule,name:"
-msgid "Subscription Recurrence Rule"
-msgstr ""
+#, fuzzy
+msgctxt "model:sale.subscription.recurrence.rule.set.test.result,string:"
+msgid "Sale Subscription Recurrence Rule Set Test Result"
+msgstr "Descriere"
 
-msgctxt "model:sale.subscription.recurrence.rule.set,name:"
-msgid "Subscription Recurrence Rule Set"
-msgstr ""
-
-msgctxt "model:sale.subscription.recurrence.rule.set.test,name:"
-msgid "Test Subscription Recurrence Rule Set"
-msgstr ""
-
-msgctxt "model:sale.subscription.recurrence.rule.set.test.result,name:"
-msgid "Test Subscription Recurrence Rule Set Result"
-msgstr ""
-
-msgctxt "model:sale.subscription.service,name:"
-msgid "Subscription Service"
-msgstr ""
+#, fuzzy
+msgctxt "model:sale.subscription.service,string:"
+msgid "Sale Subscription Service"
+msgstr "Descriere"
 
 msgctxt "selection:ir.cron,method:"
 msgid "Generate Subscription Invoices"

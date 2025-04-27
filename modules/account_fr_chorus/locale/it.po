@@ -90,12 +90,12 @@ msgctxt "help:party.party,chorus:"
 msgid "Send documents for this party through Chorus Pro"
 msgstr ""
 
-msgctxt "model:account.credential.chorus,name:"
+msgctxt "model:account.credential.chorus,string:"
 msgid "Account Credential Chorus"
 msgstr ""
 
-msgctxt "model:account.invoice.chorus,name:"
-msgid "Invoice Chorus"
+msgctxt "model:account.invoice.chorus,string:"
+msgid "Account Invoice Chorus"
 msgstr ""
 
 msgctxt "model:ir.action,name:act_invoice_chorus_form"

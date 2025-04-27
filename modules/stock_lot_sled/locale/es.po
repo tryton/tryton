@@ -111,7 +111,7 @@ msgstr ""
 msgctxt "model:ir.message,text:msg_move_lot_expired"
 msgid "You cannot process move \"%(move)s\" because its lot \"%(lot)s\" has expired."
 msgstr ""
-"No puede procesar el movimiento \"%(move)s\" porque su \"%(lot)s\" ha "
+"No puede procesar el movimiento \"%(move)s\" porque su lote \"%(lot)s\" ha "
 "expirado."
 
 #, python-format
@@ -127,8 +127,8 @@ msgctxt "model:res.group,name:group_stock_force_expiration"
 msgid "Stock Force Expiration"
 msgstr "Forzar caducidades en logística"
 
-msgctxt "model:stock.location.lot.shelf_life,name:"
-msgid "Stock Configuration Lot Shelf Life"
+msgctxt "model:stock.location.lot.shelf_life,string:"
+msgid "Stock Location Lot Shelf Life"
 msgstr "Configuración del retraso de la vida útil"
 
 msgctxt "selection:product.product,expiration_state:"

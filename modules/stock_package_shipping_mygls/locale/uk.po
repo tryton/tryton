@@ -52,8 +52,8 @@ msgid ""
 "ParcelNr#, #COD#, #PickupDate#, #From_Name#, #ClientRef#"
 msgstr ""
 
-msgctxt "model:carrier.credential.mygls,name:"
-msgid "MyGLS Credential"
+msgctxt "model:carrier.credential.mygls,string:"
+msgid "Carrier Credential Mygls"
 msgstr ""
 
 msgctxt "model:ir.action,name:act_create_shipping_mygls_wizard"

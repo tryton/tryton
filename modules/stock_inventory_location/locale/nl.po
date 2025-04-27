@@ -38,9 +38,9 @@ msgctxt "model:ir.ui.menu,name:menu_create_inventory"
 msgid "Create Inventories"
 msgstr "maak inventaris"
 
-msgctxt "model:stock.inventory.create.start,name:"
-msgid "Create Inventories"
-msgstr "maak inventaris"
+msgctxt "model:stock.inventory.create.start,string:"
+msgid "Stock Inventory Create Start"
+msgstr "Voorraad inventaris maken start"
 
 msgctxt "wizard_button:stock.inventory.create,start,create_:"
 msgid "Create"

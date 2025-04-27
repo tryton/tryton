@@ -127,8 +127,9 @@ msgctxt "model:res.group,name:group_stock_force_expiration"
 msgid "Stock Force Expiration"
 msgstr "Forçar caducitats a logística"
 
-msgctxt "model:stock.location.lot.shelf_life,name:"
-msgid "Stock Configuration Lot Shelf Life"
+#, fuzzy
+msgctxt "model:stock.location.lot.shelf_life,string:"
+msgid "Stock Location Lot Shelf Life"
 msgstr "Configuració del retard de la vida útil"
 
 msgctxt "selection:product.product,expiration_state:"

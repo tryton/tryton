@@ -103,10 +103,9 @@ msgctxt "field:account.invoice,description:"
 msgid "Description"
 msgstr "Descriere"
 
-#, fuzzy
 msgctxt "field:account.invoice,has_account_move:"
 msgid "Has Account Move"
-msgstr "Cont"
+msgstr "Are Mișcare pe Cont"
 
 msgctxt "field:account.invoice,has_payment_method:"
 msgid "Has Payment Method"
@@ -146,7 +145,7 @@ msgstr "Jurnal"
 
 msgctxt "field:account.invoice,line_lines:"
 msgid "Line - Lines"
-msgstr ""
+msgstr "Rând - Rânduri"
 
 msgctxt "field:account.invoice,lines:"
 msgid "Lines"
@@ -214,7 +213,7 @@ msgstr "Secvenţă"
 
 msgctxt "field:account.invoice,sequence_type_cache:"
 msgid "Sequence Type Cache"
-msgstr ""
+msgstr "Cache pentru tipul de secvență"
 
 msgctxt "field:account.invoice,state:"
 msgid "State"
@@ -764,80 +763,125 @@ msgctxt "help:company.company,purchase_taxes_expense:"
 msgid "Check to book purchase taxes as expense."
 msgstr "Bifaţi pentru a contabiliza impozitele de achiziţie ca o cheltuiala."
 
-msgctxt "model:account.configuration.default_payment_term,name:"
+msgctxt "model:account.configuration.default_payment_term,string:"
 msgid "Account Configuration Default Payment Term"
 msgstr "Configurare Cont Termen de Plata Implicit"
 
-msgctxt "model:account.fiscalyear.invoice_sequence,name:"
-msgid "Invoice Sequence"
-msgstr "Secvenţa Factura"
+msgctxt "model:account.fiscalyear.invoice_sequence,string:"
+msgid "Account Fiscalyear Invoice Sequence"
+msgstr "Secvenţa Facturi An Fiscal"
 
-msgctxt "model:account.invoice,name:"
-msgid "Invoice"
+msgctxt "model:account.invoice,string:"
+msgid "Account Invoice"
 msgstr "Factura"
 
-msgctxt "model:account.invoice-account.move.line,name:"
-msgid "Invoice - Payment Line"
-msgstr "Factura - Rând Plata"
+msgctxt "model:account.invoice-account.move.line,string:"
+msgid "Account Invoice - Account Move Line"
+msgstr "Factura - Rând Mișcare"
 
-msgctxt "model:account.invoice-additional-account.move,name:"
-msgid "Invoice Additional Move"
-msgstr "Mişcare Suplimentara Factura"
+msgctxt "model:account.invoice-additional-account.move,string:"
+msgid "Account Invoice - Additional - Account Move"
+msgstr "Factură - Suplimentar - Mișcare Cont"
 
-msgctxt "model:account.invoice.alternative_payee,name:"
-msgid "Invoice Alternative Payee"
+msgctxt "model:account.invoice.alternative_payee,string:"
+msgid "Account Invoice Alternative Payee"
 msgstr "Plătitori Alternativi Factură"
 
-msgctxt "model:account.invoice.credit.start,name:"
-msgid "Credit Invoice"
-msgstr "Factura Storno"
+msgctxt "model:account.invoice.credit.start,string:"
+msgid "Account Invoice Credit Start"
+msgstr ""
 
-msgctxt "model:account.invoice.line,name:"
-msgid "Invoice Line"
+msgctxt "model:account.invoice.line,string:"
+msgid "Account Invoice Line"
 msgstr "Rând Factura"
 
-msgctxt "model:account.invoice.line-account.tax,name:"
-msgid "Invoice Line - Tax"
+msgctxt "model:account.invoice.line-account.tax,string:"
+msgid "Account Invoice Line - Account Tax"
 msgstr "Rând Factura - Impozit"
 
-msgctxt "model:account.invoice.pay.ask,name:"
-msgid "Pay Invoice"
+#, fuzzy
+msgctxt "model:account.invoice.pay.ask,string:"
+msgid "Account Invoice Pay Ask"
+msgstr "Plata Facturi"
+
+#, fuzzy
+msgctxt "model:account.invoice.pay.start,string:"
+msgid "Account Invoice Pay Start"
+msgstr "Parte Facturata"
+
+msgctxt "model:account.invoice.payment.method,string:"
+msgid "Account Invoice Payment Method"
+msgstr "Metoda Plata Factura"
+
+msgctxt "model:account.invoice.payment_term,name:payment_term_0"
+msgid "Upon Receipt"
+msgstr "La primire"
+
+msgctxt "model:account.invoice.payment_term,name:payment_term_30_eom"
+msgid "Net 30 days End of Month"
+msgstr "Net 30 de zile Sfârșit de Luna"
+
+msgctxt "model:account.invoice.payment_term,name:payment_term_60_eom"
+msgid "Net 60 days End of Month"
+msgstr "Net 60 de zile Sfârșit de Luna"
+
+msgctxt "model:account.invoice.payment_term,name:payment_term_eom"
+msgid "End of Month"
+msgstr "Sfârșit de Luna"
+
+msgctxt "model:account.invoice.payment_term,name:payment_term_eom_following"
+msgid "End of Month Following"
+msgstr ""
+
+msgctxt "model:account.invoice.payment_term,name:payment_term_net10"
+msgid "Net 10 days"
+msgstr ""
+
+msgctxt "model:account.invoice.payment_term,name:payment_term_net15"
+msgid "Net 15 days"
+msgstr ""
+
+msgctxt "model:account.invoice.payment_term,name:payment_term_net30"
+msgid "Net 30 days"
+msgstr ""
+
+msgctxt "model:account.invoice.payment_term,name:payment_term_net60"
+msgid "Net 60 days"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:account.invoice.payment_term,string:"
+msgid "Account Invoice Payment Term"
 msgstr "Plata Factura"
 
-msgctxt "model:account.invoice.pay.start,name:"
-msgid "Pay Invoice"
-msgstr "Plata Factura"
+#, fuzzy
+msgctxt "model:account.invoice.payment_term.line,string:"
+msgid "Account Invoice Payment Term Line"
+msgstr "Factura - Rând Plata"
 
-msgctxt "model:account.invoice.payment.method,name:"
-msgid "Payment Method"
-msgstr "Metodă Plata"
+#, fuzzy
+msgctxt "model:account.invoice.payment_term.line.delta,string:"
+msgid "Account Invoice Payment Term Line Delta"
+msgstr "Factura - Rând Plata"
 
-msgctxt "model:account.invoice.payment_term,name:"
-msgid "Payment Term"
-msgstr "Termen de plata"
+#, fuzzy
+msgctxt "model:account.invoice.payment_term.test,string:"
+msgid "Account Invoice Payment Term Test"
+msgstr "Plata Facturi"
 
-msgctxt "model:account.invoice.payment_term.line,name:"
-msgid "Payment Term Line"
-msgstr "Rând Termen de Plata"
+#, fuzzy
+msgctxt "model:account.invoice.payment_term.test.result,string:"
+msgid "Account Invoice Payment Term Test Result"
+msgstr "Metode Plata Factura"
 
-msgctxt "model:account.invoice.payment_term.line.delta,name:"
-msgid "Payment Term Line Relative Delta"
-msgstr "Rând Termen de Plata Delta Relativ"
-
-msgctxt "model:account.invoice.payment_term.test,name:"
-msgid "Test Payment Term"
-msgstr "Proba Termen de Plata"
-
-msgctxt "model:account.invoice.payment_term.test.result,name:"
-msgid "Test Payment Term"
-msgstr "Proba Termen de Plata"
-
-msgctxt "model:account.invoice.report.revision,name:"
-msgid "Invoice Report Revision"
+#, fuzzy
+msgctxt "model:account.invoice.report.revision,string:"
+msgid "Account Invoice Report Revision"
 msgstr "Revize Raport Factură"
 
-msgctxt "model:account.invoice.tax,name:"
-msgid "Invoice Tax"
+#, fuzzy
+msgctxt "model:account.invoice.tax,string:"
+msgid "Account Invoice Tax"
 msgstr "Impozit Factura"
 
 msgctxt "model:ir.action,name:act_delegate_lines_to_pay_wizard"
@@ -1170,6 +1214,11 @@ msgstr ""
 "Pentru a calcula termenii, trebuie să adăugați un rând la termenul de plată "
 "\"%(payment_term)s\"."
 
+#, fuzzy
+msgctxt "model:ir.message,text:msg_payment_term_non_zero_ratio_divisor"
+msgid "The ratio and divisor can not be both equal to zero."
+msgstr "Raportul și divizorul nu sunt consecvente pe rândul \"%(line)s\"."
+
 msgctxt "model:ir.model.button,confirm:invoice_cancel_button"
 msgid "Are you sure you want to cancel the invoices?"
 msgstr "Sigur doriţi să anulaţi facturile?"
@@ -1266,7 +1315,8 @@ msgctxt "model:ir.ui.menu,name:menu_payment_terms_configuration"
 msgid "Payment Terms"
 msgstr "Termene de Plata"
 
-msgctxt "model:party.party.payment_term,name:"
+#, fuzzy
+msgctxt "model:party.party.payment_term,string:"
 msgid "Party Payment Term"
 msgstr "Termen de Plata Parte"
 

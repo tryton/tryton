@@ -69,7 +69,7 @@ msgid "The Unit of Measure of the weight."
 msgstr ""
 
 #, fuzzy
-msgctxt "model:carrier.weight_price_list,name:"
+msgctxt "model:carrier.weight_price_list,string:"
 msgid "Carrier Weight Price List"
 msgstr "Ценови лист на карго тегло"
 

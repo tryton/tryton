@@ -243,24 +243,24 @@ msgid "Works"
 msgstr "Lucrări"
 
 #, fuzzy
-msgctxt "model:production.work,name:"
+msgctxt "model:production.work,string:"
 msgid "Production Work"
 msgstr "Muncă de producție"
 
 #, fuzzy
-msgctxt "model:production.work.center,name:"
-msgid "Work Center"
-msgstr "Centru de lucru"
+msgctxt "model:production.work.center,string:"
+msgid "Production Work Center"
+msgstr "Muncă de producție"
 
 #, fuzzy
-msgctxt "model:production.work.center.category,name:"
-msgid "Work Center Category"
+msgctxt "model:production.work.center.category,string:"
+msgid "Production Work Center Category"
 msgstr "Categorie Centru de lucru"
 
 #, fuzzy
-msgctxt "model:production.work.cycle,name:"
-msgid "Work Cycle"
-msgstr "Ciclul de lucru"
+msgctxt "model:production.work.cycle,string:"
+msgid "Production Work Cycle"
+msgstr "Muncă de producție"
 
 msgctxt "selection:production.work,state:"
 msgid "Done"

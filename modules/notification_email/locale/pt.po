@@ -2,24 +2,21 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-#, fuzzy
 msgctxt "field:ir.email,notification_email:"
 msgid "Notification Email"
-msgstr "Emails de Notificação"
+msgstr "Email de Notificação"
 
-#, fuzzy
 msgctxt "field:ir.email,notification_trigger:"
 msgid "Notification Trigger"
-msgstr "Notificação"
+msgstr "Gatilho de Notificação"
 
 msgctxt "field:ir.trigger,notification_email:"
 msgid "Email Notification"
 msgstr "Email de Notificação"
 
-#, fuzzy
 msgctxt "field:ir.trigger,notification_email_required:"
 msgid "Notification Email Required"
-msgstr "Emails de Notificação"
+msgstr "Email de Notificação Obrigatório"
 
 msgctxt "field:notification.email,attachments:"
 msgid "Attachments"
@@ -34,16 +31,16 @@ msgid "Content"
 msgstr "Conteúdo"
 
 msgctxt "field:notification.email,fallback_recipients:"
-msgid "Recipients Fallback User"
-msgstr "Usuário Substituto de Destinatários"
+msgid "Recipients Fallback"
+msgstr "Destinatários Reserva"
 
 msgctxt "field:notification.email,fallback_recipients_hidden:"
-msgid "Hidden Recipients Fallback User"
-msgstr "Usuário Substituto de Destinatários Ocultos"
+msgid "Hidden Recipients Fallback"
+msgstr "Destinatários Reserva Ocultos"
 
 msgctxt "field:notification.email,fallback_recipients_secondary:"
-msgid "Secondary Recipients Fallback User"
-msgstr "Segundo Usuário Substituto de Destinatários Ocultos"
+msgid "Secondary Recipients Fallback"
+msgstr "Destinatários Secundários de Reserva"
 
 msgctxt "field:notification.email,from_:"
 msgid "From"
@@ -67,11 +64,11 @@ msgstr "Destinatários Secundários"
 
 msgctxt "field:notification.email,send_after:"
 msgid "Send After"
-msgstr ""
+msgstr "Enviar Após"
 
 msgctxt "field:notification.email,subject:"
 msgid "Subject"
-msgstr ""
+msgstr "Assunto"
 
 msgctxt "field:notification.email,triggers:"
 msgid "Triggers"
@@ -101,25 +98,20 @@ msgctxt "help:notification.email,content:"
 msgid "The report used as email template."
 msgstr "O relatório utilizado como modelo para o email."
 
-#, fuzzy
 msgctxt "help:notification.email,fallback_recipients:"
 msgid "User notified when no recipients email is found."
-msgstr ""
-"Usuário a ser notificado quando o email de nenhum destinatário for "
-"encontrado"
+msgstr "Usuário a ser notificado quando nenhum email for encontrado."
 
-#, fuzzy
 msgctxt "help:notification.email,fallback_recipients_hidden:"
 msgid "User notified when no hidden recipients email is found."
 msgstr ""
-"Usuário a ser notificado quando nenhum destinatário oculto for encontrado"
+"Usuário a ser notificado quando nenhum destinatário oculto for encontrado."
 
-#, fuzzy
 msgctxt "help:notification.email,fallback_recipients_secondary:"
 msgid "User notified when no secondary recipients email is found."
 msgstr ""
 "Usuário a ser notificado quando nenhum destinatário secundário for "
-"encontrado"
+"encontrado."
 
 msgctxt "help:notification.email,from_:"
 msgid "Leave empty for the value defined in the configuration file."
@@ -142,12 +134,16 @@ msgid ""
 "The delay after which the email must be sent.\n"
 "Applied if a worker queue is activated."
 msgstr ""
+"O tempo no qual deve ser adiado o envio da mensagem de email.\n"
+"Aplica se uma fila de trabalho está ativa."
 
 msgctxt "help:notification.email,subject:"
 msgid ""
 "The Genshi syntax can be used with 'record' in the evaluation context.\n"
 "If empty the report name will be used."
 msgstr ""
+"A sintaxe Genshi pode ser utilizada com o registro ('record') na avaliação do contexto.\n"
+"O nome do relatório será utilizado, caso não for preenchido."
 
 msgctxt "help:notification.email,triggers:"
 msgid "Add a trigger for the notification."
@@ -159,7 +155,7 @@ msgstr "Emails de Notificação"
 
 msgctxt "model:ir.action,name:act_ir_email_form_relate_notification"
 msgid "Emails"
-msgstr ""
+msgstr "Emails"
 
 #, python-format
 msgctxt "model:ir.message,text:msg_notification_invalid_subject"
@@ -167,21 +163,21 @@ msgid ""
 "Invalid email subject in notification \"%(notification)s\" with exception "
 "\"%(exception)s\"."
 msgstr ""
+"O assunto do email na notificação \"%(notification)s\" é inválido devido à "
+"exceção \"%(exception)s\"."
 
 msgctxt "model:ir.ui.menu,name:menu_email_form"
 msgid "Notification Emails"
 msgstr "Emails de Notificação"
 
-#, fuzzy
-msgctxt "model:notification.email,name:"
-msgid "Email Notification"
+msgctxt "model:notification.email,string:"
+msgid "Notification Email"
 msgstr "Email de Notificação"
 
-msgctxt "model:notification.email.attachment,name:"
-msgid "Email Notification Attachment"
+msgctxt "model:notification.email.attachment,string:"
+msgid "Notification Email Attachment"
 msgstr "Anexo do Email de Notificação"
 
-#, fuzzy
 msgctxt "selection:ir.trigger,action:"
 msgid "Email Notification"
-msgstr "Email de Notificação"
+msgstr "Notificação por Email"

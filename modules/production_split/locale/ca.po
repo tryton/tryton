@@ -34,9 +34,9 @@ msgctxt "model:ir.model.button,string:production_split_wizard_button"
 msgid "Split"
 msgstr "Divideix"
 
-msgctxt "model:production.split.start,name:"
-msgid "Split Production"
-msgstr "Divideix producció"
+msgctxt "model:production.split.start,string:"
+msgid "Production Split Start"
+msgstr ""
 
 msgctxt "wizard_button:production.split,start,end:"
 msgid "Cancel"

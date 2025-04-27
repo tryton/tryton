@@ -5,6 +5,12 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgid "Make this an _internal message"
+msgstr ""
+
+msgid "Send"
+msgstr "Enviar"
+
 msgid "specify alternate config file"
 msgstr ""
 
@@ -126,9 +132,6 @@ msgid "Check URL: %s"
 msgstr ""
 
 msgid "Unable to check for new version."
-msgstr ""
-
-msgid "A new version is available!"
 msgstr ""
 
 msgid "Download"
@@ -623,9 +626,6 @@ msgstr "Adjuntos"
 msgid "Files"
 msgstr "Archivos"
 
-msgid "Send"
-msgstr "Enviar"
-
 msgid "Select File"
 msgstr ""
 
@@ -832,6 +832,13 @@ msgstr ""
 msgid "Add a note to the record"
 msgstr "Añadir una nota al registro"
 
+msgid "C_hat"
+msgstr ""
+
+#, fuzzy
+msgid "Chat on the record"
+msgstr "Añadir una nota al registro"
+
 msgid "_Actions..."
 msgstr ""
 
@@ -952,11 +959,9 @@ msgstr ""
 
 #, python-format
 msgid "%d record saved."
-msgstr ""
-
-#, python-format
-msgid "%d records saved."
-msgstr ""
+msgid_plural "%d records saved."
+msgstr[0] ""
+msgstr[1] ""
 
 msgid "Export failed"
 msgstr ""
@@ -1038,11 +1043,9 @@ msgstr "Ha fallado la importación"
 
 #, python-format
 msgid "%d record imported."
-msgstr ""
-
-#, python-format
-msgid "%d records imported."
-msgstr ""
+msgid_plural "%d records imported."
+msgstr[0] ""
+msgstr[1] ""
 
 msgid "Search"
 msgstr "Buscar"
@@ -1114,6 +1117,9 @@ msgid "Save As"
 msgstr "Guardar cómo"
 
 msgid "Image size too large."
+msgstr ""
+
+msgid "Reset Column Widths"
 msgstr ""
 
 msgid "Copy"
@@ -1192,6 +1198,10 @@ msgid "All files"
 msgstr ""
 
 msgid "Show plain text"
+msgstr ""
+
+#, python-format
+msgid "Select a color for \"%s\""
 msgstr ""
 
 msgid "Add value"

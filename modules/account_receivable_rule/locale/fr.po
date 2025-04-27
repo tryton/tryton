@@ -83,11 +83,11 @@ msgctxt "help:account.account.receivable.rule.account,only_reconcile:"
 msgid "Distribute only to fully reconcile."
 msgstr "Distribuer uniquement pour effectuer une réconciliation complète."
 
-msgctxt "model:account.account.receivable.rule,name:"
+msgctxt "model:account.account.receivable.rule,string:"
 msgid "Account Receivable Rule"
 msgstr "Règle de créance comptable"
 
-msgctxt "model:account.account.receivable.rule.account,name:"
+msgctxt "model:account.account.receivable.rule.account,string:"
 msgid "Account Receivable Rule Account"
 msgstr "Compte de règle de créance comptable"
 

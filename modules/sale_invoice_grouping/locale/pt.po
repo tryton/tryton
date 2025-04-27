@@ -35,7 +35,8 @@ msgctxt "help:sale.configuration.sale_method,sale_invoice_grouping_method:"
 msgid "The default invoice grouping method for new customers."
 msgstr "O método padrão para o agrupamento de faturas de novos clientes."
 
-msgctxt "model:party.party.sale_invoice_grouping_method,name:"
+#, fuzzy
+msgctxt "model:party.party.sale_invoice_grouping_method,string:"
 msgid "Party Sale Invoice Grouping Method"
 msgstr "Fatura de Venda Métodos de Agrupamentos da Pessoa"
 

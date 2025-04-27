@@ -94,17 +94,20 @@ msgctxt "model:ir.ui.menu,name:menu_relation_type"
 msgid "Relation Types"
 msgstr "Seose tüüp"
 
-msgctxt "model:party.relation,name:"
+#, fuzzy
+msgctxt "model:party.relation,string:"
 msgid "Party Relation"
 msgstr "Osapoole seos"
 
-msgctxt "model:party.relation.all,name:"
+#, fuzzy
+msgctxt "model:party.relation.all,string:"
 msgid "Party Relation"
 msgstr "Osapoole seos"
 
-msgctxt "model:party.relation.type,name:"
-msgid "Relation Type"
-msgstr "Seose tüüp"
+#, fuzzy
+msgctxt "model:party.relation.type,string:"
+msgid "Party Relation Type"
+msgstr "Osapoole seos"
 
 msgctxt "view:party.party:"
 msgid "Relations"

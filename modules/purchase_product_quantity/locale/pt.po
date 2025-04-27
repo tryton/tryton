@@ -1,15 +1,16 @@
 #
+#, fuzzy
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:purchase.product_supplier,quantity_digits:"
 msgid "Quantity Digits"
-msgstr ""
+msgstr "Quantidade de Dígitos"
 
 msgctxt "field:purchase.product_supplier,quantity_minimal:"
 msgid "Minimal Quantity"
-msgstr ""
+msgstr "Quantidade Mínima"
 
 msgctxt "field:purchase.product_supplier,quantity_rounding:"
 msgid "Rounding Quantity"
-msgstr ""
+msgstr "Quantidade Arredondada"

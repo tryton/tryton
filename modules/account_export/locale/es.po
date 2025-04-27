@@ -46,11 +46,11 @@ msgctxt "field:account.move.export,type:"
 msgid "Type"
 msgstr "Tipo"
 
-msgctxt "model:account.configuration.export,name:"
+msgctxt "model:account.configuration.export,string:"
 msgid "Account Configuration Export"
 msgstr "Configuración exportaciones contables"
 
-msgctxt "model:account.move.export,name:"
+msgctxt "model:account.move.export,string:"
 msgid "Account Move Export"
 msgstr "Exportación asientos contables"
 

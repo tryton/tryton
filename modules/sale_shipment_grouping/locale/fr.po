@@ -39,7 +39,7 @@ msgstr ""
 "La méthode de regroupement d'expédition par défaut pour les nouveaux "
 "clients."
 
-msgctxt "model:party.party.sale_shipment_grouping_method,name:"
+msgctxt "model:party.party.sale_shipment_grouping_method,string:"
 msgid "Party Sale Shipment Grouping Method"
 msgstr "Méthode de regroupement des expéditions de vente du tiers"
 

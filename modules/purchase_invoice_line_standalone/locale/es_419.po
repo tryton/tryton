@@ -39,10 +39,10 @@ msgctxt "model:ir.action,name:act_purchase_invoice_line_relate"
 msgid "Invoice Lines"
 msgstr ""
 
-msgctxt "model:party.party.purchase_invoice_line_standalone,name:"
+msgctxt "model:party.party.purchase_invoice_line_standalone,string:"
 msgid "Party Purchase Invoice Line Standalone"
 msgstr ""
 
-msgctxt "model:purchase.purchase-ignored-account.invoice.line,name:"
-msgid "Purchase - Ignored Invoice Line"
+msgctxt "model:purchase.purchase-ignored-account.invoice.line,string:"
+msgid "Purchase - Ignored - Account Invoice Line"
 msgstr ""

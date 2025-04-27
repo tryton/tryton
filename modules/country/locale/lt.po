@@ -197,13 +197,10 @@ msgctxt "help:country.subdivision,parent:"
 msgid "Add subdivision below the parent."
 msgstr ""
 
-msgctxt "model:country.country,name:"
+#, fuzzy
+msgctxt "model:country.country,string:"
 msgid "Country"
 msgstr "Šalis"
-
-msgctxt "model:country.organization,name:"
-msgid "Organization"
-msgstr ""
 
 msgctxt "model:country.organization,name:organization_amu"
 msgid "Arab Maghreb Union"
@@ -286,18 +283,18 @@ msgctxt "model:country.organization,name:organization_safta"
 msgid "South Asian Free Trade Area"
 msgstr ""
 
-msgctxt "model:country.organization.member,name:"
-msgid "Organization Member"
-msgstr ""
-
-msgctxt "model:country.postal_code,name:"
-msgid "Postal Code"
-msgstr ""
-
 #, fuzzy
-msgctxt "model:country.region,name:"
-msgid "Region"
-msgstr "Regionas"
+msgctxt "model:country.organization,string:"
+msgid "Country Organization"
+msgstr "Central Region"
+
+msgctxt "model:country.organization.member,string:"
+msgid "Country Organization Member"
+msgstr ""
+
+msgctxt "model:country.postal_code,string:"
+msgid "Country Postal Code"
+msgstr ""
 
 #, fuzzy
 msgctxt "model:country.region,name:region_africa"
@@ -459,8 +456,14 @@ msgctxt "model:country.region,name:region_world"
 msgid "World"
 msgstr ""
 
-msgctxt "model:country.subdivision,name:"
-msgid "Subdivision"
+#, fuzzy
+msgctxt "model:country.region,string:"
+msgid "Country Region"
+msgstr "Central Region"
+
+#, fuzzy
+msgctxt "model:country.subdivision,string:"
+msgid "Country Subdivision"
 msgstr "Regionas"
 
 #, fuzzy
@@ -743,6 +746,11 @@ msgctxt "selection:country.subdivision,type:"
 msgid "Entity"
 msgstr "Teisinis vienetas"
 
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "European collectivity"
+msgstr "Užjūrio teritorinis junginys"
+
 msgctxt "selection:country.subdivision,type:"
 msgid "Federal Dependency"
 msgstr "Federalinė priklausomybė"
@@ -764,6 +772,11 @@ msgstr "Federalinė teritorija"
 msgctxt "selection:country.subdivision,type:"
 msgid "Federal capital territory"
 msgstr "Australijos sostinės teritorija"
+
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "Federal entity"
+msgstr "Federalinė teritorija"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Free municipal consortium"
@@ -890,6 +903,11 @@ msgctxt "selection:country.subdivision,type:"
 msgid "Overseas department"
 msgstr "Užjūrio departamentas"
 
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "Overseas departmental collectivity"
+msgstr "Užjūrio teritorinis junginys"
+
 msgctxt "selection:country.subdivision,type:"
 msgid "Overseas region"
 msgstr "Užjūrio regionas"
@@ -906,6 +924,11 @@ msgstr "Užjūrio teritorinis junginys"
 msgctxt "selection:country.subdivision,type:"
 msgid "Overseas territory"
 msgstr "Užjūrio regionas"
+
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "Overseas unique territorial collectivity"
+msgstr "Užjūrio teritorinis junginys"
 
 #, fuzzy
 msgctxt "selection:country.subdivision,type:"
@@ -1019,6 +1042,11 @@ msgstr "Speciali zona"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "State"
+msgstr "Valstija"
+
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "State city"
 msgstr "Valstija"
 
 msgctxt "selection:country.subdivision,type:"

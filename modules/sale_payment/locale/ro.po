@@ -19,3 +19,7 @@ msgstr "Vânzarea \"%(sale)s\" nu se poate anula pentru că are plați."
 msgctxt "model:ir.message,text:msg_sale_draft_payment"
 msgid "You cannot reset to draft sale \"%(sale)s\" because it has payments."
 msgstr "Nu se poate reseta vânzarea \"%(sale)s\" la draft pentru ca are plați."
+
+msgctxt "selection:ir.cron,method:"
+msgid "Confirm sales based on payment"
+msgstr ""

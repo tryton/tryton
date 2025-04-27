@@ -143,12 +143,12 @@ msgid "Amendments"
 msgstr "Amendamente"
 
 #, fuzzy
-msgctxt "model:purchase.amendment,name:"
+msgctxt "model:purchase.amendment,string:"
 msgid "Purchase Amendment"
 msgstr "Amendament de cumpărare"
 
 #, fuzzy
-msgctxt "model:purchase.amendment.line,name:"
+msgctxt "model:purchase.amendment.line,string:"
 msgid "Purchase Amendment Line"
 msgstr "Rând Amendament de cumpărare"
 

@@ -62,11 +62,11 @@ msgstr ""
 "Aplica solo cuando el envío va hacia este país.\n"
 "Dejar en blanco para todos los países."
 
-msgctxt "model:carrier,name:"
+msgctxt "model:carrier,string:"
 msgid "Carrier"
 msgstr "Transportista"
 
-msgctxt "model:carrier.selection,name:"
+msgctxt "model:carrier.selection,string:"
 msgid "Carrier Selection"
 msgstr "Selección del transportista"
 

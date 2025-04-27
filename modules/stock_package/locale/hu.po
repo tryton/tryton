@@ -15,6 +15,10 @@ msgctxt "field:stock.move,package:"
 msgid "Package"
 msgstr "Csomag"
 
+msgctxt "field:stock.package,allowed_moves:"
+msgid "Allowed Moves"
+msgstr ""
+
 msgctxt "field:stock.package,children:"
 msgid "Children"
 msgstr "Gyermek (csomag)"
@@ -153,6 +157,16 @@ msgctxt "field:stock.shipment.in.return,root_packages:"
 msgid "Packages"
 msgstr "Csomagok"
 
+#, fuzzy
+msgctxt "field:stock.shipment.internal,packages:"
+msgid "Packages"
+msgstr "Csomagok"
+
+#, fuzzy
+msgctxt "field:stock.shipment.internal,root_packages:"
+msgid "Packages"
+msgstr "Csomagok"
+
 msgctxt "field:stock.shipment.out,packages:"
 msgid "Packages"
 msgstr "Csomagok"
@@ -277,11 +291,13 @@ msgctxt "model:ir.ui.menu,name:menu_package_form"
 msgid "Package Types"
 msgstr "Package Types"
 
-msgctxt "model:stock.package,name:"
+#, fuzzy
+msgctxt "model:stock.package,string:"
 msgid "Stock Package"
-msgstr "Raktár csomag"
+msgstr "Stock Package"
 
-msgctxt "model:stock.package.type,name:"
+#, fuzzy
+msgctxt "model:stock.package.type,string:"
 msgid "Stock Package Type"
 msgstr "Raktár csomag típus"
 

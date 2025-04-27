@@ -51,8 +51,8 @@ msgid ""
 msgstr ""
 
 #, fuzzy
-msgctxt "model:carrier.credential.dpd,name:"
-msgid "DPD Credential"
+msgctxt "model:carrier.credential.dpd,string:"
+msgid "Carrier Credential Dpd"
 msgstr "DPD Credentials"
 
 msgctxt "model:ir.action,name:act_create_shipping_dpd_wizard"

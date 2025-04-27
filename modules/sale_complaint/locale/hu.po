@@ -77,6 +77,11 @@ msgctxt "field:sale.complaint.action,amount:"
 msgid "Amount"
 msgstr ""
 
+#, fuzzy
+msgctxt "field:sale.complaint.action,company:"
+msgid "Company"
+msgstr "Társaság"
+
 msgctxt "field:sale.complaint.action,complaint:"
 msgid "Complaint"
 msgstr "Reklamáció"
@@ -93,6 +98,20 @@ msgstr ""
 msgctxt "field:sale.complaint.action,invoice_lines:"
 msgid "Invoice Lines"
 msgstr "Számla pozíció"
+
+msgctxt "field:sale.complaint.action,promotion_coupon:"
+msgid "Promotion Coupon"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:sale.complaint.action,promotion_coupon_duration:"
+msgid "Duration"
+msgstr "Leírás"
+
+#, fuzzy
+msgctxt "field:sale.complaint.action,promotion_coupon_number:"
+msgid "Number"
+msgstr "Szám"
 
 msgctxt "field:sale.complaint.action,quantity:"
 msgid "Quantity"
@@ -355,24 +374,29 @@ msgctxt "model:ir.ui.menu,name:menu_type"
 msgid "Types"
 msgstr "Types"
 
-msgctxt "model:sale.complaint,name:"
-msgid "Customer Complaint"
+#, fuzzy
+msgctxt "model:sale.complaint,string:"
+msgid "Sale Complaint"
 msgstr "Reklamáció"
 
-msgctxt "model:sale.complaint.action,name:"
-msgid "Customer Complaint Action"
+#, fuzzy
+msgctxt "model:sale.complaint.action,string:"
+msgid "Sale Complaint Action"
 msgstr "Reklamációs művelet"
 
-msgctxt "model:sale.complaint.action-account.invoice.line,name:"
-msgid "Customer Complaint Action - Invoice Line"
+#, fuzzy
+msgctxt "model:sale.complaint.action-account.invoice.line,string:"
+msgid "Sale Complaint Action - Account Invoice Line"
 msgstr "Reklamációs művelet- Számla pozíció"
 
-msgctxt "model:sale.complaint.action-sale.line,name:"
-msgid "Customer Complaint Action - Sale Line"
+#, fuzzy
+msgctxt "model:sale.complaint.action-sale.line,string:"
+msgid "Sale Complaint Action - Sale Line"
 msgstr "Reklamációs művelet- Eladási pozíció"
 
-msgctxt "model:sale.complaint.type,name:"
-msgid "Customer Complaint Type"
+#, fuzzy
+msgctxt "model:sale.complaint.type,string:"
+msgid "Sale Complaint Type"
 msgstr "Reklamáció típusa"
 
 msgctxt "selection:sale.complaint,state:"
@@ -406,6 +430,10 @@ msgstr "Jóváíró kiállítása"
 msgctxt "selection:sale.complaint.action,action:"
 msgid "Create Sale Return"
 msgstr "Visszavonás kiállítása"
+
+msgctxt "selection:sale.complaint.action,action:"
+msgid "Promotion Coupon"
+msgstr ""
 
 msgctxt "view:sale.complaint:"
 msgid "Complaint"

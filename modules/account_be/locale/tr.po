@@ -31,13 +31,13 @@ msgid "Fiscal Year"
 msgstr "Mali Yıl"
 
 #, fuzzy
-msgctxt "model:account.be.vat_customer,name:"
-msgid "Belgian VAT Customer"
-msgstr "Belçika KDV Müşterisi"
+msgctxt "model:account.be.vat_customer,string:"
+msgid "Account Be Vat Customer"
+msgstr "Belgium VAT Customer"
 
 #, fuzzy
-msgctxt "model:account.be.vat_customer.context,name:"
-msgid "Belgian VAT Customer Context"
+msgctxt "model:account.be.vat_customer.context,string:"
+msgid "Account Be Vat Customer Context"
 msgstr "Belçika KDV Müşteri İçeriği"
 
 #, fuzzy

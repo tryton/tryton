@@ -54,8 +54,8 @@ msgid "Effective Start Date"
 msgstr "Yürürlük Başlangıç Tarihi"
 
 msgctxt "field:production,inputs:"
-msgid "Inputs"
-msgstr "Girdiler"
+msgid "Input Materials"
+msgstr ""
 
 msgctxt "field:production,location:"
 msgid "Location"
@@ -69,8 +69,9 @@ msgctxt "field:production,origin:"
 msgid "Origin"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:production,outputs:"
-msgid "Outputs"
+msgid "Output Materials"
 msgstr "Çıktılar"
 
 #, fuzzy
@@ -125,8 +126,8 @@ msgid "Code Readonly"
 msgstr ""
 
 msgctxt "field:production.bom,inputs:"
-msgid "Inputs"
-msgstr "Girdiler"
+msgid "Input Materials"
+msgstr ""
 
 msgctxt "field:production.bom,name:"
 msgid "Name"
@@ -136,8 +137,9 @@ msgctxt "field:production.bom,output_products:"
 msgid "Output Products"
 msgstr "Çıktı Ürünler"
 
+#, fuzzy
 msgctxt "field:production.bom,outputs:"
-msgid "Outputs"
+msgid "Output Materials"
 msgstr "Çıktılar"
 
 msgctxt "field:production.bom.input,bom:"
@@ -515,47 +517,56 @@ msgctxt "model:ir.ui.menu,name:menu_production_list"
 msgid "Productions"
 msgstr "Productions"
 
-msgctxt "model:product.product-production.bom,name:"
-msgid "Product - BOM"
-msgstr "Ürün - BOM"
+msgctxt "model:product.product-production.bom,string:"
+msgid "Product - Production Bom"
+msgstr ""
 
-msgctxt "model:production,name:"
+#, fuzzy
+msgctxt "model:production,string:"
 msgid "Production"
-msgstr "Üretim"
+msgstr "Ürün"
 
-msgctxt "model:production.bom,name:"
-msgid "Bill of Material"
-msgstr "BOM"
+#, fuzzy
+msgctxt "model:production.bom,string:"
+msgid "Production Bom"
+msgstr "Ürün"
 
-msgctxt "model:production.bom.input,name:"
-msgid "Bill of Material Input"
-msgstr "bOM Girdi"
+#, fuzzy
+msgctxt "model:production.bom.input,string:"
+msgid "Production Bom Input"
+msgstr "Ürün Girdisi"
 
-msgctxt "model:production.bom.output,name:"
-msgid "Bill of Material Output"
-msgstr "BOM Çıktı"
+#, fuzzy
+msgctxt "model:production.bom.output,string:"
+msgid "Production Bom Output"
+msgstr "Ürün Çıktısı"
 
-msgctxt "model:production.bom.tree,name:"
-msgid "BOM Tree"
-msgstr "BOM Ağacı"
+#, fuzzy
+msgctxt "model:production.bom.tree,string:"
+msgid "Production Bom Tree"
+msgstr "Üretim Tedarik Sırası"
 
-msgctxt "model:production.bom.tree.open.start,name:"
-msgid "Open BOM Tree"
-msgstr "BOM Ağacı Aç"
+msgctxt "model:production.bom.tree.open.start,string:"
+msgid "Production Bom Tree Open Start"
+msgstr ""
 
-msgctxt "model:production.bom.tree.open.tree,name:"
-msgid "Open BOM Tree"
-msgstr "BOM Ağacı"
+#, fuzzy
+msgctxt "model:production.bom.tree.open.tree,string:"
+msgid "Production Bom Tree Open Tree"
+msgstr "Ürün Sırası"
 
-msgctxt "model:production.configuration,name:"
+#, fuzzy
+msgctxt "model:production.configuration,string:"
 msgid "Production Configuration"
 msgstr "Üretim Konfigurasyon"
 
-msgctxt "model:production.configuration.production_sequence,name:"
+#, fuzzy
+msgctxt "model:production.configuration.production_sequence,string:"
 msgid "Production Configuration Production Sequence"
 msgstr "Üretim Konfigurasyon Üretim Sırası"
 
-msgctxt "model:production.lead_time,name:"
+#, fuzzy
+msgctxt "model:production.lead_time,string:"
 msgid "Production Lead Time"
 msgstr "Üretim Tedarik Sırası"
 
@@ -618,10 +629,6 @@ msgid "Production"
 msgstr "Ürün"
 
 msgctxt "view:production.bom:"
-msgid "Lines"
-msgstr "Hatlar"
-
-msgctxt "view:production:"
 msgid "Lines"
 msgstr "Hatlar"
 

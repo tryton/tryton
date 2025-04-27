@@ -29,12 +29,12 @@ msgstr "Tase"
 
 #, fuzzy
 msgctxt "help:account.configuration,dunning_email_fallback:"
-msgid "User notified when no email is found to send the dunning"
+msgid "User notified when no email is found to send the dunning."
 msgstr "Kasutaja, keda teavitatakse, kui puudub e-mail millele saata meenutus"
 
 #, fuzzy
 msgctxt "help:account.dunning.level,email_contact_mechanism:"
-msgid "Define which email to use from the party's contact mechanisms"
+msgid "Define which email to use from the party's contact mechanisms."
 msgstr ""
 "Määra, kasutaja kontaktide mehanismide hulgast, missugust e-maili kasutada."
 

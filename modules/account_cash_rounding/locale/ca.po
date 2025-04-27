@@ -44,7 +44,8 @@ msgctxt "field:purchase.purchase,cash_rounding:"
 msgid "Cash Rounding"
 msgstr "Arrodoniment d'efectiu"
 
-msgctxt "model:account.configuration.cash_rounding_account,name:"
+#, fuzzy
+msgctxt "model:account.configuration.cash_rounding_account,string:"
 msgid "Account Configuration Cash Rounding Account"
 msgstr "Configuració comptable d'arrodoniment d'efectiu"
 

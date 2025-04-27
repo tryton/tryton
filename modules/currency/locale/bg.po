@@ -142,20 +142,22 @@ msgid "The floating exchange rate used to convert the currency."
 msgstr ""
 
 #, fuzzy
-msgctxt "model:currency.cron,name:"
+msgctxt "model:currency.cron,string:"
 msgid "Currency Cron"
 msgstr "Валута"
 
-msgctxt "model:currency.cron-currency.currency,name:"
+#, fuzzy
+msgctxt "model:currency.cron-currency.currency,string:"
 msgid "Currency Cron - Currency"
-msgstr ""
+msgstr "Валута"
 
-msgctxt "model:currency.currency,name:"
+#, fuzzy
+msgctxt "model:currency.currency,string:"
 msgid "Currency"
 msgstr "Валута"
 
 #, fuzzy
-msgctxt "model:currency.currency.rate,name:"
+msgctxt "model:currency.currency.rate,string:"
 msgid "Currency Rate"
 msgstr "Текущ курс"
 

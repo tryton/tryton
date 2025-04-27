@@ -31,10 +31,9 @@ msgctxt "field:commission,amount:"
 msgid "Amount"
 msgstr "Montante"
 
-#, fuzzy
 msgctxt "field:commission,base_amount:"
 msgid "Base Amount"
-msgstr "Montante"
+msgstr "Montante Base"
 
 msgctxt "field:commission,currency:"
 msgid "Currency"
@@ -84,10 +83,9 @@ msgctxt "field:commission.agent,plan:"
 msgid "Plan"
 msgstr "Plano"
 
-#, fuzzy
 msgctxt "field:commission.agent,products:"
 msgid "Products"
-msgstr "Produto"
+msgstr "Produtos"
 
 msgctxt "field:commission.agent,selections:"
 msgid "Selections"
@@ -111,10 +109,9 @@ msgctxt "field:commission.agent.selection,employee:"
 msgid "Employee"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:commission.agent.selection,end_date:"
 msgid "End Date"
-msgstr "Data"
+msgstr "Data Final"
 
 #, fuzzy
 msgctxt "field:commission.agent.selection,party:"
@@ -124,7 +121,7 @@ msgstr "Pessoa"
 #, fuzzy
 msgctxt "field:commission.agent.selection,start_date:"
 msgid "Start Date"
-msgstr "Data de edição"
+msgstr "A Partir da Data"
 
 #, fuzzy
 msgctxt "field:commission.create_invoice.ask,agents:"
@@ -185,10 +182,9 @@ msgctxt "field:commission.reporting.agent,amount:"
 msgid "Amount"
 msgstr "Montante"
 
-#, fuzzy
 msgctxt "field:commission.reporting.agent,base_amount:"
 msgid "Base Amount"
-msgstr "Montante"
+msgstr "Montante Base"
 
 msgctxt "field:commission.reporting.agent,base_amount_trend:"
 msgid "Base Amount Trend"
@@ -217,10 +213,9 @@ msgctxt "field:commission.reporting.agent.time_series,amount:"
 msgid "Amount"
 msgstr "Montante"
 
-#, fuzzy
 msgctxt "field:commission.reporting.agent.time_series,base_amount:"
 msgid "Base Amount"
-msgstr "Montante"
+msgstr "Montante Base"
 
 msgctxt "field:commission.reporting.agent.time_series,base_amount_trend:"
 msgid "Base Amount Trend"
@@ -243,7 +238,7 @@ msgstr ""
 #, fuzzy
 msgctxt "field:commission.reporting.context,from_date:"
 msgid "From Date"
-msgstr "Data de edição"
+msgstr "A Partir da Data"
 
 #, fuzzy
 msgctxt "field:commission.reporting.context,invoiced:"
@@ -254,20 +249,17 @@ msgctxt "field:commission.reporting.context,period:"
 msgid "Period"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:commission.reporting.context,to_date:"
 msgid "To Date"
-msgstr "Data"
+msgstr "Até a Data"
 
-#, fuzzy
 msgctxt "field:commission.reporting.context,type:"
 msgid "Type"
 msgstr "Tipo"
 
-#, fuzzy
 msgctxt "field:party.party,agents:"
 msgid "Agents"
-msgstr "Agents"
+msgstr "Agentes"
 
 msgctxt "field:product.product,principals:"
 msgid "Commission Principals"
@@ -386,7 +378,7 @@ msgstr ""
 
 msgctxt "help:commission.plan.line,category:"
 msgid "Apply only to products in the category."
-msgstr ""
+msgstr "Aplicar somente aos produtos da categoria."
 
 #, fuzzy
 msgctxt "help:commission.plan.line,formula:"
@@ -431,42 +423,48 @@ msgctxt "model:account.journal,name:journal_commission"
 msgid "Commission"
 msgstr "Commission"
 
-msgctxt "model:commission,name:"
+#, fuzzy
+msgctxt "model:commission,string:"
 msgid "Commission"
-msgstr "Comissão"
+msgstr "Commission"
 
-msgctxt "model:commission.agent,name:"
+#, fuzzy
+msgctxt "model:commission.agent,string:"
 msgid "Commission Agent"
 msgstr "Agente de Comissão"
 
-msgctxt "model:commission.agent.selection,name:"
-msgid "Agent Selection"
-msgstr ""
+#, fuzzy
+msgctxt "model:commission.agent.selection,string:"
+msgid "Commission Agent Selection"
+msgstr "Agente de Comissão"
 
-msgctxt "model:commission.create_invoice.ask,name:"
-msgid "Create Commission Invoice"
-msgstr "Criar Fatura de Comissão"
+#, fuzzy
+msgctxt "model:commission.create_invoice.ask,string:"
+msgid "Commission Create Invoice Ask"
+msgstr "Create Commission Invoices"
 
-msgctxt "model:commission.plan,name:"
+#, fuzzy
+msgctxt "model:commission.plan,string:"
 msgid "Commission Plan"
 msgstr "Plano de Comissão"
 
-msgctxt "model:commission.plan.line,name:"
+#, fuzzy
+msgctxt "model:commission.plan.line,string:"
 msgid "Commission Plan Line"
 msgstr "Linha de Plano de Comissão"
 
 #, fuzzy
-msgctxt "model:commission.reporting.agent,name:"
-msgid "Commission Reporting per Agent"
+msgctxt "model:commission.reporting.agent,string:"
+msgid "Commission Reporting Agent"
 msgstr "Agente de Comissão"
 
 #, fuzzy
-msgctxt "model:commission.reporting.agent.time_series,name:"
-msgid "Commission Reporting per Agent"
+msgctxt "model:commission.reporting.agent.time_series,string:"
+msgid "Commission Reporting Agent"
 msgstr "Agente de Comissão"
 
 #, fuzzy
-msgctxt "model:commission.reporting.context,name:"
+msgctxt "model:commission.reporting.context,string:"
 msgid "Commission Reporting Context"
 msgstr "Agente de Comissão"
 
@@ -583,10 +581,9 @@ msgctxt "model:ir.ui.menu,name:menu_commission_form"
 msgid "Commissions"
 msgstr "Commissions"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
-msgstr "Configuration"
+msgstr "Configuração"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_plan_form"
@@ -595,14 +592,15 @@ msgstr "Plano"
 
 msgctxt "model:ir.ui.menu,name:menu_reporting"
 msgid "Reporting"
-msgstr ""
+msgstr "Relatórios"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_reporting_commission"
 msgid "Commissions"
 msgstr "Comissões"
 
-msgctxt "model:product.template-commission.agent,name:"
+#, fuzzy
+msgctxt "model:product.template-commission.agent,string:"
 msgid "Product Template - Commission Agent"
 msgstr "Modelo de Produto - Agente de Comissão"
 

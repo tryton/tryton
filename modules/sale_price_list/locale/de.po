@@ -54,13 +54,13 @@ msgctxt "help:sale.sale,price_list:"
 msgid "Use to compute the unit price of lines."
 msgstr "Wird für die Berechnung des Einheits-Preises für Positionen genutzt."
 
-msgctxt "model:party.party.sale_price_list,name:"
+msgctxt "model:party.party.sale_price_list,string:"
 msgid "Party Sale Price List"
-msgstr "Preiskonditionsschema Verkauf für Partei"
+msgstr "Partei Verkauf Preiskonditionsschema"
 
-msgctxt "model:sale.configuration.sale_price_list,name:"
-msgid "Sale Configuration Sale PriceList"
-msgstr "Einstellungen Verkauf Preiskonditionsschema"
+msgctxt "model:sale.configuration.sale_price_list,string:"
+msgid "Sale Configuration Sale Price List"
+msgstr "Verkauf Einstellungen Preiskonditionsschema"
 
 msgctxt "selection:product.price_list,unit:"
 msgid "Product Sale"

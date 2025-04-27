@@ -18,9 +18,9 @@ msgctxt "field:res.user,dashboard_layout:"
 msgid "Dashboard Layout"
 msgstr "Mise en page de tableau de bord"
 
-msgctxt "model:dashboard.action,name:"
+msgctxt "model:dashboard.action,string:"
 msgid "Dashboard Action"
-msgstr "Action tableau de bord"
+msgstr "Action de tableau de bord"
 
 msgctxt "model:ir.action,name:act_dashboard"
 msgid "Dashboard"

@@ -198,17 +198,17 @@ msgctxt "model:ir.ui.menu,name:menu_purchase_request_form"
 msgid "Purchase Requests"
 msgstr "Solicitudes de compra"
 
-msgctxt "model:purchase.request,name:"
+msgctxt "model:purchase.request,string:"
 msgid "Purchase Request"
 msgstr "Solicitud de compra"
 
-msgctxt "model:purchase.request.create_purchase.ask_party,name:"
-msgid "Create Purchase Ask Party"
+msgctxt "model:purchase.request.create_purchase.ask_party,string:"
+msgid "Purchase Request Create Purchase Ask Party"
 msgstr "Preguntar tercero al crear compra"
 
-msgctxt "model:purchase.request.handle.purchase.cancellation.start,name:"
-msgid "Handle Purchase Cancellation Exception - Start"
-msgstr "Gestionar excepción cancelación de compra - Inicio"
+msgctxt "model:purchase.request.handle.purchase.cancellation.start,string:"
+msgid "Purchase Request Handle Purchase Cancellation Start"
+msgstr "Inicio gestionar cancelación de compra"
 
 msgctxt "model:res.group,name:group_purchase_request"
 msgid "Purchase Request"

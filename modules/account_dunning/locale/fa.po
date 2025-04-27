@@ -154,29 +154,35 @@ msgctxt "help:account.dunning.procedure,name:"
 msgid "The main identifier of the Dunning Procedure."
 msgstr "شناسه اصلی روال دانینگ."
 
-msgctxt "model:account.configuration.default_dunning_procedure,name:"
+#, fuzzy
+msgctxt "model:account.configuration.default_dunning_procedure,string:"
 msgid "Account Configuration Default Dunning Procedure"
 msgstr "پیکره بندی حساب روال دانینگ پیش فرض"
 
-msgctxt "model:account.dunning,name:"
+#, fuzzy
+msgctxt "model:account.dunning,string:"
 msgid "Account Dunning"
 msgstr "حساب دانینگ"
 
-msgctxt "model:account.dunning.create.start,name:"
-msgid "Create Account Dunning"
-msgstr "ایجاد حساب دانینگ"
+#, fuzzy
+msgctxt "model:account.dunning.create.start,string:"
+msgid "Account Dunning Create Start"
+msgstr "سطح حساب دانینگ"
 
-msgctxt "model:account.dunning.level,name:"
+#, fuzzy
+msgctxt "model:account.dunning.level,string:"
 msgid "Account Dunning Level"
 msgstr "سطح حساب دانینگ"
 
-msgctxt "model:account.dunning.procedure,name:"
+#, fuzzy
+msgctxt "model:account.dunning.procedure,string:"
 msgid "Account Dunning Procedure"
 msgstr "حساب روال دانینگ"
 
-msgctxt "model:account.dunning.process.start,name:"
-msgid "Create Account Dunning"
-msgstr "ایجاد حساب دانینگ"
+#, fuzzy
+msgctxt "model:account.dunning.process.start,string:"
+msgid "Account Dunning Process Start"
+msgstr "حساب روال دانینگ"
 
 msgctxt "model:ir.action,name:act_dunning_form"
 msgid "Dunnings"
@@ -254,7 +260,8 @@ msgctxt "model:ir.ui.menu,name:menu_dunnings"
 msgid "Dunnings"
 msgstr "دانینگ ها"
 
-msgctxt "model:party.party.dunning_procedure,name:"
+#, fuzzy
+msgctxt "model:party.party.dunning_procedure,string:"
 msgid "Party Dunning Procedure"
 msgstr "روال دانینگ نهاد/سازمان"
 

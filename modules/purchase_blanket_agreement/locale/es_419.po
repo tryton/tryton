@@ -222,15 +222,15 @@ msgctxt "model:ir.ui.menu,name:menu_purchase_blanket_agreement"
 msgid "Blanket Agreements"
 msgstr ""
 
-msgctxt "model:purchase.blanket_agreement,name:"
+msgctxt "model:purchase.blanket_agreement,string:"
 msgid "Purchase Blanket Agreement"
 msgstr ""
 
-msgctxt "model:purchase.blanket_agreement.create_purchase.start,name:"
-msgid "Create Purchase"
+msgctxt "model:purchase.blanket_agreement.create_purchase.start,string:"
+msgid "Purchase Blanket Agreement Create Purchase Start"
 msgstr ""
 
-msgctxt "model:purchase.blanket_agreement.line,name:"
+msgctxt "model:purchase.blanket_agreement.line,string:"
 msgid "Purchase Blanket Agreement Line"
 msgstr ""
 

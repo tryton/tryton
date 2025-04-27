@@ -90,16 +90,16 @@ msgctxt "model:ir.ui.menu,name:menu_relation_type"
 msgid "Relation Types"
 msgstr ""
 
-msgctxt "model:party.relation,name:"
+msgctxt "model:party.relation,string:"
 msgid "Party Relation"
 msgstr ""
 
-msgctxt "model:party.relation.all,name:"
+msgctxt "model:party.relation.all,string:"
 msgid "Party Relation"
 msgstr ""
 
-msgctxt "model:party.relation.type,name:"
-msgid "Relation Type"
+msgctxt "model:party.relation.type,string:"
+msgid "Party Relation Type"
 msgstr ""
 
 msgctxt "view:party.party:"

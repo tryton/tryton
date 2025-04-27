@@ -189,18 +189,22 @@ msgctxt "model:ir.ui.menu,name:menu_advance_payment_term"
 msgid "Advance Payment Terms"
 msgstr "Terminis de pagament per avançat"
 
-msgctxt "model:sale.advance_payment.condition,name:"
-msgid "Advance Payment Condition"
+#, fuzzy
+msgctxt "model:sale.advance_payment.condition,string:"
+msgid "Sale Advance Payment Condition"
 msgstr "Condicions de pagament per avançat"
 
-msgctxt "model:sale.advance_payment_term,name:"
-msgid "Advance Payment Term"
-msgstr "Forma de pagament per avançat"
+#, fuzzy
+msgctxt "model:sale.advance_payment_term,string:"
+msgid "Sale Advance Payment Term"
+msgstr "Termini de pagament per avançat"
 
-msgctxt "model:sale.advance_payment_term.line,name:"
-msgid "Advance Payment Term Line"
+#, fuzzy
+msgctxt "model:sale.advance_payment_term.line,string:"
+msgid "Sale Advance Payment Term Line"
 msgstr "Línia de forma de pagament per avançat"
 
-msgctxt "model:sale.advance_payment_term.line.account,name:"
-msgid "Advance Payment Term Line Account"
+#, fuzzy
+msgctxt "model:sale.advance_payment_term.line.account,string:"
+msgid "Sale Advance Payment Term Line Account"
 msgstr "Comptes de la línia de pagament per avançat"

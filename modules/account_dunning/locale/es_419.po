@@ -152,29 +152,35 @@ msgctxt "help:account.dunning.procedure,name:"
 msgid "The main identifier of the Dunning Procedure."
 msgstr ""
 
-msgctxt "model:account.configuration.default_dunning_procedure,name:"
+#, fuzzy
+msgctxt "model:account.configuration.default_dunning_procedure,string:"
 msgid "Account Configuration Default Dunning Procedure"
-msgstr ""
+msgstr "Procedimiento de cobro por defecto"
 
-msgctxt "model:account.dunning,name:"
+#, fuzzy
+msgctxt "model:account.dunning,string:"
 msgid "Account Dunning"
 msgstr "Cobro contable"
 
-msgctxt "model:account.dunning.create.start,name:"
-msgid "Create Account Dunning"
-msgstr "Crear cobro contable"
+#, fuzzy
+msgctxt "model:account.dunning.create.start,string:"
+msgid "Account Dunning Create Start"
+msgstr "Nivel de cobro contable"
 
-msgctxt "model:account.dunning.level,name:"
+#, fuzzy
+msgctxt "model:account.dunning.level,string:"
 msgid "Account Dunning Level"
 msgstr "Nivel de cobro contable"
 
-msgctxt "model:account.dunning.procedure,name:"
+#, fuzzy
+msgctxt "model:account.dunning.procedure,string:"
 msgid "Account Dunning Procedure"
 msgstr "Procedimiento de cobro contable"
 
-msgctxt "model:account.dunning.process.start,name:"
-msgid "Create Account Dunning"
-msgstr "Crear cobro contable"
+#, fuzzy
+msgctxt "model:account.dunning.process.start,string:"
+msgid "Account Dunning Process Start"
+msgstr "Procedimiento de cobro contable"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_dunning_form"
@@ -259,7 +265,8 @@ msgctxt "model:ir.ui.menu,name:menu_dunnings"
 msgid "Dunnings"
 msgstr "Cobros"
 
-msgctxt "model:party.party.dunning_procedure,name:"
+#, fuzzy
+msgctxt "model:party.party.dunning_procedure,string:"
 msgid "Party Dunning Procedure"
 msgstr "Procedimiento de cobro por defecto"
 

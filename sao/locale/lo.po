@@ -321,6 +321,13 @@ msgstr "ເອົາຂໍ້ມູນຄັດຕິດເຂົ້າໃນແ
 msgid "Add a note to the record"
 msgstr "ບັນທຶກຂໍ້ຄວາມໃສ່ແຖວຂໍ້ມູນນີ້"
 
+msgid "Chat"
+msgstr ""
+
+#, fuzzy
+msgid "Chat on the record"
+msgstr "ບັນທຶກຂໍ້ຄວາມໃສ່ແຖວຂໍ້ມູນນີ້"
+
 msgid "Email..."
 msgstr ""
 
@@ -495,6 +502,9 @@ msgstr "ສະແດງ"
 msgid "Hide"
 msgstr "ເຊື່ອງ"
 
+msgid "Select a color for \"%1\""
+msgstr ""
+
 msgid "Open the record"
 msgstr ""
 
@@ -551,6 +561,9 @@ msgstr ""
 #, fuzzy
 msgid "Copy Selected Rows"
 msgstr "ແຖວຂໍ້ມູນຕໍ່ໄປ"
+
+msgid "Reset Column Widths"
+msgstr ""
 
 msgid "#ERROR"
 msgstr ""
@@ -796,6 +809,15 @@ msgstr ""
 
 msgid "Wizard"
 msgstr "ນໍາພາສ້າງ"
+
+msgid "Enter a message"
+msgstr ""
+
+msgid "Submit the message"
+msgstr ""
+
+msgid "Make this an internal message"
+msgstr ""
 
 msgid "Translate view"
 msgstr ""

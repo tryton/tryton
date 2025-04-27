@@ -94,17 +94,20 @@ msgctxt "model:ir.ui.menu,name:menu_relation_type"
 msgid "Relation Types"
 msgstr "关系类型"
 
-msgctxt "model:party.relation,name:"
+#, fuzzy
+msgctxt "model:party.relation,string:"
 msgid "Party Relation"
 msgstr "参与者关系"
 
-msgctxt "model:party.relation.all,name:"
+#, fuzzy
+msgctxt "model:party.relation.all,string:"
 msgid "Party Relation"
 msgstr "参与者关系"
 
-msgctxt "model:party.relation.type,name:"
-msgid "Relation Type"
-msgstr "关系类型"
+#, fuzzy
+msgctxt "model:party.relation.type,string:"
+msgid "Party Relation Type"
+msgstr "参与者关系"
 
 msgctxt "view:party.party:"
 msgid "Relations"

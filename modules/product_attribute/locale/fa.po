@@ -76,6 +76,11 @@ msgctxt "model:ir.message,text:msg_label_value"
 msgid "%(label)s: %(value)s"
 msgstr ""
 
+#, fuzzy
+msgctxt "model:ir.message,text:msg_product_attribute_name_unique"
+msgid "The name of the product attribute must be unique."
+msgstr "شناسه اصلی مجموعه ویژگی محصول."
+
 msgctxt "model:ir.ui.menu,name:menu_attribute"
 msgid "Attributes"
 msgstr "ویژگی ها"
@@ -84,15 +89,18 @@ msgctxt "model:ir.ui.menu,name:menu_attribute_set"
 msgid "Attribute Sets"
 msgstr "مجموعه ویژگی"
 
-msgctxt "model:product.attribute,name:"
+#, fuzzy
+msgctxt "model:product.attribute,string:"
 msgid "Product Attribute"
 msgstr "ویژگی محصول"
 
-msgctxt "model:product.attribute-product.attribute-set,name:"
-msgid "Product Attribute - Set"
+#, fuzzy
+msgctxt "model:product.attribute-product.attribute-set,string:"
+msgid "Product Attribute - Product Attribute - Set"
 msgstr "ویژگی محصول - مجموعه"
 
-msgctxt "model:product.attribute.set,name:"
+#, fuzzy
+msgctxt "model:product.attribute.set,string:"
 msgid "Product Attribute Set"
 msgstr "مجموعه ویژگی محصول"
 

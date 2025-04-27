@@ -4,20 +4,20 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:currency.cron,rs_license_id:"
 msgid "License ID"
-msgstr ""
+msgstr "ID Licença"
 
 msgctxt "field:currency.cron,rs_list_type:"
 msgid "List Type"
-msgstr ""
+msgstr "Tipo de Lista"
 
 msgctxt "field:currency.cron,rs_password:"
 msgid "Password"
-msgstr ""
+msgstr "Senha"
 
 msgctxt "field:currency.cron,rs_username:"
 msgid "Username"
-msgstr ""
+msgstr "Nome de Usuário"
 
 msgctxt "selection:currency.cron,source:"
 msgid "Serbian National Bank"
-msgstr ""
+msgstr "Banco Nacional Sérvio"

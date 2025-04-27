@@ -155,30 +155,35 @@ msgctxt "help:account.dunning.procedure,name:"
 msgid "The main identifier of the Dunning Procedure."
 msgstr ""
 
-msgctxt "model:account.configuration.default_dunning_procedure,name:"
+#, fuzzy
+msgctxt "model:account.configuration.default_dunning_procedure,string:"
 msgid "Account Configuration Default Dunning Procedure"
-msgstr ""
-
-msgctxt "model:account.dunning,name:"
-msgid "Account Dunning"
-msgstr ""
-
-msgctxt "model:account.dunning.create.start,name:"
-msgid "Create Account Dunning"
-msgstr ""
-
-msgctxt "model:account.dunning.level,name:"
-msgid "Account Dunning Level"
-msgstr ""
+msgstr "Varsayılan İhtarname Usulü"
 
 #, fuzzy
-msgctxt "model:account.dunning.procedure,name:"
+msgctxt "model:account.dunning,string:"
+msgid "Account Dunning"
+msgstr "Varsayılan İhtarname Usulü"
+
+#, fuzzy
+msgctxt "model:account.dunning.create.start,string:"
+msgid "Account Dunning Create Start"
+msgstr "Varsayılan İhtarname Usulü"
+
+#, fuzzy
+msgctxt "model:account.dunning.level,string:"
+msgid "Account Dunning Level"
+msgstr "Varsayılan İhtarname Usulü"
+
+#, fuzzy
+msgctxt "model:account.dunning.procedure,string:"
 msgid "Account Dunning Procedure"
 msgstr "Varsayılan İhtarname Usulü"
 
-msgctxt "model:account.dunning.process.start,name:"
-msgid "Create Account Dunning"
-msgstr ""
+#, fuzzy
+msgctxt "model:account.dunning.process.start,string:"
+msgid "Account Dunning Process Start"
+msgstr "Varsayılan İhtarname Usulü"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_dunning_form"
@@ -265,7 +270,8 @@ msgctxt "model:ir.ui.menu,name:menu_dunnings"
 msgid "Dunnings"
 msgstr "Dunnings"
 
-msgctxt "model:party.party.dunning_procedure,name:"
+#, fuzzy
+msgctxt "model:party.party.dunning_procedure,string:"
 msgid "Party Dunning Procedure"
 msgstr "Parti İhtarname Usulü"
 

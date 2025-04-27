@@ -44,8 +44,8 @@ msgstr ""
 "Aktivieren um den Preis von bereits festgeschriebenen Rechnungen zu "
 "korrigieren."
 
-msgctxt "model:account.invoice.line-stock.move,name:"
-msgid "Invoice Line - Stock Move"
+msgctxt "model:account.invoice.line-stock.move,string:"
+msgid "Account Invoice Line - Stock Move"
 msgstr "Rechnungsposition - Warenbewegung"
 
 msgctxt "view:account.invoice.line:"

@@ -19,3 +19,7 @@ msgstr "No podeu cancel·lar la venda \"%(sale)s\" perquè té pagaments."
 msgctxt "model:ir.message,text:msg_sale_draft_payment"
 msgid "You cannot reset to draft sale \"%(sale)s\" because it has payments."
 msgstr "No podeu restablir a esborrany la venda \"%(sale)s\" perquè té pagaments."
+
+msgctxt "selection:ir.cron,method:"
+msgid "Confirm sales based on payment"
+msgstr ""

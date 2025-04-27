@@ -252,23 +252,25 @@ msgctxt "model:ir.ui.menu,name:menu_work_list"
 msgid "Works"
 msgstr "ເຮັດວຽກ"
 
-msgctxt "model:production.work,name:"
+#, fuzzy
+msgctxt "model:production.work,string:"
 msgid "Production Work"
-msgstr ""
+msgstr "ຜະລິດຕະພັນ"
 
 #, fuzzy
-msgctxt "model:production.work.center,name:"
-msgid "Work Center"
+msgctxt "model:production.work.center,string:"
+msgid "Production Work Center"
 msgstr "Work Centers"
 
 #, fuzzy
-msgctxt "model:production.work.center.category,name:"
-msgid "Work Center Category"
+msgctxt "model:production.work.center.category,string:"
+msgid "Production Work Center Category"
 msgstr "Work Center Categories"
 
-msgctxt "model:production.work.cycle,name:"
-msgid "Work Cycle"
-msgstr ""
+#, fuzzy
+msgctxt "model:production.work.cycle,string:"
+msgid "Production Work Cycle"
+msgstr "ຜະລິດຕະພັນ"
 
 #, fuzzy
 msgctxt "selection:production.work,state:"

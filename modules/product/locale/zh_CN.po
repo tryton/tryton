@@ -182,6 +182,10 @@ msgctxt "field:product.product,replaced_by:"
 msgid "Replaced By"
 msgstr ""
 
+msgctxt "field:product.product,replacing:"
+msgid "Replacing"
+msgstr ""
+
 msgctxt "field:product.product,suffix_code:"
 msgid "Suffix Code"
 msgstr "后缀代码"
@@ -407,6 +411,11 @@ msgstr "产品销售的标准价格."
 #, fuzzy
 msgctxt "help:product.product,replaced_by:"
 msgid "The product replacing this one."
+msgstr "此代码标识的产品."
+
+#, fuzzy
+msgctxt "help:product.product,replacing:"
+msgid "The products that this one is replacing."
 msgstr "此代码标识的产品."
 
 msgctxt "help:product.product,suffix_code:"
@@ -655,58 +664,65 @@ msgctxt "model:ir.ui.menu,name:menu_uom_form"
 msgid "Units of Measure"
 msgstr "计量单位"
 
-msgctxt "model:product.category,name:"
+#, fuzzy
+msgctxt "model:product.category,string:"
 msgid "Product Category"
 msgstr "按类别划分的产品"
 
-msgctxt "model:product.configuration,name:"
+#, fuzzy
+msgctxt "model:product.configuration,string:"
 msgid "Product Configuration"
 msgstr "产品设置"
 
-msgctxt "model:product.configuration.default_cost_price_method,name:"
+#, fuzzy
+msgctxt "model:product.configuration.default_cost_price_method,string:"
 msgid "Product Configuration Default Cost Price Method"
 msgstr "产品设置 - 默认的成本价法"
 
-msgctxt "model:product.cost_price,name:"
+#, fuzzy
+msgctxt "model:product.cost_price,string:"
 msgid "Product Cost Price"
 msgstr "产品成本价"
 
-msgctxt "model:product.cost_price_method,name:"
+#, fuzzy
+msgctxt "model:product.cost_price_method,string:"
 msgid "Product Cost Price Method"
 msgstr "产品成本价法"
 
-msgctxt "model:product.identifier,name:"
+#, fuzzy
+msgctxt "model:product.identifier,string:"
 msgid "Product Identifier"
 msgstr "产品标识"
 
-msgctxt "model:product.list_price,name:"
+#, fuzzy
+msgctxt "model:product.list_price,string:"
 msgid "Product List Price"
 msgstr "产品定价"
 
-msgctxt "model:product.product,name:"
-msgid "Product Variant"
-msgstr "产品变体"
-
 #, fuzzy
-msgctxt "model:product.product.replace.ask,name:"
-msgid "Replace Product"
+msgctxt "model:product.product,string:"
+msgid "Product"
 msgstr "产品"
 
-msgctxt "model:product.template,name:"
+#, fuzzy
+msgctxt "model:product.product.replace.ask,string:"
+msgid "Product Replace Ask"
+msgstr "产品模板"
+
+#, fuzzy
+msgctxt "model:product.template,string:"
 msgid "Product Template"
 msgstr "产品模板"
 
-msgctxt "model:product.template-product.category,name:"
-msgid "Template - Category"
+#, fuzzy
+msgctxt "model:product.template-product.category,string:"
+msgid "Product Template - Product Category"
 msgstr "模板 - 类别"
 
-msgctxt "model:product.template-product.category.all,name:"
-msgid "Template - Category All"
+#, fuzzy
+msgctxt "model:product.template-product.category.all,string:"
+msgid "Product Template - Product Category All"
 msgstr "模板 -所有类别"
-
-msgctxt "model:product.uom,name:"
-msgid "Unit of Measure"
-msgstr "计量单位"
 
 msgctxt "model:product.uom,name:uom_are"
 msgid "Are"
@@ -848,6 +864,11 @@ msgctxt "model:product.uom,name:uom_yard"
 msgid "Yard"
 msgstr "码"
 
+#, fuzzy
+msgctxt "model:product.uom,string:"
+msgid "Product Uom"
+msgstr "产品"
+
 msgctxt "model:product.uom,symbol:uom_are"
 msgid "a"
 msgstr "a"
@@ -988,10 +1009,6 @@ msgctxt "model:product.uom,symbol:uom_yard"
 msgid "yd"
 msgstr "yd"
 
-msgctxt "model:product.uom.category,name:"
-msgid "Unit of Measure Category"
-msgstr "计量单位类别"
-
 msgctxt "model:product.uom.category,name:uom_cat_energy"
 msgid "Energy"
 msgstr "能量"
@@ -1019,6 +1036,11 @@ msgstr "体积或容量"
 msgctxt "model:product.uom.category,name:uom_cat_weight"
 msgid "Weight"
 msgstr "重量"
+
+#, fuzzy
+msgctxt "model:product.uom.category,string:"
+msgid "Product Uom Category"
+msgstr "产品计量单位类别"
 
 msgctxt "model:res.group,name:group_product_admin"
 msgid "Product Administration"

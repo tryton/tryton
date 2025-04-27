@@ -54,8 +54,8 @@ msgid "Effective Start Date"
 msgstr "شروع تاریخ موثر"
 
 msgctxt "field:production,inputs:"
-msgid "Inputs"
-msgstr "ورودی ها"
+msgid "Input Materials"
+msgstr ""
 
 msgctxt "field:production,location:"
 msgid "Location"
@@ -69,8 +69,9 @@ msgctxt "field:production,origin:"
 msgid "Origin"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:production,outputs:"
-msgid "Outputs"
+msgid "Output Materials"
 msgstr "خروجی ها"
 
 #, fuzzy
@@ -125,8 +126,8 @@ msgid "Code Readonly"
 msgstr ""
 
 msgctxt "field:production.bom,inputs:"
-msgid "Inputs"
-msgstr "ورودی ها"
+msgid "Input Materials"
+msgstr ""
 
 msgctxt "field:production.bom,name:"
 msgid "Name"
@@ -136,8 +137,9 @@ msgctxt "field:production.bom,output_products:"
 msgid "Output Products"
 msgstr "محصولات خروجی"
 
+#, fuzzy
 msgctxt "field:production.bom,outputs:"
-msgid "Outputs"
+msgid "Output Materials"
 msgstr "خروجی ها"
 
 msgctxt "field:production.bom.input,bom:"
@@ -496,47 +498,56 @@ msgctxt "model:ir.ui.menu,name:menu_production_list"
 msgid "Productions"
 msgstr "تولیدات"
 
-msgctxt "model:product.product-production.bom,name:"
-msgid "Product - BOM"
-msgstr "محصول - BOM"
+msgctxt "model:product.product-production.bom,string:"
+msgid "Product - Production Bom"
+msgstr ""
 
-msgctxt "model:production,name:"
+#, fuzzy
+msgctxt "model:production,string:"
 msgid "Production"
-msgstr "تولید"
+msgstr "تهیه کننده"
 
-msgctxt "model:production.bom,name:"
-msgid "Bill of Material"
-msgstr "صورت حساب مواد اولیه"
+#, fuzzy
+msgctxt "model:production.bom,string:"
+msgid "Production Bom"
+msgstr "تهیه کننده"
 
-msgctxt "model:production.bom.input,name:"
-msgid "Bill of Material Input"
-msgstr "صورت حساب مواد اولیه ورودی"
+#, fuzzy
+msgctxt "model:production.bom.input,string:"
+msgid "Production Bom Input"
+msgstr "تولیدات ورودی"
 
-msgctxt "model:production.bom.output,name:"
-msgid "Bill of Material Output"
-msgstr "صورت حساب مواد اولیه خروجی"
+#, fuzzy
+msgctxt "model:production.bom.output,string:"
+msgid "Production Bom Output"
+msgstr "تولیدات خروجی"
 
-msgctxt "model:production.bom.tree,name:"
-msgid "BOM Tree"
-msgstr "BOM درخت"
+#, fuzzy
+msgctxt "model:production.bom.tree,string:"
+msgid "Production Bom Tree"
+msgstr "زمان پیشبرد تولید"
 
-msgctxt "model:production.bom.tree.open.start,name:"
-msgid "Open BOM Tree"
-msgstr "بازکردن BOM درخت"
+msgctxt "model:production.bom.tree.open.start,string:"
+msgid "Production Bom Tree Open Start"
+msgstr ""
 
-msgctxt "model:production.bom.tree.open.tree,name:"
-msgid "Open BOM Tree"
-msgstr "بازکردن BOM درخت"
+#, fuzzy
+msgctxt "model:production.bom.tree.open.tree,string:"
+msgid "Production Bom Tree Open Tree"
+msgstr "ادامه تولید"
 
-msgctxt "model:production.configuration,name:"
+#, fuzzy
+msgctxt "model:production.configuration,string:"
 msgid "Production Configuration"
 msgstr "پیکره بندی تولید"
 
-msgctxt "model:production.configuration.production_sequence,name:"
+#, fuzzy
+msgctxt "model:production.configuration.production_sequence,string:"
 msgid "Production Configuration Production Sequence"
 msgstr "پیکره بندی تولید ادامه تولید"
 
-msgctxt "model:production.lead_time,name:"
+#, fuzzy
+msgctxt "model:production.lead_time,string:"
 msgid "Production Lead Time"
 msgstr "زمان پیشبرد تولید"
 
@@ -596,10 +607,6 @@ msgid "Production"
 msgstr "تهیه کننده"
 
 msgctxt "view:production.bom:"
-msgid "Lines"
-msgstr "خطوط"
-
-msgctxt "view:production:"
 msgid "Lines"
 msgstr "خطوط"
 

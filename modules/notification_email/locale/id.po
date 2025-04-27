@@ -32,16 +32,17 @@ msgctxt "field:notification.email,content:"
 msgid "Content"
 msgstr "Kandungan"
 
+#, fuzzy
 msgctxt "field:notification.email,fallback_recipients:"
-msgid "Recipients Fallback User"
-msgstr ""
+msgid "Recipients Fallback"
+msgstr "Penerima"
 
 msgctxt "field:notification.email,fallback_recipients_hidden:"
-msgid "Hidden Recipients Fallback User"
+msgid "Hidden Recipients Fallback"
 msgstr ""
 
 msgctxt "field:notification.email,fallback_recipients_secondary:"
-msgid "Secondary Recipients Fallback User"
+msgid "Secondary Recipients Fallback"
 msgstr ""
 
 msgctxt "field:notification.email,from_:"
@@ -164,13 +165,14 @@ msgid "Notification Emails"
 msgstr ""
 
 #, fuzzy
-msgctxt "model:notification.email,name:"
-msgid "Email Notification"
+msgctxt "model:notification.email,string:"
+msgid "Notification Email"
 msgstr "Pemberitahuan Email"
 
-msgctxt "model:notification.email.attachment,name:"
-msgid "Email Notification Attachment"
-msgstr ""
+#, fuzzy
+msgctxt "model:notification.email.attachment,string:"
+msgid "Notification Email Attachment"
+msgstr "Pemberitahuan Email"
 
 #, fuzzy
 msgctxt "selection:ir.trigger,action:"

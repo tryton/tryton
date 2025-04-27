@@ -34,15 +34,15 @@ msgid "Content"
 msgstr ""
 
 msgctxt "field:notification.email,fallback_recipients:"
-msgid "Recipients Fallback User"
+msgid "Recipients Fallback"
 msgstr ""
 
 msgctxt "field:notification.email,fallback_recipients_hidden:"
-msgid "Hidden Recipients Fallback User"
+msgid "Hidden Recipients Fallback"
 msgstr ""
 
 msgctxt "field:notification.email,fallback_recipients_secondary:"
-msgid "Secondary Recipients Fallback User"
+msgid "Secondary Recipients Fallback"
 msgstr ""
 
 msgctxt "field:notification.email,from_:"
@@ -165,13 +165,14 @@ msgid "Notification Emails"
 msgstr "Notification Emails"
 
 #, fuzzy
-msgctxt "model:notification.email,name:"
-msgid "Email Notification"
+msgctxt "model:notification.email,string:"
+msgid "Notification Email"
 msgstr "Notification Emails"
 
-msgctxt "model:notification.email.attachment,name:"
-msgid "Email Notification Attachment"
-msgstr ""
+#, fuzzy
+msgctxt "model:notification.email.attachment,string:"
+msgid "Notification Email Attachment"
+msgstr "Notification Emails"
 
 #, fuzzy
 msgctxt "selection:ir.trigger,action:"

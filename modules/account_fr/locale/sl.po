@@ -28,13 +28,13 @@ msgid ""
 "account"
 msgstr ""
 
-msgctxt "model:account.fr.fec.result,name:"
-msgid "Generate FEC"
-msgstr "Izdelava FEC"
+msgctxt "model:account.fr.fec.result,string:"
+msgid "Account Fr Fec Result"
+msgstr ""
 
-msgctxt "model:account.fr.fec.start,name:"
-msgid "Generate FEC"
-msgstr "Izdelava FEC"
+msgctxt "model:account.fr.fec.start,string:"
+msgid "Account Fr Fec Start"
+msgstr ""
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_fec"

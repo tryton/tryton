@@ -140,6 +140,36 @@ msgid "Weight UoM"
 msgstr "Teža"
 
 #, fuzzy
+msgctxt "field:stock.shipment.internal,internal_volume:"
+msgid "Internal Volume"
+msgstr "Neto volumen"
+
+#, fuzzy
+msgctxt "field:stock.shipment.internal,internal_weight:"
+msgid "Internal Weight"
+msgstr "Neto teža"
+
+#, fuzzy
+msgctxt "field:stock.shipment.internal,volume:"
+msgid "Volume"
+msgstr "Volumen"
+
+#, fuzzy
+msgctxt "field:stock.shipment.internal,volume_uom:"
+msgid "Volume UoM"
+msgstr "Volumen"
+
+#, fuzzy
+msgctxt "field:stock.shipment.internal,weight:"
+msgid "Weight"
+msgstr "Teža"
+
+#, fuzzy
+msgctxt "field:stock.shipment.internal,weight_uom:"
+msgid "Weight UoM"
+msgstr "Teža"
+
+#, fuzzy
 msgctxt "field:stock.shipment.out,internal_volume:"
 msgid "Internal Volume"
 msgstr "Neto volumen"
@@ -303,6 +333,24 @@ msgid "The Unit of Measure of weight."
 msgstr ""
 
 #, fuzzy
+msgctxt "help:stock.shipment.internal,volume:"
+msgid "The total volume of the record's moves."
+msgstr "Skupni volumen v litrih za premike paketa."
+
+msgctxt "help:stock.shipment.internal,volume_uom:"
+msgid "The Unit of Measure of volume."
+msgstr ""
+
+#, fuzzy
+msgctxt "help:stock.shipment.internal,weight:"
+msgid "The total weight of the record's moves."
+msgstr "Skupna teža v kilogramih za premike paketa."
+
+msgctxt "help:stock.shipment.internal,weight_uom:"
+msgid "The Unit of Measure of weight."
+msgstr ""
+
+#, fuzzy
 msgctxt "help:stock.shipment.out,packages_volume:"
 msgid "The total volume of the packages."
 msgstr "Skupna prostornina paketov v litrih."
@@ -348,7 +396,7 @@ msgctxt "help:stock.shipment.out.return,weight_uom:"
 msgid "The Unit of Measure of weight."
 msgstr ""
 
-msgctxt "model:stock.configuration.measurement,name:"
+msgctxt "model:stock.configuration.measurement,string:"
 msgid "Stock Configuration Measurement"
 msgstr ""
 
@@ -375,6 +423,10 @@ msgid "Measurements"
 msgstr ""
 
 msgctxt "view:stock.shipment.in:"
+msgid "Measurements"
+msgstr ""
+
+msgctxt "view:stock.shipment.internal:"
 msgid "Measurements"
 msgstr ""
 

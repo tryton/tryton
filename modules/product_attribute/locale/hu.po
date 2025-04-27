@@ -80,6 +80,10 @@ msgctxt "model:ir.message,text:msg_label_value"
 msgid "%(label)s: %(value)s"
 msgstr ""
 
+msgctxt "model:ir.message,text:msg_product_attribute_name_unique"
+msgid "The name of the product attribute must be unique."
+msgstr ""
+
 msgctxt "model:ir.ui.menu,name:menu_attribute"
 msgid "Attributes"
 msgstr "Jellemző értékek"
@@ -88,15 +92,18 @@ msgctxt "model:ir.ui.menu,name:menu_attribute_set"
 msgid "Attribute Sets"
 msgstr "Termékjellemzők"
 
-msgctxt "model:product.attribute,name:"
+#, fuzzy
+msgctxt "model:product.attribute,string:"
 msgid "Product Attribute"
 msgstr "Termékek jellemzői"
 
-msgctxt "model:product.attribute-product.attribute-set,name:"
-msgid "Product Attribute - Set"
+#, fuzzy
+msgctxt "model:product.attribute-product.attribute-set,string:"
+msgid "Product Attribute - Product Attribute - Set"
 msgstr "Termék jellemzői"
 
-msgctxt "model:product.attribute.set,name:"
+#, fuzzy
+msgctxt "model:product.attribute.set,string:"
 msgid "Product Attribute Set"
 msgstr "Termék tulajdonság"
 

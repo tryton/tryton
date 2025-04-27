@@ -54,9 +54,9 @@ msgstr ""
 "Variablen, die im Text der SMS verwendet werden können:\n"
 "ParcelNr#, #COD#, #PickupDate#, #From_Name#, #ClientRef#"
 
-msgctxt "model:carrier.credential.mygls,name:"
-msgid "MyGLS Credential"
-msgstr "MyGLS Anmeldedaten"
+msgctxt "model:carrier.credential.mygls,string:"
+msgid "Carrier Credential Mygls"
+msgstr "Versanddienstleister Anmeldedaten Mygls"
 
 msgctxt "model:ir.action,name:act_create_shipping_mygls_wizard"
 msgid "Create MyGLS Shipping for Packages"

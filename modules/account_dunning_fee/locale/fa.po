@@ -54,12 +54,14 @@ msgctxt "help:account.dunning.fee,compute_method:"
 msgid "Method to compute the fee amount"
 msgstr "روش محاسبه میزان قیمت"
 
-msgctxt "model:account.dunning.fee,name:"
+#, fuzzy
+msgctxt "model:account.dunning.fee,string:"
 msgid "Account Dunning Fee"
 msgstr "حساب دانینگ قیمت"
 
-msgctxt "model:account.dunning.fee.dunning_level,name:"
-msgid "Account Dunning Fee Dunning-Level"
+#, fuzzy
+msgctxt "model:account.dunning.fee.dunning_level,string:"
+msgid "Account Dunning Fee Dunning Level"
 msgstr "حساب دانینگ قیمت سطح - دانینگ"
 
 #, fuzzy

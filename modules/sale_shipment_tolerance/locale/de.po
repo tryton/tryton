@@ -47,9 +47,9 @@ msgstr ""
 "Die Verkaufsposition \"%(line)s\" überschreitet die Überlieferungstoleranz "
 "(%(shipped)s shipped > %(maximal)s )."
 
-msgctxt "model:sale.configuration.shipment_tolerance,name:"
+msgctxt "model:sale.configuration.shipment_tolerance,string:"
 msgid "Sale Configuration Shipment Tolerance"
-msgstr "Einstellungen Liefertoleranzen im Verkauf"
+msgstr "Verkauf Einstellungen Liefertoleranz"
 
 msgctxt "view:sale.configuration:"
 msgid "%"

@@ -10,10 +10,6 @@ msgctxt "field:sale.promotion.coupon,company:"
 msgid "Company"
 msgstr "Unternehmen"
 
-msgctxt "field:sale.promotion.coupon,name:"
-msgid "Name"
-msgstr "Name"
-
 # For a condensed but talking representation in list view it seems better to
 # put 'Anzahl' at the first place.
 msgctxt "field:sale.promotion.coupon,number_of_use:"
@@ -80,6 +76,10 @@ msgctxt "help:sale.promotion.coupon,per_party:"
 msgid "Check to count usage per party."
 msgstr "Aktivieren um die Anzahl der Verwendungen pro Partei zu zählen."
 
+msgctxt "model:ir.action,name:act_promotion_coupon_number_form"
+msgid "Coupon Numbers"
+msgstr "Couponnummern"
+
 msgctxt "model:ir.message,text:msg_duplicate_numbers"
 msgid "The dates of coupon numbers with the same number can not overlap."
 msgstr ""
@@ -112,14 +112,18 @@ msgctxt "model:ir.rule.group,name:rule_group_coupon_number_companies"
 msgid "User in companies"
 msgstr "Benutzer in Unternehmen"
 
-msgctxt "model:sale.promotion.coupon,name:"
-msgid "Promotion Coupon"
-msgstr "Aktions-Coupon"
+msgctxt "model:ir.ui.menu,name:menu_promotion_coupon_number"
+msgid "Coupon Numbers"
+msgstr "Couponnummern"
 
-msgctxt "model:sale.promotion.coupon.number,name:"
-msgid "Promotion Coupon Number"
-msgstr "Aktions-Coupon-Nummer"
+msgctxt "model:sale.promotion.coupon,string:"
+msgid "Sale Promotion Coupon"
+msgstr "Verkaufsaktion Coupon"
 
-msgctxt "model:sale.sale-sale.promotion.coupon.number,name:"
-msgid "Sale - Promotion Coupon Number"
-msgstr "Verkauf - Aktions-Coupon-Nummer"
+msgctxt "model:sale.promotion.coupon.number,string:"
+msgid "Sale Promotion Coupon Number"
+msgstr "Verkaufsaktion Couponnummer"
+
+msgctxt "model:sale.sale-sale.promotion.coupon.number,string:"
+msgid "Sale - Sale Promotion Coupon Number"
+msgstr "Verkauf - Verkaufsaktions Couponnummer"

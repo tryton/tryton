@@ -72,8 +72,8 @@ msgctxt "field:account.invoice.line,deferrable:"
 msgid "Deferrable"
 msgstr "uitstelbaar"
 
-msgctxt "model:account.invoice.deferred,name:"
-msgid "Invoice Deferred"
+msgctxt "model:account.invoice.deferred,string:"
+msgid "Account Invoice Deferred"
 msgstr "Factuur uitgesteld"
 
 msgctxt "model:ir.action,name:act_invoice_deferred_in_form"

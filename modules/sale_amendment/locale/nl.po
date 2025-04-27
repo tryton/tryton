@@ -148,11 +148,11 @@ msgctxt "model:res.group,name:group_sale_amendment"
 msgid "Sale Amendment"
 msgstr "Verkoop wijziging"
 
-msgctxt "model:sale.amendment,name:"
+msgctxt "model:sale.amendment,string:"
 msgid "Sale Amendment"
 msgstr "Verkoop wijziging"
 
-msgctxt "model:sale.amendment.line,name:"
+msgctxt "model:sale.amendment.line,string:"
 msgid "Sale Amendment Line"
 msgstr "Verkoop wijzigingsregel"
 

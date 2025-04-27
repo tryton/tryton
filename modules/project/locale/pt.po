@@ -36,16 +36,15 @@ msgstr "Endereço de contato"
 
 msgctxt "field:project.work,path:"
 msgid "Path"
-msgstr ""
+msgstr "Caminho"
 
 msgctxt "field:project.work,progress:"
 msgid "Progress"
 msgstr "Progresso"
 
-#, fuzzy
 msgctxt "field:project.work,status:"
 msgid "Status"
-msgstr "Estado"
+msgstr "Status"
 
 msgctxt "field:project.work,timesheet_available:"
 msgid "Available on timesheets"
@@ -81,71 +80,64 @@ msgstr "Tipo"
 
 msgctxt "field:project.work.status,count:"
 msgid "Count"
-msgstr ""
+msgstr "Contagem"
 
 msgctxt "field:project.work.status,default:"
 msgid "Default"
-msgstr ""
+msgstr "Padrão"
 
-#, fuzzy
 msgctxt "field:project.work.status,name:"
 msgid "Name"
 msgstr "Nome"
 
-#, fuzzy
 msgctxt "field:project.work.status,progress:"
 msgid "Progress"
 msgstr "Progresso"
 
-#, fuzzy
 msgctxt "field:project.work.status,types:"
 msgid "Types"
-msgstr "Tipo"
+msgstr "Tipos"
 
-#, fuzzy
 msgctxt "help:project.work,effort_duration:"
 msgid "Estimated Effort for this work."
-msgstr "Esforço estimado para este trabalho"
+msgstr "Esforço estimado para este trabalho."
 
-#, fuzzy
 msgctxt "help:project.work,progress:"
 msgid "Estimated progress for this work."
-msgstr "Esforço estimado para este trabalho"
+msgstr "Progresso estimado para este trabalho."
 
 msgctxt "help:project.work,timesheet_available:"
 msgid "Check to record time spent."
-msgstr ""
+msgstr "Marque para registrar o tempo gasto."
 
-#, fuzzy
 msgctxt "help:project.work,timesheet_duration:"
 msgid "Total time spent on this work and the sub-works."
-msgstr "Tempo total gasto nesta tarefa e nas sub-tarefas"
+msgstr "Tempo total gasto neste trabalho e nas sub-tarefas."
 
-#, fuzzy
 msgctxt "help:project.work,total_effort:"
 msgid "Estimated total effort for this work and the sub-works."
-msgstr "O esforço total estimado para este trabalho e tarefas secundárias"
+msgstr "O esforço total estimado para este trabalho e trabalhos secundários."
 
-#, fuzzy
 msgctxt "help:project.work,total_progress:"
 msgid "Estimated total progress for this work and the sub-works."
-msgstr "O progresso total estimado para esta tarefa e para suas sub-tarefas."
+msgstr ""
+"O progresso total estimado para este trabalho e para suas sub-tarefas."
 
 msgctxt "help:project.work.status,count:"
 msgid "Check to show the number of works in this status."
-msgstr ""
+msgstr "Marque para mostrar o número de tarefas neste status."
 
 msgctxt "help:project.work.status,default:"
 msgid "Check to use as default status for the type."
-msgstr ""
+msgstr "Marque para usar como status padrão para o tipo."
 
 msgctxt "help:project.work.status,progress:"
 msgid "The minimum progress required for this status."
-msgstr ""
+msgstr "O progresso mínimo necessário para esse status."
 
 msgctxt "help:project.work.status,types:"
 msgid "The type of works which can use this status."
-msgstr ""
+msgstr "O tipo de trabalhos que podem usar esse status."
 
 msgctxt "model:ir.action,name:act_open_child_work"
 msgid "Tasks"
@@ -173,7 +165,7 @@ msgstr "Esforços de trabalhos"
 
 msgctxt "model:ir.action,name:act_work_status"
 msgid "Work Status"
-msgstr ""
+msgstr "Status do Trabalho"
 
 msgctxt "model:ir.action,name:act_work_tree"
 msgid "Works Efforts"
@@ -181,7 +173,7 @@ msgstr "Esforços de trabalhos"
 
 msgctxt "model:ir.message,text:msg_domain_all"
 msgid "All"
-msgstr ""
+msgstr "Todo"
 
 #, python-format
 msgctxt "model:ir.message,text:msg_erase_party_opened_project"
@@ -192,12 +184,12 @@ msgstr ""
 "Você não pode remover a pessoa \"%(party)s\" enquanto ela tiver projetos em "
 "aberto com a empresa \"%(company)s\"."
 
-#, fuzzy, python-format
+#, python-format
 msgctxt "model:ir.message,text:msg_work_children_progress"
 msgid "To complete work \"%(work)s\" you must complete also all its children."
 msgstr ""
-"Para fechar o trabalho \"%(parent)s\", você precisa fechar o trabalho "
-"\"%(child)s\"."
+"Para completar o trabalho \"%(work)s\" você deve completar também todos os "
+"seus filhos."
 
 #, python-format
 msgctxt "model:ir.message,text:msg_work_invalid_progress_status"
@@ -205,23 +197,26 @@ msgid ""
 "To set work \"%(work)s\" in \"%(status)s\" status, you must increase its "
 "progress up to at least %(progress)s."
 msgstr ""
+"Para definir o trabalho \"%(work)s\" no status \"%(status)s\", você deve "
+"aumentar seu progresso até pelo menos %(progress)s."
 
-#, fuzzy, python-format
+#, python-format
 msgctxt "model:ir.message,text:msg_work_parent_progress"
 msgid ""
 "To reopen the work \"%(work)s\", you must also reopen its parent "
 "\"%(parent)s\"."
-msgstr "Para abrir o trabalho \"%(child)s\", você precisa abrir \"%(parent)s\"."
+msgstr ""
+"Para reabrir o trabalho \"%(work)s\", você também deve reabrir seu pai "
+"\"%(parent)s\"."
 
 msgctxt "model:ir.rule.group,name:rule_group_work_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "Usuário em companhia"
 
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
 msgstr "Configuração"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_project"
 msgid "Projects"
 msgstr "Projetos"
@@ -236,7 +231,7 @@ msgstr "Projetos"
 
 msgctxt "model:ir.ui.menu,name:menu_reporting"
 msgid "Reporting"
-msgstr ""
+msgstr "Relatórios"
 
 msgctxt "model:ir.ui.menu,name:menu_task_form"
 msgid "Tasks"
@@ -248,29 +243,27 @@ msgstr "Esforços de Trabalhos"
 
 msgctxt "model:ir.ui.menu,name:menu_work_status"
 msgid "Work Status"
-msgstr ""
+msgstr "Status do Trabalho"
 
 msgctxt "model:ir.ui.menu,name:menu_work_tree"
 msgid "Works Efforts"
 msgstr "Esforços de Trabalhos"
 
-msgctxt "model:project.work,name:"
-msgid "Work Effort"
-msgstr "Esforço do trabalho"
+msgctxt "model:project.work,string:"
+msgid "Project Work"
+msgstr "Trabalho do Projeto"
 
-msgctxt "model:project.work.status,name:"
-msgid "Work Status"
-msgstr ""
-
-#, fuzzy
 msgctxt "model:project.work.status,name:work_done_status"
 msgid "Done"
-msgstr "Concluído"
+msgstr "Pronto"
 
-#, fuzzy
 msgctxt "model:project.work.status,name:work_open_status"
 msgid "Open"
 msgstr "Aberto"
+
+msgctxt "model:project.work.status,string:"
+msgid "Project Work Status"
+msgstr "Status do Trabalho do Projeto"
 
 msgctxt "model:res.group,name:group_project_admin"
 msgid "Project Administration"
@@ -284,7 +277,6 @@ msgctxt "selection:project.work,type:"
 msgid "Task"
 msgstr "Tarefa"
 
-#, fuzzy
 msgctxt "view:project.work.status:"
 msgid "%"
 msgstr "%"

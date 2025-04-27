@@ -225,11 +225,13 @@ msgctxt "model:ir.ui.menu,name:menu_purchase_requisition_form"
 msgid "Requisitions"
 msgstr "Requisição"
 
-msgctxt "model:purchase.requisition,name:"
+#, fuzzy
+msgctxt "model:purchase.requisition,string:"
 msgid "Purchase Requisition"
-msgstr "Requisição de Compra"
+msgstr "Purchase Requisition"
 
-msgctxt "model:purchase.requisition.line,name:"
+#, fuzzy
+msgctxt "model:purchase.requisition.line,string:"
 msgid "Purchase Requisition Line"
 msgstr "Linha de Requisição de Compra"
 

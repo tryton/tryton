@@ -402,39 +402,48 @@ msgctxt "model:account.journal,name:journal_commission"
 msgid "Commission"
 msgstr "Comissions"
 
-msgctxt "model:commission,name:"
+#, fuzzy
+msgctxt "model:commission,string:"
 msgid "Commission"
-msgstr "Comissió"
+msgstr "Comissions"
 
-msgctxt "model:commission.agent,name:"
+#, fuzzy
+msgctxt "model:commission.agent,string:"
 msgid "Commission Agent"
 msgstr "Agent comissió"
 
-msgctxt "model:commission.agent.selection,name:"
-msgid "Agent Selection"
-msgstr "Selecció de l'Agent"
+#, fuzzy
+msgctxt "model:commission.agent.selection,string:"
+msgid "Commission Agent Selection"
+msgstr "Agent comissió"
 
-msgctxt "model:commission.create_invoice.ask,name:"
-msgid "Create Commission Invoice"
-msgstr "Crea factura de comissió"
+#, fuzzy
+msgctxt "model:commission.create_invoice.ask,string:"
+msgid "Commission Create Invoice Ask"
+msgstr "Crea factures de comissió"
 
-msgctxt "model:commission.plan,name:"
+#, fuzzy
+msgctxt "model:commission.plan,string:"
 msgid "Commission Plan"
 msgstr "Pla comissió"
 
-msgctxt "model:commission.plan.line,name:"
+#, fuzzy
+msgctxt "model:commission.plan.line,string:"
 msgid "Commission Plan Line"
 msgstr "Línia de pla comissió"
 
-msgctxt "model:commission.reporting.agent,name:"
-msgid "Commission Reporting per Agent"
+#, fuzzy
+msgctxt "model:commission.reporting.agent,string:"
+msgid "Commission Reporting Agent"
 msgstr "Informe de comissions per Agent"
 
-msgctxt "model:commission.reporting.agent.time_series,name:"
-msgid "Commission Reporting per Agent"
+#, fuzzy
+msgctxt "model:commission.reporting.agent.time_series,string:"
+msgid "Commission Reporting Agent"
 msgstr "Informe de comissions per Agent"
 
-msgctxt "model:commission.reporting.context,name:"
+#, fuzzy
+msgctxt "model:commission.reporting.context,string:"
 msgid "Commission Reporting Context"
 msgstr "Context informes comissions"
 
@@ -555,7 +564,8 @@ msgctxt "model:ir.ui.menu,name:menu_reporting_commission"
 msgid "Commissions"
 msgstr "Comissions"
 
-msgctxt "model:product.template-commission.agent,name:"
+#, fuzzy
+msgctxt "model:product.template-commission.agent,string:"
 msgid "Product Template - Commission Agent"
 msgstr "Plantilla de producte - Agent comisionista"
 

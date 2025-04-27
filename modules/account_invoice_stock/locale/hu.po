@@ -44,8 +44,8 @@ msgstr ""
 "Jelölje be, hogy egy már lekönyvelt számla alapján kiszámított egységárat "
 "módosítson."
 
-msgctxt "model:account.invoice.line-stock.move,name:"
-msgid "Invoice Line - Stock Move"
+msgctxt "model:account.invoice.line-stock.move,string:"
+msgid "Account Invoice Line - Stock Move"
 msgstr ""
 
 msgctxt "view:account.invoice.line:"

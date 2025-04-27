@@ -138,19 +138,19 @@ msgctxt "help:currency.currency.rate,rate:"
 msgid "The floating exchange rate used to convert the currency."
 msgstr "La tasa de cambio flotante utilizada para convertir la moneda."
 
-msgctxt "model:currency.cron,name:"
+msgctxt "model:currency.cron,string:"
 msgid "Currency Cron"
 msgstr "Tareas programadas monedas"
 
-msgctxt "model:currency.cron-currency.currency,name:"
+msgctxt "model:currency.cron-currency.currency,string:"
 msgid "Currency Cron - Currency"
 msgstr "Tarea programada moneda - Moneda"
 
-msgctxt "model:currency.currency,name:"
+msgctxt "model:currency.currency,string:"
 msgid "Currency"
 msgstr "Moneda"
 
-msgctxt "model:currency.currency.rate,name:"
+msgctxt "model:currency.currency.rate,string:"
 msgid "Currency Rate"
 msgstr "Tasa de cambio"
 

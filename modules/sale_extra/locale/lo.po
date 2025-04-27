@@ -101,13 +101,14 @@ msgid "Extras"
 msgstr "Extras"
 
 #, fuzzy
-msgctxt "model:sale.extra,name:"
+msgctxt "model:sale.extra,string:"
 msgid "Sale Extra"
 msgstr "Sale Extras"
 
-msgctxt "model:sale.extra.line,name:"
+#, fuzzy
+msgctxt "model:sale.extra.line,string:"
 msgid "Sale Extra Line"
-msgstr ""
+msgstr "Sale Extras"
 
 msgctxt "view:sale.extra.line:"
 msgid "Sale Line"

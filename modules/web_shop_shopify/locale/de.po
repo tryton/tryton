@@ -134,7 +134,7 @@ msgstr "Shopfiy Identifikatoren"
 
 msgctxt "model:ir.action,name:act_stock_shipment_shopify_identifier_form"
 msgid "Shipment Identifiers"
-msgstr "Lieferungsidentifkatoren"
+msgstr "Lieferungsidentifikatoren"
 
 #, python-format
 msgctxt "model:ir.message,text:msg_custom_collection_fail"
@@ -305,21 +305,21 @@ msgctxt "model:ir.ui.menu,name:menu_stock_shipment_shopify_identifier_form"
 msgid "Shipment Identifiers"
 msgstr "Lieferungsidentifikatoren"
 
-msgctxt "model:product.shopify_inventory_item,name:"
-msgid "Shopify Inventory Item"
-msgstr "Shopify Lagerinformationen"
+msgctxt "model:product.shopify_inventory_item,string:"
+msgid "Product Shopify Inventory Item"
+msgstr "Artikel Shopify Bestandsartikel"
 
-msgctxt "model:stock.shipment.shopify_identifier,name:"
-msgid "Shopify Shipment Identifier"
-msgstr "Shopify Lieferungsidentifikator"
+msgctxt "model:stock.shipment.shopify_identifier,string:"
+msgid "Stock Shipment Shopify Identifier"
+msgstr "Lager Lieferung Shopify-Identifikator"
 
-msgctxt "model:web.shop.shopify_identifier,name:"
-msgid "Shopify Identifier"
-msgstr "Shopify Identifikator"
+msgctxt "model:web.shop.shopify_identifier,string:"
+msgid "Web Shop Shopify Identifier"
+msgstr "Webshop Shopify-Identifikator"
 
-msgctxt "model:web.shop.shopify_payment_journal,name:"
-msgid "Shopify Payment Journal"
-msgstr "Shopify Zahlungsjournal"
+msgctxt "model:web.shop.shopify_payment_journal,string:"
+msgid "Web Shop Shopify Payment Journal"
+msgstr "Webshop Shopify Zahlungsjournal"
 
 msgctxt "selection:account.payment.journal,process_method:"
 msgid "Shopify"

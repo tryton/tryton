@@ -37,7 +37,7 @@ msgstr "Servidor"
 
 msgctxt "field:carrier.credential.dpd,token:"
 msgid "Token"
-msgstr "Token:"
+msgstr "Token"
 
 msgctxt "field:carrier.credential.dpd,user_id:"
 msgid "User ID"
@@ -49,8 +49,9 @@ msgid ""
 "Leave empty for no notification."
 msgstr ""
 
-msgctxt "model:carrier.credential.dpd,name:"
-msgid "DPD Credential"
+#, fuzzy
+msgctxt "model:carrier.credential.dpd,string:"
+msgid "Carrier Credential Dpd"
 msgstr "Credencial DPD"
 
 #, fuzzy
@@ -72,14 +73,13 @@ msgctxt "model:ir.message,text:msg_dpd_login_error"
 msgid "DPD login failed with credential \"%(credential)s\"."
 msgstr ""
 
-#, fuzzy, python-format
+#, python-format
 msgctxt "model:ir.message,text:msg_dpd_webservice_error"
 msgid ""
 "DPD webservice call failed with the following error message:\n"
 "%(message)s"
 msgstr ""
 "A chamada ao serviço web DPD falhou com a mensagem de erro:\n"
-"\n"
 "%(message)s"
 
 #, python-format

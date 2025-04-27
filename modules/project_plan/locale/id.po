@@ -114,12 +114,12 @@ msgctxt "model:ir.action,name:wizard_leveling"
 msgid "Tasks Leveling"
 msgstr ""
 
-msgctxt "model:project.allocation,name:"
-msgid "Allocation"
+msgctxt "model:project.allocation,string:"
+msgid "Project Allocation"
 msgstr ""
 
-msgctxt "model:project.predecessor_successor,name:"
-msgid "Predecessor - Successor"
+msgctxt "model:project.predecessor_successor,string:"
+msgid "Project Predecessor Successor"
 msgstr ""
 
 msgctxt "view:project.work:"

@@ -116,19 +116,22 @@ msgctxt "model:ir.ui.menu,name:menu_user_form"
 msgid "Web Users"
 msgstr "Spletni uporabniki"
 
-msgctxt "model:web.user,name:"
+#, fuzzy
+msgctxt "model:web.user,string:"
 msgid "Web User"
 msgstr "Spletni uporabnik"
 
-msgctxt "model:web.user-party.party.secondary,name:"
-msgid "Web User - Secondary Party"
+#, fuzzy
+msgctxt "model:web.user-party.party.secondary,string:"
+msgid "Web User - Party Secondary"
 msgstr "Spletni uporabnik - sekundarni partner"
 
-msgctxt "model:web.user.authenticate.attempt,name:"
-msgid "Web User Authenticate Attempt"
-msgstr "Poskus overjanja spletnega uporabnika"
+msgctxt "model:web.user.authenticate.attempt,string:"
+msgid "User Login Attempt"
+msgstr ""
 
-msgctxt "model:web.user.session,name:"
+#, fuzzy
+msgctxt "model:web.user.session,string:"
 msgid "Web User Session"
 msgstr "Seja spletnega uporabnika"
 

@@ -66,12 +66,13 @@ msgctxt "help:party.party,supplier_tax_group_on_cash_basis:"
 msgid "The tax group reported on cash basis for this supplier."
 msgstr "Aruandes esitatud sularaha baasil maksugrupp selle hankija kohta"
 
-msgctxt "model:account.invoice.tax.group.cash,name:"
-msgid "Tax Group on Cash Basis per Invoice"
-msgstr "Sularaha baasil maksugrupp arve lõikes"
+msgctxt "model:account.invoice.tax.group.cash,string:"
+msgid "Account Invoice Tax Group Cash"
+msgstr ""
 
-msgctxt "model:account.tax.group.cash,name:"
-msgid "Tax Group On Cash Basis"
+#, fuzzy
+msgctxt "model:account.tax.group.cash,string:"
+msgid "Account Tax Group Cash"
 msgstr "Sularaha baasil maksugrupp"
 
 #, python-format

@@ -2,17 +2,14 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-#, fuzzy
 msgctxt "field:web.user,email:"
 msgid "Email"
 msgstr "E-mail"
 
-#, fuzzy
 msgctxt "field:web.user,email_token:"
 msgid "Email Token"
 msgstr "Token do E-mail"
 
-#, fuzzy
 msgctxt "field:web.user,email_valid:"
 msgid "Email Valid"
 msgstr "E-mail Válido"
@@ -39,29 +36,27 @@ msgstr "Redefinir Validade do Token da Senha"
 
 msgctxt "field:web.user,secondary_parties:"
 msgid "Secondary Parties"
-msgstr ""
+msgstr "Pessoas Adicionais"
 
-#, fuzzy
 msgctxt "field:web.user-party.party.secondary,party:"
 msgid "Party"
 msgstr "Pessoa"
 
-#, fuzzy
 msgctxt "field:web.user-party.party.secondary,user:"
 msgid "User"
 msgstr "Usuário"
 
 msgctxt "field:web.user.authenticate.attempt,device_cookie:"
 msgid "Device Cookie"
-msgstr ""
+msgstr "Cookie do Dispositivo"
 
 msgctxt "field:web.user.authenticate.attempt,ip_address:"
 msgid "IP Address"
-msgstr ""
+msgstr "Endereço IP"
 
 msgctxt "field:web.user.authenticate.attempt,ip_network:"
 msgid "IP Network"
-msgstr ""
+msgstr "Rede IP"
 
 msgctxt "field:web.user.authenticate.attempt,login:"
 msgid "Login"
@@ -75,74 +70,66 @@ msgctxt "field:web.user.session,user:"
 msgid "User"
 msgstr "Usuário"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_user_form"
 msgid "Web Users"
-msgstr "Web Users"
+msgstr "Usuários Web"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_user_form_party"
 msgid "Web Users"
-msgstr "Web Users"
+msgstr "Usuários Web"
 
-#, fuzzy
 msgctxt "model:ir.action,name:report_email_reset_password"
 msgid "Reset Password"
-msgstr "Reset Password"
+msgstr "Restaurar Senha"
 
-#, fuzzy
 msgctxt "model:ir.action,name:report_email_validation"
 msgid "Email Validation"
-msgstr "Email Validation"
+msgstr "Validação do Email"
 
 #, python-format
 msgctxt "model:ir.message,text:msg_user_email_invalid"
 msgid "The email address \"%(email)s\" for \"%(user)s\" is not valid."
-msgstr ""
+msgstr "O endereço de email \"%(email)s\" do usuário \"%(user)s\" não é válido."
 
 msgctxt "model:ir.message,text:msg_user_email_unique"
 msgid "Email of active web user must be unique."
-msgstr ""
+msgstr "O email de usuário web ativo deve ser único."
 
 msgctxt "model:ir.message,text:msg_user_session_key_unique"
 msgid "Web user session key must be unique."
-msgstr ""
+msgstr "A sessão de um usuário web deve ser única."
 
 msgctxt "model:ir.model.button,string:user_reset_password_button"
 msgid "Reset Password"
-msgstr "Reset Password"
+msgstr "Resetar Senha"
 
-#, fuzzy
 msgctxt "model:ir.model.button,string:user_validate_email_button"
 msgid "Validate Email"
-msgstr "Validate E-mail"
+msgstr "Validar e-mail"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_user_form"
 msgid "Web Users"
-msgstr "Web Users"
+msgstr "Usuários Web"
 
-msgctxt "model:web.user,name:"
+msgctxt "model:web.user,string:"
 msgid "Web User"
 msgstr "Usuário Web"
 
-#, fuzzy
-msgctxt "model:web.user-party.party.secondary,name:"
-msgid "Web User - Secondary Party"
-msgstr "Sessão de Usuário Web"
+msgctxt "model:web.user-party.party.secondary,string:"
+msgid "Web User - Party Secondary"
+msgstr "Usuário da Web - Pessoa Secundária"
 
-msgctxt "model:web.user.authenticate.attempt,name:"
-msgid "Web User Authenticate Attempt"
-msgstr "Tentativa de autenticação do usuário Web"
+msgctxt "model:web.user.authenticate.attempt,string:"
+msgid "User Login Attempt"
+msgstr "Tentativa de Login do Usuário"
 
-msgctxt "model:web.user.session,name:"
+msgctxt "model:web.user.session,string:"
 msgid "Web User Session"
 msgstr "Sessão de Usuário Web"
 
-#, fuzzy
 msgctxt "report:web.user.email_reset_password:"
 msgid "Button not working? Paste this into your browser:"
-msgstr "O botão não está funcionando? Cole isso em seu navegador:"
+msgstr "O botão não está funcionando? Cole isso no seu navegador:"
 
 #, python-format
 msgctxt "report:web.user.email_reset_password:"
@@ -153,6 +140,11 @@ msgid ""
 "                    Reset Password\n"
 "                ]"
 msgstr ""
+"Olá, Nós recebemos uma solicitação para restaurar a senha da conta associada ao email [1:%(email)s]. Ainda não foram aplicadas alterações a essa conta.[2:]\n"
+"                É possível restaurar a senha clicando no link abaixo:[3:]\n"
+"                [4:\n"
+"                    Restaurar Senha\n"
+"                ]"
 
 msgctxt "report:web.user.email_reset_password:"
 msgid "If you didn't make this request, you can ignore this email."
@@ -165,12 +157,12 @@ msgstr "Redefinir senha"
 #, python-format
 msgctxt "report:web.user.email_reset_password:"
 msgid "The link will expire in [1:%(datetime)s]."
-msgstr ""
+msgstr "O link irá expirar em [1:%(datetime)s]."
 
 #, python-format
 msgctxt "report:web.user.email_validation:"
 msgid "%(email)s"
-msgstr ""
+msgstr "%(email)s"
 
 msgctxt "report:web.user.email_validation:"
 msgid "Button is not working? Paste this into your browser:"
@@ -196,7 +188,6 @@ msgctxt "view:web.user:"
 msgid "Reset Password"
 msgstr "Redefinir senha"
 
-#, fuzzy
 msgctxt "view:web.user:"
 msgid "Validate Email"
 msgstr "Validar E-mail"

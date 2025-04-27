@@ -36,9 +36,9 @@ msgctxt "field:sale.sale,recommended_products:"
 msgid "Recommended Products"
 msgstr "Productos recomendados"
 
-msgctxt "model:sale.configuration.product_recommendation,name:"
-msgid "Product Recommendation"
-msgstr "Recomendación de producto"
+msgctxt "model:sale.configuration.product_recommendation,string:"
+msgid "Sale Configuration Product Recommendation"
+msgstr "Configuración recomendación de producto"
 
 msgctxt "view:sale.configuration:"
 msgid "Product Recommendation"

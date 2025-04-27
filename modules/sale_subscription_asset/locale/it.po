@@ -43,6 +43,7 @@ msgid ""
 "The dates of subscription lines with the same asset lot can not overlap."
 msgstr ""
 
-msgctxt "model:sale.subscription.service-stock.lot.asset,name:"
-msgid "Subscription Service - Stock Lot Asset"
+#, fuzzy
+msgctxt "model:sale.subscription.service-stock.lot.asset,string:"
+msgid "Sale Subscription Service - Stock Lot Asset"
 msgstr "Servizio in abbonamento - Stock lotto cespiti"

@@ -5,6 +5,12 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgid "Make this an _internal message"
+msgstr ""
+
+msgid "Send"
+msgstr "发送"
+
 msgid "specify alternate config file"
 msgstr "指定备选配置文件"
 
@@ -127,9 +133,6 @@ msgstr "检查URL: %s"
 
 msgid "Unable to check for new version."
 msgstr "无法检查新版本."
-
-msgid "A new version is available!"
-msgstr "有新版本可用！"
 
 msgid "Download"
 msgstr "下载"
@@ -621,9 +624,6 @@ msgstr "附件"
 msgid "Files"
 msgstr "文件"
 
-msgid "Send"
-msgstr "发送"
-
 msgid "Select File"
 msgstr "选择文件"
 
@@ -830,6 +830,13 @@ msgstr "注释（_N）..."
 msgid "Add a note to the record"
 msgstr "为当前记录添加注释"
 
+msgid "C_hat"
+msgstr ""
+
+#, fuzzy
+msgid "Chat on the record"
+msgstr "为当前记录添加注释"
+
 msgid "_Actions..."
 msgstr "操作(_A)..."
 
@@ -948,13 +955,10 @@ msgstr "导出设置的名称是?"
 msgid "Override '%s' definition?"
 msgstr "替换设置 '%s' ?"
 
-#, python-format
+#, fuzzy, python-format
 msgid "%d record saved."
-msgstr "%d 记录保存成功."
-
-#, python-format
-msgid "%d records saved."
-msgstr "%d 记录保存成功."
+msgid_plural "%d records saved."
+msgstr[0] "%d 记录保存成功."
 
 msgid "Export failed"
 msgstr "导出失败"
@@ -1034,13 +1038,10 @@ msgstr "错误"
 msgid "Import failed"
 msgstr "导入失败"
 
-#, python-format
+#, fuzzy, python-format
 msgid "%d record imported."
-msgstr "%d 条记录导入成功."
-
-#, python-format
-msgid "%d records imported."
-msgstr "%d 条记录导入成功."
+msgid_plural "%d records imported."
+msgstr[0] "%d 条记录导入成功."
 
 msgid "Search"
 msgstr "查找"
@@ -1111,6 +1112,10 @@ msgstr "另存为"
 
 msgid "Image size too large."
 msgstr "图片尺寸过大."
+
+#, fuzzy
+msgid "Reset Column Widths"
+msgstr "保存列宽度"
 
 msgid "Copy"
 msgstr "复制"
@@ -1192,6 +1197,10 @@ msgstr "所有文件"
 
 msgid "Show plain text"
 msgstr "显示纯文本"
+
+#, fuzzy, python-format
+msgid "Select a color for \"%s\""
+msgstr "选择颜色"
 
 msgid "Add value"
 msgstr "添加值"

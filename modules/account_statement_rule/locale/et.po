@@ -142,15 +142,18 @@ msgid ""
 "Leave empty to use the group named 'party' from the regular expressions."
 msgstr ""
 
-msgctxt "model:account.statement.rule,name:"
+#, fuzzy
+msgctxt "model:account.statement.rule,string:"
 msgid "Account Statement Rule"
 msgstr "Konto aruande reegel"
 
-msgctxt "model:account.statement.rule.information,name:"
+#, fuzzy
+msgctxt "model:account.statement.rule.information,string:"
 msgid "Account Statement Rule Information"
 msgstr "Konto aruande reegli info"
 
-msgctxt "model:account.statement.rule.line,name:"
+#, fuzzy
+msgctxt "model:account.statement.rule.line,string:"
 msgid "Account Statement Rule Line"
 msgstr "Konto aruande reegli rida"
 

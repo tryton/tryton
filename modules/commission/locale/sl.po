@@ -431,42 +431,48 @@ msgctxt "model:account.journal,name:journal_commission"
 msgid "Commission"
 msgstr "Commission"
 
-msgctxt "model:commission,name:"
+#, fuzzy
+msgctxt "model:commission,string:"
 msgid "Commission"
-msgstr "Komisija"
+msgstr "Commission"
 
-msgctxt "model:commission.agent,name:"
+#, fuzzy
+msgctxt "model:commission.agent,string:"
 msgid "Commission Agent"
 msgstr "Komisijski zastopnik"
 
-msgctxt "model:commission.agent.selection,name:"
-msgid "Agent Selection"
-msgstr ""
+#, fuzzy
+msgctxt "model:commission.agent.selection,string:"
+msgid "Commission Agent Selection"
+msgstr "Komisijski zastopnik"
 
-msgctxt "model:commission.create_invoice.ask,name:"
-msgid "Create Commission Invoice"
-msgstr "Izdelava komisijskega računa"
+#, fuzzy
+msgctxt "model:commission.create_invoice.ask,string:"
+msgid "Commission Create Invoice Ask"
+msgstr "Create Commission Invoices"
 
-msgctxt "model:commission.plan,name:"
+#, fuzzy
+msgctxt "model:commission.plan,string:"
 msgid "Commission Plan"
 msgstr "Komisijski načrt"
 
-msgctxt "model:commission.plan.line,name:"
+#, fuzzy
+msgctxt "model:commission.plan.line,string:"
 msgid "Commission Plan Line"
 msgstr "Postavka komisijskega načrta"
 
 #, fuzzy
-msgctxt "model:commission.reporting.agent,name:"
-msgid "Commission Reporting per Agent"
+msgctxt "model:commission.reporting.agent,string:"
+msgid "Commission Reporting Agent"
 msgstr "Komisijski zastopnik"
 
 #, fuzzy
-msgctxt "model:commission.reporting.agent.time_series,name:"
-msgid "Commission Reporting per Agent"
+msgctxt "model:commission.reporting.agent.time_series,string:"
+msgid "Commission Reporting Agent"
 msgstr "Komisijski zastopnik"
 
 #, fuzzy
-msgctxt "model:commission.reporting.context,name:"
+msgctxt "model:commission.reporting.context,string:"
 msgid "Commission Reporting Context"
 msgstr "Komisijski zastopnik"
 
@@ -601,7 +607,8 @@ msgctxt "model:ir.ui.menu,name:menu_reporting_commission"
 msgid "Commissions"
 msgstr "Komisije"
 
-msgctxt "model:product.template-commission.agent,name:"
+#, fuzzy
+msgctxt "model:product.template-commission.agent,string:"
 msgid "Product Template - Commission Agent"
 msgstr "Predloga izdelka - Komisija"
 

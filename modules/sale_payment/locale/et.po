@@ -22,3 +22,7 @@ msgid "You cannot reset to draft sale \"%(sale)s\" because it has payments."
 msgstr ""
 "Ei saa muuta müüki \"%(sale)s\" mustandiks, kuna sellega on seotud "
 "laekumised."
+
+msgctxt "selection:ir.cron,method:"
+msgid "Confirm sales based on payment"
+msgstr ""

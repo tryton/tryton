@@ -40,10 +40,6 @@ msgctxt "field:party.party,credit_limit_amounts:"
 msgid "Credit Limit Amounts"
 msgstr "Krediidilimiidi väärtus"
 
-msgctxt "field:party.party,credit_limit_digits:"
-msgid "Currency Digits"
-msgstr "Valuuta numbriväärtuse arv"
-
 msgctxt "field:party.party.credit_limit_amount,company:"
 msgid "Company"
 msgstr "Ettevõte"
@@ -52,8 +48,9 @@ msgctxt "field:party.party.credit_limit_amount,credit_limit_amount:"
 msgid "Credit Limit Amount"
 msgstr "Krediidilimiidi väärtus"
 
-msgctxt "field:party.party.credit_limit_amount,credit_limit_digits:"
-msgid "Currency Digits"
+#, fuzzy
+msgctxt "field:party.party.credit_limit_amount,currency:"
+msgid "Currency"
 msgstr "Valuuta numbriväärtuse arv"
 
 msgctxt "field:party.party.credit_limit_amount,party:"
@@ -74,21 +71,27 @@ msgctxt "help:account.dunning.level,credit_limit:"
 msgid "Has reached the credit limit."
 msgstr "On krediidilimiidi saavutanud"
 
-msgctxt "model:account.configuration.default_credit_limit_amount,name:"
+#, fuzzy
+msgctxt "model:account.configuration.default_credit_limit_amount,string:"
 msgid "Account Configuration Default Credit Limit Amount"
 msgstr "Konto seadistamine, vaikimisis krediidilimiidi väärtus"
 
-#, python-format
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_party_credit_limit_amount"
-msgid "Party \"%(party)s\" has reached their credit limit of %(limit)s."
+msgid ""
+"The party \"%(party)s\" will exceed their %(limit)s credit limit by "
+"%(amount)s."
 msgstr "Osapool \"%(party)s\" on jõudnud krediidilimiidini %(limit)s."
 
-#, python-format
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_party_credit_limit_dunning"
-msgid "Party \"%(party)s\" has reached the credit limit level of %(dunning)s."
+msgid ""
+"The party \"%(party)s\" has reached the credit limit level for dunning "
+"\"%(dunning)s\"."
 msgstr "Osapool \"%(party)s\" on jõudnud krediidilimiidini %(dunning)s."
 
-msgctxt "model:party.party.credit_limit_amount,name:"
+#, fuzzy
+msgctxt "model:party.party.credit_limit_amount,string:"
 msgid "Party Credit Limit Amount"
 msgstr "Osapoole krediidilimiit"
 

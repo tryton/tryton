@@ -1,5 +1,4 @@
 #
-#, fuzzy
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -10,6 +9,10 @@ msgstr "Lugares por ubicación"
 msgctxt "field:product.template,location_places:"
 msgid "Places per Location"
 msgstr "Lugares por ubicación"
+
+msgctxt "field:stock.inventory.line,place:"
+msgid "Place"
+msgstr "Lugar"
 
 msgctxt "field:stock.move,from_place:"
 msgid "From Place"
@@ -43,6 +46,6 @@ msgctxt "model:ir.message,text:msg_stock_product_location_unique"
 msgid "Only one product place can be defined per location."
 msgstr "Solo se puede definir una lugar para cada ubicación."
 
-msgctxt "model:stock.product.location.place,name:"
-msgid "Product Location Place"
+msgctxt "model:stock.product.location.place,string:"
+msgid "Stock Product Location Place"
 msgstr "Lugar ubicación producto"

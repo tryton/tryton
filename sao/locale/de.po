@@ -63,7 +63,7 @@ msgid "Note"
 msgstr "Notiz"
 
 msgid "Relate"
-msgstr "Beziehung"
+msgstr "Verknüpfen"
 
 msgid "Print"
 msgstr "Drucken"
@@ -316,6 +316,12 @@ msgstr "Einen Anhang zum Datensatz hinzufügen"
 msgid "Add a note to the record"
 msgstr "Eine Notiz zu einem Datensatz hinzufügen"
 
+msgid "Chat"
+msgstr "Chat"
+
+msgid "Chat on the record"
+msgstr "Chat über den Datensatz"
+
 msgid "Email..."
 msgstr "E-Mail..."
 
@@ -332,7 +338,7 @@ msgid ""
 "The following action requires to close all tabs.\n"
 "Do you want to continue?"
 msgstr ""
-"Die folgende Aktion erfordert die Schließung aller Registerkarten.\n"
+"Die folgende Aktion erfordert das Schließen aller Registerkarten.\n"
 "Fortfahren?"
 
 msgid "Launch action"
@@ -482,6 +488,9 @@ msgstr "Anzeigen"
 msgid "Hide"
 msgstr "Ausblenden"
 
+msgid "Select a color for \"%1\""
+msgstr "Farbe auswählen für \"%1\""
+
 msgid "Open the record"
 msgstr "Datensatz öffnen"
 
@@ -536,6 +545,9 @@ msgstr "Menü"
 
 msgid "Copy Selected Rows"
 msgstr "Ausgewählte Zeilen kopieren"
+
+msgid "Reset Column Widths"
+msgstr "Spaltenbreiten zurücksetzen"
 
 msgid "#ERROR"
 msgstr "#FEHLER"
@@ -765,6 +777,15 @@ msgstr "Ton ein-/ausschalten"
 
 msgid "Wizard"
 msgstr "Assistent"
+
+msgid "Enter a message"
+msgstr "Nachricht eingeben"
+
+msgid "Submit the message"
+msgstr "Nachricht senden"
+
+msgid "Make this an internal message"
+msgstr "In interne Nachricht umwandeln"
 
 msgid "Translate view"
 msgstr "Aktuelle Sicht übersetzen"

@@ -72,9 +72,9 @@ msgctxt "field:account.invoice.line,deferrable:"
 msgid "Deferrable"
 msgstr "Rechnungsabgrenzungsfähig"
 
-msgctxt "model:account.invoice.deferred,name:"
-msgid "Invoice Deferred"
-msgstr "Rechnung Rechnungsabgrenzung"
+msgctxt "model:account.invoice.deferred,string:"
+msgid "Account Invoice Deferred"
+msgstr "Buchhaltung Rechnung Abgrenzung"
 
 msgctxt "model:ir.action,name:act_invoice_deferred_in_form"
 msgid "Supplier Invoices Deferred"

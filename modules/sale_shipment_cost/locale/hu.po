@@ -131,8 +131,8 @@ msgid ""
 msgstr ""
 
 #, fuzzy
-msgctxt "model:stock.shipment.cost_sale,name:"
-msgid "Shipment Cost Sale"
+msgctxt "model:stock.shipment.cost_sale,string:"
+msgid "Stock Shipment Cost Sale"
 msgstr "Szállítási díj kiszámlázása"
 
 msgctxt "selection:sale.sale,shipment_cost_method:"

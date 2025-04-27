@@ -166,20 +166,24 @@ msgctxt "model:ir.rule.group,name:rule_group_category_default"
 msgid "Not accounting category"
 msgstr "无会计类别"
 
-msgctxt "model:product.category-customer-account.tax,name:"
-msgid "Category - Customer Tax"
+#, fuzzy
+msgctxt "model:product.category-customer-account.tax,string:"
+msgid "Product Category - Customer - Account Tax"
 msgstr "类别 - 客户税"
 
-msgctxt "model:product.category-supplier-account.tax,name:"
-msgid "Category - Supplier Tax"
+#, fuzzy
+msgctxt "model:product.category-supplier-account.tax,string:"
+msgid "Product Category - Supplier - Account Tax"
 msgstr "类别 - 供应商税"
 
-msgctxt "model:product.category.account,name:"
-msgid "Category Account"
-msgstr "类别账户"
+#, fuzzy
+msgctxt "model:product.category.account,string:"
+msgid "Product Category Account"
+msgstr "产品类别"
 
-msgctxt "model:product.template-product.category.account,name:"
-msgid "Template - Account Category"
+#, fuzzy
+msgctxt "model:product.template-product.category.account,string:"
+msgid "Product Template - Product Category Account"
 msgstr "模板 - 账户类别"
 
 msgctxt "model:res.group,name:group_account_product_admin"

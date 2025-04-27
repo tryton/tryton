@@ -54,8 +54,8 @@ msgid "Effective Start Date"
 msgstr ""
 
 msgctxt "field:production,inputs:"
-msgid "Inputs"
-msgstr "Входящи"
+msgid "Input Materials"
+msgstr ""
 
 msgctxt "field:production,location:"
 msgid "Location"
@@ -70,8 +70,9 @@ msgctxt "field:production,origin:"
 msgid "Origin"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:production,outputs:"
-msgid "Outputs"
+msgid "Output Materials"
 msgstr "Изходящи"
 
 #, fuzzy
@@ -126,8 +127,8 @@ msgid "Code Readonly"
 msgstr ""
 
 msgctxt "field:production.bom,inputs:"
-msgid "Inputs"
-msgstr "Входящи"
+msgid "Input Materials"
+msgstr ""
 
 msgctxt "field:production.bom,name:"
 msgid "Name"
@@ -137,8 +138,9 @@ msgctxt "field:production.bom,output_products:"
 msgid "Output Products"
 msgstr "Изходящи продукти"
 
+#, fuzzy
 msgctxt "field:production.bom,outputs:"
-msgid "Outputs"
+msgid "Output Materials"
 msgstr "Изходящи"
 
 msgctxt "field:production.bom.input,bom:"
@@ -517,49 +519,58 @@ msgctxt "model:ir.ui.menu,name:menu_production_list"
 msgid "Productions"
 msgstr "Productions"
 
-msgctxt "model:product.product-production.bom,name:"
-msgid "Product - BOM"
-msgstr "Продукт - Спецификация"
+msgctxt "model:product.product-production.bom,string:"
+msgid "Product - Production Bom"
+msgstr ""
 
-msgctxt "model:production,name:"
+#, fuzzy
+msgctxt "model:production,string:"
 msgid "Production"
 msgstr "Производство"
 
-msgctxt "model:production.bom,name:"
-msgid "Bill of Material"
-msgstr "Спецификация"
+#, fuzzy
+msgctxt "model:production.bom,string:"
+msgid "Production Bom"
+msgstr "Производство"
 
-msgctxt "model:production.bom.input,name:"
-msgid "Bill of Material Input"
-msgstr "Спецификация Входящ"
+#, fuzzy
+msgctxt "model:production.bom.input,string:"
+msgid "Production Bom Input"
+msgstr "Вход на производство"
 
-msgctxt "model:production.bom.output,name:"
-msgid "Bill of Material Output"
-msgstr "Спецификация Изходящ"
+#, fuzzy
+msgctxt "model:production.bom.output,string:"
+msgid "Production Bom Output"
+msgstr "Изход на производство"
 
-msgctxt "model:production.bom.tree,name:"
-msgid "BOM Tree"
-msgstr "Дърво от спецификацията"
+#, fuzzy
+msgctxt "model:production.bom.tree,string:"
+msgid "Production Bom Tree"
+msgstr "Производство"
 
-msgctxt "model:production.bom.tree.open.start,name:"
-msgid "Open BOM Tree"
-msgstr "Отваряне на дърво от спецификацията"
+msgctxt "model:production.bom.tree.open.start,string:"
+msgid "Production Bom Tree Open Start"
+msgstr ""
 
-msgctxt "model:production.bom.tree.open.tree,name:"
-msgid "Open BOM Tree"
-msgstr "Отваряне на дърво от спецификацията"
+#, fuzzy
+msgctxt "model:production.bom.tree.open.tree,string:"
+msgid "Production Bom Tree Open Tree"
+msgstr "Последователност на производство"
 
-msgctxt "model:production.configuration,name:"
+#, fuzzy
+msgctxt "model:production.configuration,string:"
 msgid "Production Configuration"
 msgstr "Настройки Производство"
 
-msgctxt "model:production.configuration.production_sequence,name:"
+#, fuzzy
+msgctxt "model:production.configuration.production_sequence,string:"
 msgid "Production Configuration Production Sequence"
-msgstr ""
+msgstr "Настройки Производство"
 
-msgctxt "model:production.lead_time,name:"
+#, fuzzy
+msgctxt "model:production.lead_time,string:"
 msgid "Production Lead Time"
-msgstr ""
+msgstr "Последователност на производство"
 
 #, fuzzy
 msgctxt "model:res.group,name:group_production"
@@ -620,10 +631,6 @@ msgid "Production"
 msgstr "Производство"
 
 msgctxt "view:production.bom:"
-msgid "Lines"
-msgstr "Редове"
-
-msgctxt "view:production:"
 msgid "Lines"
 msgstr "Редове"
 

@@ -92,12 +92,14 @@ msgctxt "model:ir.ui.menu,name:menu_product_category_google_form"
 msgid "Google Product Categories"
 msgstr "Categories de productes de Google"
 
-msgctxt "model:product.category.facebook,name:"
-msgid "Facebook Product Category"
-msgstr "Categoria de producte de Facebook"
+#, fuzzy
+msgctxt "model:product.category.facebook,string:"
+msgid "Product Category Facebook"
+msgstr "Categoria de producte de Google"
 
-msgctxt "model:product.category.google,name:"
-msgid "Google Product Category"
+#, fuzzy
+msgctxt "model:product.category.google,string:"
+msgid "Product Category Google"
 msgstr "Categoria de producte de Google"
 
 msgctxt "selection:ir.cron,method:"

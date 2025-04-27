@@ -30,9 +30,9 @@ msgctxt "field:party.party,deposit:"
 msgid "Deposit"
 msgstr "Depozit"
 
-msgctxt "model:account.invoice.recall_deposit.start,name:"
-msgid "Recall deposit on Invoice"
-msgstr "Rechemare depozit pe Factura"
+msgctxt "model:account.invoice.recall_deposit.start,string:"
+msgid "Account Invoice Recall Deposit Start"
+msgstr "Factură Început Retragere Depozit"
 
 msgctxt "model:ir.action,name:act_move_line_deposit"
 msgid "Deposit Lines"
@@ -42,12 +42,10 @@ msgctxt "model:ir.action,name:wizard_recall_deposit"
 msgid "Recall Deposit"
 msgstr "Rechemare Depozit"
 
-#, fuzzy, python-format
+#, python-format
 msgctxt "model:ir.message,text:msg_deposit_not_enough"
 msgid "The account \"%(account)s\" has not enough deposit from party \"%(party)s\"."
-msgstr ""
-"Contul \"%(notification)s\" nu are destul de mult depozit de la parte "
-"\"%(party)s\"."
+msgstr "Contul \"%(account)s\" nu are suficient depozit de la parte \"%(party)s\"."
 
 #, python-format
 msgctxt "model:ir.message,text:msg_erase_party_deposit"

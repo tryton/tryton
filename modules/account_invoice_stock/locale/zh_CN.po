@@ -42,8 +42,9 @@ msgctxt "help:account.invoice.line,correction:"
 msgid "Check to correct price of already posted invoice."
 msgstr "检查已过帐发票的正确价格。"
 
-msgctxt "model:account.invoice.line-stock.move,name:"
-msgid "Invoice Line - Stock Move"
+#, fuzzy
+msgctxt "model:account.invoice.line-stock.move,string:"
+msgid "Account Invoice Line - Stock Move"
 msgstr "原始凭证明细 - 库存移动"
 
 msgctxt "view:account.invoice.line:"

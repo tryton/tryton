@@ -122,19 +122,22 @@ msgctxt "model:ir.message,text:msg_image_cache_size_unique"
 msgid "The size of cached image must be unique."
 msgstr "Velikost podobe izdelka mora biti edinstvena."
 
-msgctxt "model:product.category.image,name:"
-msgid "Category Image"
-msgstr ""
+#, fuzzy
+msgctxt "model:product.category.image,string:"
+msgid "Product Category Image"
+msgstr "Podoba produkta"
 
 #, fuzzy
-msgctxt "model:product.category.image.cache,name:"
-msgid "Category Image Cache"
+msgctxt "model:product.category.image.cache,string:"
+msgid "Product Category Image Cache"
 msgstr "Predpomnilnik podobe izdelka"
 
-msgctxt "model:product.image,name:"
+#, fuzzy
+msgctxt "model:product.image,string:"
 msgid "Product Image"
-msgstr "Podoba izdelka"
+msgstr "Podoba produkta"
 
-msgctxt "model:product.image.cache,name:"
+#, fuzzy
+msgctxt "model:product.image.cache,string:"
 msgid "Product Image Cache"
 msgstr "Predpomnilnik podobe izdelka"

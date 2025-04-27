@@ -298,20 +298,24 @@ msgctxt "model:ir.ui.menu,name:menu_stock_shipment_shopify_identifier_form"
 msgid "Shipment Identifiers"
 msgstr "Identificadors d'albarà"
 
-msgctxt "model:product.shopify_inventory_item,name:"
-msgid "Shopify Inventory Item"
+#, fuzzy
+msgctxt "model:product.shopify_inventory_item,string:"
+msgid "Product Shopify Inventory Item"
 msgstr "Article d’inventari de Shopify"
 
-msgctxt "model:stock.shipment.shopify_identifier,name:"
-msgid "Shopify Shipment Identifier"
+#, fuzzy
+msgctxt "model:stock.shipment.shopify_identifier,string:"
+msgid "Stock Shipment Shopify Identifier"
 msgstr "Identificador d'albarà de Shopify"
 
-msgctxt "model:web.shop.shopify_identifier,name:"
-msgid "Shopify Identifier"
+#, fuzzy
+msgctxt "model:web.shop.shopify_identifier,string:"
+msgid "Web Shop Shopify Identifier"
 msgstr "Identificador de Shopify"
 
-msgctxt "model:web.shop.shopify_payment_journal,name:"
-msgid "Shopify Payment Journal"
+#, fuzzy
+msgctxt "model:web.shop.shopify_payment_journal,string:"
+msgid "Web Shop Shopify Payment Journal"
 msgstr "Diari de pagament de Shopify"
 
 msgctxt "selection:account.payment.journal,process_method:"

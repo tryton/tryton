@@ -70,9 +70,9 @@ msgstr ""
 "\n"
 "'payment_group'"
 
-msgctxt "model:account.payment.succeed.start,name:"
-msgid "Succeed Payment"
-msgstr "Marcar pagos con éxito"
+msgctxt "model:account.payment.succeed.start,string:"
+msgid "Account Payment Succeed Start"
+msgstr "Inicio marcar pagos con éxito"
 
 msgctxt "model:ir.action,name:wizard_succeed"
 msgid "Succeed Payments"

@@ -68,8 +68,9 @@ msgctxt ""
 msgid "Compute product cost price for each warehouse."
 msgstr "Calcola il prezzo di costo del prodotto per ogni magazzino."
 
-msgctxt "model:ir.cron-stock.warehouse,name:"
-msgid "Cron - Warehouse"
+#, fuzzy
+msgctxt "model:ir.cron-stock.warehouse,string:"
+msgid "Cron - Stock Warehouse"
 msgstr "Operazione pianificata - Magazzino"
 
 #, python-format
@@ -81,6 +82,7 @@ msgstr ""
 "Per spostare i prodotti tra \"%(from_)s\" e \"%(to)s\", devi utilizzare il "
 "luogo di transito della movimentazione interna."
 
-msgctxt "model:product.configuration.cost_price_warehouse,name:"
-msgid "Product Configuration Cost Price per Warehouse"
+#, fuzzy
+msgctxt "model:product.configuration.cost_price_warehouse,string:"
+msgid "Product Configuration Cost Price Warehouse"
 msgstr "Configurazione prezzo di costo del prodotto per magazzino"

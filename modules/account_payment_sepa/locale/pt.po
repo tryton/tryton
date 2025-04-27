@@ -36,6 +36,11 @@ msgctxt "field:account.payment,sepa_mandate_sequence_type:"
 msgid "Mandate Sequence Type"
 msgstr "Tipo de Sequência do Mandato"
 
+#, fuzzy
+msgctxt "field:account.payment,sepa_payable_bank_account_number:"
+msgid "Bank Account Number"
+msgstr "Número da Conta Bancária"
+
 msgctxt "field:account.payment,sepa_return_reason_code:"
 msgid "Return Reason Code"
 msgstr "Código do Motivo da Devolução"
@@ -194,17 +199,18 @@ msgctxt "help:account.payment.journal,sepa_receivable_initiator_id:"
 msgid "The identifier used for the initiating party."
 msgstr ""
 
-msgctxt "model:account.configuration.sepa_mandate_sequence,name:"
-msgid "Account Configuration SEPA Mandate Sequence"
+#, fuzzy
+msgctxt "model:account.configuration.sepa_mandate_sequence,string:"
+msgid "Account Configuration Sepa Mandate Sequence"
 msgstr "Configurações de Contabilidade Sequência de Mandato SEPA"
 
-msgctxt "model:account.payment.sepa.mandate,name:"
-msgid "SEPA Mandate"
-msgstr "Mandato SEPA"
+msgctxt "model:account.payment.sepa.mandate,string:"
+msgid "Account Payment Sepa Mandate"
+msgstr ""
 
-msgctxt "model:account.payment.sepa.message,name:"
-msgid "SEPA Message"
-msgstr "Mensagem SEPA"
+msgctxt "model:account.payment.sepa.message,string:"
+msgid "Account Payment Sepa Message"
+msgstr ""
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_mandate_form"
@@ -225,6 +231,11 @@ msgstr "SEPA Messages"
 msgctxt "model:ir.action,name:report_mandate"
 msgid "Mandate"
 msgstr "Mandate"
+
+#, fuzzy
+msgctxt "model:ir.action,name:report_message"
+msgid "Message"
+msgstr "Mensagem"
 
 #, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_mandate_form_domain_all"
@@ -626,3 +637,8 @@ msgstr "Identificação"
 msgctxt "view:account.payment:"
 msgid "Return Reason"
 msgstr "Código do Motivo da Devolução"
+
+#, fuzzy
+msgctxt "view:account.payment:"
+msgid "SEPA"
+msgstr "SEPA"

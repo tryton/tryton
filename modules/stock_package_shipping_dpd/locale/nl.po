@@ -50,9 +50,9 @@ msgstr ""
 "Voorkeur welk soort melding te gebruiken.\n"
 "Laat leeg om meldingen uit te schakelen."
 
-msgctxt "model:carrier.credential.dpd,name:"
-msgid "DPD Credential"
-msgstr "DPD-referentie"
+msgctxt "model:carrier.credential.dpd,string:"
+msgid "Carrier Credential Dpd"
+msgstr "Transporteur aanmeldgegevens DPD"
 
 msgctxt "model:ir.action,name:act_create_shipping_dpd_wizard"
 msgid "Create DPD Shipping for Packages"

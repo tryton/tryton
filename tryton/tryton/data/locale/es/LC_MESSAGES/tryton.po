@@ -10,6 +10,12 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgid "Make this an _internal message"
+msgstr "Convierte esto en un mensaje interno"
+
+msgid "Send"
+msgstr "Enviar"
+
 msgid "specify alternate config file"
 msgstr "Indica un archivo de configuración alternativo"
 
@@ -131,9 +137,6 @@ msgstr "URL de comprobación: %s"
 
 msgid "Unable to check for new version."
 msgstr "No se ha podido comprobar si existe una nueva versión."
-
-msgid "A new version is available!"
-msgstr "Esta disponible una nueva versión!"
 
 msgid "Download"
 msgstr "Descargar"
@@ -627,9 +630,6 @@ msgstr "Adjuntos"
 msgid "Files"
 msgstr "Archivos"
 
-msgid "Send"
-msgstr "Enviar"
-
 msgid "Select File"
 msgstr "Seleccionar un archivo"
 
@@ -836,6 +836,12 @@ msgstr "_Notas..."
 msgid "Add a note to the record"
 msgstr "Añadir una nota al registro"
 
+msgid "C_hat"
+msgstr "Chat"
+
+msgid "Chat on the record"
+msgstr "Chatear en el registro"
+
 msgid "_Actions..."
 msgstr "_Acciones..."
 
@@ -954,11 +960,9 @@ msgstr "Sobrescribir la definición de '%s'?"
 
 #, python-format
 msgid "%d record saved."
-msgstr "Se ha guardado %d registro."
-
-#, python-format
-msgid "%d records saved."
-msgstr "Se han guardado %d registros."
+msgid_plural "%d records saved."
+msgstr[0] "Se ha guardado %d registro."
+msgstr[1] "Se han guardado %d registros."
 
 msgid "Export failed"
 msgstr "Ha fallado la exportación"
@@ -1039,11 +1043,9 @@ msgstr "Ha fallado la importación"
 
 #, python-format
 msgid "%d record imported."
-msgstr "Se ha importado %d registro."
-
-#, python-format
-msgid "%d records imported."
-msgstr "Se han importado %d registros."
+msgid_plural "%d records imported."
+msgstr[0] "Se ha importado %d registro."
+msgstr[1] "Se han importado %d registros."
 
 msgid "Search"
 msgstr "Buscar"
@@ -1114,6 +1116,9 @@ msgstr "Guardar como"
 
 msgid "Image size too large."
 msgstr "El tamaño de la imagen es muy grande."
+
+msgid "Reset Column Widths"
+msgstr "Restablecer anchos de columna"
 
 msgid "Copy"
 msgstr "Copiar"
@@ -1192,6 +1197,10 @@ msgstr "Todos los archivos"
 
 msgid "Show plain text"
 msgstr "Mostrar como texto plano"
+
+#, python-format
+msgid "Select a color for \"%s\""
+msgstr "Seleccione un color para \"%s\""
 
 msgid "Add value"
 msgstr "Añadir un valor"

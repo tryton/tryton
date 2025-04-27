@@ -39,9 +39,10 @@ msgstr ""
 "Új vevők létrehozásakor ezt a szállítmány csoportosítási módot adja meg "
 "automatikusan a rendszer."
 
-msgctxt "model:party.party.sale_shipment_grouping_method,name:"
+#, fuzzy
+msgctxt "model:party.party.sale_shipment_grouping_method,string:"
 msgid "Party Sale Shipment Grouping Method"
-msgstr ""
+msgstr "Szállítmányok csoportosítása"
 
 msgctxt "selection:party.party,sale_shipment_grouping_method:"
 msgid "None"

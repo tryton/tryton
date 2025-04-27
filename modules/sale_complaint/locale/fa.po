@@ -77,6 +77,11 @@ msgctxt "field:sale.complaint.action,amount:"
 msgid "Amount"
 msgstr ""
 
+#, fuzzy
+msgctxt "field:sale.complaint.action,company:"
+msgid "Company"
+msgstr "شرکت"
+
 msgctxt "field:sale.complaint.action,complaint:"
 msgid "Complaint"
 msgstr "شکایت"
@@ -93,6 +98,20 @@ msgstr ""
 msgctxt "field:sale.complaint.action,invoice_lines:"
 msgid "Invoice Lines"
 msgstr "سطرهای صورتحساب"
+
+msgctxt "field:sale.complaint.action,promotion_coupon:"
+msgid "Promotion Coupon"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:sale.complaint.action,promotion_coupon_duration:"
+msgid "Duration"
+msgstr "شرح"
+
+#, fuzzy
+msgctxt "field:sale.complaint.action,promotion_coupon_number:"
+msgid "Number"
+msgstr "شماره"
 
 msgctxt "field:sale.complaint.action,quantity:"
 msgid "Quantity"
@@ -346,24 +365,29 @@ msgctxt "model:ir.ui.menu,name:menu_type"
 msgid "Types"
 msgstr "انواع"
 
-msgctxt "model:sale.complaint,name:"
-msgid "Customer Complaint"
-msgstr "شکایت مشتری"
+#, fuzzy
+msgctxt "model:sale.complaint,string:"
+msgid "Sale Complaint"
+msgstr "شکایت"
 
-msgctxt "model:sale.complaint.action,name:"
-msgid "Customer Complaint Action"
+#, fuzzy
+msgctxt "model:sale.complaint.action,string:"
+msgid "Sale Complaint Action"
 msgstr "اقدام شکایت مشتری"
 
-msgctxt "model:sale.complaint.action-account.invoice.line,name:"
-msgid "Customer Complaint Action - Invoice Line"
+#, fuzzy
+msgctxt "model:sale.complaint.action-account.invoice.line,string:"
+msgid "Sale Complaint Action - Account Invoice Line"
 msgstr "سطر صورتحساب - اقدام شکایت مشتری"
 
-msgctxt "model:sale.complaint.action-sale.line,name:"
-msgid "Customer Complaint Action - Sale Line"
+#, fuzzy
+msgctxt "model:sale.complaint.action-sale.line,string:"
+msgid "Sale Complaint Action - Sale Line"
 msgstr "سطر فروش - اقدام شکایت مشتری"
 
-msgctxt "model:sale.complaint.type,name:"
-msgid "Customer Complaint Type"
+#, fuzzy
+msgctxt "model:sale.complaint.type,string:"
+msgid "Sale Complaint Type"
 msgstr "نوع شکایت مشتری"
 
 msgctxt "selection:sale.complaint,state:"
@@ -397,6 +421,10 @@ msgstr "ایجاد ملاحظات خرید"
 msgctxt "selection:sale.complaint.action,action:"
 msgid "Create Sale Return"
 msgstr "ایجاد فروش برگشتی"
+
+msgctxt "selection:sale.complaint.action,action:"
+msgid "Promotion Coupon"
+msgstr ""
 
 msgctxt "view:sale.complaint:"
 msgid "Complaint"

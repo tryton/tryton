@@ -98,20 +98,20 @@ msgctxt "help:attendance.period,state:"
 msgid "The current state of the attendance period."
 msgstr "L'état actuel de la période de présence."
 
-msgctxt "model:attendance.line,name:"
+msgctxt "model:attendance.line,string:"
 msgid "Attendance Line"
 msgstr "Ligne de présence"
 
-msgctxt "model:attendance.period,name:"
+msgctxt "model:attendance.period,string:"
 msgid "Attendance Period"
 msgstr "Période de présence"
 
-msgctxt "model:attendance.sheet,name:"
+msgctxt "model:attendance.sheet,string:"
 msgid "Attendance Sheet"
 msgstr "Feuille de présence"
 
-msgctxt "model:attendance.sheet.line,name:"
-msgid "Attendance SheetLine"
+msgctxt "model:attendance.sheet.line,string:"
+msgid "Attendance Sheet Line"
 msgstr "Ligne de feuille de présence"
 
 msgctxt "model:ir.action,name:act_attendance"

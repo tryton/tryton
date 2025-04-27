@@ -61,7 +61,7 @@ msgstr "Estado"
 
 msgctxt "field:account.landed_cost-product.category,category:"
 msgid "Category"
-msgstr ""
+msgstr "Categoria"
 
 #, fuzzy
 msgctxt "field:account.landed_cost-product.category,landed_cost:"
@@ -121,35 +121,39 @@ msgctxt "help:account.landed_cost,products:"
 msgid "Apply only to these products."
 msgstr ""
 
-msgctxt "model:account.configuration.landed_cost_sequence,name:"
+#, fuzzy
+msgctxt "model:account.configuration.landed_cost_sequence,string:"
 msgid "Account Configuration Landed Cost Sequence"
 msgstr "Configurações de Contabilidade Sequência de Custo de Recepção"
 
-msgctxt "model:account.landed_cost,name:"
-msgid "Landed Cost"
-msgstr "Custo de Recepção"
-
-msgctxt "model:account.landed_cost-product.category,name:"
-msgid "Landed Cost - Product Category"
-msgstr ""
+#, fuzzy
+msgctxt "model:account.landed_cost,string:"
+msgid "Account Landed Cost"
+msgstr "Unidade de Custo de Recepção"
 
 #, fuzzy
-msgctxt "model:account.landed_cost-product.product,name:"
-msgid "Landed Cost - Product"
-msgstr "Custo de Recepção - Remessa"
-
-msgctxt "model:account.landed_cost-stock.shipment.in,name:"
-msgid "Landed Cost - Shipment"
+msgctxt "model:account.landed_cost-product.category,string:"
+msgid "Account Landed Cost - Product Category"
 msgstr "Custo de Recepção - Remessa"
 
 #, fuzzy
-msgctxt "model:account.landed_cost.show,name:"
-msgid "Landed Cost Show"
+msgctxt "model:account.landed_cost-product.product,string:"
+msgid "Account Landed Cost - Product"
+msgstr "Custo de Recepção - Remessa"
+
+#, fuzzy
+msgctxt "model:account.landed_cost-stock.shipment.in,string:"
+msgid "Account Landed Cost - Stock Shipment In"
+msgstr "Custo de Recepção - Remessa"
+
+#, fuzzy
+msgctxt "model:account.landed_cost.show,string:"
+msgid "Account Landed Cost Show"
 msgstr "Custo de Recepção"
 
 #, fuzzy
-msgctxt "model:account.landed_cost.show.move,name:"
-msgid "Landed Cost Show"
+msgctxt "model:account.landed_cost.show.move,string:"
+msgid "Account Landed Cost Show Move"
 msgstr "Custo de Recepção"
 
 #, fuzzy
@@ -189,6 +193,11 @@ msgctxt ""
 "model:ir.action.act_window.domain,name:act_landed_cost_form_domain_posted"
 msgid "Posted"
 msgstr "Posted"
+
+#, python-format
+msgctxt "model:ir.message,text:msg_landed_cost_delete_cancel"
+msgid "To delete landed cost \"%(landed_cost)s\" you must cancel it."
+msgstr ""
 
 #, python-format
 msgctxt "model:ir.message,text:msg_landed_cost_post_no_stock_move"

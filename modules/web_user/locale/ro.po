@@ -119,20 +119,22 @@ msgctxt "model:ir.ui.menu,name:menu_user_form"
 msgid "Web Users"
 msgstr "Utilizatori Web"
 
-msgctxt "model:web.user,name:"
+#, fuzzy
+msgctxt "model:web.user,string:"
 msgid "Web User"
 msgstr "Utilizator Web"
 
 #, fuzzy
-msgctxt "model:web.user-party.party.secondary,name:"
-msgid "Web User - Secondary Party"
+msgctxt "model:web.user-party.party.secondary,string:"
+msgid "Web User - Party Secondary"
 msgstr "Utilizator Web - Parte secundară"
 
-msgctxt "model:web.user.authenticate.attempt,name:"
-msgid "Web User Authenticate Attempt"
-msgstr "Încercare de autentificare a utilizatorului web"
+msgctxt "model:web.user.authenticate.attempt,string:"
+msgid "User Login Attempt"
+msgstr ""
 
-msgctxt "model:web.user.session,name:"
+#, fuzzy
+msgctxt "model:web.user.session,string:"
 msgid "Web User Session"
 msgstr "Sesiune a Utilizatorului Web"
 

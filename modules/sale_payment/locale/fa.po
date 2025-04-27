@@ -22,3 +22,7 @@ msgid "You cannot reset to draft sale \"%(sale)s\" because it has payments."
 msgstr ""
 "شما نمیتوانید حالت فروش :\"%(sale)s\" را به پیش نویس بازنشانی کنید، چرا که "
 "پرداخت شده است."
+
+msgctxt "selection:ir.cron,method:"
+msgid "Confirm sales based on payment"
+msgstr ""

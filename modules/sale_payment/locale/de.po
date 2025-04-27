@@ -23,3 +23,7 @@ msgid "You cannot reset to draft sale \"%(sale)s\" because it has payments."
 msgstr ""
 "Der Verkauf \"%(sale)s\" kann nicht auf den Entwurfsstatus zurückgesetzt "
 "werden, weil es zu ihm gehörende Zahlungen gibt."
+
+msgctxt "selection:ir.cron,method:"
+msgid "Confirm sales based on payment"
+msgstr "Verkäufe aufgrund von Zahlungen bestätigen"

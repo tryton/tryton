@@ -229,21 +229,25 @@ msgctxt "model:ir.ui.menu,name:menu_work_list"
 msgid "Works"
 msgstr "Treballs"
 
-msgctxt "model:production.work,name:"
+#, fuzzy
+msgctxt "model:production.work,string:"
 msgid "Production Work"
 msgstr "Treball de producció"
 
-msgctxt "model:production.work.center,name:"
-msgid "Work Center"
-msgstr "Centre de treball"
+#, fuzzy
+msgctxt "model:production.work.center,string:"
+msgid "Production Work Center"
+msgstr "Treball de producció"
 
-msgctxt "model:production.work.center.category,name:"
-msgid "Work Center Category"
+#, fuzzy
+msgctxt "model:production.work.center.category,string:"
+msgid "Production Work Center Category"
 msgstr "Categoria centre de treball"
 
-msgctxt "model:production.work.cycle,name:"
-msgid "Work Cycle"
-msgstr "Cicle de treball"
+#, fuzzy
+msgctxt "model:production.work.cycle,string:"
+msgid "Production Work Cycle"
+msgstr "Treball de producció"
 
 msgctxt "selection:production.work,state:"
 msgid "Done"

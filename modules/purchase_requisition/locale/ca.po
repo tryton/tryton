@@ -208,11 +208,13 @@ msgctxt "model:ir.ui.menu,name:menu_purchase_requisition_form"
 msgid "Requisitions"
 msgstr "Peticions"
 
-msgctxt "model:purchase.requisition,name:"
+#, fuzzy
+msgctxt "model:purchase.requisition,string:"
 msgid "Purchase Requisition"
 msgstr "Petició de compra"
 
-msgctxt "model:purchase.requisition.line,name:"
+#, fuzzy
+msgctxt "model:purchase.requisition.line,string:"
 msgid "Purchase Requisition Line"
 msgstr "Línia de petició de compra"
 

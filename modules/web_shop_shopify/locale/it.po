@@ -268,20 +268,20 @@ msgctxt "model:ir.ui.menu,name:menu_stock_shipment_shopify_identifier_form"
 msgid "Shipment Identifiers"
 msgstr ""
 
-msgctxt "model:product.shopify_inventory_item,name:"
-msgid "Shopify Inventory Item"
+msgctxt "model:product.shopify_inventory_item,string:"
+msgid "Product Shopify Inventory Item"
 msgstr ""
 
-msgctxt "model:stock.shipment.shopify_identifier,name:"
-msgid "Shopify Shipment Identifier"
+msgctxt "model:stock.shipment.shopify_identifier,string:"
+msgid "Stock Shipment Shopify Identifier"
 msgstr ""
 
-msgctxt "model:web.shop.shopify_identifier,name:"
-msgid "Shopify Identifier"
+msgctxt "model:web.shop.shopify_identifier,string:"
+msgid "Web Shop Shopify Identifier"
 msgstr ""
 
-msgctxt "model:web.shop.shopify_payment_journal,name:"
-msgid "Shopify Payment Journal"
+msgctxt "model:web.shop.shopify_payment_journal,string:"
+msgid "Web Shop Shopify Payment Journal"
 msgstr ""
 
 msgctxt "selection:account.payment.journal,process_method:"

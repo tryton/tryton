@@ -223,13 +223,13 @@ msgctxt "model:ir.message,text:msg_shipment_carriage_delete"
 msgid "You cannot delete the carriage \"%(carriage)s\"."
 msgstr "U kunt de transporteur \"%(carriage)s\" niet verwijderen."
 
-msgctxt "model:sale.carriage,name:"
+msgctxt "model:sale.carriage,string:"
 msgid "Sale Carriage"
-msgstr "Verkoop transporteur"
+msgstr "Verkoop transport"
 
-msgctxt "model:stock.shipment.carriage,name:"
-msgid "Shipment Carriage"
-msgstr "Zend transporteur"
+msgctxt "model:stock.shipment.carriage,string:"
+msgid "Stock Shipment Carriage"
+msgstr "Voorraad verzending transport"
 
 msgctxt "selection:incoterm.incoterm,after_carrier:"
 msgid "Buyer"
@@ -265,7 +265,7 @@ msgstr "Voor"
 
 msgctxt "selection:stock.shipment.cost_sale,shipment:"
 msgid "Carriage"
-msgstr "Transporteur"
+msgstr "Vervoer"
 
 msgctxt "view:sale.sale:"
 msgid "Carriages"

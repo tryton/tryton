@@ -18,7 +18,8 @@ msgctxt "field:res.user,dashboard_layout:"
 msgid "Dashboard Layout"
 msgstr "看板布局"
 
-msgctxt "model:dashboard.action,name:"
+#, fuzzy
+msgctxt "model:dashboard.action,string:"
 msgid "Dashboard Action"
 msgstr "看板操作"
 

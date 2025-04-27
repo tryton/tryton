@@ -110,16 +110,19 @@ msgctxt "model:ir.ui.menu,name:menu_product_association_rule_form"
 msgid "Sale Association Rules"
 msgstr "Regles d'associació de venda"
 
-msgctxt "model:sale.product.association.rule,name:"
-msgid "Product Association Rule"
+#, fuzzy
+msgctxt "model:sale.product.association.rule,string:"
+msgid "Sale Product Association Rule"
 msgstr "Regles d'associació de productes"
 
-msgctxt "model:sale.product.association.rule.antecedent,name:"
-msgid "Product Association Rule Antecedent"
+#, fuzzy
+msgctxt "model:sale.product.association.rule.antecedent,string:"
+msgid "Sale Product Association Rule Antecedent"
 msgstr "Antecedents de les regles d'assocació de productes"
 
-msgctxt "model:sale.product.association.rule.consequent,name:"
-msgid "Product Association Rule Consequent"
+#, fuzzy
+msgctxt "model:sale.product.association.rule.consequent,string:"
+msgid "Sale Product Association Rule Consequent"
 msgstr "Conseqüents de les regles d'associació de productes"
 
 msgctxt "selection:ir.cron,method:"

@@ -30,8 +30,8 @@ msgctxt "help:product.price_list.cache,uom:"
 msgid "The Unit of Measure."
 msgstr ""
 
-msgctxt "model:product.price_list.cache,name:"
-msgid "Price List Cache"
+msgctxt "model:product.price_list.cache,string:"
+msgid "Product Price List Cache"
 msgstr ""
 
 msgctxt "selection:ir.cron,method:"

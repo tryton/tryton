@@ -33,8 +33,8 @@ msgctxt "field:party.party,deposit:"
 msgid "Deposit"
 msgstr ""
 
-msgctxt "model:account.invoice.recall_deposit.start,name:"
-msgid "Recall deposit on Invoice"
+msgctxt "model:account.invoice.recall_deposit.start,string:"
+msgid "Account Invoice Recall Deposit Start"
 msgstr ""
 
 msgctxt "model:ir.action,name:act_move_line_deposit"

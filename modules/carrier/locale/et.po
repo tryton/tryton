@@ -64,11 +64,13 @@ msgstr ""
 "Lisa ainult lähetamiseks sellest riigist.\n"
 "Jäta tühjaks muude riikide korral."
 
-msgctxt "model:carrier,name:"
+#, fuzzy
+msgctxt "model:carrier,string:"
 msgid "Carrier"
 msgstr "Vedaja"
 
-msgctxt "model:carrier.selection,name:"
+#, fuzzy
+msgctxt "model:carrier.selection,string:"
 msgid "Carrier Selection"
 msgstr "Vedaja valik"
 

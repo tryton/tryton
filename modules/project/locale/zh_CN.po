@@ -241,13 +241,10 @@ msgctxt "model:ir.ui.menu,name:menu_work_tree"
 msgid "Works Efforts"
 msgstr "工作量"
 
-msgctxt "model:project.work,name:"
-msgid "Work Effort"
-msgstr "工作量"
-
-msgctxt "model:project.work.status,name:"
-msgid "Work Status"
-msgstr "工作状态"
+#, fuzzy
+msgctxt "model:project.work,string:"
+msgid "Project Work"
+msgstr "项目"
 
 msgctxt "model:project.work.status,name:work_done_status"
 msgid "Done"
@@ -256,6 +253,11 @@ msgstr "完成"
 msgctxt "model:project.work.status,name:work_open_status"
 msgid "Open"
 msgstr "开启"
+
+#, fuzzy
+msgctxt "model:project.work.status,string:"
+msgid "Project Work Status"
+msgstr "工作状态"
 
 msgctxt "model:res.group,name:group_project_admin"
 msgid "Project Administration"

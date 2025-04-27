@@ -1,5 +1,4 @@
 #
-#, fuzzy
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -31,9 +30,9 @@ msgctxt "help:product.price_list.cache,uom:"
 msgid "The Unit of Measure."
 msgstr "De maateenheid."
 
-msgctxt "model:product.price_list.cache,name:"
-msgid "Price List Cache"
-msgstr "Prijslijstcache"
+msgctxt "model:product.price_list.cache,string:"
+msgid "Product Price List Cache"
+msgstr "Product prijslijst cache"
 
 msgctxt "selection:ir.cron,method:"
 msgid "Fill Product Price List Cache"

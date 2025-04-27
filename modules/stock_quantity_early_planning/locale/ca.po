@@ -121,12 +121,14 @@ msgctxt "model:ir.ui.menu,name:menu_quantity_early_plan_generate"
 msgid "Generate Stock Quantity Early Planning"
 msgstr "Genera planificacions de disponiblitat anticipada"
 
-msgctxt "model:stock.quantity.early_plan,name:"
+#, fuzzy
+msgctxt "model:stock.quantity.early_plan,string:"
 msgid "Stock Quantity Early Plan"
 msgstr "Planificació de disponiblitat anticipada"
 
-msgctxt "model:stock.quantity.early_plan.generate.start,name:"
-msgid "Stock Quantity Early Plan Generate"
+#, fuzzy
+msgctxt "model:stock.quantity.early_plan.generate.start,string:"
+msgid "Stock Quantity Early Plan Generate Start"
 msgstr "Genera planificació de disponiblitat anticipada"
 
 msgctxt "selection:stock.quantity.early_plan,state:"

@@ -20,6 +20,10 @@ msgctxt "field:analytic.account.entry,company:"
 msgid "Company"
 msgstr "Организация"
 
+msgctxt "field:analytic.account.entry,editable:"
+msgid "Editable"
+msgstr ""
+
 #, fuzzy
 msgctxt "field:analytic.account.entry,origin:"
 msgid "Origin"
@@ -182,31 +186,35 @@ msgctxt "field:analytic_account.rule,party_visible:"
 msgid "Party Visible"
 msgstr ""
 
-msgctxt "model:analytic.account.entry,name:"
+#, fuzzy
+msgctxt "model:analytic.account.entry,string:"
 msgid "Analytic Account Entry"
-msgstr ""
+msgstr "Счет аналитики"
 
-msgctxt "model:analytic_account.account,name:"
+#, fuzzy
+msgctxt "model:analytic_account.account,string:"
 msgid "Analytic Account"
 msgstr "Счет аналитики"
 
 #, fuzzy
-msgctxt "model:analytic_account.account.context,name:"
-msgid "Open Chart of Accounts"
-msgstr "Открыть схему счетов"
-
-msgctxt "model:analytic_account.account.distribution,name:"
-msgid "Analytic Account Distribution"
-msgstr ""
-
-msgctxt "model:analytic_account.line,name:"
-msgid "Analytic Line"
-msgstr "Строка аналитики"
+msgctxt "model:analytic_account.account.context,string:"
+msgid "Analytic Account Context"
+msgstr "Счет аналитики"
 
 #, fuzzy
-msgctxt "model:analytic_account.rule,name:"
-msgid "Analytic Rule"
-msgstr "Строка аналитики"
+msgctxt "model:analytic_account.account.distribution,string:"
+msgid "Analytic Account Distribution"
+msgstr "Счета аналитики"
+
+#, fuzzy
+msgctxt "model:analytic_account.line,string:"
+msgid "Analytic Account Line"
+msgstr "Счета аналитики"
+
+#, fuzzy
+msgctxt "model:analytic_account.rule,string:"
+msgid "Analytic Account Rule"
+msgstr "Счет аналитики"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_account_list"

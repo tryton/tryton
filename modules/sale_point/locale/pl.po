@@ -560,9 +560,10 @@ msgctxt "model:ir.ui.menu,name:menu_sale_form"
 msgid "POS Sales"
 msgstr "POS Sprzedaż"
 
-msgctxt "model:product.gross_price,name:"
+#, fuzzy
+msgctxt "model:product.gross_price,string:"
 msgid "Product Gross Price"
-msgstr ""
+msgstr "Cena brutto"
 
 msgctxt "model:res.group,name:group_sale_point"
 msgid "POS"
@@ -572,41 +573,48 @@ msgctxt "model:res.group,name:group_sale_point_posting"
 msgid "POS Posting"
 msgstr ""
 
-msgctxt "model:sale.point,name:"
-msgid "Point of Sale"
-msgstr "Punkt sprzedaży"
+#, fuzzy
+msgctxt "model:sale.point,string:"
+msgid "Sale Point"
+msgstr "Punkt"
 
-msgctxt "model:sale.point.cash.session,name:"
-msgid "POS Cash Session"
+#, fuzzy
+msgctxt "model:sale.point.cash.session,string:"
+msgid "Sale Point Cash Session"
 msgstr "POS Sesja kasowa"
 
-msgctxt "model:sale.point.cash.session.relation,name:"
-msgid "POS Session Relation"
+msgctxt "model:sale.point.cash.session.relation,string:"
+msgid "Sale Point Cash Session Relation"
 msgstr ""
 
-msgctxt "model:sale.point.cash.transfer,name:"
-msgid "POS Cash Transfer"
-msgstr ""
-
-msgctxt "model:sale.point.cash.transfer.type,name:"
-msgid "POS Cash Transfer Type"
+#, fuzzy
+msgctxt "model:sale.point.cash.transfer,string:"
+msgid "Sale Point Cash Transfer"
 msgstr "POS typ transferu gotówkowego"
 
-msgctxt "model:sale.point.payment,name:"
-msgid "POS Payment"
+#, fuzzy
+msgctxt "model:sale.point.cash.transfer.type,string:"
+msgid "Sale Point Cash Transfer Type"
+msgstr "POS typ transferu gotówkowego"
+
+msgctxt "model:sale.point.payment,string:"
+msgid "Sale Point Payment"
 msgstr ""
 
-msgctxt "model:sale.point.payment.method,name:"
-msgid "POS Payment Method"
+#, fuzzy
+msgctxt "model:sale.point.payment.method,string:"
+msgid "Sale Point Payment Method"
 msgstr "POS metoda płatności"
 
-msgctxt "model:sale.point.sale,name:"
-msgid "POS Sale"
-msgstr ""
+#, fuzzy
+msgctxt "model:sale.point.sale,string:"
+msgid "Sale Point Sale"
+msgstr "Punkt sprzedaży"
 
-msgctxt "model:sale.point.sale.line,name:"
-msgid "POS Sale Line"
-msgstr ""
+#, fuzzy
+msgctxt "model:sale.point.sale.line,string:"
+msgid "Sale Point Sale Line"
+msgstr "Punkt sprzedaży"
 
 msgctxt "selection:sale.point.cash.session,state:"
 msgid "Closed"

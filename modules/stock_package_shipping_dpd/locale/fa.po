@@ -49,8 +49,9 @@ msgid ""
 "Leave empty for no notification."
 msgstr ""
 
-msgctxt "model:carrier.credential.dpd,name:"
-msgid "DPD Credential"
+#, fuzzy
+msgctxt "model:carrier.credential.dpd,string:"
+msgid "Carrier Credential Dpd"
 msgstr "گواهی نامه DPD"
 
 msgctxt "model:ir.action,name:act_create_shipping_dpd_wizard"

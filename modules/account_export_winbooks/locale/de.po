@@ -44,7 +44,8 @@ msgstr ""
 
 msgctxt "model:ir.message,text:msg_account_tax_line_tax_move_line_unique"
 msgid "Only one tax line of type \"Tax\" is allowed per move line."
-msgstr "Es ist nur eine Steuerzeile vom Typ \"Steuer\" pro Buchungszeile erlaubt."
+msgstr ""
+"Es ist nur eine Steuerposition vom Typ \"Steuer\" pro Buchungszeile erlaubt."
 
 msgctxt "model:ir.message,text:msg_party_identifier_winbooks_code_unique"
 msgid "The WinBooks identifier must be unique."

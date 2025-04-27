@@ -99,21 +99,25 @@ msgctxt "help:attendance.period,state:"
 msgid "The current state of the attendance period."
 msgstr "Starea actuală a perioadei de prezență."
 
-msgctxt "model:attendance.line,name:"
+#, fuzzy
+msgctxt "model:attendance.line,string:"
 msgid "Attendance Line"
 msgstr "Linia de prezență"
 
-msgctxt "model:attendance.period,name:"
+#, fuzzy
+msgctxt "model:attendance.period,string:"
 msgid "Attendance Period"
 msgstr "Perioada de prezență"
 
-msgctxt "model:attendance.sheet,name:"
+#, fuzzy
+msgctxt "model:attendance.sheet,string:"
 msgid "Attendance Sheet"
 msgstr "Fișa de prezență"
 
-msgctxt "model:attendance.sheet.line,name:"
-msgid "Attendance SheetLine"
-msgstr ""
+#, fuzzy
+msgctxt "model:attendance.sheet.line,string:"
+msgid "Attendance Sheet Line"
+msgstr "Fișa de prezență"
 
 msgctxt "model:ir.action,name:act_attendance"
 msgid "Attendances"

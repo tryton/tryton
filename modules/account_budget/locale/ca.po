@@ -234,27 +234,33 @@ msgctxt "help:account.budget.line.period,total_amount:"
 msgid "The total amount allocated to the budget and its children."
 msgstr "L'import total assignat al pressupost i als seus fills."
 
-msgctxt "model:account.budget,name:"
+#, fuzzy
+msgctxt "model:account.budget,string:"
 msgid "Account Budget"
 msgstr "Pressupost comptable"
 
-msgctxt "model:account.budget.context,name:"
+#, fuzzy
+msgctxt "model:account.budget.context,string:"
 msgid "Account Budget Context"
 msgstr "Context del pressupost comptable"
 
-msgctxt "model:account.budget.copy.start,name:"
-msgid "Copy Budget"
-msgstr "Copiar el pressupost"
+#, fuzzy
+msgctxt "model:account.budget.copy.start,string:"
+msgid "Account Budget Copy Start"
+msgstr "Context del pressupost comptable"
 
-msgctxt "model:account.budget.line,name:"
+#, fuzzy
+msgctxt "model:account.budget.line,string:"
 msgid "Account Budget Line"
 msgstr "Línia de pressupost comptable"
 
-msgctxt "model:account.budget.line.create_periods.start,name:"
-msgid "Create Periods"
-msgstr "Crear períodes"
+#, fuzzy
+msgctxt "model:account.budget.line.create_periods.start,string:"
+msgid "Account Budget Line Create Periods Start"
+msgstr "Període de línia del pressupost comptable"
 
-msgctxt "model:account.budget.line.period,name:"
+#, fuzzy
+msgctxt "model:account.budget.line.period,string:"
 msgid "Account Budget Line Period"
 msgstr "Període de línia del pressupost comptable"
 

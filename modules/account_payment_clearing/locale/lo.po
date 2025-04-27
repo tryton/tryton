@@ -69,9 +69,9 @@ msgid ""
 "'payment_group'"
 msgstr "ໝວດການຈ່າຍ"
 
-msgctxt "model:account.payment.succeed.start,name:"
-msgid "Succeed Payment"
-msgstr "ການຈ່າຍສຳເລັດ"
+msgctxt "model:account.payment.succeed.start,string:"
+msgid "Account Payment Succeed Start"
+msgstr ""
 
 #, fuzzy
 msgctxt "model:ir.action,name:wizard_succeed"

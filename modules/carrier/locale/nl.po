@@ -62,13 +62,13 @@ msgstr ""
 "Alleen van toepassing bij verzending naar dit land.\n"
 "Laat leeg voor alle landen."
 
-msgctxt "model:carrier,name:"
+msgctxt "model:carrier,string:"
 msgid "Carrier"
-msgstr "Transporteur"
+msgstr "Koerier"
 
-msgctxt "model:carrier.selection,name:"
+msgctxt "model:carrier.selection,string:"
 msgid "Carrier Selection"
-msgstr "Transporteur selectie"
+msgstr "Koerier selectie"
 
 msgctxt "model:ir.action,name:act_carrier_form"
 msgid "Carriers"

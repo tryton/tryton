@@ -231,32 +231,39 @@ msgstr ""
 "Marca perque la quantitat del component sigui independent de la quantitat "
 "del kit."
 
-msgctxt "model:product.component,name:"
+#, fuzzy
+msgctxt "model:product.component,string:"
 msgid "Product Component"
 msgstr "Component del producte"
 
-msgctxt "model:purchase.line.component,name:"
+#, fuzzy
+msgctxt "model:purchase.line.component,string:"
 msgid "Purchase Line Component"
 msgstr "Component de línia de compra"
 
-msgctxt "model:purchase.line.component-ignored-stock.move,name:"
-msgid "Purchase Line Component - Ignored Move"
+#, fuzzy
+msgctxt "model:purchase.line.component-ignored-stock.move,string:"
+msgid "Purchase Line Component - Ignored - Stock Move"
 msgstr "Component de línia de compra - Moviment ignorat"
 
-msgctxt "model:purchase.line.component-recreated-stock.move,name:"
-msgid "Purchase Line Component - Recreated Move"
+#, fuzzy
+msgctxt "model:purchase.line.component-recreated-stock.move,string:"
+msgid "Purchase Line Component - Recreated - Stock Move"
 msgstr "Component de línia de compra - Moviment recreat"
 
-msgctxt "model:sale.line.component,name:"
+#, fuzzy
+msgctxt "model:sale.line.component,string:"
 msgid "Sale Line Component"
 msgstr "Component de la línia de venda"
 
-msgctxt "model:sale.line.component-ignored-stock.move,name:"
-msgid "Sale Line Component - Ignored Move"
+#, fuzzy
+msgctxt "model:sale.line.component-ignored-stock.move,string:"
+msgid "Sale Line Component - Ignored - Stock Move"
 msgstr "Component de línia de venda - Moviment ignorat"
 
-msgctxt "model:sale.line.component-recreated-stock.move,name:"
-msgid "Sale Line Component - Recreated Move"
+#, fuzzy
+msgctxt "model:sale.line.component-recreated-stock.move,string:"
+msgid "Sale Line Component - Recreated - Stock Move"
 msgstr "Component de la línia de venda - Moviment recreat"
 
 msgctxt "selection:product.product,type:"

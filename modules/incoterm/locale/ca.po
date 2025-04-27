@@ -138,11 +138,13 @@ msgstr ""
 "Els incoterms que s'utilitzen amb el client.\n"
 "Deixe-ho en blanc per a tots."
 
-msgctxt "model:incoterm.incoterm,name:"
+#, fuzzy
+msgctxt "model:incoterm.incoterm,string:"
 msgid "Incoterm"
 msgstr "Incoterm"
 
-msgctxt "model:incoterm.incoterm-company.company,name:"
+#, fuzzy
+msgctxt "model:incoterm.incoterm-company.company,string:"
 msgid "Incoterm - Company"
 msgstr "Incoterm - Empresa"
 
@@ -193,7 +195,8 @@ msgctxt "model:ir.ui.menu,name:menu_incoterm"
 msgid "Incoterms"
 msgstr "Incoterms"
 
-msgctxt "model:party.incoterm,name:"
+#, fuzzy
+msgctxt "model:party.incoterm,string:"
 msgid "Party Incoterm"
 msgstr "Incoterms tercer"
 

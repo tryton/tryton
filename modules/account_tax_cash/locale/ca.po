@@ -72,13 +72,14 @@ msgstr ""
 "Els grups d'impost que es reporten amb criteri de caixa per aquest "
 "proveïdor."
 
-msgctxt "model:account.invoice.tax.group.cash,name:"
-msgid "Tax Group on Cash Basis per Invoice"
-msgstr "Grups d'impostos amb criteri de caixa per factura"
+msgctxt "model:account.invoice.tax.group.cash,string:"
+msgid "Account Invoice Tax Group Cash"
+msgstr ""
 
-msgctxt "model:account.tax.group.cash,name:"
-msgid "Tax Group On Cash Basis"
-msgstr "Grup d'imposts amb criteri de caixa"
+#, fuzzy
+msgctxt "model:account.tax.group.cash,string:"
+msgid "Account Tax Group Cash"
+msgstr "Grups d'impostos amb criteri de caixa"
 
 #, python-format
 msgctxt "model:ir.message,text:msg_close_period_line_payment"

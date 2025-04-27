@@ -152,15 +152,15 @@ msgid ""
 msgstr ""
 "Dejar vacío para usar el grupo con nombre 'party' de la expresión regular."
 
-msgctxt "model:account.statement.rule,name:"
+msgctxt "model:account.statement.rule,string:"
 msgid "Account Statement Rule"
 msgstr "Regla de extracto bancario"
 
-msgctxt "model:account.statement.rule.information,name:"
+msgctxt "model:account.statement.rule.information,string:"
 msgid "Account Statement Rule Information"
 msgstr "Información de regla de extracto bancario"
 
-msgctxt "model:account.statement.rule.line,name:"
+msgctxt "model:account.statement.rule.line,string:"
 msgid "Account Statement Rule Line"
 msgstr "Línea de regla de extracto bancario"
 

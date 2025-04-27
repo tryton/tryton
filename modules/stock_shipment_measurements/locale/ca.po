@@ -126,6 +126,36 @@ msgctxt "field:stock.shipment.in.return,weight_uom:"
 msgid "Weight UoM"
 msgstr "UdM del pes"
 
+#, fuzzy
+msgctxt "field:stock.shipment.internal,internal_volume:"
+msgid "Internal Volume"
+msgstr "Volum intern"
+
+#, fuzzy
+msgctxt "field:stock.shipment.internal,internal_weight:"
+msgid "Internal Weight"
+msgstr "Pes intern"
+
+#, fuzzy
+msgctxt "field:stock.shipment.internal,volume:"
+msgid "Volume"
+msgstr "Volum"
+
+#, fuzzy
+msgctxt "field:stock.shipment.internal,volume_uom:"
+msgid "Volume UoM"
+msgstr "UdM del volum"
+
+#, fuzzy
+msgctxt "field:stock.shipment.internal,weight:"
+msgid "Weight"
+msgstr "Pes"
+
+#, fuzzy
+msgctxt "field:stock.shipment.internal,weight_uom:"
+msgid "Weight UoM"
+msgstr "UdM del pes"
+
 msgctxt "field:stock.shipment.out,internal_volume:"
 msgid "Internal Volume"
 msgstr "Volum intern"
@@ -270,6 +300,26 @@ msgctxt "help:stock.shipment.in.return,weight_uom:"
 msgid "The Unit of Measure of weight."
 msgstr "La unitat de mesura del pes."
 
+#, fuzzy
+msgctxt "help:stock.shipment.internal,volume:"
+msgid "The total volume of the record's moves."
+msgstr "El volum total dels moviments del registre."
+
+#, fuzzy
+msgctxt "help:stock.shipment.internal,volume_uom:"
+msgid "The Unit of Measure of volume."
+msgstr "La unitat de mesura del volum."
+
+#, fuzzy
+msgctxt "help:stock.shipment.internal,weight:"
+msgid "The total weight of the record's moves."
+msgstr "El pes total dels moviments del registre."
+
+#, fuzzy
+msgctxt "help:stock.shipment.internal,weight_uom:"
+msgid "The Unit of Measure of weight."
+msgstr "La unitat de mesura del pes."
+
 msgctxt "help:stock.shipment.out,packages_volume:"
 msgid "The total volume of the packages."
 msgstr "El volum total dels paquets."
@@ -310,7 +360,8 @@ msgctxt "help:stock.shipment.out.return,weight_uom:"
 msgid "The Unit of Measure of weight."
 msgstr "La unitat de mesura del pes."
 
-msgctxt "model:stock.configuration.measurement,name:"
+#, fuzzy
+msgctxt "model:stock.configuration.measurement,string:"
 msgid "Stock Configuration Measurement"
 msgstr "Configuració de les mesures de logística"
 
@@ -335,6 +386,11 @@ msgid "Measurements"
 msgstr "Mesures"
 
 msgctxt "view:stock.shipment.in:"
+msgid "Measurements"
+msgstr "Mesures"
+
+#, fuzzy
+msgctxt "view:stock.shipment.internal:"
 msgid "Measurements"
 msgstr "Mesures"
 

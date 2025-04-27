@@ -30,6 +30,10 @@ msgctxt "field:company.company,party:"
 msgid "Party"
 msgstr "Parte"
 
+msgctxt "field:company.company,tax_identifiers:"
+msgid "Tax Identifiers"
+msgstr ""
+
 msgctxt "field:company.company,timezone:"
 msgid "Timezone"
 msgstr "Fus orar"
@@ -49,6 +53,28 @@ msgstr ""
 
 msgctxt "field:company.company.logo.cache,width:"
 msgid "Width"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:company.company.tax_identifier,company:"
+msgid "Company"
+msgstr "Companie"
+
+#, fuzzy
+msgctxt "field:company.company.tax_identifier,company_party:"
+msgid "Company Party"
+msgstr "Companie"
+
+msgctxt "field:company.company.tax_identifier,country:"
+msgid "Country"
+msgstr ""
+
+msgctxt "field:company.company.tax_identifier,organization:"
+msgid "Organization"
+msgstr ""
+
+msgctxt "field:company.company.tax_identifier,tax_identifier:"
+msgid "Tax Identifier"
 msgstr ""
 
 msgctxt "field:company.employee,active:"
@@ -183,9 +209,27 @@ msgid ""
 "- ${tax_identifier}\n"
 msgstr ""
 
+msgctxt "help:company.company,tax_identifiers:"
+msgid ""
+"Uses the first identifier that matches the criteria.\n"
+"If none match, uses the party's tax identifier."
+msgstr ""
+
 msgctxt "help:company.company,timezone:"
 msgid "Used to compute the today date."
 msgstr "Utilizat pentru calcularea datei de astăzi."
+
+msgctxt "help:company.company.tax_identifier,country:"
+msgid "Applies only to addresses in this country."
+msgstr ""
+
+msgctxt "help:company.company.tax_identifier,organization:"
+msgid "Applies only to addresses in this organization."
+msgstr ""
+
+msgctxt "help:company.company.tax_identifier,tax_identifier:"
+msgid "The identifier used for tax report."
+msgstr ""
 
 msgctxt "help:company.employee,company:"
 msgid "The company to which the employee belongs."
@@ -251,22 +295,30 @@ msgctxt "help:res.user,employees:"
 msgid "Add employees to grant the user access to them."
 msgstr "Adăugare angajaţi pentru a permite acces utilizatorului la ei."
 
-msgctxt "model:company.company,name:"
+#, fuzzy
+msgctxt "model:company.company,string:"
 msgid "Company"
 msgstr "Companie"
 
-msgctxt "model:company.company.config.start,name:"
-msgid "Company Config"
+#, fuzzy
+msgctxt "model:company.company.config.start,string:"
+msgid "Company Config Start"
 msgstr "Configurare Companie"
 
 #, fuzzy
-msgctxt "model:company.company.logo.cache,name:"
+msgctxt "model:company.company.logo.cache,string:"
 msgid "Company Logo Cache"
 msgstr "Configurare Companie"
 
-msgctxt "model:company.employee,name:"
-msgid "Employee"
-msgstr "Angajat"
+#, fuzzy
+msgctxt "model:company.company.tax_identifier,string:"
+msgid "Company Tax Identifier"
+msgstr "Filtru Companie"
+
+#, fuzzy
+msgctxt "model:company.employee,string:"
+msgid "Company Employee"
+msgstr "Angajatul curent"
 
 msgctxt "model:ir.action,name:act_company_config"
 msgid "Configure Company"
@@ -288,7 +340,8 @@ msgctxt "model:ir.action,name:report_letter"
 msgid "Letter"
 msgstr "Scrisoare"
 
-msgctxt "model:ir.cron-company.company,name:"
+#, fuzzy
+msgctxt "model:ir.cron-company.company,string:"
 msgid "Cron - Company"
 msgstr "Cron - Companie"
 
@@ -324,12 +377,14 @@ msgctxt "model:res.group,name:group_employee_admin"
 msgid "Employee Administration"
 msgstr "Administrare Angajaţi"
 
-msgctxt "model:res.user-company.company,name:"
+#, fuzzy
+msgctxt "model:res.user-company.company,string:"
 msgid "User - Company"
 msgstr "Utilizator - Companie"
 
-msgctxt "model:res.user-company.employee,name:"
-msgid "User - Employee"
+#, fuzzy
+msgctxt "model:res.user-company.employee,string:"
+msgid "User - Company Employee"
 msgstr "Utilizator - Angajat"
 
 msgctxt "report:party.letter:"

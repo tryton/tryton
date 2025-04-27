@@ -54,6 +54,7 @@ msgctxt "model:ir.ui.menu,name:menu_product_customer"
 msgid "Customers"
 msgstr "Kliendid"
 
-msgctxt "model:sale.product_customer,name:"
-msgid "Product Customer"
+#, fuzzy
+msgctxt "model:sale.product_customer,string:"
+msgid "Sale Product Customer"
 msgstr "Toote klient"

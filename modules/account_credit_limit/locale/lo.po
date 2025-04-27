@@ -40,10 +40,6 @@ msgctxt "field:party.party,credit_limit_amounts:"
 msgid "Credit Limit Amounts"
 msgstr "ມູນຄ່າຈຳກັດວົງໜີ້"
 
-msgctxt "field:party.party,credit_limit_digits:"
-msgid "Currency Digits"
-msgstr "້ລກເສດສະກຸນເງິນ"
-
 msgctxt "field:party.party.credit_limit_amount,company:"
 msgid "Company"
 msgstr "ບໍລິສັດ"
@@ -52,8 +48,9 @@ msgctxt "field:party.party.credit_limit_amount,credit_limit_amount:"
 msgid "Credit Limit Amount"
 msgstr "ມູນຄ່າຈຳກັດວົງໜີ້"
 
-msgctxt "field:party.party.credit_limit_amount,credit_limit_digits:"
-msgid "Currency Digits"
+#, fuzzy
+msgctxt "field:party.party.credit_limit_amount,currency:"
+msgid "Currency"
 msgstr "ເລກເສດສະກຸນເງິນ"
 
 msgctxt "field:party.party.credit_limit_amount,party:"
@@ -74,21 +71,27 @@ msgctxt "help:account.dunning.level,credit_limit:"
 msgid "Has reached the credit limit."
 msgstr "ໄດ້ຮອດວົງຈຳກັດໜີ້ແລ້ວ"
 
-msgctxt "model:account.configuration.default_credit_limit_amount,name:"
+#, fuzzy
+msgctxt "model:account.configuration.default_credit_limit_amount,string:"
 msgid "Account Configuration Default Credit Limit Amount"
 msgstr "ການກຳນົດຄ່າບັນຊີຕົ້ນມູນຄ່າຈຳກັດວົງໜີ້"
 
 #, python-format
 msgctxt "model:ir.message,text:msg_party_credit_limit_amount"
-msgid "Party \"%(party)s\" has reached their credit limit of %(limit)s."
+msgid ""
+"The party \"%(party)s\" will exceed their %(limit)s credit limit by "
+"%(amount)s."
 msgstr ""
 
 #, python-format
 msgctxt "model:ir.message,text:msg_party_credit_limit_dunning"
-msgid "Party \"%(party)s\" has reached the credit limit level of %(dunning)s."
+msgid ""
+"The party \"%(party)s\" has reached the credit limit level for dunning "
+"\"%(dunning)s\"."
 msgstr ""
 
-msgctxt "model:party.party.credit_limit_amount,name:"
+#, fuzzy
+msgctxt "model:party.party.credit_limit_amount,string:"
 msgid "Party Credit Limit Amount"
 msgstr "ມູນຄ່າຈຳກັດລົງເງິນຕິດໜີ້ຂອງພາກສ່ວນ"
 

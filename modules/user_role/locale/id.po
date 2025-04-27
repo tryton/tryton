@@ -46,17 +46,18 @@ msgctxt "model:ir.ui.menu,name:menu_role_form"
 msgid "Roles"
 msgstr ""
 
-msgctxt "model:res.role,name:"
+msgctxt "model:res.role,string:"
 msgid "Role"
 msgstr ""
 
-msgctxt "model:res.role-res.group,name:"
+msgctxt "model:res.role-res.group,string:"
 msgid "Role - Group"
 msgstr ""
 
-msgctxt "model:res.user.role,name:"
+#, fuzzy
+msgctxt "model:res.user.role,string:"
 msgid "User Role"
-msgstr ""
+msgstr "Pengguna"
 
 msgctxt "selection:ir.cron,method:"
 msgid "Synchronize Users Roles"

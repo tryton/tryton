@@ -43,7 +43,7 @@ msgid "Check to limit to return operation."
 msgstr ""
 "Auswählen, um die Kontenregel auf Rückgabe/-nahme Aktionen zu beschränken."
 
-msgctxt "model:account.account.rule,name:"
+msgctxt "model:account.account.rule,string:"
 msgid "Account Rule"
 msgstr "Kontenregel"
 

@@ -578,7 +578,8 @@ msgctxt "model:ir.ui.menu,name:menu_sale_form"
 msgid "POS Sales"
 msgstr "Vendes TPV"
 
-msgctxt "model:product.gross_price,name:"
+#, fuzzy
+msgctxt "model:product.gross_price,string:"
 msgid "Product Gross Price"
 msgstr "Preu brut del producte"
 
@@ -590,40 +591,49 @@ msgctxt "model:res.group,name:group_sale_point_posting"
 msgid "POS Posting"
 msgstr "Comptabilització de TPV"
 
-msgctxt "model:sale.point,name:"
-msgid "Point of Sale"
-msgstr "Punts de venda"
+#, fuzzy
+msgctxt "model:sale.point,string:"
+msgid "Sale Point"
+msgstr "Punt"
 
-msgctxt "model:sale.point.cash.session,name:"
-msgid "POS Cash Session"
+#, fuzzy
+msgctxt "model:sale.point.cash.session,string:"
+msgid "Sale Point Cash Session"
 msgstr "Tacament de caixa TPV"
 
-msgctxt "model:sale.point.cash.session.relation,name:"
-msgid "POS Session Relation"
+#, fuzzy
+msgctxt "model:sale.point.cash.session.relation,string:"
+msgid "Sale Point Cash Session Relation"
 msgstr "Relació de sessió de TPV"
 
-msgctxt "model:sale.point.cash.transfer,name:"
-msgid "POS Cash Transfer"
+#, fuzzy
+msgctxt "model:sale.point.cash.transfer,string:"
+msgid "Sale Point Cash Transfer"
 msgstr "Trasnferència de diners TPV"
 
-msgctxt "model:sale.point.cash.transfer.type,name:"
-msgid "POS Cash Transfer Type"
+#, fuzzy
+msgctxt "model:sale.point.cash.transfer.type,string:"
+msgid "Sale Point Cash Transfer Type"
 msgstr "Tipus de transferència de diners TPV"
 
-msgctxt "model:sale.point.payment,name:"
-msgid "POS Payment"
+#, fuzzy
+msgctxt "model:sale.point.payment,string:"
+msgid "Sale Point Payment"
 msgstr "Pagament TPV"
 
-msgctxt "model:sale.point.payment.method,name:"
-msgid "POS Payment Method"
+#, fuzzy
+msgctxt "model:sale.point.payment.method,string:"
+msgid "Sale Point Payment Method"
 msgstr "Mètode de pagament TPV"
 
-msgctxt "model:sale.point.sale,name:"
-msgid "POS Sale"
-msgstr "Venda TPV"
+#, fuzzy
+msgctxt "model:sale.point.sale,string:"
+msgid "Sale Point Sale"
+msgstr "Punts de venda"
 
-msgctxt "model:sale.point.sale.line,name:"
-msgid "POS Sale Line"
+#, fuzzy
+msgctxt "model:sale.point.sale.line,string:"
+msgid "Sale Point Sale Line"
 msgstr "Línia de venda TPV"
 
 msgctxt "selection:sale.point.cash.session,state:"

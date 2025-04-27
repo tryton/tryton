@@ -210,8 +210,9 @@ msgstr ""
 "Za obdelavo prodajne naloga \"%(sale)s\" je potrebno namesto partnerja gosta"
 " \"%(party)s\" izbrati drugega partnerja."
 
-msgctxt "model:ir.message,text:msg_sale_web_id_unique"
-msgid "The web ID on the sale must be unique."
+#, fuzzy
+msgctxt "model:ir.message,text:msg_sale_web_shop_id_unique"
+msgid "The web ID on the sale must be unique per shop."
 msgstr "Spletni ID na prodajnem nalogu mora biti edinstven."
 
 msgctxt "model:ir.message,text:msg_shop_name_unique"
@@ -226,30 +227,35 @@ msgctxt "model:ir.ui.menu,name:menu_shop"
 msgid "Web Shops"
 msgstr "Spletne trgovine"
 
-msgctxt "model:web.shop,name:"
+#, fuzzy
+msgctxt "model:web.shop,string:"
 msgid "Web Shop"
 msgstr "Spletna trgovina"
 
 #, fuzzy
-msgctxt "model:web.shop-country.country,name:"
+msgctxt "model:web.shop-country.country,string:"
 msgid "Web Shop - Country"
 msgstr "Spletna trgovina - Izdelek"
 
-msgctxt "model:web.shop-product.attribute,name:"
-msgid "Web Shop - Attribute"
+#, fuzzy
+msgctxt "model:web.shop-product.attribute,string:"
+msgid "Web Shop - Product Attribute"
 msgstr "Spletna trgovina - Atribut"
 
-msgctxt "model:web.shop-product.category,name:"
+#, fuzzy
+msgctxt "model:web.shop-product.category,string:"
 msgid "Web Shop - Product Category"
 msgstr "Spletna trgovina - Kategorija izdeleka"
 
-msgctxt "model:web.shop-product.product,name:"
+#, fuzzy
+msgctxt "model:web.shop-product.product,string:"
 msgid "Web Shop - Product"
 msgstr "Spletna trgovina - Izdelek"
 
-msgctxt "model:web.shop-stock.location,name:"
-msgid "Web Shop - Warehouse"
-msgstr "Spleetna trgovina - Skladišče"
+#, fuzzy
+msgctxt "model:web.shop-stock.location,string:"
+msgid "Web Shop - Stock Location"
+msgstr "Spletna trgovina - Kategorija izdeleka"
 
 msgctxt "view:product.template:"
 msgid "Edit"

@@ -52,6 +52,25 @@ msgctxt "field:stock.shipment.in.return,shipping_reference:"
 msgid "Shipping Reference"
 msgstr "Sklic paketne dostave"
 
+msgctxt "field:stock.shipment.internal,carrier:"
+msgid "Carrier"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:stock.shipment.internal,has_shipping_service:"
+msgid "Has Shipping Service"
+msgstr "Dostavna služba"
+
+#, fuzzy
+msgctxt "field:stock.shipment.internal,shipping_description:"
+msgid "Shipping Description"
+msgstr "Opis pošiljke"
+
+#, fuzzy
+msgctxt "field:stock.shipment.internal,shipping_reference:"
+msgid "Shipping Reference"
+msgstr "Sklic paketne dostave"
+
 #, fuzzy
 msgctxt "field:stock.shipment.out,has_shipping_service:"
 msgid "Has Shipping Service"
@@ -99,6 +118,12 @@ msgstr "Nalepka pošiljke"
 #, fuzzy
 msgctxt ""
 "model:ir.model.button,string:shipment_in_return_create_shipping_button"
+msgid "Create Shipping for Packages"
+msgstr "Create Shipping for Packages"
+
+#, fuzzy
+msgctxt ""
+"model:ir.model.button,string:shipment_internal_create_shipping_button"
 msgid "Create Shipping for Packages"
 msgstr "Create Shipping for Packages"
 

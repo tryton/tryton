@@ -146,20 +146,20 @@ msgctxt "help:analytic_account.budget.line,total_amount:"
 msgid "The total amount allocated to the budget line and its children."
 msgstr ""
 
-msgctxt "model:analytic_account.budget,name:"
-msgid "Analytic Budget"
+msgctxt "model:analytic_account.budget,string:"
+msgid "Analytic Account Budget"
 msgstr ""
 
-msgctxt "model:analytic_account.budget.context,name:"
-msgid "Analytic Budget Context"
+msgctxt "model:analytic_account.budget.context,string:"
+msgid "Analytic Account Budget Context"
 msgstr ""
 
-msgctxt "model:analytic_account.budget.copy.start,name:"
-msgid "Copy Analytic Budget"
+msgctxt "model:analytic_account.budget.copy.start,string:"
+msgid "Analytic Account Budget Copy Start"
 msgstr ""
 
-msgctxt "model:analytic_account.budget.line,name:"
-msgid "Analytic Budget"
+msgctxt "model:analytic_account.budget.line,string:"
+msgid "Analytic Account Budget Line"
 msgstr ""
 
 msgctxt "model:ir.action,name:act_budget_form"

@@ -146,21 +146,25 @@ msgctxt "help:analytic_account.budget.line,total_amount:"
 msgid "The total amount allocated to the budget line and its children."
 msgstr "L'import total assignat a la línia de pressupost i als seus fills."
 
-msgctxt "model:analytic_account.budget,name:"
-msgid "Analytic Budget"
+#, fuzzy
+msgctxt "model:analytic_account.budget,string:"
+msgid "Analytic Account Budget"
 msgstr "Pressupost analític"
 
-msgctxt "model:analytic_account.budget.context,name:"
-msgid "Analytic Budget Context"
+#, fuzzy
+msgctxt "model:analytic_account.budget.context,string:"
+msgid "Analytic Account Budget Context"
 msgstr "Context del pressupost analític"
 
-msgctxt "model:analytic_account.budget.copy.start,name:"
-msgid "Copy Analytic Budget"
-msgstr "Copiar el pressupost analític"
+#, fuzzy
+msgctxt "model:analytic_account.budget.copy.start,string:"
+msgid "Analytic Account Budget Copy Start"
+msgstr "Context del pressupost analític"
 
-msgctxt "model:analytic_account.budget.line,name:"
-msgid "Analytic Budget"
-msgstr "Pressupost analític"
+#, fuzzy
+msgctxt "model:analytic_account.budget.line,string:"
+msgid "Analytic Account Budget Line"
+msgstr "Context del pressupost analític"
 
 msgctxt "model:ir.action,name:act_budget_form"
 msgid "Analytic Budgets"

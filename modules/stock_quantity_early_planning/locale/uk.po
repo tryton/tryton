@@ -121,12 +121,12 @@ msgctxt "model:ir.ui.menu,name:menu_quantity_early_plan_generate"
 msgid "Generate Stock Quantity Early Planning"
 msgstr ""
 
-msgctxt "model:stock.quantity.early_plan,name:"
+msgctxt "model:stock.quantity.early_plan,string:"
 msgid "Stock Quantity Early Plan"
 msgstr ""
 
-msgctxt "model:stock.quantity.early_plan.generate.start,name:"
-msgid "Stock Quantity Early Plan Generate"
+msgctxt "model:stock.quantity.early_plan.generate.start,string:"
+msgid "Stock Quantity Early Plan Generate Start"
 msgstr ""
 
 msgctxt "selection:stock.quantity.early_plan,state:"

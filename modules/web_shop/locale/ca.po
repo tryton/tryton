@@ -209,8 +209,9 @@ msgstr ""
 "Per a processar la venda \"%(sale)s\" heu de seleccionar un tercer diferent "
 "del invitat \"%(party)s\"."
 
-msgctxt "model:ir.message,text:msg_sale_web_id_unique"
-msgid "The web ID on the sale must be unique."
+#, fuzzy
+msgctxt "model:ir.message,text:msg_sale_web_shop_id_unique"
+msgid "The web ID on the sale must be unique per shop."
 msgstr "El ID de la botiga web ha de ser únic."
 
 msgctxt "model:ir.message,text:msg_shop_name_unique"
@@ -225,29 +226,35 @@ msgctxt "model:ir.ui.menu,name:menu_shop"
 msgid "Web Shops"
 msgstr "Botigues web"
 
-msgctxt "model:web.shop,name:"
+#, fuzzy
+msgctxt "model:web.shop,string:"
 msgid "Web Shop"
 msgstr "Botiga Web"
 
-msgctxt "model:web.shop-country.country,name:"
+#, fuzzy
+msgctxt "model:web.shop-country.country,string:"
 msgid "Web Shop - Country"
 msgstr "Botiga web - País"
 
-msgctxt "model:web.shop-product.attribute,name:"
-msgid "Web Shop - Attribute"
+#, fuzzy
+msgctxt "model:web.shop-product.attribute,string:"
+msgid "Web Shop - Product Attribute"
 msgstr "Botiga Web - Atribut"
 
-msgctxt "model:web.shop-product.category,name:"
+#, fuzzy
+msgctxt "model:web.shop-product.category,string:"
 msgid "Web Shop - Product Category"
 msgstr "Botiga web - Categoria de producte"
 
-msgctxt "model:web.shop-product.product,name:"
+#, fuzzy
+msgctxt "model:web.shop-product.product,string:"
 msgid "Web Shop - Product"
 msgstr "Botiga web - Producte"
 
-msgctxt "model:web.shop-stock.location,name:"
-msgid "Web Shop - Warehouse"
-msgstr "Botiga web - Magatzem"
+#, fuzzy
+msgctxt "model:web.shop-stock.location,string:"
+msgid "Web Shop - Stock Location"
+msgstr "Botiga web - Categoria de producte"
 
 msgctxt "view:product.template:"
 msgid "Edit"

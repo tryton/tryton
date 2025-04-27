@@ -35,7 +35,8 @@ msgctxt "help:sale.configuration.sale_method,sale_shipment_grouping_method:"
 msgid "The default shipment grouping method for new customers."
 msgstr "متد گروهبندی حمل ونقل پیش فرض برای مشتریان جدید."
 
-msgctxt "model:party.party.sale_shipment_grouping_method,name:"
+#, fuzzy
+msgctxt "model:party.party.sale_shipment_grouping_method,string:"
 msgid "Party Sale Shipment Grouping Method"
 msgstr "متد گروهبندی حمل ونقل فروش نهاد/سازمان"
 

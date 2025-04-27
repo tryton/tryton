@@ -495,6 +495,11 @@ msgid "Purchase Date"
 msgstr "Pirkimo data"
 
 #, fuzzy
+msgctxt "field:purchase.purchase,quotation_expire:"
+msgid "Quotation Expire"
+msgstr "Pasiūlymas"
+
+#, fuzzy
 msgctxt "field:purchase.purchase,quoted_by:"
 msgid "Quoted By"
 msgstr "Pasiūlymas"
@@ -1142,111 +1147,129 @@ msgctxt "model:ir.ui.menu,name:menu_reporting_purchase"
 msgid "Purchases"
 msgstr "Pirkimai"
 
-msgctxt "model:party.party.customer_code,name:"
+msgctxt "model:party.party.customer_code,string:"
 msgid "Party Customer Code"
 msgstr ""
 
 #, fuzzy
-msgctxt "model:party.party.supplier_currency,name:"
+msgctxt "model:party.party.supplier_currency,string:"
 msgid "Party Supplier Currency"
 msgstr "Prekės tiekėjo kaina"
 
 #, fuzzy
-msgctxt "model:party.party.supplier_lead_time,name:"
-msgid "Supplier Lead Time"
+msgctxt "model:party.party.supplier_lead_time,string:"
+msgid "Party Supplier Lead Time"
 msgstr "Tiekimo laikas"
 
-msgctxt "model:purchase.configuration,name:"
+#, fuzzy
+msgctxt "model:purchase.configuration,string:"
 msgid "Purchase Configuration"
 msgstr "Pirkimų nuostatos"
 
-msgctxt "model:purchase.configuration.purchase_method,name:"
+#, fuzzy
+msgctxt "model:purchase.configuration.purchase_method,string:"
 msgid "Purchase Configuration Purchase Method"
 msgstr "Pirkimo nuostatų pirkimo būdas"
 
-msgctxt "model:purchase.configuration.sequence,name:"
+#, fuzzy
+msgctxt "model:purchase.configuration.sequence,string:"
 msgid "Purchase Configuration Sequence"
 msgstr "Pirkimo nuostatų numeruotė"
 
-msgctxt "model:purchase.handle.invoice.exception.ask,name:"
-msgid "Handle Invoice Exception"
+#, fuzzy
+msgctxt "model:purchase.handle.invoice.exception.ask,string:"
+msgid "Purchase Handle Invoice Exception Ask"
 msgstr "Tvarkyti sąskaitos faktūros išimtinę situaciją"
 
-msgctxt "model:purchase.handle.shipment.exception.ask,name:"
-msgid "Handle Shipment Exception"
+#, fuzzy
+msgctxt "model:purchase.handle.shipment.exception.ask,string:"
+msgid "Purchase Handle Shipment Exception Ask"
 msgstr "Tvarkyti siuntimo išimtinę situaciją"
 
-msgctxt "model:purchase.line,name:"
+#, fuzzy
+msgctxt "model:purchase.line,string:"
 msgid "Purchase Line"
 msgstr "Pirkimo eilutė"
 
-msgctxt "model:purchase.line-account.tax,name:"
-msgid "Purchase Line - Tax"
+#, fuzzy
+msgctxt "model:purchase.line-account.tax,string:"
+msgid "Purchase Line - Account Tax"
 msgstr "Pirkimo eilutė - PVM"
 
-msgctxt "model:purchase.line-ignored-stock.move,name:"
-msgid "Purchase Line - Ignored Move"
+#, fuzzy
+msgctxt "model:purchase.line-ignored-stock.move,string:"
+msgid "Purchase Line - Ignored - Stock Move"
 msgstr "Pirkimo eilutė - ignoruotos operacijos"
 
-msgctxt "model:purchase.line-recreated-stock.move,name:"
-msgid "Purchase Line - Ignored Move"
-msgstr "Pirkimo eilutė - ignoruotos operacijos"
-
-msgctxt "model:purchase.product_supplier,name:"
-msgid "Product Supplier"
-msgstr "Prekės tiekėjai"
-
-msgctxt "model:purchase.product_supplier.price,name:"
-msgid "Product Supplier Price"
-msgstr "Prekės tiekėjo kaina"
-
-msgctxt "model:purchase.purchase,name:"
-msgid "Purchase"
-msgstr "Pirkimas"
-
-msgctxt "model:purchase.purchase-ignored-account.invoice,name:"
-msgid "Purchase - Ignored Invoice"
-msgstr "Pirkimai - ignoruotos sąskaitos faktūros"
-
-msgctxt "model:purchase.purchase-recreated-account.invoice,name:"
-msgid "Purchase - Recreated Invoice"
+#, fuzzy
+msgctxt "model:purchase.line-recreated-stock.move,string:"
+msgid "Purchase Line - Recreated - Stock Move"
 msgstr "Pirkimai - atkurtos sąskaitos faktūros"
 
 #, fuzzy
-msgctxt "model:purchase.reporting.context,name:"
+msgctxt "model:purchase.product_supplier,string:"
+msgid "Purchase Product Supplier"
+msgstr "Pirkimo kaina"
+
+#, fuzzy
+msgctxt "model:purchase.product_supplier.price,string:"
+msgid "Purchase Product Supplier Price"
+msgstr "Prekės tiekėjo kaina"
+
+#, fuzzy
+msgctxt "model:purchase.purchase,string:"
+msgid "Purchase"
+msgstr "Pirkimas"
+
+#, fuzzy
+msgctxt "model:purchase.purchase-ignored-account.invoice,string:"
+msgid "Purchase - Ignored - Account Invoice"
+msgstr "Pirkimai - ignoruotos sąskaitos faktūros"
+
+#, fuzzy
+msgctxt "model:purchase.purchase-recreated-account.invoice,string:"
+msgid "Purchase - Recreated - Account Invoice"
+msgstr "Pirkimai - atkurtos sąskaitos faktūros"
+
+#, fuzzy
+msgctxt "model:purchase.reporting.context,string:"
 msgid "Purchase Reporting Context"
 msgstr "Pirkimų nuostatos"
 
 #, fuzzy
-msgctxt "model:purchase.reporting.main,name:"
-msgid "Purchase Reporting"
+msgctxt "model:purchase.reporting.main,string:"
+msgid "Purchase Reporting Main"
 msgstr "Pirkimo eilutė"
 
 #, fuzzy
-msgctxt "model:purchase.reporting.main.time_series,name:"
-msgid "Purchase Reporting"
-msgstr "Pirkimo eilutė"
-
-msgctxt "model:purchase.reporting.product,name:"
-msgid "Purchase Reporting per Product"
-msgstr ""
-
-msgctxt "model:purchase.reporting.product.time_series,name:"
-msgid "Purchase Reporting per Product"
-msgstr ""
-
-msgctxt "model:purchase.reporting.supplier,name:"
-msgid "Purchase Reporting per Supplier"
-msgstr ""
-
-msgctxt "model:purchase.reporting.supplier.time_series,name:"
-msgid "Purchase Reporting per Supplier"
-msgstr ""
+msgctxt "model:purchase.reporting.main.time_series,string:"
+msgid "Purchase Reporting Main Time Series"
+msgstr "Pirkimų nuostatos"
 
 #, fuzzy
-msgctxt "model:purchase.return_purchase.start,name:"
-msgid "Return Purchase"
-msgstr "Pirkimas"
+msgctxt "model:purchase.reporting.product,string:"
+msgid "Purchase Reporting Product"
+msgstr "Pirkimo eilutė"
+
+#, fuzzy
+msgctxt "model:purchase.reporting.product.time_series,string:"
+msgid "Purchase Reporting Product Time Series"
+msgstr "Pirkimų nuostatos"
+
+#, fuzzy
+msgctxt "model:purchase.reporting.supplier,string:"
+msgid "Purchase Reporting Supplier"
+msgstr "Pirkimo kaina"
+
+#, fuzzy
+msgctxt "model:purchase.reporting.supplier.time_series,string:"
+msgid "Purchase Reporting Supplier Time Series"
+msgstr "Pirkimo kaina"
+
+#, fuzzy
+msgctxt "model:purchase.return_purchase.start,string:"
+msgid "Purchase Return Purchase Start"
+msgstr "Pirkimo nuostatų pirkimo būdas"
 
 msgctxt "model:res.group,name:group_purchase"
 msgid "Purchase"

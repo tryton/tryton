@@ -43,8 +43,9 @@ msgid ""
 "Leave empty to allow any source."
 msgstr ""
 
-msgctxt "model:document.incoming.ocr.service,name:"
-msgid "Incoming Document OCR Service"
+#, fuzzy
+msgctxt "model:document.incoming.ocr.service,string:"
+msgid "Document Incoming Ocr Service"
 msgstr "Storitev OCR vhodnih dokumentov"
 
 msgctxt "model:ir.action,name:act_document_incoming_ocr_service_form"

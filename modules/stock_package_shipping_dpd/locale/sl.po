@@ -49,8 +49,9 @@ msgid ""
 "Leave empty for no notification."
 msgstr ""
 
-msgctxt "model:carrier.credential.dpd,name:"
-msgid "DPD Credential"
+#, fuzzy
+msgctxt "model:carrier.credential.dpd,string:"
+msgid "Carrier Credential Dpd"
 msgstr "DPD prijava"
 
 #, fuzzy

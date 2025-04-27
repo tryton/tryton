@@ -92,10 +92,9 @@ msgctxt "field:production.work.center.category,name:"
 msgid "Name"
 msgstr "Nome"
 
-#, fuzzy
 msgctxt "field:production.work.cycle,cancelled_by:"
 msgid "Cancelled By"
-msgstr "Cancelado"
+msgstr "Cancelado Por"
 
 #, fuzzy
 msgctxt "field:production.work.cycle,company:"
@@ -142,15 +141,13 @@ msgctxt "model:ir.action,name:act_work_center_tree"
 msgid "Work Centers"
 msgstr "Work Centers"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_work_list"
 msgid "Works"
-msgstr "Works"
+msgstr "Trabalhos"
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_all"
 msgid "All"
-msgstr "All"
+msgstr "Todos"
 
 #, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_draft"
@@ -215,7 +212,7 @@ msgstr ""
 
 msgctxt "model:ir.rule.group,name:rule_group_work_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "Usuário em companhia"
 
 msgctxt "model:ir.rule.group,name:rule_group_work_cycle_companies"
 msgid "User in companies"
@@ -236,26 +233,29 @@ msgctxt "model:ir.ui.menu,name:menu_work_center_tree"
 msgid "Work Centers"
 msgstr "Work Centers"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_work_list"
 msgid "Works"
-msgstr "Works"
+msgstr "Trabalhos"
 
-msgctxt "model:production.work,name:"
+#, fuzzy
+msgctxt "model:production.work,string:"
 msgid "Production Work"
 msgstr "Trabalho de Produção"
 
-msgctxt "model:production.work.center,name:"
-msgid "Work Center"
-msgstr "Centro de Trabalho"
+#, fuzzy
+msgctxt "model:production.work.center,string:"
+msgid "Production Work Center"
+msgstr "Trabalho de Produção"
 
-msgctxt "model:production.work.center.category,name:"
-msgid "Work Center Category"
+#, fuzzy
+msgctxt "model:production.work.center.category,string:"
+msgid "Production Work Center Category"
 msgstr "Categoria de Centro de Trabalho"
 
-msgctxt "model:production.work.cycle,name:"
-msgid "Work Cycle"
-msgstr "Ciclo de Trabalho"
+#, fuzzy
+msgctxt "model:production.work.cycle,string:"
+msgid "Production Work Cycle"
+msgstr "Trabalho de Produção"
 
 msgctxt "selection:production.work,state:"
 msgid "Done"

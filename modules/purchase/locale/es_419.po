@@ -473,6 +473,10 @@ msgctxt "field:purchase.purchase,purchase_date:"
 msgid "Purchase Date"
 msgstr ""
 
+msgctxt "field:purchase.purchase,quotation_expire:"
+msgid "Quotation Expire"
+msgstr ""
+
 #, fuzzy
 msgctxt "field:purchase.purchase,quoted_by:"
 msgid "Quoted By"
@@ -1092,107 +1096,115 @@ msgctxt "model:ir.ui.menu,name:menu_reporting_purchase"
 msgid "Purchases"
 msgstr ""
 
-msgctxt "model:party.party.customer_code,name:"
+msgctxt "model:party.party.customer_code,string:"
 msgid "Party Customer Code"
 msgstr ""
 
 #, fuzzy
-msgctxt "model:party.party.supplier_currency,name:"
+msgctxt "model:party.party.supplier_currency,string:"
 msgid "Party Supplier Currency"
 msgstr "Devolución a proveedor"
 
 #, fuzzy
-msgctxt "model:party.party.supplier_lead_time,name:"
-msgid "Supplier Lead Time"
+msgctxt "model:party.party.supplier_lead_time,string:"
+msgid "Party Supplier Lead Time"
 msgstr "Devolución a proveedor"
 
-msgctxt "model:purchase.configuration,name:"
+#, fuzzy
+msgctxt "model:purchase.configuration,string:"
 msgid "Purchase Configuration"
-msgstr ""
+msgstr "Orden de compra Nº:"
 
-msgctxt "model:purchase.configuration.purchase_method,name:"
+msgctxt "model:purchase.configuration.purchase_method,string:"
 msgid "Purchase Configuration Purchase Method"
 msgstr ""
 
-msgctxt "model:purchase.configuration.sequence,name:"
+msgctxt "model:purchase.configuration.sequence,string:"
 msgid "Purchase Configuration Sequence"
 msgstr ""
 
-msgctxt "model:purchase.handle.invoice.exception.ask,name:"
-msgid "Handle Invoice Exception"
+msgctxt "model:purchase.handle.invoice.exception.ask,string:"
+msgid "Purchase Handle Invoice Exception Ask"
 msgstr ""
 
-msgctxt "model:purchase.handle.shipment.exception.ask,name:"
-msgid "Handle Shipment Exception"
-msgstr ""
-
-msgctxt "model:purchase.line,name:"
-msgid "Purchase Line"
-msgstr ""
-
-msgctxt "model:purchase.line-account.tax,name:"
-msgid "Purchase Line - Tax"
-msgstr ""
-
-msgctxt "model:purchase.line-ignored-stock.move,name:"
-msgid "Purchase Line - Ignored Move"
-msgstr ""
-
-msgctxt "model:purchase.line-recreated-stock.move,name:"
-msgid "Purchase Line - Ignored Move"
+msgctxt "model:purchase.handle.shipment.exception.ask,string:"
+msgid "Purchase Handle Shipment Exception Ask"
 msgstr ""
 
 #, fuzzy
-msgctxt "model:purchase.product_supplier,name:"
-msgid "Product Supplier"
+msgctxt "model:purchase.line,string:"
+msgid "Purchase Line"
 msgstr "Proveedores de producto"
 
-msgctxt "model:purchase.product_supplier.price,name:"
-msgid "Product Supplier Price"
+#, fuzzy
+msgctxt "model:purchase.line-account.tax,string:"
+msgid "Purchase Line - Account Tax"
+msgstr "Proveedores de producto"
+
+msgctxt "model:purchase.line-ignored-stock.move,string:"
+msgid "Purchase Line - Ignored - Stock Move"
 msgstr ""
 
-msgctxt "model:purchase.purchase,name:"
+msgctxt "model:purchase.line-recreated-stock.move,string:"
+msgid "Purchase Line - Recreated - Stock Move"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:purchase.product_supplier,string:"
+msgid "Purchase Product Supplier"
+msgstr "Proveedores de producto"
+
+#, fuzzy
+msgctxt "model:purchase.product_supplier.price,string:"
+msgid "Purchase Product Supplier Price"
+msgstr "Proveedores de producto"
+
+#, fuzzy
+msgctxt "model:purchase.purchase,string:"
 msgid "Purchase"
+msgstr "Orden de compra Nº:"
+
+msgctxt "model:purchase.purchase-ignored-account.invoice,string:"
+msgid "Purchase - Ignored - Account Invoice"
 msgstr ""
 
-msgctxt "model:purchase.purchase-ignored-account.invoice,name:"
-msgid "Purchase - Ignored Invoice"
+msgctxt "model:purchase.purchase-recreated-account.invoice,string:"
+msgid "Purchase - Recreated - Account Invoice"
 msgstr ""
 
-msgctxt "model:purchase.purchase-recreated-account.invoice,name:"
-msgid "Purchase - Recreated Invoice"
-msgstr ""
-
-msgctxt "model:purchase.reporting.context,name:"
+msgctxt "model:purchase.reporting.context,string:"
 msgid "Purchase Reporting Context"
 msgstr ""
 
-msgctxt "model:purchase.reporting.main,name:"
-msgid "Purchase Reporting"
+#, fuzzy
+msgctxt "model:purchase.reporting.main,string:"
+msgid "Purchase Reporting Main"
+msgstr "Orden de compra Nº:"
+
+msgctxt "model:purchase.reporting.main.time_series,string:"
+msgid "Purchase Reporting Main Time Series"
 msgstr ""
 
-msgctxt "model:purchase.reporting.main.time_series,name:"
-msgid "Purchase Reporting"
+msgctxt "model:purchase.reporting.product,string:"
+msgid "Purchase Reporting Product"
 msgstr ""
 
-msgctxt "model:purchase.reporting.product,name:"
-msgid "Purchase Reporting per Product"
+msgctxt "model:purchase.reporting.product.time_series,string:"
+msgid "Purchase Reporting Product Time Series"
 msgstr ""
 
-msgctxt "model:purchase.reporting.product.time_series,name:"
-msgid "Purchase Reporting per Product"
-msgstr ""
+#, fuzzy
+msgctxt "model:purchase.reporting.supplier,string:"
+msgid "Purchase Reporting Supplier"
+msgstr "Proveedores de producto"
 
-msgctxt "model:purchase.reporting.supplier,name:"
-msgid "Purchase Reporting per Supplier"
-msgstr ""
+#, fuzzy
+msgctxt "model:purchase.reporting.supplier.time_series,string:"
+msgid "Purchase Reporting Supplier Time Series"
+msgstr "Proveedores de producto"
 
-msgctxt "model:purchase.reporting.supplier.time_series,name:"
-msgid "Purchase Reporting per Supplier"
-msgstr ""
-
-msgctxt "model:purchase.return_purchase.start,name:"
-msgid "Return Purchase"
+msgctxt "model:purchase.return_purchase.start,string:"
+msgid "Purchase Return Purchase Start"
 msgstr ""
 
 msgctxt "model:res.group,name:group_purchase"

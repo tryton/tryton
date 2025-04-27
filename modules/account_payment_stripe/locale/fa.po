@@ -327,33 +327,35 @@ msgctxt "help:account.payment.stripe.account,webhook_signing_secret:"
 msgid "The Stripe's signing secret of the webhook."
 msgstr "امضاء محرمانه چوب خط ازاین webhook."
 
-msgctxt "model:account.payment.stripe.account,name:"
-msgid "Stripe Account"
+#, fuzzy
+msgctxt "model:account.payment.stripe.account,string:"
+msgid "Account Payment Stripe Account"
 msgstr "حساب چوب خط"
 
-msgctxt "model:account.payment.stripe.customer,name:"
-msgid "Stripe Customer"
+#, fuzzy
+msgctxt "model:account.payment.stripe.customer,string:"
+msgid "Account Payment Stripe Customer"
+msgstr "ایجاد چوب خط مشتری"
+
+#, fuzzy
+msgctxt "model:account.payment.stripe.customer.fingerprint,string:"
+msgid "Account Payment Stripe Customer Fingerprint"
 msgstr "چوب خط مشتری"
 
 #, fuzzy
-msgctxt "model:account.payment.stripe.customer.fingerprint,name:"
-msgid "Stripe Customer Fingerprint"
-msgstr "چوب خط مشتری"
-
-#, fuzzy
-msgctxt "model:account.payment.stripe.customer.identical,name:"
-msgid "Stripe Customer Identical"
+msgctxt "model:account.payment.stripe.customer.identical,string:"
+msgid "Account Payment Stripe Customer Identical"
 msgstr "شناسه چوب خط مشتری"
 
 #, fuzzy
-msgctxt "model:account.payment.stripe.customer.source.detach.ask,name:"
-msgid "Detach Customer Source"
+msgctxt "model:account.payment.stripe.customer.source.detach.ask,string:"
+msgid "Account Payment Stripe Customer Source Detach Ask"
 msgstr "منبع چوب خط مشتری"
 
 #, fuzzy
-msgctxt "model:account.payment.stripe.refund,name:"
-msgid "Stripe Payment Refund"
-msgstr "شارژ پرداخت های چوب خط"
+msgctxt "model:account.payment.stripe.refund,string:"
+msgid "Account Payment Stripe Refund"
+msgstr "ایجاد چوب خط مشتری"
 
 msgctxt "model:ir.action,name:act_account_form"
 msgid "Stripe Accounts"
@@ -425,10 +427,11 @@ msgctxt "model:ir.message,text:msg_customer_fingerprint_unique"
 msgid "The fingerprint must be unique by customer."
 msgstr ""
 
-#, python-format
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_no_stripe_token"
 msgid ""
-"To process payment \"%(payment)s\" you must set a Stripe token or customer."
+"To process payment \"%(payment)s\" you must set a Stripe token, payment "
+"intent or customer."
 msgstr ""
 "برای پردازش پرداخت: \"%(payment)s\" شما باید نشانه چوب خط یا مشتری را تنظیم "
 "کنید."
@@ -507,21 +510,12 @@ msgid "Stripe Refunds"
 msgstr "نشان چوب خط"
 
 msgctxt "report:account.payment.stripe.checkout:"
-msgid "Credit or debit card"
-msgstr ""
-
-msgctxt "report:account.payment.stripe.checkout:"
-msgid "Pay"
-msgstr "پرداخت"
-
-#, fuzzy
-msgctxt "report:account.payment.stripe.checkout:"
-msgid "Register card"
-msgstr "ثبت نام"
-
-msgctxt "report:account.payment.stripe.checkout:"
 msgid "Stripe Checkout"
 msgstr "وارسی چوب خط"
+
+msgctxt "report:account.payment.stripe.checkout:"
+msgid "Submit"
+msgstr ""
 
 msgctxt "report:account.payment.stripe.email_checkout:"
 msgid "Authorization needed"

@@ -5,6 +5,12 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgid "Make this an _internal message"
+msgstr ""
+
+msgid "Send"
+msgstr "Pošlji"
+
 msgid "specify alternate config file"
 msgstr "določi alterntivno konfiguracijsko datoteko"
 
@@ -127,9 +133,6 @@ msgstr "Preveri URL: %s"
 
 msgid "Unable to check for new version."
 msgstr "Ni bilo mogoče preveriti posodobitev nove različice programa."
-
-msgid "A new version is available!"
-msgstr "Nova različica programa je na voljo!"
 
 msgid "Download"
 msgstr "Prenesi"
@@ -624,9 +627,6 @@ msgstr "Priloge"
 msgid "Files"
 msgstr "Datoteke"
 
-msgid "Send"
-msgstr "Pošlji"
-
 msgid "Select File"
 msgstr "Izberi datoteko"
 
@@ -834,6 +834,13 @@ msgstr "_Zapiski ..."
 msgid "Add a note to the record"
 msgstr "K zapisu dodaj zabeležko"
 
+msgid "C_hat"
+msgstr ""
+
+#, fuzzy
+msgid "Chat on the record"
+msgstr "K zapisu dodaj zabeležko"
+
 msgid "_Actions..."
 msgstr "_Ukrepi..."
 
@@ -952,13 +959,13 @@ msgstr "Kako se imenuje ta izvoz?"
 msgid "Override '%s' definition?"
 msgstr "Prepišem definicijo izvoza '%s'?"
 
-#, python-format
+#, fuzzy, python-format
 msgid "%d record saved."
-msgstr "%d zapis shranjen."
-
-#, python-format
-msgid "%d records saved."
-msgstr "%d zapisov shranjenih."
+msgid_plural "%d records saved."
+msgstr[0] "%d zapis shranjen."
+msgstr[1] "%d zapis shranjen."
+msgstr[2] "%d zapis shranjen."
+msgstr[3] "%d zapis shranjen."
 
 msgid "Export failed"
 msgstr "Izvoz ni uspel"
@@ -1038,13 +1045,13 @@ msgstr "Napaka"
 msgid "Import failed"
 msgstr "Uvoz ni uspel"
 
-#, python-format
+#, fuzzy, python-format
 msgid "%d record imported."
-msgstr "%d zapis uvožen."
-
-#, python-format
-msgid "%d records imported."
-msgstr "%d zapisov uvoženih."
+msgid_plural "%d records imported."
+msgstr[0] "%d zapis uvožen."
+msgstr[1] "%d zapis uvožen."
+msgstr[2] "%d zapis uvožen."
+msgstr[3] "%d zapis uvožen."
 
 msgid "Search"
 msgstr "Išči"
@@ -1115,6 +1122,10 @@ msgstr "Shrani kot..."
 
 msgid "Image size too large."
 msgstr "Podoba je prevelika."
+
+#, fuzzy
+msgid "Reset Column Widths"
+msgstr "Shrani širino stolpcev"
 
 msgid "Copy"
 msgstr "Kopiraj"
@@ -1193,6 +1204,10 @@ msgstr "Vse datoteke"
 
 msgid "Show plain text"
 msgstr "Prikaži navadno besedilo"
+
+#, fuzzy, python-format
+msgid "Select a color for \"%s\""
+msgstr "Izberi barvo"
 
 msgid "Add value"
 msgstr "Dodaj vrednost"

@@ -121,25 +121,21 @@ msgctxt "help:purchase.request,product_uom_category:"
 msgid "The category of Unit of Measure for the product."
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_open_purchase_form"
 msgid "Purchases"
-msgstr "Compra"
+msgstr "Compras"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_open_request_form"
 msgid "Purchase Requests"
-msgstr "Purchase Requests"
+msgstr "Solicitações de Compra"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_purchase_request_form"
 msgid "Purchase Requests"
-msgstr "Purchase Requests"
+msgstr "Solicitações de Compra"
 
-#, fuzzy
 msgctxt "model:ir.action,name:wizard_create_purchase"
 msgid "Create Purchase"
-msgstr "Create Purchase"
+msgstr "Criar Compra"
 
 #, fuzzy
 msgctxt "model:ir.action,name:wizard_purchase_cancellation_handle_exception"
@@ -206,27 +202,29 @@ msgctxt "model:ir.ui.menu,name:menu_purchase_request_form"
 msgid "Purchase Requests"
 msgstr "Purchase Requests"
 
-msgctxt "model:purchase.request,name:"
+#, fuzzy
+msgctxt "model:purchase.request,string:"
 msgid "Purchase Request"
-msgstr "Pedidos de Compra"
+msgstr "Purchase Request"
 
-msgctxt "model:purchase.request.create_purchase.ask_party,name:"
-msgid "Create Purchase Ask Party"
+#, fuzzy
+msgctxt "model:purchase.request.create_purchase.ask_party,string:"
+msgid "Purchase Request Create Purchase Ask Party"
 msgstr "Criar Pedido de Compra"
 
-msgctxt "model:purchase.request.handle.purchase.cancellation.start,name:"
-msgid "Handle Purchase Cancellation Exception - Start"
-msgstr "Gerenciamento de Cancelamento de Compra Exceção - Início"
+#, fuzzy
+msgctxt "model:purchase.request.handle.purchase.cancellation.start,string:"
+msgid "Purchase Request Handle Purchase Cancellation Start"
+msgstr "Handle Purchase Cancellation"
 
 #, fuzzy
 msgctxt "model:res.group,name:group_purchase_request"
 msgid "Purchase Request"
 msgstr "Purchase Request"
 
-#, fuzzy
 msgctxt "selection:purchase.request,state:"
 msgid "Cancelled"
-msgstr "Cancelar"
+msgstr "Cancelado"
 
 msgctxt "selection:purchase.request,state:"
 msgid "Done"

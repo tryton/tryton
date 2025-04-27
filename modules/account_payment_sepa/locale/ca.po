@@ -35,6 +35,11 @@ msgctxt "field:account.payment,sepa_mandate_sequence_type:"
 msgid "Mandate Sequence Type"
 msgstr "Tipus de seqüència mandat"
 
+#, fuzzy
+msgctxt "field:account.payment,sepa_payable_bank_account_number:"
+msgid "Bank Account Number"
+msgstr "Número de compte bancari"
+
 msgctxt "field:account.payment,sepa_return_reason_code:"
 msgid "Return Reason Code"
 msgstr "Codi motiu de devolució"
@@ -187,17 +192,17 @@ msgctxt "help:account.payment.journal,sepa_receivable_initiator_id:"
 msgid "The identifier used for the initiating party."
 msgstr "El identificador utilizat pel tercer iniciador."
 
-msgctxt "model:account.configuration.sepa_mandate_sequence,name:"
-msgid "Account Configuration SEPA Mandate Sequence"
-msgstr "Configuració seqüencia mandat SEPA"
+msgctxt "model:account.configuration.sepa_mandate_sequence,string:"
+msgid "Account Configuration Sepa Mandate Sequence"
+msgstr "Configuració seqüència mandat SEPA"
 
-msgctxt "model:account.payment.sepa.mandate,name:"
-msgid "SEPA Mandate"
-msgstr "Mandat SEPA"
+msgctxt "model:account.payment.sepa.mandate,string:"
+msgid "Account Payment Sepa Mandate"
+msgstr ""
 
-msgctxt "model:account.payment.sepa.message,name:"
-msgid "SEPA Message"
-msgstr "Missatge SEPA"
+msgctxt "model:account.payment.sepa.message,string:"
+msgid "Account Payment Sepa Message"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_mandate_form"
 msgid "SEPA Mandates"
@@ -214,6 +219,11 @@ msgstr "Missatges SEPA"
 msgctxt "model:ir.action,name:report_mandate"
 msgid "Mandate"
 msgstr "Mandat"
+
+#, fuzzy
+msgctxt "model:ir.action,name:report_message"
+msgid "Message"
+msgstr "Missatge"
 
 msgctxt "model:ir.action.act_window.domain,name:act_mandate_form_domain_all"
 msgid "All"
@@ -604,3 +614,8 @@ msgstr "Informació"
 msgctxt "view:account.payment:"
 msgid "Return Reason"
 msgstr "Motiu retorn"
+
+#, fuzzy
+msgctxt "view:account.payment:"
+msgid "SEPA"
+msgstr "SEPA"

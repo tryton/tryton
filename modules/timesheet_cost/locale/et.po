@@ -41,8 +41,9 @@ msgctxt "help:company.employee_cost_price,cost_price:"
 msgid "Hourly cost price."
 msgstr "Tunnitasu"
 
-msgctxt "model:company.employee_cost_price,name:"
-msgid "Employee Cost Price"
+#, fuzzy
+msgctxt "model:company.employee_cost_price,string:"
+msgid "Company Employee Cost Price"
 msgstr "Töötaja tasu"
 
 msgctxt "model:ir.message,text:msg_employee_unique_cost_price_date"

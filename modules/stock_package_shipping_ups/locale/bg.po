@@ -49,8 +49,8 @@ msgid "UPS Code"
 msgstr ""
 
 #, fuzzy
-msgctxt "model:carrier.credential.ups,name:"
-msgid "UPS Credential"
+msgctxt "model:carrier.credential.ups,string:"
+msgid "Carrier Credential Ups"
 msgstr "UPS Credentials"
 
 msgctxt "model:ir.action,name:act_create_shipping_ups_wizard"

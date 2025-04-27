@@ -91,12 +91,52 @@ msgstr ""
 "Auswählen um SII Datensätze für die Rechnung in diesem Buchungszeitraum zu "
 "erstellen."
 
-msgctxt "model:account.credential.sii,name:"
-msgid "Account Credential SII"
-msgstr "Kontozugangsdaten SII"
+msgctxt "help:account.tax,es_sii_tax_key:"
+msgid "Exempt by Art. 20"
+msgstr "Befreit nach Art. 20"
 
-msgctxt "model:account.invoice.sii,name:"
-msgid "Invoice SII"
+msgctxt "help:account.tax,es_sii_tax_key:"
+msgid "Exempt by Art. 21"
+msgstr "Befreit nach Art. 21"
+
+msgctxt "help:account.tax,es_sii_tax_key:"
+msgid "Exempt by Art. 22"
+msgstr "Befreit nach Art. 22"
+
+msgctxt "help:account.tax,es_sii_tax_key:"
+msgid "Exempt by Art. 24"
+msgstr "Befreit nach Art. 24"
+
+msgctxt "help:account.tax,es_sii_tax_key:"
+msgid "Exempt by Art. 25"
+msgstr "Befreit nach Art. 25"
+
+msgctxt "help:account.tax,es_sii_tax_key:"
+msgid "Exempt others"
+msgstr "Befreit andere"
+
+msgctxt "help:account.tax,es_sii_tax_key:"
+msgid "Not exempt - No passive subject investment"
+msgstr "Nicht befreit - Kein passives Investitionsobjekt"
+
+msgctxt "help:account.tax,es_sii_tax_key:"
+msgid "Not exempt - With passive subject investment"
+msgstr "Nicht befreit - mit passivem Anlagegegenstand"
+
+msgctxt "help:account.tax,es_sii_tax_key:"
+msgid ""
+"Not exempt - Without investment by the taxpayer and with investment by the "
+"taxpayer"
+msgstr ""
+"Nicht befreit - Ohne Investition durch den Steuerzahler und mit Investition "
+"durch den Steuerzahler"
+
+msgctxt "model:account.credential.sii,string:"
+msgid "Account Credential Sii"
+msgstr "Buchhaltung Anmeldedaten SII"
+
+msgctxt "model:account.invoice.sii,string:"
+msgid "Account Invoice Sii"
 msgstr "Rechnung SII"
 
 msgctxt "model:ir.action,name:act_invoice_sii_form"

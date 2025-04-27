@@ -138,19 +138,23 @@ msgctxt "help:currency.currency.rate,rate:"
 msgid "The floating exchange rate used to convert the currency."
 msgstr "用于转换货币的浮动汇率."
 
-msgctxt "model:currency.cron,name:"
+#, fuzzy
+msgctxt "model:currency.cron,string:"
 msgid "Currency Cron"
 msgstr "货币 Cron"
 
-msgctxt "model:currency.cron-currency.currency,name:"
+#, fuzzy
+msgctxt "model:currency.cron-currency.currency,string:"
 msgid "Currency Cron - Currency"
 msgstr "货币 Cron - 货币"
 
-msgctxt "model:currency.currency,name:"
+#, fuzzy
+msgctxt "model:currency.currency,string:"
 msgid "Currency"
 msgstr "货币"
 
-msgctxt "model:currency.currency.rate,name:"
+#, fuzzy
+msgctxt "model:currency.currency.rate,string:"
 msgid "Currency Rate"
 msgstr "当日汇率"
 

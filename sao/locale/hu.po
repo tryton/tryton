@@ -320,6 +320,13 @@ msgstr "Melléklet hozzáadása a rekordhoz"
 msgid "Add a note to the record"
 msgstr "Jegyzet hozzáadása a rekordhoz"
 
+msgid "Chat"
+msgstr ""
+
+#, fuzzy
+msgid "Chat on the record"
+msgstr "Rekord megnyitása"
+
 msgid "Email..."
 msgstr ""
 
@@ -485,6 +492,9 @@ msgstr ""
 msgid "Hide"
 msgstr "Elrejtés"
 
+msgid "Select a color for \"%1\""
+msgstr ""
+
 msgid "Open the record"
 msgstr "Rekord megnyitása"
 
@@ -541,6 +551,9 @@ msgstr ""
 #, fuzzy
 msgid "Copy Selected Rows"
 msgstr "Csak a kiválasztott rekordokat"
+
+msgid "Reset Column Widths"
+msgstr ""
 
 msgid "#ERROR"
 msgstr ""
@@ -777,6 +790,15 @@ msgid "Toggle Sound"
 msgstr ""
 
 msgid "Wizard"
+msgstr ""
+
+msgid "Enter a message"
+msgstr ""
+
+msgid "Submit the message"
+msgstr ""
+
+msgid "Make this an internal message"
 msgstr ""
 
 msgid "Translate view"

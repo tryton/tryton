@@ -150,21 +150,21 @@ msgctxt "model:ir.ui.menu,name:menu_email_list_form"
 msgid "Mailing Lists"
 msgstr "Listes de diffusion"
 
-msgctxt "model:marketing.email,name:"
+msgctxt "model:marketing.email,string:"
 msgid "Marketing Email"
 msgstr "Courriel marketing"
 
-msgctxt "model:marketing.email.list,name:"
-msgid "Marketing Mailing List"
+msgctxt "model:marketing.email.list,string:"
+msgid "Marketing Email List"
 msgstr "Liste de diffusion marketing"
 
-msgctxt "model:marketing.email.message,name:"
+msgctxt "model:marketing.email.message,string:"
 msgid "Marketing Email Message"
 msgstr "Message de courriel marketing"
 
-msgctxt "model:marketing.email.send_test,name:"
-msgid "Send Test Email"
-msgstr "Envoyer un courriel de test"
+msgctxt "model:marketing.email.send_test,string:"
+msgid "Marketing Email Send Test"
+msgstr "Test d'envoi de courriel marketing"
 
 msgctxt "report:marketing.email.subscribe:"
 msgid "Button is not working? Paste this into your browser:"

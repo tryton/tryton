@@ -67,9 +67,9 @@ msgid ""
 "'payment_group'"
 msgstr "Mokėjimų grupė"
 
-msgctxt "model:account.payment.succeed.start,name:"
-msgid "Succeed Payment"
-msgstr "Sėkmingai apmokėta"
+msgctxt "model:account.payment.succeed.start,string:"
+msgid "Account Payment Succeed Start"
+msgstr ""
 
 msgctxt "model:ir.action,name:wizard_succeed"
 msgid "Succeed Payments"

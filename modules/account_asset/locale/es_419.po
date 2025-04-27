@@ -370,44 +370,49 @@ msgctxt "help:product.template,depreciation_duration:"
 msgid "In months"
 msgstr ""
 
-msgctxt "model:account.asset,name:"
-msgid "Asset"
-msgstr "Activo fijo"
+#, fuzzy
+msgctxt "model:account.asset,string:"
+msgid "Account Asset"
+msgstr "Cuenta de activo fijo"
 
-msgctxt "model:account.asset-update-account.move,name:"
-msgid "Asset - Update - Move"
+#, fuzzy
+msgctxt "model:account.asset-update-account.move,string:"
+msgid "Account Asset - Update - Account Move"
 msgstr "Activo fijo - Actualizar - Asiento"
 
-msgctxt "model:account.asset.create_moves.start,name:"
-msgid "Create Moves Start"
+msgctxt "model:account.asset.create_moves.start,string:"
+msgid "Account Asset Create Moves Start"
 msgstr ""
 
-msgctxt "model:account.asset.line,name:"
-msgid "Asset Line"
-msgstr "Línea de activo fijo"
+#, fuzzy
+msgctxt "model:account.asset.line,string:"
+msgid "Account Asset Line"
+msgstr "Cuenta de activo fijo"
 
-msgctxt "model:account.asset.print_depreciation_table.start,name:"
-msgid "Asset Depreciation Table Start"
+#, fuzzy
+msgctxt "model:account.asset.print_depreciation_table.start,string:"
+msgid "Account Asset Print Depreciation Table Start"
 msgstr "Tabla de depreciación de activo fijo - Inicio"
 
 #, fuzzy
-msgctxt "model:account.asset.revision,name:"
-msgid "Asset Revision"
+msgctxt "model:account.asset.revision,string:"
+msgid "Account Asset Revision"
 msgstr "Línea de activo fijo"
 
-msgctxt "model:account.asset.update.show_depreciation,name:"
-msgid "Update Asset Show Depreciation"
+#, fuzzy
+msgctxt "model:account.asset.update.show_depreciation,string:"
+msgid "Account Asset Update Show Depreciation"
 msgstr "Actualizar activo fijo - Mostrar depreciación"
 
-msgctxt "model:account.configuration.asset_date,name:"
+msgctxt "model:account.configuration.asset_date,string:"
 msgid "Account Configuration Asset Date"
 msgstr ""
 
-msgctxt "model:account.configuration.asset_frequency,name:"
+msgctxt "model:account.configuration.asset_frequency,string:"
 msgid "Account Configuration Asset Frequency"
 msgstr ""
 
-msgctxt "model:account.configuration.asset_sequence,name:"
+msgctxt "model:account.configuration.asset_sequence,string:"
 msgid "Account Configuration Asset Sequence"
 msgstr ""
 
@@ -494,6 +499,13 @@ msgid ""
 "To invoice purchase \"%(purchase)s\", you must set an account asset on "
 "product \"%(product)s\"."
 msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_revision_asset_origin_unique"
+msgid "A revision origin can be used only once per asset."
+msgstr ""
+"La línea de factura de proveedor puede ser utilizada una sola vez en un "
+"activo."
 
 msgctxt "model:ir.model.button,confirm:asset_close_button"
 msgid "Are you sure you want to close the asset?"

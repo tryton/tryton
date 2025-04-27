@@ -26,6 +26,6 @@ msgctxt "field:stock.product.location,warehouse:"
 msgid "Warehouse"
 msgstr ""
 
-msgctxt "model:stock.product.location,name:"
-msgid "Product Location"
+msgctxt "model:stock.product.location,string:"
+msgid "Stock Product Location"
 msgstr ""

@@ -206,17 +206,20 @@ msgctxt "model:ir.ui.menu,name:menu_purchase_request_form"
 msgid "Purchase Requests"
 msgstr "Purchase Requests"
 
-msgctxt "model:purchase.request,name:"
+#, fuzzy
+msgctxt "model:purchase.request,string:"
 msgid "Purchase Request"
-msgstr "Nabavni zahtevek"
+msgstr "Purchase Request"
 
-msgctxt "model:purchase.request.create_purchase.ask_party,name:"
-msgid "Create Purchase Ask Party"
+#, fuzzy
+msgctxt "model:purchase.request.create_purchase.ask_party,string:"
+msgid "Purchase Request Create Purchase Ask Party"
 msgstr "Izdelava nabavnega naloga - določitev dobavitelja"
 
-msgctxt "model:purchase.request.handle.purchase.cancellation.start,name:"
-msgid "Handle Purchase Cancellation Exception - Start"
-msgstr "Obravnava preklicanih nabav"
+#, fuzzy
+msgctxt "model:purchase.request.handle.purchase.cancellation.start,string:"
+msgid "Purchase Request Handle Purchase Cancellation Start"
+msgstr "Handle Purchase Cancellation"
 
 #, fuzzy
 msgctxt "model:res.group,name:group_purchase_request"

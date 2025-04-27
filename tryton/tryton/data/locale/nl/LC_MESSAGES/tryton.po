@@ -5,6 +5,12 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgid "Make this an _internal message"
+msgstr "Maak dit een _intern bericht"
+
+msgid "Send"
+msgstr "Verzenden"
+
 msgid "specify alternate config file"
 msgstr "specificeer een alternatief configuratiebestand"
 
@@ -127,9 +133,6 @@ msgstr "Controleer URL: %s"
 
 msgid "Unable to check for new version."
 msgstr "Kon niet controleren op nieuwe versie."
-
-msgid "A new version is available!"
-msgstr "Er is een nieuwe versie beschikbaar!"
 
 msgid "Download"
 msgstr "Download"
@@ -623,9 +626,6 @@ msgstr "Bijlagen"
 msgid "Files"
 msgstr "Bestanden"
 
-msgid "Send"
-msgstr "Verzenden"
-
 msgid "Select File"
 msgstr "Selecteer bestand"
 
@@ -832,6 +832,12 @@ msgstr "_Notities ..."
 msgid "Add a note to the record"
 msgstr "Voeg een notitie toe aan het record"
 
+msgid "C_hat"
+msgstr "C_hat"
+
+msgid "Chat on the record"
+msgstr "Chat op de record"
+
 msgid "_Actions..."
 msgstr "_Acties..."
 
@@ -950,11 +956,9 @@ msgstr "Vervang '%s' definitie?"
 
 #, python-format
 msgid "%d record saved."
-msgstr "%d record opgeslagen."
-
-#, python-format
-msgid "%d records saved."
-msgstr "%d records opgeslagen."
+msgid_plural "%d records saved."
+msgstr[0] "%d record opgeslagen."
+msgstr[1] "%d records opgeslagen."
 
 msgid "Export failed"
 msgstr "Exporteren mislukt"
@@ -1035,11 +1039,9 @@ msgstr "Importeren faalde"
 
 #, python-format
 msgid "%d record imported."
-msgstr "%d record geïmporteerd."
-
-#, python-format
-msgid "%d records imported."
-msgstr "%d record geïmporteerd."
+msgid_plural "%d records imported."
+msgstr[0] "%d record geïmporteerd."
+msgstr[1] "%d records geïmporteerd."
 
 msgid "Search"
 msgstr "Zoeken"
@@ -1110,6 +1112,9 @@ msgstr "Opslaan als"
 
 msgid "Image size too large."
 msgstr "Afbeelding te groot."
+
+msgid "Reset Column Widths"
+msgstr "Reset kolombreedtes"
 
 msgid "Copy"
 msgstr "Kopieer"
@@ -1188,6 +1193,10 @@ msgstr "Alle bestanden"
 
 msgid "Show plain text"
 msgstr "Laat platte tekst zien"
+
+#, python-format
+msgid "Select a color for \"%s\""
+msgstr "Selecteer een kleur voor \"%s\""
 
 msgid "Add value"
 msgstr "Waarde toevoegen"

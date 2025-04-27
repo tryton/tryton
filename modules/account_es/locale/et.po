@@ -10,13 +10,24 @@ msgctxt "field:account.payment.journal,es_sepa_request_advancement:"
 msgid "Request Advancement"
 msgstr ""
 
-msgctxt "field:account.reporting.aeat.start,periods:"
-msgid "Periods"
-msgstr "Perioodid"
+#, fuzzy
+msgctxt "field:account.reporting.aeat.start,company:"
+msgid "Company"
+msgstr "Ettevõte"
+
+#, fuzzy
+msgctxt "field:account.reporting.aeat.start,end_period:"
+msgid "End Period"
+msgstr "Periood"
 
 msgctxt "field:account.reporting.aeat.start,report:"
 msgid "Report"
 msgstr "Aruanne"
+
+#, fuzzy
+msgctxt "field:account.reporting.aeat.start,start_period:"
+msgid "Start Period"
+msgstr "Periood"
 
 msgctxt "field:account.reporting.es_ec_operation_list,amount:"
 msgid "Amount"
@@ -240,35 +251,35 @@ msgctxt "help:party.party,es_province_code:"
 msgid "Set 99 for non Spanish parties."
 msgstr "Määra 99 mitte-Hispaania osapooltele"
 
-msgctxt "model:account.reporting.aeat.start,name:"
-msgid "Print AEAT Start"
-msgstr "Alusta AETA printi"
+msgctxt "model:account.reporting.aeat.start,string:"
+msgid "Account Reporting Aeat Start"
+msgstr ""
 
-msgctxt "model:account.reporting.es_ec_operation_list,name:"
-msgid "EC Operation List"
-msgstr "EC operatsioonide nimekiri"
+msgctxt "model:account.reporting.es_ec_operation_list,string:"
+msgid "Account Ec Sales List"
+msgstr ""
 
-msgctxt "model:account.reporting.es_ec_operation_list.context,name:"
-msgid "EC Operation List Context"
+#, fuzzy
+msgctxt "model:account.reporting.es_ec_operation_list.context,string:"
+msgid "Account Ec Sales List Context"
+msgstr "Hispaania KM nimekirja sisu"
+
+msgctxt "model:account.reporting.vat_book_es,string:"
+msgid "Account Reporting Vat Book Es"
+msgstr ""
+
+msgctxt "model:account.reporting.vat_book_es.context,string:"
+msgid "Account Reporting Vat Book Es Context"
+msgstr ""
+
+msgctxt "model:account.reporting.vat_list_es,string:"
+msgid "Account Reporting Vat List Es"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:account.reporting.vat_list_es.context,string:"
+msgid "Account Reporting Vat List Es Context"
 msgstr "EC operatsioonide nimekirja sisu"
-
-#, fuzzy
-msgctxt "model:account.reporting.vat_book_es,name:"
-msgid "Spanish VAT Book"
-msgstr "Hispaania KM nimekiri"
-
-#, fuzzy
-msgctxt "model:account.reporting.vat_book_es.context,name:"
-msgid "Spanish VAT Book Context"
-msgstr "Hispaania KM nimekirja sisu"
-
-msgctxt "model:account.reporting.vat_list_es,name:"
-msgid "Spanish VAT List"
-msgstr "Hispaania KM nimekiri"
-
-msgctxt "model:account.reporting.vat_list_es.context,name:"
-msgid "Spanish VAT List Context"
-msgstr "Hispaania KM nimekirja sisu"
 
 msgctxt "model:ir.action,name:act_es_ec_operation_list_form"
 msgid "EC Operation List"

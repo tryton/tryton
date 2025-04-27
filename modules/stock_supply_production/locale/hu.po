@@ -26,7 +26,7 @@ msgctxt "model:ir.message,text:msg_late_productions"
 msgid "There are some productions that are late."
 msgstr ""
 
-msgctxt "model:production.configuration.supply_period,name:"
+msgctxt "model:production.configuration.supply_period,string:"
 msgid "Production Configuration Supply Period"
 msgstr ""
 

@@ -30,9 +30,9 @@ msgctxt "field:party.party,deposit:"
 msgid "Deposit"
 msgstr "Anticipo"
 
-msgctxt "model:account.invoice.recall_deposit.start,name:"
-msgid "Recall deposit on Invoice"
-msgstr "Recuperación de anticipo en factura"
+msgctxt "model:account.invoice.recall_deposit.start,string:"
+msgid "Account Invoice Recall Deposit Start"
+msgstr "Inicio recuperar deposito factura"
 
 msgctxt "model:ir.action,name:act_move_line_deposit"
 msgid "Deposit Lines"

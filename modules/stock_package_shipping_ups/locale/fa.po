@@ -46,8 +46,9 @@ msgctxt "field:stock.package.type,ups_code:"
 msgid "UPS Code"
 msgstr "کد سرویس UPS"
 
-msgctxt "model:carrier.credential.ups,name:"
-msgid "UPS Credential"
+#, fuzzy
+msgctxt "model:carrier.credential.ups,string:"
+msgid "Carrier Credential Ups"
 msgstr "گواهی نامه UPS"
 
 msgctxt "model:ir.action,name:act_create_shipping_ups_wizard"

@@ -42,7 +42,7 @@ msgctxt "help:account.account.rule,return_:"
 msgid "Check to limit to return operation."
 msgstr "Cochez pour limiter aux opérations de retour."
 
-msgctxt "model:account.account.rule,name:"
+msgctxt "model:account.account.rule,string:"
 msgid "Account Rule"
 msgstr "Règle de compte"
 

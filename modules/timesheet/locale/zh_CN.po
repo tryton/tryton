@@ -358,36 +358,44 @@ msgctxt "model:res.group,name:group_timesheet_admin"
 msgid "Timesheet Administration"
 msgstr "时间表管理"
 
-msgctxt "model:timesheet.hours_employee,name:"
-msgid "Hours per Employee"
+#, fuzzy
+msgctxt "model:timesheet.hours_employee,string:"
+msgid "Timesheet Hours Employee"
 msgstr "雇员工作小时数"
 
-msgctxt "model:timesheet.hours_employee.context,name:"
-msgid "Hours per Employee Context"
+#, fuzzy
+msgctxt "model:timesheet.hours_employee.context,string:"
+msgid "Timesheet Hours Employee Context"
 msgstr "雇员的工作时间"
 
-msgctxt "model:timesheet.hours_employee_monthly,name:"
-msgid "Hours per Employee per Month"
+#, fuzzy
+msgctxt "model:timesheet.hours_employee_monthly,string:"
+msgid "Timesheet Hours Employee Monthly"
 msgstr "雇员月工作小时数"
 
-msgctxt "model:timesheet.hours_employee_weekly,name:"
-msgid "Hours per Employee per Week"
+#, fuzzy
+msgctxt "model:timesheet.hours_employee_weekly,string:"
+msgid "Timesheet Hours Employee Weekly"
 msgstr "雇员周工作小时数"
 
-msgctxt "model:timesheet.line,name:"
+#, fuzzy
+msgctxt "model:timesheet.line,string:"
 msgid "Timesheet Line"
 msgstr "时间表明细"
 
-msgctxt "model:timesheet.line.enter.start,name:"
-msgid "Enter Lines"
-msgstr "输入行"
+#, fuzzy
+msgctxt "model:timesheet.line.enter.start,string:"
+msgid "Timesheet Line Enter Start"
+msgstr "时间表开始"
 
-msgctxt "model:timesheet.work,name:"
-msgid "Work"
-msgstr "工作"
+#, fuzzy
+msgctxt "model:timesheet.work,string:"
+msgid "Timesheet Work"
+msgstr "时间表"
 
-msgctxt "model:timesheet.work.context,name:"
-msgid "Work Context"
+#, fuzzy
+msgctxt "model:timesheet.work.context,string:"
+msgid "Timesheet Work Context"
 msgstr "工作环境"
 
 msgctxt "selection:res.user.application,application:"

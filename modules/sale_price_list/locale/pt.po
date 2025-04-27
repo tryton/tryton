@@ -55,12 +55,14 @@ msgctxt "help:sale.sale,price_list:"
 msgid "Use to compute the unit price of lines."
 msgstr "usado para computar o preço unitários das linhas."
 
-msgctxt "model:party.party.sale_price_list,name:"
+#, fuzzy
+msgctxt "model:party.party.sale_price_list,string:"
 msgid "Party Sale Price List"
 msgstr "Lista de Preço de Venda da Pessoa"
 
-msgctxt "model:sale.configuration.sale_price_list,name:"
-msgid "Sale Configuration Sale PriceList"
+#, fuzzy
+msgctxt "model:sale.configuration.sale_price_list,string:"
+msgid "Sale Configuration Sale Price List"
 msgstr "Configurações de Venda Lista de Preço de Venda"
 
 msgctxt "selection:product.price_list,unit:"

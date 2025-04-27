@@ -7,6 +7,10 @@ msgctxt "field:ir.action,action:"
 msgid "Action"
 msgstr "Toiming"
 
+msgctxt "field:ir.action,groups:"
+msgid "Groups"
+msgstr "Grupid"
+
 msgctxt "field:ir.action,icon:"
 msgid "Icon"
 msgstr "Ikoon"
@@ -30,6 +34,16 @@ msgstr "Tüüp"
 msgctxt "field:ir.action,usage:"
 msgid "Usage"
 msgstr "Kasutus"
+
+#, fuzzy
+msgctxt "field:ir.action-res.group,action:"
+msgid "Action"
+msgstr "Toiming"
+
+#, fuzzy
+msgctxt "field:ir.action-res.group,group:"
+msgid "Group"
+msgstr "Grupp"
 
 msgctxt "field:ir.action.act_window,act_window_domains:"
 msgid "Domains"
@@ -67,6 +81,10 @@ msgstr "Domeeni väärtus"
 msgctxt "field:ir.action.act_window,domains:"
 msgid "Domains"
 msgstr "Domeenid"
+
+msgctxt "field:ir.action.act_window,groups:"
+msgid "Groups"
+msgstr "Grupid"
 
 msgctxt "field:ir.action.act_window,icon:"
 msgid "Icon"
@@ -167,6 +185,10 @@ msgctxt "field:ir.action.keyword,action:"
 msgid "Action"
 msgstr "Toiming"
 
+msgctxt "field:ir.action.keyword,groups:"
+msgid "Groups"
+msgstr "Grupid"
+
 msgctxt "field:ir.action.keyword,keyword:"
 msgid "Keyword"
 msgstr "Märksõna"
@@ -186,6 +208,10 @@ msgstr "Otsetrükk"
 msgctxt "field:ir.action.report,extension:"
 msgid "Extension"
 msgstr "Laiendus"
+
+msgctxt "field:ir.action.report,groups:"
+msgid "Groups"
+msgstr "Grupid"
 
 msgctxt "field:ir.action.report,icon:"
 msgid "Icon"
@@ -279,6 +305,10 @@ msgctxt "field:ir.action.url,action:"
 msgid "Action"
 msgstr "Toiming"
 
+msgctxt "field:ir.action.url,groups:"
+msgid "Groups"
+msgstr "Grupid"
+
 msgctxt "field:ir.action.url,icon:"
 msgid "Icon"
 msgstr "Ikoon"
@@ -311,6 +341,10 @@ msgstr "Kasutatavus"
 msgctxt "field:ir.action.wizard,action:"
 msgid "Action"
 msgstr "Toiming"
+
+msgctxt "field:ir.action.wizard,groups:"
+msgid "Groups"
+msgstr "Grupid"
 
 msgctxt "field:ir.action.wizard,icon:"
 msgid "Icon"
@@ -497,6 +531,61 @@ msgctxt "field:ir.calendar.month,name:"
 msgid "Name"
 msgstr "Nimi"
 
+msgctxt "field:ir.chat.channel,followers:"
+msgid "Followers"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:ir.chat.channel,resource:"
+msgid "Resource"
+msgstr "Ressurss"
+
+msgctxt "field:ir.chat.follower,author:"
+msgid "Author"
+msgstr ""
+
+msgctxt "field:ir.chat.follower,channel:"
+msgid "Channel"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:ir.chat.follower,email:"
+msgid "Email"
+msgstr "E-kiri"
+
+#, fuzzy
+msgctxt "field:ir.chat.follower,user:"
+msgid "User"
+msgstr "Kasutaja"
+
+#, fuzzy
+msgctxt "field:ir.chat.message,audience:"
+msgid "Audience"
+msgstr "Järjestus"
+
+msgctxt "field:ir.chat.message,author:"
+msgid "Author"
+msgstr ""
+
+msgctxt "field:ir.chat.message,channel:"
+msgid "Channel"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:ir.chat.message,content:"
+msgid "Content"
+msgstr "Sisu"
+
+#, fuzzy
+msgctxt "field:ir.chat.message,email:"
+msgid "Email"
+msgstr "E-kiri"
+
+#, fuzzy
+msgctxt "field:ir.chat.message,user:"
+msgid "User"
+msgstr "Kasutaja"
+
 msgctxt "field:ir.configuration,hostname:"
 msgid "Hostname"
 msgstr "Hostinimi"
@@ -504,6 +593,10 @@ msgstr "Hostinimi"
 msgctxt "field:ir.configuration,language:"
 msgid "language"
 msgstr "keel"
+
+msgctxt "field:ir.configuration,series:"
+msgid "Series"
+msgstr ""
 
 msgctxt "field:ir.cron,day:"
 msgid "Day"
@@ -715,8 +808,17 @@ msgctxt "field:ir.export,export_fields:"
 msgid "Fields"
 msgstr "Väljad"
 
+#, fuzzy
+msgctxt "field:ir.export,groups:"
+msgid "Groups"
+msgstr "Grupid"
+
 msgctxt "field:ir.export,header:"
 msgid "Header"
+msgstr ""
+
+msgctxt "field:ir.export,ignore_search_limit:"
+msgid "Ignore Search Limit"
 msgstr ""
 
 msgctxt "field:ir.export,name:"
@@ -736,6 +838,31 @@ msgstr "Ressurss"
 msgctxt "field:ir.export,user:"
 msgid "User"
 msgstr "Kasutaja"
+
+#, fuzzy
+msgctxt "field:ir.export,write_groups:"
+msgid "Modification Groups"
+msgstr "Viimati muudetud"
+
+#, fuzzy
+msgctxt "field:ir.export-res.group,export:"
+msgid "Export"
+msgstr "Eksport"
+
+#, fuzzy
+msgctxt "field:ir.export-res.group,group:"
+msgid "Group"
+msgstr "Grupp"
+
+#, fuzzy
+msgctxt "field:ir.export-write-res.group,export:"
+msgid "Export"
+msgstr "Eksport"
+
+#, fuzzy
+msgctxt "field:ir.export-write-res.group,group:"
+msgid "Group"
+msgstr "Grupp"
 
 msgctxt "field:ir.export.line,export:"
 msgid "Export"
@@ -801,6 +928,11 @@ msgctxt "field:ir.lang,negative_sign:"
 msgid "Negative Sign"
 msgstr "Negatiivne märk"
 
+#, fuzzy
+msgctxt "field:ir.lang,nplurals:"
+msgid "Number of plurals"
+msgstr "Kasutaja number"
+
 msgctxt "field:ir.lang,p_cs_precedes:"
 msgid "Positive Currency Symbol Precedes"
 msgstr "Sümbol, mis eelneb positiivsele valuutaväärtusele"
@@ -819,6 +951,10 @@ msgstr "Ülemkood"
 
 msgctxt "field:ir.lang,pg_text_search:"
 msgid "PostgreSQL Text Search Configuration"
+msgstr ""
+
+msgctxt "field:ir.lang,plural:"
+msgid "Plural"
 msgstr ""
 
 msgctxt "field:ir.lang,pm:"
@@ -846,6 +982,10 @@ msgctxt "field:ir.message,text:"
 msgid "Text"
 msgstr "Tekst"
 
+msgctxt "field:ir.message,text_plural:"
+msgid "Text Plural"
+msgstr ""
+
 msgctxt "field:ir.model,fields:"
 msgid "Fields"
 msgstr "Väljad"
@@ -853,14 +993,6 @@ msgstr "Väljad"
 msgctxt "field:ir.model,global_search_p:"
 msgid "Global Search"
 msgstr "Üldine otsind"
-
-msgctxt "field:ir.model,info:"
-msgid "Information"
-msgstr "Informatsioon"
-
-msgctxt "field:ir.model,model:"
-msgid "Model Name"
-msgstr "Mudeli nimi"
 
 msgctxt "field:ir.model,module:"
 msgid "Module"
@@ -871,9 +1003,14 @@ msgctxt "field:ir.model,module_ref:"
 msgid "Module"
 msgstr "Moodul"
 
+#, fuzzy
 msgctxt "field:ir.model,name:"
-msgid "Model Description"
-msgstr "Mudeli kirjeldus"
+msgid "Name"
+msgstr "Nimetus"
+
+msgctxt "field:ir.model,string:"
+msgid "String"
+msgstr ""
 
 msgctxt "field:ir.model.access,description:"
 msgid "Description"
@@ -916,6 +1053,10 @@ msgctxt "field:ir.model.button,confirm:"
 msgid "Confirm"
 msgstr "Kinnita"
 
+msgctxt "field:ir.model.button,groups:"
+msgid "Groups"
+msgstr "Grupid"
+
 msgctxt "field:ir.model.button,help:"
 msgid "Help"
 msgstr "Abi"
@@ -957,6 +1098,16 @@ msgctxt "field:ir.model.button-button.reset,button_ruled:"
 msgid "Button Ruled"
 msgstr ""
 
+#, fuzzy
+msgctxt "field:ir.model.button-res.group,button:"
+msgid "Button"
+msgstr "Nupp"
+
+#, fuzzy
+msgctxt "field:ir.model.button-res.group,group:"
+msgid "Group"
+msgstr "Grupp"
+
 msgctxt "field:ir.model.button.click,button:"
 msgid "Button"
 msgstr "Nupp"
@@ -964,6 +1115,11 @@ msgstr "Nupp"
 msgctxt "field:ir.model.button.click,record_id:"
 msgid "Record ID"
 msgstr "Kirje ID"
+
+#, fuzzy
+msgctxt "field:ir.model.button.click,user:"
+msgid "User"
+msgstr "Kasutaja"
 
 msgctxt "field:ir.model.button.rule,button:"
 msgid "Button"
@@ -977,6 +1133,11 @@ msgctxt "field:ir.model.button.rule,description:"
 msgid "Description"
 msgstr "Kirjeldus"
 
+#, fuzzy
+msgctxt "field:ir.model.button.rule,group:"
+msgid "Group"
+msgstr "Grupp"
+
 msgctxt "field:ir.model.button.rule,number_user:"
 msgid "Number of User"
 msgstr "Kasutaja number"
@@ -985,13 +1146,14 @@ msgctxt "field:ir.model.data,db_id:"
 msgid "Resource ID"
 msgstr "Ressursi ID"
 
+#, fuzzy
+msgctxt "field:ir.model.data,field_names:"
+msgid "Field Names"
+msgstr "Välja nimi"
+
 msgctxt "field:ir.model.data,fs_id:"
 msgid "Identifier on File System"
 msgstr "Failisüsteemi identifikaator"
-
-msgctxt "field:ir.model.data,fs_values:"
-msgid "Values on File System"
-msgstr "Failisüsteemi väärtused"
 
 msgctxt "field:ir.model.data,model:"
 msgid "Model"
@@ -1015,22 +1177,10 @@ msgctxt "field:ir.model.data,noupdate:"
 msgid "No Update"
 msgstr "Ei ole uuendatud"
 
-msgctxt "field:ir.model.data,out_of_sync:"
-msgid "Out of Sync"
-msgstr "Sünkroonist väljas"
-
-msgctxt "field:ir.model.data,values:"
-msgid "Values"
-msgstr "Väärtused"
-
 #, fuzzy
 msgctxt "field:ir.model.field,access:"
 msgid "Access"
 msgstr "Ligipääs"
-
-msgctxt "field:ir.model.field,field_description:"
-msgid "Field Description"
-msgstr "Välja kirjeldus"
 
 msgctxt "field:ir.model.field,help:"
 msgid "Help"
@@ -1061,6 +1211,15 @@ msgstr "Nimi"
 msgctxt "field:ir.model.field,relation:"
 msgid "Model Relation"
 msgstr "Mudeli seos"
+
+#, fuzzy
+msgctxt "field:ir.model.field,relation_ref:"
+msgid "Relation"
+msgstr "Mudeli seos"
+
+msgctxt "field:ir.model.field,string:"
+msgid "String"
+msgstr ""
 
 msgctxt "field:ir.model.field,ttype:"
 msgid "Field Type"
@@ -1282,6 +1441,10 @@ msgctxt "field:ir.rule.group,global_p:"
 msgid "Global"
 msgstr "Globaalne"
 
+msgctxt "field:ir.rule.group,groups:"
+msgid "Groups"
+msgstr "Grupid"
+
 msgctxt "field:ir.rule.group,model:"
 msgid "Model"
 msgstr "Mudel"
@@ -1314,6 +1477,16 @@ msgstr "Kirjutamisõigus"
 msgctxt "field:ir.rule.group,rules:"
 msgid "Tests"
 msgstr "Testid"
+
+#, fuzzy
+msgctxt "field:ir.rule.group-res.group,group:"
+msgid "Group"
+msgstr "Grupp"
+
+#, fuzzy
+msgctxt "field:ir.rule.group-res.group,rule_group:"
+msgid "Rule Group"
+msgstr "Reegligrupp"
 
 msgctxt "field:ir.sequence,last_timestamp:"
 msgid "Last Timestamp"
@@ -1421,9 +1594,24 @@ msgctxt "field:ir.sequence.strict,type:"
 msgid "Type"
 msgstr "Tüüp"
 
+#, fuzzy
+msgctxt "field:ir.sequence.type,groups:"
+msgid "Groups"
+msgstr "Grupid"
+
 msgctxt "field:ir.sequence.type,name:"
 msgid "Sequence Name"
 msgstr "Järjestuse nimi"
+
+#, fuzzy
+msgctxt "field:ir.sequence.type-res.group,group:"
+msgid "Group"
+msgstr "Grupp"
+
+#, fuzzy
+msgctxt "field:ir.sequence.type-res.group,sequence_type:"
+msgid "Sequence Type"
+msgstr "Järjestuste tüübid"
 
 msgctxt "field:ir.session,key:"
 msgid "Key"
@@ -1475,12 +1663,32 @@ msgctxt "field:ir.translation,src:"
 msgid "Source"
 msgstr "Allikas"
 
+#, fuzzy
+msgctxt "field:ir.translation,src_plural:"
+msgid "Source Plural"
+msgstr "Allikas"
+
 msgctxt "field:ir.translation,type:"
 msgid "Type"
 msgstr "Tüüp"
 
 msgctxt "field:ir.translation,value:"
 msgid "Translation Value"
+msgstr "Tõlkeväärtus"
+
+#, fuzzy
+msgctxt "field:ir.translation,value_1:"
+msgid "Translation Value 1"
+msgstr "Tõlkeväärtus"
+
+#, fuzzy
+msgctxt "field:ir.translation,value_2:"
+msgid "Translation Value 2"
+msgstr "Tõlkeväärtus"
+
+#, fuzzy
+msgctxt "field:ir.translation,value_3:"
+msgid "Translation Value 3"
 msgstr "Tõlkeväärtus"
 
 msgctxt "field:ir.translation.export.result,file:"
@@ -1539,19 +1747,23 @@ msgctxt "field:ir.trigger,name:"
 msgid "Name"
 msgstr "Nimi"
 
-msgctxt "field:ir.trigger,on_create:"
+#, fuzzy
+msgctxt "field:ir.trigger,on_create_:"
 msgid "On Create"
 msgstr "Loomisel"
 
-msgctxt "field:ir.trigger,on_delete:"
+#, fuzzy
+msgctxt "field:ir.trigger,on_delete_:"
 msgid "On Delete"
 msgstr "Kustutamisel"
 
-msgctxt "field:ir.trigger,on_time:"
+#, fuzzy
+msgctxt "field:ir.trigger,on_time_:"
 msgid "On Time"
 msgstr "Õigeaegselt"
 
-msgctxt "field:ir.trigger,on_write:"
+#, fuzzy
+msgctxt "field:ir.trigger,on_write_:"
 msgid "On Write"
 msgstr "Kirjutamisel"
 
@@ -1609,6 +1821,10 @@ msgctxt "field:ir.ui.menu,favorites:"
 msgid "Favorites"
 msgstr "Lemmik"
 
+msgctxt "field:ir.ui.menu,groups:"
+msgid "Groups"
+msgstr "Grupid"
+
 msgctxt "field:ir.ui.menu,icon:"
 msgid "Icon"
 msgstr "Ikoon"
@@ -1620,6 +1836,16 @@ msgstr "Menüü"
 msgctxt "field:ir.ui.menu,parent:"
 msgid "Parent Menu"
 msgstr "Ülemmenüü"
+
+#, fuzzy
+msgctxt "field:ir.ui.menu-res.group,group:"
+msgid "Group"
+msgstr "Grupp"
+
+#, fuzzy
+msgctxt "field:ir.ui.menu-res.group,menu:"
+msgid "Menu"
+msgstr "Menüü"
 
 msgctxt "field:ir.ui.menu.favorite,menu:"
 msgid "Menu"
@@ -1801,6 +2027,11 @@ msgctxt "field:ir.ui.view_tree_width,model_ref:"
 msgid "Model"
 msgstr "Mudel"
 
+#, fuzzy
+msgctxt "field:ir.ui.view_tree_width,screen_width:"
+msgid "Screen Width"
+msgstr "Näita puu laiust"
+
 msgctxt "field:ir.ui.view_tree_width,user:"
 msgid "User"
 msgstr "Kasutaja"
@@ -1898,6 +2129,10 @@ msgid ""
 "record represented by \"self\"."
 msgstr ""
 
+msgctxt "help:ir.export,groups:"
+msgid "The user groups that can use the export."
+msgstr ""
+
 msgctxt "help:ir.export,header:"
 msgid "Check to include field names on the export."
 msgstr ""
@@ -1906,12 +2141,20 @@ msgctxt "help:ir.export,records:"
 msgid "The records on which the export runs."
 msgstr ""
 
+msgctxt "help:ir.export,write_groups:"
+msgid "The user groups that can modify the export."
+msgstr ""
+
 msgctxt "help:ir.lang,code:"
 msgid "RFC 4646 tag."
 msgstr ""
 
 msgctxt "help:ir.lang,parent:"
 msgid "Code of the exceptional parent"
+msgstr ""
+
+msgctxt "help:ir.lang,plural:"
+msgid "Python expression that returns the plural form for 'n'."
 msgstr ""
 
 #, fuzzy
@@ -1991,10 +2234,11 @@ msgctxt "help:ir.rule.group,name:"
 msgid "Displayed to users when access error is raised for this rule."
 msgstr "Näidatakse kasutajale kui rakendub ligipääsu vea reegel"
 
-#, fuzzy
 msgctxt "help:ir.rule.group,rules:"
-msgid "The rule is satisfied if at least one test is True."
-msgstr "Reegli nõuded on täidetud, kui vähemalt üks test on õige"
+msgid ""
+"The rule is satisfied if at least one test is True.\n"
+"If there is no test defined, the rule is always satisfied if not global."
+msgstr ""
 
 msgctxt "help:ir.sequence,prefix:"
 msgid ""
@@ -2020,6 +2264,10 @@ msgid ""
 "underscores: i.e: ${date_Y}"
 msgstr ""
 
+msgctxt "help:ir.sequence.type,groups:"
+msgid "Groups allowed to edit the sequences of this type."
+msgstr ""
+
 msgctxt "help:ir.trigger,condition:"
 msgid ""
 "A PYSON statement evaluated with record represented by \"self\"\n"
@@ -2042,10 +2290,6 @@ msgstr ""
 msgctxt "help:ir.ui.view_search,domain:"
 msgid "The PYSON domain."
 msgstr "PYSON domeen"
-
-msgctxt "model:ir.action,name:"
-msgid "Action"
-msgstr "Toiming"
 
 msgctxt "model:ir.action,name:act_action_act_window_form"
 msgid "Window Actions"
@@ -2144,10 +2388,6 @@ msgstr "Klikid"
 msgctxt "model:ir.action,name:act_model_button_form"
 msgid "Buttons"
 msgstr "Nupud"
-
-msgctxt "model:ir.action,name:act_model_data_form"
-msgid "Data"
-msgstr "Andmed"
 
 msgctxt "model:ir.action,name:act_model_field_access_form"
 msgid "Fields Access"
@@ -2276,13 +2516,20 @@ msgctxt "model:ir.action,name:wizard_translation_report"
 msgid "Translations"
 msgstr "Tõlked"
 
-msgctxt "model:ir.action.act_window,name:"
-msgid "Action act window"
-msgstr "Toimingu aken"
+#, fuzzy
+msgctxt "model:ir.action,string:"
+msgid "Action"
+msgstr "Toiming"
 
-msgctxt "model:ir.action.act_window.domain,name:"
-msgid "Action act window domain"
-msgstr "Toimingu akna domeen"
+#, fuzzy
+msgctxt "model:ir.action-res.group,string:"
+msgid "Action - Group"
+msgstr "Toimingu URL"
+
+#, fuzzy
+msgctxt "model:ir.action.act_window,string:"
+msgid "Action Act Window"
+msgstr "Toimingu aken"
 
 #, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_error_form_domain_all"
@@ -2300,16 +2547,6 @@ msgid "Processing"
 msgstr ""
 
 msgctxt ""
-"model:ir.action.act_window.domain,name:act_model_data_form_domain_all"
-msgid "All"
-msgstr "Kõik"
-
-msgctxt ""
-"model:ir.action.act_window.domain,name:act_model_data_form_domain_out_of_sync"
-msgid "Out of Sync"
-msgstr "Sünkroonist väljas"
-
-msgctxt ""
 "model:ir.action.act_window.domain,name:act_translation_form_domain_local"
 msgid "Local"
 msgstr "Kohalik"
@@ -2319,39 +2556,51 @@ msgctxt ""
 msgid "Modules"
 msgstr "Moodulid"
 
-msgctxt "model:ir.action.act_window.view,name:"
-msgid "Action act window view"
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,string:"
+msgid "Action Act Window Domain"
+msgstr "Toimingu akna domeen"
+
+#, fuzzy
+msgctxt "model:ir.action.act_window.view,string:"
+msgid "Action Act Window View"
 msgstr "Toimingu akna vaade"
 
-msgctxt "model:ir.action.keyword,name:"
-msgid "Action keyword"
-msgstr "Toimingu märksõna"
+#, fuzzy
+msgctxt "model:ir.action.keyword,string:"
+msgid "Action Keyword"
+msgstr "Toimingu märksõnad"
 
-msgctxt "model:ir.action.report,name:"
-msgid "Action report"
+#, fuzzy
+msgctxt "model:ir.action.report,string:"
+msgid "Action Report"
 msgstr "Toimingu aruanne"
 
-msgctxt "model:ir.action.url,name:"
-msgid "Action URL"
+#, fuzzy
+msgctxt "model:ir.action.url,string:"
+msgid "Action Url"
 msgstr "Toimingu URL"
 
-msgctxt "model:ir.action.wizard,name:"
-msgid "Action wizard"
+#, fuzzy
+msgctxt "model:ir.action.wizard,string:"
+msgid "Action Wizard"
 msgstr "Toimingu nõustaja"
 
-msgctxt "model:ir.attachment,name:"
+#, fuzzy
+msgctxt "model:ir.attachment,string:"
 msgid "Attachment"
 msgstr "Manus"
 
-msgctxt "model:ir.avatar,name:"
+msgctxt "model:ir.avatar,string:"
 msgid "Avatar"
 msgstr ""
 
-msgctxt "model:ir.avatar.cache,name:"
+msgctxt "model:ir.avatar.cache,string:"
 msgid "Avatar Cache"
 msgstr ""
 
-msgctxt "model:ir.cache,name:"
+#, fuzzy
+msgctxt "model:ir.cache,string:"
 msgid "Cache"
 msgstr "Vahemälu"
 
@@ -2383,10 +2632,6 @@ msgctxt "model:ir.calendar.day,abbreviation:Wednesday"
 msgid "Wed"
 msgstr "Kolmapäev"
 
-msgctxt "model:ir.calendar.day,name:"
-msgid "Day"
-msgstr "Päev"
-
 msgctxt "model:ir.calendar.day,name:Friday"
 msgid "Friday"
 msgstr "Reede"
@@ -2414,6 +2659,11 @@ msgstr "Teisipäev"
 msgctxt "model:ir.calendar.day,name:Wednesday"
 msgid "Wednesday"
 msgstr "Kolmapäev"
+
+#, fuzzy
+msgctxt "model:ir.calendar.day,string:"
+msgid "Calendar Day"
+msgstr "Kalender"
 
 msgctxt "model:ir.calendar.month,abbreviation:April"
 msgid "Apr"
@@ -2463,10 +2713,6 @@ msgctxt "model:ir.calendar.month,abbreviation:September"
 msgid "Sep"
 msgstr "Sept"
 
-msgctxt "model:ir.calendar.month,name:"
-msgid "Month"
-msgstr "Kuu"
-
 msgctxt "model:ir.calendar.month,name:April"
 msgid "April"
 msgstr "Aprill"
@@ -2515,55 +2761,85 @@ msgctxt "model:ir.calendar.month,name:September"
 msgid "September"
 msgstr "Semtember"
 
-msgctxt "model:ir.configuration,name:"
+#, fuzzy
+msgctxt "model:ir.calendar.month,string:"
+msgid "Calendar Month"
+msgstr "Kalender"
+
+msgctxt "model:ir.chat.channel,string:"
+msgid "Chat Channel"
+msgstr ""
+
+msgctxt "model:ir.chat.follower,string:"
+msgid "Chat Follower"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.chat.message,string:"
+msgid "Chat Message"
+msgstr "Sõnum"
+
+#, fuzzy
+msgctxt "model:ir.configuration,string:"
 msgid "Configuration"
 msgstr "Seadistus"
 
-msgctxt "model:ir.cron,name:"
+#, fuzzy
+msgctxt "model:ir.cron,string:"
 msgid "Cron"
 msgstr "Cron"
 
 #, fuzzy
-msgctxt "model:ir.cron.log,name:"
+msgctxt "model:ir.cron.log,string:"
 msgid "Cron Log"
 msgstr "Cron"
 
-msgctxt "model:ir.date,name:"
+#, fuzzy
+msgctxt "model:ir.date,string:"
 msgid "Date"
 msgstr "Kuupäev"
 
 #, fuzzy
-msgctxt "model:ir.email,name:"
+msgctxt "model:ir.email,string:"
 msgid "Email"
 msgstr "E-kiri"
 
-msgctxt "model:ir.email.address,name:"
+#, fuzzy
+msgctxt "model:ir.email.address,string:"
 msgid "Email Address"
-msgstr ""
+msgstr "E-kiri"
 
-msgctxt "model:ir.email.template,name:"
+#, fuzzy
+msgctxt "model:ir.email.template,string:"
 msgid "Email Template"
-msgstr ""
+msgstr "Malli laiendus"
 
-msgctxt "model:ir.email.template-ir.action.report,name:"
-msgid "Email Template - Report"
-msgstr ""
+#, fuzzy
+msgctxt "model:ir.email.template-ir.action.report,string:"
+msgid "Email Template - Action Report"
+msgstr "Malli laiendus"
 
-msgctxt "model:ir.error,name:"
+msgctxt "model:ir.error,string:"
 msgid "Error"
 msgstr ""
 
-msgctxt "model:ir.export,name:"
+#, fuzzy
+msgctxt "model:ir.export,string:"
 msgid "Export"
 msgstr "Eksport"
 
-msgctxt "model:ir.export.line,name:"
-msgid "Export line"
-msgstr "Ekspordi rida"
+msgctxt "model:ir.export-res.group,string:"
+msgid "Export - Group"
+msgstr ""
 
-msgctxt "model:ir.lang,name:"
-msgid "Language"
-msgstr "Keel"
+msgctxt "model:ir.export-write-res.group,string:"
+msgid "Export - Write - Group"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.export.line,string:"
+msgid "Export Line"
+msgstr "Ekspordi rida"
 
 msgctxt "model:ir.lang,name:lang_bg"
 msgid "Bulgarian"
@@ -2667,11 +2943,17 @@ msgid "Chinese Simplified"
 msgstr "Lihtsustatud Hiina"
 
 #, fuzzy
-msgctxt "model:ir.lang.config.start,name:"
-msgid "Configure languages"
-msgstr "Moodulite seadistus"
+msgctxt "model:ir.lang,string:"
+msgid "Language"
+msgstr "Keel"
 
-msgctxt "model:ir.message,name:"
+#, fuzzy
+msgctxt "model:ir.lang.config.start,string:"
+msgid "Lang Config Start"
+msgstr "Mooduli seadistus"
+
+#, fuzzy
+msgctxt "model:ir.message,string:"
 msgid "Message"
 msgstr "Sõnum"
 
@@ -2779,6 +3061,27 @@ msgid "The name of cache must be unique."
 msgstr "Vaikimisi keel peab olema tõlgitav."
 
 #, python-format
+msgctxt "model:ir.message,text:msg_chat_author_email_invalid"
+msgid "The email address \"%(email)s\" is not valid."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_chat_channel_resource_unique"
+msgid "Only one channel per resource is allowed."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_chat_follower_channel_email_unique"
+msgid "An email can follow a channel only once."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_chat_follower_channel_user_unique"
+msgid "A user can follow a channel only once."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_chat_user_or_email"
+msgid "Only user or email can be filled."
+msgstr ""
+
+#, python-format
 msgctxt "model:ir.message,text:msg_context_datetime"
 msgid "At date/time: %(datetime)s"
 msgstr ""
@@ -2829,6 +3132,10 @@ msgstr "Puhasta"
 
 msgctxt "model:ir.message,text:msg_dict_schema_char"
 msgid "Char"
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_dict_schema_color"
+msgid "Color"
 msgstr ""
 
 #, fuzzy
@@ -2946,7 +3253,7 @@ msgstr ""
 msgctxt "model:ir.message,text:msg_digits_validation_record"
 msgid ""
 "The number of digits in the value \"%(value)r\" for field \"%(field)s\" in "
-"record \"%(record)s\" of \"%(model)s\" exceeds the limit of \"%(digits)i\"."
+"record \"%(record)s\" of \"%(model)s\" exceeds the limit of \"%(digits)r\"."
 msgstr "Väärtust \"%(value)s\" väljale \"%(field)s\" mudelis \"%(model)s\" ei eksisteeri."
 
 #, fuzzy, python-format
@@ -3068,6 +3375,22 @@ msgstr "\"%(language)s\" keele jaoks vale kuupäeva formaat \"%(format)s\"."
 msgctxt "model:ir.message,text:msg_language_invalid_grouping"
 msgid "Invalid grouping \"%(grouping)s\" for language \"%(language)s\"."
 msgstr "Keele \"%(language)s\" jaoks keelatud grupeerimine \"%(grouping)s\"."
+
+#, fuzzy, python-format
+msgctxt "model:ir.message,text:msg_language_plural_invalid"
+msgid ""
+"Invalid plural \"%(plural)s\" for language \"%(language)s\" with exception "
+"\"%(exception)s\" and n %(n)r."
+msgstr "Toimingu \"%(action)s\" jaoks keelatud kontekst \"%(context)s\"."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_model_data_db_id_model_unique"
+msgid "The database ID must be unique per model."
+msgstr "Vaikimisi keel peab olema tõlgitav."
+
+msgctxt "model:ir.message,text:msg_model_data_xml_id_module_unique"
+msgid "The XML ID must be unique per module."
+msgstr ""
 
 #, python-format
 msgctxt "model:ir.message,text:msg_model_invalid_condition"
@@ -3354,12 +3677,14 @@ msgctxt "model:ir.message,text:msg_xml_id"
 msgid "XML ID"
 msgstr ""
 
-msgctxt "model:ir.model,name:"
+#, fuzzy
+msgctxt "model:ir.model,string:"
 msgid "Model"
 msgstr "Mudel"
 
-msgctxt "model:ir.model.access,name:"
-msgid "Model access"
+#, fuzzy
+msgctxt "model:ir.model.access,string:"
+msgid "Model Access"
 msgstr "Mudeli ligipääs"
 
 msgctxt "model:ir.model.button,confirm:lang_load_translations_button"
@@ -3370,7 +3695,8 @@ msgctxt "model:ir.model.button,confirm:lang_unload_translations_button"
 msgid "Are you sure you want to remove languages' translations?"
 msgstr ""
 
-msgctxt "model:ir.model.button,name:"
+#, fuzzy
+msgctxt "model:ir.model.button,string:"
 msgid "Model Button"
 msgstr "Mudeli nupp"
 
@@ -3402,10 +3728,6 @@ msgctxt "model:ir.model.button,string:lang_unload_translations_button"
 msgid "Unload translations"
 msgstr "Eemalda tõlge"
 
-msgctxt "model:ir.model.button,string:model_data_sync_button"
-msgid "Sync"
-msgstr "Sünkroniseeri"
-
 msgctxt "model:ir.model.button,string:module_activate_button"
 msgid "Mark for Activation"
 msgstr "Märgista aktiveerimiseks"
@@ -3434,163 +3756,226 @@ msgctxt "model:ir.model.button,string:view_show_button"
 msgid "Show"
 msgstr "Näita"
 
-msgctxt "model:ir.model.button-button.reset,name:"
-msgid "Model Button Reset"
+#, fuzzy
+msgctxt "model:ir.model.button-button.reset,string:"
+msgid "Model Button - Button Reset"
 msgstr "Mudeli nupu algseadistamine"
 
-msgctxt "model:ir.model.button.click,name:"
+#, fuzzy
+msgctxt "model:ir.model.button-res.group,string:"
+msgid "Model Button - Group"
+msgstr "Mudeli nupu reegel"
+
+#, fuzzy
+msgctxt "model:ir.model.button.click,string:"
 msgid "Model Button Click"
 msgstr "Mudeli nupu vajutus"
 
-msgctxt "model:ir.model.button.rule,name:"
+#, fuzzy
+msgctxt "model:ir.model.button.rule,string:"
 msgid "Model Button Rule"
 msgstr "Mudeli nupu reegel"
 
-msgctxt "model:ir.model.data,name:"
-msgid "Model data"
+#, fuzzy
+msgctxt "model:ir.model.data,string:"
+msgid "Model Data"
 msgstr "Mudeli andmed"
 
-msgctxt "model:ir.model.field,name:"
-msgid "Model field"
+#, fuzzy
+msgctxt "model:ir.model.field,string:"
+msgid "Model Field"
 msgstr "Mudeli väli"
 
-msgctxt "model:ir.model.field.access,name:"
+#, fuzzy
+msgctxt "model:ir.model.field.access,string:"
 msgid "Model Field Access"
 msgstr "Mudeli välja ligipääs"
 
 #, fuzzy
-msgctxt "model:ir.model.log,name:"
-msgid "Log"
-msgstr "Lao"
+msgctxt "model:ir.model.log,string:"
+msgid "Model Log"
+msgstr "Mudel"
 
-msgctxt "model:ir.model.print_model_graph.start,name:"
-msgid "Print Model Graph"
+#, fuzzy
+msgctxt "model:ir.model.print_model_graph.start,string:"
+msgid "Model Print Model Graph Start"
 msgstr "Prindi mudeli graafik"
 
-msgctxt "model:ir.module,name:"
+#, fuzzy
+msgctxt "model:ir.module,string:"
 msgid "Module"
 msgstr "Moodul"
 
-msgctxt "model:ir.module.activate_upgrade.done,name:"
+#, fuzzy
+msgctxt "model:ir.module.activate_upgrade.done,string:"
 msgid "Module Activate Upgrade Done"
 msgstr "Mooduli aktiveerimise uuendus lõpetatud"
 
-msgctxt "model:ir.module.activate_upgrade.start,name:"
+#, fuzzy
+msgctxt "model:ir.module.activate_upgrade.start,string:"
 msgid "Module Activate Upgrade Start"
 msgstr "Mooduli aktiveerimise uuendus alustatud"
 
 #, fuzzy
-msgctxt "model:ir.module.config.start,name:"
-msgid "Configure Modules"
-msgstr "Moodulite seadistus"
+msgctxt "model:ir.module.config.start,string:"
+msgid "Module Config Start"
+msgstr "Mooduli seadistus"
 
-msgctxt "model:ir.module.config_wizard.done,name:"
+#, fuzzy
+msgctxt "model:ir.module.config_wizard.done,string:"
 msgid "Module Config Wizard Done"
 msgstr "Mudeli seadistamise viisard valmis"
 
-msgctxt "model:ir.module.config_wizard.first,name:"
+#, fuzzy
+msgctxt "model:ir.module.config_wizard.first,string:"
 msgid "Module Config Wizard First"
 msgstr "Mudeli seadistamise viisard esimene"
 
-msgctxt "model:ir.module.config_wizard.item,name:"
-msgid "Config wizard to run after activating a module"
-msgstr "Seadista viisard, et käivitada peale mooduli aktiveerimist"
+#, fuzzy
+msgctxt "model:ir.module.config_wizard.item,string:"
+msgid "Module Config Wizard Item"
+msgstr "Mudeli seadistamise viisard, muu"
 
-msgctxt "model:ir.module.config_wizard.other,name:"
+#, fuzzy
+msgctxt "model:ir.module.config_wizard.other,string:"
 msgid "Module Config Wizard Other"
 msgstr "Mudeli seadistamise viisard, muu"
 
-msgctxt "model:ir.module.dependency,name:"
-msgid "Module dependency"
+#, fuzzy
+msgctxt "model:ir.module.dependency,string:"
+msgid "Module Dependency"
 msgstr "Mooduli sõltuvus"
 
-msgctxt "model:ir.note,name:"
+#, fuzzy
+msgctxt "model:ir.note,string:"
 msgid "Note"
-msgstr "Märkus"
+msgstr "Märge"
 
-msgctxt "model:ir.note.read,name:"
+#, fuzzy
+msgctxt "model:ir.note.read,string:"
 msgid "Note Read"
 msgstr "Lugemata"
 
-msgctxt "model:ir.queue,name:"
+#, fuzzy
+msgctxt "model:ir.queue,string:"
 msgid "Queue"
 msgstr "Järjekorras"
 
-msgctxt "model:ir.rule,name:"
+#, fuzzy
+msgctxt "model:ir.rule,string:"
 msgid "Rule"
 msgstr "Reegel"
 
-msgctxt "model:ir.rule.group,name:"
-msgid "Rule group"
+msgctxt "model:ir.rule.group,name:rule_group_action"
+msgid "User in groups"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_sequence"
+msgid "User in groups"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_sequence_strict"
+msgid "User in groups"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_ui_menu"
+msgid "User in groups"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.rule.group,string:"
+msgid "Rule Group"
 msgstr "Reegligrupp"
 
-msgctxt "model:ir.sequence,name:"
+#, fuzzy
+msgctxt "model:ir.rule.group-res.group,string:"
+msgid "Rule Group - Group"
+msgstr "Reegligrupp"
+
+#, fuzzy
+msgctxt "model:ir.sequence,string:"
 msgid "Sequence"
-msgstr "Jada"
+msgstr "Järjestus"
 
-msgctxt "model:ir.sequence.strict,name:"
-msgid "Sequence Strict"
-msgstr "Järjestuste rangus"
+#, fuzzy
+msgctxt "model:ir.sequence.strict,string:"
+msgid "Sequence"
+msgstr "Järjestus"
 
-msgctxt "model:ir.sequence.type,name:"
-msgid "Sequence type"
-msgstr "Jada tüüp"
+#, fuzzy
+msgctxt "model:ir.sequence.type,string:"
+msgid "Sequence Type"
+msgstr "Järjestuste tüübid"
 
-msgctxt "model:ir.session,name:"
+#, fuzzy
+msgctxt "model:ir.sequence.type-res.group,string:"
+msgid "Sequence Type - Group"
+msgstr "Järjestuste tüübid"
+
+#, fuzzy
+msgctxt "model:ir.session,string:"
 msgid "Session"
 msgstr "Sessioon"
 
-msgctxt "model:ir.session.wizard,name:"
+#, fuzzy
+msgctxt "model:ir.session.wizard,string:"
 msgid "Session Wizard"
 msgstr "Sessiooni viisard"
 
-msgctxt "model:ir.translation,name:"
+#, fuzzy
+msgctxt "model:ir.translation,string:"
 msgid "Translation"
 msgstr "Tõlge"
 
-msgctxt "model:ir.translation.clean.start,name:"
-msgid "Clean translation"
-msgstr "Eemalda tõlge"
+#, fuzzy
+msgctxt "model:ir.translation.clean.start,string:"
+msgid "Translation Clean Start"
+msgstr "Tõlkeväärtus"
 
-msgctxt "model:ir.translation.clean.succeed,name:"
-msgid "Clean translation"
-msgstr "Eemalda tõlge"
+#, fuzzy
+msgctxt "model:ir.translation.clean.succeed,string:"
+msgid "Translation Clean Succeed"
+msgstr "Tõlkeväärtus"
 
-msgctxt "model:ir.translation.export.result,name:"
-msgid "Export translation"
-msgstr "Ekspordi tõlge"
+#, fuzzy
+msgctxt "model:ir.translation.export.result,string:"
+msgid "Translation Export Result"
+msgstr "Tõlked"
 
-msgctxt "model:ir.translation.export.start,name:"
-msgid "Export translation"
-msgstr "Ekspordi tõlge"
+#, fuzzy
+msgctxt "model:ir.translation.export.start,string:"
+msgid "Translation Export Start"
+msgstr "Tõlkeväärtus"
 
-msgctxt "model:ir.translation.set.start,name:"
-msgid "Set Translation"
-msgstr "Määra tõlge"
+#, fuzzy
+msgctxt "model:ir.translation.set.start,string:"
+msgid "Translation Set Start"
+msgstr "Tõlge"
 
-msgctxt "model:ir.translation.set.succeed,name:"
-msgid "Set Translation"
-msgstr "Määra tõlge"
+#, fuzzy
+msgctxt "model:ir.translation.set.succeed,string:"
+msgid "Translation Set Succeed"
+msgstr "Tõlkeväärtus"
 
-msgctxt "model:ir.translation.update.start,name:"
-msgid "Update translation"
-msgstr "Uuenda tõlge"
+#, fuzzy
+msgctxt "model:ir.translation.update.start,string:"
+msgid "Translation Update Start"
+msgstr "Tõlkeväärtus"
 
-msgctxt "model:ir.trigger,name:"
+#, fuzzy
+msgctxt "model:ir.trigger,string:"
 msgid "Trigger"
 msgstr "Päästik"
 
-msgctxt "model:ir.trigger.log,name:"
+#, fuzzy
+msgctxt "model:ir.trigger.log,string:"
 msgid "Trigger Log"
 msgstr "Päästiku logi"
 
-msgctxt "model:ir.ui.icon,name:"
-msgid "Icon"
+#, fuzzy
+msgctxt "model:ir.ui.icon,string:"
+msgid "Ui Icon"
 msgstr "Ikoon"
-
-msgctxt "model:ir.ui.menu,name:"
-msgid "UI menu"
-msgstr "Kasutajaliidese menüü"
 
 msgctxt "model:ir.ui.menu,name:menu_act_action"
 msgid "Actions"
@@ -3684,10 +4069,6 @@ msgctxt "model:ir.ui.menu,name:menu_model_button_form"
 msgid "Buttons"
 msgstr "Nupud"
 
-msgctxt "model:ir.ui.menu,name:menu_model_data_form"
-msgid "Data"
-msgstr "Andmed"
-
 msgctxt "model:ir.ui.menu,name:menu_model_field_access_form"
 msgid "Fields Access"
 msgstr "Välja ligipääs"
@@ -3776,33 +4157,49 @@ msgctxt "model:ir.ui.menu,name:model_model_fields_form"
 msgid "Fields"
 msgstr "Väljad"
 
-msgctxt "model:ir.ui.menu.favorite,name:"
-msgid "Menu Favorite"
+#, fuzzy
+msgctxt "model:ir.ui.menu,string:"
+msgid "Ui Menu"
+msgstr "Menüü"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu-res.group,string:"
+msgid "Ui Menu - Group"
+msgstr "Menüü"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu.favorite,string:"
+msgid "Ui Menu Favorite"
 msgstr "Menüü lemmik"
 
-msgctxt "model:ir.ui.view,name:"
-msgid "View"
+#, fuzzy
+msgctxt "model:ir.ui.view,string:"
+msgid "Ui View"
 msgstr "Vaade"
 
-msgctxt "model:ir.ui.view.show.start,name:"
-msgid "Show view"
-msgstr "Näita vaadet"
+#, fuzzy
+msgctxt "model:ir.ui.view.show.start,string:"
+msgid "Ui View Show Start"
+msgstr "Vaata puu olekut"
 
-msgctxt "model:ir.ui.view_search,name:"
-msgid "View Search"
+#, fuzzy
+msgctxt "model:ir.ui.view_search,string:"
+msgid "Ui View Search"
 msgstr "Vaate otsing"
 
 #, fuzzy
-msgctxt "model:ir.ui.view_tree_optional,name:"
-msgid "View Tree Optional"
+msgctxt "model:ir.ui.view_tree_optional,string:"
+msgid "Ui View Tree Optional"
 msgstr "Vaata puu olekut"
 
-msgctxt "model:ir.ui.view_tree_state,name:"
-msgid "View Tree State"
+#, fuzzy
+msgctxt "model:ir.ui.view_tree_state,string:"
+msgid "Ui View Tree State"
 msgstr "Vaata puu olekut"
 
-msgctxt "model:ir.ui.view_tree_width,name:"
-msgid "View Tree Width"
+#, fuzzy
+msgctxt "model:ir.ui.view_tree_width,string:"
+msgid "Ui View Tree Width"
 msgstr "Näita puu laiust"
 
 #, fuzzy
@@ -3997,6 +4394,15 @@ msgstr "Andmed"
 msgctxt "selection:ir.attachment,type:"
 msgid "Link"
 msgstr "Link"
+
+#, fuzzy
+msgctxt "selection:ir.chat.message,audience:"
+msgid "Internal"
+msgstr "Sisemine nimi"
+
+msgctxt "selection:ir.chat.message,audience:"
+msgid "Public"
+msgstr ""
 
 msgctxt "selection:ir.cron,interval_type:"
 msgid "Days"
@@ -4372,15 +4778,6 @@ msgstr "Aeg"
 msgctxt "view:ir.note:"
 msgid "User"
 msgstr "Kasutaja"
-
-msgctxt "view:ir.rule.group:"
-msgid ""
-"If there is no test defined, the rule is always satisfied if not global."
-msgstr ""
-
-msgctxt "view:ir.rule.group:"
-msgid "The rule is satisfied if at least one test is True."
-msgstr "Reegel kehtib, kui vähemasti üks test õnnestub."
 
 msgctxt "view:ir.translation.clean.start:"
 msgid "Clean Translations?"

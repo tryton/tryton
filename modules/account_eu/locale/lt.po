@@ -46,12 +46,14 @@ msgctxt "field:account.tax.template,ec_sales_list_code:"
 msgid "EC Sales List Code"
 msgstr "ES pardavimų sąrašo kodas"
 
-msgctxt "model:account.ec_sales_list,name:"
-msgid "EC Sales List"
+#, fuzzy
+msgctxt "model:account.ec_sales_list,string:"
+msgid "Account Ec Sales List"
 msgstr "ES pardavimų sąrašas"
 
-msgctxt "model:account.ec_sales_list.context,name:"
-msgid "EC Sales List Context"
+#, fuzzy
+msgctxt "model:account.ec_sales_list.context,string:"
+msgid "Account Ec Sales List Context"
 msgstr "ES pardavimų sąrašo kontekstas"
 
 msgctxt "model:ir.action,name:act_ec_sales_list_form"

@@ -39,9 +39,9 @@ msgstr ""
 "La méthode par défaut de regroupement des factures pour les nouveaux "
 "clients."
 
-msgctxt "model:party.party.sale_invoice_grouping_method,name:"
+msgctxt "model:party.party.sale_invoice_grouping_method,string:"
 msgid "Party Sale Invoice Grouping Method"
-msgstr "Tiers Méthode de regroupement des factures de vente"
+msgstr "Méthode de regroupement des factures de vente de tiers"
 
 msgctxt "selection:party.party,sale_invoice_grouping_method:"
 msgid "None"

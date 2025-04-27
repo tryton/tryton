@@ -106,6 +106,14 @@ msgctxt "field:account.statement.journal,journal:"
 msgid "Journal"
 msgstr "Journal"
 
+msgctxt "field:account.statement.journal,last_amount:"
+msgid "Last Amount"
+msgstr "Dernier montant"
+
+msgctxt "field:account.statement.journal,last_date:"
+msgid "Last Date"
+msgstr "Dernière date"
+
 msgctxt "field:account.statement.journal,name:"
 msgid "Name"
 msgstr "Nom"
@@ -294,33 +302,33 @@ msgctxt "model:account.journal,name:journal_statement"
 msgid "Statement"
 msgstr "Relevé"
 
-msgctxt "model:account.statement,name:"
+msgctxt "model:account.statement,string:"
 msgid "Account Statement"
 msgstr "Relevé comptable"
 
-msgctxt "model:account.statement.import.start,name:"
-msgid "Statement Import Start"
-msgstr "Importer un relevé"
+msgctxt "model:account.statement.import.start,string:"
+msgid "Account Statement Import Start"
+msgstr "Relevé comptable Importer Début"
 
-msgctxt "model:account.statement.journal,name:"
-msgid "Statement Journal"
-msgstr "Journal de relevés"
+msgctxt "model:account.statement.journal,string:"
+msgid "Account Statement Journal"
+msgstr "Journal de relevé comptable"
 
-msgctxt "model:account.statement.line,name:"
+msgctxt "model:account.statement.line,string:"
 msgid "Account Statement Line"
 msgstr "Ligne de relevé comptable"
 
-msgctxt "model:account.statement.line.group,name:"
+msgctxt "model:account.statement.line.group,string:"
 msgid "Account Statement Line Group"
 msgstr "Groupe de lignes de relevé comptable"
 
-msgctxt "model:account.statement.origin,name:"
+msgctxt "model:account.statement.origin,string:"
 msgid "Account Statement Origin"
 msgstr "Origine de relevé comptable"
 
-msgctxt "model:account.statement.origin.information,name:"
-msgid "Statement Origin Information"
-msgstr "Information de l'origine du relevé"
+msgctxt "model:account.statement.origin.information,string:"
+msgid "Account Statement Origin Information"
+msgstr "Information d'origine de relevé comptable"
 
 msgctxt "model:ir.action,name:act_line_group_form"
 msgid "Line Groups"
@@ -347,6 +355,10 @@ msgid "Statements"
 msgstr "Relevés"
 
 msgctxt "model:ir.action,name:act_statement_journal_form"
+msgid "Statement Journals"
+msgstr "Journaux de relevés"
+
+msgctxt "model:ir.action,name:act_statement_journal_list_reporting"
 msgid "Statement Journals"
 msgstr "Journaux de relevés"
 
@@ -549,6 +561,10 @@ msgid "Import Statement"
 msgstr "Importer un relevé"
 
 msgctxt "model:ir.ui.menu,name:menu_statement_journal_form"
+msgid "Statement Journals"
+msgstr "Journaux de relevés"
+
+msgctxt "model:ir.ui.menu,name:menu_statement_journal_reporting"
 msgid "Statement Journals"
 msgstr "Journaux de relevés"
 

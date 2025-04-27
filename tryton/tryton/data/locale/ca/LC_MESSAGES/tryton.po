@@ -6,6 +6,12 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgid "Make this an _internal message"
+msgstr ""
+
+msgid "Send"
+msgstr "Envia"
+
 msgid "specify alternate config file"
 msgstr "Indica un fitxer de configuració alternatiu"
 
@@ -127,9 +133,6 @@ msgstr "URL de comprovació: %s"
 
 msgid "Unable to check for new version."
 msgstr "No s'ha pogut comprovar si existeix una nova versió."
-
-msgid "A new version is available!"
-msgstr "Hi ha una nova versió disponible!"
 
 msgid "Download"
 msgstr "Baixa"
@@ -623,9 +626,6 @@ msgstr "Adjunts"
 msgid "Files"
 msgstr "Fitxers"
 
-msgid "Send"
-msgstr "Envia"
-
 msgid "Select File"
 msgstr "Selecciona un fitxer"
 
@@ -832,6 +832,13 @@ msgstr "_Notes..."
 msgid "Add a note to the record"
 msgstr "Afegeix una nota al registre"
 
+msgid "C_hat"
+msgstr ""
+
+#, fuzzy
+msgid "Chat on the record"
+msgstr "Afegeix una nota al registre"
+
 msgid "_Actions..."
 msgstr "_Accions..."
 
@@ -948,13 +955,11 @@ msgstr "Quin és el nom d'aquesta exportació?"
 msgid "Override '%s' definition?"
 msgstr "Voleu sobreescriure la definició de '%s'?"
 
-#, python-format
+#, fuzzy, python-format
 msgid "%d record saved."
-msgstr "S'ha desat %d registre."
-
-#, python-format
-msgid "%d records saved."
-msgstr "S'han desat %d registres."
+msgid_plural "%d records saved."
+msgstr[0] "S'ha desat %d registre."
+msgstr[1] "S'ha desat %d registre."
 
 msgid "Export failed"
 msgstr "Ha fallat l'exportació"
@@ -1033,13 +1038,11 @@ msgstr "Error"
 msgid "Import failed"
 msgstr "Ha fallat la importació"
 
-#, python-format
+#, fuzzy, python-format
 msgid "%d record imported."
-msgstr "S'ha importat %d registre."
-
-#, python-format
-msgid "%d records imported."
-msgstr "S'han importat %d registres."
+msgid_plural "%d records imported."
+msgstr[0] "S'ha importat %d registre."
+msgstr[1] "S'ha importat %d registre."
 
 msgid "Search"
 msgstr "Cerca"
@@ -1110,6 +1113,10 @@ msgstr "Anomena i desa"
 
 msgid "Image size too large."
 msgstr "La mida de la imatge és massa gran."
+
+#, fuzzy
+msgid "Reset Column Widths"
+msgstr "Guarda l'ample de la columna"
 
 msgid "Copy"
 msgstr "Copia"
@@ -1188,6 +1195,10 @@ msgstr "Tots els fitxers"
 
 msgid "Show plain text"
 msgstr "Mostra com a text pla"
+
+#, fuzzy, python-format
+msgid "Select a color for \"%s\""
+msgstr "Seleccioneu un color"
 
 msgid "Add value"
 msgstr "Afegeix un valor"

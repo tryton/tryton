@@ -177,19 +177,22 @@ msgctxt "model:ir.ui.menu,name:menu_advance_payment_term"
 msgid "Advance Payment Terms"
 msgstr "Ettemaksu tingimused"
 
-msgctxt "model:sale.advance_payment.condition,name:"
-msgid "Advance Payment Condition"
-msgstr "Ettemaksu tingimus"
-
-msgctxt "model:sale.advance_payment_term,name:"
-msgid "Advance Payment Term"
+#, fuzzy
+msgctxt "model:sale.advance_payment.condition,string:"
+msgid "Sale Advance Payment Condition"
 msgstr "Ettemaksu tingimus"
 
 #, fuzzy
-msgctxt "model:sale.advance_payment_term.line,name:"
-msgid "Advance Payment Term Line"
+msgctxt "model:sale.advance_payment_term,string:"
+msgid "Sale Advance Payment Term"
 msgstr "Ettemaksu tingimus"
 
-msgctxt "model:sale.advance_payment_term.line.account,name:"
-msgid "Advance Payment Term Line Account"
-msgstr ""
+#, fuzzy
+msgctxt "model:sale.advance_payment_term.line,string:"
+msgid "Sale Advance Payment Term Line"
+msgstr "Ettemaksu tingimus"
+
+#, fuzzy
+msgctxt "model:sale.advance_payment_term.line.account,string:"
+msgid "Sale Advance Payment Term Line Account"
+msgstr "Ettemaksu tingimus"

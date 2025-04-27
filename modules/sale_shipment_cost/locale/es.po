@@ -126,8 +126,8 @@ msgstr ""
 "Para facturar el coste de envío del albarán %(shipment)s\", debe definir una"
 " cuenta de ingresos para el producto \"%(product)s\"."
 
-msgctxt "model:stock.shipment.cost_sale,name:"
-msgid "Shipment Cost Sale"
+msgctxt "model:stock.shipment.cost_sale,string:"
+msgid "Stock Shipment Cost Sale"
 msgstr "Costes de venta de los envíos"
 
 msgctxt "selection:sale.sale,shipment_cost_method:"

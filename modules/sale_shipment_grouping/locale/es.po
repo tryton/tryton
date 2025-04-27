@@ -37,7 +37,7 @@ msgid "The default shipment grouping method for new customers."
 msgstr ""
 "El método de agrupación de albaranes por defecto para los nuevos clientes."
 
-msgctxt "model:party.party.sale_shipment_grouping_method,name:"
+msgctxt "model:party.party.sale_shipment_grouping_method,string:"
 msgid "Party Sale Shipment Grouping Method"
 msgstr "Método agrupación albaranes de venta"
 

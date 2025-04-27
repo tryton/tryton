@@ -18,10 +18,9 @@ msgctxt "field:res.user.login.sms_code,user_id:"
 msgid "User ID"
 msgstr "ID do Usuário"
 
-#, fuzzy
 msgctxt "help:res.user,mobile:"
 msgid "Phone number that supports receiving SMS."
-msgstr "Número de telefone que pode receber SMS"
+msgstr "Número de telefone que pode receber SMS."
 
 #, python-format
 msgctxt "model:ir.message,text:msg_sms_text"
@@ -33,6 +32,6 @@ msgctxt "model:ir.message,text:msg_user_sms_code"
 msgid "SMS Code for %(login)s"
 msgstr ""
 
-msgctxt "model:res.user.login.sms_code,name:"
-msgid "SMS Code"
-msgstr "Código SMS"
+msgctxt "model:res.user.login.sms_code,string:"
+msgid "User Login Sms Code"
+msgstr ""

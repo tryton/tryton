@@ -14,10 +14,9 @@ msgctxt "field:production.work,timesheet_lines:"
 msgid "Timesheet Lines"
 msgstr "Linhas do Horário de Trabalho"
 
-#, fuzzy
 msgctxt "field:production.work,timesheet_work:"
 msgid "Timesheet Work"
-msgstr "Horários de Trabalho "
+msgstr "Trabalho com Planilha de Horas"
 
 msgctxt "field:production.work,timesheet_works:"
 msgid "Timesheet Works"

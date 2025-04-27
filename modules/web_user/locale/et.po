@@ -115,21 +115,23 @@ msgctxt "model:ir.ui.menu,name:menu_user_form"
 msgid "Web Users"
 msgstr ""
 
-msgctxt "model:web.user,name:"
+#, fuzzy
+msgctxt "model:web.user,string:"
 msgid "Web User"
+msgstr "Muutja"
+
+msgctxt "model:web.user-party.party.secondary,string:"
+msgid "Web User - Party Secondary"
 msgstr ""
 
-msgctxt "model:web.user-party.party.secondary,name:"
-msgid "Web User - Secondary Party"
+msgctxt "model:web.user.authenticate.attempt,string:"
+msgid "User Login Attempt"
 msgstr ""
 
-msgctxt "model:web.user.authenticate.attempt,name:"
-msgid "Web User Authenticate Attempt"
-msgstr ""
-
-msgctxt "model:web.user.session,name:"
+#, fuzzy
+msgctxt "model:web.user.session,string:"
 msgid "Web User Session"
-msgstr ""
+msgstr "Muutja"
 
 #, fuzzy
 msgctxt "report:web.user.email_reset_password:"

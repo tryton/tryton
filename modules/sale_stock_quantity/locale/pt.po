@@ -2,25 +2,24 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-#, fuzzy, python-format
+#, python-format
 msgctxt "model:ir.message,text:msg_product_forecast_quantity_lower"
 msgid ""
 "The forecast quantity (%(forecast_quantity)s) of product \"%(product)s\" is "
 "lower than the quantity (%(quantity)s)."
 msgstr ""
-"A quantidade prevista %(forecast_quantity)s%(default_uom)s da \"%(line)s\" é"
-" menor do que %(quantity)s%(unit)s."
+"A quantidade prevista %(forecast_quantity)s do produto \"%(product)s\" é "
+"menor do que (%(quantity)s)."
 
-#, fuzzy, python-format
+#, python-format
 msgctxt "model:ir.message,text:msg_sale_stock_quantity"
 msgid ""
 "The forcast quantity (%(forecast_quantity)s) for line \"%(line)s\" is lower "
 "than its quantity (%(quantity)s)."
 msgstr ""
-"A quantidade prevista %(forecast_quantity)s%(default_uom)s da \"%(line)s\" é"
-" menor do que %(quantity)s%(unit)s."
+"A quantidade prevista (%(forecast_quantity)s) para a linha \"%(line)s\" é "
+"menor do que (%(quantity)s)."
 
-#, fuzzy
 msgctxt "model:res.group,name:group_sale_stock_quantity"
 msgid "Sale Stock Quantity"
-msgstr "Sale Stock Quantity"
+msgstr "Quantidade em Estoque"

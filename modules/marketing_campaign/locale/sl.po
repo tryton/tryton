@@ -98,31 +98,38 @@ msgctxt "model:ir.ui.menu,name:menu_source_form"
 msgid "Sources"
 msgstr "Izvori"
 
-msgctxt "model:marketing.campaign,name:"
+#, fuzzy
+msgctxt "model:marketing.campaign,string:"
 msgid "Marketing Campaign"
 msgstr "Marketinška kampanija"
 
-msgctxt "model:marketing.medium,name:"
+#, fuzzy
+msgctxt "model:marketing.medium,string:"
 msgid "Marketing Medium"
 msgstr "Marketinški medij"
 
-msgctxt "model:marketing.source,name:"
+#, fuzzy
+msgctxt "model:marketing.source,string:"
 msgid "Marketing Source"
 msgstr "Marketinški izvor"
 
-msgctxt "model:sale.opportunity.reporting.marketing,name:"
-msgid "Sale Opportunity Reporting per Marketing"
+#, fuzzy
+msgctxt "model:sale.opportunity.reporting.marketing,string:"
+msgid "Sale Opportunity Reporting Marketing"
 msgstr "Poročanje prodajnih priložnosti po marketingu"
 
-msgctxt "model:sale.opportunity.reporting.marketing.context,name:"
+#, fuzzy
+msgctxt "model:sale.opportunity.reporting.marketing.context,string:"
 msgid "Sale Opportunity Reporting Context"
 msgstr "Konteks poročanja prodajnih priložnosti"
 
-msgctxt "model:sale.reporting.marketing,name:"
-msgid "Sale Reporting per Marketing"
+#, fuzzy
+msgctxt "model:sale.reporting.marketing,string:"
+msgid "Sale Reporting Marketing"
 msgstr "Poročanje prodaje po marketingu"
 
-msgctxt "model:sale.reporting.marketing.context,name:"
+#, fuzzy
+msgctxt "model:sale.reporting.marketing.context,string:"
 msgid "Sale Reporting Context"
 msgstr "Kontekst poročanja prodaje"
 

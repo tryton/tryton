@@ -95,14 +95,6 @@ msgctxt "field:stock.forecast.line,unit:"
 msgid "Unit"
 msgstr ""
 
-msgctxt "field:stock.forecast.line-stock.move,line:"
-msgid "Forecast Line"
-msgstr ""
-
-msgctxt "field:stock.forecast.line-stock.move,move:"
-msgid "Move"
-msgstr ""
-
 msgctxt "help:stock.forecast.line,product_uom_category:"
 msgid "The category of Unit of Measure for the product."
 msgstr ""
@@ -168,20 +160,16 @@ msgctxt "model:res.group,name:group_stock_forecast"
 msgid "Stock Forecast"
 msgstr ""
 
-msgctxt "model:stock.forecast,name:"
+msgctxt "model:stock.forecast,string:"
 msgid "Stock Forecast"
 msgstr ""
 
-msgctxt "model:stock.forecast.complete.ask,name:"
-msgid "Complete Forecast"
+msgctxt "model:stock.forecast.complete.ask,string:"
+msgid "Stock Forecast Complete Ask"
 msgstr ""
 
-msgctxt "model:stock.forecast.line,name:"
+msgctxt "model:stock.forecast.line,string:"
 msgid "Stock Forecast Line"
-msgstr ""
-
-msgctxt "model:stock.forecast.line-stock.move,name:"
-msgid "ForecastLine - Move"
 msgstr ""
 
 #, fuzzy

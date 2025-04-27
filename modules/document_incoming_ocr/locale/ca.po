@@ -47,8 +47,9 @@ msgstr ""
 "L'expressió regular a coincidir amb l'origen del document.\n"
 "Deixeu-ho en blanc per tots els origens."
 
-msgctxt "model:document.incoming.ocr.service,name:"
-msgid "Incoming Document OCR Service"
+#, fuzzy
+msgctxt "model:document.incoming.ocr.service,string:"
+msgid "Document Incoming Ocr Service"
 msgstr "Servei OCR de documents entrants"
 
 msgctxt "model:ir.action,name:act_document_incoming_ocr_service_form"

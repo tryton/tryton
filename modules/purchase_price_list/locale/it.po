@@ -26,7 +26,8 @@ msgctxt "help:party.party,purchase_price_list:"
 msgid "The price list for new purchases."
 msgstr "Il listino prezzi per i nuovi acquisti."
 
-msgctxt "model:party.party.purchase_price_list,name:"
+#, fuzzy
+msgctxt "model:party.party.purchase_price_list,string:"
 msgid "Party Purchase Price List"
 msgstr "Listino prezzi di acquisto controparte"
 

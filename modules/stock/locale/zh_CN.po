@@ -873,6 +873,11 @@ msgctxt "field:stock.shipment.internal,incoming_moves:"
 msgid "Incoming Moves"
 msgstr "来货库存变动"
 
+#, fuzzy
+msgctxt "field:stock.shipment.internal,internal_transit_location:"
+msgid "Internal Transit Location"
+msgstr "中转库位"
+
 msgctxt "field:stock.shipment.internal,moves:"
 msgid "Moves"
 msgstr "变动"
@@ -884,6 +889,11 @@ msgstr "数量"
 msgctxt "field:stock.shipment.internal,outgoing_moves:"
 msgid "Outgoing Moves"
 msgstr "出货库存变动"
+
+#, fuzzy
+msgctxt "field:stock.shipment.internal,packed_by:"
+msgid "Packed By"
+msgstr "包装人"
 
 msgctxt "field:stock.shipment.internal,partially_assigned:"
 msgid "Partially Assigned"
@@ -1282,6 +1292,41 @@ msgctxt "help:stock.location,storage_location:"
 msgid "The top level location where stock is stored."
 msgstr "存储库存的顶层位置."
 
+msgctxt "help:stock.location,type:"
+msgid "Group locations logically."
+msgstr ""
+
+msgctxt "help:stock.location,type:"
+msgid "Regroup storage locations under a logistics warehouse."
+msgstr ""
+
+#, fuzzy
+msgctxt "help:stock.location,type:"
+msgid "Used as the destination for stock sent to customers."
+msgstr "发送到参与者的目标库位。"
+
+msgctxt "help:stock.location,type:"
+msgid ""
+"Used as the destination of components and the source of finished products."
+msgstr ""
+
+#, fuzzy
+msgctxt "help:stock.location,type:"
+msgid "Used as the source of stock received from suppliers."
+msgstr "从参与方接收的库存的默认源位置."
+
+msgctxt "help:stock.location,type:"
+msgid "Used during the drop shipping process."
+msgstr ""
+
+msgctxt "help:stock.location,type:"
+msgid "Used for damages, discrepancies and wastage."
+msgstr ""
+
+msgctxt "help:stock.location,type:"
+msgid "Used to physically store goods."
+msgstr ""
+
 msgctxt "help:stock.location,waste_locations:"
 msgid "The locations used for waste products from the warehouse."
 msgstr "用于存放仓库弃物的位置."
@@ -1619,6 +1664,11 @@ msgid "Location Lead Times"
 msgstr "库位交付周期"
 
 #, fuzzy
+msgctxt "model:ir.action,name:act_location_list"
+msgid "Locations"
+msgstr "库位"
+
+#, fuzzy
 msgctxt "model:ir.action,name:act_location_quantity_list"
 msgid "Stock Locations List"
 msgstr "库位"
@@ -1867,6 +1917,12 @@ msgctxt ""
 msgid "Draft"
 msgstr "草案"
 
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_shipment_internal_form_domain_packed"
+msgid "Packed"
+msgstr "已包装"
+
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_internal_form_domain_requests"
 msgid "Requests"
@@ -2003,13 +2059,6 @@ msgid ""
 "To confirm the inventory \"%(inventory)s\" you must select an option for "
 "empty quantity."
 msgstr "要确认库存\"%(inventory)s\"，必须为空数量选择一个选项."
-
-#, python-format
-msgctxt "model:ir.message,text:msg_location_child_of_warehouse"
-msgid ""
-"To set location \"%(location)s\" as storage/input/output of warehouse "
-"\"%(warehouse)s\", it must be in the warehouse."
-msgstr "如果要将库位 \"%(location)s\" 设置为仓库 \"%(warehouse)s\" 的存储/输入/输出，则必须在仓库中."
 
 #, python-format
 msgctxt "model:ir.message,text:msg_location_inactive_not_empty"
@@ -2357,6 +2406,11 @@ msgctxt "model:ir.model.button,string:shipment_internal_draft_button"
 msgid "Draft"
 msgstr "草案"
 
+#, fuzzy
+msgctxt "model:ir.model.button,string:shipment_internal_pack_button"
+msgid "Pack"
+msgstr "包装"
+
 msgctxt "model:ir.model.button,string:shipment_internal_ship_button"
 msgid "Ship"
 msgstr "发货"
@@ -2552,13 +2606,14 @@ msgctxt "model:ir.ui.menu,name:menu_location_form"
 msgid "Locations"
 msgstr "库位"
 
-msgctxt "model:ir.ui.menu,name:menu_location_form2"
-msgid "Locations"
-msgstr "库位"
-
 msgctxt "model:ir.ui.menu,name:menu_location_lead_time_form"
 msgid "Location Lead Times"
 msgstr "库位交付周期"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_location_list"
+msgid "Locations"
+msgstr "库位"
 
 msgctxt "model:ir.ui.menu,name:menu_location_tree"
 msgid "Locations"
@@ -2616,28 +2671,34 @@ msgctxt "model:ir.ui.menu,name:menu_warehouse_list"
 msgid "Warehouses"
 msgstr "仓库"
 
-msgctxt "model:party.party-delivered_to-stock.location,name:"
-msgid "Party Delivered to Warehouse"
+#, fuzzy
+msgctxt "model:party.party-delivered_to-stock.location,string:"
+msgid "Party - Delivered To - Stock Location"
 msgstr "参与者交付到仓库"
 
-msgctxt "model:party.party.location,name:"
+#, fuzzy
+msgctxt "model:party.party.location,string:"
 msgid "Party Location"
 msgstr "参与者库位"
 
-msgctxt "model:product.by_location.context,name:"
-msgid "Product by Location"
+#, fuzzy
+msgctxt "model:product.by_location.context,string:"
+msgid "Product By Location Context"
 msgstr "按库位划分的产品"
 
-msgctxt "model:product.cost_price.revision,name:"
+#, fuzzy
+msgctxt "model:product.cost_price.revision,string:"
 msgid "Product Cost Price Revision"
 msgstr "产品成本价修正"
 
-msgctxt "model:product.modify_cost_price.start,name:"
-msgid "Modify Cost Price"
-msgstr "修改成本价"
+#, fuzzy
+msgctxt "model:product.modify_cost_price.start,string:"
+msgid "Product Modify Cost Price Start"
+msgstr "产品成本价"
 
-msgctxt "model:product.recompute_cost_price.start,name:"
-msgid "Recompute Cost Price"
+#, fuzzy
+msgctxt "model:product.recompute_cost_price.start,string:"
+msgid "Product Recompute Cost Price Start"
 msgstr "重新计算成本价"
 
 msgctxt "model:res.group,name:group_stock"
@@ -2652,37 +2713,40 @@ msgctxt "model:res.group,name:group_stock_force_assignment"
 msgid "Stock Force Assignment"
 msgstr "仓库强制选货"
 
-msgctxt "model:stock.configuration,name:"
+#, fuzzy
+msgctxt "model:stock.configuration,string:"
 msgid "Stock Configuration"
 msgstr "库存配置"
 
-msgctxt "model:stock.configuration.location,name:"
+#, fuzzy
+msgctxt "model:stock.configuration.location,string:"
 msgid "Stock Configuration Location"
 msgstr "库存配置-库位"
 
-msgctxt "model:stock.configuration.sequence,name:"
+#, fuzzy
+msgctxt "model:stock.configuration.sequence,string:"
 msgid "Stock Configuration Sequence"
 msgstr "库存配置序列"
 
-msgctxt "model:stock.inventory,name:"
+#, fuzzy
+msgctxt "model:stock.inventory,string:"
 msgid "Stock Inventory"
 msgstr "库存盘点"
 
-msgctxt "model:stock.inventory.count.quantity,name:"
-msgid "Stock Inventory Count"
+#, fuzzy
+msgctxt "model:stock.inventory.count.quantity,string:"
+msgid "Stock Inventory Count Quantity"
 msgstr "库存盘点"
 
-msgctxt "model:stock.inventory.count.search,name:"
-msgid "Stock Inventory Count"
+#, fuzzy
+msgctxt "model:stock.inventory.count.search,string:"
+msgid "Stock Inventory Count Search"
 msgstr "库存盘点"
 
-msgctxt "model:stock.inventory.line,name:"
+#, fuzzy
+msgctxt "model:stock.inventory.line,string:"
 msgid "Stock Inventory Line"
 msgstr "库存盘点明细"
-
-msgctxt "model:stock.location,name:"
-msgid "Stock Location"
-msgstr "库位"
 
 msgctxt "model:stock.location,name:location_customer"
 msgid "Customer"
@@ -2716,101 +2780,128 @@ msgctxt "model:stock.location,name:location_warehouse"
 msgid "Warehouse"
 msgstr "仓库"
 
-msgctxt "model:stock.location.lead_time,name:"
-msgid "Location Lead Time"
+#, fuzzy
+msgctxt "model:stock.location,string:"
+msgid "Stock Location"
+msgstr "库位"
+
+#, fuzzy
+msgctxt "model:stock.location.lead_time,string:"
+msgid "Stock Location Lead Time"
 msgstr "库位交货期"
 
-msgctxt "model:stock.location.waste,name:"
-msgid "Warehouse Waste Location"
-msgstr "仓库弃物库位"
+#, fuzzy
+msgctxt "model:stock.location.waste,string:"
+msgid "Stock Location Waste"
+msgstr "库位"
 
-msgctxt "model:stock.move,name:"
+#, fuzzy
+msgctxt "model:stock.move,string:"
 msgid "Stock Move"
 msgstr "库存变动"
 
-msgctxt "model:stock.period,name:"
+#, fuzzy
+msgctxt "model:stock.period,string:"
 msgid "Stock Period"
 msgstr "库存分期"
 
-msgctxt "model:stock.period.cache,name:"
+#, fuzzy
+msgctxt "model:stock.period.cache,string:"
 msgid "Stock Period Cache"
 msgstr "库存分期缓存"
 
-msgctxt "model:stock.product_quantities_warehouse,name:"
-msgid "Product Quantities By Warehouse"
+#, fuzzy
+msgctxt "model:stock.product_quantities_warehouse,string:"
+msgid "Stock Product Quantities Warehouse"
 msgstr "按仓库列出的产品数量"
 
-msgctxt "model:stock.product_quantities_warehouse.context,name:"
-msgid "Product Quantities By Warehouse"
-msgstr "按仓库列出的产品数量"
-
-msgctxt "model:stock.product_quantities_warehouse.move,name:"
-msgid "Product Quantities By Warehouse Moves"
+#, fuzzy
+msgctxt "model:stock.product_quantities_warehouse.context,string:"
+msgid "Stock Product Quantities Warehouse Context"
 msgstr "按库存变动列出的产品数量"
 
-msgctxt "model:stock.products_by_locations,name:"
-msgid "Products by Locations"
+#, fuzzy
+msgctxt "model:stock.product_quantities_warehouse.move,string:"
+msgid "Stock Product Quantities Warehouse Move"
+msgstr "按库存变动列出的产品数量"
+
+#, fuzzy
+msgctxt "model:stock.products_by_locations,string:"
+msgid "Stock Products By Locations"
 msgstr "按库位划分的产品"
 
-msgctxt "model:stock.products_by_locations.context,name:"
-msgid "Products by Locations"
+#, fuzzy
+msgctxt "model:stock.products_by_locations.context,string:"
+msgid "Stock Products By Locations Context"
 msgstr "按库位划分的产品"
 
-msgctxt "model:stock.reporting.margin.category,name:"
-msgid "Stock Reporting Margin per Category"
+#, fuzzy
+msgctxt "model:stock.reporting.margin.category,string:"
+msgid "Stock Reporting Margin Category"
 msgstr "库存报告-类别利润率"
 
-msgctxt "model:stock.reporting.margin.category.time_series,name:"
-msgid "Stock Reporting Margin per Category"
+#, fuzzy
+msgctxt "model:stock.reporting.margin.category.time_series,string:"
+msgid "Stock Reporting Margin Category Time Series"
 msgstr "库存报告-类别利润率"
 
-msgctxt "model:stock.reporting.margin.category.tree,name:"
-msgid "Stock Reporting Margin per Category"
+#, fuzzy
+msgctxt "model:stock.reporting.margin.category.tree,string:"
+msgid "Stock Reporting Margin Category Tree"
 msgstr "库存报告-类别利润率"
 
-msgctxt "model:stock.reporting.margin.context,name:"
+#, fuzzy
+msgctxt "model:stock.reporting.margin.context,string:"
 msgid "Stock Reporting Margin Context"
 msgstr "库存报告-类别利润率"
 
-msgctxt "model:stock.reporting.margin.main,name:"
-msgid "Stock Reporting Margin"
+#, fuzzy
+msgctxt "model:stock.reporting.margin.main,string:"
+msgid "Stock Reporting Margin Main"
 msgstr "库存报告-利润率"
 
-msgctxt "model:stock.reporting.margin.main.time_series,name:"
-msgid "Stock Reporting Margin"
-msgstr "库存报告-利润率"
+#, fuzzy
+msgctxt "model:stock.reporting.margin.main.time_series,string:"
+msgid "Stock Reporting Margin Main Time Series"
+msgstr "库存报告-类别利润率"
 
-msgctxt "model:stock.reporting.margin.product,name:"
-msgid "Stock Reporting Margin per Product"
+#, fuzzy
+msgctxt "model:stock.reporting.margin.product,string:"
+msgid "Stock Reporting Margin Product"
 msgstr "库存报告-产品利润率"
 
-msgctxt "model:stock.reporting.margin.product.time_series,name:"
-msgid "Stock Reporting Margin per Product"
+#, fuzzy
+msgctxt "model:stock.reporting.margin.product.time_series,string:"
+msgid "Stock Reporting Margin Product Time Series"
 msgstr "库存报告-产品利润率"
 
-msgctxt "model:stock.shipment.assign.partial,name:"
-msgid "Assign Shipment"
-msgstr "选货"
+msgctxt "model:stock.shipment.assign.partial,string:"
+msgid "Stock Shipment Assign Partial"
+msgstr ""
 
-msgctxt "model:stock.shipment.in,name:"
-msgid "Supplier Shipment"
-msgstr "从供应商收货"
-
-msgctxt "model:stock.shipment.in.return,name:"
-msgid "Supplier Return Shipment"
-msgstr "向供应商退货"
-
-msgctxt "model:stock.shipment.internal,name:"
-msgid "Internal Shipment"
-msgstr "内部发货"
-
-msgctxt "model:stock.shipment.out,name:"
-msgid "Customer Shipment"
+#, fuzzy
+msgctxt "model:stock.shipment.in,string:"
+msgid "Stock Shipment In"
 msgstr "向客户发货"
 
-msgctxt "model:stock.shipment.out.return,name:"
-msgid "Customer Return Shipment"
-msgstr "接收客户退货"
+#, fuzzy
+msgctxt "model:stock.shipment.in.return,string:"
+msgid "Stock Shipment In Return"
+msgstr "Assign Shipment Internal"
+
+#, fuzzy
+msgctxt "model:stock.shipment.internal,string:"
+msgid "Stock Shipment Internal"
+msgstr "Assign Shipment Internal"
+
+#, fuzzy
+msgctxt "model:stock.shipment.out,string:"
+msgid "Stock Shipment Out"
+msgstr "向客户发货"
+
+msgctxt "model:stock.shipment.out.return,string:"
+msgid "Stock Shipment Out Return"
+msgstr ""
 
 msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "/"
@@ -3248,6 +3339,11 @@ msgstr "完成"
 msgctxt "selection:stock.shipment.internal,state:"
 msgid "Draft"
 msgstr "草案"
+
+#, fuzzy
+msgctxt "selection:stock.shipment.internal,state:"
+msgid "Packed"
+msgstr "已包装"
 
 msgctxt "selection:stock.shipment.internal,state:"
 msgid "Request"

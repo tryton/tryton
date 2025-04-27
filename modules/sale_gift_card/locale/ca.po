@@ -156,7 +156,8 @@ msgctxt "help:sale.point.sale.line,gift_card_email:"
 msgid "Leave empty for the customer email."
 msgstr "Deixeu-ho en blanc per al correu electrònic del client."
 
-msgctxt "model:account.configuration.gift_card_account,name:"
+#, fuzzy
+msgctxt "model:account.configuration.gift_card_account,string:"
 msgid "Account Configuration Gift Card Account"
 msgstr "Configuració de comptes comptables de targetes regal"
 
@@ -228,16 +229,19 @@ msgctxt "model:res.group,name:group_gift_card_admin"
 msgid "Gift Card Administration"
 msgstr "Administració de targetes regal"
 
-msgctxt "model:sale.configuration.gift_card.sequence,name:"
-msgid "Gift Card Configuration Sequence"
-msgstr "Configuració de seqüencies de targetes regal"
+#, fuzzy
+msgctxt "model:sale.configuration.gift_card.sequence,string:"
+msgid "Sale Configuration Gift Card Sequence"
+msgstr "Configuració de comptes comptables de targetes regal"
 
-msgctxt "model:sale.gift_card,name:"
-msgid "Gift Card"
+#, fuzzy
+msgctxt "model:sale.gift_card,string:"
+msgid "Sale Gift Card"
 msgstr "Targeta regal"
 
-msgctxt "model:sale.point.sale.pay.gift_card,name:"
-msgid "POS Pay - Gift Card"
+#, fuzzy
+msgctxt "model:sale.point.sale.pay.gift_card,string:"
+msgid "Sale Point Sale Pay Gift Card"
 msgstr "Pagament TPV - Targeta regal"
 
 msgctxt "report:sale.gift_card.email:"

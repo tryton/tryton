@@ -127,16 +127,17 @@ msgctxt "model:ir.ui.menu,name:menu_price_list"
 msgid "Price Lists"
 msgstr ""
 
-msgctxt "model:product.price_list,name:"
-msgid "Price List"
+#, fuzzy
+msgctxt "model:product.price_list,string:"
+msgid "Product Price List"
+msgstr "Produk Default"
+
+msgctxt "model:product.price_list.line,string:"
+msgid "Product Price List Line"
 msgstr ""
 
-msgctxt "model:product.price_list.line,name:"
-msgid "Price List Line"
-msgstr ""
-
-msgctxt "model:product.price_list.line.context,name:"
-msgid "Price List Line Context"
+msgctxt "model:product.price_list.line.context,string:"
+msgid "Product Price List Line Context"
 msgstr ""
 
 msgctxt "selection:product.price_list,price:"

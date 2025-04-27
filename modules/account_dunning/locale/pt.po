@@ -21,7 +21,7 @@ msgstr ""
 
 msgctxt "field:account.dunning,amount:"
 msgid "Amount"
-msgstr "Quantidade"
+msgstr "Montante"
 
 msgctxt "field:account.dunning,amount_second_currency:"
 msgid "Amount Second Currency"
@@ -154,29 +154,35 @@ msgctxt "help:account.dunning.procedure,name:"
 msgid "The main identifier of the Dunning Procedure."
 msgstr ""
 
-msgctxt "model:account.configuration.default_dunning_procedure,name:"
+#, fuzzy
+msgctxt "model:account.configuration.default_dunning_procedure,string:"
 msgid "Account Configuration Default Dunning Procedure"
 msgstr "Configuração de Conta Procedimento de Cobrança Padrão"
 
-msgctxt "model:account.dunning,name:"
+#, fuzzy
+msgctxt "model:account.dunning,string:"
 msgid "Account Dunning"
 msgstr "Cobrança Contábil"
 
-msgctxt "model:account.dunning.create.start,name:"
-msgid "Create Account Dunning"
-msgstr "Criar Cobrança Contábil"
+#, fuzzy
+msgctxt "model:account.dunning.create.start,string:"
+msgid "Account Dunning Create Start"
+msgstr "Nível de Cobrança Contábil"
 
-msgctxt "model:account.dunning.level,name:"
+#, fuzzy
+msgctxt "model:account.dunning.level,string:"
 msgid "Account Dunning Level"
 msgstr "Nível de Cobrança Contábil"
 
-msgctxt "model:account.dunning.procedure,name:"
+#, fuzzy
+msgctxt "model:account.dunning.procedure,string:"
 msgid "Account Dunning Procedure"
 msgstr "Procedimento de Conta de Cobrança"
 
-msgctxt "model:account.dunning.process.start,name:"
-msgid "Create Account Dunning"
-msgstr "Criar Cobrança Contábil"
+#, fuzzy
+msgctxt "model:account.dunning.process.start,string:"
+msgid "Account Dunning Process Start"
+msgstr "Procedimento de Conta de Cobrança"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_dunning_form"
@@ -265,7 +271,8 @@ msgctxt "model:ir.ui.menu,name:menu_dunnings"
 msgid "Dunnings"
 msgstr "Dunnings"
 
-msgctxt "model:party.party.dunning_procedure,name:"
+#, fuzzy
+msgctxt "model:party.party.dunning_procedure,string:"
 msgid "Party Dunning Procedure"
 msgstr "Procedimento de Cobrança da Pessoa"
 

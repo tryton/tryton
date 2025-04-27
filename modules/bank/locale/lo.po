@@ -26,6 +26,11 @@ msgctxt "field:bank.account,owners:"
 msgid "Owners"
 msgstr "ເຈົ້າຂອງບັນຊີ"
 
+#, fuzzy
+msgctxt "field:bank.account,owners_sequence:"
+msgid "Owners Sequence"
+msgstr "ລໍາດັບ"
+
 msgctxt "field:bank.account-party.party,account:"
 msgid "Account"
 msgstr "ບັນຊີ"
@@ -54,6 +59,11 @@ msgctxt "field:party.party,bank_accounts:"
 msgid "Bank Accounts"
 msgstr "ບັນຊີທະນາຄານ"
 
+#, fuzzy
+msgctxt "field:party.party,bank_accounts_used:"
+msgid "Bank Accounts Used"
+msgstr "ບັນຊີທະນາຄານ"
+
 msgctxt "help:bank,bic:"
 msgid "Bank/Business Identifier Code."
 msgstr "ທະນາຄານ/ລະຫັດລະບຸຕົວຕົນທຸລະກິດ"
@@ -70,19 +80,23 @@ msgctxt "help:bank.account.number,account:"
 msgid "The bank account which is identified by the number."
 msgstr "ບັນຊີທະນາຄານທີ່ຖືກລະບຸຕົວຕົນດ້ວຍເລກບັນຊີ"
 
-msgctxt "model:bank,name:"
+#, fuzzy
+msgctxt "model:bank,string:"
 msgid "Bank"
 msgstr "ທະນາຄານ"
 
-msgctxt "model:bank.account,name:"
+#, fuzzy
+msgctxt "model:bank.account,string:"
 msgid "Bank Account"
 msgstr "ບັນຊີທະນາຄານ"
 
-msgctxt "model:bank.account-party.party,name:"
+#, fuzzy
+msgctxt "model:bank.account-party.party,string:"
 msgid "Bank Account - Party"
 msgstr "ບັນຊີທະນາຄານ - ພາກສ່ວນ"
 
-msgctxt "model:bank.account.number,name:"
+#, fuzzy
+msgctxt "model:bank.account.number,string:"
 msgid "Bank Account Number"
 msgstr "ເລກບັນຊີທະນາຄານ"
 

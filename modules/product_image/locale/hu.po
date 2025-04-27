@@ -120,18 +120,22 @@ msgctxt "model:ir.message,text:msg_image_cache_size_unique"
 msgid "The size of cached image must be unique."
 msgstr ""
 
-msgctxt "model:product.category.image,name:"
-msgid "Category Image"
-msgstr ""
+#, fuzzy
+msgctxt "model:product.category.image,string:"
+msgid "Product Category Image"
+msgstr "Termékkép"
 
-msgctxt "model:product.category.image.cache,name:"
-msgid "Category Image Cache"
-msgstr ""
+#, fuzzy
+msgctxt "model:product.category.image.cache,string:"
+msgid "Product Category Image Cache"
+msgstr "Termékkép"
 
-msgctxt "model:product.image,name:"
+#, fuzzy
+msgctxt "model:product.image,string:"
 msgid "Product Image"
-msgstr ""
+msgstr "Termékkép"
 
-msgctxt "model:product.image.cache,name:"
+#, fuzzy
+msgctxt "model:product.image.cache,string:"
 msgid "Product Image Cache"
-msgstr ""
+msgstr "Termékkép"

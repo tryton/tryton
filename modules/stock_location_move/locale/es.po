@@ -41,6 +41,6 @@ msgctxt "model:res.group,name:group_stock_location_movable"
 msgid "Stock Location Movable"
 msgstr "Ubicaciones de existencias movibles"
 
-msgctxt "model:stock.shipment.internal-location,name:"
-msgid "Shipment Internal - Location"
+msgctxt "model:stock.shipment.internal-location,string:"
+msgid "Stock Shipment Internal - Location"
 msgstr "Albarán interno - Ubicación"

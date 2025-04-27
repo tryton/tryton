@@ -2,9 +2,13 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "field:sale.line,draft_unit_price:"
-msgid "Draft Unit Price"
-msgstr "Prix unitaire brouillon"
+msgctxt "field:sale.line,original_amount:"
+msgid "Original Amount"
+msgstr "Montant original"
+
+msgctxt "field:sale.line,original_unit_price:"
+msgid "Original Unit Price"
+msgstr "Prix unitaire original"
 
 msgctxt "field:sale.line,promotion:"
 msgid "Promotion"
@@ -82,6 +86,18 @@ msgctxt "field:sale.reporting.promotion,promotion:"
 msgid "Promotion"
 msgstr "Promotion"
 
+msgctxt "field:sale.sale,original_tax_amount:"
+msgid "Original Tax"
+msgstr "Taxe d'origine"
+
+msgctxt "field:sale.sale,original_total_amount:"
+msgid "Original Total"
+msgstr "Total d'origine"
+
+msgctxt "field:sale.sale,original_untaxed_amount:"
+msgid "Original Untaxed"
+msgstr "Original non taxé"
+
 msgctxt "help:sale.promotion,formula:"
 msgid ""
 "Python expression that will be evaluated with:\n"
@@ -127,18 +143,22 @@ msgctxt "model:ir.ui.menu,name:menu_promotion"
 msgid "Promotions"
 msgstr "Promotions"
 
-msgctxt "model:sale.promotion,name:"
+msgctxt "model:sale.promotion,string:"
 msgid "Sale Promotion"
 msgstr "Promotion de vente"
 
-msgctxt "model:sale.promotion-product.category,name:"
+msgctxt "model:sale.promotion-product.category,string:"
 msgid "Sale Promotion - Product Category"
 msgstr "Promotion de vente - Catégorie de produit"
 
-msgctxt "model:sale.promotion-product.product,name:"
+msgctxt "model:sale.promotion-product.product,string:"
 msgid "Sale Promotion - Product"
 msgstr "Promotion de vente - Produit"
 
-msgctxt "model:sale.reporting.promotion,name:"
-msgid "Sale Reporting per Promotion"
-msgstr "Rapports de vente par promotion"
+msgctxt "model:sale.reporting.promotion,string:"
+msgid "Sale Reporting Promotion"
+msgstr "Rapport de promotion de vente"
+
+msgctxt "view:sale.promotion:"
+msgid "Products"
+msgstr "Produits"

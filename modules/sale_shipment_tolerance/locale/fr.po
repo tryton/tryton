@@ -47,7 +47,7 @@ msgstr ""
 "La ligne de vente « %(line)s » dépasse la tolérance de sur-expédition "
 "(%(shipped)s expédiés > %(maximal)s)."
 
-msgctxt "model:sale.configuration.shipment_tolerance,name:"
+msgctxt "model:sale.configuration.shipment_tolerance,string:"
 msgid "Sale Configuration Shipment Tolerance"
 msgstr "Configuration de tolérance d'expédition de vente"
 

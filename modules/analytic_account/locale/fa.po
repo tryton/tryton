@@ -18,6 +18,10 @@ msgctxt "field:analytic.account.entry,company:"
 msgid "Company"
 msgstr "شرکت"
 
+msgctxt "field:analytic.account.entry,editable:"
+msgid "Editable"
+msgstr ""
+
 msgctxt "field:analytic.account.entry,origin:"
 msgid "Origin"
 msgstr "مبداء"
@@ -169,30 +173,35 @@ msgctxt "field:analytic_account.rule,party_visible:"
 msgid "Party Visible"
 msgstr "نهاد/سازمان قابل مشاهده"
 
-msgctxt "model:analytic.account.entry,name:"
+#, fuzzy
+msgctxt "model:analytic.account.entry,string:"
 msgid "Analytic Account Entry"
 msgstr "ورودی تجزیه و تحلیل حساب"
 
-msgctxt "model:analytic_account.account,name:"
+#, fuzzy
+msgctxt "model:analytic_account.account,string:"
 msgid "Analytic Account"
 msgstr "تجزیه و تحلیل حساب"
 
 #, fuzzy
-msgctxt "model:analytic_account.account.context,name:"
-msgid "Open Chart of Accounts"
-msgstr "بازکردن نمودار حساب ها"
+msgctxt "model:analytic_account.account.context,string:"
+msgid "Analytic Account Context"
+msgstr "ورودی تجزیه و تحلیل حساب"
 
-msgctxt "model:analytic_account.account.distribution,name:"
+#, fuzzy
+msgctxt "model:analytic_account.account.distribution,string:"
 msgid "Analytic Account Distribution"
 msgstr "توزیع تجزیه و تحلیل حساب"
 
-msgctxt "model:analytic_account.line,name:"
-msgid "Analytic Line"
-msgstr "خط تحلیلی"
+#, fuzzy
+msgctxt "model:analytic_account.line,string:"
+msgid "Analytic Account Line"
+msgstr "اندازه تجزیه و تحلیل حساب ها"
 
-msgctxt "model:analytic_account.rule,name:"
-msgid "Analytic Rule"
-msgstr "قانون تجزیه و تحلیل"
+#, fuzzy
+msgctxt "model:analytic_account.rule,string:"
+msgid "Analytic Account Rule"
+msgstr "تجزیه و تحلیل حساب"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_account_list"

@@ -70,9 +70,9 @@ msgctxt "help:carrier.weight_price_list,weight_uom:"
 msgid "The Unit of Measure of the weight."
 msgstr "Die Maßeinheit für das Gewicht."
 
-msgctxt "model:carrier.weight_price_list,name:"
+msgctxt "model:carrier.weight_price_list,string:"
 msgid "Carrier Weight Price List"
-msgstr "Preiskonditionsschema Versandgewicht"
+msgstr "Versanddienstleister Gewicht Preiskonditionsschema"
 
 msgctxt "selection:carrier,carrier_cost_method:"
 msgid "Weight"

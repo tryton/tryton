@@ -330,32 +330,35 @@ msgctxt "help:account.payment.stripe.account,webhook_signing_secret:"
 msgid "The Stripe's signing secret of the webhook."
 msgstr ""
 
-msgctxt "model:account.payment.stripe.account,name:"
-msgid "Stripe Account"
+#, fuzzy
+msgctxt "model:account.payment.stripe.account,string:"
+msgid "Account Payment Stripe Account"
 msgstr "Stripe račun"
 
-msgctxt "model:account.payment.stripe.customer,name:"
-msgid "Stripe Customer"
+#, fuzzy
+msgctxt "model:account.payment.stripe.customer,string:"
+msgid "Account Payment Stripe Customer"
+msgstr "Create Stripe Customer"
+
+#, fuzzy
+msgctxt "model:account.payment.stripe.customer.fingerprint,string:"
+msgid "Account Payment Stripe Customer Fingerprint"
 msgstr "Stripe stranka"
 
 #, fuzzy
-msgctxt "model:account.payment.stripe.customer.fingerprint,name:"
-msgid "Stripe Customer Fingerprint"
-msgstr "Stripe stranka"
-
-#, fuzzy
-msgctxt "model:account.payment.stripe.customer.identical,name:"
-msgid "Stripe Customer Identical"
+msgctxt "model:account.payment.stripe.customer.identical,string:"
+msgid "Account Payment Stripe Customer Identical"
 msgstr "ID Stripe stranke"
 
-msgctxt "model:account.payment.stripe.customer.source.detach.ask,name:"
-msgid "Detach Customer Source"
-msgstr ""
+#, fuzzy
+msgctxt "model:account.payment.stripe.customer.source.detach.ask,string:"
+msgid "Account Payment Stripe Customer Source Detach Ask"
+msgstr "Stripe stranka"
 
 #, fuzzy
-msgctxt "model:account.payment.stripe.refund,name:"
-msgid "Stripe Payment Refund"
-msgstr "Charge Stripe Payments"
+msgctxt "model:account.payment.stripe.refund,string:"
+msgid "Account Payment Stripe Refund"
+msgstr "Create Stripe Customer"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_account_form"
@@ -435,7 +438,8 @@ msgstr ""
 #, python-format
 msgctxt "model:ir.message,text:msg_no_stripe_token"
 msgid ""
-"To process payment \"%(payment)s\" you must set a Stripe token or customer."
+"To process payment \"%(payment)s\" you must set a Stripe token, payment "
+"intent or customer."
 msgstr ""
 
 msgctxt "model:ir.message,text:msg_stripe_key_modified"
@@ -514,21 +518,12 @@ msgid "Stripe Refunds"
 msgstr "Stripe žeton"
 
 msgctxt "report:account.payment.stripe.checkout:"
-msgid "Credit or debit card"
-msgstr ""
-
-msgctxt "report:account.payment.stripe.checkout:"
-msgid "Pay"
-msgstr "Plačilo"
-
-#, fuzzy
-msgctxt "report:account.payment.stripe.checkout:"
-msgid "Register card"
-msgstr "Registracija"
-
-msgctxt "report:account.payment.stripe.checkout:"
 msgid "Stripe Checkout"
 msgstr "Stripe nakup"
+
+msgctxt "report:account.payment.stripe.checkout:"
+msgid "Submit"
+msgstr ""
 
 msgctxt "report:account.payment.stripe.email_checkout:"
 msgid "Authorization needed"

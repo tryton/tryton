@@ -94,12 +94,14 @@ msgctxt "help:party.party,chorus:"
 msgid "Send documents for this party through Chorus Pro"
 msgstr "Saada dokumendid sellele osapoolele läbi Chprus Pro"
 
-msgctxt "model:account.credential.chorus,name:"
+#, fuzzy
+msgctxt "model:account.credential.chorus,string:"
 msgid "Account Credential Chorus"
 msgstr "Konto mandaat Chorus"
 
-msgctxt "model:account.invoice.chorus,name:"
-msgid "Invoice Chorus"
+#, fuzzy
+msgctxt "model:account.invoice.chorus,string:"
+msgid "Account Invoice Chorus"
 msgstr "Konto Chorus"
 
 msgctxt "model:ir.action,name:act_invoice_chorus_form"

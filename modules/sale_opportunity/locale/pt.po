@@ -53,7 +53,7 @@ msgstr "Empregado"
 
 msgctxt "field:sale.opportunity,end_date:"
 msgid "End Date"
-msgstr "Data de extremidade"
+msgstr "Data Final"
 
 msgctxt "field:sale.opportunity,lines:"
 msgid "Lines"
@@ -138,19 +138,17 @@ msgctxt "field:sale.opportunity.reporting.context,company:"
 msgid "Company"
 msgstr "Empresa"
 
-#, fuzzy
 msgctxt "field:sale.opportunity.reporting.context,from_date:"
 msgid "From Date"
-msgstr "Data de início"
+msgstr "A Partir da Data"
 
 msgctxt "field:sale.opportunity.reporting.context,period:"
 msgid "Period"
-msgstr ""
+msgstr "Período"
 
-#, fuzzy
 msgctxt "field:sale.opportunity.reporting.context,to_date:"
 msgid "To Date"
-msgstr "Data de extremidade"
+msgstr "Até a Data"
 
 #, fuzzy
 msgctxt "field:sale.opportunity.reporting.conversion.employee,employee:"
@@ -399,12 +397,12 @@ msgstr ""
 
 msgctxt "model:ir.rule.group,name:rule_group_reporting_main_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "Usuário em Empresas"
 
 msgctxt ""
 "model:ir.rule.group,name:rule_group_reporting_main_time_series_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "Usuário em Empresas"
 
 #, fuzzy
 msgctxt "model:ir.sequence,name:sequence_sale_opportunity"
@@ -431,49 +429,51 @@ msgctxt "model:res.group,name:group_opportunity"
 msgid "Sale Opportunity"
 msgstr "Sale Opportunity"
 
-msgctxt "model:sale.opportunity,name:"
+#, fuzzy
+msgctxt "model:sale.opportunity,string:"
 msgid "Sale Opportunity"
-msgstr "Oportunidade de Venda"
+msgstr "Sale Opportunity"
 
-msgctxt "model:sale.opportunity.line,name:"
+#, fuzzy
+msgctxt "model:sale.opportunity.line,string:"
 msgid "Sale Opportunity Line"
 msgstr "Linha da Oportunidade de Venda"
 
 #, fuzzy
-msgctxt "model:sale.opportunity.reporting.context,name:"
+msgctxt "model:sale.opportunity.reporting.context,string:"
 msgid "Sale Opportunity Reporting Context"
 msgstr "Contexto da Oportunidade de Venda por Empregado"
 
 #, fuzzy
-msgctxt "model:sale.opportunity.reporting.conversion,name:"
+msgctxt "model:sale.opportunity.reporting.conversion,string:"
 msgid "Sale Opportunity Reporting Conversion"
 msgstr "Oportunidade de Venda por Mês"
 
 #, fuzzy
-msgctxt "model:sale.opportunity.reporting.conversion.employee,name:"
-msgid "Sale Opportunity Reporting Conversion per Employee"
+msgctxt "model:sale.opportunity.reporting.conversion.employee,string:"
+msgid "Sale Opportunity Reporting Conversion Employee"
 msgstr "Oportunidade de Venda por Empregado"
 
 #, fuzzy
 msgctxt ""
-"model:sale.opportunity.reporting.conversion.employee.time_series,name:"
-msgid "Sale Opportunity Reporting Conversion per Employee"
+"model:sale.opportunity.reporting.conversion.employee.time_series,string:"
+msgid "Sale Opportunity Reporting Conversion Employee Time Series"
 msgstr "Oportunidade de Venda por Empregado"
 
 #, fuzzy
-msgctxt "model:sale.opportunity.reporting.conversion.time_series,name:"
-msgid "Sale Opportunity Reporting Conversion"
+msgctxt "model:sale.opportunity.reporting.conversion.time_series,string:"
+msgid "Sale Opportunity Reporting Conversion Time Series"
 msgstr "Oportunidade de Venda por Mês"
 
 #, fuzzy
-msgctxt "model:sale.opportunity.reporting.main,name:"
-msgid "Sale Opportunity Reporting"
+msgctxt "model:sale.opportunity.reporting.main,string:"
+msgid "Sale Opportunity Reporting Main"
 msgstr "Linha da Oportunidade de Venda"
 
 #, fuzzy
-msgctxt "model:sale.opportunity.reporting.main.time_series,name:"
-msgid "Sale Opportunity Reporting"
-msgstr "Linha da Oportunidade de Venda"
+msgctxt "model:sale.opportunity.reporting.main.time_series,string:"
+msgid "Sale Opportunity Reporting Main Time Series"
+msgstr "Oportunidade de Venda por Mês"
 
 msgctxt "selection:sale.opportunity,state:"
 msgid "Cancelled"

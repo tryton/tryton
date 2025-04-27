@@ -46,15 +46,18 @@ msgctxt "model:ir.ui.menu,name:menu_role_form"
 msgid "Roles"
 msgstr "نقش ها، وظایف"
 
-msgctxt "model:res.role,name:"
+#, fuzzy
+msgctxt "model:res.role,string:"
 msgid "Role"
 msgstr "نقش، وظیفه"
 
-msgctxt "model:res.role-res.group,name:"
+#, fuzzy
+msgctxt "model:res.role-res.group,string:"
 msgid "Role - Group"
 msgstr "گروه - نقش، وظیفه"
 
-msgctxt "model:res.user.role,name:"
+#, fuzzy
+msgctxt "model:res.user.role,string:"
 msgid "User Role"
 msgstr "نقش کاربر"
 

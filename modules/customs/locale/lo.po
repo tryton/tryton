@@ -209,13 +209,13 @@ msgid "Use the tariff codes defined on the category."
 msgstr ""
 
 #, fuzzy
-msgctxt "model:customs.duty.rate,name:"
-msgid "Duty Rate"
+msgctxt "model:customs.duty.rate,string:"
+msgid "Customs Duty Rate"
 msgstr "Duty Rates"
 
 #, fuzzy
-msgctxt "model:customs.tariff.code,name:"
-msgid "Tariff Code"
+msgctxt "model:customs.tariff.code,string:"
+msgid "Customs Tariff Code"
 msgstr "Tariff Codes"
 
 msgctxt "model:ir.action,name:act_duty_rate_form"
@@ -246,8 +246,8 @@ msgctxt "model:ir.ui.menu,name:menu_tariff_code_form"
 msgid "Tariff Codes"
 msgstr "Tariff Codes"
 
-msgctxt "model:product-customs.tariff.code,name:"
-msgid "Product - Tariff Code"
+msgctxt "model:product-customs.tariff.code,string:"
+msgid "Product - Customs Tariff Code"
 msgstr ""
 
 msgctxt "model:res.group,name:group_customs_admin"

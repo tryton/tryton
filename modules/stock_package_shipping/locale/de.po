@@ -46,6 +46,22 @@ msgctxt "field:stock.shipment.in.return,shipping_reference:"
 msgid "Shipping Reference"
 msgstr "Versandreferenz"
 
+msgctxt "field:stock.shipment.internal,carrier:"
+msgid "Carrier"
+msgstr "Versanddienstleister"
+
+msgctxt "field:stock.shipment.internal,has_shipping_service:"
+msgid "Has Shipping Service"
+msgstr "Hat Versand-Webservice Anbindung"
+
+msgctxt "field:stock.shipment.internal,shipping_description:"
+msgid "Shipping Description"
+msgstr "Versandbeschreibung"
+
+msgctxt "field:stock.shipment.internal,shipping_reference:"
+msgid "Shipping Reference"
+msgstr "Versandreferenz"
+
 msgctxt "field:stock.shipment.out,has_shipping_service:"
 msgid "Has Shipping Service"
 msgstr "Hat Versand-Webservice Anbindung"
@@ -88,6 +104,11 @@ msgstr "Versandetikett"
 
 msgctxt ""
 "model:ir.model.button,string:shipment_in_return_create_shipping_button"
+msgid "Create Shipping for Packages"
+msgstr "Versand für Pakete erstellen"
+
+msgctxt ""
+"model:ir.model.button,string:shipment_internal_create_shipping_button"
 msgid "Create Shipping for Packages"
 msgstr "Versand für Pakete erstellen"
 

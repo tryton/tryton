@@ -8,12 +8,12 @@ msgstr "Dias da semana"
 
 msgctxt "field:purchase.product_supplier.day,day:"
 msgid "Day"
-msgstr ""
+msgstr "Dia"
 
 msgctxt "field:purchase.product_supplier.day,product_supplier:"
 msgid "Supplier"
 msgstr "Fornecedor"
 
-msgctxt "model:purchase.product_supplier.day,name:"
-msgid "Product Supplier Day"
-msgstr "Dia do fornecedor do produto"
+msgctxt "model:purchase.product_supplier.day,string:"
+msgid "Purchase Product Supplier Day"
+msgstr "Dia do Fornecedor do Produto"

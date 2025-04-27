@@ -192,13 +192,10 @@ msgctxt "help:country.subdivision,parent:"
 msgid "Add subdivision below the parent."
 msgstr "Додати адмін.поділ до батька."
 
-msgctxt "model:country.country,name:"
+#, fuzzy
+msgctxt "model:country.country,string:"
 msgid "Country"
 msgstr "Країна"
-
-msgctxt "model:country.organization,name:"
-msgid "Organization"
-msgstr ""
 
 msgctxt "model:country.organization,name:organization_amu"
 msgid "Arab Maghreb Union"
@@ -279,18 +276,19 @@ msgctxt "model:country.organization,name:organization_safta"
 msgid "South Asian Free Trade Area"
 msgstr ""
 
-msgctxt "model:country.organization.member,name:"
-msgid "Organization Member"
+#, fuzzy
+msgctxt "model:country.organization,string:"
+msgid "Country Organization"
+msgstr "Країни"
+
+msgctxt "model:country.organization.member,string:"
+msgid "Country Organization Member"
 msgstr ""
 
-msgctxt "model:country.postal_code,name:"
-msgid "Postal Code"
-msgstr "Поштовий індекс"
-
 #, fuzzy
-msgctxt "model:country.region,name:"
-msgid "Region"
-msgstr "Регіон"
+msgctxt "model:country.postal_code,string:"
+msgid "Country Postal Code"
+msgstr "Поштовий індекс"
 
 msgctxt "model:country.region,name:region_africa"
 msgid "Africa"
@@ -425,8 +423,14 @@ msgctxt "model:country.region,name:region_world"
 msgid "World"
 msgstr ""
 
-msgctxt "model:country.subdivision,name:"
-msgid "Subdivision"
+#, fuzzy
+msgctxt "model:country.region,string:"
+msgid "Country Region"
+msgstr "Країни"
+
+#, fuzzy
+msgctxt "model:country.subdivision,string:"
+msgid "Country Subdivision"
 msgstr "Адмін.поділ"
 
 #, fuzzy
@@ -703,6 +707,11 @@ msgctxt "selection:country.subdivision,type:"
 msgid "Entity"
 msgstr "Суб'єкт"
 
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "European collectivity"
+msgstr "Закордонна громада"
+
 msgctxt "selection:country.subdivision,type:"
 msgid "Federal Dependency"
 msgstr "Федеральна залежність"
@@ -722,6 +731,11 @@ msgstr "Федеральна територія"
 msgctxt "selection:country.subdivision,type:"
 msgid "Federal capital territory"
 msgstr "Територія федеральної столиці"
+
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "Federal entity"
+msgstr "Федеральна територія"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Free municipal consortium"
@@ -843,6 +857,11 @@ msgctxt "selection:country.subdivision,type:"
 msgid "Overseas department"
 msgstr "Закордонний департамент"
 
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "Overseas departmental collectivity"
+msgstr "Закордонна територіальна громада"
+
 msgctxt "selection:country.subdivision,type:"
 msgid "Overseas region"
 msgstr "Закордонний регіон"
@@ -858,6 +877,11 @@ msgstr "Закордонна територіальна громада"
 msgctxt "selection:country.subdivision,type:"
 msgid "Overseas territory"
 msgstr "Закордонна територія"
+
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "Overseas unique territorial collectivity"
+msgstr "Закордонна територіальна громада"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Pakistan administered area"
@@ -965,6 +989,11 @@ msgstr "Особлива зона"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "State"
+msgstr "Штат"
+
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "State city"
 msgstr "Штат"
 
 msgctxt "selection:country.subdivision,type:"

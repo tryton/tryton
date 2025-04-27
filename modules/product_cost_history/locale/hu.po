@@ -20,6 +20,7 @@ msgctxt "model:ir.action,name:act_product_cost_history_form"
 msgid "Product Cost History"
 msgstr "Product Cost History"
 
-msgctxt "model:product.product.cost_history,name:"
-msgid "History of Product Cost"
-msgstr "Cikk költségelőzményei"
+#, fuzzy
+msgctxt "model:product.product.cost_history,string:"
+msgid "Product Cost History"
+msgstr "Product Cost History"

@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:account.configuration,dunning_email_fallback:"
 msgid "Fall-back User"
-msgstr ""
+msgstr "Usuário de encaminhamento de falhas"
 
 msgctxt "field:account.dunning.level,email_contact_mechanism:"
 msgid "Contact Mechanism"
@@ -28,11 +28,11 @@ msgid "Level"
 msgstr "Nível"
 
 msgctxt "help:account.configuration,dunning_email_fallback:"
-msgid "User notified when no email is found to send the dunning"
+msgid "User notified when no email is found to send the dunning."
 msgstr ""
 
 msgctxt "help:account.dunning.level,email_contact_mechanism:"
-msgid "Define which email to use from the party's contact mechanisms"
+msgid "Define which email to use from the party's contact mechanisms."
 msgstr ""
 
 msgctxt "help:account.dunning.level,email_from:"
@@ -46,7 +46,7 @@ msgstr "Dunning Email"
 
 msgctxt "report:account.dunning.letter:"
 msgid "Amount"
-msgstr "Quantidade"
+msgstr "Montante"
 
 msgctxt "report:account.dunning.letter:"
 msgid "Date"

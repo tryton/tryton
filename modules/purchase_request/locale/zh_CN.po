@@ -193,17 +193,20 @@ msgctxt "model:ir.ui.menu,name:menu_purchase_request_form"
 msgid "Purchase Requests"
 msgstr "采购申请"
 
-msgctxt "model:purchase.request,name:"
+#, fuzzy
+msgctxt "model:purchase.request,string:"
 msgid "Purchase Request"
 msgstr "采购申请"
 
-msgctxt "model:purchase.request.create_purchase.ask_party,name:"
-msgid "Create Purchase Ask Party"
+#, fuzzy
+msgctxt "model:purchase.request.create_purchase.ask_party,string:"
+msgid "Purchase Request Create Purchase Ask Party"
 msgstr "创建采购邀请方"
 
-msgctxt "model:purchase.request.handle.purchase.cancellation.start,name:"
-msgid "Handle Purchase Cancellation Exception - Start"
-msgstr "处理采购取消异常 - 开始"
+#, fuzzy
+msgctxt "model:purchase.request.handle.purchase.cancellation.start,string:"
+msgid "Purchase Request Handle Purchase Cancellation Start"
+msgstr "取消采购处理"
 
 msgctxt "model:res.group,name:group_purchase_request"
 msgid "Purchase Request"

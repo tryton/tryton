@@ -188,13 +188,10 @@ msgctxt "help:country.subdivision,parent:"
 msgid "Add subdivision below the parent."
 msgstr "Adăugați subdiviziune sub părintele."
 
-msgctxt "model:country.country,name:"
+#, fuzzy
+msgctxt "model:country.country,string:"
 msgid "Country"
 msgstr "Țară"
-
-msgctxt "model:country.organization,name:"
-msgid "Organization"
-msgstr "Organizație"
 
 msgctxt "model:country.organization,name:organization_amu"
 msgid "Arab Maghreb Union"
@@ -288,17 +285,20 @@ msgctxt "model:country.organization,name:organization_safta"
 msgid "South Asian Free Trade Area"
 msgstr "Zona de schimb liber din Asia de Sud"
 
-msgctxt "model:country.organization.member,name:"
-msgid "Organization Member"
+#, fuzzy
+msgctxt "model:country.organization,string:"
+msgid "Country Organization"
+msgstr "Organizație"
+
+#, fuzzy
+msgctxt "model:country.organization.member,string:"
+msgid "Country Organization Member"
 msgstr "Membru al organizației"
 
-msgctxt "model:country.postal_code,name:"
-msgid "Postal Code"
+#, fuzzy
+msgctxt "model:country.postal_code,string:"
+msgid "Country Postal Code"
 msgstr "Cod Poștal"
-
-msgctxt "model:country.region,name:"
-msgid "Region"
-msgstr "Regiune"
 
 msgctxt "model:country.region,name:region_africa"
 msgid "Africa"
@@ -434,8 +434,14 @@ msgctxt "model:country.region,name:region_world"
 msgid "World"
 msgstr "Lume"
 
-msgctxt "model:country.subdivision,name:"
-msgid "Subdivision"
+#, fuzzy
+msgctxt "model:country.region,string:"
+msgid "Country Region"
+msgstr "Țări după regiune"
+
+#, fuzzy
+msgctxt "model:country.subdivision,string:"
+msgid "Country Subdivision"
 msgstr "Subdiviziune"
 
 #, fuzzy
@@ -723,6 +729,11 @@ msgstr "Entitate"
 
 #, fuzzy
 msgctxt "selection:country.subdivision,type:"
+msgid "European collectivity"
+msgstr "Colectivitatea de peste mări"
+
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
 msgid "Federal Dependency"
 msgstr "Dependență federală"
 
@@ -744,6 +755,11 @@ msgstr "Teritoriu federal"
 msgctxt "selection:country.subdivision,type:"
 msgid "Federal capital territory"
 msgstr ""
+
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "Federal entity"
+msgstr "Teritoriu federal"
 
 #, fuzzy
 msgctxt "selection:country.subdivision,type:"
@@ -881,6 +897,11 @@ msgctxt "selection:country.subdivision,type:"
 msgid "Overseas department"
 msgstr ""
 
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "Overseas departmental collectivity"
+msgstr "Colectivitatea de peste mări"
+
 msgctxt "selection:country.subdivision,type:"
 msgid "Overseas region"
 msgstr ""
@@ -896,6 +917,11 @@ msgstr ""
 msgctxt "selection:country.subdivision,type:"
 msgid "Overseas territory"
 msgstr ""
+
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "Overseas unique territorial collectivity"
+msgstr "Colectivitatea de peste mări"
 
 #, fuzzy
 msgctxt "selection:country.subdivision,type:"
@@ -1012,6 +1038,11 @@ msgstr "Zona specială"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "State"
+msgstr "Stat"
+
+#, fuzzy
+msgctxt "selection:country.subdivision,type:"
+msgid "State city"
 msgstr "Stat"
 
 msgctxt "selection:country.subdivision,type:"

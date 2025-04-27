@@ -351,39 +351,40 @@ msgctxt "model:ir.ui.menu,name:menu_lot_form"
 msgid "Lots"
 msgstr "Lots"
 
-msgctxt "model:product.configuration.default_lot_sequence,name:"
+msgctxt "model:product.configuration.default_lot_sequence,string:"
 msgid "Product Configuration Default Lot Sequence"
 msgstr ""
 
-msgctxt "model:stock.lot,name:"
+#, fuzzy
+msgctxt "model:stock.lot,string:"
 msgid "Stock Lot"
-msgstr ""
-
-msgctxt "model:stock.lot.trace,name:"
-msgid "Lot Trace"
-msgstr ""
-
-msgctxt "model:stock.lots_by_location.context,name:"
-msgid "Lot by Location"
-msgstr ""
+msgstr "Lista lokalizacji magazynowych"
 
 #, fuzzy
-msgctxt "model:stock.lots_by_locations,name:"
-msgid "Lots by Locations"
+msgctxt "model:stock.lot.trace,string:"
+msgid "Stock Lot Trace"
+msgstr "Struktura lokalizacji magazynowych"
+
+#, fuzzy
+msgctxt "model:stock.lots_by_location.context,string:"
+msgid "Stock Lots By Location Context"
+msgstr "Lista lokalizacji magazynowych"
+
+#, fuzzy
+msgctxt "model:stock.lots_by_locations,string:"
+msgid "Stock Lots By Locations"
 msgstr "Lokalizacja"
 
-#, fuzzy
-msgctxt "model:stock.move.add.lots.start,name:"
-msgid "Add Lots"
-msgstr "Lots"
+msgctxt "model:stock.move.add.lots.start,string:"
+msgid "Stock Move Add Lots Start"
+msgstr ""
 
-#, fuzzy
-msgctxt "model:stock.move.add.lots.start.lot,name:"
-msgid "Add Lots"
-msgstr "Lots"
+msgctxt "model:stock.move.add.lots.start.lot,string:"
+msgid "Stock Move Add Lots Start Lot"
+msgstr ""
 
-msgctxt "model:stock.period.cache.lot,name:"
-msgid "Stock Period Cache per Lot"
+msgctxt "model:stock.period.cache.lot,string:"
+msgid "Stock Period Cache Lot"
 msgstr ""
 
 #, fuzzy

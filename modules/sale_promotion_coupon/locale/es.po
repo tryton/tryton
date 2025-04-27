@@ -10,10 +10,6 @@ msgctxt "field:sale.promotion.coupon,company:"
 msgid "Company"
 msgstr "Empresa"
 
-msgctxt "field:sale.promotion.coupon,name:"
-msgid "Name"
-msgstr "Nombre"
-
 msgctxt "field:sale.promotion.coupon,number_of_use:"
 msgid "Number of Use"
 msgstr "Nombre de usos"
@@ -78,6 +74,10 @@ msgctxt "help:sale.promotion.coupon,per_party:"
 msgid "Check to count usage per party."
 msgstr "Marcar para contar el uso por tercero."
 
+msgctxt "model:ir.action,name:act_promotion_coupon_number_form"
+msgid "Coupon Numbers"
+msgstr "Números de cupón"
+
 msgctxt "model:ir.message,text:msg_duplicate_numbers"
 msgid "The dates of coupon numbers with the same number can not overlap."
 msgstr ""
@@ -110,14 +110,18 @@ msgctxt "model:ir.rule.group,name:rule_group_coupon_number_companies"
 msgid "User in companies"
 msgstr "Usuario en las empresas"
 
-msgctxt "model:sale.promotion.coupon,name:"
-msgid "Promotion Coupon"
-msgstr "Cupón promocional"
-
-msgctxt "model:sale.promotion.coupon.number,name:"
-msgid "Promotion Coupon Number"
+msgctxt "model:ir.ui.menu,name:menu_promotion_coupon_number"
+msgid "Coupon Numbers"
 msgstr "Número de cupón promocional"
 
-msgctxt "model:sale.sale-sale.promotion.coupon.number,name:"
-msgid "Sale - Promotion Coupon Number"
+msgctxt "model:sale.promotion.coupon,string:"
+msgid "Sale Promotion Coupon"
+msgstr "Cupón promocional"
+
+msgctxt "model:sale.promotion.coupon.number,string:"
+msgid "Sale Promotion Coupon Number"
+msgstr "Venta Número de cupón promocional"
+
+msgctxt "model:sale.sale-sale.promotion.coupon.number,string:"
+msgid "Sale - Sale Promotion Coupon Number"
 msgstr "Venta - Número de cupón promocional"

@@ -12,8 +12,8 @@ msgstr "SIREN"
 
 msgctxt "help:company.company,footer:"
 msgid "- ${siren}\n"
-msgstr ""
+msgstr "- ${siren}\n"
 
 msgctxt "help:company.company,header:"
 msgid "- ${siren}\n"
-msgstr ""
+msgstr "- ${siren}\n"

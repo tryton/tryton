@@ -5,6 +5,12 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgid "Make this an _internal message"
+msgstr ""
+
+msgid "Send"
+msgstr ""
+
 msgid "specify alternate config file"
 msgstr "укажете друг конфигурационен файл"
 
@@ -131,9 +137,6 @@ msgid "Check URL: %s"
 msgstr ""
 
 msgid "Unable to check for new version."
-msgstr ""
-
-msgid "A new version is available!"
 msgstr ""
 
 msgid "Download"
@@ -659,9 +662,6 @@ msgstr "Прикачен файл:"
 msgid "Files"
 msgstr ""
 
-msgid "Send"
-msgstr ""
-
 #, fuzzy
 msgid "Select File"
 msgstr "Избор"
@@ -888,6 +888,13 @@ msgstr ""
 msgid "Add a note to the record"
 msgstr ""
 
+msgid "C_hat"
+msgstr ""
+
+#, fuzzy
+msgid "Chat on the record"
+msgstr "Създаване на нов запис"
+
 msgid "_Actions..."
 msgstr "Действия..."
 
@@ -1015,11 +1022,9 @@ msgstr ""
 
 #, fuzzy, python-format
 msgid "%d record saved."
-msgstr "%d заспис съхранен!"
-
-#, fuzzy, python-format
-msgid "%d records saved."
-msgstr "%d записа съхранени!"
+msgid_plural "%d records saved."
+msgstr[0] "%d заспис съхранен!"
+msgstr[1] "%d заспис съхранен!"
 
 msgid "Export failed"
 msgstr ""
@@ -1103,11 +1108,9 @@ msgstr ""
 
 #, fuzzy, python-format
 msgid "%d record imported."
-msgstr "%d запис вмъкнат!"
-
-#, fuzzy, python-format
-msgid "%d records imported."
-msgstr "%d записи вмъкнати!"
+msgid_plural "%d records imported."
+msgstr[0] "%d запис вмъкнат!"
+msgstr[1] "%d запис вмъкнат!"
 
 msgid "Search"
 msgstr "Търсене"
@@ -1185,6 +1188,9 @@ msgstr "Запис като"
 #, fuzzy
 msgid "Image size too large."
 msgstr "Размера на изображението е много голям!"
+
+msgid "Reset Column Widths"
+msgstr ""
 
 msgid "Copy"
 msgstr ""
@@ -1265,6 +1271,10 @@ msgstr "Всички файлове"
 
 msgid "Show plain text"
 msgstr "Показване само на текст"
+
+#, python-format
+msgid "Select a color for \"%s\""
+msgstr ""
 
 msgid "Add value"
 msgstr ""

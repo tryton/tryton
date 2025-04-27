@@ -30,6 +30,10 @@ msgctxt "field:company.company,party:"
 msgid "Party"
 msgstr "Tercer"
 
+msgctxt "field:company.company,tax_identifiers:"
+msgid "Tax Identifiers"
+msgstr ""
+
 msgctxt "field:company.company,timezone:"
 msgid "Timezone"
 msgstr "Zona horària"
@@ -49,6 +53,28 @@ msgstr "Imatge"
 msgctxt "field:company.company.logo.cache,width:"
 msgid "Width"
 msgstr "Amplada"
+
+#, fuzzy
+msgctxt "field:company.company.tax_identifier,company:"
+msgid "Company"
+msgstr "Empresa"
+
+#, fuzzy
+msgctxt "field:company.company.tax_identifier,company_party:"
+msgid "Company Party"
+msgstr "Empresa"
+
+msgctxt "field:company.company.tax_identifier,country:"
+msgid "Country"
+msgstr ""
+
+msgctxt "field:company.company.tax_identifier,organization:"
+msgid "Organization"
+msgstr ""
+
+msgctxt "field:company.company.tax_identifier,tax_identifier:"
+msgid "Tax Identifier"
+msgstr ""
 
 msgctxt "field:company.employee,active:"
 msgid "Active"
@@ -202,9 +228,27 @@ msgstr ""
 "- ${address}\n"
 "- ${tax_identifier}\n"
 
+msgctxt "help:company.company,tax_identifiers:"
+msgid ""
+"Uses the first identifier that matches the criteria.\n"
+"If none match, uses the party's tax identifier."
+msgstr ""
+
 msgctxt "help:company.company,timezone:"
 msgid "Used to compute the today date."
 msgstr "Utilitzat per calcular la data d'avui."
+
+msgctxt "help:company.company.tax_identifier,country:"
+msgid "Applies only to addresses in this country."
+msgstr ""
+
+msgctxt "help:company.company.tax_identifier,organization:"
+msgid "Applies only to addresses in this organization."
+msgstr ""
+
+msgctxt "help:company.company.tax_identifier,tax_identifier:"
+msgid "The identifier used for tax report."
+msgstr ""
 
 msgctxt "help:company.employee,company:"
 msgid "The company to which the employee belongs."
@@ -244,11 +288,11 @@ msgstr ""
 
 msgctxt "help:ir.sequence,company:"
 msgid "Restricts the sequence usage to the company."
-msgstr "Restringeix l'ús de la seqüencia a l'empresa."
+msgstr "Restringeix l'ús de la seqüència a l'empresa."
 
 msgctxt "help:ir.sequence.strict,company:"
 msgid "Restricts the sequence usage to the company."
-msgstr "Restringeix l'ús de la seqüencia a l'empresa."
+msgstr "Restringeix l'ús de la seqüència a l'empresa."
 
 msgctxt "help:res.user,companies:"
 msgid "The companies that the user has access to."
@@ -270,20 +314,29 @@ msgctxt "help:res.user,employees:"
 msgid "Add employees to grant the user access to them."
 msgstr "Afegeix empleats als que podrà accedir l'usuari."
 
-msgctxt "model:company.company,name:"
+#, fuzzy
+msgctxt "model:company.company,string:"
 msgid "Company"
 msgstr "Empresa"
 
-msgctxt "model:company.company.config.start,name:"
-msgid "Company Config"
+#, fuzzy
+msgctxt "model:company.company.config.start,string:"
+msgid "Company Config Start"
 msgstr "Configuració empresa"
 
-msgctxt "model:company.company.logo.cache,name:"
+#, fuzzy
+msgctxt "model:company.company.logo.cache,string:"
 msgid "Company Logo Cache"
 msgstr "Memòria cau del logotip de l'empresa"
 
-msgctxt "model:company.employee,name:"
-msgid "Employee"
+#, fuzzy
+msgctxt "model:company.company.tax_identifier,string:"
+msgid "Company Tax Identifier"
+msgstr "Filtre empresa"
+
+#, fuzzy
+msgctxt "model:company.employee,string:"
+msgid "Company Employee"
 msgstr "Empleat"
 
 msgctxt "model:ir.action,name:act_company_config"
@@ -306,7 +359,8 @@ msgctxt "model:ir.action,name:report_letter"
 msgid "Letter"
 msgstr "Carta"
 
-msgctxt "model:ir.cron-company.company,name:"
+#, fuzzy
+msgctxt "model:ir.cron-company.company,string:"
 msgid "Cron - Company"
 msgstr "Planificador - Empresa"
 
@@ -342,12 +396,14 @@ msgctxt "model:res.group,name:group_employee_admin"
 msgid "Employee Administration"
 msgstr "Administració d'empleats"
 
-msgctxt "model:res.user-company.company,name:"
+#, fuzzy
+msgctxt "model:res.user-company.company,string:"
 msgid "User - Company"
 msgstr "Usuari - Empresa"
 
-msgctxt "model:res.user-company.employee,name:"
-msgid "User - Employee"
+#, fuzzy
+msgctxt "model:res.user-company.employee,string:"
+msgid "User - Company Employee"
 msgstr "Usuari - Emprat"
 
 msgctxt "report:party.letter:"

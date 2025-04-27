@@ -42,8 +42,8 @@ msgctxt "help:account.invoice.line,correction:"
 msgid "Check to correct price of already posted invoice."
 msgstr ""
 
-msgctxt "model:account.invoice.line-stock.move,name:"
-msgid "Invoice Line - Stock Move"
+msgctxt "model:account.invoice.line-stock.move,string:"
+msgid "Account Invoice Line - Stock Move"
 msgstr ""
 
 msgctxt "view:account.invoice.line:"

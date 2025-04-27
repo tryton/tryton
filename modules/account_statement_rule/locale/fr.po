@@ -153,15 +153,15 @@ msgstr ""
 "Laissez vide pour utiliser le groupe nommé 'party' de l'expression "
 "régulière."
 
-msgctxt "model:account.statement.rule,name:"
+msgctxt "model:account.statement.rule,string:"
 msgid "Account Statement Rule"
 msgstr "Règle de relevé comptable"
 
-msgctxt "model:account.statement.rule.information,name:"
+msgctxt "model:account.statement.rule.information,string:"
 msgid "Account Statement Rule Information"
 msgstr "Règle sur les informations de relevé comptable"
 
-msgctxt "model:account.statement.rule.line,name:"
+msgctxt "model:account.statement.rule.line,string:"
 msgid "Account Statement Rule Line"
 msgstr "Ligne de règle de relevé comptable"
 

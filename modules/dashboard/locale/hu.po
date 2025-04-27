@@ -20,9 +20,10 @@ msgctxt "field:res.user,dashboard_layout:"
 msgid "Dashboard Layout"
 msgstr ""
 
-msgctxt "model:dashboard.action,name:"
+#, fuzzy
+msgctxt "model:dashboard.action,string:"
 msgid "Dashboard Action"
-msgstr ""
+msgstr "Dashboard"
 
 msgctxt "model:ir.action,name:act_dashboard"
 msgid "Dashboard"

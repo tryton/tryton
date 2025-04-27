@@ -50,8 +50,9 @@ msgstr ""
 "El canal de notificació preferit. \n"
 "Deixeu-ho en blanc per desactivar la notificació."
 
-msgctxt "model:carrier.credential.dpd,name:"
-msgid "DPD Credential"
+#, fuzzy
+msgctxt "model:carrier.credential.dpd,string:"
+msgid "Carrier Credential Dpd"
 msgstr "Credencial DPD"
 
 msgctxt "model:ir.action,name:act_create_shipping_dpd_wizard"

@@ -153,8 +153,8 @@ msgid "Invoice"
 msgstr "Arve"
 
 #, fuzzy
-msgctxt "model:project.work.invoiced_progress,name:"
-msgid "Work Invoiced Progress"
+msgctxt "model:project.work.invoiced_progress,string:"
+msgid "Project Work Invoiced Progress"
 msgstr "Arveldatud progress"
 
 msgctxt "model:res.group,name:group_project_invoice"

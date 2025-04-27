@@ -314,6 +314,12 @@ msgstr "Ajouter un attachement à l'enregistrement"
 msgid "Add a note to the record"
 msgstr "Ajouter une note à l'enregistrement"
 
+msgid "Chat"
+msgstr "Chat"
+
+msgid "Chat on the record"
+msgstr "Chatter sur l'enregistrement"
+
 msgid "Email..."
 msgstr "Courriel..."
 
@@ -478,6 +484,9 @@ msgstr "Afficher"
 msgid "Hide"
 msgstr "Masquer"
 
+msgid "Select a color for \"%1\""
+msgstr "Sélectionner une couleur pour « %1 »"
+
 msgid "Open the record"
 msgstr "Ouvrir l'enregistrement"
 
@@ -532,6 +541,9 @@ msgstr "Menu"
 
 msgid "Copy Selected Rows"
 msgstr "Copier les lignes sélectionnées"
+
+msgid "Reset Column Widths"
+msgstr "Réinitialiser la largeur des colonnes"
 
 msgid "#ERROR"
 msgstr "#ERREUR"
@@ -761,6 +773,15 @@ msgstr "Basculer le son"
 
 msgid "Wizard"
 msgstr "Assistant"
+
+msgid "Enter a message"
+msgstr "Entrez un message"
+
+msgid "Submit the message"
+msgstr "Soumettre le message"
+
+msgid "Make this an internal message"
+msgstr "En faire un message interne"
 
 msgid "Translate view"
 msgstr "Traduire la vue"

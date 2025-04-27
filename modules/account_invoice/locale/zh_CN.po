@@ -764,80 +764,136 @@ msgctxt "help:company.company,purchase_taxes_expense:"
 msgid "Check to book purchase taxes as expense."
 msgstr "检查以将购置税作为费用入账。"
 
-msgctxt "model:account.configuration.default_payment_term,name:"
+#, fuzzy
+msgctxt "model:account.configuration.default_payment_term,string:"
 msgid "Account Configuration Default Payment Term"
 msgstr "账户设置-默认付款条件"
 
-msgctxt "model:account.fiscalyear.invoice_sequence,name:"
-msgid "Invoice Sequence"
-msgstr "原始凭证序列"
+#, fuzzy
+msgctxt "model:account.fiscalyear.invoice_sequence,string:"
+msgid "Account Fiscalyear Invoice Sequence"
+msgstr "供应商原始凭证序列"
 
-msgctxt "model:account.invoice,name:"
-msgid "Invoice"
-msgstr "原始凭证"
+#, fuzzy
+msgctxt "model:account.invoice,string:"
+msgid "Account Invoice"
+msgstr "账户"
 
-msgctxt "model:account.invoice-account.move.line,name:"
-msgid "Invoice - Payment Line"
-msgstr "原始凭证 - 付款明细"
+msgctxt "model:account.invoice-account.move.line,string:"
+msgid "Account Invoice - Account Move Line"
+msgstr ""
 
-msgctxt "model:account.invoice-additional-account.move,name:"
-msgid "Invoice Additional Move"
+#, fuzzy
+msgctxt "model:account.invoice-additional-account.move,string:"
+msgid "Account Invoice - Additional - Account Move"
 msgstr "原始凭证附加记账凭证"
 
-msgctxt "model:account.invoice.alternative_payee,name:"
-msgid "Invoice Alternative Payee"
+#, fuzzy
+msgctxt "model:account.invoice.alternative_payee,string:"
+msgid "Account Invoice Alternative Payee"
 msgstr "原始凭证备选收款人"
 
-msgctxt "model:account.invoice.credit.start,name:"
-msgid "Credit Invoice"
-msgstr "贷方原始凭证"
+msgctxt "model:account.invoice.credit.start,string:"
+msgid "Account Invoice Credit Start"
+msgstr ""
 
-msgctxt "model:account.invoice.line,name:"
-msgid "Invoice Line"
+#, fuzzy
+msgctxt "model:account.invoice.line,string:"
+msgid "Account Invoice Line"
 msgstr "原始凭证明细"
 
-msgctxt "model:account.invoice.line-account.tax,name:"
-msgid "Invoice Line - Tax"
+#, fuzzy
+msgctxt "model:account.invoice.line-account.tax,string:"
+msgid "Account Invoice Line - Account Tax"
 msgstr "原始凭证明细 - 税"
 
-msgctxt "model:account.invoice.pay.ask,name:"
-msgid "Pay Invoice"
-msgstr "付款原始凭证"
+#, fuzzy
+msgctxt "model:account.invoice.pay.ask,string:"
+msgid "Account Invoice Pay Ask"
+msgstr "原始凭证付款"
 
-msgctxt "model:account.invoice.pay.start,name:"
-msgid "Pay Invoice"
-msgstr "付款原始凭证"
+#, fuzzy
+msgctxt "model:account.invoice.pay.start,string:"
+msgid "Account Invoice Pay Start"
+msgstr "原始凭证参与者"
 
-msgctxt "model:account.invoice.payment.method,name:"
-msgid "Payment Method"
-msgstr "付款方式"
+#, fuzzy
+msgctxt "model:account.invoice.payment.method,string:"
+msgid "Account Invoice Payment Method"
+msgstr "原始凭证付款方式"
 
-msgctxt "model:account.invoice.payment_term,name:"
-msgid "Payment Term"
-msgstr "付款条件"
+msgctxt "model:account.invoice.payment_term,name:payment_term_0"
+msgid "Upon Receipt"
+msgstr ""
 
-msgctxt "model:account.invoice.payment_term.line,name:"
-msgid "Payment Term Line"
-msgstr "付款条件明细"
+#, fuzzy
+msgctxt "model:account.invoice.payment_term,name:payment_term_30_eom"
+msgid "Net 30 days End of Month"
+msgstr "每月天数"
 
-msgctxt "model:account.invoice.payment_term.line.delta,name:"
-msgid "Payment Term Line Relative Delta"
-msgstr "付款条件明细相对增量"
+#, fuzzy
+msgctxt "model:account.invoice.payment_term,name:payment_term_60_eom"
+msgid "Net 60 days End of Month"
+msgstr "每月天数"
 
-msgctxt "model:account.invoice.payment_term.test,name:"
-msgid "Test Payment Term"
-msgstr "测试付款条件"
+#, fuzzy
+msgctxt "model:account.invoice.payment_term,name:payment_term_eom"
+msgid "End of Month"
+msgstr "每月天数"
 
-msgctxt "model:account.invoice.payment_term.test.result,name:"
-msgid "Test Payment Term"
-msgstr "测试付款条件"
+msgctxt "model:account.invoice.payment_term,name:payment_term_eom_following"
+msgid "End of Month Following"
+msgstr ""
 
-msgctxt "model:account.invoice.report.revision,name:"
-msgid "Invoice Report Revision"
+msgctxt "model:account.invoice.payment_term,name:payment_term_net10"
+msgid "Net 10 days"
+msgstr ""
+
+msgctxt "model:account.invoice.payment_term,name:payment_term_net15"
+msgid "Net 15 days"
+msgstr ""
+
+msgctxt "model:account.invoice.payment_term,name:payment_term_net30"
+msgid "Net 30 days"
+msgstr ""
+
+msgctxt "model:account.invoice.payment_term,name:payment_term_net60"
+msgid "Net 60 days"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:account.invoice.payment_term,string:"
+msgid "Account Invoice Payment Term"
+msgstr "原始凭证付款"
+
+#, fuzzy
+msgctxt "model:account.invoice.payment_term.line,string:"
+msgid "Account Invoice Payment Term Line"
+msgstr "原始凭证 - 付款明细"
+
+#, fuzzy
+msgctxt "model:account.invoice.payment_term.line.delta,string:"
+msgid "Account Invoice Payment Term Line Delta"
+msgstr "原始凭证 - 付款明细"
+
+#, fuzzy
+msgctxt "model:account.invoice.payment_term.test,string:"
+msgid "Account Invoice Payment Term Test"
+msgstr "原始凭证付款"
+
+#, fuzzy
+msgctxt "model:account.invoice.payment_term.test.result,string:"
+msgid "Account Invoice Payment Term Test Result"
+msgstr "原始凭证付款方式"
+
+#, fuzzy
+msgctxt "model:account.invoice.report.revision,string:"
+msgid "Account Invoice Report Revision"
 msgstr "原始凭证报告修订"
 
-msgctxt "model:account.invoice.tax,name:"
-msgid "Invoice Tax"
+#, fuzzy
+msgctxt "model:account.invoice.tax,string:"
+msgid "Account Invoice Tax"
 msgstr "原始凭证税"
 
 msgctxt "model:ir.action,name:act_delegate_lines_to_pay_wizard"
@@ -1131,6 +1187,11 @@ msgid ""
 "\"%(payment_term)s\"."
 msgstr "要计算付款条件，必须在付款条件 \"%(payment_term)s\" 上附加一个剩余金额明细。"
 
+#, fuzzy
+msgctxt "model:ir.message,text:msg_payment_term_non_zero_ratio_divisor"
+msgid "The ratio and divisor can not be both equal to zero."
+msgstr "明细 \"%(line)s\" 上的率和除数不匹配."
+
 msgctxt "model:ir.model.button,confirm:invoice_cancel_button"
 msgid "Are you sure you want to cancel the invoices?"
 msgstr "确定要取消当前原始凭证？"
@@ -1227,7 +1288,8 @@ msgctxt "model:ir.ui.menu,name:menu_payment_terms_configuration"
 msgid "Payment Terms"
 msgstr "付款条件"
 
-msgctxt "model:party.party.payment_term,name:"
+#, fuzzy
+msgctxt "model:party.party.payment_term,string:"
 msgid "Party Payment Term"
 msgstr "参与者付款条件"
 

@@ -223,15 +223,18 @@ msgctxt "model:res.group,name:group_sale_blanket_agreement"
 msgid "Sale Blanket Agreement"
 msgstr "Acord general de venda"
 
-msgctxt "model:sale.blanket_agreement,name:"
+#, fuzzy
+msgctxt "model:sale.blanket_agreement,string:"
 msgid "Sale Blanket Agreement"
 msgstr "Acord general de venda"
 
-msgctxt "model:sale.blanket_agreement.create_sale.start,name:"
-msgid "Create Sale"
-msgstr "Crea venda"
+#, fuzzy
+msgctxt "model:sale.blanket_agreement.create_sale.start,string:"
+msgid "Sale Blanket Agreement Create Sale Start"
+msgstr "Línia d'acord general de venda"
 
-msgctxt "model:sale.blanket_agreement.line,name:"
+#, fuzzy
+msgctxt "model:sale.blanket_agreement.line,string:"
 msgid "Sale Blanket Agreement Line"
 msgstr "Línia d'acord general de venda"
 

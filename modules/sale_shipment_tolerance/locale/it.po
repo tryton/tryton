@@ -47,7 +47,8 @@ msgstr ""
 "La riga di vendita \"%(line)s\" supera la tolleranza di spedizione in "
 "eccesso (%(shipped)s shipped > %(maximal)s )."
 
-msgctxt "model:sale.configuration.shipment_tolerance,name:"
+#, fuzzy
+msgctxt "model:sale.configuration.shipment_tolerance,string:"
 msgid "Sale Configuration Shipment Tolerance"
 msgstr "Impostazioni di tolleranza della spedizione sulla vendita"
 

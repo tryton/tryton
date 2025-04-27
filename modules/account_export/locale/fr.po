@@ -1,5 +1,4 @@
 #
-#, fuzzy
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -47,11 +46,11 @@ msgctxt "field:account.move.export,type:"
 msgid "Type"
 msgstr "Type"
 
-msgctxt "model:account.configuration.export,name:"
+msgctxt "model:account.configuration.export,string:"
 msgid "Account Configuration Export"
 msgstr "Configuration d'export comptable"
 
-msgctxt "model:account.move.export,name:"
+msgctxt "model:account.move.export,string:"
 msgid "Account Move Export"
 msgstr "Export de mouvement comptable"
 

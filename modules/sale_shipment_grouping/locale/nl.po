@@ -35,9 +35,9 @@ msgctxt "help:sale.configuration.sale_method,sale_shipment_grouping_method:"
 msgid "The default shipment grouping method for new customers."
 msgstr "De standaard methode voor groeperen zendingen voor nieuwe klanten."
 
-msgctxt "model:party.party.sale_shipment_grouping_method,name:"
+msgctxt "model:party.party.sale_shipment_grouping_method,string:"
 msgid "Party Sale Shipment Grouping Method"
-msgstr "Relatie methode groeperen zendingen"
+msgstr "Relatie zendingen groeperen methode"
 
 msgctxt "selection:party.party,sale_shipment_grouping_method:"
 msgid "None"

@@ -62,13 +62,13 @@ msgstr ""
 "Gilt nur für Sendungen in dieses Land.\n"
 "Für alle Länder frei lassen."
 
-msgctxt "model:carrier,name:"
+msgctxt "model:carrier,string:"
 msgid "Carrier"
 msgstr "Versanddienstleister"
 
-msgctxt "model:carrier.selection,name:"
+msgctxt "model:carrier.selection,string:"
 msgid "Carrier Selection"
-msgstr "Zuordnung Versanddienstleister"
+msgstr "Versanddienstleister Zuordnung"
 
 msgctxt "model:ir.action,name:act_carrier_form"
 msgid "Carriers"

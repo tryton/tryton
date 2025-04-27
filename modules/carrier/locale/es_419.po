@@ -59,13 +59,14 @@ msgid ""
 "Leave empty for any countries."
 msgstr ""
 
-msgctxt "model:carrier,name:"
+msgctxt "model:carrier,string:"
 msgid "Carrier"
 msgstr ""
 
-msgctxt "model:carrier.selection,name:"
+#, fuzzy
+msgctxt "model:carrier.selection,string:"
 msgid "Carrier Selection"
-msgstr ""
+msgstr "Método de costo del transportista"
 
 msgctxt "model:ir.action,name:act_carrier_form"
 msgid "Carriers"

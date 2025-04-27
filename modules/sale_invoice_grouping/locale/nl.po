@@ -35,9 +35,9 @@ msgctxt "help:sale.configuration.sale_method,sale_invoice_grouping_method:"
 msgid "The default invoice grouping method for new customers."
 msgstr "De standaard factuurgroeperingsmethode voor nieuwe klanten."
 
-msgctxt "model:party.party.sale_invoice_grouping_method,name:"
+msgctxt "model:party.party.sale_invoice_grouping_method,string:"
 msgid "Party Sale Invoice Grouping Method"
-msgstr "relatie verkoop factuur groepering methode"
+msgstr "Relatie verkoopfactuur groepeer methode"
 
 msgctxt "selection:party.party,sale_invoice_grouping_method:"
 msgid "None"

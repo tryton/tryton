@@ -166,21 +166,25 @@ msgctxt "model:ir.rule.group,name:rule_group_category_default"
 msgid "Not accounting category"
 msgstr "Ni računovodska kategorija"
 
-msgctxt "model:product.category-customer-account.tax,name:"
-msgid "Category - Customer Tax"
-msgstr "Kategorija - Davek kupca"
+#, fuzzy
+msgctxt "model:product.category-customer-account.tax,string:"
+msgid "Product Category - Customer - Account Tax"
+msgstr "Predloga - Davek kupca"
 
-msgctxt "model:product.category-supplier-account.tax,name:"
-msgid "Category - Supplier Tax"
-msgstr "Kategorija - Davek dobavitelja"
+#, fuzzy
+msgctxt "model:product.category-supplier-account.tax,string:"
+msgid "Product Category - Supplier - Account Tax"
+msgstr "Predloga - Davek dobavitelja"
 
-msgctxt "model:product.category.account,name:"
-msgid "Category Account"
-msgstr "Konto v kategoriji"
+#, fuzzy
+msgctxt "model:product.category.account,string:"
+msgid "Product Category Account"
+msgstr "Kategorija izdelka"
 
-msgctxt "model:product.template-product.category.account,name:"
-msgid "Template - Account Category"
-msgstr "Predloga - Računovodska kategorija"
+#, fuzzy
+msgctxt "model:product.template-product.category.account,string:"
+msgid "Product Template - Product Category Account"
+msgstr "Konto predloge izdelka"
 
 msgctxt "model:res.group,name:group_account_product_admin"
 msgid "Account Product Administration"

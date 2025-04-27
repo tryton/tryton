@@ -16,47 +16,47 @@ msgstr ""
 
 msgctxt "field:stock.quantity.issue,origin:"
 msgid "Origin"
-msgstr ""
+msgstr "Origem"
 
 msgctxt "field:stock.quantity.issue,planned_date:"
 msgid "Planned Date"
-msgstr ""
+msgstr "Data Planejada"
 
 msgctxt "field:stock.quantity.issue,priority:"
 msgid "Priority"
-msgstr ""
+msgstr "Prioridade"
 
 msgctxt "field:stock.quantity.issue,processed_by:"
 msgid "Processed by"
-msgstr ""
+msgstr "Processado Por"
 
 msgctxt "field:stock.quantity.issue,products:"
 msgid "Products"
-msgstr ""
+msgstr "Produtos"
 
 msgctxt "field:stock.quantity.issue,solved_by:"
 msgid "Solved by"
-msgstr ""
+msgstr "Resolvido Por"
 
 msgctxt "field:stock.quantity.issue,state:"
 msgid "State"
-msgstr ""
+msgstr "State"
 
 msgctxt "field:stock.quantity.issue,warehouse:"
 msgid "Warehouse"
-msgstr ""
+msgstr "Armazém"
 
 msgctxt "field:stock.quantity.issue.generate.start,warehouses:"
 msgid "Warehouses"
-msgstr ""
+msgstr "Armazéms"
 
 msgctxt "field:stock.quantity.issue.product,best_planned_date:"
 msgid "Best Planned Date"
-msgstr ""
+msgstr "Melhor Data Planejada"
 
 msgctxt "field:stock.quantity.issue.product,forecast_quantity:"
 msgid "Forecast Quantity"
-msgstr ""
+msgstr "Quantidade Prevista"
 
 msgctxt "field:stock.quantity.issue.product,issue:"
 msgid "Issue"
@@ -133,15 +133,15 @@ msgctxt "model:ir.ui.menu,name:menu_quantity_issue_generate"
 msgid "Generate Stock Quantity Issues"
 msgstr ""
 
-msgctxt "model:stock.quantity.issue,name:"
+msgctxt "model:stock.quantity.issue,string:"
 msgid "Stock Quantity Issue"
 msgstr ""
 
-msgctxt "model:stock.quantity.issue.generate.start,name:"
-msgid "Stock Quantity Issue Generate"
+msgctxt "model:stock.quantity.issue.generate.start,string:"
+msgid "Stock Quantity Issue Generate Start"
 msgstr ""
 
-msgctxt "model:stock.quantity.issue.product,name:"
+msgctxt "model:stock.quantity.issue.product,string:"
 msgid "Stock Quantity Issue Product"
 msgstr ""
 

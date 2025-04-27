@@ -95,19 +95,19 @@ msgid "Relation Types"
 msgstr "Relation Types"
 
 #, fuzzy
-msgctxt "model:party.relation,name:"
+msgctxt "model:party.relation,string:"
 msgid "Party Relation"
 msgstr "Party Relations"
 
 #, fuzzy
-msgctxt "model:party.relation.all,name:"
+msgctxt "model:party.relation.all,string:"
 msgid "Party Relation"
 msgstr "Party Relations"
 
 #, fuzzy
-msgctxt "model:party.relation.type,name:"
-msgid "Relation Type"
-msgstr "Relation Types"
+msgctxt "model:party.relation.type,string:"
+msgid "Party Relation Type"
+msgstr "Party Relations"
 
 msgctxt "view:party.party:"
 msgid "Relations"

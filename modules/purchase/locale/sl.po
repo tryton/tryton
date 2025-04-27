@@ -474,6 +474,11 @@ msgctxt "field:purchase.purchase,purchase_date:"
 msgid "Purchase Date"
 msgstr "Datum nabavnega naloga"
 
+#, fuzzy
+msgctxt "field:purchase.purchase,quotation_expire:"
+msgid "Quotation Expire"
+msgstr "Ponudba"
+
 msgctxt "field:purchase.purchase,quoted_by:"
 msgid "Quoted By"
 msgstr "Ponudbo izdal"
@@ -1120,105 +1125,130 @@ msgctxt "model:ir.ui.menu,name:menu_reporting_purchase"
 msgid "Purchases"
 msgstr "Nabavni nalogi"
 
-msgctxt "model:party.party.customer_code,name:"
+#, fuzzy
+msgctxt "model:party.party.customer_code,string:"
 msgid "Party Customer Code"
 msgstr "Koda partnerja kupca"
 
-msgctxt "model:party.party.supplier_currency,name:"
+#, fuzzy
+msgctxt "model:party.party.supplier_currency,string:"
 msgid "Party Supplier Currency"
 msgstr "Valuta partnerja dobavitelja"
 
-msgctxt "model:party.party.supplier_lead_time,name:"
-msgid "Supplier Lead Time"
+#, fuzzy
+msgctxt "model:party.party.supplier_lead_time,string:"
+msgid "Party Supplier Lead Time"
 msgstr "Dobavni rok dobavitelja"
 
-msgctxt "model:purchase.configuration,name:"
+#, fuzzy
+msgctxt "model:purchase.configuration,string:"
 msgid "Purchase Configuration"
 msgstr "Konfiguracija nabave"
 
-msgctxt "model:purchase.configuration.purchase_method,name:"
+#, fuzzy
+msgctxt "model:purchase.configuration.purchase_method,string:"
 msgid "Purchase Configuration Purchase Method"
 msgstr "Konfiguracija načina nabave"
 
-msgctxt "model:purchase.configuration.sequence,name:"
+#, fuzzy
+msgctxt "model:purchase.configuration.sequence,string:"
 msgid "Purchase Configuration Sequence"
 msgstr "Konfiguracija številčne serije nabavnih nalogov"
 
-msgctxt "model:purchase.handle.invoice.exception.ask,name:"
-msgid "Handle Invoice Exception"
-msgstr "Obravnava pridržanih računov"
+#, fuzzy
+msgctxt "model:purchase.handle.invoice.exception.ask,string:"
+msgid "Purchase Handle Invoice Exception Ask"
+msgstr "Obravnavaj napako računa"
 
-msgctxt "model:purchase.handle.shipment.exception.ask,name:"
-msgid "Handle Shipment Exception"
-msgstr "Obravnava pridržanih prevzemnic"
+#, fuzzy
+msgctxt "model:purchase.handle.shipment.exception.ask,string:"
+msgid "Purchase Handle Shipment Exception Ask"
+msgstr "Obravnavaj napako dobavnice"
 
-msgctxt "model:purchase.line,name:"
+#, fuzzy
+msgctxt "model:purchase.line,string:"
 msgid "Purchase Line"
 msgstr "Vrstica nabavnega naloga"
 
-msgctxt "model:purchase.line-account.tax,name:"
-msgid "Purchase Line - Tax"
+#, fuzzy
+msgctxt "model:purchase.line-account.tax,string:"
+msgid "Purchase Line - Account Tax"
 msgstr "Vrstica nabavnega naloga - Davek"
 
-msgctxt "model:purchase.line-ignored-stock.move,name:"
-msgid "Purchase Line - Ignored Move"
+#, fuzzy
+msgctxt "model:purchase.line-ignored-stock.move,string:"
+msgid "Purchase Line - Ignored - Stock Move"
 msgstr "Nabavna postavka - Prezrt promet"
 
-msgctxt "model:purchase.line-recreated-stock.move,name:"
-msgid "Purchase Line - Ignored Move"
-msgstr "Nabavna postavka - Obnovljen promet"
+#, fuzzy
+msgctxt "model:purchase.line-recreated-stock.move,string:"
+msgid "Purchase Line - Recreated - Stock Move"
+msgstr "Nabavni nalog - Ponovno izdelan račun"
 
-msgctxt "model:purchase.product_supplier,name:"
-msgid "Product Supplier"
-msgstr "Dobavitelj izdelkov"
+#, fuzzy
+msgctxt "model:purchase.product_supplier,string:"
+msgid "Purchase Product Supplier"
+msgstr "Nabava po dobavitelju"
 
-msgctxt "model:purchase.product_supplier.price,name:"
-msgid "Product Supplier Price"
+#, fuzzy
+msgctxt "model:purchase.product_supplier.price,string:"
+msgid "Purchase Product Supplier Price"
 msgstr "Dobaviteljeva cena"
 
-msgctxt "model:purchase.purchase,name:"
+#, fuzzy
+msgctxt "model:purchase.purchase,string:"
 msgid "Purchase"
 msgstr "Nabavni nalog"
 
-msgctxt "model:purchase.purchase-ignored-account.invoice,name:"
-msgid "Purchase - Ignored Invoice"
+#, fuzzy
+msgctxt "model:purchase.purchase-ignored-account.invoice,string:"
+msgid "Purchase - Ignored - Account Invoice"
 msgstr "Nabavni nalog - Prezrt račun"
 
-msgctxt "model:purchase.purchase-recreated-account.invoice,name:"
-msgid "Purchase - Recreated Invoice"
+#, fuzzy
+msgctxt "model:purchase.purchase-recreated-account.invoice,string:"
+msgid "Purchase - Recreated - Account Invoice"
 msgstr "Nabavni nalog - Ponovno izdelan račun"
 
-msgctxt "model:purchase.reporting.context,name:"
+#, fuzzy
+msgctxt "model:purchase.reporting.context,string:"
 msgid "Purchase Reporting Context"
 msgstr "Kontekst nabavnih poročil"
 
-msgctxt "model:purchase.reporting.main,name:"
-msgid "Purchase Reporting"
+#, fuzzy
+msgctxt "model:purchase.reporting.main,string:"
+msgid "Purchase Reporting Main"
 msgstr "Nabavna poročila"
 
-msgctxt "model:purchase.reporting.main.time_series,name:"
-msgid "Purchase Reporting"
-msgstr "Nabavna poročila"
-
-msgctxt "model:purchase.reporting.product,name:"
-msgid "Purchase Reporting per Product"
-msgstr "Nabavno poročilo po izdelkih"
-
-msgctxt "model:purchase.reporting.product.time_series,name:"
-msgid "Purchase Reporting per Product"
-msgstr "Nabavno poročilo po izdelkih"
-
-msgctxt "model:purchase.reporting.supplier,name:"
-msgid "Purchase Reporting per Supplier"
+#, fuzzy
+msgctxt "model:purchase.reporting.main.time_series,string:"
+msgid "Purchase Reporting Main Time Series"
 msgstr "Nabavno poročilo po dobaviteljih"
 
-msgctxt "model:purchase.reporting.supplier.time_series,name:"
-msgid "Purchase Reporting per Supplier"
+#, fuzzy
+msgctxt "model:purchase.reporting.product,string:"
+msgid "Purchase Reporting Product"
+msgstr "Nabavno poročilo po izdelkih"
+
+#, fuzzy
+msgctxt "model:purchase.reporting.product.time_series,string:"
+msgid "Purchase Reporting Product Time Series"
+msgstr "Nabavno poročilo po izdelkih"
+
+#, fuzzy
+msgctxt "model:purchase.reporting.supplier,string:"
+msgid "Purchase Reporting Supplier"
 msgstr "Nabavno poročilo po dobaviteljih"
 
-msgctxt "model:purchase.return_purchase.start,name:"
-msgid "Return Purchase"
-msgstr "Nabavno vračilo"
+#, fuzzy
+msgctxt "model:purchase.reporting.supplier.time_series,string:"
+msgid "Purchase Reporting Supplier Time Series"
+msgstr "Nabavno poročilo po dobaviteljih"
+
+#, fuzzy
+msgctxt "model:purchase.return_purchase.start,string:"
+msgid "Purchase Return Purchase Start"
+msgstr "Konfiguracija načina nabave"
 
 msgctxt "model:res.group,name:group_purchase"
 msgid "Purchase"

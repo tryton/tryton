@@ -358,36 +358,44 @@ msgctxt "model:res.group,name:group_timesheet_admin"
 msgid "Timesheet Administration"
 msgstr "Töögraafiku administreerimine"
 
-msgctxt "model:timesheet.hours_employee,name:"
-msgid "Hours per Employee"
+#, fuzzy
+msgctxt "model:timesheet.hours_employee,string:"
+msgid "Timesheet Hours Employee"
 msgstr "Tunde töötaja kohta"
 
-msgctxt "model:timesheet.hours_employee.context,name:"
-msgid "Hours per Employee Context"
+#, fuzzy
+msgctxt "model:timesheet.hours_employee.context,string:"
+msgid "Timesheet Hours Employee Context"
 msgstr "Tunde töötaja kohta sisu"
 
-msgctxt "model:timesheet.hours_employee_monthly,name:"
-msgid "Hours per Employee per Month"
+#, fuzzy
+msgctxt "model:timesheet.hours_employee_monthly,string:"
+msgid "Timesheet Hours Employee Monthly"
 msgstr "Tunde töötaja kohta kuus"
 
-msgctxt "model:timesheet.hours_employee_weekly,name:"
-msgid "Hours per Employee per Week"
+#, fuzzy
+msgctxt "model:timesheet.hours_employee_weekly,string:"
+msgid "Timesheet Hours Employee Weekly"
 msgstr "Tunde töötaja kohta nädalas"
 
-msgctxt "model:timesheet.line,name:"
+#, fuzzy
+msgctxt "model:timesheet.line,string:"
 msgid "Timesheet Line"
 msgstr "Töögraafiku rida"
 
-msgctxt "model:timesheet.line.enter.start,name:"
-msgid "Enter Lines"
-msgstr "Lisa read"
+#, fuzzy
+msgctxt "model:timesheet.line.enter.start,string:"
+msgid "Timesheet Line Enter Start"
+msgstr "Töögraafiku algus"
 
-msgctxt "model:timesheet.work,name:"
-msgid "Work"
-msgstr "Töö"
+#, fuzzy
+msgctxt "model:timesheet.work,string:"
+msgid "Timesheet Work"
+msgstr "Töögraafik"
 
-msgctxt "model:timesheet.work.context,name:"
-msgid "Work Context"
+#, fuzzy
+msgctxt "model:timesheet.work.context,string:"
+msgid "Timesheet Work Context"
 msgstr "Töö sisu"
 
 msgctxt "selection:res.user.application,application:"

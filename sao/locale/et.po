@@ -325,6 +325,13 @@ msgstr "Lisa manus"
 msgid "Add a note to the record"
 msgstr "Lisa märkus"
 
+msgid "Chat"
+msgstr ""
+
+#, fuzzy
+msgid "Chat on the record"
+msgstr "Ava kirje"
+
 msgid "Email..."
 msgstr ""
 
@@ -498,6 +505,9 @@ msgstr "Näita"
 msgid "Hide"
 msgstr "Peida"
 
+msgid "Select a color for \"%1\""
+msgstr ""
+
 msgid "Open the record"
 msgstr "Ava kirje"
 
@@ -554,6 +564,9 @@ msgstr ""
 #, fuzzy
 msgid "Copy Selected Rows"
 msgstr "Järgmine kirje"
+
+msgid "Reset Column Widths"
+msgstr ""
 
 msgid "#ERROR"
 msgstr ""
@@ -803,6 +816,15 @@ msgstr ""
 
 msgid "Wizard"
 msgstr "Nõustaja"
+
+msgid "Enter a message"
+msgstr ""
+
+msgid "Submit the message"
+msgstr ""
+
+msgid "Make this an internal message"
+msgstr ""
 
 msgid "Translate view"
 msgstr "Tõlgi vaade"

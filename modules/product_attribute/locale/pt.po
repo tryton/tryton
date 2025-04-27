@@ -30,7 +30,6 @@ msgctxt "field:product.product,attributes:"
 msgid "Attributes"
 msgstr "Atributos"
 
-#, fuzzy
 msgctxt "field:product.product,attributes_name:"
 msgid "Attributes Name"
 msgstr "Atributos"
@@ -74,7 +73,11 @@ msgstr "Conjuntos de Atributos"
 #, python-format
 msgctxt "model:ir.message,text:msg_label_value"
 msgid "%(label)s: %(value)s"
-msgstr ""
+msgstr "%(label)s: %(value)s"
+
+msgctxt "model:ir.message,text:msg_product_attribute_name_unique"
+msgid "The name of the product attribute must be unique."
+msgstr "O nome do atributo deve ser único."
 
 msgctxt "model:ir.ui.menu,name:menu_attribute"
 msgid "Attributes"
@@ -84,15 +87,15 @@ msgctxt "model:ir.ui.menu,name:menu_attribute_set"
 msgid "Attribute Sets"
 msgstr "Conjuntos de Atributos"
 
-msgctxt "model:product.attribute,name:"
+msgctxt "model:product.attribute,string:"
 msgid "Product Attribute"
 msgstr "Atributo do produto"
 
-msgctxt "model:product.attribute-product.attribute-set,name:"
-msgid "Product Attribute - Set"
-msgstr "Atributo produto - grupo"
+msgctxt "model:product.attribute-product.attribute-set,string:"
+msgid "Product Attribute - Product Attribute - Set"
+msgstr "Atributo do produto - grupo"
 
-msgctxt "model:product.attribute.set,name:"
+msgctxt "model:product.attribute.set,string:"
 msgid "Product Attribute Set"
 msgstr "Grupo de atributos do produto"
 

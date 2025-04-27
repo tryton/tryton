@@ -40,10 +40,6 @@ msgctxt "field:party.party,credit_limit_amounts:"
 msgid "Credit Limit Amounts"
 msgstr "Montante do Limite de Crédito"
 
-msgctxt "field:party.party,credit_limit_digits:"
-msgid "Currency Digits"
-msgstr "Dígitos decimais da moeda"
-
 msgctxt "field:party.party.credit_limit_amount,company:"
 msgid "Company"
 msgstr "Empresa"
@@ -52,9 +48,10 @@ msgctxt "field:party.party.credit_limit_amount,credit_limit_amount:"
 msgid "Credit Limit Amount"
 msgstr "Montante do Limite de Crédito"
 
-msgctxt "field:party.party.credit_limit_amount,credit_limit_digits:"
-msgid "Currency Digits"
-msgstr "Dígitos Decimais da moeda"
+#, fuzzy
+msgctxt "field:party.party.credit_limit_amount,currency:"
+msgid "Currency"
+msgstr "Dígitos da moeda"
 
 msgctxt "field:party.party.credit_limit_amount,party:"
 msgid "Party"
@@ -69,27 +66,32 @@ msgctxt ""
 msgid "The default credit limit amount for new customers."
 msgstr "O limite de crédito padrão para novos clientes."
 
-#, fuzzy
 msgctxt "help:account.dunning.level,credit_limit:"
 msgid "Has reached the credit limit."
-msgstr "Atingiu o limite de crédito"
+msgstr "Atingiu o limite de crédito."
 
-msgctxt "model:account.configuration.default_credit_limit_amount,name:"
+#, fuzzy
+msgctxt "model:account.configuration.default_credit_limit_amount,string:"
 msgid "Account Configuration Default Credit Limit Amount"
 msgstr "Configuração de Conta Montante Padrão Limite de Crédito"
 
-#, python-format
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_party_credit_limit_amount"
-msgid "Party \"%(party)s\" has reached their credit limit of %(limit)s."
+msgid ""
+"The party \"%(party)s\" will exceed their %(limit)s credit limit by "
+"%(amount)s."
 msgstr "A pessoa \"%(party)s\" atingiu o limite de crédito de %(limit)s."
 
-#, python-format
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_party_credit_limit_dunning"
-msgid "Party \"%(party)s\" has reached the credit limit level of %(dunning)s."
+msgid ""
+"The party \"%(party)s\" has reached the credit limit level for dunning "
+"\"%(dunning)s\"."
 msgstr ""
 "A pessoa \"%(party)s\" atingiu o nível de limite de crédito de %(dunning)s."
 
-msgctxt "model:party.party.credit_limit_amount,name:"
+#, fuzzy
+msgctxt "model:party.party.credit_limit_amount,string:"
 msgid "Party Credit Limit Amount"
 msgstr "Montante Limite de Crédito da Pessoa"
 

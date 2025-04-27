@@ -83,13 +83,13 @@ msgctxt "help:account.account.receivable.rule.account,only_reconcile:"
 msgid "Distribute only to fully reconcile."
 msgstr "Nur bei vollständiger Abstimmung verteilen."
 
-msgctxt "model:account.account.receivable.rule,name:"
+msgctxt "model:account.account.receivable.rule,string:"
 msgid "Account Receivable Rule"
-msgstr "Konto Abstimmungsregel"
+msgstr "Buchhaltung Abstimmungsregel Forderungen"
 
-msgctxt "model:account.account.receivable.rule.account,name:"
+msgctxt "model:account.account.receivable.rule.account,string:"
 msgid "Account Receivable Rule Account"
-msgstr "Konto Abstimmungsregel Konto"
+msgstr "Buchhaltung Abstimmungsregel Forderungen Konto"
 
 msgctxt "model:ir.action,name:act_account_receivable_rule_form"
 msgid "Account Receivable Rules"

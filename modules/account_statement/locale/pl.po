@@ -107,6 +107,16 @@ msgctxt "field:account.statement.journal,journal:"
 msgid "Journal"
 msgstr "Dziennik"
 
+#, fuzzy
+msgctxt "field:account.statement.journal,last_amount:"
+msgid "Last Amount"
+msgstr "Kwota"
+
+#, fuzzy
+msgctxt "field:account.statement.journal,last_date:"
+msgid "Last Date"
+msgstr "Data"
+
 msgctxt "field:account.statement.journal,name:"
 msgid "Name"
 msgstr "Nazwa"
@@ -297,33 +307,37 @@ msgctxt "model:account.journal,name:journal_statement"
 msgid "Statement"
 msgstr "Wyciąg"
 
-msgctxt "model:account.statement,name:"
+#, fuzzy
+msgctxt "model:account.statement,string:"
 msgid "Account Statement"
-msgstr ""
+msgstr "Importuj wyciąg"
 
-msgctxt "model:account.statement.import.start,name:"
-msgid "Statement Import Start"
+msgctxt "model:account.statement.import.start,string:"
+msgid "Account Statement Import Start"
 msgstr ""
 
 #, fuzzy
-msgctxt "model:account.statement.journal,name:"
-msgid "Statement Journal"
+msgctxt "model:account.statement.journal,string:"
+msgid "Account Statement Journal"
 msgstr "Statement Journals"
 
-msgctxt "model:account.statement.line,name:"
+#, fuzzy
+msgctxt "model:account.statement.line,string:"
 msgid "Account Statement Line"
-msgstr ""
+msgstr "Pozycje wyciągu"
 
-msgctxt "model:account.statement.line.group,name:"
+#, fuzzy
+msgctxt "model:account.statement.line.group,string:"
 msgid "Account Statement Line Group"
-msgstr ""
+msgstr "Statement Line Groups"
 
-msgctxt "model:account.statement.origin,name:"
+#, fuzzy
+msgctxt "model:account.statement.origin,string:"
 msgid "Account Statement Origin"
-msgstr ""
+msgstr "Pozycje wyciągu"
 
-msgctxt "model:account.statement.origin.information,name:"
-msgid "Statement Origin Information"
+msgctxt "model:account.statement.origin.information,string:"
+msgid "Account Statement Origin Information"
 msgstr ""
 
 msgctxt "model:ir.action,name:act_line_group_form"
@@ -351,6 +365,11 @@ msgid "Statements"
 msgstr "Wyciągi"
 
 msgctxt "model:ir.action,name:act_statement_journal_form"
+msgid "Statement Journals"
+msgstr "Dzienniki wyciągów"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_statement_journal_list_reporting"
 msgid "Statement Journals"
 msgstr "Dzienniki wyciągów"
 
@@ -531,6 +550,11 @@ msgid "Import Statement"
 msgstr "Importuj wyciąg"
 
 msgctxt "model:ir.ui.menu,name:menu_statement_journal_form"
+msgid "Statement Journals"
+msgstr "Dzienniki wyciągów"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_statement_journal_reporting"
 msgid "Statement Journals"
 msgstr "Dzienniki wyciągów"
 

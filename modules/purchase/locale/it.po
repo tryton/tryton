@@ -489,6 +489,11 @@ msgid "Purchase Date"
 msgstr "Data acquisto"
 
 #, fuzzy
+msgctxt "field:purchase.purchase,quotation_expire:"
+msgid "Quotation Expire"
+msgstr "Preventivo"
+
+#, fuzzy
 msgctxt "field:purchase.purchase,quoted_by:"
 msgid "Quoted By"
 msgstr "Quote"
@@ -1155,111 +1160,130 @@ msgctxt "model:ir.ui.menu,name:menu_reporting_purchase"
 msgid "Purchases"
 msgstr "Acquisti"
 
-msgctxt "model:party.party.customer_code,name:"
+#, fuzzy
+msgctxt "model:party.party.customer_code,string:"
 msgid "Party Customer Code"
 msgstr "Codice cliente della controparte"
 
 #, fuzzy
-msgctxt "model:party.party.supplier_currency,name:"
+msgctxt "model:party.party.supplier_currency,string:"
 msgid "Party Supplier Currency"
 msgstr "Prezzo fornitore prodotto"
 
 #, fuzzy
-msgctxt "model:party.party.supplier_lead_time,name:"
-msgid "Supplier Lead Time"
+msgctxt "model:party.party.supplier_lead_time,string:"
+msgid "Party Supplier Lead Time"
 msgstr "Lead time"
 
-msgctxt "model:purchase.configuration,name:"
+#, fuzzy
+msgctxt "model:purchase.configuration,string:"
 msgid "Purchase Configuration"
 msgstr "Configurazione acquisti"
 
-msgctxt "model:purchase.configuration.purchase_method,name:"
+#, fuzzy
+msgctxt "model:purchase.configuration.purchase_method,string:"
 msgid "Purchase Configuration Purchase Method"
-msgstr ""
+msgstr "Configurazione acquisti"
 
-msgctxt "model:purchase.configuration.sequence,name:"
+#, fuzzy
+msgctxt "model:purchase.configuration.sequence,string:"
 msgid "Purchase Configuration Sequence"
-msgstr ""
+msgstr "Configurazione acquisti"
 
-msgctxt "model:purchase.handle.invoice.exception.ask,name:"
-msgid "Handle Invoice Exception"
-msgstr "Gestire eccezione in fattura"
+#, fuzzy
+msgctxt "model:purchase.handle.invoice.exception.ask,string:"
+msgid "Purchase Handle Invoice Exception Ask"
+msgstr "Handle Invoice Exception"
 
-msgctxt "model:purchase.handle.shipment.exception.ask,name:"
-msgid "Handle Shipment Exception"
-msgstr "Gestore eccezione su spedizione"
+#, fuzzy
+msgctxt "model:purchase.handle.shipment.exception.ask,string:"
+msgid "Purchase Handle Shipment Exception Ask"
+msgstr "Handle Shipment Exception"
 
-msgctxt "model:purchase.line,name:"
+#, fuzzy
+msgctxt "model:purchase.line,string:"
 msgid "Purchase Line"
-msgstr "Riga acquisto"
+msgstr "Riga ordine di acquisto"
 
-msgctxt "model:purchase.line-account.tax,name:"
-msgid "Purchase Line - Tax"
+#, fuzzy
+msgctxt "model:purchase.line-account.tax,string:"
+msgid "Purchase Line - Account Tax"
 msgstr "Riga acquisto - Imposta"
 
-msgctxt "model:purchase.line-ignored-stock.move,name:"
-msgid "Purchase Line - Ignored Move"
+#, fuzzy
+msgctxt "model:purchase.line-ignored-stock.move,string:"
+msgid "Purchase Line - Ignored - Stock Move"
 msgstr "Riga acquisto - Movimento non considerato"
 
-msgctxt "model:purchase.line-recreated-stock.move,name:"
-msgid "Purchase Line - Ignored Move"
-msgstr "Riga acquisto - movimento non considerato"
-
-msgctxt "model:purchase.product_supplier,name:"
-msgid "Product Supplier"
-msgstr "Fornitore prodotto"
-
-msgctxt "model:purchase.product_supplier.price,name:"
-msgid "Product Supplier Price"
-msgstr "Prezzo fornitore prodotto"
-
-msgctxt "model:purchase.purchase,name:"
-msgid "Purchase"
-msgstr "Acquisto"
-
-msgctxt "model:purchase.purchase-ignored-account.invoice,name:"
-msgid "Purchase - Ignored Invoice"
-msgstr "Acquisto - fattura non considerata"
-
-msgctxt "model:purchase.purchase-recreated-account.invoice,name:"
-msgid "Purchase - Recreated Invoice"
+#, fuzzy
+msgctxt "model:purchase.line-recreated-stock.move,string:"
+msgid "Purchase Line - Recreated - Stock Move"
 msgstr "Acquisto - fattura ricreata"
 
 #, fuzzy
-msgctxt "model:purchase.reporting.context,name:"
+msgctxt "model:purchase.product_supplier,string:"
+msgid "Purchase Product Supplier"
+msgstr "Prezzo d'acquisto"
+
+#, fuzzy
+msgctxt "model:purchase.product_supplier.price,string:"
+msgid "Purchase Product Supplier Price"
+msgstr "Prezzo fornitore prodotto"
+
+#, fuzzy
+msgctxt "model:purchase.purchase,string:"
+msgid "Purchase"
+msgstr "Acquisto"
+
+#, fuzzy
+msgctxt "model:purchase.purchase-ignored-account.invoice,string:"
+msgid "Purchase - Ignored - Account Invoice"
+msgstr "Acquisto - fattura non considerata"
+
+#, fuzzy
+msgctxt "model:purchase.purchase-recreated-account.invoice,string:"
+msgid "Purchase - Recreated - Account Invoice"
+msgstr "Acquisto - fattura ricreata"
+
+#, fuzzy
+msgctxt "model:purchase.reporting.context,string:"
 msgid "Purchase Reporting Context"
 msgstr "Configurazione acquisti"
 
 #, fuzzy
-msgctxt "model:purchase.reporting.main,name:"
-msgid "Purchase Reporting"
+msgctxt "model:purchase.reporting.main,string:"
+msgid "Purchase Reporting Main"
 msgstr "Riga ordine di acquisto"
 
 #, fuzzy
-msgctxt "model:purchase.reporting.main.time_series,name:"
-msgid "Purchase Reporting"
-msgstr "Riga ordine di acquisto"
-
-msgctxt "model:purchase.reporting.product,name:"
-msgid "Purchase Reporting per Product"
-msgstr ""
-
-msgctxt "model:purchase.reporting.product.time_series,name:"
-msgid "Purchase Reporting per Product"
-msgstr ""
-
-msgctxt "model:purchase.reporting.supplier,name:"
-msgid "Purchase Reporting per Supplier"
-msgstr ""
-
-msgctxt "model:purchase.reporting.supplier.time_series,name:"
-msgid "Purchase Reporting per Supplier"
-msgstr ""
+msgctxt "model:purchase.reporting.main.time_series,string:"
+msgid "Purchase Reporting Main Time Series"
+msgstr "Configurazione acquisti"
 
 #, fuzzy
-msgctxt "model:purchase.return_purchase.start,name:"
-msgid "Return Purchase"
-msgstr "Reso Acquisto"
+msgctxt "model:purchase.reporting.product,string:"
+msgid "Purchase Reporting Product"
+msgstr "Riga ordine di acquisto"
+
+#, fuzzy
+msgctxt "model:purchase.reporting.product.time_series,string:"
+msgid "Purchase Reporting Product Time Series"
+msgstr "Configurazione acquisti"
+
+#, fuzzy
+msgctxt "model:purchase.reporting.supplier,string:"
+msgid "Purchase Reporting Supplier"
+msgstr "Prezzo d'acquisto"
+
+#, fuzzy
+msgctxt "model:purchase.reporting.supplier.time_series,string:"
+msgid "Purchase Reporting Supplier Time Series"
+msgstr "Prezzo d'acquisto"
+
+#, fuzzy
+msgctxt "model:purchase.return_purchase.start,string:"
+msgid "Purchase Return Purchase Start"
+msgstr "Acquisto"
 
 msgctxt "model:res.group,name:group_purchase"
 msgid "Purchase"

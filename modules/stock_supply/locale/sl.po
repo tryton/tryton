@@ -165,17 +165,19 @@ msgctxt "model:ir.ui.menu,name:menu_stock_supply"
 msgid "Supply Stock"
 msgstr "Supply Stock"
 
-msgctxt "model:purchase.configuration.supply_period,name:"
+#, fuzzy
+msgctxt "model:purchase.configuration.supply_period,string:"
 msgid "Purchase Configuration Supply Period"
 msgstr "Konfiguracija obdobja nabavne dobave"
 
-msgctxt "model:stock.order_point,name:"
-msgid "Order Point"
+#, fuzzy
+msgctxt "model:stock.order_point,string:"
+msgid "Stock Order Point"
 msgstr "Točka naročanja"
 
-msgctxt "model:stock.supply.start,name:"
-msgid "Supply Stock"
-msgstr "Oskrba zaloge"
+msgctxt "model:stock.supply.start,string:"
+msgid "Stock Supply Start"
+msgstr ""
 
 #, fuzzy
 msgctxt "selection:ir.cron,method:"

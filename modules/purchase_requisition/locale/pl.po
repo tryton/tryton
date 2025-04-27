@@ -223,12 +223,12 @@ msgid "Requisitions"
 msgstr "Purchase Requisitions"
 
 #, fuzzy
-msgctxt "model:purchase.requisition,name:"
+msgctxt "model:purchase.requisition,string:"
 msgid "Purchase Requisition"
 msgstr "Purchase Requisition"
 
 #, fuzzy
-msgctxt "model:purchase.requisition.line,name:"
+msgctxt "model:purchase.requisition.line,string:"
 msgid "Purchase Requisition Line"
 msgstr "Purchase Requisition"
 

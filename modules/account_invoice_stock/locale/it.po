@@ -42,8 +42,9 @@ msgctxt "help:account.invoice.line,correction:"
 msgid "Check to correct price of already posted invoice."
 msgstr "Spunta per correggere il prezzo della fattura già registrata."
 
-msgctxt "model:account.invoice.line-stock.move,name:"
-msgid "Invoice Line - Stock Move"
+#, fuzzy
+msgctxt "model:account.invoice.line-stock.move,string:"
+msgid "Account Invoice Line - Stock Move"
 msgstr "Riga fattura - movimento di magazzino"
 
 msgctxt "view:account.invoice.line:"

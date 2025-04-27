@@ -129,9 +129,9 @@ msgctxt "model:res.group,name:group_stock_force_expiration"
 msgid "Stock Force Expiration"
 msgstr "Lager Erzwingen bei Ablauf Mindesthaltbarkeit"
 
-msgctxt "model:stock.location.lot.shelf_life,name:"
-msgid "Stock Configuration Lot Shelf Life"
-msgstr "Einstellungen Lager Charge Mindesthaltbarkeit"
+msgctxt "model:stock.location.lot.shelf_life,string:"
+msgid "Stock Location Lot Shelf Life"
+msgstr "Lagerort Charge Mindesthaltbarkeit"
 
 msgctxt "selection:product.product,expiration_state:"
 msgid "None"

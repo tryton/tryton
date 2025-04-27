@@ -19,3 +19,7 @@ msgstr "No puede cancelar la venta \"%(sale)s\" porque tiene pagos."
 msgctxt "model:ir.message,text:msg_sale_draft_payment"
 msgid "You cannot reset to draft sale \"%(sale)s\" because it has payments."
 msgstr "No puede restablecer a borrador la venta \"%(sale)s\" porque tiene pagos."
+
+msgctxt "selection:ir.cron,method:"
+msgid "Confirm sales based on payment"
+msgstr "Confirmar ventas pagadas"

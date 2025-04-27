@@ -170,21 +170,25 @@ msgctxt "model:ir.rule.group,name:rule_group_category_default"
 msgid "Not accounting category"
 msgstr ""
 
-msgctxt "model:product.category-customer-account.tax,name:"
-msgid "Category - Customer Tax"
-msgstr "دسته بندی - مالیات مشتری"
+#, fuzzy
+msgctxt "model:product.category-customer-account.tax,string:"
+msgid "Product Category - Customer - Account Tax"
+msgstr "الگوی محصول - مالیات مشتری"
 
-msgctxt "model:product.category-supplier-account.tax,name:"
-msgid "Category - Supplier Tax"
-msgstr "دسته بندی - مالیات تامین کننده"
+#, fuzzy
+msgctxt "model:product.category-supplier-account.tax,string:"
+msgid "Product Category - Supplier - Account Tax"
+msgstr "الگوی محصول - مالیات تامین کننده"
 
-msgctxt "model:product.category.account,name:"
-msgid "Category Account"
+#, fuzzy
+msgctxt "model:product.category.account,string:"
+msgid "Product Category Account"
 msgstr "دسته بندی حساب"
 
-msgctxt "model:product.template-product.category.account,name:"
-msgid "Template - Account Category"
-msgstr "الگوی - دسته بندی حساب"
+#, fuzzy
+msgctxt "model:product.template-product.category.account,string:"
+msgid "Product Template - Product Category Account"
+msgstr "الگوی حساب محصول"
 
 msgctxt "model:res.group,name:group_account_product_admin"
 msgid "Account Product Administration"

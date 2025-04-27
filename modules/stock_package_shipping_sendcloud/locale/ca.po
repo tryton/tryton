@@ -82,16 +82,18 @@ msgctxt "help:carrier.sendcloud.shipping_method,min_weight:"
 msgid "Minimal weight included in kg."
 msgstr "Pes mínim inclòs en kg."
 
-msgctxt "model:carrier.credential.sendcloud,name:"
-msgid "Sendcloud Credential"
-msgstr "Credencial Sendcloud"
+msgctxt "model:carrier.credential.sendcloud,string:"
+msgid "Carrier Credential Sendcloud"
+msgstr ""
 
-msgctxt "model:carrier.sendcloud.address,name:"
-msgid "Sendcloud Address"
+#, fuzzy
+msgctxt "model:carrier.sendcloud.address,string:"
+msgid "Carrier Sendcloud Address"
 msgstr "Adreça Sendcloud"
 
-msgctxt "model:carrier.sendcloud.shipping_method,name:"
-msgid "Sendcloud Shipping Method"
+#, fuzzy
+msgctxt "model:carrier.sendcloud.shipping_method,string:"
+msgid "Carrier Sendcloud Shipping Method"
 msgstr "Mètode d'enviament Sendcloud"
 
 msgctxt "model:ir.action,name:act_create_shipping_wizard"
