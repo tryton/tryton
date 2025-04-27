@@ -13,11 +13,10 @@ class Address(metaclass=PoolMeta):
     google_maps_url = fields.Function(fields.Char('Google Maps'),
         'on_change_with_google_maps_url')
 
-    @fields.depends(
-        'name', 'street', 'postal_code', 'city', 'country', 'subdivision')
+    @fields.depends('full_address')
     def on_change_with_google_maps_url(self, name=None):
         lang = Transaction().language[:2]
-        url = ' '.join(self.get_full_address('full_address').splitlines())
+        url = ' '.join((self.full_address or '').splitlines())
         if url.strip():
             return 'http://maps.google.com/maps?hl=%s&q=%s' % \
                 (lang, urllib.parse.quote(url))
