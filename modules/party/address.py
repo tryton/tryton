@@ -480,26 +480,26 @@ class AddressFormat(DeactivableMixin, MatchMixin, ModelSQL, ModelView):
         "- ${post_office}\n")
     building_number_format = fields.Char(
         "Building Number Format",
-        help="Use {} as placeholder for the number.")
+        help="Use {} as placeholder for the building number.")
     unit_number_format = fields.Char(
         "Unit Number Format",
-        help="Use {} as placeholder for the number.")
+        help="Use {} as placeholder for the unit number.")
     floor_number_format = fields.Char(
         "Floor Number Format",
-        help="Use {} as placeholder for the number.")
+        help="Use {} as placeholder for the floor number.")
     room_number_format = fields.Char(
         "Room Number Format",
-        help="Use {} as placeholder for the number.")
+        help="Use {} as placeholder for the room number.")
 
     post_box_format = fields.Char(
         "Post Box Format",
-        help="Use {} as placeholder for the number.")
+        help="Use {} as placeholder for the post box.")
     private_bag_format = fields.Char(
-        "Post Box Format",
-        help="Use {} as placeholder for the number.")
+        "Private Bag Format",
+        help="Use {} as placeholder for the private bag.")
     post_office_format = fields.Char(
-        "Post Box Format",
-        help="Use {} as placeholder for the number.")
+        "Post Office Format",
+        help="Use {} as placeholder for the post office.")
 
     _get_format_cache = Cache('party.address.format.get_format')
 
