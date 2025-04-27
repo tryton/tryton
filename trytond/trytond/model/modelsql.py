@@ -2187,7 +2187,8 @@ class ModelSQL(ModelStorage):
                 continue
             table = sql.table
             if isinstance(sql, (Unique, Exclude)):
-                cls.lock()
+                if backend.name != 'sqlite':
+                    cls.lock()
                 if not database.has_range():
                     columns = []
                     for col in sql.columns:
