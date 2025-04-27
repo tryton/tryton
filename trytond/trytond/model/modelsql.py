@@ -2135,7 +2135,8 @@ class ModelSQL(ModelStorage):
                 continue
             table = sql.table
             if isinstance(sql, (Unique, Exclude)):
-                lock(connection, cls._table)
+                if backend.name != 'sqlite':
+                    lock(connection, cls._table)
                 columns = list(sql.columns)
                 columns.insert(0, table.id)
                 in_max = transaction.database.IN_MAX // (len(columns) + 1)
