@@ -1,3 +1,7 @@
+
+Version 7.6.0 - 2025-04-28
+--------------------------
+* Bug fixes (see mercurial logs for details)
 * Add structured address
 * Rename address name to building name
 * Remove support for Python 3.8
