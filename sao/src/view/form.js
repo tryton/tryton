@@ -1418,7 +1418,8 @@ function eval_pyson(value){
         class_: 'form',
         init: function(languages, widget) {
             var dialog = new Sao.Dialog(
-                Sao.i18n.gettext('Translate'), this.class_, 'md');
+                Sao.i18n.gettext('Translate'), this.class_,
+                widget.expand? 'lg' : 'md');
             this.languages = languages;
             this.read(widget, dialog);
             jQuery('<button/>', {
@@ -1509,10 +1510,10 @@ function eval_pyson(value){
                 input.uniqueId();
                 row.append(jQuery('<label/>', {
                     'for': input.attr('id'),
-                    'class': 'col-sm-3 control-label',
+                    'class': 'col-sm-2 control-label',
                 }).append(' ' + lang.name));
                 row.append(jQuery('<div/>', {
-                    'class': 'col-sm-9 input-group',
+                    'class': 'col-sm-10 input-group',
                 }).append(input)
                     .append(jQuery('<span/>', {
                         'class': 'input-group-addon',
