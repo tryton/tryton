@@ -1131,9 +1131,11 @@ img.icon {
     }
     .form-text, .form-richtext {
         display: flex;
+        flex-direction: column;
 
         .input-group {
             display: flex;
+            height: 100%;
             width: 100%;
 
             textarea, .richtext {
@@ -1142,6 +1144,7 @@ img.icon {
                 min-height: 12.5ex;
                 overflow: auto;
                 resize: vertical;
+                width: 100%;
             }
 
             > span {
@@ -1152,6 +1155,9 @@ img.icon {
     .form-richtext {
         > .btn-toolbar {
             min-width: 450px;
+        }
+        > .panel-body {
+            flex-grow: 2;
         }
     }
     .form-separator {
