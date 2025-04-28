@@ -2590,8 +2590,10 @@ function eval_pyson(value){
                 'class': 'richtext mousetrap',
                 'contenteditable': true
             }).appendTo(jQuery('<div/>', {
+                'class': 'input-group',
+            }).appendTo(jQuery('<div/>', {
                 'class': 'panel-body'
-            }).appendTo(widget));
+            }).appendTo(widget)));
             return widget;
         },
         translate_widget_set_readonly: function(el, value) {
