@@ -1163,7 +1163,8 @@ class ModelStorage(Model):
         to_create, to_create_translations = [], []
         to_write, to_write_translations = [], []
         languages = set()
-        while len(data):
+        data = data.copy()
+        while data:
             (row, _, translate) = \
                 process_lines(data, [], fields_def)
             if dispatch(to_create, to_write, row):
