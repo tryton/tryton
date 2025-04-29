@@ -80,6 +80,7 @@ def setup_post(config, modules, company):
     user_scott.company = company
     user_scott.employees.append(employee_scott)
     user_scott.employee = employee_scott
+    user_scott.avatar = avatar.get('michael-scott.jpg')
     user_scott.save()
 
     party_beesly = Party(name="Pam Beesly")
@@ -101,6 +102,7 @@ def setup_post(config, modules, company):
     user_beesly.company = company
     user_beesly.employees.append(employee_beesly)
     user_beesly.employee = employee_beesly
+    user_beesly.avatar = avatar.get('pam-beesly.jpg')
     user_beesly.save()
 
     party_howard = Party(name="Ryan Howard")
@@ -116,6 +118,7 @@ def setup_post(config, modules, company):
     user_howard.company = company
     user_howard.employees.append(employee_howard)
     user_howard.employee = employee_howard
+    user_howard.avatar = avatar.get('ryan-howard.jpg')
     user_howard.save()
 
     party_halper = Party(name="Jim Halper")
@@ -135,6 +138,7 @@ def setup_post(config, modules, company):
     user_halper.company = company
     user_halper.employees.append(employee_halper)
     user_halper.employee = employee_halper
+    user_halper.avatar = avatar.get('jim-halper.jpg')
     user_halper.save()
 
     party_schrute = Party(name="Dwight Schrute")
@@ -155,6 +159,7 @@ def setup_post(config, modules, company):
     user_schrute.company = company
     user_schrute.employees.append(employee_schrute)
     user_schrute.employee = employee_schrute
+    user_schrute.avatar = avatar.get('dwight-schrute.jpg')
     user_schrute.save()
 
     party_martin = Party(name="Angela Martin")
@@ -177,6 +182,7 @@ def setup_post(config, modules, company):
     user_martin.company = company
     user_martin.employees.append(employee_martin)
     user_martin.employee = employee_martin
+    user_martin.avatar = avatar.get('angela-martin.jpg')
     user_martin.save()
 
     party_philbin = Party(name="Darryl Philbin")
@@ -195,6 +201,7 @@ def setup_post(config, modules, company):
     user_philbin.company = company
     user_philbin.employees.append(employee_philbin)
     user_philbin.employee = employee_philbin
+    user_philbin.avatar = avatar.get('darryl-philbin.jpg')
     user_philbin.save()
 
 
