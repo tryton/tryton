@@ -673,6 +673,7 @@ class WorkInvoicedProgress(ModelView, ModelSQL):
 class OpenInvoice(Wizard):
     __name__ = 'project.open_invoice'
     start_state = 'open_'
+    _readonly = True
     open_ = StateAction('account_invoice.act_invoice_form')
 
     def do_open_(self, action):

@@ -318,6 +318,7 @@ class OpenBOMTreeTree(ModelView):
 
 class OpenBOMTree(Wizard):
     __name__ = 'production.bom.tree.open'
+    _readonly = True
 
     start = StateView('production.bom.tree.open.start',
         'production.bom_tree_open_start_view_form', [

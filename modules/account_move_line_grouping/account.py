@@ -250,6 +250,7 @@ class MoveLineGroup_MoveLine(ModelSQL):
 
 class OpenAccount(metaclass=PoolMeta):
     __name__ = 'account.move.open_account'
+    _readonly = True
 
     def do_open_(self, action):
         pool = Pool()

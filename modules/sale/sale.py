@@ -2564,6 +2564,7 @@ class ModifyHeader(Wizard):
 
 class OpenProduct(Wizard):
     __name__ = 'sale.open_product'
+    _readonly = True
 
     start = StateAction('sale.act_product')
 

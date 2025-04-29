@@ -198,6 +198,7 @@ class Wizard(URLMixin, PoolBase):
     __no_slots__ = True  # To allow setting State
     start_state = 'start'
     end_state = 'end'
+    _readonly = False
 
     @classmethod
     def __setup__(cls):
@@ -205,7 +206,7 @@ class Wizard(URLMixin, PoolBase):
         cls.__rpc__ = {
             'create': RPC(readonly=False),
             'delete': RPC(readonly=False),
-            'execute': RPC(readonly=False, check_access=False),
+            'execute': RPC(readonly=cls._readonly, check_access=False),
             }
 
         # Copy states
@@ -248,9 +249,10 @@ class Wizard(URLMixin, PoolBase):
         ActionWizard = pool.get('ir.action.wizard')
         User = pool.get('res.user')
         Group = pool.get('res.group')
-        context = Transaction().context
+        transaction = Transaction()
+        context = transaction.context
 
-        if Transaction().user == 0:
+        if transaction.user == 0:
             return
 
         with check_access():
@@ -284,7 +286,7 @@ class Wizard(URLMixin, PoolBase):
                         gettext(
                             'ir.msg_context_groups',
                             groups=', '.join(g.rec_name for g in groups)))
-            elif model and model != 'ir.ui.menu':
+            elif model and model != 'ir.ui.menu' and not transaction.readonly:
                 if (not callable(getattr(Model, 'table_query', None))
                         or Model.write.__func__ != ModelSQL.write.__func__):
                     ModelAccess.check(model, 'write')

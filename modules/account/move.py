@@ -1934,6 +1934,7 @@ class OpenJournalAsk(ModelView):
 
 class OpenJournal(Wizard):
     __name__ = 'account.move.open_journal'
+    _readonly = True
     start = StateTransition()
     ask = StateView('account.move.open_journal.ask',
         'account.open_journal_ask_view_form', [
@@ -2003,6 +2004,7 @@ class OpenJournal(Wizard):
 class OpenAccount(Wizard):
     __name__ = 'account.move.open_account'
     start_state = 'open_'
+    _readonly = True
     open_ = StateAction('account.act_move_line_form')
 
     def do_open_(self, action):

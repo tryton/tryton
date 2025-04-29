@@ -37,6 +37,13 @@ Class attributes are:
    deletion of the wizard and it may return one of the :ref:`client side action
    keywords <topics-views-client-actions>`.
 
+.. attribute:: Wizard._readonly
+
+   A boolean to set :attr:`trytond.transaction.Transaction.readonly` when
+   executing the wizard.
+   When set to ``True``, ``write`` access on the ``active_model`` is not
+   needed.
+
 .. attribute:: Wizard.__rpc__
 
    Same as :attr:`trytond.model.Model.__rpc__`.

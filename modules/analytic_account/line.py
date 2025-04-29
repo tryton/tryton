@@ -273,6 +273,7 @@ class MoveLine(metaclass=PoolMeta):
 class OpenAccount(Wizard):
     __name__ = 'analytic_account.line.open_account'
     start_state = 'open_'
+    _readonly = True
     open_ = StateAction('analytic_account.act_line_form')
 
     def do_open_(self, action):

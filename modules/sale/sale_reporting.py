@@ -910,6 +910,7 @@ class RegionTree(ModelSQL, ModelView):
 
 class OpenRegionTree(Wizard):
     __name__ = 'sale.reporting.region.tree.open'
+    _readonly = True
 
     start = StateAction('sale.act_reporting_country_tree')
 
@@ -1051,6 +1052,7 @@ class CountryTree(UnionMixin, Abstract, ModelView):
 
 class OpenCountryTree(Wizard):
     __name__ = 'sale.reporting.country.tree.open'
+    _readonly = True
 
     start = StateTransition()
     country = StateAction('sale.act_reporting_country_time_series')

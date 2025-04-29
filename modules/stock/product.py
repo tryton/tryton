@@ -576,6 +576,7 @@ class ProductByLocationContext(ModelView):
 class OpenProductQuantitiesByWarehouse(Wizard):
     __name__ = 'stock.product_quantities_warehouse.open'
     start_state = 'open_'
+    _readonly = True
     open_ = StateAction('stock.act_product_quantities_warehouse')
 
     def do_open_(self, action):
@@ -869,6 +870,7 @@ class ProductQuantitiesByWarehouseContext(ModelView):
 class OpenProductQuantitiesByWarehouseMove(Wizard):
     __name__ = 'stock.product_quantities_warehouse.move.open'
     start_state = 'open_'
+    _readonly = True
     open_ = StateAction('stock.act_product_quantities_warehouse_move')
 
     def do_open_(self, action):

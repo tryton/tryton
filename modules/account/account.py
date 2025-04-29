@@ -421,6 +421,7 @@ class Type(
 
 class OpenType(Wizard):
     __name__ = 'account.account.open_type'
+    _readonly = True
     start = StateTransition()
     account = StateAction('account.act_account_balance_sheet')
     ledger_account = StateAction('account.act_account_general_ledger')
@@ -2306,6 +2307,7 @@ class GeneralLedgerAccountParty(_GeneralLedgerAccount):
 class OpenGeneralLedgerAccountParty(Wizard):
     __name__ = 'account.general_ledger.account.party.open'
     start_state = 'open'
+    _readonly = True
     open = StateAction('account.act_general_ledger_line_form')
 
     def do_open(self, action):
