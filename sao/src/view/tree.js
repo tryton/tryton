@@ -1063,6 +1063,8 @@
                     column.col.show();
                 }
             }
+            this.table.find('thead > tr > th .resizer').show();
+            this.table.find('thead > tr > th:visible:last .resizer').hide();
             if (this.children_field) {
                 this.columns.every(column => {
                     if (column.col.hasClass('draggable-handle') ||
