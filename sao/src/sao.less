@@ -814,6 +814,7 @@ img.icon {
             }
         }
         > thead > tr:first-child {
+            background-color: @body-bg;
             position: sticky;
             top: 0;
             z-index: 100;
@@ -821,7 +822,6 @@ img.icon {
             th {
                 border: 1px solid transparent;
                 border-bottom: 2px solid @table-border-color;
-                background-color: @body-bg;
             }
 
             &:hover th {
@@ -830,12 +830,12 @@ img.icon {
             }
         }
         > tfoot > tr {
+            background-color: @body-bg;
             bottom: 0;
             position: sticky;
             z-index: 100;
 
             th {
-                background-color: @body-bg;
                 & > label {
                     display: none;
                 }
