@@ -365,7 +365,8 @@ class WinForm(NoModal, InfoBar):
         if selected > 1:
             name += '#%i' % selected
         name = '(%s/%s)' % (name, common.humanize(size))
-        self.label.set_text(name)
+        if hasattr(self, 'label'):
+            self.label.set_text(name)
         self._set_button_sensitive()
 
     def record_modified(self, *args):
