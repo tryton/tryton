@@ -416,7 +416,9 @@
                 }
             }
             let message = name + '/' + Sao.common.humanize(size);
-            this.label.text(message).attr('title', message);
+            if (this.label) {
+                this.label.text(message).attr('title', message);
+            }
             this._set_button_sensitive();
         },
         record_modified: function() {
