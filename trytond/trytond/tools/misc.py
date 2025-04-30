@@ -6,6 +6,7 @@ Miscelleanous tools used by tryton
 """
 import importlib
 import io
+import math
 import os
 import re
 import types
@@ -304,6 +305,32 @@ def sql_pairing(x, y):
     return Case(
         (x < y, (y * y) + x),
         else_=(x * x) + x + y)
+
+
+def pair(x, y):
+    "Returns z as a pair of x and y"
+    if x < 0 or y < 0:
+        raise ValueError("x and y must be non-negative")
+    if x < y:
+        z = y ** 2 + x
+    else:
+        z = x ** 2 + x + y
+    return z
+
+
+def unpair(z):
+    "Returns the x and y pair associated with z"
+    if z < 0:
+        raise ValueError("z must be non-negative")
+    sqrtz = math.isqrt(z)
+    sq = sqrtz ** 2
+    if z - sq < sqrtz:
+        x = z - sq
+        y = sqrtz
+    else:
+        x = sqrtz
+        y = z - sq - sqrtz
+    return x, y
 
 
 def sqlite_apply_types(select, types):

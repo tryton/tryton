@@ -28,9 +28,9 @@ from trytond.tests.test_tryton import TestCase
 from trytond.tools import (
     cached_property, decimal_, email_, escape_wildcard, file_open, firstline,
     grouped_slice, is_full_text, is_instance_method, likify, lstrip_wildcard,
-    pairwise_longest, reduce_domain, reduce_ids, remove_forbidden_chars,
+    pair, pairwise_longest, reduce_domain, reduce_ids, remove_forbidden_chars,
     rstrip_wildcard, slugify, sortable_values, sqlite_apply_types,
-    strip_wildcard, timezone, unescape_wildcard)
+    strip_wildcard, timezone, unescape_wildcard, unpair)
 from trytond.tools.chart import sparkline
 from trytond.tools.domain_inversion import (
     canonicalize, concat, domain_inversion, eval_domain,
@@ -336,6 +336,33 @@ class ToolsTestCase(TestCase):
                 (1, 3),
                 (1, None),
                 ])
+
+    def test_pair_unpair(self):
+        "Test pair/unpair"
+        for x, y, z in [
+                (0, 0, 0),
+                (0, 1, 1),
+                (1, 0, 2),
+                (1, 1, 3),
+                (0, 2, 4),
+                (1, 2, 5),
+                (2, 0, 6),
+                (2, 1, 7),
+                (2, 2, 8),
+                (6, 0, 42),
+                ]:
+            with self.subTest(x=x, y=y, z=z):
+                self.assertEqual(pair(x, y), z)
+                self.assertEqual(unpair(z), (x, y))
+
+        with self.assertRaises(ValueError):
+            pair(-1, 1)
+
+        with self.assertRaises(ValueError):
+            pair(1, -1)
+
+        with self.assertRaises(ValueError):
+            unpair(-1)
 
     def test_sqlite_apply_types(self):
         "test sqlite_apply_types"

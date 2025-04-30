@@ -64,6 +64,14 @@ Miscellaneous
 
    Return an SQL expression that pairs SQL integers x and y.
 
+.. function:: pair(x, y)
+
+   Returns z as a pair of x and y.
+
+.. function:: unpair(z)
+
+   Returns the x and y pair associated with z.
+
 .. function:: sqlite_apply_types(select, types)
 
    Apply in place the SQLite types to column names of the select query.

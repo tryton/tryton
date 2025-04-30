@@ -13,10 +13,10 @@ from .decimal_ import decistmt
 from .misc import (
     entry_points, escape_wildcard, file_open, find_dir, find_path, firstline,
     get_smtp_server, grouped_slice, import_module, is_full_text,
-    is_instance_method, likify, lstrip_wildcard, pairwise_longest,
+    is_instance_method, likify, lstrip_wildcard, pair, pairwise_longest,
     reduce_domain, reduce_ids, remove_forbidden_chars, resolve,
     rstrip_wildcard, slugify, sortable_values, sql_pairing, sqlite_apply_types,
-    strip_wildcard, unescape_wildcard)
+    strip_wildcard, unescape_wildcard, unpair)
 
 _NOT_FOUND = object()
 
@@ -82,6 +82,7 @@ __all__ = [
     is_instance_method,
     likify,
     lstrip_wildcard,
+    pair,
     pairwise_longest,
     reduce_domain,
     reduce_ids,
@@ -95,4 +96,5 @@ __all__ = [
     sqlite_apply_types,
     strip_wildcard,
     unescape_wildcard,
+    unpair,
     ]
