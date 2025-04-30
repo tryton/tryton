@@ -833,6 +833,7 @@ class O2MField(Field):
                         force_remove=False)
 
         if value and (value.get('add') or value.get('update', [])):
+            vals_to_set = {}
             # First set already added fields to prevent triggering a
             # second on_change call
             for vals in value.get('update', []):

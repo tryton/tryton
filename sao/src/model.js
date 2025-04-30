@@ -2461,6 +2461,7 @@
             }
 
             if (value && (value.add || value.update)) {
+                let vals_to_set = {};
                 // First set already added fields to prevent triggering a
                 // second on_change call
                 if (value.update) {
@@ -2470,9 +2471,9 @@
                         }
                         const record2 = group.get(vals.id);
                         if (record2) {
-                            var vals_to_set = {};
                             for (var key in vals) {
-                                if (!Object.prototype.hasOwnProperty.call(new_field_names, key)) {
+                                if (!Object.prototype.hasOwnProperty.call(
+                                    new_field_names, key)) {
                                     vals_to_set[key] = vals[key];
                                 }
                             }
@@ -2508,7 +2509,10 @@
                         if (record2) {
                             let to_update = Object.fromEntries(
                                 Object.entries(vals).filter(
-                                    ([k, v]) => !Object.prototype.hasOwnProperty.call(vals_to_set, k)
+                                    ([k, v]) => {
+                                        !Object.prototype.hasOwnProperty.call(
+                                            vals_to_set, k)
+                                    }
                                 ));
                             record2.set_on_change(to_update);
                         }
