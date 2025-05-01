@@ -38,6 +38,7 @@ def context_reset():
     from tryton.bus import Bus
     CONTEXT.clear()
     CONTEXT['client'] = Bus.ID
+    CONTEXT['language'] = CONFIG['client.lang']
 
 
 context_reset()
@@ -118,7 +119,7 @@ def login(parameters):
     port = common.get_port(host)
     database = CONFIG['login.db']
     username = CONFIG['login.login']
-    language = CONFIG['client.lang']
+    CONTEXT['language'] = language = CONFIG['client.lang']
     parameters['device_cookie'] = device_cookie.get()
     connection = ServerProxy(hostname, port, database)
     logger.info('common.db.login(%s, %s, %s)', username, 'x' * 10, language)

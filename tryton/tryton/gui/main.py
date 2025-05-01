@@ -536,7 +536,7 @@ class Main(Gtk.Application):
             for target in targets:
                 target()
 
-        if prefs and 'language_direction' in prefs:
+        if prefs and prefs.get('language_direction'):
             translate.set_language_direction(prefs['language_direction'])
             CONFIG['client.language_direction'] = \
                 prefs['language_direction']
@@ -544,12 +544,14 @@ class Main(Gtk.Application):
         for action_id in prefs.get('actions', []):
             Action.execute(action_id, {})
         self.set_title(prefs.get('status_bar', ''))
-        if prefs and 'language' in prefs:
+        if prefs and prefs.get('language'):
             translate.setlang(prefs['language'], prefs.get('locale'))
             if CONFIG['client.lang'] != prefs['language']:
                 self.favorite_unset()
                 self.primary_menu.set_menu_model(self._get_primary_menu())
             CONFIG['client.lang'] = prefs['language']
+        else:
+            rpc.CONTEXT['language'] = CONFIG['client.lang']
         common.MODELNAME.clear()
         # Set placeholder after language is set to get correct translation
         self.global_search_entry.set_placeholder_text(_("Action"))

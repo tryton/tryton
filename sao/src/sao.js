@@ -374,17 +374,22 @@ var Sao = {
                         });
                     }
                     return prm.then(() => {
-                        Sao.set_title();
-                        var new_lang = preferences.language != Sao.i18n.getLocale();
                         var prm = jQuery.Deferred();
-                        Sao.i18n.setlang(preferences.language).always(function() {
-                            if (new_lang) {
-                                Sao.user_menu(preferences);
-                            }
+                        Sao.set_title();
+                        if (!preferences.language) {
+                            session.context.language = Sao.i18n.getLocale();
                             prm.resolve(preferences);
-                        });
-                        Sao.i18n.set_direction(preferences.language_direction);
-                        Sao.i18n.locale = preferences.locale;
+                        } else {
+                            var new_lang = preferences.language != Sao.i18n.getLocale();
+                            Sao.i18n.setlang(preferences.language).always(function() {
+                                if (new_lang) {
+                                    Sao.user_menu(preferences);
+                                }
+                                prm.resolve(preferences);
+                            });
+                            Sao.i18n.set_direction(preferences.language_direction);
+                            Sao.i18n.locale = preferences.locale;
+                        }
                         Sao.common.MODELNAME.clear();
                         return prm;
                     });
