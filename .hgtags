@@ -9584,3 +9584,4 @@ b051c46ff90b1bb0cd9a3384ce0b3bcd2c986f2f trytond-7.4.11
 50b71f1101a51d57f688f3fa89e1aa4b530ccbe6 purchase-7.4.6
 09ee5d01e983fdffdd38560bc1199d5d855125a8 production-7.4.2
 741efe7a30ec91754efd7d9a2933fdf412a52279 account_move_line_grouping-7.4.2
+47f1faaf5ed2d62e8112ec59fc8942ffff32ee62 account_invoice-7.4.4
