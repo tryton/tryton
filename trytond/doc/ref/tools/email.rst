@@ -14,7 +14,8 @@ Email
 
 .. function:: format_address(email[, name])
 
-   Return a string suitable for an RFC 2822 From, To or Cc header.
+   Return a string suitable for an :rfc:`2822` ``From``, ``To`` or ``Cc``
+   header.
 
 .. function:: validate_email(email)
 

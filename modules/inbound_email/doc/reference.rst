@@ -14,8 +14,7 @@ The *Inbound Email Module* defines a route for each `Inbox <model-inbound.email.
      data of the request.
 
      The request parameter ``type`` define which data type to apply by default
-     it is ``raw`` which expect the bytes of a `RFC 822
-     <https://datatracker.ietf.org/doc/html/rfc822.html>`_ message.
+     it is ``raw`` which expect the bytes of a :rfc:`822` message.
 
      Other available types:
 
