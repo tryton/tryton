@@ -207,6 +207,139 @@ class IrTestCase(ModuleTestCase):
             list(sequence.get_many(10)), list(map(str, range(1, 11))))
 
     @with_transaction()
+    def test_ui_view_tree_width_set(self):
+        "Test set view tree width"
+        pool = Pool()
+        ViewTreeWidth = pool.get('ir.ui.view_tree_width')
+
+        model = 'ir.ui.view_tree_width'
+        ViewTreeWidth.set_width(model, {
+                'user': 100,
+                'screen_width': 50,
+                }, 1000)
+
+        records = ViewTreeWidth.search([
+                ('model', '=', model),
+                ])
+        self.assertEqual(len(records), 2)
+        self.assertEqual({r.screen_width for r in records}, {992})
+        self.assertEqual(
+            {r.field: r.width for r in records}, {
+                'user': 100,
+                'screen_width': 50,
+                })
+
+    @with_transaction()
+    def test_ui_view_tree_width_set_duplicate(self):
+        "Test set view tree width with existing duplicate"
+        pool = Pool()
+        ViewTreeWidth = pool.get('ir.ui.view_tree_width')
+
+        model = 'ir.ui.view_tree_width'
+        ViewTreeWidth.create([{
+                    'user': Transaction().user,
+                    'model': model,
+                    'field': 'user',
+                    'screen_width': 992,
+                    'width': 200,
+                    }, {
+                    'user': Transaction().user,
+                    'model': model,
+                    'field': 'user',
+                    'screen_width': 992,
+                    'width': 300,
+                    }])
+        ViewTreeWidth.set_width(model, {
+                'user': 100,
+                'screen_width': 50,
+                }, 1000)
+
+        records = ViewTreeWidth.search([
+                ('model', '=', model),
+                ])
+        self.assertEqual(len(records), 2)
+        self.assertEqual({r.screen_width for r in records}, {992})
+        self.assertEqual(
+            {r.field: r.width for r in records}, {
+                'user': 100,
+                'screen_width': 50,
+                })
+
+    @with_transaction()
+    def test_ui_view_tree_width_reset(self):
+        "Test reset view tree width"
+        pool = Pool()
+        ViewTreeWidth = pool.get('ir.ui.view_tree_width')
+
+        model = 'ir.ui.view_tree_width'
+        ViewTreeWidth.create([{
+                    'user': Transaction().user,
+                    'model': model,
+                    'field': 'user',
+                    'screen_width': 992,
+                    'width': 200,
+                    }, {
+                    'user': Transaction().user,
+                    'model': model,
+                    'field': 'user',
+                    'screen_width': None,
+                    'width': 200,
+                    }, {
+                    'user': Transaction().user,
+                    'model': model,
+                    'field': 'user',
+                    'screen_width': 1400,
+                    'width': 200,
+                    }])
+
+        ViewTreeWidth.reset_width(model, 1000)
+
+        record, = ViewTreeWidth.search([
+                ('model', '=', model),
+                ])
+        self.assertEqual(record.screen_width, 1400)
+
+    @with_transaction()
+    def test_ui_view_tree_width_get(self):
+        "Test get view tree width"
+        pool = Pool()
+        ViewTreeWidth = pool.get('ir.ui.view_tree_width')
+
+        model = 'ir.ui.view_tree_width'
+        ViewTreeWidth.set_width(model, {
+                'user': 100,
+                'screen_width': 50,
+                }, 1000)
+
+        widths = ViewTreeWidth.get_width(model, 1000)
+
+        self.assertEqual(
+            widths, {
+                'user': 100,
+                'screen_width': 50,
+                })
+
+    @with_transaction()
+    def test_ui_view_tree_width_get_fallback(self):
+        "Test get view tree width"
+        pool = Pool()
+        ViewTreeWidth = pool.get('ir.ui.view_tree_width')
+
+        model = 'ir.ui.view_tree_width'
+        ViewTreeWidth.set_width(model, {
+                'user': 100,
+                'screen_width': 50,
+                }, 500)
+
+        widths = ViewTreeWidth.get_width(model, 1000)
+
+        self.assertEqual(
+            widths, {
+                'user': 100,
+                'screen_width': 50,
+                })
+
+    @with_transaction()
     def test_global_search(self):
         'Test Global Search'
         pool = Pool()
