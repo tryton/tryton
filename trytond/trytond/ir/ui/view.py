@@ -548,11 +548,14 @@ class ViewTreeWidth(
                 ])
 
         fields = fields.copy()
-        to_save = []
+        to_save, to_delete = [], []
         for tree_width in records:
             if tree_width.screen_width == screen_width:
-                tree_width.width = fields.pop(tree_width.field)
-                to_save.append(tree_width)
+                if tree_width.field in fields:
+                    tree_width.width = fields.pop(tree_width.field)
+                    to_save.append(tree_width)
+                else:
+                    to_delete.append(tree_width)
 
         for name, width in fields.items():
             to_save.append(cls(
@@ -564,6 +567,8 @@ class ViewTreeWidth(
 
         if to_save:
             cls.save(to_save)
+        if to_delete:
+            cls.delete(to_delete)
 
     @classmethod
     def reset_width(cls, model, width):
