@@ -177,6 +177,21 @@ class Move(DescriptionOriginMixin, ModelSQL, ModelView):
     def default_company():
         return Transaction().context.get('company')
 
+    @fields.depends('company', 'period', 'date')
+    def on_change_company(self):
+        pool = Pool()
+        Period = pool.get('account.period')
+        if self.company:
+            if self.period and self.period.company != self.company:
+                self.period = None
+            if not self.period:
+                try:
+                    self.period = Period.find(self.company, date=self.date)
+                except PeriodNotFoundError:
+                    pass
+        else:
+            self.period = None
+
     @classmethod
     def default_period(cls):
         Period = Pool().get('account.period')
