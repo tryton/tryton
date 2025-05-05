@@ -636,12 +636,15 @@ class Form(TabContent):
             if value == 'ok':
                 return self.sig_save(None)
             if value == 'ko':
-                record_id = self.screen.current_record.id
+                record_id = None
+                if self.screen.current_record:
+                    record_id = self.screen.current_record.id
                 if self.sig_reload(test_modified=False):
-                    if record_id < 0:
-                        return None
-                    elif self.screen.current_record:
-                        return record_id == self.screen.current_record.id
+                    if record_id is not None:
+                        if record_id < 0:
+                            return None
+                        elif self.screen.current_record:
+                            return record_id == self.screen.current_record.id
             return False
         return True
 
