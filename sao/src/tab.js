@@ -836,15 +836,20 @@
                             case 'ok':
                                 return this.save();
                             case 'ko':
-                                var record_id = this.screen.current_record.id;
+                                var record_id = null;
+                                if (this.screen.current_record) {
+                                    record_id = this.screen.current_record.id;
+                                }
                                 return this.reload(false).then(() => {
-                                    if (record_id < 0) {
-                                        return jQuery.Deferred().reject(true);
-                                    }
-                                    else if (this.screen.current_record) {
-                                        if (record_id !=
-                                            this.screen.current_record.id) {
-                                            return jQuery.Deferred().reject();
+                                    if (record_id !== null) {
+                                        if (record_id < 0) {
+                                            return jQuery.Deferred().reject(true);
+                                        }
+                                        else if (this.screen.current_record) {
+                                            if (record_id !=
+                                                this.screen.current_record.id) {
+                                                return jQuery.Deferred().reject();
+                                            }
                                         }
                                     }
                                 });
