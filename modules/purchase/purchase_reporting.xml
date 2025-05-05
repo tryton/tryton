@@ -249,7 +249,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="context_model">purchase.reporting.context</field>
             <field
                 name="domain"
-                eval="[('supplier', '=', Eval('active_id', -1))]"
+                eval="[('supplier_currency', '=', Eval('active_id', -1))]"
                 pyson="1"/>
             <field name="order" eval="[('date', 'DESC')]" pyson="1"/>
         </record>
@@ -326,7 +326,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Purchases per Product</field>
             <field name="res_model">purchase.reporting.product</field>
             <field name="context_model">purchase.reporting.context</field>
-            <field name="context" eval="{'supplier': Eval('active_id')}" pyson="1"/>
+            <field name="context" eval="{'supplier_currency': Eval('active_id')}" pyson="1"/>
         </record>
         <record model="ir.action.act_window.view" id="act_reporting_product_view1">
             <field name="sequence" eval="10"/>
@@ -400,7 +400,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="res_model">purchase.reporting.product.time_series</field>
             <field name="context_model">purchase.reporting.context</field>
             <field name="domain"
-                eval="[('product', '=', Eval('active_id', -1))]"
+                eval="[('product_currency', '=', Eval('active_id', -1))]"
                 pyson="1"/>
             <field name="order" eval="[('date', 'DESC')]" pyson="1"/>
         </record>

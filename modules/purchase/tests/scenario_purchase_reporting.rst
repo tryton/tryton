@@ -126,6 +126,7 @@ Check purchase reporting per product without supplier::
 Check purchase reporting per product with supplier::
 
     >>> context['supplier'] = supplier1.id
+    >>> context['currency'] = purchase1.currency.id
     >>> with config.set_context(context=context):
     ...     reports = Product.find([])
     ...     time_series = ProductTimeseries.find([])

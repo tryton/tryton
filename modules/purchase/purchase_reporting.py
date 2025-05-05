@@ -12,7 +12,7 @@ from trytond.model import ModelSQL, ModelView, fields
 from trytond.modules.currency.fields import Monetary
 from trytond.pool import Pool
 from trytond.pyson import Eval, If
-from trytond.tools import pairwise_longest
+from trytond.tools import pairwise_longest, sql_pairing, unpair
 from trytond.tools.chart import sparkline
 from trytond.transaction import Transaction
 
@@ -282,11 +282,21 @@ class Supplier(SupplierMixin, Abstract, ModelView):
     @classmethod
     def _column_id(cls, tables):
         purchase = tables['line.purchase']
-        return purchase.party
+        return sql_pairing(purchase.party, purchase.currency)
 
 
 class SupplierTimeseries(SupplierMixin, AbstractTimeseries, ModelView):
     __name__ = 'purchase.reporting.supplier.time_series'
+
+    supplier_currency = fields.Integer("Supplier - Currency")
+
+    @classmethod
+    def _columns(cls, tables):
+        purchase = tables['line.purchase']
+        return super()._columns(tables) + [
+            sql_pairing(
+                purchase.party, purchase.currency).as_('supplier_currency'),
+            ]
 
 
 class ProductMixin(object):
@@ -321,7 +331,13 @@ class ProductMixin(object):
         purchase = tables['line.purchase']
         where = super()._where(tables)
         where &= line.product != Null
-        where &= purchase.party == context.get('supplier')
+        if context.get('supplier_currency') is not None:
+            supplier, currency = unpair(context['supplier_currency'])
+        else:
+            supplier = context.get('supplier')
+            currency = context.get('currency')
+        where &= purchase.party == supplier
+        where &= purchase.currency == currency
         return where
 
     def get_rec_name(self, name):
@@ -355,8 +371,20 @@ class Product(ProductMixin, Abstract, ModelView):
     @classmethod
     def _column_id(cls, tables):
         line = tables['line']
-        return line.product
+        purchase = tables['line.purchase']
+        return sql_pairing(line.product, purchase.currency)
 
 
 class ProductTimeseries(ProductMixin, AbstractTimeseries, ModelView):
     __name__ = 'purchase.reporting.product.time_series'
+
+    product_currency = fields.Integer("Product - Currency")
+
+    @classmethod
+    def _columns(cls, tables):
+        line = tables['line']
+        purchase = tables['line.purchase']
+        return super()._columns(tables) + [
+            sql_pairing(
+                line.product, purchase.currency).as_('product_currency'),
+            ]
