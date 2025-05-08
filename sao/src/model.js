@@ -1367,6 +1367,9 @@
             }
         },
         get_loaded: function(fields) {
+            if (this.id < 0) {
+                return true;
+            }
             if (!fields) {
                 fields = Object.keys(this.model.fields);
             }
