@@ -1781,7 +1781,6 @@
                         // XXX to remove once server domains are fixed
                         value = null;
                     }
-                    var setdefault = true;
                     var original_domain;
                     if (!jQuery.isEmptyObject(record.group.domain)) {
                         original_domain = inversion.merge(record.group.domain);
@@ -1789,20 +1788,12 @@
                         original_domain = inversion.merge(domain);
                     }
                     var domain_readonly = original_domain[0] == 'AND';
+                    let setdefault;
                     if (leftpart.contains('.')) {
-                        var recordpart = leftpart.split('.', 1)[0];
-                        var localpart = leftpart.split('.', 1)[1];
-                        var constraintfields = [];
-                        if (domain_readonly) {
-                            for (const leaf of inversion.localize_domain(
-                                original_domain.slice(1))) {
-                                constraintfields.push(leaf);
-                            }
-                        }
-                        if ((localpart != 'id') ||
-                                !~constraintfields.indexOf(recordpart)) {
-                            setdefault = false;
-                        }
+                        let localpart = leftpart.split('.').slice(1).join('.');
+                        setdefault = localpart == 'id';
+                    } else {
+                        setdefault = true;
                     }
                     if (setdefault && jQuery.isEmptyObject(pre_validate)) {
                         this.set_client(record, value);
