@@ -80,7 +80,7 @@ class FiscalYear(Workflow, ModelSQL, ModelView):
                     (Case((t.state == 'open', t.id), else_=-1), NotEqual)),
                 'account.msg_open_fiscalyear_earlier'),
             ('post_move_sequence_unique', Unique(t, t.post_move_sequence),
-                'account.msg_fiscalyear_post_move_unique'),
+                'account.msg_fiscalyear_post_move_sequence_unique'),
             ]
         cls._order.insert(0, ('start_date', 'DESC'))
         cls._transitions |= set((
