@@ -2125,7 +2125,7 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
                             purchase=line.purchase.rec_name))
         elif mode == 'delete':
             for line in lines:
-                if line.purchase_state not in {'cancelled', 'draft'}:
+                if line.purchase.state not in {'cancelled', 'draft'}:
                     raise AccessError(gettext(
                             'purchase.msg_purchase_line_delete_cancel_draft',
                             line=line.rec_name,

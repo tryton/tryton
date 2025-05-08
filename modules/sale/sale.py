@@ -2258,7 +2258,7 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
                             sale=line.sale.rec_name))
         elif mode == 'delete':
             for line in lines:
-                if line.sale_state not in {'cancelled', 'draft'}:
+                if line.sale.state not in {'cancelled', 'draft'}:
                     raise AccessError(gettext(
                             'sale.msg_sale_line_delete_cancel_draft',
                             line=line.rec_name,
