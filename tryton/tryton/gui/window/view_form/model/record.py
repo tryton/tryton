@@ -303,6 +303,8 @@ class Record:
             self.reload(fields)
 
     def get_loaded(self, fields=None):
+        if self.id < 0:
+            return True
         if fields is None:
             fields = self.group.fields.keys()
         return set(fields) <= (self._loaded | set(self.modified_fields))
