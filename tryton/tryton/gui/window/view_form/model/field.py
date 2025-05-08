@@ -132,20 +132,16 @@ class Field(object):
                 if value is False:
                     # XXX to remove once server domains are fixed
                     value = None
-                setdefault = True
                 if record.group.domain:
                     original_domain = merge(record.group.domain)
                 else:
                     original_domain = merge(domain)
                 domain_readonly = original_domain[0] == 'AND'
                 if '.' in leftpart:
-                    recordpart, localpart = leftpart.split('.', 1)
-                    constraintfields = set()
-                    if domain_readonly:
-                        for leaf in localize_domain(original_domain[1:]):
-                            constraintfields.add(leaf[0])
-                    if localpart != 'id' or recordpart not in constraintfields:
-                        setdefault = False
+                    localpart = leftpart.split('.', 1)[1]
+                    setdefault = localpart == 'id'
+                else:
+                    setdefault = True
                 if setdefault and not pre_validate:
                     self.set_client(record, value)
                     state_attrs['domain_readonly'] = domain_readonly
