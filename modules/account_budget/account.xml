@@ -116,6 +116,13 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">budget_line_list</field>
         </record>
 
+        <record model="ir.ui.view" id="budget_line_view_list_sequence">
+            <field name="model">account.budget.line</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="20"/>
+            <field name="name">budget_line_list_sequence</field>
+        </record>
+
         <record model="ir.ui.view" id="budget_line_view_tree">
             <field name="model">account.budget.line</field>
             <field name="type">tree</field>

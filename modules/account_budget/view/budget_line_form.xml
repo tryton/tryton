@@ -22,7 +22,7 @@ this repository contains the full copyright notices and license terms. -->
 
     <notebook>
         <page name="children" col="1">
-            <field name="children"/>
+            <field name="children" view_ids="account_budget.budget_line_view_list_sequence"/>
         </page>
         <page name="periods" col="1">
             <field name="periods"/>
