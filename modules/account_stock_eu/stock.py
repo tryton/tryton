@@ -244,7 +244,7 @@ class Move(metaclass=PoolMeta):
         unknown_country = []
         for move in moves:
             move._set_intrastat()
-            if (not move.intrastat_type
+            if (move.intrastat_type
                     and (not move.intrastat_from_country
                         or not move.intrastat_to_country)):
                 unknown_country.append(move)
