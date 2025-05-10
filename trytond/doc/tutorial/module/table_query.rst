@@ -37,10 +37,6 @@ First we create a :class:`~trytond.model.ModelSQL` class which defines a
             month = cls.month.sql_cast(
                 DateTrunc('month', opportunity.end_date))
             query = opportunity.select(
-                Literal(0).as_('create_uid'),
-                CurrentTimestamp().as_('create_date'),
-                Literal(None).as_('write_uid'),
-                Literal(None).as_('write_date'),
                 Min(opportunity.id).as_('id'),
                 month.as_('month'),
                 Count(
@@ -55,7 +51,7 @@ First we create a :class:`~trytond.model.ModelSQL` class which defines a
 
 .. note::
    The table query must return a value for all the fields of the model but also
-   a unique ``id`` and a value for the create and write fields.
+   a unique ``id``.
 
 .. note::
    We get the SQL table from the :meth:`~trytond.model.ModelSQL.__table__`
