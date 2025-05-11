@@ -42,7 +42,7 @@ class Trigger(metaclass=PoolMeta):
         if self.notification_email:
             try:
                 trigger_model, = Model.search([
-                        ('model', '=', self.notification_email.model),
+                        ('name', '=', self.notification_email.model),
                         ])
             except ValueError:
                 pass
