@@ -94,14 +94,15 @@ class NotificationEmailTestCase(CompanyTestMixin, ModuleTestCase):
         model, = Model.search([
                 ('name', '=', User.__name__),
                 ])
-        trigger, = Trigger.create([{
-                    'name': 'Test creation',
-                    'model': model.id,
-                    'on_create_': True,
-                    'condition': 'true',
-                    'notification_email': notification_email.id,
-                    'action': 'notification.email|trigger',
-                    }])
+        trigger = Trigger(
+            name="Test creation",
+            model=model,
+            on_create_=True,
+            condition='true',
+            notification_email=notification_email)
+        trigger.on_change_notification_email()
+        self.assertEqual(trigger.action, 'notification.email|trigger')
+        trigger.save()
 
         with patch.object(
                 notification_module,
