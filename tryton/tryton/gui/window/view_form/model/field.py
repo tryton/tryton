@@ -827,7 +827,7 @@ class O2MField(Field):
                 record2 = group.get(vals['id'])
                 if record2 is not None:
                     to_set = {
-                        k: v for k, v in vals.items
+                        k: v for k, v in vals.items()
                         if k not in vals_to_set}
                     record2.set_on_change(to_set)
 
