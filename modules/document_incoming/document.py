@@ -52,7 +52,7 @@ class Incoming(DeactivableMixin, Workflow, ModelSQL, ModelView):
             ('document_incoming', "Unknown"),
             ], "Type",
         states={
-            'required': Eval('state') == 'done',
+            'required': Eval('active', True) & (Eval('state') == 'done'),
             'readonly': _states['readonly'],
             })
     source = fields.Char("Source", states=_states)
@@ -72,7 +72,7 @@ class Incoming(DeactivableMixin, Workflow, ModelSQL, ModelView):
     result = fields.Reference(
         "Result", selection='get_results', readonly=True,
         states={
-            'required': Eval('state') == 'done',
+            'required': Eval('active', True) & (Eval('state') == 'done'),
             'invisible': ~Eval('result'),
             })
     state = fields.Selection([

@@ -37,3 +37,11 @@ Split in 2::
 
     >>> len(document.children)
     2
+
+Process parent document::
+
+    >>> document.click('process')
+    >>> document.state
+    'done'
+    >>> bool(document.result)
+    False
