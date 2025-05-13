@@ -127,7 +127,7 @@ class IncomingSupplierInvoice(metaclass=PoolMeta):
             lines = []
             for parsed_line in invoice_data.get('lines', []):
                 line = self._process_supplier_invoice_line(
-                    invoice, parsed_line)
+                    invoice, parsed_line, invoice_data)
                 if line:
                     lines.append(line)
             if not lines:
@@ -135,7 +135,7 @@ class IncomingSupplierInvoice(metaclass=PoolMeta):
                     invoice, invoice_data)
                 if line_data:
                     line = self._process_supplier_invoice_line(
-                        invoice, line_data)
+                        invoice, line_data, invoice_data)
                     if line:
                         lines.append(line)
             invoice.lines = lines
@@ -158,7 +158,7 @@ class IncomingSupplierInvoice(metaclass=PoolMeta):
         if total_amount:
             return {'quantity': 1, 'amount': total_amount}
 
-    def _process_supplier_invoice_line(self, invoice, line_data):
+    def _process_supplier_invoice_line(self, invoice, line_data, invoice_data):
         from trytond.modules.product import round_price
         pool = Pool()
         AccountConfiguration = pool.get('account.configuration')
