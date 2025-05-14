@@ -101,28 +101,34 @@ class LongPollingBus:
                 return cls.create_response(channel, content)
 
         event = threading.Event()
-        for channel in channels:
-            if channel in cls._queues[pid, database]['events']:
-                event_channel = cls._queues[pid, database]['events'][channel]
-            else:
+        try:
+            for channel in channels:
                 with cls._queues_lock[pid]:
                     event_channel = cls._queues[pid, database][
                         'events'][channel]
-            event_channel.append(event)
+                    event_channel.append(event)
 
-        triggered = event.wait(_long_polling_timeout)
-        if not triggered:
-            response = cls.create_response(None, None)
-        else:
-            response = cls.create_response(
-                *cls._messages[database].get_next(channels, last_message))
-
-        with cls._queues_lock[pid]:
-            for channel in channels:
-                events = cls._queues[pid, database]['events'][channel]
-                for e in events[:]:
-                    if e.is_set():
-                        events.remove(e)
+            triggered = event.wait(_long_polling_timeout)
+            if not triggered:
+                response = cls.create_response(None, None)
+            else:
+                response = cls.create_response(
+                    *cls._messages[database].get_next(channels, last_message))
+        finally:
+            with cls._queues_lock[pid]:
+                queue_events = cls._queues[pid, database]['events']
+                for channel in channels:
+                    if channel not in queue_events:
+                        continue
+                    events = queue_events[channel]
+                    try:
+                        events.remove(event)
+                    except ValueError:
+                        pass
+                    if not events:
+                        # A user could query a lot of channels filling the
+                        # events dictionnary with empty lists
+                        del queue_events[channel]
 
         return response
 
