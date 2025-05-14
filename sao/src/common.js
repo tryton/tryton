@@ -4368,16 +4368,19 @@
             return null;
         }
         var type = '';
-        try {
-            var xml = data;
-            if (xml instanceof Uint8Array) {
-                xml = new TextDecoder().decode(data);
-            }
-            if (jQuery.parseXML(xml)) {
+        var xml = data;
+        if (xml instanceof Uint8Array) {
+            xml = new TextDecoder().decode(data);
+        }
+        // simple test to avoid logging of parsing error
+        if (/^\s*<[\s\S]+>\s*$/.test(xml.trim())) {
+            let parser = new DOMParser();
+            let doc = parser.parseFromString(xml, 'image/svg+xml');
+            if (!doc.querySelector('parsererror')
+                && (doc.documentElement.tagName.toLowerCase() === 'svg' ||
+                    doc.getElementsByTagName('svg').length > 0)) {
                 type = 'image/svg+xml';
             }
-        } catch (e) {
-            // continue
         }
         var blob = new Blob([data], {type: type});
         return window.URL.createObjectURL(blob);
