@@ -3,7 +3,7 @@
 
 /* eslint-disable no-redeclare */
 var Sao = {
-    __version__: '7.2.21',
+    __version__: '7.2.22',
 };
 /* eslint-enable no-redeclare */
 
