@@ -12,7 +12,7 @@ from trytond import __series__, backend
 from trytond.config import config
 from trytond.pool import Pool
 from trytond.sendmail import send_test_email
-from trytond.tools import file_open
+from trytond.tools import file_open, find_path
 from trytond.tools.email_ import EmailNotValidError, validate_email
 from trytond.transaction import Transaction, TransactionError, inactive_records
 
@@ -188,9 +188,16 @@ def run(options):
                                     module, language)
                                 filename = os.path.join(
                                     module, 'locale', f'{language}.po')
-                                with file_open(filename, 'wb') as fp:
-                                    fp.write(Translation.translation_export(
-                                            language, module))
+                                pofile = Translation.translation_export(
+                                    language, module)
+                                if pofile is not None:
+                                    with file_open(filename, 'wb') as fp:
+                                        fp.write(pofile)
+                                else:
+                                    try:
+                                        os.remove(find_path(filename))
+                                    except FileNotFoundError:
+                                        pass
 
                     configuration.save()
                 except TransactionError as e:
