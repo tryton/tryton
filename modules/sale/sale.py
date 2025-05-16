@@ -1966,6 +1966,9 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
         if move.on_change_with_unit_price_required():
             move.unit_price = self.unit_price
             move.currency = self.sale.currency
+        else:
+            move.unit_price = None
+            move.currency = None
         move.planned_date = self.planned_shipping_date
         move.invoice_lines = self._get_move_invoice_lines(shipment_type)
         move.origin = self
