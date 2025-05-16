@@ -1518,6 +1518,9 @@ class ShipmentOut(
         if inventory_move.on_change_with_unit_price_required():
             inventory_move.unit_price = move.unit_price
             inventory_move.currency = move.currency
+        else:
+            inventory_move.unit_price = None
+            inventory_move.currency = None
         return inventory_move
 
     @classmethod
@@ -1600,6 +1603,9 @@ class ShipmentOut(
             else:
                 move.unit_price = 0
                 move.currency = self.company.currency
+        else:
+            move.unit_price = None
+            move.currency = None
         return move
 
     @classmethod
@@ -2629,6 +2635,9 @@ class ShipmentInternal(
             else:
                 move.unit_price = 0
                 move.currency = self.company.currency
+        else:
+            move.unit_price = None
+            move.currency = None
         return move
 
     @classmethod

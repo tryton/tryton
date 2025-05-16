@@ -1993,6 +1993,9 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
         if move.on_change_with_unit_price_required():
             move.unit_price = self.unit_price
             move.currency = self.purchase.currency
+        else:
+            move.unit_price = None
+            move.currency = None
         move.planned_date = self.planned_delivery_date
         if move.planned_date and move.planned_date < today:
             move.planned_date = None

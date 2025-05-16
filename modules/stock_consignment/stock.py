@@ -80,6 +80,9 @@ def set_origin_consignment(state):
                             and move.unit_price is None):
                         move.unit_price = line.unit_price
                         move.currency = line.currency
+                    else:
+                        move.unit_price = None
+                        move.currency = None
                     move.state = original_state
                 cls.save(list(move2line.keys()))
             return func(cls, moves)
