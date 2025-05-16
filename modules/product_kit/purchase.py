@@ -117,6 +117,9 @@ class LineComponent(
             move.unit_price = round_price(
                 self.line.unit_price * self.price_ratio)
             move.currency = self.line.purchase.currency
+        else:
+            move.unit_price = None
+            move.currency = None
         move.planned_date = self.line.planned_delivery_date
         if move.planned_date and move.planned_date < today:
             move.planned_date = None

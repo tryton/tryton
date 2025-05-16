@@ -425,6 +425,9 @@ class ShipmentDrop(
             else:
                 move.unit_price = 0
                 move.currency = self.company.currency
+        else:
+            move.unit_price = None
+            move.currency = None
         return move
 
     @classmethod
