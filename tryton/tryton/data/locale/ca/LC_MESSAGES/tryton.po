@@ -1198,7 +1198,7 @@ msgstr "Mostra com a text pla"
 
 #, fuzzy, python-format
 msgid "Select a color for \"%s\""
-msgstr "Seleccioneu un color"
+msgstr "Seleccioneu un color per a \"%s\""
 
 msgid "Add value"
 msgstr "Afegeix un valor"

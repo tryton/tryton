@@ -1249,7 +1249,7 @@ msgstr "ສະແດງເປັນຂໍ້ຄວາມທຳມະດາ"
 
 #, fuzzy, python-format
 msgid "Select a color for \"%s\""
-msgstr "ເລືອກສີ"
+msgstr "ເລືອກສີສຳລັບ \"%s\"
 
 msgid "Add value"
 msgstr "ເພີ່ມຄ່າ"

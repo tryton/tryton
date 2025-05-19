@@ -1237,7 +1237,7 @@ msgstr "نمایش متن ساده"
 
 #, fuzzy, python-format
 msgid "Select a color for \"%s\""
-msgstr "انتخاب یک رنگ"
+msgstr "یک رنگ برای "%s" انتخاب کنید"
 
 msgid "Add value"
 msgstr "افزودن مقدار"

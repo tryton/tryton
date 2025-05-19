@@ -1207,7 +1207,7 @@ msgstr "Prikaži navadno besedilo"
 
 #, fuzzy, python-format
 msgid "Select a color for \"%s\""
-msgstr "Izberi barvo"
+msgstr "Izberite barvo za \"%s\""
 
 msgid "Add value"
 msgstr "Dodaj vrednost"

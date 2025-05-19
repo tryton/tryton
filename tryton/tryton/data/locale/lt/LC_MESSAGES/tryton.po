@@ -1232,7 +1232,7 @@ msgstr "Rodyti paprastą tekstą"
 
 #, fuzzy, python-format
 msgid "Select a color for \"%s\""
-msgstr "Pasirinkti spalvą"
+msgstr "Pasirinkite spalvą \"%s\“"
 
 msgid "Add value"
 msgstr "Pridėti reikšmę"

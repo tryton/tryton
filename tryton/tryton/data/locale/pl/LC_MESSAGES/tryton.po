@@ -1202,7 +1202,7 @@ msgstr "Pokaż tekst"
 
 #, fuzzy, python-format
 msgid "Select a color for \"%s\""
-msgstr "Wybierz kolor"
+msgstr "Wybierz kolor dla \"%s\”"
 
 msgid "Add value"
 msgstr "Dodaj wartość"
