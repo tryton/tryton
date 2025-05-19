@@ -188,8 +188,11 @@ class Shop(DeactivableMixin, ModelSQL, ModelView):
             'stock_assign': True,
             }
 
-    def get_products(self, pattern=None):
-        "Return the list of products with corresponding prices and taxes"
+    def get_products(self, pattern=None, key=None):
+        """Return a list of products with their corresponding dictionaries of
+        prices and taxes according to the tax pattern.
+        If a key function is supplied, the products will be sorted in ascending
+        order based on the key applied to each product."""
         pool = Pool()
         Date = pool.get('ir.date')
         Product = pool.get('product.product')
@@ -198,7 +201,11 @@ class Shop(DeactivableMixin, ModelSQL, ModelView):
             pattern = {}
 
         with Transaction().set_context(**self.get_context()):
-            all_products = Product.browse(self.products)
+            if key is not None:
+                all_products = sorted(self.products, key=key)
+            else:
+                all_products = self.products
+            all_products = Product.browse(all_products)
             today = Date.today()
 
         customer_tax_rule = self._customer_taxe_rule()
