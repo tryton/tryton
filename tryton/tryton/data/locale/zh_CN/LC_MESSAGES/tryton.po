@@ -1200,7 +1200,7 @@ msgstr "显示纯文本"
 
 #, fuzzy, python-format
 msgid "Select a color for \"%s\""
-msgstr "选择颜色"
+msgstr "为\“%s\”选择颜色"
 
 msgid "Add value"
 msgstr "添加值"

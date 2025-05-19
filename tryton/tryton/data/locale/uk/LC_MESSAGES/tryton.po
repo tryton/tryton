@@ -1212,7 +1212,7 @@ msgstr "Показати звичайний текст"
 
 #, fuzzy, python-format
 msgid "Select a color for \"%s\""
-msgstr "Виберіть колір"
+msgstr "Виберіть колір для \"%s\""
 
 msgid "Add value"
 msgstr "Додати значення"

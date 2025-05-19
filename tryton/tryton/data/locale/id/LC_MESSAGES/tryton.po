@@ -1193,7 +1193,7 @@ msgstr ""
 
 #, fuzzy, python-format
 msgid "Select a color for \"%s\""
-msgstr "Pilih satu warna"
+msgstr "Pilih warna untuk \"%s\""
 
 msgid "Add value"
 msgstr ""

@@ -142,7 +142,7 @@ msgstr "Nu s-a putut găsi o sesiune."
 
 #, fuzzy, python-format
 msgid "Error: \"%s\". Try again later."
-msgstr "Prea multe cereri. Încercați mai târziu."
+msgstr "Eroare: \"%s\”. Încercați din nou mai târziu."
 
 msgid "Too many requests. Try again later."
 msgstr "Prea multe cereri. Încercați mai târziu."
@@ -1201,7 +1201,7 @@ msgstr "Afișare text simplu"
 
 #, fuzzy, python-format
 msgid "Select a color for \"%s\""
-msgstr "Selectare culoare"
+msgstr "Selectați o culoare pentru \"%s\”"
 
 msgid "Add value"
 msgstr "Adaugă valoare"
