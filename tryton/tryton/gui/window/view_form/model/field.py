@@ -451,10 +451,20 @@ class FloatField(Field):
 
     def apply_factor(self, record, value, factor):
         if value is not None:
+            # The default precision is the one used by value (before
+            # applying the factor), as python uses the shortest representation
+            # of said value.
+            # Once the factor is applied the number might become even
+            # more inexact thus we should rely on the initial
+            # precision + the effect factor will have
+            default_precision = len((str(value).split('.', 2) + [''])[1])
+            default_precision += math.ceil(math.log10(factor))
             value /= factor
             digits = self.digits(record)
             if digits:
                 value = round(value, digits[1])
+            else:
+                value = round(value, default_precision)
             value = self.convert(value)
         return value
 
