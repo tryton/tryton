@@ -2066,12 +2066,23 @@
         },
         apply_factor: function(record, value, factor) {
             if (value !== null) {
+                // The default precision is the one used by value (before
+                // applying the factor), per the ecmascript specification
+                // it's the shortest representation of said value.
+                // Once the factor is applied the number might become even
+                // more inexact thus we should rely on the initial
+                // precision + the effect factor will have
+                // https://tc39.es/ecma262/multipage/ecmascript-data-types-and-values.html#sec-numeric-types-number-tostring
+                let default_precision = (value.toString().split('.')[1] || '').length;
+                default_precision += Math.ceil(Math.log10(factor));
                 value /= factor;
                 var digits = this.digits(record);
                 if (digits) {
                     // Round to avoid float precision error
                     // after the division by factor
                     value = value.toFixed(digits[1]);
+                } else {
+                    value = value.toFixed(default_precision);
                 }
                 value = this.convert(value);
             }
