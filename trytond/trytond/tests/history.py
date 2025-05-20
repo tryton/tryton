@@ -1,7 +1,12 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from trytond.model import ModelSQL, fields
+
+from trytond.model import DictSchemaMixin, ModelSQL, fields
 from trytond.pool import Pool
+
+
+class HistoryDictSchema(DictSchemaMixin, ModelSQL):
+    __name__ = 'test.history.dict.schema'
 
 
 class TestHistory(ModelSQL):
@@ -14,6 +19,7 @@ class TestHistory(ModelSQL):
         'test.history.line', 'history', 'Lines at Stamp',
         datetime_field='stamp')
     stamp = fields.Timestamp('Stamp')
+    dico = fields.Dict('test.history.dict.schema', "Dict")
 
 
 class TestHistoryLine(ModelSQL):
