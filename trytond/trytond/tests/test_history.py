@@ -191,6 +191,30 @@ class HistoryTestCase(TestCase):
             History.read([history_id], ['value'])
 
     @with_transaction()
+    def test_restore_history_dict(self):
+        "Test restoring a record with a field.Dict"
+        pool = Pool()
+        History = pool.get('test.history')
+        transaction = Transaction()
+
+        history = History(dico={'a': 1})
+        history.save()
+        history_id = history.id
+        first = history.create_date
+
+        transaction.commit()
+
+        history = History(history_id)
+        history.dico = {'b': 2}
+        history.save()
+
+        transaction.commit()
+
+        History.restore_history([history_id], first)
+        history = History(history_id)
+        self.assertEqual(history.dico, {'a': 1})
+
+    @with_transaction()
     def test_restore_history_before(self):
         'Test restore history before'
         pool = Pool()
