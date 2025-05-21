@@ -903,23 +903,26 @@ class ModelStorage(Model):
                     first = True
                     child_fields_names = [(x[:i + 1] == fields_tree[:i + 1]
                             and x[i + 1:]) or [] for x in fields_names]
-                    if child_fields_names in done:
+                    if any(child_fields_names):
+                        if child_fields_names in done:
+                            break
+                        done.append(child_fields_names)
+                        for child_record in value:
+                            child_lines = child_record.__export_row(
+                                child_fields_names)
+                            if first:
+                                if child_lines:
+                                    for child_fpos in range(len(fields_names)):
+                                        if child_fields_names[child_fpos]:
+                                            data[child_fpos] = (
+                                                child_lines[0][child_fpos])
+                                lines += child_lines[1:]
+                                first = False
+                            else:
+                                lines += child_lines
                         break
-                    done.append(child_fields_names)
-                    for child_record in value:
-                        child_lines = child_record.__export_row(
-                            child_fields_names)
-                        if first:
-                            if child_lines:
-                                for child_fpos in range(len(fields_names)):
-                                    if child_fields_names[child_fpos]:
-                                        data[child_fpos] = (
-                                            child_lines[0][child_fpos])
-                            lines += child_lines[1:]
-                            first = False
-                        else:
-                            lines += child_lines
-                    break
+                    else:
+                        value = [r.rec_name for r in value]
                 i += 1
             if i == len(fields_tree):
                 if value is None:

@@ -322,6 +322,10 @@ class ExportDataTestCase(TestCase):
             ExportData.export_data([export1], ['many2one/name']),
             [['Target Test']])
 
+        self.assertEqual(
+            ExportData.export_data([export1], ['many2one']),
+            [['Target Test']])
+
         export2, = ExportData.create([{
                 'many2one': None,
                 }])
@@ -374,6 +378,10 @@ class ExportDataTestCase(TestCase):
                 ['id', 'many2many/name']),
             [[export1.id, 'Target 1'], ['', 'Target 2'], [export2.id, '']])
 
+        self.assertEqual(
+            ExportData.export_data([export1], ['id', 'many2many']),
+            [[export1.id, 'Target 1,Target 2']])
+
     @with_transaction()
     def test_one2many(self):
         'Test export_data one2many'
@@ -409,6 +417,10 @@ class ExportDataTestCase(TestCase):
                     'one2many/name']),
             [[export1.id, 'Target 1'], ['', 'Target 2'], [export2.id, '']])
 
+        self.assertEqual(
+            ExportData.export_data([export1], ['id', 'one2many']),
+            [[export1.id, 'Target 1,Target 2']])
+
     @with_transaction()
     def test_one2many_empty_value(self):
         "Test export_data one2many with first child with 0 value"
@@ -442,7 +454,7 @@ class ExportDataTestCase(TestCase):
                     }])
         self.assertEqual(
             ExportData.export_data([export1], ['reference']),
-            [[str(target1)]])
+            [['test.export_data.target,' + target1.rec_name]])
 
         export2, = ExportData.create([{
                     'reference': None,
@@ -453,7 +465,7 @@ class ExportDataTestCase(TestCase):
         self.assertEqual(
             ExportData.export_data([export1, export2],
                 ['reference']),
-            [[str(target1)], ['']])
+            [['test.export_data.target,' + target1.rec_name], ['']])
 
         self.assertEqual(
             ExportData.export_data([export1], ['reference/rec_name']),
