@@ -207,8 +207,11 @@ You may need to cancel its move "%(move)s".</field>
         <record model="ir.message" id="msg_modify_line_posted_move">
             <field name="text">You cannot modify line "%(line)s" from posted move "%(move)s".</field>
         </record>
+        <record model="ir.message" id="msg_delete_line_reconciled">
+            <field name="text">In order to delete the reconciled line "%(line)s", you must first unreconcile it.</field>
+        </record>
         <record model="ir.message" id="msg_modify_line_reconciled">
-            <field name="text">You cannot modify reconciled line "%(line)s".</field>
+            <field name="text">In order to modify the reconciled line "%(line)s", you must first unreconcile it.</field>
         </record>
         <record model="ir.message" id="msg_line_closed_account">
             <field name="text">To create a line on account "%(account)s", you must set a type or unclose it.</field>

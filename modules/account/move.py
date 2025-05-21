@@ -1450,9 +1450,14 @@ class Line(DescriptionOriginMixin, MoveLineMixin, ModelSQL, ModelView):
                         line.period, line.journal)
                     journal_period_done.add(journal_period)
 
-        if (mode == 'delete'
-                or (mode == 'write'
-                    and values.keys() & cls._reconciliation_modify_disallow)):
+        if mode == 'delete':
+            for line in lines:
+                if line.reconciliation:
+                    raise AccessError(gettext(
+                            'account.msg_delete_line_reconciled',
+                            line=line.rec_name))
+        if (mode == 'write'
+                and values.keys() & cls._reconciliation_modify_disallow):
             for line in lines:
                 if line.reconciliation:
                     raise AccessError(gettext(
