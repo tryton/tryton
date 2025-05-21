@@ -12,6 +12,7 @@ import warnings
 from collections import defaultdict
 from decimal import Decimal
 from functools import lru_cache
+from io import StringIO
 from itertools import chain, groupby, islice
 from operator import itemgetter
 
@@ -885,6 +886,7 @@ class ModelStorage(Model):
                     field_name, language = field_name.split(':lang=')
                 eModel = pool.get(value.__name__)
                 field = eModel._fields[field_name]
+                field_def = eModel.fields_get()[field_name]
                 if field.states and 'invisible' in field.states:
                     invisible = _record_eval_pyson(
                         value, field.states['invisible'])
@@ -897,7 +899,7 @@ class ModelStorage(Model):
                     value = field.translated().__get__(value, eModel)(language)
                 else:
                     value = getattr(value, field_name)
-                if isinstance(value, (list, tuple)):
+                if field_def['type'] in {'one2many', 'many2many'}:
                     first = True
                     child_fields_names = [(x[:i + 1] == fields_tree[:i + 1]
                             and x[i + 1:]) or [] for x in fields_names]
@@ -924,6 +926,15 @@ class ModelStorage(Model):
                     value = ''
                 elif isinstance(value, Model):
                     value = str(value)
+                elif isinstance(value, (list, tuple)):
+                    output = StringIO()
+                    writer = csv.writer(
+                        output,
+                        delimiter=',',
+                        quoting=csv.QUOTE_NONE,
+                        escapechar='\\')
+                    writer.writerow(value)
+                    value = output.getvalue().strip()
                 data[fpos] = value
         return [data] + lines
 
