@@ -29,6 +29,11 @@ class ExportData(ModelSQL):
             ('select1', 'Select 1'),
             ('select2', 'Select 2'),
             ], 'Selection')
+    multiselection = fields.MultiSelection([
+            ('select1', "Select 1"),
+            ('select2', "Select 2"),
+            ('select3', "Select 3"),
+            ], "MultiSelection")
     many2one = fields.Many2One('test.export_data.target',
             'Many2One')
     many2many = fields.Many2Many('test.export_data.relation',

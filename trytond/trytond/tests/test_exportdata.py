@@ -251,6 +251,33 @@ class ExportDataTestCase(unittest.TestCase):
             [['select1'], ['']])
 
     @with_transaction()
+    def test_multiselection(self):
+        'Test export_data multiselection'
+        pool = Pool()
+        ExportData = pool.get('test.export_data')
+
+        export1, = ExportData.create([{
+                    'multiselection': ['select1', 'select2'],
+                    }])
+        self.assertEqual(
+            ExportData.export_data(
+                [export1],
+                ['multiselection', 'multiselection.translated']),
+            [['select1,select2', 'Select 1,Select 2']])
+
+        export2, = ExportData.create([{
+                    'multiselection': None,
+                    }])
+        self.assertEqual(
+            ExportData.export_data([export2], ['multiselection']), [['']])
+
+        self.assertEqual(
+            ExportData.export_data(
+                [export1, export2],
+                ['multiselection']),
+            [['select1,select2'], ['']])
+
+    @with_transaction()
     def test_many2one(self):
         'Test export_data many2one'
         pool = Pool()
