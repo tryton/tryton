@@ -2259,10 +2259,6 @@
         },
         sel_field: function(name) {
             var long_string = this.fields[name].long_string;
-            var relation = this.fields[name].relation;
-            if (relation) {
-                name += '/rec_name';
-            }
             var node = jQuery('<li/>', {
                 'path': name,
                 'class': 'draggable-handle',

@@ -356,9 +356,7 @@ class WinExport(WinCSV, InfoBar):
             values.get('ignore_search_limit'))
 
     def sel_field(self, name):
-        string_, relation = self.fields[name]
-        if relation:
-            name += '/rec_name'
+        string_ = self.fields[name][0]
         self.model2.append((string_, name))
 
     def response(self, dialog, response):
