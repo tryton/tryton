@@ -1016,6 +1016,16 @@ class ModelStorage(Model):
                 elif value:
                     return value
 
+            def convert_multiselection(value):
+                if isinstance(value, str) and value:
+                    return next(csv.reader(
+                            value.splitlines(),
+                            delimiter=',',
+                            quoting=csv.QUOTE_NONE,
+                            escapechar='\\'))
+                else:
+                    return value
+
             try:
                 return locals()['convert_%s' % ftype](value)
             except KeyError:
