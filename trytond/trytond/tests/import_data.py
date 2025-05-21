@@ -82,6 +82,16 @@ class ImportDataSelection(ModelSQL):
             ], 'Selection')
 
 
+class ImportDataMultiSelection(ModelSQL):
+    "Import Data MultiSelection"
+    __name__ = 'test.import_data.multiselection'
+    multiselection = fields.MultiSelection([
+            ('select1', "Select 1"),
+            ('select2', "Select 2"),
+            ('select3', "Select 3"),
+            ], "MultiSelection")
+
+
 class ImportDataMany2OneTarget(ModelSQL):
     "Import Data Many2One Target"
     __name__ = 'test.import_data.many2one.target'
@@ -195,6 +205,7 @@ def register(module):
         ImportDataDateTime,
         ImportDataTimeDelta,
         ImportDataSelection,
+        ImportDataMultiSelection,
         ImportDataMany2OneTarget,
         ImportDataMany2One,
         ImportDataMany2ManyTarget,

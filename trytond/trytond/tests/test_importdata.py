@@ -310,6 +310,28 @@ class ImportDataTestCase(TestCase):
             2)
 
     @with_transaction()
+    def test_multiselection(self):
+        'Test multiselection'
+        pool = Pool()
+        MultiSelection = pool.get('test.import_data.multiselection')
+
+        for value in ['select1', 'select1,select2', '']:
+            with self.subTest(value=value):
+                self.assertEqual(
+                    MultiSelection.import_data(
+                        ['multiselection'], [[value]]), 1)
+
+    @with_transaction()
+    def test_multiselection_many_rows(self):
+        'Test multiselection many rows'
+        pool = Pool()
+        MultiSelection = pool.get('test.import_data.multiselection')
+
+        self.assertEqual(
+            MultiSelection.import_data(
+                ['multiselection'], [['select1'], ['select1,select2']]), 2)
+
+    @with_transaction()
     def test_many2one(self):
         'Test many2one'
         pool = Pool()
