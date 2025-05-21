@@ -1229,7 +1229,7 @@ class ModelStorage(Model):
                             res = get_many2one(line, i, klass.__name__)
                     elif field_type == 'many2one':
                         res = get_many2one(line, i, this_field_def['relation'])
-                    elif field_type == 'many2many':
+                    elif field_type in {'many2many', 'one2many'}:
                         many2many.add(field_name)
                         res = get_many2many(
                             line, i, this_field_def['relation'])
