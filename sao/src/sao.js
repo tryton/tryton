@@ -630,6 +630,7 @@ var Sao = {
                                 "Incompatible version of the server."),
                             Sao.i18n.gettext("Version mismatch"));
                     } else {
+                        let url = window.location.hash.substr(1);
                         Sao.Session.get_credentials()
                             .then(function(session) {
                                 Sao.Session.current_session = session;
@@ -639,7 +640,7 @@ var Sao = {
                             .then(function(preferences) {
                                 Sao.menu(preferences);
                                 Sao.user_menu(preferences);
-                                Sao.open_url();
+                                Sao.open_url(url);
                                 Sao.Bus.listen();
                             });
                     }
