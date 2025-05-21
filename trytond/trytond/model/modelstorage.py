@@ -928,7 +928,10 @@ class ModelStorage(Model):
                 if value is None:
                     value = ''
                 elif isinstance(value, Model):
-                    value = str(value)
+                    if field_def['type'] == 'reference':
+                        value = f'{value.__name__},{value.rec_name}'
+                    else:
+                        value = value.rec_name
                 elif isinstance(value, (list, tuple)):
                     output = StringIO()
                     writer = csv.writer(

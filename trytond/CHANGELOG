@@ -1,3 +1,4 @@
+* Export Many2One and Reference using record name
 * Support import of one2many as list of name
 * Support export of xxx2many fields as list of name
 * Set Message-Id to email sent
