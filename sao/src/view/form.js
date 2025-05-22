@@ -4732,7 +4732,7 @@ function eval_pyson(value){
 
             var value = field.get_client(record);
             var new_key_names = Object.keys(value).filter(function(e) {
-                return !this.fields[e];
+                return !this.field.keys[e];
             }.bind(this));
 
             var prm;
