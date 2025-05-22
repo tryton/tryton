@@ -5332,7 +5332,7 @@ function eval_pyson(value){
 
             var value = field.get_client(record);
             var new_key_names = Object.keys(value).filter(
-                e => !this.fields[e]);
+                e => !this.field.keys[e]);
 
             var prm;
             if (!jQuery.isEmptyObject(new_key_names)) {
