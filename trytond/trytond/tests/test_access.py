@@ -255,7 +255,7 @@ class _ModelAccessTestCase(TestCase):
         pool = Pool()
         Group = pool.get('res.group')
         ModelAccess = pool.get('ir.model.access')
-        TestAccess = pool.get('test.access')
+        TestAccess = pool.get(self.model_name)
         record, = TestAccess.create([{}])
         group, = Group.create([{'name': 'Test'}])
         Group.write([self.group], {
