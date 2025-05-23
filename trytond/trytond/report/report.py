@@ -4,6 +4,7 @@ import datetime
 import inspect
 import logging
 import math
+import mimetypes
 import operator
 import os
 import subprocess
@@ -555,7 +556,7 @@ def get_email(report, record, languages):
     converter = None
     title = None
     msg = EmailMessage()
-    msg.add_header('Content-Language', ', '.join(l.code for l in languages))
+    header_factory = msg.policy.header_factory
     for alternative, language in enumerate(languages):
         with Transaction().set_context(
                 language=language.code, with_rec_name=False):
@@ -564,21 +565,36 @@ def get_email(report, record, languages):
                     'action_id': report_id,
                     'language': language,
                     })
-        if ext == 'txt':
-            ext = 'plain'
-        if ext == 'html' and html2text:
+        for map in [mimetypes.types_map, mimetypes.common_types]:
+            if '.' + ext in map:
+                mimetype = map['.' + ext]
+                maintype, subtype = mimetype.split('/')
+                break
+        else:
+            maintype, subtype = 'application', ext
+        if maintype == 'text' and subtype == 'html' and html2text:
             if not converter:
                 converter = html2text.HTML2Text()
             content_text = converter.handle(content)
-            msg.add_alternative(content_text, subtype='plain', params={
-                    'Content-Language': language.code,
-                    })
+            msg.add_alternative(content_text, subtype='plain', headers=[
+                    header_factory('Content-Language', language.code),
+                    ])
+        types = {
+            'subtype': subtype,
+            }
+        if not isinstance(content, str):
+            types['maintype'] = maintype
         if alternative or msg.is_multipart():
-            msg.add_alternative(content, subtype=ext, params={
-                    'Content-Language': language.code,
-                    })
+            msg.add_alternative(
+                content, **types, headers=[
+                    header_factory('Content-Language', language.code),
+                    ])
         else:
-            msg.set_content(content, subtype=ext, params={
-                    'Content-Language': language.code,
-                    })
+            msg.set_content(
+                content, **types, headers=[
+                    header_factory('Content-Language', language.code),
+                    ])
+    if msg.is_multipart():
+        msg.add_header(
+            'Content-Language', ', '.join(l.code for l in languages))
     return msg, title
