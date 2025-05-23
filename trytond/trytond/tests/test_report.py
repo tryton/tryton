@@ -1,12 +1,15 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import datetime
+from email.message import EmailMessage
+from unittest.mock import Mock, patch
 
 from trytond.model.exceptions import AccessError
 from trytond.pool import Pool
-from trytond.report.report import Report
+from trytond.report.report import Report, get_email
 from trytond.tests.test_tryton import (
     TestCase, activate_module, with_transaction)
+from trytond.transaction import Transaction
 
 
 class ReportTestCase(TestCase):
@@ -82,6 +85,115 @@ class ReportTestCase(TestCase):
 
         with self.assertRaises(AccessError):
             Report.execute([1], {'model': 'test.access'})
+
+    @with_transaction()
+    def test_get_email_html(self):
+        "Test get email"
+        class FakeReport(Report):
+            @classmethod
+            def execute(cls, *args, **kwargs):
+                return (
+                    'html', '<!doctype html><title>Test</title>', False,
+                    "Title")
+
+        record = Mock()
+        language = Mock()
+        language.code = 'en'
+        msg, title = get_email(FakeReport, record, [language])
+
+        self.assertEqual(title, "Title")
+        self.assertIsInstance(msg, EmailMessage)
+        self.assertEqual(msg['Content-Language'], 'en')
+        self.assertTrue(msg.is_multipart())
+
+        plain = msg.get_body(preferencelist=('plain',))
+        self.assertEqual(plain['Content-Language'], 'en')
+        self.assertEqual(plain.get_content().strip(), "Test")
+
+        html = msg.get_body(preferencelist=('html',))
+        self.assertEqual(html['Content-Language'], 'en')
+        self.assertEqual(
+            html.get_content().strip(),
+            '<!doctype html><title>Test</title>')
+
+    @with_transaction()
+    @patch('trytond.report.report.html2text')
+    def test_get_email_html_without_html2text(self, html2text):
+        html2text.__bool__.side_effect = lambda: False
+
+        class FakeReport(Report):
+            @classmethod
+            def execute(cls, *args, **kwargs):
+                return (
+                    'html', '<!doctype html><title>Test</title>', False,
+                    "Title")
+
+        record = Mock()
+        language = Mock()
+        language.code = 'en'
+        msg, title = get_email(FakeReport, record, [language])
+
+        self.assertEqual(title, "Title")
+        self.assertIsInstance(msg, EmailMessage)
+        self.assertEqual(msg['Content-Language'], 'en')
+        self.assertFalse(msg.is_multipart())
+        self.assertEqual(
+            msg.get_content().strip(),
+            '<!doctype html><title>Test</title>')
+
+    @with_transaction()
+    def test_get_email_html_multilanguage(self):
+        "Test get email multi-language"
+        class FakeReport(Report):
+            @classmethod
+            def execute(cls, *args, **kwargs):
+                language = Transaction().language
+                return (
+                    'html', f'<!doctype html><title>{language}</title>',
+                    False, language.upper())
+
+        record = Mock()
+        french = Mock()
+        french.code = 'fr'
+        english = Mock()
+        english.code = 'en'
+        msg, title = get_email(FakeReport, record, [french, english])
+
+        self.assertEqual(title, "EN")
+        self.assertIsInstance(msg, EmailMessage)
+        self.assertEqual(msg['Content-Language'], 'fr, en')
+        self.assertTrue(msg.is_multipart())
+        self.assertEqual(len(list(msg.walk())), 5)
+
+        plain = msg.get_body(preferencelist=('plain',))
+        self.assertEqual(plain['Content-Language'], 'fr')
+        self.assertEqual(plain.get_content().strip(), "fr")
+
+        html = msg.get_body(preferencelist=('html',))
+        self.assertEqual(html['Content-Language'], 'fr')
+        self.assertEqual(
+            html.get_content().strip(),
+            '<!doctype html><title>fr</title>')
+
+    @with_transaction()
+    def test_get_email_binary(self):
+        "Test get email binary"
+        class FakeReport(Report):
+            @classmethod
+            def execute(cls, *args, **kwargs):
+                return 'pdf', b'PDF', False, "Title"
+
+        record = Mock()
+        language = Mock()
+        language.code = 'en'
+        msg, title = get_email(FakeReport, record, [language])
+
+        self.assertEqual(title, "Title")
+        self.assertIsInstance(msg, EmailMessage)
+        self.assertEqual(msg['Content-Language'], 'en')
+        self.assertFalse(msg.is_multipart())
+        self.assertEqual(msg.get_content_maintype(), 'application')
+        self.assertEqual(msg.get_content_subtype(), 'pdf')
 
 
 def create_test_format_timedelta(i, in_, out):
