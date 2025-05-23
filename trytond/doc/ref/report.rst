@@ -134,3 +134,5 @@ Email
    Returns the :py:class:`~email.message.EmailMessage` and title using the
    `Report <model-ir.action.report>` rendered for the
    :class:`~trytond.model.ModelStorage` record for each language.
+
+   .. note:: Order languages with the preferred last.
