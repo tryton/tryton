@@ -2038,8 +2038,13 @@
                 }
                 let { format } = new Intl.NumberFormat(
                     Sao.i18n.BC47(Sao.i18n.getlang()));
+                // use 10000 because some language (ex: es) add thousand
+                // separator only after 9999
+                let [, thousandSeparator] = /^10(.)?000/.exec(format(10000));
                 let [, decimalSign] = /^0(.)1$/.exec(format(0.1));
-                return Number(string.replace(decimalSign, '.'));
+                return Number(string
+                    .replaceAll(thousandSeparator, '')
+                    .replace(decimalSign, '.'));
             }
             var convert_selection = function() {
                 if (typeof value == 'string') {
