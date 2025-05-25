@@ -114,6 +114,7 @@ class ConfigurationDefaultAccount(ModelSQL, CompanyValueMixin):
     default_account_receivable = fields.Many2One(
         'account.account', "Default Account Receivable",
         domain=[
+            ('closed', '!=', True),
             ('type.receivable', '=', True),
             ('party_required', '=', True),
             ('company', '=', Eval('company', -1)),
@@ -121,6 +122,7 @@ class ConfigurationDefaultAccount(ModelSQL, CompanyValueMixin):
     default_account_payable = fields.Many2One(
         'account.account', "Default Account Payable",
         domain=[
+            ('closed', '!=', True),
             ('type.payable', '=', True),
             ('party_required', '=', True),
             ('company', '=', Eval('company', -1)),
