@@ -54,6 +54,7 @@ class ImageURLMixin:
                 width = args.pop('w', None)
                 height = args.pop('h', None)
                 index = args.pop('i', None)
+                id = args.pop('id', None)
                 args = {k: int(bool(v)) for k, v in args.items()}
                 if size:
                     args['s'] = size
@@ -67,6 +68,8 @@ class ImageURLMixin:
             args['t'] = (
                 base64.urlsafe_b64encode(timestamp.to_bytes(8, 'big'))
                 .decode().rstrip('='))
+            if id is not None:
+                args['id'] = id
             url += '?' + urlencode(args)
             return url
 
@@ -131,7 +134,7 @@ class ImageMixin(_ImageMixin):
 
     @classmethod
     def allowed_match_keys(cls):
-        return set()
+        return {'id'}
 
     @classmethod
     def preprocess_values(cls, mode, values):
