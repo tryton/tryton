@@ -64,9 +64,14 @@ class DescriptionOriginMixin:
     @classmethod
     def search_description_used(cls, name, clause):
         pool = Pool()
-        domain = ['OR', [
-                ('description', '!=', None),
-                ('description', '!=', ''),
+        operator = clause[1]
+        if operator.startswith('!') or operator.startswith('not '):
+            bool_op, bool_desc_op, desc_op = 'AND', 'OR', '='
+        else:
+            bool_op, bool_desc_op, desc_op = 'OR', 'AND', '!='
+        domain = [bool_op, [bool_desc_op,
+                ('description', desc_op, None),
+                ('description', desc_op, ''),
                 ('description', *clause[1:]),
                 ],
             ]
