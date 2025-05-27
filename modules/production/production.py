@@ -387,8 +387,6 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
         'bom', 'product', 'unit', 'quantity', 'inputs', 'outputs',
         methods=['_move'])
     def explode_bom(self):
-        pool = Pool()
-        Uom = pool.get('product.uom')
         if not (self.bom and self.product and self.unit):
             return
 
@@ -399,9 +397,6 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
             quantity = input_.compute_quantity(factor)
             move = self._move('input', input_.product, input_.unit, quantity)
             inputs.append(input_.prepare_move(self, move))
-            quantity = Uom.compute_qty(
-                input_.unit, quantity, input_.product.default_uom,
-                round=False)
         self.inputs = inputs
 
         outputs = []
