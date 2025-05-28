@@ -1174,20 +1174,26 @@ var Sao = {
                 shortcut: 'alt+shift+tab',
                 label: Sao.i18n.gettext('Previous tab'),
                 callback: function() {
-                    Sao.Tab.previous_tab();
+                    if (!jQuery('body').children('.modal').length) {
+                        Sao.Tab.previous_tab();
+                    }
                 },
             }, {
                 shortcut: 'alt+tab',
                 label: Sao.i18n.gettext('Next tab'),
                 callback: function() {
-                    Sao.Tab.next_tab();
+                    if (!jQuery('body').children('.modal').length) {
+                        Sao.Tab.next_tab();
+                    }
                 },
             }, {
                 shortcut: 'ctrl+k',
                 label: Sao.i18n.gettext('Global search'),
                 callback: function() {
-                    jQuery('#main_navbar:hidden').collapse('show');
-                    jQuery('#global-search-entry').focus();
+                    if (!jQuery('body').children('.modal').length) {
+                        jQuery('#main_navbar:hidden').collapse('show');
+                        jQuery('#global-search-entry').focus();
+                    }
                 },
             }, {
                 shortcut: 'f1',
