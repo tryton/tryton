@@ -1854,12 +1854,13 @@
                     current_record = this.tree.screen.current_record;
                     this.tree.select_records(current_record, this.record);
                 } else {
+                    let selected = this.is_selected();
                     if (!(event_.ctrlKey || event_.metaKey) ||
                         this.tree.selection_mode ==
                         Sao.common.SELECTION_SINGLE) {
                         this.tree.select_records(null, null);
                     }
-                    this.set_selection(!this.is_selected());
+                    this.set_selection(!selected);
                 }
                 this.selection_changed();
                 if (current_record) {
