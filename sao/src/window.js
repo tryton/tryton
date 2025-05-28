@@ -212,6 +212,7 @@
                     'class': 'btn btn-link',
                     'type': 'button',
                     'title': label,
+                    'id': 'delete_',
                 }).text(label).click(() => {
                     this.response('RESPONSE_CANCEL');
                 }));
@@ -228,6 +229,7 @@
                     'class': 'btn btn-default',
                     'type': 'button',
                     'title': label,
+                    'id': 'new_',
                 }).text(label).click(() => {
                     this.response('RESPONSE_ACCEPT');
                 }));
@@ -239,6 +241,7 @@
                     'class': 'btn btn-primary',
                     'type': 'submit',
                     'title': label,
+                    'id': 'save',
                 }).text(label).appendTo(dialog.footer);
             } else {
                 let label;
@@ -253,6 +256,7 @@
                     'class': 'btn btn-primary',
                     'type': 'submit',
                     'title': label,
+                    'id': 'save',
                 }).text(label).appendTo(dialog.footer);
             }
             dialog.content.submit(e => {
@@ -294,6 +298,7 @@
                     'type': 'button',
                     'aria-label': Sao.i18n.gettext("Switch"),
                     'title': Sao.i18n.gettext("Switch"),
+                    'id': 'switch_',
                 }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-switch')
                 ).appendTo(buttons);
                 this.but_switch.click(
@@ -304,6 +309,7 @@
                     'type': 'button',
                     'aria-label': Sao.i18n.gettext("Previous"),
                     'title': Sao.i18n.gettext("Previous"),
+                    'id': 'previous',
                 }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-back')
                 ).appendTo(buttons);
                 this.but_previous.click(
@@ -320,6 +326,7 @@
                     'type': 'button',
                     'aria-label': Sao.i18n.gettext("Next"),
                     'title': Sao.i18n.gettext("Next"),
+                    'id': 'next',
                 }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-forward')
                 ).appendTo(buttons);
                 this.but_next.click(disable_during(this.next.bind(this)));
@@ -354,6 +361,7 @@
                     'type': 'button',
                     'aria-label': Sao.i18n.gettext("New"),
                     'title': Sao.i18n.gettext("New"),
+                    'id': 'new_',
                 }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-create')
                 ).appendTo(buttons);
                 this.but_new.click(disable_during(this.new_.bind(this)));
@@ -364,6 +372,7 @@
                     'type': 'button',
                     'aria-label': Sao.i18n.gettext("Delete"),
                     'title': Sao.i18n.gettext("Delete"),
+                    'id': 'delete_',
                 }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-delete')
                 ).appendTo(buttons);
                 this.but_del.click(disable_during(this.delete_.bind(this)));
@@ -999,6 +1008,7 @@
                     'class': 'btn btn-default',
                     'type': 'button',
                     'title': Sao.i18n.gettext("New"),
+                    'id': 'new_',
                 }).text(Sao.i18n.gettext('New')).click(() => {
                     this.response('RESPONSE_ACCEPT');
                 }).appendTo(dialog.footer);

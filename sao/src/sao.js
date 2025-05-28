@@ -1157,12 +1157,23 @@ var Sao = {
             shortcuts_defs().forEach(function(definition) {
                 Mousetrap.bind(definition.shortcut, function() {
                     if (definition.id){
-                        var current_tab = Sao.Tab.tabs.get_current();
-                        if (current_tab) {
-                            var focused = jQuery(':focus');
+                        let modal = jQuery('body').children('.modal').last();
+                        if (modal.length) {
+                            let focused = jQuery(':focus');
                             focused.blur();
-                            current_tab.el.find('a[id="' + definition.id + '"]').click();
+                            modal.find(
+                                '.modal-footer button[id="' + definition.id + '"]')
+                                .click();
                             focused.focus();
+                        } else {
+                            let current_tab = Sao.Tab.tabs.get_current();
+                            if (current_tab) {
+                                let focused = jQuery(':focus');
+                                focused.blur();
+                                current_tab.el.find('a[id="' + definition.id + '"]')
+                                    .click();
+                                focused.focus();
+                            }
                         }
                     } else if (definition.callback) {
                         jQuery.when().then(definition.callback);
