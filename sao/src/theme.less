@@ -243,6 +243,10 @@ input[type="radio"],
         outline: none;
     }
 
+    &:focus:after {
+        border-color: @brand-info !important;
+    }
+
     &:before,
     &:after {
         content: "";
@@ -315,8 +319,8 @@ input[type="checkbox"],
         outline: none;
     }
 
-    &:focus:before {
-        border-color: @brand-primary;
+    &:focus:after {
+        border-color: @brand-info !important;
     }
 
     &:after {
