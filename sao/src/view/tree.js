@@ -1923,6 +1923,9 @@
         },
         selection_changed: function() {
             var is_selected = this.is_selected();
+            if (this.tree.selection_mode == Sao.common.SELECTION_SINGLE) {
+                this.tree.select_records(null, null);
+            }
             this.set_selection(is_selected);
             if (is_selected) {
                 this.tree.select_changed(this.record);
