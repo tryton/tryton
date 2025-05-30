@@ -1144,6 +1144,38 @@ class AccountTestCase(
         self.assertEqual(tax['amount'], Decimal('20.00'))
 
     @with_transaction()
+    def test_taxable_mixin_line2(self):
+        "Test TaxableMixin with rounding on line"
+        pool = Pool()
+        Tax = pool.get('account.tax')
+        Configuration = pool.get('account.configuration')
+        currency = create_currency('cur')
+
+        company = create_company()
+        with set_company(company):
+            create_chart(company, tax=True)
+            tax, = Tax.search([])
+            tax.rate = 1
+            tax.save()
+            config = Configuration(1)
+            config.tax_rounding = 'line'
+            config.save()
+
+            taxable = self.Taxable(
+                currency=currency,
+                taxable_lines=[
+                    ([tax], Decimal('1.070'), 1, None),
+                    ([tax], Decimal('1.005'), 1, None),
+                    ],
+                company=company)
+
+            taxes = taxable._get_taxes()
+
+        tax, = taxes
+        self.assertEqual(tax['base'], Decimal('2.07'))
+        self.assertEqual(tax['amount'], Decimal('2.07'))
+
+    @with_transaction()
     def test_taxable_mixin_document(self):
         "Test TaxableMixin with rounding on document"
         pool = Pool()
