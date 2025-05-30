@@ -179,8 +179,7 @@ class Line(metaclass=PoolMeta):
 
     @property
     def vsf_tax_amount(self):
-        return sum(
-            (v['amount'] for v in self._get_taxes().values()), Decimal(0))
+        return sum((t.amount for t in self._get_taxes().values()), Decimal(0))
 
     def get_vsf_user_order_history(self):
         amount_incl_tax = self.amount + self.vsf_tax_amount

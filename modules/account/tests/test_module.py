@@ -1257,11 +1257,11 @@ class AccountTestCase(
                     ] * 100,
                 company=company)
 
-            taxes = taxable._get_taxes()
+            taxes = taxable._get_taxes().values()
 
         tax, = taxes
-        self.assertEqual(tax['base'], Decimal('100.00'))
-        self.assertEqual(tax['amount'], Decimal('20.00'))
+        self.assertEqual(tax.base, Decimal('100.00'))
+        self.assertEqual(tax.amount, Decimal('20.00'))
 
     @with_transaction()
     def test_taxable_mixin_line2(self):
@@ -1289,11 +1289,11 @@ class AccountTestCase(
                     ],
                 company=company)
 
-            taxes = taxable._get_taxes()
+            taxes = taxable._get_taxes().values()
 
         tax, = taxes
-        self.assertEqual(tax['base'], Decimal('2.07'))
-        self.assertEqual(tax['amount'], Decimal('2.07'))
+        self.assertEqual(tax.base, Decimal('2.07'))
+        self.assertEqual(tax.amount, Decimal('2.07'))
 
     @with_transaction()
     def test_taxable_mixin_document(self):
@@ -1318,11 +1318,11 @@ class AccountTestCase(
                     ] * 100,
                 company=company)
 
-            taxes = taxable._get_taxes()
+            taxes = taxable._get_taxes().values()
 
         tax, = taxes
-        self.assertEqual(tax['base'], Decimal('100.00'))
-        self.assertEqual(tax['amount'], Decimal('20.02'))
+        self.assertEqual(tax.base, Decimal('100.00'))
+        self.assertEqual(tax.amount, Decimal('20.02'))
 
     @with_transaction()
     def test_taxable_mixin_many_taxable_lines(self):
@@ -1345,15 +1345,15 @@ class AccountTestCase(
                     ],
                 company=company)
 
-            taxes = taxable._get_taxes()
+            taxes = taxable._get_taxes().values()
 
         self.assertEqual(len(taxes), 2)
-        tax_line1, = [t for t in taxes if t['tax'] == tax1.id]
-        tax_line2, = [t for t in taxes if t['tax'] == tax2.id]
-        self.assertEqual(tax_line1['base'], Decimal('30.00'))
-        self.assertEqual(tax_line1['amount'], Decimal('3.00'))
-        self.assertEqual(tax_line2['base'], Decimal('20.00'))
-        self.assertEqual(tax_line2['amount'], Decimal('4.00'))
+        tax_line1, = [t for t in taxes if t.tax == tax1]
+        tax_line2, = [t for t in taxes if t.tax == tax2]
+        self.assertEqual(tax_line1.base, Decimal('30.00'))
+        self.assertEqual(tax_line1.amount, Decimal('3.00'))
+        self.assertEqual(tax_line2.base, Decimal('20.00'))
+        self.assertEqual(tax_line2.amount, Decimal('4.00'))
 
     @with_transaction()
     def test_taxable_mixin_tax_residual_rounding(self):
@@ -1398,11 +1398,11 @@ class AccountTestCase(
                     ],
                 company=company)
 
-            taxline_1, taxline_2 = taxable._get_taxes()
-            self.assertEqual(taxline_1['base'], Decimal('1.04'))
-            self.assertEqual(taxline_1['amount'], Decimal('.11'))
-            self.assertEqual(taxline_2['base'], Decimal('1.04'))
-            self.assertEqual(taxline_2['amount'], Decimal('.10'))
+            taxline_1, taxline_2 = taxable._get_taxes().values()
+            self.assertEqual(taxline_1.base, Decimal('1.04'))
+            self.assertEqual(taxline_1.amount, Decimal('.11'))
+            self.assertEqual(taxline_2.base, Decimal('1.04'))
+            self.assertEqual(taxline_2.amount, Decimal('.10'))
 
     @with_transaction()
     def test_taxable_mixin_tax_residual_rounding_with_0(self):
@@ -1454,13 +1454,13 @@ class AccountTestCase(
                     ],
                 company=company)
 
-            taxline_0, taxline_1, taxline_2 = taxable._get_taxes()
-            self.assertEqual(taxline_0['base'], Decimal('1.04'))
-            self.assertEqual(taxline_0['amount'], Decimal('0'))
-            self.assertEqual(taxline_1['base'], Decimal('1.04'))
-            self.assertEqual(taxline_1['amount'], Decimal('.11'))
-            self.assertEqual(taxline_2['base'], Decimal('1.04'))
-            self.assertEqual(taxline_2['amount'], Decimal('.10'))
+            taxline_0, taxline_1, taxline_2 = taxable._get_taxes().values()
+            self.assertEqual(taxline_0.base, Decimal('1.04'))
+            self.assertEqual(taxline_0.amount, Decimal('0'))
+            self.assertEqual(taxline_1.base, Decimal('1.04'))
+            self.assertEqual(taxline_1.amount, Decimal('.11'))
+            self.assertEqual(taxline_2.base, Decimal('1.04'))
+            self.assertEqual(taxline_2.amount, Decimal('.10'))
 
     @with_transaction()
     def test_taxable_mixin_tax_residual_rounding_negative_residual(self):
@@ -1507,13 +1507,13 @@ class AccountTestCase(
                     ],
                 company=company)
 
-            taxline_1, taxline_2, taxline_3 = taxable._get_taxes()
-            self.assertEqual(taxline_1['base'], Decimal('30.00'))
-            self.assertEqual(taxline_1['amount'], Decimal('3.00'))
-            self.assertEqual(taxline_2['base'], Decimal('-2.95'))
-            self.assertEqual(taxline_2['amount'], Decimal('-0.29'))
-            self.assertEqual(taxline_3['base'], Decimal('-2.95'))
-            self.assertEqual(taxline_3['amount'], Decimal('-0.30'))
+            taxline_1, taxline_2, taxline_3 = taxable._get_taxes().values()
+            self.assertEqual(taxline_1.base, Decimal('30.00'))
+            self.assertEqual(taxline_1.amount, Decimal('3.00'))
+            self.assertEqual(taxline_2.base, Decimal('-2.95'))
+            self.assertEqual(taxline_2.amount, Decimal('-0.29'))
+            self.assertEqual(taxline_3.base, Decimal('-2.95'))
+            self.assertEqual(taxline_3.amount, Decimal('-0.30'))
 
     @with_transaction()
     def test_taxable_mixin_tax_residual_rounding_per_same_taxes(self):
@@ -1553,11 +1553,11 @@ class AccountTestCase(
                     ],
                 company=company)
 
-            taxline_1, taxline_2 = taxable._get_taxes()
-            self.assertEqual(taxline_1['base'], Decimal('11.72'))
-            self.assertEqual(taxline_1['amount'], Decimal('0.7'))
-            self.assertEqual(taxline_2['base'], Decimal('-0.45'))
-            self.assertEqual(taxline_2['amount'], Decimal('-0.03'))
+            taxline_1, taxline_2 = taxable._get_taxes().values()
+            self.assertEqual(taxline_1.base, Decimal('11.72'))
+            self.assertEqual(taxline_1.amount, Decimal('0.7'))
+            self.assertEqual(taxline_2.base, Decimal('-0.45'))
+            self.assertEqual(taxline_2.amount, Decimal('-0.03'))
 
     @with_transaction()
     def test_tax_compute_with_children_update_unit_price(self):

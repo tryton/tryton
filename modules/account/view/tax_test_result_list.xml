@@ -6,6 +6,4 @@ this repository contains the full copyright notices and license terms. -->
     <field name="amount"/>
     <field name="account"/>
     <field name="tax"/>
-    <field name="description"/>
-    <field name="legal_notice"/>
 </tree>

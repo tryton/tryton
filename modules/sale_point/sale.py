@@ -399,46 +399,45 @@ class POSSale(Workflow, ModelSQL, ModelView, TaxableMixin):
         TaxLine = pool.get('account.tax.line')
 
         lines = []
-        taxes = self._get_taxes()
+        taxes = self._get_taxes().values()
 
         # Distribute rounding error from tax computation
-        tax_amount = sum(t['amount'] for t in taxes)
+        tax_amount = sum(t.amount for t in taxes)
         difference = self.total_tax - tax_amount
         if difference:
             remaining = difference
             for tax in taxes:
-                if tax['amount']:
+                if tax.amount:
                     if tax_amount:
-                        ratio = tax['amount'] / tax_amount
+                        ratio = tax.amount / tax_amount
                     else:
                         ratio = 1 / len(taxes)
                     value = self.currency.round(difference * ratio)
-                    tax['amount'] += value
+                    tax.amount += value
                     remaining -= value
             # Add remaining rounding error to the first tax
             if remaining:
                 for tax in taxes:
-                    if tax['amount']:
-                        tax['amount'] += remaining
+                    if tax.amount:
+                        tax.amount += remaining
                         break
 
         for tax in taxes:
-            amount = tax['amount']
+            amount = tax.amount
             if not amount:
                 continue
             line = Line()
-            line.description = tax['description']
+            line.description = tax.tax.description
             if amount >= 0:
                 line.debit, line.credit = Decimal(0), amount
             else:
                 line.debit, line.credit = -amount, 0
-            line.account = tax['account']
-            if tax['tax']:
-                tax_line = TaxLine()
-                tax_line.amount = amount
-                tax_line.type = 'tax'
-                tax_line.tax = tax['tax']
-                line.tax_lines = [tax_line]
+            line.account = tax.account
+            tax_line = TaxLine()
+            tax_line.amount = amount
+            tax_line.type = 'tax'
+            tax_line.tax = tax.tax
+            line.tax_lines = [tax_line]
             lines.append(line)
         return lines
 
@@ -691,11 +690,11 @@ class POSSaleLine(ModelSQL, ModelView, TaxableMixin):
         line.origin = self
 
         tax_lines = []
-        for tax in self._get_taxes():
+        for tax in self._get_taxes().values():
             tax_line = TaxLine()
-            tax_line.amount = tax['base']
+            tax_line.amount = tax.base
             tax_line.type = 'base'
-            tax_line.tax = tax['tax']
+            tax_line.tax = tax.tax
             tax_lines.append(tax_line)
         line.tax_lines = tax_lines
         return [line]

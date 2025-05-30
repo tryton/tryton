@@ -649,13 +649,14 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin, InvoiceReportMixin):
         self.untaxed_amount = Decimal(0)
         self.tax_amount = Decimal(0)
         self.total_amount = Decimal(0)
-        computed_taxes = {}
 
         if self.lines:
             for line in self.lines:
                 if getattr(line, 'type', '') == 'line':
                     self.untaxed_amount += getattr(line, 'amount', 0) or 0
             computed_taxes = self._get_taxes()
+        else:
+            computed_taxes = {}
 
         def is_zero(amount):
             if self.currency:
@@ -663,7 +664,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin, InvoiceReportMixin):
             else:
                 return amount == Decimal(0)
 
-        tax_keys = []
+        tax_keys = set()
         taxes = list(self.taxes or [])
         for tax in (self.taxes or []):
             if tax.manual:
@@ -673,20 +674,24 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin, InvoiceReportMixin):
             if (key not in computed_taxes) or (key in tax_keys):
                 taxes.remove(tax)
                 continue
-            tax_keys.append(key)
-            if not is_zero(computed_taxes[key]['base']
-                    - (tax.base or Decimal(0))):
-                self.tax_amount += computed_taxes[key]['amount']
-                tax.amount = computed_taxes[key]['amount']
-                tax.base = computed_taxes[key]['base']
+            tax_keys.add(key)
+            if not is_zero(
+                    computed_taxes[key].base - (tax.base or Decimal(0))):
+                self.tax_amount += computed_taxes[key].amount
+                tax.amount = computed_taxes[key].amount
+                tax.base = computed_taxes[key].base
             else:
                 self.tax_amount += tax.amount or Decimal(0)
         for key in computed_taxes:
             if key not in tax_keys:
-                self.tax_amount += computed_taxes[key]['amount']
+                tax = computed_taxes[key].tax
+                self.tax_amount += computed_taxes[key].amount
                 value = InvoiceTax.default_get(
                     list(InvoiceTax._fields.keys()), with_rec_name=False)
-                value.update(computed_taxes[key])
+                value.update(computed_taxes[key].values())
+                value['manual'] = False
+                value['description'] = tax.description
+                value['legal_notice'] = tax.legal_notice
                 invoice_tax = InvoiceTax(**value)
                 if invoice_tax.tax:
                     invoice_tax.sequence = invoice_tax.tax.sequence
@@ -1080,10 +1085,13 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin, InvoiceReportMixin):
         return context
 
     def _compute_taxes(self):
-        taxes = self._get_taxes()
-        for tax in taxes.values():
-            tax['invoice'] = self.id
-        return taxes
+        for key, tax_line in self._get_taxes().items():
+            value = dict(tax_line.values())
+            value['invoice'] = self.id
+            value['manual'] = False
+            value['description'] = tax_line.tax.description
+            value['legal_notice'] = tax_line.tax.legal_notice
+            yield key, value
 
     @dualmethod
     def update_taxes(cls, invoices, exception=False):
@@ -1094,11 +1102,11 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin, InvoiceReportMixin):
         for invoice in invoices:
             if invoice.state in ('posted', 'paid', 'cancelled'):
                 continue
-            computed_taxes = invoice._compute_taxes()
+            computed_taxes = dict(invoice._compute_taxes())
             if not invoice.taxes:
                 to_create.extend(computed_taxes.values())
             else:
-                tax_keys = []
+                tax_keys = set()
                 for tax in invoice.taxes:
                     if tax.manual:
                         continue
@@ -1106,7 +1114,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin, InvoiceReportMixin):
                     if (key not in computed_taxes) or (key in tax_keys):
                         to_delete.append(tax)
                         continue
-                    tax_keys.append(key)
+                    tax_keys.add(key)
                     if not invoice.currency.is_zero(
                             computed_taxes[key]['base'] - tax.base):
                         to_write.extend(([tax], computed_taxes[key]))
@@ -1114,6 +1122,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin, InvoiceReportMixin):
                     if key not in tax_keys:
                         to_create.append(computed_taxes[key])
             if exception and (to_create or to_delete or to_write):
+                raise Exception(invoice.taxes, to_create, to_delete, to_write)
                 raise InvoiceTaxValidationError(
                     gettext('account_invoice.msg_invoice_tax_invalid',
                         invoice=invoice.rec_name))
@@ -2520,7 +2529,7 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
                     and self.taxes_deductible_rate != 1):
                 with Transaction().set_context(_deductible_rate=1):
                     tax_amount = sum(
-                        t['amount'] for t in self._get_taxes().values())
+                        t.amount for t in self._get_taxes().values())
                 non_deductible_amount = (
                     tax_amount * (1 - self.taxes_deductible_rate))
                 amount += non_deductible_amount
@@ -2603,7 +2612,7 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
     def get_invoice_taxes(self, name):
         if not self.invoice:
             return
-        taxes_keys = list(self._get_taxes().keys())
+        taxes_keys = self._get_taxes().keys()
         taxes = []
         for tax in self.invoice.taxes:
             if tax.manual:
@@ -2831,7 +2840,7 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
             return tax_lines
         taxes = self._get_taxes().values()
         for tax in taxes:
-            amount = tax['base']
+            amount = tax.base
             with Transaction().set_context(
                     date=self.invoice.currency_date):
                 amount = Currency.compute(
@@ -2840,7 +2849,7 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
             tax_line = TaxLine()
             tax_line.amount = amount
             tax_line.type = 'base'
-            tax_line.tax = tax['tax']
+            tax_line.tax = tax.tax
             tax_lines.append(tax_line)
         return tax_lines
 
@@ -3093,11 +3102,8 @@ class InvoiceTax(sequence_ordered(), ModelSQL, ModelView):
 
     @property
     def _key(self):
-        # Same as _TaxKey
-        tax_id = self.tax.id if getattr(self, 'tax', None) else -1
-        account_id = (
-            self.account.id if getattr(self, 'account', None) else None)
-        return (account_id, tax_id, (getattr(self, 'base', 0) or 0) >= 0)
+        # Same as _TaxLine
+        return (self.account, self.tax, (getattr(self, 'base', 0) or 0) >= 0)
 
     @classmethod
     def check_modification(cls, mode, taxes, values=None, external=False):

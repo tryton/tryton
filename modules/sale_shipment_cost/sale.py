@@ -517,7 +517,7 @@ class Promotion(metaclass=PoolMeta):
                 l.amount for l in sale.lines if l.shipment_cost is not None)
             if not self.untaxed_amount:
                 amount -= sum(
-                    v['amount']
+                    t.amount
                     for l in sale.lines if l.shipment_cost is not None
-                    for v in l._get_taxes().values())
+                    for t in l._get_taxes().values())
         return amount

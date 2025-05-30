@@ -647,8 +647,7 @@ class Sale(
 
     @fields.depends(methods=['_get_taxes'])
     def get_tax_amount(self):
-        return sum(
-            (v['amount'] for v in self._get_taxes().values()), Decimal(0))
+        return sum((t.amount for t in self._get_taxes().values()), Decimal(0))
 
     @classmethod
     def get_amount(cls, sales, names):

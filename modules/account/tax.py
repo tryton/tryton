@@ -1,5 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+import copy
 import datetime
 from collections import defaultdict, namedtuple
 from decimal import Decimal
@@ -1173,21 +1174,37 @@ class Tax(sequence_ordered(), ModelSQL, ModelView, DeactivableMixin):
         cls.save(to_save)
 
 
-class _TaxKey(dict):
+class _TaxLine:
+    __slots__ = ('base', 'amount', 'tax', 'account')
 
     def __init__(self, **kwargs):
-        self.update(kwargs)
+        for k, v in kwargs.items():
+            setattr(self, k, v)
 
+    def values(self):
+        for k in self.__slots__:
+            yield k, getattr(self, k)
+
+    @property
     def _key(self):
-        return (self['account'], self['tax'], self['base'] >= 0)
+        return (self.account, self.tax, self.base >= 0)
 
-    def __eq__(self, other):
-        if isinstance(other, _TaxKey):
-            return self._key() == other._key()
-        return self._key() == other
+    def __add__(self, other):
+        if (not isinstance(other, _TaxLine)
+                or self._key != other._key):
+            return NotImplemented
+        new = copy.copy(self)
+        for key in ['base', 'amount']:
+            setattr(new, key, getattr(self, key) + getattr(other, key))
+        return new
 
-    def __hash__(self):
-        return hash(self._key())
+    def __iadd__(self, other):
+        if (not isinstance(other, _TaxLine)
+                or self._key != other._key):
+            return NotImplemented
+        for key in ['base', 'amount']:
+            setattr(self, key, getattr(self, key) + getattr(other, key))
+        return self
 
 
 class _TaxableLine(namedtuple(
@@ -1223,23 +1240,21 @@ class TaxableMixin(object):
     def _get_tax_context(self):
         return {}
 
-    @staticmethod
-    def _compute_tax_line(amount, base, tax):
+    def _compute_tax_line(self, amount, base, tax):
         if base >= 0:
             type_ = 'invoice'
         else:
             type_ = 'credit_note'
-
-        line = {}
-        line['manual'] = False
-        line['description'] = tax.description
-        line['legal_notice'] = tax.legal_notice
-        line['base'] = base
-        line['amount'] = amount
-        line['tax'] = tax.id
-        line['account'] = getattr(tax, '%s_account' % type_).id
-
-        return _TaxKey(**line)
+        # Base must always be rounded per line as there will be
+        # one tax line per taxable_lines
+        if self.currency:
+            base = self.currency.round(base)
+        return _TaxLine(
+            base=base,
+            amount=amount,
+            tax=tax,
+            account=getattr(tax, '%s_account' % type_),
+            )
 
     def _round_taxes(self, taxes):
         if not self.currency:
@@ -1247,9 +1262,9 @@ class TaxableMixin(object):
 
         remainder = 0
         for taxline in taxes.values():
-            rounded_amount = self.currency.round(taxline['amount'])
-            remainder += rounded_amount - taxline['amount']
-            taxline['amount'] = rounded_amount
+            rounded_amount = self.currency.round(taxline.amount)
+            remainder += rounded_amount - taxline.amount
+            taxline.amount = rounded_amount
 
         # We need to compensate the rounding we did
         remainder = self.currency.round(remainder, opposite=True)
@@ -1257,8 +1272,8 @@ class TaxableMixin(object):
             offset_amount = self.currency.rounding.copy_sign(remainder)
 
             for tax in cycle(taxes.values()):
-                if tax['amount']:
-                    tax['amount'] -= offset_amount
+                if tax.amount:
+                    tax.amount -= offset_amount
                     remainder -= offset_amount
                     if abs(remainder) < self.currency.rounding:
                         break
@@ -1291,33 +1306,25 @@ class TaxableMixin(object):
                     current_taxes = {}
                     for tax in l_taxes:
                         taxline = self._compute_tax_line(**tax)
-                        # Base must always be rounded per line as there will be
-                        # one tax line per taxable_lines
-                        if self.currency:
-                            taxline['base'] = self.currency.round(
-                                taxline['base'])
+                        key = taxline._key
                         if taxline not in current_taxes:
-                            current_taxes[taxline] = taxline
+                            current_taxes[key] = taxline
                         else:
-                            current_taxes[taxline]['base'] += taxline['base']
-                            current_taxes[taxline]['amount'] += (
-                                taxline['amount'])
+                            current_taxes[key] += taxline
                     if tax_rounding == 'line':
                         self._round_taxes(current_taxes)
                     for key, taxline in current_taxes.items():
                         if key not in taxes:
                             taxes[key] = taxline
                         else:
-                            taxes[key]['base'] += taxline['base']
-                            taxes[key]['amount'] += taxline['amount']
+                            taxes[key] += taxline
                 if tax_rounding == 'document':
                     self._round_taxes(taxes)
                 for key, taxline in taxes.items():
                     if key not in all_taxes:
                         all_taxes[key] = taxline
                     else:
-                        all_taxes[key]['base'] += taxline['base']
-                        all_taxes[key]['amount'] += taxline['amount']
+                        all_taxes[key] += taxline
         return all_taxes
 
 
@@ -1919,17 +1926,14 @@ class TestTaxView(ModelView, TaxableMixin):
         Result = pool.get('account.tax.test.result')
         result = []
         if all([self.tax_date, self.unit_price, self.quantity, self.currency]):
-            for taxline in self._get_taxes():
-                del taxline['manual']
-                result.append(Result(**taxline))
+            for taxline in self._get_taxes().values():
+                result.append(Result(**dict(taxline.values())))
         return result
 
 
 class TestTaxViewResult(ModelView):
     __name__ = 'account.tax.test.result'
     tax = fields.Many2One('account.tax', "Tax")
-    description = fields.Char("Description")
-    legal_notice = fields.Char("Legal Notice")
     account = fields.Many2One('account.account', "Account")
     base = fields.Numeric("Base")
     amount = fields.Numeric("Amount")

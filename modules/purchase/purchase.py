@@ -527,8 +527,7 @@ class Purchase(
 
     @fields.depends(methods=['_get_taxes'])
     def get_tax_amount(self):
-        taxes = iter(self._get_taxes().values())
-        return sum((tax['amount'] for tax in taxes), Decimal(0))
+        return sum((t.amount for t in self._get_taxes().values()), Decimal(0))
 
     @classmethod
     def get_amount(cls, purchases, names):

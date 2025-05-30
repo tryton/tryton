@@ -48,7 +48,7 @@ class InvoiceLine(metaclass=PoolMeta):
                 with Transaction().set_context(
                         _non_deductible=True, _deductible_rate=1):
                     tax_amount = sum(
-                        t['amount'] for t in self._get_taxes().values())
+                        t.amount for t in self._get_taxes().values())
                 amount += tax_amount
         return amount
 
@@ -87,7 +87,7 @@ class InvoiceLine(metaclass=PoolMeta):
             taxes = self._get_taxes().values()
             for tax in taxes:
                 for type_, amount in [('base', 'base'), ('tax', 'amount')]:
-                    amount = tax[amount]
+                    amount = getattr(tax, amount)
                     with Transaction().set_context(
                             date=self.invoice.currency_date):
                         amount = Currency.compute(
@@ -96,6 +96,6 @@ class InvoiceLine(metaclass=PoolMeta):
                     tax_line = TaxLine()
                     tax_line.amount = amount
                     tax_line.type = type_
-                    tax_line.tax = tax['tax']
+                    tax_line.tax = tax.tax
                     tax_lines.append(tax_line)
         return tax_lines
