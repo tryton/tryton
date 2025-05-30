@@ -1309,14 +1309,20 @@ class TaxableMixin(object):
                         if self.currency:
                             taxline['base'] = self.currency.round(
                                 taxline['base'])
-                        if taxline not in taxes:
-                            taxes[taxline] = taxline
+                        if taxline not in current_taxes:
+                            current_taxes[taxline] = taxline
                         else:
-                            taxes[taxline]['base'] += taxline['base']
-                            taxes[taxline]['amount'] += taxline['amount']
-                        current_taxes[taxline] = taxes[taxline]
+                            current_taxes[taxline]['base'] += taxline['base']
+                            current_taxes[taxline]['amount'] += (
+                                taxline['amount'])
                     if tax_rounding == 'line':
                         self._round_taxes(current_taxes)
+                    for key, taxline in current_taxes.items():
+                        if key not in taxes:
+                            taxes[key] = taxline
+                        else:
+                            taxes[key]['base'] += taxline['base']
+                            taxes[key]['amount'] += taxline['amount']
                 if tax_rounding == 'document':
                     self._round_taxes(taxes)
                 for key, taxline in taxes.items():
