@@ -671,7 +671,7 @@ def origin_mixin(_states):
         account = fields.Many2One(
             'account.account', "Account",
             domain=[
-                ('company', '=', Eval('company', 0)),
+                ('company', '=', Eval('company', -1)),
                 ('type', '!=', None),
                 ('closed', '!=', True),
                 ],
