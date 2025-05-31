@@ -293,6 +293,7 @@ class StatementRuleLine(sequence_ordered(), ModelSQL, ModelView):
         domain=[
             ('company', '=', Eval('company', -1)),
             ('type', '!=', None),
+            ('closed', '!=', True),
             ],
         states={
             'readonly': ~Eval('company'),
