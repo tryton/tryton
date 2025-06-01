@@ -888,6 +888,11 @@
                     this.display_size = Sao.config.display_size;
                 }
             }
+            if (!this.display_size &
+                (!jQuery.isEmptyObject(selected) ||
+                    !jQuery.isEmptyObject(expanded))) {
+                this.display_size = Sao.config.display_size;
+            }
             let display_size = this.display_size || 0;
             var current_record = this.record;
             if (jQuery.isEmptyObject(selected) && current_record) {
