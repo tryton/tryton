@@ -850,40 +850,40 @@
             });
         },
         modified_save: function() {
-            this.screen.save_tree_state();
-            this.screen.current_view.set_value();
-            if (this.screen.modified()) {
-                return Sao.common.sur_3b.run(
-                        Sao.i18n.gettext('This record has been modified\n' +
-                            'do you want to save it?'))
-                    .then(result => {
-                        switch(result) {
-                            case 'ok':
-                                return this.save();
-                            case 'ko':
-                                var record_id = null;
-                                if (this.screen.current_record) {
-                                    record_id = this.screen.current_record.id;
-                                }
-                                return this.reload(false).then(() => {
-                                    if (record_id !== null) {
-                                        if (record_id < 0) {
-                                            return jQuery.Deferred().reject(true);
-                                        }
-                                        else if (this.screen.current_record) {
-                                            if (record_id !=
-                                                this.screen.current_record.id) {
-                                                return jQuery.Deferred().reject();
+            return this.screen.save_tree_state().then(() => {;
+                this.screen.current_view.set_value();
+                if (this.screen.modified()) {
+                    return Sao.common.sur_3b.run(
+                            Sao.i18n.gettext('This record has been modified\n' +
+                                'do you want to save it?'))
+                        .then(result => {
+                            switch(result) {
+                                case 'ok':
+                                    return this.save();
+                                case 'ko':
+                                    var record_id = null;
+                                    if (this.screen.current_record) {
+                                        record_id = this.screen.current_record.id;
+                                    }
+                                    return this.reload(false).then(() => {
+                                        if (record_id !== null) {
+                                            if (record_id < 0) {
+                                                return jQuery.Deferred().reject(true);
+                                            }
+                                            else if (this.screen.current_record) {
+                                                if (record_id !=
+                                                    this.screen.current_record.id) {
+                                                    return jQuery.Deferred().reject();
+                                                }
                                             }
                                         }
-                                    }
-                                });
-                            default:
-                                return jQuery.Deferred().reject();
-                        }
-                    });
-            }
-            return jQuery.when();
+                                    });
+                                default:
+                                    return jQuery.Deferred().reject();
+                            }
+                        });
+                }
+            });
         },
         new_: function() {
             if (!Sao.common.MODELACCESS.get(this.screen.model_name).create) {
@@ -897,24 +897,29 @@
             });
         },
         save: function(tab) {
+            let prm;
             if (tab) {
                 // Called from button so we must save the tree state
-                this.screen.save_tree_state();
+                prm = this.screen.save_tree_state();
+            } else {
+                prm = jQuery.when();
             }
-            var access = Sao.common.MODELACCESS.get(this.screen.model_name);
-            if (this.screen.readonly || !(access.write || access.create)) {
-                return jQuery.Deferred().reject();
-            }
-            return this.screen.save_current().then(
-                () => {
-                    this.info_bar.add(
-                        Sao.i18n.gettext('Record saved.'), 'info');
-                    this.screen.count_tab_domain(true);
-                }, () => {
-                    this.info_bar.add(
-                        this.screen.invalid_message(), 'danger');
+            prm.then(() => {
+                var access = Sao.common.MODELACCESS.get(this.screen.model_name);
+                if (this.screen.readonly || !(access.write || access.create)) {
                     return jQuery.Deferred().reject();
-                });
+                }
+                return this.screen.save_current().then(
+                    () => {
+                        this.info_bar.add(
+                            Sao.i18n.gettext('Record saved.'), 'info');
+                        this.screen.count_tab_domain(true);
+                    }, () => {
+                        this.info_bar.add(
+                            this.screen.invalid_message(), 'danger');
+                        return jQuery.Deferred().reject();
+                    });
+            });
         },
         switch_: function() {
             return this.modified_save().then(() => this.screen.switch_view());
@@ -953,8 +958,7 @@
             if (test_modified) {
                 return this.modified_save().then(reload);
             } else {
-                this.screen.save_tree_state(false);
-                return reload();
+                return this.screen.save_tree_state(false).then(reload);
             }
         },
         copy: function() {
