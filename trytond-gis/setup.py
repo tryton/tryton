@@ -46,6 +46,7 @@ else:
         major_version, minor_version)
 
 requires = ['geomet', get_require_version('trytond'), 'psycopg2 >= 2.0.14']
+tests_require = [get_require_version('trytond[test]')]
 
 setup(name=name,
     version=version,
@@ -80,6 +81,9 @@ setup(name=name,
     license='GPL-3',
     python_requires='>=3.8',
     install_requires=requires,
+    extras_require={
+        'test': tests_require,
+        },
     entry_points={
         'trytond.backend': [
             'postgis = trytond_gis.postgis',
