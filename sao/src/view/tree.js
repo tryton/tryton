@@ -1138,7 +1138,8 @@
                     more_row.append(more_cell);
                     this.tbody.append(more_row);
                     if (moreObserver) {
-                        moreObserver.observe(more_button[0]);
+                        window.setTimeout(
+                            () => moreObserver.observe(more_button[0]));
                     }
                 }
             }).done(
