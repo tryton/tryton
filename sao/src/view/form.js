@@ -3963,7 +3963,6 @@ function eval_pyson(value){
             return prm;
         },
         set_value: function() {
-            this.screen.save_tree_state();
             if (this.screen.modified()) {  // TODO check if required
                 this.view.screen.record_modified(false);
             }
