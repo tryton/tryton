@@ -109,7 +109,7 @@ class MoveLine(metaclass=PoolMeta):
     @classmethod
     def __register__(cls, module):
         table_h = cls.__table_handler__(module)
-        set_payment_amount = not table_h.column_exist('payment_amount')
+        set_payment_amount = not table_h.column_exist('payment_amount_cache')
 
         super().__register__(module)
 
