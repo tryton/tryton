@@ -2434,6 +2434,7 @@ class ShipmentInternal(
                 ('draft', 'cancelled'),
                 ('waiting', 'cancelled'),
                 ('assigned', 'cancelled'),
+                ('packed', 'cancelled'),
                 ('cancelled', 'draft'),
                 ('done', 'cancelled'),
                 ))
