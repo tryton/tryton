@@ -11,6 +11,7 @@ class Role(ModelSQL, ModelView):
     __name__ = 'res.role'
     name = fields.Char("Name", required=True, translate=True)
     groups = fields.Many2Many('res.role-res.group', 'role', 'group', "Groups")
+    users = fields.One2Many('res.user.role', 'role', "Users")
 
     @classmethod
     def on_modification(cls, mode, roles, field_names=None):
@@ -18,10 +19,14 @@ class Role(ModelSQL, ModelView):
         User = pool.get('res.user')
         super().on_modification(mode, roles, field_names=field_names)
         if mode == 'write':
-            users = User.search([
-                    ('roles.role', 'in', [r.id for r in roles]),
-                    ])
-            User.sync_roles(users)
+            users = {u.user for r in roles for u in r.users}
+            User.sync_roles(User.browse(users))
+
+    @classmethod
+    def copy(cls, roles, default=None):
+        default = default.copy() if default is not None else {}
+        default.setdefault('users')
+        return super().copy(roles, default=default)
 
 
 class RoleGroup(ModelSQL):
