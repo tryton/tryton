@@ -23,6 +23,16 @@ class Role(ModelSQL, ModelView):
             User.sync_roles(User.browse(users))
 
     @classmethod
+    def on_delete(cls, roles):
+        pool = Pool()
+        User = pool.get('res.user')
+        callback = super().on_delete(roles)
+        if users := {u.user for r in roles for u in r.users}:
+            callback.append(lambda: User.sync_roles(
+                    User.browse(users), clear=True))
+        return callback
+
+    @classmethod
     def copy(cls, roles, default=None):
         default = default.copy() if default is not None else {}
         default.setdefault('users')
@@ -58,14 +68,14 @@ class User(metaclass=PoolMeta):
             cls.sync_roles(users)
 
     @classmethod
-    def sync_roles(cls, users=None, date=None):
+    def sync_roles(cls, users=None, date=None, clear=False):
         if date is None:
             date = dt.datetime.now()
         if users is None:
             users = cls.search([])
         to_write = []
         for user in users:
-            if not user.roles:
+            if not user.roles and not clear:
                 continue
             new = {g.id for r in user.roles for g in r.role.groups
                 if r.valid(date)}
@@ -84,7 +94,8 @@ class UserRole(ModelSQL, ModelView):
     __name__ = 'res.user.role'
     user = fields.Many2One(
         'res.user', "User", ondelete='CASCADE', required=True)
-    role = fields.Many2One('res.role', "Role", required=True)
+    role = fields.Many2One(
+        'res.role', "Role", ondelete='CASCADE', required=True)
     from_date = fields.DateTime(
         "From Date",
         domain=[

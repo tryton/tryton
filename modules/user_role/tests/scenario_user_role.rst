@@ -86,3 +86,11 @@ Changing groups to role::
     >>> user.reload()
     >>> len(user.groups)
     3
+
+Deleting role::
+
+    >>> role.delete()
+
+    >>> user.reload()
+    >>> len(user.groups)
+    0
