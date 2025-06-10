@@ -3745,14 +3745,15 @@
                 'data-toggle': 'dropdown'
             }).appendTo(this.dropdown);
             this.menu = jQuery('<ul/>', {
-                'class': 'dropdown-menu',
+                'class': 'dropdown-menu dropdown-completion',
                 'role': 'listbox'
             }).appendTo(this.dropdown);
-            this.separator = jQuery('<li/>', {
-                'role': 'separator',
-                'class': 'divider'
-            }).appendTo(this.menu);
-            this.separator.hide();
+            this.actions = jQuery('<li/>', {
+                'class': 'dropdown-header dropdown-action'
+            }).append(jQuery('<ul/>', {
+                'class': 'list-unstyled',
+            })).appendTo(this.menu);
+            this.actions.hide();
 
             this.source = source;
             this.match_selected = match_selected;
@@ -3806,12 +3807,12 @@
             if (create) {
                 actions.push(['create', Sao.i18n.gettext('Create...')]);
             }
-            this.menu.find('li.action').remove();
+            this.actions.find('li.action').remove();
             if (jQuery.isEmptyObject(actions)) {
-                this.separator.hide();
+                this.actions.hide();
                 return;
             }
-            this.separator.show();
+            this.actions.show();
             actions.forEach(function(action) {
                 var action_id = action[0];
                 var content = action[1];
@@ -3827,7 +3828,7 @@
                     }
                     this.input.val('');
                 })
-                .appendTo(this.menu);
+                .appendTo(this.actions.children().first());
             }, this);
         },
         _format: function(content) {

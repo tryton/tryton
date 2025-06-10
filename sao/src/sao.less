@@ -141,6 +141,23 @@ html[theme="default"] {
     .user-select(text);
 }
 
+.dropdown-completion {
+    max-height: 50vh;
+    overflow-y: auto;
+
+    .dropdown-action {
+        background-color: @body-bg;
+        border-top: @dropdown-divider-bg solid 1px;
+        bottom: -5px;
+        position: sticky;
+
+        .action a {
+            clear: both;
+            display: block;
+        }
+    }
+}
+
 #tablist {
     display: flex;
     overflow-x: auto;
