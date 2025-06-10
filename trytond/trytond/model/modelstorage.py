@@ -539,10 +539,9 @@ class ModelStorage(Model):
                 for name, value in default.items()
                 if name.startswith(prefix)}
 
-        def convert_data(field_defs, origin, default_values):
+        def convert_data(fields_, origin, default_values):
             data = origin.copy()
-            for field_name in field_defs:
-                ftype = field_defs[field_name]['type']
+            for field_name, field in fields_.items():
                 field = cls._fields[field_name]
 
                 if field_name in (
@@ -564,25 +563,25 @@ class ModelStorage(Model):
                 elif (isinstance(field, fields.Function)
                         and not isinstance(field, fields.MultiValue)):
                     del data[field_name]
-                elif ftype in ('many2one', 'one2one'):
+                elif field._type in ('many2one', 'one2one'):
                     try:
                         data[field_name] = data[field_name] and \
                             data[field_name][0]
                     except Exception:
                         pass
-                elif ftype == 'one2many':
+                elif field._type == 'one2many':
                     if is_readonly(field) or field.filter:
                         del data[field_name]
                     elif data[field_name]:
                         data[field_name] = [(
                                 'copy', data[field_name],
                                 get_default(field_name))]
-                elif ftype == 'many2many':
+                elif field._type == 'many2many':
                     if is_readonly(field) or field.filter:
                         del data[field_name]
                     elif data[field_name]:
                         data[field_name] = [('add', data[field_name])]
-                elif ftype == 'binary':
+                elif field._type == 'binary':
                     # Copy only file_id
                     if (field.file_id
                             and origin.get(field.file_id)
@@ -600,32 +599,31 @@ class ModelStorage(Model):
                     and field.left and field.right):
                 mptt.add(field.left)
                 mptt.add(field.right)
-        fields_names = [n for n, f in cls._fields.items()
+        fields_ = {n: f for n, f in cls._fields.items()
             if (not isinstance(f, fields.Function)
                 or isinstance(f, fields.MultiValue))
-            and n not in mptt]
+            and n not in mptt}
+        fields_names = list(fields_.keys())
 
         def _default_fields():
             return {k.split('.', 1)[0] for k in default.keys()}
-        assert _default_fields() <= set(fields_names), (
-            f"Invalid default fields {_default_fields() - set(fields_names)} "
+        assert _default_fields() <= fields_.keys(), (
+            f"Invalid default fields {_default_fields() - fields_.keys()} "
             f"for {cls.__name__}")
         ids = list(map(int, records))
         with without_check_access():
             values = {
                 d['id']: d for d in cls.read(ids, fields_names=fields_names)}
-        field_defs = cls.fields_get(fields_names=fields_names)
         default_values = cls.default_get(fields_names, with_rec_name=False)
         to_create = []
         for id_ in ids:
-            data = convert_data(field_defs, values[id_], default_values)
+            data = convert_data(fields_, values[id_], default_values)
             to_create.append(data)
         new_records = cls.create(to_create)
 
         fields_translate = {}
-        for field_name, field in field_defs.items():
-            if (field_name in cls._fields
-                    and getattr(cls._fields[field_name], 'translate', False)):
+        for field_name, field in fields_.items():
+            if getattr(field, 'translate', False):
                 fields_translate[field_name] = field
 
         if fields_translate:
@@ -1022,10 +1020,9 @@ class ModelStorage(Model):
 
         @error
         @lru_cache(maxsize=1000)
-        def get_many2one(value, relation):
+        def get_many2one(value, Relation):
             if not value:
                 return None
-            Relation = pool.get(relation)
             res = Relation.search([
                 ('rec_name', '=', value),
                 ], limit=2)
@@ -1045,11 +1042,10 @@ class ModelStorage(Model):
 
         @error
         @lru_cache(maxsize=1000)
-        def get_many2many(value, relation):
+        def get_many2many(value, Relation):
             if not value:
                 return None
             res = []
-            Relation = pool.get(relation)
             for word in next(csv.reader(value.splitlines(), delimiter=',',
                     quoting=csv.QUOTE_NONE, escapechar='\\')):
                 res2 = Relation.search([
@@ -1195,7 +1191,8 @@ class ModelStorage(Model):
                     value=value,
                     **klass.__names__(field)) from e
 
-        def process_lines(data, prefix, fields_def, position=0, klass=cls):
+        def process_lines(data, prefix, position=0, klass=cls):
+            fields_ = klass._fields
             line = data[position]
             row = {}
             translate = {}
@@ -1221,27 +1218,25 @@ class ModelStorage(Model):
                     translate.setdefault(lang, {})[field_name] = line[i]
                 elif is_prefix_len and prefix == field[:-1]:
                     field_name = field[-1]
-                    this_field_def = fields_def[field_name]
-                    field_type = this_field_def['type']
+                    field = fields_[field_name]
                     res = None
                     if field_name == 'id':
                         try:
                             res = int(line[i])
                         except ValueError:
-                            res = get_many2one(line, i, klass.__name__)
-                    elif field_type == 'many2one':
-                        res = get_many2one(line, i, this_field_def['relation'])
-                    elif field_type in {'many2many', 'one2many'}:
+                            res = get_many2one(line, i, klass)
+                    elif field._type == 'many2one':
+                        res = get_many2one(line, i, field.get_target())
+                    elif field._type in {'many2many', 'one2many'}:
                         many2many.add(field_name)
-                        res = get_many2many(
-                            line, i, this_field_def['relation'])
+                        res = get_many2many(line, i, field.get_target())
                         res = [('add', res)] if res else []
-                    elif field_type == 'one2one':
-                        res = get_one2one(line, i, this_field_def['relation'])
-                    elif field_type == 'reference':
+                    elif field._type == 'one2one':
+                        res = get_one2one(line, i, field.get_target())
+                    elif field._type == 'reference':
                         res = get_reference(line, i, field_name, klass)
                     else:
-                        res = convert(line, i, field_type, field_name, klass)
+                        res = convert(line, i, field._type, field_name, klass)
                     row[field_name] = res
                 elif prefix == field[0:prefix_len]:
                     todo.add(field[prefix_len])
@@ -1257,11 +1252,11 @@ class ModelStorage(Model):
 
             # Import one2many fields
             nbrmax = 1
-            for field in todo:
-                Relation = pool.get(fields_def[field]['relation'])
-                newfd = Relation.fields_get()
+            for field_name in todo:
+                field = fields_[field_name]
+                Relation = field.get_target()
                 newrow, max2, _ = process_lines(
-                    data, prefix + [field], newfd, position, klass=Relation)
+                    data, prefix + [field_name], position, klass=Relation)
                 nbrmax = max(nbrmax, max2)
                 create, write = [], []
                 dispatch(create, write, newrow, Relation)
@@ -1276,23 +1271,23 @@ class ModelStorage(Model):
                     if not test:
                         break
                     newrow, max2, _ = process_lines(
-                        data, prefix + [field], newfd, position + i,
+                        data, prefix + [field_name], position + i,
                         klass=Relation)
                     dispatch(create, write, newrow, Relation)
                     i += max2
                     nbrmax = max(nbrmax, i)
-                row[field] = []
+                row[field_name] = []
                 create = [v for v in create if any(v.values())]
                 if create:
-                    row[field].append(('create', create))
+                    row[field_name].append(('create', create))
                 if write:
-                    row[field].append(('write',) + tuple(write))
+                    row[field_name].append(('write',) + tuple(write))
                 if record:
                     written = set(map(int, sum(write[0:None:2], [])))
                     delete = [
-                        r.id for r in getattr(record, field)
+                        r.id for r in getattr(record, field_name)
                         if r.id not in written]
-                    row[field].append(('delete', delete))
+                    row[field_name].append(('delete', delete))
 
             if prefix_len == 0:
                 for i in range(max(nbrmax, 1)):
@@ -1300,15 +1295,13 @@ class ModelStorage(Model):
             return (row, nbrmax, translate)
 
         fields_names = [x.split('/') for x in fields_names]
-        fields_def = cls.fields_get()
 
         to_create, to_create_translations = [], []
         to_write, to_write_translations = [], []
         languages = set()
         data = data.copy()
         while data:
-            (row, _, translate) = \
-                process_lines(data, [], fields_def)
+            (row, _, translate) = process_lines(data, [])
             if dispatch(to_create, to_write, row):
                 to_write_translations.append(translate)
             else:
