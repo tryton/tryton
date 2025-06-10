@@ -1358,11 +1358,12 @@ class CostPriceRevision(ModelSQL, ModifyCostPriceStart):
                     product=product.rec_name if product else '',
                     exception=exception)) from exception
         if not isinstance(amount, Decimal):
+            product = self.product or self.template
             raise ProductCostPriceError(
                 gettext('stock.msg_invalid_cost_price_not_number',
                     value=amount,
                     cost_price=self.cost_price,
-                    product=product.rec_name))
+                    product=product.rec_name if product else ''))
         return amount
 
     @classmethod
