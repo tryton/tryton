@@ -79,7 +79,7 @@ class Agent(ModelView, ModelSQL):
             Round(
                 Sum(Coalesce(commission.base_amount, 0)),
                 currency.digits).as_('base_amount'),
-            Round(Sum(commission.amount), currency.digits).as_('amount'),
+            Round(Sum(commission.amount), price_digits[1]).as_('amount'),
             ]
 
     @classmethod
