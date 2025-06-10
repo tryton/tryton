@@ -401,6 +401,21 @@ class FieldMany2OneTreeTestCase(TestCase):
                     self.second2, self.second3, self.second4]))
 
     @with_transaction()
+    def test_search_child_of_first1_second1(self):
+        "Test search many2one child of first1 and second1"
+        Many2One = Pool().get(self.model_name)
+        self.create_tree(Many2One)
+
+        result = Many2One.search([
+                ('many2one', 'child_of',
+                    [self.first1.id, self.second1.id]),
+                ])
+
+        self.assertListEqual(
+            sorted(result),
+            sorted([self.first1, self.second1, self.second2]))
+
+    @with_transaction()
     def test_search_child_of_empty(self):
         "Test search many2one child of empty"
         Many2One = Pool().get(self.model_name)

@@ -5,6 +5,7 @@ import warnings
 from sql import As, Column, Expression, Literal, Null, Query, With
 from sql.aggregate import Max
 from sql.conditionals import Coalesce
+from sql.functions import CharLength
 from sql.operators import Or
 
 from trytond.config import config
@@ -134,10 +135,20 @@ class Many2One(Field):
         Target = self.get_target()
         path_column = getattr(Target, self.path).sql_column(table)
         path_column = Coalesce(path_column, '')
-        cursor.execute(*table.select(path_column, where=red_sql))
+        cursor.execute(*table.select(
+                path_column, where=red_sql,
+                order_by=[CharLength(path_column).desc, path_column.asc]))
         if operator.endswith('child_of'):
-            where = Or()
+            paths = set()
             for path, in cursor:
+                discard = set()
+                for opath in paths:
+                    if path in opath:
+                        discard.add(opath)
+                paths -= discard
+                paths.add(path)
+            where = Or()
+            for path in paths:
                 where.append(path_column.like(path + '%'))
         else:
             ids = [int(x) for path, in cursor for x in path.split('/')[:-1]]
@@ -156,9 +167,19 @@ class Many2One(Field):
         Target = self.get_target()
         left = getattr(Target, self.left).sql_column(table)
         right = getattr(Target, self.right).sql_column(table)
-        cursor.execute(*table.select(left, right, where=red_sql))
-        where = Or()
+        cursor.execute(*table.select(
+                left, right, where=red_sql,
+                order_by=[(right - left).asc, left.asc]))
+        ranges = set()
         for l, r in cursor:
+            discard = set()
+            for ol, or_ in ranges:
+                if l < ol and or_ < r:
+                    discard.add((ol, or_))
+            ranges -= discard
+            ranges.add((l, r))
+        where = Or()
+        for l, r in ranges:
             if operator.endswith('child_of'):
                 where.append((left >= l) & (right <= r))
             else:
