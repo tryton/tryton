@@ -1122,7 +1122,6 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin, InvoiceReportMixin):
                     if key not in tax_keys:
                         to_create.append(computed_taxes[key])
             if exception and (to_create or to_delete or to_write):
-                raise Exception(invoice.taxes, to_create, to_delete, to_write)
                 raise InvoiceTaxValidationError(
                     gettext('account_invoice.msg_invoice_tax_invalid',
                         invoice=invoice.rec_name))
