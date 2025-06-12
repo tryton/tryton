@@ -318,8 +318,12 @@ class MemoryCache(BaseCache):
                                 where=table.name == name))
                         timestamp, = cursor.fetchone()
 
-                        inst = cls._instances[name]
-                        inst._clear(dbname, timestamp)
+                        try:
+                            inst = cls._instances[name]
+                        except KeyError:
+                            pass
+                        else:
+                            inst._clear(dbname, timestamp)
                 connection.commit()
             finally:
                 database.put_connection(connection)
@@ -399,8 +403,12 @@ class MemoryCache(BaseCache):
                     elif notification.payload:
                         reset = json.loads(notification.payload)
                         for name in reset:
-                            inst = cls._instances[name]
-                            inst._clear(dbname)
+                            try:
+                                inst = cls._instances[name]
+                            except KeyError:
+                                pass
+                            else:
+                                inst._clear(dbname)
                 cls._clean_last = dt.datetime.now()
                 # Keep connected
                 cursor.execute('SELECT 1')
