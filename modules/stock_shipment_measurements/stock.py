@@ -158,7 +158,7 @@ class Move(metaclass=PoolMeta):
             if isinstance(move.shipment, MeasurementsMixin):
                 shipments[move.shipment.__class__].add(move.shipment)
         for Shipment, shipments in shipments.items():
-            Shipment.set_measurements(shipments)
+            Shipment.set_measurements(list(shipments))
 
 
 class MeasurementsMixin(object):
