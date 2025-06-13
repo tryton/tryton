@@ -7,4 +7,5 @@ this repository contains the full copyright notices and license terms. -->
     <field name="state"/>
     <button name="activate"/>
     <button name="cancel"/>
+    <button name="apply" multiple="1"/>
 </tree>

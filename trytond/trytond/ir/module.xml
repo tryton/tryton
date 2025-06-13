@@ -82,6 +82,16 @@ this repository contains the full copyright notices and license terms. -->
             <field name="group" ref="res.group_admin"/>
         </record>
 
+        <record model="ir.model.button" id="module_apply_button">
+            <field name="model">ir.module</field>
+            <field name="name">apply</field>
+            <field name="string">Apply</field>
+        </record>
+        <record model="ir.model.button-res.group" id="module_apply_button_group_admin">
+            <field name="button" ref="module_apply_button"/>
+            <field name="group" ref="res.group_admin"/>
+        </record>
+
         <record model="ir.model.access" id="access_module">
             <field name="model">ir.module</field>
             <field name="perm_read" eval="True"/>
@@ -170,12 +180,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="group" ref="res.group_admin"/>
         </record>
 
-        <record model="ir.action.keyword" id="act_module_activate_upgrade_keyword1">
-            <field name="action" ref="act_module_activate_upgrade"/>
-            <field name="keyword">form_action</field>
-            <field name="model">ir.module,-1</field>
-        </record>
-
         <record model="ir.ui.view" id="module_activate_upgrade_start_view_form">
             <field name="model">ir.module.activate_upgrade.start</field>
             <field name="type">form</field>
@@ -187,12 +191,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="type">form</field>
             <field name="name">module_activate_upgrade_done_form</field>
         </record>
-
-        <menuitem
-            parent="menu_modules"
-            action="act_module_activate_upgrade"
-            sequence="90"
-            id="menu_module_activate_upgrade"/>
 
         <record model="ir.action.wizard" id="act_module_config">
             <field name="name">Configure Modules</field>

@@ -81,6 +81,7 @@ class Module(ModelSQL, ModelView):
                         ['to activate', 'to remove', 'to upgrade']),
                     'depends': ['state'],
                     },
+                'apply': {},
                 })
 
     @staticmethod
@@ -234,6 +235,11 @@ class Module(ModelSQL, ModelView):
     @filter_state('to upgrade')
     def _cancel_upgrade(cls, modules):
         cls.write(modules, {'state': 'activated'})
+
+    @classmethod
+    @ModelView.button_action('ir.act_module_activate_upgrade')
+    def apply(cls, modules):
+        pass
 
     @classmethod
     def update_list(cls):
