@@ -777,6 +777,9 @@ Same as form-button_ with the addition of:
 ``width``
    The width of the column.
 
+``multiple``
+   A boolean to execute the button on the selected record.
+
 List-Form
 =========
 

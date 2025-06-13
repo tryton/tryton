@@ -1,3 +1,4 @@
+* Add multiple attribute to the buttons in the tree view
 * Manage readonly wizard
 * Export Many2One and Reference using record name
 * Support import of one2many as list of name

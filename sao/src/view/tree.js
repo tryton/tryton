@@ -116,9 +116,18 @@
             }
         },
         _parse_button: function(node, attributes) {
-            var column = new Sao.View.Tree.ButtonColumn(
-                this.view, attributes);
-            this.view.columns.push(column);
+            let button;
+            if (parseInt(attributes.multiple || '0', 10)) {
+                button = new Sao.View.Tree.ButtonMultiple(attributes);
+                button.el.click(
+                    button, this.view.button_clicked.bind(this.view));
+                this.view.footer.append(button.el);
+            } else {
+                button = new Sao.View.Tree.ButtonColumn(
+                    this.view, attributes);
+                this.view.columns.push(button);
+            }
+            this.view.state_widgets.push(button);
         }
     });
 
@@ -158,6 +167,10 @@
             this.scrollbar.parent().scroll(() => {
                 this.treeview.scrollLeft(this.scrollbar.parent().scrollLeft());
             });
+
+            this.footer = jQuery('<div/>', {
+                'class': 'tree-footer',
+            }).appendTo(this.el);
 
             this.expanded = new Set();
 
@@ -878,12 +891,18 @@
         },
         get_buttons: function() {
             var buttons = [];
-            for (const column of this.columns) {
-                if (column instanceof Sao.View.Tree.ButtonColumn) {
-                    buttons.push(column);
+            for (const widget of this.state_widgets) {
+                if ((widget instanceof Sao.View.Tree.ButtonColumn) ||
+                    (widget instanceof Sao.View.Tree.ButtonMultiple)) {
+                    buttons.push(widget);
                 }
             }
             return buttons;
+        },
+        button_clicked: function(event) {
+            var button = event.data;
+            button.el.prop('disabled', true);  // state will be reset at display
+            this.screen.button(button.attributes);
         },
         display: function(selected, expanded) {
             if ((this.display_size === null) && this.screen.group.length) {
@@ -1153,7 +1172,7 @@
                     }
                 }
             }).done(
-                Sao.common.debounce(this.update_sum.bind(this), 250));
+                Sao.common.debounce(this.update_with_selection.bind(this), 250));
         },
         construct: function(extend) {
             if (!extend) {
@@ -1216,10 +1235,18 @@
             to_hide.addClass('invisible').hide();
             to_show.removeClass('invisible').show();
         },
-        update_sum: function() {
+        update_with_selection: function() {
+            let selected_records = this.selected_records;
+            for (let widget of this.state_widgets) {
+                if (widget instanceof Sao.View.Tree.ButtonMultiple) {
+                    widget.set_state(selected_records);
+                }
+            }
+            let records_ids = selected_records.map(function(record){
+                return record.id;
+            });
             for (const [column, sum_widget] of this.sum_widgets) {
                 var name = column.attributes.name;
-                var selected_records = this.selected_records;
                 var aggregate = '-';
                 var sum_label = sum_widget[0];
                 var sum_value = sum_widget[1];
@@ -1229,9 +1256,6 @@
                 var digit = 0;
                 var field = this.screen.model.fields[name];
                 var i, record;
-                var records_ids = selected_records.map(function(record){
-                    return record.id;
-                });
                 for (i=0; i < this.group.length; i++) {
                     record = this.group[i];
                     if (!record.get_loaded([name]) && record.id >=0){
@@ -1420,10 +1444,10 @@
                 this.select_changed(null);
             }
             this.update_expander(value? 'more' : null);
-            this.update_sum();
+            this.update_with_selection();
         },
         update_selection: function() {
-            this.update_sum();
+            this.update_with_selection();
             var selected_records = this.selected_records;
             this.selection.prop('indeterminate', false);
             if (jQuery.isEmptyObject(selected_records)) {
@@ -3221,6 +3245,53 @@
             }
             this.view.screen.button(this.attributes);
         }
+    });
+
+    Sao.View.Tree.ButtonMultiple = Sao.class_(Sao.common.Button, {
+        set_state: function(records) {
+            if (!records.length) {
+                this.el.hide();
+                this.el.prop('disabled', true);
+                this.set_icon(null);
+                return;
+            }
+
+            let states = {
+                'invisible': false,
+                'readonly': false,
+            };
+            let icons = new Set();
+            for (let record of records) {
+                let r_states = record.expr_eval(this.attributes.states || {});
+                states['invisible'] |= r_states.invisible;
+                states['readonly'] |= r_states.readonly;
+                icons.add(r_states.icon || this.attributes.icon);
+            }
+            if (states.invisible) {
+                this.el.hide();
+            } else {
+                this.el.show();
+            }
+            this.el.prop('disabled', Boolean(states.readonly));
+            if (icons.size == 1) {
+                this.set_icon(icons.values().next().value);
+            } else {
+                this.set_icon(null);
+            }
+            if ((this.attributes.type === undefined) ||
+                (this.attributes.type === 'class')) {
+                for (let record of records) {
+                    let parent = record.group.parent;
+                    while (parent) {
+                        if (parent.modified) {
+                            this.el.prop('disabled', true);
+                            break;
+                        }
+                        parent = parent.group.parent;
+                    }
+                }
+            }
+        },
     });
 
     Sao.View.TreeXMLViewParser.WIDGETS = {

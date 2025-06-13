@@ -25,9 +25,9 @@ from tryton.pyson import PYSONDecoder
 from . import View, XMLViewParser
 from .list_gtk.editabletree import EditableTreeView, TreeView
 from .list_gtk.widget import (
-    M2M, M2O, O2M, O2O, URL, Affix, Binary, Boolean, Button, Char, Date, Dict,
-    Float, Image, Int, MultiSelection, ProgressBar, Reference, Selection, Text,
-    Time, TimeDelta)
+    M2M, M2O, O2M, O2O, URL, Affix, Binary, Boolean, Button, ButtonMutiple,
+    Cell, Char, Date, Dict, Float, Image, Int, MultiSelection, ProgressBar,
+    Reference, Selection, Text, Time, TimeDelta)
 
 _ = gettext.gettext
 
@@ -371,23 +371,29 @@ class TreeXMLViewParser(XMLViewParser):
             self.view.optionals[column.name].append(column)
 
     def _parse_button(self, node, attributes):
-        button = Button(self.view, attributes)
+        if int(attributes.get('multiple', 0)):
+            button = ButtonMutiple(attributes)
+            button.connect('clicked', self.view.button_clicked)
+            self.view.hbuttonbox.pack_start(
+                button, expand=True, fill=True, padding=0)
+        else:
+            button = Button(self.view, attributes)
+
+            column = Gtk.TreeViewColumn(
+                attributes.get('string', ''), button.renderer)
+            column._type = 'button'
+            column.name = None
+            column.set_cell_data_func(button.renderer, button.setter)
+
+            self._set_column_widget(column, attributes, arrow=False)
+            self._set_column_width(column, attributes)
+
+            decoder = PYSONDecoder(self.view.screen.context)
+            column.set_visible(
+                not decoder.decode(attributes.get('tree_invisible', '0')))
+
+            self.view.treeview.append_column(column)
         self.view.state_widgets.append(button)
-
-        column = Gtk.TreeViewColumn(
-            attributes.get('string', ''), button.renderer)
-        column._type = 'button'
-        column.name = None
-        column.set_cell_data_func(button.renderer, button.setter)
-
-        self._set_column_widget(column, attributes, arrow=False)
-        self._set_column_width(column, attributes)
-
-        decoder = PYSONDecoder(self.view.screen.context)
-        column.set_visible(
-            not decoder.decode(attributes.get('tree_invisible', '0')))
-
-        self.view.treeview.append_column(column)
 
     def _set_column_widget(self, column, attributes, arrow=True, align=0.5):
         hbox = Gtk.HBox(homogeneous=False, spacing=2)
@@ -476,6 +482,7 @@ class ViewTree(View):
         self.optionals = defaultdict(list)
         self.sum_widgets = []
         self.sum_box = Gtk.HBox()
+        self.hbuttonbox = Gtk.HButtonBox()
         self.treeview = None
         self._editable = bool(int(xml.getAttribute('editable') or 0))
         self._creatable = bool(int(xml.getAttribute('creatable') or 1))
@@ -525,6 +532,12 @@ class ViewTree(View):
         self.widget.pack_start(
             self.sum_box, expand=False, fill=False, padding=0)
         self.treeview.set_search_equal_func(self.search_equal_func)
+
+        self.hbuttonbox.show()
+        self.hbuttonbox.set_spacing(5)
+        self.hbuttonbox.set_layout(Gtk.ButtonBoxStyle.EXPAND)
+        self.widget.pack_start(
+            self.hbuttonbox, expand=False, fill=True, padding=0)
 
         self.display()
 
@@ -762,7 +775,17 @@ class ViewTree(View):
 
     def get_buttons(self):
         return [b for b in self.state_widgets
-            if isinstance(b.renderer, CellRendererButton)]
+            if (
+                (isinstance(b, Cell)
+                    and isinstance(b.renderer, CellRendererButton))
+                or isinstance(b, ButtonMutiple))]
+
+    def button_clicked(self, widget):
+        widget.handler_block_by_func(self.button_clicked)
+        try:
+            self.screen.button(widget.attrs)
+        finally:
+            widget.handler_unblock_by_func(self.button_clicked)
 
     def on_keypress(self, widget, event):
         control_mask = Gdk.ModifierType.CONTROL_MASK
@@ -1185,7 +1208,7 @@ class ViewTree(View):
                             go_previous()
                 # Delay the pre_validate to let GTK process the current event
                 GLib.idle_add(pre_validate)
-        self.update_sum()
+        self.update_with_selection()
 
     def set_value(self):
         if self.editable:
@@ -1226,7 +1249,7 @@ class ViewTree(View):
         if self.editable:
             self.set_state()
         self.update_arrow()
-        self.update_sum()
+        self.update_with_selection()
 
         # Set column visibility depending on attributes and domain
         domain = []
@@ -1280,8 +1303,13 @@ class ViewTree(View):
                     field.state_set(record)
 
     @delay
-    def update_sum(self):
+    def update_with_selection(self):
         selected_records = self.selected_records
+
+        for widget in self.state_widgets:
+            if isinstance(widget, ButtonMutiple):
+                widget.state_set(selected_records)
+
         for name, label in self.sum_widgets:
             sum_ = None
             selected_sum = None

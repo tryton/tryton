@@ -13,6 +13,7 @@ from gi.repository import Gdk, GLib, Gtk
 import tryton.common as common
 from tryton.common import (
     data2pixbuf, file_open, file_selection, file_write, get_gdk_backend)
+from tryton.common.button import Button as _Button
 from tryton.common.cellrendererbutton import CellRendererButton
 from tryton.common.cellrendererclickablepixbuf import (
     CellRendererClickablePixbuf)
@@ -1454,3 +1455,45 @@ class Button(Cell):
             self.view.screen.button(self.attrs)
         finally:
             widget.handler_unblock_by_func(self.button_clicked)
+
+
+class ButtonMutiple(_Button):
+
+    def state_set(self, records):
+        if not records:
+            self.hide()
+            self.set_sensitive(False)
+            self._set_icon(None)
+            return
+
+        states = {
+            'invisible': False,
+            'readonly': False,
+            }
+        icons = set()
+        for record in records:
+            r_states = record.expr_eval(self.attrs.get('states', {}))
+            for name in ['invisible', 'readonly']:
+                states[name] |= r_states.get(name, False)
+            icons.add(r_states.get('icon', self.attrs.get('icon')))
+        if states['invisible']:
+            self.hide()
+        else:
+            self.show()
+        self.set_sensitive(not states['readonly'])
+        if len(icons) == 1:
+            self._set_icon(icons.pop())
+        else:
+            self._set_icon(None)
+
+        if self.attrs.get('type', 'class') == 'class':
+            for record in records:
+                parent = record.parent if record else None
+                while parent:
+                    if parent.modified:
+                        self.set_sensitive(False)
+                        break
+                    parent = parent.parent
+                else:
+                    continue
+                break

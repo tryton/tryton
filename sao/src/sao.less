@@ -742,6 +742,28 @@ img.icon {
         top: 0;
         width: 0;
     }
+
+    .tree-footer {
+        display: flex;
+        flex-flow: row wrap;
+        gap: 5px;
+        justify-content: space-around;
+        padding: 5px;
+
+        button {
+            flex-grow: 1;
+        }
+
+        &:empty {
+            padding: 0;
+        }
+    }
+
+    @media screen and (max-width: @screen-xs-max) {
+        .tree-footer {
+            flex-direction: column;
+        }
+    }
 }
 
 .wizard-form {
