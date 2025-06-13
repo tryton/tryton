@@ -79,7 +79,7 @@ class MarketingContext(BaseContext):
         lazy_gettext('marketing_campaign.msg_marketing_source'))
 
 
-class Marketing(MarketingCampaignMixin, Abstract, ModelView):
+class Marketing(MarketingCampaignMixin, ModelView, Abstract):
     "Sale Reporting per Marketing"
     __name__ = 'sale.reporting.marketing'
 
