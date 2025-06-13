@@ -68,24 +68,17 @@ class Module(ModelSQL, ModelView):
                     'invisible': Eval('state') != 'not activated',
                     'depends': ['state'],
                     },
-                'activate_cancel': {
-                    'invisible': Eval('state') != 'to activate',
-                    'depends': ['state'],
-                    },
                 'deactivate': {
                     'invisible': Eval('state') != 'activated',
-                    'depends': ['state'],
-                    },
-                'deactivate_cancel': {
-                    'invisible': Eval('state') != 'to remove',
                     'depends': ['state'],
                     },
                 'upgrade': {
                     'invisible': Eval('state') != 'activated',
                     'depends': ['state'],
                     },
-                'upgrade_cancel': {
-                    'invisible': Eval('state') != 'to upgrade',
+                'cancel': {
+                    'invisible': ~Eval('state').in_(
+                        ['to activate', 'to remove', 'to upgrade']),
                     'depends': ['state'],
                     },
                 })
@@ -196,14 +189,6 @@ class Module(ModelSQL, ModelView):
 
     @classmethod
     @ModelView.button
-    @filter_state('to activate')
-    def activate_cancel(cls, modules):
-        cls.write(modules, {
-                'state': 'not activated',
-                })
-
-    @classmethod
-    @ModelView.button
     @filter_state('activated')
     def deactivate(cls, modules):
         pool = Pool()
@@ -228,14 +213,26 @@ class Module(ModelSQL, ModelView):
 
     @classmethod
     @ModelView.button
+    def cancel(cls, modules):
+        cls._cancel_activate(modules)
+        cls._cancel_remove(modules)
+        cls._cancel_upgrade(modules)
+
+    @classmethod
+    @filter_state('to activate')
+    def _cancel_activate(cls, modules):
+        cls.write(modules, {
+                'state': 'not activated',
+                })
+
+    @classmethod
     @filter_state('to remove')
-    def deactivate_cancel(cls, modules):
+    def _cancel_remove(cls, modules):
         cls.write(modules, {'state': 'not activated'})
 
     @classmethod
-    @ModelView.button
     @filter_state('to upgrade')
-    def upgrade_cancel(cls, modules):
+    def _cancel_upgrade(cls, modules):
         cls.write(modules, {'state': 'activated'})
 
     @classmethod
