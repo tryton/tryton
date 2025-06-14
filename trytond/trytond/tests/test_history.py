@@ -191,6 +191,30 @@ class HistoryTestCase(TestCase):
             History.read([history_id], ['value'])
 
     @with_transaction()
+    def test_restore_history_after_delete(self):
+        "Test restoring a record after deleting it"
+        pool = Pool()
+        History = pool.get('test.history')
+        transaction = Transaction()
+
+        history = History(value=1)
+        history.save()
+        history_id = history.id
+        first = history.create_date
+
+        transaction.commit()
+
+        History.delete([History(history_id)])
+        with self.assertRaises(AccessError):
+            History.read([history_id], ['value'])
+
+        transaction.commit()
+
+        History.restore_history([history_id], first)
+        history = History(history_id)
+        self.assertEqual(history.value, 1)
+
+    @with_transaction()
     def test_restore_history_before(self):
         'Test restore history before'
         pool = Pool()
