@@ -253,7 +253,7 @@ class NotificationEmailTestCase(CompanyTestMixin, ModuleTestCase):
         self.assertEqual(
             attachment.get_content_type(), 'text/plain')
         self.assertEqual(
-            attachment.get_filename(), "Attachment-Michael Scott.txt")
+            attachment.get_filename(), "Attachment-Michael-Scott.txt")
 
     @with_transaction()
     def test_notification_email_subject(self):

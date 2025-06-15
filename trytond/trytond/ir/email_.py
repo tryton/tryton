@@ -21,7 +21,7 @@ from trytond.pyson import Bool, Eval, PYSONDecoder
 from trytond.report import Report
 from trytond.rpc import RPC
 from trytond.sendmail import send_message_transactional
-from trytond.tools import escape_wildcard
+from trytond.tools import escape_wildcard, slugify
 from trytond.tools.email_ import (
     convert_ascii_email, format_address, set_from_header)
 from trytond.tools.string_ import StringMatcher
@@ -135,7 +135,7 @@ class Email(ResourceAccessMixin, ModelSQL, ModelView):
                     [record.id], {
                         'action_id': report.id,
                         })
-                name = '%s.%s' % (title, ext)
+                name = '%s.%s' % (slugify(title), ext)
                 if isinstance(content, str):
                     content = content.encode('utf-8')
                 files.append((name, content))

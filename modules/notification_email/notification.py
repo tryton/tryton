@@ -12,6 +12,7 @@ from trytond.pool import Pool
 from trytond.pyson import Eval, TimeDelta
 from trytond.report import get_email
 from trytond.sendmail import SMTPDataManager, send_message_transactional
+from trytond.tools import slugify
 from trytond.tools.email_ import format_address, has_rcpt, set_from_header
 from trytond.transaction import Transaction
 
@@ -345,7 +346,7 @@ class EmailAttachment(ModelSQL):
                 [record.id], {
                     'action_id': report.id,
                     })
-        name = '%s.%s' % (title, ext)
+        name = '%s.%s' % (slugify(title), ext)
         if isinstance(content, str):
             content = content.encode('utf-8')
         return name, content
