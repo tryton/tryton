@@ -22,10 +22,28 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">payment_list</field>
         </record>
 
+        <record model="ir.ui.view" id="payment_group_view_form">
+            <field name="model">account.payment.group</field>
+            <field name="inherit" ref="account_payment.payment_group_view_form"/>
+            <field name="name">payment_group_form</field>
+        </record>
+
         <record model="ir.ui.view" id="payment_group_view_list">
             <field name="model">account.payment.group</field>
             <field name="inherit" ref="account_payment.payment_group_view_list"/>
             <field name="name">payment_group_list</field>
+        </record>
+
+        <record model="ir.model.button" id="payment_group_succeed_wizard_button">
+            <field name="model">account.payment.group</field>
+            <field name="name">succeed_wizard</field>
+            <field name="string">Succeed</field>
+        </record>
+
+        <record model="ir.action.wizard" id="wizard_payment_group_succeed">
+            <field name="name">Succeed Groups</field>
+            <field name="wiz_name">account.payment.succeed</field>
+            <field name="model">account.payment.group</field>
         </record>
 
         <record model="ir.action.wizard" id="wizard_succeed">

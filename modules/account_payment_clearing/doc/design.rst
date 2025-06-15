@@ -30,6 +30,9 @@ Succeed Payment
 The *Succeed Payment* wizard asks for the date to use for the clearing `Account
 Move <account:model-account.move>` before succeeding the payment.
 
+.. note:: The wizard is also used to succeed `Payment Group
+   <account_payment:model-account.payment.group>`.
+
 .. _model-account.payment.journal:
 
 Payment Journal

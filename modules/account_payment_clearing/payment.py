@@ -392,6 +392,13 @@ class Group(metaclass=PoolMeta):
         'get_reconciled', searcher='search_reconciled')
 
     @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls._buttons.update({
+                'succeed_wizard': cls._buttons['succeed'],
+                })
+
+    @classmethod
     def get_reconciled(cls, groups, name):
         pool = Pool()
         Payment = pool.get('account.payment')
@@ -431,6 +438,12 @@ class Group(metaclass=PoolMeta):
             having=Operator(column, value),
             group_by=payment.group)
         return [('id', 'in', query)]
+
+    @classmethod
+    @ModelView.button_action(
+        'account_payment_clearing.wizard_payment_group_succeed')
+    def succeed_wizard(cls, groups):
+        pass
 
     @classmethod
     def reconcile_clearing(cls, groups):
