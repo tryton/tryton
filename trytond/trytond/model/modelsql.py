@@ -1703,7 +1703,8 @@ class ModelSQL(ModelStorage):
             else:
                 return [convert(d) for d in domain]
 
-        domain = simplify(convert(domain))
+        with without_check_access():
+            domain = simplify(convert(domain))
         rule_domain = Rule.domain_get(cls.__name__, mode='read')
         joined_domains = None
         if domain and domain[0] == 'OR':
