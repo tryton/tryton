@@ -1257,6 +1257,9 @@ class Screen:
 
     def button(self, button):
         'Execute button on the selected records'
+        if not self.current_record:
+            return
+
         if self.current_view:
             self.current_view.set_value()
             fields = self.current_view.get_fields()

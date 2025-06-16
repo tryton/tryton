@@ -2041,6 +2041,10 @@
                 }
             };
 
+            if (!this.current_record) {
+                return;
+            }
+
             if (this.current_view) {
                 var selected_records = this.current_view.selected_records;
                 this.current_view.set_value();
