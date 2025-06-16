@@ -1,6 +1,8 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 
+from unittest.mock import patch
+
 from sql import Join
 
 from trytond.model.exceptions import DomainValidationError
@@ -348,9 +350,11 @@ class FieldMany2OneTreeTestCase(TestCase):
         Many2One = Pool().get(self.model_name)
         self.create_tree(Many2One)
 
-        result = Many2One.search([
-                ('many2one', 'child_of', [self.root1.id]),
-                ])
+        with patch.object(Many2One, 'estimated_count') as ec:
+            ec.return_value = 100
+            result = Many2One.search([
+                    ('many2one', 'child_of', [self.root1.id]),
+                    ])
 
         self.assertListEqual(
             sorted(result),
@@ -364,9 +368,11 @@ class FieldMany2OneTreeTestCase(TestCase):
         Many2One = Pool().get(self.model_name)
         self.create_tree(Many2One)
 
-        result = Many2One.search([
-                ('many2one', 'not child_of', [self.root1.id]),
-                ])
+        with patch.object(Many2One, 'estimated_count') as ec:
+            ec.return_value = 100
+            result = Many2One.search([
+                    ('many2one', 'not child_of', [self.root1.id]),
+                    ])
 
         self.assertListEqual(
             sorted(result),
@@ -378,9 +384,11 @@ class FieldMany2OneTreeTestCase(TestCase):
         Many2One = Pool().get(self.model_name)
         self.create_tree(Many2One)
 
-        result = Many2One.search([
-                ('many2one', 'child_of', [self.second1.id]),
-                ])
+        with patch.object(Many2One, 'estimated_count') as ec:
+            ec.return_value = 100
+            result = Many2One.search([
+                    ('many2one', 'child_of', [self.second1.id]),
+                    ])
 
         self.assertListEqual(result, [self.second1])
 
@@ -406,10 +414,12 @@ class FieldMany2OneTreeTestCase(TestCase):
         Many2One = Pool().get(self.model_name)
         self.create_tree(Many2One)
 
-        result = Many2One.search([
-                ('many2one', 'child_of',
-                    [self.first1.id, self.second1.id]),
-                ])
+        with patch.object(Many2One, 'estimated_count') as ec:
+            ec.return_value = 100
+            result = Many2One.search([
+                    ('many2one', 'child_of',
+                        [self.first1.id, self.second1.id]),
+                    ])
 
         self.assertListEqual(
             sorted(result),
@@ -421,9 +431,11 @@ class FieldMany2OneTreeTestCase(TestCase):
         Many2One = Pool().get(self.model_name)
         self.create_tree(Many2One)
 
-        result = Many2One.search([
-                ('many2one', 'child_of', []),
-                ])
+        with patch.object(Many2One, 'estimated_count') as ec:
+            ec.return_value = 100
+            result = Many2One.search([
+                    ('many2one', 'child_of', []),
+                    ])
 
         self.assertListEqual(result, [])
 
@@ -433,9 +445,11 @@ class FieldMany2OneTreeTestCase(TestCase):
         Many2One = Pool().get(self.model_name)
         self.create_tree(Many2One)
 
-        result = Many2One.search([
-                ('many2one', 'not child_of', []),
-                ])
+        with patch.object(Many2One, 'estimated_count') as ec:
+            ec.return_value = 100
+            result = Many2One.search([
+                    ('many2one', 'not child_of', []),
+                    ])
 
         self.assertListEqual(
             sorted(result),
@@ -449,9 +463,11 @@ class FieldMany2OneTreeTestCase(TestCase):
         Many2One = Pool().get(self.model_name)
         self.create_tree(Many2One)
 
-        result = Many2One.search([
-                ('many2one', 'child_of', [None]),
-                ])
+        with patch.object(Many2One, 'estimated_count') as ec:
+            ec.return_value = 100
+            result = Many2One.search([
+                    ('many2one', 'child_of', [None]),
+                    ])
 
         self.assertListEqual(result, [])
 
@@ -461,9 +477,11 @@ class FieldMany2OneTreeTestCase(TestCase):
         Many2One = Pool().get(self.model_name)
         self.create_tree(Many2One)
 
-        result = Many2One.search([
-                ('many2one', 'parent_of', [self.root1.id]),
-                ])
+        with patch.object(Many2One, 'estimated_count') as ec:
+            ec.return_value = 100
+            result = Many2One.search([
+                    ('many2one', 'parent_of', [self.root1.id]),
+                    ])
 
         self.assertListEqual(result, [self.root1])
 
@@ -473,9 +491,11 @@ class FieldMany2OneTreeTestCase(TestCase):
         Many2One = Pool().get(self.model_name)
         self.create_tree(Many2One)
 
-        result = Many2One.search([
-                ('many2one', 'not parent_of', [self.root1.id]),
-                ])
+        with patch.object(Many2One, 'estimated_count') as ec:
+            ec.return_value = 100
+            result = Many2One.search([
+                    ('many2one', 'not parent_of', [self.root1.id]),
+                    ])
 
         self.assertListEqual(
             sorted(result),
@@ -489,9 +509,11 @@ class FieldMany2OneTreeTestCase(TestCase):
         Many2One = Pool().get(self.model_name)
         self.create_tree(Many2One)
 
-        result = Many2One.search([
-                ('many2one', 'parent_of', [self.second4.id]),
-                ])
+        with patch.object(Many2One, 'estimated_count') as ec:
+            ec.return_value = 100
+            result = Many2One.search([
+                    ('many2one', 'parent_of', [self.second4.id]),
+                    ])
 
         self.assertListEqual(
             sorted(result),
@@ -503,9 +525,11 @@ class FieldMany2OneTreeTestCase(TestCase):
         Many2One = Pool().get(self.model_name)
         self.create_tree(Many2One)
 
-        result = Many2One.search([
-                ('many2one', 'not parent_of', [self.second4.id]),
-                ])
+        with patch.object(Many2One, 'estimated_count') as ec:
+            ec.return_value = 100
+            result = Many2One.search([
+                    ('many2one', 'not parent_of', [self.second4.id]),
+                    ])
 
         self.assertListEqual(
             sorted(result),
@@ -519,9 +543,11 @@ class FieldMany2OneTreeTestCase(TestCase):
         Many2One = Pool().get(self.model_name)
         self.create_tree(Many2One)
 
-        result = Many2One.search([
-                ('many2one', 'parent_of', []),
-                ])
+        with patch.object(Many2One, 'estimated_count') as ec:
+            ec.return_value = 100
+            result = Many2One.search([
+                    ('many2one', 'parent_of', []),
+                    ])
 
         self.assertListEqual(result, [])
 
@@ -531,9 +557,11 @@ class FieldMany2OneTreeTestCase(TestCase):
         Many2One = Pool().get(self.model_name)
         self.create_tree(Many2One)
 
-        result = Many2One.search([
-                ('many2one', 'not parent_of', []),
-                ])
+        with patch.object(Many2One, 'estimated_count') as ec:
+            ec.return_value = 100
+            result = Many2One.search([
+                    ('many2one', 'not parent_of', []),
+                    ])
 
         self.assertListEqual(
             sorted(result),

@@ -1,5 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+
+import math
 import warnings
 
 from sql import As, Column, Expression, Literal, Null, Query, With
@@ -255,10 +257,15 @@ class Many2One(Field):
                     if operator.startswith('not'):
                         return ~expression
                     return expression
-                elif self.left and self.right:
+                elif (self.left and self.right
+                        and len(ids) <= math.floor(math.log10(
+                                Target.estimated_count() or 1))):
                     return self.convert_domain_mptt(
                         (name, operator, ids), tables)
-                elif self.path:
+                elif (self.path
+                        and (operator.endswith('parent_of')
+                            or len(ids) <= math.floor(math.log10(
+                                    Target.estimated_count() or 1)))):
                     return self.convert_domain_path(
                         (name, operator, ids), tables)
                 else:
