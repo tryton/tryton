@@ -7,6 +7,6 @@ this repository contains the full copyright notices and license terms. -->
     </field>
     <field name="email_valid"/>
     <field name="party" expand="2"/>
-    <button name="validate_email" string="Validate Email"/>
-    <button name="reset_password" string="Reset Password"/>
+    <button name="validate_email" multiple="1"/>
+    <button name="reset_password" multiple="1"/>
 </tree>

@@ -4,6 +4,6 @@ this repository contains the full copyright notices and license terms. -->
 <data>
     <xpath expr="/tree/button[@name='approve']" position="after">
         <button name="braintree_checkout"/>
-        <button name="braintree_do_settle_payment"/>
+        <button name="braintree_do_settle_payment" multiple="1"/>
     </xpath>
 </data>

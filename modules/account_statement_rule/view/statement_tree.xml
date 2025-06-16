@@ -3,6 +3,6 @@
 this repository contains the full copyright notices and license terms. -->
 <data>
     <xpath expr="//field[@name='state']" position="before">
-        <button name="apply_rules"/>
+        <button name="apply_rules" multiple="1"/>
     </xpath>
 </data>

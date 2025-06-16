@@ -9,5 +9,5 @@ this repository contains the full copyright notices and license terms. -->
     <field name="customer" expand="2"/>
     <field name="type"/>
     <field name="state"/>
-    <button name="process" string="Process" tree_invisible="1"/>
+    <button name="process" multiple="1"/>
 </tree>

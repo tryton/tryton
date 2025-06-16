@@ -14,5 +14,5 @@ this repository contains the full copyright notices and license terms. -->
     <field name="debit" sum="1"/>
     <field name="credit" sum="1"/>
     <field name="analytic_state"/>
-    <button name="apply_analytic_rules"/>
+    <button name="apply_analytic_rules" multiple="1"/>
 </tree>

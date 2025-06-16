@@ -7,6 +7,6 @@ this repository contains the full copyright notices and license terms. -->
         <field name="shipping_tracking_url" widget="url"/>
     </xpath>
     <xpath expr="/tree/field[@name='state']" position="after">
-        <button name="print_shipping_label"/>
+        <button name="print_shipping_label" multiple="1"/>
     </xpath>
 </data>

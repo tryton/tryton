@@ -8,5 +8,5 @@ this repository contains the full copyright notices and license terms. -->
     <field name="end_date"/>
     <field name="amount"/>
     <field name="state"/>
-    <button name="run"/>
+    <button name="run" tree_invisible="1"/>
 </tree>

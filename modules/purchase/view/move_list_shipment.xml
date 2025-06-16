@@ -8,6 +8,6 @@ this repository contains the full copyright notices and license terms. -->
     <field name="quantity" symbol="unit"/>
     <field name="state"/>
     <field name="purchase_exception_state"/>
-    <button name="cancel"/>
-    <button name="draft"/>
+    <button name="cancel" multiple="1"/>
+    <button name="draft" multiple="1"/>
 </tree>

@@ -6,5 +6,5 @@ this repository contains the full copyright notices and license terms. -->
     <field name="id" expand="2"/>
     <field name="rule" expand="1"/>
     <field name="result" expand="2"/>
-    <button name="process"/>
+    <button name="process" multiple="1"/>
 </tree>

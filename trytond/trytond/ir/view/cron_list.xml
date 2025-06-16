@@ -8,5 +8,5 @@ this repository contains the full copyright notices and license terms. -->
     <field name="interval_number"/>
     <field name="interval_type"/>
     <field name="running"/>
-    <button name="run_once" string="Run Once" tree_invisible="1"/>
+    <button name="run_once" multiple="1"/>
 </tree>

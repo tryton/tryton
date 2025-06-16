@@ -8,5 +8,5 @@ this repository contains the full copyright notices and license terms. -->
     <field name="end_amount" optional="0"/>
     <field name="state"/>
     <button name="close"/>
-    <button name="post" tree_invisible="1"/>
+    <button name="post" multiple="1"/>
 </tree>

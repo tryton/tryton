@@ -4,7 +4,7 @@ this repository contains the full copyright notices and license terms. -->
 <data>
     <xpath expr="//field[@name='reconciliation']" position="after">
         <field name="payment_amount"/>
-        <button name="pay"/>
+        <button name="pay" multiple="1"/>
         <button name="payment_block"/>
         <button name="payment_unblock"/>
         <field name="payment_blocked" tree_invisible="1"/>

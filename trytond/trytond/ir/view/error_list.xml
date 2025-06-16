@@ -5,7 +5,7 @@ this repository contains the full copyright notices and license terms. -->
     <field name="rec_name" string="Origin" expand="1"/>
     <field name="summary" expand="2"/>
     <field name="state"/>
-    <button name="open"/>
-    <button name="process"/>
-    <button name="solve"/>
+    <button name="open" multiple="1"/>
+    <button name="process" multiple="1"/>
+    <button name="solve" multiple="1"/>
 </tree>

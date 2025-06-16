@@ -11,8 +11,8 @@ this repository contains the full copyright notices and license terms. -->
     <field name="amount"/>
     <field name="date"/>
     <field name="state"/>
-    <button name="draft"/>
-    <button name="submit"/>
-    <button name="approve"/>
-    <button name="process_wizard"/>
+    <button name="draft" multiple="1"/>
+    <button name="submit" multiple="1"/>
+    <button name="approve" multiple="1"/>
+    <button name="process_wizard" multiple="1"/>
 </tree>

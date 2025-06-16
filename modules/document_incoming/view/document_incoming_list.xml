@@ -9,7 +9,7 @@ this repository contains the full copyright notices and license terms. -->
     <field name="type"/>
     <field name="result" expand="1"/>
     <field name="state"/>
-    <button name="cancel"/>
+    <button name="cancel" multiple="1"/>
     <button name="split_wizard"/>
-    <button name="process"/>
+    <button name="process" multiple="1"/>
 </tree>
