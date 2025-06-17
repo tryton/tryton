@@ -763,7 +763,7 @@ class ModelFieldAccess(
             'field_ref', 'field,model', 'ir.model.field,name,model', "Field",
             required=True, ondelete='CASCADE',
             domain=[
-                ('model', '=', Eval('model')),
+                ('model_ref', '=', Eval('model_ref', -1)),
                 ]),
         DeactivableMixin, ModelSQL, ModelView):
     __name__ = 'ir.model.field.access'
