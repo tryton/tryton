@@ -317,8 +317,9 @@ class Context(ModelView):
 class Main(Abstract, ModelView):
     __name__ = 'stock.reporting.margin.main'
 
-    time_series = fields.Function(fields.One2Many(
-            'stock.reporting.margin.main.time_series', None, "Time Series"),
+    time_series = fields.Function(fields.Many2Many(
+            'stock.reporting.margin.main.time_series', None, None,
+            "Time Series"),
         'get_time_series')
 
     def get_rec_name(self, name):

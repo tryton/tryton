@@ -189,7 +189,7 @@ class ActionKeyword(ModelSQL, ModelView):
     action = fields.Many2One('ir.action', 'Action',
         ondelete='CASCADE')
     groups = fields.Function(
-        fields.One2Many('res.group', None, "Groups"),
+        fields.Many2Many('res.group', None, None, "Groups"),
         'get_groups', searcher='search_groups')
 
     _get_keyword_cache = Cache(

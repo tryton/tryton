@@ -350,8 +350,8 @@ class Context(ModelView):
 class Main(Abstract, ModelView):
     __name__ = 'sale.opportunity.reporting.main'
 
-    time_series = fields.Function(fields.One2Many(
-            'sale.opportunity.reporting.main.time_series', None,
+    time_series = fields.Function(fields.Many2Many(
+            'sale.opportunity.reporting.main.time_series', None, None,
             lazy_gettext('sale.msg_sale_reporting_time_series')),
         'get_time_series')
 
@@ -371,8 +371,8 @@ class MainTimeseries(AbstractTimeseries, ModelView):
 class Conversion(AbstractConversion, ModelView):
     __name__ = 'sale.opportunity.reporting.conversion'
 
-    time_series = fields.Function(fields.One2Many(
-            'sale.opportunity.reporting.conversion.time_series', None,
+    time_series = fields.Function(fields.Many2Many(
+            'sale.opportunity.reporting.conversion.time_series', None, None,
             lazy_gettext('sale.msg_sale_reporting_time_series')),
         'get_time_series')
 

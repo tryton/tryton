@@ -62,8 +62,8 @@ class QuantityEarlyPlan(Workflow, ModelSQL, ModelView):
         fields.Many2One('stock.location', "Warehouse"),
         'on_change_with_warehouse')
     moves = fields.Function(
-        fields.One2Many(
-            'stock.quantity.early_plan', None, "Moves",
+        fields.Many2Many(
+            'stock.quantity.early_plan', None, None, "Moves",
             states={
                 'invisible': ~Eval('moves'),
                 }),

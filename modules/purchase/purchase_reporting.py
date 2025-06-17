@@ -222,8 +222,8 @@ class Context(ModelView):
 class Main(Abstract, ModelView):
     __name__ = 'purchase.reporting.main'
 
-    time_series = fields.Function(fields.One2Many(
-            'purchase.reporting.main.time_series', None,
+    time_series = fields.Function(fields.Many2Many(
+            'purchase.reporting.main.time_series', None, None,
             lazy_gettext('purchase.msg_purchase_reporting_time_series')),
         'get_time_series')
 

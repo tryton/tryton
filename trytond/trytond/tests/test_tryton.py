@@ -956,6 +956,15 @@ class ModuleTestCase(_DBTestCase):
             for field_name, field in model._fields.items():
                 if not isinstance(field, Function):
                     continue
+                if field._type == 'one2many':
+                    self.assertTrue(
+                        field.setter,
+                        msg="Missing setter on model '%(model)s' "
+                        "for %(type)s field '%(field)s'" % {
+                            'model': model.__name__,
+                            'field': field_name,
+                            'type': field._type,
+                            })
                 for func_name in [field.getter, field.setter, field.searcher]:
                     if not func_name:
                         continue

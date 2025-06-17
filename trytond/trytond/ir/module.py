@@ -39,9 +39,11 @@ class Module(ModelSQL, ModelView):
     version = fields.Function(fields.Char('Version'), 'get_version')
     dependencies = fields.One2Many('ir.module.dependency',
         'module', 'Dependencies', readonly=True)
-    parents = fields.Function(fields.One2Many('ir.module', None, 'Parents'),
+    parents = fields.Function(
+        fields.Many2Many('ir.module', None, None, "Parents"),
         'get_parents')
-    childs = fields.Function(fields.One2Many('ir.module', None, 'Childs'),
+    childs = fields.Function(
+        fields.Many2Many('ir.module', None, None, "Children"),
         'get_childs')
     state = fields.Selection([
         ('not activated', 'Not Activated'),
