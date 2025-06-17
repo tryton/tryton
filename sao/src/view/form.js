@@ -4767,6 +4767,9 @@ function eval_pyson(value){
                     break;
             }
             var group = this.toolbar('btn-group');
+            this.input_select.attr(
+                'accept',
+                'image/png,image/jpeg,image/gif,.png,.jpg,.gif,.tif,.xpm');
             if (!attributes.readonly) {
                 jQuery('<div/>', {
                     'class': 'text-center caption',
