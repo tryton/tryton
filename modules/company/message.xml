@@ -6,5 +6,8 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_company_logo_cache_size_unique">
             <field name="text">The size of cached company logo must be unique.</field>
         </record>
+        <record model="ir.message" id="msg_company_logo_error">
+            <field name="text">Can not open or identify the image set for the company logo.</field>
+        </record>
     </data>
 </tryton>

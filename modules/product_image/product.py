@@ -4,9 +4,11 @@ import io
 import math
 from urllib.parse import quote, urlencode, urljoin
 
+import PIL
 import PIL.Image
 
 from trytond.config import config
+from trytond.i18n import gettext
 from trytond.model import (
     MatchMixin, ModelSQL, ModelView, Unique, fields, sequence_ordered)
 from trytond.pool import PoolMeta
@@ -15,6 +17,8 @@ from trytond.tools import slugify
 from trytond.transaction import Transaction
 from trytond.url import http_host
 from trytond.wsgi import Base64Converter
+
+from .exceptions import ImageValidationError
 
 if config.getboolean('product', 'image_filestore', default=False):
     file_id = 'image_id'
@@ -162,7 +166,11 @@ class ImageMixin(_ImageMixin):
     @classmethod
     def convert(cls, image, **_params):
         data = io.BytesIO()
-        img = PIL.Image.open(io.BytesIO(image))
+        try:
+            img = PIL.Image.open(io.BytesIO(image))
+        except PIL.UnidentifiedImageError as e:
+            raise ImageValidationError(gettext(
+                    'product_image.msg_product_image_error'), str(e)) from e
         img.thumbnail((SIZE_MAX, SIZE_MAX))
         if img.mode != 'RGB':
             img = img.convert('RGBA')

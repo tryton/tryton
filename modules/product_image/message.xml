@@ -6,5 +6,8 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_image_cache_size_unique">
             <field name="text">The size of cached image must be unique.</field>
         </record>
+        <record model="ir.message" id="msg_product_image_error">
+            <field name="text">Can not open or identify the image set for the product.</field>
+        </record>
     </data>
 </tryton>

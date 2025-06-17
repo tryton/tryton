@@ -12,6 +12,7 @@ except ImportError:
     PIL = None
 
 from trytond.config import config
+from trytond.i18n import gettext
 from trytond.model import (
     MatchMixin, ModelSQL, ModelView, Unique, fields, sequence_ordered)
 from trytond.model.exceptions import SQLConstraintError
@@ -21,6 +22,8 @@ from trytond.report import Report
 from trytond.tools import timezone as tz
 from trytond.transaction import Transaction
 from trytond.wizard import Button, StateTransition, StateView, Wizard
+
+from .exceptions import LogoValidationError
 
 SIZE_MAX = config.getint('company', 'logo_size_max', default=2048)
 TIMEZONES = [(z, z) for z in tz.available_timezones()]
@@ -118,9 +121,13 @@ class Company(ModelSQL, ModelView):
     @classmethod
     def _logo_convert(cls, image, **_params):
         if not PIL:
-            return
+            return image
         data = io.BytesIO()
-        img = PIL.Image.open(io.BytesIO(image))
+        try:
+            img = PIL.Image.open(io.BytesIO(image))
+        except PIL.UnidentifiedImageError as e:
+            raise LogoValidationError(gettext(
+                    'company.msg_company_logo_error'), str(e)) from e
         img.thumbnail((SIZE_MAX, SIZE_MAX))
         if img.mode != 'RGBA':
             img = img.convert('RGBA')

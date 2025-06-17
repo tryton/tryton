@@ -1,6 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 
+from .avatar import AvatarValidationError
 from .chat import InvalidEMailError as ChatInvalidEmailError
 from .lang import DateError as LanguageDateError
 from .lang import DeleteDefaultError as LanguageDeleteDefaultError
@@ -14,6 +15,7 @@ from .translation import OverriddenError as TranslationOverriddenError
 from .trigger import ConditionError as TriggerConditionError
 
 __all__ = [
+    AvatarValidationError,
     ChatInvalidEmailError,
     DeactivateDependencyError,
     LanguageDateError,
