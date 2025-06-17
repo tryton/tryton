@@ -425,8 +425,9 @@
                     }))
                 .click(evt => {
                     evt.preventDefault();
-                    this.on_copy();
-                    menu.dropdown('toggle');
+                    this.on_copy().then(() => {
+                        menu.dropdown('toggle');
+                    });
                 })));
             menu.append(jQuery('<li/>', {
                 'role': 'presentation',
@@ -683,7 +684,11 @@
                 });
                 data.push(values.join('\t'));
             });
-            navigator.clipboard.writeText(data.join('\n'));
+            return navigator.clipboard.writeText(data.join('\n'))
+                .catch(error => {
+                    alert(Sao.i18n.gettext(
+                        "Failed to copy text to clipboard: %1", error));
+                });
         },
         _add_drag_n_drop: function() {
             Sortable.create(this.tbody[0], {
