@@ -70,9 +70,18 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
             'readonly': (~Eval('state').in_(['request', 'draft'])
                 | Eval('inputs', [-1]) | Eval('outputs', [-1])),
             })
+    type = fields.Selection([
+            ('assembly', "Assembly"),
+            ('disassembly', "Disassembly"),
+            ], "Type", required=True,
+        states={
+            'readonly': ~Eval('state').in_(['request', 'draft']),
+            })
     product = fields.Many2One('product.product', 'Product',
         domain=[
-            ('producible', '=', True),
+            If(Eval('type') == 'assembly',
+                ('producible', '=', True),
+                ()),
             ],
         states={
             'readonly': ~Eval('state').in_(['request', 'draft']),
@@ -83,7 +92,10 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
         depends={'company'})
     bom = fields.Many2One('production.bom', 'BOM',
         domain=[
-            ('output_products', '=', Eval('product', 0)),
+            If(Eval('type') == 'disassembly',
+                ('input_products', '=', Eval('product', -1)),
+                ('output_products', '=', Eval('product', -1)),
+                ),
             ],
         states={
             'readonly': (~Eval('state').in_(['request', 'draft'])
@@ -305,6 +317,10 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
             warehouse = Location(warehouse_id)
             return warehouse.production_location.id
 
+    @classmethod
+    def default_type(cls):
+        return 'assembly'
+
     @staticmethod
     def default_company():
         return Transaction().context.get('company')
@@ -312,7 +328,7 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
     @fields.depends('product', 'bom')
     def compute_lead_time(self, pattern=None):
         pattern = pattern.copy() if pattern is not None else {}
-        if self.product:
+        if self.product and self.product.producible:
             pattern.setdefault('bom', self.bom.id if self.bom else None)
             for line in self.product.production_lead_times:
                 if line.match(pattern):
@@ -384,14 +400,15 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
         return move
 
     @fields.depends(
-        'bom', 'product', 'unit', 'quantity', 'inputs', 'outputs',
+        'type', 'bom', 'product', 'unit', 'quantity', 'inputs', 'outputs',
         methods=['_move'])
     def explode_bom(self):
         if not (self.bom and self.product and self.unit):
             return
 
         factor = self.bom.compute_factor(
-            self.product, self.quantity or 0, self.unit)
+            self.product, self.quantity or 0, self.unit,
+            type='inputs' if self.type == 'disassembly' else 'outputs')
         inputs = []
         for input_ in self.bom.inputs:
             quantity = input_.compute_quantity(factor)

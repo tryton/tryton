@@ -22,6 +22,8 @@ class BOM(DeactivableMixin, ModelSQL, ModelView):
     code_readonly = fields.Function(
         fields.Boolean("Code Readonly"), 'get_code_readonly')
     inputs = fields.One2Many('production.bom.input', 'bom', "Input Materials")
+    input_products = fields.Many2Many(
+        'production.bom.input', 'bom', 'product', "Input Products")
     outputs = fields.One2Many(
         'production.bom.output', 'bom', "Output Materials")
     output_products = fields.Many2Many('production.bom.output',
@@ -71,18 +73,18 @@ class BOM(DeactivableMixin, ModelSQL, ModelView):
             ('code', operator, code_value, *extra),
             ]
 
-    def compute_factor(self, product, quantity, unit):
-        '''
-        Compute factor for an output product
-        '''
-        Uom = Pool().get('product.uom')
-        output_quantity = 0
-        for output in self.outputs:
-            if output.product == product:
-                output_quantity += Uom.compute_qty(
-                    output.unit, output.quantity, unit, round=False)
-        if output_quantity:
-            return quantity / output_quantity
+    def compute_factor(self, product, quantity, unit, type='outputs'):
+        "Compute factor for a product from the type"
+        pool = Pool()
+        Uom = pool.get('product.uom')
+        assert type in {'inputs', 'outputs'}, f"Invalid {type}"
+        total = 0
+        for line in getattr(self, type):
+            if line.product == product:
+                total += Uom.compute_qty(
+                    line.unit, line.quantity, unit, round=False)
+        if total:
+            return quantity / total
         else:
             return 0
 
@@ -108,6 +110,7 @@ class BOM(DeactivableMixin, ModelSQL, ModelView):
         else:
             default = default.copy()
         default.setdefault('code', None)
+        default.setdefault('input_products', None)
         default.setdefault('output_products', None)
         return super().copy(records, default=default)
 

@@ -20,7 +20,7 @@ class ProductionTestCase(CompanyTestMixin, ModuleTestCase):
         LeadTime = pool.get('production.lead_time')
 
         date = datetime.date(2016, 11, 26)
-        product = Product()
+        product = Product(producible=True)
         product.production_lead_times = []
         production = Production()
         production.planned_date = date

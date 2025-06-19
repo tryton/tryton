@@ -22,6 +22,10 @@ this repository contains the full copyright notices and license terms. -->
     <label name="warehouse"/>
     <field name="warehouse"/>
 
+    <label name="type"/>
+    <field name="type"/>
+    <newline/>
+
     <label name="product"/>
     <field name="product"/>
     <label name="bom"/>
