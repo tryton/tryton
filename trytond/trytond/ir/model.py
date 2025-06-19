@@ -1213,6 +1213,7 @@ class ModelButtonClick(DeactivableMixin, ModelSQL, ModelView):
                 })
 
     @classmethod
+    @without_check_access
     def register(cls, model, name, records):
         pool = Pool()
         Button = pool.get('ir.model.button')
