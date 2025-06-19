@@ -243,7 +243,8 @@ class RecordTagHandler:
             context = {}
             context['time'] = time
             context['version'] = __version__.rsplit('.', 1)[0]
-            context['ref'] = lambda xml_id: ','.join(self.mh.get_id(xml_id))
+            context['ref'] = lambda xml_id: ','.join(
+                map(str, self.mh.get_id(xml_id)))
             context['Decimal'] = Decimal
             context['datetime'] = datetime
             if pyson_attr:
