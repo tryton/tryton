@@ -270,7 +270,6 @@ def data(request, pool, model):
         response = Response(data, mimetype='text/csv; charset=' + encoding)
         response.headers.add(
             'Content-Disposition', 'attachment', filename=filename)
-        response.headers.add('Content-Length', len(data))
         return response
 
 
