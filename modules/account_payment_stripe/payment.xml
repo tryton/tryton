@@ -289,12 +289,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="string">Find Identical</field>
         </record>
 
-        <record model="ir.action.wizard" id="wizard_checkout">
-            <field name="name">Stripe Checkout</field>
-            <field name="wiz_name">account.payment.stripe.checkout</field>
-            <field name="model" eval="None"/>
-        </record>
-
         <record model="ir.action.report" id="report_checkout">
             <field name="name">Stripe Checkout</field>
             <field name="model" eval="None"/>

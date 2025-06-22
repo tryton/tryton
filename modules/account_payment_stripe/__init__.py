@@ -24,7 +24,6 @@ def register():
         ir.Cron,
         module='account_payment_stripe', type_='model')
     Pool.register(
-        payment.Checkout,
         payment.CustomerSourceDetach,
         party.Replace,
         module='account_payment_stripe', type_='wizard')

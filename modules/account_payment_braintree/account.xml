@@ -293,11 +293,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">customer_payment_method_delete_ask_form</field>
         </record>
 
-        <record model="ir.action.wizard" id="wizard_checkout">
-            <field name="name">Braintree Checkout</field>
-            <field name="wiz_name">account.payment.braintree.checkout</field>
-        </record>
-
         <record model="ir.action.url" id="url_checkout">
             <field name="name">Braintree Checkout</field>
             <field name="url">%(http_host)s/%(database)s/account_payment_braintree/checkout/%(model)s/%(id)s</field>

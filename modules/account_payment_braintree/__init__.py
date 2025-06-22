@@ -24,7 +24,6 @@ def register():
         module='account_payment_braintree', type_='model')
     Pool.register(
         account.PaymentBraintreeCustomerPaymentMethodDelete,
-        account.PaymentBraintreeCheckout,
         party.Replace,
         module='account_payment_braintree', type_='wizard')
     Pool.register(

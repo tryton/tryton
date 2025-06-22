@@ -30,8 +30,7 @@ from trytond.tools import sql_pairing
 from trytond.tools.email_ import set_from_header
 from trytond.transaction import Transaction
 from trytond.url import http_host
-from trytond.wizard import (
-    Button, StateAction, StateTransition, StateView, Wizard)
+from trytond.wizard import Button, StateTransition, StateView, Wizard
 
 from .common import StripeCustomerMethodMixin
 from .exceptions import StripeAccountWarning
@@ -87,19 +86,23 @@ class CheckoutMixin:
         return super().copy(records, default=default)
 
     @classmethod
-    @ModelView.button_action('account_payment_stripe.wizard_checkout')
+    @ModelView.button_action('account_payment_stripe.url_checkout')
     def stripe_checkout(cls, records):
         for record in records:
             record.stripe_checkout_id = uuid.uuid4().hex
-        cls.save(records)
+            record.save()
+            return {
+                'url': record.stripe_checkout_url,
+                }
 
     @property
     def stripe_checkout_url(self):
         pool = Pool()
         database = Transaction().database.name
-        Checkout = pool.get('account.payment.stripe.checkout', type='wizard')
-        action = Checkout.checkout.get_action()
-        return action['url'] % {
+        ModelData = pool.get('ir.model.data')
+        URL = pool.get('ir.action.url')
+        action = URL(ModelData.get_id('account_payment_stripe.url_checkout'))
+        return action.url % {
             'http_host': http_host(),
             'database': database,
             'model': self.__class__.__name__,
@@ -1945,16 +1948,6 @@ class CustomerIdentical(ModelSQL):
                 source.customer.as_('source'),
                 target.customer.as_('target'),
                 where=source.customer != target.customer))
-
-
-class Checkout(Wizard):
-    __name__ = 'account.payment.stripe.checkout'
-    start_state = 'checkout'
-    checkout = StateAction('account_payment_stripe.url_checkout')
-
-    def do_checkout(self, action):
-        action['url'] = self.record.stripe_checkout_url
-        return action, {}
 
 
 class CheckoutPage(Report):
