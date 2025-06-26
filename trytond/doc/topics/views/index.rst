@@ -884,6 +884,7 @@ The views can be updated by the selection of records on an other view inside
 the same board by using in the domain the ``active_id`` or ``active_ids`` from
 the ``_actions`` dictionary with the action id of the other view as key.
 For example:
+
 .. highlight:: xml
 
 ::
