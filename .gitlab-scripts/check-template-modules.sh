@@ -3,7 +3,7 @@ set -eu
 
 OUTPUT=${1:-`mktemp -d`}
 
-find modules -name setup.py -print | while read path
+find modules -maxdepth 2 -name setup.py -print | while read path
 do
     path=`dirname "${path}"`
     module=`basename "${path}"`
