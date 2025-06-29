@@ -2202,7 +2202,7 @@ class ModelStorage(Model):
                 for record in chain(to_create, to_write):
                     record._values = values.get(record)
                 raise
-            for record in to_create + to_write:
+            for record in chain(to_create, to_write):
                 record._init_values = None
                 record._deleted = None
                 record._removed = None
