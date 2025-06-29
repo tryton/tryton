@@ -1997,8 +1997,8 @@ class ModelStorage(Model):
                         cls.write(*sum(
                                 (([r], save_values[r]) for r in to_write), ()))
             except Exception:
-                for record in to_create + to_write:
-                    record._values = values[record]
+                for record in chain(to_create, to_write):
+                    record._values = values.get(record)
                 raise
             for record in to_create + to_write:
                 record._init_values = None
