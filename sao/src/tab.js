@@ -850,7 +850,7 @@
             });
         },
         modified_save: function() {
-            return this.screen.save_tree_state().then(() => {;
+            return this.screen.save_tree_state().then(() => {
                 this.screen.current_view.set_value();
                 if (this.screen.modified()) {
                     return Sao.common.sur_3b.run(
