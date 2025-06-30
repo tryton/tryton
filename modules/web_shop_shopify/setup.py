@@ -54,11 +54,15 @@ tests_require = [
     get_require_version('proteus'),
     get_require_version('trytond_account_payment_clearing'),
     get_require_version('trytond_customs'),
-    get_require_version('trytond_product_measurements'),
     get_require_version('trytond_product_image'),
+    get_require_version('trytond_product_image_attribute'),
+    get_require_version('trytond_product_measurements'),
     get_require_version('trytond_sale_discount'),
+    get_require_version('trytond_sale_invoice_grouping'),
+    get_require_version('trytond_sale_secondary_unit'),
     get_require_version('trytond_sale_shipment_cost'),
     get_require_version('trytond_sale_secondary_unit'),
+    get_require_version('trytond_stock_package_shipping'),
     get_require_version('trytond_party[phonenumbers]'),
     ]
 
