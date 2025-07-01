@@ -1302,7 +1302,7 @@ class ModelData(
                 'ir.msg_model_data_xml_id_module_unique'),
             ('db_id_model_unique',
                 Unique(table, table.db_id, table.model),
-                'is.msg_model_data_db_id_model_unique'),
+                'ir.msg_model_data_db_id_model_unique'),
             ]
         cls._sql_indexes.update({
                 Index(
