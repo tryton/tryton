@@ -14,6 +14,7 @@ from trytond.modules.currency.fields import Monetary
 from trytond.modules.product import round_price
 from trytond.modules.sale.exceptions import SaleConfirmError
 from trytond.pool import Pool, PoolMeta
+from trytond.pyson import Eval
 from trytond.transaction import Transaction
 
 from .common import IdentifierMixin
@@ -337,6 +338,14 @@ class Sale_ShipmentCost(metaclass=PoolMeta):
 
 class Line(IdentifierMixin, metaclass=PoolMeta):
     __name__ = 'sale.line'
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls.product.states['readonly'] = (
+            cls.product.states['readonly']
+            & ~((Eval('sale_state') == 'confirmed')
+                & Eval('shopify_identifier')))
 
     @classmethod
     def get_from_shopify(cls, sale, line_item, quantity, line=None):
