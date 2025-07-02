@@ -357,12 +357,12 @@ class Line(IdentifierMixin, metaclass=PoolMeta):
             line = cls(type='line')
             line.sale = sale
             line.shopify_identifier = line_item.id
+            line.product = None
         assert line.shopify_identifier == line_item.id
         if getattr(line_item, 'variant_id', None):
-            line.product = Product.search_shopify_identifier(
-                sale.web_shop, line_item.variant_id)
-        else:
-            line.product = None
+            if product := Product.search_shopify_identifier(
+                    sale.web_shop, line_item.variant_id):
+                line.product = product
         if line.product:
             line._set_shopify_quantity(line.product, quantity)
             line.on_change_product()
