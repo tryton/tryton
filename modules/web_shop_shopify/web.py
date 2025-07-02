@@ -2,6 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 import datetime as dt
 import urllib.parse
+from collections import defaultdict
 from decimal import Decimal
 from operator import attrgetter
 
@@ -562,6 +563,7 @@ class Shop(metaclass=PoolMeta):
         Sale = pool.get('sale.sale')
         assert len(sales) == len(orders)
         to_update = {}
+        states_to_restore = defaultdict(list)
         for sale, order in zip(sales, orders):
             assert sale.shopify_identifier == order.id
             shop = sale.web_shop
@@ -572,8 +574,11 @@ class Shop(metaclass=PoolMeta):
                     sale.tax_amount_cache = None
                     sale.total_amount_cache = None
                     to_update[sale] = order
-                Payment.get_from_shopify(sale, order)
+                    states_to_restore[sale.state].append(sale)
+        Sale.write(list(to_update.keys()), {'state': 'draft'})
         Sale.save(to_update.keys())
+        for state, state_sales in states_to_restore.items():
+            Sale.write(list(state_sales), {'state': state})
         for sale, order in to_update.items():
             sale.shopify_tax_adjustment = (
                 Decimal(order.current_total_price) - sale.total_amount)
@@ -591,6 +596,11 @@ class Shop(metaclass=PoolMeta):
             # Use write because there is no transition
             Sale.write(to_quote, {'state': 'quotation'})
             cls.log(to_quote, 'transition', 'state:quotation')
+
+        for sale, order in zip(sales, orders):
+            shop = sale.web_shop
+            with shop.shopify_session():
+                Payment.get_from_shopify(sale, order)
 
     @classmethod
     def write(cls, *args):
