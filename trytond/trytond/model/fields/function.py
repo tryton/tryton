@@ -157,7 +157,10 @@ class Function(Field):
             elif (field._py_type
                     and value is not None
                     and not isinstance(value, field._py_type)):
-                value = field._py_type(value)
+                if field._type == 'binary' and isinstance(value, int):
+                    pass
+                else:
+                    value = field._py_type(value)
             return value
 
         def convert_dict(values, name):
