@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form cursor="shop" col="2">
+    <label name="carrier"/>
+    <field name="carrier"/>
+
+    <separator string="Criteria" id="criteria" colspan="2"/>
+    <label name="shop"/>
+    <field name="shop"/>
+
+    <label name="code"/>
+    <field name="code"/>
+
+    <label name="title"/>
+    <field name="title"/>
+</form>

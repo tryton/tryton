@@ -55,3 +55,17 @@ Shopify Inventory Item
 
 The *Shopify Inventory Item* concept manages the Shopify inventory item of each
 `Varient <product:model-product.product>`.
+
+.. _model-carrier:
+
+Carrier
+=======
+
+When the *Carrier Module* is activated, the `Carrier <carrier:model-carrier>`
+is extended to allow to define the :guilabel:`Code` of the Shopify shipping
+method.
+
+.. seealso::
+
+   The `Carrier <carrier:model-carrier>` concept is introduced by the
+   :doc:`Carrier Module <carrier:index>`.

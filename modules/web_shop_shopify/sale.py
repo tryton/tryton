@@ -722,6 +722,14 @@ class Sale_ShipmentCost(metaclass=PoolMeta):
         return super().set_shipment_cost()
 
     @classmethod
+    def shopify_fields(cls):
+        fields = super().shopify_fields()
+        shipping_line = fields.setdefault('shippingLine', {})
+        shipping_line.setdefault('code')
+        shipping_line.setdefault('title')
+        return fields
+
+    @classmethod
     def get_from_shopify(cls, shop, order, sale=None):
         pool = Pool()
         Tax = pool.get('account.tax')
@@ -729,11 +737,16 @@ class Sale_ShipmentCost(metaclass=PoolMeta):
         sale = super().get_from_shopify(shop, order, sale=sale)
 
         shipment_cost_method = None
-        if order['shippingLines']:
+        if shipping_line := order['shippingLine']:
             available_carriers = sale.on_change_with_available_carriers()
             carrier = None
-            if available_carriers:
-                carrier = available_carriers[0]
+            for carrier in available_carriers:
+                if carrier.shopify_match(shop, shipping_line):
+                    carrier = carrier
+                    break
+            else:
+                if available_carriers:
+                    carrier = available_carriers[0]
             setattr_changed(sale, 'carrier', carrier)
             if sale.carrier:
                 shipment_cost_method = 'order'

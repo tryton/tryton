@@ -46,6 +46,7 @@ Activate modules::
     >>> config = activate_modules([
     ...         'web_shop_shopify',
     ...         'account_payment_clearing',
+    ...         'carrier',
     ...         'customs',
     ...         'product_measurements',
     ...         'product_image',
@@ -280,7 +281,7 @@ Create products::
     ...     'https://downloads.tryton.org/tests/shopify/chair-white.jpg').read()
     >>> variant2.save()
 
-Create carrier::
+Create carriers::
 
     >>> carrier_template = ProductTemplate()
     >>> carrier_template.name = 'Carrier Product'
@@ -294,12 +295,23 @@ Create carrier::
     >>> carrier_product.cost_price = Decimal('2')
     >>> carrier_product.save()
 
-    >>> carrier = Carrier()
-    >>> party = Party(name='Carrier')
+    >>> carrier1 = Carrier()
+    >>> party = Party(name="Carrier 1")
     >>> party.save()
-    >>> carrier.party = party
-    >>> carrier.carrier_product = carrier_product
-    >>> carrier.save()
+    >>> carrier1.party = party
+    >>> carrier1.carrier_product = carrier_product
+    >>> carrier1.save()
+
+    >>> carrier2 = Carrier()
+    >>> party = Party(name="Carrier 2")
+    >>> party.save()
+    >>> carrier2.party = party
+    >>> carrier2.carrier_product = carrier_product
+    >>> _ = carrier2.shopify_selections.new(code='SHIP')
+    >>> carrier2.save()
+
+    >>> CarrierSelection(carrier=carrier1).save()
+    >>> CarrierSelection(carrier=carrier2).save()
 
 Fill warehouse::
 
@@ -562,7 +574,7 @@ Run fetch order::
     'processing'
     >>> payment.amount
     Decimal('0')
-    >>> assertEqual(sale.carrier, carrier)
+    >>> assertEqual(sale.carrier, carrier2)
     >>> sale.state
     'quotation'
     >>> sale.party.name
