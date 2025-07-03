@@ -2050,11 +2050,13 @@
             }
             listener.on('click.sao.editabletree', handler);
 
-            Sao.View.Tree.RowEditable._super.select_row.call(this, event_);
-
+            // do not call super when editing row because the selection must
+            // not be changed
             if (!event_.shiftKey && !(event_.ctrlKey || event_.metaKey) &&
                 (this.record === current_record)) {
                 this.tree.edit_row(this);
+            } else {
+                Sao.View.Tree.RowEditable._super.select_row.call(this, event_);
             }
         },
         unset_editable: function() {
