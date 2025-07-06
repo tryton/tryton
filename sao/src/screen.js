@@ -558,7 +558,7 @@
                     type: 'submit',
                     'title': Sao.i18n.gettext("Find"),
                 }).text(Sao.i18n.gettext('Find'))
-                .click(search).appendTo(dialog.footer);
+                .appendTo(dialog.footer);
             }
             this.search_modal.modal('show');
             if (this.last_search_text.trim() !== this.get_text().trim()) {
