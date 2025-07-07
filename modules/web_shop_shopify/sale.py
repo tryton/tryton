@@ -302,12 +302,13 @@ class Sale_ShipmentCost(metaclass=PoolMeta):
 
         sale = super().get_from_shopify(shop, order, sale=sale)
 
-        sale.shipment_cost_method = 'order'
+        sale.shipment_cost_method = None
         if order.shipping_lines:
             available_carriers = sale.on_change_with_available_carriers()
             if available_carriers:
                 sale.carrier = available_carriers[0]
             if sale.carrier:
+                sale.shipment_cost_method = 'order'
                 for line in sale.lines:
                     if getattr(line, 'shipment_cost', None) is not None:
                         unit_price = line.unit_price
