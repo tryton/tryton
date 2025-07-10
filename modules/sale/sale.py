@@ -910,8 +910,7 @@ class Sale(
                 gettext('sale.msg_sale_invoice_address_required_for_quotation',
                     sale=self.rec_name))
         for line in self.line_lines:
-            if (line.product
-                    and line.product.type != 'service'
+            if (line.movable
                     and line.quantity >= 0
                     and not self.shipment_address):
                 raise SaleQuotationError(
@@ -922,9 +921,7 @@ class Sale(
                 location = line.from_location
             else:
                 location = line.to_location
-            if ((not location or not line.warehouse)
-                    and line.product
-                    and line.movable):
+            if (not location or not line.warehouse) and line.movable:
                 raise SaleQuotationError(
                     gettext('sale.msg_sale_warehouse_required_for_quotation',
                         sale=self.rec_name))
@@ -1641,7 +1638,7 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
         Uom = pool.get('product.uom')
         if self.type != 'line' or not self.product:
             return
-        if self.product.type == 'service':
+        if not self.movable:
             return
         skips = set(self.moves_ignored)
         quantity = abs(self.quantity)

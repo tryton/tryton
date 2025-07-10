@@ -1480,7 +1480,7 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
         Uom = pool.get('product.uom')
         if self.type != 'line' or not self.product:
             return
-        if self.product.type == 'service':
+        if not self.movable:
             return
         skips = set(self.moves_ignored)
         quantity = abs(self.quantity)
