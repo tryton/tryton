@@ -46,11 +46,12 @@ class Carrier(metaclass=PoolMeta):
 
     def compute_weight_price(self, weight):
         "Compute price based on weight"
+        line = None
         for line in reversed(self.weight_price_list):
             if line.weight < weight:
                 return line.price
         else:
-            if not line.weight and not weight:
+            if line and not line.weight and not weight:
                 return line.price
         return Decimal(0)
 
