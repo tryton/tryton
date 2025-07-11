@@ -974,8 +974,7 @@ class Model(object):
             fields = [x for x, y in self._fields.items()
                     if y['loading'] == 'eager']
         fields.append('_timestamp')
-        self._values.update(
-            self._proxy.read([self.id], fields, self._context)[0])
+        self._set(self._proxy.read([self.id], fields, self._context)[0])
 
     def _default_get(self):
         'Set default values'
@@ -983,13 +982,13 @@ class Model(object):
         self._default_set(
             self._proxy.default_get(fields, False, self._context))
 
-    def _default_set(self, values):
+    def _set(self, values, _default=False):
         fieldnames = []
         for field, value in values.items():
             if '.' in field:
                 continue
-            definition = self._fields[field]
-            if definition['type'] in ('one2many', 'many2many'):
+            if ((definition := self._fields.get(field))
+                    and definition['type'] in {'one2many', 'many2many'}):
                 if value and len(value) and isinstance(value[0], int):
                     self._values[field] = value
                 else:
@@ -998,12 +997,16 @@ class Model(object):
                         definition, [], self, field)
                     for vals in (value or []):
                         record = Relation()
-                        record._default_set(vals)
+                        record._set(vals, _default=_default)
                         records.append(record)
             else:
                 self._values[field] = value
             fieldnames.append(field)
-        self._on_change(sorted(fieldnames))
+        if _default:
+            self._on_change(sorted(fieldnames))
+
+    def _default_set(self, values):
+        return self._set(values, _default=True)
 
     def _get_eval(self):
         values = dict((x, getattr(self, '__%s_eval' % x))
@@ -1259,7 +1262,7 @@ class Wizard(object):
                 if 'defaults' in view:
                     self.form._default_set(view['defaults'])
                 if 'values' in view:
-                    self.form._values.update(view['values'])
+                    self.form._set(view['values'])
                 self.states = [b['state'] for b in view['buttons']]
                 self.form_state = view['state']
             else:
