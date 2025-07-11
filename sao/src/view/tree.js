@@ -2677,6 +2677,7 @@
             if (states.invisible || states.readonly) {
                 return;
             }
+            event.stopImmediatePropagation();
             button.el.prop('disabled', true);  // state will be reset at display
             var row = this.view.rows.find(function(row) {
                 return row.record == record;
