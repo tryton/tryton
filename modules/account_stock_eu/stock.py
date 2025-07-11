@@ -430,7 +430,7 @@ class Move(metaclass=PoolMeta):
                 return round(Currency.compute(
                         self.currency,
                         self.unit_price * Decimal(str(self.quantity)),
-                        self.company.intrastat_currency,
+                        self.company.intrastat_currency or self.currency,
                         round=False), ndigits)
 
     def _intrastat_quantity(self, unit):
