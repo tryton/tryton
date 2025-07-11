@@ -24,7 +24,10 @@ class Company(metaclass=PoolMeta):
                 currency = company.currency
             else:
                 if not eur:
-                    eur, = Currency.search([('code', '=', 'EUR')], limit=1)
+                    try:
+                        eur, = Currency.search([('code', '=', 'EUR')], limit=1)
+                    except ValueError:
+                        pass
                 currency = eur
             currencies[company.id] = currency
         return currencies
