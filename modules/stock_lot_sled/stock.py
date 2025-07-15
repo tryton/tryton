@@ -379,7 +379,9 @@ class Period(metaclass=PoolMeta):
 
         # Don't allow to close a period if all products at this date
         # are not yet expired
-        recent_date = max(period.date for period in periods)
+        recent_date = max(
+            (period.date for period in periods),
+            default=datetime.date.min)
         today = Date.today()
 
         query = move.join(lot, 'INNER',
