@@ -119,6 +119,7 @@ class Period(Workflow, ModelSQL, ModelView):
                 ('type', 'not in', ['warehouse', 'view']),
                 ], order=[])
 
+        recent_date = None
         for company, c_periods in groupby(periods, key=lambda p: p.company):
             with Transaction().set_context(company=company.id):
                 today = Date.today()
