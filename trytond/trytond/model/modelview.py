@@ -15,6 +15,7 @@ from trytond.pool import Pool
 from trytond.rpc import RPC
 
 from .fields import on_change_result
+from .fields.field import _set_value
 
 __all__ = ['ModelView']
 
@@ -822,7 +823,13 @@ class ModelView(Model):
             func.change = set(fields)
             if methods:
                 func.change_methods = set(methods)
-            return func
+
+            @wraps(func)
+            def wrapper(self, *args, **kwargs):
+                for field in fields:
+                    _set_value(self, field)
+                return func(self, *args, **kwargs)
+            return wrapper
         return decorator
 
     def on_change(self, fieldnames):
