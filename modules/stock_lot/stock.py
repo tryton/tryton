@@ -436,11 +436,12 @@ class MoveAddLotsStart(ModelView):
         methods=['on_change_with_quantity_remaining'])
     def duplicate_lot(self):
         lots = list(self.lots)
-        template, = self.lots
-        for i in range(self.duplicate_lot_number):
-            lot = copy(template)
-            lot._id = None
-            lots.append(lot)
+        if self.lots:
+            template, = self.lots
+            for i in range(self.duplicate_lot_number):
+                lot = copy(template)
+                lot._id = None
+                lots.append(lot)
         self.lots = lots
         self.quantity_remaining = self.on_change_with_quantity_remaining()
 
