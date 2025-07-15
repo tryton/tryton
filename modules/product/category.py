@@ -32,9 +32,9 @@ class Category(tree(separator=' / '), ModelSQL, ModelView):
     @ModelView.button_action('product.act_category_product')
     def add_products(cls, categories):
         return {
-            'res_id': [categories[0].id],
+            'res_id': [categories[0].id if categories else None],
             'pyson_domain': PYSONEncoder().encode(
-                [('id', '=', categories[0].id)]),
+                [('id', '=', categories[0].id if categories else None)]),
              }
 
     @classmethod
