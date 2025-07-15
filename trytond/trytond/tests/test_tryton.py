@@ -1105,6 +1105,20 @@ class ModuleTestCase(_DBTestCase):
                             })
 
     @with_transaction()
+    def test_button_methods(self):
+        "Test button methods without records"
+        for mname, model in Pool().iterobject():
+            if not isregisteredby(model, self.module):
+                continue
+            if not issubclass(model, ModelView):
+                continue
+            for button in model._buttons:
+                if is_instance_method(model, button):
+                    getattr(model(), button)()
+                else:
+                    getattr(model, button)([])
+
+    @with_transaction()
     def test_xml_files(self):
         "Test validity of the xml files of the module"
         config = ConfigParser()
