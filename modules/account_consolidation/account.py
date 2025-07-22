@@ -94,12 +94,13 @@ class Invoice(metaclass=PoolMeta):
         'company.company', "Consolidation Company",
         domain=[
             ('party', '=', Eval('party')),
+            ('id', '!=', Eval('company', -1)),
             ],
         states={
             'readonly': Eval('state') != 'draft',
             })
 
-    @fields.depends('party', 'consolidation_company')
+    @fields.depends('party', 'company', 'consolidation_company')
     def on_change_party(self):
         pool = Pool()
         Company = pool.get('company.company')
@@ -107,6 +108,7 @@ class Invoice(metaclass=PoolMeta):
         if self.party:
             companies = Company.search([
                     ('party', '=', self.party.id),
+                    ('id', '!=', self.company.id if self.company else None),
                     ])
             if len(companies) == 1:
                 self.consolidation_company, = companies
