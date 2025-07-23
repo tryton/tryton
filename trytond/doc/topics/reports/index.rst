@@ -222,7 +222,7 @@ employee object.
 ::
 
     from trytond.report import Report
-    from tryton.pool import Pool
+    from trytond.pool import Pool
 
     class InvoiceReport(Report):
         __name__ = 'account.invoice'
