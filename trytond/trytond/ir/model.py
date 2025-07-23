@@ -344,6 +344,9 @@ class ModelField(
 
     @classmethod
     def register(cls, model, module_name, model_id):
+        pool = Pool()
+        Model = pool.get('ir.model')
+
         cursor = Transaction().connection.cursor()
 
         ir_model_field = cls.__table__()
