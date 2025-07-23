@@ -253,6 +253,9 @@ def order_line_component_mixin(prefix):
             domain=[
                 ('product.type', '=', 'kit'),
                 ])
+        line_state = fields.Function(
+            fields.Selection('get_line_states', "Line State"),
+            'on_change_with_line_state', searcher='search_line_state')
         moves = fields.One2Many('stock.move', 'origin', 'Moves', readonly=True)
         moves_ignored = fields.Many2Many(
             prefix + '.line.component-ignored-stock.move',
@@ -277,6 +280,21 @@ def order_line_component_mixin(prefix):
         def __setup__(cls):
             super().__setup__()
             cls.__access__.add('line')
+
+        @classmethod
+        def get_line_states(cls):
+            pool = Pool()
+            Line = pool.get(f'{prefix}.line')
+            return getattr(Line, f'get_{prefix}_states')()
+
+        @fields.depends('line', f'_parent_line.{prefix}_state')
+        def on_change_with_line_state(self, name=None):
+            if self.line:
+                return getattr(self.line, f'{prefix}_state')
+
+        @classmethod
+        def search_line_state(cls, name, clause):
+            return [(f'line.{prefix}_state', *clause[1:])]
 
         @fields.depends('line', '_parent_line.product')
         def on_change_with_parent_type(self, name=None):

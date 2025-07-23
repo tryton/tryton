@@ -7,6 +7,7 @@ from trytond.i18n import gettext
 from trytond.model import ModelSQL, ModelView, fields
 from trytond.modules.product import round_price
 from trytond.pool import Pool, PoolMeta
+from trytond.pyson import Eval
 from trytond.transaction import Transaction
 
 from .common import (
@@ -77,6 +78,17 @@ class LineComponent(
         order_line_component_mixin('purchase'), ComponentMixin,
         ModelSQL, ModelView):
     __name__ = 'purchase.line.component'
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        states = {
+            'readonly': Eval('line_state') != 'draft',
+            }
+        cls.product.states = states
+        cls.quantity.states = states
+        cls.unit.states = states
+        cls.fixed.states = states
 
     def get_move(self, move_type):
         from trytond.modules.purchase.exceptions import PartyLocationError
