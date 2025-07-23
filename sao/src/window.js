@@ -1146,7 +1146,8 @@
         },
         _get_fields: function(model) {
             return Sao.rpc({
-                'method': 'model.' + model + '.fields_get'
+                'method': 'model.' + model + '.fields_get',
+                'params': [this.screen.context],
             }, this.session, false);
         },
         on_row_expanded: function(node) {
@@ -1468,7 +1469,7 @@
                     Sao.rpc({
                         'method': 'model.' + this.screen.model_name +
                         '.import_data',
-                        'params': [fields, data, {}]
+                        'params': [fields, data, this.screen.context]
                     }, this.session).then(function(count) {
                         return Sao.common.message.run(
                             Sao.i18n.ngettext('%1 record imported',
