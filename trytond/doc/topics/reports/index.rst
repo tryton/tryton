@@ -120,7 +120,7 @@ You can access any of the models relations as well.
 For example within the invoice report each record is an invoice and you can
 access the name of the party of the invoice via ``invoice.party.name``.
 Additional objects can be passed to a report.
-This is discussed below in `Passing custom values to a report`_
+This is discussed below in `Passing custom values to a report`_.
 
 Within Tryton the model, the report is based on, can be found by opening the
 menu item::
@@ -239,7 +239,7 @@ Now the invoice report will be able to access the employee record.
 
 .. code-block:: python
 
-    from tryton.pool import Pool
+    from trytond.pool import Pool
     from trytond.report import Report
     from trytond.transaction import Transaction
 
