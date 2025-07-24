@@ -19,7 +19,7 @@ from trytond.model import (
 from trytond.modules.company.model import (
     CompanyMultiValueMixin, CompanyValueMixin)
 from trytond.pool import Pool
-from trytond.pyson import Eval, Get
+from trytond.pyson import Eval, Get, If
 from trytond.tools import is_full_text, lstrip_wildcard
 from trytond.transaction import Transaction
 from trytond.wizard import Button, StateTransition, StateView, Wizard
@@ -70,6 +70,11 @@ class Template(
             })
     type = fields.Selection(TYPES, "Type", required=True)
     consumable = fields.Boolean('Consumable',
+        domain=[
+            If(Eval('type') != 'goods',
+                ('consumable', '=', False),
+                ()),
+            ],
         states={
             'invisible': Eval('type', 'goods') != 'goods',
             },
