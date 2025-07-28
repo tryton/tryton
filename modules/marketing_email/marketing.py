@@ -497,6 +497,9 @@ class Message(Workflow, ModelSQL, ModelView):
                 set_from_header(msg, from_cfg, message.from_ or from_cfg)
                 msg['To'] = to
                 msg['Subject'] = message.title
+                msg['List-Unsubscribe'] = (
+                    f'<{email.get_email_unsubscribe_url()}>')
+                msg['List-Unsubscribe-Post'] = 'List-Unsubscribe=One-Click'
                 if html2text:
                     converter = html2text.HTML2Text()
                     content_text = converter.handle(content)
