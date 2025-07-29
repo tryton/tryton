@@ -3,7 +3,6 @@
 import random
 import time
 from collections import defaultdict
-from email.headerregistry import Address
 from email.message import EmailMessage
 from functools import lru_cache, partial
 from urllib.parse import (
@@ -31,7 +30,8 @@ from trytond.report import Report, get_email
 from trytond.sendmail import SMTPDataManager, send_message_transactional
 from trytond.tools import grouped_slice, reduce_ids
 from trytond.tools.email_ import (
-    EmailNotValidError, normalize_email, set_from_header, validate_email)
+    EmailNotValidError, format_address, normalize_email, set_from_header,
+    validate_email)
 from trytond.transaction import Transaction, inactive_records
 from trytond.url import http_host
 from trytond.wizard import Button, StateTransition, StateView, Wizard
@@ -491,7 +491,7 @@ class Message(Workflow, ModelSQL, ModelView):
                 name = email.party.rec_name if email.party else ''
                 from_cfg = (config.get('marketing', 'email_from')
                     or config.get('email', 'from'))
-                to = Address(name, addr_spec=email.email)
+                to = format_address(email.email, name)
 
                 msg = EmailMessage()
                 set_from_header(msg, from_cfg, message.from_ or from_cfg)
