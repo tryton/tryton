@@ -676,8 +676,8 @@ class Reconciliation(ModelSQL, ModelView):
                         gettext('account'
                             '.msg_reconciliation_different_parties',
                             line=line.rec_name,
-                            party1=line.party.rec_name,
-                            party2=party.rec_name))
+                            party1=line.party.rec_name if line.party else '',
+                            party2=party.rec_name if party else ''))
             if not reconciliation.company.currency.is_zero(debit - credit):
                 lang = Lang.get()
                 debit = lang.currency(debit, reconciliation.company.currency)
