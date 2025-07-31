@@ -414,7 +414,7 @@ Class methods:
 
    Delete records.
 
-.. classmethod:: ModelStorage.check_modification(mode, record[, values[, external]])
+.. classmethod:: ModelStorage.check_modification(mode, records[, values[, external]])
 
    Method called after ``records`` are created and before ``records`` are
    modified with ``values`` or deleted.
