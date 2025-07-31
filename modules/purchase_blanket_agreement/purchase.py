@@ -314,6 +314,7 @@ class BlanketAgreement(Workflow, ModelSQL, ModelView):
     def copy(cls, agreements, default=None):
         default = default.copy() if default is not None else {}
         default.setdefault('number', None)
+        default.setdefault('reference')
         default.setdefault('from_date', None)
         default.setdefault('to_date', None)
         return super().copy(agreements, default=default)

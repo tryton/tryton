@@ -332,6 +332,7 @@ class SaleOpportunity(
         else:
             default = default.copy()
         default.setdefault('number', None)
+        default.setdefault('reference')
         default.setdefault('sales', None)
         default.setdefault('converted_by')
         return super().copy(opportunities, default=default)

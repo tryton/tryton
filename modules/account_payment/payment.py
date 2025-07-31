@@ -602,6 +602,7 @@ class Payment(Workflow, ModelSQL, ModelView):
         else:
             default = default.copy()
         default.setdefault('number', None)
+        default.setdefault('reference')
         default.setdefault('group', None)
         default.setdefault('approved_by')
         default.setdefault('succeeded_by')

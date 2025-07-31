@@ -310,6 +310,7 @@ class Complaint(Workflow, ModelSQL, ModelView):
         else:
             default = default.copy()
         default.setdefault('number', None)
+        default.setdefault('reference')
         default.setdefault('submitted_by')
         default.setdefault('approved_by')
         default.setdefault('rejected_by')

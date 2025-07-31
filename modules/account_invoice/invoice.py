@@ -1503,6 +1503,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin, InvoiceReportMixin):
                 return []
 
         default.setdefault('number', None)
+        default.setdefault('reference')
         default.setdefault('sequence')
         default.setdefault('move', None)
         default.setdefault('additional_moves', None)

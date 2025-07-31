@@ -660,6 +660,7 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
         else:
             default = default.copy()
         default.setdefault('number', None)
+        default.setdefault('reference')
         default.setdefault('assigned_by')
         default.setdefault('run_by')
         default.setdefault('done_by')

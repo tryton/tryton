@@ -342,6 +342,7 @@ class Subscription(Workflow, ModelSQL, ModelView):
         else:
             default = default.copy()
         default.setdefault('number', None)
+        default.setdefault('reference')
         default.setdefault('next_invoice_date', None)
         default.setdefault('quoted_by')
         default.setdefault('run_by')

@@ -745,6 +745,7 @@ class Purchase(
         else:
             default = default.copy()
         default.setdefault('number', None)
+        default.setdefault('reference')
         default.setdefault('invoice_state', 'none')
         default.setdefault('invoices_ignored', None)
         default.setdefault('shipment_state', 'none')
