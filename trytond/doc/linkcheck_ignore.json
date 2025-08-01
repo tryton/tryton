@@ -1,1 +1,4 @@
-["https://datatracker.ietf.org/*"]
+[
+    "https://datatracker.ietf.org/*",
+    "https://www.gnu.org/*"
+]
