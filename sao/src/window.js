@@ -926,12 +926,14 @@
                     if (date) {
                         date = Sao.common.format_datetime(
                             Sao.common.date_format() + ' %H:%M:%S', date);
+                    } else {
+                        date = '';
                     }
                     input = jQuery('<input/>', {
                         'readonly': true,
                         'class': 'form-control input-sm',
                         'aria-labelledby': label.attr('id'),
-                    }).val(date || '').appendTo(cell);
+                    }).val(date).appendTo(cell);
                     input.css('width', date.length + 'ch');
                     input.uniqueId();
                 });
