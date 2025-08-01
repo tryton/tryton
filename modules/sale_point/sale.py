@@ -171,6 +171,10 @@ class POSSale(Workflow, ModelSQL, ModelView, TaxableMixin):
             Index(
                 t, (t.state, Index.Equality(cardinality='low')),
                 where=t.state.in_(['open', 'done'])))
+        cls._order = [
+            ('date', 'DESC'),
+            ('id', 'DESC'),
+            ]
         cls._transitions |= {
             ('open', 'done'),
             ('done', 'posted'),
