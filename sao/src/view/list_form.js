@@ -175,12 +175,20 @@
                     }
                     this.select_records(i, next_form_idx);
                 } else {
+                    let selected = next_view_form.el.parent().hasClass(
+                        'list-group-item-selected')
                     if (!(event_.ctrlKey || event_.metaKey)) {
                         this.select_records(null, null);
                     }
-                    this.record = next_view_form.record;
-                    next_view_form.el.parent()
-                        .toggleClass('list-group-item-selected');
+                    if (selected) {
+                        next_view_form.el.parent()
+                            .removeClass('list-group-item-selected');
+                        this.record = null;
+                    } else {
+                        next_view_form.el.parent()
+                            .addClass('list-group-item-selected');
+                        this.record = next_view_form.record;
+                    }
                 }
                 if (current_view_form) {
                     this.record = current_view_form.record;
