@@ -144,7 +144,7 @@ class PurchaseRequest(ModelSQL, ModelView):
             lang = Lang.get()
             rec_name = (lang.format_number_symbol(
                     self.quantity, self.unit, digits=self.unit.digits)
-                + ' %s' % self.product.name)
+                + ' %s' % self.product.rec_name)
         elif self.description:
             rec_name = self.description.splitlines()[0]
         else:
@@ -165,7 +165,7 @@ class PurchaseRequest(ModelSQL, ModelView):
         domain = [bool_op]
         if value is not None:
             names = value.split('@', 1)
-            sub_domain = [('product.template.name', operator, names[0])]
+            sub_domain = [('product.rec_name', operator, names[0])]
             if len(names) != 1 and names[1]:
                 sub_domain.append(('warehouse', operator, names[1]))
                 if bool_op == 'AND':
