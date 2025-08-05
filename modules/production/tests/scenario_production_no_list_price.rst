@@ -25,7 +25,6 @@ Create main product::
     >>> template.default_uom = unit
     >>> template.type = 'goods'
     >>> template.producible = True
-    >>> template.list_price = Decimal(0)
     >>> template.save()
     >>> product, = template.products
 

@@ -552,11 +552,13 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
                 input_costs[input_.product] += (
                     Decimal(str(input_.internal_quantity)) * cost_price)
             outputs = []
+            output_products = set()
             for output in production.outputs:
                 if (output.to_location.type == 'lost_found'
                         or output.state == 'cancelled'):
                     continue
                 product = output.product
+                output_products.add(product)
                 if input_quantities.get(output.product):
                     cost_price = (
                         input_costs[product] / input_quantities[product])
@@ -571,30 +573,31 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
                         unit_price * Decimal(str(output.quantity)), cost)
                 else:
                     outputs.append(output)
+            if not (unique_product := len(output_products) == 1):
+                for output in outputs:
+                    product = output.product
+                    list_price = product.list_price_used
+                    if list_price is None:
+                        warning_name = Warning.format(
+                            'production_missing_list_price', [product])
+                        if Warning.check(warning_name):
+                            raise CostWarning(warning_name,
+                                gettext(
+                                    'production.'
+                                    'msg_missing_product_list_price',
+                                    product=product.rec_name,
+                                    production=production.rec_name))
+                        continue
+                    product_price = (Decimal(str(output.quantity))
+                        * Uom.compute_price(
+                            product.default_uom, list_price, output.unit))
+                    prices[output] = product_price
+                    sum_ += product_price
 
-            for output in outputs:
-                product = output.product
-                list_price = product.list_price_used
-                if list_price is None:
-                    warning_name = Warning.format(
-                        'production_missing_list_price', [product])
-                    if Warning.check(warning_name):
-                        raise CostWarning(warning_name,
-                            gettext(
-                                'production.msg_missing_product_list_price',
-                                product=product.rec_name,
-                                production=production.rec_name))
-                    continue
-                product_price = (Decimal(str(output.quantity))
-                    * Uom.compute_price(
-                        product.default_uom, list_price, output.unit))
-                prices[output] = product_price
-                sum_ += product_price
-
-            if not sum_ and production.product:
+            if not sum_ and (unique_product or production.product):
                 prices.clear()
                 for output in outputs:
-                    if output.product == production.product:
+                    if unique_product or output.product == production.product:
                         quantity = Uom.compute_qty(
                             output.unit, output.quantity,
                             output.product.default_uom, round=False)
