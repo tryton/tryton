@@ -813,12 +813,22 @@ this repository contains the full copyright notices and license terms. -->
             <field name="parent" ref="passif_IX_E"/>
             <field name="statement">balance</field>
         </record>
+
         <record model="account.account.type.template" id="passif_IX_F">
             <field name="name" lang="fr">F. Autres dettes</field>
             <field name="name" lang="nl">F. Overige schulden</field>
             <field name="sequence" eval="60"/>
             <field name="parent" ref="passif_IX"/>
             <field name="statement">balance</field>
+        </record>
+
+        <record model="account.account.type.template" id="passif_IX_F_a">
+            <field name="name" lang="fr">Cautionnements reçus en numéraires</field>
+            <field name="name" lang="nl">Borgtochten ontvangen in contanten</field>
+            <field name="sequence" eval="10"/>
+            <field name="parent" ref="passif_IX_F"/>
+            <field name="statement">balance</field>
+            <field name="deposit" depends="account_deposit" eval="True"/>
         </record>
 
         <record model="account.account.type.template" id="passif_X">
@@ -1860,7 +1870,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name" lang="fr">Dettes diverses</field>
             <field name="name" lang="nl">Diverse schulden</field>
             <field name="code">48</field>
-            <field name="type" ref="passif_IX_F"/>
+            <field name="type" eval="None"/>
             <field name="closed" eval="True"/>
             <field name="parent" ref="4"/>
         </record>
@@ -3335,7 +3345,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name" lang="fr">Cautionnements reçus en numéraires</field>
             <field name="name" lang="nl">Borgtochten ontvangen in contanten</field>
             <field name="code">488</field>
-            <field name="type" ref="passif_IX_F"/>
+            <field name="type" ref="passif_IX_F_a"/>
             <field name="parent" ref="48"/>
         </record>
 

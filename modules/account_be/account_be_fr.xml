@@ -690,6 +690,13 @@ this repository contains the full copyright notices and license terms. -->
       <field name="parent" ref="passif_IX_fr"/>
       <field name="statement">balance</field>
     </record>
+    <record id="passif_IX_F_a_fr" model="account.account.type.template">
+      <field name="name">Cautionnements reçus en numéraires</field>
+      <field name="sequence" eval="10"/>
+      <field name="parent" ref="passif_IX_F_fr"/>
+      <field name="statement">balance</field>
+      <field name="deposit" depends="account_deposit" eval="True"/>
+    </record>
     <record id="passif_X_fr" model="account.account.type.template">
       <field name="name">X. Comptes de régularisation</field>
       <field name="sequence" eval="40"/>
@@ -1498,7 +1505,7 @@ this repository contains the full copyright notices and license terms. -->
     <record id="48_fr" model="account.account.template">
       <field name="name">Dettes diverses</field>
       <field name="code">48</field>
-      <field name="type" ref="passif_IX_F_fr"/>
+      <field name="type" eval="None"/>
       <field name="closed" eval="True"/>
       <field name="parent" ref="4_fr"/>
     </record>
@@ -2618,7 +2625,7 @@ this repository contains the full copyright notices and license terms. -->
     <record id="488_fr" model="account.account.template">
       <field name="name">Cautionnements reçus en numéraires</field>
       <field name="code">488</field>
-      <field name="type" ref="passif_IX_F_fr"/>
+      <field name="type" ref="passif_IX_F_a_fr"/>
       <field name="parent" ref="48_fr"/>
     </record>
     <record id="489_fr" model="account.account.template">
