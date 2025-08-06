@@ -120,6 +120,16 @@ class ShipmentMixin:
                     today = Date.today()
                 return today - planned_date
 
+    def get_rec_name(self, name):
+        items = []
+        if self.number:
+            items.append(self.number)
+        if self.reference:
+            items.append(f'[{self.reference}]')
+        if not items:
+            items.append(f'({self.id})')
+        return ' '.join(items)
+
     @classmethod
     def search_rec_name(cls, name, clause):
         _, operator, value = clause
