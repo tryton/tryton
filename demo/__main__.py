@@ -41,49 +41,39 @@ def activate_modules(config, modules):
     return modules, activated_modules
 
 
-def setup_languages(config, demo_password, company=None):
-    Lang = Model.get('ir.lang')
+def setup_user(config, demo_password, company=None):
     User = Model.get('res.user')
     Group = Model.get('res.group')
-    Action = Model.get('ir.action')
-
-    langs = Lang.find()
-    Lang.click(langs, 'load_translations')
 
     admin = config.user
     # Use root to skip password validation
     config.user = 0
 
-    menu, = Action.find([('usage', '=', 'menu')])
-    for lang in langs:
-        if lang.code == 'en':
-            name = 'Demo'
-            login = 'demo'
-        else:
-            if lang.code[:2] != lang.code[-2:].lower():
-                continue
-            name = 'Demo %s' % lang.name
-            login = 'demo_%s' % lang.code[:2]
-        try:
-            user, = User.find([('login', '=', login)])
-        except ValueError:
-            user = User()
-        user.name = name
-        user.login = login
-        user.password = demo_password
-        groups = Group.find([
-                ('name', 'not ilike', '%Admin%'),
-                ])
-        user.groups.extend(groups)
-        user.language = lang
-        user.menu = menu
-        if company:
-            Company = Model.get('company.company')
-            user.companies.append(Company(company.id))
-            user.company = company
-        user.save()
+    try:
+        user, = User.find([('login', '=', 'demo')])
+    except ValueError:
+        user = User()
+    user.name = "Demo"
+    user.login = 'demo'
+    user.password = demo_password
+    groups = Group.find([
+            ('name', 'not ilike', '%Admin%'),
+            ])
+    user.groups.extend(groups)
+    if company:
+        Company = Model.get('company.company')
+        user.companies.append(Company(company.id))
+        user.company = company
+    user.save()
 
     config.user = admin
+
+
+def setup_languages(config):
+    Lang = Model.get('ir.lang')
+
+    langs = Lang.find()
+    Lang.click(langs, 'load_translations')
 
 
 def main(database, modules, demo_password, config_file=None):
@@ -148,7 +138,8 @@ def main(database, modules, demo_password, config_file=None):
     if 'production' in to_activate:
         production.setup(config, activated, company)
 
-    setup_languages(config, demo_password, company=company)
+    setup_user(config, demo_password, company=company)
+    setup_languages(config)
 
 
 if __name__ == '__main__':
