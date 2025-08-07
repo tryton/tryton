@@ -599,6 +599,10 @@ class ShipmentIn(ShipmentMixin, metaclass=PoolMeta):
 
     @fields.depends('supplier')
     def on_change_supplier(self):
+        try:
+            super().on_change_supplier()
+        except AttributeError:
+            pass
         if self.supplier:
             address = self.supplier.address_get(type='delivery')
             if address:
@@ -662,6 +666,10 @@ class ShipmentOutReturn(ShipmentMixin, metaclass=PoolMeta):
 
     @fields.depends('customer')
     def on_change_customer(self):
+        try:
+            super().on_change_customer()
+        except AttributeError:
+            pass
         if self.customer:
             address = self.customer.address_get(type='delivery')
             if address:
