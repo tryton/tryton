@@ -235,13 +235,13 @@ class Shop(DeactivableMixin, ModelSQL, ModelView):
             party = self.guest_party
         sale = Sale(party=party)
         sale.company = self.company
-        sale.currency = self.currency
         sale.warehouse = self.warehouse
-        sale.invoice_method = 'order'
-        sale.shipment_method = 'order'
         sale.web_shop = self
         sale.on_change_party()
         sale.on_change_web_shop()
+        sale.currency = self.currency
+        sale.invoice_method = 'order'
+        sale.shipment_method = 'order'
         return sale
 
 
