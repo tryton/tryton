@@ -2,7 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 import datetime
 import json
-from secrets import token_hex
+from secrets import compare_digest, token_hex
 
 from trytond.cache import Cache
 from trytond.config import config
@@ -89,11 +89,11 @@ class Session(ModelSQL):
         to_delete = []
         for session in sessions:
             if abs(session.create_date - now) < timeout:
-                if session.key == key:
+                if compare_digest(session.key, key):
                     find = True
                     last_reset = session.write_date or session.create_date
             else:
-                if find is None and session.key == key:
+                if find is None and compare_digest(session.key, key):
                     find = False
                 to_delete.append(session)
         cls.delete(to_delete)
