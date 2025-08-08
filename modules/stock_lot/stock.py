@@ -485,6 +485,15 @@ class Move(metaclass=PoolMeta):
                 moves, with_childs=with_childs, grouping=grouping, pblc=pblc)
         return success
 
+    @fields.depends('product', 'lot')
+    def on_change_product(self):
+        try:
+            super().on_change_product()
+        except AttributeError:
+            pass
+        if self.lot and self.lot.product != self.product:
+            self.lot = None
+
 
 class MoveAddLots(Wizard):
     __name__ = 'stock.move.add.lots'
