@@ -86,5 +86,93 @@ class StockSplitTestCase(CompanyTestMixin, ModuleTestCase):
             self.assertEqual([m.state for m in moves],
                 ['assigned', 'assigned'])
 
+    @with_transaction()
+    def test_unsplit(self):
+        "Test unsplit"
+        pool = Pool()
+        Uom = pool.get('product.uom')
+        Template = pool.get('product.template')
+        Product = pool.get('product.product')
+        Location = pool.get('stock.location')
+        Move = pool.get('stock.move')
+
+        meter, = Uom.search([('name', '=', "Meter")])
+        cm, = Uom.search([('name', '=', "Centimeter")])
+        template, = Template.create([{
+                    'name': 'Test Split',
+                    'type': 'goods',
+                    'default_uom': meter.id,
+                    }])
+        product, = Product.create([{
+                    'template': template.id,
+                    }])
+        input_, = Location.search([('code', '=', 'IN')])
+        storage, = Location.search([('code', '=', 'STO')])
+        company = create_company()
+        with set_company(company):
+            moves = Move.create([{
+                        'product': product,
+                        'unit': meter,
+                        'quantity': 2,
+                        'from_location': input_.id,
+                        'to_location': storage.id,
+                        'company': company.id,
+                        }, {
+                        'product': product,
+                        'unit': cm,
+                        'quantity': 25,
+                        'from_location': input_.id,
+                        'to_location': storage.id,
+                        'company': company.id,
+                        }])
+            Move.unsplit(moves)
+
+            self.assertEqual(moves[0].quantity, 225)
+            self.assertEqual(moves[0].unit, cm)
+            self.assertEqual(moves[1].quantity, 0)
+
+    @with_transaction()
+    def test_unsplit_different(self):
+        "Test unsplit different"
+        pool = Pool()
+        Uom = pool.get('product.uom')
+        Template = pool.get('product.template')
+        Product = pool.get('product.product')
+        Location = pool.get('stock.location')
+        Move = pool.get('stock.move')
+
+        unit, = Uom.search([('name', '=', "Unit")])
+        template, = Template.create([{
+                    'name': 'Test Split',
+                    'type': 'goods',
+                    'default_uom': unit.id,
+                    }])
+        product, = Product.create([{
+                    'template': template.id,
+                    }])
+        input_, = Location.search([('code', '=', 'IN')])
+        storage, = Location.search([('code', '=', 'STO')])
+        company = create_company()
+        with set_company(company):
+            moves = Move.create([{
+                        'product': product,
+                        'unit': unit,
+                        'quantity': 2,
+                        'from_location': input_.id,
+                        'to_location': storage.id,
+                        'company': company.id,
+                        }, {
+                        'product': product,
+                        'unit': unit,
+                        'quantity': 2,
+                        'from_location': storage.id,
+                        'to_location': input_.id,
+                        'company': company.id,
+                        }])
+            Move.unsplit(moves)
+
+            self.assertEqual(moves[0].quantity, 2)
+            self.assertEqual(moves[1].quantity, 2)
+
 
 del ModuleTestCase

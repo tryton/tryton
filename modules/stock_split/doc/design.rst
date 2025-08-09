@@ -11,7 +11,8 @@ Move
 
 When the *Stock Split Module* is activated, the `Move <stock:model-stock.move>`
 gain a :guilabel:`Split` button to launch the `Split Move
-<wizard-stock.move.split>` wizard.
+<wizard-stock.move.split>` wizard and another :guilabel:`Unsplit` button to
+reverse the operation.
 
 .. seealso::
 

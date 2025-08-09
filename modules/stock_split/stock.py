@@ -18,6 +18,10 @@ class Move(metaclass=PoolMeta):
                     'readonly': ~Eval('state').in_(['draft', 'assigned']),
                     'depends': ['state'],
                     },
+                'unsplit': {
+                    'readonly': ~Eval('state').in_(['draft', 'assigned']),
+                    'depends': ['state'],
+                    },
                 })
 
     @classmethod
@@ -72,6 +76,51 @@ class Move(metaclass=PoolMeta):
                 'state': state,
                 })
         return moves
+
+    @classmethod
+    @ModelView.button
+    def unsplit(cls, moves, _exclude=None):
+        pool = Pool()
+        UoM = pool.get('product.uom')
+
+        _exclude = _exclude.copy() if _exclude is not None else set()
+        _exclude.update({
+                'id', 'create_uid', 'create_date', 'write_uid', 'write_date',
+                'quantity', 'unit', 'internal_quantity'})
+
+        fields_names = {
+            name for name, field in cls._fields.items()
+            if not isinstance(field, (fields.Function, fields.MultiValue))}
+        fields_names -= _exclude
+        values = cls.read([m.id for m in moves], fields_names=fields_names)
+        id2values = {v.pop('id'): v for v in values}
+
+        groups = []
+        for move in moves:
+            for group in groups:
+                if id2values[move.id] == id2values[group[0].id]:
+                    group.append(move)
+                    break
+            else:
+                groups.append([move])
+
+        def unit_precision(unit):
+            return unit.factor * unit.rounding
+
+        to_save, to_clear = [], []
+        for group in groups:
+            if len(group) <= 1:
+                continue
+            quantity = sum(m.internal_quantity for m in group)
+            unit = min((m.unit for m in group), key=unit_precision)
+            move, *others = group
+            move.quantity = UoM.compute_qty(
+                move.product.default_uom, quantity, unit)
+            move.unit = unit
+            to_save.append(move)
+            to_clear.extend(others)
+        cls.write(to_clear, {'quantity': 0})
+        cls.save(to_save)
 
 
 class SplitMoveStart(ModelView):

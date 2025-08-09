@@ -4,5 +4,6 @@ this repository contains the full copyright notices and license terms. -->
 <data>
     <xpath expr="/tree" position="inside">
         <button name="split_wizard" string="Split"/>
+        <button name="unsplit" multiple="1"/>
     </xpath>
 </data>
