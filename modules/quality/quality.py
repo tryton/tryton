@@ -236,7 +236,7 @@ class Control(DeactivableMixin, MatchMixin, ModelSQL, ModelView):
                     value = operations.replace(old, new)
                 update.execute(*table.update(
                         [table.operations],
-                        value,
+                        [value],
                         where=table.id == id_))
 
     @classmethod
