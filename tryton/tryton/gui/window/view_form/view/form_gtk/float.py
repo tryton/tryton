@@ -13,11 +13,8 @@ class Float(Integer):
 
     @property
     def width(self):
-        digits = self.digits
-        if digits and all(d is not None for d in digits):
-            return sum(digits)
-        else:
-            return self.attrs.get('width', 18)
+        digits = self.digits or [None, None]
+        return sum(v if v is not None else d for v, d in zip(digits, [16, 2]))
 
     def display(self):
         self.entry.digits = self.digits
