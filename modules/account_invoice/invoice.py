@@ -2356,7 +2356,7 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
 
     @classmethod
     def search_invoice_party(cls, name, clause):
-        nested = clause[0][len(name) + 1:]
+        nested = clause[0][len(name):]
         return ['OR',
             ('invoice.party' + nested, *clause[1:]),
             ('party' + nested, *clause[1:]),
