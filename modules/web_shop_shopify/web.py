@@ -322,6 +322,14 @@ class Shop(metaclass=PoolMeta):
                 categories = shop.get_categories()
                 products, prices, taxes = shop.get_products(
                     key=lambda p: p.template.id)
+                sale_prices, sale_taxes = prices, taxes
+
+                context = shop.get_context()
+                with Transaction().set_context(_non_sale_price=True):
+                    sale_context = shop.get_context()
+                    if context != sale_context:
+                        _, prices, taxes = shop.get_products()
+
                 if shopify_shop['currencyCode'] != shop.currency.code:
                     raise ShopifyError(gettext(
                             'web_shop_shopify.msg_shop_currency_different',
@@ -351,13 +359,17 @@ class Shop(metaclass=PoolMeta):
                         t_products, key=template.products.index)
                     p_inventory_items = [
                         inventory_items[p] for p in t_products]
+                    p_sale_prices = [sale_prices[p.id] for p in t_products]
+                    p_sale_taxes = [sale_taxes[p.id] for p in t_products]
                     p_prices = [prices[p.id] for p in t_products]
                     p_taxes = [taxes[p.id] for p in t_products]
                     if shop._shopify_product_is_to_update(
-                            template, t_products, p_prices, p_taxes):
+                            template, t_products, p_sale_prices, p_sale_taxes,
+                            p_prices, p_taxes):
                         shop._shopify_update_product(
                             shopify_shop, categories, template, t_products,
-                            p_inventory_items, p_prices, p_taxes)
+                            p_inventory_items, p_sale_prices, p_sale_taxes,
+                            p_prices, p_taxes)
                         Transaction().commit()
 
                 for category in shop.categories_removed:
@@ -428,18 +440,21 @@ class Shop(metaclass=PoolMeta):
             category.set_shopify_identifier(self)
 
     def _shopify_product_is_to_update(
-            self, template, products, prices, taxes):
+            self, template, products, sale_prices, sale_taxes, prices, taxes):
         return (
             template.is_shopify_to_update(self)
             or any(
-                prod.is_shopify_to_update(self, price=p, tax=t)
-                for prod, p, t in zip(products, prices, taxes))
+                prod.is_shopify_to_update(
+                    self, sale_price=s_p, sale_tax=s_t, price=p, tax=t)
+                for prod, s_p, s_t, p, t in zip(
+                    products, sale_prices, sale_taxes, prices, taxes))
             or any(
                 prod in self.products_removed for prod in products))
 
     def _shopify_update_product(
             self, shopify_shop, categories, template, products,
-            inventory_items, prices, taxes, product_fields=None):
+            inventory_items, sale_prices, sale_taxes, prices, taxes,
+            product_fields=None):
         pool = Pool()
         Identifier = pool.get('web.shop.shopify_identifier')
 
@@ -466,12 +481,16 @@ class Shop(metaclass=PoolMeta):
         shopify_product = template.get_shopify(self, categories)
         variants = []
         for position, (
-            product, inventory_item, price, tax) in enumerate(zip(
-                    products, inventory_items, prices, taxes),
+            product, inventory_item,
+            sale_price, sale_tax,
+            price, tax) in enumerate(zip(
+                    products, inventory_items,
+                    sale_prices, sale_taxes,
+                    prices, taxes),
                 start=1):
             self._shopify_check_product(product)
             variant = product.get_shopify(
-                self, price, tax,
+                self, sale_price, sale_tax, price, tax,
                 shop_taxes_included=shopify_shop['taxesIncluded'])
             variant['inventoryItem'] = inventory_item.get_shopify(
                 self, shop_weight_unit=shopify_shop['weightUnit'])
@@ -522,14 +541,18 @@ class Shop(metaclass=PoolMeta):
                 'variants', shopify_product)
 
             for (product, inventory_item,
+                sale_price, sale_tax,
                 price, tax,
                 shopify_variant) in zip(
                     products, inventory_items,
+                    sale_prices, sale_taxes,
                     prices, taxes,
                     shopify_variants):
                 identifier = product.set_shopify_identifier(
                     self, gid2id(shopify_variant['id']))
                 update_extra = {
+                    'sale_price': sale_price,
+                    'sale_tax': sale_tax,
                     'price': price,
                     'tax': tax,
                     }
@@ -838,16 +861,17 @@ class Shop_Image(metaclass=PoolMeta):
     __name__ = 'web.shop'
 
     def _shopify_product_is_to_update(
-            self, template, products, prices, taxes):
+            self, template, products, sale_prices, sale_taxes, prices, taxes):
         return (
             super()._shopify_product_is_to_update(
-                template, products, prices, taxes)
+                template, products, sale_prices, sale_taxes, prices, taxes)
             or any(
                 i.is_shopify_to_update(self) for i in template.shopify_images))
 
     def _shopify_update_product(
             self, shopify_shop, categories, template, products,
-            inventory_items, prices, taxes, product_fields=None):
+            inventory_items, sale_prices, sale_taxes, prices, taxes,
+            product_fields=None):
         pool = Pool()
         Identifier = pool.get('web.shop.shopify_identifier')
 
@@ -867,7 +891,8 @@ class Shop_Image(metaclass=PoolMeta):
                 })
         shopify_product = super()._shopify_update_product(
             shopify_shop, categories, template, products, inventory_items,
-            prices, taxes, product_fields=product_fields)
+            sale_prices, sale_taxes, prices, taxes,
+            product_fields=product_fields)
 
         try:
             shopify_media = graphql.iterate(

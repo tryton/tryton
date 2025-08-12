@@ -274,7 +274,9 @@ class Product(IdentifiersMixin, metaclass=PoolMeta):
     def search_shopify_sku(cls, name, clause):
         return [('code',) + tuple(clause[1:])]
 
-    def get_shopify(self, shop, price, tax, shop_taxes_included=True):
+    def get_shopify(
+            self, shop, sale_price, sale_tax, price, tax,
+            shop_taxes_included=True):
         shopify_id = self.get_shopify_identifier(shop)
         if shopify_id:
             shopify_id = id2gid('ProductVariant', shopify_id)
@@ -286,13 +288,20 @@ class Product(IdentifiersMixin, metaclass=PoolMeta):
                     }, {'id': shopify_id})['data']['productVariant'] or {}
         else:
             variant = {}
+        sale_price = self.shopify_price(
+            sale_price, sale_tax, taxes_included=shop_taxes_included)
+        if sale_price is not None:
+            variant['price'] = str(sale_price.quantize(Decimal('.00')))
+        else:
+            variant['price'] = None
         price = self.shopify_price(
             price, tax, taxes_included=shop_taxes_included)
         if price is not None:
-            variant['price'] = str(price.quantize(Decimal('.00')))
+            variant['compareAtPrice'] = str(
+                price.quantize(Decimal('.00')))
         else:
-            variant['price'] = None
-        variant['taxable'] = bool(tax)
+            variant['compareAtPrice'] = None
+        variant['taxable'] = bool(sale_tax)
 
         for identifier in self.identifiers:
             if identifier.type == 'ean':
@@ -637,9 +646,12 @@ class Product_Image(metaclass=PoolMeta):
             if image.web_shop:
                 yield image
 
-    def get_shopify(self, shop, price, tax, shop_taxes_included=True):
+    def get_shopify(
+            self, shop, sale_price, sale_tax, price, tax,
+            shop_taxes_included=True):
         variant = super().get_shopify(
-            shop, price, tax, shop_taxes_included=shop_taxes_included)
+            shop, sale_price, sale_tax, price, tax,
+            shop_taxes_included=shop_taxes_included)
         for image in self.shopify_images:
             file = {
                 'alt': image.description,
