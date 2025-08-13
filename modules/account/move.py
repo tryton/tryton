@@ -786,6 +786,8 @@ class MoveLineMixin:
             tables['move'] = {
                 None: (move, move.id == table.move),
                 }
+        else:
+            move, _ = tables['move'][None]
         return [Coalesce(table.maturity_date, move.date)]
 
     @classmethod
