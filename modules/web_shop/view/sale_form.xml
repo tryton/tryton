@@ -8,4 +8,7 @@ this repository contains the full copyright notices and license terms. -->
         <label name="web_id"/>
         <field name="web_id"/>
     </xpath>
+    <xpath expr="//button[@name='process']" position="after">
+        <button name="web_shop_update"/>
+    </xpath>
 </data>

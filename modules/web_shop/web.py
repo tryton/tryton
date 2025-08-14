@@ -259,6 +259,9 @@ class Shop(DeactivableMixin, ModelSQL, ModelView):
         sale.shipment_method = 'order'
         return sale
 
+    def update_sales(self, sales):
+        assert all(s.web_shop == self for s in sales)
+
 
 class Shop_PriceList(metaclass=PoolMeta):
     __name__ = 'web.shop'

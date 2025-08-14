@@ -125,6 +125,11 @@ class Shop(metaclass=PoolMeta):
             sale.invoice_method = 'shipment'
         return sale
 
+    def update_sales(self, sales):
+        super().update_sales(sales)
+        if self.type == 'shopify':
+            self._shopify_update_order(self, sales)
+
     def shopify_session(self):
         return shopify.Session.temp(
             self.shopify_url, self.shopify_version, self.shopify_password)

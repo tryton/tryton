@@ -14,5 +14,15 @@ this repository contains the full copyright notices and license terms. -->
             <field name="inherit" ref="sale.sale_view_form"/>
             <field name="name">sale_form</field>
         </record>
+
+        <record model="ir.model.button" id="sale_web_shop_update_button">
+            <field name="model">sale.sale</field>
+            <field name="name">web_shop_update</field>
+            <field name="string">Update from Web Shop</field>
+        </record>
+        <record model="ir.model.button-res.group" id="sale_web_shop_update_button_group_sale_admin">
+            <field name="button" ref="sale_web_shop_update_button"/>
+            <field name="group" ref="sale.group_sale_admin"/>
+        </record>
     </data>
 </tryton>
