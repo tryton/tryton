@@ -154,6 +154,7 @@ class Sale(IdentifierMixin, metaclass=PoolMeta):
         "Shopify Tax Adjustment",
         currency='currency', digits='currency', readonly=True)
     shopify_status_url = fields.Char("Shopify Status URL", readonly=True)
+    shopify_resource = 'orders'
 
     @classmethod
     def __setup__(cls):

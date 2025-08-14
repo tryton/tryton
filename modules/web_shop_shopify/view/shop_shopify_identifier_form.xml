@@ -10,6 +10,8 @@ this repository contains the full copyright notices and license terms. -->
     <label name="shopify_identifier"/>
     <field name="shopify_identifier" width="20"/>
 
+    <label name="shopify_url"/>
+    <field name="shopify_url" widget="url"/>
     <label name="to_update"/>
     <field name="to_update"/>
 </form>

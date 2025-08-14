@@ -11,5 +11,7 @@ this repository contains the full copyright notices and license terms. -->
         <label name="shopify_handle"/>
         <field name="shopify_handle"/>
         <newline/>
+
+        <field name="shopify_identifiers" colspan="4"/>
     </xpath>
 </data>

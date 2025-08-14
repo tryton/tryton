@@ -970,6 +970,20 @@ class ShopShopifyIdentifier(IdentifierMixin, ModelSQL, ModelView):
     def set_to_update(cls, identifiers):
         cls.write(identifiers, {'to_update': True})
 
+    @property
+    def shopify_resource(self):
+        if self.record.__name__ == 'product.product':
+            product_identifier = self.record.template.get_shopify_identifier(
+                self.web_shop)
+            resource = f'products/{product_identifier}/variants'
+        else:
+            resource = {
+                'party.party': 'customers',
+                'product.category': 'collections',
+                'product.template': 'products',
+                }.get(self.record.__name__)
+        return resource
+
 
 class Shop_Warehouse(ModelView, metaclass=PoolMeta):
     __name__ = 'web.shop-stock.location'

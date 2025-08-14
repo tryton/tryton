@@ -9,6 +9,9 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_shopify_identifier">
             <field name="text">Shopify Identifier</field>
         </record>
+        <record model="ir.message" id="msg_shopify_url">
+            <field name="text">Shopify URL</field>
+        </record>
         <record model="ir.message" id="msg_identifier_record_web_shop_unique">
             <field name="text">The record cannot have more than one Shopify identifier per web shop.</field>
         </record>

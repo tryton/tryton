@@ -1,8 +1,11 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+from urllib.parse import urljoin
+
 from trytond.i18n import lazy_gettext
 from trytond.model import fields
 from trytond.pool import Pool
+from trytond.pyson import Eval
 
 
 def id2gid(resouce, id):
@@ -28,6 +31,12 @@ class IdentifierMixin:
             lazy_gettext('web_shop_shopify.msg_shopify_identifier')),
         'get_shopify_identifier', setter='set_shopify_identifier',
         searcher='search_shopify_identifier')
+    shopify_url = fields.Function(fields.Char(
+            lazy_gettext('web_shop_shopify.msg_shopify_url'),
+            states={
+                'invisible': ~Eval('shopify_url'),
+                }),
+        'get_shopify_url')
 
     def get_shopify_identifier(self, name):
         if self.shopify_identifier_signed is not None:
@@ -53,6 +62,14 @@ class IdentifierMixin:
         elif value is not None:
             value = int(value) - (1 << 63)
         return [('shopify_identifier_signed', operator, value)]
+
+    def get_shopify_url(self, name):
+        if (getattr(self, 'shopify_resource', None)
+                and getattr(self, 'web_shop', None)
+                and self.shopify_identifier_char):
+            return urljoin(
+                self.web_shop.shopify_url + '/admin/',
+                f'{self.shopify_resource}/{self.shopify_identifier_char}')
 
     @classmethod
     def copy(cls, records, default=None):
@@ -100,7 +117,8 @@ class IdentifiersMixin(IdentifiersUpdateMixin):
 
     shopify_identifiers = fields.One2Many(
         'web.shop.shopify_identifier', 'record',
-        lazy_gettext('web_shop_shopify.msg_shopify_identifiers'))
+        lazy_gettext('web_shop_shopify.msg_shopify_identifiers'),
+        readonly=True)
 
     def get_shopify_identifier(self, web_shop):
         for record in self.shopify_identifiers:
