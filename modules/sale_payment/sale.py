@@ -28,10 +28,6 @@ class Sale(metaclass=PoolMeta):
         'account.payment', 'origin', "Payments",
         domain=[
             ('company', '=', Eval('company', -1)),
-            If(Eval('total_amount', 0) >= 0,
-                ('kind', '=', 'receivable'),
-                ('kind', '=', 'payable'),
-                ),
             ['OR',
                 ('party', '=', If(Bool(Eval('invoice_party')),
                         Eval('invoice_party', -1), Eval('party', -1))),
@@ -69,7 +65,10 @@ class Sale(metaclass=PoolMeta):
     @property
     def payment_amount_authorized(self):
         "Total amount of the authorized payments"
-        return sum(p.amount for p in self.payments if p.is_authorized)
+        return (sum(
+                p.amount for p in self.payments
+                if p.kind == 'receivable' and p.is_authorized)
+            - sum(p.amount for p in self.payments if p.kind == 'payable'))
 
     @property
     def amount_to_pay(self):
@@ -86,9 +85,15 @@ class Sale(metaclass=PoolMeta):
                     ('payments', '!=', None),
                     ('company', '=', context.get('company')),
                     ])
+
+        def cover(authorized, amount):
+            return (
+                abs(authorized) >= abs(amount)
+                and (authorized * amount >= 0))
+
         to_confirm = []
         for sale in sales:
-            if sale.payment_amount_authorized >= sale.amount_to_pay:
+            if cover(sale.payment_amount_authorized, sale.amount_to_pay):
                 to_confirm.append(sale)
         if to_confirm:
             to_confirm = cls.browse(to_confirm)  # optimize cache
