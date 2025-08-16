@@ -41,7 +41,7 @@ def order(request, pool, shop):
                     ('shopify_identifier', '=', order['id']),
                     ], order=[], limit=1):
             Shop.__queue__.shopify_fetch_order([shop])
-    elif topic in {'orders/updated', 'orders/payment'}:
+    elif topic in {'orders/updated', 'orders/paid'}:
         sales = Sale.search([
                 ('web_shop', '=', shop.id),
                 ('shopify_identifier', '=', order['id']),
