@@ -58,12 +58,14 @@ class Sale(IdentifierMixin, metaclass=PoolMeta):
             party.save()
             party.set_shopify_identifier(shop, order.customer.id)
         else:
-            party = Party()
-            party.save()
+            party = shop.guest_party
 
         if not sale:
             sale = shop.get_sale(party=party)
             sale.shopify_identifier = order.id
+        elif sale.party != party:
+            sale.party = party
+
         assert sale.shopify_identifier == order.id
         if order.location_id:
             for shop_warehouse in shop.shopify_warehouses:
@@ -75,12 +77,15 @@ class Sale(IdentifierMixin, metaclass=PoolMeta):
                     ('code', '=', order.currency),
                     ], limit=1)
 
-        if getattr(order, 'shipping_address', None):
-            sale.shipment_address = party.get_address_from_shopify(
-                order.shipping_address)
-        if getattr(order, 'billing_address', None):
-            sale.invoice_address = party.get_address_from_shopify(
-                order.billing_address)
+        if sale.party != shop.guest_party:
+            if getattr(order, 'shipping_address', None):
+                sale.shipment_address = party.get_address_from_shopify(
+                    order.shipping_address)
+            if getattr(order, 'billing_address', None):
+                sale.invoice_address = party.get_address_from_shopify(
+                    order.billing_address)
+            else:
+                sale.invoice_address = getattr(sale, 'shipment_address', None)
 
         if not party.addresses:
             address = Address(party=party)
