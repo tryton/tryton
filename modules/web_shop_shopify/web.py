@@ -505,9 +505,13 @@ class Shop(metaclass=PoolMeta):
                     sale.shopify_tax_adjustment = (
                         Decimal(order.total_price) - sale.total_amount)
                 Sale.save(sales)
-                Sale.quote(sales)
+                to_quote = [
+                    s for s in sales if s.party != s.web_shop.guest_party]
+                if to_quote:
+                    Sale.quote(to_quote)
                 for sale, order in zip(sales, orders):
-                    Payment.get_from_shopify(sale, order)
+                    if sale.state != 'draft':
+                        Payment.get_from_shopify(sale, order)
 
     @classmethod
     def shopify_update_order(cls, shops=None):
@@ -588,6 +592,8 @@ class Shop(metaclass=PoolMeta):
         Amendment._clear_sale(to_update.keys())
         to_process, to_quote = [], []
         for sale in to_update:
+            if sale.party == sale.web_shop.guest_party:
+                continue
             if sale.payment_amount_authorized >= sale.amount_to_pay:
                 to_process.append(sale)
             else:
@@ -600,9 +606,10 @@ class Shop(metaclass=PoolMeta):
             cls.log(to_quote, 'transition', 'state:quotation')
 
         for sale, order in zip(sales, orders):
-            shop = sale.web_shop
-            with shop.shopify_session():
-                Payment.get_from_shopify(sale, order)
+            if sale.state != 'draft':
+                shop = sale.web_shop
+                with shop.shopify_session():
+                    Payment.get_from_shopify(sale, order)
 
     @classmethod
     def write(cls, *args):
