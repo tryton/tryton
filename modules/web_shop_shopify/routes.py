@@ -56,7 +56,7 @@ def order(request, pool, shop):
             Shop.__queue__.shopify_fetch_order([shop])
         else:
             sale, = sales
-            Shop.__queue__.shopify_update_sale([sale], [order])
+            Shop.__queue__.update_sale_ids(shop, [sale.id])
     else:
         logger.info("Unsupported topic '%s'", topic)
     return Response(status=HTTPStatus.NO_CONTENT)

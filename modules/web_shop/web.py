@@ -259,6 +259,11 @@ class Shop(DeactivableMixin, ModelSQL, ModelView):
         sale.shipment_method = 'order'
         return sale
 
+    def update_sale_ids(self, sale_ids):
+        pool = Pool()
+        Sale = pool.get('sale.sale')
+        return self.update_sales(Sale.browse(sale_ids))
+
     def update_sales(self, sales):
         assert all(s.web_shop == self for s in sales)
 
