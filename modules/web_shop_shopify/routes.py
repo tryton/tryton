@@ -42,7 +42,7 @@ def order(request, pool, shop):
                     ], order=[], limit=1):
             Shop.__queue__.shopify_fetch_order([shop])
     elif topic in {
-            'orders/updated', 'orders/edited', 'orders/payment',
+            'orders/updated', 'orders/edited', 'orders/paid',
             'orders/cancelled'}:
         if topic == 'orders/edited':
             order_id = order['order_edit']['id']
