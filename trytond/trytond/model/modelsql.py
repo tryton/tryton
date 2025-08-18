@@ -1848,6 +1848,11 @@ class ModelSQL(ModelStorage):
 
         if order is None or order is False:
             order = cls._order
+        if limit is not None or offset:
+            if 'id' not in {oexpr for oexpr, _ in order}:
+                order = order.copy()
+                order.append(('id', None))
+
         tables, expression, union_orderings = cls.__search_query(
             domain, count, query, order)
 

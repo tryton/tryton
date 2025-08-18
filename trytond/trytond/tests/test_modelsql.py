@@ -1299,6 +1299,25 @@ class ModelSQLTestCase(TestCase):
         self.assertEqual(Model.search([], offset=5, count=True), 5)
         self.assertEqual(Model.search([], offset=20, count=True), 0)
 
+    @with_transaction()
+    def test_search_limit_predictable_order(self):
+        "Test searching with LIMIT is using a predictable order"
+        pool = Pool()
+        Model = pool.get('test.modelsql.search')
+
+        Model.create([{'name': str(i)} for i in range(10)])
+
+        self.assertNotRegex(
+            str(Model.search(
+                    [], order=[('name', 'ASC')],
+                    query=True)).upper(),
+            'ORDER BY.*ID')
+        self.assertRegex(
+            str(Model.search(
+                    [], limit=5, order=[('name', 'ASC')],
+                    query=True)).upper(),
+            'ORDER BY.*ID')
+
     def test_split_subquery_domain_empty(self):
         """
         Test the split of domains in local and relation parts (empty domain)
