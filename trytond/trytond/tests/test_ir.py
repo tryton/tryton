@@ -489,7 +489,7 @@ class IrCronTestCase(unittest.TestCase):
 
     def setUp(self):
         server_tz = timezone.SERVER
-        timezone.SERVER = timezone.ZoneInfo('Canada/Eastern')
+        timezone.SERVER = timezone.ZoneInfo('America/Toronto')
         self.addCleanup(setattr, timezone, 'SERVER', server_tz)
 
     def _get_cron(self):
