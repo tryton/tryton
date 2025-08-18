@@ -1308,6 +1308,11 @@ class ModelSQL(ModelStorage):
             }
         if order is None or order is False:
             order = cls._order
+        if limit is not None or offset:
+            if 'id' not in {oexpr for oexpr, _ in order}:
+                order = order.copy()
+                order.append(('id', None))
+
         for oexpr, otype in order:
             fname, _, extra_expr = oexpr.partition('.')
             field = cls._fields[fname]

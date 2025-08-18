@@ -572,6 +572,25 @@ class ModelSQLTestCase(unittest.TestCase):
                 with self.assertRaises(backend.DatabaseOperationalError):
                     record.lock()
 
+    @with_transaction()
+    def test_search_limit_predictable_order(self):
+        "Test searching with LIMIT is using a predictable order"
+        pool = Pool()
+        Model = pool.get('test.modelsql.search')
+
+        Model.create([{'name': str(i)} for i in range(10)])
+
+        self.assertNotRegex(
+            str(Model.search(
+                    [], order=[('name', 'ASC')],
+                    query=True)).upper(),
+            'ORDER BY.*ID')
+        self.assertRegex(
+            str(Model.search(
+                    [], limit=5, order=[('name', 'ASC')],
+                    query=True)).upper(),
+            'ORDER BY.*ID')
+
 
 class TranslationTestCase(unittest.TestCase):
     default_language = 'fr'
