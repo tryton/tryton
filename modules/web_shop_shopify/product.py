@@ -73,7 +73,7 @@ class Template(IdentifiersMixin, metaclass=PoolMeta):
         cls._shopify_fields.update([
                 'name', 'web_shop_description', 'attribute_set',
                 'customs_category', 'tariff_codes_category',
-                'country_of_origin'])
+                'country_of_origin', 'weight', 'weight_uom'])
         categories = cls._shopify_uom_categories()
         cls.shopify_uom.domain = [
             ('category', 'in', [Eval(c, -1) for c in categories]),
@@ -154,8 +154,7 @@ class Product(IdentifiersMixin, metaclass=PoolMeta):
     @classmethod
     def __setup__(cls):
         super().__setup__()
-        cls._shopify_fields.update([
-                'code', 'weight', 'weight_uom', 'attributes'])
+        cls._shopify_fields.update(['code', 'attributes'])
 
     @classmethod
     def get_shopify_identifier_to_update(cls, records):
