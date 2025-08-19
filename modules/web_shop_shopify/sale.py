@@ -17,7 +17,7 @@ from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
 from trytond.transaction import Transaction
 
-from .common import IdentifierMixin
+from .common import IdentifierMixin, setattr_changed
 from .exceptions import ShopifyError
 
 
@@ -65,8 +65,7 @@ class Sale(IdentifierMixin, metaclass=PoolMeta):
             sale = shop.get_sale(party=party)
             sale.web_id = str(order.id)
             sale.shopify_identifier = order.id
-        elif sale.party != party:
-            sale.party = party
+        setattr_changed(sale, 'party', party)
 
         assert sale.shopify_identifier == order.id
         if order.location_id:
@@ -81,13 +80,21 @@ class Sale(IdentifierMixin, metaclass=PoolMeta):
 
         if sale.party != shop.guest_party:
             if getattr(order, 'shipping_address', None):
-                sale.shipment_address = party.get_address_from_shopify(
+                shipment_address = party.get_address_from_shopify(
                     order.shipping_address)
+            else:
+                shipment_address = None
+            if shipment_address:
+                setattr_changed(sale, 'shipment_address', shipment_address)
             if getattr(order, 'billing_address', None):
-                sale.invoice_address = party.get_address_from_shopify(
+                invoice_address = party.get_address_from_shopify(
                     order.billing_address)
             else:
-                sale.invoice_address = getattr(sale, 'shipment_address', None)
+                invoice_address = None
+            if invoice_address or shipment_address:
+                setattr_changed(
+                    sale, 'invoice_address',
+                    invoice_address or shipment_address)
 
         if not party.addresses:
             address = Address(party=party)
@@ -97,10 +104,10 @@ class Sale(IdentifierMixin, metaclass=PoolMeta):
             if not sale.invoice_address:
                 sale.invoice_address = address
 
-        sale.reference = order.name
-        sale.comment = order.note
-        sale.sale_date = dateutil.parser.isoparse(
-            order.processed_at or order.created_at).date()
+        setattr_changed(sale, 'reference', order.name)
+        setattr_changed(sale, 'comment', order.note)
+        setattr_changed(sale, 'sale_date', dateutil.parser.isoparse(
+                order.processed_at or order.created_at).date())
 
         if order.phone:
             for contact_mechanism in party.contact_mechanisms:
@@ -110,7 +117,7 @@ class Sale(IdentifierMixin, metaclass=PoolMeta):
             else:
                 contact_mechanism = ContactMechanism(
                     party=party, type='phone', value=order.phone)
-            sale.contact = contact_mechanism
+            setattr_changed(sale, 'contact', contact_mechanism)
 
         refund_line_items = defaultdict(list)
         for refund in order.refunds:
@@ -321,24 +328,30 @@ class Sale_ShipmentCost(metaclass=PoolMeta):
 
         sale = super().get_from_shopify(shop, order, sale=sale)
 
-        sale.shipment_cost_method = None
+        shipment_cost_method = None
         if order.shipping_lines:
             available_carriers = sale.on_change_with_available_carriers()
+            carrier = None
             if available_carriers:
-                sale.carrier = available_carriers[0]
+                carrier = available_carriers[0]
+            setattr_changed(sale, 'carrier', carrier)
             if sale.carrier:
-                sale.shipment_cost_method = 'order'
+                shipment_cost_method = 'order'
                 for line in sale.lines:
                     if getattr(line, 'shipment_cost', None) is not None:
                         unit_price = line.unit_price
                         base_price = getattr(line, 'base_price', None)
-                        line.product = sale.carrier.carrier_product
-                        line.on_change_product()
-                        line.unit_price = round_price(Tax.reverse_compute(
+                        if setattr_changed(
+                                line, 'product', sale.carrier.carrier_product):
+                            line.on_change_product()
+                        unit_price = round_price(Tax.reverse_compute(
                                 unit_price, line.taxes, sale.sale_date))
+                        setattr_changed(line, 'unit_price', unit_price)
                         if base_price is not None:
-                            line.base_price = round_price(Tax.reverse_compute(
+                            base_price = round_price(Tax.reverse_compute(
                                     base_price, line.taxes, sale.sale_date))
+                            setattr_changed(line, 'base_price', base_price)
+        setattr_changed(sale, 'shipment_cost_method', shipment_cost_method)
         return sale
 
 
@@ -368,14 +381,15 @@ class Line(IdentifierMixin, metaclass=PoolMeta):
         if getattr(line_item, 'variant_id', None):
             if product := Product.search_shopify_identifier(
                     sale.web_shop, line_item.variant_id):
-                line.product = product
+                setattr_changed(line, 'product', product)
         if line.product:
             line._set_shopify_quantity(line.product, quantity)
-            line.on_change_product()
+            if line._changed_values():
+                line.on_change_product()
         else:
-            line.quantity = quantity
-            line.description = line_item.title
-            line.taxes = []
+            setattr_changed(line, 'quantity', quantity)
+            setattr_changed(line, 'description', line_item.title)
+            setattr_changed(line, 'taxes', ())
         total_discount = sum(
             Decimal(d.amount) for d in line_item.discount_allocations)
         unit_price = ((
@@ -387,26 +401,28 @@ class Line(IdentifierMixin, metaclass=PoolMeta):
         if line.product:
             line._set_shopify_unit_price(line.product, unit_price)
         else:
-            line.unit_price = unit_price
+            setattr_changed(line, 'unit_price', unit_price)
         return line
 
     def _set_shopify_quantity(self, product, quantity):
         if product.shopify_uom.category == product.sale_uom.category:
-            self.unit = self.product.shopify_uom
-            self.quantity = quantity
+            setattr_changed(self, 'unit', self.product.shopify_uom)
+            setattr_changed(self, 'quantity', quantity)
 
     def _set_shopify_unit_price(self, product, unit_price):
         if product.shopify_uom.category == product.sale_uom.category:
-            self.unit_price = unit_price
+            setattr_changed(self, 'unit_price', unit_price)
 
     @classmethod
     def get_from_shopify_shipping(cls, sale, shipping_line, line=None):
         if not line:
             line = cls(type='line')
             line.sale = sale
-        line.quantity = 1
-        line.unit_price = round_price(Decimal(shipping_line.discounted_price))
-        line.description = shipping_line.title
+        setattr_changed(line, 'quantity', 1)
+        setattr_changed(
+            line, 'unit_price',
+            round_price(Decimal(shipping_line.discounted_price)))
+        setattr_changed(line, 'description', shipping_line.title)
         return line
 
     def _get_invoice_line_quantity(self):
@@ -427,15 +443,16 @@ class Line_Discount(metaclass=PoolMeta):
         pool = Pool()
         Tax = pool.get('account.tax')
         line = super().get_from_shopify(sale, line_item, quantity, line=line)
-        line.base_price = round_price(Tax.reverse_compute(
-                Decimal(line_item.price), line.taxes, sale.sale_date))
+        setattr_changed(line, 'base_price', round_price(
+                Tax.reverse_compute(
+                    Decimal(line_item.price), line.taxes, sale.sale_date)))
         return line
 
     @classmethod
     def get_from_shopify_shipping(cls, sale, shipping_line, line=None):
         line = super().get_from_shopify_shipping(
             sale, shipping_line, line=line)
-        line.base_price = Decimal(shipping_line.price)
+        setattr_changed(line, 'base_price', Decimal(shipping_line.price))
         return line
 
 
@@ -447,19 +464,21 @@ class Line_SaleSecondaryUnit(metaclass=PoolMeta):
         if (product.sale_secondary_uom
                 and product.shopify_uom.category
                 == product.sale_secondary_uom.category):
-            self.unit = product.sale_uom
-            self.secondary_unit = product.shopify_uom
-            self.on_change_product()
-            self.secondary_quantity = quantity
-            self.on_change_secondary_quantity()
+            changed = setattr_changed(self, 'unit', product.sale_uom)
+            changed |= setattr_changed(
+                self, 'secondary_unit', product.shopify_uom)
+            if changed:
+                self.on_change_product()
+            if setattr_changed(self, 'secondary_quantity', quantity):
+                self.on_change_secondary_quantity()
 
     def _set_shopify_unit_price(self, product, unit_price):
         super()._set_shopify_unit_price(product, unit_price)
         if (product.sale_secondary_uom
                 and product.shopify_uom.category
                 == product.sale_secondary_uom.category):
-            self.secondary_unit_price = unit_price
-            self.on_change_secondary_unit_price()
+            if setattr_changed(self, 'secondary_unit_price', unit_price):
+                self.on_change_secondary_unit_price()
 
 
 class Line_ShipmentCost(metaclass=PoolMeta):
@@ -469,7 +488,7 @@ class Line_ShipmentCost(metaclass=PoolMeta):
     def get_from_shopify_shipping(cls, sale, shipping_line, line=None):
         line = super().get_from_shopify_shipping(
             sale, shipping_line, line=line)
-        line.shipment_cost = Decimal(shipping_line.price)
+        setattr_changed(line, 'shipment_cost', Decimal(shipping_line.price))
         return line
 
 # TODO: refund as return sale
