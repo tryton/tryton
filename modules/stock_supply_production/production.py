@@ -155,6 +155,7 @@ class Production(metaclass=PoolMeta):
         Return the value of the production request.
         """
         pool = Pool()
+        UoM = pool.get('product.uom')
         Date = pool.get('ir.date')
         with Transaction().set_context(company=company.id):
             today = Date.today()
@@ -162,13 +163,22 @@ class Production(metaclass=PoolMeta):
             date = today
         else:
             date -= datetime.timedelta(1)
+        pbom = product.get_bom(bom_pattern)
         unit = product.default_uom
+        if pbom:
+            for output in pbom.bom.outputs:
+                if output.product == product:
+                    # Use output unit to ensure the quantity requested is
+                    # not floored to 0
+                    unit = output.unit
+                    quantity = UoM.compute_qty(
+                        product.default_uom, quantity, unit, round=False)
+                    break
         quantity = unit.ceil(quantity)
         if order_point:
             origin = str(order_point)
         else:
             origin = 'stock.order_point,-1'
-        pbom = product.get_bom(bom_pattern)
         return cls(
             planned_date=date,
             company=company,
