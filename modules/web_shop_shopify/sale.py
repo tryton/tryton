@@ -134,8 +134,7 @@ class Sale(IdentifierMixin, metaclass=PoolMeta):
             line = id2line.pop(line_item.id, None)
             quantity = line_item.quantity
             for refund_line_item in refund_line_items[line_item.id]:
-                if refund_line_item.restock_type == 'cancel':
-                    quantity -= refund_line_item.quantity
+                quantity -= refund_line_item.quantity
             lines.append(Line.get_from_shopify(
                     sale, line_item, quantity, line=line))
         for shipping_line, line in zip_longest(
