@@ -65,3 +65,21 @@ Options` selected with an `Attribute
 
    For each variant of a product, the value of the :guilabel:`Shopify Options`
    attributes must be unique.
+
+.. _Admin links:
+
+Admin Links
+===========
+
+The module provides links that offer direct access to the corresponding Tryton
+record based on the Shopify identifier.
+You can use these links to create an `admin link extension
+<https://shopify.dev/docs/apps/build/admin/admin-links>`_.
+
+   - ``GET`` ``/<database_name>/web_shop_shopify/products/<product id>``
+
+   - ``GET`` ``/<database_name>/web_shop_shopify/products/<product id>/variants/<variant id>``
+
+   - ``GET`` ``/<database_name>/web_shop_shopify/customers/<customer id>``
+
+   - ``GET`` ``/<database_name>/web_shop_shopify/orders/<order id>``

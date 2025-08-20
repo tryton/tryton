@@ -6,7 +6,7 @@ import hmac
 import logging
 
 from trytond.protocols.wrappers import (
-    HTTPStatus, Response, abort, with_pool, with_transaction)
+    HTTPStatus, Response, abort, redirect, with_pool, with_transaction)
 from trytond.wsgi import app
 
 logger = logging.getLogger(__name__)
@@ -60,3 +60,68 @@ def order(request, pool, shop):
     else:
         logger.info("Unsupported topic '%s'", topic)
     return Response(status=HTTPStatus.NO_CONTENT)
+
+
+@app.route('/<database_name>/web_shop_shopify/products/<id>', methods={'GET'})
+@app.auth_required
+@with_pool
+@with_transaction(user='request')
+def shopify_product(request, pool, id):
+    Template = pool.get('product.template')
+    try:
+        template, = Template.search(
+            [('shopify_identifiers.shopify_identifier_char', '=', id)],
+            limit=1)
+    except ValueError:
+        abort(HTTPStatus.NOT_FOUND)
+    return redirect(template.__href__)
+
+
+@app.route(
+    '/<database_name>/web_shop_shopify'
+    '/products/<product_id>/variants/<variant_id>',
+    methods={'GET'})
+@app.auth_required
+@with_pool
+@with_transaction(user='request')
+def shopify_product_variant(request, pool, product_id, variant_id):
+    Product = pool.get('product.product')
+    try:
+        product, = Product.search([
+                ('template.shopify_identifiers.shopify_identifier_char',
+                    '=', product_id),
+                ('shopify_identifiers.shopify_identifier_char',
+                    '=', variant_id),
+                ],
+            limit=1)
+    except ValueError:
+        abort(HTTPStatus.NOT_FOUND)
+    return redirect(product.__href__)
+
+
+@app.route('/<database_name>/web_shop_shopify/customers/<id>', methods={'GET'})
+@app.auth_required
+@with_pool
+@with_transaction(user='request')
+def shopify_customer(request, pool, id):
+    Party = pool.get('party.party')
+    try:
+        party, = Party.search([
+                ('shopify_identifiers.shopify_identifier_char', '=', id),
+                ], limit=1)
+    except ValueError:
+        abort(HTTPStatus.NOT_FOUND)
+    return redirect(party.__href__)
+
+
+@app.route('/<database_name>/web_shop_shopify/orders/<id>', methods={'GET'})
+@app.auth_required
+@with_pool
+@with_transaction(user='request')
+def shopify_order(request, pool, id):
+    Sale = pool.get('sale.sale')
+    try:
+        sale, = Sale.search([('shopify_identifier_char', '=', id)], limit=1)
+    except ValueError:
+        abort(HTTPStatus.NOT_FOUND)
+    return redirect(sale.__href__)
