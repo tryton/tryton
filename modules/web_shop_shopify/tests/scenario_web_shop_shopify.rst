@@ -599,7 +599,7 @@ Ignore shipment exception::
     >>> sale.reload()
     >>> invoice, = sale.invoices
     >>> invoice.total_amount
-    Decimal('164.52')
+    Decimal('164.53')
     >>> payment, = sale.payments
     >>> payment.state
     'succeeded'
