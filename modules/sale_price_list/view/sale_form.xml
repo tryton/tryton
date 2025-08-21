@@ -2,9 +2,8 @@
 <!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
 this repository contains the full copyright notices and license terms. -->
 <data>
-    <xpath expr="//field[@name='sale_date']" position="before">
+    <xpath expr="//label[@name='shipping_date']" position="before">
         <label name="price_list"/>
         <field name="price_list"/>
-        <newline/>
     </xpath>
 </data>
