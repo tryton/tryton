@@ -569,6 +569,7 @@ class Shop(metaclass=PoolMeta):
                     sale.untaxed_amount_cache = None
                     sale.tax_amount_cache = None
                     sale.total_amount_cache = None
+                    sale.shopify_tax_adjustment = None
                     to_update[sale] = order
                     states_to_restore[sale.state].append(sale)
         Sale.write(list(to_update.keys()), {'state': 'draft'})
@@ -578,6 +579,7 @@ class Shop(metaclass=PoolMeta):
         for sale, order in to_update.items():
             sale.shopify_tax_adjustment = (
                 Decimal(order.current_total_price) - sale.total_amount)
+        Sale.save(to_update.keys())
         Sale.store_cache(to_update.keys())
         Amendment._clear_sale(to_update.keys())
         to_process, to_quote = [], []
