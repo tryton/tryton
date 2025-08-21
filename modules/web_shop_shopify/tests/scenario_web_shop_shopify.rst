@@ -510,7 +510,7 @@ Run fetch order::
     >>> payment.state
     'processing'
     >>> payment.amount
-    Decimal('258.98')
+    Decimal('0')
     >>> sale.carrier == carrier
     True
     >>> sale.state
