@@ -16,12 +16,13 @@
     }
 
     // circumvent https://bugzilla.mozilla.org/show_bug.cgi?id=505521
+    // Use page position to not depend on the monitor.
     let dragoverFixAdded = false;
     let lastWindowDragEvent = null;
-    const fillEventScreenPosition = (e) => {
-        e.screenPosition = {
-            x: e.screenX,
-            y: e.screenY,
+    const fillEventPagePosition = (e) => {
+        e.pagePosition = {
+            x: e.pageX,
+            y: e.pageY,
         };
 
         if (!navigator.userAgent.search("Firefox")) {
@@ -37,9 +38,9 @@
 
         if (lastWindowDragEvent &&
             (e.timeStamp - lastWindowDragEvent.timeStamp) < 100) {
-            e.screenPosition = {
-                x: lastWindowDragEvent.screenX,
-                y: lastWindowDragEvent.screenY,
+            e.pagePosition = {
+                x: lastWindowDragEvent.pageX,
+                y: lastWindowDragEvent.pageY,
             };
         }
     }
@@ -273,7 +274,7 @@
                             col.style.width = `${header.offsetWidth}px`;
                         }
                     }
-                    th.dataset.startPosition = event.screenX;
+                    th.dataset.startPosition = event.pageX;
                     th.dataset.originalWidth = th.offsetWidth;
 
                     this.table.addClass('table-bordered');
@@ -285,10 +286,10 @@
                 // the latest value of the width is used
                 let column_widths = {};
                 resizer.on('drag', (event) => {
-                    fillEventScreenPosition(event);
+                    fillEventPagePosition(event);
                     let resized_th = event.target.parentNode;
                     let col = this.colgroup[0].childNodes[resized_th.dataset.column];
-                    let width_offset = (event.screenPosition.x -
+                    let width_offset = (event.pagePosition.x -
                         resized_th.dataset.startPosition);
                     if (Sao.i18n.rtl) {
                         width_offset *= -1;
