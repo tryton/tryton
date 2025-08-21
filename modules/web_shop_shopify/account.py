@@ -101,7 +101,7 @@ class Payment(IdentifierMixin, metaclass=PoolMeta):
 
         to_save = []
         for payment in id2payments.values():
-            if captured[payment] and payment.amount != captured[payment]:
+            if payment.amount != captured[payment]:
                 payment.amount = captured[payment]
                 to_save.append(payment)
         cls.proceed(to_save)
