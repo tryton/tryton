@@ -3666,10 +3666,10 @@
         init: function() {
             this.el = jQuery('<div/>', {
                 'id': 'processing',
-                'class': 'text-center'
+                'class': 'alert alert-info',
+                'role': 'alert',
             });
-            var label = jQuery('<span/>', {
-                'class': 'label label-info',
+            var label = jQuery('<p/>', {
                 'text': Sao.i18n.gettext('Processing'),
             }).appendTo(this.el);
             for (var i = 0; i < 3; i ++) {
