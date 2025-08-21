@@ -14,7 +14,7 @@ from tryton.common import IconFactory, RPCException, RPCExecute
 from tryton.common.underline import set_underline
 from tryton.gui.window.win_csv import WinCSV
 
-_ = gettext
+_ = gettext.gettext
 N_ = gettext.ngettext
 
 
