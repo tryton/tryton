@@ -460,7 +460,7 @@ class Location(DeactivableMixin, tree(), ModelSQL, ModelView):
             }.get(operator_, lambda v, l: False)
 
         ids = []
-        for location in cls.search([]):
+        for location in cls.search([], order=[('left', 'ASC')]):
             if operator_(getattr(location, name), operand):
                 ids.append(location.id)
         return [('id', 'in', ids)]
