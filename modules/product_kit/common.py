@@ -229,10 +229,16 @@ def order_line_mixin(prefix):
         def get_moves_progress(self, name):
             progress = super().get_moves_progress(name)
             if self.components:
-                progress = 0.
-                for component in self.components:
-                    progress += component.moves_progress
-                progress = round(progress / len(self.components), 4)
+                if any(c.moves_progress is not None for c in self.components):
+                    progress = 0.
+                    n = 0
+                    for component in self.components:
+                        if component.moves_progress is not None:
+                            progress += component.moves_progress
+                            n += 1
+                    progress = round(progress / n, 4)
+                else:
+                    progress = None
             return progress
 
         def _get_invoice_line_quantity(self):
