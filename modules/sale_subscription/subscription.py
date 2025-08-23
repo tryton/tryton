@@ -17,7 +17,7 @@ from trytond.modules.currency.fields import Monetary
 from trytond.modules.product import price_digits
 from trytond.pool import Pool
 from trytond.pyson import Bool, Eval, If
-from trytond.tools import sortable_values
+from trytond.tools import firstline, sortable_values
 from trytond.transaction import Transaction
 from trytond.wizard import (
     Button, StateAction, StateTransition, StateView, Wizard)
@@ -532,6 +532,8 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
         states={
             'readonly': Eval('subscription_state') != 'draft',
             })
+    summary = fields.Function(
+        fields.Char("Summary"), 'on_change_with_summary')
 
     quantity = fields.Float(
         "Quantity", digits='unit',
@@ -628,6 +630,10 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
     def on_change_with_subscription_end_date(self, name=None):
         if self.subscription:
             return self.subscription.end_date
+
+    @fields.depends('description')
+    def on_change_with_summary(self, name=None):
+        return firstline(self.description or '')
 
     @fields.depends('subscription', '_parent_subscription.company')
     def on_change_with_company(self, name=None):

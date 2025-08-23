@@ -4,7 +4,7 @@ this repository contains the full copyright notices and license terms. -->
 <tree sequence="sequence">
     <field name="subscription" expand="1"/>
     <field name="service" expand="1"/>
-    <field name="description" expand="1"/>
+    <field name="summary" expand="1" optional="1"/>
     <field name="consumption_recurrence"/>
     <field name="consumption_delay"/>
     <field name="quantity" symbol="unit"/>
