@@ -145,4 +145,5 @@ class DeactivableMixinTestCase(unittest.TestCase):
                 ([('active', '=', False)], [inactive]),
                 ([('active', 'in', [True, False])], [active, inactive]),
                 ]:
-            self.assertListEqual(Deactivable.search(domain), founds)
+            with self.subTest(domain=domain):
+                self.assertListEqual(Deactivable.search(domain), founds)
