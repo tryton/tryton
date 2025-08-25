@@ -392,9 +392,9 @@ class Line(IdentifierMixin, metaclass=PoolMeta):
         total_discount = sum(
             Decimal(d.amount) for d in line_item.discount_allocations)
         unit_price = ((
-                (Decimal(line_item.price) * (quantity or 1))
+                (Decimal(line_item.price) * (line_item.quantity or 1))
                 - Decimal(total_discount))
-            / (quantity or 1))
+            / (line_item.quantity or 1))
         unit_price = round_price(Tax.reverse_compute(
                 unit_price, line.taxes, sale.sale_date))
         if line.product:
