@@ -22,9 +22,15 @@ class QuantityIssue(
     __name__ = 'stock.quantity.issue'
 
     company = fields.Many2One(
-        'company.company', "Company", required=True)
+        'company.company', "Company", required=True,
+        states={
+            'readonly': Eval('state') != 'open',
+            })
     origin = fields.Reference(
         "Origin", 'get_origins', required=True,
+        states={
+            'readonly': Eval('state') != 'open',
+            },
         domain={
             'stock.shipment.out': [
                 ('company', '=', Eval('company', -1)),
