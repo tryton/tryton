@@ -420,15 +420,29 @@ class Line(IdentifierMixin, metaclass=PoolMeta):
 
     @classmethod
     def get_from_shopify_shipping(cls, sale, shipping_line, line=None):
+        pool = Pool()
+        Tax = pool.get('account.tax')
+
         if not line:
             line = cls(type='line')
             line.sale = sale
+            line.product = None
+        line._set_shopify_shipping_product(sale, shipping_line)
         setattr_changed(line, 'quantity', 1)
-        setattr_changed(
-            line, 'unit_price',
-            round_price(Decimal(shipping_line.discounted_price)))
+        if line.product:
+            if line._changed_values():
+                line.on_change_product()
+        else:
+            setattr_changed(line, 'taxes', ())
+        unit_price = Decimal(shipping_line.discounted_price)
+        unit_price = round_price(Tax.reverse_compute(
+                unit_price, line.taxes, sale.sale_date))
+        setattr_changed(line, 'unit_price', unit_price)
         setattr_changed(line, 'description', shipping_line.title)
         return line
+
+    def _set_shopify_shipping_product(self, sale, shipping_line):
+        pass
 
     def _get_invoice_line_quantity(self):
         quantity = super()._get_invoice_line_quantity()
@@ -495,5 +509,10 @@ class Line_ShipmentCost(metaclass=PoolMeta):
             sale, shipping_line, line=line)
         setattr_changed(line, 'shipment_cost', Decimal(shipping_line.price))
         return line
+
+    def _set_shopify_shipping_product(self, sale, shipping_line):
+        super()._set_shopify_shipping_product(sale, shipping_line)
+        if sale.carrier:
+            setattr_changed(self, 'product', sale.carrier.carrier_product)
 
 # TODO: refund as return sale

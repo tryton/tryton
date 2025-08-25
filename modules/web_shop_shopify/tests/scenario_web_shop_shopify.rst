@@ -499,6 +499,8 @@ Run fetch order::
     4
     >>> sorted([l.unit_price for l in sale.lines])
     [Decimal('4.0000'), Decimal('8.5727'), Decimal('8.5727'), Decimal('42.9309')]
+    >>> any(l.product == carrier_product for l in sale.lines)
+    True
     >>> sale.total_amount
     Decimal('258.98')
     >>> len(sale.payments)
