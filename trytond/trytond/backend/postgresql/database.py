@@ -70,7 +70,7 @@ def replace_special_values(s, **mapping):
 class LoggingCursor(cursor):
     def execute(self, sql, args=None):
         if logger.isEnabledFor(logging.DEBUG):
-            logger.debug(self.mogrify(sql, args))
+            logger.debug('query: %s', self.mogrify(sql, args).decode())
         cursor.execute(self, sql, args)
 
 
