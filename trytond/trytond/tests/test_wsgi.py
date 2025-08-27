@@ -3,10 +3,12 @@
 
 from unittest.mock import Mock, sentinel
 
+from werkzeug.routing import Map, Rule
+
 from trytond.exceptions import TrytonException
 from trytond.protocols.wrappers import Response
 from trytond.tests.test_tryton import Client, TestCase
-from trytond.wsgi import TrytondWSGI
+from trytond.wsgi import Base64Converter, TrytondWSGI
 
 
 class WSGIAppTestCase(TestCase):
@@ -14,6 +16,29 @@ class WSGIAppTestCase(TestCase):
 
     class TestException(TrytonException):
         pass
+
+    def test_base64_converter(self):
+        "Test Base64 converter"
+        m = Map([
+                Rule('/a/<base64:a>', endpoint='a'),
+                ], converters={
+                'base64': Base64Converter,
+                })
+        a = m.bind('example.org', '/')
+
+        self.assertEqual(a.match('/a/dGVzdA=='), ('a', {'a': 'test'}))
+        self.assertEqual(a.match('/a/dGVzdA'), ('a', {'a': 'test'}))
+
+    def test_base64_converter_build(self):
+        "Test Base64 converter build"
+        m = Map([
+                Rule('/a/<base64:a>', endpoint='a'),
+                ], converters={
+                'base64': Base64Converter,
+                })
+        a = m.bind('example.org', '/')
+
+        self.assertEqual(a.build('a', {'a': 'test'}), '/a/dGVzdA')
 
     def test_one_error_handler_called(self):
         """Test an error handler is called

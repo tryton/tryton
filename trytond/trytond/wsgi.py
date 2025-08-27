@@ -44,10 +44,15 @@ logger = logging.getLogger(__name__)
 class Base64Converter(BaseConverter):
 
     def to_python(self, value):
+        if missing_padding := len(value) % 4:
+            value += '=' * (4 - missing_padding)
         return base64.urlsafe_b64decode(value).decode('utf-8')
 
     def to_url(self, value):
-        return base64.urlsafe_b64encode(value.encode('utf-8')).decode('ascii')
+        return (
+            base64.urlsafe_b64encode(value.encode('utf-8'))
+            .decode('ascii')
+            .rstrip('='))
 
 
 class TrytondWSGI(object):
