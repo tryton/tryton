@@ -444,7 +444,8 @@ class Database(DatabaseInterface):
     _list_cache_timestamp = {}
     flavor = Flavor(
         paramstyle='qmark', function_mapping=MAPPING, null_ordering=False,
-        max_limit=-1)
+        max_limit=-1,
+        filter_=sqlite.sqlite_version_info >= (3, 30, 0))
     IN_MAX = 200
 
     TYPES_MAPPING = {

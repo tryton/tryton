@@ -205,7 +205,7 @@ class Database(DatabaseInterface):
     _has_proc = defaultdict(lambda: defaultdict(dict))
     _extensions = defaultdict(dict)
     _search_full_text_languages = defaultdict(dict)
-    flavor = Flavor(ilike=True)
+    flavor = Flavor(ilike=True, filter_=True)
 
     TYPES_MAPPING = {
         'SMALLINT': SQLType('INT2', 'INT2'),
