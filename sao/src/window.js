@@ -1681,7 +1681,7 @@
                     }, this.session).then(count => {
                         return Sao.common.message.run(
                             Sao.i18n.ngettext('%1 record imported',
-                                '%1 records imported', count));
+                                '%1 records imported', count, count));
                     }).then(prm.resolve, prm.reject);
                 }
             });
@@ -2206,7 +2206,7 @@
             }
             return Sao.common.message.run(
                 Sao.i18n.ngettext(
-                    "%1 record saved", "%1 records saved", size));
+                    "%1 record saved", "%1 records saved", size, size));
         },
         set_url: function() {
             var path = [this.session.database, 'data', this.screen.model_name];
