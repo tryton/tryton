@@ -1473,7 +1473,7 @@
                     }, this.session).then(function(count) {
                         return Sao.common.message.run(
                             Sao.i18n.ngettext('%1 record imported',
-                                '%1 records imported', count));
+                                '%1 records imported', count, count));
                     }).then(prm.resolve, prm.reject);
                 }.bind(this)
             });
@@ -1986,7 +1986,7 @@
                 csv, this.name + '.csv', {type: 'text/csv;charset=utf-8'});
             return Sao.common.message.run(
                 Sao.i18n.ngettext('%1 record saved', '%1 records saved',
-                    data.length));
+                    data.length, data.length));
         },
         set_url: function() {
             var path = [this.session.database, 'data', this.screen.model_name];
