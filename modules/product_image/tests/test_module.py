@@ -31,7 +31,8 @@ class ProductImageTestCase(ModuleTestCase):
 
         image = Image(template=template)
         image.image = urllib.request.urlopen(
-            'https://picsum.photos/200').read()
+            'https://downloads.tryton.org/tests/product-image/chair.jpg'
+            ).read()
         image.save()
 
         self.assertEqual(template.image_url, None)
@@ -62,7 +63,8 @@ class ProductImageTestCase(ModuleTestCase):
 
         image = Image(template=template)
         image.image = urllib.request.urlopen(
-            'https://picsum.photos/200/400').read()
+            'https://downloads.tryton.org/tests/product-image/chair-800.jpg'
+            ).read()
         image.save()
 
         self.assertEqual(template.image_url, None)
@@ -73,10 +75,10 @@ class ProductImageTestCase(ModuleTestCase):
             r'/product/image/CODE/.*/Template\?s=64')
 
         img = PIL.Image.open(io.BytesIO(image.get(size=100)))
-        self.assertEqual(img.size, (50, 100))
+        self.assertEqual(img.size, (78, 100))
 
         img = PIL.Image.open(io.BytesIO(image.get(size=(100, 200))))
-        self.assertEqual(img.size, (100, 200))
+        self.assertEqual(img.size, (100, 128))
 
     @with_transaction()
     def test_round_size(self):
@@ -110,7 +112,8 @@ class ProductImageTestCase(ModuleTestCase):
         for _ in range(3):
             image = Image(template=template)
             image.image = urllib.request.urlopen(
-                'https://picsum.photos/200').read()
+                'https://downloads.tryton.org/tests/product-image/chair.jpg'
+                ).read()
             image.save()
 
         template.write_date = dt.datetime(2025, 1, 1)  # fix timestamp

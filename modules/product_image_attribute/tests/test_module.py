@@ -45,22 +45,26 @@ class ProductImageAttributeTestCase(ModuleTestCase):
         product.save()
         image1 = Image(template=template)
         image1.image = urllib.request.urlopen(
-            'https://picsum.photos/200').read()
+            'https://downloads.tryton.org/tests/product-image/chair.jpg'
+            ).read()
         image1.save()
         image2 = Image(template=template, product=product)
         image2.image = urllib.request.urlopen(
-            'https://picsum.photos/200').read()
+            'https://downloads.tryton.org/tests/product-image/chair.jpg'
+            ).read()
         image2.save()
         image3 = Image(template=template)
         image3.image = urllib.request.urlopen(
-            'https://picsum.photos/200').read()
+            'https://downloads.tryton.org/tests/product-image/chair.jpg'
+            ).read()
         image3.attributes = {
             'attr1': 'foo',
             }
         image3.save()
         image4 = Image(template=template)
         image4.image = urllib.request.urlopen(
-            'https://picsum.photos/200').read()
+            'https://downloads.tryton.org/tests/product-image/chair.jpg'
+            ).read()
         image4.attributes = {
             'attr1': 'bar',
             }
