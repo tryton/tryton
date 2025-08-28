@@ -1466,17 +1466,16 @@
                 'class': 'btn btn-link',
                 'type': 'button',
                 'title': Sao.i18n.gettext("Cancel"),
-            }).text(Sao.i18n.gettext("Cancel")).click(() => {
-                this.response('RESPONSE_CANCEL');
+            }).text(Sao.i18n.gettext("Cancel")).on('click', (evt) => {
+                this.response(evt, 'RESPONSE_CANCEL');
             }).appendTo(this.dialog.footer);
 
             jQuery('<button/>', {
                 'class': 'btn btn-primary',
                 'type': 'submit',
                 'title': Sao.i18n.gettext("Import"),
-            }).text(Sao.i18n.gettext("Import")).click(e => {
-                e.preventDefault();
-                this.response('RESPONSE_OK');
+            }).text(Sao.i18n.gettext("Import")).on('click', (evt) => {
+                this.response(evt, 'RESPONSE_OK');
             }).appendTo(this.dialog.footer);
 
             jQuery('<button/>', {
@@ -1758,7 +1757,10 @@
                 }
             }
         },
-        response: function(response_id) {
+        response: function(evt, response_id) {
+            evt.preventDefault();
+            let button = jQuery(evt.currentTarget);
+            button.prop('disabled', true);
             if(response_id == 'RESPONSE_OK') {
                 var fields = [];
                 this.fields_selected.children('li').each((i, field_el) => {
@@ -1768,6 +1770,8 @@
                 if(fname) {
                     this.import_csv(fname, fields).then(() => {
                         this.destroy();
+                    }, () => {
+                        button.prop('disabled', false);
                     });
                 } else {
                     this.destroy();
@@ -1821,17 +1825,16 @@
                 'class': 'btn btn-link',
                 'type': 'button',
                 'title': Sao.i18n.gettext("Close"),
-            }).text(Sao.i18n.gettext("Close")).click(() => {
-                this.response('RESPONSE_CLOSE');
+            }).text(Sao.i18n.gettext("Close")).on('click', (evt) => {
+                this.response(evt, 'RESPONSE_CLOSE');
             }).appendTo(this.dialog.footer);
 
             jQuery('<button/>', {
                 'class': 'btn btn-primary',
                 'type': 'submit',
                 'title': Sao.i18n.gettext("Save As..."),
-            }).text(Sao.i18n.gettext("Save As...")).click(e => {
-                e.preventDefault();
-                this.response('RESPONSE_OK');
+            }).text(Sao.i18n.gettext("Save As...")).on('click', (evt) => {
+                this.response(evt, 'RESPONSE_OK');
             }).appendTo(this.dialog.footer);
 
             this.info_bar = new Sao.Window.InfoBar();
@@ -2286,7 +2289,10 @@
                 Sao.common.ICONFACTORY.get_icon_img('tryton-drag')
             ).appendTo(this.fields_selected);
         },
-        response: function(response_id) {
+        response: function(evt, response_id) {
+            evt.preventDefault();
+            let button = jQuery(evt.currentTarget);
+            button.prop('disabled', true);
             this.info_bar.clear();
             if(response_id == 'RESPONSE_OK') {
                 var fields = [];
@@ -2339,6 +2345,8 @@
                 }
                 prm.then(data => {
                     this.export_csv(data, paths, header);
+                }).always(() => {
+                    button.prop('disabled', false);
                 });
             } else {
                 this.destroy();

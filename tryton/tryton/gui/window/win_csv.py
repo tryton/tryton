@@ -5,7 +5,7 @@ import locale
 import os
 import sys
 
-from gi.repository import Gdk, GObject, Gtk
+from gi.repository import Gdk, GLib, GObject, Gtk
 
 from tryton.common import IconFactory, RPCExecute
 from tryton.config import TRYTON_ICON
@@ -318,3 +318,7 @@ class WinCSV(NoModal):
 
     def hide(self):
         self.dialog.hide()
+
+    def response(self, dialog, response):
+        dialog.set_sensitive(False)
+        GLib.idle_add(lambda: dialog.set_sensitive(True) or False)

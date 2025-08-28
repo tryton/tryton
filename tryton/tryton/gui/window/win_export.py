@@ -360,6 +360,7 @@ class WinExport(WinCSV, InfoBar):
         self.model2.append((string_, name))
 
     def response(self, dialog, response):
+        super().response(dialog, response)
         self.info_bar_clear()
         if response in {Gtk.ResponseType.OK, Gtk.ResponseType.ACCEPT}:
             fields = []

@@ -200,6 +200,7 @@ class WinImport(WinCSV):
         self.model2.clear()
 
     def response(self, dialog, response):
+        super().response(dialog, response)
         if response == Gtk.ResponseType.OK:
             fields = []
             iter = self.model2.get_iter_first()
