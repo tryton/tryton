@@ -293,7 +293,8 @@ class Sale(IdentifierMixin, metaclass=PoolMeta):
                 location_id = shop_warehouse.shopify_id
         for line in self.lines:
             if (line.type != 'line'
-                    or not line.shopify_identifier):
+                    or not line.shopify_identifier
+                    or not line.movable):
                 continue
             fulfillable_quantity = fulfillable_quantities.get(
                 line.shopify_identifier, 0)
