@@ -7,7 +7,8 @@ import shopify
 from shopify.resources.fulfillment import FulfillmentV2
 
 from trytond.i18n import gettext, lazy_gettext
-from trytond.model import ModelSQL, ModelView, Unique, fields
+from trytond.model import ModelSQL, ModelView, Unique, Workflow, fields
+from trytond.model.exceptions import AccessError
 from trytond.pool import Pool, PoolMeta
 
 from .common import IdentifierMixin
@@ -97,6 +98,19 @@ class ShipmentOut(metaclass=PoolMeta):
             default = default.copy()
         default.setdefault('shopify_identifiers')
         return super().copy(records, default=default)
+
+    @classmethod
+    @ModelView.button
+    @Workflow.transition('draft')
+    def draft(cls, shipments):
+        for shipment in shipments:
+            if shipment.state == 'cancelled' and shipment.shopify_identifiers:
+                raise AccessError(
+                    gettext(
+                        'web_shop_shopify.'
+                        'msg_shipment_cancelled_draft_shopify',
+                        shipment=shipment.rec_name))
+        super().draft(shipments)
 
 
 class ShipmentShopifyIdentifier(IdentifierMixin, ModelSQL, ModelView):

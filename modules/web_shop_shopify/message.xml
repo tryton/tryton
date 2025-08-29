@@ -79,5 +79,8 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_fulfillment_order_line_not_found">
             <field name="text">Failed to find fulfillment order for %(quantity)s of move "%(move)s".</field>
         </record>
+        <record model="ir.message" id="msg_shipment_cancelled_draft_shopify">
+            <field name="text">You cannot reset shipment "%(shipment)s" to draft because it is linked to a Shopify fulfillment.</field>
+        </record>
     </data>
 </tryton>
