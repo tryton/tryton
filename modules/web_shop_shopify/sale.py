@@ -230,7 +230,7 @@ class Sale(IdentifierMixin, metaclass=PoolMeta):
 
             # TODO: manage drop shipment
 
-            if self.shipment_state == 'sent':
+            if self.shipment_state == 'sent' or self.state == 'done':
                 # TODO: manage shopping refund
                 refund = self.get_shopify_refund(shipping={
                         'full_refund': False,
