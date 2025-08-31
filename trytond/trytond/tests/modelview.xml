@@ -16,6 +16,21 @@
             ]]>
         </field>
     </record>
+    <record model="ir.ui.view" id="test_modelview_empty_page_access_view_form">
+        <field name="model">test.modelview.empty_page.access</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <![CDATA[
+            <form>
+                <notebook>
+                    <page id="page">
+                        <field name="foo"/>
+                    </page>
+                </notebook>
+            </form>
+            ]]>
+        </field>
+    </record>
     <record model="ir.ui.view" id="test_modelview_depends_depends_form">
         <field name="model">test.modelview.depends_depends</field>
         <field name="type">form</field>

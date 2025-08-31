@@ -486,7 +486,9 @@ class ModelView(Model):
                             element.attrib['colspan'] = colspan
 
         if type == 'form':
-            for page in tree.xpath('//page[not(descendant::*)]'):
+            for page in tree.xpath('''
+                    //page[not(descendant::*)] |
+                    //page[not(*[not(starts-with(@id, 'hidden '))])]'''):
                 page.getparent().remove(page)
 
             set_visible(tree,

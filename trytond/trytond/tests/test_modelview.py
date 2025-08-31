@@ -759,6 +759,27 @@ class ModelView(TestCase):
         self.assertEqual(len(pages), 1)
         self.assertEqual(pages[0].attrib['id'], 'non-empty')
 
+    @with_transaction(context={'_check_access': True})
+    def test_remove_empty_page_access(self):
+        "Testing the removal of empty pages by field access"
+        pool = Pool()
+        EmptyPage = pool.get('test.modelview.empty_page.access')
+        FieldAccess = pool.get('ir.model.field.access')
+
+        access = FieldAccess()
+        access.model = EmptyPage.__name__
+        access.field = 'foo'
+        access.perm_read = False
+        access.perm_write = False
+        access.save()
+
+        arch = EmptyPage.fields_view_get(view_type='form')['arch']
+
+        parser = etree.XMLParser()
+        tree = etree.fromstring(arch, parser=parser)
+        pages = tree.xpath('//page')
+        self.assertEqual(len(pages), 0)
+
     @with_transaction()
     def test_active_field(self):
         "Testing active field is set and added to view fields"

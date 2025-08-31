@@ -205,6 +205,12 @@ class ModelViewEmptyPage(ModelView):
     __name__ = 'test.modelview.empty_page'
 
 
+class ModelViewEmptyPageAccess(ModelView):
+    __name__ = 'test.modelview.empty_page.access'
+
+    foo = fields.Char("Char")
+
+
 class ModelViewCircularDepends(ModelView):
     __name__ = 'test.modelview.circular_depends'
 
@@ -288,6 +294,7 @@ def register(module):
         ModelViewLinkTarget,
         ModelViewRPC,
         ModelViewEmptyPage,
+        ModelViewEmptyPageAccess,
         ModelViewCircularDepends,
         ModeViewDependsDepends,
         ModelViewViewAttributes,
