@@ -27,6 +27,6 @@ class Production(ControlledMixin, metaclass=PoolMeta):
 
     @classmethod
     @ModelView.button
-    @ControlledMixin.control('do', 'quality.wizard_production_inspect_done')
+    @ControlledMixin.control('do', 'quality.wizard_production_inspect_do')
     def do(cls, productions):
         return super().do(productions)

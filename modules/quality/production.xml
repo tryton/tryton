@@ -14,15 +14,15 @@ this repository contains the full copyright notices and license terms. -->
             <field name="action" ref="wizard_production_inspect_run"/>
         </record>
 
-        <record model="ir.action.wizard" id="wizard_production_inspect_done">
+        <record model="ir.action.wizard" id="wizard_production_inspect_do">
             <field name="name">Inspect Done</field>
             <field name="wiz_name">quality.inspect</field>
             <field name="model">production</field>
         </record>
-        <record model="ir.action.keyword" id="wizard_production_inspect_done_keyword1">
+        <record model="ir.action.keyword" id="wizard_production_inspect_do_keyword1">
             <field name="keyword">form_action</field>
             <field name="model">production,-1</field>
-            <field name="action" ref="wizard_production_inspect_done"/>
+            <field name="action" ref="wizard_production_inspect_do"/>
         </record>
 
         <record model="ir.action.keyword" id="act_quality_inspection_form_relate_keyword_production">
