@@ -27,6 +27,7 @@ class Sale(IdentifierMixin, metaclass=PoolMeta):
     shopify_tax_adjustment = Monetary(
         "Shopify Tax Adjustment",
         currency='currency', digits='currency', readonly=True)
+    shopify_status_url = fields.Char("Shopify Status URL", readonly=True)
 
     @classmethod
     def __setup__(cls):
@@ -37,6 +38,12 @@ class Sale(IdentifierMixin, metaclass=PoolMeta):
                 Unique(t, t.web_shop, t.shopify_identifier_signed),
                 'web_shop_shopify.msg_identifier_sale_web_shop_unique'),
             ]
+
+    def get_web_status_url(self, name):
+        url = super().get_web_status_url(name)
+        if self.shopify_status_url:
+            url = self.shopify_status_url
+        return url
 
     @fields.depends('shopify_tax_adjustment')
     def get_tax_amount(self):
@@ -108,6 +115,7 @@ class Sale(IdentifierMixin, metaclass=PoolMeta):
                 sale.invoice_address = address
 
         setattr_changed(sale, 'reference', order.name)
+        setattr_changed(sale, 'shopify_status_url', order.order_status_url)
         setattr_changed(sale, 'comment', order.note)
         setattr_changed(sale, 'sale_date', dateutil.parser.isoparse(
                 order.processed_at or order.created_at).date())

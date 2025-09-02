@@ -7,6 +7,9 @@ this repository contains the full copyright notices and license terms. -->
         <field name="web_shop"/>
         <label name="web_id"/>
         <field name="web_id"/>
+
+        <label name="web_status_url"/>
+        <field name="web_status_url" widget="url" colspan="3"/>
     </xpath>
     <xpath expr="//button[@name='process']" position="after">
         <button name="web_shop_update"/>

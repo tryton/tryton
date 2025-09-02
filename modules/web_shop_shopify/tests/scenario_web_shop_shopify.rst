@@ -519,6 +519,7 @@ Run fetch order::
     >>> assertEqual(sale.party.phone.replace(' ', ''), customer_phone.replace('-', ''))
     >>> len(sale.party.contact_mechanisms)
     2
+    >>> assertTrue(sale.web_status_url)
 
 Capture full amount::
 

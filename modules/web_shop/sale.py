@@ -23,6 +23,15 @@ class Sale(metaclass=PoolMeta):
             'required': Bool(Eval('web_shop')),
             'readonly': ~Eval('web_id'),
             })
+    web_status_url = fields.Function(
+        fields.Char(
+            "Web Status URL",
+            states={
+                'invisible': ~Eval('web_status_url'),
+                },
+            help="The URL where the customer can check "
+            "the order's current status."),
+        'get_web_status_url')
 
     @classmethod
     def __setup__(cls):
@@ -54,6 +63,9 @@ class Sale(metaclass=PoolMeta):
     def on_change_web_shop(self, nbytes=None):
         if self.web_shop and not self.web_id:
             self.web_id = token_hex(nbytes)
+
+    def get_web_status_url(self, name):
+        pass
 
     @classmethod
     def copy(cls, sales, default=None):
