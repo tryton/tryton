@@ -15,7 +15,7 @@ try:
 except ImportError:
     requests_utils = None
 
-__version__ = "7.6.6"
+__version__ = "7.6.7"
 __series__ = '.'.join(__version__.split('.')[:2])
 
 os.environ.setdefault(
