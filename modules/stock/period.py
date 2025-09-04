@@ -134,7 +134,8 @@ class Period(Workflow, ModelSQL, ModelView):
                                 ('planned_date', '<=', recent_date),
                                 ],
                             ('effective_date', '<=', recent_date),
-                            ]]):
+                        ]],
+                    limit=1):
                 raise PeriodCloseError(
                     gettext('stock.msg_period_close_assigned_move'))
 
