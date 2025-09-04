@@ -71,9 +71,9 @@ class Sale(IdentifierMixin, metaclass=PoolMeta):
                 if shop_warehouse.shopify_id == str(order.location_id):
                     sale.warehouse = shop_warehouse.warehouse
                     break
-        if sale.currency.code != order.currency:
+        if sale.currency.code != order.presentment_currency:
             sale.currency, = Currency.search([
-                    ('code', '=', order.currency),
+                    ('code', '=', order.presentment_currency),
                     ], limit=1)
 
         if sale.party != shop.guest_party:
