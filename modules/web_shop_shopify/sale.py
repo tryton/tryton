@@ -244,7 +244,7 @@ class Sale(IdentifierMixin, metaclass=PoolMeta):
             if self.shipment_state == 'sent' or self.state == 'done':
                 # TODO: manage shopping refund
                 refund = self.get_shopify_refund(shipping={
-                        'full_refund': False,
+                        'full_refund': self.shipment_state == 'none',
                         })
                 if refund:
                     if not refund.save():
