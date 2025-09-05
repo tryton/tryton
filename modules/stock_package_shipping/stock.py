@@ -201,7 +201,7 @@ class ShippingMixin:
     def validate(cls, shipments):
         super().validate(shipments)
         for shipment in shipments:
-            if shipment.carrier and shipment.carrier.shipping_service:
+            if shipment.has_shipping_service:
                 method_name = ('validate_packing_%s'
                     % shipment.carrier.shipping_service)
                 validator = getattr(shipment, method_name)
@@ -317,9 +317,10 @@ class CreateShipping(Wizard):
     start = StateTransition()
 
     def transition_start(self):
-        shipping_service = self.record.carrier.shipping_service
-        method_name = 'validate_packing_%s' % shipping_service
-        getattr(self.record, method_name)()
+        if self.record.has_shipping_service:
+            shipping_service = self.record.carrier.shipping_service
+            method_name = 'validate_packing_%s' % shipping_service
+            getattr(self.record, method_name)()
         return 'end'
 
 
