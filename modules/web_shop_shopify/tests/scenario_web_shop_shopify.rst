@@ -22,7 +22,7 @@ Imports::
     >>> from trytond.modules.company.tests.tools import create_company
     >>> from trytond.modules.web_shop_shopify.product import Template
     >>> from trytond.modules.web_shop_shopify.web import Shop
-    >>> from trytond.tests.tools import activate_modules, assertEqual
+    >>> from trytond.tests.tools import activate_modules, assertEqual, assertTrue
 
     >>> FETCH_SLEEP, MAX_SLEEP = 1, 10
 
@@ -434,6 +434,9 @@ Create an order on Shopify::
     >>> customer.email = (
     ...     ''.join(random.choice(string.ascii_letters) for _ in range(10))
     ...     + '@example.com')
+    >>> customer_phone = '+32-495-555-' + (
+    ...     ''.join(random.choice(string.digits) for _ in range(3)))
+    >>> customer.phone = customer_phone
     >>> customer.addresses = [{
     ...         'address1': "Street",
     ...         'city': "City",
@@ -507,6 +510,12 @@ Run fetch order::
     >>> assertEqual(sale.carrier, carrier)
     >>> sale.state
     'quotation'
+    >>> sale.party.name
+    'Customer'
+    >>> assertTrue(sale.party.email)
+    >>> assertEqual(sale.party.phone.replace(' ', ''), customer_phone.replace('-', ''))
+    >>> len(sale.party.contact_mechanisms)
+    2
 
 Capture full amount::
 
@@ -529,6 +538,8 @@ Capture full amount::
     'processing'
     >>> len(sale.invoices)
     0
+    >>> len(sale.party.contact_mechanisms)
+    2
 
 Make a partial shipment::
 
