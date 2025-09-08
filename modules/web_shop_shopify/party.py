@@ -29,7 +29,9 @@ class Party(IdentifiersMixin, metaclass=PoolMeta):
                 continue
             for contact_mechanism in contact_mechanisms:
                 if (contact_mechanism.type in types
-                        and contact_mechanism.value == value):
+                        and (contact_mechanism.value_compact
+                            == contact_mechanism.format_value_compact(
+                                value, contact_mechanism.type))):
                     break
             else:
                 contact_mechanisms.append(ContactMechanism(
