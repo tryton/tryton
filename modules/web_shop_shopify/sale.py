@@ -110,7 +110,9 @@ class Sale(IdentifierMixin, metaclass=PoolMeta):
         if order.phone:
             for contact_mechanism in party.contact_mechanisms:
                 if (contact_mechanism.type in {'phone', 'mobile'}
-                        and contact_mechanism.value == order.phone):
+                        and (contact_mechanism.value_compact
+                            == contact_mechanism.format_value_compact(
+                                order.phone, contact_mechanism.type))):
                     break
             else:
                 contact_mechanism = ContactMechanism(
