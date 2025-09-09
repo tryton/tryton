@@ -215,20 +215,15 @@
                     }
                 };
             }
+            let keys = this._data_keys(data);
             var color = this.view.attributes.color || Sao.config.graph_color;
             var rgb = Sao.common.hex2rgb(
                 Sao.common.COLOR_SCHEMES[color] || color);
             var maxcolor = Math.max.apply(null, rgb);
-            var keys = [];
-            var i, yfield;
-            for (i = 0; i < this.yfields.length; i++) {
-                yfield = this.yfields[i];
-                keys.push(yfield.key || yfield.name);
-            }
             var colors = Sao.common.generateColorscheme(
                 color, keys, maxcolor / (keys.length || 1));
-            for (i = 0; i < this.yfields.length; i++) {
-                yfield = this.yfields[i];
+            for (let i = 0; i < this.yfields.length; i++) {
+                let yfield = this.yfields[i];
                 if (yfield.color) {
                     colors[yfield.key || yfield.name] = yfield.color;
                 }
@@ -239,6 +234,14 @@
                 return colors[key] || color;
             };
             return c3_config;
+        },
+        _data_keys: function(data) {
+            let keys = [];
+            for (let i = 0; i < this.yfields.length; i++) {
+                let yfield = this.yfields[i];
+                keys.push(yfield.key || yfield.name);
+            }
+            return keys;
         },
         action: function(data, element) {
             var ids = this.ids[this._action_key(data)];
@@ -339,6 +342,13 @@
             config.data.columns = pie_columns;
             config.data.names = pie_names;
             return config;
+        },
+        _data_keys: function(data) {
+            let keys = [];
+            for (let i = 0; i < data.columns[1].length - 1; i++) {
+                keys.push(i);
+            }
+            return keys;
         },
         _add_id: function(key, id) {
             var type = this.xfield.type;
