@@ -15,3 +15,6 @@ logging
    using an ellipse.
 
    In the shortened version, strings and bytes are shortened.
+
+   The values of mapping using a sensitive name containing ``password``,
+   ``token`` and ``secret`` are always redacted.

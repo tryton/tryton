@@ -5,6 +5,19 @@ _MAX_ARGUMENTS = 5
 _MAX_ITEMS = 5
 _ELLIPSE = '...'
 _MAX_STR_LENGTH = 20 - len(_ELLIPSE)
+_SENSITIVE_KEYS = {'password', 'token', 'secret'}
+
+
+def is_sensitive_key(name):
+    return any(key in str(name) for key in _SENSITIVE_KEYS)
+
+
+def items_redacted(mapping):
+    for key, value in mapping.items():
+        if is_sensitive_key(key):
+            yield key, Ellipse()
+        else:
+            yield key, value
 
 
 class Ellipse:
@@ -63,7 +76,8 @@ class format_args:
         def _shorten_sequence(value):
             nonlocal _nb_items
 
-            for v in islice(value, None, self.max_items + 1):
+            stop = self.max_items + 1 if not self.verbose else None
+            for v in islice(value, None, stop):
                 if not self.verbose and not _nb_items:
                     yield Ellipse()
                     break
@@ -71,18 +85,18 @@ class format_args:
                 _nb_items -= 1
 
         def _log_repr(value):
-            if self.verbose:
-                return value
-            elif isinstance(value, bytes):
+            if isinstance(value, bytes):
+                if self.verbose:
+                    return value
                 return Ellipse(f'<{len(value)} bytes>')
             elif isinstance(value, str):
-                if len(value) <= _MAX_STR_LENGTH:
+                if len(value) <= _MAX_STR_LENGTH or self.verbose:
                     return value
                 return (value[:_MAX_STR_LENGTH]
                     + (_ELLIPSE if len(value) > _MAX_STR_LENGTH else ''))
             elif isinstance(value, Mapping):
                 def shorten(value):
-                    for items in _shorten_sequence(value.items()):
+                    for items in _shorten_sequence(items_redacted(value)):
                         if isinstance(items, Ellipse):
                             yield Ellipse(), Ellipse()
                             break
@@ -112,7 +126,7 @@ class format_args:
                 or not isinstance(logged_args[-1], Ellipse)):
             s += ', ' if self.args and self.kwargs else ''
             logged_kwargs = []
-            for key, value in self.kwargs.items():
+            for key, value in items_redacted(self.kwargs):
                 if not _nb_args and not self.verbose:
                     logged_kwargs.append(repr(Ellipse()))
                     break
@@ -124,3 +138,6 @@ class format_args:
 
         s += ')'
         return s
+
+
+__all__ = [format_args]
