@@ -146,11 +146,17 @@ class XMLRequest(Request):
 
     @property
     def rpc_method(self):
-        return self.parsed_data[1]
+        try:
+            return self.parsed_data[1] or ''
+        except Exception as e:
+            raise BadRequest("Unable to get RPC method") from e
 
     @property
     def rpc_params(self):
-        return self.parsed_data[0]
+        try:
+            return self.parsed_data[0] or []
+        except Exception as e:
+            raise BadRequest("Unable to get RPC params") from e
 
 
 class XMLProtocol:

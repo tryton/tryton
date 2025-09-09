@@ -132,18 +132,24 @@ class JSONRequest(Request):
                     object_hook=JSONDecoder())
             except HTTPException:
                 raise
-            except Exception:
-                raise BadRequest('Unable to read JSON request')
+            except Exception as e:
+                raise BadRequest('Unable to read JSON request') from e
         else:
             raise BadRequest('Not a JSON request')
 
     @cached_property
     def rpc_method(self):
-        return self.parsed_data['method']
+        try:
+            return self.parsed_data['method'] or ''
+        except Exception as e:
+            raise BadRequest("Unable to get RPC method") from e
 
     @cached_property
     def rpc_params(self):
-        return self.parsed_data['params']
+        try:
+            return self.parsed_data['params'] or []
+        except Exception as e:
+            raise BadRequest("Unable to get RPC params") from e
 
 
 class JSONProtocol:
