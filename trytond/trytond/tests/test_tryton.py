@@ -33,6 +33,7 @@ from trytond.config import config, parse_uri
 from trytond.model import (
     ModelSingleton, ModelSQL, ModelStorage, ModelView, Workflow, fields)
 from trytond.model.fields import Function
+from trytond.modules import parse_module_config
 from trytond.pool import Pool, isregisteredby
 from trytond.protocols.wrappers import Response
 from trytond.pyson import PYSONDecoder, PYSONEncoder
@@ -1157,6 +1158,20 @@ class ModuleTestCase(_DBTestCase):
                 continue
             with self.subTest(model=mname):
                 self.assertIn('id', {oexpr for oexpr, _ in model._order})
+
+    def test_register_depend_in_extras_depend(self):
+        "Test register conditionals are extras depend of module"
+        config, _ = parse_module_config(self.module)
+
+        extras_depend = set(config.get(
+                'tryton', 'extras_depend', fallback='').strip().splitlines())
+        for section in config.sections():
+            if section.startswith('register '):
+                depends = set(section[len('register'):].strip().split())
+                self.assertLessEqual(
+                    depends, extras_depend,
+                    msg="Missing extras_depend %s in %s" % (
+                        list(depends - extras_depend), self.module))
 
 
 class RouteTestCase(_DBTestCase):
