@@ -337,6 +337,7 @@
 
             config.data.columns = pie_columns;
             config.data.names = pie_names;
+            config.data.order = null;
             return config;
         },
         _data_keys: function(data) {
