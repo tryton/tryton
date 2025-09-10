@@ -165,6 +165,7 @@ class ShipmentDrop(
                 ('cancelled', 'draft'),
                 ('shipped', 'done'),
                 ('shipped', 'cancelled'),
+                ('done', 'cancelled'),
                 ))
         cls._buttons.update({
                 'cancel': {
@@ -274,14 +275,9 @@ class ShipmentDrop(
     @process_purchase('supplier_moves')
     def cancel(cls, shipments):
         Move = Pool().get('stock.move')
-        Move.cancel([m for s in shipments for m in s.supplier_moves])
-        Move.cancel([m for s in shipments for m in s.customer_moves
-                if s.state == 'shipped'])
-        Move.write([m for s in shipments for m in s.customer_moves
-                if s.state != 'shipped'], {
-                'shipment': None,
-                'origin_drop': None,
-                })
+        Move.cancel([
+                m for s in shipments
+                for m in s.supplier_moves + s.customer_moves])
 
     @classmethod
     @ModelView.button
