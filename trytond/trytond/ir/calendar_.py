@@ -27,7 +27,7 @@ class _Calendar(ModelSQL):
             ('index', '>=', cls._min_index),
             ('index', '<=', cls._max_index),
             ]
-        cls._order = [('index', 'ASC')]
+        cls._order.insert(0, ('index', 'ASC'))
         cls._sql_constraints = [
             ('index_unique', Unique(t, t.index),
                 "The index must by unique.")

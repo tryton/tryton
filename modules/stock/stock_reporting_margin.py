@@ -236,7 +236,7 @@ class AbstractTimeseries(Abstract):
     @classmethod
     def __setup__(cls):
         super().__setup__()
-        cls._order = [('date', 'ASC')]
+        cls._order.insert(0, ('date', 'ASC'))
 
     @classmethod
     def _columns(cls, tables, withs):

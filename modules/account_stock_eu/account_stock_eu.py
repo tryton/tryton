@@ -264,7 +264,7 @@ class IntrastatDeclarationLine(ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super().__setup__()
-        cls._order = [
+        cls._order[0:0] = [
             ('type', 'ASC'),
             ('country', 'ASC'),
             ('tariff_code', 'ASC'),

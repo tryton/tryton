@@ -1146,6 +1146,18 @@ class ModuleTestCase(_DBTestCase):
                     tree = etree.parse(fp)
                 validator.assertValid(tree)
 
+    @with_transaction()
+    def test_model_order(self):
+        "Test that model _order is predictable"
+        pool = Pool()
+        for mname, model in pool.iterobject():
+            if not isregisteredby(model, self.module):
+                continue
+            if not issubclass(model, ModelSQL):
+                continue
+            with self.subTest(model=mname):
+                self.assertIn('id', {oexpr for oexpr, _ in model._order})
+
 
 class RouteTestCase(_DBTestCase):
     "Tryton Route Test Case"
