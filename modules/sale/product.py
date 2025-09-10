@@ -27,19 +27,10 @@ class Configuration(metaclass=PoolMeta):
 
     default_lead_time = fields.MultiValue(default_lead_time)
 
-    @classmethod
-    def default_default_lead_time(cls, **pattern):
-        return cls.multivalue_model(
-            'default_lead_time').default_default_lead_time()
-
 
 class DefaultLeadTime(ModelSQL, ValueMixin):
     __name__ = 'product.configuration.default_lead_time'
     default_lead_time = default_lead_time
-
-    @classmethod
-    def default_default_lead_time(cls):
-        return datetime.timedelta(0)
 
 
 class Template(metaclass=PoolMeta):
