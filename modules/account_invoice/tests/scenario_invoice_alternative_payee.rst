@@ -73,13 +73,13 @@ Post customer invoice::
 
     >>> party1.reload()
     >>> party1.receivable
-    Decimal('0.0')
+    Decimal('0')
     >>> party2.reload()
     >>> party2.receivable
     Decimal('10.00')
     >>> party3.reload()
     >>> party3.receivable
-    Decimal('0.0')
+    Decimal('0')
 
 Copying invoice with single alternative payee is kept::
 
@@ -104,10 +104,10 @@ Set another payee::
 
     >>> party1.reload()
     >>> party1.receivable
-    Decimal('0.0')
+    Decimal('0')
     >>> party2.reload()
     >>> party2.receivable
-    Decimal('0.0')
+    Decimal('0')
     >>> party3.reload()
     >>> party3.receivable
     Decimal('10.00')

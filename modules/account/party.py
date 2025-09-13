@@ -1,5 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+from collections import defaultdict
 from decimal import Decimal
 
 from sql import Literal, Null
@@ -16,6 +17,7 @@ from trytond.modules.party.exceptions import EraseError
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval, If
 from trytond.tools import grouped_slice, reduce_ids, sqlite_apply_types
+from trytond.tools import timezone as tz
 from trytond.transaction import Transaction
 
 from .exceptions import AccountMissing
@@ -117,117 +119,124 @@ class Party(CompanyMultiValueMixin, metaclass=PoolMeta):
             return company.currency
 
     @classmethod
-    def get_receivable_payable(cls, parties, names):
-        '''
-        Function to compute receivable, payable (today or not) for party ids.
-        '''
-        result = {}
+    def _receivable_payable_query(cls, names, company, parties=None):
         pool = Pool()
-        MoveLine = pool.get('account.move.line')
         Account = pool.get('account.account')
         AccountType = pool.get('account.account.type')
-        User = pool.get('res.user')
         Date = pool.get('ir.date')
-        cursor = Transaction().connection.cursor()
+        Move = pool.get('account.move')
+        MoveLine = pool.get('account.move.line')
 
-        line = MoveLine.__table__()
+        transaction = Transaction()
+        context = transaction.context
         account = Account.__table__()
         account_type = AccountType.__table__()
+        move = Move.__table__()
+        move_line = MoveLine.__table__()
 
+        if date := context.get('date'):
+            today = date
+        elif datetime := context.get('_datetime'):
+            if company.timezone:
+                timezone = tz.ZoneInfo(company.timezone)
+                datetime = datetime.astimezone(timezone)
+            today = datetime.date()
+        else:
+            with transaction.set_context(company=company.id):
+                today = Date.today()
+
+        date = Coalesce(move_line.maturity_date, move.date)
+        expressions = {
+            'receivable': Sum(
+                move_line.debit - move_line.credit,
+                filter_=account_type.receivable),
+            'receivable_today': Sum(
+                move_line.debit - move_line.credit,
+                filter_=account_type.receivable & (date <= today)),
+            'payable': Sum(
+                move_line.debit - move_line.credit,
+                filter_=account_type.payable),
+            'payable_today': Sum(
+                move_line.debit - move_line.credit,
+                filter_=account_type.payable & (date <= today)),
+            }
+        columns = []
         for name in names:
-            if name not in ('receivable', 'payable',
-                    'receivable_today', 'payable_today'):
-                raise Exception('Bad argument')
-            result[name] = dict((p.id, Decimal('0.0')) for p in parties)
+            columns.append(Coalesce(expressions[name], Decimal()).as_(name))
 
-        user = User(Transaction().user)
+        if parties is not None:
+            party_where = reduce_ids(move_line.party, [p.id for p in parties])
+        else:
+            party_where = Literal(True)
+
+        query = (
+            move_line
+            .join(move, condition=move_line.move == move.id)
+            .join(account, condition=move_line.account == account.id)
+            .join(account_type, condition=account.type == account_type.id)
+            .select(
+                move_line.party.as_('party'),
+                *columns,
+                where=(
+                    (move_line.reconciliation == Null)
+                    & (account.company == company.id)
+                    & party_where),
+                group_by=move_line.party))
+        return query
+
+    @classmethod
+    def get_receivable_payable(cls, parties, names):
+        pool = Pool()
+        User = pool.get('res.user')
+
+        transaction = Transaction()
+        cursor = transaction.connection.cursor()
+        amounts = {name: defaultdict(Decimal) for name in names}
+
+        user = User(transaction.user)
         if not user.company:
-            return result
-        company_id = user.company.id
-        exp = Decimal(str(10.0 ** -user.company.currency.digits))
-        with Transaction().set_context(company=company_id):
-            today = Date.today()
+            return amounts
 
-        amount = Sum(Coalesce(line.debit, 0) - Coalesce(line.credit, 0))
-        for name in names:
-            code = name
-            today_where = Literal(True)
-            if name in ('receivable_today', 'payable_today'):
-                code = name[:-6]
-                today_where = ((line.maturity_date <= today)
-                    | (line.maturity_date == Null))
-            for sub_parties in grouped_slice(parties):
-                sub_ids = [p.id for p in sub_parties]
-                party_where = reduce_ids(line.party, sub_ids)
-                query = (line.join(account,
-                        condition=account.id == line.account
-                        ).join(account_type,
-                        condition=account.type == account_type.id
-                        ).select(line.party, amount.as_(name),
-                        where=(getattr(account_type, code)
-                            & (line.reconciliation == Null)
-                            & (account.company == company_id)
-                            & party_where
-                            & today_where),
-                        group_by=line.party))
-                if backend.name == 'sqlite':
-                    sqlite_apply_types(query, [None, 'NUMERIC'])
-                cursor.execute(*query)
-                for party, value in cursor:
-                    result[name][party] = value.quantize(exp)
-        return result
+        company = user.company
+        currency = company.currency
+        for sub_parties in grouped_slice(parties):
+            query = cls._receivable_payable_query(names, company, sub_parties)
+            if backend.name == 'sqlite':
+                sqlite_apply_types(query, [None] + ['NUMERIC'] * 4)
+            cursor.execute(*query)
+            for party_id, *values in cursor:
+                for name, value in zip(names, values):
+                    amounts[name][party_id] = currency.round(value)
+        return amounts
 
     @classmethod
     def search_receivable_payable(cls, name, clause):
         pool = Pool()
-        MoveLine = pool.get('account.move.line')
-        Account = pool.get('account.account')
-        AccountType = pool.get('account.account.type')
         User = pool.get('res.user')
-        Date = pool.get('ir.date')
+        MoveLine = pool.get('account.move.line')
 
-        line = MoveLine.__table__()
-        account = Account.__table__()
-        account_type = AccountType.__table__()
-
-        if name not in ('receivable', 'payable',
-                'receivable_today', 'payable_today'):
-            raise Exception('Bad argument')
-        _, operator, value = clause
-
-        user = User(Transaction().user)
+        transaction = Transaction()
+        user = User(transaction.user)
         if not user.company:
-            return []
-        company_id = user.company.id
-        with Transaction().set_context(company=company_id):
-            today = Date.today()
+            return [('id', '=', -1)]
 
-        code = name
-        today_query = Literal(True)
-        if name in ('receivable_today', 'payable_today'):
-            code = name[:-6]
-            today_query = ((line.maturity_date <= today)
-                | (line.maturity_date == Null))
-
+        company = user.company
+        query = cls._receivable_payable_query([name], company)
+        columns = list(query.columns)
+        amount = columns.pop(1).expression
+        _, operator, value = clause
         Operator = fields.SQL_OPERATORS[operator]
 
-        # Need to cast numeric for sqlite
-        cast_ = MoveLine.debit.sql_cast
-        amount = cast_(Sum(Coalesce(line.debit, 0) - Coalesce(line.credit, 0)))
-        if operator in {'in', 'not in'}:
-            value = [cast_(Literal(Decimal(v or 0))) for v in value]
-        else:
-            value = cast_(Literal(Decimal(value or 0)))
-        query = (line.join(account, condition=account.id == line.account
-                ).join(account_type, condition=account.type == account_type.id
-                ).select(line.party,
-                where=(getattr(account_type, code)
-                    & (line.party != Null)
-                    & (line.reconciliation == Null)
-                    & (account.company == company_id)
-                    & today_query),
-                group_by=line.party,
-                having=Operator(amount, value)))
+        if backend.name == 'sqlite':
+            cast_ = MoveLine.debit.sql_cast
+            if operator in {'in', 'not in'}:
+                value = [cast_(Literal(Decimal(v or 0))) for v in value]
+            else:
+                value = cast_(Literal(Decimal(value or 0)))
+            amount = cast_(amount)
+
+        query.having = Operator(amount, value)
+        query.columns = columns
         return [('id', 'in', query)]
 
     @property

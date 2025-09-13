@@ -77,7 +77,7 @@ Create lines to delegate::
     Decimal('100.00')
     >>> party2.reload()
     >>> party2.receivable
-    Decimal('0.0')
+    Decimal('0')
 
 Delegate lines::
 
@@ -92,7 +92,7 @@ Delegate lines::
     Decimal('100.00')
     >>> party1.reload()
     >>> party1.receivable
-    Decimal('0.0')
+    Decimal('0')
     >>> party2.reload()
     >>> party2.receivable
     Decimal('100.00')
