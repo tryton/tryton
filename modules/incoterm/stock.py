@@ -80,6 +80,10 @@ class ShipmentOut(ShipmentMixin, metaclass=PoolMeta):
     __name__ = 'stock.shipment.out'
 
     @classmethod
+    def _incoterm_readonly_state(cls):
+        return Eval('state').in_(['cancelled', 'shipped,' 'done'])
+
+    @classmethod
     def _incoterm_related_party(cls):
         return Eval('customer'), {'customer'}
 
