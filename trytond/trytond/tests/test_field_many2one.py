@@ -3,21 +3,16 @@
 
 from unittest.mock import patch
 
-from sql import Join
+from sql import Join, Table
 
+from trytond.config import config
 from trytond.model.exceptions import DomainValidationError
 from trytond.pool import Pool
 from trytond.tests.test_tryton import (
     TestCase, activate_module, with_transaction)
 
 
-class FieldMany2OneTestCase(TestCase):
-    "Test Field Many2One"
-
-    @classmethod
-    def setUpClass(cls):
-        super().setUpClass()
-        activate_module('tests')
+class CommonTestCaseMixin:
 
     @with_transaction()
     def test_create_id(self):
@@ -105,6 +100,50 @@ class FieldMany2OneTestCase(TestCase):
         self.assertEqual(many2one.many2one, target)
 
     @with_transaction()
+    def test_context_attribute(self):
+        "Test context on many2one attribute"
+        pool = Pool()
+        Many2One = pool.get('test.many2one_context')
+        Target = pool.get('test.many2one_context.target')
+
+        target, = Target.create([{}])
+        record, = Many2One.create([{
+                    'target': target.id,
+                    }])
+
+        self.assertEqual(record.target.context, 'foo')
+
+    @with_transaction()
+    def test_context_read(self):
+        "Test context on many2one read"
+        pool = Pool()
+        Many2One = pool.get('test.many2one_context')
+        Target = pool.get('test.many2one_context.target')
+
+        target, = Target.create([{}])
+        record, = Many2One.create([{
+                    'target': target.id,
+                    }])
+        data, = Many2One.read([record.id], ['target.context'])
+
+        self.assertEqual(data['target.']['context'], 'foo')
+
+    @with_transaction()
+    def test_context_set(self):
+        "Test context on many2one set"
+        pool = Pool()
+        Many2One = pool.get('test.many2one_context')
+        Target = pool.get('test.many2one_context.target')
+
+        target, = Target.create([{}])
+        record = Many2One(target=target.id)
+
+        self.assertEqual(record.target.context, 'foo')
+
+
+class SearchTestCaseMixin:
+
+    @with_transaction()
     def test_search_order_default(self):
         "Test search order by many2one default"
         pool = Pool()
@@ -164,45 +203,6 @@ class FieldMany2OneTestCase(TestCase):
 
         result = Many2One.search([('many2one', '=', target.id)])
         self.assertListEqual(result, [record])
-
-    @with_transaction()
-    def _test_search_join(self, subquery_threshold=1_000):
-        from trytond.model.fields import many2one
-
-        pool = Pool()
-        Target = pool.get('test.many2one_target')
-        Many2One = pool.get('test.many2one')
-        target1, target2 = Target.create([
-                {'value': 1},
-                {'value': 2},
-                ])
-        many2one1, many2one2 = Many2One.create([
-                {'many2one': target1},
-                {'many2one': target2},
-                ])
-
-        previous = many2one._subquery_threshold
-        many2one._subquery_threshold = subquery_threshold
-        self.addCleanup(setattr, many2one, '_subquery_threshold', previous)
-
-        many2ones = Many2One.search([
-                ('many2one.value', '=', 1),
-                ])
-        self.assertListEqual(many2ones, [many2one1])
-
-        return Many2One.search([
-                ('many2one.value', '=', 1),
-                ], query=True)
-
-    def test_search_join(self):
-        "Test search by many2one join"
-        query = self._test_search_join(0)
-        self.assertIsInstance(query.from_[0], Join)
-
-    def test_search_subquery(self):
-        "Test search by many2one subquery"
-        query = self._test_search_join()
-        self.assertNotIsInstance(query.from_[0], Join)
 
     @with_transaction()
     def test_search_nested_null(self):
@@ -278,45 +278,88 @@ class FieldMany2OneTestCase(TestCase):
         self.assertEqual(record.many2one.value, 42)
 
     @with_transaction()
-    def test_context_attribute(self):
-        "Test context on many2one attribute"
+    def test_search_strategy(self):
+        "Test search many2one with the right strategy"
         pool = Pool()
-        Many2One = pool.get('test.many2one_context')
-        Target = pool.get('test.many2one_context.target')
+        Target = pool.get('test.many2one_target')
+        Many2One = pool.get('test.many2one')
+        target1, target2 = Target.create([
+                {'value': 1},
+                {'value': 2},
+                ])
+        many2one1, many2one2 = Many2One.create([
+                {'many2one': target1},
+                {'many2one': target2},
+                ])
 
-        target, = Target.create([{}])
-        record, = Many2One.create([{
-                    'target': target.id,
-                    }])
+        many2ones = Many2One.search([
+                ('many2one.value', '=', 1),
+                ])
+        self.assertListEqual(many2ones, [many2one1])
 
-        self.assertEqual(record.target.context, 'foo')
+        query = Many2One.search([
+                ('many2one.value', '=', 1),
+                ], query=True)
+
+        sql_statement = {
+            'IN': Table,
+            'EXISTS': Join,
+            }[self._strategy]
+        self.assertIsInstance(query.from_[0], sql_statement)
 
     @with_transaction()
-    def test_context_read(self):
-        "Test context on many2one read"
+    def test_search_where_strategy(self):
+        "Test search on many2one using where uses the right strategy"
         pool = Pool()
-        Many2One = pool.get('test.many2one_context')
-        Target = pool.get('test.many2one_context.target')
+        Target = pool.get('test.many2one_target')
+        Many2One = pool.get('test.many2one')
+        target1, target2 = Target.create([
+                {'value': 1},
+                {'value': 2},
+                ])
+        many2one1, many2one2 = Many2One.create([
+                {'many2one': target1},
+                {'many2one': target2},
+                ])
 
-        target, = Target.create([{}])
-        record, = Many2One.create([{
-                    'target': target.id,
-                    }])
-        data, = Many2One.read([record.id], ['target.context'])
+        many2ones = Many2One.search([
+                ('many2one', 'where', [('value', '=', 1)]),
+                ])
+        self.assertListEqual(many2ones, [many2one1])
+        query = Many2One.search([
+                ('many2one', 'where', [('value', '=', 1)]),
+                ], query=True)
+        self.assertIn(self._strategy, str(query))
 
-        self.assertEqual(data['target.']['context'], 'foo')
 
-    @with_transaction()
-    def test_context_set(self):
-        "Test context on many2one set"
-        pool = Pool()
-        Many2One = pool.get('test.many2one_context')
-        Target = pool.get('test.many2one_context.target')
+class FieldMany2OneTestCase(
+        TestCase, CommonTestCaseMixin, SearchTestCaseMixin):
+    "Test Field Many2One"
+    _strategy = 'IN'
 
-        target, = Target.create([{}])
-        record = Many2One(target=target.id)
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        activate_module('tests')
 
-        self.assertEqual(record.target.context, 'foo')
+
+class FieldMany2OneExistsTestCase(
+        TestCase, CommonTestCaseMixin, SearchTestCaseMixin):
+    "Test Field Many2One"
+    _strategy = 'EXISTS'
+
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        activate_module('tests')
+
+    def setUp(self):
+        from trytond.model.fields import many2one
+        super().setUp()
+        previous = int(
+            config.get('database', 'subquery_threshold', default='1_000'))
+        many2one._subquery_threshold = 0
+        self.addCleanup(setattr, many2one, '_subquery_threshold', previous)
 
 
 class FieldMany2OneTreeTestCase(TestCase):
