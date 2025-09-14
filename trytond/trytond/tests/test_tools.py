@@ -438,6 +438,18 @@ class ToolsTestCase(TestCase):
                     "b={0: 0, 1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6}, "
                     "c={0: 0, 1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6}, "
                     "d={0: 0, 1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6})"),
+                (tuple(), {'password': "secret"},
+                    "(password=...)",
+                    "(password=...)"),
+                (tuple(), {'foo': {'token': "secret"}},
+                    "(foo={'token': ...})",
+                    "(foo={'token': ...})"),
+                (({'password': "secret"},), {},
+                    "({'password': ...})",
+                    "({'password': ...})"),
+                (({'foo': {'token': 'secret'}},), {},
+                    "({'foo': {'token': ...}})",
+                    "({'foo': {'token': ...}})"),
                 ]:
             with self.subTest(form='short', args=args, kwargs=kwargs):
                 self.assertEqual(
