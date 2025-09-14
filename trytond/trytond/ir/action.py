@@ -1106,8 +1106,12 @@ class ActionWizard(
         # TODO add cache
         actions = cls.search([
                 (cls._action_name, '=', name),
-                ('model', '=', model),
-                ], limit=1)
+                ['OR',
+                    ('model', '=', model),
+                    ('model', '=', None),
+                    ],
+                ],
+            order=[('model', 'ASC NULLS LAST')])
         if actions:
             action, = actions
             return action.name
