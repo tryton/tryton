@@ -372,7 +372,7 @@ class Line(IdentifierMixin, metaclass=PoolMeta):
                 setattr_changed(line, 'product', product)
         if line.product:
             line._set_shopify_quantity(line.product, quantity)
-            if line._changed_values():
+            if line._changed_values:
                 line.on_change_product()
         else:
             setattr_changed(line, 'quantity', quantity)
