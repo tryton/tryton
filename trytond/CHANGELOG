@@ -1,3 +1,4 @@
+* Redact sensitive values from the log (issue14220)
 
 Version 7.4.16 - 2025-09-03
 ---------------------------
