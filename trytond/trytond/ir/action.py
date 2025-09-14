@@ -1069,6 +1069,8 @@ class ActionWizard(
     wiz_name = fields.Char('Wizard name', required=True)
     model = fields.Char('Model')
     window = fields.Boolean('Window', help='Run wizard in a new window.')
+    _get_name_cache = Cache('ir_action_wizard.get_name')
+    _get_models_cache = Cache('ir_action_wizard.get_models')
 
     @staticmethod
     def default_type():
@@ -1076,26 +1078,45 @@ class ActionWizard(
 
     @classmethod
     def get_models(cls, name, action_id=None):
-        # TODO add cache
+        key = (name, action_id)
+        models = cls._get_models_cache.get(key)
+        if models is not None:
+            return set(models)
+
         domain = [
             (cls._action_name, '=', name),
             ]
         if action_id:
             domain.append(('id', '=', action_id))
         actions = cls.search(domain)
-        return {a.model for a in actions if a.model}
+        models = {a.model for a in actions if a.model}
+        cls._get_models_cache.set(key, models)
+        return models
 
     @classmethod
     def get_name(cls, name, model):
-        # TODO add cache
+        key = (name, model)
+        wiz_name = cls._get_name_cache.get(key)
+        if wiz_name is not None:
+            return wiz_name
+        else:
+            wiz_name = name
+
         actions = cls.search([
                 (cls._action_name, '=', name),
                 ('model', '=', model),
                 ], limit=1)
         if actions:
             action, = actions
-            return action.name
-        return name
+            wiz_name = action.name
+        cls._get_name_cache.set(key, wiz_name)
+        return wiz_name
+
+    @classmethod
+    def on_modification(cls, mode, keywords, field_names=None):
+        super().on_modification(mode, keywords, field_names=field_names)
+        cls._get_name_cache.clear()
+        cls._get_models_cache.clear()
 
 
 class ActionURL(ActionMixin, ModelSQL, ModelView):
