@@ -82,6 +82,12 @@ Create mandate::
     >>> mandate.identification = 'MANDATE'
     >>> mandate.type = 'recurrent'
     >>> mandate.click('request')
+    >>> mandate.state
+    'requested'
+
+    >>> mandate_report = Report('account.payment.sepa.mandate')
+    >>> _ = mandate_report.execute([mandate])
+
     >>> mandate.signature_date = today
     >>> mandate.click('validate_mandate')
     >>> mandate.state

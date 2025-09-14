@@ -26,7 +26,8 @@ from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval, If
 from trytond.report import Report
 from trytond.tools import (
-    grouped_slice, is_full_text, lstrip_wildcard, reduce_ids, sortable_values)
+    cached_property, grouped_slice, is_full_text, lstrip_wildcard, reduce_ids,
+    sortable_values)
 from trytond.transaction import Transaction
 
 from .sepa_handler import CAMT054
@@ -503,12 +504,19 @@ class Mandate(Workflow, ModelSQL, ModelView):
             'company': Eval('company', -1),
             },
         depends={'company'})
+    address = fields.Many2One(
+        'party.address', "Address",
+        domain=[
+            ('party', '=', Eval('party', -1)),
+            ],
+        states={
+            'readonly': Eval('state').in_(['validated', 'cancelled']),
+            'required': Eval('state') == 'validated',
+            })
     account_number = fields.Many2One('bank.account.number', 'Account Number',
         ondelete='RESTRICT',
         states={
-            'readonly': (
-                Eval('state').in_(['validated', 'cancelled'])
-                | ~Eval('party')),
+            'readonly': Eval('state').in_(['validated', 'cancelled']),
             'required': Eval('state') == 'validated',
             },
         domain=[
@@ -603,6 +611,14 @@ class Mandate(Workflow, ModelSQL, ModelView):
                 t, (t.state, Index.Equality(cardinality='low')),
                 where=t.state.in_(['draft', 'requested'])))
 
+    @fields.depends('party', '_parent_party.id')
+    def on_change_party(self):
+        if self.party and self.party.id >= 0:
+            self.address = self.party.address_get()
+        else:
+            self.address = None
+            self.account_number = None
+
     @staticmethod
     def default_company():
         return Transaction().context.get('company')
@@ -611,6 +627,10 @@ class Mandate(Workflow, ModelSQL, ModelView):
     def on_change_company(self):
         self.identification_readonly = self.default_identification_readonly(
             company=self.company.id if self.company else None)
+
+    @cached_property
+    def company_address(self):
+        return self.company.party.address_get()
 
     @staticmethod
     def default_type():

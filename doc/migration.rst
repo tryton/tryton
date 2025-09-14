@@ -14,6 +14,26 @@ a database from another series.
 .. warning::
    You cannot skip more than 2 series ending with ``.0``.
 
+7.8
+---
+
+After
+~~~~~
+
+* If ``account_payment_sepa`` module is activated, fill the address of
+  validated mandates with default value with the ``trytond-console``:
+
+  .. code-block:: python
+
+     Mandate = pool.get('account.payment.sepa.mandate')
+     mandates = Mandate.search([
+         ('state', '=', 'validated'),
+         ('address', '=', None),
+         ])
+     for mandate in mandates:
+         mandate.address = mandate.on_change_party()
+     Mandate.save(mandates)
+
 7.6
 ---
 

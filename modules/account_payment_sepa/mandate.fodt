@@ -753,7 +753,7 @@
       <text:p text:style-name="P16">Your address</text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Table1.B1" table:number-columns-spanned="2" office:value-type="string">
-      <text:p text:style-name="P13"><text:placeholder text:placeholder-type="text">&lt;mandate.party.addresses[0].street if mandate.party.addresses else &apos;&apos;&gt;</text:placeholder></text:p>
+      <text:p text:style-name="P13"><text:placeholder text:placeholder-type="text">&lt;mandate.address.street if mandate.address else &apos;&apos;&gt;</text:placeholder></text:p>
      </table:table-cell>
      <table:covered-table-cell/>
     </table:table-row>
@@ -771,10 +771,10 @@
       <text:p text:style-name="P15"/>
      </table:table-cell>
      <table:table-cell table:style-name="Table1.B5" office:value-type="string">
-      <text:p text:style-name="Table_20_Contents"><text:placeholder text:placeholder-type="text">&lt;mandate.party.addresses[0].postal_code if mandate.party.addresses else &apos;&apos;&gt;</text:placeholder></text:p>
+      <text:p text:style-name="Table_20_Contents"><text:placeholder text:placeholder-type="text">&lt;mandate.address.postal_code if mandate.address else &apos;&apos;&gt;</text:placeholder></text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Table1.B1" office:value-type="string">
-      <text:p text:style-name="P13"><text:placeholder text:placeholder-type="text">&lt;mandate.party.addresses[0].city if mandate.party.addresses else &apos;&apos;&gt;</text:placeholder></text:p>
+      <text:p text:style-name="P13"><text:placeholder text:placeholder-type="text">&lt;mandate.address.city if mandate.address else &apos;&apos;&gt;</text:placeholder></text:p>
      </table:table-cell>
     </table:table-row>
     <table:table-row>
@@ -793,7 +793,7 @@
       <text:p text:style-name="P21"/>
      </table:table-cell>
      <table:table-cell table:style-name="Table1.B1" table:number-columns-spanned="2" office:value-type="string">
-      <text:p text:style-name="P13"><text:placeholder text:placeholder-type="text">&lt;mandate.party.addresses[0].country.rec_name if mandate.party.addresses and mandate.party.addresses[0].country else &apos;&apos;&gt;</text:placeholder></text:p>
+      <text:p text:style-name="P13"><text:placeholder text:placeholder-type="text">&lt;mandate.address.country.rec_name if mandate.address and mandate.address.country else &apos;&apos;&gt;</text:placeholder></text:p>
      </table:table-cell>
      <table:covered-table-cell/>
     </table:table-row>
@@ -883,7 +883,7 @@
       <text:p text:style-name="P15"/>
      </table:table-cell>
      <table:table-cell table:style-name="Table1.B1" table:number-columns-spanned="2" office:value-type="string">
-      <text:p text:style-name="P14"><text:placeholder text:placeholder-type="text">&lt;mandate.company.party.addresses[0].street if mandate.company.party.addresses else &apos;&apos;&gt;</text:placeholder></text:p>
+      <text:p text:style-name="P14"><text:placeholder text:placeholder-type="text">&lt;mandate.company_address.street if mandate.company_address else &apos;&apos;&gt;</text:placeholder></text:p>
      </table:table-cell>
      <table:covered-table-cell/>
     </table:table-row>
@@ -901,10 +901,10 @@
       <text:p text:style-name="P15"/>
      </table:table-cell>
      <table:table-cell table:style-name="Table1.B5" office:value-type="string">
-      <text:p text:style-name="P14"><text:placeholder text:placeholder-type="text">&lt;mandate.company.party.addresses[0].postal_code if mandate.company.party.addresses else &apos;&apos;&gt;</text:placeholder></text:p>
+      <text:p text:style-name="P14"><text:placeholder text:placeholder-type="text">&lt;mandate.company_address.postal_code if mandate.company_address else &apos;&apos;&gt;</text:placeholder></text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Table1.B1" office:value-type="string">
-      <text:p text:style-name="P14"><text:placeholder text:placeholder-type="text">&lt;mandate.company.party.addresses[0].city if mandate.company.party.addresses else &apos;&apos;&gt;</text:placeholder></text:p>
+      <text:p text:style-name="P14"><text:placeholder text:placeholder-type="text">&lt;mandate.company_address.city if mandate.company_address else &apos;&apos;&gt;</text:placeholder></text:p>
      </table:table-cell>
     </table:table-row>
     <table:table-row>
@@ -923,7 +923,7 @@
       <text:p text:style-name="P15"/>
      </table:table-cell>
      <table:table-cell table:style-name="Table1.B1" table:number-columns-spanned="2" office:value-type="string">
-      <text:p text:style-name="P14"><text:placeholder text:placeholder-type="text">&lt;mandate.company.party.addresses[0].country.rec_name if mandate.company.party.addresses and mandate.company.party.addresses[0].country else &apos;&apos;&gt;</text:placeholder></text:p>
+      <text:p text:style-name="P14"><text:placeholder text:placeholder-type="text">&lt;mandate.company_address.country.rec_name if mandate.company_address and mandate.company_address.country else &apos;&apos;&gt;</text:placeholder></text:p>
      </table:table-cell>
      <table:covered-table-cell/>
     </table:table-row>

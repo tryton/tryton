@@ -74,6 +74,7 @@ def setup_mandate(company, customer, account):
     return Mandate.create([{
                 'company': company,
                 'party': customer,
+                'address': customer.addresses[0],
                 'account_number': account.numbers[0],
                 'identification': 'MANDATE',
                 'type': 'recurrent',
