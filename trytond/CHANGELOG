@@ -1,3 +1,7 @@
+
+Version 7.6.7 - 2025-09-15
+--------------------------
+* Bug fixes (see mercurial logs for details)
 * Redact sensitive values from the log (issue14220)
 
 Version 7.6.6 - 2025-09-03
