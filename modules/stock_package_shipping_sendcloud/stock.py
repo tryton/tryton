@@ -173,26 +173,31 @@ class CreateShippingSendcloud(Wizard):
             'external_reference': '/'.join([shipment.number, package.number]),
             'quantity': 1,
             'order_number': shipment.number,
-            'weight': ceil(
-                UoM.compute_qty(
-                    package.weight_uom, package.total_weight, kg, round=False)
-                * 100) / 100,
-            'length': ceil(
-                UoM.compute_qty(
-                    package.length_uom, package.length, cm, round=False)
-                * 100) / 100,
-            'width': ceil(
-                UoM.compute_qty(
-                    package.width_uom, package.width, cm, round=False)
-                * 100) / 100,
-            'height': ceil(
-                UoM.compute_qty(
-                    package.height_uom, package.height, cm, round=False)
-                * 100) / 100,
             'request_label': True,
             }
         if address.post_box:
             parcel['to_post_number'] = address.post_box
+        if package.total_weight is not None:
+            parcel['weight'] = ceil(
+                UoM.compute_qty(
+                    package.weight_uom, package.total_weight, kg, round=False)
+                * 100) / 100
+        if (package.length is not None
+                and package.width is not None
+                and package.height is not None):
+            parcel.update(
+                length=ceil(
+                    UoM.compute_qty(
+                        package.length_uom, package.length, cm, round=False)
+                    * 100) / 100,
+                width=ceil(
+                    UoM.compute_qty(
+                        package.width_uom, package.width, cm, round=False)
+                    * 100) / 100,
+                height=ceil(
+                    UoM.compute_qty(
+                        package.height_uom, package.height, cm, round=False)
+                    * 100) / 100)
         shipping_method = credential.get_shipping_method(
             shipment, package=package)
         if shipping_method:
