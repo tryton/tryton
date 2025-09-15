@@ -769,66 +769,135 @@ class AccountTestCase(
     def test_find_best_reconciliation(self):
         "Test find best reconciliation"
         pool = Pool()
+        Account = pool.get('account.account')
+        FiscalYear = pool.get('account.fiscalyear')
+        Journal = pool.get('account.journal')
         Line = pool.get('account.move.line')
+        Move = pool.get('account.move')
+        Party = pool.get('party.party')
 
-        currency = create_currency('USD')
+        party = Party(name='Party')
+        party.save()
 
-        line1 = Line(
-            debit=Decimal(10), credit=0, currency=currency,
-            second_currency=None, account=None,
-            maturity_date=datetime.date(2024, 1, 1))
-        line2 = Line(
-            debit=0, credit=Decimal(10), currency=currency,
-            second_currency=None, account=None,
-            maturity_date=datetime.date(2024, 1, 2))
-        line3 = Line(
-            debit=0, credit=Decimal(5), currency=currency,
-            second_currency=None, account=None,
-            maturity_date=datetime.date(2024, 1, 3))
+        company = create_company()
+        with set_company(company):
+            create_chart(company)
+            fiscalyear = get_fiscalyear(company)
+            fiscalyear.save()
+            FiscalYear.create_period([fiscalyear])
+            period = fiscalyear.periods[0]
+            journal_revenue, = Journal.search([
+                    ('code', '=', 'REV'),
+                    ])
+            receivable, = Account.search([
+                    ('type.receivable', '=', True),
+                    ('closed', '=', False),
+                    ], limit=1)
+            currency = company.currency
 
-        for (lines, amount, best, remaining) in [
-                ([line1], 0, [line1], Decimal('10')),
-                ([line1], Decimal(10), [line1], Decimal(0)),
-                ([line1], Decimal(3), [line1], Decimal(7)),
-                ([line1, line2], 0, [line1, line2], Decimal(0)),
-                ([line1, line2], Decimal(10), [line1], Decimal(0)),
-                ([line1, line2], Decimal(-10), [line2], Decimal(0)),
-                ([line1, line2], Decimal(20), [line1], Decimal(-10)),
-                ([line1, line2], Decimal(-3), [line1, line2], Decimal(3)),
-                ([line1, line2], Decimal(-9), [line2], Decimal(-1)),
-                ([line1, line3], 0, [line1, line3], Decimal(5)),
-                ([line1, line2, line3], 0, [line1, line2], Decimal(0)),
-                ]:
-            with self.subTest(lines=lines, amount=amount):
-                self.assertEqual(
-                    Line.find_best_reconciliation(lines, currency, amount),
-                    (best, remaining))
+            move = Move()
+            move.period = period
+            move.journal = journal_revenue
+            move.date = period.start_date
+            move.save()
+
+            line1 = Line(
+                move=move, party=party,
+                debit=Decimal(10), credit=0,
+                account=receivable,
+                maturity_date=datetime.date(2024, 1, 1))
+            line2 = Line(
+                move=move, party=party,
+                debit=0, credit=Decimal(10),
+                account=receivable,
+                maturity_date=datetime.date(2024, 1, 2))
+            line3 = Line(
+                move=move, party=party,
+                debit=0, credit=Decimal(5),
+                account=receivable,
+                maturity_date=datetime.date(2024, 1, 3))
+            Line.save([line1, line2, line3])
+
+            for (lines, amount, best, remaining) in [
+                    ([line1], 0, [line1], Decimal('10')),
+                    ([line1], Decimal(10), [line1], Decimal(0)),
+                    ([line1], Decimal(3), [line1], Decimal(7)),
+                    ([line1, line2], 0, [line1, line2], Decimal(0)),
+                    ([line1, line2], Decimal(10), [line1], Decimal(0)),
+                    ([line1, line2], Decimal(-10), [line2], Decimal(0)),
+                    ([line1, line2], Decimal(20), [line1], Decimal(-10)),
+                    ([line1, line2], Decimal(-3), [line1, line2], Decimal(3)),
+                    ([line1, line2], Decimal(-9), [line2], Decimal(-1)),
+                    ([line1, line3], 0, [line1, line3], Decimal(5)),
+                    ([line1, line2, line3], 0, [line1, line2], Decimal(0)),
+                    ]:
+                with self.subTest(lines=lines, amount=amount):
+                    self.assertEqual(
+                        Line.find_best_reconciliation(lines, currency, amount),
+                        (best, remaining))
 
     @with_transaction()
     def test_find_best_reconciliation_currency(self):
         "Test find best reconciliation with different currencies"
         pool = Pool()
+        Account = pool.get('account.account')
+        FiscalYear = pool.get('account.fiscalyear')
+        Journal = pool.get('account.journal')
         Line = pool.get('account.move.line')
+        Move = pool.get('account.move')
+        Party = pool.get('party.party')
 
         currency1 = create_currency('USD')
         currency2 = create_currency('EUR')
 
-        line1 = Line(
-            debit=Decimal(10), credit=0, currency=currency1,
-            second_currency=None, account=None,
-            maturity_date=datetime.date(2024, 1, 1))
-        line2 = Line(
-            debit=0, credit=Decimal(20), currency=currency2,
-            second_currency=currency1, amount_second_currency=Decimal('-10'),
-            account=None, maturity_date=datetime.date(2024, 1, 1))
-        line3 = Line(
-            debit=0, credit=Decimal(5), currency=None,
-            second_currency=None, account=None,
-            maturity_date=datetime.date(2024, 1, 3))
+        party = Party(name='Party')
+        party.save()
 
-        self.assertEqual(
-            Line.find_best_reconciliation([line1, line2, line3], currency1),
-            ([line1, line2], Decimal(0)))
+        company = create_company(currency=currency1)
+        with set_company(company):
+            create_chart(company)
+            fiscalyear = get_fiscalyear(company)
+            fiscalyear.save()
+            FiscalYear.create_period([fiscalyear])
+            period = fiscalyear.periods[0]
+            journal_revenue, = Journal.search([
+                    ('code', '=', 'REV'),
+                    ])
+            receivable, = Account.search([
+                    ('type.receivable', '=', True),
+                    ('closed', '=', False),
+                    ], limit=1)
+
+            move = Move()
+            move.period = period
+            move.journal = journal_revenue
+            move.date = period.start_date
+            move.save()
+
+            line1 = Line(
+                move=move, party=party,
+                debit=Decimal(10), credit=0,
+                second_currency=currency2,
+                amount_second_currency=Decimal(10),
+                account=receivable,
+                maturity_date=datetime.date(2024, 1, 1))
+            line2 = Line(
+                move=move, party=party,
+                debit=0, credit=Decimal(20),
+                second_currency=currency2,
+                amount_second_currency=Decimal('-10'),
+                account=receivable, maturity_date=datetime.date(2024, 1, 1))
+            line3 = Line(
+                move=move, party=party,
+                debit=0, credit=Decimal(5),
+                second_currency=None, account=receivable,
+                maturity_date=datetime.date(2024, 1, 3))
+            Line.save([line1, line2, line3])
+
+            self.assertEqual(
+                Line.find_best_reconciliation(
+                    [line1, line2, line3], currency2),
+                ([line1, line2], Decimal(0)))
 
     @with_transaction()
     def test_tax_compute(self):

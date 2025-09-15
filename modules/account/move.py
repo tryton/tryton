@@ -1834,7 +1834,8 @@ class Line(DescriptionOriginMixin, MoveLineMixin, ModelSQL, ModelView):
             else:
                 return 0
 
-        lines = sorted(lines, key=cls._reconciliation_sort_key)
+        with Transaction().set_context(_record_cache_size=max(len(lines), 1)):
+            lines = cls.browse(sorted(lines, key=cls._reconciliation_sort_key))
         debit, credit = [], []
         remaining = -amount
         for line in list(lines):
