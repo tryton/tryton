@@ -32,7 +32,8 @@ class Level(sequence_ordered(), ModelSQL, ModelView):
     procedure = fields.Many2One(
         'account.dunning.procedure', "Procedure", required=True)
     overdue = fields.TimeDelta('Overdue',
-        help="When the level should be applied.")
+        help="The delay from the maturity date "
+        "after which the level should be applied.")
 
     def get_rec_name(self, name):
         return '%s@%s' % (self.procedure.levels.index(self),
