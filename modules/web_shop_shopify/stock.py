@@ -144,7 +144,8 @@ class Move(metaclass=PoolMeta):
         pool = Pool()
         SaleLine = pool.get('sale.line')
         Uom = pool.get('product.uom')
-        if not isinstance(self.origin, SaleLine):
+        if (not isinstance(self.origin, SaleLine)
+                or not self.origin.shopify_identifier):
             return
         identifier = self.origin.shopify_identifier
         quantity = int(Uom.compute_qty(
