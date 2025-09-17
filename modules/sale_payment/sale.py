@@ -31,8 +31,11 @@ class Sale(metaclass=PoolMeta):
                 ('kind', '=', 'receivable'),
                 ('kind', '=', 'payable'),
                 ),
-            ('party', '=', If(Bool(Eval('invoice_party')),
-                    Eval('invoice_party', -1), Eval('party', -1))),
+            ['OR',
+                ('party', '=', If(Bool(Eval('invoice_party')),
+                        Eval('invoice_party', -1), Eval('party', -1))),
+                ('state', '!=', 'draft'),
+                ],
             ('currency', '=', Eval('currency', -1)),
             ],
         states={
