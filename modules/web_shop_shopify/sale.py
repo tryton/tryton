@@ -82,17 +82,20 @@ class Sale(IdentifierMixin, metaclass=PoolMeta):
                     order.shipping_address)
             else:
                 shipment_address = None
-            if shipment_address:
-                setattr_changed(sale, 'shipment_address', shipment_address)
             if getattr(order, 'billing_address', None):
                 invoice_address = party.get_address_from_shopify(
                     order.billing_address)
             else:
                 invoice_address = None
-            if invoice_address or shipment_address:
-                setattr_changed(
-                    sale, 'invoice_address',
-                    invoice_address or shipment_address)
+        else:
+            shipment_address = sale.party.address_get(type='delivery')
+            invoice_address = sale.party.address_get(type='invoice')
+
+        if shipment_address:
+            setattr_changed(sale, 'shipment_address', shipment_address)
+        if invoice_address or shipment_address:
+            setattr_changed(
+                sale, 'invoice_address', invoice_address or shipment_address)
 
         if not party.addresses:
             address = Address(party=party)
