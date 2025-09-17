@@ -36,6 +36,17 @@ class Payment(metaclass=PoolMeta):
             If(Eval('state') == 'draft',
                 ('state', '!=', 'cancelled'),
                 ()),
+            ('company', '=', Eval('company', -1)),
+            If(Eval('state') == 'draft',
+                ['OR',
+                    ('invoice_party', '=', Eval('party', -1)),
+                    [
+                        ('invoice_party', '=', None),
+                        ('party', '=', Eval('party', -1)),
+                        ],
+                    ],
+                []),
+            ('currency', '=', Eval('currency', -1)),
             ]
 
     @classmethod
