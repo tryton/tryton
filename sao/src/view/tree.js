@@ -889,7 +889,7 @@
                     this.display_size = Sao.config.display_size;
                 }
             }
-            if (!this.display_size &
+            if (!this.display_size &&
                 (!jQuery.isEmptyObject(selected) ||
                     !jQuery.isEmptyObject(expanded))) {
                 this.display_size = Sao.config.display_size;
