@@ -499,7 +499,7 @@ class Shop(metaclass=PoolMeta):
                 Sale.save(sales)
                 for sale, order in zip(sales, orders):
                     sale.shopify_tax_adjustment = (
-                        Decimal(order.total_price) - sale.total_amount)
+                        Decimal(order.current_total_price) - sale.total_amount)
                 Sale.save(sales)
                 to_quote = [
                     s for s in sales if s.party != s.web_shop.guest_party]
