@@ -51,9 +51,11 @@ def file_open(name, mode="r", subdir='modules', encoding=None):
     return io.open(path, mode, encoding=encoding)
 
 
+_root_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+
 def find_path(name, subdir='modules', _test=os.path.isfile):
     "Return path from the root directory, using subdir folder"
-    root_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
     def secure_join(root, *paths):
         "Join paths and ensure it still below root"
@@ -70,20 +72,20 @@ def find_path(name, subdir='modules', _test=os.path.isfile):
             except ValueError:
                 module_name, module_path = name, ''
             if module_name in {'ir', 'res', 'tests'}:
-                path = secure_join(root_path, module_name, module_path)
+                path = secure_join(_root_path, module_name, module_path)
             else:
                 try:
                     module = import_module(module_name)
                 except ModuleNotFoundError:
-                    path = secure_join(root_path, subdir, name)
+                    path = secure_join(_root_path, subdir, name)
                 else:
                     path = os.path.dirname(module.__file__)
                     if module_path:
                         path = secure_join(path, module_path)
         else:
-            path = secure_join(root_path, subdir, name)
+            path = secure_join(_root_path, subdir, name)
     else:
-        path = secure_join(root_path, name)
+        path = secure_join(_root_path, name)
 
     if not _test or _test(path):
         return path
