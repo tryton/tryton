@@ -27,14 +27,11 @@ try:
     from backports.entry_points_selectable import entry_points as _entry_points
 except ImportError:
     from importlib.metadata import entry_points as _entry_points
-_ENTRY_POINTS = None
 
 
+@cache
 def entry_points():
-    global _ENTRY_POINTS
-    if _ENTRY_POINTS is None:
-        _ENTRY_POINTS = _entry_points()
-    return _ENTRY_POINTS
+    return _entry_points()
 
 
 def import_module(name):
