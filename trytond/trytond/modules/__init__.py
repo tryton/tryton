@@ -7,6 +7,7 @@ import os
 import pkgutil
 import warnings
 from collections import defaultdict
+from functools import cache
 from glob import iglob
 
 from sql import Table
@@ -31,6 +32,7 @@ MODULES_PATH = os.path.abspath(os.path.dirname(__file__))
 MODULES = []
 
 
+@cache
 def parse_module_config(name):
     "Return a ConfigParser instance and directory of the module"
     config = configparser.ConfigParser()
