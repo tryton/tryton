@@ -14,7 +14,7 @@ import unicodedata
 import warnings
 from array import array
 from collections.abc import Iterable, Sized
-from functools import wraps
+from functools import cache, wraps
 from itertools import chain, islice, tee, zip_longest
 
 from sql import As, Literal, Select
@@ -54,6 +54,7 @@ def file_open(name, mode="r", subdir='modules', encoding=None):
 _root_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
+@cache
 def find_path(name, subdir='modules', _test=os.path.isfile):
     "Return path from the root directory, using subdir folder"
 
