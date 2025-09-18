@@ -1095,7 +1095,8 @@ class ActionWizard(
                     ('model', '=', None),
                     ],
                 ],
-            order=[('model', 'ASC NULLS LAST')])
+            order=[('model', 'ASC NULLS LAST')],
+            limit=1)
         if actions:
             action, = actions
             return action.name
