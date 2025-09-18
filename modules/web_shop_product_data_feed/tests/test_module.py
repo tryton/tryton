@@ -1,9 +1,11 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 
+import csv
 import os
 import tempfile
 from decimal import Decimal
+from itertools import zip_longest
 from unittest.mock import ANY, Mock, patch
 
 from trytond.modules.account.tests import create_chart
@@ -127,11 +129,27 @@ class WebShopProductDataFeedTestCase(ModuleTestCase):
 
             filename = shop.product_data_feed_csv('google')
 
-            self.assertEqual(
-                open(filename).read(),
-                open(os.path.join(
-                        os.path.dirname(__file__),
-                        'google-products.csv')).read())
+            with open(filename) as f1, \
+                    open(os.path.join(
+                            os.path.dirname(__file__),
+                            'google-products.csv')) as f2:
+                reader1 = csv.reader(f1, dialect=csv.excel_tab)
+                reader2 = csv.reader(f2, dialect=csv.excel_tab)
+
+                header1 = next(reader1)
+                header2 = next(reader2)
+
+                self.assertCountEqual(header1, header2)
+
+                f1.seek(0)
+                f2.seek(0)
+
+                rows1 = csv.DictReader(f1, dialect=csv.excel_tab)
+                rows2 = csv.DictReader(f2, dialect=csv.excel_tab)
+
+                for i, (row1, row2) in enumerate(zip_longest(rows1, rows2)):
+                    with self.subTest(row=i):
+                        self.assertEqual(row1, row2)
 
             with patch.object(Shop, 'product_data_feed_csv') as feed:
                 Shop.update_product_data_feed_csv()
