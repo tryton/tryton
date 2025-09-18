@@ -26,8 +26,6 @@ files:
 ------------------------
 
 It is the Python :file:`__init__.py` to define a module.
-It must contain a method named ``register()`` that must register all the
-objects of the module in the :class:`~trytond.pool.Pool`.
 
 .. _topics-modules-tryton-cfg:
 
@@ -56,21 +54,42 @@ contain a ``[tryton]`` section with the following keys:
    They will be loaded in the given order when the module is activated or
    updated.
 
+It may contain some ``[register]`` or ``[register <module> <module>]`` sections
+with the keys ``model``, ``wizard`` and ``report`` defining the ``type_`` and
+qualified name of class relative to the module as a one per line list to pass
+to :meth:`~trytond.pool.Pool.register`.
+
+.. note::
+   The ``<module>`` in the section name set the ``depends``.
+
+And it also may contain a ``[register_mixin]`` which define the pair of
+qualified name relative to the module of mixin and subsclass to pass to
+:meth:`~trytond.pool.Pool.register_mixin`.
+
 Here is an example:
 
 .. code-block:: ini
 
-    [tryton]
-    version=0.0.1
-    depends:
-        ir
-        res
-        country
-    xml:
-        party.xml
-        category.xml
-        address.xml
-        contact_mechanism.xml
+   [tryton]
+   version=0.0.1
+   depends:
+       country
+       ir
+       res
+   xml:
+       party.xml
+       category.xml
+       address.xml
+       contact_mechanism.xml
+
+   [register]
+   model:
+       category.Category
+       party.Party
+       address.Address
+       contact_mechanism.ContactMechanism
+   wizard:
+       party.Replace
 
 Python Files
 ============

@@ -98,15 +98,16 @@ Now we can define the :class:`~trytond.wizard.Wizard` with a ``start``
    We added an optional ``end_date`` to the convert method.
 
 And we register it in the :class:`~trytond.pool.Pool` as type ``wizard`` in
-:file:`__init__.py`:
+:file:`tryton.cfg`:
 
-.. code-block:: python
+.. code-block:: ini
 
-    def register():
-        ...
-        Pool.register(
-            opportunity.Convert,
-            module='opportunity', type_='wizard')
+   [tryton]
+   ...
+   [register]
+   ...
+   wizard:
+      opportunity.Convert
 
 Finally we just need to create a `Wizard <model-ir.action.wizard>` and an
 `Action Keyword <model-ir.action>` in :file:`opportunity.xml`:

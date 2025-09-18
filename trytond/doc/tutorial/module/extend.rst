@@ -26,17 +26,16 @@ The model in :file:`party.py` file of our module looks like this:
             'training.opportunity', 'party', "Opportunities")
 
 This new class must be register in the :class:`~trytond.pool.Pool`.
-So in :file:`__init__.py` we add:
+So in :file:`tryton.cfg` we add:
 
-.. code-block:: python
+.. code-block:: ini
 
-    from . import party
-
-    def register():
-        Pool.register(
-            ...,
-            party.Party,
-            module='opportunity', type_='model')
+   [tryton]
+   ...
+   [register]
+   model:
+      ...
+      party.Party
 
 Change a field of the Party model
 `````````````````````````````````

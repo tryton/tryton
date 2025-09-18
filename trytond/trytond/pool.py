@@ -7,6 +7,7 @@ from threading import RLock, local
 from weakref import WeakSet
 
 from trytond.modules import load_modules, register_classes
+from trytond.tools import resolve
 from trytond.transaction import Transaction
 
 __all__ = ['Pool', 'PoolMeta', 'PoolBase', 'isregisteredby']
@@ -43,7 +44,7 @@ class PoolBase(object, metaclass=PoolMeta):
 
 
 class Pool(object):
-    __slots__ = ('database_name', '_modules', '_pool', '__weakref__')
+    __slots__ = ('database_name', 'ready', '_modules', '_pool', '__weakref__')
 
     classes = {
         'model': defaultdict(OrderedDict),
@@ -65,11 +66,13 @@ class Pool(object):
         instances = cls._local.__dict__.setdefault('instances', {})
         if (instance := instances.get(database_name)) is None:
             instances[database_name] = instance = super().__new__(cls)
+            instance.ready = False
         if instance not in cls._pool_instances:
             with cls._lock:
                 instance._pool = cls._pools[database_name]
                 instance._modules = cls._pool_modules[database_name]
                 cls._pool_instances.add(instance)
+                instance.ready = True
         return instance
 
     def __init__(self, database_name=None):
@@ -91,8 +94,9 @@ class Pool(object):
             for cls in classes:
                 mpool = Pool.classes[type_][module]
                 assert cls not in mpool, f"{cls} is already registered"
-                assert issubclass(cls.__class__, PoolMeta), (
-                    f"{cls} is missing metaclass {PoolMeta}")
+                assert isinstance(cls, str) \
+                    or issubclass(cls.__class__, PoolMeta), (
+                        f"{cls} is missing metaclass {PoolMeta}")
                 mpool[cls] = depends
 
     @staticmethod
@@ -134,6 +138,7 @@ class Pool(object):
         indexes is a boolean specifying if the indexes should be created
         '''
         with self._lock:
+            self.ready = False
             if not self._started:
                 self.start()
             logger.info('init pool for "%s"', self.database_name)
@@ -149,6 +154,7 @@ class Pool(object):
             self._pool_instances.add(self)
             if restart:
                 self.init()
+            self.ready = True
 
     def get(self, name, type='model'):
         '''
@@ -204,6 +210,13 @@ class Pool(object):
             for cls, depends in self.classes[type_].get(module, {}).items():
                 if not depends.issubset(modules):
                     continue
+                if isinstance(cls, str):
+                    if module in {'ir', 'res'}:
+                        qualname = f'trytond.{module}.{cls}'
+                    else:
+                        qualname = f'trytond.modules.{module}.{cls}'
+                    cls = resolve(qualname)
+                    assert issubclass(cls.__class__, PoolMeta)
                 try:
                     previous_cls = self.get(cls.__name__, type=type_)
                     cls = type(
@@ -243,6 +256,17 @@ class Pool(object):
                     if name is not None and kname != name:
                         continue
                     for parent, mixin in self.classes_mixin[module]:
+                        if isinstance(parent, str):
+                            try:
+                                parent = resolve(parent)
+                            except ImportError:
+                                continue
+                        if isinstance(mixin, str):
+                            if module in {'ir', 'res'}:
+                                qualname = f'trytond.{module}.{mixin}'
+                            else:
+                                qualname = f'trytond.modules.{module}.{mixin}'
+                            mixin = resolve(qualname)
                         if (not issubclass(cls, parent)
                                 or issubclass(cls, mixin)):
                             continue
@@ -258,6 +282,15 @@ class Pool(object):
 
 
 def isregisteredby(obj, module, type_='model'):
+    def resolve_if_needed(cls):
+        if isinstance(cls, str):
+            if module in {'ir', 'res'}:
+                qualname = f'trytond.{module}.{cls}'
+            else:
+                qualname = f'trytond.modules.{module}.{cls}'
+            cls = resolve(qualname)
+        return cls
     pool = Pool()
     classes = pool.classes[type_]
-    return any(issubclass(obj, cls) for cls in classes[module])
+    return any(
+        issubclass(obj, resolve_if_needed(cls)) for cls in classes[module])

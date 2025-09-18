@@ -1,65 +1,11 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 
-from trytond.pool import Pool
-
-try:
-    from trytond.modules.sale.sale_reporting import Abstract as SaleAbstract
-except ImportError:
-    SaleAbstract = None
-try:
-    from trytond.modules.sale_opportunity.opportunity_reporting import \
-        Abstract as OpportunityAbstract
-except ImportError:
-    OpportunityAbstract = None
-
-from . import marketing, sale, sale_opportunity_reporting, sale_reporting, web
-from .marketing import MarketingCampaignMixin, MarketingCampaignUTM, Parameter
-
-__all__ = [
-    'register', 'Parameter', 'MarketingCampaignMixin', 'MarketingCampaignUTM']
+__all__ = ['Parameter', 'MarketingCampaignMixin', 'MarketingCampaignUTM']
 
 
-def register():
-    Pool.register(
-        marketing.Campaign,
-        marketing.Medium,
-        marketing.Source,
-        module='marketing_campaign', type_='model')
-    Pool.register(
-        sale.Sale,
-        sale_reporting.Context,
-        sale_reporting.MarketingContext,
-        sale_reporting.Marketing,
-        module='marketing_campaign', type_='model', depends=['sale'])
-    Pool.register(
-        sale.Opportunity,
-        sale_opportunity_reporting.Context,
-        sale_opportunity_reporting.MarketingContext,
-        sale_opportunity_reporting.Marketing,
-        module='marketing_campaign', type_='model',
-        depends=['sale_opportunity'])
-    Pool.register(
-        sale.POSSale,
-        module='marketing_campaign', type_='model', depends=['sale_point'])
-    Pool.register(
-        web.ShortenedURL,
-        module='marketing_campaign', type_='model', depends=['web_shortener'])
-    Pool.register(
-        marketing.EmailMessage,
-        module='marketing_campaign', type_='model',
-        depends=['marketing_email'])
-    Pool.register(
-        marketing.AutomationActivity,
-        marketing.AutomationRecordActivity,
-        module='marketing_campaign', type_='model',
-        depends=['marketing_automation'])
-    if SaleAbstract:
-        Pool.register_mixin(
-            sale_reporting.AbstractMarketingCampaign, SaleAbstract,
-            module='marketing_campaign')
-    if OpportunityAbstract:
-        Pool.register_mixin(
-            sale_opportunity_reporting.AbstractMarketingCampaign,
-            OpportunityAbstract,
-            module='marketing_campaign')
+def __getattr__(name):
+    if name in {'Parameter', 'MarketingCampaignMixin', 'MarketingCampaignUTM'}:
+        from . import marketing
+        return getattr(marketing, name)
+    raise AttributeError(f"module {__name__!r} has no attribute {name!r}")

@@ -17,15 +17,16 @@ First we create a ``trytond.report.Report`` class in :file:`opportunity.py`:
         __name__ = 'training.opportunity.report'
 
 And we register it in the :class:`~trytond.pool.Pool` as type ``report`` in
-:file:`__init__.py`:
+:file:`tryton.cfg`:
 
-.. code-block:: python
+.. code-block:: ini
 
-    def register():
-        ...
-        Pool.register(
-            opportunity.OpportunityReport,
-            module='opportunity', type_='report')
+   [tryton]
+   ...
+   [register]
+   ...
+   wizard:
+      opportunity.OpportunityReport
 
 
 Now we have to create a `Report <model-ir.action.report>` and `Action Keyword

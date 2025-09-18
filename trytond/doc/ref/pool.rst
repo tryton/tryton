@@ -69,7 +69,6 @@ Instance methods:
    Include all the mixin registered for the filled modules to the corresponding
    registered type of classes or named.
 
-
 PoolMeta
 --------
 

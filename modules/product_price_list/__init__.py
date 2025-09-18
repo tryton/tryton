@@ -1,16 +1,11 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from trytond.pool import Pool
 
-from . import price_list
-from .price_list import Null
-
-__all__ = ['register', 'Null']
+__all__ = ['Null']
 
 
-def register():
-    Pool.register(
-        price_list.PriceList,
-        price_list.PriceListLine,
-        price_list.PriceListLineContext,
-        module='product_price_list', type_='model')
+def __getattr__(name):
+    if name == 'Null':
+        from .price_list import Null
+        return Null
+    raise AttributeError(f"module {__name__!r} has no attribute {name!r}")

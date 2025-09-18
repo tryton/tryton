@@ -49,23 +49,22 @@ This model is defined by the ``party`` module.
 Register the model in the Pool
 ------------------------------
 
-Once a Tryton model is defined, you need to register it in the
+Once a Tryton model is defined, you need to declare to register it in the
 :class:`~trytond.pool.Pool`.
-This is done in the :file:`__init__.py` file of your module with the following
+This is done in the :file:`tryton.cfg` file of your module with the following
 code:
 
-.. code-block:: python
+.. code-block:: ini
 
-    from trytond.pool import Pool
-    from . import opportunity
+   [tryton]
+   ...
+   [register]
+   model:
+      opportunity.Opportunity
 
-    def register():
-        Pool.register(
-            opportunity.Opportunity,
-            module='opportunity', type_='model')
-
-Models in the pool are inspected by Tryton when activating or updating a module
-in order to create or update the schema of the table in the database.
+Models registered in the pool are inspected by Tryton when activating or
+updating a module in order to create or update the schema of the table in the
+database.
 
 Activate the opportunity module
 -------------------------------
@@ -73,8 +72,8 @@ Activate the opportunity module
 Now that we have a basic module, we will use it to create the related table
 into the :ref:`database created <tutorial-module-setup-database>`.
 
-First we must edit the :file:`tryton.cfg` file to specify that this module
-depends on the ``party`` and ``ir`` module.
+First we must edit again the :file:`tryton.cfg` file to specify that this
+module depends on the ``party`` and ``ir`` module.
 We need to do this because the ``Opportunity`` model contains the ``party``
 field which refers to the ``Party`` model.
 And we always need the ``ir`` module which is always included in Tryton server.
@@ -88,6 +87,9 @@ Here is the content of our :file:`tryton.cfg` file:
    depends:
       ir
       party
+   [register]
+   model:
+      opportunity.Opportunity
 
 As we defined a new dependency, we must refresh the installation with:
 

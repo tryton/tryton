@@ -3,8 +3,4 @@
 
 from . import routes
 
-__all__ = ['register', 'routes']
-
-
-def register():
-    pass
+__all__ = [routes]

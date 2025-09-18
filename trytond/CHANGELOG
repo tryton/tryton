@@ -1,3 +1,4 @@
+* Use ``tryton.cfg`` to register in the Pool
 * Use the FILTER syntax with SQL aggregate functions
 * Use the EXISTS operator when using the 'where' operator in Many2One
 * Redact sensitive values from the log (issue14220)

@@ -62,16 +62,16 @@ First we create a :class:`~trytond.model.ModelSQL` class which defines a
    returned by ``date_trunc`` into a :py:class:`~datetime.date`.
 
 Then as usual we register the :class:`~trytond.model.ModelSQL` class in the in
-the :class:`~trytond.pool.Pool` as type ``model`` in :file:`__init__.py`:
+the :class:`~trytond.pool.Pool` as type ``model`` in :file:`tryton.cfg`:
 
-.. code-block:: python
+.. code-block:: ini
 
-    def register():
-        ...
-        Pool.register(
-            ...,
-            opportunity.OpportunityMonthly,
-            module='opportunity', type_='model')
+   [tryton]
+   ...
+   [register]
+   model:
+      ...
+      opportunity.OpportunityMonthly
 
 And to display we create a list view and the menu entry in
 :file:`opportunity.xml`:

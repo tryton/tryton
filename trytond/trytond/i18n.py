@@ -11,10 +11,9 @@ def _ngettext(message_id, *args, **variables):
     if not Transaction().database:
         return message_id
     pool = Pool()
-    try:
-        Message = pool.get('ir.message')
-    except KeyError:
+    if not pool.ready:
         return message_id
+    Message = pool.get('ir.message')
     if len(args) < 2:
         n, = args
         language = Transaction().language
