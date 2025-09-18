@@ -52,6 +52,8 @@ class ShipmentOut(metaclass=PoolMeta):
                 'fulfillment_order_line_items': line_items,
                 }
             for order_id, line_items in line_items.items()]
+        fulfillment.notify_customer = bool(
+            sale.web_shop.shopify_fulfillment_notify_customer)
         return fulfillment
 
     def get_shopify_identifier(self, sale):

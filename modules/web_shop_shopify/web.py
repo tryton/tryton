@@ -54,6 +54,11 @@ class Shop(metaclass=PoolMeta):
     shopify_payment_journals = fields.One2Many(
         'web.shop.shopify_payment_journal', 'shop', "Payment Journals",
         states=_states)
+    shopify_fulfillment_notify_customer = fields.Boolean(
+        "Notify Customer about Fulfillment",
+        states={
+            'invisible': Eval('type') != 'shopify',
+            })
 
     del _states
 

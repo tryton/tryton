@@ -20,6 +20,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="shopify_webhook_shared_secret"/>
             <label name="shopify_webhook_endpoint_order"/>
             <field name="shopify_webhook_endpoint_order"/>
+            <label name="shopify_fulfillment_notify_customer"/>
+            <field name="shopify_fulfillment_notify_customer"/>
 
             <field name="shopify_payment_journals" colspan="6"/>
         </page>
