@@ -77,7 +77,12 @@ class Product(metaclass=PoolMeta):
 
     @property
     def components_used(self):
-        return self.components or self.template.components
+        if self.components:
+            yield from self.components
+        else:
+            for component in self.template.components:
+                if not component.parent_product:
+                    yield component
 
     @classmethod
     def get_quantity(cls, products, name):
