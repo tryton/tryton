@@ -135,11 +135,7 @@ class Address(
     full_address = fields.Function(fields.Text('Full Address'),
             'get_full_address')
     identifiers = fields.One2Many(
-        'party.identifier', 'address', "Identifiers",
-        domain=[
-            ('party', '=', Eval('party', -1)),
-            ('type', 'in', ['fr_siret']),
-            ])
+        'party.identifier', 'address', "Identifiers")
     contact_mechanisms = fields.One2Many(
         'party.contact_mechanism', 'address', "Contact Mechanisms",
         domain=[
@@ -155,6 +151,10 @@ class Address(
             autocomplete_postal_code=RPC(instantiate=0, cache=dict(days=1)),
             autocomplete_city=RPC(instantiate=0, cache=dict(days=1)),
             )
+        cls.identifiers.domain = [
+            ('party', '=', Eval('party', -1)),
+            ('type', 'in', list(cls._type_identifiers())),
+            ]
 
     @classmethod
     def __register__(cls, module_name):
@@ -362,6 +362,10 @@ class Address(
         for key, value in list(substitutions.items()):
             substitutions[key.upper()] = value.upper()
         return substitutions
+
+    @classmethod
+    def _type_identifiers(cls):
+        return {'fr_siret'}
 
     @classmethod
     def _strip(cls, value, doublespace=False):
