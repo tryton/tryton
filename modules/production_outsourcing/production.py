@@ -1,7 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 
-from decimal import Decimal
 from itertools import groupby
 
 from trytond.i18n import gettext
@@ -217,8 +216,6 @@ class Production(metaclass=PoolMeta):
             factor * self.routing.supplier_quantity)
         line.purchase = purchase
         line.on_change_product()
-        if line.unit_price is None:
-            line.unit_price = round_price(Decimal(0))
         return line
 
     @classmethod
