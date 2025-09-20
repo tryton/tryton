@@ -17,7 +17,10 @@ class FileStoreTestCase(unittest.TestCase):
         path = config.get('database', 'path')
         dtemp = tempfile.mkdtemp()
         config.set('database', 'path', dtemp)
+        patcher = patch('trytond.filestore.PATH', dtemp)
+        patcher.start()
         self.addCleanup(config.set, 'database', 'path', path)
+        self.addCleanup(patcher.stop)
         self.addCleanup(shutil.rmtree, dtemp)
 
     def data(self):
