@@ -35,6 +35,7 @@ def order(request, pool, shop):
 
     topic = request.headers.get('X-Shopify-Topic')
     order = request.get_json()
+    logger.info("Shopify webhook %s for %s", topic, order['id'])
     if topic == 'orders/create':
         if not Sale.search([
                     ('web_shop', '=', shop.id),
@@ -58,7 +59,7 @@ def order(request, pool, shop):
             sale, = sales
             Shop.__queue__.update_sale_ids(shop, [sale.id])
     else:
-        logger.info("Unsupported topic '%s'", topic)
+        logger.warn("Unsupported topic '%s'", topic)
     return Response(status=HTTPStatus.NO_CONTENT)
 
 
