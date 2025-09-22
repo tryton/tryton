@@ -627,7 +627,7 @@ Local user plugins directory
    :file:`~/.config/tryton/x.y/plugins`
 
 Custom CSS theme
-   :file:`~/.config.tryton/x.y/theme.css`
+   :file:`~/.config/tryton/x.y/theme.css`
 
 .. note::
    ``~`` means the home directory of the user.
