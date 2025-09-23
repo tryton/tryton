@@ -13,15 +13,39 @@ from .modelsql import Check, Exclude, Index, ModelSQL, Unique, convert_from
 from .modelstorage import EvalEnvironment, ModelStorage
 from .modelview import ModelView
 from .multivalue import MultiValueMixin, ValueMixin
-from .order import sequence_ordered, sort
+from .order import sequence_ordered, sequence_reorder, sort
 from .symbol import SymbolMixin
 from .tree import sum_tree, tree
 from .union import UnionMixin
 from .workflow import Workflow
 
-__all__ = ['Model', 'ModelView', 'ModelStorage', 'ModelSingleton', 'ModelSQL',
-    'Check', 'Unique', 'Exclude', 'Index', 'convert_from',
-    'Workflow', 'DictSchemaMixin', 'MatchMixin', 'UnionMixin', 'dualmethod',
-    'MultiValueMixin', 'ValueMixin', 'SymbolMixin', 'DigitsMixin',
-    'EvalEnvironment', 'sequence_ordered', 'sort', 'DeactivableMixin', 'tree',
-    'sum_tree', 'avatar_mixin', 'ChatMixin']
+__all__ = [
+    ChatMixin,
+    Check,
+    DeactivableMixin,
+    DictSchemaMixin,
+    DigitsMixin,
+    EvalEnvironment,
+    Exclude,
+    Index,
+    MatchMixin,
+    Model,
+    ModelSQL,
+    ModelSingleton,
+    ModelStorage,
+    ModelView,
+    MultiValueMixin,
+    SymbolMixin,
+    UnionMixin,
+    Unique,
+    ValueMixin,
+    Workflow,
+    avatar_mixin,
+    convert_from,
+    dualmethod,
+    sequence_ordered,
+    sequence_reorder,
+    sort,
+    sum_tree,
+    tree,
+    ]

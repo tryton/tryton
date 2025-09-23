@@ -1125,6 +1125,16 @@ sort
 Return a new list of records ordered by the ``order`` list defined like in
 :meth:`~ModelStorage.search`.
 
+
+sequence_reorder
+================
+
+.. function:: sequence_reorder(records[, field_name])
+
+   Updates the sequence ``field_name`` to follow the current order of the
+   records.
+   Returns the list of records.
+
 MultiValueMixin
 ===============
 

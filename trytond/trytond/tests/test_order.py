@@ -2,7 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 from unittest.mock import Mock
 
-from trytond.model import sort
+from trytond.model import sequence_reorder, sort
 from trytond.pool import Pool
 from trytond.tests.test_tryton import (
     TestCase, activate_module, with_transaction)
@@ -101,3 +101,13 @@ class SequenceOrderedMixinTestCase(TestCase):
         self.assertListEqual(
             sort([record1, record2], [('name', 'DESC NULLS LAST')]),
             [record1, record2])
+
+    def test_sequence_reorder(self):
+        "Test sequence_reorder"
+        record1 = Mock()
+        record2 = Mock()
+
+        records = sequence_reorder([record1, record2])
+
+        self.assertEqual(records, [record1, record2])
+        self.assertLess(record1.sequence, record2.sequence)

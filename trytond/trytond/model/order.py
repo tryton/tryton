@@ -109,3 +109,11 @@ def sort(records, order):
     def func(obj):
         return tuple(getter(obj) for getter in getters)
     return sorted(records, key=func)
+
+
+def sequence_reorder(records, field_name='sequence'):
+    "Updates sequence to follow records order"
+    for i, record in enumerate(records):
+        if getattr(record, field_name, None) != i:
+            setattr(record, field_name, i)
+    return records
