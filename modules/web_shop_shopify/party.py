@@ -1,5 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+from trytond.model import sequence_reorder
 from trytond.pool import Pool, PoolMeta
 from trytond.tools import remove_forbidden_chars
 
@@ -27,16 +28,21 @@ class Party(IdentifiersMixin, metaclass=PoolMeta):
             value = remove_forbidden_chars(value)
             if not value:
                 continue
-            for contact_mechanism in contact_mechanisms:
-                if (contact_mechanism.type in types
-                        and (contact_mechanism.value_compact
+            index = len(contact_mechanisms)
+            for i, contact_mechanism in enumerate(contact_mechanisms):
+                if contact_mechanism.type in types:
+                    index = min(i, index)
+                    if (contact_mechanism.value_compact
                             == contact_mechanism.format_value_compact(
-                                value, contact_mechanism.type))):
-                    break
+                                value, contact_mechanism.type)):
+                        contact_mechanisms.insert(
+                            index,
+                            contact_mechanisms.pop(i))
+                        break
             else:
-                contact_mechanisms.append(ContactMechanism(
+                contact_mechanisms.insert(index, ContactMechanism(
                         type=types[0], value=value))
-        party.contact_mechanisms = contact_mechanisms
+        party.contact_mechanisms = sequence_reorder(contact_mechanisms)
         # TODO tax_exempt
         return party
 
