@@ -289,25 +289,32 @@ html[theme="default"] {
     flex: 1;
     width: 100%;
 
-    > .tab-pane > .panel {
-        display: flex;
-        flex-direction: column;
-        flex: 1;
-        margin-bottom: 5px;
-        padding-bottom: 0;
+    > .tab-pane {
+        width: 100%;
 
-        > .panel-body {
+        > .panel {
             display: flex;
+            flex-direction: column;
             flex: 1;
-            flex-direction: row;
-            padding: 5px 0;
-            min-height: 0;
+            margin-bottom: 5px;
+            padding-bottom: 0;
+            width: 100%;
 
-            > div {
-                display: inline-flex;
+            > .panel-body {
+                display: flex;
+                flex: 1;
+                flex-direction: row;
+                padding: 5px 0;
+                min-height: 0;
+                width: 100%;
 
-                &:first-child {
-                    flex: 2;
+                > div {
+                    display: inline-flex;
+                    width: 100%;
+
+                    &:first-child {
+                        flex: 2;
+                    }
                 }
             }
         }
@@ -691,6 +698,7 @@ img.icon {
     display: flex;
     flex-direction: column;
     flex: 1;
+    width: 100%;
 }
 
 .filter-box {
