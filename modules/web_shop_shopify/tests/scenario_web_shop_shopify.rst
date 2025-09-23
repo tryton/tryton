@@ -438,10 +438,13 @@ Create an order on Shopify::
     >>> customer_phone = '+32-495-555-' + (
     ...     ''.join(random.choice(string.digits) for _ in range(3)))
     >>> customer.phone = customer_phone
+    >>> customer_address_phone = '+32-495-555-' + (
+    ...     ''.join(random.choice(string.digits) for _ in range(3)))
     >>> customer.addresses = [{
     ...         'address1': "Street",
     ...         'city': "City",
     ...         'country': "Belgium",
+    ...         'phone': customer_address_phone,
     ...         }]
     >>> customer.save()
     True
@@ -517,8 +520,13 @@ Run fetch order::
     'Customer'
     >>> assertTrue(sale.party.email)
     >>> assertEqual(sale.party.phone.replace(' ', ''), customer_phone.replace('-', ''))
+    >>> address, = sale.party.addresses
+    >>> address_contact_mechanism, = address.contact_mechanisms
+    >>> assertEqual(
+    ...     address_contact_mechanism.value.replace(' ', ''),
+    ...     customer_address_phone.replace('-', ''))
     >>> len(sale.party.contact_mechanisms)
-    2
+    3
     >>> assertTrue(sale.web_status_url)
 
 Capture full amount::
@@ -543,7 +551,7 @@ Capture full amount::
     >>> len(sale.invoices)
     0
     >>> len(sale.party.contact_mechanisms)
-    2
+    3
 
 Make a partial shipment::
 

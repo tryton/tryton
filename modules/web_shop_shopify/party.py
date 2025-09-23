@@ -30,7 +30,8 @@ class Party(IdentifiersMixin, metaclass=PoolMeta):
                 continue
             index = len(contact_mechanisms)
             for i, contact_mechanism in enumerate(contact_mechanisms):
-                if contact_mechanism.type in types:
+                if (contact_mechanism.type in types
+                        and not contact_mechanism.address):
                     index = min(i, index)
                     if (contact_mechanism.value_compact
                             == contact_mechanism.format_value_compact(
@@ -49,13 +50,36 @@ class Party(IdentifiersMixin, metaclass=PoolMeta):
     def get_address_from_shopify(self, shopify_address):
         pool = Pool()
         Address = pool.get('party.address')
+        ContactMechanism = pool.get('party.contact_mechanism')
         shopify_values = Address.get_shopify_values(shopify_address)
         for address in self.addresses:
             if address.shopify_values() == shopify_values:
-                return address
-        address = Address(**shopify_values)
-        address.party = self
-        address.save()
+                break
+        else:
+            address = Address(**shopify_values)
+            address.party = self
+            address.save()
+
+        contact_mechanisms = list(self.contact_mechanisms)
+        if phone := remove_forbidden_chars(shopify_address.phone):
+            index = len(contact_mechanisms)
+            for i, contact_mechanism in enumerate(contact_mechanisms):
+                if (contact_mechanism.type in ['phone', 'mobile']
+                        and contact_mechanism.address == address):
+                    index = min(i, index)
+                    if (contact_mechanism.value_compact
+                            == contact_mechanism.format_value_compact(
+                                phone, contact_mechanism.type)):
+                        contact_mechanisms.insert(
+                            index,
+                            contact_mechanisms.pop(i))
+                        break
+            else:
+                contact_mechanisms.insert(index, ContactMechanism(
+                        party=self, address=address,
+                        type='phone', value=phone))
+                ContactMechanism.save(sequence_reorder(
+                        contact_mechanisms))
         return address
 
 
