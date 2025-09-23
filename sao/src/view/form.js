@@ -1091,6 +1091,8 @@ function eval_pyson(value){
                 this._current = record.id;
             } else {
                 this._current = null;
+                this.el.hide();
+                return;
             }
             pyson_ctx.context = context;
             this.el.off('click');

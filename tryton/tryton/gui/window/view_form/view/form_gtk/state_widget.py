@@ -155,6 +155,8 @@ class Link(StateMixin, Gtk.Button):
             context = {}
             pyson_ctx = {}
             self._current = None
+            self.hide()
+            return
         pyson_ctx['context'] = context
         try:
             self.disconnect_by_func(self.__class__.clicked)

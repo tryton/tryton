@@ -32,7 +32,7 @@ class Button(Gtk.Button):
         if record:
             states = record.expr_eval(self.attrs.get('states', {}))
         else:
-            states = {}
+            states = {'invisible': True}
         if states.get('invisible', False):
             self.hide()
         else:

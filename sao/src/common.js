@@ -959,7 +959,7 @@
             if (record) {
                 states = record.expr_eval(this.attributes.states || {});
             } else {
-                states = {};
+                states = {'invisible': true};
             }
             if (states.invisible) {
                 this.el.hide();
