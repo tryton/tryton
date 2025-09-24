@@ -33,6 +33,70 @@ class ModelTestCase(TestCase):
             repr(record), "Pool().get('test.model')(%s)" % record.id)
 
     @with_transaction()
+    def test_eq(self):
+        "Test equal"
+        pool = Pool()
+        Model = pool.get('test.model')
+
+        record1 = Model(id=1)
+        record1bis = Model(id=1)
+        record2 = Model(id=2)
+
+        self.assertEqual(record1, record1bis)
+        self.assertNotEqual(record1, record2)
+
+    @with_transaction()
+    def test_eq_other_model(self):
+        "Test equal between different models"
+        pool = Pool()
+
+        Model = pool.get('test.model')
+        ModelContext = pool.get('test.model_context')
+
+        record1 = Model(id=1)
+        record2 = ModelContext(id=1)
+
+        self.assertNotEqual(record1, record2)
+
+    @with_transaction()
+    def test_eq_other_object(self):
+        "Test equal with another object"
+        pool = Pool()
+        Model = pool.get('test.model')
+
+        record = Model(id=1)
+
+        self.assertNotEqual(record, object())
+        self.assertNotEqual(record, None)
+        self.assertNotEqual(record, False)
+        self.assertNotEqual(record, 1)
+
+    @with_transaction()
+    def test_lt(self):
+        "Test less than"
+        pool = Pool()
+        Model = pool.get('test.model')
+
+        record1 = Model(id=1)
+        record2 = Model(id=2)
+
+        self.assertLess(record1, record2)
+
+    @with_transaction()
+    def test_lt_other_model(self):
+        "Test less than between different models"
+        pool = Pool()
+
+        Model = pool.get('test.model')
+        ModelContext = pool.get('test.model_context')
+
+        record1 = Model(id=1)
+        record2 = ModelContext(id=2)
+
+        with self.assertRaises(TypeError):
+            record1 < record2
+
+    @with_transaction()
     def test_hash_with_id(self):
         "Test hash with id"
         pool = Pool()
