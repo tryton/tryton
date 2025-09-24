@@ -382,9 +382,6 @@ class Model(URLMixin, PoolBase, metaclass=ModelMeta):
             return NotImplemented
         return self.id < other.id
 
-    def __ne__(self, other):
-        return not self == other
-
     def __hash__(self):
         return hash((self.__name__, id(self) if self.id is None else self.id))
 
