@@ -385,9 +385,6 @@ class Model(URLMixin, PoolBase, metaclass=ModelMeta):
     def __hash__(self):
         return hash((self.__name__, id(self) if self.id is None else self.id))
 
-    def __bool__(self):
-        return True
-
     @property
     def _default_values(self):
         """Return the values not stored.
