@@ -286,6 +286,24 @@ class TestModel(ProteusTestCase):
         self.assertNotEqual(admin1, False)
         self.assertNotEqual(admin1, 1)
 
+    def test_lt(self):
+        User = Model.get('res.user')
+
+        user1 = User(1)
+        user2 = User(2)
+
+        self.assertLess(user1, user2)
+
+    def test_lt_other_model(self):
+        User = Model.get('res.user')
+        Group = Model.get('res.group')
+
+        user1 = User(1)
+        group2 = Group(2)
+
+        with self.assertRaises(TypeError):
+            user1 < group2
+
     def test_default_set(self):
         User = Model.get('res.user')
         Group = Model.get('res.group')

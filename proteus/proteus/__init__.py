@@ -7,6 +7,7 @@ import datetime
 import functools
 import threading
 from decimal import Decimal
+from functools import total_ordering
 
 import proteus.config
 
@@ -688,6 +689,7 @@ class ModelList(list):
             self._changed()
 
 
+@total_ordering
 class Model(object):
     'Model class for Tryton records'
     __slots__ = ('__id', '_values', '_changed', '_group', '__context')
@@ -797,8 +799,10 @@ class Model(object):
                 == (other.__class__.__name__, other.id))
         return NotImplemented
 
-    def __ne__(self, other):
-        return not self == other
+    def __lt__(self, other):
+        if not isinstance(other, Model) or self.__class__ != other.__class__:
+            return NotImplemented
+        return self.id < other.id
 
     def __hash__(self):
         return hash(self.__class__.__name__) ^ hash(self.id)
