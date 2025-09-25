@@ -512,6 +512,7 @@ class Shop(metaclass=PoolMeta):
                 for sale, order in zip(sales, orders):
                     if sale.state != 'draft':
                         Payment.get_from_shopify(sale, order)
+                Sale.payment_confirm(sales)
 
     @classmethod
     def shopify_update_order(cls, shops=None):
@@ -610,6 +611,7 @@ class Shop(metaclass=PoolMeta):
                 shop = sale.web_shop
                 with shop.shopify_session():
                     Payment.get_from_shopify(sale, order)
+        Sale.payment_confirm(sales)
 
     @classmethod
     def write(cls, *args):
