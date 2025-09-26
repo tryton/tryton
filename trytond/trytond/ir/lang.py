@@ -423,20 +423,42 @@ class Lang(DeactivableMixin, ModelSQL, ModelView):
         cls._lang_cache.clear()
         Translation._get_language_cache.clear()
         _parents.clear()
-        if mode in {'write', 'delete'}:
+        if mode in {'create', 'write', 'delete'}:
             cls._code_cache.clear()
 
     @classmethod
     @inactive_records
     def get(cls, code=None):
         "Return language instance for the code or the transaction language"
+        pool = Pool()
+        Configuration = pool.get('ir.configuration')
+
+        def languages(code):
+            for sep in ['@', '_']:
+                if sep in code:
+                    code, _ = code.rsplit(sep, 1)
+                    if code:
+                        yield code
+                        yield from languages(code)
         if code is None:
             code = Transaction().language
+        code = code.replace('-', '_')
         lang_id = cls._code_cache.get(code)
-        if not lang_id:
-            lang, = cls.search([
-                    ('code', '=', code),
-                    ])
+        if lang_id is None:
+            try:
+                lang, = cls.search([
+                        ('code', '=', code),
+                        ])
+            except ValueError:
+                for parent_code in languages(code):
+                    if lang := cls.get(parent_code):
+                        break
+                else:
+                    default_code = Configuration.get_language()
+                    if default_code != code:
+                        lang = cls.get(default_code)
+                    else:
+                        raise
             cls._code_cache.set(code, lang.id)
         else:
             lang = cls(lang_id)

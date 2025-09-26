@@ -54,7 +54,7 @@ Language
 
 .. method:: Language.get([code])
 
-   Returns the language instance for the ``code`` or the
+   Returns the closest language instance for the ``code`` or the
    :attr:`~trytond.transaction.Transaction.language`.
 
 .. method:: Language.format(percent, value[, grouping[, monetary[, \*\*additional]]])

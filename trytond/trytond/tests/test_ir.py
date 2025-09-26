@@ -347,6 +347,23 @@ class IrTestCase(ModuleTestCase):
         Model.global_search('User', 10)
 
     @with_transaction()
+    def test_lang_get_subtags(self):
+        "Test Lang.get with subtags"
+        pool = Pool()
+        Lang = pool.get('ir.lang')
+
+        self.assertEqual(Lang.get('fr_CA').code, 'fr')
+        self.assertEqual(Lang.get('fr-BE').code, 'fr')
+
+    @with_transaction()
+    def test_lang_get_unknown(self):
+        "Test Lang.get with unknown language"
+        pool = Pool()
+        Lang = pool.get('ir.lang')
+
+        self.assertEqual(Lang.get('foo').code, 'en')
+
+    @with_transaction()
     def test_lang_currency(self):
         "Test Lang.currency"
         pool = Pool()
