@@ -474,7 +474,6 @@ class Shop(metaclass=PoolMeta):
             shops = cls.search([
                     ('type', '=', 'shopify'),
                     ])
-        cls.lock(shops)
         for shop in shops:
             last_sales = Sale.search([
                     ('web_shop', '=', shop.id),
@@ -518,7 +517,6 @@ class Shop(metaclass=PoolMeta):
             shops = cls.search([
                     ('type', '=', 'shopify'),
                     ])
-        cls.lock(shops)
         now = dt.datetime.now()
         for shop in shops:
             sales = Sale.search([
