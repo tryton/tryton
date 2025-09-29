@@ -90,6 +90,10 @@ Partially pay line::
     >>> payment.amount
     Decimal('50.00')
     >>> payment.amount = Decimal('20.00')
+    >>> payment.reference_type = 'creditor_reference'
+    >>> payment.reference = 'RF18539007547034'
+    >>> payment.reference
+    'RF18 5390 0754 7034'
     >>> payment.click('submit')
     >>> assertEqual(payment.submitted_by, employee)
     >>> payment.click('approve')

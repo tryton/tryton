@@ -4,9 +4,11 @@ from collections import defaultdict
 from decimal import Decimal
 from itertools import groupby
 
+import stdnum.exceptions
 from sql.aggregate import Count, Sum
 from sql.functions import CharLength
 from sql.operators import Abs
+from stdnum import iso11649
 
 from trytond import backend
 from trytond.i18n import gettext
@@ -16,7 +18,7 @@ from trytond.model.exceptions import AccessError
 from trytond.modules.company.model import (
     employee_field, reset_employee, set_employee)
 from trytond.modules.currency.fields import Monetary
-from trytond.pool import Pool
+from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval, If
 from trytond.rpc import RPC
 from trytond.tools import (
@@ -25,7 +27,8 @@ from trytond.tools import (
 from trytond.transaction import Transaction
 from trytond.wizard import StateAction, Wizard
 
-from .exceptions import OverpayWarning, ReconciledWarning
+from .exceptions import (
+    OverpayWarning, PaymentValidationError, ReconciledWarning)
 
 KINDS = [
     ('payable', 'Payable'),
@@ -276,6 +279,11 @@ class Payment(Workflow, ModelSQL, ModelView):
     _rec_name = 'number'
     number = fields.Char("Number", required=True, readonly=True)
     reference = fields.Char("Reference", states=_STATES)
+    reference_type = fields.Selection([
+            (None, ""),
+            ('creditor_reference', "Creditor Reference"),
+            ], "Reference Type")
+    reference_type_string = reference_type.translated('reference_type')
     company = fields.Many2One(
         'company.company', "Company", required=True, states=_STATES)
     journal = fields.Many2One('account.payment.journal', 'Journal',
@@ -489,6 +497,19 @@ class Payment(Workflow, ModelSQL, ModelView):
         table, _ = tables[None]
         return [CharLength(table.number), table.number]
 
+    @fields.depends('reference_type', 'reference')
+    def on_change_with_reference(self):
+        if (reference := self.reference) and (type := self.reference_type):
+            reference = getattr(self, f'_format_reference_{type}')(reference)
+        return reference
+
+    @classmethod
+    def _format_reference_creditor_reference(cls, reference):
+        try:
+            return iso11649.format(reference)
+        except stdnum.exceptions.ValidationError:
+            return reference
+
     @staticmethod
     def default_company():
         return Transaction().context.get('company')
@@ -603,6 +624,7 @@ class Payment(Workflow, ModelSQL, ModelView):
             default = default.copy()
         default.setdefault('number', None)
         default.setdefault('reference')
+        default.setdefault('reference_type')
         default.setdefault('group', None)
         default.setdefault('approved_by')
         default.setdefault('succeeded_by')
@@ -662,6 +684,31 @@ class Payment(Workflow, ModelSQL, ModelView):
         if lines := Line.browse({p.line for p in payments if p.line}):
             callback.append(lambda: Line.set_payment_amount(lines))
         return callback
+
+    @classmethod
+    def validate_fields(cls, payments, field_names):
+        super().validate_fields(payments, field_names)
+        cls.check_reference(payments, field_names)
+
+    @classmethod
+    def check_reference(cls, payments, field_names):
+        if field_names and not (field_names & {'reference', 'reference_type'}):
+            return
+
+        for payment in payments:
+            if type := payment.reference_type:
+                method = getattr(cls, f'_check_reference_{type}')
+                if not method(payment):
+                    reference = payment.reference
+                    type = payment.reference_type_string
+                    raise PaymentValidationError(gettext(
+                            'account_payment.msg_payment_reference_invalid',
+                            type=type,
+                            reference=reference,
+                            payment=payment.rec_name))
+
+    def _check_reference_creditor_reference(self):
+        return iso11649.is_valid(self.reference)
 
     @classmethod
     @ModelView.button

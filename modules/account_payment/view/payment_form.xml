@@ -22,7 +22,9 @@ this repository contains the full copyright notices and license terms. -->
     <notebook colspan="4">
         <page string="Payment" id="payment">
             <label name="reference"/>
-            <field name="reference" colspan="3"/>
+            <field name="reference"/>
+            <label name="reference_type"/>
+            <field name="reference_type"/>
         </page>
         <page string="Other Info" id="info">
             <label name="group"/>
