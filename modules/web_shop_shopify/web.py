@@ -494,7 +494,7 @@ class Shop(metaclass=PoolMeta):
             else:
                 last_order_id = ''
             with shop.shopify_session():
-                if 'shopify_orders' in context:
+                if pool.test and 'shopify_orders' in context:
                     orders = shopify.Order.find(
                         ids=context['shopify_orders'],
                         limit=250, no_iter_next=False)
