@@ -97,6 +97,10 @@ Create invoice::
     >>> invoice.payment_term = payment_term
     >>> invoice.invoice_date = today
     >>> invoice.reference = 'FAC001'
+    >>> invoice.supplier_payment_reference_type = 'creditor_reference'
+    >>> invoice.supplier_payment_reference = 'RF18539007547034'
+    >>> invoice.supplier_payment_reference
+    'RF18 5390 0754 7034'
     >>> line = InvoiceLine()
     >>> invoice.lines.append(line)
     >>> line.product = product

@@ -95,6 +95,8 @@ class PartyTestCase(PartyCheckEraseMixin, ModuleTestCase):
                     }])
 
         code = party1.code
+        self.assertTrue(party1.code_alnum.isalnum())
+        self.assertTrue(party1.code_digit)
 
         party2, = Party.create([{
                     'name': 'Party 2',

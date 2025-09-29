@@ -1,24 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<office:document xmlns:css3t="http://www.w3.org/TR/css3-text/" xmlns:grddl="http://www.w3.org/2003/g/data-view#" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xforms="http://www.w3.org/2002/xforms" xmlns:dom="http://www.w3.org/2001/xml-events" xmlns:script="urn:oasis:names:tc:opendocument:xmlns:script:1.0" xmlns:form="urn:oasis:names:tc:opendocument:xmlns:form:1.0" xmlns:math="http://www.w3.org/1998/Math/MathML" xmlns:office="urn:oasis:names:tc:opendocument:xmlns:office:1.0" xmlns:ooo="http://openoffice.org/2004/office" xmlns:fo="urn:oasis:names:tc:opendocument:xmlns:xsl-fo-compatible:1.0" xmlns:config="urn:oasis:names:tc:opendocument:xmlns:config:1.0" xmlns:ooow="http://openoffice.org/2004/writer" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:drawooo="http://openoffice.org/2010/draw" xmlns:oooc="http://openoffice.org/2004/calc" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:calcext="urn:org:documentfoundation:names:experimental:calc:xmlns:calcext:1.0" xmlns:style="urn:oasis:names:tc:opendocument:xmlns:style:1.0" xmlns:text="urn:oasis:names:tc:opendocument:xmlns:text:1.0" xmlns:of="urn:oasis:names:tc:opendocument:xmlns:of:1.2" xmlns:tableooo="http://openoffice.org/2009/table" xmlns:draw="urn:oasis:names:tc:opendocument:xmlns:drawing:1.0" xmlns:dr3d="urn:oasis:names:tc:opendocument:xmlns:dr3d:1.0" xmlns:rpt="http://openoffice.org/2005/report" xmlns:formx="urn:openoffice:names:experimental:ooxml-odf-interop:xmlns:form:1.0" xmlns:svg="urn:oasis:names:tc:opendocument:xmlns:svg-compatible:1.0" xmlns:chart="urn:oasis:names:tc:opendocument:xmlns:chart:1.0" xmlns:officeooo="http://openoffice.org/2009/office" xmlns:table="urn:oasis:names:tc:opendocument:xmlns:table:1.0" xmlns:field="urn:openoffice:names:experimental:ooo-ms-interop:xmlns:field:1.0" xmlns:number="urn:oasis:names:tc:opendocument:xmlns:datastyle:1.0" xmlns:meta="urn:oasis:names:tc:opendocument:xmlns:meta:1.0" xmlns:loext="urn:org:documentfoundation:names:experimental:office:xmlns:loext:1.0" office:version="1.3" office:mimetype="application/vnd.oasis.opendocument.text">
- <office:meta><meta:generator>LibreOffice/7.6.4.1$Linux_X86_64 LibreOffice_project/60$Build-1</meta:generator><meta:creation-date>2012-11-15T15:00:35</meta:creation-date><meta:editing-cycles>1</meta:editing-cycles><meta:editing-duration>P0D</meta:editing-duration><meta:document-statistic meta:table-count="5" meta:image-count="0" meta:object-count="0" meta:page-count="8" meta:paragraph-count="125" meta:word-count="321" meta:character-count="3804" meta:non-whitespace-character-count="3607"/><meta:user-defined meta:name="Info 1"/><meta:user-defined meta:name="Info 2"/><meta:user-defined meta:name="Info 3"/><meta:user-defined meta:name="Info 4"/></office:meta>
+<office:document xmlns:css3t="http://www.w3.org/TR/css3-text/" xmlns:grddl="http://www.w3.org/2003/g/data-view#" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xforms="http://www.w3.org/2002/xforms" xmlns:dom="http://www.w3.org/2001/xml-events" xmlns:script="urn:oasis:names:tc:opendocument:xmlns:script:1.0" xmlns:form="urn:oasis:names:tc:opendocument:xmlns:form:1.0" xmlns:math="http://www.w3.org/1998/Math/MathML" xmlns:office="urn:oasis:names:tc:opendocument:xmlns:office:1.0" xmlns:ooo="http://openoffice.org/2004/office" xmlns:fo="urn:oasis:names:tc:opendocument:xmlns:xsl-fo-compatible:1.0" xmlns:config="urn:oasis:names:tc:opendocument:xmlns:config:1.0" xmlns:ooow="http://openoffice.org/2004/writer" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:drawooo="http://openoffice.org/2010/draw" xmlns:oooc="http://openoffice.org/2004/calc" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:calcext="urn:org:documentfoundation:names:experimental:calc:xmlns:calcext:1.0" xmlns:style="urn:oasis:names:tc:opendocument:xmlns:style:1.0" xmlns:text="urn:oasis:names:tc:opendocument:xmlns:text:1.0" xmlns:of="urn:oasis:names:tc:opendocument:xmlns:of:1.2" xmlns:tableooo="http://openoffice.org/2009/table" xmlns:draw="urn:oasis:names:tc:opendocument:xmlns:drawing:1.0" xmlns:dr3d="urn:oasis:names:tc:opendocument:xmlns:dr3d:1.0" xmlns:rpt="http://openoffice.org/2005/report" xmlns:formx="urn:openoffice:names:experimental:ooxml-odf-interop:xmlns:form:1.0" xmlns:svg="urn:oasis:names:tc:opendocument:xmlns:svg-compatible:1.0" xmlns:chart="urn:oasis:names:tc:opendocument:xmlns:chart:1.0" xmlns:officeooo="http://openoffice.org/2009/office" xmlns:table="urn:oasis:names:tc:opendocument:xmlns:table:1.0" xmlns:field="urn:openoffice:names:experimental:ooo-ms-interop:xmlns:field:1.0" xmlns:number="urn:oasis:names:tc:opendocument:xmlns:datastyle:1.0" xmlns:meta="urn:oasis:names:tc:opendocument:xmlns:meta:1.0" xmlns:loext="urn:org:documentfoundation:names:experimental:office:xmlns:loext:1.0" office:version="1.4" office:mimetype="application/vnd.oasis.opendocument.text">
+ <office:meta>
+  <meta:generator>LibreOffice/25.2.5.2$Linux_X86_64 LibreOffice_project/520$Build-2
+  </meta:generator>
+  <meta:user-defined meta:name="Info 1" meta:value-type="string"/>
+  <meta:user-defined meta:name="Info 2" meta:value-type="string"/>
+  <meta:user-defined meta:name="Info 3" meta:value-type="string"/>
+  <meta:user-defined meta:name="Info 4" meta:value-type="string"/>
+  <meta:document-statistic meta:page-count="8" meta:table-count="5" meta:image-count="0" meta:object-count="0" meta:paragraph-count="129" meta:word-count="325" meta:character-count="3870"/>
+ </office:meta>
  <office:settings>
   <config:config-item-set config:name="ooo:view-settings">
-   <config:config-item config:name="ViewAreaTop" config:type="long">0</config:config-item>
+   <config:config-item config:name="ViewAreaTop" config:type="long">205105</config:config-item>
    <config:config-item config:name="ViewAreaLeft" config:type="long">0</config:config-item>
-   <config:config-item config:name="ViewAreaWidth" config:type="long">25269</config:config-item>
-   <config:config-item config:name="ViewAreaHeight" config:type="long">23973</config:config-item>
+   <config:config-item config:name="ViewAreaWidth" config:type="long">25243</config:config-item>
+   <config:config-item config:name="ViewAreaHeight" config:type="long">21883</config:config-item>
    <config:config-item config:name="ShowRedlineChanges" config:type="boolean">true</config:config-item>
    <config:config-item config:name="InBrowseMode" config:type="boolean">false</config:config-item>
    <config:config-item-map-indexed config:name="Views">
     <config:config-item-map-entry>
      <config:config-item config:name="ViewId" config:type="string">view2</config:config-item>
-     <config:config-item config:name="ViewLeft" config:type="long">3840</config:config-item>
-     <config:config-item config:name="ViewTop" config:type="long">9275</config:config-item>
+     <config:config-item config:name="ViewLeft" config:type="long">20849</config:config-item>
+     <config:config-item config:name="ViewTop" config:type="long">217225</config:config-item>
      <config:config-item config:name="VisibleLeft" config:type="long">0</config:config-item>
-     <config:config-item config:name="VisibleTop" config:type="long">0</config:config-item>
-     <config:config-item config:name="VisibleRight" config:type="long">25268</config:config-item>
-     <config:config-item config:name="VisibleBottom" config:type="long">23971</config:config-item>
+     <config:config-item config:name="VisibleTop" config:type="long">205105</config:config-item>
+     <config:config-item config:name="VisibleRight" config:type="long">25241</config:config-item>
+     <config:config-item config:name="VisibleBottom" config:type="long">226986</config:config-item>
      <config:config-item config:name="ZoomType" config:type="short">0</config:config-item>
      <config:config-item config:name="ViewLayoutColumns" config:type="short">1</config:config-item>
      <config:config-item config:name="ViewLayoutBookMode" config:type="boolean">false</config:config-item>
@@ -33,113 +41,119 @@
    </config:config-item-map-indexed>
   </config:config-item-set>
   <config:config-item-set config:name="ooo:configuration-settings">
-   <config:config-item config:name="PrintRightPages" config:type="boolean">true</config:config-item>
    <config:config-item config:name="PrintProspectRTL" config:type="boolean">false</config:config-item>
-   <config:config-item config:name="PrintLeftPages" config:type="boolean">true</config:config-item>
-   <config:config-item config:name="PrintPaperFromSetup" config:type="boolean">false</config:config-item>
-   <config:config-item config:name="PrintControls" config:type="boolean">true</config:config-item>
-   <config:config-item config:name="PrintProspect" config:type="boolean">false</config:config-item>
-   <config:config-item config:name="PrintBlackFonts" config:type="boolean">false</config:config-item>
-   <config:config-item config:name="PrintAnnotationMode" config:type="short">0</config:config-item>
-   <config:config-item config:name="PrintEmptyPages" config:type="boolean">true</config:config-item>
-   <config:config-item config:name="PrintSingleJobs" config:type="boolean">false</config:config-item>
-   <config:config-item config:name="AutoFirstLineIndentDisregardLineSpace" config:type="boolean">false</config:config-item>
-   <config:config-item config:name="HeaderSpacingBelowLastPara" config:type="boolean">false</config:config-item>
-   <config:config-item config:name="ProtectBookmarks" config:type="boolean">false</config:config-item>
-   <config:config-item config:name="ContinuousEndnotes" config:type="boolean">false</config:config-item>
-   <config:config-item config:name="DisableOffPagePositioning" config:type="boolean">true</config:config-item>
-   <config:config-item config:name="PrintTables" config:type="boolean">true</config:config-item>
-   <config:config-item config:name="SubtractFlysAnchoredAtFlys" config:type="boolean">true</config:config-item>
-   <config:config-item config:name="ApplyParagraphMarkFormatToNumbering" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="PrintPageBackground" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="PrintDrawings" config:type="boolean">true</config:config-item>
    <config:config-item config:name="PrintFaxName" config:type="string"/>
+   <config:config-item config:name="PrintReversed" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="PrintAnnotationMode" config:type="short">0</config:config-item>
+   <config:config-item config:name="PrintHiddenText" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="PrintEmptyPages" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="MsWordCompGridMetrics" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="PaintHellOverHeaderFooter" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="ApplyParagraphMarkFormatToEmptyLineAtEndOfParagraph" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="PrintGraphics" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="NoNumberingShowFollowBy" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="MinRowHeightInclBorder" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="HyphenateURLs" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="ImagePreferredDPI" config:type="int">0</config:config-item>
+   <config:config-item config:name="FootnoteInColumnToPageEnd" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="GutterAtTop" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="ContinuousEndnotes" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="FrameAutowidthWithMorePara" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="SubtractFlysAnchoredAtFlys" config:type="boolean">true</config:config-item>
    <config:config-item config:name="SurroundTextWrapSmall" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="PrintControls" config:type="boolean">true</config:config-item>
    <config:config-item config:name="TreatSingleColumnBreakAsPageBreak" config:type="boolean">false</config:config-item>
-   <config:config-item config:name="PropLineSpacingShrinksFirstLine" config:type="boolean">false</config:config-item>
    <config:config-item config:name="TabOverSpacing" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="AutoFirstLineIndentDisregardLineSpace" config:type="boolean">false</config:config-item>
    <config:config-item config:name="TabOverMargin" config:type="boolean">false</config:config-item>
    <config:config-item config:name="EmbedComplexScriptFonts" config:type="boolean">true</config:config-item>
-   <config:config-item config:name="EmbedLatinScriptFonts" config:type="boolean">true</config:config-item>
-   <config:config-item config:name="EmbedOnlyUsedFonts" config:type="boolean">false</config:config-item>
-   <config:config-item config:name="EmbedFonts" config:type="boolean">false</config:config-item>
-   <config:config-item config:name="ClippedPictures" config:type="boolean">false</config:config-item>
-   <config:config-item config:name="FrameAutowidthWithMorePara" config:type="boolean">false</config:config-item>
-   <config:config-item config:name="FloattableNomargins" config:type="boolean">false</config:config-item>
-   <config:config-item config:name="UnbreakableNumberings" config:type="boolean">false</config:config-item>
-   <config:config-item config:name="AllowPrintJobCancel" config:type="boolean">true</config:config-item>
-   <config:config-item config:name="UseFormerObjectPositioning" config:type="boolean">false</config:config-item>
-   <config:config-item config:name="UseOldNumbering" config:type="boolean">false</config:config-item>
-   <config:config-item config:name="RsidRoot" config:type="int">882034</config:config-item>
-   <config:config-item config:name="PrinterPaperFromSetup" config:type="boolean">false</config:config-item>
-   <config:config-item config:name="CurrentDatabaseDataSource" config:type="string"/>
-   <config:config-item config:name="UpdateFromTemplate" config:type="boolean">true</config:config-item>
-   <config:config-item config:name="AddFrameOffsets" config:type="boolean">false</config:config-item>
-   <config:config-item config:name="LoadReadonly" config:type="boolean">false</config:config-item>
-   <config:config-item config:name="Rsid" config:type="int">3217126</config:config-item>
-   <config:config-item config:name="FootnoteInColumnToPageEnd" config:type="boolean">true</config:config-item>
-   <config:config-item config:name="ProtectFields" config:type="boolean">false</config:config-item>
-   <config:config-item config:name="SaveGlobalDocumentLinks" config:type="boolean">false</config:config-item>
-   <config:config-item config:name="ClipAsCharacterAnchoredWriterFlyFrames" config:type="boolean">false</config:config-item>
-   <config:config-item config:name="LinkUpdateMode" config:type="short">1</config:config-item>
-   <config:config-item config:name="AddExternalLeading" config:type="boolean">true</config:config-item>
-   <config:config-item config:name="PrintGraphics" config:type="boolean">true</config:config-item>
-   <config:config-item config:name="EmbedSystemFonts" config:type="boolean">false</config:config-item>
-   <config:config-item config:name="IsLabelDocument" config:type="boolean">false</config:config-item>
-   <config:config-item config:name="AddParaLineSpacingToTableCells" config:type="boolean">false</config:config-item>
-   <config:config-item config:name="UseFormerTextWrapping" config:type="boolean">false</config:config-item>
-   <config:config-item config:name="HyphenateURLs" config:type="boolean">true</config:config-item>
-   <config:config-item config:name="AddParaTableSpacingAtStart" config:type="boolean">true</config:config-item>
-   <config:config-item config:name="TabsRelativeToIndent" config:type="boolean">true</config:config-item>
-   <config:config-item config:name="FieldAutoUpdate" config:type="boolean">true</config:config-item>
-   <config:config-item config:name="SaveVersionOnClose" config:type="boolean">false</config:config-item>
-   <config:config-item config:name="ChartAutoUpdate" config:type="boolean">true</config:config-item>
-   <config:config-item config:name="ImagePreferredDPI" config:type="int">0</config:config-item>
-   <config:config-item config:name="PrinterSetup" config:type="base64Binary"/>
-   <config:config-item config:name="SmallCapsPercentage66" config:type="boolean">true</config:config-item>
-   <config:config-item config:name="AlignTabStopPosition" config:type="boolean">true</config:config-item>
-   <config:config-item config:name="DropCapPunctuation" config:type="boolean">false</config:config-item>
-   <config:config-item config:name="MathBaselineAlignment" config:type="boolean">false</config:config-item>
-   <config:config-item config:name="PrinterName" config:type="string"/>
-   <config:config-item config:name="CharacterCompressionType" config:type="short">0</config:config-item>
-   <config:config-item config:name="AddParaTableSpacing" config:type="boolean">true</config:config-item>
-   <config:config-item config:name="DoNotJustifyLinesWithManualBreak" config:type="boolean">false</config:config-item>
-   <config:config-item config:name="PrintHiddenText" config:type="boolean">false</config:config-item>
-   <config:config-item config:name="IsKernAsianPunctuation" config:type="boolean">false</config:config-item>
-   <config:config-item config:name="PrinterIndependentLayout" config:type="string">high-resolution</config:config-item>
-   <config:config-item config:name="TabOverflow" config:type="boolean">false</config:config-item>
-   <config:config-item config:name="AddParaSpacingToTableCells" config:type="boolean">true</config:config-item>
-   <config:config-item config:name="AddVerticalFrameOffsets" config:type="boolean">false</config:config-item>
-   <config:config-item config:name="TabAtLeftIndentForParagraphsInList" config:type="boolean">false</config:config-item>
-   <config:config-item config:name="ApplyUserData" config:type="boolean">false</config:config-item>
-   <config:config-item config:name="MsWordCompMinLineHeightByFly" config:type="boolean">false</config:config-item>
-   <config:config-item config:name="PrintTextPlaceholder" config:type="boolean">false</config:config-item>
-   <config:config-item config:name="IgnoreFirstLineIndentInNumbering" config:type="boolean">false</config:config-item>
-   <config:config-item config:name="UseFormerLineSpacing" config:type="boolean">false</config:config-item>
-   <config:config-item config:name="PrintPageBackground" config:type="boolean">true</config:config-item>
-   <config:config-item config:name="RedlineProtectionKey" config:type="base64Binary"/>
    <config:config-item config:name="EmbedAsianScriptFonts" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="PrintTextPlaceholder" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="ApplyTextAttrToEmptyLineAtEndOfParagraph" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="EmbedSystemFonts" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="EmbedFonts" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="NoClippingWithWrapPolygon" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="DisableOffPagePositioning" config:type="boolean">true</config:config-item>
    <config:config-item config:name="BackgroundParaOverDrawings" config:type="boolean">false</config:config-item>
-   <config:config-item config:name="SaveThumbnail" config:type="boolean">true</config:config-item>
-   <config:config-item config:name="ConsiderTextWrapOnObjPos" config:type="boolean">false</config:config-item>
-   <config:config-item config:name="EmbeddedDatabaseName" config:type="string"/>
-   <config:config-item config:name="ProtectForm" config:type="boolean">false</config:config-item>
-   <config:config-item config:name="DoNotResetParaAttrsForNumFont" config:type="boolean">false</config:config-item>
-   <config:config-item config:name="MsWordCompTrailingBlanks" config:type="boolean">false</config:config-item>
-   <config:config-item config:name="EmptyDbFieldHidesPara" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="TabOverflow" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="SmallCapsPercentage66" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="AllowPrintJobCancel" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="AddVerticalFrameOffsets" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="ProtectBookmarks" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="AddFrameOffsets" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="PrintBlackFonts" config:type="boolean">false</config:config-item>
    <config:config-item config:name="TableRowKeep" config:type="boolean">false</config:config-item>
-   <config:config-item config:name="NoNumberingShowFollowBy" config:type="boolean">false</config:config-item>
-   <config:config-item config:name="InvertBorderSpacing" config:type="boolean">false</config:config-item>
-   <config:config-item config:name="IgnoreTabsAndBlanksForLineCalculation" config:type="boolean">false</config:config-item>
-   <config:config-item config:name="DoNotCaptureDrawObjsOnPage" config:type="boolean">false</config:config-item>
-   <config:config-item config:name="GutterAtTop" config:type="boolean">false</config:config-item>
-   <config:config-item config:name="StylesNoDefault" config:type="boolean">false</config:config-item>
-   <config:config-item config:name="UnxForceZeroExtLeading" config:type="boolean">false</config:config-item>
-   <config:config-item config:name="PrintReversed" config:type="boolean">false</config:config-item>
-   <config:config-item config:name="UseOldPrinterMetrics" config:type="boolean">false</config:config-item>
-   <config:config-item config:name="CurrentDatabaseCommandType" config:type="int">0</config:config-item>
-   <config:config-item config:name="PrintDrawings" config:type="boolean">true</config:config-item>
-   <config:config-item config:name="OutlineLevelYieldsNumbering" config:type="boolean">false</config:config-item>
-   <config:config-item config:name="CurrentDatabaseCommand" config:type="string"/>
+   <config:config-item config:name="ApplyParagraphMarkFormatToNumbering" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="PrinterIndependentLayout" config:type="string">high-resolution</config:config-item>
+   <config:config-item config:name="JustifyLinesWithShrinking" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="RsidRoot" config:type="int">882034</config:config-item>
+   <config:config-item config:name="PrintProspect" config:type="boolean">false</config:config-item>
    <config:config-item config:name="CollapseEmptyCellPara" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="PrintPaperFromSetup" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="CurrentDatabaseCommand" config:type="string"/>
+   <config:config-item config:name="CurrentDatabaseDataSource" config:type="string"/>
+   <config:config-item config:name="SaveThumbnail" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="EmbeddedDatabaseName" config:type="string"/>
+   <config:config-item config:name="UnbreakableNumberings" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="SaveGlobalDocumentLinks" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="MsWordCompTrailingBlanks" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="PrintTables" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="PrintLeftPages" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="AddParaTableSpacing" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="PrinterPaperFromSetup" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="CurrentDatabaseCommandType" config:type="int">0</config:config-item>
+   <config:config-item config:name="ChartAutoUpdate" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="OutlineLevelYieldsNumbering" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="UseOldNumbering" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="AddParaSpacingToTableCells" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="FieldAutoUpdate" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="PropLineSpacingShrinksFirstLine" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="TabAtLeftIndentForParagraphsInList" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="PrintRightPages" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="DoNotCaptureDrawObjsOnPage" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="LoadReadonly" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="HeaderSpacingBelowLastPara" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="SaveVersionOnClose" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="UseFormerLineSpacing" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="AddParaLineSpacingToTableCells" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="IsKernAsianPunctuation" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="DoNotJustifyLinesWithManualBreak" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="CharacterCompressionType" config:type="short">0</config:config-item>
+   <config:config-item config:name="IsLabelDocument" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="EmbedLatinScriptFonts" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="UseVariableWidthNBSP" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="EmbedOnlyUsedFonts" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="ApplyUserData" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="AddParaTableSpacingAtStart" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="InvertBorderSpacing" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="ProtectFields" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="AddExternalLeading" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="LinkUpdateMode" config:type="short">1</config:config-item>
+   <config:config-item config:name="UseFormerObjectPositioning" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="UnxForceZeroExtLeading" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="UseFormerTextWrapping" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="ConsiderTextWrapOnObjPos" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="StylesNoDefault" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="IgnoreFirstLineIndentInNumbering" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="NoGapAfterNoteNumber" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="EmptyDbFieldHidesPara" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="DoNotResetParaAttrsForNumFont" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="IgnoreTabsAndBlanksForLineCalculation" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="ClippedPictures" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="MathBaselineAlignment" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="AlignTabStopPosition" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="IgnoreHiddenCharsForLineCalculation" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="ClipAsCharacterAnchoredWriterFlyFrames" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="DropCapPunctuation" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="UseOldPrinterMetrics" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="RedlineProtectionKey" config:type="base64Binary"/>
+   <config:config-item config:name="TabsRelativeToIndent" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="Rsid" config:type="int">3274672</config:config-item>
+   <config:config-item config:name="UpdateFromTemplate" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="ProtectForm" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="MsWordCompMinLineHeightByFly" config:type="boolean">false</config:config-item>
   </config:config-item-set>
  </office:settings>
  <office:scripts>
@@ -169,7 +183,7 @@
    <style:text-properties style:use-window-font-color="true" loext:opacity="0%" style:font-name="Thorndale AMT" fo:font-size="12pt" fo:language="en" fo:country="US" style:letter-kerning="true" style:font-name-asian="Andale Sans UI" style:font-size-asian="10.5pt" style:language-asian="zxx" style:country-asian="none" style:font-name-complex="Andale Sans UI" style:font-size-complex="12pt" style:language-complex="zxx" style:country-complex="none"/>
   </style:default-style>
   <style:default-style style:family="paragraph">
-   <style:paragraph-properties fo:hyphenation-ladder-count="no-limit" style:text-autospace="ideograph-alpha" style:punctuation-wrap="hanging" style:line-break="strict" style:tab-stop-distance="1.251cm" style:writing-mode="lr-tb"/>
+   <style:paragraph-properties fo:hyphenation-ladder-count="no-limit" fo:hyphenation-keep="auto" loext:hyphenation-keep-type="column" style:text-autospace="ideograph-alpha" style:punctuation-wrap="hanging" style:line-break="strict" style:tab-stop-distance="1.251cm" style:writing-mode="lr-tb"/>
    <style:text-properties style:use-window-font-color="true" loext:opacity="0%" style:font-name="Thorndale AMT" fo:font-size="12pt" fo:language="en" fo:country="US" style:letter-kerning="true" style:font-name-asian="Andale Sans UI" style:font-size-asian="10.5pt" style:language-asian="zxx" style:country-asian="none" style:font-name-complex="Andale Sans UI" style:font-size-complex="12pt" style:language-complex="zxx" style:country-complex="none" fo:hyphenate="false" fo:hyphenation-remain-char-count="2" fo:hyphenation-push-char-count="2" loext:hyphenation-no-caps="false" loext:hyphenation-no-last-word="false" loext:hyphenation-word-char-count="5" loext:hyphenation-zone="no-limit"/>
   </style:default-style>
   <style:default-style style:family="table">
@@ -181,7 +195,7 @@
   <style:style style:name="Standard" style:family="paragraph" style:class="text">
    <style:text-properties style:font-name="Liberation Sans1" fo:font-family="&apos;Liberation Sans&apos;" style:font-style-name="Regular" style:font-family-generic="swiss" style:font-pitch="variable" style:font-size-asian="10.5pt"/>
   </style:style>
-  <style:style style:name="Heading" style:family="paragraph" style:parent-style-name="Standard" style:next-style-name="Text_20_body" style:class="text">
+  <style:style style:name="Heading" style:family="paragraph" style:parent-style-name="Standard" style:next-style-name="Text_20_body" style:class="chapter">
    <style:paragraph-properties fo:margin-top="0.423cm" fo:margin-bottom="0.212cm" style:contextual-spacing="false" fo:keep-with-next="always"/>
    <style:text-properties style:font-name="Liberation Serif2" fo:font-family="&apos;Liberation Serif&apos;" style:font-style-name="Regular" style:font-family-generic="roman" style:font-pitch="variable" fo:font-size="16pt" style:font-name-asian="DejaVu Sans" style:font-family-asian="&apos;DejaVu Sans&apos;" style:font-family-generic-asian="system" style:font-pitch-asian="variable" style:font-size-asian="14pt" style:font-name-complex="DejaVu Sans" style:font-family-complex="&apos;DejaVu Sans&apos;" style:font-family-generic-complex="system" style:font-pitch-complex="variable" style:font-size-complex="14pt"/>
   </style:style>
@@ -200,7 +214,7 @@
    <style:paragraph-properties text:number-lines="false" text:line-number="0"/>
    <style:text-properties style:font-size-asian="12pt"/>
   </style:style>
-  <style:style style:name="Heading_20_1" style:display-name="Heading 1" style:family="paragraph" style:parent-style-name="Heading" style:next-style-name="Text_20_body" style:class="text">
+  <style:style style:name="Heading_20_1" style:display-name="Heading 1" style:family="paragraph" style:parent-style-name="Heading" style:next-style-name="Text_20_body" style:class="chapter">
    <style:text-properties fo:font-size="16pt" fo:font-weight="bold" style:font-size-asian="115%" style:font-weight-asian="bold" style:font-size-complex="115%" style:font-weight-complex="bold"/>
   </style:style>
   <style:style style:name="Table_20_Contents" style:display-name="Table Contents" style:family="paragraph" style:parent-style-name="Standard" style:class="extra">
@@ -211,10 +225,10 @@
    <style:paragraph-properties fo:text-align="center" style:justify-single-word="false" style:page-number="auto" text:number-lines="false" text:line-number="0"/>
    <style:text-properties style:font-name="Liberation Serif1" fo:font-family="&apos;Liberation Serif&apos;" style:font-style-name="Bold" style:font-family-generic="roman" style:font-pitch="variable" fo:font-weight="bold" style:font-size-asian="10.5pt" style:font-weight-asian="bold" style:font-weight-complex="bold"/>
   </style:style>
-  <style:style style:name="Heading_20_2" style:display-name="Heading 2" style:family="paragraph" style:parent-style-name="Heading" style:next-style-name="Text_20_body" style:class="text">
+  <style:style style:name="Heading_20_2" style:display-name="Heading 2" style:family="paragraph" style:parent-style-name="Heading" style:next-style-name="Text_20_body" style:class="chapter">
    <style:text-properties fo:font-size="14pt" fo:font-style="italic" fo:font-weight="bold" style:font-size-asian="14pt" style:font-style-asian="italic" style:font-weight-asian="bold" style:font-size-complex="14pt" style:font-style-complex="italic" style:font-weight-complex="bold"/>
   </style:style>
-  <style:style style:name="Heading_20_3" style:display-name="Heading 3" style:family="paragraph" style:parent-style-name="Heading" style:next-style-name="Text_20_body" style:class="text">
+  <style:style style:name="Heading_20_3" style:display-name="Heading 3" style:family="paragraph" style:parent-style-name="Heading" style:next-style-name="Text_20_body" style:class="chapter">
    <style:text-properties fo:font-size="14pt" fo:font-weight="bold" style:font-size-asian="14pt" style:font-weight-asian="bold" style:font-size-complex="14pt" style:font-weight-complex="bold"/>
   </style:style>
   <style:style style:name="Header_20_and_20_Footer" style:display-name="Header and Footer" style:family="paragraph" style:parent-style-name="Standard" style:class="extra">
@@ -488,74 +502,6 @@
   <style:style style:name="Table4.B3" style:family="table-cell">
    <style:table-cell-properties fo:padding="0.097cm" fo:border-left="0.05pt solid #000000" fo:border-right="0.05pt solid #000000" fo:border-top="none" fo:border-bottom="0.05pt solid #000000"/>
   </style:style>
-  <style:style style:name="Table3" style:family="table">
-   <style:table-properties style:width="6.959cm" table:align="left"/>
-  </style:style>
-  <style:style style:name="Table3.A" style:family="table-column">
-   <style:table-column-properties style:column-width="2.32cm"/>
-  </style:style>
-  <style:style style:name="Table3.A1" style:family="table-cell">
-   <style:table-cell-properties fo:background-color="#cccccc" fo:padding="0.097cm" fo:border-left="0.05pt solid #000000" fo:border-right="none" fo:border-top="0.05pt solid #000000" fo:border-bottom="0.05pt solid #000000">
-    <style:background-image/>
-   </style:table-cell-properties>
-  </style:style>
-  <style:style style:name="Table3.C1" style:family="table-cell">
-   <style:table-cell-properties fo:background-color="#cccccc" fo:padding="0.097cm" fo:border="0.05pt solid #000000">
-    <style:background-image/>
-   </style:table-cell-properties>
-  </style:style>
-  <style:style style:name="Table3.A2" style:family="table-cell">
-   <style:table-cell-properties fo:padding="0.097cm" fo:border-left="0.05pt solid #000000" fo:border-right="0.05pt solid #000000" fo:border-top="none" fo:border-bottom="0.05pt solid #000000"/>
-  </style:style>
-  <style:style style:name="Table3.A3" style:family="table-cell">
-   <style:table-cell-properties fo:padding="0.097cm" fo:border-left="0.05pt solid #000000" fo:border-right="none" fo:border-top="none" fo:border-bottom="0.05pt solid #000000"/>
-  </style:style>
-  <style:style style:name="Table3.B3" style:family="table-cell">
-   <style:table-cell-properties fo:padding="0.097cm" fo:border-left="0.05pt solid #000000" fo:border-right="none" fo:border-top="none" fo:border-bottom="0.05pt solid #000000"/>
-  </style:style>
-  <style:style style:name="Table3.C3" style:family="table-cell">
-   <style:table-cell-properties fo:padding="0.097cm" fo:border-left="0.05pt solid #000000" fo:border-right="0.05pt solid #000000" fo:border-top="none" fo:border-bottom="0.05pt solid #000000"/>
-  </style:style>
-  <style:style style:name="Table3.A4" style:family="table-cell">
-   <style:table-cell-properties fo:padding="0.097cm" fo:border-left="0.05pt solid #000000" fo:border-right="0.05pt solid #000000" fo:border-top="none" fo:border-bottom="0.05pt solid #000000"/>
-  </style:style>
-  <style:style style:name="Table3.A5" style:family="table-cell">
-   <style:table-cell-properties fo:padding="0.097cm" fo:border-left="0.05pt solid #000000" fo:border-right="0.05pt solid #000000" fo:border-top="none" fo:border-bottom="0.05pt solid #000000"/>
-  </style:style>
-  <style:style style:name="Table3.A6" style:family="table-cell">
-   <style:table-cell-properties fo:padding="0.097cm" fo:border-left="0.05pt solid #000000" fo:border-right="0.05pt solid #000000" fo:border-top="none" fo:border-bottom="0.05pt solid #000000"/>
-  </style:style>
-  <style:style style:name="Table3.A7" style:family="table-cell">
-   <style:table-cell-properties fo:padding="0.097cm" fo:border-left="0.05pt solid #000000" fo:border-right="0.05pt solid #000000" fo:border-top="none" fo:border-bottom="0.05pt solid #000000"/>
-  </style:style>
-  <style:style style:name="Table4" style:family="table">
-   <style:table-properties style:width="7.969cm" table:align="right" style:may-break-between-rows="true"/>
-  </style:style>
-  <style:style style:name="Table4.A" style:family="table-column">
-   <style:table-column-properties style:column-width="4.909cm"/>
-  </style:style>
-  <style:style style:name="Table4.B" style:family="table-column">
-   <style:table-column-properties style:column-width="3.06cm"/>
-  </style:style>
-  <style:style style:name="Table4.A1" style:family="table-cell">
-   <style:table-cell-properties fo:background-color="#cccccc" fo:padding="0.097cm" fo:border-left="0.05pt solid #000000" fo:border-right="none" fo:border-top="0.05pt solid #000000" fo:border-bottom="0.05pt solid #000000">
-    <style:background-image/>
-   </style:table-cell-properties>
-  </style:style>
-  <style:style style:name="Table4.B1" style:family="table-cell">
-   <style:table-cell-properties fo:padding="0.097cm" fo:border="0.05pt solid #000000"/>
-  </style:style>
-  <style:style style:name="Table4.A2" style:family="table-cell">
-   <style:table-cell-properties fo:background-color="#cccccc" fo:padding="0.097cm" fo:border-left="0.05pt solid #000000" fo:border-right="none" fo:border-top="none" fo:border-bottom="0.05pt solid #000000">
-    <style:background-image/>
-   </style:table-cell-properties>
-  </style:style>
-  <style:style style:name="Table4.B2" style:family="table-cell">
-   <style:table-cell-properties fo:padding="0.097cm" fo:border-left="0.05pt solid #000000" fo:border-right="0.05pt solid #000000" fo:border-top="none" fo:border-bottom="0.05pt solid #000000"/>
-  </style:style>
-  <style:style style:name="Table4.B3" style:family="table-cell">
-   <style:table-cell-properties fo:padding="0.097cm" fo:border-left="0.05pt solid #000000" fo:border-right="0.05pt solid #000000" fo:border-top="none" fo:border-bottom="0.05pt solid #000000"/>
-  </style:style>
   <style:style style:name="Table5" style:family="table">
    <style:table-properties style:width="7.969cm" table:align="right" style:may-break-between-rows="false"/>
   </style:style>
@@ -598,6 +544,9 @@
   <style:style style:name="Table5.A7" style:family="table-cell">
    <style:table-cell-properties fo:padding="0.097cm" fo:border-left="0.05pt solid #000000" fo:border-right="0.05pt solid #000000" fo:border-top="none" fo:border-bottom="0.05pt solid #000000"/>
   </style:style>
+  <style:style style:name="Table5.A8" style:family="table-cell">
+   <style:table-cell-properties fo:padding="0.097cm" fo:border-left="0.05pt solid #000000" fo:border-right="0.05pt solid #000000" fo:border-top="none" fo:border-bottom="0.05pt solid #000000"/>
+  </style:style>
   <style:style style:name="P1" style:family="paragraph" style:parent-style-name="Header">
    <style:paragraph-properties fo:text-align="center" style:justify-single-word="false"/>
    <style:text-properties officeooo:paragraph-rsid="00124376"/>
@@ -613,119 +562,77 @@
   <style:style style:name="P4" style:family="paragraph" style:parent-style-name="Frame_20_contents">
    <style:paragraph-properties fo:text-align="start" style:justify-single-word="false"/>
   </style:style>
-  <style:style style:name="P5" style:family="paragraph" style:parent-style-name="Header">
-   <style:paragraph-properties fo:text-align="center" style:justify-single-word="false"/>
-   <style:text-properties officeooo:paragraph-rsid="00124376"/>
+  <style:style style:name="P5" style:family="paragraph" style:parent-style-name="Standard">
+   <style:paragraph-properties fo:margin-left="11.28cm" fo:margin-right="0cm" fo:text-indent="0cm" style:auto-text-indent="false" fo:break-before="page"/>
+   <style:text-properties style:font-name="Liberation Sans" officeooo:paragraph-rsid="0020411c"/>
   </style:style>
-  <style:style style:name="P6" style:family="paragraph" style:parent-style-name="Footer">
-   <style:paragraph-properties fo:text-align="center" style:justify-single-word="false"/>
-   <style:text-properties officeooo:paragraph-rsid="00124376"/>
+  <style:style style:name="P6" style:family="paragraph" style:parent-style-name="Standard">
+   <style:paragraph-properties fo:margin-left="11.28cm" fo:margin-right="0cm" fo:text-indent="0cm" style:auto-text-indent="false"/>
+   <style:text-properties style:font-name="Liberation Sans" officeooo:paragraph-rsid="001ba80b"/>
   </style:style>
-  <style:style style:name="P7" style:family="paragraph" style:parent-style-name="Footer">
-   <style:paragraph-properties fo:text-align="center" style:justify-single-word="false"/>
-   <style:text-properties officeooo:paragraph-rsid="002d451c"/>
+  <style:style style:name="P7" style:family="paragraph" style:parent-style-name="Standard">
+   <style:paragraph-properties fo:margin-left="11.28cm" fo:margin-right="0cm" fo:text-indent="0cm" style:auto-text-indent="false"/>
+   <style:text-properties style:font-name="Liberation Sans"/>
   </style:style>
-  <style:style style:name="P8" style:family="paragraph" style:parent-style-name="Table_20_Contents">
+  <style:style style:name="P8" style:family="paragraph" style:parent-style-name="Heading_20_1">
    <style:paragraph-properties fo:text-align="center" style:justify-single-word="false"/>
   </style:style>
   <style:style style:name="P9" style:family="paragraph" style:parent-style-name="Heading_20_1">
    <style:paragraph-properties fo:text-align="center" style:justify-single-word="false"/>
+   <style:text-properties style:text-underline-style="solid" style:text-underline-width="auto" style:text-underline-color="font-color"/>
   </style:style>
-  <style:style style:name="P10" style:family="paragraph" style:parent-style-name="Header">
-   <style:paragraph-properties fo:text-align="start" style:justify-single-word="false"/>
-   <style:text-properties fo:font-size="12pt" officeooo:paragraph-rsid="003043e7" style:font-size-asian="12pt" style:font-size-complex="12pt"/>
+  <style:style style:name="P10" style:family="paragraph" style:parent-style-name="Text_20_body">
+   <style:text-properties officeooo:paragraph-rsid="000d7572"/>
   </style:style>
-  <style:style style:name="P11" style:family="paragraph" style:parent-style-name="Header">
-   <style:paragraph-properties fo:text-align="start" style:justify-single-word="false"/>
-   <style:text-properties fo:font-size="12pt" officeooo:paragraph-rsid="002d451c" style:font-size-asian="12pt" style:font-size-complex="12pt"/>
+  <style:style style:name="P11" style:family="paragraph" style:parent-style-name="Text_20_body">
+   <style:text-properties officeooo:paragraph-rsid="0020411c"/>
   </style:style>
-  <style:style style:name="P12" style:family="paragraph" style:parent-style-name="Header">
-   <style:paragraph-properties fo:text-align="start" style:justify-single-word="false"/>
-   <style:text-properties fo:font-size="12pt" officeooo:paragraph-rsid="001973ce" style:font-size-asian="12pt" style:font-size-complex="12pt"/>
+  <style:style style:name="P12" style:family="paragraph" style:parent-style-name="Table_20_Heading">
+   <style:text-properties style:font-name="Liberation Serif"/>
   </style:style>
-  <style:style style:name="P13" style:family="paragraph" style:parent-style-name="Frame_20_contents">
-   <style:paragraph-properties fo:text-align="start" style:justify-single-word="false"/>
+  <style:style style:name="P13" style:family="paragraph" style:parent-style-name="Table_20_Contents">
+   <style:paragraph-properties fo:text-align="end" style:justify-single-word="false"/>
   </style:style>
   <style:style style:name="P14" style:family="paragraph" style:parent-style-name="Table_20_Contents">
-   <style:text-properties style:font-name="Liberation Serif"/>
-  </style:style>
-  <style:style style:name="P15" style:family="paragraph" style:parent-style-name="Table_20_Heading">
-   <style:text-properties style:font-name="Liberation Serif"/>
-  </style:style>
-  <style:style style:name="P16" style:family="paragraph" style:parent-style-name="Table_20_Heading">
    <style:paragraph-properties fo:text-align="end" style:justify-single-word="false"/>
-   <style:text-properties style:font-name="Liberation Serif"/>
+   <style:text-properties officeooo:paragraph-rsid="001611c2"/>
+  </style:style>
+  <style:style style:name="P15" style:family="paragraph" style:parent-style-name="Table_20_Contents">
+   <style:paragraph-properties fo:text-align="center" style:justify-single-word="false"/>
+  </style:style>
+  <style:style style:name="P16" style:family="paragraph" style:parent-style-name="Table_20_Contents">
+   <style:text-properties fo:font-style="italic" style:font-style-asian="italic" style:font-style-complex="italic"/>
   </style:style>
   <style:style style:name="P17" style:family="paragraph" style:parent-style-name="Text_20_body">
    <style:text-properties style:font-name="Liberation Serif"/>
   </style:style>
-  <style:style style:name="P18" style:family="paragraph" style:parent-style-name="Table_20_Contents">
-   <style:text-properties fo:font-style="italic" style:font-style-asian="italic" style:font-style-complex="italic"/>
-  </style:style>
-  <style:style style:name="P19" style:family="paragraph" style:parent-style-name="Table_20_Contents">
-   <style:paragraph-properties fo:text-align="end" style:justify-single-word="false"/>
-  </style:style>
-  <style:style style:name="P20" style:family="paragraph" style:parent-style-name="Table_20_Contents">
-   <style:paragraph-properties fo:text-align="end" style:justify-single-word="false"/>
-   <style:text-properties officeooo:paragraph-rsid="001611c2"/>
-  </style:style>
-  <style:style style:name="P21" style:family="paragraph" style:parent-style-name="Table_20_Contents">
-   <style:text-properties officeooo:paragraph-rsid="00257920"/>
-  </style:style>
-  <style:style style:name="P22" style:family="paragraph" style:parent-style-name="Standard">
-   <style:text-properties officeooo:paragraph-rsid="00257920"/>
-  </style:style>
-  <style:style style:name="P23" style:family="paragraph" style:parent-style-name="Text_20_body">
-   <style:text-properties officeooo:paragraph-rsid="000d7572"/>
-  </style:style>
-  <style:style style:name="P24" style:family="paragraph" style:parent-style-name="Text_20_body">
-   <style:text-properties officeooo:paragraph-rsid="0020411c"/>
-  </style:style>
-  <style:style style:name="P25" style:family="paragraph" style:parent-style-name="Standard">
-   <style:paragraph-properties fo:margin-left="11.28cm" fo:margin-right="0cm" fo:text-indent="0cm" style:auto-text-indent="false" fo:break-before="page"/>
-   <style:text-properties officeooo:paragraph-rsid="0020411c"/>
-  </style:style>
-  <style:style style:name="P26" style:family="paragraph" style:parent-style-name="Heading_20_1">
-   <style:paragraph-properties fo:text-align="center" style:justify-single-word="false"/>
-   <style:text-properties style:text-underline-style="solid" style:text-underline-width="auto" style:text-underline-color="font-color"/>
-  </style:style>
-  <style:style style:name="P27" style:family="paragraph" style:parent-style-name="Standard">
-   <style:paragraph-properties fo:margin-left="11.28cm" fo:margin-right="0cm" fo:text-indent="0cm" style:auto-text-indent="false"/>
-   <style:text-properties style:font-name="Liberation Sans"/>
-  </style:style>
-  <style:style style:name="P28" style:family="paragraph" style:parent-style-name="Standard" style:master-page-name="">
-   <style:paragraph-properties fo:margin-left="11.28cm" fo:margin-right="0cm" fo:text-indent="0cm" style:auto-text-indent="false" style:page-number="auto" fo:break-before="page"/>
-   <style:text-properties style:font-name="Liberation Sans"/>
-  </style:style>
-  <style:style style:name="P29" style:family="paragraph" style:parent-style-name="Standard">
-   <style:paragraph-properties fo:margin-left="11.28cm" fo:margin-right="0cm" fo:text-indent="0cm" style:auto-text-indent="false"/>
-   <style:text-properties style:font-name="Liberation Sans" officeooo:paragraph-rsid="001ba80b"/>
-  </style:style>
-  <style:style style:name="P30" style:family="paragraph" style:parent-style-name="Standard" style:master-page-name="">
-   <style:paragraph-properties fo:margin-left="11.28cm" fo:margin-right="0cm" fo:text-indent="0cm" style:auto-text-indent="false" style:page-number="auto" fo:break-before="page"/>
-   <style:text-properties style:font-name="Liberation Sans" officeooo:paragraph-rsid="001ba80b"/>
-  </style:style>
-  <style:style style:name="P31" style:family="paragraph" style:parent-style-name="Standard">
-   <style:paragraph-properties fo:margin-left="11.28cm" fo:margin-right="0cm" fo:text-indent="0cm" style:auto-text-indent="false" fo:break-before="page"/>
-   <style:text-properties style:font-name="Liberation Sans" officeooo:paragraph-rsid="0020411c"/>
-  </style:style>
-  <style:style style:name="P32" style:family="paragraph" style:parent-style-name="Standard">
-   <style:paragraph-properties fo:margin-left="11.28cm" fo:margin-right="0cm" fo:text-indent="0cm" style:auto-text-indent="false" fo:break-before="page"/>
-  </style:style>
-  <style:style style:name="P33" style:family="paragraph" style:parent-style-name="Standard">
-   <style:paragraph-properties fo:break-before="page"/>
-  </style:style>
-  <style:style style:name="P34" style:family="paragraph" style:parent-style-name="Standard">
+  <style:style style:name="P18" style:family="paragraph" style:parent-style-name="Standard">
    <style:text-properties officeooo:paragraph-rsid="00267ece"/>
   </style:style>
-  <style:style style:name="T1" style:family="text">
-   <style:text-properties officeooo:rsid="000dd611"/>
+  <style:style style:name="P19" style:family="paragraph" style:parent-style-name="Standard">
+   <style:text-properties officeooo:paragraph-rsid="00257920"/>
   </style:style>
-  <style:style style:name="T2" style:family="text">
+  <style:style style:name="P20" style:family="paragraph" style:parent-style-name="Table_20_Contents">
+   <style:text-properties officeooo:paragraph-rsid="00257920"/>
+  </style:style>
+  <style:style style:name="P21" style:family="paragraph" style:parent-style-name="Table_20_Heading">
+   <style:paragraph-properties fo:text-align="end" style:justify-single-word="false"/>
+   <style:text-properties style:font-name="Liberation Serif"/>
+  </style:style>
+  <style:style style:name="P22" style:family="paragraph" style:parent-style-name="Table_20_Contents">
+   <style:text-properties style:font-name="Liberation Serif"/>
+  </style:style>
+  <style:style style:name="P23" style:family="paragraph" style:parent-style-name="Table_20_Heading">
+   <style:text-properties officeooo:rsid="00318a56" officeooo:paragraph-rsid="00318a56"/>
+  </style:style>
+  <style:style style:name="P24" style:family="paragraph" style:parent-style-name="Text_20_body">
+   <style:paragraph-properties fo:text-align="center" style:justify-single-word="false"/>
+  </style:style>
+  <style:style style:name="T1" style:family="text">
    <style:text-properties style:text-underline-style="solid" style:text-underline-width="auto" style:text-underline-color="font-color"/>
   </style:style>
-  <style:style style:name="T3" style:family="text">
-   <style:text-properties style:font-name="Liberation Sans"/>
+  <style:style style:name="T2" style:family="text">
+   <style:text-properties officeooo:rsid="000dd611"/>
   </style:style>
   <style:style style:name="fr1" style:family="graphic" style:parent-style-name="Frame">
    <style:graphic-properties fo:margin-left="0cm" fo:margin-right="0cm" fo:margin-top="0cm" fo:margin-bottom="0cm" style:wrap="parallel" style:number-wrapped-paragraphs="no-limit" style:vertical-pos="middle" style:vertical-rel="baseline" style:horizontal-pos="left" style:horizontal-rel="paragraph" draw:opacity="100%" fo:padding="0cm" fo:border="none" draw:wrap-influence-on-position="once-concurrent" loext:allow-overlap="true">
@@ -787,34 +694,34 @@
     <text:sequence-decl text:display-outline-level="0" text:name="Drawing"/>
     <text:sequence-decl text:display-outline-level="0" text:name="Figure"/>
    </text:sequence-decls>
-   <text:p text:style-name="P31"><text:placeholder text:placeholder-type="text">&lt;replace text:p=&quot;set_lang(invoice.party.lang)&quot;&gt;</text:placeholder></text:p>
-   <text:p text:style-name="P29"><text:placeholder text:placeholder-type="text">&lt;replace text:p=&quot;invoice.set_lang(invoice.party.lang)&quot;&gt;</text:placeholder></text:p>
-   <text:p text:style-name="P29"><text:placeholder text:placeholder-type="text">&lt;for each=&quot;line in invoice.invoice_address.full_address.split(&apos;\n&apos;)&quot;&gt;</text:placeholder></text:p>
-   <text:p text:style-name="P27"><text:placeholder text:placeholder-type="text">&lt;line&gt;</text:placeholder></text:p>
-   <text:p text:style-name="P27"><text:placeholder text:placeholder-type="text">&lt;/for&gt;</text:placeholder></text:p>
-   <text:p text:style-name="P27"><text:placeholder text:placeholder-type="text">&lt;if test=&quot;invoice.party_tax_identifier&quot;&gt;</text:placeholder></text:p>
-   <text:p text:style-name="P27"><text:placeholder text:placeholder-type="text">&lt;invoice.party_tax_identifier.type_string&gt;</text:placeholder>: <text:placeholder text:placeholder-type="text">&lt;invoice.party_tax_identifier.code&gt;</text:placeholder></text:p>
-   <text:p text:style-name="P27"><text:placeholder text:placeholder-type="text">&lt;/if&gt;</text:placeholder></text:p>
+   <text:p text:style-name="P5"><text:placeholder text:placeholder-type="text">&lt;replace text:p=&quot;set_lang(invoice.party.lang)&quot;&gt;</text:placeholder></text:p>
+   <text:p text:style-name="P6"><text:placeholder text:placeholder-type="text">&lt;replace text:p=&quot;invoice.set_lang(invoice.party.lang)&quot;&gt;</text:placeholder></text:p>
+   <text:p text:style-name="P6"><text:placeholder text:placeholder-type="text">&lt;for each=&quot;line in invoice.invoice_address.full_address.split(&apos;\n&apos;)&quot;&gt;</text:placeholder></text:p>
+   <text:p text:style-name="P7"><text:placeholder text:placeholder-type="text">&lt;line&gt;</text:placeholder></text:p>
+   <text:p text:style-name="P7"><text:placeholder text:placeholder-type="text">&lt;/for&gt;</text:placeholder></text:p>
+   <text:p text:style-name="P7"><text:placeholder text:placeholder-type="text">&lt;if test=&quot;invoice.party_tax_identifier&quot;&gt;</text:placeholder></text:p>
+   <text:p text:style-name="P7"><text:placeholder text:placeholder-type="text">&lt;invoice.party_tax_identifier.type_string&gt;</text:placeholder>: <text:placeholder text:placeholder-type="text">&lt;invoice.party_tax_identifier.code&gt;</text:placeholder></text:p>
+   <text:p text:style-name="P7"><text:placeholder text:placeholder-type="text">&lt;/if&gt;</text:placeholder></text:p>
    <text:p text:style-name="Standard"><text:placeholder text:placeholder-type="text">&lt;if test=&quot;invoice.type == &apos;in&apos;&quot;&gt;</text:placeholder></text:p>
-   <text:p text:style-name="P9"><text:span text:style-name="T2">Supplier Invoice N°:</text:span><text:span text:style-name="T2"><text:placeholder text:placeholder-type="text">&lt;invoice.number and &apos; &apos; + invoice.number or &apos;&apos;&gt;</text:placeholder></text:span></text:p>
+   <text:p text:style-name="P8"><text:span text:style-name="T1">Supplier Invoice N°:</text:span><text:span text:style-name="T1"><text:placeholder text:placeholder-type="text">&lt;invoice.number and &apos; &apos; + invoice.number or &apos;&apos;&gt;</text:placeholder></text:span></text:p>
    <text:p text:style-name="Standard"><text:placeholder text:placeholder-type="text">&lt;/if&gt;</text:placeholder></text:p>
    <text:p text:style-name="Standard"><text:placeholder text:placeholder-type="text">&lt;if test=&quot;invoice.type == &apos;out&apos;&quot;&gt;</text:placeholder></text:p>
    <text:p text:style-name="Standard"><text:placeholder text:placeholder-type="text">&lt;choose test=&quot;&quot;&gt;</text:placeholder></text:p>
    <text:p text:style-name="Standard"><text:placeholder text:placeholder-type="text">&lt;when test=&quot;invoice.state == &apos;draft&apos;&quot;&gt;</text:placeholder></text:p>
-   <text:p text:style-name="P26"><text:soft-page-break/>Draft Invoice</text:p>
+   <text:p text:style-name="P9"><text:soft-page-break/>Draft Invoice</text:p>
    <text:p text:style-name="Standard"><text:placeholder text:placeholder-type="text">&lt;/when&gt;</text:placeholder></text:p>
    <text:p text:style-name="Standard"><text:placeholder text:placeholder-type="text">&lt;when test=&quot;invoice.state == &apos;validated&apos;&quot;&gt;</text:placeholder></text:p>
-   <text:p text:style-name="P26">Pro forma Invoice</text:p>
+   <text:p text:style-name="P9">Pro forma Invoice</text:p>
    <text:p text:style-name="Standard"><text:placeholder text:placeholder-type="text">&lt;/when&gt;</text:placeholder></text:p>
    <text:p text:style-name="Standard"><text:placeholder text:placeholder-type="text">&lt;otherwise test=&quot;&quot;&gt;</text:placeholder></text:p>
-   <text:p text:style-name="P26">Invoice N°:<text:placeholder text:placeholder-type="text">&lt;invoice.number and &apos; &apos; + invoice.number or &apos;&apos;&gt;</text:placeholder></text:p>
+   <text:p text:style-name="P9">Invoice N°:<text:placeholder text:placeholder-type="text">&lt;invoice.number and &apos; &apos; + invoice.number or &apos;&apos;&gt;</text:placeholder></text:p>
    <text:p text:style-name="Standard"><text:placeholder text:placeholder-type="text">&lt;/otherwise&gt;</text:placeholder></text:p>
    <text:p text:style-name="Standard"><text:placeholder text:placeholder-type="text">&lt;/choose&gt;</text:placeholder></text:p>
    <text:p text:style-name="Standard"><text:placeholder text:placeholder-type="text">&lt;/if&gt;</text:placeholder></text:p>
-   <text:p text:style-name="P23">Description: <text:placeholder text:placeholder-type="text">&lt;invoice.description or &apos;&apos;&gt;</text:placeholder></text:p>
-   <text:p text:style-name="P23"><text:span text:style-name="T1">Reference</text:span>: <text:placeholder text:placeholder-type="text">&lt;invoice.origins or &apos;&apos;&gt;</text:placeholder><text:placeholder text:placeholder-type="text">&lt;&apos;, &apos; if (invoice.reference and invoice.origins) else &apos;&apos;&gt;</text:placeholder><text:placeholder text:placeholder-type="text">&lt;invoice.reference or &apos;&apos;&gt;</text:placeholder></text:p>
+   <text:p text:style-name="P10">Description: <text:placeholder text:placeholder-type="text">&lt;invoice.description or &apos;&apos;&gt;</text:placeholder></text:p>
+   <text:p text:style-name="P10">Reference: <text:placeholder text:placeholder-type="text">&lt;invoice.origins or &apos;&apos;&gt;</text:placeholder><text:placeholder text:placeholder-type="text">&lt;&apos;, &apos; if (invoice.reference and invoice.origins) else &apos;&apos;&gt;</text:placeholder><text:placeholder text:placeholder-type="text">&lt;invoice.reference or &apos;&apos;&gt;</text:placeholder></text:p>
    <text:p text:style-name="Text_20_body">Date: <text:placeholder text:placeholder-type="text">&lt;format_date(invoice.invoice_date or today, invoice.party.lang)&gt;</text:placeholder></text:p>
-   <text:p text:style-name="P24"><text:placeholder text:placeholder-type="text">&lt;if test=&quot;invoice.tax_identifier&quot;&gt;</text:placeholder></text:p>
+   <text:p text:style-name="P11"><text:placeholder text:placeholder-type="text">&lt;if test=&quot;invoice.tax_identifier&quot;&gt;</text:placeholder></text:p>
    <text:p text:style-name="Text_20_body"><text:placeholder text:placeholder-type="text">&lt;invoice.tax_identifier.type_string&gt;</text:placeholder>: <text:placeholder text:placeholder-type="text">&lt;invoice.tax_identifier.code&gt;</text:placeholder></text:p>
    <text:p text:style-name="Standard"><text:placeholder text:placeholder-type="text">&lt;/if&gt;</text:placeholder></text:p>
    <table:table table:name="Table1" table:style-name="Table1">
@@ -825,19 +732,19 @@
     <table:table-header-rows>
      <table:table-row>
       <table:table-cell table:style-name="Table1.A1" office:value-type="string">
-       <text:p text:style-name="P15">Description</text:p>
+       <text:p text:style-name="P12">Description</text:p>
       </table:table-cell>
       <table:table-cell table:style-name="Table1.A1" office:value-type="string">
-       <text:p text:style-name="P15">Quantity</text:p>
+       <text:p text:style-name="P12">Quantity</text:p>
       </table:table-cell>
       <table:table-cell table:style-name="Table1.A1" office:value-type="string">
-       <text:p text:style-name="P15">Unit Price</text:p>
+       <text:p text:style-name="P12">Unit Price</text:p>
       </table:table-cell>
       <table:table-cell table:style-name="Table1.A1" office:value-type="string">
-       <text:p text:style-name="P15">Taxes</text:p>
+       <text:p text:style-name="P12">Taxes</text:p>
       </table:table-cell>
       <table:table-cell table:style-name="Table1.E1" office:value-type="string">
-       <text:p text:style-name="P15">Amount</text:p>
+       <text:p text:style-name="P12">Amount</text:p>
       </table:table-cell>
      </table:table-row>
     </table:table-header-rows>
@@ -881,16 +788,16 @@
       <text:p text:style-name="Table_20_Contents"><text:placeholder text:placeholder-type="text">&lt;/if&gt;</text:placeholder></text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Table1.B5" office:value-type="string">
-      <text:p text:style-name="P19"><text:placeholder text:placeholder-type="text">&lt;format_number_symbol(line.quantity, invoice.party.lang, line.unit, digits=line.unit.digits) if line.unit else format_number(line.quantity, invoice.party.lang)&gt;</text:placeholder></text:p>
+      <text:p text:style-name="P13"><text:placeholder text:placeholder-type="text">&lt;format_number_symbol(line.quantity, invoice.party.lang, line.unit, digits=line.unit.digits) if line.unit else format_number(line.quantity, invoice.party.lang)&gt;</text:placeholder></text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Table1.B5" office:value-type="string">
-      <text:p text:style-name="P20"><text:placeholder text:placeholder-type="text">&lt;format_currency(line.unit_price, invoice.party.lang, invoice.currency, digits=line.__class__.unit_price.digits[1])&gt;</text:placeholder></text:p>
+      <text:p text:style-name="P14"><text:placeholder text:placeholder-type="text">&lt;format_currency(line.unit_price, invoice.party.lang, invoice.currency, digits=line.__class__.unit_price.digits[1])&gt;</text:placeholder></text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Table1.D5" office:value-type="string">
-      <text:p text:style-name="P8"><text:placeholder text:placeholder-type="text">&lt;&apos;,&apos;.join(&apos;[&apos; + &apos;%s&apos; % x.sequence_number + &apos;]&apos; for x in line.invoice_taxes)&gt;</text:placeholder></text:p>
+      <text:p text:style-name="P15"><text:placeholder text:placeholder-type="text">&lt;&apos;,&apos;.join(&apos;[&apos; + &apos;%s&apos; % x.sequence_number + &apos;]&apos; for x in line.invoice_taxes)&gt;</text:placeholder></text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Table1.E5" office:value-type="string">
-      <text:p text:style-name="P19"><text:placeholder text:placeholder-type="text">&lt;format_currency(line.amount, invoice.party.lang, invoice.currency)&gt;</text:placeholder></text:p>
+      <text:p text:style-name="P13"><text:placeholder text:placeholder-type="text">&lt;format_currency(line.amount, invoice.party.lang, invoice.currency)&gt;</text:placeholder></text:p>
      </table:table-cell>
     </table:table-row>
     <table:table-row>
@@ -911,6 +818,7 @@
      <table:covered-table-cell/>
      <table:covered-table-cell/>
     </table:table-row>
+    <text:soft-page-break/>
     <table:table-row>
      <table:table-cell table:style-name="Table1.A8" table:number-columns-spanned="4" office:value-type="string">
       <text:p text:style-name="Table_20_Contents"><text:placeholder text:placeholder-type="text">&lt;for each=&quot;description in (line.description or &apos;&apos;).split(&apos;\n&apos;)&quot;&gt;</text:placeholder></text:p>
@@ -921,7 +829,7 @@
      <table:covered-table-cell/>
      <table:covered-table-cell/>
      <table:table-cell table:style-name="Table1.E5" office:value-type="string">
-      <text:p text:style-name="P19"><text:placeholder text:placeholder-type="text">&lt;format_currency(line.amount, invoice.party.lang, invoice.currency)&gt;</text:placeholder><text:soft-page-break/></text:p>
+      <text:p text:style-name="P13"><text:placeholder text:placeholder-type="text">&lt;format_currency(line.amount, invoice.party.lang, invoice.currency)&gt;</text:placeholder></text:p>
      </table:table-cell>
     </table:table-row>
     <table:table-row>
@@ -945,7 +853,7 @@
     <table:table-row>
      <table:table-cell table:style-name="Table1.A11" table:number-columns-spanned="5" office:value-type="string">
       <text:p text:style-name="Table_20_Contents"><text:placeholder text:placeholder-type="text">&lt;for each=&quot;description in (line.description or &apos;&apos;).split(&apos;\n&apos;)&quot;&gt;</text:placeholder></text:p>
-      <text:p text:style-name="P18"><text:placeholder text:placeholder-type="text">&lt;description&gt;</text:placeholder></text:p>
+      <text:p text:style-name="P16"><text:placeholder text:placeholder-type="text">&lt;description&gt;</text:placeholder></text:p>
       <text:p text:style-name="Table_20_Contents"><text:placeholder text:placeholder-type="text">&lt;/for&gt;</text:placeholder></text:p>
      </table:table-cell>
      <table:covered-table-cell/>
@@ -1022,13 +930,13 @@
        <table:table-header-rows>
         <table:table-row>
          <table:table-cell table:style-name="Table3.A1" office:value-type="string">
-          <text:p text:style-name="P15">Tax</text:p>
+          <text:p text:style-name="P12">Tax</text:p>
          </table:table-cell>
          <table:table-cell table:style-name="Table3.A1" office:value-type="string">
-          <text:p text:style-name="P15">Base</text:p>
+          <text:p text:style-name="P12">Base</text:p>
          </table:table-cell>
          <table:table-cell table:style-name="Table3.C1" office:value-type="string">
-          <text:p text:style-name="P15">Amount</text:p>
+          <text:p text:style-name="P12">Amount</text:p>
          </table:table-cell>
         </table:table-row>
        </table:table-header-rows>
@@ -1044,31 +952,31 @@
          <text:p text:style-name="Table_20_Contents"><text:placeholder text:placeholder-type="text">&lt;&apos;[&apos; + &apos;%s&apos; % tax.sequence_number + &apos;]&apos;&gt;</text:placeholder><text:s/><text:placeholder text:placeholder-type="text">&lt;tax.description or &apos;&apos;&gt;</text:placeholder></text:p>
         </table:table-cell>
         <table:table-cell table:style-name="Table3.B3" office:value-type="string">
-         <text:p text:style-name="P19"><text:placeholder text:placeholder-type="text">&lt;format_currency(tax.base, invoice.party.lang, invoice.currency)&gt;</text:placeholder></text:p>
+         <text:p text:style-name="P13"><text:placeholder text:placeholder-type="text">&lt;format_currency(tax.base, invoice.party.lang, invoice.currency)&gt;</text:placeholder></text:p>
         </table:table-cell>
         <table:table-cell table:style-name="Table3.C3" office:value-type="string">
-         <text:p text:style-name="P19"><text:placeholder text:placeholder-type="text">&lt;format_currency(tax.amount, invoice.party.lang, invoice.currency)&gt;</text:placeholder></text:p>
+         <text:p text:style-name="P13"><text:placeholder text:placeholder-type="text">&lt;format_currency(tax.amount, invoice.party.lang, invoice.currency)&gt;</text:placeholder></text:p>
         </table:table-cell>
        </table:table-row>
        <table:table-row>
         <table:table-cell table:style-name="Table3.A4" table:number-columns-spanned="3" office:value-type="string">
-         <text:p text:style-name="P34"><text:placeholder text:placeholder-type="text">&lt;if test=&quot;tax.legal_notice&quot;&gt;</text:placeholder></text:p>
+         <text:p text:style-name="P18"><text:placeholder text:placeholder-type="text">&lt;if test=&quot;tax.legal_notice&quot;&gt;</text:placeholder></text:p>
         </table:table-cell>
         <table:covered-table-cell/>
         <table:covered-table-cell/>
        </table:table-row>
        <table:table-row>
         <table:table-cell table:style-name="Table3.A5" table:number-columns-spanned="3" office:value-type="string">
-         <text:p text:style-name="P22"><text:placeholder text:placeholder-type="text">&lt;for each=&quot;line in tax.legal_notice.split(&apos;\n&apos;)&quot;&gt;</text:placeholder></text:p>
-         <text:p text:style-name="P21"><text:placeholder text:placeholder-type="text">&lt;line&gt;</text:placeholder></text:p>
-         <text:p text:style-name="P21"><text:placeholder text:placeholder-type="text">&lt;/for&gt;</text:placeholder></text:p>
+         <text:p text:style-name="P19"><text:placeholder text:placeholder-type="text">&lt;for each=&quot;line in tax.legal_notice.split(&apos;\n&apos;)&quot;&gt;</text:placeholder></text:p>
+         <text:p text:style-name="P20"><text:placeholder text:placeholder-type="text">&lt;line&gt;</text:placeholder></text:p>
+         <text:p text:style-name="P20"><text:placeholder text:placeholder-type="text">&lt;/for&gt;</text:placeholder></text:p>
         </table:table-cell>
         <table:covered-table-cell/>
         <table:covered-table-cell/>
        </table:table-row>
        <table:table-row>
         <table:table-cell table:style-name="Table3.A5" table:number-columns-spanned="3" office:value-type="string">
-         <text:p text:style-name="P34"><text:placeholder text:placeholder-type="text">&lt;/if&gt;</text:placeholder></text:p>
+         <text:p text:style-name="P18"><text:placeholder text:placeholder-type="text">&lt;/if&gt;</text:placeholder></text:p>
         </table:table-cell>
         <table:covered-table-cell/>
         <table:covered-table-cell/>
@@ -1089,30 +997,30 @@
        <table:table-column table:style-name="Table4.B"/>
        <table:table-row>
         <table:table-cell table:style-name="Table4.A1" office:value-type="string">
-         <text:p text:style-name="P16">Total (excl. taxes):</text:p>
+         <text:p text:style-name="P21">Total (excl. taxes):</text:p>
         </table:table-cell>
         <table:table-cell table:style-name="Table4.B1" office:value-type="string">
-         <text:p text:style-name="P19"><text:placeholder text:placeholder-type="text">&lt;format_currency(invoice.untaxed_amount, invoice.party.lang, invoice.currency)&gt;</text:placeholder></text:p>
+         <text:p text:style-name="P13"><text:placeholder text:placeholder-type="text">&lt;format_currency(invoice.untaxed_amount, invoice.party.lang, invoice.currency)&gt;</text:placeholder></text:p>
         </table:table-cell>
        </table:table-row>
        <table:table-row>
         <table:table-cell table:style-name="Table4.A2" office:value-type="string">
-         <text:p text:style-name="P16">Taxes:</text:p>
+         <text:p text:style-name="P21">Taxes:</text:p>
         </table:table-cell>
         <table:table-cell table:style-name="Table4.B2" office:value-type="string">
-         <text:p text:style-name="P19"><text:placeholder text:placeholder-type="text">&lt;format_currency(invoice.tax_amount, invoice.party.lang, invoice.currency)&gt;</text:placeholder></text:p>
+         <text:p text:style-name="P13"><text:placeholder text:placeholder-type="text">&lt;format_currency(invoice.tax_amount, invoice.party.lang, invoice.currency)&gt;</text:placeholder></text:p>
         </table:table-cell>
        </table:table-row>
        <table:table-row>
         <table:table-cell table:style-name="Table4.A2" office:value-type="string">
-         <text:p text:style-name="P16">Total:</text:p>
+         <text:p text:style-name="P21">Total:</text:p>
         </table:table-cell>
         <table:table-cell table:style-name="Table4.B2" office:value-type="string">
-         <text:p text:style-name="P19"><text:placeholder text:placeholder-type="text">&lt;format_currency(invoice.total_amount, invoice.party.lang, invoice.currency)&gt;</text:placeholder></text:p>
+         <text:p text:style-name="P13"><text:placeholder text:placeholder-type="text">&lt;format_currency(invoice.total_amount, invoice.party.lang, invoice.currency)&gt;</text:placeholder></text:p>
         </table:table-cell>
        </table:table-row>
       </table:table>
-      <text:p text:style-name="P14"/>
+      <text:p text:style-name="P22"/>
      </table:table-cell>
     </table:table-row>
    </table:table>
@@ -1123,7 +1031,7 @@
     <table:table-header-rows>
      <table:table-row>
       <table:table-cell table:style-name="Table5.A1" table:number-columns-spanned="2" office:value-type="string">
-       <text:p text:style-name="P15">Payment Term</text:p>
+       <text:p text:style-name="P12">Payment Term</text:p>
        <text:p text:style-name="P17"><text:placeholder text:placeholder-type="text">&lt;if test=&quot;invoice.payment_term and invoice.payment_term.description&quot;&gt;</text:placeholder></text:p>
        <text:p text:style-name="P17"><text:placeholder text:placeholder-type="text">&lt;for each=&quot;description in (invoice.payment_term.description or &apos;&apos;).split(&apos;\n&apos;)&quot;&gt;</text:placeholder></text:p>
        <text:p text:style-name="P17"><text:placeholder text:placeholder-type="text">&lt;description&gt;</text:placeholder></text:p>
@@ -1134,10 +1042,10 @@
      </table:table-row>
      <table:table-row>
       <table:table-cell table:style-name="Table5.A2" office:value-type="string">
-       <text:p text:style-name="P15">Date</text:p>
+       <text:p text:style-name="P12">Date</text:p>
       </table:table-cell>
       <table:table-cell table:style-name="Table5.B2" office:value-type="string">
-       <text:p text:style-name="P15">Amount</text:p>
+       <text:p text:style-name="P12">Amount</text:p>
       </table:table-cell>
      </table:table-row>
     </table:table-header-rows>
@@ -1155,10 +1063,10 @@
     </table:table-row>
     <table:table-row>
      <table:table-cell table:style-name="Table5.A5" office:value-type="string">
-      <text:p text:style-name="P8"><text:placeholder text:placeholder-type="text">&lt;format_date(line.maturity_date, invoice.party.lang) if line.maturity_date else &apos;&apos;&gt;</text:placeholder></text:p>
+      <text:p text:style-name="P15"><text:placeholder text:placeholder-type="text">&lt;format_date(line.maturity_date, invoice.party.lang) if line.maturity_date else &apos;&apos;&gt;</text:placeholder></text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Table5.B5" office:value-type="string">
-      <text:p text:style-name="P19"><text:placeholder text:placeholder-type="text">&lt;line.amount_second_currency and format_currency(line.amount_second_currency, invoice.party.lang, invoice.currency) or format_currency(line.debit - line.credit, invoice.party.lang, invoice.currency)&gt;</text:placeholder><text:soft-page-break/></text:p>
+      <text:p text:style-name="P13"><text:placeholder text:placeholder-type="text">&lt;line.amount_second_currency and format_currency(line.amount_second_currency, invoice.party.lang, invoice.currency) or format_currency(line.debit - line.credit, invoice.party.lang, invoice.currency)&gt;</text:placeholder><text:soft-page-break/></text:p>
      </table:table-cell>
     </table:table-row>
     <table:table-row>
@@ -1173,9 +1081,18 @@
      </table:table-cell>
      <table:covered-table-cell/>
     </table:table-row>
+    <table:table-row>
+     <table:table-cell table:style-name="Table5.A8" table:number-columns-spanned="2" office:value-type="string">
+      <text:p text:style-name="Text_20_body"><text:placeholder text:placeholder-type="text">&lt;if test=&quot;invoice.type == &apos;out&apos;&quot;&gt;</text:placeholder></text:p>
+      <text:p text:style-name="P23"><text:soft-page-break/>Reference</text:p>
+      <text:p text:style-name="P24"><text:placeholder text:placeholder-type="text">&lt;invoice.customer_payment_reference&gt;</text:placeholder></text:p>
+      <text:p text:style-name="Text_20_body"><text:placeholder text:placeholder-type="text">&lt;/if&gt;</text:placeholder></text:p>
+     </table:table-cell>
+     <table:covered-table-cell/>
+    </table:table-row>
    </table:table>
    <text:p text:style-name="Text_20_body"><text:placeholder text:placeholder-type="text">&lt;/if&gt;</text:placeholder></text:p>
-   <text:p text:style-name="Text_20_body"><text:soft-page-break/><text:placeholder text:placeholder-type="text">&lt;for each=&quot;comment in (invoice.comment or &apos;&apos;).split(&apos;\n&apos;)&quot;&gt;</text:placeholder></text:p>
+   <text:p text:style-name="Text_20_body"><text:placeholder text:placeholder-type="text">&lt;for each=&quot;comment in (invoice.comment or &apos;&apos;).split(&apos;\n&apos;)&quot;&gt;</text:placeholder></text:p>
    <text:p text:style-name="Text_20_body"><text:placeholder text:placeholder-type="text">&lt;comment&gt;</text:placeholder></text:p>
    <text:p text:style-name="Text_20_body"><text:placeholder text:placeholder-type="text">&lt;/for&gt;</text:placeholder></text:p>
   </office:text>

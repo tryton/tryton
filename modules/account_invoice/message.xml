@@ -42,6 +42,9 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_invoice_payment_lines_greater_amount">
             <field name="text">Payment lines amount on invoice "%(invoice)s" can not be greater than the invoice amount.</field>
         </record>
+        <record model="ir.message" id="msg_invoice_supplier_payment_reference_invalid">
+            <field name="text">The %(type)s "%(reference)s" on invoice "%(invoice)s" is not valid.</field>
+        </record>
         <record model="ir.message" id="msg_invoice_payment_lines_add_remove_paid">
             <field name="text">You cannot add/remove payment lines on paid invoice "%(invoice)s".</field>
         </record>

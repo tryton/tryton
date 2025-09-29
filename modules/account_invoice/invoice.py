@@ -1,16 +1,19 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import datetime as dt
+import re
 from collections import defaultdict
 from decimal import Decimal
 from itertools import chain, groupby
 
+import stdnum.exceptions
 from genshi.template.text import TextTemplate
 from sql import Null
 from sql.aggregate import Sum
 from sql.conditionals import Coalesce
 from sql.functions import CharLength, Round
 from sql.operators import Exists
+from stdnum import iso7064, iso11649
 
 from trytond import backend, config
 from trytond.i18n import gettext
@@ -101,6 +104,8 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin, InvoiceReportMixin):
             })
     type_name = fields.Function(fields.Char('Type'), 'get_type_name')
     number = fields.Char("Number", readonly=True)
+    number_alnum = fields.Char("Number Alphanumeric", readonly=True)
+    number_digit = fields.Integer("Number Digit", readonly=True)
     reference = fields.Char(
         "Reference",
         states={
@@ -142,6 +147,27 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin, InvoiceReportMixin):
         "Payment Term Date", states=_states,
         help="The date from which the payment term is calculated.\n"
         "Leave empty to use the invoice date.")
+    supplier_payment_reference_type = fields.Selection([
+            (None, ""),
+            ('creditor_reference', "Creditor Reference"),
+            ], "Payment Reference Type",
+        states={
+            'invisible': Eval('type', 'out') != 'in',
+            })
+    supplier_payment_reference_type_string = (
+        supplier_payment_reference_type.translated(
+            'supplier_payment_reference_type'))
+    supplier_payment_reference = fields.Char(
+        "Payment Reference",
+        states={
+            'invisible': Eval('type', 'out') != 'in',
+            })
+    customer_payment_reference = fields.Function(fields.Char(
+            "Customer Payment Reference",
+            states={
+                'invisible': Eval('type', 'out') != 'out',
+                }),
+        'get_customer_payment_reference')
     sequence = fields.Integer("Sequence", readonly=True)
     sequence_type_cache = fields.Selection([
             (None, ""),
@@ -608,6 +634,59 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin, InvoiceReportMixin):
             company_id = Transaction().context.get('company')
         with Transaction().set_context(company=company_id):
             return self.invoice_date or Date.today()
+
+    @fields.depends(
+        'supplier_payment_reference_type',
+        'supplier_payment_reference')
+    def on_change_with_supplier_payment_reference(self):
+        reference = self.supplier_payment_reference
+        if reference and (type := self.supplier_payment_reference_type):
+            reference = getattr(
+                self, f'_format_supplier_payment_reference_{type}')(reference)
+        return reference
+
+    @classmethod
+    def _format_supplier_payment_reference_creditor_reference(cls, reference):
+        try:
+            return iso11649.format(reference)
+        except stdnum.exceptions.ValidationError:
+            return reference
+
+    def get_customer_payment_reference(self, name):
+        return self.format_customer_payment_reference(
+            self._customer_payment_reference_type())
+
+    def _customer_payment_reference_type(self):
+        return 'creditor_reference'
+
+    def _customer_payment_reference_number_alnum(self, source):
+        if source == 'invoice':
+            return self.number_alnum
+        elif source == 'party':
+            return self.party.code_alnum
+
+    def _customer_payment_reference_number_digit(self, source):
+        if source == 'invoice':
+            return self.number_digit
+        elif source == 'party':
+            return self.party.code_digit
+
+    def format_customer_payment_reference(self, type):
+        pool = Pool()
+        Confifugaration = pool.get('account.configuration')
+        configuration = Confifugaration(1)
+        source = configuration.get_multivalue(
+            'customer_payment_reference_number',
+            company=self.company.id)
+        return getattr(
+            self, f'_format_customer_payment_reference_{type}')(source)
+
+    def _format_customer_payment_reference_creditor_reference(self, source):
+        number = self._customer_payment_reference_number_alnum(source)
+        if number:
+            number = number[-25:].upper()
+            check_digits = iso7064.mod_97_10.calc_check_digits(f'{number}RF')
+            return iso11649.format(f'RF{check_digits}{number}')
 
     @fields.depends('party')
     def on_change_with_party_lang(self, name=None):
@@ -1482,6 +1561,19 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin, InvoiceReportMixin):
             if draft_invoices := [i for i in invoices if i.state == 'draft']:
                 cls.update_taxes(draft_invoices)
 
+    def compute_fields(self, field_names=None):
+        values = super().compute_fields(field_names=field_names)
+        if (not field_names or 'number' in field_names):
+            values['number_alnum'] = (
+                re.sub(r'[\W_]', '', self.number)
+                if self.number is not None else None)
+            try:
+                values['number_digit'] = int(
+                    re.sub(r'\D', '', self.number or ''))
+            except ValueError:
+                values['number_digit'] = None
+        return values
+
     @classmethod
     def copy(cls, invoices, default=None):
         if default is None:
@@ -1503,7 +1595,11 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin, InvoiceReportMixin):
                 return []
 
         default.setdefault('number', None)
+        default.setdefault('number_alnum', None)
+        default.setdefault('number_digit', None)
         default.setdefault('reference')
+        default.setdefault('supplier_payment_reference')
+        default.setdefault('supplier_payment_reference_type')
         default.setdefault('sequence')
         default.setdefault('move', None)
         default.setdefault('additional_moves', None)
@@ -1545,6 +1641,38 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin, InvoiceReportMixin):
                 gettext('account_invoice'
                     '.msg_invoice_payment_lines_greater_amount',
                     invoice=self.rec_name))
+
+    @classmethod
+    def validate_fields(cls, invoices, field_names):
+        super().validate_fields(invoices, field_names)
+        cls.check_supplier_payment_reference(invoices, field_names)
+
+    @classmethod
+    def check_supplier_payment_reference(cls, invoices, field_names):
+        if field_names and not (
+                field_names & {
+                    'supplier_payment_reference',
+                    'supplier_payment_reference_type',
+                    }):
+            return
+
+        for invoice in invoices:
+            if type := invoice.supplier_payment_reference_type:
+                method = getattr(
+                    cls, f'_check_supplier_payment_reference_{type}')
+                if not method(invoice):
+                    reference = invoice.supplier_payment_reference
+                    type = invoice.supplier_payment_reference_type_string
+                    raise InvoiceValidationError(
+                        gettext(
+                            'account_invoice.'
+                            'msg_invoice_supplier_payment_reference_invalid',
+                            type=type,
+                            reference=reference,
+                            invoice=invoice.rec_name))
+
+    def _check_supplier_payment_reference_creditor_reference(self):
+        return iso11649.is_valid(self.supplier_payment_reference)
 
     def get_reconcile_lines_for_amount(self, amount, currency, party=None):
         '''

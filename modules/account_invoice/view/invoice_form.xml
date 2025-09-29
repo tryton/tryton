@@ -75,6 +75,16 @@ this repository contains the full copyright notices and license terms. -->
             <label name="payment_term_date"/>
             <field name="payment_term_date"/>
             <newline/>
+
+            <label name="supplier_payment_reference"/>
+            <field name="supplier_payment_reference"/>
+            <label name="supplier_payment_reference_type"/>
+            <field name="supplier_payment_reference_type"/>
+
+            <label name="customer_payment_reference"/>
+            <field name="customer_payment_reference"/>
+            <newline/>
+
             <label name="amount_to_pay_today"/>
             <field name="amount_to_pay_today"/>
             <label name="amount_to_pay"/>

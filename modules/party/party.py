@@ -2,6 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 
 import logging
+import re
 
 import stdnum.exceptions
 from sql import Column, Literal
@@ -49,6 +50,8 @@ class Party(
         help="The unique identifier of the party.")
     code_readonly = fields.Function(fields.Boolean('Code Readonly'),
         'get_code_readonly')
+    code_alnum = fields.Char("Code Alphanumeric", readonly=True)
+    code_digit = fields.Integer("Code Digit", readonly=True)
     lang = fields.MultiValue(
         fields.Many2One('ir.lang', "Language",
             help="Used to translate communications with the party."))
@@ -293,6 +296,18 @@ class Party(
                 if sequence := cls._code_sequence():
                     values['code'] = sequence.get()
             values.setdefault('addresses', None)
+        return values
+
+    def compute_fields(self, field_names=None):
+        values = super().compute_fields(field_names=field_names)
+        if (not field_names or 'code' in field_names):
+            values['code_alnum'] = (
+                re.sub(r'[\W_]', '', self.code)
+                if self.code is not None else None)
+            try:
+                values['code_digit'] = int(re.sub(r'\D', '', self.code or ''))
+            except ValueError:
+                values['code_digit'] = None
         return values
 
     @classmethod

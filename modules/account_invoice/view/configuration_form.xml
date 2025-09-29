@@ -7,4 +7,9 @@ this repository contains the full copyright notices and license terms. -->
         <field name="default_customer_payment_term"/>
         <newline/>
     </xpath>
+    <xpath expr="//separator[@id='invoice']" position="after">
+        <label name="customer_payment_reference_number"/>
+        <field name="customer_payment_reference_number"/>
+        <newline/>
+    </xpath>
 </data>

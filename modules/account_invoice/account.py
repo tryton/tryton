@@ -22,13 +22,33 @@ class Configuration(metaclass=PoolMeta):
     default_customer_payment_term = fields.MultiValue(
         fields.Many2One(
             'account.invoice.payment_term', "Default Customer Payment Term"))
+    customer_payment_reference_number = fields.MultiValue(
+        fields.Selection('get_customer_payment_references',
+            "Customer Payment Reference Number",
+            help="The number used to generate "
+            "the customer payment reference."))
 
     @classmethod
     def multivalue_model(cls, field):
         pool = Pool()
         if field in 'default_customer_payment_term':
             return pool.get('account.configuration.default_payment_term')
+        elif field == 'customer_payment_reference_number':
+            return pool.get('account.configuration.payment_reference')
         return super().multivalue_model(field)
+
+    @classmethod
+    def get_customer_payment_references(cls):
+        pool = Pool()
+        PaymentReference = pool.get('account.configuration.payment_reference')
+        field = 'customer_payment_reference_number'
+        return PaymentReference.fields_get([field])[field]['selection']
+
+    @classmethod
+    def default_customer_payment_reference_number(cls, **pattern):
+        pool = Pool()
+        PaymentReference = pool.get('account.configuration.payment_reference')
+        return PaymentReference.default_customer_payment_reference_number()
 
 
 class ConfigurationDefaultPaymentTerm(ModelSQL, CompanyValueMixin):
@@ -36,6 +56,19 @@ class ConfigurationDefaultPaymentTerm(ModelSQL, CompanyValueMixin):
 
     default_customer_payment_term = fields.Many2One(
         'account.invoice.payment_term', "Default Customer Payment Term")
+
+
+class ConfigurationPaymentReference(ModelSQL, CompanyValueMixin):
+    __name__ = 'account.configuration.payment_reference'
+
+    customer_payment_reference_number = fields.Selection([
+            ('invoice', "Invoice"),
+            ('party', "Party"),
+            ], "Customer Payment Reference Number")
+
+    @classmethod
+    def default_customer_payment_reference_number(cls):
+        return 'invoice'
 
 
 class FiscalYear(metaclass=PoolMeta):
