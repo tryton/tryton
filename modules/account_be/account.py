@@ -1,6 +1,12 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+import stdnum.exceptions
 from sql.aggregate import Min, Sum
+
+try:
+    from stdnum.be import ogm_vcs
+except ImportError:
+    from . import ogm_vcs
 
 from trytond.model import ModelSQL, ModelView, fields
 from trytond.modules.account.exceptions import FiscalYearNotFoundError
@@ -138,3 +144,74 @@ class BEVATCustomerContext(ModelView):
                 return None
             return fiscalyear.id
         return context['fiscalyear']
+
+
+class Invoice(metaclass=PoolMeta):
+    __name__ = 'account.invoice'
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls.supplier_payment_reference_type.selection.append(
+            ('ogm_vcs', "Belgian structured communication"))
+
+    @classmethod
+    def _format_supplier_payment_reference_ogm_vcs(cls, reference):
+        try:
+            return ogm_vcs.format(reference)
+        except stdnum.exceptions.ValidationError:
+            return reference
+
+    @classmethod
+    def _search_customer_payment_reference(cls, value):
+        yield from super()._search_customer_payment_reference(value)
+        if ogm_vcs.is_valid(value):
+            yield ('number_digit', '=', int(ogm_vcs.compact(value)[:-2]))
+
+    def _customer_payment_reference_type(self):
+        type = super()._customer_payment_reference_type()
+        if (self.invoice_address.country
+                and self.invoice_address.country.code == 'BE'):
+            type = 'ogm_vcs'
+        return type
+
+    def _format_customer_payment_reference_ogm_vcs(self, source):
+        number = self._customer_payment_reference_number_digit(source)
+        if number:
+            number = number % 10**10
+            check_digit = ogm_vcs.calc_check_digit(str(number))
+            reference = f'{self.number_digit:0>10}{check_digit}'
+            return f'+++{ogm_vcs.format(reference)}+++'
+
+    def _check_supplier_payment_reference_ogm_vcs(self):
+        return ogm_vcs.is_valid(self.supplier_payment_reference)
+
+
+class Payment(metaclass=PoolMeta):
+    __name__ = 'account.payment'
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls.reference_type.selection.append(
+            ('ogm_vcs', "Belgian structured communication"))
+
+    @classmethod
+    def _format_reference_ogm_vcs(cls, reference):
+        try:
+            return ogm_vcs.format(reference)
+        except stdnum.exceptions.ValidationError:
+            return reference
+
+    def _check_reference_ogm_vcs(self):
+        return ogm_vcs.is_valid(self.reference)
+
+
+class StatementRuleLine(metaclass=PoolMeta):
+    __name__ = 'account.statement.rule.line'
+
+    @classmethod
+    def _party_payment_reference(cls, value):
+        yield from super()._party_payment_reference(value)
+        if ogm_vcs.is_valid(value):
+            yield ('code_digit', '=', int(ogm_vcs.compact(value)[:-2]))

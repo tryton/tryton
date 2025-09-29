@@ -44,11 +44,17 @@ else:
     download_url = 'http://downloads.tryton.org/%s.%s/' % (
         major_version, minor_version)
 
-requires = []
+requires = ['python-stdnum']
 for dep in info.get('depends', []):
     if not re.match(r'(ir|res)(\W|$)', dep):
         requires.append(get_require_version('trytond_%s' % dep))
 requires.append(get_require_version('trytond'))
+
+tests_require = [
+    get_require_version('trytond_account_invoice'),
+    get_require_version('trytond_account_payment'),
+    get_require_version('trytond_account_statement_rule'),
+    ]
 
 setup(name=name,
     version=version,
@@ -99,6 +105,9 @@ setup(name=name,
     license='GPL-3',
     python_requires='>=3.9',
     install_requires=requires,
+    extras_require={
+        'test': tests_require,
+        },
     zip_safe=False,
     entry_points="""
     [trytond.modules]
