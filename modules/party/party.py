@@ -819,7 +819,7 @@ class Identifier(sequence_ordered(), DeactivableMixin, ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super().__setup__()
-        cls.__access__.update(['party', 'address'])
+        cls.__access__.add('party')
 
     @classmethod
     def __register__(cls, module_name):

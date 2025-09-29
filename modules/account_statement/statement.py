@@ -1086,7 +1086,8 @@ del _states
 class LineGroup(ModelSQL, ModelView):
     __name__ = 'account.statement.line.group'
     _rec_name = 'number'
-    statement = fields.Many2One('account.statement', 'Statement')
+    statement = fields.Many2One(
+        'account.statement', 'Statement', required=True)
     journal = fields.Function(fields.Many2One('account.statement.journal',
             'Journal'), 'get_journal', searcher='search_journal')
     number = fields.Char('Number')

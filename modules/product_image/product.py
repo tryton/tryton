@@ -237,7 +237,7 @@ class Image(ImageMixin, sequence_ordered(), ModelSQL, ModelView, MatchMixin):
     @classmethod
     def __setup__(cls):
         super().__setup__()
-        cls.__access__.update(['product', 'template'])
+        cls.__access__.add('template')
 
     def _store_cache(self, size, image):
         cache = super()._store_cache(size, image)

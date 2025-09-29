@@ -40,7 +40,8 @@ class MoveLine(metaclass=PoolMeta):
 class MoveLineGroup(MoveLineMixin, ModelSQL, ModelView):
     __name__ = 'account.move.line.group'
 
-    move = fields.Many2One('account.move', "Move", readonly=True)
+    move = fields.Many2One(
+        'account.move', "Move", readonly=True, required=True)
     account = fields.Many2One(
         'account.account', "Account", readonly=True,
         context={

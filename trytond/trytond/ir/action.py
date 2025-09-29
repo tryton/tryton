@@ -186,7 +186,7 @@ class ActionKeyword(ModelSQL, ModelView):
             ('graph_open', 'Open Graph'),
             ], string='Keyword', required=True)
     model = fields.Reference('Model', selection='models_get')
-    action = fields.Many2One('ir.action', 'Action',
+    action = fields.Many2One('ir.action', 'Action', required=True,
         ondelete='CASCADE')
     groups = fields.Function(
         fields.Many2Many('res.group', None, None, "Groups"),
@@ -973,7 +973,7 @@ class ActionActWindowView(
             ('model', '=', Eval('model', None)),
             ])
     act_window = fields.Many2One('ir.action.act_window', 'Action',
-            ondelete='CASCADE')
+        required=True, ondelete='CASCADE')
     model = fields.Function(fields.Char("Model"), 'on_change_with_model')
 
     @classmethod

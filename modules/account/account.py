@@ -2329,7 +2329,8 @@ class GeneralLedgerLine(DescriptionOriginMixin, ModelSQL, ModelView):
 
     move = fields.Many2One('account.move', 'Move')
     date = fields.Date('Date')
-    account = fields.Many2One('account.general_ledger.account', 'Account')
+    account = fields.Many2One(
+        'account.general_ledger.account', 'Account', required=True)
     party = fields.Many2One('party.party', 'Party',
         states={
             'invisible': ~Eval('party_required', False),

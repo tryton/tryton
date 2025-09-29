@@ -254,7 +254,7 @@ class CurrencyRate(ModelSQL, ModelView):
             ],
         help="The floating exchange rate used to convert the currency.")
     currency = fields.Many2One('currency.currency', 'Currency',
-            ondelete='CASCADE',
+        required=True, ondelete='CASCADE',
         help="The currency on which the rate applies.")
 
     @classmethod

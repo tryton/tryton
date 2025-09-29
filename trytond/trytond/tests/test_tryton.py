@@ -416,6 +416,9 @@ class ModuleTestCase(_DBTestCase):
                         msg="Wrong __access__ '%s' for %s" % (
                             field_name, mname))
                     field = Model._fields[field_name]
+                    self.assertTrue(field.required,
+                        msg=("Field '%s' of '%s' must be required in order to "
+                            "be used in __access__") % (field_name, mname))
                     Target = field.get_target()
                     self.assertTrue(
                         Target,

@@ -245,7 +245,7 @@ class Component(ComponentMixin, ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super().__setup__()
-        cls.__access__.update(['parent_template', 'parent_product'])
+        cls.__access__.add('parent_template')
 
     @fields.depends(
         'parent_product', '_parent_parent_product.template')
