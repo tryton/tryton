@@ -167,7 +167,8 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin, InvoiceReportMixin):
             states={
                 'invisible': Eval('type', 'out') != 'out',
                 }),
-        'get_customer_payment_reference')
+        'get_customer_payment_reference',
+        searcher='search_customer_payment_reference')
     sequence = fields.Integer("Sequence", readonly=True)
     sequence_type_cache = fields.Selection([
             (None, ""),
@@ -655,6 +656,19 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin, InvoiceReportMixin):
     def get_customer_payment_reference(self, name):
         return self.format_customer_payment_reference(
             self._customer_payment_reference_type())
+
+    @classmethod
+    def search_customer_payment_reference(cls, name, clause):
+        _, operator, value = clause[:3]
+        if operator == '=':
+            return ['OR', *cls._search_customer_payment_reference(value)]
+        else:
+            return []
+
+    @classmethod
+    def _search_customer_payment_reference(cls, value):
+        if iso11649.is_valid(value):
+            yield ('number_alnum', '=', value[4:])
 
     def _customer_payment_reference_type(self):
         return 'creditor_reference'

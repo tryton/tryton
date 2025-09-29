@@ -6,6 +6,7 @@ import re
 from decimal import Decimal
 
 from simpleeval import simple_eval
+from stdnum import iso11649
 
 from trytond.model import ModelSQL, ModelView, fields, sequence_ordered
 from trytond.modules.currency.fields import Monetary
@@ -95,7 +96,8 @@ class StatementRule(sequence_ordered(), ModelSQL, ModelView):
         "It may define the groups named:\n"
         "'party'\n"
         "'bank_account'\n"
-        "'invoice'")
+        "'invoice'\n"
+        "'payment_reference'")
     information_rules = fields.One2Many(
         'account.statement.rule.information', 'rule', "Information Rules")
 
@@ -322,7 +324,7 @@ class StatementRuleLine(sequence_ordered(), ModelSQL, ModelView):
 
         currency = origin.statement.journal.currency
         amount = currency.round(simple_eval(decistmt(self.amount), **context))
-        party = self._get_party(origin, keywords)
+        party = self._get_party(origin, keywords, amount=amount)
         related_to = list(
             filter(None, self._get_related_to(
                     origin, keywords, party=party, amount=amount)))
@@ -370,14 +372,20 @@ class StatementRuleLine(sequence_ordered(), ModelSQL, ModelView):
         line.related_to = related_to
         return line
 
-    def _get_party(self, origin, keywords):
+    def _get_party(self, origin, keywords, amount=0):
         pool = Pool()
         Party = pool.get('party.party')
         Line = pool.get('account.statement.line')
+        Configuration = pool.get('account.configuration')
         try:
             AccountNumber = pool.get('bank.account.number')
         except KeyError:
             AccountNumber = None
+
+        configuration = Configuration(1)
+        customer_payment_reference_number = configuration.get_multivalue(
+            'customer_payment_reference_number',
+            company=origin.company.id)
 
         party = self.party
         if not party:
@@ -402,15 +410,29 @@ class StatementRuleLine(sequence_ordered(), ModelSQL, ModelView):
                     if lines:
                         line, = lines
                         party = line.party
-            elif keywords.get('party'):
-                parties = Party.search(
-                    [('rec_name', 'ilike', keywords['party'])])
+            elif (keywords.get('party')
+                    or (keywords.get('payment_reference')
+                        and amount > 0
+                        and customer_payment_reference_number == 'party')):
+                domain = []
+                if party_rec_name := keywords.get('party'):
+                    domain.append(('rec_name', 'ilike', party_rec_name))
+                if ((payment_reference := keywords.get('payment_reference'))
+                        and amount > 0
+                        and customer_payment_reference_number == 'party'):
+                    domain.extend(
+                        self._party_payment_reference(payment_reference))
+                if domain:
+                    domain.insert(0, 'OR')
+                    parties = Party.search(domain)
+                else:
+                    parties = []
                 if len(parties) == 1:
                     party, = parties
-                else:
+                elif party_rec_name:
                     lines = Line.search([
                             ('statement.state', 'in', ['validated', 'posted']),
-                            ('origin.keywords.party', '=', keywords['party']),
+                            ('origin.keywords.party', '=', party_rec_name),
                             ('party', '!=', None),
                             ],
                         order=[('date', 'DESC')], limit=1)
@@ -419,8 +441,14 @@ class StatementRuleLine(sequence_ordered(), ModelSQL, ModelView):
                         party = line.party
         return party
 
+    @classmethod
+    def _party_payment_reference(cls, value):
+        if iso11649.is_valid(value):
+            yield ('code_alnum', '=', value[4:])
+
     def _get_related_to(self, origin, keywords, party=None, amount=0):
-        return {self._get_invoice(origin, keywords, party=party)}
+        return {
+            self._get_invoice(origin, keywords, party=party, amount=amount)}
 
     def _get_party_from(self, related_to):
         pool = Pool()
@@ -434,16 +462,48 @@ class StatementRuleLine(sequence_ordered(), ModelSQL, ModelView):
         if isinstance(related_to, Invoice):
             return related_to.account
 
-    def _get_invoice(self, origin, keywords, party=None):
+    def _get_invoice(self, origin, keywords, party=None, amount=0):
         pool = Pool()
         Invoice = pool.get('account.invoice')
-        if keywords.get('invoice'):
+        Configuration = pool.get('account.configuration')
+
+        configuration = Configuration(1)
+        customer_payment_reference_number = configuration.get_multivalue(
+            'customer_payment_reference_number',
+            company=origin.company.id)
+
+        if keywords.get('invoice') or keywords.get('payment_reference'):
+            kdomain = ['OR']
+            if invoice_rec_name := keywords.get('invoice'):
+                kdomain.append(('rec_name', '=', invoice_rec_name))
+            if payment_reference := keywords.get('payment_reference'):
+                if (amount > 0
+                        and customer_payment_reference_number == 'invoice'):
+                    kdomain.append(
+                        ('customer_payment_reference', '=', payment_reference))
+                elif amount < 0:
+                    kdomain.append(
+                        ('supplier_payment_reference', '=', payment_reference))
             domain = [
-                ('rec_name', '=', keywords['invoice']),
+                kdomain,
                 ('company', '=', origin.company.id),
                 ('currency', '=', origin.currency.id),
                 ('state', '=', 'posted'),
                 ]
+            if amount > 0:
+                domain.append(['OR',
+                        [('type', '=', 'out'),
+                            ('total_amount', '>=', 0)],
+                        [('type', '=', 'in'),
+                            ('total_amount', '<=', 0)],
+                        ])
+            elif amount < 0:
+                domain.append(['OR',
+                        [('type', '=', 'out'),
+                            ('total_amount', '<=', 0)],
+                        [('type', '=', 'in'),
+                            ('total_amount', '>=', 0)],
+                        ])
             if party:
                 domain.append(['OR',
                         ('party', '=', party.id),
