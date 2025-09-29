@@ -510,6 +510,13 @@ class Payment(Workflow, ModelSQL, ModelView):
         except stdnum.exceptions.ValidationError:
             return reference
 
+    @property
+    def reference_used(self):
+        reference = self.reference
+        if not reference and self.line and self.line.move_origin:
+            reference = getattr(self.line.move_origin, 'rec_name', None)
+        return reference
+
     @staticmethod
     def default_company():
         return Transaction().context.get('company')
@@ -793,6 +800,25 @@ class Payment(Workflow, ModelSQL, ModelView):
                             'account_payment.msg_payment_reconciled',
                             payment=payment.rec_name,
                             line=payment.line.rec_name))
+
+
+class Payment_Invoice(metaclass=PoolMeta):
+    __name__ = 'account.payment'
+
+    @property
+    def reference_used(self):
+        pool = Pool()
+        Invoice = pool.get('account.invoice')
+        reference = super().reference_used
+        if (not self.reference
+                and self.line
+                and isinstance(self.line.move_origin, Invoice)):
+            invoice = self.line.move_origin
+            if self.kind == 'payable':
+                reference = invoice.supplier_payment_reference
+            elif self.kind == 'receivable':
+                reference = invoice.customer_payment_reference
+        return reference
 
 
 class ProcessPayment(Wizard):

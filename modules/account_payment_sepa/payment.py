@@ -435,10 +435,7 @@ class Payment(metaclass=PoolMeta):
 
     @property
     def sepa_remittance_information(self):
-        if self.reference:
-            return self.reference
-        elif self.line and self.line.move_origin:
-            return getattr(self.line.move_origin, 'rec_name', '')
+        return self.reference_used
 
     @property
     def sepa_bank_account_number(self):
