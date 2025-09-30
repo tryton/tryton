@@ -64,7 +64,6 @@ class Template(IdentifiersMixin, metaclass=PoolMeta):
             'readonly': Bool(Eval('shopify_identifiers', [-1])),
             'invisible': ~Eval('salable', False),
             },
-        depends={'default_uom_category'},
         help="The Unit of Measure of the product on Shopify.")
 
     @classmethod
