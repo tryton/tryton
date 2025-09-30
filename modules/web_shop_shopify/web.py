@@ -653,13 +653,20 @@ class ShopShopifyIdentifier(IdentifierMixin, ModelSQL, ModelView):
             }
         t = cls.__table__()
         cls._sql_constraints += [
-            ('record_web_shop_unique',
-                Unique(t, t.record, t.shopify_identifier_signed),
+            ('web_shop_record_unique',
+                Unique(t, t.record, t.web_shop),
                 'web_shop_shopify.msg_identifier_record_web_shop_unique'),
             ]
         cls._buttons.update({
                 'set_to_update': {},
                 })
+
+    @classmethod
+    def __register__(cls, module):
+        table_h = cls.__table_handler__(module)
+        super().__register__(module)
+        # Migration from 7.6: replace record_web_shop_unique
+        table_h.drop_constraint('record_web_shop_unique')
 
     @classmethod
     def get_records(cls):
