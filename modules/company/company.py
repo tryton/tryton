@@ -72,6 +72,15 @@ class Company(ModelSQL, ModelView):
         help="Uses the first identifier that matches the criteria.\n"
         "If none match, uses the party's tax identifier.")
 
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        t = cls.__table__()
+        cls._sql_constraints += [
+            ('party_unique', Unique(t, t.party),
+                'company.msg_company_party_unique'),
+            ]
+
     @property
     def header_used(self):
         return Template(self.header or '').safe_substitute(self._substitutions)
