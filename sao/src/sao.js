@@ -149,6 +149,16 @@ var Sao = {
         }
     }
 
+    if (!Array.prototype.toReversed) {
+        Object.defineProperty(Array.prototype, 'toReversed', {
+            value: function toReversed() {
+                return this.slice().reverse();
+            },
+            writable: true,
+            configurable: true,
+        });
+    }
+
     Sao.setdefault = function(object, key, value) {
         if (!Object.prototype.hasOwnProperty.call(object, key)) {
             object[key] = value;
