@@ -47,8 +47,11 @@ _SUBSTITUTION_HELP = (
 
 class Company(ModelSQL, ModelView):
     __name__ = 'company.company'
-    party = fields.Many2One('party.party', 'Party', required=True,
-            ondelete='CASCADE')
+    party = fields.Many2One(
+        'party.party', 'Party', required=True, ondelete='CASCADE',
+        states={
+            'readonly': Eval('id', -1) >= 0,
+            })
     header = fields.Text(
         'Header',
         help="The text to display on report headers.\n" + _SUBSTITUTION_HELP)
