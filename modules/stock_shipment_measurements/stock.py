@@ -281,7 +281,7 @@ class MeasurementsMixin(object):
                         & (move.state != 'cancelled'))],
                 where=table.state.in_(states)))
 
-        if shipments:
+        if shipments is not None:
             where = query.where
             for sub_shipments in grouped_slice(shipments):
                 query.where = (
