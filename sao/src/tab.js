@@ -414,7 +414,7 @@
             if (other.compare(attributes)) {
                 Sao.common.scrollIntoViewIfNeeded(
                     tablist.find('a[href="#' + other.id + '"]').tab('show'));
-                return;
+                return jQuery.when();
             }
         }
         var tab;
