@@ -10,3 +10,9 @@ class Invoice(metaclass=PoolMeta):
 
     documents_incoming = fields.One2Many(
         'document.incoming', 'result', "Incoming Documents", readonly=True)
+
+    @classmethod
+    def copy(cls, invoices, default=None):
+        default = default.copy() if default is not None else {}
+        default.setdefault('documents_incoming')
+        return super().copy(invoices, default=default)
