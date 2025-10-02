@@ -58,7 +58,7 @@ class Channel(ModelSQL):
     def check_access(cls, resource):
         pool = Pool()
         ModelAccess = pool.get('ir.model.access')
-        model, id_ = resource.split(',')
+        model, id_ = str(resource).split(',')
         ModelAccess.check(model, mode='read')
         # TODO check record rule
 
