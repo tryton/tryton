@@ -1166,13 +1166,13 @@ class Move(Workflow, ModelSQL, ModelView):
                         grouping_filter=(product_ids,))
 
         def get_key(move, location_id):
-            key = (location_id,)
+            key = [location_id]
             for field in grouping:
                 value = getattr(move, field)
                 if isinstance(value, Model):
                     value = value.id
-                key += (value,)
-            return key
+                key.append(value)
+            return tuple(key)
 
         def get_values(key, location_name):
             yield location_name, key[0]
