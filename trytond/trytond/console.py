@@ -47,7 +47,8 @@ def run(options):
 
     with Transaction().start(
             db_name, 0, readonly=options.readonly,
-            _lock_tables=options.lock_tables) as transaction:
+            _lock_tables=options.lock_tables,
+            _lock_records=dict(options.lock_records)) as transaction:
         local = {
             'pool': pool,
             'transaction': transaction,

@@ -601,7 +601,12 @@ class Database(DatabaseInterface):
         cursor.execute(*table.select(Count(Literal('*'))))
         return cursor.fetchone()[0]
 
-    def lock(self, connection, table):
+    @classmethod
+    def lock(cls, connection, table):
+        pass
+
+    @classmethod
+    def lock_records(cls, connection, table, ids):
         pass
 
     def lock_id(self, id, timeout=None):

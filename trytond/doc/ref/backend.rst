@@ -87,6 +87,10 @@ Database
 
    Lock the ``table`` using the ``connection``.
 
+.. classmethod:: Database.lock_records(connection, table, ids)
+
+   Lock the record ``ids`` of the ``table`` using the ``connection``.
+
 .. method:: Database.lock_id(id[, timeout])
 
    Return the SQL expression to lock the ``id``.
