@@ -226,7 +226,7 @@ else:
 
 
 @app.route('/<string:database_name>/bus', methods=['POST'])
-@app.auth_required
+@app.session_valid
 def subscribe(request, database_name):
     if not _allow_subscribe:
         raise exceptions.NotImplemented

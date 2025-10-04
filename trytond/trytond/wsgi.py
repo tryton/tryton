@@ -27,7 +27,7 @@ try:
 except ImportError:
     from werkzeug.wsgi import SharedDataMiddleware
 
-from trytond import backend
+from trytond import backend, security
 from trytond.config import config
 from trytond.protocols.jsonrpc import JSONProtocol
 from trytond.protocols.wrappers import (
@@ -39,6 +39,14 @@ from trytond.tools import resolve, safe_join
 __all__ = ['TrytondWSGI', 'app']
 
 logger = logging.getLogger(__name__)
+
+
+def _do_basic_auth(request):
+    headers = {}
+    if request.headers.get('X-Requested-With') != 'XMLHttpRequest':
+        headers['WWW-Authenticate'] = 'Basic realm="Tryton"'
+    response = Response(None, http.client.UNAUTHORIZED, headers)
+    abort(http.client.UNAUTHORIZED, response=response)
 
 
 class Base64Converter(BaseConverter):
@@ -81,11 +89,25 @@ class TrytondWSGI(object):
             if request.user_id:
                 return func(request, *args, **kwargs)
             else:
-                headers = {}
-                if request.headers.get('X-Requested-With') != 'XMLHttpRequest':
-                    headers['WWW-Authenticate'] = 'Basic realm="Tryton"'
-                response = Response(None, http.client.UNAUTHORIZED, headers)
-                abort(http.client.UNAUTHORIZED, response=response)
+                _do_basic_auth(request)
+        return wrapper
+
+    def session_valid(self, func):
+        @wraps(func)
+        def wrapper(request, *args, **kwargs):
+            if (not request.authorization
+                    or request.authorization.type != 'session'):
+                _do_basic_auth(request)
+            userid = request.authorization.get('userid')
+            session = request.authorization.get('session')
+            dbname = request.view_args.get('database_name')
+
+            if not security.check_session(
+                    dbname, userid, session, request.remote_addr):
+                _do_basic_auth(request)
+
+            return func(request, *args, **kwargs)
+
         return wrapper
 
     def dispatch_request(self, request):
