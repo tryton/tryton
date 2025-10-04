@@ -101,9 +101,6 @@ class DatabaseInterface(object):
     def get_select_for_skip_locked(self):
         return For
 
-    def has_window_functions(self):
-        return False
-
     def has_unaccent(self):
         return False
 

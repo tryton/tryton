@@ -746,9 +746,6 @@ class Database(DatabaseInterface):
     def has_insert_on_conflict(self):
         return sqlite.sqlite_version_info >= (3, 35, 0)
 
-    def has_window_functions(self):
-        return sqlite.sqlite_version_info >= (3, 25, 0)
-
     def sql_type(self, type_):
         if type_ in self.TYPES_MAPPING:
             return self.TYPES_MAPPING[type_]

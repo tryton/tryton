@@ -84,7 +84,6 @@ class ProductCostHistory(ModelSQL, ModelView):
         template = Template.__table__()
         history = CostPrice.__table_history__()
         transaction = Transaction()
-        database = transaction.database
         user = User(transaction.user)
 
         tables, clause = Move.search_domain([
@@ -100,14 +99,11 @@ class ProductCostHistory(ModelSQL, ModelView):
                 })
 
         cost_price = Coalesce(move.product_cost_price, move.cost_price)
-        if database.has_window_functions():
-            window = Window(
-                [move.effective_date, move.product],
-                frame='ROWS', start=None, end=None,
-                order_by=[move.write_date.asc, move.id.asc])
-            cost_price = LastValue(cost_price, window=window)
-        else:
-            cost_price = cls.cost_price.sql_cast(cost_price)
+        window = Window(
+            [move.effective_date, move.product],
+            frame='ROWS', start=None, end=None,
+            order_by=[move.write_date.asc, move.id.asc])
+        cost_price = LastValue(cost_price, window=window)
 
         move_history = convert_from(None, tables, type_='INNER').select(
             (move.id * 2).as_('id'),
@@ -128,14 +124,11 @@ class ProductCostHistory(ModelSQL, ModelView):
             timezone = None
         price_datetime = Coalesce(history.write_date, history.create_date)
         price_date = cls.date.sql_cast(price_datetime, timezone=timezone)
-        if database.has_window_functions():
-            window = Window(
-                [price_date, history.product],
-                frame='ROWS', start=None, end=None,
-                order_by=[price_datetime.asc])
-            cost_price = LastValue(history.cost_price, window=window)
-        else:
-            cost_price = cls.cost_price.sql_cast(history.cost_price)
+        window = Window(
+            [price_date, history.product],
+            frame='ROWS', start=None, end=None,
+            order_by=[price_datetime.asc])
+        cost_price = LastValue(history.cost_price, window=window)
 
         price_history = (history
             .join(product, condition=history.product == product.id)

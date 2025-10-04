@@ -123,10 +123,6 @@ Database
 
    Return For class with skip locked.
 
-.. method:: Database.has_window_functions()
-
-   Return if the database supports window functions.
-
 .. method:: Database.has_unaccent()
 
    Return if the database suppport unaccentuated function.

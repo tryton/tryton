@@ -1,6 +1,5 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import copy
 import datetime as dt
 
 from sql import Column, Window
@@ -276,53 +275,27 @@ class SheetLine(ModelSQL, ModelView):
         pool = Pool()
         Attendance = pool.get('attendance.line')
 
-        transaction = Transaction()
-        database = transaction.database
-
         attendance = Attendance.__table__()
 
-        if database.has_window_functions():
-            window = Window(
-                [attendance.employee],
-                order_by=[attendance.at.asc],
-                frame='ROWS', start=0, end=1)
-            type = NthValue(attendance.type, 1, window=window)
-            from_ = NthValue(attendance.at, 1, window=window)
-            to = NthValue(attendance.at, 2, window=window)
-            date = NthValue(attendance.date, 1, window=window)
-            query = attendance.select(
-                attendance.id.as_('id'),
-                attendance.company.as_('company'),
-                attendance.employee.as_('employee'),
-                type.as_('type'),
-                from_.as_('from_'),
-                to.as_('to'),
-                date.as_('date'))
+        window = Window(
+            [attendance.employee],
+            order_by=[attendance.at.asc],
+            frame='ROWS', start=0, end=1)
+        type = NthValue(attendance.type, 1, window=window)
+        from_ = NthValue(attendance.at, 1, window=window)
+        to = NthValue(attendance.at, 2, window=window)
+        date = NthValue(attendance.date, 1, window=window)
+        query = attendance.select(
+            attendance.id.as_('id'),
+            attendance.company.as_('company'),
+            attendance.employee.as_('employee'),
+            type.as_('type'),
+            from_.as_('from_'),
+            to.as_('to'),
+            date.as_('date'))
 
-            sheet = (
-                Min(query.id * 2, window=Window([query.employee, query.date])))
-        else:
-            next_attendance = Attendance.__table__()
-            to = next_attendance.select(
-                next_attendance.at,
-                where=(next_attendance.employee == attendance.employee)
-                & (next_attendance.at > attendance.at),
-                order_by=[next_attendance.at.asc],
-                limit=1)
-            query = attendance.select(
-                attendance.id.as_('id'),
-                attendance.company.as_('company'),
-                attendance.employee.as_('employee'),
-                attendance.type.as_('type'),
-                attendance.at.as_('from_'),
-                to.as_('to'),
-                attendance.date.as_('date'))
-
-            query2 = copy.copy(query)
-            sheet = query2.select(
-                Min(query2.id * 2),
-                where=(query2.employee == query.employee)
-                & (query2.date == query.date))
+        sheet = (
+            Min(query.id * 2, window=Window([query.employee, query.date])))
 
         from_ = Column(query, 'from_')
         if backend.name == 'sqlite':

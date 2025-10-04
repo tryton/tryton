@@ -1938,56 +1938,30 @@ class ModelSQL(ModelStorage):
             expression = convert(domain)
 
         if cls._history and transaction.context.get('_datetime'):
-            database = Transaction().database
-            if database.has_window_functions():
-                table, _ = tables[None]
-                history = cls.__table_history__()
-                last_change = Coalesce(history.write_date, history.create_date)
-                # prefilter the history records for a bit of a speedup
-                selected_h_ids = convert_from(None, tables).select(
-                    table.id, where=expression)
-                most_recent = history.select(
-                    history.create_date, Column(history, '__id'),
-                    RowNumber(
-                        window=Window([history.id],
-                            order_by=[
-                                last_change.desc,
-                                Column(history, '__id').desc])).as_('rank'),
-                    where=((last_change <= transaction.context['_datetime'])
-                        & history.id.in_(selected_h_ids)))
-                # Filter again as the latest records from most_recent might not
-                # match the expression
-                expression &= Exists(most_recent.select(
-                        Literal(1),
-                        where=(
-                            (Column(table, '__id')
-                                == Column(most_recent, '__id'))
-                            & (most_recent.create_date != Null)
-                            & (most_recent.rank == 1))))
-            else:
-                table, _ = tables[None]
-                history_1 = cls.__table_history__()
-                history_2 = cls.__table_history__()
-                last_change = Coalesce(
-                    history_1.write_date, history_1.create_date)
-                latest_change = history_1.select(
-                    history_1.id, Max(last_change).as_('date'),
-                    where=(last_change <= transaction.context['_datetime']),
-                    group_by=[history_1.id])
-                most_recent = history_2.join(
-                    latest_change,
-                    condition=(
-                        (history_2.id == latest_change.id)
-                        & (Coalesce(
-                                history_2.write_date, history_2.create_date)
-                            == latest_change.date))
-                    ).select(
-                        Max(Column(history_2, '__id')).as_('h_id'),
-                        where=(history_2.create_date != Null),
-                        group_by=[history_2.id])
-                expression &= Exists(most_recent.select(
-                        Literal(1),
-                        where=(Column(table, '__id') == most_recent.h_id)))
+            table, _ = tables[None]
+            history = cls.__table_history__()
+            last_change = Coalesce(history.write_date, history.create_date)
+            # prefilter the history records for a bit of a speedup
+            selected_h_ids = convert_from(None, tables).select(
+                table.id, where=expression)
+            most_recent = history.select(
+                history.create_date, Column(history, '__id'),
+                RowNumber(
+                    window=Window([history.id],
+                        order_by=[
+                            last_change.desc,
+                            Column(history, '__id').desc])).as_('rank'),
+                where=((last_change <= transaction.context['_datetime'])
+                    & history.id.in_(selected_h_ids)))
+            # Filter again as the latest records from most_recent might not
+            # match the expression
+            expression &= Exists(most_recent.select(
+                    Literal(1),
+                    where=(
+                        (Column(table, '__id')
+                            == Column(most_recent, '__id'))
+                        & (most_recent.create_date != Null)
+                        & (most_recent.rank == 1))))
         return tables, expression
 
     @classmethod

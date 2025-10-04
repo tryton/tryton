@@ -1,6 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from sql import As, Null, Select, Window
+from sql import As, Null, Window
 from sql.aggregate import BoolAnd, BoolOr, Min, Sum
 from sql.conditionals import Coalesce
 from sql.functions import FirstValue
@@ -226,25 +226,17 @@ class MoveLineGroup_MoveLine(ModelSQL):
         pool = Pool()
         Line = pool.get('account.move.line')
         LineGroup = pool.get('account.move.line.group')
-        transaction = Transaction()
-        database = transaction.database
         line = Line.__table__()
 
-        if database.has_window_functions():
-            grouped_columns = LineGroup._grouped_columns(line)
-            window = Window(
-                grouped_columns,
-                order_by=[line.id.asc])
-            query = line.select(
-                line.id.as_('id'),
-                FirstValue(line.id, window=window).as_('group'),
-                line.id.as_('line'))
-        else:
-            query = Select(
-                Null.as_('id'),
-                Null.as_('group'),
-                Null.as_('line'),
-                limit=0)
+        grouped_columns = LineGroup._grouped_columns(line)
+        window = Window(
+            grouped_columns,
+            order_by=[line.id.asc])
+        query = line.select(
+            line.id.as_('id'),
+            FirstValue(line.id, window=window).as_('group'),
+            line.id.as_('line'))
+
         return query
 
 

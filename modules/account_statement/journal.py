@@ -2,7 +2,6 @@
 # this repository contains the full copyright notices and license terms.
 
 from sql import Window
-from sql.aggregate import Max
 from sql.functions import FirstValue
 
 from trytond import backend
@@ -125,7 +124,6 @@ class Journal(DeactivableMixin, ModelSQL, ModelView):
         Statement = pool.get('account.statement')
         statement = Statement.__table__()
         transaction = Transaction()
-        database = transaction.database
         cursor = transaction.connection.cursor()
 
         id2currency = {j.id: j.currency for j in journals}
@@ -136,37 +134,20 @@ class Journal(DeactivableMixin, ModelSQL, ModelView):
 
         for sub_ids in grouped_slice(id2currency.keys()):
             columns = [statement.journal]
-            if database.has_window_functions():
-                w = Window(
-                    partition=[statement.journal],
-                    order_by=[statement.date.desc, statement.id.desc])
-                if 'last_amount' in names:
-                    columns.append(
-                        FirstValue(statement.end_balance,
-                            window=w).as_('last_amount'))
-                if 'last_date' in names:
-                    columns.append(
-                        FirstValue(statement.date, window=w).as_('last_date'))
-                query = statement.select(*columns,
-                        distinct=True,
-                        where=reduce_ids(statement.journal, sub_ids)
-                        & (statement.state != 'cancelled'))
-            else:
-                if 'last_amount' in names:
-                    columns.append(statement.end_balance).as_('last_amount')
-                if 'last_date' in names:
-                    columns.append(statement.date.as_('last_date'))
-                maxdate = statement.select(
-                    statement.journal,
-                    Max(statement.date).as_('date'),
-                    group_by=statement.journal)
-                query = statement.join(maxdate,
-                    condition=maxdate.journal == statement.journal,
-                    ).select(*columns,
-                        where=reduce_ids(statement.journal, sub_ids)
-                        & (maxdate.date == statement.date)
-                        & (statement.state != 'cancelled'),
-                        order_by=statement.id.asc)
+            w = Window(
+                partition=[statement.journal],
+                order_by=[statement.date.desc, statement.id.desc])
+            if 'last_amount' in names:
+                columns.append(
+                    FirstValue(statement.end_balance,
+                        window=w).as_('last_amount'))
+            if 'last_date' in names:
+                columns.append(
+                    FirstValue(statement.date, window=w).as_('last_date'))
+            query = statement.select(*columns,
+                    distinct=True,
+                    where=reduce_ids(statement.journal, sub_ids)
+                    & (statement.state != 'cancelled'))
             if backend.name == 'sqlite':
                 types = [None]
                 if 'last_amount' in names:

@@ -2386,8 +2386,6 @@ class GeneralLedgerLine(DescriptionOriginMixin, ModelSQL, ModelView):
         LedgerLineContext = pool.get(
             'account.general_ledger.line.context')
         Account = pool.get('account.account')
-        transaction = Transaction()
-        database = transaction.database
         context = LedgerLineContext.get_context()
         line = Line.__table__()
         move = Move.__table__()
@@ -2398,16 +2396,13 @@ class GeneralLedgerLine(DescriptionOriginMixin, ModelSQL, ModelView):
                 continue
             field_line = getattr(Line, fname, None)
             if fname == 'internal_balance':
-                if database.has_window_functions():
-                    w_columns = [line.account]
-                    if context.get('party_cumulate', False):
-                        w_columns.append(line.party)
-                    column = Sum(line.debit - line.credit,
-                        window=Window(w_columns,
-                            order_by=[move.date.asc, line.id])).as_(
-                                'internal_balance')
-                else:
-                    column = (line.debit - line.credit).as_('internal_balance')
+                w_columns = [line.account]
+                if context.get('party_cumulate', False):
+                    w_columns.append(line.party)
+                column = Sum(line.debit - line.credit,
+                    window=Window(w_columns,
+                        order_by=[move.date.asc, line.id])).as_(
+                            'internal_balance')
             elif fname == 'party_required':
                 column = Column(account, 'party_required').as_(fname)
             elif fname in {'origin', 'description'}:
@@ -2445,15 +2440,12 @@ class GeneralLedgerLine(DescriptionOriginMixin, ModelSQL, ModelView):
         pool = Pool()
         LedgerLineContext = pool.get(
             'account.general_ledger.line.context')
-        transaction = Transaction()
         context = LedgerLineContext.get_context()
-        database = transaction.database
         balance = self.internal_balance
-        if database.has_window_functions():
-            if context.get('party_cumulate', False) and self.account_party:
-                balance += self.account_party.start_balance
-            else:
-                balance += self.account.start_balance
+        if context.get('party_cumulate', False) and self.account_party:
+            balance += self.account_party.start_balance
+        else:
+            balance += self.account.start_balance
         return balance
 
     @classmethod

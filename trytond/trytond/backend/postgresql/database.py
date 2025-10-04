@@ -592,9 +592,6 @@ class Database(DatabaseInterface):
         else:
             return For
 
-    def has_window_functions(self):
-        return True
-
     @classmethod
     def has_sequence(cls):
         return True

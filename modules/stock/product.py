@@ -920,7 +920,6 @@ class ProductQuantitiesByWarehouseMove(ModelSQL, ModelView):
         move = from_ = Move.__table__()
         transaction = Transaction()
         context = transaction.context
-        database = transaction.database
         today = Date.today()
 
         if context.get('product_template') is not None:
@@ -973,13 +972,10 @@ class ProductQuantitiesByWarehouseMove(ModelSQL, ModelView):
             (move.to_location.in_(warehouse.select(warehouse.id)),
                 move.internal_quantity),
             else_=-move.internal_quantity)
-        if database.has_window_functions():
-            cumulative_quantity_delta = Sum(
-                quantity,
-                window=Window(
-                    [product_column, date_column], order_by=[move.id.asc]))
-        else:
-            cumulative_quantity_delta = Literal(0)
+        cumulative_quantity_delta = Sum(
+            quantity,
+            window=Window(
+                [product_column, date_column], order_by=[move.id.asc]))
         return (from_.select(
                 move.id.as_('id'),
                 product_column.as_('product'),
@@ -1032,7 +1028,6 @@ class ProductQuantitiesByWarehouseMove(ModelSQL, ModelView):
         pool = Pool()
         Product = pool.get('product.product')
         transaction = Transaction()
-        database = transaction.database
         trans_context = transaction.context
 
         if trans_context.get('product_template') is not None:
@@ -1084,29 +1079,21 @@ class ProductQuantitiesByWarehouseMove(ModelSQL, ModelView):
                 quantities[date][key] = cumulate[key]
 
         result = {}
-        if database.has_window_functions():
-            if 'cumulative_quantity_start' in names:
-                result['cumulative_quantity_start'] = {
-                    r.id: (
-                        quantities[cast_date(r.date)].get(
-                            (warehouse_id, int(r.product)), 0)
-                        + r.cumulative_quantity_delta
-                        - r.quantity)
-                    for r in records}
-            if 'cumulative_quantity_end' in names:
-                result['cumulative_quantity_end'] = {
-                    r.id: (
-                        quantities[cast_date(r.date)].get(
-                            (warehouse_id, int(r.product)), 0)
-                        + r.cumulative_quantity_delta)
-                    for r in records}
-        else:
-            values = {
-                r.id: quantities[cast_date(r.date)].get(
-                    (warehouse_id, int(r.product)), 0)
+        if 'cumulative_quantity_start' in names:
+            result['cumulative_quantity_start'] = {
+                r.id: (
+                    quantities[cast_date(r.date)].get(
+                        (warehouse_id, int(r.product)), 0)
+                    + r.cumulative_quantity_delta
+                    - r.quantity)
                 for r in records}
-            for name in names:
-                result[name] = values
+        if 'cumulative_quantity_end' in names:
+            result['cumulative_quantity_end'] = {
+                r.id: (
+                    quantities[cast_date(r.date)].get(
+                        (warehouse_id, int(r.product)), 0)
+                    + r.cumulative_quantity_delta)
+                for r in records}
         return result
 
     def get_rec_name(self, name):

@@ -211,25 +211,14 @@ class Currency(
         "Return a SQL query with currency, rate, start_date and end_date"
         pool = Pool()
         Rate = pool.get('currency.currency.rate')
-        transaction = Transaction()
-        database = transaction.database
 
         rate = Rate.__table__()
-        if database.has_window_functions():
-            window = Window(
-                [rate.currency],
-                order_by=[rate.date.asc],
-                frame='ROWS', start=0, end=1)
-            # Use NthValue instead of LastValue to get NULL for the last row
-            end_date = NthValue(rate.date, 2, window=window)
-        else:
-            next_rate = Rate.__table__()
-            end_date = next_rate.select(
-                next_rate.date,
-                where=(next_rate.currency == rate.currency)
-                & (next_rate.date > rate.date),
-                order_by=[next_rate.date.asc],
-                limit=1)
+        window = Window(
+            [rate.currency],
+            order_by=[rate.date.asc],
+            frame='ROWS', start=0, end=1)
+        # Use NthValue instead of LastValue to get NULL for the last row
+        end_date = NthValue(rate.date, 2, window=window)
 
         query = (rate
             .select(

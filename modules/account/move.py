@@ -815,7 +815,6 @@ class MoveLineMixin:
         Move = pool.get('account.move')
 
         transaction = Transaction()
-        database = transaction.database
         context = transaction.context
         cursor = transaction.connection.cursor()
 
@@ -855,11 +854,10 @@ class MoveLineMixin:
                     (line.amount_second_currency != Null,
                         line.amount_second_currency),
                     else_=line.debit - line.credit)
-                if database.has_window_functions():
-                    balance = Sum(balance,
-                        window=Window(
-                            [line.party, currency],
-                            order_by=[date.asc.nulls_first, line.id.desc]))
+                balance = Sum(balance,
+                    window=Window(
+                        [line.party, currency],
+                        order_by=[date.asc.nulls_first, line.id.desc]))
 
                 party_where = Literal(False)
                 parties = {l.party for l in sub_lines}
