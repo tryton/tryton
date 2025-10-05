@@ -540,10 +540,14 @@ class Shop(metaclass=PoolMeta):
                         ],
                     ])
             for sub_sales in grouped_slice(sales, count=250):
-                cls._shopify_update_order(shop, list(sub_sales))
+                cls.__queue__._shopify_update_order(
+                    shop, [s.id for s in sub_sales])
 
     @classmethod
     def _shopify_update_order(cls, shop, sales):
+        pool = Pool()
+        Sale = pool.get('sale.sale')
+        sales = Sale.browse(sales)
         assert shop.type == 'shopify'
         assert all(s.web_shop == shop for s in sales)
         with shop.shopify_session():
