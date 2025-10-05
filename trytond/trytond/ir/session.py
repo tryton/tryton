@@ -7,6 +7,7 @@ from secrets import compare_digest, token_hex
 from trytond.cache import Cache
 from trytond.config import config
 from trytond.model import Index, ModelSQL, fields
+from trytond.transaction import Transaction
 
 _session_timeout = datetime.timedelta(
     seconds=config.getint('session', 'timeout'))
@@ -18,6 +19,7 @@ class Session(ModelSQL):
     _rec_name = 'key'
 
     key = fields.Char("Key", required=True, strip=False)
+    ip_address = fields.Char("IP Address")
     _session_reset_cache = Cache('ir_session.session_reset', context=False)
 
     @classmethod
@@ -40,6 +42,11 @@ class Session(ModelSQL):
     @classmethod
     def default_key(cls, nbytes=None):
         return token_hex(nbytes)
+
+    @classmethod
+    def default_ip_address(cls):
+        ip_address, _ = Transaction().remote_address()
+        return str(ip_address) if ip_address else None
 
     @classmethod
     def on_modification(cls, mode, sessions, field_names=None):
@@ -81,8 +88,10 @@ class Session(ModelSQL):
         now = datetime.datetime.now()
         timeout = datetime.timedelta(
             seconds=config.getint('session', 'max_age'))
+        ip_address, _ = Transaction().remote_address()
         sessions = cls.search([
                 ('create_uid', '=', user),
+                ('ip_address', '=', str(ip_address) if ip_address else None),
                 domain or [],
                 ])
         find, last_reset = None, None

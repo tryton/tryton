@@ -151,6 +151,11 @@ Transaction
    The function can not use the current transaction because it will be already
    committed or rollbacked.
 
+.. method:: Transaction.remote_address()
+
+   Returns the IP address and network instances from the request, or ``None``
+   if the transaction was not started by a request.
+
 .. function:: check_access([func])
 
    When called with a function, it decorates the function to be executed with

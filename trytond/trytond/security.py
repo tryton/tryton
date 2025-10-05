@@ -59,7 +59,7 @@ def login(dbname, loginname, parameters, cache=True, context=None):
         if not cache:
             session = user_id
         else:
-            with Transaction().start(dbname, user_id):
+            with Transaction().start(dbname, user_id, context=context):
                 Session = pool.get('ir.session')
                 session = user_id, Session.new()
         logger.info("login succeeded for '%s' from '%s' on database '%s'",

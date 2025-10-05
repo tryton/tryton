@@ -699,10 +699,8 @@ class User(avatar_mixin(100, 'login'), DeactivableMixin, ModelSQL, ModelView):
 
     @classmethod
     def _check_login_options_ip_address(cls, login, parameters):
-        context = Transaction().context
-        if context.get('_request') and context['_request'].get('remote_addr'):
-            ip_address = ipaddress.ip_address(
-                str(context['_request']['remote_addr']))
+        ip_address, _ = Transaction().remote_address()
+        if ip_address:
             network_list = config.get('session', 'authentication_ip_network')
             if network_list:
                 for network in network_list.split(','):
@@ -764,21 +762,6 @@ class LoginAttempt(ModelSQL):
         return (datetime.datetime.now()
             - datetime.timedelta(seconds=config.getint('session', 'timeout')))
 
-    @classmethod
-    def ipaddress(cls):
-        context = Transaction().context
-        ip_address = ''
-        ip_network = ''
-        if context.get('_request') and context['_request'].get('remote_addr'):
-            ip_address = ipaddress.ip_address(
-                str(context['_request']['remote_addr']))
-            prefix = config.getint(
-                'session', 'ip_network_%s' % ip_address.version)
-            ip_network = ipaddress.ip_network(
-                str(context['_request']['remote_addr']))
-            ip_network = ip_network.supernet(new_prefix=prefix)
-        return ip_address, ip_network
-
     def _login_size(func):
         @wraps(func)
         def wrapper(cls, login, *args, **kwargs):
@@ -788,16 +771,17 @@ class LoginAttempt(ModelSQL):
     @classmethod
     @_login_size
     def add(cls, login, device_cookie=None):
-        cursor = Transaction().connection.cursor()
+        transaction = Transaction()
+        cursor = transaction.connection.cursor()
         table = cls.__table__()
         cursor.execute(*table.delete(where=table.create_date < cls.delay()))
 
-        ip_address, ip_network = cls.ipaddress()
+        ip_address, ip_network = transaction.remote_address()
         cls.create([{
                     'login': login,
                     'device_cookie': device_cookie,
-                    'ip_address': str(ip_address),
-                    'ip_network': str(ip_network),
+                    'ip_address': str(ip_address) if ip_address else None,
+                    'ip_network': str(ip_network) if ip_network else None,
                     }])
 
     @classmethod
@@ -823,11 +807,13 @@ class LoginAttempt(ModelSQL):
 
     @classmethod
     def count_ip(cls):
-        cursor = Transaction().connection.cursor()
+        transaction = Transaction()
+        cursor = transaction.connection.cursor()
         table = cls.__table__()
-        _, ip_network = cls.ipaddress()
+        _, ip_network = transaction.remote_address()
+        ip_network = str(ip_network) if ip_network else None
         cursor.execute(*table.select(Count(Literal('*')),
-                where=(table.ip_network == str(ip_network))
+                where=(table.ip_network == ip_network)
                 & (table.create_date >= cls.delay())))
         return cursor.fetchone()[0]
 

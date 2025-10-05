@@ -1,5 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+
+import ipaddress
 import logging
 import time
 from collections import defaultdict, deque
@@ -418,6 +420,17 @@ class Transaction(object):
         if self.context:
             return self.context.get('language') or get_language()
         return get_language()
+
+    def remote_address(self):
+        ip_address = ip_network = None
+        if self.context.get('_request') and (
+                remote_addr := self.context['_request'].get('remote_addr')):
+            ip_address = ipaddress.ip_address(remote_addr)
+            prefix = config.getint(
+                'session', f'ip_network_{ip_address.version}')
+            ip_network = ipaddress.ip_network(remote_addr)
+            ip_network = ip_network.supernet(new_prefix=prefix)
+        return ip_address, ip_network
 
     @property
     def check_access(self):

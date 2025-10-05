@@ -147,3 +147,22 @@ class TransactionTestCase(TestCase):
             with Transaction().start(DB_NAME, USER, timeout=1) as transaction:
                 cursor = transaction.connection.cursor()
                 cursor.execute("SELECT pg_sleep(2)")
+
+    def test_remote_address(self):
+        "Test remote address"
+        for remote_addr, (ip_address, ip_network) in [
+                ('192.168.0.10', ('192.168.0.10', '192.168.0.10/32')),
+                ('64:ff9b:1::', ('64:ff9b:1::', '64:ff9b:1::/56')),
+                ]:
+            with self.subTest(remote_addr=remote_addr):
+                with Transaction().start(DB_NAME, USER, context={
+                            '_request': {
+                                'remote_addr': remote_addr,
+                                },
+                            }) as transaction:
+                    self.assertEqual(
+                        tuple(map(str, transaction.remote_address())),
+                        (ip_address, ip_network))
+
+        with Transaction().start(DB_NAME, USER) as transaction:
+            self.assertEqual(transaction.remote_address(), (None, None))
