@@ -102,12 +102,13 @@ def set_service_session(parameters):
         if _USER != renew_id:
             raise ValueError
     _USER = user_id
+    bus_url_host = parameters.get('bus_url_host', [''])[0]
     session = ':'.join(map(str, [username, user_id, session]))
     if CONNECTION is not None:
         CONNECTION.close()
     CONNECTION = ServerPool(
         hostname, port, database, session=session, cache=not CONFIG['dev'])
-    Bus.listen(CONNECTION)
+    Bus.listen(CONNECTION, bus_url_host)
 
 
 def login(parameters):
@@ -126,13 +127,14 @@ def login(parameters):
     result = connection.common.db.login(username, parameters, language)
     logger.debug('%r', result)
     _USER = result[0]
-    session = ':'.join(map(str, [username] + result))
+    session = ':'.join(map(str, [username] + result[:2]))
+    bus_url_host = result[2]
     if CONNECTION is not None:
         CONNECTION.close()
     CONNECTION = ServerPool(
         hostname, port, database, session=session, cache=not CONFIG['dev'])
     device_cookie.renew()
-    Bus.listen(CONNECTION)
+    Bus.listen(CONNECTION, bus_url_host)
 
 
 def logout():

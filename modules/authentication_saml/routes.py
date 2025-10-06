@@ -156,6 +156,9 @@ def acs(request, pool, identity):
     with Transaction().set_user(user_id):
         session = Session.new()
 
+    allow_subscribe = config.getboolean(
+        'bus', 'allow_subscribe', default=False)
+    bus_url_host = config.get('bus', 'url_host', default=request.host_url)
     redirect_url = request.form.get('RelayState')
     if not redirect_url:
         redirect_url = http_host()
@@ -165,6 +168,7 @@ def acs(request, pool, identity):
     query.append(('login', login))
     query.append(('user_id', user_id))
     query.append(('session', session))
+    query.append(('bus_url_host', bus_url_host if allow_subscribe else ''))
     parts = list(parts)
     parts[3] = urllib.parse.urlencode(query)
     return redirect(urllib.parse.urlunsplit(parts))

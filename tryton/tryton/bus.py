@@ -9,6 +9,7 @@ import time
 import uuid
 from collections import defaultdict
 from urllib.error import HTTPError
+from urllib.parse import urljoin
 from urllib.request import Request, urlopen
 
 from gi.repository import GLib
@@ -25,20 +26,25 @@ class Bus:
     current_thread = None
     channel_actions = defaultdict(list)
     listening = False
+    connection = None
+    host = None
 
     @classmethod
-    def listen(cls, connection):
+    def listen(cls, connection, host):
         if not CONFIG['thread']:
             return
-        listener = threading.Thread(
-            target=cls._listen, args=(connection,), daemon=True)
+        cls.connection = connection
+        cls.host = host
+        if not host:
+            return
+        listener = threading.Thread(target=cls._listen, daemon=True)
         listener.start()
         cls.current_thread = listener.ident
 
     @classmethod
-    def _listen(cls, connection):
+    def _listen(cls):
         bus_timeout = CONFIG['client.bus_timeout']
-        session = connection.session
+        session = cls.connection.session
         authorization = base64.b64encode(session.encode('utf-8'))
         headers = {
             'Content-Type': 'application/json',
@@ -49,12 +55,12 @@ class Bus:
         wait = 1
         last_message = None
         url = None
-        while connection.session == session:
+        while cls.connection.session == session:
             if url is None:
-                if connection.url is None:
+                if cls.connection._database is None:
                     time.sleep(1)
                     continue
-                url = connection.url + '/bus'
+                url = urljoin(cls.host, f'{cls.connection._database}/bus')
             cls.listening = True
 
             channels = list(cls.channel_actions)
@@ -91,7 +97,7 @@ class Bus:
                 wait *= 2
                 continue
 
-            if connection.session != session:
+            if cls.connection.session != session:
                 break
             if thread_id != cls.current_thread:
                 break
@@ -109,14 +115,12 @@ class Bus:
 
     @classmethod
     def register(cls, channel, function):
-        from tryton import rpc
-
         restart = channel not in cls.channel_actions
         cls.channel_actions[channel].append(function)
         if restart:
             # We can not really abort a thread, so we will just start a new one
             # and ignore the result of the one already running
-            Bus.listen(rpc.CONNECTION)
+            Bus.listen(cls.connection, cls.host)
 
     @classmethod
     def unregister(cls, channel, function):

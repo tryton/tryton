@@ -62,7 +62,10 @@ def login(request, database_name, user, parameters, language=None):
         code = HTTPStatus.TOO_MANY_REQUESTS
     if not session:
         abort(code)
-    return session
+    allow_subscribe = config.getboolean(
+        'bus', 'allow_subscribe', default=False)
+    bus_url_host = config.get('bus', 'url_host', default=request.host_url)
+    return (*session, bus_url_host if allow_subscribe else None)
 
 
 @app.auth_required

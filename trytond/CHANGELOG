@@ -1,3 +1,4 @@
+* Handle URL host of the bus on login
 * Restrict sessions to the client's IP address
 * Use ``tryton.cfg`` to register in the Pool
 * Use the FILTER syntax with SQL aggregate functions

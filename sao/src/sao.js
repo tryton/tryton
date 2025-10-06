@@ -1135,6 +1135,7 @@ var Sao = {
                 login: url.searchParams.get('login'),
                 user_id: parseInt(url.searchParams.get('user_id'), 10),
                 session: url.searchParams.get('session'),
+                bus_url_host: url.searchParams.get('bus_url_host'),
             };
             if (url.searchParams.has('renew')) {
                 var renew_id = parseInt(url.searchParams.get('renew'), 10);

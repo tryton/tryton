@@ -13,6 +13,7 @@
             this.login_service = null;
             this.user_id = null;
             this.session = null;
+            this.bus_url_host = null;
             this.cache = new Cache();
             this.prm = jQuery.when();  // renew promise
             this.database = database;
@@ -47,12 +48,14 @@
                 this.login = login;
                 this.user_id = result[0];
                 this.session = result[1];
+                this.bus_url_host = result[2];
                 this.store();
                 this.renew_device_cookie();
                 dfd.resolve();
             }, () => {
                 this.user_id = null;
                 this.session = null;
+                this.bus_url_host = null;
                 this.store();
                 dfd.reject();
             });
@@ -148,6 +151,7 @@
                         this.login = session_data.login;
                         this.user_id = session_data.user_id;
                         this.session = session_data.session;
+                        this.bus_url_host = session_data.bus_url_host;
                     }
                 }
             }
@@ -157,6 +161,7 @@
                 'login': this.login,
                 'user_id': this.user_id,
                 'session': this.session,
+                'bus_url_host': this.bus_url_host,
             };
             session = JSON.stringify(session);
             localStorage.setItem('sao_session_' + this.database, session);

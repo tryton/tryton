@@ -9,13 +9,11 @@ import selectors
 import threading
 import time
 import uuid
-from urllib.parse import urljoin
 
 from trytond import backend
 from trytond.config import config
 from trytond.protocols.jsonrpc import JSONDecoder, JSONEncoder
-from trytond.protocols.wrappers import (
-    HTTPStatus, Response, exceptions, redirect)
+from trytond.protocols.wrappers import HTTPStatus, Response, abort, exceptions
 from trytond.tools import resolve
 from trytond.transaction import Transaction
 from trytond.wsgi import app
@@ -231,12 +229,7 @@ def subscribe(request, database_name):
     if not _allow_subscribe:
         raise exceptions.NotImplemented
     if _url_host and _url_host != request.host_url:
-        response = redirect(
-            urljoin(_url_host, request.path), HTTPStatus.PERMANENT_REDIRECT)
-        # Allow to change the redirection after some time
-        response.headers['Cache-Control'] = (
-            'private, max-age=%s' % _web_cache_timeout)
-        return response
+        abort(HTTPStatus.UNAUTHORIZED)
     user = request.authorization.get('userid')
     channels = request.parsed_data.get('channels', [])
     if user is None:
