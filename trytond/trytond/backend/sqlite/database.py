@@ -238,10 +238,6 @@ class SQLitePosition(Function):
             return 0
 
 
-def replace(text, pattern, replacement):
-    return str(text).replace(pattern, replacement)
-
-
 def now():
     transaction = Transaction()
     return _nows.setdefault(transaction, {}).setdefault(
@@ -443,8 +439,7 @@ class Database(DatabaseInterface):
     _list_cache_timestamp = {}
     flavor = Flavor(
         paramstyle='qmark', function_mapping=MAPPING, null_ordering=False,
-        max_limit=-1,
-        filter_=sqlite.sqlite_version_info >= (3, 30, 0))
+        max_limit=-1, filter_=True)
     IN_MAX = 200
 
     TYPES_MAPPING = {
@@ -477,8 +472,6 @@ class Database(DatabaseInterface):
         self._conn.create_function('date_trunc', 2, date_trunc)
         self._conn.create_function('split_part', 3, split_part)
         self._conn.create_function('to_char', 2, to_char)
-        if sqlite.sqlite_version_info < (3, 3, 14):
-            self._conn.create_function('replace', 3, replace)
         self._conn.create_function('now', 0, now)
         self._conn.create_function('greatest', -1, greatest)
         self._conn.create_function('least', -1, least)

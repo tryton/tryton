@@ -113,14 +113,11 @@ class TableHandler(TableHandlerInterface):
         cursor = Transaction().connection.cursor()
         if self.column_exist(old_name):
             if not self.column_exist(new_name):
-                if sqlite.sqlite_version_info >= (3, 25, 0):
-                    cursor.execute('ALTER TABLE %s RENAME COLUMN %s TO %s' % (
-                            _escape_identifier(self.table_name),
-                            _escape_identifier(old_name),
-                            _escape_identifier(new_name)))
-                    self._update_definitions(columns=True)
-                else:
-                    self._recreate_table({old_name: {'name': new_name}})
+                cursor.execute('ALTER TABLE %s RENAME COLUMN %s TO %s' % (
+                        _escape_identifier(self.table_name),
+                        _escape_identifier(old_name),
+                        _escape_identifier(new_name)))
+                self._update_definitions(columns=True)
             else:
                 logger.warning(
                     'Unable to rename column %s on table %s to %s.',

@@ -1,3 +1,4 @@
+* Set minimal supported version of SQLite to 3.30.1
 * Refactor of trytond.config to add cache
 * Handle URL host of the bus on login
 * Restrict sessions to the client's IP address
