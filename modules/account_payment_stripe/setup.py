@@ -40,7 +40,7 @@ name = 'trytond_account_payment_stripe'
 download_url = 'http://downloads.tryton.org/%s.%s/' % (
     major_version, minor_version)
 
-requires = ['stripe >= 2.32.0', 'werkzeug']
+requires = ['stripe >= 2.32.0, < 13.0.0', 'werkzeug']
 for dep in info.get('depends', []):
     if not re.match(r'(ir|res)(\W|$)', dep):
         requires.append(get_require_version('trytond_%s' % dep))
