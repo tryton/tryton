@@ -13,9 +13,8 @@ from sql.conditionals import Coalesce
 from sql.functions import CurrentTimestamp, Extract, RowNumber, Substring
 from sql.operators import And, Concat, Equal, Exists, Operator, Or
 
-from trytond import backend
+from trytond import backend, config
 from trytond.cache import freeze
-from trytond.config import config
 from trytond.exceptions import ConcurrencyException
 from trytond.i18n import gettext
 from trytond.pool import Pool
@@ -33,8 +32,6 @@ from .modelstorage import (
     AccessError, ModelStorage, RequiredValidationError, SizeValidationError,
     ValidationError, is_leaf)
 from .modelview import ModelView
-
-_request_records_limit = config.getint('request', 'records_limit')
 
 
 class ForeignKeyError(ValidationError):
@@ -356,7 +353,7 @@ class ModelSQL(ModelStorage):
             cls.__rpc__.update({
                     'history_revisions': RPC(
                         size_limits={
-                            0: _request_records_limit,
+                            0: config.getint('request', 'records_limit'),
                             }),
                     })
         if cls._history:

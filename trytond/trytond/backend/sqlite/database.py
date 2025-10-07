@@ -24,9 +24,8 @@ from sql.functions import (
     Substring, Trim)
 from sql.operators import Equal
 
-from trytond import __series__
+from trytond import __series__, config
 from trytond.backend.database import DatabaseInterface, SQLType
-from trytond.config import config, parse_uri
 from trytond.tools import safe_join
 from trytond.transaction import Transaction
 
@@ -539,7 +538,7 @@ class Database(DatabaseInterface):
 
     def _make_uri(self):
         uri = config.get('database', 'uri')
-        base_uri = parse_uri(uri)
+        base_uri = config.parse_uri(uri)
         if base_uri.path and base_uri.path != '/':
             warnings.warn("The path specified in the URI will be overridden")
 

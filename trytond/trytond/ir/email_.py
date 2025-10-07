@@ -12,7 +12,7 @@ except ImportError:
     html2text = None
 from genshi.template import TextTemplate
 
-from trytond.config import config
+import trytond.config as config
 from trytond.i18n import gettext
 from trytond.model import EvalEnvironment, ModelSQL, ModelView, fields
 from trytond.model.exceptions import AccessError, ValidationError

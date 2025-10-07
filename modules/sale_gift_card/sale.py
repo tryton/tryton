@@ -5,7 +5,7 @@ from sql import Null
 from sql.functions import CharLength
 from sql.operators import Equal
 
-from trytond.config import config
+import trytond.config as config
 from trytond.i18n import gettext
 from trytond.model import Exclude, ModelSQL, ModelView, Workflow, fields
 from trytond.modules.company.model import CompanyValueMixin

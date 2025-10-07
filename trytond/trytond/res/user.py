@@ -30,8 +30,8 @@ from sql.aggregate import Count
 from sql.conditionals import Case
 from sql.functions import CurrentTimestamp
 
+import trytond.config as config
 from trytond.cache import Cache
-from trytond.config import config
 from trytond.exceptions import LoginException, RateLimitException, UserError
 from trytond.i18n import gettext, ngettext
 from trytond.model import (

@@ -2,7 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 import mimetypes
 
-from trytond.config import config
+import trytond.config as config
 from trytond.i18n import gettext
 from trytond.model import ModelView, Workflow, fields
 from trytond.model.exceptions import AccessError

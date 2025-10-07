@@ -15,8 +15,8 @@ from sql.aggregate import Max
 from sql.conditionals import Case
 from sql.functions import Position, Substring
 
+import trytond.config as config
 from trytond.cache import Cache
-from trytond.config import config
 from trytond.exceptions import UserError
 from trytond.i18n import gettext
 from trytond.model import Index, ModelSQL, ModelView, fields

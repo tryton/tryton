@@ -13,10 +13,7 @@ from glob import iglob
 from sql import Table
 from sql.functions import CurrentTimestamp
 
-import trytond.convert as convert
-import trytond.tools as tools
-from trytond import __series__
-from trytond.config import config
+from trytond import __series__, config, convert, tools
 from trytond.const import MODULES_GROUP
 from trytond.exceptions import MissingDependenciesException
 from trytond.transaction import Transaction

@@ -5,7 +5,7 @@ from email.utils import getaddresses
 
 from genshi.template import TextTemplate
 
-from trytond.config import config
+import trytond.config as config
 from trytond.i18n import gettext
 from trytond.model import ModelSQL, ModelView, fields
 from trytond.pool import Pool

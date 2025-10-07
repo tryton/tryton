@@ -6,7 +6,7 @@ import io
 import json
 from numbers import Number
 
-from trytond.config import config
+import trytond.config as config
 from trytond.i18n import gettext
 from trytond.protocols.jsonrpc import JSONDecoder
 from trytond.protocols.wrappers import (
@@ -14,14 +14,6 @@ from trytond.protocols.wrappers import (
 from trytond.tools import slugify
 from trytond.transaction import Transaction
 from trytond.wsgi import app
-
-SOURCE = config.get(
-    'html', 'src',
-    default='https://cdn.tiny.cloud/1/no-api-key/tinymce/7/tinymce.min.js')
-LICENSE_KEY = config.get('html', 'license_key', default='gpl')
-AVATAR_TIMEOUT = config.getint(
-    'web', 'avatar_timeout', default=7 * 24 * 60 * 60)
-_request_timeout = config.getint('request', 'timeout', default=0)
 
 
 def get_token(record):
@@ -84,10 +76,14 @@ def html_editor(request, pool, model, record, field):
             'field': field.string,
             'title': request.args.get('title', "Tryton"),
             }
-
+        source = config.get(
+            'html', 'src',
+            default='https://cdn.tiny.cloud'
+            '/1/no-api-key/tinymce/7/tinymce.min.js')
+        license_key = config.get('html', 'license_key', default='gpl')
         return Response(TEMPLATE % {
-                'source': SOURCE,
-                'license_key': LICENSE_KEY,
+                'source': source,
+                'license_key': license_key,
                 'plugins': get_config(
                     ['plugins', model, field.name], default=''),
                 'css': get_config(
@@ -190,7 +186,8 @@ TEMPLATE = '''<!DOCTYPE html>
 @app.auth_required
 @with_pool
 @with_transaction(
-    user='request', context=dict(_check_access=True), timeout=_request_timeout)
+    user='request', context=dict(_check_access=True),
+    timeout=config.getint('request', 'timeout', default=0))
 def data(request, pool, model):
     User = pool.get('res.user')
     Lang = pool.get('ir.lang')
@@ -297,6 +294,7 @@ def avatar(request, pool, uuid):
         abort(HTTPStatus.BAD_REQUEST)
     response = Response(avatar.get(size), mimetype='image/jpeg')
     response.headers['Cache-Control'] = (
-        'max-age=%s, public' % AVATAR_TIMEOUT)
+        'max-age=%s, public' % config.getint(
+            'web', 'avatar_timeout', default=7 * 24 * 60 * 60))
     response.add_etag()
     return response

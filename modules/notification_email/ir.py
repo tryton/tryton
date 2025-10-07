@@ -3,8 +3,7 @@
 
 from sql import Table
 
-from trytond import backend
-from trytond.config import config
+from trytond import backend, config
 from trytond.model import fields
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval

@@ -8,14 +8,13 @@ from sql import As, Column, Literal, Null, Union, With
 from sql.aggregate import Min
 from sql.conditionals import Coalesce
 
-from trytond.config import config
+import trytond.config as config
 from trytond.model import Index, ModelSQL, ModelView, convert_from, fields
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval, If
 from trytond.transaction import Transaction
 
 dumps = partial(json.dumps, separators=(',', ':'), sort_keys=True)
-default_depth = config.getint('party_relationship', 'depth', default=7)
 
 
 class RelationType(ModelSQL, ModelView):
@@ -286,7 +285,9 @@ class Party(metaclass=PoolMeta):
         if party is None:
             party = context.get('related_party')
         if depth is None:
-            depth = context.get('depth', default_depth)
+            depth = context.get(
+                'depth',
+                config.getint('party_relationship', 'depth', default=7))
 
         if not party:
             return query

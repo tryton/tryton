@@ -7,7 +7,7 @@ from urllib.parse import quote, urljoin
 
 from sql.aggregate import Count
 
-from trytond.config import config
+import trytond.config as config
 from trytond.model import ModelSQL, ModelView, fields
 from trytond.pool import Pool
 from trytond.tools import grouped_slice, reduce_ids
@@ -16,7 +16,6 @@ from trytond.url import http_host
 from trytond.wsgi import Base64Converter
 
 ALPHABET = string.digits + string.ascii_lowercase
-URL_BASE = config.get('web', 'shortener_base', default=http_host())
 logger = logging.getLogger(__name__)
 
 
@@ -38,10 +37,11 @@ class ShortenedURL(ModelSQL, ModelView):
             'database': Base64Converter(None).to_url(
                 Transaction().database.name),
             }
+        url_base = config.get('web', 'shortener_base', default=http_host())
         for shortened in shortened_urls:
             url_parts['short_id'] = cls._shorten(shortened.id)
             urls[shortened.id] = urljoin(
-                URL_BASE, quote('/s/%(database)s$%(short_id)s' % url_parts))
+                url_base, quote('/s/%(database)s$%(short_id)s' % url_parts))
         return urls
 
     @classmethod

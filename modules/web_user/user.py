@@ -20,7 +20,7 @@ from sql.conditionals import Coalesce
 from sql.functions import CurrentTimestamp
 from sql.operators import Equal
 
-from trytond.config import config
+import trytond.config as config
 from trytond.exceptions import RateLimitException
 from trytond.i18n import gettext
 from trytond.model import (

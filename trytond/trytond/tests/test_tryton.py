@@ -27,9 +27,8 @@ from lxml import etree
 from sql import Table
 from werkzeug.test import Client
 
-from trytond import backend
+from trytond import backend, config
 from trytond.cache import Cache
-from trytond.config import config, parse_uri
 from trytond.model import (
     ModelSingleton, ModelSQL, ModelStorage, ModelView, Workflow, fields)
 from trytond.model.fields import Function
@@ -188,7 +187,7 @@ def _sqlite_copy(file_, restore=False):
 
 
 def _pg_options():
-    uri = parse_uri(config.get('database', 'uri'))
+    uri = config.parse_uri(config.get('database', 'uri'))
     options = []
     env = os.environ.copy()
     if uri.hostname:

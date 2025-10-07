@@ -5,7 +5,7 @@ import time
 import unittest
 from unittest.mock import patch
 
-from trytond import backend, bus
+from trytond import backend, config
 from trytond.bus import Bus, _MessageQueue, notify
 from trytond.tests.test_tryton import (
     DB_NAME, TestCase, activate_module, with_transaction)
@@ -85,15 +85,15 @@ class BusTestCase(TestCase):
     def setUp(self):
         super().setUp()
 
-        reset_polling_timeout = bus._long_polling_timeout
-        bus._long_polling_timeout = 1
+        polling_timeout = config.get('bus', 'long_polling_timeout')
+        config.set('bus', 'long_polling_timeout', '1')
         self.addCleanup(
-            setattr, bus, '_long_polling_timeout', reset_polling_timeout)
+            config.set, 'bus', 'long_polling_timeout', polling_timeout)
 
-        reset_select_timeout = bus._select_timeout
-        bus._select_timeout = 1
+        select_timeout = config.get('bus', 'select_timeout')
+        config.set('bus', 'select_timeout', '1')
         self.addCleanup(
-            setattr, bus, '_select_timeout', reset_select_timeout)
+            config.set, 'bus', 'select_timeout', select_timeout)
 
     def tearDown(self):
         pid = os.getpid()

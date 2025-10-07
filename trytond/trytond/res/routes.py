@@ -4,7 +4,7 @@ import logging
 import random
 import time
 
-from trytond.config import config
+import trytond.config as config
 from trytond.protocols.wrappers import (
     abort, allow_null_origin, with_pool, with_transaction)
 from trytond.transaction import Transaction

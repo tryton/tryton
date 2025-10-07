@@ -10,7 +10,7 @@ from sql.conditionals import Coalesce
 from sql.functions import CharLength
 from sql.operators import Exists, Or
 
-from trytond.config import config
+import trytond.config as config
 from trytond.pool import Pool
 from trytond.pyson import PYSONEncoder
 from trytond.tools import cached_property, reduce_ids
@@ -19,8 +19,6 @@ from trytond.transaction import Transaction, inactive_records
 from .field import (
     Field, context_validate, domain_method, instantiate_context, order_method,
     search_order_validate)
-
-_subquery_threshold = config.getint('database', 'subquery_threshold')
 
 
 class Many2One(Field):
@@ -225,7 +223,8 @@ class Many2One(Field):
         pool = Pool()
         Rule = pool.get('ir.rule')
         Target = self.get_target()
-        use_subquery = Target.estimated_count() < _subquery_threshold
+        subquery_threshold = config.getint('database', 'subquery_threshold')
+        use_subquery = Target.estimated_count() < subquery_threshold
 
         table, _ = tables[None]
         name, operator, value = domain[:3]

@@ -3,7 +3,7 @@
 
 from unittest.mock import patch
 
-from trytond.config import config
+import trytond.config as config
 from trytond.modules.party.tests import PartyCheckEraseMixin
 from trytond.modules.web_user import user as user_module
 from trytond.pool import Pool

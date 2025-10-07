@@ -27,8 +27,7 @@ try:
 except ImportError:
     from werkzeug.wsgi import SharedDataMiddleware
 
-from trytond import backend, security
-from trytond.config import config
+from trytond import backend, config, security
 from trytond.protocols.jsonrpc import JSONProtocol
 from trytond.protocols.wrappers import (
     HTTPStatus, Request, Response, abort, exceptions)

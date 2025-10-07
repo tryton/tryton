@@ -35,7 +35,7 @@ except ImportError:
 from genshi.filters import Translator
 from genshi.template.text import TextTemplate
 
-from trytond.config import config
+import trytond.config as config
 from trytond.i18n import gettext, ngettext
 from trytond.model.exceptions import AccessError
 from trytond.pool import Pool, PoolBase
@@ -114,13 +114,6 @@ NO_BREAKING_SPACE = '\u00A0'
 # 56 with 12 for username and 8 for random. So 162 should be the maximum but we
 # round it to 100.
 REPORT_NAME_MAX_LENGTH = 100
-
-CONVERT_COMMAND = config.get(
-    'report', 'convert_command',
-    default='soffice --headless --nolockcheck --nodefault --norestore '
-    '--convert-to "%(output_extension)s" '
-    '--outdir "%(directory)s" '
-    '"%(input_path)s"')
 
 
 class TranslateFactory:
@@ -434,7 +427,14 @@ class Report(URLMixin, PoolBase):
         with open(input_path, mode) as fp:
             fp.write(data)
         try:
-            cmd = CONVERT_COMMAND % {
+            cmd = config.get(
+                'report', 'convert_command',
+                default='soffice --headless '
+                '--nolockcheck --nodefault --norestore '
+                '--convert-to "%(output_extension)s" '
+                '--outdir "%(directory)s" '
+                '"%(input_path)s"')
+            cmd %= {
                 'directory': directory,
                 'input_format': input_format,
                 'input_extension': input_extension,

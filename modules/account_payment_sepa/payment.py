@@ -15,7 +15,7 @@ from genshi.template.astutil import ASTCodeGenerator, ASTTransformer
 from lxml import etree
 from sql import Literal, Null
 
-from trytond.config import config
+import trytond.config as config
 from trytond.i18n import gettext
 from trytond.model import (
     Index, ModelSQL, ModelView, Unique, Workflow, dualmethod, fields)

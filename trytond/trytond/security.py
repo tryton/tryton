@@ -16,8 +16,7 @@ from sql import Table
 from sql.conditionals import Coalesce
 from werkzeug.exceptions import abort
 
-from trytond import backend
-from trytond.config import config
+from trytond import backend, config
 from trytond.exceptions import LoginException, RateLimitException
 from trytond.pool import Pool
 from trytond.transaction import Transaction

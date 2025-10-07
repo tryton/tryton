@@ -10,8 +10,8 @@ import pyactiveresource
 import shopify
 from shopify.api_version import ApiVersion
 
+import trytond.config as config
 from trytond.cache import Cache
-from trytond.config import config
 from trytond.i18n import gettext
 from trytond.model import (
     MatchMixin, ModelSQL, ModelView, Unique, fields, sequence_ordered)

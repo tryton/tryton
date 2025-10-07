@@ -2,8 +2,8 @@
 # this repository contains the full copyright notices and license terms.
 import logging
 
+import trytond.config as config
 from trytond.backend.postgresql.table import TableHandler as PGTableHandler
-from trytond.config import config
 from trytond.transaction import Transaction
 from trytond_gis.const import GIS_SQL_TYPE_RE, WGS_84
 

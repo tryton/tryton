@@ -8,7 +8,7 @@ try:
 except ImportError:
     from importlib.metadata import entry_points
 
-from trytond.config import config
+import trytond.config as config
 
 __all__ = [
     'name', 'Database', 'TableHandler',

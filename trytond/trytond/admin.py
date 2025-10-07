@@ -8,8 +8,7 @@ from getpass import getpass
 
 from sql import Literal, Table
 
-from trytond import __series__, backend
-from trytond.config import config
+from trytond import __series__, backend, config
 from trytond.pool import Pool
 from trytond.sendmail import send_test_email
 from trytond.tools import file_open, find_path

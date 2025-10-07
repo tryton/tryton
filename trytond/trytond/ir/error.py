@@ -5,7 +5,7 @@ import functools
 import logging
 import warnings
 
-from trytond.config import config
+import trytond.config as config
 from trytond.exceptions import UserError, UserWarning
 from trytond.model import (
     Index, ModelSQL, ModelView, Workflow, dualmethod, fields)
@@ -15,7 +15,6 @@ from trytond.tools import firstline
 from trytond.transaction import Transaction
 
 logger = logging.getLogger(__name__)
-clean_days = config.getint('error', 'clean_days', default=90)
 
 
 def set_user(field):
@@ -159,6 +158,7 @@ class Error(Workflow, ModelView, ModelSQL):
     @classmethod
     def clean(cls, date=None):
         if date is None:
+            clean_days = config.getint('error', 'clean_days', default=90)
             date = (
                 dt.datetime.now() - dt.timedelta(days=clean_days))
         errors = cls.search([('create_date', '<', date)])

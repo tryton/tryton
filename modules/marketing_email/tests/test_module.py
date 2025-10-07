@@ -3,7 +3,7 @@
 
 from unittest.mock import ANY, Mock, patch
 
-from trytond.config import config
+import trytond.config as config
 from trytond.modules.marketing_email import marketing as marketing_module
 from trytond.pool import Pool
 from trytond.tests.test_tryton import ModuleTestCase, with_transaction
@@ -26,21 +26,19 @@ class MarketingEmailTestCase(ModuleTestCase):
             'marketing', 'email_subscribe_url', default='')
         config.set('marketing', 'email_subscribe_url', SUBSCRIBE_URL)
         self.addCleanup(
-            lambda: config.set(
-                'marketing', 'email_subscribe_url', subscribe_url))
+            config.set, 'marketing', 'email_subscribe_url', subscribe_url)
         unsubscribe_url = config.get(
             'marketing', 'email_unsubscribe_url', default='')
         config.set('marketing', 'email_unsubscribe_url', UNSUBSCRIBE_URL)
         self.addCleanup(
-            lambda: config.set(
-                'marketing', 'email_unsubscribe_url', unsubscribe_url))
+            config.set, 'marketing', 'email_unsubscribe_url', unsubscribe_url)
         spy_pixel = config.get('marketing', 'email_spy_pixel', default='')
         config.set('marketing', 'email_spy_pixel', 'true')
         self.addCleanup(
-            lambda: config.set('marketing', 'email_spy_pixel', spy_pixel))
+            config.set, 'marketing', 'email_spy_pixel', spy_pixel)
         from_ = config.get('email', 'from', default='')
         config.set('email', 'from', FROM)
-        self.addCleanup(lambda: config.set('email', 'from', from_))
+        self.addCleanup(config.set, 'email', 'from', from_)
 
     @with_transaction()
     def test_subscribe(self):

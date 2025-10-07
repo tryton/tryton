@@ -10,8 +10,8 @@ import threading
 import time
 import uuid
 
+import trytond.config as config
 from trytond import backend
-from trytond.config import config
 from trytond.protocols.jsonrpc import JSONDecoder, JSONEncoder
 from trytond.protocols.wrappers import HTTPStatus, Response, abort, exceptions
 from trytond.tools import resolve
@@ -19,14 +19,6 @@ from trytond.transaction import Transaction
 from trytond.wsgi import app
 
 logger = logging.getLogger(__name__)
-
-_db_timeout = config.getint('database', 'timeout')
-_cache_timeout = config.getint('bus', 'cache_timeout')
-_select_timeout = config.getint('bus', 'select_timeout')
-_long_polling_timeout = config.getint('bus', 'long_polling_timeout')
-_allow_subscribe = config.getboolean('bus', 'allow_subscribe')
-_url_host = config.get('bus', 'url_host')
-_web_cache_timeout = config.getint('web', 'cache_timeout')
 
 
 class _MessageQueue:
@@ -84,7 +76,8 @@ class LongPollingBus:
         pid = os.getpid()
         with cls._queues_lock[pid]:
             start_listener = (pid, database) not in cls._queues
-            cls._queues[pid, database]['timeout'] = time.time() + _db_timeout
+            cls._queues[pid, database]['timeout'] = (
+                time.time() + config.getint('database', 'timeout'))
             if start_listener:
                 listener = threading.Thread(
                     target=cls._listen, args=(database,), daemon=True)
@@ -106,7 +99,8 @@ class LongPollingBus:
                         'events'][channel]
                     event_channel.append(event)
 
-            triggered = event.wait(_long_polling_timeout)
+            triggered = event.wait(
+                config.getint('bus', 'long_polling_timeout'))
             if not triggered:
                 response = cls.create_response(None, None)
             else:
@@ -153,12 +147,13 @@ class LongPollingBus:
             cursor = conn.cursor()
             cursor.execute('LISTEN "%s"' % cls._channel)
 
-            cls._messages[database] = messages = _MessageQueue(_cache_timeout)
+            cls._messages[database] = messages = _MessageQueue(
+                config.getint('bus', 'cache_timeout'))
 
             now = time.time()
             selector.register(conn, selectors.EVENT_READ)
             while cls._queues[pid, database]['timeout'] > now:
-                selector.select(timeout=_select_timeout)
+                selector.select(timeout=config.getint('bus', 'select_timeout'))
                 conn.poll()
                 while conn.notifies:
                     notification = conn.notifies.pop()
@@ -226,9 +221,10 @@ else:
 @app.route('/<string:database_name>/bus', methods=['POST'])
 @app.session_valid
 def subscribe(request, database_name):
-    if not _allow_subscribe:
+    if not config.getboolean('bus', 'allow_subscribe'):
         raise exceptions.NotImplemented
-    if _url_host and _url_host != request.host_url:
+    url_host = config.get('bus', 'url_host')
+    if url_host and url_host != request.host_url:
         abort(HTTPStatus.UNAUTHORIZED)
     user = request.authorization.get('userid')
     channels = request.parsed_data.get('channels', [])

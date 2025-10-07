@@ -12,8 +12,7 @@ from multiprocessing import cpu_count
 
 from sql import Flavor
 
-from trytond import backend
-from trytond.config import config
+from trytond import backend, config
 from trytond.exceptions import UserError, UserWarning
 from trytond.pool import Pool
 from trytond.status import processing

@@ -19,7 +19,7 @@ if os.path.isdir(DIR):
     sys.path.insert(0, os.path.dirname(DIR))
 
 import trytond.commandline as commandline
-from trytond.config import config, split_netloc
+import trytond.config as config
 
 parser = commandline.get_parser_daemon()
 if argcomplete:
@@ -47,7 +47,7 @@ with commandline.pidfile(options):
         threads.append(thread)
     for thread in threads:
         thread.join()
-    hostname, port = split_netloc(config.get('web', 'listen'))
+    hostname, port = config.split_netloc(config.get('web', 'listen'))
     certificate = config.get('ssl', 'certificate')
     try:
         if config.getboolean('ssl', 'certificate'):

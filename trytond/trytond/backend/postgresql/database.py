@@ -36,9 +36,8 @@ from sql.conditionals import Coalesce
 from sql.functions import Function
 from sql.operators import BinaryOperator, Concat
 
-from trytond import __series__
+from trytond import __series__, config
 from trytond.backend.database import DatabaseInterface, SQLType
-from trytond.config import config, parse_uri
 from trytond.sql.operators import RangeOperator
 from trytond.tools import grouped_slice, reduce_ids
 from trytond.tools.gevent import is_gevent_monkey_patched
@@ -53,9 +52,6 @@ __all__ = [
 logger = logging.getLogger(__name__)
 
 os.environ['PGTZ'] = os.environ.get('TZ', '')
-_timeout = config.getint('database', 'timeout')
-_minconn = config.getint('database', 'minconn', default=1)
-_maxconn = config.getint('database', 'maxconn', default=64)
 _default_name = config.get('database', 'default_name', default='template1')
 
 
@@ -224,8 +220,9 @@ class Database(DatabaseInterface):
         with cls._lock:
             now = datetime.now()
             databases = cls._databases[os.getpid()]
+            timeout = config.getint('database', 'timeout')
             for database in list(databases.values()):
-                if ((now - database._last_use).total_seconds() > _timeout
+                if ((now - database._last_use).total_seconds() > timeout
                         and database.name != name
                         and not database._connpool._used):
                     database.close()
@@ -233,9 +230,11 @@ class Database(DatabaseInterface):
                 inst = databases[name]
             else:
                 inst = DatabaseInterface.__new__(cls, name=name)
+                minconn = config.getint('database', 'minconn', default=1)
+                maxconn = config.getint('database', 'maxconn', default=64)
                 try:
                     inst._connpool = ThreadedConnectionPool(
-                        _minconn, _maxconn, **cls._connection_params(name),
+                        minconn, maxconn, **cls._connection_params(name),
                         cursor_factory=LoggingCursor)
                 except Exception:
                     logger.error(
@@ -252,7 +251,7 @@ class Database(DatabaseInterface):
 
     @classmethod
     def _connection_params(cls, name):
-        uri = parse_uri(config.get('database', 'uri'))
+        uri = config.parse_uri(config.get('database', 'uri'))
         if uri.path and uri.path != '/':
             warnings.warn("The path specified in the URI will be overridden")
         params = {
@@ -267,7 +266,9 @@ class Database(DatabaseInterface):
 
     def get_connection(
             self, autocommit=False, readonly=False, statement_timeout=None):
-        retry = max(config.getint('database', 'retry'), _maxconn)
+        retry = max(
+            config.getint('database', 'retry'),
+            config.getint('database', 'maxconn', default=64))
         for count in range(retry, -1, -1):
             try:
                 conn = self._connpool.getconn()

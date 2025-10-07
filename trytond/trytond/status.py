@@ -10,7 +10,7 @@ import time
 from collections import namedtuple
 from contextlib import contextmanager
 
-from trytond.config import config
+import trytond.config as config
 
 status = dict()
 logger = logging.getLogger(__name__)

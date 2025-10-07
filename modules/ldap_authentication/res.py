@@ -7,7 +7,7 @@ import urllib.parse
 import ldap3
 from ldap3.core.exceptions import LDAPException
 
-from trytond.config import config, parse_uri
+import trytond.config as config
 from trytond.exceptions import LoginException
 from trytond.i18n import gettext
 from trytond.model.exceptions import AccessError
@@ -24,7 +24,7 @@ if 'ldap' not in urllib.parse.uses_query:
 
 def parse_ldap_url(uri):
     unquote = urllib.parse.unquote
-    uri = parse_uri(uri)
+    uri = config.parse_uri(uri)
     dn = unquote(uri.path)[1:]
     attributes, scope, filter_, extensions = (
         uri.query.split('?') + [''] * 4)[:4]

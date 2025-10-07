@@ -11,8 +11,7 @@ from dateutil.relativedelta import relativedelta
 from sql import Literal
 from sql.conditionals import Coalesce
 
-from trytond import backend
-from trytond.config import config
+from trytond import backend, config
 from trytond.exceptions import UserError, UserWarning
 from trytond.model import (
     DeactivableMixin, Index, ModelSQL, ModelView, dualmethod, fields)
@@ -24,7 +23,6 @@ from trytond.tools import timezone as tz
 from trytond.transaction import Transaction, TransactionError
 from trytond.worker import run_task
 
-clean_days = config.getint('cron', 'clean_days', default=30)
 logger = logging.getLogger(__name__)
 
 
@@ -315,6 +313,7 @@ class Log(ModelSQL, ModelView):
     @classmethod
     def clean(cls, date=None):
         if date is None:
+            clean_days = config.getint('cron', 'clean_days', default=30)
             date = (
                 datetime.datetime.now() - datetime.timedelta(days=clean_days))
         logs = cls.search([('create_date', '<', date)])

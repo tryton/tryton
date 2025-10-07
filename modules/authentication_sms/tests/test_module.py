@@ -2,7 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 import datetime
 
-from trytond.config import config
+import trytond.config as config
 from trytond.exceptions import LoginException
 from trytond.pool import Pool
 from trytond.tests.test_tryton import ModuleTestCase, with_transaction

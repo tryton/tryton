@@ -4,7 +4,7 @@
 from decimal import Decimal
 from math import ceil, floor, log10
 
-from trytond.config import config
+import trytond.config as config
 from trytond.i18n import gettext
 from trytond.model import (
     Check, DeactivableMixin, DigitsMixin, ModelSQL, ModelView, SymbolMixin,

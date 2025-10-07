@@ -13,7 +13,7 @@ import saml2
 import saml2.client
 import saml2.config
 
-from trytond.config import config
+import trytond.config as config
 from trytond.protocols.dispatcher import register_authentication_service
 from trytond.protocols.wrappers import (
     Response, abort, allow_null_origin, exceptions, redirect, with_pool,

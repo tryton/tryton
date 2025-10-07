@@ -5,7 +5,7 @@ from unittest.mock import patch
 
 from sql import Join, Table
 
-from trytond.config import config
+import trytond.config as config
 from trytond.model.exceptions import DomainValidationError
 from trytond.pool import Pool
 from trytond.tests.test_tryton import (
@@ -354,12 +354,10 @@ class FieldMany2OneExistsTestCase(
         activate_module('tests')
 
     def setUp(self):
-        from trytond.model.fields import many2one
         super().setUp()
-        previous = int(
-            config.get('database', 'subquery_threshold', default='1_000'))
-        many2one._subquery_threshold = 0
-        self.addCleanup(setattr, many2one, '_subquery_threshold', previous)
+        previous = config.get('database', 'subquery_threshold')
+        config.set('database', 'subquery_threshold', '0')
+        self.addCleanup(config.set, 'database', 'subquery_threshold', previous)
 
 
 class FieldMany2OneTreeTestCase(TestCase):

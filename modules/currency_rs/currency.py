@@ -6,8 +6,8 @@ from lxml import objectify
 from zeep import Client, Transport
 from zeep.exceptions import Error
 
+import trytond.config as config
 from trytond.cache import Cache
-from trytond.config import config
 from trytond.i18n import gettext
 from trytond.model import fields
 from trytond.modules.currency.currency import CronFetchError
@@ -19,11 +19,11 @@ from .exceptions import RSCredentialWarning
 URL = (
     'https://webservices.nbs.rs/CommunicationOfficeService1_0/'
     'ExchangeRateXmlService.asmx?WSDL')
-TIMEOUT = config.getfloat('currency_rs', 'requests_timeout', default=300)
 
 
 def get_client(username, password, license_id):
-    client = Client(URL, transport=Transport(operation_timeout=TIMEOUT))
+    timeout = config.getfloat('currency_rs', 'requests_timeout', default=300)
+    client = Client(URL, transport=Transport(operation_timeout=timeout))
     client.set_default_soapheaders({
             'AuthenticationHeader': {
                 'UserName': username,

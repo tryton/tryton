@@ -6,14 +6,13 @@ from decimal import Decimal
 import requests
 from lxml import etree
 
-from trytond.config import config
+import trytond.config as config
 from trytond.modules.currency.currency import CronFetchError
 from trytond.pool import PoolMeta
 from trytond.pyson import Eval, If
 
 URL_10DAYS = 'https://bnr.ro/nbrfxrates10days.xml'
 URL_YEAR = 'https://bnr.ro/files/xml/years/nbrfxrates%s.xml'
-TIMEOUT = config.getfloat('currency_ro', 'requests_timeout', default=300)
 
 
 class Cron(metaclass=PoolMeta):
@@ -35,8 +34,10 @@ class Cron(metaclass=PoolMeta):
             url = URL_10DAYS
         else:
             url = URL_YEAR % date.year
+        timeout = config.getfloat(
+            'currency_ro', 'requests_timeout', default=300)
         try:
-            response = requests.get(url, timeout=TIMEOUT)
+            response = requests.get(url, timeout=timeout)
         except requests.HTTPError as e:
             raise CronFetchError() from e
         tree = etree.fromstring(response.content)

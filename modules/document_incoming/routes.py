@@ -3,7 +3,7 @@
 
 import base64
 
-from trytond.config import config
+import trytond.config as config
 from trytond.protocols.wrappers import (
     HTTPStatus, Response, abort, set_max_request_size, user_application,
     with_pool, with_transaction)

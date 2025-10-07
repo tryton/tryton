@@ -2,12 +2,10 @@
 # this repository contains the full copyright notices and license terms.
 from urllib.parse import unquote
 
-from trytond.config import config
+import trytond.config as config
 from trytond.protocols.wrappers import (
     HTTPStatus, Response, abort, with_pool, with_transaction)
 from trytond.wsgi import app
-
-TIMEOUT = config.getint('product', 'image_timeout', default=365 * 24 * 60 * 60)
 
 
 @app.route(
@@ -92,6 +90,7 @@ def _image(request, pool, record):
 
     response = Response(image.get((width, height)), mimetype='image/jpeg')
     response.headers['Cache-Control'] = (
-        'max-age=%s, public' % TIMEOUT)
+        'max-age=%s, public' % config.getint(
+            'product', 'image_timeout', default=365 * 24 * 60 * 60))
     response.add_etag()
     return response

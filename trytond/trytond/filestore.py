@@ -2,13 +2,17 @@
 # this repository contains the full copyright notices and license terms.
 import hashlib
 import os
+from functools import cache
 
-from trytond.config import config
+import trytond.config as config
 from trytond.tools import resolve
 
 __all__ = ['filestore']
 
-PATH = os.path.normpath(config.get('database', 'path'))
+
+@cache
+def _normpath(path):
+    return os.path.normpath(path)
 
 
 class FileStore(object):
@@ -52,10 +56,15 @@ class FileStore(object):
     def setmany(self, data, prefix=''):
         return [self.set(d, prefix) for d in data]
 
+    @property
+    def path(self):
+        return _normpath(config.get('database', 'path'))
+
     def _filename(self, id, prefix):
-        filename = os.path.join(PATH, prefix, id[0:2], id[2:4], id)
+        path = self.path
+        filename = os.path.join(path, prefix, id[0:2], id[2:4], id)
         filename = os.path.normpath(filename)
-        if not filename.startswith(PATH):
+        if not filename.startswith(path):
             raise ValueError('Bad prefix')
         return filename
 

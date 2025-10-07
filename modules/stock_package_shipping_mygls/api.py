@@ -5,14 +5,12 @@ import hashlib
 from zeep import Client
 from zeep.transports import Transport
 
-from trytond.config import config
+import trytond.config as config
 
 URLS = {
     'testing': 'https://api.test.mygls.%(country)s/%(service)s.svc?singleWsdl',
     'production': 'https://api.mygls.%(country)s/%(service)s.svc?singleWsdl',
     }
-TIMEOUT = config.get(
-    'stock_package_shipping_mygls', 'requests_timeout', default=300)
 
 
 def get_client(credential, service):
@@ -20,7 +18,9 @@ def get_client(credential, service):
         'country': credential.country,
         'service': service,
         }
-    return Client(url, transport=Transport(operation_timeout=TIMEOUT))
+    timeout = config.get(
+        'stock_package_shipping_mygls', 'requests_timeout', default=300)
+    return Client(url, transport=Transport(operation_timeout=timeout))
 
 
 def get_request(credential, name, **kwargs):

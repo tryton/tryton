@@ -5,7 +5,7 @@ import os
 from contextlib import contextmanager
 from unittest.mock import Mock, patch
 
-from trytond.config import config
+import trytond.config as config
 from trytond.pool import Pool
 from trytond.res import user as user_module
 from trytond.res.user import PasswordError
@@ -49,7 +49,7 @@ class UserTestCase(TestCase):
             os.path.join(os.path.dirname(__file__), 'forbidden.txt'))
         self.addCleanup(config.set, 'password', 'forbidden', forbidden)
 
-        reset_from = config.get('email', 'from', fallback='')
+        reset_from = config.get('email', 'from', default='')
         config.set('email', 'from', FROM)
         self.addCleanup(lambda: config.set('email', 'from', reset_from))
 

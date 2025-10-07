@@ -16,7 +16,7 @@ if os.path.isdir(DIR):
     sys.path.insert(0, os.path.dirname(DIR))
 
 import trytond.commandline as commandline
-from trytond.config import config
+import trytond.config as config
 
 parser = commandline.get_parser_admin()
 if argcomplete:

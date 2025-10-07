@@ -3,7 +3,7 @@
 import datetime as dt
 from decimal import Decimal
 
-from trytond.config import config
+import trytond.config as config
 from trytond.modules.product import round_price
 from trytond.pool import Pool, PoolMeta
 

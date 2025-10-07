@@ -10,7 +10,7 @@ import time
 from functools import wraps
 from string import Template
 
-from trytond.config import config
+import trytond.config as config
 from trytond.model import fields
 from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
@@ -82,6 +82,8 @@ class Shop(metaclass=PoolMeta):
             shops = cls.search([])
 
         directory = _get_directory()
+        duration = config.getint(
+            'web_shop', 'product_data_feed_cache', default=60 * 60 * 24)
         for shop in shops:
             for name in fnmatch.filter(
                     os.listdir(directory),
@@ -92,13 +94,16 @@ class Shop(metaclass=PoolMeta):
                 else:
                     format, language = name, None
                 shop.product_data_feed_csv(
-                    format, language=language, duration=_duration / 2)
+                    format, language=language, duration=duration / 2)
 
-    def product_data_feed_csv(self, format, language=None, duration=_duration):
+    def product_data_feed_csv(self, format, language=None, duration=None):
         pool = Pool()
         Lang = pool.get('ir.lang')
         transaction = Transaction()
         directory = _get_directory()
+        if duration is None:
+            duration = config.getint(
+                'web_shop', 'product_data_feed_cache', default=60 * 60 * 24)
         if language:
             filename = f'{self.name}-{self.id}-{format}-{language}.csv'
         else:

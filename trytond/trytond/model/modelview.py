@@ -5,8 +5,8 @@ from functools import wraps
 
 from lxml import etree
 
+import trytond.config as config
 from trytond.cache import Cache
-from trytond.config import config
 from trytond.exceptions import UserError
 from trytond.i18n import gettext
 from trytond.pool import Pool
@@ -21,7 +21,6 @@ from .fields.field import _set_value
 from .model import Model
 
 __all__ = ['ModelView']
-_request_records_limit = config.getint('request', 'records_limit')
 
 
 class AccessButtonError(UserError):
@@ -102,7 +101,7 @@ class ModelView(Model):
                     instantiate=0, result=on_change_result),
                 'autocomplete': RPC(
                     size_limits={
-                        2: _request_records_limit,
+                        2: config.getint('request', 'records_limit'),
                         }),
                 })
         cls._buttons = {}

@@ -8,7 +8,7 @@ from sql import Literal
 from sql.conditionals import Coalesce
 from sql.operators import Exists
 
-from trytond.config import config
+import trytond.config as config
 from trytond.pool import Pool
 from trytond.pyson import PYSONEncoder
 from trytond.tools import cached_property, grouped_slice
@@ -18,8 +18,6 @@ from .field import (
     Field, context_validate, domain_method, domain_validate, get_eval_fields,
     instanciate_values, instantiate_context, search_order_validate,
     size_validate)
-
-_subquery_threshold = config.getint('database', 'subquery_threshold')
 
 
 class One2Many(Field):
@@ -347,7 +345,8 @@ class One2Many(Field):
             origin_where = origin.like(Model.__name__ + ',%')
             origin = origin_field.sql_id(origin, Target)
 
-        use_in = Target.estimated_count() < _subquery_threshold
+        subquery_threshold = config.getint('database', 'subquery_threshold')
+        use_in = Target.estimated_count() < subquery_threshold
         if '.' not in name:
             if value is None:
                 if use_in:

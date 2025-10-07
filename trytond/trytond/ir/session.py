@@ -4,14 +4,10 @@ import datetime
 import json
 from secrets import compare_digest, token_hex
 
+import trytond.config as config
 from trytond.cache import Cache
-from trytond.config import config
 from trytond.model import Index, ModelSQL, fields
 from trytond.transaction import Transaction
-
-_session_timeout = datetime.timedelta(
-    seconds=config.getint('session', 'timeout'))
-_reset_interval = _session_timeout // 10
 
 
 class Session(ModelSQL):
@@ -135,8 +131,11 @@ class Session(ModelSQL):
         "Reset key session timestamp"
         now = datetime.datetime.now()
         last_reset = cls._session_reset_cache.get(key)
-        if last_reset is None or (now - _reset_interval) > last_reset:
-            timestamp = now - _session_timeout
+        session_timeout = datetime.timedelta(
+            seconds=config.getint('session', 'timeout'))
+        reset_interval = session_timeout // 10
+        if last_reset is None or (now - reset_interval) > last_reset:
+            timestamp = now - session_timeout
             sessions = cls.search([
                     ('key', '=', key),
                     ['OR',

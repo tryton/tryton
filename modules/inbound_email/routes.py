@@ -3,7 +3,7 @@
 
 import json
 
-from trytond.config import config
+import trytond.config as config
 from trytond.protocols.wrappers import (
     HTTPStatus, Response, abort, set_max_request_size, with_pool,
     with_transaction)

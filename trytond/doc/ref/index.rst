@@ -9,6 +9,7 @@ Reference of the ``trytond`` API:
 .. toctree::
    :maxdepth: 1
 
+   config
    models
    fields
    wizard

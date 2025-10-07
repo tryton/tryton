@@ -5,7 +5,7 @@ import encodings.idna
 import socket
 import urllib.parse
 
-from trytond.config import config
+import trytond.config as config
 from trytond.transaction import Transaction
 
 __all__ = ['URLMixin', 'is_secure', 'host', 'http_host']

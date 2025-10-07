@@ -7,7 +7,7 @@ from io import BytesIO
 
 from pypdf import PdfReader, PdfWriter
 
-from trytond.config import config
+import trytond.config as config
 from trytond.i18n import gettext
 from trytond.model import (
     DeactivableMixin, ModelSingleton, ModelSQL, ModelView, Workflow, fields)

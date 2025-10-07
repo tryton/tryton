@@ -5,7 +5,7 @@ from urllib.parse import urljoin
 from zeep import Client
 from zeep.transports import Transport
 
-from trytond.config import config
+import trytond.config as config
 
 SERVER_URLS = {
     'testing': 'https://public-ws-stage.dpd.com/services/',
@@ -14,17 +14,17 @@ SERVER_URLS = {
 
 LOGIN_SERVICE = 'LoginService/V2_0/?wsdl'
 SHIPMENT_SERVICE = 'ShipmentService/V3_2/?wsdl'
-TIMEOUT = config.get(
-    'stock_package_shipping_dpd', 'requests_timeout', default=300)
 
 
 def get_client(server, service):
     api_base_url = config.get('stock_package_shipping_dpd',
         server, default=SERVER_URLS[server])
     url = urljoin(api_base_url, service)
+    timeout = config.get(
+        'stock_package_shipping_dpd', 'requests_timeout', default=300)
     # Disable the cache for testing because zeep's bug
     # https://github.com/mvantellingen/python-zeep/issues/48
     # which makes testing environments fail
-    transport = (Transport(cache=None, operation_timeout=TIMEOUT)
+    transport = (Transport(cache=None, operation_timeout=timeout)
         if url.startswith(SERVER_URLS['testing']) else None)
     return Client(url, transport=transport)

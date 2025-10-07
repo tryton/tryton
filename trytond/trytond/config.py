@@ -3,11 +3,17 @@
 import configparser
 import logging
 import os
+import sys
 import urllib.parse
+import warnings
+from functools import cache
 from getpass import getuser
 
-__all__ = ['config', 'get_hostname', 'get_port', 'split_netloc',
-    'parse_listen', 'parse_uri']
+__all__ = [
+    'get_hostname', 'get_port', 'split_netloc',
+    'parse_listen', 'parse_uri',
+    'update_etc', 'has_section', 'add_section', 'remove_section',
+    'set', 'get', 'getint', 'getfloat', 'getboolean']
 logger = logging.getLogger(__name__)
 
 # Needed so urlunsplit to always set netloc
@@ -135,40 +141,61 @@ class TrytonConfigParser(configparser.ConfigParser):
                 ','.join(set(configfile) - set(read_files)))
         return configfile
 
-    def get(self, section, option, *args, **kwargs):
-        default = kwargs.pop('default', None)
-        try:
-            return configparser.RawConfigParser.get(self, section, option,
-                *args, **kwargs)
-        except (configparser.NoOptionError, configparser.NoSectionError):
-            return default
 
-    def getint(self, section, option, *args, **kwargs):
-        default = kwargs.pop('default', None)
-        try:
-            return configparser.RawConfigParser.getint(self, section, option,
-                *args, **kwargs)
-        except (configparser.NoOptionError, configparser.NoSectionError,
-                TypeError):
-            return default
-
-    def getfloat(self, section, option, *args, **kwargs):
-        default = kwargs.pop('default', None)
-        try:
-            return configparser.RawConfigParser.getfloat(self, section, option,
-                *args, **kwargs)
-        except (configparser.NoOptionError, configparser.NoSectionError,
-                TypeError):
-            return default
-
-    def getboolean(self, section, option, *args, **kwargs):
-        default = kwargs.pop('default', None)
-        try:
-            return configparser.RawConfigParser.getboolean(
-                self, section, option, *args, **kwargs)
-        except (configparser.NoOptionError, configparser.NoSectionError,
-                AttributeError):
-            return default
+_config = TrytonConfigParser()
 
 
-config = TrytonConfigParser()
+def update_etc(configfile=os.environ.get('TRYTOND_CONFIG')):
+    configfile = _config.update_etc(configfile=configfile)
+    _cache_clear()
+    return configfile
+
+
+has_section = _config.has_section
+add_section = _config.add_section
+remove_section = _config.remove_section
+
+
+def set(section, option, value=None):
+    _config.set(section, option, value=value)
+    _cache_clear()
+
+
+@cache
+def get(section, option, default=None):
+    return configparser.RawConfigParser.get(
+        _config, section, option, fallback=default)
+
+
+def _cache_clear():
+    get.cache_clear()
+    getint.cache_clear()
+    getfloat.cache_clear()
+    getboolean.cache_clear()
+
+
+@cache
+def getint(section, option, default=None):
+    return configparser.RawConfigParser.getint(
+        _config, section, option, fallback=default)
+
+
+@cache
+def getfloat(section, option, default=None):
+    return configparser.RawConfigParser.getfloat(
+        _config, section, option, fallback=default)
+
+
+@cache
+def getboolean(section, option, default=None):
+    return configparser.RawConfigParser.getboolean(
+        _config, section, option, fallback=default)
+
+
+def __getattr__(name):
+    if name == 'config':
+        warnings.warn(
+            "trytond.config.config is deprecated, "
+            "use trytond.config", DeprecationWarning, stacklevel=2)
+        return sys.modules[__name__]
+    raise AttributeError(f"module {__name__} has no attribute {name}")

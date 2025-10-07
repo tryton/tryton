@@ -9,7 +9,7 @@ from zeep import Client
 from zeep.exceptions import Error as ZeepError
 from zeep.transports import Transport
 
-from trytond.config import config
+import trytond.config as config
 from trytond.i18n import gettext
 from trytond.model import Index, ModelSQL, ModelView, Unique, Workflow, fields
 from trytond.model.exceptions import AccessError
@@ -21,9 +21,6 @@ from trytond.transaction import Transaction
 
 from .exceptions import ESSIIPostedInvoicesError
 
-CERT = (
-    config.get('account_es_sii', 'certificate'),
-    config.get('account_es_sii', 'privatekey'))
 SEND_SIZE = 10000
 
 
@@ -79,15 +76,19 @@ class CredentialSII(ModelSQL, CompanyValueMixin):
     def get_client(cls, endpoint, **pattern):
         pool = Pool()
         Configuration = pool.get('account.configuration')
-        config = Configuration(1)
-        url = WS_URL.get(config.get_multivalue('es_sii_url', **pattern), '')
+        configuration = Configuration(1)
+        url = WS_URL.get(
+            configuration.get_multivalue('es_sii_url', **pattern), '')
         if not url:
             raise AccessError(
                 gettext('account_es_sii.msg_missing_sii_url'))
         service = endpoint
-        environment = config.get_multivalue('es_sii_environment', **pattern)
+        environment = configuration.get_multivalue(
+            'es_sii_environment', **pattern)
         session = Session()
-        session.cert = CERT
+        session.cert = (
+            config.get('account_es_sii', 'certificate'),
+            config.get('account_es_sii', 'privatekey'))
         transport = Transport(session=session)
         client = Client(url + endpoint + '.wsdl', transport=transport)
         if environment == 'staging':

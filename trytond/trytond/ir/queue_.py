@@ -6,16 +6,12 @@ from sql import Literal, Null, With
 from sql.aggregate import Min
 from sql.functions import CurrentTimestamp, Extract
 
-from trytond.config import config
+import trytond.config as config
 from trytond.model import Index, ModelSQL, fields
 from trytond.pool import Pool
 from trytond.tools import grouped_slice
 from trytond.transaction import (
     Transaction, inactive_records, without_check_access)
-
-has_worker = config.getboolean('queue', 'worker', default=False)
-clean_days = config.getint('queue', 'clean_days', default=30)
-batch_size = config.getint('queue', 'batch_size', default=20)
 
 
 class Queue(ModelSQL):
@@ -75,7 +71,7 @@ class Queue(ModelSQL):
                         }])
         if database.has_channel():
             cursor.execute('NOTIFY "%s"', (cls.__name__,))
-        if not has_worker:
+        if not config.getboolean('queue', 'worker', default=False):
             transaction.tasks.append(record.id)
         return record.id
 
@@ -185,7 +181,8 @@ class Queue(ModelSQL):
     def clean(cls, date=None):
         if date is None:
             date = (
-                datetime.datetime.now() - datetime.timedelta(days=clean_days))
+                datetime.datetime.now() - datetime.timedelta(
+                    days=config.getint('queue', 'clean_days', default=30)))
         tasks = cls.search(['OR',
                 ('dequeued_at', '<', date),
                 ('finished_at', '<', date),
@@ -215,6 +212,7 @@ class _Method(object):
     def __call__(self, instances, *args, **kwargs):
         transaction = Transaction()
         context = transaction.context.copy()
+        has_worker = config.getboolean('queue', 'worker', default=False)
         name = context.pop('queue_name', 'default')
         now = datetime.datetime.now()
         scheduled_at = context.pop('queue_scheduled_at', None)
@@ -248,7 +246,7 @@ class _Method(object):
         if isinstance(instances, list):
             if has_worker and queue_batch:
                 if isinstance(queue_batch, bool):
-                    count = batch_size
+                    count = config.getint('queue', 'batch_size', default=20)
                 else:
                     count = int(queue_batch)
             else:

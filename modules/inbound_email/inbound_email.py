@@ -11,7 +11,7 @@ from email.policy import default as email_policy_default
 from email.utils import getaddresses
 from functools import partial
 
-from trytond.config import config
+import trytond.config as config
 from trytond.model import (
     ModelSQL, ModelStorage, ModelView, fields, sequence_ordered)
 from trytond.pool import Pool

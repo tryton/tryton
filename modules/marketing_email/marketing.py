@@ -19,7 +19,7 @@ try:
 except ImportError:
     html2text = None
 
-from trytond.config import config
+import trytond.config as config
 from trytond.i18n import gettext
 from trytond.ir.session import token_hex
 from trytond.model import (
@@ -37,9 +37,6 @@ from trytond.url import http_host
 from trytond.wizard import Button, StateTransition, StateView, Wizard
 
 from .exceptions import EMailValidationError, TemplateError
-
-URL_BASE = config.get('marketing', 'email_base', default=http_host())
-URL_OPEN = urljoin(URL_BASE, '/m/empty.gif')
 
 
 def _add_params(url, **params):
@@ -434,6 +431,9 @@ class Message(Workflow, ModelSQL, ModelView):
         spy_pixel = config.getboolean(
             'marketing', 'email_spy_pixel', default=False)
 
+        url_base = config.get('marketing', 'email_base', default=http_host())
+        url_open = urljoin(url_base, '/m/empty.gif')
+
         @lru_cache(None)
         def short(url, record):
             url = WebShortener(
@@ -456,7 +456,7 @@ class Message(Workflow, ModelSQL, ModelView):
                     elif kind is END and data == 'body' and spy_pixel:
                         yield START, (QName('img'), Attrs([
                                     (QName('src'), short(
-                                            URL_OPEN, str(message))),
+                                            url_open, str(message))),
                                     (QName('height'), '1'),
                                     (QName('width'), '1'),
                                     ])), pos

@@ -14,17 +14,13 @@ from sql import Conflict, Table
 from sql.aggregate import Max
 from sql.functions import CurrentTimestamp, Function
 
-from trytond import backend
-from trytond.config import config
+from trytond import backend, config
 from trytond.pool import Pool
 from trytond.tools import grouped_slice, resolve
 from trytond.tools.multiprocessing import local
 from trytond.transaction import Transaction
 
 __all__ = ['BaseCache', 'Cache', 'LRUDict', 'LRUDictTransaction']
-_clean_timeout = config.getint('cache', 'clean_timeout')
-_select_timeout = config.getint('cache', 'select_timeout')
-_default_size_limit = config.getint('cache', 'default')
 logger = logging.getLogger(__name__)
 
 REFRESH_POOL_MSG = "refresh pool"
@@ -90,7 +86,7 @@ class BaseCache(object):
                 f" in regards to context ({context}).")
         self._name = name
         self.size_limit = config.getint(
-            'cache', name, default=_default_size_limit)
+            'cache', name, default=config.getint('cache', 'default'))
         self.context = context
         self.context_ignored_keys = set()
         if context and context_ignored_keys:
@@ -247,7 +243,8 @@ class MemoryCache(BaseCache):
 
         database = transaction.database
         dbname = database.name
-        if not _clean_timeout and database.has_channel():
+        clean_timeout = config.getint('cache', 'clean_timeout')
+        if not clean_timeout and database.has_channel():
             with cls._local.listener_lock:
                 if dbname not in cls._local.listeners:
                     listener = threading.Thread(
@@ -256,7 +253,7 @@ class MemoryCache(BaseCache):
                     listener.start()
             return
         last_clean = (dt.datetime.now() - cls._clean_last).total_seconds()
-        if last_clean < _clean_timeout:
+        if last_clean < clean_timeout:
             return
         connection = database.get_connection(readonly=True, autocommit=True)
         try:
@@ -292,7 +289,8 @@ class MemoryCache(BaseCache):
             return
         database = transaction.database
         dbname = database.name
-        if not _clean_timeout and transaction.database.has_channel():
+        clean_timeout = config.getint('cache', 'clean_timeout')
+        if not clean_timeout and transaction.database.has_channel():
             with transaction.connection.cursor() as cursor:
                 # The count computed as
                 # 8000 (max notify size) / 64 (max name data len)
@@ -379,7 +377,8 @@ class MemoryCache(BaseCache):
     def refresh_pool(cls, transaction):
         database = transaction.database
         dbname = database.name
-        if not _clean_timeout and database.has_channel():
+        clean_timeout = config.getint('cache', 'clean_timeout')
+        if not clean_timeout and database.has_channel():
             database = backend.Database(dbname)
             conn = database.get_connection()
             process_id = cls._local.portable_id
@@ -415,7 +414,8 @@ class MemoryCache(BaseCache):
 
             selector.register(conn, selectors.EVENT_READ)
             while cls._local.listeners.get(dbname) == current_thread:
-                selector.select(timeout=_select_timeout)
+                selector.select(
+                    timeout=config.getint('cache', 'select_timeout'))
                 conn.poll()
                 while conn.notifies:
                     notification = conn.notifies.pop()

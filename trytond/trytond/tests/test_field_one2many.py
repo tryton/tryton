@@ -1,7 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 
-from trytond.config import config
+import trytond.config as config
 from trytond.model.exceptions import (
     DomainValidationError, RequiredValidationError, SizeValidationError)
 from trytond.pool import Pool
@@ -746,12 +746,10 @@ class FieldOne2ManyExistsTestCase(TestCase, SearchTestCaseMixin):
         activate_module('tests')
 
     def setUp(self):
-        from trytond.model.fields import one2many
         super().setUp()
-        previous = int(
-            config.get('database', 'subquery_threshold', default='1_000'))
-        one2many._subquery_threshold = 0
-        self.addCleanup(setattr, one2many, '_subquery_threshold', previous)
+        previous = config.get('database', 'subquery_threshold')
+        config.set('database', 'subquery_threshold', '0')
+        self.addCleanup(config.set, 'database', 'subquery_threshold', previous)
 
     def One2Many(self):
         return Pool().get('test.one2many')
@@ -771,12 +769,10 @@ class FieldOne2ManyReferenceExistsTestCase(
         activate_module('tests')
 
     def setUp(self):
-        from trytond.model.fields import one2many
         super().setUp()
-        previous = int(
-            config.get('database', 'subquery_threshold', default='1_000'))
-        one2many._subquery_threshold = 0
-        self.addCleanup(setattr, one2many, '_subquery_threshold', previous)
+        previous = config.get('database', 'subquery_threshold')
+        config.set('database', 'subquery_threshold', '0')
+        self.addCleanup(config.set, 'database', 'subquery_threshold', previous)
 
     def One2Many(self):
         return Pool().get('test.one2many_reference')

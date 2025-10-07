@@ -6,8 +6,7 @@ import time
 import unittest
 from unittest.mock import patch
 
-from trytond import backend
-from trytond import cache as cache_mod
+from trytond import backend, config
 from trytond.cache import (
     LRUDict, LRUDictTransaction, MemoryCache, freeze, unfreeze)
 from trytond.tests.test_tryton import (
@@ -106,10 +105,10 @@ class MemoryCacheTestCase(TestCase):
 
     def setUp(self):
         super().setUp()
-        clear_timeout = cache_mod._clean_timeout
-        cache_mod._clean_timeout = 1
+        clean_timeout = config.get('cache', 'clean_timeout')
+        config.set('cache', 'clean_timeout', '1')
         self.addCleanup(
-            setattr, cache_mod, '_clean_timeout', clear_timeout)
+            config.set, 'cache', 'clean_timeout', clean_timeout)
 
     def tearDown(self):
         MemoryCache.drop(DB_NAME)
@@ -176,7 +175,7 @@ class MemoryCacheTestCase(TestCase):
         with Transaction().start(DB_NAME, USER):
             cache.clear()
         # Ensure sync is performed on start
-        time.sleep(cache_mod._clean_timeout)
+        time.sleep(config.getint('cache', 'clean_timeout'))
 
         with Transaction().start(DB_NAME, USER) as transaction1:
             cache.clear()
@@ -187,7 +186,7 @@ class MemoryCacheTestCase(TestCase):
         "Test MemoryCache synchronisation"
         with Transaction().start(DB_NAME, USER):
             cache.clear()
-        time.sleep(cache_mod._clean_timeout)
+        time.sleep(config.getint('cache', 'clean_timeout'))
         last = cache._clean_last
 
         with Transaction().start(DB_NAME, USER):
@@ -243,10 +242,10 @@ class MemoryCacheChannelTestCase(MemoryCacheTestCase):
 
     def setUp(self):
         super().setUp()
-        clear_timeout = cache_mod._clean_timeout
-        cache_mod._clean_timeout = 0
+        clean_timeout = config.get('cache', 'clean_timeout')
+        config.set('cache', 'clean_timeout', '0')
         self.addCleanup(
-            setattr, cache_mod, '_clean_timeout', clear_timeout)
+            config.set, 'cache', 'clean_timeout', clean_timeout)
 
     def wait_cache_sync(self, after=None):
         if after is None:

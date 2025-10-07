@@ -5,7 +5,7 @@ import shutil
 import tempfile
 from unittest.mock import patch
 
-from trytond.config import config
+import trytond.config as config
 from trytond.filestore import filestore
 from trytond.tests.test_tryton import TestCase
 
@@ -17,10 +17,7 @@ class FileStoreTestCase(TestCase):
         path = config.get('database', 'path')
         dtemp = tempfile.mkdtemp()
         config.set('database', 'path', dtemp)
-        patcher = patch('trytond.filestore.PATH', dtemp)
-        patcher.start()
         self.addCleanup(config.set, 'database', 'path', path)
-        self.addCleanup(patcher.stop)
         self.addCleanup(shutil.rmtree, dtemp)
 
     def data(self):

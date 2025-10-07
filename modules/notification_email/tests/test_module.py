@@ -5,7 +5,7 @@ import sys
 import unittest
 from unittest.mock import patch
 
-from trytond.config import config
+import trytond.config as config
 
 try:
     from trytond.modules.company.tests import CompanyTestMixin

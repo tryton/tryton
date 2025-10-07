@@ -10,7 +10,7 @@ from sql.conditionals import Coalesce
 from sql.functions import CharLength
 from sql.operators import Concat
 
-from trytond.config import config
+import trytond.config as config
 from trytond.i18n import gettext
 from trytond.model import (
     Check, DictSchemaMixin, Index, ModelSQL, ModelView, Workflow, fields,

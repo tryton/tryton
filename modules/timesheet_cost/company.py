@@ -2,8 +2,8 @@
 # this repository contains the full copyright notices and license terms.
 from decimal import Decimal
 
+import trytond.config as config
 from trytond.cache import Cache
-from trytond.config import config
 from trytond.model import Index, ModelSQL, ModelView, Unique, fields
 from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction

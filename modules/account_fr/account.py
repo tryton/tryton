@@ -7,17 +7,12 @@ from sql import Table
 from sql.aggregate import Sum
 from sql.conditionals import Coalesce
 
-from trytond.config import config
+import trytond.config as config
 from trytond.model import ModelStorage, ModelView, fields
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
 from trytond.transaction import Transaction
 from trytond.wizard import Button, StateTransition, StateView, Wizard
-
-OPENING_CODE = config.get('account_fr', 'fec_opening_code', default="OUV")
-OPENING_NAME = config.get(
-    'account_fr', 'fec_opening_name', default="Balance Initiale")
-OPENING_NUMBER = config.get('account_fr', 'fec_opening_number', default="0")
 
 
 class AccountTemplate(metaclass=PoolMeta):
@@ -215,9 +210,15 @@ class FrFEC(Wizard):
             else:
                 debit, credit = 0, -balance
             yield [
-                OPENING_CODE,
-                OPENING_NAME,
-                OPENING_NUMBER,
+                config.get(
+                    'account_fr', 'fec_opening_code',
+                    default="OUV"),
+                config.get(
+                    'account_fr', 'fec_opening_name',
+                    default="Balance Initiale"),
+                config.get(
+                    'account_fr', 'fec_opening_number',
+                    default="0"),
                 format_date(self.start.fiscalyear.start_date),
                 code,
                 name,

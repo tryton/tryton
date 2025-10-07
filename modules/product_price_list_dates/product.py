@@ -3,14 +3,11 @@
 
 import datetime as dt
 
-from trytond.config import config
+import trytond.config as config
 from trytond.model import ModelView, fields
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Date, Eval, If, PYSONDecoder, PYSONEncoder
 from trytond.transaction import Transaction
-
-_cache_days = config.getint(
-    'product_price_list_dates', 'cache_days', default=2)
 
 
 class PriceList(metaclass=PoolMeta):
@@ -63,7 +60,8 @@ class PriceListCache(metaclass=PoolMeta):
         for pattern in super().patterns(price_list, product):
             if pattern is None:
                 pattern = {}
-            for days in range(_cache_days):
+            for days in range(config.getint(
+                        'product_price_list_dates', 'cache_days', default=2)):
                 pattern['date'] = today + dt.timedelta(days=days)
                 yield pattern
 

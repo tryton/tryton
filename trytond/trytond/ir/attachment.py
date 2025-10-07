@@ -1,6 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from trytond.config import config
+
+import trytond.config as config
 from trytond.i18n import lazy_gettext
 from trytond.model import ModelSQL, ModelView, fields
 from trytond.pool import Pool

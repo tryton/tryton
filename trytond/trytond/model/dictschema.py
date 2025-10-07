@@ -3,8 +3,8 @@
 import json
 from collections import OrderedDict
 
+import trytond.config as config
 from trytond.cache import Cache
-from trytond.config import config
 from trytond.i18n import gettext, lazy_gettext
 from trytond.model import fields
 from trytond.model.exceptions import ValidationError
@@ -13,9 +13,6 @@ from trytond.pyson import Eval, PYSONDecoder
 from trytond.rpc import RPC
 from trytond.tools import slugify
 from trytond.transaction import Transaction
-
-_request_timeout = config.getint('request', 'timeout', default=0)
-_request_records_limit = config.getint('request', 'records_limit')
 
 
 class DomainError(ValidationError):
@@ -97,13 +94,13 @@ class DictSchemaMixin(object):
                 'get_keys': RPC(
                     instantiate=0,
                     size_limits={
-                        0: _request_records_limit,
+                        0: config.getint('request', 'records_limit'),
                         }),
                 'search_get_keys': RPC(
                     size_limits={
-                        1: _request_records_limit,
+                        1: config.getint('request', 'records_limit'),
                         },
-                    timeout=_request_timeout),
+                    timeout=config.getint('request', 'timeout', default=0)),
                 })
 
     @staticmethod

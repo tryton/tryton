@@ -4,7 +4,7 @@ import datetime
 import logging
 import random
 
-from trytond.config import config
+import trytond.config as config
 from trytond.exceptions import LoginException
 from trytond.i18n import gettext
 from trytond.model import Index, ModelSQL, fields
@@ -15,11 +15,10 @@ logger = logging.getLogger(__name__)
 
 
 def send_sms(text, to):
-    if config.has_option('authentication_sms', 'function'):
-        func = resolve(config.get('authentication_sms', 'function'))
-        if func:
-            from_ = config.get('authentication_sms', 'from', default=None)
-            return func(text, to, from_)
+    if func := config.get('authentication_sms', 'function', default=None):
+        func = resolve(func)
+        from_ = config.get('authentication_sms', 'from', default=None)
+        return func(text, to, from_)
     logger.error('Could not send SMS to %s: "%s"', to, text)
 
 

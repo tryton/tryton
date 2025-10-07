@@ -10,8 +10,8 @@ from operator import attrgetter
 
 import stripe
 
+import trytond.config as config
 from trytond.cache import Cache
-from trytond.config import config
 from trytond.i18n import gettext
 from trytond.model import (
     DeactivableMixin, Index, ModelSQL, ModelView, Unique, Workflow, dualmethod,

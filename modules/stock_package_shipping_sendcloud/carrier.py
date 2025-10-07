@@ -5,8 +5,8 @@ from functools import wraps
 
 import requests
 
+import trytond.config as config
 from trytond.cache import Cache
-from trytond.config import config
 from trytond.i18n import gettext
 from trytond.model import (
     MatchMixin, ModelSQL, ModelView, fields, sequence_ordered)
@@ -17,8 +17,6 @@ from trytond.pyson import Eval, If
 from .exceptions import SendcloudCredentialWarning, SendcloudError
 
 SENDCLOUD_API_URL = 'https://panel.sendcloud.sc/api/v2/'
-TIMEOUT = config.getfloat(
-    'stock_package_shipping_sendcloud', 'requests_timeout', default=300)
 HEADERS = {
     'Sendcloud-Partner-Id': '03c1facb-63da-4bb1-889c-192fc91ec4e6',
     }
@@ -88,9 +86,12 @@ class CredentialSendcloud(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
         addresses = self._addresses_sender_cache.get(self.id)
         if addresses is not None:
             return addresses
+        timeout = config.getfloat(
+            'stock_package_shipping_sendcloud', 'requests_timeout',
+            default=300)
         response = requests.get(
             SENDCLOUD_API_URL + 'user/addresses/sender',
-            auth=self.auth, timeout=TIMEOUT, headers=HEADERS)
+            auth=self.auth, timeout=timeout, headers=HEADERS)
         response.raise_for_status()
         addresses = response.json()['sender_addresses']
         self._addresses_sender_cache.set(self.id, addresses)
@@ -122,9 +123,12 @@ class CredentialSendcloud(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
             params['service_point'] = service_point
         if is_return:
             params['is_return'] = is_return
+        timeout = config.getfloat(
+            'stock_package_shipping_sendcloud', 'requests_timeout',
+            default=300)
         response = requests.get(
             SENDCLOUD_API_URL + 'shipping_methods', params=params,
-            auth=self.auth, timeout=TIMEOUT, headers=HEADERS)
+            auth=self.auth, timeout=timeout, headers=HEADERS)
         response.raise_for_status()
         methods = response.json()['shipping_methods']
         self._shiping_methods_cache.set(key, methods)
@@ -159,17 +163,23 @@ class CredentialSendcloud(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
 
     @sendcloud_api
     def get_parcel(self, id):
+        timeout = config.getfloat(
+            'stock_package_shipping_sendcloud', 'requests_timeout',
+            default=300)
         response = requests.get(
             SENDCLOUD_API_URL + 'parcels/%s' % id,
-            auth=self.auth, timeout=TIMEOUT, headers=HEADERS)
+            auth=self.auth, timeout=timeout, headers=HEADERS)
         response.raise_for_status()
         return response.json()['parcel']
 
     @sendcloud_api
     def create_parcels(self, parcels):
+        timeout = config.getfloat(
+            'stock_package_shipping_sendcloud', 'requests_timeout',
+            default=300)
         response = requests.post(
             SENDCLOUD_API_URL + 'parcels', json={'parcels': parcels},
-            auth=self.auth, timeout=TIMEOUT, headers=HEADERS)
+            auth=self.auth, timeout=timeout, headers=HEADERS)
         if response.status_code == 400:
             msg = response.json()['error']['message']
             raise requests.HTTPError(msg, response=response)
@@ -178,8 +188,11 @@ class CredentialSendcloud(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
 
     @sendcloud_api
     def get_label(self, url):
+        timeout = config.getfloat(
+            'stock_package_shipping_sendcloud', 'requests_timeout',
+            default=300)
         response = requests.get(
-            url, auth=self.auth, timeout=TIMEOUT, headers=HEADERS)
+            url, auth=self.auth, timeout=timeout, headers=HEADERS)
         response.raise_for_status()
         return response.content
 

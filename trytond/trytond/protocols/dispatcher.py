@@ -7,8 +7,7 @@ import time
 
 from sql import Table
 
-from trytond import __series__, backend, security
-from trytond.config import config, get_hostname
+from trytond import __series__, backend, config, security
 from trytond.exceptions import (
     ConcurrencyException, LoginException, RateLimitException, UserError,
     UserWarning)
@@ -122,7 +121,7 @@ def db_list(request, *args):
     if not config.getboolean('database', 'list'):
         abort(HTTPStatus.FORBIDDEN)
     context = {'_request': request.context}
-    hostname = get_hostname(request.host)
+    hostname = config.get_hostname(request.host)
     with Transaction().start(
             None, 0, context=context, readonly=True, close=True,
             ) as transaction:

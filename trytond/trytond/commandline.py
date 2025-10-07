@@ -16,7 +16,7 @@ logger = logging.getLogger(__name__)
 
 
 def database_completer(parsed_args, **kwargs):
-    from trytond.config import config
+    import trytond.config as config
     from trytond.transaction import Transaction
     config.update_etc(parsed_args.configfile)
     with Transaction().start(

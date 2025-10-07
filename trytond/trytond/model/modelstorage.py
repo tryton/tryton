@@ -16,8 +16,8 @@ from io import StringIO
 from itertools import chain, groupby, islice
 from operator import itemgetter
 
+import trytond.config as config
 from trytond.cache import Cache, LRUDictTransaction, freeze, unfreeze
-from trytond.config import config
 from trytond.const import OPERATORS
 from trytond.exceptions import UserError
 from trytond.i18n import gettext, lazy_gettext
@@ -36,13 +36,6 @@ from .descriptors import dualmethod
 from .model import Model
 
 __all__ = ['ModelStorage', 'EvalEnvironment']
-_cache_field = config.getint('cache', 'field')
-_cache_count_timeout = config.getint(
-    'cache', 'count_timeout', default=60 * 60 * 24)
-_cache_count_clear = config.getint(
-    'cache', 'count_clear', default=1000)
-_request_timeout = config.getint('request', 'timeout', default=0)
-_request_records_limit = config.getint('request', 'records_limit')
 
 
 def local_cache(Model, transaction=None):
@@ -125,7 +118,10 @@ class ModelStorage(Model):
     xml_id = fields.Function(
         fields.Char(lazy_gettext('ir.msg_xml_id')), 'get_xml_id')
     _count_cache = Cache(
-        'modelstorage.count', duration=_cache_count_timeout, context=False)
+        'modelstorage.count',
+        duration=config.getint(
+            'cache', 'count_timeout', default=60 * 60 * 24),
+        context=False)
     _log = None
 
     @classmethod
@@ -133,74 +129,76 @@ class ModelStorage(Model):
         from .modelview import ModelView
         super().__setup__()
         if issubclass(cls, ModelView):
+            request_timeout = config.getint('request', 'timeout', default=0)
+            request_records_limit = config.getint('request', 'records_limit')
             cls.__rpc__.update({
                     'create': RPC(
                         readonly=False,
                         size_limits={
-                            0: _request_records_limit,
+                            0: request_records_limit,
                             },
                         result=lambda r: list(map(int, r))),
                     'read': RPC(
-                        timeout=_request_timeout,
+                        timeout=request_timeout,
                         size_limits={
-                            0: _request_records_limit,
+                            0: request_records_limit,
                             }),
                     'write': RPC(
                         readonly=False,
                         instantiate=slice(0, None, 2),
                         size_limits={
-                            (0, None, 2): _request_records_limit,
+                            (0, None, 2): request_records_limit,
                             }),
                     'delete': RPC(
                         readonly=False,
                         instantiate=0,
                         size_limits={
-                            (0, None, 2): _request_records_limit,
+                            (0, None, 2): request_records_limit,
                             }),
                     'copy': RPC(
                         readonly=False,
                         instantiate=0,
                         unique=False,
                         size_limits={
-                            0: _request_records_limit,
+                            0: request_records_limit,
                             },
                         result=lambda r: list(map(int, r))),
                     'search': RPC(
                         result=lambda r: list(map(int, r)),
                         size_limits={
-                            2: _request_records_limit,
+                            2: request_records_limit,
                             },
-                        timeout=_request_timeout),
+                        timeout=request_timeout),
                     'search_count': RPC(
-                        timeout=_request_timeout,
+                        timeout=request_timeout,
                         size_limits={
-                            2: _request_records_limit,
+                            2: request_records_limit,
                             }),
                     'search_read': RPC(
-                        timeout=_request_timeout,
+                        timeout=request_timeout,
                         size_limits={
-                            2: _request_records_limit,
+                            2: request_records_limit,
                             }),
                     'resources': RPC(
                         instantiate=0,
                         unique=False,
-                        timeout=_request_timeout),
+                        timeout=request_timeout),
                     'export_data_domain': RPC(
-                        timeout=_request_timeout,
+                        timeout=request_timeout,
                         size_limits={
-                            4: _request_records_limit,
+                            4: request_records_limit,
                             }),
                     'export_data': RPC(
                         instantiate=0,
                         unique=False,
                         size_limits={
-                            0: _request_records_limit,
+                            0: request_records_limit,
                             },
-                        timeout=_request_timeout),
+                        timeout=request_timeout),
                     'import_data': RPC(
                         readonly=False,
                         size_limits={
-                            1: _request_records_limit,
+                            1: request_records_limit,
                             }),
                     })
         if cls._log is None:
@@ -267,7 +265,8 @@ class ModelStorage(Model):
 
         count = cls._count_cache.get(cls.__name__)
         if count is not None:
-            if random.random() < 1 / _cache_count_clear:
+            if random.random() < 1 / config.getint(
+                    'cache', 'count_clear', default=1000):
                 cls._count_cache.set(cls.__name__, None)
             else:
                 cls._count_cache.set(cls.__name__, count + len(vlist))
@@ -464,7 +463,8 @@ class ModelStorage(Model):
 
         count = cls._count_cache.get(cls.__name__)
         if count is not None:
-            if random.random() < 1 / _cache_count_clear:
+            if random.random() < 1 / config.getint(
+                    'cache', 'count_clear', default=1000):
                 cls._count_cache.set(cls.__name__, None)
             else:
                 cls._count_cache.set(cls.__name__, count - len(records))
@@ -1889,7 +1889,7 @@ class ModelStorage(Model):
             ifields = filter(to_load,
                 filter(not_cached,
                     iter(self._fields.items())))
-            ifields = islice(ifields, 0, _cache_field)
+            ifields = islice(ifields, 0, config.getint('cache', 'field'))
             ffields.update(ifields)
 
         # add datetime_field

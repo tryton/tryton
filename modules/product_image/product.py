@@ -7,7 +7,7 @@ from urllib.parse import quote, urlencode, urljoin
 import PIL
 import PIL.Image
 
-from trytond.config import config
+import trytond.config as config
 from trytond.i18n import gettext
 from trytond.model import (
     MatchMixin, ModelSQL, ModelView, Unique, fields, sequence_ordered)
@@ -27,8 +27,6 @@ else:
     file_id = None
     store_prefix = None
 SIZE_MAX = config.getint('product', 'image_size_max', default=2048)
-URL_BASE = config.get('product', 'image_base', default='')
-URL_EXTERNAL_BASE = config.get('product', 'image_base', default=http_host())
 
 
 class ImageURLMixin:
@@ -68,8 +66,12 @@ class ImageURLMixin:
             return url
 
     def get_image_url(self, _external=False, **args):
+        url_base = config.get(
+            'product', 'image_base', default='')
+        url_external_base = config.get(
+            'product', 'image_base', default=http_host())
         return self._image_url(
-            URL_EXTERNAL_BASE if _external else URL_BASE, **args)
+            url_external_base if _external else url_base, **args)
 
     @property
     def images_used(self):

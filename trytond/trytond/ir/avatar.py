@@ -13,7 +13,7 @@ try:
 except ImportError:
     PIL = None
 
-from trytond.config import config
+import trytond.config as config
 from trytond.i18n import gettext
 from trytond.model import ModelSQL, Unique, fields
 from trytond.model.exceptions import ValidationError
@@ -29,7 +29,6 @@ if config.getboolean('database', 'avatar_filestore', default=False):
 else:
     file_id = None
     store_prefix = None
-URL_BASE = config.get('web', 'avatar_base', default='')
 FONT = os.path.join(os.path.dirname(__file__), 'fonts', 'karla.ttf')
 
 
@@ -89,8 +88,9 @@ class Avatar(ImageMixin, ResourceMixin, ModelSQL):
     @property
     def url(self):
         if self.image_id or self.image:
+            url_base = config.get('web', 'avatar_base', default='')
             return urljoin(
-                URL_BASE, quote('/avatar/%(database)s/%(uuid)s' % {
+                url_base, quote('/avatar/%(database)s/%(uuid)s' % {
                         'database': Base64Converter(None).to_url(
                             Transaction().database.name),
                         'uuid': self.uuid,

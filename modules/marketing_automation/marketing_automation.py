@@ -24,7 +24,7 @@ from genshi.template import TextTemplate
 from sql import Literal
 from sql.aggregate import Count
 
-from trytond.config import config
+import trytond.config as config
 from trytond.i18n import gettext
 from trytond.model import (
     EvalEnvironment, Index, ModelSQL, ModelView, Unique, Workflow, dualmethod,
@@ -43,9 +43,6 @@ from trytond.wsgi import Base64Converter
 from .exceptions import ConditionError, DomainError, TemplateError
 from .mixin import MarketingAutomationMixin
 
-USE_SSL = bool(config.get('ssl', 'certificate'))
-URL_BASE = config.get('marketing', 'automation_base', default=http_host())
-URL_OPEN = urljoin(URL_BASE, '/m/empty.gif')
 logger = logging.getLogger(__name__)
 
 
@@ -646,6 +643,9 @@ class Activity(
         WebShortener = pool.get('web.shortened_url')
         Email = pool.get('ir.email')
         record = record_activity.record
+        url_base = config.get(
+            'marketing', 'automation_base', default=http_host())
+        url_open = urljoin(url_base, '/m/empty.gif')
 
         with Transaction().set_context(language=record.language):
             record = record.__class__(record.id)
@@ -655,7 +655,7 @@ class Activity(
 
         def unsubscribe(redirect):
             parts = urlsplit(urljoin(
-                    URL_BASE, quote('/m/%(database)s/unsubscribe' % {
+                    url_base, quote('/m/%(database)s/unsubscribe' % {
                             'database': Base64Converter(None).to_url(
                                 Transaction().database.name),
                             })))
@@ -691,7 +691,7 @@ class Activity(
                 elif kind is END and data == 'body':
                     yield START, (QName('img'), Attrs([
                                 (QName('src'), short(
-                                        URL_OPEN, 'on_email_opened')),
+                                        url_open, 'on_email_opened')),
                                 (QName('height'), '1'),
                                 (QName('width'), '1'),
                                 ])), pos

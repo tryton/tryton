@@ -7,7 +7,7 @@ from unittest.mock import ANY, MagicMock, Mock, patch
 
 import ldap3
 
-from trytond.config import config
+import trytond.config as config
 from trytond.modules.ldap_authentication.res import ldap_server, parse_ldap_url
 from trytond.pool import Pool
 from trytond.tests.test_tryton import ModuleTestCase, with_transaction

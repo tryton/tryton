@@ -10,7 +10,7 @@ from oauthlib.oauth2 import BackendApplicationClient, TokenExpiredError
 from requests_oauthlib import OAuth2Session
 from sql.functions import CharLength
 
-from trytond.config import config
+import trytond.config as config
 from trytond.i18n import gettext
 from trytond.model import ModelSQL, ModelView, Unique, Workflow, fields
 from trytond.model.exceptions import AccessError
@@ -35,7 +35,6 @@ EDOC2SYNTAX = {
 EDOC2FILENAME = {
     'edocument.uncefact.invoice': 'UNCEFACT-%s.xml',
     }
-TIMEOUT = config.getfloat('account_fr_chorus', 'requests_timeout', default=300)
 if config.getboolean('account_fr_chorus', 'filestore', default=False):
     file_id = 'data_file_id'
     store_prefix = config.get(
@@ -150,15 +149,17 @@ class CredentialChorus(ModelSQL, CompanyValueMixin):
         headers = {
             'cpro-account': base64.b64encode(account.encode('utf-8')),
             }
+        timeout = config.getfloat(
+            'account_fr_chorus', 'requests_timeout', default=300)
         try:
             resp = session.post(
                 url, headers=headers, json=payload,
-                verify=True, timeout=TIMEOUT)
+                verify=True, timeout=timeout)
         except TokenExpiredError:
             cls._get_token(session)
             resp = session.post(
                 url, headers=headers, json=payload,
-                verify=True, timeout=TIMEOUT)
+                verify=True, timeout=timeout)
         resp.raise_for_status()
         return resp.json()
 

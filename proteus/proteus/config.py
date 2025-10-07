@@ -264,7 +264,7 @@ class TrytondConfig(Config):
             os.environ['TRYTOND_DATABASE_URI'] = database
         if not config_file:
             config_file = os.environ.get('TRYTOND_CONFIG')
-        from trytond.config import config
+        import trytond.config as config
         config.update_etc(config_file)
         from trytond.pool import Pool
         from trytond.transaction import Transaction

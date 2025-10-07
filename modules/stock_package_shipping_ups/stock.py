@@ -10,7 +10,7 @@ from math import ceil
 
 import requests
 
-from trytond.config import config
+import trytond.config as config
 from trytond.i18n import gettext
 from trytond.model import fields
 from trytond.model.exceptions import AccessError
@@ -23,8 +23,6 @@ from trytond.wizard import StateAction, StateTransition, Wizard
 from .exceptions import UPSError
 
 TRACKING_URL = 'https://www.ups.com/track'
-TIMEOUT = config.getfloat(
-    'stock_package_shipping_ups', 'requests_timeout', default=300)
 
 
 class PackageType(metaclass=PoolMeta):
@@ -166,12 +164,14 @@ class CreateShippingUPS(Wizard):
             }
         nb_tries, response = 0, None
         error_message = ''
+        timeout = config.getfloat(
+            'stock_package_shipping_ups', 'requests_timeout', default=300)
         try:
             while nb_tries < 5 and response is None:
                 try:
                     response = requests.post(
                         api_url, json=shipment_request, headers=headers,
-                        timeout=TIMEOUT)
+                        timeout=timeout)
                 except ssl.SSLError as e:
                     error_message = e.reason
                     nb_tries += 1
