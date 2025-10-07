@@ -96,7 +96,7 @@ def webhooks_endpoint(request, pool, account):
                 request_body, sig_header, account.webhook_signing_secret)
         except ValueError:  # Invalid payload
             abort(HTTPStatus.BAD_REQUEST)
-        except stripe.error.SignatureVerificationError:
+        except stripe.SignatureVerificationError:
             abort(HTTPStatus.BAD_REQUEST)
     else:
         logger.warn("Stripe signature ignored")

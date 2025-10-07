@@ -476,7 +476,7 @@ class Payment(StripeCustomerMethodMixin, CheckoutMixin, metaclass=PoolMeta):
                 payment_intent = stripe.PaymentIntent.create(
                     **payment._payment_intent_parameters(
                         off_session=off_session))
-            except stripe.error.CardError as e:
+            except stripe.CardError as e:
                 error = e.json_body.get('error', {})
                 payment_intent = error.get('payment_intent')
                 if not payment_intent:
@@ -499,17 +499,17 @@ class Payment(StripeCustomerMethodMixin, CheckoutMixin, metaclass=PoolMeta):
                     create_charge(payment)
                 elif payment.stripe_customer_payment_method:
                     create_payment_intent(payment)
-            except (stripe.error.RateLimitError,
-                    stripe.error.APIConnectionError) as e:
+            except (stripe.RateLimitError,
+                    stripe.APIConnectionError) as e:
                 logger.warning(str(e))
                 continue
-            except stripe.error.StripeError as e:
+            except stripe.StripeError as e:
                 if e.code in RETRY_CODES:
                     logger.warning(str(e))
                     continue
                 payment.stripe_error_message = str(e)
                 payment.stripe_error_code = e.code
-                if isinstance(e, stripe.error.StripeErrorWithParamCode):
+                if isinstance(e, stripe.StripeErrorWithParamCode):
                     payment.stripe_error_param = e.param
                 payment.save()
                 cls.fail([payment])
@@ -610,17 +610,17 @@ class Payment(StripeCustomerMethodMixin, CheckoutMixin, metaclass=PoolMeta):
                     capture_charge(payment)
                 elif payment.stripe_payment_intent_id:
                     capture_intent(payment)
-            except (stripe.error.RateLimitError,
-                    stripe.error.APIConnectionError) as e:
+            except (stripe.RateLimitError,
+                    stripe.APIConnectionError) as e:
                 logger.warning(str(e))
                 continue
-            except stripe.error.StripeError as e:
+            except stripe.StripeError as e:
                 if e.code in RETRY_CODES:
                     logger.warning(str(e))
                     continue
                 payment.stripe_error_message = str(e)
                 payment.stripe_error_code = e.code
-                if isinstance(e, stripe.error.StripeErrorWithParamCode):
+                if isinstance(e, stripe.StripeErrorWithParamCode):
                     payment.stripe_error_param = e.param
                 payment.save()
                 cls.fail([payment])
@@ -650,8 +650,8 @@ class Payment(StripeCustomerMethodMixin, CheckoutMixin, metaclass=PoolMeta):
                 expand=['latest_charge'],
                 api_key=self.journal.stripe_account.secret_key,
                 stripe_version=STRIPE_VERSION)
-        except (stripe.error.RateLimitError,
-                stripe.error.APIConnectionError) as e:
+        except (stripe.RateLimitError,
+                stripe.APIConnectionError) as e:
             logger.warning(str(e))
 
     stripe_intent = stripe_payment_intent
@@ -669,8 +669,8 @@ class Payment(StripeCustomerMethodMixin, CheckoutMixin, metaclass=PoolMeta):
                 self.stripe_charge_id,
                 api_key=self.journal.stripe_account.secret_key,
                 stripe_version=STRIPE_VERSION)
-        except (stripe.error.RateLimitError,
-                stripe.error.APIConnectionError) as e:
+        except (stripe.RateLimitError,
+                stripe.APIConnectionError) as e:
             logger.warning(str(e))
 
     @classmethod
@@ -921,17 +921,17 @@ class Refund(Workflow, ModelSQL, ModelView):
                     api_key=refund.payment.journal.stripe_account.secret_key,
                     stripe_version=STRIPE_VERSION,
                     **refund._refund_parameters())
-            except (stripe.error.RateLimitError,
-                    stripe.error.APIConnectionError) as e:
+            except (stripe.RateLimitError,
+                    stripe.APIConnectionError) as e:
                 logger.warning(str(e))
                 continue
-            except stripe.error.StripeError as e:
+            except stripe.StripeError as e:
                 if e.code in RETRY_CODES:
                     logger.warning(str(e))
                     continue
                 refund.stripe_error_message = str(e)
                 refund.stripe_error_code = e.code
-                if isinstance(e, stripe.error.StripeErrorWithParamCode):
+                if isinstance(e, stripe.StripeErrorWithParamCode):
                     refund.stripe_error_param = e.param
                 cls.process([refund])
                 cls.fail([refund])
@@ -1575,17 +1575,17 @@ class Customer(CheckoutMixin, DeactivableMixin, ModelSQL, ModelView):
                     stripe_version=STRIPE_VERSION,
                     source=customer.stripe_token,
                     **customer._customer_parameters())
-            except (stripe.error.RateLimitError,
-                    stripe.error.APIConnectionError) as e:
+            except (stripe.RateLimitError,
+                    stripe.APIConnectionError) as e:
                 logger.warning(str(e))
                 continue
-            except stripe.error.StripeError as e:
+            except stripe.StripeError as e:
                 if e.code in RETRY_CODES:
                     logger.warning(str(e))
                     continue
                 customer.stripe_error_message = str(e)
                 customer.stripe_error_code = e.code
-                if isinstance(e, stripe.error.StripeErrorWithParamCode):
+                if isinstance(e, stripe.StripeErrorWithParamCode):
                     customer.stripe_error_param = e.param
                 customer.stripe_token = None
             except Exception:
@@ -1622,8 +1622,8 @@ class Customer(CheckoutMixin, DeactivableMixin, ModelSQL, ModelView):
                     stripe_version=STRIPE_VERSION,
                     **customer._customer_parameters()
                     )
-            except (stripe.error.RateLimitError,
-                    stripe.error.APIConnectionError) as e:
+            except (stripe.RateLimitError,
+                    stripe.APIConnectionError) as e:
                 logger.warning(str(e))
                 raise
 
@@ -1649,8 +1649,8 @@ class Customer(CheckoutMixin, DeactivableMixin, ModelSQL, ModelView):
                     stripe_version=STRIPE_VERSION,
                     id=customer.stripe_customer_id)
                 cu.delete()
-            except (stripe.error.RateLimitError,
-                    stripe.error.APIConnectionError) as e:
+            except (stripe.RateLimitError,
+                    stripe.APIConnectionError) as e:
                 logger.warning(str(e))
                 continue
             except Exception:
@@ -1672,8 +1672,8 @@ class Customer(CheckoutMixin, DeactivableMixin, ModelSQL, ModelView):
                 stripe_version=STRIPE_VERSION,
                 id=self.stripe_customer_id,
                 **params)
-        except (stripe.error.RateLimitError,
-                stripe.error.APIConnectionError) as e:
+        except (stripe.RateLimitError,
+                stripe.APIConnectionError) as e:
             logger.warning(str(e))
 
     def sources(self):
@@ -1736,8 +1736,8 @@ class Customer(CheckoutMixin, DeactivableMixin, ModelSQL, ModelView):
                     source,
                     api_key=self.stripe_account.secret_key,
                     stripe_version=STRIPE_VERSION)
-        except (stripe.error.RateLimitError,
-                stripe.error.APIConnectionError) as e:
+        except (stripe.RateLimitError,
+                stripe.APIConnectionError) as e:
             logger.warning(str(e))
             raise
         self._sources_cache.clear()
@@ -1754,8 +1754,8 @@ class Customer(CheckoutMixin, DeactivableMixin, ModelSQL, ModelView):
                     api_key=self.stripe_account.secret_key,
                     stripe_version=STRIPE_VERSION,
                     customer=self.stripe_customer_id)
-            except (stripe.error.RateLimitError,
-                    stripe.error.APIConnectionError) as e:
+            except (stripe.RateLimitError,
+                    stripe.APIConnectionError) as e:
                 logger.warning(str(e))
                 return []
             for payment_method in payment_methods:
@@ -1808,8 +1808,8 @@ class Customer(CheckoutMixin, DeactivableMixin, ModelSQL, ModelView):
                 self.stripe_setup_intent_id,
                 api_key=self.stripe_account.secret_key,
                 stripe_version=STRIPE_VERSION)
-        except (stripe.error.RateLimitError,
-                stripe.error.APIConnectionError) as e:
+        except (stripe.RateLimitError,
+                stripe.APIConnectionError) as e:
             logger.warning(str(e))
 
     stripe_intent = stripe_setup_intent
@@ -1853,11 +1853,11 @@ class Customer(CheckoutMixin, DeactivableMixin, ModelSQL, ModelView):
                             payment_method=setup_intent.payment_method,
                             **customer._customer_parameters())
                         customer.stripe_customer_id = cu.id
-            except (stripe.error.RateLimitError,
-                    stripe.error.APIConnectionError) as e:
+            except (stripe.RateLimitError,
+                    stripe.APIConnectionError) as e:
                 logger.warning(str(e))
                 continue
-            except stripe.error.StripeError as e:
+            except stripe.StripeError as e:
                 if e.code in RETRY_CODES:
                     logger.warning(str(e))
                     continue
@@ -1888,8 +1888,8 @@ class Customer(CheckoutMixin, DeactivableMixin, ModelSQL, ModelView):
                     stripe_version=STRIPE_VERSION,
                     customer=customer.id,
                     type='card')
-            except (stripe.error.RateLimitError,
-                    stripe.error.APIConnectionError) as e:
+            except (stripe.RateLimitError,
+                    stripe.APIConnectionError) as e:
                 logger.warning(str(e))
                 payment_methods = []
             for payment_method in payment_methods:
