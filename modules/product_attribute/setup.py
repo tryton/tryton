@@ -50,6 +50,11 @@ for dep in info.get('depends', []):
         requires.append(get_require_version('trytond_%s' % dep))
 requires.append(get_require_version('trytond'))
 
+tests_require = [
+    get_require_version('trytond_purchase'),
+    get_require_version('trytond_sale'),
+    ]
+
 setup(name=name,
     version=version,
     description='Tryton module with product attributes',
@@ -119,6 +124,9 @@ setup(name=name,
     license='GPL-3',
     python_requires='>=3.9',
     install_requires=requires,
+    extras_require={
+        'test': tests_require,
+        },
     zip_safe=False,
     entry_points="""
     [trytond.modules]

@@ -130,4 +130,18 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">product_form</field>
         </record>
     </data>
+    <data depends="purchase">
+        <record model="ir.ui.view" id="product_view_list_purchase_line">
+            <field name="model">product.product</field>
+            <field name="inherit" ref="purchase.product_view_list_purchase_line"/>
+            <field name="name">product_list_purchase_line</field>
+        </record>
+    </data>
+    <data depends="sale">
+        <record model="ir.ui.view" id="product_view_list_sale_line">
+            <field name="model">product.product</field>
+            <field name="inherit" ref="sale.product_view_list_sale_line"/>
+            <field name="name">product_list_sale_line</field>
+        </record>
+    </data>
 </tryton>
