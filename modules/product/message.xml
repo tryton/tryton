@@ -33,5 +33,8 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_category_code_unique">
             <field name="text">The code on product category must be unique.</field>
         </record>
+        <record model="ir.message" id="msg_product_change_template">
+            <field name="text">You cannot change the template of the product "%(product)s".</field>
+        </record>
     </data>
 </tryton>

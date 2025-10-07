@@ -16,6 +16,7 @@ from trytond.i18n import gettext
 from trytond.model import (
     DeactivableMixin, Exclude, Index, Model, ModelSQL, ModelView, UnionMixin,
     fields, sequence_ordered, tree)
+from trytond.model.exceptions import AccessError
 from trytond.modules.company.model import (
     CompanyMultiValueMixin, CompanyValueMixin)
 from trytond.pool import Pool
@@ -716,6 +717,17 @@ class Product(
         super().on_modification(mode, products, field_names=field_names)
         if mode in {'create', 'write'}:
             cls.sync_code(products)
+
+    @classmethod
+    def check_modification(cls, mode, products, values=None, external=False):
+        super().check_modification(
+            mode, products, values=values, external=external)
+        if mode == 'write' and 'template' in values:
+            for product in products:
+                if product.template.id != values.get('template'):
+                    raise AccessError(gettext(
+                            'product.msg_product_change_template',
+                            product=product.rec_name))
 
     @classmethod
     def copy(cls, products, default=None):

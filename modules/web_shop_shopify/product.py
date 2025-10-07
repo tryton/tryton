@@ -11,7 +11,6 @@ from sql.operators import Equal
 
 from trytond.i18n import gettext
 from trytond.model import Exclude, ModelSQL, ModelView, fields
-from trytond.model.exceptions import AccessError
 from trytond.modules.product.exceptions import TemplateValidationError
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Bool, Eval, If
@@ -309,18 +308,6 @@ class Product(IdentifiersMixin, metaclass=PoolMeta):
         return Uom.compute_qty(
             self.default_uom, quantity, self.shopify_uom, round=True,
             factor=self.shopify_uom_factor, rate=self.shopify_uom_rate)
-
-    @classmethod
-    def check_modification(cls, mode, products, values=None, external=False):
-        super().check_modification(
-            mode, products, values=values, external=external)
-        if mode == 'write' and 'template' in values:
-            for product in products:
-                if (product.template.id != values.get('template')
-                        and product.shopify_identifiers):
-                    raise AccessError(gettext(
-                            'web_shop_shopify.msg_product_change_template',
-                            product=product.rec_name))
 
 
 class ProductURL(metaclass=PoolMeta):
