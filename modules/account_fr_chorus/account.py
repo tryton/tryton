@@ -140,12 +140,13 @@ class CredentialChorus(ModelSQL, CompanyValueMixin):
     def post(cls, path, payload, session=None):
         pool = Pool()
         Configuration = pool.get('account.configuration')
-        config = Configuration(1)
+        configuration = Configuration(1)
         if not session:
             session = cls.get_session()
-        base_url = API_URL[config.chorus_service]
+        base_url = API_URL[configuration.chorus_service]
         url = posixpath.join(base_url, path)
-        account = f'{config.chorus_login}:{config.chorus_password}'
+        account = (
+            f'{configuration.chorus_login}:{configuration.chorus_password}')
         headers = {
             'cpro-account': base64.b64encode(account.encode('utf-8')),
             }
