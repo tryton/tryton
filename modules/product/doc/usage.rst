@@ -20,6 +20,8 @@ properties of the shirt, such as the name, unit of measurement, categories,
 and so on, would be the same.
 So in this case you would create a single *Product* to represent the shirt,
 and a *Variant* for each of the different sizes.
+Then, you can either define a different list price for each variant or use the
+list price from the product only.
 Structuring your products like this can help you manage and update them.
 
 .. tip::

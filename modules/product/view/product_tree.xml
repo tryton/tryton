@@ -4,4 +4,7 @@ this repository contains the full copyright notices and license terms. -->
 <data>
     <xpath expr="//field[@name='products']" position="replace">
     </xpath>
+    <xpath expr="//field[@name='list_price']" position="replace">
+        <field name="list_price_used"/>
+    </xpath>
 </data>

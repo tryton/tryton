@@ -149,6 +149,23 @@ class Template(
             return pool.get('product.cost_price_method')
         return super().multivalue_model(field)
 
+    def multivalue_records(self, field):
+        records = super().multivalue_records(field)
+        if field == 'list_price':
+            # Sort to get record with empty product first
+            records = sorted(records, key=lambda r: r.product is not None)
+        return records
+
+    def get_multivalue(self, name, **pattern):
+        if name == 'list_price':
+            pattern.setdefault('product', None)
+        return super().get_multivalue(name, **pattern)
+
+    def set_multivalue(self, name, value, save=True, **pattern):
+        if name == 'list_price':
+            pattern.setdefault('product', None)
+        return super().set_multivalue(name, value, save=save, **pattern)
+
     @classmethod
     def order_code(cls, tables):
         table, _ = tables[None]
@@ -401,6 +418,19 @@ class Product(
     identifiers = fields.One2Many(
         'product.identifier', 'product', "Identifiers",
         help="Other identifiers associated with the variant.")
+    list_price = fields.MultiValue(fields.Numeric(
+            "List Price", digits=price_digits,
+            states={
+                'readonly': ~Eval('context', {}).get('company'),
+                },
+            help="The standard price the variant is sold at.\n"
+            "Leave empty to use the list price of the product."))
+    list_prices = fields.One2Many(
+        'product.list_price', 'product', "List Prices")
+    list_price_used = fields.Function(fields.Numeric(
+            "List Price", digits=price_digits,
+            help="The standard price the variant is sold at."),
+        'get_list_price_used')
     cost_price = fields.MultiValue(fields.Numeric(
             "Cost Price", digits=price_digits,
             states={
@@ -553,7 +583,9 @@ class Product(
     @classmethod
     def multivalue_model(cls, field):
         pool = Pool()
-        if field == 'cost_price':
+        if field == 'list_price':
+            return pool.get('product.list_price')
+        elif field == 'cost_price':
             return pool.get('product.cost_price')
         return super().multivalue_model(field)
 
@@ -562,12 +594,16 @@ class Product(
         if name in {'cost_price', 'list_price'} and not value:
             if not pattern.get('company', context.get('company')):
                 return []
+        if name == 'list_price':
+            pattern.setdefault('template', self.template.id)
         return super().set_multivalue(name, value, save=save, **pattern)
 
     def get_multivalue(self, name, **pattern):
         if isinstance(self._fields[name], TemplateFunction):
             return self.template.get_multivalue(name, **pattern)
         else:
+            if name == 'list_price':
+                pattern.setdefault('template', self.template.id)
             return super().get_multivalue(name, **pattern)
 
     @classmethod
@@ -693,12 +729,11 @@ class Product(
         default.setdefault('replacing')
         return super().copy(products, default=default)
 
-    @property
-    def list_price_used(self):
-        transaction = Transaction()
-        with transaction.reset_context(), \
-                transaction.set_context(self._context):
-            return self.template.get_multivalue('list_price')
+    def get_list_price_used(self, name):
+        list_price = self.get_multivalue('list_price')
+        if list_price is None:
+            list_price = self.template.get_multivalue('list_price')
+        return list_price
 
     @classmethod
     def sync_code(cls, products):
@@ -747,7 +782,16 @@ class Product(
 class ProductListPrice(ModelSQL, CompanyValueMixin):
     __name__ = 'product.list_price'
     template = fields.Many2One(
-        'product.template', "Template", ondelete='CASCADE',
+        'product.template', "Template", ondelete='CASCADE', required=True,
+        context={
+            'company': Eval('company', -1),
+            },
+        depends={'company'})
+    product = fields.Many2One(
+        'product.product', "Product", ondelete='CASCADE',
+        domain=[
+            ('template', '=', Eval('template', -1)),
+            ],
         context={
             'company': Eval('company', -1),
             },

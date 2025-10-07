@@ -27,29 +27,61 @@ Create a template::
     >>> template.save()
     >>> len(template.products)
     1
-    >>> product, = template.products
-    >>> product.code
+    >>> product1, = template.products
+    >>> product1.code
     'PROD'
-    >>> product.suffix_code = "001"
-    >>> product.save()
-    >>> product.code
+    >>> product1.suffix_code = "001"
+    >>> product1.save()
+    >>> product1.code
     'PROD001'
 
 Create a variant::
 
     >>> Product = Model.get('product.product')
-    >>> product = Product()
-    >>> product.template = template
-    >>> product.name
+    >>> product2 = Product()
+    >>> product2.template = template
+    >>> product2.name
     'Product'
-    >>> product.list_price
+    >>> product2.suffix_code = "002"
+    >>> product2.save()
+    >>> product2.list_price_used
     Decimal('42.0000')
-    >>> product.suffix_code = "002"
-    >>> product.save()
-    >>> product.list_price
-    Decimal('42.0000')
-    >>> product.code
+    >>> product2.code
     'PROD002'
+
+Change variant list price::
+
+    >>> product2.list_price = Decimal('50.0000')
+    >>> product2.save()
+    >>> product2.list_price
+    Decimal('50.0000')
+    >>> product2.list_price_used
+    Decimal('50.0000')
+
+    >>> product1.reload()
+    >>> product1.list_price
+    >>> product1.list_price_used
+    Decimal('42.0000')
+
+    >>> template.reload()
+    >>> template.list_price
+    Decimal('42.0000')
+
+Change product list price::
+
+    >>> template.list_price = Decimal('40.0000')
+    >>> template.save()
+
+    >>> product2.reload()
+    >>> product2.list_price
+    Decimal('50.0000')
+    >>> product2.list_price_used
+    Decimal('50.0000')
+
+    >>> product1.reload()
+    >>> product1.list_price
+    >>> product1.list_price_used
+    Decimal('40.0000')
 
 Change template code::
 

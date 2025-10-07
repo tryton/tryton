@@ -60,6 +60,9 @@ It does, however, have some properties that are specific to each variant
 such as the description, cost price, and suffix code which is important to
 distinguish between different variants.
 
+Instead of using the template's list price, a list price can be set on the
+variant.
+
 The identifiers that are used to refer to a product are also specific to a
 product variant.
 A product identifier is made up from a type and a code.

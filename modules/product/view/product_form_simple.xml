@@ -12,6 +12,11 @@ this repository contains the full copyright notices and license terms. -->
     </group>
     <label name="active"/>
     <field name="active"/>
+
+    <label name="list_price"/>
+    <field name="list_price"/>
+    <newline/>
+
     <label name="cost_price"/>
     <field name="cost_price"/>
     <field name="identifiers" colspan="4" pre_validate="1" view_ids="product.identifier_view_list_sequence"/>
