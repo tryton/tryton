@@ -10,7 +10,7 @@ from sql.functions import CharLength
 from trytond.i18n import gettext, lazy_gettext
 from trytond.model import (
     DeactivableMixin, DictSchemaMixin, MatchMixin, ModelSingleton, ModelSQL,
-    ModelStorage, ModelView, Workflow, dualmethod, fields)
+    ModelStorage, ModelView, Unique, Workflow, dualmethod, fields)
 from trytond.model.exceptions import AccessError, ButtonActionException
 from trytond.modules.company.model import (
     CompanyMultiValueMixin, CompanyValueMixin, employee_field, reset_employee,
@@ -312,6 +312,11 @@ class ControlPoint(DictSchemaMixin, ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super().__setup__()
+        t = cls.__table__()
+        cls._sql_constraints = [
+            ('control_point_unique', Unique(t, t.control, t.name),
+                'quality.msg_control_point_unique'),
+            ]
         cls.__access__.add('control')
         cls.type_.selection = [
             ('boolean', lazy_gettext('ir.msg_dict_schema_boolean')),
