@@ -438,7 +438,7 @@ class Database(DatabaseInterface):
     _list_cache = {}
     _list_cache_timestamp = {}
     flavor = Flavor(
-        paramstyle='qmark', function_mapping=MAPPING, null_ordering=False,
+        paramstyle='qmark', function_mapping=MAPPING,
         max_limit=-1, filter_=True)
     IN_MAX = 200
 
