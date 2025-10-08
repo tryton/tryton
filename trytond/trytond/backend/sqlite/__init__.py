@@ -9,8 +9,8 @@ from .database import (
     DatabaseOperationalError, DatabaseTimeoutError)
 from .table import TableHandler
 
-if sqlite3.sqlite_version_info < (3, 30, 1):
-    sys.exit("Tryton sqlite backend requires version 3.30.1 or higher")
+if sqlite3.sqlite_version_info < (3, 30, 0):
+    sys.exit("Tryton sqlite backend requires version 3.30.0 or higher")
 
 __all__ = [
     Database, TableHandler,
