@@ -424,9 +424,9 @@ Float
 
    A tuple of two :py:class:`integers <int>`.
 
-   The first integer defines the total of numbers in the integer part.
+   The first integer defines the number of figures in the integer part.
 
-   The second integer defines the total of numbers in the decimal part.
+   The second integer defines the number of figures in the decimal part.
 
    Integers can be replaced by a :class:`~trytond.pyson.PYSON` statement.
    If digits is ``None`` or any values of the tuple is ``None``, no validation

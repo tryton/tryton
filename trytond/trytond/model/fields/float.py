@@ -36,8 +36,8 @@ class Float(Field):
             on_change=None, on_change_with=None, depends=None,
             context=None, loading='eager'):
         '''
-        :param digits: a list of two integers defining the total
-            of digits and the number of decimals of the float.
+        :param digits: a tuple of two integers defining the number of figures
+            of the integer and decimal part.
         '''
         super().__init__(string=string, help=help,
             required=required, readonly=readonly, domain=domain, states=states,
