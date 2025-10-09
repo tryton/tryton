@@ -444,7 +444,8 @@ class Record:
                 continue
             if field.attrs.get('readonly'):
                 continue
-            if field_name == self.group.exclude_field:
+            if field_name in {
+                    self.group.exclude_field, self.group.parent_name}:
                 continue
             if not field.validate(self, softvalidation, pre_validate):
                 res = False
