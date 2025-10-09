@@ -3,6 +3,7 @@
 this repository contains the full copyright notices and license terms. -->
 <data>
     <xpath expr="//notebook/page[@id='web_shop']" position="inside">
-        <field name="web_shops" colspan="4"/>
+        <field name="web_shops" colspan="2"/>
+        <field name="web_shop_urls" mode="tree" colspan="2"/>
     </xpath>
 </data>

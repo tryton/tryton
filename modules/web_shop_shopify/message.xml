@@ -27,6 +27,12 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_shop_locale_different">
             <field name="text">To update products on the shop "%(shop)s", you must set the language to "%(shopify_primary_locale)s" instead of "%(shop_language)s".</field>
         </record>
+        <record model="ir.message" id="msg_template_shopify_handle_unique">
+            <field name="text">The Shopify Handle of product must be unique.</field>
+        </record>
+        <record model="ir.message" id="msg_template_shopify_handle_invalid">
+            <field name="text">The Shopify Handle "%(handle)s" of product "%(template)s" can contain only lowercase letters, hyphens, and numbers.</field>
+        </record>
         <record model="ir.message" id="msg_product_shopify_uom_digits">
             <field name="text">To update product "%(product)s" on Shopify, you must use an unit of measure without digits.</field>
         </record>

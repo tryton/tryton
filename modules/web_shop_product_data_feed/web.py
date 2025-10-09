@@ -52,23 +52,36 @@ class Shop(metaclass=PoolMeta):
 
     product_url_template = fields.Char(
         "Product URL",
-        help="The template to generate the product URL on the web shop.\n"
+        help="The fallback template to generate the product URL.\n"
         + _SUBSTITUTION_HELP)
     product_image_url_template = fields.Char(
         "Product Image URL",
-        help="The template to generate the indexed product image URL.\n"
+        help="The fallback template to generate the product image URL.\n"
         + _SUBSTITUTION_HELP
         + "- ${index}\n")
 
     @product_substitutions
     def product_url(self, product, **substitutions):
-        return Template(self.product_url_template or '').substitute(
-            **substitutions)
+        for record in product.web_shop_urls:
+            if record.shop == self and record.url:
+                url = record.url
+                break
+        else:
+            url = Template(self.product_url_template or '').substitute(
+                **substitutions)
+        return url
 
     @product_substitutions
     def product_image_url(self, product, index=0, **substitutions):
-        return Template(self.product_image_url_template or '').substitute(
-            index=index, **substitutions)
+        images = [i for i in getattr(product, 'images_used', []) if i.web_shop]
+        try:
+            image = images[index]
+        except IndexError:
+            url = Template(self.product_image_url_template or '').substitute(
+                index=index, **substitutions)
+        else:
+            url = image.get_image_url(_external=True, id=image.id)
+        return url
 
     def get_context(self):
         context = super().get_context()

@@ -52,6 +52,7 @@ requires.append(get_require_version('trytond'))
 
 tests_require = [
     get_require_version('trytond_account_tax_rule_country'),
+    get_require_version('trytond_product_image'),
     get_require_version('trytond_product_kit'),
     get_require_version('trytond_product_measurements'),
     get_require_version('trytond_sale_shipment_cost'),

@@ -7,5 +7,9 @@ this repository contains the full copyright notices and license terms. -->
         <label name="shopify_uom"/>
         <field name="shopify_uom"/>
         <newline/>
+
+        <label name="shopify_handle"/>
+        <field name="shopify_handle"/>
+        <newline/>
     </xpath>
 </data>

@@ -15,6 +15,12 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">product_product_form</field>
         </record>
 
+        <record model="ir.ui.view" id="product_web_shop_url_view_list">
+            <field name="model">product.web_shop_url</field>
+            <field name="type">tree</field>
+            <field name="name">product_web_shop_url_list</field>
+        </record>
+
         <record model="ir.ui.view" id="product_category_view_form">
             <field name="model">product.category</field>
             <field name="inherit" ref="product.category_view_form"/>

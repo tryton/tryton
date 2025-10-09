@@ -1,13 +1,18 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+import re
 from decimal import Decimal
+from urllib.parse import urljoin
 
 import pyactiveresource
 import shopify
+from sql.conditionals import NullIf
+from sql.operators import Equal
 
 from trytond.i18n import gettext
-from trytond.model import ModelSQL, ModelView, fields
+from trytond.model import Exclude, ModelSQL, ModelView, fields
 from trytond.model.exceptions import AccessError
+from trytond.modules.product.exceptions import TemplateValidationError
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Bool, Eval, If
 from trytond.tools import grouped_slice, slugify
@@ -65,10 +70,24 @@ class Template(IdentifiersMixin, metaclass=PoolMeta):
             'invisible': ~Eval('salable', False),
             },
         help="The Unit of Measure of the product on Shopify.")
+    shopify_handle = fields.Char(
+        "Shopify Handle",
+        states={
+            'invisible': ~Eval('salable', False),
+            },
+        help="The string that's used to identify the product in URLs.\n"
+        "Leave empty to let Shopify generate one.")
 
     @classmethod
     def __setup__(cls):
         super().__setup__()
+        t = cls.__table__()
+        cls._sql_constraints += [
+            ('shopify_handle_unique',
+                Exclude(t,
+                    (NullIf(t.shopify_handle, ''), Equal)),
+                'web_shop_shopify.msg_template_shopify_handle_unique'),
+            ]
         cls._shopify_fields.update([
                 'name', 'web_shop_description', 'attribute_set',
                 'customs_category', 'tariff_codes_category',
@@ -110,6 +129,8 @@ class Template(IdentifiersMixin, metaclass=PoolMeta):
         product.title = self.name
         if self.web_shop_description:
             product.body_html = self.web_shop_description
+        if self.shopify_handle:
+            product.handle = self.shopify_handle
         options = []
         for attribute in self.shopify_attributes:
             options.append({'name': attribute.string})
@@ -127,6 +148,25 @@ class Template(IdentifiersMixin, metaclass=PoolMeta):
                 self.attribute_set.shopify_option1,
                 self.attribute_set.shopify_option2,
                 self.attribute_set.shopify_option3])
+
+    @classmethod
+    def validate_fields(cls, templates, field_names):
+        super().validate_fields(templates, field_names)
+        cls.check_shopify_handle(templates, field_names)
+
+    @classmethod
+    def check_shopify_handle(cls, templates, field_names):
+        if field_names and 'shopify_handle' not in field_names:
+            return
+        for template in templates:
+            if (template.shopify_handle
+                    and not re.fullmatch(
+                        r'[a-z0-9-]+', template.shopify_handle)):
+                raise TemplateValidationError(gettext(
+                        'web_shop_shopify.msg_template_shopify_handle_invalid',
+                        template=template.rec_name,
+                        handle=template.shopify_handle,
+                        ))
 
 
 class Template_SaleSecondaryUnit(metaclass=PoolMeta):
@@ -281,6 +321,17 @@ class Product(IdentifiersMixin, metaclass=PoolMeta):
                     raise AccessError(gettext(
                             'web_shop_shopify.msg_product_change_template',
                             product=product.rec_name))
+
+
+class ProductURL(metaclass=PoolMeta):
+    __name__ = 'product.web_shop_url'
+
+    def get_url(self, name):
+        url = super().get_url(name)
+        if (self.shop.type == 'shopify'
+                and (handle := self.product.template.shopify_handle)):
+            url = urljoin(self.shop.shopify_url + '/', f'products/{handle}')
+        return url
 
 
 class ShopifyInventoryItem(IdentifiersMixin, ModelSQL, ModelView):
