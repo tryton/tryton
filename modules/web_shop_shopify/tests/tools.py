@@ -164,6 +164,11 @@ def get_order(id):
             }
             fulfillments {
                 id
+                fulfillmentLineItems(first: 10) {
+                    nodes {
+                        quantity
+                    }
+                }
             }
             closed
         }

@@ -222,3 +222,54 @@ class Move(metaclass=PoolMeta):
                     quantity=quantity,
                     move=self.rec_name,
                     ))
+
+
+class Move_Kit(metaclass=PoolMeta):
+    __name__ = 'stock.move'
+
+    def get_shopify(self, fulfillment_orders, location_id):
+        pool = Pool()
+        SaleLineComponent = pool.get('sale.line.component')
+        UoM = pool.get('product.uom')
+        yield from super().get_shopify(fulfillment_orders, location_id)
+        if not isinstance(self.origin, SaleLineComponent):
+            return
+
+        sale_line = self.origin.line
+
+        # Track only the first component
+        if min(c.id for c in sale_line.components) != self.origin.id:
+            return
+
+        location_id = id2gid('Location', location_id)
+        identifier = id2gid('LineItem', sale_line.shopify_identifier)
+
+        c_quantity = UoM.compute_qty(
+                self.unit, self.quantity, self.origin.unit, round=False)
+        if self.origin.quantity:
+            ratio = c_quantity / self.origin.quantity
+        else:
+            ratio = 1
+        quantity = int(sale_line.quantity * ratio)
+        for fulfillment_order in fulfillment_orders['nodes']:
+            if (fulfillment_order['assignedLocation']['location']['id']
+                    != location_id):
+                continue
+            for line_item in fulfillment_order['lineItems']['nodes']:
+                if line_item['lineItem']['id'] == identifier:
+                    qty = min(
+                        quantity, line_item['lineItem']['fulfillableQuantity'])
+                    if qty:
+                        yield fulfillment_order['id'], {
+                            'id': line_item['id'],
+                            'quantity': qty,
+                            }
+                    quantity -= qty
+                    if quantity <= 0:
+                        return
+        else:
+            raise ShopifyError(gettext(
+                    'web_shop_shopify.msg_fulfillment_order_line_not_found',
+                    quantity=quantity,
+                    move=self.rec_name,
+                    ))

@@ -1,3 +1,4 @@
+* Add support for product kit
 * Add carrier selection
 * Use GraphQL API
 * Add option to notify customer about fulfillment

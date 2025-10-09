@@ -971,4 +971,36 @@ class Line_ShipmentCost(metaclass=PoolMeta):
         if sale.carrier:
             setattr_changed(self, 'product', sale.carrier.carrier_product)
 
+
+class Line_Kit(metaclass=PoolMeta):
+    __name__ = 'sale.line'
+
+    @classmethod
+    def get_from_shopify(
+            cls, sale, line_item, quantity, warehouse=None, line=None):
+        pool = Pool()
+        UoM = pool.get('product.uom')
+        Component = pool.get('sale.line.component')
+        line = super().get_from_shopify(
+            sale, line_item, quantity, warehouse=warehouse, line=line)
+        if getattr(line, 'components', None):
+            quantity = UoM.compute_qty(
+                line.unit, line.quantity,
+                line.product.default_uom, round=False)
+            for component in line.components:
+                if not component.fixed:
+                    quantity = component.unit.round(
+                        quantity * component.quantity_ratio)
+                    setattr_changed(component, 'quantity', quantity)
+            line.components = line.components
+        elif (getattr(sale, 'state', 'draft') != 'draft'
+                and line.product
+                and line.product.type == 'kit'):
+            components = []
+            for component in line.product.components_used:
+                components.append(line.get_component(component))
+            Component.set_price_ratio(components, line.quantity)
+            line.components = components
+        return line
+
 # TODO: refund as return sale

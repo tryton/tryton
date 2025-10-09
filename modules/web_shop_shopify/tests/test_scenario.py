@@ -13,5 +13,6 @@ def load_tests(*args, **kwargs):
         kwargs.setdefault('skips', set()).update({
                 'scenario_web_shop_shopify.rst',
                 'scenario_web_shop_shopify_secondary_unit.rst',
+                'scenario_web_shop_shopify_product_kit.rst',
                 })
     return load_doc_tests(__name__, __file__, *args, **kwargs)

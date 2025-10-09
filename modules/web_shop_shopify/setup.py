@@ -57,6 +57,7 @@ tests_require = [
     get_require_version('trytond_customs'),
     get_require_version('trytond_product_image'),
     get_require_version('trytond_product_image_attribute'),
+    get_require_version('trytond_product_kit'),
     get_require_version('trytond_product_measurements'),
     get_require_version('trytond_sale_discount'),
     get_require_version('trytond_sale_invoice_grouping'),
