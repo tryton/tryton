@@ -1302,7 +1302,7 @@
                     if (field.description.readonly) {
                         continue;
                     }
-                    if (fname == this.group.exclude_field) {
+                    if ([this.group.exclude_field, this.group.parent_name].includes(fname)) {
                         continue;
                     }
                     if (!field.validate(this, softvalidation, pre_validate)) {
