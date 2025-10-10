@@ -120,6 +120,10 @@ class Template(
         'template', 'category', "Categories", readonly=True)
     products = fields.One2Many(
         'product.product', 'template', "Variants",
+        order=[
+            ('position', 'ASC NULLS FIRST'),
+            ('id', 'ASC'),
+            ],
         help="The different variants the product comes in.")
 
     @classmethod
@@ -416,6 +420,9 @@ class Product(
     code = fields.Char(
         "Code", readonly=True,
         help="A unique identifier for the variant.")
+    position = fields.Integer(
+        "Position",
+        help="The order of the variant in the list of variants on product.")
     identifiers = fields.One2Many(
         'product.identifier', 'product', "Identifiers",
         help="Other identifiers associated with the variant.")
@@ -498,6 +505,10 @@ class Product(
             ]
         cls._sql_indexes.add(
             Index(t, (t.code, Index.Similarity(cardinality='high'))))
+        cls._sql_indexes.add(
+            Index(t,
+                (t.position, Index.Range(order='ASC NULLS FIRST')),
+                (t.id, Index.Range(order='ASC'))))
 
         for attr in dir(Template):
             tfield = getattr(Template, attr)

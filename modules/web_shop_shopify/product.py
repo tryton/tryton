@@ -192,7 +192,7 @@ class Product(IdentifiersMixin, metaclass=PoolMeta):
     @classmethod
     def __setup__(cls):
         super().__setup__()
-        cls._shopify_fields.update(['code', 'attributes'])
+        cls._shopify_fields.update(['code', 'attributes', 'position'])
 
     @classmethod
     def get_shopify_identifier_to_update(cls, records):

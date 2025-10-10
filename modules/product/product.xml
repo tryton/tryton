@@ -113,6 +113,13 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">product_tree_simple</field>
         </record>
 
+        <record model="ir.ui.view" id="product_view_tree_simple_sequence">
+            <field name="model">product.product</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="20"/>
+            <field name="name">product_tree_simple_sequence</field>
+        </record>
+
         <record model="ir.ui.view" id="product_view_form">
             <field name="model">product.product</field>
             <field name="type" eval="None"/>
