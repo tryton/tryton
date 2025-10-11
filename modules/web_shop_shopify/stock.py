@@ -156,10 +156,11 @@ class Move(metaclass=PoolMeta):
             for line_item in fulfillment_order.line_items:
                 if line_item.line_item_id == identifier:
                     qty = min(quantity, line_item.fulfillable_quantity)
-                    yield fulfillment_order.id, {
-                        'id': line_item.id,
-                        'quantity': qty,
-                        }
+                    if qty:
+                        yield fulfillment_order.id, {
+                            'id': line_item.id,
+                            'quantity': qty,
+                            }
                     quantity -= qty
                     if quantity <= 0:
                         return
