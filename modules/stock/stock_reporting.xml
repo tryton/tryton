@@ -1,0 +1,315 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="reporting_inventory_context_view_form">
+            <field name="model">stock.reporting.inventory.context</field>
+            <field name="type">form</field>
+            <field name="name">reporting_inventory_context_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="reporting_inventory_view_list">
+            <field name="model">stock.reporting.inventory</field>
+            <field name="type">tree</field>
+            <field name="name">reporting_inventory_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="reporting_inventory_view_form">
+            <field name="model">stock.reporting.inventory</field>
+            <field name="type">form</field>
+            <field name="name">reporting_inventory_form</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_reporting_inventory">
+            <field name="name">Inventory</field>
+            <field name="res_model">stock.reporting.inventory</field>
+            <field name="context_model">stock.reporting.inventory.context</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_reporting_inventory_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="reporting_inventory_view_list"/>
+            <field name="act_window" ref="act_reporting_inventory"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_reporting_inventory_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="reporting_inventory_view_form"/>
+            <field name="act_window" ref="act_reporting_inventory"/>
+        </record>
+
+        <menuitem
+            parent="menu_reporting"
+            action="act_reporting_inventory"
+            sequence="20"
+            id="menu_reporting_inventory"/>
+
+        <record model="ir.rule.group" id="rule_group_reporting_inventory_companies">
+            <field name="name">User in companies</field>
+            <field name="model">stock.reporting.inventory</field>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_reporting_inventory_companies">
+            <field
+                name="domain"
+                eval="[('company', 'in', Eval('companies', []))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_reporting_inventory_companies"/>
+        </record>
+
+        <record model="ir.model.access" id="access_reporting_inventory">
+            <field name="model">stock.reporting.inventory</field>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_reporting_inventory_group_stock">
+            <field name="model">stock.reporting.inventory</field>
+            <field name="group" ref="group_stock"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <record model="ir.ui.view" id="reporting_inventory_range_context_view_form">
+            <field name="model">stock.reporting.inventory.range.context</field>
+            <field name="type">form</field>
+            <field name="name">reporting_inventory_range_context_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="reporting_inventory_move_view_list">
+            <field name="model">stock.reporting.inventory.move</field>
+            <field name="type">tree</field>
+            <field name="name">reporting_inventory_move_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="reporting_inventory_move_view_form">
+            <field name="model">stock.reporting.inventory.move</field>
+            <field name="type">form</field>
+            <field name="name">reporting_inventory_move_form</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_reporting_inventory_move">
+            <field name="name">Stock Inventory Moves</field>
+            <field name="res_model">stock.reporting.inventory.move</field>
+            <field name="context_model">stock.reporting.inventory.range.context</field>
+            <field
+                name="domain"
+                eval="[('product', '=', (Eval('active_model', 'product.template'), Eval('active_id', -1)))]"
+                pyson="1"/>
+            <field
+                name="context"
+                eval="{'product_type': Eval('active_model', 'product.template'), 'date': None}"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_reporting_inventory_move_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="reporting_inventory_move_view_list"/>
+            <field name="act_window" ref="act_reporting_inventory_move"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_reporting_inventory_move_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="reporting_inventory_move_view_form"/>
+            <field name="act_window" ref="act_reporting_inventory_move"/>
+        </record>
+        <record model="ir.action.keyword" id="act_reporting_inventory_move_keyword_product">
+            <field name="keyword">form_relate</field>
+            <field name="model">product.product,-1</field>
+            <field name="action" ref="act_reporting_inventory_move"/>
+        </record>
+        <record model="ir.action.keyword" id="act_reporting_inventory_move_keyword_template">
+            <field name="keyword">form_relate</field>
+            <field name="model">product.template,-1</field>
+            <field name="action" ref="act_reporting_inventory_move"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_reporting_inventory_move_companies">
+            <field name="name">User in companies</field>
+            <field name="model">stock.reporting.inventory.move</field>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_reporting_inventory_move_companies">
+            <field
+                name="domain"
+                eval="[('company', 'in', Eval('companies', []))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_reporting_inventory_move_companies"/>
+        </record>
+
+        <record model="ir.model.access" id="access_reporting_inventory_move">
+            <field name="model">stock.reporting.inventory.move</field>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_reporting_inventory_move_group_stock">
+            <field name="model">stock.reporting.inventory.move</field>
+            <field name="group" ref="group_stock"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <record model="ir.ui.view" id="reporting_inventory_daily_view_list">
+            <field name="model">stock.reporting.inventory.daily</field>
+            <field name="type">tree</field>
+            <field name="name">reporting_inventory_daily_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="reporting_inventory_daily_view_form">
+            <field name="model">stock.reporting.inventory.daily</field>
+            <field name="type">form</field>
+            <field name="name">reporting_inventory_daily_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="reporting_inventory_daily_view_graph">
+            <field name="model">stock.reporting.inventory.daily</field>
+            <field name="type">graph</field>
+            <field name="name">reporting_inventory_daily_graph</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_reporting_inventory_daily">
+            <field name="name">Stock Inventory Daily</field>
+            <field name="res_model">stock.reporting.inventory.daily</field>
+            <field name="context_model">stock.reporting.inventory.range.context</field>
+            <field
+                name="domain"
+                eval="[('product', '=', (Eval('active_model', 'product.template'), Eval('active_id', -1)))]"
+                pyson="1"/>
+            <field
+                name="context"
+                eval="{'product_type': Eval('active_model', 'product.template'), 'date': None}"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_reporting_inventory_daily_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="reporting_inventory_daily_view_list"/>
+            <field name="act_window" ref="act_reporting_inventory_daily"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_reporting_inventory_daily_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="reporting_inventory_daily_view_graph"/>
+            <field name="act_window" ref="act_reporting_inventory_daily"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_reporting_inventory_daily_view3">
+            <field name="sequence" eval="30"/>
+            <field name="view" ref="reporting_inventory_daily_view_form"/>
+            <field name="act_window" ref="act_reporting_inventory_daily"/>
+        </record>
+        <record model="ir.action.keyword" id="act_reporting_inventory_daily_keyword_product">
+            <field name="keyword">form_relate</field>
+            <field name="model">product.product,-1</field>
+            <field name="action" ref="act_reporting_inventory_daily"/>
+        </record>
+        <record model="ir.action.keyword" id="act_reporting_inventory_daily_keyword_template">
+            <field name="keyword">form_relate</field>
+            <field name="model">product.template,-1</field>
+            <field name="action" ref="act_reporting_inventory_daily"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_reporting_inventory_daily_companies">
+            <field name="name">User in companies</field>
+            <field name="model">stock.reporting.inventory.daily</field>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_reporting_inventory_daily_companies">
+            <field
+                name="domain"
+                eval="[('company', 'in', Eval('companies', []))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_reporting_inventory_daily_companies"/>
+        </record>
+
+        <record model="ir.model.access" id="access_reporting_inventory_daily">
+            <field name="model">stock.reporting.inventory.daily</field>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_reporting_inventory_daily_group_stock">
+            <field name="model">stock.reporting.inventory.daily</field>
+            <field name="group" ref="group_stock"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <record model="ir.ui.view" id="reporting_inventory_turnover_context_view_form">
+            <field name="model">stock.reporting.inventory.turnover.context</field>
+            <field name="type">form</field>
+            <field name="name">reporting_inventory_turnover_context_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="reporting_inventory_turnover_view_list">
+            <field name="model">stock.reporting.inventory.turnover</field>
+            <field name="type">tree</field>
+            <field name="name">reporting_inventory_turnover_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="reporting_inventory_turnover_view_form">
+            <field name="model">stock.reporting.inventory.turnover</field>
+            <field name="type">form</field>
+            <field name="name">reporting_inventory_turnover_form</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_reporting_inventory_turnover">
+            <field name="name">Inventory Turnover</field>
+            <field name="res_model">stock.reporting.inventory.turnover</field>
+            <field name="context_model">stock.reporting.inventory.turnover.context</field>
+            <field
+                name="context"
+                eval="{'from_date': Date(delta_years=-1), 'to_date': Date()}"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_reporting_inventory_turnover_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="reporting_inventory_turnover_view_list"/>
+            <field name="act_window" ref="act_reporting_inventory_turnover"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_reporting_inventory_turnover_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="reporting_inventory_turnover_view_form"/>
+            <field name="act_window" ref="act_reporting_inventory_turnover"/>
+        </record>
+
+        <menuitem
+            parent="menu_reporting"
+            action="act_reporting_inventory_turnover"
+            sequence="30"
+            id="menu_reporting_inventory_turnover"/>
+
+        <record model="ir.rule.group" id="rule_group_reporting_inventory_turnover_companies">
+            <field name="name">User in companies</field>
+            <field name="model">stock.reporting.inventory.turnover</field>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_reporting_inventory_turnover_companies">
+            <field
+                name="domain"
+                eval="[('company', 'in', Eval('companies', []))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_reporting_inventory_turnover_companies"/>
+        </record>
+
+        <record model="ir.model.access" id="access_reporting_inventory_turnover">
+            <field name="model">stock.reporting.inventory.turnover</field>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_reporting_inventory_turnover_group_stock">
+            <field name="model">stock.reporting.inventory.turnover</field>
+            <field name="group" ref="group_stock"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+    </data>
+</tryton>

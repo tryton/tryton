@@ -71,7 +71,7 @@ this repository contains the full copyright notices and license terms. -->
             parent="menu_stock"
             sequence="100"
             id="menu_reporting"
-            active="0"/>
+            active="1"/>
 
     </data>
 </tryton>

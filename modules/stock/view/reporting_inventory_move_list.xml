@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tree>
+    <field name="product" expand="2"/>
+    <field name="date"/>
+    <field name="origin" expand="1" optional="1"/>
+    <field name="document" expand="1" optional="0"/>
+    <field name="input_quantity" symbol="unit" optional="1"/>
+    <field name="output_quantity" symbol="unit" optional="1"/>
+    <field name="quantity" symbol="unit"/>
+</tree>

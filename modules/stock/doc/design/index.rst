@@ -11,3 +11,4 @@ The stock module introduces or extends the following concepts.
 .. include:: period.inc.rst
 .. include:: configuration.inc.rst
 .. include:: product.inc.rst
+.. include:: reporting.inc.rst

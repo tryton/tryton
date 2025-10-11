@@ -1,0 +1,6 @@
+[
+    {"period_close": false, "product_type": "product.template"}
+    ,{"period_close": false, "product_type": "product.product"}
+    ,{"period_close": true, "product_type": "product.template"}
+    ,{"period_close": true, "product_type": "product.product"}
+]

@@ -443,6 +443,14 @@ class Move(Workflow, ModelSQL, ModelView):
                     (t.company, Index.Equality()),
                     (t.state, Index.Equality(cardinality='low')),
                     where=t.state.in_(['staging', 'draft', 'assigned'])),
+                Index(
+                    t,
+                    (t.company, Index.Equality()),
+                    (Coalesce(t.effective_date, t.planned_date),
+                        Index.Range()),
+                    (t.state, Index.Equality(cardinality='low')),
+                    (t.product, Index.Range()),
+                    where=t.state.in_(['done', 'assigned', 'draft'])),
                 })
         cls._order[0] = ('id', 'DESC')
         cls._transitions |= set((
