@@ -1,5 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+import datetime as dt
 import io
 import unittest
 import urllib.request
@@ -112,12 +113,14 @@ class ProductImageTestCase(ModuleTestCase):
                 'https://picsum.photos/200').read()
             image.save()
 
+        template.write_date = dt.datetime(2025, 1, 1)  # fix timestamp
+
         self.assertRegex(
             template.get_image_url(i=2),
-            r'/product/image/CODE/.*/Template\?i=2')
+            r'^/product/image/CODE/.*/Template\?i=2&t=AAAAAGd0hYA$')
         self.assertRegex(
             template.get_image_url(s=400),
-            r'/product/image/CODE/.*/Template\?s=400')
+            r'^/product/image/CODE/.*/Template\?s=400&t=AAAAAGd0hYA$')
 
 
 del ModuleTestCase

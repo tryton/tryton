@@ -1,5 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+import base64
 import io
 import math
 from urllib.parse import quote, urlencode, urljoin
@@ -62,7 +63,11 @@ class ImageURLMixin:
                     args['h'] = height
                 if index is not None:
                     args['i'] = index
-                url += '?' + urlencode(args)
+            timestamp = int((self.write_date or self.create_date).timestamp())
+            args['t'] = (
+                base64.urlsafe_b64encode(timestamp.to_bytes(8, 'big'))
+                .decode().rstrip('='))
+            url += '?' + urlencode(args)
             return url
 
     def get_image_url(self, _external=False, **args):
