@@ -57,8 +57,8 @@ class Line(metaclass=PoolMeta):
     def compute_base_price(self):
         pool = Pool()
         Uom = pool.get('product.uom')
-        if self.product and self.product.list_price is not None:
-            price = self.product.list_price
+        if (self.product
+                and (price := self.product.list_price_used) is not None):
             if self.unit:
                 price = Uom.compute_price(
                     self.product.default_uom, price, self.unit)
