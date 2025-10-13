@@ -3,9 +3,11 @@
 
 from sql.functions import CharLength
 
+from trytond.i18n import gettext
 from trytond.model import DeactivableMixin, ModelSQL, ModelView, fields
+from trytond.model.exceptions import RecursionError
 from trytond.pool import Pool
-from trytond.pyson import Eval
+from trytond.pyson import Bool, Eval, If
 from trytond.tools import is_full_text, lstrip_wildcard
 from trytond.wizard import Button, StateView, Wizard
 
@@ -21,11 +23,47 @@ class BOM(DeactivableMixin, ModelSQL, ModelView):
             })
     code_readonly = fields.Function(
         fields.Boolean("Code Readonly"), 'get_code_readonly')
-    inputs = fields.One2Many('production.bom.input', 'bom', "Input Materials")
+    phantom = fields.Boolean(
+        "Phantom",
+        help="If checked, the BoM can be used in another BoM.")
+    phantom_unit = fields.Many2One(
+        'product.uom', "Unit",
+        states={
+            'invisible': ~Eval('phantom', False),
+            'required': Eval('phantom', False),
+            },
+        help="The Unit of Measure of the Phantom BoM")
+    phantom_quantity = fields.Float(
+        "Quantity", digits='phantom_unit',
+        domain=['OR',
+            ('phantom_quantity', '>=', 0),
+            ('phantom_quantity', '=', None),
+            ],
+        states={
+            'invisible': ~Eval('phantom', False),
+            'required': Eval('phantom', False),
+            },
+        help="The quantity of the Phantom BoM")
+    inputs = fields.One2Many(
+        'production.bom.input', 'bom', "Input Materials",
+        domain=[If(Eval('phantom') & Eval('outputs', None),
+                ('id', '=', None),
+                ()),
+            ],
+        states={
+            'invisible': Eval('phantom') & Bool(Eval('outputs')),
+            })
     input_products = fields.Many2Many(
         'production.bom.input', 'bom', 'product', "Input Products")
     outputs = fields.One2Many(
-        'production.bom.output', 'bom', "Output Materials")
+        'production.bom.output', 'bom', "Output Materials",
+        domain=[If(Eval('phantom') & Eval('inputs', None),
+                ('id', '=', None),
+                ()),
+            ],
+        states={
+            'invisible': Eval('phantom') & Bool(Eval('inputs')),
+            })
     output_products = fields.Many2Many('production.bom.output',
         'bom', 'product', 'Output Products')
 
@@ -74,15 +112,18 @@ class BOM(DeactivableMixin, ModelSQL, ModelView):
             ]
 
     def compute_factor(self, product, quantity, unit, type='outputs'):
-        "Compute factor for a product from the type"
         pool = Pool()
         Uom = pool.get('product.uom')
         assert type in {'inputs', 'outputs'}, f"Invalid {type}"
         total = 0
-        for line in getattr(self, type):
-            if line.product == product:
-                total += Uom.compute_qty(
-                    line.unit, line.quantity, unit, round=False)
+        if self.phantom:
+            total = Uom.compute_qty(
+                self.phantom_unit, self.phantom_quantity, unit, round=False)
+        else:
+            for line in getattr(self, type):
+                if line.product == product:
+                    total += Uom.compute_qty(
+                        line.unit, line.quantity, unit, round=False)
         if total:
             return quantity / total
         else:
@@ -120,7 +161,26 @@ class BOMInput(ModelSQL, ModelView):
 
     bom = fields.Many2One(
         'production.bom', "BOM", required=True, ondelete='CASCADE')
-    product = fields.Many2One('product.product', 'Product', required=True)
+    product = fields.Many2One(
+        'product.product', "Product",
+        domain=[If(Eval('phantom_bom', None),
+                ('id', '=', None),
+                ()),
+            ],
+        states={
+            'invisible': Bool(Eval('phantom_bom')),
+            'required': ~Bool(Eval('phantom_bom')),
+            })
+    phantom_bom = fields.Many2One(
+        'production.bom', "Phantom BOM",
+        domain=[If(Eval('product', None),
+                ('id', '=', None),
+                ()),
+            ],
+        states={
+            'invisible': Bool(Eval('product')),
+            'required': ~Bool(Eval('product')),
+            })
     uom_category = fields.Function(fields.Many2One(
         'product.uom.category', 'Uom Category'), 'on_change_with_uom_category')
     unit = fields.Many2One(
@@ -138,6 +198,10 @@ class BOMInput(ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super().__setup__()
+        cls.phantom_bom.domain = [
+            ('phantom', '=', True),
+            ('inputs', '!=', None),
+            ]
         cls.product.domain = [('type', 'in', cls.get_product_types())]
         cls.__access__.add('bom')
 
@@ -155,10 +219,21 @@ class BOMInput(ModelSQL, ModelView):
 
         # Migration from 6.0: remove unique constraint
         table_h.drop_constraint('product_bom_uniq')
+        # Migration from 7.6: remove required on product
+        table_h.not_null_action('product', 'remove')
 
     @classmethod
     def get_product_types(cls):
         return ['goods', 'assets']
+
+    @fields.depends('phantom_bom', 'unit')
+    def on_change_phantom_bom(self):
+        if self.phantom_bom:
+            category = self.phantom_bom.phantom_unit.category
+            if not self.unit or self.unit.category != category:
+                self.unit = self.phantom_bom.phantom_unit
+        else:
+            self.unit = None
 
     @fields.depends('product', 'unit')
     def on_change_product(self):
@@ -169,16 +244,33 @@ class BOMInput(ModelSQL, ModelView):
         else:
             self.unit = None
 
-    @fields.depends('product')
+    @fields.depends('product', 'phantom_bom')
     def on_change_with_uom_category(self, name=None):
-        return self.product.default_uom.category if self.product else None
+        uom_category = None
+        if self.product:
+            uom_category = self.product.default_uom.category
+        elif self.phantom_bom:
+            uom_category = self.phantom_bom.phantom_unit.category
+        return uom_category
 
     def get_rec_name(self, name):
-        return self.product.rec_name
+        if self.product:
+            return self.product.rec_name
+        elif self.phantom_bom:
+            return self.phantom_bom.rec_name
 
     @classmethod
     def search_rec_name(cls, name, clause):
-        return [('product.rec_name',) + tuple(clause[1:])]
+        _, operator, value = clause
+        if operator.startswith('!') or operator.startswith('not '):
+            bool_op = 'AND'
+        else:
+            bool_op = 'OR'
+
+        return [bool_op,
+            ('product.rec_name', operator, value),
+            ('phantom_bom.rec_name', operator, value),
+            ]
 
     @classmethod
     def validate(cls, boms):
@@ -186,11 +278,21 @@ class BOMInput(ModelSQL, ModelView):
         for bom in boms:
             bom.check_bom_recursion()
 
-    def check_bom_recursion(self):
+    def check_bom_recursion(self, bom=None):
         '''
         Check BOM recursion
         '''
-        self.product.check_bom_recursion()
+        if bom is None:
+            bom = self.bom
+        if self.product:
+            self.product.check_bom_recursion()
+        else:
+            for line_ in self._phantom_lines:
+                if line_.phantom_bom and (line_.phantom_bom == bom
+                        or line_.check_bom_recursion(bom=bom)):
+                    raise RecursionError(gettext(
+                            'production.msg_recursive_bom_bom',
+                            bom=bom.rec_name))
 
     def compute_quantity(self, factor):
         return self.unit.ceil(self.quantity * factor)
@@ -199,14 +301,41 @@ class BOMInput(ModelSQL, ModelView):
         "Update stock move for the production"
         return move
 
+    @property
+    def _phantom_lines(self):
+        if self.phantom_bom:
+            return self.phantom_bom.inputs
+
+    def lines_for_quantity(self, quantity):
+        if self.phantom_bom:
+            factor = self.phantom_bom.compute_factor(
+                None, quantity, self.unit)
+            for line in self._phantom_lines:
+                yield line, line.compute_quantity(factor)
+        else:
+            yield self, quantity
+
 
 class BOMOutput(BOMInput):
     __name__ = 'production.bom.output'
     __string__ = None
     _table = None  # Needed to override BOMInput._table
 
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls.phantom_bom.domain = [
+            ('phantom', '=', True),
+            ('outputs', '!=', None),
+            ]
+
     def compute_quantity(self, factor):
         return self.unit.floor(self.quantity * factor)
+
+    @property
+    def _phantom_lines(self):
+        if self.phantom_bom:
+            return self.phantom_bom.outputs
 
     @classmethod
     def on_delete(cls, outputs):

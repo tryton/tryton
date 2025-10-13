@@ -8,6 +8,12 @@ this repository contains the full copyright notices and license terms. -->
     <field name="code"/>
     <label name="active"/>
     <field name="active" xexpand="0" width="100"/>
+    <label name="phantom"/>
+    <field name="phantom"/>
+    <label name="phantom_quantity"/>
+    <field name="phantom_quantity"/>
+    <label name="phantom_unit"/>
+    <field name="phantom_unit"/>
     <notebook colspan="6">
         <page string="Lines" id="lines" col="2">
             <field name="inputs"/>

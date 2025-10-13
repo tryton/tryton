@@ -8,6 +8,11 @@ this repository contains the full copyright notices and license terms. -->
     <label name="product"/>
     <field name="product"/>
     <newline/>
+
+    <label name="phantom_bom"/>
+    <field name="phantom_bom"/>
+    <newline/>
+
     <label name="quantity"/>
     <field name="quantity"/>
     <label name="unit"/>

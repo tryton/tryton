@@ -412,15 +412,19 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
         inputs = []
         for input_ in self.bom.inputs:
             quantity = input_.compute_quantity(factor)
-            move = self._move('input', input_.product, input_.unit, quantity)
-            inputs.append(input_.prepare_move(self, move))
+            for line, quantity in input_.lines_for_quantity(quantity):
+                move = self._move(
+                    'input', line.product, line.unit, quantity)
+                inputs.append(input_.prepare_move(self, move))
         self.inputs = inputs
 
         outputs = []
         for output in self.bom.outputs:
             quantity = output.compute_quantity(factor)
-            move = self._move('output', output.product, output.unit, quantity)
-            outputs.append(output.prepare_move(self, move))
+            for line, quantity in output.lines_for_quantity(quantity):
+                move = self._move(
+                    'output', line.product, line.unit, quantity)
+                outputs.append(output.prepare_move(self, move))
         self.outputs = outputs
 
     @fields.depends('warehouse')

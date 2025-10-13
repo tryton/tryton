@@ -59,11 +59,14 @@ class Product(metaclass=PoolMeta):
             product = self
         for product_bom in self.boms:
             for input_ in product_bom.bom.inputs:
-                if (input_.product == product
+                if input_.phantom_bom:
+                    for i in input_.phantom_bom.inputs:
+                        i.check_bom_recursion()
+                if input_.product and (input_.product == product
                         or input_.product.check_bom_recursion(
                             product=product)):
-                    raise RecursionError(
-                        gettext('production.msg_recursive_bom',
+                    raise RecursionError(gettext(
+                            'production.msg_recursive_bom_product',
                             product=product.rec_name))
 
     @classmethod
