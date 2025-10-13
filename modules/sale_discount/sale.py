@@ -61,7 +61,7 @@ class Line(metaclass=PoolMeta):
         pool = Pool()
         Uom = pool.get('product.uom')
         if self.product:
-            price = self.product.list_price
+            price = self.product.list_price_used
             if self.unit:
                 price = Uom.compute_price(
                     self.product.default_uom, price, self.unit)
