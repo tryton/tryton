@@ -59,6 +59,7 @@ tests_require = [
     get_require_version('trytond_sale_discount'),
     get_require_version('trytond_sale_shipment_cost'),
     get_require_version('trytond_sale_secondary_unit'),
+    get_require_version('trytond_party[phonenumbers]'),
     ]
 
 setup(name=name,
