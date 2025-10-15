@@ -2307,6 +2307,14 @@ class ShipmentInternal(
             'stock.location', "Warehouse",
             help="Where the stock is sent from."),
         'on_change_with_warehouse')
+    to_warehouse = fields.Function(
+        fields.Many2One(
+            'stock.location', "To Warehouse",
+            domain=[
+                ('type', '=', 'warehouse'),
+                ],
+            help="Where the stock is sent to."),
+        'on_change_with_to_warehouse')
     moves = fields.One2Many('stock.move', 'shipment', 'Moves',
         states={
             'readonly': (Eval('state').in_(['cancelled', 'assigned', 'done'])
@@ -2539,6 +2547,10 @@ class ShipmentInternal(
     @fields.depends('from_location')
     def on_change_with_warehouse(self, name=None):
         return self.from_location.warehouse if self.from_location else None
+
+    @fields.depends('to_location')
+    def on_change_with_to_warehouse(self, name=None):
+        return self.to_location.warehouse if self.to_location else None
 
     @fields.depends(
         'planned_date', 'from_location', 'to_location',
