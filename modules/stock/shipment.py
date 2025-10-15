@@ -2305,6 +2305,9 @@ class ShipmentInternal(
     warehouse = fields.Function(
         fields.Many2One(
             'stock.location', "Warehouse",
+            domain=[
+                ('type', '=', 'warehouse'),
+                ],
             help="Where the stock is sent from."),
         'on_change_with_warehouse')
     to_warehouse = fields.Function(
