@@ -1238,6 +1238,10 @@ class Wizard(object):
                 ctx['active_id'] = self.models[0].id
                 ctx['active_ids'] = [model.id for model in self.models]
                 ctx['active_model'] = self.models[0].__class__.__name__
+            elif isinstance(self.models, ModelList):
+                ctx['active_id'] = None
+                ctx['active_ids'] = None
+                ctx['active_model'] = self.models.model_name
             else:
                 ctx['active_id'] = None
                 ctx['active_ids'] = None
