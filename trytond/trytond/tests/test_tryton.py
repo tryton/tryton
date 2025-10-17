@@ -898,7 +898,9 @@ class ModuleTestCase(_DBTestCase):
     @with_transaction()
     def test_modelstorage_copy(self):
         "Test copied default values"
-        with unittest.mock.patch.object(ModelStorage, 'copy') as copy:
+        copy = unittest.mock.Mock()
+        with unittest.mock.patch.object(
+                ModelStorage, 'copy', new=classmethod(copy)):
             for mname, model in Pool().iterobject():
                 if not isregisteredby(model, self.module):
                     continue
@@ -907,7 +909,7 @@ class ModuleTestCase(_DBTestCase):
                 with self.subTest(model=mname):
                     model.copy([])
                     if copy.call_args:
-                        args, kwargs = copy.call_args
+                        (klass, *args), kwargs = copy.call_args
                         if len(args) >= 2:
                             default = args[1]
                         else:
@@ -915,7 +917,7 @@ class ModuleTestCase(_DBTestCase):
                         if default is not None:
                             fields = {
                                 k.split('.', 1)[0] for k in default.keys()}
-                            self.assertLessEqual(fields, model._fields.keys())
+                            self.assertLessEqual(fields, klass._fields.keys())
                     copy.reset_mock()
 
     @with_transaction()
