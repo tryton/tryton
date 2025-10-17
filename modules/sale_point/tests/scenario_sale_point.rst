@@ -67,6 +67,9 @@ Create product::
     Decimal('9.9174')
     >>> template.save()
     >>> goods, = template.products
+    >>> goods.gross_price = Decimal('14.0000')
+    >>> goods.list_price
+    Decimal('11.5702')
 
     >>> template = ProductTemplate()
     >>> template.name = 'service'
