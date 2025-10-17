@@ -549,8 +549,8 @@ class POSSaleLine(ModelSQL, ModelView, TaxableMixin):
                 self.unit_list_price = round_price(Tax.reverse_compute(
                         self.unit_gross_price, self.taxes,
                         date=self.sale.date))
-            elif self.product.list_price is not None:
-                self.unit_list_price = self.product.list_price
+            elif self.product.list_price_used is not None:
+                self.unit_list_price = self.product.list_price_used
                 taxes = Tax.compute(
                     self.taxes, self.unit_list_price, 1,
                     date=self.sale.date)
