@@ -199,8 +199,12 @@ class AccountNumber(DeactivableMixin, sequence_ordered(), ModelSQL, ModelView):
             ('iban', 'IBAN'),
             ('other', 'Other'),
             ], 'Type', required=True)
-    number = fields.Char('Number')
-    number_compact = fields.Char('Number Compact', readonly=True)
+    number = fields.Char("Number", required=True)
+    number_compact = fields.Char(
+        "Number Compact", readonly=True,
+        states={
+            'required': Eval('type').in_(['iban']),
+            })
 
     @classmethod
     def __setup__(cls):
@@ -260,6 +264,16 @@ class AccountNumber(DeactivableMixin, sequence_ordered(), ModelSQL, ModelView):
     def compact_iban(self):
         return (iban.compact(self.number) if self.type == 'iban'
             else self.number)
+
+    @classmethod
+    def preprocess_values(cls, mode, values):
+        values = super().preprocess_values(mode, values)
+        if mode == 'create':
+            if (values.get('type') == 'iban'
+                    and (number := values.get('number'))):
+                values['number'] = iban.format(number)
+                values['number_compact'] = iban.compact(number)
+        return values
 
     def compute_fields(self, field_names=None):
         values = super().compute_fields(field_names=field_names)
