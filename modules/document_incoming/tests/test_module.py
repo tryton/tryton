@@ -84,6 +84,35 @@ class DocumentIncomingTestCase(CompanyTestMixin, ModuleTestCase):
         self.assertEqual(child.data, b'data')
         self.assertEqual(child.source, 'inbound_email')
 
+    @with_transaction()
+    def test_document_from_inbound_email_without_content(self):
+        "Test document from inbound email without content"
+        pool = Pool()
+        Document = pool.get('document.incoming')
+        Email = pool.get('inbound.email')
+        Rule = pool.get('inbound.email.rule')
+
+        with patch.object(Email, 'as_dict') as as_dict:
+            as_dict.return_value = {
+                'subject': "Subject",
+                'attachments': [{
+                        'filename': "document",
+                        'data': b'data',
+                        }],
+                }
+
+            email = Email()
+            rule = Rule(
+                document_incoming_type='document_incoming',
+                document_incoming_company=None,
+                )
+
+            document = Document.from_inbound_email(email, rule)
+
+        self.assertFalse(document.data)
+        child, = document.children
+        self.assertEqual(child.data, b'data')
+
 
 class DocumentIncomingRouteTestCase(RouteTestCase):
     "Test Document Incoming route"

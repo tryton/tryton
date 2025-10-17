@@ -41,8 +41,11 @@ class Incoming(DeactivableMixin, Workflow, ModelSQL, ModelView):
     company = fields.Many2One('company.company', "Company", states=_states)
     data = fields.Binary(
         "Data", filename='name',
-        file_id=file_id, store_prefix=store_prefix, required=True,
-        states=_states)
+        file_id=file_id, store_prefix=store_prefix,
+        states={
+            'required': ~Eval('children'),
+            'readonly': _states['readonly'],
+            })
     parsed_data = fields.Dict(None, "Parsed Data", readonly=True)
     file_id = fields.Char("File ID", readonly=True)
     mime_type = fields.Function(
@@ -124,6 +127,14 @@ class Incoming(DeactivableMixin, Workflow, ModelSQL, ModelView):
                 'depends': ['state'],
                 },
             )
+
+    @classmethod
+    def __register__(cls, module):
+        super().__register__(module)
+        table_h = cls.__table_handler__(module)
+
+        # Migration from 7.6: remove not null on data
+        table_h.not_null_action('data', action='remove')
 
     @fields.depends('name')
     def on_change_with_mime_type(self, name=None):
