@@ -256,13 +256,6 @@ class FrFEC(Wizard):
                 ])
 
     def get_row(self, line, format_date, format_number):
-        def description():
-            value = line.move.description or ''
-            if line.description:
-                if value:
-                    value += ' - '
-                value += line.description
-            return value
         end_date = self.start.fiscalyear.end_date
         reconciliation = None
         if line.reconciliation and line.reconciliation.date <= end_date:
@@ -278,7 +271,7 @@ class FrFEC(Wizard):
             line.party.name if line.party else '',
             self.get_reference(line) or '-',
             format_date(self.get_reference_date(line)),
-            description() or '-',
+            line.description_used or '-',
             format_number(line.debit or 0),
             format_number(line.credit or 0),
             reconciliation.rec_name if reconciliation else '',
