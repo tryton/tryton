@@ -673,9 +673,14 @@ img.icon {
         }
     }
     .form-document {
-        object {
+        object, img {
             object-fit: scale-down;
             object-position: center top;
+        }
+        iframe {
+            border: 0;
+        }
+        object, iframe, img {
             width: 100%;
             height: 75vh;
             @media screen and (max-width: @screen-sm-max) {
