@@ -1,3 +1,4 @@
+* Use sandboxed iframe to display document (issue14290)
 
 Version 7.4.18 - 2025-10-02
 ---------------------------

@@ -980,14 +980,19 @@ img.icon {
         }
     }
     .form-document {
-        object {
+        object, img {
             object-fit: scale-down;
             object-position: center top;
+        }
+        iframe {
+            border: 0;
+        }
+        object, iframe, img {
             width: 100%;
             min-height: 50vh;
             height: 100%;
             @media screen and (max-width: @screen-xs-max) {
-                min-height: 25vh;
+                min-height: 50vh;
             }
         }
     }
