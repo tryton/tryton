@@ -9656,3 +9656,4 @@ b7121e7d148c10ed8c4edcb40eb41e59e7b6d2db account_payment_sepa-7.4.5
 54d655e2bbb838c179a06e5419fc47f80d0f1445 stock_shipment_measurements-7.4.3
 8f1bf9521252d8ff5f0d0b5844fe84ae71904508 product_price_list_dates-7.4.2
 873d37cd213588834410bf4cb015b56e3e8a3c26 production_outsourcing-7.4.1
+40de9454978b2c42dfd807807c1874b9f1475ae8 account_payment_stripe-7.4.1
