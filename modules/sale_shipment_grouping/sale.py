@@ -15,6 +15,10 @@ class Sale(metaclass=PoolMeta):
         return self.party.sale_shipment_grouping_method
 
     @property
+    def _shipment_grouping_origins(self):
+        return ['sale.line']
+
+    @property
     def _shipment_grouping_state(self):
         return {'draft', 'waiting'}
 
@@ -37,7 +41,9 @@ class Sale(metaclass=PoolMeta):
         "Returns a domain that will find shipments that should be grouped"
         Shipment = shipment.__class__
         shipment_domain = [
-            ('moves.origin', 'like', 'sale.line,%'),
+            ['OR'] + [
+                ('moves.origin', 'like', f'{o},%')
+                for o in self._shipment_grouping_origins],
             ('state', 'in', list(self._shipment_grouping_state)),
             ]
         shipment_domain += self._get_grouped_shipment_planned_date(shipment)
