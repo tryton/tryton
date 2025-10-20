@@ -1,3 +1,7 @@
+
+Version 7.6.9 - 2025-10-20
+--------------------------
+* Bug fixes (see mercurial logs for details)
 * Use sandboxed iframe to display document (issue14290)
 
 Version 7.6.8 - 2025-10-02
