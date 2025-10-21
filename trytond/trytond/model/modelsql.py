@@ -1317,6 +1317,8 @@ class ModelSQL(ModelStorage):
                 if value is not None:
                     add(value)
             related_read_limit = transaction.context.get('related_read_limit')
+            # use dict keys to make target ids unique but preserving the order
+            target_ids = list(dict.fromkeys(target_ids).keys())
             rows = Target.read(target_ids[:related_read_limit], fields)
             if related_read_limit is not None:
                 rows += [{'id': i} for i in target_ids[related_read_limit:]]
