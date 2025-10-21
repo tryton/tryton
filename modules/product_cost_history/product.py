@@ -155,4 +155,4 @@ class ProductCostHistory(ModelSQL, ModelView):
         return history_table.company == company_id
 
     def get_rec_name(self, name):
-        return str(self.date)
+        return Pool().get('ir.lang').get().strftime(self.date)

@@ -103,7 +103,7 @@ class EmployeeCostPrice(ModelSQL, ModelView):
         return Date.today()
 
     def get_rec_name(self, name):
-        return str(self.date)
+        return Pool().get('ir.lang').get().strftime(self.date)
 
     @classmethod
     def on_modification(cls, mode, prices, field_names=None):

@@ -75,7 +75,7 @@ class Period(Workflow, ModelSQL, ModelView):
             return pool.get('stock.period.cache')
 
     def get_rec_name(self, name):
-        return str(self.date)
+        return Pool().get('ir.lang').get().strftime(self.date)
 
     @classmethod
     @ModelView.button
