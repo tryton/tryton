@@ -261,12 +261,6 @@ class POSSale(Workflow, ModelSQL, ModelView, TaxableMixin):
         return (self.on_change_with_total()
             - self.on_change_with_amount_paid())
 
-    def get_rec_name(self, name):
-        if self.number:
-            return self.number
-        else:
-            return '(%s)' % self.id
-
     @classmethod
     def copy(cls, sales, default=None):
         if default is None:

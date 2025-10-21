@@ -807,10 +807,11 @@ class ModelStorage(Model):
         Return the rec_name of the instance.
         It is used by the Function field rec_name.
         '''
-        rec_name = self._rec_name
-        if rec_name not in self._fields:
-            rec_name = 'id'
-        return str(getattr(self, rec_name))
+        if self._rec_name in self._fields:
+            name = getattr(self, self._rec_name)
+        else:
+            name = None
+        return str(name or f'({self.id})')
 
     @classmethod
     def search_rec_name(cls, name, clause):

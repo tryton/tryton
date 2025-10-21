@@ -154,13 +154,6 @@ class GiftCard(ModelSQL, ModelView):
         return [(None, '')] + [
             (m, Model.get_name(m)) for m in cls._get_spent_on()]
 
-    def get_rec_name(self, name):
-        if not self.number:
-            name = '(%d)' % self.id
-        else:
-            name = self.number
-        return name
-
     @property
     def _email(self):
         pool = Pool()
