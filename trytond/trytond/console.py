@@ -53,7 +53,12 @@ def run(options):
             'pool': pool,
             'transaction': transaction,
             }
-        if sys.stdin.isatty():
+        if options.file:
+            console = InteractiveConsole(local)
+            with open(options.file, 'r') as f:
+                console.runsource(
+                    f.read(), filename=options.file, symbol='exec')
+        elif sys.stdin.isatty():
             console = Console(local, histsize=options.histsize)
             banner = "Tryton %s, Python %s on %s" % (
                 __version__, sys.version, sys.platform)

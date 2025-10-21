@@ -172,6 +172,9 @@ def get_parser_console():
         "-d", "--database", dest="database_name",
         required=True, metavar='DATABASE',
         help="specify the database name").completer = database_completer
+    parser.add_argument(
+        "-f", "--file", dest="file",
+        help="the Python script file to execute")
     parser.add_argument("--histsize", dest="histsize", type=int, default=500,
         help="set the number of commands to remember in the command history")
     parser.add_argument("--readonly", dest="readonly", action='store_true',
