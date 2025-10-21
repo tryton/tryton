@@ -494,7 +494,9 @@ class Move_Production(metaclass=PoolMeta):
         country = super().intrastat_from_country
         if self.from_location:
             if (self.from_location.type == 'production'
-                    and self.production and self.production.warehouse.address):
+                    and self.production
+                    and getattr(self.production, 'warehouse', None)
+                    and self.production.warehouse.address):
                 country = self.production.warehouse.address.country
         return country
 
@@ -504,7 +506,9 @@ class Move_Production(metaclass=PoolMeta):
         country = super().intrastat_to_country
         if self.to_location:
             if (self.to_location.type == 'production'
-                    and self.production and self.production.warehouse.address):
+                    and self.production
+                    and getattr(self.production, 'warehouse', None)
+                    and self.production.warehouse.address):
                 country = self.production.warehouse.address.country
         return country
 
