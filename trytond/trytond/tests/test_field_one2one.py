@@ -1,6 +1,8 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 
+import re
+
 from trytond.model.exceptions import (
     DomainValidationError, RequiredValidationError, SQLConstraintError)
 from trytond.pool import Pool
@@ -124,7 +126,8 @@ class FieldOne2OneTestCase(TestCase):
         with self.assertRaisesRegex(
                 DomainValidationError,
                 'The value "%s" for field "One2One" '
-                'in record ".*" of "One2One Domain"' % target.rec_name):
+                'in record ".*" of "One2One Domain"' %
+                re.escape(target.rec_name)):
             One2One.create([{
                         'one2one': target.id,
                         }])

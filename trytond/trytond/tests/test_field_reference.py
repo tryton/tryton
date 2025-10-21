@@ -1,6 +1,8 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 
+import re
+
 from trytond.model.exceptions import (
     DomainValidationError, RequiredValidationError)
 from trytond.pool import Pool
@@ -528,7 +530,7 @@ class FieldReferenceTestCase(TestCase):
                 DomainValidationError,
                 'The value "%s" for field "Reference" '
                 'in record ".*" of "Reference Domain Validation"' %
-                target.rec_name):
+                re.escape(target.rec_name)):
             reference.save()
 
     @with_transaction()

@@ -1,6 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 
+import re
 from unittest.mock import patch
 
 from sql import Join, Table
@@ -80,7 +81,7 @@ class CommonTestCaseMixin:
                 DomainValidationError,
                 'The value "%s" for field "many2one" '
                 'in record ".*" of "Many2One Domain Validation"' %
-                target.rec_name):
+                re.escape(target.rec_name)):
             Many2One.create([{
                         'many2one': target.id,
                         }])
