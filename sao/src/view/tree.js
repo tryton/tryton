@@ -15,36 +15,6 @@
         });
     }
 
-    // circumvent https://bugzilla.mozilla.org/show_bug.cgi?id=505521
-    // Use page position to not depend on the monitor.
-    let dragoverFixAdded = false;
-    let lastWindowDragEvent = null;
-    const fillEventPagePosition = (e) => {
-        e.pagePosition = {
-            x: e.pageX,
-            y: e.pageY,
-        };
-
-        if (!navigator.userAgent.search("Firefox")) {
-            return;
-        }
-
-        if (!dragoverFixAdded) {
-            window.addEventListener('dragover', (e) => {
-                lastWindowDragEvent = e;
-            });
-            dragoverFixAdded = true;
-        }
-
-        if (lastWindowDragEvent &&
-            (e.timeStamp - lastWindowDragEvent.timeStamp) < 100) {
-            e.pagePosition = {
-                x: lastWindowDragEvent.pageX,
-                y: lastWindowDragEvent.pageY,
-            };
-        }
-    }
-
     Sao.View.TreeXMLViewParser = Sao.class_(Sao.View.XMLViewParser, {
         _parse_tree: function(node, attributes) {
             for (const child of node.childNodes) {
@@ -157,9 +127,6 @@
             this.treeview = jQuery('<div/>', {
                 'class': 'treeview responsive'
             }).appendTo(this.el);
-            this.dragged_image= jQuery('<span/>', {
-                'class': 'tree-dragged-image',
-            }).html('&nbsp;').appendTo(this.el);
 
             // Synchronize both scrollbars
             this.treeview.scroll(() => {
@@ -265,7 +232,13 @@
                     });
                     label.append(arrow);
                     column.arrow = arrow;
-                    th.click(column, this.sort_model.bind(this));
+                    th.click(column, (e) => {
+                        if (is_resizing) {
+                            e.stopImmediatePropagation();
+                            return;
+                        }
+                        this.sort_model(e);
+                    });
                     label.addClass('sortable');
                 }
                 tr.append(th.append(label));
@@ -273,7 +246,9 @@
                     'class': 'resizer',
                     'draggable': true,
                 }).appendTo(th);
-                resizer.on('dragstart', (event) => {
+                let is_resizing = false;
+                resizer.on('mousedown', (event) => {
+                    is_resizing = true;
                     let th = event.target.parentNode;
                     let headers = th.parentNode.childNodes;
                     let cols = this.colgroup[0].childNodes;
@@ -287,32 +262,31 @@
                             col.style.width = `${header.offsetWidth}px`;
                         }
                     }
-                    th.dataset.startPosition = event.pageX;
-                    th.dataset.originalWidth = th.offsetWidth;
+
+                    let startX = event.pageX;
+                    let originalWidth = th.offsetWidth;
+
+                    function on_mouse_move(e) {
+                        let col = cols[th.dataset.column];
+                        let width_offset = e.pageX - startX;
+                        if (Sao.i18n.rtl) {
+                            width_offset *= -1;
+                        }
+                        let width = Number(originalWidth) + width_offset;
+                        col.style.width = `${width}px`;
+                    }
+
+                    function on_mouse_up() {
+                        document.removeEventListener('mousemove', on_mouse_move);
+                        document.removeEventListener('mouseup', on_mouse_up);
+                        setTimeout(() => is_resizing = false, 0);
+                    }
+
+                    document.addEventListener('mousemove', on_mouse_move);
+                    document.addEventListener('mouseup', on_mouse_up);
 
                     this.table.addClass('table-bordered');
-                    event.originalEvent.dataTransfer.setDragImage(
-                        this.dragged_image.get(0), 0, 0);
-                });
-                // column_widths is used as a global for the callback of the
-                // drag event so that when the setTimeout callback is triggered
-                // the latest value of the width is used
-                let column_widths = {};
-                resizer.on('drag', (event) => {
-                    fillEventPagePosition(event);
-                    let resized_th = event.target.parentNode;
-                    let col = this.colgroup[0].childNodes[resized_th.dataset.column];
-                    let width_offset = (event.pagePosition.x -
-                        resized_th.dataset.startPosition);
-                    if (Sao.i18n.rtl) {
-                        width_offset *= -1;
-                    }
-                    let width = Number(resized_th.dataset.originalWidth) + width_offset;
-                    column_widths[resized_th] = width;
-                    setTimeout(() => {
-                        let width = column_widths[resized_th];
-                        col.style.width = `${width}px`;
-                    });
+                    event.preventDefault();
                 });
 
                 column.header = th;
@@ -334,17 +308,6 @@
                 }
                 idx += 1;
             }
-
-            this.table.on('dragover', (event) => {
-                // This is necessary so that the 'drop' event is processed
-                event.preventDefault();
-            });
-            this.table.on('drop', (event) => {
-                event.preventDefault();
-                if (!this.editable) {
-                    this.table.removeClass('table-bordered');
-                }
-            });
 
             this.tbody = jQuery('<tbody/>');
             this.table.append(this.tbody);
