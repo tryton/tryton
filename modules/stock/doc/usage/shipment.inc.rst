@@ -123,3 +123,9 @@ locations having negative stock.
    taken from one of its sub-locations, as view locations cannot be the
    source or destination of a done move.
    This also means moves from a view location cannot be forced.
+
+.. note::
+
+   You may want to define some `Scheduled tasks <trytond:model-ir.cron>`
+   :guilabel:`Assign Shipments` to try to assign automatically waiting
+   shipments due today.

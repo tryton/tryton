@@ -9,5 +9,6 @@ This includes definition for bill of material and production orders.
 .. toctree::
    :maxdepth: 2
 
+   usage
    design
    releases
