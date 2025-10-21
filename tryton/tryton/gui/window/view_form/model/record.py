@@ -115,7 +115,8 @@ class Record:
                 elif (f_attrs['type'] in {'selection', 'multiselection'}
                         and f_attrs.get('loading', 'lazy') == 'eager'):
                     fnames.append('%s:string' % fname)
-                elif f_attrs['type'] in {'many2many', 'one2many'}:
+                elif (f_attrs['type'] in {'many2many', 'one2many'}
+                        and loading == 'lazy'):
                     sub_fields = get_x2m_sub_fields(f_attrs, fname)
                     fnames.extend(sub_fields)
                     if sub_fields:

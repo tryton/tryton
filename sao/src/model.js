@@ -721,7 +721,8 @@
                     ((fdescription.loading || 'lazy') == 'eager')) {
                     fnames_to_fetch.push(fname + ':string');
                 } else if (
-                    ['many2many', 'one2many'].includes(fdescription.type)) {
+                    ['many2many', 'one2many'].includes(fdescription.type) &&
+                    (loading == 'lazy')) {
                     var sub_fields = get_x2m_sub_fields(fdescription, fname);
                     fnames_to_fetch = [ ...fnames_to_fetch, ...sub_fields];
                     if (sub_fields.length > 0) {
