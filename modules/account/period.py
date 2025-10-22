@@ -1,6 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 
+from sql import Null
 from sql.operators import Equal, NotEqual
 
 from trytond.cache import Cache
@@ -139,7 +140,9 @@ class Period(Workflow, ModelSQL, ModelView):
                         fiscalyear.move_sequence))
                 old2new.update(cursor)
 
-            cursor.execute(*t.select(t.post_move_sequence, distinct=True))
+            cursor.execute(*t.select(
+                    t.post_move_sequence, distinct=True,
+                    where=t.post_move_sequence != Null))
             for sequence_id, in cursor:
                 if sequence_id not in old2new:
                     sequence = Sequence(sequence_id)
