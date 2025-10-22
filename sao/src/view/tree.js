@@ -306,6 +306,8 @@
                     sum_row.append(total_cell);
                     column.footers.push(total_cell);
                 }
+
+                this._set_column_width(column);
                 idx += 1;
             }
 
@@ -451,6 +453,39 @@
             }
             Sao.Screen.tree_column_optional[this.view_id] = fields;
         },
+        _set_column_width: function(column) {
+            let default_width = {
+                'integer': 8,
+                'selection': 9,
+                'reference': 20,
+                'one2many': 5,
+                'many2many': 5,
+                'boolean': 3,
+                'binary': 20,
+            }[column.attributes.widget] || 10;
+            if (column.attributes.symbol) {
+                default_width += 2;
+            }
+            var factor = 1;
+            if (column.attributes.expand) {
+                factor += parseInt(column.attributes.expand, 10);
+            }
+            default_width = default_width * 100 * factor  + '%';
+            column.col.data('default-width', default_width);
+
+            let tree_column_width = (
+                Sao.Screen.tree_column_width[this.screen.model_name] || {});
+            let width = tree_column_width[name];
+            if (width || column.attributes.width) {
+                if (!width) {
+                    width = column.attributes.width;
+                }
+                column.col.data('custom-width', `${width}px`);
+            } else {
+                width = default_width;
+            }
+            column.col.css('width', width);
+        },
         save_width: function() {
             var widths = {};
             for (let column of this.columns) {
@@ -461,8 +496,8 @@
 
                 // Use the DOM element to retrieve the exact style set
                 var width = column.col[0].style.width;
-                let computed_width = column.col.data('computed-width');
-                if (width.endsWith('px') && (width != computed_width)) {
+                let custom_width = column.col.data('custom-width');
+                if (width.endsWith('px') && (width != custom_width)) {
                     widths[column.attributes.name] = Number(width.slice(0, -2));
                 }
             }
@@ -973,8 +1008,6 @@
             domain = inversion.simplify(domain);
             var decoder = new Sao.PYSON.Decoder(this.screen.context);
             var min_width = [];
-            let tree_column_width = (
-                Sao.Screen.tree_column_width[this.screen.model_name] || {});
             var tree_column_optional = (
                 Sao.Screen.tree_column_optional[this.view_id] || {});
             for (const column of this.columns) {
@@ -1017,46 +1050,34 @@
                 }
 
                 if (!column.get_visible()) {
+                    if (!column.col.data('hidden-width')) {
+                        column.col.data('hidden-width', column.col.css('width'))
+                    }
                     column.col.css('width', 0);
                     column.col.hide();
                 } else if (!column.col.hasClass('draggable-handle') &&
                     !column.col.hasClass('optional') &&
                     !column.col.hasClass('selection-state') &&
                     !column.col.hasClass('favorite')) {
-                    let width, c_width, computed_width;
-                    let default_width = {
-                        'integer': 8,
-                        'selection': 9,
-                        'reference': 20,
-                        'one2many': 5,
-                        'many2many': 5,
-                        'boolean': 3,
-                        'binary': 20,
-                    }[column.attributes.widget] || 10;
-                    if (column.attributes.symbol) {
-                        default_width += 2;
+                    if (column.col.data('hidden-width')) {
+                        column.col.css(
+                            'width', column.col.data('hidden-width'));
+                        column.col.removeData('hidden-width');
                     }
-                    var factor = 1;
-                    if (column.attributes.expand) {
-                        factor += parseInt(column.attributes.expand, 10);
-                    }
-                    computed_width = default_width * 100 * factor  + '%';
-                    column.col.data('default-width', computed_width);
-
-                    width = tree_column_width[name];
-                    if (width || column.attributes.width) {
-                        if (width) {
-                            c_width = width;
-                        } else {
-                            width = c_width = column.attributes.width;
-                        }
-                        min_width.push(`${width}px`);
-                        column.col.data('computed-width', `${width}px`);
+                    let width;
+                    if (column.col.data('custom-width')) {
+                        width = column.col.data('custom-width');
                     } else {
-                        c_width = computed_width;
-                        min_width.push(`${default_width}em`);
+                        width = column.col.data('default-width');
                     }
-                    column.col.css('width', c_width);
+                    if (width.endsWith('%')) {
+                        width = parseInt(width.slice(0, -1), 10) / 100;
+                        if (column.attributes.expand) {
+                            width /= parseInt(column.attributes.expand, 10);
+                        }
+                        width = `${width}em`;
+                    }
+                    min_width.push(width);
                     column.col.show();
                 }
             }
