@@ -191,14 +191,24 @@ Update the asset::
     Decimal('42.30')
     >>> depreciation_account.reload()
     >>> depreciation_account.debit
-    Decimal('100.00')
+    Decimal('0.00')
     >>> depreciation_account.credit
     Decimal('112.50')
+    >>> asset_account.reload()
+    >>> asset_account.debit
+    Decimal('1100.00')
+    >>> asset_account.credit
+    Decimal('0.00')
+    >>> revenue.reload()
+    >>> revenue.debit
+    Decimal('0.00')
+    >>> revenue.credit
+    Decimal('100.00')
     >>> expense.reload()
     >>> expense.debit
     Decimal('112.50')
     >>> expense.credit
-    Decimal('100.00')
+    Decimal('0.00')
 
 Create Moves for 3 other months::
 
@@ -206,16 +216,21 @@ Create Moves for 3 other months::
     >>> create_moves.form.date = (supplier_invoice.invoice_date
     ...     + relativedelta(months=6))
     >>> create_moves.execute('create_moves')
+    >>> asset_account.reload()
+    >>> asset_account.debit
+    Decimal('1100.00')
+    >>> asset_account.credit
+    Decimal('0.00')
     >>> depreciation_account.reload()
     >>> depreciation_account.debit
-    Decimal('100.00')
+    Decimal('0.00')
     >>> depreciation_account.credit
     Decimal('239.28')
     >>> expense.reload()
     >>> expense.debit
     Decimal('239.28')
     >>> expense.credit
-    Decimal('100.00')
+    Decimal('0.00')
 
 Sale the asset::
 
@@ -233,18 +248,19 @@ Sale the asset::
     'posted'
     >>> asset.reload()
     >>> assertEqual(asset.customer_invoice_line, customer_invoice.lines[0])
+    >>> revenue.reload()
     >>> revenue.debit
     Decimal('860.72')
     >>> revenue.credit
-    Decimal('600.00')
+    Decimal('700.00')
     >>> asset_account.reload()
     >>> asset_account.debit
-    Decimal('1000.00')
+    Decimal('1100.00')
     >>> asset_account.credit
     Decimal('1100.00')
     >>> depreciation_account.reload()
     >>> depreciation_account.debit
-    Decimal('339.28')
+    Decimal('239.28')
     >>> depreciation_account.credit
     Decimal('239.28')
 

@@ -606,7 +606,10 @@ class Asset(Workflow, ModelSQL, ModelView):
         square_amount = asset_line.credit - depreciation_line.debit
         if square_amount:
             if not account:
-                account = self.product.account_revenue_used
+                if square_amount < 0:
+                    account = self.product.account_revenue_used
+                else:
+                    account = self.product.account_expense_used
             counter_part_line = MoveLine(
                 debit=square_amount if square_amount > 0 else 0,
                 credit=-square_amount if square_amount < 0 else 0,
@@ -860,12 +863,24 @@ class UpdateAsset(Wizard):
         return min(next_dates)
 
     def default_show_move(self, fields):
+        amount = self.start.value - self.record.value
+        if amount <= 0:
+            depreciation_account = (
+                self.record.product.account_depreciation_used)
+            counterpart_account = self.record.product.account_expense_used
+        else:
+            if self.record.supplier_invoice_line:
+                account_asset = (
+                    self.record.supplier_invoice_line.account.current())
+            else:
+                account_asset = self.record.product.account_asset_used
+            depreciation_account = account_asset
+            counterpart_account = self.record.product.account_revenue_used
         return {
-            'amount': self.start.value - self.record.value,
+            'amount': amount,
             'date': datetime.date.today(),
-            'depreciation_account': (
-                self.record.product.account_depreciation_used.id),
-            'counterpart_account': self.record.product.account_expense_used.id,
+            'depreciation_account': depreciation_account,
+            'counterpart_account': counterpart_account,
             'latest_move_date': self.get_latest_move_date(self.record),
             'next_depreciation_date': self.get_next_depreciation_date(
                 self.record),

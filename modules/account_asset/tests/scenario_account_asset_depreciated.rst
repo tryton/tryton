@@ -128,8 +128,13 @@ Close the asset::
     Decimal('612.50')
     >>> depreciation_account.credit
     Decimal('112.50')
+    >>> expense.reload()
+    >>> expense.debit
+    Decimal('1000.00')
+    >>> expense.credit
+    Decimal('0.00')
     >>> revenue.reload()
     >>> revenue.debit
-    Decimal('887.50')
+    Decimal('0.00')
     >>> revenue.credit
     Decimal('0.00')
