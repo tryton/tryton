@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.action.report" id="report_commercial_invoice">
+            <field name="name">Commercial Invoice</field>
+            <field name="report_name">customs.commercial_invoice</field>
+            <field name="report">stock_shipment_customs/commercial_invoice.fodt</field>
+        </record>
+        <record model="ir.action.keyword" id="report_commercial_invoice_keyword_shipment_out">
+            <field name="keyword">form_print</field>
+            <field name="model">stock.shipment.out,-1</field>
+            <field name="action" ref="report_commercial_invoice"/>
+        </record>
+        <record model="ir.action.keyword" id="report_commercial_invoice_keyword_shipment_in_return">
+            <field name="keyword">form_print</field>
+            <field name="model">stock.shipment.in.return,-1</field>
+            <field name="action" ref="report_commercial_invoice"/>
+        </record>
+    </data>
+</tryton>

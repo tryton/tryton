@@ -3284,6 +3284,23 @@ test-modules-stock_shipment_cost_weight-postgresql:
     PACKAGE: modules/stock_shipment_cost_weight
     TAG_PATTERN: '/^stock_shipment_cost_weight-.*/'
 
+check-doc-modules-stock_shipment_customs:
+  extends: .check-doc
+  variables:
+    PACKAGE: modules/stock_shipment_customs
+
+test-modules-stock_shipment_customs-sqlite:
+  extends: .test-sqlite
+  variables:
+    PACKAGE: modules/stock_shipment_customs
+    TAG_PATTERN: '/^stock_shipment_customs-.*/'
+
+test-modules-stock_shipment_customs-postgresql:
+  extends: .test-postgresql
+  variables:
+    PACKAGE: modules/stock_shipment_customs
+    TAG_PATTERN: '/^stock_shipment_customs-.*/'
+
 check-doc-modules-stock_shipment_measurements:
   extends: .check-doc
   variables:
