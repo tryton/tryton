@@ -129,9 +129,16 @@ class Payment(StripeCustomerMethodMixin, CheckoutMixin, metaclass=PoolMeta):
             'readonly': Eval('state') != 'draft',
             })
     stripe_captured = fields.Boolean(
-        "Stripe Captured", readonly=True)
+        "Stripe Captured", readonly=True,
+        states={
+            'invisible': Eval('process_method') != 'stripe',
+            })
     stripe_capture_needed = fields.Function(
-        fields.Boolean("Stripe Capture Needed"),
+        fields.Boolean(
+            "Stripe Capture Needed",
+            states={
+                'invisible': Eval('process_method') != 'stripe',
+                }),
         'get_stripe_capture_needed')
     stripe_token = fields.Char(
         "Stripe Token", readonly=True, strip=False,
@@ -157,7 +164,10 @@ class Payment(StripeCustomerMethodMixin, CheckoutMixin, metaclass=PoolMeta):
                 | ~Eval('stripe_capture_needed')),
             })
     stripe_idempotency_key = fields.Char(
-        "Stripe Idempotency Key", readonly=True, strip=False)
+        "Stripe Idempotency Key", readonly=True, strip=False,
+        states={
+            'invisible': Eval('process_method') != 'stripe',
+            })
     stripe_error_message = fields.Char("Stripe Error Message", readonly=True,
         states={
             'invisible': (
@@ -185,7 +195,11 @@ class Payment(StripeCustomerMethodMixin, CheckoutMixin, metaclass=PoolMeta):
             'invisible': ~Eval('stripe_dispute_status'),
             })
     stripe_amount = fields.Function(
-        fields.Integer("Stripe Amount"),
+        fields.Integer(
+            "Stripe Amount",
+            states={
+                'invisible': Eval('process_method') != 'stripe',
+                }),
         'get_stripe_amount', setter='set_stripe_amount')
     stripe_refunds = fields.One2Many(
         'account.payment.stripe.refund', 'payment', "Refunds",
@@ -230,20 +244,24 @@ class Payment(StripeCustomerMethodMixin, CheckoutMixin, metaclass=PoolMeta):
         cls.stripe_amount.states.update(cls.amount.states)
         cls._buttons.update({
                 'stripe_checkout': {
-                    'invisible': (~Eval('state', 'draft').in_(
-                            ['submitted', 'approved', 'processing'])
-                        | ~Eval('stripe_checkout_needed', False)),
-                    'depends': ['state', 'stripe_checkout_needed'],
+                    'invisible': ((Eval('process_method') != 'stripe')
+                        | (~Eval('state', 'draft').in_(
+                                ['submitted', 'approved', 'processing'])
+                            | ~Eval('stripe_checkout_needed', False))),
+                    'depends': [
+                        'process_method', 'state', 'stripe_checkout_needed'],
                     },
                 'stripe_do_capture': {
-                    'invisible': ((Eval('state', 'draft') != 'processing')
-                        | ~Eval('stripe_capture_needed')),
-                    'depends': ['state', 'stripe_capture_needed'],
+                    'invisible': ((Eval('process_method') != 'stripe')
+                        | ((Eval('state', 'draft') != 'processing')
+                            | ~Eval('stripe_capture_needed'))),
+                    'depends': [
+                        'process_method', 'state', 'stripe_capture_needed'],
                     },
                 'stripe_do_pull': {
-                    'invisible': (
-                        ~Eval('stripe_charge_id')
-                        & ~Eval('stripe_payment_intent_id')),
+                    'invisible': ((Eval('process_method') != 'stripe')
+                        | (~Eval('stripe_charge_id')
+                            & ~Eval('stripe_payment_intent_id'))),
                     'depends': [
                         'stripe_charge_id', 'stripe_payment_intent_id'],
                     },

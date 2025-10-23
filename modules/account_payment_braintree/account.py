@@ -160,9 +160,16 @@ class Payment(CheckoutMixin, BraintreeCustomerMethodMixin, metaclass=PoolMeta):
             'readonly': Eval('state') != 'draft',
             })
     braintree_payment_settled = fields.Boolean(
-        "Braintree Payment Settled", readonly=True)
+        "Braintree Payment Settled", readonly=True,
+        states={
+            'invisible': Eval('process_method') != 'braintree',
+            })
     braintree_settlement_needed = fields.Function(
-        fields.Boolean("Braintree Settlement Needed"),
+        fields.Boolean(
+            "Braintree Settlement Needed",
+            states={
+                'invisible': Eval('process_method') != 'braintree',
+                }),
         'get_braintree_settlement_needed')
 
     braintree_refunds = fields.One2Many(
@@ -225,12 +232,14 @@ class Payment(CheckoutMixin, BraintreeCustomerMethodMixin, metaclass=PoolMeta):
                         ],
                     },
                 'braintree_do_settle_payment': {
-                    'invisible': ((Eval('state', 'draft') != 'processing')
-                        | ~Eval('braintree_settlement_needed')),
+                    'invisible': ((Eval('process_method') != 'braintree')
+                        | ((Eval('state', 'draft') != 'processing')
+                            | ~Eval('braintree_settlement_needed'))),
                     'depends': ['state', 'braintree_settlement_needed'],
                     },
                 'braintree_do_pull': {
-                    'invisible': ~Eval('braintree_transaction_id'),
+                    'invisible': ((Eval('process_method') != 'braintree')
+                        | ~Eval('braintree_transaction_id')),
                     'depends': ['braintree_transaction_id'],
                     },
                 })
