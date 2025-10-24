@@ -1,13 +1,17 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 
+import base64
+from http import HTTPStatus
 from unittest.mock import Mock, sentinel
 
 from werkzeug.routing import Map, Rule
 
+from trytond import security
 from trytond.exceptions import TrytonException
+from trytond.pool import Pool
 from trytond.protocols.wrappers import Response
-from trytond.tests.test_tryton import Client, TestCase
+from trytond.tests.test_tryton import Client, RouteTestCase, TestCase
 from trytond.wsgi import Base64Converter, TrytondWSGI
 
 
@@ -133,3 +137,87 @@ class WSGIAppTestCase(TestCase):
 
         self.assertEqual(next(response.response), b'baz')
         self.assertEqual(response.status, "418 I'M A TEAPOT")
+
+
+class TrytonWSGITestCase(RouteTestCase):
+    module = 'res'
+
+    @classmethod
+    def setUpDatabase(cls):
+        pool = Pool()
+        User = pool.get('res.user')
+        User.create([{
+                    'name': 'user',
+                    'login': 'user',
+                    'password': '12345678',
+                    }])
+
+    def test_session_valid_good_auth(self):
+        "Test that session_valid correctly authenticates"
+        app = TrytondWSGI()
+
+        @app.route('/<database_name>/session_required')
+        @app.session_valid
+        def _route(request, database_name):
+            return Response(b'')
+
+        user_id, key = security.login(
+            self.db_name, 'user', {'password': '12345678'})
+        client = Client(app, Response)
+        session_hdr = 'Session ' + base64.b64encode(
+            f'user:{user_id}:{key}'.encode('utf8')).decode('utf8')
+        response = client.get(
+            f'/{self.db_name}/session_required',
+            headers=[('Authorization', session_hdr)])
+        self.assertEqual(response.status_code, HTTPStatus.OK)
+
+    def test_session_valid_no_pool(self):
+        "Test that session_valid does not use the pool"
+        app = TrytondWSGI()
+
+        @app.route('/<database_name>/session_required')
+        @app.session_valid
+        def _route(request):
+            return Response(b'')
+
+        user_id, key = security.login(
+            self.db_name, 'user', {'password': '12345678'})
+        Pool.stop(self.db_name)
+
+        client = Client(app, Response)
+        session_hdr = 'Session ' + base64.b64encode(
+            f'user:{user_id}:{key}'.encode('utf8')).decode('utf8')
+        client.get(
+            f'/{self.db_name}/session_required',
+            headers=[('Authorization', session_hdr)])
+        self.assertNotIn(self.db_name, Pool._pools)
+
+    def test_session_valid_bad_auth(self):
+        "Test that session_valid refuse wrong Authentication headers"
+
+        app = TrytondWSGI()
+
+        @app.route('/<database_name>/session_required')
+        @app.session_valid
+        def _route(request):
+            return Response(b'')
+
+        client = Client(app, Response)
+        response = client.get(
+            f'/{self.db_name}/session_required',
+            headers=[('Authorization', 'Session bad token')])
+        self.assertEqual(response.status_code, HTTPStatus.UNAUTHORIZED)
+
+    def test_session_valid_no_auth(self):
+        "Test that session_valid refuse unauthenticated requests"
+
+        app = TrytondWSGI()
+
+        @app.route('/<database_name>/session_required')
+        @app.session_valid
+        def _route(request):
+            return Response(b'')
+
+        client = Client(app, Response)
+        response = client.get(f'/{self.db_name}/session_required')
+        self.assertEqual(response.status_code, HTTPStatus.UNAUTHORIZED)

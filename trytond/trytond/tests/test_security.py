@@ -29,30 +29,44 @@ class SecurityTestCase(RouteTestCase):
         Transaction().commit()
 
     @with_transaction()
-    def test_check_session(self):
-        "Testing check_session"
+    def _get_auth(self):
         pool = Pool()
         User = pool.get('res.user')
         Session = pool.get('ir.session')
 
-        db_name = Transaction().database.name
         user, = User.search([('login', '=', 'user')])
         with Transaction().set_user(user.id):
             key = Session.new()
 
         Transaction().commit()
+        return user.id, key
 
-        user_id = security.check_session(db_name, user.id, key)
-        self.assertEqual(user_id, user.id)
+    def test_security_check(self):
+        "Test security.check"
+        user_id, key = self._get_auth()
+        authenticated_user_id = security.check(self.db_name, user_id, key)
+        self.assertEqual(authenticated_user_id, user_id)
 
-    @with_transaction()
-    def test_check_session_invalid(self):
-        "Testing check_session with an invalid session"
-        pool = Pool()
-        User = pool.get('res.user')
+    def test_security_check_invalid(self):
+        "Test security.check with an invalid session"
+        user_id, _ = self._get_auth()
+        user_id = security.check(self.db_name, user_id, "invalid key")
+        self.assertIsNone(user_id)
 
-        db_name = Transaction().database.name
-        user, = User.search([('login', '=', 'user')])
+    def test_security_check_no_pool(self):
+        "Test security.check without the pool"
+        user_id, key = self._get_auth()
+        Pool.stop(self.db_name)
 
-        user_id = security.check_session(db_name, user.id, "invalid key")
+        authenticated_user_id = security.check(self.db_name, user_id, key)
+        self.assertNotIn(self.db_name, Pool._pools)
+        self.assertEqual(authenticated_user_id, user_id)
+
+    def test_security_check_no_pool_invalid(self):
+        "Test security.check without the pool on an invalid session"
+        user_id, _ = self._get_auth()
+        Pool.stop(self.db_name)
+
+        user_id = security.check(self.db_name, user_id, "invalid key")
+        self.assertNotIn(self.db_name, Pool._pools)
         self.assertIsNone(user_id)
