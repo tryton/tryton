@@ -49,6 +49,10 @@ class OverriddenError(UserError):
     pass
 
 
+class DefaultLanguageError(UserError):
+    pass
+
+
 class TrytonPOFile(polib.POFile):
 
     def sort(self):
@@ -1267,6 +1271,12 @@ class TranslationSet(Wizard):
                         & ~translation.src.in_(strings)))
 
     def transition_set_(self):
+        pool = Pool()
+        Config = pool.get('ir.configuration')
+        default_lang = Config.get_language()
+        if default_lang != INTERNAL_LANG:
+            raise DefaultLanguageError(gettext(
+                    'ir.msg_translation_set_default_lang'))
         self.set_report()
         self.set_view()
         return 'succeed'
@@ -1733,6 +1743,11 @@ class TranslationExport(Wizard):
     def transition_export(self):
         pool = Pool()
         Translation = pool.get('ir.translation')
+        Config = pool.get('ir.configuration')
+        default_lang = Config.get_language()
+        if default_lang != INTERNAL_LANG:
+            raise DefaultLanguageError(gettext(
+                    'ir.msg_translation_export_default_lang'))
         self.result.file = Translation.translation_export(
             self.start.language.code, self.start.module.name)
         return 'result'

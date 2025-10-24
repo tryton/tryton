@@ -38,8 +38,8 @@ Synchronize Translations
 ------------------------
 
 The wizard updates the translations of the selected language based on the
-translations of the base language ``en``. It will also remove duplicate
-translations with its direct parent.
+translations of the :ref:`database language <config-database.language>`.
+It will also remove duplicate translations with its direct parent.
 
 Export Translations
 -------------------

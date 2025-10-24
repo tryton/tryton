@@ -343,7 +343,12 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_translation_overridden">
             <field name="text">You can not export translation "%(name)s" because it has been overridden by module "%(overriding_module)s".</field>
         </record>
-
+        <record model="ir.message" id="msg_translation_set_default_lang">
+            <field name="text">To set translations, the default language must be "English".</field>
+        </record>
+        <record model="ir.message" id="msg_translation_export_default_lang">
+            <field name="text">To export translations, the default language must be "English".</field>
+        </record>
 
         <record model="ir.message" id="msg_module_delete_state">
             <field name="text">You can not remove a module that is activated or that is about to be activated.</field>
