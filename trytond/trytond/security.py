@@ -19,6 +19,7 @@ from werkzeug.exceptions import abort
 from trytond import backend, config
 from trytond.exceptions import LoginException, RateLimitException
 from trytond.pool import Pool
+from trytond.tools import sqlite_apply_types
 from trytond.transaction import Transaction
 
 logger = logging.getLogger(__name__)
@@ -184,11 +185,15 @@ def check_session(dbname, user, session, remote_addr=None):
     try:
         ir_session = Table('ir_session')
         cursor = conn.cursor()
-        cursor.execute(*ir_session.select(
-                Coalesce(ir_session.write_date, ir_session.create_date),
-                ir_session.key,
-                where=((ir_session.create_uid == user)
-                    & (ir_session.ip_address == ip_addr))))
+        session_query = ir_session.select(
+            Coalesce(
+                ir_session.write_date, ir_session.create_date).as_('date'),
+            ir_session.key,
+            where=((ir_session.create_uid == user)
+                & (ir_session.ip_address == ip_addr)))
+        if backend.name == 'sqlite':
+            sqlite_apply_types(session_query, ['DATETIME', None])
+        cursor.execute(*session_query)
         for session_date, session_key in cursor:
             if abs(session_date - now) < timeout:
                 if compare_digest(session_key, session):
