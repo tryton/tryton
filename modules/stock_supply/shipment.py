@@ -43,6 +43,10 @@ class ShipmentInternal(ModelSQL, ModelView):
                 ('state', '=', 'request'),
                 ('company', '=', company.id),
                 ]
+        order_point_domain = [
+            ('type', '=', 'internal'),
+            ('company', '=', company.id),
+            ]
         if not warehouses:
             warehouses = Location.search([
                     ('type', '=', 'warehouse'),
@@ -54,6 +58,8 @@ class ShipmentInternal(ModelSQL, ModelView):
                         ('to_location.parent', 'child_of', warehouses),
                         ('from_location.parent', 'child_of', warehouses),
                         ])
+            order_point_domain.append(
+                ('location.parent', 'child_of', warehouses))
 
         today = Date.today()
         lead_time = LeadTime.get_max_lead_time()
@@ -62,12 +68,7 @@ class ShipmentInternal(ModelSQL, ModelView):
             cls.delete(cls.search(clean_request_domain))
 
         # fetch quantities on order points
-        order_points = OrderPoint.search([
-                ('type', '=', 'internal'),
-                ('company', '=', company.id)
-                ])
-        order_points = [
-            op for op in order_points if op.location.warehouse in warehouses]
+        order_points = OrderPoint.search(order_point_domain)
         id2product = {}
         product2op = {}
         id2location = {}
