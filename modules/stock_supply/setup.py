@@ -70,7 +70,8 @@ setup(name=name,
         ),
     package_data={
         'trytond.modules.stock_supply': (info.get('xml', [])
-            + ['tryton.cfg', 'view/*.xml', 'locale/*.po', 'tests/*.rst']),
+            + ['tryton.cfg', 'view/*.xml', 'locale/*.po', 'tests/*.rst',
+                'tests/*.json']),
         },
     classifiers=[
         'Development Status :: 5 - Production/Stable',

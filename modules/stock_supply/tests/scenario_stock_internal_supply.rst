@@ -10,6 +10,8 @@ Imports::
     >>> from trytond.modules.company.tests.tools import create_company
     >>> from trytond.tests.tools import activate_modules
 
+    >>> with_warehouses = globals().get('with_warehouses', False)
+
 Activate modules::
 
     >>> config = activate_modules('stock_supply', create_company)
@@ -113,7 +115,13 @@ Create negative quantity in Second Storage::
 
 Execute internal supply::
 
-    >>> Wizard('stock.supply').execute('create_')
+    >>> stock_supply = Wizard('stock.supply')
+    >>> if with_warehouses:
+    ...     stock_supply.form.warehouses.append(warehouse_loc)
+    ... else:
+    ...     while stock_supply.form.warehouses:
+    ...         _ = stock_supply.form.warehouses.pop()
+    >>> stock_supply.execute('create_')
     >>> shipment, = ShipmentInternal.find(
     ...     [('to_location', '=', sec_storage_loc.id)])
     >>> shipment.state
