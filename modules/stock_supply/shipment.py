@@ -32,20 +32,26 @@ class ShipmentInternal(ModelSQL, ModelView):
         if not company:
             return
 
+        clean_request_domain = [
+                ('state', '=', 'request'),
+                ('company', '=', company.id),
+                ]
         if warehouses is None:
             warehouses = Location.search([
                     ('type', '=', 'warehouse'),
                     ])
+        else:
+            clean_request_domain.append(
+                    ['OR',
+                        ('to_location.parent', 'child_of', warehouses),
+                        ('from_location.parent', 'child_of', warehouses),
+                        ])
 
         today = Date.today()
         lead_time = LeadTime.get_max_lead_time()
 
         if clean:
-            reqs = cls.search([
-                    ('state', '=', 'request'),
-                    ('company', '=', company.id),
-                    ])
-            cls.delete(reqs)
+            cls.delete(cls.search(clean_request_domain))
 
         # fetch quantities on order points
         order_points = OrderPoint.search([
