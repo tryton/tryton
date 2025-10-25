@@ -32,6 +32,13 @@ class ShipmentInternal(ModelSQL, ModelView):
         if not company:
             return
 
+        implicit_location_domain = [
+                ['OR',
+                    ('provisioning_location', '!=', None),
+                    ('overflowing_location', '!=', None),
+                    ],
+                ('type', '=', 'storage'),
+                ]
         clean_request_domain = [
                 ('state', '=', 'request'),
                 ('company', '=', company.id),
@@ -41,6 +48,7 @@ class ShipmentInternal(ModelSQL, ModelView):
                     ('type', '=', 'warehouse'),
                     ])
         else:
+            implicit_location_domain.append(('parent', 'child_of', warehouses))
             clean_request_domain.append(
                     ['OR',
                         ('to_location.parent', 'child_of', warehouses),
@@ -69,13 +77,7 @@ class ShipmentInternal(ModelSQL, ModelView):
                 (op.storage_location.id, op.product.id)
                 ] = op
             id2location[op.storage_location.id] = op.storage_location
-        implicit_locations = Location.search([
-                ['OR',
-                    ('provisioning_location', '!=', None),
-                    ('overflowing_location', '!=', None),
-                    ],
-                ('type', '=', 'storage'),
-                ])
+        implicit_locations = Location.search(implicit_location_domain)
         id2location.update({l.id: l for l in implicit_locations})
         location_ids = list(id2location.keys())
 
