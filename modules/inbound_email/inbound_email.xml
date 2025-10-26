@@ -6,7 +6,7 @@ this repository contains the full copyright notices and license terms. -->
         <menuitem
             parent="ir.menu_administration"
             name="Inbound Email"
-            sequence="50"
+            sequence="30"
             id="menu_inbound_email"/>
 
         <record model="ir.ui.view" id="inbound_email_inbox_view_form">
