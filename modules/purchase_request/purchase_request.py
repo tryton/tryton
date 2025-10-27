@@ -75,7 +75,8 @@ class PurchaseRequest(ModelSQL, ModelView):
             help="The default Unit of Measure."),
         'on_change_with_default_uom')
     stock_level = fields.Float(
-        "Stock at Supply Date", readonly=True, digits='default_uom')
+        "Stock at Supply Date", readonly=True, digits='default_uom',
+        help="The expected stock in the warehouse at the supply date")
     warehouse = fields.Many2One(
         'stock.location', "Warehouse",
         states={
