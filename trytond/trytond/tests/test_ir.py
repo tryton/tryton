@@ -802,5 +802,26 @@ class IrCronTestCase(TestCase):
 
         self.assertIsInstance(cron.get_timezone('timezone'), str)
 
+    @with_transaction()
+    def test_clean(self):
+        "Test cleaning cron logs"
+        pool = Pool()
+        Cron = pool.get('ir.cron')
+        Log = pool.get('ir.cron.log')
+        dt = datetime
+
+        cron = Cron(
+            interval_number=2, interval_type='hours',
+            method='ir.trigger|trigger_time')
+        cron.logs = [{
+                'started': dt.datetime.now() - dt.timedelta(hours=i),
+                'ended': dt.datetime.now() - dt.timedelta(hours=i + 1)}
+            for i in range(0, 20, 2)]
+        cron.save()
+
+        Log.clean(5)
+
+        self.assertEqual(len(cron.logs), 5)
+
 
 del ModuleTestCase

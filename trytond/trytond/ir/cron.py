@@ -9,7 +9,8 @@ from collections import defaultdict
 
 from dateutil.relativedelta import relativedelta
 from sql import Literal
-from sql.conditionals import Coalesce
+from sql.conditionals import Case, Coalesce
+from sql.functions import CurrentTimestamp, Extract
 
 from trytond import backend, config
 from trytond.exceptions import UserError, UserWarning
@@ -311,10 +312,34 @@ class Log(ModelSQL, ModelView):
         return self.ended - self.started
 
     @classmethod
-    def clean(cls, date=None):
-        if date is None:
-            clean_days = config.getint('cron', 'clean_days', default=30)
-            date = (
-                datetime.datetime.now() - datetime.timedelta(days=clean_days))
-        logs = cls.search([('create_date', '<', date)])
+    def clean(cls, size=None):
+        pool = Pool()
+        Cron = pool.get('ir.cron')
+        cursor = Transaction().connection.cursor()
+
+        log = cls.__table__()
+        cron = Cron.__table__()
+
+        if size is None:
+            size = config.getint('cron', 'log_size', default=100)
+
+        interval = Case(
+            (cron.interval_type == 'minutes', datetime.timedelta(minutes=1)),
+            (cron.interval_type == 'hours', datetime.timedelta(hours=1)),
+            (cron.interval_type == 'days', datetime.timedelta(days=1)),
+            (cron.interval_type == 'weeks', datetime.timedelta(weeks=1)),
+            (cron.interval_type == 'months', datetime.timedelta(days=30)))
+
+        started = log.started
+        now = CurrentTimestamp()
+        if backend.name == 'sqlite':
+            started = Extract('epoch', started)
+            now = Extract('epoch', now)
+
+        cursor.execute(*log
+            .join(cron, condition=log.cron == cron.id)
+            .select(log.id,
+                where=started < (
+                    now - (interval * cron.interval_number * size))))
+        logs = cls.browse([l for l, in cursor])
         cls.delete(logs)

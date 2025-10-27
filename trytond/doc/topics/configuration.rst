@@ -447,12 +447,12 @@ cron
 
 .. _config-cron.clean_days:
 
-clean_days
-~~~~~~~~~~
+log_size
+~~~~~~~~
 
-The number of days after which scheduled task logs are removed.
+The approximate number of log entries to keep for each scheduled task.
 
-Default: ``30``
+Default: ``100``
 
 .. _config-queue:
 
