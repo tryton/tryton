@@ -345,6 +345,15 @@ this repository contains the full copyright notices and license terms. -->
             <field name="assets" eval="True"/>
             <field name="receivable" eval="True"/>
         </record>
+        <record model="account.account.type.template" id="actif_VII_A_acomptes">
+            <field name="name" lang="fr">Acomptes versés</field>
+            <field name="name" lang="nl">Vooruitbetalingen</field>
+            <field name="sequence" eval="10"/>
+            <field name="parent" ref="actif_VII_A"/>
+            <field name="statement">balance</field>
+            <field name="debt" eval="True"/>
+        </record>
+
         <record model="account.account.type.template" id="actif_VII_B">
             <field name="name" lang="fr">B. Autres créances</field>
             <field name="name" lang="nl">B. Overige vorderingen</field>
@@ -1786,7 +1795,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name" lang="fr">Créances commerciales</field>
             <field name="name" lang="nl">Handelsvorderingen</field>
             <field name="code">40</field>
-            <field name="type" ref="actif_VII_A"/>
+            <field name="type" eval="None"/>
             <field name="closed" eval="True"/>
             <field name="parent" ref="4"/>
         </record>
@@ -2974,7 +2983,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="code">406</field>
             <field name="reconcile" eval="True"/>
             <field name="party_required" eval="True"/>
-            <field name="type" ref="actif_VII_A"/>
+            <field name="type" ref="actif_VII_A_acomptes"/>
             <field name="parent" ref="40"/>
         </record>
 
