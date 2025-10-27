@@ -315,7 +315,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="sequence" eval="60"/>
             <field name="parent" ref="actif_VI_A"/>
             <field name="statement">balance</field>
-            <field name="assets" eval="True"/>
+            <field name="assets" eval="False"/>
+            <field name="debt" eval="True"/>
         </record>
         <record model="account.account.type.template" id="actif_VI_B">
             <field name="name" lang="fr">B. Commandes en cours d'exécution</field>

@@ -270,7 +270,8 @@ this repository contains the full copyright notices and license terms. -->
       <field name="sequence" eval="60"/>
       <field name="parent" ref="actif_VI_A_nl"/>
       <field name="statement">balance</field>
-      <field name="assets" eval="True"/>
+      <field name="assets" eval="False"/>
+      <field name="debt" eval="True"/>
     </record>
     <record id="actif_VI_B_nl" model="account.account.type.template">
       <field name="name">B. Bestellingen in uitvoering</field>
