@@ -877,11 +877,13 @@ class M2O(GenericText):
             return
         target_id = self.id_from_value(field.get(record))
 
+        # Remove first tree view as mode is form only
+        view_ids = self.attrs.get('view_ids', '').split(',')[1:]
         breadcrumb = list(self.view.screen.breadcrumb)
         breadcrumb.append(
             field.attrs.get('string') or common.MODELNAME.get(model))
         screen = Screen(model, domain=domain, context=context,
-            mode=['form'], view_ids=self.attrs.get('view_ids', '').split(','),
+            mode=['form'], view_ids=view_ids,
             exclude_field=field.attrs.get('relation_field'),
             breadcrumb=breadcrumb)
 
