@@ -36,6 +36,7 @@ class Production(metaclass=PoolMeta):
         Uom = pool.get('product.uom')
 
         productions = [self]
+        n_productions = 0
         remainder = Uom.compute_qty(self.unit, self.quantity, unit)
         if remainder <= quantity:
             return productions
@@ -47,16 +48,18 @@ class Production(metaclass=PoolMeta):
             count -= 1
         while (remainder > quantity
                 and (count or count is None)):
-            productions.extend(self.copy([self], {
+            n_productions += 1
+            remainder -= quantity
+            remainder = unit.round(remainder)
+            if count:
+                count -= 1
+        if n_productions:
+            productions.extend(self.copy([self] * n_productions, {
                         'quantity': quantity,
                         'unit': unit.id,
                         'inputs': None,
                         'outputs': None,
                         }))
-            remainder -= quantity
-            remainder = unit.round(remainder)
-            if count:
-                count -= 1
         assert remainder >= 0
         if remainder:
             productions.extend(self.copy([self], {
