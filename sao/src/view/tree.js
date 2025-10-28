@@ -2319,12 +2319,18 @@
             cell = cell.children('a');
             cell.unbind('click');
             Sao.View.Tree.Many2OneColumn._super.update_text.call(this, cell, record);
+            let view_ids = (this.attributes.view_ids || '').split(',');
+            if (!jQuery.isEmptyObject(view_ids)) {
+                // Remove the first tree view as mode is form only
+                view_ids.shift();
+            }
             cell.click(function(event) {
                 event.stopPropagation();
                 var params = {};
                 params.model = this.attributes.relation;
                 params.res_id = this.field.get(record);
                 params.mode = ['form'];
+                params.view_ids = view_ids;
                 params.name = this.attributes.string;
                 params.context = this.field.get_context(record);
                 Sao.Tab.create(params);
