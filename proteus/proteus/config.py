@@ -408,8 +408,8 @@ def set_xmlrpc_session(
         parameters['password'] = password
     server = xmlrpc.client.ServerProxy(
         url, allow_none=True, use_builtin_types=True, **kwargs)
-    session = server.common.db.login(username, parameters)
-    session = ':'.join(map(str, [username] + session))
+    user_id, session, _ = server.common.db.login(username, parameters)
+    session = ':'.join(map(str, [username, user_id, session]))
     auth = base64.encodebytes(session.encode('utf-8')).decode('ascii')
     auth = ''.join(auth.split())  # get rid of whitespace
     kwargs.setdefault('headers', []).append(
