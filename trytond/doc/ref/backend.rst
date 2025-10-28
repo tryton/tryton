@@ -50,6 +50,10 @@ Database
 
    Drop the named database using the connection.
 
+.. classmethod:: Database.clear_cache()
+
+   Clear the cached values regarding the database properties.
+
 .. method:: Database.list([hostname])
 
    Return a list of Tryton database names.

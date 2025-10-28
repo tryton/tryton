@@ -1,3 +1,4 @@
+* Add a clear cache method to the Database
 * Add sequence_reorder to model order
 * Remove has_window_functions from Database
 * Set minimal supported version of SQLite to 3.30.0

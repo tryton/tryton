@@ -45,6 +45,10 @@ class DatabaseInterface(object):
     def drop(cls, connection, database_name):
         raise NotImplementedError
 
+    @classmethod
+    def clear_cache(cls):
+        pass
+
     def list(self, hostname=None):
         raise NotImplementedError
 

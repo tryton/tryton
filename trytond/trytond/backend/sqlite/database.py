@@ -613,7 +613,12 @@ class Database(DatabaseInterface):
                     os.remove(file + suffix)
                 except FileNotFoundError:
                     pass
+        cls.clear_cache()
+
+    @classmethod
+    def clear_cache(cls):
         cls._list_cache.clear()
+        cls._list_cache_timestamp.clear()
 
     def list(self, hostname=None):
         now = time.time()

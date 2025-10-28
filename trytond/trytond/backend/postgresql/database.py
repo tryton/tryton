@@ -330,9 +330,20 @@ class Database(DatabaseInterface):
         cursor = connection.cursor()
         cursor.execute(SQL("DROP DATABASE {}")
             .format(Identifier(database_name)))
+        cls.clear_cache()
+
+    @classmethod
+    def clear_cache(cls):
         cls._list_cache.clear()
-        cls._has_proc.pop(database_name, None)
-        cls._search_full_text_languages.pop(database_name, None)
+        cls._list_cache_timestamp.clear()
+        cls._search_path = None
+        cls._current_user = None
+        cls._has_returning = None
+        cls._has_insert_on_conflict = None
+        cls._has_select_for_skip_locked = None
+        cls._has_proc.clear()
+        cls._extensions.clear()
+        cls._search_full_text_languages.clear()
 
     def get_version(self, connection):
         version = connection.server_version

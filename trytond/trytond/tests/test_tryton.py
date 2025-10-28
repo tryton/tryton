@@ -1265,7 +1265,7 @@ class ExtensionTestCase(TestCase):
         cursor = connection.cursor()
         cursor.execute('CREATE EXTENSION "%s"' % cls.extension)
         connection.commit()
-        cls._clear_cache()
+        backend.Database.clear_cache()
 
     @classmethod
     @with_transaction()
@@ -1274,11 +1274,7 @@ class ExtensionTestCase(TestCase):
         cursor = connection.cursor()
         cursor.execute('DROP EXTENSION "%s"' % cls.extension)
         connection.commit()
-        cls._clear_cache()
-
-    @classmethod
-    def _clear_cache(cls):
-        backend.Database._has_proc.clear()
+        backend.Database.clear_cache()
 
 
 def drop_db(name=DB_NAME):
