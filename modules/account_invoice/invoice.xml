@@ -305,6 +305,30 @@ this repository contains the full copyright notices and license terms. -->
             <field name="action" ref="report_invoice"/>
         </record>
 
+        <record model="ir.action.wizard" id="edocument">
+            <field name="name">E-document</field>
+            <field name="wiz_name">account.invoice.edocument</field>
+            <field name="model">account.invoice</field>
+            <field name="active" eval="False"/>
+        </record>
+        <record model="ir.action.keyword" id="edocument_keyword">
+            <field name="keyword">form_print</field>
+            <field name="model">account.invoice,-1</field>
+            <field name="action" ref="edocument"/>
+        </record>
+
+        <record model="ir.ui.view" id="edocument_start_view_form">
+            <field name="model">account.invoice.edocument.start</field>
+            <field name="type">form</field>
+            <field name="name">edocument_start_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="edocument_result_view_form">
+            <field name="model">account.invoice.edocument.result</field>
+            <field name="type">form</field>
+            <field name="name">edocument_result_form</field>
+        </record>
+
         <record model="ir.sequence.type" id="sequence_type_account_invoice">
             <field name="name">Invoice</field>
         </record>

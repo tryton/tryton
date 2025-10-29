@@ -3499,6 +3499,64 @@ class InvoiceReport(Report):
         return context
 
 
+class InvoiceEdocument(Wizard):
+    __name__ = 'account.invoice.edocument'
+
+    start = StateView(
+        'account.invoice.edocument.start',
+        'account_invoice.edocument_start_view_form', [
+            Button("Cancel", 'end', 'tryton-cancel'),
+            Button("Render", 'render', 'tryton-ok', default=True),
+            ])
+    render = StateTransition()
+    result = StateView(
+        'account.invoice.edocument.result',
+        'account_invoice.edocument_result_view_form', [
+            Button("Close", 'end', 'tryton-close', default=True),
+            ])
+
+    def transition_render(self):
+        pool = Pool()
+        Start = pool.get('account.invoice.edocument.start')
+        if self.start.format not in dict(Start.format.selection):
+            raise ValueError("Unsupported format")
+        Edocument = pool.get(self.start.format)
+        edocument = Edocument(self.record)
+        file = edocument.render(self.start.template)
+        if isinstance(file, str):
+            file = file.decode('utf-8')
+        self.result.file = file
+        self.result.filename = edocument.filename
+        return 'result'
+
+    def default_result(self, fields):
+        file = self.result.file
+        self.result.file = None  # No need to store it in the session
+        return {
+            'file': file,
+            'filename': self.result.filename,
+            }
+
+
+class InvoiceEdocumentStart(ModelView):
+    __name__ = 'account.invoice.edocument.start'
+
+    format = fields.Selection([
+            ], "Format", required=True)
+    template = fields.Selection('get_templates', "Template", required=True)
+
+    @fields.depends()
+    def get_templates(self):
+        return []
+
+
+class InvoiceEdocumentResult(ModelView):
+    __name__ = 'account.invoice.edocument.result'
+
+    file = fields.Binary("File", readonly=True, filename='filename')
+    filename = fields.Char("File Name", readonly=True)
+
+
 class PayInvoiceStart(ModelView):
     __name__ = 'account.invoice.pay.start'
 

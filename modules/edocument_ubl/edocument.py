@@ -14,7 +14,7 @@ from genshi.template.astutil import ASTCodeGenerator, ASTTransformer
 from trytond.model import Model
 from trytond.pool import Pool
 from trytond.rpc import RPC
-from trytond.tools import cached_property
+from trytond.tools import cached_property, slugify
 from trytond.transaction import Transaction
 
 if not hasattr(ASTCodeGenerator, 'visit_NameConstant'):
@@ -82,6 +82,10 @@ class Invoice(Model):
             return loader.load(os.path.join(version, 'CreditNote.xml'))
         else:
             return loader.load(os.path.join(version, 'Invoice.xml'))
+
+    @property
+    def filename(self):
+        return f'{slugify(self.invoice.rec_name)}.xml'
 
     @cached_property
     def type_code(self):
