@@ -301,6 +301,15 @@ class Shop_PriceList(metaclass=PoolMeta):
         return sale
 
 
+class Shop_ShipmentCost(metaclass=PoolMeta):
+    __name__ = 'web.shop'
+
+    def get_sale(self, party=None):
+        sale = super().get_sale(party=party)
+        sale.shipment_cost_method = 'order'
+        return sale
+
+
 class Shop_TaxRuleCountry(metaclass=PoolMeta):
     __name__ = 'web.shop'
 
