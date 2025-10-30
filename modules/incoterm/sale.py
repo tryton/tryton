@@ -51,7 +51,9 @@ class Sale(IncotermAvailableMixin, metaclass=PoolMeta):
         super().check_for_quotation()
         if not self.incoterm and self._incoterm_required:
             for line in self.lines:
-                if line.product and line.product.type in {'goods', 'assets'}:
+                if (line.product
+                        and line.product.type in line.get_move_product_types()
+                        ):
                     raise SaleQuotationError(
                         gettext('incoterm'
                             '.msg_sale_incoterm_required_for_quotation',
