@@ -759,9 +759,11 @@ class Purchase(
 
     def check_for_quotation(self):
         for line in self.line_lines:
-            if (not line.to_location
-                    and line.product
-                    and line.movable):
+            if (line.quantity or 0) >= 0:
+                location = line.to_location
+            else:
+                location = line.from_location
+            if ((not location or not line.warehouse) and line.movable):
                 raise PurchaseQuotationError(
                     gettext('purchase.msg_warehouse_required_for_quotation',
                         purchase=self.rec_name))
