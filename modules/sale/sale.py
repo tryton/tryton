@@ -925,7 +925,8 @@ class Sale(
             if (not location or not line.warehouse) and line.movable:
                 raise SaleQuotationError(
                     gettext('sale.msg_sale_warehouse_required_for_quotation',
-                        sale=self.rec_name))
+                        sale=self.rec_name,
+                        line=line.rec_name))
 
     @classmethod
     def set_number(cls, sales):

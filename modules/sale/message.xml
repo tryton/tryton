@@ -22,7 +22,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="text">To get a quote for sale "%(sale)s" you must enter a shipment address.</field>
         </record>
         <record model="ir.message" id="msg_sale_warehouse_required_for_quotation">
-            <field name="text">To get a quote for sale "%(sale)s" you must enter a warehouse.</field>
+            <field name="text">To get a quote for sale "%(sale)s" you must enter a warehouse for the line "%(line)s".</field>
         </record>
         <record model="ir.message" id="msg_sale_delete_cancel">
             <field name="text">To delete sale "%(sale)s" you must cancel it.</field>

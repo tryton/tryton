@@ -766,7 +766,8 @@ class Purchase(
             if ((not location or not line.warehouse) and line.movable):
                 raise PurchaseQuotationError(
                     gettext('purchase.msg_warehouse_required_for_quotation',
-                        purchase=self.rec_name))
+                        purchase=self.rec_name,
+                        line=line.rec_name))
 
     @classmethod
     def set_number(cls, purchases):
