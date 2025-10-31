@@ -2,7 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 
 from trytond.i18n import gettext
-from trytond.model import fields
+from trytond.model import ModelView, Workflow, fields
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
 
@@ -103,6 +103,31 @@ class Sale_Carrier(metaclass=PoolMeta):
         else:
             super_on_change()
         self._set_default_incoterm()
+
+
+class Sale_WebShop(metaclass=PoolMeta):
+    __name__ = 'sale.sale'
+
+    @property
+    @fields.depends('web_shop')
+    def _party_incoterms(self):
+        incoterms = super()._party_incoterms
+        if self.web_shop:
+            incoterms = []
+        return incoterms
+
+    @classmethod
+    @ModelView.button
+    @Workflow.transition('quotation')
+    def quote(cls, sales):
+        for sale in sales:
+            if sale.web_shop and sale._incoterm_required:
+                if not sale.incoterm:
+                    sale.incoterm = sale.web_shop.default_incoterm
+                if sale.incoterm and sale.incoterm.location:
+                    sale.incoterm_location = sale.shipment_address
+        cls.save(sales)
+        super().quote(sales)
 
 
 class Opportunity(IncotermMixin, metaclass=PoolMeta):

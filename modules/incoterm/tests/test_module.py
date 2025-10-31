@@ -15,7 +15,7 @@ class IncotermTestCase(CompanyTestMixin, ModuleTestCase):
         'carrier', 'company', 'purchase', 'purchase_request_quotation',
         'sale', 'sale_shipment_cost', 'sale_opportunity',
         'sale_shipment_grouping', 'stock', 'account_invoice',
-        'account_invoice_stock']
+        'account_invoice_stock', 'web_shop']
 
     @with_transaction()
     def test_shipment_grouping(self):

@@ -63,6 +63,7 @@ tests_require = [
     get_require_version('trytond_sale_opportunity'),
     get_require_version('trytond_sale_shipment_grouping'),
     get_require_version('trytond_stock'),
+    get_require_version('trytond_web_shop'),
     ]
 
 setup(name=name,
