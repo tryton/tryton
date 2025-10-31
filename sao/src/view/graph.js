@@ -362,7 +362,8 @@
             Sao.View.Graph.Pie._super._add_id.call(this, key, id);
         },
         _action_key: function(data) {
-            return data.id;
+            // data.name is the label used for the x axis
+            return data.name;
         }
     });
 
