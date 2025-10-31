@@ -10,4 +10,5 @@ class Replace(metaclass=PoolMeta):
     def fields_to_replace(cls):
         return super().fields_to_replace() + [
             ('account.statement.line', 'party'),
+            ('account.statement.origin', 'party'),
             ]
