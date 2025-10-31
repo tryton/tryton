@@ -18,10 +18,11 @@ except ImportError:
 __version__ = "7.6.11"
 __series__ = '.'.join(__version__.split('.')[:2])
 
-os.environ.setdefault(
-    'TRYTOND_APPNAME',
-    os.path.basename(getattr(__main__, '__file__', 'trytond')))
-os.environ['TRYTOND_TZ'] = os.environ.get('TZ') or 'UTC'
+if not os.environ.get('TRYTOND_APPNAME'):
+    os.environ['TRYTOND_APPNAME'] = os.path.basename(
+        getattr(__main__, '__file__', 'trytond'))
+if not os.environ.get('TRYTOND_TZ'):
+    os.environ['TRYTOND_TZ'] = os.environ.get('TZ') or 'UTC'
 os.environ['TZ'] = 'UTC'
 if hasattr(time, 'tzset'):
     time.tzset()
