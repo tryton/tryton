@@ -7,10 +7,10 @@ from itertools import chain, groupby, islice, product, repeat
 
 from sql import (
     Asc, Column, Desc, Expression, Literal, Null, NullsFirst, NullsLast, Table,
-    Union, With)
+    Union, Window, With)
 from sql.aggregate import Count, Max
 from sql.conditionals import Coalesce
-from sql.functions import CurrentTimestamp, Extract, Substring
+from sql.functions import CurrentTimestamp, Extract, RowNumber, Substring
 from sql.operators import And, Concat, Equal, Operator, Or
 
 from trytond import backend
@@ -692,16 +692,24 @@ class ModelSQL(ModelStorage):
                 for id_ in ids:
                     cache_cls.pop(id_, None)
 
+        history_select = With()
+        history_values = history_select.select(
+            where=Column(history_select, '__h_rank') == 1,
+            with_=[history_select])
+
         columns = []
         hcolumns = []
+        history_columns = []
         fnames = sorted(n for n, f in cls._fields.items()
             if f.sql_type())
+        id_idx = fnames.index('id')
         for fname in fnames:
             columns.append(Column(table, fname))
+            history_columns.append(Column(history_values, fname))
             if fname == 'write_uid':
-                hcolumns.append(Literal(transaction.user))
+                hcolumns.append(Literal(transaction.user).as_('write_uid'))
             elif fname == 'write_date':
-                hcolumns.append(CurrentTimestamp())
+                hcolumns.append(CurrentTimestamp().as_('write_date'))
             else:
                 hcolumns.append(Column(history, fname))
 
@@ -709,41 +717,73 @@ class ModelSQL(ModelStorage):
             return all(not v for n, v in zip(fnames, values)
                 if n not in ['id', 'write_uid', 'write_date'])
 
-        to_delete = []
-        to_update = []
-        for id_ in ids:
-            column_datetime = Coalesce(history.write_date, history.create_date)
+        to_delete = set()
+        to_update = set()
+
+        column_datetime = Coalesce(history.write_date, history.create_date)
+        h_order = (column_datetime.desc, Column(history, '__id').desc)
+        history_select.query = history.select(
+            *hcolumns,
+            RowNumber(
+                window=Window([history.id], order_by=h_order)
+                ).as_('__h_rank'))
+
+        for sub_ids in grouped_slice(ids):
+            sub_ids = list(sub_ids)
             if not _before:
                 hwhere = (column_datetime <= datetime)
             else:
                 hwhere = (column_datetime < datetime)
-            hwhere &= (history.id == id_)
-            horder = (column_datetime.desc, Column(history, '__id').desc)
-            cursor.execute(*history.select(*hcolumns,
-                    where=hwhere, order_by=horder, limit=1))
-            values = cursor.fetchone()
-            if not values or is_deleted(values):
-                to_delete.append(id_)
+
+            hwhere &= reduce_ids(history.id, sub_ids)
+            history_select.query.where = hwhere
+
+            cursor.execute(*history_values)
+            for values in cursor.fetchall():
+                if is_deleted(values):
+                    to_delete.add(values[id_idx])
+                else:
+                    to_update.add(values[id_idx])
+            to_delete |= (deleted_sub_ids := set(sub_ids) - to_update)
+
+            # we need to skip the deleted IDs that are all None history records
+            # because they could fail the UPDATE
+            if to_delete:
+                history_select.query.where &= ~history.id.in_(
+                    list(deleted_sub_ids))
+
+            # Some of the sub_ids are not updated because they are not in the
+            # table anymore, they should be undeleted from the value in the
+            # history table
+            to_undelete = set()
+            update_query = table.update(
+                columns, history_columns,
+                from_=[history_values],
+                where=history_values.id == table.id)
+            if transaction.database.has_returning():
+                update_query.returning = [table.id]
+                cursor.execute(*update_query)
+                to_undelete.update(to_update - set(r[0] for r in cursor))
             else:
-                to_update.append(id_)
-                values = list(values)
-                cursor.execute(*table.update(columns, values,
-                        where=table.id == id_))
-                rowcount = cursor.rowcount
-                if rowcount == -1 or rowcount is None:
-                    cursor.execute(*table.select(table.id,
-                            where=table.id == id_))
-                    rowcount = len(cursor.fetchall())
-                if rowcount < 1:
-                    cursor.execute(*table.insert(columns, [values]))
+                cursor.execute(*table
+                    .right_join(history_values, history_values.id == table.id)
+                    .select(history_values.id, where=table.id == Null))
+                to_undelete.update(r[0] for r in cursor)
+                cursor.execute(*update_query)
+            if to_undelete:
+                history_select.query.where = (hwhere
+                    & history.id.in_(list(to_undelete)))
+                cursor.execute(*table.insert(
+                        columns,
+                        history_values.select(*history_columns)))
 
         if to_delete:
             for sub_ids in grouped_slice(to_delete):
                 where = reduce_ids(table.id, sub_ids)
                 cursor.execute(*table.delete(where=where))
-            cls._insert_history(to_delete, True)
+            cls._insert_history(list(to_delete), True)
         if to_update:
-            cls._insert_history(to_update)
+            cls._insert_history(list(to_update))
 
     @classmethod
     def restore_history(cls, ids, datetime):
