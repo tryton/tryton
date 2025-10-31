@@ -13,6 +13,7 @@ from trytond.modules.account.tax import TaxableMixin
 from trytond.modules.company.tests import (
     CompanyTestMixin, PartyCompanyCheckEraseMixin, create_company, set_company)
 from trytond.modules.currency.tests import create_currency
+from trytond.modules.party.tests import PartyCheckReplaceMixin
 from trytond.pool import Pool
 from trytond.tests.test_tryton import ModuleTestCase, with_transaction
 from trytond.transaction import Transaction, inactive_records
@@ -167,7 +168,8 @@ def close_fiscalyear(fiscalyear):
 
 
 class AccountTestCase(
-        PartyCompanyCheckEraseMixin, CompanyTestMixin, ModuleTestCase):
+        PartyCompanyCheckEraseMixin, PartyCheckReplaceMixin, CompanyTestMixin,
+        ModuleTestCase):
     'Test Account module'
     module = 'account'
     maxDiff = None

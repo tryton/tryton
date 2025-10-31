@@ -5,6 +5,7 @@ from decimal import Decimal
 
 from trytond.modules.company.tests import (
     CompanyTestMixin, PartyCompanyCheckEraseMixin, create_company, set_company)
+from trytond.modules.party.tests import PartyCheckReplaceMixin
 from trytond.pool import Pool
 from trytond.tests.test_tryton import ModuleTestCase, with_transaction
 
@@ -46,7 +47,8 @@ def create_plan(lines):
 
 
 class CommissionTestCase(
-        PartyCompanyCheckEraseMixin, CompanyTestMixin, ModuleTestCase):
+        PartyCompanyCheckEraseMixin, PartyCheckReplaceMixin, CompanyTestMixin,
+        ModuleTestCase):
     'Test Commission module'
     module = 'commission'
     extras = ['sale', 'stock', 'account_invoice_stock']

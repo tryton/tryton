@@ -11,11 +11,12 @@ except ImportError:
 from trytond.model.exceptions import SQLConstraintError
 from trytond.modules.bank.exceptions import InvalidBIC
 from trytond.modules.currency.tests import create_currency
+from trytond.modules.party.tests import PartyCheckReplaceMixin
 from trytond.pool import Pool
 from trytond.tests.test_tryton import ModuleTestCase, with_transaction
 
 
-class BankTestCase(ModuleTestCase):
+class BankTestCase(PartyCheckReplaceMixin, ModuleTestCase):
     'Test Bank module'
     module = 'bank'
 

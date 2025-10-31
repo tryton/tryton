@@ -10,7 +10,8 @@ from unittest.mock import patch
 from trytond.model import ModelStorage, ModelView
 from trytond.modules.company.model import CompanyMultiValueMixin
 from trytond.modules.currency.tests import add_currency_rate, create_currency
-from trytond.modules.party.tests import PartyCheckEraseMixin
+from trytond.modules.party.tests import (
+    PartyCheckEraseMixin, PartyCheckReplaceMixin)
 from trytond.pool import Pool, isregisteredby
 from trytond.pyson import Eval, PYSONEncoder
 from trytond.tests.test_tryton import ModuleTestCase, with_transaction
@@ -152,7 +153,8 @@ class CompanyTestMixin:
 
 
 class CompanyTestCase(
-        PartyCompanyCheckEraseMixin, CompanyTestMixin, ModuleTestCase):
+        PartyCompanyCheckEraseMixin, PartyCheckReplaceMixin, CompanyTestMixin,
+        ModuleTestCase):
     'Test Company module'
     module = 'company'
 

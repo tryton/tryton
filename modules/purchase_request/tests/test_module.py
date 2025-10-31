@@ -4,11 +4,12 @@
 import datetime as dt
 
 from trytond.modules.company.tests import create_company, set_company
+from trytond.modules.party.tests import PartyCheckReplaceMixin
 from trytond.pool import Pool
 from trytond.tests.test_tryton import ModuleTestCase, with_transaction
 
 
-class PurchaseRequestTestCase(ModuleTestCase):
+class PurchaseRequestTestCase(PartyCheckReplaceMixin, ModuleTestCase):
     'Test Purchase Request module'
     module = 'purchase_request'
 

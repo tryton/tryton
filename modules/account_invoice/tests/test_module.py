@@ -9,6 +9,7 @@ from trytond.modules.account_invoice.exceptions import (
 from trytond.modules.company.tests import (
     CompanyTestMixin, PartyCompanyCheckEraseMixin)
 from trytond.modules.currency.tests import create_currency
+from trytond.modules.party.tests import PartyCheckReplaceMixin
 from trytond.pool import Pool
 from trytond.tests.test_tryton import ModuleTestCase, with_transaction
 
@@ -35,7 +36,8 @@ def set_invoice_sequences(fiscalyear):
 
 
 class AccountInvoiceTestCase(
-        PartyCompanyCheckEraseMixin, CompanyTestMixin, ModuleTestCase):
+        PartyCompanyCheckEraseMixin, PartyCheckReplaceMixin, CompanyTestMixin,
+        ModuleTestCase):
     'Test AccountInvoice module'
     module = 'account_invoice'
 

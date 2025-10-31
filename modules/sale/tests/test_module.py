@@ -5,13 +5,15 @@ from decimal import Decimal
 from trytond.modules.account.tests import create_chart
 from trytond.modules.company.tests import (
     CompanyTestMixin, PartyCompanyCheckEraseMixin, create_company, set_company)
+from trytond.modules.party.tests import PartyCheckReplaceMixin
 from trytond.pool import Pool
 from trytond.tests.test_tryton import ModuleTestCase, with_transaction
 from trytond.transaction import Transaction
 
 
 class SaleTestCase(
-        PartyCompanyCheckEraseMixin, CompanyTestMixin, ModuleTestCase):
+        PartyCompanyCheckEraseMixin, PartyCheckReplaceMixin, CompanyTestMixin,
+        ModuleTestCase):
     'Test Sale module'
     module = 'sale'
 

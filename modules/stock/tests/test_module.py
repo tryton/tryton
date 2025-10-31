@@ -11,6 +11,7 @@ from dateutil.relativedelta import relativedelta
 from trytond.model.exceptions import AccessError
 from trytond.modules.company.tests import (
     CompanyTestMixin, PartyCompanyCheckEraseMixin, create_company, set_company)
+from trytond.modules.party.tests import PartyCheckReplaceMixin
 from trytond.modules.stock.exceptions import (
     LocationValidationError, MoveOriginWarning, PeriodCloseError,
     ProductStockWarning)
@@ -20,7 +21,8 @@ from trytond.transaction import Transaction, check_access
 
 
 class StockTestCase(
-        PartyCompanyCheckEraseMixin, CompanyTestMixin, ModuleTestCase):
+        PartyCompanyCheckEraseMixin, PartyCheckReplaceMixin, CompanyTestMixin,
+        ModuleTestCase):
     'Test Stock module'
     module = 'stock'
     longMessage = True

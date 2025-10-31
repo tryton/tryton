@@ -4,6 +4,7 @@
 from decimal import Decimal
 
 from trytond.modules.company.tests import create_company, set_company
+from trytond.modules.party.tests import PartyCheckReplaceMixin
 from trytond.pool import Pool
 from trytond.tests.test_tryton import ModuleTestCase, with_transaction
 
@@ -35,7 +36,7 @@ def create_carrier(list_price=None, cost_price=None):
     return carrier
 
 
-class CarrierTestCase(ModuleTestCase):
+class CarrierTestCase(PartyCheckReplaceMixin, ModuleTestCase):
     'Test Carrier module'
     module = 'carrier'
 

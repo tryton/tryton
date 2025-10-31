@@ -4,7 +4,8 @@
 from unittest.mock import patch
 
 import trytond.config as config
-from trytond.modules.party.tests import PartyCheckEraseMixin
+from trytond.modules.party.tests import (
+    PartyCheckEraseMixin, PartyCheckReplaceMixin)
 from trytond.modules.web_user import user as user_module
 from trytond.pool import Pool
 from trytond.tests.test_tryton import ModuleTestCase, with_transaction
@@ -14,7 +15,8 @@ RESET_PASSWORD_URL = 'http://www.example.com/reset_password'
 FROM = 'tryton@example.com'
 
 
-class WebUserTestCase(PartyCheckEraseMixin, ModuleTestCase):
+class WebUserTestCase(
+        PartyCheckEraseMixin, PartyCheckReplaceMixin, ModuleTestCase):
     'Test Web User module'
     module = 'web_user'
 

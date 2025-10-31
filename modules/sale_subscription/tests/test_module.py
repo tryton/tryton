@@ -3,11 +3,13 @@
 
 from trytond.modules.company.tests import (
     CompanyTestMixin, PartyCompanyCheckEraseMixin)
+from trytond.modules.party.tests import PartyCheckReplaceMixin
 from trytond.tests.test_tryton import ModuleTestCase
 
 
 class SaleSubscriptionTestCase(
-        PartyCompanyCheckEraseMixin, CompanyTestMixin, ModuleTestCase):
+        PartyCompanyCheckEraseMixin, PartyCheckReplaceMixin, CompanyTestMixin,
+        ModuleTestCase):
     'Test Sale Subscription module'
     module = 'sale_subscription'
 

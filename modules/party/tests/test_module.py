@@ -16,6 +16,7 @@ from trytond.modules.party.party import (
     IDENTIFIER_TYPES, IDENTIFIER_VAT, replace_vat)
 from trytond.pool import Pool
 from trytond.tests.test_tryton import ModuleTestCase, with_transaction
+from trytond.tools import is_instance_method
 from trytond.transaction import Transaction
 
 
@@ -43,7 +44,34 @@ class PartyCheckEraseMixin:
         return party
 
 
-class PartyTestCase(PartyCheckEraseMixin, ModuleTestCase):
+class PartyCheckReplaceMixin:
+
+    @with_transaction()
+    def test_check_replace_party(self):
+        "Test fields to replace"
+        pool = Pool()
+        Replace = pool.get('party.replace', type='wizard')
+
+        for model_name, field_name in Replace.fields_to_replace():
+            with self.subTest(model_name=model_name, field_name=field_name):
+                Model = pool.get(model_name)
+                field = getattr(Model, field_name)
+                if field._type == 'reference':
+                    if isinstance(field.selection, (tuple, list)):
+                        self.assertIn('party.party', dict(field.selection))
+                    else:
+                        sel_func = getattr(Model, field.selection)
+                        instance_sel_func = is_instance_method(
+                            Model, field.selection)
+                        if not instance_sel_func:
+                            self.assertIn('party.party', dict(sel_func()))
+                else:
+                    self.assertEqual(field._type, 'many2one')
+                    self.assertEqual(field.model_name, 'party.party')
+
+
+class PartyTestCase(
+        PartyCheckEraseMixin, PartyCheckReplaceMixin, ModuleTestCase):
     'Test Party module'
     module = 'party'
 

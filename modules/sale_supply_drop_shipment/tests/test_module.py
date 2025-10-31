@@ -3,11 +3,13 @@
 
 from trytond.modules.company.tests import (
     CompanyTestMixin, PartyCompanyCheckEraseMixin)
+from trytond.modules.party.tests import PartyCheckReplaceMixin
 from trytond.tests.test_tryton import ModuleTestCase
 
 
 class SaleSupplyDropShipmentTestCase(
-        PartyCompanyCheckEraseMixin, CompanyTestMixin, ModuleTestCase):
+        PartyCompanyCheckEraseMixin, PartyCheckReplaceMixin, CompanyTestMixin,
+        ModuleTestCase):
     'Test SaleSupplyDropShipment module'
     module = 'sale_supply_drop_shipment'
     extras = ['sale_amendment', 'stock_split']

@@ -3,11 +3,13 @@
 
 from trytond.modules.company.tests import (
     CompanyTestMixin, PartyCompanyCheckEraseMixin)
+from trytond.modules.party.tests import PartyCheckReplaceMixin
 from trytond.tests.test_tryton import ModuleTestCase
 
 
 class AccountPaymentTestCase(
-        PartyCompanyCheckEraseMixin, CompanyTestMixin, ModuleTestCase):
+        PartyCompanyCheckEraseMixin, PartyCheckReplaceMixin, CompanyTestMixin,
+        ModuleTestCase):
     'Test Account Payment module'
     module = 'account_payment'
     extras = ['account_invoice', 'account_statement', 'account_statement_rule']
