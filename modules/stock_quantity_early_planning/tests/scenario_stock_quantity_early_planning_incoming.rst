@@ -118,7 +118,7 @@ Plan to ship in 3 weeks::
     >>> move.quantity = 7
     >>> move.from_location = warehouse.output_location
     >>> move.to_location = customer_loc
-    >>> move.unit_price = product.list_price
+    >>> move.unit_price = product.list_price_used
     >>> move.currency = currency
     >>> shipment_out.save()
     >>> shipment_out.click('wait')

@@ -90,14 +90,14 @@ Plan to ship some products in 3 weeks::
     >>> move.quantity = 4
     >>> move.from_location = output_loc
     >>> move.to_location = customer_loc
-    >>> move.unit_price = product1.list_price
+    >>> move.unit_price = product1.list_price_used
     >>> move.currency = currency
     >>> move = shipment_out1.outgoing_moves.new()
     >>> move.product = product2
     >>> move.quantity = 6
     >>> move.from_location = output_loc
     >>> move.to_location = customer_loc
-    >>> move.unit_price = product2.list_price
+    >>> move.unit_price = product2.list_price_used
     >>> move.currency = currency
     >>> shipment_out1.save()
 
@@ -109,7 +109,7 @@ Plan to ship some products in 3 weeks::
     >>> move.quantity = 8
     >>> move.from_location = output_loc
     >>> move.to_location = customer_loc
-    >>> move.unit_price = product1.list_price
+    >>> move.unit_price = product1.list_price_used
     >>> move.currency = currency
     >>> shipment_out2.save()
 
@@ -121,7 +121,7 @@ Plan to ship some products in 3 weeks::
     >>> move.quantity = 4
     >>> move.from_location = output_loc
     >>> move.to_location = customer_loc
-    >>> move.unit_price = product1.list_price
+    >>> move.unit_price = product1.list_price_used
     >>> move.currency = currency
     >>> shipment_out3.save()
 
