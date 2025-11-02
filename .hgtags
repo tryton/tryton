@@ -9659,3 +9659,4 @@ b7121e7d148c10ed8c4edcb40eb41e59e7b6d2db account_payment_sepa-7.4.5
 40de9454978b2c42dfd807807c1874b9f1475ae8 account_payment_stripe-7.4.1
 0e47d2b3cabd053e1f176ccdbecedb925ee64215 trytond-7.4.20
 be31bcd1e01e0e041cdc42ae21af8cf60a0b8e2c tryton-7.4.12
+cb4565d5b4a785000d6e5fc4932886e491bc8e88 web_shop_shopify-7.4.9
