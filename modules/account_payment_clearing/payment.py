@@ -397,7 +397,7 @@ class Group(metaclass=PoolMeta):
         Payment = pool.get('account.payment')
         payment = Payment.__table__()
         cursor = Transaction().connection.cursor()
-        result = defaultdict()
+        result = defaultdict(lambda: None)
         column = Coalesce(payment.clearing_reconciled, False)
         if backend.name == 'sqlite':
             column = Min(column)
