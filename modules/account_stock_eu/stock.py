@@ -230,7 +230,7 @@ class Move(metaclass=PoolMeta):
             'account.stock.eu.intrastat.declaration')
         super().cancel(moves)
         declarations = {
-            m.declaration for m in moves if m.intrastat_declaration}
+            m.intrastat_declaration for m in moves if m.intrastat_declaration}
         if declarations:
             IntrastatDeclaration.open(
                 IntrastatDeclaration.browse(declarations))
