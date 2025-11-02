@@ -375,3 +375,13 @@ Export declaration as fallback::
     ...     b'arrival,FR,2,9403 10 51,15.0,750.00,21,5.0,,\r\n')
     >>> export.form.filename.endswith('.csv')
     True
+
+Cancelling the shipment reopens the declaration::
+
+    >>> shipment.click('cancel')
+    >>> shipment.state
+    'cancelled'
+
+    >>> declaration.reload()
+    >>> declaration.state
+    'opened'
