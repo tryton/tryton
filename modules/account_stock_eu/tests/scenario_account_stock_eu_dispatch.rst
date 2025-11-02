@@ -386,3 +386,13 @@ Export declaration as fallback::
     ...     if intrastat_extended else
     ...     b'dispatch,FR,2,9403 10 51,60.0,1800.00,12,20.0,CN,\r\n'
     ...     b'dispatch,FR,2,9403 10 51,15.0,750.00,21,5.0,CN,FR40303265045\r\n')
+
+Cancelling the shipment reopens the declaration::
+
+    >>> shipment.click('cancel')
+    >>> shipment.state
+    'cancelled'
+
+    >>> declaration.reload()
+    >>> declaration.state
+    'opened'
