@@ -304,7 +304,7 @@
         array.save = function() {
             var deferreds = [];
             this.forEach(function(record) {
-                deferreds.push(record.save());
+                deferreds.push(record.save(false));
             });
             if (!jQuery.isEmptyObject(this.record_deleted)) {
                 this.record_deleted.forEach(function(record) {
@@ -588,7 +588,7 @@
         },
         save: function(force_reload) {
             if (force_reload === undefined) {
-                force_reload = false;
+                force_reload = true;
             }
             var context = this.get_context();
             var prm = jQuery.when();
