@@ -294,7 +294,7 @@ class View(
         key = (self.id, model)
         result = self._view_get_cache.get(key)
         if result:
-            return result
+            return result.copy()
         if self.inherit:
             if self.inherit.model == model:
                 return self.inherit.view_get(model=model)

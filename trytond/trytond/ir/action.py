@@ -1,5 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+import copy
 import os
 from collections import defaultdict
 from functools import partial
@@ -731,7 +732,10 @@ class ActionReport(
             cls._template_cache.clear()
 
     def get_template_cached(self):
-        return self._template_cache.get(self.id)
+        template = self._template_cache.get(self.id)
+        if template is not None:
+            template = copy.copy(template)
+        return template
 
     def set_template_cached(self, template):
         self._template_cache.set(self.id, template)

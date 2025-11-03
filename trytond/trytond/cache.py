@@ -1,12 +1,13 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+import copy
 import datetime as dt
 import json
 import logging
 import selectors
 import threading
 from collections import OrderedDict, defaultdict
-from copy import deepcopy
+from types import MappingProxyType
 from uuid import uuid4
 from weakref import WeakKeyDictionary
 
@@ -52,6 +53,17 @@ def unfreeze(o):
         return dict((x, unfreeze(y)) for x, y in o)
     else:
         return o
+
+
+def immutable(o):
+    if isinstance(o, dict):
+        return MappingProxyType({k: immutable(v) for k, v in o.items()})
+    elif isinstance(o, list):
+        return tuple(immutable(v) for v in o)
+    elif isinstance(o, set):
+        return frozenset(immutable(v) for v in o)
+    else:
+        return copy.copy(o)
 
 
 def _get_modules(cursor):
@@ -199,7 +211,7 @@ class MemoryCache(BaseCache):
                 return default
             cache.move_to_end(key)
             self.hit += 1
-            return deepcopy(result)
+            return result
         except (KeyError, TypeError):
             self.miss += 1
             return default
@@ -212,7 +224,7 @@ class MemoryCache(BaseCache):
         else:
             expire = None
         try:
-            cache[key] = (expire, deepcopy(value))
+            cache[key] = (expire, immutable(value))
         except TypeError:
             pass
         return value

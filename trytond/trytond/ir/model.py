@@ -186,6 +186,8 @@ class Model(
                     if issubclass(pool_get(m), classes))
             items = list(items)
             cls._get_names_cache.set(key, items)
+        else:
+            items = list(items)
         return items
 
     @classmethod

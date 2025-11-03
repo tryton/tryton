@@ -133,7 +133,7 @@ class MemoryCacheTestCase(TestCase):
         cache.set('foo', value)
         value.remove('bar')
 
-        self.assertEqual(cache.get('foo'), ['bar'])
+        self.assertEqual(cache.get('foo'), ('bar',))
 
     @with_transaction()
     def test_memory_cache_drop(self):

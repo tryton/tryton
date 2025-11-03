@@ -90,3 +90,8 @@ Cache
     By default Tryton uses a MemoryCache, but this behaviour can be overridden
     by setting a fully qualified name of an alternative class defined in the
     ``class`` of the :ref:`config-cache` section.
+
+.. note::
+
+   The MemoryCache convert the stored values into immutable structure and make
+   a copy for other structures.
