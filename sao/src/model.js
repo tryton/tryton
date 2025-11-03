@@ -315,7 +315,7 @@
         array.save = function() {
             var deferreds = [];
             this.forEach(record => {
-                deferreds.push(record.save());
+                deferreds.push(record.save(false));
             });
             if (!jQuery.isEmptyObject(this.record_deleted)) {
                 for (const record of this.record_deleted) {
@@ -598,7 +598,7 @@
                 return false;
             }
         },
-        save: function(force_reload=false) {
+        save: function(force_reload=true) {
             var context = this.get_context();
             if (this._save_prm.state() == 'pending') {
                 return this._save_prm.then(() => this.save(force_reload));
