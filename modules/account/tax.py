@@ -1203,6 +1203,7 @@ class TaxableMixin(object):
 
         return _TaxKey(**line)
 
+    @fields.depends('currency')
     def _round_taxes(self, taxes):
         if not self.currency:
             return
