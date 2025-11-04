@@ -1256,6 +1256,7 @@ class TaxableMixin(object):
             account=getattr(tax, '%s_account' % type_),
             )
 
+    @fields.depends('currency')
     def _round_taxes(self, taxes):
         if not self.currency:
             return
