@@ -691,6 +691,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin, InvoiceReportMixin):
                 value['manual'] = False
                 value['description'] = tax.description
                 value['legal_notice'] = tax.legal_notice
+                value['currency'] = self.currency
                 invoice_tax = InvoiceTax(**value)
                 if invoice_tax.tax:
                     invoice_tax.sequence = invoice_tax.tax.sequence
