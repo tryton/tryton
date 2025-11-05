@@ -26,7 +26,7 @@ def run(options):
         mp_context=None,
         initializer=initializer,
         initargs=(options.database_names,),
-        max_tasks_per_child=options.maxtasksperchild,
+        max_tasks_per_child=options.maxtasksperchild or None,
         )
     if sys.version_info < (3, 11):
         del executor_options["max_tasks_per_child"]
