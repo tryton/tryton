@@ -105,14 +105,6 @@ class ShippingUPSMixin:
                             '.msg_phone_required',
                             shipment=self.rec_name,
                             address=address.rec_name))
-            if not self.shipping_description:
-                if (any(p.type.ups_code != '01' for p in self.root_packages)
-                        and self.carrier.ups_service_type != '11'):
-                    # TODO Should also test if a country is not in the EU
-                    raise PackingValidationError(
-                        gettext('stock_package_shipping_ups'
-                            '.msg_shipping_description_required',
-                            shipment=self.rec_name))
 
 
 class CreateShipping(metaclass=PoolMeta):
@@ -375,11 +367,14 @@ class CreateShippingUPS(Wizard):
             # despite what UPS documentation says
             for pkg in packages:
                 pkg['ShipmentServiceOptions'] = options
+        description = (
+            shipment.shipping_description_used
+            or gettext('stock_package_shipping_ups.msg_general_merchandise'))
         return {
             'ShipmentRequest': {
                 'Request': self.get_request_container(shipment),
                 'Shipment': {
-                    'Description': (shipment.shipping_description or '')[:50],
+                    'Description': description[:50],
                     'Shipper': shipper,
                     'ShipTo': self.get_shipping_party(
                         shipment.shipping_to, shipment.shipping_to_address),

@@ -16,8 +16,8 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_phone_required">
             <field name="text">To validate shipment "%(shipment)s" you must add phone number for address "%(address)s".</field>
         </record>
-        <record model="ir.message" id="msg_shipping_description_required">
-            <field name="text">To validate shipment "%(shipment)s" you must fill its shipping description.</field>
+        <record model="ir.message" id="msg_general_merchandise">
+            <field name="text">General Merchandise</field>
         </record>
         <record model="ir.message" id="msg_shipment_has_reference_number">
             <field name="text">You cannot create shipping for shipment "%(shipment)s" because it has already a reference number.</field>

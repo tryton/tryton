@@ -96,6 +96,18 @@ class Package(metaclass=PoolMeta):
         pass
 
 
+def lowest_common_root(paths):
+    min_length = min((len(p) for p in paths), default=0)
+    common = None
+    for i in range(min_length):
+        level_values = {p[i] for p in paths}
+        if len(level_values) == 1:
+            common = level_values.pop()
+        else:
+            break
+    return common
+
+
 class ShippingMixin:
     __slots__ = ()
 
@@ -107,7 +119,8 @@ class ShippingMixin:
     shipping_description = fields.Char('Shipping Description',
         states={
             'readonly': Eval('state').in_(['done', 'packed'])
-            })
+            },
+        help="Leave empty to use the generated description.")
     has_shipping_service = fields.Function(
         fields.Boolean("Has Shipping Service"),
         'on_change_with_has_shipping_service')
@@ -147,6 +160,24 @@ class ShippingMixin:
             cursor.execute(*table.update(
                     [table.shipping_reference],
                     [table.reference]))
+
+    @property
+    def shipping_description_used(self):
+        pool = Pool()
+        Product = pool.get('product.product')
+        description = self.shipping_description
+        if not description and hasattr(Product, 'customs_category'):
+            def parents(category):
+                if not category:
+                    return
+                yield from parents(category.parent)
+                yield category
+            products = {
+                m.product for m in self.moves if m.product.customs_category}
+            paths = [list(parents(p.customs_category)) for p in products]
+            if category := lowest_common_root(paths):
+                description = category.name
+        return description
 
     @fields.depends('carrier')
     def on_change_with_has_shipping_service(self, name=None):
