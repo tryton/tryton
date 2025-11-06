@@ -1076,7 +1076,7 @@ class UserApplication(Workflow, ModelSQL, ModelView):
     @classmethod
     def preprocess_values(cls, mode, values):
         values = super().preprocess_values(mode, values)
-        if 'key' not in values:
+        if mode == 'create' and 'key' not in values:
             # Ensure we get a different key for each record
             # default methods are called only once
             values['key'] = cls.default_key()
