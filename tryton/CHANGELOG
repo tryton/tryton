@@ -1,3 +1,4 @@
+* Add search on empty relation field to domain parser
 * Add support for multiple button in the tree view
 
 Version 7.6.0 - 2025-04-28

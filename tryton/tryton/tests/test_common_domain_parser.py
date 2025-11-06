@@ -663,6 +663,10 @@ class DomainParserTestCase(TestCase):
                             'string': "Name",
                             'type': 'char',
                             },
+                        'rec_name': {
+                            'string': "Record Name",
+                            'type': 'char',
+                            },
                         },
                     },
                 })
@@ -776,6 +780,15 @@ class DomainParserTestCase(TestCase):
         self.assertEqual(
             dom.string([('many2one.rec_name', 'in', ['John', 'Jane'])]),
             'Many2One: John;Jane')
+        self.assertEqual(
+            dom.string([('many2one.rec_name', '=', 'John')]),
+            'Many2One: =John')
+        self.assertEqual(
+            dom.string([('many2one.rec_name', '=', '')]),
+            '"Many2One.Record Name": =""')
+        self.assertEqual(
+            dom.string([('many2one.rec_name', '=', None)]),
+            '"Many2One.Record Name": =')
         self.assertEqual(
             dom.string([('many2one.name', 'ilike', '%Foo%')]),
             "Many2One.Name: Foo")
@@ -1111,6 +1124,14 @@ class DomainParserTestCase(TestCase):
         self.assertEqual(
             rlist(dom.parse_clause([('Many2One', None, ['John', 'Jane'])])), [
                 ('many2one.rec_name', 'in', ['John', 'Jane']),
+                ])
+        self.assertEqual(
+            rlist(dom.parse_clause([('Many2One', '=', None)])), [
+                ('many2one', '=', None),
+                ])
+        self.assertEqual(
+            rlist(dom.parse_clause([('Many2One', '=', '')])), [
+                ('many2one', '=', None),
                 ])
         self.assertEqual(
             rlist(dom.parse_clause(iter([iter([['John']])]))), [

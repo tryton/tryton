@@ -1171,8 +1171,7 @@
             string_prefix = string_prefix || '';
             for (var name in fields) {
                 var field = fields[name];
-                if ((field.searchable || (field.searchable === undefined)) &&
-                    (name !== 'rec_name')) {
+                if (field.searchable || (field.searchable === undefined)) {
                     field = jQuery.extend({}, field);
                     var fullname = prefix ? prefix + '.' + name : name;
                     var string = string_prefix ?
@@ -1227,7 +1226,7 @@
                 }
                 var name = clause[0];
                 var value = clause[2];
-                if (name.endsWith('.rec_name')) {
+                if (name.endsWith('.rec_name') && value) {
                     name = name.slice(0, -9);
                 }
                 if (name in this.fields) {
@@ -1276,11 +1275,11 @@
                 var name = clause[0];
                 var operator = clause[1];
                 var value = clause[2];
-                if (name.endsWith('.rec_name')) {
+                if (name.endsWith('.rec_name') && value) {
                     name = name.slice(0, -9);
                 }
                 if (!(name in this.fields)) {
-                    if (this.is_full_text(value)) {
+                    if ((value !== null) && this.is_full_text(value)) {
                         value = value.slice(1, -1);
                     }
                     return this.quote(value);
@@ -1434,7 +1433,7 @@
                 name = clause[0];
                 operator = clause[1];
                 value = clause[2];
-                if (name.endsWith('.rec_name')) {
+                if (name.endsWith('.rec_name') && value) {
                     name = name.substring(0, name.length - 9);
                 }
             }
@@ -1854,7 +1853,7 @@
                         var split = this.split_target_value(field, value);
                         target = split[0];
                         value = split[1];
-                        if (target) {
+                        if (target && value) {
                             field_name += '.rec_name';
                         }
                     } else if (field.type == 'multiselection') {
@@ -1901,7 +1900,7 @@
                         }
                     }
                     if (['many2one', 'one2many', 'many2many', 'one2one',
-                        'many2many', 'one2one'].includes(field.type)) {
+                        'many2many', 'one2one'].includes(field.type) && value) {
                         field_name += '.rec_name';
                     }
                     if (value instanceof Array) {
@@ -2116,7 +2115,13 @@
                 },
                 'selection': convert_selection,
                 'multiselection': convert_selection,
-                'reference': convert_selection,
+                'reference': function() {
+                    if (value === '') {
+                        return null;
+                    } else {
+                        return convert_selection();
+                    }
+                },
                 'datetime': () => Sao.common.parse_datetime(
                     Sao.common.date_format(context.date_format) + ' ' +
                     this.time_format(field), value),

@@ -292,6 +292,11 @@ def convert_value(field, value, context=None):
             return None
         return value
 
+    def convert_reference():
+        if value == '':
+            return None
+        return convert_selection()
+
     converts = {
         'boolean': convert_boolean,
         'float': convert_float,
@@ -299,7 +304,7 @@ def convert_value(field, value, context=None):
         'numeric': convert_numeric,
         'selection': convert_selection,
         'multiselection': convert_selection,
-        'reference': convert_selection,
+        'reference': convert_reference,
         'datetime': convert_datetime,
         'timestamp': convert_datetime,
         'date': convert_date,
@@ -543,7 +548,7 @@ class DomainParser(object):
 
         def update_fields(fields, prefix='', string_prefix=''):
             for name, field in fields.items():
-                if not field.get('searchable', True) or name == 'rec_name':
+                if not field.get('searchable', True):
                     continue
                 field = field.copy()
                 fullname = '.'.join(filter(None, [prefix, name]))
@@ -584,7 +589,7 @@ class DomainParser(object):
                     and all(isinstance(c, (list, tuple)) for c in clause[1:])):
                 return self.stringable(clause)
             name, _, value = clause[:3]
-            if name.endswith('.rec_name'):
+            if name.endswith('.rec_name') and value:
                 name = name[:-len('.rec_name')]
             if name in self.fields:
                 field = self.fields[name]
@@ -619,10 +624,10 @@ class DomainParser(object):
                     or clause[0] in ('AND', 'OR')):
                 return '(%s)' % self.string(clause)
             name, operator, value = clause[:3]
-            if name.endswith('.rec_name'):
+            if name.endswith('.rec_name') and value:
                 name = name[:-9]
             if name not in self.fields:
-                if is_full_text(value):
+                if value is not None and is_full_text(value):
                     value = value[1:-1]
                 return quote(value)
             field = self.fields[name]
@@ -724,7 +729,7 @@ class DomainParser(object):
             name, operator, value = clause
         else:
             name, operator, value, target = clause
-            if name.endswith('.rec_name'):
+            if name.endswith('.rec_name') and value:
                 name = name[:-9]
             value = target
         if name == 'rec_name':
@@ -846,7 +851,7 @@ class DomainParser(object):
                     target = None
                     if field['type'] == 'reference':
                         target, value = split_target_value(field, value)
-                        if target:
+                        if target and value:
                             field_name += '.rec_name'
                     elif field['type'] == 'multiselection':
                         if value is not None and not isinstance(value, list):
@@ -881,7 +886,7 @@ class DomainParser(object):
                             continue
                     if field['type'] in {
                             'many2one', 'one2many', 'many2many', 'one2one',
-                            }:
+                            } and value:
                         field_name += '.rec_name'
                     if isinstance(value, list):
                         value = [convert_value(field, v, self.context)

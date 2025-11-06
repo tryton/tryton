@@ -2051,6 +2051,8 @@
             [['many2one.rec_name', 'ilike', '%John%']]],
         [[c(['Many2One', null, ['John', 'Jane']])],
             [['many2one.rec_name', 'in', ['John', 'Jane']]]],
+        [[c(['Many2One', '=', null])], [['many2one', '=', null]]],
+        [[c(['Many2One', '=', ''])], [['many2one', '=', null]]],
         [[[c(['John'])]], [[['rec_name', 'ilike', '%John%']]]],
         [[c(['Relation', null, 'John'])],
             [['relation.rec_name', 'ilike', '%John%']]],
@@ -2308,6 +2310,10 @@
                         'string': "Name",
                         'type': 'char',
                     },
+                    'rec_name': {
+                        'string': "Record Name",
+                        'type': 'char',
+                    },
                 },
             },
         });
@@ -2371,6 +2377,9 @@
         [[['reference', 'in', ['foo', 'bar']]], 'Reference: foo;bar'],
         [[['many2one', 'ilike', '%John%']], 'Many2One: John'],
         [[['many2one.rec_name', 'in', ['John', 'Jane']]], 'Many2One: John;Jane'],
+        [[['many2one.rec_name', '=', 'John']], 'Many2One: =John'],
+        [[['many2one.rec_name', '=', '']], '"Many2One.Record Name": =""'],
+        [[['many2one.rec_name', '=', null]], '"Many2One.Record Name": ='],
         [[['many2one.name', 'ilike', '%Foo%']], 'Many2One.Name: Foo'],
         ].forEach(function(test) {
             var value = test[0];
