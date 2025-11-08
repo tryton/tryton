@@ -97,7 +97,7 @@ class Address(metaclass=PoolMeta):
         values['party_name'] = remove_forbidden_chars(address.name or '')
         if address.company:
             values['party_name'] += (
-                f'({remove_forbidden_chars(address.company)})')
+                f'/ {remove_forbidden_chars(address.company)}')
         values['street'] = '\n'.join(filter(None, [
                     address.address1, address.address2]))
         values['city'] = remove_forbidden_chars(address.city or '')

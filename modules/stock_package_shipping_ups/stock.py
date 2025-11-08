@@ -17,6 +17,7 @@ from trytond.model import fields
 from trytond.model.exceptions import AccessError
 from trytond.modules.stock_package_shipping.exceptions import (
     PackingValidationError)
+from trytond.modules.stock_package_shipping.stock import address_name
 from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
 from trytond.wizard import StateAction, StateTransition, Wizard
@@ -234,9 +235,11 @@ class CreateShippingUPS(Wizard):
             }
 
     def get_shipping_party(self, party, address, usage=None):
+        name = address_name(address, party)
+        attention_name = party.full_name
         shipping_party = {
-            'Name': address.party_full_name[:35],
-            'AttentionName': party.full_name[:35],
+            'Name': name[:35],
+            'AttentionName': attention_name[:35],
             'Address': {
                 'AddressLine': [l[:35]
                     for l in (address.street or '').splitlines()[:3]],

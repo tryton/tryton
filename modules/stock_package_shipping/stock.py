@@ -418,3 +418,19 @@ class PrintShippingLabel(Wizard):
                     package_ids.append(package.id)
                     labels.add(package.shipping_label)
         return action, {'ids': package_ids}
+
+
+def address_name(address, party=None):
+    "Returns the party name of the address with party name removed"
+    if party is None:
+        party = address.party
+    name = address.party_full_name
+    for prefix in sorted([
+                f'{party.full_name} / ',
+                f'{party.name} / ',
+                party.full_name,
+                party.name,
+                ], key=len, reverse=True):
+        if name.startswith(prefix) and name != prefix:
+            return name[len(prefix):]
+    return name
