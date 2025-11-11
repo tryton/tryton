@@ -298,6 +298,7 @@ class PurchaseRequest(ModelSQL, ModelView):
         Date = pool.get('ir.date')
         with Transaction().set_context(context=product._context):
             today = Date.today()
+        earlier_date, fastest = datetime.date.max, None
         for product_supplier in product.product_suppliers_used(**pattern):
             if date is None:
                 return product_supplier
@@ -305,6 +306,9 @@ class PurchaseRequest(ModelSQL, ModelView):
             timedelta = date - supply_date
             if timedelta >= datetime.timedelta(0):
                 return product_supplier
+            if supply_date < earlier_date or earlier_date is datetime.date.max:
+                earlier_date, fastest = supply_date, product_supplier
+        return fastest
 
     @classmethod
     def find_best_supplier(cls, product, date, **pattern):
