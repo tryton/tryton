@@ -78,8 +78,8 @@ class Party(IdentifiersMixin, metaclass=PoolMeta):
                 contact_mechanisms.insert(index, ContactMechanism(
                         party=self, address=address,
                         type='phone', value=phone))
-                ContactMechanism.save(sequence_reorder(
-                        contact_mechanisms))
+            ContactMechanism.save(sequence_reorder(
+                    contact_mechanisms))
         return address
 
 
