@@ -3635,12 +3635,14 @@
                 'aria-expanded': false,
                 'aria-controls': '#error-detail',
             }).text(Sao.i18n.gettext("Details"))));
-            alert_.append(jQuery('<p/>', {
-                'class': 'collapse',
-                id: 'error-detail',
-            }).append(jQuery('<pre/>', {
-                'class': 'pre-scrollable',
-            }).text(details)));
+            if (details) {
+                alert_.append(jQuery('<p/>', {
+                    'class': 'collapse',
+                    id: 'error-detail',
+                }).append(jQuery('<pre/>', {
+                    'class': 'pre-scrollable',
+                }).text(details)));
+            }
             jQuery('<a/>', {
                 'class': 'btn btn-link',
                 href: Sao.config.bug_url,

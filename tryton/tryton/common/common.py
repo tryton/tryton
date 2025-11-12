@@ -951,28 +951,30 @@ class ErrorDialog(UniqueDialog):
         dialog.format_secondary_markup(
             '<b>%s</b>' % GLib.markup_escape_text(title))
 
-        scrolledwindow = Gtk.ScrolledWindow()
-        scrolledwindow.set_policy(
-            Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.AUTOMATIC)
-        scrolledwindow.set_shadow_type(Gtk.ShadowType.NONE)
-        scrolledwindow.set_min_content_height(300)
+        if details and details.strip():
+            scrolledwindow = Gtk.ScrolledWindow()
+            scrolledwindow.set_policy(
+                Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.AUTOMATIC)
+            scrolledwindow.set_shadow_type(Gtk.ShadowType.NONE)
+            scrolledwindow.set_min_content_height(300)
 
-        viewport = Gtk.Viewport()
-        viewport.set_shadow_type(Gtk.ShadowType.NONE)
+            viewport = Gtk.Viewport()
+            viewport.set_shadow_type(Gtk.ShadowType.NONE)
 
-        textview = Gtk.TextView(editable=False, sensitive=True, monospace=True)
-        buf = Gtk.TextBuffer()
-        buf.set_text(details)
-        textview.set_buffer(buf)
+            textview = Gtk.TextView(
+                editable=False, sensitive=True, monospace=True)
+            buf = Gtk.TextBuffer()
+            buf.set_text(details)
+            textview.set_buffer(buf)
 
-        viewport.add(textview)
-        scrolledwindow.add(viewport)
-        expander = Gtk.Expander()
-        expander.set_label(_("Details"))
-        expander.add(scrolledwindow)
-        expander.set_resize_toplevel(True)
-        dialog.vbox.pack_start(
-            expander, expand=False, fill=True, padding=0)
+            viewport.add(textview)
+            scrolledwindow.add(viewport)
+            expander = Gtk.Expander()
+            expander.set_label(_("Details"))
+            expander.add(scrolledwindow)
+            expander.set_resize_toplevel(True)
+            dialog.vbox.pack_start(
+                expander, expand=False, fill=True, padding=0)
 
         button_roundup = Gtk.LinkButton.new_with_label(
             CONFIG['bug.url'], _("Report Bug"))
