@@ -166,7 +166,9 @@ class JSONProtocol:
                 response['error'] = data.args
             elif isinstance(data, Exception):
                 # report exception back to server
-                response['error'] = (str(data), data.__format_traceback__)
+                response['error'] = (
+                    str(data),
+                    getattr(data, '__format_traceback__', ''))
             else:
                 response['result'] = data
         else:
