@@ -66,6 +66,7 @@ with commandline.pidfile(options):
                     'txt', 'html', 'xhtml']:
                 path = os.path.join(info['directory'], '**', '*.' + ext)
                 extra_files.extend(glob.glob(path, recursive=True))
+    app.dev = options.dev
 
     if options.coroutine:
         from gevent.pywsgi import WSGIServer

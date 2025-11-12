@@ -1,3 +1,4 @@
+* Include the traceback only in RPC responses in development mode (issue14354)
 * Enforce access check in HTML editor route (issue14364)
 
 Version 6.0.69 - 2025-11-02
