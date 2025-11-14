@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<py:strip xmlns:py="http://genshi.edgewall.org/"
+    xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+    xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+    <py:def function="Party(party, address=None, tax_identifier=None)">
+        <cac:Party>
+            <py:with vars="identifier = party.identifier_eas">
+                <py:if test="identifier">
+                    <cbc:EndpointID py:attrs="{'schemeID': identifier.eas_code}">${identifier.eas}</cbc:EndpointID>
+                </py:if>
+            </py:with>
+            <py:for each="identifier in party.identifiers">
+                <cac:PartyIdentification py:if="identifier.iso_6523">
+                    <cbc:ID py:attrs="{'schemeID': identifier.iso_6523}">${identifier.code}</cbc:ID>
+                </cac:PartyIdentification>
+            </py:for>
+            <cac:PostalAddress py:if="address">${Address(address)}</cac:PostalAddress>
+            <cac:PartyTaxScheme py:if="tax_identifier and tax_identifier.unece_code">
+                <py:choose>
+                    <py:when test="tax_identifier.vatin">
+                        <cbc:CompanyID>${tax_identifier.vatin}</cbc:CompanyID>
+                    </py:when>
+                    <py:otherwise>
+                        <cbc:CompanyID py:attrs="{'schemeID': tax_identifier.iso_6523}">${tax_identifier.code}</cbc:CompanyID>
+                    </py:otherwise>
+                </py:choose>
+                <cac:TaxScheme>
+                    <cbc:ID>${tax_identifier.unece_code}</cbc:ID>
+                </cac:TaxScheme>
+            </cac:PartyTaxScheme>
+            <cac:PartyLegalEntity>
+                <cbc:RegistrationName>${party.name}</cbc:RegistrationName>
+                <py:with vars="identifier = party.identifier_iso6523">
+                    <py:if test="identifier">
+                        <cbc:CompanyID py:attrs="{'schemeID': identifier.iso_6523}">${identifier.code}</cbc:CompanyID>
+                    </py:if>
+                </py:with>
+            </cac:PartyLegalEntity>
+        </cac:Party>
+    </py:def>
+    <py:def function="Address(address)">
+        <cbc:Postbox py:if="address.post_box">${address.post_box}</cbc:Postbox>
+        <cbc:Floor py:if="address.floor_number">${address.floor_number}</cbc:Floor>
+        <cbc:Room py:if="address.room_number">${address.room_number}</cbc:Room>
+        <cbc:StreetName py:if="address.street_name">${address.street_name}</cbc:StreetName>
+        <cbc:BuildingName py:if="address.building_name">${address.building_name}</cbc:BuildingName>
+        <cbc:BuildingNumber py:if="address.building_number">${address.building_number}</cbc:BuildingNumber>
+        <cbc:CityName py:if="address.city">${address.city}</cbc:CityName>
+        <cbc:PostalZone py:if="address.postal_code">${address.postal_code}</cbc:PostalZone>
+        <cbc:CountrySubentity py:if="address.subdivision">${address.subdivision.name}</cbc:CountrySubentity>
+        <cbc:CountrySubentityCode py:if="address.subdivision">${address.subdivision.code}</cbc:CountrySubentityCode>
+        <cac:AddressLine py:if="address.street_unstructured">
+            <cbc:Line py:for="line in address.street_unstructured.splitlines()">
+                ${line}
+            </cbc:Line>
+        </cac:AddressLine>
+        <cac:Country py:if="address.country">
+            <cbc:IdentificationCode>${address.country.code}</cbc:IdentificationCode>
+            <cbc:Name>${address.country.name}</cbc:Name>
+        </cac:Country>
+    </py:def>
+</py:strip>

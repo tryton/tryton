@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<Invoice
+    xmlns="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2"
+    xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+    xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+    xmlns:xi="http://www.w3.org/2001/XInclude"
+    xmlns:py="http://genshi.edgewall.org/"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<xi:include href="base.xml"/>
+<cbc:UBLVersionID py:if="not (specification or '').startswith('peppol')">2.4</cbc:UBLVersionID>
+<py:if test="specification == 'peppol-bis-3'">
+    <cbc:CustomizationID>urn:cen.eu:en16931:2017#compliant#urn:fdc:peppol.eu:2017:poacc:billing:3.0</cbc:CustomizationID>
+    <cbc:ProfileID>urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</cbc:ProfileID>
+</py:if>
+<cbc:ID>${this.invoice.number}</cbc:ID>
+<cbc:IssueDate>${this.invoice.invoice_date}</cbc:IssueDate>
+<cbc:InvoiceTypeCode>${this.type_code}</cbc:InvoiceTypeCode>
+<cbc:DocumentCurrencyCode>${this.invoice.currency.code}</cbc:DocumentCurrencyCode>
+<cbc:BuyerReference py:if="this.invoice.reference">${this.invoice.reference}</cbc:BuyerReference>
+<cac:OrderReference>
+    <cbc:ID>${this.invoice.origins or this.invoice.number}</cbc:ID>
+</cac:OrderReference>
+<cac:AdditionalDocumentReference py:for="document in this.additional_documents">
+    <cbc:ID>${document['id']}</cbc:ID>
+    <cbc:DocumentTypeCode py:if="document.get('code')">${document['code']}</cbc:DocumentTypeCode>
+    <cbc:DocumentDescription py:if="document.get('description')">${document['description']}</cbc:DocumentDescription>
+    <cac:Attachment py:if="document.get('code') != '130'">
+        <py:choose test="document['type']">
+            <py:when test="'binary'">
+                <cbc:EmbeddedDocumentBinaryObject py:attrs="{'mimeCode': document['mimetype'], 'filename': document.get('filename')}">${document['binary']}</cbc:EmbeddedDocumentBinaryObject>
+            </py:when>
+            <py:when test="'text'">
+                <cbc:EmbeddedDocument>${document['text']}</cbc:EmbeddedDocument>
+            </py:when>
+            <py:when test="'reference'">
+                <cac:ExternalReference>
+                    <cbc:URI>${document['reference']}</cbc:URI>
+                    <cbc:FileName py:if="document.get('filename')">${document['filename']}</cbc:FileName>
+                </cac:ExternalReference>
+            </py:when>
+        </py:choose>
+    </cac:Attachment>
+</cac:AdditionalDocumentReference>
+<cac:AccountingSupplierParty>
+    ${Party(this.accounting_supplier_party, this.accounting_supplier_address, this.accounting_supplier_tax_identifier)}
+</cac:AccountingSupplierParty>
+<cac:AccountingCustomerParty>
+    ${Party(this.accounting_customer_party, this.accounting_customer_address, this.accounting_customer_tax_identifier)}
+</cac:AccountingCustomerParty>
+<cac:PaymentTerms py:for="line in this.invoice.lines_to_pay">
+    <cbc:Note py:if="this.invoice.payment_term and this.invoice.payment_term.description">${this.invoice.payment_term.description}</cbc:Note>
+    <cbc:Amount py:attrs="{'currencyID': this.invoice.currency.code}">${line.amount}</cbc:Amount>
+    <cbc:PaymentDueDate>${line.maturity_date}</cbc:PaymentDueDate>
+</cac:PaymentTerms>
+<cac:TaxTotal py:for="group, lines, amount in this.taxes">
+    <cbc:TaxAmount py:attrs="{'currencyID': this.invoice.currency.code}">${amount}</cbc:TaxAmount>
+    <cac:TaxSubtotal py:for="line in lines">
+        <cbc:TaxableAmount py:attrs="{'currencyID': this.invoice.currency.code}">${line.base}</cbc:TaxableAmount>
+        <cbc:TaxAmount py:attrs="{'currencyID': this.invoice.currency.code}">${line.amount}</cbc:TaxAmount>
+        <cbc:Percent py:if="line.tax.type == 'percentage'">${line.tax.rate * 100}</cbc:Percent>
+        <cac:TaxCategory>
+            <cbc:ID py:if="line.tax.unece_category_code">${line.tax.unece_category_code}</cbc:ID>
+            <cbc:Percent py:if="line.tax.type == 'percentage'">${line.tax.rate * 100}</cbc:Percent>
+            <cac:TaxScheme py:if="line.tax.unece_code">
+                <cbc:ID>${line.tax.unece_code}</cbc:ID>
+            </cac:TaxScheme>
+        </cac:TaxCategory>
+    </cac:TaxSubtotal>
+</cac:TaxTotal>
+<cac:LegalMonetaryTotal>
+    <cbc:LineExtensionAmount py:attrs="{'currencyID': this.invoice.currency.code}">${this.invoice.untaxed_amount}</cbc:LineExtensionAmount>
+    <cbc:TaxExclusiveAmount py:attrs="{'currencyID': this.invoice.currency.code}">${this.invoice.untaxed_amount}</cbc:TaxExclusiveAmount>
+    <cbc:TaxInclusiveAmount py:attrs="{'currencyID': this.invoice.currency.code}">${this.invoice.untaxed_amount + this.invoice.tax_amount}</cbc:TaxInclusiveAmount>
+    <py:if test="this.invoice.total_amount != (this.invoice.untaxed_amount + this.invoice.tax_amount)">
+        <cbc:PayableRoundingAmount py:attrs="{'currencyID': this.invoice.currency.code}">${this.invoice.total_amount - this.invoice.untaxed_amount - this.invoice.tax_amount}</cbc:PayableRoundingAmount>
+    </py:if>
+    <cbc:PayableAmount py:attrs="{'currencyID': this.invoice.currency.code}">${this.invoice.total_amount}</cbc:PayableAmount>
+</cac:LegalMonetaryTotal>
+<cac:InvoiceLine py:for="line_id, line in enumerate(this.lines, 1)">
+    <cbc:ID>${line_id}</cbc:ID>
+    <cbc:InvoicedQuantity py:attrs="{'unitCode': line.unit.unece_code if line.unit and line.unit.unece_code else 'C62'}">${line.quantity}</cbc:InvoicedQuantity>
+    <cbc:LineExtensionAmount py:attrs="{'currencyID': this.invoice.currency.code}">${line.amount}</cbc:LineExtensionAmount>
+    <cac:Item>
+        <cbc:Description py:if="line.description">${line.description}</cbc:Description>
+        <cbc:Name>${line.product_name or line.summary}</cbc:Name>
+        <py:if test="line.product">
+            <cac:SellersItemIdentification>
+                <cbc:ID>${line.product.code}</cbc:ID>
+            </cac:SellersItemIdentification>
+            <py:with vars="gtin=line.product.identifier_get(['ean', 'isbn', 'ismn'])">
+                <cac:StandardItemIdentification py:if="gtin">
+                    <cbc:ID schemeID="0160">${gtin}</cbc:ID>
+                </cac:StandardItemIdentification>
+            </py:with>
+        </py:if>
+        <cac:ClassifiedTaxCategory py:for="tax in line.taxes">
+            <cbc:ID py:if="tax.unece_category_code">${tax.unece_category_code}</cbc:ID>
+            <cbc:Percent py:if="tax.type == 'percentage'">${tax.rate * 100}</cbc:Percent>
+            <cac:TaxScheme py:if="tax.unece_code">
+                <cbc:ID>${tax.unece_code}</cbc:ID>
+            </cac:TaxScheme>
+        </cac:ClassifiedTaxCategory>
+    </cac:Item>
+    <cac:Price>
+        <cbc:PriceAmount py:attrs="{'currencyID': this.invoice.currency.code}">${line.unit_price}</cbc:PriceAmount>
+    </cac:Price>
+</cac:InvoiceLine>
+</Invoice>

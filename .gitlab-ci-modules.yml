@@ -1431,6 +1431,23 @@ test-modules-document_incoming_ocr_typless-postgresql:
     PACKAGE: modules/document_incoming_ocr_typless
     TAG_PATTERN: '/^document_incoming_ocr_typless-.*/'
 
+check-doc-modules-edocument_ubl:
+  extends: .check-doc
+  variables:
+    PACKAGE: modules/edocument_ubl
+
+test-modules-edocument_ubl-sqlite:
+  extends: .test-sqlite
+  variables:
+    PACKAGE: modules/edocument_ubl
+    TAG_PATTERN: '/^edocument_ubl-.*/'
+
+test-modules-edocument_ubl-postgresql:
+  extends: .test-postgresql
+  variables:
+    PACKAGE: modules/edocument_ubl
+    TAG_PATTERN: '/^edocument_ubl-.*/'
+
 check-doc-modules-edocument_uncefact:
   extends: .check-doc
   variables:
