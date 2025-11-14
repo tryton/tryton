@@ -704,13 +704,19 @@ class Move(Workflow, ModelSQL, ModelView):
                                 move=move.rec_name,
                                 period=period.rec_name))
 
+    def _rec_name_origin(self):
+        return self.shipment
+
     def get_rec_name(self, name):
         pool = Pool()
         Lang = pool.get('ir.lang')
         lang = Lang.get()
-        return (lang.format_number_symbol(
+        name = (lang.format_number_symbol(
                 self.quantity, self.unit, digits=self.unit.digits)
             + ' %s' % self.product.rec_name)
+        if origin := (self._rec_name_origin() or self.origin):
+            name += f' @ {origin.rec_name}'
+        return name
 
     @classmethod
     def search_rec_name(cls, name, clause):

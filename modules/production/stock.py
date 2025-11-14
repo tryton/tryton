@@ -150,6 +150,9 @@ class Move(metaclass=PoolMeta):
                 [m for m in moves if m.state == 'done' and m.production_input],
                 {'production_cost_price_updated': True})
 
+    def _rec_name_origin(self):
+        return super()._rec_name_origin() or self.production
+
 
 class ProductQuantitiesByWarehouseMove(metaclass=PoolMeta):
     __name__ = 'stock.product_quantities_warehouse.move'
