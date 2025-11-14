@@ -355,9 +355,10 @@ class One2Many(Field):
                         where &= history_where
                     if origin_where:
                         where &= origin_where
-                    if self.filter:
-                        query = Target.search(
-                            self.filter, order=[], query=True)
+                    if self.filter or hasattr(Target, 'active'):
+                        # Use an empty filter to apply the active test
+                        filter_ = self.filter if self.filter else []
+                        query = Target.search(filter_, order=[], query=True)
                         where &= target.id.in_(query)
                     query = target.select(origin, where=where)
                     expression = ~table.id.in_(query)
@@ -367,12 +368,13 @@ class One2Many(Field):
                         where &= history_where
                     if origin_where:
                         where &= origin_where
-                    if self.filter:
+                    if self.filter or hasattr(Target, 'active'):
                         target_tables = {
                             None: (target, None),
                             }
+                        filter_ = self.filter if self.filter else []
                         target_tables, clause = Target.search_domain(
-                            self.filter, tables=target_tables)
+                            filter_, tables=target_tables)
                         where &= clause
                         query_table = convert_from(None, target_tables)
                         query = query_table.select(Literal(1), where=where)
