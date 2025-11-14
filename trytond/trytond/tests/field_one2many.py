@@ -1,7 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 
-from trytond.model import ModelSQL, fields
+from trytond.model import DeactivableMixin, ModelSQL, fields
 from trytond.pool import Pool
 from trytond.pyson import Eval
 from trytond.transaction import Transaction
@@ -148,6 +148,33 @@ class One2ManyOrderTarget(ModelSQL):
         cls._order = [('id', 'DESC')]
 
 
+class One2ManyActive(ModelSQL):
+    __name__ = 'test.one2many.active'
+    targets = fields.One2Many(
+        'test.one2many.active_target', 'origin', "Targets")
+
+
+class One2ManyActiveTarget(DeactivableMixin, ModelSQL):
+    __name__ = 'test.one2many.active_target'
+    name = fields.Char('Name')
+    origin = fields.Many2One('test.one2many.active', "Origin")
+
+
+class One2ManyActiveReference(ModelSQL):
+    __name__ = 'test.one2many_reference.active'
+    targets = fields.One2Many(
+        'test.one2many_reference.active_target', 'origin', "Targets")
+
+
+class One2ManyActiveReferenceTarget(DeactivableMixin, ModelSQL):
+    __name__ = 'test.one2many_reference.active_target'
+    name = fields.Char('Name')
+    origin = fields.Reference('Origin', [
+            (None, ''),
+            ('test.one2many_reference.active', 'One2Many Reference'),
+            ])
+
+
 def register(module):
     Pool.register(
         One2Many,
@@ -170,4 +197,8 @@ def register(module):
         One2ManyContextTarget,
         One2ManyOrder,
         One2ManyOrderTarget,
+        One2ManyActive,
+        One2ManyActiveTarget,
+        One2ManyActiveReference,
+        One2ManyActiveReferenceTarget,
         module=module, type_='model')
