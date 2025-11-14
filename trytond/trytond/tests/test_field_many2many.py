@@ -101,6 +101,48 @@ class CommonTestCaseMixin:
         self.assertListEqual(many2manys, [many2many1])
 
     @with_transaction()
+    def test_search_equals_none_inactive(self):
+        "Test search many2many equals None when the target is inactive"
+        Many2Many = self.Many2ManyActive()
+
+        many2many1, many2many2, many2many3 = Many2Many.create([{
+                    'targets': [('create', [{'name': "Target"}])],
+                    }, {
+                    'targets': [
+                        ('create', [{'name': "Target", 'active': False}])
+                        ],
+                    }, {
+                    'targets': None,
+                    }])
+
+        many2manys = Many2Many.search([
+                ('targets', '=', None),
+                ])
+
+        self.assertListEqual(many2manys, [many2many3])
+
+    @with_transaction()
+    def test_search_non_equals_none_inactive(self):
+        "Test search many2many equals non None when the target is inactive"
+        Many2Many = self.Many2ManyActive()
+
+        many2many1, many2many2, many2many3 = Many2Many.create([{
+                    'targets': [('create', [{'name': "Target"}])],
+                    }, {
+                    'targets': [
+                        ('create', [{'name': "Target", 'active': False}])
+                        ],
+                    }, {
+                    'targets': None,
+                    }])
+
+        many2manys = Many2Many.search([
+                ('targets', '!=', None),
+                ])
+
+        self.assertListEqual(many2manys, [many2many1, many2many2])
+
+    @with_transaction()
     def test_search_non_equals_no_link(self):
         "Test search many2many non equals without link"
         Many2Many = self.Many2Many()
@@ -387,6 +429,9 @@ class FieldMany2ManyTestCase(TestCase, CommonTestCaseMixin):
 
     def Many2ManyTarget(self):
         return Pool().get('test.many2many.target')
+
+    def Many2ManyActive(self):
+        return Pool().get('test.many2many_active')
 
     @with_transaction()
     def test_create_required_with_value(self):
@@ -794,3 +839,6 @@ class FieldMany2ManyReferenceTestCase(TestCase, CommonTestCaseMixin):
 
     def Many2ManyTarget(self):
         return Pool().get('test.many2many_reference.target')
+
+    def Many2ManyActive(self):
+        return Pool().get('test.many2many_reference.active')
