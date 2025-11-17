@@ -865,6 +865,11 @@ class ModelStorage(Model):
 
     def __export_row(self, fields_names):
         pool = Pool()
+        ModelAccess = pool.get('ir.model.access')
+        ModelFieldAccess = pool.get('ir.model.field.access')
+        Rule = pool.get('ir.rule')
+        IrModel = pool.get('ir.model')
+
         lines = []
         data = ['' for x in range(len(fields_names))]
         done = []
@@ -886,6 +891,24 @@ class ModelStorage(Model):
                     field_name, language = field_name.split(':lang=')
                 eModel = pool.get(value.__name__)
                 field = eModel._fields[field_name]
+
+                ModelAccess.check(eModel.__name__, 'read')
+                ModelFieldAccess.check(eModel.__name__, [field_name], 'read')
+                domain = Rule.domain_get(eModel.__name__, mode='read')
+                if (domain
+                        and not eval_domain(
+                            domain, EvalEnvironment(value, eModel))):
+                    clause, clause_global = Rule.get(
+                        eModel.__name__, mode='read')
+                    rules = []
+                    rules.extend(clause.keys())
+                    rules.extend(clause_global.keys())
+                    raise AccessError(gettext(
+                            'ir.msg_read_rule_error',
+                            ids=str(value.id),
+                            model=IrModel.get_name(eModel.__name__),
+                            rules='\n'.join(r.name for r in rules)))
+
                 if field.states and 'invisible' in field.states:
                     invisible = _record_eval_pyson(
                         value, field.states['invisible'])

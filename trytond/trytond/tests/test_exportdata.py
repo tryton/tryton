@@ -2,8 +2,10 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import datetime
+import json
 from decimal import Decimal
 
+from trytond.model.exceptions import AccessError
 from trytond.pool import Pool
 from trytond.tests.test_tryton import (
     TestCase, activate_module, with_transaction)
@@ -528,3 +530,67 @@ class ExportDataTestCase(TestCase):
             ExportData.export_data_domain(
                 [('boolean', '=', True)], ['boolean'], header=True),
             [["Boolean"], [True]])
+
+    @with_transaction(context={'_check_access': True})
+    def test_model_access(self):
+        "Test export without model access"
+        pool = Pool()
+        ExportData = pool.get('test.export_data')
+        ModelAccess = pool.get('ir.model.access')
+
+        export, = ExportData.create([{
+                    'char': "Test",
+                    }])
+        ModelAccess.create([{
+                    'model': ExportData.__name__,
+                    'perm_read': False,
+                    }])
+
+        with self.assertRaises(AccessError):
+            ExportData.export_data([export], ['char'])
+
+    @with_transaction(context={'_check_access': True})
+    def test_field_access(self):
+        "Test export without field access"
+        pool = Pool()
+        ExportData = pool.get('test.export_data')
+        FieldAccess = pool.get('ir.model.field.access')
+
+        export, = ExportData.create([{
+                    'char': "Test",
+                    }])
+        FieldAccess.create([{
+                    'model': ExportData.__name__,
+                    'field': 'char',
+                    'perm_read': False,
+                    }])
+
+        with self.assertRaises(AccessError):
+            ExportData.export_data([export], ['char'])
+
+    @with_transaction(context={'_check_access': True})
+    def test_rule_access(self):
+        "Test export with rule access"
+        pool = Pool()
+        ExportData = pool.get('test.export_data')
+        RuleGroup = pool.get('ir.rule.group')
+
+        export1, export2 = ExportData.create([{
+                    'char': "foo",
+                    }, {
+                    'char': "bar",
+                    }])
+        RuleGroup.create([{
+                    'name': "Test",
+                    'model': ExportData.__name__,
+                    'global_p': True,
+                    'perm_read': True,
+                    'rules': [('create', [{
+                                    'domain': json.dumps(
+                                        [('char', '!=', 'bar')]),
+                                    }])],
+                    }])
+
+        ExportData.export_data([export1], ['char'])
+        with self.assertRaises(AccessError):
+            ExportData.export_data([export2], ['char'])
