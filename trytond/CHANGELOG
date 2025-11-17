@@ -1,3 +1,4 @@
+* Enforce access check in HTML editor route (issue14364)
 * Add a clear cache method to the Database
 * Add sequence_reorder to model order
 * Remove has_window_functions from Database
