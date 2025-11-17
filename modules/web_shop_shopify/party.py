@@ -1,9 +1,14 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+import logging
+
 from trytond.pool import Pool, PoolMeta
 from trytond.tools import remove_forbidden_chars
+from trytond.tools.email_ import EmailNotValidError, validate_email
 
 from .common import IdentifiersMixin, setattr_changed
+
+logger = logging.getLogger(__name__)
 
 
 class Party(IdentifiersMixin, metaclass=PoolMeta):
@@ -34,6 +39,12 @@ class Party(IdentifiersMixin, metaclass=PoolMeta):
                                 value, contact_mechanism.type))):
                     break
             else:
+                if types[0] == 'email':
+                    try:
+                        validate_email(value)
+                    except EmailNotValidError as e:
+                        logger.info("Skip email %s", value, exc_info=e)
+                        continue
                 contact_mechanisms.append(ContactMechanism(
                         type=types[0], value=value))
         party.contact_mechanisms = contact_mechanisms
