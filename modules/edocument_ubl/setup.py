@@ -54,6 +54,7 @@ tests_require = [
     get_require_version('proteus'),
     get_require_version('trytond_account_cash_rounding'),
     get_require_version('trytond_account_invoice'),
+    get_require_version('trytond_document_incoming_invoice'),
     get_require_version('trytond_purchase'),
     ]
 

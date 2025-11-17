@@ -134,7 +134,7 @@ def get_invoice():
 class EdocumentUblTestCase(ModuleTestCase):
     "Test Edocument Ubl module"
     module = 'edocument_ubl'
-    extras = ['account_invoice', 'purchase']
+    extras = ['account_invoice', 'document_incoming_invoice', 'purchase']
 
     @with_transaction()
     def test_Invoice_2(self):
