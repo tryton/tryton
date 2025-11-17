@@ -5,6 +5,13 @@ from trytond.pool import PoolMeta
 from trytond.pyson import Eval, If
 
 
+class BOM(metaclass=PoolMeta):
+    __name__ = 'production.bom'
+
+    routings = fields.Many2Many(
+        'production.routing-production.bom', 'bom', 'routing', "Routings")
+
+
 class Production(metaclass=PoolMeta):
     __name__ = 'production'
     routing = fields.Many2One('production.routing', 'Routing',
