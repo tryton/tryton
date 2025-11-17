@@ -53,20 +53,21 @@ def html_editor(request, pool, model, record, field):
     with transaction.set_context(language=language):
         Model = pool.get(model)
         record = Model(record)
+        values = Model.read([record.id], ['rec_name', field.name])[0]
 
         status = HTTPStatus.OK
         error = ''
         if request.method == 'POST':
             setattr(record, field.name, request.form['text'])
             if request.form['_csrf_token'] == get_token(record):
-                record.save()
+                Model.write([record], {field.name: request.form['text']})
                 return redirect(request.url)
             else:
                 status = HTTPStatus.BAD_REQUEST
                 error = gettext('ir.msg_html_editor_save_fail')
 
         csrf_token = get_token(record)
-        text = getattr(record, field.name) or ''
+        text = values[field.name] or ''
         if isinstance(text, bytes):
             try:
                 text = text.decode('utf-8')
@@ -77,7 +78,7 @@ def html_editor(request, pool, model, record, field):
             abort(HTTPStatus.BAD_REQUEST)
         title = '%(model)s "%(name)s" %(field)s - %(title)s' % {
             'model': field.model.name,
-            'name': record.rec_name,
+            'name': values['rec_name'],
             'field': field.field_description,
             'title': request.args.get('title', "Tryton"),
             }
