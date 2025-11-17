@@ -23,9 +23,9 @@ either done or gets cancelled.
 
    Purchase Requests can be found by opening the main menu item:
 
-      |Purchases --> Purchase Requests|__
+      |Purchases --> Requests|__
 
-      .. |Purchases --> Purchase Requests| replace:: :menuselection:`Purchases --> Purchase Requests`
+      .. |Purchases --> Requests| replace:: :menuselection:`Purchases --> Requests`
       __ https://demo.tryton.org/model/purchase.request
 
 Wizards
