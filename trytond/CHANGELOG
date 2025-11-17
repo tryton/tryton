@@ -1,3 +1,4 @@
+* Enforce access check in HTML editor route (issue14364)
 
 Version 7.6.10 - 2025-11-02
 ---------------------------
