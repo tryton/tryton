@@ -627,6 +627,13 @@ class PurchaseRequest(metaclass=PoolMeta):
         for s in selection:
             if s not in cls.state.selection:
                 cls.state.selection.append(s)
+        cls._buttons.update({
+                'create_quotation': {
+                    'invisible': Eval('state').in_(
+                        ['draft', 'quotation', 'received']),
+                    'depends': ['state'],
+                    },
+                })
 
     def get_state(self):
         state = super().get_state()
@@ -636,6 +643,12 @@ class PurchaseRequest(metaclass=PoolMeta):
                     for l in self.quotation_lines):
                 state = 'received'
         return state
+
+    @classmethod
+    @ModelView.button_action(
+        'purchase_request_quotation.wizard_create_quotation')
+    def create_quotation(cls, requests):
+        pass
 
 
 class CreatePurchase(Wizard):

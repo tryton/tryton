@@ -7,7 +7,7 @@ Imports::
     >>> import datetime as dt
     >>> from decimal import Decimal
 
-    >>> from proteus import Model, Report, Wizard
+    >>> from proteus import Model, Report
     >>> from trytond.modules.account.tests.tools import create_chart, get_accounts
     >>> from trytond.modules.company.tests.tools import create_company
     >>> from trytond.tests.tools import activate_modules, assertEqual, set_user
@@ -103,8 +103,7 @@ add another supplier::
     >>> purchase_request, = PurchaseRequest.find([('state', '=', 'draft')])
     >>> purchase_request.state
     'draft'
-    >>> create_quotation = Wizard(
-    ...     'purchase.request.quotation.create', [purchase_request])
+    >>> create_quotation = purchase_request.click('create_quotation')
     >>> assertEqual(create_quotation.form.suppliers, [supplier])
     >>> create_quotation.form.suppliers.append(Party(supplier2.id))
     >>> create_quotation.execute('create_quotations')
@@ -173,7 +172,7 @@ with a quotation not having the minimum price unit::
 Create Purchase Order from Purchase Request and check if supplier with
 best price from quotations was selected (supplier2 price)::
 
-    >>> create_purchase = Wizard('purchase.request.create_purchase', [prequest])
+    >>> create_purchase = prequest.click('create_purchase')
     >>> prequest.state
     'purchased'
     >>> Purchase = Model.get('purchase.purchase')
@@ -187,8 +186,7 @@ best price from quotations was selected (supplier2 price)::
 Create Purchase Order from Purchase Request having a preferred_quotation_line
 and check if supplier from this quotation was selected::
 
-    >>> create_purchase = Wizard('purchase.request.create_purchase',
-    ...     [prequest2])
+    >>> create_purchase = prequest2.click('create_purchase')
     >>> prequest2.state
     'purchased'
     >>> Purchase = Model.get('purchase.purchase')

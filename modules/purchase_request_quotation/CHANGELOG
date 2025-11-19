@@ -1,3 +1,4 @@
+* Prevent running create quotation wizard from request in not allowed state
 * Allow creating quotation from request in received state
 * Open requests for quotations created from wizard
 
