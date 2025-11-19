@@ -1,3 +1,4 @@
+* Prevent running create purchase wizard from request with purchase line
 * Use the fastest product supplier when anyone can supply on time
 
 Version 7.6.0 - 2025-04-28

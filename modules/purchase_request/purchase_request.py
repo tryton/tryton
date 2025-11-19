@@ -116,6 +116,10 @@ class PurchaseRequest(ModelSQL, ModelView):
                 where=t.state.in_(['draft', 'purchased', 'exception'])))
         cls._order[0] = ('id', 'DESC')
         cls._buttons.update({
+                'create_purchase': {
+                    'invisible': Eval('purchase_line'),
+                    'depends': ['purchase_line'],
+                    },
                 'handle_purchase_cancellation_exception': {
                     'invisible': Eval('state') != 'exception',
                     'depends': ['state'],
@@ -329,6 +333,11 @@ class PurchaseRequest(ModelSQL, ModelView):
             with Transaction().set_context(context=product._context):
                 purchase_date = Date.today()
         return supplier, purchase_date
+
+    @classmethod
+    @ModelView.button_action('purchase_request.wizard_create_purchase')
+    def create_purchase(cls, requests):
+        pass
 
     @classmethod
     @ModelView.button_action(

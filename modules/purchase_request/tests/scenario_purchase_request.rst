@@ -107,8 +107,7 @@ There is now a draft purchase request::
 
 Create the purchase then cancel it::
 
-    >>> create_purchase = Wizard('purchase.request.create_purchase',
-    ...     [pr])
+    >>> create_purchase = pr.click('create_purchase')
     >>> create_purchase.form.party = supplier
     >>> create_purchase.execute('start')
     >>> pr.state
@@ -121,16 +120,14 @@ Create the purchase then cancel it::
 
 Handle the exception::
 
-    >>> handle_exception = Wizard(
-    ...     'purchase.request.handle.purchase.cancellation', [pr])
+    >>> handle_exception = pr.click('handle_purchase_cancellation_exception')
     >>> handle_exception.execute('reset')
     >>> pr.state
     'draft'
 
 Recreate a purchase and cancel it again::
 
-    >>> create_purchase = Wizard('purchase.request.create_purchase',
-    ...     [pr])
+    >>> create_purchase = pr.click('create_purchase')
     >>> pr.state
     'purchased'
     >>> (purchase,), = create_purchase.actions
@@ -141,8 +138,7 @@ Recreate a purchase and cancel it again::
 
 Handle again the exception::
 
-    >>> handle_exception = Wizard(
-    ...     'purchase.request.handle.purchase.cancellation', [pr])
+    >>> handle_exception = pr.click('handle_purchase_cancellation_exception')
     >>> handle_exception.execute('cancel_request')
     >>> pr.state
     'cancelled'
@@ -174,7 +170,7 @@ There is now 2 draft purchase requests::
 
 Create the purchase with a unique line::
 
-    >>> create_purchase = Wizard('purchase.request.create_purchase', prs)
+    >>> create_purchase = PurchaseRequest.click(prs, 'create_purchase')
     >>> create_purchase.form.party = supplier
     >>> create_purchase.execute('start')
     >>> pr.state
@@ -203,7 +199,7 @@ Create a purchase request without product::
 
 Create the purchase without product::
 
-    >>> create_purchase = Wizard('purchase.request.create_purchase', [pr])
+    >>> create_purchase = pr.click('create_purchase')
     >>> create_purchase.form.party = supplier
     >>> create_purchase.execute('start')
     >>> pr.state
