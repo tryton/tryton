@@ -154,6 +154,7 @@ class Sale(IdentifierMixin, metaclass=PoolMeta):
             lines.append(line)
         for line in id2line.values():
             line.quantity = 0
+            lines.append(line)
         sale.lines = lines
         return sale
 
