@@ -90,7 +90,6 @@ class ConfigManager(object):
             'client.code_scanner_sound': True,
             'client.lang': locale.getdefaultlocale()[0],
             'client.language_direction': 'ltr',
-            'client.email': '',
             'client.limit': 1000,
             'client.check_version': True,
             'client.bus_timeout': 10 * 60,

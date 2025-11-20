@@ -10,7 +10,7 @@ from .common import (
     file_write, filter_domain, generateColorscheme, get_align, get_credentials,
     get_gdk_backend, get_hostname, get_monitor_size, get_port,
     get_sensible_widget, get_toplevel_window, hex2rgb, highlight_rgb, humanize,
-    idle_add, mailto, message, node_attributes, open_documentation, play_sound,
+    idle_add, message, node_attributes, open_documentation, play_sound,
     process_exception, resize_pixbuf, selection, setup_window, slugify, sur,
     sur_3b, timezoned_date, to_xml, untimezoned_date, url_open, userwarning,
     warning)
@@ -70,7 +70,6 @@ __all__ = [
     idle_add,
     inverse_leaf,
     localize_domain,
-    mailto,
     merge,
     message,
     node_attributes,

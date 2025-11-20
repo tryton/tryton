@@ -25,7 +25,6 @@ try:
 except ImportError:
     from http import client as HTTPStatus
 
-import shlex
 import socket
 import sys
 import traceback
@@ -35,7 +34,6 @@ import urllib.request
 import webbrowser
 import zipfile
 from functools import wraps
-from string import Template
 from threading import Lock, Thread
 
 from gi.repository import Gdk, GdkPixbuf, Gio, GLib, GObject, Gtk
@@ -682,52 +680,6 @@ def url_open(uri):
             return open(uri)
         else:
             raise
-
-
-def mailto(to=None, cc=None, subject=None, body=None, attachment=None):
-    if CONFIG['client.email']:
-        cmd = Template(CONFIG['client.email']).substitute(
-                to=to or '',
-                cc=cc or '',
-                subject=subject or '',
-                body=body or '',
-                attachment=attachment or '',
-                )
-        args = shlex.split(str(cmd))
-        subprocess.Popen(args)
-        return
-    if os.name != 'nt' and sys.platform != 'darwin':
-        args = ['xdg-email', '--utf8']
-        if cc:
-            args.extend(['--cc', cc])
-        if subject:
-            args.extend(['--subject', subject])
-        if body:
-            args.extend(['--body', body])
-        if attachment:
-            args.extend(['--attach', attachment])
-        if to:
-            args.append(to)
-        try:
-            subprocess.Popen(args)
-            return
-        except OSError:
-            pass
-    # http://www.faqs.org/rfcs/rfc2368.html
-    url = "mailto:"
-    if to:
-        url += urllib.parse.quote(to.strip(), "@,")
-    url += '?'
-    if cc:
-        url += "&cc=" + urllib.parse.quote(cc, "@,")
-    if subject:
-        url += "&subject=" + urllib.parse.quote(subject, "")
-    if body:
-        body = "\r\n".join(body.splitlines())
-        url += "&body=" + urllib.parse.quote(body, "")
-    if attachment:
-        url += "&attachment=" + urllib.parse.quote(attachment, "")
-    webbrowser_open(url, new=1)
 
 
 class UniqueDialog(object):
