@@ -201,12 +201,13 @@ class Sale(IdentifierMixin, metaclass=PoolMeta):
     def process(cls, sales):
         for sale in sales:
             for line in sale.lines:
-                if not line.product and line.shopify_identifier:
-                    raise SaleConfirmError(
-                        gettext('web_shop_shopify'
-                            '.msg_sale_line_without_product',
-                            sale=sale.rec_name,
-                            line=line.rec_name))
+                if line.shopify_identifier and line.quantity:
+                    if not line.product:
+                        raise SaleConfirmError(
+                            gettext('web_shop_shopify'
+                                '.msg_sale_line_without_product',
+                                sale=sale.rec_name,
+                                line=line.rec_name))
         super().process(sales)
         for sale in sales:
             if not sale.web_shop or not sale.shopify_identifier:
