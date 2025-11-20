@@ -3832,9 +3832,13 @@
         },
         _format: function(content) {
             if (this.format) {
-                return this.format(content);
+                content = this.format(content);
             }
-            return jQuery('<span/>').text(content);
+            if (content instanceof jQuery) {
+                return content;
+            } else {
+                return jQuery('<span/>').text(content);
+            }
         },
         _format_action: function(content) {
             if (this.format_action) {

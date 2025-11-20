@@ -1,3 +1,4 @@
+* Escape completion content with custom format (issue14363)
 
 Version 7.6.10 - 2025-11-02
 ---------------------------
