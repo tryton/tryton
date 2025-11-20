@@ -9,8 +9,7 @@ from unittest.mock import MagicMock, Mock, patch
 from lxml import etree
 
 from trytond.pool import Pool
-from trytond.tests.test_tryton import (
-    ModuleTestCase, activate_module, with_transaction)
+from trytond.tests.test_tryton import ModuleTestCase, with_transaction
 
 
 def get_invoice():
@@ -135,11 +134,7 @@ def get_invoice():
 class EdocumentUblTestCase(ModuleTestCase):
     "Test Edocument Ubl module"
     module = 'edocument_ubl'
-
-    @classmethod
-    def setUpClass(cls):
-        super().setUpClass()
-        activate_module('account_invoice')
+    extras = ['account_invoice', 'purchase']
 
     @with_transaction()
     def test_Invoice_2(self):

@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data grouped="1">
+        <record model="ir.message" id="msg_invoice_type_code_unsupported">
+            <field name="text">Unsupported invoice type code "%(type_code)s".</field>
+        </record>
+        <record model="ir.message" id="msg_credit_note_type_code_unsupported">
+            <field name="text">Unsupported credit note type code "%(type_code)s".</field>
+        </record>
+        <record model="ir.message" id="msg_company_not_found">
+            <field name="text">Could not find the company for:
+%(company)s</field>
+        </record>
+        <record model="ir.message" id="msg_currency_not_found">
+            <field name="text">Could not find a currency with code "%(code)s".</field>
+        </record>
+        <record model="ir.message" id="msg_unit_not_found">
+            <field name="text">Could not find a unit with UNECE code "%(code)s".</field>
+        </record>
+        <record model="ir.message" id="msg_tax_not_found">
+            <field name="text">Could not find tax for:
+%(tax_category)s</field>
+        </record>
+        <record model="ir.message" id="msg_invoice_total_amount_different">
+            <field name="text">The total amount %(total_amount)s of the invoice "%(invoice)s" is different from the amount %(amount)s.</field>
+        </record>
+        <record model="ir.message" id="msg_invoice_tax_amount_different">
+            <field name="text">The tax amount %(tax_amount)s of the invoice "%(invoice)s" is different from the tax total %(tax_total)s.</field>
+        </record>
+    </data>
+</tryton>

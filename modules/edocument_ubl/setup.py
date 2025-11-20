@@ -44,15 +44,17 @@ else:
     download_url = 'http://downloads.tryton.org/%s.%s/' % (
         major_version, minor_version)
 
-requires = ['Genshi']
+requires = ['Genshi', 'lxml']
 for dep in info.get('depends', []):
     if not re.match(r'(ir|res)(\W|$)', dep):
         requires.append(get_require_version('trytond_%s' % dep))
 requires.append(get_require_version('trytond'))
 
 tests_require = [
-    'lxml',
+    get_require_version('proteus'),
+    get_require_version('trytond_account_cash_rounding'),
     get_require_version('trytond_account_invoice'),
+    get_require_version('trytond_purchase'),
     ]
 
 setup(name=name,
@@ -81,7 +83,7 @@ setup(name=name,
         'trytond.modules.edocument_ubl': (info.get('xml', [])
             + ['tryton.cfg', 'view/*.xml', 'locale/*.po', '*.fodt',
                 'icons/*.svg', 'template/*/*.xml', 'tests/*/*/*.xsq',
-                'tests/*.rst', 'tests/*.json']),
+                'tests/*.rst', 'tests/*.json', 'tests/*.xml']),
         },
     classifiers=[
         'Development Status :: 5 - Production/Stable',
