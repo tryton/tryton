@@ -1,3 +1,4 @@
+* Escape completion content with custom format (issue14363)
 * Use sandboxed iframe to display document (issue14290)
 * Add support for multiple button in the tree view
 * Support shortcuts on modal
