@@ -675,7 +675,7 @@ class Payment(Workflow, ModelSQL, ModelView, ChatMixin):
         Line = pool.get('account.move.line')
         super().on_modification(mode, payments, field_names=field_names)
         if mode in {'create', 'write'}:
-            if not field_names or 'line' in field_names:
+            if field_names is None or 'line' in field_names:
                 if lines := Line.browse({p.line for p in payments if p.line}):
                     Line.set_payment_amount(lines)
 

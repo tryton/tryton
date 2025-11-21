@@ -1585,7 +1585,7 @@ class Invoice(
 
     def compute_fields(self, field_names=None):
         values = super().compute_fields(field_names=field_names)
-        if (not field_names or 'number' in field_names):
+        if (field_names is None or 'number' in field_names):
             values['number_alnum'] = (
                 re.sub(r'[\W_]', '', self.number)
                 if self.number is not None else None)

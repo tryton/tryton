@@ -126,7 +126,7 @@ class Company(ModelSQL, ModelView):
         Rule = pool.get('ir.rule')
         super().on_modification(mode, companies, field_names=field_names)
         if mode == 'write':
-            if not field_names or 'logo' in field_names:
+            if field_names is None or 'logo' in field_names:
                 cls._logo_clear_cache(companies)
             Rule._domain_get_cache.clear()
 

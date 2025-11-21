@@ -997,7 +997,7 @@ class Move(Workflow, ModelSQL, ModelView):
     def compute_fields(self, field_names=None):
         cls = self.__class__
         values = super().compute_fields(field_names=field_names)
-        if (not field_names
+        if (field_names is None
                 or (cls.internal_quantity.on_change_with & field_names)):
             internal_quantity = self.on_change_with_internal_quantity()
             if getattr(self, 'internal_quantity', None) != internal_quantity:

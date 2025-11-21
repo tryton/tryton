@@ -186,12 +186,12 @@ class Move(metaclass=PoolMeta):
         cls = self.__class__
         values = super().compute_fields(field_names=field_names)
         if (self.state not in {'done', 'cancelled'}
-                and (not field_names
+                and (field_names is None
                     or (cls.intrastat_type.on_change_with & field_names))):
             intrastat_type = self.on_change_with_intrastat_type()
             if getattr(self, 'intrastat_type', None) != intrastat_type:
                 values['intrastat_type'] = intrastat_type
-        if (not field_names
+        if (field_names is None
                 or (cls.intrastat_value.on_change_with & field_names)):
             intrastat_value = self.on_change_with_intrastat_value()
             if getattr(self, 'intrastat_value', None) != intrastat_value:

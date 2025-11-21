@@ -554,9 +554,9 @@ class Work(tree(parent='successors'), metaclass=PoolMeta):
         super().on_modification(mode, works, field_names=field_names)
         if mode in {'create', 'write'}:
             for work in works:
-                if not field_names or 'effort' in field_names:
+                if field_names is None or 'effort' in field_names:
                     work.reset_leveling()
-                if not field_names or field_names & {
+                if field_names is None or field_names & {
                         'constraint_start_time', 'constraint_finish_time',
                         'effort'}:
                     work.compute_dates()
@@ -590,7 +590,7 @@ class PredecessorSuccessor(ModelSQL):
     def on_modification(cls, mode, records, field_names=None):
         super().on_modification(mode, records, field_names=field_names)
         if mode == 'create':
-            if not field_names or field_names & {
+            if field_names is None or field_names & {
                     'predecessor', 'successor', 'parent'}:
                 for record in records:
                     record.predecessor.reset_leveling()

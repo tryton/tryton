@@ -136,12 +136,12 @@ class Move(metaclass=PoolMeta):
     def compute_fields(self, field_names=None):
         cls = self.__class__
         values = super().compute_fields(field_names=field_names)
-        if (not field_names
+        if (field_names is None
                 or (cls.internal_weight.on_change_with & field_names)):
             internal_weight = self.on_change_with_internal_weight()
             if self.internal_weight != internal_weight:
                 values['internal_weight'] = internal_weight
-        if (not field_names
+        if (field_names is None
                 or (cls.internal_volume.on_change_with & field_names)):
             internal_volume = self.on_change_with_internal_volume()
             if getattr(self, 'internal_volume', None) != internal_volume:

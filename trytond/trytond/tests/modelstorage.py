@@ -192,7 +192,7 @@ class ModelStorageComputeFields(ModelSQL):
 
     def compute_fields(self, field_names=None):
         values = super().compute_fields(field_names=field_names)
-        if not field_names or 'value' in field_names:
+        if field_names is None or 'value' in field_names:
             values['computed_value'] = self.value + 1
         return values
 

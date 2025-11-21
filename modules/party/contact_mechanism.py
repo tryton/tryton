@@ -273,7 +273,7 @@ class ContactMechanism(
 
     def compute_fields(self, field_names=None):
         values = super().compute_fields(field_names=field_names)
-        if not field_names or {'value', 'type'} & field_names:
+        if field_names is None or {'value', 'type'} & field_names:
             if getattr(self, 'value', None) and getattr(self, 'type', None):
                 value = self.format_value(value=self.value, type_=self.type)
                 if self.value != value:
