@@ -1014,9 +1014,9 @@
                 states = {'invisible': true};
             }
             if (states.invisible) {
-                this.el.hide();
+                this.el.sao_hide();
             } else {
-                this.el.show();
+                this.el.sao_show();
             }
             this.el.prop('disabled', Boolean(states.readonly));
             this.set_icon(states.icon || this.attributes.icon);
@@ -3746,7 +3746,7 @@
                     'text': '.',
                 }));
             }
-            this.el.hide();
+            this.el.sao_hide();
             jQuery(() => {
                 this.el.appendTo('body');
             });
@@ -3757,7 +3757,7 @@
             }
             return window.setTimeout(() => {
                 this.queries += 1;
-                this.el.show();
+                this.el.sao_show();
             }, timeout);
         },
         hide: function(timeoutID) {
@@ -3767,7 +3767,7 @@
             }
             if (this.queries <= 0) {
                 this.queries = 0;
-                this.el.hide();
+                this.el.sao_hide();
             }
         }
     });
@@ -3821,7 +3821,7 @@
             }).append(jQuery('<ul/>', {
                 'class': 'list-unstyled',
             })).appendTo(this.menu);
-            this.actions.hide();
+            this.actions.sao_hide();
 
             this.source = source;
             this.match_selected = match_selected;
@@ -3877,10 +3877,10 @@
             }
             this.actions.find('li.action').remove();
             if (jQuery.isEmptyObject(actions)) {
-                this.actions.hide();
+                this.actions.sao_hide();
                 return;
             }
-            this.actions.show();
+            this.actions.sao_show();
             actions.forEach(function(action) {
                 var action_id = action[0];
                 var content = action[1];

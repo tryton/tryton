@@ -52,7 +52,7 @@
                 'aria-label': Sao.i18n.gettext("Clear Search"),
                 'title': Sao.i18n.gettext("Clear Search"),
             }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-clear'));
-            but_clear.hide();
+            but_clear.sao_hide();
             but_clear.click(() => {
                 this.search_entry.val('').change();
                 this.do_search();
@@ -60,9 +60,9 @@
 
             this.search_entry.on('keyup change', () => {
                 if (this.search_entry.val()) {
-                    but_clear.show();
+                    but_clear.sao_show();
                 } else {
-                    but_clear.hide();
+                    but_clear.sao_hide();
                 }
                 this.bookmark_match();
             });
@@ -400,15 +400,15 @@
             this.but_bookmark.prop(
                 'disabled', jQuery.isEmptyObject(this.bookmarks()));
             this.bookmark_match();
-            this.filter_box.show();
+            this.filter_box.sao_show();
             if (this.tab) {
-                this.tab.show();
+                this.tab.sao_show();
             }
         },
         hide_filter: function() {
-            this.filter_box.hide();
+            this.filter_box.sao_hide();
             if (this.tab) {
-                this.tab.hide();
+                this.tab.sao_hide();
             }
         },
         set: function(widget) {
@@ -738,7 +738,7 @@
                     this, placeholder, el);
                 if (~navigator.userAgent.indexOf("Firefox")) {
                     // time input on Firefox does not have a pop-up
-                    entry.find('.icon-input').hide();
+                    entry.find('.icon-input').sao_hide();
                 }
                 return entry;
             },
@@ -1406,12 +1406,12 @@
                     let view_tree = this.fields_view_tree[
                         this.current_view.view_id] || {};
                     if ('active' in view_tree.fields) {
-                        this.screen_container.but_active.show();
+                        this.screen_container.but_active.sao_show();
                     } else {
-                        this.screen_container.but_active.hide();
+                        this.screen_container.but_active.sao_hide();
                     }
                 } else {
-                    this.screen_container.but_active.hide();
+                    this.screen_container.but_active.sao_hide();
                 }
             }
             return jQuery.when.apply(jQuery, deferreds).then(

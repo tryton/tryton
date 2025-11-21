@@ -229,12 +229,12 @@
             'class': 'form-control',
             'id': 'database',
             'name': 'database',
-        }).hide();
+        }).sao_hide();
         dialog.database_input = jQuery('<input/>', {
             'class': 'form-control',
             'id': 'database',
             'name': 'database',
-        }).hide();
+        }).sao_hide();
         dialog.login_input = jQuery('<input/>', {
             'class': 'form-control',
             'id': 'login',
@@ -389,10 +389,10 @@
                 }
             }
             el.prop('readonly', databases.length == 1);
-            el.show();
+            el.sao_show();
             el.val(database || '');
         }, function() {
-            dialog.database_input.show();
+            dialog.database_input.sao_show();
         });
 
         jQuery.when(Sao.Authentication.services()).then(function(services) {

@@ -88,7 +88,22 @@ var Sao = {
         // continue
     }
 
-    // Add .uniqueId to jQuery
+    Sao._showHide = function(elements, show) {
+        for (let element of elements) {
+            let display = element.style.display;
+            if (show) {
+                if (display === 'none') {
+                    element.style.display = 'revert';
+                }
+            } else {
+                if (display !== 'none') {
+                    element.style.display = 'none';
+                }
+            }
+        }
+    }
+
+    // Add custom functions to jQuery
     jQuery.fn.extend({
         uniqueId: (function() {
             var uuid = 0;
@@ -99,7 +114,19 @@ var Sao = {
                     }
                 });
             };
-        })()
+        })(),
+        sao_show: function() {
+            Sao._showHide(this.toArray(), true);
+            return this;
+        },
+        sao_hide: function() {
+            Sao._showHide(this.toArray(), false);
+            return this;
+        },
+        sao_toggle: function(bool) {
+            Sao._showHide(this.toArray(), bool);
+            return this;
+        },
     });
 
     window.onbeforeunload = function(e) {
@@ -818,7 +845,7 @@ var Sao = {
             var view = screen.current_view;
             view.table.removeClass('table table-bordered');
             view.table.addClass('no-responsive');
-            view.table.find('thead').hide();
+            view.table.find('thead').sao_hide();
             view.table.find('colgroup > col.tree-menu').css('width', 0);
             var gs = new Sao.GlobalSearch();
             jQuery('#global-search').empty();

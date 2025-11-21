@@ -275,7 +275,7 @@
                 this.wid_text = jQuery('<input/>', {
                     type: 'input'
                 }).appendTo(menu);
-                this.wid_text.hide();
+                this.wid_text.sao_hide();
 
                 var buttons = jQuery('<div/>', {
                     'class': 'input-group-btn'
@@ -332,7 +332,7 @@
                 this.but_next.click(disable_during(this.next.bind(this)));
 
                 if (this.domain) {
-                    this.wid_text.show();
+                    this.wid_text.sao_show();
 
                     this.but_add = jQuery('<button/>', {
                         'class': 'btn btn-default btn-sm',

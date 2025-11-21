@@ -942,9 +942,9 @@
             expanded = expanded || this.get_expanded_paths();
 
             if (this.selection_mode == Sao.common.SELECTION_MULTIPLE) {
-                this.selection.show();
+                this.selection.sao_show();
             } else {
-                this.selection.hide();
+                this.selection.sao_hide();
             }
 
             const group_records = (group, root) => {
@@ -1054,7 +1054,7 @@
                         column.col.data('hidden-width', column.col.css('width'))
                     }
                     column.col.css('width', 0);
-                    column.col.hide();
+                    column.col.sao_hide();
                 } else if (!column.col.hasClass('draggable-handle') &&
                     !column.col.hasClass('optional') &&
                     !column.col.hasClass('selection-state') &&
@@ -1078,11 +1078,11 @@
                         width = `${width}em`;
                     }
                     min_width.push(width);
-                    column.col.show();
+                    column.col.sao_show();
                 }
             }
-            this.table.find('thead > tr > th .resizer').show();
-            this.table.find('thead > tr > th:visible:last .resizer').hide();
+            this.table.find('thead > tr > th .resizer').sao_show();
+            this.table.find('thead > tr > th:visible:last .resizer').sao_hide();
             if (this.children_field) {
                 this.columns.every(column => {
                     if (column.col.hasClass('draggable-handle') ||
@@ -1221,8 +1221,8 @@
                 }
             }
 
-            to_hide.addClass('invisible').hide();
-            to_show.removeClass('invisible').show();
+            to_hide.addClass('invisible').sao_hide();
+            to_show.removeClass('invisible').sao_show();
         },
         update_with_selection: function() {
             let selected_records = this.selected_records;
@@ -1824,11 +1824,11 @@
                     break;
                 case Sao.common.SELECTION_SINGLE:
                     this.selection.attr('type', 'radio');
-                    this.selection.show();
+                    this.selection.sao_show();
                     break;
                 case Sao.common.SELECTION_MULTIPLE:
                     this.selection.attr('type', 'checkbox');
-                    this.selection.show();
+                    this.selection.sao_show();
                     break;
             }
 
@@ -2260,11 +2260,11 @@
             this.tree.columns.forEach((col, idx) => {
                 var td = this._get_column_td(idx);
                 var static_el = this.get_static_el(td);
-                static_el.empty().append(col.render(this.record)).show();
+                static_el.empty().append(col.render(this.record)).sao_show();
                 this.get_editable_el(td)
                     .empty()
                     .data('widget', null)
-                    .hide()
+                    .sao_hide()
                     .parents('.treeview td').addBack().removeClass('edited');
             });
         },
@@ -2289,8 +2289,8 @@
                     widget.display(this.record, col.field);
 
                     var static_el = this.get_static_el(td);
-                    static_el.hide();
-                    editable_el.show();
+                    static_el.sao_hide();
+                    editable_el.sao_show();
                     editable_el.parents('.treeview td').addBack()
                         .addClass('edited');
 
@@ -2429,7 +2429,7 @@
                     }
                 } else if (event_.which == Sao.common.ESC_KEYCODE) {
                     this.tree.edit_row(null);
-                    this.get_static_el().show().find('[tabindex=0]').focus();
+                    this.get_static_el().sao_show().find('[tabindex=0]').focus();
                 }
             } else {
                 widget.display(this.record, column.field);
@@ -2474,9 +2474,9 @@
                 field.set_state(record, ['invisible']);
                 var invisible = field.get_state_attrs(record).invisible;
                 if (invisible) {
-                    cell.hide();
+                    cell.sao_hide();
                 } else {
-                    cell.show();
+                    cell.sao_show();
                 }
                 if (this.protocol) {
                     value = field.get(record);
@@ -2526,7 +2526,7 @@
                         // clean previous color if the new one is not valid
                         img_tag.css('background-color', '');
                         img_tag.css('background-color', value);
-                        img_tag.toggle(Boolean(value));
+                        img_tag.sao_toggle(Boolean(value));
                     } else {
                         Sao.common.ICONFACTORY.get_icon_url(value)
                             .done(url => {
@@ -2593,7 +2593,7 @@
                 var invisible = field.get_state_attrs(record).invisible;
                 if (invisible) {
                     cell.text('');
-                    cell.hide();
+                    cell.sao_hide();
                     return;
                 }
                 var result = field.get_symbol(record, this.attributes.symbol);
@@ -2601,10 +2601,10 @@
                     position = result[1];
                 if (Math.round(position) === this.position) {
                     cell.text(symbol);
-                    cell.show();
+                    cell.sao_show();
                 } else {
                     cell.text('');
-                    cell.hide();
+                    cell.sao_hide();
                 }
             };
             if (!record.is_loaded(this.attributes.name)) {
@@ -2658,9 +2658,9 @@
                 this.field.set_state(record);
                 var state_attrs = this.field.get_state_attrs(record);
                 if (state_attrs.invisible) {
-                    cell.hide();
+                    cell.sao_hide();
                 } else {
-                    cell.show();
+                    cell.sao_show();
                 }
             };
             const render_error = () => {
@@ -2686,10 +2686,10 @@
             cells.push(this.header);
             for (const cell of cells) {
                 if (visible) {
-                    cell.show();
+                    cell.sao_show();
                     cell.removeClass('invisible');
                 } else {
-                    cell.hide();
+                    cell.sao_hide();
                     cell.addClass('invisible');
                 }
             }
@@ -3065,9 +3065,9 @@
                     });
             }
             if (!text) {
-                button.hide();
+                button.sao_hide();
             } else {
-                button.show();
+                button.sao_show();
             }
         },
         save_as: function(record) {
@@ -3149,9 +3149,9 @@
             this.field.set_state(record);
             var state_attrs = this.field.get_state_attrs(record);
             if (state_attrs.readonly) {
-                cell.hide();
+                cell.sao_hide();
             } else {
-                cell.show();
+                cell.sao_show();
             }
             return cell;
         }
@@ -3220,10 +3220,10 @@
             cells.push(this.header);
             for (const cell of cells) {
                 if (visible) {
-                    cell.show();
+                    cell.sao_show();
                     cell.removeClass('invisible');
                 } else {
-                    cell.hide();
+                    cell.sao_hide();
                     cell.addClass('invisible');
                 }
             }
@@ -3257,7 +3257,7 @@
     Sao.View.Tree.ButtonMultiple = Sao.class_(Sao.common.Button, {
         set_state: function(records) {
             if (!records.length) {
-                this.el.hide();
+                this.el.sao_hide();
                 this.el.prop('disabled', true);
                 this.set_icon(null);
                 return;
@@ -3275,9 +3275,9 @@
                 icons.add(r_states.icon || this.attributes.icon);
             }
             if (states.invisible) {
-                this.el.hide();
+                this.el.sao_hide();
             } else {
-                this.el.show();
+                this.el.sao_show();
             }
             this.el.prop('disabled', Boolean(states.readonly));
             if (icons.size == 1) {
@@ -3357,9 +3357,9 @@
         set_readonly: function(readonly) {
             Sao.View.EditableTree.URL._super.set_readonly.call(this, readonly);
             if (readonly) {
-                this.input.hide();
+                this.input.sao_hide();
             } else {
-                this.input.show();
+                this.input.sao_show();
             }
         },
     });

@@ -802,7 +802,7 @@
 
             this.sidebar = jQuery('<div/>', {
                 'class': 'sidebar',
-            }).hide().appendTo(this.main);
+            }).sao_hide().appendTo(this.main);
             this.sidebar_content = jQuery('<div/>', {
                 'class': 'sidebar-content',
             }).appendTo(jQuery('<div/>', {
