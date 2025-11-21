@@ -2,7 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 from trytond.model import (
     MatchMixin, ModelSQL, ModelView, fields, sequence_ordered)
-from trytond.pool import PoolMeta
+from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Bool, Eval, If
 
 
@@ -38,6 +38,11 @@ class ProductLocation(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
     def on_change_product(self):
         if self.product:
             self.template = self.product.template
+
+    @classmethod
+    def default_warehouse(cls):
+        Location = Pool().get('stock.location')
+        return Location.get_default_warehouse()
 
 
 class Move(metaclass=PoolMeta):
