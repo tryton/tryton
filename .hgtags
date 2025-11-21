@@ -9770,3 +9770,4 @@ ded2f5a53d768c5604dfa7d9d432be9f8a12a46d tryton-7.6.5
 045bbf12b37d7e1be4c58229900cd5c44f9e4ebf incoterm-7.6.1
 65278a5954bc979f2ed6f6f2d79ae287349010b2 account_stock_eu-7.6.5
 bf4b17247d097e2ec6d2b44bff6fdcd8f8b24e8d account_statement-7.6.1
+f0277b9b74839b84a85dee9687c234b5ee4c24c1 account_payment_clearing-7.6.1
