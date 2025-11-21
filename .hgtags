@@ -9675,3 +9675,4 @@ fdca98b5ddd2056c4947b9f34588a4553eb1ac88 trytond-7.4.21
 14e69b4d5bdaa6365f23191c5349356ec72abfe3 incoterm-7.4.2
 7f8b168c9a193066a57351496215de8ba7a35280 account_stock_eu-7.4.6
 799ed5ad931c31ce32e5d6e7857c5df5c543cc7b account_statement-7.4.2
+e67e6abec74f051d91e0c97a43788c330c17e7fb account_payment_clearing-7.4.3
