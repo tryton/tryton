@@ -263,7 +263,7 @@ class AccountNumber(DeactivableMixin, sequence_ordered(), ModelSQL, ModelView):
 
     def compute_fields(self, field_names=None):
         values = super().compute_fields(field_names=field_names)
-        if ((not field_names or {'type', 'number'} & field_names)
+        if ((field_names is None or {'type', 'number'} & field_names)
                 and getattr(self, 'type', None) == 'iban'):
             number = getattr(self, 'number', None)
             if number:

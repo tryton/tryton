@@ -90,7 +90,7 @@ class Line(ModelSQL, ModelView):
     def compute_fields(self, field_names=None):
         cls = self.__class__
         values = super().compute_fields(field_names=field_names)
-        if (not field_names
+        if (field_names is None
                 or (cls.date.on_change_with & field_names)):
             date = self.on_change_with_date()
             if getattr(self, 'date', None) != date:

@@ -154,7 +154,7 @@ class ShipmentMixin:
         Move = pool.get('stock.move')
         super().on_modification(mode, shipments, field_names=field_names)
         if (mode in {'create', 'write'}
-                and (not field_names or 'planned_date' in field_names)):
+                and (field_names is None or 'planned_date' in field_names)):
             cls._set_move_planned_date(shipments)
         elif mode == 'delete':
             if hasattr(cls, 'moves'):

@@ -564,7 +564,7 @@ class EmailTemplate(ModelSQL, ModelView):
     @classmethod
     def on_modification(cls, mode, records, field_names=None):
         super().on_modification(mode, records, field_names=field_names)
-        if not field_names or {'name', 'model'} & set(field_names):
+        if field_names is None or {'name', 'model'} & set(field_names):
             ModelView._view_toolbar_get_cache.clear()
 
 

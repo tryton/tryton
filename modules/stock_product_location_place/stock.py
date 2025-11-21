@@ -127,11 +127,13 @@ class Move(metaclass=PoolMeta):
         cls = self.__class__
         values = super().compute_fields(field_names=field_names)
         if getattr(self, 'state', None) not in {'done', 'cancelled'}:
-            if not field_names or cls.from_place.on_change_with & field_names:
+            if (field_names is None
+                    or cls.from_place.on_change_with & field_names):
                 from_place = self.on_change_with_from_place()
                 if getattr(self, 'from_place', None) != from_place:
                     values['from_place'] = from_place
-            if not field_names or cls.to_place.on_change_with & field_names:
+            if (field_names is None
+                    or cls.to_place.on_change_with & field_names):
                 to_place = self.on_change_with_to_place()
                 if getattr(self, 'to_place', None) != to_place:
                     values['to_place'] = to_place
