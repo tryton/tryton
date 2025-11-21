@@ -1,3 +1,7 @@
+
+Version 7.6.11 - 2025-11-21
+---------------------------
+* Bug fixes (see mercurial logs for details)
 * Escape completion content with custom format (issue14363)
 
 Version 7.6.10 - 2025-11-02
