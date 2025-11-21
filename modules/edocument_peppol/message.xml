@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data grouped="1">
+        <record model="ir.message" id="msg_service_transmission_id_unique">
+            <field name="text">The transmission ID must be unique per service.</field>
+        </record>
+        <record model="ir.message" id="msg_invoice_party_peppol_required">
+            <field name="text">The party "%(party)s" is not set up to send the invoice "%(invoice)s" via the Peppol network.</field>
+        </record>
+    </data>
+</tryton>

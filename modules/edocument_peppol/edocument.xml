@@ -1,0 +1,237 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <menuitem
+            name="Peppol"
+            parent="ir.menu_administration"
+            sequence="20"
+            id="menu_peppol"/>
+        <record model="ir.ui.menu-res.group"
+            id="menu_peppol_group_admin">
+            <field name="menu" ref="menu_peppol"/>
+            <field name="group" ref="res.group_admin"/>
+        </record>
+
+        <record model="ir.ui.view" id="edocument_peppol_view_form">
+            <field name="model">edocument.peppol</field>
+            <field name="type">form</field>
+            <field name="name">edocument_peppol_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="edocument_peppol_view_list">
+            <field name="model">edocument.peppol</field>
+            <field name="type">tree</field>
+            <field name="name">edocument_peppol_list</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_edocument_peppol">
+            <field name="name">Documents</field>
+            <field name="res_model">edocument.peppol</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_edocument_peppol_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="edocument_peppol_view_list"/>
+            <field name="act_window" ref="act_edocument_peppol"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_edocument_peppol_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="edocument_peppol_view_form"/>
+            <field name="act_window" ref="act_edocument_peppol"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_edocument_peppol_domain_draft">
+            <field name="name">Draft</field>
+            <field name="sequence" eval="10"/>
+            <field name="domain" eval="[('state', '=', 'draft')]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_edocument_peppol"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_edocument_peppol_domain_pending">
+            <field name="name">Pending</field>
+            <field name="sequence" eval="20"/>
+            <field name="domain" eval="[('state', '=', 'pending')]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_edocument_peppol"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_edocument_peppol_domain_processing">
+            <field name="name">Processing</field>
+            <field name="sequence" eval="30"/>
+            <field name="domain" eval="[('state', '=', 'processing')]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_edocument_peppol"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_edocument_peppol_domain_failed">
+            <field name="name">Failed</field>
+            <field name="sequence" eval="40"/>
+            <field name="domain" eval="[('state', '=', 'failed')]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_edocument_peppol"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_edocument_peppol_domain_all">
+            <field name="name">All</field>
+            <field name="sequence" eval="9999"/>
+            <field name="domain"></field>
+            <field name="act_window" ref="act_edocument_peppol"/>
+        </record>
+        <menuitem
+            parent="menu_peppol"
+            action="act_edocument_peppol"
+            sequence="20"
+            id="menu_edocument_peppol"/>
+
+        <record model="ir.model.access" id="access_edocument_peppol">
+            <field name="model">edocument.peppol</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_edocument_peppol_admin">
+            <field name="model">edocument.peppol</field>
+            <field name="group" ref="res.group_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.model.field.access" id="access_edocument_peppol_data">
+            <field name="model">edocument.peppol</field>
+            <field name="field">data</field>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+        </record>
+        <record model="ir.model.field.access" id="access_edocument_peppol_data_admin">
+            <field name="model">edocument.peppol</field>
+            <field name="field">data</field>
+            <field name="group" ref="res.group_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_edocument_peppol_companies">
+            <field name="name">User in companies</field>
+            <field name="model">edocument.peppol</field>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_edocument_peppol_companies">
+            <field name="domain" eval="[('company', 'in', Eval('companies', []))]" pyson="1"/>
+            <field name="rule_group" ref="rule_group_edocument_peppol_companies"/>
+        </record>
+
+        <record model="ir.model.button" id="edocument_peppol_draft_button">
+            <field name="model">edocument.peppol</field>
+            <field name="name">draft</field>
+            <field name="string">Draft</field>
+        </record>
+
+        <record model="ir.model.button" id="edocument_peppol_submit_button">
+            <field name="model">edocument.peppol</field>
+            <field name="name">submit</field>
+            <field name="string">Submit</field>
+        </record>
+
+        <record model="ir.model.button" id="edocument_peppol_process_button">
+            <field name="model">edocument.peppol</field>
+            <field name="name">process</field>
+            <field name="string">Process</field>
+        </record>
+
+        <record model="ir.model.button" id="edocument_peppol_retry_button">
+            <field name="model">edocument.peppol</field>
+            <field name="name">retry</field>
+            <field name="string">Retry</field>
+        </record>
+        <record model="ir.model.button-res.group" id="edocument_peppol_retry_button_group_admin">
+            <field name="button" ref="edocument_peppol_retry_button"/>
+            <field name="group" ref="res.group_admin"/>
+        </record>
+        <record model="ir.model.button-res.group" id="edocument_peppol_retry_button_group_account">
+            <field name="button" ref="edocument_peppol_retry_button"/>
+            <field name="group" ref="account.group_account"/>
+        </record>
+
+        <record model="ir.model.button" id="edocument_peppol_cancel_button">
+            <field name="model">edocument.peppol</field>
+            <field name="name">cancel</field>
+            <field name="string">Cancel</field>
+        </record>
+        <record model="ir.model.button-res.group" id="edocument_peppol_cancel_button_group_admin">
+            <field name="button" ref="edocument_peppol_cancel_button"/>
+            <field name="group" ref="res.group_admin"/>
+        </record>
+        <record model="ir.model.button-res.group" id="edocument_peppol_cancel_button_group_account_admin">
+            <field name="button" ref="edocument_peppol_cancel_button"/>
+            <field name="group" ref="account.group_account_admin"/>
+        </record>
+
+        <record model="ir.ui.view" id="edocument_peppol_service_view_form">
+            <field name="model">edocument.peppol.service</field>
+            <field name="type">form</field>
+            <field name="name">edocument_peppol_service_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="edocument_peppol_service_view_list">
+            <field name="model">edocument.peppol.service</field>
+            <field name="type">tree</field>
+            <field name="name">edocument_peppol_service_list</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_edocument_peppol_service">
+            <field name="name">Services</field>
+            <field name="res_model">edocument.peppol.service</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_edocument_peppol_service_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="edocument_peppol_service_view_list"/>
+            <field name="act_window" ref="act_edocument_peppol_service"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_edocument_peppol_service_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="edocument_peppol_service_view_form"/>
+            <field name="act_window" ref="act_edocument_peppol_service"/>
+        </record>
+
+        <menuitem
+            parent="menu_peppol"
+            action="act_edocument_peppol_service"
+            sequence="10"
+            id="menu_edocument_peppol_service"/>
+
+        <record model="ir.model.access" id="access_edocument_peppol_service">
+            <field name="model">edocument.peppol.service</field>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_edocument_peppol_service_admin">
+            <field name="model">edocument.peppol.service</field>
+            <field name="group" ref="res.group_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_edocument_peppol_service_companies">
+            <field name="name">User in companies</field>
+            <field name="model">edocument.peppol.service</field>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_edocument_peppol_service_companies">
+            <field name="domain" eval="[('company', 'in', Eval('companies', []))]" pyson="1"/>
+            <field name="rule_group" ref="rule_group_edocument_peppol_service_companies"/>
+        </record>
+
+    </data>
+
+    <data noupdate="1">
+        <record model="ir.cron" id="cron_edocument_peppol_update_status">
+            <field name="method">edocument.peppol|update_status</field>
+            <field name="interval_number" eval="1"/>
+            <field name="interval_type">hours</field>
+        </record>
+    </data>
+</tryton>

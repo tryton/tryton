@@ -1431,6 +1431,23 @@ test-modules-document_incoming_ocr_typless-postgresql:
     PACKAGE: modules/document_incoming_ocr_typless
     TAG_PATTERN: '/^document_incoming_ocr_typless-.*/'
 
+check-doc-modules-edocument_peppol:
+  extends: .check-doc
+  variables:
+    PACKAGE: modules/edocument_peppol
+
+test-modules-edocument_peppol-sqlite:
+  extends: .test-sqlite
+  variables:
+    PACKAGE: modules/edocument_peppol
+    TAG_PATTERN: '/^edocument_peppol-.*/'
+
+test-modules-edocument_peppol-postgresql:
+  extends: .test-postgresql
+  variables:
+    PACKAGE: modules/edocument_peppol
+    TAG_PATTERN: '/^edocument_peppol-.*/'
+
 check-doc-modules-edocument_ubl:
   extends: .check-doc
   variables:

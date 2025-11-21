@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form>
+    <label name="direction"/>
+    <field name="direction"/>
+    <label name="company"/>
+    <field name="company"/>
+
+    <label name="type"/>
+    <field name="type"/>
+    <label name="service"/>
+    <field name="service"/>
+
+    <label name="invoice"/>
+    <field name="invoice" colspan="3"/>
+
+    <label name="data"/>
+    <field name="data" colspan="3"/>
+    <field name="data" widget="document" colspan="4"/>
+
+    <label name="transmission_id"/>
+    <field name="transmission_id"/>
+    <label name="status"/>
+    <field name="status"/>
+
+    <label name="document_retried"/>
+    <field name="document_retried"/>
+    <newline/>
+
+    <label name="state"/>
+    <field name="state"/>
+    <group id="buttons" col="-1" colspan="2">
+        <button name="cancel" icon="tryton-cancel"/>
+        <button name="draft" icon="tryton-back"/>
+        <button name="submit" icon="tryton-forward"/>
+        <button name="process"/>
+        <button name="retry" icon="tryton-launch"/>
+    </group>
+</form>
