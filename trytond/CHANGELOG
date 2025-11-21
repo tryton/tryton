@@ -1,3 +1,7 @@
+
+Version 7.4.21 - 2025-11-21
+---------------------------
+* Bug fixes (see mercurial logs for details)
 * Enforce access check in export_data (issue14366)
 * Include the traceback only in RPC responses in development mode (issue14354)
 * Enforce access check in HTML editor route (issue14364)
