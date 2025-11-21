@@ -733,6 +733,7 @@ TAX_IDENTIFIER_TYPES = [
     'cn_uscc',
     'co_nit',
     'cr_cpj',
+    'cy_vat',
     'cz_dic',
     'de_vat',
     'dk_cvr',
