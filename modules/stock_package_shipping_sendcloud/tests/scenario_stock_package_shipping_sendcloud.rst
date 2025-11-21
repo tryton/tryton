@@ -85,7 +85,7 @@ Create parties::
     >>> customer_address.save()
     >>> customer_phone = customer.contact_mechanisms.new()
     >>> customer_phone.type = 'phone'
-    >>> customer_phone.value = '+33 93 842 8862'
+    >>> customer_phone.value = '+33938428862'
     >>> customer_phone.save()
 
 Set the warehouse address::
@@ -100,7 +100,7 @@ Set the warehouse address::
     >>> company_address.save()
     >>> company_phone = company.party.contact_mechanisms.new()
     >>> company_phone.type = 'phone'
-    >>> company_phone.value = '+32 4 2522122'
+    >>> company_phone.value = '+3242522122'
     >>> company_phone.save()
     >>> warehouse.address = company_address
     >>> warehouse.save()
