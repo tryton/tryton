@@ -54,6 +54,7 @@ tests_require = [
     get_require_version('proteus'),
     get_require_version('trytond_sale'),
     get_require_version('trytond_sale_shipment_cost'),
+    get_require_version('trytond_stock_shipment_customs'),
     ]
 
 setup(name=name,
