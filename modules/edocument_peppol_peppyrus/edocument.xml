@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="edocument_peppol_service_view_form">
+            <field name="model">edocument.peppol.service</field>
+            <field name="inherit" ref="edocument_peppol.edocument_peppol_service_view_form"/>
+            <field name="name">edocument_peppol_service_form</field>
+        </record>
+    </data>
+
+    <data noupdate="1">
+        <record model="ir.cron" id="cron_edocument_peppol_service_peppyrus_fetch">
+            <field name="method">edocument.peppol.service|peppyrus_fetch</field>
+            <field name="interval_number" eval="1"/>
+            <field name="interval_type">hours</field>
+        </record>
+    </data>
+</tryton>

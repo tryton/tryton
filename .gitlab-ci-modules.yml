@@ -1448,6 +1448,23 @@ test-modules-edocument_peppol-postgresql:
     PACKAGE: modules/edocument_peppol
     TAG_PATTERN: '/^edocument_peppol-.*/'
 
+check-doc-modules-edocument_peppol_peppyrus:
+  extends: .check-doc
+  variables:
+    PACKAGE: modules/edocument_peppol_peppyrus
+
+test-modules-edocument_peppol_peppyrus-sqlite:
+  extends: .test-sqlite
+  variables:
+    PACKAGE: modules/edocument_peppol_peppyrus
+    TAG_PATTERN: '/^edocument_peppol_peppyrus-.*/'
+
+test-modules-edocument_peppol_peppyrus-postgresql:
+  extends: .test-postgresql
+  variables:
+    PACKAGE: modules/edocument_peppol_peppyrus
+    TAG_PATTERN: '/^edocument_peppol_peppyrus-.*/'
+
 check-doc-modules-edocument_ubl:
   extends: .check-doc
   variables:

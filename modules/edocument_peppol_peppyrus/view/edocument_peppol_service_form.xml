@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<data>
+    <xpath expr="//label[@name='types']" position="before">
+        <newline/>
+        <label name="peppyrus_server"/>
+        <field name="peppyrus_server"/>
+        <label name="peppyrus_api_key"/>
+        <field name="peppyrus_api_key"/>
+        <newline/>
+    </xpath>
+</data>
