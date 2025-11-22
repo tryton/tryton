@@ -49,11 +49,11 @@ class Invoice(metaclass=PoolMeta):
 
     def get_sales(self, name):
         pool = Pool()
-        AdvancePaymentCondition = pool.get('sale.advance_payment.condition')
+        Line = pool.get('sale.advance_payment.line')
 
         sales = set(super().get_sales(name))
         for line in self.lines:
-            if isinstance(line.origin, AdvancePaymentCondition):
+            if isinstance(line.origin, Line):
                 sales.add(line.origin.sale.id)
         return list(sales)
 
@@ -63,7 +63,7 @@ class Invoice(metaclass=PoolMeta):
         return ['OR',
             domain,
             ('lines.origin.sale' + clause[0][len(name):],
-                *clause[1:3], 'sale.advance_payment.condition', *clause[3:]),
+                *clause[1:3], 'sale.advance_payment.line', *clause[3:]),
             ]
 
 
@@ -84,16 +84,16 @@ class InvoiceLine(metaclass=PoolMeta):
     @property
     def origin_name(self):
         pool = Pool()
-        Condition = pool.get('sale.advance_payment.condition')
+        Line = pool.get('sale.advance_payment.line')
         name = super().origin_name
-        if isinstance(self.origin, Condition) and self.origin.id >= 0:
+        if isinstance(self.origin, Line) and self.origin.id >= 0:
             name = self.origin.sale.rec_name
         return name
 
     @classmethod
     def _get_origin(cls):
         return (super()._get_origin()
-            + ['sale.advance_payment.condition'])
+            + ['sale.advance_payment.line'])
 
     @classmethod
     def copy(cls, lines, default=None):

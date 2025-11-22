@@ -5,6 +5,7 @@ from itertools import chain
 
 from simpleeval import simple_eval
 
+from trytond import backend, config
 from trytond.i18n import gettext
 from trytond.model import (
     DeactivableMixin, ModelSQL, ModelView, Workflow, fields)
@@ -33,14 +34,14 @@ class AdvancePaymentTerm(
             'untaxed_amount': sale.untaxed_amount,
             }
 
-    def get_conditions(self, sale):
-        conditions = []
+    def get_lines(self, sale):
+        lines = []
         term_context = self.get_advance_payment_context(sale)
-        for line in self.lines:
-            condition = line.get_condition(sale.currency, **term_context)
-            if condition.amount > 0:
-                conditions.append(condition)
-        return conditions
+        for sale_line in self.lines:
+            line = sale_line.get_line(sale.currency, **term_context)
+            if line.amount > 0:
+                lines.append(line)
+        return lines
 
 
 class AdvancePaymentTermLine(ModelView, ModelSQL, CompanyMultiValueMixin):
@@ -109,11 +110,11 @@ class AdvancePaymentTermLine(ModelView, ModelSQL, CompanyMultiValueMixin):
         context = self.get_compute_amount_context(**names)
         return simple_eval(decistmt(self.formula), **context)
 
-    def get_condition(self, currency, **context):
+    def get_line(self, currency, **context):
         pool = Pool()
-        AdvancePaymentCondition = pool.get('sale.advance_payment.condition')
+        Line = pool.get('sale.advance_payment.line')
 
-        return AdvancePaymentCondition(
+        return Line(
             block_supply=self.block_supply,
             block_shipping=self.block_shipping,
             amount=currency.round(self.compute_amount(**context)),
@@ -139,8 +140,8 @@ class AdvancePaymentTermLineAccount(ModelSQL, CompanyValueMixin):
             ])
 
 
-class AdvancePaymentCondition(ModelSQL, ModelView):
-    __name__ = 'sale.advance_payment.condition'
+class AdvancePaymentLine(ModelSQL, ModelView):
+    __name__ = 'sale.advance_payment.line'
     _rec_name = 'description'
 
     _states = {
@@ -188,6 +189,16 @@ class AdvancePaymentCondition(ModelSQL, ModelView):
         cls.__access__.add('sale')
 
     @classmethod
+    def __register__(cls, module):
+        # Migration from 7.0: rename condition into line
+        backend.TableHandler.table_rename(
+            config.get(
+                'table', 'sale.advance_payment.condition',
+                default='sale_advance_payment_condition'),
+            cls._table)
+        super().__register__(module)
+
+    @classmethod
     def get_sale_states(cls):
         pool = Pool()
         Sale = pool.get('sale.sale')
@@ -207,13 +218,13 @@ class AdvancePaymentCondition(ModelSQL, ModelView):
         return self.sale.currency if self.sale else None
 
     @classmethod
-    def copy(cls, conditions, default=None):
+    def copy(cls, lines, default=None):
         if default is None:
             default = {}
         else:
             default = default.copy()
         default.setdefault('invoice_lines', [])
-        return super().copy(conditions, default)
+        return super().copy(lines, default)
 
     def create_invoice(self):
         invoice = self.sale._get_invoice()
@@ -277,9 +288,8 @@ class Sale(metaclass=PoolMeta):
         ondelete='RESTRICT', states={
             'readonly': Eval('state') != 'draft',
             })
-    advance_payment_conditions = fields.One2Many(
-        'sale.advance_payment.condition', 'sale',
-        'Advance Payment Conditions',
+    advance_payment_lines = fields.One2Many(
+        'sale.advance_payment.line', 'sale', "Advance Payment Lines",
         states={
             'readonly': Eval('state') != 'draft',
             })
@@ -303,12 +313,12 @@ class Sale(metaclass=PoolMeta):
     @Workflow.transition('quotation')
     def quote(cls, sales):
         pool = Pool()
-        AdvancePaymentCondition = pool.get('sale.advance_payment.condition')
+        AdvancePaymentLine = pool.get('sale.advance_payment.line')
 
         super().quote(sales)
 
-        AdvancePaymentCondition.delete(
-            list(chain(*(s.advance_payment_conditions for s in sales))))
+        AdvancePaymentLine.delete(
+            list(chain(*(s.advance_payment_lines for s in sales))))
 
         for sale in sales:
             sale.set_advance_payment_term()
@@ -320,7 +330,7 @@ class Sale(metaclass=PoolMeta):
             default = {}
         else:
             default = default.copy()
-        default.setdefault('advance_payment_conditions', None)
+        default.setdefault('advance_payment_lines', None)
         return super().copy(sales, default=default)
 
     def set_advance_payment_term(self):
@@ -333,20 +343,19 @@ class Sale(metaclass=PoolMeta):
                         self.advance_payment_term.id)
             else:
                 advance_payment_term = self.advance_payment_term
-            self.advance_payment_conditions = \
-                advance_payment_term.get_conditions(self)
+            self.advance_payment_lines = advance_payment_term.get_lines(self)
 
     def get_advance_payment_invoices(self, name):
         invoices = set()
-        for condition in self.advance_payment_conditions:
-            for invoice_line in condition.invoice_lines:
+        for line in self.advance_payment_lines:
+            for invoice_line in line.invoice_lines:
                 if invoice_line.invoice:
                     invoices.add(invoice_line.invoice.id)
         return list(invoices)
 
     @classmethod
     def search_advance_payment_invoices(cls, name, clause):
-        return [('advance_payment_conditions.invoice_lines.invoice'
+        return [('advance_payment_lines.invoice_lines.invoice'
                 + clause[0][len(name):], *clause[1:])]
 
     @property
@@ -360,7 +369,7 @@ class Sale(metaclass=PoolMeta):
         recall_lines = []
         advance_lines = [
             l
-            for c in self.advance_payment_conditions
+            for c in self.advance_payment_lines
             for l in c.invoice_lines
             if l.type == 'line' and l.invoice.state == 'paid']
         for advance_line in advance_lines:
@@ -391,8 +400,8 @@ class Sale(metaclass=PoolMeta):
         for sale in sales:
             if (sale.advance_payment_eligible()
                     and not sale.advance_payment_completed):
-                for condition in sale.advance_payment_conditions:
-                    invoice = condition.create_invoice()
+                for line in sale.advance_payment_lines:
+                    invoice = line.create_invoice()
                     if invoice:
                         invoices.append(invoice)
         Invoice.save(invoices)
@@ -416,31 +425,31 @@ class Sale(metaclass=PoolMeta):
         of the sale's advance payment.
         """
         return bool((shipment_type == 'out' or shipment_type is None)
-            and self.advance_payment_conditions)
+            and self.advance_payment_lines)
 
     @property
     def advance_payment_completed(self):
         """
         Returns True when the advance payment process is completed
         """
-        return (bool(self.advance_payment_conditions)
-            and all(c.completed for c in self.advance_payment_conditions))
+        return (bool(self.advance_payment_lines)
+            and all(c.completed for c in self.advance_payment_lines))
 
     @property
     def supply_blocked(self):
-        for condition in self.advance_payment_conditions:
-            if not condition.block_supply:
+        for line in self.advance_payment_lines:
+            if not line.block_supply:
                 continue
-            if not condition.completed:
+            if not line.completed:
                 return True
         return False
 
     @property
     def shipping_blocked(self):
-        for condition in self.advance_payment_conditions:
-            if not condition.block_shipping:
+        for line in self.advance_payment_lines:
+            if not line.block_shipping:
                 continue
-            if not condition.completed:
+            if not line.completed:
                 return True
         return False
 

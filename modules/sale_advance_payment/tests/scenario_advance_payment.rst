@@ -147,8 +147,8 @@ Create a sale with advance payment::
     >>> line.quantity = 5
     >>> sale.advance_payment_term = advance_payment_term
     >>> sale.click('quote')
-    >>> condition, = sale.advance_payment_conditions
-    >>> condition.amount
+    >>> line, = sale.advance_payment_lines
+    >>> line.amount
     Decimal('10.00')
     >>> sale.click('confirm')
     >>> sale.click('process')
@@ -221,8 +221,8 @@ Create a sale with advance payment::
     >>> line.quantity = 6
     >>> sale.advance_payment_term = advance_payment_term_no_pack
     >>> sale.click('quote')
-    >>> condition, = sale.advance_payment_conditions
-    >>> condition.amount
+    >>> line, = sale.advance_payment_lines
+    >>> line.amount
     Decimal('12.00')
     >>> sale.click('confirm')
     >>> sale.click('process')
@@ -321,7 +321,7 @@ There is now a purchase request of the desired quantity::
     >>> purchase_request.quantity
     10.0
 
-Testing advance payment conditions exception handling
+Testing advance payment lines exception handling
 -----------------------------------------------------
 
 Create a sale with this term::
@@ -334,8 +334,8 @@ Create a sale with this term::
     >>> line.quantity = 5
     >>> sale.advance_payment_term = advance_payment_term
     >>> sale.click('quote')
-    >>> condition1, = sale.advance_payment_conditions
-    >>> condition1.amount
+    >>> line1, = sale.advance_payment_lines
+    >>> line1.amount
     Decimal('10.00')
     >>> sale.click('confirm')
     >>> sale.click('process')

@@ -3,10 +3,10 @@
 this repository contains the full copyright notices and license terms. -->
 <data>
     <xpath expr="//page[@id='sale']" position="after">
-        <page name="advance_payment_term">
+        <page string="Advance Payment" id="advance_payment">
             <label name="advance_payment_term"/>
             <field name="advance_payment_term"/>
-            <field name="advance_payment_conditions" colspan="4"/>
+            <field name="advance_payment_lines" colspan="4"/>
         </page>
     </xpath>
 </data>
