@@ -1,0 +1,214 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="stock_location_view_form">
+            <field name="model">stock.location</field>
+            <field name="inherit" ref="stock.location_view_form"/>
+            <field name="name">stock_location_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="stock_shipping_point_view_form">
+            <field name="model">stock.shipping.point</field>
+            <field name="type">form</field>
+            <field name="name">stock_shipping_point_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="stock_shipping_point_view_list">
+            <field name="model">stock.shipping.point</field>
+            <field name="type">tree</field>
+            <field name="name">stock_shipping_point_list</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_stock_shipping_point">
+            <field name="name">Shipping Points</field>
+            <field name="res_model">stock.shipping.point</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_stock_shipping_point_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="stock_shipping_point_view_list"/>
+            <field name="act_window" ref="act_stock_shipping_point"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_stock_shipping_point_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="stock_shipping_point_view_form"/>
+            <field name="act_window" ref="act_stock_shipping_point"/>
+        </record>
+        <menuitem
+            parent="stock.menu_configuration"
+            action="act_stock_shipping_point"
+            sequence="30"
+            id="menu_stock_shipping_point"/>
+
+        <record model="ir.model.access" id="access_stock_shipping_point">
+            <field name="model">stock.shipping.point</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_stock_shipping_point_admin">
+            <field name="model">stock.shipping.point</field>
+            <field name="group" ref="stock.group_stock_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.ui.view" id="stock_shipping_point_selection_view_form">
+            <field name="model">stock.shipping.point.selection</field>
+            <field name="type">form</field>
+            <field name="name">stock_shipping_point_selection_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="stock_shipping_point_selection_view_list">
+            <field name="model">stock.shipping.point.selection</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="10"/>
+            <field name="name">stock_shipping_point_selection_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="stock_shipping_point_selection_view_list_sequence">
+            <field name="model">stock.shipping.point.selection</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="20"/>
+            <field name="name">stock_shipping_point_selection_list_sequence</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_stock_shipping_point_selection">
+            <field name="name">Selection</field>
+            <field name="res_model">stock.shipping.point.selection</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_stock_shipping_point_selection_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="stock_shipping_point_selection_view_list_sequence"/>
+            <field name="act_window" ref="act_stock_shipping_point_selection"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_stock_shipping_point_selection_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="stock_shipping_point_selection_view_form"/>
+            <field name="act_window" ref="act_stock_shipping_point_selection"/>
+        </record>
+        <menuitem
+            parent="menu_stock_shipping_point"
+            action="act_stock_shipping_point_selection"
+            sequence="20"
+            id="menu_stock_shipping_point_selection"/>
+
+        <record model="ir.model.access" id="access_stock_shipping_point_selection">
+            <field name="model">stock.shipping.point.selection</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_stock_shipping_point_selection_admin">
+            <field name="model">stock.shipping.point.selection</field>
+            <field name="group" ref="stock.group_stock_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.ui.view" id="stock_shipment_in_view_form">
+            <field name="model">stock.shipment.in</field>
+            <field name="inherit" ref="stock.shipment_in_view_form"/>
+            <field name="name">stock_shipment_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="stock_shipment_in_view_list">
+            <field name="model">stock.shipment.in</field>
+            <field name="inherit" ref="stock.shipment_in_view_tree"/>
+            <field name="name">stock_shipment_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="stock_shipment_in_return_view_form">
+            <field name="model">stock.shipment.in.return</field>
+            <field name="inherit" ref="stock.shipment_in_return_view_form"/>
+            <field name="name">stock_shipment_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="stock_shipment_in_return_view_list">
+            <field name="model">stock.shipment.in.return</field>
+            <field name="inherit" ref="stock.shipment_in_return_view_tree"/>
+            <field name="name">stock_shipment_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="stock_shipment_out_view_form">
+            <field name="model">stock.shipment.out</field>
+            <field name="inherit" ref="stock.shipment_out_view_form"/>
+            <field name="name">stock_shipment_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="stock_shipment_out_view_list">
+            <field name="model">stock.shipment.out</field>
+            <field name="inherit" ref="stock.shipment_out_view_tree"/>
+            <field name="name">stock_shipment_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="stock_shipment_out_return_view_form">
+            <field name="model">stock.shipment.out.return</field>
+            <field name="inherit" ref="stock.shipment_out_return_view_form"/>
+            <field name="name">stock_shipment_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="stock_shipment_out_return_view_list">
+            <field name="model">stock.shipment.out.return</field>
+            <field name="inherit" ref="stock.shipment_out_return_view_tree"/>
+            <field name="name">stock_shipment_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="stock_shipment_internal_view_form">
+            <field name="model">stock.shipment.internal</field>
+            <field name="inherit" ref="stock.shipment_internal_view_form"/>
+            <field name="name">stock_shipment_internal_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="stock_shipment_internal_view_list">
+            <field name="model">stock.shipment.internal</field>
+            <field name="inherit" ref="stock.shipment_internal_view_tree"/>
+            <field name="name">stock_shipment_internal_list</field>
+        </record>
+    </data>
+    <data depends="product_classification">
+        <record model="ir.ui.view" id="stock_shipping_point_selection_view_form_product_classification">
+            <field name="model">stock.shipping.point.selection</field>
+            <field name="inherit" ref="stock_shipping_point_selection_view_form"/>
+            <field name="name">stock_shipping_point_selection_form_product_classification</field>
+        </record>
+
+        <record model="ir.ui.view" id="stock_shipping_point_selection_view_list_product_classification">
+            <field name="model">stock.shipping.point.selection</field>
+            <field name="inherit" ref="stock_shipping_point_selection_view_list"/>
+            <field name="name">stock_shipping_point_selection_list_product_classification</field>
+        </record>
+
+        <record model="ir.ui.view" id="stock_shipping_point_selection_view_list_sequence_product_classification">
+            <field name="model">stock.shipping.point.selection</field>
+            <field name="inherit" ref="stock_shipping_point_selection_view_list_sequence"/>
+            <field name="name">stock_shipping_point_selection_list_product_classification</field>
+        </record>
+    </data>
+    <data depends="stock_shipment_measurements">
+        <record model="ir.ui.view" id="stock_shipping_point_selection_view_form_shipment_measurements">
+            <field name="model">stock.shipping.point.selection</field>
+            <field name="inherit" ref="stock_shipping_point_selection_view_form"/>
+            <field name="name">stock_shipping_point_selection_form_shipment_measurements</field>
+        </record>
+
+        <record model="ir.ui.view" id="stock_shipping_point_selection_view_list_shipment_measurements">
+            <field name="model">stock.shipping.point.selection</field>
+            <field name="inherit" ref="stock_shipping_point_selection_view_list"/>
+            <field name="name">stock_shipping_point_selection_list_shipment_measurements</field>
+        </record>
+
+        <record model="ir.ui.view" id="stock_shipping_point_selection_view_list_sequence_shipment_measurements">
+            <field name="model">stock.shipping.point.selection</field>
+            <field name="inherit" ref="stock_shipping_point_selection_view_list_sequence"/>
+            <field name="name">stock_shipping_point_selection_list_shipment_measurements</field>
+        </record>
+    </data>
+</tryton>

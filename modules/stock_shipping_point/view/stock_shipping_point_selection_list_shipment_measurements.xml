@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<data>
+    <xpath expr="//field[@name='contains_product_categories']" position="before">
+        <field name="min_weight" symbol="weight_uom"/>
+        <field name="max_weight" symbol="weight_uom"/>
+        <field name="min_volume" symbol="volume_uom"/>
+        <field name="max_volume" symbol="volume_uom"/>
+    </xpath>
+</data>

@@ -3318,6 +3318,23 @@ test-modules-stock_shipment_measurements-postgresql:
     PACKAGE: modules/stock_shipment_measurements
     TAG_PATTERN: '/^stock_shipment_measurements-.*/'
 
+check-doc-modules-stock_shipping_point:
+  extends: .check-doc
+  variables:
+    PACKAGE: modules/stock_shipping_point
+
+test-modules-stock_shipping_point-sqlite:
+  extends: .test-sqlite
+  variables:
+    PACKAGE: modules/stock_shipping_point
+    TAG_PATTERN: '/^stock_shipping_point-.*/'
+
+test-modules-stock_shipping_point-postgresql:
+  extends: .test-postgresql
+  variables:
+    PACKAGE: modules/stock_shipping_point
+    TAG_PATTERN: '/^stock_shipping_point-.*/'
+
 check-doc-modules-stock_split:
   extends: .check-doc
   variables:

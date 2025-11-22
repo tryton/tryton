@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form>
+    <label name="warehouse"/>
+    <field name="warehouse"/>
+    <label name="sequence"/>
+    <field name="sequence"/>
+
+    <label name="shipping_point"/>
+    <field name="shipping_point"/>
+
+    <separator string="Criteria" id="criteria" colspan="4"/>
+
+    <label name="delivery_country"/>
+    <field name="delivery_country"/>
+
+    <field name="contains_product_categories" colspan="4"/>
+</form>

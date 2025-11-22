@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<data>
+    <xpath expr="//field[@name='contains_product_categories']" position="before">
+        <label id="weight" string="Weight between:"/>
+        <group id="weights" col="-1">
+            <field name="min_weight"/>
+            <label id="separator" string="-" xalign=".5"/>
+            <field name="max_weight"/>
+            <field name="weight_uom"/>
+        </group>
+
+        <label id="volume" string="Volume between:"/>
+        <group id="volumes" col="-1">
+            <field name="min_volume"/>
+            <label id="separator" string="-" xalign=".5"/>
+            <field name="max_volume"/>
+            <field name="volume_uom"/>
+        </group>
+    </xpath>
+</data>

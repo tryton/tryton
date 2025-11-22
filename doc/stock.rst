@@ -80,6 +80,9 @@ Stock
 :doc:`Shipment Measurements <stock_shipment_measurements:index>`
    Add measurements to shipments.
 
+:doc:`Shipping Point <stock_shipping_point:index>`
+   Define a shipping point for each shipment.
+
 :doc:`Split <stock_split:index>`
    Split moves and shipments.
 
