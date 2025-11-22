@@ -68,6 +68,9 @@ Stock
 :doc:`Secondary Unit <stock_secondary_unit:index>`
    Add a secondary unit of measure.
 
+:doc:`Shipment Customs <stock_shipment_customs:index>`
+   Generate commercial invoices.
+
 :doc:`Shipment Cost <stock_shipment_cost:index>`
    Add shipment costs to outgoing moves.
 
