@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="product_category_view_form">
+            <field name="model">product.category</field>
+            <field name="inherit" ref="product.category_view_form"/>
+            <field name="name">product_category_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="product_template_view_list">
+            <field name="model">product.template</field>
+            <field name="inherit" ref="product.template_view_tree"/>
+            <field name="name">product_template_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="product_template_view_form">
+            <field name="model">product.template</field>
+            <field name="inherit" ref="product.template_view_form"/>
+            <field name="name">product_template_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="product_product_view_list_sale_rental_line">
+            <field name="model">product.product</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="20"/>
+            <field name="name">product_product_list_sale_rental_line</field>
+        </record>
+
+        <record model="ir.ui.view" id="product_rental_price_view_list">
+            <field name="model">product.rental.price</field>
+            <field name="type">tree</field>
+            <field name="name">product_rental_price_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="product_rental_price_view_list_sequence">
+            <field name="model">product.rental.price</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="20"/>
+            <field name="name">product_rental_price_list_sequence</field>
+        </record>
+
+        <record model="ir.ui.view" id="product_rental_price_view_form">
+            <field name="model">product.rental.price</field>
+            <field name="type">form</field>
+            <field name="name">product_rental_price_form</field>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_product_rental_price_companies">
+            <field name="name">User in companies</field>
+            <field name="model">product.rental.price</field>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_product_rental_price_companies">
+            <field
+                name="domain"
+                eval="[('company', 'in', Eval('companies', []))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_product_rental_price_companies"/>
+        </record>
+    </data>
+</tryton>

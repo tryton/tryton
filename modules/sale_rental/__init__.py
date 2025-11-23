@@ -1,0 +1,11 @@
+# This file is part of Tryton.  The COPYRIGHT file at the top level of
+# this repository contains the full copyright notices and license terms.
+
+__all__ = ['to_date', 'to_datetime']
+
+
+def __getattr__(name):
+    if name in {'to_date', 'to_datetime'}:
+        from . import sale
+        return getattr(sale, name)
+    raise AttributeError(f"module {__name__!r} has no attribute {name!r}")

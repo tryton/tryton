@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<data>
+    <xpath expr="/form/notebook/page[@id='accounting']/field[@name='account_expense']" position="after">
+        <label name="account_rental"/>
+        <field name="account_rental"/>
+        <newline/>
+    </xpath>
+    <xpath expr="//field[@name='supplier_taxes']" position="after">
+        <field name="customer_rental_taxes" colspan="2"/>
+        <newline/>
+    </xpath>
+</data>

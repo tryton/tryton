@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data grouped="1">
+        <record model="ir.message" id="msg_erase_party_pending_rental">
+            <field name="text">You cannot erase party "%(party)s" while they have pending rentals with company "%(company)s".</field>
+        </record>
+        <record model="ir.message" id="msg_rental_line_delete_cancel_draft">
+            <field name="text">To delete line "%(line)s" you must cancel or reset to draft rental "%(rental)s".</field>
+        </record>
+        <record model="ir.message" id="msg_rental_line_tax_unique">
+            <field name="text">A tax can be added only once to a rental line.</field>
+        </record>
+        <record model="ir.message" id="msg_rental_pickup_once">
+            <field name="text">The rental line "%(line)s" can be picked only once.</field>
+        </record>
+        <record model="ir.message" id="msg_rental_pickup_quantity">
+            <field name="text">The picked quantity "%(picked)s" can not be greater than the quantity "%(quantity)s" for the rental line "%(line)s".</field>
+        </record>
+        <record model="ir.message" id="msg_rental_return_once">
+            <field name="text">The rental line "%(line)s" can be returned only once.</field>
+        </record>
+        <record model="ir.message" id="msg_rental_return_quantity">
+            <field name="text">The returned quantity "%(picked)s" can not be greater than the quantity "%(quantity)s" for the rental line "%(line)s".</field>
+        </record>
+        <record model="ir.message" id="msg_stock_move_rental_lines_quantity">
+            <field name="text">The quantity of move "%(move)s" is different from its rental lines "%(quantity)s".</field>
+        </record>
+    </data>
+</tryton>

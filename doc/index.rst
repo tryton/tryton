@@ -65,6 +65,9 @@ Operational
 :ref:`Sale Point <index-sale-point>`
    Point of Sales.
 
+:ref:`Sale Rental <index-sale-rental>`
+    Rents assets and services.
+
 :ref:`Sale Subscription <index-sale_subscription>`
    Subscribes to recurring service.
 

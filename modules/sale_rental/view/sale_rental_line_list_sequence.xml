@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tree sequence="sequence">
+    <field name="rental" expand="1"/>
+    <field name="product" expand="1"/>
+    <field name="start" widget="date"/>
+    <field name="start" widget="time" string="Time"/>
+    <field name="end" widget="date"/>
+    <field name="end" widget="time" string="Time"/>
+    <field name="duration" optional="0"/>
+    <field name="quantity" symbol="unit"/>
+    <field name="unit_price" symbol="currency">
+        <suffix name="unit_price_unit" string="/"/>
+        <suffix name="unit_price_unit"/>
+    </field>
+    <field name="taxes" optional="0"/>
+    <field name="planned_amount" optional="0"/>
+    <field name="amount" optional="0"/>
+    <field name="rental_state" optional="0"/>
+</tree>

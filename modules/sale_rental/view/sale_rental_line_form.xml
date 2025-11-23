@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form cursor="product">
+    <label name="rental"/>
+    <field name="rental"/>
+    <label name="sequence"/>
+    <field name="sequence"/>
+
+    <notebook colspan="4">
+        <page string="General" id="general">
+            <label name="product"/>
+            <field name="product" view_ids="sale_rental.product_product_view_list_sale_rental_line"/>
+            <label name="per_day"/>
+            <field name="per_day"/>
+
+            <label name="quantity"/>
+            <field name="quantity"/>
+            <label name="unit"/>
+            <field name="unit"/>
+
+            <label name="planned_start_day"/>
+            <field name="planned_start_day"/>
+            <label name="planned_end_day"/>
+            <field name="planned_end_day"/>
+
+            <label name="planned_start"/>
+            <field name="planned_start"/>
+            <label name="planned_end"/>
+            <field name="planned_end"/>
+
+            <label name="planned_duration"/>
+            <field name="planned_duration"/>
+            <label name="planned_amount"/>
+            <field name="planned_amount"/>
+
+            <label name="unit_price"/>
+            <field name="unit_price"/>
+            <label name="unit_price_unit" string="Per:"/>
+            <field name="unit_price_unit"/>
+
+            <label name="actual_start"/>
+            <field name="actual_start"/>
+            <label name="actual_end"/>
+            <field name="actual_end"/>
+
+            <label name="duration"/>
+            <field name="duration"/>
+            <label name="amount"/>
+            <field name="amount"/>
+        </page>
+        <page string="Taxes" id="taxes">
+            <field name="taxes" colspan="4"/>
+        </page>
+        <page string="Moves" id="moves" col="1">
+            <field name="outgoing_moves"/>
+            <field name="incoming_moves"/>
+        </page>
+        <page name="invoice_lines" col="1">
+            <field name="invoice_lines"/>
+        </page>
+    </notebook>
+</form>

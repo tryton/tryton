@@ -73,3 +73,5 @@ class Subscription(RevisionMixin, metaclass=PoolMeta):
 class SubscriptionLine(metaclass=PoolMeta):
     __name__ = 'sale.subscription.line'
     _history = True
+
+# TODO: add rental

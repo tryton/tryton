@@ -2723,6 +2723,23 @@ test-modules-sale_promotion_coupon_payment-postgresql:
     PACKAGE: modules/sale_promotion_coupon_payment
     TAG_PATTERN: '/^sale_promotion_coupon_payment-.*/'
 
+check-doc-modules-sale_rental:
+  extends: .check-doc
+  variables:
+    PACKAGE: modules/sale_rental
+
+test-modules-sale_rental-sqlite:
+  extends: .test-sqlite
+  variables:
+    PACKAGE: modules/sale_rental
+    TAG_PATTERN: '/^sale_rental-.*/'
+
+test-modules-sale_rental-postgresql:
+  extends: .test-postgresql
+  variables:
+    PACKAGE: modules/sale_rental
+    TAG_PATTERN: '/^sale_rental-.*/'
+
 check-doc-modules-sale_secondary_unit:
   extends: .check-doc
   variables:

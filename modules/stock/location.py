@@ -54,6 +54,7 @@ class Location(DeactivableMixin, tree(), ModelSQL, ModelView):
         ('storage', 'Storage'),
         ('production', 'Production'),
         ('drop', 'Drop'),
+        ('rental', "Rental"),
         ('view', 'View'),
         ], "Type",
         help_selection={

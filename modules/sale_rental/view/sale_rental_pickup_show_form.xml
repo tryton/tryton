@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form col="2">
+    <label name="start"/>
+    <field name="start"/>
+
+    <field name="lines" colspan="2" view_ids="sale_rental.sale_rental_pickup_show_line_view_list" mode="tree" create="0"/>
+</form>

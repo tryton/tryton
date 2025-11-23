@@ -1,0 +1,260 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.sequence.type" id="sequence_type_rental">
+            <field name="name">Rental</field>
+        </record>
+        <record model="ir.sequence.type-res.group" id="sequence_type_rental_group_admin">
+            <field name="sequence_type" ref="sequence_type_rental"/>
+            <field name="group" ref="res.group_admin"/>
+        </record>
+        <record model="ir.sequence.type-res.group" id="sequence_type_rental_group_sale_admin">
+            <field name="sequence_type" ref="sequence_type_rental"/>
+            <field name="group" ref="sale.group_sale_admin"/>
+        </record>
+
+        <record model="ir.sequence" id="sequence_rental">
+            <field name="name">Rental</field>
+            <field name="sequence_type" ref="sequence_type_rental"/>
+        </record>
+
+        <record model="ir.ui.view" id="sale_configuration_view_form">
+            <field name="model">sale.configuration</field>
+            <field name="inherit" ref="sale.sale_configuration_view_form"/>
+            <field name="name">sale_configuration_form</field>
+        </record>
+
+        <record model="ir.ui.icon" id="sale_rental">
+            <field name="name">tryton-sale-rental</field>
+            <field name="path">icons/tryton-sale-rental.svg</field>
+        </record>
+
+        <record model="ir.ui.view" id="sale_rental_view_list">
+            <field name="model">sale.rental</field>
+            <field name="type">tree</field>
+            <field name="name">sale_rental_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="sale_rental_view_form">
+            <field name="model">sale.rental</field>
+            <field name="type">form</field>
+            <field name="name">sale_rental_form</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_sale_rental_form">
+            <field name="name">Rentals</field>
+            <field name="res_model">sale.rental</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_rental_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="sale_rental_view_list"/>
+            <field name="act_window" ref="act_sale_rental_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_sale_rental_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="sale_rental_view_form"/>
+            <field name="act_window" ref="act_sale_rental_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_sale_rental_form_domain_draft">
+            <field name="name">Draft</field>
+            <field name="sequence" eval="10"/>
+            <field name="domain" eval="[('state', '=', 'draft')]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_sale_rental_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_sale_rental_form_domain_quotation">
+            <field name="name">Quotation</field>
+            <field name="sequence" eval="20"/>
+            <field name="domain" eval="[('state', '=', 'quotation')]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_sale_rental_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_sale_rental_form_domain_confirmed">
+            <field name="name">Confirmed</field>
+            <field name="sequence" eval="30"/>
+            <field name="domain" eval="[('state', '=', 'confirmed')]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_sale_rental_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_sale_rental_form_domain_picked_up">
+            <field name="name">Picked up</field>
+            <field name="sequence" eval="40"/>
+            <field name="domain" eval="[('state', '=', 'picked up')]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_sale_rental_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_sale_rental_form_domain_all">
+            <field name="name">All</field>
+            <field name="sequence" eval="9999"/>
+            <field name="domain"></field>
+            <field name="act_window" ref="act_sale_rental_form"/>
+        </record>
+        <menuitem
+            parent="sale.menu_sale"
+            action="act_sale_rental_form"
+            sequence="20"
+            id="menu_sale_rental_form"/>
+        <record model="ir.ui.menu-res.group" id="menu_sale_rental_form_group_sale">
+            <field name="menu" ref="menu_sale_rental_form"/>
+            <field name="group" ref="sale.group_sale"/>
+        </record>
+
+        <record model="ir.action.act_window" id="act_sale_rental_party_relate">
+            <field name="name">Rentals</field>
+            <field name="res_model">sale.rental</field>
+            <field name="domain"
+                eval="[If(Eval('active_ids', []) == [Eval('active_id')], ('party', '=', Eval('active_id')), ('party', 'in', Eval('active_ids', [])))]"
+                pyson="1"/>
+            <field name="search_value" eval="[('state', 'not in', ['done', 'cancelled'])]" pyson="1"/>
+        </record>
+        <record model="ir.action.keyword" id="act_sale_rental_party_relate_keyword1">
+            <field name="keyword">form_relate</field>
+            <field name="model">party.party,-1</field>
+            <field name="action" ref="act_sale_rental_party_relate"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_sale_rental_companies">
+            <field name="name">User in companies</field>
+            <field name="model">sale.rental</field>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_sale_rental_companies">
+            <field name="domain"
+                eval="[('company', 'in', Eval('companies', []))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_sale_rental_companies"/>
+        </record>
+
+        <record model="ir.model.access" id="access_sale_rental">
+            <field name="model">sale.rental</field>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_sale_rental_sale">
+            <field name="model">sale.rental</field>
+            <field name="group" ref="sale.group_sale"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.model.button" id="sale_rental_draft_button">
+            <field name="model">sale.rental</field>
+            <field name="name">draft</field>
+            <field name="string">Draft</field>
+        </record>
+
+        <record model="ir.model.button" id="sale_rental_quote_button">
+            <field name="model">sale.rental</field>
+            <field name="name">quote</field>
+            <field name="string">Quote</field>
+        </record>
+
+        <record model="ir.model.button" id="sale_rental_confirm_button">
+            <field name="model">sale.rental</field>
+            <field name="name">confirm</field>
+            <field name="string">Confirm</field>
+        </record>
+
+        <record model="ir.model.button" id="sale_rental_pickup_button">
+            <field name="model">sale.rental</field>
+            <field name="name">pickup</field>
+            <field name="string">Pickup</field>
+        </record>
+        <record model="ir.model.button-res.group" id="sale_rental_pickup_button_group_sale">
+            <field name="button" ref="sale_rental_pickup_button"/>
+            <field name="group" ref="sale.group_sale"/>
+        </record>
+        <record model="ir.model.button-res.group" id="sale_rental_pickup_button_group_stock">
+            <field name="button" ref="sale_rental_pickup_button"/>
+            <field name="group" ref="stock.group_stock"/>
+        </record>
+
+        <record model="ir.model.button" id="sale_rental_return_button">
+            <field name="model">sale.rental</field>
+            <field name="name">return_</field>
+            <field name="string">Return</field>
+        </record>
+        <record model="ir.model.button-res.group" id="sale_rental_return_button_group_sale">
+            <field name="button" ref="sale_rental_return_button"/>
+            <field name="group" ref="sale.group_sale"/>
+        </record>
+        <record model="ir.model.button-res.group" id="sale_rental_return_button_group_stock">
+            <field name="button" ref="sale_rental_return_button"/>
+            <field name="group" ref="stock.group_stock"/>
+        </record>
+
+        <record model="ir.model.button" id="sale_rental_invoice_button">
+            <field name="model">sale.rental</field>
+            <field name="name">invoice</field>
+            <field name="string">Invoice</field>
+        </record>
+
+        <record model="ir.model.button" id="sale_rental_cancel_button">
+            <field name="model">sale.rental</field>
+            <field name="name">cancel</field>
+            <field name="string">Cancel</field>
+        </record>
+
+        <record model="ir.ui.view" id="sale_rental_line_view_form">
+            <field name="model">sale.rental.line</field>
+            <field name="type">form</field>
+            <field name="name">sale_rental_line_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="sale_rental_line_view_list">
+            <field name="model">sale.rental.line</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="10"/>
+            <field name="name">sale_rental_line_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="sale_rental_line_view_list_sequence">
+            <field name="model">sale.rental.line</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="20"/>
+            <field name="name">sale_rental_line_list_sequence</field>
+        </record>
+
+        <record model="ir.action.wizard" id="wizard_sale_rental_pickup">
+            <field name="name">Pickup Rental</field>
+            <field name="wiz_name">sale.rental.pickup</field>
+            <field name="model">sale.rental</field>
+        </record>
+
+        <record model="ir.ui.view" id="sale_rental_pickup_show_view_form">
+            <field name="model">sale.rental.pickup.show</field>
+            <field name="type">form</field>
+            <field name="name">sale_rental_pickup_show_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="sale_rental_pickup_show_line_view_list">
+            <field name="model">sale.rental.pickup.show.line</field>
+            <field name="type">tree</field>
+            <field name="name">sale_rental_pickup_show_line_list</field>
+        </record>
+
+        <record model="ir.action.wizard" id="wizard_sale_rental_return">
+            <field name="name">Return Rental</field>
+            <field name="wiz_name">sale.rental.return</field>
+            <field name="model">sale.rental</field>
+        </record>
+
+        <record model="ir.ui.view" id="sale_rental_return_show_view_form">
+            <field name="model">sale.rental.return.show</field>
+            <field name="type">form</field>
+            <field name="name">sale_rental_return_show_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="sale_rental_return_show_line_view_list">
+            <field name="model">sale.rental.return.show.line</field>
+            <field name="type">tree</field>
+            <field name="name">sale_rental_return_show_line_list</field>
+        </record>
+    </data>
+</tryton>
