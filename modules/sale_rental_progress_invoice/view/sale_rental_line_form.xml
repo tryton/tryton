@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<data>
+    <xpath expr="//page[@name='invoice_lines']" position="before">
+        <page name="progresses" col="2">
+            <label name="actual_start"/>
+            <field name="actual_start"/>
+            <field name="progresses" colspan="2"/>
+        </page>
+    </xpath>
+</data>

@@ -2740,6 +2740,23 @@ test-modules-sale_rental-postgresql:
     PACKAGE: modules/sale_rental
     TAG_PATTERN: '/^sale_rental-.*/'
 
+check-doc-modules-sale_rental_progress_invoice:
+  extends: .check-doc
+  variables:
+    PACKAGE: modules/sale_rental_progress_invoice
+
+test-modules-sale_rental_progress_invoice-sqlite:
+  extends: .test-sqlite
+  variables:
+    PACKAGE: modules/sale_rental_progress_invoice
+    TAG_PATTERN: '/^sale_rental_progress_invoice-.*/'
+
+test-modules-sale_rental_progress_invoice-postgresql:
+  extends: .test-postgresql
+  variables:
+    PACKAGE: modules/sale_rental_progress_invoice
+    TAG_PATTERN: '/^sale_rental_progress_invoice-.*/'
+
 check-doc-modules-sale_secondary_unit:
   extends: .check-doc
   variables:

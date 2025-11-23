@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="sale_rental_view_form">
+            <field name="model">sale.rental</field>
+            <field name="inherit" ref="sale_rental.sale_rental_view_form"/>
+            <field name="name">sale_rental_form</field>
+        </record>
+
+        <record model="ir.model.button" id="sale_rental_add_progress_button">
+            <field name="model">sale.rental</field>
+            <field name="name">add_progress</field>
+            <field name="string">Add Progress</field>
+        </record>
+
+        <record model="ir.ui.view" id="sale_rental_progress_view_form">
+            <field name="model">sale.rental.progress</field>
+            <field name="type">form</field>
+            <field name="name">sale_rental_progress_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="sale_rental_progress_view_list">
+            <field name="model">sale.rental.progress</field>
+            <field name="type">tree</field>
+            <field name="name">sale_rental_progress_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="sale_rental_line_view_form">
+            <field name="model">sale.rental.line</field>
+            <field name="inherit" ref="sale_rental.sale_rental_line_view_form"/>
+            <field name="name">sale_rental_line_form</field>
+        </record>
+
+        <record model="ir.action.wizard" id="wizard_sale_rental_add_progress">
+            <field name="name">Add Rental Progress</field>
+            <field name="wiz_name">sale.rental.add_progress</field>
+            <field name="model">sale.rental</field>
+        </record>
+
+        <record model="ir.ui.view" id="sale_rental_add_progress_start_view_form">
+            <field name="model">sale.rental.add_progress.start</field>
+            <field name="type">form</field>
+            <field name="name">sale_rental_add_progress_start_form</field>
+        </record>
+    </data>
+</tryton>

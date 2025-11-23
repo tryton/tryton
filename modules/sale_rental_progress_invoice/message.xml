@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data grouped="1">
+        <record model="ir.message" id="msg_sale_rental_progress_line_unique">
+            <field name="text">A rental line can start only one progress date chain.</field>
+        </record>
+        <record model="ir.message" id="msg_sale_rental_progress_previous_unique">
+            <field name="text">A rental progress date can be parent only once.</field>
+        </record>
+        <record model="ir.message" id="msg_sale_rental_progress_line_previous">
+            <field name="text">A rental progress date can not have both a line and a previous.</field>
+        </record>
+    </data>
+</tryton>
