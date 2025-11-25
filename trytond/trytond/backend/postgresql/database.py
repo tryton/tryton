@@ -179,6 +179,7 @@ class Database(DatabaseInterface):
 
     index_translators = []
     _lock = RLock()
+    _clean_last = None
     _databases = defaultdict(dict)
     _connpool = None
     _list_cache = {}
@@ -207,39 +208,48 @@ class Database(DatabaseInterface):
         }
 
     def __new__(cls, name=_default_name):
-        with cls._lock:
-            now = datetime.now()
-            databases = cls._databases[os.getpid()]
-            timeout = config.getint('database', 'timeout')
+        now = datetime.now()
+        if cls._clean_last is None:
+            cls._clean_last = now
+
+        databases = cls._databases[os.getpid()]
+
+        minconn = config.getint('database', 'minconn', default=1)
+        maxconn = config.getint('database', 'maxconn', default=64)
+        timeout = config.getint('database', 'timeout')
+        last_clean = (now - cls._clean_last).total_seconds()
+        if last_clean > timeout:
             for database in list(databases.values()):
                 if ((now - database._last_use).total_seconds() > timeout
                         and database.name != name):
-                    database.close()
-            if name in databases:
-                inst = databases[name]
-            else:
-                inst = DatabaseInterface.__new__(cls, name=name)
-                minconn = config.getint('database', 'minconn', default=1)
-                maxconn = config.getint('database', 'maxconn', default=64)
-                kwargs = cls._connection_params(name)
-                kwargs['cursor_factory'] = LoggingCursor
-                conninfo = kwargs.pop('conninfo')
-                try:
-                    inst._connpool = ConnectionPool(
-                        conninfo,
-                        kwargs=kwargs,
-                        open=True,
-                        check=ConnectionPool.check_connection,
-                        min_size=minconn, max_size=maxconn)
-                except Exception:
-                    logger.error(
-                        'connection to "%s" failed', name, exc_info=True)
-                    raise
-                else:
-                    logger.info('connection to "%s" succeeded', name)
-                databases[name] = inst
-            inst._last_use = datetime.now()
-            return inst
+                    database._connpool.resize(0, 0)
+
+        if not (inst := databases.get(name)):
+            with cls._lock:
+                if not (inst := databases.get(name)):
+                    inst = DatabaseInterface.__new__(cls, name=name)
+                    kwargs = cls._connection_params(name)
+                    kwargs['cursor_factory'] = LoggingCursor
+                    conninfo = kwargs.pop('conninfo')
+                    try:
+                        inst._connpool = ConnectionPool(
+                            conninfo,
+                            kwargs=kwargs,
+                            open=True,
+                            check=ConnectionPool.check_connection,
+                            min_size=minconn, max_size=maxconn)
+                    except Exception:
+                        logger.error(
+                            'connection to "%s" failed', name, exc_info=True)
+                        raise
+                    else:
+                        logger.info('connection to "%s" succeeded', name)
+                    databases[name] = inst
+        elif (inst._connpool.min_size != minconn
+                or inst._connpool.max_size != maxconn):
+            inst._connpool.resize(minconn, maxconn)
+        inst._last_use = now
+        return inst
 
     def __init__(self, name=_default_name):
         super().__init__(name)
