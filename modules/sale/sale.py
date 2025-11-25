@@ -1917,7 +1917,7 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
         quantity = (
             self._get_move_quantity(move_type)
             - self._get_shipped_quantity(move_type))
-        if quantity < 0:
+        if self.unit.round(quantity) < 0:
             warning_name = Warning.format(
                 'check_move_quantity', [self])
             if Warning.check(warning_name):
