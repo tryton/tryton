@@ -154,9 +154,9 @@ class LongPollingBus:
             selector.register(conn, selectors.EVENT_READ)
             while cls._queues[pid, database]['timeout'] > now:
                 selector.select(timeout=config.getint('bus', 'select_timeout'))
-                conn.poll()
-                while conn.notifies:
-                    notification = conn.notifies.pop()
+                notifications = db.get_notifications(conn)
+                while notifications:
+                    notification = notifications.pop()
                     payload = json.loads(
                         notification.payload,
                         object_hook=JSONDecoder())
@@ -200,13 +200,13 @@ class LongPollingBus:
             logger.info("database backend does not support channels")
             return
 
-        cursor = transaction.connection.cursor()
         message['message_id'] = str(uuid.uuid4())
         payload = json.dumps({
                 'channel': channel,
                 'message': message,
                 }, cls=JSONEncoder, separators=(',', ':'))
-        cursor.execute('NOTIFY "%s", %%s' % cls._channel, (payload,))
+        transaction.database.notify(
+            transaction.connection, cls._channel, payload)
         logger.debug(
             "publish %r to '%s' on '%s'",
             message, channel, transaction.database.name)

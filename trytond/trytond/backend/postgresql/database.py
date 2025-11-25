@@ -492,6 +492,14 @@ class Database(DatabaseInterface):
             cursor.execute(*from_item.select(Count(Literal('*'))))
         return cursor.fetchone()[0]
 
+    def notify(self, connection, channel, payload):
+        cursor = connection.cursor()
+        cursor.execute('NOTIFY "%s", %%s' % channel, (payload,))
+
+    def get_notifications(self, connection):
+        connection.poll()
+        return connection.notifies
+
     @classmethod
     def lock(cls, connection, table):
         cursor = connection.cursor()

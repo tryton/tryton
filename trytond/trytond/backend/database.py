@@ -73,6 +73,12 @@ class DatabaseInterface(object):
     def estimated_count(self, connection, table):
         raise NotImplementedError
 
+    def notify(self, connection, channel, payload):
+        raise NotImplementedError
+
+    def get_notifications(self, connection):
+        raise NotImplementedError
+
     @classmethod
     def lock(cls, connection, table):
         raise NotImplementedError

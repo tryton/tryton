@@ -308,9 +308,8 @@ class MemoryCache(BaseCache):
                 # The count computed as
                 # 8000 (max notify size) / 64 (max name data len)
                 for sub_reset in grouped_slice(reset, 125):
-                    cursor.execute(
-                        'NOTIFY "%s", %%s' % cls._channel,
-                        (json.dumps(list(sub_reset), separators=(',', ':')),))
+                    database.notify(transaction.connection, cls._channel,
+                        json.dumps(list(sub_reset), separators=(',', ':')))
         else:
             connection = database.get_connection(
                 readonly=False, autocommit=True)
@@ -429,9 +428,9 @@ class MemoryCache(BaseCache):
             while cls._local.listeners.get(dbname) == current_thread:
                 selector.select(
                     timeout=config.getint('cache', 'select_timeout'))
-                conn.poll()
-                while conn.notifies:
-                    notification = conn.notifies.pop()
+                notifications = database.get_notifications(conn)
+                while notifications:
+                    notification = notifications.pop()
                     payload = notification.payload
                     if payload and payload.startswith(REFRESH_POOL_MSG):
                         remote_id = payload[len(REFRESH_POOL_MSG) + 1:]
