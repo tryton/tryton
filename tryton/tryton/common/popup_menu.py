@@ -17,7 +17,7 @@ from tryton.gui.window.view_form.screen import Screen
 _ = gettext.gettext
 
 
-def populate(menu, model, record, title='', field=None, context=None):
+def populate(menu, model, record, title='', attributes=None, context=None):
     '''
     Fill menu with the actions of model for the record.
     If title is filled, the actions will be put in a submenu.
@@ -29,6 +29,9 @@ def populate(menu, model, record, title='', field=None, context=None):
             return
     elif record.id < 0:
         return
+
+    if attributes is None:
+        attributes = {}
 
     def load(record):
         if isinstance(record, int):
@@ -83,10 +86,10 @@ def populate(menu, model, record, title='', field=None, context=None):
     def edit(menuitem):
         with Window(hide_current=True, allow_similar=True):
             Window.create(model,
-                view_ids=field.attrs.get('view_ids', '').split(','),
+                view_ids=attributes.get('view_ids', '').split(','),
                 res_id=id_(record),
                 mode=['form'],
-                name=field.attrs.get('string'),
+                name=attributes.get('string'),
                 context=context)
 
     if title:
@@ -102,7 +105,7 @@ def populate(menu, model, record, title='', field=None, context=None):
 
     if len(action_menu):
         action_menu.append(Gtk.SeparatorMenuItem())
-    if field:
+    if attributes:
         edit_item = Gtk.MenuItem(label=_('Edit...'))
         edit_item.connect('activate', edit)
         action_menu.append(edit_item)

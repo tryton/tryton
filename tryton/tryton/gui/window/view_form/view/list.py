@@ -1049,7 +1049,10 @@ class ViewTree(View):
                     parent = parent.parent
                 else:
                     populate(menu, group.model_name, record)
+                current_col = defaultdict(lambda: -1)
                 for col in self.treeview.get_columns():
+                    if col.name:
+                        current_col[col.name] += 1
                     if not col.get_visible() or not col.name:
                         continue
                     field = group.fields[col.name]
@@ -1066,9 +1069,10 @@ class ViewTree(View):
                         continue
                     label = field.attrs['string']
                     context = field.get_context(record)
+                    col_widget = self.widgets[col.name][current_col[col.name]]
                     populate(
-                        menu, model, record_id, title=label, field=field,
-                        context=context)
+                        menu, model, record_id, title=label,
+                        attributes=col_widget.attributes, context=context)
 
             if selection.count_selected_rows() == 1:
                 group = self.group
