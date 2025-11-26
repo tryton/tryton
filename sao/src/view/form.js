@@ -2802,15 +2802,21 @@ function eval_pyson(value){
             } else {
                 this._popup = true;
             }
+            let view_ids = (this.attributes.view_ids || '').split(',');
             if (this.has_target(value)) {
                 var m2o_id =
                     this.id_from_value(record.field_get(this.field_name));
                 if (evt && (evt.ctrlKey || evt.metaKey)) {
+                    if (!jQuery.isEmptyObject(view_ids)) {
+                        // Remove the first tree view as mode is form only
+                        view_ids.shift();
+                    }
                     var params = {};
                     params.model = this.get_model();
                     params.res_id = m2o_id;
                     params.mode = ['form'];
                     params.name = this.attributes.string;
+                    params.view_ids = view_ids;
                     params.context = this.field.get_context(this.record);
                     Sao.Tab.create(params);
                     this._popup = false;
@@ -2859,8 +2865,7 @@ function eval_pyson(value){
                             context: context,
                             domain: domain,
                             order: order,
-                            view_ids: (this.attributes.view_ids ||
-                                '').split(','),
+                            view_ids: view_ids,
                             views_preload: (this.attributes.views || {}),
                             new_: this.create_access,
                             search_filter: parser.quote(text),
