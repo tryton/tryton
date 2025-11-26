@@ -362,6 +362,12 @@ class InvoiceDeferred(Workflow, ModelSQL, ModelView):
                 else:
                     income.debit, income.credit = 0, -amount
         income.account = self.invoice_line.account.current(move.date)
+        if not income.account:
+            raise AccountMissing(gettext(
+                    'account_invoice_defer'
+                    '.msg_invoice_deferred_invoice_line_missing_account',
+                    deferral=self.rec_name,
+                    account=self.invoice_line.account.rec_name))
         if income.account.party_required:
             income.party = invoice.party
 

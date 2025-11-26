@@ -27,5 +27,11 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_revision_asset_origin_unique">
             <field name="text">A revision origin can be used only once per asset.</field>
         </record>
+        <record model="ir.message" id="msg_asset_close_invoice_line_missing_account">
+            <field name="text">To close asset "%(asset)s" you must configure a replacement account for "%(account)s".</field>
+        </record>
+        <record model="ir.message" id="msg_asset_close_product_account_asset">
+            <field name="text">To close asset "%(asset)s" you must configure an account asset for the product "%(product)s".</field>
+        </record>
     </data>
 </tryton>

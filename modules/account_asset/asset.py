@@ -11,6 +11,7 @@ from sql.functions import CharLength
 from trytond.i18n import gettext
 from trytond.model import Index, ModelSQL, ModelView, Unique, Workflow, fields
 from trytond.model.exceptions import AccessError
+from trytond.modules.account.exceptions import AccountMissing
 from trytond.modules.company import CompanyReport
 from trytond.modules.currency.fields import Monetary
 from trytond.pool import Pool
@@ -589,8 +590,20 @@ class Asset(Workflow, ModelSQL, ModelView):
         period = Period.find(self.company, date)
         if self.supplier_invoice_line:
             account_asset = self.supplier_invoice_line.account.current()
+            if not account_asset:
+                raise AccountMissing(gettext(
+                        'account_asset'
+                        '.msg_asset_close_invoice_line_missing_account',
+                        asset=self.rec_name,
+                        account=self.supplier_invoice_line.account.rec_name))
         else:
             account_asset = self.product.account_asset_used
+            if not account_asset:
+                raise AccountMissing(gettext(
+                        'account_asset'
+                        '.msg_asset_close_product_account_asset',
+                        asset=self.rec_name,
+                        product=self.product.rec_name))
 
         asset_line = MoveLine(
             debit=0,

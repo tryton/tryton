@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data grouped="1">
+        <record model="ir.message" id="msg_payment_clearing_account_missing">
+            <field name="text">To clear the payment "%(payment)s" you must configure a replacement account for "%(account)s".</field>
+        </record>
+        <record model="ir.message" id="msg_payment_clearing_account_missing_journal">
+            <field name="text">To clear the payment "%(payment)s" you must configure a replacement account for "%(account)s" or an active account on the payment journal "%(journal)s".</field>
+        </record>
+        <record model="ir.message" id="msg_payment_clearing_account_payable_missing">
+            <field name="text">To clear the payment "%(payment)s" you must configure a payable account for party "%(party)s".</field>
+        </record>
+        <record model="ir.message" id="msg_payment_clearing_account_receivable_missing">
+            <field name="text">To clear the payment "%(payment)s" you must configure a receivable account for party "%(party)s".</field>
+        </record>
+
+    </data>
+</tryton>

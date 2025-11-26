@@ -8,7 +8,9 @@ from sql.aggregate import BoolAnd, Min
 from sql.conditionals import Coalesce
 
 from trytond import backend
+from trytond.i18n import gettext
 from trytond.model import ModelView, Workflow, fields
+from trytond.modules.account.exceptions import AccountMissing
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Bool, Eval, If, TimeDelta
 from trytond.tools import grouped_slice, reduce_ids
@@ -235,13 +237,38 @@ class Payment(metaclass=PoolMeta):
         context = transaction.context
         with transaction.set_context(date=context.get('clearing_date')):
             if self.line:
-                return self.line.account.current()
+                account = self.line.account.current()
+                if not account:
+                    raise AccountMissing(gettext(
+                            'account_payment_clearing'
+                            '.msg_payment_clearing_account_missing',
+                            payment=self.rec_name,
+                            account=self.line.account.rec_name))
             elif self.account:
-                return self.account.current()
+                account = self.account.current()
+                if not account:
+                    raise AccountMissing(gettext(
+                            'account_payment_clearing'
+                            '.msg_payment_clearing_account_missing',
+                            payment=self.rec_name,
+                            account=self.account.rec_name))
             elif self.kind == 'payable':
-                return self.party.account_payable_used
+                account = self.party.account_payable_used
+                if not account:
+                    raise AccountMissing(gettext(
+                            'account_payment_clearing'
+                            '.msg_payment_clearing_account_payable_missing',
+                            payment=self.rec_name,
+                            party=self.party.rec_name))
             elif self.kind == 'receivable':
-                return self.party.account_receivable_used
+                account = self.party.account_receivable_used
+                if not account:
+                    raise AccountMissing(gettext(
+                            'account_payment_clearing'
+                            '.msg_payment_clearing_account_receivable_missing',
+                            payment=self.rec_name,
+                            party=self.party.rec_name))
+        return account
 
     @property
     def clearing_party(self):
@@ -314,6 +341,13 @@ class Payment(metaclass=PoolMeta):
         else:
             counterpart.debit, counterpart.credit = local_amount, 0
         counterpart.account = self.journal.clearing_account.current(date)
+        if not counterpart.account:
+            raise AccountMissing(gettext(
+                    'account_payment_clearing'
+                    '.msg_payment_clearing_account_missing_journal',
+                    payment=self.rec_name,
+                    account=self.journal.clearing_account.rec_name,
+                    journal=self.journal.rec_name))
         if not local_currency:
             counterpart.amount_second_currency = self.amount.copy_sign(
                 counterpart.debit - counterpart.credit)
