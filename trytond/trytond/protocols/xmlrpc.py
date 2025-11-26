@@ -4,7 +4,6 @@ import datetime
 import gzip
 import logging
 import xmlrpc.client as client
-# convert decimal to float before marshalling:
 from decimal import Decimal
 from types import MappingProxyType
 
