@@ -2060,9 +2060,11 @@
                 return;
             }
 
-            body = listener = jQuery(document.body);
+            body = jQuery(document.body);
             if (body.hasClass('modal-open')) {
                 listener = this.tree.el.parents('.modal').last();
+            } else {
+                listener = this.tree.el.parents('.tab-pane').last();
             }
             const handler = event_ => {
                 if ((event_.currentTarget == body[0]) &&
@@ -2075,7 +2077,7 @@
                     event_.stopPropagation();
                     return;
                 }
-                body.off('click.sao.editabletree');
+                listener.off('click.sao.editabletree');
                 this.tree.edit_row(null);
                 return true;
             };
