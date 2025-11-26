@@ -5,6 +5,7 @@ import datetime
 import gzip
 import json
 from decimal import Decimal
+from types import MappingProxyType
 
 from werkzeug.exceptions import (
     BadRequest, Conflict, Forbidden, HTTPException, InternalServerError,
@@ -100,6 +101,7 @@ JSONEncoder.register(datetime.timedelta,
         '__class__': 'timedelta',
         'seconds': o.total_seconds(),
         })
+JSONEncoder.register(MappingProxyType, dict)
 
 
 def _bytes_encoder(o):

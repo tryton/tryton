@@ -6,6 +6,7 @@ import logging
 import xmlrpc.client as client
 # convert decimal to float before marshalling:
 from decimal import Decimal
+from types import MappingProxyType
 
 import defusedxml.xmlrpc
 from werkzeug.exceptions import (
@@ -86,6 +87,7 @@ def dump_struct(self, value, write, escape=client.escape):
 
 client.Marshaller.dispatch[dict] = dump_struct
 client.Marshaller.dispatch[ImmutableDict] = dump_struct
+client.Marshaller.dispatch[MappingProxyType] = dump_struct
 
 
 class XMLRPCDecoder(object):
