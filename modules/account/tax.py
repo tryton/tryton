@@ -301,12 +301,14 @@ class TaxCode(
 class TaxCodeLineTemplate(ModelSQL, ModelView):
     __name__ = 'account.tax.code.line.template'
 
-    code = fields.Many2One('account.tax.code.template', "Code", required=True)
+    code = fields.Many2One(
+        'account.tax.code.template', "Code", required=True, ondelete='CASCADE')
     operator = fields.Selection([
             ('+', "+"),
             ('-', "-"),
             ], "Operator", required=True)
-    tax = fields.Many2One('account.tax.template', "Tax", required=True)
+    tax = fields.Many2One(
+        'account.tax.template', "Tax", required=True, ondelete='CASCADE')
     amount = fields.Selection([
             ('tax', "Tax"),
             ('base', "Base"),

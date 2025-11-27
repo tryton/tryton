@@ -136,7 +136,7 @@ class TypeTemplate(
         ModelSQL, ModelView):
     __name__ = 'account.account.type.template'
     parent = fields.Many2One(
-        'account.account.type.template', "Parent", ondelete='RESTRICT',
+        'account.account.type.template', "Parent",
         domain=['OR',
             If(Eval('statement') == 'off-balance',
                 ('statement', '=', 'off-balance'),
@@ -638,23 +638,22 @@ class AccountTemplate(
         AccountMixin(template=True), PeriodMixin, tree(), ModelSQL, ModelView):
     __name__ = 'account.account.template'
     type = fields.Many2One(
-        'account.account.type.template', "Type", ondelete="RESTRICT")
+        'account.account.type.template', "Type")
     debit_type = fields.Many2One(
-        'account.account.type.template', "Debit Type", ondelete="RESTRICT",
+        'account.account.type.template', "Debit Type",
         domain=[
             If(Eval('credit_type', None),
                 ('debit_type', '=', None),
                 ()),
             ])
     credit_type = fields.Many2One(
-        'account.account.type.template', "Credit Type", ondelete="RESTRICT",
+        'account.account.type.template', "Credit Type",
         domain=[
             If(Eval('debit_type', None),
                 ('credit_type', '=', None),
                 ()),
             ])
-    parent = fields.Many2One(
-        'account.account.template', "Parent", ondelete="RESTRICT")
+    parent = fields.Many2One('account.account.template', "Parent")
     childs = fields.One2Many('account.account.template', 'parent', 'Children')
     taxes = fields.Many2Many('account.account.template-account.tax.template',
             'account', 'tax', 'Default Taxes',
@@ -814,7 +813,7 @@ class AccountTemplateTaxTemplate(ModelSQL):
         ondelete='CASCADE', required=True)
     tax = fields.Many2One(
         'account.tax.template', "Tax Template",
-        ondelete='RESTRICT', required=True)
+        ondelete='CASCADE', required=True)
 
     @classmethod
     def __register__(cls, module):
