@@ -215,7 +215,8 @@ class Group(metaclass=PoolMeta):
         if self.kind == 'receivable':
             payments = sorted(self.payments, key=attrgetter('date', 'id'))
             mandates = Payment.get_sepa_mandates(payments)
-            Mandate.lock(list(filter(None, mandates)))
+            Mandate.lock(
+                [m for m in mandates if m and m.sequence_type == 'FRST'])
             sequence_types = {}
             for payment, mandate in zip(payments, mandates):
                 if not mandate:
