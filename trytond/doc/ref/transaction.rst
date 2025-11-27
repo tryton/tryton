@@ -40,7 +40,15 @@ Transaction
 
 .. attribute:: Transaction.create_records
 
+   A :py:class:`defaultdict <collections.defaultdict>` storing for each
+   :attr:`~trytond.model.Model.__name__` a :py:class:`list` of ids created
+   during the transaction.
+
 .. attribute:: Transaction.delete_records
+
+   A :py:class:`defaultdict <collections.defaultdict>` storing for each
+   :attr:`~trytond.model.Model.__name__` a :py:class:`set` of ids deleted
+   during the transaction.
 
 .. attribute:: Transaction.trigger_records
 

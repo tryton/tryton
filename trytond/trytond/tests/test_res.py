@@ -82,5 +82,20 @@ class ResTestCase(ModuleTestCase):
         self.assertFalse(Warning_.check('test'))
         self.assertFalse(Warning_.check('test'))
 
+    @with_transaction()
+    def test_user_warning_format(self):
+        "Test format of user warning"
+        pool = Pool()
+        Warning_ = pool.get('res.user.warning')
+        Record = pool.get('res.user')
+        transaction = Transaction()
+
+        key1 = Warning_.format('test', [Record(1)])
+
+        transaction.create_records[Record.__name__].append(1)
+        key2 = Warning_.format('test', [Record(1)])
+
+        self.assertNotEqual(key1, key2)
+
 
 del ModuleTestCase

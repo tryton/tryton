@@ -299,7 +299,7 @@ class ModelStorage(Model):
                     for trigger in triggers:
                         trigger.queue_trigger_action(records)
 
-            transaction.create_records[cls.__name__].update(ids)
+            transaction.create_records[cls.__name__].extend(ids)
             return ids
 
     @classmethod

@@ -197,7 +197,7 @@ class Transaction(object):
             self.readonly = readonly
             self.close = close
             self.context = ImmutableDict(context or {})
-            self.create_records = defaultdict(set)
+            self.create_records = defaultdict(list)
             self.delete_records = defaultdict(set)
             self.trigger_records = defaultdict(set)
             self.log_records = []

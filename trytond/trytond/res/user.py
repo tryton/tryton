@@ -964,7 +964,17 @@ class Warning_(ModelSQL, ModelView):
 
     @classmethod
     def format(cls, name, records):
-        key = '|'.join(map(str, records)).encode('utf-8')
+        create_records = Transaction().create_records
+
+        def str_(record):
+            name = record.__name__
+            try:
+                # start from 1 to avoid 0 == -0
+                i = create_records[name].index(record.id) + 1
+                return '%s,%s' % (name, -i)
+            except ValueError:
+                return str(record)
+        key = '|'.join(map(str_, records)).encode('utf-8')
         return '%s.%s' % (hashlib.md5(key).hexdigest(), name)
 
     @classmethod

@@ -2312,7 +2312,7 @@ class ModelSQL(ModelStorage):
     def lock(cls, records=None):
         transaction = Transaction()
         if records is not None:
-            new_ids = transaction.create_records[cls.__name__]
+            new_ids = set(transaction.create_records[cls.__name__])
             ids = [id_ for id_ in map(int, records) if id_ not in new_ids]
             transaction.lock_records(cls._table, ids)
         else:
