@@ -133,7 +133,7 @@ class TaxCode(
     code = fields.Char('Code', states=_states)
     company = fields.Many2One('company.company', 'Company', required=True)
     parent = fields.Many2One(
-        'account.tax.code', "Parent", ondelete='CASCADE',
+        'account.tax.code', "Parent", ondelete='RESTRICT',
         states=_states,
         domain=[
             ('company', '=', Eval('company', -1)),
@@ -384,8 +384,7 @@ class TaxCodeLine(ModelSQL, ModelView):
             ('credit', "Credit"),
             ], "Type", required=True, states=_states)
 
-    template = fields.Many2One(
-        'account.tax.code.line.template', 'Template', ondelete='CASCADE')
+    template = fields.Many2One('account.tax.code.line.template', "Template")
     template_override = fields.Boolean('Override Template',
         help="Check to override template definition",
         states={

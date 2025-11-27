@@ -215,7 +215,7 @@ class Type(
     __name__ = 'account.account.type'
 
     parent = fields.Many2One(
-        'account.account.type', 'Parent', ondelete='CASCADE',
+        'account.account.type', 'Parent', ondelete='RESTRICT',
         states={
             'readonly': (Bool(Eval('template', -1))
                 & ~Eval('template_override', False)),
