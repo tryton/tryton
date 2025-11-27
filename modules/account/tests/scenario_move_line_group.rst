@@ -19,6 +19,8 @@ Activate modules::
 
     >>> config = activate_modules('account', create_company, create_chart)
 
+    >>> Warning = Model.get('res.user.warning')
+
 Get currency::
 
     >>> usd = get_currency('USD')
@@ -144,14 +146,12 @@ Cancelling the delegation move::
    >>> try:
    ...     cancel.execute('cancel')
    ... except CancelDelegatedWarning as warning:
-   ...     _, (key, *_) = warning.args
+   ...     Warning(user=config.user, name=warning.name).save()
    ...     raise
    Traceback (most recent call last):
       ...
    CancelDelegatedWarning: ...
 
-   >>> Warning = Model.get('res.user.warning')
-   >>> Warning(user=config.user, name=key).save()
    >>> cancel.execute('cancel')
    >>> Reconciliation.find([('id', '=', reconciliations[0].id)])
    []

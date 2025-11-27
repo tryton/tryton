@@ -177,12 +177,11 @@ Create invoice with alternate currency and negative taxes::
     >>> try:
     ...     invoice.click('post')
     ... except InvoiceTaxesWarning as warning:
-    ...     _, (key, *_) = warning.args
+    ...     Warning(user=config.user, name=warning.name).save()
     ...     raise
     Traceback (most recent call last):
         ...
     InvoiceTaxesWarning: ...
-    >>> Warning(user=config.user, name=key).save()
     >>> invoice.click('post')
     >>> invoice.state
     'posted'

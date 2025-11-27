@@ -18,6 +18,8 @@ Activate modules::
 
     >>> config = activate_modules('stock_supply_production', create_company)
 
+    >>> Warning = Model.get('res.user.warning')
+
 Create product::
 
     >>> ProductUom = Model.get('product.uom')
@@ -64,10 +66,7 @@ Create needs for product::
     >>> try:
     ...     move.click('do')
     ... except MoveFutureWarning as warning:
-    ...     _, (key, *_) = warning.args
-
-    >>> Warning = Model.get('res.user.warning')
-    >>> Warning(user=config.user, name=key).save()
+    ...     Warning(user=config.user, name=warning.name).save()
     >>> move.click('do')
 
 There is no production request::

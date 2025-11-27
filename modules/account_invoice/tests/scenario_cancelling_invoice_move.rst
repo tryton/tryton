@@ -86,8 +86,8 @@ Bypass the warning and cancel the move::
 
     >>> try:
     ...     cancel_move.execute('cancel')
-    ... except CancelInvoiceMoveWarning as e:
-    ...     Warning(user=config.user, name=e.name).save()
+    ... except CancelInvoiceMoveWarning as warning:
+    ...     Warning(user=config.user, name=warning.name).save()
     >>> cancel_move.execute('cancel')
     >>> cancel_move.state
     'end'

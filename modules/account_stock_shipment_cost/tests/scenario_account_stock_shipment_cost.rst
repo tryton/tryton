@@ -200,12 +200,11 @@ Add a second shipment cost to 1 shipment::
     >>> try:
     ...     post_shipment_cost.execute('post')
     ... except SamePartiesWarning as warning:
-    ...     _, (key, *_) = warning.args
+    ...     Warning(user=config.user, name=warning.name).save()
     ...     raise
     Traceback (most recent call last):
         ...
     SamePartiesWarning: ...
-    >>> Warning(user=config.user, name=key).save()
     >>> post_shipment_cost.execute('post')
     >>> shipment_cost2.state
     'posted'

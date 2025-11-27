@@ -89,12 +89,11 @@ Post a supplier invoice with 0% deductible::
     >>> try:
     ...     invoice.click('post')
     ... except InvoiceTaxesWarning as warning:
-    ...     _, (key, *_) = warning.args
+    ...     Warning(user=config.user, name=warning.name).save()
     ...     raise
     Traceback (most recent call last):
         ...
     InvoiceTaxesWarning: ...
-    >>> Warning(user=config.user, name=key).save()
     >>> invoice.click('post')
     >>> invoice.untaxed_amount, invoice.tax_amount, invoice.total_amount
     (Decimal('550.00'), Decimal('0.00'), Decimal('550.00'))
