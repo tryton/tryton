@@ -14,7 +14,7 @@ class Float(Integer):
     @property
     def width(self):
         digits = self.digits
-        if digits and all(digits):
+        if digits and all(d is not None for d in digits):
             return sum(digits)
         else:
             return self.attrs.get('width', 18)
