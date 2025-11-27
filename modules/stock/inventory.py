@@ -15,8 +15,7 @@ from trytond.tools import grouped_slice, is_full_text, lstrip_wildcard
 from trytond.transaction import Transaction
 from trytond.wizard import Button, StateTransition, StateView, Wizard
 
-from .exceptions import (
-    InventoryCountWarning, InventoryFutureWarning, InventoryValidationError)
+from .exceptions import InventoryCountWarning, InventoryValidationError
 
 
 class Inventory(Workflow, ModelSQL, ModelView, ChatMixin):
@@ -153,29 +152,7 @@ class Inventory(Workflow, ModelSQL, ModelView, ChatMixin):
     def confirm(cls, inventories):
         pool = Pool()
         Move = pool.get('stock.move')
-        Date = pool.get('ir.date')
-        Warning = pool.get('res.user.warning')
         transaction = Transaction()
-        today_cache = {}
-
-        def in_future(inventory):
-            if inventory.company not in today_cache:
-                with Transaction().set_context(company=inventory.company.id):
-                    today_cache[inventory.company] = Date.today()
-            today = today_cache[inventory.company]
-            if inventory.date > today:
-                return inventory
-        future_inventories = sorted(filter(in_future, inventories))
-        if future_inventories:
-            names = ', '.join(i.rec_name for i in future_inventories[:5])
-            if len(future_inventories) > 5:
-                names + '...'
-            warning_name = Warning.format('date_future', future_inventories)
-            if Warning.check(warning_name):
-                raise InventoryFutureWarning(warning_name,
-                    gettext('stock.msg_inventory_date_in_the_future',
-                        inventories=names))
-
         moves = []
         for inventory in inventories:
             keys = set()
@@ -193,8 +170,7 @@ class Inventory(Workflow, ModelSQL, ModelView, ChatMixin):
         if moves:
             with transaction.set_context(_product_replacement=False):
                 Move.save(moves)
-            with transaction.set_context(_skip_warnings=True):
-                Move.do(moves)
+            Move.do(moves)
 
     @classmethod
     @ModelView.button

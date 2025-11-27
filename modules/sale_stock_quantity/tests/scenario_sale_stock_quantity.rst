@@ -13,7 +13,7 @@ Imports::
     >>> from trytond.modules.account_invoice.tests.tools import (
     ...     create_payment_term, set_fiscalyear_invoice_sequences)
     >>> from trytond.modules.company.tests.tools import create_company
-    >>> from trytond.modules.stock.exceptions import InventoryFutureWarning
+    >>> from trytond.modules.stock.exceptions import MoveFutureWarning
     >>> from trytond.tests.tools import activate_modules
 
     >>> today = dt.date.today()
@@ -24,6 +24,8 @@ Activate modules::
     >>> config = activate_modules(
     ...     ['sale_stock_quantity', 'stock_supply'],
     ...     create_company, create_chart)
+
+    >>> Warning = Model.get('res.user.warning')
 
 Create fiscal year::
 
@@ -170,8 +172,8 @@ Make an inventory of 3 products in 2 days::
     >>> inventory_line.expected_quantity = 5.0
     >>> try:
     ...     inventory.click('confirm')
-    ... except InventoryFutureWarning as e:
-    ...     Model.get('res.user.warning')(user=config.user, name=e.name).save()
+    ... except MoveFutureWarning as warning:
+    ...     Warning(user=config.user, name=warning.name).save()
     >>> inventory.click('confirm')
     >>> inventory.state
     'done'
