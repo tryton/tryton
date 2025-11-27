@@ -2204,7 +2204,7 @@ function eval_pyson(value){
         },
         get width() {
             var digits = this.digits;
-            if (digits) {
+            if (digits && digits.every(d => d !== null)) {
                 return digits.reduce(function(acc, cur) {
                     return acc + cur;
                 });
