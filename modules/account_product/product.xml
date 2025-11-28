@@ -10,6 +10,12 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">category_form</field>
         </record>
 
+        <record model="ir.ui.view" id="category_view_form_product">
+            <field name="model">product.category</field>
+            <field name="inherit" ref="product.category_view_form_product"/>
+            <field name="name">category_product_form</field>
+        </record>
+
         <record model="ir.rule.group" id="rule_group_category_default">
             <field name="name">Not accounting category</field>
             <field name="model">product.category</field>

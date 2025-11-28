@@ -135,6 +135,13 @@ class Category(CompanyMultiValueMixin, metaclass=PoolMeta):
     supplier_taxes_used = fields.Function(fields.Many2Many(
             'account.tax', None, None, "Supplier Taxes Used"), 'get_taxes')
 
+    accounting_templates = fields.One2Many(
+        'product.template', 'account_category', "Accounting Products",
+        states={
+            'invisible': ~Eval('accounting', False),
+            },
+        help="The products for which the accounting category applies.")
+
     @classmethod
     def __setup__(cls):
         super().__setup__()
