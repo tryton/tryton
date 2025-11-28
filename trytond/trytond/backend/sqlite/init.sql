@@ -31,17 +31,16 @@ CREATE TABLE ir_model_field (
 
 CREATE TABLE ir_model_data (
    id INTEGER PRIMARY KEy AUTOINCREMENT,
-    db_id INTEGER,
     fs_id VARCHAR,
     model VARCHAR NOT NULL,
     module VARCHAR NOT NULL,
-    noupdate BOOLEAN,
-    fs_values TEXT,
-    "values" TEXT
+    db_id INTEGER,
+    noupdate BOOLEAN
 );
 
-INSERT INTO ir_model_data (id, db_id, fs_id, model, module, noupdate, fs_values, "values") VALUES (1, 1, 'user_admin', 'res.user', 'res', False, '[["login","admin"],["name","Administrator"]]', '[["login","admin"],["name","Administrator"]]');
-INSERT INTO ir_model_data (id, db_id, fs_id, model, module, noupdate, fs_values, "values") VALUES (2, 1, 'group_admin', 'res.group', 'res', False, '[["name","Administrator"]]', '[["name","Administrator"]]');
+INSERT INTO ir_model_data (id, fs_id, model, module, db_id, noupdate) VALUES
+    (1, 'user_admin', 'res.user', 'res', 1, False),
+    (2, 'group_admin', 'res.group', 'res', 1, False);
 
 CREATE TABLE ir_ui_view (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
