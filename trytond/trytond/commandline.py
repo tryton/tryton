@@ -15,6 +15,31 @@ from trytond import __version__
 logger = logging.getLogger(__name__)
 
 
+class ExtendConstAction(argparse.Action):
+    def __init__(self,
+                 option_strings,
+                 dest,
+                 const=None,
+                 default=None,
+                 required=False,
+                 help=None,
+                 metavar=None):
+        super().__init__(
+            option_strings=option_strings,
+            dest=dest,
+            nargs=0,
+            const=const,
+            default=default,
+            required=required,
+            help=help,
+            metavar=metavar)
+
+    def __call__(self, parser, namespace, values, option_sting=None):
+        items = getattr(namespace, self.dest, [])[:]
+        items.extend(self.const)
+        setattr(namespace, self.dest, items)
+
+
 def database_completer(parsed_args, **kwargs):
     from trytond.config import config
     from trytond.transaction import Transaction
@@ -119,8 +144,8 @@ def get_parser_admin():
         "--indexes", dest="indexes",
         action=getattr(argparse, 'BooleanOptionalAction', 'store_true'),
         default=None, help="update indexes")
-    parser.add_argument("--all", dest="update", action="append_const",
-        const="ir", help="update all activated modules")
+    parser.add_argument("--all", dest="update", action=ExtendConstAction,
+        const=['ir', 'res'], help="update all activated modules")
     parser.add_argument("--activate-dependencies", dest="activatedeps",
         action="store_true",
         help="activate missing dependencies of updated modules")
