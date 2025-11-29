@@ -104,10 +104,6 @@ class Period(Workflow, ModelSQL, ModelView):
         connection = transaction.connection
         database = transaction.database
 
-        # XXX: A move in the period could be inserted before the lock
-        # from a different transaction. It will not be taken in the pbl
-        # computation but it is quite rare because only past periods are
-        # closed.
         Move.lock()
         if database.has_select_for():
             move = Move.__table__()
