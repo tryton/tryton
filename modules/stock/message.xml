@@ -33,7 +33,7 @@ because the type does not support moves and location has existing moves.</field>
             <field name="text">You cannot close periods with a date in the future or today.</field>
         </record>
         <record model="ir.message" id="msg_period_close_assigned_move">
-            <field name="text">You cannot close periods with assigned moves in it.</field>
+            <field name="text">To close the period "%(period)s", the assigned moves "%(moves)s" must be done or cancelled.</field>
         </record>
         <record model="ir.message" id="msg_shipment_planned_date">
             <field name="text">Planned Date</field>

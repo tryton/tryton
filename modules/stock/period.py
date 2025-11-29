@@ -120,13 +120,15 @@ class Period(Workflow, ModelSQL, ModelView):
                 ], order=[])
 
         for company, c_periods in groupby(periods, key=lambda p: p.company):
+            c_periods = list(c_periods)
             with Transaction().set_context(company=company.id):
                 today = Date.today()
-            recent_date = max(period.date for period in c_periods)
+            recent_period = max(c_periods, key=lambda p: p.date)
+            recent_date = recent_period.date
             if recent_date >= today:
                 raise PeriodCloseError(
                     gettext('stock.msg_period_close_date'))
-            if Move.search([
+            if assigned_moves := Move.search([
                         ('company', '=', company.id),
                         ('state', '=', 'assigned'),
                         ['OR', [
@@ -135,9 +137,14 @@ class Period(Workflow, ModelSQL, ModelView):
                                 ],
                             ('effective_date', '<=', recent_date),
                         ]],
-                    limit=1):
+                    limit=6):
+                names = ', '.join(m.rec_name for m in assigned_moves[:5])
+                if len(assigned_moves) > 5:
+                    names += '...'
                 raise PeriodCloseError(
-                    gettext('stock.msg_period_close_assigned_move'))
+                    gettext('stock.msg_period_close_assigned_move',
+                        period=recent_period.rec_name,
+                        moves=names))
 
         for grouping in cls.groupings():
             Cache = cls.get_cache(grouping)
