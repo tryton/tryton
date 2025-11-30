@@ -207,7 +207,7 @@ class CreateDPDShipping(Wizard):
                 ],
             }
 
-    def shipping_party(self, party, address, usage=None):
+    def shipping_party(self, party, address, usage=None, with_contact=False):
         if address.street_unstructured:
             street = address.street_single_line
             house_no = ''
@@ -216,6 +216,8 @@ class CreateDPDShipping(Wizard):
             house_no = address.numbers
         name = address_name(address, party)
         contact = party.full_name if party.full_name != name else ''
+        if with_contact and not contact:
+            contact = party.full_name
         shipping_party = {
             'name1': name[:50],
             'name2': name[50:85],
@@ -386,7 +388,8 @@ class CreateDPDShipping_Customs(metaclass=PoolMeta):
                             customs_agent.tax_identifier.code)[:20],
                         'commercialInvoiceConsignee': self.shipping_party(
                             customs_agent.party,
-                            customs_agent.address),
+                            customs_agent.address,
+                            with_contact=True),
                         })
             if shipment.tax_identifier:
                 international['commercialInvoiceConsignorVatNumber'] = (
