@@ -5,6 +5,15 @@ from trytond.model import fields
 from trytond.pool import Pool
 
 
+def id2gid(resouce, id):
+    return f'gid://shopify/{resouce}/{id}'
+
+
+def gid2id(gid):
+    _, id = gid[len('gid://shopify/'):].split('/', 1)
+    return int(id)
+
+
 class IdentifierMixin:
     __slots__ = ()
 

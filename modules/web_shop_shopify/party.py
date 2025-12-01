@@ -7,7 +7,7 @@ from trytond.pool import Pool, PoolMeta
 from trytond.tools import remove_forbidden_chars
 from trytond.tools.email_ import EmailNotValidError, validate_email
 
-from .common import IdentifiersMixin, setattr_changed
+from .common import IdentifiersMixin, gid2id, setattr_changed
 
 logger = logging.getLogger(__name__)
 
@@ -16,19 +16,28 @@ class Party(IdentifiersMixin, metaclass=PoolMeta):
     __name__ = 'party.party'
 
     @classmethod
+    def shopify_fields(cls):
+        return {
+            'id': None,
+            'displayName': None,
+            'email': None,
+            'phone': None,
+            }
+
+    @classmethod
     def get_from_shopify(cls, shop, customer):
         pool = Pool()
         ContactMechanism = pool.get('party.contact_mechanism')
-        party = cls.search_shopify_identifier(shop, customer.id)
+        party = cls.search_shopify_identifier(
+            shop, gid2id(customer['id']))
         if not party:
             party = cls()
         setattr_changed(party, 'name', remove_forbidden_chars(
-                ' '.join(filter(None, [
-                        customer.first_name, customer.last_name]))))
+                customer['displayName']))
         contact_mechanisms = list(getattr(party, 'contact_mechanisms', []))
         for types, value in [
-                (['email'], customer.email),
-                (['phone', 'mobile'], customer.phone),
+                (['email'], customer['email']),
+                (['phone', 'mobile'], customer['phone']),
                 ]:
             value = remove_forbidden_chars(value)
             if not value:
@@ -72,7 +81,7 @@ class Party(IdentifiersMixin, metaclass=PoolMeta):
             address.save()
 
         contact_mechanisms = list(self.contact_mechanisms)
-        if phone := remove_forbidden_chars(shopify_address.phone):
+        if phone := remove_forbidden_chars(shopify_address['phone']):
             index = len(contact_mechanisms)
             for i, contact_mechanism in enumerate(contact_mechanisms):
                 if (contact_mechanism.type in ['phone', 'mobile']
@@ -98,6 +107,20 @@ class Address(metaclass=PoolMeta):
     __name__ = 'party.address'
 
     @classmethod
+    def shopify_fields(cls):
+        return {
+            'name': None,
+            'company': None,
+            'address1': None,
+            'address2': None,
+            'city': None,
+            'zip': None,
+            'countryCodeV2': None,
+            'provinceCode': None,
+            'phone': None,
+            }
+
+    @classmethod
     def get_shopify_values(self, address):
         pool = Pool()
         Country = pool.get('country.country')
@@ -105,22 +128,22 @@ class Address(metaclass=PoolMeta):
         SubdivisionType = pool.get('party.address.subdivision_type')
 
         values = {}
-        values['party_name'] = remove_forbidden_chars(address.name or '')
-        if address.company:
+        values['party_name'] = remove_forbidden_chars(address['name'] or '')
+        if address['company']:
             values['party_name'] += (
-                f'/ {remove_forbidden_chars(address.company)}')
+                f"({remove_forbidden_chars(address['company'])})")
         values['street'] = '\n'.join(filter(None, [
-                    address.address1, address.address2]))
-        values['city'] = remove_forbidden_chars(address.city or '')
-        values['postal_code'] = address.zip or ''
-        if address.country_code:
+                    address['address1'], address['address2']]))
+        values['city'] = remove_forbidden_chars(address['city'] or '')
+        values['postal_code'] = address['zip'] or ''
+        if address['countryCodeV2']:
             country, = Country.search([
-                    ('code', '=', address.country_code),
+                    ('code', '=', address['countryCodeV2']),
                     ], limit=1)
             values['country'] = country.id
-            if address.province_code:
+            if address['provinceCode']:
                 subdivision_code = '-'.join(
-                    [address.country_code, address.province_code])
+                    [address['countryCodeV2'], address['provinceCode']])
                 subdivision_domain = [
                     ('country', '=', country.id),
                     ('code', 'like', subdivision_code + '%'),

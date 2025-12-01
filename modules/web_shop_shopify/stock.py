@@ -4,15 +4,20 @@
 from collections import defaultdict
 
 import shopify
-from shopify.resources.fulfillment import FulfillmentV2
 
 from trytond.i18n import gettext, lazy_gettext
 from trytond.model import ModelSQL, ModelView, Unique, Workflow, fields
 from trytond.model.exceptions import AccessError
 from trytond.pool import Pool, PoolMeta
 
-from .common import IdentifierMixin
+from . import graphql
+from .common import IdentifierMixin, id2gid
 from .exceptions import ShopifyError
+
+QUERY_FULFILLMENT_ORDERS = '''\
+query FulfillmentOrders($orderId: ID!) {
+    order(id: $orderId) %(fields)s
+}'''
 
 
 class ShipmentOut(metaclass=PoolMeta):
@@ -22,7 +27,7 @@ class ShipmentOut(metaclass=PoolMeta):
         'stock.shipment.shopify_identifier', 'shipment',
         lazy_gettext('web_shop_shopify.msg_shopify_identifiers'))
 
-    def get_shopify(self, sale):
+    def get_shopify(self, sale, fulfillment_order_fields=None):
         if self.state not in {'shipped', 'done'}:
             return
         shopify_id = self.get_shopify_identifier(sale)
@@ -30,15 +35,40 @@ class ShipmentOut(metaclass=PoolMeta):
             # Fulfillment can not be modified
             return
         else:
-            fulfillment = FulfillmentV2()
+            fulfillment = {}
         for shop_warehouse in sale.web_shop.shopify_warehouses:
             if shop_warehouse.warehouse == self.warehouse:
                 location_id = int(shop_warehouse.shopify_id)
                 break
         else:
             location_id = None
-        fulfillment_orders = shopify.FulfillmentOrders.find(
-            order_id=sale.shopify_identifier)
+        fulfillment_order_fields = graphql.deep_merge(
+            fulfillment_order_fields or {}, {
+                'fulfillmentOrders(first: 250)': {
+                    'nodes': {
+                        'id': None,
+                        'assignedLocation': {
+                            'location': {
+                                'id': None,
+                                },
+                            },
+                        'lineItems(first: 250)': {
+                            'nodes': {
+                                'id': None,
+                                'lineItem': {
+                                    'id': None,
+                                    'fulfillableQuantity': None,
+                                    },
+                                },
+                            },
+                        },
+                    },
+                })
+        order_id = id2gid('Order', sale.shopify_identifier)
+        fulfillment_orders = shopify.GraphQL().execute(
+            QUERY_FULFILLMENT_ORDERS % {
+                'fields': graphql.selection(fulfillment_order_fields),
+                }, {'orderId': order_id})['data']['order']['fulfillmentOrders']
         line_items = defaultdict(list)
         for move in self.outgoing_moves:
             if move.sale == sale:
@@ -47,12 +77,12 @@ class ShipmentOut(metaclass=PoolMeta):
                     line_items[order_id].append(line_item)
         if not line_items:
             return
-        fulfillment.line_items_by_fulfillment_order = [{
-                'fulfillment_order_id': order_id,
-                'fulfillment_order_line_items': line_items,
+        fulfillment['lineItemsByFulfillmentOrder'] = [{
+                'fulfillmentOrderId': order_id,
+                'fulfillmentOrderLineItems': line_items,
                 }
             for order_id, line_items in line_items.items()]
-        fulfillment.notify_customer = bool(
+        fulfillment['notifyCustomer'] = bool(
             sale.web_shop.shopify_fulfillment_notify_customer)
         return fulfillment
 
@@ -143,13 +173,16 @@ class ShipmentOut_PackageShipping(metaclass=PoolMeta):
     def get_shopify(self, sale):
         fulfillment = super().get_shopify(sale)
         if fulfillment and self.packages:
-            tracking_info = []
+            numbers, urls = [], []
+            fulfillment['trackingInfo'] = {
+                'numbers': numbers,
+                'urls': urls,
+                }
             for package in self.packages:
-                tracking_info.append({
-                        'number': package.shipping_reference,
-                        'url': package.shipping_tracking_url,
-                        })
-            fulfillment.tracking_info = tracking_info
+                if package.shipping_reference:
+                    numbers.append(package.shipping_reference)
+                if package.shipping_tracking_url:
+                    urls.append(package.shipping_tracking_url)
         return fulfillment
 
 
@@ -163,18 +196,21 @@ class Move(metaclass=PoolMeta):
         if (not isinstance(self.origin, SaleLine)
                 or not self.origin.shopify_identifier):
             return
-        identifier = self.origin.shopify_identifier
+        location_id = id2gid('Location', location_id)
+        identifier = id2gid('LineItem', self.origin.shopify_identifier)
         quantity = int(Uom.compute_qty(
                 self.unit, self.quantity, self.origin.unit))
-        for fulfillment_order in fulfillment_orders:
-            if fulfillment_order.assigned_location_id != location_id:
+        for fulfillment_order in fulfillment_orders['nodes']:
+            if (fulfillment_order['assignedLocation']['location']['id']
+                    != location_id):
                 continue
-            for line_item in fulfillment_order.line_items:
-                if line_item.line_item_id == identifier:
-                    qty = min(quantity, line_item.fulfillable_quantity)
+            for line_item in fulfillment_order['lineItems']['nodes']:
+                if line_item['lineItem']['id'] == identifier:
+                    qty = min(
+                        quantity, line_item['lineItem']['fulfillableQuantity'])
                     if qty:
-                        yield fulfillment_order.id, {
-                            'id': line_item.id,
+                        yield fulfillment_order['id'], {
+                            'id': line_item['id'],
                             'quantity': qty,
                             }
                     quantity -= qty

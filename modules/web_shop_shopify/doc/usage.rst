@@ -13,6 +13,8 @@ with, as a minimum, the :guilabel:`Admin API access scopes`:
 
    * :guilabel:`Assigned fulfillment`: ``write_assigned_fulfillment_orders``
 
+   * :guilabel:`Customers`: ``read_customer``
+
    * :guilabel:`Fulfillment services`: ``write_fulfillments``
 
    * :guilabel:`Inventory`: ``write_inventory``
@@ -27,6 +29,8 @@ with, as a minimum, the :guilabel:`Admin API access scopes`:
    * :guilabel:`Product listings`: ``write_product_listings``
 
    * :guilabel:`Products`: ``write_products``
+
+   * :guilabel:`Shop locales`: ``read_locales``
 
 You also need to copy the :guilabel:`Admin API access token` that is generated
 when installing the app.

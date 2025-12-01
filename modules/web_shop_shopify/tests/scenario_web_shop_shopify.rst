@@ -10,6 +10,8 @@ Imports::
     >>> import time
     >>> import urllib.request
     >>> from decimal import Decimal
+    >>> from itertools import cycle
+    >>> from unittest.mock import patch
 
     >>> import shopify
     >>> from shopify.api_version import ApiVersion
@@ -19,12 +21,25 @@ Imports::
     ...     create_chart, create_fiscalyear, create_tax, get_accounts)
     >>> from trytond.modules.account_invoice.tests.tools import (
     ...     set_fiscalyear_invoice_sequences)
-    >>> from trytond.modules.company.tests.tools import create_company
+    >>> from trytond.modules.company.tests.tools import create_company, get_company
+    >>> from trytond.modules.product_image.product import ImageURLMixin
+    >>> from trytond.modules.web_shop_shopify.common import gid2id, id2gid
     >>> from trytond.modules.web_shop_shopify.product import Template
+    >>> from trytond.modules.web_shop_shopify.tests import tools
     >>> from trytond.modules.web_shop_shopify.web import Shop
     >>> from trytond.tests.tools import activate_modules, assertEqual, assertTrue
 
     >>> FETCH_SLEEP, MAX_SLEEP = 1, 10
+
+Patch image URL::
+
+    >>> get_image_url = patch.object(
+    ...     ImageURLMixin, 'get_image_url').start()
+    >>> get_image_url.side_effect = cycle([
+    ...         'https://downloads.tryton.org/tests/shopify/chair.jpg',
+    ...         'https://downloads.tryton.org/tests/shopify/chair-black.jpg',
+    ...         'https://downloads.tryton.org/tests/shopify/chair-white.jpg',
+    ...         ])
 
 Activate modules::
 
@@ -66,6 +81,7 @@ Set metafields to product::
     >>> def get_shopify_metafields(self, shop):
     ...     return {
     ...         'global.test': {
+    ...             'type': 'single_line_text_field',
     ...             'value': self.name,
     ...             },
     ...         }
@@ -83,6 +99,10 @@ Create country::
     >>> belgium.save()
     >>> china = Country(name="China", code='CN')
     >>> china.save()
+
+Get company::
+
+    >>> company = get_company()
 
 Get accounts::
 
@@ -130,10 +150,10 @@ Define a web shop::
     ...         web_shop.shopify_version,
     ...         web_shop.shopify_password))
 
-    >>> location = shopify.Location.find_first()
+    >>> location = tools.get_location()
 
     >>> shop_warehouse, = web_shop.shopify_warehouses
-    >>> shop_warehouse.shopify_id = str(location.id)
+    >>> shop_warehouse.shopify_id = str(gid2id(location['id']))
     >>> web_shop.save()
 
 Create categories::
@@ -233,7 +253,8 @@ Create products::
     >>> variant.categories.append(Category(category1.id))
     >>> variant.categories.append(Category(category2.id))
     >>> image = variant.images.new(web_shop=True)
-    >>> image.image = urllib.request.urlopen('https://picsum.photos/200').read()
+    >>> image.image = urllib.request.urlopen(
+    ...     'https://downloads.tryton.org/tests/shopify/chair.jpg').read()
     >>> variant1, = variant.products
     >>> variant1.suffix_code = "1"
     >>> variant1.attributes = {
@@ -250,11 +271,13 @@ Create products::
     >>> variant1, variant2 = variant.products
 
     >>> image = variant1.images.new(web_shop=True, template=variant)
-    >>> image.image = urllib.request.urlopen('https://picsum.photos/200').read()
+    >>> image.image = urllib.request.urlopen(
+    ...     'https://downloads.tryton.org/tests/shopify/chair-black.jpg').read()
     >>> variant1.save()
 
     >>> image = variant2.images.new(web_shop=True, template=variant)
-    >>> image.image = urllib.request.urlopen('https://picsum.photos/200').read()
+    >>> image.image = urllib.request.urlopen(
+    ...     'https://downloads.tryton.org/tests/shopify/chair-white.jpg').read()
     >>> variant2.save()
 
 Create carrier::
@@ -354,12 +377,13 @@ Check inventory item::
     >>> inventory_item_ids = [i.shopify_identifier
     ...     for inv in inventory_items for i in inv.shopify_identifiers]
     >>> for _ in range(MAX_SLEEP):
-    ...     inventory_levels = location.inventory_levels()
+    ...     inventory_levels = tools.get_inventory_levels(location)
     ...     if inventory_levels and len(inventory_levels) == 2:
     ...         break
     ...     time.sleep(FETCH_SLEEP)
-    >>> sorted(l.available for l in inventory_levels
-    ...     if l.available and l.inventory_item_id in inventory_item_ids)
+    >>> sorted(l['quantities'][0]['quantity'] for l in inventory_levels
+    ...     if l['quantities'][0]['quantity']
+    ...     and gid2id(l['item']['id']) in inventory_item_ids)
     [5, 10]
 
 Remove a category, a product and an image::
@@ -410,10 +434,10 @@ Run update product::
     1
     >>> product2.reload()
     >>> len(product2.shopify_identifiers)
-    1
+    0
     >>> identifier, = product2.template.shopify_identifiers
-    >>> shopify.Product.find(identifier.shopify_identifier).status
-    'archived'
+    >>> tools.get_product(identifier.shopify_identifier)['status']
+    'ARCHIVED'
     >>> variant1.reload()
     >>> len(variant1.shopify_identifiers)
     1
@@ -430,66 +454,91 @@ Run update product::
 
 Create an order on Shopify::
 
-    >>> customer = shopify.Customer()
-    >>> customer.last_name = "Customer"
-    >>> customer.email = (
-    ...     ''.join(random.choice(string.ascii_letters) for _ in range(10))
-    ...     + '@example.com')
     >>> customer_phone = '+32-495-555-' + (
     ...     ''.join(random.choice(string.digits) for _ in range(3)))
-    >>> customer.phone = customer_phone
     >>> customer_address_phone = '+32-495-555-' + (
     ...     ''.join(random.choice(string.digits) for _ in range(3)))
-    >>> customer.addresses = [{
-    ...         'address1': "Street",
-    ...         'city': "City",
-    ...         'country': "Belgium",
-    ...         'phone': customer_address_phone,
-    ...         }]
-    >>> customer.save()
-    True
+    >>> customer = tools.create_customer({
+    ...         'lastName': "Customer",
+    ...         'email': (''.join(
+    ...                 random.choice(string.ascii_letters) for _ in range(10))
+    ...             + '@example.com'),
+    ...         'phone': customer_phone,
+    ...         })
 
-    >>> order = shopify.Order.create({
-    ...     'customer': customer.to_dict(),
-    ...     'shipping_address': customer.addresses[0].to_dict(),
-    ...     'billing_address': customer.addresses[0].to_dict(),
-    ...     'line_items': [{
-    ...         'variant_id': product1.shopify_identifiers[0].shopify_identifier,
-    ...         'quantity': 1,
-    ...         }, {
-    ...         'variant_id': product1.shopify_identifiers[0].shopify_identifier,
-    ...         'quantity': 1,
-    ...         }, {
-    ...         'variant_id': variant1.shopify_identifiers[0].shopify_identifier,
-    ...         'quantity': 5,
-    ...         }],
-    ...     'financial_status': 'authorized',
-    ...     'transactions': [{
-    ...         'kind': 'authorization',
-    ...         'status': 'success',
-    ...         'amount': '258.98',
-    ...         'test': True,
-    ...         }],
-    ...     'discount_codes': [{
-    ...         'code': 'CODE',
-    ...         'amount': '15',
-    ...         'type': 'fixed_amount',
-    ...         }],
-    ...     'shipping_lines': [{
-    ...         'code': 'SHIP',
-    ...         'title': "Shipping",
-    ...         'price': '4.00',
-    ...         }],
-    ...     })
-    >>> order.total_price
+    >>> order = tools.create_order({
+    ...         'customer': {
+    ...             'toAssociate': {
+    ...                 'id': customer['id'],
+    ...                 },
+    ...             },
+    ...         'shippingAddress': {
+    ...                 'lastName': "Customer",
+    ...                 'address1': "Street",
+    ...                 'city': "City",
+    ...                 'countryCode': 'BE',
+    ...                 'phone': customer_address_phone,
+    ...                 },
+    ...         'lineItems': [{
+    ...             'variantId': id2gid(
+    ...                 'ProductVariant',
+    ...                 product1.shopify_identifiers[0].shopify_identifier),
+    ...             'quantity': 1,
+    ...             }, {
+    ...             'variantId': id2gid(
+    ...                 'ProductVariant',
+    ...                 product1.shopify_identifiers[0].shopify_identifier),
+    ...             'quantity': 1,
+    ...             }, {
+    ...             'variantId': id2gid(
+    ...                 'ProductVariant',
+    ...                 variant1.shopify_identifiers[0].shopify_identifier),
+    ...             'quantity': 5,
+    ...             }],
+    ...         'shippingLines': [{
+    ...             'code': 'SHIP',
+    ...             'title': "Shipping",
+    ...             'priceSet': {
+    ...                 'shopMoney': {
+    ...                     'amount': 4,
+    ...                     'currencyCode': company.currency.code,
+    ...                     },
+    ...                 },
+    ...             }],
+    ...         'discountCode': {
+    ...             'itemFixedDiscountCode': {
+    ...                 'amountSet': {
+    ...                     'shopMoney': {
+    ...                         'amount': 15,
+    ...                         'currencyCode': company.currency.code,
+    ...                         },
+    ...                     },
+    ...                 'code': "CODE",
+    ...                 },
+    ...             },
+    ...         'financialStatus': 'AUTHORIZED',
+    ...         'transactions': [{
+    ...             'kind': 'AUTHORIZATION',
+    ...             'status': 'SUCCESS',
+    ...             'amountSet': {
+    ...                 'shopMoney': {
+    ...                     'amount': 258.98,
+    ...                     'currencyCode': company.currency.code,
+    ...                     },
+    ...                 },
+    ...             'test': True,
+    ...             }],
+    ...         })
+    >>> order['totalPriceSet']['presentmentMoney']['amount']
     '258.98'
-    >>> order.financial_status
-    'authorized'
-    >>> order.fulfillment_status
+    >>> order['displayFinancialStatus']
+    'AUTHORIZED'
+    >>> order['displayFulfillmentStatus']
+    'UNFULFILLED'
 
 Run fetch order::
 
-    >>> with config.set_context(shopify_orders=order.id):
+    >>> with config.set_context(shopify_orders=[gid2id(order['id'])]):
     ...     cron_fetch_order, = Cron.find([
     ...         ('method', '=', 'web.shop|shopify_fetch_order'),
     ...         ])
@@ -531,10 +580,10 @@ Run fetch order::
 
 Capture full amount::
 
-    >>> transaction = order.capture('258.98')
-    >>> test_transaction_id = transaction.parent_id
+    >>> transaction = tools.capture_order(
+    ...     order['id'], 258.98, order['transactions'][0]['id'])
 
-    >>> with config.set_context(shopify_orders=order.id):
+    >>> with config.set_context(shopify_orders=[gid2id(order['id'])]):
     ...     cron_update_order, = Cron.find([
     ...         ('method', '=', 'web.shop|shopify_update_order'),
     ...         ])
@@ -568,13 +617,13 @@ Make a partial shipment::
     >>> len(sale.invoices)
     0
 
-    >>> order.reload()
-    >>> order.fulfillment_status
-    'partial'
-    >>> len(order.fulfillments)
+    >>> order = tools.get_order(order['id'])
+    >>> order['displayFulfillmentStatus']
+    'PARTIALLY_FULFILLED'
+    >>> len(order['fulfillments'])
     1
-    >>> order.financial_status
-    'paid'
+    >>> order['displayFinancialStatus']
+    'PAID'
 
 Ship and cancel remaining shipment::
 
@@ -585,20 +634,20 @@ Ship and cancel remaining shipment::
     >>> shipment.state
     'shipped'
 
-    >>> order.reload()
-    >>> order.fulfillment_status
-    'fulfilled'
-    >>> len(order.fulfillments)
+    >>> order = tools.get_order(order['id'])
+    >>> order['displayFulfillmentStatus']
+    'FULFILLED'
+    >>> len(order['fulfillments'])
     2
 
     >>> shipment.click('cancel')
     >>> shipment.state
     'cancelled'
 
-    >>> order.reload()
-    >>> order.fulfillment_status
-    'partial'
-    >>> len(order.fulfillments)
+    >>> order = tools.get_order(order['id'])
+    >>> order['displayFulfillmentStatus']
+    'PARTIALLY_FULFILLED'
+    >>> len(order['fulfillments'])
     2
 
     >>> shipment_exception = sale.click('handle_shipment_exception')
@@ -619,13 +668,13 @@ Cancel remaining shipment::
     >>> len(sale.invoices)
     0
 
-    >>> order.reload()
-    >>> order.fulfillment_status
-    'partial'
-    >>> len(order.fulfillments)
+    >>> order = tools.get_order(order['id'])
+    >>> order['displayFulfillmentStatus']
+    'PARTIALLY_FULFILLED'
+    >>> len(order['fulfillments'])
     2
-    >>> order.financial_status
-    'paid'
+    >>> order['displayFinancialStatus']
+    'PAID'
 
 Ignore shipment exception::
 
@@ -634,13 +683,13 @@ Ignore shipment exception::
     ...     shipment_exception.form.ignore_moves.find())
     >>> shipment_exception.execute('handle')
 
-    >>> order.reload()
-    >>> order.fulfillment_status
-    'fulfilled'
-    >>> len(order.fulfillments)
+    >>> order = tools.get_order(order['id'])
+    >>> order['displayFulfillmentStatus']
+    'FULFILLED'
+    >>> len(order['fulfillments'])
     2
-    >>> order.financial_status
-    'partially_refunded'
+    >>> order['displayFinancialStatus']
+    'PARTIALLY_REFUNDED'
 
     >>> sale.reload()
     >>> invoice, = sale.invoices
@@ -665,20 +714,25 @@ Post invoice::
     >>> sale.reload()
     >>> sale.state
     'done'
-    >>> order.reload()
-    >>> bool(order.closed_at)
+    >>> order = tools.get_order(order['id'])
+    >>> bool(order['closed'])
     True
 
 Clean up::
 
-    >>> order.destroy()
+    >>> tools.delete_order(order['id'])
     >>> for product in ShopifyIdentifier.find(
     ...         [('record', 'like', 'product.template,%')]):
-    ...     shopify.Product.find(product.shopify_identifier).destroy()
+    ...     tools.delete_product(id2gid('Product', product.shopify_identifier))
     >>> for category in ShopifyIdentifier.find(
     ...         [('record', 'like', 'product.category,%')]):
-    ...     shopify.CustomCollection.find(category.shopify_identifier).destroy()
-    >>> time.sleep(FETCH_SLEEP)
-    >>> customer.destroy()
+    ...     tools.delete_collection(id2gid('Collection', category.shopify_identifier))
+    >>> for _ in range(MAX_SLEEP):
+    ...     try:
+    ...         tools.delete_customer(customer['id'])
+    ...     except Exception:
+    ...         time.sleep(FETCH_SLEEP)
+    ...     else:
+    ...         break
 
     >>> shopify.ShopifyResource.clear_session()

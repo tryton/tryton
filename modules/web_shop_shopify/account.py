@@ -6,7 +6,7 @@ from decimal import Decimal
 from trytond.model import Unique
 from trytond.pool import PoolMeta
 
-from .common import IdentifierMixin
+from .common import IdentifierMixin, gid2id
 
 
 class Payment(IdentifierMixin, metaclass=PoolMeta):
@@ -26,27 +26,47 @@ class Payment(IdentifierMixin, metaclass=PoolMeta):
         pass
 
     @classmethod
+    def shopify_fields(cls):
+        return {
+            'id': None,
+            'kind': None,
+            'amountSet': {
+                'presentmentMoney': {
+                    'amount': None,
+                    'currencyCode': None,
+                    },
+                },
+            'parentTransaction': {
+                'id': None,
+                },
+            'gateway': None,
+            'status': None,
+            }
+
+    @classmethod
     def _get_shopify_payment_journal_pattern(cls, sale, transaction):
         return {
-            'gateway': transaction.gateway,
+            'gateway': transaction['gateway'],
             }
 
     @classmethod
     def _get_from_shopify(cls, sale, transaction):
         assert (
-            transaction.kind in {'authorization', 'sale'}
-            or (transaction.kind == 'refund' and not transaction.parent_id))
-        payment = cls(shopify_identifier=transaction.id)
+            transaction['kind'] in {'AUTHORIZATION', 'SALE'}
+            or (transaction['kind'] == 'REFUND'
+                and not transaction['parentTransaction']))
+        payment = cls(shopify_identifier=gid2id(transaction['id']))
         payment.company = sale.company
         payment.journal = sale.web_shop.get_payment_journal(
-            transaction.currency,
+            transaction['amountSet']['presentmentMoney']['currencyCode'],
             cls._get_shopify_payment_journal_pattern(
                 sale, transaction))
-        if transaction.kind == 'refund':
+        if transaction['kind'] == 'REFUND':
             payment.kind = 'payable'
         else:
             payment.kind = 'receivable'
-        payment.amount = Decimal(transaction.amount)
+        payment.amount = Decimal(
+            transaction['amountSet']['presentmentMoney']['amount'])
         payment.origin = sale
         payment.party = sale.party
         return payment
@@ -56,26 +76,27 @@ class Payment(IdentifierMixin, metaclass=PoolMeta):
         id2payments = {}
         to_process = defaultdict(list)
         transactions = [
-            t for t in order.transactions() if t.status == 'success']
+            t for t in order['transactions'] if t['status'] == 'SUCCESS']
         # Order transactions to process parent first
-        kinds = ['authorization', 'capture', 'sale', 'void', 'refund']
-        transactions.sort(key=lambda t: kinds.index(t.kind))
+        kinds = ['AUTHORIZATION', 'CAPTURE', 'SALE', 'VOID', 'REFUND']
+        transactions.sort(key=lambda t: kinds.index(t['kind']))
         amounts = defaultdict(Decimal)
         for transaction in transactions:
-            if (transaction.kind not in {'authorization', 'sale'}
-                    and not (transaction.kind == 'refund'
-                        and not transaction.parent_id)):
+            if (transaction['kind'] not in {'AUTHORIZATION', 'SALE'}
+                    and not (transaction['kind'] == 'REFUND'
+                        and not transaction['parentTransaction'])):
                 continue
             payments = cls.search([
-                    ('shopify_identifier', '=', transaction.id),
+                    ('shopify_identifier', '=', gid2id(transaction['id'])),
                     ])
             if payments:
                 payment, = payments
             else:
                 payment = cls._get_from_shopify(sale, transaction)
                 to_process[payment.company, payment.journal].append(payment)
-            id2payments[transaction.id] = payment
-            amounts[transaction.id] = Decimal(transaction.amount)
+            id2payments[gid2id(transaction['id'])] = payment
+            amounts[gid2id(transaction['id'])] = Decimal(
+                transaction['amountSet']['presentmentMoney']['amount'])
         cls.save(list(id2payments.values()))
 
         for (company, journal), payments in to_process.items():
@@ -86,23 +107,31 @@ class Payment(IdentifierMixin, metaclass=PoolMeta):
         voided = defaultdict(Decimal)
         refunded = defaultdict(Decimal)
         for transaction in transactions:
-            if transaction.kind == 'sale':
-                payment = id2payments[transaction.id]
-                captured[payment] += Decimal(transaction.amount)
-            elif transaction.kind == 'capture':
-                payment = id2payments[transaction.parent_id]
-                id2payments[transaction.id] = payment
-                captured[payment] += Decimal(transaction.amount)
-            elif transaction.kind == 'void':
-                payment = id2payments[transaction.parent_id]
-                voided[payment] += Decimal(transaction.amount)
-            elif transaction.kind == 'refund':
-                if not transaction.parent_id:
-                    payment = id2payments[transaction.id]
+            if transaction['kind'] == 'SALE':
+                payment = id2payments[gid2id(transaction['id'])]
+                captured[payment] += Decimal(
+                    transaction['amountSet']['presentmentMoney']['amount'])
+            elif transaction['kind'] == 'CAPTURE':
+                payment = id2payments[
+                    gid2id(transaction['parentTransaction']['id'])]
+                id2payments[gid2id(transaction['id'])] = payment
+                captured[payment] += Decimal(
+                    transaction['amountSet']['presentmentMoney']['amount'])
+            elif transaction['kind'] == 'VOID':
+                payment = id2payments[
+                    gid2id(transaction['parentTransaction']['id'])]
+                voided[payment] += Decimal(
+                    transaction['amountSet']['presentmentMoney']['amount'])
+            elif transaction['kind'] == 'REFUND':
+                if not transaction['parentTransaction']:
+                    payment = id2payments[gid2id(transaction['id'])]
                 else:
-                    payment = id2payments[transaction.parent_id]
-                    captured[payment] -= Decimal(transaction.amount)
-                refunded[payment] += Decimal(transaction.amount)
+                    payment = id2payments[
+                        gid2id(transaction['parentTransaction']['id'])]
+                    captured[payment] -= Decimal(
+                        transaction['amountSet']['presentmentMoney']['amount'])
+                refunded[payment] += Decimal(
+                    transaction['amountSet']['presentmentMoney']['amount'])
 
         to_save = []
         for payment in id2payments.values():

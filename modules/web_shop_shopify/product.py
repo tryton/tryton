@@ -4,7 +4,6 @@ import re
 from decimal import Decimal
 from urllib.parse import urljoin
 
-import pyactiveresource
 import shopify
 from sql.conditionals import NullIf
 from sql.operators import Equal
@@ -17,7 +16,23 @@ from trytond.pyson import Bool, Eval, If
 from trytond.tools import grouped_slice, slugify
 from trytond.transaction import Transaction
 
-from .common import IdentifiersMixin, IdentifiersUpdateMixin
+from . import graphql
+from .common import IdentifiersMixin, IdentifiersUpdateMixin, id2gid
+
+QUERY_COLLECTION = '''\
+query GetCollection($id: ID!) {
+    collection(id: $id) %(fields)s
+}'''
+
+QUERY_PRODUCT = '''\
+query GetProduct($id: ID!) {
+    product(id: $id) %(fields)s
+}'''
+
+QUERY_VARIANT = '''\
+query GetProductVariant($id: ID!) {
+    productVariant(id: $id) %(fields)s
+}'''
 
 
 class Category(IdentifiersMixin, metaclass=PoolMeta):
@@ -30,17 +45,29 @@ class Category(IdentifiersMixin, metaclass=PoolMeta):
 
     def get_shopify(self, shop):
         shopify_id = self.get_shopify_identifier(shop)
-        custom_collection = None
         if shopify_id:
-            try:
-                custom_collection = shopify.CustomCollection.find(shopify_id)
-            except pyactiveresource.connection.ResourceNotFound:
-                pass
-        if custom_collection is None:
-            custom_collection = shopify.CustomCollection()
-        custom_collection.title = self.name[:255]
-        custom_collection.published = False
-        return custom_collection
+            shopify_id = id2gid('Collection', shopify_id)
+            collection = shopify.GraphQL().execute(
+                QUERY_COLLECTION % {
+                    'fields': graphql.selection({
+                            'id': None,
+                            }),
+                    }, {'id': shopify_id})['data']['collection'] or {}
+        else:
+            collection = {}
+        collection['title'] = self.name[:255]
+        collection['metafields'] = metafields = []
+        managed_metafields = shop.managed_metafields()
+        for key, value in self.get_shopify_metafields(shop).items():
+            if key not in managed_metafields:
+                continue
+            namespace, key = key.split('.', 1)
+            metafields.append({
+                    'namespace': namespace,
+                    'key': key,
+                    'value': value,
+                    })
+        return collection
 
     def get_shopify_metafields(self, shop):
         return {}
@@ -112,28 +139,58 @@ class Template(IdentifiersMixin, metaclass=PoolMeta):
         return (super().get_shopify_identifier_to_update(templates)
             + Product.get_shopify_identifier_to_update(products))
 
-    def get_shopify(self, shop):
+    def get_shopify(self, shop, categories):
         shopify_id = self.get_shopify_identifier(shop)
-        product = None
+        product = {}
         if shopify_id:
-            try:
-                product = shopify.Product.find(shopify_id)
-            except pyactiveresource.connection.ResourceNotFound:
-                pass
-            else:
-                if product.status == 'archived':
-                    product.status = 'active'
-        if product is None:
-            product = shopify.Product()
-        product.title = self.name
+            shopify_id = id2gid('Product', shopify_id)
+            product = shopify.GraphQL().execute(
+                QUERY_PRODUCT % {
+                    'fields': graphql.selection({
+                            'id': None,
+                            'status': None,
+                            }),
+                    }, {'id': shopify_id})['data']['product'] or {}
+            if product.get('status') == 'ARCHIVED':
+                product['status'] = 'ACTIVE'
+        product['title'] = self.name
         if self.web_shop_description:
-            product.body_html = self.web_shop_description
+            product['descriptionHtml'] = self.web_shop_description
         if self.shopify_handle:
-            product.handle = self.shopify_handle
-        options = []
-        for attribute in self.shopify_attributes:
-            options.append({'name': attribute.string})
-        product.options = options[:3] or [{'name': "Title"}]
+            product['handle'] = self.shopify_handle
+
+        product['productOptions'] = options = []
+        for i, attribute in enumerate(self.shopify_attributes, 1):
+            values = set()
+            for p in self.products:
+                if p.attributes and attribute.name in p.attributes:
+                    values.add(p.attributes.get(attribute.name))
+            values = [
+                {'name': attribute.format(value)}
+                for value in sorted(values)]
+            options.append({
+                    'name': attribute.string,
+                    'position': i,
+                    'values': values,
+                    })
+
+        product['collections'] = collections = []
+        for category in categories:
+            if collection_id := category.get_shopify_identifier(shop):
+                collections.append(id2gid(
+                        'Collection', collection_id))
+
+        product['metafields'] = metafields = []
+        managed_metafields = shop.managed_metafields()
+        for key, value in self.get_shopify_metafields(shop).items():
+            if key not in managed_metafields:
+                continue
+            namespace, key = key.split('.', 1)
+            metafields.append({
+                    'namespace': namespace,
+                    'key': key,
+                    **value
+                    })
         return product
 
     def get_shopify_metafields(self, shop):
@@ -217,63 +274,52 @@ class Product(IdentifiersMixin, metaclass=PoolMeta):
     def search_shopify_sku(cls, name, clause):
         return [('code',) + tuple(clause[1:])]
 
-    def get_shopify(
-            self, shop, price, tax, shop_taxes_included=True,
-            shop_weight_unit=None):
-        pool = Pool()
-        ModelData = pool.get('ir.model.data')
-        Uom = pool.get('product.uom')
+    def get_shopify(self, shop, price, tax, shop_taxes_included=True):
         shopify_id = self.get_shopify_identifier(shop)
-        variant = None
         if shopify_id:
-            try:
-                variant = shopify.Variant.find(shopify_id)
-            except pyactiveresource.connection.ResourceNotFound:
-                pass
-        if variant is None:
-            variant = shopify.Variant()
-        product_id = self.template.get_shopify_identifier(shop)
-        if product_id is not None:
-            variant.product_id = product_id
-        variant.sku = self.shopify_sku
+            shopify_id = id2gid('ProductVariant', shopify_id)
+            variant = shopify.GraphQL().execute(
+                QUERY_VARIANT % {
+                    'fields': graphql.selection({
+                            'id': None,
+                            }),
+                    }, {'id': shopify_id})['data']['productVariant'] or {}
+        else:
+            variant = {}
         price = self.shopify_price(
             price, tax, taxes_included=shop_taxes_included)
         if price is not None:
-            variant.price = str(price.quantize(Decimal('.00')))
+            variant['price'] = str(price.quantize(Decimal('.00')))
         else:
-            variant.price = None
-        variant.taxable = bool(tax)
+            variant['price'] = None
+        variant['taxable'] = bool(tax)
+
         for identifier in self.identifiers:
             if identifier.type == 'ean':
-                variant.barcode = identifier.code
+                variant['barcode'] = identifier.code
                 break
-        for i, attribute in enumerate(self.template.shopify_attributes, 1):
-            if self.attributes:
-                value = self.attributes.get(attribute.name)
-            else:
-                value = None
+
+        variant['optionValues'] = options = []
+        attributes = self.attributes or {}
+        for attribute in self.template.shopify_attributes:
+            value = attributes.get(attribute.name)
             value = attribute.format(value)
-            setattr(variant, 'option%i' % i, value)
-        if getattr(self, 'weight', None) and shop_weight_unit:
-            units = {}
-            units['kg'] = ModelData.get_id('product', 'uom_kilogram')
-            units['g'] = ModelData.get_id('product', 'uom_gram')
-            units['lb'] = ModelData.get_id('product', 'uom_pound')
-            units['oz'] = ModelData.get_id('product', 'uom_ounce')
-            weight = self.weight
-            weight_unit = self.weight_uom
-            if self.weight_uom.id not in units.values():
-                weight_unit = Uom(units[shop_weight_unit])
-                weight = Uom.compute_qty(self.weight_uom, weight, weight_unit)
-            variant.weight = weight
-            variant.weight_unit = {
-                v: k for k, v in units.items()}[weight_unit.id]
-        for image in getattr(self, 'images_used', []):
-            if image.web_shop:
-                variant.image_id = image.get_shopify_identifier(shop)
-                break
-        else:
-            variant.image_id = None
+            options.append({
+                    'optionName': attribute.string,
+                    'name': value,
+                    })
+
+        variant['metafields'] = metafields = []
+        managed_metafields = shop.managed_metafields()
+        for key, value in self.get_shopify_metafields(shop).items():
+            if key not in managed_metafields:
+                continue
+            namespace, key = key.split('.', 1)
+            metafields.append({
+                    'namespace': namespace,
+                    'key': key,
+                    'value': value,
+                    })
         return variant
 
     def get_shopify_metafields(self, shop):
@@ -334,65 +380,74 @@ class ShopifyInventoryItem(IdentifiersMixin, ModelSQL, ModelView):
     def get_product(self, name):
         return self.id
 
-    def get_shopify(self, shop):
+    def get_shopify(self, shop, shop_weight_unit=None):
         pool = Pool()
-        Product = pool.get('product.product')
         SaleLine = pool.get('sale.line')
+        ModelData = pool.get('ir.model.data')
+        Uom = pool.get('product.uom')
+
         movable_types = SaleLine.movable_types()
 
-        shopify_id = self.get_shopify_identifier(shop)
-        inventory_item = None
-        if shopify_id:
-            try:
-                inventory_item = shopify.InventoryItem.find(shopify_id)
-            except pyactiveresource.connection.ResourceNotFound:
-                pass
-        if inventory_item is None:
-            product = Product(self.id)
-            variant_id = product.get_shopify_identifier(shop)
-            if not variant_id:
-                return
-            try:
-                variant = shopify.Variant.find(variant_id)
-            except pyactiveresource.connection.ResourceNotFound:
-                return
-            inventory_item = shopify.InventoryItem.find(
-                variant.inventory_item_id)
-        inventory_item.tracked = (
+        inventory_item = {}
+        inventory_item['sku'] = self.product.shopify_sku
+        inventory_item['tracked'] = (
             self.product.type in movable_types and not self.product.consumable)
-        inventory_item.requires_shipping = self.product.type in movable_types
+        inventory_item['requiresShipping'] = (
+            self.product.type in movable_types)
+
+        if getattr(self.product, 'weight', None) and shop_weight_unit:
+            units = {}
+            units['KILOGRAMS'] = ModelData.get_id('product', 'uom_kilogram')
+            units['GRAMS'] = ModelData.get_id('product', 'uom_gram')
+            units['POUNDS'] = ModelData.get_id('product', 'uom_pound')
+            units['OUNCES'] = ModelData.get_id('product', 'uom_ounce')
+            weight = self.product.weight
+            weight_unit = self.product.weight_uom
+            if self.product.weight_uom.id not in units.values():
+                weight_unit = Uom(units[shop_weight_unit])
+                weight = Uom.compute_qty(
+                    self.product.weight_uom, weight, weight_unit)
+            weight_unit = {
+                v: k for k, v in units.items()}[weight_unit.id]
+            inventory_item['measurement'] = {
+                'weight': {
+                    'unit': weight_unit,
+                    'value': weight,
+                    },
+                }
+
         return inventory_item
 
 
 class ShopifyInventoryItem_Customs(metaclass=PoolMeta):
     __name__ = 'product.shopify_inventory_item'
 
-    def get_shopify(self, shop):
+    def get_shopify(self, shop, shop_weight_unit=None):
         pool = Pool()
         Date = pool.get('ir.date')
-        inventory_item = super().get_shopify(shop)
-        if inventory_item:
-            with Transaction().set_context(company=shop.company.id):
-                today = Date.today()
-            inventory_item.country_code_of_origin = (
-                self.product.country_of_origin.code
-                if self.product.country_of_origin else None)
-            tariff_code = self.product.get_tariff_code(
-                {'date': today, 'country': None})
-            inventory_item.harmonized_system_code = (
-                tariff_code.code if tariff_code else None)
-            country_harmonized_system_codes = []
-            countries = set()
-            for tariff_code in self.product.get_tariff_codes({'date': today}):
-                if (tariff_code.country
-                        and tariff_code.country not in countries):
-                    country_harmonized_system_codes.append({
-                            'harmonized_system_code': tariff_code.code,
-                            'country_code': tariff_code.country.code,
-                            })
-                    countries.add(tariff_code.country)
-            inventory_item.country_harmonized_system_codes = (
-                country_harmonized_system_codes)
+        inventory_item = super().get_shopify(
+            shop, shop_weight_unit=shop_weight_unit)
+        with Transaction().set_context(company=shop.company.id):
+            today = Date.today()
+        inventory_item['countryCodeOfOrigin'] = (
+            self.product.country_of_origin.code
+            if self.product.country_of_origin else None)
+        tariff_code = self.product.get_tariff_code(
+            {'date': today, 'country': None})
+        inventory_item['harmonizedSystemCode'] = (
+            tariff_code.code if tariff_code else None)
+        country_harmonized_system_codes = []
+        countries = set()
+        for tariff_code in self.product.get_tariff_codes({'date': today}):
+            if (tariff_code.country
+                    and tariff_code.country not in countries):
+                country_harmonized_system_codes.append({
+                        'harmonizedSystemCode': tariff_code.code,
+                        'countryCode': tariff_code.country.code,
+                        })
+                countries.add(tariff_code.country)
+        inventory_item['countryHarmonizedSystemCodes'] = (
+            country_harmonized_system_codes)
         return inventory_item
 
 
@@ -546,6 +601,63 @@ class Attribute(IdentifiersUpdateMixin, metaclass=PoolMeta):
         return Set.get_shopify_identifier_to_update(sets)
 
 
+class Template_Image(metaclass=PoolMeta):
+    __name__ = 'product.template'
+
+    @property
+    def shopify_images(self):
+        for image in self.images_used:
+            if image.web_shop:
+                yield image
+
+    def get_shopify(self, shop, categories):
+        product = super().get_shopify(shop, categories)
+        product['files'] = files = []
+        for image in self.shopify_images:
+            file = {
+                'alt': image.description,
+                'contentType': 'IMAGE',
+                'filename': image.shopify_name,
+                }
+            if image_id := image.get_shopify_identifier(shop):
+                file['id'] = id2gid('MediaImage', image_id)
+            else:
+                file['originalSource'] = self.get_image_url(
+                    _external=True, id=image.id)
+            files.append(file)
+        return product
+
+
+class Product_Image(metaclass=PoolMeta):
+    __name__ = 'product.product'
+
+    @property
+    def shopify_images(self):
+        for image in self.images_used:
+            if image.web_shop:
+                yield image
+
+    def get_shopify(self, shop, price, tax, shop_taxes_included=True):
+        variant = super().get_shopify(
+            shop, price, tax, shop_taxes_included=shop_taxes_included)
+        for image in self.shopify_images:
+            file = {
+                'alt': image.description,
+                'contentType': 'IMAGE',
+                'filename': image.shopify_name,
+                }
+            if image_id := image.get_shopify_identifier(shop):
+                file['id'] = id2gid('MediaImage', image_id)
+            else:
+                file['originalSource'] = self.get_image_url(
+                    _external=True, id=image.id)
+            variant['file'] = file
+            break
+        else:
+            variant['file'] = None
+        return variant
+
+
 class Image(IdentifiersMixin, metaclass=PoolMeta):
     __name__ = 'product.image'
 
@@ -575,30 +687,14 @@ class Image(IdentifiersMixin, metaclass=PoolMeta):
                 (list(p.shopify_identifiers)
                     for i in images for p in i.template.products), []))
 
-    def get_shopify(self, shop):
-        shopify_id = self.get_shopify_identifier(shop)
-        product_id = self.template.get_shopify_identifier(shop)
-        product_image = None
-        if shopify_id and product_id:
-            try:
-                product_image = shopify.Image.find(
-                    shopify_id, product_id=product_id)
-            except pyactiveresource.connection.ResourceNotFound:
-                pass
-        if product_image is None:
-            product_image = shopify.Image()
-            product_image.attach_image(
-                self.image, filename=slugify(self.shopify_name))
-        product_image.product_id = self.template.get_shopify_identifier(shop)
-        product_image.alt = self.shopify_name
-        return product_image
-
     @property
     def shopify_name(self):
         if self.product:
-            return self.product.name
+            name = self.product.name
         else:
-            return self.template.name
+            name = self.template.name
+        name = slugify(name)
+        return f'{name}.jpg'
 
 
 class Image_Attribute(metaclass=PoolMeta):

@@ -41,19 +41,11 @@ this repository contains the full copyright notices and license terms. -->
 %(error)s</field>
         </record>
         <record model="ir.message" id="msg_product_fail">
-            <field name="text">Failed to save product "%(template)s" with error:
+            <field name="text">Failed to create/update product "%(template)s" with error:
 %(error)s</field>
         </record>
-        <record model="ir.message" id="msg_product_image_fail">
-            <field name="text">Failed to save image "%(image)s" for product "%(template)s" with error:
-%(error)s</field>
-        </record>
-        <record model="ir.message" id="msg_variant_fail">
-            <field name="text">Failed to save variant "%(product)s" with error:
-%(error)s</field>
-        </record>
-        <record model="ir.message" id="msg_inventory_item_fail">
-            <field name="text">Failed to save inventory item for product "%(product)s" with error:
+        <record model="ir.message" id="msg_inventory_set_fail">
+            <field name="text">Failed to set inventory with error:
 %(error)s</field>
         </record>
         <record model="ir.message" id="msg_fulfillment_fail">
@@ -72,6 +64,9 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <record model="ir.message" id="msg_sale_line_without_product">
             <field name="text">To process the sale "%(sale)s" you must set a product on the line "%(line)s".</field>
+        </record>
+        <record model="ir.message" id="msg_sale_line_without_warehouse">
+            <field name="text">To process the sale "%(sale)s" you must set a unique location for the line "%(line)s" on Shopify.</field>
         </record>
         <record model="ir.message" id="msg_fulfillment_order_line_not_found">
             <field name="text">Failed to find fulfillment order for %(quantity)s of move "%(move)s".</field>

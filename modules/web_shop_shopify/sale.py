@@ -6,7 +6,6 @@ from itertools import zip_longest
 
 import dateutil
 import shopify
-from shopify.resources.fulfillment import FulfillmentV2
 
 from trytond.i18n import gettext
 from trytond.model import ModelView, Unique, fields
@@ -17,8 +16,135 @@ from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
 from trytond.transaction import Transaction
 
-from .common import IdentifierMixin, setattr_changed
+from . import graphql
+from .common import IdentifierMixin, gid2id, id2gid, setattr_changed
 from .exceptions import ShopifyError
+from .shopify_retry import GraphQLException
+
+QUERY_ORDER = '''\
+query GetOrder($id: ID!) {
+    order(id: $id) %(fields)s
+}'''
+
+QUERY_ORDER_CURSOR = '''\
+query GetOrder($id: ID!, $cursor: String) {
+    order(id: $id) %(fields)s
+}'''
+
+QUERY_ORDER_CLOSED = '''\
+query GetOrderClosed($id: ID!) {
+    order(id: $id) {
+        closed
+    }
+}'''
+
+QUERY_ORDER_FULFILLABLE_QUANTITIES = '''\
+query GetOrderFulfillableQuantities($id: ID!, $cursor: String) {
+    order(id: $id) {
+        lineItems(first: 250, after: $cursor) {
+            nodes {
+                id
+                fulfillableQuantity
+            }
+            pageInfo {
+                hasNextPage
+                endCursor
+            }
+        }
+    }
+}'''
+
+QUERY_ORDER_SUGGESTED_REFUND = '''\
+query GetOrderSuggestedRefund(
+        $id: ID!,
+        $refundShipping: Boolean,
+        $refundLineItems: [RefundLineItemInput!]) {
+    order(id: $id) {
+        suggestedRefund(
+                refundShipping: $refundShipping,
+                refundLineItems: $refundLineItems) {
+            suggestedTransactions {
+                amountSet {
+                    presentmentMoney {
+                        amount
+                        currencyCode
+                    }
+                }
+                gateway
+                kind
+                parentTransaction {
+                    id
+                }
+            }
+        }
+    }
+}'''
+
+
+MUTATION_ORDER_CLOSE = '''\
+mutation OrderClose($input: OrderCloseInput!) {
+    orderClose(input: $input) {
+        userErrors {
+            field
+            message
+        }
+    }
+}'''
+
+MUTATION_ORDER_OPEN = '''\
+mutation OrderOpen($input: OrderOpenInput!) {
+    orderOpen(input: $input) {
+        userErrors {
+            field
+            message
+        }
+    }
+}'''
+
+
+QUERY_FULFILLMENT_ORDER = '''\
+query GetFulfillmentOrder($id: ID!, $cursor: String) {
+    fulfillmentOrder(id: $id) %(fields)s
+}'''
+
+
+MUTATION_FULFILLMENT_CREATE = '''\
+mutation fulfillmentCreate($fulfillment: FulfillmentInput!) {
+    fulfillmentCreate(fulfillment: $fulfillment) {
+        fulfillment {
+            id
+        }
+        userErrors {
+            field
+            message
+        }
+    }
+}'''
+
+MUTATION_FULFILLMENT_CANCEL = '''\
+mutation fulfillmentCancel($id: ID!) {
+    fulfillmentCancel(id: $id) {
+        userErrors {
+            field
+            message
+        }
+    }
+}'''
+
+QUERY_REFUND_CURSOR = '''\
+        query GetRefund($id: ID!, $cursor: String) {
+    refund(id: $id) %(fields)s
+}'''
+
+MUTATION_REFUND_CREATE = '''\
+mutation RefundCreate($input: RefundInput!) {
+    refundCreate(input: $input) {
+        userErrors {
+            field
+            message
+        }
+    }
+}'''
 
 
 class Sale(IdentifierMixin, metaclass=PoolMeta):
@@ -53,6 +179,102 @@ class Sale(IdentifierMixin, metaclass=PoolMeta):
         return amount
 
     @classmethod
+    def shopify_fields(cls):
+        pool = Pool()
+        Party = pool.get('party.party')
+        Address = pool.get('party.address')
+        Line = pool.get('sale.line')
+        Payment = pool.get('account.payment')
+        return {
+            'id': None,
+            'customer': Party.shopify_fields(),
+            'presentmentCurrencyCode': None,
+            'shippingAddress': Address.shopify_fields(),
+            'billingAddress': Address.shopify_fields(),
+            'name': None,
+            'note': None,
+            'processedAt': None,
+            'createdAt': None,
+            'phone': None,
+            'refunds': {
+                'id': None,
+                'refundLineItems(first: 10)': {
+                    'nodes': {
+                        'lineItem': {
+                            'id': None,
+                            },
+                        'restockType': None,
+                        'quantity': None,
+                        },
+                    'pageInfo': {
+                        'hasNextPage': None,
+                        'endCursor': None,
+                        },
+                    },
+                },
+            'lineItems(first: 100)': {
+                'nodes': Line.shopify_fields(),
+                'pageInfo': {
+                    'hasNextPage': None,
+                    'endCursor': None,
+                    },
+                },
+            'shippingLines(first: 10)': {
+                'nodes': {
+                    'title': None,
+                    'currentDiscountedPriceSet': {
+                        'presentmentMoney': {
+                            'amount': None,
+                            },
+                        },
+                    },
+                'pageInfo': {
+                    'hasNextPage': None,
+                    'endCursor': None,
+                    },
+                },
+            'fulfillmentOrders(first: 10)': {
+                'nodes': {
+                    'id': None,
+                    'assignedLocation': {
+                        'location': {
+                            'id': None,
+                            },
+                        },
+                    'lineItems(first: 100)': {
+                        'nodes': {
+                            'lineItem': {
+                                'id': None,
+                                },
+                            'totalQuantity': None,
+                            'remainingQuantity': None,
+                            },
+                        'pageInfo': {
+                            'hasNextPage': None,
+                            'endCursor': None,
+                            },
+                        },
+                    },
+                'pageInfo': {
+                    'hasNextPage': None,
+                    'endCursor': None,
+                    }
+                },
+            'transactions': Payment.shopify_fields(),
+            'totalPriceSet': {
+                'presentmentMoney': {
+                    'amount': None,
+                    },
+                },
+            'currentTotalPriceSet': {
+                'presentmentMoney': {
+                    'amount': None,
+                    },
+                },
+            'statusPageUrl': None,
+            }
+
+    @classmethod
     def get_from_shopify(cls, shop, order, sale=None):
         pool = Pool()
         Party = pool.get('party.party')
@@ -61,39 +283,55 @@ class Sale(IdentifierMixin, metaclass=PoolMeta):
         Currency = pool.get('currency.currency')
         Line = pool.get('sale.line')
 
-        if getattr(order, 'customer', None):
-            party = Party.get_from_shopify(shop, order.customer)
+        shopify_fields = cls.shopify_fields()
+
+        if order.get('customer'):
+            party = Party.get_from_shopify(shop, order['customer'])
             party.save()
-            party.set_shopify_identifier(shop, order.customer.id)
+            party.set_shopify_identifier(shop, gid2id(order['customer']['id']))
         else:
             party = shop.guest_party
 
         if not sale:
             sale = shop.get_sale(party=party)
-            sale.web_id = str(order.id)
-            sale.shopify_identifier = order.id
+            sale.web_id = str(gid2id(order['id']))
+            sale.shopify_identifier = gid2id(order['id'])
+
+            shopify_fulfillments = graphql.iterate(
+                QUERY_ORDER_CURSOR % {
+                    'fields': graphql.selection({
+                            'fulfillmentOrders(first: 10, after: $cursor)': (
+                                shopify_fields[
+                                    'fulfillmentOrders(first: 10)']),
+                            }),
+                    },
+                {'id': order['id']}, 'order',
+                'fulfillmentOrders', order)
+            location_ids = {
+                str(gid2id(f['assignedLocation']['location']['id']))
+                for f in shopify_fulfillments}
+            for location_id in location_ids:
+                for shop_warehouse in shop.shopify_warehouses:
+                    if shop_warehouse.shopify_id == location_id:
+                        sale.warehouse = shop_warehouse.warehouse
+                        break
         setattr_changed(sale, 'party', party)
 
-        assert sale.shopify_identifier == order.id
-        if order.location_id:
-            for shop_warehouse in shop.shopify_warehouses:
-                if shop_warehouse.shopify_id == str(order.location_id):
-                    sale.warehouse = shop_warehouse.warehouse
-                    break
-        if sale.currency.code != order.presentment_currency:
+        assert sale.shopify_identifier == gid2id(order['id'])
+        if sale.currency.code != order['presentmentCurrencyCode']:
             sale.currency, = Currency.search([
-                    ('code', '=', order.presentment_currency),
+                    ('code', '=', order['presentmentCurrencyCode']),
                     ], limit=1)
 
         if sale.party != shop.guest_party:
-            if getattr(order, 'shipping_address', None):
+            if order.get('shippingAddress'):
                 shipment_address = party.get_address_from_shopify(
-                    order.shipping_address)
+                    order['shippingAddress'])
             else:
                 shipment_address = None
-            if getattr(order, 'billing_address', None):
+            if order.get('billingAddress'):
                 invoice_address = party.get_address_from_shopify(
-                    order.billing_address)
+                    order['billingAddress'])
             else:
                 invoice_address = None
         else:
@@ -114,29 +352,76 @@ class Sale(IdentifierMixin, metaclass=PoolMeta):
             if not sale.invoice_address:
                 sale.invoice_address = address
 
-        setattr_changed(sale, 'reference', order.name)
-        setattr_changed(sale, 'shopify_status_url', order.order_status_url)
-        setattr_changed(sale, 'comment', order.note)
+        setattr_changed(sale, 'reference', order['name'])
+        setattr_changed(sale, 'shopify_status_url', order['statusPageUrl'])
+        setattr_changed(sale, 'comment', order['note'])
         setattr_changed(sale, 'sale_date', dateutil.parser.isoparse(
-                order.processed_at or order.created_at).date())
+                order['processedAt'] or order['createdAt']).date())
 
-        if order.phone:
+        if order['phone']:
             for contact_mechanism in party.contact_mechanisms:
                 if (contact_mechanism.type in {'phone', 'mobile'}
                         and (contact_mechanism.value_compact
                             == contact_mechanism.format_value_compact(
-                                order.phone, contact_mechanism.type))):
+                                order['phone'], contact_mechanism.type))):
                     break
             else:
                 contact_mechanism = ContactMechanism(
-                    party=party, type='phone', value=order.phone)
+                    party=party, type='phone', value=order['phone'])
             setattr_changed(sale, 'contact', contact_mechanism)
 
         refund_line_items = defaultdict(list)
-        for refund in order.refunds:
-            for refund_line_item in refund.refund_line_items:
-                refund_line_items[refund_line_item.line_item_id].append(
-                    refund_line_item)
+        for refund in order['refunds']:
+            shopify_refund_line_items = graphql.iterate(
+                QUERY_REFUND_CURSOR % {
+                    'fields': graphql.selection({
+                            'refundLineItems(first: 10, after: $cursor)': (
+                                shopify_fields['refunds'][
+                                    'refundLineItems(first: 10)']),
+                            }),
+                    },
+                {'id': refund['id']}, 'refund',
+                'refundLineItems', refund)
+            for refund_line_item in shopify_refund_line_items:
+                line_item_id = gid2id(refund_line_item['lineItem']['id'])
+                refund_line_items[line_item_id].append(refund_line_item)
+
+        line2warehouses = defaultdict(set)
+        shopify_fulfillment_orders = graphql.iterate(
+            QUERY_ORDER_CURSOR % {
+                'fields': graphql.selection({
+                        'fulfillmentOrders(first: 10, after: $cursor)': (
+                            shopify_fields[
+                                'fulfillmentOrders(first: 10)']),
+                        }),
+                },
+            {'id': order['id']}, 'order',
+            'fulfillmentOrders', order)
+        for fulfillment_order in shopify_fulfillment_orders:
+            location_id = str(gid2id(
+                fulfillment_order['assignedLocation']['location']['id']))
+            for shop_warehouse in shop.shopify_warehouses:
+                if shop_warehouse.shopify_id == location_id:
+                    warehouse = shop_warehouse.warehouse
+                    break
+            else:
+                continue
+            shopify_line_items = graphql.iterate(
+                QUERY_FULFILLMENT_ORDER % {
+                    'fields': graphql.selection({
+                            'lineItems(first: 100, after: $cursor)': (
+                                shopify_fields[
+                                    'fulfillmentOrders(first: 10)'][
+                                    'nodes'][
+                                    'lineItems(first: 100)']),
+                            }),
+                    },
+                {'id': fulfillment_order['id']}, 'fulfillmentOrder',
+                'lineItems', fulfillment_order)
+            for line_item in shopify_line_items:
+                if line_item['remainingQuantity']:
+                    line2warehouses[gid2id(line_item['lineItem']['id'])].add(
+                        warehouse)
 
         id2line = {
             l.shopify_identifier: l for l in getattr(sale, 'lines', [])
@@ -145,15 +430,47 @@ class Sale(IdentifierMixin, metaclass=PoolMeta):
             l for l in getattr(sale, 'lines', []) if not
             l.shopify_identifier]
         lines = []
-        for line_item in order.line_items:
-            line = id2line.pop(line_item.id, None)
-            quantity = line_item.quantity
-            for refund_line_item in refund_line_items[line_item.id]:
-                quantity -= refund_line_item.quantity
+        shopify_line_items = graphql.iterate(
+            QUERY_ORDER_CURSOR % {
+                'fields': graphql.selection({
+                        'lineItems(first: 100, after: $cursor)': (
+                            shopify_fields['lineItems(first: 100)']),
+                        }),
+                },
+            {'id': order['id']}, 'order',
+            'lineItems', order)
+        for line_item in shopify_line_items:
+            line_item_id = gid2id(line_item['id'])
+            line = id2line.pop(line_item_id, None)
+            warehouses = line2warehouses[line_item_id]
+            warehouse = None
+            if len(warehouses) == 1:
+                warehouse = warehouses.pop()
+            elif not warehouses:
+                if line:
+                    # keep existing warehouse
+                    # if the line has already been shipped
+                    # (no remaining quantity)
+                    warehouse = line.shopify_warehouse
+                if not warehouse:
+                    warehouse = sale.warehouse
+            quantity = line_item['quantity']
+            for refund_line_item in refund_line_items[
+                    gid2id(line_item['id'])]:
+                quantity -= refund_line_item['quantity']
             lines.append(Line.get_from_shopify(
-                    sale, line_item, quantity, line=line))
+                    sale, line_item, quantity, warehouse=warehouse, line=line))
+        shopify_shipping_lines = graphql.iterate(
+            QUERY_ORDER_CURSOR % {
+                'fields': graphql.selection({
+                        'shippingLines(first: 10, after: $cursor)': (
+                            shopify_fields['shippingLines(first: 10)']),
+                        }),
+                },
+            {'id': order['id']}, 'order',
+            'shippingLines', order)
         for shipping_line, line in zip_longest(
-                order.shipping_lines, shipping_lines):
+                shopify_shipping_lines, shipping_lines):
             if shipping_line:
                 line = Line.get_from_shopify_shipping(
                     sale, shipping_line, line=line)
@@ -219,6 +536,12 @@ class Sale(IdentifierMixin, metaclass=PoolMeta):
                                 '.msg_sale_line_without_product',
                                 sale=sale.rec_name,
                                 line=line.rec_name))
+                    if not line.shopify_warehouse and line.movable:
+                        raise SaleConfirmError(
+                            gettext('web_shop_shopify'
+                                '.msg_sale_line_without_warehouse',
+                                sale=sale.rec_name,
+                                line=line.rec_name))
         super().process(sales)
         for sale in sales:
             if not sale.web_shop or not sale.shopify_identifier:
@@ -236,66 +559,128 @@ class Sale(IdentifierMixin, metaclass=PoolMeta):
             for shipment in self.shipments:
                 fulfillment = shipment.get_shopify(self)
                 if fulfillment:
-                    if not fulfillment.save():
+                    try:
+                        result = shopify.GraphQL().execute(
+                            MUTATION_FULFILLMENT_CREATE,
+                            {'fulfillment': fulfillment}
+                            )['data']['fulfillmentCreate']
+                        if errors := result.get('userErrors'):
+                            raise GraphQLException({'errors': errors})
+                        fulfillment = result['fulfillment']
+                    except GraphQLException as e:
                         raise ShopifyError(gettext(
                                 'web_shop_shopify.msg_fulfillment_fail',
                                 sale=self.rec_name,
                                 error="\n".join(
-                                    fulfillment.errors.full_messages())))
-                    shipment.set_shopify_identifier(self, fulfillment.id)
+                                    err['message'] for err in e.errors))
+                            ) from e
+                    shipment.set_shopify_identifier(
+                        self, gid2id(fulfillment['id']))
                     Transaction().commit()
                 elif shipment.state == 'cancelled':
                     fulfillment_id = shipment.get_shopify_identifier(self)
                     if fulfillment_id:
-                        fulfillment = shopify.Fulfillment.find(
-                            fulfillment_id, order_id=self.shopify_identifier)
-                        if fulfillment.status != 'cancelled':
-                            fulfillment = FulfillmentV2()
-                            fulfillment.id = fulfillment_id
-                            fulfillment.post('cancel')
+                        fulfillment_id = id2gid('Fulfillment', fulfillment_id)
+                        result = shopify.GraphQL().execute(
+                            MUTATION_FULFILLMENT_CANCEL,
+                            {'id': fulfillment_id}
+                            )['data']['fulfillmentCancel']
+                        if errors := result.get('userErrors'):
+                            raise GraphQLException({'errors': errors})
 
             # TODO: manage drop shipment
 
+            shopify_id = id2gid('Order', self.shopify_identifier)
             if self.shipment_state == 'sent' or self.state == 'done':
                 # TODO: manage shopping refund
-                refund = self.get_shopify_refund(shipping={
-                        'full_refund': self.shipment_state == 'none',
-                        })
+                refund = self.get_shopify_refund(
+                    shipping=self.shipment_state == 'none')
                 if refund:
-                    if not refund.save():
+                    try:
+                        result = shopify.GraphQL().execute(
+                            MUTATION_REFUND_CREATE,
+                            {'input': refund})['data']['refundCreate']
+                        if errors := result.get('userErrors'):
+                            raise GraphQLException({'errors': errors})
+                    except GraphQLException as e:
                         raise ShopifyError(gettext(
                                 'web_shop_shopify.msg_refund_fail',
                                 sale=self.rec_name,
                                 error="\n".join(
-                                    refund.errors.full_messages())))
-                    order = shopify.Order.find(self.shopify_identifier)
+                                    err['message'] for err in e.errors))
+                            ) from e
+                    order = shopify.GraphQL().execute(
+                        QUERY_ORDER % {
+                            'fields': graphql.selection(self.shopify_fields()),
+                            }, {'id': shopify_id})['data']['order']
                     Payment.get_from_shopify(self, order)
 
-            order = shopify.Order.find(self.shopify_identifier)
+            shopify_id = id2gid('Order', self.shopify_identifier)
+            order = shopify.GraphQL().execute(
+                QUERY_ORDER_CLOSED, {'id': shopify_id})['data']['order']
             if self.state == 'done':
-                if not order.closed_at:
-                    order.close()
-            elif order.closed_at:
-                order.open()
+                if not order['closed']:
+                    result = shopify.GraphQL().execute(
+                        MUTATION_ORDER_CLOSE, {
+                            'input': {
+                                'id': shopify_id,
+                                },
+                            })['data']['orderClose']
+                    if errors := result.get('userErrors'):
+                        raise GraphQLException({'errors': errors})
+            elif order['closed']:
+                result = shopify.GraphQL().execute(
+                    MUTATION_ORDER_OPEN, {
+                        'input': {
+                            'id': shopify_id,
+                            },
+                        })['data']['orderOpen']
+                if errors := result.get('userErrors'):
+                    raise GraphQLException({'errors': errors})
 
-    def get_shopify_refund(self, shipping):
-        order = shopify.Order.find(self.shopify_identifier)
+    def get_shopify_refund(self, shipping=False):
+        order_id = id2gid('Order', self.shopify_identifier)
+        shopify_line_items = graphql.iterate(
+            QUERY_ORDER_FULFILLABLE_QUANTITIES,
+            {'id': order_id}, 'order', 'lineItems')
         fulfillable_quantities = {
-            l.id: l.fulfillable_quantity for l in order.line_items}
+            gid2id(l['id']): l['fulfillableQuantity']
+            for l in shopify_line_items}
         refund_line_items = list(
             self.get_shopify_refund_line_items(fulfillable_quantities))
         if not refund_line_items:
             return
 
-        refund = shopify.Refund.calculate(
-            self.shopify_identifier, shipping={
-                'full_refund': False,
+        order = shopify.GraphQL().execute(
+            QUERY_ORDER_SUGGESTED_REFUND, {
+                'id': order_id,
+                'refundShipping': shipping,
+                'refundLineItems': refund_line_items})['data']['order']
+        currencies = set()
+        transactions = []
+        for transaction in order['suggestedRefund']['suggestedTransactions']:
+            amount = transaction['amountSet']['presentmentMoney']['amount']
+            currencies.add(
+                transaction['amountSet']['presentmentMoney']['currencyCode'])
+            transactions.append({
+                    'amount': amount,
+                    'gateway': transaction['gateway'],
+                    'kind': 'REFUND',
+                    'orderId': order_id,
+                    'parentId': transaction['parentTransaction']['id'],
+                    })
+        if not transactions:
+            return
+        currency, = currencies
+        return {
+            'orderId': order_id,
+            'currency': currency,
+            'refundLineItems': refund_line_items,
+            'shipping': {
+                'fullRefund': shipping,
                 },
-            refund_line_items=refund_line_items)
-        refund.refund_line_items = refund_line_items
-        for transaction in refund.transactions:
-            transaction.kind = 'refund'
-        return refund
+            'transactions': transactions,
+            }
 
     def get_shopify_refund_line_items(self, fulfillable_quantities):
         pool = Pool()
@@ -321,10 +706,10 @@ class Sale(IdentifierMixin, metaclass=PoolMeta):
             quantity = min(fulfillable_quantity, quantity)
             if quantity > 0:
                 yield {
-                    'line_item_id': line.shopify_identifier,
+                    'lineItemId': id2gid('LineItem', line.shopify_identifier),
+                    'locationId': id2gid('Location', location_id),
                     'quantity': int(quantity),
-                    'restock_type': 'cancel',
-                    'location_id': location_id,
+                    'restockType': 'CANCEL',
                     }
 
 
@@ -344,7 +729,7 @@ class Sale_ShipmentCost(metaclass=PoolMeta):
         sale = super().get_from_shopify(shop, order, sale=sale)
 
         shipment_cost_method = None
-        if order.shipping_lines:
+        if order['shippingLines']:
             available_carriers = sale.on_change_with_available_carriers()
             carrier = None
             if available_carriers:
@@ -373,6 +758,16 @@ class Sale_ShipmentCost(metaclass=PoolMeta):
 class Line(IdentifierMixin, metaclass=PoolMeta):
     __name__ = 'sale.line'
 
+    shopify_warehouse = fields.Many2One(
+        'stock.location', "Shopify Warehouse", readonly=True)
+
+    @fields.depends('shopify_warehouse')
+    def on_change_with_warehouse(self, name=None):
+        warehouse = super().on_change_with_warehouse(name=name)
+        if self.shopify_warehouse:
+            warehouse = self.shopify_warehouse
+        return warehouse
+
     @classmethod
     def __setup__(cls):
         super().__setup__()
@@ -382,7 +777,31 @@ class Line(IdentifierMixin, metaclass=PoolMeta):
                 & Eval('shopify_identifier')))
 
     @classmethod
-    def get_from_shopify(cls, sale, line_item, quantity, line=None):
+    def shopify_fields(cls):
+        return {
+            'id': None,
+            'quantity': None,
+            'variant': {
+                'id': None,
+                },
+            'variantTitle': None,
+            'discountAllocations': {
+                'allocatedAmountSet': {
+                    'presentmentMoney': {
+                        'amount': None,
+                        },
+                    },
+                },
+            'originalUnitPriceSet': {
+                'presentmentMoney': {
+                    'amount': None,
+                    },
+                },
+            }
+
+    @classmethod
+    def get_from_shopify(
+            cls, sale, line_item, quantity, warehouse=None, line=None):
         pool = Pool()
         Product = pool.get('product.product')
         Tax = pool.get('account.tax')
@@ -390,12 +809,13 @@ class Line(IdentifierMixin, metaclass=PoolMeta):
         if not line:
             line = cls(type='line')
             line.sale = sale
-            line.shopify_identifier = line_item.id
+            line.shopify_identifier = gid2id(line_item['id'])
             line.product = None
-        assert line.shopify_identifier == line_item.id
-        if getattr(line_item, 'variant_id', None):
+        line.shopify_warehouse = warehouse
+        assert line.shopify_identifier == gid2id(line_item['id'])
+        if line_item['variant'] and line_item['variant']['id']:
             if product := Product.search_shopify_identifier(
-                    sale.web_shop, line_item.variant_id):
+                    sale.web_shop, gid2id(line_item['variant']['id'])):
                 setattr_changed(line, 'product', product)
         if line.product:
             line._set_shopify_quantity(line.product, quantity)
@@ -403,14 +823,18 @@ class Line(IdentifierMixin, metaclass=PoolMeta):
                 line.on_change_product()
         else:
             setattr_changed(line, 'quantity', quantity)
-            setattr_changed(line, 'description', line_item.title)
+            setattr_changed(line, 'description', line_item['variantTitle'])
             setattr_changed(line, 'taxes', ())
         total_discount = sum(
-            Decimal(d.amount) for d in line_item.discount_allocations)
-        unit_price = ((
-                (Decimal(line_item.price) * (line_item.quantity or 1))
-                - Decimal(total_discount))
-            / (line_item.quantity or 1))
+            Decimal(d['allocatedAmountSet']['presentmentMoney']['amount'])
+            for d in line_item['discountAllocations'])
+        unit_price = Decimal(
+            line_item['originalUnitPriceSet']['presentmentMoney']['amount'])
+        if line_item['quantity']:
+            unit_price *= line_item['quantity']
+        unit_price -= total_discount
+        if line_item['quantity']:
+            unit_price /= line_item['quantity']
         unit_price = round_price(Tax.reverse_compute(
                 unit_price, line.taxes, sale.sale_date))
         if line.product:
@@ -440,15 +864,17 @@ class Line(IdentifierMixin, metaclass=PoolMeta):
         line._set_shopify_shipping_product(sale, shipping_line)
         setattr_changed(line, 'quantity', 1)
         if line.product:
-            if line._changed_values():
+            if line._changed_values:
                 line.on_change_product()
         else:
             setattr_changed(line, 'taxes', ())
-        unit_price = Decimal(shipping_line.discounted_price)
+        unit_price = Decimal(
+            shipping_line['currentDiscountedPriceSet']
+            ['presentmentMoney']['amount'])
         unit_price = round_price(Tax.reverse_compute(
                 unit_price, line.taxes, sale.sale_date))
         setattr_changed(line, 'unit_price', unit_price)
-        setattr_changed(line, 'description', shipping_line.title)
+        setattr_changed(line, 'description', shipping_line['title'])
         return line
 
     def _set_shopify_shipping_product(self, sale, shipping_line):
@@ -468,20 +894,25 @@ class Line_Discount(metaclass=PoolMeta):
     __name__ = 'sale.line'
 
     @classmethod
-    def get_from_shopify(cls, sale, line_item, quantity, line=None):
+    def get_from_shopify(
+            cls, sale, line_item, quantity, warehouse=None, line=None):
         pool = Pool()
         Tax = pool.get('account.tax')
-        line = super().get_from_shopify(sale, line_item, quantity, line=line)
+        line = super().get_from_shopify(
+            sale, line_item, quantity, warehouse=warehouse, line=line)
+        amount = Decimal(
+            line_item['originalUnitPriceSet']['presentmentMoney']['amount'])
         setattr_changed(line, 'base_price', round_price(
-                Tax.reverse_compute(
-                    Decimal(line_item.price), line.taxes, sale.sale_date)))
+                Tax.reverse_compute(amount, line.taxes, sale.sale_date)))
         return line
 
     @classmethod
     def get_from_shopify_shipping(cls, sale, shipping_line, line=None):
         line = super().get_from_shopify_shipping(
             sale, shipping_line, line=line)
-        setattr_changed(line, 'base_price', Decimal(shipping_line.price))
+        setattr_changed(line, 'base_price', Decimal(
+                shipping_line['currentDiscountedPriceSet']['presentmentMoney']
+                ['amount']))
         return line
 
 
@@ -517,7 +948,9 @@ class Line_ShipmentCost(metaclass=PoolMeta):
     def get_from_shopify_shipping(cls, sale, shipping_line, line=None):
         line = super().get_from_shopify_shipping(
             sale, shipping_line, line=line)
-        setattr_changed(line, 'shipment_cost', Decimal(shipping_line.price))
+        setattr_changed(line, 'shipment_cost', Decimal(
+                shipping_line['currentDiscountedPriceSet']['presentmentMoney']
+                ['amount']))
         return line
 
     def _set_shopify_shipping_product(self, sale, shipping_line):

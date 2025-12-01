@@ -18,7 +18,9 @@ Imports::
     ...     create_chart, create_fiscalyear, get_accounts)
     >>> from trytond.modules.account_invoice.tests.tools import (
     ...     set_fiscalyear_invoice_sequences)
-    >>> from trytond.modules.company.tests.tools import create_company
+    >>> from trytond.modules.company.tests.tools import create_company, get_company
+    >>> from trytond.modules.web_shop_shopify.common import gid2id, id2gid
+    >>> from trytond.modules.web_shop_shopify.tests import tools
     >>> from trytond.tests.tools import activate_modules, assertEqual
 
     >>> FETCH_SLEEP, MAX_SLEEP = 1, 10
@@ -42,6 +44,10 @@ Activate modules::
     >>> ShopifyIdentifier = Model.get('web.shop.shopify_identifier')
     >>> Uom = Model.get('product.uom')
     >>> WebShop = Model.get('web.shop')
+
+Get company::
+
+    >>> company = get_company()
 
 Get accounts::
 
@@ -83,10 +89,10 @@ Define a web shop::
     ...         web_shop.shopify_version,
     ...         web_shop.shopify_password))
 
-    >>> location = shopify.Location.find_first()
+    >>> location = tools.get_location()
 
     >>> shop_warehouse, = web_shop.shopify_warehouses
-    >>> shop_warehouse.shopify_id = str(location.id)
+    >>> shop_warehouse.shopify_id = str(gid2id(location['id']))
     >>> web_shop.save()
 
 Create categories::
@@ -139,47 +145,57 @@ Run update product::
 
 Create an order on Shopify::
 
-    >>> customer = shopify.Customer()
-    >>> customer.last_name = "Customer"
-    >>> customer.email = (
-    ...     ''.join(random.choice(string.ascii_letters) for _ in range(10))
-    ...     + '@example.com')
-    >>> customer.addresses = [{
-    ...         'address1': "Street",
-    ...         'city': "City",
-    ...         }]
-    >>> customer.save()
-    True
+    >>> customer = tools.create_customer({
+    ...         'lastName': "Customer",
+    ...         'email': (''.join(
+    ...                 random.choice(string.ascii_letters) for _ in range(10))
+    ...             + '@example.com'),
+    ...         'addresses': [{
+    ...                 'address1': "Street",
+    ...                 'city': "City",
+    ...                 'countryCode': 'BE',
+    ...                 }],
+    ...         })
 
-    >>> order = shopify.Order.create({
-    ...     'customer': customer.to_dict(),
-    ...     'shipping_address': customer.addresses[0].to_dict(),
-    ...     'billing_address': customer.addresses[0].to_dict(),
-    ...     'line_items': [{
-    ...         'variant_id': product.shopify_identifiers[0].shopify_identifier,
-    ...         'quantity': 50,
-    ...         }],
-    ...     'financial_status': 'authorized',
-    ...     'transactions': [{
-    ...         'kind': 'authorization',
-    ...         'status': 'success',
-    ...         'amount': '202.00',
-    ...         'test': True,
-    ...         }],
-    ...     'shipping_lines': [{
-    ...         'code': 'SHIP',
-    ...         'title': "Shipping",
-    ...         'price': '2.00',
-    ...         }],
-    ...     })
-    >>> order.total_price
-    '202.00'
-    >>> order.financial_status
-    'authorized'
+    >>> order = tools.create_order({
+    ...         'customerId': customer['id'],
+    ...         'lineItems': [{
+    ...             'variantId': id2gid(
+    ...                 'ProductVariant',
+    ...                 product.shopify_identifiers[0].shopify_identifier),
+    ...             'quantity': 50,
+    ...             }],
+    ...         'shippingLines': [{
+    ...             'code': 'SHIP',
+    ...             'title': "Shipping",
+    ...             'priceSet': {
+    ...                 'shopMoney': {
+    ...                     'amount': 2,
+    ...                     'currencyCode': company.currency.code,
+    ...                     },
+    ...                 },
+    ...             }],
+    ...         'financialStatus': 'AUTHORIZED',
+    ...         'transactions': [{
+    ...             'kind': 'AUTHORIZATION',
+    ...             'status': 'SUCCESS',
+    ...             'amountSet': {
+    ...                 'shopMoney': {
+    ...                     'amount': 202,
+    ...                     'currencyCode': company.currency.code,
+    ...                     },
+    ...                 },
+    ...             'test': True,
+    ...             }],
+    ...         })
+    >>> order['totalPriceSet']['presentmentMoney']['amount']
+    '202.0'
+    >>> order['displayFinancialStatus']
+    'AUTHORIZED'
 
 Run fetch order::
 
-    >>> with config.set_context(shopify_orders=order.id):
+    >>> with config.set_context(shopify_orders=[gid2id(order['id'])]):
     ...     cron_fetch_order, = Cron.find([
     ...         ('method', '=', 'web.shop|shopify_fetch_order'),
     ...         ])
@@ -208,14 +224,19 @@ Run fetch order::
 
 Clean up::
 
-    >>> order.destroy()
+    >>> tools.delete_order(order['id'])
     >>> for product in ShopifyIdentifier.find(
     ...         [('record', 'like', 'product.template,%')]):
-    ...     shopify.Product.find(product.shopify_identifier).destroy()
+    ...     tools.delete_product(id2gid('Product', product.shopify_identifier))
     >>> for category in ShopifyIdentifier.find(
     ...         [('record', 'like', 'product.category,%')]):
-    ...     shopify.CustomCollection.find(category.shopify_identifier).destroy()
-    >>> time.sleep(2)
-    >>> customer.destroy()
+    ...     tools.delete_collection(id2gid('Collection', category.shopify_identifier))
+    >>> for _ in range(MAX_SLEEP):
+    ...     try:
+    ...         tools.delete_customer(customer['id'])
+    ...     except Exception:
+    ...         time.sleep(FETCH_SLEEP)
+    ...     else:
+    ...         break
 
     >>> shopify.ShopifyResource.clear_session()

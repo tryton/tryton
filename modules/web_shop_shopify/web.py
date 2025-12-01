@@ -4,9 +4,9 @@ import datetime as dt
 import urllib.parse
 from collections import defaultdict
 from decimal import Decimal
+from itertools import groupby
 from operator import attrgetter
 
-import pyactiveresource
 import shopify
 from shopify.api_version import ApiVersion
 
@@ -21,10 +21,141 @@ from trytond.tools import grouped_slice
 from trytond.transaction import Transaction
 from trytond.url import http_host
 
-from .common import IdentifierMixin, IdentifiersMixin
+from . import graphql
+from .common import IdentifierMixin, IdentifiersMixin, gid2id, id2gid
 from .exceptions import ShopifyCredentialWarning, ShopifyError
+from .product import QUERY_PRODUCT
+from .shopify_retry import GraphQLException
 
 EDIT_ORDER_DELAY = dt.timedelta(days=60 + 1)
+
+
+QUERY_SHOP = '''{
+    shop %(fields)s
+}'''
+
+
+QUERY_SHOP_LOCALES = '''{
+    shopLocales %(fields)s
+}'''
+
+QUERY_LOCATIONS = '''
+query GetLocations($cursor: String) {
+    locations(
+        first: 250, includeInactive: true, includeLegacy: true,
+        after: $cursor) {
+        nodes {
+            id
+            name
+        }
+        pageInfo {
+            hasNextPage
+            endCursor
+        }
+    }
+}'''
+
+
+MUTATION_PRODUCT_SET = '''\
+mutation productSet($input: ProductSetInput!) {
+    productSet(input: $input) {
+        product %(fields)s,
+        userErrors {
+            field
+            message
+        }
+    }
+}'''
+
+
+QUERY_PRODUCT_CURSOR = '''\
+query GetProduct($id: ID!, $cursor: String) {
+    product(id: $id) %(fields)s
+}'''
+
+
+MUTATION_PRODUCT_CHANGE_STATUS = '''\
+mutation productChangeStatus($productId: ID!, $status: ProductStatus!) {
+    productChangeStatus(productId: $productId, status: $status) {
+        userErrors {
+            field
+            message
+        }
+    }
+}'''
+
+MUTATION_INVENTORY_ITEM_UPDATE = '''\
+mutation inventoryItemUpdate($id: ID!, $input: InventoryItemInput!) {
+    inventoryItemUpdate(id: $id, input: $input) {
+        InventoryItem %(fields)s,
+        userErrors {
+            field
+            message
+        }
+    }
+}'''
+
+
+MUTATION_INVENTORY_ACTIVATE = '''\
+mutation ActivateInventoryItem($inventoryItemId: ID!, $locationId: ID!) {
+    inventoryActivate(
+            inventoryItemId: $inventoryItemId, locationId: $locationId) {
+        userErrors {
+            field
+            message
+        }
+    }
+}'''
+
+
+MUTATION_INVENTORY_SET_QUANTITIES = '''\
+mutation InventorySet($input: InventorySetQuantitiesInput!) {
+    inventorySetQuantities(input: $input) {
+        userErrors {
+            field
+            message
+        }
+    }
+}'''
+
+
+MUTATION_COLLECTION_CREATE = '''\
+mutation createCollection($input: CollectionInput!) {
+    collectionCreate(input: $input) {
+        collection %(fields)s,
+        userErrors {
+            field
+            message
+        }
+    }
+}'''
+
+MUTATION_COLLECTION_UPDATE = '''\
+mutation updateCollection($input: CollectionInput!) {
+    collectionUpdate(input: $input) {
+        collection %(fields)s,
+        userErrors {
+            field
+            message
+        }
+    }
+}'''
+
+MUTATION_COLLECTION_DELETE = '''\
+mutation collectionDelete($input: CollectionDeleteInput!) {
+    collectionDelete(input: $input) {
+        userErrors {
+            field
+            message
+        }
+    }
+}'''
+
+
+QUERY_ORDERS = '''\
+query GetOrders {
+    orders(first: 20, query: "%(query)s", sortKey: ID) %(fields)s
+}'''
 
 
 class Shop(metaclass=PoolMeta):
@@ -139,6 +270,17 @@ class Shop(metaclass=PoolMeta):
         return shopify.Session.temp(
             self.shopify_url, self.shopify_version, self.shopify_password)
 
+    def shopify_shop(self, fields):
+        return shopify.GraphQL().execute(QUERY_SHOP % {
+                'fields': graphql.selection(fields),
+                })['data']['shop']
+
+    def shopify_shop_locales(self, fields):
+        return shopify.GraphQL().execute(
+            QUERY_SHOP_LOCALES % {
+                'fields': graphql.selection(fields),
+                })['data']['shopLocales']
+
     def get_payment_journal(self, currency_code, pattern):
         for payment_journal in self.shopify_payment_journals:
             if (payment_journal.journal.currency.code == currency_code
@@ -148,28 +290,9 @@ class Shop(metaclass=PoolMeta):
     def managed_metafields(self):
         return set()
 
-    def __sync_metafields(self, resource, metafields):
-        metafields = metafields.copy()
-        managed_metafields = self.managed_metafields()
-        assert metafields.keys() <= managed_metafields
-        for metafield in resource.metafields():
-            key = '.'.join([metafield.namespace, metafield.key])
-            value = metafield.to_dict()
-            if key not in metafields:
-                if key in managed_metafields:
-                    metafield.destroy()
-            elif metafields[key] != value:
-                for k, v in metafields.pop(key).items():
-                    setattr(metafield, k, v)
-                metafield.save()
-        for key, value in metafields.items():
-            namespace, key = key.split('.', 1)
-            value['namespace'] = namespace
-            value['key'] = key
-            resource.add_metafield(shopify.Metafield(value))
-
     @classmethod
-    def shopify_update_product(cls, shops=None):
+    def shopify_update_product(
+            cls, shops=None, shop_fields=None, shop_locales_fields=None):
         """Update Shopify Products
 
         The transaction is committed after the creation of each new resource.
@@ -181,239 +304,279 @@ class Shop(metaclass=PoolMeta):
             shops = cls.search([
                     ('type', '=', 'shopify'),
                     ])
+        shop_fields = graphql.deep_merge(shop_fields or {}, {
+                'currencyCode': None,
+                'taxesIncluded': None,
+                'weightUnit': None
+                })
+        shop_locales_fields = graphql.deep_merge(shop_locales_fields or {}, {
+                'locale': None,
+                'primary': None,
+                })
         for shop in shops:
             with shop.shopify_session():
-                shopify_shop = shopify.Shop.current()
+                shopify_shop = shop.shopify_shop(shop_fields)
                 shop_language = (
                     shop.language.code if shop.language
                     else transaction.language)
                 categories = shop.get_categories()
-                products, prices, taxes = shop.get_products()
-                if shopify_shop.currency.lower() != shop.currency.code.lower():
+                products, prices, taxes = shop.get_products(
+                    key=lambda p: p.template.id)
+                if shopify_shop['currencyCode'] != shop.currency.code:
                     raise ShopifyError(gettext(
                             'web_shop_shopify.msg_shop_currency_different',
                             shop=shop.rec_name,
                             shop_currency=shop.currency.code,
-                            shopify_currency=shopify_shop.currency))
-                if (shopify_shop.primary_locale.lower()
-                        != shop_language.lower()):
+                            shopify_currency=shopify_shop['currencyCode']))
+                shop_locales = shop.shopify_shop_locales(shop_locales_fields)
+                primary_locale = next(
+                    filter(lambda l: l['primary'], shop_locales))
+                if primary_locale['locale'] != shop_language:
                     raise ShopifyError(gettext(
                             'web_shop_shopify.msg_shop_locale_different',
                             shop=shop.rec_name,
                             shop_language=shop_language,
-                            shopify_primary_locale=shopify_shop.primary_locale
+                            shopify_primary_locale=primary_locale['locale'],
                             ))
 
                 for category in categories:
-                    shop.__shopify_update_category(category)
+                    shop._shopify_update_collection(category)
 
                 categories = set(categories)
-                inventory_items = InventoryItem.browse(products)
-                for product, inventory_item in zip(products, inventory_items):
-                    price = prices[product.id]
-                    tax = taxes[product.id]
-
-                    template = product.template
-                    if not template.shopify_uom:
-                        shop._shopify_check_product(product)
-                        template.shopify_uom = template.get_shopify_uom()
-                        template.save()
-
-                    shop.__shopify_update_template(
-                        shopify_shop, categories, template,
-                        product, price, tax)
-                    shop.__shopify_update_product(
-                        shopify_shop, product, price, tax)
-                    shop.__shopify_update_inventory_item(inventory_item)
+                inventory_items = dict(
+                    zip(products, InventoryItem.browse(products)))
+                for template, t_products in groupby(
+                        products, key=lambda p: p.template):
+                    t_products = sorted(
+                        t_products, key=template.products.index)
+                    p_inventory_items = [
+                        inventory_items[p] for p in t_products]
+                    p_prices = [prices[p.id] for p in t_products]
+                    p_taxes = [taxes[p.id] for p in t_products]
+                    if shop._shopify_product_is_to_update(
+                            template, t_products, p_prices, p_taxes):
+                        shop._shopify_update_product(
+                            shopify_shop, categories, template, t_products,
+                            p_inventory_items, p_prices, p_taxes)
+                        Transaction().commit()
 
                 for category in shop.categories_removed:
-                    shop.__shopify_remove_category(category)
+                    shop._shopify_remove_collection(category)
                 shop.categories_removed = []
 
                 products = set(products)
                 for product in shop.products_removed:
                     template = product.template
                     if set(template.products).isdisjoint(products):
-                        shop.__shopify_remove_template(template)
-                    else:
-                        shop.__shopify_remove_product(product)
+                        shop._shopify_remove_product(template)
+                    product.set_shopify_identifier(shop)
                 shop.products_removed = []
         cls.save(shops)
 
-    def __shopify_update_category(self, category):
+    def _shopify_update_collection(self, category, collection_fields=None):
         if not category.is_shopify_to_update(self):
             return
-        custom_collection = category.get_shopify(self)
-        if not custom_collection.save():
+        collection_fields = graphql.deep_merge(collection_fields or {}, {
+                'id': None,
+                })
+        collection = category.get_shopify(self)
+        if collection.get('id') is not None:
+            MUTATION = MUTATION_COLLECTION_UPDATE
+            output = 'collectionUpdate'
+        else:
+            MUTATION = MUTATION_COLLECTION_CREATE
+            output = 'collectionCreate'
+        try:
+            result = shopify.GraphQL().execute(
+                MUTATION % {
+                    'fields': graphql.selection(collection_fields),
+                    }, {
+                    'input': collection,
+                    })['data'][output]
+            if errors := result.get('userErrors'):
+                raise GraphQLException({'errors': errors})
+            collection = result['collection']
+        except GraphQLException as e:
             raise ShopifyError(gettext(
                     'web_shop_shopify.msg_custom_collection_fail',
                     category=category.rec_name,
                     error="\n".join(
-                        custom_collection.errors.full_messages())))
+                        err['message'] for err in e.errors))) from e
         identifier = category.set_shopify_identifier(
-            self, custom_collection.id)
+            self, gid2id(collection['id']))
         if identifier.to_update:
             identifier.to_update = False
             identifier.save()
         Transaction().commit()
+        return collection
 
-        self.__sync_metafields(
-            custom_collection, category.get_shopify_metafields(self))
-
-    def __shopify_remove_category(self, category):
+    def _shopify_remove_collection(self, category):
         shopify_id = category.get_shopify_identifier(self)
         if shopify_id:
-            if shopify.CustomCollection.exists(shopify_id):
-                shopify.CustomCollection.find(shopify_id).destroy()
+            shopify_id = id2gid('Collection', shopify_id)
+            try:
+                result = shopify.GraphQL().execute(
+                    MUTATION_COLLECTION_DELETE, {
+                        'input': {
+                            'id': shopify_id,
+                            }
+                        })['data']['collectionDelete']
+                if errors := result.get('userErrors'):
+                    raise GraphQLException({'errors': errors})
+            except GraphQLException:
+                pass
             category.set_shopify_identifier(self)
 
-    def __shopify_update_template(
-            self, shopify_shop, categories, template, product, price, tax):
-        if not template.is_shopify_to_update(self):
-            return
-        shopify_product = template.get_shopify(self)
-        new = shopify_product.is_new()
-        if new:
-            shopify_product.variants = [
-                product.get_shopify(
-                    self, price, tax,
-                    shop_taxes_included=shopify_shop.taxes_included,
-                    shop_weight_unit=shopify_shop.weight_unit)]
-        else:
-            # Set fake value for missing new options
-            for j, variant in enumerate(shopify_product.variants):
-                for i, _ in range(len(shopify_product.options), 1):
-                    name = 'option%i' % i
-                    if not getattr(variant, name, None):
-                        setattr(variant, name, '_option%i-%i' % (i, j))
-        if not shopify_product.save():
+    def _shopify_product_is_to_update(
+            self, template, products, prices, taxes):
+        return (
+            template.is_shopify_to_update(self)
+            or any(
+                prod.is_shopify_to_update(self, price=p, tax=t)
+                for prod, p, t in zip(products, prices, taxes))
+            or any(
+                prod in self.products_removed for prod in products))
+
+    def _shopify_update_product(
+            self, shopify_shop, categories, template, products,
+            inventory_items, prices, taxes, product_fields=None):
+        pool = Pool()
+        Identifier = pool.get('web.shop.shopify_identifier')
+
+        if not template.shopify_uom:
+            template.shopify_uom = template.get_shopify_uom()
+            template.save()
+
+        product_fields = graphql.deep_merge(product_fields or {}, {
+                'id': None,
+                'variants(first: 250)': {
+                    'nodes': {
+                        'id': None,
+                        'inventoryItem': {
+                            'id': None,
+                            },
+                        },
+                    'pageInfo': {
+                        'hasNextPage': None,
+                        'endCursor': None,
+                        },
+                    },
+                })
+
+        shopify_product = template.get_shopify(self, categories)
+        variants = []
+        for position, (
+            product, inventory_item, price, tax) in enumerate(zip(
+                    products, inventory_items, prices, taxes),
+                start=1):
+            self._shopify_check_product(product)
+            variant = product.get_shopify(
+                self, price, tax,
+                shop_taxes_included=shopify_shop['taxesIncluded'])
+            variant['inventoryItem'] = inventory_item.get_shopify(
+                self, shop_weight_unit=shopify_shop['weightUnit'])
+            variant['position'] = position
+            variants.append(variant)
+        shopify_product['variants'] = variants
+
+        if len(variants) == 1 and not shopify_product.get('productOptions'):
+            shopify_product.setdefault('productOptions', []).append({
+                    'name': "Title",
+                    'values': [
+                        {'name': "Default Title"},
+                        ],
+                    })
+            variant, = variants
+            variant.setdefault('optionValues', []).append({
+                    'optionName': "Title",
+                    'name': "Default Title",
+                    })
+
+        data = {
+            'input': shopify_product,
+            }
+        try:
+            result = shopify.GraphQL().execute(
+                MUTATION_PRODUCT_SET % {
+                    'fields': graphql.selection(product_fields),
+                    }, data)['data']['productSet']
+            if errors := result.get('userErrors'):
+                raise GraphQLException({'errors': errors})
+            shopify_product = result['product']
+
+            identifiers = []
+            identifier = template.set_shopify_identifier(
+                self, gid2id(shopify_product['id']))
+            if identifier.to_update:
+                identifier.to_update = False
+                identifiers.append(identifier)
+
+            shopify_variants = graphql.iterate(
+                QUERY_PRODUCT_CURSOR % {
+                    'fields': graphql.selection({
+                            'variants(first: 250, after: $cursor)': (
+                                product_fields['variants(first: 250)']),
+                            }),
+                    },
+                {'id': shopify_product['id']}, 'product',
+                'variants', shopify_product)
+
+            for (product, inventory_item,
+                price, tax,
+                shopify_variant) in zip(
+                    products, inventory_items,
+                    prices, taxes,
+                    shopify_variants):
+                identifier = product.set_shopify_identifier(
+                    self, gid2id(shopify_variant['id']))
+                update_extra = {
+                    'price': price,
+                    'tax': tax,
+                    }
+                if (identifier.to_update
+                        or identifier.to_update_extra != update_extra):
+                    identifier.to_update = False
+                    identifier.to_update_extra = update_extra
+                    identifiers.append(identifier)
+                identifier = inventory_item.set_shopify_identifier(
+                    self, gid2id(shopify_variant['inventoryItem']['id']))
+                if identifier.to_update:
+                    identifier.to_update = False
+                    identifiers.append(identifier)
+            Identifier.save(identifiers)
+            return shopify_product
+        except GraphQLException as e:
             raise ShopifyError(gettext(
                     'web_shop_shopify.msg_product_fail',
                     template=template.rec_name,
-                    error="\n".join(shopify_product.errors.full_messages())))
-        identifier = template.set_shopify_identifier(
-            self, shopify_product.id)
-        if identifier.to_update:
-            identifier.to_update = False
-            identifier.save()
-        if new:
-            variant, = shopify_product.variants
-            product.set_shopify_identifier(self, variant.id)
-        Transaction().commit()
+                    error="\n".join(
+                        err['message'] for err in e.errors))) from e
 
-        self.__sync_metafields(
-            shopify_product, template.get_shopify_metafields(self))
-
-        collection_ids = {
-            c.id for c in shopify_product.collections()}
-        for category in template.categories_all:
-            while category:
-                if category in categories:
-                    custom_collection = (
-                        shopify.CustomCollection.find(
-                            category.get_shopify_identifier(
-                                self)))
-                    if custom_collection.id in collection_ids:
-                        collection_ids.remove(
-                            custom_collection.id)
-                    else:
-                        shopify_product.add_to_collection(
-                            custom_collection)
-                category = category.parent
-        for collection_id in collection_ids:
-            collection = shopify.CustomCollection.find(
-                collection_id)
-            shopify_product.remove_from_collection(collection)
-
-        self.__shopify_update_images(template, shopify_product)
-
-    def __shopify_remove_template(self, template):
+    def _shopify_remove_product(self, template):
         shopify_id = template.get_shopify_identifier(self)
-        if not shopify_id:
-            return
-        if shopify.Product.exists(shopify_id):
-            product = shopify.Product.find(shopify_id)
-            product.status = 'archived'
-            product.save()
-
-    def __shopify_update_images(self, template, shopify_product):
-        if not getattr(template, 'images', None):
-            return
-        transaction = Transaction()
-        image_ids = set()
-        for i, image in enumerate(filter(
-                    lambda i: i.web_shop,
-                    template.images_used), 1):
-            product_image = image.get_shopify(self)
-            new_image = not product_image.id
-            product_image.position = i
-            if not product_image.save():
-                raise ShopifyError(gettext(
-                        'web_shop_shopify'
-                        '.msg_product_image_fail',
-                        image=image.rec_name,
-                        template=template.rec_name,
-                        error="\n".join(
-                            product_image.errors
-                            .full_messages())))
-            image_ids.add(product_image.id)
-            if new_image:
-                image.set_shopify_identifier(
-                    self, product_image.id)
-                transaction.commit()
-
-        for image in shopify_product.images:
-            if image.id not in image_ids:
-                image.destroy()
-
-    def __shopify_update_product(self, shopify_shop, product, price, tax):
-        update_extra = {'price': str(price), 'tax': str(tax)}
-        if not product.is_shopify_to_update(self, **update_extra):
-            return
-        variant = product.get_shopify(
-            self, price, tax,
-            shop_taxes_included=shopify_shop.taxes_included,
-            shop_weight_unit=shopify_shop.weight_unit)
-        if not variant.save():
-            raise ShopifyError(gettext(
-                    'web_shop_shopify.msg_variant_fail',
-                    product=product.rec_name,
-                    error="\n".join(variant.errors.full_messages())
-                    ))
-        identifier = product.set_shopify_identifier(self, variant.id)
-        if identifier.to_update or identifier.to_update_extra != update_extra:
-            identifier.to_update = False
-            identifier.to_update_extra = update_extra
-            identifier.save()
-        Transaction().commit()
-
-        self.__sync_metafields(variant, product.get_shopify_metafields(self))
-
-    def __shopify_update_inventory_item(self, inventory_item):
-        if not inventory_item.is_shopify_to_update(self):
-            return
-        shopify_inventory_item = inventory_item.get_shopify(self)
-        if shopify_inventory_item:
-            if not shopify_inventory_item.save():
-                raise ShopifyError(gettext(
-                        'web_shop_shopify.msg_inventory_item_fail',
-                        product=inventory_item.product.rec_name,
-                        error="\n".join(
-                            inventory_item.errors.full_messages())))
-            identifier = inventory_item.set_shopify_identifier(
-                self, shopify_inventory_item.id if
-                shopify_inventory_item.tracked else None)
-            if identifier and identifier.to_update:
-                identifier.to_update = False
-                identifier.save()
-            Transaction().commit()
-
-    def __shopify_remove_product(self, product):
-        shopify_id = product.get_shopify_identifier(self)
         if shopify_id:
-            if shopify.Variant.exists(shopify_id):
-                shopify.Variant.find(shopify_id).destroy()
-            product.set_shopify_identifier(self)
+            shopify_id = id2gid('Product', shopify_id)
+            product = shopify.GraphQL().execute(
+                QUERY_PRODUCT % {
+                    'fields': graphql.selection({
+                            'id': None,
+                            }),
+                    }, {'id': shopify_id})['data']['product']
+            if product:
+                try:
+                    result = shopify.GraphQL().execute(
+                        MUTATION_PRODUCT_CHANGE_STATUS, {
+                            'productId': shopify_id,
+                            'status': 'ARCHIVED',
+                            })['data']['productChangeStatus']
+                    if errors := result.get('userErrors'):
+                        raise GraphQLException({'errors': errors})
+                except GraphQLException as e:
+                    raise ShopifyError(gettext(
+                            'web_shop_shopify.msg_product_fail',
+                            template=template.rec_name,
+                            error="\n".join(
+                                err['message'] for err in e.errors))) from e
 
     @classmethod
     def shopify_update_inventory(cls, shops=None):
@@ -426,52 +589,66 @@ class Shop(metaclass=PoolMeta):
                     ])
         for shop in shops:
             for shop_warehouse in shop.shopify_warehouses:
-                location_id = shop_warehouse.shopify_id
-                if not location_id:
+                if not (location_id := shop_warehouse.shopify_id):
                     continue
-                location_id = int(location_id)
+                location_id = id2gid('Location', location_id)
                 with Transaction().set_context(
                         shop.get_context(),
                         **shop_warehouse.get_shopify_inventory_context()):
                     products = Product.browse([
                             p for p in shop.products if p.shopify_uom])
                     with shop.shopify_session():
-                        shop.__shopify_update_inventory(products, location_id)
+                        shop._shopify_update_inventory(products, location_id)
 
-    def __shopify_update_inventory(self, products, location_id):
+    def _shopify_update_inventory(self, products, location_id):
         pool = Pool()
         InventoryItem = pool.get('product.shopify_inventory_item')
         inventory_items = InventoryItem.browse(products)
-        product2quantity = {p.id: int(p.shopify_quantity) for p in products}
-        shopify2product = {
-            i.get_shopify_identifier(self): i.id for i in inventory_items}
-        shopify2product.pop(None, None)
-        product2shopify = {v: k for k, v in shopify2product.items()}
 
-        location = shopify.Location.find(location_id)
-        for i, inventory_level in enumerate(
-                location.inventory_levels(limit=250, no_iter_next=False)):
-            inventory_item_id = inventory_level.inventory_item_id
-            product_id = shopify2product.get(inventory_item_id)
-            if product_id is None:
-                continue
-            quantity = product2quantity.pop(product_id)
-            if inventory_level.available != quantity:
-                try:
-                    shopify.InventoryLevel.set(
-                        location_id, inventory_item_id, quantity)
-                except pyactiveresource.connection.ResourceNotFound:
-                    pass
+        input = {
+            'ignoreCompareQuantity': True,
+            'name': 'available',
+            'reason': 'other',
+            }
+        input['quantities'] = quantities = []
 
-        for product_id, quantity in product2quantity.items():
-            inventory_item_id = product2shopify.get(product_id)
-            if inventory_item_id is None:
-                continue
+        def set_quantities():
             try:
-                shopify.InventoryLevel.set(
-                    location_id, inventory_item_id, quantity)
-            except pyactiveresource.connection.ResourceNotFound:
-                pass
+                for quantity in quantities:
+                    result = shopify.GraphQL().execute(
+                        MUTATION_INVENTORY_ACTIVATE, {
+                            'inventoryItemId': quantity['inventoryItemId'],
+                            'locationId': quantity['locationId'],
+                            })['data']['inventoryActivate']
+                    if errors := result.get('userErrors'):
+                        raise GraphQLException({'errors': errors})
+                result = shopify.GraphQL().execute(
+                    MUTATION_INVENTORY_SET_QUANTITIES, {
+                        'input': input,
+                        })['data']['inventorySetQuantities']
+                if errors := result.get('userErrors'):
+                    raise GraphQLException({'errors': errors})
+            except GraphQLException as e:
+                raise ShopifyError(gettext(
+                        'web_shop_shopify.msg_inventory_set_fail',
+                        error="\n".join(
+                            err['message'] for err in e.errors))) from e
+            quantities.clear()
+
+        for product, inventory_item in zip(products, inventory_items):
+            inventory_item_id = inventory_item.get_shopify_identifier(self)
+            if inventory_item_id:
+                inventory_item_id = id2gid('InventoryItem', inventory_item_id)
+                quantity = {
+                    'inventoryItemId': inventory_item_id,
+                    'locationId': location_id,
+                    'quantity': int(product.shopify_quantity),
+                    }
+                quantities.append(quantity)
+            if len(quantities) >= 250:
+                set_quantities()
+        if quantities:
+            set_quantities()
 
     @classmethod
     def shopify_fetch_order(cls, shops=None):
@@ -484,6 +661,7 @@ class Shop(metaclass=PoolMeta):
             shops = cls.search([
                     ('type', '=', 'shopify'),
                     ])
+        fields = {'nodes': Sale.shopify_fields()}
         cls.lock(shops)
         for shop in shops:
             last_sales = Sale.search([
@@ -496,26 +674,33 @@ class Shop(metaclass=PoolMeta):
                 last_order_id = ''
             with shop.shopify_session():
                 if pool.test and 'shopify_orders' in context:
-                    orders = shopify.Order.find(
-                        ids=context['shopify_orders'],
-                        limit=250, no_iter_next=False)
+                    query = ' OR '.join(
+                        f'id:{id}' for id in context['shopify_orders'])
+                elif last_order_id:
+                    query = f'status:open AND id:>{last_order_id}'
                 else:
-                    orders = shopify.Order.find(
-                        status='open', since_id=last_order_id,
-                        limit=250, no_iter_next=False)
+                    query = 'status:open'
+                orders = shopify.GraphQL().execute(
+                    QUERY_ORDERS % {
+                        'query': query,
+                        'fields': graphql.selection(fields),
+                        })['data']['orders']
                 sales = []
-                for i, order in enumerate(orders):
+                for order in orders['nodes']:
                     sales.append(Sale.get_from_shopify(shop, order))
                 Sale.save(sales)
-                for sale, order in zip(sales, orders):
+                for sale, order in zip(sales, orders['nodes']):
+                    total_price = Decimal(
+                        order['currentTotalPriceSet']['presentmentMoney'][
+                            'amount'])
                     sale.shopify_tax_adjustment = (
-                        Decimal(order.current_total_price) - sale.total_amount)
+                        total_price - sale.total_amount)
                 Sale.save(sales)
                 to_quote = [
                     s for s in sales if s.party != s.web_shop.guest_party]
                 if to_quote:
                     Sale.quote(to_quote)
-                for sale, order in zip(sales, orders):
+                for sale, order in zip(sales, orders['nodes']):
                     if sale.state != 'draft':
                         Payment.get_from_shopify(sale, order)
                 Sale.payment_confirm(sales)
@@ -540,7 +725,8 @@ class Shop(metaclass=PoolMeta):
                         ('create_date', '>=', now - EDIT_ORDER_DELAY),
                         ],
                     ])
-            for sub_sales in grouped_slice(sales, count=250):
+            for sub_sales in grouped_slice(sales, count=20):
+                cls._shopify_update_order(shop, list(sub_sales))
                 cls.__queue__._shopify_update_order(
                     shop, [s.id for s in sub_sales])
 
@@ -551,11 +737,16 @@ class Shop(metaclass=PoolMeta):
         sales = Sale.browse(sales)
         assert shop.type == 'shopify'
         assert all(s.web_shop == shop for s in sales)
+        fields = {'nodes': Sale.shopify_fields()}
         with shop.shopify_session():
-            orders = shopify.Order.find(
-                ids=','.join(str(s.shopify_identifier) for s in sales),
-                status='any')
-            id2order = {o.id: o for o in orders}
+            query = ' OR '.join(
+                f'id:{s.shopify_identifier}' for s in sales)
+            orders = shopify.GraphQL().execute(
+                QUERY_ORDERS % {
+                    'query': query,
+                    'fields': graphql.selection(fields),
+                    })['data']['orders']
+            id2order = {gid2id(o['id']): o for o in orders['nodes']}
 
         to_update = []
         orders = []
@@ -579,7 +770,7 @@ class Shop(metaclass=PoolMeta):
         to_update = {}
         states_to_restore = defaultdict(list)
         for sale, order in zip(sales, orders):
-            assert sale.shopify_identifier == order.id
+            assert sale.shopify_identifier == gid2id(order['id'])
             shop = sale.web_shop
             with shop.shopify_session():
                 sale = Sale.get_from_shopify(shop, order, sale=sale)
@@ -595,8 +786,10 @@ class Shop(metaclass=PoolMeta):
         for state, state_sales in states_to_restore.items():
             Sale.write(list(state_sales), {'state': state})
         for sale, order in to_update.items():
+            current_total_price = Decimal(
+                order['currentTotalPriceSet']['presentmentMoney']['amount'])
             sale.shopify_tax_adjustment = (
-                Decimal(order.current_total_price) - sale.total_amount)
+                current_total_price - sale.total_amount)
         Sale.save(to_update.keys())
         Sale.store_cache(to_update.keys())
         Amendment._clear_sale(to_update.keys())
@@ -639,6 +832,72 @@ class Shop(metaclass=PoolMeta):
                     warning_name,
                     gettext('web_shop_shopify'
                         '.msg_shopidy_credential_modified'))
+
+
+class Shop_Image(metaclass=PoolMeta):
+    __name__ = 'web.shop'
+
+    def _shopify_product_is_to_update(
+            self, template, products, prices, taxes):
+        return (
+            super()._shopify_product_is_to_update(
+                template, products, prices, taxes)
+            or any(
+                i.is_shopify_to_update(self) for i in template.shopify_images))
+
+    def _shopify_update_product(
+            self, shopify_shop, categories, template, products,
+            inventory_items, prices, taxes, product_fields=None):
+        pool = Pool()
+        Identifier = pool.get('web.shop.shopify_identifier')
+
+        product_fields = (
+            product_fields.copy() if product_fields is not None else {})
+        product_fields = graphql.deep_merge(product_fields or {}, {
+                'media(first: 250)': {
+                    'nodes': {
+                        'id': None,
+                        'mediaContentType': None,
+                        },
+                    'pageInfo': {
+                        'hasNextPage': None,
+                        'endCursor': None,
+                        },
+                    },
+                })
+        shopify_product = super()._shopify_update_product(
+            shopify_shop, categories, template, products, inventory_items,
+            prices, taxes, product_fields=product_fields)
+
+        try:
+            shopify_media = graphql.iterate(
+                QUERY_PRODUCT_CURSOR % {
+                    'fields': graphql.selection({
+                            'media(first: 250, after: $cursor)': (
+                                product_fields['media(first: 250)']),
+                            }),
+                    },
+                {'id': shopify_product['id']}, 'product',
+                'media', shopify_product)
+
+            identifiers = []
+            for image, shopify_image in zip(
+                    template.shopify_images,
+                    filter(lambda m: m['mediaContentType'] == 'IMAGE',
+                        shopify_media)):
+                identifier = image.set_shopify_identifier(
+                    self, gid2id(shopify_image['id']))
+                if identifier.to_update:
+                    identifier.to_update = False
+                    identifiers.append(identifier)
+            Identifier.save(identifiers)
+            return shopify_product
+        except GraphQLException as e:
+            raise ShopifyError(gettext(
+                    'web_shop_shopify.msg_product_fail',
+                    template=template.rec_name,
+                    error="\n".join(
+                        err['message'] for err in e.errors))) from e
 
 
 class ShopShopifyIdentifier(IdentifierMixin, ModelSQL, ModelView):
@@ -725,13 +984,12 @@ class Shop_Warehouse(ModelView, metaclass=PoolMeta):
                 return locations_cache
             try:
                 with self.shop.shopify_session():
-                    locations += [
-                        (str(l.id), l.name)
-                        for l in shopify.Location.find(no_iter_next=False)]
+                    for location in graphql.iterate(
+                            QUERY_LOCATIONS, {}, 'locations'):
+                        locations.append(
+                            (str(gid2id(location['id'])), location['name']))
                 self._shopify_locations_cache.set(self.shop.id, locations)
-            except (AttributeError,
-                    shopify.VersionNotFoundError,
-                    pyactiveresource.connection.Error):
+            except GraphQLException:
                 pass
         return locations
 
