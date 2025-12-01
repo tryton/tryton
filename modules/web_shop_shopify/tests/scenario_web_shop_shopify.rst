@@ -215,7 +215,7 @@ Create products::
     >>> template.type = 'goods'
     >>> template.salable = True
     >>> template.web_shop_description = "<p>Product description</p>"
-    >>> template.shopify_handle = 'product-1'
+    >>> template.shopify_handle = 'product-%s' % random.randint(0, 1000)
     >>> template.list_price = round(Decimal('9.99') / (1 + tax.rate), 4)
     >>> template.account_category = account_category
     >>> template.categories.append(Category(sub_category.id))
