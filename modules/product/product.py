@@ -22,7 +22,7 @@ from trytond.modules.company.model import (
 from trytond.pool import Pool
 from trytond.pyson import Eval, Get, If
 from trytond.tools import is_full_text, lstrip_wildcard
-from trytond.transaction import Transaction
+from trytond.transaction import Transaction, inactive_records
 from trytond.wizard import Button, StateTransition, StateView, Wizard
 
 try:
@@ -392,6 +392,20 @@ class ProductDeactivatableMixin(TemplateDeactivatableMixin):
         return expression & Coalesce(product.active, expression)
 
 
+class _One2ManyWithInactive(fields.One2Many):
+    @inactive_records
+    def get(self, *args, **kwargs):
+        return super().get(*args, **kwargs)
+
+    @inactive_records
+    def set(self, *args, **kwargs):
+        return super().set(*args, **kwargs)
+
+    @inactive_records
+    def convert_domain(self, *args, **kwargs):
+        return super().convert_domain(*args, **kwargs)
+
+
 class Product(
         TemplateDeactivatableMixin, tree('replaced_by'), ModelSQL, ModelView,
         CompanyMultiValueMixin):
@@ -463,7 +477,7 @@ class Product(
             'invisible': ~Eval('replaced_by'),
             },
         help="The product replacing this one.")
-    replacing = fields.One2Many(
+    replacing = _One2ManyWithInactive(
         'product.product', 'replaced_by', "Replacing", readonly=True,
         states={
             'invisible': ~Eval('replacing'),
