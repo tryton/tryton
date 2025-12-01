@@ -476,6 +476,7 @@ Create an order on Shopify::
     ...                 random.choice(string.ascii_letters) for _ in range(10))
     ...             + '@example.com'),
     ...         'phone': customer_phone,
+    ...         'locale': 'en-CA',
     ...         })
 
     >>> order = tools.create_order({
@@ -579,6 +580,8 @@ Run fetch order::
     'quotation'
     >>> sale.party.name
     'Customer'
+    >>> sale.party.lang.code
+    'en'
     >>> assertTrue(sale.party.email)
     >>> assertEqual(sale.party.phone.replace(' ', ''), customer_phone.replace('-', ''))
     >>> address, = sale.party.addresses

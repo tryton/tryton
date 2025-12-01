@@ -22,18 +22,25 @@ class Party(IdentifiersMixin, metaclass=PoolMeta):
             'displayName': None,
             'email': None,
             'phone': None,
+            'locale': None,
             }
 
     @classmethod
     def get_from_shopify(cls, shop, customer):
         pool = Pool()
         ContactMechanism = pool.get('party.contact_mechanism')
+        Lang = pool.get('ir.lang')
         party = cls.search_shopify_identifier(
             shop, gid2id(customer['id']))
         if not party:
             party = cls()
         setattr_changed(party, 'name', remove_forbidden_chars(
                 customer['displayName']))
+        if customer['locale']:
+            lang = Lang.get(customer['locale'])
+        else:
+            lang = None
+        setattr_changed(party, 'lang', lang)
         contact_mechanisms = list(getattr(party, 'contact_mechanisms', []))
         for types, value in [
                 (['email'], customer['email']),
