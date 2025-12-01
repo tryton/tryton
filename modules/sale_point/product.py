@@ -11,7 +11,8 @@ class _GrossPriceMixin:
     __slots__ = ()
 
     @fields.depends(
-        'gross_price', 'account_category', methods=['customer_taxes_used'])
+        'gross_price', 'account_category', '_parent_account_category.id',
+        methods=['customer_taxes_used'])
     def on_change_gross_price(self):
         pool = Pool()
         Date = pool.get('ir.date')
