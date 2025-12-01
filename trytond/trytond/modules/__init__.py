@@ -181,6 +181,7 @@ def load_module_graph(graph, pool, update=None, lang=None, indexes=None):
     modules_todo = []
     models_to_update_history = set()
     models_with_indexes = set()
+    models_to_refresh = set()
 
     # Load also parent languages
     lang = set(lang)
@@ -257,6 +258,9 @@ def load_module_graph(graph, pool, update=None, lang=None, indexes=None):
                 for model in classes['model']:
                     if hasattr(model, '_history'):
                         models_to_update_history.add(model.__name__)
+                    if (hasattr(model, '_table_query_materialized')
+                            and model._table_query_materialized()):
+                        models_to_refresh.add(model.__name__)
                     if hasattr(model, '_update_sql_indexes'):
                         models_with_indexes.add(model.__name__)
 
@@ -327,6 +331,10 @@ def load_module_graph(graph, pool, update=None, lang=None, indexes=None):
         if update:
             cursor.execute(*ir_configuration.update(
                     [ir_configuration.series], [__series__]))
+            for model_name in models_to_refresh:
+                model = pool.get(model_name)
+                logger.info('refresh %s', model.__name__)
+                model._table_query_refresh(concurrently=False, force=True)
             if indexes or indexes is None:
                 create_indexes(concurrently=False)
             else:

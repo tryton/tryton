@@ -1,3 +1,4 @@
+* Add support for materializing ModelSQL based on a table query
 * Add an option to trytond-console to run a script file
 * Store only immutable structure in MemoryCache
 * Replace ``clean_days`` with ``log_size`` in the cron configuration

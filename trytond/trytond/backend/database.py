@@ -185,6 +185,19 @@ class DatabaseInterface(object):
     def has_channel(self):
         return False
 
+    @classmethod
+    def has_materialized_views(cls):
+        return False
+
+    def create_materialized_view(self, connection, view_name, query):
+        raise NotImplementedError
+
+    def drop_materialized_view(self, connection):
+        raise NotImplementedError
+
+    def refresh_materialized_view(self, connection, view_name):
+        raise NotImplementedError
+
     def sql_type(self, type_):
         pass
 

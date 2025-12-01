@@ -269,7 +269,7 @@ class Index:
 def no_table_query(func):
     @wraps(func)
     def wrapper(cls, *args, **kwargs):
-        if callable(cls.table_query):
+        if cls._is_table_query():
             raise NotImplementedError("On table_query")
         return func(cls, *args, **kwargs)
     return wrapper
@@ -335,11 +335,13 @@ class ModelSQL(ModelStorage):
         cls._sql_constraints = []
         cls._sql_indexes = set()
         cls._history_sql_indexes = set()
-        if not callable(cls.table_query):
+        if (not cls._is_table_query()
+                or cls._table_query_materialized()):
             table = cls.__table__()
-            cls._sql_constraints.append(
-                ('id_positive', Check(table, table.id >= 0),
-                    'ir.msg_id_positive'))
+            if not cls._is_table_query():
+                cls._sql_constraints.append(
+                    ('id_positive', Check(table, table.id >= 0),
+                        'ir.msg_id_positive'))
             rec_name_field = getattr(cls, cls._rec_name, None)
             if (isinstance(rec_name_field, fields.Field)
                     and not hasattr(rec_name_field, 'set')):
@@ -428,7 +430,7 @@ class ModelSQL(ModelStorage):
 
     @classmethod
     def __table__(cls):
-        if callable(cls.table_query):
+        if cls._is_table_query() and not cls._table_query_materialized():
             return cls.table_query()
         else:
             return Table(cls._table)
@@ -445,10 +447,20 @@ class ModelSQL(ModelStorage):
 
     @classmethod
     def __register__(cls, module_name):
-        cursor = Transaction().connection.cursor()
+        transaction = Transaction()
+        cursor = transaction.connection.cursor()
         super().__register__(module_name)
 
-        if callable(cls.table_query):
+        if cls._is_table_query():
+            if transaction.database.has_materialized_views():
+                if backend.TableHandler.view_exist(cls._table):
+                    transaction.database.drop_materialized_view(
+                        transaction.connection, cls._table)
+                if cls._table_query_materialized():
+                    query = cls.table_query()
+                    query.columns += (CurrentTimestamp().as_('_refreshed'),)
+                    transaction.database.create_materialized_view(
+                        transaction.connection, cls._table, query)
             return
 
         pool = Pool()
@@ -567,7 +579,8 @@ class ModelSQL(ModelStorage):
                 if j != index and index < j:
                     return False
             return True
-        if not callable(cls.table_query):
+        if (not cls._is_table_query()
+                or cls._table_query_materialized()):
             table_h = cls.__table_handler__()
             indexes = filter(no_subset, cls._sql_indexes)
             table_h.set_indexes(indexes, concurrently=concurrently)
@@ -584,6 +597,36 @@ class ModelSQL(ModelStorage):
                 if not field.sql_type():
                     continue
                 history_table.add_column(field_name, field._sql_type)
+
+    @classmethod
+    def _is_table_query(cls):
+        return callable(cls.table_query)
+
+    @classmethod
+    def _table_query_materialized(cls):
+        if cls._is_table_query():
+            return config.getint(
+                'table_query_materialized', cls.__name__, default=0)
+
+    @classmethod
+    def _table_query_refresh(cls, concurrently=True, force=False):
+        table = cls.__table__()
+        transaction = Transaction()
+        if not transaction.database.has_materialized_views():
+            return
+        cursor = transaction.connection.cursor()
+        if not (interval := cls._table_query_materialized()):
+            return
+        if not force:
+            cursor.execute(*table.select(
+                    CurrentTimestamp() - table._refreshed, limit=1))
+            if row := cursor.fetchone():
+                delta, = row
+                interval = datetime.timedelta(seconds=interval)
+                if delta < interval:
+                    return
+        transaction.database.refresh_materialized_view(
+            transaction.connection, cls._table, concurrently=concurrently)
 
     @classmethod
     @without_check_access
@@ -1126,7 +1169,7 @@ class ModelSQL(ModelStorage):
         history_limit = None
         if (cls._history
                 and transaction.context.get('_datetime')
-                and not callable(cls.table_query)):
+                and not cls._is_table_query()):
             in_max = 1
             table = cls.__table_history__()
             column = Coalesce(table.write_date, table.create_date)
@@ -1138,7 +1181,7 @@ class ModelSQL(ModelStorage):
         for f in all_fields:
             field = cls._fields.get(f)
             if field and field.sql_type():
-                if f in _TABLE_QUERY_COLUMNS and callable(cls.table_query):
+                if f in _TABLE_QUERY_COLUMNS and cls._is_table_query():
                     column = _TABLE_QUERY_COLUMNS[f]
                 else:
                     column = field.sql_column(table)
@@ -1146,7 +1189,7 @@ class ModelSQL(ModelStorage):
                 if backend.name == 'sqlite':
                     columns[f].output_name += ' [%s]' % field.sql_type().base
             elif f in {'_write', '_delete'}:
-                if not callable(cls.table_query):
+                if not cls._is_table_query():
                     rule_domain = Rule.domain_get(
                         cls.__name__, mode=f.lstrip('_'))
                     # No need to compute rule domain if it is the same as the
@@ -1168,7 +1211,7 @@ class ModelSQL(ModelStorage):
                         columns[f] = rule_expression.as_(f)
                     else:
                         columns[f] = Literal(True).as_(f)
-            elif f == '_timestamp' and not callable(cls.table_query):
+            elif f == '_timestamp' and not cls._is_table_query():
                 sql_type = fields.Char('timestamp').sql_type().base
                 columns[f] = Extract(
                     'EPOCH', Coalesce(table.write_date, table.create_date)
@@ -1641,7 +1684,7 @@ class ModelSQL(ModelStorage):
         if (mode == 'read'
                 and cls._history
                 and transaction.context.get('_datetime')
-                and not callable(cls.table_query)):
+                and not cls._is_table_query()):
             in_max = 1
             table = cls.__table_history__()
             column = Coalesce(table.write_date, table.create_date)
@@ -1824,7 +1867,7 @@ class ModelSQL(ModelStorage):
             columns.append(Column(table, '__id').as_('__id'))
 
         if eager:
-            table_query = callable(cls.table_query)
+            table_query = cls._is_table_query()
             columns += [f.sql_column(table).as_(n)
                 for n, f in sorted(cls._fields.items())
                 if not hasattr(f, 'get')

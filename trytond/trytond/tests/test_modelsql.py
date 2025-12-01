@@ -1406,6 +1406,31 @@ class ModelSQLTestCase(TestCase):
                     ['OR', ('c', '=', 3), ('d.e', '=', 4)]]
                 ])
 
+    @unittest.skipUnless(
+        backend.Database.has_materialized_views(),
+        "Database backend does not support materialized views")
+    @with_transaction()
+    def test_table_query_refresh(self):
+        "Test refresh materialized table query"
+        pool = Pool()
+        Data = pool.get('test.modelsql.materialized.data')
+        MaterializedView = pool.get('test.modelsql.materialized')
+
+        Data.create([{
+                    'name': "Foo",
+                    }, {
+                    'name': "Foo",
+                    }, {
+                    'name': "Bar",
+                    }])
+        self.assertEqual(
+            MaterializedView.search([]),
+            [])
+
+        MaterializedView._table_query_refresh()
+        stats = [(s.name, s.count) for s in MaterializedView.search([])]
+        self.assertEqual(stats, [("Foo", 2), ("Bar", 1)])
+
 
 class TranslationTestCase(TestCase):
     default_language = 'fr'

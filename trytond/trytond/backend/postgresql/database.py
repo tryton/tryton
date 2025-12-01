@@ -535,6 +535,16 @@ class Database(DatabaseInterface):
             if cursor.rowcount:
                 return schema
 
+    def get_view_schema(self, connection, view_name):
+        cursor = connection.cursor()
+        for schema in self.search_path:
+            cursor.execute('SELECT 1 '
+                'FROM pg_matviews '
+                'WHERE matviewname = %s AND schemaname = %s',
+                (view_name, schema))
+            if cursor.rowcount:
+                return schema
+
     @property
     def current_user(self):
         if self._current_user is None:
@@ -859,6 +869,36 @@ class Database(DatabaseInterface):
 
     def json_contains(self, column, json):
         return JSONContains(Cast(column, 'jsonb'), Cast(json, 'jsonb'))
+
+    @classmethod
+    def has_materialized_views(cls):
+        return True
+
+    def create_materialized_view(self, connection, view_name, query):
+        cursor = connection.cursor()
+        cursor.execute(
+            SQL(
+                "CREATE MATERIALIZED VIEW IF NOT EXISTS {} AS {} "
+                "WITH NO DATA"
+                ).format(Identifier(view_name), SQL(str(query))),
+            query.params)
+        cursor.execute(
+            SQL("CREATE UNIQUE INDEX ON {}(id)").format(Identifier(view_name)))
+
+    def drop_materialized_view(self, connection, view_name):
+        cursor = connection.cursor()
+        cursor.execute(
+            SQL("DROP MATERIALIZED VIEW {}").format(Identifier(view_name)))
+
+    def refresh_materialized_view(
+            self, connection, view_name, concurrently=True):
+        cursor = connection.cursor()
+        cursor.execute(
+            SQL("REFRESH MATERIALIZED VIEW {} {}")
+            .format(
+                SQL('CONCURRENTLY' if concurrently else ''),
+                Identifier(view_name)
+                ))
 
 
 register_type(UNICODE)

@@ -46,6 +46,10 @@ class TableHandlerInterface(object):
         raise NotImplementedError
 
     @classmethod
+    def view_exist(cls, view_name):
+        raise NotImplementedError
+
+    @classmethod
     def table_rename(cls, old_name, new_name):
         raise NotImplementedError
 

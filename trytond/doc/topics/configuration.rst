@@ -516,6 +516,27 @@ For example::
     account.invoice.line = acc_inv_line
     account.invoice.tax = acc_inv_tax
 
+.. _config-table_query_materialized:
+
+table_query_materialized
+------------------------
+
+This section allow to define which :class:`~trytond.model.ModelSQL` with
+:meth:`~trytond.model.ModelSQL.table_query` must be materialized and at which
+interval they must be refreshed.
+
+The interval value is expressed in seconds.
+
+For example::
+
+    [table_query_materialized]
+    account.account.party = 1440
+
+.. note::
+
+   Only the :meth:`~trytond.model.ModelSQL.table_query` that does not depend on
+   the :attr:`~trytond.transaction.Transaction.context`.
+
 .. _config-ssl:
 
 ssl

@@ -32,16 +32,27 @@ class TableHandler(TableHandlerInterface):
         cursor = transaction.connection.cursor()
 
         # Create new table if necessary
-        if not self.table_exist(self.table_name):
+        if (not (view_exists := self.view_exist(self.table_name))
+                and not self.table_exist(self.table_name)):
             cursor.execute(SQL('CREATE TABLE {} ()').format(
                     Identifier(self.table_name)))
-        self.table_schema = transaction.database.get_table_schema(
-            transaction.connection, self.table_name)
-
-        cursor.execute('SELECT tableowner = current_user FROM pg_tables '
-            'WHERE tablename = %s AND schemaname = %s',
-            (self.table_name, self.table_schema))
+        if view_exists:
+            self.table_schema = transaction.database.get_view_schema(
+                transaction.connection, self.table_name)
+            is_owner_query = (
+                'SELECT matviewowner = current_user FROM pg_matviews '
+                'WHERE matviewname = %s and schemaname = %s')
+        else:
+            self.table_schema = transaction.database.get_table_schema(
+                transaction.connection, self.table_name)
+            is_owner_query = (
+                'SELECT tableowner = current_user FROM pg_tables '
+                'WHERE tablename = %s AND schemaname = %s')
+        cursor.execute(is_owner_query, (self.table_name, self.table_schema))
         self.is_owner, = cursor.fetchone()
+
+        if view_exists:
+            return
 
         if model.__doc__ and self.is_owner:
             cursor.execute(SQL('COMMENT ON TABLE {} IS %s').format(
@@ -124,6 +135,12 @@ class TableHandler(TableHandlerInterface):
         transaction = Transaction()
         return bool(transaction.database.get_table_schema(
                 transaction.connection, table_name))
+
+    @classmethod
+    def view_exist(cls, view_name):
+        transaction = Transaction()
+        return bool(transaction.database.get_view_schema(
+                transaction.connection, view_name))
 
     @classmethod
     def table_rename(cls, old_name, new_name):

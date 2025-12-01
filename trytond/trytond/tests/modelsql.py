@@ -1,6 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from sql import Literal
+from sql.aggregate import Count, Min
 from sql.operators import Equal
 
 from trytond.model import (
@@ -267,6 +268,36 @@ class ModelLock(ModelSQL):
     __name__ = 'test.modelsql.lock'
 
 
+class ModelMaterializedViewData(ModelSQL):
+    "Model to provide test data to the materialized views"
+    __name__ = 'test.modelsql.materialized.data'
+    name = fields.Char("Name")
+
+
+class ModelMaterializedView(ModelSQL):
+    "Model to test the materialized views"
+    __name__ = 'test.modelsql.materialized'
+
+    name = fields.Char("Name")
+    count = fields.Integer("Count")
+
+    @classmethod
+    def table_query(cls):
+        pool = Pool()
+        Model = pool.get('test.modelsql.materialized.data')
+        model = Model.__table__()
+
+        return model.select(
+            Min(model.id).as_('id'),
+            model.name.as_('name'),
+            Count(model.id).as_('count'),
+            group_by=[model.name])
+
+    @classmethod
+    def _table_query_materialized(cls):
+        return 1
+
+
 def register(module):
     Pool.register(
         ModelSQLRead,
@@ -297,4 +328,6 @@ def register(module):
         ModelUnique,
         ModelExclude,
         ModelLock,
+        ModelMaterializedViewData,
+        ModelMaterializedView,
         module=module, type_='model')

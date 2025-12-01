@@ -27,7 +27,8 @@ from trytond.rpc import RPC
 from trytond.tools import cursor_dict, grouped_slice, is_instance_method
 from trytond.tools.string_ import StringMatcher
 from trytond.transaction import Transaction, without_check_access
-from trytond.wizard import Button, StateAction, StateView, Wizard
+from trytond.wizard import (
+    Button, StateAction, StateTransition, StateView, Wizard)
 
 from .resource import ResourceAccessMixin
 
@@ -241,6 +242,13 @@ class Model(
     @classmethod
     def get_name(cls, model):
         return cls.get_names().get(model, model)
+
+    @classmethod
+    def refresh_materialized(cls):
+        pool = Pool()
+        for _, Model in pool.iterobject():
+            if hasattr(Model, '_table_query_refresh'):
+                Model._table_query_refresh()
 
 
 class ModelField(
@@ -1724,3 +1732,15 @@ class ModelWorkflowGraph(Report):
                         f'"{record.name}--{to}"',
                         arrowhead='normal')
                 subgraph.add_edge(edge)
+
+
+class RefreshMaterialized(Wizard):
+    __name__ = "ir.model.refresh_materialized"
+    start = StateTransition()
+
+    def transition_start(self):
+        pool = Pool()
+        Model = pool.get(Transaction().context['active_model'])
+        if hasattr(Model, '_table_query_refresh'):
+            Model._table_query_refresh(force=True)
+        return 'end'

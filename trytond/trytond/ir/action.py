@@ -271,6 +271,7 @@ class ActionKeyword(ModelSQL, ModelView):
         Action = pool.get('ir.action')
         Menu = pool.get('ir.ui.menu')
         ModelAccess = pool.get('ir.model.access')
+        ModelData = pool.get('ir.model.data')
         User = pool.get('res.user')
         groups = User.get_groups()
         key = (Transaction().language, groups, keyword, tuple(value))
@@ -279,6 +280,7 @@ class ActionKeyword(ModelSQL, ModelView):
             return keywords
         keywords = []
         model, record_id = value
+        Model = pool.get(model)
 
         clause = [
             ('keyword', '=', keyword),
@@ -301,6 +303,12 @@ class ActionKeyword(ModelSQL, ModelView):
         for action_keyword in action_keywords:
             type_ = action_keyword.action.type
             types[type_].append(action_keyword.action.id)
+        if (keyword == 'form_action'
+                and issubclass(Model, ModelSQL)
+                and Model._table_query_materialized()):
+            refresh_action = ModelData.get_id(
+                'ir', 'wizard_model_refresh_materialized')
+            types['ir.action.wizard'].append(refresh_action)
         for type_, action_ids in types.items():
             for value in Action.get_action_values(type_, action_ids):
                 if (type_ == 'ir.action.act_window'

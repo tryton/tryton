@@ -57,6 +57,10 @@ class TableHandler(TableHandlerInterface):
         return True
 
     @classmethod
+    def view_exist(cls, view_name):
+        return False
+
+    @classmethod
     def table_rename(cls, old_name, new_name):
         cursor = Transaction().connection.cursor()
         if (cls.table_exist(old_name)
