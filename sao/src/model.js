@@ -1022,7 +1022,7 @@
                 this.on_change(fieldnames);
                 this.on_change_with(fieldnames);
                 if (validate) {
-                    return this.validate(null, true);
+                    this.validate(null, true);
                 }
                 if (modified) {
                     this.set_modified();
