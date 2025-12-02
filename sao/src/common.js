@@ -3155,6 +3155,8 @@
         'tryton-menu',
         'tryton-note',
         'tryton-notification',
+        'tryton-notification-off',
+        'tryton-notification-on',
         'tryton-ok',
         'tryton-open',
         'tryton-print',

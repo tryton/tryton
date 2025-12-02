@@ -1,3 +1,4 @@
+* Allow users to subscribe to chats
 * Manage user notification
 * Add search on empty relation field to domain parser
 * Add support for multiple button in the tree view

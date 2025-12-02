@@ -50,6 +50,59 @@
                 'class': 'chat',
             });
 
+            let btn_group = jQuery('<div/>', {
+                'class': 'btn-group',
+                'role': 'group',
+            }).appendTo(el);
+
+            let subscribe_btn = jQuery('<button/>', {
+                'class': 'btn btn-default pull-right',
+                'type': 'button',
+                'title': Sao.i18n.gettext("Toggle notification"),
+            }).append(Sao.common.ICONFACTORY.get_icon_img(
+                'tryton-notification'))
+                .appendTo(btn_group);
+
+            Sao.rpc({
+                'method': 'model.ir.chat.channel.get_followers',
+                'params': [this.record, {}],
+            }, Sao.Session.current_session).then((followers) => {
+                set_subscribe_state(~followers.users.indexOf(
+                    Sao.Session.current_session.login));
+            })
+
+            let set_subscribe_state = (subscribed) => {
+                let img;
+                if (subscribed) {
+                    img = 'tryton-notification-on';
+                    subscribe_btn.addClass('active').off().click(unsubscribe);
+                } else {
+                    img = 'tryton-notification-off';
+                    subscribe_btn.removeClass('active').off().click(subscribe);
+                }
+                subscribe_btn.html(Sao.common.ICONFACTORY.get_icon_img(img));
+            }
+
+            let subscribe = () => {
+                let session = Sao.Session.current_session;
+                Sao.rpc({
+                    'method': 'model.ir.chat.channel.subscribe',
+                    'params': [this.record, {}],
+                }, session).then(() => {
+                    set_subscribe_state(true);
+                })
+            };
+
+            let unsubscribe = () => {
+                let session = Sao.Session.current_session;
+                Sao.rpc({
+                    'method': 'model.ir.chat.channel.unsubscribe',
+                    'params': [this.record, {}],
+                }, session).then(() => {
+                    set_subscribe_state(false);
+                })
+            };
+
             this._messages = jQuery('<div/>', {
                 'class': 'chat-messages',
             }).appendTo(jQuery('<div/>', {

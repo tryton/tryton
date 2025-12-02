@@ -44,6 +44,7 @@ class Channel(ModelSQL):
             unsubscribe=RPC(readonly=False),
             subscribe_email=RPC(readonly=False),
             unsubscribe_email=RPC(readonly=False),
+            get_followers=RPC(),
             post=RPC(readonly=False, result=int),
             get_models=RPC(),
             get=RPC(),
@@ -73,19 +74,24 @@ class Channel(ModelSQL):
                 ])
         if channels:
             channel, = channels
-        else:
+        elif not Transaction().readonly:
             channel = cls(resource=str(resource))
             channel.save()
+        else:
+            return
         return channel
 
     @classmethod
-    def subscribe(cls, resource, username):
+    def subscribe(cls, resource, username=None):
         pool = Pool()
         Follower = pool.get('ir.chat.follower')
         User = pool.get('res.user')
-        user, = User.search([
-                ('login', '=', username),
-                ])
+        if username is not None:
+            user, = User.search([
+                    ('login', '=', username),
+                    ])
+        else:
+            user = User(Transaction().user)
         channel = cls._get_channel(resource)
         Follower.add_user(channel, user)
 
@@ -111,6 +117,26 @@ class Channel(ModelSQL):
         Follower = pool.get('ir.chat.follower')
         channel = cls._get_channel(resource)
         Follower.remove_email(channel, email)
+
+    @classmethod
+    def get_followers(cls, resource):
+        pool = Pool()
+        Follower = pool.get('ir.chat.follower')
+        users, emails = [], []
+        channel = cls._get_channel(resource)
+        if channel:
+            followers = Follower.search([
+                    ('channel', '=', channel),
+                    ])
+            for follower in followers:
+                if follower.user:
+                    users.append(follower.user.login)
+                elif follower.email:
+                    emails.append(follower.email)
+        return {
+            'users': users,
+            'emails': emails,
+            }
 
     @classmethod
     def post(cls, resource, content, audience='internal'):

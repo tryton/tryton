@@ -1,3 +1,4 @@
+* Allow users to subscribe to chats
 * Manage user notification
 * Add search on empty relation field to domain parser
 * Escape completion content with custom format (issue14363)

@@ -84,8 +84,52 @@ class Chat:
             'size-allocate', scroll_to_bottom)
 
     def __build(self):
+        tooltips = common.Tooltips()
+
         widget = Gtk.VBox()
         widget.set_spacing(3)
+
+        hbuttonbox = Gtk.HButtonBox()
+        hbuttonbox.set_layout(Gtk.ButtonBoxStyle.END)
+        widget.pack_start(hbuttonbox, expand=False, fill=True, padding=0)
+
+        subscribe_btn = Gtk.ToggleButton()
+        subscribe_btn.set_image(common.IconFactory.get_image(
+                'tryton-notification', Gtk.IconSize.SMALL_TOOLBAR))
+        tooltips.set_tip(subscribe_btn, _("Toggle notification"))
+        subscribe_btn.set_relief(Gtk.ReliefStyle.NONE)
+        hbuttonbox.pack_start(
+            subscribe_btn, expand=False, fill=True, padding=0)
+        hbuttonbox.set_child_non_homogeneous(subscribe_btn, True)
+
+        followers = rpc.execute(
+            'model', 'ir.chat.channel', 'get_followers', self.record,
+            rpc.CONTEXT)
+
+        def set_subscribe_state(subscribed):
+            if subscribed:
+                img = 'tryton-notification-on'
+            else:
+                img = 'tryton-notification-off'
+            subscribe_btn.set_image(common.IconFactory.get_image(
+                    img, Gtk.IconSize.SMALL_TOOLBAR))
+
+        subscribed = rpc._LOGIN in followers['users']
+        set_subscribe_state(subscribed)
+        subscribe_btn.set_active(subscribed)
+
+        def toggle_subscribe(button):
+            if button.props.active:
+                rpc.execute(
+                    'model', 'ir.chat.channel', 'subscribe', self.record,
+                    rpc.CONTEXT)
+            else:
+                rpc.execute(
+                    'model', 'ir.chat.channel', 'unsubscribe', self.record,
+                    rpc.CONTEXT)
+            set_subscribe_state(button.props.active)
+
+        subscribe_btn.connect('toggled', toggle_subscribe)
 
         def _submit(button):
             buffer = input_.get_buffer()

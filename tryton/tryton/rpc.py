@@ -20,6 +20,7 @@ from tryton.jsonrpc import Fault, ServerPool, ServerProxy
 logger = logging.getLogger(__name__)
 CONNECTION = None
 _USER = None
+_LOGIN = None
 CONTEXT = {}
 _VIEW_CACHE = {}
 _TOOLBAR_CACHE = {}
@@ -86,7 +87,7 @@ def authentication_services(host, port):
 def set_service_session(parameters):
     from tryton import common
     from tryton.bus import Bus
-    global CONNECTION, _USER
+    global CONNECTION, _USER, _LOGIN
     host = CONFIG['login.host']
     hostname = common.get_hostname(host)
     port = common.get_port(host)
@@ -102,6 +103,7 @@ def set_service_session(parameters):
         if _USER != renew_id:
             raise ValueError
     _USER = user_id
+    _LOGIN = username
     bus_url_host = parameters.get('bus_url_host', [''])[0]
     session = ':'.join(map(str, [username, user_id, session]))
     if CONNECTION is not None:
@@ -114,7 +116,7 @@ def set_service_session(parameters):
 def login(parameters):
     from tryton import common
     from tryton.bus import Bus
-    global CONNECTION, _USER
+    global CONNECTION, _USER, _LOGIN
     host = CONFIG['login.host']
     hostname = common.get_hostname(host)
     port = common.get_port(host)
@@ -127,6 +129,7 @@ def login(parameters):
     result = connection.common.db.login(username, parameters, language)
     logger.debug('%r', result)
     _USER = result[0]
+    _LOGIN = username
     session = ':'.join(map(str, [username] + result[:2]))
     bus_url_host = result[2]
     if CONNECTION is not None:
@@ -138,7 +141,7 @@ def login(parameters):
 
 
 def logout():
-    global CONNECTION, _USER
+    global CONNECTION, _USER, _LOGIN
     if CONNECTION is not None:
         try:
             logger.info('common.db.logout()')
@@ -148,7 +151,7 @@ def logout():
             pass
         CONNECTION.close()
         CONNECTION = None
-    _USER = None
+    _USER = _LOGIN = None
 
 
 def reset_password():
