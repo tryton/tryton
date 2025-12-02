@@ -145,6 +145,10 @@ class IconFactory:
                 ET.register_namespace('', 'http://www.w3.org/2000/svg')
                 root = ET.fromstring(data)
                 root.attrib['fill'] = color
+                if view_box := root.attrib.get('viewBox'):
+                    min_x, min_y, width, height = map(
+                        float, view_box.split(' '))
+                    factor = max(width, height) / 24
                 if badge:
                     if not isinstance(badge, str):
                         try:
@@ -152,9 +156,9 @@ class IconFactory:
                         except IndexError:
                             badge = color
                     ET.SubElement(root, 'circle', {
-                            'cx': '20',
-                            'cy': '4',
-                            'r': '4',
+                            'cx': str(20 * factor + min_x),
+                            'cy': str(4 * factor + min_y),
+                            'r': str(4 * factor),
                             'fill': badge,
                             })
                 data = ET.tostring(root)
