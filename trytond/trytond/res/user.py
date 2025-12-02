@@ -142,6 +142,10 @@ class User(avatar_mixin(100, 'login'), DeactivableMixin, ModelSQL, ModelView):
     language_direction = fields.Function(fields.Char('Language Direction'),
             'get_language_direction')
     email = fields.Char('Email')
+    notifications = fields.MultiSelection(
+        'get_notifications', "Notifications",
+        help="Notifications to subscribe to.")
+
     status_bar = fields.Function(fields.Char('Status Bar'), 'get_status_bar')
     avatar_badge_url = fields.Function(
         fields.Char("Avatar Badge URL"), 'get_avatar_badge_url')
@@ -183,6 +187,7 @@ class User(avatar_mixin(100, 'login'), DeactivableMixin, ModelSQL, ModelView):
             'avatar_badge_url',
             'warnings',
             'applications',
+            'notifications',
         ]
         cls._context_fields = [
             'language',
@@ -327,6 +332,12 @@ class User(avatar_mixin(100, 'login'), DeactivableMixin, ModelSQL, ModelView):
                         for i, g in groupby(filter(filter_, sessions),
                             attrgetter('create_uid.id'))))
         return result
+
+    @classmethod
+    def get_notifications(cls):
+        pool = Pool()
+        Cron = pool.get('ir.cron')
+        return list(Cron.notifications())
 
     @classmethod
     def preprocess_values(cls, mode, values):

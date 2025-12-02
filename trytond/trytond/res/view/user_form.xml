@@ -37,6 +37,9 @@ this repository contains the full copyright notices and license terms. -->
         <page string="Preferences" col="2" id="preferences">
             <label name="language"/>
             <field name="language" widget="selection"/>
+
+            <label name="notifications"/>
+            <field name="notifications"/>
         </page>
     </notebook>
 </form>

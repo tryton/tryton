@@ -4,6 +4,8 @@ Cron
 ====
 
 The *Cron* stores the configuration for `scheduled actions <topics-cron>`.
+Some jobs can be set up to notify `Users <model-res.user>`, if so they will
+appear in the user preferences.
 
 .. seealso::
 

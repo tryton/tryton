@@ -1,3 +1,4 @@
+* Allow users to subscribe to notification cron jobs
 * Add user notification
 * Add support for materializing ModelSQL based on a table query
 * Add an option to trytond-console to run a script file

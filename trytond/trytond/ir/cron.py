@@ -6,6 +6,7 @@ import logging
 import random
 import time
 from collections import defaultdict
+from itertools import groupby
 
 from dateutil.relativedelta import relativedelta
 from sql import Literal
@@ -14,6 +15,7 @@ from sql.functions import CurrentTimestamp, Extract
 
 from trytond import backend, config
 from trytond.exceptions import UserError, UserWarning
+from trytond.i18n import gettext, ngettext
 from trytond.model import (
     DeactivableMixin, Index, ModelSQL, ModelView, dualmethod, fields)
 from trytond.pool import Pool
@@ -113,6 +115,7 @@ class Cron(DeactivableMixin, ModelSQL, ModelView):
                     },
                 })
         cls._sql_indexes.add(Index(table, (table.next_call, Index.Range())))
+        cls._notifications = set()
 
     @classmethod
     def default_timezone(cls):
@@ -145,6 +148,17 @@ class Cron(DeactivableMixin, ModelSQL, ModelView):
                     running.update(
                         (i, True) for i in ids if i not in not_running)
         return running
+
+    @classmethod
+    def notifications(cls):
+        "Yield method and label which support user notification"
+        pool = Pool()
+        ModelAccess = pool.get('ir.model.access')
+        for method, label in cls.fields_get(['method'])['method']['selection']:
+            if method in cls._notifications:
+                model_name, _ = method.split('|')
+                if ModelAccess.check(model_name, raise_exception=False):
+                    yield method, label
 
     @classmethod
     def view_attributes(cls):
@@ -246,7 +260,8 @@ class Cron(DeactivableMixin, ModelSQL, ModelView):
                 try:
                     if not database.has_select_for():
                         task.lock()
-                    with processing(name):
+                    with processing(name), \
+                            transaction.set_context(_cron=task.method):
                         task.run_once()
                     task.next_call = task.compute_next_call(now)
                     task.save()
@@ -292,6 +307,43 @@ class Cron(DeactivableMixin, ModelSQL, ModelView):
                 except backend.DatabaseOperationalError:
                     transaction.rollback()
         logger.info('cron finished for "%s"', db_name)
+
+    @classmethod
+    def notify(
+            cls, icon, action_id, action_value,
+            message_id, n=None, **variables):
+        "Notify subscribed users to the current cron task"
+        pool = Pool()
+        User = pool.get('res.user')
+        Notification = pool.get('res.notification')
+        ModelData = pool.get('ir.model.data')
+        transaction = Transaction()
+        if method := transaction.context.get('_cron'):
+            notifications = []
+            if action_id is not None:
+                action_id = ModelData.get_id(action_id)
+            users = User.search([
+                    ('notifications', 'in', method),
+                    ])
+            for language, users in groupby(
+                    users, key=lambda u: u.language):
+                language = language.code if language else None
+                with transaction.set_context(language=language):
+                    label = dict(cls.notifications()).get(method, method)
+                    if n is None:
+                        msg = gettext(message_id, **variables)
+                    else:
+                        msg = ngettext(message_id, n, **variables)
+                for user in users:
+                    notifications.append(Notification(
+                            user=user,
+                            label=label,
+                            description=msg,
+                            icon=icon,
+                            action=action_id,
+                            action_value=action_value,
+                            ))
+            Notification.save(notifications)
 
 
 class Log(ModelSQL, ModelView):

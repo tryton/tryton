@@ -19,8 +19,9 @@ Each user is identified by their login name which must be unique.
 The login name is used when logging in to Tryton, along with other
 authentication data, such as their password.
 
-It also contains a set of other properties that let you store additional
-information about the user, such as their name, email address, and language.
+It also contains a number of other properties that allow you to store
+additional information about the user, such as their name, email address,
+language and notifications to subscribe to.
 
 Users can belong to `Groups <model-res.group>` which define, amongst other
 things, their access rights.
