@@ -611,7 +611,14 @@ var Sao = {
                                 Sao.menu(preferences);
                                 Sao.user_menu(preferences);
                                 Sao.open_url(url);
+                                let user_id = Sao.Session.current_session.user_id;
+                                Sao.Bus.register(
+                                    `notification:${user_id}`,
+                                    Sao.NotificationMenu.notify
+                                    .bind(Sao.NotificationMenu));
+                                Sao.NotificationMenu.count();
                                 Sao.Bus.listen();
+
                             });
                     }
                 }, function() {
@@ -633,6 +640,9 @@ var Sao = {
             jQuery('#user-preferences').empty();
             jQuery('#global-search').empty();
             jQuery('#menu').empty();
+            let user_id = Sao.Session.current_session.user_id;
+            Sao.Bus.unregister(
+                `notification:${user_id}`, Sao.NotificationMenu.update);
             session.do_logout().always(Sao.login);
             Sao.set_title();
         });
@@ -702,16 +712,24 @@ var Sao = {
     };
 
     Sao.user_menu = function(preferences) {
-        jQuery('#user-preferences').empty();
+        let user_preferences = jQuery('#user-preferences');
+        user_preferences.empty();
         var user = jQuery('<a/>', {
             'href': '#',
+            'class': 'dropdown-toggle',
+            'data-toggle': 'dropdown',
+            'role': 'button',
+            'aria-expanded': false,
+            'aria-haspopup': true,
             'title': preferences.status_bar,
-        }).click(function(evt) {
-            evt.preventDefault();
-            user.prop('disabled', true);
-            Sao.preferences().then(() => user.prop('disabled', false));
         }).text(preferences.status_bar);
-        jQuery('#user-preferences').append(user);
+        user_preferences
+            .off('show.bs.dropdown')
+            .on('show.bs.dropdown', () => {
+                Sao.NotificationMenu.fill();
+                Sao.NotificationMenu.indicator.hide();
+            })
+            .append(user).append(Sao.NotificationMenu.el);
         if (preferences.avatar_badge_url) {
             user.prepend(jQuery('<img/>', {
                 'src': preferences.avatar_badge_url + '?s=15',
@@ -724,6 +742,7 @@ var Sao = {
                 'class': 'img-circle',
             }));
         }
+        user.prepend(Sao.NotificationMenu.indicator);
         var title = Sao.i18n.gettext("Logout");
         jQuery('#user-logout > a')
             .attr('title', title)

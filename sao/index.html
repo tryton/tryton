@@ -39,8 +39,8 @@ this repository contains the full copyright notices and license terms. -->
             <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
                 <div class="container-fluid">
                     <div class="navbar-header">
-                        <button type="button" class="navbar-toggle collapsed"
-                                              data-toggle="collapse" data-target="#main_navbar">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main_navbar">
+                            <span class="notification-badge"></span>
                             <span class="caret"></span>
                         </button>
                         <a class="navbar-brand" href="javascript:void(0)" data-toggle="menu">
@@ -57,7 +57,7 @@ this repository contains the full copyright notices and license terms. -->
                         <form class="navbar-form navbar-left flip" role="search" id="global-search" style="border-style: none;">
                         </form>
                         <ul class="nav navbar-nav navbar-right flip">
-                            <li id="user-preferences"></li>
+                            <li id="user-preferences" class="dropdown"></li>
                             <li id="user-logout">
                                 <a href="#">
                                     <span class="icon hidden-xs">
@@ -92,6 +92,7 @@ this repository contains the full copyright notices and license terms. -->
                     jQuery('[data-toggle="menu"]').click(function() {
                         jQuery('#menu').toggleClass('hidden');
                         jQuery('#tabs').toggleClass('hidden-xs');
+                        jQuery('#main_navbar').collapse('hide');
                     });
                     jQuery('#tabs').on('ready', function() {
                         var mq = window.matchMedia('(max-width: 991px)');
@@ -105,7 +106,7 @@ this repository contains the full copyright notices and license terms. -->
                             }
                         }
                     });
-                    jQuery('#main_navbar').on('click', 'a', function() {
+                    jQuery('#main_navbar').on('click', 'a:not(.dropdown-toggle)', function() {
                         jQuery('#main_navbar').collapse('hide');
                     });
                 });

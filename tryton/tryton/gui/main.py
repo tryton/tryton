@@ -19,11 +19,13 @@ import tryton.plugins
 import tryton.rpc as rpc
 import tryton.translate as translate
 from tryton.action import Action
+from tryton.bus import Bus
 from tryton.common import RPCContextReload, RPCException, RPCExecute
 from tryton.common.cellrendererclickablepixbuf import (
     CellRendererClickablePixbuf)
 from tryton.config import CONFIG, TRYTON_ICON, get_config_dir
 from tryton.exceptions import TrytonError, TrytonServerUnavailable
+from tryton.gui.notification import NotificationMenu
 from tryton.gui.window import Window
 from tryton.jsonrpc import object_hook
 from tryton.pyson import PYSONDecoder
@@ -164,6 +166,9 @@ class Main(Gtk.Application):
         self.set_global_search()
         self.header.pack_start(self.global_search_entry)
 
+        self.notification_menu = NotificationMenu(self)
+        self.header.pack_end(self.notification_menu.button)
+
         self.accel_group = Gtk.AccelGroup()
         self.window.add_accel_group(self.accel_group)
 
@@ -263,6 +268,9 @@ class Main(Gtk.Application):
                     msg_type=Gtk.MessageType.ERROR)
             return self.quit()
         self.get_preferences()
+        Bus.register(
+            f'notification:{rpc._USER}', self.notification_menu.notify)
+        self.notification_menu.count()
 
     def do_command_line(self, cmd):
         self.do_activate()

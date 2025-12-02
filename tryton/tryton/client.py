@@ -48,6 +48,14 @@ def main():
         font-size: medium;
         font-weight: normal;
     }
+    .unread-notification {
+        color: @theme_selected_fg_color;
+        background-color: lighter(@theme_selected_bg_color);
+    }
+    .unread-notification:hover {
+        color: @theme_selected_fg_color;
+        background-color: @theme_selected_bg_color;
+    }
     """
 
     screen = Gdk.Screen.get_default()

@@ -1,3 +1,4 @@
+* Manage user notification
 * Add search on empty relation field to domain parser
 * Escape completion content with custom format (issue14363)
 * Use sandboxed iframe to display document (issue14290)

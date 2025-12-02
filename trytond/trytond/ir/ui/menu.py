@@ -60,6 +60,7 @@ CLIENT_ICONS = [(x, x) for x in [
         'tryton-log',
         'tryton-menu',
         'tryton-note',
+        'tryton-notification',
         'tryton-ok',
         'tryton-open',
         'tryton-print',

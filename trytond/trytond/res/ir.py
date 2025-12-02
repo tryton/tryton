@@ -11,13 +11,21 @@ class Rule(metaclass=PoolMeta):
     @classmethod
     def _get_context(cls, model_name):
         context = super()._get_context(model_name)
-        if model_name in {'res.user.warning', 'res.user.application'}:
+        if model_name in {
+                'res.user.warning',
+                'res.user.application',
+                'res.notification',
+                }:
             context['user_id'] = Transaction().user
         return context
 
     @classmethod
     def _get_cache_key(cls, model_names):
         key = super()._get_cache_key(model_names)
-        if model_names & {'res.user.warning', 'res.user.application'}:
+        if model_names & {
+                'res.user.warning',
+                'res.user.application',
+                'res.notification',
+                }:
             key = (*key, Transaction().user)
         return key

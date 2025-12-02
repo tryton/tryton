@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form>
+    <label name="icon"/>
+    <field name="icon"/>
+    <label name="user"/>
+    <field name="user"/>
+
+    <label name="label"/>
+    <field name="label" colspan="3"/>
+
+    <label name="description"/>
+    <field name="description" colspan="3"/>
+
+    <label name="unread"/>
+    <field name="unread"/>
+    <newline/>
+
+    <label name="model_ref"/>
+    <field name="model_ref"/>
+    <label name="records"/>
+    <field name="records" widget="pyson"/>
+
+    <label name="action"/>
+    <field name="action"/>
+    <label name="action_value"/>
+    <field name="action_value" widget="pyson"/>
+</form>

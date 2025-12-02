@@ -1,0 +1,85 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="notification_view_list">
+            <field name="model">res.notification</field>
+            <field name="type">tree</field>
+            <field name="name">notification_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="notification_view_form">
+            <field name="model">res.notification</field>
+            <field name="type">form</field>
+            <field name="priority" eval="10"/>
+            <field name="name">notification_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="notification_view_form_admin">
+            <field name="model">res.notification</field>
+            <field name="type">form</field>
+            <field name="priority" eval="20"/>
+            <field name="name">notification_form_admin</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_notification">
+            <field name="name">Notifications</field>
+            <field name="res_model">res.notification</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_notification_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="notification_view_list"/>
+            <field name="act_window" ref="act_notification"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_notification_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="notification_view_form_admin"/>
+            <field name="act_window" ref="act_notification"/>
+        </record>
+        <menuitem parent="res.menu_res" action="act_notification" id="menu_notification_form"/>
+
+        <record model="ir.model.access" id="access_notification">
+            <field name="model">res.notification</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <record model="ir.model.access" id="access_notification_admin">
+            <field name="model">res.notification</field>
+            <field name="group" ref="group_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_notification">
+            <field name="name">Own notification</field>
+            <field name="model">res.notification</field>
+            <field name="global_p" eval="False"/>
+            <field name="default_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_user_notification1">
+            <field name="domain" eval="[('user', '=', Eval('user_id', -1))]" pyson="1"/>
+            <field name="rule_group" ref="rule_group_notification"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_notification_admin">
+            <field name="name">Any notification</field>
+            <field name="model">res.notification</field>
+            <field name="global_p" eval="False"/>
+            <field name="default_p" eval="False"/>
+        </record>
+        <record model="ir.rule" id="rule_user_notification_admin1">
+            <field name="domain" eval="[]" pyson="1"/>
+            <field name="rule_group" ref="rule_group_notification_admin"/>
+        </record>
+        <record model="ir.rule.group-res.group" id="rule_group_notification_admin_admin">
+            <field name="rule_group" ref="rule_group_notification_admin"/>
+            <field name="group" ref="group_admin"/>
+        </record>
+    </data>
+</tryton>

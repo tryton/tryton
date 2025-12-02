@@ -37,7 +37,7 @@ class Action(object):
             callback=callback)
 
     @staticmethod
-    def execute(action, data, context=None, keyword=False):
+    def execute(action, data=None, context=None, keyword=False):
         if isinstance(action, int):
             # Must be executed synchronously to avoid double execution
             # on double click.

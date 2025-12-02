@@ -24,6 +24,7 @@ module.exports = function(grunt) {
       'src/board.js',
       'src/bus.js',
       'src/chat.js',
+      'src/notification.js',
       'src/plugins.js',
       'src/html_sanitizer.js'
   ];

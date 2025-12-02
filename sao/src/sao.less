@@ -414,24 +414,99 @@ html[theme="default"] {
     }
 }
 
-#user-preferences > a {
-    max-width: 30em;
-    overflow: hidden;
-    text-overflow: ellipsis;
+.notification-badge {
+    z-index: 100;
+    position: absolute;
+    inset-block-start: 5px;
+    inset-inline-start: 5px;
+    color: @navbar-default-link-hover-color;
+    background-color: @brand-info;
+    min-width: 20px;
+    min-height: 20px;
+    padding: 0.2em;
+    border-radius: 10px;
     white-space: nowrap;
+    text-align: center;
+    font-size: smaller;
 
-    > img {
-        margin: -5px 5px;
-        width: 30px;
+    .navbar-toggle > & {
+        inset-block-start: -5px;
+        inset-inline-start: -15px;
+    }
+}
 
-        &[src=''] {
-            width: 0;
+
+#user-preferences {
+    > a {
+        max-width: 30em;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+
+        > img {
+            margin: -5px 5px;
+            width: 30px;
+
+            &[src=''] {
+                width: 0;
+            }
+
+            &.img-badge {
+                margin-left: -15px;
+                margin-bottom: -25px;
+                width: 15px;
+            }
+        }
+    }
+
+    ul.notification-menu {
+        @media (min-width: @grid-float-breakpoint) {
+            width: 320px;
         }
 
-        &.img-badge {
-            margin-left: -15px;
-            margin-bottom: -25px;
-            width: 15px;
+        > li.notification-item {
+            padding: 2px 0;
+
+            &.notification-unread {
+                background-color: @state-selected-bg;
+            }
+
+            > a {
+                display: flex;
+                padding: 3px 10px;
+
+                img.icon {
+                    padding-inline-end: 3px;
+                }
+
+                > div {
+                    display: flex;
+                    flex-direction: column;
+                    overflow: hidden;
+
+                    span {
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                    }
+
+                    span.notification-label {
+                        font-weight: bold;
+                    }
+
+                    span.notification-description {
+                    }
+                }
+            }
+
+            &.notification-action {
+                margin: 0.3em 0;
+
+                > a {
+                    display: block;
+                    text-align: center;
+                    background-color: @dropdown-link-hover-bg;
+                }
+            }
         }
     }
 }
