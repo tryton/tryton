@@ -18,8 +18,8 @@ from stdnum import iso7064, iso11649
 from trytond import backend, config
 from trytond.i18n import gettext
 from trytond.model import (
-    DeactivableMixin, Index, ModelSQL, ModelView, Unique, Workflow, dualmethod,
-    fields, sequence_ordered)
+    ChatMixin, DeactivableMixin, Index, ModelSQL, ModelView, Unique, Workflow,
+    dualmethod, fields, sequence_ordered)
 from trytond.model.exceptions import AccessError
 from trytond.modules.account.exceptions import AccountMissing
 from trytond.modules.account.tax import TaxableMixin
@@ -61,7 +61,9 @@ class InvoiceReportMixin:
     invoice_report_format = fields.Char("Invoice Report Format", readonly=True)
 
 
-class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin, InvoiceReportMixin):
+class Invoice(
+        Workflow, ModelSQL, ModelView, TaxableMixin, InvoiceReportMixin,
+        ChatMixin):
     __name__ = 'account.invoice'
     _rec_name = 'number'
     _order_name = 'number'
@@ -1530,6 +1532,12 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin, InvoiceReportMixin):
     def get_origins(self, name):
         return ', '.join(set(filter(None,
                     (l.origin_name for l in self.line_lines))))
+
+    def chat_language(self, audience='internal'):
+        language = super().chat_language(audience=audience)
+        if audience == 'public':
+            language = self.party.lang.code if self.party.lang else None
+        return language
 
     @classmethod
     def view_attributes(cls):

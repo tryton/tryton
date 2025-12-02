@@ -9,8 +9,8 @@ from trytond.i18n import gettext
 from trytond.ir.attachment import AttachmentCopyMixin
 from trytond.ir.note import NoteCopyMixin
 from trytond.model import (
-    Index, ModelSQL, ModelView, Unique, Workflow, dualmethod, fields,
-    sequence_ordered)
+    ChatMixin, Index, ModelSQL, ModelView, Unique, Workflow, dualmethod,
+    fields, sequence_ordered)
 from trytond.model.exceptions import AccessError, ValidationError
 from trytond.model.fields.date import FormatMixin
 from trytond.modules.account.tax import TaxableMixin
@@ -121,7 +121,7 @@ class ConfigurationSequence(metaclass=PoolMeta):
 
 class Rental(
         Workflow, ModelSQL, ModelView, TaxableMixin,
-        AttachmentCopyMixin, NoteCopyMixin):
+        AttachmentCopyMixin, NoteCopyMixin, ChatMixin):
     __name__ = 'sale.rental'
     _rec_name = 'number'
 
@@ -605,6 +605,12 @@ class Rental(
             ('reference', operator, value),
             ]
         return domain
+
+    def chat_language(self, audience='internal'):
+        language = super().chat_language(audience=audience)
+        if audience == 'public':
+            language = self.party.lang.code if self.party.lang else None
+        return language
 
     @classmethod
     def copy(cls, rentals, default=None):

@@ -10,7 +10,8 @@ from sql.conditionals import Coalesce
 from trytond import backend
 from trytond.i18n import gettext
 from trytond.model import (
-    Index, ModelSQL, ModelView, Unique, fields, sequence_ordered, tree)
+    ChatMixin, Index, ModelSQL, ModelView, Unique, fields, sequence_ordered,
+    tree)
 from trytond.modules.account.exceptions import FiscalYearNotFoundError
 from trytond.modules.currency.fields import Monetary
 from trytond.pool import Pool
@@ -87,7 +88,7 @@ class AmountMixin:
         raise NotImplementedError
 
 
-class BudgetMixin:
+class BudgetMixin(ChatMixin):
     __slots__ = ()
     name = fields.Char("Name", required=True)
     company = fields.Many2One(

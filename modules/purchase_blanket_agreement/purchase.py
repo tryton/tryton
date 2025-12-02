@@ -9,7 +9,8 @@ from sql import Null
 from sql.functions import CharLength
 
 from trytond.i18n import gettext
-from trytond.model import Index, ModelSQL, ModelView, Workflow, fields
+from trytond.model import (
+    ChatMixin, Index, ModelSQL, ModelView, Workflow, fields)
 from trytond.modules.currency.fields import Monetary
 from trytond.modules.product import price_digits, round_price
 from trytond.modules.product.exceptions import UOMValidationError
@@ -106,7 +107,7 @@ class ConfigurationSequence(metaclass=PoolMeta):
             return None
 
 
-class BlanketAgreement(Workflow, ModelSQL, ModelView):
+class BlanketAgreement(Workflow, ModelSQL, ModelView, ChatMixin):
     __name__ = 'purchase.blanket_agreement'
     _rec_name = 'number'
 
@@ -309,6 +310,12 @@ class BlanketAgreement(Workflow, ModelSQL, ModelView):
             ('number', operator, value),
             ('reference', operator, value),
             ]
+
+    def chat_language(self, audience='internal'):
+        language = super().chat_language(audience=audience)
+        if audience == 'public':
+            language = self.supplier.lang.code if self.supplier.lang else None
+        return language
 
     @classmethod
     def copy(cls, agreements, default=None):

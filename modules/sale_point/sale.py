@@ -13,7 +13,8 @@ from sql.operators import Equal
 from trytond import backend
 from trytond.i18n import gettext
 from trytond.model import (
-    DeactivableMixin, Exclude, Index, ModelSQL, ModelView, Workflow, fields)
+    ChatMixin, DeactivableMixin, Exclude, Index, ModelSQL, ModelView, Workflow,
+    fields)
 from trytond.model.exceptions import AccessError
 from trytond.modules.account.tax import TaxableMixin
 from trytond.modules.currency.fields import Monetary
@@ -92,7 +93,7 @@ class POS(ModelSQL, ModelView):
                                 'msg_point_change_tax_included'))
 
 
-class POSSale(Workflow, ModelSQL, ModelView, TaxableMixin):
+class POSSale(Workflow, ModelSQL, ModelView, TaxableMixin, ChatMixin):
     __name__ = 'sale.point.sale'
     _rec_name = 'number'
 

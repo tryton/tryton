@@ -7,7 +7,7 @@ from sql.functions import CharLength
 
 from trytond.i18n import gettext
 from trytond.model import (
-    Check, Index, Model, ModelSQL, ModelView, Workflow, fields)
+    ChatMixin, Check, Index, Model, ModelSQL, ModelView, Workflow, fields)
 from trytond.model.exceptions import AccessError
 from trytond.pool import Pool
 from trytond.pyson import Bool, Eval, If
@@ -19,7 +19,7 @@ from .exceptions import (
     InventoryCountWarning, InventoryFutureWarning, InventoryValidationError)
 
 
-class Inventory(Workflow, ModelSQL, ModelView):
+class Inventory(Workflow, ModelSQL, ModelView, ChatMixin):
     __name__ = 'stock.inventory'
     _rec_name = 'number'
 

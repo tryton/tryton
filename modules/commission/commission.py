@@ -15,7 +15,7 @@ from sql.aggregate import Sum
 from trytond import backend
 from trytond.i18n import gettext
 from trytond.model import (
-    DeactivableMixin, MatchMixin, ModelSQL, ModelView, fields,
+    ChatMixin, DeactivableMixin, MatchMixin, ModelSQL, ModelView, fields,
     sequence_ordered)
 from trytond.modules.currency.fields import Monetary
 from trytond.modules.product import price_digits, round_price
@@ -337,7 +337,7 @@ class PlanLines(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
         return super().match(pattern)
 
 
-class Commission(ModelSQL, ModelView):
+class Commission(ModelSQL, ModelView, ChatMixin):
     __name__ = 'commission'
     _readonly_states = {
         'readonly': Bool(Eval('invoice_line')),
@@ -441,6 +441,13 @@ class Commission(ModelSQL, ModelView):
             if invoice and invoice.state in {'paid', 'cancelled'}:
                 state = invoice.state
         return state
+
+    def chat_language(self, audience='internal'):
+        language = super().chat_language(audience=audience)
+        if audience == 'public':
+            language = (
+                self.agent.party.lang.code if self.agent.party.lang else None)
+        return language
 
     @classmethod
     def copy(cls, commissions, default=None):

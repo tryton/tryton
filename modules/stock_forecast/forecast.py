@@ -12,7 +12,7 @@ from sql.operators import Equal
 
 from trytond.i18n import gettext
 from trytond.model import (
-    Exclude, Index, ModelSQL, ModelView, Unique, Workflow, fields)
+    ChatMixin, Exclude, Index, ModelSQL, ModelView, Unique, Workflow, fields)
 from trytond.model.exceptions import AccessError
 from trytond.pool import Pool
 from trytond.pyson import Bool, Eval, If
@@ -23,7 +23,7 @@ from trytond.transaction import Transaction
 from trytond.wizard import Button, StateTransition, StateView, Wizard
 
 
-class Forecast(Workflow, ModelSQL, ModelView):
+class Forecast(Workflow, ModelSQL, ModelView, ChatMixin):
     __name__ = "stock.forecast"
 
     _states = {

@@ -7,8 +7,8 @@ from collections import defaultdict
 from trytond.cache import Cache
 from trytond.i18n import gettext
 from trytond.model import (
-    DeactivableMixin, Index, ModelSQL, ModelView, fields, sequence_ordered,
-    sum_tree, tree)
+    ChatMixin, DeactivableMixin, Index, ModelSQL, ModelView, fields,
+    sequence_ordered, sum_tree, tree)
 from trytond.pool import Pool
 from trytond.pyson import Bool, Eval, If, PYSONEncoder, TimeDelta
 from trytond.transaction import Transaction
@@ -104,7 +104,9 @@ class WorkStatus(DeactivableMixin, sequence_ordered(), ModelSQL, ModelView):
         return domains
 
 
-class Work(sequence_ordered(), tree(separator='\\'), ModelSQL, ModelView):
+class Work(
+        sequence_ordered(), tree(separator='\\'), ModelSQL, ModelView,
+        ChatMixin):
     __name__ = 'project.work'
     name = fields.Char("Name", required=True)
     type = fields.Selection([
@@ -391,6 +393,17 @@ class Work(sequence_ordered(), tree(separator='\\'), ModelSQL, ModelView):
         return defaultdict(
             int,
             {w.id: w.effort_hours * (w.progress or 0) for w in works})
+
+    def chat_language(self, audience='internal'):
+        language = super().chat_language(audience=audience)
+        if audience == 'public':
+            work = self
+            party = self.party
+            while work and not party:
+                work = work.parent
+                party = work.party
+            language = party.lang.code if party and party.lang else None
+        return language
 
     @classmethod
     def copy(cls, project_works, default=None):

@@ -9,8 +9,8 @@ from sql.functions import CharLength
 
 from trytond.i18n import gettext, lazy_gettext
 from trytond.model import (
-    DeactivableMixin, DictSchemaMixin, MatchMixin, ModelSingleton, ModelSQL,
-    ModelStorage, ModelView, Unique, Workflow, dualmethod, fields)
+    ChatMixin, DeactivableMixin, DictSchemaMixin, MatchMixin, ModelSingleton,
+    ModelSQL, ModelStorage, ModelView, Unique, Workflow, dualmethod, fields)
 from trytond.model.exceptions import AccessError, ButtonActionException
 from trytond.modules.company.model import (
     CompanyMultiValueMixin, CompanyValueMixin, employee_field, reset_employee,
@@ -341,7 +341,7 @@ class ControlPoint(DictSchemaMixin, ModelSQL, ModelView):
             return result
 
 
-class Inspection(Workflow, ModelSQL, ModelView):
+class Inspection(Workflow, ModelSQL, ModelView, ChatMixin):
     __name__ = 'quality.inspection'
     _rec_name = 'number'
 
@@ -608,7 +608,7 @@ class Inspection(Workflow, ModelSQL, ModelView):
         return cls(control=control, origin=origin)
 
 
-class Alert(Workflow, ModelSQL, ModelView):
+class Alert(Workflow, ModelSQL, ModelView, ChatMixin):
     __name__ = 'quality.alert'
     _rec_name = 'number'
 

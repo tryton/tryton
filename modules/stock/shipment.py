@@ -11,7 +11,7 @@ from sql.functions import CharLength
 
 from trytond.i18n import gettext, lazy_gettext
 from trytond.model import (
-    Index, ModelSQL, ModelView, Workflow, dualmethod, fields, sort)
+    ChatMixin, Index, ModelSQL, ModelView, Workflow, dualmethod, fields, sort)
 from trytond.model.exceptions import AccessError
 from trytond.modules.company import CompanyReport
 from trytond.modules.company.model import employee_field, set_employee
@@ -344,7 +344,8 @@ class ShipmentCheckQuantity:
 
 
 class ShipmentIn(
-        ShipmentCheckQuantity, ShipmentMixin, Workflow, ModelSQL, ModelView):
+        ShipmentCheckQuantity, ShipmentMixin, Workflow, ModelSQL, ModelView,
+        ChatMixin):
     __name__ = 'stock.shipment.in'
 
     company = fields.Many2One(
@@ -658,6 +659,12 @@ class ShipmentIn(
         return ', '.join(set(filter(None,
                     (m.origin_name for m in self.incoming_moves))))
 
+    def chat_language(self, audience='internal'):
+        language = super().chat_language(audience=audience)
+        if audience == 'public':
+            language = self.supplier.lang.code if self.supplier.lang else None
+        return language
+
     @classmethod
     def preprocess_values(cls, mode, values):
         pool = Pool()
@@ -789,7 +796,8 @@ class ShipmentIn(
         return self.inventory_moves
 
 
-class ShipmentInReturn(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
+class ShipmentInReturn(
+        ShipmentAssignMixin, Workflow, ModelSQL, ModelView, ChatMixin):
     __name__ = 'stock.shipment.in.return'
     _assign_moves_field = 'moves'
 
@@ -983,6 +991,12 @@ class ShipmentInReturn(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
         return ', '.join(set(filter(None,
                     (m.origin_name for m in self.moves))))
 
+    def chat_language(self, audience='internal'):
+        language = super().chat_language(audience=audience)
+        if audience == 'public':
+            language = self.supplier.lang.code if self.supplier.lang else None
+        return language
+
     @classmethod
     def copy(cls, shipments, default=None):
         if default is None:
@@ -1117,7 +1131,7 @@ class ShipmentInReturn(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
 
 class ShipmentOut(
         ShipmentCheckQuantity, ShipmentAssignMixin, Workflow, ModelSQL,
-        ModelView):
+        ModelView, ChatMixin):
     __name__ = 'stock.shipment.out'
     _assign_moves_field = 'moves'
     company = fields.Many2One(
@@ -1452,6 +1466,12 @@ class ShipmentOut(
     def get_origins(self, name):
         return ', '.join(set(filter(None,
                     (m.origin_name for m in self.outgoing_moves))))
+
+    def chat_language(self, audience='internal'):
+        language = super().chat_language(audience=audience)
+        if audience == 'public':
+            language = self.customer.lang.code if self.customer.lang else None
+        return language
 
     @classmethod
     @ModelView.button
@@ -1814,7 +1834,8 @@ class ShipmentOut(
 
 
 class ShipmentOutReturn(
-        ShipmentCheckQuantity, ShipmentMixin, Workflow, ModelSQL, ModelView):
+        ShipmentCheckQuantity, ShipmentMixin, Workflow, ModelSQL, ModelView,
+        ChatMixin):
     __name__ = 'stock.shipment.out.return'
 
     company = fields.Many2One(
@@ -2108,6 +2129,12 @@ class ShipmentOutReturn(
         return ', '.join(set(filter(None,
                     (m.origin_name for m in self.incoming_moves))))
 
+    def chat_language(self, audience='internal'):
+        language = super().chat_language(audience=audience)
+        if audience == 'public':
+            language = self.customer.lang.code if self.customer.lang else None
+        return language
+
     @classmethod
     def preprocess_values(cls, mode, values):
         pool = Pool()
@@ -2238,7 +2265,7 @@ class ShipmentOutReturn(
 
 class ShipmentInternal(
         ShipmentCheckQuantity, ShipmentAssignMixin, Workflow, ModelSQL,
-        ModelView):
+        ModelView, ChatMixin):
     __name__ = 'stock.shipment.internal'
     _assign_moves_field = 'moves'
     effective_start_date = fields.Date('Effective Start Date',

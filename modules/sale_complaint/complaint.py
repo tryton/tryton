@@ -10,7 +10,7 @@ from sql.functions import CharLength
 
 from trytond.i18n import gettext
 from trytond.model import (
-    DeactivableMixin, Index, ModelSQL, ModelView, Workflow, fields)
+    ChatMixin, DeactivableMixin, Index, ModelSQL, ModelView, Workflow, fields)
 from trytond.model.exceptions import AccessError
 from trytond.modules.company.model import (
     employee_field, reset_employee, set_employee)
@@ -34,7 +34,7 @@ class Type(DeactivableMixin, ModelSQL, ModelView):
                     'account.invoice', 'account.invoice.line'])])
 
 
-class Complaint(Workflow, ModelSQL, ModelView):
+class Complaint(Workflow, ModelSQL, ModelView, ChatMixin):
     __name__ = 'sale.complaint'
     _rec_name = 'number'
 
@@ -277,6 +277,12 @@ class Complaint(Workflow, ModelSQL, ModelView):
         return super().view_attributes() + [
             ('/tree', 'visual', If(Eval('state') == 'cancelled', 'muted', '')),
             ]
+
+    def chat_language(self, audience='internal'):
+        language = super().chat_language(audience=audience)
+        if audience == 'public':
+            language = self.customer.lang.code if self.customer.lang else None
+        return language
 
     @classmethod
     def preprocess_values(cls, mode, values):

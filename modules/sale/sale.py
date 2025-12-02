@@ -16,7 +16,8 @@ from trytond.i18n import gettext
 from trytond.ir.attachment import AttachmentCopyMixin
 from trytond.ir.note import NoteCopyMixin
 from trytond.model import (
-    Index, ModelSQL, ModelView, Unique, Workflow, fields, sequence_ordered)
+    ChatMixin, Index, ModelSQL, ModelView, Unique, Workflow, fields,
+    sequence_ordered)
 from trytond.model.exceptions import AccessError
 from trytond.modules.account.tax import TaxableMixin
 from trytond.modules.account_product.exceptions import AccountError
@@ -71,7 +72,7 @@ def search_shipments_returns(model_name):
 
 class Sale(
         Workflow, ModelSQL, ModelView, TaxableMixin,
-        AttachmentCopyMixin, NoteCopyMixin):
+        AttachmentCopyMixin, NoteCopyMixin, ChatMixin):
     __name__ = 'sale.sale'
     _rec_name = 'number'
     company = fields.Many2One(
@@ -877,6 +878,12 @@ class Sale(
                     ('//group[@id="buttons"]', 'states', {'invisible': True}),
                     ])
         return attributes
+
+    def chat_language(self, audience='internal'):
+        language = super().chat_language(audience=audience)
+        if audience == 'public':
+            language = self.party.lang.code if self.party.lang else None
+        return language
 
     @classmethod
     def get_resources_to_copy(cls, name):

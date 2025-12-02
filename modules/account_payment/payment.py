@@ -13,7 +13,7 @@ from stdnum import iso11649
 from trytond import backend
 from trytond.i18n import gettext
 from trytond.model import (
-    DeactivableMixin, Index, ModelSQL, ModelView, Workflow, fields)
+    ChatMixin, DeactivableMixin, Index, ModelSQL, ModelView, Workflow, fields)
 from trytond.model.exceptions import AccessError
 from trytond.modules.company.model import (
     employee_field, reset_employee, set_employee)
@@ -62,7 +62,7 @@ class Journal(DeactivableMixin, ModelSQL, ModelView):
         return Transaction().context.get('company')
 
 
-class Group(ModelSQL, ModelView):
+class Group(ModelSQL, ModelView, ChatMixin):
     __name__ = 'account.payment.group'
     _rec_name = 'number'
     number = fields.Char('Number', required=True, readonly=True)
@@ -274,7 +274,7 @@ _STATES = {
     }
 
 
-class Payment(Workflow, ModelSQL, ModelView):
+class Payment(Workflow, ModelSQL, ModelView, ChatMixin):
     __name__ = 'account.payment'
     _rec_name = 'number'
     number = fields.Char("Number", required=True, readonly=True)
@@ -613,6 +613,12 @@ class Payment(Workflow, ModelSQL, ModelView):
             ('number', *clause[1:]),
             ('reference', *clause[1:]),
             ]
+
+    def chat_language(self, audience='internal'):
+        language = super().chat_language(audience=audience)
+        if audience == 'public':
+            language = self.party.lang.code if self.party.lang else None
+        return language
 
     @classmethod
     def view_attributes(cls):

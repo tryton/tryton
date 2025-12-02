@@ -11,7 +11,7 @@ from sql.functions import CharLength
 
 from trytond.i18n import gettext
 from trytond.model import (
-    Index, ModelSQL, ModelView, Workflow, dualmethod, fields)
+    ChatMixin, Index, ModelSQL, ModelView, Workflow, dualmethod, fields)
 from trytond.modules.company.model import employee_field, set_employee
 from trytond.modules.product import price_digits, round_price
 from trytond.modules.stock.shipment import ShipmentAssignMixin
@@ -22,7 +22,8 @@ from trytond.transaction import Transaction
 from .exceptions import CostWarning
 
 
-class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
+class Production(
+        ShipmentAssignMixin, Workflow, ModelSQL, ModelView, ChatMixin):
     __name__ = 'production'
     _rec_name = 'number'
     _assign_moves_field = 'inputs'

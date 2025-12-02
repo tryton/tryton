@@ -8,7 +8,7 @@ from sql.functions import CharLength
 
 from trytond.i18n import gettext
 from trytond.model import (
-    Index, ModelSQL, ModelView, Workflow, fields, sequence_ordered)
+    ChatMixin, Index, ModelSQL, ModelView, Workflow, fields, sequence_ordered)
 from trytond.model.exceptions import AccessError, RequiredValidationError
 from trytond.modules.company.model import (
     employee_field, reset_employee, set_employee)
@@ -68,7 +68,7 @@ class ConfigurationSequence(metaclass=PoolMeta):
             return None
 
 
-class PurchaseRequisition(Workflow, ModelSQL, ModelView):
+class PurchaseRequisition(Workflow, ModelSQL, ModelView, ChatMixin):
     __name__ = 'purchase.requisition'
     _rec_name = 'number'
     _states = {

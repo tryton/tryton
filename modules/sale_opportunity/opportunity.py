@@ -10,7 +10,7 @@ from trytond.i18n import gettext
 from trytond.ir.attachment import AttachmentCopyMixin
 from trytond.ir.note import NoteCopyMixin
 from trytond.model import (
-    Index, ModelSQL, ModelView, Workflow, fields, sequence_ordered)
+    ChatMixin, Index, ModelSQL, ModelView, Workflow, fields, sequence_ordered)
 from trytond.model.exceptions import AccessError
 from trytond.modules.company.model import employee_field, set_employee
 from trytond.modules.currency.fields import Monetary
@@ -22,7 +22,7 @@ from trytond.transaction import Transaction
 
 class SaleOpportunity(
         Workflow, ModelSQL, ModelView,
-        AttachmentCopyMixin, NoteCopyMixin):
+        AttachmentCopyMixin, NoteCopyMixin, ChatMixin):
     __name__ = "sale.opportunity"
     _history = True
     _rec_name = 'number'
@@ -292,6 +292,12 @@ class SaleOpportunity(
         return super().view_attributes() + [
             ('/tree', 'visual', If(Eval('state') == 'cancelled', 'muted', '')),
             ]
+
+    def chat_language(self, audience='internal'):
+        language = super().chat_language(audience=audience)
+        if audience == 'public':
+            language = self.party.lang.code if self.party.lang else None
+        return language
 
     @classmethod
     def get_resources_to_copy(cls, name):

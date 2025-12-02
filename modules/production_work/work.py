@@ -12,7 +12,7 @@ from sql.conditionals import Coalesce
 from trytond import backend
 from trytond.i18n import gettext
 from trytond.model import (
-    DeactivableMixin, Index, ModelSQL, ModelView, Workflow, fields,
+    ChatMixin, DeactivableMixin, Index, ModelSQL, ModelView, Workflow, fields,
     sequence_ordered, tree)
 from trytond.model.exceptions import AccessError
 from trytond.modules.company.model import employee_field, set_employee
@@ -99,7 +99,7 @@ class WorkCenter(DeactivableMixin, tree(separator=' / '), ModelSQL, ModelView):
         return picker
 
 
-class Work(sequence_ordered(), ModelSQL, ModelView):
+class Work(sequence_ordered(), ModelSQL, ModelView, ChatMixin):
     __name__ = 'production.work'
     operation = fields.Many2One('production.routing.operation', 'Operation',
         required=True)

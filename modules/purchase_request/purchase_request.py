@@ -5,7 +5,7 @@ from functools import partial
 from itertools import groupby
 
 from trytond.i18n import gettext
-from trytond.model import Index, ModelSQL, ModelView, fields
+from trytond.model import ChatMixin, Index, ModelSQL, ModelView, fields
 from trytond.model.exceptions import AccessError
 from trytond.modules.company.model import (
     employee_field, reset_employee, set_employee)
@@ -21,7 +21,7 @@ STATES = {
     }
 
 
-class PurchaseRequest(ModelSQL, ModelView):
+class PurchaseRequest(ModelSQL, ModelView, ChatMixin):
     __name__ = 'purchase.request'
 
     product = fields.Many2One(

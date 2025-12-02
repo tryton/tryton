@@ -9,7 +9,7 @@ from sql.functions import CharLength
 
 from trytond.i18n import gettext
 from trytond.model import (
-    Index, ModelSQL, ModelView, Workflow, fields, sequence_ordered)
+    ChatMixin, Index, ModelSQL, ModelView, Workflow, fields, sequence_ordered)
 from trytond.model.exceptions import AccessError
 from trytond.modules.company.model import (
     employee_field, reset_employee, set_employee)
@@ -25,7 +25,7 @@ from trytond.wizard import (
 from .exceptions import InvalidRecurrence, InvoiceError
 
 
-class Subscription(Workflow, ModelSQL, ModelView):
+class Subscription(Workflow, ModelSQL, ModelView, ChatMixin):
     __name__ = 'sale.subscription'
     _rec_name = 'number'
 
@@ -334,6 +334,12 @@ class Subscription(Workflow, ModelSQL, ModelView):
             ('reference', operator, value),
             ]
         return domain
+
+    def chat_language(self, audience='internal'):
+        language = super().chat_language(audience=audience)
+        if audience == 'public':
+            language = self.party.lang.code if self.party.lang else None
+        return language
 
     @classmethod
     def copy(cls, subscriptions, default=None):

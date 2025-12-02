@@ -6,7 +6,8 @@ from itertools import groupby
 from sql.functions import CharLength
 
 from trytond.i18n import gettext
-from trytond.model import Index, ModelSQL, ModelView, Workflow, fields
+from trytond.model import (
+    ChatMixin, Index, ModelSQL, ModelView, Workflow, fields)
 from trytond.model.exceptions import AccessError
 from trytond.modules.company.model import CompanyValueMixin
 from trytond.modules.product import price_digits, round_price
@@ -58,7 +59,7 @@ class ConfigurationShipmentCostSequence(ModelSQL, CompanyValueMixin):
             return None
 
 
-class ShipmentCost(Workflow, ModelSQL, ModelView):
+class ShipmentCost(Workflow, ModelSQL, ModelView, ChatMixin):
     __name__ = 'account.shipment_cost'
     _rec_name = 'number'
 

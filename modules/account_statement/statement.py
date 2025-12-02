@@ -13,8 +13,8 @@ from sql.operators import Concat
 import trytond.config as config
 from trytond.i18n import gettext
 from trytond.model import (
-    Check, DictSchemaMixin, Index, ModelSQL, ModelView, Workflow, fields,
-    sequence_ordered)
+    ChatMixin, Check, DictSchemaMixin, Index, ModelSQL, ModelView, Workflow,
+    fields, sequence_ordered)
 from trytond.model.exceptions import AccessError
 from trytond.modules.company import CompanyReport
 from trytond.modules.currency.fields import Monetary
@@ -49,7 +49,7 @@ class Unequal(object):
         return ''
 
 
-class Statement(Workflow, ModelSQL, ModelView):
+class Statement(Workflow, ModelSQL, ModelView, ChatMixin):
     __name__ = 'account.statement'
 
     _states = {'readonly': Eval('state') != 'draft'}

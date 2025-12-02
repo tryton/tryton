@@ -9,7 +9,8 @@ from sql.conditionals import Case
 from sql.functions import CharLength
 
 from trytond.i18n import gettext
-from trytond.model import Index, ModelSQL, ModelView, Workflow, fields
+from trytond.model import (
+    ChatMixin, Index, ModelSQL, ModelView, Workflow, fields)
 from trytond.modules.company import CompanyReport
 from trytond.modules.currency.fields import Monetary
 from trytond.modules.product import price_digits
@@ -86,7 +87,7 @@ class ConfigurationSequence(metaclass=PoolMeta):
             return None
 
 
-class Quotation(Workflow, ModelSQL, ModelView):
+class Quotation(Workflow, ModelSQL, ModelView, ChatMixin):
     __name__ = 'purchase.request.quotation'
     _rec_name = 'number'
 
@@ -229,6 +230,12 @@ class Quotation(Workflow, ModelSQL, ModelView):
         self.supplier_address = None
         if self.supplier:
             self.supplier_address = self.supplier.address_get()
+
+    def chat_language(self, audience='internal'):
+        language = super().chat_language(audience=audience)
+        if audience == 'public':
+            language = self.supplier.lang.code if self.supplier.lang else None
+        return language
 
     @classmethod
     def copy(cls, groups, default=None):

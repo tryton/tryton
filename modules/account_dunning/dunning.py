@@ -6,7 +6,8 @@ from itertools import groupby
 from sql import Literal
 
 from trytond.model import (
-    Index, Model, ModelSQL, ModelView, Unique, fields, sequence_ordered)
+    ChatMixin, Index, Model, ModelSQL, ModelView, Unique, fields,
+    sequence_ordered)
 from trytond.modules.currency.fields import Monetary
 from trytond.pool import Pool
 from trytond.pyson import Eval
@@ -49,7 +50,7 @@ _STATES = {
     }
 
 
-class Dunning(ModelSQL, ModelView):
+class Dunning(ModelSQL, ModelView, ChatMixin):
     __name__ = 'account.dunning'
     company = fields.Many2One(
         'company.company', "Company", required=True, states=_STATES,
@@ -302,6 +303,14 @@ class Dunning(ModelSQL, ModelView):
             procedure=procedure,
             level=level,
             )
+
+    def chat_language(self, audience='internal'):
+        language = super().chat_language(audience=audience)
+        if audience == 'public':
+            language = (
+                self.party.lang.code if self.party and self.party.lang
+                else None)
+        return language
 
     @classmethod
     def process(cls, dunnings):
