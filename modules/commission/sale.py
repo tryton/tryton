@@ -20,8 +20,8 @@ class Sale(metaclass=PoolMeta):
             },
         help="The agent who receives a commission for the sale.")
 
-    def _get_invoice_sale(self):
-        invoice = super()._get_invoice_sale()
+    def _get_invoice(self):
+        invoice = super()._get_invoice()
         invoice.agent = self.agent
         return invoice
 
