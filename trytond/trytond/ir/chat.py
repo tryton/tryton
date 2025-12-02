@@ -1,6 +1,8 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 
+import json
+
 from sql import Null
 from sql.conditionals import NullIf
 
@@ -10,6 +12,7 @@ from trytond.model import ChatMixin, Check, ModelSQL, Unique, fields
 from trytond.model.exceptions import ValidationError
 from trytond.pool import Pool
 from trytond.rpc import RPC
+from trytond.tools import firstline
 from trytond.tools.email_ import (
     EmailNotValidError, normalize_email, validate_email)
 from trytond.transaction import Transaction
@@ -114,7 +117,9 @@ class Channel(ModelSQL):
         pool = Pool()
         Message = pool.get('ir.chat.message')
         User = pool.get('res.user')
-        user = User(Transaction().user)
+        transaction = Transaction()
+        user = User(transaction.user)
+        ctx_user = User(transaction.context.get('user', user))
         channel = cls._get_channel(resource)
         message = Message(
             channel=channel,
@@ -129,7 +134,8 @@ class Channel(ModelSQL):
                 'message': message.as_dict(),
                 })
         for follower in channel.followers:
-            follower.notify(message)
+            if follower.user != ctx_user:
+                follower.notify(message)
 
         return message
 
@@ -190,6 +196,8 @@ class AuthorMixin:
     @fields.depends('user', 'email')
     def on_change_with_author(self, name=None):
         if self.user:
+            if not self.user.id:
+                return
             return self.user.name
         elif self.email:
             return self.email
@@ -253,7 +261,18 @@ class Follower(AuthorMixin, ModelSQL):
                     ]))
 
     def notify(self, message):
-        pass
+        pool = Pool()
+        Notification = pool.get('res.notification')
+
+        if self.user:
+            Notification(
+                user=self.user,
+                label=message.author,
+                description=firstline(message.content),
+                icon='tryton-chat',
+                model=message.channel.resource.__name__,
+                records=json.dumps([message.channel.resource.id])
+                ).save()
 
 
 class Message(AuthorMixin, ModelSQL):

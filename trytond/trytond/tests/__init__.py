@@ -9,14 +9,14 @@ except ImportError:
 
 def register():
     from . import (
-        access, copy_, export_data, field_binary, field_boolean, field_char,
-        field_context, field_date, field_datetime, field_dict, field_float,
-        field_fmany2one, field_function, field_integer, field_many2many,
-        field_many2one, field_multiselection, field_numeric, field_one2many,
-        field_one2one, field_reference, field_selection, field_text,
-        field_time, field_timedelta, history, import_data, mixin, model,
-        model_log, modelsql, modelstorage, modelview, mptt, multivalue, path,
-        resource, rule, tree, trigger, wizard, workflow)
+        access, chat, copy_, export_data, field_binary, field_boolean,
+        field_char, field_context, field_date, field_datetime, field_dict,
+        field_float, field_fmany2one, field_function, field_integer,
+        field_many2many, field_many2one, field_multiselection, field_numeric,
+        field_one2many, field_one2one, field_reference, field_selection,
+        field_text, field_time, field_timedelta, history, import_data, mixin,
+        model, model_log, modelsql, modelstorage, modelview, mptt, multivalue,
+        path, resource, rule, tree, trigger, wizard, workflow)
 
     access.register('tests')
     copy_.register('tests')
@@ -53,6 +53,7 @@ def register():
     model_log.register('tests')
     mptt.register('tests')
     multivalue.register('tests')
+    chat.register('tests')
     path.register('tests')
     resource.register('tests')
     rule.register('tests')

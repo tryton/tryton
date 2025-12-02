@@ -28,5 +28,8 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_binary_required_sql_constraint">
             <field name="text">Constraint must be checked.</field>
         </record>
+        <record model="ir.message" id="msg_chat">
+            <field name="text">Chat Message: %(foo)s</field>
+        </record>
     </data>
 </tryton>

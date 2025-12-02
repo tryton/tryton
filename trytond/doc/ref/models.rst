@@ -1286,9 +1286,23 @@ ChatMixin
 A mixin_ to activate a `model-ir.chat.channel` on any
 :class:`~trytond.model.ModelStorage` record.
 
+Class methods:
+
+.. classmethod:: ChatMixin.chat_post(records, message_id[, audience[, n[, \*\*variables]]])
+
+   Posts a message to the `model-ir.chat.channel` of the ``records`` using the
+   XML ID of a `model-ir.message` formatted using
+   :func:`~trytond.i18n.gettext` or :func:`~trytond.i18n.ngettext` if ``n`` is
+   set.
+
+Instance methods:
+
+.. method:: ChatMixin.chat_language([audience])
+
+   Returns the language to use to translate the message posted by
+   :meth:`~ChatMixin.chat_post`.
+
 
 .. _mixin: http://en.wikipedia.org/wiki/Mixin
 .. _JSON: http://en.wikipedia.org/wiki/Json
 .. _UNION: http://en.wikipedia.org/wiki/Union_(SQL)#UNION_operator
-
-
