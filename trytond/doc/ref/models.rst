@@ -1278,6 +1278,15 @@ avatar, if it's not set then no default avatar is generated.
    Generate a default avatar for each record using the field.
 
 
+ChatMixin
+=========
+
+.. class:: ChatMixin
+
+A mixin_ to activate a `model-ir.chat.channel` on any
+:class:`~trytond.model.ModelStorage` record.
+
+
 .. _mixin: http://en.wikipedia.org/wiki/Mixin
 .. _JSON: http://en.wikipedia.org/wiki/Json
 .. _UNION: http://en.wikipedia.org/wiki/Union_(SQL)#UNION_operator

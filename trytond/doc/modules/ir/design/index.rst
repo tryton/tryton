@@ -25,6 +25,7 @@ The *Internal Resource Module* introduces the following concepts:
 .. include:: lang.inc.rst
 .. include:: message.inc.rst
 .. include:: note.inc.rst
+.. include:: chat.inc.rst
 .. include:: queue.inc.rst
 .. include:: rule.inc.rst
 .. include:: sequence.inc.rst
