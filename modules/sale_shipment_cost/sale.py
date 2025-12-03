@@ -470,6 +470,26 @@ class Line(metaclass=PoolMeta):
         return quantity
 
 
+class HandleInvoiceException(metaclass=PoolMeta):
+    __name__ = 'sale.handle.invoice.exception'
+
+    def transition_handle(self):
+        pool = Pool()
+        Shipment = pool.get('stock.shipment.out')
+        shipment_cost_recreated = set()
+        for invoice in self.ask.domain_invoices:
+            if invoice in self.ask.recreate_invoices:
+                for line in invoice.lines:
+                    for shipment in line.cost_sale_shipments:
+                        if shipment in self.record.shipments:
+                            shipment_cost_recreated.add(shipment)
+        if shipment_cost_recreated:
+            Shipment.write(list(shipment_cost_recreated), {
+                    'cost_sale_invoice_line': None,
+                    })
+        return super().transition_handle()
+
+
 class ReturnSale(metaclass=PoolMeta):
     __name__ = 'sale.return_sale'
 
