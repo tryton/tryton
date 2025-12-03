@@ -69,7 +69,7 @@ with commandline.pidfile(options):
     if options.dev and not options.coroutine:
         for module in get_modules():
             info = get_module_info(module)
-            for ext in ['xml',
+            for ext in ['cfg', 'xml',
                     'fodt', 'odt', 'fodp', 'odp', 'fods', 'ods', 'fodg', 'odg',
                     'txt', 'html', 'xhtml']:
                 path = os.path.join(info['directory'], '**', '*.' + ext)
