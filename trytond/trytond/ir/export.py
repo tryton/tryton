@@ -24,6 +24,9 @@ class Export(_ClearCache, ModelSQL, ModelView):
         'res.user', "User", required=True, ondelete='CASCADE')
     groups = fields.Many2Many(
         'ir.export-res.group', 'export', 'group', "Groups",
+        filter=[
+            ('active', '=', True),
+            ],
         help="The user groups that can use the export.")
     write_groups = fields.Many2Many(
         'ir.export-write-res.group', 'export', 'group',

@@ -37,6 +37,9 @@ class SequenceType(ModelSQL, ModelView):
     name = fields.Char('Sequence Name', required=True, translate=True)
     groups = fields.Many2Many(
         'ir.sequence.type-res.group', 'sequence_type', 'group', "Groups",
+        filter=[
+            ('active', '=', True),
+            ],
         help="Groups allowed to edit the sequences of this type.")
 
 
