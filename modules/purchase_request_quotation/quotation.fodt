@@ -721,7 +721,7 @@
    <text:p text:style-name="P50"><text:soft-page-break/>Draft <text:span text:style-name="T3">Quotation</text:span></text:p>
    <text:p text:style-name="P51"><text:placeholder text:placeholder-type="text">&lt;/when&gt;</text:placeholder></text:p>
    <text:p text:style-name="P51"><text:placeholder text:placeholder-type="text">&lt;otherwise test=&quot;&quot;&gt;</text:placeholder></text:p>
-   <text:p text:style-name="P49"><text:span text:style-name="T2">Purchase </text:span>Request for Quotation N°: <text:placeholder text:placeholder-type="text">&lt;quotation.number&gt;</text:placeholder></text:p>
+   <text:p text:style-name="P49">Purchase Request for Quotation No: <text:placeholder text:placeholder-type="text">&lt;quotation.number&gt;</text:placeholder></text:p>
    <text:p text:style-name="P43"><text:placeholder text:placeholder-type="text">&lt;/otherwise&gt;</text:placeholder></text:p>
    <text:p text:style-name="P44"><text:placeholder text:placeholder-type="text">&lt;/choose&gt;</text:placeholder></text:p>
    <text:section text:style-name="Sect1" text:name="Section1">

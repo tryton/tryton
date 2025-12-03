@@ -703,10 +703,10 @@
    <text:p text:style-name="P30">Draft Sale Order</text:p>
    <text:p text:style-name="P21"><text:placeholder text:placeholder-type="text">&lt;/when&gt;</text:placeholder></text:p>
    <text:p text:style-name="P21"><text:placeholder text:placeholder-type="text">&lt;when test=&quot;sale.state == &apos;quotation&apos;&quot;&gt;</text:placeholder></text:p>
-   <text:p text:style-name="P30"><text:soft-page-break/>Quotation N°: <text:placeholder text:placeholder-type="text">&lt;sale.full_number&gt;</text:placeholder></text:p>
+   <text:p text:style-name="P30"><text:soft-page-break/>Quotation No: <text:placeholder text:placeholder-type="text">&lt;sale.full_number&gt;</text:placeholder></text:p>
    <text:p text:style-name="P21"><text:placeholder text:placeholder-type="text">&lt;/when&gt;</text:placeholder></text:p>
    <text:p text:style-name="P21"><text:placeholder text:placeholder-type="text">&lt;otherwise test=&quot;&quot;&gt;</text:placeholder></text:p>
-   <text:p text:style-name="P30">Sale Order N°: <text:placeholder text:placeholder-type="text">&lt;sale.full_number&gt;</text:placeholder></text:p>
+   <text:p text:style-name="P30">Sale Order No: <text:placeholder text:placeholder-type="text">&lt;sale.full_number&gt;</text:placeholder></text:p>
    <text:p text:style-name="P21"><text:placeholder text:placeholder-type="text">&lt;/otherwise&gt;</text:placeholder></text:p>
    <text:p text:style-name="P22"><text:placeholder text:placeholder-type="text">&lt;/choose&gt;</text:placeholder></text:p>
    <text:section text:style-name="Sect1" text:name="Section1">

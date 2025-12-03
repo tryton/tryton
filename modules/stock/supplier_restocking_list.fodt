@@ -531,7 +531,7 @@
    <text:p text:style-name="P19"><text:span text:style-name="T4">Cancelled </text:span>Restocking List</text:p>
    <text:p text:style-name="P20"><text:placeholder text:placeholder-type="text">&lt;/when&gt;</text:placeholder></text:p>
    <text:p text:style-name="Standard"><text:placeholder text:placeholder-type="text">&lt;otherwise&gt;</text:placeholder></text:p>
-   <text:p text:style-name="P18">Restocking List <text:span text:style-name="T4">N°: </text:span><text:span text:style-name="T4"><text:placeholder text:placeholder-type="text">&lt;shipment.number&gt;</text:placeholder></text:span></text:p>
+   <text:p text:style-name="P18">Restocking List No: <text:span text:style-name="T4"><text:placeholder text:placeholder-type="text">&lt;shipment.number&gt;</text:placeholder></text:span></text:p>
    <text:p text:style-name="Standard"><text:placeholder text:placeholder-type="text">&lt;/otherwise&gt;</text:placeholder></text:p>
    <text:p text:style-name="Standard"><text:placeholder text:placeholder-type="text">&lt;/choose&gt;</text:placeholder></text:p>
    <text:p text:style-name="Standard"><text:span text:style-name="T1">Reference:</text:span><text:span text:style-name="T3"> </text:span><text:span text:style-name="T3"><text:placeholder text:placeholder-type="text">&lt;shipment.origins or &apos;&apos;&gt;</text:placeholder></text:span><text:span text:style-name="T3"><text:placeholder text:placeholder-type="text">&lt;&apos;, &apos; if (shipment.origins and shipment.reference) else &apos;&apos;&gt;</text:placeholder></text:span><text:span text:style-name="T3"><text:placeholder text:placeholder-type="text">&lt;shipment.reference or &apos;&apos;&gt;</text:placeholder></text:span></text:p>

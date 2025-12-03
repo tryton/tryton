@@ -544,7 +544,7 @@
    <text:p text:style-name="P19"><text:placeholder text:placeholder-type="text">&lt;/for&gt;</text:placeholder></text:p>
    <text:p text:style-name="Standard"><text:placeholder text:placeholder-type="text">&lt;choose&gt;</text:placeholder></text:p>
    <text:p text:style-name="Standard"><text:placeholder text:placeholder-type="text">&lt;when test=&quot;shipment.state in [&apos;packed&apos;, &apos;done&apos;]&quot;&gt;</text:placeholder></text:p>
-   <text:p text:style-name="P24">Delivery Note <text:span text:style-name="T3">N°: </text:span><text:span text:style-name="T3"><text:placeholder text:placeholder-type="text">&lt;shipment.number&gt;</text:placeholder></text:span></text:p>
+   <text:p text:style-name="P24">Delivery Note No: <text:span text:style-name="T3"><text:placeholder text:placeholder-type="text">&lt;shipment.number&gt;</text:placeholder></text:span></text:p>
    <text:p text:style-name="Standard"><text:placeholder text:placeholder-type="text">&lt;/when&gt;</text:placeholder></text:p>
    <text:p text:style-name="Standard"><text:placeholder text:placeholder-type="text">&lt;when test=&quot;shipment.state == &apos;cancelled&apos;&quot;&gt;</text:placeholder></text:p>
    <text:p text:style-name="P25"><text:span text:style-name="T3">Cancelled </text:span>Delivery Note</text:p>
