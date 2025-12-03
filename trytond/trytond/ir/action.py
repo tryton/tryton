@@ -67,7 +67,10 @@ class Action(DeactivableMixin, ModelSQL, ModelView):
             'Keywords')
     icon = fields.Many2One('ir.ui.icon', 'Icon')
     groups = fields.Many2Many(
-        'ir.action-res.group', 'action', 'group', "Groups")
+        'ir.action-res.group', 'action', 'group', "Groups",
+        filter=[
+            ('active', '=', True),
+            ])
     _groups_cache = Cache('ir.action.get_groups', context=False)
 
     @classmethod

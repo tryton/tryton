@@ -107,7 +107,10 @@ class UIMenu(
             ('keyword', '=', 'tree_open'),
             ])
     groups = fields.Many2Many(
-        'ir.ui.menu-res.group', 'menu', 'group', "Groups")
+        'ir.ui.menu-res.group', 'menu', 'group', "Groups",
+        filter=[
+            ('active', '=', True),
+            ])
     favorite = fields.Function(fields.Boolean('Favorite'), 'get_favorite')
     favorites = fields.Many2Many(
         'ir.ui.menu.favorite', 'menu', 'user', "Favorites")

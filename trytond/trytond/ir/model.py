@@ -965,7 +965,10 @@ class ModelButton(
             ])
     _reset_cache = Cache('ir.model.button.reset')
     groups = fields.Many2Many(
-        'ir.model.button-res.group', 'button', 'group', "Groups")
+        'ir.model.button-res.group', 'button', 'group', "Groups",
+        filter=[
+            ('active', '=', True),
+            ])
     _groups_cache = Cache('ir.model.button.groups')
     _view_attributes_cache = Cache(
         'ir.model.button.view_attributes', context=False)

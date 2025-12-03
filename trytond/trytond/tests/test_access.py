@@ -228,6 +228,56 @@ class _ModelAccessTestCase(TestCase):
         self._assert_raises(record)
 
     @with_transaction(context=_context)
+    def test_no_access_with_inactive_group(self):
+        "Test no access with inactive group"
+        pool = Pool()
+        Group = pool.get('res.group')
+        ModelAccess = pool.get('ir.model.access')
+        TestAccess = pool.get(self.model_name)
+
+        inactive_group, = Group.create([{'name': 'Test', 'active': False}])
+        record, = TestAccess.create([{}])
+        ModelAccess.create([{
+                    'model': self.model_name,
+                    'group': None,
+                    self._perm: False,
+                    }])
+        ModelAccess.create([{
+                    'model': self.model_name,
+                    'group': inactive_group.id,
+                    self._perm: True,
+                    }])
+
+        self._assert_raises(record)
+
+    @with_transaction(context=_context)
+    def test_no_access_with_member_inactive_group(self):
+        "Test no access when member of an inactive group"
+        pool = Pool()
+        Group = pool.get('res.group')
+        ModelAccess = pool.get('ir.model.access')
+        TestAccess = pool.get(self.model_name)
+
+        inactive_group, = Group.create([{
+                    'name': 'Test',
+                    'active': False,
+                    'users': [('add', [Transaction().user])],
+                    }])
+        record, = TestAccess.create([{}])
+        ModelAccess.create([{
+                    'model': self.model_name,
+                    'group': None,
+                    self._perm: False,
+                    }])
+        ModelAccess.create([{
+                    'model': self.model_name,
+                    'group': inactive_group.id,
+                    self._perm: True,
+                    }])
+
+        self._assert_raises(record)
+
+    @with_transaction(context=_context)
     def test_one_access_with_other_group_no_perm(self):
         "Test one access with other group no perm"
         pool = Pool()
@@ -650,6 +700,62 @@ class _ModelFieldAccessTestCase(TestCase):
                     'model': 'test.access',
                     'field': 'field1',
                     'group': group.id,
+                    self._perm: True,
+                    }])
+
+        self._assert_raises1(record)
+        self._assert2(record)
+
+    @with_transaction(context=_context)
+    def test_no_access_with_inactive_group(self):
+        "Test no access with inactive group"
+        pool = Pool()
+        Group = pool.get('res.group')
+        FieldAccess = pool.get('ir.model.field.access')
+        TestAccess = pool.get('test.access')
+
+        inactive_group, = Group.create([{'name': 'Test', 'active': False}])
+        record, = TestAccess.create([{}])
+        FieldAccess.create([{
+                    'model': 'test.access',
+                    'field': 'field1',
+                    'group': None,
+                    self._perm: False,
+                    }])
+        FieldAccess.create([{
+                    'model': 'test.access',
+                    'field': 'field1',
+                    'group': inactive_group.id,
+                    self._perm: True,
+                    }])
+
+        self._assert_raises1(record)
+        self._assert2(record)
+
+    @with_transaction(context=_context)
+    def test_no_access_with_member_inactive_group(self):
+        "Test no access when member of an inactive group"
+        pool = Pool()
+        Group = pool.get('res.group')
+        FieldAccess = pool.get('ir.model.field.access')
+        TestAccess = pool.get('test.access')
+
+        inactive_group, = Group.create([{
+                    'name': 'Test',
+                    'active': False,
+                    'users': [('add', [Transaction().user])],
+                    }])
+        record, = TestAccess.create([{}])
+        FieldAccess.create([{
+                    'model': 'test.access',
+                    'field': 'field1',
+                    'group': None,
+                    self._perm: False,
+                    }])
+        FieldAccess.create([{
+                    'model': 'test.access',
+                    'field': 'field1',
+                    'group': inactive_group.id,
                     self._perm: True,
                     }])
 

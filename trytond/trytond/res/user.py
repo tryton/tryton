@@ -607,16 +607,22 @@ class User(avatar_mixin(100, 'login'), DeactivableMixin, ModelSQL, ModelView):
         '''
         pool = Pool()
         UserGroup = pool.get('res.user-res.group')
+        Group = pool.get('res.group')
+
         transaction = Transaction()
         user = transaction.user
         groups = cls._get_groups_cache.get(user)
         if groups is not None:
             return groups
         cursor = transaction.connection.cursor()
+        group = Group.__table__()
         user_group = UserGroup.user_group_all_table()
-        cursor.execute(*user_group.select(
+        cursor.execute(*user_group
+            .join(group, 'LEFT', user_group.group == group.id)
+            .select(
                 user_group.group,
-                where=user_group.user == user,
+                where=((user_group.user == user)
+                    & (group.active == Literal(True))),
                 order_by=[user_group.group.asc]))
         groups = tuple(g for g, in cursor)
         cls._get_groups_cache.set(user, groups)
