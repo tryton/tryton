@@ -4,6 +4,7 @@ import base64
 import gzip
 import logging
 import time
+import zlib
 from functools import wraps
 
 try:
@@ -309,3 +310,21 @@ def user_application(name, json=True):
             return response
         return wrapper
     return decorator
+
+
+class GzipStream:
+    def __init__(self, data, compresslevel=6):
+        if isinstance(data, str):
+            data = [data]
+        self.iterator = data
+        self.compressor = zlib.compressobj(level=compresslevel, wbits=31)
+
+    def __iter__(self):
+        for chunk in self.iterator:
+            data = chunk.encode('utf-8')
+            compressed = self.compressor.compress(data)
+            if compressed:
+                yield compressed
+        tail = self.compressor.flush()
+        if tail:
+            yield tail

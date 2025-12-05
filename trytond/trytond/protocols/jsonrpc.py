@@ -2,7 +2,6 @@
 # this repository contains the full copyright notices and license terms.
 import base64
 import datetime
-import gzip
 import json
 from decimal import Decimal
 from types import MappingProxyType
@@ -15,7 +14,7 @@ from werkzeug.wrappers import Response
 from trytond.exceptions import (
     ConcurrencyException, LoginException, MissingDependenciesException,
     RateLimitException, TrytonException, UserWarning)
-from trytond.protocols.wrappers import Request
+from trytond.protocols.wrappers import GzipStream, Request
 from trytond.tools import cached_property
 
 
@@ -154,6 +153,20 @@ class JSONRequest(Request):
             raise BadRequest("Unable to get RPC params") from e
 
 
+encoder = JSONEncoder(separators=(',', ':'))
+
+
+def dumps(obj, limit=1400):
+    chunks = []
+    total = 0
+    for chunk in encoder.iterencode(obj):
+        total += len(chunk)
+        if total > limit:
+            raise OverflowError()
+        chunks.append(chunk)
+    return ''.join(chunks)
+
+
 class JSONProtocol:
     content_type = 'json'
 
@@ -196,10 +209,13 @@ class JSONProtocol:
                 return InternalServerError(data)
             response = data
         headers = {}
-        data = json.dumps(
-            response, cls=JSONEncoder, separators=(',', ':'))
-        if len(data) >= 1400 and 'gzip' in request.accept_encodings:
-            data = gzip.compress(data.encode('utf-8'), compresslevel=1)
+
+        try:
+            payload = dumps(response)
+        except OverflowError:
+            payload = encoder.iterencode(response)
+            if 'gzip' in request.accept_encodings:
+                payload = GzipStream(payload, compresslevel=1)
             headers['Content-Encoding'] = 'gzip'
         return Response(
-            data, content_type='application/json', headers=headers)
+            payload, content_type='application/json', headers=headers)

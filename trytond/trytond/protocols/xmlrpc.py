@@ -1,7 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import datetime
-import gzip
 import logging
 import xmlrpc.client as client
 from decimal import Decimal
@@ -17,7 +16,7 @@ from trytond.exceptions import (
     ConcurrencyException, LoginException, MissingDependenciesException,
     RateLimitException, TrytonException, UserWarning)
 from trytond.model.fields.dict import ImmutableDict
-from trytond.protocols.wrappers import Request
+from trytond.protocols.wrappers import GzipStream, Request
 from trytond.tools import cached_property
 
 logger = logging.getLogger(__name__)
@@ -180,7 +179,7 @@ class XMLProtocol:
             data = client.dumps(
                 data, methodresponse=True, allow_none=True)
             if len(data) >= 1400 and 'gzip' in request.accept_encodings:
-                data = gzip.compress(data.encode('utf-8'), compresslevel=1)
+                data = GzipStream(data.encode('utf-8'), compresslevel=1)
                 headers['Content-Encoding'] = 'gzip'
             return Response(
                 data, content_type='text/xml', headers=headers)

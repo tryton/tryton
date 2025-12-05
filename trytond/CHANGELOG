@@ -1,3 +1,4 @@
+* Stream json and gzip response
 * Allow users to subscribe to notification cron jobs
 * Add user notification
 * Add support for materializing ModelSQL based on a table query
