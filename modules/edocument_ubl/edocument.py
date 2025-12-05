@@ -364,6 +364,8 @@ class Invoice(Model):
                 similar_line, = similar_lines
                 line.account = similar_line.account
                 line.product = similar_line.product
+                if not line.unit:
+                    line.unit = similar_line.unit
             else:
                 line.account = account_configuration.get_multivalue(
                     'default_category_account_expense',
@@ -534,6 +536,8 @@ class Invoice(Model):
                 similar_line, = similar_lines
                 line.account = similar_line.account
                 line.product = similar_line.product
+                if not line.unit:
+                    line.unit = similar_line.unit
             else:
                 line.account = account_configuration.get_multivalue(
                     'default_category_account_expense',
