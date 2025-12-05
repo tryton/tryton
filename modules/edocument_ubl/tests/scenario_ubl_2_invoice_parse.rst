@@ -18,7 +18,7 @@ Imports::
 
 Activate modules::
 
-    >>> modules = ['edocument_ubl', 'account_invoice']
+    >>> modules = ['edocument_ubl', 'account_invoice', 'purchase']
     >>> if cash_rounding:
     ...     modules.append('account_cash_rounding')
     >>> config = activate_modules(modules, create_company, create_chart)

@@ -1021,8 +1021,8 @@ class Invoice_Purchase(metaclass=PoolMeta):
         PurchaseLine = pool.get('purchase.line')
         UoM = pool.get('product.uom')
 
-        origin = super()._parse_2_item_reference(
-            line_reference, line, supplier=supplier)
+        origin = super()._parse_2_line_reference(
+            line_reference, line, company, supplier=supplier)
         if origin:
             return origin
         if not line or not line.product or not line.unit:
