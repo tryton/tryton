@@ -554,7 +554,7 @@ IDENTIFIER_TYPES = [
     ('au_tfn', "Australian Tax File Number"),
     ('be_bis', "Belgian BIS Number"),
     ('be_nn', "Belgian National Number"),
-    ('be_vat', "Belgian Enterprise Number"),
+    ('be_vat', "Belgian VAT Number"),
     ('be_businessid', "Belgian Company Number"),
     ('bg_egn', "Bulgarian Personal Identity Codes"),
     ('bg_pnf', "Bulgarian Number of a Foreigner"),
