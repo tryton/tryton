@@ -38,7 +38,7 @@ class Peppol(Workflow, ModelSQL, ModelView):
     type = fields.Selection([
             (None, ""),
             ('bis-billing-3', "BIS Billing V3"),
-            ], "Type",
+            ], "Type", translate=False,
         states={
             'readonly': _states['readonly'],
             'required': Eval('state') != 'draft',
