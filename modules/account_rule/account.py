@@ -36,8 +36,8 @@ class AccountRule(sequence_ordered(), MatchMixin, ModelSQL, ModelView):
     __name__ = 'account.account.rule'
 
     company = fields.Many2One('company.company', "Company", required=True)
-    start_date = fields.Date("Starting Date")
-    end_date = fields.Date("Ending Date")
+    start_date = fields.Date("Start Date")
+    end_date = fields.Date("End Date")
     type = fields.Selection([
             ('receivable', "Receivable"),
             ('stock', "Stock"),

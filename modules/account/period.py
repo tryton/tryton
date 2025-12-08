@@ -26,9 +26,11 @@ _STATES = {
 class Period(Workflow, ModelSQL, ModelView):
     __name__ = 'account.period'
     name = fields.Char('Name', required=True)
-    start_date = fields.Date('Starting Date', required=True, states=_STATES,
+    start_date = fields.Date(
+        "Start Date", required=True, states=_STATES,
         domain=[('start_date', '<=', Eval('end_date', None))])
-    end_date = fields.Date('Ending Date', required=True, states=_STATES,
+    end_date = fields.Date(
+        "End Date", required=True, states=_STATES,
         domain=[('end_date', '>=', Eval('start_date', None))])
     fiscalyear = fields.Many2One(
         'account.fiscalyear', "Fiscal Year", required=True, ondelete='CASCADE',

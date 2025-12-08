@@ -588,8 +588,8 @@ class TaxTemplate(sequence_ordered(), ModelSQL, ModelView, DeactivableMixin):
         states={
             'invisible': Bool(Eval('parent')),
             })
-    start_date = fields.Date('Starting Date')
-    end_date = fields.Date('Ending Date')
+    start_date = fields.Date("Start Date")
+    end_date = fields.Date("End Date")
     amount = fields.Numeric(
         "Amount", digits=(None, 8),
         states={
@@ -758,8 +758,8 @@ class Tax(sequence_ordered(), ModelSQL, ModelView, DeactivableMixin):
             'invisible': Bool(Eval('parent')),
             'readonly': _states['readonly'],
             })
-    start_date = fields.Date('Starting Date', states=_states)
-    end_date = fields.Date('Ending Date', states=_states)
+    start_date = fields.Date("Start Date", states=_states)
+    end_date = fields.Date("End Date", states=_states)
     amount = fields.Numeric(
         "Amount", digits=(None, 8),
         states={
@@ -1572,8 +1572,8 @@ class TaxRuleLineTemplate(sequence_ordered(), ModelSQL, ModelView):
     __name__ = 'account.tax.rule.line.template'
     rule = fields.Many2One('account.tax.rule.template', 'Rule', required=True,
             ondelete='CASCADE')
-    start_date = fields.Date("Starting Date")
-    end_date = fields.Date("Ending Date")
+    start_date = fields.Date("Start Date")
+    end_date = fields.Date("End Date")
     group = fields.Many2One('account.tax.group', 'Tax Group',
         ondelete='RESTRICT')
     origin_tax = fields.Many2One('account.tax.template', 'Original Tax',
@@ -1693,8 +1693,8 @@ class TaxRuleLine(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
     rule = fields.Many2One(
         'account.tax.rule', "Rule",
         required=True, ondelete='CASCADE', states=_states)
-    start_date = fields.Date("Starting Date")
-    end_date = fields.Date("Ending Date")
+    start_date = fields.Date("Start Date")
+    end_date = fields.Date("End Date")
     group = fields.Many2One('account.tax.group', 'Tax Group',
         ondelete='RESTRICT', states=_states)
     origin_tax = fields.Many2One('account.tax', 'Original Tax',
