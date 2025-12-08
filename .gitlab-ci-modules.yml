@@ -1458,12 +1458,14 @@ test-modules-edocument_peppol_peppyrus-sqlite:
   variables:
     PACKAGE: modules/edocument_peppol_peppyrus
     TAG_PATTERN: '/^edocument_peppol_peppyrus-.*/'
+  resource_group: peppyrus
 
 test-modules-edocument_peppol_peppyrus-postgresql:
   extends: .test-postgresql
   variables:
     PACKAGE: modules/edocument_peppol_peppyrus
     TAG_PATTERN: '/^edocument_peppol_peppyrus-.*/'
+  resource_group: peppyrus
 
 check-doc-modules-edocument_ubl:
   extends: .check-doc

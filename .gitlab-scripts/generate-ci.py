@@ -27,6 +27,7 @@ ${extra}""")
 RESOURCE_GROUPS = {
     'account_fr_chorus': 'chorus',
     'account_payment_stripe': 'stripe',
+    'edocument_peppol_peppyrus': 'peppyrus',
     'web_shop_shopify': 'shopify',
     }
 
