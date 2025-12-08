@@ -19,12 +19,13 @@ Patch Peppol::
     >>> render = patch.object(Peppol, 'render').start()
     >>> participant_scheme, participant_id = (
     ...     os.getenv('PEPPYRUS_PARTICIPANT_ID').split(':', 1))
+    >>> participant_vat = os.getenv('PEPPYRUS_PARTICIPANT_VAT')
     >>> with file_open('edocument_peppol_peppyrus/tests/invoice.xml', mode='r') as fp:
     ...     render.return_value = (
     ...         fp.read()
     ...         .replace('PARTICIPANT_SCHEME', participant_scheme)
     ...         .replace('PARTICIPANT_ID', participant_id)
-    ...         .replace('PARTICIPANT_VAT', participant_id.upper())
+    ...         .replace('PARTICIPANT_VAT', participant_vat.upper())
     ...         .encode())
 
 Activate modules::

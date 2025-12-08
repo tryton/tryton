@@ -9,7 +9,8 @@ from trytond.tests.test_tryton import TEST_NETWORK, load_doc_tests
 def load_tests(*args, **kwargs):
     if (not TEST_NETWORK
             or not (os.getenv('PEPPYRUS_API_KEY')
-                and os.getenv('PEPPYRUS_PARTICIPANT_ID'))):
+                and os.getenv('PEPPYRUS_PARTICIPANT_ID')
+                and os.getenv('PEPPYRUS_PARTICIPANT_VAT'))):
         kwargs.setdefault('skips', set()).update({
                 'scenario_edocument_peppol_peppyrus.rst',
                 })
