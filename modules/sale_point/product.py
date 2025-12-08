@@ -54,13 +54,13 @@ class Product(_GrossPriceMixin, metaclass=PoolMeta):
             states={
                 'invisible': ~Eval('salable', False),
                 },
-            help="The price with default tax included.\n"
+            help="The price with default taxes included.\n"
             "Leave empty to use the gross price of the product."))
     gross_prices = fields.One2Many(
         'product.gross_price', 'product', "Gross Prices")
     gross_price_used = fields.Function(fields.Numeric(
             "Gross Price", digits=price_digits,
-            help="The price with default tax included."),
+            help="The price with default taxes included."),
         'get_gross_price_used')
 
     @classmethod
