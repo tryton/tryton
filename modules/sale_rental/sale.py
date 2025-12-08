@@ -268,7 +268,7 @@ class Rental(
             ('done', "Done"),
             ('cancelled', "Cancelled"),
             ], "State", readonly=True, required=True, sort=False,
-        help="The current state of the sale subscription.")
+        help="The current state of the sale rental.")
 
     @classmethod
     def __setup__(cls):
