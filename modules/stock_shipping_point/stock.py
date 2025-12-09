@@ -153,7 +153,7 @@ class ShippingPointSelection_ShipmentMeasurements(metaclass=PoolMeta):
                 []),
             ])
     max_weight = fields.Float(
-        "Minimal Weight", digits='weight_uom',
+        "Maximum Weight", digits='weight_uom',
         domain=[
             If(Eval('min_weight'),
                 ['OR',
@@ -180,7 +180,7 @@ class ShippingPointSelection_ShipmentMeasurements(metaclass=PoolMeta):
                 []),
             ])
     max_volume = fields.Float(
-        "Minimal Volume", digits='volume_uom',
+        "Maximal Volume", digits='volume_uom',
         domain=[
             If(Eval('min_volume'),
                 ['OR',
