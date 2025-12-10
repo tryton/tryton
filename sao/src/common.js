@@ -3606,7 +3606,10 @@
             }).appendTo(dialog.body);
             alert_.append(jQuery('<h4/>')
                 .text(title)
-                .css('white-space', 'pre-wrap'));
+                .css({
+                    'white-space': 'pre-wrap',
+                    'word-break': 'break-all',
+                }));
             alert_.append(jQuery('<p/>').append(jQuery('<a/>', {
                 'class': 'btn btn-default',
                 role: 'button',
