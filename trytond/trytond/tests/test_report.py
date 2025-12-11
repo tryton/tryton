@@ -136,9 +136,9 @@ class ReportTestCase(TestCase):
             '<!doctype html><title>Test</title>')
 
     @with_transaction()
-    @patch('trytond.report.report.html2text')
-    def test_get_email_html_without_html2text(self, html2text):
-        html2text.__bool__.side_effect = lambda: False
+    @patch('trytond.report.report.html_to_text')
+    def test_get_email_html_without_html2text(self, html_to_text):
+        html_to_text.side_effect = lambda content: None
 
         class FakeReport(Report):
             @classmethod

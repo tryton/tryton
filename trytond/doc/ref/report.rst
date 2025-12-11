@@ -147,3 +147,10 @@ Email reports must have ``HTML`` as output format.
 
    .. warning::
       It may return the content unconverted if some dependencies are missing.
+
+.. function:: html_to_text(content):
+
+   Converts ``HTML`` content to plain text.
+
+   .. warning::
+      It may return ``None`` if some dependencies are missing.

@@ -11,12 +11,6 @@ from urllib.parse import (
     parse_qsl, quote, urlencode, urljoin, urlsplit, urlunsplit)
 
 from dateutil.relativedelta import relativedelta
-
-try:
-    import html2text
-except ImportError:
-    html2text = None
-
 from genshi.core import END, START, Attrs, QName
 from genshi.template import MarkupTemplate
 from genshi.template import TemplateError as GenshiTemplateError
@@ -31,7 +25,7 @@ from trytond.model import (
     fields)
 from trytond.pool import Pool
 from trytond.pyson import Eval, If, PYSONDecoder, TimeDelta
-from trytond.report import Report
+from trytond.report import Report, html_to_text
 from trytond.sendmail import SMTPDataManager, send_message_transactional
 from trytond.tools import grouped_slice, pairwise_longest, reduce_ids
 from trytond.tools.chart import sparkline
@@ -750,9 +744,7 @@ class Activity(
         set_from_header(msg, from_, sender or from_)
         msg['To'] = to
         msg['Subject'] = subject
-        if html2text:
-            converter = html2text.HTML2Text()
-            content_text = converter.handle(content)
+        if content_text := html_to_text(content):
             msg.add_alternative(content_text, subtype='plain')
         if msg.is_multipart():
             msg.add_alternative(content, subtype='html')

@@ -6,10 +6,6 @@ import re
 from email.message import EmailMessage
 from email.utils import getaddresses
 
-try:
-    import html2text
-except ImportError:
-    html2text = None
 from genshi.template import TextTemplate
 
 import trytond.config as config
@@ -18,7 +14,7 @@ from trytond.model import EvalEnvironment, ModelSQL, ModelView, fields
 from trytond.model.exceptions import AccessError, ValidationError
 from trytond.pool import Pool
 from trytond.pyson import Bool, Eval, PYSONDecoder
-from trytond.report import Report
+from trytond.report import Report, html_to_text
 from trytond.rpc import RPC
 from trytond.sendmail import send_message_transactional
 from trytond.tools import escape_wildcard, slugify
@@ -107,16 +103,14 @@ class Email(ResourceAccessMixin, ModelSQL, ModelView):
             'body': body,
             'signature': user.signature or '',
             }
-        if html2text:
-            body_text = HTML_EMAIL % {
-                'subject': subject,
-                'body': body,
-                'signature': '',
-                }
-            converter = html2text.HTML2Text()
-            body_text = converter.handle(body_text)
+        body_text = HTML_EMAIL % {
+            'subject': subject,
+            'body': body,
+            'signature': '',
+            }
+        if body_text := html_to_text(body_text):
             if user.signature:
-                body_text += '\n-- \n' + converter.handle(user.signature)
+                body_text += '\n-- \n' + html_to_text(user.signature)
             msg.add_alternative(body_text, subtype='plain')
         if msg.is_multipart():
             msg.add_alternative(body_html, subtype='html')

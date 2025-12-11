@@ -14,11 +14,6 @@ from genshi.template import TemplateError as GenshiTemplateError
 from sql import Literal
 from sql.aggregate import Count
 
-try:
-    import html2text
-except ImportError:
-    html2text = None
-
 import trytond.config as config
 from trytond.i18n import gettext
 from trytond.ir.session import token_hex
@@ -26,7 +21,7 @@ from trytond.model import (
     DeactivableMixin, Index, ModelSQL, ModelView, Unique, Workflow, fields)
 from trytond.pool import Pool
 from trytond.pyson import Eval
-from trytond.report import Report, get_email
+from trytond.report import Report, get_email, html_to_text
 from trytond.sendmail import SMTPDataManager, send_message_transactional
 from trytond.tools import grouped_slice, reduce_ids
 from trytond.tools.email_ import (
@@ -506,9 +501,7 @@ class Message(Workflow, ModelSQL, ModelView):
                 msg['List-Unsubscribe'] = (
                     f'<{email.get_email_unsubscribe_url()}>')
                 msg['List-Unsubscribe-Post'] = 'List-Unsubscribe=One-Click'
-                if html2text:
-                    converter = html2text.HTML2Text()
-                    content_text = converter.handle(content)
+                if content_text := html_to_text(content):
                     msg.add_alternative(content_text, subtype='plain')
                 if msg.is_multipart():
                     msg.add_alternative(content, subtype='html')
