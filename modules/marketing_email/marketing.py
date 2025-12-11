@@ -21,7 +21,7 @@ from trytond.model import (
     DeactivableMixin, Index, ModelSQL, ModelView, Unique, Workflow, fields)
 from trytond.pool import Pool
 from trytond.pyson import Eval
-from trytond.report import Report, get_email, html_to_text
+from trytond.report import Report, get_email, html_to_text, mjml_to_html
 from trytond.sendmail import SMTPDataManager, send_message_transactional
 from trytond.tools import grouped_slice, reduce_ids
 from trytond.tools.email_ import (
@@ -488,6 +488,9 @@ class Message(Workflow, ModelSQL, ModelView):
                         short=partial(short, record=message))
                     .filter(convert_href(message))
                     .render())
+
+                if content.startswith('<mjml'):
+                    content = mjml_to_html(content)
 
                 name = email.party.rec_name if email.party else ''
                 from_cfg = (config.get('marketing', 'email_from')

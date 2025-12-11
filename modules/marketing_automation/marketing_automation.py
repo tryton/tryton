@@ -25,7 +25,7 @@ from trytond.model import (
     fields)
 from trytond.pool import Pool
 from trytond.pyson import Eval, If, PYSONDecoder, TimeDelta
-from trytond.report import Report, html_to_text
+from trytond.report import Report, html_to_text, mjml_to_html
 from trytond.sendmail import SMTPDataManager, send_message_transactional
 from trytond.tools import grouped_slice, pairwise_longest, reduce_ids
 from trytond.tools.chart import sparkline
@@ -715,6 +715,9 @@ class Activity(
                     '.msg_activity_invalid_email_template',
                     activity=self.rec_name,
                     exception=exception)) from exception
+
+        if content.startswith('<mjml'):
+            content = mjml_to_html(content)
 
         msg = self._email(translated.email_from, to, title, content)
 
