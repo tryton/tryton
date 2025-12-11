@@ -1,8 +1,14 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import datetime
+import unittest
 from email.message import EmailMessage
 from unittest.mock import Mock, patch
+
+try:
+    import mrml
+except ImportError:
+    mrml = None
 
 from trytond.model.exceptions import AccessError
 from trytond.pool import Pool
@@ -86,6 +92,18 @@ class ReportTestCase(TestCase):
 
         with self.assertRaises(AccessError):
             Report.execute([1], {'model': 'test.access'})
+
+    @unittest.skipUnless(mrml, "required mrml")
+    @with_transaction()
+    def test_convert_mjml_to_html(self):
+        "Test convert MJML to HTML"
+        pool = Pool()
+        Report = pool.get('test.test_report_mjml', type='report')
+
+        oext, content, _, _ = Report.execute([1], {})
+
+        self.assertEqual(oext, 'html')
+        self.assertEqual(content[:15], '<!doctype html>')
 
     @with_transaction()
     def test_get_email_html(self):

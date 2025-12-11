@@ -129,6 +129,10 @@ Class methods are:
 Email
 =====
 
+Email reports must have ``HTML`` as output format.
+`MJML <https://mjml.io/>`_ syntax can be used with the ``XML`` input format and
+``HTML`` output format to generate responsive emails.
+
 .. function:: get_email(report, record, languages)
 
    Returns the :py:class:`~email.message.EmailMessage` and title using the
@@ -136,3 +140,10 @@ Email
    :class:`~trytond.model.ModelStorage` record for each language.
 
    .. note:: Order languages with the preferred last.
+
+.. function:: mjml_to_html(content)
+
+   Converts ``MJML`` content to ``HTML``.
+
+   .. warning::
+      It may return the content unconverted if some dependencies are missing.

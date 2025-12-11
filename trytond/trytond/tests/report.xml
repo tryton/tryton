@@ -9,5 +9,13 @@ this repository contains the full copyright notices and license terms. -->
             <field name="report">tests/report.txt</field>
             <field name="template_extension">txt</field>
         </record>
+
+        <record model="ir.action.report" id="test_report_mjml">
+            <field name="name">Test Report MJML</field>
+            <field name="report_name">test.test_report_mjml</field>
+            <field name="report">tests/report.mjml</field>
+            <field name="template_extension">xml</field>
+            <field name="extension">html</field>
+        </record>
     </data>
 </tryton>

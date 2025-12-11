@@ -1,0 +1,9 @@
+<mjml xmlns:py="http://genshi.edgewall.org/">
+    <mj-body>
+        <mj-section>
+            <mj-column>
+                ${user.name}
+            </mj-column>
+        </mj-section>
+    </mj-body>
+</mjml>

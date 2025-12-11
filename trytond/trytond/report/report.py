@@ -130,6 +130,19 @@ class TranslateFactory:
             self.report_name, text, text_plural, n)
 
 
+def _lazy_import(name):
+    attr_name = f'_mod_{name}'
+    if not hasattr(_lazy_import, attr_name):
+        try:
+            mod = __import__(name)
+        except ImportError:
+            mod = None
+        setattr(_lazy_import, attr_name, mod)
+    else:
+        mod = getattr(_lazy_import, attr_name)
+    return mod
+
+
 class Report(URLMixin, PoolBase):
 
     @classmethod
@@ -414,6 +427,13 @@ class Report(URLMixin, PoolBase):
                 and output_format == 'pdf'):
             return output_format, weasyprint.HTML(string=data).write_pdf()
 
+        if (input_format == 'xml'
+                and output_format == 'html'
+                and isinstance(data, str)
+                and data.startswith('<mjml')):
+            if mrml := _lazy_import('mrml'):
+                return output_format, mrml.to_html(data).content
+
         if input_format == output_format and output_format in MIMETYPES:
             return output_format, data
 
@@ -637,3 +657,9 @@ def get_email(report, record, languages):
         msg.add_header(
             'Content-Language', ', '.join(l.code for l in languages))
     return msg, title
+
+
+def mjml_to_html(content):
+    if mrml := _lazy_import('mrml'):
+        content = mrml.to_html(content).content
+    return content
