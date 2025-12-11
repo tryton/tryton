@@ -7,14 +7,6 @@ import time
 import urllib.parse
 from secrets import token_hex
 
-try:
-    import bcrypt
-except ImportError:
-    bcrypt = None
-try:
-    import html2text
-except ImportError:
-    html2text = None
 from sql import Literal, Null
 from sql.conditionals import Coalesce
 from sql.functions import CurrentTimestamp

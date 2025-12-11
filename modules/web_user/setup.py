@@ -122,9 +122,7 @@ setup(name=name,
     python_requires='>=3.9',
     install_requires=requires,
     extras_require={
-        'BCrypt': ['bcrypt'],
         'test': tests_require,
-        'html2text': ['html2text'],
         },
     zip_safe=False,
     entry_points="""
