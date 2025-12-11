@@ -1275,7 +1275,8 @@
                 var name = clause[0];
                 var operator = clause[1];
                 var value = clause[2];
-                if (name.endsWith('.rec_name') && value) {
+                if (name.endsWith('.rec_name')
+                    && (value || (clause.length > 3))) {
                     name = name.slice(0, -9);
                 }
                 if (!(name in this.fields)) {
@@ -1853,7 +1854,7 @@
                         var split = this.split_target_value(field, value);
                         target = split[0];
                         value = split[1];
-                        if (target && value) {
+                        if (target) {
                             field_name += '.rec_name';
                         }
                     } else if (field.type == 'multiselection') {
@@ -2207,7 +2208,7 @@
                         break;
                     }
                 }
-                return target + ',' + value;
+                return target + ',' + (value || '');
             };
 
             var converts = {

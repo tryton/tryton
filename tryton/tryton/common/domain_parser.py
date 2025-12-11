@@ -368,7 +368,7 @@ def format_value(field, value, target=None, context=None, _quote_empty=False):
         if not target:
             return format_selection()
         selections = dict(field['selection'])
-        return '%s,%s' % (selections.get(target, target), value)
+        return '%s,%s' % (selections.get(target, target), value or '')
 
     def format_datetime():
         if not value:
@@ -624,7 +624,8 @@ class DomainParser(object):
                     or clause[0] in ('AND', 'OR')):
                 return '(%s)' % self.string(clause)
             name, operator, value = clause[:3]
-            if name.endswith('.rec_name') and value:
+            if (name.endswith('.rec_name')
+                    and (value or len(clause) > 3)):
                 name = name[:-9]
             if name not in self.fields:
                 if value is not None and is_full_text(value):
@@ -851,7 +852,7 @@ class DomainParser(object):
                     target = None
                     if field['type'] == 'reference':
                         target, value = split_target_value(field, value)
-                        if target and value:
+                        if target:
                             field_name += '.rec_name'
                     elif field['type'] == 'multiselection':
                         if value is not None and not isinstance(value, list):
