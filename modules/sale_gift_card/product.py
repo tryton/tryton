@@ -3,7 +3,7 @@
 from trytond.i18n import gettext
 from trytond.model import fields
 from trytond.pool import PoolMeta, Pool
-from trytond.pyson import Eval
+from trytond.pyson import Eval, If
 from trytond.transaction import Transaction
 
 from .exceptions import GiftCardValidationError
@@ -14,6 +14,11 @@ class Template(metaclass=PoolMeta):
 
     gift_card = fields.Boolean(
         "Gift Card",
+        domain=[
+            If(~Eval('type').in_(['service', 'goods']),
+                ('gift_card', '=', False),
+                ()),
+            ],
         states={
             'invisible': ~Eval('type').in_(['service', 'goods']),
             },
