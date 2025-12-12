@@ -31,6 +31,7 @@ Activate modules::
     >>> ProductUoM = Model.get('product.uom')
     >>> Sale = Model.get('sale.sale')
     >>> SaleConfig = Model.get('sale.configuration')
+    >>> SaleReporting = Model.get('sale.reporting.main')
     >>> Sequence = Model.get('ir.sequence')
     >>> SequenceType = Model.get('ir.sequence.type')
 
@@ -182,3 +183,9 @@ Check the invoice::
     >>> gift_card_line.quantity
     -1.0
     >>> assertEqual(gift_card_line.account, gift_card_revenue)
+
+Check sale reporting::
+
+    >>> report, = SaleReporting.find([])
+    >>> report.revenue
+    Decimal('100.00')
