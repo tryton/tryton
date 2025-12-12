@@ -30,8 +30,10 @@ After
          ('state', '=', 'validated'),
          ('address', '=', None),
          ])
+
      for mandate in mandates:
          mandate.address = mandate.on_change_party()
+
      Mandate.save(mandates)
 
 7.6
@@ -66,6 +68,7 @@ After
          shipment.state = 'draft'
          shipment.internal_transit_location = shipment.transit_location
          shipment.state = state
+
      Shipment.save(shipments)
      transaction.commit()
 
