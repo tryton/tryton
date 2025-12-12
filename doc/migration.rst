@@ -46,6 +46,7 @@ After
          shipment.state = 'draft'
          shipment.internal_transit_location = shipment.transit_location
          shipment.state = state
+
      Shipment.save(shipments)
      transaction.commit()
 
