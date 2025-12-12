@@ -195,7 +195,7 @@ class Abstract(ModelSQL):
             'year': relativedelta(years=1),
             'month': relativedelta(months=1),
             'day': relativedelta(days=1),
-            }.get(context.get('period'))
+            }.get(context.get('period', 'month'))
 
     def get_trend(self, name):
         name = name[:-len('_trend')]
@@ -221,7 +221,7 @@ class AbstractTimeseries(Abstract):
     def _column_date(cls, tables, withs):
         context = Transaction().context
         line = tables['line']
-        date = DateTrunc(context.get('period'), line.date)
+        date = DateTrunc(context.get('period', 'month'), line.date)
         date = cls.date.sql_cast(date)
         return date
 
