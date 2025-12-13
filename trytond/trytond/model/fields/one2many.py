@@ -350,7 +350,7 @@ class One2Many(Field):
                     if self.filter:
                         query = Target.search(
                             self.filter, order=[], query=True)
-                        where &= origin.in_(query)
+                        where &= target.id.in_(query)
                     query = target.select(origin, where=where)
                     expression = ~table.id.in_(query)
                 else:
