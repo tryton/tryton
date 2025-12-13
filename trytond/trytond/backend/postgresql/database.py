@@ -416,27 +416,32 @@ class Database(DatabaseInterface):
         return True
 
     def nextid(self, connection, table, count=1):
+        column = 'id' if not table.endswith('__history') else '__id'
         cursor = connection.cursor()
         cursor.execute(
             "SELECT nextval(pg_get_serial_sequence(format(%s, %s), %s)) "
             "FROM generate_series(1, %s)",
-            ('%I', table, 'id', count))
+            ('%I', table, column, count))
         if count == 1:
             return cursor.fetchone()[0]
         else:
             return [id for id, in cursor]
 
     def setnextid(self, connection, table, value):
+        if self.currid(connection, table) >= value:
+            return
+        column = 'id' if not table.endswith('__history') else '__id'
         cursor = connection.cursor()
         cursor.execute(
             "SELECT setval(pg_get_serial_sequence(format(%s, %s), %s), %s)",
-            ('%I', table, 'id', value))
+            ('%I', table, column, value))
 
     def currid(self, connection, table):
+        column = 'id' if not table.endswith('__history') else '__id'
         cursor = connection.cursor()
         cursor.execute(
             "SELECT pg_get_serial_sequence(format(%s, %s), %s)",
-            ('%I', table, 'id'))
+            ('%I', table, column))
         sequence_name, = cursor.fetchone()
         cursor.execute(f"SELECT last_value FROM {sequence_name}")
         return cursor.fetchone()[0]
