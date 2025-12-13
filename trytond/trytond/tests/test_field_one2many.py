@@ -612,6 +612,21 @@ class FieldOne2ManyTestCase(
         self.assertEqual(filtered_target.value, 3)
 
     @with_transaction()
+    def test_search_equals_filter(self):
+        "Test search one2many equals with filter"
+        One2Many = Pool().get('test.one2many_filter')
+        one2many, = One2Many.create([{
+                    'targets': [('create', [{'value': 3}])],
+                    }])
+
+        one2manys = One2Many.search([('targets', '=', None)])
+        one2manys_filtered = One2Many.search(
+            [('filtered_targets', '=', None)])
+
+        self.assertListEqual(one2manys, [])
+        self.assertListEqual(one2manys_filtered, [])
+
+    @with_transaction()
     def test_search_non_equals_filter(self):
         "Test search one2many non equals with filter"
         One2Many = Pool().get('test.one2many_filter')
