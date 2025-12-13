@@ -318,7 +318,7 @@ class One2Many(Field):
                     where &= origin_where
                 if self.filter:
                     query = Target.search(self.filter, order=[], query=True)
-                    where &= origin.in_(query)
+                    where &= target.id.in_(query)
                 query = target.select(origin, where=where)
                 expression = ~table.id.in_(query)
                 if operator == '!=':
