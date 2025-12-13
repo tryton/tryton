@@ -717,6 +717,25 @@ class Database(DatabaseInterface):
                     return False
         return True
 
+    def setnextid(self, connection, table, value):
+        cursor = connection.cursor()
+        sequence = Table('sqlite_sequence')
+        cursor.execute(*sequence.select(
+                sequence.seq,
+                where=sequence.name == table))
+        rows = cursor.fetchall()
+        if rows:
+            if rows[0][0] >= value:
+                return
+            cursor.execute(*sequence.update(
+                    [sequence.seq],
+                    [value - 1],
+                    where=sequence.name == table))
+        else:
+            cursor.execute(*sequence.insert(
+                    [sequence.name, sequence.seq],
+                    [[table, value - 1]]))
+
     def lastid(self, cursor):
         # This call is not thread safe
         return cursor.lastrowid
