@@ -256,7 +256,7 @@ class LotTrace(ModelSQL, ModelView):
 
     @classmethod
     def _is_trace_move(cls, move):
-        return move.state == 'done'
+        return move.state == 'done' and move.lot
 
     @classmethod
     def _trace_move_order_key(cls, move):
