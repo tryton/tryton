@@ -131,3 +131,15 @@ Warning
 
 The user *Warning* concept is used to record whether a user wants to see a
 `specific warning <topics-user_errors_warnings>` again.
+
+
+.. _model-res.notification:
+
+Notification
+============
+
+The *Notification* concept is used to store messages for a `user
+<model-res.user>`.
+A notification can be linked to a set of records of the same
+:class:`~trytond.model.ModelStorage` or an `action <model-ir.action>`  which
+will be opened when the user click on it.
