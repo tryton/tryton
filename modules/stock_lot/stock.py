@@ -253,7 +253,7 @@ class LotTrace(ModelSQL, ModelView):
         pool = Pool()
         Model = pool.get('ir.model')
         Move = pool.get('stock.move')
-        return Move.get_origin() + [
+        return Move.get_shipment() + [
             ('stock.inventory', Model.get_name('stock.inventory'))]
 
     @classmethod
