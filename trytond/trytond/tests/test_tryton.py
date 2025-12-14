@@ -1005,15 +1005,34 @@ class ModuleTestCase(_DBTestCase):
             if not action_window.res_model:
                 return
             Model = pool.get(action_window.res_model)
-            for active_id, active_ids in [
-                    (None, []),
-                    (1, [1]),
-                    (1, [1, 2]),
-                    ]:
+            actives = [(None, [], action_window.res_model)]
+            for keyword in action_window.keywords:
+                if not keyword.model:
+                    continue
+                if isinstance(keyword.model, str):
+                    kModel = pool.get(keyword.model.split(',', 1)[0])
+                    ids = [r.id for r in kModel.search([], limit=2)]
+                    if ids:
+                        actives.append((
+                                ids[0],
+                                [ids[0]],
+                                kModel.__name__))
+                        if len(ids) > 1:
+                            actives.append((
+                                    ids[0],
+                                    ids,
+                                    kModel.__name__))
+                else:
+                    actives.append((
+                            keyword.id,
+                            [keyword.id],
+                            keyword.model.__name__))
+
+            for active_id, active_ids, active_model in actives:
                 decoder = PYSONDecoder({
                         'active_id': active_id,
                         'active_ids': active_ids,
-                        'active_model': action_window.res_model,
+                        'active_model': active_model,
                         })
                 domain = decoder.decode(action_window.pyson_domain)
                 order = decoder.decode(action_window.pyson_order)
