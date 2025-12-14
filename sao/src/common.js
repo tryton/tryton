@@ -1257,11 +1257,12 @@
                 var name = clause[0];
                 var operator = clause[1];
                 var value = clause[2];
-                if (name.endsWith('.rec_name')) {
+                if (name.endsWith('.rec_name')
+                    && (value || (clause.length > 3))) {
                     name = name.slice(0, -9);
                 }
                 if (!(name in this.fields)) {
-                    if (this.is_full_text(value)) {
+                    if ((value !== null) && this.is_full_text(value)) {
                         value = value.slice(1, -1);
                     }
                     return this.quote(value);
@@ -2183,7 +2184,7 @@
                         break;
                     }
                 }
-                return target + ',' + value;
+                return target + ',' + (value || '');
             };
 
             var converts = {

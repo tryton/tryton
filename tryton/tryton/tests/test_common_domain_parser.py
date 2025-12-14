@@ -769,6 +769,9 @@ class DomainParserTestCase(TestCase):
             dom.string([('reference.rec_name', 'ilike', '%bar%', 'spam')]),
             'Reference: Spam,bar')
         self.assertEqual(
+            dom.string([('reference.rec_name', '=', None, 'spam')]),
+            "Reference: =Spam,")
+        self.assertEqual(
             dom.string([('reference', 'in', ['foo', 'bar'])]),
             'Reference: foo;bar')
         self.assertEqual(
@@ -1092,6 +1095,10 @@ class DomainParserTestCase(TestCase):
         self.assertEqual(
             rlist(dom.parse_clause([('Reference', None, 'Spam,bar')])), [
                 ('reference.rec_name', 'ilike', '%bar%', 'spam'),
+                ])
+        self.assertEqual(
+            rlist(dom.parse_clause([('Reference', None, 'Spam,')])), [
+                ('reference.rec_name', 'ilike', '%', 'spam'),
                 ])
         self.assertEqual(
             rlist(dom.parse_clause([('Reference', None, ['foo', 'bar'])])), [
