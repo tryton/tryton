@@ -2040,6 +2040,9 @@
         [[c(['Reference', null, 'Spam,bar'])], [
             c(['reference.rec_name', 'ilike', '%bar%', 'spam'])
             ]],
+        [[c(['Reference', null, 'Spam,'])], [
+            c(['reference.rec_name', 'ilike', '%', 'spam'])
+            ]],
         [[c(['Reference', null, ['foo', 'bar']])], [
             c(['reference', 'in', ['foo', 'bar']])
             ]],
@@ -2368,6 +2371,7 @@
         [[['multiselection', 'not in', ['foo', 'bar']]], "MultiSelection: !Foo;Bar"],
         [[['reference', 'ilike', '%foo%']], 'Reference: foo'],
         [[['reference', 'ilike', '%bar%', 'spam']], 'Reference: Spam,bar'],
+        [[['reference.rec_name', '=', null, 'spam']], 'Reference: =Spam,'],
         [[['reference', 'in', ['foo', 'bar']]], 'Reference: foo;bar'],
         [[['many2one', 'ilike', '%John%']], 'Many2One: John'],
         [[['many2one.rec_name', 'in', ['John', 'Jane']]], 'Many2One: John;Jane'],
