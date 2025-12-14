@@ -72,7 +72,7 @@ class AccountCreditLimitTestCase(CompanyTestMixin, ModuleTestCase):
             self.assertRaises(UserError, party.check_credit_limit,
                 Decimal(1), company)
             self.assertRaises(UserWarning, party.check_credit_limit,
-                Decimal(1), company, 'test')
+                Decimal(1), company, party)
             party.credit_limit_amount = Decimal(200)
             party.save()
             party.check_credit_limit(Decimal(1), company)
@@ -80,7 +80,7 @@ class AccountCreditLimitTestCase(CompanyTestMixin, ModuleTestCase):
             self.assertRaises(UserError, party.check_credit_limit,
                 Decimal(150), company)
             self.assertRaises(UserWarning, party.check_credit_limit,
-                Decimal(150), company, 'test')
+                Decimal(150), company, party)
 
 
 del ModuleTestCase
