@@ -1,3 +1,7 @@
+
+Version 7.8.0 - 2025-12-15
+--------------------------
+* Bug fixes (see mercurial logs for details)
 * Allow users to subscribe to chats
 * Manage user notification
 * Add search on empty relation field to domain parser

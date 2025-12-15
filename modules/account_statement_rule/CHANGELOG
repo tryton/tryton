@@ -1,3 +1,7 @@
+
+Version 7.8.0 - 2025-12-15
+--------------------------
+* Bug fixes (see mercurial logs for details)
 * Add payment reference to statement rule
 
 Version 7.6.0 - 2025-04-28

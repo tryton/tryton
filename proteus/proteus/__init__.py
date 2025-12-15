@@ -11,7 +11,7 @@ from functools import total_ordering
 
 import proteus.config
 
-__version__ = "7.7.0"
+__version__ = "7.8.0"
 __all__ = ['Model', 'Wizard', 'Report']
 
 _MODELS = threading.local()
