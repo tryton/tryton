@@ -14,7 +14,7 @@ Imports::
 Activate modules::
 
     >>> config = activate_modules(
-    ...     ['stock_package_shipping_ups', 'stock_shipment_customs'],
+    ...     ['stock_package_shipping_ups', 'stock_shipment_customs', 'incoterm'],
     ...     create_company)
 
     >>> Agent = Model.get('customs.agent')
@@ -22,6 +22,7 @@ Activate modules::
     >>> Address = Model.get('party.address')
     >>> Carrier = Model.get('carrier')
     >>> Country = Model.get('country.country')
+    >>> Incoterm = Model.get('incoterm.incoterm')
     >>> Location = Model.get('stock.location')
     >>> Package = Model.get('stock.package')
     >>> PackageType = Model.get('stock.package.type')
@@ -156,6 +157,10 @@ Create a shipment::
     >>> shipment.customer = customer
     >>> shipment.carrier = carrier
     >>> shipment.shipping_description = "Shipping description"
+    >>> shipment.incoterm, = Incoterm.find([
+    ...     ('code', '=', 'DDP'),
+    ...     ('version', '=', '2000'),
+    ...     ])
     >>> move = shipment.outgoing_moves.new()
     >>> move.product = product
     >>> move.unit = unit

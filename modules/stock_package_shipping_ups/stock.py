@@ -263,13 +263,13 @@ class CreateShippingUPS(Wizard):
 
     def get_payment_information(self, shipment, credential):
         return {
-            'ShipmentCharge': {
-                # Type 01 is for Transportation Charges
-                'Type': '01',
-                'BillShipper': {
-                    'AccountNumber': credential.account_number,
-                    },
-                },
+            'ShipmentCharge': [{
+                    # Type 01 is for Transportation Charges
+                    'Type': '01',
+                    'BillShipper': {
+                        'AccountNumber': credential.account_number,
+                        },
+                    }],
             }
 
     def get_package(self, use_metric, package):
@@ -415,6 +415,21 @@ class CreateShippingUPS_Customs_Incoterm(metaclass=PoolMeta):
                 'ShipmentServiceOptions', {})['InternationalForms'] = (
                     international_form)
         return request
+
+    def get_payment_information(self, shipment, credential):
+        payment_information = super().get_payment_information(
+            shipment, credential)
+        if (shipment.customs_international
+                and shipment.incoterm
+                and shipment.incoterm.import_duties == 'seller'):
+            payment_information['ShipmentCharge'].append({
+                    # Type 02 is for Duties and Taxes
+                    'Type': '02',
+                    'BillShipper': {
+                        'AccountNumber': credential.account_number,
+                        },
+                    })
+        return payment_information
 
     def get_international_form(self, shipment, credential):
         form_type = self.get_international_form_type(shipment, credential)
