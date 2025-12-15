@@ -99,6 +99,6 @@ class Journal(DeactivableMixin, ModelSQL, ModelView):
                     ('currency.numeric_code', '=', currency),
                     ])
         journals = cls.search(domain)
-        if journals:
+        if len(journals) == 1:
             journal, = journals
             return journal
