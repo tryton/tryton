@@ -51,6 +51,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="version">2000</field>
             <field name="mode" eval="None"/>
             <field name="carrier">buyer</field>
+            <field name="export_duties">buyer</field>
+            <field name="import_duties">buyer</field>
             <field name="risk">before</field>
             <field name="location" eval="True"/>
         </record>
@@ -61,6 +63,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="version">2000</field>
             <field name="mode" eval="None"/>
             <field name="carrier">buyer</field>
+            <field name="export_duties">seller</field>
+            <field name="import_duties">buyer</field>
             <field name="risk">before</field>
             <field name="location" eval="True"/>
         </record>
@@ -71,6 +75,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="version">2000</field>
             <field name="mode" eval="None"/>
             <field name="carrier">seller</field>
+            <field name="export_duties">seller</field>
+            <field name="import_duties">buyer</field>
             <field name="risk">before</field>
             <field name="location" eval="True"/>
         </record>
@@ -81,6 +87,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="version">2000</field>
             <field name="mode" eval="None"/>
             <field name="carrier">seller</field>
+            <field name="export_duties">seller</field>
+            <field name="import_duties">buyer</field>
             <field name="risk">before</field>
             <field name="location" eval="True"/>
         </record>
@@ -91,6 +99,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="version">2000</field>
             <field name="mode" eval="None"/>
             <field name="carrier">seller</field>
+            <field name="export_duties">seller</field>
+            <field name="import_duties">buyer</field>
             <field name="risk">after</field>
             <field name="location" eval="True"/>
         </record>
@@ -101,6 +111,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="version">2000</field>
             <field name="mode">waterway</field>
             <field name="carrier">seller</field>
+            <field name="export_duties">seller</field>
+            <field name="import_duties">buyer</field>
             <field name="risk">after</field>
             <field name="location" eval="True"/>
         </record>
@@ -111,6 +123,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="version">2000</field>
             <field name="mode">waterway</field>
             <field name="carrier">seller</field>
+            <field name="export_duties">seller</field>
+            <field name="import_duties">buyer</field>
             <field name="risk">after</field>
             <field name="location" eval="True"/>
         </record>
@@ -121,6 +135,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="version">2010</field>
             <field name="mode" eval="None"/>
             <field name="carrier">seller</field>
+            <field name="export_duties">seller</field>
+            <field name="import_duties">buyer</field>
             <field name="risk">after</field>
             <field name="location" eval="True"/>
         </record>
@@ -131,6 +147,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="version">2000</field>
             <field name="mode" eval="None"/>
             <field name="carrier">seller</field>
+            <field name="export_duties">seller</field>
+            <field name="import_duties">seller</field>
             <field name="risk">after</field>
             <field name="location" eval="True"/>
         </record>
@@ -141,6 +159,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="version">2000</field>
             <field name="mode">waterway</field>
             <field name="carrier">buyer</field>
+            <field name="export_duties">seller</field>
+            <field name="import_duties">buyer</field>
             <field name="risk">before</field>
             <field name="location" eval="True"/>
         </record>
@@ -151,6 +171,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="version">2000</field>
             <field name="mode">waterway</field>
             <field name="carrier">buyer</field>
+            <field name="export_duties">seller</field>
+            <field name="import_duties">buyer</field>
             <field name="risk">before</field>
             <field name="location" eval="True"/>
         </record>
@@ -161,6 +183,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="version">2000</field>
             <field name="mode">waterway</field>
             <field name="carrier">seller</field>
+            <field name="export_duties">seller</field>
+            <field name="import_duties">buyer</field>
             <field name="risk">before</field>
             <field name="location" eval="True"/>
         </record>
@@ -171,6 +195,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="version">2000</field>
             <field name="mode">waterway</field>
             <field name="carrier">seller</field>
+            <field name="export_duties">seller</field>
+            <field name="import_duties">buyer</field>
             <field name="risk">before</field>
             <field name="location" eval="True"/>
         </record>
@@ -181,6 +207,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="version">2010</field>
             <field name="mode" eval="None"/>
             <field name="carrier">buyer</field>
+            <field name="export_duties">buyer</field>
+            <field name="import_duties">buyer</field>
             <field name="risk">before</field>
             <field name="location" eval="True"/>
         </record>
@@ -191,6 +219,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="version">2010</field>
             <field name="mode" eval="None"/>
             <field name="carrier">buyer</field>
+            <field name="export_duties">seller</field>
+            <field name="import_duties">buyer</field>
             <field name="risk">before</field>
             <field name="location" eval="True"/>
         </record>
@@ -201,6 +231,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="version">2010</field>
             <field name="mode" eval="None"/>
             <field name="carrier">seller</field>
+            <field name="export_duties">seller</field>
+            <field name="import_duties">buyer</field>
             <field name="risk">before</field>
             <field name="location" eval="True"/>
         </record>
@@ -211,6 +243,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="version">2010</field>
             <field name="mode" eval="None"/>
             <field name="carrier">seller</field>
+            <field name="export_duties">seller</field>
+            <field name="import_duties">buyer</field>
             <field name="risk">before</field>
             <field name="location" eval="True"/>
         </record>
@@ -221,6 +255,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="version">2010</field>
             <field name="mode" eval="None"/>
             <field name="carrier">seller</field>
+            <field name="export_duties">seller</field>
+            <field name="import_duties">buyer</field>
             <field name="risk">after</field>
             <field name="location" eval="True"/>
         </record>
@@ -231,6 +267,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="version">2010</field>
             <field name="mode" eval="None"/>
             <field name="carrier">seller</field>
+            <field name="export_duties">seller</field>
+            <field name="import_duties">buyer</field>
             <field name="risk">after</field>
             <field name="location" eval="True"/>
         </record>
@@ -241,6 +279,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="version">2010</field>
             <field name="mode" eval="None"/>
             <field name="carrier">seller</field>
+            <field name="export_duties">seller</field>
+            <field name="import_duties">seller</field>
             <field name="risk">after</field>
             <field name="location" eval="True"/>
         </record>
@@ -251,6 +291,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="version">2010</field>
             <field name="mode">waterway</field>
             <field name="carrier">buyer</field>
+            <field name="export_duties">seller</field>
+            <field name="import_duties">buyer</field>
             <field name="risk">before</field>
             <field name="location" eval="True"/>
         </record>
@@ -261,6 +303,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="version">2010</field>
             <field name="mode">waterway</field>
             <field name="carrier">buyer</field>
+            <field name="export_duties">seller</field>
+            <field name="import_duties">buyer</field>
             <field name="risk">before</field>
             <field name="location" eval="True"/>
         </record>
@@ -271,6 +315,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="version">2010</field>
             <field name="mode">waterway</field>
             <field name="carrier">seller</field>
+            <field name="export_duties">seller</field>
+            <field name="import_duties">buyer</field>
             <field name="risk">before</field>
             <field name="location" eval="True"/>
         </record>
@@ -281,6 +327,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="version">2010</field>
             <field name="mode">waterway</field>
             <field name="carrier">seller</field>
+            <field name="export_duties">seller</field>
+            <field name="import_duties">buyer</field>
             <field name="risk">before</field>
             <field name="location" eval="True"/>
         </record>
@@ -291,6 +339,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="version">2020</field>
             <field name="mode" eval="None"/>
             <field name="carrier">buyer</field>
+            <field name="export_duties">buyer</field>
+            <field name="import_duties">buyer</field>
             <field name="risk">before</field>
             <field name="location" eval="True"/>
         </record>
@@ -301,6 +351,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="version">2020</field>
             <field name="mode" eval="None"/>
             <field name="carrier">buyer</field>
+            <field name="export_duties">seller</field>
+            <field name="import_duties">buyer</field>
             <field name="risk">before</field>
             <field name="location" eval="True"/>
         </record>
@@ -311,6 +363,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="version">2020</field>
             <field name="mode" eval="None"/>
             <field name="carrier">seller</field>
+            <field name="export_duties">seller</field>
+            <field name="import_duties">buyer</field>
             <field name="risk">before</field>
             <field name="location" eval="True"/>
         </record>
@@ -321,6 +375,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="version">2020</field>
             <field name="mode" eval="None"/>
             <field name="carrier">seller</field>
+            <field name="export_duties">seller</field>
+            <field name="import_duties">buyer</field>
             <field name="risk">before</field>
             <field name="location" eval="True"/>
         </record>
@@ -331,6 +387,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="version">2020</field>
             <field name="mode" eval="None"/>
             <field name="carrier">seller</field>
+            <field name="export_duties">seller</field>
+            <field name="import_duties">buyer</field>
             <field name="risk">after</field>
             <field name="location" eval="True"/>
         </record>
@@ -341,6 +399,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="version">2020</field>
             <field name="mode" eval="None"/>
             <field name="carrier">seller</field>
+            <field name="export_duties">seller</field>
+            <field name="import_duties">buyer</field>
             <field name="risk">after</field>
             <field name="location" eval="True"/>
         </record>
@@ -351,6 +411,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="version">2020</field>
             <field name="mode" eval="None"/>
             <field name="carrier">seller</field>
+            <field name="export_duties">seller</field>
+            <field name="import_duties">seller</field>
             <field name="risk">after</field>
             <field name="location" eval="True"/>
         </record>
@@ -361,6 +423,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="version">2020</field>
             <field name="mode">waterway</field>
             <field name="carrier">buyer</field>
+            <field name="export_duties">seller</field>
+            <field name="import_duties">buyer</field>
             <field name="risk">before</field>
             <field name="location" eval="True"/>
         </record>
@@ -371,6 +435,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="version">2020</field>
             <field name="mode">waterway</field>
             <field name="carrier">buyer</field>
+            <field name="export_duties">seller</field>
+            <field name="import_duties">buyer</field>
             <field name="risk">before</field>
             <field name="location" eval="True"/>
         </record>
@@ -381,6 +447,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="version">2020</field>
             <field name="mode">waterway</field>
             <field name="carrier">seller</field>
+            <field name="export_duties">seller</field>
+            <field name="import_duties">buyer</field>
             <field name="risk">before</field>
             <field name="location" eval="True"/>
         </record>
@@ -392,6 +460,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="mode">waterway</field>
             <field name="carrier">seller</field>
             <field name="risk">before</field>
+            <field name="export_duties">seller</field>
+            <field name="import_duties">buyer</field>
             <field name="location" eval="True"/>
         </record>
     </data>

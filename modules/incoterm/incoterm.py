@@ -24,6 +24,14 @@ class Incoterm(MatchMixin, ModelSQL, ModelView):
             ('seller', "Seller"),
             ], "Carrier", required=True,
         help="Who contracts the main carriage.")
+    export_duties = fields.Selection([
+            ('buyer', "Buyer"),
+            ('seller', "Seller"),
+            ], "Export Duties", required=True)
+    import_duties = fields.Selection([
+            ('buyer', "Buyer"),
+            ('seller', "Seller"),
+            ], "Import Duties", required=True)
     risk = fields.Selection([
             ('before', "Before"),
             ('after', "After"),

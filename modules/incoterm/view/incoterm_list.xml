@@ -7,6 +7,8 @@ this repository contains the full copyright notices and license terms. -->
     <field name="version" optional="0"/>
     <field name="mode" optional="1"/>
     <field name="carrier" optional="1"/>
+    <field name="export_duties" optional="1"/>
+    <field name="import_duties" optional="1"/>
     <field name="risk" optional="1"/>
     <field name="location" optional="1"/>
 </tree>
