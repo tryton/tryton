@@ -1,5 +1,8 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+
+import logging
+
 from sql import Column, Null
 
 from trytond.filestore import filestore
@@ -7,6 +10,8 @@ from trytond.tools import cached_property, grouped_slice, reduce_ids
 from trytond.transaction import Transaction
 
 from .field import Field
+
+logger = logging.getLogger(__name__)
 
 
 def caster(d):
@@ -88,7 +93,9 @@ class Binary(Field):
                     try:
                         res[record_id] = store_func(file_id, prefix)
                     except (IOError, OSError):
-                        pass
+                        logger.exception(
+                            "failed to retrieve %r from filestore at %r",
+                            file_id, prefix)
 
         for i in values:
             if i['id'] in res:
