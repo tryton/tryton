@@ -15,7 +15,7 @@ try:
 except ImportError:
     requests_utils = None
 
-__version__ = "7.8.0"
+__version__ = "7.8.1"
 __series__ = '.'.join(__version__.split('.')[:2])
 
 if not os.environ.get('TRYTOND_APPNAME'):
