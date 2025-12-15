@@ -112,6 +112,6 @@ class Journal(ModelSQL, ModelView):
                     ('bank_account.numbers.number_compact', '=', number),
                     ],
                 ])
-        if journals:
+        if len(journals) == 1:
             journal, = journals
             return journal
