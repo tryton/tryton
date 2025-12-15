@@ -10,7 +10,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="text">Only one journal is allowed per bank account.</field>
         </record>
         <record model="ir.message" id="msg_import_no_journal">
-            <field name="text">To import statement, you must create a journal for account "%(account)s".</field>
+            <field name="text">To import statement, you must create a unique journal for account "%(account)s".</field>
         </record>
         <record model="ir.message" id="msg_statement_wrong_end_balance">
             <field name="text">To validate statement "%(statement)s" you must change lines to have end balance of %(end_balance)s instead of %(amount)s.</field>
