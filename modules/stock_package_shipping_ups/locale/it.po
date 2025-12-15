@@ -39,9 +39,23 @@ msgctxt "field:carrier.credential.ups,server:"
 msgid "Server"
 msgstr ""
 
+msgctxt "field:carrier.credential.ups,use_international_forms:"
+msgid "Use International Forms"
+msgstr ""
+
 msgctxt "field:carrier.credential.ups,use_metric:"
 msgid "Use Metric"
 msgstr ""
+
+#, fuzzy
+msgctxt "field:customs.agent,ups_account_number:"
+msgid "UPS Account Number"
+msgstr "Numero del conto"
+
+#, fuzzy
+msgctxt "field:product.uom,ups_code:"
+msgid "UPS Code"
+msgstr "UPS Credentials"
 
 msgctxt "field:stock.package.type,ups_code:"
 msgid "UPS Code"
@@ -60,6 +74,10 @@ msgctxt "model:ir.action,name:act_ups_credential_form"
 msgid "UPS Credentials"
 msgstr "UPS Credentials"
 
+msgctxt "model:ir.message,text:msg_general_merchandise"
+msgid "General Merchandise"
+msgstr ""
+
 #, python-format
 msgctxt "model:ir.message,text:msg_phone_required"
 msgid ""
@@ -72,13 +90,6 @@ msgctxt "model:ir.message,text:msg_shipment_has_reference_number"
 msgid ""
 "You cannot create shipping for shipment \"%(shipment)s\" because it has "
 "already a reference number."
-msgstr ""
-
-#, python-format
-msgctxt "model:ir.message,text:msg_shipping_description_required"
-msgid ""
-"To validate shipment \"%(shipment)s\" you must fill its shipping "
-"description."
 msgstr ""
 
 msgctxt "model:ir.message,text:msg_ups_credential_modified"
@@ -141,6 +152,166 @@ msgstr ""
 
 msgctxt "selection:carrier.credential.ups,server:"
 msgid "Testing"
+msgstr ""
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Bag"
+msgstr ""
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Barrel"
+msgstr ""
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Bolt"
+msgstr ""
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Box"
+msgstr ""
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Bunch"
+msgstr ""
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Bundle"
+msgstr ""
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Butt"
+msgstr ""
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Canister"
+msgstr ""
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Carton"
+msgstr ""
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Case"
+msgstr ""
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Centimeter"
+msgstr ""
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Container"
+msgstr ""
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Crate"
+msgstr ""
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Cylinder"
+msgstr ""
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Dozen"
+msgstr ""
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Each"
+msgstr ""
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Envelope"
+msgstr ""
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Feet"
+msgstr ""
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Kilogram"
+msgstr ""
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Kilograms"
+msgstr ""
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Liter"
+msgstr ""
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Meter"
+msgstr ""
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Number"
+msgstr ""
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Other"
+msgstr ""
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Package"
+msgstr ""
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Packet"
+msgstr ""
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Pair"
+msgstr ""
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Pairs"
+msgstr ""
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Pallet"
+msgstr ""
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Piece"
+msgstr ""
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Pieces"
+msgstr ""
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Pound"
+msgstr ""
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Pounds"
+msgstr ""
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Proof Liters"
+msgstr ""
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Roll"
+msgstr ""
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Set"
+msgstr ""
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Square Meters"
+msgstr ""
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Square Yards"
+msgstr ""
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Tube"
+msgstr ""
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Yard"
 msgstr ""
 
 msgctxt "view:carrier.credential.ups:"

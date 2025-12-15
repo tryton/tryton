@@ -348,7 +348,7 @@ msgstr "Bedrijf"
 
 msgctxt "field:sale.reporting.context,from_date:"
 msgid "From Date"
-msgstr "Start datum"
+msgstr "Van datum"
 
 msgctxt "field:sale.reporting.context,period:"
 msgid "Period"
@@ -356,7 +356,7 @@ msgstr "Periode"
 
 msgctxt "field:sale.reporting.context,to_date:"
 msgid "To Date"
-msgstr "Eind datum"
+msgstr "Tot datum"
 
 msgctxt "field:sale.reporting.context,warehouse:"
 msgid "Warehouse"
@@ -837,11 +837,11 @@ msgstr "Verkopen per klant"
 
 msgctxt "model:ir.action,name:act_reporting_main"
 msgid "Sales"
-msgstr "Verkoop"
+msgstr "Verkopen"
 
 msgctxt "model:ir.action,name:act_reporting_main_time_series"
 msgid "Sales"
-msgstr "Verkoop"
+msgstr "Verkopen"
 
 msgctxt "model:ir.action,name:act_reporting_product"
 msgid "Sales per Product"
@@ -877,7 +877,7 @@ msgstr "Instellingen"
 
 msgctxt "model:ir.action,name:act_sale_form"
 msgid "Sales"
-msgstr "Verkoop"
+msgstr "Verkopen"
 
 msgctxt "model:ir.action,name:act_sale_line_relate"
 msgid "Sale Lines"
@@ -965,7 +965,7 @@ msgstr "Alles"
 
 msgctxt "model:ir.action.act_window.domain,name:act_sale_line_relate_done"
 msgid "Done"
-msgstr "Afgerond"
+msgstr "Gereed"
 
 msgctxt "model:ir.action.act_window.domain,name:act_sale_line_relate_pending"
 msgid "Pending"
@@ -977,7 +977,7 @@ msgstr "Alles"
 
 msgctxt "model:ir.action.act_window.domain,name:act_sale_relate_done"
 msgid "Done"
-msgstr "Afgerond"
+msgstr "Gereed"
 
 msgctxt "model:ir.action.act_window.domain,name:act_sale_relate_pending"
 msgid "Pending"
@@ -1138,10 +1138,12 @@ msgstr ""
 
 #, python-format
 msgctxt "model:ir.message,text:msg_sale_warehouse_required_for_quotation"
-msgid "To get a quote for sale \"%(sale)s\" you must enter a warehouse."
+msgid ""
+"To get a quote for sale \"%(sale)s\" you must enter a warehouse for the line"
+" \"%(line)s\"."
 msgstr ""
 "Om een offerte voor verkoop \"%(sale)s\" te krijgen, moet u een magazijn "
-"invoeren."
+"invoeren voor de regel \"%(line)s\"."
 
 msgctxt "model:ir.model.button,string:sale_cancel_button"
 msgid "Cancel"
@@ -1270,7 +1272,7 @@ msgstr "Rapportage"
 
 msgctxt "model:ir.ui.menu,name:menu_reporting_sale"
 msgid "Sales"
-msgstr "Verkoop"
+msgstr "Verkopen"
 
 msgctxt "model:ir.ui.menu,name:menu_sale"
 msgid "Sales"
@@ -1481,16 +1483,16 @@ msgid "Quantity"
 msgstr "Hoeveelheid"
 
 msgctxt "report:sale.sale:"
-msgid "Quotation N°:"
-msgstr "Offerte N °:"
+msgid "Quotation No:"
+msgstr "Offerte No:"
 
 msgctxt "report:sale.sale:"
 msgid "Reference:"
 msgstr "Referentie:"
 
 msgctxt "report:sale.sale:"
-msgid "Sale Order N°:"
-msgstr "Verkooporder N°:"
+msgid "Sale Order No:"
+msgstr "Verkooporder No:"
 
 msgctxt "report:sale.sale:"
 msgid "Taxes"
@@ -1630,7 +1632,7 @@ msgstr "Bevestigd"
 
 msgctxt "selection:sale.sale,state:"
 msgid "Done"
-msgstr "Afgerond"
+msgstr "Gereed"
 
 msgctxt "selection:sale.sale,state:"
 msgid "Draft"

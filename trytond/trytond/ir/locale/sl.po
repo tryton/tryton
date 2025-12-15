@@ -654,6 +654,11 @@ msgctxt "field:ir.email,body:"
 msgid "Body"
 msgstr "Telo besedila"
 
+#, fuzzy
+msgctxt "field:ir.email,message_id:"
+msgid "Message-ID"
+msgstr "Sporočilo"
+
 msgctxt "field:ir.email,recipients:"
 msgid "Recipients"
 msgstr "Prejemniki"
@@ -1251,9 +1256,10 @@ msgctxt "field:ir.model.print_model_graph.start,level:"
 msgid "Level"
 msgstr "Nivo"
 
+#, fuzzy
 msgctxt "field:ir.module,childs:"
-msgid "Childs"
-msgstr "Podrejeni"
+msgid "Children"
+msgstr "Podmeniji"
 
 msgctxt "field:ir.module,dependencies:"
 msgid "Dependencies"
@@ -1559,6 +1565,11 @@ msgstr "Skupina"
 msgctxt "field:ir.sequence.type-res.group,sequence_type:"
 msgid "Sequence Type"
 msgstr "Vrsta šifrantov"
+
+#, fuzzy
+msgctxt "field:ir.session,ip_address:"
+msgid "IP Address"
+msgstr "Naslov"
 
 msgctxt "field:ir.session,key:"
 msgid "Key"
@@ -2462,6 +2473,10 @@ msgctxt "model:ir.action,name:report_model_workflow_graph"
 msgid "Workflow Graph"
 msgstr "Graf poteka dela"
 
+msgctxt "model:ir.action,name:wizard_model_refresh_materialized"
+msgid "Refresh Data"
+msgstr ""
+
 msgctxt "model:ir.action,name:wizard_translation_report"
 msgid "Translations"
 msgstr "Prevodi"
@@ -2978,6 +2993,10 @@ msgstr "Priloge"
 msgctxt "model:ir.message,text:msg_avatar"
 msgid "Avatar"
 msgstr "Avatar"
+
+msgctxt "model:ir.message,text:msg_avatar_image_error"
+msgid "Can not open or identify the image set as avatar."
+msgstr ""
 
 msgctxt "model:ir.message,text:msg_avatar_resource_unique"
 msgid "Only one avatar is allowed per resource."
@@ -3570,6 +3589,11 @@ msgstr ""
 "Najdeno preveč relacij za %(value)r modela \"%(model)s\" v vrstici %(row)d "
 "in stolpcu %(column)d."
 
+#, fuzzy
+msgctxt "model:ir.message,text:msg_translation_export_default_lang"
+msgid "To export translations, the default language must be \"English\"."
+msgstr "Privzeti jezik mora biti prevedljiv."
+
 #, python-format
 msgctxt "model:ir.message,text:msg_translation_overridden"
 msgid ""
@@ -3578,6 +3602,11 @@ msgid ""
 msgstr ""
 "Prevoda \"%(name)s\" ni mogoče izvoziti, ker je prepisan s prevodom modula "
 "\"%(overriding_module)s\"."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_translation_set_default_lang"
+msgid "To set translations, the default language must be \"English\"."
+msgstr "Privzeti jezik mora biti prevedljiv."
 
 msgctxt "model:ir.message,text:msg_trigger_exclusive"
 msgid ""
@@ -3696,29 +3725,29 @@ msgctxt "model:ir.model.button,string:lang_unload_translations_button"
 msgid "Unload translations"
 msgstr "Razloži prevode"
 
+#, fuzzy
 msgctxt "model:ir.model.button,string:module_activate_button"
-msgid "Mark for Activation"
-msgstr "Mark for Activation"
+msgid "Activate"
+msgstr "Aktiviraj"
 
-msgctxt "model:ir.model.button,string:module_activate_cancel_button"
-msgid "Cancel Activation"
-msgstr "Cancel Activation"
+msgctxt "model:ir.model.button,string:module_apply_button"
+msgid "Apply"
+msgstr ""
 
+#, fuzzy
+msgctxt "model:ir.model.button,string:module_cancel_button"
+msgid "Cancel"
+msgstr "Prekliči"
+
+#, fuzzy
 msgctxt "model:ir.model.button,string:module_deactivate_button"
-msgid "Mark for Deactivation (beta)"
+msgid "Deactivate (beta)"
 msgstr "Mark for Deactivation (beta)"
 
-msgctxt "model:ir.model.button,string:module_deactivate_cancel_button"
-msgid "Cancel Deactivation"
-msgstr "Cancel Deactivation"
-
+#, fuzzy
 msgctxt "model:ir.model.button,string:module_upgrade_button"
-msgid "Mark for Upgrade"
-msgstr "Mark for Upgrade"
-
-msgctxt "model:ir.model.button,string:module_upgrade_cancel_button"
-msgid "Cancel Upgrade"
-msgstr "Cancel Upgrade"
+msgid "Upgrade"
+msgstr "Nadgradi"
 
 msgctxt "model:ir.model.button,string:view_show_button"
 msgid "Show"
@@ -4051,10 +4080,6 @@ msgctxt "model:ir.ui.menu,name:menu_models"
 msgid "Models"
 msgstr "Modeli"
 
-msgctxt "model:ir.ui.menu,name:menu_module_activate_upgrade"
-msgid "Perform Pending Activation/Upgrade"
-msgstr "Izvedite čakajočo aktivacijo oz. nadgradnjo"
-
 msgctxt "model:ir.ui.menu,name:menu_module_form"
 msgid "Modules"
 msgstr "Moduli"
@@ -4375,6 +4400,10 @@ msgid "Clean Task Queue"
 msgstr "Počisti čakalno vrsto nalog"
 
 msgctxt "selection:ir.cron,method:"
+msgid "Refresh Materialized Models"
+msgstr ""
+
+msgctxt "selection:ir.cron,method:"
 msgid "Run On Time Triggers"
 msgstr "Zaženi ob časovnih prožilcih"
 
@@ -4594,10 +4623,6 @@ msgctxt "view:ir.cron:"
 msgid "Next Call Time"
 msgstr "Naslednji čas zagona"
 
-msgctxt "view:ir.cron:"
-msgid "Run Once"
-msgstr "Enkratni zagon"
-
 msgctxt "view:ir.email.template:"
 msgid "Hidden Recipients:"
 msgstr "Skriti prejemniki:"
@@ -4667,30 +4692,6 @@ msgid ""
 "You will be able to configure your installation depending on the modules you"
 " have installed."
 msgstr "Sedaj boste lahko skonfigurirali nameščene module."
-
-msgctxt "view:ir.module:"
-msgid "Cancel Activation"
-msgstr "Prekliči aktivacijo"
-
-msgctxt "view:ir.module:"
-msgid "Cancel Deactivation"
-msgstr "Prekliči deaktivacijo"
-
-msgctxt "view:ir.module:"
-msgid "Cancel Upgrade"
-msgstr "Prekliči nadgradnjo"
-
-msgctxt "view:ir.module:"
-msgid "Mark for Activation"
-msgstr "Označi za aktivacijo"
-
-msgctxt "view:ir.module:"
-msgid "Mark for Deactivation (beta)"
-msgstr "Označi za deaktivacijo (beta)"
-
-msgctxt "view:ir.module:"
-msgid "Mark for Upgrade"
-msgstr "Označi za nadgradnjo"
 
 msgctxt "view:ir.note:"
 msgid "Date"

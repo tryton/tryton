@@ -10,6 +10,10 @@ msgctxt "field:res.role,name:"
 msgid "Name"
 msgstr "Nom"
 
+msgctxt "field:res.role,users:"
+msgid "Users"
+msgstr "Usuaris"
+
 msgctxt "field:res.role-res.group,group:"
 msgid "Group"
 msgstr "Grup"
@@ -46,17 +50,14 @@ msgctxt "model:ir.ui.menu,name:menu_role_form"
 msgid "Roles"
 msgstr "Rols"
 
-#, fuzzy
 msgctxt "model:res.role,string:"
 msgid "Role"
 msgstr "Rol"
 
-#, fuzzy
 msgctxt "model:res.role-res.group,string:"
 msgid "Role - Group"
 msgstr "Rol - Grup"
 
-#, fuzzy
 msgctxt "model:res.user.role,string:"
 msgid "User Role"
 msgstr "Rol d'usuari"
@@ -64,6 +65,14 @@ msgstr "Rol d'usuari"
 msgctxt "selection:ir.cron,method:"
 msgid "Synchronize Users Roles"
 msgstr "Sincronitza rols d'usuari"
+
+msgctxt "view:res.role:"
+msgid "Access Permissions"
+msgstr "Permisos d'accés"
+
+msgctxt "view:res.role:"
+msgid "Members"
+msgstr "Membres"
 
 msgctxt "view:res.user.role:"
 msgid "Time"

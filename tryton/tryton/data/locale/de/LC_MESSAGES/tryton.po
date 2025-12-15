@@ -6,6 +6,9 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgid "Toggle notification"
+msgstr "Benachrichtigung an/aus"
+
 msgid "Make this an _internal message"
 msgstr "In _interne Nachricht umwandeln"
 
@@ -524,6 +527,9 @@ msgstr "Alle Zeilen ausklappen"
 msgid "Close Tab"
 msgstr "Registerkarte schließen"
 
+msgid "All Notifications..."
+msgstr "Alle Benachrichtigungen..."
+
 msgid "modularity, scalability and security"
 msgstr "Modularität, Skalierbarkeit und Sicherheit"
 
@@ -581,7 +587,7 @@ msgid "_Cancel"
 msgstr "_Abbrechen"
 
 msgid "Cancel connection to the Tryton server"
-msgstr "Abbrechen"
+msgstr "Verbindung zum Tryton Server trennen"
 
 msgid "C_onnect"
 msgstr "_Verbinden"

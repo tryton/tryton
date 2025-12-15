@@ -62,6 +62,10 @@ msgctxt "field:purchase.line.component,line:"
 msgid "Line"
 msgstr "Regel"
 
+msgctxt "field:purchase.line.component,line_state:"
+msgid "Line State"
+msgstr "Regel status"
+
 msgctxt "field:purchase.line.component,moves:"
 msgid "Moves"
 msgstr "Mutaties"
@@ -144,7 +148,11 @@ msgstr "Vast"
 
 msgctxt "field:sale.line.component,line:"
 msgid "Line"
-msgstr "Regels"
+msgstr "Regel"
+
+msgctxt "field:sale.line.component,line_state:"
+msgid "Line State"
+msgstr "Regel status"
 
 msgctxt "field:sale.line.component,moves:"
 msgid "Moves"

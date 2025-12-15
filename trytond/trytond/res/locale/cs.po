@@ -36,6 +36,47 @@ msgctxt "field:res.group,users:"
 msgid "Users"
 msgstr "Users"
 
+msgctxt "field:res.notification,action:"
+msgid "Action"
+msgstr ""
+
+msgctxt "field:res.notification,action_value:"
+msgid "Action Value"
+msgstr ""
+
+msgctxt "field:res.notification,description:"
+msgid "Description"
+msgstr ""
+
+msgctxt "field:res.notification,icon:"
+msgid "Icon"
+msgstr ""
+
+msgctxt "field:res.notification,label:"
+msgid "Label"
+msgstr ""
+
+msgctxt "field:res.notification,model:"
+msgid "Model"
+msgstr ""
+
+msgctxt "field:res.notification,model_ref:"
+msgid "Model"
+msgstr ""
+
+msgctxt "field:res.notification,records:"
+msgid "Records"
+msgstr ""
+
+msgctxt "field:res.notification,unread:"
+msgid "Unread"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:res.notification,user:"
+msgid "User"
+msgstr "Users"
+
 msgctxt "field:res.user,actions:"
 msgid "Actions"
 msgstr ""
@@ -77,6 +118,10 @@ msgstr ""
 msgctxt "field:res.user,name:"
 msgid "Name"
 msgstr "Namu"
+
+msgctxt "field:res.user,notifications:"
+msgid "Notifications"
+msgstr ""
 
 msgctxt "field:res.user,password:"
 msgid "Password"
@@ -197,9 +242,17 @@ msgctxt "help:res.user,actions:"
 msgid "Actions that will be run at login."
 msgstr ""
 
+msgctxt "help:res.user,notifications:"
+msgid "Notifications to subscribe to."
+msgstr ""
+
 msgctxt "model:ir.action,name:act_group_form"
 msgid "Groups"
 msgstr "Groups"
+
+msgctxt "model:ir.action,name:act_notification"
+msgid "Notifications"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_user_config"
 msgid "Configure Users"
@@ -268,6 +321,14 @@ msgctxt "model:ir.model.button,string:user_reset_password_button"
 msgid "Reset Password"
 msgstr "Reset Password"
 
+msgctxt "model:ir.rule.group,name:rule_group_notification"
+msgid "Own notification"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_notification_admin"
+msgid "Any notification"
+msgstr ""
+
 msgctxt "model:ir.rule.group,name:rule_group_user_application"
 msgid "Own user application"
 msgstr ""
@@ -284,6 +345,10 @@ msgctxt "model:ir.ui.menu,name:menu_group_form"
 msgid "Groups"
 msgstr "Groups"
 
+msgctxt "model:ir.ui.menu,name:menu_notification_form"
+msgid "Notifications"
+msgstr ""
+
 msgctxt "model:ir.ui.menu,name:menu_res"
 msgid "Users"
 msgstr "Users"
@@ -296,6 +361,10 @@ msgstr "Users"
 msgctxt "model:res.group,string:"
 msgid "Group"
 msgstr "Groups"
+
+msgctxt "model:res.notification,string:"
+msgid "Notification"
+msgstr ""
 
 #, fuzzy
 msgctxt "model:res.user,string:"

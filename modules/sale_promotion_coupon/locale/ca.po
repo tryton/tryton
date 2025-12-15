@@ -74,7 +74,6 @@ msgctxt "help:sale.promotion.coupon,per_party:"
 msgid "Check to count usage per party."
 msgstr "Marca per contar l'ús per tercer."
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_promotion_coupon_number_form"
 msgid "Coupon Numbers"
 msgstr "Número cupó promocional"
@@ -110,22 +109,18 @@ msgctxt "model:ir.rule.group,name:rule_group_coupon_number_companies"
 msgid "User in companies"
 msgstr "Usuari a les empreses"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_promotion_coupon_number"
 msgid "Coupon Numbers"
 msgstr "Número cupó promocional"
 
-#, fuzzy
 msgctxt "model:sale.promotion.coupon,string:"
 msgid "Sale Promotion Coupon"
 msgstr "Cupó promocional"
 
-#, fuzzy
 msgctxt "model:sale.promotion.coupon.number,string:"
 msgid "Sale Promotion Coupon Number"
 msgstr "Venda - Número de cupó promocional"
 
-#, fuzzy
 msgctxt "model:sale.sale-sale.promotion.coupon.number,string:"
 msgid "Sale - Sale Promotion Coupon Number"
 msgstr "Venda - Número de cupó promocional"

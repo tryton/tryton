@@ -52,6 +52,11 @@ msgctxt "field:product.category,accounting:"
 msgid "Accounting"
 msgstr "Számviteli"
 
+#, fuzzy
+msgctxt "field:product.category,accounting_templates:"
+msgid "Accounting Products"
+msgstr "Számviteli"
+
 msgctxt "field:product.category,accounts:"
 msgid "Accounts"
 msgstr "Számlák"
@@ -135,6 +140,12 @@ msgstr "A főkategóriánál beállított számlákat használja."
 msgctxt "help:product.category,accounting:"
 msgid "Check to indicate the category is used for accounting."
 msgstr ""
+
+#, fuzzy
+msgctxt "help:product.category,accounting_templates:"
+msgid "The products for which the accounting category applies."
+msgstr ""
+"Ha bejelöli, a termék kategória számviteli kategóriának lesz használva."
 
 msgctxt "help:product.category,customer_taxes:"
 msgid "The taxes to apply when selling products of this category."

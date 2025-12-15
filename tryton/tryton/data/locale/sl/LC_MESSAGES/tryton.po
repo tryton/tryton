@@ -5,6 +5,10 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+#, fuzzy
+msgid "Toggle notification"
+msgstr "Vklopi/Izklopi izbor"
+
 msgid "Make this an _internal message"
 msgstr ""
 
@@ -522,6 +526,10 @@ msgstr "Razširi vse vrstice"
 
 msgid "Close Tab"
 msgstr "Zapri zavihek"
+
+#, fuzzy
+msgid "All Notifications..."
+msgstr "_Ukrepi..."
 
 msgid "modularity, scalability and security"
 msgstr "modularnost, razširljivost in varnost"

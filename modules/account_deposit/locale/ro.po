@@ -16,7 +16,7 @@ msgstr "Cont"
 
 msgctxt "field:account.invoice.recall_deposit.start,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:account.invoice.recall_deposit.start,currency:"
 msgid "Currency"

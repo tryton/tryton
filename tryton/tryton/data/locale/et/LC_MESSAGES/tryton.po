@@ -5,6 +5,9 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgid "Toggle notification"
+msgstr ""
+
 msgid "Make this an _internal message"
 msgstr ""
 
@@ -528,6 +531,10 @@ msgstr "Ava kõik read"
 
 msgid "Close Tab"
 msgstr "Sulge vaheleht"
+
+#, fuzzy
+msgid "All Notifications..."
+msgstr "Toimingud..."
 
 msgid "modularity, scalability and security"
 msgstr ""

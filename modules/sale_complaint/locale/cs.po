@@ -423,8 +423,3 @@ msgstr "Complaints"
 msgctxt "view:sale.complaint:"
 msgid "Other Info"
 msgstr ""
-
-#, fuzzy
-msgctxt "view:sale.complaint:"
-msgid "Process"
-msgstr "Process"

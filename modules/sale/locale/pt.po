@@ -1134,9 +1134,11 @@ msgstr ""
 "Para obter uma cotação de venda \"%(sale)s\", é necessário inserir um "
 "endereço de entrega."
 
-#, python-format
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_sale_warehouse_required_for_quotation"
-msgid "To get a quote for sale \"%(sale)s\" you must enter a warehouse."
+msgid ""
+"To get a quote for sale \"%(sale)s\" you must enter a warehouse for the line"
+" \"%(line)s\"."
 msgstr ""
 "Para obter uma cotação de venda \"%(sale)s\" é necessário informar um "
 "armazém."
@@ -1478,16 +1480,18 @@ msgctxt "report:sale.sale:"
 msgid "Quantity"
 msgstr "Quantidade"
 
+#, fuzzy
 msgctxt "report:sale.sale:"
-msgid "Quotation N°:"
+msgid "Quotation No:"
 msgstr "Cotação n°:"
 
 msgctxt "report:sale.sale:"
 msgid "Reference:"
 msgstr "Referência:"
 
+#, fuzzy
 msgctxt "report:sale.sale:"
-msgid "Sale Order N°:"
+msgid "Sale Order No:"
 msgstr "Ordem de Venda n°:"
 
 msgctxt "report:sale.sale:"

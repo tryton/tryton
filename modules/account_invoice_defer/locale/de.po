@@ -132,6 +132,16 @@ msgstr ""
 "da er nicht im Status \"Entwurf\" ist."
 
 #, python-format
+msgctxt ""
+"model:ir.message,text:msg_invoice_deferred_invoice_line_missing_account"
+msgid ""
+"To create moves for invoice deferred \"%(deferral)s\" you must configure a "
+"replacement account for \"%(account)s\". "
+msgstr ""
+"Um Buchungen für Rechnungsabgrenzung \"%(deferral)s\" zu erstellen, muss "
+"erst ein Ersatzkonto für \"%(account)s\" konfiguriert werden. "
+
+#, python-format
 msgctxt "model:ir.message,text:msg_invoice_deferred_running_close_period"
 msgid ""
 "You cannot close period \"%(period)s\" because some invoices deferred "

@@ -262,10 +262,6 @@ msgctxt "model:ir.action,name:url_checkout"
 msgid "Braintree Checkout"
 msgstr "Braintree Checkout"
 
-msgctxt "model:ir.action,name:wizard_checkout"
-msgid "Braintree Checkout"
-msgstr "Braintree Checkout"
-
 msgctxt "model:ir.action,name:wizard_customer_payment_method_delete"
 msgid "Delete Payment Method"
 msgstr "Zahlungsmethode löschen"

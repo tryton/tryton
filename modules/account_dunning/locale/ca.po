@@ -145,42 +145,37 @@ msgid "Create dunning up to this date."
 msgstr "Crea reclamacions fins a aquesta data."
 
 msgctxt "help:account.dunning.level,overdue:"
-msgid "When the level should be applied."
-msgstr "Quan s'ha d'aplicar el nivell."
+msgid ""
+"The delay from the maturity date after which the level should be applied."
+msgstr "El retràs desde la data de venciment al que s'ha d'aplicar el nivell."
 
 msgctxt "help:account.dunning.procedure,name:"
 msgid "The main identifier of the Dunning Procedure."
 msgstr "L'identificador principal del procediment de reclamació."
 
-#, fuzzy
 msgctxt "model:account.configuration.default_dunning_procedure,string:"
 msgid "Account Configuration Default Dunning Procedure"
 msgstr "Configuració del procediment de reclamació per defecte"
 
-#, fuzzy
 msgctxt "model:account.dunning,string:"
 msgid "Account Dunning"
 msgstr "Reclamació comptable"
 
-#, fuzzy
 msgctxt "model:account.dunning.create.start,string:"
 msgid "Account Dunning Create Start"
-msgstr "Nivell de reclamació comptable"
+msgstr "Inici crea reclamació comptable"
 
-#, fuzzy
 msgctxt "model:account.dunning.level,string:"
 msgid "Account Dunning Level"
 msgstr "Nivell de reclamació comptable"
 
-#, fuzzy
 msgctxt "model:account.dunning.procedure,string:"
 msgid "Account Dunning Procedure"
 msgstr "Procediment de reclamació comptable"
 
-#, fuzzy
 msgctxt "model:account.dunning.process.start,string:"
 msgid "Account Dunning Process Start"
-msgstr "Procediment de reclamació comptable"
+msgstr "Inici processar reclamacions comptables"
 
 msgctxt "model:ir.action,name:act_dunning_form"
 msgid "Dunnings"
@@ -255,10 +250,9 @@ msgctxt "model:ir.ui.menu,name:menu_dunnings"
 msgid "Dunnings"
 msgstr "Reclamacions"
 
-#, fuzzy
 msgctxt "model:party.party.dunning_procedure,string:"
 msgid "Party Dunning Procedure"
-msgstr "Procediment de reclamació per defecte"
+msgstr "Procediment de reclamació per tercer"
 
 msgctxt "model:res.group,name:group_dunning"
 msgid "Dunning"

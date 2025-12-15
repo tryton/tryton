@@ -563,6 +563,9 @@ msgstr "Redefinir larguras de colunas"
 msgid "#ERROR"
 msgstr "#ERRO"
 
+msgid "Failed to copy text to clipboard: %1"
+msgstr ""
+
 msgid "More"
 msgstr "Mais"
 
@@ -789,6 +792,9 @@ msgstr "Alternar Som"
 msgid "Wizard"
 msgstr "Assistente"
 
+msgid "Toggle notification"
+msgstr ""
+
 msgid "Enter a message"
 msgstr "Digite uma mensagem"
 
@@ -797,6 +803,12 @@ msgstr "Enviar a mensagem"
 
 msgid "Make this an internal message"
 msgstr "Faça disso uma mensagem interna"
+
+msgid "All Notifications..."
+msgstr ""
+
+msgid "Preferences..."
+msgstr ""
 
 msgid "Translate view"
 msgstr "Traduzir tela"

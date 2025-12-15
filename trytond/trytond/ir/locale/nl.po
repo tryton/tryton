@@ -642,6 +642,10 @@ msgctxt "field:ir.email,body:"
 msgid "Body"
 msgstr "Bericht"
 
+msgctxt "field:ir.email,message_id:"
+msgid "Message-ID"
+msgstr "Bericht-ID"
+
 msgctxt "field:ir.email,recipients:"
 msgid "Recipients"
 msgstr "Ontvangers"
@@ -1223,7 +1227,7 @@ msgid "Level"
 msgstr "Niveau"
 
 msgctxt "field:ir.module,childs:"
-msgid "Childs"
+msgid "Children"
 msgstr "Onderliggend"
 
 msgctxt "field:ir.module,dependencies:"
@@ -1525,6 +1529,10 @@ msgstr "Groep"
 msgctxt "field:ir.sequence.type-res.group,sequence_type:"
 msgid "Sequence Type"
 msgstr "Reeks soort"
+
+msgctxt "field:ir.session,ip_address:"
+msgid "IP Address"
+msgstr "IP Adres"
 
 msgctxt "field:ir.session,key:"
 msgid "Key"
@@ -2411,6 +2419,10 @@ msgctxt "model:ir.action,name:report_model_workflow_graph"
 msgid "Workflow Graph"
 msgstr "Workflow diagram"
 
+msgctxt "model:ir.action,name:wizard_model_refresh_materialized"
+msgid "Refresh Data"
+msgstr "Ververs gegevens"
+
 msgctxt "model:ir.action,name:wizard_translation_report"
 msgid "Translations"
 msgstr "Vertalingen"
@@ -2897,6 +2909,10 @@ msgstr "Bijlagen"
 msgctxt "model:ir.message,text:msg_avatar"
 msgid "Avatar"
 msgstr "Avatar"
+
+msgctxt "model:ir.message,text:msg_avatar_image_error"
+msgid "Can not open or identify the image set as avatar."
+msgstr "Kan de afbeelding voor de avatar niet openen of identificeren."
 
 msgctxt "model:ir.message,text:msg_avatar_resource_unique"
 msgid "Only one avatar is allowed per resource."
@@ -3496,6 +3512,10 @@ msgstr ""
 "Te veel relaties gevonden voor %(value)r\" in \"%(model)s\" in rij %(row)d "
 "en kolom %(column)d."
 
+msgctxt "model:ir.message,text:msg_translation_export_default_lang"
+msgid "To export translations, the default language must be \"English\"."
+msgstr "Om vertalingen te exporteren, moet de standaardtaal \"Engels\" zijn."
+
 #, python-format
 msgctxt "model:ir.message,text:msg_translation_overridden"
 msgid ""
@@ -3504,6 +3524,10 @@ msgid ""
 msgstr ""
 "U kunt de vertaling \"%(name)s\" niet exporteren omdat deze is overschreven "
 "door module \"%(overriding_module)s\"."
+
+msgctxt "model:ir.message,text:msg_translation_set_default_lang"
+msgid "To set translations, the default language must be \"English\"."
+msgstr "Om vertalingen in te stellen, moet de standaardtaal \"Engels\" zijn."
 
 msgctxt "model:ir.message,text:msg_trigger_exclusive"
 msgid ""
@@ -3622,28 +3646,24 @@ msgid "Unload translations"
 msgstr "Maak vertalingen leeg"
 
 msgctxt "model:ir.model.button,string:module_activate_button"
-msgid "Mark for Activation"
-msgstr "Markeren om te activeren"
+msgid "Activate"
+msgstr "Activeren"
 
-msgctxt "model:ir.model.button,string:module_activate_cancel_button"
-msgid "Cancel Activation"
-msgstr "Annuleer activering"
+msgctxt "model:ir.model.button,string:module_apply_button"
+msgid "Apply"
+msgstr "Toepassen"
+
+msgctxt "model:ir.model.button,string:module_cancel_button"
+msgid "Cancel"
+msgstr "Annuleer"
 
 msgctxt "model:ir.model.button,string:module_deactivate_button"
-msgid "Mark for Deactivation (beta)"
-msgstr "Markeren om te deactiveren (bèta)"
-
-msgctxt "model:ir.model.button,string:module_deactivate_cancel_button"
-msgid "Cancel Deactivation"
-msgstr "Annuleer deactivering"
+msgid "Deactivate (beta)"
+msgstr "Deactiveren (bèta)"
 
 msgctxt "model:ir.model.button,string:module_upgrade_button"
-msgid "Mark for Upgrade"
-msgstr "Markeren om bij te werken (upgrade)"
-
-msgctxt "model:ir.model.button,string:module_upgrade_cancel_button"
-msgid "Cancel Upgrade"
-msgstr "Annuleer bijwerken"
+msgid "Upgrade"
+msgstr "Bijwerken"
 
 msgctxt "model:ir.model.button,string:view_show_button"
 msgid "Show"
@@ -3827,7 +3847,7 @@ msgstr "Trigger logboek"
 
 msgctxt "model:ir.ui.icon,string:"
 msgid "Ui Icon"
-msgstr "Pictogram"
+msgstr "UI-pictogram"
 
 msgctxt "model:ir.ui.menu,name:menu_act_action"
 msgid "Actions"
@@ -3932,10 +3952,6 @@ msgstr "Logboeken"
 msgctxt "model:ir.ui.menu,name:menu_models"
 msgid "Models"
 msgstr "Modellen"
-
-msgctxt "model:ir.ui.menu,name:menu_module_activate_upgrade"
-msgid "Perform Pending Activation/Upgrade"
-msgstr "Voer installatie / bijwerken uit"
 
 msgctxt "model:ir.ui.menu,name:menu_module_form"
 msgid "Modules"
@@ -4246,6 +4262,10 @@ msgid "Clean Task Queue"
 msgstr "Taakwachtrij opschonen"
 
 msgctxt "selection:ir.cron,method:"
+msgid "Refresh Materialized Models"
+msgstr "Ververs gematerialiseerde modellen"
+
+msgctxt "selection:ir.cron,method:"
 msgid "Run On Time Triggers"
 msgstr "Start triggers \"op tijd\""
 
@@ -4465,10 +4485,6 @@ msgctxt "view:ir.cron:"
 msgid "Next Call Time"
 msgstr "Tijd volgende oproep"
 
-msgctxt "view:ir.cron:"
-msgid "Run Once"
-msgstr "Een keer uitvoeren"
-
 msgctxt "view:ir.email.template:"
 msgid "Hidden Recipients:"
 msgstr "Verborgen ontvangers:"
@@ -4540,30 +4556,6 @@ msgid ""
 msgstr ""
 "Afhankelijk van de modules die u hebt geïnstalleerd, kunt u uw installatie "
 "configureren."
-
-msgctxt "view:ir.module:"
-msgid "Cancel Activation"
-msgstr "Annuleer activering"
-
-msgctxt "view:ir.module:"
-msgid "Cancel Deactivation"
-msgstr "Annuleer deactivering"
-
-msgctxt "view:ir.module:"
-msgid "Cancel Upgrade"
-msgstr "Annuleer bijwerken"
-
-msgctxt "view:ir.module:"
-msgid "Mark for Activation"
-msgstr "Markeren om te activeren"
-
-msgctxt "view:ir.module:"
-msgid "Mark for Deactivation (beta)"
-msgstr "Markeren om te deactiveren (bèta)"
-
-msgctxt "view:ir.module:"
-msgid "Mark for Upgrade"
-msgstr "Markeren om bij te werken (upgrade)"
 
 msgctxt "view:ir.note:"
 msgid "Date"

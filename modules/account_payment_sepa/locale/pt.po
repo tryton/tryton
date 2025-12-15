@@ -96,6 +96,11 @@ msgctxt "field:account.payment.sepa.mandate,account_number:"
 msgid "Account Number"
 msgstr "Número da Conta"
 
+#, fuzzy
+msgctxt "field:account.payment.sepa.mandate,address:"
+msgid "Address"
+msgstr "Seu endereço"
+
 msgctxt "field:account.payment.sepa.mandate,company:"
 msgid "Company"
 msgstr "Empresa"

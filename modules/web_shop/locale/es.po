@@ -18,6 +18,10 @@ msgctxt "field:product.product,web_shop_description:"
 msgid "Web Shop Description"
 msgstr "Descripción tienda web"
 
+msgctxt "field:product.product,web_shop_urls:"
+msgid "Web Shop URLs"
+msgstr "URLs Tienda Web"
+
 msgctxt "field:product.product,web_shops:"
 msgid "Web Shops"
 msgstr "Tiendas Web"
@@ -26,6 +30,18 @@ msgctxt "field:product.template,web_shop_description:"
 msgid "Web Shop Description"
 msgstr "Descripción tienda web"
 
+msgctxt "field:product.web_shop_url,product:"
+msgid "Product"
+msgstr "Producto"
+
+msgctxt "field:product.web_shop_url,shop:"
+msgid "Shop"
+msgstr "Tienda"
+
+msgctxt "field:product.web_shop_url,url:"
+msgid "Shop URL"
+msgstr "URL Tienda"
+
 msgctxt "field:sale.sale,web_id:"
 msgid "Web ID"
 msgstr "ID Web"
@@ -33,6 +49,10 @@ msgstr "ID Web"
 msgctxt "field:sale.sale,web_shop:"
 msgid "Web Shop"
 msgstr "Tienda Web"
+
+msgctxt "field:sale.sale,web_status_url:"
+msgid "Web Status URL"
+msgstr "URL estado Web"
 
 msgctxt "field:web.shop,attributes:"
 msgid "Attributes"
@@ -158,6 +178,10 @@ msgctxt "help:product.product,web_shops:"
 msgid "The list of web shops on which the product is published."
 msgstr "La lista de tiendas en que el producto se ha publicado."
 
+msgctxt "help:sale.sale,web_status_url:"
+msgid "The URL where the customer can check the order's current status."
+msgstr "La URL donde el cliente puede comprobar el estado de su pedido."
+
 msgctxt "help:web.shop,attributes:"
 msgid "The list of attributes to publish."
 msgstr "La lista de atributos a publicar."
@@ -218,6 +242,10 @@ msgctxt "model:ir.message,text:msg_shop_name_unique"
 msgid "The web shop name must be unique."
 msgstr "El nombre de la tienda debe ser único."
 
+msgctxt "model:ir.model.button,string:sale_web_shop_update_button"
+msgid "Update from Web Shop"
+msgstr "Actualizar desde la tienda web"
+
 msgctxt "model:ir.rule.group,name:rule_group_shop_companies"
 msgid "User in companies"
 msgstr "Usuario en las empresas"
@@ -225,6 +253,10 @@ msgstr "Usuario en las empresas"
 msgctxt "model:ir.ui.menu,name:menu_shop"
 msgid "Web Shops"
 msgstr "Tiendas Web"
+
+msgctxt "model:product.web_shop_url,string:"
+msgid "Product Web Shop Url"
+msgstr "URL Producto tienda web"
 
 msgctxt "model:web.shop,string:"
 msgid "Web Shop"

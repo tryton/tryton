@@ -185,11 +185,3 @@ msgstr "Encore une étape.."
 msgctxt "report:web.user.email_validation:"
 msgid "Validate"
 msgstr "Valider"
-
-msgctxt "view:web.user:"
-msgid "Reset Password"
-msgstr "Réinitialiser le mot de passe"
-
-msgctxt "view:web.user:"
-msgid "Validate Email"
-msgstr "Valider l'adresse électronique"

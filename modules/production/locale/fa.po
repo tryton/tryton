@@ -103,6 +103,10 @@ msgctxt "field:production,state:"
 msgid "State"
 msgstr "وضعیت"
 
+msgctxt "field:production,type:"
+msgid "Type"
+msgstr ""
+
 #, fuzzy
 msgctxt "field:production,unit:"
 msgid "Unit"
@@ -125,6 +129,11 @@ msgctxt "field:production.bom,code_readonly:"
 msgid "Code Readonly"
 msgstr ""
 
+#, fuzzy
+msgctxt "field:production.bom,input_products:"
+msgid "Input Products"
+msgstr "محصولات خروجی"
+
 msgctxt "field:production.bom,inputs:"
 msgid "Input Materials"
 msgstr ""
@@ -142,9 +151,27 @@ msgctxt "field:production.bom,outputs:"
 msgid "Output Materials"
 msgstr "خروجی ها"
 
+msgctxt "field:production.bom,phantom:"
+msgid "Phantom"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:production.bom,phantom_quantity:"
+msgid "Quantity"
+msgstr "مقدار/تعداد"
+
+#, fuzzy
+msgctxt "field:production.bom,phantom_unit:"
+msgid "Unit"
+msgstr "واحد"
+
 msgctxt "field:production.bom.input,bom:"
 msgid "BOM"
 msgstr "BOM"
+
+msgctxt "field:production.bom.input,phantom_bom:"
+msgid "Phantom BOM"
+msgstr ""
 
 msgctxt "field:production.bom.input,product:"
 msgid "Product"
@@ -166,6 +193,10 @@ msgstr "دسته بندی واحد اندازه گیری"
 msgctxt "field:production.bom.output,bom:"
 msgid "BOM"
 msgstr "BOM"
+
+msgctxt "field:production.bom.output,phantom_bom:"
+msgid "Phantom BOM"
+msgstr ""
 
 msgctxt "field:production.bom.output,product:"
 msgid "Product"
@@ -309,6 +340,18 @@ msgctxt "help:production,uom_category:"
 msgid "The category of Unit of Measure."
 msgstr ""
 
+msgctxt "help:production.bom,phantom:"
+msgid "If checked, the BoM can be used in another BoM."
+msgstr ""
+
+msgctxt "help:production.bom,phantom_quantity:"
+msgid "The quantity of the Phantom BoM"
+msgstr ""
+
+msgctxt "help:production.bom,phantom_unit:"
+msgid "The Unit of Measure of the Phantom BoM"
+msgstr ""
+
 msgctxt "help:production.configuration,bom_sequence:"
 msgid "Used to generate the BOM code."
 msgstr ""
@@ -414,8 +457,13 @@ msgstr ""
 "هزینه های خروجی : \"%(outputs)s\" از تولید : \"%(production)s\"، با هزینه "
 "تولید : \"%(costs)s\" مطابقت ندارد."
 
-#, python-format
-msgctxt "model:ir.message,text:msg_recursive_bom"
+#, fuzzy, python-format
+msgctxt "model:ir.message,text:msg_recursive_bom_bom"
+msgid "You cannot create a recursive BOM for BOM \"%(bom)s\"."
+msgstr "شما نمیتوانید یک BOM بازگشتی برای محصول :\"%(product)s\" ایجاد کنید."
+
+#, fuzzy, python-format
+msgctxt "model:ir.message,text:msg_recursive_bom_product"
 msgid "You cannot create a recursive BOM for product \"%(product)s\"."
 msgstr "شما نمیتوانید یک BOM بازگشتی برای محصول :\"%(product)s\" ایجاد کنید."
 
@@ -601,10 +649,28 @@ msgctxt "selection:production,state:"
 msgid "Waiting"
 msgstr "در انتظار"
 
+msgctxt "selection:production,type:"
+msgid "Assembly"
+msgstr ""
+
+msgctxt "selection:production,type:"
+msgid "Disassembly"
+msgstr ""
+
 #, fuzzy
 msgctxt "view:product.template:"
 msgid "Production"
 msgstr "تهیه کننده"
+
+#, fuzzy
+msgctxt "view:production.bom.input:"
+msgid "Material"
+msgstr "خروجی ها"
+
+#, fuzzy
+msgctxt "view:production.bom.output:"
+msgid "Material"
+msgstr "خروجی ها"
 
 msgctxt "view:production.bom:"
 msgid "Lines"

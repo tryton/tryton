@@ -67,10 +67,6 @@ msgctxt "field:purchase.request.quotation.create.ask_suppliers,suppliers:"
 msgid "Suppliers"
 msgstr "Leverancier"
 
-msgctxt "field:purchase.request.quotation.create.succeed,number_quotations:"
-msgid "Number of Created Quotations"
-msgstr "Aantal gemaakte offertes"
-
 msgctxt "field:purchase.request.quotation.line,currency:"
 msgid "Currency"
 msgstr "Valuta"
@@ -194,8 +190,13 @@ msgstr "Verzonden"
 
 #, python-format
 msgctxt "model:ir.message,text:msg_previous_quotation"
-msgid "A quotation was already made for request \"%(request)s\"."
-msgstr "Er is al een offerte gemaakt voor aanvraag \"%(request)s\"."
+msgid "Quotations have already been made for the requests \"%(requests)s\"."
+msgstr "Er is al een offerte gemaakt voor aanvraag \"%(requests)s\"."
+
+msgctxt ""
+"model:ir.model.button,string:purchase_request_create_quotation_button"
+msgid "Create Quotations"
+msgstr "Offertes aanvragen"
 
 msgctxt "model:ir.rule.group,name:rule_group_request_quotation_companies"
 msgid "User in companies"
@@ -220,10 +221,6 @@ msgstr "Inkoop aanvraag offerte"
 msgctxt "model:purchase.request.quotation.create.ask_suppliers,string:"
 msgid "Purchase Request Quotation Create Ask Suppliers"
 msgstr "Inkoop aanvraag offerte aanmaken vraag leveranciers"
-
-msgctxt "model:purchase.request.quotation.create.succeed,string:"
-msgid "Purchase Request Quotation Create Succeed"
-msgstr "Inkoop aanvraag offerte aanmaken succesvol"
 
 msgctxt "model:purchase.request.quotation.line,string:"
 msgid "Purchase Request Quotation Line"
@@ -258,8 +255,8 @@ msgid "Expected Supply Date"
 msgstr "Verwachte leverdatum"
 
 msgctxt "report:purchase.request.quotation:"
-msgid "Purchase"
-msgstr "Aankoop"
+msgid "Purchase Request for Quotation No:"
+msgstr "Inkoopaanvraag voor offerte no:"
 
 msgctxt "report:purchase.request.quotation:"
 msgid "Quantity"
@@ -272,10 +269,6 @@ msgstr "Offerte"
 msgctxt "report:purchase.request.quotation:"
 msgid "Reference:"
 msgstr "Referentie:"
-
-msgctxt "report:purchase.request.quotation:"
-msgid "Request for Quotation N°:"
-msgstr "Offerte-aanvraagnummer:"
 
 msgctxt "report:purchase.request.quotation:"
 msgid "Revision:"
@@ -361,7 +354,3 @@ msgstr "Process"
 msgctxt "wizard_button:purchase.request.quotation.create,ask_suppliers,end:"
 msgid "Cancel"
 msgstr "Annuleer"
-
-msgctxt "wizard_button:purchase.request.quotation.create,succeed,end:"
-msgid "Close"
-msgstr "Sluiten"

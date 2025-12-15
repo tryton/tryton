@@ -1,0 +1,41 @@
+#
+#, fuzzy
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:edocument.peppol.service,peppyrus_api_key:"
+msgid "API Key"
+msgstr "Clé API"
+
+msgctxt "field:edocument.peppol.service,peppyrus_server:"
+msgid "Server"
+msgstr "Serveur"
+
+msgctxt "model:ir.message,text:msg_peppyrus_credential_modified"
+msgid "Are you sure you want to modify Peppyrus credentials?"
+msgstr "Êtes-vous sûr de vouloir modifier les identifiants Peppyrus ?"
+
+#, python-format
+msgctxt "model:ir.message,text:msg_peppyrus_webserver_error"
+msgid ""
+"Peppyrus webservice call failed with the following error message:\n"
+"%(message)s"
+msgstr ""
+"L'appel au service web Peppyrus a échoué avec le message d'erreur suivant :\n"
+"%(message)s"
+
+msgctxt "selection:edocument.peppol.service,peppyrus_server:"
+msgid "Production"
+msgstr "Production"
+
+msgctxt "selection:edocument.peppol.service,peppyrus_server:"
+msgid "Testing"
+msgstr "Essai"
+
+msgctxt "selection:edocument.peppol.service,service:"
+msgid "Peppyrus"
+msgstr "Peppyrus"
+
+msgctxt "selection:ir.cron,method:"
+msgid "Fetch Peppyrus messages"
+msgstr "Récupérer les messages Peppyrus"

@@ -191,11 +191,3 @@ msgstr "Nur noch ein Schritt..."
 msgctxt "report:web.user.email_validation:"
 msgid "Validate"
 msgstr "Prüfen"
-
-msgctxt "view:web.user:"
-msgid "Reset Password"
-msgstr "Passwort zurücksetzen"
-
-msgctxt "view:web.user:"
-msgid "Validate Email"
-msgstr "E-Mail validieren"

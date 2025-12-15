@@ -2,6 +2,26 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgctxt "field:carrier,shopify_selections:"
+msgid "Shopify Selections"
+msgstr "Sélections Shopify"
+
+msgctxt "field:carrier.selection.shopify,carrier:"
+msgid "Carrier"
+msgstr "Transporteur"
+
+msgctxt "field:carrier.selection.shopify,code:"
+msgid "Code"
+msgstr "Code"
+
+msgctxt "field:carrier.selection.shopify,shop:"
+msgid "Shop"
+msgstr "Boutique"
+
+msgctxt "field:carrier.selection.shopify,title:"
+msgid "Title"
+msgstr "Titre"
+
 msgctxt "field:product.attribute.set,shopify_option1:"
 msgid "Option 1"
 msgstr "Option 1"
@@ -13,6 +33,10 @@ msgstr "Option 2"
 msgctxt "field:product.attribute.set,shopify_option3:"
 msgid "Option 3"
 msgstr "Option 3"
+
+msgctxt "field:product.product,shopify_handle:"
+msgid "Shopify Handle"
+msgstr "Poignée Shopify"
 
 msgctxt "field:product.product,shopify_sku:"
 msgid "SKU"
@@ -26,9 +50,21 @@ msgctxt "field:product.shopify_inventory_item,product:"
 msgid "Product"
 msgstr "Produit"
 
+msgctxt "field:product.template,shopify_handle:"
+msgid "Shopify Handle"
+msgstr "Poignée Shopify"
+
 msgctxt "field:product.template,shopify_uom:"
 msgid "Shopify UoM"
 msgstr "UDM Shopify"
+
+msgctxt "field:sale.line,shopify_warehouse:"
+msgid "Shopify Warehouse"
+msgstr "Entrepôt Shopify"
+
+msgctxt "field:sale.sale,shopify_status_url:"
+msgid "Shopify Status URL"
+msgstr "URL de statut Shopify"
 
 msgctxt "field:sale.sale,shopify_tax_adjustment:"
 msgid "Shopify Tax Adjustment"
@@ -41,6 +77,10 @@ msgstr "Vente"
 msgctxt "field:stock.shipment.shopify_identifier,shipment:"
 msgid "Shipment"
 msgstr "Expédition"
+
+msgctxt "field:web.shop,shopify_fulfillment_notify_customer:"
+msgid "Notify Customer about Fulfillment"
+msgstr "Informer le client de la livraison"
 
 msgctxt "field:web.shop,shopify_password:"
 msgid "Access Token"
@@ -106,9 +146,45 @@ msgctxt "field:web.shop.shopify_payment_journal,shop:"
 msgid "Shop"
 msgstr "Boutique"
 
+msgctxt "help:carrier,shopify_selections:"
+msgid ""
+"Define the criteria that will match this carrier with the Shopify shipping "
+"methods."
+msgstr ""
+"Définit les critères qui permettront d'associer ce transporteur aux méthodes"
+" d'expédition de Shopify."
+
+msgctxt "help:carrier.selection.shopify,code:"
+msgid "The code of the shipping line."
+msgstr "Le code de la ligne d'expédition."
+
+msgctxt "help:carrier.selection.shopify,title:"
+msgid ""
+"A regular expression to match the shipping line title.\n"
+"Leave empty to allow any title."
+msgstr ""
+"Expression régulière permettant de trouver le titre de la ligne d'expédition.\n"
+"Laissez vide pour autoriser n'importe quel titre."
+
+msgctxt "help:product.product,shopify_handle:"
+msgid ""
+"The string that's used to identify the product in URLs.\n"
+"Leave empty to let Shopify generate one."
+msgstr ""
+"La chaîne de caractères permettant d'identifier le produit dans 'lURL.\n"
+"Laissez vide pour que Shopify en génère une."
+
 msgctxt "help:product.product,shopify_uom:"
 msgid "The Unit of Measure of the product on Shopify."
 msgstr "L'unité de mesure du produit sur Shopify."
+
+msgctxt "help:product.template,shopify_handle:"
+msgid ""
+"The string that's used to identify the product in URLs.\n"
+"Leave empty to let Shopify generate one."
+msgstr ""
+"La chaîne de caractères permettant d'identifier le produit dans 'lURL.\n"
+"Laissez vide pour que Shopify en génère une."
 
 msgctxt "help:product.template,shopify_uom:"
 msgid "The Unit of Measure of the product on Shopify."
@@ -127,6 +203,10 @@ msgid "The payment gateway name for which the journal must be used."
 msgstr ""
 "Le nom de la passerelle de paiement pour laquelle le journal doit être "
 "utilisé."
+
+msgctxt "model:carrier.selection.shopify,string:"
+msgid "Carrier Selection Shopify"
+msgstr "Sélection de transporteur Shopify"
 
 msgctxt "model:ir.action,name:act_shop_shopify_identifier_form"
 msgid "Shopify Identifiers"
@@ -185,12 +265,12 @@ msgstr ""
 "L'expédition ne peut pas avoir plus d'un identifiant Shopify par vente."
 
 #, python-format
-msgctxt "model:ir.message,text:msg_inventory_item_fail"
+msgctxt "model:ir.message,text:msg_inventory_set_fail"
 msgid ""
-"Failed to save inventory item for product \"%(product)s\" with error:\n"
+"Failed to set inventory with error:\n"
 "%(error)s"
 msgstr ""
-"Échec de l'enregistrement de l'article d'inventaire pour le produit « %(product)s » avec l'erreur :\n"
+"Échec de la configuration de l'inventaire avec l’errer :\n"
 "%(error)s"
 
 msgctxt "model:ir.message,text:msg_location_id_unique"
@@ -198,30 +278,12 @@ msgid "Each Shopify location can only be linked to one warehouse."
 msgstr "Chaque emplacement Shopify ne peut être lié qu'à un seul entrepôt."
 
 #, python-format
-msgctxt "model:ir.message,text:msg_product_change_template"
-msgid ""
-"To change the template of product \"%(product)s\" you must unpublish it from"
-" the Shopify web shops."
-msgstr ""
-"Pour modifier le modèle du produit « %(product)s », vous devez le dé-publier"
-" des boutiques en ligne Shopify."
-
-#, python-format
 msgctxt "model:ir.message,text:msg_product_fail"
 msgid ""
-"Failed to save product \"%(template)s\" with error:\n"
+"Failed to create/update product \"%(template)s\" with error:\n"
 "%(error)s"
 msgstr ""
-"Échec de l'enregistrement du produit « %(template)s » avec l'erreur :\n"
-"%(error)s"
-
-#, python-format
-msgctxt "model:ir.message,text:msg_product_image_fail"
-msgid ""
-"Failed to save image \"%(image)s\" for product \"%(template)s\" with error:\n"
-"%(error)s"
-msgstr ""
-"Échec de l'enregistrement de l'image « %(image)s » pour le produit « %(template)s » avec l'erreur :\n"
+"Échec de la création/mise à jour du produit « %(template)s » avec l'erreur :\n"
 "%(error)s"
 
 #, python-format
@@ -250,6 +312,24 @@ msgid ""
 msgstr ""
 "Pour traiter la vente « %(sale)s » vous devez définir un produit sur la "
 "ligne « %(line)s »."
+
+#, python-format
+msgctxt "model:ir.message,text:msg_sale_line_without_warehouse"
+msgid ""
+"To process the sale \"%(sale)s\" you must set a unique location for the line"
+" \"%(line)s\" on Shopify."
+msgstr ""
+"Pour traiter la vente « %(sale)s », vous devez définir un emplacement unique"
+" pour la ligne « %(line)s » sur Shopify."
+
+#, python-format
+msgctxt "model:ir.message,text:msg_shipment_cancelled_draft_shopify"
+msgid ""
+"You cannot reset shipment \"%(shipment)s\" to draft because it is linked to "
+"a Shopify fulfillment."
+msgstr ""
+"Vous ne pouvez pas réinitialiser l'expédition \"%(shipment)s\" à l'état de "
+"brouillon car elle est liée à une expédition Shopify."
 
 #, python-format
 msgctxt "model:ir.message,text:msg_shop_currency_different"
@@ -285,14 +365,22 @@ msgctxt "model:ir.message,text:msg_shopify_identifiers"
 msgid "Shopify Identifiers"
 msgstr "Identifiants Shopify"
 
+msgctxt "model:ir.message,text:msg_shopify_url"
+msgid "Shopify URL"
+msgstr "URL Shopify"
+
 #, python-format
-msgctxt "model:ir.message,text:msg_variant_fail"
+msgctxt "model:ir.message,text:msg_template_shopify_handle_invalid"
 msgid ""
-"Failed to save variant \"%(product)s\" with error:\n"
-"%(error)s"
+"The Shopify Handle \"%(handle)s\" of product \"%(template)s\" can contain "
+"only lowercase letters, hyphens, and numbers."
 msgstr ""
-"Échec de l'enregistrement du la variante « %(product)s » avec l'erreur :\n"
-"%(error)s"
+"La poignée Shopify « %(handle)s » du produit « %(template)s » ne peut "
+"contenir que des lettres minuscules, des tirets et des chiffres."
+
+msgctxt "model:ir.message,text:msg_template_shopify_handle_unique"
+msgid "The Shopify Handle of product must be unique."
+msgstr "La poignée du produit sur Shopify doit être unique."
 
 msgctxt ""
 "model:ir.model.button,string:shop_shopify_identifier_set_to_update_button"
@@ -350,6 +438,10 @@ msgstr "Expédition cliente"
 msgctxt "selection:web.shop,type:"
 msgid "Shopify"
 msgstr "Shopify"
+
+msgctxt "view:carrier.selection.shopify:"
+msgid "Criteria"
+msgstr "Critères"
 
 msgctxt "view:product.attribute.set:"
 msgid "Shopify Options"

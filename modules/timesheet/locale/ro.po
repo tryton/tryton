@@ -52,7 +52,7 @@ msgstr "An"
 
 msgctxt "field:timesheet.line,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:timesheet.line,date:"
 msgid "Date"
@@ -88,7 +88,7 @@ msgstr "Angajat"
 
 msgctxt "field:timesheet.work,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:timesheet.work,duration:"
 msgid "Timesheet Duration"

@@ -1,0 +1,234 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.invoice,peppol:"
+msgid "Peppol"
+msgstr "Peppol"
+
+msgctxt "field:edocument.peppol,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:edocument.peppol,data:"
+msgid "Data"
+msgstr "Datos"
+
+msgctxt "field:edocument.peppol,direction:"
+msgid "Direction"
+msgstr "Dirección"
+
+msgctxt "field:edocument.peppol,document_retried:"
+msgid "Retry"
+msgstr "Reintentado"
+
+msgctxt "field:edocument.peppol,file_id:"
+msgid "File ID"
+msgstr "Identificador del fichero"
+
+msgctxt "field:edocument.peppol,invoice:"
+msgid "Invoice"
+msgstr "Factura"
+
+msgctxt "field:edocument.peppol,service:"
+msgid "Service"
+msgstr "Servicio"
+
+msgctxt "field:edocument.peppol,state:"
+msgid "State"
+msgstr "Estado"
+
+msgctxt "field:edocument.peppol,status:"
+msgid "Status"
+msgstr "Estado"
+
+msgctxt "field:edocument.peppol,transmission_id:"
+msgid "Transmission ID"
+msgstr "ID transmisión"
+
+msgctxt "field:edocument.peppol,type:"
+msgid "Type"
+msgstr "Tipo"
+
+msgctxt "field:edocument.peppol.service,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:edocument.peppol.service,service:"
+msgid "Service"
+msgstr "Servicio"
+
+msgctxt "field:edocument.peppol.service,types:"
+msgid "Types"
+msgstr "Tipos"
+
+msgctxt "field:party.party,peppol:"
+msgid "Peppol"
+msgstr "Peppol"
+
+msgctxt "field:party.party,peppol_types:"
+msgid "Peppol Types"
+msgstr "Tipos Peppol"
+
+msgctxt "field:party.party.peppol,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:party.party.peppol,party:"
+msgid "Party"
+msgstr "Tercero"
+
+msgctxt "field:party.party.peppol,peppol_types:"
+msgid "Peppol Types"
+msgstr "Tipos Peppol"
+
+msgctxt "help:edocument.peppol.service,types:"
+msgid "The types of document supported by the service provider."
+msgstr "Los tipos de documento soportados por el proveedor del servicio."
+
+msgctxt "help:party.party,peppol_types:"
+msgid "Send the documents to the customer via the Peppol network."
+msgstr "Enviar documentos al cliente utilitzando la red Peppol."
+
+msgctxt "model:edocument.peppol,string:"
+msgid "Edocument Peppol"
+msgstr "eDocumento Peppol"
+
+msgctxt "model:edocument.peppol.service,string:"
+msgid "Edocument Peppol Service"
+msgstr "Servicio eDocumento Peppol"
+
+msgctxt "model:ir.action,name:act_edocument_peppol"
+msgid "Documents"
+msgstr "Documentos"
+
+msgctxt "model:ir.action,name:act_edocument_peppol_service"
+msgid "Services"
+msgstr "Servicios"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_edocument_peppol_domain_all"
+msgid "All"
+msgstr "Todo"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_edocument_peppol_domain_draft"
+msgid "Draft"
+msgstr "Borrador"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_edocument_peppol_domain_failed"
+msgid "Failed"
+msgstr "Fallado"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_edocument_peppol_domain_pending"
+msgid "Pending"
+msgstr "Pendiente"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_edocument_peppol_domain_processing"
+msgid "Processing"
+msgstr "En proceso"
+
+#, python-format
+msgctxt "model:ir.message,text:msg_invoice_party_peppol_required"
+msgid ""
+"The party \"%(party)s\" is not set up to send the invoice \"%(invoice)s\" "
+"via the Peppol network."
+msgstr ""
+"El tercero \"%(party)s\" no esta configurada para enviar la factura "
+"\"%(invoice)s\" utilitzando la red Peppol."
+
+msgctxt "model:ir.message,text:msg_service_transmission_id_unique"
+msgid "The transmission ID must be unique per service."
+msgstr "El ID de la transmisión debe ser unico por servicio."
+
+msgctxt "model:ir.model.button,string:edocument_peppol_cancel_button"
+msgid "Cancel"
+msgstr "Cancelar"
+
+msgctxt "model:ir.model.button,string:edocument_peppol_draft_button"
+msgid "Draft"
+msgstr "Borrador"
+
+msgctxt "model:ir.model.button,string:edocument_peppol_process_button"
+msgid "Process"
+msgstr "Procesar"
+
+msgctxt "model:ir.model.button,string:edocument_peppol_retry_button"
+msgid "Retry"
+msgstr "Reintentar"
+
+msgctxt "model:ir.model.button,string:edocument_peppol_submit_button"
+msgid "Submit"
+msgstr "Enviar"
+
+msgctxt "model:ir.rule.group,name:rule_group_edocument_peppol_companies"
+msgid "User in companies"
+msgstr "Usuario en las empresas"
+
+msgctxt ""
+"model:ir.rule.group,name:rule_group_edocument_peppol_service_companies"
+msgid "User in companies"
+msgstr "Usuario en las empresas"
+
+msgctxt "model:ir.ui.menu,name:menu_edocument_peppol"
+msgid "Documents"
+msgstr "Documentos"
+
+msgctxt "model:ir.ui.menu,name:menu_edocument_peppol_service"
+msgid "Services"
+msgstr "Servicios"
+
+msgctxt "model:ir.ui.menu,name:menu_peppol"
+msgid "Peppol"
+msgstr "Peppol"
+
+msgctxt "model:party.party.peppol,string:"
+msgid "Party Peppol"
+msgstr "Tercero Peppol"
+
+msgctxt "selection:edocument.peppol,direction:"
+msgid "IN"
+msgstr "Entrada"
+
+msgctxt "selection:edocument.peppol,direction:"
+msgid "OUT"
+msgstr "Salida"
+
+msgctxt "selection:edocument.peppol,state:"
+msgid "Cancelled"
+msgstr "Cancelado"
+
+msgctxt "selection:edocument.peppol,state:"
+msgid "Draft"
+msgstr "Borrador"
+
+msgctxt "selection:edocument.peppol,state:"
+msgid "Failed"
+msgstr "Fallado"
+
+msgctxt "selection:edocument.peppol,state:"
+msgid "Processing"
+msgstr "En proceso"
+
+msgctxt "selection:edocument.peppol,state:"
+msgid "Retried"
+msgstr "Reintentado"
+
+msgctxt "selection:edocument.peppol,state:"
+msgid "Submitted"
+msgstr "Enviado"
+
+msgctxt "selection:edocument.peppol,state:"
+msgid "Succeeded"
+msgstr "Con éxito"
+
+msgctxt "selection:ir.cron,method:"
+msgid "Update Peppol Status"
+msgstr "Actualizar estado Peppol"
+
+msgctxt "view:party.party:"
+msgid "Peppol"
+msgstr "Peppol"

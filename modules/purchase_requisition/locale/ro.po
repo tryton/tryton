@@ -16,7 +16,7 @@ msgstr "Aprobat de"
 
 msgctxt "field:purchase.requisition,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:purchase.requisition,currency:"
 msgid "Currency"

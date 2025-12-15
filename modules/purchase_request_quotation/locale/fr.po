@@ -67,10 +67,6 @@ msgctxt "field:purchase.request.quotation.create.ask_suppliers,suppliers:"
 msgid "Suppliers"
 msgstr "Fournisseurs"
 
-msgctxt "field:purchase.request.quotation.create.succeed,number_quotations:"
-msgid "Number of Created Quotations"
-msgstr "Nombre de devis créés"
-
 msgctxt "field:purchase.request.quotation.line,currency:"
 msgid "Currency"
 msgstr "Devise"
@@ -194,8 +190,13 @@ msgstr "Envoyé"
 
 #, python-format
 msgctxt "model:ir.message,text:msg_previous_quotation"
-msgid "A quotation was already made for request \"%(request)s\"."
-msgstr "Un devis a déjà été fait pour la demande « %(request)s »."
+msgid "Quotations have already been made for the requests \"%(requests)s\"."
+msgstr "Des devis ont déjà été établis pour les demandes « %(requests)s »."
+
+msgctxt ""
+"model:ir.model.button,string:purchase_request_create_quotation_button"
+msgid "Create Quotations"
+msgstr "Créer des devis"
 
 msgctxt "model:ir.rule.group,name:rule_group_request_quotation_companies"
 msgid "User in companies"
@@ -220,10 +221,6 @@ msgstr "Demande de devis d'achat"
 msgctxt "model:purchase.request.quotation.create.ask_suppliers,string:"
 msgid "Purchase Request Quotation Create Ask Suppliers"
 msgstr "Créer les demandes de devis d'achat Demande de fournisseurs"
-
-msgctxt "model:purchase.request.quotation.create.succeed,string:"
-msgid "Purchase Request Quotation Create Succeed"
-msgstr "Créer les demandes de devis d'achat Réussi"
 
 msgctxt "model:purchase.request.quotation.line,string:"
 msgid "Purchase Request Quotation Line"
@@ -258,8 +255,8 @@ msgid "Expected Supply Date"
 msgstr "Date d'approvisionnement attendue"
 
 msgctxt "report:purchase.request.quotation:"
-msgid "Purchase"
-msgstr "Achat"
+msgid "Purchase Request for Quotation No:"
+msgstr "Demande de devis d'achat n° :"
 
 msgctxt "report:purchase.request.quotation:"
 msgid "Quantity"
@@ -272,10 +269,6 @@ msgstr "Devis"
 msgctxt "report:purchase.request.quotation:"
 msgid "Reference:"
 msgstr "Référence :"
-
-msgctxt "report:purchase.request.quotation:"
-msgid "Request for Quotation N°:"
-msgstr "Demande pour le devis n° :"
 
 msgctxt "report:purchase.request.quotation:"
 msgid "Revision:"
@@ -361,7 +354,3 @@ msgstr "Traiter"
 msgctxt "wizard_button:purchase.request.quotation.create,ask_suppliers,end:"
 msgid "Cancel"
 msgstr "Annuler"
-
-msgctxt "wizard_button:purchase.request.quotation.create,succeed,end:"
-msgid "Close"
-msgstr "Clôturer"

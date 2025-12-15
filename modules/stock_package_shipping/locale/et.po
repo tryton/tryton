@@ -85,6 +85,18 @@ msgctxt "field:stock.shipment.out,shipping_reference:"
 msgid "Shipping Reference"
 msgstr "Lähetuse viide"
 
+msgctxt "help:stock.shipment.in.return,shipping_description:"
+msgid "Leave empty to use the generated description."
+msgstr ""
+
+msgctxt "help:stock.shipment.internal,shipping_description:"
+msgid "Leave empty to use the generated description."
+msgstr ""
+
+msgctxt "help:stock.shipment.out,shipping_description:"
+msgid "Leave empty to use the generated description."
+msgstr ""
+
 msgctxt "model:ir.action,name:act_create_shipping_wizard"
 msgid "Create Shipping"
 msgstr "Loo lähetus"

@@ -1,0 +1,762 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.invoice,sale_rentals:"
+msgid "Rentals"
+msgstr "Verhuren"
+
+msgctxt "field:product.category,account_rental:"
+msgid "Account Rental"
+msgstr "Rekening verhuur"
+
+msgctxt "field:product.category,customer_rental_taxes:"
+msgid "Customer Rental Taxes"
+msgstr "Klant verhuur belasting"
+
+msgctxt "field:product.category,customer_rental_taxes_used:"
+msgid "Customer Rental Taxes Used"
+msgstr "Gebruikte verhuur belastingen klant"
+
+msgctxt "field:product.category-customer_rental-account.tax,category:"
+msgid "Category"
+msgstr "Categorie"
+
+msgctxt "field:product.category-customer_rental-account.tax,tax:"
+msgid "Tax"
+msgstr "Belasting"
+
+msgctxt "field:product.category.account,account_rental:"
+msgid "Account Rental"
+msgstr "Rekening verhuur"
+
+msgctxt "field:product.product,rentable:"
+msgid "Rentable"
+msgstr "Verhuurbaar"
+
+msgctxt "field:product.product,rental_per_day:"
+msgid "Rental per Day"
+msgstr "Huur per dag"
+
+msgctxt "field:product.product,rental_price_uom:"
+msgid "Rental Price"
+msgstr "Huurprijs"
+
+msgctxt "field:product.product,rental_prices:"
+msgid "Rental Prices"
+msgstr "Huurprijzen"
+
+msgctxt "field:product.product,rental_unit:"
+msgid "Rental Unit"
+msgstr "Huur eenheid"
+
+msgctxt "field:product.rental.price,company:"
+msgid "Company"
+msgstr "Bedrijf"
+
+msgctxt "field:product.rental.price,currency:"
+msgid "Currency"
+msgstr "Valuta"
+
+msgctxt "field:product.rental.price,duration:"
+msgid "Duration"
+msgstr "Duur"
+
+msgctxt "field:product.rental.price,price:"
+msgid "Price"
+msgstr "Prijs"
+
+msgctxt "field:product.rental.price,product:"
+msgid "Variant"
+msgstr "Variant"
+
+msgctxt "field:product.rental.price,template:"
+msgid "Product"
+msgstr "Product"
+
+msgctxt "field:product.template,rentable:"
+msgid "Rentable"
+msgstr "Verhuurbaar"
+
+msgctxt "field:product.template,rental_per_day:"
+msgid "Rental per Day"
+msgstr "Huur per dag"
+
+msgctxt "field:product.template,rental_prices:"
+msgid "Rental Prices"
+msgstr "Huurprijzen"
+
+msgctxt "field:product.template,rental_unit:"
+msgid "Rental Unit"
+msgstr "Huur eenheid"
+
+msgctxt "field:sale.configuration,rental_sequence:"
+msgid "Rental Sequence"
+msgstr "Huur reeks"
+
+msgctxt "field:sale.configuration.sequence,rental_sequence:"
+msgid "Rental Sequence"
+msgstr "Huur reeks"
+
+msgctxt "field:sale.rental,company:"
+msgid "Company"
+msgstr "Bedrijf"
+
+msgctxt "field:sale.rental,confirmed_by:"
+msgid "Confirmed By"
+msgstr "Bevestigd door"
+
+msgctxt "field:sale.rental,contact:"
+msgid "Contact"
+msgstr "Contact"
+
+msgctxt "field:sale.rental,currency:"
+msgid "Currency"
+msgstr "Valuta"
+
+msgctxt "field:sale.rental,description:"
+msgid "Description"
+msgstr "Omschrijving"
+
+msgctxt "field:sale.rental,end:"
+msgid "End"
+msgstr "Einde"
+
+msgctxt "field:sale.rental,has_lines_to_invoice:"
+msgid "Has Lines to Invoice"
+msgstr "Heeft regels om te factureren"
+
+msgctxt "field:sale.rental,has_returnable_lines:"
+msgid "Has Returnable Lines"
+msgstr "Heeft retourneerbare regels"
+
+msgctxt "field:sale.rental,incoming_moves:"
+msgid "Incoming Moves"
+msgstr "Inkomende bewegingen"
+
+msgctxt "field:sale.rental,invoice_address:"
+msgid "Invoice Address"
+msgstr "Factuuradres"
+
+msgctxt "field:sale.rental,invoice_party:"
+msgid "Invoice Party"
+msgstr "Factuur relatie"
+
+msgctxt "field:sale.rental,lines:"
+msgid "Lines"
+msgstr "Regels"
+
+msgctxt "field:sale.rental,number:"
+msgid "Number"
+msgstr "Nummer"
+
+msgctxt "field:sale.rental,outgoing_moves:"
+msgid "Outgoing Moves"
+msgstr "Uitgaande bewegingen"
+
+msgctxt "field:sale.rental,party:"
+msgid "Party"
+msgstr "Relatie"
+
+msgctxt "field:sale.rental,payment_term:"
+msgid "Payment Term"
+msgstr "Betalingstermijn"
+
+msgctxt "field:sale.rental,quoted_by:"
+msgid "Quoted By"
+msgstr "Offerte gemaakt door"
+
+msgctxt "field:sale.rental,reference:"
+msgid "Reference"
+msgstr "Referentie"
+
+msgctxt "field:sale.rental,start:"
+msgid "Start"
+msgstr "Begin"
+
+msgctxt "field:sale.rental,state:"
+msgid "State"
+msgstr "Status"
+
+msgctxt "field:sale.rental,tax_amount:"
+msgid "Tax"
+msgstr "Belasting"
+
+msgctxt "field:sale.rental,tax_amount_cache:"
+msgid "Tax Cache"
+msgstr "Belasting Cache"
+
+msgctxt "field:sale.rental,total_amount:"
+msgid "Total"
+msgstr "Totaal"
+
+msgctxt "field:sale.rental,total_amount_cache:"
+msgid "Total Cache"
+msgstr "Totaal Cache"
+
+msgctxt "field:sale.rental,untaxed_amount:"
+msgid "Untaxed"
+msgstr "Onbelast"
+
+msgctxt "field:sale.rental,untaxed_amount_cache:"
+msgid "Untaxed Cache"
+msgstr "Onbelast Cache"
+
+msgctxt "field:sale.rental,warehouse:"
+msgid "Warehouse"
+msgstr "Magazijn"
+
+msgctxt "field:sale.rental.line,actual_end:"
+msgid "Actual End"
+msgstr "Werkelijk einde"
+
+msgctxt "field:sale.rental.line,actual_start:"
+msgid "Actual Start"
+msgstr "Werkelijke start"
+
+msgctxt "field:sale.rental.line,amount:"
+msgid "Amount"
+msgstr "Bedrag"
+
+msgctxt "field:sale.rental.line,company:"
+msgid "Company"
+msgstr "Bedrijf"
+
+msgctxt "field:sale.rental.line,currency:"
+msgid "Currency"
+msgstr "Valuta"
+
+msgctxt "field:sale.rental.line,duration:"
+msgid "Duration"
+msgstr "Duur"
+
+msgctxt "field:sale.rental.line,end:"
+msgid "End"
+msgstr "Einde"
+
+msgctxt "field:sale.rental.line,incoming_moves:"
+msgid "Incoming Moves"
+msgstr "Inkomende bewegingen"
+
+msgctxt "field:sale.rental.line,invoice_lines:"
+msgid "Invoice Lines"
+msgstr "Factuur regels"
+
+msgctxt "field:sale.rental.line,outgoing_moves:"
+msgid "Outgoing Moves"
+msgstr "Uitgaande bewegingen"
+
+msgctxt "field:sale.rental.line,per_day:"
+msgid "Per Day"
+msgstr "Per dag"
+
+msgctxt "field:sale.rental.line,planned_amount:"
+msgid "Planned Amount"
+msgstr "Gepland bedrag"
+
+msgctxt "field:sale.rental.line,planned_duration:"
+msgid "Planned Duration"
+msgstr "Geplande duur"
+
+msgctxt "field:sale.rental.line,planned_end:"
+msgid "Planned End"
+msgstr "Gepland einde"
+
+msgctxt "field:sale.rental.line,planned_end_day:"
+msgid "Planned End"
+msgstr "Gepland einde"
+
+msgctxt "field:sale.rental.line,planned_start:"
+msgid "Planned Start"
+msgstr "Geplande start"
+
+msgctxt "field:sale.rental.line,planned_start_day:"
+msgid "Planned Start"
+msgstr "Geplande start"
+
+msgctxt "field:sale.rental.line,product:"
+msgid "Product"
+msgstr "Product"
+
+msgctxt "field:sale.rental.line,product_uom_category:"
+msgid "Product UoM Category"
+msgstr "Product eenheidsmaat categorie"
+
+msgctxt "field:sale.rental.line,quantity:"
+msgid "Quantity"
+msgstr "Hoeveelheid"
+
+msgctxt "field:sale.rental.line,rental:"
+msgid "Rental"
+msgstr "Verhuur"
+
+msgctxt "field:sale.rental.line,rental_state:"
+msgid "Rental State"
+msgstr "Huur status"
+
+msgctxt "field:sale.rental.line,start:"
+msgid "Start"
+msgstr "Begin"
+
+msgctxt "field:sale.rental.line,taxes:"
+msgid "Taxes"
+msgstr "Belastingen"
+
+msgctxt "field:sale.rental.line,unit:"
+msgid "Unit"
+msgstr "Maateenheid"
+
+msgctxt "field:sale.rental.line,unit_price:"
+msgid "Unit Price"
+msgstr "Eenheidsprijs"
+
+msgctxt "field:sale.rental.line,unit_price_unit:"
+msgid "Unit Price Unit"
+msgstr "Eenheidsprijs Eenheid"
+
+msgctxt "field:sale.rental.line-account.tax,line:"
+msgid "Rental Line"
+msgstr "Verhuur regel"
+
+msgctxt "field:sale.rental.line-account.tax,tax:"
+msgid "Tax"
+msgstr "Belasting"
+
+msgctxt "field:sale.rental.line-incoming-stock.move,line:"
+msgid "Rental Line"
+msgstr "Verhuur regel"
+
+msgctxt "field:sale.rental.line-incoming-stock.move,move:"
+msgid "Move"
+msgstr "Voorraad beweging"
+
+msgctxt "field:sale.rental.line-outgoing-stock.move,line:"
+msgid "Rental Line"
+msgstr "Verhuur regel"
+
+msgctxt "field:sale.rental.line-outgoing-stock.move,move:"
+msgid "Move"
+msgstr "Voorraad beweging"
+
+msgctxt "field:sale.rental.pickup.show,lines:"
+msgid "Lines"
+msgstr "Regels"
+
+msgctxt "field:sale.rental.pickup.show,start:"
+msgid "Start"
+msgstr "Begin"
+
+msgctxt "field:sale.rental.pickup.show.line,parent:"
+msgid "Parent"
+msgstr "Bovenliggend"
+
+msgctxt "field:sale.rental.pickup.show.line,product:"
+msgid "Product"
+msgstr "Product"
+
+msgctxt "field:sale.rental.pickup.show.line,quantity:"
+msgid "Quantity"
+msgstr "Hoeveelheid"
+
+msgctxt "field:sale.rental.pickup.show.line,quantity_picked:"
+msgid "Quantity Picked"
+msgstr "Verzamelde hoeveelheid"
+
+msgctxt "field:sale.rental.pickup.show.line,rental_line:"
+msgid "Rental Line"
+msgstr "Verhuur regel"
+
+msgctxt "field:sale.rental.pickup.show.line,unit:"
+msgid "Unit"
+msgstr "Maateenheid"
+
+msgctxt "field:sale.rental.return.show,end:"
+msgid "End"
+msgstr "Einde"
+
+msgctxt "field:sale.rental.return.show,lines:"
+msgid "Lines"
+msgstr "Regels"
+
+msgctxt "field:sale.rental.return.show.line,parent:"
+msgid "Parent"
+msgstr "Bovenliggend"
+
+msgctxt "field:sale.rental.return.show.line,product:"
+msgid "Product"
+msgstr "Product"
+
+msgctxt "field:sale.rental.return.show.line,quantity:"
+msgid "Quantity"
+msgstr "Hoeveelheid"
+
+msgctxt "field:sale.rental.return.show.line,quantity_returned:"
+msgid "Quantity Returned"
+msgstr "Geretourneerde hoeveelheid"
+
+msgctxt "field:sale.rental.return.show.line,rental_line:"
+msgid "Rental Line"
+msgstr "Verhuur regel"
+
+msgctxt "field:sale.rental.return.show.line,unit:"
+msgid "Unit"
+msgstr "Maateenheid"
+
+msgctxt "field:stock.location,rental_location:"
+msgid "Rental"
+msgstr "Verhuur"
+
+msgctxt "field:stock.location,rental_picking_location:"
+msgid "Rental Picking"
+msgstr "Huur verzameling"
+
+msgctxt "field:stock.location,rental_return_location:"
+msgid "Rental Return"
+msgstr "Huur retouren"
+
+msgctxt "field:stock.move,sale_rental_lines_incoming:"
+msgid "Incoming Rental Lines"
+msgstr "Inkomende verhuur regels"
+
+msgctxt "field:stock.move,sale_rental_lines_outgoing:"
+msgid "Outgoing Rental Lines"
+msgstr "Uitgaande verhuur regels"
+
+msgctxt "help:product.category,customer_rental_taxes:"
+msgid "The taxes to apply when renting goods or services of this category."
+msgstr ""
+"De belastingen die van toepassing zijn bij het huren van goederen of "
+"diensten in deze categorie."
+
+msgctxt "help:product.rental.price,duration:"
+msgid "The minimal duration to apply the price."
+msgstr "De minimale duur om de prijs te kunnen toepassen."
+
+msgctxt "help:sale.rental,company:"
+msgid "Make the sale rental belong to the company."
+msgstr "Koppel de verhuur aan het bedrijf."
+
+msgctxt "help:sale.rental,number:"
+msgid "The main identification of the sale rental."
+msgstr "De hoofd identificatie van de verhuur."
+
+msgctxt "help:sale.rental,party:"
+msgid "The party who is renting."
+msgstr "De relatie die huurt."
+
+msgctxt "help:sale.rental,reference:"
+msgid "The identification of an external origin."
+msgstr "De identificatie van een externe bron."
+
+msgctxt "help:sale.rental,state:"
+msgid "The current state of the sale rental."
+msgstr "De huidige status van de verhuur."
+
+msgctxt "help:sale.rental.line,rental:"
+msgid "Add the line below the rental."
+msgstr "Voeg de regel onder de huur toe."
+
+msgctxt "help:stock.location,rental_location:"
+msgid "The destination location for stock rent."
+msgstr "De bestemming van de verhuur."
+
+msgctxt "help:stock.location,rental_picking_location:"
+msgid ""
+"Where the rented assets are picked from.\n"
+"Leave empty to use the warehouse storage location."
+msgstr ""
+"Waar de gehuurde goederen worden opgehaald.\n"
+"Laat dit veld leeg voor gebruik als magazijnopslag."
+
+msgctxt "help:stock.location,rental_return_location:"
+msgid ""
+"Where the rented assets are returned to.\n"
+"Leave empty to use the warehouse storage location."
+msgstr ""
+"Waar de gehuurde goederen worden teruggebracht.\n"
+"Laat dit veld leeg om de opslag locatie van het magazijn te gebruiken."
+
+msgctxt "model:ir.action,name:act_account_invoice_form"
+msgid "Invoices"
+msgstr "Facturen"
+
+msgctxt "model:ir.action,name:act_sale_rental_form"
+msgid "Rentals"
+msgstr "Verhuren"
+
+msgctxt "model:ir.action,name:act_sale_rental_party_relate"
+msgid "Rentals"
+msgstr "Verhuren"
+
+msgctxt "model:ir.action,name:act_stock_move_form"
+msgid "Stock Moves"
+msgstr "Voorraadbewegingen"
+
+msgctxt "model:ir.action,name:wizard_sale_rental_pickup"
+msgid "Pickup Rental"
+msgstr "Haal gehuurde op"
+
+msgctxt "model:ir.action,name:wizard_sale_rental_return"
+msgid "Return Rental"
+msgstr "Retourneer het gehuurde"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_sale_rental_form_domain_all"
+msgid "All"
+msgstr "Alles"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_sale_rental_form_domain_confirmed"
+msgid "Confirmed"
+msgstr "Bevestigd"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_sale_rental_form_domain_draft"
+msgid "Draft"
+msgstr "Concept"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_sale_rental_form_domain_picked_up"
+msgid "Picked up"
+msgstr "Opgehaald"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_sale_rental_form_domain_quotation"
+msgid "Quotation"
+msgstr "Offerte"
+
+#, python-format
+msgctxt "model:ir.message,text:msg_erase_party_pending_rental"
+msgid ""
+"You cannot erase party \"%(party)s\" while they have pending rentals with "
+"company \"%(company)s\"."
+msgstr ""
+"U kunt relatie \"%(party)s\" niet verwijderen zolang ze nog openstaande "
+"verhuren hebben bij bedrijf \"%(company)s\"."
+
+#, python-format
+msgctxt "model:ir.message,text:msg_rental_line_delete_cancel_draft"
+msgid ""
+"To delete line \"%(line)s\" you must cancel or reset to draft rental "
+"\"%(rental)s\"."
+msgstr ""
+"Om regel \"%(line)s\" te verwijderen, moet u verhuur \"%(rental)s\" "
+"annuleren of terugzetten naar concept."
+
+msgctxt "model:ir.message,text:msg_rental_line_tax_unique"
+msgid "A tax can be added only once to a rental line."
+msgstr ""
+"Aan een verhuur regel kan maar eenmalig een belasting toegevoegd worden."
+
+#, python-format
+msgctxt "model:ir.message,text:msg_rental_pickup_once"
+msgid "The rental line \"%(line)s\" can be picked only once."
+msgstr "De huur regel \"%(line)s\" kan slechts één keer worden verzameld."
+
+#, python-format
+msgctxt "model:ir.message,text:msg_rental_pickup_quantity"
+msgid ""
+"The picked quantity \"%(picked)s\" can not be greater than the quantity "
+"\"%(quantity)s\" for the rental line \"%(line)s\"."
+msgstr ""
+"De verzamelde hoeveelheid \"%(picked)s\" mag niet groter zijn dan de "
+"hoeveelheid \"%(quantity)s\" voor de huur regel \"%(line)s\"."
+
+#, python-format
+msgctxt "model:ir.message,text:msg_rental_return_once"
+msgid "The rental line \"%(line)s\" can be returned only once."
+msgstr "De huur regel \"%(line)s\" kan slechts één keer worden geretourneerd."
+
+#, python-format
+msgctxt "model:ir.message,text:msg_rental_return_quantity"
+msgid ""
+"The returned quantity \"%(picked)s\" can not be greater than the quantity "
+"\"%(quantity)s\" for the rental line \"%(line)s\"."
+msgstr ""
+"De geretourneerde hoeveelheid \"%(picked)s\" mag niet groter zijn dan de "
+"hoeveelheid \"%(quantity)s\" voor de huur regel \"%(line)s\"."
+
+#, python-format
+msgctxt "model:ir.message,text:msg_stock_move_rental_lines_quantity"
+msgid ""
+"The quantity of move \"%(move)s\" is different from its rental lines "
+"\"%(quantity)s\"."
+msgstr ""
+"De hoeveelheid van de boeking \"%(move)s\" verschilt van de huur regels "
+"\"%(quantity)s\"."
+
+msgctxt "model:ir.model.button,string:sale_rental_cancel_button"
+msgid "Cancel"
+msgstr "Annuleer"
+
+msgctxt "model:ir.model.button,string:sale_rental_confirm_button"
+msgid "Confirm"
+msgstr "Bevestigen"
+
+msgctxt "model:ir.model.button,string:sale_rental_draft_button"
+msgid "Draft"
+msgstr "Concept"
+
+msgctxt "model:ir.model.button,string:sale_rental_invoice_button"
+msgid "Invoice"
+msgstr "Factuur"
+
+msgctxt "model:ir.model.button,string:sale_rental_pickup_button"
+msgid "Pickup"
+msgstr "Haal op"
+
+msgctxt "model:ir.model.button,string:sale_rental_quote_button"
+msgid "Quote"
+msgstr "Offreer"
+
+msgctxt "model:ir.model.button,string:sale_rental_return_button"
+msgid "Return"
+msgstr "Neem terug"
+
+msgctxt "model:ir.rule.group,name:rule_group_product_rental_price_companies"
+msgid "User in companies"
+msgstr "Gebruiker in bedrijven"
+
+msgctxt "model:ir.rule.group,name:rule_group_sale_rental_companies"
+msgid "User in companies"
+msgstr "Gebruiker in bedrijven"
+
+msgctxt "model:ir.sequence,name:sequence_rental"
+msgid "Rental"
+msgstr "Verhuur"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_rental"
+msgid "Rental"
+msgstr "Verhuur"
+
+msgctxt "model:ir.ui.menu,name:menu_sale_rental_form"
+msgid "Rentals"
+msgstr "Verhuren"
+
+msgctxt "model:product.category-customer_rental-account.tax,string:"
+msgid "Product Category - Customer Rental - Account Tax"
+msgstr "Product categorie - Klanten verhuur - Belasting rekening"
+
+msgctxt "model:product.rental.price,string:"
+msgid "Product Rental Price"
+msgstr "Product verhuur prijs"
+
+msgctxt "model:sale.rental,string:"
+msgid "Sale Rental"
+msgstr "Verkoop verhuur"
+
+msgctxt "model:sale.rental.line,string:"
+msgid "Sale Rental Line"
+msgstr "Verkoop verhuur regel"
+
+msgctxt "model:sale.rental.line-account.tax,string:"
+msgid "Sale Rental Line - Account Tax"
+msgstr "Verkoop verhuur regel - Belasting rekening"
+
+msgctxt "model:sale.rental.line-incoming-stock.move,string:"
+msgid "Sale Rental Line - Incoming - Stock Move"
+msgstr "Verkoop verhuur regel - Inkomend - Voorraad beweging"
+
+msgctxt "model:sale.rental.line-outgoing-stock.move,string:"
+msgid "Sale Rental Line - Outgoing - Stock Move"
+msgstr "Verkoop verhuur regel - Uitgaand - Voorraad beweging"
+
+msgctxt "model:sale.rental.pickup.show,string:"
+msgid "Sale Rental Pickup Show"
+msgstr "Verkoop verhuur ophalen weergeven"
+
+msgctxt "model:sale.rental.pickup.show.line,string:"
+msgid "Sale Rental Pickup Show Line"
+msgstr "Verkoop verhuur ophalen weergeven regel"
+
+msgctxt "model:sale.rental.return.show,string:"
+msgid "Sale Rental Return Show"
+msgstr "Verkoop verhuur retourneren weergeven"
+
+msgctxt "model:sale.rental.return.show.line,string:"
+msgid "Sale Rental Return Show Line"
+msgstr "Verkoop verhuur retourneren weergeven regel"
+
+msgctxt "model:stock.location,name:location_rental"
+msgid "Rental"
+msgstr "Verhuur"
+
+msgctxt "selection:sale.rental,state:"
+msgid "Cancelled"
+msgstr "Geannuleerd"
+
+msgctxt "selection:sale.rental,state:"
+msgid "Confirmed"
+msgstr "Bevestigd"
+
+msgctxt "selection:sale.rental,state:"
+msgid "Done"
+msgstr "Gereed"
+
+msgctxt "selection:sale.rental,state:"
+msgid "Draft"
+msgstr "Concept"
+
+msgctxt "selection:sale.rental,state:"
+msgid "Picked up"
+msgstr "Opgehaald"
+
+msgctxt "selection:sale.rental,state:"
+msgid "Quotation"
+msgstr "Offerte"
+
+msgctxt "view:product.template:"
+msgid "Rental"
+msgstr "Verhuur"
+
+msgctxt "view:sale.rental.line:"
+msgid "/"
+msgstr "/"
+
+msgctxt "view:sale.rental.line:"
+msgid "General"
+msgstr "Algemeen"
+
+msgctxt "view:sale.rental.line:"
+msgid "Moves"
+msgstr "Boekingen"
+
+msgctxt "view:sale.rental.line:"
+msgid "Per:"
+msgstr "Per:"
+
+msgctxt "view:sale.rental.line:"
+msgid "Taxes"
+msgstr "Belastingen"
+
+msgctxt "view:sale.rental.line:"
+msgid "Time"
+msgstr "Tijd"
+
+msgctxt "view:sale.rental:"
+msgid "Other Info"
+msgstr "Overige informatie"
+
+msgctxt "view:sale.rental:"
+msgid "Rental"
+msgstr "Verhuur"
+
+msgctxt "view:stock.move:"
+msgid "Rental"
+msgstr "Verhuur"
+
+msgctxt "wizard_button:sale.rental.pickup,show,end:"
+msgid "Cancel"
+msgstr "Annuleer"
+
+msgctxt "wizard_button:sale.rental.pickup,show,pickup:"
+msgid "Pickup"
+msgstr "Haal op"
+
+msgctxt "wizard_button:sale.rental.return,show,end:"
+msgid "Cancel"
+msgstr "Annuleer"
+
+msgctxt "wizard_button:sale.rental.return,show,return_:"
+msgid "Return"
+msgstr "Retourneren"

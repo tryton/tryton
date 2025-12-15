@@ -105,6 +105,10 @@ msgctxt "field:production,state:"
 msgid "State"
 msgstr "状态"
 
+msgctxt "field:production,type:"
+msgid "Type"
+msgstr ""
+
 msgctxt "field:production,unit:"
 msgid "Unit"
 msgstr ""
@@ -125,6 +129,11 @@ msgctxt "field:production.bom,code_readonly:"
 msgid "Code Readonly"
 msgstr ""
 
+#, fuzzy
+msgctxt "field:production.bom,input_products:"
+msgid "Input Products"
+msgstr "Productions"
+
 msgctxt "field:production.bom,inputs:"
 msgid "Input Materials"
 msgstr ""
@@ -142,10 +151,26 @@ msgctxt "field:production.bom,outputs:"
 msgid "Output Materials"
 msgstr ""
 
+msgctxt "field:production.bom,phantom:"
+msgid "Phantom"
+msgstr ""
+
+msgctxt "field:production.bom,phantom_quantity:"
+msgid "Quantity"
+msgstr ""
+
+msgctxt "field:production.bom,phantom_unit:"
+msgid "Unit"
+msgstr ""
+
 #, fuzzy
 msgctxt "field:production.bom.input,bom:"
 msgid "BOM"
 msgstr "BOM"
+
+msgctxt "field:production.bom.input,phantom_bom:"
+msgid "Phantom BOM"
+msgstr ""
 
 msgctxt "field:production.bom.input,product:"
 msgid "Product"
@@ -167,6 +192,10 @@ msgstr ""
 msgctxt "field:production.bom.output,bom:"
 msgid "BOM"
 msgstr "BOM"
+
+msgctxt "field:production.bom.output,phantom_bom:"
+msgid "Phantom BOM"
+msgstr ""
 
 msgctxt "field:production.bom.output,product:"
 msgid "Product"
@@ -312,6 +341,18 @@ msgctxt "help:production,uom_category:"
 msgid "The category of Unit of Measure."
 msgstr ""
 
+msgctxt "help:production.bom,phantom:"
+msgid "If checked, the BoM can be used in another BoM."
+msgstr ""
+
+msgctxt "help:production.bom,phantom_quantity:"
+msgid "The quantity of the Phantom BoM"
+msgstr ""
+
+msgctxt "help:production.bom,phantom_unit:"
+msgid "The Unit of Measure of the Phantom BoM"
+msgstr ""
+
 msgctxt "help:production.configuration,bom_sequence:"
 msgid "Used to generate the BOM code."
 msgstr ""
@@ -418,7 +459,12 @@ msgid ""
 msgstr ""
 
 #, python-format
-msgctxt "model:ir.message,text:msg_recursive_bom"
+msgctxt "model:ir.message,text:msg_recursive_bom_bom"
+msgid "You cannot create a recursive BOM for BOM \"%(bom)s\"."
+msgstr ""
+
+#, python-format
+msgctxt "model:ir.message,text:msg_recursive_bom_product"
 msgid "You cannot create a recursive BOM for product \"%(product)s\"."
 msgstr ""
 
@@ -609,10 +655,26 @@ msgctxt "selection:production,state:"
 msgid "Waiting"
 msgstr "Waiting"
 
+msgctxt "selection:production,type:"
+msgid "Assembly"
+msgstr ""
+
+msgctxt "selection:production,type:"
+msgid "Disassembly"
+msgstr ""
+
 #, fuzzy
 msgctxt "view:product.template:"
 msgid "Production"
 msgstr "Production"
+
+msgctxt "view:production.bom.input:"
+msgid "Material"
+msgstr ""
+
+msgctxt "view:production.bom.output:"
+msgid "Material"
+msgstr ""
 
 msgctxt "view:production.bom:"
 msgid "Lines"

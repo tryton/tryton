@@ -284,7 +284,7 @@ msgstr "Date de la vente"
 
 msgctxt "field:sale.line,sale_state:"
 msgid "Sale State"
-msgstr "État de la vente"
+msgstr "État de vente"
 
 msgctxt "field:sale.line,shipping_date:"
 msgid "Shipping Date"
@@ -528,7 +528,7 @@ msgstr "Tiers de facturation"
 
 msgctxt "field:sale.sale,invoice_state:"
 msgid "Invoice State"
-msgstr "État de la facture"
+msgstr "État de facturation"
 
 msgctxt "field:sale.sale,invoices:"
 msgid "Invoices"
@@ -616,7 +616,7 @@ msgstr "Retours d'expédition"
 
 msgctxt "field:sale.sale,shipment_state:"
 msgid "Shipment State"
-msgstr "État de l'expédition"
+msgstr "État d''expédition"
 
 msgctxt "field:sale.sale,shipments:"
 msgid "Shipments"
@@ -636,7 +636,7 @@ msgstr "Taxe"
 
 msgctxt "field:sale.sale,tax_amount_cache:"
 msgid "Tax Cache"
-msgstr "Cache des taxes"
+msgstr "Cache de taxe"
 
 msgctxt "field:sale.sale,total_amount:"
 msgid "Total"
@@ -652,7 +652,7 @@ msgstr "Hors taxe"
 
 msgctxt "field:sale.sale,untaxed_amount_cache:"
 msgid "Untaxed Cache"
-msgstr "Cache hors taxe"
+msgstr "Cache de hors taxe"
 
 msgctxt "field:sale.sale,warehouse:"
 msgid "Warehouse"
@@ -946,7 +946,7 @@ msgstr "Brouillons"
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_sale_form_domain_exception"
 msgid "Exception"
-msgstr "Exception"
+msgstr "Exceptions"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_sale_form_domain_processing"
@@ -1137,10 +1137,12 @@ msgstr ""
 
 #, python-format
 msgctxt "model:ir.message,text:msg_sale_warehouse_required_for_quotation"
-msgid "To get a quote for sale \"%(sale)s\" you must enter a warehouse."
+msgid ""
+"To get a quote for sale \"%(sale)s\" you must enter a warehouse for the line"
+" \"%(line)s\"."
 msgstr ""
-"Pour avoir un devis pour la vente « %(sale)s », vous devez remplir un "
-"entrepôt."
+"Pour obtenir un devis pour la vente \"%(sale)s\", vous devez entrer un "
+"entrepôt pour la ligne \"%(line)s\"."
 
 msgctxt "model:ir.model.button,string:sale_cancel_button"
 msgid "Cancel"
@@ -1480,7 +1482,7 @@ msgid "Quantity"
 msgstr "Quantité"
 
 msgctxt "report:sale.sale:"
-msgid "Quotation N°:"
+msgid "Quotation No:"
 msgstr "Devis N° :"
 
 msgctxt "report:sale.sale:"
@@ -1488,8 +1490,8 @@ msgid "Reference:"
 msgstr "Référence :"
 
 msgctxt "report:sale.sale:"
-msgid "Sale Order N°:"
-msgstr "Bon de commande N° :"
+msgid "Sale Order No:"
+msgstr "Vente N° :"
 
 msgctxt "report:sale.sale:"
 msgid "Taxes"

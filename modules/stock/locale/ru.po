@@ -689,6 +689,215 @@ msgctxt "field:stock.products_by_locations.context,stock_date_end:"
 msgid "At Date"
 msgstr ""
 
+#, fuzzy
+msgctxt "field:stock.reporting.inventory,company:"
+msgid "Company"
+msgstr "Организация"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory,input_quantity:"
+msgid "Input Quantity"
+msgstr "Внутреннее количество"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory,output_quantity:"
+msgid "Output Quantity"
+msgstr "Внутреннее количество"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory,product:"
+msgid "Product"
+msgstr "Продукт"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory,quantity:"
+msgid "Quantity"
+msgstr "Кол-во"
+
+msgctxt "field:stock.reporting.inventory,unit:"
+msgid "Unit"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.context,company:"
+msgid "Company"
+msgstr "Организация"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.context,date:"
+msgid "Date"
+msgstr "Дата"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.context,location:"
+msgid "Location"
+msgstr "Местоположение"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.context,product_type:"
+msgid "Product Type"
+msgstr "Продукт"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.daily,company:"
+msgid "Company"
+msgstr "Организация"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.daily,from_date:"
+msgid "From Date"
+msgstr "Из местоположения"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.daily,input_quantity:"
+msgid "Input Quantity"
+msgstr "Внутреннее количество"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.daily,output_quantity:"
+msgid "Output Quantity"
+msgstr "Внутреннее количество"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.daily,product:"
+msgid "Product"
+msgstr "Продукт"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.daily,quantity:"
+msgid "Quantity"
+msgstr "Кол-во"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.daily,to_date:"
+msgid "To Date"
+msgstr "Дата"
+
+msgctxt "field:stock.reporting.inventory.daily,unit:"
+msgid "Unit"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.move,company:"
+msgid "Company"
+msgstr "Организация"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.move,date:"
+msgid "Date"
+msgstr "Дата"
+
+msgctxt "field:stock.reporting.inventory.move,document:"
+msgid "Document"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.move,input_quantity:"
+msgid "Input Quantity"
+msgstr "Внутреннее количество"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.move,move:"
+msgid "Move"
+msgstr "Перемещения"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.move,origin:"
+msgid "Origin"
+msgstr "Первоисточник"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.move,output_quantity:"
+msgid "Output Quantity"
+msgstr "Внутреннее количество"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.move,product:"
+msgid "Product"
+msgstr "Продукт"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.move,quantity:"
+msgid "Quantity"
+msgstr "Кол-во"
+
+msgctxt "field:stock.reporting.inventory.move,unit:"
+msgid "Unit"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.range.context,company:"
+msgid "Company"
+msgstr "Организация"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.range.context,from_date:"
+msgid "From Date"
+msgstr "Из местоположения"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.range.context,location:"
+msgid "Location"
+msgstr "Местоположение"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.range.context,to_date:"
+msgid "To Date"
+msgstr "Дата"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.turnover,average_quantity:"
+msgid "Average Quantity"
+msgstr "Внутреннее количество"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.turnover,company:"
+msgid "Company"
+msgstr "Организация"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.turnover,output_quantity:"
+msgid "Output Quantity"
+msgstr "Внутреннее количество"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.turnover,product:"
+msgid "Product"
+msgstr "Продукт"
+
+msgctxt "field:stock.reporting.inventory.turnover,turnover:"
+msgid "Turnover"
+msgstr ""
+
+msgctxt "field:stock.reporting.inventory.turnover,unit:"
+msgid "Unit"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.turnover.context,company:"
+msgid "Company"
+msgstr "Организация"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.turnover.context,from_date:"
+msgid "From Date"
+msgstr "Из местоположения"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.turnover.context,location:"
+msgid "Location"
+msgstr "Местоположение"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.turnover.context,product_type:"
+msgid "Product Type"
+msgstr "Продукт"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.turnover.context,to_date:"
+msgid "To Date"
+msgstr "Дата"
+
 msgctxt "field:stock.reporting.margin.category,category:"
 msgid "Category"
 msgstr ""
@@ -1007,6 +1216,11 @@ msgstr "Состояние"
 msgctxt "field:stock.shipment.internal,to_location:"
 msgid "To Location"
 msgstr "В местоположение"
+
+#, fuzzy
+msgctxt "field:stock.shipment.internal,to_warehouse:"
+msgid "To Warehouse"
+msgstr "Товарный склад"
 
 msgctxt "field:stock.shipment.internal,transit_location:"
 msgid "Transit Location"
@@ -1655,6 +1869,10 @@ msgctxt "help:stock.shipment.internal,to_location:"
 msgid "Where the stock is moved to."
 msgstr ""
 
+msgctxt "help:stock.shipment.internal,to_warehouse:"
+msgid "Where the stock is sent to."
+msgstr ""
+
 msgctxt "help:stock.shipment.internal,transit_location:"
 msgid ""
 "Where the stock is located while it is in transit between the warehouses."
@@ -1809,6 +2027,26 @@ msgstr "Product Quantities By Warehouse"
 msgctxt "model:ir.action,name:act_products_by_locations_relate"
 msgid "Products"
 msgstr "Products"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_reporting_inventory"
+msgid "Inventory"
+msgstr "Инвентаризация"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_reporting_inventory_daily"
+msgid "Stock Inventory Daily"
+msgstr "Хранилище опись"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_reporting_inventory_move"
+msgid "Stock Inventory Moves"
+msgstr "Учет перемещений"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_reporting_inventory_turnover"
+msgid "Inventory Turnover"
+msgstr "Учет перемещений"
 
 msgctxt "model:ir.action,name:act_reporting_margin_category"
 msgid "Margins per Category"
@@ -2169,11 +2407,6 @@ msgid "No existing line found for \"%(search)s\"."
 msgstr ""
 
 #, python-format
-msgctxt "model:ir.message,text:msg_inventory_date_in_the_future"
-msgid "The inventories \"%(inventories)s\" have dates in the future."
-msgstr ""
-
-#, python-format
 msgctxt "model:ir.message,text:msg_inventory_delete_cancel"
 msgid "To delete inventory \"%(inventory)s\" you must cancel it."
 msgstr ""
@@ -2272,8 +2505,11 @@ msgctxt "model:ir.message,text:msg_move_quantity_positive"
 msgid "Move quantity must be positive."
 msgstr "Кол-во должно быть положительным"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_period_close_assigned_move"
-msgid "You cannot close periods with assigned moves in it."
+msgid ""
+"To close the period \"%(period)s\", the assigned moves \"%(moves)s\" must be"
+" done or cancelled."
 msgstr ""
 
 msgctxt "model:ir.message,text:msg_period_close_date"
@@ -2654,6 +2890,25 @@ msgctxt ""
 msgid "User in companies"
 msgstr ""
 
+msgctxt "model:ir.rule.group,name:rule_group_reporting_inventory_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt ""
+"model:ir.rule.group,name:rule_group_reporting_inventory_daily_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt ""
+"model:ir.rule.group,name:rule_group_reporting_inventory_move_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt ""
+"model:ir.rule.group,name:rule_group_reporting_inventory_turnover_companies"
+msgid "User in companies"
+msgstr ""
+
 msgctxt ""
 "model:ir.rule.group,name:rule_group_reporting_margin_category_companies"
 msgid "User in companies"
@@ -2806,6 +3061,16 @@ msgstr "Periods"
 msgctxt "model:ir.ui.menu,name:menu_reporting"
 msgid "Reporting"
 msgstr "Reporting"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_reporting_inventory"
+msgid "Inventory"
+msgstr "Инвентаризация"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_reporting_inventory_turnover"
+msgid "Inventory Turnover"
+msgstr "Учет перемещений"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_reporting_margin"
@@ -3031,6 +3296,41 @@ msgctxt "model:stock.products_by_locations.context,string:"
 msgid "Stock Products By Locations Context"
 msgstr "Продукция по местоположениям"
 
+#, fuzzy
+msgctxt "model:stock.reporting.inventory,string:"
+msgid "Stock Reporting Inventory"
+msgstr "Хранилище опись"
+
+#, fuzzy
+msgctxt "model:stock.reporting.inventory.context,string:"
+msgid "Stock Reporting Inventory Context"
+msgstr "Хранилище строка описи"
+
+#, fuzzy
+msgctxt "model:stock.reporting.inventory.daily,string:"
+msgid "Stock Reporting Inventory Daily"
+msgstr "Хранилище строка описи"
+
+#, fuzzy
+msgctxt "model:stock.reporting.inventory.move,string:"
+msgid "Stock Reporting Inventory Move"
+msgstr "Хранилище строка описи"
+
+#, fuzzy
+msgctxt "model:stock.reporting.inventory.range.context,string:"
+msgid "Stock Reporting Inventory Range Context"
+msgstr "Хранилище строка описи"
+
+#, fuzzy
+msgctxt "model:stock.reporting.inventory.turnover,string:"
+msgid "Stock Reporting Inventory Turnover"
+msgstr "Хранилище строка описи"
+
+#, fuzzy
+msgctxt "model:stock.reporting.inventory.turnover.context,string:"
+msgid "Stock Reporting Inventory Turnover Context"
+msgstr "Хранилище строка описи"
+
 msgctxt "model:stock.reporting.margin.category,string:"
 msgid "Stock Reporting Margin Category"
 msgstr ""
@@ -3110,10 +3410,6 @@ msgid "From Location"
 msgstr "Из местоположения"
 
 msgctxt "report:stock.shipment.in.restocking_list:"
-msgid "N°:"
-msgstr ""
-
-msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "Planned Date:"
 msgstr "Плановая дата:"
 
@@ -3131,6 +3427,11 @@ msgstr "Ссылка:"
 
 msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "Restocking List"
+msgstr "Список пополнения"
+
+#, fuzzy
+msgctxt "report:stock.shipment.in.restocking_list:"
+msgid "Restocking List No:"
 msgstr "Список пополнения"
 
 msgctxt "report:stock.shipment.in.restocking_list:"
@@ -3157,13 +3458,10 @@ msgctxt "report:stock.shipment.internal.report:"
 msgid "From Location:"
 msgstr "Из местоположения:"
 
+#, fuzzy
 msgctxt "report:stock.shipment.internal.report:"
-msgid "Internal Shipment"
+msgid "Internal Shipment No:"
 msgstr "Внутреннее перемещение"
-
-msgctxt "report:stock.shipment.internal.report:"
-msgid "N°:"
-msgstr ""
 
 msgctxt "report:stock.shipment.internal.report:"
 msgid "Planned Date:"
@@ -3212,6 +3510,11 @@ msgstr "Накладная"
 
 #, fuzzy
 msgctxt "report:stock.shipment.out.delivery_note:"
+msgid "Delivery Note No:"
+msgstr "Накладная"
+
+#, fuzzy
+msgctxt "report:stock.shipment.out.delivery_note:"
 msgid "Draft"
 msgstr "Draft"
 
@@ -3219,10 +3522,6 @@ msgstr "Draft"
 msgctxt "report:stock.shipment.out.delivery_note:"
 msgid "Location:"
 msgstr "Местоположение"
-
-msgctxt "report:stock.shipment.out.delivery_note:"
-msgid "N°:"
-msgstr ""
 
 msgctxt "report:stock.shipment.out.delivery_note:"
 msgid "Product"
@@ -3264,11 +3563,12 @@ msgid "From Location"
 msgstr "Из местоположения"
 
 msgctxt "report:stock.shipment.out.picking_list:"
-msgid "N°:"
-msgstr ""
-
-msgctxt "report:stock.shipment.out.picking_list:"
 msgid "Picking List"
+msgstr "Список выбора"
+
+#, fuzzy
+msgctxt "report:stock.shipment.out.picking_list:"
+msgid "Picking List No:"
 msgstr "Список выбора"
 
 msgctxt "report:stock.shipment.out.picking_list:"
@@ -3324,10 +3624,6 @@ msgid "From Location"
 msgstr "Из местоположения"
 
 msgctxt "report:stock.shipment.out.return.restocking_list:"
-msgid "N°:"
-msgstr ""
-
-msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "Planned Date:"
 msgstr "Плановая дата:"
 
@@ -3345,6 +3641,11 @@ msgstr "Ссылка:"
 
 msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "Restocking List"
+msgstr "Список пополнения"
+
+#, fuzzy
+msgctxt "report:stock.shipment.out.return.restocking_list:"
+msgid "Restocking List No:"
 msgstr "Список пополнения"
 
 msgctxt "report:stock.shipment.out.return.restocking_list:"
@@ -3423,6 +3724,10 @@ msgid "Production"
 msgstr "Производство"
 
 msgctxt "selection:stock.location,type:"
+msgid "Rental"
+msgstr ""
+
+msgctxt "selection:stock.location,type:"
 msgid "Storage"
 msgstr "Хранилище"
 
@@ -3482,6 +3787,60 @@ msgid "Product"
 msgstr "Продукт"
 
 msgctxt "selection:stock.product_quantities_warehouse.move,product:"
+msgid "Variant"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:stock.reporting.inventory,product:"
+msgid "Product"
+msgstr "Продукт"
+
+msgctxt "selection:stock.reporting.inventory,product:"
+msgid "Variant"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:stock.reporting.inventory.context,product_type:"
+msgid "Product"
+msgstr "Продукт"
+
+msgctxt "selection:stock.reporting.inventory.context,product_type:"
+msgid "Variant"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:stock.reporting.inventory.daily,product:"
+msgid "Product"
+msgstr "Продукт"
+
+msgctxt "selection:stock.reporting.inventory.daily,product:"
+msgid "Variant"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:stock.reporting.inventory.move,product:"
+msgid "Product"
+msgstr "Продукт"
+
+msgctxt "selection:stock.reporting.inventory.move,product:"
+msgid "Variant"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:stock.reporting.inventory.turnover,product:"
+msgid "Product"
+msgstr "Продукт"
+
+msgctxt "selection:stock.reporting.inventory.turnover,product:"
+msgid "Variant"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:stock.reporting.inventory.turnover.context,product_type:"
+msgid "Product"
+msgstr "Продукт"
+
+msgctxt "selection:stock.reporting.inventory.turnover.context,product_type:"
 msgid "Variant"
 msgstr ""
 
@@ -3688,6 +4047,11 @@ msgstr "Перемещения"
 msgctxt "view:stock.move:"
 msgid "Other Info"
 msgstr ""
+
+#, fuzzy
+msgctxt "view:stock.reporting.inventory.daily:"
+msgid "Date"
+msgstr "Дата"
 
 msgctxt "view:stock.reporting.margin.category.time_series:"
 msgid "%"

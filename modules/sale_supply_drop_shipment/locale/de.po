@@ -182,7 +182,7 @@ msgid ""
 "To get a quotation for purchase \"%(purchase)s\" you must provide a delivery"
 " address."
 msgstr ""
-"Um eine Angebotsanfrage für Einkauf \"%(purchase)s\" erstellen zu können, "
+"Um eine Bestellanfrage für Einkauf \"%(purchase)s\" erstellen zu können, "
 "muss zuerst eine Lieferadresse erfasst werden."
 
 msgctxt "model:ir.message,text:msg_move_split_drop"

@@ -115,7 +115,7 @@ msgstr "Brouillons"
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_invoice_chorus_form_domain_exception"
 msgid "Exception"
-msgstr "Exception"
+msgstr "Exceptions"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_invoice_chorus_form_domain_sent"

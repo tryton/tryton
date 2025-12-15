@@ -52,6 +52,11 @@ msgctxt "field:product.category,accounting:"
 msgid "Accounting"
 msgstr "Contabilidade"
 
+#, fuzzy
+msgctxt "field:product.category,accounting_templates:"
+msgid "Accounting Products"
+msgstr "Contabilidade"
+
 msgctxt "field:product.category,accounts:"
 msgid "Accounts"
 msgstr "Contas"
@@ -135,6 +140,11 @@ msgstr "Utilize as contas definidas na categoria pai."
 msgctxt "help:product.category,accounting:"
 msgid "Check to indicate the category is used for accounting."
 msgstr "Marque para usar as taxas definidas na categoria da conta."
+
+#, fuzzy
+msgctxt "help:product.category,accounting_templates:"
+msgid "The products for which the accounting category applies."
+msgstr "Marque para converter em categoria de conta."
 
 msgctxt "help:product.category,customer_taxes:"
 msgid "The taxes to apply when selling products of this category."

@@ -52,6 +52,10 @@ msgctxt "field:product.category,accounting:"
 msgid "Accounting"
 msgstr "Contabilitate"
 
+msgctxt "field:product.category,accounting_templates:"
+msgid "Accounting Products"
+msgstr "Contabilitate Produse"
+
 msgctxt "field:product.category,accounts:"
 msgid "Accounts"
 msgstr "Conturi"
@@ -110,7 +114,7 @@ msgstr "Categorie"
 
 msgctxt "field:product.category.account,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:product.product,account_category:"
 msgid "Account Category"
@@ -135,6 +139,10 @@ msgstr "Utilizare conturi definite la categoria părintelui."
 msgctxt "help:product.category,accounting:"
 msgid "Check to indicate the category is used for accounting."
 msgstr "Bifaţi dacă categoria este utilizata pentru contabilitate."
+
+msgctxt "help:product.category,accounting_templates:"
+msgid "The products for which the accounting category applies."
+msgstr "Produsele cărora li se aplică categoria contabilă."
 
 msgctxt "help:product.category,customer_taxes:"
 msgid "The taxes to apply when selling products of this category."

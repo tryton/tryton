@@ -357,6 +357,14 @@ msgctxt "model:ir.message,text:msg_company_logo_cache_size_unique"
 msgid "The size of cached company logo must be unique."
 msgstr ""
 
+msgctxt "model:ir.message,text:msg_company_logo_error"
+msgid "Can not open or identify the image set for the company logo."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_company_party_unique"
+msgid "A party can only be assigned to one company."
+msgstr ""
+
 #, fuzzy
 msgctxt "model:ir.rule.group,name:rule_group_sequence_companies"
 msgid "User in companies"

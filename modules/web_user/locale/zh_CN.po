@@ -187,12 +187,3 @@ msgstr "仅一步之遥.."
 msgctxt "report:web.user.email_validation:"
 msgid "Validate"
 msgstr "验证"
-
-msgctxt "view:web.user:"
-msgid "Reset Password"
-msgstr "重置密码"
-
-#, fuzzy
-msgctxt "view:web.user:"
-msgid "Validate Email"
-msgstr "验证电子邮件"

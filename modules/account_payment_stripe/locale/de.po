@@ -354,10 +354,6 @@ msgctxt "model:ir.action,name:url_checkout"
 msgid "Stripe Checkout"
 msgstr "Stripe Checkout"
 
-msgctxt "model:ir.action,name:wizard_checkout"
-msgid "Stripe Checkout"
-msgstr "Stripe Checkout"
-
 msgctxt "model:ir.action,name:wizard_customer_source_detach"
 msgid "Detach Source"
 msgstr "Ursprung lösen"

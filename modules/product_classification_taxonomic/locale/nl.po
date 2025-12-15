@@ -148,7 +148,7 @@ msgstr "Serie"
 
 msgctxt "selection:product.taxon,rank:"
 msgid "Species"
-msgstr "Soort"
+msgstr "Ras"
 
 msgctxt "selection:product.taxon,rank:"
 msgid "Tribe"

@@ -74,6 +74,18 @@ msgctxt "field:stock.shipment.out,shipping_reference:"
 msgid "Shipping Reference"
 msgstr "Verzend referentie"
 
+msgctxt "help:stock.shipment.in.return,shipping_description:"
+msgid "Leave empty to use the generated description."
+msgstr "Laat leeg om de gegenereerde omschrijving te gebruiken."
+
+msgctxt "help:stock.shipment.internal,shipping_description:"
+msgid "Leave empty to use the generated description."
+msgstr "Laat leeg om de gegenereerde omschrijving te gebruiken."
+
+msgctxt "help:stock.shipment.out,shipping_description:"
+msgid "Leave empty to use the generated description."
+msgstr "Laat leeg om de gegenereerde omschrijving te gebruiken."
+
 msgctxt "model:ir.action,name:act_create_shipping_wizard"
 msgid "Create Shipping"
 msgstr "Maak zending"

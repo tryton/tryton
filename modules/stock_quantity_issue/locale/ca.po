@@ -135,17 +135,14 @@ msgctxt "model:ir.ui.menu,name:menu_quantity_issue_generate"
 msgid "Generate Stock Quantity Issues"
 msgstr "Genera incidències d'aprovisionament"
 
-#, fuzzy
 msgctxt "model:stock.quantity.issue,string:"
 msgid "Stock Quantity Issue"
 msgstr "Incidències d'aprovisionament"
 
-#, fuzzy
 msgctxt "model:stock.quantity.issue.generate.start,string:"
 msgid "Stock Quantity Issue Generate Start"
-msgstr "Incidències d'aprovisionament"
+msgstr "Inici generar incidències d'aprovisionament"
 
-#, fuzzy
 msgctxt "model:stock.quantity.issue.product,string:"
 msgid "Stock Quantity Issue Product"
 msgstr "Productes amb incidències d'aprovisionament"

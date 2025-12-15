@@ -52,7 +52,7 @@ msgstr "Data d'inici efectiva"
 
 msgctxt "field:production,inputs:"
 msgid "Input Materials"
-msgstr ""
+msgstr "Materials d'entrada"
 
 msgctxt "field:production,location:"
 msgid "Location"
@@ -66,10 +66,9 @@ msgctxt "field:production,origin:"
 msgid "Origin"
 msgstr "Origen"
 
-#, fuzzy
 msgctxt "field:production,outputs:"
 msgid "Output Materials"
-msgstr "Sortides"
+msgstr "Materials de sortida"
 
 msgctxt "field:production,partially_assigned:"
 msgid "Partially Assigned"
@@ -99,6 +98,10 @@ msgctxt "field:production,state:"
 msgid "State"
 msgstr "Estat"
 
+msgctxt "field:production,type:"
+msgid "Type"
+msgstr "Tipus"
+
 msgctxt "field:production,unit:"
 msgid "Unit"
 msgstr "Unitat"
@@ -119,9 +122,13 @@ msgctxt "field:production.bom,code_readonly:"
 msgid "Code Readonly"
 msgstr "Codi només lectura"
 
+msgctxt "field:production.bom,input_products:"
+msgid "Input Products"
+msgstr "Productes d'entrada"
+
 msgctxt "field:production.bom,inputs:"
 msgid "Input Materials"
-msgstr ""
+msgstr "Materials d'entrada"
 
 msgctxt "field:production.bom,name:"
 msgid "Name"
@@ -131,14 +138,29 @@ msgctxt "field:production.bom,output_products:"
 msgid "Output Products"
 msgstr "Productes de sortida"
 
-#, fuzzy
 msgctxt "field:production.bom,outputs:"
 msgid "Output Materials"
-msgstr "Sortides"
+msgstr "Materials de sortida"
+
+msgctxt "field:production.bom,phantom:"
+msgid "Phantom"
+msgstr "Fanstasma"
+
+msgctxt "field:production.bom,phantom_quantity:"
+msgid "Quantity"
+msgstr "Quantitat"
+
+msgctxt "field:production.bom,phantom_unit:"
+msgid "Unit"
+msgstr "Unitat"
 
 msgctxt "field:production.bom.input,bom:"
 msgid "BOM"
 msgstr "Llista de materials"
+
+msgctxt "field:production.bom.input,phantom_bom:"
+msgid "Phantom BOM"
+msgstr "LdM fantasma"
 
 msgctxt "field:production.bom.input,product:"
 msgid "Product"
@@ -159,6 +181,10 @@ msgstr "Categoria de la UdM"
 msgctxt "field:production.bom.output,bom:"
 msgid "BOM"
 msgstr "Llista de materials"
+
+msgctxt "field:production.bom.output,phantom_bom:"
+msgid "Phantom BOM"
+msgstr "LdM fantasma"
 
 msgctxt "field:production.bom.output,product:"
 msgid "Product"
@@ -293,6 +319,18 @@ msgctxt "help:production,uom_category:"
 msgid "The category of Unit of Measure."
 msgstr "La categoria de la unitat de mesura."
 
+msgctxt "help:production.bom,phantom:"
+msgid "If checked, the BoM can be used in another BoM."
+msgstr "Si es marca, la LdM es pot utilitzar en una altra LdM."
+
+msgctxt "help:production.bom,phantom_quantity:"
+msgid "The quantity of the Phantom BoM"
+msgstr "La quantitat de la LdM fantasma"
+
+msgctxt "help:production.bom,phantom_unit:"
+msgid "The Unit of Measure of the Phantom BoM"
+msgstr "La unitat de mesura de la LdM fantasma"
+
 msgctxt "help:production.configuration,bom_sequence:"
 msgid "Used to generate the BOM code."
 msgstr "S'utilitza per generar el codi de la LdM."
@@ -400,7 +438,12 @@ msgstr ""
 "preu de venda definit."
 
 #, python-format
-msgctxt "model:ir.message,text:msg_recursive_bom"
+msgctxt "model:ir.message,text:msg_recursive_bom_bom"
+msgid "You cannot create a recursive BOM for BOM \"%(bom)s\"."
+msgstr "No es pot crear una LdM recursriva per la LdM \"%(bom)s\"."
+
+#, python-format
+msgctxt "model:ir.message,text:msg_recursive_bom_product"
 msgid "You cannot create a recursive BOM for product \"%(product)s\"."
 msgstr "No podeu crear una LdM recursiva pel producte \"%(product)s\"."
 
@@ -483,43 +526,36 @@ msgstr "Produccions"
 
 msgctxt "model:product.product-production.bom,string:"
 msgid "Product - Production Bom"
-msgstr ""
+msgstr "Producte - LdM producció"
 
-#, fuzzy
 msgctxt "model:production,string:"
 msgid "Production"
 msgstr "Producció"
 
-#, fuzzy
 msgctxt "model:production.bom,string:"
 msgid "Production Bom"
-msgstr "Producció"
+msgstr "LdM Producció"
 
-#, fuzzy
 msgctxt "model:production.bom.input,string:"
 msgid "Production Bom Input"
-msgstr "Entrada de la producció"
+msgstr "Entrada de llista de materials de producció"
 
-#, fuzzy
 msgctxt "model:production.bom.output,string:"
 msgid "Production Bom Output"
-msgstr "Sortida de la producció"
+msgstr "Sortida de la llista de materials de producció"
 
-#, fuzzy
 msgctxt "model:production.bom.tree,string:"
 msgid "Production Bom Tree"
-msgstr "Temps d'espera de la producció"
+msgstr "Arbre de LdM de producció"
 
 msgctxt "model:production.bom.tree.open.start,string:"
 msgid "Production Bom Tree Open Start"
-msgstr ""
+msgstr "Inici obrir arbre de LdM de producció"
 
-#, fuzzy
 msgctxt "model:production.bom.tree.open.tree,string:"
 msgid "Production Bom Tree Open Tree"
-msgstr "Seqüència de producció"
+msgstr "Abri de producció de LdM obrir arbre"
 
-#, fuzzy
 msgctxt "model:production.configuration,string:"
 msgid "Production Configuration"
 msgstr "Configuració de la producció"
@@ -528,7 +564,6 @@ msgctxt "model:production.configuration.production_sequence,string:"
 msgid "Production Configuration Production Sequence"
 msgstr "Configuració de la seqüència de producció"
 
-#, fuzzy
 msgctxt "model:production.lead_time,string:"
 msgid "Production Lead Time"
 msgstr "Temps d'espera de la producció"
@@ -581,9 +616,25 @@ msgctxt "selection:production,state:"
 msgid "Waiting"
 msgstr "En espera"
 
+msgctxt "selection:production,type:"
+msgid "Assembly"
+msgstr "Muntatge"
+
+msgctxt "selection:production,type:"
+msgid "Disassembly"
+msgstr "Desmuntatge"
+
 msgctxt "view:product.template:"
 msgid "Production"
 msgstr "Producció"
+
+msgctxt "view:production.bom.input:"
+msgid "Material"
+msgstr "Material"
+
+msgctxt "view:production.bom.output:"
+msgid "Material"
+msgstr "Materials"
 
 msgctxt "view:production.bom:"
 msgid "Lines"

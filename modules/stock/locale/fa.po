@@ -673,6 +673,215 @@ msgctxt "field:stock.products_by_locations.context,stock_date_end:"
 msgid "At Date"
 msgstr "در تاریخ"
 
+#, fuzzy
+msgctxt "field:stock.reporting.inventory,company:"
+msgid "Company"
+msgstr "شرکت"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory,input_quantity:"
+msgid "Input Quantity"
+msgstr "مقدار خالی"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory,output_quantity:"
+msgid "Output Quantity"
+msgstr "مقدار خالی"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory,product:"
+msgid "Product"
+msgstr "محصول"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory,quantity:"
+msgid "Quantity"
+msgstr "مقدار/تعداد"
+
+msgctxt "field:stock.reporting.inventory,unit:"
+msgid "Unit"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.context,company:"
+msgid "Company"
+msgstr "شرکت"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.context,date:"
+msgid "Date"
+msgstr "تاریخ"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.context,location:"
+msgid "Location"
+msgstr "مکان"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.context,product_type:"
+msgid "Product Type"
+msgstr "محصول"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.daily,company:"
+msgid "Company"
+msgstr "شرکت"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.daily,from_date:"
+msgid "From Date"
+msgstr "از مکان"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.daily,input_quantity:"
+msgid "Input Quantity"
+msgstr "مقدار خالی"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.daily,output_quantity:"
+msgid "Output Quantity"
+msgstr "مقدار خالی"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.daily,product:"
+msgid "Product"
+msgstr "محصول"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.daily,quantity:"
+msgid "Quantity"
+msgstr "مقدار/تعداد"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.daily,to_date:"
+msgid "To Date"
+msgstr "تاریخ"
+
+msgctxt "field:stock.reporting.inventory.daily,unit:"
+msgid "Unit"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.move,company:"
+msgid "Company"
+msgstr "شرکت"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.move,date:"
+msgid "Date"
+msgstr "تاریخ"
+
+msgctxt "field:stock.reporting.inventory.move,document:"
+msgid "Document"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.move,input_quantity:"
+msgid "Input Quantity"
+msgstr "مقدار خالی"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.move,move:"
+msgid "Move"
+msgstr "جابجایی ها"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.move,origin:"
+msgid "Origin"
+msgstr "مبداء"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.move,output_quantity:"
+msgid "Output Quantity"
+msgstr "مقدار خالی"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.move,product:"
+msgid "Product"
+msgstr "محصول"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.move,quantity:"
+msgid "Quantity"
+msgstr "مقدار/تعداد"
+
+msgctxt "field:stock.reporting.inventory.move,unit:"
+msgid "Unit"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.range.context,company:"
+msgid "Company"
+msgstr "شرکت"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.range.context,from_date:"
+msgid "From Date"
+msgstr "از مکان"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.range.context,location:"
+msgid "Location"
+msgstr "مکان"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.range.context,to_date:"
+msgid "To Date"
+msgstr "تاریخ"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.turnover,average_quantity:"
+msgid "Average Quantity"
+msgstr "مقدار افزوده شده"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.turnover,company:"
+msgid "Company"
+msgstr "شرکت"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.turnover,output_quantity:"
+msgid "Output Quantity"
+msgstr "مقدار خالی"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.turnover,product:"
+msgid "Product"
+msgstr "محصول"
+
+msgctxt "field:stock.reporting.inventory.turnover,turnover:"
+msgid "Turnover"
+msgstr ""
+
+msgctxt "field:stock.reporting.inventory.turnover,unit:"
+msgid "Unit"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.turnover.context,company:"
+msgid "Company"
+msgstr "شرکت"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.turnover.context,from_date:"
+msgid "From Date"
+msgstr "از مکان"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.turnover.context,location:"
+msgid "Location"
+msgstr "مکان"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.turnover.context,product_type:"
+msgid "Product Type"
+msgstr "محصول"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.turnover.context,to_date:"
+msgid "To Date"
+msgstr "تاریخ"
+
 msgctxt "field:stock.reporting.margin.category,category:"
 msgid "Category"
 msgstr ""
@@ -982,6 +1191,11 @@ msgstr "وضعیت"
 msgctxt "field:stock.shipment.internal,to_location:"
 msgid "To Location"
 msgstr "به مکان"
+
+#, fuzzy
+msgctxt "field:stock.shipment.internal,to_warehouse:"
+msgid "To Warehouse"
+msgstr "انبار"
 
 msgctxt "field:stock.shipment.internal,transit_location:"
 msgid "Transit Location"
@@ -1649,6 +1863,11 @@ msgctxt "help:stock.shipment.internal,to_location:"
 msgid "Where the stock is moved to."
 msgstr "جایی که اموال به آن جابجا شده است."
 
+#, fuzzy
+msgctxt "help:stock.shipment.internal,to_warehouse:"
+msgid "Where the stock is sent to."
+msgstr "جایی که اموال ارسال میشود."
+
 msgctxt "help:stock.shipment.internal,transit_location:"
 msgid ""
 "Where the stock is located while it is in transit between the warehouses."
@@ -1802,6 +2021,26 @@ msgstr "مقادیر محصول توسط انبار"
 msgctxt "model:ir.action,name:act_products_by_locations_relate"
 msgid "Products"
 msgstr "محصولات"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_reporting_inventory"
+msgid "Inventory"
+msgstr "دفتر دارایی"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_reporting_inventory_daily"
+msgid "Stock Inventory Daily"
+msgstr "موجودی انبار"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_reporting_inventory_move"
+msgid "Stock Inventory Moves"
+msgstr "دفتر دارایی جابجایی ها"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_reporting_inventory_turnover"
+msgid "Inventory Turnover"
+msgstr "دفتر دارایی جابجایی ها"
 
 msgctxt "model:ir.action,name:act_reporting_margin_category"
 msgid "Margins per Category"
@@ -2128,11 +2367,6 @@ msgctxt "model:ir.message,text:msg_inventory_count_create_line"
 msgid "No existing line found for \"%(search)s\"."
 msgstr "هیچ سطرایجاد شده ای برای \"%(search)s\"پیدا نشد ."
 
-#, fuzzy, python-format
-msgctxt "model:ir.message,text:msg_inventory_date_in_the_future"
-msgid "The inventories \"%(inventories)s\" have dates in the future."
-msgstr "برای حذف موجودی :\"%(inventory)s\" شما باید آن را لغو کنید."
-
 #, python-format
 msgctxt "model:ir.message,text:msg_inventory_delete_cancel"
 msgid "To delete inventory \"%(inventory)s\" you must cancel it."
@@ -2247,10 +2481,12 @@ msgctxt "model:ir.message,text:msg_move_quantity_positive"
 msgid "Move quantity must be positive."
 msgstr "مقدار جابجایی باید مثبت باشد."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_period_close_assigned_move"
-msgid "You cannot close periods with assigned moves in it."
+msgid ""
+"To close the period \"%(period)s\", the assigned moves \"%(moves)s\" must be"
+" done or cancelled."
 msgstr ""
-"شما نمی توانید دوره هایی را با جابجایی های مشخص شده در آن، تعطیل کنید."
 
 msgctxt "model:ir.message,text:msg_period_close_date"
 msgid "You cannot close periods with a date in the future or today."
@@ -2640,6 +2876,25 @@ msgctxt ""
 msgid "User in companies"
 msgstr ""
 
+msgctxt "model:ir.rule.group,name:rule_group_reporting_inventory_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt ""
+"model:ir.rule.group,name:rule_group_reporting_inventory_daily_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt ""
+"model:ir.rule.group,name:rule_group_reporting_inventory_move_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt ""
+"model:ir.rule.group,name:rule_group_reporting_inventory_turnover_companies"
+msgid "User in companies"
+msgstr ""
+
 msgctxt ""
 "model:ir.rule.group,name:rule_group_reporting_margin_category_companies"
 msgid "User in companies"
@@ -2773,6 +3028,16 @@ msgstr "دوره ها"
 msgctxt "model:ir.ui.menu,name:menu_reporting"
 msgid "Reporting"
 msgstr "گزارش گیری"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_reporting_inventory"
+msgid "Inventory"
+msgstr "دفتر دارایی"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_reporting_inventory_turnover"
+msgid "Inventory Turnover"
+msgstr "دفتر دارایی جابجایی ها"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_reporting_margin"
@@ -2984,6 +3249,41 @@ msgctxt "model:stock.products_by_locations.context,string:"
 msgid "Stock Products By Locations Context"
 msgstr "محصولات توسط مکان ها"
 
+#, fuzzy
+msgctxt "model:stock.reporting.inventory,string:"
+msgid "Stock Reporting Inventory"
+msgstr "موجودی انبار"
+
+#, fuzzy
+msgctxt "model:stock.reporting.inventory.context,string:"
+msgid "Stock Reporting Inventory Context"
+msgstr "تعداد موجودی انبار"
+
+#, fuzzy
+msgctxt "model:stock.reporting.inventory.daily,string:"
+msgid "Stock Reporting Inventory Daily"
+msgstr "سطر موجودی انبار"
+
+#, fuzzy
+msgctxt "model:stock.reporting.inventory.move,string:"
+msgid "Stock Reporting Inventory Move"
+msgstr "سطر موجودی انبار"
+
+#, fuzzy
+msgctxt "model:stock.reporting.inventory.range.context,string:"
+msgid "Stock Reporting Inventory Range Context"
+msgstr "تعداد موجودی انبار"
+
+#, fuzzy
+msgctxt "model:stock.reporting.inventory.turnover,string:"
+msgid "Stock Reporting Inventory Turnover"
+msgstr "سطر موجودی انبار"
+
+#, fuzzy
+msgctxt "model:stock.reporting.inventory.turnover.context,string:"
+msgid "Stock Reporting Inventory Turnover Context"
+msgstr "تعداد موجودی انبار"
+
 msgctxt "model:stock.reporting.margin.category,string:"
 msgid "Stock Reporting Margin Category"
 msgstr ""
@@ -3063,10 +3363,6 @@ msgid "From Location"
 msgstr "از مکان"
 
 msgctxt "report:stock.shipment.in.restocking_list:"
-msgid "N°:"
-msgstr ""
-
-msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "Planned Date:"
 msgstr "تاریخ برنامه ریزی شده :"
 
@@ -3084,6 +3380,11 @@ msgstr "ارجاع :"
 
 msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "Restocking List"
+msgstr "فهرست درحال تأمیین"
+
+#, fuzzy
+msgctxt "report:stock.shipment.in.restocking_list:"
+msgid "Restocking List No:"
 msgstr "فهرست درحال تأمیین"
 
 msgctxt "report:stock.shipment.in.restocking_list:"
@@ -3110,13 +3411,10 @@ msgctxt "report:stock.shipment.internal.report:"
 msgid "From Location:"
 msgstr "از مکان :"
 
+#, fuzzy
 msgctxt "report:stock.shipment.internal.report:"
-msgid "Internal Shipment"
+msgid "Internal Shipment No:"
 msgstr "محموله داخلی"
-
-msgctxt "report:stock.shipment.internal.report:"
-msgid "N°:"
-msgstr ""
 
 msgctxt "report:stock.shipment.internal.report:"
 msgid "Planned Date:"
@@ -3165,6 +3463,11 @@ msgstr "متن تحویل"
 
 #, fuzzy
 msgctxt "report:stock.shipment.out.delivery_note:"
+msgid "Delivery Note No:"
+msgstr "متن تحویل"
+
+#, fuzzy
+msgctxt "report:stock.shipment.out.delivery_note:"
 msgid "Draft"
 msgstr "پیش‌نویس"
 
@@ -3172,10 +3475,6 @@ msgstr "پیش‌نویس"
 msgctxt "report:stock.shipment.out.delivery_note:"
 msgid "Location:"
 msgstr "مکان"
-
-msgctxt "report:stock.shipment.out.delivery_note:"
-msgid "N°:"
-msgstr ""
 
 msgctxt "report:stock.shipment.out.delivery_note:"
 msgid "Product"
@@ -3217,11 +3516,12 @@ msgid "From Location"
 msgstr "از مکان"
 
 msgctxt "report:stock.shipment.out.picking_list:"
-msgid "N°:"
-msgstr ""
-
-msgctxt "report:stock.shipment.out.picking_list:"
 msgid "Picking List"
+msgstr "لیست انتخاب"
+
+#, fuzzy
+msgctxt "report:stock.shipment.out.picking_list:"
+msgid "Picking List No:"
 msgstr "لیست انتخاب"
 
 msgctxt "report:stock.shipment.out.picking_list:"
@@ -3275,10 +3575,6 @@ msgid "From Location"
 msgstr "از مکان"
 
 msgctxt "report:stock.shipment.out.return.restocking_list:"
-msgid "N°:"
-msgstr ""
-
-msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "Planned Date:"
 msgstr "تاریخ برنامه ریزی شده :"
 
@@ -3296,6 +3592,11 @@ msgstr "ارجاع :"
 
 msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "Restocking List"
+msgstr "فهرست درحال تأمیین"
+
+#, fuzzy
+msgctxt "report:stock.shipment.out.return.restocking_list:"
+msgid "Restocking List No:"
 msgstr "فهرست درحال تأمیین"
 
 msgctxt "report:stock.shipment.out.return.restocking_list:"
@@ -3373,6 +3674,10 @@ msgid "Production"
 msgstr "تهیه کننده"
 
 msgctxt "selection:stock.location,type:"
+msgid "Rental"
+msgstr ""
+
+msgctxt "selection:stock.location,type:"
 msgid "Storage"
 msgstr "مخزن"
 
@@ -3432,6 +3737,60 @@ msgid "Product"
 msgstr "محصول"
 
 msgctxt "selection:stock.product_quantities_warehouse.move,product:"
+msgid "Variant"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:stock.reporting.inventory,product:"
+msgid "Product"
+msgstr "محصول"
+
+msgctxt "selection:stock.reporting.inventory,product:"
+msgid "Variant"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:stock.reporting.inventory.context,product_type:"
+msgid "Product"
+msgstr "محصول"
+
+msgctxt "selection:stock.reporting.inventory.context,product_type:"
+msgid "Variant"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:stock.reporting.inventory.daily,product:"
+msgid "Product"
+msgstr "محصول"
+
+msgctxt "selection:stock.reporting.inventory.daily,product:"
+msgid "Variant"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:stock.reporting.inventory.move,product:"
+msgid "Product"
+msgstr "محصول"
+
+msgctxt "selection:stock.reporting.inventory.move,product:"
+msgid "Variant"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:stock.reporting.inventory.turnover,product:"
+msgid "Product"
+msgstr "محصول"
+
+msgctxt "selection:stock.reporting.inventory.turnover,product:"
+msgid "Variant"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:stock.reporting.inventory.turnover.context,product_type:"
+msgid "Product"
+msgstr "محصول"
+
+msgctxt "selection:stock.reporting.inventory.turnover.context,product_type:"
 msgid "Variant"
 msgstr ""
 
@@ -3635,6 +3994,11 @@ msgstr "جابجایی ها"
 msgctxt "view:stock.move:"
 msgid "Other Info"
 msgstr "سایر اطلاعات"
+
+#, fuzzy
+msgctxt "view:stock.reporting.inventory.daily:"
+msgid "Date"
+msgstr "تاریخ"
 
 msgctxt "view:stock.reporting.margin.category.time_series:"
 msgid "%"

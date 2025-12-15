@@ -2,6 +2,11 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+#, fuzzy
+msgctxt "field:account.move,statement_lines:"
+msgid "Statement Lines"
+msgstr "Aruande read"
+
 msgctxt "field:account.statement,balance:"
 msgid "Balance"
 msgstr "Saldo"

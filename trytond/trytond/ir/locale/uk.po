@@ -667,6 +667,11 @@ msgctxt "field:ir.email,body:"
 msgid "Body"
 msgstr "Тіло"
 
+#, fuzzy
+msgctxt "field:ir.email,message_id:"
+msgid "Message-ID"
+msgstr "Повідомлення"
+
 msgctxt "field:ir.email,recipients:"
 msgid "Recipients"
 msgstr "Одержувачі"
@@ -1279,8 +1284,9 @@ msgctxt "field:ir.model.print_model_graph.start,level:"
 msgid "Level"
 msgstr "Рівень"
 
+#, fuzzy
 msgctxt "field:ir.module,childs:"
-msgid "Childs"
+msgid "Children"
 msgstr "Діти"
 
 msgctxt "field:ir.module,dependencies:"
@@ -1588,6 +1594,11 @@ msgstr "Група"
 msgctxt "field:ir.sequence.type-res.group,sequence_type:"
 msgid "Sequence Type"
 msgstr "Тип послідовності"
+
+#, fuzzy
+msgctxt "field:ir.session,ip_address:"
+msgid "IP Address"
+msgstr "Адреса"
 
 msgctxt "field:ir.session,key:"
 msgid "Key"
@@ -2499,6 +2510,10 @@ msgctxt "model:ir.action,name:report_model_workflow_graph"
 msgid "Workflow Graph"
 msgstr "Графік робочого процесу"
 
+msgctxt "model:ir.action,name:wizard_model_refresh_materialized"
+msgid "Refresh Data"
+msgstr ""
+
 msgctxt "model:ir.action,name:wizard_translation_report"
 msgid "Translations"
 msgstr "Переклади"
@@ -3012,6 +3027,10 @@ msgstr "Вкладення"
 msgctxt "model:ir.message,text:msg_avatar"
 msgid "Avatar"
 msgstr "Аватар"
+
+msgctxt "model:ir.message,text:msg_avatar_image_error"
+msgid "Can not open or identify the image set as avatar."
+msgstr ""
 
 msgctxt "model:ir.message,text:msg_avatar_resource_unique"
 msgid "Only one avatar is allowed per resource."
@@ -3603,6 +3622,10 @@ msgid ""
 "column %(column)d."
 msgstr "Знайдено забагато зв'язків: %(value)r в \"%(model)s\" (%(column)s)."
 
+msgctxt "model:ir.message,text:msg_translation_export_default_lang"
+msgid "To export translations, the default language must be \"English\"."
+msgstr ""
+
 #, python-format
 msgctxt "model:ir.message,text:msg_translation_overridden"
 msgid ""
@@ -3611,6 +3634,10 @@ msgid ""
 msgstr ""
 "Ви не можете експортувати переклад \"%(name)s\", оскільки він був "
 "перевизначений модулем \"%(overriding_module)s\"."
+
+msgctxt "model:ir.message,text:msg_translation_set_default_lang"
+msgid "To set translations, the default language must be \"English\"."
+msgstr ""
 
 msgctxt "model:ir.message,text:msg_trigger_exclusive"
 msgid ""
@@ -3727,29 +3754,29 @@ msgctxt "model:ir.model.button,string:lang_unload_translations_button"
 msgid "Unload translations"
 msgstr "Вивантажити переклади"
 
+#, fuzzy
 msgctxt "model:ir.model.button,string:module_activate_button"
-msgid "Mark for Activation"
-msgstr "Позначити для активації"
+msgid "Activate"
+msgstr "Активувати"
 
-msgctxt "model:ir.model.button,string:module_activate_cancel_button"
-msgid "Cancel Activation"
-msgstr "Скасувати активацію"
+msgctxt "model:ir.model.button,string:module_apply_button"
+msgid "Apply"
+msgstr ""
 
+#, fuzzy
+msgctxt "model:ir.model.button,string:module_cancel_button"
+msgid "Cancel"
+msgstr "Скасувати"
+
+#, fuzzy
 msgctxt "model:ir.model.button,string:module_deactivate_button"
-msgid "Mark for Deactivation (beta)"
+msgid "Deactivate (beta)"
 msgstr "Позначити для деактивації (бета)"
 
-msgctxt "model:ir.model.button,string:module_deactivate_cancel_button"
-msgid "Cancel Deactivation"
-msgstr "Скасувати деактивацію"
-
+#, fuzzy
 msgctxt "model:ir.model.button,string:module_upgrade_button"
-msgid "Mark for Upgrade"
-msgstr "Позначити для оновлення"
-
-msgctxt "model:ir.model.button,string:module_upgrade_cancel_button"
-msgid "Cancel Upgrade"
-msgstr "Скасувати оновлення"
+msgid "Upgrade"
+msgstr "Почати оновлення"
 
 msgctxt "model:ir.model.button,string:view_show_button"
 msgid "Show"
@@ -4082,10 +4109,6 @@ msgstr ""
 msgctxt "model:ir.ui.menu,name:menu_models"
 msgid "Models"
 msgstr "Моделі"
-
-msgctxt "model:ir.ui.menu,name:menu_module_activate_upgrade"
-msgid "Perform Pending Activation/Upgrade"
-msgstr "Виконати активацію/оновлення"
 
 msgctxt "model:ir.ui.menu,name:menu_module_form"
 msgid "Modules"
@@ -4431,6 +4454,10 @@ msgid "Clean Task Queue"
 msgstr "Очистити чергу завдань"
 
 msgctxt "selection:ir.cron,method:"
+msgid "Refresh Materialized Models"
+msgstr ""
+
+msgctxt "selection:ir.cron,method:"
 msgid "Run On Time Triggers"
 msgstr "Виконати тригери у час"
 
@@ -4655,10 +4682,6 @@ msgctxt "view:ir.cron:"
 msgid "Next Call Time"
 msgstr "Час наступного виклику"
 
-msgctxt "view:ir.cron:"
-msgid "Run Once"
-msgstr "Виконати одноразово"
-
 msgctxt "view:ir.email.template:"
 msgid "Hidden Recipients:"
 msgstr "Приховані одержувачі:"
@@ -4732,30 +4755,6 @@ msgid ""
 " have installed."
 msgstr ""
 "Ви зможете налаштувати свою інсталяцію залежно від встановлених модулів."
-
-msgctxt "view:ir.module:"
-msgid "Cancel Activation"
-msgstr "Скасувати активацію"
-
-msgctxt "view:ir.module:"
-msgid "Cancel Deactivation"
-msgstr "Скасувати деактивацію"
-
-msgctxt "view:ir.module:"
-msgid "Cancel Upgrade"
-msgstr "Скасувати оновлення"
-
-msgctxt "view:ir.module:"
-msgid "Mark for Activation"
-msgstr "Позначити для активації"
-
-msgctxt "view:ir.module:"
-msgid "Mark for Deactivation (beta)"
-msgstr "Позначити для деактивації (бета)"
-
-msgctxt "view:ir.module:"
-msgid "Mark for Upgrade"
-msgstr "Позначити для оновлення"
 
 msgctxt "view:ir.note:"
 msgid "Date"

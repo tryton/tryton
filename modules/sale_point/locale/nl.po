@@ -10,11 +10,19 @@ msgctxt "field:product.gross_price,gross_price:"
 msgid "Gross Price"
 msgstr "Bruto prijs"
 
+msgctxt "field:product.gross_price,product:"
+msgid "Product"
+msgstr "Product"
+
 msgctxt "field:product.gross_price,template:"
 msgid "Template"
 msgstr "Template"
 
 msgctxt "field:product.product,gross_price:"
+msgid "Gross Price"
+msgstr "Bruto prijs"
+
+msgctxt "field:product.product,gross_price_used:"
 msgid "Gross Price"
 msgstr "Bruto prijs"
 
@@ -323,12 +331,20 @@ msgid "Unit Price"
 msgstr "Eenheidsprijs"
 
 msgctxt "help:product.product,gross_price:"
-msgid "The price with default tax included."
-msgstr "De prijs met belasting inbegrepen."
+msgid ""
+"The price with default taxes included.\n"
+"Leave empty to use the gross price of the product."
+msgstr ""
+"De prijs inclusief de standaardbelastingen.\n"
+"Laat leeg om de brutoprijs van het product te gebruiken."
+
+msgctxt "help:product.product,gross_price_used:"
+msgid "The price with default taxes included."
+msgstr "De prijs met de standaard belastingen inbegrepen."
 
 msgctxt "help:product.template,gross_price:"
-msgid "The price with default tax included."
-msgstr "De prijs met belasting inbegrepen."
+msgid "The price with default taxes included."
+msgstr "De prijs met de standaard belastingen inbegrepen."
 
 msgctxt "help:sale.point,customer_location:"
 msgid "The location where goods are put when sold."
@@ -653,7 +669,7 @@ msgstr "Geannuleerd"
 
 msgctxt "selection:sale.point.sale,state:"
 msgid "Done"
-msgstr "Afgerond"
+msgstr "Gereed"
 
 msgctxt "selection:sale.point.sale,state:"
 msgid "Open"

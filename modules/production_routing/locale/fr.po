@@ -10,6 +10,10 @@ msgctxt "field:production,routing:"
 msgid "Routing"
 msgstr "Gamme"
 
+msgctxt "field:production.bom,routings:"
+msgid "Routings"
+msgstr "Gammes"
+
 msgctxt "field:production.lead_time,routing:"
 msgid "Routing"
 msgstr "Gamme"

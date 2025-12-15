@@ -180,7 +180,7 @@ msgstr "Geannuleerd"
 
 msgctxt "selection:document.incoming,state:"
 msgid "Done"
-msgstr "Afgerond"
+msgstr "Gereed"
 
 msgctxt "selection:document.incoming,state:"
 msgid "Draft"

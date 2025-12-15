@@ -1,0 +1,72 @@
+#
+#, fuzzy
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "model:edocument.ubl.invoice,string:"
+msgid "Edocument Ubl Invoice"
+msgstr "Edocumento Factura UBL"
+
+#, python-format
+msgctxt "model:ir.message,text:msg_company_not_found"
+msgid ""
+"Could not find the company for:\n"
+"%(company)s"
+msgstr ""
+"No se ha podido encontrar la empresa para:\n"
+"%(company)s"
+
+#, python-format
+msgctxt "model:ir.message,text:msg_credit_note_type_code_unsupported"
+msgid "Unsupported credit note type code \"%(type_code)s\"."
+msgstr "Tipo de código de abono no soportado: \"%(type_code)s\"."
+
+#, python-format
+msgctxt "model:ir.message,text:msg_currency_not_found"
+msgid "Could not find a currency with code \"%(code)s\"."
+msgstr "No se ha podido encontrar una moneda con código \"%(code)s\"."
+
+#, python-format
+msgctxt "model:ir.message,text:msg_invoice_tax_amount_different"
+msgid ""
+"The tax amount %(tax_amount)s of the invoice \"%(invoice)s\" is different "
+"from the tax total %(tax_total)s."
+msgstr ""
+"El importe del impuesto %(tax_amount)s de la factura \"%(invoice)s\" es "
+"distinto del total de impuestos %(tax_total)s."
+
+#, python-format
+msgctxt "model:ir.message,text:msg_invoice_total_amount_different"
+msgid ""
+"The total amount %(total_amount)s of the invoice \"%(invoice)s\" is "
+"different from the amount %(amount)s."
+msgstr ""
+"El importe total %(total_amount)s de la factura \"%(invoice)s\" es distinto "
+"del importe %(amount)s."
+
+#, python-format
+msgctxt "model:ir.message,text:msg_invoice_type_code_unsupported"
+msgid "Unsupported invoice type code \"%(type_code)s\"."
+msgstr "Tipo de código de factura no soportado: \"%(type_code)s\"."
+
+#, python-format
+msgctxt "model:ir.message,text:msg_tax_not_found"
+msgid ""
+"Could not find tax for:\n"
+"%(tax_category)s"
+msgstr ""
+"No se ha podido encontrar un impuesto para:\n"
+"%(tax_category)s"
+
+#, python-format
+msgctxt "model:ir.message,text:msg_unit_not_found"
+msgid "Could not find a unit with UNECE code \"%(code)s\"."
+msgstr "No se ha podido encontrar una unidad con código UNECE \"%(code)s\"."
+
+msgctxt "selection:account.invoice.edocument.start,format:"
+msgid "UBL"
+msgstr "UBL"
+
+msgctxt "selection:document.incoming,type:"
+msgid "UBL Invoice/Credit Note"
+msgstr "Factura/Abono UBL"

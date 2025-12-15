@@ -132,6 +132,16 @@ msgstr ""
 "niet de status \"concept\" heeft."
 
 #, python-format
+msgctxt ""
+"model:ir.message,text:msg_invoice_deferred_invoice_line_missing_account"
+msgid ""
+"To create moves for invoice deferred \"%(deferral)s\" you must configure a "
+"replacement account for \"%(account)s\". "
+msgstr ""
+"Om boekingen te maken voor de uitgestelde factuur %(deferral)s moet er een "
+"vervangende rekening geconfigureerd zijn voor %(account)s. "
+
+#, python-format
 msgctxt "model:ir.message,text:msg_invoice_deferred_running_close_period"
 msgid ""
 "You cannot close period \"%(period)s\" because some invoices deferred "

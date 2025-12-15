@@ -48,7 +48,7 @@ msgstr ""
 
 msgctxt "field:account.credential.chorus,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:account.invoice.chorus,data:"
 msgid "Data"

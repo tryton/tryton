@@ -35,7 +35,7 @@ msgstr "Blocat"
 
 msgctxt "field:account.dunning,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:account.dunning,currency:"
 msgid "Currency"
@@ -154,8 +154,9 @@ msgid "Create dunning up to this date."
 msgstr ""
 
 msgctxt "help:account.dunning.level,overdue:"
-msgid "When the level should be applied."
-msgstr "Când nivelul ar trebui să fie aplicat."
+msgid ""
+"The delay from the maturity date after which the level should be applied."
+msgstr ""
 
 msgctxt "help:account.dunning.procedure,name:"
 msgid "The main identifier of the Dunning Procedure."

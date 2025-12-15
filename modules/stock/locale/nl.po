@@ -626,6 +626,178 @@ msgctxt "field:stock.products_by_locations.context,stock_date_end:"
 msgid "At Date"
 msgstr "Op datum"
 
+msgctxt "field:stock.reporting.inventory,company:"
+msgid "Company"
+msgstr "Bedrijf"
+
+msgctxt "field:stock.reporting.inventory,input_quantity:"
+msgid "Input Quantity"
+msgstr "Ingevoerde hoeveelheid"
+
+msgctxt "field:stock.reporting.inventory,output_quantity:"
+msgid "Output Quantity"
+msgstr "Afgegeven hoeveelheid"
+
+msgctxt "field:stock.reporting.inventory,product:"
+msgid "Product"
+msgstr "Product"
+
+msgctxt "field:stock.reporting.inventory,quantity:"
+msgid "Quantity"
+msgstr "Hoeveelheid"
+
+msgctxt "field:stock.reporting.inventory,unit:"
+msgid "Unit"
+msgstr "Eenheid"
+
+msgctxt "field:stock.reporting.inventory.context,company:"
+msgid "Company"
+msgstr "Bedrijf"
+
+msgctxt "field:stock.reporting.inventory.context,date:"
+msgid "Date"
+msgstr "Datum"
+
+msgctxt "field:stock.reporting.inventory.context,location:"
+msgid "Location"
+msgstr "Locatie"
+
+msgctxt "field:stock.reporting.inventory.context,product_type:"
+msgid "Product Type"
+msgstr "Product soort"
+
+msgctxt "field:stock.reporting.inventory.daily,company:"
+msgid "Company"
+msgstr "Bedrijf"
+
+msgctxt "field:stock.reporting.inventory.daily,from_date:"
+msgid "From Date"
+msgstr "Vanaf datum"
+
+msgctxt "field:stock.reporting.inventory.daily,input_quantity:"
+msgid "Input Quantity"
+msgstr "Ingevoerde hoeveelheid"
+
+msgctxt "field:stock.reporting.inventory.daily,output_quantity:"
+msgid "Output Quantity"
+msgstr "Afgegeven hoeveelheid"
+
+msgctxt "field:stock.reporting.inventory.daily,product:"
+msgid "Product"
+msgstr "Product"
+
+msgctxt "field:stock.reporting.inventory.daily,quantity:"
+msgid "Quantity"
+msgstr "Hoeveelheid"
+
+msgctxt "field:stock.reporting.inventory.daily,to_date:"
+msgid "To Date"
+msgstr "Tot datum"
+
+msgctxt "field:stock.reporting.inventory.daily,unit:"
+msgid "Unit"
+msgstr "Eenheid"
+
+msgctxt "field:stock.reporting.inventory.move,company:"
+msgid "Company"
+msgstr "Bedrijf"
+
+msgctxt "field:stock.reporting.inventory.move,date:"
+msgid "Date"
+msgstr "Datum"
+
+msgctxt "field:stock.reporting.inventory.move,document:"
+msgid "Document"
+msgstr "Document"
+
+msgctxt "field:stock.reporting.inventory.move,input_quantity:"
+msgid "Input Quantity"
+msgstr "Ingevoerde hoeveelheid"
+
+msgctxt "field:stock.reporting.inventory.move,move:"
+msgid "Move"
+msgstr "Voorraad beweging"
+
+msgctxt "field:stock.reporting.inventory.move,origin:"
+msgid "Origin"
+msgstr "Oorsprong"
+
+msgctxt "field:stock.reporting.inventory.move,output_quantity:"
+msgid "Output Quantity"
+msgstr "Afgegeven hoeveelheid"
+
+msgctxt "field:stock.reporting.inventory.move,product:"
+msgid "Product"
+msgstr "Product"
+
+msgctxt "field:stock.reporting.inventory.move,quantity:"
+msgid "Quantity"
+msgstr "Hoeveelheid"
+
+msgctxt "field:stock.reporting.inventory.move,unit:"
+msgid "Unit"
+msgstr "Eenheid"
+
+msgctxt "field:stock.reporting.inventory.range.context,company:"
+msgid "Company"
+msgstr "Bedrijf"
+
+msgctxt "field:stock.reporting.inventory.range.context,from_date:"
+msgid "From Date"
+msgstr "Vanaf datum"
+
+msgctxt "field:stock.reporting.inventory.range.context,location:"
+msgid "Location"
+msgstr "Locatie"
+
+msgctxt "field:stock.reporting.inventory.range.context,to_date:"
+msgid "To Date"
+msgstr "Tot datum"
+
+msgctxt "field:stock.reporting.inventory.turnover,average_quantity:"
+msgid "Average Quantity"
+msgstr "Gemiddelde hoeveelheid"
+
+msgctxt "field:stock.reporting.inventory.turnover,company:"
+msgid "Company"
+msgstr "Bedrijf"
+
+msgctxt "field:stock.reporting.inventory.turnover,output_quantity:"
+msgid "Output Quantity"
+msgstr "Afgegeven hoeveelheid"
+
+msgctxt "field:stock.reporting.inventory.turnover,product:"
+msgid "Product"
+msgstr "Product"
+
+msgctxt "field:stock.reporting.inventory.turnover,turnover:"
+msgid "Turnover"
+msgstr "Opbrengst"
+
+msgctxt "field:stock.reporting.inventory.turnover,unit:"
+msgid "Unit"
+msgstr "Eenheid"
+
+msgctxt "field:stock.reporting.inventory.turnover.context,company:"
+msgid "Company"
+msgstr "Bedrijf"
+
+msgctxt "field:stock.reporting.inventory.turnover.context,from_date:"
+msgid "From Date"
+msgstr "Vanaf datum"
+
+msgctxt "field:stock.reporting.inventory.turnover.context,location:"
+msgid "Location"
+msgstr "Locatie"
+
+msgctxt "field:stock.reporting.inventory.turnover.context,product_type:"
+msgid "Product Type"
+msgstr "Product soort"
+
+msgctxt "field:stock.reporting.inventory.turnover.context,to_date:"
+msgid "To Date"
+msgstr "Tot datum"
+
 msgctxt "field:stock.reporting.margin.category,category:"
 msgid "Category"
 msgstr "Categorie"
@@ -913,6 +1085,10 @@ msgstr "Status"
 msgctxt "field:stock.shipment.internal,to_location:"
 msgid "To Location"
 msgstr "Naar locatie"
+
+msgctxt "field:stock.shipment.internal,to_warehouse:"
+msgid "To Warehouse"
+msgstr "Naar magazijn"
 
 msgctxt "field:stock.shipment.internal,transit_location:"
 msgid "Transit Location"
@@ -1590,6 +1766,10 @@ msgctxt "help:stock.shipment.internal,to_location:"
 msgid "Where the stock is moved to."
 msgstr "Waar de voorraad naartoe wordt verplaatst."
 
+msgctxt "help:stock.shipment.internal,to_warehouse:"
+msgid "Where the stock is sent to."
+msgstr "Waar de voorraad naartoe wordt verzonden."
+
 msgctxt "help:stock.shipment.internal,transit_location:"
 msgid ""
 "Where the stock is located while it is in transit between the warehouses."
@@ -1718,7 +1898,7 @@ msgstr "Kostprijs revisie"
 
 msgctxt "model:ir.action,name:act_product_moves"
 msgid "Stock Moves"
-msgstr "Voorraad beweging"
+msgstr "Voorraad bewegingen"
 
 msgctxt "model:ir.action,name:act_product_quantities_warehouse"
 msgid "Stock Quantities By Warehouse"
@@ -1731,6 +1911,22 @@ msgstr "Voorraad bewegingen per magazijn"
 msgctxt "model:ir.action,name:act_products_by_locations_relate"
 msgid "Products"
 msgstr "Producten"
+
+msgctxt "model:ir.action,name:act_reporting_inventory"
+msgid "Inventory"
+msgstr "Voorraad"
+
+msgctxt "model:ir.action,name:act_reporting_inventory_daily"
+msgid "Stock Inventory Daily"
+msgstr "Voorraad inventarisatie dagelijks"
+
+msgctxt "model:ir.action,name:act_reporting_inventory_move"
+msgid "Stock Inventory Moves"
+msgstr "Voorraad inventaris boekingen"
+
+msgctxt "model:ir.action,name:act_reporting_inventory_turnover"
+msgid "Inventory Turnover"
+msgstr "Voorraadomloopsnelheid"
 
 msgctxt "model:ir.action,name:act_reporting_margin_category"
 msgid "Margins per Category"
@@ -2045,11 +2241,6 @@ msgid "No existing line found for \"%(search)s\"."
 msgstr "Geen bestaande regel gevonden voor \"%(search)s\"."
 
 #, python-format
-msgctxt "model:ir.message,text:msg_inventory_date_in_the_future"
-msgid "The inventories \"%(inventories)s\" have dates in the future."
-msgstr "De voorraden \"%(inventories)s\" hebben datums in de toekomst."
-
-#, python-format
 msgctxt "model:ir.message,text:msg_inventory_delete_cancel"
 msgid "To delete inventory \"%(inventory)s\" you must cancel it."
 msgstr "Om de voorraad \"%(inventory)s\" te verwijderen, moet u deze annuleren."
@@ -2166,9 +2357,14 @@ msgctxt "model:ir.message,text:msg_move_quantity_positive"
 msgid "Move quantity must be positive."
 msgstr "De hoeveelheid van de voorraad beweging moet positief zijn."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_period_close_assigned_move"
-msgid "You cannot close periods with assigned moves in it."
-msgstr "U kunt geen periode sluiten met toegewezen voorraad bewegingen erin."
+msgid ""
+"To close the period \"%(period)s\", the assigned moves \"%(moves)s\" must be"
+" done or cancelled."
+msgstr ""
+"Om de periode \"%(period)s\" te kunnen sluiten moeten de toegewezen "
+"boekingen \"%(moves)s\" afgerond worden of geannuleerd."
 
 msgctxt "model:ir.message,text:msg_period_close_date"
 msgid "You cannot close periods with a date in the future or today."
@@ -2540,6 +2736,25 @@ msgctxt ""
 msgid "User in companies"
 msgstr "Gebruiker in bedrijven"
 
+msgctxt "model:ir.rule.group,name:rule_group_reporting_inventory_companies"
+msgid "User in companies"
+msgstr "Gebruiker in bedrijven"
+
+msgctxt ""
+"model:ir.rule.group,name:rule_group_reporting_inventory_daily_companies"
+msgid "User in companies"
+msgstr "Gebruiker in bedrijven"
+
+msgctxt ""
+"model:ir.rule.group,name:rule_group_reporting_inventory_move_companies"
+msgid "User in companies"
+msgstr "Gebruiker in bedrijven"
+
+msgctxt ""
+"model:ir.rule.group,name:rule_group_reporting_inventory_turnover_companies"
+msgid "User in companies"
+msgstr "Gebruiker in bedrijven"
+
 msgctxt ""
 "model:ir.rule.group,name:rule_group_reporting_margin_category_companies"
 msgid "User in companies"
@@ -2672,6 +2887,14 @@ msgstr "Periodes"
 msgctxt "model:ir.ui.menu,name:menu_reporting"
 msgid "Reporting"
 msgstr "Rapportage"
+
+msgctxt "model:ir.ui.menu,name:menu_reporting_inventory"
+msgid "Inventory"
+msgstr "Voorraad"
+
+msgctxt "model:ir.ui.menu,name:menu_reporting_inventory_turnover"
+msgid "Inventory Turnover"
+msgstr "Voorraadomloopsnelheid"
 
 msgctxt "model:ir.ui.menu,name:menu_reporting_margin"
 msgid "Margins"
@@ -2853,6 +3076,34 @@ msgctxt "model:stock.products_by_locations.context,string:"
 msgid "Stock Products By Locations Context"
 msgstr "Voorraad producten per locaties context"
 
+msgctxt "model:stock.reporting.inventory,string:"
+msgid "Stock Reporting Inventory"
+msgstr "Voorraad inventaris rapportage"
+
+msgctxt "model:stock.reporting.inventory.context,string:"
+msgid "Stock Reporting Inventory Context"
+msgstr "Voorraad inventaris rapportage context"
+
+msgctxt "model:stock.reporting.inventory.daily,string:"
+msgid "Stock Reporting Inventory Daily"
+msgstr "Voorraad inventaris rapportage dagelijks"
+
+msgctxt "model:stock.reporting.inventory.move,string:"
+msgid "Stock Reporting Inventory Move"
+msgstr "Voorraad inventaris rapportage voorraad beweging"
+
+msgctxt "model:stock.reporting.inventory.range.context,string:"
+msgid "Stock Reporting Inventory Range Context"
+msgstr "Voorraad inventaris rapportage bereik context"
+
+msgctxt "model:stock.reporting.inventory.turnover,string:"
+msgid "Stock Reporting Inventory Turnover"
+msgstr "Voorraad voorraadomloopsnelheid rapportage"
+
+msgctxt "model:stock.reporting.inventory.turnover.context,string:"
+msgid "Stock Reporting Inventory Turnover Context"
+msgstr "Voorraad voorraadomloopsnelheid rapportage context"
+
 msgctxt "model:stock.reporting.margin.category,string:"
 msgid "Stock Reporting Margin Category"
 msgstr "Voorraad marge rapportage per categorie"
@@ -2926,10 +3177,6 @@ msgid "From Location"
 msgstr "Van locatie"
 
 msgctxt "report:stock.shipment.in.restocking_list:"
-msgid "N°:"
-msgstr "N°:"
-
-msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "Planned Date:"
 msgstr "Geplande datum:"
 
@@ -2948,6 +3195,10 @@ msgstr "Referentie:"
 msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "Restocking List"
 msgstr "Voorraad aanvul lijst"
+
+msgctxt "report:stock.shipment.in.restocking_list:"
+msgid "Restocking List No:"
+msgstr "Voorraad aanvul lijst No:"
 
 msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "Supplier:"
@@ -2974,12 +3225,8 @@ msgid "From Location:"
 msgstr "Van locatie:"
 
 msgctxt "report:stock.shipment.internal.report:"
-msgid "Internal Shipment"
-msgstr "Interne zending"
-
-msgctxt "report:stock.shipment.internal.report:"
-msgid "N°:"
-msgstr "N°:"
+msgid "Internal Shipment No:"
+msgstr "Interne zending No:"
 
 msgctxt "report:stock.shipment.internal.report:"
 msgid "Planned Date:"
@@ -3026,16 +3273,16 @@ msgid "Delivery Note"
 msgstr "Afleverbon"
 
 msgctxt "report:stock.shipment.out.delivery_note:"
+msgid "Delivery Note No:"
+msgstr "Afleverbon No:"
+
+msgctxt "report:stock.shipment.out.delivery_note:"
 msgid "Draft"
 msgstr "Concept"
 
 msgctxt "report:stock.shipment.out.delivery_note:"
 msgid "Location:"
 msgstr "Locatie:"
-
-msgctxt "report:stock.shipment.out.delivery_note:"
-msgid "N°:"
-msgstr "N°:"
 
 msgctxt "report:stock.shipment.out.delivery_note:"
 msgid "Product"
@@ -3074,12 +3321,12 @@ msgid "From Location"
 msgstr "Van locatie"
 
 msgctxt "report:stock.shipment.out.picking_list:"
-msgid "N°:"
-msgstr "N°:"
-
-msgctxt "report:stock.shipment.out.picking_list:"
 msgid "Picking List"
 msgstr "Verzamel lijst"
+
+msgctxt "report:stock.shipment.out.picking_list:"
+msgid "Picking List No:"
+msgstr "Verzamel lijst No:"
 
 msgctxt "report:stock.shipment.out.picking_list:"
 msgid "Planned Date:"
@@ -3130,10 +3377,6 @@ msgid "From Location"
 msgstr "Van locatie"
 
 msgctxt "report:stock.shipment.out.return.restocking_list:"
-msgid "N°:"
-msgstr "N°:"
-
-msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "Planned Date:"
 msgstr "Geplande datum:"
 
@@ -3152,6 +3395,10 @@ msgstr "Referentie:"
 msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "Restocking List"
 msgstr "Voorraad aanvul lijst"
+
+msgctxt "report:stock.shipment.out.return.restocking_list:"
+msgid "Restocking List No:"
+msgstr "Voorraad aanvul lijst No:"
 
 msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "To Location"
@@ -3195,7 +3442,7 @@ msgstr "Geannuleerd"
 
 msgctxt "selection:stock.inventory,state:"
 msgid "Done"
-msgstr "Afgerond"
+msgstr "Gereed"
 
 msgctxt "selection:stock.inventory,state:"
 msgid "Draft"
@@ -3220,6 +3467,10 @@ msgstr "Voorraad verschil"
 msgctxt "selection:stock.location,type:"
 msgid "Production"
 msgstr "Productie"
+
+msgctxt "selection:stock.location,type:"
+msgid "Rental"
+msgstr "Verhuur"
 
 msgctxt "selection:stock.location,type:"
 msgid "Storage"
@@ -3247,7 +3498,7 @@ msgstr "Geannuleerd"
 
 msgctxt "selection:stock.move,state:"
 msgid "Done"
-msgstr "Afgerond"
+msgstr "Gereed"
 
 msgctxt "selection:stock.move,state:"
 msgid "Draft"
@@ -3281,6 +3532,54 @@ msgctxt "selection:stock.product_quantities_warehouse.move,product:"
 msgid "Variant"
 msgstr "Variant"
 
+msgctxt "selection:stock.reporting.inventory,product:"
+msgid "Product"
+msgstr "Product"
+
+msgctxt "selection:stock.reporting.inventory,product:"
+msgid "Variant"
+msgstr "Variant"
+
+msgctxt "selection:stock.reporting.inventory.context,product_type:"
+msgid "Product"
+msgstr "Product"
+
+msgctxt "selection:stock.reporting.inventory.context,product_type:"
+msgid "Variant"
+msgstr "Variant"
+
+msgctxt "selection:stock.reporting.inventory.daily,product:"
+msgid "Product"
+msgstr "Product"
+
+msgctxt "selection:stock.reporting.inventory.daily,product:"
+msgid "Variant"
+msgstr "Variant"
+
+msgctxt "selection:stock.reporting.inventory.move,product:"
+msgid "Product"
+msgstr "Product"
+
+msgctxt "selection:stock.reporting.inventory.move,product:"
+msgid "Variant"
+msgstr "Variant"
+
+msgctxt "selection:stock.reporting.inventory.turnover,product:"
+msgid "Product"
+msgstr "Product"
+
+msgctxt "selection:stock.reporting.inventory.turnover,product:"
+msgid "Variant"
+msgstr "Variant"
+
+msgctxt "selection:stock.reporting.inventory.turnover.context,product_type:"
+msgid "Product"
+msgstr "Product"
+
+msgctxt "selection:stock.reporting.inventory.turnover.context,product_type:"
+msgid "Variant"
+msgstr "Variant"
+
 msgctxt "selection:stock.reporting.margin.context,period:"
 msgid "Day"
 msgstr "Dag"
@@ -3299,7 +3598,7 @@ msgstr "Geannuleerd"
 
 msgctxt "selection:stock.shipment.in,state:"
 msgid "Done"
-msgstr "Afgerond"
+msgstr "Gereed"
 
 msgctxt "selection:stock.shipment.in,state:"
 msgid "Draft"
@@ -3319,7 +3618,7 @@ msgstr "Geannuleerd"
 
 msgctxt "selection:stock.shipment.in.return,state:"
 msgid "Done"
-msgstr "Afgerond"
+msgstr "Gereed"
 
 msgctxt "selection:stock.shipment.in.return,state:"
 msgid "Draft"
@@ -3339,7 +3638,7 @@ msgstr "Geannuleerd"
 
 msgctxt "selection:stock.shipment.internal,state:"
 msgid "Done"
-msgstr "Afgerond"
+msgstr "Gereed"
 
 msgctxt "selection:stock.shipment.internal,state:"
 msgid "Draft"
@@ -3371,7 +3670,7 @@ msgstr "Geannuleerd"
 
 msgctxt "selection:stock.shipment.out,state:"
 msgid "Done"
-msgstr "Afgerond"
+msgstr "Gereed"
 
 msgctxt "selection:stock.shipment.out,state:"
 msgid "Draft"
@@ -3399,7 +3698,7 @@ msgstr "Geannuleerd"
 
 msgctxt "selection:stock.shipment.out.return,state:"
 msgid "Done"
-msgstr "Afgerond"
+msgstr "Gereed"
 
 msgctxt "selection:stock.shipment.out.return,state:"
 msgid "Draft"
@@ -3464,6 +3763,10 @@ msgstr "Voorraad beweging"
 msgctxt "view:stock.move:"
 msgid "Other Info"
 msgstr "Overige informatie"
+
+msgctxt "view:stock.reporting.inventory.daily:"
+msgid "Date"
+msgstr "Datum"
 
 msgctxt "view:stock.reporting.margin.category.time_series:"
 msgid "%"

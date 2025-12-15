@@ -68,7 +68,6 @@ msgctxt "help:carrier.weight_price_list,weight_uom:"
 msgid "The Unit of Measure of the weight."
 msgstr "La unitat de mesura del pes."
 
-#, fuzzy
 msgctxt "model:carrier.weight_price_list,string:"
 msgid "Carrier Weight Price List"
 msgstr "Tarifa pes transportista"

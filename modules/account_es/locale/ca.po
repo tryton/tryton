@@ -10,12 +10,10 @@ msgctxt "field:account.payment.journal,es_sepa_request_advancement:"
 msgid "Request Advancement"
 msgstr "Sol·licitar avançament"
 
-#, fuzzy
 msgctxt "field:account.reporting.aeat.start,company:"
 msgid "Company"
 msgstr "Empresa"
 
-#, fuzzy
 msgctxt "field:account.reporting.aeat.start,end_period:"
 msgid "End Period"
 msgstr "Període final"
@@ -24,7 +22,6 @@ msgctxt "field:account.reporting.aeat.start,report:"
 msgid "Report"
 msgstr "Informe"
 
-#, fuzzy
 msgctxt "field:account.reporting.aeat.start,start_period:"
 msgid "Start Period"
 msgstr "Període inicial"
@@ -239,30 +236,28 @@ msgstr "Utilitza '99' per tercers no espanyols."
 
 msgctxt "model:account.reporting.aeat.start,string:"
 msgid "Account Reporting Aeat Start"
-msgstr ""
+msgstr "Inici informes AEAT"
 
 msgctxt "model:account.reporting.es_ec_operation_list,string:"
 msgid "Account Ec Sales List"
-msgstr ""
+msgstr "Resum de ventes intracomunitàries"
 
-#, fuzzy
 msgctxt "model:account.reporting.es_ec_operation_list.context,string:"
 msgid "Account Ec Sales List Context"
 msgstr "Context resum operacions terceres persones"
 
 msgctxt "model:account.reporting.vat_book_es,string:"
 msgid "Account Reporting Vat Book Es"
-msgstr ""
+msgstr "Llibre d'IVA espanyol"
 
 msgctxt "model:account.reporting.vat_book_es.context,string:"
 msgid "Account Reporting Vat Book Es Context"
-msgstr ""
+msgstr "Context Llibre d'IVA espanyol"
 
 msgctxt "model:account.reporting.vat_list_es,string:"
 msgid "Account Reporting Vat List Es"
-msgstr ""
+msgstr "Resum d'operacions tereceres persones"
 
-#, fuzzy
 msgctxt "model:account.reporting.vat_list_es.context,string:"
 msgid "Account Reporting Vat List Es Context"
 msgstr "Context resum operacions intracomunitàries"

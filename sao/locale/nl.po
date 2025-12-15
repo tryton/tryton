@@ -546,6 +546,9 @@ msgstr "Reset kolombreedtes"
 msgid "#ERROR"
 msgstr "#FOUT"
 
+msgid "Failed to copy text to clipboard: %1"
+msgstr "Tekst kopiëren naar klembord mislukt: %1"
+
 msgid "More"
 msgstr "Meer"
 
@@ -772,6 +775,9 @@ msgstr "Schakel geluid"
 msgid "Wizard"
 msgstr "Assistent"
 
+msgid "Toggle notification"
+msgstr "Meldingen in-/uitschakelen"
+
 msgid "Enter a message"
 msgstr "Voer in bericht in"
 
@@ -780,6 +786,12 @@ msgstr "Verzend het bericht"
 
 msgid "Make this an internal message"
 msgstr "Maak dit een intern bericht"
+
+msgid "All Notifications..."
+msgstr "Alle meldingen..."
+
+msgid "Preferences..."
+msgstr "Voorkeuren..."
 
 msgid "Translate view"
 msgstr "Vertaal weergave"

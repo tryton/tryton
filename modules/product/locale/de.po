@@ -95,6 +95,10 @@ msgctxt "field:product.list_price,list_price:"
 msgid "List Price"
 msgstr "Listenpreis"
 
+msgctxt "field:product.list_price,product:"
+msgid "Product"
+msgstr "Artikel"
+
 msgctxt "field:product.list_price,template:"
 msgid "Template"
 msgstr "Vorlage"
@@ -163,6 +167,10 @@ msgctxt "field:product.product,list_price_uom:"
 msgid "List Price"
 msgstr "Listenpreis"
 
+msgctxt "field:product.product,list_price_used:"
+msgid "List Price"
+msgstr "Listenpreis"
+
 msgctxt "field:product.product,list_prices:"
 msgid "List Prices"
 msgstr "Listenpreise"
@@ -170,6 +178,10 @@ msgstr "Listenpreise"
 msgctxt "field:product.product,name:"
 msgid "Name"
 msgstr "Name"
+
+msgctxt "field:product.product,position:"
+msgid "Position"
+msgstr "Position"
 
 msgctxt "field:product.product,prefix_code:"
 msgid "Prefix Code"
@@ -403,8 +415,21 @@ msgid "Other identifiers associated with the variant."
 msgstr "Andere zur Variante gehörende Identifikatoren."
 
 msgctxt "help:product.product,list_price:"
-msgid "The standard price the product is sold at."
-msgstr "Der Standardpreis zu dem der Artikel verkauft wird."
+msgid ""
+"The standard price the variant is sold at.\n"
+"Leave empty to use the list price of the product."
+msgstr ""
+"Der Standardpreis, zu dem die Variante verkauft wird.\n"
+"Leer lassen, um den Listenpreis des Produkts zu verwenden."
+
+msgctxt "help:product.product,list_price_used:"
+msgid "The standard price the variant is sold at."
+msgstr "Der Standardpreis zu dem die Variante verkauft wird."
+
+msgctxt "help:product.product,position:"
+msgid "The order of the variant in the list of variants on product."
+msgstr ""
+"Die Position der Variante in der Liste der Varianten der Artikelvorlage."
 
 msgctxt "help:product.product,replaced_by:"
 msgid "The product replacing this one."
@@ -569,6 +594,11 @@ msgid "The %(type)s \"%(code)s\" for product \"%(product)s\" is not valid."
 msgstr ""
 "Der Wert \"%(code)s\" für den Identifikator %(type)s von Artikel "
 "\"%(product)s\" ist ungültig."
+
+#, python-format
+msgctxt "model:ir.message,text:msg_product_change_template"
+msgid "You cannot change the template of the product \"%(product)s\"."
+msgstr "Sie können die Vorlage des Artikels \"%(product)s\" nicht ändern."
 
 msgctxt "model:ir.message,text:msg_product_code_unique"
 msgid "Code of active product must be unique."

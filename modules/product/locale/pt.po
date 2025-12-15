@@ -95,6 +95,11 @@ msgctxt "field:product.list_price,list_price:"
 msgid "List Price"
 msgstr "Preço de tabela"
 
+#, fuzzy
+msgctxt "field:product.list_price,product:"
+msgid "Product"
+msgstr "Produto"
+
 msgctxt "field:product.list_price,template:"
 msgid "Template"
 msgstr "Modelo"
@@ -163,6 +168,11 @@ msgctxt "field:product.product,list_price_uom:"
 msgid "List Price"
 msgstr "Preço de tabela"
 
+#, fuzzy
+msgctxt "field:product.product,list_price_used:"
+msgid "List Price"
+msgstr "Preço de tabela"
+
 msgctxt "field:product.product,list_prices:"
 msgid "List Prices"
 msgstr "Preços de tabela"
@@ -170,6 +180,11 @@ msgstr "Preços de tabela"
 msgctxt "field:product.product,name:"
 msgid "Name"
 msgstr "Nome"
+
+#, fuzzy
+msgctxt "field:product.product,position:"
+msgid "Position"
+msgstr "Descrição"
 
 msgctxt "field:product.product,prefix_code:"
 msgid "Prefix Code"
@@ -401,8 +416,19 @@ msgid "Other identifiers associated with the variant."
 msgstr "Outros identificadores associados à variante."
 
 msgctxt "help:product.product,list_price:"
-msgid "The standard price the product is sold at."
+msgid ""
+"The standard price the variant is sold at.\n"
+"Leave empty to use the list price of the product."
+msgstr ""
+
+#, fuzzy
+msgctxt "help:product.product,list_price_used:"
+msgid "The standard price the variant is sold at."
 msgstr "Preço padrão no qual o produto é vendido."
+
+msgctxt "help:product.product,position:"
+msgid "The order of the variant in the list of variants on product."
+msgstr ""
 
 msgctxt "help:product.product,replaced_by:"
 msgid "The product replacing this one."
@@ -561,6 +587,13 @@ msgstr "O código da categoria de produto deve ser único."
 msgctxt "model:ir.message,text:msg_invalid_code"
 msgid "The %(type)s \"%(code)s\" for product \"%(product)s\" is not valid."
 msgstr "O %(type)s \"%(code)s\" do produto \"%(product)s\" não é válido."
+
+#, fuzzy, python-format
+msgctxt "model:ir.message,text:msg_product_change_template"
+msgid "You cannot change the template of the product \"%(product)s\"."
+msgstr ""
+"Não é possível modificar a taxa de conversão da unidade de medida "
+"\"%(uom)s\"."
 
 msgctxt "model:ir.message,text:msg_product_code_unique"
 msgid "Code of active product must be unique."

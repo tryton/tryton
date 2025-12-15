@@ -35,7 +35,6 @@ msgctxt "field:account.payment,sepa_mandate_sequence_type:"
 msgid "Mandate Sequence Type"
 msgstr "Tipus de seqüència mandat"
 
-#, fuzzy
 msgctxt "field:account.payment,sepa_payable_bank_account_number:"
 msgid "Bank Account Number"
 msgstr "Número de compte bancari"
@@ -91,6 +90,10 @@ msgstr "Identificador Iniciador cobrament SEPA"
 msgctxt "field:account.payment.sepa.mandate,account_number:"
 msgid "Account Number"
 msgstr "Número de compte"
+
+msgctxt "field:account.payment.sepa.mandate,address:"
+msgid "Address"
+msgstr "Adreça"
 
 msgctxt "field:account.payment.sepa.mandate,company:"
 msgid "Company"
@@ -198,11 +201,11 @@ msgstr "Configuració seqüència mandat SEPA"
 
 msgctxt "model:account.payment.sepa.mandate,string:"
 msgid "Account Payment Sepa Mandate"
-msgstr ""
+msgstr "Mandats SEPA"
 
 msgctxt "model:account.payment.sepa.message,string:"
 msgid "Account Payment Sepa Message"
-msgstr ""
+msgstr "Missatge SEPA"
 
 msgctxt "model:ir.action,name:act_mandate_form"
 msgid "SEPA Mandates"
@@ -220,7 +223,6 @@ msgctxt "model:ir.action,name:report_mandate"
 msgid "Mandate"
 msgstr "Mandat"
 
-#, fuzzy
 msgctxt "model:ir.action,name:report_message"
 msgid "Message"
 msgstr "Missatge"
@@ -615,7 +617,6 @@ msgctxt "view:account.payment:"
 msgid "Return Reason"
 msgstr "Motiu retorn"
 
-#, fuzzy
 msgctxt "view:account.payment:"
 msgid "SEPA"
 msgstr "SEPA"

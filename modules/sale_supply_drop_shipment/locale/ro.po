@@ -81,7 +81,7 @@ msgstr ""
 
 msgctxt "field:stock.shipment.drop,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:stock.shipment.drop,contact_address:"
 msgid "Contact Address"

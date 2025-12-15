@@ -41,7 +41,6 @@ msgctxt "model:res.group,name:group_stock_location_movable"
 msgid "Stock Location Movable"
 msgstr "Ubicacions d'existències movibles"
 
-#, fuzzy
 msgctxt "model:stock.shipment.internal-location,string:"
 msgid "Stock Shipment Internal - Location"
 msgstr "Albarà intern - Ubicació"

@@ -36,7 +36,7 @@ msgstr "Timpi de livrare"
 
 msgctxt "field:party.party.customer_code,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:party.party.customer_code,customer_code:"
 msgid "Customer Code"
@@ -57,7 +57,7 @@ msgstr "Moneda furnizorului"
 
 msgctxt "field:party.party.supplier_lead_time,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 #, fuzzy
 msgctxt "field:party.party.supplier_lead_time,party:"
@@ -121,7 +121,7 @@ msgstr "Metoda de facturare"
 
 msgctxt "field:purchase.configuration.sequence,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:purchase.configuration.sequence,purchase_sequence:"
 msgid "Purchase Sequence"
@@ -166,7 +166,7 @@ msgstr "Suma"
 
 msgctxt "field:purchase.line,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:purchase.line,currency:"
 msgid "Currency"
@@ -325,7 +325,7 @@ msgstr "Cod"
 
 msgctxt "field:purchase.product_supplier,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:purchase.product_supplier,currency:"
 msgid "Currency"
@@ -385,7 +385,7 @@ msgstr "Comentariu"
 
 msgctxt "field:purchase.purchase,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:purchase.purchase,confirmed_by:"
 msgid "Confirmed By"
@@ -550,7 +550,7 @@ msgstr "Achiziție"
 
 msgctxt "field:purchase.reporting.context,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:purchase.reporting.context,from_date:"
 msgid "From Date"
@@ -580,6 +580,11 @@ msgctxt "field:purchase.reporting.product.time_series,product:"
 msgid "Product"
 msgstr "Produs"
 
+#, fuzzy
+msgctxt "field:purchase.reporting.product.time_series,product_currency:"
+msgid "Product - Currency"
+msgstr "Moneda furnizorului"
+
 msgctxt "field:purchase.reporting.product.time_series,product_supplier:"
 msgid "Supplier's Product"
 msgstr "Produsul Furnizorului"
@@ -591,6 +596,11 @@ msgstr "Furnizor"
 msgctxt "field:purchase.reporting.supplier.time_series,supplier:"
 msgid "Supplier"
 msgstr "Furnizor"
+
+#, fuzzy
+msgctxt "field:purchase.reporting.supplier.time_series,supplier_currency:"
+msgid "Supplier - Currency"
+msgstr "Moneda furnizorului"
 
 #, fuzzy
 msgctxt "field:stock.location,supplier_return_location:"
@@ -978,7 +988,7 @@ msgstr ""
 
 msgctxt "model:ir.message,text:msg_purchase_reporting_company"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "model:ir.message,text:msg_purchase_reporting_currency"
 msgid "Currency"
@@ -1019,10 +1029,11 @@ msgstr ""
 "Pentru a procesa achiziția \"%(purchase)s\" trebuie să setați o locație a "
 "furnizorului în partea \"%(party)s\"."
 
-#, python-format
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_warehouse_required_for_quotation"
 msgid ""
-"To get a quote for the purchase \"%(purchase)s\" you must enter a warehouse."
+"To get a quote for the purchase \"%(purchase)s\" you must enter a warehouse "
+"for the line \"%(line)s\"."
 msgstr ""
 "Pentru a obține o ofertă pentru achiziția „%(purchase)s” trebuie specificat "
 "un depozit."
@@ -1303,8 +1314,9 @@ msgctxt "report:purchase.purchase:"
 msgid "Draft Purchase Order"
 msgstr "Ciornă de comandă de achiziție"
 
+#, fuzzy
 msgctxt "report:purchase.purchase:"
-msgid "Purchase Order N°:"
+msgid "Purchase Order No:"
 msgstr "Nr. comandă de achiziție:"
 
 msgctxt "report:purchase.purchase:"
@@ -1316,7 +1328,7 @@ msgid "Reference:"
 msgstr "Referinţă:"
 
 msgctxt "report:purchase.purchase:"
-msgid "Request for Quotation N°:"
+msgid "Request for Quotation No:"
 msgstr ""
 
 msgctxt "report:purchase.purchase:"

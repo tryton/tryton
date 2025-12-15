@@ -56,7 +56,7 @@ msgstr ""
 
 msgctxt "model:carrier.credential.mygls,string:"
 msgid "Carrier Credential Mygls"
-msgstr ""
+msgstr "Credencials transportista MyGLS"
 
 msgctxt "model:ir.action,name:act_create_shipping_mygls_wizard"
 msgid "Create MyGLS Shipping for Packages"

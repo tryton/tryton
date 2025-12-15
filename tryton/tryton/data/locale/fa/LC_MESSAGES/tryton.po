@@ -5,6 +5,10 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+#, fuzzy
+msgid "Toggle notification"
+msgstr "انتخاب زنجیر"
+
 msgid "Make this an _internal message"
 msgstr ""
 
@@ -532,6 +536,10 @@ msgstr "گشودن همه ردیف ها"
 
 msgid "Close Tab"
 msgstr "بستن برگه"
+
+#, fuzzy
+msgid "All Notifications..."
+msgstr "اقدامات..."
 
 msgid "modularity, scalability and security"
 msgstr "مدولاربودن، مقیاس پذیری و امنیت"
@@ -1237,7 +1245,7 @@ msgstr "نمایش متن ساده"
 
 #, fuzzy, python-format
 msgid "Select a color for \"%s\""
-msgstr "یک رنگ برای "%s" انتخاب کنید"
+msgstr "یک رنگ برای \"%s\" انتخاب کنید"
 
 msgid "Add value"
 msgstr "افزودن مقدار"

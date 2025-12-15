@@ -62,6 +62,10 @@ msgctxt "field:purchase.line.component,line:"
 msgid "Line"
 msgstr "Ligne"
 
+msgctxt "field:purchase.line.component,line_state:"
+msgid "Line State"
+msgstr "État de la ligne"
+
 msgctxt "field:purchase.line.component,moves:"
 msgid "Moves"
 msgstr "Mouvements"
@@ -145,6 +149,10 @@ msgstr "Fixe"
 msgctxt "field:sale.line.component,line:"
 msgid "Line"
 msgstr "Ligne"
+
+msgctxt "field:sale.line.component,line_state:"
+msgid "Line State"
+msgstr "État de la ligne"
 
 msgctxt "field:sale.line.component,moves:"
 msgid "Moves"

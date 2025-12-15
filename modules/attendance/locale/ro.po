@@ -8,7 +8,7 @@ msgstr "La"
 
 msgctxt "field:attendance.line,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:attendance.line,date:"
 msgid "Date"
@@ -61,7 +61,7 @@ msgstr "Durata foii de pontaj"
 
 msgctxt "field:attendance.sheet.line,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:attendance.sheet.line,date:"
 msgid "Date"

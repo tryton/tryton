@@ -29,7 +29,7 @@ msgstr "Identificator Fiscal al Părţii"
 
 msgctxt "field:account.ec_sales_list.context,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:account.ec_sales_list.context,fiscalyear:"
 msgid "Fiscal Year"

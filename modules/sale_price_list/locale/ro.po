@@ -12,7 +12,7 @@ msgstr "Liste de prețuri de vânzare"
 
 msgctxt "field:party.party.sale_price_list,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:party.party.sale_price_list,party:"
 msgid "Party"
@@ -32,7 +32,7 @@ msgstr "Lista de prețuri de vânzare"
 
 msgctxt "field:sale.configuration.sale_price_list,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:sale.configuration.sale_price_list,sale_price_list:"
 msgid "Sale Price List"

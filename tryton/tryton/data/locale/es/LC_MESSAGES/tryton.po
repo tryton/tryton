@@ -10,6 +10,9 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgid "Toggle notification"
+msgstr "Conmutar notificación"
+
 msgid "Make this an _internal message"
 msgstr "Convierte esto en un mensaje interno"
 
@@ -525,6 +528,9 @@ msgstr "Expandir todas las filas"
 
 msgid "Close Tab"
 msgstr "Cerrar pestaña"
+
+msgid "All Notifications..."
+msgstr "Todas las notificaciones..."
 
 msgid "modularity, scalability and security"
 msgstr "modularidad, escalabilidad y seguridad"

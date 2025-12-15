@@ -8,7 +8,7 @@ msgstr ""
 
 msgctxt "field:account.configuration.sepa_mandate_sequence,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt ""
 "field:account.configuration.sepa_mandate_sequence,sepa_mandate_sequence:"
@@ -91,9 +91,13 @@ msgctxt "field:account.payment.sepa.mandate,account_number:"
 msgid "Account Number"
 msgstr ""
 
+msgctxt "field:account.payment.sepa.mandate,address:"
+msgid "Address"
+msgstr ""
+
 msgctxt "field:account.payment.sepa.mandate,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:account.payment.sepa.mandate,has_payments:"
 msgid "Has Payments"
@@ -141,7 +145,7 @@ msgstr ""
 
 msgctxt "field:account.payment.sepa.message,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:account.payment.sepa.message,filename:"
 msgid "Filename"

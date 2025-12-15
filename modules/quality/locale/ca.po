@@ -186,9 +186,9 @@ msgctxt "model:ir.action,name:act_quality_inspection_form_relate"
 msgid "Quality Inspections"
 msgstr "Inspeccions de qualitat"
 
-msgctxt "model:ir.action,name:wizard_production_inspect_done"
-msgid "Inspect Done"
-msgstr "Inspecció finalitzada"
+msgctxt "model:ir.action,name:wizard_production_inspect_do"
+msgid "Inspect Completion"
+msgstr "Completar inspecció"
 
 msgctxt "model:ir.action,name:wizard_production_inspect_run"
 msgid "Inspect Run"
@@ -261,6 +261,10 @@ msgctxt ""
 "model:ir.action.act_window.domain,name:act_quality_inspection_form_domain_processed"
 msgid "Processed"
 msgstr "Processat"
+
+msgctxt "model:ir.message,text:msg_control_point_unique"
+msgid "The names of control points must be unique."
+msgstr "Els noms dels punts de control han de ser únics."
 
 #, python-format
 msgctxt "model:ir.message,text:msg_inspection_delete_non_pending"
@@ -368,37 +372,30 @@ msgctxt "model:ir.ui.menu,name:menu_quality_inspection_form"
 msgid "Inspections"
 msgstr "Inspecions"
 
-#, fuzzy
 msgctxt "model:quality.alert,string:"
 msgid "Quality Alert"
 msgstr "Alerta de qualitat"
 
-#, fuzzy
 msgctxt "model:quality.configuration,string:"
 msgid "Quality Configuration"
 msgstr "Configuració qualitat"
 
-#, fuzzy
 msgctxt "model:quality.configuration.sequence,string:"
 msgid "Quality Configuration Sequence"
 msgstr "Configuració Seqüencies qualitat"
 
-#, fuzzy
 msgctxt "model:quality.control,string:"
 msgid "Quality Control"
 msgstr "Control de qualitat"
 
-#, fuzzy
 msgctxt "model:quality.control.point,string:"
 msgid "Quality Control Point"
 msgstr "Punt de control de qualitat"
 
-#, fuzzy
 msgctxt "model:quality.inspect.store,string:"
 msgid "Quality Inspect Store"
-msgstr "Inspecció de qualitat"
+msgstr "Enmagatzematge inspecció de qualitat"
 
-#, fuzzy
 msgctxt "model:quality.inspection,string:"
 msgid "Quality Inspection"
 msgstr "Inspecció de qualitat"

@@ -10,6 +10,11 @@ msgctxt "field:res.role,name:"
 msgid "Name"
 msgstr "名称"
 
+#, fuzzy
+msgctxt "field:res.role,users:"
+msgid "Users"
+msgstr "用户"
+
 msgctxt "field:res.role-res.group,group:"
 msgid "Group"
 msgstr "组"
@@ -64,6 +69,14 @@ msgstr "用户角色"
 msgctxt "selection:ir.cron,method:"
 msgid "Synchronize Users Roles"
 msgstr "同步用户角色"
+
+msgctxt "view:res.role:"
+msgid "Access Permissions"
+msgstr ""
+
+msgctxt "view:res.role:"
+msgid "Members"
+msgstr ""
 
 msgctxt "view:res.user.role:"
 msgid "Time"

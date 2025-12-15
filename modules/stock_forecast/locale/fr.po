@@ -64,7 +64,7 @@ msgstr "Prévision"
 
 msgctxt "field:stock.forecast.line,forecast_state:"
 msgid "Forecast State"
-msgstr "État de la prévision"
+msgstr "État de prévision"
 
 msgctxt "field:stock.forecast.line,minimal_quantity:"
 msgid "Minimal Qty"

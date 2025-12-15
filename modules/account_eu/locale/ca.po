@@ -46,12 +46,10 @@ msgctxt "field:account.tax.template,ec_sales_list_code:"
 msgid "EC Sales List Code"
 msgstr "Codi llistat de ventes intracomunitaries"
 
-#, fuzzy
 msgctxt "model:account.ec_sales_list,string:"
 msgid "Account Ec Sales List"
 msgstr "Resum ventes intracomunitàries"
 
-#, fuzzy
 msgctxt "model:account.ec_sales_list.context,string:"
 msgid "Account Ec Sales List Context"
 msgstr "Context resum ventes intracomunitàries"

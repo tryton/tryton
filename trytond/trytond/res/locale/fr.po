@@ -34,6 +34,46 @@ msgctxt "field:res.group,users:"
 msgid "Users"
 msgstr "Utilisateurs"
 
+msgctxt "field:res.notification,action:"
+msgid "Action"
+msgstr "Action"
+
+msgctxt "field:res.notification,action_value:"
+msgid "Action Value"
+msgstr "Valeur d'action"
+
+msgctxt "field:res.notification,description:"
+msgid "Description"
+msgstr "Description"
+
+msgctxt "field:res.notification,icon:"
+msgid "Icon"
+msgstr "Icône"
+
+msgctxt "field:res.notification,label:"
+msgid "Label"
+msgstr "Label"
+
+msgctxt "field:res.notification,model:"
+msgid "Model"
+msgstr "Modèle"
+
+msgctxt "field:res.notification,model_ref:"
+msgid "Model"
+msgstr "Modèle"
+
+msgctxt "field:res.notification,records:"
+msgid "Records"
+msgstr "Enregistrements"
+
+msgctxt "field:res.notification,unread:"
+msgid "Unread"
+msgstr "Non-lu"
+
+msgctxt "field:res.notification,user:"
+msgid "User"
+msgstr "Utilisateur"
+
 msgctxt "field:res.user,actions:"
 msgid "Actions"
 msgstr "Actions"
@@ -73,6 +113,10 @@ msgstr "Menu"
 msgctxt "field:res.user,name:"
 msgid "Name"
 msgstr "Nom"
+
+msgctxt "field:res.user,notifications:"
+msgid "Notifications"
+msgstr "Notifications"
 
 msgctxt "field:res.user,password:"
 msgid "Password"
@@ -186,9 +230,17 @@ msgctxt "help:res.user,actions:"
 msgid "Actions that will be run at login."
 msgstr "Actions à exécuter lors de la connexion."
 
+msgctxt "help:res.user,notifications:"
+msgid "Notifications to subscribe to."
+msgstr "Notifications auxquelles s'abonner."
+
 msgctxt "model:ir.action,name:act_group_form"
 msgid "Groups"
 msgstr "Groupes"
+
+msgctxt "model:ir.action,name:act_notification"
+msgid "Notifications"
+msgstr "Notifications"
 
 msgctxt "model:ir.action,name:act_user_config"
 msgid "Configure Users"
@@ -264,6 +316,14 @@ msgctxt "model:ir.model.button,string:user_reset_password_button"
 msgid "Reset Password"
 msgstr "Réinitialiser le mot de passe"
 
+msgctxt "model:ir.rule.group,name:rule_group_notification"
+msgid "Own notification"
+msgstr "Notification personnelle"
+
+msgctxt "model:ir.rule.group,name:rule_group_notification_admin"
+msgid "Any notification"
+msgstr "Toute notification"
+
 msgctxt "model:ir.rule.group,name:rule_group_user_application"
 msgid "Own user application"
 msgstr "Application utilisateur propre"
@@ -280,6 +340,10 @@ msgctxt "model:ir.ui.menu,name:menu_group_form"
 msgid "Groups"
 msgstr "Groupes"
 
+msgctxt "model:ir.ui.menu,name:menu_notification_form"
+msgid "Notifications"
+msgstr "Notifications"
+
 msgctxt "model:ir.ui.menu,name:menu_res"
 msgid "Users"
 msgstr "Utilisateurs"
@@ -291,6 +355,10 @@ msgstr "Utilisateurs"
 msgctxt "model:res.group,string:"
 msgid "Group"
 msgstr "Groupe"
+
+msgctxt "model:res.notification,string:"
+msgid "Notification"
+msgstr "Notification"
 
 msgctxt "model:res.user,string:"
 msgid "User"
@@ -386,7 +454,7 @@ msgstr "Vous pouvez maintenant ajouter des utilisateur au système."
 
 msgctxt "view:res.user:"
 msgid "Access Permissions"
-msgstr "Permission d'accès"
+msgstr "Permissions d'accès"
 
 msgctxt "view:res.user:"
 msgid "Actions"

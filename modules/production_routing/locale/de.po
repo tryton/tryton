@@ -10,6 +10,10 @@ msgctxt "field:production,routing:"
 msgid "Routing"
 msgstr "Fertigungsplan"
 
+msgctxt "field:production.bom,routings:"
+msgid "Routings"
+msgstr "Fertigungspläne"
+
 msgctxt "field:production.lead_time,routing:"
 msgid "Routing"
 msgstr "Fertigungsplan"

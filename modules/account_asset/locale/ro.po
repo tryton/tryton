@@ -20,7 +20,7 @@ msgstr "Cometariu"
 
 msgctxt "field:account.asset,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:account.asset,currency:"
 msgid "Currency"
@@ -245,7 +245,7 @@ msgstr "Zi a Lunii"
 
 msgctxt "field:account.configuration.asset_date,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:account.configuration.asset_frequency,asset_frequency:"
 msgid "Asset Depreciation Frequency"
@@ -253,7 +253,7 @@ msgstr "Frecventa Amortizarii Activelor"
 
 msgctxt "field:account.configuration.asset_frequency,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:account.configuration.asset_sequence,asset_sequence:"
 msgid "Asset Reference Sequence"
@@ -261,7 +261,7 @@ msgstr "Secventa de Referinta a Activelor"
 
 msgctxt "field:account.configuration.asset_sequence,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:account.invoice.line,asset:"
 msgid "Asset"
@@ -444,6 +444,24 @@ msgctxt "model:ir.action.act_window.domain,name:act_asset_form_domain_running"
 msgid "Running"
 msgstr ""
 
+#, fuzzy, python-format
+msgctxt "model:ir.message,text:msg_asset_close_invoice_line_missing_account"
+msgid ""
+"To close asset \"%(asset)s\" you must configure a replacement account for "
+"\"%(account)s\"."
+msgstr ""
+"Pentru a factura achiziția \"%(purchase)s\", trebuie să setați un activ de "
+"cont pe produsul \"%(product)s\"."
+
+#, fuzzy, python-format
+msgctxt "model:ir.message,text:msg_asset_close_product_account_asset"
+msgid ""
+"To close asset \"%(asset)s\" you must configure an account asset for the "
+"product \"%(product)s\"."
+msgstr ""
+"Pentru a factura achiziția \"%(purchase)s\", trebuie să setați un activ de "
+"cont pe produsul \"%(product)s\"."
+
 #, python-format
 msgctxt "model:ir.message,text:msg_asset_delete_draft"
 msgid "You cannot delete asset \"%(asset)s\" because it is not in \"draft\" state."
@@ -596,7 +614,7 @@ msgstr "Valoare de Inchidere"
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "Company:"
-msgstr "Companie:"
+msgstr "Societate:"
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "Fixed"

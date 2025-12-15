@@ -159,7 +159,6 @@ msgctxt "model:ir.model.button,string:work_invoice_button"
 msgid "Invoice"
 msgstr "Factura"
 
-#, fuzzy
 msgctxt "model:project.work.invoiced_progress,string:"
 msgid "Project Work Invoiced Progress"
 msgstr "Progressos del treball facturat"

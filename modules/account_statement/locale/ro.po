@@ -2,13 +2,18 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+#, fuzzy
+msgctxt "field:account.move,statement_lines:"
+msgid "Statement Lines"
+msgstr "Rânduri Extras de cont"
+
 msgctxt "field:account.statement,balance:"
 msgid "Balance"
 msgstr "Sold"
 
 msgctxt "field:account.statement,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:account.statement,currency:"
 msgid "Currency"
@@ -72,7 +77,7 @@ msgstr "Validare"
 
 msgctxt "field:account.statement.import.start,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:account.statement.import.start,file_:"
 msgid "File"
@@ -92,11 +97,11 @@ msgstr "Cont Bancar"
 
 msgctxt "field:account.statement.journal,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:account.statement.journal,company_party:"
 msgid "Company Party"
-msgstr "Partea Companiei"
+msgstr "Partea Societații"
 
 msgctxt "field:account.statement.journal,currency:"
 msgid "Currency"
@@ -138,11 +143,11 @@ msgstr "Sumă Valută Secundara"
 
 msgctxt "field:account.statement.line,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:account.statement.line,company_currency:"
 msgid "Company Currency"
-msgstr "Valuta Companiei"
+msgstr "Valuta Societații"
 
 msgctxt "field:account.statement.line,currency:"
 msgid "Currency"
@@ -246,11 +251,11 @@ msgstr "Suma Valută Secundara"
 
 msgctxt "field:account.statement.origin,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:account.statement.origin,company_currency:"
 msgid "Company Currency"
-msgstr "Valuta Companiei"
+msgstr "Valuta Societații"
 
 msgctxt "field:account.statement.origin,currency:"
 msgid "Currency"

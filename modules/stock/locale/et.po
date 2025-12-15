@@ -664,6 +664,215 @@ msgctxt "field:stock.products_by_locations.context,stock_date_end:"
 msgid "At Date"
 msgstr "Kuupäeval"
 
+#, fuzzy
+msgctxt "field:stock.reporting.inventory,company:"
+msgid "Company"
+msgstr "Ettevõte"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory,input_quantity:"
+msgid "Input Quantity"
+msgstr "Nullkogus"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory,output_quantity:"
+msgid "Output Quantity"
+msgstr "Nullkogus"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory,product:"
+msgid "Product"
+msgstr "Toode"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory,quantity:"
+msgid "Quantity"
+msgstr "Kogus"
+
+msgctxt "field:stock.reporting.inventory,unit:"
+msgid "Unit"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.context,company:"
+msgid "Company"
+msgstr "Ettevõte"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.context,date:"
+msgid "Date"
+msgstr "Kuupäev"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.context,location:"
+msgid "Location"
+msgstr "Asukoht"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.context,product_type:"
+msgid "Product Type"
+msgstr "Toode"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.daily,company:"
+msgid "Company"
+msgstr "Ettevõte"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.daily,from_date:"
+msgid "From Date"
+msgstr "Asukohast"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.daily,input_quantity:"
+msgid "Input Quantity"
+msgstr "Nullkogus"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.daily,output_quantity:"
+msgid "Output Quantity"
+msgstr "Nullkogus"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.daily,product:"
+msgid "Product"
+msgstr "Toode"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.daily,quantity:"
+msgid "Quantity"
+msgstr "Kogus"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.daily,to_date:"
+msgid "To Date"
+msgstr "Kuupäev"
+
+msgctxt "field:stock.reporting.inventory.daily,unit:"
+msgid "Unit"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.move,company:"
+msgid "Company"
+msgstr "Ettevõte"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.move,date:"
+msgid "Date"
+msgstr "Kuupäev"
+
+msgctxt "field:stock.reporting.inventory.move,document:"
+msgid "Document"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.move,input_quantity:"
+msgid "Input Quantity"
+msgstr "Nullkogus"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.move,move:"
+msgid "Move"
+msgstr "Liikumised"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.move,origin:"
+msgid "Origin"
+msgstr "Päritolu"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.move,output_quantity:"
+msgid "Output Quantity"
+msgstr "Nullkogus"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.move,product:"
+msgid "Product"
+msgstr "Toode"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.move,quantity:"
+msgid "Quantity"
+msgstr "Kogus"
+
+msgctxt "field:stock.reporting.inventory.move,unit:"
+msgid "Unit"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.range.context,company:"
+msgid "Company"
+msgstr "Ettevõte"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.range.context,from_date:"
+msgid "From Date"
+msgstr "Asukohast"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.range.context,location:"
+msgid "Location"
+msgstr "Asukoht"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.range.context,to_date:"
+msgid "To Date"
+msgstr "Kuupäev"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.turnover,average_quantity:"
+msgid "Average Quantity"
+msgstr "Lisatud kogus"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.turnover,company:"
+msgid "Company"
+msgstr "Ettevõte"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.turnover,output_quantity:"
+msgid "Output Quantity"
+msgstr "Nullkogus"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.turnover,product:"
+msgid "Product"
+msgstr "Toode"
+
+msgctxt "field:stock.reporting.inventory.turnover,turnover:"
+msgid "Turnover"
+msgstr ""
+
+msgctxt "field:stock.reporting.inventory.turnover,unit:"
+msgid "Unit"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.turnover.context,company:"
+msgid "Company"
+msgstr "Ettevõte"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.turnover.context,from_date:"
+msgid "From Date"
+msgstr "Asukohast"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.turnover.context,location:"
+msgid "Location"
+msgstr "Asukoht"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.turnover.context,product_type:"
+msgid "Product Type"
+msgstr "Toode"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.turnover.context,to_date:"
+msgid "To Date"
+msgstr "Kuupäev"
+
 msgctxt "field:stock.reporting.margin.category,category:"
 msgid "Category"
 msgstr ""
@@ -973,6 +1182,11 @@ msgstr "Olek"
 msgctxt "field:stock.shipment.internal,to_location:"
 msgid "To Location"
 msgstr "Asukohta"
+
+#, fuzzy
+msgctxt "field:stock.shipment.internal,to_warehouse:"
+msgid "To Warehouse"
+msgstr "Ladu"
 
 msgctxt "field:stock.shipment.internal,transit_location:"
 msgid "Transit Location"
@@ -1634,6 +1848,11 @@ msgctxt "help:stock.shipment.internal,to_location:"
 msgid "Where the stock is moved to."
 msgstr "Kuhu kaup liigutatakse"
 
+#, fuzzy
+msgctxt "help:stock.shipment.internal,to_warehouse:"
+msgid "Where the stock is sent to."
+msgstr "Kuhu kaup saadetakse"
+
 msgctxt "help:stock.shipment.internal,transit_location:"
 msgid ""
 "Where the stock is located while it is in transit between the warehouses."
@@ -1787,6 +2006,26 @@ msgstr "Toote kogused ladude lõikes"
 msgctxt "model:ir.action,name:act_products_by_locations_relate"
 msgid "Products"
 msgstr "Tooted"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_reporting_inventory"
+msgid "Inventory"
+msgstr "Kaup"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_reporting_inventory_daily"
+msgid "Stock Inventory Daily"
+msgstr "Lao inventuur"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_reporting_inventory_move"
+msgid "Stock Inventory Moves"
+msgstr "Varude liikumised"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_reporting_inventory_turnover"
+msgid "Inventory Turnover"
+msgstr "Varude liikumised"
 
 msgctxt "model:ir.action,name:act_reporting_margin_category"
 msgid "Margins per Category"
@@ -2112,11 +2351,6 @@ msgid "No existing line found for \"%(search)s\"."
 msgstr ""
 
 #, python-format
-msgctxt "model:ir.message,text:msg_inventory_date_in_the_future"
-msgid "The inventories \"%(inventories)s\" have dates in the future."
-msgstr ""
-
-#, python-format
 msgctxt "model:ir.message,text:msg_inventory_delete_cancel"
 msgid "To delete inventory \"%(inventory)s\" you must cancel it."
 msgstr ""
@@ -2212,9 +2446,12 @@ msgctxt "model:ir.message,text:msg_move_quantity_positive"
 msgid "Move quantity must be positive."
 msgstr "Kande kogus peab olema positiivne"
 
+#, python-format
 msgctxt "model:ir.message,text:msg_period_close_assigned_move"
-msgid "You cannot close periods with assigned moves in it."
-msgstr "Kannetega seotud perioode ei saa sulgeda"
+msgid ""
+"To close the period \"%(period)s\", the assigned moves \"%(moves)s\" must be"
+" done or cancelled."
+msgstr ""
 
 msgctxt "model:ir.message,text:msg_period_close_date"
 msgid "You cannot close periods with a date in the future or today."
@@ -2605,6 +2842,29 @@ msgid "User in companies"
 msgstr "Kasutaja ettevõttes"
 
 #, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_reporting_inventory_companies"
+msgid "User in companies"
+msgstr "Kasutaja ettevõttes"
+
+#, fuzzy
+msgctxt ""
+"model:ir.rule.group,name:rule_group_reporting_inventory_daily_companies"
+msgid "User in companies"
+msgstr "Kasutaja ettevõttes"
+
+#, fuzzy
+msgctxt ""
+"model:ir.rule.group,name:rule_group_reporting_inventory_move_companies"
+msgid "User in companies"
+msgstr "Kasutaja ettevõttes"
+
+#, fuzzy
+msgctxt ""
+"model:ir.rule.group,name:rule_group_reporting_inventory_turnover_companies"
+msgid "User in companies"
+msgstr "Kasutaja ettevõttes"
+
+#, fuzzy
 msgctxt ""
 "model:ir.rule.group,name:rule_group_reporting_margin_category_companies"
 msgid "User in companies"
@@ -2748,6 +3008,16 @@ msgstr "Perioodid"
 msgctxt "model:ir.ui.menu,name:menu_reporting"
 msgid "Reporting"
 msgstr "Aruandlus"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_reporting_inventory"
+msgid "Inventory"
+msgstr "Kaup"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_reporting_inventory_turnover"
+msgid "Inventory Turnover"
+msgstr "Varude liikumised"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_reporting_margin"
@@ -2959,6 +3229,41 @@ msgctxt "model:stock.products_by_locations.context,string:"
 msgid "Stock Products By Locations Context"
 msgstr "Kaubad asukohtade järgi"
 
+#, fuzzy
+msgctxt "model:stock.reporting.inventory,string:"
+msgid "Stock Reporting Inventory"
+msgstr "Lao inventuur"
+
+#, fuzzy
+msgctxt "model:stock.reporting.inventory.context,string:"
+msgid "Stock Reporting Inventory Context"
+msgstr "Lao inventuuri rida"
+
+#, fuzzy
+msgctxt "model:stock.reporting.inventory.daily,string:"
+msgid "Stock Reporting Inventory Daily"
+msgstr "Lao inventuuri rida"
+
+#, fuzzy
+msgctxt "model:stock.reporting.inventory.move,string:"
+msgid "Stock Reporting Inventory Move"
+msgstr "Lao inventuuri rida"
+
+#, fuzzy
+msgctxt "model:stock.reporting.inventory.range.context,string:"
+msgid "Stock Reporting Inventory Range Context"
+msgstr "Lao inventuuri rida"
+
+#, fuzzy
+msgctxt "model:stock.reporting.inventory.turnover,string:"
+msgid "Stock Reporting Inventory Turnover"
+msgstr "Lao inventuuri rida"
+
+#, fuzzy
+msgctxt "model:stock.reporting.inventory.turnover.context,string:"
+msgid "Stock Reporting Inventory Turnover Context"
+msgstr "Lao inventuuri rida"
+
 msgctxt "model:stock.reporting.margin.category,string:"
 msgid "Stock Reporting Margin Category"
 msgstr ""
@@ -3038,10 +3343,6 @@ msgid "From Location"
 msgstr "Asukohast"
 
 msgctxt "report:stock.shipment.in.restocking_list:"
-msgid "N°:"
-msgstr ""
-
-msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "Planned Date:"
 msgstr "Planeeritud kuupäev:"
 
@@ -3059,6 +3360,11 @@ msgstr "Viide:"
 
 msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "Restocking List"
+msgstr "Ümberladustamise nimekiri"
+
+#, fuzzy
+msgctxt "report:stock.shipment.in.restocking_list:"
+msgid "Restocking List No:"
 msgstr "Ümberladustamise nimekiri"
 
 msgctxt "report:stock.shipment.in.restocking_list:"
@@ -3085,13 +3391,10 @@ msgctxt "report:stock.shipment.internal.report:"
 msgid "From Location:"
 msgstr "Asukohast"
 
+#, fuzzy
 msgctxt "report:stock.shipment.internal.report:"
-msgid "Internal Shipment"
+msgid "Internal Shipment No:"
 msgstr "Sisemine lähetus"
-
-msgctxt "report:stock.shipment.internal.report:"
-msgid "N°:"
-msgstr ""
 
 msgctxt "report:stock.shipment.internal.report:"
 msgid "Planned Date:"
@@ -3140,6 +3443,11 @@ msgstr "Saateleht"
 
 #, fuzzy
 msgctxt "report:stock.shipment.out.delivery_note:"
+msgid "Delivery Note No:"
+msgstr "Saateleht"
+
+#, fuzzy
+msgctxt "report:stock.shipment.out.delivery_note:"
 msgid "Draft"
 msgstr "Mustand"
 
@@ -3147,10 +3455,6 @@ msgstr "Mustand"
 msgctxt "report:stock.shipment.out.delivery_note:"
 msgid "Location:"
 msgstr "Asukoht"
-
-msgctxt "report:stock.shipment.out.delivery_note:"
-msgid "N°:"
-msgstr ""
 
 msgctxt "report:stock.shipment.out.delivery_note:"
 msgid "Product"
@@ -3192,11 +3496,12 @@ msgid "From Location"
 msgstr "Asukohast"
 
 msgctxt "report:stock.shipment.out.picking_list:"
-msgid "N°:"
-msgstr ""
-
-msgctxt "report:stock.shipment.out.picking_list:"
 msgid "Picking List"
+msgstr "Noppeleht"
+
+#, fuzzy
+msgctxt "report:stock.shipment.out.picking_list:"
+msgid "Picking List No:"
 msgstr "Noppeleht"
 
 msgctxt "report:stock.shipment.out.picking_list:"
@@ -3250,10 +3555,6 @@ msgid "From Location"
 msgstr "Asukohast"
 
 msgctxt "report:stock.shipment.out.return.restocking_list:"
-msgid "N°:"
-msgstr ""
-
-msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "Planned Date:"
 msgstr "Planeeritud kuupäev:"
 
@@ -3271,6 +3572,11 @@ msgstr "Viide:"
 
 msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "Restocking List"
+msgstr "Ümberladustamise nimekiri"
+
+#, fuzzy
+msgctxt "report:stock.shipment.out.return.restocking_list:"
+msgid "Restocking List No:"
 msgstr "Ümberladustamise nimekiri"
 
 msgctxt "report:stock.shipment.out.return.restocking_list:"
@@ -3348,6 +3654,10 @@ msgid "Production"
 msgstr "Tootmine"
 
 msgctxt "selection:stock.location,type:"
+msgid "Rental"
+msgstr ""
+
+msgctxt "selection:stock.location,type:"
 msgid "Storage"
 msgstr "Hoiuala"
 
@@ -3409,6 +3719,66 @@ msgstr "Toode"
 msgctxt "selection:stock.product_quantities_warehouse.move,product:"
 msgid "Variant"
 msgstr ""
+
+#, fuzzy
+msgctxt "selection:stock.reporting.inventory,product:"
+msgid "Product"
+msgstr "Toode"
+
+#, fuzzy
+msgctxt "selection:stock.reporting.inventory,product:"
+msgid "Variant"
+msgstr "Variant"
+
+#, fuzzy
+msgctxt "selection:stock.reporting.inventory.context,product_type:"
+msgid "Product"
+msgstr "Toode"
+
+#, fuzzy
+msgctxt "selection:stock.reporting.inventory.context,product_type:"
+msgid "Variant"
+msgstr "Variant"
+
+#, fuzzy
+msgctxt "selection:stock.reporting.inventory.daily,product:"
+msgid "Product"
+msgstr "Toode"
+
+#, fuzzy
+msgctxt "selection:stock.reporting.inventory.daily,product:"
+msgid "Variant"
+msgstr "Variant"
+
+#, fuzzy
+msgctxt "selection:stock.reporting.inventory.move,product:"
+msgid "Product"
+msgstr "Toode"
+
+#, fuzzy
+msgctxt "selection:stock.reporting.inventory.move,product:"
+msgid "Variant"
+msgstr "Variant"
+
+#, fuzzy
+msgctxt "selection:stock.reporting.inventory.turnover,product:"
+msgid "Product"
+msgstr "Toode"
+
+#, fuzzy
+msgctxt "selection:stock.reporting.inventory.turnover,product:"
+msgid "Variant"
+msgstr "Variant"
+
+#, fuzzy
+msgctxt "selection:stock.reporting.inventory.turnover.context,product_type:"
+msgid "Product"
+msgstr "Toode"
+
+#, fuzzy
+msgctxt "selection:stock.reporting.inventory.turnover.context,product_type:"
+msgid "Variant"
+msgstr "Variant"
 
 msgctxt "selection:stock.reporting.margin.context,period:"
 msgid "Day"
@@ -3610,6 +3980,11 @@ msgstr "Liikumised"
 msgctxt "view:stock.move:"
 msgid "Other Info"
 msgstr "Täiendav info"
+
+#, fuzzy
+msgctxt "view:stock.reporting.inventory.daily:"
+msgid "Date"
+msgstr "Kuupäev"
 
 msgctxt "view:stock.reporting.margin.category.time_series:"
 msgid "%"

@@ -187,9 +187,9 @@ msgctxt "model:ir.action,name:act_quality_inspection_form_relate"
 msgid "Quality Inspections"
 msgstr "Qualitätsprüfungen"
 
-msgctxt "model:ir.action,name:wizard_production_inspect_done"
-msgid "Inspect Done"
-msgstr "Qualitätsprüfung für Status \"Erledigt\" durchführen"
+msgctxt "model:ir.action,name:wizard_production_inspect_do"
+msgid "Inspect Completion"
+msgstr "Abschlussprüfung"
 
 msgctxt "model:ir.action,name:wizard_production_inspect_run"
 msgid "Inspect Run"
@@ -262,6 +262,10 @@ msgctxt ""
 "model:ir.action.act_window.domain,name:act_quality_inspection_form_domain_processed"
 msgid "Processed"
 msgstr "Ausgeführt"
+
+msgctxt "model:ir.message,text:msg_control_point_unique"
+msgid "The names of control points must be unique."
+msgstr "Der Name von Kontrollparametern darf nur einmal vergeben werden."
 
 #, python-format
 msgctxt "model:ir.message,text:msg_inspection_delete_non_pending"

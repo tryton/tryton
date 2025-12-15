@@ -95,6 +95,10 @@ msgctxt "field:product.list_price,list_price:"
 msgid "List Price"
 msgstr "Preu de venda"
 
+msgctxt "field:product.list_price,product:"
+msgid "Product"
+msgstr "Producte"
+
 msgctxt "field:product.list_price,template:"
 msgid "Template"
 msgstr "Plantilla"
@@ -163,6 +167,10 @@ msgctxt "field:product.product,list_price_uom:"
 msgid "List Price"
 msgstr "Preu de venda"
 
+msgctxt "field:product.product,list_price_used:"
+msgid "List Price"
+msgstr "Preu de venda"
+
 msgctxt "field:product.product,list_prices:"
 msgid "List Prices"
 msgstr "Preus de venda"
@@ -170,6 +178,10 @@ msgstr "Preus de venda"
 msgctxt "field:product.product,name:"
 msgid "Name"
 msgstr "Nom"
+
+msgctxt "field:product.product,position:"
+msgid "Position"
+msgstr "Posició"
 
 msgctxt "field:product.product,prefix_code:"
 msgid "Prefix Code"
@@ -179,10 +191,9 @@ msgctxt "field:product.product,replaced_by:"
 msgid "Replaced By"
 msgstr "Substituït per"
 
-#, fuzzy
 msgctxt "field:product.product,replacing:"
 msgid "Replacing"
-msgstr "Substitueix"
+msgstr "Substituint"
 
 msgctxt "field:product.product,suffix_code:"
 msgid "Suffix Code"
@@ -403,17 +414,28 @@ msgid "Other identifiers associated with the variant."
 msgstr "Altres identificadors associats a la variant."
 
 msgctxt "help:product.product,list_price:"
-msgid "The standard price the product is sold at."
-msgstr "El preu al que normalment es ven el producte."
+msgid ""
+"The standard price the variant is sold at.\n"
+"Leave empty to use the list price of the product."
+msgstr ""
+"El preu estándard al que es ven la variant.\n"
+"Deixar-ho en blanc per utilitzar el preu del producte."
+
+msgctxt "help:product.product,list_price_used:"
+msgid "The standard price the variant is sold at."
+msgstr "El preu al que normalment es ven la variant."
+
+msgctxt "help:product.product,position:"
+msgid "The order of the variant in the list of variants on product."
+msgstr "L'ordre de les variants en el llistat de variants del producte."
 
 msgctxt "help:product.product,replaced_by:"
 msgid "The product replacing this one."
 msgstr "El producte que substitueix aquest."
 
-#, fuzzy
 msgctxt "help:product.product,replacing:"
 msgid "The products that this one is replacing."
-msgstr "El producte que substitueix."
+msgstr "Els productes que aquest substitueix."
 
 msgctxt "help:product.product,suffix_code:"
 msgid "The unique identifier for the product (aka SKU)."
@@ -567,6 +589,11 @@ msgctxt "model:ir.message,text:msg_invalid_code"
 msgid "The %(type)s \"%(code)s\" for product \"%(product)s\" is not valid."
 msgstr "El \"%(type)s\" \"%(code)s\" del producte \"%(product)s\" no és vàlid."
 
+#, python-format
+msgctxt "model:ir.message,text:msg_product_change_template"
+msgid "You cannot change the template of the product \"%(product)s\"."
+msgstr "No podeu modificar la plantilla del producte \"%(product)s\"."
+
 msgctxt "model:ir.message,text:msg_product_code_unique"
 msgid "Code of active product must be unique."
 msgstr "El codi dels productes actius ha de ser únic."
@@ -664,62 +691,50 @@ msgctxt "model:ir.ui.menu,name:menu_uom_form"
 msgid "Units of Measure"
 msgstr "Unitats de mesura"
 
-#, fuzzy
 msgctxt "model:product.category,string:"
 msgid "Product Category"
 msgstr "Categoria de producte"
 
-#, fuzzy
 msgctxt "model:product.configuration,string:"
 msgid "Product Configuration"
 msgstr "Configuració de productes"
 
-#, fuzzy
 msgctxt "model:product.configuration.default_cost_price_method,string:"
 msgid "Product Configuration Default Cost Price Method"
 msgstr "Configuració del mètode de cost per defecte del producte"
 
-#, fuzzy
 msgctxt "model:product.cost_price,string:"
 msgid "Product Cost Price"
 msgstr "Preu de cost del producte"
 
-#, fuzzy
 msgctxt "model:product.cost_price_method,string:"
 msgid "Product Cost Price Method"
 msgstr "Mètode de cost per producte"
 
-#, fuzzy
 msgctxt "model:product.identifier,string:"
 msgid "Product Identifier"
 msgstr "Identificador de producte"
 
-#, fuzzy
 msgctxt "model:product.list_price,string:"
 msgid "Product List Price"
 msgstr "Preu de venda del producte"
 
-#, fuzzy
 msgctxt "model:product.product,string:"
 msgid "Product"
 msgstr "Producte"
 
-#, fuzzy
 msgctxt "model:product.product.replace.ask,string:"
 msgid "Product Replace Ask"
-msgstr "Plantilla de producte"
+msgstr "Inici substitueix producte"
 
-#, fuzzy
 msgctxt "model:product.template,string:"
 msgid "Product Template"
 msgstr "Plantilla de producte"
 
-#, fuzzy
 msgctxt "model:product.template-product.category,string:"
 msgid "Product Template - Product Category"
-msgstr "Plantilla - Categoria"
+msgstr "Plantilla de producte - Categoria"
 
-#, fuzzy
 msgctxt "model:product.template-product.category.all,string:"
 msgid "Product Template - Product Category All"
 msgstr "Plantilla - Totes les categories"
@@ -864,10 +879,9 @@ msgctxt "model:product.uom,name:uom_yard"
 msgid "Yard"
 msgstr "Iarda"
 
-#, fuzzy
 msgctxt "model:product.uom,string:"
 msgid "Product Uom"
-msgstr "Producte"
+msgstr "Unitat de mesura"
 
 msgctxt "model:product.uom,symbol:uom_are"
 msgid "a"
@@ -1037,7 +1051,6 @@ msgctxt "model:product.uom.category,name:uom_cat_weight"
 msgid "Weight"
 msgstr "Pes"
 
-#, fuzzy
 msgctxt "model:product.uom.category,string:"
 msgid "Product Uom Category"
 msgstr "Categoria d'UdM de producte"

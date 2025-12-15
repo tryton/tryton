@@ -629,6 +629,220 @@ msgctxt "field:stock.products_by_locations.context,stock_date_end:"
 msgid "At Date"
 msgstr "日期"
 
+#, fuzzy
+msgctxt "field:stock.reporting.inventory,company:"
+msgid "Company"
+msgstr "公司"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory,input_quantity:"
+msgid "Input Quantity"
+msgstr "数量为空"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory,output_quantity:"
+msgid "Output Quantity"
+msgstr "数量为空"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory,product:"
+msgid "Product"
+msgstr "产品"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory,quantity:"
+msgid "Quantity"
+msgstr "数量"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory,unit:"
+msgid "Unit"
+msgstr "单位"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.context,company:"
+msgid "Company"
+msgstr "公司"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.context,date:"
+msgid "Date"
+msgstr "日期"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.context,location:"
+msgid "Location"
+msgstr "库位"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.context,product_type:"
+msgid "Product Type"
+msgstr "产品"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.daily,company:"
+msgid "Company"
+msgstr "公司"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.daily,from_date:"
+msgid "From Date"
+msgstr "起始日期"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.daily,input_quantity:"
+msgid "Input Quantity"
+msgstr "数量为空"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.daily,output_quantity:"
+msgid "Output Quantity"
+msgstr "数量为空"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.daily,product:"
+msgid "Product"
+msgstr "产品"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.daily,quantity:"
+msgid "Quantity"
+msgstr "数量"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.daily,to_date:"
+msgid "To Date"
+msgstr "结束日期"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.daily,unit:"
+msgid "Unit"
+msgstr "单位"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.move,company:"
+msgid "Company"
+msgstr "公司"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.move,date:"
+msgid "Date"
+msgstr "日期"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.move,document:"
+msgid "Document"
+msgstr "文档"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.move,input_quantity:"
+msgid "Input Quantity"
+msgstr "数量为空"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.move,move:"
+msgid "Move"
+msgstr "变动"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.move,origin:"
+msgid "Origin"
+msgstr "依据"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.move,output_quantity:"
+msgid "Output Quantity"
+msgstr "数量为空"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.move,product:"
+msgid "Product"
+msgstr "产品"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.move,quantity:"
+msgid "Quantity"
+msgstr "数量"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.move,unit:"
+msgid "Unit"
+msgstr "单位"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.range.context,company:"
+msgid "Company"
+msgstr "公司"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.range.context,from_date:"
+msgid "From Date"
+msgstr "起始日期"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.range.context,location:"
+msgid "Location"
+msgstr "库位"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.range.context,to_date:"
+msgid "To Date"
+msgstr "结束日期"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.turnover,average_quantity:"
+msgid "Average Quantity"
+msgstr "新增数量"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.turnover,company:"
+msgid "Company"
+msgstr "公司"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.turnover,output_quantity:"
+msgid "Output Quantity"
+msgstr "数量为空"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.turnover,product:"
+msgid "Product"
+msgstr "产品"
+
+msgctxt "field:stock.reporting.inventory.turnover,turnover:"
+msgid "Turnover"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.turnover,unit:"
+msgid "Unit"
+msgstr "单位"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.turnover.context,company:"
+msgid "Company"
+msgstr "公司"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.turnover.context,from_date:"
+msgid "From Date"
+msgstr "起始日期"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.turnover.context,location:"
+msgid "Location"
+msgstr "库位"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.turnover.context,product_type:"
+msgid "Product Type"
+msgstr "产品"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.turnover.context,to_date:"
+msgid "To Date"
+msgstr "结束日期"
+
 msgctxt "field:stock.reporting.margin.category,category:"
 msgid "Category"
 msgstr "类别"
@@ -918,6 +1132,11 @@ msgstr "状态"
 msgctxt "field:stock.shipment.internal,to_location:"
 msgid "To Location"
 msgstr "到库位"
+
+#, fuzzy
+msgctxt "field:stock.shipment.internal,to_warehouse:"
+msgid "To Warehouse"
+msgstr "仓库"
 
 msgctxt "field:stock.shipment.internal,transit_location:"
 msgid "Transit Location"
@@ -1566,6 +1785,11 @@ msgctxt "help:stock.shipment.internal,to_location:"
 msgid "Where the stock is moved to."
 msgstr "库存变动目的地."
 
+#, fuzzy
+msgctxt "help:stock.shipment.internal,to_warehouse:"
+msgid "Where the stock is sent to."
+msgstr "货物送到的地方."
+
 msgctxt "help:stock.shipment.internal,transit_location:"
 msgid ""
 "Where the stock is located while it is in transit between the warehouses."
@@ -1711,6 +1935,26 @@ msgstr "仓库库存变动"
 msgctxt "model:ir.action,name:act_products_by_locations_relate"
 msgid "Products"
 msgstr "产品"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_reporting_inventory"
+msgid "Inventory"
+msgstr "库存盘点"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_reporting_inventory_daily"
+msgid "Stock Inventory Daily"
+msgstr "库存盘点"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_reporting_inventory_move"
+msgid "Stock Inventory Moves"
+msgstr "库间库存变动"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_reporting_inventory_turnover"
+msgid "Inventory Turnover"
+msgstr "库间库存变动"
 
 msgctxt "model:ir.action,name:act_reporting_margin_category"
 msgid "Margins per Category"
@@ -2021,11 +2265,6 @@ msgid "No existing line found for \"%(search)s\"."
 msgstr "\"%(search)s\" 找不到存在的明细."
 
 #, python-format
-msgctxt "model:ir.message,text:msg_inventory_date_in_the_future"
-msgid "The inventories \"%(inventories)s\" have dates in the future."
-msgstr "库存盘点 \"%(inventories)s\" 日期超前."
-
-#, python-format
 msgctxt "model:ir.message,text:msg_inventory_delete_cancel"
 msgid "To delete inventory \"%(inventory)s\" you must cancel it."
 msgstr "删除库存盘点 \"%(inventory)s\" 之前， 必须取消它."
@@ -2123,9 +2362,12 @@ msgctxt "model:ir.message,text:msg_move_quantity_positive"
 msgid "Move quantity must be positive."
 msgstr "库存变动数量必须为正."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_period_close_assigned_move"
-msgid "You cannot close periods with assigned moves in it."
-msgstr "不能关闭包含已选货的库存变动的分期."
+msgid ""
+"To close the period \"%(period)s\", the assigned moves \"%(moves)s\" must be"
+" done or cancelled."
+msgstr ""
 
 msgctxt "model:ir.message,text:msg_period_close_date"
 msgid "You cannot close periods with a date in the future or today."
@@ -2497,6 +2739,29 @@ msgctxt ""
 msgid "User in companies"
 msgstr "公司中的用户"
 
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_reporting_inventory_companies"
+msgid "User in companies"
+msgstr "公司中的用户"
+
+#, fuzzy
+msgctxt ""
+"model:ir.rule.group,name:rule_group_reporting_inventory_daily_companies"
+msgid "User in companies"
+msgstr "公司中的用户"
+
+#, fuzzy
+msgctxt ""
+"model:ir.rule.group,name:rule_group_reporting_inventory_move_companies"
+msgid "User in companies"
+msgstr "公司中的用户"
+
+#, fuzzy
+msgctxt ""
+"model:ir.rule.group,name:rule_group_reporting_inventory_turnover_companies"
+msgid "User in companies"
+msgstr "公司中的用户"
+
 msgctxt ""
 "model:ir.rule.group,name:rule_group_reporting_margin_category_companies"
 msgid "User in companies"
@@ -2630,6 +2895,16 @@ msgstr "分期"
 msgctxt "model:ir.ui.menu,name:menu_reporting"
 msgid "Reporting"
 msgstr "报告"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_reporting_inventory"
+msgid "Inventory"
+msgstr "库存盘点"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_reporting_inventory_turnover"
+msgid "Inventory Turnover"
+msgstr "库间库存变动"
 
 msgctxt "model:ir.ui.menu,name:menu_reporting_margin"
 msgid "Margins"
@@ -2836,6 +3111,41 @@ msgid "Stock Products By Locations Context"
 msgstr "按库位划分的产品"
 
 #, fuzzy
+msgctxt "model:stock.reporting.inventory,string:"
+msgid "Stock Reporting Inventory"
+msgstr "库存报告-类别利润率"
+
+#, fuzzy
+msgctxt "model:stock.reporting.inventory.context,string:"
+msgid "Stock Reporting Inventory Context"
+msgstr "库存报告-类别利润率"
+
+#, fuzzy
+msgctxt "model:stock.reporting.inventory.daily,string:"
+msgid "Stock Reporting Inventory Daily"
+msgstr "库存报告-利润率"
+
+#, fuzzy
+msgctxt "model:stock.reporting.inventory.move,string:"
+msgid "Stock Reporting Inventory Move"
+msgstr "库存报告-类别利润率"
+
+#, fuzzy
+msgctxt "model:stock.reporting.inventory.range.context,string:"
+msgid "Stock Reporting Inventory Range Context"
+msgstr "库存报告-类别利润率"
+
+#, fuzzy
+msgctxt "model:stock.reporting.inventory.turnover,string:"
+msgid "Stock Reporting Inventory Turnover"
+msgstr "库存报告-类别利润率"
+
+#, fuzzy
+msgctxt "model:stock.reporting.inventory.turnover.context,string:"
+msgid "Stock Reporting Inventory Turnover Context"
+msgstr "库存报告-类别利润率"
+
+#, fuzzy
 msgctxt "model:stock.reporting.margin.category,string:"
 msgid "Stock Reporting Margin Category"
 msgstr "库存报告-类别利润率"
@@ -2920,10 +3230,6 @@ msgid "From Location"
 msgstr "从库位"
 
 msgctxt "report:stock.shipment.in.restocking_list:"
-msgid "N°:"
-msgstr "N°:"
-
-msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "Planned Date:"
 msgstr "计划日期:"
 
@@ -2941,6 +3247,11 @@ msgstr "参考:"
 
 msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "Restocking List"
+msgstr "补货单"
+
+#, fuzzy
+msgctxt "report:stock.shipment.in.restocking_list:"
+msgid "Restocking List No:"
 msgstr "补货单"
 
 msgctxt "report:stock.shipment.in.restocking_list:"
@@ -2967,13 +3278,10 @@ msgctxt "report:stock.shipment.internal.report:"
 msgid "From Location:"
 msgstr "从库位:"
 
+#, fuzzy
 msgctxt "report:stock.shipment.internal.report:"
-msgid "Internal Shipment"
+msgid "Internal Shipment No:"
 msgstr "内部发货"
-
-msgctxt "report:stock.shipment.internal.report:"
-msgid "N°:"
-msgstr "N°:"
 
 msgctxt "report:stock.shipment.internal.report:"
 msgid "Planned Date:"
@@ -3019,6 +3327,11 @@ msgctxt "report:stock.shipment.out.delivery_note:"
 msgid "Delivery Note"
 msgstr "提货单"
 
+#, fuzzy
+msgctxt "report:stock.shipment.out.delivery_note:"
+msgid "Delivery Note No:"
+msgstr "提货单"
+
 msgctxt "report:stock.shipment.out.delivery_note:"
 msgid "Draft"
 msgstr "草案"
@@ -3026,10 +3339,6 @@ msgstr "草案"
 msgctxt "report:stock.shipment.out.delivery_note:"
 msgid "Location:"
 msgstr "库位："
-
-msgctxt "report:stock.shipment.out.delivery_note:"
-msgid "N°:"
-msgstr "N°:"
 
 msgctxt "report:stock.shipment.out.delivery_note:"
 msgid "Product"
@@ -3068,11 +3377,12 @@ msgid "From Location"
 msgstr "从库位"
 
 msgctxt "report:stock.shipment.out.picking_list:"
-msgid "N°:"
-msgstr "N°:"
-
-msgctxt "report:stock.shipment.out.picking_list:"
 msgid "Picking List"
+msgstr "拣货单"
+
+#, fuzzy
+msgctxt "report:stock.shipment.out.picking_list:"
+msgid "Picking List No:"
 msgstr "拣货单"
 
 msgctxt "report:stock.shipment.out.picking_list:"
@@ -3124,10 +3434,6 @@ msgid "From Location"
 msgstr "从库位"
 
 msgctxt "report:stock.shipment.out.return.restocking_list:"
-msgid "N°:"
-msgstr "N°:"
-
-msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "Planned Date:"
 msgstr "计划日期:"
 
@@ -3145,6 +3451,11 @@ msgstr "参考:"
 
 msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "Restocking List"
+msgstr "补货单"
+
+#, fuzzy
+msgctxt "report:stock.shipment.out.return.restocking_list:"
+msgid "Restocking List No:"
 msgstr "补货单"
 
 msgctxt "report:stock.shipment.out.return.restocking_list:"
@@ -3217,6 +3528,10 @@ msgid "Production"
 msgstr "产品"
 
 msgctxt "selection:stock.location,type:"
+msgid "Rental"
+msgstr ""
+
+msgctxt "selection:stock.location,type:"
 msgid "Storage"
 msgstr "存储"
 
@@ -3273,6 +3588,66 @@ msgid "Product"
 msgstr "产品"
 
 msgctxt "selection:stock.product_quantities_warehouse.move,product:"
+msgid "Variant"
+msgstr "变体"
+
+#, fuzzy
+msgctxt "selection:stock.reporting.inventory,product:"
+msgid "Product"
+msgstr "产品"
+
+#, fuzzy
+msgctxt "selection:stock.reporting.inventory,product:"
+msgid "Variant"
+msgstr "变体"
+
+#, fuzzy
+msgctxt "selection:stock.reporting.inventory.context,product_type:"
+msgid "Product"
+msgstr "产品"
+
+#, fuzzy
+msgctxt "selection:stock.reporting.inventory.context,product_type:"
+msgid "Variant"
+msgstr "变体"
+
+#, fuzzy
+msgctxt "selection:stock.reporting.inventory.daily,product:"
+msgid "Product"
+msgstr "产品"
+
+#, fuzzy
+msgctxt "selection:stock.reporting.inventory.daily,product:"
+msgid "Variant"
+msgstr "变体"
+
+#, fuzzy
+msgctxt "selection:stock.reporting.inventory.move,product:"
+msgid "Product"
+msgstr "产品"
+
+#, fuzzy
+msgctxt "selection:stock.reporting.inventory.move,product:"
+msgid "Variant"
+msgstr "变体"
+
+#, fuzzy
+msgctxt "selection:stock.reporting.inventory.turnover,product:"
+msgid "Product"
+msgstr "产品"
+
+#, fuzzy
+msgctxt "selection:stock.reporting.inventory.turnover,product:"
+msgid "Variant"
+msgstr "变体"
+
+#, fuzzy
+msgctxt "selection:stock.reporting.inventory.turnover.context,product_type:"
+msgid "Product"
+msgstr "产品"
+
+#, fuzzy
+msgctxt "selection:stock.reporting.inventory.turnover.context,product_type:"
 msgid "Variant"
 msgstr "变体"
 
@@ -3461,6 +3836,11 @@ msgstr "变动"
 msgctxt "view:stock.move:"
 msgid "Other Info"
 msgstr "其它信息"
+
+#, fuzzy
+msgctxt "view:stock.reporting.inventory.daily:"
+msgid "Date"
+msgstr "日期"
 
 msgctxt "view:stock.reporting.margin.category.time_series:"
 msgid "%"

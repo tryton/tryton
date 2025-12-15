@@ -32,7 +32,7 @@ msgstr "Bestreta"
 
 msgctxt "model:account.invoice.recall_deposit.start,string:"
 msgid "Account Invoice Recall Deposit Start"
-msgstr ""
+msgstr "Inici recuperar dipòsit de la factura"
 
 msgctxt "model:ir.action,name:act_move_line_deposit"
 msgid "Deposit Lines"

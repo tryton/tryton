@@ -188,12 +188,3 @@ msgstr "Csak még egy lépés.."
 msgctxt "report:web.user.email_validation:"
 msgid "Validate"
 msgstr "Ellenőrzés"
-
-msgctxt "view:web.user:"
-msgid "Reset Password"
-msgstr "Jelszó visszaállítása"
-
-#, fuzzy
-msgctxt "view:web.user:"
-msgid "Validate Email"
-msgstr "E-mail cím leellenőrzése"

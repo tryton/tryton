@@ -1,0 +1,761 @@
+#
+#, fuzzy
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.invoice,sale_rentals:"
+msgid "Rentals"
+msgstr "Lloguers"
+
+msgctxt "field:product.category,account_rental:"
+msgid "Account Rental"
+msgstr "Compte lloguer"
+
+msgctxt "field:product.category,customer_rental_taxes:"
+msgid "Customer Rental Taxes"
+msgstr "Impostos lloguer client"
+
+msgctxt "field:product.category,customer_rental_taxes_used:"
+msgid "Customer Rental Taxes Used"
+msgstr "Impostos lloguer client utilitzats"
+
+msgctxt "field:product.category-customer_rental-account.tax,category:"
+msgid "Category"
+msgstr "Categoria"
+
+msgctxt "field:product.category-customer_rental-account.tax,tax:"
+msgid "Tax"
+msgstr "Impost"
+
+msgctxt "field:product.category.account,account_rental:"
+msgid "Account Rental"
+msgstr "Compte lloguer"
+
+msgctxt "field:product.product,rentable:"
+msgid "Rentable"
+msgstr "Llogable"
+
+msgctxt "field:product.product,rental_per_day:"
+msgid "Rental per Day"
+msgstr "Lloguer per dia"
+
+msgctxt "field:product.product,rental_price_uom:"
+msgid "Rental Price"
+msgstr "Preu lloguer"
+
+msgctxt "field:product.product,rental_prices:"
+msgid "Rental Prices"
+msgstr "Preus lloguer"
+
+msgctxt "field:product.product,rental_unit:"
+msgid "Rental Unit"
+msgstr "Unitat lloguer"
+
+msgctxt "field:product.rental.price,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:product.rental.price,currency:"
+msgid "Currency"
+msgstr "Moneda"
+
+msgctxt "field:product.rental.price,duration:"
+msgid "Duration"
+msgstr "Duració"
+
+msgctxt "field:product.rental.price,price:"
+msgid "Price"
+msgstr "Preu"
+
+msgctxt "field:product.rental.price,product:"
+msgid "Variant"
+msgstr "Variant"
+
+msgctxt "field:product.rental.price,template:"
+msgid "Product"
+msgstr "Producte"
+
+msgctxt "field:product.template,rentable:"
+msgid "Rentable"
+msgstr "Llogable"
+
+msgctxt "field:product.template,rental_per_day:"
+msgid "Rental per Day"
+msgstr "Lloguer per dia"
+
+msgctxt "field:product.template,rental_prices:"
+msgid "Rental Prices"
+msgstr "Preus lloguer"
+
+msgctxt "field:product.template,rental_unit:"
+msgid "Rental Unit"
+msgstr "Unitat lloguer"
+
+msgctxt "field:sale.configuration,rental_sequence:"
+msgid "Rental Sequence"
+msgstr "Seqüència lloguer"
+
+msgctxt "field:sale.configuration.sequence,rental_sequence:"
+msgid "Rental Sequence"
+msgstr "Seqüència lloguer"
+
+msgctxt "field:sale.rental,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:sale.rental,confirmed_by:"
+msgid "Confirmed By"
+msgstr "Confirmada per"
+
+msgctxt "field:sale.rental,contact:"
+msgid "Contact"
+msgstr "Contacte"
+
+msgctxt "field:sale.rental,currency:"
+msgid "Currency"
+msgstr "Moneda"
+
+msgctxt "field:sale.rental,description:"
+msgid "Description"
+msgstr "Descripció"
+
+msgctxt "field:sale.rental,end:"
+msgid "End"
+msgstr "Final"
+
+msgctxt "field:sale.rental,has_lines_to_invoice:"
+msgid "Has Lines to Invoice"
+msgstr "Te linies per facturar"
+
+msgctxt "field:sale.rental,has_returnable_lines:"
+msgid "Has Returnable Lines"
+msgstr "Te linies retornables"
+
+msgctxt "field:sale.rental,incoming_moves:"
+msgid "Incoming Moves"
+msgstr "Moviments d'entrada"
+
+msgctxt "field:sale.rental,invoice_address:"
+msgid "Invoice Address"
+msgstr "Adreça de facturació"
+
+msgctxt "field:sale.rental,invoice_party:"
+msgid "Invoice Party"
+msgstr "Tercer de la factura"
+
+msgctxt "field:sale.rental,lines:"
+msgid "Lines"
+msgstr "Línies"
+
+msgctxt "field:sale.rental,number:"
+msgid "Number"
+msgstr "Número"
+
+msgctxt "field:sale.rental,outgoing_moves:"
+msgid "Outgoing Moves"
+msgstr "Moviments de sortida"
+
+msgctxt "field:sale.rental,party:"
+msgid "Party"
+msgstr "Tercer"
+
+msgctxt "field:sale.rental,payment_term:"
+msgid "Payment Term"
+msgstr "Termini de pagament"
+
+msgctxt "field:sale.rental,quoted_by:"
+msgid "Quoted By"
+msgstr "Pressupostada per"
+
+msgctxt "field:sale.rental,reference:"
+msgid "Reference"
+msgstr "Referència"
+
+msgctxt "field:sale.rental,start:"
+msgid "Start"
+msgstr "Inici"
+
+msgctxt "field:sale.rental,state:"
+msgid "State"
+msgstr "Estat"
+
+msgctxt "field:sale.rental,tax_amount:"
+msgid "Tax"
+msgstr "Impost"
+
+msgctxt "field:sale.rental,tax_amount_cache:"
+msgid "Tax Cache"
+msgstr "Impostos precalculats"
+
+msgctxt "field:sale.rental,total_amount:"
+msgid "Total"
+msgstr "Total"
+
+msgctxt "field:sale.rental,total_amount_cache:"
+msgid "Total Cache"
+msgstr "Total precalculat"
+
+msgctxt "field:sale.rental,untaxed_amount:"
+msgid "Untaxed"
+msgstr "Base imposable"
+
+msgctxt "field:sale.rental,untaxed_amount_cache:"
+msgid "Untaxed Cache"
+msgstr "Base imposable precalculada"
+
+msgctxt "field:sale.rental,warehouse:"
+msgid "Warehouse"
+msgstr "Magatzem"
+
+msgctxt "field:sale.rental.line,actual_end:"
+msgid "Actual End"
+msgstr "Final real"
+
+msgctxt "field:sale.rental.line,actual_start:"
+msgid "Actual Start"
+msgstr "Inici real"
+
+msgctxt "field:sale.rental.line,amount:"
+msgid "Amount"
+msgstr "Import"
+
+msgctxt "field:sale.rental.line,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:sale.rental.line,currency:"
+msgid "Currency"
+msgstr "Moneda"
+
+msgctxt "field:sale.rental.line,duration:"
+msgid "Duration"
+msgstr "Duració"
+
+msgctxt "field:sale.rental.line,end:"
+msgid "End"
+msgstr "Final"
+
+msgctxt "field:sale.rental.line,incoming_moves:"
+msgid "Incoming Moves"
+msgstr "Moviments d'entrada"
+
+msgctxt "field:sale.rental.line,invoice_lines:"
+msgid "Invoice Lines"
+msgstr "Línies de factura"
+
+msgctxt "field:sale.rental.line,outgoing_moves:"
+msgid "Outgoing Moves"
+msgstr "Moviments de sortida"
+
+msgctxt "field:sale.rental.line,per_day:"
+msgid "Per Day"
+msgstr "Per dia"
+
+msgctxt "field:sale.rental.line,planned_amount:"
+msgid "Planned Amount"
+msgstr "Import estimat"
+
+msgctxt "field:sale.rental.line,planned_duration:"
+msgid "Planned Duration"
+msgstr "Duració prevista"
+
+msgctxt "field:sale.rental.line,planned_end:"
+msgid "Planned End"
+msgstr "Final previst"
+
+msgctxt "field:sale.rental.line,planned_end_day:"
+msgid "Planned End"
+msgstr "Final previst"
+
+msgctxt "field:sale.rental.line,planned_start:"
+msgid "Planned Start"
+msgstr "Inici previst"
+
+msgctxt "field:sale.rental.line,planned_start_day:"
+msgid "Planned Start"
+msgstr "Inici previst"
+
+msgctxt "field:sale.rental.line,product:"
+msgid "Product"
+msgstr "Producte"
+
+msgctxt "field:sale.rental.line,product_uom_category:"
+msgid "Product UoM Category"
+msgstr "Categoria UdM del producte"
+
+msgctxt "field:sale.rental.line,quantity:"
+msgid "Quantity"
+msgstr "Quantitat"
+
+msgctxt "field:sale.rental.line,rental:"
+msgid "Rental"
+msgstr "Lloguer"
+
+msgctxt "field:sale.rental.line,rental_state:"
+msgid "Rental State"
+msgstr "Estat lloguer"
+
+msgctxt "field:sale.rental.line,start:"
+msgid "Start"
+msgstr "Inici"
+
+msgctxt "field:sale.rental.line,taxes:"
+msgid "Taxes"
+msgstr "Impostos"
+
+msgctxt "field:sale.rental.line,unit:"
+msgid "Unit"
+msgstr "Unitat"
+
+msgctxt "field:sale.rental.line,unit_price:"
+msgid "Unit Price"
+msgstr "Preu unitari"
+
+msgctxt "field:sale.rental.line,unit_price_unit:"
+msgid "Unit Price Unit"
+msgstr "Preu unitari unitat"
+
+msgctxt "field:sale.rental.line-account.tax,line:"
+msgid "Rental Line"
+msgstr "Linia de lloguer"
+
+msgctxt "field:sale.rental.line-account.tax,tax:"
+msgid "Tax"
+msgstr "Impost"
+
+msgctxt "field:sale.rental.line-incoming-stock.move,line:"
+msgid "Rental Line"
+msgstr "Linia de lloguer"
+
+msgctxt "field:sale.rental.line-incoming-stock.move,move:"
+msgid "Move"
+msgstr "Moviment"
+
+msgctxt "field:sale.rental.line-outgoing-stock.move,line:"
+msgid "Rental Line"
+msgstr "Linia de lloguer"
+
+msgctxt "field:sale.rental.line-outgoing-stock.move,move:"
+msgid "Move"
+msgstr "Moviment"
+
+msgctxt "field:sale.rental.pickup.show,lines:"
+msgid "Lines"
+msgstr "Línies"
+
+msgctxt "field:sale.rental.pickup.show,start:"
+msgid "Start"
+msgstr "Inici"
+
+msgctxt "field:sale.rental.pickup.show.line,parent:"
+msgid "Parent"
+msgstr "Pare"
+
+msgctxt "field:sale.rental.pickup.show.line,product:"
+msgid "Product"
+msgstr "Producte"
+
+msgctxt "field:sale.rental.pickup.show.line,quantity:"
+msgid "Quantity"
+msgstr "Quantitat"
+
+msgctxt "field:sale.rental.pickup.show.line,quantity_picked:"
+msgid "Quantity Picked"
+msgstr "Quantitat recollida"
+
+msgctxt "field:sale.rental.pickup.show.line,rental_line:"
+msgid "Rental Line"
+msgstr "Linia de lloguer"
+
+msgctxt "field:sale.rental.pickup.show.line,unit:"
+msgid "Unit"
+msgstr "Unitat"
+
+msgctxt "field:sale.rental.return.show,end:"
+msgid "End"
+msgstr "Finalitza"
+
+msgctxt "field:sale.rental.return.show,lines:"
+msgid "Lines"
+msgstr "Línies"
+
+msgctxt "field:sale.rental.return.show.line,parent:"
+msgid "Parent"
+msgstr "Pare"
+
+msgctxt "field:sale.rental.return.show.line,product:"
+msgid "Product"
+msgstr "Producte"
+
+msgctxt "field:sale.rental.return.show.line,quantity:"
+msgid "Quantity"
+msgstr "Quantitat"
+
+msgctxt "field:sale.rental.return.show.line,quantity_returned:"
+msgid "Quantity Returned"
+msgstr "Quantitat retornada"
+
+msgctxt "field:sale.rental.return.show.line,rental_line:"
+msgid "Rental Line"
+msgstr "Linia de lloguer"
+
+msgctxt "field:sale.rental.return.show.line,unit:"
+msgid "Unit"
+msgstr "Unitat"
+
+msgctxt "field:stock.location,rental_location:"
+msgid "Rental"
+msgstr "Lloguer"
+
+msgctxt "field:stock.location,rental_picking_location:"
+msgid "Rental Picking"
+msgstr "Recollida lloguer"
+
+msgctxt "field:stock.location,rental_return_location:"
+msgid "Rental Return"
+msgstr "Devolució lloguer"
+
+msgctxt "field:stock.move,sale_rental_lines_incoming:"
+msgid "Incoming Rental Lines"
+msgstr "Entrada línies de lloguer"
+
+msgctxt "field:stock.move,sale_rental_lines_outgoing:"
+msgid "Outgoing Rental Lines"
+msgstr "Sortida línies de lloguer"
+
+msgctxt "help:product.category,customer_rental_taxes:"
+msgid "The taxes to apply when renting goods or services of this category."
+msgstr ""
+"Els impostos a aplicar quan es lloguen bens o serveis d'aquesta categoria."
+
+msgctxt "help:product.rental.price,duration:"
+msgid "The minimal duration to apply the price."
+msgstr "La duració mínima per aplicar el preu."
+
+msgctxt "help:sale.rental,company:"
+msgid "Make the sale rental belong to the company."
+msgstr "Fa que el lloguer pertany a l'empresa."
+
+msgctxt "help:sale.rental,number:"
+msgid "The main identification of the sale rental."
+msgstr "L'identificador principal del lloguer."
+
+msgctxt "help:sale.rental,party:"
+msgid "The party who is renting."
+msgstr "El tercer que realitzat el lloguer."
+
+msgctxt "help:sale.rental,reference:"
+msgid "The identification of an external origin."
+msgstr "La identificació d'un origen extern."
+
+msgctxt "help:sale.rental,state:"
+msgid "The current state of the sale rental."
+msgstr "El estat actual del lloguer de venda."
+
+msgctxt "help:sale.rental.line,rental:"
+msgid "Add the line below the rental."
+msgstr "Afegeix la línia al lloguer."
+
+msgctxt "help:stock.location,rental_location:"
+msgid "The destination location for stock rent."
+msgstr "La ubicació destí del lloguer."
+
+msgctxt "help:stock.location,rental_picking_location:"
+msgid ""
+"Where the rented assets are picked from.\n"
+"Leave empty to use the warehouse storage location."
+msgstr ""
+"D'on es recullen els actius llogats.\n"
+"Deixar en blanc per utitlizar l'ubicació d'enmagatzematge del magatzem."
+
+msgctxt "help:stock.location,rental_return_location:"
+msgid ""
+"Where the rented assets are returned to.\n"
+"Leave empty to use the warehouse storage location."
+msgstr ""
+"On es retornen els actius llogats.\n"
+"Deixar en blanc per utitlizar l'ubicació d'enmagatzematge del magatzem."
+
+msgctxt "model:ir.action,name:act_account_invoice_form"
+msgid "Invoices"
+msgstr "Factures"
+
+msgctxt "model:ir.action,name:act_sale_rental_form"
+msgid "Rentals"
+msgstr "Lloguers"
+
+msgctxt "model:ir.action,name:act_sale_rental_party_relate"
+msgid "Rentals"
+msgstr "Lloguers"
+
+msgctxt "model:ir.action,name:act_stock_move_form"
+msgid "Stock Moves"
+msgstr "Moviments d'existències"
+
+msgctxt "model:ir.action,name:wizard_sale_rental_pickup"
+msgid "Pickup Rental"
+msgstr "Recollir lloguer"
+
+msgctxt "model:ir.action,name:wizard_sale_rental_return"
+msgid "Return Rental"
+msgstr "Retornar lloguer"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_sale_rental_form_domain_all"
+msgid "All"
+msgstr "Tot"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_sale_rental_form_domain_confirmed"
+msgid "Confirmed"
+msgstr "Confirmat"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_sale_rental_form_domain_draft"
+msgid "Draft"
+msgstr "Esborrany"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_sale_rental_form_domain_picked_up"
+msgid "Picked up"
+msgstr "Recollit"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_sale_rental_form_domain_quotation"
+msgid "Quotation"
+msgstr "Pressupost"
+
+#, python-format
+msgctxt "model:ir.message,text:msg_erase_party_pending_rental"
+msgid ""
+"You cannot erase party \"%(party)s\" while they have pending rentals with "
+"company \"%(company)s\"."
+msgstr ""
+"No pots eliminar el tercer \"%(party)s\" mentre tingui lloguers pendents amb"
+" l'empresa \"%(company)s\"."
+
+#, python-format
+msgctxt "model:ir.message,text:msg_rental_line_delete_cancel_draft"
+msgid ""
+"To delete line \"%(line)s\" you must cancel or reset to draft rental "
+"\"%(rental)s\"."
+msgstr ""
+"Per eliminar la línia \"%(line)s heu de cancel·lar o passar a esborrany el "
+"lloguer \"%(rental)s\"."
+
+msgctxt "model:ir.message,text:msg_rental_line_tax_unique"
+msgid "A tax can be added only once to a rental line."
+msgstr "Un impost només es pot afegir una vegada a una línia de lloguer."
+
+#, python-format
+msgctxt "model:ir.message,text:msg_rental_pickup_once"
+msgid "The rental line \"%(line)s\" can be picked only once."
+msgstr "La línia de lloguer \"%(line)s\" només es pot recollir una vegada."
+
+#, python-format
+msgctxt "model:ir.message,text:msg_rental_pickup_quantity"
+msgid ""
+"The picked quantity \"%(picked)s\" can not be greater than the quantity "
+"\"%(quantity)s\" for the rental line \"%(line)s\"."
+msgstr ""
+"La quantitat recollida \"%(picked)s\" no pot ser major que la quantitat "
+"\"%(quantity)s\" de la línia de lloguer \"%(line)s\"."
+
+#, python-format
+msgctxt "model:ir.message,text:msg_rental_return_once"
+msgid "The rental line \"%(line)s\" can be returned only once."
+msgstr "La línia de lloguer \"%(line)s\" només es pot retornar una vegada."
+
+#, python-format
+msgctxt "model:ir.message,text:msg_rental_return_quantity"
+msgid ""
+"The returned quantity \"%(picked)s\" can not be greater than the quantity "
+"\"%(quantity)s\" for the rental line \"%(line)s\"."
+msgstr ""
+"La quantitat retornada \"%(picked)s\" no pot ser major que la quantitat "
+"\"%(quantity)s\" de la línia de lloguer \"%(line)s\"."
+
+#, python-format
+msgctxt "model:ir.message,text:msg_stock_move_rental_lines_quantity"
+msgid ""
+"The quantity of move \"%(move)s\" is different from its rental lines "
+"\"%(quantity)s\"."
+msgstr ""
+"La quantitat del moviment \"%(move)s\" és diferent de la de les seves línies"
+" de lloguer \"%(quantity)s\"."
+
+msgctxt "model:ir.model.button,string:sale_rental_cancel_button"
+msgid "Cancel"
+msgstr "Cancel·la"
+
+msgctxt "model:ir.model.button,string:sale_rental_confirm_button"
+msgid "Confirm"
+msgstr "Confirma"
+
+msgctxt "model:ir.model.button,string:sale_rental_draft_button"
+msgid "Draft"
+msgstr "Esborrany"
+
+msgctxt "model:ir.model.button,string:sale_rental_invoice_button"
+msgid "Invoice"
+msgstr "Factura"
+
+msgctxt "model:ir.model.button,string:sale_rental_pickup_button"
+msgid "Pickup"
+msgstr "Recollir"
+
+msgctxt "model:ir.model.button,string:sale_rental_quote_button"
+msgid "Quote"
+msgstr "Pressupost"
+
+msgctxt "model:ir.model.button,string:sale_rental_return_button"
+msgid "Return"
+msgstr "Retorna"
+
+msgctxt "model:ir.rule.group,name:rule_group_product_rental_price_companies"
+msgid "User in companies"
+msgstr "Usuari a les empreses"
+
+msgctxt "model:ir.rule.group,name:rule_group_sale_rental_companies"
+msgid "User in companies"
+msgstr "Usuari a les empreses"
+
+msgctxt "model:ir.sequence,name:sequence_rental"
+msgid "Rental"
+msgstr "Lloguer"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_rental"
+msgid "Rental"
+msgstr "Lloguer"
+
+msgctxt "model:ir.ui.menu,name:menu_sale_rental_form"
+msgid "Rentals"
+msgstr "Lloguers"
+
+msgctxt "model:product.category-customer_rental-account.tax,string:"
+msgid "Product Category - Customer Rental - Account Tax"
+msgstr "Categoría del producte - Lloguer client - Impost"
+
+msgctxt "model:product.rental.price,string:"
+msgid "Product Rental Price"
+msgstr "Preu lloguer producte"
+
+msgctxt "model:sale.rental,string:"
+msgid "Sale Rental"
+msgstr "Lloguer venda"
+
+msgctxt "model:sale.rental.line,string:"
+msgid "Sale Rental Line"
+msgstr "Línia de lloguer de venda"
+
+msgctxt "model:sale.rental.line-account.tax,string:"
+msgid "Sale Rental Line - Account Tax"
+msgstr "Línia de lloguer de venda - Impost"
+
+msgctxt "model:sale.rental.line-incoming-stock.move,string:"
+msgid "Sale Rental Line - Incoming - Stock Move"
+msgstr "Línia de lloguer de venda - Moviment d'entrada"
+
+msgctxt "model:sale.rental.line-outgoing-stock.move,string:"
+msgid "Sale Rental Line - Outgoing - Stock Move"
+msgstr "Línia de lloguer de venda - Moviment de sortida"
+
+msgctxt "model:sale.rental.pickup.show,string:"
+msgid "Sale Rental Pickup Show"
+msgstr "Mostra recollida lloguer"
+
+msgctxt "model:sale.rental.pickup.show.line,string:"
+msgid "Sale Rental Pickup Show Line"
+msgstr "Mostra linies de recollida de lloguer"
+
+msgctxt "model:sale.rental.return.show,string:"
+msgid "Sale Rental Return Show"
+msgstr "Mostra devolució del lloguer"
+
+msgctxt "model:sale.rental.return.show.line,string:"
+msgid "Sale Rental Return Show Line"
+msgstr "Mostra línia de devolució del lloguer"
+
+msgctxt "model:stock.location,name:location_rental"
+msgid "Rental"
+msgstr "Lloguer"
+
+msgctxt "selection:sale.rental,state:"
+msgid "Cancelled"
+msgstr "Cancel·lat"
+
+msgctxt "selection:sale.rental,state:"
+msgid "Confirmed"
+msgstr "Confirmat"
+
+msgctxt "selection:sale.rental,state:"
+msgid "Done"
+msgstr "Finalitzat"
+
+msgctxt "selection:sale.rental,state:"
+msgid "Draft"
+msgstr "Esborrany"
+
+msgctxt "selection:sale.rental,state:"
+msgid "Picked up"
+msgstr "Recollit"
+
+msgctxt "selection:sale.rental,state:"
+msgid "Quotation"
+msgstr "Pressupost"
+
+msgctxt "view:product.template:"
+msgid "Rental"
+msgstr "Lloguer"
+
+msgctxt "view:sale.rental.line:"
+msgid "/"
+msgstr "/"
+
+msgctxt "view:sale.rental.line:"
+msgid "General"
+msgstr "General"
+
+msgctxt "view:sale.rental.line:"
+msgid "Moves"
+msgstr "Moviments"
+
+msgctxt "view:sale.rental.line:"
+msgid "Per:"
+msgstr "Per:"
+
+msgctxt "view:sale.rental.line:"
+msgid "Taxes"
+msgstr "Impostos"
+
+msgctxt "view:sale.rental.line:"
+msgid "Time"
+msgstr "Hora"
+
+msgctxt "view:sale.rental:"
+msgid "Other Info"
+msgstr "Informació addicional"
+
+msgctxt "view:sale.rental:"
+msgid "Rental"
+msgstr "Lloguer"
+
+msgctxt "view:stock.move:"
+msgid "Rental"
+msgstr "Lloguer"
+
+msgctxt "wizard_button:sale.rental.pickup,show,end:"
+msgid "Cancel"
+msgstr "Cancel·la"
+
+msgctxt "wizard_button:sale.rental.pickup,show,pickup:"
+msgid "Pickup"
+msgstr "Recollir"
+
+msgctxt "wizard_button:sale.rental.return,show,end:"
+msgid "Cancel"
+msgstr "Cancel·la"
+
+msgctxt "wizard_button:sale.rental.return,show,return_:"
+msgid "Return"
+msgstr "Retorna"

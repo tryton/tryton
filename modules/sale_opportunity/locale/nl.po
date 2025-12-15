@@ -80,7 +80,7 @@ msgstr "Referentie"
 
 msgctxt "field:sale.opportunity,sales:"
 msgid "Sales"
-msgstr "Verkoop"
+msgstr "Verkopen"
 
 msgctxt "field:sale.opportunity,start_date:"
 msgid "Start Date"
@@ -173,7 +173,7 @@ msgstr "Percentage tussen 0 en 100."
 
 msgctxt "model:ir.action,name:act_open_sale_form"
 msgid "Sales"
-msgstr "Verkoop"
+msgstr "Verkopen"
 
 msgctxt "model:ir.action,name:act_opportunity_form"
 msgid "Leads and Opportunities"

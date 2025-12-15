@@ -715,9 +715,10 @@ msgctxt "field:account.fiscalyear,company:"
 msgid "Company"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.fiscalyear,end_date:"
-msgid "Ending Date"
-msgstr ""
+msgid "End Date"
+msgstr "Saldo Débito"
 
 msgctxt "field:account.fiscalyear,icon:"
 msgid "Icon"
@@ -738,9 +739,10 @@ msgctxt "field:account.fiscalyear,periods:"
 msgid "Periods"
 msgstr "Periods"
 
+#, fuzzy
 msgctxt "field:account.fiscalyear,start_date:"
-msgid "Starting Date"
-msgstr ""
+msgid "Start Date"
+msgstr "Débito inicial"
 
 msgctxt "field:account.fiscalyear,state:"
 msgid "State"
@@ -1728,9 +1730,10 @@ msgctxt "field:account.period,company:"
 msgid "Company"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.period,end_date:"
-msgid "Ending Date"
-msgstr ""
+msgid "End Date"
+msgstr "Saldo Débito"
 
 msgctxt "field:account.period,fiscalyear:"
 msgid "Fiscal Year"
@@ -1750,9 +1753,10 @@ msgctxt "field:account.period,name:"
 msgid "Name"
 msgstr "Nombre"
 
+#, fuzzy
 msgctxt "field:account.period,start_date:"
-msgid "Starting Date"
-msgstr ""
+msgid "Start Date"
+msgstr "Débito inicial"
 
 msgctxt "field:account.period,state:"
 msgid "State"
@@ -1855,9 +1859,10 @@ msgctxt "field:account.tax,description:"
 msgid "Description"
 msgstr "Descripción"
 
+#, fuzzy
 msgctxt "field:account.tax,end_date:"
-msgid "Ending Date"
-msgstr ""
+msgid "End Date"
+msgstr "Saldo Débito"
 
 msgctxt "field:account.tax,group:"
 msgid "Group"
@@ -1892,9 +1897,10 @@ msgctxt "field:account.tax,rate:"
 msgid "Rate"
 msgstr "Tasa"
 
+#, fuzzy
 msgctxt "field:account.tax,start_date:"
-msgid "Starting Date"
-msgstr ""
+msgid "Start Date"
+msgstr "Débito inicial"
 
 #, fuzzy
 msgctxt "field:account.tax,template:"
@@ -2183,9 +2189,10 @@ msgctxt "field:account.tax.rule,template_override:"
 msgid "Override Template"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.tax.rule.line,end_date:"
-msgid "Ending Date"
-msgstr ""
+msgid "End Date"
+msgstr "Saldo Débito"
 
 msgctxt "field:account.tax.rule.line,group:"
 msgid "Tax Group"
@@ -2205,7 +2212,7 @@ msgstr ""
 
 #, fuzzy
 msgctxt "field:account.tax.rule.line,start_date:"
-msgid "Starting Date"
+msgid "Start Date"
 msgstr "Débito inicial"
 
 msgctxt "field:account.tax.rule.line,tax:"
@@ -2221,9 +2228,10 @@ msgctxt "field:account.tax.rule.line,template_override:"
 msgid "Override Template"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.tax.rule.line.template,end_date:"
-msgid "Ending Date"
-msgstr ""
+msgid "End Date"
+msgstr "Saldo Débito"
 
 msgctxt "field:account.tax.rule.line.template,group:"
 msgid "Tax Group"
@@ -2243,7 +2251,7 @@ msgstr ""
 
 #, fuzzy
 msgctxt "field:account.tax.rule.line.template,start_date:"
-msgid "Starting Date"
+msgid "Start Date"
 msgstr "Débito inicial"
 
 #, fuzzy
@@ -2293,9 +2301,10 @@ msgctxt "field:account.tax.template,description:"
 msgid "Description"
 msgstr "Descripción"
 
+#, fuzzy
 msgctxt "field:account.tax.template,end_date:"
-msgid "Ending Date"
-msgstr ""
+msgid "End Date"
+msgstr "Saldo Débito"
 
 msgctxt "field:account.tax.template,group:"
 msgid "Group"
@@ -2323,9 +2332,10 @@ msgctxt "field:account.tax.template,rate:"
 msgid "Rate"
 msgstr "Tasa"
 
+#, fuzzy
 msgctxt "field:account.tax.template,start_date:"
-msgid "Starting Date"
-msgstr ""
+msgid "Start Date"
+msgstr "Débito inicial"
 
 msgctxt "field:account.tax.template,type:"
 msgid "Type"
@@ -2370,15 +2380,6 @@ msgstr ""
 
 msgctxt "field:account.tax.test.result,base:"
 msgid "Base"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:account.tax.test.result,description:"
-msgid "Description"
-msgstr "Descripción"
-
-msgctxt "field:account.tax.test.result,legal_notice:"
-msgid "Legal Notice"
 msgstr ""
 
 msgctxt "field:account.tax.test.result,tax:"
@@ -3467,10 +3468,11 @@ msgctxt "model:ir.message,text:msg_account_chart_exists"
 msgid "A chart of accounts already exists for company \"%(company)s\"."
 msgstr ""
 
-#, fuzzy, python-format
+#, python-format
 msgctxt "model:ir.message,text:msg_account_closed_lines"
 msgid "You cannot close account \"%(account)s\" because it has move lines."
-msgstr "No puede eliminar la cuenta \"%s\" porque tiene líneas de asiento."
+msgstr ""
+"No puede eliminar la cuenta \"%(account)s\" porque tiene líneas de asiento."
 
 #, python-format
 msgctxt "model:ir.message,text:msg_account_invalid_deferral_second_currency"
@@ -3495,7 +3497,8 @@ msgstr ""
 msgctxt "model:ir.message,text:msg_account_no_type_lines"
 msgid ""
 "You cannot remove type of account \"%(account)s\" because it has move lines."
-msgstr "No puede eliminar la cuenta \"%s\" porque tiene líneas de asiento."
+msgstr ""
+"No puede eliminar la cuenta \"%(account)s\" porque tiene líneas de asiento."
 
 #, python-format
 msgctxt "model:ir.message,text:msg_cancel_line_delegated"
@@ -3509,14 +3512,17 @@ msgctxt "model:ir.message,text:msg_change_fiscalyear_move_sequence"
 msgid ""
 "You cannot change the move sequence on fiscal year \"%(fiscalyear)s\" "
 "because it contains posted moves."
-msgstr "No puede crear un período en el año fiscal \"%s\" porque está cerrado."
+msgstr ""
+"No puede crear un período en el año fiscal \"%(fiscalyear)s\" porque está "
+"cerrado."
 
 #, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_change_period_move_sequence"
 msgid ""
 "You cannot change the move sequence in period \"%(period)s\" because it has "
 "posted moves."
-msgstr "No puede eliminar la cuenta \"%s\" porque tiene líneas de asiento."
+msgstr ""
+"No puede eliminar la cuenta \"%(period)s\" porque tiene líneas de asiento."
 
 #, python-format
 msgctxt "model:ir.message,text:msg_close_fiscalyear_account_balance_not_zero"
@@ -3553,14 +3559,18 @@ msgstr ""
 #, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_create_journal_period_closed_period"
 msgid "You cannot create a journal-period in closed period \"%(period)s\"."
-msgstr "No puede crear un libro diario - período en el período cerrado \"%s\"."
+msgstr ""
+"No puede crear un libro diario - período en el período cerrado "
+"\"%(period)s\"."
 
 #, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_create_period_closed_fiscalyear"
 msgid ""
 "You cannot create a period in fiscal year \"%(fiscalyear)s\" because it is "
 "closed."
-msgstr "No puede crear un período en el año fiscal \"%s\" porque está cerrado."
+msgstr ""
+"No puede crear un período en el año fiscal \"%(fiscalyear)s\" porque está "
+"cerrado."
 
 #, fuzzy
 msgctxt "model:ir.message,text:msg_deferral_unique"
@@ -3573,6 +3583,13 @@ msgstr ""
 
 msgctxt "model:ir.message,text:msg_delegate_line_same_origins"
 msgid "You cannot delegate together lines with different origins."
+msgstr ""
+
+#, python-format
+msgctxt "model:ir.message,text:msg_delete_line_reconciled"
+msgid ""
+"In order to delete the reconciled line \"%(line)s\", you must first "
+"unreconcile it."
 msgstr ""
 
 #, python-format
@@ -3620,7 +3637,8 @@ msgctxt "model:ir.message,text:msg_journal_account_moves"
 msgid ""
 "You cannot change the type of journal \"%(journal)s\" because it has posted "
 "moves."
-msgstr "No puede eliminar la cuenta \"%s\" porque tiene líneas de asiento."
+msgstr ""
+"No puede eliminar la cuenta \"%(journal)s\" porque tiene líneas de asiento."
 
 #, fuzzy
 msgctxt "model:ir.message,text:msg_journal_period_unique"
@@ -3684,7 +3702,9 @@ msgstr ""
 
 #, python-format
 msgctxt "model:ir.message,text:msg_modify_line_reconciled"
-msgid "You cannot modify reconciled line \"%(line)s\"."
+msgid ""
+"In order to modify the reconciled line \"%(line)s\", you must first "
+"unreconcile it."
 msgstr ""
 
 #, python-format
@@ -3697,7 +3717,7 @@ msgctxt "model:ir.message,text:msg_modify_tax_line_closed_period"
 msgid "You cannot add/modify/delete tax lines in closed period \"%(period)s\"."
 msgstr ""
 "No puede agregar/modificar líneas en el libro diario con período cerrado "
-"\"%s\"."
+"\"%(period)s\"."
 
 #, python-format
 msgctxt "model:ir.message,text:msg_move_cancel_closed_period"
@@ -3919,14 +3939,12 @@ msgid ""
 "off method."
 msgstr ""
 
-#, fuzzy, python-format
+#, python-format
 msgctxt "model:ir.message,text:msg_reconciliation_write_off_same_account"
 msgid ""
 "You cannot reconcile lines using the write-off \"%(write_off)s\" with the "
 "same \"%(account)s\"."
 msgstr ""
-"No puede conciliar la línea \"%(line)s\" porque la cuenta \"%(account1)s\" "
-"es diferente de \"%(account2)s\"."
 
 #, python-format
 msgctxt "model:ir.message,text:msg_reopen_fiscalyear_later"

@@ -83,12 +83,10 @@ msgctxt "help:account.account.receivable.rule.account,only_reconcile:"
 msgid "Distribute only to fully reconcile."
 msgstr "Distribuir només si completament conciliat."
 
-#, fuzzy
 msgctxt "model:account.account.receivable.rule,string:"
 msgid "Account Receivable Rule"
 msgstr "Regla compte a cobrar"
 
-#, fuzzy
 msgctxt "model:account.account.receivable.rule.account,string:"
 msgid "Account Receivable Rule Account"
 msgstr "Compte de regla comptable a cobrar"

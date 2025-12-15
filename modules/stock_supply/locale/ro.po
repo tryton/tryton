@@ -24,7 +24,7 @@ msgstr ""
 
 msgctxt "field:stock.order_point,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:stock.order_point,location:"
 msgid "Location"

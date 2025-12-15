@@ -68,7 +68,6 @@ msgctxt ""
 msgid "Compute product cost price for each warehouse."
 msgstr "Calcula el preu de cost per a cada magatzem."
 
-#, fuzzy
 msgctxt "model:ir.cron-stock.warehouse,string:"
 msgid "Cron - Stock Warehouse"
 msgstr "Tasca programada - Magatzem"
@@ -82,7 +81,6 @@ msgstr ""
 "Per moure productes entre les ubicacions \"%(from_)s\" i \"%(to)s\", heu "
 "d'utilitzar la ubicació de transit dels albarans interns."
 
-#, fuzzy
 msgctxt "model:product.configuration.cost_price_warehouse,string:"
 msgid "Product Configuration Cost Price Warehouse"
 msgstr "Configuració del producte preu de cost per magatzem"

@@ -74,9 +74,8 @@ msgstr ""
 
 msgctxt "model:account.invoice.tax.group.cash,string:"
 msgid "Account Invoice Tax Group Cash"
-msgstr ""
+msgstr "Grup d'imposts de factura amb criteri de caixa"
 
-#, fuzzy
 msgctxt "model:account.tax.group.cash,string:"
 msgid "Account Tax Group Cash"
 msgstr "Grups d'impostos amb criteri de caixa"

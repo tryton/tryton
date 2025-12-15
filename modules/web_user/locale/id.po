@@ -186,11 +186,3 @@ msgstr "Tinggal satu langkah lagi..."
 msgctxt "report:web.user.email_validation:"
 msgid "Validate"
 msgstr ""
-
-msgctxt "view:web.user:"
-msgid "Reset Password"
-msgstr "Atur Ulang Kata Sandi"
-
-msgctxt "view:web.user:"
-msgid "Validate Email"
-msgstr ""

@@ -733,8 +733,9 @@ msgctxt "field:account.fiscalyear,company:"
 msgid "Company"
 msgstr "ສຳນັກງານ/ຫ້ອງການ"
 
+#, fuzzy
 msgctxt "field:account.fiscalyear,end_date:"
-msgid "Ending Date"
+msgid "End Date"
 msgstr "ວັນທີສິ້ນສຸດ"
 
 #, fuzzy
@@ -755,9 +756,10 @@ msgctxt "field:account.fiscalyear,periods:"
 msgid "Periods"
 msgstr "ໄລຍະ"
 
+#, fuzzy
 msgctxt "field:account.fiscalyear,start_date:"
-msgid "Starting Date"
-msgstr "ເລີ່ມວັນທີ"
+msgid "Start Date"
+msgstr "ວັນທີເລີ່ມ"
 
 msgctxt "field:account.fiscalyear,state:"
 msgid "State"
@@ -1761,8 +1763,9 @@ msgctxt "field:account.period,company:"
 msgid "Company"
 msgstr "ສຳນັກງານ/ຫ້ອງການ"
 
+#, fuzzy
 msgctxt "field:account.period,end_date:"
-msgid "Ending Date"
+msgid "End Date"
 msgstr "ວັນທີສິ້ນສຸດ"
 
 msgctxt "field:account.period,fiscalyear:"
@@ -1783,9 +1786,10 @@ msgctxt "field:account.period,name:"
 msgid "Name"
 msgstr "ຊື່"
 
+#, fuzzy
 msgctxt "field:account.period,start_date:"
-msgid "Starting Date"
-msgstr "ເລີ່ມວັນທີ"
+msgid "Start Date"
+msgstr "ວັນທີເລີ່ມ"
 
 msgctxt "field:account.period,state:"
 msgid "State"
@@ -1890,8 +1894,9 @@ msgctxt "field:account.tax,description:"
 msgid "Description"
 msgstr "ເນື້ອໃນລາຍການ"
 
+#, fuzzy
 msgctxt "field:account.tax,end_date:"
-msgid "Ending Date"
+msgid "End Date"
 msgstr "ວັນທີສິ້ນສຸດ"
 
 msgctxt "field:account.tax,group:"
@@ -1926,9 +1931,10 @@ msgctxt "field:account.tax,rate:"
 msgid "Rate"
 msgstr "ອັດຕາ"
 
+#, fuzzy
 msgctxt "field:account.tax,start_date:"
-msgid "Starting Date"
-msgstr "ເລີ່ມວັນທີ"
+msgid "Start Date"
+msgstr "ວັນທີເລີ່ມ"
 
 msgctxt "field:account.tax,template:"
 msgid "Template"
@@ -2226,7 +2232,7 @@ msgstr ""
 
 #, fuzzy
 msgctxt "field:account.tax.rule.line,end_date:"
-msgid "Ending Date"
+msgid "End Date"
 msgstr "ວັນທີສິ້ນສຸດ"
 
 msgctxt "field:account.tax.rule.line,group:"
@@ -2247,8 +2253,8 @@ msgstr "ສູດຄິດໄລ່"
 
 #, fuzzy
 msgctxt "field:account.tax.rule.line,start_date:"
-msgid "Starting Date"
-msgstr "ເລີ່ມວັນທີ"
+msgid "Start Date"
+msgstr "ວັນທີເລີ່ມ"
 
 msgctxt "field:account.tax.rule.line,tax:"
 msgid "Substitution Tax"
@@ -2264,7 +2270,7 @@ msgstr ""
 
 #, fuzzy
 msgctxt "field:account.tax.rule.line.template,end_date:"
-msgid "Ending Date"
+msgid "End Date"
 msgstr "ວັນທີສິ້ນສຸດ"
 
 msgctxt "field:account.tax.rule.line.template,group:"
@@ -2285,8 +2291,8 @@ msgstr "ສູດຄິດໄລ່"
 
 #, fuzzy
 msgctxt "field:account.tax.rule.line.template,start_date:"
-msgid "Starting Date"
-msgstr "ເລີ່ມວັນທີ"
+msgid "Start Date"
+msgstr "ວັນທີເລີ່ມ"
 
 msgctxt "field:account.tax.rule.line.template,tax:"
 msgid "Substitution Tax"
@@ -2328,8 +2334,9 @@ msgctxt "field:account.tax.template,description:"
 msgid "Description"
 msgstr "ຄຳອະທິບາຍ"
 
+#, fuzzy
 msgctxt "field:account.tax.template,end_date:"
-msgid "Ending Date"
+msgid "End Date"
 msgstr "ວັນທີສິ້ນສຸດ"
 
 msgctxt "field:account.tax.template,group:"
@@ -2356,9 +2363,10 @@ msgctxt "field:account.tax.template,rate:"
 msgid "Rate"
 msgstr "ອັດຕາ"
 
+#, fuzzy
 msgctxt "field:account.tax.template,start_date:"
-msgid "Starting Date"
-msgstr "ເລີ່ມວັນທີ"
+msgid "Start Date"
+msgstr "ວັນທີເລີ່ມ"
 
 msgctxt "field:account.tax.template,type:"
 msgid "Type"
@@ -2403,14 +2411,6 @@ msgstr "ມູນຄ່າ"
 msgctxt "field:account.tax.test.result,base:"
 msgid "Base"
 msgstr "ຖານຄິດໄລ່"
-
-msgctxt "field:account.tax.test.result,description:"
-msgid "Description"
-msgstr "ເນື້ອໃນລາຍການ"
-
-msgctxt "field:account.tax.test.result,legal_notice:"
-msgid "Legal Notice"
-msgstr ""
 
 msgctxt "field:account.tax.test.result,tax:"
 msgid "Tax"
@@ -3552,7 +3552,7 @@ msgstr ""
 #, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_account_closed_lines"
 msgid "You cannot close account \"%(account)s\" because it has move lines."
-msgstr "ທ່ານບໍ່ສາມາດລຶບບັນຊີ \"%s\" ນີ້ໄດ້ ເພາະວ່າມັນມີລາຍການເຄື່ອນໄຫວ"
+msgstr "ທ່ານບໍ່ສາມາດລຶບບັນຊີ \"%(account)s\" ນີ້ໄດ້ ເພາະວ່າມັນມີລາຍການເຄື່ອນໄຫວ"
 
 #, python-format
 msgctxt "model:ir.message,text:msg_account_invalid_deferral_second_currency"
@@ -3577,7 +3577,7 @@ msgstr ""
 msgctxt "model:ir.message,text:msg_account_no_type_lines"
 msgid ""
 "You cannot remove type of account \"%(account)s\" because it has move lines."
-msgstr "ທ່ານບໍ່ສາມາດລຶບບັນຊີ \"%s\" ນີ້ໄດ້ ເພາະວ່າມັນມີລາຍການເຄື່ອນໄຫວ"
+msgstr "ທ່ານບໍ່ສາມາດລຶບບັນຊີ \"%(account)s\" ນີ້ໄດ້ ເພາະວ່າມັນມີລາຍການເຄື່ອນໄຫວ"
 
 #, python-format
 msgctxt "model:ir.message,text:msg_cancel_line_delegated"
@@ -3586,21 +3586,19 @@ msgid ""
 "the lines."
 msgstr ""
 
-#, fuzzy, python-format
+#, python-format
 msgctxt "model:ir.message,text:msg_change_fiscalyear_move_sequence"
 msgid ""
 "You cannot change the move sequence on fiscal year \"%(fiscalyear)s\" "
 "because it contains posted moves."
 msgstr ""
-"ທ່ານບໍ່ສາມາດສ້າງ ໄລຍະ ໃສ່ປີການບັນຊີ \"%(period)s\" ນີ້ໄດ້ ເພາະວ່າ "
-"ມັນໄດ້ຖືກອັດໄປແລ້ວ."
 
 #, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_change_period_move_sequence"
 msgid ""
 "You cannot change the move sequence in period \"%(period)s\" because it has "
 "posted moves."
-msgstr "ທ່ານບໍ່ສາມາດລຶບບັນຊີ \"%s\" ນີ້ໄດ້ ເພາະວ່າມັນມີລາຍການເຄື່ອນໄຫວ"
+msgstr "ທ່ານບໍ່ສາມາດລຶບບັນຊີ \"%(period)s\" ນີ້ໄດ້ ເພາະວ່າມັນມີລາຍການເຄື່ອນໄຫວ"
 
 #, python-format
 msgctxt "model:ir.message,text:msg_close_fiscalyear_account_balance_not_zero"
@@ -3637,16 +3635,15 @@ msgstr ""
 #, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_create_journal_period_closed_period"
 msgid "You cannot create a journal-period in closed period \"%(period)s\"."
-msgstr "ທ່ານບໍ່ສາມາດ ສ້າງ ບັນຊີປະຈຳວັນ - ໄລຍະ ໃສ່ໃນ ໄລຍະ \"%s\" ທີ່ອັດແລ້ວ."
+msgstr ""
+"ທ່ານບໍ່ສາມາດ ສ້າງ ບັນຊີປະຈຳວັນ - ໄລຍະ ໃສ່ໃນ ໄລຍະ \"%(period)s\" ທີ່ອັດແລ້ວ."
 
-#, fuzzy, python-format
+#, python-format
 msgctxt "model:ir.message,text:msg_create_period_closed_fiscalyear"
 msgid ""
 "You cannot create a period in fiscal year \"%(fiscalyear)s\" because it is "
 "closed."
 msgstr ""
-"ທ່ານບໍ່ສາມາດສ້າງ ໄລຍະ ໃສ່ປີການບັນຊີ \"%(period)s\" ນີ້ໄດ້ ເພາະວ່າ "
-"ມັນໄດ້ຖືກອັດໄປແລ້ວ."
 
 #, fuzzy
 msgctxt "model:ir.message,text:msg_deferral_unique"
@@ -3659,6 +3656,13 @@ msgstr ""
 
 msgctxt "model:ir.message,text:msg_delegate_line_same_origins"
 msgid "You cannot delegate together lines with different origins."
+msgstr ""
+
+#, python-format
+msgctxt "model:ir.message,text:msg_delete_line_reconciled"
+msgid ""
+"In order to delete the reconciled line \"%(line)s\", you must first "
+"unreconcile it."
 msgstr ""
 
 #, python-format
@@ -3706,7 +3710,7 @@ msgctxt "model:ir.message,text:msg_journal_account_moves"
 msgid ""
 "You cannot change the type of journal \"%(journal)s\" because it has posted "
 "moves."
-msgstr "ທ່ານບໍ່ສາມາດລຶບບັນຊີ \"%s\" ນີ້ໄດ້ ເພາະວ່າມັນມີລາຍການເຄື່ອນໄຫວ"
+msgstr "ທ່ານບໍ່ສາມາດລຶບບັນຊີ \"%(journal)s\" ນີ້ໄດ້ ເພາະວ່າມັນມີລາຍການເຄື່ອນໄຫວ"
 
 #, fuzzy
 msgctxt "model:ir.message,text:msg_journal_period_unique"
@@ -3770,7 +3774,9 @@ msgstr ""
 
 #, python-format
 msgctxt "model:ir.message,text:msg_modify_line_reconciled"
-msgid "You cannot modify reconciled line \"%(line)s\"."
+msgid ""
+"In order to modify the reconciled line \"%(line)s\", you must first "
+"unreconcile it."
 msgstr ""
 
 #, python-format
@@ -3781,7 +3787,8 @@ msgstr ""
 #, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_modify_tax_line_closed_period"
 msgid "You cannot add/modify/delete tax lines in closed period \"%(period)s\"."
-msgstr "ທ່ານບໍ່ສາມາດ ເພີ່ມ / ແກ້ໄຂ ແຖວລາຍການ ໃນບັນຊີທີ່ອັດໄລຍະ \"%s\" ແລ້ວ"
+msgstr ""
+"ທ່ານບໍ່ສາມາດ ເພີ່ມ / ແກ້ໄຂ ແຖວລາຍການ ໃນບັນຊີທີ່ອັດໄລຍະ \"%(period)s\" ແລ້ວ"
 
 #, python-format
 msgctxt "model:ir.message,text:msg_move_cancel_closed_period"
@@ -3966,14 +3973,12 @@ msgid ""
 "You may need to cancel its move \"%(move)s\"."
 msgstr ""
 
-#, fuzzy, python-format
+#, python-format
 msgctxt "model:ir.message,text:msg_reconciliation_different_accounts"
 msgid ""
 "You cannot reconcile line \"%(line)s\" with others because its account "
 "\"%(account1)s\" is different from \"%(account2)s\"."
 msgstr ""
-"ທ່ານບໍ່ສາມາດກວດສອບຍອດລາຍການ \"%(line)s\" ໄດ້ ເພາະວ່າບັນຊີມັນ \"%(party1)s\" "
-"ແຕກຕ່າງກັບ \"%(party2)s\"."
 
 #, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_reconciliation_different_parties"
@@ -4003,14 +4008,12 @@ msgid ""
 "off method."
 msgstr ""
 
-#, fuzzy, python-format
+#, python-format
 msgctxt "model:ir.message,text:msg_reconciliation_write_off_same_account"
 msgid ""
 "You cannot reconcile lines using the write-off \"%(write_off)s\" with the "
 "same \"%(account)s\"."
 msgstr ""
-"ທ່ານບໍ່ສາມາດກວດສອບຍອດລາຍການ \"%(line)s\" ໄດ້ ເພາະວ່າບັນຊີມັນ \"%(party1)s\" "
-"ແຕກຕ່າງກັບ \"%(party2)s\"."
 
 #, python-format
 msgctxt "model:ir.message,text:msg_reopen_fiscalyear_later"

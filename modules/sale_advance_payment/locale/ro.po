@@ -15,52 +15,61 @@ msgctxt "field:account.invoice.line,advance_payment_recalled_lines:"
 msgid "Advance Payment Recalled Lines"
 msgstr "Rânduri de plată în avans rechemate"
 
-msgctxt "field:sale.advance_payment.condition,account:"
+#, fuzzy
+msgctxt "field:sale.advance_payment.line,account:"
 msgid "Account"
 msgstr "Cont"
 
-msgctxt "field:sale.advance_payment.condition,amount:"
+#, fuzzy
+msgctxt "field:sale.advance_payment.line,amount:"
 msgid "Amount"
 msgstr "Suma"
 
-msgctxt "field:sale.advance_payment.condition,block_shipping:"
+msgctxt "field:sale.advance_payment.line,block_shipping:"
 msgid "Block Shipping"
 msgstr ""
 
-msgctxt "field:sale.advance_payment.condition,block_supply:"
+msgctxt "field:sale.advance_payment.line,block_supply:"
 msgid "Block Supply"
 msgstr ""
 
 #, fuzzy
-msgctxt "field:sale.advance_payment.condition,completed:"
+msgctxt "field:sale.advance_payment.line,completed:"
 msgid "Completed"
 msgstr "Efectuat"
 
-msgctxt "field:sale.advance_payment.condition,currency:"
+#, fuzzy
+msgctxt "field:sale.advance_payment.line,currency:"
 msgid "Currency"
 msgstr "Monedă"
 
-msgctxt "field:sale.advance_payment.condition,description:"
+#, fuzzy
+msgctxt "field:sale.advance_payment.line,description:"
 msgid "Description"
 msgstr "Descriere"
 
-msgctxt "field:sale.advance_payment.condition,invoice_delay:"
+#, fuzzy
+msgctxt "field:sale.advance_payment.line,invoice_delay:"
 msgid "Invoice Delay"
 msgstr "Întârzierea facturii"
 
-msgctxt "field:sale.advance_payment.condition,invoice_lines:"
+#, fuzzy
+msgctxt "field:sale.advance_payment.line,invoice_lines:"
 msgid "Invoice Lines"
 msgstr "Rânduri Factură"
 
-msgctxt "field:sale.advance_payment.condition,sale:"
+#, fuzzy
+msgctxt "field:sale.advance_payment.line,sale:"
 msgid "Sale"
 msgstr "Vânzare"
 
-msgctxt "field:sale.advance_payment.condition,sale_company:"
+#, fuzzy
+msgctxt "field:sale.advance_payment.line,sale_company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
-msgctxt "field:sale.advance_payment.condition,sale_state:"
+#, fuzzy
+msgctxt "field:sale.advance_payment.line,sale_state:"
 msgid "Sale State"
 msgstr "Starea vânzării"
 
@@ -110,19 +119,20 @@ msgstr "Cont"
 
 msgctxt "field:sale.advance_payment_term.line.account,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:sale.advance_payment_term.line.account,line:"
 msgid "Line"
 msgstr "Rând"
 
-msgctxt "field:sale.sale,advance_payment_conditions:"
-msgid "Advance Payment Conditions"
-msgstr "Condiții de plată în avans"
-
 msgctxt "field:sale.sale,advance_payment_invoices:"
 msgid "Advance Payment Invoices"
 msgstr "Facturi cu plata în avans"
+
+#, fuzzy
+msgctxt "field:sale.sale,advance_payment_lines:"
+msgid "Advance Payment Lines"
+msgstr "Termene de plată în avans"
 
 msgctxt "field:sale.sale,advance_payment_term:"
 msgid "Advance Payment Term"
@@ -192,9 +202,9 @@ msgid "Advance Payment Terms"
 msgstr "Termene de plată în avans"
 
 #, fuzzy
-msgctxt "model:sale.advance_payment.condition,string:"
-msgid "Sale Advance Payment Condition"
-msgstr "Condiție de plată în avans"
+msgctxt "model:sale.advance_payment.line,string:"
+msgid "Sale Advance Payment Line"
+msgstr "Rând Termen de plată în avans"
 
 #, fuzzy
 msgctxt "model:sale.advance_payment_term,string:"
@@ -210,3 +220,8 @@ msgstr "Rând Termen de plată în avans"
 msgctxt "model:sale.advance_payment_term.line.account,string:"
 msgid "Sale Advance Payment Term Line Account"
 msgstr "Rând Termen de plată în avans"
+
+#, fuzzy
+msgctxt "view:sale.sale:"
+msgid "Advance Payment"
+msgstr "Termen de plata in avans"

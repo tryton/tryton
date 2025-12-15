@@ -313,11 +313,10 @@ msgid "Add a note to the record"
 msgstr "Afegeix una nota al registre"
 
 msgid "Chat"
-msgstr ""
+msgstr "Xat"
 
-#, fuzzy
 msgid "Chat on the record"
-msgstr "Obre el registre"
+msgstr "Xateja en el registre"
 
 msgid "Email..."
 msgstr "Correu electrònic..."
@@ -484,7 +483,7 @@ msgid "Hide"
 msgstr "Amaga"
 
 msgid "Select a color for \"%1\""
-msgstr ""
+msgstr "Seleccioneu un color per a \"%1\""
 
 msgid "Open the record"
 msgstr "Obre el registre"
@@ -542,10 +541,13 @@ msgid "Copy Selected Rows"
 msgstr "Copia files seleccionades"
 
 msgid "Reset Column Widths"
-msgstr ""
+msgstr "Restableix l'amplada de les columnes"
 
 msgid "#ERROR"
 msgstr "#ERROR"
+
+msgid "Failed to copy text to clipboard: %1"
+msgstr "No s'ha pogut copiar el text al porta-retalls: %1"
 
 msgid "More"
 msgstr "Més"
@@ -773,14 +775,23 @@ msgstr "Alterna so"
 msgid "Wizard"
 msgstr "Assistent"
 
+msgid "Toggle notification"
+msgstr "Commuta notificació"
+
 msgid "Enter a message"
-msgstr ""
+msgstr "Introdueix un missatge"
 
 msgid "Submit the message"
-msgstr ""
+msgstr "Envia el missatge"
 
 msgid "Make this an internal message"
-msgstr ""
+msgstr "Fes que això sigui un missatge intern"
+
+msgid "All Notifications..."
+msgstr "Totes les notificacions..."
+
+msgid "Preferences..."
+msgstr "Preferències..."
 
 msgid "Translate view"
 msgstr "Tradueix la vista"

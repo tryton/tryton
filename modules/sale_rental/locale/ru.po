@@ -1,0 +1,745 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.invoice,sale_rentals:"
+msgid "Rentals"
+msgstr ""
+
+msgctxt "field:product.category,account_rental:"
+msgid "Account Rental"
+msgstr ""
+
+msgctxt "field:product.category,customer_rental_taxes:"
+msgid "Customer Rental Taxes"
+msgstr ""
+
+msgctxt "field:product.category,customer_rental_taxes_used:"
+msgid "Customer Rental Taxes Used"
+msgstr ""
+
+msgctxt "field:product.category-customer_rental-account.tax,category:"
+msgid "Category"
+msgstr ""
+
+msgctxt "field:product.category-customer_rental-account.tax,tax:"
+msgid "Tax"
+msgstr ""
+
+msgctxt "field:product.category.account,account_rental:"
+msgid "Account Rental"
+msgstr ""
+
+msgctxt "field:product.product,rentable:"
+msgid "Rentable"
+msgstr ""
+
+msgctxt "field:product.product,rental_per_day:"
+msgid "Rental per Day"
+msgstr ""
+
+msgctxt "field:product.product,rental_price_uom:"
+msgid "Rental Price"
+msgstr ""
+
+msgctxt "field:product.product,rental_prices:"
+msgid "Rental Prices"
+msgstr ""
+
+msgctxt "field:product.product,rental_unit:"
+msgid "Rental Unit"
+msgstr ""
+
+msgctxt "field:product.rental.price,company:"
+msgid "Company"
+msgstr ""
+
+msgctxt "field:product.rental.price,currency:"
+msgid "Currency"
+msgstr ""
+
+msgctxt "field:product.rental.price,duration:"
+msgid "Duration"
+msgstr ""
+
+msgctxt "field:product.rental.price,price:"
+msgid "Price"
+msgstr ""
+
+msgctxt "field:product.rental.price,product:"
+msgid "Variant"
+msgstr ""
+
+msgctxt "field:product.rental.price,template:"
+msgid "Product"
+msgstr ""
+
+msgctxt "field:product.template,rentable:"
+msgid "Rentable"
+msgstr ""
+
+msgctxt "field:product.template,rental_per_day:"
+msgid "Rental per Day"
+msgstr ""
+
+msgctxt "field:product.template,rental_prices:"
+msgid "Rental Prices"
+msgstr ""
+
+msgctxt "field:product.template,rental_unit:"
+msgid "Rental Unit"
+msgstr ""
+
+msgctxt "field:sale.configuration,rental_sequence:"
+msgid "Rental Sequence"
+msgstr ""
+
+msgctxt "field:sale.configuration.sequence,rental_sequence:"
+msgid "Rental Sequence"
+msgstr ""
+
+msgctxt "field:sale.rental,company:"
+msgid "Company"
+msgstr ""
+
+msgctxt "field:sale.rental,confirmed_by:"
+msgid "Confirmed By"
+msgstr ""
+
+msgctxt "field:sale.rental,contact:"
+msgid "Contact"
+msgstr ""
+
+msgctxt "field:sale.rental,currency:"
+msgid "Currency"
+msgstr ""
+
+msgctxt "field:sale.rental,description:"
+msgid "Description"
+msgstr ""
+
+msgctxt "field:sale.rental,end:"
+msgid "End"
+msgstr ""
+
+msgctxt "field:sale.rental,has_lines_to_invoice:"
+msgid "Has Lines to Invoice"
+msgstr ""
+
+msgctxt "field:sale.rental,has_returnable_lines:"
+msgid "Has Returnable Lines"
+msgstr ""
+
+msgctxt "field:sale.rental,incoming_moves:"
+msgid "Incoming Moves"
+msgstr ""
+
+msgctxt "field:sale.rental,invoice_address:"
+msgid "Invoice Address"
+msgstr ""
+
+msgctxt "field:sale.rental,invoice_party:"
+msgid "Invoice Party"
+msgstr ""
+
+msgctxt "field:sale.rental,lines:"
+msgid "Lines"
+msgstr ""
+
+msgctxt "field:sale.rental,number:"
+msgid "Number"
+msgstr ""
+
+msgctxt "field:sale.rental,outgoing_moves:"
+msgid "Outgoing Moves"
+msgstr ""
+
+msgctxt "field:sale.rental,party:"
+msgid "Party"
+msgstr ""
+
+msgctxt "field:sale.rental,payment_term:"
+msgid "Payment Term"
+msgstr ""
+
+msgctxt "field:sale.rental,quoted_by:"
+msgid "Quoted By"
+msgstr ""
+
+msgctxt "field:sale.rental,reference:"
+msgid "Reference"
+msgstr ""
+
+msgctxt "field:sale.rental,start:"
+msgid "Start"
+msgstr ""
+
+msgctxt "field:sale.rental,state:"
+msgid "State"
+msgstr ""
+
+msgctxt "field:sale.rental,tax_amount:"
+msgid "Tax"
+msgstr ""
+
+msgctxt "field:sale.rental,tax_amount_cache:"
+msgid "Tax Cache"
+msgstr ""
+
+msgctxt "field:sale.rental,total_amount:"
+msgid "Total"
+msgstr ""
+
+msgctxt "field:sale.rental,total_amount_cache:"
+msgid "Total Cache"
+msgstr ""
+
+msgctxt "field:sale.rental,untaxed_amount:"
+msgid "Untaxed"
+msgstr ""
+
+msgctxt "field:sale.rental,untaxed_amount_cache:"
+msgid "Untaxed Cache"
+msgstr ""
+
+msgctxt "field:sale.rental,warehouse:"
+msgid "Warehouse"
+msgstr ""
+
+msgctxt "field:sale.rental.line,actual_end:"
+msgid "Actual End"
+msgstr ""
+
+msgctxt "field:sale.rental.line,actual_start:"
+msgid "Actual Start"
+msgstr ""
+
+msgctxt "field:sale.rental.line,amount:"
+msgid "Amount"
+msgstr ""
+
+msgctxt "field:sale.rental.line,company:"
+msgid "Company"
+msgstr ""
+
+msgctxt "field:sale.rental.line,currency:"
+msgid "Currency"
+msgstr ""
+
+msgctxt "field:sale.rental.line,duration:"
+msgid "Duration"
+msgstr ""
+
+msgctxt "field:sale.rental.line,end:"
+msgid "End"
+msgstr ""
+
+msgctxt "field:sale.rental.line,incoming_moves:"
+msgid "Incoming Moves"
+msgstr ""
+
+msgctxt "field:sale.rental.line,invoice_lines:"
+msgid "Invoice Lines"
+msgstr ""
+
+msgctxt "field:sale.rental.line,outgoing_moves:"
+msgid "Outgoing Moves"
+msgstr ""
+
+msgctxt "field:sale.rental.line,per_day:"
+msgid "Per Day"
+msgstr ""
+
+msgctxt "field:sale.rental.line,planned_amount:"
+msgid "Planned Amount"
+msgstr ""
+
+msgctxt "field:sale.rental.line,planned_duration:"
+msgid "Planned Duration"
+msgstr ""
+
+msgctxt "field:sale.rental.line,planned_end:"
+msgid "Planned End"
+msgstr ""
+
+msgctxt "field:sale.rental.line,planned_end_day:"
+msgid "Planned End"
+msgstr ""
+
+msgctxt "field:sale.rental.line,planned_start:"
+msgid "Planned Start"
+msgstr ""
+
+msgctxt "field:sale.rental.line,planned_start_day:"
+msgid "Planned Start"
+msgstr ""
+
+msgctxt "field:sale.rental.line,product:"
+msgid "Product"
+msgstr ""
+
+msgctxt "field:sale.rental.line,product_uom_category:"
+msgid "Product UoM Category"
+msgstr ""
+
+msgctxt "field:sale.rental.line,quantity:"
+msgid "Quantity"
+msgstr ""
+
+msgctxt "field:sale.rental.line,rental:"
+msgid "Rental"
+msgstr ""
+
+msgctxt "field:sale.rental.line,rental_state:"
+msgid "Rental State"
+msgstr ""
+
+msgctxt "field:sale.rental.line,start:"
+msgid "Start"
+msgstr ""
+
+msgctxt "field:sale.rental.line,taxes:"
+msgid "Taxes"
+msgstr ""
+
+msgctxt "field:sale.rental.line,unit:"
+msgid "Unit"
+msgstr ""
+
+msgctxt "field:sale.rental.line,unit_price:"
+msgid "Unit Price"
+msgstr ""
+
+msgctxt "field:sale.rental.line,unit_price_unit:"
+msgid "Unit Price Unit"
+msgstr ""
+
+msgctxt "field:sale.rental.line-account.tax,line:"
+msgid "Rental Line"
+msgstr ""
+
+msgctxt "field:sale.rental.line-account.tax,tax:"
+msgid "Tax"
+msgstr ""
+
+msgctxt "field:sale.rental.line-incoming-stock.move,line:"
+msgid "Rental Line"
+msgstr ""
+
+msgctxt "field:sale.rental.line-incoming-stock.move,move:"
+msgid "Move"
+msgstr ""
+
+msgctxt "field:sale.rental.line-outgoing-stock.move,line:"
+msgid "Rental Line"
+msgstr ""
+
+msgctxt "field:sale.rental.line-outgoing-stock.move,move:"
+msgid "Move"
+msgstr ""
+
+msgctxt "field:sale.rental.pickup.show,lines:"
+msgid "Lines"
+msgstr ""
+
+msgctxt "field:sale.rental.pickup.show,start:"
+msgid "Start"
+msgstr ""
+
+msgctxt "field:sale.rental.pickup.show.line,parent:"
+msgid "Parent"
+msgstr ""
+
+msgctxt "field:sale.rental.pickup.show.line,product:"
+msgid "Product"
+msgstr ""
+
+msgctxt "field:sale.rental.pickup.show.line,quantity:"
+msgid "Quantity"
+msgstr ""
+
+msgctxt "field:sale.rental.pickup.show.line,quantity_picked:"
+msgid "Quantity Picked"
+msgstr ""
+
+msgctxt "field:sale.rental.pickup.show.line,rental_line:"
+msgid "Rental Line"
+msgstr ""
+
+msgctxt "field:sale.rental.pickup.show.line,unit:"
+msgid "Unit"
+msgstr ""
+
+msgctxt "field:sale.rental.return.show,end:"
+msgid "End"
+msgstr ""
+
+msgctxt "field:sale.rental.return.show,lines:"
+msgid "Lines"
+msgstr ""
+
+msgctxt "field:sale.rental.return.show.line,parent:"
+msgid "Parent"
+msgstr ""
+
+msgctxt "field:sale.rental.return.show.line,product:"
+msgid "Product"
+msgstr ""
+
+msgctxt "field:sale.rental.return.show.line,quantity:"
+msgid "Quantity"
+msgstr ""
+
+msgctxt "field:sale.rental.return.show.line,quantity_returned:"
+msgid "Quantity Returned"
+msgstr ""
+
+msgctxt "field:sale.rental.return.show.line,rental_line:"
+msgid "Rental Line"
+msgstr ""
+
+msgctxt "field:sale.rental.return.show.line,unit:"
+msgid "Unit"
+msgstr ""
+
+msgctxt "field:stock.location,rental_location:"
+msgid "Rental"
+msgstr ""
+
+msgctxt "field:stock.location,rental_picking_location:"
+msgid "Rental Picking"
+msgstr ""
+
+msgctxt "field:stock.location,rental_return_location:"
+msgid "Rental Return"
+msgstr ""
+
+msgctxt "field:stock.move,sale_rental_lines_incoming:"
+msgid "Incoming Rental Lines"
+msgstr ""
+
+msgctxt "field:stock.move,sale_rental_lines_outgoing:"
+msgid "Outgoing Rental Lines"
+msgstr ""
+
+msgctxt "help:product.category,customer_rental_taxes:"
+msgid "The taxes to apply when renting goods or services of this category."
+msgstr ""
+
+msgctxt "help:product.rental.price,duration:"
+msgid "The minimal duration to apply the price."
+msgstr ""
+
+msgctxt "help:sale.rental,company:"
+msgid "Make the sale rental belong to the company."
+msgstr ""
+
+msgctxt "help:sale.rental,number:"
+msgid "The main identification of the sale rental."
+msgstr ""
+
+msgctxt "help:sale.rental,party:"
+msgid "The party who is renting."
+msgstr ""
+
+msgctxt "help:sale.rental,reference:"
+msgid "The identification of an external origin."
+msgstr ""
+
+msgctxt "help:sale.rental,state:"
+msgid "The current state of the sale rental."
+msgstr ""
+
+msgctxt "help:sale.rental.line,rental:"
+msgid "Add the line below the rental."
+msgstr ""
+
+msgctxt "help:stock.location,rental_location:"
+msgid "The destination location for stock rent."
+msgstr ""
+
+msgctxt "help:stock.location,rental_picking_location:"
+msgid ""
+"Where the rented assets are picked from.\n"
+"Leave empty to use the warehouse storage location."
+msgstr ""
+
+msgctxt "help:stock.location,rental_return_location:"
+msgid ""
+"Where the rented assets are returned to.\n"
+"Leave empty to use the warehouse storage location."
+msgstr ""
+
+msgctxt "model:ir.action,name:act_account_invoice_form"
+msgid "Invoices"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_sale_rental_form"
+msgid "Rentals"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_sale_rental_party_relate"
+msgid "Rentals"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_stock_move_form"
+msgid "Stock Moves"
+msgstr ""
+
+msgctxt "model:ir.action,name:wizard_sale_rental_pickup"
+msgid "Pickup Rental"
+msgstr ""
+
+msgctxt "model:ir.action,name:wizard_sale_rental_return"
+msgid "Return Rental"
+msgstr ""
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_sale_rental_form_domain_all"
+msgid "All"
+msgstr ""
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_sale_rental_form_domain_confirmed"
+msgid "Confirmed"
+msgstr ""
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_sale_rental_form_domain_draft"
+msgid "Draft"
+msgstr ""
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_sale_rental_form_domain_picked_up"
+msgid "Picked up"
+msgstr ""
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_sale_rental_form_domain_quotation"
+msgid "Quotation"
+msgstr ""
+
+#, python-format
+msgctxt "model:ir.message,text:msg_erase_party_pending_rental"
+msgid ""
+"You cannot erase party \"%(party)s\" while they have pending rentals with "
+"company \"%(company)s\"."
+msgstr ""
+
+#, python-format
+msgctxt "model:ir.message,text:msg_rental_line_delete_cancel_draft"
+msgid ""
+"To delete line \"%(line)s\" you must cancel or reset to draft rental "
+"\"%(rental)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_rental_line_tax_unique"
+msgid "A tax can be added only once to a rental line."
+msgstr ""
+
+#, python-format
+msgctxt "model:ir.message,text:msg_rental_pickup_once"
+msgid "The rental line \"%(line)s\" can be picked only once."
+msgstr ""
+
+#, python-format
+msgctxt "model:ir.message,text:msg_rental_pickup_quantity"
+msgid ""
+"The picked quantity \"%(picked)s\" can not be greater than the quantity "
+"\"%(quantity)s\" for the rental line \"%(line)s\"."
+msgstr ""
+
+#, python-format
+msgctxt "model:ir.message,text:msg_rental_return_once"
+msgid "The rental line \"%(line)s\" can be returned only once."
+msgstr ""
+
+#, python-format
+msgctxt "model:ir.message,text:msg_rental_return_quantity"
+msgid ""
+"The returned quantity \"%(picked)s\" can not be greater than the quantity "
+"\"%(quantity)s\" for the rental line \"%(line)s\"."
+msgstr ""
+
+#, python-format
+msgctxt "model:ir.message,text:msg_stock_move_rental_lines_quantity"
+msgid ""
+"The quantity of move \"%(move)s\" is different from its rental lines "
+"\"%(quantity)s\"."
+msgstr ""
+
+msgctxt "model:ir.model.button,string:sale_rental_cancel_button"
+msgid "Cancel"
+msgstr ""
+
+msgctxt "model:ir.model.button,string:sale_rental_confirm_button"
+msgid "Confirm"
+msgstr ""
+
+msgctxt "model:ir.model.button,string:sale_rental_draft_button"
+msgid "Draft"
+msgstr ""
+
+msgctxt "model:ir.model.button,string:sale_rental_invoice_button"
+msgid "Invoice"
+msgstr ""
+
+msgctxt "model:ir.model.button,string:sale_rental_pickup_button"
+msgid "Pickup"
+msgstr ""
+
+msgctxt "model:ir.model.button,string:sale_rental_quote_button"
+msgid "Quote"
+msgstr ""
+
+msgctxt "model:ir.model.button,string:sale_rental_return_button"
+msgid "Return"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_product_rental_price_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_sale_rental_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt "model:ir.sequence,name:sequence_rental"
+msgid "Rental"
+msgstr ""
+
+msgctxt "model:ir.sequence.type,name:sequence_type_rental"
+msgid "Rental"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_sale_rental_form"
+msgid "Rentals"
+msgstr ""
+
+msgctxt "model:product.category-customer_rental-account.tax,string:"
+msgid "Product Category - Customer Rental - Account Tax"
+msgstr ""
+
+msgctxt "model:product.rental.price,string:"
+msgid "Product Rental Price"
+msgstr ""
+
+msgctxt "model:sale.rental,string:"
+msgid "Sale Rental"
+msgstr ""
+
+msgctxt "model:sale.rental.line,string:"
+msgid "Sale Rental Line"
+msgstr ""
+
+msgctxt "model:sale.rental.line-account.tax,string:"
+msgid "Sale Rental Line - Account Tax"
+msgstr ""
+
+msgctxt "model:sale.rental.line-incoming-stock.move,string:"
+msgid "Sale Rental Line - Incoming - Stock Move"
+msgstr ""
+
+msgctxt "model:sale.rental.line-outgoing-stock.move,string:"
+msgid "Sale Rental Line - Outgoing - Stock Move"
+msgstr ""
+
+msgctxt "model:sale.rental.pickup.show,string:"
+msgid "Sale Rental Pickup Show"
+msgstr ""
+
+msgctxt "model:sale.rental.pickup.show.line,string:"
+msgid "Sale Rental Pickup Show Line"
+msgstr ""
+
+msgctxt "model:sale.rental.return.show,string:"
+msgid "Sale Rental Return Show"
+msgstr ""
+
+msgctxt "model:sale.rental.return.show.line,string:"
+msgid "Sale Rental Return Show Line"
+msgstr ""
+
+msgctxt "model:stock.location,name:location_rental"
+msgid "Rental"
+msgstr ""
+
+msgctxt "selection:sale.rental,state:"
+msgid "Cancelled"
+msgstr ""
+
+msgctxt "selection:sale.rental,state:"
+msgid "Confirmed"
+msgstr ""
+
+msgctxt "selection:sale.rental,state:"
+msgid "Done"
+msgstr ""
+
+msgctxt "selection:sale.rental,state:"
+msgid "Draft"
+msgstr ""
+
+msgctxt "selection:sale.rental,state:"
+msgid "Picked up"
+msgstr ""
+
+msgctxt "selection:sale.rental,state:"
+msgid "Quotation"
+msgstr ""
+
+msgctxt "view:product.template:"
+msgid "Rental"
+msgstr ""
+
+msgctxt "view:sale.rental.line:"
+msgid "/"
+msgstr ""
+
+msgctxt "view:sale.rental.line:"
+msgid "General"
+msgstr ""
+
+msgctxt "view:sale.rental.line:"
+msgid "Moves"
+msgstr ""
+
+msgctxt "view:sale.rental.line:"
+msgid "Per:"
+msgstr ""
+
+msgctxt "view:sale.rental.line:"
+msgid "Taxes"
+msgstr ""
+
+msgctxt "view:sale.rental.line:"
+msgid "Time"
+msgstr ""
+
+msgctxt "view:sale.rental:"
+msgid "Other Info"
+msgstr ""
+
+msgctxt "view:sale.rental:"
+msgid "Rental"
+msgstr ""
+
+msgctxt "view:stock.move:"
+msgid "Rental"
+msgstr ""
+
+msgctxt "wizard_button:sale.rental.pickup,show,end:"
+msgid "Cancel"
+msgstr ""
+
+msgctxt "wizard_button:sale.rental.pickup,show,pickup:"
+msgid "Pickup"
+msgstr ""
+
+msgctxt "wizard_button:sale.rental.return,show,end:"
+msgid "Cancel"
+msgstr ""
+
+msgctxt "wizard_button:sale.rental.return,show,return_:"
+msgid "Return"
+msgstr ""

@@ -16,7 +16,7 @@ msgstr ""
 
 msgctxt "field:account.statement.rule,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:account.statement.rule,currency:"
 msgid "Currency"
@@ -100,7 +100,7 @@ msgstr "Suma"
 
 msgctxt "field:account.statement.rule.line,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:account.statement.rule.line,party:"
 msgid "Party"
@@ -116,7 +116,8 @@ msgid ""
 "It may define the groups named:\n"
 "'party'\n"
 "'bank_account'\n"
-"'invoice'"
+"'invoice'\n"
+"'payment_reference'"
 msgstr ""
 
 msgctxt "help:account.statement.rule.information,char:"

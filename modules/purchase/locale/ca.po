@@ -455,10 +455,9 @@ msgctxt "field:purchase.purchase,purchase_date:"
 msgid "Purchase Date"
 msgstr "Data compra"
 
-#, fuzzy
 msgctxt "field:purchase.purchase,quotation_expire:"
 msgid "Quotation Expire"
-msgstr "Pressupost"
+msgstr "Venciment del pressupost"
 
 msgctxt "field:purchase.purchase,quoted_by:"
 msgid "Quoted By"
@@ -560,6 +559,10 @@ msgctxt "field:purchase.reporting.product.time_series,product:"
 msgid "Product"
 msgstr "Producte"
 
+msgctxt "field:purchase.reporting.product.time_series,product_currency:"
+msgid "Product - Currency"
+msgstr "Producte - Moneda"
+
 msgctxt "field:purchase.reporting.product.time_series,product_supplier:"
 msgid "Supplier's Product"
 msgstr "Producte proveïdor"
@@ -571,6 +574,10 @@ msgstr "Proveïdor"
 msgctxt "field:purchase.reporting.supplier.time_series,supplier:"
 msgid "Supplier"
 msgstr "Proveïdor"
+
+msgctxt "field:purchase.reporting.supplier.time_series,supplier_currency:"
+msgid "Supplier - Currency"
+msgstr "Proveïdor - Moneda"
 
 msgctxt "field:stock.location,supplier_return_location:"
 msgid "Supplier Return"
@@ -983,10 +990,11 @@ msgstr ""
 #, python-format
 msgctxt "model:ir.message,text:msg_warehouse_required_for_quotation"
 msgid ""
-"To get a quote for the purchase \"%(purchase)s\" you must enter a warehouse."
+"To get a quote for the purchase \"%(purchase)s\" you must enter a warehouse "
+"for the line \"%(line)s\"."
 msgstr ""
 "Per obtenir un pressupost per la compra \"%(purchase)s\" heu d'introduir un "
-"magatzem."
+"magatzem per la línia \"%(line)s\"."
 
 msgctxt "model:ir.model.button,string:purchase_cancel_button"
 msgid "Cancel"
@@ -1096,130 +1104,105 @@ msgctxt "model:ir.ui.menu,name:menu_reporting_purchase"
 msgid "Purchases"
 msgstr "Compres"
 
-#, fuzzy
 msgctxt "model:party.party.customer_code,string:"
 msgid "Party Customer Code"
 msgstr "Codi client tercer"
 
-#, fuzzy
 msgctxt "model:party.party.supplier_currency,string:"
 msgid "Party Supplier Currency"
 msgstr "Tercer Moneda proveïdor"
 
-#, fuzzy
 msgctxt "model:party.party.supplier_lead_time,string:"
 msgid "Party Supplier Lead Time"
 msgstr "Temps d'espera del proveïdor"
 
-#, fuzzy
 msgctxt "model:purchase.configuration,string:"
 msgid "Purchase Configuration"
 msgstr "Configuració de les compres"
 
-#, fuzzy
 msgctxt "model:purchase.configuration.purchase_method,string:"
 msgid "Purchase Configuration Purchase Method"
 msgstr "Configuració dels mètodes de compra"
 
-#, fuzzy
 msgctxt "model:purchase.configuration.sequence,string:"
 msgid "Purchase Configuration Sequence"
 msgstr "Configuració de seqüencies de compra"
 
-#, fuzzy
 msgctxt "model:purchase.handle.invoice.exception.ask,string:"
 msgid "Purchase Handle Invoice Exception Ask"
-msgstr "Gestiona l'excepció de factura"
+msgstr "Pregunta gestiona l'excepció de factura"
 
-#, fuzzy
 msgctxt "model:purchase.handle.shipment.exception.ask,string:"
 msgid "Purchase Handle Shipment Exception Ask"
-msgstr "Gestiona l'excepció d'enviament"
+msgstr "Pregunta gestiona l'excepció d'enviament"
 
-#, fuzzy
 msgctxt "model:purchase.line,string:"
 msgid "Purchase Line"
 msgstr "Línia de compra"
 
-#, fuzzy
 msgctxt "model:purchase.line-account.tax,string:"
 msgid "Purchase Line - Account Tax"
 msgstr "Línia de compra - Impost"
 
-#, fuzzy
 msgctxt "model:purchase.line-ignored-stock.move,string:"
 msgid "Purchase Line - Ignored - Stock Move"
 msgstr "Línia de compra - Moviment ignorat"
 
-#, fuzzy
 msgctxt "model:purchase.line-recreated-stock.move,string:"
 msgid "Purchase Line - Recreated - Stock Move"
 msgstr "Compra - Factura recreada"
 
-#, fuzzy
 msgctxt "model:purchase.product_supplier,string:"
 msgid "Purchase Product Supplier"
-msgstr "Compres per proveïdor"
+msgstr "Proveedors del producte"
 
-#, fuzzy
 msgctxt "model:purchase.product_supplier.price,string:"
 msgid "Purchase Product Supplier Price"
 msgstr "Preu del proveïdor del producte"
 
-#, fuzzy
 msgctxt "model:purchase.purchase,string:"
 msgid "Purchase"
 msgstr "Compra"
 
-#, fuzzy
 msgctxt "model:purchase.purchase-ignored-account.invoice,string:"
 msgid "Purchase - Ignored - Account Invoice"
 msgstr "Compra - Factura ignorada"
 
-#, fuzzy
 msgctxt "model:purchase.purchase-recreated-account.invoice,string:"
 msgid "Purchase - Recreated - Account Invoice"
 msgstr "Compra - Factura recreada"
 
-#, fuzzy
 msgctxt "model:purchase.reporting.context,string:"
 msgid "Purchase Reporting Context"
 msgstr "Context informe de compres"
 
-#, fuzzy
 msgctxt "model:purchase.reporting.main,string:"
 msgid "Purchase Reporting Main"
-msgstr "Informes de compres"
+msgstr "Informes de compres principal"
 
-#, fuzzy
 msgctxt "model:purchase.reporting.main.time_series,string:"
 msgid "Purchase Reporting Main Time Series"
-msgstr "Informe de compres per Proveïdor"
+msgstr "Informe de compres principal series de dades"
 
-#, fuzzy
 msgctxt "model:purchase.reporting.product,string:"
 msgid "Purchase Reporting Product"
 msgstr "Informe de compres per Producte"
 
-#, fuzzy
 msgctxt "model:purchase.reporting.product.time_series,string:"
 msgid "Purchase Reporting Product Time Series"
-msgstr "Informe de compres per Producte"
+msgstr "Informe de compres per Producte series de dades"
 
-#, fuzzy
 msgctxt "model:purchase.reporting.supplier,string:"
 msgid "Purchase Reporting Supplier"
 msgstr "Informe de compres per Proveïdor"
 
-#, fuzzy
 msgctxt "model:purchase.reporting.supplier.time_series,string:"
 msgid "Purchase Reporting Supplier Time Series"
-msgstr "Informe de compres per Proveïdor"
+msgstr "Informe de compres per Proveïdor series de dades"
 
-#, fuzzy
 msgctxt "model:purchase.return_purchase.start,string:"
 msgid "Purchase Return Purchase Start"
-msgstr "Configuració dels mètodes de compra"
+msgstr "Inici retorna compra"
 
 msgctxt "model:res.group,name:group_purchase"
 msgid "Purchase"
@@ -1262,8 +1245,8 @@ msgid "Draft Purchase Order"
 msgstr "Compra esborrany"
 
 msgctxt "report:purchase.purchase:"
-msgid "Purchase Order N°:"
-msgstr "Comanda de compra número:"
+msgid "Purchase Order No:"
+msgstr "Comanda de compra Núm.:"
 
 msgctxt "report:purchase.purchase:"
 msgid "Quantity"
@@ -1274,7 +1257,7 @@ msgid "Reference:"
 msgstr "Referència:"
 
 msgctxt "report:purchase.purchase:"
-msgid "Request for Quotation N°:"
+msgid "Request for Quotation No:"
 msgstr "Sol·licitud de pressupost Núm.:"
 
 msgctxt "report:purchase.purchase:"

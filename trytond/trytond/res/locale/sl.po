@@ -34,6 +34,50 @@ msgctxt "field:res.group,users:"
 msgid "Users"
 msgstr "Uporabniki"
 
+#, fuzzy
+msgctxt "field:res.notification,action:"
+msgid "Action"
+msgstr "Ukrep"
+
+#, fuzzy
+msgctxt "field:res.notification,action_value:"
+msgid "Action Value"
+msgstr "Ukrep"
+
+msgctxt "field:res.notification,description:"
+msgid "Description"
+msgstr ""
+
+msgctxt "field:res.notification,icon:"
+msgid "Icon"
+msgstr ""
+
+msgctxt "field:res.notification,label:"
+msgid "Label"
+msgstr ""
+
+msgctxt "field:res.notification,model:"
+msgid "Model"
+msgstr ""
+
+msgctxt "field:res.notification,model_ref:"
+msgid "Model"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:res.notification,records:"
+msgid "Records"
+msgstr "Ime"
+
+msgctxt "field:res.notification,unread:"
+msgid "Unread"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:res.notification,user:"
+msgid "User"
+msgstr "Uporabnik"
+
 msgctxt "field:res.user,actions:"
 msgid "Actions"
 msgstr "Ukrepi"
@@ -74,6 +118,11 @@ msgstr "Meni"
 msgctxt "field:res.user,name:"
 msgid "Name"
 msgstr "Naziv"
+
+#, fuzzy
+msgctxt "field:res.user,notifications:"
+msgid "Notifications"
+msgstr "Skupine z dovoljenjem za spremembe"
 
 msgctxt "field:res.user,password:"
 msgid "Password"
@@ -187,9 +236,18 @@ msgctxt "help:res.user,actions:"
 msgid "Actions that will be run at login."
 msgstr "Ukrepi, ki se zaženejo ob prijavi."
 
+msgctxt "help:res.user,notifications:"
+msgid "Notifications to subscribe to."
+msgstr ""
+
 msgctxt "model:ir.action,name:act_group_form"
 msgid "Groups"
 msgstr "Skupine"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_notification"
+msgid "Notifications"
+msgstr "Skupine z dovoljenjem za spremembe"
 
 msgctxt "model:ir.action,name:act_user_config"
 msgid "Configure Users"
@@ -260,6 +318,16 @@ msgctxt "model:ir.model.button,string:user_reset_password_button"
 msgid "Reset Password"
 msgstr "Reset Password"
 
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_notification"
+msgid "Own notification"
+msgstr "Lastne uporabniške aplikacije"
+
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_notification_admin"
+msgid "Any notification"
+msgstr "Vse uporabniške aplikacije"
+
 msgctxt "model:ir.rule.group,name:rule_group_user_application"
 msgid "Own user application"
 msgstr "Lastne uporabniške aplikacije"
@@ -276,6 +344,11 @@ msgctxt "model:ir.ui.menu,name:menu_group_form"
 msgid "Groups"
 msgstr "Skupine"
 
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_notification_form"
+msgid "Notifications"
+msgstr "Skupine z dovoljenjem za spremembe"
+
 msgctxt "model:ir.ui.menu,name:menu_res"
 msgid "Users"
 msgstr "Uporabniki"
@@ -288,6 +361,11 @@ msgstr "Uporabniki"
 msgctxt "model:res.group,string:"
 msgid "Group"
 msgstr "Skupina"
+
+#, fuzzy
+msgctxt "model:res.notification,string:"
+msgid "Notification"
+msgstr "Skupine z dovoljenjem za spremembe"
 
 #, fuzzy
 msgctxt "model:res.user,string:"

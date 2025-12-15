@@ -12,7 +12,7 @@ msgstr "Délai d'expiration"
 
 msgctxt "field:product.product,shelf_life_state:"
 msgid "Shelf Life Time State"
-msgstr "État de la durée limite d'utilisation optimale"
+msgstr "État de durée limite d'utilisation optimale"
 
 msgctxt "field:product.product,shelf_life_time:"
 msgid "Shelf Life Time"
@@ -28,7 +28,7 @@ msgstr "Délai d'expiration"
 
 msgctxt "field:product.template,shelf_life_state:"
 msgid "Shelf Life Time State"
-msgstr "État de la durée limite d'utilisation optimale"
+msgstr "État de durée limite d'utilisation optimale"
 
 msgctxt "field:product.template,shelf_life_time:"
 msgid "Shelf Life Time"
@@ -56,7 +56,7 @@ msgstr "Date limite d'utilisation optimale"
 
 msgctxt "field:stock.lot,shelf_life_expiration_state:"
 msgid "Shelf Life Expiration State"
-msgstr "État de la date limite d'utilisation optimale"
+msgstr "État de date limite d'utilisation optimale"
 
 msgctxt "field:stock.move.add.lots.start.lot,expiration_date:"
 msgid "Expiration Date"
@@ -72,7 +72,7 @@ msgstr "Date limite d'utilisation optimale"
 
 msgctxt "field:stock.move.add.lots.start.lot,shelf_life_expiration_state:"
 msgid "Shelf Life Expiration State"
-msgstr "État de la date limite d'utilisation optimale"
+msgstr "État de date limite d'utilisation optimale"
 
 msgctxt "help:product.product,expiration_time:"
 msgid "In number of days."

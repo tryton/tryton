@@ -13,7 +13,7 @@ msgstr "Secventa Grupului de Plati"
 
 msgctxt "field:account.configuration.payment_group_sequence,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt ""
 "field:account.configuration.payment_group_sequence,payment_group_sequence:"
@@ -23,7 +23,7 @@ msgstr "Secventa Grupului de Plati"
 #, fuzzy
 msgctxt "field:account.configuration.payment_sequence,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 #, fuzzy
 msgctxt "field:account.configuration.payment_sequence,payment_sequence:"
@@ -69,7 +69,7 @@ msgstr "Data"
 
 msgctxt "field:account.move.line.pay.ask_journal,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:account.move.line.pay.ask_journal,currency:"
 msgid "Currency"
@@ -97,7 +97,7 @@ msgstr "Aprobat de"
 
 msgctxt "field:account.payment,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:account.payment,currency:"
 msgid "Currency"
@@ -148,6 +148,10 @@ msgctxt "field:account.payment,reference:"
 msgid "Reference"
 msgstr ""
 
+msgctxt "field:account.payment,reference_type:"
+msgid "Reference Type"
+msgstr ""
+
 msgctxt "field:account.payment,state:"
 msgid "State"
 msgstr "Stare"
@@ -162,7 +166,7 @@ msgstr "Succes Remarcat de"
 
 msgctxt "field:account.payment.group,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:account.payment.group,currency:"
 msgid "Currency"
@@ -206,7 +210,7 @@ msgstr "Metoda de Procesare"
 
 msgctxt "field:account.payment.journal,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:account.payment.journal,currency:"
 msgid "Currency"
@@ -238,7 +242,7 @@ msgstr "Debite Directe"
 
 msgctxt "field:party.party.payment_direct_debit,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:party.party.payment_direct_debit,party:"
 msgid "Party"
@@ -250,7 +254,7 @@ msgstr "Debit Direct"
 
 msgctxt "field:party.party.reception_direct_debit,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:party.party.reception_direct_debit,currency:"
 msgid "Currency"
@@ -582,6 +586,11 @@ msgctxt "model:ir.message,text:msg_payment_reconciled"
 msgid "The line \"%(line)s\" of payment \"%(payment)s\" is already reconciled."
 msgstr "Rândul \"%(line)s\" al plății \"%(payment)s\" este deja reconciliat."
 
+#, fuzzy, python-format
+msgctxt "model:ir.message,text:msg_payment_reference_invalid"
+msgid "The %(type)s \"%(reference)s\" on payment \"%(payment)s\" is not valid."
+msgstr "Rândul \"%(line)s\" al plății \"%(payment)s\" este deja reconciliat."
+
 msgctxt "model:ir.model.button,confirm:payment_process_wizard_button"
 msgid "Are you sure you want to process the payments?"
 msgstr "Sigur doriți să procesați plățile?"
@@ -730,6 +739,10 @@ msgstr "Furnizor"
 msgctxt "selection:account.payment,kind:"
 msgid "Receivable"
 msgstr "Client"
+
+msgctxt "selection:account.payment,reference_type:"
+msgid "Creditor Reference"
+msgstr ""
 
 msgctxt "selection:account.payment,state:"
 msgid "Approved"

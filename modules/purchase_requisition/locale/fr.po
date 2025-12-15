@@ -88,7 +88,7 @@ msgstr "Demande d'achat"
 
 msgctxt "field:purchase.requisition.line,purchase_requisition_state:"
 msgid "Purchase Requisition State"
-msgstr "État de la demande d'achat d'employé"
+msgstr "État de demande d'achat d'employé"
 
 msgctxt "field:purchase.requisition.line,quantity:"
 msgid "Quantity"

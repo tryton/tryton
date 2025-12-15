@@ -34,12 +34,10 @@ msgctxt "model:ir.ui.menu,name:menu_shortened_url_form"
 msgid "Shortened URLs"
 msgstr "URLs escurçades"
 
-#, fuzzy
 msgctxt "model:web.shortened_url,string:"
 msgid "Web Shortened Url"
-msgstr "URL escurçada"
+msgstr "URL escurçada de la web"
 
-#, fuzzy
 msgctxt "model:web.shortened_url.access,string:"
 msgid "Web Shortened Url Access"
-msgstr "URLs escurçades"
+msgstr "Accés a URLs escurçades"

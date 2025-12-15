@@ -118,6 +118,10 @@ msgctxt "help:purchase.request,product_uom_category:"
 msgid "The category of Unit of Measure for the product."
 msgstr "De categorie van de maateenheid van het product."
 
+msgctxt "help:purchase.request,stock_level:"
+msgid "The low stock level in the warehouse prompted the request."
+msgstr "Het verzoek werd ingediend vanwege de lage voorraad in het magazijn."
+
 msgctxt "model:ir.action,name:act_open_purchase_form"
 msgid "Purchases"
 msgstr "Inkopen"
@@ -127,12 +131,12 @@ msgid "Purchase Requests"
 msgstr "Aankoopverzoeken"
 
 msgctxt "model:ir.action,name:act_purchase_request_form"
-msgid "Purchase Requests"
-msgstr "Inkoop Aanvragen"
+msgid "Requests"
+msgstr "Aanvragen"
 
 msgctxt "model:ir.action,name:wizard_create_purchase"
-msgid "Create Purchase"
-msgstr "Inkooporder maken"
+msgid "Create Purchases"
+msgstr "Inkooporders maken"
 
 msgctxt "model:ir.action,name:wizard_purchase_cancellation_handle_exception"
 msgid "Handle Purchase Cancellation"
@@ -190,13 +194,17 @@ msgctxt ""
 msgid "Handle Purchase Cancellation"
 msgstr "Afhandelen inkooporder annuleren"
 
+msgctxt "model:ir.model.button,string:purchase_request_create_purchase_button"
+msgid "Create Purchases"
+msgstr "Inkooporders maken"
+
 msgctxt "model:ir.rule.group,name:rule_group_purchase_request_companies"
 msgid "User in companies"
 msgstr "Gebruiker in het bedrijf"
 
 msgctxt "model:ir.ui.menu,name:menu_purchase_request_form"
-msgid "Purchase Requests"
-msgstr "Aankoopverzoeken"
+msgid "Requests"
+msgstr "Aanvragen"
 
 msgctxt "model:purchase.request,string:"
 msgid "Purchase Request"
@@ -220,7 +228,7 @@ msgstr "Geannuleerd"
 
 msgctxt "selection:purchase.request,state:"
 msgid "Done"
-msgstr "Afgerond"
+msgstr "Gereed"
 
 msgctxt "selection:purchase.request,state:"
 msgid "Draft"

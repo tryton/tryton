@@ -1,0 +1,92 @@
+#
+#, fuzzy
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:sale.rental.add_progress.start,date:"
+msgid "Date"
+msgstr "Datum"
+
+msgctxt "field:sale.rental.line,progresses:"
+msgid "Progresses"
+msgstr "Voortgangen"
+
+msgctxt "field:sale.rental.line-sale.rental.progress,line:"
+msgid "Rental Line"
+msgstr "Verhuur regel"
+
+msgctxt "field:sale.rental.line-sale.rental.progress,progress:"
+msgid "Progress"
+msgstr "Voortgang"
+
+msgctxt "field:sale.rental.progress,date:"
+msgid "Date"
+msgstr "Datum"
+
+msgctxt "field:sale.rental.progress,duration:"
+msgid "Duration"
+msgstr "Duur"
+
+msgctxt "field:sale.rental.progress,invoice_lines:"
+msgid "Invoice Lines"
+msgstr "Factuur regels"
+
+msgctxt "field:sale.rental.progress,line:"
+msgid "Line"
+msgstr "Regel"
+
+msgctxt "field:sale.rental.progress,lines:"
+msgid "Lines"
+msgstr "Regels"
+
+msgctxt "field:sale.rental.progress,previous:"
+msgid "Previous"
+msgstr "Vorige"
+
+msgctxt "field:sale.rental.progress,rental:"
+msgid "Rental"
+msgstr "Verhuur"
+
+msgctxt "model:ir.action,name:wizard_sale_rental_add_progress"
+msgid "Add Rental Progress"
+msgstr "Voeg huur voortgang toe"
+
+msgctxt "model:ir.message,text:msg_sale_rental_progress_line_previous"
+msgid "A rental progress date can not have both a line and a previous."
+msgstr ""
+"Een datum voor de huur voortgang mag niet beide een regel als een vorige "
+"hebben."
+
+msgctxt "model:ir.message,text:msg_sale_rental_progress_line_unique"
+msgid "A rental line can start only one progress date chain."
+msgstr "Een verhuur regel kan slechts één voortgangsdatumketen starten."
+
+msgctxt "model:ir.message,text:msg_sale_rental_progress_previous_unique"
+msgid "A rental progress date can be parent only once."
+msgstr ""
+"Een datum voor de voortgang van een verhuur kan slechts één keer door de "
+"ouder worden opgegeven."
+
+msgctxt "model:ir.model.button,string:sale_rental_add_progress_button"
+msgid "Add Progress"
+msgstr "Voortgang toevoegen"
+
+msgctxt "model:sale.rental.add_progress.start,string:"
+msgid "Sale Rental Add Progress Start"
+msgstr "Verkoop verhuur voortgang toevoegen start"
+
+msgctxt "model:sale.rental.line-sale.rental.progress,string:"
+msgid "Sale Rental Line - Sale Rental Progress"
+msgstr "Verkoop verhuur regel - Verkoop verhuur voortgang"
+
+msgctxt "model:sale.rental.progress,string:"
+msgid "Sale Rental Progress"
+msgstr "Verkoop verhuur voortgang"
+
+msgctxt "wizard_button:sale.rental.add_progress,start,add:"
+msgid "Add"
+msgstr "Toevoegen"
+
+msgctxt "wizard_button:sale.rental.add_progress,start,end:"
+msgid "Cancel"
+msgstr "Annuleer"

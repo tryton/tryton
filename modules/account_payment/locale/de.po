@@ -143,6 +143,10 @@ msgctxt "field:account.payment,reference:"
 msgid "Reference"
 msgstr "Referenz"
 
+msgctxt "field:account.payment,reference_type:"
+msgid "Reference Type"
+msgstr "Referenztyp"
+
 msgctxt "field:account.payment,state:"
 msgid "State"
 msgstr "Status"
@@ -337,7 +341,7 @@ msgstr "Eine Zahlung pro Position durchführen."
 
 msgctxt "model:account.configuration.payment_group_sequence,string:"
 msgid "Account Configuration Payment Group Sequence"
-msgstr "Buchhaltung Einstellungen Zahlungsgruppe Nummernkreis"
+msgstr "Buchhaltung Einstellungen Zahlungslauf Nummernkreis"
 
 msgctxt "model:account.configuration.payment_sequence,string:"
 msgid "Account Configuration Payment Sequence"
@@ -361,7 +365,7 @@ msgstr "Buchhaltung Zahlung"
 
 msgctxt "model:account.payment.group,string:"
 msgid "Account Payment Group"
-msgstr "Buchhaltung Zahlungsgruppe"
+msgstr "Buchhaltung Zahlungslauf"
 
 msgctxt "model:account.payment.journal,string:"
 msgid "Account Payment Journal"
@@ -583,6 +587,11 @@ msgstr ""
 "Die Buchungszeile \"%(line)s\" der Zahlung \"%(payment)s\" ist bereits "
 "abgestimmt."
 
+#, python-format
+msgctxt "model:ir.message,text:msg_payment_reference_invalid"
+msgid "The %(type)s \"%(reference)s\" on payment \"%(payment)s\" is not valid."
+msgstr "Der %(type)s \"%(reference)s\" auf Zahlung \"%(payment)s\" ist ungültig."
+
 msgctxt "model:ir.model.button,confirm:payment_process_wizard_button"
 msgid "Are you sure you want to process the payments?"
 msgstr "Sollen die Zahlungen ausgeführt werden?"
@@ -727,6 +736,10 @@ msgstr "Verbindlichkeiten"
 msgctxt "selection:account.payment,kind:"
 msgid "Receivable"
 msgstr "Forderungen"
+
+msgctxt "selection:account.payment,reference_type:"
+msgid "Creditor Reference"
+msgstr "Gläubigerreferenz"
 
 msgctxt "selection:account.payment,state:"
 msgid "Approved"

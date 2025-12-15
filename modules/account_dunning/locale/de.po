@@ -146,8 +146,11 @@ msgid "Create dunning up to this date."
 msgstr "Mahnungen bis zu diesem Stichtag erstellen."
 
 msgctxt "help:account.dunning.level,overdue:"
-msgid "When the level should be applied."
-msgstr "Wann die Mahnstufe angewendet werden soll."
+msgid ""
+"The delay from the maturity date after which the level should be applied."
+msgstr ""
+"Die Verzögerung über das Fälligkeitsdatum hinaus, nach dem die Mahnstufe "
+"angewendet werden soll."
 
 msgctxt "help:account.dunning.procedure,name:"
 msgid "The main identifier of the Dunning Procedure."

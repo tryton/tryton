@@ -1,0 +1,72 @@
+#
+#, fuzzy
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "model:edocument.ubl.invoice,string:"
+msgid "Edocument Ubl Invoice"
+msgstr "E-document UBL Factuur"
+
+#, python-format
+msgctxt "model:ir.message,text:msg_company_not_found"
+msgid ""
+"Could not find the company for:\n"
+"%(company)s"
+msgstr ""
+"Kan het bedrijf niet vinden voor:\n"
+"%(company)s"
+
+#, python-format
+msgctxt "model:ir.message,text:msg_credit_note_type_code_unsupported"
+msgid "Unsupported credit note type code \"%(type_code)s\"."
+msgstr "Creditnota code \"%(type_code)s\" is niet ondersteund."
+
+#, python-format
+msgctxt "model:ir.message,text:msg_currency_not_found"
+msgid "Could not find a currency with code \"%(code)s\"."
+msgstr "Er kon geen valuta gevonden worden met code \"%(code)s\"."
+
+#, python-format
+msgctxt "model:ir.message,text:msg_invoice_tax_amount_different"
+msgid ""
+"The tax amount %(tax_amount)s of the invoice \"%(invoice)s\" is different "
+"from the tax total %(tax_total)s."
+msgstr ""
+"Het belastingbedrag %(tax_amount)s van de factuur \"%(invoice)s\" verschilt "
+"van het totale belastingbedrag %(tax_total)s."
+
+#, python-format
+msgctxt "model:ir.message,text:msg_invoice_total_amount_different"
+msgid ""
+"The total amount %(total_amount)s of the invoice \"%(invoice)s\" is "
+"different from the amount %(amount)s."
+msgstr ""
+"Het totaalbedrag %(total_amount)s van de factuur \"%(invoice)s\" verschilt "
+"van het bedrag %(amount)s."
+
+#, python-format
+msgctxt "model:ir.message,text:msg_invoice_type_code_unsupported"
+msgid "Unsupported invoice type code \"%(type_code)s\"."
+msgstr "Factuur code \"%(type_code)s\" is niet ondersteund."
+
+#, python-format
+msgctxt "model:ir.message,text:msg_tax_not_found"
+msgid ""
+"Could not find tax for:\n"
+"%(tax_category)s"
+msgstr ""
+"Geen belasting gevonden voor:\n"
+"%(tax_category)s"
+
+#, python-format
+msgctxt "model:ir.message,text:msg_unit_not_found"
+msgid "Could not find a unit with UNECE code \"%(code)s\"."
+msgstr "Er kon geen eenheid met UNECE-code \"%(code)s\" worden gevonden."
+
+msgctxt "selection:account.invoice.edocument.start,format:"
+msgid "UBL"
+msgstr "UBL"
+
+msgctxt "selection:document.incoming,type:"
+msgid "UBL Invoice/Credit Note"
+msgstr "UBL-factuur/creditnota"

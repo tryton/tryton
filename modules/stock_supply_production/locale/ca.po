@@ -23,7 +23,6 @@ msgctxt "model:ir.message,text:msg_late_productions"
 msgid "There are some productions that are late."
 msgstr "Hi ha algunes produccions endarrerides."
 
-#, fuzzy
 msgctxt "model:production.configuration.supply_period,string:"
 msgid "Production Configuration Supply Period"
 msgstr "Configuració del període de subministre de la producció"

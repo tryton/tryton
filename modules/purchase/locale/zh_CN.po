@@ -571,6 +571,11 @@ msgctxt "field:purchase.reporting.product.time_series,product:"
 msgid "Product"
 msgstr "产品"
 
+#, fuzzy
+msgctxt "field:purchase.reporting.product.time_series,product_currency:"
+msgid "Product - Currency"
+msgstr "参与方-供应商货币"
+
 msgctxt "field:purchase.reporting.product.time_series,product_supplier:"
 msgid "Supplier's Product"
 msgstr "供应商产品"
@@ -582,6 +587,11 @@ msgstr "供货商"
 msgctxt "field:purchase.reporting.supplier.time_series,supplier:"
 msgid "Supplier"
 msgstr "供货商"
+
+#, fuzzy
+msgctxt "field:purchase.reporting.supplier.time_series,supplier_currency:"
+msgid "Supplier - Currency"
+msgstr "供应商货币"
 
 msgctxt "field:stock.location,supplier_return_location:"
 msgid "Supplier Return"
@@ -974,10 +984,11 @@ msgid ""
 "party \"%(party)s\"."
 msgstr "要处理采购 \"%(purchase)s\" ， 你必须设置参与者\"%(party)s\"对应的供应商位置 ."
 
-#, python-format
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_warehouse_required_for_quotation"
 msgid ""
-"To get a quote for the purchase \"%(purchase)s\" you must enter a warehouse."
+"To get a quote for the purchase \"%(purchase)s\" you must enter a warehouse "
+"for the line \"%(line)s\"."
 msgstr "要获取资产或货物采购 \"%(purchase)s\"对应的报价，你必须进入仓库."
 
 msgctxt "model:ir.model.button,string:purchase_cancel_button"
@@ -1253,8 +1264,9 @@ msgctxt "report:purchase.purchase:"
 msgid "Draft Purchase Order"
 msgstr "采购订单草案"
 
+#, fuzzy
 msgctxt "report:purchase.purchase:"
-msgid "Purchase Order N°:"
+msgid "Purchase Order No:"
 msgstr "采购订单 N°:"
 
 msgctxt "report:purchase.purchase:"
@@ -1265,8 +1277,9 @@ msgctxt "report:purchase.purchase:"
 msgid "Reference:"
 msgstr "参考:"
 
+#, fuzzy
 msgctxt "report:purchase.purchase:"
-msgid "Request for Quotation N°:"
+msgid "Request for Quotation No:"
 msgstr "报价申请 N°:"
 
 msgctxt "report:purchase.purchase:"

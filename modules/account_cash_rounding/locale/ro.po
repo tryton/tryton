@@ -30,7 +30,7 @@ msgstr "Rotunjire Cash Cont Debit"
 
 msgctxt "field:account.configuration.cash_rounding_account,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:account.invoice,cash_rounding:"
 msgid "Cash Rounding"

@@ -145,7 +145,7 @@ msgstr "Directe leveringen"
 
 msgctxt "model:ir.action,name:act_sale_shipments_relate"
 msgid "Sales"
-msgstr "Verkoop"
+msgstr "Verkopen"
 
 msgctxt "model:ir.action,name:act_shipment_drop_form"
 msgid "Drop Shipments"

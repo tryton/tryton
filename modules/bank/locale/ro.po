@@ -65,7 +65,7 @@ msgstr "Conturi Bancare"
 
 msgctxt "help:bank,bic:"
 msgid "Bank/Business Identifier Code."
-msgstr "Banca/Cod Identificare Companie."
+msgstr "Banca/Cod Identificare Societate."
 
 msgctxt "help:bank.account,bank:"
 msgid "The bank where the account is open."

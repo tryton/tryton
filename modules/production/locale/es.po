@@ -98,6 +98,10 @@ msgctxt "field:production,state:"
 msgid "State"
 msgstr "Estado"
 
+msgctxt "field:production,type:"
+msgid "Type"
+msgstr "Tipo"
+
 msgctxt "field:production,unit:"
 msgid "Unit"
 msgstr "Unidad"
@@ -118,6 +122,10 @@ msgctxt "field:production.bom,code_readonly:"
 msgid "Code Readonly"
 msgstr "Código sólo lectura"
 
+msgctxt "field:production.bom,input_products:"
+msgid "Input Products"
+msgstr "Productos entrada"
+
 msgctxt "field:production.bom,inputs:"
 msgid "Input Materials"
 msgstr "Materiales entrantes"
@@ -134,9 +142,25 @@ msgctxt "field:production.bom,outputs:"
 msgid "Output Materials"
 msgstr "Materiales salientes"
 
+msgctxt "field:production.bom,phantom:"
+msgid "Phantom"
+msgstr "Fantasma"
+
+msgctxt "field:production.bom,phantom_quantity:"
+msgid "Quantity"
+msgstr "Cantidad"
+
+msgctxt "field:production.bom,phantom_unit:"
+msgid "Unit"
+msgstr "Unidad"
+
 msgctxt "field:production.bom.input,bom:"
 msgid "BOM"
 msgstr "LdM"
+
+msgctxt "field:production.bom.input,phantom_bom:"
+msgid "Phantom BOM"
+msgstr "LdM fanstasma"
 
 msgctxt "field:production.bom.input,product:"
 msgid "Product"
@@ -157,6 +181,10 @@ msgstr "Categoría de UdM"
 msgctxt "field:production.bom.output,bom:"
 msgid "BOM"
 msgstr "LdM"
+
+msgctxt "field:production.bom.output,phantom_bom:"
+msgid "Phantom BOM"
+msgstr "LdM fanstasma"
 
 msgctxt "field:production.bom.output,product:"
 msgid "Product"
@@ -291,6 +319,18 @@ msgctxt "help:production,uom_category:"
 msgid "The category of Unit of Measure."
 msgstr "La categoria de la unidad de medida."
 
+msgctxt "help:production.bom,phantom:"
+msgid "If checked, the BoM can be used in another BoM."
+msgstr "Si se marca, la LdM se puede usar en otra LdM."
+
+msgctxt "help:production.bom,phantom_quantity:"
+msgid "The quantity of the Phantom BoM"
+msgstr "La cantidad de la LdM fantasma"
+
+msgctxt "help:production.bom,phantom_unit:"
+msgid "The Unit of Measure of the Phantom BoM"
+msgstr "La unidad de medida de la LdM fantasma"
+
 msgctxt "help:production.configuration,bom_sequence:"
 msgid "Used to generate the BOM code."
 msgstr "Utilizado para generar el código de la LdM."
@@ -398,7 +438,12 @@ msgstr ""
 "ningún precio de venta definido."
 
 #, python-format
-msgctxt "model:ir.message,text:msg_recursive_bom"
+msgctxt "model:ir.message,text:msg_recursive_bom_bom"
+msgid "You cannot create a recursive BOM for BOM \"%(bom)s\"."
+msgstr "No puede crear una LdM recursiva para la LdM \"%(bom)s\"."
+
+#, python-format
+msgctxt "model:ir.message,text:msg_recursive_bom_product"
 msgid "You cannot create a recursive BOM for product \"%(product)s\"."
 msgstr "No puede crear una LdM recursiva para el producto \"%(product)s\"."
 
@@ -572,9 +617,25 @@ msgctxt "selection:production,state:"
 msgid "Waiting"
 msgstr "En espera"
 
+msgctxt "selection:production,type:"
+msgid "Assembly"
+msgstr "Montaje"
+
+msgctxt "selection:production,type:"
+msgid "Disassembly"
+msgstr "Desmontaje"
+
 msgctxt "view:product.template:"
 msgid "Production"
 msgstr "Producción"
+
+msgctxt "view:production.bom.input:"
+msgid "Material"
+msgstr "Material"
+
+msgctxt "view:production.bom.output:"
+msgid "Material"
+msgstr "Materiales"
 
 msgctxt "view:production.bom:"
 msgid "Lines"

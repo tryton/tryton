@@ -8,7 +8,7 @@ msgstr ""
 
 msgctxt "field:account.configuration.landed_cost_sequence,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt ""
 "field:account.configuration.landed_cost_sequence,landed_cost_sequence:"
@@ -29,7 +29,7 @@ msgstr ""
 
 msgctxt "field:account.landed_cost,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:account.landed_cost,factors:"
 msgid "Factors"

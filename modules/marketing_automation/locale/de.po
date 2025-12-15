@@ -320,7 +320,7 @@ msgstr ""
 
 msgctxt "help:marketing.automation.scenario,unsubscribable:"
 msgid "If checked parties are also unsubscribed from the scenario."
-msgstr "Wenn ausgewählt, dann werden Parteien auch vom Szenario abgemeldet."
+msgstr "Bei Aktivierung werden Parteien auch vom Szenario abgemeldet."
 
 msgctxt "model:ir.action,name:act_activity_tree"
 msgid "Activities"

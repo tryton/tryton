@@ -36,7 +36,7 @@ msgstr "Vente"
 
 msgctxt "field:sale.carriage,sale_state:"
 msgid "Sale State"
-msgstr "État de la vente"
+msgstr "État de vente"
 
 msgctxt "field:sale.carriage,to:"
 msgid "To"

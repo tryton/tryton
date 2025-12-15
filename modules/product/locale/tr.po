@@ -104,6 +104,11 @@ msgctxt "field:product.list_price,list_price:"
 msgid "List Price"
 msgstr "Liste Fiyatı"
 
+#, fuzzy
+msgctxt "field:product.list_price,product:"
+msgid "Product"
+msgstr "Ürün"
+
 msgctxt "field:product.list_price,template:"
 msgid "Template"
 msgstr "Şablon"
@@ -174,6 +179,11 @@ msgctxt "field:product.product,list_price_uom:"
 msgid "List Price"
 msgstr "Liste Fiyatı"
 
+#, fuzzy
+msgctxt "field:product.product,list_price_used:"
+msgid "List Price"
+msgstr "Liste Fiyatı"
+
 msgctxt "field:product.product,list_prices:"
 msgid "List Prices"
 msgstr "Liste Fiyatları"
@@ -181,6 +191,11 @@ msgstr "Liste Fiyatları"
 msgctxt "field:product.product,name:"
 msgid "Name"
 msgstr "Ad"
+
+#, fuzzy
+msgctxt "field:product.product,position:"
+msgid "Position"
+msgstr "Tanım"
 
 msgctxt "field:product.product,prefix_code:"
 msgid "Prefix Code"
@@ -413,7 +428,17 @@ msgid "Other identifiers associated with the variant."
 msgstr ""
 
 msgctxt "help:product.product,list_price:"
-msgid "The standard price the product is sold at."
+msgid ""
+"The standard price the variant is sold at.\n"
+"Leave empty to use the list price of the product."
+msgstr ""
+
+msgctxt "help:product.product,list_price_used:"
+msgid "The standard price the variant is sold at."
+msgstr ""
+
+msgctxt "help:product.product,position:"
+msgid "The order of the variant in the list of variants on product."
 msgstr ""
 
 msgctxt "help:product.product,replaced_by:"
@@ -571,6 +596,11 @@ msgstr ""
 #, python-format
 msgctxt "model:ir.message,text:msg_invalid_code"
 msgid "The %(type)s \"%(code)s\" for product \"%(product)s\" is not valid."
+msgstr ""
+
+#, python-format
+msgctxt "model:ir.message,text:msg_product_change_template"
+msgid "You cannot change the template of the product \"%(product)s\"."
 msgstr ""
 
 msgctxt "model:ir.message,text:msg_product_code_unique"

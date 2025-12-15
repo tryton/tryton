@@ -38,9 +38,21 @@ msgctxt "field:carrier.credential.ups,server:"
 msgid "Server"
 msgstr "Server"
 
+msgctxt "field:carrier.credential.ups,use_international_forms:"
+msgid "Use International Forms"
+msgstr "Gebruik internationale formulieren"
+
 msgctxt "field:carrier.credential.ups,use_metric:"
 msgid "Use Metric"
 msgstr "Gebruik metrische eenheden"
+
+msgctxt "field:customs.agent,ups_account_number:"
+msgid "UPS Account Number"
+msgstr "UPS rekeningnummer"
+
+msgctxt "field:product.uom,ups_code:"
+msgid "UPS Code"
+msgstr "UPS code"
 
 msgctxt "field:stock.package.type,ups_code:"
 msgid "UPS Code"
@@ -57,6 +69,10 @@ msgstr "Maak een UPS-verzending voor de pakketten"
 msgctxt "model:ir.action,name:act_ups_credential_form"
 msgid "UPS Credentials"
 msgstr "UPS aanmeldgegevens"
+
+msgctxt "model:ir.message,text:msg_general_merchandise"
+msgid "General Merchandise"
+msgstr "Standaard goederen"
 
 #, python-format
 msgctxt "model:ir.message,text:msg_phone_required"
@@ -75,15 +91,6 @@ msgid ""
 msgstr ""
 "U kunt geen verzending voor zending \"%(shipment)s\" maken omdat deze al een"
 " referentienummer heeft."
-
-#, python-format
-msgctxt "model:ir.message,text:msg_shipping_description_required"
-msgid ""
-"To validate shipment \"%(shipment)s\" you must fill its shipping "
-"description."
-msgstr ""
-"Om verzending \"%(shipment)s\" te valideren, moet u de verzendomschrijving "
-"invullen."
 
 msgctxt "model:ir.message,text:msg_ups_credential_modified"
 msgid "Are you sure you want to modify UPS credentials?"
@@ -150,6 +157,166 @@ msgstr "Productie"
 msgctxt "selection:carrier.credential.ups,server:"
 msgid "Testing"
 msgstr "Testen"
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Bag"
+msgstr "Zak"
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Barrel"
+msgstr "Ton"
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Bolt"
+msgstr "Bout"
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Box"
+msgstr "Doos"
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Bunch"
+msgstr "Bos"
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Bundle"
+msgstr "Bundel"
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Butt"
+msgstr "Fust"
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Canister"
+msgstr "Blik"
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Carton"
+msgstr "Kartonnen doos"
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Case"
+msgstr "Koker"
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Centimeter"
+msgstr "Centimeter"
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Container"
+msgstr "Container"
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Crate"
+msgstr "Krat"
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Cylinder"
+msgstr "Cilinder"
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Dozen"
+msgstr "Dozijn"
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Each"
+msgstr "Elk"
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Envelope"
+msgstr "Envelop"
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Feet"
+msgstr "Voeten"
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Kilogram"
+msgstr "Kilogram"
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Kilograms"
+msgstr "Kilogrammen"
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Liter"
+msgstr "Liter"
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Meter"
+msgstr "Meter"
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Number"
+msgstr "Nummer"
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Other"
+msgstr "Overig"
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Package"
+msgstr "Verpakking"
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Packet"
+msgstr "Pakket"
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Pair"
+msgstr "Paar"
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Pairs"
+msgstr "Paren"
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Pallet"
+msgstr "Pallet"
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Piece"
+msgstr "Deel"
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Pieces"
+msgstr "Delen"
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Pound"
+msgstr "Pond"
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Pounds"
+msgstr "Ponden"
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Proof Liters"
+msgstr "Bewezen liters"
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Roll"
+msgstr "Rollen"
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Set"
+msgstr "Groep"
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Square Meters"
+msgstr "Vierkante meters"
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Square Yards"
+msgstr "Vierkante yards"
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Tube"
+msgstr "Buis"
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Yard"
+msgstr "Yard"
 
 msgctxt "view:carrier.credential.ups:"
 msgid "Credential Information"

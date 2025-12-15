@@ -554,6 +554,9 @@ msgstr ""
 msgid "#ERROR"
 msgstr "#错误"
 
+msgid "Failed to copy text to clipboard: %1"
+msgstr ""
+
 msgid "More"
 msgstr "更多"
 
@@ -779,6 +782,9 @@ msgstr "切换声音"
 msgid "Wizard"
 msgstr "向导"
 
+msgid "Toggle notification"
+msgstr ""
+
 msgid "Enter a message"
 msgstr ""
 
@@ -786,6 +792,12 @@ msgid "Submit the message"
 msgstr ""
 
 msgid "Make this an internal message"
+msgstr ""
+
+msgid "All Notifications..."
+msgstr ""
+
+msgid "Preferences..."
 msgstr ""
 
 msgid "Translate view"

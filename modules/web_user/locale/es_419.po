@@ -178,11 +178,3 @@ msgstr ""
 msgctxt "report:web.user.email_validation:"
 msgid "Validate"
 msgstr ""
-
-msgctxt "view:web.user:"
-msgid "Reset Password"
-msgstr ""
-
-msgctxt "view:web.user:"
-msgid "Validate Email"
-msgstr ""

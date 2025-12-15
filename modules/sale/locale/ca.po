@@ -144,7 +144,7 @@ msgstr "Processa les vendes desprès de"
 
 msgctxt "field:sale.configuration,sale_quotation_validity:"
 msgid "Sale Quotation Validity"
-msgstr ""
+msgstr "Validesa del pressupost de venda"
 
 msgctxt "field:sale.configuration,sale_sequence:"
 msgid "Sale Sequence"
@@ -156,7 +156,7 @@ msgstr "Mètode d'enviament"
 
 msgctxt "field:sale.configuration.quotation,sale_quotation_validity:"
 msgid "Sale Quotation Validity"
-msgstr ""
+msgstr "Validesa del pressupost de venda"
 
 msgctxt "field:sale.configuration.sale_method,sale_invoice_method:"
 msgid "Sale Invoice Method"
@@ -574,20 +574,17 @@ msgctxt "field:sale.sale,payment_term:"
 msgid "Payment Term"
 msgstr "Termini de pagament"
 
-#, fuzzy
 msgctxt "field:sale.sale,quotation_date:"
 msgid "Quotation Date"
-msgstr "Pressupost"
+msgstr "Data pressupost"
 
-#, fuzzy
 msgctxt "field:sale.sale,quotation_expire:"
 msgid "Quotation Expire"
-msgstr "Pressupost"
+msgstr "Venciment pressupost"
 
-#, fuzzy
 msgctxt "field:sale.sale,quotation_validity:"
 msgid "Quotation Validity"
-msgstr "Pressupost"
+msgstr "Validesa del pressupost"
 
 msgctxt "field:sale.sale,quoted_by:"
 msgid "Quoted By"
@@ -780,15 +777,15 @@ msgstr "La categoria de la unitat de mesura del producte."
 
 msgctxt "help:sale.sale,quotation_date:"
 msgid "When the quotation was edited."
-msgstr ""
+msgstr "Quan es va editar el pressupost."
 
 msgctxt "help:sale.sale,quotation_expire:"
 msgid "Until when the quotation is still valid."
-msgstr ""
+msgstr "Fins quan el pressupost encara es vàlid."
 
 msgctxt "help:sale.sale,quotation_validity:"
 msgid "How much time the quotation is valid."
-msgstr ""
+msgstr "Quant de temps és vàlid el pressupost."
 
 msgctxt "help:sale.sale,shipping_date:"
 msgid "When the shipping of goods should start."
@@ -926,7 +923,6 @@ msgctxt "model:ir.action,name:wizard_return_sale"
 msgid "Return Sale"
 msgstr "Retorna la venda"
 
-#, fuzzy
 msgctxt "model:ir.action,name:wizard_sale_open_product"
 msgid "Products"
 msgstr "Productes"
@@ -1142,10 +1138,12 @@ msgstr ""
 
 #, python-format
 msgctxt "model:ir.message,text:msg_sale_warehouse_required_for_quotation"
-msgid "To get a quote for sale \"%(sale)s\" you must enter a warehouse."
+msgid ""
+"To get a quote for sale \"%(sale)s\" you must enter a warehouse for the line"
+" \"%(line)s\"."
 msgstr ""
 "Per obtenir un pressupost de la venda \"%(sale)s\" heu d'introduir un "
-"magatzem."
+"magatzem per la línia \"%(line)s\"."
 
 msgctxt "model:ir.model.button,string:sale_cancel_button"
 msgid "Cancel"
@@ -1288,27 +1286,22 @@ msgctxt "model:ir.ui.menu,name:menu_sale_form"
 msgid "Sales"
 msgstr "Vendes"
 
-#, fuzzy
 msgctxt "model:party.party.customer_currency,string:"
 msgid "Party Customer Currency"
 msgstr "Monedes de client per tercer"
 
-#, fuzzy
 msgctxt "model:party.party.sale_method,string:"
 msgid "Party Sale Method"
 msgstr "Mètode de venda del tercer"
 
-#, fuzzy
 msgctxt "model:product.configuration.default_lead_time,string:"
 msgid "Product Configuration Default Lead Time"
 msgstr "Temps d'enviament per defecte del producte"
 
-#, fuzzy
 msgctxt "model:product.lead_time,string:"
 msgid "Product Lead Time"
 msgstr "Temps d'enviament del producte"
 
-#, fuzzy
 msgctxt "model:product.sale.context,string:"
 msgid "Product Sale Context"
 msgstr "Context productes vendibles"
@@ -1321,167 +1314,134 @@ msgctxt "model:res.group,name:group_sale_admin"
 msgid "Sales Administrator"
 msgstr "Administració de vendes"
 
-#, fuzzy
 msgctxt "model:sale.configuration,string:"
 msgid "Sale Configuration"
 msgstr "Configuració de les vendes"
 
-#, fuzzy
 msgctxt "model:sale.configuration.quotation,string:"
 msgid "Sale Configuration Quotation"
-msgstr "Configuració de les vendes"
+msgstr "Configuració dels presupostos de venta"
 
-#, fuzzy
 msgctxt "model:sale.configuration.sale_method,string:"
 msgid "Sale Configuration Sale Method"
 msgstr "Configuració del mètode de venda"
 
-#, fuzzy
 msgctxt "model:sale.configuration.sequence,string:"
 msgid "Sale Configuration Sequence"
 msgstr "Configuració de les seqüencies de venda"
 
-#, fuzzy
 msgctxt "model:sale.handle.invoice.exception.ask,string:"
 msgid "Sale Handle Invoice Exception Ask"
-msgstr "Gestiona l'excepció de factura"
+msgstr "Pregunta gestiona l'excepció de factura"
 
-#, fuzzy
 msgctxt "model:sale.handle.shipment.exception.ask,string:"
 msgid "Sale Handle Shipment Exception Ask"
-msgstr "Gestiona l'excepció d'enviament"
+msgstr "Pregunta gestiona l'excepció d'enviament"
 
-#, fuzzy
 msgctxt "model:sale.line,string:"
 msgid "Sale Line"
 msgstr "Línia de venta"
 
-#, fuzzy
 msgctxt "model:sale.line-account.tax,string:"
 msgid "Sale Line - Account Tax"
 msgstr "Línia de venda - Impost"
 
-#, fuzzy
 msgctxt "model:sale.line-ignored-stock.move,string:"
 msgid "Sale Line - Ignored - Stock Move"
 msgstr "Línia de venda - Moviment ignorat"
 
-#, fuzzy
 msgctxt "model:sale.line-recreated-stock.move,string:"
 msgid "Sale Line - Recreated - Stock Move"
 msgstr "Línia de venda - Moviment recreat"
 
-#, fuzzy
 msgctxt "model:sale.reporting.context,string:"
 msgid "Sale Reporting Context"
 msgstr "Context informe de vendes"
 
-#, fuzzy
 msgctxt "model:sale.reporting.country,string:"
 msgid "Sale Reporting Country"
 msgstr "Informe de vendes per país"
 
-#, fuzzy
 msgctxt "model:sale.reporting.country.subdivision,string:"
 msgid "Sale Reporting Country Subdivision"
 msgstr "Informe de vendes per subdivisió"
 
-#, fuzzy
 msgctxt "model:sale.reporting.country.subdivision.time_series,string:"
 msgid "Sale Reporting Country Subdivision Time Series"
-msgstr "Informe de vendes per subdivisió"
+msgstr "Informe de vendes per subdivisió serie temporal"
 
-#, fuzzy
 msgctxt "model:sale.reporting.country.time_series,string:"
 msgid "Sale Reporting Country Time Series"
-msgstr "Informe de vendes per país"
+msgstr "Informe de vendes per país serie temporal"
 
-#, fuzzy
 msgctxt "model:sale.reporting.country.tree,string:"
 msgid "Sale Reporting Country Tree"
-msgstr "Informe de vendes per país"
+msgstr "Informe de vendes per país en arbre"
 
-#, fuzzy
 msgctxt "model:sale.reporting.customer,string:"
 msgid "Sale Reporting Customer"
 msgstr "Informe de vendes per client"
 
-#, fuzzy
 msgctxt "model:sale.reporting.customer.category,string:"
 msgid "Sale Reporting Customer Category"
 msgstr "Informe de vendes per categoria de client"
 
-#, fuzzy
 msgctxt "model:sale.reporting.customer.category.time_series,string:"
 msgid "Sale Reporting Customer Category Time Series"
-msgstr "Informe de vendes per categoria de client"
+msgstr "Informe de vendes per categoria de client sèries temporals"
 
-#, fuzzy
 msgctxt "model:sale.reporting.customer.category.tree,string:"
 msgid "Sale Reporting Customer Category Tree"
-msgstr "Informe de vendes per categoria de client"
+msgstr "Informe de vendes per categoria de client en arbre"
 
-#, fuzzy
 msgctxt "model:sale.reporting.customer.time_series,string:"
 msgid "Sale Reporting Customer Time Series"
-msgstr "Informe de vendes per client"
+msgstr "Informe de vendes per client sèries temporal"
 
-#, fuzzy
 msgctxt "model:sale.reporting.main,string:"
 msgid "Sale Reporting Main"
-msgstr "Informes de venda"
+msgstr "Informe principal de venda"
 
-#, fuzzy
 msgctxt "model:sale.reporting.main.time_series,string:"
 msgid "Sale Reporting Main Time Series"
-msgstr "Informe de vendes per regió"
+msgstr "Informe de vendes per regió sèries temporals"
 
-#, fuzzy
 msgctxt "model:sale.reporting.product,string:"
 msgid "Sale Reporting Product"
 msgstr "Informe de vendes per producte"
 
-#, fuzzy
 msgctxt "model:sale.reporting.product.category,string:"
 msgid "Sale Reporting Product Category"
 msgstr "Informe de vendes per categoria de producte"
 
-#, fuzzy
 msgctxt "model:sale.reporting.product.category.time_series,string:"
 msgid "Sale Reporting Product Category Time Series"
-msgstr "Informe de vendes per categoria de producte"
+msgstr "Informe de vendes per categoria de producte sèries temporals"
 
-#, fuzzy
 msgctxt "model:sale.reporting.product.category.tree,string:"
 msgid "Sale Reporting Product Category Tree"
-msgstr "Informe de vendes per categoria de producte"
+msgstr "Informe de vendes per categoria de producte en arbre"
 
-#, fuzzy
 msgctxt "model:sale.reporting.product.time_series,string:"
 msgid "Sale Reporting Product Time Series"
-msgstr "Informe de vendes per producte"
+msgstr "Informes de vendes per producte sèries temporals"
 
-#, fuzzy
 msgctxt "model:sale.reporting.region.tree,string:"
 msgid "Sale Reporting Region Tree"
-msgstr "Informe de vendes per regió"
+msgstr "Informe de vendes per regió en arbre"
 
-#, fuzzy
 msgctxt "model:sale.return_sale.start,string:"
 msgid "Sale Return Sale Start"
-msgstr "Retorna la venda"
+msgstr "Inici retorna la venda"
 
-#, fuzzy
 msgctxt "model:sale.sale,string:"
 msgid "Sale"
 msgstr "Venda"
 
-#, fuzzy
 msgctxt "model:sale.sale-ignored-account.invoice,string:"
 msgid "Sale - Ignored - Account Invoice"
 msgstr "Venda - Factura ignorada"
 
-#, fuzzy
 msgctxt "model:sale.sale-recreated-account.invoice,string:"
 msgid "Sale - Recreated - Account Invoice"
 msgstr "Venda - Factura recreada"
@@ -1514,17 +1474,16 @@ msgctxt "report:sale.sale:"
 msgid "Draft Sale Order"
 msgstr "Venda esborrany"
 
-#, fuzzy
 msgctxt "report:sale.sale:"
 msgid "Expiration Date:"
-msgstr "Estat d'excepció"
+msgstr "Data d'expiració:"
 
 msgctxt "report:sale.sale:"
 msgid "Quantity"
 msgstr "Quantitat"
 
 msgctxt "report:sale.sale:"
-msgid "Quotation N°:"
+msgid "Quotation No:"
 msgstr "Pressupost Núm.:"
 
 msgctxt "report:sale.sale:"
@@ -1532,7 +1491,7 @@ msgid "Reference:"
 msgstr "Referència:"
 
 msgctxt "report:sale.sale:"
-msgid "Sale Order N°:"
+msgid "Sale Order No:"
 msgstr "Venta Núm.:"
 
 msgctxt "report:sale.sale:"
@@ -1565,7 +1524,7 @@ msgstr "Recreada"
 
 msgctxt "selection:ir.cron,method:"
 msgid "Cancel Expired Sale Quotation"
-msgstr ""
+msgstr "Cancelar pressupostos de venta expirats"
 
 msgctxt "selection:sale.line,type:"
 msgid "Comment"

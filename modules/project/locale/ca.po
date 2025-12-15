@@ -248,7 +248,6 @@ msgctxt "model:ir.ui.menu,name:menu_work_tree"
 msgid "Works Efforts"
 msgstr "Arbre de projectes i tasques"
 
-#, fuzzy
 msgctxt "model:project.work,string:"
 msgid "Project Work"
 msgstr "Projecte"
@@ -261,10 +260,9 @@ msgctxt "model:project.work.status,name:work_open_status"
 msgid "Open"
 msgstr "Obert"
 
-#, fuzzy
 msgctxt "model:project.work.status,string:"
 msgid "Project Work Status"
-msgstr "Estat del treball"
+msgstr "Estat del projecte"
 
 msgctxt "model:res.group,name:group_project_admin"
 msgid "Project Administration"

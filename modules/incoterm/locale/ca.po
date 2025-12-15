@@ -94,6 +94,14 @@ msgctxt "field:sale.sale,available_incoterms:"
 msgid "Available Incoterms"
 msgstr "Incoterms disponibles"
 
+msgctxt "field:web.shop,available_incoterms:"
+msgid "Available Incoterms"
+msgstr "Incoterms disponibles"
+
+msgctxt "field:web.shop,default_incoterm:"
+msgid "Default Incoterm"
+msgstr "Incoterms per defecte"
+
 msgctxt "help:carrier,mode:"
 msgid "The transport mode used by the carrier."
 msgstr "El métode de transport utiltizat pel transportista."
@@ -138,12 +146,14 @@ msgstr ""
 "Els incoterms que s'utilitzen amb el client.\n"
 "Deixe-ho en blanc per a tots."
 
-#, fuzzy
+msgctxt "help:web.shop,default_incoterm:"
+msgid "Used to fill incoterm on sales that require it."
+msgstr "Utilitzat per emplenar el incoterm a les vendes que ho requereixen."
+
 msgctxt "model:incoterm.incoterm,string:"
 msgid "Incoterm"
 msgstr "Incoterm"
 
-#, fuzzy
 msgctxt "model:incoterm.incoterm-company.company,string:"
 msgid "Incoterm - Company"
 msgstr "Incoterm - Empresa"
@@ -195,7 +205,6 @@ msgctxt "model:ir.ui.menu,name:menu_incoterm"
 msgid "Incoterms"
 msgstr "Incoterms"
 
-#, fuzzy
 msgctxt "model:party.incoterm,string:"
 msgid "Party Incoterm"
 msgstr "Incoterms tercer"

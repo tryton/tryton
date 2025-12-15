@@ -62,12 +62,10 @@ msgstr ""
 "Aplica només quan s'envia a aquest país.\n"
 "Deixeu en blanc per tots els països."
 
-#, fuzzy
 msgctxt "model:carrier,string:"
 msgid "Carrier"
 msgstr "Transportista"
 
-#, fuzzy
 msgctxt "model:carrier.selection,string:"
 msgid "Carrier Selection"
 msgstr "Selecció del transportista"

@@ -1,0 +1,135 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:stock.move,customs_unit_price:"
+msgid "Customs Unit Price"
+msgstr "Precio unitario aduanas"
+
+msgctxt "field:stock.shipment.in.return,company_party:"
+msgid "Company Party"
+msgstr "Tercero de la empresa"
+
+msgctxt "field:stock.shipment.in.return,customs_agent:"
+msgid "Customs Agent"
+msgstr "Agente de aduanas"
+
+msgctxt "field:stock.shipment.in.return,customs_international:"
+msgid "International"
+msgstr "Internacional"
+
+msgctxt "field:stock.shipment.in.return,tax_identifier:"
+msgid "Tax Identifier"
+msgstr "Identificador fiscal"
+
+msgctxt "field:stock.shipment.out,company_party:"
+msgid "Company Party"
+msgstr "Tercero de la Empresa"
+
+msgctxt "field:stock.shipment.out,customs_agent:"
+msgid "Customs Agent"
+msgstr "Agente de aduanas"
+
+msgctxt "field:stock.shipment.out,customs_international:"
+msgid "International"
+msgstr "Internacional"
+
+msgctxt "field:stock.shipment.out,tax_identifier:"
+msgid "Tax Identifier"
+msgstr "Identificador fiscal"
+
+msgctxt "help:stock.move,customs_unit_price:"
+msgid ""
+"The price used to value the goods for customs purposes.\n"
+"Leave empty to use the unit price."
+msgstr ""
+"El precio utilitzado para valorar los bienes para propositos aduaneros.\n"
+"Dejar en blanco para utilizar el precio unitario."
+
+msgctxt "model:ir.action,name:report_commercial_invoice"
+msgid "Commercial Invoice"
+msgstr "Factura proforma"
+
+msgctxt "report:customs.commercial_invoice:"
+msgid ":"
+msgstr ":"
+
+msgctxt "report:customs.commercial_invoice:"
+msgid "Carrier:"
+msgstr "Transportista:"
+
+msgctxt "report:customs.commercial_invoice:"
+msgid "Commercial Invoice No:"
+msgstr "Factura proforma Nº:"
+
+msgctxt "report:customs.commercial_invoice:"
+msgid "Country of Origin"
+msgstr "País de origen"
+
+msgctxt "report:customs.commercial_invoice:"
+msgid "Date:"
+msgstr "Fecha:"
+
+msgctxt "report:customs.commercial_invoice:"
+msgid "Description"
+msgstr "Descripción"
+
+msgctxt "report:customs.commercial_invoice:"
+msgid "Description:"
+msgstr "Descripción:"
+
+msgctxt "report:customs.commercial_invoice:"
+msgid "Harmonized Code"
+msgstr "Codigo armonizado"
+
+msgctxt "report:customs.commercial_invoice:"
+msgid "Phone:"
+msgstr "Telefono:"
+
+msgctxt "report:customs.commercial_invoice:"
+msgid "Quantity"
+msgstr "Cantidad"
+
+msgctxt "report:customs.commercial_invoice:"
+msgid "Reason for Export:"
+msgstr "Motivo exportación:"
+
+msgctxt "report:customs.commercial_invoice:"
+msgid "Reference"
+msgstr "Referencia"
+
+msgctxt "report:customs.commercial_invoice:"
+msgid "Sender"
+msgstr "Remitente"
+
+msgctxt "report:customs.commercial_invoice:"
+msgid "Ship to"
+msgstr "Enviar a"
+
+msgctxt "report:customs.commercial_invoice:"
+msgid "Shipping reference:"
+msgstr "Referencia envío:"
+
+msgctxt "report:customs.commercial_invoice:"
+msgid "Sold to"
+msgstr "Vendido a"
+
+msgctxt "report:customs.commercial_invoice:"
+msgid "Terms of Trade:"
+msgstr "Terminos comerciales:"
+
+msgctxt "report:customs.commercial_invoice:"
+msgid "Total"
+msgstr "Total"
+
+msgctxt "report:customs.commercial_invoice:"
+msgid "Total Value"
+msgstr "Valor total"
+
+msgctxt "report:customs.commercial_invoice:"
+msgid "Unit Value"
+msgstr "Valor unitario"
+
+msgctxt "report:customs.commercial_invoice:"
+msgid "Weight"
+msgstr "Peso"

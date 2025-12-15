@@ -579,6 +579,11 @@ msgctxt "field:purchase.reporting.product.time_series,product:"
 msgid "Product"
 msgstr "Izdelek"
 
+#, fuzzy
+msgctxt "field:purchase.reporting.product.time_series,product_currency:"
+msgid "Product - Currency"
+msgstr "Valuta partnerja dobavitelja"
+
 msgctxt "field:purchase.reporting.product.time_series,product_supplier:"
 msgid "Supplier's Product"
 msgstr "Dobaviteljevi izdelki"
@@ -590,6 +595,11 @@ msgstr "Dobavitelj"
 msgctxt "field:purchase.reporting.supplier.time_series,supplier:"
 msgid "Supplier"
 msgstr "Dobavitelj"
+
+#, fuzzy
+msgctxt "field:purchase.reporting.supplier.time_series,supplier_currency:"
+msgid "Supplier - Currency"
+msgstr "Valuta dobavitelja"
 
 msgctxt "field:stock.location,supplier_return_location:"
 msgid "Supplier Return"
@@ -1008,10 +1018,11 @@ msgstr ""
 "Za obdelavo nabavnega naloga \"%(purchase)s\", je potrebno nastaviti "
 "dobaviteljevo lokacijo na partnerju \"%(party)s\"."
 
-#, python-format
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_warehouse_required_for_quotation"
 msgid ""
-"To get a quote for the purchase \"%(purchase)s\" you must enter a warehouse."
+"To get a quote for the purchase \"%(purchase)s\" you must enter a warehouse "
+"for the line \"%(line)s\"."
 msgstr ""
 "Za izdelavo ponudbe za nabavni nalog \"%(purchase)s\" je potrebno vnesti "
 "skladišče."
@@ -1290,8 +1301,9 @@ msgctxt "report:purchase.purchase:"
 msgid "Draft Purchase Order"
 msgstr "Osnutek nabavnega naloga"
 
+#, fuzzy
 msgctxt "report:purchase.purchase:"
-msgid "Purchase Order N°:"
+msgid "Purchase Order No:"
 msgstr "Št. nabavnega naloga:"
 
 msgctxt "report:purchase.purchase:"
@@ -1302,8 +1314,9 @@ msgctxt "report:purchase.purchase:"
 msgid "Reference:"
 msgstr "Sklic:"
 
+#, fuzzy
 msgctxt "report:purchase.purchase:"
-msgid "Request for Quotation N°:"
+msgid "Request for Quotation No:"
 msgstr "Zahtevek za ponudbo št.:"
 
 msgctxt "report:purchase.purchase:"

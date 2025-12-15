@@ -667,8 +667,9 @@ msgctxt "field:account.fiscalyear,company:"
 msgid "Company"
 msgstr "公司"
 
+#, fuzzy
 msgctxt "field:account.fiscalyear,end_date:"
-msgid "Ending Date"
+msgid "End Date"
 msgstr "结账日期"
 
 msgctxt "field:account.fiscalyear,icon:"
@@ -688,9 +689,10 @@ msgctxt "field:account.fiscalyear,periods:"
 msgid "Periods"
 msgstr "分期"
 
+#, fuzzy
 msgctxt "field:account.fiscalyear,start_date:"
-msgid "Starting Date"
-msgstr "开始日期"
+msgid "Start Date"
+msgstr "启用日期"
 
 msgctxt "field:account.fiscalyear,state:"
 msgid "State"
@@ -1605,8 +1607,9 @@ msgctxt "field:account.period,company:"
 msgid "Company"
 msgstr "公司"
 
+#, fuzzy
 msgctxt "field:account.period,end_date:"
-msgid "Ending Date"
+msgid "End Date"
 msgstr "结账日期"
 
 msgctxt "field:account.period,fiscalyear:"
@@ -1626,9 +1629,10 @@ msgctxt "field:account.period,name:"
 msgid "Name"
 msgstr "名称"
 
+#, fuzzy
 msgctxt "field:account.period,start_date:"
-msgid "Starting Date"
-msgstr "开始日期"
+msgid "Start Date"
+msgstr "启用日期"
 
 msgctxt "field:account.period,state:"
 msgid "State"
@@ -1726,8 +1730,9 @@ msgctxt "field:account.tax,description:"
 msgid "Description"
 msgstr "描述"
 
+#, fuzzy
 msgctxt "field:account.tax,end_date:"
-msgid "Ending Date"
+msgid "End Date"
 msgstr "结账日期"
 
 msgctxt "field:account.tax,group:"
@@ -1762,9 +1767,10 @@ msgctxt "field:account.tax,rate:"
 msgid "Rate"
 msgstr "率"
 
+#, fuzzy
 msgctxt "field:account.tax,start_date:"
-msgid "Starting Date"
-msgstr "开始日期"
+msgid "Start Date"
+msgstr "启用日期"
 
 msgctxt "field:account.tax,template:"
 msgid "Template"
@@ -2030,8 +2036,9 @@ msgctxt "field:account.tax.rule,template_override:"
 msgid "Override Template"
 msgstr "替换模版"
 
+#, fuzzy
 msgctxt "field:account.tax.rule.line,end_date:"
-msgid "Ending Date"
+msgid "End Date"
 msgstr "结账日期"
 
 msgctxt "field:account.tax.rule.line,group:"
@@ -2050,9 +2057,10 @@ msgctxt "field:account.tax.rule.line,rule:"
 msgid "Rule"
 msgstr "规则"
 
+#, fuzzy
 msgctxt "field:account.tax.rule.line,start_date:"
-msgid "Starting Date"
-msgstr "开始日期"
+msgid "Start Date"
+msgstr "启用日期"
 
 msgctxt "field:account.tax.rule.line,tax:"
 msgid "Substitution Tax"
@@ -2066,8 +2074,9 @@ msgctxt "field:account.tax.rule.line,template_override:"
 msgid "Override Template"
 msgstr "不理会模版"
 
+#, fuzzy
 msgctxt "field:account.tax.rule.line.template,end_date:"
-msgid "Ending Date"
+msgid "End Date"
 msgstr "结账日期"
 
 msgctxt "field:account.tax.rule.line.template,group:"
@@ -2086,9 +2095,10 @@ msgctxt "field:account.tax.rule.line.template,rule:"
 msgid "Rule"
 msgstr "规则"
 
+#, fuzzy
 msgctxt "field:account.tax.rule.line.template,start_date:"
-msgid "Starting Date"
-msgstr "开始日期"
+msgid "Start Date"
+msgstr "启用日期"
 
 msgctxt "field:account.tax.rule.line.template,tax:"
 msgid "Substitution Tax"
@@ -2130,8 +2140,9 @@ msgctxt "field:account.tax.template,description:"
 msgid "Description"
 msgstr "描述"
 
+#, fuzzy
 msgctxt "field:account.tax.template,end_date:"
-msgid "Ending Date"
+msgid "End Date"
 msgstr "结账日期"
 
 msgctxt "field:account.tax.template,group:"
@@ -2158,9 +2169,10 @@ msgctxt "field:account.tax.template,rate:"
 msgid "Rate"
 msgstr "率"
 
+#, fuzzy
 msgctxt "field:account.tax.template,start_date:"
-msgid "Starting Date"
-msgstr "开始日期"
+msgid "Start Date"
+msgstr "启用日期"
 
 msgctxt "field:account.tax.template,type:"
 msgid "Type"
@@ -2205,14 +2217,6 @@ msgstr "数额"
 msgctxt "field:account.tax.test.result,base:"
 msgid "Base"
 msgstr "基数"
-
-msgctxt "field:account.tax.test.result,description:"
-msgid "Description"
-msgstr "描述"
-
-msgctxt "field:account.tax.test.result,legal_notice:"
-msgid "Legal Notice"
-msgstr "法律声明"
 
 msgctxt "field:account.tax.test.result,tax:"
 msgid "Tax"
@@ -3349,6 +3353,13 @@ msgid "You cannot delegate together lines with different origins."
 msgstr "无法将不同缘由的明细汇总."
 
 #, python-format
+msgctxt "model:ir.message,text:msg_delete_line_reconciled"
+msgid ""
+"In order to delete the reconciled line \"%(line)s\", you must first "
+"unreconcile it."
+msgstr ""
+
+#, python-format
 msgctxt "model:ir.message,text:msg_erase_party_receivable_payable"
 msgid ""
 "You cannot erase party \"%(party)s\" while they have pending "
@@ -3456,8 +3467,10 @@ msgstr "已经入账的记账凭证 \"%(move)s\" 无法更改明细 \"%(line)s\"
 
 #, python-format
 msgctxt "model:ir.message,text:msg_modify_line_reconciled"
-msgid "You cannot modify reconciled line \"%(line)s\"."
-msgstr "无法编辑对账明细\"%(line)s\"。"
+msgid ""
+"In order to modify the reconciled line \"%(line)s\", you must first "
+"unreconcile it."
+msgstr ""
 
 #, python-format
 msgctxt "model:ir.message,text:msg_modify_posted_moved"
@@ -3494,14 +3507,12 @@ msgid ""
 " is not a number."
 msgstr "来自模板 \"%(template)s\" 的表达式 \"%(expression)s\" 的值 \"%(value)s\" 不是数字。"
 
-#, fuzzy, python-format
+#, python-format
 msgctxt "model:ir.message,text:msg_move_template_invalid_description"
 msgid ""
 "Failed to evaluate the description \"%(description)s\" from template "
 "\"%(template)s\" with error: \"%(error)s\""
 msgstr ""
-"无法计算模板 \"%(template)s\" 中的表达式 \"%(expression)s\"，出现错误：\n"
-"\"%(error)s\""
 
 #, python-format
 msgctxt "model:ir.message,text:msg_move_template_invalid_expression"
@@ -3585,12 +3596,12 @@ msgid ""
 "year \"%(fiscalyear)s\"."
 msgstr "分期 \"%(period)s\" 的日期必须在会计年度 \"%(fiscalyear)s\" 的日期之间."
 
-#, fuzzy, python-format
+#, python-format
 msgctxt "model:ir.message,text:msg_period_move_dates"
 msgid ""
 "The dates for period \"%(period)s\" must include the date \"%(move_date)s\" "
 "of move \"%(move)s\"."
-msgstr "分期 \"%(period)s\" 的日期必须在会计年度 \"%(fiscalyear)s\" 的日期之间."
+msgstr ""
 
 msgctxt "model:ir.message,text:msg_period_move_sequence_unique"
 msgid "A move sequence can be reused only by periods in the same fiscal year."
@@ -3694,12 +3705,12 @@ msgid ""
 "off method."
 msgstr "要将行与 \"%(amount)s\" 核销进行对账，必须选择一种核销方法。"
 
-#, fuzzy, python-format
+#, python-format
 msgctxt "model:ir.message,text:msg_reconciliation_write_off_same_account"
 msgid ""
 "You cannot reconcile lines using the write-off \"%(write_off)s\" with the "
 "same \"%(account)s\"."
-msgstr "不能将明细 \"%(line)s\" 与其他明细对帐，因为它的帐户\"%(account1)s\"与\"%(account2)s\"不同。"
+msgstr ""
 
 #, python-format
 msgctxt "model:ir.message,text:msg_reopen_fiscalyear_later"

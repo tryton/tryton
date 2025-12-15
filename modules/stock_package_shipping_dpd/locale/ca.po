@@ -6,13 +6,13 @@ msgctxt "field:carrier,dpd_notification:"
 msgid "Notification"
 msgstr "Notificació"
 
+msgctxt "field:carrier,dpd_output_format:"
+msgid "Output Format"
+msgstr "Format sortida"
+
 msgctxt "field:carrier,dpd_paper_format:"
 msgid "Paper Format"
 msgstr "Format paper"
-
-msgctxt "field:carrier,dpd_printer_language:"
-msgid "Printer Language"
-msgstr "Idioma de la impressió"
 
 msgctxt "field:carrier,dpd_product:"
 msgid "Product"
@@ -50,7 +50,6 @@ msgstr ""
 "El canal de notificació preferit. \n"
 "Deixeu-ho en blanc per desactivar la notificació."
 
-#, fuzzy
 msgctxt "model:carrier.credential.dpd,string:"
 msgid "Carrier Credential Dpd"
 msgstr "Credencial DPD"

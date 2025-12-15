@@ -348,42 +348,34 @@ msgctxt "model:res.group,name:group_timesheet_admin"
 msgid "Timesheet Administration"
 msgstr "Administració de fulls de treball"
 
-#, fuzzy
 msgctxt "model:timesheet.hours_employee,string:"
 msgid "Timesheet Hours Employee"
 msgstr "Hores per empleat"
 
-#, fuzzy
 msgctxt "model:timesheet.hours_employee.context,string:"
 msgid "Timesheet Hours Employee Context"
 msgstr "Context hores per empleat"
 
-#, fuzzy
 msgctxt "model:timesheet.hours_employee_monthly,string:"
 msgid "Timesheet Hours Employee Monthly"
 msgstr "Hores per empleat i mes"
 
-#, fuzzy
 msgctxt "model:timesheet.hours_employee_weekly,string:"
 msgid "Timesheet Hours Employee Weekly"
 msgstr "Hores per empleat i setmana"
 
-#, fuzzy
 msgctxt "model:timesheet.line,string:"
 msgid "Timesheet Line"
 msgstr "Línia de full de treball"
 
-#, fuzzy
 msgctxt "model:timesheet.line.enter.start,string:"
 msgid "Timesheet Line Enter Start"
-msgstr "Inici del full de treball"
+msgstr "Inici introduïr full de treball"
 
-#, fuzzy
 msgctxt "model:timesheet.work,string:"
 msgid "Timesheet Work"
-msgstr "Full de treball"
+msgstr "Treball"
 
-#, fuzzy
 msgctxt "model:timesheet.work.context,string:"
 msgid "Timesheet Work Context"
 msgstr "Context treball"

@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:account.budget,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:account.budget,fiscalyear:"
 msgid "Fiscal Year"
@@ -41,7 +41,7 @@ msgstr "Postat"
 
 msgctxt "field:account.budget.copy.start,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:account.budget.copy.start,factor:"
 msgid "Factor"
@@ -81,7 +81,7 @@ msgstr ""
 
 msgctxt "field:account.budget.line,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:account.budget.line,currency:"
 msgid "Currency"

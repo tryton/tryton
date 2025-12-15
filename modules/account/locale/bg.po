@@ -757,8 +757,9 @@ msgctxt "field:account.fiscalyear,company:"
 msgid "Company"
 msgstr "Фирма"
 
+#, fuzzy
 msgctxt "field:account.fiscalyear,end_date:"
-msgid "Ending Date"
+msgid "End Date"
 msgstr "Крайна дата"
 
 #, fuzzy
@@ -779,8 +780,9 @@ msgctxt "field:account.fiscalyear,periods:"
 msgid "Periods"
 msgstr "Периоди"
 
+#, fuzzy
 msgctxt "field:account.fiscalyear,start_date:"
-msgid "Starting Date"
+msgid "Start Date"
 msgstr "Начална дата"
 
 msgctxt "field:account.fiscalyear,state:"
@@ -1852,8 +1854,9 @@ msgctxt "field:account.period,company:"
 msgid "Company"
 msgstr "Фирма"
 
+#, fuzzy
 msgctxt "field:account.period,end_date:"
-msgid "Ending Date"
+msgid "End Date"
 msgstr "Крайна дата"
 
 msgctxt "field:account.period,fiscalyear:"
@@ -1874,8 +1877,9 @@ msgctxt "field:account.period,name:"
 msgid "Name"
 msgstr "Име"
 
+#, fuzzy
 msgctxt "field:account.period,start_date:"
-msgid "Starting Date"
+msgid "Start Date"
 msgstr "Начална дата"
 
 msgctxt "field:account.period,state:"
@@ -1990,7 +1994,7 @@ msgstr "Описание"
 
 #, fuzzy
 msgctxt "field:account.tax,end_date:"
-msgid "Ending Date"
+msgid "End Date"
 msgstr "Крайна дата"
 
 msgctxt "field:account.tax,group:"
@@ -2028,7 +2032,7 @@ msgstr "Отношение"
 
 #, fuzzy
 msgctxt "field:account.tax,start_date:"
-msgid "Starting Date"
+msgid "Start Date"
 msgstr "Начална дата"
 
 msgctxt "field:account.tax,template:"
@@ -2331,7 +2335,7 @@ msgstr ""
 
 #, fuzzy
 msgctxt "field:account.tax.rule.line,end_date:"
-msgid "Ending Date"
+msgid "End Date"
 msgstr "Крайна дата"
 
 msgctxt "field:account.tax.rule.line,group:"
@@ -2352,7 +2356,7 @@ msgstr "Правило"
 
 #, fuzzy
 msgctxt "field:account.tax.rule.line,start_date:"
-msgid "Starting Date"
+msgid "Start Date"
 msgstr "Начална дата"
 
 msgctxt "field:account.tax.rule.line,tax:"
@@ -2369,7 +2373,7 @@ msgstr ""
 
 #, fuzzy
 msgctxt "field:account.tax.rule.line.template,end_date:"
-msgid "Ending Date"
+msgid "End Date"
 msgstr "Крайна дата"
 
 msgctxt "field:account.tax.rule.line.template,group:"
@@ -2390,7 +2394,7 @@ msgstr "Правило"
 
 #, fuzzy
 msgctxt "field:account.tax.rule.line.template,start_date:"
-msgid "Starting Date"
+msgid "Start Date"
 msgstr "Начална дата"
 
 msgctxt "field:account.tax.rule.line.template,tax:"
@@ -2436,7 +2440,7 @@ msgstr "Описание"
 
 #, fuzzy
 msgctxt "field:account.tax.template,end_date:"
-msgid "Ending Date"
+msgid "End Date"
 msgstr "Крайна дата"
 
 msgctxt "field:account.tax.template,group:"
@@ -2466,7 +2470,7 @@ msgstr "Отношение"
 
 #, fuzzy
 msgctxt "field:account.tax.template,start_date:"
-msgid "Starting Date"
+msgid "Start Date"
 msgstr "Начална дата"
 
 msgctxt "field:account.tax.template,type:"
@@ -2516,15 +2520,6 @@ msgstr "Сума"
 
 msgctxt "field:account.tax.test.result,base:"
 msgid "Base"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:account.tax.test.result,description:"
-msgid "Description"
-msgstr "Описание"
-
-msgctxt "field:account.tax.test.result,legal_notice:"
-msgid "Legal Notice"
 msgstr ""
 
 #, fuzzy
@@ -3762,6 +3757,13 @@ msgid "You cannot delegate together lines with different origins."
 msgstr ""
 
 #, python-format
+msgctxt "model:ir.message,text:msg_delete_line_reconciled"
+msgid ""
+"In order to delete the reconciled line \"%(line)s\", you must first "
+"unreconcile it."
+msgstr ""
+
+#, python-format
 msgctxt "model:ir.message,text:msg_erase_party_receivable_payable"
 msgid ""
 "You cannot erase party \"%(party)s\" while they have pending "
@@ -3869,7 +3871,9 @@ msgstr ""
 
 #, python-format
 msgctxt "model:ir.message,text:msg_modify_line_reconciled"
-msgid "You cannot modify reconciled line \"%(line)s\"."
+msgid ""
+"In order to modify the reconciled line \"%(line)s\", you must first "
+"unreconcile it."
 msgstr ""
 
 #, python-format

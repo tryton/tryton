@@ -1208,7 +1208,9 @@ msgstr ""
 
 #, python-format
 msgctxt "model:ir.message,text:msg_sale_warehouse_required_for_quotation"
-msgid "To get a quote for sale \"%(sale)s\" you must enter a warehouse."
+msgid ""
+"To get a quote for sale \"%(sale)s\" you must enter a warehouse for the line"
+" \"%(line)s\"."
 msgstr ""
 
 msgctxt "model:ir.model.button,string:sale_cancel_button"
@@ -1606,16 +1608,18 @@ msgctxt "report:sale.sale:"
 msgid "Quantity"
 msgstr "Kogus"
 
+#, fuzzy
 msgctxt "report:sale.sale:"
-msgid "Quotation N°:"
+msgid "Quotation No:"
 msgstr "Pakkumuse nr:"
 
 msgctxt "report:sale.sale:"
 msgid "Reference:"
 msgstr "Viide:"
 
+#, fuzzy
 msgctxt "report:sale.sale:"
-msgid "Sale Order N°:"
+msgid "Sale Order No:"
 msgstr "Müügitellimuse nr:"
 
 msgctxt "report:sale.sale:"

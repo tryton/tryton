@@ -28,7 +28,7 @@ msgstr "Fitxer"
 
 msgctxt "field:account.move.export,file_id:"
 msgid "File ID"
-msgstr "ID fitxer"
+msgstr "Identificador del fitxer"
 
 msgctxt "field:account.move.export,filename:"
 msgid "Filename"
@@ -46,12 +46,10 @@ msgctxt "field:account.move.export,type:"
 msgid "Type"
 msgstr "Tipus"
 
-#, fuzzy
 msgctxt "model:account.configuration.export,string:"
 msgid "Account Configuration Export"
 msgstr "Configuració exportacions comptables"
 
-#, fuzzy
 msgctxt "model:account.move.export,string:"
 msgid "Account Move Export"
 msgstr "Exportació asentaments comptables"

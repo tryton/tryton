@@ -6,12 +6,12 @@ msgctxt "field:carrier,dpd_notification:"
 msgid "Notification"
 msgstr ""
 
-msgctxt "field:carrier,dpd_paper_format:"
-msgid "Paper Format"
+msgctxt "field:carrier,dpd_output_format:"
+msgid "Output Format"
 msgstr ""
 
-msgctxt "field:carrier,dpd_printer_language:"
-msgid "Printer Language"
+msgctxt "field:carrier,dpd_paper_format:"
+msgid "Paper Format"
 msgstr ""
 
 msgctxt "field:carrier,dpd_product:"
@@ -20,7 +20,7 @@ msgstr ""
 
 msgctxt "field:carrier.credential.dpd,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:carrier.credential.dpd,depot:"
 msgid "Depot"

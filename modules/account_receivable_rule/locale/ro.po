@@ -28,7 +28,7 @@ msgstr "Conturi"
 
 msgctxt "field:account.account.receivable.rule,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:account.account.receivable.rule,journal:"
 msgid "Journal"
@@ -61,7 +61,7 @@ msgstr ""
 
 msgctxt "field:account.account.receivable.rule.account,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:account.account.receivable.rule.account,only_reconcile:"
 msgid "Only Reconcile"

@@ -689,9 +689,10 @@ msgctxt "field:account.fiscalyear,company:"
 msgid "Company"
 msgstr "Cég"
 
+#, fuzzy
 msgctxt "field:account.fiscalyear,end_date:"
-msgid "Ending Date"
-msgstr "Záró dátum"
+msgid "End Date"
+msgstr "Befejező dátum"
 
 msgctxt "field:account.fiscalyear,icon:"
 msgid "Icon"
@@ -710,9 +711,10 @@ msgctxt "field:account.fiscalyear,periods:"
 msgid "Periods"
 msgstr "Periódusok"
 
+#, fuzzy
 msgctxt "field:account.fiscalyear,start_date:"
-msgid "Starting Date"
-msgstr "Kezdő dátum"
+msgid "Start Date"
+msgstr "Kezdődátum"
 
 msgctxt "field:account.fiscalyear,state:"
 msgid "State"
@@ -1667,9 +1669,10 @@ msgctxt "field:account.period,company:"
 msgid "Company"
 msgstr "Cég"
 
+#, fuzzy
 msgctxt "field:account.period,end_date:"
-msgid "Ending Date"
-msgstr "Záró dátum"
+msgid "End Date"
+msgstr "Befejező dátum"
 
 msgctxt "field:account.period,fiscalyear:"
 msgid "Fiscal Year"
@@ -1688,9 +1691,10 @@ msgctxt "field:account.period,name:"
 msgid "Name"
 msgstr "Név"
 
+#, fuzzy
 msgctxt "field:account.period,start_date:"
-msgid "Starting Date"
-msgstr "Kezdő dátum"
+msgid "Start Date"
+msgstr "Kezdődátum"
 
 msgctxt "field:account.period,state:"
 msgid "State"
@@ -1792,9 +1796,10 @@ msgctxt "field:account.tax,description:"
 msgid "Description"
 msgstr "Leírás"
 
+#, fuzzy
 msgctxt "field:account.tax,end_date:"
-msgid "Ending Date"
-msgstr "Záró dátum"
+msgid "End Date"
+msgstr "Befejező dátum"
 
 msgctxt "field:account.tax,group:"
 msgid "Group"
@@ -1828,9 +1833,10 @@ msgctxt "field:account.tax,rate:"
 msgid "Rate"
 msgstr "Érték"
 
+#, fuzzy
 msgctxt "field:account.tax,start_date:"
-msgid "Starting Date"
-msgstr "Kezdő dátum"
+msgid "Start Date"
+msgstr "Kezdődátum"
 
 msgctxt "field:account.tax,template:"
 msgid "Template"
@@ -2105,9 +2111,10 @@ msgctxt "field:account.tax.rule,template_override:"
 msgid "Override Template"
 msgstr "Sablon felülírása"
 
+#, fuzzy
 msgctxt "field:account.tax.rule.line,end_date:"
-msgid "Ending Date"
-msgstr "Záró dátum"
+msgid "End Date"
+msgstr "Befejező dátum"
 
 msgctxt "field:account.tax.rule.line,group:"
 msgid "Tax Group"
@@ -2125,9 +2132,10 @@ msgctxt "field:account.tax.rule.line,rule:"
 msgid "Rule"
 msgstr "Szabály"
 
+#, fuzzy
 msgctxt "field:account.tax.rule.line,start_date:"
-msgid "Starting Date"
-msgstr "Kezdő dátum"
+msgid "Start Date"
+msgstr "Kezdődátum"
 
 msgctxt "field:account.tax.rule.line,tax:"
 msgid "Substitution Tax"
@@ -2141,9 +2149,10 @@ msgctxt "field:account.tax.rule.line,template_override:"
 msgid "Override Template"
 msgstr "Sablon felülírása"
 
+#, fuzzy
 msgctxt "field:account.tax.rule.line.template,end_date:"
-msgid "Ending Date"
-msgstr "Záró dátum"
+msgid "End Date"
+msgstr "Befejező dátum"
 
 msgctxt "field:account.tax.rule.line.template,group:"
 msgid "Tax Group"
@@ -2161,9 +2170,10 @@ msgctxt "field:account.tax.rule.line.template,rule:"
 msgid "Rule"
 msgstr "Szabály"
 
+#, fuzzy
 msgctxt "field:account.tax.rule.line.template,start_date:"
-msgid "Starting Date"
-msgstr "Kezdő dátum"
+msgid "Start Date"
+msgstr "Kezdődátum"
 
 msgctxt "field:account.tax.rule.line.template,tax:"
 msgid "Substitution Tax"
@@ -2205,9 +2215,10 @@ msgctxt "field:account.tax.template,description:"
 msgid "Description"
 msgstr "Leírás"
 
+#, fuzzy
 msgctxt "field:account.tax.template,end_date:"
-msgid "Ending Date"
-msgstr "Záró dátum"
+msgid "End Date"
+msgstr "Befejező dátum"
 
 msgctxt "field:account.tax.template,group:"
 msgid "Group"
@@ -2233,9 +2244,10 @@ msgctxt "field:account.tax.template,rate:"
 msgid "Rate"
 msgstr "Érték"
 
+#, fuzzy
 msgctxt "field:account.tax.template,start_date:"
-msgid "Starting Date"
-msgstr "Kezdő dátum"
+msgid "Start Date"
+msgstr "Kezdődátum"
 
 msgctxt "field:account.tax.template,type:"
 msgid "Type"
@@ -2280,14 +2292,6 @@ msgstr "Összeg"
 msgctxt "field:account.tax.test.result,base:"
 msgid "Base"
 msgstr "Alap"
-
-msgctxt "field:account.tax.test.result,description:"
-msgid "Description"
-msgstr "Leírás"
-
-msgctxt "field:account.tax.test.result,legal_notice:"
-msgid "Legal Notice"
-msgstr "Jogi nyilatkozat"
 
 msgctxt "field:account.tax.test.result,tax:"
 msgid "Tax"
@@ -3469,6 +3473,13 @@ msgid "You cannot delegate together lines with different origins."
 msgstr "Nem lehet különböző ügyfelek tételeit csoportosítani."
 
 #, python-format
+msgctxt "model:ir.message,text:msg_delete_line_reconciled"
+msgid ""
+"In order to delete the reconciled line \"%(line)s\", you must first "
+"unreconcile it."
+msgstr ""
+
+#, python-format
 msgctxt "model:ir.message,text:msg_erase_party_receivable_payable"
 msgid ""
 "You cannot erase party \"%(party)s\" while they have pending "
@@ -3577,7 +3588,9 @@ msgstr ""
 
 #, python-format
 msgctxt "model:ir.message,text:msg_modify_line_reconciled"
-msgid "You cannot modify reconciled line \"%(line)s\"."
+msgid ""
+"In order to modify the reconciled line \"%(line)s\", you must first "
+"unreconcile it."
 msgstr ""
 
 #, python-format
@@ -3630,35 +3643,33 @@ msgctxt "model:ir.message,text:msg_move_template_keyword_name_not_identifier"
 msgid "The keyword name \"%(name)s\" is not a valid identifier."
 msgstr ""
 
-#, fuzzy, python-format
+#, python-format
 msgctxt "model:ir.message,text:msg_no_fiscalyear_date"
 msgid ""
 "To continue, you must create a fiscal year for the date \"%(date)s\" and "
 "company \"%(company)s\"."
 msgstr ""
-"A továbblépés előtt hozzon létre egy üzleti évet a „%(date)s” dátumhoz."
 
-#, fuzzy, python-format
+#, python-format
 msgctxt "model:ir.message,text:msg_no_open_fiscalyear_date"
 msgid ""
 "To continue, you must reopen the fiscal year \"%(fiscalyear)s\" of company "
 "\"%(company)s\" for the date \"%(date)s\"."
 msgstr ""
-"A továbblépés előtt hozzon létre egy üzleti évet a „%(date)s” dátumhoz."
 
-#, fuzzy, python-format
+#, python-format
 msgctxt "model:ir.message,text:msg_no_open_period_date"
 msgid ""
 "To continue, you must reopen the period \"%(period)s\" of company "
 "\"%(company)s\" for the date \"%(date)s\"."
-msgstr "A továbblépés előtt hozzon létre egy periódust a „%(date)s” dátumhoz."
+msgstr ""
 
-#, fuzzy, python-format
+#, python-format
 msgctxt "model:ir.message,text:msg_no_period_date"
 msgid ""
 "To continue, you must create a period for the date \"%(date)s\" and company "
 "\"%(company)s\"."
-msgstr "A továbblépés előtt hozzon létre egy periódust a „%(date)s” dátumhoz."
+msgstr ""
 
 msgctxt "model:ir.message,text:msg_only_one_debit_credit_types"
 msgid "Account can have only one of the debit or credit type set."
@@ -3738,32 +3749,29 @@ msgstr ""
 "Ahhoz, hogy a „%(line)s” tételt le tudja egyeztetni, engedélyeznie kell a "
 "„%(account)s” számlán az egyeztetéseket."
 
-#, fuzzy, python-format
+#, python-format
 msgctxt ""
 "model:ir.message,text:msg_reconciliation_currency_exchange_credit_account_missing"
 msgid ""
 "To reconcile lines, you must define a currency exchange credit account for "
 "\"%(company)s\"."
 msgstr ""
-"A továbblépés előtt adja meg a(z) „%(party)s” ügyfél követelések számláját."
 
-#, fuzzy, python-format
+#, python-format
 msgctxt ""
 "model:ir.message,text:msg_reconciliation_currency_exchange_debit_account_missing"
 msgid ""
 "To reconcile lines, you must define a currency exchange debit account for "
 "\"%(company)s\"."
 msgstr ""
-"A továbblépés előtt adja meg a(z) „%(party)s” ügyfél követelések számláját."
 
-#, fuzzy, python-format
+#, python-format
 msgctxt ""
 "model:ir.message,text:msg_reconciliation_currency_exchange_journal_missing"
 msgid ""
 "To reconcile lines, you must define a currency exchange journal for "
 "\"%(company)s\"."
 msgstr ""
-"A továbblépés előtt adja meg a(z) „%(party)s” ügyfél követelések számláját."
 
 #, python-format
 msgctxt "model:ir.message,text:msg_reconciliation_delete_delegated"
@@ -3814,12 +3822,12 @@ msgid ""
 "off method."
 msgstr ""
 
-#, fuzzy, python-format
+#, python-format
 msgctxt "model:ir.message,text:msg_reconciliation_write_off_same_account"
 msgid ""
 "You cannot reconcile lines using the write-off \"%(write_off)s\" with the "
 "same \"%(account)s\"."
-msgstr "Nem lehet különböző ügyfelek tételeit csoportosítani."
+msgstr ""
 
 #, python-format
 msgctxt "model:ir.message,text:msg_reopen_fiscalyear_later"

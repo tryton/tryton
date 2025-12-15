@@ -5,6 +5,10 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+#, fuzzy
+msgid "Toggle notification"
+msgstr "Przełącz zaznaczenie"
+
 msgid "Make this an _internal message"
 msgstr ""
 
@@ -153,7 +157,7 @@ msgid "Not Found."
 msgstr "Nie znaleziono."
 
 msgid "Reset forgotten password"
-msgstr "Zresetuj zapomniane hasło"
+msgstr "Zresetuj hasło"
 
 msgid "Send you an email to reset your password."
 msgstr "Wyślij wiadomość, aby zresetować hasło."
@@ -520,6 +524,10 @@ msgstr "Rozwiń wszystkie wiersze"
 
 msgid "Close Tab"
 msgstr "Zamknij kartę"
+
+#, fuzzy
+msgid "All Notifications..."
+msgstr "Akcje..."
 
 msgid "modularity, scalability and security"
 msgstr "modułowy, skalowalny i bezpieczny"
@@ -1118,9 +1126,8 @@ msgstr "Zapisz jako"
 msgid "Image size too large."
 msgstr "Za duży rozmiar obrazka."
 
-#, fuzzy
 msgid "Reset Column Widths"
-msgstr "Zapisz szerokość kolumny"
+msgstr "Przywróć szerokości kolumn"
 
 msgid "Copy"
 msgstr "Kopiuj"
@@ -1200,9 +1207,9 @@ msgstr "Wszystkie pliki"
 msgid "Show plain text"
 msgstr "Pokaż tekst"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Select a color for \"%s\""
-msgstr "Wybierz kolor dla \"%s\”"
+msgstr "Wybierz kolor dla \"%s”"
 
 msgid "Add value"
 msgstr "Dodaj wartość"

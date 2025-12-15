@@ -65,7 +65,7 @@ msgstr "Tip"
 
 msgctxt "field:commission.agent,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:commission.agent,currency:"
 msgid "Currency"
@@ -102,7 +102,7 @@ msgstr "Agent"
 
 msgctxt "field:commission.agent.selection,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:commission.agent.selection,employee:"
 msgid "Employee"

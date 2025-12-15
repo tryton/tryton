@@ -1,0 +1,157 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:stock.location,shipping_points:"
+msgid "Shipping Points"
+msgstr ""
+
+msgctxt "field:stock.shipment.in,shipping_point:"
+msgid "Shipping Point"
+msgstr ""
+
+msgctxt "field:stock.shipment.in.return,shipping_point:"
+msgid "Shipping Point"
+msgstr ""
+
+msgctxt "field:stock.shipment.internal,incoming_shipping_point:"
+msgid "Incoming Shipping Point"
+msgstr ""
+
+msgctxt "field:stock.shipment.internal,shipping_point:"
+msgid "Outgoing Shipping Point"
+msgstr ""
+
+msgctxt "field:stock.shipment.out,shipping_point:"
+msgid "Shipping Point"
+msgstr ""
+
+msgctxt "field:stock.shipment.out.return,shipping_point:"
+msgid "Shipping Point"
+msgstr ""
+
+msgctxt "field:stock.shipping.point,name:"
+msgid "Name"
+msgstr ""
+
+msgctxt "field:stock.shipping.point,warehouse:"
+msgid "Warehouse"
+msgstr ""
+
+msgctxt "field:stock.shipping.point.selection,contains_product_categories:"
+msgid "Contains Product Categories"
+msgstr ""
+
+msgctxt ""
+"field:stock.shipping.point.selection,contains_product_classification:"
+msgid "Contains Product Classification"
+msgstr ""
+
+msgctxt "field:stock.shipping.point.selection,delivery_country:"
+msgid "Country"
+msgstr ""
+
+msgctxt "field:stock.shipping.point.selection,max_volume:"
+msgid "Maximal Volume"
+msgstr ""
+
+msgctxt "field:stock.shipping.point.selection,max_weight:"
+msgid "Maximum Weight"
+msgstr ""
+
+msgctxt "field:stock.shipping.point.selection,min_volume:"
+msgid "Minimal Volume"
+msgstr ""
+
+msgctxt "field:stock.shipping.point.selection,min_weight:"
+msgid "Minimal Weight"
+msgstr ""
+
+msgctxt "field:stock.shipping.point.selection,shipping_point:"
+msgid "Shipping Point"
+msgstr ""
+
+msgctxt "field:stock.shipping.point.selection,volume_uom:"
+msgid "Volume UoM"
+msgstr ""
+
+msgctxt "field:stock.shipping.point.selection,warehouse:"
+msgid "Warehouse"
+msgstr ""
+
+msgctxt "field:stock.shipping.point.selection,weight_uom:"
+msgid "Weight UoM"
+msgstr ""
+
+msgctxt ""
+"field:stock.shipping.point.selection-contains-product.category,category:"
+msgid "Category"
+msgstr ""
+
+msgctxt ""
+"field:stock.shipping.point.selection-contains-product.category,selection:"
+msgid "Selection"
+msgstr ""
+
+msgctxt "help:stock.shipping.point.selection,contains_product_categories:"
+msgid ""
+"Apply only when at least one product shipped is in one of these categories.\n"
+"Leave empty for any product category."
+msgstr ""
+
+msgctxt "help:stock.shipping.point.selection,contains_product_classification:"
+msgid ""
+"Apply only when at least one product shipped belongs to this classification.\n"
+"Leave empty for any product classification."
+msgstr ""
+
+msgctxt "help:stock.shipping.point.selection,delivery_country:"
+msgid ""
+"Apply only when delivering to this country.\n"
+"Leave empty for any country."
+msgstr ""
+
+msgctxt "model:ir.action,name:act_stock_shipping_point"
+msgid "Shipping Points"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_stock_shipping_point_selection"
+msgid "Selection"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_stock_shipping_point"
+msgid "Shipping Points"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_stock_shipping_point_selection"
+msgid "Selection"
+msgstr ""
+
+msgctxt "model:stock.shipping.point,string:"
+msgid "Stock Shipping Point"
+msgstr ""
+
+msgctxt "model:stock.shipping.point.selection,string:"
+msgid "Stock Shipping Point Selection"
+msgstr ""
+
+msgctxt ""
+"model:stock.shipping.point.selection-contains-product.category,string:"
+msgid "Stock Shipping Point Selection - Contains - Product Category"
+msgstr ""
+
+msgctxt "view:stock.shipping.point.selection:"
+msgid "-"
+msgstr ""
+
+msgctxt "view:stock.shipping.point.selection:"
+msgid "Criteria"
+msgstr ""
+
+msgctxt "view:stock.shipping.point.selection:"
+msgid "Volume between:"
+msgstr ""
+
+msgctxt "view:stock.shipping.point.selection:"
+msgid "Weight between:"
+msgstr ""

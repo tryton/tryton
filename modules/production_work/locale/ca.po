@@ -163,7 +163,7 @@ msgctxt "model:ir.message,text:msg_delete_request"
 msgid "To delete work \"%(work)s\" it must be in the \"request\" or \"draft\" state."
 msgstr ""
 "Per eliminar el treball \"%(work)s\" ha d'estar en estat \"sol·licitud\" o "
-"\"borrador\"."
+"\"esborrany\"."
 
 #, python-format
 msgctxt "model:ir.message,text:msg_do_finished_work"
@@ -229,25 +229,21 @@ msgctxt "model:ir.ui.menu,name:menu_work_list"
 msgid "Works"
 msgstr "Treballs"
 
-#, fuzzy
 msgctxt "model:production.work,string:"
 msgid "Production Work"
 msgstr "Treball de producció"
 
-#, fuzzy
 msgctxt "model:production.work.center,string:"
 msgid "Production Work Center"
-msgstr "Treball de producció"
+msgstr "Centre de treball de producció"
 
-#, fuzzy
 msgctxt "model:production.work.center.category,string:"
 msgid "Production Work Center Category"
-msgstr "Categoria centre de treball"
+msgstr "Categoria centre de treball de la producció"
 
-#, fuzzy
 msgctxt "model:production.work.cycle,string:"
 msgid "Production Work Cycle"
-msgstr "Treball de producció"
+msgstr "Cicle de treball de producció"
 
 msgctxt "selection:production.work,state:"
 msgid "Done"

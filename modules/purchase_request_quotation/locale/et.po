@@ -67,10 +67,6 @@ msgctxt "field:purchase.request.quotation.create.ask_suppliers,suppliers:"
 msgid "Suppliers"
 msgstr "Hankijad"
 
-msgctxt "field:purchase.request.quotation.create.succeed,number_quotations:"
-msgid "Number of Created Quotations"
-msgstr "Loodud pakkumiste arv"
-
 msgctxt "field:purchase.request.quotation.line,currency:"
 msgid "Currency"
 msgstr "Valuuta"
@@ -195,10 +191,16 @@ msgctxt ""
 msgid "Sent"
 msgstr "Saadetud"
 
-#, python-format
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_previous_quotation"
-msgid "A quotation was already made for request \"%(request)s\"."
+msgid "Quotations have already been made for the requests \"%(requests)s\"."
 msgstr "Pakkumuse kohta on juba loodud päring \"%(request)s\"."
+
+#, fuzzy
+msgctxt ""
+"model:ir.model.button,string:purchase_request_create_quotation_button"
+msgid "Create Quotations"
+msgstr "Loo pakkumus"
 
 #, fuzzy
 msgctxt "model:ir.rule.group,name:rule_group_request_quotation_companies"
@@ -226,11 +228,6 @@ msgstr "Ostupäringu pakkumus"
 #, fuzzy
 msgctxt "model:purchase.request.quotation.create.ask_suppliers,string:"
 msgid "Purchase Request Quotation Create Ask Suppliers"
-msgstr "Ostupäringu pakkumuse järjestus"
-
-#, fuzzy
-msgctxt "model:purchase.request.quotation.create.succeed,string:"
-msgid "Purchase Request Quotation Create Succeed"
 msgstr "Ostupäringu pakkumuse järjestus"
 
 #, fuzzy
@@ -266,9 +263,10 @@ msgctxt "report:purchase.request.quotation:"
 msgid "Expected Supply Date"
 msgstr "Eeldatav tarnekuupäev"
 
+#, fuzzy
 msgctxt "report:purchase.request.quotation:"
-msgid "Purchase"
-msgstr "Ost"
+msgid "Purchase Request for Quotation No:"
+msgstr "Ostupäring pakkumuse jaoks"
 
 msgctxt "report:purchase.request.quotation:"
 msgid "Quantity"
@@ -281,10 +279,6 @@ msgstr "Pakkumus"
 msgctxt "report:purchase.request.quotation:"
 msgid "Reference:"
 msgstr "Viide:"
-
-msgctxt "report:purchase.request.quotation:"
-msgid "Request for Quotation N°:"
-msgstr "Päring pakkumusele N°:"
 
 msgctxt "report:purchase.request.quotation:"
 msgid "Revision:"
@@ -371,7 +365,3 @@ msgstr "Töötle"
 msgctxt "wizard_button:purchase.request.quotation.create,ask_suppliers,end:"
 msgid "Cancel"
 msgstr "Tühista"
-
-msgctxt "wizard_button:purchase.request.quotation.create,succeed,end:"
-msgid "Close"
-msgstr "Sulge"

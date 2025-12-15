@@ -132,7 +132,7 @@ msgstr "Algemene overeenkomsten"
 
 msgctxt "model:ir.action,name:act_sale_form_blanket_agreement"
 msgid "Sales"
-msgstr "Verkoop"
+msgstr "Verkopen"
 
 msgctxt "model:ir.action,name:act_sale_line_form_blanket_agreement"
 msgid "Sale Lines"
@@ -242,7 +242,7 @@ msgstr "Geannuleerd"
 
 msgctxt "selection:sale.blanket_agreement,state:"
 msgid "Closed"
-msgstr "Afgerond"
+msgstr "Gesloten"
 
 msgctxt "selection:sale.blanket_agreement,state:"
 msgid "Draft"

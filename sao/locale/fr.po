@@ -548,6 +548,9 @@ msgstr "Réinitialiser la largeur des colonnes"
 msgid "#ERROR"
 msgstr "#ERREUR"
 
+msgid "Failed to copy text to clipboard: %1"
+msgstr "Échec de la copie du texte dans le presse-papiers : %1"
+
 msgid "More"
 msgstr "Plus"
 
@@ -774,6 +777,9 @@ msgstr "Basculer le son"
 msgid "Wizard"
 msgstr "Assistant"
 
+msgid "Toggle notification"
+msgstr "Activer/désactiver les notifications"
+
 msgid "Enter a message"
 msgstr "Entrez un message"
 
@@ -782,6 +788,12 @@ msgstr "Soumettre le message"
 
 msgid "Make this an internal message"
 msgstr "En faire un message interne"
+
+msgid "All Notifications..."
+msgstr "Toutes les notifications..."
+
+msgid "Preferences..."
+msgstr "Préférences..."
 
 msgid "Translate view"
 msgstr "Traduire la vue"

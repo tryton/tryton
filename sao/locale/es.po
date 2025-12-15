@@ -546,6 +546,9 @@ msgstr "Restablecer anchos de columna"
 msgid "#ERROR"
 msgstr "#ERROR"
 
+msgid "Failed to copy text to clipboard: %1"
+msgstr "Error al copiar el texto al portapapeles: %1"
+
 msgid "More"
 msgstr "Más"
 
@@ -772,6 +775,9 @@ msgstr "Alternar sonido"
 msgid "Wizard"
 msgstr "Asistente"
 
+msgid "Toggle notification"
+msgstr "Conmutar notificación"
+
 msgid "Enter a message"
 msgstr "Introduce un mensaje"
 
@@ -780,6 +786,12 @@ msgstr "Enviar el mensaje"
 
 msgid "Make this an internal message"
 msgstr "Convierte esto en un mensaje interno"
+
+msgid "All Notifications..."
+msgstr "Todas las notificaciones..."
+
+msgid "Preferences..."
+msgstr "Preferencias..."
 
 msgid "Translate view"
 msgstr "Traducir vista"

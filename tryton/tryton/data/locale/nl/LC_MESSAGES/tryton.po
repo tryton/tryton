@@ -5,6 +5,9 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgid "Toggle notification"
+msgstr "Meldingen in-/uitschakelen"
+
 msgid "Make this an _internal message"
 msgstr "Maak dit een _intern bericht"
 
@@ -521,6 +524,9 @@ msgstr "Alle rijen uitvouwen"
 
 msgid "Close Tab"
 msgstr "Tabblad sluiten"
+
+msgid "All Notifications..."
+msgstr "Alle meldingen..."
 
 msgid "modularity, scalability and security"
 msgstr "modulair, schaalbaar en veilig"

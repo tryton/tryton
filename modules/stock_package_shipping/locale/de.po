@@ -74,6 +74,18 @@ msgctxt "field:stock.shipment.out,shipping_reference:"
 msgid "Shipping Reference"
 msgstr "Versandreferenz"
 
+msgctxt "help:stock.shipment.in.return,shipping_description:"
+msgid "Leave empty to use the generated description."
+msgstr "Leer lassen, um die generierte Beschreibung zu verwenden."
+
+msgctxt "help:stock.shipment.internal,shipping_description:"
+msgid "Leave empty to use the generated description."
+msgstr "Leer lassen, um die generierte Beschreibung zu verwenden."
+
+msgctxt "help:stock.shipment.out,shipping_description:"
+msgid "Leave empty to use the generated description."
+msgstr "Leer lassen, um die generierte Beschreibung zu verwenden."
+
 msgctxt "model:ir.action,name:act_create_shipping_wizard"
 msgid "Create Shipping"
 msgstr "Versand erstellen"

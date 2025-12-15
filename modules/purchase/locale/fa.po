@@ -609,6 +609,11 @@ msgid "Product"
 msgstr "محصول"
 
 #, fuzzy
+msgctxt "field:purchase.reporting.product.time_series,product_currency:"
+msgid "Product - Currency"
+msgstr "قیمت تامین کننده محصول"
+
+#, fuzzy
 msgctxt "field:purchase.reporting.product.time_series,product_supplier:"
 msgid "Supplier's Product"
 msgstr "تامین کنندگان محصول"
@@ -622,6 +627,11 @@ msgstr "تامین کننده"
 msgctxt "field:purchase.reporting.supplier.time_series,supplier:"
 msgid "Supplier"
 msgstr "تامین کننده"
+
+#, fuzzy
+msgctxt "field:purchase.reporting.supplier.time_series,supplier_currency:"
+msgid "Supplier - Currency"
+msgstr "برگشتی به تامین کننده"
 
 msgctxt "field:stock.location,supplier_return_location:"
 msgid "Supplier Return"
@@ -1053,7 +1063,8 @@ msgstr ""
 #, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_warehouse_required_for_quotation"
 msgid ""
-"To get a quote for the purchase \"%(purchase)s\" you must enter a warehouse."
+"To get a quote for the purchase \"%(purchase)s\" you must enter a warehouse "
+"for the line \"%(line)s\"."
 msgstr ""
 "برای دریافت یک نقل قول برای خرید : \"%(purchase)s\" کالاها یا دارایی ها، شما"
 " باید یک انبار وارد کنید."
@@ -1335,8 +1346,9 @@ msgctxt "report:purchase.purchase:"
 msgid "Draft Purchase Order"
 msgstr "پیش نویس دستور خرید"
 
+#, fuzzy
 msgctxt "report:purchase.purchase:"
-msgid "Purchase Order N°:"
+msgid "Purchase Order No:"
 msgstr "دستور خرید N° :"
 
 msgctxt "report:purchase.purchase:"
@@ -1347,8 +1359,9 @@ msgctxt "report:purchase.purchase:"
 msgid "Reference:"
 msgstr "ارجاع :"
 
+#, fuzzy
 msgctxt "report:purchase.purchase:"
-msgid "Request for Quotation N°:"
+msgid "Request for Quotation No:"
 msgstr "درخواست نقل قول N°:"
 
 msgctxt "report:purchase.purchase:"

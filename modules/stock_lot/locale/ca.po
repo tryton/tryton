@@ -329,40 +329,34 @@ msgctxt "model:ir.ui.menu,name:menu_lot_form"
 msgid "Lots"
 msgstr "Lots"
 
-#, fuzzy
 msgctxt "model:product.configuration.default_lot_sequence,string:"
 msgid "Product Configuration Default Lot Sequence"
-msgstr "Configuració de les seqüències de lots"
+msgstr "Configuració de les seqüències de lots per defecte"
 
-#, fuzzy
 msgctxt "model:stock.lot,string:"
 msgid "Stock Lot"
 msgstr "Lot"
 
-#, fuzzy
 msgctxt "model:stock.lot.trace,string:"
 msgid "Stock Lot Trace"
-msgstr "Lot"
+msgstr "Traçabilitat lots"
 
-#, fuzzy
 msgctxt "model:stock.lots_by_location.context,string:"
 msgid "Stock Lots By Location Context"
-msgstr "Llista d'ubicacions d'existències"
+msgstr "Context lotes per ubicació"
 
-#, fuzzy
 msgctxt "model:stock.lots_by_locations,string:"
 msgid "Stock Lots By Locations"
 msgstr "Lots per ubicació"
 
 msgctxt "model:stock.move.add.lots.start,string:"
 msgid "Stock Move Add Lots Start"
-msgstr ""
+msgstr "Inici afegir lots en els moviments d'existències"
 
 msgctxt "model:stock.move.add.lots.start.lot,string:"
 msgid "Stock Move Add Lots Start Lot"
-msgstr ""
+msgstr "Lot inici afegir lots en els moviments d'existències"
 
-#, fuzzy
 msgctxt "model:stock.period.cache.lot,string:"
 msgid "Stock Period Cache Lot"
 msgstr "Període d'existències precalculat per lot"

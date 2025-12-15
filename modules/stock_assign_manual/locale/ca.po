@@ -125,19 +125,17 @@ msgctxt ""
 msgid "Manual Assign"
 msgstr "Reserva manual"
 
-#, fuzzy
 msgctxt "model:stock.shipment.assign.manual.show,string:"
 msgid "Stock Shipment Assign Manual Show"
-msgstr "Moviments de l'albarà reservats"
+msgstr "Mostra moviments de l'albarà assignats manualment"
 
-#, fuzzy
 msgctxt "model:stock.shipment.assigned.move,string:"
 msgid "Stock Shipment Assigned Move"
 msgstr "Moviments de l'albarà reservats"
 
 msgctxt "model:stock.shipment.unassign.manual.show,string:"
 msgid "Stock Shipment Unassign Manual Show"
-msgstr ""
+msgstr "Mostra desassignació d'existències manual"
 
 msgctxt "view:stock.shipment.unassign.manual.show:"
 msgid "Enter the quantities to unassign:"

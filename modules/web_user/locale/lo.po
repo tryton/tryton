@@ -196,12 +196,3 @@ msgstr "ພຽງແຕ່ອີກບາດກ້າວໜຶ່ງທໍ່ນ
 msgctxt "report:web.user.email_validation:"
 msgid "Validate"
 msgstr "ກວດສອບຄວາມຖືກຕ້ອງ"
-
-msgctxt "view:web.user:"
-msgid "Reset Password"
-msgstr "ຕັ້ງຄ່າລະຫັດຜ່ານຄືນໃໝ່"
-
-#, fuzzy
-msgctxt "view:web.user:"
-msgid "Validate Email"
-msgstr "ກວດສອບຄວາມຖືກຕ້ອງ ອີ-ເມວລ໌"

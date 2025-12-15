@@ -2,15 +2,13 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-#, fuzzy
 msgctxt "field:sale.line,original_amount:"
 msgid "Original Amount"
-msgstr "Base imponible"
+msgstr "Import original"
 
-#, fuzzy
 msgctxt "field:sale.line,original_unit_price:"
 msgid "Original Unit Price"
-msgstr "Preu unitari esborrany"
+msgstr "Preu unitari original"
 
 msgctxt "field:sale.line,promotion:"
 msgid "Promotion"
@@ -90,15 +88,15 @@ msgstr "Promoció"
 
 msgctxt "field:sale.sale,original_tax_amount:"
 msgid "Original Tax"
-msgstr ""
+msgstr "Impost origen"
 
 msgctxt "field:sale.sale,original_total_amount:"
 msgid "Original Total"
-msgstr ""
+msgstr "Total original"
 
 msgctxt "field:sale.sale,original_untaxed_amount:"
 msgid "Original Untaxed"
-msgstr ""
+msgstr "Base imponible original"
 
 msgctxt "help:sale.promotion,formula:"
 msgid ""
@@ -145,27 +143,22 @@ msgctxt "model:ir.ui.menu,name:menu_promotion"
 msgid "Promotions"
 msgstr "Promocions"
 
-#, fuzzy
 msgctxt "model:sale.promotion,string:"
 msgid "Sale Promotion"
 msgstr "Promoció de venda"
 
-#, fuzzy
 msgctxt "model:sale.promotion-product.category,string:"
 msgid "Sale Promotion - Product Category"
 msgstr "Promoció de venda - Categoria de producte"
 
-#, fuzzy
 msgctxt "model:sale.promotion-product.product,string:"
 msgid "Sale Promotion - Product"
 msgstr "Promoció de venda - Producte"
 
-#, fuzzy
 msgctxt "model:sale.reporting.promotion,string:"
 msgid "Sale Reporting Promotion"
 msgstr "Informe de vendes per promoció"
 
-#, fuzzy
 msgctxt "view:sale.promotion:"
 msgid "Products"
 msgstr "Productes"

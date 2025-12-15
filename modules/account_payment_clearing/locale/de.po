@@ -74,9 +74,56 @@ msgctxt "model:account.payment.succeed.start,string:"
 msgid "Account Payment Succeed Start"
 msgstr "Buchhaltung Zahlung Erfolgreich Start"
 
+msgctxt "model:ir.action,name:wizard_payment_group_succeed"
+msgid "Succeed Groups"
+msgstr "Zahlungsläufe als erfolgreich markieren"
+
 msgctxt "model:ir.action,name:wizard_succeed"
 msgid "Succeed Payments"
 msgstr "Erfolgreiche Zahlungen"
+
+#, python-format
+msgctxt "model:ir.message,text:msg_payment_clearing_account_missing"
+msgid ""
+"To clear the payment \"%(payment)s\" you must configure a replacement "
+"account for \"%(account)s\"."
+msgstr ""
+"Um die Zahlung \"%(payment)s\" auszugleichen muss ein Ersatzkonto für "
+"\"%(account)s\" konfiguriert werden."
+
+#, python-format
+msgctxt "model:ir.message,text:msg_payment_clearing_account_missing_journal"
+msgid ""
+"To clear the payment \"%(payment)s\" you must configure a replacement "
+"account for \"%(account)s\" or an active account on the payment journal "
+"\"%(journal)s\"."
+msgstr ""
+"Um die Zahlung \"%(payment)s\" auszugleichen, muss ein Ersatzkonto für "
+"\"%(account)s\" konfiguriert oder ein aktives Konto auf dem Zahlungsjournal "
+"\"%(journal)s\" erfasst werden."
+
+#, python-format
+msgctxt "model:ir.message,text:msg_payment_clearing_account_payable_missing"
+msgid ""
+"To clear the payment \"%(payment)s\" you must configure a payable account "
+"for party \"%(party)s\"."
+msgstr ""
+"Um die Zahlung \"%(payment)s\" auszugleichen muss ein Verbindlichkeitenkonto"
+" für die Partei \"%(party)s\" konfiguriert werden."
+
+#, python-format
+msgctxt ""
+"model:ir.message,text:msg_payment_clearing_account_receivable_missing"
+msgid ""
+"To clear the payment \"%(payment)s\" you must configure a receivable account"
+" for party \"%(party)s\"."
+msgstr ""
+"Um die Zahlung \"%(payment)s\" auszugleichen, muss ein Forderungskonto für "
+"die Partei \"%(party)s\" konfiguriert werden."
+
+msgctxt "model:ir.model.button,string:payment_group_succeed_wizard_button"
+msgid "Succeed"
+msgstr "Erfolgreich markieren"
 
 msgctxt "model:ir.model.button,string:payment_succeed_wizard_button"
 msgid "Succeed"

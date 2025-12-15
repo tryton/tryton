@@ -14,51 +14,51 @@ msgctxt "field:account.invoice.line,advance_payment_recalled_lines:"
 msgid "Advance Payment Recalled Lines"
 msgstr "Línia de forma de pagament per avançat descomptades"
 
-msgctxt "field:sale.advance_payment.condition,account:"
+msgctxt "field:sale.advance_payment.line,account:"
 msgid "Account"
 msgstr "Compte"
 
-msgctxt "field:sale.advance_payment.condition,amount:"
+msgctxt "field:sale.advance_payment.line,amount:"
 msgid "Amount"
 msgstr "Import"
 
-msgctxt "field:sale.advance_payment.condition,block_shipping:"
+msgctxt "field:sale.advance_payment.line,block_shipping:"
 msgid "Block Shipping"
 msgstr "Bloqueja enviament"
 
-msgctxt "field:sale.advance_payment.condition,block_supply:"
+msgctxt "field:sale.advance_payment.line,block_supply:"
 msgid "Block Supply"
 msgstr "Bloqueja aprovisionament"
 
-msgctxt "field:sale.advance_payment.condition,completed:"
+msgctxt "field:sale.advance_payment.line,completed:"
 msgid "Completed"
 msgstr "Completat"
 
-msgctxt "field:sale.advance_payment.condition,currency:"
+msgctxt "field:sale.advance_payment.line,currency:"
 msgid "Currency"
 msgstr "Moneda"
 
-msgctxt "field:sale.advance_payment.condition,description:"
+msgctxt "field:sale.advance_payment.line,description:"
 msgid "Description"
 msgstr "Descripció"
 
-msgctxt "field:sale.advance_payment.condition,invoice_delay:"
+msgctxt "field:sale.advance_payment.line,invoice_delay:"
 msgid "Invoice Delay"
 msgstr "Retard factura"
 
-msgctxt "field:sale.advance_payment.condition,invoice_lines:"
+msgctxt "field:sale.advance_payment.line,invoice_lines:"
 msgid "Invoice Lines"
 msgstr "Línies de factura"
 
-msgctxt "field:sale.advance_payment.condition,sale:"
+msgctxt "field:sale.advance_payment.line,sale:"
 msgid "Sale"
 msgstr "Venda"
 
-msgctxt "field:sale.advance_payment.condition,sale_company:"
+msgctxt "field:sale.advance_payment.line,sale_company:"
 msgid "Company"
 msgstr "Empresa"
 
-msgctxt "field:sale.advance_payment.condition,sale_state:"
+msgctxt "field:sale.advance_payment.line,sale_state:"
 msgid "Sale State"
 msgstr "Estat de la venda"
 
@@ -114,13 +114,13 @@ msgctxt "field:sale.advance_payment_term.line.account,line:"
 msgid "Line"
 msgstr "Línia"
 
-msgctxt "field:sale.sale,advance_payment_conditions:"
-msgid "Advance Payment Conditions"
-msgstr "Condicions de pagament per avançat"
-
 msgctxt "field:sale.sale,advance_payment_invoices:"
 msgid "Advance Payment Invoices"
 msgstr "Factures de pagament per avançat"
+
+msgctxt "field:sale.sale,advance_payment_lines:"
+msgid "Advance Payment Lines"
+msgstr "Línies de pagament per avançat"
 
 msgctxt "field:sale.sale,advance_payment_term:"
 msgid "Advance Payment Term"
@@ -189,22 +189,22 @@ msgctxt "model:ir.ui.menu,name:menu_advance_payment_term"
 msgid "Advance Payment Terms"
 msgstr "Terminis de pagament per avançat"
 
-#, fuzzy
-msgctxt "model:sale.advance_payment.condition,string:"
-msgid "Sale Advance Payment Condition"
-msgstr "Condicions de pagament per avançat"
+msgctxt "model:sale.advance_payment.line,string:"
+msgid "Sale Advance Payment Line"
+msgstr "Línia de pagament per avançat"
 
-#, fuzzy
 msgctxt "model:sale.advance_payment_term,string:"
 msgid "Sale Advance Payment Term"
 msgstr "Termini de pagament per avançat"
 
-#, fuzzy
 msgctxt "model:sale.advance_payment_term.line,string:"
 msgid "Sale Advance Payment Term Line"
-msgstr "Línia de forma de pagament per avançat"
+msgstr "Línia del termini de pagament per avançat"
 
-#, fuzzy
 msgctxt "model:sale.advance_payment_term.line.account,string:"
 msgid "Sale Advance Payment Term Line Account"
 msgstr "Comptes de la línia de pagament per avançat"
+
+msgctxt "view:sale.sale:"
+msgid "Advance Payment"
+msgstr "Termini de pagament per avançat"

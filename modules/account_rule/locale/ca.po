@@ -11,7 +11,7 @@ msgid "Company"
 msgstr "Empresa"
 
 msgctxt "field:account.account.rule,end_date:"
-msgid "Ending Date"
+msgid "End Date"
 msgstr "Data final"
 
 msgctxt "field:account.account.rule,origin_account:"
@@ -23,7 +23,7 @@ msgid "Return"
 msgstr "Devolució"
 
 msgctxt "field:account.account.rule,start_date:"
-msgid "Starting Date"
+msgid "Start Date"
 msgstr "Data inicial"
 
 msgctxt "field:account.account.rule,tax:"
@@ -42,7 +42,6 @@ msgctxt "help:account.account.rule,return_:"
 msgid "Check to limit to return operation."
 msgstr "Marcar per limitar només a operacions de devolució."
 
-#, fuzzy
 msgctxt "model:account.account.rule,string:"
 msgid "Account Rule"
 msgstr "Regla de comptabilització"

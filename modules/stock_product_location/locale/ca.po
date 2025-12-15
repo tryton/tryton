@@ -26,7 +26,6 @@ msgctxt "field:stock.product.location,warehouse:"
 msgid "Warehouse"
 msgstr "Magatzem"
 
-#, fuzzy
 msgctxt "model:stock.product.location,string:"
 msgid "Stock Product Location"
 msgstr "Ubicació de producte"

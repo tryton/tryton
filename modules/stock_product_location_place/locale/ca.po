@@ -10,7 +10,6 @@ msgctxt "field:product.template,location_places:"
 msgid "Places per Location"
 msgstr "Llocs per ubicació"
 
-#, fuzzy
 msgctxt "field:stock.inventory.line,place:"
 msgid "Place"
 msgstr "Lloc"
@@ -47,7 +46,6 @@ msgctxt "model:ir.message,text:msg_stock_product_location_unique"
 msgid "Only one product place can be defined per location."
 msgstr "Només es pot definir un lloc pel producte per cada ubicació."
 
-#, fuzzy
 msgctxt "model:stock.product.location.place,string:"
 msgid "Stock Product Location Place"
 msgstr "Lloc ubicació producte"

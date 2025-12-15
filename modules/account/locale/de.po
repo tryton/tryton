@@ -668,7 +668,7 @@ msgid "Company"
 msgstr "Unternehmen"
 
 msgctxt "field:account.fiscalyear,end_date:"
-msgid "Ending Date"
+msgid "End Date"
 msgstr "Enddatum"
 
 msgctxt "field:account.fiscalyear,icon:"
@@ -688,7 +688,7 @@ msgid "Periods"
 msgstr "Buchungszeiträume"
 
 msgctxt "field:account.fiscalyear,start_date:"
-msgid "Starting Date"
+msgid "Start Date"
 msgstr "Startdatum"
 
 msgctxt "field:account.fiscalyear,state:"
@@ -1600,7 +1600,7 @@ msgid "Company"
 msgstr "Unternehmen"
 
 msgctxt "field:account.period,end_date:"
-msgid "Ending Date"
+msgid "End Date"
 msgstr "Enddatum"
 
 msgctxt "field:account.period,fiscalyear:"
@@ -1620,7 +1620,7 @@ msgid "Name"
 msgstr "Name"
 
 msgctxt "field:account.period,start_date:"
-msgid "Starting Date"
+msgid "Start Date"
 msgstr "Startdatum"
 
 msgctxt "field:account.period,state:"
@@ -1720,7 +1720,7 @@ msgid "Description"
 msgstr "Beschreibung"
 
 msgctxt "field:account.tax,end_date:"
-msgid "Ending Date"
+msgid "End Date"
 msgstr "Enddatum"
 
 msgctxt "field:account.tax,group:"
@@ -1756,7 +1756,7 @@ msgid "Rate"
 msgstr "Prozentsatz"
 
 msgctxt "field:account.tax,start_date:"
-msgid "Starting Date"
+msgid "Start Date"
 msgstr "Startdatum"
 
 msgctxt "field:account.tax,template:"
@@ -2024,7 +2024,7 @@ msgid "Override Template"
 msgstr "Vorlage überschreiben"
 
 msgctxt "field:account.tax.rule.line,end_date:"
-msgid "Ending Date"
+msgid "End Date"
 msgstr "Enddatum"
 
 msgctxt "field:account.tax.rule.line,group:"
@@ -2044,7 +2044,7 @@ msgid "Rule"
 msgstr "Regel"
 
 msgctxt "field:account.tax.rule.line,start_date:"
-msgid "Starting Date"
+msgid "Start Date"
 msgstr "Startdatum"
 
 msgctxt "field:account.tax.rule.line,tax:"
@@ -2060,7 +2060,7 @@ msgid "Override Template"
 msgstr "Vorlage überschreiben"
 
 msgctxt "field:account.tax.rule.line.template,end_date:"
-msgid "Ending Date"
+msgid "End Date"
 msgstr "Enddatum"
 
 msgctxt "field:account.tax.rule.line.template,group:"
@@ -2080,7 +2080,7 @@ msgid "Rule"
 msgstr "Regel"
 
 msgctxt "field:account.tax.rule.line.template,start_date:"
-msgid "Starting Date"
+msgid "Start Date"
 msgstr "Startdatum"
 
 msgctxt "field:account.tax.rule.line.template,tax:"
@@ -2124,7 +2124,7 @@ msgid "Description"
 msgstr "Beschreibung"
 
 msgctxt "field:account.tax.template,end_date:"
-msgid "Ending Date"
+msgid "End Date"
 msgstr "Enddatum"
 
 msgctxt "field:account.tax.template,group:"
@@ -2152,7 +2152,7 @@ msgid "Rate"
 msgstr "Prozentsatz"
 
 msgctxt "field:account.tax.template,start_date:"
-msgid "Starting Date"
+msgid "Start Date"
 msgstr "Startdatum"
 
 msgctxt "field:account.tax.template,type:"
@@ -2198,14 +2198,6 @@ msgstr "Betrag"
 msgctxt "field:account.tax.test.result,base:"
 msgid "Base"
 msgstr "Netto"
-
-msgctxt "field:account.tax.test.result,description:"
-msgid "Description"
-msgstr "Beschreibung"
-
-msgctxt "field:account.tax.test.result,legal_notice:"
-msgid "Legal Notice"
-msgstr "Rechtliche Information"
 
 msgctxt "field:account.tax.test.result,tax:"
 msgid "Tax"
@@ -3334,6 +3326,15 @@ msgstr ""
 "delegiert werden."
 
 #, python-format
+msgctxt "model:ir.message,text:msg_delete_line_reconciled"
+msgid ""
+"In order to delete the reconciled line \"%(line)s\", you must first "
+"unreconcile it."
+msgstr ""
+"Um die abgestimmte Zeile \"%(line)s\" zu löschen, müssen Sie zunächst die "
+"Abstimmung aufheben."
+
+#, python-format
 msgctxt "model:ir.message,text:msg_erase_party_receivable_payable"
 msgid ""
 "You cannot erase party \"%(party)s\" while they have pending "
@@ -3472,8 +3473,12 @@ msgstr ""
 
 #, python-format
 msgctxt "model:ir.message,text:msg_modify_line_reconciled"
-msgid "You cannot modify reconciled line \"%(line)s\"."
-msgstr "Die abgestimmte Buchungszeile \"%(line)s\" kann nicht geändert werden."
+msgid ""
+"In order to modify the reconciled line \"%(line)s\", you must first "
+"unreconcile it."
+msgstr ""
+"Um die abgestimmte Zeile \"%(line)s\" zu ändern, müssen Sie zunächst die "
+"Abstimmung aufheben."
 
 #, python-format
 msgctxt "model:ir.message,text:msg_modify_posted_moved"

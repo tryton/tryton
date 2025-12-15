@@ -1141,10 +1141,12 @@ msgstr ""
 
 #, python-format
 msgctxt "model:ir.message,text:msg_sale_warehouse_required_for_quotation"
-msgid "To get a quote for sale \"%(sale)s\" you must enter a warehouse."
+msgid ""
+"To get a quote for sale \"%(sale)s\" you must enter a warehouse for the line"
+" \"%(line)s\"."
 msgstr ""
 "Um ein Angebot für Verkauf \"%(sale)s\" erstellen zu können, muss zuerst ein"
-" Logistikstandort erfasst werden."
+" Logistikstandort für die Position \"%(line)s\" erfasst werden."
 
 msgctxt "model:ir.model.button,string:sale_cancel_button"
 msgid "Cancel"
@@ -1484,16 +1486,16 @@ msgid "Quantity"
 msgstr "Menge"
 
 msgctxt "report:sale.sale:"
-msgid "Quotation N°:"
-msgstr "Angebot Nr.:"
+msgid "Quotation No:"
+msgstr "Angebotsnummer:"
 
 msgctxt "report:sale.sale:"
 msgid "Reference:"
 msgstr "Referenz:"
 
 msgctxt "report:sale.sale:"
-msgid "Sale Order N°:"
-msgstr "Auftrag Nr.:"
+msgid "Sale Order No:"
+msgstr "Auftragsnummer:"
 
 msgctxt "report:sale.sale:"
 msgid "Taxes"

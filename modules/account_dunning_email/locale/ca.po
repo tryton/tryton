@@ -26,19 +26,17 @@ msgctxt "field:ir.email,dunning_level:"
 msgid "Level"
 msgstr "Nivell"
 
-#, fuzzy
 msgctxt "help:account.configuration,dunning_email_fallback:"
 msgid "User notified when no email is found to send the dunning."
 msgstr ""
 "L'usuari a notificar quan no es trobi cap correu electrònic per enviar la "
-"reclamació"
+"reclamació."
 
-#, fuzzy
 msgctxt "help:account.dunning.level,email_contact_mechanism:"
 msgid "Define which email to use from the party's contact mechanisms."
 msgstr ""
 "Defineix quin correu electrònic dels mitjans de contacte del tercer "
-"s'utilitzarà"
+"s'utilitzarà."
 
 msgctxt "help:account.dunning.level,email_from:"
 msgid "Leave empty for the value defined in the configuration file."

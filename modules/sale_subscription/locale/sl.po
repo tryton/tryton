@@ -168,6 +168,10 @@ msgctxt "field:sale.subscription.line,subscription_state:"
 msgid "Subscription State"
 msgstr "Stanje naročnine"
 
+msgctxt "field:sale.subscription.line,summary:"
+msgid "Summary"
+msgstr ""
+
 msgctxt "field:sale.subscription.line,unit:"
 msgid "Unit"
 msgstr "Enota"

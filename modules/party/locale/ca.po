@@ -6,15 +6,13 @@ msgctxt "field:ir.email.template,contact_mechanism:"
 msgid "Contact Mechanism"
 msgstr "Mitjà de contacte"
 
-#, fuzzy
 msgctxt "field:party.address,building_name:"
 msgid "Building Name"
 msgstr "Nom de l'edifici"
 
-#, fuzzy
 msgctxt "field:party.address,building_number:"
 msgid "Building Number"
-msgstr "Nom de l'edifici"
+msgstr "Número d'edifici"
 
 msgctxt "field:party.address,city:"
 msgid "City"
@@ -28,10 +26,9 @@ msgctxt "field:party.address,country:"
 msgid "Country"
 msgstr "País"
 
-#, fuzzy
 msgctxt "field:party.address,floor_number:"
 msgid "Floor Number"
-msgstr "Número de naixement Eslovac"
+msgstr "Número de pis"
 
 msgctxt "field:party.address,full_address:"
 msgid "Full Address"
@@ -49,14 +46,13 @@ msgctxt "field:party.address,party_name:"
 msgid "Party Name"
 msgstr "Nom del tercer"
 
-#, fuzzy
 msgctxt "field:party.address,post_box:"
 msgid "Post Box"
-msgstr "Codi postal"
+msgstr "Bústia de correus"
 
 msgctxt "field:party.address,post_office:"
 msgid "Post Office"
-msgstr ""
+msgstr "Oficina de Correus"
 
 msgctxt "field:party.address,postal_code:"
 msgid "Postal Code"
@@ -64,27 +60,24 @@ msgstr "Codi postal"
 
 msgctxt "field:party.address,private_bag:"
 msgid "Private Bag"
-msgstr ""
+msgstr "Bossa privada"
 
-#, fuzzy
 msgctxt "field:party.address,room_number:"
 msgid "Room Number"
-msgstr "Identificador fiscal Romanès"
+msgstr "Número d'habitació"
 
 msgctxt "field:party.address,street:"
 msgid "Street"
 msgstr "Carrer"
 
-#, fuzzy
 msgctxt "field:party.address,street_name:"
 msgid "Street Name"
-msgstr "Carrer"
+msgstr "Nom del carrer"
 
 msgctxt "field:party.address,street_single_line:"
 msgid "Street"
 msgstr "Carrer"
 
-#, fuzzy
 msgctxt "field:party.address,street_unstructured:"
 msgid "Street"
 msgstr "Carrer"
@@ -97,15 +90,13 @@ msgctxt "field:party.address,subdivision_types:"
 msgid "Subdivision Types"
 msgstr "Tipus de subdivisió"
 
-#, fuzzy
 msgctxt "field:party.address,unit_number:"
 msgid "Unit Number"
-msgstr "Identificador fiscal Danès"
+msgstr "Número d'unitat"
 
-#, fuzzy
 msgctxt "field:party.address.format,building_number_format:"
 msgid "Building Number Format"
-msgstr "Nom de l'edifici"
+msgstr "Format de número d'edifici"
 
 msgctxt "field:party.address.format,country_code:"
 msgid "Country Code"
@@ -113,7 +104,7 @@ msgstr "Codi País"
 
 msgctxt "field:party.address.format,floor_number_format:"
 msgid "Floor Number Format"
-msgstr ""
+msgstr "Format de número de pis"
 
 msgctxt "field:party.address.format,format_:"
 msgid "Format"
@@ -125,28 +116,27 @@ msgstr "Codi idioma"
 
 msgctxt "field:party.address.format,post_box_format:"
 msgid "Post Box Format"
-msgstr ""
+msgstr "Format de bústia de correu"
 
 msgctxt "field:party.address.format,post_office_format:"
-msgid "Post Box Format"
-msgstr ""
+msgid "Post Office Format"
+msgstr "Format d'oficina de correus"
 
 msgctxt "field:party.address.format,private_bag_format:"
-msgid "Post Box Format"
-msgstr ""
+msgid "Private Bag Format"
+msgstr "Format de bossa privada"
 
 msgctxt "field:party.address.format,room_number_format:"
 msgid "Room Number Format"
-msgstr ""
+msgstr "Format del número d'habitació"
 
-#, fuzzy
 msgctxt "field:party.address.format,street_format:"
 msgid "Street Format"
-msgstr "Formats de les adreces"
+msgstr "Format de carrer"
 
 msgctxt "field:party.address.format,unit_number_format:"
 msgid "Unit Number Format"
-msgstr ""
+msgstr "Format del número d'unitat"
 
 msgctxt "field:party.address.subdivision_type,country_code:"
 msgid "Country Code"
@@ -300,6 +290,14 @@ msgctxt "field:party.party,code:"
 msgid "Code"
 msgstr "Codi"
 
+msgctxt "field:party.party,code_alnum:"
+msgid "Code Alphanumeric"
+msgstr "Códi alfanumèric"
+
+msgctxt "field:party.party,code_digit:"
+msgid "Code Digit"
+msgstr "Codi digits"
+
 msgctxt "field:party.party,code_readonly:"
 msgid "Code Readonly"
 msgstr "Codi només lectura"
@@ -396,14 +394,13 @@ msgstr ""
 "Si s'emplena, es substituirà el nom del tercer en el format de l'adreça"
 
 msgctxt "help:party.address.format,building_number_format:"
-msgid "Use {} as placeholder for the number."
-msgstr ""
+msgid "Use {} as placeholder for the building number."
+msgstr "Feu servir {} com a marcador de posició per al número d'edifici."
 
 msgctxt "help:party.address.format,floor_number_format:"
-msgid "Use {} as placeholder for the number."
-msgstr ""
+msgid "Use {} as placeholder for the floor number."
+msgstr "Feu servir {} com a marcador de posició per al número de pis."
 
-#, fuzzy
 msgctxt "help:party.address.format,format_:"
 msgid ""
 "Available variables (also in upper case and street variables):\n"
@@ -417,7 +414,7 @@ msgid ""
 "- ${country}\n"
 "- ${country_code}"
 msgstr ""
-"Variables disponibles (també en majúscules):\n"
+"Variables disponibles (també en majúscules i variables de carrer):\n"
 "- ${party_name}\n"
 "- ${name}\n"
 "- ${attn}\n"
@@ -430,22 +427,21 @@ msgstr ""
 "- ${country_code}"
 
 msgctxt "help:party.address.format,post_box_format:"
-msgid "Use {} as placeholder for the number."
-msgstr ""
+msgid "Use {} as placeholder for the post box."
+msgstr "Feu servir {} com a marcador de posició per a la bústia."
 
 msgctxt "help:party.address.format,post_office_format:"
-msgid "Use {} as placeholder for the number."
-msgstr ""
+msgid "Use {} as placeholder for the post office."
+msgstr "Feu servir {} com a marcador de posició per a l'oficina de correus."
 
 msgctxt "help:party.address.format,private_bag_format:"
-msgid "Use {} as placeholder for the number."
-msgstr ""
+msgid "Use {} as placeholder for the private bag."
+msgstr "Feu servir {} com a marcador de posició per a la bossa privada."
 
 msgctxt "help:party.address.format,room_number_format:"
-msgid "Use {} as placeholder for the number."
-msgstr ""
+msgid "Use {} as placeholder for the room number."
+msgstr "Feu servir {} com a marcador de posició per al número d'habitació."
 
-#, fuzzy
 msgctxt "help:party.address.format,street_format:"
 msgid ""
 "Available variables (also in upper case):\n"
@@ -460,20 +456,19 @@ msgid ""
 "- ${post_office}\n"
 msgstr ""
 "Variables disponibles (també en majúscules):\n"
-"- ${party_name}\n"
-"- ${name}\n"
-"- ${attn}\n"
-"- ${street}\n"
-"- ${postal_code}\n"
-"- ${city}\n"
-"- ${subdivision}\n"
-"- ${subdivision_code}\n"
-"- ${country}\n"
-"- ${country_code}"
+"- ${street_name}\n"
+"- ${building_name}\n"
+"- ${building_number}\n"
+"- ${unit_number}\n"
+"- ${floor_number}\n"
+"- ${room_number}\n"
+"- ${post_box}\n"
+"- ${private_bag}\n"
+"- ${post_office}\n"
 
 msgctxt "help:party.address.format,unit_number_format:"
-msgid "Use {} as placeholder for the number."
-msgstr ""
+msgid "Use {} as placeholder for the unit number."
+msgstr "Feu servir {} com a marcador de posició per al número d'unitat."
 
 msgctxt "help:party.category,childs:"
 msgid "Add children below the category."
@@ -691,10 +686,10 @@ msgctxt "model:ir.message,text:msg_party_code_unique"
 msgid "The code on party must be unique."
 msgstr "El codi del tercer ha de ser únic."
 
-#, fuzzy, python-format
+#, python-format
 msgctxt "model:ir.message,text:msg_party_contact_mechanism_duplicate"
 msgid "The party \"%(party)s\" has the same %(type)s \"%(value)s\"."
-msgstr "El tercer \"%(party)s\" té el mateix \"%(type)s\" \"%(code)s\"."
+msgstr "El tercer \"%(party)s\" té el mateix \"%(type)s\" \"%(value)s\"."
 
 #, python-format
 msgctxt "model:ir.message,text:msg_party_identifier_duplicate"
@@ -762,36 +757,30 @@ msgctxt "model:ir.ui.menu,name:menu_party_form"
 msgid "Parties"
 msgstr "Tercers"
 
-#, fuzzy
 msgctxt "model:party.address,string:"
 msgid "Party Address"
 msgstr "Adreça"
 
-#, fuzzy
 msgctxt "model:party.address.format,string:"
 msgid "Party Address Format"
 msgstr "Format de les adreces"
 
-#, fuzzy
 msgctxt "model:party.address.subdivision_type,string:"
 msgid "Party Address Subdivision Type"
 msgstr "Tipus de subdivisió per adreça"
 
-#, fuzzy
 msgctxt "model:party.category,string:"
 msgid "Party Category"
-msgstr "Tercer - Categoria"
+msgstr "Categoria de tercer"
 
 msgctxt "model:party.check_vies.result,string:"
 msgid "Party Check Vies Result"
-msgstr ""
+msgstr "Resultat comprovaió VIES"
 
-#, fuzzy
 msgctxt "model:party.configuration,string:"
 msgid "Party Configuration"
 msgstr "Configuració de tercers"
 
-#, fuzzy
 msgctxt "model:party.configuration.party_lang,string:"
 msgid "Party Configuration Party Lang"
 msgstr "Configuració de l'idioma dels tercers"
@@ -800,44 +789,37 @@ msgctxt "model:party.configuration.party_sequence,string:"
 msgid "Party Configuration Party Sequence"
 msgstr "Configuració de la seqüència de tercers"
 
-#, fuzzy
 msgctxt "model:party.contact_mechanism,string:"
 msgid "Party Contact Mechanism"
 msgstr "Mitjà de contacte"
 
-#, fuzzy
 msgctxt "model:party.contact_mechanism.language,string:"
 msgid "Party Contact Mechanism Language"
 msgstr "Idioma del mitjà de contacte"
 
-#, fuzzy
 msgctxt "model:party.erase.ask,string:"
 msgid "Party Erase Ask"
-msgstr "Nom del tercer"
+msgstr "Inici eliminar tercer"
 
-#, fuzzy
 msgctxt "model:party.identifier,string:"
 msgid "Party Identifier"
 msgstr "Identificador del tercer"
 
-#, fuzzy
 msgctxt "model:party.party,string:"
 msgid "Party"
 msgstr "Tercer"
 
-#, fuzzy
 msgctxt "model:party.party-party.category,string:"
 msgid "Party - Party Category"
 msgstr "Tercer - Categoria"
 
-#, fuzzy
 msgctxt "model:party.party.lang,string:"
 msgid "Party Lang"
 msgstr "Idioma del tercer"
 
 msgctxt "model:party.replace.ask,string:"
 msgid "Party Replace Ask"
-msgstr ""
+msgstr "Inici substituïr tercer"
 
 msgctxt "model:res.group,name:group_party_admin"
 msgid "Party Administration"
@@ -900,12 +882,16 @@ msgid "Belgian BIS Number"
 msgstr "Número BIS Belga"
 
 msgctxt "selection:party.configuration,identifier_types:"
-msgid "Belgian Enterprise Number"
-msgstr "Número d'empresa Belga"
+msgid "Belgian Company Number"
+msgstr "Número d'empresa belga"
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Belgian National Number"
 msgstr "Número nacional Belga"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Belgian VAT Number"
+msgstr "Identificador fiscal Belga"
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Brazillian Company Identifier"
@@ -1153,7 +1139,7 @@ msgstr "Número digital d'identitat de resident Indi"
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Indian Income Tax Identifier"
-msgstr "Identificador fiscal Indi"
+msgstr "Identificador fiscal sobre la renda Indi"
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Indian VAT number"
@@ -1202,6 +1188,10 @@ msgstr "Número fiscal de Kenya"
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Latvian VAT Number"
 msgstr "Identificador fiscal Letó"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Lithuanian Legal Entities"
+msgstr "Entitat legal lituana"
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Lithuanian Personal Number"

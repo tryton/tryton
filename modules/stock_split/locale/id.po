@@ -50,6 +50,10 @@ msgctxt "model:ir.model.button,string:move_split_wizard_button"
 msgid "Split"
 msgstr ""
 
+msgctxt "model:ir.model.button,string:move_unsplit_button"
+msgid "Unsplit"
+msgstr ""
+
 msgctxt "model:ir.model.button,string:shipment_in_return_split_wizard_button"
 msgid "Split"
 msgstr ""

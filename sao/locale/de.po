@@ -552,6 +552,9 @@ msgstr "Spaltenbreiten zurücksetzen"
 msgid "#ERROR"
 msgstr "#FEHLER"
 
+msgid "Failed to copy text to clipboard: %1"
+msgstr "Fehler beim Kopieren des Textes in die Zwischenablage: %1"
+
 msgid "More"
 msgstr "Mehr"
 
@@ -778,6 +781,9 @@ msgstr "Ton ein-/ausschalten"
 msgid "Wizard"
 msgstr "Assistent"
 
+msgid "Toggle notification"
+msgstr "Benachrichtigung an/aus"
+
 msgid "Enter a message"
 msgstr "Nachricht eingeben"
 
@@ -786,6 +792,12 @@ msgstr "Nachricht senden"
 
 msgid "Make this an internal message"
 msgstr "In interne Nachricht umwandeln"
+
+msgid "All Notifications..."
+msgstr "Alle Benachrichtigungen..."
+
+msgid "Preferences..."
+msgstr "Einstellungen..."
 
 msgid "Translate view"
 msgstr "Aktuelle Sicht übersetzen"

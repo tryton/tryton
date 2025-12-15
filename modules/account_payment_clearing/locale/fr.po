@@ -74,9 +74,56 @@ msgctxt "model:account.payment.succeed.start,string:"
 msgid "Account Payment Succeed Start"
 msgstr "Paiement comptable réussi début"
 
+msgctxt "model:ir.action,name:wizard_payment_group_succeed"
+msgid "Succeed Groups"
+msgstr "Groupes réussis"
+
 msgctxt "model:ir.action,name:wizard_succeed"
 msgid "Succeed Payments"
 msgstr "Réussir les paiements"
+
+#, python-format
+msgctxt "model:ir.message,text:msg_payment_clearing_account_missing"
+msgid ""
+"To clear the payment \"%(payment)s\" you must configure a replacement "
+"account for \"%(account)s\"."
+msgstr ""
+"Pour compenser le paiement « %(payment)s », vous devez configurer un compte "
+"de remplacement pour « %(account)s »."
+
+#, python-format
+msgctxt "model:ir.message,text:msg_payment_clearing_account_missing_journal"
+msgid ""
+"To clear the payment \"%(payment)s\" you must configure a replacement "
+"account for \"%(account)s\" or an active account on the payment journal "
+"\"%(journal)s\"."
+msgstr ""
+"Pour compenser le paiement « %(payment)s », vous devez configurer un compte "
+"de remplacement pour « %(account)s » ou un compte actif dans le journal des "
+"paiements « %(journal)s »."
+
+#, python-format
+msgctxt "model:ir.message,text:msg_payment_clearing_account_payable_missing"
+msgid ""
+"To clear the payment \"%(payment)s\" you must configure a payable account "
+"for party \"%(party)s\"."
+msgstr ""
+"Pour compenser le paiement « %(payment)s », vous devez configurer un compte "
+"à payer pour le tiers « %(party)s »."
+
+#, python-format
+msgctxt ""
+"model:ir.message,text:msg_payment_clearing_account_receivable_missing"
+msgid ""
+"To clear the payment \"%(payment)s\" you must configure a receivable account"
+" for party \"%(party)s\"."
+msgstr ""
+"Pour compenser le paiement « %(payment)s », vous devez configurer un compte "
+"client pour le tiers « %(party)s »."
+
+msgctxt "model:ir.model.button,string:payment_group_succeed_wizard_button"
+msgid "Succeed"
+msgstr "Réussir"
 
 msgctxt "model:ir.model.button,string:payment_succeed_wizard_button"
 msgid "Succeed"

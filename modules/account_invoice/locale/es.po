@@ -2,6 +2,10 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgctxt "field:account.configuration,customer_payment_reference_number:"
+msgid "Customer Payment Reference Number"
+msgstr "Número de referencia de pago del cliente"
+
 msgctxt "field:account.configuration,default_customer_payment_term:"
 msgid "Default Customer Payment Term"
 msgstr "Plazo de pago de cliente por defecto"
@@ -14,6 +18,15 @@ msgctxt ""
 "field:account.configuration.default_payment_term,default_customer_payment_term:"
 msgid "Default Customer Payment Term"
 msgstr "Plazo de pago de cliente por defecto"
+
+msgctxt "field:account.configuration.payment_reference,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt ""
+"field:account.configuration.payment_reference,customer_payment_reference_number:"
+msgid "Customer Payment Reference Number"
+msgstr "Número de referencia de pago del cliente"
 
 msgctxt "field:account.fiscalyear,invoice_sequences:"
 msgid "Invoice Sequences"
@@ -99,6 +112,10 @@ msgctxt "field:account.invoice,currency_date:"
 msgid "Currency Date"
 msgstr "Fecha moneda"
 
+msgctxt "field:account.invoice,customer_payment_reference:"
+msgid "Customer Payment Reference"
+msgstr "Referencia de pago del cliente"
+
 msgctxt "field:account.invoice,description:"
 msgid "Description"
 msgstr "Descripción"
@@ -163,6 +180,14 @@ msgctxt "field:account.invoice,number:"
 msgid "Number"
 msgstr "Número"
 
+msgctxt "field:account.invoice,number_alnum:"
+msgid "Number Alphanumeric"
+msgstr "Número alphanumerico"
+
+msgctxt "field:account.invoice,number_digit:"
+msgid "Number Digit"
+msgstr "Número digitos"
+
 msgctxt "field:account.invoice,origins:"
 msgid "Origins"
 msgstr "Origen"
@@ -218,6 +243,14 @@ msgstr "Caché de tipo de secuencia"
 msgctxt "field:account.invoice,state:"
 msgid "State"
 msgstr "Estado"
+
+msgctxt "field:account.invoice,supplier_payment_reference:"
+msgid "Payment Reference"
+msgstr "Referencia de pago"
+
+msgctxt "field:account.invoice,supplier_payment_reference_type:"
+msgid "Payment Reference Type"
+msgstr "Tipo de referencia de pago"
 
 msgctxt "field:account.invoice,tax_amount:"
 msgid "Tax"
@@ -310,6 +343,22 @@ msgstr "Con reembolso"
 msgctxt "field:account.invoice.credit.start,with_refund_allowed:"
 msgid "With Refund Allowed"
 msgstr "Se permite el reembolso"
+
+msgctxt "field:account.invoice.edocument.result,file:"
+msgid "File"
+msgstr "Archivo"
+
+msgctxt "field:account.invoice.edocument.result,filename:"
+msgid "File Name"
+msgstr "Nombre del archivo"
+
+msgctxt "field:account.invoice.edocument.start,format:"
+msgid "Format"
+msgstr "Formato"
+
+msgctxt "field:account.invoice.edocument.start,template:"
+msgid "Template"
+msgstr "Plantilla"
 
 msgctxt "field:account.invoice.line,account:"
 msgid "Account"
@@ -731,6 +780,10 @@ msgctxt "field:party.party.payment_term,supplier_payment_term:"
 msgid "Supplier Payment Term"
 msgstr "Plazo de pago de proveedor"
 
+msgctxt "help:account.configuration,customer_payment_reference_number:"
+msgid "The number used to generate the customer payment reference."
+msgstr "El numero utilitzado para generar la referencia de pago del cliente."
+
 msgctxt "help:account.invoice,payment_term_date:"
 msgid ""
 "The date from which the payment term is calculated.\n"
@@ -767,6 +820,10 @@ msgctxt "model:account.configuration.default_payment_term,string:"
 msgid "Account Configuration Default Payment Term"
 msgstr "Configuración contable del plazo de pago por defecto"
 
+msgctxt "model:account.configuration.payment_reference,string:"
+msgid "Account Configuration Payment Reference"
+msgstr "Configuración contable del la referencia de pago"
+
 msgctxt "model:account.fiscalyear.invoice_sequence,string:"
 msgid "Account Fiscalyear Invoice Sequence"
 msgstr "Secuencia de facturación del ejericio fiscal"
@@ -790,6 +847,14 @@ msgstr "Pagador alternativo de la factura"
 msgctxt "model:account.invoice.credit.start,string:"
 msgid "Account Invoice Credit Start"
 msgstr "Inicio abonar factura"
+
+msgctxt "model:account.invoice.edocument.result,string:"
+msgid "Account Invoice Edocument Result"
+msgstr "Resultado de la factura Edocumento"
+
+msgctxt "model:account.invoice.edocument.start,string:"
+msgid "Account Invoice Edocument Start"
+msgstr "Inicio factura eDocumento"
 
 msgctxt "model:account.invoice.line,string:"
 msgid "Account Invoice Line"
@@ -910,6 +975,10 @@ msgstr "Reprogramar líneas a pagar"
 msgctxt "model:ir.action,name:credit"
 msgid "Credit"
 msgstr "Abonar"
+
+msgctxt "model:ir.action,name:edocument"
+msgid "E-document"
+msgstr "E-documento"
 
 msgctxt "model:ir.action,name:refresh_invoice_report_wizard"
 msgid "Invoice (revised)"
@@ -1161,6 +1230,11 @@ msgid "The invoice \"%(invoice)s\" is similar to invoice \"%(similar)s\"."
 msgstr "La factura \"%(invoice)s\" es similar a la factura \"%(similar)s\"."
 
 #, python-format
+msgctxt "model:ir.message,text:msg_invoice_supplier_payment_reference_invalid"
+msgid "The %(type)s \"%(reference)s\" on invoice \"%(invoice)s\" is not valid."
+msgstr "El %(type)s \"%(reference)s\" de la factura \"%(invoice)s\" no es válido."
+
+#, python-format
 msgctxt "model:ir.message,text:msg_invoice_tax_create_draft"
 msgid ""
 "You cannot add taxes to invoice \"%(invoice)s\" because it is no longer in a"
@@ -1347,7 +1421,7 @@ msgid "Draft Invoice"
 msgstr "Factura borrador"
 
 msgctxt "report:account.invoice:"
-msgid "Invoice N°:"
+msgid "Invoice No:"
 msgstr "Factura Nº:"
 
 msgctxt "report:account.invoice:"
@@ -1367,7 +1441,11 @@ msgid "Reference"
 msgstr "Referencia"
 
 msgctxt "report:account.invoice:"
-msgid "Supplier Invoice N°:"
+msgid "Reference:"
+msgstr "Referencia:"
+
+msgctxt "report:account.invoice:"
+msgid "Supplier Invoice No:"
 msgstr "Factura de proveedor Nº:"
 
 msgctxt "report:account.invoice:"
@@ -1393,6 +1471,16 @@ msgstr "Total:"
 msgctxt "report:account.invoice:"
 msgid "Unit Price"
 msgstr "Precio unitario"
+
+msgctxt ""
+"selection:account.configuration.payment_reference,customer_payment_reference_number:"
+msgid "Invoice"
+msgstr "Factura"
+
+msgctxt ""
+"selection:account.configuration.payment_reference,customer_payment_reference_number:"
+msgid "Party"
+msgstr "Tercero"
 
 msgctxt "selection:account.invoice,sequence_type_cache:"
 msgid "Credit Note"
@@ -1421,6 +1509,10 @@ msgstr "Contabilizada"
 msgctxt "selection:account.invoice,state:"
 msgid "Validated"
 msgstr "Validada"
+
+msgctxt "selection:account.invoice,supplier_payment_reference_type:"
+msgid "Creditor Reference"
+msgstr "Referencia creditor"
 
 msgctxt "selection:account.invoice,type:"
 msgid "Customer"
@@ -1533,6 +1625,18 @@ msgstr "Abonar"
 msgctxt "wizard_button:account.invoice.credit,start,end:"
 msgid "Cancel"
 msgstr "Cancelar"
+
+msgctxt "wizard_button:account.invoice.edocument,result,end:"
+msgid "Close"
+msgstr "Cerrar"
+
+msgctxt "wizard_button:account.invoice.edocument,start,end:"
+msgid "Cancel"
+msgstr "Cancelar"
+
+msgctxt "wizard_button:account.invoice.edocument,start,render:"
+msgid "Render"
+msgstr "Renderizar"
 
 msgctxt "wizard_button:account.invoice.pay,ask,end:"
 msgid "Cancel"

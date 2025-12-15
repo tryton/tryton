@@ -95,6 +95,11 @@ msgctxt "field:product.list_price,list_price:"
 msgid "List Price"
 msgstr "Cena sprzedaży"
 
+#, fuzzy
+msgctxt "field:product.list_price,product:"
+msgid "Product"
+msgstr "Produkt"
+
 msgctxt "field:product.list_price,template:"
 msgid "Template"
 msgstr "Szablon"
@@ -163,6 +168,11 @@ msgctxt "field:product.product,list_price_uom:"
 msgid "List Price"
 msgstr "Cena sprzedaży"
 
+#, fuzzy
+msgctxt "field:product.product,list_price_used:"
+msgid "List Price"
+msgstr "Cena sprzedaży"
+
 msgctxt "field:product.product,list_prices:"
 msgid "List Prices"
 msgstr "Ceny sprzedaży"
@@ -170,6 +180,11 @@ msgstr "Ceny sprzedaży"
 msgctxt "field:product.product,name:"
 msgid "Name"
 msgstr "Nazwa"
+
+#, fuzzy
+msgctxt "field:product.product,position:"
+msgid "Position"
+msgstr "Opis"
 
 msgctxt "field:product.product,prefix_code:"
 msgid "Prefix Code"
@@ -403,8 +418,19 @@ msgid "Other identifiers associated with the variant."
 msgstr "Inne identyfikatory powiązane z wariantem produktu."
 
 msgctxt "help:product.product,list_price:"
-msgid "The standard price the product is sold at."
+msgid ""
+"The standard price the variant is sold at.\n"
+"Leave empty to use the list price of the product."
+msgstr ""
+
+#, fuzzy
+msgctxt "help:product.product,list_price_used:"
+msgid "The standard price the variant is sold at."
 msgstr "Standardowa cena, za jaką sprzedawany jest produkt."
+
+msgctxt "help:product.product,position:"
+msgid "The order of the variant in the list of variants on product."
+msgstr ""
 
 #, fuzzy
 msgctxt "help:product.product,replaced_by:"
@@ -568,6 +594,11 @@ msgstr "Kod kategorii produktu musi być unikalny."
 msgctxt "model:ir.message,text:msg_invalid_code"
 msgid "The %(type)s \"%(code)s\" for product \"%(product)s\" is not valid."
 msgstr "%(type) s \"% (code) s” dla produktu \"% (product) s” jest nieprawidłowy."
+
+#, fuzzy, python-format
+msgctxt "model:ir.message,text:msg_product_change_template"
+msgid "You cannot change the template of the product \"%(product)s\"."
+msgstr "Nie można modyfikować stawki jednostki miary \"%(uom)s”."
 
 msgctxt "model:ir.message,text:msg_product_code_unique"
 msgid "Code of active product must be unique."

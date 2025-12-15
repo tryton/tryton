@@ -135,17 +135,14 @@ msgctxt "model:ir.ui.menu,name:menu_price_list"
 msgid "Price Lists"
 msgstr "Tarifes"
 
-#, fuzzy
 msgctxt "model:product.price_list,string:"
 msgid "Product Price List"
-msgstr "Tarifa"
+msgstr "Tarifa de producte"
 
-#, fuzzy
 msgctxt "model:product.price_list.line,string:"
 msgid "Product Price List Line"
-msgstr "Línia de tarifa"
+msgstr "Línia de tarifa de producte"
 
-#, fuzzy
 msgctxt "model:product.price_list.line.context,string:"
 msgid "Product Price List Line Context"
 msgstr "Context de la línia de tarifa"

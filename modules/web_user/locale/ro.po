@@ -190,12 +190,3 @@ msgstr "Încă un pas."
 msgctxt "report:web.user.email_validation:"
 msgid "Validate"
 msgstr "Validare"
-
-msgctxt "view:web.user:"
-msgid "Reset Password"
-msgstr "Resetare Parolă"
-
-#, fuzzy
-msgctxt "view:web.user:"
-msgid "Validate Email"
-msgstr "Validare e-mail"

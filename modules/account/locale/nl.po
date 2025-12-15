@@ -668,7 +668,7 @@ msgid "Company"
 msgstr "Bedrijf"
 
 msgctxt "field:account.fiscalyear,end_date:"
-msgid "Ending Date"
+msgid "End Date"
 msgstr "Eind datum"
 
 msgctxt "field:account.fiscalyear,icon:"
@@ -688,7 +688,7 @@ msgid "Periods"
 msgstr "Periodes"
 
 msgctxt "field:account.fiscalyear,start_date:"
-msgid "Starting Date"
+msgid "Start Date"
 msgstr "Start datum"
 
 msgctxt "field:account.fiscalyear,state:"
@@ -721,7 +721,7 @@ msgstr "Periode"
 
 msgctxt "field:account.fiscalyear.create_periods.start,end_day:"
 msgid "End Day"
-msgstr "Eind datum"
+msgstr "Eind dag"
 
 msgctxt "field:account.fiscalyear.create_periods.start,frequency:"
 msgid "Frequency"
@@ -849,7 +849,7 @@ msgstr "Boekjaar"
 
 msgctxt "field:account.general_ledger.account.context,from_date:"
 msgid "From Date"
-msgstr "Start datum"
+msgstr "Van datum"
 
 msgctxt "field:account.general_ledger.account.context,journal:"
 msgid "Journal"
@@ -865,7 +865,7 @@ msgstr "Begin periode"
 
 msgctxt "field:account.general_ledger.account.context,to_date:"
 msgid "To Date"
-msgstr "Eind datum"
+msgstr "Tot datum"
 
 msgctxt "field:account.general_ledger.account.party,account:"
 msgid "Account"
@@ -1021,7 +1021,7 @@ msgstr "Boekjaar"
 
 msgctxt "field:account.general_ledger.line.context,from_date:"
 msgid "From Date"
-msgstr "Start datum"
+msgstr "Van datum"
 
 msgctxt "field:account.general_ledger.line.context,journal:"
 msgid "Journal"
@@ -1041,7 +1041,7 @@ msgstr "Begin periode"
 
 msgctxt "field:account.general_ledger.line.context,to_date:"
 msgid "To Date"
-msgstr "Eind datum"
+msgstr "Tot datum"
 
 msgctxt "field:account.income_statement.context,company:"
 msgid "Company"
@@ -1069,11 +1069,11 @@ msgstr "Boekjaar"
 
 msgctxt "field:account.income_statement.context,from_date:"
 msgid "From Date"
-msgstr "Start datum"
+msgstr "Van datum"
 
 msgctxt "field:account.income_statement.context,from_date_cmp:"
 msgid "From Date"
-msgstr "Start datum"
+msgstr "Van datum"
 
 msgctxt "field:account.income_statement.context,posted:"
 msgid "Posted Move"
@@ -1089,11 +1089,11 @@ msgstr "Begin periode"
 
 msgctxt "field:account.income_statement.context,to_date:"
 msgid "To Date"
-msgstr "Eind datum"
+msgstr "Tot datum"
 
 msgctxt "field:account.income_statement.context,to_date_cmp:"
 msgid "To Date"
-msgstr "Eind datum"
+msgstr "Tot datum"
 
 msgctxt "field:account.journal,balance:"
 msgid "Balance"
@@ -1600,7 +1600,7 @@ msgid "Company"
 msgstr "Bedrijf"
 
 msgctxt "field:account.period,end_date:"
-msgid "Ending Date"
+msgid "End Date"
 msgstr "Eind datum"
 
 msgctxt "field:account.period,fiscalyear:"
@@ -1620,7 +1620,7 @@ msgid "Name"
 msgstr "Naam"
 
 msgctxt "field:account.period,start_date:"
-msgid "Starting Date"
+msgid "Start Date"
 msgstr "Start datum"
 
 msgctxt "field:account.period,state:"
@@ -1720,7 +1720,7 @@ msgid "Description"
 msgstr "Omschrijving"
 
 msgctxt "field:account.tax,end_date:"
-msgid "Ending Date"
+msgid "End Date"
 msgstr "Eind datum"
 
 msgctxt "field:account.tax,group:"
@@ -1756,7 +1756,7 @@ msgid "Rate"
 msgstr "Percentage"
 
 msgctxt "field:account.tax,start_date:"
-msgid "Starting Date"
+msgid "Start Date"
 msgstr "Start datum"
 
 msgctxt "field:account.tax,template:"
@@ -2024,7 +2024,7 @@ msgid "Override Template"
 msgstr "Template overschrijven"
 
 msgctxt "field:account.tax.rule.line,end_date:"
-msgid "Ending Date"
+msgid "End Date"
 msgstr "Eind datum"
 
 msgctxt "field:account.tax.rule.line,group:"
@@ -2044,7 +2044,7 @@ msgid "Rule"
 msgstr "Regel"
 
 msgctxt "field:account.tax.rule.line,start_date:"
-msgid "Starting Date"
+msgid "Start Date"
 msgstr "Start datum"
 
 msgctxt "field:account.tax.rule.line,tax:"
@@ -2060,7 +2060,7 @@ msgid "Override Template"
 msgstr "Template overschrijven"
 
 msgctxt "field:account.tax.rule.line.template,end_date:"
-msgid "Ending Date"
+msgid "End Date"
 msgstr "Eind datum"
 
 msgctxt "field:account.tax.rule.line.template,group:"
@@ -2080,7 +2080,7 @@ msgid "Rule"
 msgstr "Regel"
 
 msgctxt "field:account.tax.rule.line.template,start_date:"
-msgid "Starting Date"
+msgid "Start Date"
 msgstr "Start datum"
 
 msgctxt "field:account.tax.rule.line.template,tax:"
@@ -2124,7 +2124,7 @@ msgid "Description"
 msgstr "Omschrijving"
 
 msgctxt "field:account.tax.template,end_date:"
-msgid "Ending Date"
+msgid "End Date"
 msgstr "Eind datum"
 
 msgctxt "field:account.tax.template,group:"
@@ -2152,7 +2152,7 @@ msgid "Rate"
 msgstr "Percentage"
 
 msgctxt "field:account.tax.template,start_date:"
-msgid "Starting Date"
+msgid "Start Date"
 msgstr "Start datum"
 
 msgctxt "field:account.tax.template,type:"
@@ -2198,14 +2198,6 @@ msgstr "Bedrag"
 msgctxt "field:account.tax.test.result,base:"
 msgid "Base"
 msgstr "Basis"
-
-msgctxt "field:account.tax.test.result,description:"
-msgid "Description"
-msgstr "Omschrijving"
-
-msgctxt "field:account.tax.test.result,legal_notice:"
-msgid "Legal Notice"
-msgstr "Juridische kennisgeving"
 
 msgctxt "field:account.tax.test.result,tax:"
 msgid "Tax"
@@ -2926,7 +2918,7 @@ msgstr "Grootboekrekeningen"
 
 msgctxt "model:ir.action,name:act_account_tree_chart"
 msgid "Chart of Accounts"
-msgstr "Grootboek openen"
+msgstr "Rekenschema"
 
 msgctxt "model:ir.action,name:act_account_type_list"
 msgid "Account Types"
@@ -3114,7 +3106,7 @@ msgstr "Codes"
 
 msgctxt "model:ir.action,name:act_tax_code_tree_chart"
 msgid "Chart of Tax Codes"
-msgstr "Fiscaal overzicht openen"
+msgstr "Fiscaal overzicht"
 
 msgctxt "model:ir.action,name:act_tax_group_form"
 msgid "Groups"
@@ -3319,6 +3311,15 @@ msgid "You cannot delegate together lines with different origins."
 msgstr "U kunt regels met verschillende oorsprongen niet overdragen."
 
 #, python-format
+msgctxt "model:ir.message,text:msg_delete_line_reconciled"
+msgid ""
+"In order to delete the reconciled line \"%(line)s\", you must first "
+"unreconcile it."
+msgstr ""
+"Om de afgeletterde regel \"%(line)s\" te kunnen verwijderen, moet de "
+"aflettering eerst ongedaan gemaakt worden."
+
+#, python-format
 msgctxt "model:ir.message,text:msg_erase_party_receivable_payable"
 msgid ""
 "You cannot erase party \"%(party)s\" while they have pending "
@@ -3444,8 +3445,12 @@ msgstr "U kunt regel \"%(line)s\" van geboekte boeking \"%(move)s\" niet wijzige
 
 #, python-format
 msgctxt "model:ir.message,text:msg_modify_line_reconciled"
-msgid "You cannot modify reconciled line \"%(line)s\"."
-msgstr "U kunt de afgeletterde regel \"%(line)s\" niet aanpassen."
+msgid ""
+"In order to modify the reconciled line \"%(line)s\", you must first "
+"unreconcile it."
+msgstr ""
+"Om de afgeletterde regel \"%(line)s\" te kunnen wijzigen, moet de "
+"aflettering eerst ongedaan gemaakt worden."
 
 #, python-format
 msgctxt "model:ir.message,text:msg_modify_posted_moved"
@@ -3483,8 +3488,8 @@ msgid ""
 "The value \"%(value)s\" of \"%(expression)s\" from template \"%(template)s\""
 " is not a number."
 msgstr ""
-"De waarde \"%(value)s\" van \"%(expression)s\" van template \"%(template)s\""
-" is geen nummer."
+"De waarde \"%(value)s\" van \"%(expression)s\" van de template "
+"\"%(template)s\" is geen nummer."
 
 #, python-format
 msgctxt "model:ir.message,text:msg_move_template_invalid_description"
@@ -3492,8 +3497,8 @@ msgid ""
 "Failed to evaluate the description \"%(description)s\" from template "
 "\"%(template)s\" with error: \"%(error)s\""
 msgstr ""
-"Evaluatie van \"%(description)s\" van de template \"%(template)s\" faalde "
-"met error: \"%(error)s\""
+"Evaluatie van de omschrijving \"%(description)s\" van template "
+"\"%(template)s\" faalde met error: \"%(error)s\""
 
 #, python-format
 msgctxt "model:ir.message,text:msg_move_template_invalid_expression"
@@ -3639,7 +3644,7 @@ msgid ""
 "To reconcile line \"%(line)s\", you must set its account \"%(account)s\" as "
 "reconcilable."
 msgstr ""
-"Om de regel \"%(line)s\" af te kunnen letteren, moet zijn grootboekrekening "
+"Om de regel \"%(line)s\" af te kunnen letteren, moet grootboekrekening "
 "\"%(account)s gemarkeerd zijn als afletterbaar."
 
 #, python-format
@@ -3937,7 +3942,7 @@ msgstr "Grootboekrekeningen"
 
 msgctxt "model:ir.ui.menu,name:menu_account_tree_chart"
 msgid "Chart of Accounts"
-msgstr "Grootboek"
+msgstr "Rekenschema"
 
 msgctxt "model:ir.ui.menu,name:menu_account_type_list"
 msgid "Account Types"
@@ -4893,7 +4898,7 @@ msgstr "Algemene informatie"
 
 msgctxt "view:account.update_chart.succeed:"
 msgid "Chart of accounts updated successfully."
-msgstr "Grootboekschema succesvol bijgewerkt."
+msgstr "Rekenschema succesvol bijgewerkt."
 
 msgctxt "view:company.company:"
 msgid "Account"

@@ -108,7 +108,7 @@ msgstr "Opportunité"
 
 msgctxt "field:sale.opportunity.line,opportunity_state:"
 msgid "Opportunity State"
-msgstr "État de l'opportunité"
+msgstr "État d'opportunité"
 
 msgctxt "field:sale.opportunity.line,product:"
 msgid "Product"

@@ -8,7 +8,7 @@ msgstr ""
 
 msgctxt "field:stock.forecast,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:stock.forecast,destination:"
 msgid "Destination"
@@ -37,7 +37,7 @@ msgstr ""
 #, fuzzy
 msgctxt "field:stock.forecast.complete.ask,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:stock.forecast.complete.ask,destination:"
 msgid "Destination"

@@ -26,7 +26,7 @@ msgstr "Cometariu"
 
 msgctxt "field:sale.opportunity,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:sale.opportunity,contact:"
 msgid "Contact"
@@ -95,7 +95,7 @@ msgstr "Stare"
 #, fuzzy
 msgctxt "field:sale.opportunity.line,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 #, fuzzy
 msgctxt "field:sale.opportunity.line,description:"
@@ -137,7 +137,7 @@ msgstr "Unitate"
 
 msgctxt "field:sale.opportunity.reporting.context,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:sale.opportunity.reporting.context,from_date:"
 msgid "From Date"

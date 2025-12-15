@@ -132,6 +132,16 @@ msgstr ""
 "n'est pas à l'état « brouillon »."
 
 #, python-format
+msgctxt ""
+"model:ir.message,text:msg_invoice_deferred_invoice_line_missing_account"
+msgid ""
+"To create moves for invoice deferred \"%(deferral)s\" you must configure a "
+"replacement account for \"%(account)s\". "
+msgstr ""
+"Pour créer des mouvements pour la facture différée « %(deferral)s », vous "
+"devez configurer un compte de remplacement pour « %(account)s ». "
+
+#, python-format
 msgctxt "model:ir.message,text:msg_invoice_deferred_running_close_period"
 msgid ""
 "You cannot close period \"%(period)s\" because some invoices deferred "

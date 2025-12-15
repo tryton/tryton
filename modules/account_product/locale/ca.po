@@ -52,6 +52,10 @@ msgctxt "field:product.category,accounting:"
 msgid "Accounting"
 msgstr "Comptabilitat"
 
+msgctxt "field:product.category,accounting_templates:"
+msgid "Accounting Products"
+msgstr "Comptabilitat dels productes"
+
 msgctxt "field:product.category,accounts:"
 msgid "Accounts"
 msgstr "Comptes"
@@ -136,6 +140,10 @@ msgctxt "help:product.category,accounting:"
 msgid "Check to indicate the category is used for accounting."
 msgstr "Marca per indicar que la categoria s'utilitza per a la comptabilitat."
 
+msgctxt "help:product.category,accounting_templates:"
+msgid "The products for which the accounting category applies."
+msgstr "Els productes als que aplica aquesta categoria comptable."
+
 msgctxt "help:product.category,customer_taxes:"
 msgid "The taxes to apply when selling products of this category."
 msgstr "Els impostos a aplicar quan es venen productes d'aquesta categoria."
@@ -166,25 +174,21 @@ msgctxt "model:ir.rule.group,name:rule_group_category_default"
 msgid "Not accounting category"
 msgstr "Categoria no comptable"
 
-#, fuzzy
 msgctxt "model:product.category-customer-account.tax,string:"
 msgid "Product Category - Customer - Account Tax"
 msgstr "Plantilla de producte - Impost client"
 
-#, fuzzy
 msgctxt "model:product.category-supplier-account.tax,string:"
 msgid "Product Category - Supplier - Account Tax"
 msgstr "Plantilla de producte - Impost proveïdor"
 
-#, fuzzy
 msgctxt "model:product.category.account,string:"
 msgid "Product Category Account"
 msgstr "Categoria de producte"
 
-#, fuzzy
 msgctxt "model:product.template-product.category.account,string:"
 msgid "Product Template - Product Category Account"
-msgstr "Comptes de la plantilla de producte"
+msgstr "Plantilla de producte - Categoria comptable del producte"
 
 msgctxt "model:res.group,name:group_account_product_admin"
 msgid "Account Product Administration"

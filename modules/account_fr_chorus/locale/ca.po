@@ -90,12 +90,10 @@ msgctxt "help:party.party,chorus:"
 msgid "Send documents for this party through Chorus Pro"
 msgstr "Envia els documents a aquest tercer a través de Chorus Pro"
 
-#, fuzzy
 msgctxt "model:account.credential.chorus,string:"
 msgid "Account Credential Chorus"
 msgstr "Credencials Comptables de Chorus"
 
-#, fuzzy
 msgctxt "model:account.invoice.chorus,string:"
 msgid "Account Invoice Chorus"
 msgstr "Factura Chorus"

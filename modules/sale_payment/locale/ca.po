@@ -22,4 +22,4 @@ msgstr "No podeu restablir a esborrany la venda \"%(sale)s\" perquè té pagamen
 
 msgctxt "selection:ir.cron,method:"
 msgid "Confirm sales based on payment"
-msgstr ""
+msgstr "Confirma vendes pagades"

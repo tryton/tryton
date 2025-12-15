@@ -110,17 +110,14 @@ msgctxt "model:ir.ui.menu,name:menu_product_association_rule_form"
 msgid "Sale Association Rules"
 msgstr "Regles d'associació de venda"
 
-#, fuzzy
 msgctxt "model:sale.product.association.rule,string:"
 msgid "Sale Product Association Rule"
 msgstr "Regles d'associació de productes"
 
-#, fuzzy
 msgctxt "model:sale.product.association.rule.antecedent,string:"
 msgid "Sale Product Association Rule Antecedent"
 msgstr "Antecedents de les regles d'assocació de productes"
 
-#, fuzzy
 msgctxt "model:sale.product.association.rule.consequent,string:"
 msgid "Sale Product Association Rule Consequent"
 msgstr "Conseqüents de les regles d'associació de productes"

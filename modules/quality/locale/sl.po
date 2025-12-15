@@ -186,8 +186,8 @@ msgctxt "model:ir.action,name:act_quality_inspection_form_relate"
 msgid "Quality Inspections"
 msgstr ""
 
-msgctxt "model:ir.action,name:wizard_production_inspect_done"
-msgid "Inspect Done"
+msgctxt "model:ir.action,name:wizard_production_inspect_do"
+msgid "Inspect Completion"
 msgstr ""
 
 msgctxt "model:ir.action,name:wizard_production_inspect_run"
@@ -260,6 +260,10 @@ msgstr ""
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_quality_inspection_form_domain_processed"
 msgid "Processed"
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_control_point_unique"
+msgid "The names of control points must be unique."
 msgstr ""
 
 #, python-format

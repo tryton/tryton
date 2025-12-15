@@ -183,11 +183,3 @@ msgstr "Nog maar één stap.."
 msgctxt "report:web.user.email_validation:"
 msgid "Validate"
 msgstr "Goedkeuren"
-
-msgctxt "view:web.user:"
-msgid "Reset Password"
-msgstr "Reset wachtwoord"
-
-msgctxt "view:web.user:"
-msgid "Validate Email"
-msgstr "Email valideren"

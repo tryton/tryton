@@ -72,11 +72,58 @@ msgstr ""
 
 msgctxt "model:account.payment.succeed.start,string:"
 msgid "Account Payment Succeed Start"
-msgstr ""
+msgstr "Inici marcar pagaments amb éxit"
+
+msgctxt "model:ir.action,name:wizard_payment_group_succeed"
+msgid "Succeed Groups"
+msgstr "Grups amb èxit"
 
 msgctxt "model:ir.action,name:wizard_succeed"
 msgid "Succeed Payments"
 msgstr "Marca pagaments amb èxit"
+
+#, python-format
+msgctxt "model:ir.message,text:msg_payment_clearing_account_missing"
+msgid ""
+"To clear the payment \"%(payment)s\" you must configure a replacement "
+"account for \"%(account)s\"."
+msgstr ""
+"Per liquidar el pagament \"%(payment)s\" heu de configurar un compte de "
+"reeemplaç pel compte \"%(account)s\"."
+
+#, python-format
+msgctxt "model:ir.message,text:msg_payment_clearing_account_missing_journal"
+msgid ""
+"To clear the payment \"%(payment)s\" you must configure a replacement "
+"account for \"%(account)s\" or an active account on the payment journal "
+"\"%(journal)s\"."
+msgstr ""
+"Per liquidar el pagament \"%(payment)s\" heu de configurar un compte de "
+"reemplaç pel compte \"%(account)s\" o un compte actiu pel diari de pagaments"
+" \"%(journal)s\"."
+
+#, python-format
+msgctxt "model:ir.message,text:msg_payment_clearing_account_payable_missing"
+msgid ""
+"To clear the payment \"%(payment)s\" you must configure a payable account "
+"for party \"%(party)s\"."
+msgstr ""
+"Per liquidar el pagament \"%(payment)s\" heu de configurar un compte a pagar"
+" pel tercer \"%(party)s\"."
+
+#, python-format
+msgctxt ""
+"model:ir.message,text:msg_payment_clearing_account_receivable_missing"
+msgid ""
+"To clear the payment \"%(payment)s\" you must configure a receivable account"
+" for party \"%(party)s\"."
+msgstr ""
+"Per liquidar el pagament \"%(payment)s\" heu de configurar un compte a "
+"cobrar pel tercer \"%(party)s\"."
+
+msgctxt "model:ir.model.button,string:payment_group_succeed_wizard_button"
+msgid "Succeed"
+msgstr "Amb èxit"
 
 msgctxt "model:ir.model.button,string:payment_succeed_wizard_button"
 msgid "Succeed"

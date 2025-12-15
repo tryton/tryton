@@ -777,7 +777,7 @@ msgstr "La categoría de la unidad de medida del producto."
 
 msgctxt "help:sale.sale,quotation_date:"
 msgid "When the quotation was edited."
-msgstr "Cuando se editó la cita."
+msgstr "Cuando se editó el presupuesto."
 
 msgctxt "help:sale.sale,quotation_expire:"
 msgid "Until when the quotation is still valid."
@@ -1137,10 +1137,12 @@ msgstr ""
 
 #, python-format
 msgctxt "model:ir.message,text:msg_sale_warehouse_required_for_quotation"
-msgid "To get a quote for sale \"%(sale)s\" you must enter a warehouse."
+msgid ""
+"To get a quote for sale \"%(sale)s\" you must enter a warehouse for the line"
+" \"%(line)s\"."
 msgstr ""
 "Para obtener un presupuesto para la venta \"%(sale)s\" debe definir un "
-"almacén."
+"almacén para la línea \"%(line)s\"."
 
 msgctxt "model:ir.model.button,string:sale_cancel_button"
 msgid "Cancel"
@@ -1480,7 +1482,7 @@ msgid "Quantity"
 msgstr "Cantidad"
 
 msgctxt "report:sale.sale:"
-msgid "Quotation N°:"
+msgid "Quotation No:"
 msgstr "Presupuesto Nº:"
 
 msgctxt "report:sale.sale:"
@@ -1488,7 +1490,7 @@ msgid "Reference:"
 msgstr "Referencia:"
 
 msgctxt "report:sale.sale:"
-msgid "Sale Order N°:"
+msgid "Sale Order No:"
 msgstr "Venta Nº:"
 
 msgctxt "report:sale.sale:"

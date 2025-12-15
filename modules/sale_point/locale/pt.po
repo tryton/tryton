@@ -10,11 +10,19 @@ msgctxt "field:product.gross_price,gross_price:"
 msgid "Gross Price"
 msgstr ""
 
+msgctxt "field:product.gross_price,product:"
+msgid "Product"
+msgstr ""
+
 msgctxt "field:product.gross_price,template:"
 msgid "Template"
 msgstr ""
 
 msgctxt "field:product.product,gross_price:"
+msgid "Gross Price"
+msgstr ""
+
+msgctxt "field:product.product,gross_price_used:"
 msgid "Gross Price"
 msgstr ""
 
@@ -323,11 +331,17 @@ msgid "Unit Price"
 msgstr ""
 
 msgctxt "help:product.product,gross_price:"
-msgid "The price with default tax included."
+msgid ""
+"The price with default taxes included.\n"
+"Leave empty to use the gross price of the product."
+msgstr ""
+
+msgctxt "help:product.product,gross_price_used:"
+msgid "The price with default taxes included."
 msgstr ""
 
 msgctxt "help:product.template,gross_price:"
-msgid "The price with default tax included."
+msgid "The price with default taxes included."
 msgstr ""
 
 msgctxt "help:sale.point,customer_location:"

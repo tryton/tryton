@@ -86,7 +86,7 @@ msgstr "Mail lijst"
 
 msgctxt "model:ir.action,name:act_email_message_form"
 msgid "Messages"
-msgstr "Bericht"
+msgstr "Berichten"
 
 msgctxt "model:ir.action,name:act_email_relate_list"
 msgid "Emails"

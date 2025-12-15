@@ -2,6 +2,11 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+#, fuzzy
+msgctxt "field:account.configuration,customer_payment_reference_number:"
+msgid "Customer Payment Reference Number"
+msgstr "Pogoji plačila kupca"
+
 msgctxt "field:account.configuration,default_customer_payment_term:"
 msgid "Default Customer Payment Term"
 msgstr "Privzeti pogoji plačila kupca"
@@ -14,6 +19,17 @@ msgctxt ""
 "field:account.configuration.default_payment_term,default_customer_payment_term:"
 msgid "Default Customer Payment Term"
 msgstr "Privzeti pogoji plačila kupca"
+
+#, fuzzy
+msgctxt "field:account.configuration.payment_reference,company:"
+msgid "Company"
+msgstr "Družba"
+
+#, fuzzy
+msgctxt ""
+"field:account.configuration.payment_reference,customer_payment_reference_number:"
+msgid "Customer Payment Reference Number"
+msgstr "Pogoji plačila kupca"
 
 msgctxt "field:account.fiscalyear,invoice_sequences:"
 msgid "Invoice Sequences"
@@ -99,6 +115,11 @@ msgctxt "field:account.invoice,currency_date:"
 msgid "Currency Date"
 msgstr "Datum valute"
 
+#, fuzzy
+msgctxt "field:account.invoice,customer_payment_reference:"
+msgid "Customer Payment Reference"
+msgstr "Pogoji plačila kupca"
+
 msgctxt "field:account.invoice,description:"
 msgid "Description"
 msgstr "Opis"
@@ -164,6 +185,15 @@ msgctxt "field:account.invoice,number:"
 msgid "Number"
 msgstr "Številka"
 
+msgctxt "field:account.invoice,number_alnum:"
+msgid "Number Alphanumeric"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.invoice,number_digit:"
+msgid "Number Digit"
+msgstr "Številka"
+
 msgctxt "field:account.invoice,origins:"
 msgid "Origins"
 msgstr "Porekla"
@@ -219,6 +249,16 @@ msgstr ""
 msgctxt "field:account.invoice,state:"
 msgid "State"
 msgstr "Stanje"
+
+#, fuzzy
+msgctxt "field:account.invoice,supplier_payment_reference:"
+msgid "Payment Reference"
+msgstr "Valuta plačila"
+
+#, fuzzy
+msgctxt "field:account.invoice,supplier_payment_reference_type:"
+msgid "Payment Reference Type"
+msgstr "Valuta plačila"
 
 msgctxt "field:account.invoice,tax_amount:"
 msgid "Tax"
@@ -311,6 +351,24 @@ msgstr "Z vračilom"
 msgctxt "field:account.invoice.credit.start,with_refund_allowed:"
 msgid "With Refund Allowed"
 msgstr "Z možnostjo povračila"
+
+#, fuzzy
+msgctxt "field:account.invoice.edocument.result,file:"
+msgid "File"
+msgstr "Ime datoteke"
+
+#, fuzzy
+msgctxt "field:account.invoice.edocument.result,filename:"
+msgid "File Name"
+msgstr "Ime datoteke"
+
+msgctxt "field:account.invoice.edocument.start,format:"
+msgid "Format"
+msgstr ""
+
+msgctxt "field:account.invoice.edocument.start,template:"
+msgid "Template"
+msgstr ""
 
 msgctxt "field:account.invoice.line,account:"
 msgid "Account"
@@ -732,6 +790,10 @@ msgctxt "field:party.party.payment_term,supplier_payment_term:"
 msgid "Supplier Payment Term"
 msgstr "Pogoji plačila dobavitelja"
 
+msgctxt "help:account.configuration,customer_payment_reference_number:"
+msgid "The number used to generate the customer payment reference."
+msgstr ""
+
 msgctxt "help:account.invoice,payment_term_date:"
 msgid ""
 "The date from which the payment term is calculated.\n"
@@ -770,6 +832,11 @@ msgid "Account Configuration Default Payment Term"
 msgstr "Računovodske nastavitve Privzeti plačilni pogoji"
 
 #, fuzzy
+msgctxt "model:account.configuration.payment_reference,string:"
+msgid "Account Configuration Payment Reference"
+msgstr "Računovodske nastavitve Privzeti plačilni pogoji"
+
+#, fuzzy
 msgctxt "model:account.fiscalyear.invoice_sequence,string:"
 msgid "Account Fiscalyear Invoice Sequence"
 msgstr "Številčna serija prejetih računov"
@@ -796,6 +863,16 @@ msgstr "Alternativni plačniki fakture"
 msgctxt "model:account.invoice.credit.start,string:"
 msgid "Account Invoice Credit Start"
 msgstr ""
+
+#, fuzzy
+msgctxt "model:account.invoice.edocument.result,string:"
+msgid "Account Invoice Edocument Result"
+msgstr "Plačilni pogoji fakture"
+
+#, fuzzy
+msgctxt "model:account.invoice.edocument.start,string:"
+msgid "Account Invoice Edocument Start"
+msgstr "Partner fakture"
 
 #, fuzzy
 msgctxt "model:account.invoice.line,string:"
@@ -931,6 +1008,10 @@ msgstr "Ponovno načrtovanje postavk za plačilo"
 msgctxt "model:ir.action,name:credit"
 msgid "Credit"
 msgstr "Dobropis"
+
+msgctxt "model:ir.action,name:edocument"
+msgid "E-document"
+msgstr ""
 
 msgctxt "model:ir.action,name:refresh_invoice_report_wizard"
 msgid "Invoice (revised)"
@@ -1171,6 +1252,11 @@ msgctxt "model:ir.message,text:msg_invoice_similar"
 msgid "The invoice \"%(invoice)s\" is similar to invoice \"%(similar)s\"."
 msgstr "Faktura \"%(invoice)s\" je podobna fakturi \"%(similar)s\"."
 
+#, python-format
+msgctxt "model:ir.message,text:msg_invoice_supplier_payment_reference_invalid"
+msgid "The %(type)s \"%(reference)s\" on invoice \"%(invoice)s\" is not valid."
+msgstr ""
+
 #, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_invoice_tax_create_draft"
 msgid ""
@@ -1355,8 +1441,9 @@ msgctxt "report:account.invoice:"
 msgid "Draft Invoice"
 msgstr "Osnutek računa"
 
+#, fuzzy
 msgctxt "report:account.invoice:"
-msgid "Invoice N°:"
+msgid "Invoice No:"
 msgstr "Račun št."
 
 msgctxt "report:account.invoice:"
@@ -1375,8 +1462,14 @@ msgctxt "report:account.invoice:"
 msgid "Reference"
 msgstr "Sklic"
 
+#, fuzzy
 msgctxt "report:account.invoice:"
-msgid "Supplier Invoice N°:"
+msgid "Reference:"
+msgstr "Sklic"
+
+#, fuzzy
+msgctxt "report:account.invoice:"
+msgid "Supplier Invoice No:"
 msgstr "Prejeti račun št.:"
 
 msgctxt "report:account.invoice:"
@@ -1402,6 +1495,18 @@ msgstr "Skupaj:"
 msgctxt "report:account.invoice:"
 msgid "Unit Price"
 msgstr "Cena"
+
+#, fuzzy
+msgctxt ""
+"selection:account.configuration.payment_reference,customer_payment_reference_number:"
+msgid "Invoice"
+msgstr "Račun"
+
+#, fuzzy
+msgctxt ""
+"selection:account.configuration.payment_reference,customer_payment_reference_number:"
+msgid "Party"
+msgstr "Partner"
 
 #, fuzzy
 msgctxt "selection:account.invoice,sequence_type_cache:"
@@ -1432,6 +1537,11 @@ msgstr "Knjiženo"
 msgctxt "selection:account.invoice,state:"
 msgid "Validated"
 msgstr "Odobreno"
+
+#, fuzzy
+msgctxt "selection:account.invoice,supplier_payment_reference_type:"
+msgid "Creditor Reference"
+msgstr "Sklic"
 
 msgctxt "selection:account.invoice,type:"
 msgid "Customer"
@@ -1544,6 +1654,21 @@ msgstr "Kredit"
 msgctxt "wizard_button:account.invoice.credit,start,end:"
 msgid "Cancel"
 msgstr "Prekliči"
+
+#, fuzzy
+msgctxt "wizard_button:account.invoice.edocument,result,end:"
+msgid "Close"
+msgstr "Zapri"
+
+#, fuzzy
+msgctxt "wizard_button:account.invoice.edocument,start,end:"
+msgid "Cancel"
+msgstr "Cancel"
+
+#, fuzzy
+msgctxt "wizard_button:account.invoice.edocument,start,render:"
+msgid "Render"
+msgstr "Preostanek"
 
 msgctxt "wizard_button:account.invoice.pay,ask,end:"
 msgid "Cancel"

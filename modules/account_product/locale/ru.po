@@ -55,6 +55,11 @@ msgid "Accounting"
 msgstr "Регистрационные данные"
 
 #, fuzzy
+msgctxt "field:product.category,accounting_templates:"
+msgid "Accounting Products"
+msgstr "Регистрационные данные"
+
+#, fuzzy
 msgctxt "field:product.category,accounts:"
 msgid "Accounts"
 msgstr "Счета"
@@ -143,6 +148,10 @@ msgstr "Использовать счета указанные для родит
 
 msgctxt "help:product.category,accounting:"
 msgid "Check to indicate the category is used for accounting."
+msgstr ""
+
+msgctxt "help:product.category,accounting_templates:"
+msgid "The products for which the accounting category applies."
 msgstr ""
 
 msgctxt "help:product.category,customer_taxes:"

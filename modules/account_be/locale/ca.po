@@ -30,12 +30,10 @@ msgctxt "field:account.be.vat_customer.context,fiscalyear:"
 msgid "Fiscal Year"
 msgstr "Exercici fiscal"
 
-#, fuzzy
 msgctxt "model:account.be.vat_customer,string:"
 msgid "Account Be Vat Customer"
 msgstr "IVA clients Bèlgica"
 
-#, fuzzy
 msgctxt "model:account.be.vat_customer.context,string:"
 msgid "Account Be Vat Customer Context"
 msgstr "Context IVA clients Bèlgica"
@@ -47,3 +45,11 @@ msgstr "IVA clients Bèlgica"
 msgctxt "model:ir.ui.menu,name:menu_vat_customer"
 msgid "Belgian VAT Customer"
 msgstr "IVA clients Bèlgica"
+
+msgctxt "selection:account.invoice,supplier_payment_reference_type:"
+msgid "Belgian structured communication"
+msgstr "Comunicació estructurada belga"
+
+msgctxt "selection:account.payment,reference_type:"
+msgid "Belgian structured communication"
+msgstr "Comunicació estructurada belga"

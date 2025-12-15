@@ -118,6 +118,10 @@ msgctxt "help:purchase.request,product_uom_category:"
 msgid "The category of Unit of Measure for the product."
 msgstr "产品计量单位类别。"
 
+msgctxt "help:purchase.request,stock_level:"
+msgid "The low stock level in the warehouse prompted the request."
+msgstr ""
+
 msgctxt "model:ir.action,name:act_open_purchase_form"
 msgid "Purchases"
 msgstr "采购"
@@ -126,12 +130,14 @@ msgctxt "model:ir.action,name:act_open_request_form"
 msgid "Purchase Requests"
 msgstr "采购申请"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_purchase_request_form"
-msgid "Purchase Requests"
-msgstr "采购申请"
+msgid "Requests"
+msgstr "申请"
 
+#, fuzzy
 msgctxt "model:ir.action,name:wizard_create_purchase"
-msgid "Create Purchase"
+msgid "Create Purchases"
 msgstr "创建采购"
 
 msgctxt "model:ir.action,name:wizard_purchase_cancellation_handle_exception"
@@ -185,13 +191,19 @@ msgctxt ""
 msgid "Handle Purchase Cancellation"
 msgstr "取消采购处理"
 
+#, fuzzy
+msgctxt "model:ir.model.button,string:purchase_request_create_purchase_button"
+msgid "Create Purchases"
+msgstr "创建采购"
+
 msgctxt "model:ir.rule.group,name:rule_group_purchase_request_companies"
 msgid "User in companies"
 msgstr "公司中的用户"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_purchase_request_form"
-msgid "Purchase Requests"
-msgstr "采购申请"
+msgid "Requests"
+msgstr "申请"
 
 #, fuzzy
 msgctxt "model:purchase.request,string:"

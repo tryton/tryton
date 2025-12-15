@@ -10,11 +10,19 @@ msgctxt "field:product.gross_price,gross_price:"
 msgid "Gross Price"
 msgstr "Preu brut"
 
+msgctxt "field:product.gross_price,product:"
+msgid "Product"
+msgstr "Producte"
+
 msgctxt "field:product.gross_price,template:"
 msgid "Template"
 msgstr "Plantilla"
 
 msgctxt "field:product.product,gross_price:"
+msgid "Gross Price"
+msgstr "Preu brut"
+
+msgctxt "field:product.product,gross_price_used:"
 msgid "Gross Price"
 msgstr "Preu brut"
 
@@ -323,11 +331,19 @@ msgid "Unit Price"
 msgstr "Preu unitari"
 
 msgctxt "help:product.product,gross_price:"
-msgid "The price with default tax included."
+msgid ""
+"The price with default taxes included.\n"
+"Leave empty to use the gross price of the product."
+msgstr ""
+"El preu amb els impostos per defecte inclosos.\n"
+"Deixa en bllanc per utilitzar el preu brut del producte."
+
+msgctxt "help:product.product,gross_price_used:"
+msgid "The price with default taxes included."
 msgstr "El preu amb els impostos per defecte inclosos."
 
 msgctxt "help:product.template,gross_price:"
-msgid "The price with default tax included."
+msgid "The price with default taxes included."
 msgstr "El preu amb els impostos per defecte inclosos."
 
 msgctxt "help:sale.point,customer_location:"
@@ -578,7 +594,6 @@ msgctxt "model:ir.ui.menu,name:menu_sale_form"
 msgid "POS Sales"
 msgstr "Vendes TPV"
 
-#, fuzzy
 msgctxt "model:product.gross_price,string:"
 msgid "Product Gross Price"
 msgstr "Preu brut del producte"
@@ -591,50 +606,41 @@ msgctxt "model:res.group,name:group_sale_point_posting"
 msgid "POS Posting"
 msgstr "Comptabilització de TPV"
 
-#, fuzzy
 msgctxt "model:sale.point,string:"
 msgid "Sale Point"
-msgstr "Punt"
+msgstr "Punt de venta"
 
-#, fuzzy
 msgctxt "model:sale.point.cash.session,string:"
 msgid "Sale Point Cash Session"
-msgstr "Tacament de caixa TPV"
+msgstr "Sessió d'efectiu de punt de venta"
 
-#, fuzzy
 msgctxt "model:sale.point.cash.session.relation,string:"
 msgid "Sale Point Cash Session Relation"
-msgstr "Relació de sessió de TPV"
+msgstr "Relació de sessió d'efectiu en punt de venda"
 
-#, fuzzy
 msgctxt "model:sale.point.cash.transfer,string:"
 msgid "Sale Point Cash Transfer"
-msgstr "Trasnferència de diners TPV"
+msgstr "Trasnferència de diners en punt de venda"
 
-#, fuzzy
 msgctxt "model:sale.point.cash.transfer.type,string:"
 msgid "Sale Point Cash Transfer Type"
-msgstr "Tipus de transferència de diners TPV"
+msgstr "Tipus de transferència de diners del punt de venda"
 
-#, fuzzy
 msgctxt "model:sale.point.payment,string:"
 msgid "Sale Point Payment"
-msgstr "Pagament TPV"
+msgstr "Pagament del punt de venda"
 
-#, fuzzy
 msgctxt "model:sale.point.payment.method,string:"
 msgid "Sale Point Payment Method"
-msgstr "Mètode de pagament TPV"
+msgstr "Mètode de pagament del punt de venda"
 
-#, fuzzy
 msgctxt "model:sale.point.sale,string:"
 msgid "Sale Point Sale"
-msgstr "Punts de venda"
+msgstr "Venda en punts de venda"
 
-#, fuzzy
 msgctxt "model:sale.point.sale.line,string:"
 msgid "Sale Point Sale Line"
-msgstr "Línia de venda TPV"
+msgstr "Línia de venda en punt de venda"
 
 msgctxt "selection:sale.point.cash.session,state:"
 msgid "Closed"

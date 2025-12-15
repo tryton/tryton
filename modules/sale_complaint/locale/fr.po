@@ -84,7 +84,7 @@ msgstr "Plainte"
 
 msgctxt "field:sale.complaint.action,complaint_state:"
 msgid "Complaint State"
-msgstr "État de la plainte"
+msgstr "État de plainte"
 
 msgctxt "field:sale.complaint.action,currency:"
 msgid "Currency"
@@ -141,7 +141,7 @@ msgstr "ID de l'origine de la plainte"
 
 msgctxt "field:sale.complaint.action-account.invoice.line,complaint_state:"
 msgid "Complaint State"
-msgstr "État de la plainte"
+msgstr "État de plainte"
 
 msgctxt "field:sale.complaint.action-account.invoice.line,currency:"
 msgid "Currency"
@@ -177,7 +177,7 @@ msgstr "ID de l'origine de la plainte"
 
 msgctxt "field:sale.complaint.action-sale.line,complaint_state:"
 msgid "Complaint State"
-msgstr "État de la plainte"
+msgstr "État de plainte"
 
 msgctxt "field:sale.complaint.action-sale.line,currency:"
 msgid "Currency"
@@ -405,7 +405,3 @@ msgstr "Plainte"
 msgctxt "view:sale.complaint:"
 msgid "Other Info"
 msgstr "Autre information"
-
-msgctxt "view:sale.complaint:"
-msgid "Process"
-msgstr "Traiter"

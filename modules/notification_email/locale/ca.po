@@ -30,20 +30,17 @@ msgctxt "field:notification.email,content:"
 msgid "Content"
 msgstr "Contingut"
 
-#, fuzzy
 msgctxt "field:notification.email,fallback_recipients:"
 msgid "Recipients Fallback"
-msgstr "Usuari enviament fallada destinataris"
+msgstr "Recipients fallada"
 
-#, fuzzy
 msgctxt "field:notification.email,fallback_recipients_hidden:"
 msgid "Hidden Recipients Fallback"
-msgstr "Usuari enviament fallada destinataris ocults"
+msgstr "Recipients ocults fallida"
 
-#, fuzzy
 msgctxt "field:notification.email,fallback_recipients_secondary:"
 msgid "Secondary Recipients Fallback"
-msgstr "Usuari enviament fallada destinataris secundaris"
+msgstr "Recipients secundaris fallida"
 
 msgctxt "field:notification.email,from_:"
 msgid "From"
@@ -179,12 +176,10 @@ msgctxt "model:ir.ui.menu,name:menu_email_form"
 msgid "Notification Emails"
 msgstr "Notificacions per correu electrònic"
 
-#, fuzzy
 msgctxt "model:notification.email,string:"
 msgid "Notification Email"
 msgstr "Notificació per correu electrònic"
 
-#, fuzzy
 msgctxt "model:notification.email.attachment,string:"
 msgid "Notification Email Attachment"
 msgstr "Adjunts notificacions per correu electrònic"

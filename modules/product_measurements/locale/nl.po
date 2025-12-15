@@ -2,6 +2,14 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgctxt "field:product.price_list.line,volume_uom:"
+msgid "Volume UoM"
+msgstr "Maateenheid volume"
+
+msgctxt "field:product.price_list.line,weight_uom:"
+msgid "Weight UoM"
+msgstr "Maateenheid gewicht"
+
 msgctxt "field:product.product,height:"
 msgid "Height"
 msgstr "Hoogte"
@@ -80,7 +88,25 @@ msgstr "Breedte"
 
 msgctxt "field:product.template,width_uom:"
 msgid "Width UoM"
-msgstr "gewicht breedte"
+msgstr "Maateenheid breedte"
+
+msgctxt "help:product.price_list.line,formula:"
+msgid ""
+"\n"
+"-volume: the volume of 1 unit of product\n"
+"-weight: the weight of 1 unit of product"
+msgstr ""
+"\n"
+"- volume: het volume van 1 maateenheid van het product\n"
+"- gewicht: het gewicht van 1 maateenheid van het product"
+
+msgctxt "help:product.price_list.line,volume_uom:"
+msgid "Leave empty for liter."
+msgstr "Laat leeg voor liter."
+
+msgctxt "help:product.price_list.line,weight_uom:"
+msgid "Leave empty for kilogram."
+msgstr "Laat leeg voor kilogram."
 
 msgctxt "help:product.product,height:"
 msgid "Height for 1 default unit of measure."
@@ -164,7 +190,7 @@ msgstr "De maateenheid voor de breedte."
 
 msgctxt "view:product.template:"
 msgid "Measurements"
-msgstr "afmetingen"
+msgstr "Afmetingen"
 
 msgctxt "view:product.template:"
 msgid "Measurements for 1 default UoM."

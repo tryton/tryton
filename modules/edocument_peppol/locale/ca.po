@@ -1,0 +1,235 @@
+#
+#, fuzzy
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.invoice,peppol:"
+msgid "Peppol"
+msgstr "Peppol"
+
+msgctxt "field:edocument.peppol,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:edocument.peppol,data:"
+msgid "Data"
+msgstr "Dades"
+
+msgctxt "field:edocument.peppol,direction:"
+msgid "Direction"
+msgstr "Direcció"
+
+msgctxt "field:edocument.peppol,document_retried:"
+msgid "Retry"
+msgstr "Reintentat"
+
+msgctxt "field:edocument.peppol,file_id:"
+msgid "File ID"
+msgstr "Identificador del fitxer"
+
+msgctxt "field:edocument.peppol,invoice:"
+msgid "Invoice"
+msgstr "Factura"
+
+msgctxt "field:edocument.peppol,service:"
+msgid "Service"
+msgstr "Servei"
+
+msgctxt "field:edocument.peppol,state:"
+msgid "State"
+msgstr "Estat"
+
+msgctxt "field:edocument.peppol,status:"
+msgid "Status"
+msgstr "Estat"
+
+msgctxt "field:edocument.peppol,transmission_id:"
+msgid "Transmission ID"
+msgstr "ID transmisió"
+
+msgctxt "field:edocument.peppol,type:"
+msgid "Type"
+msgstr "Tipus"
+
+msgctxt "field:edocument.peppol.service,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:edocument.peppol.service,service:"
+msgid "Service"
+msgstr "Servei"
+
+msgctxt "field:edocument.peppol.service,types:"
+msgid "Types"
+msgstr "Tipus"
+
+msgctxt "field:party.party,peppol:"
+msgid "Peppol"
+msgstr "Peppol"
+
+msgctxt "field:party.party,peppol_types:"
+msgid "Peppol Types"
+msgstr "Tipus Peppol"
+
+msgctxt "field:party.party.peppol,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:party.party.peppol,party:"
+msgid "Party"
+msgstr "Tercer"
+
+msgctxt "field:party.party.peppol,peppol_types:"
+msgid "Peppol Types"
+msgstr "Tipus Peppol"
+
+msgctxt "help:edocument.peppol.service,types:"
+msgid "The types of document supported by the service provider."
+msgstr "Els tipus de document soportats pel proveïdor del servei."
+
+msgctxt "help:party.party,peppol_types:"
+msgid "Send the documents to the customer via the Peppol network."
+msgstr "Enviar documents al client utilitzant la xarxa Peppol."
+
+msgctxt "model:edocument.peppol,string:"
+msgid "Edocument Peppol"
+msgstr "eDocument Peppol"
+
+msgctxt "model:edocument.peppol.service,string:"
+msgid "Edocument Peppol Service"
+msgstr "Servei eDocument Peppol"
+
+msgctxt "model:ir.action,name:act_edocument_peppol"
+msgid "Documents"
+msgstr "Documents"
+
+msgctxt "model:ir.action,name:act_edocument_peppol_service"
+msgid "Services"
+msgstr "Serveis"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_edocument_peppol_domain_all"
+msgid "All"
+msgstr "Tot"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_edocument_peppol_domain_draft"
+msgid "Draft"
+msgstr "Esborrany"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_edocument_peppol_domain_failed"
+msgid "Failed"
+msgstr "Fallat"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_edocument_peppol_domain_pending"
+msgid "Pending"
+msgstr "Pendent"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_edocument_peppol_domain_processing"
+msgid "Processing"
+msgstr "En procés"
+
+#, python-format
+msgctxt "model:ir.message,text:msg_invoice_party_peppol_required"
+msgid ""
+"The party \"%(party)s\" is not set up to send the invoice \"%(invoice)s\" "
+"via the Peppol network."
+msgstr ""
+"El tercer \"%(party)s no esta configurar per enviar la factura "
+"\"%(invoice)s\" utilitzant la xarxa Peppol."
+
+msgctxt "model:ir.message,text:msg_service_transmission_id_unique"
+msgid "The transmission ID must be unique per service."
+msgstr "El ID de la transmisió ha de ser únic per servei."
+
+msgctxt "model:ir.model.button,string:edocument_peppol_cancel_button"
+msgid "Cancel"
+msgstr "Cancel·la"
+
+msgctxt "model:ir.model.button,string:edocument_peppol_draft_button"
+msgid "Draft"
+msgstr "Esborrany"
+
+msgctxt "model:ir.model.button,string:edocument_peppol_process_button"
+msgid "Process"
+msgstr "Processa"
+
+msgctxt "model:ir.model.button,string:edocument_peppol_retry_button"
+msgid "Retry"
+msgstr "Reintenta"
+
+msgctxt "model:ir.model.button,string:edocument_peppol_submit_button"
+msgid "Submit"
+msgstr "Envia"
+
+msgctxt "model:ir.rule.group,name:rule_group_edocument_peppol_companies"
+msgid "User in companies"
+msgstr "Usuari a les empreses"
+
+msgctxt ""
+"model:ir.rule.group,name:rule_group_edocument_peppol_service_companies"
+msgid "User in companies"
+msgstr "Usuari a les empreses"
+
+msgctxt "model:ir.ui.menu,name:menu_edocument_peppol"
+msgid "Documents"
+msgstr "Documents"
+
+msgctxt "model:ir.ui.menu,name:menu_edocument_peppol_service"
+msgid "Services"
+msgstr "Serveis"
+
+msgctxt "model:ir.ui.menu,name:menu_peppol"
+msgid "Peppol"
+msgstr "Peppol"
+
+msgctxt "model:party.party.peppol,string:"
+msgid "Party Peppol"
+msgstr "Tercer Peppol"
+
+msgctxt "selection:edocument.peppol,direction:"
+msgid "IN"
+msgstr "Entrada"
+
+msgctxt "selection:edocument.peppol,direction:"
+msgid "OUT"
+msgstr "Sortida"
+
+msgctxt "selection:edocument.peppol,state:"
+msgid "Cancelled"
+msgstr "Cancel·lat"
+
+msgctxt "selection:edocument.peppol,state:"
+msgid "Draft"
+msgstr "Esborrany"
+
+msgctxt "selection:edocument.peppol,state:"
+msgid "Failed"
+msgstr "Fallat"
+
+msgctxt "selection:edocument.peppol,state:"
+msgid "Processing"
+msgstr "En procés"
+
+msgctxt "selection:edocument.peppol,state:"
+msgid "Retried"
+msgstr "Reintentat"
+
+msgctxt "selection:edocument.peppol,state:"
+msgid "Submitted"
+msgstr "Enviat"
+
+msgctxt "selection:edocument.peppol,state:"
+msgid "Succeeded"
+msgstr "Amb èxit"
+
+msgctxt "selection:ir.cron,method:"
+msgid "Update Peppol Status"
+msgstr "Actualitza estat Peppol"
+
+msgctxt "view:party.party:"
+msgid "Peppol"
+msgstr "Peppol"

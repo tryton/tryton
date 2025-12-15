@@ -149,25 +149,21 @@ msgctxt "model:ir.ui.menu,name:menu_email_list_form"
 msgid "Mailing Lists"
 msgstr "Llistes de correu electrònic"
 
-#, fuzzy
 msgctxt "model:marketing.email,string:"
 msgid "Marketing Email"
 msgstr "Correus electrònics de marketing"
 
-#, fuzzy
 msgctxt "model:marketing.email.list,string:"
 msgid "Marketing Email List"
-msgstr "Correus electrònics de marketing"
+msgstr "Llista de correu electrònic de màrqueting"
 
-#, fuzzy
 msgctxt "model:marketing.email.message,string:"
 msgid "Marketing Email Message"
 msgstr "Missatge de correu electrònic de màrqueting"
 
-#, fuzzy
 msgctxt "model:marketing.email.send_test,string:"
 msgid "Marketing Email Send Test"
-msgstr "Missatge de correu electrònic de màrqueting"
+msgstr "Envia missatge de prova del correu electrònic de màrqueting"
 
 msgctxt "report:marketing.email.subscribe:"
 msgid "Button is not working? Paste this into your browser:"

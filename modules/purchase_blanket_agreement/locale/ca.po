@@ -227,17 +227,14 @@ msgctxt "model:ir.ui.menu,name:menu_purchase_blanket_agreement"
 msgid "Blanket Agreements"
 msgstr "Acords generals"
 
-#, fuzzy
 msgctxt "model:purchase.blanket_agreement,string:"
 msgid "Purchase Blanket Agreement"
 msgstr "Acord general de compra"
 
-#, fuzzy
 msgctxt "model:purchase.blanket_agreement.create_purchase.start,string:"
 msgid "Purchase Blanket Agreement Create Purchase Start"
-msgstr "Línea d'acord general de compra"
+msgstr "Inici crea compra de l'acord general de compra"
 
-#, fuzzy
 msgctxt "model:purchase.blanket_agreement.line,string:"
 msgid "Purchase Blanket Agreement Line"
 msgstr "Línea d'acord general de compra"

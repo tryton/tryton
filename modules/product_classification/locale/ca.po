@@ -38,12 +38,10 @@ msgctxt "model:ir.ui.menu,name:menu_classification"
 msgid "Classifications"
 msgstr "Classificacions"
 
-#, fuzzy
 msgctxt "model:product.classification.dummy,string:"
 msgid "Product Classification Dummy"
 msgstr "Classificació de productes de prova"
 
-#, fuzzy
 msgctxt "model:product.classification_tree.dummy,string:"
 msgid "Product Classification Tree Dummy"
 msgstr "Arbre de la classificació de productes de prova"

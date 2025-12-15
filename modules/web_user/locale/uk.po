@@ -187,12 +187,3 @@ msgstr "Ще один крок.."
 msgctxt "report:web.user.email_validation:"
 msgid "Validate"
 msgstr "Перевірити"
-
-msgctxt "view:web.user:"
-msgid "Reset Password"
-msgstr "Скинути пароль"
-
-#, fuzzy
-msgctxt "view:web.user:"
-msgid "Validate Email"
-msgstr "Перевірити ел.пошту"

@@ -5,6 +5,10 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+#, fuzzy
+msgid "Toggle notification"
+msgstr "ສະຫຼັບການເລືອກ"
+
 msgid "Make this an _internal message"
 msgstr ""
 
@@ -546,6 +550,10 @@ msgstr "ຂະຫຽາຍແຖວທັງໝົດ"
 
 msgid "Close Tab"
 msgstr "ອັດແຖບງານ"
+
+#, fuzzy
+msgid "All Notifications..."
+msgstr "ດຳເນີນການ..."
 
 msgid "modularity, scalability and security"
 msgstr ""
@@ -1247,9 +1255,9 @@ msgstr "ຟາຍລ໌ ທັງໝົດ"
 msgid "Show plain text"
 msgstr "ສະແດງເປັນຂໍ້ຄວາມທຳມະດາ"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Select a color for \"%s\""
-msgstr "ເລືອກສີສຳລັບ \"%s\"
+msgstr "ເລືອກສີສຳລັບ \"%s\""
 
 msgid "Add value"
 msgstr "ເພີ່ມຄ່າ"

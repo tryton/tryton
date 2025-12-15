@@ -466,45 +466,38 @@ msgctxt "model:ir.ui.menu,name:menu_scenario_form"
 msgid "Scenarios"
 msgstr "Escenaris"
 
-#, fuzzy
 msgctxt "model:marketing.automation.activity,string:"
 msgid "Marketing Automation Activity"
 msgstr "Activitat d'informes d'automatització del màrqueting"
 
-#, fuzzy
 msgctxt "model:marketing.automation.record,string:"
 msgid "Marketing Automation Record"
-msgstr "Automatització de màrqueting"
+msgstr "Registre d'automatització de màrqueting"
 
-#, fuzzy
 msgctxt "model:marketing.automation.record.activity,string:"
 msgid "Marketing Automation Record Activity"
-msgstr "Activitat d'informes d'automatització del màrqueting"
+msgstr "Registre d'activitat d'informes d'automatització del màrqueting"
 
-#, fuzzy
 msgctxt "model:marketing.automation.reporting.activity,string:"
 msgid "Marketing Automation Reporting Activity"
 msgstr "Activitat d'informes d'automatització del màrqueting"
 
-#, fuzzy
 msgctxt "model:marketing.automation.reporting.context,string:"
 msgid "Marketing Automation Reporting Context"
 msgstr "Context d'informes d'automatització del màrqueting"
 
-#, fuzzy
 msgctxt "model:marketing.automation.reporting.scenario,string:"
 msgid "Marketing Automation Reporting Scenario"
 msgstr "Escenari d'informes d'automatització del màrqueting"
 
-#, fuzzy
 msgctxt "model:marketing.automation.scenario,string:"
 msgid "Marketing Automation Scenario"
 msgstr "Escenari d'informes d'automatització del màrqueting"
 
-#, fuzzy
 msgctxt "model:party.party-unsubscribed-marketing.automation.scenario,string:"
 msgid "Party - Unsubscribed - Marketing Automation Scenario"
-msgstr "Escenaris de-suscrits del tercer"
+msgstr ""
+"Tercer - Cancelació de subscripció - Escenari d'automatizació de marketin"
 
 msgctxt "report:marketing.automation.unsubscribe:"
 msgid "Unsubscribe"

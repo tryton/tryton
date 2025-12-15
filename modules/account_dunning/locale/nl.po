@@ -145,8 +145,10 @@ msgid "Create dunning up to this date."
 msgstr "Maak aanmaningen tot datum."
 
 msgctxt "help:account.dunning.level,overdue:"
-msgid "When the level should be applied."
-msgstr "Wanneer het niveau moet worden toegepast."
+msgid ""
+"The delay from the maturity date after which the level should be applied."
+msgstr ""
+"Het uitstel vanaf de vervaldatum waarna dit niveau moet worden toegepast."
 
 msgctxt "help:account.dunning.procedure,name:"
 msgid "The main identifier of the Dunning Procedure."

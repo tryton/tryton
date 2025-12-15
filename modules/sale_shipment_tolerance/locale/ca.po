@@ -47,7 +47,6 @@ msgstr ""
 "La línia de venda \"%(line)s\" sobrepassa la tolerància d'enviament excessiu"
 " (%(shipped)s enviat > %(maximal)s )."
 
-#, fuzzy
 msgctxt "model:sale.configuration.shipment_tolerance,string:"
 msgid "Sale Configuration Shipment Tolerance"
 msgstr "Configuració de la tolerància d'enviament de venda"

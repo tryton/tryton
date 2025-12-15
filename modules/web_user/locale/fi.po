@@ -186,13 +186,3 @@ msgstr ""
 msgctxt "report:web.user.email_validation:"
 msgid "Validate"
 msgstr ""
-
-#, fuzzy
-msgctxt "view:web.user:"
-msgid "Reset Password"
-msgstr "Reset Password"
-
-#, fuzzy
-msgctxt "view:web.user:"
-msgid "Validate Email"
-msgstr "Validate E-mail"

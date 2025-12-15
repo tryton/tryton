@@ -3,6 +3,11 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 #, fuzzy
+msgctxt "field:account.configuration,customer_payment_reference_number:"
+msgid "Customer Payment Reference Number"
+msgstr "Ketentuan Pembayaran Pelanggan"
+
+#, fuzzy
 msgctxt "field:account.configuration,default_customer_payment_term:"
 msgid "Default Customer Payment Term"
 msgstr "Ketentuan Pembayaran Pelanggan"
@@ -15,6 +20,17 @@ msgstr "Perusahaan"
 msgctxt ""
 "field:account.configuration.default_payment_term,default_customer_payment_term:"
 msgid "Default Customer Payment Term"
+msgstr "Ketentuan Pembayaran Pelanggan"
+
+#, fuzzy
+msgctxt "field:account.configuration.payment_reference,company:"
+msgid "Company"
+msgstr "Perusahaan"
+
+#, fuzzy
+msgctxt ""
+"field:account.configuration.payment_reference,customer_payment_reference_number:"
+msgid "Customer Payment Reference Number"
 msgstr "Ketentuan Pembayaran Pelanggan"
 
 msgctxt "field:account.fiscalyear,invoice_sequences:"
@@ -101,6 +117,11 @@ msgctxt "field:account.invoice,currency_date:"
 msgid "Currency Date"
 msgstr "Tanggal Mata Uang"
 
+#, fuzzy
+msgctxt "field:account.invoice,customer_payment_reference:"
+msgid "Customer Payment Reference"
+msgstr "Ketentuan Pembayaran Pelanggan"
+
 msgctxt "field:account.invoice,description:"
 msgid "Description"
 msgstr "Deskripsi"
@@ -168,6 +189,15 @@ msgctxt "field:account.invoice,number:"
 msgid "Number"
 msgstr "Nomor"
 
+msgctxt "field:account.invoice,number_alnum:"
+msgid "Number Alphanumeric"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.invoice,number_digit:"
+msgid "Number Digit"
+msgstr "Nomor"
+
 msgctxt "field:account.invoice,origins:"
 msgid "Origins"
 msgstr "Asal"
@@ -225,6 +255,16 @@ msgstr ""
 msgctxt "field:account.invoice,state:"
 msgid "State"
 msgstr "Status"
+
+#, fuzzy
+msgctxt "field:account.invoice,supplier_payment_reference:"
+msgid "Payment Reference"
+msgstr "Mata Uang Pembayaran"
+
+#, fuzzy
+msgctxt "field:account.invoice,supplier_payment_reference_type:"
+msgid "Payment Reference Type"
+msgstr "Mata Uang Pembayaran"
 
 msgctxt "field:account.invoice,tax_amount:"
 msgid "Tax"
@@ -320,6 +360,24 @@ msgstr ""
 
 msgctxt "field:account.invoice.credit.start,with_refund_allowed:"
 msgid "With Refund Allowed"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.invoice.edocument.result,file:"
+msgid "File"
+msgstr "Nama"
+
+#, fuzzy
+msgctxt "field:account.invoice.edocument.result,filename:"
+msgid "File Name"
+msgstr "Nama"
+
+msgctxt "field:account.invoice.edocument.start,format:"
+msgid "Format"
+msgstr ""
+
+msgctxt "field:account.invoice.edocument.start,template:"
+msgid "Template"
 msgstr ""
 
 msgctxt "field:account.invoice.line,account:"
@@ -751,6 +809,10 @@ msgctxt "field:party.party.payment_term,supplier_payment_term:"
 msgid "Supplier Payment Term"
 msgstr "Ketentuan Pembayaran Pemasok"
 
+msgctxt "help:account.configuration,customer_payment_reference_number:"
+msgid "The number used to generate the customer payment reference."
+msgstr ""
+
 msgctxt "help:account.invoice,payment_term_date:"
 msgid ""
 "The date from which the payment term is calculated.\n"
@@ -784,6 +846,11 @@ msgid "Account Configuration Default Payment Term"
 msgstr ""
 
 #, fuzzy
+msgctxt "model:account.configuration.payment_reference,string:"
+msgid "Account Configuration Payment Reference"
+msgstr "Faktur - Baris Pembayaran"
+
+#, fuzzy
 msgctxt "model:account.fiscalyear.invoice_sequence,string:"
 msgid "Account Fiscalyear Invoice Sequence"
 msgstr "Urutan Faktur Pemasok"
@@ -810,6 +877,16 @@ msgstr "Status Faktur"
 msgctxt "model:account.invoice.credit.start,string:"
 msgid "Account Invoice Credit Start"
 msgstr ""
+
+#, fuzzy
+msgctxt "model:account.invoice.edocument.result,string:"
+msgid "Account Invoice Edocument Result"
+msgstr "Metode Pembayaran Faktur"
+
+#, fuzzy
+msgctxt "model:account.invoice.edocument.start,string:"
+msgid "Account Invoice Edocument Start"
+msgstr "Status Faktur"
 
 #, fuzzy
 msgctxt "model:account.invoice.line,string:"
@@ -944,6 +1021,10 @@ msgstr "Baris yang Harus Dibayar"
 msgctxt "model:ir.action,name:credit"
 msgid "Credit"
 msgstr "Kredit"
+
+msgctxt "model:ir.action,name:edocument"
+msgid "E-document"
+msgstr ""
 
 #, fuzzy
 msgctxt "model:ir.action,name:refresh_invoice_report_wizard"
@@ -1174,6 +1255,11 @@ msgstr ""
 "Faktur \"%(invoice)s\" menghasilkan tanggal pembayaran \"%(date)s\" di masa "
 "lampau."
 
+#, python-format
+msgctxt "model:ir.message,text:msg_invoice_supplier_payment_reference_invalid"
+msgid "The %(type)s \"%(reference)s\" on invoice \"%(invoice)s\" is not valid."
+msgstr ""
+
 #, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_invoice_tax_create_draft"
 msgid ""
@@ -1353,8 +1439,9 @@ msgctxt "report:account.invoice:"
 msgid "Draft Invoice"
 msgstr "Faktur Rancangan"
 
+#, fuzzy
 msgctxt "report:account.invoice:"
-msgid "Invoice N°:"
+msgid "Invoice No:"
 msgstr "Faktur N°:"
 
 msgctxt "report:account.invoice:"
@@ -1373,8 +1460,14 @@ msgctxt "report:account.invoice:"
 msgid "Reference"
 msgstr "Referensi"
 
+#, fuzzy
 msgctxt "report:account.invoice:"
-msgid "Supplier Invoice N°:"
+msgid "Reference:"
+msgstr "Referensi"
+
+#, fuzzy
+msgctxt "report:account.invoice:"
+msgid "Supplier Invoice No:"
 msgstr "Faktur Pemasok N°:"
 
 msgctxt "report:account.invoice:"
@@ -1400,6 +1493,18 @@ msgstr "Total:"
 msgctxt "report:account.invoice:"
 msgid "Unit Price"
 msgstr "Harga Satuan"
+
+#, fuzzy
+msgctxt ""
+"selection:account.configuration.payment_reference,customer_payment_reference_number:"
+msgid "Invoice"
+msgstr "Faktur"
+
+#, fuzzy
+msgctxt ""
+"selection:account.configuration.payment_reference,customer_payment_reference_number:"
+msgid "Party"
+msgstr "Pihak"
 
 #, fuzzy
 msgctxt "selection:account.invoice,sequence_type_cache:"
@@ -1430,6 +1535,11 @@ msgstr ""
 msgctxt "selection:account.invoice,state:"
 msgid "Validated"
 msgstr ""
+
+#, fuzzy
+msgctxt "selection:account.invoice,supplier_payment_reference_type:"
+msgid "Creditor Reference"
+msgstr "Referensi"
 
 msgctxt "selection:account.invoice,type:"
 msgid "Customer"
@@ -1543,6 +1653,20 @@ msgstr "Kredit"
 msgctxt "wizard_button:account.invoice.credit,start,end:"
 msgid "Cancel"
 msgstr "Batal"
+
+#, fuzzy
+msgctxt "wizard_button:account.invoice.edocument,result,end:"
+msgid "Close"
+msgstr "Tutup"
+
+#, fuzzy
+msgctxt "wizard_button:account.invoice.edocument,start,end:"
+msgid "Cancel"
+msgstr "Batal"
+
+msgctxt "wizard_button:account.invoice.edocument,start,render:"
+msgid "Render"
+msgstr ""
 
 msgctxt "wizard_button:account.invoice.pay,ask,end:"
 msgid "Cancel"

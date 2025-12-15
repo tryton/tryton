@@ -52,6 +52,10 @@ msgctxt "field:product.category,accounting:"
 msgid "Accounting"
 msgstr "Buchhaltung"
 
+msgctxt "field:product.category,accounting_templates:"
+msgid "Accounting Products"
+msgstr "Buchhaltungsartikel"
+
 msgctxt "field:product.category,accounts:"
 msgid "Accounts"
 msgstr "Konten"
@@ -136,6 +140,10 @@ msgctxt "help:product.category,accounting:"
 msgid "Check to indicate the category is used for accounting."
 msgstr ""
 "Aktivieren um Verwendung der Kategorie für die Buchhaltung zu ermöglichen."
+
+msgctxt "help:product.category,accounting_templates:"
+msgid "The products for which the accounting category applies."
+msgstr "Die Artikel, für die diese Buchhaltungskategorie verwendet wird."
 
 msgctxt "help:product.category,customer_taxes:"
 msgid "The taxes to apply when selling products of this category."

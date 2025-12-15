@@ -717,9 +717,10 @@ msgctxt "field:account.fiscalyear,company:"
 msgid "Company"
 msgstr "Družba"
 
+#, fuzzy
 msgctxt "field:account.fiscalyear,end_date:"
-msgid "Ending Date"
-msgstr "Do"
+msgid "End Date"
+msgstr "Končni datum"
 
 msgctxt "field:account.fiscalyear,icon:"
 msgid "Icon"
@@ -738,8 +739,9 @@ msgctxt "field:account.fiscalyear,periods:"
 msgid "Periods"
 msgstr "Obdobja"
 
+#, fuzzy
 msgctxt "field:account.fiscalyear,start_date:"
-msgid "Starting Date"
+msgid "Start Date"
 msgstr "Začetni datum"
 
 msgctxt "field:account.fiscalyear,state:"
@@ -1740,9 +1742,10 @@ msgctxt "field:account.period,company:"
 msgid "Company"
 msgstr "Družba"
 
+#, fuzzy
 msgctxt "field:account.period,end_date:"
-msgid "Ending Date"
-msgstr "Do"
+msgid "End Date"
+msgstr "Končni datum"
 
 msgctxt "field:account.period,fiscalyear:"
 msgid "Fiscal Year"
@@ -1761,9 +1764,10 @@ msgctxt "field:account.period,name:"
 msgid "Name"
 msgstr "Naziv"
 
+#, fuzzy
 msgctxt "field:account.period,start_date:"
-msgid "Starting Date"
-msgstr "Od"
+msgid "Start Date"
+msgstr "Začetni datum"
 
 msgctxt "field:account.period,state:"
 msgid "State"
@@ -1868,9 +1872,10 @@ msgctxt "field:account.tax,description:"
 msgid "Description"
 msgstr "Opis"
 
+#, fuzzy
 msgctxt "field:account.tax,end_date:"
-msgid "Ending Date"
-msgstr "Do"
+msgid "End Date"
+msgstr "Končni datum"
 
 msgctxt "field:account.tax,group:"
 msgid "Group"
@@ -1904,9 +1909,10 @@ msgctxt "field:account.tax,rate:"
 msgid "Rate"
 msgstr "Stopnja"
 
+#, fuzzy
 msgctxt "field:account.tax,start_date:"
-msgid "Starting Date"
-msgstr "Od"
+msgid "Start Date"
+msgstr "Začetni datum"
 
 msgctxt "field:account.tax,template:"
 msgid "Template"
@@ -2199,8 +2205,8 @@ msgstr ""
 
 #, fuzzy
 msgctxt "field:account.tax.rule.line,end_date:"
-msgid "Ending Date"
-msgstr "Do"
+msgid "End Date"
+msgstr "Končni datum"
 
 msgctxt "field:account.tax.rule.line,group:"
 msgid "Tax Group"
@@ -2220,8 +2226,8 @@ msgstr "Pravilo"
 
 #, fuzzy
 msgctxt "field:account.tax.rule.line,start_date:"
-msgid "Starting Date"
-msgstr "Od"
+msgid "Start Date"
+msgstr "Začetni datum"
 
 msgctxt "field:account.tax.rule.line,tax:"
 msgid "Substitution Tax"
@@ -2237,8 +2243,8 @@ msgstr ""
 
 #, fuzzy
 msgctxt "field:account.tax.rule.line.template,end_date:"
-msgid "Ending Date"
-msgstr "Do"
+msgid "End Date"
+msgstr "Končni datum"
 
 msgctxt "field:account.tax.rule.line.template,group:"
 msgid "Tax Group"
@@ -2258,8 +2264,8 @@ msgstr "Pravilo"
 
 #, fuzzy
 msgctxt "field:account.tax.rule.line.template,start_date:"
-msgid "Starting Date"
-msgstr "Od"
+msgid "Start Date"
+msgstr "Začetni datum"
 
 msgctxt "field:account.tax.rule.line.template,tax:"
 msgid "Substitution Tax"
@@ -2301,9 +2307,10 @@ msgctxt "field:account.tax.template,description:"
 msgid "Description"
 msgstr "Opis"
 
+#, fuzzy
 msgctxt "field:account.tax.template,end_date:"
-msgid "Ending Date"
-msgstr "Do"
+msgid "End Date"
+msgstr "Končni datum"
 
 msgctxt "field:account.tax.template,group:"
 msgid "Group"
@@ -2329,8 +2336,9 @@ msgctxt "field:account.tax.template,rate:"
 msgid "Rate"
 msgstr "Stopnja"
 
+#, fuzzy
 msgctxt "field:account.tax.template,start_date:"
-msgid "Starting Date"
+msgid "Start Date"
 msgstr "Začetni datum"
 
 msgctxt "field:account.tax.template,type:"
@@ -2376,14 +2384,6 @@ msgstr "Znesek"
 msgctxt "field:account.tax.test.result,base:"
 msgid "Base"
 msgstr "Osnova"
-
-msgctxt "field:account.tax.test.result,description:"
-msgid "Description"
-msgstr "Opis"
-
-msgctxt "field:account.tax.test.result,legal_notice:"
-msgid "Legal Notice"
-msgstr ""
 
 msgctxt "field:account.tax.test.result,tax:"
 msgid "Tax"
@@ -3458,7 +3458,8 @@ msgstr ""
 #, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_account_closed_lines"
 msgid "You cannot close account \"%(account)s\" because it has move lines."
-msgstr "Konta \"%s\" ni možno brisati zaradi obstoječih knjiženih postavk."
+msgstr ""
+"Konta \"%(account)s\" ni možno brisati zaradi obstoječih knjiženih postavk."
 
 #, python-format
 msgctxt "model:ir.message,text:msg_account_invalid_deferral_second_currency"
@@ -3483,7 +3484,8 @@ msgstr ""
 msgctxt "model:ir.message,text:msg_account_no_type_lines"
 msgid ""
 "You cannot remove type of account \"%(account)s\" because it has move lines."
-msgstr "Konta \"%s\" ni možno brisati zaradi obstoječih knjiženih postavk."
+msgstr ""
+"Konta \"%(account)s\" ni možno brisati zaradi obstoječih knjiženih postavk."
 
 #, python-format
 msgctxt "model:ir.message,text:msg_cancel_line_delegated"
@@ -3497,14 +3499,16 @@ msgctxt "model:ir.message,text:msg_change_fiscalyear_move_sequence"
 msgid ""
 "You cannot change the move sequence on fiscal year \"%(fiscalyear)s\" "
 "because it contains posted moves."
-msgstr "Obdobja na zaključenem poslovnem letu \"%s\" ni možno izdelati."
+msgstr ""
+"Obdobja na zaključenem poslovnem letu \"%(fiscalyear)s\" ni možno izdelati."
 
 #, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_change_period_move_sequence"
 msgid ""
 "You cannot change the move sequence in period \"%(period)s\" because it has "
 "posted moves."
-msgstr "Konta \"%s\" ni možno brisati zaradi obstoječih knjiženih postavk."
+msgstr ""
+"Konta \"%(period)s\" ni možno brisati zaradi obstoječih knjiženih postavk."
 
 #, python-format
 msgctxt "model:ir.message,text:msg_close_fiscalyear_account_balance_not_zero"
@@ -3541,14 +3545,15 @@ msgstr ""
 #, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_create_journal_period_closed_period"
 msgid "You cannot create a journal-period in closed period \"%(period)s\"."
-msgstr "Dnevnika za zaključeno obdobje \"%s\" ni možno izdelati."
+msgstr "Dnevnika za zaključeno obdobje \"%(period)s\" ni možno izdelati."
 
 #, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_create_period_closed_fiscalyear"
 msgid ""
 "You cannot create a period in fiscal year \"%(fiscalyear)s\" because it is "
 "closed."
-msgstr "Obdobja na zaključenem poslovnem letu \"%s\" ni možno izdelati."
+msgstr ""
+"Obdobja na zaključenem poslovnem letu \"%(fiscalyear)s\" ni možno izdelati."
 
 #, fuzzy
 msgctxt "model:ir.message,text:msg_deferral_unique"
@@ -3561,6 +3566,13 @@ msgstr ""
 
 msgctxt "model:ir.message,text:msg_delegate_line_same_origins"
 msgid "You cannot delegate together lines with different origins."
+msgstr ""
+
+#, python-format
+msgctxt "model:ir.message,text:msg_delete_line_reconciled"
+msgid ""
+"In order to delete the reconciled line \"%(line)s\", you must first "
+"unreconcile it."
 msgstr ""
 
 #, python-format
@@ -3608,7 +3620,8 @@ msgctxt "model:ir.message,text:msg_journal_account_moves"
 msgid ""
 "You cannot change the type of journal \"%(journal)s\" because it has posted "
 "moves."
-msgstr "Konta \"%s\" ni možno brisati zaradi obstoječih knjiženih postavk."
+msgstr ""
+"Konta \"%(journal)s\" ni možno brisati zaradi obstoječih knjiženih postavk."
 
 #, fuzzy
 msgctxt "model:ir.message,text:msg_journal_period_unique"
@@ -3672,7 +3685,9 @@ msgstr ""
 
 #, python-format
 msgctxt "model:ir.message,text:msg_modify_line_reconciled"
-msgid "You cannot modify reconciled line \"%(line)s\"."
+msgid ""
+"In order to modify the reconciled line \"%(line)s\", you must first "
+"unreconcile it."
 msgstr ""
 
 #, python-format
@@ -3684,7 +3699,7 @@ msgstr ""
 msgctxt "model:ir.message,text:msg_modify_tax_line_closed_period"
 msgid "You cannot add/modify/delete tax lines in closed period \"%(period)s\"."
 msgstr ""
-"Postavk dnevnika na zaključenem obdobju \"%s\" ni možno "
+"Postavk dnevnika na zaključenem obdobju \"%(period)s\" ni možno "
 "dodajati/popravljati."
 
 #, python-format
@@ -3907,14 +3922,12 @@ msgid ""
 "off method."
 msgstr ""
 
-#, fuzzy, python-format
+#, python-format
 msgctxt "model:ir.message,text:msg_reconciliation_write_off_same_account"
 msgid ""
 "You cannot reconcile lines using the write-off \"%(write_off)s\" with the "
 "same \"%(account)s\"."
 msgstr ""
-"Postavke \"%(line)s\" ni možno uskladiti, ker je konto \"%(account1)s\" "
-"različen od konta \"%(account2)s\"."
 
 #, python-format
 msgctxt "model:ir.message,text:msg_reopen_fiscalyear_later"

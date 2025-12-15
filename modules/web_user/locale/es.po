@@ -185,11 +185,3 @@ msgstr "Solo un paso mas..."
 msgctxt "report:web.user.email_validation:"
 msgid "Validate"
 msgstr "Validar"
-
-msgctxt "view:web.user:"
-msgid "Reset Password"
-msgstr "Restablecer contraseña"
-
-msgctxt "view:web.user:"
-msgid "Validate Email"
-msgstr "Validar correo electrónico"

@@ -6,3 +6,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 msgctxt "model:edocument.uncefact.invoice,string:"
 msgid "Edocument Uncefact Invoice"
 msgstr "eDokument UN/CEFACT Račun"
+
+msgctxt "selection:account.invoice.edocument.start,format:"
+msgid "UN/CEFACT"
+msgstr ""

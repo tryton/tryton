@@ -10,6 +10,11 @@ msgctxt "field:res.role,name:"
 msgid "Name"
 msgstr "نام"
 
+#, fuzzy
+msgctxt "field:res.role,users:"
+msgid "Users"
+msgstr "کاربر"
+
 msgctxt "field:res.role-res.group,group:"
 msgid "Group"
 msgstr "گروه"
@@ -65,6 +70,14 @@ msgstr "نقش کاربر"
 msgctxt "selection:ir.cron,method:"
 msgid "Synchronize Users Roles"
 msgstr "هماهنگ سازی نقش های کاربران"
+
+msgctxt "view:res.role:"
+msgid "Access Permissions"
+msgstr ""
+
+msgctxt "view:res.role:"
+msgid "Members"
+msgstr ""
 
 msgctxt "view:res.user.role:"
 msgid "Time"

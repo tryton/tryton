@@ -106,7 +106,7 @@ msgstr "Exporteer boekingen"
 
 msgctxt "selection:account.move.export,state:"
 msgid "Done"
-msgstr "Afgerond"
+msgstr "Gereed"
 
 msgctxt "selection:account.move.export,state:"
 msgid "Draft"

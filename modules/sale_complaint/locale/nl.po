@@ -403,7 +403,3 @@ msgstr "klacht"
 msgctxt "view:sale.complaint:"
 msgid "Other Info"
 msgstr "Overige informatie"
-
-msgctxt "view:sale.complaint:"
-msgid "Process"
-msgstr "Proces"

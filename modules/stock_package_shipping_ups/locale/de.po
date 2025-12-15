@@ -38,9 +38,21 @@ msgctxt "field:carrier.credential.ups,server:"
 msgid "Server"
 msgstr "Server"
 
+msgctxt "field:carrier.credential.ups,use_international_forms:"
+msgid "Use International Forms"
+msgstr "Internationale Formulare benutzen"
+
 msgctxt "field:carrier.credential.ups,use_metric:"
 msgid "Use Metric"
 msgstr "Metrische Einheiten verwenden"
+
+msgctxt "field:customs.agent,ups_account_number:"
+msgid "UPS Account Number"
+msgstr "UPS-Kundennummer"
+
+msgctxt "field:product.uom,ups_code:"
+msgid "UPS Code"
+msgstr "UPS-Code"
 
 msgctxt "field:stock.package.type,ups_code:"
 msgid "UPS Code"
@@ -57,6 +69,10 @@ msgstr "UPS Versand für Pakete erstellen"
 msgctxt "model:ir.action,name:act_ups_credential_form"
 msgid "UPS Credentials"
 msgstr "UPS Anmeldedaten"
+
+msgctxt "model:ir.message,text:msg_general_merchandise"
+msgid "General Merchandise"
+msgstr "Handelswaren"
 
 #, python-format
 msgctxt "model:ir.message,text:msg_phone_required"
@@ -75,15 +91,6 @@ msgid ""
 msgstr ""
 "Für die Lieferung \"%(shipment)s\" kann keine Sendung erstellt werden, da "
 "sie bereits eine Referenznummer hat."
-
-#, python-format
-msgctxt "model:ir.message,text:msg_shipping_description_required"
-msgid ""
-"To validate shipment \"%(shipment)s\" you must fill its shipping "
-"description."
-msgstr ""
-"Um die Lieferung \"%(shipment)s\" validieren zu können, muss deren "
-"Versandbeschreibung ausgefüllt werden."
 
 msgctxt "model:ir.message,text:msg_ups_credential_modified"
 msgid "Are you sure you want to modify UPS credentials?"
@@ -150,6 +157,166 @@ msgstr "Produktivumgebung"
 msgctxt "selection:carrier.credential.ups,server:"
 msgid "Testing"
 msgstr "Testumgebung"
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Bag"
+msgstr "Tüte"
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Barrel"
+msgstr "Barrel"
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Bolt"
+msgstr "Ballen"
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Box"
+msgstr "Schachtel"
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Bunch"
+msgstr "Bund"
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Bundle"
+msgstr "Bündel"
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Butt"
+msgstr "Butt"
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Canister"
+msgstr "Kanister"
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Carton"
+msgstr "Karton"
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Case"
+msgstr "Koffer"
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Centimeter"
+msgstr "Zentimeter"
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Container"
+msgstr "Container"
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Crate"
+msgstr "Kiste"
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Cylinder"
+msgstr "Flasche"
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Dozen"
+msgstr "Dutzend"
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Each"
+msgstr "je Einheit"
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Envelope"
+msgstr "Briefumschlag"
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Feet"
+msgstr "Fuß"
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Kilogram"
+msgstr "Kilogramm"
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Kilograms"
+msgstr "Kilogramm"
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Liter"
+msgstr "Liter"
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Meter"
+msgstr "Meter"
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Number"
+msgstr "Nummer"
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Other"
+msgstr "Sonstige"
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Package"
+msgstr "Paket"
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Packet"
+msgstr "Päckchen"
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Pair"
+msgstr "Paar"
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Pairs"
+msgstr "Paare"
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Pallet"
+msgstr "Palette"
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Piece"
+msgstr "Stück"
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Pieces"
+msgstr "Stücke"
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Pound"
+msgstr "Pound"
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Pounds"
+msgstr "Pounds"
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Proof Liters"
+msgstr "Proof Liter"
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Roll"
+msgstr "Rolle"
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Set"
+msgstr "Satz"
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Square Meters"
+msgstr "Quadratmeter"
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Square Yards"
+msgstr "Square Yard"
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Tube"
+msgstr "Tube"
+
+msgctxt "selection:product.uom,ups_code:"
+msgid "Yard"
+msgstr "Yard"
 
 msgctxt "view:carrier.credential.ups:"
 msgid "Credential Information"

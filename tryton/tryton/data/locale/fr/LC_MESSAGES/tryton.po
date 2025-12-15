@@ -5,6 +5,9 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgid "Toggle notification"
+msgstr "Activer/désactiver les notifications"
+
 msgid "Make this an _internal message"
 msgstr "En faire un message _interne"
 
@@ -396,7 +399,7 @@ msgid "Quit"
 msgstr "Quitter"
 
 msgid "Edition Shortcuts"
-msgstr "Éditer les raccourcis"
+msgstr "Raccourcis d'édition"
 
 msgid "Text Entries"
 msgstr "Entrées de texte"
@@ -523,6 +526,9 @@ msgstr "Déplier toutes les lignes"
 
 msgid "Close Tab"
 msgstr "Fermer l'onglet"
+
+msgid "All Notifications..."
+msgstr "Toutes les notifications..."
 
 msgid "modularity, scalability and security"
 msgstr "modularité, évolutivité et sécurité"

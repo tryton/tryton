@@ -24,7 +24,7 @@ msgstr "Număr Client"
 
 msgctxt "field:carrier.credential.mygls,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:carrier.credential.mygls,country:"
 msgid "Country"

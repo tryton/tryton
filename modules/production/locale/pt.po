@@ -98,6 +98,10 @@ msgctxt "field:production,state:"
 msgid "State"
 msgstr "Estado"
 
+msgctxt "field:production,type:"
+msgid "Type"
+msgstr ""
+
 msgctxt "field:production,unit:"
 msgid "Unit"
 msgstr "Unidade"
@@ -118,6 +122,11 @@ msgctxt "field:production.bom,code_readonly:"
 msgid "Code Readonly"
 msgstr "Código Apenas Leitura"
 
+#, fuzzy
+msgctxt "field:production.bom,input_products:"
+msgid "Input Products"
+msgstr "Entradas"
+
 msgctxt "field:production.bom,inputs:"
 msgid "Input Materials"
 msgstr "Matérias primas"
@@ -134,9 +143,27 @@ msgctxt "field:production.bom,outputs:"
 msgid "Output Materials"
 msgstr "Saídas"
 
+msgctxt "field:production.bom,phantom:"
+msgid "Phantom"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:production.bom,phantom_quantity:"
+msgid "Quantity"
+msgstr "Quantidade"
+
+#, fuzzy
+msgctxt "field:production.bom,phantom_unit:"
+msgid "Unit"
+msgstr "Unidade"
+
 msgctxt "field:production.bom.input,bom:"
 msgid "BOM"
 msgstr "Lista de materiais"
+
+msgctxt "field:production.bom.input,phantom_bom:"
+msgid "Phantom BOM"
+msgstr ""
 
 msgctxt "field:production.bom.input,product:"
 msgid "Product"
@@ -157,6 +184,10 @@ msgstr "Categoria da UDM"
 msgctxt "field:production.bom.output,bom:"
 msgid "BOM"
 msgstr "Lista de Materiais"
+
+msgctxt "field:production.bom.output,phantom_bom:"
+msgid "Phantom BOM"
+msgstr ""
 
 msgctxt "field:production.bom.output,product:"
 msgid "Product"
@@ -291,6 +322,18 @@ msgctxt "help:production,uom_category:"
 msgid "The category of Unit of Measure."
 msgstr "Categoria de Unidade de Medida."
 
+msgctxt "help:production.bom,phantom:"
+msgid "If checked, the BoM can be used in another BoM."
+msgstr ""
+
+msgctxt "help:production.bom,phantom_quantity:"
+msgid "The quantity of the Phantom BoM"
+msgstr ""
+
+msgctxt "help:production.bom,phantom_unit:"
+msgid "The Unit of Measure of the Phantom BoM"
+msgstr ""
+
 msgctxt "help:production.configuration,bom_sequence:"
 msgid "Used to generate the BOM code."
 msgstr "Utilizado para gerar o código da lista de materiais."
@@ -397,8 +440,14 @@ msgstr ""
 "O produto \"%(product)s\" da produção \"%(production)s\" carece da definição"
 " de uma lista de preços."
 
-#, python-format
-msgctxt "model:ir.message,text:msg_recursive_bom"
+#, fuzzy, python-format
+msgctxt "model:ir.message,text:msg_recursive_bom_bom"
+msgid "You cannot create a recursive BOM for BOM \"%(bom)s\"."
+msgstr ""
+"Não é possível criar uma Lista de Materiais para o produto \"%(product)s\"."
+
+#, fuzzy, python-format
+msgctxt "model:ir.message,text:msg_recursive_bom_product"
 msgid "You cannot create a recursive BOM for product \"%(product)s\"."
 msgstr ""
 "Não é possível criar uma Lista de Materiais para o produto \"%(product)s\"."
@@ -571,9 +620,27 @@ msgctxt "selection:production,state:"
 msgid "Waiting"
 msgstr "Espera"
 
+msgctxt "selection:production,type:"
+msgid "Assembly"
+msgstr ""
+
+msgctxt "selection:production,type:"
+msgid "Disassembly"
+msgstr ""
+
 msgctxt "view:product.template:"
 msgid "Production"
 msgstr "Produção"
+
+#, fuzzy
+msgctxt "view:production.bom.input:"
+msgid "Material"
+msgstr "Matérias primas"
+
+#, fuzzy
+msgctxt "view:production.bom.output:"
+msgid "Material"
+msgstr "Matérias primas"
 
 msgctxt "view:production.bom:"
 msgid "Lines"

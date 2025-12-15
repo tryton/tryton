@@ -5,6 +5,10 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+#, fuzzy
+msgid "Toggle notification"
+msgstr "Attiva/disattiva la selezione"
+
 msgid "Make this an _internal message"
 msgstr ""
 
@@ -527,6 +531,10 @@ msgstr "Espandi tutte le righe"
 
 msgid "Close Tab"
 msgstr "Chiudere la scheda"
+
+#, fuzzy
+msgid "All Notifications..."
+msgstr "Azioni..."
 
 msgid "modularity, scalability and security"
 msgstr "modularità, scalabilità e sicurezza"

@@ -20,7 +20,7 @@ msgstr "Nagłówek"
 
 msgctxt "field:company.company,logo:"
 msgid "Logo"
-msgstr ""
+msgstr "Logo"
 
 msgctxt "field:company.company,logo_cache:"
 msgid "Cache"
@@ -32,50 +32,47 @@ msgstr "Strona"
 
 msgctxt "field:company.company,tax_identifiers:"
 msgid "Tax Identifiers"
-msgstr ""
+msgstr "Identyfikatory podatkowe"
 
 msgctxt "field:company.company,timezone:"
 msgid "Timezone"
 msgstr "Strefa czasowa"
 
-#, fuzzy
 msgctxt "field:company.company.logo.cache,company:"
 msgid "Company"
 msgstr "Firma"
 
 msgctxt "field:company.company.logo.cache,height:"
 msgid "Height"
-msgstr ""
+msgstr "Wysokość"
 
 msgctxt "field:company.company.logo.cache,image:"
 msgid "Image"
-msgstr ""
+msgstr "Obraz"
 
 msgctxt "field:company.company.logo.cache,width:"
 msgid "Width"
-msgstr ""
+msgstr "Szerokość"
 
-#, fuzzy
 msgctxt "field:company.company.tax_identifier,company:"
 msgid "Company"
 msgstr "Firma"
 
-#, fuzzy
 msgctxt "field:company.company.tax_identifier,company_party:"
 msgid "Company Party"
-msgstr "Firma"
+msgstr "Strona firmy"
 
 msgctxt "field:company.company.tax_identifier,country:"
 msgid "Country"
-msgstr ""
+msgstr "Kraj"
 
 msgctxt "field:company.company.tax_identifier,organization:"
 msgid "Organization"
-msgstr ""
+msgstr "Organizacja"
 
 msgctxt "field:company.company.tax_identifier,tax_identifier:"
 msgid "Tax Identifier"
-msgstr ""
+msgstr "Identyfikator podatkowy"
 
 msgctxt "field:company.employee,active:"
 msgid "Active"
@@ -129,7 +126,6 @@ msgctxt "field:party.configuration.party_lang,company:"
 msgid "Company"
 msgstr "Firma"
 
-#, fuzzy
 msgctxt "field:party.contact_mechanism.language,company:"
 msgid "Company"
 msgstr "Firma"
@@ -243,11 +239,11 @@ msgstr "Służy do wyznaczenia dzisiejszej daty."
 
 msgctxt "help:company.company.tax_identifier,country:"
 msgid "Applies only to addresses in this country."
-msgstr ""
+msgstr "Stosuje się tylko do adresów w tym kraju."
 
 msgctxt "help:company.company.tax_identifier,organization:"
 msgid "Applies only to addresses in this organization."
-msgstr ""
+msgstr "Stosuje się tylko do adresów w tej organizacji."
 
 msgctxt "help:company.company.tax_identifier,tax_identifier:"
 msgid "The identifier used for tax report."
@@ -287,12 +283,10 @@ msgid ""
 "- \"companies\" as list of ids from the current user"
 msgstr ""
 
-#, fuzzy
 msgctxt "help:ir.sequence,company:"
 msgid "Restricts the sequence usage to the company."
 msgstr "Ograniczenie użycia sekwencji do firmy."
 
-#, fuzzy
 msgctxt "help:ir.sequence.strict,company:"
 msgid "Restricts the sequence usage to the company."
 msgstr "Ograniczenie użycia sekwencji do firmy."
@@ -317,7 +311,6 @@ msgctxt "help:res.user,employees:"
 msgid "Add employees to grant the user access to them."
 msgstr "Dodaj pracowników, do których użytkownik będzie miał dostęp."
 
-#, fuzzy
 msgctxt "model:company.company,string:"
 msgid "Company"
 msgstr "Firma"
@@ -332,15 +325,13 @@ msgctxt "model:company.company.logo.cache,string:"
 msgid "Company Logo Cache"
 msgstr "Konfiguracja ustawień firmy"
 
-#, fuzzy
 msgctxt "model:company.company.tax_identifier,string:"
 msgid "Company Tax Identifier"
-msgstr "Firmy"
+msgstr "Identyfikator podatkowy firmy"
 
-#, fuzzy
 msgctxt "model:company.employee,string:"
 msgid "Company Employee"
-msgstr "Obecny pracownik"
+msgstr "Pracownik firmy"
 
 msgctxt "model:ir.action,name:act_company_config"
 msgid "Configure Company"
@@ -369,6 +360,14 @@ msgstr "Cron - Firma"
 
 msgctxt "model:ir.message,text:msg_company_logo_cache_size_unique"
 msgid "The size of cached company logo must be unique."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_company_logo_error"
+msgid "Can not open or identify the image set for the company logo."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_company_party_unique"
+msgid "A party can only be assigned to one company."
 msgstr ""
 
 msgctxt "model:ir.rule.group,name:rule_group_sequence_companies"

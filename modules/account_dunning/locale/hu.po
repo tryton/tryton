@@ -153,8 +153,9 @@ msgid "Create dunning up to this date."
 msgstr "Az ezen a napon hátralékban lévők kapnak fizetési megszólítást."
 
 msgctxt "help:account.dunning.level,overdue:"
-msgid "When the level should be applied."
-msgstr "Mennyi késedelmi idő után lépjen érvénybe ez a szint."
+msgid ""
+"The delay from the maturity date after which the level should be applied."
+msgstr ""
 
 msgctxt "help:account.dunning.procedure,name:"
 msgid "The main identifier of the Dunning Procedure."

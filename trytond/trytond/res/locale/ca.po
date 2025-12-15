@@ -34,6 +34,46 @@ msgctxt "field:res.group,users:"
 msgid "Users"
 msgstr "Usuaris"
 
+msgctxt "field:res.notification,action:"
+msgid "Action"
+msgstr "Acció"
+
+msgctxt "field:res.notification,action_value:"
+msgid "Action Value"
+msgstr "Valor acció"
+
+msgctxt "field:res.notification,description:"
+msgid "Description"
+msgstr "Descripció"
+
+msgctxt "field:res.notification,icon:"
+msgid "Icon"
+msgstr "Icona"
+
+msgctxt "field:res.notification,label:"
+msgid "Label"
+msgstr "Etiqueta"
+
+msgctxt "field:res.notification,model:"
+msgid "Model"
+msgstr "Model"
+
+msgctxt "field:res.notification,model_ref:"
+msgid "Model"
+msgstr "Model"
+
+msgctxt "field:res.notification,records:"
+msgid "Records"
+msgstr "Registres"
+
+msgctxt "field:res.notification,unread:"
+msgid "Unread"
+msgstr "No llegida"
+
+msgctxt "field:res.notification,user:"
+msgid "User"
+msgstr "Usuari"
+
 msgctxt "field:res.user,actions:"
 msgid "Actions"
 msgstr "Accions"
@@ -66,7 +106,6 @@ msgctxt "field:res.user,login:"
 msgid "Login"
 msgstr "Nom usuari"
 
-#, fuzzy
 msgctxt "field:res.user,menu:"
 msgid "Menu"
 msgstr "Menú"
@@ -74,6 +113,10 @@ msgstr "Menú"
 msgctxt "field:res.user,name:"
 msgid "Name"
 msgstr "Nom"
+
+msgctxt "field:res.user,notifications:"
+msgid "Notifications"
+msgstr "Notificacions"
 
 msgctxt "field:res.user,password:"
 msgid "Password"
@@ -187,9 +230,17 @@ msgctxt "help:res.user,actions:"
 msgid "Actions that will be run at login."
 msgstr "Les accions que s'executaran quan s'identifiqui."
 
+msgctxt "help:res.user,notifications:"
+msgid "Notifications to subscribe to."
+msgstr "Notificacions a les que subscriure's."
+
 msgctxt "model:ir.action,name:act_group_form"
 msgid "Groups"
 msgstr "Grups"
+
+msgctxt "model:ir.action,name:act_notification"
+msgid "Notifications"
+msgstr "Notificacions"
 
 msgctxt "model:ir.action,name:act_user_config"
 msgid "Configure Users"
@@ -217,11 +268,11 @@ msgctxt "model:ir.message,text:msg_password_forbidden"
 msgid "The password is forbidden."
 msgstr "La contrasenya està prohibida."
 
-#, fuzzy, python-format
+#, python-format
 msgctxt "model:ir.message,text:msg_password_length"
 msgid "The password must have at least %(length)i character."
 msgid_plural "The password must have at least %(length)i characters."
-msgstr[0] "La contrasenya ha de tenir com a mínim %(length)i caràcters."
+msgstr[0] "La contrasenya ha de tenir com a mínim %(length)i caràcter."
 msgstr[1] "La contrasenya ha de tenir com a mínim %(length)i caràcters."
 
 msgctxt "model:ir.message,text:msg_password_login"
@@ -261,6 +312,14 @@ msgctxt "model:ir.model.button,string:user_reset_password_button"
 msgid "Reset Password"
 msgstr "Restableix la contrasenya"
 
+msgctxt "model:ir.rule.group,name:rule_group_notification"
+msgid "Own notification"
+msgstr "Notificacions pròpies"
+
+msgctxt "model:ir.rule.group,name:rule_group_notification_admin"
+msgid "Any notification"
+msgstr "Qualsevol notificació"
+
 msgctxt "model:ir.rule.group,name:rule_group_user_application"
 msgid "Own user application"
 msgstr "Aplicació d'usuari pròpia"
@@ -277,6 +336,10 @@ msgctxt "model:ir.ui.menu,name:menu_group_form"
 msgid "Groups"
 msgstr "Grups"
 
+msgctxt "model:ir.ui.menu,name:menu_notification_form"
+msgid "Notifications"
+msgstr "Notificacions"
+
 msgctxt "model:ir.ui.menu,name:menu_res"
 msgid "Users"
 msgstr "Usuaris"
@@ -285,47 +348,42 @@ msgctxt "model:ir.ui.menu,name:menu_user_form"
 msgid "Users"
 msgstr "Usuaris"
 
-#, fuzzy
 msgctxt "model:res.group,string:"
 msgid "Group"
 msgstr "Grup"
 
-#, fuzzy
+msgctxt "model:res.notification,string:"
+msgid "Notification"
+msgstr "Notificació"
+
 msgctxt "model:res.user,string:"
 msgid "User"
 msgstr "Usuari"
 
-#, fuzzy
 msgctxt "model:res.user-ir.action,string:"
 msgid "User - Action"
 msgstr "Usuari - Acció"
 
-#, fuzzy
 msgctxt "model:res.user-res.group,string:"
 msgid "User - Group"
 msgstr "Usuari - Grup"
 
-#, fuzzy
 msgctxt "model:res.user.application,string:"
 msgid "User Application"
 msgstr "Aplicació d'usuari"
 
-#, fuzzy
 msgctxt "model:res.user.config.start,string:"
 msgid "User Config Start"
 msgstr "Configuració inicial usuari"
 
-#, fuzzy
 msgctxt "model:res.user.device,string:"
 msgid "User Device"
 msgstr "Dispositiu d'usuari"
 
-#, fuzzy
 msgctxt "model:res.user.login.attempt,string:"
 msgid "User Login Attempt"
 msgstr "Intent d'inici de sessió"
 
-#, fuzzy
 msgctxt "model:res.user.warning,string:"
 msgid "User Warning"
 msgstr "Alerta usuari"
@@ -368,7 +426,7 @@ msgstr "Cancel·lada"
 
 msgctxt "selection:res.user.application,state:"
 msgid "Requested"
-msgstr "Sol·lcitat"
+msgstr "Sol·licitat"
 
 msgctxt "selection:res.user.application,state:"
 msgid "Validated"

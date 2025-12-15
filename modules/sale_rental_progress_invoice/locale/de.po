@@ -1,0 +1,93 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:sale.rental.add_progress.start,date:"
+msgid "Date"
+msgstr "Datum"
+
+msgctxt "field:sale.rental.line,progresses:"
+msgid "Progresses"
+msgstr "Abrechnungszeiträume"
+
+msgctxt "field:sale.rental.line-sale.rental.progress,line:"
+msgid "Rental Line"
+msgstr "Vermietungsposition"
+
+msgctxt "field:sale.rental.line-sale.rental.progress,progress:"
+msgid "Progress"
+msgstr "Abrechnungszeitraum"
+
+msgctxt "field:sale.rental.progress,date:"
+msgid "Date"
+msgstr "Datum"
+
+msgctxt "field:sale.rental.progress,duration:"
+msgid "Duration"
+msgstr "Dauer"
+
+msgctxt "field:sale.rental.progress,invoice_lines:"
+msgid "Invoice Lines"
+msgstr "Rechnungspositionen"
+
+msgctxt "field:sale.rental.progress,line:"
+msgid "Line"
+msgstr "Position"
+
+msgctxt "field:sale.rental.progress,lines:"
+msgid "Lines"
+msgstr "Positionen"
+
+msgctxt "field:sale.rental.progress,previous:"
+msgid "Previous"
+msgstr "Vorgänger"
+
+msgctxt "field:sale.rental.progress,rental:"
+msgid "Rental"
+msgstr "Vermietung"
+
+msgctxt "model:ir.action,name:wizard_sale_rental_add_progress"
+msgid "Add Rental Progress"
+msgstr "Abrechnungszeitraum hinzufügen"
+
+msgctxt "model:ir.message,text:msg_sale_rental_progress_line_previous"
+msgid "A rental progress date can not have both a line and a previous."
+msgstr ""
+"Ein Vermietungsabrechnungszeitraum kann nicht gleichzeitig über eine "
+"Position und einen Vorgänger verfügen."
+
+msgctxt "model:ir.message,text:msg_sale_rental_progress_line_unique"
+msgid "A rental line can start only one progress date chain."
+msgstr ""
+"Eine Vermietungsposition kann nur eine einzige Abrechnungszeitraumsfolge "
+"starten."
+
+msgctxt "model:ir.message,text:msg_sale_rental_progress_previous_unique"
+msgid "A rental progress date can be parent only once."
+msgstr ""
+"Ein Vermietungsabrechnungszeitraum kann nur einmal als übergeordneter "
+"Abrechnungszeitraum verwendet werden."
+
+msgctxt "model:ir.model.button,string:sale_rental_add_progress_button"
+msgid "Add Progress"
+msgstr "Abrechnungszeitraum hinzufügen"
+
+msgctxt "model:sale.rental.add_progress.start,string:"
+msgid "Sale Rental Add Progress Start"
+msgstr "Verkauf Vermietung Abrechnungszeitraum Hinzufügen Start"
+
+msgctxt "model:sale.rental.line-sale.rental.progress,string:"
+msgid "Sale Rental Line - Sale Rental Progress"
+msgstr "Verkauf Vermietungsposition - Verkauf Vermietung Abrechnungszeitraum"
+
+msgctxt "model:sale.rental.progress,string:"
+msgid "Sale Rental Progress"
+msgstr "Verkauf Vermietung Abrechnungszeitraum"
+
+msgctxt "wizard_button:sale.rental.add_progress,start,add:"
+msgid "Add"
+msgstr "Hinzufügen"
+
+msgctxt "wizard_button:sale.rental.add_progress,start,end:"
+msgid "Cancel"
+msgstr "Abbrechen"

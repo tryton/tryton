@@ -98,37 +98,30 @@ msgctxt "model:ir.ui.menu,name:menu_source_form"
 msgid "Sources"
 msgstr "Orígens"
 
-#, fuzzy
 msgctxt "model:marketing.campaign,string:"
 msgid "Marketing Campaign"
 msgstr "Campanyes de màrqueting"
 
-#, fuzzy
 msgctxt "model:marketing.medium,string:"
 msgid "Marketing Medium"
 msgstr "Medi de màrqueting"
 
-#, fuzzy
 msgctxt "model:marketing.source,string:"
 msgid "Marketing Source"
 msgstr "Orígen de màrqueting"
 
-#, fuzzy
 msgctxt "model:sale.opportunity.reporting.marketing,string:"
 msgid "Sale Opportunity Reporting Marketing"
 msgstr "Informe d'oportunitats de venta per màrqueting"
 
-#, fuzzy
 msgctxt "model:sale.opportunity.reporting.marketing.context,string:"
 msgid "Sale Opportunity Reporting Context"
 msgstr "Context informe d'oportunitats de venda"
 
-#, fuzzy
 msgctxt "model:sale.reporting.marketing,string:"
 msgid "Sale Reporting Marketing"
 msgstr "Informe de vendes per màrqueting"
 
-#, fuzzy
 msgctxt "model:sale.reporting.marketing.context,string:"
 msgid "Sale Reporting Context"
 msgstr "Context informe de vendes"

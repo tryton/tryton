@@ -114,6 +114,10 @@ msgctxt "model:ir.message,text:msg_image_cache_size_unique"
 msgid "The size of cached image must be unique."
 msgstr "La taille de l'image mise en cache doit être unique."
 
+msgctxt "model:ir.message,text:msg_product_image_error"
+msgid "Can not open or identify the image set for the product."
+msgstr "Impossible d'ouvrir ou d'identifier l''image mise pour le produit."
+
 msgctxt "model:product.category.image,string:"
 msgid "Product Category Image"
 msgstr "Image de catégorie de produit"

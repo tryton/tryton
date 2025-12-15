@@ -57,7 +57,7 @@ msgstr "SEPA-Nachrichten"
 
 msgctxt "field:account.payment.journal,company_party:"
 msgid "Company Party"
-msgstr "Unternehmen"
+msgstr "Partei des Unternehmens"
 
 msgctxt "field:account.payment.journal,sepa_bank_account_number:"
 msgid "Bank Account Number"
@@ -90,6 +90,10 @@ msgstr "Identifikator als Lastschrifteinreicher"
 msgctxt "field:account.payment.sepa.mandate,account_number:"
 msgid "Account Number"
 msgstr "Kontonummer"
+
+msgctxt "field:account.payment.sepa.mandate,address:"
+msgid "Address"
+msgstr "Adresse"
 
 msgctxt "field:account.payment.sepa.mandate,company:"
 msgid "Company"

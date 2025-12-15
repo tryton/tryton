@@ -52,6 +52,11 @@ msgctxt "field:product.category,accounting:"
 msgid "Accounting"
 msgstr "Raamatupidamine"
 
+#, fuzzy
+msgctxt "field:product.category,accounting_templates:"
+msgid "Accounting Products"
+msgstr "Raamatupidamine"
+
 msgctxt "field:product.category,accounts:"
 msgid "Accounts"
 msgstr "Kontod"
@@ -136,6 +141,11 @@ msgstr "Kasuta kontosid mis on defineeritud ülema taseme kategoorias"
 msgctxt "help:product.category,accounting:"
 msgid "Check to indicate the category is used for accounting."
 msgstr ""
+
+#, fuzzy
+msgctxt "help:product.category,accounting_templates:"
+msgid "The products for which the accounting category applies."
+msgstr "Märgista et konverteerida raamatupidamise kategooriasse"
 
 msgctxt "help:product.category,customer_taxes:"
 msgid "The taxes to apply when selling products of this category."

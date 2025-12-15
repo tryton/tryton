@@ -18,6 +18,11 @@ msgctxt "field:product.product,web_shop_description:"
 msgid "Web Shop Description"
 msgstr "Descrição da Loja Virtual"
 
+#, fuzzy
+msgctxt "field:product.product,web_shop_urls:"
+msgid "Web Shop URLs"
+msgstr "Lojas Virtuais"
+
 msgctxt "field:product.product,web_shops:"
 msgid "Web Shops"
 msgstr "Lojas Virtuais"
@@ -26,6 +31,21 @@ msgctxt "field:product.template,web_shop_description:"
 msgid "Web Shop Description"
 msgstr "Descrição da Loja Virtual"
 
+#, fuzzy
+msgctxt "field:product.web_shop_url,product:"
+msgid "Product"
+msgstr "Produto"
+
+#, fuzzy
+msgctxt "field:product.web_shop_url,shop:"
+msgid "Shop"
+msgstr "Comprar"
+
+#, fuzzy
+msgctxt "field:product.web_shop_url,url:"
+msgid "Shop URL"
+msgstr "Comprar"
+
 msgctxt "field:sale.sale,web_id:"
 msgid "Web ID"
 msgstr "ID da Web"
@@ -33,6 +53,10 @@ msgstr "ID da Web"
 msgctxt "field:sale.sale,web_shop:"
 msgid "Web Shop"
 msgstr "Loja virtual"
+
+msgctxt "field:sale.sale,web_status_url:"
+msgid "Web Status URL"
+msgstr ""
 
 msgctxt "field:web.shop,attributes:"
 msgid "Attributes"
@@ -158,6 +182,10 @@ msgctxt "help:product.product,web_shops:"
 msgid "The list of web shops on which the product is published."
 msgstr "A Lista de Lojas Virtuais nas Quais o Produto é Publicado."
 
+msgctxt "help:sale.sale,web_status_url:"
+msgid "The URL where the customer can check the order's current status."
+msgstr ""
+
 msgctxt "help:web.shop,attributes:"
 msgid "The list of attributes to publish."
 msgstr "A Lista de Atributos a Serem Publicados."
@@ -218,6 +246,10 @@ msgctxt "model:ir.message,text:msg_shop_name_unique"
 msgid "The web shop name must be unique."
 msgstr "O Nome da Loja Virtual deve Ser Único."
 
+msgctxt "model:ir.model.button,string:sale_web_shop_update_button"
+msgid "Update from Web Shop"
+msgstr ""
+
 msgctxt "model:ir.rule.group,name:rule_group_shop_companies"
 msgid "User in companies"
 msgstr "Usuário em Empresas"
@@ -225,6 +257,10 @@ msgstr "Usuário em Empresas"
 msgctxt "model:ir.ui.menu,name:menu_shop"
 msgid "Web Shops"
 msgstr "Lojas Virtuais"
+
+msgctxt "model:product.web_shop_url,string:"
+msgid "Product Web Shop Url"
+msgstr ""
 
 msgctxt "model:web.shop,string:"
 msgid "Web Shop"

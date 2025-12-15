@@ -86,24 +86,21 @@ msgctxt "model:ir.ui.menu,name:menu_taxon_tree"
 msgid "Taxons"
 msgstr "Taxons"
 
-#, fuzzy
 msgctxt "model:product.cultivar,string:"
 msgid "Product Cultivar"
 msgstr "Cultivar"
 
-#, fuzzy
 msgctxt "model:product.cultivar-product.cultivar.group,string:"
 msgid "Product Cultivar - Product Cultivar Group"
 msgstr "Cultivar - Grup de cultivar"
 
-#, fuzzy
 msgctxt "model:product.cultivar.group,string:"
 msgid "Product Cultivar Group"
 msgstr "Grup de cultivar"
 
 msgctxt "model:product.taxon,string:"
 msgid "Product Taxon"
-msgstr ""
+msgstr "Tàxon de producte"
 
 msgctxt "selection:product.taxon,rank:"
 msgid "Class"

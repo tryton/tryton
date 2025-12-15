@@ -4,28 +4,28 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:purchase.configuration,purchase_request_quotation_sequence:"
 msgid "Purchase Request Quotation Sequence"
-msgstr "Nummernkreis Angebotsanfrage Einkauf"
+msgstr "Nummernkreis Bestellanfrage Einkauf"
 
 msgctxt ""
 "field:purchase.configuration.sequence,purchase_request_quotation_sequence:"
 msgid "Purchase Request Quotation Sequence"
-msgstr "Nummernkreis Angebotsanfrage Einkauf"
+msgstr "Nummernkreis Bestellanfrage Einkauf"
 
 msgctxt "field:purchase.request,best_quotation_line:"
 msgid "Best Quotation Line"
-msgstr "Beste Angebotsposition"
+msgstr "Beste Bestellanfrageposition"
 
 msgctxt "field:purchase.request,preferred_quotation_line:"
 msgid "Preferred Quotation Line"
-msgstr "Bevorzugte Angebotsposition"
+msgstr "Bevorzugte Bestellanfrageposition"
 
 msgctxt "field:purchase.request,quotation_lines:"
 msgid "Quotation Lines"
-msgstr "Angebotspositionen"
+msgstr "Bestellanfragepositionen"
 
 msgctxt "field:purchase.request,quotation_lines_active:"
 msgid "Active Quotation Lines"
-msgstr "Aktive Angebotspositionen"
+msgstr "Aktive Bestellanfragepositionen"
 
 msgctxt "field:purchase.request.quotation,company:"
 msgid "Company"
@@ -67,10 +67,6 @@ msgctxt "field:purchase.request.quotation.create.ask_suppliers,suppliers:"
 msgid "Suppliers"
 msgstr "Lieferanten"
 
-msgctxt "field:purchase.request.quotation.create.succeed,number_quotations:"
-msgid "Number of Created Quotations"
-msgstr "Anzahl der erstellten Angebotsanfragen"
-
 msgctxt "field:purchase.request.quotation.line,currency:"
 msgid "Currency"
 msgstr "Währung"
@@ -93,11 +89,11 @@ msgstr "Menge"
 
 msgctxt "field:purchase.request.quotation.line,quotation:"
 msgid "Quotation"
-msgstr "Angebotsanfrage"
+msgstr "Bestellanfrage"
 
 msgctxt "field:purchase.request.quotation.line,quotation_state:"
 msgid "Quotation State"
-msgstr "Anfragestatus"
+msgstr "Bestellanfragestatus"
 
 msgctxt "field:purchase.request.quotation.line,request:"
 msgid "Request"
@@ -124,12 +120,12 @@ msgid ""
 "The quotation that will be chosen to create the purchase\n"
 "otherwise first ordered received quotation line will be selected."
 msgstr ""
-"Das Angebot das zum Erstellen des Einkaufs verwendet wird.\n"
-"Ansonsten wird das erste erhaltene Angebot ausgewählt."
+"Die Bestellanfrage die zum Erstellen des Einkaufs verwendet wird.\n"
+"Ansonsten wird die erste erhaltene Bestellanfrage ausgewählt."
 
 msgctxt "help:purchase.request.quotation,number:"
 msgid "The unique identifier of the quotation."
-msgstr "Die eindeutige Identifikation der Angebotsanfrage."
+msgstr "Die eindeutige Identifikation der Bestellanfrage."
 
 msgctxt "help:purchase.request.quotation,reference:"
 msgid "The reference used by the supplier."
@@ -137,7 +133,7 @@ msgstr "Die Bestellnummer beim Lieferanten."
 
 msgctxt "help:purchase.request.quotation,revision:"
 msgid "Number incremented each time the quotation is sent."
-msgstr "Die Nummer wird bei jeder erneuten Angebotsanfrage erhöht."
+msgstr "Die Nummer wird bei jeder erneuten Bestellanfrage erhöht."
 
 msgctxt "help:purchase.request.quotation.line,product_uom_category:"
 msgid "The category of Unit of Measure for the product."
@@ -153,24 +149,24 @@ msgstr "Das Datum an dem geliefert werden soll."
 
 msgctxt "model:ir.action,name:act_purchase_request_form"
 msgid "Quotations"
-msgstr "Angebotsanfragen"
+msgstr "Bestellanfragen"
 
 msgctxt "model:ir.action,name:act_purchase_request_quotation_form"
 msgid "Quotations"
-msgstr "Angebotsanfragen"
+msgstr "Bestellanfragen"
 
 msgctxt "model:ir.action,name:report_purchase_request_quotation"
 msgid "Purchase Request Quotation"
-msgstr "Angebotsanfrage"
+msgstr "Bestellanfragen"
 
 msgctxt "model:ir.action,name:wizard_create_quotation"
 msgid "Create Quotation"
-msgstr "Angebotsanfrage erstellen"
+msgstr "Bestellanfrage erstellen"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_request_form_domain_quotation"
 msgid "Quotation"
-msgstr "Angebotsanfrage"
+msgstr "Bestellanfrage"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_request_form_domain_received"
@@ -194,8 +190,15 @@ msgstr "Gesendet"
 
 #, python-format
 msgctxt "model:ir.message,text:msg_previous_quotation"
-msgid "A quotation was already made for request \"%(request)s\"."
-msgstr "Es wurde bereits ein Angebot für die Anfrage \"%(request)s\" erstellt."
+msgid "Quotations have already been made for the requests \"%(requests)s\"."
+msgstr ""
+"Es wurden bereits Bestellanfragen für die Bestellvorschläge \"%(requests)s\""
+" erstellt."
+
+msgctxt ""
+"model:ir.model.button,string:purchase_request_create_quotation_button"
+msgid "Create Quotations"
+msgstr "Bestellanfragen erstellen"
 
 msgctxt "model:ir.rule.group,name:rule_group_request_quotation_companies"
 msgid "User in companies"
@@ -203,31 +206,27 @@ msgstr "Benutzer in Unternehmen"
 
 msgctxt "model:ir.sequence,name:sequence_purchase_request_quotation"
 msgid "Purchase Request Quotation"
-msgstr "Angebotsanfrage"
+msgstr "Bestellanfrage"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_purchase_request_quotation"
 msgid "Purchase Request Quotation"
-msgstr "Angebotsanfrage"
+msgstr "Bestellanfrage"
 
 msgctxt "model:ir.ui.menu,name:menu_purchase_request_quotation_form"
 msgid "Quotations"
-msgstr "Angebotsanfragen"
+msgstr "Bestellanfragen"
 
 msgctxt "model:purchase.request.quotation,string:"
 msgid "Purchase Request Quotation"
-msgstr "Einkauf Angebotsanfrage"
+msgstr "Bestellanfrage"
 
 msgctxt "model:purchase.request.quotation.create.ask_suppliers,string:"
 msgid "Purchase Request Quotation Create Ask Suppliers"
-msgstr "Einkauf Angebotsanfrage erstellen Frage Lieferanten"
-
-msgctxt "model:purchase.request.quotation.create.succeed,string:"
-msgid "Purchase Request Quotation Create Succeed"
-msgstr "Einkauf Angebotsanfrage erstellen Erfolgreich"
+msgstr "Einkauf Bestellanfrage Erstellen Frage Lieferanten"
 
 msgctxt "model:purchase.request.quotation.line,string:"
 msgid "Purchase Request Quotation Line"
-msgstr "Einkauf Angebotsanfrageposition"
+msgstr "Bestellanfrageposition"
 
 msgctxt "report:purchase.request.quotation:"
 msgid ":"
@@ -258,8 +257,8 @@ msgid "Expected Supply Date"
 msgstr "Erwartetes Lieferdatum"
 
 msgctxt "report:purchase.request.quotation:"
-msgid "Purchase"
-msgstr "Einkauf"
+msgid "Purchase Request for Quotation No:"
+msgstr "Bestellvorschlag für Bestellanfragenummer:"
 
 msgctxt "report:purchase.request.quotation:"
 msgid "Quantity"
@@ -267,15 +266,11 @@ msgstr "Menge"
 
 msgctxt "report:purchase.request.quotation:"
 msgid "Quotation"
-msgstr "Angebot"
+msgstr "Bestellanfrage"
 
 msgctxt "report:purchase.request.quotation:"
 msgid "Reference:"
 msgstr "Referenz:"
-
-msgctxt "report:purchase.request.quotation:"
-msgid "Request for Quotation N°:"
-msgstr "Angebotsanfrage Nr.:"
 
 msgctxt "report:purchase.request.quotation:"
 msgid "Revision:"
@@ -287,7 +282,7 @@ msgstr "Einzelpreis"
 
 msgctxt "selection:purchase.request,state:"
 msgid "Quotation"
-msgstr "Angebot"
+msgstr "Bestellanfrage"
 
 msgctxt "selection:purchase.request,state:"
 msgid "Received"
@@ -331,7 +326,7 @@ msgstr "Sonstiges"
 
 msgctxt "view:purchase.request.quotation:"
 msgid "Quotation"
-msgstr "Angebotsanfrage"
+msgstr "Bestellanfrage"
 
 msgctxt "view:purchase.request.quotation:"
 msgid "Receive"
@@ -347,11 +342,11 @@ msgstr "Senden"
 
 msgctxt "view:purchase.request:"
 msgid "Preferred Quotation:"
-msgstr "Bevorzugtes Angebot:"
+msgstr "Bevorzugte Bestellanfrage:"
 
 msgctxt "view:purchase.request:"
 msgid "Quotations"
-msgstr "Angebote"
+msgstr "Bestellanfragen"
 
 msgctxt ""
 "wizard_button:purchase.request.quotation.create,ask_suppliers,create_quotations:"
@@ -361,7 +356,3 @@ msgstr "Ausführen"
 msgctxt "wizard_button:purchase.request.quotation.create,ask_suppliers,end:"
 msgid "Cancel"
 msgstr "Abbrechen"
-
-msgctxt "wizard_button:purchase.request.quotation.create,succeed,end:"
-msgid "Close"
-msgstr "Abschließen"

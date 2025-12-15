@@ -2,6 +2,16 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+#, fuzzy
+msgctxt "field:product.price_list.line,volume_uom:"
+msgid "Volume UoM"
+msgstr "Hacim Ölçü Birimi"
+
+#, fuzzy
+msgctxt "field:product.price_list.line,weight_uom:"
+msgid "Weight UoM"
+msgstr "Ağırlık Ölçü Birimi"
+
 msgctxt "field:product.product,height:"
 msgid "Height"
 msgstr "Yükseklik"
@@ -91,6 +101,21 @@ msgstr "Genişlik"
 msgctxt "field:product.template,width_uom:"
 msgid "Width UoM"
 msgstr "Genişlik Ölçü Birimi"
+
+msgctxt "help:product.price_list.line,formula:"
+msgid ""
+"\n"
+"-volume: the volume of 1 unit of product\n"
+"-weight: the weight of 1 unit of product"
+msgstr ""
+
+msgctxt "help:product.price_list.line,volume_uom:"
+msgid "Leave empty for liter."
+msgstr ""
+
+msgctxt "help:product.price_list.line,weight_uom:"
+msgid "Leave empty for kilogram."
+msgstr ""
 
 msgctxt "help:product.product,height:"
 msgid "Height for 1 default unit of measure."

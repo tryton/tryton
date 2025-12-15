@@ -53,6 +53,11 @@ msgctxt "field:product.category,accounting:"
 msgid "Accounting"
 msgstr "حسابداری"
 
+#, fuzzy
+msgctxt "field:product.category,accounting_templates:"
+msgid "Accounting Products"
+msgstr "حسابداری"
+
 msgctxt "field:product.category,accounts:"
 msgid "Accounts"
 msgstr "حساب ها"
@@ -139,6 +144,11 @@ msgctxt "help:product.category,accounting:"
 msgid "Check to indicate the category is used for accounting."
 msgstr ""
 "برای استفاده مالیات های تعریف شده در دسته بندی حساب، کادر را تیک بزنید."
+
+#, fuzzy
+msgctxt "help:product.category,accounting_templates:"
+msgid "The products for which the accounting category applies."
+msgstr "برای تبدیل به طبقه بندی حسابداری کادر را تیک بزنید."
 
 msgctxt "help:product.category,customer_taxes:"
 msgid "The taxes to apply when selling products of this category."

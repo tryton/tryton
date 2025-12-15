@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:account.be.vat_customer,company_tax_identifier:"
 msgid "Company Tax Identifier"
-msgstr "Identificator Fiscal al Companiei"
+msgstr "Identificator Fiscal Societate"
 
 msgctxt "field:account.be.vat_customer,currency:"
 msgid "Currency"
@@ -24,7 +24,7 @@ msgstr ""
 
 msgctxt "field:account.be.vat_customer.context,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:account.be.vat_customer.context,fiscalyear:"
 msgid "Fiscal Year"
@@ -44,4 +44,12 @@ msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_vat_customer"
 msgid "Belgian VAT Customer"
+msgstr ""
+
+msgctxt "selection:account.invoice,supplier_payment_reference_type:"
+msgid "Belgian structured communication"
+msgstr ""
+
+msgctxt "selection:account.payment,reference_type:"
+msgid "Belgian structured communication"
 msgstr ""

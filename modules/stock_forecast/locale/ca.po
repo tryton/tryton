@@ -160,17 +160,14 @@ msgctxt "model:res.group,name:group_stock_forecast"
 msgid "Stock Forecast"
 msgstr "Previsió d'existències"
 
-#, fuzzy
 msgctxt "model:stock.forecast,string:"
 msgid "Stock Forecast"
 msgstr "Previsió d'existències"
 
-#, fuzzy
 msgctxt "model:stock.forecast.complete.ask,string:"
 msgid "Stock Forecast Complete Ask"
-msgstr "Línia de previsió d'existències"
+msgstr "Pregunta completar previsió d'existències"
 
-#, fuzzy
 msgctxt "model:stock.forecast.line,string:"
 msgid "Stock Forecast Line"
 msgstr "Línia de previsió d'existències"

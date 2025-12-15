@@ -431,6 +431,24 @@ msgid "Running"
 msgstr "En cours"
 
 #, python-format
+msgctxt "model:ir.message,text:msg_asset_close_invoice_line_missing_account"
+msgid ""
+"To close asset \"%(asset)s\" you must configure a replacement account for "
+"\"%(account)s\"."
+msgstr ""
+"Pour clôturer l'actif « %(asset)s », vous devez configurer un compte de "
+"remplacement pour « %(account)s »."
+
+#, python-format
+msgctxt "model:ir.message,text:msg_asset_close_product_account_asset"
+msgid ""
+"To close asset \"%(asset)s\" you must configure an account asset for the "
+"product \"%(product)s\"."
+msgstr ""
+"Pour clôturer l'actif « %(asset)s », vous devez configurer un compte d'actif"
+" pour le produit « %(product)s »."
+
+#, python-format
 msgctxt "model:ir.message,text:msg_asset_delete_draft"
 msgid "You cannot delete asset \"%(asset)s\" because it is not in \"draft\" state."
 msgstr ""

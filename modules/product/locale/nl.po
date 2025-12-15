@@ -95,6 +95,10 @@ msgctxt "field:product.list_price,list_price:"
 msgid "List Price"
 msgstr "Catalogusprijs"
 
+msgctxt "field:product.list_price,product:"
+msgid "Product"
+msgstr "Product"
+
 msgctxt "field:product.list_price,template:"
 msgid "Template"
 msgstr "Template"
@@ -163,13 +167,21 @@ msgctxt "field:product.product,list_price_uom:"
 msgid "List Price"
 msgstr "Catalogusprijs"
 
+msgctxt "field:product.product,list_price_used:"
+msgid "List Price"
+msgstr "Catalogusprijs"
+
 msgctxt "field:product.product,list_prices:"
 msgid "List Prices"
-msgstr "Catalogusprijs"
+msgstr "Catalogusprijzen"
 
 msgctxt "field:product.product,name:"
 msgid "Name"
 msgstr "Naam"
+
+msgctxt "field:product.product,position:"
+msgid "Position"
+msgstr "Positie"
 
 msgctxt "field:product.product,prefix_code:"
 msgid "Prefix Code"
@@ -257,7 +269,7 @@ msgstr "Catalogusprijs"
 
 msgctxt "field:product.template,list_prices:"
 msgid "List Prices"
-msgstr "Catalogusprijs"
+msgstr "Catalogusprijzen"
 
 msgctxt "field:product.template,name:"
 msgid "Name"
@@ -403,8 +415,20 @@ msgid "Other identifiers associated with the variant."
 msgstr "Andere ID's die aan de variant zijn gekoppeld."
 
 msgctxt "help:product.product,list_price:"
-msgid "The standard price the product is sold at."
-msgstr "De standaardprijs waarvoor het product wordt verkocht."
+msgid ""
+"The standard price the variant is sold at.\n"
+"Leave empty to use the list price of the product."
+msgstr ""
+"De standaardprijs waarvoor de variant wordt verkocht.\n"
+"Laat leeg om de catalogusprijs van het product te gebruiken."
+
+msgctxt "help:product.product,list_price_used:"
+msgid "The standard price the variant is sold at."
+msgstr "De standaardprijs waarvoor de variant wordt verkocht."
+
+msgctxt "help:product.product,position:"
+msgid "The order of the variant in the list of variants on product."
+msgstr "De positie van de variant in de lijst met productvarianten."
 
 msgctxt "help:product.product,replaced_by:"
 msgid "The product replacing this one."
@@ -567,6 +591,11 @@ msgstr "Code van het product categorie moet uniek zijn."
 msgctxt "model:ir.message,text:msg_invalid_code"
 msgid "The %(type)s \"%(code)s\" for product \"%(product)s\" is not valid."
 msgstr "Het %(type)s \"%(code)s\" voor product \"%(product)s\" is niet geldig."
+
+#, python-format
+msgctxt "model:ir.message,text:msg_product_change_template"
+msgid "You cannot change the template of the product \"%(product)s\"."
+msgstr "U kunt de template van het product \"%(product)s\" niet wijzigen."
 
 msgctxt "model:ir.message,text:msg_product_code_unique"
 msgid "Code of active product must be unique."

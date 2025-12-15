@@ -655,6 +655,10 @@ msgctxt "field:ir.email,body:"
 msgid "Body"
 msgstr ""
 
+msgctxt "field:ir.email,message_id:"
+msgid "Message-ID"
+msgstr ""
+
 msgctxt "field:ir.email,recipients:"
 msgid "Recipients"
 msgstr ""
@@ -1254,9 +1258,10 @@ msgctxt "field:ir.model.print_model_graph.start,level:"
 msgid "Level"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:ir.module,childs:"
-msgid "Childs"
-msgstr ""
+msgid "Children"
+msgstr "Fields"
 
 msgctxt "field:ir.module,dependencies:"
 msgid "Dependencies"
@@ -1557,6 +1562,10 @@ msgstr ""
 
 msgctxt "field:ir.sequence.type-res.group,sequence_type:"
 msgid "Sequence Type"
+msgstr ""
+
+msgctxt "field:ir.session,ip_address:"
+msgid "IP Address"
 msgstr ""
 
 msgctxt "field:ir.session,key:"
@@ -2429,6 +2438,10 @@ msgctxt "model:ir.action,name:report_model_workflow_graph"
 msgid "Workflow Graph"
 msgstr ""
 
+msgctxt "model:ir.action,name:wizard_model_refresh_materialized"
+msgid "Refresh Data"
+msgstr ""
+
 msgctxt "model:ir.action,name:wizard_translation_report"
 msgid "Translations"
 msgstr ""
@@ -2918,6 +2931,10 @@ msgstr ""
 
 msgctxt "model:ir.message,text:msg_avatar"
 msgid "Avatar"
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_avatar_image_error"
+msgid "Can not open or identify the image set as avatar."
 msgstr ""
 
 msgctxt "model:ir.message,text:msg_avatar_resource_unique"
@@ -3461,11 +3478,19 @@ msgid ""
 "column %(column)d."
 msgstr ""
 
+msgctxt "model:ir.message,text:msg_translation_export_default_lang"
+msgid "To export translations, the default language must be \"English\"."
+msgstr ""
+
 #, python-format
 msgctxt "model:ir.message,text:msg_translation_overridden"
 msgid ""
 "You can not export translation \"%(name)s\" because it has been overridden "
 "by module \"%(overriding_module)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_translation_set_default_lang"
+msgid "To set translations, the default language must be \"English\"."
 msgstr ""
 
 msgctxt "model:ir.message,text:msg_trigger_exclusive"
@@ -3577,27 +3602,23 @@ msgid "Unload translations"
 msgstr ""
 
 msgctxt "model:ir.model.button,string:module_activate_button"
-msgid "Mark for Activation"
+msgid "Activate"
 msgstr ""
 
-msgctxt "model:ir.model.button,string:module_activate_cancel_button"
-msgid "Cancel Activation"
+msgctxt "model:ir.model.button,string:module_apply_button"
+msgid "Apply"
+msgstr ""
+
+msgctxt "model:ir.model.button,string:module_cancel_button"
+msgid "Cancel"
 msgstr ""
 
 msgctxt "model:ir.model.button,string:module_deactivate_button"
-msgid "Mark for Deactivation (beta)"
-msgstr ""
-
-msgctxt "model:ir.model.button,string:module_deactivate_cancel_button"
-msgid "Cancel Deactivation"
+msgid "Deactivate (beta)"
 msgstr ""
 
 msgctxt "model:ir.model.button,string:module_upgrade_button"
-msgid "Mark for Upgrade"
-msgstr ""
-
-msgctxt "model:ir.model.button,string:module_upgrade_cancel_button"
-msgid "Cancel Upgrade"
+msgid "Upgrade"
 msgstr ""
 
 msgctxt "model:ir.model.button,string:view_show_button"
@@ -3901,11 +3922,6 @@ msgstr ""
 msgctxt "model:ir.ui.menu,name:menu_models"
 msgid "Models"
 msgstr ""
-
-#, fuzzy
-msgctxt "model:ir.ui.menu,name:menu_module_activate_upgrade"
-msgid "Perform Pending Activation/Upgrade"
-msgstr "Perform Pending Installation/Upgrade"
 
 msgctxt "model:ir.ui.menu,name:menu_module_form"
 msgid "Modules"
@@ -4224,6 +4240,10 @@ msgid "Clean Task Queue"
 msgstr ""
 
 msgctxt "selection:ir.cron,method:"
+msgid "Refresh Materialized Models"
+msgstr ""
+
+msgctxt "selection:ir.cron,method:"
 msgid "Run On Time Triggers"
 msgstr ""
 
@@ -4446,10 +4466,6 @@ msgctxt "view:ir.cron:"
 msgid "Next Call Time"
 msgstr ""
 
-msgctxt "view:ir.cron:"
-msgid "Run Once"
-msgstr ""
-
 msgctxt "view:ir.email.template:"
 msgid "Hidden Recipients:"
 msgstr ""
@@ -4518,30 +4534,6 @@ msgctxt "view:ir.module.config_wizard.first:"
 msgid ""
 "You will be able to configure your installation depending on the modules you"
 " have installed."
-msgstr ""
-
-msgctxt "view:ir.module:"
-msgid "Cancel Activation"
-msgstr ""
-
-msgctxt "view:ir.module:"
-msgid "Cancel Deactivation"
-msgstr ""
-
-msgctxt "view:ir.module:"
-msgid "Cancel Upgrade"
-msgstr ""
-
-msgctxt "view:ir.module:"
-msgid "Mark for Activation"
-msgstr ""
-
-msgctxt "view:ir.module:"
-msgid "Mark for Deactivation (beta)"
-msgstr ""
-
-msgctxt "view:ir.module:"
-msgid "Mark for Upgrade"
 msgstr ""
 
 msgctxt "view:ir.note:"

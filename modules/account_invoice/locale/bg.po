@@ -3,6 +3,11 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 #, fuzzy
+msgctxt "field:account.configuration,customer_payment_reference_number:"
+msgid "Customer Payment Reference Number"
+msgstr "Условие за плащане на клиент"
+
+#, fuzzy
 msgctxt "field:account.configuration,default_customer_payment_term:"
 msgid "Default Customer Payment Term"
 msgstr "Условие за плащане на клиент"
@@ -16,6 +21,17 @@ msgstr "Фирма"
 msgctxt ""
 "field:account.configuration.default_payment_term,default_customer_payment_term:"
 msgid "Default Customer Payment Term"
+msgstr "Условие за плащане на клиент"
+
+#, fuzzy
+msgctxt "field:account.configuration.payment_reference,company:"
+msgid "Company"
+msgstr "Фирма"
+
+#, fuzzy
+msgctxt ""
+"field:account.configuration.payment_reference,customer_payment_reference_number:"
+msgid "Customer Payment Reference Number"
 msgstr "Условие за плащане на клиент"
 
 msgctxt "field:account.fiscalyear,invoice_sequences:"
@@ -108,6 +124,11 @@ msgctxt "field:account.invoice,currency_date:"
 msgid "Currency Date"
 msgstr "Текуща дата"
 
+#, fuzzy
+msgctxt "field:account.invoice,customer_payment_reference:"
+msgid "Customer Payment Reference"
+msgstr "Условие за плащане на клиент"
+
 msgctxt "field:account.invoice,description:"
 msgid "Description"
 msgstr "Описание"
@@ -176,6 +197,15 @@ msgctxt "field:account.invoice,number:"
 msgid "Number"
 msgstr "Номер"
 
+msgctxt "field:account.invoice,number_alnum:"
+msgid "Number Alphanumeric"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.invoice,number_digit:"
+msgid "Number Digit"
+msgstr "Номер"
+
 #, fuzzy
 msgctxt "field:account.invoice,origins:"
 msgid "Origins"
@@ -236,6 +266,16 @@ msgstr ""
 msgctxt "field:account.invoice,state:"
 msgid "State"
 msgstr "Състояние"
+
+#, fuzzy
+msgctxt "field:account.invoice,supplier_payment_reference:"
+msgid "Payment Reference"
+msgstr "Валута при плащане"
+
+#, fuzzy
+msgctxt "field:account.invoice,supplier_payment_reference_type:"
+msgid "Payment Reference Type"
+msgstr "Валута при плащане"
 
 msgctxt "field:account.invoice,tax_amount:"
 msgid "Tax"
@@ -336,6 +376,24 @@ msgstr "С обещетение"
 
 msgctxt "field:account.invoice.credit.start,with_refund_allowed:"
 msgid "With Refund Allowed"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.invoice.edocument.result,file:"
+msgid "File"
+msgstr "Условие за плащане"
+
+#, fuzzy
+msgctxt "field:account.invoice.edocument.result,filename:"
+msgid "File Name"
+msgstr "Условие за плащане"
+
+msgctxt "field:account.invoice.edocument.start,format:"
+msgid "Format"
+msgstr ""
+
+msgctxt "field:account.invoice.edocument.start,template:"
+msgid "Template"
 msgstr ""
 
 msgctxt "field:account.invoice.line,account:"
@@ -795,6 +853,10 @@ msgctxt "field:party.party.payment_term,supplier_payment_term:"
 msgid "Supplier Payment Term"
 msgstr "Условие за плащане на доставчик"
 
+msgctxt "help:account.configuration,customer_payment_reference_number:"
+msgid "The number used to generate the customer payment reference."
+msgstr ""
+
 msgctxt "help:account.invoice,payment_term_date:"
 msgid ""
 "The date from which the payment term is calculated.\n"
@@ -829,6 +891,11 @@ msgid "Account Configuration Default Payment Term"
 msgstr ""
 
 #, fuzzy
+msgctxt "model:account.configuration.payment_reference,string:"
+msgid "Account Configuration Payment Reference"
+msgstr "Фактура - Ред от плащане"
+
+#, fuzzy
 msgctxt "model:account.fiscalyear.invoice_sequence,string:"
 msgid "Account Fiscalyear Invoice Sequence"
 msgstr "Последователност на фактура за доставчик"
@@ -855,6 +922,16 @@ msgstr "Състояние на фактура"
 msgctxt "model:account.invoice.credit.start,string:"
 msgid "Account Invoice Credit Start"
 msgstr ""
+
+#, fuzzy
+msgctxt "model:account.invoice.edocument.result,string:"
+msgid "Account Invoice Edocument Result"
+msgstr "Фактура - Ред от плащане"
+
+#, fuzzy
+msgctxt "model:account.invoice.edocument.start,string:"
+msgid "Account Invoice Edocument Start"
+msgstr "Дата на фактура"
 
 #, fuzzy
 msgctxt "model:account.invoice.line,string:"
@@ -993,6 +1070,10 @@ msgstr "Редове за плащане"
 msgctxt "model:ir.action,name:credit"
 msgid "Credit"
 msgstr "Credit"
+
+msgctxt "model:ir.action,name:edocument"
+msgid "E-document"
+msgstr ""
 
 #, fuzzy
 msgctxt "model:ir.action,name:refresh_invoice_report_wizard"
@@ -1219,6 +1300,11 @@ msgid "The invoice \"%(invoice)s\" is similar to invoice \"%(similar)s\"."
 msgstr ""
 
 #, python-format
+msgctxt "model:ir.message,text:msg_invoice_supplier_payment_reference_invalid"
+msgid "The %(type)s \"%(reference)s\" on invoice \"%(invoice)s\" is not valid."
+msgstr ""
+
+#, python-format
 msgctxt "model:ir.message,text:msg_invoice_tax_create_draft"
 msgid ""
 "You cannot add taxes to invoice \"%(invoice)s\" because it is no longer in a"
@@ -1403,8 +1489,9 @@ msgctxt "report:account.invoice:"
 msgid "Draft Invoice"
 msgstr "Проект на фактура"
 
+#, fuzzy
 msgctxt "report:account.invoice:"
-msgid "Invoice N°:"
+msgid "Invoice No:"
 msgstr "Фактура N°:"
 
 msgctxt "report:account.invoice:"
@@ -1424,8 +1511,14 @@ msgctxt "report:account.invoice:"
 msgid "Reference"
 msgstr "Препратка"
 
+#, fuzzy
 msgctxt "report:account.invoice:"
-msgid "Supplier Invoice N°:"
+msgid "Reference:"
+msgstr "Препратка"
+
+#, fuzzy
+msgctxt "report:account.invoice:"
+msgid "Supplier Invoice No:"
 msgstr "Фактура за доставчик N°:"
 
 msgctxt "report:account.invoice:"
@@ -1451,6 +1544,18 @@ msgstr "Общо:"
 msgctxt "report:account.invoice:"
 msgid "Unit Price"
 msgstr "Единична цена"
+
+#, fuzzy
+msgctxt ""
+"selection:account.configuration.payment_reference,customer_payment_reference_number:"
+msgid "Invoice"
+msgstr "Фактура"
+
+#, fuzzy
+msgctxt ""
+"selection:account.configuration.payment_reference,customer_payment_reference_number:"
+msgid "Party"
+msgstr "Партньор"
 
 #, fuzzy
 msgctxt "selection:account.invoice,sequence_type_cache:"
@@ -1484,6 +1589,11 @@ msgstr "Публикуван"
 msgctxt "selection:account.invoice,state:"
 msgid "Validated"
 msgstr "Проверен"
+
+#, fuzzy
+msgctxt "selection:account.invoice,supplier_payment_reference_type:"
+msgid "Creditor Reference"
+msgstr "Отпратка"
 
 #, fuzzy
 msgctxt "selection:account.invoice,type:"
@@ -1603,6 +1713,21 @@ msgstr "Кредит"
 msgctxt "wizard_button:account.invoice.credit,start,end:"
 msgid "Cancel"
 msgstr "Отказ"
+
+#, fuzzy
+msgctxt "wizard_button:account.invoice.edocument,result,end:"
+msgid "Close"
+msgstr "Затваряне"
+
+#, fuzzy
+msgctxt "wizard_button:account.invoice.edocument,start,end:"
+msgid "Cancel"
+msgstr "Cancel"
+
+#, fuzzy
+msgctxt "wizard_button:account.invoice.edocument,start,render:"
+msgid "Render"
+msgstr "Напомняне"
 
 msgctxt "wizard_button:account.invoice.pay,ask,end:"
 msgid "Cancel"

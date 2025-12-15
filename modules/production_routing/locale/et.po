@@ -10,6 +10,11 @@ msgctxt "field:production,routing:"
 msgid "Routing"
 msgstr "Suunamine"
 
+#, fuzzy
+msgctxt "field:production.bom,routings:"
+msgid "Routings"
+msgstr "Suunamised"
+
 msgctxt "field:production.lead_time,routing:"
 msgid "Routing"
 msgstr "Suunamine"

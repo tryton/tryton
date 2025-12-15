@@ -556,6 +556,9 @@ msgstr ""
 msgid "#ERROR"
 msgstr ""
 
+msgid "Failed to copy text to clipboard: %1"
+msgstr ""
+
 msgid "More"
 msgstr "Додатково"
 
@@ -791,6 +794,9 @@ msgstr ""
 msgid "Wizard"
 msgstr "Майстер"
 
+msgid "Toggle notification"
+msgstr ""
+
 msgid "Enter a message"
 msgstr ""
 
@@ -798,6 +804,12 @@ msgid "Submit the message"
 msgstr ""
 
 msgid "Make this an internal message"
+msgstr ""
+
+msgid "All Notifications..."
+msgstr ""
+
+msgid "Preferences..."
 msgstr ""
 
 msgid "Translate view"

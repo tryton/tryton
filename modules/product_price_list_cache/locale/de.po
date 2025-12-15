@@ -32,8 +32,8 @@ msgstr "Die Maßeinheit."
 
 msgctxt "model:product.price_list.cache,string:"
 msgid "Product Price List Cache"
-msgstr "Artikel Preiskonditionschema Cache aktualisieren"
+msgstr "Artikel Preiskonditionsschema Cache"
 
 msgctxt "selection:ir.cron,method:"
 msgid "Fill Product Price List Cache"
-msgstr "Artikel Preiskonditionschema Cache aktualisieren"
+msgstr "Artikel Preiskonditionsschema Cache aktualisieren"

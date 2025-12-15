@@ -145,8 +145,9 @@ msgid "Create dunning up to this date."
 msgstr "Ustvari opomin do tega datuma."
 
 msgctxt "help:account.dunning.level,overdue:"
-msgid "When the level should be applied."
-msgstr "Kdaj se uporabi ta raven."
+msgid ""
+"The delay from the maturity date after which the level should be applied."
+msgstr ""
 
 msgctxt "help:account.dunning.procedure,name:"
 msgid "The main identifier of the Dunning Procedure."

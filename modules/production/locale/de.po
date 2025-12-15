@@ -98,6 +98,10 @@ msgctxt "field:production,state:"
 msgid "State"
 msgstr "Status"
 
+msgctxt "field:production,type:"
+msgid "Type"
+msgstr "Typ"
+
 msgctxt "field:production,unit:"
 msgid "Unit"
 msgstr "Einheit"
@@ -118,6 +122,10 @@ msgctxt "field:production.bom,code_readonly:"
 msgid "Code Readonly"
 msgstr "Code nur lesbar"
 
+msgctxt "field:production.bom,input_products:"
+msgid "Input Products"
+msgstr "Material"
+
 msgctxt "field:production.bom,inputs:"
 msgid "Input Materials"
 msgstr "Input-Materialien"
@@ -134,9 +142,25 @@ msgctxt "field:production.bom,outputs:"
 msgid "Output Materials"
 msgstr "Ausgangs-Materialien"
 
+msgctxt "field:production.bom,phantom:"
+msgid "Phantom"
+msgstr "Phantom"
+
+msgctxt "field:production.bom,phantom_quantity:"
+msgid "Quantity"
+msgstr "Menge"
+
+msgctxt "field:production.bom,phantom_unit:"
+msgid "Unit"
+msgstr "Einheit"
+
 msgctxt "field:production.bom.input,bom:"
 msgid "BOM"
 msgstr "Stückliste"
+
+msgctxt "field:production.bom.input,phantom_bom:"
+msgid "Phantom BOM"
+msgstr "Phantomstückliste"
 
 msgctxt "field:production.bom.input,product:"
 msgid "Product"
@@ -157,6 +181,10 @@ msgstr "Maßeinheitenkategorie"
 msgctxt "field:production.bom.output,bom:"
 msgid "BOM"
 msgstr "Stückliste"
+
+msgctxt "field:production.bom.output,phantom_bom:"
+msgid "Phantom BOM"
+msgstr "Phantomstückliste"
 
 msgctxt "field:production.bom.output,product:"
 msgid "Product"
@@ -291,6 +319,20 @@ msgctxt "help:production,uom_category:"
 msgid "The category of Unit of Measure."
 msgstr "Die Kategorie der Maßeinheit."
 
+msgctxt "help:production.bom,phantom:"
+msgid "If checked, the BoM can be used in another BoM."
+msgstr ""
+"Bei Aktivierung kann die Stückliste in einer anderen Stückliste verwendet "
+"werden."
+
+msgctxt "help:production.bom,phantom_quantity:"
+msgid "The quantity of the Phantom BoM"
+msgstr "Die Menge der Phantomstückliste"
+
+msgctxt "help:production.bom,phantom_unit:"
+msgid "The Unit of Measure of the Phantom BoM"
+msgstr "Die Maßeinheit der Phantomstückliste"
+
 msgctxt "help:production.configuration,bom_sequence:"
 msgid "Used to generate the BOM code."
 msgstr "Wird benutzt, um die Stücklisten-Codes zu erzeugen."
@@ -398,10 +440,17 @@ msgstr ""
 "\"%(production)s\" wurde kein Listenpreis erfasst."
 
 #, python-format
-msgctxt "model:ir.message,text:msg_recursive_bom"
+msgctxt "model:ir.message,text:msg_recursive_bom_bom"
+msgid "You cannot create a recursive BOM for BOM \"%(bom)s\"."
+msgstr ""
+"Für die Stückliste \"%(bom)s\" kann keine rekursive Stückliste erstellt "
+"werden."
+
+#, python-format
+msgctxt "model:ir.message,text:msg_recursive_bom_product"
 msgid "You cannot create a recursive BOM for product \"%(product)s\"."
 msgstr ""
-"Für Artikel \"%(product)s\" darf keine rekursive Stückliste erstellt werden."
+"Für Artikel \"%(product)s\" kann keine rekursive Stückliste erstellt werden."
 
 msgctxt "model:ir.message,text:msg_stock_move_production_single"
 msgid "Move can not be used for production input and output."
@@ -573,9 +622,25 @@ msgctxt "selection:production,state:"
 msgid "Waiting"
 msgstr "Wartend"
 
+msgctxt "selection:production,type:"
+msgid "Assembly"
+msgstr "Montage"
+
+msgctxt "selection:production,type:"
+msgid "Disassembly"
+msgstr "Demontage"
+
 msgctxt "view:product.template:"
 msgid "Production"
 msgstr "Produktion"
+
+msgctxt "view:production.bom.input:"
+msgid "Material"
+msgstr "Material"
+
+msgctxt "view:production.bom.output:"
+msgid "Material"
+msgstr "Material"
 
 msgctxt "view:production.bom:"
 msgid "Lines"

@@ -674,6 +674,11 @@ msgctxt "field:ir.email,body:"
 msgid "Body"
 msgstr ""
 
+#, fuzzy
+msgctxt "field:ir.email,message_id:"
+msgid "Message-ID"
+msgstr "Žinutė"
+
 msgctxt "field:ir.email,recipients:"
 msgid "Recipients"
 msgstr ""
@@ -1301,8 +1306,9 @@ msgctxt "field:ir.model.print_model_graph.start,level:"
 msgid "Level"
 msgstr "Lygis"
 
+#, fuzzy
 msgctxt "field:ir.module,childs:"
-msgid "Childs"
+msgid "Children"
 msgstr "Dukteriniai"
 
 msgctxt "field:ir.module,dependencies:"
@@ -1614,6 +1620,11 @@ msgstr "Groupė"
 msgctxt "field:ir.sequence.type-res.group,sequence_type:"
 msgid "Sequence Type"
 msgstr "Numeruočių tipai"
+
+#, fuzzy
+msgctxt "field:ir.session,ip_address:"
+msgid "IP Address"
+msgstr "El. paštas"
 
 msgctxt "field:ir.session,key:"
 msgid "Key"
@@ -2504,6 +2515,10 @@ msgctxt "model:ir.action,name:report_model_workflow_graph"
 msgid "Workflow Graph"
 msgstr "Darbo eigos grafikas"
 
+msgctxt "model:ir.action,name:wizard_model_refresh_materialized"
+msgid "Refresh Data"
+msgstr ""
+
 msgctxt "model:ir.action,name:wizard_translation_report"
 msgid "Translations"
 msgstr "Vertimai"
@@ -3017,6 +3032,10 @@ msgstr "Priedai"
 
 msgctxt "model:ir.message,text:msg_avatar"
 msgid "Avatar"
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_avatar_image_error"
+msgid "Can not open or identify the image set as avatar."
 msgstr ""
 
 msgctxt "model:ir.message,text:msg_avatar_resource_unique"
@@ -3580,11 +3599,19 @@ msgid ""
 "column %(column)d."
 msgstr "Too many relations found: %r in %s"
 
+msgctxt "model:ir.message,text:msg_translation_export_default_lang"
+msgid "To export translations, the default language must be \"English\"."
+msgstr ""
+
 #, python-format
 msgctxt "model:ir.message,text:msg_translation_overridden"
 msgid ""
 "You can not export translation \"%(name)s\" because it has been overridden "
 "by module \"%(overriding_module)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_translation_set_default_lang"
+msgid "To set translations, the default language must be \"English\"."
 msgstr ""
 
 msgctxt "model:ir.message,text:msg_trigger_exclusive"
@@ -3698,29 +3725,29 @@ msgctxt "model:ir.model.button,string:lang_unload_translations_button"
 msgid "Unload translations"
 msgstr "Išvalyti vertimą"
 
+#, fuzzy
 msgctxt "model:ir.model.button,string:module_activate_button"
-msgid "Mark for Activation"
-msgstr "Pažymėti įjungimui"
+msgid "Activate"
+msgstr "Veiksnus"
 
-msgctxt "model:ir.model.button,string:module_activate_cancel_button"
-msgid "Cancel Activation"
-msgstr "Nutraukti įjungimą"
+msgctxt "model:ir.model.button,string:module_apply_button"
+msgid "Apply"
+msgstr ""
 
+#, fuzzy
+msgctxt "model:ir.model.button,string:module_cancel_button"
+msgid "Cancel"
+msgstr "Atsisakyti"
+
+#, fuzzy
 msgctxt "model:ir.model.button,string:module_deactivate_button"
-msgid "Mark for Deactivation (beta)"
+msgid "Deactivate (beta)"
 msgstr "Pažymėti išjungimui (beta)"
 
-msgctxt "model:ir.model.button,string:module_deactivate_cancel_button"
-msgid "Cancel Deactivation"
-msgstr "Nutraukti išjungimą"
-
+#, fuzzy
 msgctxt "model:ir.model.button,string:module_upgrade_button"
-msgid "Mark for Upgrade"
-msgstr "Pažymėti atnaujinimui"
-
-msgctxt "model:ir.model.button,string:module_upgrade_cancel_button"
-msgid "Cancel Upgrade"
-msgstr "Nutraukti atnaujinimą"
+msgid "Upgrade"
+msgstr "Atnaujinti"
 
 msgctxt "model:ir.model.button,string:view_show_button"
 msgid "Show"
@@ -4054,10 +4081,6 @@ msgstr ""
 msgctxt "model:ir.ui.menu,name:menu_models"
 msgid "Models"
 msgstr "Modeliai"
-
-msgctxt "model:ir.ui.menu,name:menu_module_activate_upgrade"
-msgid "Perform Pending Activation/Upgrade"
-msgstr "Aktyvuoti/Atnaujinti pažymėtus modulius"
 
 msgctxt "model:ir.ui.menu,name:menu_module_form"
 msgid "Modules"
@@ -4409,6 +4432,10 @@ msgid "Clean Task Queue"
 msgstr "Vertimai sėkmingai ištrinti!"
 
 msgctxt "selection:ir.cron,method:"
+msgid "Refresh Materialized Models"
+msgstr ""
+
+msgctxt "selection:ir.cron,method:"
 msgid "Run On Time Triggers"
 msgstr ""
 
@@ -4636,10 +4663,6 @@ msgctxt "view:ir.cron:"
 msgid "Next Call Time"
 msgstr "Kitas įvykis"
 
-msgctxt "view:ir.cron:"
-msgid "Run Once"
-msgstr "Vienkartinis vykdymas"
-
 msgctxt "view:ir.email.template:"
 msgid "Hidden Recipients:"
 msgstr ""
@@ -4712,30 +4735,6 @@ msgid ""
 "You will be able to configure your installation depending on the modules you"
 " have installed."
 msgstr ""
-
-msgctxt "view:ir.module:"
-msgid "Cancel Activation"
-msgstr "Nutraukti įjungimą"
-
-msgctxt "view:ir.module:"
-msgid "Cancel Deactivation"
-msgstr "Nutraukti išjungimą"
-
-msgctxt "view:ir.module:"
-msgid "Cancel Upgrade"
-msgstr "Nutraukti atnaujinimą"
-
-msgctxt "view:ir.module:"
-msgid "Mark for Activation"
-msgstr "Pažymėti įjungimui"
-
-msgctxt "view:ir.module:"
-msgid "Mark for Deactivation (beta)"
-msgstr "Pažymėti išjungimui (beta)"
-
-msgctxt "view:ir.module:"
-msgid "Mark for Upgrade"
-msgstr "Pažymėti atnaujinimui"
 
 msgctxt "view:ir.note:"
 msgid "Date"

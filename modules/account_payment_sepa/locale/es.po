@@ -91,6 +91,10 @@ msgctxt "field:account.payment.sepa.mandate,account_number:"
 msgid "Account Number"
 msgstr "Número de cuenta"
 
+msgctxt "field:account.payment.sepa.mandate,address:"
+msgid "Address"
+msgstr "Dirección"
+
 msgctxt "field:account.payment.sepa.mandate,company:"
 msgid "Company"
 msgstr "Empresa"

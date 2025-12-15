@@ -42,7 +42,6 @@ msgctxt "field:stock.move,account_moves:"
 msgid "Account Moves"
 msgstr "Assentaments comptables"
 
-#, fuzzy
 msgctxt "model:account.configuration.stock_journal,string:"
 msgid "Account Configuration Stock Journal"
 msgstr "Configuració del diari d'existències"

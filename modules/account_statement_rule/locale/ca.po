@@ -116,13 +116,15 @@ msgid ""
 "It may define the groups named:\n"
 "'party'\n"
 "'bank_account'\n"
-"'invoice'"
+"'invoice'\n"
+"'payment_reference'"
 msgstr ""
 "Expressió regular per buscar a la descripció.\n"
 "Es poden definir els grups anomenats:\n"
 "'party',\n"
 "'bank_account',\n"
-"'invoice'"
+"'invoice'\n"
+"'payment_reference'"
 
 msgctxt "help:account.statement.rule.information,char:"
 msgid ""
@@ -153,17 +155,14 @@ msgstr ""
 "Deixeu-ho en blanc per utilitzar el grup anomenat 'party' de les expressions"
 " regulars."
 
-#, fuzzy
 msgctxt "model:account.statement.rule,string:"
 msgid "Account Statement Rule"
 msgstr "Regla d'extracte bancari"
 
-#, fuzzy
 msgctxt "model:account.statement.rule.information,string:"
 msgid "Account Statement Rule Information"
 msgstr "Informació de la regla d'extracte bancari"
 
-#, fuzzy
 msgctxt "model:account.statement.rule.line,string:"
 msgid "Account Statement Rule Line"
 msgstr "Línia de la regla d'extracte bancari"

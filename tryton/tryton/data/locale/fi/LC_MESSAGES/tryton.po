@@ -5,6 +5,9 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgid "Toggle notification"
+msgstr ""
+
 msgid "Make this an _internal message"
 msgstr ""
 
@@ -517,6 +520,9 @@ msgid "Expand all rows"
 msgstr ""
 
 msgid "Close Tab"
+msgstr ""
+
+msgid "All Notifications..."
 msgstr ""
 
 msgid "modularity, scalability and security"

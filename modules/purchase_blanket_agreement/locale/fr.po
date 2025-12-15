@@ -65,7 +65,7 @@ msgstr "Contrat-cadre"
 
 msgctxt "field:purchase.blanket_agreement.line,blanket_agreement_state:"
 msgid "Blanket Agreement State"
-msgstr "État de l'accord-cadre"
+msgstr "État d'accord-cadre"
 
 msgctxt "field:purchase.blanket_agreement.line,company:"
 msgid "Company"

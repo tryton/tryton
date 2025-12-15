@@ -252,7 +252,7 @@ msgstr "Emplacement"
 
 msgctxt "field:stock.inventory.line,inventory_state:"
 msgid "Inventory State"
-msgstr "État de l'inventaire"
+msgstr "État d'inventaire"
 
 msgctxt "field:stock.inventory.line,moves:"
 msgid "Moves"
@@ -626,6 +626,178 @@ msgctxt "field:stock.products_by_locations.context,stock_date_end:"
 msgid "At Date"
 msgstr "À la date"
 
+msgctxt "field:stock.reporting.inventory,company:"
+msgid "Company"
+msgstr "Société"
+
+msgctxt "field:stock.reporting.inventory,input_quantity:"
+msgid "Input Quantity"
+msgstr "Quantité entrante"
+
+msgctxt "field:stock.reporting.inventory,output_quantity:"
+msgid "Output Quantity"
+msgstr "Quantité sortante"
+
+msgctxt "field:stock.reporting.inventory,product:"
+msgid "Product"
+msgstr "Produit"
+
+msgctxt "field:stock.reporting.inventory,quantity:"
+msgid "Quantity"
+msgstr "Quantité"
+
+msgctxt "field:stock.reporting.inventory,unit:"
+msgid "Unit"
+msgstr "Unité"
+
+msgctxt "field:stock.reporting.inventory.context,company:"
+msgid "Company"
+msgstr "Société"
+
+msgctxt "field:stock.reporting.inventory.context,date:"
+msgid "Date"
+msgstr "Date"
+
+msgctxt "field:stock.reporting.inventory.context,location:"
+msgid "Location"
+msgstr "Emplacement"
+
+msgctxt "field:stock.reporting.inventory.context,product_type:"
+msgid "Product Type"
+msgstr "Type de produit"
+
+msgctxt "field:stock.reporting.inventory.daily,company:"
+msgid "Company"
+msgstr "Société"
+
+msgctxt "field:stock.reporting.inventory.daily,from_date:"
+msgid "From Date"
+msgstr "Date de début"
+
+msgctxt "field:stock.reporting.inventory.daily,input_quantity:"
+msgid "Input Quantity"
+msgstr "Quantité entrante"
+
+msgctxt "field:stock.reporting.inventory.daily,output_quantity:"
+msgid "Output Quantity"
+msgstr "Quantité sortante"
+
+msgctxt "field:stock.reporting.inventory.daily,product:"
+msgid "Product"
+msgstr "Produit"
+
+msgctxt "field:stock.reporting.inventory.daily,quantity:"
+msgid "Quantity"
+msgstr "Quantité"
+
+msgctxt "field:stock.reporting.inventory.daily,to_date:"
+msgid "To Date"
+msgstr "Date de fin"
+
+msgctxt "field:stock.reporting.inventory.daily,unit:"
+msgid "Unit"
+msgstr "Unité"
+
+msgctxt "field:stock.reporting.inventory.move,company:"
+msgid "Company"
+msgstr "Société"
+
+msgctxt "field:stock.reporting.inventory.move,date:"
+msgid "Date"
+msgstr "Date"
+
+msgctxt "field:stock.reporting.inventory.move,document:"
+msgid "Document"
+msgstr "Document"
+
+msgctxt "field:stock.reporting.inventory.move,input_quantity:"
+msgid "Input Quantity"
+msgstr "Quantité entrante"
+
+msgctxt "field:stock.reporting.inventory.move,move:"
+msgid "Move"
+msgstr "Mouvement"
+
+msgctxt "field:stock.reporting.inventory.move,origin:"
+msgid "Origin"
+msgstr "Origine"
+
+msgctxt "field:stock.reporting.inventory.move,output_quantity:"
+msgid "Output Quantity"
+msgstr "Quantité sortante"
+
+msgctxt "field:stock.reporting.inventory.move,product:"
+msgid "Product"
+msgstr "Produit"
+
+msgctxt "field:stock.reporting.inventory.move,quantity:"
+msgid "Quantity"
+msgstr "Quantité"
+
+msgctxt "field:stock.reporting.inventory.move,unit:"
+msgid "Unit"
+msgstr "Unité"
+
+msgctxt "field:stock.reporting.inventory.range.context,company:"
+msgid "Company"
+msgstr "Société"
+
+msgctxt "field:stock.reporting.inventory.range.context,from_date:"
+msgid "From Date"
+msgstr "Date de début"
+
+msgctxt "field:stock.reporting.inventory.range.context,location:"
+msgid "Location"
+msgstr "Emplacement"
+
+msgctxt "field:stock.reporting.inventory.range.context,to_date:"
+msgid "To Date"
+msgstr "Date de fin"
+
+msgctxt "field:stock.reporting.inventory.turnover,average_quantity:"
+msgid "Average Quantity"
+msgstr "Quantité moyenne"
+
+msgctxt "field:stock.reporting.inventory.turnover,company:"
+msgid "Company"
+msgstr "Société"
+
+msgctxt "field:stock.reporting.inventory.turnover,output_quantity:"
+msgid "Output Quantity"
+msgstr "Quantité sortante"
+
+msgctxt "field:stock.reporting.inventory.turnover,product:"
+msgid "Product"
+msgstr "Produit"
+
+msgctxt "field:stock.reporting.inventory.turnover,turnover:"
+msgid "Turnover"
+msgstr "Rotation"
+
+msgctxt "field:stock.reporting.inventory.turnover,unit:"
+msgid "Unit"
+msgstr "Unité"
+
+msgctxt "field:stock.reporting.inventory.turnover.context,company:"
+msgid "Company"
+msgstr "Société"
+
+msgctxt "field:stock.reporting.inventory.turnover.context,from_date:"
+msgid "From Date"
+msgstr "Date de début"
+
+msgctxt "field:stock.reporting.inventory.turnover.context,location:"
+msgid "Location"
+msgstr "Emplacement"
+
+msgctxt "field:stock.reporting.inventory.turnover.context,product_type:"
+msgid "Product Type"
+msgstr "Type de produit"
+
+msgctxt "field:stock.reporting.inventory.turnover.context,to_date:"
+msgid "To Date"
+msgstr "Date de fin"
+
 msgctxt "field:stock.reporting.margin.category,category:"
 msgid "Category"
 msgstr "Catégorie"
@@ -913,6 +1085,10 @@ msgstr "État"
 msgctxt "field:stock.shipment.internal,to_location:"
 msgid "To Location"
 msgstr "Emplacement de destination"
+
+msgctxt "field:stock.shipment.internal,to_warehouse:"
+msgid "To Warehouse"
+msgstr "Vers l'entrepôt"
 
 msgctxt "field:stock.shipment.internal,transit_location:"
 msgid "Transit Location"
@@ -1573,6 +1749,10 @@ msgctxt "help:stock.shipment.internal,to_location:"
 msgid "Where the stock is moved to."
 msgstr "Vers où les produits sont déplacés."
 
+msgctxt "help:stock.shipment.internal,to_warehouse:"
+msgid "Where the stock is sent to."
+msgstr "Vers où les produits sont envoyés."
+
 msgctxt "help:stock.shipment.internal,transit_location:"
 msgid ""
 "Where the stock is located while it is in transit between the warehouses."
@@ -1714,6 +1894,22 @@ msgstr "Mouvements de stock par entrepôt"
 msgctxt "model:ir.action,name:act_products_by_locations_relate"
 msgid "Products"
 msgstr "Produits"
+
+msgctxt "model:ir.action,name:act_reporting_inventory"
+msgid "Inventory"
+msgstr "Inventaire"
+
+msgctxt "model:ir.action,name:act_reporting_inventory_daily"
+msgid "Stock Inventory Daily"
+msgstr "Inventaire quotidien des stocks"
+
+msgctxt "model:ir.action,name:act_reporting_inventory_move"
+msgid "Stock Inventory Moves"
+msgstr "Mouvements d'inventaire de stock"
+
+msgctxt "model:ir.action,name:act_reporting_inventory_turnover"
+msgid "Inventory Turnover"
+msgstr "Rotation des stocks"
 
 msgctxt "model:ir.action,name:act_reporting_margin_category"
 msgid "Margins per Category"
@@ -2028,11 +2224,6 @@ msgid "No existing line found for \"%(search)s\"."
 msgstr "Aucune ligne existante n'a été trouvée pour « %(search)s »."
 
 #, python-format
-msgctxt "model:ir.message,text:msg_inventory_date_in_the_future"
-msgid "The inventories \"%(inventories)s\" have dates in the future."
-msgstr "Les inventaires « %(inventories)s » ont des dates dans le futur."
-
-#, python-format
 msgctxt "model:ir.message,text:msg_inventory_delete_cancel"
 msgid "To delete inventory \"%(inventory)s\" you must cancel it."
 msgstr "Pour supprimer l'inventaire « %(inventory)s », vous devez l'annuler."
@@ -2149,10 +2340,14 @@ msgctxt "model:ir.message,text:msg_move_quantity_positive"
 msgid "Move quantity must be positive."
 msgstr "La quantité sur le mouvement doit être positive."
 
+#, python-format
 msgctxt "model:ir.message,text:msg_period_close_assigned_move"
-msgid "You cannot close periods with assigned moves in it."
+msgid ""
+"To close the period \"%(period)s\", the assigned moves \"%(moves)s\" must be"
+" done or cancelled."
 msgstr ""
-"Vous ne pouvez pas clôturer des périodes avec des mouvements assignés."
+"Pour clôturer la période « %(period)s », les mouvements assignés "
+"« %(moves)s » doivent être effectués ou annulés."
 
 msgctxt "model:ir.message,text:msg_period_close_date"
 msgid "You cannot close periods with a date in the future or today."
@@ -2528,6 +2723,25 @@ msgctxt ""
 msgid "User in companies"
 msgstr "Utilisateur dans les sociétés"
 
+msgctxt "model:ir.rule.group,name:rule_group_reporting_inventory_companies"
+msgid "User in companies"
+msgstr "Utilisateur dans les sociétés"
+
+msgctxt ""
+"model:ir.rule.group,name:rule_group_reporting_inventory_daily_companies"
+msgid "User in companies"
+msgstr "Utilisateur dans les sociétés"
+
+msgctxt ""
+"model:ir.rule.group,name:rule_group_reporting_inventory_move_companies"
+msgid "User in companies"
+msgstr "Utilisateur dans les sociétés"
+
+msgctxt ""
+"model:ir.rule.group,name:rule_group_reporting_inventory_turnover_companies"
+msgid "User in companies"
+msgstr "Utilisateur dans les sociétés"
+
 msgctxt ""
 "model:ir.rule.group,name:rule_group_reporting_margin_category_companies"
 msgid "User in companies"
@@ -2660,6 +2874,14 @@ msgstr "Périodes"
 msgctxt "model:ir.ui.menu,name:menu_reporting"
 msgid "Reporting"
 msgstr "Rapports"
+
+msgctxt "model:ir.ui.menu,name:menu_reporting_inventory"
+msgid "Inventory"
+msgstr "Inventaire"
+
+msgctxt "model:ir.ui.menu,name:menu_reporting_inventory_turnover"
+msgid "Inventory Turnover"
+msgstr "Rotation des stocks"
 
 msgctxt "model:ir.ui.menu,name:menu_reporting_margin"
 msgid "Margins"
@@ -2841,6 +3063,34 @@ msgctxt "model:stock.products_by_locations.context,string:"
 msgid "Stock Products By Locations Context"
 msgstr "Contexte de produits en stock par emplacements"
 
+msgctxt "model:stock.reporting.inventory,string:"
+msgid "Stock Reporting Inventory"
+msgstr "Rapport d'inventaire de stock"
+
+msgctxt "model:stock.reporting.inventory.context,string:"
+msgid "Stock Reporting Inventory Context"
+msgstr "Contexte de rapport d'inventaire de stock"
+
+msgctxt "model:stock.reporting.inventory.daily,string:"
+msgid "Stock Reporting Inventory Daily"
+msgstr "Rapport d'inventaire quotidien de stock"
+
+msgctxt "model:stock.reporting.inventory.move,string:"
+msgid "Stock Reporting Inventory Move"
+msgstr "Rapport d'inventaire de stock Mouvement"
+
+msgctxt "model:stock.reporting.inventory.range.context,string:"
+msgid "Stock Reporting Inventory Range Context"
+msgstr "Contexte de rapport de plage d'inventaire de stock"
+
+msgctxt "model:stock.reporting.inventory.turnover,string:"
+msgid "Stock Reporting Inventory Turnover"
+msgstr "Rapport de rotation de stock"
+
+msgctxt "model:stock.reporting.inventory.turnover.context,string:"
+msgid "Stock Reporting Inventory Turnover Context"
+msgstr "Contexte de rapport de rotation de stock"
+
 msgctxt "model:stock.reporting.margin.category,string:"
 msgid "Stock Reporting Margin Category"
 msgstr "Rapport de marge de catégorie en stock"
@@ -2914,10 +3164,6 @@ msgid "From Location"
 msgstr "Emplacement d'origine"
 
 msgctxt "report:stock.shipment.in.restocking_list:"
-msgid "N°:"
-msgstr "N° :"
-
-msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "Planned Date:"
 msgstr "Date planifiée :"
 
@@ -2936,6 +3182,10 @@ msgstr "Référence :"
 msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "Restocking List"
 msgstr "Liste de restockage"
+
+msgctxt "report:stock.shipment.in.restocking_list:"
+msgid "Restocking List No:"
+msgstr "N° de liste de re-stockage :"
 
 msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "Supplier:"
@@ -2962,12 +3212,8 @@ msgid "From Location:"
 msgstr "Emplacement d'origine :"
 
 msgctxt "report:stock.shipment.internal.report:"
-msgid "Internal Shipment"
-msgstr "Expédition interne"
-
-msgctxt "report:stock.shipment.internal.report:"
-msgid "N°:"
-msgstr "N° :"
+msgid "Internal Shipment No:"
+msgstr "N° d'expédition interne :"
 
 msgctxt "report:stock.shipment.internal.report:"
 msgid "Planned Date:"
@@ -3014,16 +3260,16 @@ msgid "Delivery Note"
 msgstr "Bon de livraison"
 
 msgctxt "report:stock.shipment.out.delivery_note:"
+msgid "Delivery Note No:"
+msgstr "N° de bon de livraison :"
+
+msgctxt "report:stock.shipment.out.delivery_note:"
 msgid "Draft"
 msgstr "Brouillon"
 
 msgctxt "report:stock.shipment.out.delivery_note:"
 msgid "Location:"
 msgstr "Emplacement :"
-
-msgctxt "report:stock.shipment.out.delivery_note:"
-msgid "N°:"
-msgstr "N° :"
 
 msgctxt "report:stock.shipment.out.delivery_note:"
 msgid "Product"
@@ -3062,12 +3308,12 @@ msgid "From Location"
 msgstr "Emplacement d'origine"
 
 msgctxt "report:stock.shipment.out.picking_list:"
-msgid "N°:"
-msgstr "N° :"
-
-msgctxt "report:stock.shipment.out.picking_list:"
 msgid "Picking List"
 msgstr "Liste de prélèvement"
+
+msgctxt "report:stock.shipment.out.picking_list:"
+msgid "Picking List No:"
+msgstr "N° de liste de prélèvement :"
 
 msgctxt "report:stock.shipment.out.picking_list:"
 msgid "Planned Date:"
@@ -3118,10 +3364,6 @@ msgid "From Location"
 msgstr "Emplacement d'origine"
 
 msgctxt "report:stock.shipment.out.return.restocking_list:"
-msgid "N°:"
-msgstr "N° :"
-
-msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "Planned Date:"
 msgstr "Date planifiée :"
 
@@ -3140,6 +3382,10 @@ msgstr "Référence :"
 msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "Restocking List"
 msgstr "Liste de restockage"
+
+msgctxt "report:stock.shipment.out.return.restocking_list:"
+msgid "Restocking List No:"
+msgstr "N° de liste de re-stockage :"
 
 msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "To Location"
@@ -3210,6 +3456,10 @@ msgid "Production"
 msgstr "Production"
 
 msgctxt "selection:stock.location,type:"
+msgid "Rental"
+msgstr "Location"
+
+msgctxt "selection:stock.location,type:"
 msgid "Storage"
 msgstr "Magasin"
 
@@ -3266,6 +3516,54 @@ msgid "Product"
 msgstr "Produit"
 
 msgctxt "selection:stock.product_quantities_warehouse.move,product:"
+msgid "Variant"
+msgstr "Variante"
+
+msgctxt "selection:stock.reporting.inventory,product:"
+msgid "Product"
+msgstr "Produit"
+
+msgctxt "selection:stock.reporting.inventory,product:"
+msgid "Variant"
+msgstr "Variante"
+
+msgctxt "selection:stock.reporting.inventory.context,product_type:"
+msgid "Product"
+msgstr "Produit"
+
+msgctxt "selection:stock.reporting.inventory.context,product_type:"
+msgid "Variant"
+msgstr "Variante"
+
+msgctxt "selection:stock.reporting.inventory.daily,product:"
+msgid "Product"
+msgstr "Produit"
+
+msgctxt "selection:stock.reporting.inventory.daily,product:"
+msgid "Variant"
+msgstr "Variante"
+
+msgctxt "selection:stock.reporting.inventory.move,product:"
+msgid "Product"
+msgstr "Produit"
+
+msgctxt "selection:stock.reporting.inventory.move,product:"
+msgid "Variant"
+msgstr "Variante"
+
+msgctxt "selection:stock.reporting.inventory.turnover,product:"
+msgid "Product"
+msgstr "Produit"
+
+msgctxt "selection:stock.reporting.inventory.turnover,product:"
+msgid "Variant"
+msgstr "Variante"
+
+msgctxt "selection:stock.reporting.inventory.turnover.context,product_type:"
+msgid "Product"
+msgstr "Produit"
+
+msgctxt "selection:stock.reporting.inventory.turnover.context,product_type:"
 msgid "Variant"
 msgstr "Variante"
 
@@ -3452,6 +3750,10 @@ msgstr "Mouvement"
 msgctxt "view:stock.move:"
 msgid "Other Info"
 msgstr "Autre information"
+
+msgctxt "view:stock.reporting.inventory.daily:"
+msgid "Date"
+msgstr "Date"
 
 msgctxt "view:stock.reporting.margin.category.time_series:"
 msgid "%"

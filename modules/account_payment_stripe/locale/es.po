@@ -353,10 +353,6 @@ msgctxt "model:ir.action,name:url_checkout"
 msgid "Stripe Checkout"
 msgstr "Proceso de pago de Stripe"
 
-msgctxt "model:ir.action,name:wizard_checkout"
-msgid "Stripe Checkout"
-msgstr "Proceso de pago de Stripe"
-
 msgctxt "model:ir.action,name:wizard_customer_source_detach"
 msgid "Detach Source"
 msgstr "Separar el origen"

@@ -95,6 +95,10 @@ msgctxt "field:product.list_price,list_price:"
 msgid "List Price"
 msgstr "Precio de venta"
 
+msgctxt "field:product.list_price,product:"
+msgid "Product"
+msgstr "Producto"
+
 msgctxt "field:product.list_price,template:"
 msgid "Template"
 msgstr "Plantilla"
@@ -163,6 +167,10 @@ msgctxt "field:product.product,list_price_uom:"
 msgid "List Price"
 msgstr "Precio de venta"
 
+msgctxt "field:product.product,list_price_used:"
+msgid "List Price"
+msgstr "Precio de venta"
+
 msgctxt "field:product.product,list_prices:"
 msgid "List Prices"
 msgstr "Precios de venta"
@@ -170,6 +178,10 @@ msgstr "Precios de venta"
 msgctxt "field:product.product,name:"
 msgid "Name"
 msgstr "Nombre"
+
+msgctxt "field:product.product,position:"
+msgid "Position"
+msgstr "Posición"
 
 msgctxt "field:product.product,prefix_code:"
 msgid "Prefix Code"
@@ -402,8 +414,20 @@ msgid "Other identifiers associated with the variant."
 msgstr "Otros identificadores associados a la variante."
 
 msgctxt "help:product.product,list_price:"
-msgid "The standard price the product is sold at."
-msgstr "El precio al que normalmente se vende el producto."
+msgid ""
+"The standard price the variant is sold at.\n"
+"Leave empty to use the list price of the product."
+msgstr ""
+"El precio estandar al que se vende la variante.\n"
+"Dejar en blanco para usar el precio del producto."
+
+msgctxt "help:product.product,list_price_used:"
+msgid "The standard price the variant is sold at."
+msgstr "El precio al que normalmente se vende la variante."
+
+msgctxt "help:product.product,position:"
+msgid "The order of the variant in the list of variants on product."
+msgstr "El orden de las variantes en el listado de variantes del producto."
 
 msgctxt "help:product.product,replaced_by:"
 msgid "The product replacing this one."
@@ -564,6 +588,11 @@ msgstr "El código de la categoría de producto debe ser único."
 msgctxt "model:ir.message,text:msg_invalid_code"
 msgid "The %(type)s \"%(code)s\" for product \"%(product)s\" is not valid."
 msgstr "El \"%(type)s\" \"%(code)s\" del producto \"%(product)s\" no es valido."
+
+#, python-format
+msgctxt "model:ir.message,text:msg_product_change_template"
+msgid "You cannot change the template of the product \"%(product)s\"."
+msgstr "No podéis modificar la plantilla del producto \"%(product)s\"."
 
 msgctxt "model:ir.message,text:msg_product_code_unique"
 msgid "Code of active product must be unique."

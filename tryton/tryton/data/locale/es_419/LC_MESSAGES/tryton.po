@@ -5,6 +5,9 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgid "Toggle notification"
+msgstr ""
+
 msgid "Make this an _internal message"
 msgstr ""
 
@@ -521,6 +524,9 @@ msgstr ""
 
 msgid "Close Tab"
 msgstr "Cerrar pestaña"
+
+msgid "All Notifications..."
+msgstr ""
 
 msgid "modularity, scalability and security"
 msgstr ""

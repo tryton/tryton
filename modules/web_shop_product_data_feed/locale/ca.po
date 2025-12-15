@@ -44,7 +44,7 @@ msgstr "URL del producte"
 
 msgctxt "help:web.shop,product_image_url_template:"
 msgid ""
-"The template to generate the indexed product image URL.\n"
+"The fallback template to generate the product image URL.\n"
 "The following placeholders can be used:\n"
 "- ${id}\n"
 "- ${code}\n"
@@ -62,7 +62,7 @@ msgstr ""
 
 msgctxt "help:web.shop,product_url_template:"
 msgid ""
-"The template to generate the product URL on the web shop.\n"
+"The fallback template to generate the product URL.\n"
 "The following placeholders can be used:\n"
 "- ${id}\n"
 "- ${code}\n"
@@ -92,12 +92,10 @@ msgctxt "model:ir.ui.menu,name:menu_product_category_google_form"
 msgid "Google Product Categories"
 msgstr "Categories de productes de Google"
 
-#, fuzzy
 msgctxt "model:product.category.facebook,string:"
 msgid "Product Category Facebook"
-msgstr "Categoria de producte de Google"
+msgstr "Categoria de producte de Facebook"
 
-#, fuzzy
 msgctxt "model:product.category.google,string:"
 msgid "Product Category Google"
 msgstr "Categoria de producte de Google"

@@ -91,50 +91,50 @@ msgstr "Marqueu per crear registres SII per les factures del període."
 
 msgctxt "help:account.tax,es_sii_tax_key:"
 msgid "Exempt by Art. 20"
-msgstr ""
+msgstr "Exempt per l'art. 20"
 
 msgctxt "help:account.tax,es_sii_tax_key:"
 msgid "Exempt by Art. 21"
-msgstr ""
+msgstr "Exempt per l'art. 21"
 
 msgctxt "help:account.tax,es_sii_tax_key:"
 msgid "Exempt by Art. 22"
-msgstr ""
+msgstr "Exempt per l'art. 22"
 
 msgctxt "help:account.tax,es_sii_tax_key:"
 msgid "Exempt by Art. 24"
-msgstr ""
+msgstr "Exempt per l'art. 24"
 
 msgctxt "help:account.tax,es_sii_tax_key:"
 msgid "Exempt by Art. 25"
-msgstr ""
+msgstr "Exempt per l'art. 25"
 
 msgctxt "help:account.tax,es_sii_tax_key:"
 msgid "Exempt others"
-msgstr ""
+msgstr "Exempció per altres motius"
 
 msgctxt "help:account.tax,es_sii_tax_key:"
 msgid "Not exempt - No passive subject investment"
-msgstr ""
+msgstr "No exempt - Sense inversió de subjecte passiu"
 
 msgctxt "help:account.tax,es_sii_tax_key:"
 msgid "Not exempt - With passive subject investment"
-msgstr ""
+msgstr "No exempt - Amb inversió de subjecte passiu"
 
 msgctxt "help:account.tax,es_sii_tax_key:"
 msgid ""
 "Not exempt - Without investment by the taxpayer and with investment by the "
 "taxpayer"
 msgstr ""
+"No exempt: sense inversió del contribuent i amb inversió del contribuent"
 
-#, fuzzy
 msgctxt "model:account.credential.sii,string:"
 msgid "Account Credential Sii"
 msgstr "Comptabilitat credencials SII"
 
 msgctxt "model:account.invoice.sii,string:"
 msgid "Account Invoice Sii"
-msgstr ""
+msgstr "Factura SII"
 
 msgctxt "model:ir.action,name:act_invoice_sii_form"
 msgid "Spanish SII"

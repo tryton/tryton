@@ -1,5 +1,4 @@
 #
-#, fuzzy
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -79,20 +78,17 @@ msgstr ""
 "Llista de pagines a separar:\n"
 "Exemple: 1-3, 4, 5-6"
 
-#, fuzzy
 msgctxt "model:document.incoming,string:"
 msgid "Document Incoming"
 msgstr "Document entrant"
 
-#, fuzzy
 msgctxt "model:document.incoming.configuration,string:"
 msgid "Document Incoming Configuration"
-msgstr "Configuració entrant"
+msgstr "Configuració de documents entrants"
 
-#, fuzzy
 msgctxt "model:document.incoming.split.start,string:"
 msgid "Document Incoming Split Start"
-msgstr "Document entrant"
+msgstr "Inici dividir document entrant"
 
 msgctxt "model:ir.action,name:act_document_incoming_configuration_form"
 msgid "Incoming Configuration"

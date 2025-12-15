@@ -401,7 +401,3 @@ msgstr "Reclamación"
 msgctxt "view:sale.complaint:"
 msgid "Other Info"
 msgstr "Información adicional"
-
-msgctxt "view:sale.complaint:"
-msgid "Process"
-msgstr "Procesar"

@@ -49,3 +49,11 @@ msgstr "IVA do Cliente"
 msgctxt "model:ir.ui.menu,name:menu_vat_customer"
 msgid "Belgian VAT Customer"
 msgstr "IVA do Cliente"
+
+msgctxt "selection:account.invoice,supplier_payment_reference_type:"
+msgid "Belgian structured communication"
+msgstr ""
+
+msgctxt "selection:account.payment,reference_type:"
+msgid "Belgian structured communication"
+msgstr ""

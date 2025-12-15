@@ -11,7 +11,7 @@ msgid "Company"
 msgstr "Bedrijf"
 
 msgctxt "field:account.account.rule,end_date:"
-msgid "Ending Date"
+msgid "End Date"
 msgstr "Eind datum"
 
 msgctxt "field:account.account.rule,origin_account:"
@@ -23,7 +23,7 @@ msgid "Return"
 msgstr "Retour"
 
 msgctxt "field:account.account.rule,start_date:"
-msgid "Starting Date"
+msgid "Start Date"
 msgstr "Start datum"
 
 msgctxt "field:account.account.rule,tax:"

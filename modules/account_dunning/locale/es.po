@@ -145,8 +145,11 @@ msgid "Create dunning up to this date."
 msgstr "Crear reclamaciones hasta esta fecha."
 
 msgctxt "help:account.dunning.level,overdue:"
-msgid "When the level should be applied."
-msgstr "Cuando se debe aplicar el nivel."
+msgid ""
+"The delay from the maturity date after which the level should be applied."
+msgstr ""
+"El retraso desde la fecha de vencimiento por el que se debe aplicar el "
+"nivel."
 
 msgctxt "help:account.dunning.procedure,name:"
 msgid "The main identifier of the Dunning Procedure."

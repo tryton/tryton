@@ -45,3 +45,11 @@ msgstr "Belgische Umsatzsteuer Kunde"
 msgctxt "model:ir.ui.menu,name:menu_vat_customer"
 msgid "Belgian VAT Customer"
 msgstr "Belgische Umsatzsteuer Kunde"
+
+msgctxt "selection:account.invoice,supplier_payment_reference_type:"
+msgid "Belgian structured communication"
+msgstr "Belgische strukturierte Kommunikation"
+
+msgctxt "selection:account.payment,reference_type:"
+msgid "Belgian structured communication"
+msgstr "Belgische strukturierte Kommunikation"

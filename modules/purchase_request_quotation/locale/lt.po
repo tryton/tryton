@@ -67,10 +67,6 @@ msgctxt "field:purchase.request.quotation.create.ask_suppliers,suppliers:"
 msgid "Suppliers"
 msgstr ""
 
-msgctxt "field:purchase.request.quotation.create.succeed,number_quotations:"
-msgid "Number of Created Quotations"
-msgstr ""
-
 msgctxt "field:purchase.request.quotation.line,currency:"
 msgid "Currency"
 msgstr "Valiuta"
@@ -196,8 +192,14 @@ msgstr "Sent"
 
 #, python-format
 msgctxt "model:ir.message,text:msg_previous_quotation"
-msgid "A quotation was already made for request \"%(request)s\"."
+msgid "Quotations have already been made for the requests \"%(requests)s\"."
 msgstr ""
+
+#, fuzzy
+msgctxt ""
+"model:ir.model.button,string:purchase_request_create_quotation_button"
+msgid "Create Quotations"
+msgstr "Create Quotation"
 
 msgctxt "model:ir.rule.group,name:rule_group_request_quotation_companies"
 msgid "User in companies"
@@ -225,11 +227,6 @@ msgstr "Purchase Request Quotation"
 msgctxt "model:purchase.request.quotation.create.ask_suppliers,string:"
 msgid "Purchase Request Quotation Create Ask Suppliers"
 msgstr "Purchase Request Quotations"
-
-#, fuzzy
-msgctxt "model:purchase.request.quotation.create.succeed,string:"
-msgid "Purchase Request Quotation Create Succeed"
-msgstr "Purchase Request Quotation"
 
 #, fuzzy
 msgctxt "model:purchase.request.quotation.line,string:"
@@ -266,9 +263,10 @@ msgctxt "report:purchase.request.quotation:"
 msgid "Expected Supply Date"
 msgstr ""
 
+#, fuzzy
 msgctxt "report:purchase.request.quotation:"
-msgid "Purchase"
-msgstr ""
+msgid "Purchase Request for Quotation No:"
+msgstr "Purchase Request Quotation"
 
 msgctxt "report:purchase.request.quotation:"
 msgid "Quantity"
@@ -281,10 +279,6 @@ msgstr "Quotations"
 
 msgctxt "report:purchase.request.quotation:"
 msgid "Reference:"
-msgstr ""
-
-msgctxt "report:purchase.request.quotation:"
-msgid "Request for Quotation N°:"
 msgstr ""
 
 msgctxt "report:purchase.request.quotation:"
@@ -378,8 +372,4 @@ msgstr ""
 
 msgctxt "wizard_button:purchase.request.quotation.create,ask_suppliers,end:"
 msgid "Cancel"
-msgstr ""
-
-msgctxt "wizard_button:purchase.request.quotation.create,succeed,end:"
-msgid "Close"
 msgstr ""

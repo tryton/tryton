@@ -56,6 +56,11 @@ msgid "Accounting"
 msgstr "ການບັນຊີ"
 
 #, fuzzy
+msgctxt "field:product.category,accounting_templates:"
+msgid "Accounting Products"
+msgstr "ການບັນຊີ"
+
+#, fuzzy
 msgctxt "field:product.category,accounts:"
 msgid "Accounts"
 msgstr "ບັນຊີ"
@@ -144,6 +149,10 @@ msgstr "ໃຊ້ບັນດາບັນຊີທີ່ກຳນົດໄວ້
 
 msgctxt "help:product.category,accounting:"
 msgid "Check to indicate the category is used for accounting."
+msgstr ""
+
+msgctxt "help:product.category,accounting_templates:"
+msgid "The products for which the accounting category applies."
 msgstr ""
 
 msgctxt "help:product.category,customer_taxes:"

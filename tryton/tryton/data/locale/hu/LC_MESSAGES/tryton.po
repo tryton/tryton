@@ -5,6 +5,10 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+#, fuzzy
+msgid "Toggle notification"
+msgstr "Aktuális sor kijelölése ki/be"
+
 msgid "Make this an _internal message"
 msgstr ""
 
@@ -529,6 +533,10 @@ msgstr "Minden sor felnyitása"
 
 msgid "Close Tab"
 msgstr "Lap bezárása"
+
+#, fuzzy
+msgid "All Notifications..."
+msgstr "Műveletek"
 
 msgid "modularity, scalability and security"
 msgstr "modularitás, skálázhatóság és biztonság"

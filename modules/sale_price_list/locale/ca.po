@@ -54,12 +54,10 @@ msgctxt "help:sale.sale,price_list:"
 msgid "Use to compute the unit price of lines."
 msgstr "Utilitza per calcular el preu unitari de les línies."
 
-#, fuzzy
 msgctxt "model:party.party.sale_price_list,string:"
 msgid "Party Sale Price List"
-msgstr "Tarifa de venda per tercer"
+msgstr "Tarifa de venda del tercer"
 
-#, fuzzy
 msgctxt "model:sale.configuration.sale_price_list,string:"
 msgid "Sale Configuration Sale Price List"
 msgstr "Configuració de la tarifa de venda"

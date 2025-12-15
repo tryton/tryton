@@ -167,6 +167,10 @@ msgctxt "field:sale.subscription.line,subscription_state:"
 msgid "Subscription State"
 msgstr "Estado da Assinatura"
 
+msgctxt "field:sale.subscription.line,summary:"
+msgid "Summary"
+msgstr ""
+
 msgctxt "field:sale.subscription.line,unit:"
 msgid "Unit"
 msgstr "Unidade"

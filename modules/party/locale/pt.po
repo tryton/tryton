@@ -118,13 +118,15 @@ msgctxt "field:party.address.format,post_box_format:"
 msgid "Post Box Format"
 msgstr "Formato de Caixa de Correio"
 
+#, fuzzy
 msgctxt "field:party.address.format,post_office_format:"
-msgid "Post Box Format"
-msgstr "Formato de Caixa de Correio"
+msgid "Post Office Format"
+msgstr "Correios"
 
+#, fuzzy
 msgctxt "field:party.address.format,private_bag_format:"
-msgid "Post Box Format"
-msgstr "Formato de Caixa de Correio"
+msgid "Private Bag Format"
+msgstr "Bolsa Privada"
 
 msgctxt "field:party.address.format,room_number_format:"
 msgid "Room Number Format"
@@ -290,6 +292,14 @@ msgctxt "field:party.party,code:"
 msgid "Code"
 msgstr "Código"
 
+msgctxt "field:party.party,code_alnum:"
+msgid "Code Alphanumeric"
+msgstr ""
+
+msgctxt "field:party.party,code_digit:"
+msgid "Code Digit"
+msgstr ""
+
 msgctxt "field:party.party,code_readonly:"
 msgid "Code Readonly"
 msgstr "Código somente leitura"
@@ -383,12 +393,14 @@ msgctxt "help:party.address,party_name:"
 msgid "If filled, replace the name of the party for address formatting"
 msgstr "Se preenchido, substitui o nome da pessoa ao formatar o endereço"
 
+#, fuzzy
 msgctxt "help:party.address.format,building_number_format:"
-msgid "Use {} as placeholder for the number."
+msgid "Use {} as placeholder for the building number."
 msgstr "Use {} como espaço reservado para o número."
 
+#, fuzzy
 msgctxt "help:party.address.format,floor_number_format:"
-msgid "Use {} as placeholder for the number."
+msgid "Use {} as placeholder for the floor number."
 msgstr "Use {} como espaço reservado para o número."
 
 msgctxt "help:party.address.format,format_:"
@@ -415,20 +427,24 @@ msgstr ""
 "- ${country}(País)\n"
 "- ${country_code}(Código do País)"
 
+#, fuzzy
 msgctxt "help:party.address.format,post_box_format:"
-msgid "Use {} as placeholder for the number."
+msgid "Use {} as placeholder for the post box."
 msgstr "Use {} como espaço reservado para o número."
 
+#, fuzzy
 msgctxt "help:party.address.format,post_office_format:"
-msgid "Use {} as placeholder for the number."
+msgid "Use {} as placeholder for the post office."
 msgstr "Use {} como espaço reservado para o número."
 
+#, fuzzy
 msgctxt "help:party.address.format,private_bag_format:"
-msgid "Use {} as placeholder for the number."
+msgid "Use {} as placeholder for the private bag."
 msgstr "Use {} como espaço reservado para o número."
 
+#, fuzzy
 msgctxt "help:party.address.format,room_number_format:"
-msgid "Use {} as placeholder for the number."
+msgid "Use {} as placeholder for the room number."
 msgstr "Use {} como espaço reservado para o número."
 
 msgctxt "help:party.address.format,street_format:"
@@ -455,8 +471,9 @@ msgstr ""
 "- ${private_bag}\n"
 "- ${post_office}\n"
 
+#, fuzzy
 msgctxt "help:party.address.format,unit_number_format:"
-msgid "Use {} as placeholder for the number."
+msgid "Use {} as placeholder for the unit number."
 msgstr "Use {} como espaço reservado para o número."
 
 msgctxt "help:party.category,childs:"
@@ -869,13 +886,19 @@ msgctxt "selection:party.configuration,identifier_types:"
 msgid "Belgian BIS Number"
 msgstr "Número BIS Belga"
 
+#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
-msgid "Belgian Enterprise Number"
-msgstr "Número de Companhia Belga"
+msgid "Belgian Company Number"
+msgstr "Número de Companhia Israelita"
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Belgian National Number"
 msgstr "Número Nacional Belga"
+
+#, fuzzy
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Belgian VAT Number"
+msgstr "Número VAT Búlgaro"
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Brazillian Company Identifier"
@@ -1172,6 +1195,11 @@ msgstr "Número Fiscal Keniano"
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Latvian VAT Number"
 msgstr "Número VAT Letão"
+
+#, fuzzy
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Lithuanian Legal Entities"
+msgstr "Número Pessoal Lituano"
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Lithuanian Personal Number"

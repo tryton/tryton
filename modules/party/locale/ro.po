@@ -128,11 +128,11 @@ msgid "Post Box Format"
 msgstr ""
 
 msgctxt "field:party.address.format,post_office_format:"
-msgid "Post Box Format"
+msgid "Post Office Format"
 msgstr ""
 
 msgctxt "field:party.address.format,private_bag_format:"
-msgid "Post Box Format"
+msgid "Private Bag Format"
 msgstr ""
 
 msgctxt "field:party.address.format,room_number_format:"
@@ -300,6 +300,14 @@ msgctxt "field:party.party,code:"
 msgid "Code"
 msgstr "Cod"
 
+msgctxt "field:party.party,code_alnum:"
+msgid "Code Alphanumeric"
+msgstr ""
+
+msgctxt "field:party.party,code_digit:"
+msgid "Code Digit"
+msgstr ""
+
 msgctxt "field:party.party,code_readonly:"
 msgid "Code Readonly"
 msgstr "Cod numai pentru citit"
@@ -396,11 +404,11 @@ msgstr ""
 "Dacă este completat, înlocuișe numele părții pentru formatarea adresei"
 
 msgctxt "help:party.address.format,building_number_format:"
-msgid "Use {} as placeholder for the number."
+msgid "Use {} as placeholder for the building number."
 msgstr ""
 
 msgctxt "help:party.address.format,floor_number_format:"
-msgid "Use {} as placeholder for the number."
+msgid "Use {} as placeholder for the floor number."
 msgstr ""
 
 #, fuzzy
@@ -430,19 +438,19 @@ msgstr ""
 "- ${country_code}"
 
 msgctxt "help:party.address.format,post_box_format:"
-msgid "Use {} as placeholder for the number."
+msgid "Use {} as placeholder for the post box."
 msgstr ""
 
 msgctxt "help:party.address.format,post_office_format:"
-msgid "Use {} as placeholder for the number."
+msgid "Use {} as placeholder for the post office."
 msgstr ""
 
 msgctxt "help:party.address.format,private_bag_format:"
-msgid "Use {} as placeholder for the number."
+msgid "Use {} as placeholder for the private bag."
 msgstr ""
 
 msgctxt "help:party.address.format,room_number_format:"
-msgid "Use {} as placeholder for the number."
+msgid "Use {} as placeholder for the room number."
 msgstr ""
 
 #, fuzzy
@@ -472,7 +480,7 @@ msgstr ""
 "- ${country_code}"
 
 msgctxt "help:party.address.format,unit_number_format:"
-msgid "Use {} as placeholder for the number."
+msgid "Use {} as placeholder for the unit number."
 msgstr ""
 
 msgctxt "help:party.category,childs:"
@@ -864,11 +872,11 @@ msgstr "Argentina, Cod Fiscal"
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Australian Business Number"
-msgstr "Australia, Număr de Companie"
+msgstr "Australia, Număr de Societate"
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Australian Company Number"
-msgstr "Australia, Număr de Companie (ACN)"
+msgstr "Australia, Număr de Societate (ACN)"
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Australian Tax File Number"
@@ -898,17 +906,23 @@ msgctxt "selection:party.configuration,identifier_types:"
 msgid "Belgian BIS Number"
 msgstr "Numar TVA Belgian (BIS)"
 
+#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
-msgid "Belgian Enterprise Number"
-msgstr "Belgia, Număr de Companie"
+msgid "Belgian Company Number"
+msgstr "Israel, Numar Societate"
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Belgian National Number"
 msgstr "Numar National Belgian"
 
+#, fuzzy
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Belgian VAT Number"
+msgstr "Bulgaria, Număr TVA"
+
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Brazillian Company Identifier"
-msgstr "Brazilia, Identificator Companie"
+msgstr "Brazilia, Identificator Societate"
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Brazillian National Identifier"
@@ -928,7 +942,7 @@ msgstr "Bulgaria, Număr TVA"
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Canadian Business Number"
-msgstr "Canada, Număr Companie"
+msgstr "Canada, Număr Societate"
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Canadian Social Insurance Number"
@@ -1065,7 +1079,7 @@ msgstr "Finlanda, Identificator de Asociaţie"
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Finnish Business Identifier"
-msgstr "Finlanda, Identificator Companie"
+msgstr "Finlanda, Identificator Societate"
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Finnish Individual Tax Number"
@@ -1081,11 +1095,11 @@ msgstr "Finlanda, Număr TVA"
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "French Company Establishment Identification Number"
-msgstr "Franţa, Cod Identificare Companie"
+msgstr "Franţa, Cod Identificare Societate"
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "French Company Identification Number"
-msgstr "Franţa, Cod Identificare Companie"
+msgstr "Franţa, Cod Identificare Societate"
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "French Personal Identification Number"
@@ -1177,7 +1191,7 @@ msgstr "Irlandă, Număr TVA"
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Israeli Company Number"
-msgstr "Israel, Numar Companie"
+msgstr "Israel, Numar Societate"
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Israeli Identity Number"
@@ -1193,7 +1207,7 @@ msgstr "Italia, Număr TVA"
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Japanese Corporate Number"
-msgstr "Japonia, Număr de Companie"
+msgstr "Japonia, Număr de Societate"
 
 #, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
@@ -1203,6 +1217,11 @@ msgstr "Vietnam Cod Fiscal"
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Latvian VAT Number"
 msgstr "Latvia, Număr TVA"
+
+#, fuzzy
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Lithuanian Legal Entities"
+msgstr "Lituania, Cod Numeric Personal"
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Lithuanian Personal Number"
@@ -1238,7 +1257,7 @@ msgstr "Mexico, Cod Fiscal"
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Moldavian Company Identification Number"
-msgstr "Moldova, Numpr de Identificare Companie"
+msgstr "Moldova, Numpr de Identificare Societate"
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Monacan VAT Number"
@@ -1368,7 +1387,7 @@ msgstr "Africa de Sud, Cod de Identificare Fiscală"
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "South Korea Business Registration Number"
-msgstr "Korea de Sud, Număr de Inregistrare Companie"
+msgstr "Korea de Sud, Număr de Inregistrare Societate"
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "South Korean Resident Registration Number"
@@ -1376,7 +1395,7 @@ msgstr "Korea de Sud, Număr Înregistrare Rezident"
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Spanish Company Tax"
-msgstr "Spania, Număr Companie"
+msgstr "Spania, Număr Societate"
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Spanish Foreigner Number"
@@ -1392,7 +1411,7 @@ msgstr "Spania, Număr TVA"
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Swedish Company Number"
-msgstr "Suedia, Număr de Companie"
+msgstr "Suedia, Număr de Societate"
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Swedish Personal Number"
@@ -1404,7 +1423,7 @@ msgstr "Suedia, Număr de TVA"
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Swiss Business Identifier"
-msgstr "Elveţia, Identificator de Companie"
+msgstr "Elveţia, Identificator de Societate"
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Swiss Social Security Number"

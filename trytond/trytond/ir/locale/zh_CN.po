@@ -659,6 +659,11 @@ msgctxt "field:ir.email,body:"
 msgid "Body"
 msgstr "正文"
 
+#, fuzzy
+msgctxt "field:ir.email,message_id:"
+msgid "Message-ID"
+msgstr "消息"
+
 msgctxt "field:ir.email,recipients:"
 msgid "Recipients"
 msgstr "收件人"
@@ -1266,8 +1271,9 @@ msgctxt "field:ir.model.print_model_graph.start,level:"
 msgid "Level"
 msgstr "层级"
 
+#, fuzzy
 msgctxt "field:ir.module,childs:"
-msgid "Childs"
+msgid "Children"
 msgstr "子项"
 
 msgctxt "field:ir.module,dependencies:"
@@ -1575,6 +1581,11 @@ msgstr "用户组"
 msgctxt "field:ir.sequence.type-res.group,sequence_type:"
 msgid "Sequence Type"
 msgstr "序列类型"
+
+#, fuzzy
+msgctxt "field:ir.session,ip_address:"
+msgid "IP Address"
+msgstr "地址"
 
 msgctxt "field:ir.session,key:"
 msgid "Key"
@@ -2470,6 +2481,10 @@ msgctxt "model:ir.action,name:report_model_workflow_graph"
 msgid "Workflow Graph"
 msgstr "工作流程图"
 
+msgctxt "model:ir.action,name:wizard_model_refresh_materialized"
+msgid "Refresh Data"
+msgstr ""
+
 msgctxt "model:ir.action,name:wizard_translation_report"
 msgid "Translations"
 msgstr "翻译"
@@ -2984,6 +2999,10 @@ msgstr "附件"
 msgctxt "model:ir.message,text:msg_avatar"
 msgid "Avatar"
 msgstr "头像"
+
+msgctxt "model:ir.message,text:msg_avatar_image_error"
+msgid "Can not open or identify the image set as avatar."
+msgstr ""
 
 msgctxt "model:ir.message,text:msg_avatar_resource_unique"
 msgid "Only one avatar is allowed per resource."
@@ -3540,12 +3559,22 @@ msgid ""
 "column %(column)d."
 msgstr "发现太多的关系：\"%(value)r\" in \"%(model)s\" (%(column)s)."
 
+#, fuzzy
+msgctxt "model:ir.message,text:msg_translation_export_default_lang"
+msgid "To export translations, the default language must be \"English\"."
+msgstr "默认语言应设置为可翻译成其他语言."
+
 #, python-format
 msgctxt "model:ir.message,text:msg_translation_overridden"
 msgid ""
 "You can not export translation \"%(name)s\" because it has been overridden "
 "by module \"%(overriding_module)s\"."
 msgstr "无法导出翻译 “%(name)s”，因为它已被模块“%(overriding_module)s”覆盖."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_translation_set_default_lang"
+msgid "To set translations, the default language must be \"English\"."
+msgstr "默认语言应设置为可翻译成其他语言."
 
 msgctxt "model:ir.message,text:msg_trigger_exclusive"
 msgid ""
@@ -3656,29 +3685,29 @@ msgctxt "model:ir.model.button,string:lang_unload_translations_button"
 msgid "Unload translations"
 msgstr "卸载翻译"
 
+#, fuzzy
 msgctxt "model:ir.model.button,string:module_activate_button"
-msgid "Mark for Activation"
-msgstr "标记为激活"
+msgid "Activate"
+msgstr "启用"
 
-msgctxt "model:ir.model.button,string:module_activate_cancel_button"
-msgid "Cancel Activation"
-msgstr "取消激活"
+msgctxt "model:ir.model.button,string:module_apply_button"
+msgid "Apply"
+msgstr ""
 
+#, fuzzy
+msgctxt "model:ir.model.button,string:module_cancel_button"
+msgid "Cancel"
+msgstr "取消"
+
+#, fuzzy
 msgctxt "model:ir.model.button,string:module_deactivate_button"
-msgid "Mark for Deactivation (beta)"
+msgid "Deactivate (beta)"
 msgstr "标记为停用（测试版）"
 
-msgctxt "model:ir.model.button,string:module_deactivate_cancel_button"
-msgid "Cancel Deactivation"
-msgstr "取消停用"
-
+#, fuzzy
 msgctxt "model:ir.model.button,string:module_upgrade_button"
-msgid "Mark for Upgrade"
-msgstr "标记为升级"
-
-msgctxt "model:ir.model.button,string:module_upgrade_cancel_button"
-msgid "Cancel Upgrade"
-msgstr "取消升级"
+msgid "Upgrade"
+msgstr "开始升级"
 
 msgctxt "model:ir.model.button,string:view_show_button"
 msgid "Show"
@@ -4011,10 +4040,6 @@ msgctxt "model:ir.ui.menu,name:menu_models"
 msgid "Models"
 msgstr "模型"
 
-msgctxt "model:ir.ui.menu,name:menu_module_activate_upgrade"
-msgid "Perform Pending Activation/Upgrade"
-msgstr "激活或升级"
-
 msgctxt "model:ir.ui.menu,name:menu_module_form"
 msgid "Modules"
 msgstr "模块"
@@ -4335,6 +4360,10 @@ msgid "Clean Task Queue"
 msgstr "清空任务队列"
 
 msgctxt "selection:ir.cron,method:"
+msgid "Refresh Materialized Models"
+msgstr ""
+
+msgctxt "selection:ir.cron,method:"
 msgid "Run On Time Triggers"
 msgstr "运行基于时间的触发器"
 
@@ -4554,10 +4583,6 @@ msgctxt "view:ir.cron:"
 msgid "Next Call Time"
 msgstr "下次调用时间"
 
-msgctxt "view:ir.cron:"
-msgid "Run Once"
-msgstr "仅运行一次"
-
 msgctxt "view:ir.email.template:"
 msgid "Hidden Recipients:"
 msgstr "隐藏收件人:"
@@ -4627,30 +4652,6 @@ msgid ""
 "You will be able to configure your installation depending on the modules you"
 " have installed."
 msgstr "您将可以根据已安装的模块配置安装."
-
-msgctxt "view:ir.module:"
-msgid "Cancel Activation"
-msgstr "取消激活"
-
-msgctxt "view:ir.module:"
-msgid "Cancel Deactivation"
-msgstr "取消 “取消激活” 操作"
-
-msgctxt "view:ir.module:"
-msgid "Cancel Upgrade"
-msgstr "取消升级"
-
-msgctxt "view:ir.module:"
-msgid "Mark for Activation"
-msgstr "标记为激活"
-
-msgctxt "view:ir.module:"
-msgid "Mark for Deactivation (beta)"
-msgstr "标记为停用（测试版）"
-
-msgctxt "view:ir.module:"
-msgid "Mark for Upgrade"
-msgstr "标记为升级"
 
 msgctxt "view:ir.note:"
 msgid "Date"

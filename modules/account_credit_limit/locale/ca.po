@@ -48,10 +48,9 @@ msgctxt "field:party.party.credit_limit_amount,credit_limit_amount:"
 msgid "Credit Limit Amount"
 msgstr "Import límit de crèdit"
 
-#, fuzzy
 msgctxt "field:party.party.credit_limit_amount,currency:"
 msgid "Currency"
-msgstr "Decimals de la moneda"
+msgstr "Moneda"
 
 msgctxt "field:party.party.credit_limit_amount,party:"
 msgid "Party"
@@ -70,28 +69,28 @@ msgctxt "help:account.dunning.level,credit_limit:"
 msgid "Has reached the credit limit."
 msgstr "Ha arribat al límit de crèdit."
 
-#, fuzzy
 msgctxt "model:account.configuration.default_credit_limit_amount,string:"
 msgid "Account Configuration Default Credit Limit Amount"
 msgstr "Configuració del límit de crèdit per defecte"
 
-#, fuzzy, python-format
+#, python-format
 msgctxt "model:ir.message,text:msg_party_credit_limit_amount"
 msgid ""
 "The party \"%(party)s\" will exceed their %(limit)s credit limit by "
 "%(amount)s."
-msgstr "El tercer \"%(party)s\" ha assolit el seu límit de crèdit de %(limit)s."
+msgstr ""
+"La part \"%(party)s\" superarà el seu límit de crèdit %(limit)s per l'import"
+" %(amount)s."
 
-#, fuzzy, python-format
+#, python-format
 msgctxt "model:ir.message,text:msg_party_credit_limit_dunning"
 msgid ""
 "The party \"%(party)s\" has reached the credit limit level for dunning "
 "\"%(dunning)s\"."
 msgstr ""
-"El tercer \"%(party)s\" ha assolit el seu nivell de límit de crèdit "
-"%(dunning)s."
+"El tercer \"%(party)s\" ha assolit el seu nivell de límit de crèdit de la "
+"reclamació %(dunning)s."
 
-#, fuzzy
 msgctxt "model:party.party.credit_limit_amount,string:"
 msgid "Party Credit Limit Amount"
 msgstr "Import límit de crèdit per tercer"

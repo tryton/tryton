@@ -160,7 +160,11 @@ msgstr "Date de début de l'abonnement"
 
 msgctxt "field:sale.subscription.line,subscription_state:"
 msgid "Subscription State"
-msgstr "État de l'abonnement"
+msgstr "État d'abonnement"
+
+msgctxt "field:sale.subscription.line,summary:"
+msgid "Summary"
+msgstr "Résumé"
 
 msgctxt "field:sale.subscription.line,unit:"
 msgid "Unit"

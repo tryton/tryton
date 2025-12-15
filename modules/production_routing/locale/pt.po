@@ -10,6 +10,11 @@ msgctxt "field:production,routing:"
 msgid "Routing"
 msgstr "Roteamento"
 
+#, fuzzy
+msgctxt "field:production.bom,routings:"
+msgid "Routings"
+msgstr "Routings"
+
 msgctxt "field:production.lead_time,routing:"
 msgid "Routing"
 msgstr "Roteamento"

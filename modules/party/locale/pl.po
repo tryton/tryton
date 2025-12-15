@@ -128,11 +128,11 @@ msgid "Post Box Format"
 msgstr ""
 
 msgctxt "field:party.address.format,post_office_format:"
-msgid "Post Box Format"
+msgid "Post Office Format"
 msgstr ""
 
 msgctxt "field:party.address.format,private_bag_format:"
-msgid "Post Box Format"
+msgid "Private Bag Format"
 msgstr ""
 
 msgctxt "field:party.address.format,room_number_format:"
@@ -300,6 +300,14 @@ msgctxt "field:party.party,code:"
 msgid "Code"
 msgstr "Kod"
 
+msgctxt "field:party.party,code_alnum:"
+msgid "Code Alphanumeric"
+msgstr ""
+
+msgctxt "field:party.party,code_digit:"
+msgid "Code Digit"
+msgstr ""
+
 msgctxt "field:party.party,code_readonly:"
 msgid "Code Readonly"
 msgstr "Kod do odczytu"
@@ -394,11 +402,11 @@ msgid "If filled, replace the name of the party for address formatting"
 msgstr "Wypełnione pole zastępuje nazwę strony w adresie"
 
 msgctxt "help:party.address.format,building_number_format:"
-msgid "Use {} as placeholder for the number."
+msgid "Use {} as placeholder for the building number."
 msgstr ""
 
 msgctxt "help:party.address.format,floor_number_format:"
-msgid "Use {} as placeholder for the number."
+msgid "Use {} as placeholder for the floor number."
 msgstr ""
 
 #, fuzzy
@@ -428,19 +436,19 @@ msgstr ""
 "- ${country_code}"
 
 msgctxt "help:party.address.format,post_box_format:"
-msgid "Use {} as placeholder for the number."
+msgid "Use {} as placeholder for the post box."
 msgstr ""
 
 msgctxt "help:party.address.format,post_office_format:"
-msgid "Use {} as placeholder for the number."
+msgid "Use {} as placeholder for the post office."
 msgstr ""
 
 msgctxt "help:party.address.format,private_bag_format:"
-msgid "Use {} as placeholder for the number."
+msgid "Use {} as placeholder for the private bag."
 msgstr ""
 
 msgctxt "help:party.address.format,room_number_format:"
-msgid "Use {} as placeholder for the number."
+msgid "Use {} as placeholder for the room number."
 msgstr ""
 
 #, fuzzy
@@ -470,7 +478,7 @@ msgstr ""
 "- ${country_code}"
 
 msgctxt "help:party.address.format,unit_number_format:"
-msgid "Use {} as placeholder for the number."
+msgid "Use {} as placeholder for the unit number."
 msgstr ""
 
 msgctxt "help:party.category,childs:"
@@ -900,13 +908,19 @@ msgctxt "selection:party.configuration,identifier_types:"
 msgid "Belgian BIS Number"
 msgstr "Belgijski numer BIS"
 
+#, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
-msgid "Belgian Enterprise Number"
-msgstr "Belgijski numer przedsiębiorstw"
+msgid "Belgian Company Number"
+msgstr "Izraelski numer firmy"
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Belgian National Number"
 msgstr "Belgijski numer krajowy"
+
+#, fuzzy
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Belgian VAT Number"
+msgstr "Bułgarski numer VAT"
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Brazillian Company Identifier"
@@ -1205,6 +1219,11 @@ msgstr "Argentyński numer podatkowy"
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Latvian VAT Number"
 msgstr "Łotewski numer VAT"
+
+#, fuzzy
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Lithuanian Legal Entities"
+msgstr "Litewski numer osobisty"
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Lithuanian Personal Number"

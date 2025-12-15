@@ -1,0 +1,63 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "model:edocument.ubl.invoice,string:"
+msgid "Edocument Ubl Invoice"
+msgstr ""
+
+#, python-format
+msgctxt "model:ir.message,text:msg_company_not_found"
+msgid ""
+"Could not find the company for:\n"
+"%(company)s"
+msgstr ""
+
+#, python-format
+msgctxt "model:ir.message,text:msg_credit_note_type_code_unsupported"
+msgid "Unsupported credit note type code \"%(type_code)s\"."
+msgstr ""
+
+#, python-format
+msgctxt "model:ir.message,text:msg_currency_not_found"
+msgid "Could not find a currency with code \"%(code)s\"."
+msgstr ""
+
+#, python-format
+msgctxt "model:ir.message,text:msg_invoice_tax_amount_different"
+msgid ""
+"The tax amount %(tax_amount)s of the invoice \"%(invoice)s\" is different "
+"from the tax total %(tax_total)s."
+msgstr ""
+
+#, python-format
+msgctxt "model:ir.message,text:msg_invoice_total_amount_different"
+msgid ""
+"The total amount %(total_amount)s of the invoice \"%(invoice)s\" is "
+"different from the amount %(amount)s."
+msgstr ""
+
+#, python-format
+msgctxt "model:ir.message,text:msg_invoice_type_code_unsupported"
+msgid "Unsupported invoice type code \"%(type_code)s\"."
+msgstr ""
+
+#, python-format
+msgctxt "model:ir.message,text:msg_tax_not_found"
+msgid ""
+"Could not find tax for:\n"
+"%(tax_category)s"
+msgstr ""
+
+#, python-format
+msgctxt "model:ir.message,text:msg_unit_not_found"
+msgid "Could not find a unit with UNECE code \"%(code)s\"."
+msgstr ""
+
+msgctxt "selection:account.invoice.edocument.start,format:"
+msgid "UBL"
+msgstr ""
+
+msgctxt "selection:document.incoming,type:"
+msgid "UBL Invoice/Credit Note"
+msgstr ""

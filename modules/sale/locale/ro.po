@@ -40,7 +40,7 @@ msgstr "Parte"
 
 msgctxt "field:party.party.sale_method,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:party.party.sale_method,party:"
 msgid "Party"
@@ -92,7 +92,7 @@ msgstr "UM Vânzare"
 
 msgctxt "field:product.sale.context,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:product.sale.context,currency:"
 msgid "Currency"
@@ -168,7 +168,7 @@ msgstr "Metoda de expediere a vânzării"
 
 msgctxt "field:sale.configuration.sequence,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:sale.configuration.sequence,sale_sequence:"
 msgid "Sale Sequence"
@@ -213,7 +213,7 @@ msgstr "Suma"
 
 msgctxt "field:sale.line,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:sale.line,currency:"
 msgid "Currency"
@@ -352,7 +352,7 @@ msgstr "Rând de vânzare"
 
 msgctxt "field:sale.reporting.context,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:sale.reporting.context,from_date:"
 msgid "From Date"
@@ -504,7 +504,7 @@ msgstr "Cometariu"
 
 msgctxt "field:sale.sale,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:sale.sale,confirmed_by:"
 msgid "Confirmed By"
@@ -1116,7 +1116,7 @@ msgstr ""
 
 msgctxt "model:ir.message,text:msg_sale_reporting_company"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "model:ir.message,text:msg_sale_reporting_currency"
 msgid "Currency"
@@ -1154,9 +1154,11 @@ msgstr ""
 "Pentru a obține o ofertă pentru vânzarea \"%(sale)s\" trebuie să introduceți"
 " o adresă de expediere."
 
-#, python-format
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_sale_warehouse_required_for_quotation"
-msgid "To get a quote for sale \"%(sale)s\" you must enter a warehouse."
+msgid ""
+"To get a quote for sale \"%(sale)s\" you must enter a warehouse for the line"
+" \"%(line)s\"."
 msgstr ""
 "Pentru a obține o ofertă de vânzare \"%(sale)s\" trebuie să specificați un "
 "depozit."
@@ -1537,16 +1539,18 @@ msgctxt "report:sale.sale:"
 msgid "Quantity"
 msgstr "Cantitate"
 
+#, fuzzy
 msgctxt "report:sale.sale:"
-msgid "Quotation N°:"
+msgid "Quotation No:"
 msgstr "Oferta N°:"
 
 msgctxt "report:sale.sale:"
 msgid "Reference:"
 msgstr "Referinţă:"
 
+#, fuzzy
 msgctxt "report:sale.sale:"
-msgid "Sale Order N°:"
+msgid "Sale Order No:"
 msgstr "Nr. Comandă de vânzare:"
 
 msgctxt "report:sale.sale:"

@@ -54,12 +54,10 @@ msgctxt "help:account.dunning.fee,compute_method:"
 msgid "Method to compute the fee amount"
 msgstr "Mètode per calcular l'import de les despeses"
 
-#, fuzzy
 msgctxt "model:account.dunning.fee,string:"
 msgid "Account Dunning Fee"
-msgstr "Compte de les despeses de reclamació"
+msgstr "Despeses de reclamació contables"
 
-#, fuzzy
 msgctxt "model:account.dunning.fee.dunning_level,string:"
 msgid "Account Dunning Fee Dunning Level"
 msgstr "Compte de les despeses de reclamació - Nivell"

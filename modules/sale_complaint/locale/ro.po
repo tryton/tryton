@@ -16,7 +16,7 @@ msgstr "Anulat de"
 
 msgctxt "field:sale.complaint,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:sale.complaint,customer:"
 msgid "Customer"
@@ -79,7 +79,7 @@ msgstr "Suma"
 #, fuzzy
 msgctxt "field:sale.complaint.action,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:sale.complaint.action,complaint:"
 msgid "Complaint"
@@ -421,8 +421,3 @@ msgstr "Reclamație"
 msgctxt "view:sale.complaint:"
 msgid "Other Info"
 msgstr "Alte informații"
-
-#, fuzzy
-msgctxt "view:sale.complaint:"
-msgid "Process"
-msgstr "Procesare"

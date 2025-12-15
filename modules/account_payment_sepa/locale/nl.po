@@ -91,6 +91,10 @@ msgctxt "field:account.payment.sepa.mandate,account_number:"
 msgid "Account Number"
 msgstr "Rekeningnummer"
 
+msgctxt "field:account.payment.sepa.mandate,address:"
+msgid "Address"
+msgstr "Adres"
+
 msgctxt "field:account.payment.sepa.mandate,company:"
 msgid "Company"
 msgstr "Bedrijf"
@@ -221,7 +225,7 @@ msgstr "Mandaat"
 
 msgctxt "model:ir.action,name:report_message"
 msgid "Message"
-msgstr "Melding"
+msgstr "Bericht"
 
 msgctxt "model:ir.action.act_window.domain,name:act_mandate_form_domain_all"
 msgid "All"

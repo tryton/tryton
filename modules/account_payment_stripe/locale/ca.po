@@ -305,35 +305,29 @@ msgctxt "help:account.payment.stripe.account,webhook_signing_secret:"
 msgid "The Stripe's signing secret of the webhook."
 msgstr "El secret de firma de Stripe per al Webhook."
 
-#, fuzzy
 msgctxt "model:account.payment.stripe.account,string:"
 msgid "Account Payment Stripe Account"
 msgstr "Compte Stripe"
 
-#, fuzzy
 msgctxt "model:account.payment.stripe.customer,string:"
 msgid "Account Payment Stripe Customer"
 msgstr "Crea clients de Stripe"
 
-#, fuzzy
 msgctxt "model:account.payment.stripe.customer.fingerprint,string:"
 msgid "Account Payment Stripe Customer Fingerprint"
-msgstr "Empremta digital del client de Strip"
+msgstr "Empremta digital del client de Stripe"
 
-#, fuzzy
 msgctxt "model:account.payment.stripe.customer.identical,string:"
 msgid "Account Payment Stripe Customer Identical"
 msgstr "Client de Stripe idèntic"
 
-#, fuzzy
 msgctxt "model:account.payment.stripe.customer.source.detach.ask,string:"
 msgid "Account Payment Stripe Customer Source Detach Ask"
-msgstr "Origen client Stripe"
+msgstr "Pregunta origen client pagament Stripe"
 
-#, fuzzy
 msgctxt "model:account.payment.stripe.refund,string:"
 msgid "Account Payment Stripe Refund"
-msgstr "Crea devolucions de Stripe"
+msgstr "Devolucións de pagaments de Stripe"
 
 msgctxt "model:ir.action,name:act_account_form"
 msgid "Stripe Accounts"
@@ -356,10 +350,6 @@ msgid "Checkout"
 msgstr "Pagament"
 
 msgctxt "model:ir.action,name:url_checkout"
-msgid "Stripe Checkout"
-msgstr "Procés de pagament de Stripe"
-
-msgctxt "model:ir.action,name:wizard_checkout"
 msgid "Stripe Checkout"
 msgstr "Procés de pagament de Stripe"
 
@@ -403,14 +393,14 @@ msgctxt "model:ir.message,text:msg_customer_fingerprint_unique"
 msgid "The fingerprint must be unique by customer."
 msgstr "L'empremta digital ha de ser única per client."
 
-#, fuzzy, python-format
+#, python-format
 msgctxt "model:ir.message,text:msg_no_stripe_token"
 msgid ""
 "To process payment \"%(payment)s\" you must set a Stripe token, payment "
 "intent or customer."
 msgstr ""
-"Per processar el pagament \"%(payment)s\" heu de definir-hi un client o un "
-"token de Stripe."
+"Per processar el pagament \"%(payment)s\" heu de definir-hi un client, un "
+"intent de pagment o un client."
 
 msgctxt "model:ir.message,text:msg_stripe_key_modified"
 msgid "Are you sure you want to modify the keys of the Stripe account?"
@@ -490,7 +480,6 @@ msgctxt "report:account.payment.stripe.checkout:"
 msgid "Stripe Checkout"
 msgstr "Procés de pagament de Stripe"
 
-#, fuzzy
 msgctxt "report:account.payment.stripe.checkout:"
 msgid "Submit"
 msgstr "Envia"

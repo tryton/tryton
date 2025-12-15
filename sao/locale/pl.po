@@ -148,7 +148,7 @@ msgid "Send you an email to reset your password."
 msgstr "Wyślij wiadomość, aby zresetować hasło."
 
 msgid "Reset forgotten password"
-msgstr ""
+msgstr "Zresetuj hasło"
 
 msgid ""
 "A request to reset your password has been sent.\n"
@@ -560,10 +560,13 @@ msgid "Copy Selected Rows"
 msgstr "Kopiuj wybrane rekordy"
 
 msgid "Reset Column Widths"
-msgstr ""
+msgstr "Przywróć szerokości kolumn"
 
 msgid "#ERROR"
 msgstr "#BŁĄD"
+
+msgid "Failed to copy text to clipboard: %1"
+msgstr ""
 
 msgid "More"
 msgstr "Więcej"
@@ -794,6 +797,9 @@ msgstr "Przełącz dźwięk"
 msgid "Wizard"
 msgstr "Kreator"
 
+msgid "Toggle notification"
+msgstr ""
+
 msgid "Enter a message"
 msgstr ""
 
@@ -801,6 +807,12 @@ msgid "Submit the message"
 msgstr ""
 
 msgid "Make this an internal message"
+msgstr ""
+
+msgid "All Notifications..."
+msgstr ""
+
+msgid "Preferences..."
 msgstr ""
 
 msgid "Translate view"

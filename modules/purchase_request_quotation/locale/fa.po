@@ -67,10 +67,6 @@ msgctxt "field:purchase.request.quotation.create.ask_suppliers,suppliers:"
 msgid "Suppliers"
 msgstr "تأمین کنندگان"
 
-msgctxt "field:purchase.request.quotation.create.succeed,number_quotations:"
-msgid "Number of Created Quotations"
-msgstr "تعداد نقل قول های ایجاد شده"
-
 msgctxt "field:purchase.request.quotation.line,currency:"
 msgid "Currency"
 msgstr "واحد پول"
@@ -199,8 +195,14 @@ msgstr "ارسال"
 
 #, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_previous_quotation"
-msgid "A quotation was already made for request \"%(request)s\"."
+msgid "Quotations have already been made for the requests \"%(requests)s\"."
 msgstr "یک نقل قول(دستور) در حال حاضر برای درخواست : \"%s\" وجود دارد."
+
+#, fuzzy
+msgctxt ""
+"model:ir.model.button,string:purchase_request_create_quotation_button"
+msgid "Create Quotations"
+msgstr "ایجاد نقل قول"
 
 msgctxt "model:ir.rule.group,name:rule_group_request_quotation_companies"
 msgid "User in companies"
@@ -228,11 +230,6 @@ msgstr "درخواست نقل قول خرید"
 msgctxt "model:purchase.request.quotation.create.ask_suppliers,string:"
 msgid "Purchase Request Quotation Create Ask Suppliers"
 msgstr "ایجاد درخواست نقل قول خرید بخواست تأمین کنندگان"
-
-#, fuzzy
-msgctxt "model:purchase.request.quotation.create.succeed,string:"
-msgid "Purchase Request Quotation Create Succeed"
-msgstr "ایجاد درخواست نقل قول خرید موفق"
 
 #, fuzzy
 msgctxt "model:purchase.request.quotation.line,string:"
@@ -267,9 +264,10 @@ msgctxt "report:purchase.request.quotation:"
 msgid "Expected Supply Date"
 msgstr "تاریخ عرضه مورد انتظار"
 
+#, fuzzy
 msgctxt "report:purchase.request.quotation:"
-msgid "Purchase"
-msgstr "خرید"
+msgid "Purchase Request for Quotation No:"
+msgstr "نقل قول برای درخواست خرید"
 
 msgctxt "report:purchase.request.quotation:"
 msgid "Quantity"
@@ -282,10 +280,6 @@ msgstr "نقل قول"
 msgctxt "report:purchase.request.quotation:"
 msgid "Reference:"
 msgstr "ارجاع :"
-
-msgctxt "report:purchase.request.quotation:"
-msgid "Request for Quotation N°:"
-msgstr "درخواست نقل قول N°:"
 
 msgctxt "report:purchase.request.quotation:"
 msgid "Revision:"
@@ -372,7 +366,3 @@ msgstr "پردازش"
 msgctxt "wizard_button:purchase.request.quotation.create,ask_suppliers,end:"
 msgid "Cancel"
 msgstr "انصراف"
-
-msgctxt "wizard_button:purchase.request.quotation.create,succeed,end:"
-msgid "Close"
-msgstr "بسته"

@@ -11,8 +11,9 @@ msgctxt "field:account.account.rule,company:"
 msgid "Company"
 msgstr "Empresa"
 
+#, fuzzy
 msgctxt "field:account.account.rule,end_date:"
-msgid "Ending Date"
+msgid "End Date"
 msgstr "Data de Término"
 
 msgctxt "field:account.account.rule,origin_account:"
@@ -23,8 +24,9 @@ msgctxt "field:account.account.rule,return_:"
 msgid "Return"
 msgstr "Retornar"
 
+#, fuzzy
 msgctxt "field:account.account.rule,start_date:"
-msgid "Starting Date"
+msgid "Start Date"
 msgstr "Data de Inicio"
 
 msgctxt "field:account.account.rule,tax:"

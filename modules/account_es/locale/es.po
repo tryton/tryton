@@ -236,7 +236,7 @@ msgstr "Utilizar '99' para terceros no españoles."
 
 msgctxt "model:account.reporting.aeat.start,string:"
 msgid "Account Reporting Aeat Start"
-msgstr "Incio informes AEAT"
+msgstr "Inicio informes AEAT"
 
 msgctxt "model:account.reporting.es_ec_operation_list,string:"
 msgid "Account Ec Sales List"

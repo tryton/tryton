@@ -17,7 +17,7 @@ msgstr ""
 
 msgctxt "field:sale.subscription,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:sale.subscription,contact:"
 msgid "Contact"
@@ -98,7 +98,7 @@ msgstr "Data"
 #, fuzzy
 msgctxt "field:sale.subscription.line,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:sale.subscription.line,consumed_until:"
 msgid "Consumed until"
@@ -162,6 +162,10 @@ msgstr ""
 
 msgctxt "field:sale.subscription.line,subscription_state:"
 msgid "Subscription State"
+msgstr ""
+
+msgctxt "field:sale.subscription.line,summary:"
+msgid "Summary"
 msgstr ""
 
 msgctxt "field:sale.subscription.line,unit:"

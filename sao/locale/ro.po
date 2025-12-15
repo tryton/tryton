@@ -472,7 +472,7 @@ msgid "Edit"
 msgstr "Editare"
 
 msgid "Fuzzy"
-msgstr "Cautare aproximativa"
+msgstr "Neclar"
 
 msgid "You need to save the record before adding translations."
 msgstr "Trebuie să salvați înregistrarea înainte de a adăuga traduceri."
@@ -549,6 +549,9 @@ msgstr ""
 
 msgid "#ERROR"
 msgstr "#EROARE"
+
+msgid "Failed to copy text to clipboard: %1"
+msgstr ""
 
 msgid "More"
 msgstr "Mai multe"
@@ -779,6 +782,9 @@ msgstr "Comutați sunetul"
 msgid "Wizard"
 msgstr "Asistent"
 
+msgid "Toggle notification"
+msgstr ""
+
 msgid "Enter a message"
 msgstr ""
 
@@ -786,6 +792,12 @@ msgid "Submit the message"
 msgstr ""
 
 msgid "Make this an internal message"
+msgstr ""
+
+msgid "All Notifications..."
+msgstr ""
+
+msgid "Preferences..."
 msgstr ""
 
 msgid "Translate view"

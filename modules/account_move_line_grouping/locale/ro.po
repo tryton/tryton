@@ -28,7 +28,7 @@ msgstr "Suma Moneda Secundara"
 
 msgctxt "field:account.move.line.group,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:account.move.line.group,credit:"
 msgid "Credit"

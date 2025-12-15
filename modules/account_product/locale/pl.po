@@ -52,6 +52,11 @@ msgctxt "field:product.category,accounting:"
 msgid "Accounting"
 msgstr "Księgowanie"
 
+#, fuzzy
+msgctxt "field:product.category,accounting_templates:"
+msgid "Accounting Products"
+msgstr "Księgowanie"
+
 msgctxt "field:product.category,accounts:"
 msgid "Accounts"
 msgstr "Konta"
@@ -136,6 +141,10 @@ msgctxt "help:product.category,accounting:"
 msgid "Check to indicate the category is used for accounting."
 msgstr "Zaznacz jeśli kategoria ma być użyta do księgowania."
 
+msgctxt "help:product.category,accounting_templates:"
+msgid "The products for which the accounting category applies."
+msgstr ""
+
 msgctxt "help:product.category,customer_taxes:"
 msgid "The taxes to apply when selling products of this category."
 msgstr "Podatki do zastosownia przy sprzedaży produktów tej kategorii."
@@ -151,12 +160,12 @@ msgstr "Użyj podatków zdefiniowanych w kategorii nadrzędnej."
 #, python-format
 msgctxt "model:ir.message,text:msg_missing_account"
 msgid "There is no \"%(field)s\" defined for \"%(name)s\"."
-msgstr ""
+msgstr "Brak określonego \"%(field)s\" dla \"%(name)s\"."
 
 #, python-format
 msgctxt "model:ir.message,text:msg_missing_taxes"
 msgid "There is no account category defined on product \"%(name)s\"."
-msgstr ""
+msgstr "Brak określonej kategorii konta dla produktu \"%(name)s\"."
 
 msgctxt "model:ir.rule.group,name:rule_group_category_accounting"
 msgid "Any category"

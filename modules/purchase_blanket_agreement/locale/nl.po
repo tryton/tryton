@@ -250,7 +250,7 @@ msgstr "Geannuleerd"
 
 msgctxt "selection:purchase.blanket_agreement,state:"
 msgid "Closed"
-msgstr "Afgerond"
+msgstr "Gesloten"
 
 msgctxt "selection:purchase.blanket_agreement,state:"
 msgid "Draft"

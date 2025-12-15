@@ -15,51 +15,62 @@ msgctxt "field:account.invoice.line,advance_payment_recalled_lines:"
 msgid "Advance Payment Recalled Lines"
 msgstr "سطر مدت پرداخت پیش پرداخت"
 
-msgctxt "field:sale.advance_payment.condition,account:"
+#, fuzzy
+msgctxt "field:sale.advance_payment.line,account:"
 msgid "Account"
 msgstr "حساب"
 
-msgctxt "field:sale.advance_payment.condition,amount:"
+#, fuzzy
+msgctxt "field:sale.advance_payment.line,amount:"
 msgid "Amount"
 msgstr "مقدار"
 
-msgctxt "field:sale.advance_payment.condition,block_shipping:"
+#, fuzzy
+msgctxt "field:sale.advance_payment.line,block_shipping:"
 msgid "Block Shipping"
 msgstr "حمل و نقل مسدود"
 
-msgctxt "field:sale.advance_payment.condition,block_supply:"
+#, fuzzy
+msgctxt "field:sale.advance_payment.line,block_supply:"
 msgid "Block Supply"
 msgstr "عرضه مسدود"
 
-msgctxt "field:sale.advance_payment.condition,completed:"
+#, fuzzy
+msgctxt "field:sale.advance_payment.line,completed:"
 msgid "Completed"
 msgstr "تکمیل شده"
 
-msgctxt "field:sale.advance_payment.condition,currency:"
+msgctxt "field:sale.advance_payment.line,currency:"
 msgid "Currency"
 msgstr ""
 
-msgctxt "field:sale.advance_payment.condition,description:"
+#, fuzzy
+msgctxt "field:sale.advance_payment.line,description:"
 msgid "Description"
 msgstr "شرح"
 
-msgctxt "field:sale.advance_payment.condition,invoice_delay:"
+#, fuzzy
+msgctxt "field:sale.advance_payment.line,invoice_delay:"
 msgid "Invoice Delay"
 msgstr "صورتحساب تأخیر"
 
-msgctxt "field:sale.advance_payment.condition,invoice_lines:"
+#, fuzzy
+msgctxt "field:sale.advance_payment.line,invoice_lines:"
 msgid "Invoice Lines"
 msgstr "سطرهای صورتحساب"
 
-msgctxt "field:sale.advance_payment.condition,sale:"
+#, fuzzy
+msgctxt "field:sale.advance_payment.line,sale:"
 msgid "Sale"
 msgstr "فروش"
 
-msgctxt "field:sale.advance_payment.condition,sale_company:"
+#, fuzzy
+msgctxt "field:sale.advance_payment.line,sale_company:"
 msgid "Company"
 msgstr "شرکت"
 
-msgctxt "field:sale.advance_payment.condition,sale_state:"
+#, fuzzy
+msgctxt "field:sale.advance_payment.line,sale_state:"
 msgid "Sale State"
 msgstr "وضعیت فروش"
 
@@ -115,13 +126,14 @@ msgctxt "field:sale.advance_payment_term.line.account,line:"
 msgid "Line"
 msgstr "سطر"
 
-msgctxt "field:sale.sale,advance_payment_conditions:"
-msgid "Advance Payment Conditions"
-msgstr "شرایط پرداخت پیش پرداخت"
-
 msgctxt "field:sale.sale,advance_payment_invoices:"
 msgid "Advance Payment Invoices"
 msgstr "صورتحساب پرداخت پیش پرداخت"
+
+#, fuzzy
+msgctxt "field:sale.sale,advance_payment_lines:"
+msgid "Advance Payment Lines"
+msgstr "مدت پرداخت پیش پرداخت"
 
 msgctxt "field:sale.sale,advance_payment_term:"
 msgid "Advance Payment Term"
@@ -188,9 +200,9 @@ msgid "Advance Payment Terms"
 msgstr "مدت پرداخت پیش پرداخت"
 
 #, fuzzy
-msgctxt "model:sale.advance_payment.condition,string:"
-msgid "Sale Advance Payment Condition"
-msgstr "شرایط پرداخت پیش پرداخت"
+msgctxt "model:sale.advance_payment.line,string:"
+msgid "Sale Advance Payment Line"
+msgstr "سطر مدت پرداخت پیش پرداخت"
 
 #, fuzzy
 msgctxt "model:sale.advance_payment_term,string:"
@@ -206,3 +218,8 @@ msgstr "سطر مدت پرداخت پیش پرداخت"
 msgctxt "model:sale.advance_payment_term.line.account,string:"
 msgid "Sale Advance Payment Term Line Account"
 msgstr "حساب سطر مدت پرداخت پیش پرداخت"
+
+#, fuzzy
+msgctxt "view:sale.sale:"
+msgid "Advance Payment"
+msgstr "نحوه پرداخت پیش پرداخت"

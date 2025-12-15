@@ -34,6 +34,50 @@ msgctxt "field:res.group,users:"
 msgid "Users"
 msgstr "Kasutajad"
 
+#, fuzzy
+msgctxt "field:res.notification,action:"
+msgid "Action"
+msgstr "Toiming"
+
+#, fuzzy
+msgctxt "field:res.notification,action_value:"
+msgid "Action Value"
+msgstr "Toiming"
+
+msgctxt "field:res.notification,description:"
+msgid "Description"
+msgstr ""
+
+msgctxt "field:res.notification,icon:"
+msgid "Icon"
+msgstr ""
+
+msgctxt "field:res.notification,label:"
+msgid "Label"
+msgstr ""
+
+msgctxt "field:res.notification,model:"
+msgid "Model"
+msgstr ""
+
+msgctxt "field:res.notification,model_ref:"
+msgid "Model"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:res.notification,records:"
+msgid "Records"
+msgstr "Kirje nimi"
+
+msgctxt "field:res.notification,unread:"
+msgid "Unread"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:res.notification,user:"
+msgid "User"
+msgstr "Kasutaja"
+
 msgctxt "field:res.user,actions:"
 msgid "Actions"
 msgstr "Toimingud"
@@ -74,6 +118,11 @@ msgstr "Menüü"
 msgctxt "field:res.user,name:"
 msgid "Name"
 msgstr "Nimi"
+
+#, fuzzy
+msgctxt "field:res.user,notifications:"
+msgid "Notifications"
+msgstr "Toiming - Grupp"
 
 msgctxt "field:res.user,password:"
 msgid "Password"
@@ -189,9 +238,18 @@ msgctxt "help:res.user,actions:"
 msgid "Actions that will be run at login."
 msgstr "Sisselogimisel käivitatavad toimingud"
 
+msgctxt "help:res.user,notifications:"
+msgid "Notifications to subscribe to."
+msgstr ""
+
 msgctxt "model:ir.action,name:act_group_form"
 msgid "Groups"
 msgstr "Grupid"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_notification"
+msgid "Notifications"
+msgstr "Toiming - Grupp"
 
 msgctxt "model:ir.action,name:act_user_config"
 msgid "Configure Users"
@@ -260,6 +318,16 @@ msgctxt "model:ir.model.button,string:user_reset_password_button"
 msgid "Reset Password"
 msgstr "Lähtesta salasõna"
 
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_notification"
+msgid "Own notification"
+msgstr "Oma kasutaja aplikatsioon"
+
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_notification_admin"
+msgid "Any notification"
+msgstr "Kõigi kasutajate aplikatsioon"
+
 msgctxt "model:ir.rule.group,name:rule_group_user_application"
 msgid "Own user application"
 msgstr "Oma kasutaja aplikatsioon"
@@ -276,6 +344,11 @@ msgctxt "model:ir.ui.menu,name:menu_group_form"
 msgid "Groups"
 msgstr "Grupid"
 
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_notification_form"
+msgid "Notifications"
+msgstr "Toiming - Grupp"
+
 msgctxt "model:ir.ui.menu,name:menu_res"
 msgid "Users"
 msgstr "Kasutajad"
@@ -288,6 +361,11 @@ msgstr "Kasutajad"
 msgctxt "model:res.group,string:"
 msgid "Group"
 msgstr "Grupp"
+
+#, fuzzy
+msgctxt "model:res.notification,string:"
+msgid "Notification"
+msgstr "Toiming - Grupp"
 
 #, fuzzy
 msgctxt "model:res.user,string:"

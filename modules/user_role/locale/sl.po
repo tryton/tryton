@@ -10,6 +10,11 @@ msgctxt "field:res.role,name:"
 msgid "Name"
 msgstr "Naziv"
 
+#, fuzzy
+msgctxt "field:res.role,users:"
+msgid "Users"
+msgstr "Uporabnik"
+
 msgctxt "field:res.role-res.group,group:"
 msgid "Group"
 msgstr "Skupina"
@@ -64,6 +69,14 @@ msgstr "Vloga uporabnika"
 msgctxt "selection:ir.cron,method:"
 msgid "Synchronize Users Roles"
 msgstr "Sinhroniziraj vloge uporabnikov"
+
+msgctxt "view:res.role:"
+msgid "Access Permissions"
+msgstr ""
+
+msgctxt "view:res.role:"
+msgid "Members"
+msgstr ""
 
 msgctxt "view:res.user.role:"
 msgid "Time"

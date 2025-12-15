@@ -14,7 +14,7 @@ msgstr "Cerere Avansare"
 #, fuzzy
 msgctxt "field:account.reporting.aeat.start,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 #, fuzzy
 msgctxt "field:account.reporting.aeat.start,end_period:"
@@ -41,7 +41,7 @@ msgstr "Cod"
 #, fuzzy
 msgctxt "field:account.reporting.es_ec_operation_list,company_tax_identifier:"
 msgid "Company Tax Identifier"
-msgstr "Identificatorul Fiscal al Companiei"
+msgstr "Identificatorul Fiscal al Societații"
 
 msgctxt "field:account.reporting.es_ec_operation_list,currency:"
 msgid "Currency"
@@ -58,7 +58,7 @@ msgstr "Identificatorul Fiscal al Părții"
 
 msgctxt "field:account.reporting.es_ec_operation_list.context,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:account.reporting.es_ec_operation_list.context,end_date:"
 msgid "End Date"
@@ -124,7 +124,7 @@ msgstr "Suma Taxa"
 #, fuzzy
 msgctxt "field:account.reporting.vat_book_es.context,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 #, fuzzy
 msgctxt "field:account.reporting.vat_book_es.context,end_period:"
@@ -153,7 +153,7 @@ msgstr "Cod"
 
 msgctxt "field:account.reporting.vat_list_es,company_tax_identifier:"
 msgid "Company Tax Identifier"
-msgstr "Identificator Fiscal Companie"
+msgstr "Identificator Fiscal Societate"
 
 msgctxt "field:account.reporting.vat_list_es,currency:"
 msgid "Currency"
@@ -195,7 +195,7 @@ msgstr "Suma Perioada 3"
 
 msgctxt "field:account.reporting.vat_list_es.context,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:account.reporting.vat_list_es.context,date:"
 msgid "Date"

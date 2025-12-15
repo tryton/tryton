@@ -50,7 +50,6 @@ msgctxt "model:ir.ui.menu,name:menu_product_customer"
 msgid "Customers"
 msgstr "Clients"
 
-#, fuzzy
 msgctxt "model:sale.product_customer,string:"
 msgid "Sale Product Customer"
 msgstr "Producte del client"

@@ -34,6 +34,50 @@ msgctxt "field:res.group,users:"
 msgid "Users"
 msgstr "Użytkownicy"
 
+#, fuzzy
+msgctxt "field:res.notification,action:"
+msgid "Action"
+msgstr "Akcja"
+
+#, fuzzy
+msgctxt "field:res.notification,action_value:"
+msgid "Action Value"
+msgstr "Akcja"
+
+msgctxt "field:res.notification,description:"
+msgid "Description"
+msgstr ""
+
+msgctxt "field:res.notification,icon:"
+msgid "Icon"
+msgstr ""
+
+msgctxt "field:res.notification,label:"
+msgid "Label"
+msgstr ""
+
+msgctxt "field:res.notification,model:"
+msgid "Model"
+msgstr ""
+
+msgctxt "field:res.notification,model_ref:"
+msgid "Model"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:res.notification,records:"
+msgid "Records"
+msgstr "Nazwa rekordu"
+
+msgctxt "field:res.notification,unread:"
+msgid "Unread"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:res.notification,user:"
+msgid "User"
+msgstr "Użytkownik"
+
 msgctxt "field:res.user,actions:"
 msgid "Actions"
 msgstr "Akcje"
@@ -74,6 +118,11 @@ msgstr "Menu"
 msgctxt "field:res.user,name:"
 msgid "Name"
 msgstr "Nazwa"
+
+#, fuzzy
+msgctxt "field:res.user,notifications:"
+msgid "Notifications"
+msgstr "Grupy zezwalające na modyfikację"
 
 msgctxt "field:res.user,password:"
 msgid "Password"
@@ -187,9 +236,18 @@ msgctxt "help:res.user,actions:"
 msgid "Actions that will be run at login."
 msgstr "Akcje, które zostaną wykonane podczas logowania."
 
+msgctxt "help:res.user,notifications:"
+msgid "Notifications to subscribe to."
+msgstr ""
+
 msgctxt "model:ir.action,name:act_group_form"
 msgid "Groups"
 msgstr "Grupy"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_notification"
+msgid "Notifications"
+msgstr "Grupy zezwalające na modyfikację"
 
 msgctxt "model:ir.action,name:act_user_config"
 msgid "Configure Users"
@@ -261,6 +319,16 @@ msgctxt "model:ir.model.button,string:user_reset_password_button"
 msgid "Reset Password"
 msgstr "Reset hasła"
 
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_notification"
+msgid "Own notification"
+msgstr "Własna aplikacja użytkownika"
+
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_notification_admin"
+msgid "Any notification"
+msgstr "Dowolna aplikacja użytkownika"
+
 msgctxt "model:ir.rule.group,name:rule_group_user_application"
 msgid "Own user application"
 msgstr "Własna aplikacja użytkownika"
@@ -277,6 +345,11 @@ msgctxt "model:ir.ui.menu,name:menu_group_form"
 msgid "Groups"
 msgstr "Grupy"
 
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_notification_form"
+msgid "Notifications"
+msgstr "Grupy zezwalające na modyfikację"
+
 msgctxt "model:ir.ui.menu,name:menu_res"
 msgid "Users"
 msgstr "Użytkownicy"
@@ -289,6 +362,11 @@ msgstr "Użytkownicy"
 msgctxt "model:res.group,string:"
 msgid "Group"
 msgstr "Grupa"
+
+#, fuzzy
+msgctxt "model:res.notification,string:"
+msgid "Notification"
+msgstr "Grupy zezwalające na modyfikację"
 
 #, fuzzy
 msgctxt "model:res.user,string:"

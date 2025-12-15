@@ -190,12 +190,3 @@ msgstr "فقط یک گام دیگه.."
 msgctxt "report:web.user.email_validation:"
 msgid "Validate"
 msgstr "تایید اعتبار"
-
-msgctxt "view:web.user:"
-msgid "Reset Password"
-msgstr "بازنشانی کلمه عبور"
-
-#, fuzzy
-msgctxt "view:web.user:"
-msgid "Validate Email"
-msgstr "ایمیل معتبر است"

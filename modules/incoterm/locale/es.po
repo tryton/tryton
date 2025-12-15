@@ -94,6 +94,14 @@ msgctxt "field:sale.sale,available_incoterms:"
 msgid "Available Incoterms"
 msgstr "Incoterms disponibles"
 
+msgctxt "field:web.shop,available_incoterms:"
+msgid "Available Incoterms"
+msgstr "Incoterms disponibles"
+
+msgctxt "field:web.shop,default_incoterm:"
+msgid "Default Incoterm"
+msgstr "Incoterm por defecto"
+
 msgctxt "help:carrier,mode:"
 msgid "The transport mode used by the carrier."
 msgstr "El modo de transporte usado por el transportista."
@@ -137,6 +145,10 @@ msgid ""
 msgstr ""
 "Incoterms disponibles para utilizar con el cliente.\n"
 "Dejar en blanco para todos."
+
+msgctxt "help:web.shop,default_incoterm:"
+msgid "Used to fill incoterm on sales that require it."
+msgstr "Utilitzado para rellenar el incoterm a las ventas que lo necesitan."
 
 msgctxt "model:incoterm.incoterm,string:"
 msgid "Incoterm"

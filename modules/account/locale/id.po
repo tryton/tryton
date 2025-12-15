@@ -676,9 +676,10 @@ msgctxt "field:account.fiscalyear,company:"
 msgid "Company"
 msgstr "Perusahaan"
 
+#, fuzzy
 msgctxt "field:account.fiscalyear,end_date:"
-msgid "Ending Date"
-msgstr "Tanggal Berakhir"
+msgid "End Date"
+msgstr "Tanggal Akhir"
 
 msgctxt "field:account.fiscalyear,icon:"
 msgid "Icon"
@@ -697,9 +698,10 @@ msgctxt "field:account.fiscalyear,periods:"
 msgid "Periods"
 msgstr "Periode"
 
+#, fuzzy
 msgctxt "field:account.fiscalyear,start_date:"
-msgid "Starting Date"
-msgstr "Tanggal Berawal"
+msgid "Start Date"
+msgstr "Tanggal Awal"
 
 msgctxt "field:account.fiscalyear,state:"
 msgid "State"
@@ -1642,9 +1644,10 @@ msgctxt "field:account.period,company:"
 msgid "Company"
 msgstr "Perusahaan"
 
+#, fuzzy
 msgctxt "field:account.period,end_date:"
-msgid "Ending Date"
-msgstr "Tanggal Berakhir"
+msgid "End Date"
+msgstr "Tanggal Akhir"
 
 msgctxt "field:account.period,fiscalyear:"
 msgid "Fiscal Year"
@@ -1663,9 +1666,10 @@ msgctxt "field:account.period,name:"
 msgid "Name"
 msgstr "Nama"
 
+#, fuzzy
 msgctxt "field:account.period,start_date:"
-msgid "Starting Date"
-msgstr "Tanggal Berawal"
+msgid "Start Date"
+msgstr "Tanggal Awal"
 
 msgctxt "field:account.period,state:"
 msgid "State"
@@ -1765,9 +1769,10 @@ msgctxt "field:account.tax,description:"
 msgid "Description"
 msgstr "Deskripsi"
 
+#, fuzzy
 msgctxt "field:account.tax,end_date:"
-msgid "Ending Date"
-msgstr "Tanggal Berakhir"
+msgid "End Date"
+msgstr "Tanggal Akhir"
 
 msgctxt "field:account.tax,group:"
 msgid "Group"
@@ -1801,9 +1806,10 @@ msgctxt "field:account.tax,rate:"
 msgid "Rate"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.tax,start_date:"
-msgid "Starting Date"
-msgstr "Tanggal Berawal"
+msgid "Start Date"
+msgstr "Tanggal Awal"
 
 msgctxt "field:account.tax,template:"
 msgid "Template"
@@ -2072,9 +2078,10 @@ msgctxt "field:account.tax.rule,template_override:"
 msgid "Override Template"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.tax.rule.line,end_date:"
-msgid "Ending Date"
-msgstr "Tanggal Berakhir"
+msgid "End Date"
+msgstr "Tanggal Akhir"
 
 msgctxt "field:account.tax.rule.line,group:"
 msgid "Tax Group"
@@ -2092,9 +2099,10 @@ msgctxt "field:account.tax.rule.line,rule:"
 msgid "Rule"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.tax.rule.line,start_date:"
-msgid "Starting Date"
-msgstr "Tanggal Berawal"
+msgid "Start Date"
+msgstr "Tanggal Awal"
 
 msgctxt "field:account.tax.rule.line,tax:"
 msgid "Substitution Tax"
@@ -2108,9 +2116,10 @@ msgctxt "field:account.tax.rule.line,template_override:"
 msgid "Override Template"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.tax.rule.line.template,end_date:"
-msgid "Ending Date"
-msgstr "Tanggal Berakhir"
+msgid "End Date"
+msgstr "Tanggal Akhir"
 
 msgctxt "field:account.tax.rule.line.template,group:"
 msgid "Tax Group"
@@ -2128,9 +2137,10 @@ msgctxt "field:account.tax.rule.line.template,rule:"
 msgid "Rule"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.tax.rule.line.template,start_date:"
-msgid "Starting Date"
-msgstr "Tanggal Berawal"
+msgid "Start Date"
+msgstr "Tanggal Awal"
 
 msgctxt "field:account.tax.rule.line.template,tax:"
 msgid "Substitution Tax"
@@ -2172,9 +2182,10 @@ msgctxt "field:account.tax.template,description:"
 msgid "Description"
 msgstr "Deskripsi"
 
+#, fuzzy
 msgctxt "field:account.tax.template,end_date:"
-msgid "Ending Date"
-msgstr "Tanggal Berakhir"
+msgid "End Date"
+msgstr "Tanggal Akhir"
 
 msgctxt "field:account.tax.template,group:"
 msgid "Group"
@@ -2200,9 +2211,10 @@ msgctxt "field:account.tax.template,rate:"
 msgid "Rate"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.tax.template,start_date:"
-msgid "Starting Date"
-msgstr ""
+msgid "Start Date"
+msgstr "Tanggal Awal"
 
 msgctxt "field:account.tax.template,type:"
 msgid "Type"
@@ -2246,14 +2258,6 @@ msgstr "Jumlah"
 
 msgctxt "field:account.tax.test.result,base:"
 msgid "Base"
-msgstr ""
-
-msgctxt "field:account.tax.test.result,description:"
-msgid "Description"
-msgstr "Deskripsi"
-
-msgctxt "field:account.tax.test.result,legal_notice:"
-msgid "Legal Notice"
 msgstr ""
 
 msgctxt "field:account.tax.test.result,tax:"
@@ -3298,14 +3302,12 @@ msgctxt "model:ir.message,text:msg_account_invalid_deferral_second_currency"
 msgid "To set a second currency for account \"%(account)s\", it must be deferral."
 msgstr "Untuk membuat mata uang kedua untuk \"%(account)s\", harus ditangguhkan."
 
-#, fuzzy, python-format
+#, python-format
 msgctxt "model:ir.message,text:msg_account_invalid_lines_second_currency"
 msgid ""
 "To set a second currency for account \"%(account)s\", its lines must have "
 "the same second currency \"%(currency)s\"."
 msgstr ""
-"Untuk membuat baris di akun \"%(account)s\", Anda harus mengatur pihak di "
-"baris \"%(line)s\"."
 
 #, python-format
 msgctxt "model:ir.message,text:msg_account_invalid_type_second_currency"
@@ -3314,13 +3316,11 @@ msgid ""
 "type \"payable\", \"revenue\", \"receivable\" nor \"expense\"."
 msgstr ""
 
-#, fuzzy, python-format
+#, python-format
 msgctxt "model:ir.message,text:msg_account_no_type_lines"
 msgid ""
 "You cannot remove type of account \"%(account)s\" because it has move lines."
 msgstr ""
-"Untuk membuat baris di akun \"%(account)s\", Anda harus mengatur pihak di "
-"baris \"%(line)s\"."
 
 #, python-format
 msgctxt "model:ir.message,text:msg_cancel_line_delegated"
@@ -3338,14 +3338,12 @@ msgstr ""
 "Anda tidak dapat membuat periode di dalam tahun fiskal \"%(fiscalyear)s\" "
 "karena sudah ditutup."
 
-#, fuzzy, python-format
+#, python-format
 msgctxt "model:ir.message,text:msg_change_period_move_sequence"
 msgid ""
 "You cannot change the move sequence in period \"%(period)s\" because it has "
 "posted moves."
 msgstr ""
-"Untuk membuat baris di akun \"%(account)s\", Anda harus mengatur pihak di "
-"baris \"%(line)s\"."
 
 #, python-format
 msgctxt "model:ir.message,text:msg_close_fiscalyear_account_balance_not_zero"
@@ -3363,12 +3361,12 @@ msgstr ""
 "Untuk menutup tahun fiskal \"%(fiscalyear)s\", Anda harus menutup semua "
 "tahun fiskal sebelumnya."
 
-#, fuzzy, python-format
+#, python-format
 msgctxt "model:ir.message,text:msg_close_period_inactive_accounts"
 msgid ""
 "To close period \"%(period)s\", you must balance the inactive account "
 "\"%(account)s\"."
-msgstr "Untuk menutup tahun fiskal, saldo akun \"%(account)s\" harus nol."
+msgstr ""
 
 #, python-format
 msgctxt "model:ir.message,text:msg_close_period_non_posted_moves"
@@ -3408,6 +3406,13 @@ msgstr "Anda tidak dapat mengelompokkan baris dengan pihak yang berbeda."
 msgctxt "model:ir.message,text:msg_delegate_line_same_origins"
 msgid "You cannot delegate together lines with different origins."
 msgstr "Anda tidak dapat mengelompokkan baris dengan pihak yang berbeda."
+
+#, python-format
+msgctxt "model:ir.message,text:msg_delete_line_reconciled"
+msgid ""
+"In order to delete the reconciled line \"%(line)s\", you must first "
+"unreconcile it."
+msgstr ""
 
 #, python-format
 msgctxt "model:ir.message,text:msg_erase_party_receivable_payable"
@@ -3451,14 +3456,12 @@ msgctxt "model:ir.message,text:msg_group_line_single"
 msgid "You cannot group a single line."
 msgstr ""
 
-#, fuzzy, python-format
+#, python-format
 msgctxt "model:ir.message,text:msg_journal_account_moves"
 msgid ""
 "You cannot change the type of journal \"%(journal)s\" because it has posted "
 "moves."
 msgstr ""
-"Untuk membuat baris di akun \"%(account)s\", Anda harus mengatur pihak di "
-"baris \"%(line)s\"."
 
 msgctxt "model:ir.message,text:msg_journal_period_unique"
 msgid "You can create only one journal per period."
@@ -3526,7 +3529,9 @@ msgstr ""
 
 #, python-format
 msgctxt "model:ir.message,text:msg_modify_line_reconciled"
-msgid "You cannot modify reconciled line \"%(line)s\"."
+msgid ""
+"In order to modify the reconciled line \"%(line)s\", you must first "
+"unreconcile it."
 msgstr ""
 
 #, python-format
@@ -3579,37 +3584,33 @@ msgctxt "model:ir.message,text:msg_move_template_keyword_name_not_identifier"
 msgid "The keyword name \"%(name)s\" is not a valid identifier."
 msgstr ""
 
-#, fuzzy, python-format
+#, python-format
 msgctxt "model:ir.message,text:msg_no_fiscalyear_date"
 msgid ""
 "To continue, you must create a fiscal year for the date \"%(date)s\" and "
 "company \"%(company)s\"."
 msgstr ""
-"Untuk melanjutkan, Anda harus membuat tahun fiskal untuk tanggal "
-"\"%(date)s\"."
 
-#, fuzzy, python-format
+#, python-format
 msgctxt "model:ir.message,text:msg_no_open_fiscalyear_date"
 msgid ""
 "To continue, you must reopen the fiscal year \"%(fiscalyear)s\" of company "
 "\"%(company)s\" for the date \"%(date)s\"."
 msgstr ""
-"Untuk melanjutkan, Anda harus membuat tahun fiskal untuk tanggal "
-"\"%(date)s\"."
 
-#, fuzzy, python-format
+#, python-format
 msgctxt "model:ir.message,text:msg_no_open_period_date"
 msgid ""
 "To continue, you must reopen the period \"%(period)s\" of company "
 "\"%(company)s\" for the date \"%(date)s\"."
-msgstr "Untuk melanjutkan, Anda harus membuat periode untuk tanggal \"%(date)s\"."
+msgstr ""
 
-#, fuzzy, python-format
+#, python-format
 msgctxt "model:ir.message,text:msg_no_period_date"
 msgid ""
 "To continue, you must create a period for the date \"%(date)s\" and company "
 "\"%(company)s\"."
-msgstr "Untuk melanjutkan, Anda harus membuat periode untuk tanggal \"%(date)s\"."
+msgstr ""
 
 msgctxt "model:ir.message,text:msg_only_one_debit_credit_types"
 msgid "Account can have only one of the debit or credit type set."
@@ -3650,12 +3651,12 @@ msgid ""
 "year \"%(fiscalyear)s\"."
 msgstr ""
 
-#, fuzzy, python-format
+#, python-format
 msgctxt "model:ir.message,text:msg_period_move_dates"
 msgid ""
 "The dates for period \"%(period)s\" must include the date \"%(move_date)s\" "
 "of move \"%(move)s\"."
-msgstr "Untuk menutup tahun fiskal, saldo akun \"%(account)s\" harus nol."
+msgstr ""
 
 msgctxt "model:ir.message,text:msg_period_move_sequence_unique"
 msgid "A move sequence can be reused only by periods in the same fiscal year."
@@ -3684,21 +3685,21 @@ msgid ""
 "reconcilable."
 msgstr ""
 
-#, fuzzy, python-format
+#, python-format
 msgctxt ""
 "model:ir.message,text:msg_reconciliation_currency_exchange_credit_account_missing"
 msgid ""
 "To reconcile lines, you must define a currency exchange credit account for "
 "\"%(company)s\"."
-msgstr "Untuk melanjutkan, Anda harus membuat periode untuk tanggal \"%(date)s\"."
+msgstr ""
 
-#, fuzzy, python-format
+#, python-format
 msgctxt ""
 "model:ir.message,text:msg_reconciliation_currency_exchange_debit_account_missing"
 msgid ""
 "To reconcile lines, you must define a currency exchange debit account for "
 "\"%(company)s\"."
-msgstr "Untuk melanjutkan, Anda harus membuat periode untuk tanggal \"%(date)s\"."
+msgstr ""
 
 #, python-format
 msgctxt ""

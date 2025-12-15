@@ -248,12 +248,10 @@ msgctxt "model:ir.ui.menu,name:menu_shipment_drop_form"
 msgid "Drop Shipments"
 msgstr "Enviaments directes"
 
-#, fuzzy
 msgctxt "model:purchase.configuration.purchase_drop_location,string:"
 msgid "Purchase Configuration Purchase Drop Location"
 msgstr "Configuració de la ubicació d'enviament directe per les compres"
 
-#, fuzzy
 msgctxt "model:sale.configuration.sale_drop_location,string:"
 msgid "Sale Configuration Sale Drop Location"
 msgstr "Configuració de la ubicació d'enviament directe per les vendes"
@@ -262,7 +260,6 @@ msgctxt "model:stock.location,name:location_drop"
 msgid "Drop"
 msgstr "Enviament directe"
 
-#, fuzzy
 msgctxt "model:stock.shipment.drop,string:"
 msgid "Stock Shipment Drop"
 msgstr "Enviament directe"

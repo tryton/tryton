@@ -98,6 +98,10 @@ msgctxt "field:production,state:"
 msgid "State"
 msgstr "État"
 
+msgctxt "field:production,type:"
+msgid "Type"
+msgstr "Type"
+
 msgctxt "field:production,unit:"
 msgid "Unit"
 msgstr "Unité"
@@ -118,6 +122,10 @@ msgctxt "field:production.bom,code_readonly:"
 msgid "Code Readonly"
 msgstr "Code en lecture seule"
 
+msgctxt "field:production.bom,input_products:"
+msgid "Input Products"
+msgstr "Produits d'entrée"
+
 msgctxt "field:production.bom,inputs:"
 msgid "Input Materials"
 msgstr "Matériaux d'entrée"
@@ -134,9 +142,25 @@ msgctxt "field:production.bom,outputs:"
 msgid "Output Materials"
 msgstr "Matériaux de sortie"
 
+msgctxt "field:production.bom,phantom:"
+msgid "Phantom"
+msgstr "Fantôme"
+
+msgctxt "field:production.bom,phantom_quantity:"
+msgid "Quantity"
+msgstr "Quantité"
+
+msgctxt "field:production.bom,phantom_unit:"
+msgid "Unit"
+msgstr "Unité"
+
 msgctxt "field:production.bom.input,bom:"
 msgid "BOM"
 msgstr "Nomenclature"
+
+msgctxt "field:production.bom.input,phantom_bom:"
+msgid "Phantom BOM"
+msgstr "Nomenclature Phantom"
 
 msgctxt "field:production.bom.input,product:"
 msgid "Product"
@@ -157,6 +181,10 @@ msgstr "Catégorie d'unité de mesure"
 msgctxt "field:production.bom.output,bom:"
 msgid "BOM"
 msgstr "Nomenclature"
+
+msgctxt "field:production.bom.output,phantom_bom:"
+msgid "Phantom BOM"
+msgstr "Nomenclature Phantom"
 
 msgctxt "field:production.bom.output,product:"
 msgid "Product"
@@ -291,6 +319,20 @@ msgctxt "help:production,uom_category:"
 msgid "The category of Unit of Measure."
 msgstr "La catégorie d’unité de mesure."
 
+msgctxt "help:production.bom,phantom:"
+msgid "If checked, the BoM can be used in another BoM."
+msgstr ""
+"Si cette option est cochée, la nomenclature peut être utilisée dans une "
+"autre nomenclature."
+
+msgctxt "help:production.bom,phantom_quantity:"
+msgid "The quantity of the Phantom BoM"
+msgstr "La quantité de la nomenclature Phantom"
+
+msgctxt "help:production.bom,phantom_unit:"
+msgid "The Unit of Measure of the Phantom BoM"
+msgstr "L'unité de mesure de la nomenclature fantôme"
+
 msgctxt "help:production.configuration,bom_sequence:"
 msgid "Used to generate the BOM code."
 msgstr "Utilisé pour générer le code de nomenclature."
@@ -398,7 +440,14 @@ msgstr ""
 "prix listé défini."
 
 #, python-format
-msgctxt "model:ir.message,text:msg_recursive_bom"
+msgctxt "model:ir.message,text:msg_recursive_bom_bom"
+msgid "You cannot create a recursive BOM for BOM \"%(bom)s\"."
+msgstr ""
+"Vous ne pouvez pas créer une nomenclature récursive pour la nomenclature "
+"« %(bom)s »."
+
+#, python-format
+msgctxt "model:ir.message,text:msg_recursive_bom_product"
 msgid "You cannot create a recursive BOM for product \"%(product)s\"."
 msgstr ""
 "Vous ne pouvez pas créer une nomenclature récursive pour le produit "
@@ -574,9 +623,25 @@ msgctxt "selection:production,state:"
 msgid "Waiting"
 msgstr "En attente"
 
+msgctxt "selection:production,type:"
+msgid "Assembly"
+msgstr "Assemblage"
+
+msgctxt "selection:production,type:"
+msgid "Disassembly"
+msgstr "Désassemblage"
+
 msgctxt "view:product.template:"
 msgid "Production"
 msgstr "Production"
+
+msgctxt "view:production.bom.input:"
+msgid "Material"
+msgstr "Matériel"
+
+msgctxt "view:production.bom.output:"
+msgid "Material"
+msgstr "Matériel"
 
 msgctxt "view:production.bom:"
 msgid "Lines"

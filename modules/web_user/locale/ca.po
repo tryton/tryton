@@ -111,21 +111,18 @@ msgctxt "model:ir.ui.menu,name:menu_user_form"
 msgid "Web Users"
 msgstr "Usuaris web"
 
-#, fuzzy
 msgctxt "model:web.user,string:"
 msgid "Web User"
 msgstr "Usuari web"
 
-#, fuzzy
 msgctxt "model:web.user-party.party.secondary,string:"
 msgid "Web User - Party Secondary"
 msgstr "Usuari Web - Tercers Secundaris"
 
 msgctxt "model:web.user.authenticate.attempt,string:"
 msgid "User Login Attempt"
-msgstr ""
+msgstr "Intent d'inici de sessió de l'usuari"
 
-#, fuzzy
 msgctxt "model:web.user.session,string:"
 msgid "Web User Session"
 msgstr "Sessió usuari web"
@@ -186,11 +183,3 @@ msgstr "Només un pas més..."
 msgctxt "report:web.user.email_validation:"
 msgid "Validate"
 msgstr "Valida"
-
-msgctxt "view:web.user:"
-msgid "Reset Password"
-msgstr "Restableix la contrasenya"
-
-msgctxt "view:web.user:"
-msgid "Validate Email"
-msgstr "Valida correu electrònic"

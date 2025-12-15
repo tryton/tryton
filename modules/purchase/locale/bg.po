@@ -616,6 +616,11 @@ msgid "Product"
 msgstr "Продукт"
 
 #, fuzzy
+msgctxt "field:purchase.reporting.product.time_series,product_currency:"
+msgid "Product - Currency"
+msgstr "Цена на доставчик на продукт"
+
+#, fuzzy
 msgctxt "field:purchase.reporting.product.time_series,product_supplier:"
 msgid "Supplier's Product"
 msgstr "Доставчици"
@@ -629,6 +634,11 @@ msgstr "Доставчик"
 msgctxt "field:purchase.reporting.supplier.time_series,supplier:"
 msgid "Supplier"
 msgstr "Доставчик"
+
+#, fuzzy
+msgctxt "field:purchase.reporting.supplier.time_series,supplier_currency:"
+msgid "Supplier - Currency"
+msgstr "Валута"
 
 msgctxt "field:stock.location,supplier_return_location:"
 msgid "Supplier Return"
@@ -1051,7 +1061,8 @@ msgstr ""
 #, python-format
 msgctxt "model:ir.message,text:msg_warehouse_required_for_quotation"
 msgid ""
-"To get a quote for the purchase \"%(purchase)s\" you must enter a warehouse."
+"To get a quote for the purchase \"%(purchase)s\" you must enter a warehouse "
+"for the line \"%(line)s\"."
 msgstr ""
 
 msgctxt "model:ir.model.button,string:purchase_cancel_button"
@@ -1339,8 +1350,9 @@ msgctxt "report:purchase.purchase:"
 msgid "Draft Purchase Order"
 msgstr "Проект на поръчка за покупка"
 
+#, fuzzy
 msgctxt "report:purchase.purchase:"
-msgid "Purchase Order N°:"
+msgid "Purchase Order No:"
 msgstr "Поръчка за покупка N°:"
 
 msgctxt "report:purchase.purchase:"
@@ -1352,8 +1364,9 @@ msgctxt "report:purchase.purchase:"
 msgid "Reference:"
 msgstr "Отпратка"
 
+#, fuzzy
 msgctxt "report:purchase.purchase:"
-msgid "Request for Quotation N°:"
+msgid "Request for Quotation No:"
 msgstr "Заявки за запитване N°:"
 
 msgctxt "report:purchase.purchase:"

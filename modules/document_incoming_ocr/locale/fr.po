@@ -28,7 +28,7 @@ msgid ""
 "Leave empty for any company."
 msgstr ""
 "La société pour laquelle le service est utilisé.\n"
-"Laisser vide pour n'importe quelle société."
+"Laissez vide pour n'importe quelle société."
 
 msgctxt "help:document.incoming.ocr.service,document_type:"
 msgid ""

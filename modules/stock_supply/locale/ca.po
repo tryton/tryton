@@ -153,19 +153,17 @@ msgctxt "model:ir.ui.menu,name:menu_stock_supply"
 msgid "Supply Stock"
 msgstr "Aprovisiona existències"
 
-#, fuzzy
 msgctxt "model:purchase.configuration.supply_period,string:"
 msgid "Purchase Configuration Supply Period"
 msgstr "Configuració del període d'aprovisionament en compres"
 
-#, fuzzy
 msgctxt "model:stock.order_point,string:"
 msgid "Stock Order Point"
-msgstr "Regla de proveïment"
+msgstr "Regla d'aprovisionament"
 
 msgctxt "model:stock.supply.start,string:"
 msgid "Stock Supply Start"
-msgstr ""
+msgstr "Inici aprovisionar existències"
 
 msgctxt "selection:ir.cron,method:"
 msgid "Supply Stock"

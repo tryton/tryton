@@ -2,18 +2,31 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgctxt "field:account.configuration,customer_payment_reference_number:"
+msgid "Customer Payment Reference Number"
+msgstr "Numar Referința Plata client"
+
 msgctxt "field:account.configuration,default_customer_payment_term:"
 msgid "Default Customer Payment Term"
 msgstr "Termen de Plată Implicit Client"
 
 msgctxt "field:account.configuration.default_payment_term,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt ""
 "field:account.configuration.default_payment_term,default_customer_payment_term:"
 msgid "Default Customer Payment Term"
 msgstr "Termen de Plată Implicit Client"
+
+msgctxt "field:account.configuration.payment_reference,company:"
+msgid "Company"
+msgstr "Societate"
+
+msgctxt ""
+"field:account.configuration.payment_reference,customer_payment_reference_number:"
+msgid "Customer Payment Reference Number"
+msgstr "Număr Referința Plata Client"
 
 msgctxt "field:account.fiscalyear,invoice_sequences:"
 msgid "Invoice Sequences"
@@ -21,7 +34,7 @@ msgstr "Secvenţa Factura"
 
 msgctxt "field:account.fiscalyear.invoice_sequence,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:account.fiscalyear.invoice_sequence,fiscalyear:"
 msgid "Fiscal Year"
@@ -85,11 +98,11 @@ msgstr "Cometariu"
 
 msgctxt "field:account.invoice,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:account.invoice,company_party:"
 msgid "Company Party"
-msgstr "Partea Companiei"
+msgstr "Partea Societații"
 
 msgctxt "field:account.invoice,currency:"
 msgid "Currency"
@@ -98,6 +111,10 @@ msgstr "Moneda"
 msgctxt "field:account.invoice,currency_date:"
 msgid "Currency Date"
 msgstr "Data Valută"
+
+msgctxt "field:account.invoice,customer_payment_reference:"
+msgid "Customer Payment Reference"
+msgstr "Referință de plată client"
 
 msgctxt "field:account.invoice,description:"
 msgid "Description"
@@ -163,6 +180,14 @@ msgctxt "field:account.invoice,number:"
 msgid "Number"
 msgstr "Număr"
 
+msgctxt "field:account.invoice,number_alnum:"
+msgid "Number Alphanumeric"
+msgstr "Număr alfanumeric"
+
+msgctxt "field:account.invoice,number_digit:"
+msgid "Number Digit"
+msgstr "Număr Cifră"
+
 msgctxt "field:account.invoice,origins:"
 msgid "Origins"
 msgstr "Origine"
@@ -218,6 +243,14 @@ msgstr "Cache pentru tipul de secvență"
 msgctxt "field:account.invoice,state:"
 msgid "State"
 msgstr "Stare"
+
+msgctxt "field:account.invoice,supplier_payment_reference:"
+msgid "Payment Reference"
+msgstr "Referință de plată"
+
+msgctxt "field:account.invoice,supplier_payment_reference_type:"
+msgid "Payment Reference Type"
+msgstr "Tipul de referință de plată"
 
 msgctxt "field:account.invoice,tax_amount:"
 msgid "Tax"
@@ -311,6 +344,22 @@ msgctxt "field:account.invoice.credit.start,with_refund_allowed:"
 msgid "With Refund Allowed"
 msgstr "Cu Restituire Permisă"
 
+msgctxt "field:account.invoice.edocument.result,file:"
+msgid "File"
+msgstr "Fișier"
+
+msgctxt "field:account.invoice.edocument.result,filename:"
+msgid "File Name"
+msgstr "Denumire Fișier"
+
+msgctxt "field:account.invoice.edocument.start,format:"
+msgid "Format"
+msgstr "Format"
+
+msgctxt "field:account.invoice.edocument.start,template:"
+msgid "Template"
+msgstr "Șablon"
+
 msgctxt "field:account.invoice.line,account:"
 msgid "Account"
 msgstr "Cont"
@@ -321,7 +370,7 @@ msgstr "Suma"
 
 msgctxt "field:account.invoice.line,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:account.invoice.line,currency:"
 msgid "Currency"
@@ -429,7 +478,7 @@ msgstr "Sumă Prescriere"
 
 msgctxt "field:account.invoice.pay.ask,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:account.invoice.pay.ask,currency:"
 msgid "Currency"
@@ -465,7 +514,7 @@ msgstr "Suma"
 
 msgctxt "field:account.invoice.pay.start,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:account.invoice.pay.start,currency:"
 msgid "Currency"
@@ -497,7 +546,7 @@ msgstr "Metodă Plata"
 
 msgctxt "field:account.invoice.payment.method,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:account.invoice.payment.method,credit_account:"
 msgid "Credit Account"
@@ -731,6 +780,10 @@ msgctxt "field:party.party.payment_term,supplier_payment_term:"
 msgid "Supplier Payment Term"
 msgstr "Termen de Plata Furnizor"
 
+msgctxt "help:account.configuration,customer_payment_reference_number:"
+msgid "The number used to generate the customer payment reference."
+msgstr "Numărul utilizat pentru a genera referința de plată a clientului."
+
 msgctxt "help:account.invoice,payment_term_date:"
 msgid ""
 "The date from which the payment term is calculated.\n"
@@ -767,6 +820,10 @@ msgctxt "model:account.configuration.default_payment_term,string:"
 msgid "Account Configuration Default Payment Term"
 msgstr "Configurare Cont Termen de Plata Implicit"
 
+msgctxt "model:account.configuration.payment_reference,string:"
+msgid "Account Configuration Payment Reference"
+msgstr "Referință de plată pentru configurarea contului"
+
 msgctxt "model:account.fiscalyear.invoice_sequence,string:"
 msgid "Account Fiscalyear Invoice Sequence"
 msgstr "Secvenţa Facturi An Fiscal"
@@ -789,7 +846,15 @@ msgstr "Plătitori Alternativi Factură"
 
 msgctxt "model:account.invoice.credit.start,string:"
 msgid "Account Invoice Credit Start"
-msgstr ""
+msgstr "Început credit factură cont"
+
+msgctxt "model:account.invoice.edocument.result,string:"
+msgid "Account Invoice Edocument Result"
+msgstr "Rezultat Factura electronica"
+
+msgctxt "model:account.invoice.edocument.start,string:"
+msgid "Account Invoice Edocument Start"
+msgstr "Start Cont Factura Edocument"
 
 msgctxt "model:account.invoice.line,string:"
 msgid "Account Invoice Line"
@@ -799,15 +864,13 @@ msgctxt "model:account.invoice.line-account.tax,string:"
 msgid "Account Invoice Line - Account Tax"
 msgstr "Rând Factura - Impozit"
 
-#, fuzzy
 msgctxt "model:account.invoice.pay.ask,string:"
 msgid "Account Invoice Pay Ask"
-msgstr "Plata Facturi"
+msgstr "Cerere de plată a facturii contului"
 
-#, fuzzy
 msgctxt "model:account.invoice.pay.start,string:"
 msgid "Account Invoice Pay Start"
-msgstr "Parte Facturata"
+msgstr "Început plată factură cont"
 
 msgctxt "model:account.invoice.payment.method,string:"
 msgid "Account Invoice Payment Method"
@@ -831,55 +894,48 @@ msgstr "Sfârșit de Luna"
 
 msgctxt "model:account.invoice.payment_term,name:payment_term_eom_following"
 msgid "End of Month Following"
-msgstr ""
+msgstr "Sfârșitul lunii următoare"
 
 msgctxt "model:account.invoice.payment_term,name:payment_term_net10"
 msgid "Net 10 days"
-msgstr ""
+msgstr "Net 10 zile"
 
 msgctxt "model:account.invoice.payment_term,name:payment_term_net15"
 msgid "Net 15 days"
-msgstr ""
+msgstr "Net 15 zile"
 
 msgctxt "model:account.invoice.payment_term,name:payment_term_net30"
 msgid "Net 30 days"
-msgstr ""
+msgstr "Net 30 de zile"
 
 msgctxt "model:account.invoice.payment_term,name:payment_term_net60"
 msgid "Net 60 days"
-msgstr ""
+msgstr "Net 60 de zile"
 
-#, fuzzy
 msgctxt "model:account.invoice.payment_term,string:"
 msgid "Account Invoice Payment Term"
-msgstr "Plata Factura"
+msgstr "Termen de Plată Factura"
 
-#, fuzzy
 msgctxt "model:account.invoice.payment_term.line,string:"
 msgid "Account Invoice Payment Term Line"
-msgstr "Factura - Rând Plata"
+msgstr "Rând Termen de Plata Factura"
 
-#, fuzzy
 msgctxt "model:account.invoice.payment_term.line.delta,string:"
 msgid "Account Invoice Payment Term Line Delta"
-msgstr "Factura - Rând Plata"
+msgstr "Delta liniei de plată a facturilor din cont"
 
-#, fuzzy
 msgctxt "model:account.invoice.payment_term.test,string:"
 msgid "Account Invoice Payment Term Test"
-msgstr "Plata Facturi"
+msgstr "Testarea termenului de plată a facturilor de cont"
 
-#, fuzzy
 msgctxt "model:account.invoice.payment_term.test.result,string:"
 msgid "Account Invoice Payment Term Test Result"
-msgstr "Metode Plata Factura"
+msgstr "Rezultatul testului privind termenul de plată a facturilor de cont"
 
-#, fuzzy
 msgctxt "model:account.invoice.report.revision,string:"
 msgid "Account Invoice Report Revision"
-msgstr "Revize Raport Factură"
+msgstr "Revizie Raport Factura"
 
-#, fuzzy
 msgctxt "model:account.invoice.tax,string:"
 msgid "Account Invoice Tax"
 msgstr "Impozit Factura"
@@ -919,6 +975,10 @@ msgstr "Reprogramare Rânduri de Plata"
 msgctxt "model:ir.action,name:credit"
 msgid "Credit"
 msgstr "Credit"
+
+msgctxt "model:ir.action,name:edocument"
+msgid "E-document"
+msgstr "Document electronic"
 
 msgctxt "model:ir.action,name:refresh_invoice_report_wizard"
 msgid "Invoice (revised)"
@@ -1164,7 +1224,12 @@ msgctxt "model:ir.message,text:msg_invoice_similar"
 msgid "The invoice \"%(invoice)s\" is similar to invoice \"%(similar)s\"."
 msgstr "Factura \"%(invoice)s\" este similară cu factura \"%(similar)s\"."
 
-#, fuzzy, python-format
+#, python-format
+msgctxt "model:ir.message,text:msg_invoice_supplier_payment_reference_invalid"
+msgid "The %(type)s \"%(reference)s\" on invoice \"%(invoice)s\" is not valid."
+msgstr "„%(type)s” de pe factura „%(invoice)s” nu este valid."
+
+#, python-format
 msgctxt "model:ir.message,text:msg_invoice_tax_create_draft"
 msgid ""
 "You cannot add taxes to invoice \"%(invoice)s\" because it is no longer in a"
@@ -1214,10 +1279,9 @@ msgstr ""
 "Pentru a calcula termenii, trebuie să adăugați un rând la termenul de plată "
 "\"%(payment_term)s\"."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_payment_term_non_zero_ratio_divisor"
 msgid "The ratio and divisor can not be both equal to zero."
-msgstr "Raportul și divizorul nu sunt consecvente pe rândul \"%(line)s\"."
+msgstr "Raportul și împărțitorul nu pot fi ambele egale cu zero."
 
 msgctxt "model:ir.model.button,confirm:invoice_cancel_button"
 msgid "Are you sure you want to cancel the invoices?"
@@ -1315,7 +1379,6 @@ msgctxt "model:ir.ui.menu,name:menu_payment_terms_configuration"
 msgid "Payment Terms"
 msgstr "Termene de Plata"
 
-#, fuzzy
 msgctxt "model:party.party.payment_term,string:"
 msgid "Party Payment Term"
 msgstr "Termen de Plata Parte"
@@ -1353,8 +1416,8 @@ msgid "Draft Invoice"
 msgstr "Draft Factura"
 
 msgctxt "report:account.invoice:"
-msgid "Invoice N°:"
-msgstr "Factura N°:"
+msgid "Invoice No:"
+msgstr "Nr. Factura:"
 
 msgctxt "report:account.invoice:"
 msgid "Payment Term"
@@ -1373,8 +1436,12 @@ msgid "Reference"
 msgstr "Referinţă"
 
 msgctxt "report:account.invoice:"
-msgid "Supplier Invoice N°:"
-msgstr "Factura Furnizor N°:"
+msgid "Reference:"
+msgstr "Referinţă:"
+
+msgctxt "report:account.invoice:"
+msgid "Supplier Invoice No:"
+msgstr "Nr. Factura Furnizor:"
 
 msgctxt "report:account.invoice:"
 msgid "Tax"
@@ -1400,15 +1467,23 @@ msgctxt "report:account.invoice:"
 msgid "Unit Price"
 msgstr "Preț unitar"
 
-#, fuzzy
+msgctxt ""
+"selection:account.configuration.payment_reference,customer_payment_reference_number:"
+msgid "Invoice"
+msgstr "Factura"
+
+msgctxt ""
+"selection:account.configuration.payment_reference,customer_payment_reference_number:"
+msgid "Party"
+msgstr "Parte"
+
 msgctxt "selection:account.invoice,sequence_type_cache:"
 msgid "Credit Note"
-msgstr "Cont Credit"
+msgstr "Notă de credit"
 
-#, fuzzy
 msgctxt "selection:account.invoice,sequence_type_cache:"
 msgid "Invoice"
-msgstr "Factura fiscala"
+msgstr "Factura"
 
 msgctxt "selection:account.invoice,state:"
 msgid "Cancelled"
@@ -1429,6 +1504,10 @@ msgstr "Postat"
 msgctxt "selection:account.invoice,state:"
 msgid "Validated"
 msgstr "Validat"
+
+msgctxt "selection:account.invoice,supplier_payment_reference_type:"
+msgid "Creditor Reference"
+msgstr "Referință creditor"
 
 msgctxt "selection:account.invoice,type:"
 msgid "Customer"
@@ -1541,6 +1620,18 @@ msgstr "Credit"
 msgctxt "wizard_button:account.invoice.credit,start,end:"
 msgid "Cancel"
 msgstr "Anulare"
+
+msgctxt "wizard_button:account.invoice.edocument,result,end:"
+msgid "Close"
+msgstr "Închidere"
+
+msgctxt "wizard_button:account.invoice.edocument,start,end:"
+msgid "Cancel"
+msgstr "Anulare"
+
+msgctxt "wizard_button:account.invoice.edocument,start,render:"
+msgid "Render"
+msgstr "Face"
 
 msgctxt "wizard_button:account.invoice.pay,ask,end:"
 msgid "Cancel"

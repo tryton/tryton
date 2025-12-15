@@ -2,6 +2,10 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+#, fuzzy
+msgid "Toggle notification"
+msgstr "Comutare selecția"
+
 msgid "Make this an _internal message"
 msgstr ""
 
@@ -142,7 +146,7 @@ msgstr "Nu s-a putut găsi o sesiune."
 
 #, fuzzy, python-format
 msgid "Error: \"%s\". Try again later."
-msgstr "Eroare: \"%s\”. Încercați din nou mai târziu."
+msgstr "Eroare: \"%s”. Încercați din nou mai târziu."
 
 msgid "Too many requests. Try again later."
 msgstr "Prea multe cereri. Încercați mai târziu."
@@ -516,6 +520,10 @@ msgstr "Extindeți toate rândurile"
 
 msgid "Close Tab"
 msgstr "Închidere fila"
+
+#, fuzzy
+msgid "All Notifications..."
+msgstr "Acțiuni..."
 
 msgid "modularity, scalability and security"
 msgstr "modularitate, scalabilitate și securitate"
@@ -1201,7 +1209,7 @@ msgstr "Afișare text simplu"
 
 #, fuzzy, python-format
 msgid "Select a color for \"%s\""
-msgstr "Selectați o culoare pentru \"%s\”"
+msgstr "Selectați o culoare pentru \"%s”"
 
 msgid "Add value"
 msgstr "Adaugă valoare"
@@ -1256,7 +1264,7 @@ msgid "Edit"
 msgstr "Editare"
 
 msgid "Fuzzy"
-msgstr "Cautare aproximativa"
+msgstr "Neclar"
 
 msgid "You need to save the record before adding translations."
 msgstr "Trebuie să salvați înregistrarea înainte de a adăuga traduceri."

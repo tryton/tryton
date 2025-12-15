@@ -74,9 +74,56 @@ msgctxt "model:account.payment.succeed.start,string:"
 msgid "Account Payment Succeed Start"
 msgstr "Inicio marcar pagos con éxito"
 
+msgctxt "model:ir.action,name:wizard_payment_group_succeed"
+msgid "Succeed Groups"
+msgstr "Grupos con éxito"
+
 msgctxt "model:ir.action,name:wizard_succeed"
 msgid "Succeed Payments"
 msgstr "Marcar pagos con éxito"
+
+#, python-format
+msgctxt "model:ir.message,text:msg_payment_clearing_account_missing"
+msgid ""
+"To clear the payment \"%(payment)s\" you must configure a replacement "
+"account for \"%(account)s\"."
+msgstr ""
+"Para liquidar el pago \"%(payment)s\" debes configurar una cuenta de "
+"reemplazo para la cuenta \"%(account)s\"."
+
+#, python-format
+msgctxt "model:ir.message,text:msg_payment_clearing_account_missing_journal"
+msgid ""
+"To clear the payment \"%(payment)s\" you must configure a replacement "
+"account for \"%(account)s\" or an active account on the payment journal "
+"\"%(journal)s\"."
+msgstr ""
+"Para liquidar el pago \"%(payment)s\" debes configurar una cuenta de "
+"remplazo para la cuenta \"%(account)s\" o una cuenta activa para el diario "
+"de pagos \"%(journal)s\"."
+
+#, python-format
+msgctxt "model:ir.message,text:msg_payment_clearing_account_payable_missing"
+msgid ""
+"To clear the payment \"%(payment)s\" you must configure a payable account "
+"for party \"%(party)s\"."
+msgstr ""
+"Para liquidar el pago \"%(payment)s\" debes configurar una cuenta a pagar "
+"para el tercero \"%(party)s\"."
+
+#, python-format
+msgctxt ""
+"model:ir.message,text:msg_payment_clearing_account_receivable_missing"
+msgid ""
+"To clear the payment \"%(payment)s\" you must configure a receivable account"
+" for party \"%(party)s\"."
+msgstr ""
+"Para liquidar el pago \"%(payment)s\" debes configurar una cuenta a cobrar "
+"para el tercero \"%(party)s\"."
+
+msgctxt "model:ir.model.button,string:payment_group_succeed_wizard_button"
+msgid "Succeed"
+msgstr "Con éxito"
 
 msgctxt "model:ir.model.button,string:payment_succeed_wizard_button"
 msgid "Succeed"

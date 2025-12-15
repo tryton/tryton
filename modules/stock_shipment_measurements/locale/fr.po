@@ -140,7 +140,7 @@ msgstr "Volume"
 
 msgctxt "field:stock.shipment.internal,volume_uom:"
 msgid "Volume UoM"
-msgstr "UdM de volume"
+msgstr "UDM de volume"
 
 msgctxt "field:stock.shipment.internal,weight:"
 msgid "Weight"

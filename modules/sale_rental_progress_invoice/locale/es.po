@@ -1,0 +1,90 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:sale.rental.add_progress.start,date:"
+msgid "Date"
+msgstr "Fecha"
+
+msgctxt "field:sale.rental.line,progresses:"
+msgid "Progresses"
+msgstr "Progresos"
+
+msgctxt "field:sale.rental.line-sale.rental.progress,line:"
+msgid "Rental Line"
+msgstr "Línea de alquiler"
+
+msgctxt "field:sale.rental.line-sale.rental.progress,progress:"
+msgid "Progress"
+msgstr "Progreso"
+
+msgctxt "field:sale.rental.progress,date:"
+msgid "Date"
+msgstr "Fecha"
+
+msgctxt "field:sale.rental.progress,duration:"
+msgid "Duration"
+msgstr "Duración"
+
+msgctxt "field:sale.rental.progress,invoice_lines:"
+msgid "Invoice Lines"
+msgstr "Líneas de factura"
+
+msgctxt "field:sale.rental.progress,line:"
+msgid "Line"
+msgstr "Línea"
+
+msgctxt "field:sale.rental.progress,lines:"
+msgid "Lines"
+msgstr "Líneas"
+
+msgctxt "field:sale.rental.progress,previous:"
+msgid "Previous"
+msgstr "Anterior"
+
+msgctxt "field:sale.rental.progress,rental:"
+msgid "Rental"
+msgstr "Alquiler"
+
+msgctxt "model:ir.action,name:wizard_sale_rental_add_progress"
+msgid "Add Rental Progress"
+msgstr "Añadir progreso del alquiler"
+
+msgctxt "model:ir.message,text:msg_sale_rental_progress_line_previous"
+msgid "A rental progress date can not have both a line and a previous."
+msgstr ""
+"Una fecha del progreso del alquiler no puede tener a la vez una línea y un "
+"anterior."
+
+msgctxt "model:ir.message,text:msg_sale_rental_progress_line_unique"
+msgid "A rental line can start only one progress date chain."
+msgstr ""
+"Una linea de alquiler solo puede empezar una cadena de progreso por fecha."
+
+msgctxt "model:ir.message,text:msg_sale_rental_progress_previous_unique"
+msgid "A rental progress date can be parent only once."
+msgstr "Una fecha de progreso del alquiler solo puede ser padre una vez."
+
+msgctxt "model:ir.model.button,string:sale_rental_add_progress_button"
+msgid "Add Progress"
+msgstr "Añadir progreso"
+
+msgctxt "model:sale.rental.add_progress.start,string:"
+msgid "Sale Rental Add Progress Start"
+msgstr "Inicio añadir progreso de alquiler"
+
+msgctxt "model:sale.rental.line-sale.rental.progress,string:"
+msgid "Sale Rental Line - Sale Rental Progress"
+msgstr "Línea de alquiler - Progreso de alquiler"
+
+msgctxt "model:sale.rental.progress,string:"
+msgid "Sale Rental Progress"
+msgstr "Progreso de alquiler"
+
+msgctxt "wizard_button:sale.rental.add_progress,start,add:"
+msgid "Add"
+msgstr "Añadir"
+
+msgctxt "wizard_button:sale.rental.add_progress,start,end:"
+msgid "Cancel"
+msgstr "Cancelar"

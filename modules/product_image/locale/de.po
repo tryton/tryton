@@ -115,6 +115,12 @@ msgid "The size of cached image must be unique."
 msgstr ""
 "Die Größe für zwischengespeicherte Bilder kann nur einmal vergeben werden."
 
+msgctxt "model:ir.message,text:msg_product_image_error"
+msgid "Can not open or identify the image set for the product."
+msgstr ""
+"Das für den Artikel festgelegte Bild kann nicht geöffnet oder das Bildformat"
+" nicht erkannt werden."
+
 msgctxt "model:product.category.image,string:"
 msgid "Product Category Image"
 msgstr "Artikelkategorie Bild"

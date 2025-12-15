@@ -32,7 +32,7 @@ msgstr "Tiers"
 
 msgctxt "field:project.work,party_address:"
 msgid "Contact Address"
-msgstr "Adresse"
+msgstr "Adresse de contact"
 
 msgctxt "field:project.work,path:"
 msgid "Path"

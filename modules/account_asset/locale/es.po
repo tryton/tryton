@@ -352,7 +352,7 @@ msgstr "En meses"
 
 msgctxt "model:account.asset,string:"
 msgid "Account Asset"
-msgstr "Cuenta de activo"
+msgstr "Actiu comptable"
 
 msgctxt "model:account.asset-update-account.move,string:"
 msgid "Account Asset - Update - Account Move"
@@ -429,6 +429,24 @@ msgstr "Borrador"
 msgctxt "model:ir.action.act_window.domain,name:act_asset_form_domain_running"
 msgid "Running"
 msgstr "En ejecución"
+
+#, python-format
+msgctxt "model:ir.message,text:msg_asset_close_invoice_line_missing_account"
+msgid ""
+"To close asset \"%(asset)s\" you must configure a replacement account for "
+"\"%(account)s\"."
+msgstr ""
+"Para cerrar el activo \"%(asset)s\", debe especificar una cuenta de "
+"reemplazo para la cuenta \"%(account)s\"."
+
+#, python-format
+msgctxt "model:ir.message,text:msg_asset_close_product_account_asset"
+msgid ""
+"To close asset \"%(asset)s\" you must configure an account asset for the "
+"product \"%(product)s\"."
+msgstr ""
+"Para cerrar el activo \"%(asset)s\", debe definir una cuenta de activo en el"
+" producto \"%(product)s\"."
 
 #, python-format
 msgctxt "model:ir.message,text:msg_asset_delete_draft"

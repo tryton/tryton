@@ -2,6 +2,10 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgctxt "field:account.move,statement_lines:"
+msgid "Statement Lines"
+msgstr "Kontoauszugspositionen"
+
 msgctxt "field:account.statement,balance:"
 msgid "Balance"
 msgstr "Saldo"
@@ -96,7 +100,7 @@ msgstr "Unternehmen"
 
 msgctxt "field:account.statement.journal,company_party:"
 msgid "Company Party"
-msgstr "Unternehmen"
+msgstr "Partei des Unternehmens"
 
 msgctxt "field:account.statement.journal,currency:"
 msgid "Currency"

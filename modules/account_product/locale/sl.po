@@ -52,6 +52,11 @@ msgctxt "field:product.category,accounting:"
 msgid "Accounting"
 msgstr "Računovodstvo"
 
+#, fuzzy
+msgctxt "field:product.category,accounting_templates:"
+msgid "Accounting Products"
+msgstr "Računovodstvo"
+
 msgctxt "field:product.category,accounts:"
 msgid "Accounts"
 msgstr "Konti"
@@ -135,6 +140,11 @@ msgstr "Uporabi konte, določene v matični kategoriji"
 msgctxt "help:product.category,accounting:"
 msgid "Check to indicate the category is used for accounting."
 msgstr "Označite, če uporabljate davke iz računovodske kategorije."
+
+#, fuzzy
+msgctxt "help:product.category,accounting_templates:"
+msgid "The products for which the accounting category applies."
+msgstr "Označite v primeru pretvorbe v računovodsko kategorijo."
 
 msgctxt "help:product.category,customer_taxes:"
 msgid "The taxes to apply when selling products of this category."

@@ -17,7 +17,7 @@ msgstr "Cont"
 
 msgctxt "field:analytic.account.entry,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:analytic.account.entry,editable:"
 msgid "Editable"
@@ -45,7 +45,7 @@ msgstr "Cod"
 
 msgctxt "field:analytic_account.account,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:analytic_account.account,credit:"
 msgid "Credit"
@@ -124,7 +124,7 @@ msgstr "Cont"
 
 msgctxt "field:analytic_account.line,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:analytic_account.line,credit:"
 msgid "Credit"
@@ -162,7 +162,7 @@ msgstr "Mărimea Conturilor Analitice"
 
 msgctxt "field:analytic_account.rule,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:analytic_account.rule,journal:"
 msgid "Journal"

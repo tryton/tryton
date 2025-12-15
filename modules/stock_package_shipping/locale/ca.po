@@ -46,22 +46,18 @@ msgctxt "field:stock.shipment.in.return,shipping_reference:"
 msgid "Shipping Reference"
 msgstr "Referència de l'enviament"
 
-#, fuzzy
 msgctxt "field:stock.shipment.internal,carrier:"
 msgid "Carrier"
 msgstr "Transportista"
 
-#, fuzzy
 msgctxt "field:stock.shipment.internal,has_shipping_service:"
 msgid "Has Shipping Service"
 msgstr "Té servei d'enviament"
 
-#, fuzzy
 msgctxt "field:stock.shipment.internal,shipping_description:"
 msgid "Shipping Description"
 msgstr "Descripció de l'enviament"
 
-#, fuzzy
 msgctxt "field:stock.shipment.internal,shipping_reference:"
 msgid "Shipping Reference"
 msgstr "Referència de l'enviament"
@@ -77,6 +73,18 @@ msgstr "Descripció d'enviament"
 msgctxt "field:stock.shipment.out,shipping_reference:"
 msgid "Shipping Reference"
 msgstr "Referència de l'enviament"
+
+msgctxt "help:stock.shipment.in.return,shipping_description:"
+msgid "Leave empty to use the generated description."
+msgstr "Deixa en blanc per utiltizar la descripció generada."
+
+msgctxt "help:stock.shipment.internal,shipping_description:"
+msgid "Leave empty to use the generated description."
+msgstr "Deixa en blanc per utiltizar la descripció generada."
+
+msgctxt "help:stock.shipment.out,shipping_description:"
+msgid "Leave empty to use the generated description."
+msgstr "Deixa en blanc per utiltizar la descripció generada."
 
 msgctxt "model:ir.action,name:act_create_shipping_wizard"
 msgid "Create Shipping"
@@ -111,7 +119,6 @@ msgctxt ""
 msgid "Create Shipping for Packages"
 msgstr "Crea enviament per paquets"
 
-#, fuzzy
 msgctxt ""
 "model:ir.model.button,string:shipment_internal_create_shipping_button"
 msgid "Create Shipping for Packages"

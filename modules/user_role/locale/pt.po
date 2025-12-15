@@ -10,6 +10,11 @@ msgctxt "field:res.role,name:"
 msgid "Name"
 msgstr "Nome"
 
+#, fuzzy
+msgctxt "field:res.role,users:"
+msgid "Users"
+msgstr "Usuário"
+
 msgctxt "field:res.role-res.group,group:"
 msgid "Group"
 msgstr "Grupo"
@@ -61,6 +66,14 @@ msgstr "Função do Usuário"
 msgctxt "selection:ir.cron,method:"
 msgid "Synchronize Users Roles"
 msgstr "Sincronizar Funções de Usuários"
+
+msgctxt "view:res.role:"
+msgid "Access Permissions"
+msgstr ""
+
+msgctxt "view:res.role:"
+msgid "Members"
+msgstr ""
 
 msgctxt "view:res.user.role:"
 msgid "Time"

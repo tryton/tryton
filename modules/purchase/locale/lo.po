@@ -638,6 +638,11 @@ msgid "Product"
 msgstr "ຜະລິດຕະພັນ"
 
 #, fuzzy
+msgctxt "field:purchase.reporting.product.time_series,product_currency:"
+msgid "Product - Currency"
+msgstr "Product Suppliers"
+
+#, fuzzy
 msgctxt "field:purchase.reporting.product.time_series,product_supplier:"
 msgid "Supplier's Product"
 msgstr "ຜູ້ສະໜອງ"
@@ -651,6 +656,11 @@ msgstr "ຜູ້ສະໜອງ"
 msgctxt "field:purchase.reporting.supplier.time_series,supplier:"
 msgid "Supplier"
 msgstr "ຜູ້ສະໜອງ"
+
+#, fuzzy
+msgctxt "field:purchase.reporting.supplier.time_series,supplier_currency:"
+msgid "Supplier - Currency"
+msgstr "ສະກຸນເງິນ"
 
 msgctxt "field:stock.location,supplier_return_location:"
 msgid "Supplier Return"
@@ -1062,7 +1072,8 @@ msgstr ""
 #, python-format
 msgctxt "model:ir.message,text:msg_warehouse_required_for_quotation"
 msgid ""
-"To get a quote for the purchase \"%(purchase)s\" you must enter a warehouse."
+"To get a quote for the purchase \"%(purchase)s\" you must enter a warehouse "
+"for the line \"%(line)s\"."
 msgstr ""
 
 msgctxt "model:ir.model.button,string:purchase_cancel_button"
@@ -1351,8 +1362,9 @@ msgctxt "report:purchase.purchase:"
 msgid "Draft Purchase Order"
 msgstr "ໃບສັ່ງຊື້ຊົ່ວຄາວ ເລກທີ:"
 
+#, fuzzy
 msgctxt "report:purchase.purchase:"
-msgid "Purchase Order N°:"
+msgid "Purchase Order No:"
 msgstr "ໃບສັ່ງຊື້ເລກທີ:"
 
 msgctxt "report:purchase.purchase:"
@@ -1365,7 +1377,7 @@ msgid "Reference:"
 msgstr "ເອກະສານອ້າງອີງ"
 
 msgctxt "report:purchase.purchase:"
-msgid "Request for Quotation N°:"
+msgid "Request for Quotation No:"
 msgstr ""
 
 #, fuzzy

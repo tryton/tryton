@@ -16,7 +16,7 @@ msgstr "Paquet"
 
 msgctxt "field:stock.package,allowed_moves:"
 msgid "Allowed Moves"
-msgstr ""
+msgstr "Moviments permesos"
 
 msgctxt "field:stock.package,children:"
 msgid "Children"
@@ -142,12 +142,10 @@ msgctxt "field:stock.shipment.in.return,root_packages:"
 msgid "Packages"
 msgstr "Paquets"
 
-#, fuzzy
 msgctxt "field:stock.shipment.internal,packages:"
 msgid "Packages"
 msgstr "Paquets"
 
-#, fuzzy
 msgctxt "field:stock.shipment.internal,root_packages:"
 msgid "Packages"
 msgstr "Paquets"
@@ -276,12 +274,10 @@ msgctxt "model:ir.ui.menu,name:menu_package_form"
 msgid "Package Types"
 msgstr "Tipus de paquet"
 
-#, fuzzy
 msgctxt "model:stock.package,string:"
 msgid "Stock Package"
 msgstr "Paquet"
 
-#, fuzzy
 msgctxt "model:stock.package.type,string:"
 msgid "Stock Package Type"
 msgstr "Tipus de paquet"

@@ -3,6 +3,11 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 #, fuzzy
+msgctxt "field:account.configuration,customer_payment_reference_number:"
+msgid "Customer Payment Reference Number"
+msgstr "نحوه پرداخت مشتری"
+
+#, fuzzy
 msgctxt "field:account.configuration,default_customer_payment_term:"
 msgid "Default Customer Payment Term"
 msgstr "نحوه پرداخت مشتری"
@@ -16,6 +21,17 @@ msgstr "شرکت"
 msgctxt ""
 "field:account.configuration.default_payment_term,default_customer_payment_term:"
 msgid "Default Customer Payment Term"
+msgstr "نحوه پرداخت مشتری"
+
+#, fuzzy
+msgctxt "field:account.configuration.payment_reference,company:"
+msgid "Company"
+msgstr "شرکت"
+
+#, fuzzy
+msgctxt ""
+"field:account.configuration.payment_reference,customer_payment_reference_number:"
+msgid "Customer Payment Reference Number"
 msgstr "نحوه پرداخت مشتری"
 
 msgctxt "field:account.fiscalyear,invoice_sequences:"
@@ -103,6 +119,11 @@ msgctxt "field:account.invoice,currency_date:"
 msgid "Currency Date"
 msgstr "تاریخ ارز"
 
+#, fuzzy
+msgctxt "field:account.invoice,customer_payment_reference:"
+msgid "Customer Payment Reference"
+msgstr "نحوه پرداخت مشتری"
+
 msgctxt "field:account.invoice,description:"
 msgid "Description"
 msgstr "شرح"
@@ -170,6 +191,15 @@ msgctxt "field:account.invoice,number:"
 msgid "Number"
 msgstr "عدد"
 
+msgctxt "field:account.invoice,number_alnum:"
+msgid "Number Alphanumeric"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.invoice,number_digit:"
+msgid "Number Digit"
+msgstr "عدد"
+
 msgctxt "field:account.invoice,origins:"
 msgid "Origins"
 msgstr "مبداء"
@@ -229,6 +259,16 @@ msgstr ""
 msgctxt "field:account.invoice,state:"
 msgid "State"
 msgstr "وضعیت"
+
+#, fuzzy
+msgctxt "field:account.invoice,supplier_payment_reference:"
+msgid "Payment Reference"
+msgstr "واحد پول پرداخت"
+
+#, fuzzy
+msgctxt "field:account.invoice,supplier_payment_reference_type:"
+msgid "Payment Reference Type"
+msgstr "واحد پول پرداخت"
 
 msgctxt "field:account.invoice,tax_amount:"
 msgid "Tax"
@@ -329,6 +369,24 @@ msgstr "با بازپرداخت"
 msgctxt "field:account.invoice.credit.start,with_refund_allowed:"
 msgid "With Refund Allowed"
 msgstr "با بازپرداخت مجاز است"
+
+#, fuzzy
+msgctxt "field:account.invoice.edocument.result,file:"
+msgid "File"
+msgstr "نام"
+
+#, fuzzy
+msgctxt "field:account.invoice.edocument.result,filename:"
+msgid "File Name"
+msgstr "نام"
+
+msgctxt "field:account.invoice.edocument.start,format:"
+msgid "Format"
+msgstr ""
+
+msgctxt "field:account.invoice.edocument.start,template:"
+msgid "Template"
+msgstr ""
 
 msgctxt "field:account.invoice.line,account:"
 msgid "Account"
@@ -765,6 +823,10 @@ msgctxt "field:party.party.payment_term,supplier_payment_term:"
 msgid "Supplier Payment Term"
 msgstr "نحوه پرداخت تامین کننده"
 
+msgctxt "help:account.configuration,customer_payment_reference_number:"
+msgid "The number used to generate the customer payment reference."
+msgstr ""
+
 msgctxt "help:account.invoice,payment_term_date:"
 msgid ""
 "The date from which the payment term is calculated.\n"
@@ -798,6 +860,11 @@ msgid "Account Configuration Default Payment Term"
 msgstr ""
 
 #, fuzzy
+msgctxt "model:account.configuration.payment_reference,string:"
+msgid "Account Configuration Payment Reference"
+msgstr "خط پرداخت - صورتحساب"
+
+#, fuzzy
 msgctxt "model:account.fiscalyear.invoice_sequence,string:"
 msgid "Account Fiscalyear Invoice Sequence"
 msgstr "ادامه صورتحساب تأمیین کننده"
@@ -824,6 +891,16 @@ msgstr "وضعیت صورت حساب"
 msgctxt "model:account.invoice.credit.start,string:"
 msgid "Account Invoice Credit Start"
 msgstr ""
+
+#, fuzzy
+msgctxt "model:account.invoice.edocument.result,string:"
+msgid "Account Invoice Edocument Result"
+msgstr "روش پرداخت صورتحساب"
+
+#, fuzzy
+msgctxt "model:account.invoice.edocument.start,string:"
+msgid "Account Invoice Edocument Start"
+msgstr "صورتحساب نهاد/سازمان"
 
 #, fuzzy
 msgctxt "model:account.invoice.line,string:"
@@ -962,6 +1039,10 @@ msgstr "خطوط پرداخت"
 msgctxt "model:ir.action,name:credit"
 msgid "Credit"
 msgstr "بستانکاری"
+
+msgctxt "model:ir.action,name:edocument"
+msgid "E-document"
+msgstr ""
 
 #, fuzzy
 msgctxt "model:ir.action,name:refresh_invoice_report_wizard"
@@ -1207,6 +1288,11 @@ msgctxt "model:ir.message,text:msg_invoice_similar"
 msgid "The invoice \"%(invoice)s\" is similar to invoice \"%(similar)s\"."
 msgstr "برای حذف صورتحساب : \"%(invoice)s\" شما باید آنرا لغو کنید."
 
+#, python-format
+msgctxt "model:ir.message,text:msg_invoice_supplier_payment_reference_invalid"
+msgid "The %(type)s \"%(reference)s\" on invoice \"%(invoice)s\" is not valid."
+msgstr ""
+
 #, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_invoice_tax_create_draft"
 msgid ""
@@ -1397,8 +1483,9 @@ msgctxt "report:account.invoice:"
 msgid "Draft Invoice"
 msgstr "پیش نویس صورتحساب"
 
+#, fuzzy
 msgctxt "report:account.invoice:"
-msgid "Invoice N°:"
+msgid "Invoice No:"
 msgstr "صورتحساب N°:"
 
 msgctxt "report:account.invoice:"
@@ -1417,8 +1504,14 @@ msgctxt "report:account.invoice:"
 msgid "Reference"
 msgstr "مرجع"
 
+#, fuzzy
 msgctxt "report:account.invoice:"
-msgid "Supplier Invoice N°:"
+msgid "Reference:"
+msgstr "مرجع"
+
+#, fuzzy
+msgctxt "report:account.invoice:"
+msgid "Supplier Invoice No:"
 msgstr "صورتحساب تامین کننده N°:"
 
 msgctxt "report:account.invoice:"
@@ -1444,6 +1537,18 @@ msgstr "مجموع :"
 msgctxt "report:account.invoice:"
 msgid "Unit Price"
 msgstr "قیمت واحد"
+
+#, fuzzy
+msgctxt ""
+"selection:account.configuration.payment_reference,customer_payment_reference_number:"
+msgid "Invoice"
+msgstr "صورت حساب"
+
+#, fuzzy
+msgctxt ""
+"selection:account.configuration.payment_reference,customer_payment_reference_number:"
+msgid "Party"
+msgstr "نهاد/سازمان"
 
 #, fuzzy
 msgctxt "selection:account.invoice,sequence_type_cache:"
@@ -1474,6 +1579,11 @@ msgstr "ارسال شده"
 msgctxt "selection:account.invoice,state:"
 msgid "Validated"
 msgstr "تایید شده"
+
+#, fuzzy
+msgctxt "selection:account.invoice,supplier_payment_reference_type:"
+msgid "Creditor Reference"
+msgstr "مرجع"
 
 msgctxt "selection:account.invoice,type:"
 msgid "Customer"
@@ -1590,6 +1700,21 @@ msgstr "بستانکاری"
 msgctxt "wizard_button:account.invoice.credit,start,end:"
 msgid "Cancel"
 msgstr "انصراف"
+
+#, fuzzy
+msgctxt "wizard_button:account.invoice.edocument,result,end:"
+msgid "Close"
+msgstr "بسته"
+
+#, fuzzy
+msgctxt "wizard_button:account.invoice.edocument,start,end:"
+msgid "Cancel"
+msgstr "Cancel"
+
+#, fuzzy
+msgctxt "wizard_button:account.invoice.edocument,start,render:"
+msgid "Render"
+msgstr "باقيمانده"
 
 msgctxt "wizard_button:account.invoice.pay,ask,end:"
 msgid "Cancel"

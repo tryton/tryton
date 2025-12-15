@@ -2,6 +2,10 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgctxt "field:account.configuration,customer_payment_reference_number:"
+msgid "Customer Payment Reference Number"
+msgstr "Referentie nummer klant betaling"
+
 msgctxt "field:account.configuration,default_customer_payment_term:"
 msgid "Default Customer Payment Term"
 msgstr "Standaard betalingstermijn klanten"
@@ -14,6 +18,15 @@ msgctxt ""
 "field:account.configuration.default_payment_term,default_customer_payment_term:"
 msgid "Default Customer Payment Term"
 msgstr "Standaard betalingstermijn klanten"
+
+msgctxt "field:account.configuration.payment_reference,company:"
+msgid "Company"
+msgstr "Bedrijf"
+
+msgctxt ""
+"field:account.configuration.payment_reference,customer_payment_reference_number:"
+msgid "Customer Payment Reference Number"
+msgstr "Referentie nummer klant betaling"
 
 msgctxt "field:account.fiscalyear,invoice_sequences:"
 msgid "Invoice Sequences"
@@ -99,6 +112,10 @@ msgctxt "field:account.invoice,currency_date:"
 msgid "Currency Date"
 msgstr "Wisselkoersdatum"
 
+msgctxt "field:account.invoice,customer_payment_reference:"
+msgid "Customer Payment Reference"
+msgstr "Referentie klant betaling"
+
 msgctxt "field:account.invoice,description:"
 msgid "Description"
 msgstr "Omschrijving"
@@ -163,6 +180,14 @@ msgctxt "field:account.invoice,number:"
 msgid "Number"
 msgstr "Nummer"
 
+msgctxt "field:account.invoice,number_alnum:"
+msgid "Number Alphanumeric"
+msgstr "Alfanumeriek nummer"
+
+msgctxt "field:account.invoice,number_digit:"
+msgid "Number Digit"
+msgstr "Aantal cijfers"
+
 msgctxt "field:account.invoice,origins:"
 msgid "Origins"
 msgstr "Oorsprong"
@@ -218,6 +243,14 @@ msgstr "Soorten reeks cache"
 msgctxt "field:account.invoice,state:"
 msgid "State"
 msgstr "Status"
+
+msgctxt "field:account.invoice,supplier_payment_reference:"
+msgid "Payment Reference"
+msgstr "Betalingskenmerk"
+
+msgctxt "field:account.invoice,supplier_payment_reference_type:"
+msgid "Payment Reference Type"
+msgstr "Soort betalingskenmerk"
 
 msgctxt "field:account.invoice,tax_amount:"
 msgid "Tax"
@@ -310,6 +343,22 @@ msgstr "Met terugbetaling"
 msgctxt "field:account.invoice.credit.start,with_refund_allowed:"
 msgid "With Refund Allowed"
 msgstr "Met terugbetaling toegestaan"
+
+msgctxt "field:account.invoice.edocument.result,file:"
+msgid "File"
+msgstr "Bestand"
+
+msgctxt "field:account.invoice.edocument.result,filename:"
+msgid "File Name"
+msgstr "Bestandsnaam"
+
+msgctxt "field:account.invoice.edocument.start,format:"
+msgid "Format"
+msgstr "Formaat"
+
+msgctxt "field:account.invoice.edocument.start,template:"
+msgid "Template"
+msgstr "Template"
 
 msgctxt "field:account.invoice.line,account:"
 msgid "Account"
@@ -731,6 +780,10 @@ msgctxt "field:party.party.payment_term,supplier_payment_term:"
 msgid "Supplier Payment Term"
 msgstr "Betalingstermijn leverancier"
 
+msgctxt "help:account.configuration,customer_payment_reference_number:"
+msgid "The number used to generate the customer payment reference."
+msgstr "Het nummer wat gebruikt wordt om het betalingskenmerk te genereren."
+
 msgctxt "help:account.invoice,payment_term_date:"
 msgid ""
 "The date from which the payment term is calculated.\n"
@@ -767,6 +820,10 @@ msgctxt "model:account.configuration.default_payment_term,string:"
 msgid "Account Configuration Default Payment Term"
 msgstr "Boekhouden configuratie standaard betalingstermijn"
 
+msgctxt "model:account.configuration.payment_reference,string:"
+msgid "Account Configuration Payment Reference"
+msgstr "Boekhouden configuratie betalingskenmerk"
+
 msgctxt "model:account.fiscalyear.invoice_sequence,string:"
 msgid "Account Fiscalyear Invoice Sequence"
 msgstr "Grootboek boekjaar factuur reeks"
@@ -790,6 +847,14 @@ msgstr "Grootboek factuur alternatieve betaler"
 msgctxt "model:account.invoice.credit.start,string:"
 msgid "Account Invoice Credit Start"
 msgstr "Grootboek credit factuur start"
+
+msgctxt "model:account.invoice.edocument.result,string:"
+msgid "Account Invoice Edocument Result"
+msgstr "Grootboek factuur E-document resultaat"
+
+msgctxt "model:account.invoice.edocument.start,string:"
+msgid "Account Invoice Edocument Start"
+msgstr "Grootboek factuur E-document start"
 
 msgctxt "model:account.invoice.line,string:"
 msgid "Account Invoice Line"
@@ -910,6 +975,10 @@ msgstr "Te betalen regels herplannen"
 msgctxt "model:ir.action,name:credit"
 msgid "Credit"
 msgstr "Crediteren"
+
+msgctxt "model:ir.action,name:edocument"
+msgid "E-document"
+msgstr "E-document"
 
 msgctxt "model:ir.action,name:refresh_invoice_report_wizard"
 msgid "Invoice (revised)"
@@ -1164,6 +1233,11 @@ msgid "The invoice \"%(invoice)s\" is similar to invoice \"%(similar)s\"."
 msgstr "De factuur \"%(invoice)s\" is vergelijkbaar aan factuur \"%(similar)s\"."
 
 #, python-format
+msgctxt "model:ir.message,text:msg_invoice_supplier_payment_reference_invalid"
+msgid "The %(type)s \"%(reference)s\" on invoice \"%(invoice)s\" is not valid."
+msgstr "De %(type)s \"%(reference)s\" op factuur \"%(invoice)s\" is niet geldig."
+
+#, python-format
 msgctxt "model:ir.message,text:msg_invoice_tax_create_draft"
 msgid ""
 "You cannot add taxes to invoice \"%(invoice)s\" because it is no longer in a"
@@ -1351,8 +1425,8 @@ msgid "Draft Invoice"
 msgstr "Concept factuur"
 
 msgctxt "report:account.invoice:"
-msgid "Invoice N°:"
-msgstr "Factuur N°:"
+msgid "Invoice No:"
+msgstr "Factuur No:"
 
 msgctxt "report:account.invoice:"
 msgid "Payment Term"
@@ -1371,8 +1445,12 @@ msgid "Reference"
 msgstr "Referentie"
 
 msgctxt "report:account.invoice:"
-msgid "Supplier Invoice N°:"
-msgstr "Leverancier factuurnummer N°:"
+msgid "Reference:"
+msgstr "Referentie:"
+
+msgctxt "report:account.invoice:"
+msgid "Supplier Invoice No:"
+msgstr "Leverancier factuurnummer No:"
 
 msgctxt "report:account.invoice:"
 msgid "Tax"
@@ -1397,6 +1475,16 @@ msgstr "Totaal:"
 msgctxt "report:account.invoice:"
 msgid "Unit Price"
 msgstr "Eenheidsprijs"
+
+msgctxt ""
+"selection:account.configuration.payment_reference,customer_payment_reference_number:"
+msgid "Invoice"
+msgstr "Factuur"
+
+msgctxt ""
+"selection:account.configuration.payment_reference,customer_payment_reference_number:"
+msgid "Party"
+msgstr "Relatie"
 
 msgctxt "selection:account.invoice,sequence_type_cache:"
 msgid "Credit Note"
@@ -1425,6 +1513,10 @@ msgstr "Geboekt"
 msgctxt "selection:account.invoice,state:"
 msgid "Validated"
 msgstr "Bevestigd"
+
+msgctxt "selection:account.invoice,supplier_payment_reference_type:"
+msgid "Creditor Reference"
+msgstr "Referentie schuldeiser"
 
 msgctxt "selection:account.invoice,type:"
 msgid "Customer"
@@ -1537,6 +1629,18 @@ msgstr "Crediteer"
 msgctxt "wizard_button:account.invoice.credit,start,end:"
 msgid "Cancel"
 msgstr "Annuleren"
+
+msgctxt "wizard_button:account.invoice.edocument,result,end:"
+msgid "Close"
+msgstr "Sluiten"
+
+msgctxt "wizard_button:account.invoice.edocument,start,end:"
+msgid "Cancel"
+msgstr "Annuleren"
+
+msgctxt "wizard_button:account.invoice.edocument,start,render:"
+msgid "Render"
+msgstr "Weergeven"
 
 msgctxt "wizard_button:account.invoice.pay,ask,end:"
 msgid "Cancel"

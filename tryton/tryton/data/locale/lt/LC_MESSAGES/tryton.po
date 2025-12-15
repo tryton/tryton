@@ -5,6 +5,10 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+#, fuzzy
+msgid "Toggle notification"
+msgstr "Sukeisti atranką"
+
 msgid "Make this an _internal message"
 msgstr ""
 
@@ -529,6 +533,10 @@ msgstr "Išplėsti visas eilutes"
 
 msgid "Close Tab"
 msgstr "Uždaryti kortelę"
+
+#, fuzzy
+msgid "All Notifications..."
+msgstr "Veiksmai..."
 
 msgid "modularity, scalability and security"
 msgstr "moduliškumas, išplečiamumas ir saugumas"
@@ -1230,9 +1238,9 @@ msgstr "Visi failai"
 msgid "Show plain text"
 msgstr "Rodyti paprastą tekstą"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Select a color for \"%s\""
-msgstr "Pasirinkite spalvą \"%s\“"
+msgstr "Pasirinkite spalvą \"%s“"
 
 msgid "Add value"
 msgstr "Pridėti reikšmę"

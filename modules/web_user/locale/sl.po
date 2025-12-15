@@ -187,12 +187,3 @@ msgstr "Samo še en korak ..."
 msgctxt "report:web.user.email_validation:"
 msgid "Validate"
 msgstr "Preveri veljavnost"
-
-msgctxt "view:web.user:"
-msgid "Reset Password"
-msgstr "Ponastavi geslo"
-
-#, fuzzy
-msgctxt "view:web.user:"
-msgid "Validate Email"
-msgstr "Preveri e-naslov"

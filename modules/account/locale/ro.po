@@ -28,12 +28,12 @@ msgstr "Cod"
 
 msgctxt "field:account.account,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 #, fuzzy
 msgctxt "field:account.account,context_company:"
 msgid "Context Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:account.account,credit:"
 msgid "Credit"
@@ -143,7 +143,7 @@ msgstr "Impozit"
 
 msgctxt "field:account.account.context,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:account.account.context,fiscalyear:"
 msgid "Fiscal Year"
@@ -219,7 +219,7 @@ msgstr "Cod"
 
 msgctxt "field:account.account.party,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:account.account.party,credit:"
 msgid "Credit"
@@ -360,7 +360,7 @@ msgstr "Copii"
 
 msgctxt "field:account.account.type,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:account.account.type,currency:"
 msgid "Currency"
@@ -460,7 +460,7 @@ msgstr "Sold"
 
 msgctxt "field:account.aged_balance,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:account.aged_balance,currency:"
 msgid "Currency"
@@ -488,7 +488,7 @@ msgstr "Al treilea termen"
 
 msgctxt "field:account.aged_balance.context,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:account.aged_balance.context,date:"
 msgid "Date"
@@ -520,7 +520,7 @@ msgstr "Unitate"
 
 msgctxt "field:account.balance_sheet.comparison.context,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:account.balance_sheet.comparison.context,comparison:"
 msgid "Comparison"
@@ -541,7 +541,7 @@ msgstr "Mișcari Postate"
 
 msgctxt "field:account.balance_sheet.context,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:account.balance_sheet.context,date:"
 msgid "Date"
@@ -593,7 +593,7 @@ msgstr "Rotunjire Impozit"
 
 msgctxt "field:account.configuration.default_account,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 #, fuzzy
 msgctxt ""
@@ -618,7 +618,7 @@ msgstr "Cont Implicit Client"
 
 msgctxt "field:account.configuration.default_tax_rule,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt ""
 "field:account.configuration.default_tax_rule,default_customer_tax_rule:"
@@ -632,7 +632,7 @@ msgstr "Regula Implicita de Impozitare al Furnizorului"
 
 msgctxt "field:account.configuration.journal,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 #, fuzzy
 msgctxt "field:account.configuration.journal,currency_exchange_journal:"
@@ -641,7 +641,7 @@ msgstr "Jurnal Schimb Valutar"
 
 msgctxt "field:account.configuration.sequence,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:account.configuration.sequence,reconciliation_sequence:"
 msgid "Reconciliation Sequence"
@@ -649,7 +649,7 @@ msgstr "Secvenţa de Reconciliere"
 
 msgctxt "field:account.configuration.tax_rounding,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:account.configuration.tax_rounding,configuration:"
 msgid "Configuration"
@@ -665,7 +665,7 @@ msgstr "Șablon Conturi"
 
 msgctxt "field:account.create_chart.account,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:account.create_chart.properties,account_payable:"
 msgid "Default Payable Account"
@@ -677,15 +677,16 @@ msgstr "Cont Implicit Furnizor"
 
 msgctxt "field:account.create_chart.properties,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:account.fiscalyear,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
+#, fuzzy
 msgctxt "field:account.fiscalyear,end_date:"
-msgid "Ending Date"
-msgstr "Data de încheiere"
+msgid "End Date"
+msgstr "Data finală"
 
 msgctxt "field:account.fiscalyear,icon:"
 msgid "Icon"
@@ -704,9 +705,10 @@ msgctxt "field:account.fiscalyear,periods:"
 msgid "Periods"
 msgstr "Perioade"
 
+#, fuzzy
 msgctxt "field:account.fiscalyear,start_date:"
-msgid "Starting Date"
-msgstr "Data de început"
+msgid "Start Date"
+msgstr "Data Inițierii"
 
 msgctxt "field:account.fiscalyear,state:"
 msgid "State"
@@ -714,7 +716,7 @@ msgstr "Stare"
 
 msgctxt "field:account.fiscalyear.balance_non_deferral.start,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:account.fiscalyear.balance_non_deferral.start,credit_account:"
 msgid "Credit Account"
@@ -750,7 +752,7 @@ msgstr "Interval"
 
 msgctxt "field:account.fiscalyear.renew.start,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:account.fiscalyear.renew.start,end_date:"
 msgid "End Date"
@@ -782,7 +784,7 @@ msgstr "Activ"
 
 msgctxt "field:account.general_ledger.account,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:account.general_ledger.account,credit:"
 msgid "Credit"
@@ -856,7 +858,7 @@ msgstr "Tip"
 
 msgctxt "field:account.general_ledger.account.context,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:account.general_ledger.account.context,end_period:"
 msgid "End Period"
@@ -897,7 +899,7 @@ msgstr "Activ"
 
 msgctxt "field:account.general_ledger.account.party,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:account.general_ledger.account.party,credit:"
 msgid "Credit"
@@ -971,7 +973,7 @@ msgstr "Sold"
 
 msgctxt "field:account.general_ledger.line,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:account.general_ledger.line,credit:"
 msgid "Credit"
@@ -1033,7 +1035,7 @@ msgstr "Stare"
 
 msgctxt "field:account.general_ledger.line.context,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:account.general_ledger.line.context,end_period:"
 msgid "End Period"
@@ -1070,7 +1072,7 @@ msgstr "pâna la Data"
 
 msgctxt "field:account.income_statement.context,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:account.income_statement.context,comparison:"
 msgid "Comparison"
@@ -1164,7 +1166,7 @@ msgstr "Data de început"
 #, fuzzy
 msgctxt "field:account.journal.period,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:account.journal.period,icon:"
 msgid "Icon"
@@ -1184,7 +1186,7 @@ msgstr "Stare"
 
 msgctxt "field:account.move,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:account.move,date:"
 msgid "Effective Date"
@@ -1237,7 +1239,7 @@ msgstr "Inversare"
 #, fuzzy
 msgctxt "field:account.move.context,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:account.move.line,account:"
 msgid "Account"
@@ -1257,7 +1259,7 @@ msgstr "Suma Valută Secundara"
 
 msgctxt "field:account.move.line,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:account.move.line,credit:"
 msgid "Credit"
@@ -1390,7 +1392,7 @@ msgstr "Jurnal"
 #, fuzzy
 msgctxt "field:account.move.line.receivable_payable.context,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:account.move.line.receivable_payable.context,payable:"
 msgid "Payable"
@@ -1498,7 +1500,7 @@ msgstr "Impozite"
 #, fuzzy
 msgctxt "field:account.move.open_journal.ask,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:account.move.open_journal.ask,journal:"
 msgid "Journal"
@@ -1510,7 +1512,7 @@ msgstr "Perioadă"
 
 msgctxt "field:account.move.reconcile.write_off,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:account.move.reconcile.write_off,credit_account:"
 msgid "Credit Account"
@@ -1534,7 +1536,7 @@ msgstr "Suma"
 
 msgctxt "field:account.move.reconcile_lines.writeoff,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:account.move.reconcile_lines.writeoff,currency:"
 msgid "Currency"
@@ -1554,7 +1556,7 @@ msgstr "Prescriere"
 
 msgctxt "field:account.move.reconciliation,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:account.move.reconciliation,date:"
 msgid "Date"
@@ -1574,7 +1576,7 @@ msgstr "Număr"
 
 msgctxt "field:account.move.template,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:account.move.template,description:"
 msgid "Description"
@@ -1634,11 +1636,12 @@ msgstr "Tip"
 
 msgctxt "field:account.period,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
+#, fuzzy
 msgctxt "field:account.period,end_date:"
-msgid "Ending Date"
-msgstr "Data de încheiere"
+msgid "End Date"
+msgstr "Data finală"
 
 msgctxt "field:account.period,fiscalyear:"
 msgid "Fiscal Year"
@@ -1657,9 +1660,10 @@ msgctxt "field:account.period,name:"
 msgid "Name"
 msgstr "Denumire"
 
+#, fuzzy
 msgctxt "field:account.period,start_date:"
-msgid "Starting Date"
-msgstr "Data de început"
+msgid "Start Date"
+msgstr "Data Inițierii"
 
 msgctxt "field:account.period,state:"
 msgid "State"
@@ -1679,7 +1683,7 @@ msgstr "Cont"
 
 msgctxt "field:account.reconcile.show,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:account.reconcile.show,currencies:"
 msgid "Currencies"
@@ -1736,7 +1740,7 @@ msgstr "Copii"
 
 msgctxt "field:account.tax,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:account.tax,credit_base_amount:"
 msgid "Credit Base Amount"
@@ -1758,9 +1762,10 @@ msgctxt "field:account.tax,description:"
 msgid "Description"
 msgstr "Descriere"
 
+#, fuzzy
 msgctxt "field:account.tax,end_date:"
-msgid "Ending Date"
-msgstr "Data de încheiere"
+msgid "End Date"
+msgstr "Data finală"
 
 msgctxt "field:account.tax,group:"
 msgid "Group"
@@ -1794,9 +1799,10 @@ msgctxt "field:account.tax,rate:"
 msgid "Rate"
 msgstr "Rata"
 
+#, fuzzy
 msgctxt "field:account.tax,start_date:"
-msgid "Starting Date"
-msgstr "Data de început"
+msgid "Start Date"
+msgstr "Data Inițierii"
 
 msgctxt "field:account.tax,template:"
 msgid "Template"
@@ -1832,12 +1838,12 @@ msgstr "Cod"
 
 msgctxt "field:account.tax.code,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 #, fuzzy
 msgctxt "field:account.tax.code,context_company:"
 msgid "Context Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:account.tax.code,currency:"
 msgid "Currency"
@@ -1877,7 +1883,7 @@ msgstr "Suprascriere șablon"
 
 msgctxt "field:account.tax.code.context,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 #, fuzzy
 msgctxt "field:account.tax.code.context,end_period:"
@@ -2007,7 +2013,7 @@ msgstr "Suma"
 
 msgctxt "field:account.tax.line,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:account.tax.line,currency:"
 msgid "Currency"
@@ -2043,7 +2049,7 @@ msgstr "Tip"
 
 msgctxt "field:account.tax.rule,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:account.tax.rule,kind:"
 msgid "Kind"
@@ -2065,9 +2071,10 @@ msgctxt "field:account.tax.rule,template_override:"
 msgid "Override Template"
 msgstr "Suprascriere Şablon"
 
+#, fuzzy
 msgctxt "field:account.tax.rule.line,end_date:"
-msgid "Ending Date"
-msgstr "Data de încheiere"
+msgid "End Date"
+msgstr "Data finală"
 
 msgctxt "field:account.tax.rule.line,group:"
 msgid "Tax Group"
@@ -2085,9 +2092,10 @@ msgctxt "field:account.tax.rule.line,rule:"
 msgid "Rule"
 msgstr "Regulă"
 
+#, fuzzy
 msgctxt "field:account.tax.rule.line,start_date:"
-msgid "Starting Date"
-msgstr "Data de început"
+msgid "Start Date"
+msgstr "Data Inițierii"
 
 msgctxt "field:account.tax.rule.line,tax:"
 msgid "Substitution Tax"
@@ -2101,9 +2109,10 @@ msgctxt "field:account.tax.rule.line,template_override:"
 msgid "Override Template"
 msgstr "Suprascriere Şablon"
 
+#, fuzzy
 msgctxt "field:account.tax.rule.line.template,end_date:"
-msgid "Ending Date"
-msgstr "Data de încheiere"
+msgid "End Date"
+msgstr "Data finală"
 
 msgctxt "field:account.tax.rule.line.template,group:"
 msgid "Tax Group"
@@ -2121,9 +2130,10 @@ msgctxt "field:account.tax.rule.line.template,rule:"
 msgid "Rule"
 msgstr "Regulă"
 
+#, fuzzy
 msgctxt "field:account.tax.rule.line.template,start_date:"
-msgid "Starting Date"
-msgstr "Data de început"
+msgid "Start Date"
+msgstr "Data Inițierii"
 
 msgctxt "field:account.tax.rule.line.template,tax:"
 msgid "Substitution Tax"
@@ -2165,9 +2175,10 @@ msgctxt "field:account.tax.template,description:"
 msgid "Description"
 msgstr "Descriere"
 
+#, fuzzy
 msgctxt "field:account.tax.template,end_date:"
-msgid "Ending Date"
-msgstr "Data de încheiere"
+msgid "End Date"
+msgstr "Data finală"
 
 msgctxt "field:account.tax.template,group:"
 msgid "Group"
@@ -2193,9 +2204,10 @@ msgctxt "field:account.tax.template,rate:"
 msgid "Rate"
 msgstr "Impozit"
 
+#, fuzzy
 msgctxt "field:account.tax.template,start_date:"
-msgid "Starting Date"
-msgstr "Data de început"
+msgid "Start Date"
+msgstr "Data Inițierii"
 
 msgctxt "field:account.tax.template,type:"
 msgid "Type"
@@ -2240,14 +2252,6 @@ msgstr "Suma"
 msgctxt "field:account.tax.test.result,base:"
 msgid "Base"
 msgstr "Baza"
-
-msgctxt "field:account.tax.test.result,description:"
-msgid "Description"
-msgstr "Descriere"
-
-msgctxt "field:account.tax.test.result,legal_notice:"
-msgid "Legal Notice"
-msgstr "Adresă Oficială"
 
 msgctxt "field:account.tax.test.result,tax:"
 msgid "Tax"
@@ -2325,7 +2329,7 @@ msgstr "Cont Client"
 
 msgctxt "field:party.party.account,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:party.party.account,customer_tax_rule:"
 msgid "Customer Tax Rule"
@@ -3432,6 +3436,13 @@ msgid "You cannot delegate together lines with different origins."
 msgstr "Nu se pot diviza rânduri cu diferite surse."
 
 #, python-format
+msgctxt "model:ir.message,text:msg_delete_line_reconciled"
+msgid ""
+"In order to delete the reconciled line \"%(line)s\", you must first "
+"unreconcile it."
+msgstr ""
+
+#, python-format
 msgctxt "model:ir.message,text:msg_erase_party_receivable_payable"
 msgid ""
 "You cannot erase party \"%(party)s\" while they have pending "
@@ -3473,14 +3484,12 @@ msgctxt "model:ir.message,text:msg_group_line_single"
 msgid "You cannot group a single line."
 msgstr "Nu se poate grupa un singur rând."
 
-#, fuzzy, python-format
+#, python-format
 msgctxt "model:ir.message,text:msg_journal_account_moves"
 msgid ""
 "You cannot change the type of journal \"%(journal)s\" because it has posted "
 "moves."
 msgstr ""
-"Nu se poate schimba secvenţa al mişcărilor postate pentru perioadă "
-"\"%(period)s\" pentru că conţine mişcări postate."
 
 msgctxt "model:ir.message,text:msg_journal_period_unique"
 msgid "You can create only one journal per period."
@@ -3551,8 +3560,10 @@ msgstr "Nu puteți modifica rândul \"%(line)s\" din mișcarea postată \"%(move
 
 #, python-format
 msgctxt "model:ir.message,text:msg_modify_line_reconciled"
-msgid "You cannot modify reconciled line \"%(line)s\"."
-msgstr "Nu puteți modifica rândul \"%(line)s\" reconciliat."
+msgid ""
+"In order to modify the reconciled line \"%(line)s\", you must first "
+"unreconcile it."
+msgstr ""
 
 #, python-format
 msgctxt "model:ir.message,text:msg_modify_posted_moved"
@@ -3593,14 +3604,12 @@ msgstr ""
 "Valoarea \"%(value)s\" a lui \"%(expression)s\" din șablonul "
 "\"%(template)s\" nu este un număr."
 
-#, fuzzy, python-format
+#, python-format
 msgctxt "model:ir.message,text:msg_move_template_invalid_description"
 msgid ""
 "Failed to evaluate the description \"%(description)s\" from template "
 "\"%(template)s\" with error: \"%(error)s\""
 msgstr ""
-"Nu s-a putut evalua expresia \"%(expression)s\" din șablonul \"%(template)s\" cu eroarea:\n"
-"\"%(error)s\""
 
 #, python-format
 msgctxt "model:ir.message,text:msg_move_template_invalid_expression"
@@ -3705,14 +3714,12 @@ msgstr ""
 "Datele pentru perioada \"%(period)s\" trebuie să fie în intervalul anului "
 "fiscal \"%(fiscalyear)s\"."
 
-#, fuzzy, python-format
+#, python-format
 msgctxt "model:ir.message,text:msg_period_move_dates"
 msgid ""
 "The dates for period \"%(period)s\" must include the date \"%(move_date)s\" "
 "of move \"%(move)s\"."
 msgstr ""
-"Datele pentru perioada \"%(period)s\" trebuie să fie în intervalul anului "
-"fiscal \"%(fiscalyear)s\"."
 
 msgctxt "model:ir.message,text:msg_period_move_sequence_unique"
 msgid "A move sequence can be reused only by periods in the same fiscal year."
@@ -3802,14 +3809,12 @@ msgstr ""
 "Nu puteți reconcilia rândul \"%(line)s\" cu altele pentru că contul "
 "\"%(account1)s\" este diferit de \"%(account2)s\"."
 
-#, fuzzy, python-format
+#, python-format
 msgctxt "model:ir.message,text:msg_reconciliation_different_parties"
 msgid ""
 "You cannot reconcile line \"%(line)s\" with others because its party "
 "\"%(party1)s\" is different from \"%(party2)s\"."
 msgstr ""
-"Nu puteți reconcilia rândul \"%(line)s\" cu altele pentru că partea "
-"\"%(account1)s\" este diferită de \"%(account2)s\"."
 
 #, python-format
 msgctxt "model:ir.message,text:msg_reconciliation_line_not_valid"
@@ -3834,14 +3839,12 @@ msgstr ""
 "Pentru a reconcilia rândurile cu prescriptia \"%(amount)s\", trebuie să "
 "selectați o metodă de prescriptie."
 
-#, fuzzy, python-format
+#, python-format
 msgctxt "model:ir.message,text:msg_reconciliation_write_off_same_account"
 msgid ""
 "You cannot reconcile lines using the write-off \"%(write_off)s\" with the "
 "same \"%(account)s\"."
 msgstr ""
-"Nu puteți reconcilia rândul \"%(line)s\" cu altele pentru că contul "
-"\"%(account1)s\" este diferit de \"%(account2)s\"."
 
 #, python-format
 msgctxt "model:ir.message,text:msg_reopen_fiscalyear_later"
@@ -4260,7 +4263,7 @@ msgstr "Bilanţ"
 
 msgctxt "report:account.account.type.statement:"
 msgid "Company:"
-msgstr "Companie:"
+msgstr "Societate:"
 
 msgctxt "report:account.account.type.statement:"
 msgid "Date:"
@@ -4320,7 +4323,7 @@ msgstr "Sold"
 
 msgctxt "report:account.aged_balance:"
 msgid "Company:"
-msgstr "Companie:"
+msgstr "Societate:"
 
 msgctxt "report:account.aged_balance:"
 msgid "Date:"
@@ -4360,7 +4363,7 @@ msgstr "Sold"
 
 msgctxt "report:account.general_ledger:"
 msgid "Company:"
-msgstr "Companie:"
+msgstr "Societate:"
 
 msgctxt "report:account.general_ledger:"
 msgid "Credit"
@@ -4440,7 +4443,7 @@ msgstr "Cont"
 
 msgctxt "report:account.move.general_journal:"
 msgid "Company:"
-msgstr "Companie:"
+msgstr "Societate:"
 
 msgctxt "report:account.move.general_journal:"
 msgid "Credit"
@@ -4496,7 +4499,7 @@ msgstr "Cont"
 
 msgctxt "report:account.trial_balance:"
 msgid "Company:"
-msgstr "Companie:"
+msgstr "Societate:"
 
 msgctxt "report:account.trial_balance:"
 msgid "Credit"

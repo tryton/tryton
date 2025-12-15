@@ -2,6 +2,34 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgctxt "field:customs.agent,address:"
+msgid "Address"
+msgstr "Dirección"
+
+msgctxt "field:customs.agent,party:"
+msgid "Party"
+msgstr "Tercero"
+
+msgctxt "field:customs.agent,tax_identifier:"
+msgid "Tax Identifier"
+msgstr "Identificador fiscal"
+
+msgctxt "field:customs.agent.selection,agent:"
+msgid "Agent"
+msgstr "Agente"
+
+msgctxt "field:customs.agent.selection,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:customs.agent.selection,from_country:"
+msgid "From Country"
+msgstr "Desde el país"
+
+msgctxt "field:customs.agent.selection,to_country:"
+msgid "To Country"
+msgstr "Hacia el país"
+
 msgctxt "field:customs.duty.rate,amount:"
 msgid "Amount"
 msgstr "Importe"
@@ -154,6 +182,38 @@ msgctxt "field:product.template,tariff_codes_category:"
 msgid "Use Category's Tariff Codes"
 msgstr "Usar los códigos arancelarios de la categoría"
 
+msgctxt "help:customs.agent,address:"
+msgid "The address of the agent."
+msgstr "La dirección del agente."
+
+msgctxt "help:customs.agent,party:"
+msgid "The party which represents the import/export agent."
+msgstr "El tercero que representa el agente de importación/exportación."
+
+msgctxt "help:customs.agent,tax_identifier:"
+msgid "The identifier of the agent for tax report."
+msgstr "El identificador fiscal del agente para el informe de impuestos."
+
+msgctxt "help:customs.agent.selection,agent:"
+msgid "The selected agent."
+msgstr "El agente seleccionado."
+
+msgctxt "help:customs.agent.selection,from_country:"
+msgid ""
+"Apply only when shipping from this country.\n"
+"Leave empty for any countries."
+msgstr ""
+"Aplica solo cuando el envío viene de este país.\n"
+"Dejar en blanco para todos los países."
+
+msgctxt "help:customs.agent.selection,to_country:"
+msgid ""
+"Apply only when shipping to this country.\n"
+"Leave empty for any countries."
+msgstr ""
+"Aplica solo cuando el envío va hacia este país.\n"
+"Dejar en blanco para todos los países."
+
 msgctxt "help:customs.duty.rate,uom:"
 msgid "The Unit of Measure."
 msgstr "La Unidad de Medida."
@@ -182,6 +242,14 @@ msgctxt "help:product.template,tariff_codes_category:"
 msgid "Use the tariff codes defined on the category."
 msgstr "Usar los códigos arancelarios definidos en la categoría."
 
+msgctxt "model:customs.agent,string:"
+msgid "Customs Agent"
+msgstr "Agente de Aduanas"
+
+msgctxt "model:customs.agent.selection,string:"
+msgid "Customs Agent Selection"
+msgstr "Selección de agentes de Aduanas"
+
 msgctxt "model:customs.duty.rate,string:"
 msgid "Customs Duty Rate"
 msgstr "Tasa de arancel"
@@ -189,6 +257,14 @@ msgstr "Tasa de arancel"
 msgctxt "model:customs.tariff.code,string:"
 msgid "Customs Tariff Code"
 msgstr "Código arancelario"
+
+msgctxt "model:ir.action,name:act_customs_agent_form"
+msgid "Agents"
+msgstr "Agentes"
+
+msgctxt "model:ir.action,name:act_customs_agent_selection_form"
+msgid "Selection"
+msgstr "Selección"
 
 msgctxt "model:ir.action,name:act_duty_rate_form"
 msgid "Duty Rates"
@@ -206,9 +282,22 @@ msgctxt "model:ir.action.act_window.domain,name:act_duty_rate_domain_import"
 msgid "Import"
 msgstr "Importaciones"
 
+msgctxt ""
+"model:ir.rule.group,name:rule_group_customs_agent_selection_companies"
+msgid "User in companies"
+msgstr "Usuario en las empresas"
+
 msgctxt "model:ir.ui.menu,name:menu_customs"
 msgid "Customs"
 msgstr "Aduanas"
+
+msgctxt "model:ir.ui.menu,name:menu_customs_agent_form"
+msgid "Agents"
+msgstr "Agentes"
+
+msgctxt "model:ir.ui.menu,name:menu_customs_agent_selection_form"
+msgid "Selection"
+msgstr "Selección"
 
 msgctxt "model:ir.ui.menu,name:menu_duty_rate_form"
 msgid "Duty Rates"
@@ -249,6 +338,10 @@ msgstr "Categoría"
 msgctxt "selection:product-customs.tariff.code,product:"
 msgid "Template"
 msgstr "Plantilla"
+
+msgctxt "view:customs.agent.selection:"
+msgid "Criteria"
+msgstr "Criterio"
 
 msgctxt "view:customs.duty.rate:"
 msgid "Computation"

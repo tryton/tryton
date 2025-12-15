@@ -48,7 +48,7 @@ msgstr "Ligne de facture"
 
 msgctxt "field:commission,invoice_state:"
 msgid "Invoice State"
-msgstr "État de la facture"
+msgstr "État de facturation"
 
 msgctxt "field:commission,origin:"
 msgid "Origin"

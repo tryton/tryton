@@ -49,3 +49,11 @@ msgstr "Belgia kliendi käibemaks"
 msgctxt "model:ir.ui.menu,name:menu_vat_customer"
 msgid "Belgian VAT Customer"
 msgstr "Belgia kliendi käibemaks"
+
+msgctxt "selection:account.invoice,supplier_payment_reference_type:"
+msgid "Belgian structured communication"
+msgstr ""
+
+msgctxt "selection:account.payment,reference_type:"
+msgid "Belgian structured communication"
+msgstr ""

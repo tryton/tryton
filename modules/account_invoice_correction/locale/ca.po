@@ -12,7 +12,7 @@ msgstr "Línies de factura"
 
 msgctxt "model:account.invoice.correct.start,string:"
 msgid "Account Invoice Correct Start"
-msgstr ""
+msgstr "Inici corregir factura"
 
 msgctxt "model:ir.action,name:wizard_invoice_correct"
 msgid "Correct"

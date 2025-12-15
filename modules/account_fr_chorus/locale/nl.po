@@ -176,7 +176,7 @@ msgstr "Kwalificatie"
 
 msgctxt "selection:account.invoice.chorus,state:"
 msgid "Done"
-msgstr "Afgerond"
+msgstr "Gereed"
 
 msgctxt "selection:account.invoice.chorus,state:"
 msgid "Draft"

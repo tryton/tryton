@@ -14,51 +14,51 @@ msgctxt "field:account.invoice.line,advance_payment_recalled_lines:"
 msgid "Advance Payment Recalled Lines"
 msgstr ""
 
-msgctxt "field:sale.advance_payment.condition,account:"
+msgctxt "field:sale.advance_payment.line,account:"
 msgid "Account"
 msgstr ""
 
-msgctxt "field:sale.advance_payment.condition,amount:"
+msgctxt "field:sale.advance_payment.line,amount:"
 msgid "Amount"
 msgstr ""
 
-msgctxt "field:sale.advance_payment.condition,block_shipping:"
+msgctxt "field:sale.advance_payment.line,block_shipping:"
 msgid "Block Shipping"
 msgstr ""
 
-msgctxt "field:sale.advance_payment.condition,block_supply:"
+msgctxt "field:sale.advance_payment.line,block_supply:"
 msgid "Block Supply"
 msgstr ""
 
-msgctxt "field:sale.advance_payment.condition,completed:"
+msgctxt "field:sale.advance_payment.line,completed:"
 msgid "Completed"
 msgstr ""
 
-msgctxt "field:sale.advance_payment.condition,currency:"
+msgctxt "field:sale.advance_payment.line,currency:"
 msgid "Currency"
 msgstr ""
 
-msgctxt "field:sale.advance_payment.condition,description:"
+msgctxt "field:sale.advance_payment.line,description:"
 msgid "Description"
 msgstr ""
 
-msgctxt "field:sale.advance_payment.condition,invoice_delay:"
+msgctxt "field:sale.advance_payment.line,invoice_delay:"
 msgid "Invoice Delay"
 msgstr ""
 
-msgctxt "field:sale.advance_payment.condition,invoice_lines:"
+msgctxt "field:sale.advance_payment.line,invoice_lines:"
 msgid "Invoice Lines"
 msgstr ""
 
-msgctxt "field:sale.advance_payment.condition,sale:"
+msgctxt "field:sale.advance_payment.line,sale:"
 msgid "Sale"
 msgstr ""
 
-msgctxt "field:sale.advance_payment.condition,sale_company:"
+msgctxt "field:sale.advance_payment.line,sale_company:"
 msgid "Company"
 msgstr ""
 
-msgctxt "field:sale.advance_payment.condition,sale_state:"
+msgctxt "field:sale.advance_payment.line,sale_state:"
 msgid "Sale State"
 msgstr ""
 
@@ -114,12 +114,12 @@ msgctxt "field:sale.advance_payment_term.line.account,line:"
 msgid "Line"
 msgstr ""
 
-msgctxt "field:sale.sale,advance_payment_conditions:"
-msgid "Advance Payment Conditions"
-msgstr ""
-
 msgctxt "field:sale.sale,advance_payment_invoices:"
 msgid "Advance Payment Invoices"
+msgstr ""
+
+msgctxt "field:sale.sale,advance_payment_lines:"
+msgid "Advance Payment Lines"
 msgstr ""
 
 msgctxt "field:sale.sale,advance_payment_term:"
@@ -176,8 +176,8 @@ msgctxt "model:ir.ui.menu,name:menu_advance_payment_term"
 msgid "Advance Payment Terms"
 msgstr ""
 
-msgctxt "model:sale.advance_payment.condition,string:"
-msgid "Sale Advance Payment Condition"
+msgctxt "model:sale.advance_payment.line,string:"
+msgid "Sale Advance Payment Line"
 msgstr ""
 
 msgctxt "model:sale.advance_payment_term,string:"
@@ -190,4 +190,8 @@ msgstr ""
 
 msgctxt "model:sale.advance_payment_term.line.account,string:"
 msgid "Sale Advance Payment Term Line Account"
+msgstr ""
+
+msgctxt "view:sale.sale:"
+msgid "Advance Payment"
 msgstr ""

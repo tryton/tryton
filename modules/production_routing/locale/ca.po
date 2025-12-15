@@ -10,6 +10,10 @@ msgctxt "field:production,routing:"
 msgid "Routing"
 msgstr "Ruta"
 
+msgctxt "field:production.bom,routings:"
+msgid "Routings"
+msgstr "Rutes"
+
 msgctxt "field:production.lead_time,routing:"
 msgid "Routing"
 msgstr "Ruta"
@@ -64,17 +68,16 @@ msgstr "Rutes"
 
 msgctxt "model:production.routing,string:"
 msgid "Production Routing"
-msgstr ""
+msgstr "Rutes producció"
 
 msgctxt "model:production.routing-production.bom,string:"
 msgid "Production Routing - Production Bom"
-msgstr ""
+msgstr "Ruta de producció - Llista de materials"
 
 msgctxt "model:production.routing.operation,string:"
 msgid "Production Routing Operation"
-msgstr ""
+msgstr "Operació de ruta de producció"
 
-#, fuzzy
 msgctxt "model:production.routing.step,string:"
 msgid "Production Routing Step"
 msgstr "Etapa de ruta"

@@ -34,6 +34,46 @@ msgctxt "field:res.group,users:"
 msgid "Users"
 msgstr "Benutzer"
 
+msgctxt "field:res.notification,action:"
+msgid "Action"
+msgstr "Aktion"
+
+msgctxt "field:res.notification,action_value:"
+msgid "Action Value"
+msgstr "Aktionswert"
+
+msgctxt "field:res.notification,description:"
+msgid "Description"
+msgstr "Beschreibung"
+
+msgctxt "field:res.notification,icon:"
+msgid "Icon"
+msgstr "Icon"
+
+msgctxt "field:res.notification,label:"
+msgid "Label"
+msgstr "Label"
+
+msgctxt "field:res.notification,model:"
+msgid "Model"
+msgstr "Modell"
+
+msgctxt "field:res.notification,model_ref:"
+msgid "Model"
+msgstr "Modell"
+
+msgctxt "field:res.notification,records:"
+msgid "Records"
+msgstr "Datensätze"
+
+msgctxt "field:res.notification,unread:"
+msgid "Unread"
+msgstr "Ungelesen"
+
+msgctxt "field:res.notification,user:"
+msgid "User"
+msgstr "Benutzer"
+
 msgctxt "field:res.user,actions:"
 msgid "Actions"
 msgstr "Aktionen"
@@ -73,6 +113,10 @@ msgstr "Menü"
 msgctxt "field:res.user,name:"
 msgid "Name"
 msgstr "Name"
+
+msgctxt "field:res.user,notifications:"
+msgid "Notifications"
+msgstr "Benachrichtigungen"
 
 msgctxt "field:res.user,password:"
 msgid "Password"
@@ -186,9 +230,17 @@ msgctxt "help:res.user,actions:"
 msgid "Actions that will be run at login."
 msgstr "Diese Aktionen werden nach dem Login ausgeführt."
 
+msgctxt "help:res.user,notifications:"
+msgid "Notifications to subscribe to."
+msgstr "Benachrichtigungen zum Abonnieren."
+
 msgctxt "model:ir.action,name:act_group_form"
 msgid "Groups"
 msgstr "Gruppen"
+
+msgctxt "model:ir.action,name:act_notification"
+msgid "Notifications"
+msgstr "Benachrichtigungen"
 
 msgctxt "model:ir.action,name:act_user_config"
 msgid "Configure Users"
@@ -260,6 +312,14 @@ msgctxt "model:ir.model.button,string:user_reset_password_button"
 msgid "Reset Password"
 msgstr "Passwort zurücksetzen"
 
+msgctxt "model:ir.rule.group,name:rule_group_notification"
+msgid "Own notification"
+msgstr "Eigene Benachrichtigungen"
+
+msgctxt "model:ir.rule.group,name:rule_group_notification_admin"
+msgid "Any notification"
+msgstr "Alle Benachrichtigungen"
+
 msgctxt "model:ir.rule.group,name:rule_group_user_application"
 msgid "Own user application"
 msgstr "Eigene Benutzeranwendung"
@@ -276,6 +336,10 @@ msgctxt "model:ir.ui.menu,name:menu_group_form"
 msgid "Groups"
 msgstr "Gruppen"
 
+msgctxt "model:ir.ui.menu,name:menu_notification_form"
+msgid "Notifications"
+msgstr "Benachrichtigungen"
+
 msgctxt "model:ir.ui.menu,name:menu_res"
 msgid "Users"
 msgstr "Benutzer"
@@ -287,6 +351,10 @@ msgstr "Benutzer"
 msgctxt "model:res.group,string:"
 msgid "Group"
 msgstr "Gruppe"
+
+msgctxt "model:res.notification,string:"
+msgid "Notification"
+msgstr "Benachrichtigung"
 
 msgctxt "model:res.user,string:"
 msgid "User"

@@ -121,6 +121,10 @@ msgctxt "help:purchase.request,product_uom_category:"
 msgid "The category of Unit of Measure for the product."
 msgstr ""
 
+msgctxt "help:purchase.request,stock_level:"
+msgid "The low stock level in the warehouse prompted the request."
+msgstr ""
+
 #, fuzzy
 msgctxt "model:ir.action,name:act_open_purchase_form"
 msgid "Purchases"
@@ -131,12 +135,14 @@ msgctxt "model:ir.action,name:act_open_request_form"
 msgid "Purchase Requests"
 msgstr "درخواست های خرید"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_purchase_request_form"
-msgid "Purchase Requests"
-msgstr "درخواست های خرید"
+msgid "Requests"
+msgstr "درخواست ها"
 
+#, fuzzy
 msgctxt "model:ir.action,name:wizard_create_purchase"
-msgid "Create Purchase"
+msgid "Create Purchases"
 msgstr "ایجاد خرید"
 
 msgctxt "model:ir.action,name:wizard_purchase_cancellation_handle_exception"
@@ -194,13 +200,19 @@ msgctxt ""
 msgid "Handle Purchase Cancellation"
 msgstr "Handle Purchase Cancellation"
 
+#, fuzzy
+msgctxt "model:ir.model.button,string:purchase_request_create_purchase_button"
+msgid "Create Purchases"
+msgstr "ایجاد خرید"
+
 msgctxt "model:ir.rule.group,name:rule_group_purchase_request_companies"
 msgid "User in companies"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_purchase_request_form"
-msgid "Purchase Requests"
-msgstr "درخواست های خرید"
+msgid "Requests"
+msgstr "درخواست ها"
 
 #, fuzzy
 msgctxt "model:purchase.request,string:"

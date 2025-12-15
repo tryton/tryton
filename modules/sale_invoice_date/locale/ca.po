@@ -78,12 +78,10 @@ msgctxt "model:ir.ui.menu,name:menu_invoice_term_form"
 msgid "Invoice Terms"
 msgstr "Terminis de facturació"
 
-#, fuzzy
 msgctxt "model:sale.invoice.term,string:"
 msgid "Sale Invoice Term"
 msgstr "Termini de facturació venta"
 
-#, fuzzy
 msgctxt "model:sale.invoice.term.relative_delta,string:"
 msgid "Sale Invoice Term Relative Delta"
-msgstr "Increment del termini de facturació"
+msgstr "Increment del termini de facturació de venta"

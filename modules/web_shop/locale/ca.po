@@ -18,6 +18,10 @@ msgctxt "field:product.product,web_shop_description:"
 msgid "Web Shop Description"
 msgstr "Descripció botiga web"
 
+msgctxt "field:product.product,web_shop_urls:"
+msgid "Web Shop URLs"
+msgstr "URL Botiga web"
+
 msgctxt "field:product.product,web_shops:"
 msgid "Web Shops"
 msgstr "Botigues web"
@@ -26,6 +30,18 @@ msgctxt "field:product.template,web_shop_description:"
 msgid "Web Shop Description"
 msgstr "Descripció botiga web"
 
+msgctxt "field:product.web_shop_url,product:"
+msgid "Product"
+msgstr "Producte"
+
+msgctxt "field:product.web_shop_url,shop:"
+msgid "Shop"
+msgstr "Botiga"
+
+msgctxt "field:product.web_shop_url,url:"
+msgid "Shop URL"
+msgstr "URL Botiga"
+
 msgctxt "field:sale.sale,web_id:"
 msgid "Web ID"
 msgstr "ID Web"
@@ -33,6 +49,10 @@ msgstr "ID Web"
 msgctxt "field:sale.sale,web_shop:"
 msgid "Web Shop"
 msgstr "Botiga Web"
+
+msgctxt "field:sale.sale,web_status_url:"
+msgid "Web Status URL"
+msgstr "URL Estat web"
 
 msgctxt "field:web.shop,attributes:"
 msgid "Attributes"
@@ -158,6 +178,10 @@ msgctxt "help:product.product,web_shops:"
 msgid "The list of web shops on which the product is published."
 msgstr "La llista de botigues on esta publicat el producte."
 
+msgctxt "help:sale.sale,web_status_url:"
+msgid "The URL where the customer can check the order's current status."
+msgstr "La URL on el client pot comprobar l'estat de la seva comanda."
+
 msgctxt "help:web.shop,attributes:"
 msgid "The list of attributes to publish."
 msgstr "La llista d'atributs a publicar."
@@ -209,14 +233,17 @@ msgstr ""
 "Per a processar la venda \"%(sale)s\" heu de seleccionar un tercer diferent "
 "del invitat \"%(party)s\"."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_sale_web_shop_id_unique"
 msgid "The web ID on the sale must be unique per shop."
-msgstr "El ID de la botiga web ha de ser únic."
+msgstr "L'ID web de la venda ha de ser únic per botiga."
 
 msgctxt "model:ir.message,text:msg_shop_name_unique"
 msgid "The web shop name must be unique."
 msgstr "El nom de la botiga web ha de ser únic."
+
+msgctxt "model:ir.model.button,string:sale_web_shop_update_button"
+msgid "Update from Web Shop"
+msgstr "Actualitzar desde la tenda web"
 
 msgctxt "model:ir.rule.group,name:rule_group_shop_companies"
 msgid "User in companies"
@@ -226,35 +253,33 @@ msgctxt "model:ir.ui.menu,name:menu_shop"
 msgid "Web Shops"
 msgstr "Botigues web"
 
-#, fuzzy
+msgctxt "model:product.web_shop_url,string:"
+msgid "Product Web Shop Url"
+msgstr "URL producte tenda web"
+
 msgctxt "model:web.shop,string:"
 msgid "Web Shop"
 msgstr "Botiga Web"
 
-#, fuzzy
 msgctxt "model:web.shop-country.country,string:"
 msgid "Web Shop - Country"
 msgstr "Botiga web - País"
 
-#, fuzzy
 msgctxt "model:web.shop-product.attribute,string:"
 msgid "Web Shop - Product Attribute"
 msgstr "Botiga Web - Atribut"
 
-#, fuzzy
 msgctxt "model:web.shop-product.category,string:"
 msgid "Web Shop - Product Category"
 msgstr "Botiga web - Categoria de producte"
 
-#, fuzzy
 msgctxt "model:web.shop-product.product,string:"
 msgid "Web Shop - Product"
 msgstr "Botiga web - Producte"
 
-#, fuzzy
 msgctxt "model:web.shop-stock.location,string:"
 msgid "Web Shop - Stock Location"
-msgstr "Botiga web - Categoria de producte"
+msgstr "Botiga web - Ubicació d'existències"
 
 msgctxt "view:product.template:"
 msgid "Edit"

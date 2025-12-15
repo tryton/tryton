@@ -20,7 +20,7 @@ msgstr "Bedrijf"
 
 msgctxt "field:sale.opportunity.reporting.marketing.context,from_date:"
 msgid "From Date"
-msgstr "Start datum"
+msgstr "Van datum"
 
 msgctxt "field:sale.opportunity.reporting.marketing.context,period:"
 msgid "Period"

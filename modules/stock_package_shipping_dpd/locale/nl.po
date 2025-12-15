@@ -6,13 +6,13 @@ msgctxt "field:carrier,dpd_notification:"
 msgid "Notification"
 msgstr "Melding"
 
+msgctxt "field:carrier,dpd_output_format:"
+msgid "Output Format"
+msgstr "Uitvoer formaat"
+
 msgctxt "field:carrier,dpd_paper_format:"
 msgid "Paper Format"
 msgstr "Papierformaat"
-
-msgctxt "field:carrier,dpd_printer_language:"
-msgid "Printer Language"
-msgstr "Printertaal"
 
 msgctxt "field:carrier,dpd_product:"
 msgid "Product"

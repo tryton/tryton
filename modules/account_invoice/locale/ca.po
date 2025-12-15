@@ -2,6 +2,10 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgctxt "field:account.configuration,customer_payment_reference_number:"
+msgid "Customer Payment Reference Number"
+msgstr "Número de referència del pagament del client"
+
 msgctxt "field:account.configuration,default_customer_payment_term:"
 msgid "Default Customer Payment Term"
 msgstr "Termini de pagament del client per defecte"
@@ -14,6 +18,15 @@ msgctxt ""
 "field:account.configuration.default_payment_term,default_customer_payment_term:"
 msgid "Default Customer Payment Term"
 msgstr "Termini de pagament del client per defecte"
+
+msgctxt "field:account.configuration.payment_reference,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt ""
+"field:account.configuration.payment_reference,customer_payment_reference_number:"
+msgid "Customer Payment Reference Number"
+msgstr "Número de referència del pagament del client"
 
 msgctxt "field:account.fiscalyear,invoice_sequences:"
 msgid "Invoice Sequences"
@@ -89,7 +102,7 @@ msgstr "Empresa"
 
 msgctxt "field:account.invoice,company_party:"
 msgid "Company Party"
-msgstr "Tercer de l'Empresa"
+msgstr "Tercer de l'empresa"
 
 msgctxt "field:account.invoice,currency:"
 msgid "Currency"
@@ -98,6 +111,10 @@ msgstr "Moneda"
 msgctxt "field:account.invoice,currency_date:"
 msgid "Currency Date"
 msgstr "Data moneda"
+
+msgctxt "field:account.invoice,customer_payment_reference:"
+msgid "Customer Payment Reference"
+msgstr "Referencia de pagament del client"
 
 msgctxt "field:account.invoice,description:"
 msgid "Description"
@@ -163,6 +180,14 @@ msgctxt "field:account.invoice,number:"
 msgid "Number"
 msgstr "Número"
 
+msgctxt "field:account.invoice,number_alnum:"
+msgid "Number Alphanumeric"
+msgstr "Número alfanumèric"
+
+msgctxt "field:account.invoice,number_digit:"
+msgid "Number Digit"
+msgstr "Número digits"
+
 msgctxt "field:account.invoice,origins:"
 msgid "Origins"
 msgstr "Orígens"
@@ -218,6 +243,14 @@ msgstr "Memòria cau de tipus de seqüència"
 msgctxt "field:account.invoice,state:"
 msgid "State"
 msgstr "Estat"
+
+msgctxt "field:account.invoice,supplier_payment_reference:"
+msgid "Payment Reference"
+msgstr "Referencia del pagament"
+
+msgctxt "field:account.invoice,supplier_payment_reference_type:"
+msgid "Payment Reference Type"
+msgstr "Tipus de referència del pagament"
 
 msgctxt "field:account.invoice,tax_amount:"
 msgid "Tax"
@@ -310,6 +343,22 @@ msgstr "Amb devolució"
 msgctxt "field:account.invoice.credit.start,with_refund_allowed:"
 msgid "With Refund Allowed"
 msgstr "Es permet la devolució"
+
+msgctxt "field:account.invoice.edocument.result,file:"
+msgid "File"
+msgstr "Fitxer"
+
+msgctxt "field:account.invoice.edocument.result,filename:"
+msgid "File Name"
+msgstr "Nom del fitxer"
+
+msgctxt "field:account.invoice.edocument.start,format:"
+msgid "Format"
+msgstr "Format"
+
+msgctxt "field:account.invoice.edocument.start,template:"
+msgid "Template"
+msgstr "Plantilla"
 
 msgctxt "field:account.invoice.line,account:"
 msgid "Account"
@@ -731,6 +780,10 @@ msgctxt "field:party.party.payment_term,supplier_payment_term:"
 msgid "Supplier Payment Term"
 msgstr "Termini de pagament del proveïdor"
 
+msgctxt "help:account.configuration,customer_payment_reference_number:"
+msgid "The number used to generate the customer payment reference."
+msgstr "El número utilitzat per generar la referència de pagament del client."
+
 msgctxt "help:account.invoice,payment_term_date:"
 msgid ""
 "The date from which the payment term is calculated.\n"
@@ -763,134 +816,126 @@ msgctxt "help:company.company,purchase_taxes_expense:"
 msgid "Check to book purchase taxes as expense."
 msgstr "Marca per comptabilitzar els impostos de compra com a despesa."
 
-#, fuzzy
 msgctxt "model:account.configuration.default_payment_term,string:"
 msgid "Account Configuration Default Payment Term"
 msgstr "Configuració contable del termini de pagament per defecte"
 
-#, fuzzy
+msgctxt "model:account.configuration.payment_reference,string:"
+msgid "Account Configuration Payment Reference"
+msgstr "Configuració contable del termini de la referència de pagament"
+
 msgctxt "model:account.fiscalyear.invoice_sequence,string:"
 msgid "Account Fiscalyear Invoice Sequence"
-msgstr "Seqüència de factura de proveïdor"
+msgstr "Seqüència de factura d'exercici fiscal"
 
-#, fuzzy
 msgctxt "model:account.invoice,string:"
 msgid "Account Invoice"
-msgstr "Té un asentament comptable"
+msgstr "Factura"
 
 msgctxt "model:account.invoice-account.move.line,string:"
 msgid "Account Invoice - Account Move Line"
-msgstr ""
+msgstr "Factura - Apunt comptable"
 
-#, fuzzy
 msgctxt "model:account.invoice-additional-account.move,string:"
 msgid "Account Invoice - Additional - Account Move"
-msgstr "Assentament addicional de la factura"
+msgstr "Factura - Assentament addicional"
 
-#, fuzzy
 msgctxt "model:account.invoice.alternative_payee,string:"
 msgid "Account Invoice Alternative Payee"
 msgstr "Pagador alternatiu de la factura"
 
 msgctxt "model:account.invoice.credit.start,string:"
 msgid "Account Invoice Credit Start"
-msgstr ""
+msgstr "Inici abonar factura"
 
-#, fuzzy
+msgctxt "model:account.invoice.edocument.result,string:"
+msgid "Account Invoice Edocument Result"
+msgstr "Resultat de la factura e-document"
+
+msgctxt "model:account.invoice.edocument.start,string:"
+msgid "Account Invoice Edocument Start"
+msgstr "Inici factura e-document"
+
 msgctxt "model:account.invoice.line,string:"
 msgid "Account Invoice Line"
 msgstr "Línia de factura"
 
-#, fuzzy
 msgctxt "model:account.invoice.line-account.tax,string:"
 msgid "Account Invoice Line - Account Tax"
 msgstr "Línia de factura - Impost"
 
-#, fuzzy
 msgctxt "model:account.invoice.pay.ask,string:"
 msgid "Account Invoice Pay Ask"
-msgstr "Pagaments factura"
+msgstr "Pregunta pagament factura"
 
-#, fuzzy
 msgctxt "model:account.invoice.pay.start,string:"
 msgid "Account Invoice Pay Start"
-msgstr "Tercer de la factura"
+msgstr "Inici pagament de la factura"
 
-#, fuzzy
 msgctxt "model:account.invoice.payment.method,string:"
 msgid "Account Invoice Payment Method"
 msgstr "Mètodes de pagament de factura"
 
 msgctxt "model:account.invoice.payment_term,name:payment_term_0"
 msgid "Upon Receipt"
-msgstr ""
+msgstr "Al comptat"
 
-#, fuzzy
 msgctxt "model:account.invoice.payment_term,name:payment_term_30_eom"
 msgid "Net 30 days End of Month"
-msgstr "Dia del mes"
+msgstr "30 dies fi de mes"
 
-#, fuzzy
 msgctxt "model:account.invoice.payment_term,name:payment_term_60_eom"
 msgid "Net 60 days End of Month"
-msgstr "Dia del mes"
+msgstr "60 dies fi de mes"
 
-#, fuzzy
 msgctxt "model:account.invoice.payment_term,name:payment_term_eom"
 msgid "End of Month"
-msgstr "Dia del mes"
+msgstr "Fi de mes"
 
 msgctxt "model:account.invoice.payment_term,name:payment_term_eom_following"
 msgid "End of Month Following"
-msgstr ""
+msgstr "Fi del proxim mes"
 
 msgctxt "model:account.invoice.payment_term,name:payment_term_net10"
 msgid "Net 10 days"
-msgstr ""
+msgstr "10 dies"
 
 msgctxt "model:account.invoice.payment_term,name:payment_term_net15"
 msgid "Net 15 days"
-msgstr ""
+msgstr "15 dies"
 
 msgctxt "model:account.invoice.payment_term,name:payment_term_net30"
 msgid "Net 30 days"
-msgstr ""
+msgstr "30 dies"
 
 msgctxt "model:account.invoice.payment_term,name:payment_term_net60"
 msgid "Net 60 days"
-msgstr ""
+msgstr "60 dies"
 
-#, fuzzy
 msgctxt "model:account.invoice.payment_term,string:"
 msgid "Account Invoice Payment Term"
-msgstr "Pagament factura"
+msgstr "Termini de pagament de factura"
 
-#, fuzzy
 msgctxt "model:account.invoice.payment_term.line,string:"
 msgid "Account Invoice Payment Term Line"
-msgstr "Factura - Línia de pagament"
+msgstr "Línia de termini de pagament de factura"
 
-#, fuzzy
 msgctxt "model:account.invoice.payment_term.line.delta,string:"
 msgid "Account Invoice Payment Term Line Delta"
-msgstr "Factura - Línia de pagament"
+msgstr "Delta de la linia del termini de pagament de factura"
 
-#, fuzzy
 msgctxt "model:account.invoice.payment_term.test,string:"
 msgid "Account Invoice Payment Term Test"
-msgstr "Pagaments factura"
+msgstr "Provar terminis de pagament de factura"
 
-#, fuzzy
 msgctxt "model:account.invoice.payment_term.test.result,string:"
 msgid "Account Invoice Payment Term Test Result"
-msgstr "Mètodes de pagament de factura"
+msgstr "Resultat de la prova del termini de pagament de factura"
 
-#, fuzzy
 msgctxt "model:account.invoice.report.revision,string:"
 msgid "Account Invoice Report Revision"
 msgstr "Revisió informe factura"
 
-#, fuzzy
 msgctxt "model:account.invoice.tax,string:"
 msgid "Account Invoice Tax"
 msgstr "Impost de factura"
@@ -930,6 +975,10 @@ msgstr "Reprogramar les línies a pagar"
 msgctxt "model:ir.action,name:credit"
 msgid "Credit"
 msgstr "Abona"
+
+msgctxt "model:ir.action,name:edocument"
+msgid "E-document"
+msgstr "E-document"
 
 msgctxt "model:ir.action,name:refresh_invoice_report_wizard"
 msgid "Invoice (revised)"
@@ -1182,6 +1231,11 @@ msgid "The invoice \"%(invoice)s\" is similar to invoice \"%(similar)s\"."
 msgstr "La factura \"%(invoice)s\" és similar a la factura \"%(similar)s\"."
 
 #, python-format
+msgctxt "model:ir.message,text:msg_invoice_supplier_payment_reference_invalid"
+msgid "The %(type)s \"%(reference)s\" on invoice \"%(invoice)s\" is not valid."
+msgstr "El %(type)s \"%(reference)s\" de la factura \"%(invoice)s\" no és vàlid."
+
+#, python-format
 msgctxt "model:ir.message,text:msg_invoice_tax_create_draft"
 msgid ""
 "You cannot add taxes to invoice \"%(invoice)s\" because it is no longer in a"
@@ -1231,10 +1285,9 @@ msgstr ""
 "Per calcular els venciments heu d'afegir una última línia de romanent al "
 "termini de pagament \"%(payment_term)s\"."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_payment_term_non_zero_ratio_divisor"
 msgid "The ratio and divisor can not be both equal to zero."
-msgstr "El rati i el divisor de la línia \"%(line)s\" no són consistents."
+msgstr "El rati i el divisor no poden ser els dos iguals a zero."
 
 msgctxt "model:ir.model.button,confirm:invoice_cancel_button"
 msgid "Are you sure you want to cancel the invoices?"
@@ -1332,7 +1385,6 @@ msgctxt "model:ir.ui.menu,name:menu_payment_terms_configuration"
 msgid "Payment Terms"
 msgstr "Terminis de pagament"
 
-#, fuzzy
 msgctxt "model:party.party.payment_term,string:"
 msgid "Party Payment Term"
 msgstr "Termini de pagament del tercer"
@@ -1370,7 +1422,7 @@ msgid "Draft Invoice"
 msgstr "Factura esborrany"
 
 msgctxt "report:account.invoice:"
-msgid "Invoice N°:"
+msgid "Invoice No:"
 msgstr "Factura Núm.:"
 
 msgctxt "report:account.invoice:"
@@ -1390,7 +1442,11 @@ msgid "Reference"
 msgstr "Referència"
 
 msgctxt "report:account.invoice:"
-msgid "Supplier Invoice N°:"
+msgid "Reference:"
+msgstr "Referència:"
+
+msgctxt "report:account.invoice:"
+msgid "Supplier Invoice No:"
 msgstr "Factura de proveïdor Núm.:"
 
 msgctxt "report:account.invoice:"
@@ -1416,6 +1472,16 @@ msgstr "Total:"
 msgctxt "report:account.invoice:"
 msgid "Unit Price"
 msgstr "Preu unitari"
+
+msgctxt ""
+"selection:account.configuration.payment_reference,customer_payment_reference_number:"
+msgid "Invoice"
+msgstr "Factura"
+
+msgctxt ""
+"selection:account.configuration.payment_reference,customer_payment_reference_number:"
+msgid "Party"
+msgstr "Tercer"
 
 msgctxt "selection:account.invoice,sequence_type_cache:"
 msgid "Credit Note"
@@ -1444,6 +1510,10 @@ msgstr "Comptabilitzada"
 msgctxt "selection:account.invoice,state:"
 msgid "Validated"
 msgstr "Validada"
+
+msgctxt "selection:account.invoice,supplier_payment_reference_type:"
+msgid "Creditor Reference"
+msgstr "Referència creditor"
 
 msgctxt "selection:account.invoice,type:"
 msgid "Customer"
@@ -1556,6 +1626,18 @@ msgstr "Abona"
 msgctxt "wizard_button:account.invoice.credit,start,end:"
 msgid "Cancel"
 msgstr "Cancel·la"
+
+msgctxt "wizard_button:account.invoice.edocument,result,end:"
+msgid "Close"
+msgstr "Tanca"
+
+msgctxt "wizard_button:account.invoice.edocument,start,end:"
+msgid "Cancel"
+msgstr "Cancel·la"
+
+msgctxt "wizard_button:account.invoice.edocument,start,render:"
+msgid "Render"
+msgstr "Renderitza"
 
 msgctxt "wizard_button:account.invoice.pay,ask,end:"
 msgid "Cancel"

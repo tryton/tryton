@@ -15,51 +15,62 @@ msgctxt "field:account.invoice.line,advance_payment_recalled_lines:"
 msgid "Advance Payment Recalled Lines"
 msgstr "Ettemaksu tingimus"
 
-msgctxt "field:sale.advance_payment.condition,account:"
+#, fuzzy
+msgctxt "field:sale.advance_payment.line,account:"
 msgid "Account"
 msgstr "Konto"
 
-msgctxt "field:sale.advance_payment.condition,amount:"
+#, fuzzy
+msgctxt "field:sale.advance_payment.line,amount:"
 msgid "Amount"
 msgstr "Summa"
 
-msgctxt "field:sale.advance_payment.condition,block_shipping:"
+#, fuzzy
+msgctxt "field:sale.advance_payment.line,block_shipping:"
 msgid "Block Shipping"
 msgstr "Blokeeri lähetus"
 
-msgctxt "field:sale.advance_payment.condition,block_supply:"
+#, fuzzy
+msgctxt "field:sale.advance_payment.line,block_supply:"
 msgid "Block Supply"
 msgstr "Blokeeri tarne"
 
-msgctxt "field:sale.advance_payment.condition,completed:"
+#, fuzzy
+msgctxt "field:sale.advance_payment.line,completed:"
 msgid "Completed"
 msgstr "Lõpetatud"
 
-msgctxt "field:sale.advance_payment.condition,currency:"
+msgctxt "field:sale.advance_payment.line,currency:"
 msgid "Currency"
 msgstr ""
 
-msgctxt "field:sale.advance_payment.condition,description:"
+#, fuzzy
+msgctxt "field:sale.advance_payment.line,description:"
 msgid "Description"
 msgstr "Kirjeldus"
 
-msgctxt "field:sale.advance_payment.condition,invoice_delay:"
+#, fuzzy
+msgctxt "field:sale.advance_payment.line,invoice_delay:"
 msgid "Invoice Delay"
 msgstr "Arve viivitus"
 
-msgctxt "field:sale.advance_payment.condition,invoice_lines:"
+#, fuzzy
+msgctxt "field:sale.advance_payment.line,invoice_lines:"
 msgid "Invoice Lines"
 msgstr "Arve read"
 
-msgctxt "field:sale.advance_payment.condition,sale:"
+#, fuzzy
+msgctxt "field:sale.advance_payment.line,sale:"
 msgid "Sale"
 msgstr "Müük"
 
-msgctxt "field:sale.advance_payment.condition,sale_company:"
+#, fuzzy
+msgctxt "field:sale.advance_payment.line,sale_company:"
 msgid "Company"
 msgstr "Ettevõte"
 
-msgctxt "field:sale.advance_payment.condition,sale_state:"
+#, fuzzy
+msgctxt "field:sale.advance_payment.line,sale_state:"
 msgid "Sale State"
 msgstr "Müügi olek"
 
@@ -115,13 +126,14 @@ msgctxt "field:sale.advance_payment_term.line.account,line:"
 msgid "Line"
 msgstr "Rida"
 
-msgctxt "field:sale.sale,advance_payment_conditions:"
-msgid "Advance Payment Conditions"
-msgstr "Ettemaksu tingimused"
-
 msgctxt "field:sale.sale,advance_payment_invoices:"
 msgid "Advance Payment Invoices"
 msgstr "Ettemaksu arved"
+
+#, fuzzy
+msgctxt "field:sale.sale,advance_payment_lines:"
+msgid "Advance Payment Lines"
+msgstr "Ettemaksu tingimused"
 
 msgctxt "field:sale.sale,advance_payment_term:"
 msgid "Advance Payment Term"
@@ -178,8 +190,8 @@ msgid "Advance Payment Terms"
 msgstr "Ettemaksu tingimused"
 
 #, fuzzy
-msgctxt "model:sale.advance_payment.condition,string:"
-msgid "Sale Advance Payment Condition"
+msgctxt "model:sale.advance_payment.line,string:"
+msgid "Sale Advance Payment Line"
 msgstr "Ettemaksu tingimus"
 
 #, fuzzy
@@ -195,4 +207,9 @@ msgstr "Ettemaksu tingimus"
 #, fuzzy
 msgctxt "model:sale.advance_payment_term.line.account,string:"
 msgid "Sale Advance Payment Term Line Account"
+msgstr "Ettemaksu tingimus"
+
+#, fuzzy
+msgctxt "view:sale.sale:"
+msgid "Advance Payment"
 msgstr "Ettemaksu tingimus"

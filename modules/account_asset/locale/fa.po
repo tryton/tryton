@@ -453,6 +453,24 @@ msgctxt "model:ir.action.act_window.domain,name:act_asset_form_domain_running"
 msgid "Running"
 msgstr "در حال اجرا"
 
+#, fuzzy, python-format
+msgctxt "model:ir.message,text:msg_asset_close_invoice_line_missing_account"
+msgid ""
+"To close asset \"%(asset)s\" you must configure a replacement account for "
+"\"%(account)s\"."
+msgstr ""
+"برای صورتحساب خرید : \"%(purchase)s\" شما باید حساب دارایی را بر روی محصول :"
+" \"%(product)s\" تنظیم کنید."
+
+#, fuzzy, python-format
+msgctxt "model:ir.message,text:msg_asset_close_product_account_asset"
+msgid ""
+"To close asset \"%(asset)s\" you must configure an account asset for the "
+"product \"%(product)s\"."
+msgstr ""
+"برای صورتحساب خرید : \"%(purchase)s\" شما باید حساب دارایی را بر روی محصول :"
+" \"%(product)s\" تنظیم کنید."
+
 #, python-format
 msgctxt "model:ir.message,text:msg_asset_delete_draft"
 msgid "You cannot delete asset \"%(asset)s\" because it is not in \"draft\" state."

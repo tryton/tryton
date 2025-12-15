@@ -52,6 +52,10 @@ msgctxt "field:product.category,accounting:"
 msgid "Accounting"
 msgstr ""
 
+msgctxt "field:product.category,accounting_templates:"
+msgid "Accounting Products"
+msgstr ""
+
 msgctxt "field:product.category,accounts:"
 msgid "Accounts"
 msgstr ""
@@ -135,6 +139,10 @@ msgstr "Utilizar las cuentas definidas en la categoria padre."
 
 msgctxt "help:product.category,accounting:"
 msgid "Check to indicate the category is used for accounting."
+msgstr ""
+
+msgctxt "help:product.category,accounting_templates:"
+msgid "The products for which the accounting category applies."
 msgstr ""
 
 msgctxt "help:product.category,customer_taxes:"

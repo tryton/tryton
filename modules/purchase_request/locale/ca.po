@@ -118,6 +118,11 @@ msgctxt "help:purchase.request,product_uom_category:"
 msgid "The category of Unit of Measure for the product."
 msgstr "La categoria de la unitat de mesura del producte."
 
+msgctxt "help:purchase.request,stock_level:"
+msgid "The low stock level in the warehouse prompted the request."
+msgstr ""
+"El nivell d'existiències baix del magatzem que ha generat la sol·licitud."
+
 msgctxt "model:ir.action,name:act_open_purchase_form"
 msgid "Purchases"
 msgstr "Compres"
@@ -127,12 +132,12 @@ msgid "Purchase Requests"
 msgstr "Sol·licituds de compra"
 
 msgctxt "model:ir.action,name:act_purchase_request_form"
-msgid "Purchase Requests"
-msgstr "Sol·licituds de compra"
+msgid "Requests"
+msgstr "Sol·licituds"
 
 msgctxt "model:ir.action,name:wizard_create_purchase"
-msgid "Create Purchase"
-msgstr "Crea compra"
+msgid "Create Purchases"
+msgstr "Crea compres"
 
 msgctxt "model:ir.action,name:wizard_purchase_cancellation_handle_exception"
 msgid "Handle Purchase Cancellation"
@@ -190,28 +195,29 @@ msgctxt ""
 msgid "Handle Purchase Cancellation"
 msgstr "Gestiona cancel·lació de la compra"
 
+msgctxt "model:ir.model.button,string:purchase_request_create_purchase_button"
+msgid "Create Purchases"
+msgstr "Crea compres"
+
 msgctxt "model:ir.rule.group,name:rule_group_purchase_request_companies"
 msgid "User in companies"
 msgstr "Usuari a les empreses"
 
 msgctxt "model:ir.ui.menu,name:menu_purchase_request_form"
-msgid "Purchase Requests"
-msgstr "Sol·licituds de compra"
+msgid "Requests"
+msgstr "Sol·licituds"
 
-#, fuzzy
 msgctxt "model:purchase.request,string:"
 msgid "Purchase Request"
 msgstr "Sol·licitud de compra"
 
-#, fuzzy
 msgctxt "model:purchase.request.create_purchase.ask_party,string:"
 msgid "Purchase Request Create Purchase Ask Party"
 msgstr "Pregunta tercer al crear compra"
 
-#, fuzzy
 msgctxt "model:purchase.request.handle.purchase.cancellation.start,string:"
 msgid "Purchase Request Handle Purchase Cancellation Start"
-msgstr "Gestiona cancel·lació de la compra"
+msgstr "Inici gestiona cancel·lació de la compra"
 
 msgctxt "model:res.group,name:group_purchase_request"
 msgid "Purchase Request"

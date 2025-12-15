@@ -34,4 +34,4 @@ msgstr "Codi SMS per %(login)s"
 
 msgctxt "model:res.user.login.sms_code,string:"
 msgid "User Login Sms Code"
-msgstr ""
+msgstr "Codi d'SMS per a l'inici de sessió de l'usuari"

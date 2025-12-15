@@ -18,6 +18,11 @@ msgctxt "field:product.product,web_shop_description:"
 msgid "Web Shop Description"
 msgstr "Опис веб-магазину"
 
+#, fuzzy
+msgctxt "field:product.product,web_shop_urls:"
+msgid "Web Shop URLs"
+msgstr "Веб-магазини"
+
 msgctxt "field:product.product,web_shops:"
 msgid "Web Shops"
 msgstr "Веб-магазини"
@@ -26,6 +31,21 @@ msgctxt "field:product.template,web_shop_description:"
 msgid "Web Shop Description"
 msgstr "Опис веб-магазину"
 
+#, fuzzy
+msgctxt "field:product.web_shop_url,product:"
+msgid "Product"
+msgstr "Товар"
+
+#, fuzzy
+msgctxt "field:product.web_shop_url,shop:"
+msgid "Shop"
+msgstr "Магазин"
+
+#, fuzzy
+msgctxt "field:product.web_shop_url,url:"
+msgid "Shop URL"
+msgstr "Магазин"
+
 msgctxt "field:sale.sale,web_id:"
 msgid "Web ID"
 msgstr "Веб-ID"
@@ -33,6 +53,10 @@ msgstr "Веб-ID"
 msgctxt "field:sale.sale,web_shop:"
 msgid "Web Shop"
 msgstr "Веб-магазин"
+
+msgctxt "field:sale.sale,web_status_url:"
+msgid "Web Status URL"
+msgstr ""
 
 msgctxt "field:web.shop,attributes:"
 msgid "Attributes"
@@ -160,6 +184,10 @@ msgctxt "help:product.product,web_shops:"
 msgid "The list of web shops on which the product is published."
 msgstr "Список веб-магазинів, у яких опубліковано товар."
 
+msgctxt "help:sale.sale,web_status_url:"
+msgid "The URL where the customer can check the order's current status."
+msgstr ""
+
 msgctxt "help:web.shop,attributes:"
 msgid "The list of attributes to publish."
 msgstr "Список атрибутів для публікації."
@@ -219,6 +247,10 @@ msgctxt "model:ir.message,text:msg_shop_name_unique"
 msgid "The web shop name must be unique."
 msgstr "Назва веб-магазину має бути унікальною."
 
+msgctxt "model:ir.model.button,string:sale_web_shop_update_button"
+msgid "Update from Web Shop"
+msgstr ""
+
 msgctxt "model:ir.rule.group,name:rule_group_shop_companies"
 msgid "User in companies"
 msgstr "Користувач у компаніях"
@@ -226,6 +258,10 @@ msgstr "Користувач у компаніях"
 msgctxt "model:ir.ui.menu,name:menu_shop"
 msgid "Web Shops"
 msgstr "Веб-магазини"
+
+msgctxt "model:product.web_shop_url,string:"
+msgid "Product Web Shop Url"
+msgstr ""
 
 #, fuzzy
 msgctxt "model:web.shop,string:"

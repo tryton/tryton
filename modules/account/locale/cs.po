@@ -716,9 +716,10 @@ msgctxt "field:account.fiscalyear,company:"
 msgid "Company"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.fiscalyear,end_date:"
-msgid "Ending Date"
-msgstr ""
+msgid "End Date"
+msgstr "Aged Balance"
 
 msgctxt "field:account.fiscalyear,icon:"
 msgid "Icon"
@@ -739,9 +740,10 @@ msgctxt "field:account.fiscalyear,periods:"
 msgid "Periods"
 msgstr "Periods"
 
+#, fuzzy
 msgctxt "field:account.fiscalyear,start_date:"
-msgid "Starting Date"
-msgstr ""
+msgid "Start Date"
+msgstr "Trial Balance"
 
 msgctxt "field:account.fiscalyear,state:"
 msgid "State"
@@ -1716,9 +1718,10 @@ msgctxt "field:account.period,company:"
 msgid "Company"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.period,end_date:"
-msgid "Ending Date"
-msgstr ""
+msgid "End Date"
+msgstr "Aged Balance"
 
 #, fuzzy
 msgctxt "field:account.period,fiscalyear:"
@@ -1739,9 +1742,10 @@ msgctxt "field:account.period,name:"
 msgid "Name"
 msgstr "Namu"
 
+#, fuzzy
 msgctxt "field:account.period,start_date:"
-msgid "Starting Date"
-msgstr ""
+msgid "Start Date"
+msgstr "Trial Balance"
 
 msgctxt "field:account.period,state:"
 msgid "State"
@@ -1843,9 +1847,10 @@ msgctxt "field:account.tax,description:"
 msgid "Description"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.tax,end_date:"
-msgid "Ending Date"
-msgstr ""
+msgid "End Date"
+msgstr "Aged Balance"
 
 msgctxt "field:account.tax,group:"
 msgid "Group"
@@ -1880,9 +1885,10 @@ msgctxt "field:account.tax,rate:"
 msgid "Rate"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.tax,start_date:"
-msgid "Starting Date"
-msgstr ""
+msgid "Start Date"
+msgstr "Trial Balance"
 
 #, fuzzy
 msgctxt "field:account.tax,template:"
@@ -2162,9 +2168,10 @@ msgctxt "field:account.tax.rule,template_override:"
 msgid "Override Template"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.tax.rule.line,end_date:"
-msgid "Ending Date"
-msgstr ""
+msgid "End Date"
+msgstr "Aged Balance"
 
 #, fuzzy
 msgctxt "field:account.tax.rule.line,group:"
@@ -2183,9 +2190,10 @@ msgctxt "field:account.tax.rule.line,rule:"
 msgid "Rule"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.tax.rule.line,start_date:"
-msgid "Starting Date"
-msgstr ""
+msgid "Start Date"
+msgstr "Trial Balance"
 
 msgctxt "field:account.tax.rule.line,tax:"
 msgid "Substitution Tax"
@@ -2200,9 +2208,10 @@ msgctxt "field:account.tax.rule.line,template_override:"
 msgid "Override Template"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.tax.rule.line.template,end_date:"
-msgid "Ending Date"
-msgstr ""
+msgid "End Date"
+msgstr "Aged Balance"
 
 #, fuzzy
 msgctxt "field:account.tax.rule.line.template,group:"
@@ -2221,9 +2230,10 @@ msgctxt "field:account.tax.rule.line.template,rule:"
 msgid "Rule"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.tax.rule.line.template,start_date:"
-msgid "Starting Date"
-msgstr ""
+msgid "Start Date"
+msgstr "Trial Balance"
 
 msgctxt "field:account.tax.rule.line.template,tax:"
 msgid "Substitution Tax"
@@ -2268,9 +2278,10 @@ msgctxt "field:account.tax.template,description:"
 msgid "Description"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.tax.template,end_date:"
-msgid "Ending Date"
-msgstr ""
+msgid "End Date"
+msgstr "Aged Balance"
 
 msgctxt "field:account.tax.template,group:"
 msgid "Group"
@@ -2297,9 +2308,10 @@ msgctxt "field:account.tax.template,rate:"
 msgid "Rate"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.tax.template,start_date:"
-msgid "Starting Date"
-msgstr ""
+msgid "Start Date"
+msgstr "Trial Balance"
 
 msgctxt "field:account.tax.template,type:"
 msgid "Type"
@@ -2345,14 +2357,6 @@ msgstr ""
 
 msgctxt "field:account.tax.test.result,base:"
 msgid "Base"
-msgstr ""
-
-msgctxt "field:account.tax.test.result,description:"
-msgid "Description"
-msgstr ""
-
-msgctxt "field:account.tax.test.result,legal_notice:"
-msgid "Legal Notice"
 msgstr ""
 
 msgctxt "field:account.tax.test.result,tax:"
@@ -3515,6 +3519,13 @@ msgid "You cannot delegate together lines with different origins."
 msgstr ""
 
 #, python-format
+msgctxt "model:ir.message,text:msg_delete_line_reconciled"
+msgid ""
+"In order to delete the reconciled line \"%(line)s\", you must first "
+"unreconcile it."
+msgstr ""
+
+#, python-format
 msgctxt "model:ir.message,text:msg_erase_party_receivable_payable"
 msgid ""
 "You cannot erase party \"%(party)s\" while they have pending "
@@ -3622,7 +3633,9 @@ msgstr ""
 
 #, python-format
 msgctxt "model:ir.message,text:msg_modify_line_reconciled"
-msgid "You cannot modify reconciled line \"%(line)s\"."
+msgid ""
+"In order to modify the reconciled line \"%(line)s\", you must first "
+"unreconcile it."
 msgstr ""
 
 #, python-format

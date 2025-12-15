@@ -673,6 +673,215 @@ msgctxt "field:stock.products_by_locations.context,stock_date_end:"
 msgid "At Date"
 msgstr "Data"
 
+#, fuzzy
+msgctxt "field:stock.reporting.inventory,company:"
+msgid "Company"
+msgstr "Organizacija"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory,input_quantity:"
+msgid "Input Quantity"
+msgstr "Tušti kiekiai"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory,output_quantity:"
+msgid "Output Quantity"
+msgstr "Tušti kiekiai"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory,product:"
+msgid "Product"
+msgstr "Prekė"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory,quantity:"
+msgid "Quantity"
+msgstr "Kiekis"
+
+msgctxt "field:stock.reporting.inventory,unit:"
+msgid "Unit"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.context,company:"
+msgid "Company"
+msgstr "Organizacija"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.context,date:"
+msgid "Date"
+msgstr "Data"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.context,location:"
+msgid "Location"
+msgstr "Vietos"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.context,product_type:"
+msgid "Product Type"
+msgstr "Prekė"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.daily,company:"
+msgid "Company"
+msgstr "Organizacija"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.daily,from_date:"
+msgid "From Date"
+msgstr "Išsiuntimo vieta"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.daily,input_quantity:"
+msgid "Input Quantity"
+msgstr "Tušti kiekiai"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.daily,output_quantity:"
+msgid "Output Quantity"
+msgstr "Tušti kiekiai"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.daily,product:"
+msgid "Product"
+msgstr "Prekė"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.daily,quantity:"
+msgid "Quantity"
+msgstr "Kiekis"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.daily,to_date:"
+msgid "To Date"
+msgstr "Data"
+
+msgctxt "field:stock.reporting.inventory.daily,unit:"
+msgid "Unit"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.move,company:"
+msgid "Company"
+msgstr "Organizacija"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.move,date:"
+msgid "Date"
+msgstr "Data"
+
+msgctxt "field:stock.reporting.inventory.move,document:"
+msgid "Document"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.move,input_quantity:"
+msgid "Input Quantity"
+msgstr "Tušti kiekiai"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.move,move:"
+msgid "Move"
+msgstr "Operacijos"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.move,origin:"
+msgid "Origin"
+msgstr "Šaltinis"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.move,output_quantity:"
+msgid "Output Quantity"
+msgstr "Tušti kiekiai"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.move,product:"
+msgid "Product"
+msgstr "Prekė"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.move,quantity:"
+msgid "Quantity"
+msgstr "Kiekis"
+
+msgctxt "field:stock.reporting.inventory.move,unit:"
+msgid "Unit"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.range.context,company:"
+msgid "Company"
+msgstr "Organizacija"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.range.context,from_date:"
+msgid "From Date"
+msgstr "Išsiuntimo vieta"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.range.context,location:"
+msgid "Location"
+msgstr "Vietos"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.range.context,to_date:"
+msgid "To Date"
+msgstr "Data"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.turnover,average_quantity:"
+msgid "Average Quantity"
+msgstr "Pridėtas kiekis"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.turnover,company:"
+msgid "Company"
+msgstr "Organizacija"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.turnover,output_quantity:"
+msgid "Output Quantity"
+msgstr "Tušti kiekiai"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.turnover,product:"
+msgid "Product"
+msgstr "Prekė"
+
+msgctxt "field:stock.reporting.inventory.turnover,turnover:"
+msgid "Turnover"
+msgstr ""
+
+msgctxt "field:stock.reporting.inventory.turnover,unit:"
+msgid "Unit"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.turnover.context,company:"
+msgid "Company"
+msgstr "Organizacija"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.turnover.context,from_date:"
+msgid "From Date"
+msgstr "Išsiuntimo vieta"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.turnover.context,location:"
+msgid "Location"
+msgstr "Vietos"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.turnover.context,product_type:"
+msgid "Product Type"
+msgstr "Prekė"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.turnover.context,to_date:"
+msgid "To Date"
+msgstr "Data"
+
 msgctxt "field:stock.reporting.margin.category,category:"
 msgid "Category"
 msgstr ""
@@ -982,6 +1191,11 @@ msgstr "Būsena"
 msgctxt "field:stock.shipment.internal,to_location:"
 msgid "To Location"
 msgstr "Gavimo vieta"
+
+#, fuzzy
+msgctxt "field:stock.shipment.internal,to_warehouse:"
+msgid "To Warehouse"
+msgstr "Sandėlys"
 
 msgctxt "field:stock.shipment.internal,transit_location:"
 msgid "Transit Location"
@@ -1623,6 +1837,10 @@ msgctxt "help:stock.shipment.internal,to_location:"
 msgid "Where the stock is moved to."
 msgstr ""
 
+msgctxt "help:stock.shipment.internal,to_warehouse:"
+msgid "Where the stock is sent to."
+msgstr ""
+
 msgctxt "help:stock.shipment.internal,transit_location:"
 msgid ""
 "Where the stock is located while it is in transit between the warehouses."
@@ -1772,6 +1990,26 @@ msgstr "Prekių kiekis pagal sandėlius"
 msgctxt "model:ir.action,name:act_products_by_locations_relate"
 msgid "Products"
 msgstr "Prekės"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_reporting_inventory"
+msgid "Inventory"
+msgstr "Inventorizacija"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_reporting_inventory_daily"
+msgid "Stock Inventory Daily"
+msgstr "Sandėlio inventorizacija"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_reporting_inventory_move"
+msgid "Stock Inventory Moves"
+msgstr "Inventorizacijos operacijos"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_reporting_inventory_turnover"
+msgid "Inventory Turnover"
+msgstr "Inventorizacijos operacijos"
 
 msgctxt "model:ir.action,name:act_reporting_margin_category"
 msgid "Margins per Category"
@@ -2097,11 +2335,6 @@ msgid "No existing line found for \"%(search)s\"."
 msgstr ""
 
 #, python-format
-msgctxt "model:ir.message,text:msg_inventory_date_in_the_future"
-msgid "The inventories \"%(inventories)s\" have dates in the future."
-msgstr ""
-
-#, python-format
 msgctxt "model:ir.message,text:msg_inventory_delete_cancel"
 msgid "To delete inventory \"%(inventory)s\" you must cancel it."
 msgstr ""
@@ -2197,8 +2430,11 @@ msgctxt "model:ir.message,text:msg_move_quantity_positive"
 msgid "Move quantity must be positive."
 msgstr ""
 
+#, python-format
 msgctxt "model:ir.message,text:msg_period_close_assigned_move"
-msgid "You cannot close periods with assigned moves in it."
+msgid ""
+"To close the period \"%(period)s\", the assigned moves \"%(moves)s\" must be"
+" done or cancelled."
 msgstr ""
 
 msgctxt "model:ir.message,text:msg_period_close_date"
@@ -2578,6 +2814,29 @@ msgid "User in companies"
 msgstr "Organizacijos naudotojas"
 
 #, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_reporting_inventory_companies"
+msgid "User in companies"
+msgstr "Organizacijos naudotojas"
+
+#, fuzzy
+msgctxt ""
+"model:ir.rule.group,name:rule_group_reporting_inventory_daily_companies"
+msgid "User in companies"
+msgstr "Organizacijos naudotojas"
+
+#, fuzzy
+msgctxt ""
+"model:ir.rule.group,name:rule_group_reporting_inventory_move_companies"
+msgid "User in companies"
+msgstr "Organizacijos naudotojas"
+
+#, fuzzy
+msgctxt ""
+"model:ir.rule.group,name:rule_group_reporting_inventory_turnover_companies"
+msgid "User in companies"
+msgstr "Organizacijos naudotojas"
+
+#, fuzzy
 msgctxt ""
 "model:ir.rule.group,name:rule_group_reporting_margin_category_companies"
 msgid "User in companies"
@@ -2721,6 +2980,16 @@ msgstr "Periodai"
 msgctxt "model:ir.ui.menu,name:menu_reporting"
 msgid "Reporting"
 msgstr "Ataskaitos"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_reporting_inventory"
+msgid "Inventory"
+msgstr "Inventorizacija"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_reporting_inventory_turnover"
+msgid "Inventory Turnover"
+msgstr "Inventorizacijos operacijos"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_reporting_margin"
@@ -2932,6 +3201,41 @@ msgctxt "model:stock.products_by_locations.context,string:"
 msgid "Stock Products By Locations Context"
 msgstr "Prekės pagal vietas"
 
+#, fuzzy
+msgctxt "model:stock.reporting.inventory,string:"
+msgid "Stock Reporting Inventory"
+msgstr "Sandėlio inventorizacija"
+
+#, fuzzy
+msgctxt "model:stock.reporting.inventory.context,string:"
+msgid "Stock Reporting Inventory Context"
+msgstr "Sandėlio inventorizacija - skaičiavimas"
+
+#, fuzzy
+msgctxt "model:stock.reporting.inventory.daily,string:"
+msgid "Stock Reporting Inventory Daily"
+msgstr "Sandėlio inventorizacijos eilutė"
+
+#, fuzzy
+msgctxt "model:stock.reporting.inventory.move,string:"
+msgid "Stock Reporting Inventory Move"
+msgstr "Sandėlio inventorizacijos eilutė"
+
+#, fuzzy
+msgctxt "model:stock.reporting.inventory.range.context,string:"
+msgid "Stock Reporting Inventory Range Context"
+msgstr "Sandėlio inventorizacija - skaičiavimas"
+
+#, fuzzy
+msgctxt "model:stock.reporting.inventory.turnover,string:"
+msgid "Stock Reporting Inventory Turnover"
+msgstr "Sandėlio inventorizacijos eilutė"
+
+#, fuzzy
+msgctxt "model:stock.reporting.inventory.turnover.context,string:"
+msgid "Stock Reporting Inventory Turnover Context"
+msgstr "Sandėlio inventorizacija - skaičiavimas"
+
 msgctxt "model:stock.reporting.margin.category,string:"
 msgid "Stock Reporting Margin Category"
 msgstr ""
@@ -3011,10 +3315,6 @@ msgid "From Location"
 msgstr "Išsiuntimo vieta"
 
 msgctxt "report:stock.shipment.in.restocking_list:"
-msgid "N°:"
-msgstr ""
-
-msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "Planned Date:"
 msgstr "Planuojama data:"
 
@@ -3032,6 +3332,11 @@ msgstr "Nuoroda:"
 
 msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "Restocking List"
+msgstr "Sandėlio papildymo sąrašas"
+
+#, fuzzy
+msgctxt "report:stock.shipment.in.restocking_list:"
+msgid "Restocking List No:"
 msgstr "Sandėlio papildymo sąrašas"
 
 msgctxt "report:stock.shipment.in.restocking_list:"
@@ -3058,13 +3363,10 @@ msgctxt "report:stock.shipment.internal.report:"
 msgid "From Location:"
 msgstr "Išsiuntimo vieta:"
 
+#, fuzzy
 msgctxt "report:stock.shipment.internal.report:"
-msgid "Internal Shipment"
+msgid "Internal Shipment No:"
 msgstr "Vidinis siuntimas"
-
-msgctxt "report:stock.shipment.internal.report:"
-msgid "N°:"
-msgstr ""
 
 msgctxt "report:stock.shipment.internal.report:"
 msgid "Planned Date:"
@@ -3113,6 +3415,11 @@ msgstr "Važtaraštis"
 
 #, fuzzy
 msgctxt "report:stock.shipment.out.delivery_note:"
+msgid "Delivery Note No:"
+msgstr "Važtaraštis"
+
+#, fuzzy
+msgctxt "report:stock.shipment.out.delivery_note:"
 msgid "Draft"
 msgstr "Juodraštis"
 
@@ -3120,10 +3427,6 @@ msgstr "Juodraštis"
 msgctxt "report:stock.shipment.out.delivery_note:"
 msgid "Location:"
 msgstr "Vietos"
-
-msgctxt "report:stock.shipment.out.delivery_note:"
-msgid "N°:"
-msgstr ""
 
 msgctxt "report:stock.shipment.out.delivery_note:"
 msgid "Product"
@@ -3165,11 +3468,12 @@ msgid "From Location"
 msgstr "Išsiuntimo vieta"
 
 msgctxt "report:stock.shipment.out.picking_list:"
-msgid "N°:"
-msgstr ""
-
-msgctxt "report:stock.shipment.out.picking_list:"
 msgid "Picking List"
+msgstr "Pakavimo lapas"
+
+#, fuzzy
+msgctxt "report:stock.shipment.out.picking_list:"
+msgid "Picking List No:"
 msgstr "Pakavimo lapas"
 
 msgctxt "report:stock.shipment.out.picking_list:"
@@ -3223,10 +3527,6 @@ msgid "From Location"
 msgstr "Išsiuntimo vieta"
 
 msgctxt "report:stock.shipment.out.return.restocking_list:"
-msgid "N°:"
-msgstr ""
-
-msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "Planned Date:"
 msgstr "Planuojama data:"
 
@@ -3244,6 +3544,11 @@ msgstr "Nuoroda:"
 
 msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "Restocking List"
+msgstr "Sandėlio papildymo sąrašas"
+
+#, fuzzy
+msgctxt "report:stock.shipment.out.return.restocking_list:"
+msgid "Restocking List No:"
 msgstr "Sandėlio papildymo sąrašas"
 
 msgctxt "report:stock.shipment.out.return.restocking_list:"
@@ -3321,6 +3626,10 @@ msgid "Production"
 msgstr "Gamyba"
 
 msgctxt "selection:stock.location,type:"
+msgid "Rental"
+msgstr ""
+
+msgctxt "selection:stock.location,type:"
 msgid "Storage"
 msgstr "Saugojimas"
 
@@ -3380,6 +3689,60 @@ msgid "Product"
 msgstr "Prekė"
 
 msgctxt "selection:stock.product_quantities_warehouse.move,product:"
+msgid "Variant"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:stock.reporting.inventory,product:"
+msgid "Product"
+msgstr "Prekė"
+
+msgctxt "selection:stock.reporting.inventory,product:"
+msgid "Variant"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:stock.reporting.inventory.context,product_type:"
+msgid "Product"
+msgstr "Prekė"
+
+msgctxt "selection:stock.reporting.inventory.context,product_type:"
+msgid "Variant"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:stock.reporting.inventory.daily,product:"
+msgid "Product"
+msgstr "Prekė"
+
+msgctxt "selection:stock.reporting.inventory.daily,product:"
+msgid "Variant"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:stock.reporting.inventory.move,product:"
+msgid "Product"
+msgstr "Prekė"
+
+msgctxt "selection:stock.reporting.inventory.move,product:"
+msgid "Variant"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:stock.reporting.inventory.turnover,product:"
+msgid "Product"
+msgstr "Prekė"
+
+msgctxt "selection:stock.reporting.inventory.turnover,product:"
+msgid "Variant"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:stock.reporting.inventory.turnover.context,product_type:"
+msgid "Product"
+msgstr "Prekė"
+
+msgctxt "selection:stock.reporting.inventory.turnover.context,product_type:"
 msgid "Variant"
 msgstr ""
 
@@ -3583,6 +3946,11 @@ msgstr "Operacijos"
 msgctxt "view:stock.move:"
 msgid "Other Info"
 msgstr "Kita informacija"
+
+#, fuzzy
+msgctxt "view:stock.reporting.inventory.daily:"
+msgid "Date"
+msgstr "Data"
 
 msgctxt "view:stock.reporting.margin.category.time_series:"
 msgid "%"

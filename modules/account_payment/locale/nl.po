@@ -143,6 +143,10 @@ msgctxt "field:account.payment,reference:"
 msgid "Reference"
 msgstr "Referentie"
 
+msgctxt "field:account.payment,reference_type:"
+msgid "Reference Type"
+msgstr "Soort referentie"
+
 msgctxt "field:account.payment,state:"
 msgid "State"
 msgstr "Status"
@@ -575,6 +579,11 @@ msgctxt "model:ir.message,text:msg_payment_reconciled"
 msgid "The line \"%(line)s\" of payment \"%(payment)s\" is already reconciled."
 msgstr "De regel \"%(line)s\" van betaling \"%(payment)s\" is alreeds afgeletterd."
 
+#, python-format
+msgctxt "model:ir.message,text:msg_payment_reference_invalid"
+msgid "The %(type)s \"%(reference)s\" on payment \"%(payment)s\" is not valid."
+msgstr "De %(type)s \"%(reference)s\" op betaling \"%(payment)s\" is niet geldig."
+
 msgctxt "model:ir.model.button,confirm:payment_process_wizard_button"
 msgid "Are you sure you want to process the payments?"
 msgstr "Weet u zeker dat u de betalingen wilt uitvoeren?"
@@ -719,6 +728,10 @@ msgstr "Te betalen"
 msgctxt "selection:account.payment,kind:"
 msgid "Receivable"
 msgstr "Te ontvangen"
+
+msgctxt "selection:account.payment,reference_type:"
+msgid "Creditor Reference"
+msgstr "Referentie schuldeiser"
 
 msgctxt "selection:account.payment,state:"
 msgid "Approved"

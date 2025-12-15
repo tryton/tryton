@@ -182,7 +182,6 @@ msgctxt "help:country.subdivision,parent:"
 msgid "Add subdivision below the parent."
 msgstr "Afegiu subdivisions davall del pare."
 
-#, fuzzy
 msgctxt "model:country.country,string:"
 msgid "Country"
 msgstr "País"
@@ -263,17 +262,14 @@ msgctxt "model:country.organization,name:organization_safta"
 msgid "South Asian Free Trade Area"
 msgstr "Àrea de mercat lliure del sud asiàtic"
 
-#, fuzzy
 msgctxt "model:country.organization,string:"
 msgid "Country Organization"
 msgstr "Organització"
 
-#, fuzzy
 msgctxt "model:country.organization.member,string:"
 msgid "Country Organization Member"
 msgstr "Membre de la organitzaió"
 
-#, fuzzy
 msgctxt "model:country.postal_code,string:"
 msgid "Country Postal Code"
 msgstr "Codi postal"
@@ -410,12 +406,10 @@ msgctxt "model:country.region,name:region_world"
 msgid "World"
 msgstr "Món"
 
-#, fuzzy
 msgctxt "model:country.region,string:"
 msgid "Country Region"
-msgstr "Països per regió"
+msgstr "Regió del país"
 
-#, fuzzy
 msgctxt "model:country.subdivision,string:"
 msgid "Country Subdivision"
 msgstr "Subdivisió"
@@ -688,10 +682,9 @@ msgctxt "selection:country.subdivision,type:"
 msgid "Entity"
 msgstr "Entitat"
 
-#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "European collectivity"
-msgstr "Col·lectivitat d'ultramar"
+msgstr "col·lectivitat europea"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Federal Dependency"
@@ -713,10 +706,9 @@ msgctxt "selection:country.subdivision,type:"
 msgid "Federal capital territory"
 msgstr "Territori de capital federal"
 
-#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Federal entity"
-msgstr "Territori federal"
+msgstr "Entitat federal"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Free municipal consortium"
@@ -838,10 +830,9 @@ msgctxt "selection:country.subdivision,type:"
 msgid "Overseas department"
 msgstr "Departament d'ultramar"
 
-#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Overseas departmental collectivity"
-msgstr "Territori col·lectiu d'ultramar"
+msgstr "Col·lectivitat departamental d'ultramar"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Overseas region"
@@ -859,10 +850,9 @@ msgctxt "selection:country.subdivision,type:"
 msgid "Overseas territory"
 msgstr "Territori d'ultamar"
 
-#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Overseas unique territorial collectivity"
-msgstr "Territori col·lectiu d'ultramar"
+msgstr "Col·lectivitat territorial única d'ultramar"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Pakistan administered area"
@@ -972,10 +962,9 @@ msgctxt "selection:country.subdivision,type:"
 msgid "State"
 msgstr "Estat"
 
-#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "State city"
-msgstr "Estat"
+msgstr "Ciutat estatal"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Territorial unit"

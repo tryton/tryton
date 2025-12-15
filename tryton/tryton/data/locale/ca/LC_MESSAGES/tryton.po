@@ -6,8 +6,11 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgid "Toggle notification"
+msgstr "Commuta notificació"
+
 msgid "Make this an _internal message"
-msgstr ""
+msgstr "Fes que això sigui un missatge _intern"
 
 msgid "Send"
 msgstr "Envia"
@@ -522,6 +525,9 @@ msgstr "Expandeix totes les files"
 msgid "Close Tab"
 msgstr "Tanca pestanya"
 
+msgid "All Notifications..."
+msgstr "Totes les notificacions..."
+
 msgid "modularity, scalability and security"
 msgstr "modularitat, escalabilitat i seguretat"
 
@@ -833,11 +839,10 @@ msgid "Add a note to the record"
 msgstr "Afegeix una nota al registre"
 
 msgid "C_hat"
-msgstr ""
+msgstr "Xat"
 
-#, fuzzy
 msgid "Chat on the record"
-msgstr "Afegeix una nota al registre"
+msgstr "Xateja en el registre"
 
 msgid "_Actions..."
 msgstr "_Accions..."
@@ -955,11 +960,11 @@ msgstr "Quin és el nom d'aquesta exportació?"
 msgid "Override '%s' definition?"
 msgstr "Voleu sobreescriure la definició de '%s'?"
 
-#, fuzzy, python-format
+#, python-format
 msgid "%d record saved."
 msgid_plural "%d records saved."
 msgstr[0] "S'ha desat %d registre."
-msgstr[1] "S'ha desat %d registre."
+msgstr[1] "S'han desat %d registres."
 
 msgid "Export failed"
 msgstr "Ha fallat l'exportació"
@@ -1038,11 +1043,11 @@ msgstr "Error"
 msgid "Import failed"
 msgstr "Ha fallat la importació"
 
-#, fuzzy, python-format
+#, python-format
 msgid "%d record imported."
 msgid_plural "%d records imported."
 msgstr[0] "S'ha importat %d registre."
-msgstr[1] "S'ha importat %d registre."
+msgstr[1] "S'han importat %d registres."
 
 msgid "Search"
 msgstr "Cerca"
@@ -1114,9 +1119,8 @@ msgstr "Anomena i desa"
 msgid "Image size too large."
 msgstr "La mida de la imatge és massa gran."
 
-#, fuzzy
 msgid "Reset Column Widths"
-msgstr "Guarda l'ample de la columna"
+msgstr "Restableix l'amplada de les columnes"
 
 msgid "Copy"
 msgstr "Copia"
@@ -1196,7 +1200,7 @@ msgstr "Tots els fitxers"
 msgid "Show plain text"
 msgstr "Mostra com a text pla"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Select a color for \"%s\""
 msgstr "Seleccioneu un color per a \"%s\""
 

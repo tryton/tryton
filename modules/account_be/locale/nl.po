@@ -16,7 +16,7 @@ msgstr "relatie voor belastingidentificatie Party Tax Identifier)"
 
 msgctxt "field:account.be.vat_customer,turnover:"
 msgid "Turnover"
-msgstr "Omzet"
+msgstr "Opbrengst"
 
 msgctxt "field:account.be.vat_customer,vat:"
 msgid "VAT"
@@ -45,3 +45,11 @@ msgstr "Belgische BTW klant"
 msgctxt "model:ir.ui.menu,name:menu_vat_customer"
 msgid "Belgian VAT Customer"
 msgstr "Belgische BTW klant"
+
+msgctxt "selection:account.invoice,supplier_payment_reference_type:"
+msgid "Belgian structured communication"
+msgstr "Belgisch gestructureerde communicatie"
+
+msgctxt "selection:account.payment,reference_type:"
+msgid "Belgian structured communication"
+msgstr "Belgisch gestructureerde communicatie"

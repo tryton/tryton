@@ -178,7 +178,7 @@ msgstr "ID Tranzactie Braintree"
 
 msgctxt "field:account.payment.braintree.refund,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:account.payment.braintree.refund,currency:"
 msgid "Currency"
@@ -267,10 +267,6 @@ msgid "Braintree Checkout"
 msgstr ""
 
 msgctxt "model:ir.action,name:url_checkout"
-msgid "Braintree Checkout"
-msgstr ""
-
-msgctxt "model:ir.action,name:wizard_checkout"
 msgid "Braintree Checkout"
 msgstr ""
 

@@ -140,12 +140,10 @@ msgctxt "model:ir.ui.menu,name:menu_purchase_amendment"
 msgid "Amendments"
 msgstr "Correccions"
 
-#, fuzzy
 msgctxt "model:purchase.amendment,string:"
 msgid "Purchase Amendment"
 msgstr "Correcció de compra"
 
-#, fuzzy
 msgctxt "model:purchase.amendment.line,string:"
 msgid "Purchase Amendment Line"
 msgstr "Línia de correcció de compra"

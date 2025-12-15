@@ -12,7 +12,7 @@ msgstr "Comentariu"
 
 msgctxt "field:project.work,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 msgctxt "field:project.work,effort_duration:"
 msgid "Effort"

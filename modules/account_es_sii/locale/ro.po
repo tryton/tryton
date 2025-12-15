@@ -1,5 +1,4 @@
 #
-#, fuzzy
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -15,7 +14,7 @@ msgstr "URL SII"
 
 msgctxt "field:account.credential.sii,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Societate"
 
 #, fuzzy
 msgctxt "field:account.credential.sii,es_sii_environment:"

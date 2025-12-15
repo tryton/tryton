@@ -98,6 +98,10 @@ msgctxt "field:production,state:"
 msgid "State"
 msgstr "Status"
 
+msgctxt "field:production,type:"
+msgid "Type"
+msgstr "Soort"
+
 msgctxt "field:production,unit:"
 msgid "Unit"
 msgstr "Maateenheid"
@@ -118,6 +122,10 @@ msgctxt "field:production.bom,code_readonly:"
 msgid "Code Readonly"
 msgstr "Alleen-lezen code"
 
+msgctxt "field:production.bom,input_products:"
+msgid "Input Products"
+msgstr "Toegevoerde producten"
+
 msgctxt "field:production.bom,inputs:"
 msgid "Input Materials"
 msgstr "Materiaal invoer"
@@ -134,9 +142,25 @@ msgctxt "field:production.bom,outputs:"
 msgid "Output Materials"
 msgstr "Materiaal uitvoer"
 
+msgctxt "field:production.bom,phantom:"
+msgid "Phantom"
+msgstr "Phantom"
+
+msgctxt "field:production.bom,phantom_quantity:"
+msgid "Quantity"
+msgstr "Hoeveelheid"
+
+msgctxt "field:production.bom,phantom_unit:"
+msgid "Unit"
+msgstr "Eenheid"
+
 msgctxt "field:production.bom.input,bom:"
 msgid "BOM"
 msgstr "Stuklijst"
+
+msgctxt "field:production.bom.input,phantom_bom:"
+msgid "Phantom BOM"
+msgstr "Phantom stuklijst"
 
 msgctxt "field:production.bom.input,product:"
 msgid "Product"
@@ -157,6 +181,10 @@ msgstr "Maateenheid categorie"
 msgctxt "field:production.bom.output,bom:"
 msgid "BOM"
 msgstr "Stuklijst"
+
+msgctxt "field:production.bom.output,phantom_bom:"
+msgid "Phantom BOM"
+msgstr "Phantom stuklijst"
 
 msgctxt "field:production.bom.output,product:"
 msgid "Product"
@@ -291,6 +319,20 @@ msgctxt "help:production,uom_category:"
 msgid "The category of Unit of Measure."
 msgstr "De categorie van de maateenheid."
 
+msgctxt "help:production.bom,phantom:"
+msgid "If checked, the BoM can be used in another BoM."
+msgstr ""
+"Indien aangevinkt kan deze stuklijst gebruikt worden in een andere "
+"stuklijst."
+
+msgctxt "help:production.bom,phantom_quantity:"
+msgid "The quantity of the Phantom BoM"
+msgstr "De hoeveelheid van de phantom stuklijst"
+
+msgctxt "help:production.bom,phantom_unit:"
+msgid "The Unit of Measure of the Phantom BoM"
+msgstr "De maateenheid van de phantom stuklijst"
+
 msgctxt "help:production.configuration,bom_sequence:"
 msgid "Used to generate the BOM code."
 msgstr "Wordt gebruikt om de stuklijst code te genereren."
@@ -398,7 +440,12 @@ msgstr ""
 "catalogusprijs gedefinieerd."
 
 #, python-format
-msgctxt "model:ir.message,text:msg_recursive_bom"
+msgctxt "model:ir.message,text:msg_recursive_bom_bom"
+msgid "You cannot create a recursive BOM for BOM \"%(bom)s\"."
+msgstr "U kunt geen recursieve stuklijst maken voor stuklijst \"%(bom)s\"."
+
+#, python-format
+msgctxt "model:ir.message,text:msg_recursive_bom_product"
 msgid "You cannot create a recursive BOM for product \"%(product)s\"."
 msgstr "U kunt geen recursieve stuklijst maken voor product \"%(product)s\"."
 
@@ -571,9 +618,25 @@ msgctxt "selection:production,state:"
 msgid "Waiting"
 msgstr "In afwachting"
 
+msgctxt "selection:production,type:"
+msgid "Assembly"
+msgstr "Montage"
+
+msgctxt "selection:production,type:"
+msgid "Disassembly"
+msgstr "Demontage"
+
 msgctxt "view:product.template:"
 msgid "Production"
 msgstr "Productie"
+
+msgctxt "view:production.bom.input:"
+msgid "Material"
+msgstr "Materiaal"
+
+msgctxt "view:production.bom.output:"
+msgid "Material"
+msgstr "Materiaal"
 
 msgctxt "view:production.bom:"
 msgid "Lines"

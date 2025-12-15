@@ -2,6 +2,26 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgctxt "field:carrier,shopify_selections:"
+msgid "Shopify Selections"
+msgstr "Seleccions de Shopify"
+
+msgctxt "field:carrier.selection.shopify,carrier:"
+msgid "Carrier"
+msgstr "Transportista"
+
+msgctxt "field:carrier.selection.shopify,code:"
+msgid "Code"
+msgstr "Codi"
+
+msgctxt "field:carrier.selection.shopify,shop:"
+msgid "Shop"
+msgstr "Botiga"
+
+msgctxt "field:carrier.selection.shopify,title:"
+msgid "Title"
+msgstr "Títol"
+
 msgctxt "field:product.attribute.set,shopify_option1:"
 msgid "Option 1"
 msgstr "Opció 1"
@@ -13,6 +33,10 @@ msgstr "Opció 2"
 msgctxt "field:product.attribute.set,shopify_option3:"
 msgid "Option 3"
 msgstr "Opció 3"
+
+msgctxt "field:product.product,shopify_handle:"
+msgid "Shopify Handle"
+msgstr "Identificador únic de Shopify"
 
 msgctxt "field:product.product,shopify_sku:"
 msgid "SKU"
@@ -26,9 +50,21 @@ msgctxt "field:product.shopify_inventory_item,product:"
 msgid "Product"
 msgstr "Producte"
 
+msgctxt "field:product.template,shopify_handle:"
+msgid "Shopify Handle"
+msgstr "Identificador únic de Shopify"
+
 msgctxt "field:product.template,shopify_uom:"
 msgid "Shopify UoM"
 msgstr "UdM Shopify"
+
+msgctxt "field:sale.line,shopify_warehouse:"
+msgid "Shopify Warehouse"
+msgstr "Magatzems shopify"
+
+msgctxt "field:sale.sale,shopify_status_url:"
+msgid "Shopify Status URL"
+msgstr "URL estat Shopify"
 
 msgctxt "field:sale.sale,shopify_tax_adjustment:"
 msgid "Shopify Tax Adjustment"
@@ -41,6 +77,10 @@ msgstr "Venda"
 msgctxt "field:stock.shipment.shopify_identifier,shipment:"
 msgid "Shipment"
 msgstr "Albarà"
+
+msgctxt "field:web.shop,shopify_fulfillment_notify_customer:"
+msgid "Notify Customer about Fulfillment"
+msgstr "Notificar al client sobre l'enviament"
 
 msgctxt "field:web.shop,shopify_password:"
 msgid "Access Token"
@@ -106,9 +146,45 @@ msgctxt "field:web.shop.shopify_payment_journal,shop:"
 msgid "Shop"
 msgstr "Botiga"
 
+msgctxt "help:carrier,shopify_selections:"
+msgid ""
+"Define the criteria that will match this carrier with the Shopify shipping "
+"methods."
+msgstr ""
+"Defineix el criteri per a seleccionar el transportista amb els métodes "
+"d'enviament de Shopify."
+
+msgctxt "help:carrier.selection.shopify,code:"
+msgid "The code of the shipping line."
+msgstr "El códi de la línia d'enviament."
+
+msgctxt "help:carrier.selection.shopify,title:"
+msgid ""
+"A regular expression to match the shipping line title.\n"
+"Leave empty to allow any title."
+msgstr ""
+"Expressió regular per vincular el títol de la línea d'enviament.\n"
+"Deixeu en blanc per a qualsevol títol."
+
+msgctxt "help:product.product,shopify_handle:"
+msgid ""
+"The string that's used to identify the product in URLs.\n"
+"Leave empty to let Shopify generate one."
+msgstr ""
+"La cadena que s'utilitzar per identificar el producte en les URLs.\n"
+"Deixa-ho en blanc per a que Shopify en generi una."
+
 msgctxt "help:product.product,shopify_uom:"
 msgid "The Unit of Measure of the product on Shopify."
 msgstr "La unitat de mesura del producte a Shopify."
+
+msgctxt "help:product.template,shopify_handle:"
+msgid ""
+"The string that's used to identify the product in URLs.\n"
+"Leave empty to let Shopify generate one."
+msgstr ""
+"La cadena que s'utilitzar per identificar el producte en les URLs.\n"
+"Deixa-ho en blanc per a que Shopify en generi una."
 
 msgctxt "help:product.template,shopify_uom:"
 msgid "The Unit of Measure of the product on Shopify."
@@ -127,6 +203,10 @@ msgid "The payment gateway name for which the journal must be used."
 msgstr ""
 "El nom de la passarel·la de pagament per a la qual s’ha d’utilitzar el "
 "diari."
+
+msgctxt "model:carrier.selection.shopify,string:"
+msgid "Carrier Selection Shopify"
+msgstr "Selecció transportista Shopify"
 
 msgctxt "model:ir.action,name:act_shop_shopify_identifier_form"
 msgid "Shopify Identifiers"
@@ -180,12 +260,12 @@ msgid "The shipment can not have more than one Shopify identifier per sale."
 msgstr "L’albarà no pot tenir més d’un identificador de Shopify per venda."
 
 #, python-format
-msgctxt "model:ir.message,text:msg_inventory_item_fail"
+msgctxt "model:ir.message,text:msg_inventory_set_fail"
 msgid ""
-"Failed to save inventory item for product \"%(product)s\" with error:\n"
+"Failed to set inventory with error:\n"
 "%(error)s"
 msgstr ""
-"No s'ha pogut desar l'article d'inventari del producte \"%(product)s\" amb error:\n"
+"No s'ha pogut establir l'inventari amb error:\n"
 "%(error)s"
 
 msgctxt "model:ir.message,text:msg_location_id_unique"
@@ -193,30 +273,12 @@ msgid "Each Shopify location can only be linked to one warehouse."
 msgstr "Cada ubicació de Shopify només es pot enllaçar a un magatzem."
 
 #, python-format
-msgctxt "model:ir.message,text:msg_product_change_template"
-msgid ""
-"To change the template of product \"%(product)s\" you must unpublish it from"
-" the Shopify web shops."
-msgstr ""
-"Per canviar la plantilla del producte \"%(product)s\" l'heu de despublicar "
-"de les botigues web de Shopify."
-
-#, python-format
 msgctxt "model:ir.message,text:msg_product_fail"
 msgid ""
-"Failed to save product \"%(template)s\" with error:\n"
+"Failed to create/update product \"%(template)s\" with error:\n"
 "%(error)s"
 msgstr ""
-"No s'ha pogut desar el producte \"%(template)s\" amb l'error:\n"
-"%(error)s"
-
-#, python-format
-msgctxt "model:ir.message,text:msg_product_image_fail"
-msgid ""
-"Failed to save image \"%(image)s\" for product \"%(template)s\" with error:\n"
-"%(error)s"
-msgstr ""
-"No s'ha pogut desar la imatge \"%(image)s\" per al producte \"%(template)s\" amb error:\n"
+"No s'ha pogut crear/actualitzar el producte \"%(template)s\" amb l'error:\n"
 "%(error)s"
 
 #, python-format
@@ -245,6 +307,24 @@ msgid ""
 msgstr ""
 "Per processar la venda \"%(sale)s\", heu d'establir un producte a la línia "
 "\"%(line)s\"."
+
+#, python-format
+msgctxt "model:ir.message,text:msg_sale_line_without_warehouse"
+msgid ""
+"To process the sale \"%(sale)s\" you must set a unique location for the line"
+" \"%(line)s\" on Shopify."
+msgstr ""
+"Per processar la venda \"%(sale)s\", heu d'establir una única ubicació a la "
+"línia \"%(line)s\" de Shopify."
+
+#, python-format
+msgctxt "model:ir.message,text:msg_shipment_cancelled_draft_shopify"
+msgid ""
+"You cannot reset shipment \"%(shipment)s\" to draft because it is linked to "
+"a Shopify fulfillment."
+msgstr ""
+"No es pot restablir l'albarà \"%(shipment)s\" a esborrany perquè esta "
+"vincular amb un enviament de Shopify."
 
 #, python-format
 msgctxt "model:ir.message,text:msg_shop_currency_different"
@@ -276,14 +356,22 @@ msgctxt "model:ir.message,text:msg_shopify_identifiers"
 msgid "Shopify Identifiers"
 msgstr "Identificadors de Shopify"
 
+msgctxt "model:ir.message,text:msg_shopify_url"
+msgid "Shopify URL"
+msgstr "URL Shopify"
+
 #, python-format
-msgctxt "model:ir.message,text:msg_variant_fail"
+msgctxt "model:ir.message,text:msg_template_shopify_handle_invalid"
 msgid ""
-"Failed to save variant \"%(product)s\" with error:\n"
-"%(error)s"
+"The Shopify Handle \"%(handle)s\" of product \"%(template)s\" can contain "
+"only lowercase letters, hyphens, and numbers."
 msgstr ""
-"No s'ha pogut desar la variant \"%(product)s\" amb l'error:\n"
-"%(error)s"
+"El identificador únic de shopify \"%(handle)s\" del producte "
+"\"%(template)s\" només pot tenir lletres mínuscules, guions y números."
+
+msgctxt "model:ir.message,text:msg_template_shopify_handle_unique"
+msgid "The Shopify Handle of product must be unique."
+msgstr "El identificador únic de shopify ha de ser únic."
 
 msgctxt ""
 "model:ir.model.button,string:shop_shopify_identifier_set_to_update_button"
@@ -298,22 +386,18 @@ msgctxt "model:ir.ui.menu,name:menu_stock_shipment_shopify_identifier_form"
 msgid "Shipment Identifiers"
 msgstr "Identificadors d'albarà"
 
-#, fuzzy
 msgctxt "model:product.shopify_inventory_item,string:"
 msgid "Product Shopify Inventory Item"
-msgstr "Article d’inventari de Shopify"
+msgstr "Inventari de productes de Shopify"
 
-#, fuzzy
 msgctxt "model:stock.shipment.shopify_identifier,string:"
 msgid "Stock Shipment Shopify Identifier"
 msgstr "Identificador d'albarà de Shopify"
 
-#, fuzzy
 msgctxt "model:web.shop.shopify_identifier,string:"
 msgid "Web Shop Shopify Identifier"
 msgstr "Identificador de Shopify"
 
-#, fuzzy
 msgctxt "model:web.shop.shopify_payment_journal,string:"
 msgid "Web Shop Shopify Payment Journal"
 msgstr "Diari de pagament de Shopify"
@@ -345,6 +429,10 @@ msgstr "Albarà de client"
 msgctxt "selection:web.shop,type:"
 msgid "Shopify"
 msgstr "Shopify"
+
+msgctxt "view:carrier.selection.shopify:"
+msgid "Criteria"
+msgstr "Criteri"
 
 msgctxt "view:product.attribute.set:"
 msgid "Shopify Options"

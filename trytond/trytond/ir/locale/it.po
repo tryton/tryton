@@ -676,6 +676,11 @@ msgctxt "field:ir.email,body:"
 msgid "Body"
 msgstr "Corpo"
 
+#, fuzzy
+msgctxt "field:ir.email,message_id:"
+msgid "Message-ID"
+msgstr "Messaggio"
+
 msgctxt "field:ir.email,recipients:"
 msgid "Recipients"
 msgstr ""
@@ -1306,9 +1311,10 @@ msgctxt "field:ir.model.print_model_graph.start,level:"
 msgid "Level"
 msgstr "Livello"
 
+#, fuzzy
 msgctxt "field:ir.module,childs:"
-msgid "Childs"
-msgstr "Figli"
+msgid "Children"
+msgstr "Figlio"
 
 msgctxt "field:ir.module,dependencies:"
 msgid "Dependencies"
@@ -1620,6 +1626,11 @@ msgstr "Gruppo"
 msgctxt "field:ir.sequence.type-res.group,sequence_type:"
 msgid "Sequence Type"
 msgstr "Sequence Types"
+
+#, fuzzy
+msgctxt "field:ir.session,ip_address:"
+msgid "IP Address"
+msgstr "Email"
 
 msgctxt "field:ir.session,key:"
 msgid "Key"
@@ -2581,6 +2592,10 @@ msgctxt "model:ir.action,name:report_model_workflow_graph"
 msgid "Workflow Graph"
 msgstr "Workflow Graph"
 
+msgctxt "model:ir.action,name:wizard_model_refresh_materialized"
+msgid "Refresh Data"
+msgstr ""
+
 #, fuzzy
 msgctxt "model:ir.action,name:wizard_translation_report"
 msgid "Translations"
@@ -3114,6 +3129,10 @@ msgstr "Allegati"
 
 msgctxt "model:ir.message,text:msg_avatar"
 msgid "Avatar"
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_avatar_image_error"
+msgid "Can not open or identify the image set as avatar."
 msgstr ""
 
 msgctxt "model:ir.message,text:msg_avatar_resource_unique"
@@ -3697,6 +3716,11 @@ msgid ""
 "column %(column)d."
 msgstr "Too many relations found: %r in %s"
 
+#, fuzzy
+msgctxt "model:ir.message,text:msg_translation_export_default_lang"
+msgid "To export translations, the default language must be \"English\"."
+msgstr "Il linguaggio predefinito dev'essere traducibile"
+
 #, python-format
 msgctxt "model:ir.message,text:msg_translation_overridden"
 msgid ""
@@ -3705,6 +3729,11 @@ msgid ""
 msgstr ""
 "Traduzione %(name)s non esportabile perche superata dal modulo "
 "%(overriding_module)s."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_translation_set_default_lang"
+msgid "To set translations, the default language must be \"English\"."
+msgstr "Il linguaggio predefinito dev'essere traducibile"
 
 #, fuzzy
 msgctxt "model:ir.message,text:msg_trigger_exclusive"
@@ -3822,29 +3851,29 @@ msgctxt "model:ir.model.button,string:lang_unload_translations_button"
 msgid "Unload translations"
 msgstr "Pulire la traduzione"
 
+#, fuzzy
 msgctxt "model:ir.model.button,string:module_activate_button"
-msgid "Mark for Activation"
-msgstr "Mark for Activation"
+msgid "Activate"
+msgstr "Attivata"
 
-msgctxt "model:ir.model.button,string:module_activate_cancel_button"
-msgid "Cancel Activation"
-msgstr "Cancel Activation"
+msgctxt "model:ir.model.button,string:module_apply_button"
+msgid "Apply"
+msgstr ""
 
+#, fuzzy
+msgctxt "model:ir.model.button,string:module_cancel_button"
+msgid "Cancel"
+msgstr "Annulla"
+
+#, fuzzy
 msgctxt "model:ir.model.button,string:module_deactivate_button"
-msgid "Mark for Deactivation (beta)"
+msgid "Deactivate (beta)"
 msgstr "Mark for Deactivation (beta)"
 
-msgctxt "model:ir.model.button,string:module_deactivate_cancel_button"
-msgid "Cancel Deactivation"
-msgstr "Cancel Deactivation"
-
+#, fuzzy
 msgctxt "model:ir.model.button,string:module_upgrade_button"
-msgid "Mark for Upgrade"
-msgstr "Mark for Upgrade"
-
-msgctxt "model:ir.model.button,string:module_upgrade_cancel_button"
-msgid "Cancel Upgrade"
-msgstr "Cancel Upgrade"
+msgid "Upgrade"
+msgstr "Avvia l'upgrade"
 
 msgctxt "model:ir.model.button,string:view_show_button"
 msgid "Show"
@@ -4193,11 +4222,6 @@ msgstr ""
 msgctxt "model:ir.ui.menu,name:menu_models"
 msgid "Models"
 msgstr "Models"
-
-#, fuzzy
-msgctxt "model:ir.ui.menu,name:menu_module_activate_upgrade"
-msgid "Perform Pending Activation/Upgrade"
-msgstr "Perform Pending Activation/Upgrade"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_module_form"
@@ -4566,6 +4590,10 @@ msgid "Clean Task Queue"
 msgstr "Pulizia Traduzioni riuscita"
 
 msgctxt "selection:ir.cron,method:"
+msgid "Refresh Materialized Models"
+msgstr ""
+
+msgctxt "selection:ir.cron,method:"
 msgid "Run On Time Triggers"
 msgstr ""
 
@@ -4793,10 +4821,6 @@ msgctxt "view:ir.cron:"
 msgid "Next Call Time"
 msgstr "Prossima Call"
 
-msgctxt "view:ir.cron:"
-msgid "Run Once"
-msgstr "esegui una volta"
-
 msgctxt "view:ir.email.template:"
 msgid "Hidden Recipients:"
 msgstr ""
@@ -4869,30 +4893,6 @@ msgid ""
 "You will be able to configure your installation depending on the modules you"
 " have installed."
 msgstr "Installazione configurabile dall'utente in base ai moduli installati"
-
-msgctxt "view:ir.module:"
-msgid "Cancel Activation"
-msgstr "annulla attivazione"
-
-msgctxt "view:ir.module:"
-msgid "Cancel Deactivation"
-msgstr "annulla deattivazione"
-
-msgctxt "view:ir.module:"
-msgid "Cancel Upgrade"
-msgstr "Cancellare l'upgrade"
-
-msgctxt "view:ir.module:"
-msgid "Mark for Activation"
-msgstr "spuntare per attivare"
-
-msgctxt "view:ir.module:"
-msgid "Mark for Deactivation (beta)"
-msgstr "spuntare per deattivare (beta)"
-
-msgctxt "view:ir.module:"
-msgid "Mark for Upgrade"
-msgstr "Seleziona per upgrade"
 
 msgctxt "view:ir.note:"
 msgid "Date"
