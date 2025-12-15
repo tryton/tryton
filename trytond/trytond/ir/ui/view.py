@@ -1,6 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import json
+import logging
 import os
 
 from lxml import etree
@@ -18,6 +19,8 @@ from trytond.transaction import Transaction
 from trytond.wizard import Button, StateView, Wizard
 
 from ..action import DomainError, ViewError
+
+logger = logging.getLogger(__name__)
 
 # Numbers taken from Bootstrap's breakpoints
 WIDTH_BREAKPOINTS = [
@@ -265,7 +268,7 @@ class View(
                         subdir='modules', mode='r', encoding='utf-8') as fp:
                     value = fp.read()
             except IOError:
-                pass
+                logger.exception("failed to open %r", path)
         if not value:
             value = self.data
         return value
