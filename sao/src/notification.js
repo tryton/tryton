@@ -6,6 +6,7 @@
 
     class _NotificationMenu {
         constructor() {
+            this.notify = this.notify.bind(this);
             this.el = jQuery('<ul/>', {
                 'class': 'notification-menu dropdown-menu',
                 'role': 'menu',

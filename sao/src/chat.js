@@ -5,8 +5,9 @@
 
     class _Chat {
         constructor(record) {
+            this.notify = this.notify.bind(this);
             this.record = record;
-            Sao.Bus.register(`chat:${this.record}`, this.notify.bind(this));
+            Sao.Bus.register(`chat:${this.record}`, this.notify);
             this.el = this.__build();
         }
 
