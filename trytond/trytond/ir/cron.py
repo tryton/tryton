@@ -312,7 +312,7 @@ class Cron(DeactivableMixin, ModelSQL, ModelView):
     @classmethod
     def notify(
             cls, icon, action_id, action_value,
-            message_id, n=None, **variables):
+            message_id, n=None, user_domain=None, **variables):
         "Notify subscribed users to the current cron task"
         pool = Pool()
         User = pool.get('res.user')
@@ -325,9 +325,12 @@ class Cron(DeactivableMixin, ModelSQL, ModelView):
                 action_id = ModelData.get_id(action_id)
             if action_value is not None and not isinstance(action_value, str):
                 action_value = json.dumps(action_value)
-            users = User.search([
-                    ('notifications', 'in', method),
-                    ])
+            domain = [
+                ('notifications', 'in', method),
+                ]
+            if user_domain is not None:
+                domain.append(user_domain)
+            users = User.search(domain)
             for language, users in groupby(
                     users, key=lambda u: u.language):
                 language = language.code if language else None
