@@ -286,7 +286,7 @@ class View(ModelSQL, ModelView):
                 position = element.get('position', 'inside')
                 new_tree = getattr(cls, '_inherit_apply_%s' % position)(
                     tree, element, target)
-                if new_tree:
+                if new_tree is not None:
                     tree = new_tree
         return tree
 
