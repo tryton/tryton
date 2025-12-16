@@ -614,8 +614,7 @@ var Sao = {
                                 let user_id = Sao.Session.current_session.user_id;
                                 Sao.Bus.register(
                                     `notification:${user_id}`,
-                                    Sao.NotificationMenu.notify
-                                    .bind(Sao.NotificationMenu));
+                                    Sao.NotificationMenu.notify);
                                 Sao.NotificationMenu.count();
                                 Sao.Bus.listen();
 
@@ -642,7 +641,7 @@ var Sao = {
             jQuery('#menu').empty();
             let user_id = Sao.Session.current_session.user_id;
             Sao.Bus.unregister(
-                `notification:${user_id}`, Sao.NotificationMenu.update);
+                `notification:${user_id}`, Sao.NotificationMenu.notify);
             session.do_logout().always(Sao.login);
             Sao.set_title();
         });
