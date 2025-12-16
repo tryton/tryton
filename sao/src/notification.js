@@ -41,9 +41,11 @@
                     }).append(jQuery('<span/>', {
                         'class': 'notification-label',
                         'text': notification.label,
+                        'title': notification.label,
                     })).append(jQuery('<span/>', {
                         'class': 'notification-description',
-                        'text': notification.description
+                        'text': notification.description,
+                        'title': notification.description,
                     }));
                     let link = jQuery('<a/>', {
                         'role': 'menuitem',
