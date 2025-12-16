@@ -2,6 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 import datetime
 import hashlib
+import json
 import logging
 import random
 import time
@@ -322,6 +323,8 @@ class Cron(DeactivableMixin, ModelSQL, ModelView):
             notifications = []
             if action_id is not None:
                 action_id = ModelData.get_id(action_id)
+            if action_value is not None and not isinstance(action_value, str):
+                action_value = json.dumps(action_value)
             users = User.search([
                     ('notifications', 'in', method),
                     ])
