@@ -582,6 +582,7 @@ class Form(TabContent):
         has_views = self.screen.number_of_views > 1
         if selected > 1:
             name += '#%i' % selected
+        sensitive = record_id >= 0 if record_id is not None else False
         for button_id in ['print', 'relate', 'email', 'open', 'attach']:
             button = self.buttons[button_id]
             can_be_sensitive = getattr(button, '_can_be_sensitive', True)
@@ -592,7 +593,7 @@ class Form(TabContent):
                 can_be_sensitive |= any(
                     b.attrs.get('keyword', 'action') == action_type
                     for b in self.screen.get_buttons())
-            set_sensitive(button_id, bool(position) and can_be_sensitive)
+            set_sensitive(button_id, sensitive and can_be_sensitive)
         set_sensitive(
             'switch',
             (position or view_type == 'form' or next_view_type != 'form')
