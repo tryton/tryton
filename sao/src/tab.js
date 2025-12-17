@@ -1515,6 +1515,9 @@
             const view_type = this.screen.current_view.view_type;
             var next_view_type = this.screen.next_view_type;
             const has_views = this.screen.number_of_views > 1;
+            let sensitive = (
+                record_id >= 0 ? record_id !== null && record_id !== undefined :
+                false);
             var buttons = ['print', 'relate', 'email', 'attach'];
             for (const button_id of buttons) {
                 const button = this.buttons[button_id];
@@ -1531,7 +1534,7 @@
                             return keyword == button_id;
                         });
                 }
-                set_sensitive(button_id, position && can_be_sensitive);
+                set_sensitive(button_id, sensitive && can_be_sensitive);
             }
             set_sensitive(
                 'switch_',
