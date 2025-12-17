@@ -917,13 +917,14 @@ class Identifier(sequence_ordered(), DeactivableMixin, ModelSQL, ModelView):
         notifications.extend(self._notify_duplicate())
         return notifications
 
-    @fields.depends('code', methods=['on_change_with_code'])
+    @fields.depends('party', 'code', methods=['on_change_with_code'])
     def _notify_duplicate(self):
         cls = self.__class__
         if self.code:
             code = self.on_change_with_code()
             others = cls.search([
                     ('id', '!=', self.id),
+                    ('party', '!=', self.party),
                     ('type', '!=', None),
                     ('code', '=', code),
                     ], limit=1)
