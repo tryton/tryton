@@ -1604,6 +1604,7 @@
                     this._chat.refresh();
                     this.sidebar_content.append(this._chat.el);
                 }
+                this.update_sidebar();
             }
         },
         record_modified: function() {

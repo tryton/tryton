@@ -658,6 +658,8 @@ class Form(TabContent):
                 self.chat.add(self._chat.widget)
                 self.chat.show_all()
                 self._chat.refresh()
+            else:
+                self.buttons['chat'].set_active(False)
 
     def record_modified(self):
         def _record_modified():
