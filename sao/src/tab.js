@@ -1406,9 +1406,11 @@
             if (chat.length) {
                 chat.remove();
             } else {
-                this._chat = new Sao.Chat(this.screen.current_reference);
-                this._chat.refresh();
-                this.sidebar_content.append(this._chat.el);
+                if (this.screen.current_reference) {
+                    this._chat = new Sao.Chat(this.screen.current_reference);
+                    this._chat.refresh();
+                    this.sidebar_content.append(this._chat.el);
+                }
             }
             this.update_sidebar();
         },
