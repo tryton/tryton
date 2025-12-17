@@ -265,7 +265,7 @@ class Form(TabContent):
                 button.props.active = True
             return
 
-        if button.get_active():
+        if button.get_active() and self.screen.current_reference:
             self._chat = Chat(self.screen.current_reference)
             self.chat.pack_start(self._chat.widget, True, True, padding=3)
             self.chat.show_all()
