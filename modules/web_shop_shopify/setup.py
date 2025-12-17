@@ -63,7 +63,6 @@ tests_require = [
     get_require_version('trytond_sale_invoice_grouping'),
     get_require_version('trytond_sale_secondary_unit'),
     get_require_version('trytond_sale_shipment_cost'),
-    get_require_version('trytond_sale_secondary_unit'),
     get_require_version('trytond_stock_package_shipping'),
     get_require_version('trytond_party[phonenumbers]'),
     ]
