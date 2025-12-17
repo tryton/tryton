@@ -3639,21 +3639,22 @@
                     'white-space': 'pre-wrap',
                     'word-break': 'break-all',
                 }));
-            alert_.append(jQuery('<p/>').append(jQuery('<a/>', {
-                'class': 'btn btn-default',
-                role: 'button',
-                'data-toggle': 'collapse',
-                'data-target': '#error-detail',
-                'aria-expanded': false,
-                'aria-controls': '#error-detail',
-            }).text(Sao.i18n.gettext("Details"))));
             if (details) {
-                alert_.append(jQuery('<p/>', {
-                    'class': 'collapse',
-                    id: 'error-detail',
-                }).append(jQuery('<pre/>', {
-                    'class': 'pre-scrollable',
-                }).text(details)));
+                alert_.append(
+                    jQuery('<p/>').append(jQuery('<a/>', {
+                        'class': 'btn btn-default',
+                        role: 'button',
+                        'data-toggle': 'collapse',
+                        'data-target': '#error-detail',
+                        'aria-expanded': false,
+                        'aria-controls': '#error-detail',
+                    }).text(Sao.i18n.gettext("Details"))))
+                    .append(jQuery('<p/>', {
+                        'class': 'collapse',
+                        id: 'error-detail',
+                    }).append(jQuery('<pre/>', {
+                        'class': 'pre-scrollable',
+                    }).text(details)));
             }
             jQuery('<a/>', {
                 'class': 'btn btn-link',
