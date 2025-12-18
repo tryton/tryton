@@ -11,9 +11,13 @@ from trytond.tests.test_tryton import TestCase
 from trytond.tools.immutabledict import ImmutableDict
 
 
+def _identity(x):
+    return x
+
+
 class DumpsLoadsMixin:
 
-    def dumps_loads(self, value):
+    def dumps_loads(self, value, test=_identity):
         raise NotImplementedError
 
     def test_datetime(self):
@@ -49,6 +53,14 @@ class DumpsLoadsMixin:
         "Test ImmutableDict"
         self.dumps_loads(ImmutableDict(foo='bar'))
 
+    def test_set(self):
+        "Test set"
+        self.dumps_loads(set(range(10)), list)
+
+    def test_frozenset(self):
+        "Test set"
+        self.dumps_loads(frozenset(range(10)), list)
+
     def test_none(self):
         'Test None'
         self.dumps_loads(None)
@@ -67,10 +79,11 @@ class JSONTestCase(DumpsLoadsMixin, TestCase):
         self.assertEqual(req.rpc_method, 'method')
         self.assertEqual(req.rpc_params, ['foo', 'bar'])
 
-    def dumps_loads(self, value):
+    def dumps_loads(self, value, type=_identity):
         self.assertEqual(json.loads(
                 json.dumps(value, cls=JSONEncoder),
-                object_hook=JSONDecoder()), value)
+                object_hook=JSONDecoder()),
+            type(value))
 
 
 class XMLTestCase(DumpsLoadsMixin, TestCase):
@@ -95,11 +108,10 @@ class XMLTestCase(DumpsLoadsMixin, TestCase):
         self.assertEqual(req.rpc_method, 'method')
         self.assertEqual(req.rpc_params, ('foo', 'bar'))
 
-    def dumps_loads(self, value):
+    def dumps_loads(self, value, type=_identity):
         s = client.dumps((value,), allow_none=True)
-        result, _ = client.loads(s)
-        result, = result
-        self.assertEqual(value, result)
+        (result,), _ = client.loads(s)
+        self.assertEqual(result, type(value))
 
     def test_decimal_class_load(self):
         "Test load Decimal as __class__"
