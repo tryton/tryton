@@ -237,22 +237,30 @@ class EdocumentUblTestCase(ModuleTestCase):
         pool = Pool()
         Identifier = pool.get('party.identifier')
 
-        for type, code, eas_code, eas in [
-                ('gr_vat', '023456783', '9933', 'el023456783'),
-                ('eu_vat', 'EL023456783', '9933', 'el023456783'),
-                ('eu_vat', 'GR023456783', '9933', 'el023456783'),
-                ('be_vat', '0403019261', '9925', 'be0403019261'),
-                ('eu_vat', 'BE0403019261', '9925', 'be0403019261'),
-                ('gb_vat', '980780684', '9932', 'gb980780684'),
-                ('eu_vat', 'GB980780684', '9932', 'gb980780684'),
-                ('eu_vat', 'XI980780684', '9932', 'gb980780684'),
+        for type, code, eas_code, eas, vatin in [
+                ('gr_vat', '023456783',
+                    '9933', 'el023456783', 'EL023456783'),
+                ('eu_vat', 'EL023456783',
+                    '9933', 'el023456783', 'EL023456783'),
+                ('eu_vat', 'GR023456783',
+                    '9933', 'el023456783', 'EL023456783'),
+                ('be_vat', '0403019261',
+                    '9925', 'be0403019261', 'BE0403019261'),
+                ('eu_vat', 'BE0403019261',
+                    '9925', 'be0403019261', 'BE0403019261'),
+                ('gb_vat', '980780684',
+                    '9932', 'gb980780684', 'GB980780684'),
+                ('eu_vat', 'GB980780684',
+                    '9932', 'gb980780684', 'GB980780684'),
+                ('eu_vat', 'XI980780684',
+                    '9932', 'gb980780684', 'GB980780684'),
                 ]:
             with self.subTest(type=type, code=code):
                 identifier = Identifier(type=type, code=code)
 
                 self.assertEqual(identifier.eas_code, eas_code)
                 self.assertEqual(identifier.eas, eas)
-                self.assertEqual(identifier.vatin, eas)
+                self.assertEqual(identifier.vatin, vatin)
 
 
 del ModuleTestCase
