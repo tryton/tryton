@@ -130,4 +130,4 @@ class Identifier(metaclass=PoolMeta):
                 code = self.code[2:]
             else:
                 code = self.code
-            return f'{country}{code}'.lower()
+            return f'{country}{code}'.upper()
