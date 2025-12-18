@@ -86,6 +86,8 @@ def dump_struct(self, value, write, escape=client.escape):
 client.Marshaller.dispatch[dict] = dump_struct
 client.Marshaller.dispatch[ImmutableDict] = dump_struct
 client.Marshaller.dispatch[MappingProxyType] = dump_struct
+client.Marshaller.dispatch[set] = client.Marshaller.dump_array
+client.Marshaller.dispatch[frozenset] = client.Marshaller.dump_array
 
 
 class XMLRPCDecoder(object):

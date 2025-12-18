@@ -101,6 +101,8 @@ JSONEncoder.register(datetime.timedelta,
         'seconds': o.total_seconds(),
         })
 JSONEncoder.register(MappingProxyType, dict)
+JSONEncoder.register(set, tuple)
+JSONEncoder.register(frozenset, tuple)
 
 
 def _bytes_encoder(o):
