@@ -13,6 +13,7 @@ from trytond.i18n import gettext
 from trytond.model import fields
 from trytond.modules.edocument_peppol.exceptions import PeppolServiceError
 from trytond.pool import Pool, PoolMeta
+from trytond.protocols.wrappers import HTTPStatus
 from trytond.pyson import Eval
 from trytond.transaction import Transaction
 
@@ -86,7 +87,7 @@ class PeppolService(metaclass=PoolMeta):
                 'Accept': 'application/json',
                 'X-Api-Key': self.peppyrus_api_key,
                 })
-        if response.status_code == 422:
+        if response.status_code == HTTPStatus.UNPROCESSABLE_CONTENT:
             raise PeppolServiceError(response.json())
         response.raise_for_status()
         return response.json()['id']
@@ -193,7 +194,7 @@ class PeppolService(metaclass=PoolMeta):
                         'Accept': 'application/json',
                         'X-Api-Key': api_key,
                         })
-                if response.status_code != 404:
+                if response.status_code != HTTPStatus.NOT_FOUND:
                     response.raise_for_status()
             except Exception:
                 if not silent:

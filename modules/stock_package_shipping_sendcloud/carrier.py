@@ -178,7 +178,7 @@ class CredentialSendcloud(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
         response = requests.post(
             SENDCLOUD_API_URL + 'parcels', json={'parcels': parcels},
             auth=self.auth, timeout=timeout, headers=HEADERS)
-        if response.status_code == 400:
+        if response.status_code == HTTPStatus.BAD_REQUEST:
             msg = response.json()['error']['message']
             raise requests.HTTPError(msg, response=response)
         response.raise_for_status()

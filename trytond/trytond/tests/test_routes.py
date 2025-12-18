@@ -5,7 +5,7 @@ import base64
 import json
 
 from trytond.pool import Pool
-from trytond.protocols.wrappers import Response
+from trytond.protocols.wrappers import HTTPStatus, Response
 from trytond.tests.test_tryton import (
     DB_NAME, Client, TestCase, activate_module, drop_db)
 from trytond.transaction import Transaction
@@ -50,7 +50,7 @@ class RoutesTestCase(TestCase):
 
         response = c.get(self.data_url('res.user'), headers=self.auth_headers)
 
-        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.status_code, HTTPStatus.OK)
         self.assertEqual(response.data, b'\r\n\r\n')
 
     def test_data_one_field(self):
@@ -61,7 +61,7 @@ class RoutesTestCase(TestCase):
             self.data_url('res.user'), headers=self.auth_headers,
             query_string=[('f', 'name')])
 
-        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.status_code, HTTPStatus.OK)
         self.assertEqual(response.data, b'Nom\r\nAdministrator\r\n')
 
     def test_data_multiple_fields(self):
@@ -72,7 +72,7 @@ class RoutesTestCase(TestCase):
             self.data_url('res.user'), headers=self.auth_headers,
             query_string=[('f', 'name'), ('f', 'login')])
 
-        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.status_code, HTTPStatus.OK)
         self.assertEqual(
             response.data, b'Nom,Identifiant\r\nAdministrator,admin\r\n')
 
@@ -88,7 +88,7 @@ class RoutesTestCase(TestCase):
                 ('d', json.dumps([('code', '=', 'fr')])),
                 ])
 
-        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.status_code, HTTPStatus.OK)
         self.assertEqual(response.data, 'Nom\r\nFrançais\r\n'.encode('utf-8'))
 
     def test_data_size(self):
@@ -102,7 +102,7 @@ class RoutesTestCase(TestCase):
                 ('s', 5),
                 ])
 
-        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.status_code, HTTPStatus.OK)
         self.assertEqual(len(response.data.splitlines()), 5 + 1)
 
     def test_data_page(self):
@@ -124,8 +124,8 @@ class RoutesTestCase(TestCase):
                 ('p', 1)
                 ])
 
-        self.assertEqual(response0.status_code, 200)
-        self.assertEqual(response1.status_code, 200)
+        self.assertEqual(response0.status_code, HTTPStatus.OK)
+        self.assertEqual(response1.status_code, HTTPStatus.OK)
         self.assertNotEqual(response0.data, response1.data)
 
     def test_data_encoding(self):
@@ -141,7 +141,7 @@ class RoutesTestCase(TestCase):
                 ('enc', 'latin1'),
                 ])
 
-        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.status_code, HTTPStatus.OK)
         self.assertEqual(
             response.data, 'Nom\r\nFrançais\r\n'.encode('latin1'))
 
@@ -153,7 +153,7 @@ class RoutesTestCase(TestCase):
             self.data_url('res.user'), headers=self.auth_headers,
             query_string=[('f', 'name'), ('f', 'login'), ('dl', '|')])
 
-        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.status_code, HTTPStatus.OK)
         self.assertEqual(
             response.data, b'Nom|Identifiant\r\nAdministrator|admin\r\n')
 
@@ -166,7 +166,7 @@ class RoutesTestCase(TestCase):
             query_string=[
                 ('f', 'name'), ('f', 'login'), ('dl', 'n'), ('qc', '*')])
 
-        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.status_code, HTTPStatus.OK)
         self.assertEqual(
             response.data,
             b'Nomn*Identifiant*\r\n*Administrator*n*admin*\r\n')
@@ -179,7 +179,7 @@ class RoutesTestCase(TestCase):
             self.data_url('res.user'), headers=self.auth_headers,
             query_string=[('f', 'name'), ('h', 0)])
 
-        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.status_code, HTTPStatus.OK)
         self.assertEqual(response.data, b'Administrator\r\n')
 
     def test_data_locale_format(self):
@@ -193,6 +193,6 @@ class RoutesTestCase(TestCase):
             self.data_url('res.user'), headers=self.auth_headers,
             query_string=[('f', 'create_date'), ('loc', 1)])
 
-        self.assertEqual(response_std.status_code, 200)
-        self.assertEqual(response_locale.status_code, 200)
+        self.assertEqual(response_std.status_code, HTTPStatus.OK)
+        self.assertEqual(response_locale.status_code, HTTPStatus.OK)
         self.assertNotEqual(response_std.data, response_locale.data)
