@@ -2,7 +2,6 @@
 # this repository contains the full copyright notices and license terms.
 "User"
 
-import copy
 import datetime
 import hashlib
 import logging
@@ -573,13 +572,12 @@ class User(avatar_mixin(100, 'login'), DeactivableMixin, ModelSQL, ModelView):
         Action = pool.get('ir.action')
 
         view_id = ModelData.get_id('res', 'user_view_form_preferences')
-        res = cls.fields_view_get(view_id=view_id)
-        res = copy.deepcopy(res)
-        for field in res['fields']:
-            if field not in ('groups', 'language_direction'):
-                res['fields'][field]['readonly'] = False
-            else:
-                res['fields'][field]['readonly'] = True
+        result = dict(cls.fields_view_get(view_id=view_id))
+        result['fields'] = dict(result['fields'])
+        for name, definition in result['fields'].items():
+            definition = dict(definition)
+            result['fields'][name] = definition
+            definition['readonly'] = name in {'groups', 'language_direction'}
 
         def convert2selection(definition, name):
             del definition[name]['relation']
@@ -589,27 +587,27 @@ class User(avatar_mixin(100, 'login'), DeactivableMixin, ModelSQL, ModelView):
             definition[name]['selection'] = selection
             return selection
 
-        if 'language' in res['fields']:
-            selection = convert2selection(res['fields'], 'language')
+        if 'language' in result['fields']:
+            selection = convert2selection(result['fields'], 'language')
             langs = Lang.search(cls.language.domain)
             lang_ids = [l.id for l in langs]
             with Transaction().set_context(translate_name=True):
                 for lang in Lang.browse(lang_ids):
                     selection.append((lang.code, lang.name))
-        if 'action' in res['fields']:
-            selection = convert2selection(res['fields'], 'action')
+        if 'action' in result['fields']:
+            selection = convert2selection(result['fields'], 'action')
             selection.append((None, ''))
             actions = Action.search([])
             for action in actions:
                 selection.append((action.id, action.rec_name))
-        if 'menu' in res['fields']:
-            selection = convert2selection(res['fields'], 'menu')
+        if 'menu' in result['fields']:
+            selection = convert2selection(result['fields'], 'menu')
             actions = Action.search([
                     ('usage', '=', 'menu'),
                     ])
             for action in actions:
                 selection.append((action.id, action.rec_name))
-        return res
+        return result
 
     @classmethod
     def get_groups(cls):
