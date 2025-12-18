@@ -45,7 +45,7 @@ class Invoice(metaclass=PoolMeta):
                 continue
             peppol_types = invoice.party.get_multivalue(
                 'peppol_types', company=invoice.company.id)
-            if 'bis-billing-3' in peppol_types:
+            if peppol_types and 'bis-billing-3' in peppol_types:
                 peppol.append(Peppol(
                         direction='out',
                         company=invoice.company,
