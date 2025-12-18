@@ -1072,7 +1072,7 @@ class ViewTree(View):
                     col_widget = self.widgets[col.name][current_col[col.name]]
                     populate(
                         menu, model, record_id, title=label,
-                        attributes=col_widget.attributes, context=context)
+                        attributes=col_widget.attrs, context=context)
 
             if selection.count_selected_rows() == 1:
                 group = self.group
