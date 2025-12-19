@@ -1027,7 +1027,8 @@ class Shop_Warehouse(ModelView, metaclass=PoolMeta):
                             QUERY_LOCATIONS, {}, 'locations'):
                         locations.append(
                             (str(gid2id(location['id'])), location['name']))
-                self._shopify_locations_cache.set(self.shop.id, locations)
+                locations = self._shopify_locations_cache.set(
+                    self.shop.id, locations)
             except GraphQLException:
                 pass
         return locations

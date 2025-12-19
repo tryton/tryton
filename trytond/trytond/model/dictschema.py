@@ -207,8 +207,7 @@ class DictSchemaMixin(object):
             return fields
         keys = cls.get_keys(cls.search([]))
         fields = {k['name']: k for k in keys}
-        cls._relation_fields_cache.set(cls.__name__, fields)
-        return fields
+        return cls._relation_fields_cache.set(cls.__name__, fields)
 
     @classmethod
     def on_modification(cls, mode, records, field_names=None):

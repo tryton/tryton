@@ -392,7 +392,7 @@ class Report(URLMixin, PoolBase):
             loader = relatorio.reporting.MIMETemplateLoader()
             klass = loader.factories[loader.get_type(mimetype)]
             template = klass(BytesIO(report.report_content))
-            report.set_template_cached(template)
+            template = report.set_template_cached(template)
         translate = cls._callback_loader(report, template)
         if translate:
             report_context = report_context.copy()

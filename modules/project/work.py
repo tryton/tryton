@@ -64,8 +64,7 @@ class WorkStatus(DeactivableMixin, sequence_ordered(), ModelSQL, ModelView):
             status = records[0].id
         else:
             status = None
-        cls._get_default_status_cache.set(type, status)
-        return status
+        return cls._get_default_status_cache.set(type, status)
 
     @classmethod
     def on_modification(cls, mode, records, field_names=None):
@@ -100,8 +99,7 @@ class WorkStatus(DeactivableMixin, sequence_ordered(), ModelSQL, ModelView):
         if domains:
             domains.append(
                 (gettext('project.msg_domain_all'), '[]', False))
-        cls._get_window_domains_cache.set(key, domains)
-        return domains
+        return cls._get_window_domains_cache.set(key, domains)
 
 
 class Work(

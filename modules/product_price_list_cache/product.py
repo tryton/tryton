@@ -119,7 +119,8 @@ class PriceListCache(ModelSQL):
         unit_prices = self._unit_prices_cache.get(self.raw_unit_prices)
         if unit_prices is None:
             unit_prices = loads(self.raw_unit_prices)
-            self._unit_prices_cache.set(self.raw_unit_prices, unit_prices)
+            unit_prices = self._unit_prices_cache.set(
+                self.raw_unit_prices, unit_prices)
         return unit_prices
 
     @classmethod

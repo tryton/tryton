@@ -736,7 +736,7 @@ class ModelSQL(ModelStorage):
         if count is None:
             count = transaction.database.estimated_count(
                 transaction.connection, cls.__table__())
-            cls._count_cache.set(cls.__name__, count)
+            count = cls._count_cache.set(cls.__name__, count)
         return count
 
     @classmethod

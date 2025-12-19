@@ -197,7 +197,7 @@ class View(
             rng_name = os.path.join(os.path.dirname(__file__), type_ + '.rng')
             with open(rng_name, 'rb') as fp:
                 rng = etree.fromstring(fp.read())
-            cls._get_rng_cache.set(key, rng)
+            rng = cls._get_rng_cache.set(key, rng)
         return rng
 
     @property
@@ -333,8 +333,7 @@ class View(
             'arch': arch,
             'field_childs': self.field_childs,
             }
-        self._view_get_cache.set(key, result)
-        return result
+        return self._view_get_cache.set(key, result)
 
     @classmethod
     def inherit_apply(cls, tree, inherit):

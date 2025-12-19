@@ -73,7 +73,7 @@ class ProductPriceListCacheTestCase(ModuleTestCase):
             self.assertEqual(cache.product, product)
             self.assertEqual(cache.uom, kilogram)
             self.assertEqual(
-                cache.unit_prices, [[0, Decimal(10)], [10, Decimal(9)]])
+                cache.unit_prices, ((0, Decimal(10)), (10, Decimal(9))))
             self.assertEqual(cache.pattern, None)
 
             # Test cached compute

@@ -185,11 +185,8 @@ class Model(
                 items = (
                     (m, n) for m, n in items
                     if issubclass(pool_get(m), classes))
-            items = list(items)
-            cls._get_names_cache.set(key, items)
-        else:
-            items = list(items)
-        return items
+            items = cls._get_names_cache.set(key, list(items))
+        return list(items)
 
     @classmethod
     def get_names(cls, classes=None):
@@ -198,7 +195,7 @@ class Model(
         dict_ = cls._get_names_cache.get(key)
         if dict_ is None:
             dict_ = dict(cls.get_name_items())
-            cls._get_names_cache.set(key, dict_)
+            dict_ = cls._get_names_cache.set(key, dict_)
         return dict_
 
     @classmethod
@@ -476,7 +473,7 @@ class ModelField(
             if fields:
                 field, = fields
                 name = field.string
-                cls._get_name_cache.set((model, field), name)
+                name = cls._get_name_cache.set((model, field), name)
             else:
                 name = field
         return name
@@ -1078,8 +1075,7 @@ class ModelButton(
         else:
             button, = buttons
             reset = [b.name for b in button.reset]
-        cls._reset_cache.set(key, reset)
-        return reset
+        return cls._reset_cache.set(key, reset)
 
     @classmethod
     def get_groups(cls, model, name):
@@ -1099,8 +1095,7 @@ class ModelButton(
         else:
             button, = buttons
             groups = set(g.id for g in button.groups)
-        cls._groups_cache.set(key, groups)
-        return groups
+        return cls._groups_cache.set(key, groups)
 
     @classmethod
     def get_view_attributes(cls, model, name):
@@ -1122,8 +1117,7 @@ class ModelButton(
                 'help': button.help,
                 'confirm': button.confirm,
                 }
-        cls._view_attributes_cache.set(key, attributes)
-        return attributes
+        return cls._view_attributes_cache.set(key, attributes)
 
 
 class ModelButtonGroup(DeactivableMixin, ModelSQL):
@@ -1374,8 +1368,8 @@ class ModelData(
             cursor = Transaction().connection.cursor()
 
             cursor.execute(*table.select(table.model, group_by=[table.model]))
-            models = [m for m, in cursor]
-            cls._has_model_cache.set(None, models)
+            models = set(m for m, in cursor)
+            models = cls._has_model_cache.set(None, models)
         return model in models
 
     @classmethod
@@ -1446,8 +1440,7 @@ class ModelData(
         except ValueError:
             raise KeyError(f"Reference to '{module}.{fs_id}' not found")
 
-        cls._get_id_cache.set(key, data.db_id)
-        return data.db_id
+        return cls._get_id_cache.set(key, data.db_id)
 
     @classmethod
     def dump_values(cls, values):

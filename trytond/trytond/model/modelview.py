@@ -273,7 +273,6 @@ class ModelView(Model):
         result = cls._fields_view_get_cache.get(key)
         if result:
             return result
-        result = {'model': cls.__name__}
         pool = Pool()
         View = pool.get('ir.ui.view')
 
@@ -297,10 +296,11 @@ class ModelView(Model):
 
         # if a view was found
         if view:
-            result = view.view_get(model=cls.__name__)
+            result = dict(view.view_get(model=cls.__name__))
 
         # otherwise, build some kind of default view
         else:
+            result = {}
             if view_type == 'form':
                 res = cls.fields_get()
                 xml = '''<?xml version="1.0"?>''' \
@@ -348,8 +348,7 @@ class ModelView(Model):
             tree, result['type'], view_id=view_id,
             field_children=result['field_childs'], level=level)
 
-        cls._fields_view_get_cache.set(key, result)
-        return result
+        return cls._fields_view_get_cache.set(key, result)
 
     @classmethod
     def view_toolbar_get(cls):
@@ -389,8 +388,7 @@ class ModelView(Model):
             'exports': exports,
             'emails': emails,
             }
-        cls._view_toolbar_get_cache.set(key, result)
-        return result
+        return cls._view_toolbar_get_cache.set(key, result)
 
     @classmethod
     def view_attributes(cls):

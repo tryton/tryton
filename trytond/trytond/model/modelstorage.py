@@ -783,7 +783,7 @@ class ModelStorage(Model):
         count = cls._count_cache.get(cls.__name__)
         if count is None:
             count = cls.search([], count=True)
-            cls._count_cache.set(cls.__name__, count)
+            count = cls._count_cache.set(cls.__name__, count)
         return count
 
     def resources(self):

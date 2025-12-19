@@ -634,8 +634,7 @@ class User(avatar_mixin(100, 'login'), DeactivableMixin, ModelSQL, ModelView):
                     & (group.active == Literal(True))),
                 order_by=[user_group.group.asc]))
         groups = tuple(g for g, in cursor)
-        cls._get_groups_cache.set(user, groups)
-        return groups
+        return cls._get_groups_cache.set(user, groups)
 
     @classmethod
     def _get_login(cls, login):

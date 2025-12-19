@@ -210,7 +210,7 @@ class Period(Workflow, ModelSQL, ModelView):
                 result = record.ends_at
             else:
                 result = None
-            cls._last_period_cache.set(key, result)
+            result = cls._last_period_cache.set(key, result)
         return result
 
     @classmethod

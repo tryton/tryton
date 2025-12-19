@@ -1170,8 +1170,7 @@ class PaymentBraintreeCustomer(
             for payment_method in customer.payment_methods:
                 name = self._payment_method_name(payment_method)
                 methods.append((payment_method.token, name))
-            self._payment_methods_cache.set(self.id, methods)
-        return methods
+        return self._payment_methods_cache.set(self.id, methods)
 
     def _payment_method_name(cls, payment_method):
         name = payment_method.token

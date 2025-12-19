@@ -387,14 +387,15 @@ class Lang(DeactivableMixin, ModelSQL, ModelView):
                     exception=exception)) from exception
 
     def get_translatable_languages(cls):
-        res = cls._lang_cache.get('translatable_languages')
-        if res is None:
+        languages = cls._lang_cache.get('translatable_languages')
+        if languages is None:
             langs = cls.search([
                     ('translatable', '=', True),
                     ])
-            res = [x.code for x in langs]
-            cls._lang_cache.set('translatable_languages', res)
-        return res
+            languages = [x.code for x in langs]
+            languages = cls._lang_cache.set(
+                'translatable_languages', languages)
+        return languages
 
     @classmethod
     def check_modification(cls, mode, languages, values=None, external=False):

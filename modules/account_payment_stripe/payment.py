@@ -1712,8 +1712,7 @@ class Customer(CheckoutMixin, DeactivableMixin, ModelSQL, ModelView):
                 else:
                     continue
                 sources.append((source.id, name))
-            self._sources_cache.set(self.id, sources)
-        return sources
+        return self._sources_cache.set(self.id, sources)
 
     @classmethod
     def _source_name(cls, source):
@@ -1779,8 +1778,7 @@ class Customer(CheckoutMixin, DeactivableMixin, ModelSQL, ModelView):
             for payment_method in payment_methods:
                 name = self._payment_method_name(payment_method)
                 methods.append((payment_method.id, name))
-        self._payment_methods_cache.set(self.id, methods)
-        return methods
+        return self._payment_methods_cache.set(self.id, methods)
 
     @classmethod
     def _payment_method_name(cls, payment_method):

@@ -25,8 +25,7 @@ class Configuration(ModelSingleton, ModelSQL):
         language = cls(1).language
         if not language:
             language = config.get('database', 'language')
-        cls._get_language_cache.set(None, language)
-        return language
+        return cls._get_language_cache.set(None, language)
 
     def check(self):
         "Check configuration coherence on pool initialisation"

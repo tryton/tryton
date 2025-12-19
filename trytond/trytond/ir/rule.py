@@ -326,8 +326,7 @@ class Rule(ModelSQL, ModelView):
         elif clause_global:
             clause = clause_global
 
-        cls._domain_get_cache.set(key, clause)
-        return clause
+        return cls._domain_get_cache.set(key, clause)
 
     @classmethod
     def query_get(cls, model_name, mode='read'):

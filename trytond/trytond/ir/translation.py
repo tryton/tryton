@@ -319,8 +319,7 @@ class Translation(
         Lang = pool.get('ir.lang')
         langs = Lang.search([])
         result = [(lang.code, lang.name) for lang in langs]
-        cls._get_language_cache.set(language, result)
-        return result
+        return cls._get_language_cache.set(language, result)
 
     @classmethod
     def view_attributes(cls):

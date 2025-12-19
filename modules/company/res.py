@@ -174,9 +174,7 @@ class User(metaclass=PoolMeta):
             companies = [c.id for c in user.companies]
         else:
             companies = []
-        companies = tuple(companies)
-        cls._get_companies_cache.set(user_id, companies)
-        return companies
+        return cls._get_companies_cache.set(user_id, companies)
 
     @classmethod
     def get_employees(cls):
@@ -196,8 +194,7 @@ class User(metaclass=PoolMeta):
         else:
             employees = []
         employees = tuple(employees)
-        cls._get_employees_cache.set(user_id, employees)
-        return employees
+        return cls._get_employees_cache.set(user_id, employees)
 
     @classmethod
     def read(cls, ids, fields_names):

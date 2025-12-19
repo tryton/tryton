@@ -94,8 +94,7 @@ class CredentialSendcloud(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
             auth=self.auth, timeout=timeout, headers=HEADERS)
         response.raise_for_status()
         addresses = response.json()['sender_addresses']
-        self._addresses_sender_cache.set(self.id, addresses)
-        return addresses
+        return self._addresses_sender_cache.set(self.id, addresses)
 
     def get_sender_address(self, shipment_or_warehouse, pattern=None):
         pattern = pattern.copy() if pattern is not None else {}
@@ -131,8 +130,7 @@ class CredentialSendcloud(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
             auth=self.auth, timeout=timeout, headers=HEADERS)
         response.raise_for_status()
         methods = response.json()['shipping_methods']
-        self._shiping_methods_cache.set(key, methods)
-        return methods
+        return self._shiping_methods_cache.set(key, methods)
 
     def get_shipping_method(self, shipment, package=None):
         pattern = self._get_shipping_method_pattern(shipment, package=package)

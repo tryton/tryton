@@ -37,7 +37,7 @@ class Message(ModelSQL, ModelView):
                 text = translation.value or message.text
             else:
                 text = message.text
-            cls._message_cache.set(key, text)
+            text = cls._message_cache.set(key, text)
         return text if not variables else text % variables
 
     @classmethod
@@ -68,7 +68,7 @@ class Message(ModelSQL, ModelView):
                 text = values[index] or fallback
             else:
                 text = fallback
-            cls._message_cache.set(key, text)
+            text = cls._message_cache.set(key, text)
         return text if not variables else text % variables
 
     def _get_translation(self, language, fuzzy=False):

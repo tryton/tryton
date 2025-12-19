@@ -46,7 +46,8 @@ class Employee(metaclass=PoolMeta):
             for cost_price in cost_prices:
                 employee_costs.append(
                     (cost_price.date, cost_price.cost_price))
-            self._cost_prices_cache.set(self.id, employee_costs)
+            employee_costs = self._cost_prices_cache.set(
+                self.id, employee_costs)
         return employee_costs
 
     def compute_cost_price(self, date=None):

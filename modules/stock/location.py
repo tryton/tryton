@@ -369,7 +369,7 @@ class Location(DeactivableMixin, tree(), ModelSQL, ModelView):
                 warehouse = warehouses[0].id
             else:
                 warehouse = None
-            cls._default_warehouse_cache.set(None, warehouse)
+            warehouse = cls._default_warehouse_cache.set(None, warehouse)
         return warehouse
 
     @property

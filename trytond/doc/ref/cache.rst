@@ -54,7 +54,7 @@ Cache
 
 .. method:: Cache.set(key, value)
 
-   Set the ``value`` of the ``key`` in the cache.
+   Set and return the ``value`` of the ``key`` in the cache.
 
 .. method:: Cache.clear()
 

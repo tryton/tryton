@@ -22,8 +22,7 @@ class DigitsMixin:
         if digits is not None:
             return digits
         digits = self._get_digits()
-        self._digits_cache.set(key, digits)
-        return digits
+        return self._digits_cache.set(key, digits)
 
     def _get_digits(self):
         return (None, self.digits)

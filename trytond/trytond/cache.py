@@ -224,7 +224,8 @@ class MemoryCache(BaseCache):
         else:
             expire = None
         try:
-            cache[key] = (expire, immutable(value))
+            value = immutable(value)
+            cache[key] = (expire, value)
         except TypeError:
             pass
         return value

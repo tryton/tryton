@@ -625,8 +625,7 @@ ${COUNTRY}"""
         else:
             format_ = getattr(cls, f'default_{field}', lambda: '')()
 
-        cls._get_format_cache.set(key, format_)
-        return format_
+        return cls._get_format_cache.set(key, format_)
 
 
 class SubdivisionType(DeactivableMixin, ModelSQL, ModelView):
@@ -670,8 +669,7 @@ class SubdivisionType(DeactivableMixin, ModelSQL, ModelView):
         else:
             types = []
 
-        cls._get_types_cache.set(key, types)
-        return types
+        return cls._get_types_cache.set(key, types)
 
     @classmethod
     def on_modification(cls, mode, types, field_names=None):

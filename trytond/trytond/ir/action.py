@@ -336,8 +336,7 @@ class ActionKeyword(ModelSQL, ModelView):
                             value['name'] = (
                                 parent.rec_name + ' / ' + value['name'])
         keywords.sort(key=itemgetter('name'))
-        cls._get_keyword_cache.set(key, keywords)
-        return keywords
+        return cls._get_keyword_cache.set(key, keywords)
 
 
 class ActionMixin(ModelSQL):
@@ -421,7 +420,7 @@ class ActionMixin(ModelSQL):
         key = (name, action_id)
         groups = Action._groups_cache.get(key)
         if groups is not None:
-            return set(groups)
+            return groups
 
         domain = [
             (cls._action_name, '=', name),
@@ -430,8 +429,7 @@ class ActionMixin(ModelSQL):
             domain.append(('id', '=', action_id))
         actions = cls.search(domain)
         groups = {g.id for a in actions for g in a.groups}
-        Action._groups_cache.set(key, list(groups))
-        return groups
+        return Action._groups_cache.set(key, groups)
 
     @classmethod
     def on_modification(cls, mode, records, field_names=None):
@@ -749,7 +747,7 @@ class ActionReport(
         return template
 
     def set_template_cached(self, template):
-        self._template_cache.set(self.id, template)
+        return self._template_cache.set(self.id, template)
 
     @classmethod
     def validate_fields(cls, reports, field_names):
@@ -1096,7 +1094,7 @@ class ActionWizard(
         key = (name, action_id)
         models = cls._get_models_cache.get(key)
         if models is not None:
-            return set(models)
+            return models
 
         domain = [
             (cls._action_name, '=', name),
@@ -1105,8 +1103,7 @@ class ActionWizard(
             domain.append(('id', '=', action_id))
         actions = cls.search(domain)
         models = {a.model for a in actions if a.model}
-        cls._get_models_cache.set(key, models)
-        return models
+        return cls._get_models_cache.set(key, models)
 
     @classmethod
     def get_name(cls, name, model):
@@ -1129,8 +1126,7 @@ class ActionWizard(
         if actions:
             action, = actions
             wiz_name = action.name
-        cls._get_name_cache.set(key, wiz_name)
-        return wiz_name
+        return cls._get_name_cache.set(key, wiz_name)
 
     @classmethod
     def on_modification(cls, mode, keywords, field_names=None):
