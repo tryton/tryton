@@ -356,7 +356,7 @@ class Shop(metaclass=PoolMeta):
                 for template, t_products in groupby(
                         products, key=lambda p: p.template):
                     t_products = sorted(
-                        t_products, key=template.products.index)
+                        t_products, key=lambda p: p.sequence or 0)
                     p_inventory_items = [
                         inventory_items[p] for p in t_products]
                     p_sale_prices = [sale_prices[p.id] for p in t_products]
