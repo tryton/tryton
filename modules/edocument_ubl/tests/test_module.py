@@ -44,6 +44,7 @@ def get_invoice():
         type='be_vat',
         code='BE123456789')
     type(identifier).iso_6523 = Identifier.iso_6523
+    type(identifier)._eas_type = Identifier._eas_type
     type(identifier).eas = Identifier.eas
     type(identifier).unece_code = Identifier.unece_code
     party = MagicMock(
@@ -229,6 +230,29 @@ class EdocumentUblTestCase(ModuleTestCase):
                 '2.4', 'maindoc', 'UBL-CreditNote-2.4.xsd')
             schema = etree.XMLSchema(etree.parse(schema_file))
             schema.assertValid(invoice_xml)
+
+    @with_transaction()
+    def test_identifier_eas(self):
+        "Test EAS identifier"
+        pool = Pool()
+        Identifier = pool.get('party.identifier')
+
+        for type, code, eas_code, eas in [
+                ('gr_vat', '023456783', '9933', 'el023456783'),
+                ('eu_vat', 'EL023456783', '9933', 'el023456783'),
+                ('eu_vat', 'GR023456783', '9933', 'el023456783'),
+                ('be_vat', '0403019261', '9925', 'be0403019261'),
+                ('eu_vat', 'BE0403019261', '9925', 'be0403019261'),
+                ('gb_vat', '980780684', '9932', 'gb980780684'),
+                ('eu_vat', 'GB980780684', '9932', 'gb980780684'),
+                ('eu_vat', 'XI980780684', '9932', 'gb980780684'),
+                ]:
+            with self.subTest(type=type, code=code):
+                identifier = Identifier(type=type, code=code)
+
+                self.assertEqual(identifier.eas_code, eas_code)
+                self.assertEqual(identifier.eas, eas)
+                self.assertEqual(identifier.vatin, eas)
 
 
 del ModuleTestCase

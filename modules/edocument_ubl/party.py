@@ -95,20 +95,39 @@ class Identifier(metaclass=PoolMeta):
         return ISO6523_TYPES.get(self.type, '')
 
     @property
+    def _eas_type(self):
+        if self.type == 'eu_vat':
+            code = self.code[:2].lower()
+            code = (code
+                .replace('xi', 'gb')
+                .replace('el', 'gr'))
+            return f'{code}_vat'
+        else:
+            return self.type
+
+    @property
     def eas_code(self):
-        return EAS_TYPES.get(self.type, '')
+        return EAS_TYPES.get(self._eas_type, '')
 
     @property
     def eas(self):
         if self.eas_code:
-            if re.match(r'[a-z]{2}_vat', self.type):
-                country = self.type[:2].replace('gr', 'el')
-                return f'{country}{self.code}'.lower()
+            if re.match(r'[a-z]{2}_vat', self._eas_type):
+                country = self._eas_type[:2].replace('gr', 'el')
+                if self.type == 'eu_vat':
+                    code = self.code[2:]
+                else:
+                    code = self.code
+                return f'{country}{code}'.lower()
             else:
                 return self.code
 
     @property
     def vatin(self):
-        if re.match(r'[a-z]{2}_vat', self.type):
-            country = self.type[:2].replace('gr', 'el')
-            return f'{country}{self.code}'.lower()
+        if re.match(r'[a-z]{2}_vat', self._eas_type):
+            country = self._eas_type[:2].replace('gr', 'el')
+            if self.type == 'eu_vat':
+                code = self.code[2:]
+            else:
+                code = self.code
+            return f'{country}{code}'.lower()
