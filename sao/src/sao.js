@@ -357,6 +357,9 @@ var Sao = {
         return lang.replace('_', '-');
     };
     Sao.i18n.set_direction = function(direction) {
+        if (!direction) {
+            direction = getComputedStyle(document.documentElement).direction;
+        }
         Sao.i18n.rtl = (direction === 'rtl');
         jQuery('html').attr('dir', direction);
     };
@@ -590,6 +593,7 @@ var Sao = {
     Sao.login = function() {
         Sao.set_title();
         Sao.i18n.setlang().always(function() {
+            Sao.i18n.set_direction();
             Sao.Session.server_version()
                 .then(function(version) {
                     if (JSON.stringify(version.split('.').slice(0, 2)) !==
