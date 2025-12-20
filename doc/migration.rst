@@ -17,6 +17,18 @@ a database from another series.
 7.8
 ---
 
+Before
+~~~~~~
+
+* If ``carrier_carriage`` module is activated, remove ``NOT NULL`` to
+  ``before_carrier`` and ``after_carrier``:
+
+  .. code-block:: SQL
+
+     ALTER TABLE "incoterm_incoterm" ALTER COLUMN "before_carrier" DROP NOT NULL;
+     ALTER TABLE "incoterm_incoterm" ALTER COLUMN "after_carrier" DROP NOT NULL;
+
+
 After
 ~~~~~
 
