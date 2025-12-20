@@ -13,7 +13,7 @@ try:
 except ImportError:
     requests_utils = None
 
-__version__ = "7.4.23"
+__version__ = "7.4.24"
 
 if not os.environ.get('TRYTOND_APPNAME'):
     os.environ['TRYTOND_APPNAME'] = os.path.basename(
