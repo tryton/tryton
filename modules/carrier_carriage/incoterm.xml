@@ -16,6 +16,71 @@ this repository contains the full copyright notices and license terms. -->
         </record>
     </data>
     <data depends="incoterm" grouped="1">
+        <record model="incoterm.incoterm" id="incoterm.incoterm_exw_2000">
+            <field name="before_carrier">buyer</field>
+            <field name="after_carrier">buyer</field>
+        </record>
+
+        <record model="incoterm.incoterm" id="incoterm.incoterm_fca_2000">
+            <field name="before_carrier">seller</field>
+            <field name="after_carrier">buyer</field>
+        </record>
+
+        <record model="incoterm.incoterm" id="incoterm.incoterm_cpt_2000">
+            <field name="before_carrier">seller</field>
+            <field name="after_carrier">seller</field>
+        </record>
+
+        <record model="incoterm.incoterm" id="incoterm.incoterm_cip_2000">
+            <field name="before_carrier">seller</field>
+            <field name="after_carrier">seller</field>
+        </record>
+
+        <record model="incoterm.incoterm" id="incoterm.incoterm_daf_2000">
+            <field name="before_carrier">seller</field>
+            <field name="after_carrier">buyer</field>
+        </record>
+
+        <record model="incoterm.incoterm" id="incoterm.incoterm_des_2000">
+            <field name="before_carrier">seller</field>
+            <field name="after_carrier">buyer</field>
+        </record>
+
+        <record model="incoterm.incoterm" id="incoterm.incoterm_deq_2000">
+            <field name="before_carrier">seller</field>
+            <field name="after_carrier">buyer</field>
+        </record>
+
+        <record model="incoterm.incoterm" id="incoterm.incoterm_ddu_2000">
+            <field name="before_carrier">seller</field>
+            <field name="after_carrier">buyer</field>
+        </record>
+
+        <record model="incoterm.incoterm" id="incoterm.incoterm_ddp_2000">
+            <field name="before_carrier">seller</field>
+            <field name="after_carrier">buyer</field>
+        </record>
+
+        <record model="incoterm.incoterm" id="incoterm.incoterm_fas_2000">
+            <field name="before_carrier">seller</field>
+            <field name="after_carrier">buyer</field>
+        </record>
+
+        <record model="incoterm.incoterm" id="incoterm.incoterm_fob_2000">
+            <field name="before_carrier">seller</field>
+            <field name="after_carrier">buyer</field>
+        </record>
+
+        <record model="incoterm.incoterm" id="incoterm.incoterm_cfr_2000">
+            <field name="before_carrier">seller</field>
+            <field name="after_carrier">buyer</field>
+        </record>
+
+        <record model="incoterm.incoterm" id="incoterm.incoterm_cif_2000">
+            <field name="before_carrier">seller</field>
+            <field name="after_carrier">buyer</field>
+        </record>
+
         <record model="incoterm.incoterm" id="incoterm.incoterm_exw_2010">
             <field name="before_carrier">buyer</field>
             <field name="after_carrier">buyer</field>
