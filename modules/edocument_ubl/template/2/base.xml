@@ -50,7 +50,7 @@ this repository contains the full copyright notices and license terms. -->
         <cbc:CityName py:if="address.city">${address.city}</cbc:CityName>
         <cbc:PostalZone py:if="address.postal_code">${address.postal_code}</cbc:PostalZone>
         <cbc:CountrySubentity py:if="address.subdivision">${address.subdivision.name}</cbc:CountrySubentity>
-        <cbc:CountrySubentityCode py:if="address.subdivision">${address.subdivision.code}</cbc:CountrySubentityCode>
+        <cbc:CountrySubentityCode py:if="address.subdivision and not (specification or '').startswith('peppol')">${address.subdivision.code}</cbc:CountrySubentityCode>
         <cac:AddressLine py:if="address.street_unstructured">
             <cbc:Line py:for="line in address.street_unstructured.splitlines()">
                 ${line}
