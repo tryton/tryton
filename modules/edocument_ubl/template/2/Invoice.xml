@@ -45,10 +45,10 @@ this repository contains the full copyright notices and license terms. -->
     </cac:Attachment>
 </cac:AdditionalDocumentReference>
 <cac:AccountingSupplierParty>
-    ${Party(this.accounting_supplier_party, this.accounting_supplier_address, this.accounting_supplier_tax_identifier)}
+    ${Party(this.accounting_supplier_party, this.accounting_supplier_address, this.accounting_supplier_tax_identifier, specification=specification)}
 </cac:AccountingSupplierParty>
 <cac:AccountingCustomerParty>
-    ${Party(this.accounting_customer_party, this.accounting_customer_address, this.accounting_customer_tax_identifier)}
+    ${Party(this.accounting_customer_party, this.accounting_customer_address, this.accounting_customer_tax_identifier, specification=specification)}
 </cac:AccountingCustomerParty>
 <cac:PaymentTerms py:for="line in this.invoice.lines_to_pay">
     <cbc:Note py:if="this.invoice.payment_term and this.invoice.payment_term.description">${this.invoice.payment_term.description}</cbc:Note>

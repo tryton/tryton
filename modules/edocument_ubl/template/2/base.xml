@@ -4,7 +4,7 @@ this repository contains the full copyright notices and license terms. -->
 <py:strip xmlns:py="http://genshi.edgewall.org/"
     xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
     xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
-    <py:def function="Party(party, address=None, tax_identifier=None)">
+    <py:def function="Party(party, address=None, tax_identifier=None, specification='')">
         <cac:Party>
             <py:with vars="identifier = party.identifier_eas">
                 <py:if test="identifier">
@@ -16,7 +16,7 @@ this repository contains the full copyright notices and license terms. -->
                     <cbc:ID py:attrs="{'schemeID': identifier.iso_6523}">${identifier.code}</cbc:ID>
                 </cac:PartyIdentification>
             </py:for>
-            <cac:PostalAddress py:if="address">${Address(address)}</cac:PostalAddress>
+            <cac:PostalAddress py:if="address">${Address(address, specification=specification)}</cac:PostalAddress>
             <cac:PartyTaxScheme py:if="tax_identifier and tax_identifier.unece_code">
                 <py:choose>
                     <py:when test="tax_identifier.vatin">
@@ -40,7 +40,7 @@ this repository contains the full copyright notices and license terms. -->
             </cac:PartyLegalEntity>
         </cac:Party>
     </py:def>
-    <py:def function="Address(address)">
+    <py:def function="Address(address, specification='')">
         <cbc:Postbox py:if="address.post_box">${address.post_box}</cbc:Postbox>
         <cbc:Floor py:if="address.floor_number">${address.floor_number}</cbc:Floor>
         <cbc:Room py:if="address.room_number">${address.room_number}</cbc:Room>
@@ -58,7 +58,7 @@ this repository contains the full copyright notices and license terms. -->
         </cac:AddressLine>
         <cac:Country py:if="address.country">
             <cbc:IdentificationCode>${address.country.code}</cbc:IdentificationCode>
-            <cbc:Name>${address.country.name}</cbc:Name>
+            <cbc:Name py:if="not (specification or '').startswith('peppol')">${address.country.name}</cbc:Name>
         </cac:Country>
     </py:def>
 </py:strip>
