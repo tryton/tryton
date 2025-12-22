@@ -60,7 +60,7 @@ this repository contains the full copyright notices and license terms. -->
     <cac:TaxSubtotal py:for="line in lines">
         <cbc:TaxableAmount py:attrs="{'currencyID': this.invoice.currency.code}">${line.base}</cbc:TaxableAmount>
         <cbc:TaxAmount py:attrs="{'currencyID': this.invoice.currency.code}">${line.amount}</cbc:TaxAmount>
-        <cbc:Percent py:if="line.tax.type == 'percentage'">${line.tax.rate * 100}</cbc:Percent>
+        <cbc:Percent py:if="line.tax.type == 'percentage' and not (specification or '').startswith('peppol')">${line.tax.rate * 100}</cbc:Percent>
         <cac:TaxCategory>
             <cbc:ID py:if="line.tax.unece_category_code">${line.tax.unece_category_code}</cbc:ID>
             <cbc:Percent py:if="line.tax.type == 'percentage'">${line.tax.rate * 100}</cbc:Percent>
