@@ -16,6 +16,7 @@ this repository contains the full copyright notices and license terms. -->
 </py:if>
 <cbc:ID>${this.invoice.number}</cbc:ID>
 <cbc:IssueDate>${this.invoice.invoice_date}</cbc:IssueDate>
+<cbc:DueDate>${max(l.maturity_date for l in this.invoice.lines_to_pay if l.maturity_date)}</cbc:DueDate>
 <cbc:CreditNoteTypeCode>${this.type_code}</cbc:CreditNoteTypeCode>
 <cbc:DocumentCurrencyCode>${this.invoice.currency.code}</cbc:DocumentCurrencyCode>
 <cbc:BuyerReference py:if="this.invoice.reference">${this.invoice.reference}</cbc:BuyerReference>
