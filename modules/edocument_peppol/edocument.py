@@ -226,7 +226,7 @@ class Peppol(Workflow, ModelSQL, ModelView):
                 if self.invoice:
                     return
                 self.invoice = Invoice.parse(self.data)
-                self.succeeded()
+                self.succeed()
 
     @classmethod
     def update_status(cls, documents=None):
