@@ -226,6 +226,7 @@ class Peppol(Workflow, ModelSQL, ModelView):
                 if self.invoice:
                     return
                 self.invoice = Invoice.parse(self.data)
+                self.save()
                 self.succeed()
 
     @classmethod
