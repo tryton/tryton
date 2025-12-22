@@ -181,7 +181,7 @@ class XMLProtocol:
             data = client.dumps(
                 data, methodresponse=True, allow_none=True)
             if len(data) >= 1400 and 'gzip' in request.accept_encodings:
-                data = GzipStream(data.encode('utf-8'), compresslevel=1)
+                data = GzipStream(data, compresslevel=1)
                 headers['Content-Encoding'] = 'gzip'
             return Response(
                 data, content_type='text/xml', headers=headers)
