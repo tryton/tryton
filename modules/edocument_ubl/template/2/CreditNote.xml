@@ -53,7 +53,7 @@ this repository contains the full copyright notices and license terms. -->
 <cac:PaymentTerms py:for="line in this.invoice.lines_to_pay">
     <cbc:Note py:if="this.invoice.payment_term and this.invoice.payment_term.description">${this.invoice.payment_term.description}</cbc:Note>
     <cbc:Amount py:if="not (specification or '').startswith('peppol')" py:attrs="{'currencyID': this.invoice.currency.code}">${line.amount}</cbc:Amount>
-    <cbc:PaymentDueDate>${line.maturity_date}</cbc:PaymentDueDate>
+    <cbc:PaymentDueDate py:if="not (specification or '').startswith('peppol')">${line.maturity_date}</cbc:PaymentDueDate>
 </cac:PaymentTerms>
 <cac:TaxTotal py:for="group, lines, amount in this.taxes">
     <cbc:TaxAmount py:attrs="{'currencyID': this.invoice.currency.code}">${-amount}</cbc:TaxAmount>
