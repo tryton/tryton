@@ -186,14 +186,16 @@ class ModelStorage(Model):
             return
         pool = Pool()
         Log = pool.get('ir.model.log')
-        transaction = Transaction()
-        if user is None:
-            user = transaction.user
-        for record in records:
-            assert record.id >= 0
-            transaction.log_records.append(Log(
-                    resource=record, event=event, target=target, user=user,
-                    **extra))
+        for transaction, sub_records in groupby(
+                records, lambda r: r._transaction):
+            with Transaction().set_current_transaction(transaction):
+                if user is None:
+                    user = transaction.user
+                for record in records:
+                    assert record.id >= 0
+                    transaction.log_records.append(Log(
+                            resource=record, event=event, target=target,
+                            user=user, **extra))
 
     @classmethod
     def create(cls, vlist):
