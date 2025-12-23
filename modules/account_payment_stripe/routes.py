@@ -88,9 +88,9 @@ def webhooks_endpoint(request, pool, account):
             ('webhook_identifier', '=', account),
             ])
 
+    request_body = request.get_data(as_text=True)
     if account.webhook_signing_secret:
         sig_header = request.headers['STRIPE_SIGNATURE']
-        request_body = request.get_data(as_text=True)
         try:
             stripe.Webhook.construct_event(
                 request_body, sig_header, account.webhook_signing_secret)
