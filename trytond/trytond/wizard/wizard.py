@@ -352,7 +352,11 @@ class Wizard(URLMixin, PoolBase):
             wizard.model.log(
                 wizard.records, 'wizard',
                 f'{cls.__name__}:{state_name}')
-        wizard._save()
+        if transaction.readonly:
+            with transaction.new_transaction():
+                wizard._save()
+        else:
+            wizard._save()
         return result
 
     def _execute(self, state_name):
