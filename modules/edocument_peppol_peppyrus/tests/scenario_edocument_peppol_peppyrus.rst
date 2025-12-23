@@ -11,7 +11,7 @@ Imports::
     >>> from proteus import Model
     >>> from trytond.modules.company.tests.tools import create_company
     >>> from trytond.modules.edocument_peppol.edocument import Peppol
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, assertTrue
     >>> from trytond.tools import file_open
 
     >>> FETCH_SLEEP, MAX_SLEEP = 1, 20
@@ -47,6 +47,12 @@ Create a service::
     >>> peppol_service.peppyrus_server = 'testing'
     >>> peppol_service.peppyrus_api_key = os.getenv('PEPPYRUS_API_KEY')
     >>> peppol_service.save()
+
+Setup webhook::
+
+    >>> peppol_service.click('peppyrus_new_identifier')
+    >>> assertTrue(peppol_service.peppyrus_incoming_webhook)
+    >>> assertTrue(peppol_service.peppyrus_outgoing_webhook)
 
 Send out a Peppol document::
 

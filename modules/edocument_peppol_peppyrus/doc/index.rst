@@ -10,5 +10,7 @@ documents on the `Peppol network <https://peppol.org/>`_ thanks to the
    :maxdepth: 2
 
    setup
+   configuration
    design
+   reference
    releases

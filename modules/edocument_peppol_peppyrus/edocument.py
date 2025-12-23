@@ -1,10 +1,11 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 
+import uuid
 from base64 import b64decode, b64encode
 from functools import wraps
 from io import BytesIO
-from urllib.parse import urljoin
+from urllib.parse import quote, urljoin
 
 import requests
 from lxml import etree
@@ -16,6 +17,7 @@ from trytond.pool import Pool, PoolMeta
 from trytond.protocols.wrappers import HTTPStatus
 from trytond.pyson import Eval
 from trytond.transaction import Transaction
+from trytond.url import http_host
 
 from .exceptions import PeppyrusCredentialWarning, PeppyrusError
 
@@ -57,17 +59,73 @@ class PeppolService(metaclass=PoolMeta):
             'invisible': Eval('service') != 'peppyrus',
             'required': Eval('service') == 'peppyrus',
             })
+    peppyrus_identifier = fields.Char(
+        "Identifier", readonly=True,
+        states={
+            'invisible': Eval('service') != 'peppyrus',
+            })
+    peppyrus_incoming_webhook = fields.Function(
+        fields.Char(
+            "Incoming webhook",
+            help="The URL for the incoming documents webhook."),
+        'on_change_with_peppyrus_incoming_webhook')
+    peppyrus_outgoing_webhook = fields.Function(
+        fields.Char(
+            "Outgoing webhook",
+            help="The URL for the outgoing documents webhook."),
+        'on_change_with_peppyrus_outgoing_webhook')
 
     @classmethod
     def __setup__(cls):
         super().__setup__()
         cls.service.selection.append(('peppyrus', "Peppyrus"))
+        cls._buttons.update(
+            peppyrus_new_identifier={
+                'invisible': Eval('service') != 'peppyrus',
+                'icon': 'tryton-refresh',
+                },
+            )
 
     @fields.depends('service', 'peppyrus_server')
     def on_change_service(self):
         if (self.service == 'peppyrus'
                 and not self.peppyrus_server):
             self.peppyrus_server = 'testing'
+
+    @fields.depends('peppyrus_identifier')
+    def on_change_with_peppyrus_incoming_webhook(self, name=None):
+        if self.peppyrus_identifier:
+            url_part = {
+                'identifier': self.peppyrus_identifier,
+                'database_name': Transaction().database.name,
+                }
+            return http_host() + (
+                quote(
+                    '/%(database_name)s/edocument_peppol_peppyrus/'
+                    '%(identifier)s/in'
+                    % url_part))
+
+    @fields.depends('peppyrus_identifier')
+    def on_change_with_peppyrus_outgoing_webhook(self, name=None):
+        if self.peppyrus_identifier:
+            url_part = {
+                'identifier': self.peppyrus_identifier,
+                'database_name': Transaction().database.name,
+                }
+            return http_host() + (
+                quote(
+                    '/%(database_name)s/edocument_peppol_peppyrus/'
+                    '%(identifier)s/out'
+                    % url_part))
+
+    @classmethod
+    def peppyrus_new_identifier(cls, services):
+        for service in services:
+            if service.peppyrus_identifier:
+                service.peppyrus_identifier = None
+            else:
+                service.peppyrus_identifier = uuid.uuid4().hex
+        cls.save(services)
 
     @peppyrus_api
     def _post_peppyrus(self, document):
@@ -133,6 +191,9 @@ class PeppolService(metaclass=PoolMeta):
                 })
         response.raise_for_status()
         message = response.json()
+        self.peppyrus_update(document, message)
+
+    def peppyrus_update(self, document, message):
         assert message['id'] == document.transmission_id
         if message['folder'] == 'sent':
             document.succeed()

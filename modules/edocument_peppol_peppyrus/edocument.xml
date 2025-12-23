@@ -8,6 +8,13 @@ this repository contains the full copyright notices and license terms. -->
             <field name="inherit" ref="edocument_peppol.edocument_peppol_service_view_form"/>
             <field name="name">edocument_peppol_service_form</field>
         </record>
+
+        <record model="ir.model.button" id="edocument_peppol_service_new_identifier_button">
+            <field name="model">edocument.peppol.service</field>
+            <field name="name">peppyrus_new_identifier</field>
+            <field name="string">New URLs</field>
+            <field name="confirm">This action will make the previous URLs unusable. Do you want to continue?</field>
+        </record>
     </data>
 
     <data noupdate="1">

@@ -8,6 +8,13 @@ this repository contains the full copyright notices and license terms. -->
         <field name="peppyrus_server"/>
         <label name="peppyrus_api_key"/>
         <field name="peppyrus_api_key"/>
+
+        <label name="peppyrus_incoming_webhook"/>
+        <field name="peppyrus_incoming_webhook"/>
+        <label name="peppyrus_outgoing_webhook"/>
+        <field name="peppyrus_outgoing_webhook"/>
+
+        <button name="peppyrus_new_identifier" colspan="4"/>
         <newline/>
     </xpath>
 </data>
