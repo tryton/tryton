@@ -151,7 +151,7 @@ class Exclude(Constraint):
             for column, operator in self.excludes)
         where = ''
         if self.where:
-            where = ' WHERE ' + str(self.where)
+            where = ' WHERE (' + str(self.where) + ')'
         if using:
             using = 'USING ' + using
         return 'EXCLUDE %s (%s)' % (using, exclude) + where
