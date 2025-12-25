@@ -125,13 +125,13 @@ class ResourceTestCase(TestCase):
         record, = Resource.create([{}])
 
         with Transaction().set_context(_check_access=True):
-            note_id, = Note.create([{
+            note, = Note.create([{
                         'resource': record,
                         'message': "Foo",
                         }])
-            Note.write([note_id], {'message': "Bar"})
-            Note.read([note_id], ['message'])
-            Note.delete([note_id])
+            Note.write([note], {'message': "Bar"})
+            Note.read([note.id], ['message'])
+            Note.delete([note])
 
     @with_transaction()
     def test_resource_without_access(self):
@@ -189,13 +189,13 @@ class ResourceTestCase(TestCase):
         record, = Resource.create([{}])
 
         with Transaction().set_context(_check_access=True):
-            note_id, = Note.create([{
+            note, = Note.create([{
                         'resource': record,
                         'message': "Foo",
                         }])
-            Note.write([note_id], {'message': "Bar"})
-            Note.read([note_id], ['message'])
-            Note.delete([note_id])
+            Note.write([note], {'message': "Bar"})
+            Note.read([note.id], ['message'])
+            Note.delete([note])
 
     @with_transaction()
     def test_resource_without_rule(self):
@@ -217,7 +217,7 @@ class ResourceTestCase(TestCase):
                     }])
         record, = Resource.create([{}])
 
-        note_id, = Note.create([{
+        note, = Note.create([{
                     'resource': record,
                     'message': "Message",
                     }])
@@ -230,8 +230,8 @@ class ResourceTestCase(TestCase):
                             }])
 
             with self.assertRaises(AccessError):
-                Note.write([note_id], {'message': "Bar"})
+                Note.write([note], {'message': "Bar"})
             with self.assertRaises(AccessError):
-                Note.read([note_id], ['message'])
+                Note.read([note.id], ['message'])
             with self.assertRaises(AccessError):
-                Note.delete([note_id])
+                Note.delete([note])
