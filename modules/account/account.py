@@ -1085,7 +1085,7 @@ class Account(
             types = [None]
             for name in names:
                 if name == 'line_count':
-                    columns.append(Count(Literal('*')))
+                    columns.append(Count())
                     types.append(None)
                 else:
                     columns.append(
@@ -1593,7 +1593,7 @@ class AccountParty(ActivePeriodMixin, ModelSQL):
         types = [None, None]
         for name in names:
             if name == 'line_count':
-                columns.append(Count(Literal('*')).as_(name))
+                columns.append(Count().as_(name))
                 types.append(None)
             else:
                 columns.append(Sum(Coalesce(Column(line, name), 0)).as_(name))
@@ -1721,7 +1721,7 @@ class AccountDeferral(ModelSQL, ModelView):
                 .join(period, condition=move.period == period.id)
                 .select(
                     move_line.account, period.fiscalyear,
-                    Count(Literal('*')).as_('line_count'),
+                    Count().as_('line_count'),
                     group_by=[move_line.account, period.fiscalyear]))
             cursor.execute(*deferral.update(
                     [deferral.line_count], [counting_query.line_count],

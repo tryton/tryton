@@ -812,7 +812,7 @@ class LoginAttempt(ModelSQL):
     def count(cls, login, device_cookie=None):
         cursor = Transaction().connection.cursor()
         table = cls.__table__()
-        cursor.execute(*table.select(Count(Literal('*')),
+        cursor.execute(*table.select(Count(),
                 where=(table.login == login)
                 & (table.device_cookie == device_cookie)
                 & (table.create_date >= cls.delay())))
@@ -825,7 +825,7 @@ class LoginAttempt(ModelSQL):
         table = cls.__table__()
         _, ip_network = transaction.remote_address()
         ip_network = str(ip_network) if ip_network else None
-        cursor.execute(*table.select(Count(Literal('*')),
+        cursor.execute(*table.select(Count(),
                 where=(table.ip_network == ip_network)
                 & (table.create_date >= cls.delay())))
         return cursor.fetchone()[0]

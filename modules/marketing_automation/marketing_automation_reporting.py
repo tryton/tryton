@@ -99,8 +99,8 @@ class Scenario(Abstract):
     def _columns(cls, tables, withs):
         record = tables['record']
 
-        record_count = Count(Literal('*'))
-        record_count_blocked = Count(Literal('*'), filter_=record.blocked)
+        record_count = Count()
+        record_count_blocked = Count(filter_=record.blocked)
 
         return super()._columns(tables, withs) + [
             record.scenario.as_('scenario'),
@@ -203,12 +203,9 @@ class Activity(Abstract):
     def _columns(cls, tables, withs):
         record_activity = tables['record_activity']
 
-        record_count = Count(
-            Literal('*'), filter_=record_activity.state == 'done')
-        email_opened = Count(
-            Literal('*'), filter_=record_activity.email_opened)
-        email_clicked = Count(
-            Literal('*'), filter_=record_activity.email_clicked)
+        record_count = Count(filter_=record_activity.state == 'done')
+        email_opened = Count(filter_=record_activity.email_opened)
+        email_clicked = Count(filter_=record_activity.email_clicked)
 
         return super()._columns(tables, withs) + [
             record_activity.activity.as_('activity'),

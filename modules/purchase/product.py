@@ -3,7 +3,6 @@
 import datetime
 from collections import defaultdict
 
-from sql import Literal
 from sql.aggregate import Count, Max
 
 from trytond.i18n import gettext
@@ -407,7 +406,7 @@ class ProductSupplier(
             cursor.execute(*table.select(table.currency,
                     where=table.party == self.party.id,
                     group_by=table.currency,
-                    order_by=Count(Literal(1)).desc))
+                    order_by=Count().desc))
             row = cursor.fetchone()
             if row:
                 self.currency, = row

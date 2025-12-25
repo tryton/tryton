@@ -196,8 +196,8 @@ class AEATPartyReport(AEATReport):
 
             from_ = convert_from(None, tables)
             cursor.execute(*from_.select(
-                    expression, where=where, group_by=(expression,)).select(
-                        Count(Literal('*'))))
+                    expression, where=where, group_by=(expression,))
+                .select(Count()))
             row = cursor.fetchone()
             if row:
                 parties[tax_code.code] += row[0]

@@ -11,7 +11,6 @@ from urllib.parse import (
 from genshi.core import END, START, Attrs, QName
 from genshi.template import MarkupTemplate
 from genshi.template import TemplateError as GenshiTemplateError
-from sql import Literal
 from sql.aggregate import Count
 
 import trytond.config as config
@@ -257,7 +256,7 @@ class EmailList(DeactivableMixin, ModelSQL, ModelView):
 
         subscribed = defaultdict(int)
         query = email.select(
-            email.list_, Count(Literal('*')), group_by=[email.list_])
+            email.list_, Count(), group_by=[email.list_])
         for sub_lists in grouped_slice(lists):
             query.where = (
                 reduce_ids(email.list_, sub_lists)

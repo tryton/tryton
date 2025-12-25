@@ -120,7 +120,7 @@ class Abstract(ModelSQL):
         return [
             cls._column_id(tables, withs).as_('id'),
             opportunity.company.as_('company'),
-            Count(Literal(1)).as_('number'),
+            Count().as_('number'),
             Sum(opportunity.amount).as_('amount'),
             Sum(Case(
                     (opportunity.state.in_(cls._converted_states()),

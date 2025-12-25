@@ -15,7 +15,6 @@ from genshi.core import END, START, Attrs, QName
 from genshi.template import MarkupTemplate
 from genshi.template import TemplateError as GenshiTemplateError
 from genshi.template import TextTemplate
-from sql import Literal
 from sql.aggregate import Count
 
 import trytond.config as config
@@ -182,8 +181,8 @@ class Scenario(
         for sub in grouped_slice(others):
             cursor.execute(*record.select(
                     record.scenario,
-                    Count(Literal('*')),
-                    Count(Literal('*'), filter_=record.blocked),
+                    Count(),
+                    Count(filter_=record.blocked),
                     where=reduce_ids(record.scenario, sub),
                     group_by=record.scenario))
             for id_, all_, blocked in cursor:
@@ -525,10 +524,9 @@ class Activity(
         for sub in grouped_slice(activities):
             cursor.execute(*record_activity.select(
                     record_activity.activity,
-                    Count(Literal('*'),
-                        filter_=record_activity.state == 'done'),
-                    Count(Literal('*'), filter_=record_activity.email_opened),
-                    Count(Literal('*'), filter_=record_activity.email_clicked),
+                    Count(filter_=record_activity.state == 'done'),
+                    Count(filter_=record_activity.email_opened),
+                    Count(filter_=record_activity.email_clicked),
                     where=reduce_ids(record_activity.activity, sub),
                     group_by=record_activity.activity))
             for id_, all_, email_opened, email_clicked in cursor:

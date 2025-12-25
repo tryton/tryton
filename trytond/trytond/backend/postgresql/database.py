@@ -489,7 +489,7 @@ class Database(DatabaseInterface):
                 'WHERE relname = %s',
                 (from_item._name,))
         else:
-            cursor.execute(*from_item.select(Count(Literal('*'))))
+            cursor.execute(*from_item.select(Count()))
         return cursor.fetchone()[0]
 
     def notify(self, connection, channel, payload):

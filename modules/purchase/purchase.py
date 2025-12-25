@@ -6,7 +6,7 @@ from collections import defaultdict
 from decimal import Decimal
 from itertools import chain, groupby
 
-from sql import Literal, Null
+from sql import Null
 from sql.aggregate import Count
 from sql.functions import CharLength
 
@@ -458,7 +458,7 @@ class Purchase(
                             subquery.payment_term,
                             subquery.invoice_method,
                             ],
-                        order_by=Count(Literal(1)).desc))
+                        order_by=Count().desc))
                 row = cursor.fetchone()
                 if row:
                     self.currency, self.payment_term, self.invoice_method = row

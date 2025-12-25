@@ -55,7 +55,7 @@ exclude = ['doc']
 
 [tool.hatch.metadata.hooks.tryton]
 dependencies = [
-    'python-sql >= 1.1.0',
+    'python-sql >= 1.4',
     ]
 copyright = 'COPYRIGHT'
 readme = 'README.rst'

@@ -1941,9 +1941,9 @@ class ModelSQL(ModelStorage):
             if (limit is not None and limit < cls.estimated_count()) or offset:
                 select = table.select(
                     Literal(1), where=expression, limit=limit, offset=offset
-                    ).select(Count(Literal('*')))
+                    ).select(Count())
             else:
-                select = table.select(Count(Literal('*')), where=expression)
+                select = table.select(Count(), where=expression)
             if query:
                 return select
             else:

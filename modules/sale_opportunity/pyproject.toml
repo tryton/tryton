@@ -54,7 +54,7 @@ exclude = ['doc']
 [tool.hatch.metadata.hooks.tryton]
 dependencies = [
     'python-dateutil',
-    'python-sql >= 0.4',
+    'python-sql >= 1.4',
     ]
 copyright = 'COPYRIGHT'
 readme = 'README.rst'

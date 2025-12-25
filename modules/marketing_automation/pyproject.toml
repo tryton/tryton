@@ -57,6 +57,7 @@ exclude = ['doc']
 dependencies = [
     'Genshi',
     'python-dateutil',
+    'python-sql >= 1.4',
     ]
 copyright = 'COPYRIGHT'
 readme = 'README.rst'

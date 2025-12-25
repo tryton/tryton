@@ -208,7 +208,7 @@ class Trigger(DeactivableMixin, ModelSQL, ModelView):
                 sub_ids = list(sub_ids)
                 red_sql = reduce_ids(trigger_log.record_id, sub_ids)
                 cursor.execute(*trigger_log.select(
-                        trigger_log.record_id, Count(Literal(1)),
+                        trigger_log.record_id, Count(),
                         where=red_sql & (trigger_log.trigger == self.id),
                         group_by=trigger_log.record_id))
                 number = dict(cursor)

@@ -91,7 +91,7 @@ class Notification(
         notification = cls.__table__()
         cursor = Transaction().connection.cursor()
         cursor.execute(*notification.select(
-                notification.user, Count(Literal('*')),
+                notification.user, Count(),
                 where=((notification.user.in_(list(notifications_by_user)))
                     & notification.unread),
                 group_by=[notification.user]))

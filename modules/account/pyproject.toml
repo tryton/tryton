@@ -53,7 +53,7 @@ exclude = ['doc']
 [tool.hatch.metadata.hooks.tryton]
 dependencies = [
     'python-dateutil',
-    'python-sql >= 0.7',
+    'python-sql >= 1.4',
     'simpleeval',
     ]
 copyright = 'COPYRIGHT'
