@@ -13,7 +13,7 @@ from trytond.modules.currency.fields import Monetary
 from trytond.modules.product import price_digits, round_price
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
-from trytond.tools import grouped_slice, reduce_ids
+from trytond.tools import grouped_slice
 from trytond.transaction import Transaction
 
 
@@ -95,13 +95,13 @@ class Work(metaclass=PoolMeta):
 
         work_ids = [w.id for w in works]
         for sub_ids in grouped_slice(work_ids):
-            red_sql = reduce_ids(table.id, sub_ids)
+            where = fields.SQL_OPERATORS['in'](table.id, sub_ids)
             cursor.execute(*table.join(work,
                     condition=(
                         Concat(cls.__name__ + ',', table.id) == work.origin)
                     ).join(line, condition=line.work == work.id
                     ).select(table.id, Sum(line.cost_price * line.duration),
-                    where=red_sql,
+                    where=where,
                     group_by=[table.id]))
             for work_id, cost in cursor:
                 # SQLite stores timedelta as float
@@ -135,7 +135,7 @@ class Work(metaclass=PoolMeta):
         work2currency = {}
         iline2work = {}
         for sub_ids in grouped_slice(work_ids):
-            where = reduce_ids(table.id, sub_ids)
+            where = fields.SQL_OPERATORS['in'](table.id, sub_ids)
             cursor.execute(*table.join(purchase_line,
                     condition=purchase_line.work == table.id
                     ).join(invoice_line,

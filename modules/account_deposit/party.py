@@ -12,7 +12,7 @@ from trytond.model import fields
 from trytond.modules.currency.fields import Monetary
 from trytond.modules.party.exceptions import EraseError
 from trytond.pool import Pool, PoolMeta
-from trytond.tools import grouped_slice, reduce_ids, sqlite_apply_types
+from trytond.tools import grouped_slice, sqlite_apply_types
 from trytond.transaction import Transaction
 
 
@@ -46,7 +46,8 @@ class Party(metaclass=PoolMeta):
         line_clause, _ = MoveLine.query_get(line)
 
         for sub_parties in grouped_slice(parties):
-            party_clause = reduce_ids(line.party, [p.id for p in sub_parties])
+            party_clause = fields.SQL_OPERATORS['in'](
+                line.party, [p.id for p in sub_parties])
             query = (line
                 .join(account, condition=account.id == line.account)
                 .join(account_type, condition=account.type == account_type.id)

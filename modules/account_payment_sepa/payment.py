@@ -26,7 +26,7 @@ from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval, If
 from trytond.report import Report
 from trytond.tools import (
-    cached_property, grouped_slice, is_full_text, lstrip_wildcard, reduce_ids,
+    cached_property, grouped_slice, is_full_text, lstrip_wildcard,
     sortable_values)
 from trytond.transaction import Transaction
 
@@ -786,8 +786,9 @@ class Mandate(Workflow, ModelSQL, ModelView):
         cursor = Transaction().connection.cursor()
 
         has_payments = dict.fromkeys([m.id for m in mandates], False)
-        for sub_ids in grouped_slice(mandates):
-            red_sql = reduce_ids(payment.sepa_mandate, sub_ids)
+        for sub_mandates in grouped_slice(mandates):
+            red_sql = fields.SQL_OPERATORS['in'](
+                payment.sepa_mandate, map(int, sub_mandates))
             cursor.execute(*payment.select(payment.sepa_mandate, Literal(True),
                     where=red_sql,
                     group_by=payment.sepa_mandate))
@@ -803,8 +804,9 @@ class Mandate(Workflow, ModelSQL, ModelView):
         cursor = Transaction().connection.cursor()
 
         is_first = dict.fromkeys([m.id for m in mandates], True)
-        for sub_ids in grouped_slice(mandates):
-            red_sql = reduce_ids(payment.sepa_mandate, sub_ids)
+        for sub_mandates in grouped_slice(mandates):
+            red_sql = fields.SQL_OPERATORS['in'](
+                payment.sepa_mandate, map(int, sub_mandates))
             cursor.execute(*payment.select(
                     payment.sepa_mandate, Literal(False),
                     where=red_sql

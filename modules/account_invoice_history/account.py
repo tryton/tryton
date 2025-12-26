@@ -7,7 +7,7 @@ from sql.functions import CurrentTimestamp
 from trytond import backend
 from trytond.model import ModelView, Workflow, fields
 from trytond.pool import Pool, PoolMeta
-from trytond.tools import grouped_slice, reduce_ids, sqlite_apply_types
+from trytond.tools import grouped_slice, sqlite_apply_types
 from trytond.transaction import Transaction
 
 
@@ -55,7 +55,7 @@ class Invoice(metaclass=PoolMeta):
                     Greatest(table.numbered_at, party.create_date,
                         address.create_date, identifier.create_date,
                         payment_term.create_date).as_('history_datetime'),
-                    where=reduce_ids(table.id, ids)
+                    where=fields.SQL_OPERATORS['in'](table.id, ids)
                     & (table.numbered_at != Null)
                     & (table.state.in_(cls._history_states()))))
             if backend.name == 'sqlite':

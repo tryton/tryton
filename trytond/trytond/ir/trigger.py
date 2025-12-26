@@ -15,7 +15,7 @@ from trytond.model import (
 from trytond.model.exceptions import ValidationError
 from trytond.pool import Pool
 from trytond.pyson import Eval, If, PYSONDecoder, TimeDelta
-from trytond.tools import grouped_slice, reduce_ids
+from trytond.tools import grouped_slice
 from trytond.transaction import Transaction
 
 
@@ -206,10 +206,10 @@ class Trigger(DeactivableMixin, ModelSQL, ModelView):
             new_ids = []
             for sub_ids in grouped_slice(ids):
                 sub_ids = list(sub_ids)
-                red_sql = reduce_ids(trigger_log.record_id, sub_ids)
+                where = fields.SQL_OPERATORS['in'](trigger_log.record_id, sub_ids)
                 cursor.execute(*trigger_log.select(
                         trigger_log.record_id, Count(),
-                        where=red_sql & (trigger_log.trigger == self.id),
+                        where=where & (trigger_log.trigger == self.id),
                         group_by=trigger_log.record_id))
                 number = dict(cursor)
                 for record_id in sub_ids:
@@ -231,10 +231,11 @@ class Trigger(DeactivableMixin, ModelSQL, ModelView):
                 now = datetime.datetime.fromisoformat(now)
             for sub_ids in grouped_slice(ids):
                 sub_ids = list(sub_ids)
-                red_sql = reduce_ids(trigger_log.record_id, sub_ids)
+                where = fields.SQL_OPERATORS['in'](
+                    trigger_log.record_id, sub_ids)
                 cursor.execute(*trigger_log.select(
                         trigger_log.record_id, Max(trigger_log.create_date),
-                        where=(red_sql & (trigger_log.trigger == self.id)),
+                        where=where & (trigger_log.trigger == self.id),
                         group_by=trigger_log.record_id))
                 delay = dict(cursor)
                 for record_id in sub_ids:

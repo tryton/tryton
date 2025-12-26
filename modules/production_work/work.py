@@ -19,7 +19,7 @@ from trytond.modules.company.model import employee_field, set_employee
 from trytond.modules.product import price_digits, round_price
 from trytond.pool import Pool
 from trytond.pyson import Bool, Eval, If, TimeDelta
-from trytond.tools import grouped_slice, reduce_ids, sqlite_apply_types
+from trytond.tools import grouped_slice, sqlite_apply_types
 from trytond.transaction import Transaction
 
 from .exceptions import PickerError
@@ -250,7 +250,8 @@ class Work(sequence_ordered(), ModelSQL, ModelView, ChatMixin):
         costs = defaultdict(Decimal)
 
         for sub_works in grouped_slice(works):
-            red_sql = reduce_ids(cycle.work, [w.id for w in sub_works])
+            red_sql = fields.SQL_OPERATORS['in'](
+                cycle.work, [w.id for w in sub_works])
             query = cycle.select(
                 cycle.work, Sum(Coalesce(cycle.cost, 0)).as_('cost'),
                 where=red_sql & (cycle.state == 'done'),

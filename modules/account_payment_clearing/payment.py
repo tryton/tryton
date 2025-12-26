@@ -13,7 +13,7 @@ from trytond.model import ModelView, Workflow, fields
 from trytond.modules.account.exceptions import AccountMissing
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Bool, Eval, If, TimeDelta
-from trytond.tools import grouped_slice, reduce_ids
+from trytond.tools import grouped_slice
 from trytond.transaction import Transaction
 from trytond.wizard import Button, StateTransition, StateView, Wizard
 
@@ -447,7 +447,8 @@ class Group(metaclass=PoolMeta):
         for sub_groups in grouped_slice(groups):
             cursor.execute(*payment.select(
                     payment.group, column,
-                    where=reduce_ids(payment.group, sub_groups),
+                    where=fields.SQL_OPERATORS['in'](
+                        payment.group, map(int, sub_groups)),
                     group_by=payment.group))
             result.update(cursor)
         return result

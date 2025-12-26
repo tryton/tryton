@@ -32,8 +32,7 @@ from trytond.pyson import Bool, Eval, Id, If
 from trytond.report import Report
 from trytond.rpc import RPC
 from trytond.tools import (
-    cached_property, firstline, grouped_slice, reduce_ids, slugify,
-    sqlite_apply_types)
+    cached_property, firstline, grouped_slice, slugify, sqlite_apply_types)
 from trytond.transaction import Transaction
 from trytond.wizard import (
     Button, StateAction, StateReport, StateTransition, StateView, Wizard)
@@ -829,8 +828,9 @@ class Invoice(
 
         type_name = cls.tax_amount._field.sql_type().base
         tax = InvoiceTax.__table__()
-        for sub_ids in grouped_slice(invoices_no_cache):
-            red_sql = reduce_ids(tax.invoice, sub_ids)
+        for sub_invoices in grouped_slice(invoices_no_cache):
+            red_sql = fields.SQL_OPERATORS['in'](
+                tax.invoice, map(int, sub_invoices))
             query = (tax.select(tax.invoice,
                     Coalesce(Sum(tax.amount), 0).as_(type_name),
                     where=red_sql,
@@ -885,7 +885,8 @@ class Invoice(
         invoice = cls.__table__()
         additional_move = AdditionalMove.__table__()
 
-        red_sql = reduce_ids(invoice.id, invoices)
+        red_sql = fields.SQL_OPERATORS['in'](
+            invoice.id, map(int, invoices))
         query = (invoice
             .join(line,
                 condition=((invoice.move == line.move)
@@ -1152,7 +1153,7 @@ class Invoice(
         for sub_invoices in grouped_slice(invoices):
             sub_ids = map(int, sub_invoices)
             cursor.execute(*table.select(table.id, has_cache,
-                    where=reduce_ids(table.id, sub_ids)))
+                    where=fields.SQL_OPERATORS['in'](table.id, sub_ids)))
             result.update(cursor)
         return result
 

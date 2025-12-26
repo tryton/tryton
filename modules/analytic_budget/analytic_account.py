@@ -8,7 +8,6 @@ from trytond.modules.account_budget import (
     BudgetLineMixin, BudgetMixin, CopyBudgetMixin, CopyBudgetStartMixin)
 from trytond.pool import Pool
 from trytond.pyson import Eval
-from trytond.tools import reduce_ids
 from trytond.transaction import Transaction
 from trytond.wizard import Button, StateAction, StateView, Wizard
 
@@ -179,7 +178,7 @@ class BudgetLine(BudgetLineMixin, ModelSQL, ModelView):
         children = cls.__table__()
 
         balance = Sum(Coalesce(line.credit, 0) - Coalesce(line.debit, 0))
-        red_sql = reduce_ids(table.id, [r.id for r in records])
+        red_sql = fields.SQL_OPERATORS['in'](table.id, [r.id for r in records])
         with Transaction().set_context(context):
             query_where = Line.query_get(line)
         return (table

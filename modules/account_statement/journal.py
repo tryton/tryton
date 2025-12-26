@@ -10,8 +10,7 @@ from trytond.modules.currency.fields import Monetary
 from trytond.pool import Pool
 from trytond.pyson import Eval
 from trytond.rpc import RPC
-from trytond.tools import (
-    cursor_dict, grouped_slice, reduce_ids, sqlite_apply_types)
+from trytond.tools import cursor_dict, grouped_slice, sqlite_apply_types
 from trytond.transaction import Transaction
 
 
@@ -145,9 +144,10 @@ class Journal(DeactivableMixin, ModelSQL, ModelView):
                 columns.append(
                     FirstValue(statement.date, window=w).as_('last_date'))
             query = statement.select(*columns,
-                    distinct=True,
-                    where=reduce_ids(statement.journal, sub_ids)
-                    & (statement.state != 'cancelled'))
+                distinct=True,
+                where=(fields.SQL_OPERATORS['in'](
+                        statement.journal, sub_ids)
+                    & (statement.state != 'cancelled')))
             if backend.name == 'sqlite':
                 types = [None]
                 if 'last_amount' in names:

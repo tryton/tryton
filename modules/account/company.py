@@ -12,7 +12,7 @@ from trytond.model import fields
 from trytond.model.exceptions import AccessError
 from trytond.modules.currency.fields import Monetary
 from trytond.pool import Pool, PoolMeta
-from trytond.tools import grouped_slice, reduce_ids, sqlite_apply_types
+from trytond.tools import grouped_slice, sqlite_apply_types
 from trytond.transaction import Transaction
 
 
@@ -67,7 +67,8 @@ class Company(metaclass=PoolMeta):
                 today_where = Literal(True)
             for sub_companies in grouped_slice(companies):
                 sub_ids = [p.id for p in sub_companies]
-                company_where = reduce_ids(account.company, sub_ids)
+                company_where = fields.SQL_OPERATORS['in'](
+                    account.company, sub_ids)
                 query = (line
                     .join(account,
                         condition=account.id == line.account)

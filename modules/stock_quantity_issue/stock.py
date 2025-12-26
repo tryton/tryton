@@ -249,12 +249,11 @@ class QuantityIssue(
             issue.issue_products = []
             issues[issue.origin] = issue
 
-        # Order by id to speedup reduce_ids
         products = Product.search([
                 ('type', 'in', ['goods', 'assets']),
                 ('consumable', '=', False),
                 ],
-            order=[('id', 'ASC')])
+            order=[])
 
         for product in products:
             for warehouse in warehouses:

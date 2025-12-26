@@ -22,7 +22,7 @@ from trytond.pool import Pool
 from trytond.pyson import Eval
 from trytond.report import Report, get_email, html_to_text, mjml_to_html
 from trytond.sendmail import SMTPDataManager, send_message_transactional
-from trytond.tools import grouped_slice, reduce_ids
+from trytond.tools import grouped_slice
 from trytond.tools.email_ import (
     EmailNotValidError, format_address, normalize_email, set_from_header,
     validate_email)
@@ -259,7 +259,8 @@ class EmailList(DeactivableMixin, ModelSQL, ModelView):
             email.list_, Count(), group_by=[email.list_])
         for sub_lists in grouped_slice(lists):
             query.where = (
-                reduce_ids(email.list_, sub_lists)
+                fields.SQL_OPERATORS['in'](
+                    email.list_, map(int, sub_lists))
                 & email.active)
             cursor.execute(*query)
             subscribed.update(cursor)

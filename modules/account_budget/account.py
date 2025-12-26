@@ -17,7 +17,7 @@ from trytond.modules.currency.fields import Monetary
 from trytond.pool import Pool
 from trytond.pyson import Bool, Eval, If
 from trytond.rpc import RPC
-from trytond.tools import grouped_slice, reduce_ids, sqlite_apply_types
+from trytond.tools import grouped_slice, sqlite_apply_types
 from trytond.transaction import Transaction
 from trytond.wizard import (
     Button, StateAction, StateTransition, StateView, Wizard)
@@ -213,7 +213,7 @@ class BudgetLineMixin(
             sqlite_apply_types(query, [None, 'NUMERIC'])
 
         for sub_ids in grouped_slice(ids):
-            query.where = reduce_ids(table.id, sub_ids)
+            query.where = fields.SQL_OPERATORS['in'](table.id, sub_ids)
             cursor.execute(*query)
             amounts.update(cursor)
 
@@ -549,7 +549,7 @@ class BudgetLine(BudgetLineMixin, ModelSQL, ModelView):
         line = Line.__table__()
 
         amount = Sum(Coalesce(line.credit, 0) - Coalesce(line.debit, 0))
-        red_sql = reduce_ids(table.id, [r.id for r in records])
+        red_sql = fields.SQL_OPERATORS['in'](table.id, [r.id for r in records])
         periods = Transaction().context.get('periods')
         if not periods:
             periods = [p.id for p in Period.search([
@@ -693,7 +693,7 @@ class BudgetLinePeriod(AmountMixin, ModelSQL, ModelView):
         line = MoveLine.__table__()
 
         amount = Sum(Coalesce(line.credit, 0) - Coalesce(line.debit, 0))
-        red_sql = reduce_ids(table.id, [r.id for r in records])
+        red_sql = fields.SQL_OPERATORS['in'](table.id, [r.id for r in records])
         periods = Transaction().context.get('periods')
         if not periods:
             periods = [p.id for p in Period.search([
@@ -737,7 +737,8 @@ class BudgetLinePeriod(AmountMixin, ModelSQL, ModelView):
         for sub_ids in grouped_slice({p.budget_line.id for p in periods}):
             cursor.execute(*table.select(
                     table.budget_line,
-                    where=reduce_ids(table.budget_line, sub_ids),
+                    where=fields.SQL_OPERATORS['in'](
+                        table.budget_line, sub_ids),
                     group_by=table.budget_line,
                     having=Sum(table.ratio) > 1,
                     limit=1))

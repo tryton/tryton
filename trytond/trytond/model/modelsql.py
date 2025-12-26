@@ -383,7 +383,6 @@ class ModelSQL(ModelStorage):
     @classmethod
     def __setup_indexes__(cls):
         pool = Pool()
-        # Define Range index to optimise with reduce_ids
         for field_name, field in cls._fields.items():
             Targets = []
             if isinstance(field, fields.Many2One):

@@ -21,7 +21,7 @@ from trytond.modules.currency.fields import Monetary
 from trytond.modules.product import price_digits, round_price
 from trytond.pool import Pool
 from trytond.pyson import Bool, Eval, Id, If
-from trytond.tools import grouped_slice, reduce_ids, sqlite_apply_types
+from trytond.tools import grouped_slice, sqlite_apply_types
 from trytond.transaction import Transaction
 from trytond.wizard import Button, StateTransition, StateView, Wizard
 
@@ -865,12 +865,14 @@ class POSCashSession(Workflow, ModelSQL, ModelView):
                 payment.select(
                     payment.session.as_('session'),
                     Sum(payment.amount).as_('amount'),
-                    where=reduce_ids(payment.session, sub_ids),
+                    where=fields.SQL_OPERATORS['in'](
+                        payment.session, sub_ids),
                     group_by=[payment.session]),
                 transfer.select(
                     transfer.session.as_('session'),
                     Sum(transfer.amount).as_('amount'),
-                    where=reduce_ids(transfer.session, sub_ids),
+                    where=fields.SQL_OPERATORS['in'](
+                        transfer.session, sub_ids),
                     group_by=[transfer.session]),
                 all_=True)
             query = query.select(

@@ -13,7 +13,7 @@ from trytond.model import Index, ModelSQL, ModelView, Workflow, fields
 from trytond.modules.company.model import CompanyValueMixin
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Bool, Eval, Id
-from trytond.tools import grouped_slice, reduce_ids
+from trytond.tools import grouped_slice
 from trytond.transaction import Transaction
 
 
@@ -285,7 +285,9 @@ class MeasurementsMixin(object):
             where = query.where
             for sub_shipments in grouped_slice(shipments):
                 query.where = (
-                    where & reduce_ids(table.id, map(int, sub_shipments)))
+                    where
+                    & fields.SQL_OPERATORS['in'](
+                        table.id, map(int, sub_shipments)))
                 cursor.execute(*query)
         else:
             cursor.execute(*query)
@@ -331,7 +333,7 @@ class MeasurementsMixin(object):
                     if s.state not in states
                     or s.internal_weight is None
                     or s.internal_volume is None)):
-            query.where = reduce_ids(
+            query.where = fields.SQL_OPERATORS['in'](
                 table.id, [s.id for s in sub_shipments])
             cursor.execute(*query)
             for id_, weight, volume in cursor:

@@ -21,8 +21,7 @@ from trytond.modules.currency.fields import Monetary
 from trytond.modules.product import price_digits, round_price
 from trytond.pool import Pool
 from trytond.pyson import Bool, Eval, Id, If
-from trytond.tools import (
-    decistmt, grouped_slice, reduce_ids, sqlite_apply_types)
+from trytond.tools import decistmt, grouped_slice, sqlite_apply_types
 from trytond.transaction import Transaction, check_access
 from trytond.wizard import Button, StateAction, StateView, Wizard
 
@@ -129,7 +128,7 @@ class Agent(DeactivableMixin, ModelSQL, ModelView):
         ids = [a.id for a in agents]
         amounts = dict.fromkeys(ids, None)
         for sub_ids in grouped_slice(ids):
-            where = reduce_ids(commission.agent, sub_ids)
+            where = fields.SQL_OPERATORS['in'](commission.agent, sub_ids)
             where &= commission.invoice_line == Null
             query = commission.select(
                 commission.agent, Sum(commission.amount).as_('pending_amount'),

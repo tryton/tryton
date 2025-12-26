@@ -6,7 +6,6 @@ import datetime as dt
 import doctest
 import email.message
 import os
-import sys
 import unittest
 from copy import deepcopy
 from decimal import Decimal
@@ -29,7 +28,7 @@ from trytond.tests.test_tryton import TestCase
 from trytond.tools import (
     cached_property, decimal_, email_, escape_wildcard, file_open, firstline,
     grouped_slice, is_full_text, is_instance_method, likify, lstrip_wildcard,
-    pair, pairwise_longest, reduce_domain, reduce_ids, remove_forbidden_chars,
+    pair, pairwise_longest, reduce_domain, remove_forbidden_chars,
     rstrip_wildcard, slugify, sortable_values, sqlite_apply_types,
     strip_wildcard, timezone, unescape_wildcard, unpair)
 from trytond.tools.chart import sparkline
@@ -55,51 +54,6 @@ except ImportError:
 class ToolsTestCase(TestCase):
     'Test tools'
     table = sql.Table('test')
-
-    def test_reduce_ids_empty(self):
-        'Test reduce_ids empty list'
-        self.assertEqual(reduce_ids(self.table.id, []), sql.Literal(False))
-
-    def test_reduce_ids_continue(self):
-        'Test reduce_ids continue list'
-        self.assertEqual(reduce_ids(self.table.id, list(range(10))),
-            sql.operators.Or(((self.table.id >= 0) & (self.table.id <= 9),)))
-
-    def test_reduce_ids_one_hole(self):
-        'Test reduce_ids continue list with one hole'
-        self.assertEqual(reduce_ids(
-                self.table.id, list(range(10)) + list(range(20, 30))),
-            ((self.table.id >= 0) & (self.table.id <= 9))
-            | ((self.table.id >= 20) & (self.table.id <= 29)))
-
-    def test_reduce_ids_short_continue(self):
-        'Test reduce_ids short continue list'
-        self.assertEqual(reduce_ids(self.table.id, list(range(4))),
-            sql.operators.Or((self.table.id.in_(list(range(4))),)))
-
-    def test_reduce_ids_complex(self):
-        'Test reduce_ids complex list'
-        self.assertEqual(reduce_ids(self.table.id,
-                list(range(10)) + list(range(25, 30)) + list(range(15, 20))),
-            (((self.table.id >= 0) & (self.table.id <= 14))
-                | (self.table.id.in_(list(range(25, 30))))))
-
-    def test_reduce_ids_complex_small_continue(self):
-        'Test reduce_ids complex list with small continue'
-        self.assertEqual(reduce_ids(self.table.id,
-                [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 15, 18, 19, 21]),
-            (((self.table.id >= 1) & (self.table.id <= 12))
-                | (self.table.id.in_([15, 18, 19, 21]))))
-
-    @unittest.skipIf(sys.flags.optimize, "assert removed by optimization")
-    def test_reduce_ids_float(self):
-        'Test reduce_ids with integer as float'
-        self.assertEqual(reduce_ids(self.table.id,
-                [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0,
-                    15.0, 18.0, 19.0, 21.0]),
-            (((self.table.id >= 1.0) & (self.table.id <= 12.0))
-                | (self.table.id.in_([15.0, 18.0, 19.0, 21.0]))))
-        self.assertRaises(AssertionError, reduce_ids, self.table.id, [1.1])
 
     def test_reduce_domain(self):
         'Test reduce_domain'

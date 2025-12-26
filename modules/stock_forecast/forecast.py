@@ -18,7 +18,7 @@ from trytond.pool import Pool
 from trytond.pyson import Bool, Eval, If
 from trytond.sql.functions import DateRange
 from trytond.sql.operators import RangeOverlap
-from trytond.tools import grouped_slice, reduce_ids
+from trytond.tools import grouped_slice
 from trytond.transaction import Transaction
 from trytond.wizard import Button, StateTransition, StateView, Wizard
 
@@ -357,13 +357,13 @@ class ForecastLine(ModelSQL, ModelView):
             product2line = dict((line.product.id, line) for line in lines)
             product_ids = product2line.keys()
             for sub_ids in grouped_slice(product_ids):
-                red_sql = reduce_ids(move.product, sub_ids)
+                where = fields.SQL_OPERATORS['in'](move.product, sub_ids)
                 cursor.execute(*move.join(location_from,
                         condition=move.from_location == location_from.id
                         ).join(location_to,
                         condition=move.to_location == location_to.id
                         ).select(move.product, Sum(move.internal_quantity),
-                        where=red_sql
+                        where=where
                         & (location_from.left >= forecast.warehouse.left)
                         & (location_from.right <= forecast.warehouse.right)
                         & (location_to.left >= forecast.destination.left)

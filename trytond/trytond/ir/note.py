@@ -9,7 +9,7 @@ from trytond.i18n import lazy_gettext
 from trytond.model import ModelSQL, ModelView, fields
 from trytond.pool import Pool
 from trytond.pyson import Eval
-from trytond.tools import grouped_slice, reduce_ids
+from trytond.tools import grouped_slice
 from trytond.transaction import Transaction
 
 from .resource import ResourceMixin, resource_copy
@@ -52,7 +52,7 @@ class Note(ResourceMixin, ModelSQL, ModelView):
 
         unread = {}
         for sub_ids in grouped_slice(ids):
-            where = reduce_ids(table.id, sub_ids)
+            where = fields.SQL_OPERATORS['in'](table.id, sub_ids)
             query = table.join(read, 'LEFT',
                 condition=(table.id == read.note)
                 & (read.user == user_id)

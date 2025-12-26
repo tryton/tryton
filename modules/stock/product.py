@@ -17,7 +17,7 @@ from trytond.model.exceptions import AccessError
 from trytond.modules.product import price_digits, round_price
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Bool, Eval, If, PYSONEncoder
-from trytond.tools import decistmt, grouped_slice, reduce_ids
+from trytond.tools import decistmt, grouped_slice
 from trytond.tools import timezone as tz
 from trytond.transaction import Transaction, without_check_access
 from trytond.wizard import (
@@ -679,7 +679,8 @@ class ProductQuantitiesByWarehouse(ModelSQL, ModelView):
                     raise AccessError(gettext(
                             'stock.msg_product_quantities_max',
                             max=transaction.database.IN_MAX))
-                product_clause = reduce_ids(product.template, product_template)
+                product_clause = fields.SQL_OPERATORS['in'](
+                    product.template, product_template)
             else:
                 product_clause = product.template == Null
             product_column = Concat('product.template,', product.template)
@@ -695,7 +696,8 @@ class ProductQuantitiesByWarehouse(ModelSQL, ModelView):
                     raise AccessError(gettext(
                             'stock.msg_product_quantities_max',
                             max=transaction.database.IN_MAX))
-                product_clause = reduce_ids(move.product, product)
+                product_clause = fields.SQL_OPERATORS['in'](
+                    move.product, product)
             else:
                 product_clause = move.product == Null
             product_column = Concat('product.product,', move.product)
@@ -945,7 +947,8 @@ class ProductQuantitiesByWarehouseMove(ModelSQL, ModelView):
                     raise AccessError(gettext(
                             'stock.msg_product_quantities_max',
                             max=transaction.database.IN_MAX))
-                product_clause = reduce_ids(product.template, product_template)
+                product_clause = fields.SQL_OPERATORS['in'](
+                    product.template, product_template)
             else:
                 product_clause = product.template == Null
             product_column = Concat('product.template,', product.template)
@@ -960,7 +963,8 @@ class ProductQuantitiesByWarehouseMove(ModelSQL, ModelView):
                     raise AccessError(gettext(
                             'stock.msg_product_quantities_max',
                             max=transaction.database.IN_MAX))
-                product_clause = reduce_ids(move.product, product)
+                product_clause = fields.SQL_OPERATORS['in'](
+                    move.product, product)
             else:
                 product_clause = move.product == Null
             product_column = Concat('product.product,', move.product)

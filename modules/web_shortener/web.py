@@ -10,7 +10,7 @@ from sql.aggregate import Count
 import trytond.config as config
 from trytond.model import ModelSQL, ModelView, fields
 from trytond.pool import Pool
-from trytond.tools import grouped_slice, reduce_ids
+from trytond.tools import grouped_slice
 from trytond.transaction import Transaction
 from trytond.url import http_host
 from trytond.wsgi import Base64Converter
@@ -56,7 +56,7 @@ class ShortenedURL(ModelSQL, ModelView):
         for sub_ids in grouped_slice(shortened_urls):
             cursor.execute(*access.select(
                     access.url, Count(access.id),
-                    where=reduce_ids(access.url, sub_ids),
+                    where=fields.SQL_OPERATORS['in'](access.url, sub_ids),
                     group_by=[access.url]))
             counts.update(cursor)
         return counts

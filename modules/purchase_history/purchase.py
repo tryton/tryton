@@ -4,7 +4,7 @@
 from trytond.model import ModelView, Workflow, fields
 from trytond.pool import PoolMeta
 from trytond.pyson import Eval
-from trytond.tools import grouped_slice, reduce_ids
+from trytond.tools import grouped_slice
 from trytond.transaction import Transaction
 
 
@@ -49,7 +49,8 @@ class Purchase(metaclass=PoolMeta):
             cursor.execute(*table.update(
                     [table.revision],
                     [table.revision + 1],
-                    where=reduce_ids(table.id, sub_purchases)))
+                    where=fields.SQL_OPERATORS['in'](
+                        table.id, map(int, sub_purchases))))
 
         super().draft(purchases)
 

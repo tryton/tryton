@@ -16,7 +16,7 @@ from trytond.modules.currency.fields import Monetary
 from trytond.modules.party.exceptions import EraseError
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval, If
-from trytond.tools import grouped_slice, reduce_ids, sqlite_apply_types
+from trytond.tools import grouped_slice, sqlite_apply_types
 from trytond.tools import timezone as tz
 from trytond.transaction import Transaction
 
@@ -165,7 +165,8 @@ class Party(CompanyMultiValueMixin, metaclass=PoolMeta):
             columns.append(Coalesce(expressions[name], Decimal()).as_(name))
 
         if parties is not None:
-            party_where = reduce_ids(move_line.party, [p.id for p in parties])
+            party_where = fields.SQL_OPERATORS['in'](
+                move_line.party, [p.id for p in parties])
         else:
             party_where = Literal(True)
 

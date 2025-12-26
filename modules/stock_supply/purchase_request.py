@@ -65,12 +65,12 @@ class PurchaseRequest(metaclass=PoolMeta):
 
         if products is None:
             # fetch goods and assets
-            # ordered by ids to speedup reduce_ids in products_by_location
             products = Product.search([
                     ('type', 'in', ['goods', 'assets']),
                     ('consumable', '=', False),
                     ('purchasable', '=', True),
-                    ], order=[('id', 'ASC')])
+                    ],
+                order=[])
         # aggregate product by minimum supply date
         date2products = defaultdict(list)
         for product in products:

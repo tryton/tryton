@@ -19,7 +19,7 @@ from trytond.model.exceptions import AccessError
 from trytond.modules.product import price_digits, round_price
 from trytond.pool import Pool
 from trytond.pyson import Bool, Eval, Id, If, TimeDelta
-from trytond.tools import cached_property, grouped_slice, reduce_ids
+from trytond.tools import cached_property, grouped_slice
 from trytond.transaction import Transaction, without_check_access
 
 from .exceptions import MoveFutureWarning, MoveOriginWarning
@@ -1331,9 +1331,9 @@ class Move(Workflow, ModelSQL, ModelView):
                         sub_location_ids = list(sub_location_ids)
                         table = cls.__table__()
                         query = table.select(Literal(1),
-                            where=(reduce_ids(
+                            where=(fields.SQL_OPERATORS['in'](
                                     table.to_location, sub_location_ids)
-                                | reduce_ids(
+                                | fields.SQL_OPERATORS['in'](
                                     table.from_location, sub_location_ids))
                             & table.product.in_(product_ids)
                             & (table.company == company_id),
@@ -1635,9 +1635,10 @@ class Move(Workflow, ModelSQL, ModelView):
                 if PeriodCache:
                     cache_column = Column(period_cache, fieldname)
                 if isinstance(grouping_ids[0], (int, float, Decimal)):
-                    where &= reduce_ids(column, grouping_ids)
+                    where &= fields.SQL_OPERATORS['in'](column, grouping_ids)
                     if PeriodCache:
-                        where_period &= reduce_ids(cache_column, grouping_ids)
+                        where_period &= fields.SQL_OPERATORS['in'](
+                            cache_column, grouping_ids)
                 else:
                     where &= column.in_(grouping_ids)
                     if PeriodCache:

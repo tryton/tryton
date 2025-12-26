@@ -22,8 +22,8 @@ from trytond.pool import Pool
 from trytond.pyson import Bool, Eval, Id, If, PYSONEncoder
 from trytond.report import Report
 from trytond.tools import (
-    grouped_slice, is_full_text, lstrip_wildcard, pair, reduce_ids,
-    sql_pairing, sqlite_apply_types)
+    grouped_slice, is_full_text, lstrip_wildcard, pair, sql_pairing,
+    sqlite_apply_types)
 from trytond.transaction import Transaction, check_access, inactive_records
 from trytond.wizard import (
     Button, StateAction, StateTransition, StateView, Wizard)
@@ -1019,7 +1019,7 @@ class Account(
             with transaction.set_context(company=company.id):
                 line_query, fiscalyear_ids = MoveLine.query_get(line)
             for sub_ids in grouped_slice(ids):
-                red_sql = reduce_ids(table_a.id, sub_ids)
+                red_sql = fields.SQL_OPERATORS['in'](table_a.id, sub_ids)
                 if context.get('flat_balance'):
                     query = (table_a
                         .join(line, condition=line.account == table_a.id))
@@ -1092,7 +1092,7 @@ class Account(
                         Sum(Coalesce(Column(line, name), 0)).as_(name))
                     types.append('NUMERIC')
             for sub_ids in grouped_slice(ids):
-                red_sql = reduce_ids(table.id, sub_ids)
+                red_sql = fields.SQL_OPERATORS['in'](table.id, sub_ids)
                 query = (table.join(line, 'LEFT',
                         condition=line.account == table.id
                         ).select(*columns,
@@ -1531,9 +1531,11 @@ class AccountParty(ActivePeriodMixin, ModelSQL):
             with transaction.set_context(company=company.id):
                 line_query, fiscalyear_ids = MoveLine.query_get(line)
             for sub_account_ids in grouped_slice(account_ids):
-                account_sql = reduce_ids(table_a.id, sub_account_ids)
+                account_sql = fields.SQL_OPERATORS['in'](
+                    table_a.id, sub_account_ids)
                 for sub_party_ids in grouped_slice(party_ids):
-                    party_sql = reduce_ids(line.party, sub_party_ids)
+                    party_sql = fields.SQL_OPERATORS['in'](
+                        line.party, sub_party_ids)
                     if context.get('flat_balance'):
                         query = (table_a
                             .join(line, condition=line.account == table_a.id))
@@ -1608,9 +1610,11 @@ class AccountParty(ActivePeriodMixin, ModelSQL):
                 line_query, fiscalyear_ids = MoveLine.query_get(line)
 
             for sub_account_ids in grouped_slice(account_ids):
-                account_sql = reduce_ids(table.id, sub_account_ids)
+                account_sql = fields.SQL_OPERATORS['in'](
+                    table.id, sub_account_ids)
                 for sub_party_ids in grouped_slice(party_ids):
-                    party_sql = reduce_ids(line.party, sub_party_ids)
+                    party_sql = fields.SQL_OPERATORS['in'](
+                        line.party, sub_party_ids)
                     query = (table.join(line, 'LEFT',
                             condition=line.account == table.id
                             ).select(*columns,
@@ -1750,7 +1754,8 @@ class AccountDeferral(ModelSQL, ModelView):
         balances = defaultdict(Decimal)
 
         for sub_deferrals in grouped_slice(deferrals):
-            red_sql = reduce_ids(table.id, [d.id for d in sub_deferrals])
+            red_sql = fields.SQL_OPERATORS['in'](
+                table.id, [d.id for d in sub_deferrals])
             query = (table
                 .join(account, condition=table.account == account.id)
                 .join(account_child,
@@ -2487,10 +2492,12 @@ class GeneralLedgerLine(DescriptionOriginMixin, ModelSQL, ModelView):
         query = account_party.select(
             account_party.account, account_party.party, account_party.id)
         for sub_account_ids in grouped_slice(account_ids):
-            account_where = reduce_ids(account_party.account, sub_account_ids)
+            account_where = fields.SQL_OPERATORS['in'](
+                account_party.account, sub_account_ids)
             for sub_party_ids in grouped_slice(party_ids):
                 query.where = (account_where
-                    & reduce_ids(account_party.party, sub_party_ids))
+                    & fields.SQL_OPERATORS['in'](
+                        account_party.party, sub_party_ids))
                 cursor.execute(*query)
                 for account, party, id_ in cursor:
                     key = (account, party)

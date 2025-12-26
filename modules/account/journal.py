@@ -14,8 +14,7 @@ from trytond.modules.currency.fields import Monetary
 from trytond.pool import Pool
 from trytond.pyson import Eval
 from trytond.tools import (
-    grouped_slice, is_full_text, lstrip_wildcard, reduce_ids,
-    sqlite_apply_types)
+    grouped_slice, is_full_text, lstrip_wildcard, sqlite_apply_types)
 from trytond.transaction import Transaction
 
 STATES = {
@@ -115,7 +114,8 @@ class Journal(
             & (move.company == company.id))
         for sub_journals in grouped_slice(journals):
             sub_journals = list(sub_journals)
-            red_sql = reduce_ids(move.journal, [j.id for j in sub_journals])
+            red_sql = fields.SQL_OPERATORS['in'](
+                move.journal, [j.id for j in sub_journals])
             query = line.join(move, 'LEFT', condition=line.move == move.id
                 ).join(account, 'LEFT', condition=line.account == account.id
                 ).join(account_type, 'LEFT',

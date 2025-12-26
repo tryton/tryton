@@ -10,7 +10,7 @@ from trytond.model import fields
 from trytond.modules.account_invoice.exceptions import (
     InvoiceLineValidationError)
 from trytond.pool import Pool, PoolMeta
-from trytond.tools import grouped_slice, reduce_ids
+from trytond.tools import grouped_slice
 from trytond.transaction import Transaction
 
 
@@ -92,7 +92,7 @@ class InvoiceLine(metaclass=PoolMeta):
             ts_line.invoice_line, Sum(ts_line.duration),
             group_by=ts_line.invoice_line)
         for sub_lines in grouped_slice(lines):
-            query.where = reduce_ids(
+            query.where = fields.SQL_OPERATORS['in'](
                 ts_line.invoice_line, map(int, sub_lines))
             cursor.execute(*query)
 

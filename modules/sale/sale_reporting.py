@@ -15,7 +15,7 @@ from trytond.model import ModelSQL, ModelView, UnionMixin, fields, sum_tree
 from trytond.modules.currency.fields import Monetary
 from trytond.pool import Pool
 from trytond.pyson import Eval, If
-from trytond.tools import grouped_slice, pairwise_longest, reduce_ids
+from trytond.tools import grouped_slice, pairwise_longest
 from trytond.tools.chart import sparkline
 from trytond.transaction import Transaction
 from trytond.wizard import StateAction, StateTransition, Wizard
@@ -517,7 +517,8 @@ class CustomerCategoryTree(ModelSQL, ModelView):
         reporting_customer_categories = []
         for sub_ids in grouped_slice(ids):
             sub_ids = list(sub_ids)
-            where = reduce_ids(reporting_product_category.id, sub_ids)
+            where = fields.SQL_OPERATORS['in'](
+                reporting_product_category.id, sub_ids)
             cursor.execute(
                 *reporting_product_category.select(
                     reporting_product_category.id, where=where))
@@ -758,7 +759,8 @@ class ProductCategoryTree(ModelSQL, ModelView):
         reporting_product_categories = []
         for sub_ids in grouped_slice(ids):
             sub_ids = list(sub_ids)
-            where = reduce_ids(reporting_product_category.id, sub_ids)
+            where = fields.SQL_OPERATORS['in'](
+                reporting_product_category.id, sub_ids)
             cursor.execute(
                 *reporting_product_category.select(
                     reporting_product_category.id, where=where))

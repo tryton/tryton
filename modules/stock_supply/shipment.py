@@ -89,11 +89,11 @@ class ShipmentInternal(ModelSQL, ModelView):
                     location_ids, with_childs=True,
                     grouping_filter=grouping_filter)
 
-        # ordered by ids to speedup reduce_ids in products_by_location
         if implicit_locations:
             products = Product.search([
                     ('type', 'in', ['goods', 'assets']),
-                    ], order=[('id', 'ASC')])
+                    ],
+                order=[])
             product_ids = [p.id for p in products]
             pbl = get_pbl(None, today, None)
         else:

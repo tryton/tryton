@@ -22,8 +22,7 @@ from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval, If
 from trytond.rpc import RPC
 from trytond.tools import (
-    cursor_dict, grouped_slice, reduce_ids, sortable_values,
-    sqlite_apply_types)
+    cursor_dict, grouped_slice, sortable_values, sqlite_apply_types)
 from trytond.transaction import Transaction
 from trytond.wizard import StateAction, Wizard
 
@@ -202,9 +201,10 @@ class Group(ModelSQL, ModelView, ChatMixin):
                 ).as_('payment_not_complete'),
             ]
 
-        for sub_ids in grouped_slice(groups):
+        for sub_groups in grouped_slice(groups):
             query = payment.select(*columns,
-                where=reduce_ids(payment.group, sub_ids),
+                where=fields.SQL_OPERATORS['in'](
+                    payment.group, map(int, sub_groups)),
                 group_by=payment.group)
             if backend.name == 'sqlite':
                 sqlite_apply_types(

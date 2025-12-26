@@ -22,7 +22,7 @@ from trytond.model import (
 from trytond.pool import Pool
 from trytond.pyson import Eval
 from trytond.status import processing
-from trytond.tools import grouped_slice, reduce_ids
+from trytond.tools import grouped_slice
 from trytond.tools import timezone as tz
 from trytond.transaction import Transaction, TransactionError
 from trytond.worker import run_task
@@ -143,7 +143,7 @@ class Cron(DeactivableMixin, ModelSQL, ModelView):
                     ids = [c.id for c in sub_crons]
                     query = table.select(
                         table.id,
-                        where=reduce_ids(table.id, ids),
+                        where=fields.SQL_OPERATORS['in'](table.id, ids),
                         for_=For('UPDATE'))
                     cursor.execute(*query)
                     not_running = {i for i, in cursor}

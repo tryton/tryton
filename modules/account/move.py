@@ -21,8 +21,7 @@ from trytond.pool import Pool
 from trytond.pyson import Bool, Eval, If, PYSONEncoder
 from trytond.report import Report
 from trytond.rpc import RPC
-from trytond.tools import (
-    firstline, grouped_slice, reduce_ids, sqlite_apply_types)
+from trytond.tools import firstline, grouped_slice, sqlite_apply_types
 from trytond.transaction import Transaction, check_access
 from trytond.wizard import (
     Button, StateAction, StateTransition, StateView, Wizard)
@@ -363,7 +362,8 @@ class Move(DescriptionOriginMixin, ModelSQL, ModelView):
         for company, moves in groupby(moves, key=lambda m: m.company):
             currency = company.currency
             for sub_moves in grouped_slice(list(moves)):
-                red_sql = reduce_ids(line.move, [m.id for m in sub_moves])
+                red_sql = fields.SQL_OPERATORS['in'](
+                    line.move, [m.id for m in sub_moves])
 
                 valid_move_query = line.select(
                     line.move,
@@ -465,7 +465,8 @@ class Move(DescriptionOriginMixin, ModelSQL, ModelView):
 
                 cursor.execute(*move.select(
                         move.id,
-                        where=reduce_ids(move.id, sub_moves_ids)
+                        where=fields.SQL_OPERATORS['in'](
+                            move.id, sub_moves_ids)
                         & ~Exists(line.select(
                                 line.move,
                                 where=line.move == move.id))))
@@ -480,7 +481,8 @@ class Move(DescriptionOriginMixin, ModelSQL, ModelView):
 
                 cursor.execute(*line.select(
                         line.move,
-                        where=reduce_ids(line.move, sub_moves_ids),
+                        where=fields.SQL_OPERATORS['in'](
+                            line.move, sub_moves_ids),
                         group_by=line.move,
                         having=Abs(Round(
                                 Sum(line.debit - line.credit),
@@ -496,7 +498,8 @@ class Move(DescriptionOriginMixin, ModelSQL, ModelView):
 
                 cursor.execute(*line.select(
                         line.id,
-                        where=reduce_ids(line.move, sub_moves_ids)
+                        where=fields.SQL_OPERATORS['in'](
+                            line.move, sub_moves_ids)
                         & (line.debit == Decimal(0))
                         & (line.credit == Decimal(0))
                         & (line.reconciliation == Null)
@@ -864,7 +867,8 @@ class MoveLineMixin:
                 parties = {l.party for l in sub_lines}
                 if None in parties:
                     party_where |= line.party == parties.discard(None)
-                party_where |= reduce_ids(line.party, map(int, parties))
+                party_where |= fields.SQL_OPERATORS['in'](
+                    line.party, map(int, parties))
                 where &= party_where
 
                 query = (line
@@ -878,7 +882,8 @@ class MoveLineMixin:
                         where=where))
                 query = query.select(
                     query.id, query.balance.as_('balance'),
-                    where=reduce_ids(query.id, [l.id for l in sub_lines]))
+                    where=fields.SQL_OPERATORS['in'](
+                        query.id, [l.id for l in sub_lines]))
                 if backend.name == 'sqlite':
                     sqlite_apply_types(query, [None, 'NUMERIC'])
                 cursor.execute(*query)

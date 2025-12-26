@@ -10,7 +10,7 @@ from trytond.i18n import gettext
 from trytond.model import ModelSQL, ModelStorage, ModelView, Unique, fields
 from trytond.pool import Pool
 from trytond.pyson import Bool, Eval, If
-from trytond.tools import grouped_slice, reduce_ids
+from trytond.tools import grouped_slice
 from trytond.transaction import Transaction
 
 from .exceptions import CompanyValidationError
@@ -106,9 +106,9 @@ class Work(ModelSQL, ModelView):
             condition=line.work == table_w.id)
 
         for sub_ids in grouped_slice(ids):
-            red_sql = reduce_ids(table_w.id, sub_ids)
             cursor.execute(*query_table.select(table_w.id, Sum(line.duration),
-                    where=red_sql & where,
+                    where=where
+                    & fields.SQL_OPERATORS['in'](table_w.id, sub_ids),
                     group_by=table_w.id))
             for work_id, duration in cursor:
                 # SQLite uses float for SUM

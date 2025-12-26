@@ -12,14 +12,12 @@ import re
 import types
 import unicodedata
 import warnings
-from array import array
 from collections.abc import Iterable, Sized
 from functools import cache, wraps
 from itertools import chain, islice, tee, zip_longest
 
-from sql import As, Cast, Literal, Select
+from sql import As, Cast, Select
 from sql.conditionals import Case
-from sql.operators import Or
 
 from trytond.const import MODULES_GROUP, OPERATORS
 
@@ -111,45 +109,11 @@ def get_smtp_server():
 
 
 def reduce_ids(field, ids):
-    '''
-    Return a small SQL expression for the list of ids and the sql column
-    '''
-    if __debug__:
-        def strict_int(value):
-            assert not isinstance(value, float) or value.is_integer(), \
-                "ids must be integer"
-            return int(value)
-    else:
-        strict_int = int
-    ids = list(map(strict_int, ids))
-    if not ids:
-        return Literal(False)
-    ids.sort()
-    prev = ids.pop(0)
-    continue_list = [prev, prev]
-    discontinue_list = array('l')
-    sql = Or()
-    for i in ids:
-        if i == prev:
-            continue
-        if i != prev + 1:
-            if continue_list[-1] - continue_list[0] < 5:
-                discontinue_list.extend([continue_list[0] + x for x in
-                    range(continue_list[-1] - continue_list[0] + 1)])
-            else:
-                sql.append((field >= continue_list[0])
-                    & (field <= continue_list[-1]))
-            continue_list = []
-        continue_list.append(i)
-        prev = i
-    if continue_list[-1] - continue_list[0] < 5:
-        discontinue_list.extend([continue_list[0] + x for x in
-            range(continue_list[-1] - continue_list[0] + 1)])
-    else:
-        sql.append((field >= continue_list[0]) & (field <= continue_list[-1]))
-    if discontinue_list:
-        sql.append(field.in_(discontinue_list))
-    return sql
+    from trytond.model.fields import SQL_OPERATORS
+    warnings.warn(
+        "reduce_ids is deprecated use trytond.fields.SQL_OPERATORS['in']",
+        DeprecationWarning)
+    return SQL_OPERATORS['in'](field, ids)
 
 
 def reduce_domain(domain):
