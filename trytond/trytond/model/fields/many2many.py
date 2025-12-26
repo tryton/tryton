@@ -13,9 +13,9 @@ from trytond.tools import cached_property, grouped_slice
 from trytond.transaction import Transaction
 
 from .field import (
-    Field, context_validate, domain_method, domain_validate, get_eval_fields,
-    instanciate_values, instantiate_context, search_order_validate,
-    size_validate)
+    SQL_OPERATORS, Field, context_validate, domain_method, domain_validate,
+    get_eval_fields, instanciate_values, instantiate_context,
+    search_order_validate, size_validate)
 
 
 class Many2Many(Field):
@@ -359,7 +359,7 @@ class Many2Many(Field):
         if not ids:
             expression = Literal(False)
         else:
-            expression = table.id.in_(ids)
+            expression = SQL_OPERATORS['in'](table.id, ids)
         if operator.startswith('not'):
             return ~expression
         return expression

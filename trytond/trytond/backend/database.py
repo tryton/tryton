@@ -204,6 +204,10 @@ class DatabaseInterface(object):
     def refresh_materialized_view(self, connection, view_name):
         raise NotImplementedError
 
+    @classmethod
+    def has_array(cls):
+        return False
+
     def sql_type(self, type_):
         pass
 

@@ -248,13 +248,50 @@ SQL_OPERATORS = {
     'not like': partial(operators.NotLike, escape='\\'),
     'ilike': partial(operators.ILike, escape='\\'),
     'not ilike': partial(operators.NotILike, escape='\\'),
-    'in': operators.In,
-    'not in': operators.NotIn,
     '<=': operators.LessEqual,
     '>=': operators.GreaterEqual,
     '<': operators.Less,
     '>': operators.Greater,
     }
+
+if backend.Database.has_array():
+    class _EqualArray(operators.Equal):
+        def __invert__(self):
+            return _NotEqualArray(self.left, operators.All(self.right.operand))
+
+    class _NotEqualArray(operators.NotEqual):
+        def __invert__(self):
+            return _EqualArray(self.left, operators.Any(self.right.operand))
+
+    def in_array(left, right):
+        if isinstance(right, (Query, Expression)):
+            return operators.In(left, right)
+        if not isinstance(right, (list, tuple)):
+            right = list(right)
+        return _EqualArray(left, operators.Any(right))
+
+    def not_in_array(left, right):
+        if isinstance(right, (Query, Expression)):
+            return operators.NotIn(left, right)
+        if not isinstance(right, (list, tuple)):
+            right = list(right)
+        return _NotEqualArray(left, operators.All(right))
+
+    SQL_OPERATORS['in'] = in_array
+    SQL_OPERATORS['not in'] = not_in_array
+else:
+    def in_(left, right):
+        if not isinstance(right, (list, tuple, Query, Expression)):
+            right = list(right)
+        return operators.In(left, right)
+
+    def not_in(left, right):
+        if not isinstance(right, (list, tuple, Query, Expression)):
+            right = list(right)
+        return operators.NotIn(left, right)
+
+    SQL_OPERATORS['in'] = in_
+    SQL_OPERATORS['not in'] = not_in
 
 
 class Field(object):

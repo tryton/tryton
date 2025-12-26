@@ -13,12 +13,12 @@ from sql.operators import Exists, Or
 import trytond.config as config
 from trytond.pool import Pool
 from trytond.pyson import PYSONEncoder
-from trytond.tools import cached_property, reduce_ids
+from trytond.tools import cached_property
 from trytond.transaction import Transaction, inactive_records
 
 from .field import (
-    Field, context_validate, domain_method, instantiate_context, order_method,
-    search_order_validate)
+    SQL_OPERATORS, Field, context_validate, domain_method, instantiate_context,
+    order_method, search_order_validate)
 
 
 class Many2One(Field):
@@ -131,12 +131,13 @@ class Many2One(Field):
         cursor = Transaction().connection.cursor()
         table, _ = tables[None]
         name, operator, ids = domain
-        red_sql = reduce_ids(table.id, (i for i in ids if i is not None))
+        where = SQL_OPERATORS['in'](
+            table.id, [int(i) for i in ids if i is not None])
         Target = self.get_target()
         path_column = getattr(Target, self.path).sql_column(tables, Target)
         path_column = Coalesce(path_column, '')
         cursor.execute(*table.select(
-                path_column, where=red_sql,
+                path_column, where=where,
                 order_by=[CharLength(path_column).desc, path_column.asc]))
         if operator.endswith('child_of'):
             paths = set()
@@ -152,7 +153,7 @@ class Many2One(Field):
                 where.append(path_column.like(path + '%'))
         else:
             ids = [int(x) for path, in cursor for x in path.split('/')[:-1]]
-            where = reduce_ids(table.id, ids)
+            where = SQL_OPERATORS['in'](table.id, ids)
         if not where:
             where = Literal(False)
         if operator.startswith('not'):
@@ -163,12 +164,13 @@ class Many2One(Field):
         cursor = Transaction().connection.cursor()
         table, _ = tables[None]
         name, operator, ids = domain
-        red_sql = reduce_ids(table.id, (i for i in ids if i is not None))
+        where = SQL_OPERATORS['in'](
+            table.id, [int(i) for i in ids if i is not None])
         Target = self.get_target()
         left = getattr(Target, self.left).sql_column(tables, Target)
         right = getattr(Target, self.right).sql_column(tables, Target)
         cursor.execute(*table.select(
-                left, right, where=red_sql,
+                left, right, where=where,
                 order_by=[(right - left).asc, left.asc]))
         ranges = set()
         for l, r in cursor:
@@ -195,18 +197,19 @@ class Many2One(Field):
         target = Target.__table__()
         table, _ = tables[None]
         name, operator, ids = domain
-        red_sql = reduce_ids(target.id, (i for i in ids if i is not None))
+        where = SQL_OPERATORS['in'](
+            target.id, [int(i) for i in ids if i is not None])
 
         if operator.endswith('child_of'):
             tree = With('id', recursive=True)
-            tree.query = target.select(target.id, where=red_sql)
+            tree.query = target.select(target.id, where=where)
             tree.query |= (target
                 .join(tree, condition=Column(target, name) == tree.id)
                 .select(target.id))
         else:
             tree = With('id', name, recursive=True)
             tree.query = target.select(
-                target.id, Column(target, name), where=red_sql)
+                target.id, Column(target, name), where=where)
             tree.query |= (target
                 .join(tree, condition=target.id == Column(tree, name))
                 .select(target.id, Column(target, name)))

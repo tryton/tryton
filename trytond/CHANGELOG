@@ -1,3 +1,4 @@
+* Use array for ``in`` operators
 * Update to Psycopg 3
 * Add support for Python 3.14
 * Remove support for Python 3.9

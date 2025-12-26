@@ -24,12 +24,12 @@ from sql import Cast, Flavor, For, Literal, Table
 from sql.aggregate import Count
 from sql.conditionals import Coalesce
 from sql.functions import Function
-from sql.operators import BinaryOperator, Concat, NotEqual
+from sql.operators import Any, BinaryOperator, Concat, NotEqual
 
 from trytond import __series__, config
 from trytond.backend.database import DatabaseInterface, SQLType
 from trytond.sql.operators import RangeOperator
-from trytond.tools import grouped_slice, reduce_ids
+from trytond.tools import grouped_slice
 
 from .table import index_method
 
@@ -487,7 +487,7 @@ class Database(DatabaseInterface):
         table = Table(table)
         cursor = connection.cursor()
         for sub_ids in grouped_slice(ids):
-            where = reduce_ids(table.id, sub_ids)
+            where = table.id == Any(list(sub_ids))
             query = table.select(
                 Literal(1), where=where, for_=For('UPDATE', nowait=True))
             cursor.execute(*query)
@@ -898,6 +898,10 @@ class Database(DatabaseInterface):
                 SQL('CONCURRENTLY' if concurrently else ''),
                 Identifier(view_name)
                 ))
+
+    @classmethod
+    def has_array(cls):
+        return True
 
 
 def convert_json(value):

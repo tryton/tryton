@@ -21,7 +21,7 @@ from trytond.pool import Pool
 from trytond.pyson import PYSONDecoder, PYSONEncoder
 from trytond.rpc import RPC
 from trytond.sql.functions import Range
-from trytond.tools import cursor_dict, grouped_slice, reduce_ids
+from trytond.tools import cursor_dict, grouped_slice
 from trytond.tools.domain_inversion import simplify
 from trytond.transaction import (
     Transaction, inactive_records, record_cache_size, without_check_access)
@@ -758,7 +758,7 @@ class ModelSQL(ModelStorage):
         columns = [
             Coalesce(table.write_date, table.create_date), table.id, user.name]
         for sub_ids in grouped_slice(ids):
-            where = reduce_ids(table.id, sub_ids)
+            where = fields.SQL_OPERATORS['in'](table.id, sub_ids)
             cursor.execute(*table.join(user, 'LEFT',
                     Coalesce(table.write_uid, table.create_uid) == user.id)
                 .select(*columns, where=where, group_by=columns))
@@ -799,7 +799,7 @@ class ModelSQL(ModelStorage):
             hcolumns.append(Column(history, fname))
         for sub_ids in grouped_slice(ids):
             if not deleted:
-                where = reduce_ids(table.id, sub_ids)
+                where = fields.SQL_OPERATORS['in'](table.id, sub_ids)
                 cursor.execute(*history.insert(hcolumns,
                         table.select(*columns, where=where)))
             else:
@@ -871,7 +871,7 @@ class ModelSQL(ModelStorage):
             else:
                 hwhere = (column_datetime < datetime)
 
-            hwhere &= reduce_ids(history.id, sub_ids)
+            hwhere &= fields.SQL_OPERATORS['in'](history.id, sub_ids)
             history_select.query.where = hwhere
 
             cursor.execute(*history_values)
@@ -885,8 +885,9 @@ class ModelSQL(ModelStorage):
             # we need to skip the deleted IDs that are all None history records
             # because they could fail the UPDATE
             if to_delete:
-                history_select.query.where &= ~history.id.in_(
-                    list(deleted_sub_ids))
+                history_select.query.where &= (
+                    fields.SQL_OPERATORS['not in'](
+                        history.id, list(deleted_sub_ids)))
 
             # Some of the sub_ids are not updated because they are not in the
             # table anymore, they should be undeleted from the value in the
@@ -908,14 +909,15 @@ class ModelSQL(ModelStorage):
                 cursor.execute(*update_query)
             if to_undelete:
                 history_select.query.where = (hwhere
-                    & history.id.in_(list(to_undelete)))
+                    & fields.SQL_OPERATORS['in'](
+                        history.id, list(to_undelete)))
                 cursor.execute(*table.insert(
                         columns,
                         history_values.select(*history_columns)))
 
         if to_delete:
             for sub_ids in grouped_slice(to_delete):
-                where = reduce_ids(table.id, sub_ids)
+                where = fields.SQL_OPERATORS['in'](table.id, sub_ids)
                 cursor.execute(*table.delete(where=where))
             cls._insert_history(list(to_delete), True)
         if to_update:
@@ -1256,7 +1258,7 @@ class ModelSQL(ModelStorage):
             from_ = convert_from(None, tables)
             for sub_ids in grouped_slice(ids, in_max):
                 sub_ids = list(sub_ids)
-                red_sql = reduce_ids(table.id, sub_ids)
+                red_sql = fields.SQL_OPERATORS['in'](table.id, sub_ids)
                 where = red_sql
                 if history_clause:
                     where &= history_clause
@@ -1517,10 +1519,10 @@ class ModelSQL(ModelStorage):
                         update_values.append(field.sql_format(value))
 
             for sub_ids in grouped_slice(ids):
-                red_sql = reduce_ids(table.id, sub_ids)
+                where = fields.SQL_OPERATORS['in'](table.id, sub_ids)
                 try:
-                    cursor.execute(*table.update(columns, update_values,
-                            where=red_sql))
+                    cursor.execute(*table.update(
+                            columns, update_values, where=where))
                 except (
                         backend.DatabaseIntegrityError,
                         backend.DatabaseDataError) as exception:
@@ -1591,7 +1593,8 @@ class ModelSQL(ModelStorage):
         for fname in cls._mptt_fields:
             tree_ids[fname] = []
             for sub_ids in grouped_slice(ids):
-                where = reduce_ids(Column(table, fname), sub_ids)
+                where = fields.SQL_OPERATORS['in'](
+                    Column(table, fname), sub_ids)
                 cursor.execute(*table.select(table.id, where=where))
                 tree_ids[fname] += [x[0] for x in cursor]
 
@@ -1628,12 +1631,13 @@ class ModelSQL(ModelStorage):
                         Column(table, n) for n in foreign_fields_to_clean]
                     cursor.execute(*table.update(
                             columns, [table.id] * len(foreign_fields_to_clean),
-                            where=reduce_ids(table.id, sub_ids)))
+                            where=fields.SQL_OPERATORS['in'](table.id, sub_ids)
+                            ))
 
         def get_related_records(Model, field_name, sub_ids):
             if issubclass(Model, ModelSQL):
                 foreign_table = Model.__table__()
-                foreign_red_sql = reduce_ids(
+                foreign_red_sql = fields.SQL_OPERATORS['in'](
                     Column(foreign_table, field_name), sub_ids)
                 cursor.execute(*foreign_table.select(foreign_table.id,
                         where=foreign_red_sql))
@@ -1650,7 +1654,7 @@ class ModelSQL(ModelStorage):
         for sub_ids, sub_records in zip(
                 grouped_slice(ids), grouped_slice(records)):
             sub_ids = list(sub_ids)
-            red_sql = reduce_ids(table.id, sub_ids)
+            red_sql = fields.SQL_OPERATORS['in'](table.id, sub_ids)
 
             for Model, field_name in foreign_keys_toupdate:
                 related_records = get_related_records(
@@ -1725,7 +1729,7 @@ class ModelSQL(ModelStorage):
             from_ = convert_from(None, tables)
             for sub_ids in grouped_slice(ids, in_max):
                 sub_ids = set(sub_ids)
-                where = reduce_ids(table.id, sub_ids)
+                where = fields.SQL_OPERATORS['in'](table.id, sub_ids)
                 if history_clause:
                     where &= history_clause
                 if domain:
@@ -2114,7 +2118,7 @@ class ModelSQL(ModelStorage):
                                     where=parent.id == parent_column),
                                 ''), table.id), '/')])
             for sub_ids in grouped_slice(ids):
-                query.where = reduce_ids(table.id, sub_ids)
+                query.where = fields.SQL_OPERATORS['in'](table.id, sub_ids)
                 cursor.execute(*query)
 
     @classmethod
@@ -2127,7 +2131,7 @@ class ModelSQL(ModelStorage):
 
         def update_path(query, column, sub_ids):
             updated = set()
-            query.where = reduce_ids(table.id, sub_ids)
+            query.where = fields.SQL_OPERATORS['in'](table.id, sub_ids)
             cursor.execute(*query)
             for old_path, new_path in cursor:
                 if old_path == new_path:
@@ -2293,7 +2297,7 @@ class ModelSQL(ModelStorage):
                 columns.insert(0, table.id)
                 in_max = transaction.database.IN_MAX // (len(columns) + 1)
                 for sub_ids in grouped_slice(ids, in_max):
-                    where = reduce_ids(table.id, sub_ids)
+                    where = fields.SQL_OPERATORS['in'](table.id, sub_ids)
                     if isinstance(sql, Exclude) and sql.where:
                         where &= sql.where
 
@@ -2329,9 +2333,9 @@ class ModelSQL(ModelStorage):
                         raise SQLConstraintError(gettext(error))
             elif isinstance(sql, Check):
                 for sub_ids in grouped_slice(ids):
-                    red_sql = reduce_ids(table.id, sub_ids)
+                    where = fields.SQL_OPERATORS['in'](table.id, sub_ids)
                     cursor.execute(*table.select(table.id,
-                            where=~sql.expression & red_sql,
+                            where=~sql.expression & where,
                             limit=1))
                     if cursor.fetchone():
                         raise SQLConstraintError(gettext(error))

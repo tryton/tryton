@@ -6,10 +6,10 @@ import logging
 from sql import Column, Null
 
 from trytond.filestore import filestore
-from trytond.tools import cached_property, grouped_slice, reduce_ids
+from trytond.tools import cached_property, grouped_slice
 from trytond.transaction import Transaction
 
-from .field import Field
+from .field import SQL_OPERATORS, Field
 
 logger = logging.getLogger(__name__)
 
@@ -86,7 +86,7 @@ class Binary(Field):
             for sub_ids in grouped_slice(ids):
                 cursor.execute(*table.select(
                         table.id, Column(table, self.file_id),
-                        where=reduce_ids(table.id, sub_ids)
+                        where=SQL_OPERATORS['in'](table.id, sub_ids)
                         & (Column(table, self.file_id) != Null)
                         & (Column(table, self.file_id) != '')))
                 for record_id, file_id in cursor:
@@ -129,7 +129,7 @@ class Binary(Field):
                 columns = [Column(table, name)]
                 values = [self.sql_format(value)]
             cursor.execute(*table.update(columns, values,
-                    where=reduce_ids(table.id, ids)))
+                    where=SQL_OPERATORS['in'](table.id, ids)))
 
     def definition(self, model, language):
         definition = super().definition(model, language)
