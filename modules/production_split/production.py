@@ -55,6 +55,7 @@ class Production(metaclass=PoolMeta):
                 count -= 1
         if n_productions:
             productions.extend(self.copy([self] * n_productions, {
+                        'reference': lambda data: data['reference'],
                         'quantity': quantity,
                         'unit': unit.id,
                         'inputs': None,
