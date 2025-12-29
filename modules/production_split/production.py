@@ -48,6 +48,7 @@ class Production(metaclass=PoolMeta):
         while (remainder > quantity
                 and (count or count is None)):
             productions.extend(self.copy([self], {
+                        'reference': lambda data: data['reference'],
                         'quantity': quantity,
                         'uom': uom.id,
                         'inputs': None,
