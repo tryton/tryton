@@ -21,7 +21,8 @@ this repository contains the full copyright notices and license terms. -->
 <cbc:DocumentCurrencyCode>${this.invoice.currency.code}</cbc:DocumentCurrencyCode>
 <cbc:BuyerReference py:if="this.invoice.reference">${this.invoice.reference}</cbc:BuyerReference>
 <cac:OrderReference>
-    <cbc:ID>${this.invoice.origins or this.invoice.number}</cbc:ID>
+    <cbc:ID>${this.sale_reference or 'NA'}</cbc:ID>
+    <cbc:SalesOrderID py:if="this.sale_number">${this.sale_number}</cbc:SalesOrderID>
 </cac:OrderReference>
 <cac:AdditionalDocumentReference py:for="document in this.additional_documents">
     <cbc:ID>${document['id']}</cbc:ID>
