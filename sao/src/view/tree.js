@@ -2327,6 +2327,7 @@
                 view_ids.shift();
             }
             cell.click(function(event) {
+                event.preventDefault();
                 event.stopPropagation();
                 var params = {};
                 params.model = this.attributes.relation;
