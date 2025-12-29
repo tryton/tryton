@@ -51,11 +51,20 @@ this repository contains the full copyright notices and license terms. -->
 <cac:AccountingCustomerParty>
     ${Party(this.accounting_customer_party, this.accounting_customer_address, this.accounting_customer_tax_identifier, identifications=[this.accounting_customer_party.identifier_iso6523] if (specification or '').startswith('peppol') else None, specification=specification)}
 </cac:AccountingCustomerParty>
-<cac:PaymentTerms py:for="line in this.invoice.lines_to_pay">
-    <cbc:Note py:if="this.invoice.payment_term and this.invoice.payment_term.description">${this.invoice.payment_term.description}</cbc:Note>
-    <cbc:Amount py:if="not (specification or '').startswith('peppol')" py:attrs="{'currencyID': this.invoice.currency.code}">${line.amount}</cbc:Amount>
-    <cbc:PaymentDueDate py:if="not (specification or '').startswith('peppol')">${line.maturity_date}</cbc:PaymentDueDate>
-</cac:PaymentTerms>
+<py:choose test="(specification or '').startswith('peppol')">
+    <py:when test="True">
+        <cac:PaymentTerms py:if="this.invoice.payment_term and this.invoice.payment_term.description">
+            <cbc:Note>${this.invoice.payment_term.description}</cbc:Note>
+        </cac:PaymentTerms>
+    </py:when>
+    <py:otherwise>
+        <cac:PaymentTerms py:for="line in this.invoice.lines_to_pay">
+            <cbc:Note py:if="this.invoice.payment_term and this.invoice.payment_term.description">${this.invoice.payment_term.description}</cbc:Note>
+            <cbc:Amount py:attrs="{'currencyID': this.invoice.currency.code}">${line.amount}</cbc:Amount>
+            <cbc:PaymentDueDate>${line.maturity_date}</cbc:PaymentDueDate>
+        </cac:PaymentTerms>
+    </py:otherwise>
+</py:choose>
 <cac:TaxTotal py:for="group, lines, amount in this.taxes">
     <cbc:TaxAmount py:attrs="{'currencyID': this.invoice.currency.code}">${-amount}</cbc:TaxAmount>
     <cac:TaxSubtotal py:for="line in lines">
