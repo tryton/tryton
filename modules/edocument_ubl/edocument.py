@@ -169,6 +169,16 @@ class Invoice(Model):
         else:
             return self.invoice.tax_identifier
 
+    @cached_property
+    def sale_reference(self):
+        if hasattr(self.invoice, 'sales'):
+            return ','.join(s.reference for s in self.invoice.sales)
+
+    @cached_property
+    def sale_number(self):
+        if hasattr(self.invoice, 'sales'):
+            return ','.join(s.number for s in self.invoice.sales)
+
     @property
     def taxes(self):
         def key(line):
