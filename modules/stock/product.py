@@ -172,15 +172,23 @@ class Product(StockMixin, object, metaclass=PoolMeta):
         'get_cost_value')
 
     @classmethod
+    def _quantity_locations(cls):
+        context = Transaction().context
+        location_ids = context.get('locations')
+        if not location_ids and context.get('location'):
+            location_ids = [context['location']]
+        return location_ids
+
+    @classmethod
     def get_quantity(cls, products, name):
-        location_ids = Transaction().context.get('locations')
+        location_ids = cls._quantity_locations()
         product_ids = list(map(int, products))
         return cls._get_quantity(
             products, name, location_ids, grouping_filter=(product_ids,))
 
     @classmethod
     def search_quantity(cls, name, domain=None):
-        location_ids = Transaction().context.get('locations')
+        location_ids = cls._quantity_locations()
         return cls._search_quantity(name, location_ids, domain)
 
     @classmethod
