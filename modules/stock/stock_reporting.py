@@ -47,10 +47,36 @@ class _InventoryMixin:
     __slots__ = ()
 
     company = fields.Many2One('company.company', "Company")
-    product = fields.Reference("Product", [
+    product_reference = fields.Reference("Product Reference", [
             ('product.product', "Variant"),
             ('product.template', "Product"),
-            ])
+            ],
+        context={
+            'company': Eval('company', -1),
+            },
+        depends=['company'])
+    product_template = fields.Many2One(
+        'product.template', "Product",
+        states={
+            'invisible': (
+                Eval('context', {}).get('product_type', 'product.template')
+                != 'product.template'),
+            },
+        context={
+            'company': Eval('company', -1),
+            },
+        depends=['company'])
+    product = fields.Many2One(
+        'product.product', "Variant",
+        states={
+            'invisible': (
+                Eval('context', {}).get('product_type', 'product.template')
+                != 'product.product'),
+            },
+        context={
+            'company': Eval('company', -1),
+            },
+        depends=['company'])
     unit = fields.Function(
         fields.Many2One('product.uom', "Unit"),
         'on_change_with_unit')
@@ -108,9 +134,14 @@ class _InventoryMixin:
             )
 
         if context.get('product_type') == 'product.product':
-            product = Concat('product.product,', move.product)
+            product_reference = Concat('product.product,', move.product)
+            product = move.product
+            product_template = Literal(None)
         else:
-            product = Concat('product.template,', product_table.template)
+            product_reference = Concat(
+                'product.template,', product_table.template)
+            product = Literal(None)
+            product_template = product_table.template
             quantities = (
                 quantities
                 .join(product_table,
@@ -149,6 +180,8 @@ class _InventoryMixin:
 
         quantities = quantities.select(
             Min(move.id).as_('id'),
+            product_reference.as_('product_reference'),
+            product_template.as_('product_template'),
             product.as_('product'),
             date_column.as_('date'),
             next_date_column.as_('next_date'),
@@ -173,7 +206,7 @@ class _InventoryMixin:
             + Coalesce(quantities.input_quantity, 0)
             - Coalesce(quantities.output_quantity, 0),
             window=Window(
-                [quantities.product],
+                [quantities.product_reference],
                 order_by=[*cls._quantities_order_by(quantities)]))
 
         if period:
@@ -208,7 +241,8 @@ class _InventoryMixin:
             query = quantities.join(cache, 'LEFT',
                 condition=(
                     cache.product
-                    == cls.product.sql_id(quantities.product, cls)))
+                    == cls.product_reference.sql_id(
+                        quantities.product_reference, cls)))
             quantity += Coalesce(cache.quantity, 0)
         else:
             query = quantities
@@ -217,6 +251,8 @@ class _InventoryMixin:
             .select(
                 quantities.id.as_('id'),
                 Literal(company).as_('company'),
+                quantities.product_reference.as_('product_reference'),
+                quantities.product_template.as_('product_template'),
                 quantities.product.as_('product'),
                 quantities.input_quantity.as_('input_quantity'),
                 quantities.output_quantity.as_('output_quantity'),
@@ -261,10 +297,20 @@ class _InventoryMixin:
             & (move.state.in_(['done', 'assigned', 'draft'])))
         return state_clause
 
-    @fields.depends('product')
+    @fields.depends('product_reference')
     def on_change_with_unit(self, name=None):
-        if self.product:
-            return self.product.default_uom
+        if self.product_reference:
+            return self.product_reference.default_uom
+
+    @classmethod
+    def view_attributes(cls):
+        return super().view_attributes() + [
+            ('/tree/field[@name="product_template"]', 'tree_invisible',
+                Eval('product_type', 'product.template')
+                != 'product.template'),
+            ('/tree/field[@name="product"]', 'tree_invisible',
+                Eval('product_type', 'product.template') != 'product.product'),
+            ]
 
 
 class InventoryContext(_InventoryContextMixin):
@@ -459,10 +505,36 @@ class InventoryTurnover(ModelSQL, ModelView):
     __name__ = 'stock.reporting.inventory.turnover'
 
     company = fields.Many2One('company.company', "Company")
-    product = fields.Reference("Product", [
+    product_reference = fields.Reference("Product", [
             ('product.product', "Variant"),
             ('product.template', "Product"),
-            ])
+            ],
+        context={
+            'company': Eval('company', -1),
+            },
+        depends=['company'])
+    product_template = fields.Many2One(
+        'product.template', "Product",
+        states={
+            'invisible': (
+                Eval('context', {}).get('product_type', 'product.template')
+                != 'product.template'),
+            },
+        context={
+            'company': Eval('company', -1),
+            },
+        depends=['company'])
+    product = fields.Many2One(
+        'product.product', "Variant",
+        states={
+            'invisible': (
+                Eval('context', {}).get('product_type', 'product.template')
+                != 'product.product'),
+            },
+        context={
+            'company': Eval('company', -1),
+            },
+        depends=['company'])
     unit = fields.Function(
         fields.Many2One('product.uom', "Unit"),
         'on_change_with_unit')
@@ -506,8 +578,11 @@ class InventoryTurnover(ModelSQL, ModelView):
 
         return (inventory
             .select(
-                cls.product.sql_id(inventory.product, cls).as_('id'),
+                cls.product_reference.sql_id(
+                    inventory.product_reference, cls).as_('id'),
                 Literal(company).as_('company'),
+                inventory.product_reference.as_('product_reference'),
+                inventory.product_template.as_('product_template'),
                 inventory.product.as_('product'),
                 round_sql(
                     output_quantity,
@@ -518,9 +593,23 @@ class InventoryTurnover(ModelSQL, ModelView):
                 round_sql(
                     output_quantity / NullIf(average_quantity, 0),
                     cls.turnover.digits[1]).as_('turnover'),
-                group_by=[inventory.product]))
+                group_by=[
+                    inventory.product_reference,
+                    inventory.product_template,
+                    inventory.product,
+                    ]))
 
-    @fields.depends('product')
+    @fields.depends('product_reference')
     def on_change_with_unit(self, name=None):
-        if self.product:
-            return self.product.default_uom
+        if self.product_reference:
+            return self.product_reference.default_uom
+
+    @classmethod
+    def view_attributes(cls):
+        return super().view_attributes() + [
+            ('/tree/field[@name="product_template"]', 'tree_invisible',
+                Eval('product_type', 'product.template')
+                != 'product.template'),
+            ('/tree/field[@name="product"]', 'tree_invisible',
+                Eval('product_type', 'product.template') != 'product.product'),
+            ]

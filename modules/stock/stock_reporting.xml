@@ -96,7 +96,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="context_model">stock.reporting.inventory.range.context</field>
             <field
                 name="domain"
-                eval="[('product', '=', (Eval('active_model', 'product.template'), Eval('active_id', -1)))]"
+                eval="[('product_reference', '=', (Eval('active_model', 'product.template'), Eval('active_id', -1)))]"
                 pyson="1"/>
             <field
                 name="context"
@@ -177,7 +177,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="context_model">stock.reporting.inventory.range.context</field>
             <field
                 name="domain"
-                eval="[('product', '=', (Eval('active_model', 'product.template'), Eval('active_id', -1)))]"
+                eval="[('product_reference', '=', (Eval('active_model', 'product.template'), Eval('active_id', -1)))]"
                 pyson="1"/>
             <field
                 name="context"

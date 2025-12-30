@@ -148,7 +148,7 @@ Check inventory::
     ...     inventory, = Inventory.find([])
     >>> inventory.quantity
     9.0
-    >>> assertEqual(inventory.product.__class__.__name__, product_type)
+    >>> assertEqual(inventory.product_reference.__class__.__name__, product_type)
 
     >>> with config.set_context(
     ...         location=warehouse_loc.id,
@@ -236,4 +236,4 @@ Check Inventory turnover::
     5.5
     >>> turnover.turnover
     0.045
-    >>> assertEqual(turnover.product.__class__.__name__, product_type)
+    >>> assertEqual(turnover.product_reference.__class__.__name__, product_type)
