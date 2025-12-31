@@ -24,6 +24,9 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_pay_line_group">
             <field name="text">The lines "%(names)s" for %(party)s could be grouped with the line "%(line)s".</field>
         </record>
+        <record model="ir.message" id="msg_pay_line_overpay">
+            <field name="text">The payment of %(payment_amount)s for lines "%(names)s" exceeds the amount for %(party)s, which is %(amount)s.</field>
+        </record>
         <record model="ir.message" id="msg_move_cancel_payments">
             <field name="text">The moves "%(moves)s" contain lines with payments, you may want to cancel them before cancelling.</field>
         </record>

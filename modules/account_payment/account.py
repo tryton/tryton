@@ -24,7 +24,7 @@ from trytond.transaction import Transaction, check_access, without_check_access
 from trytond.wizard import (
     Button, StateAction, StateTransition, StateView, Wizard)
 
-from .exceptions import BlockedWarning, GroupWarning
+from .exceptions import BlockedWarning, GroupWarning, OverpayWarning
 from .payment import KINDS
 
 
@@ -412,9 +412,12 @@ class PayLine(Wizard):
 
     def default_start(self, fields):
         pool = Pool()
+        Currency = pool.get('currency.currency')
+        Lang = pool.get('ir.lang')
         Line = pool.get('account.move.line')
         Warning = pool.get('res.user.warning')
 
+        lang = Lang.get()
         reverse = {'receivable': 'payable', 'payable': 'receivable'}
         companies = {}
         lines = self.records
@@ -442,22 +445,50 @@ class PayLine(Wizard):
                         ('move_state', '=', 'posted'),
                         ])
                 for party in parties:
-                    party_lines = [l for l in others if l.party == party]
-                    if not party_lines:
-                        continue
-                    lines = [l for l in types[kind]['lines']
-                        if l.party == party]
-                    warning_name = Warning.format(
-                        '%s:%s' % (reverse[kind], party), lines)
-                    if Warning.check(warning_name):
-                        names = ', '.join(l.rec_name for l in lines[:5])
-                        if len(lines) > 5:
-                            names += '...'
-                        raise GroupWarning(warning_name,
-                            gettext('account_payment.msg_pay_line_group',
-                                names=names,
-                                party=party.rec_name,
-                                line=party_lines[0].rec_name))
+                    lines = [
+                        l for l in types[kind]['lines'] if l.party == party]
+
+                    if party_lines := [l for l in others if l.party == party]:
+                        warning_name = Warning.format(
+                            '%s:%s' % (reverse[kind], party), lines)
+                        if Warning.check(warning_name):
+                            names = ', '.join(l.rec_name for l in lines[:5])
+                            if len(lines) > 5:
+                                names += '...'
+                            raise GroupWarning(warning_name,
+                                gettext('account_payment.msg_pay_line_group',
+                                    names=names,
+                                    party=party.rec_name,
+                                    line=party_lines[0].rec_name))
+
+                    payment_amount = 0
+                    for line in lines:
+                        payment_amount += Currency.compute(
+                            line.payment_currency, line.payment_amount,
+                            company.currency).copy_sign(
+                                line.debit - line.credit)
+                    payment_amount_sign = payment_amount.as_tuple().sign
+                    amount = getattr(party, kind)
+                    amount_sign = amount.as_tuple().sign
+                    if (abs(payment_amount) > abs(amount)
+                            and (payment_amount_sign == amount_sign
+                                or payment_amount.is_zero()
+                                or amount.is_zero())):
+                        warning_name = Warning.format(
+                            '%s:%s' % (kind, party), lines)
+                        if Warning.check(warning_name):
+                            names = ', '.join(
+                                l.rec_name for l in lines[:5])
+                            if len(lines) > 5:
+                                names += '...'
+                            raise OverpayWarning(warning_name,
+                                gettext('account_payment.msg_pay_line_overpay',
+                                    names=names,
+                                    party=party.rec_name,
+                                    payment_amount=lang.currency(
+                                        payment_amount, company.currency),
+                                    amount=lang.currency(
+                                        amount, company.currency)))
         return {}
 
     def _get_journals(self):
