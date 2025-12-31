@@ -5,6 +5,7 @@ EDocument Peppol Peppyrus Scenario
 Imports::
 
     >>> import os
+    >>> import time
     >>> from unittest.mock import patch
 
     >>> from proteus import Model
@@ -12,6 +13,8 @@ Imports::
     >>> from trytond.modules.edocument_peppol.edocument import Peppol
     >>> from trytond.tests.tools import activate_modules
     >>> from trytond.tools import file_open
+
+    >>> FETCH_SLEEP, MAX_SLEEP = 1, 20
 
 Patch Peppol::
 
@@ -69,10 +72,13 @@ Check Peppol status::
 
 Fetch messages::
 
-    >>> cron, = Cron.find([
-    ...         ('method', '=', 'edocument.peppol.service|peppyrus_fetch'),
-    ...         ], limit=1)
-    >>> cron.click('run_once')
-
+    >>> for _ in range(MAX_SLEEP):
+    ...     cron, = Cron.find([
+    ...             ('method', '=', 'edocument.peppol.service|peppyrus_fetch'),
+    ...             ], limit=1)
+    ...     cron.click('run_once')
+    ...     if bool(Peppol.find([('direction', '=', 'in')])):
+    ...         break
+    ...     time.sleep(FETCH_SLEEP)
     >>> bool(Peppol.find([('direction', '=', 'in')]))
     True
