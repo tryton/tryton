@@ -857,8 +857,9 @@ class ProcessPayment(Wizard):
 
         for payment in payments:
             if payment.line and payment.line.payment_amount < 0:
-                if Warning.check(str(payment)):
-                    raise OverpayWarning(str(payment),
+                key = Warning.format('overpay', [payment])
+                if Warning.check(key):
+                    raise OverpayWarning(key,
                         gettext('account_payment.msg_payment_overpay',
                             payment=payment.rec_name,
                             line=payment.line.rec_name))
