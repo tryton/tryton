@@ -97,7 +97,7 @@ this repository contains the full copyright notices and license terms. -->
         <cbc:Description py:if="line.description">${line.description}</cbc:Description>
         <cbc:Name>${line.product_name or line.summary}</cbc:Name>
         <py:if test="line.product">
-            <cac:SellersItemIdentification>
+            <cac:SellersItemIdentification py:if="line.product.code">
                 <cbc:ID>${line.product.code}</cbc:ID>
             </cac:SellersItemIdentification>
             <py:with vars="gtin=line.product.identifier_get(['ean', 'isbn', 'ismn'])">
