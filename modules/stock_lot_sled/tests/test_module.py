@@ -74,10 +74,10 @@ class StockLotSLEDTestCase(CompanyTestMixin, ModuleTestCase):
 
             config = Config(1)
 
-            empty = {}
-            computed = {(storage.id, product.id): 5}
-            delta = {(storage.id, product.id): -5}
-            for context, result in [
+            empty = 0
+            computed = 5
+            delta = -5
+            for context, quantity in [
                     ({'stock_date_end': datetime.date.min}, empty),
                     ({'stock_date_end': today + datetime.timedelta(days=-1)},
                         empty),
@@ -114,34 +114,42 @@ class StockLotSLEDTestCase(CompanyTestMixin, ModuleTestCase):
                     ]:
                 with Transaction().set_context(context=context,
                         locations=[storage.id]):
-                    quantity = Product.products_by_location(
+                    quantities = Product.products_by_location(
                         [storage.id], grouping_filter=([product.id],))
-                    self.assertEqual(quantity, result,
+                    self.assertEqual(
+                        quantities[(storage.id, product.id)],
+                        quantity,
                         msg='context: %s' % repr(context))
 
-                    quantity = Product.products_by_location(
+                    quantities = Product.products_by_location(
                         [storage.id], grouping_filter=([product.id],),
                         with_childs=True)
-                    self.assertEqual(quantity, result,
+                    self.assertEqual(
+                        quantities[(storage.id, product.id)],
+                        quantity,
                         msg='context: %s, with childs' % repr(context))
 
-                    quantity = Product.products_by_location(
+                    quantities = Product.products_by_location(
                         [storage.id],
                         grouping=('product.template',),
                         grouping_filter=([product.template.id],),)
-                    self.assertEqual(quantity, result,
+                    self.assertEqual(
+                        quantities[(storage.id, product.template.id)],
+                        quantity,
                         msg='template, context: %s' % repr(context))
 
-                    quantity = Product.products_by_location(
+                    quantities = Product.products_by_location(
                         [storage.id],
                         grouping=('product.template',),
                         grouping_filter=([product.template.id],),
                         with_childs=True)
-                    self.assertEqual(quantity, result,
+                    self.assertEqual(
+                        quantities[(storage.id, product.template.id)],
+                        quantity,
                         msg='template, context: %s, with_childs' %
                         repr(context))
 
-            for context, delay, result in [
+            for context, delay, quantity in [
                     ({'stock_date_end': datetime.date.min},
                         datetime.timedelta(days=-1), empty),
                     ({'stock_date_end': datetime.date.max},
@@ -151,9 +159,11 @@ class StockLotSLEDTestCase(CompanyTestMixin, ModuleTestCase):
                 config.save()
                 with Transaction().set_context(context=context,
                         locations=[storage.id]):
-                    quantity = Product.products_by_location(
+                    quantities = Product.products_by_location(
                         [storage.id], grouping_filter=([product.id],))
-                    self.assertEqual(quantity, result,
+                    self.assertEqual(
+                        quantities[(storage.id, product.id)],
+                        quantity,
                         msg='context: %s; shelf_life_delay: %s' %
                         (repr(context), delay))
 
