@@ -81,7 +81,7 @@ class Lot(DeactivableMixin, ModelSQL, ModelView, LotMixin, StockMixin):
     def get_quantity(cls, lots, name):
         location_ids = Transaction().context.get('locations')
         product_ids = list(set(l.product.id for l in lots))
-        quantities = {}
+        quantities = defaultdict(float)
         for product_ids in grouped_slice(product_ids):
             quantities.update(cls._get_quantity(lots, name, location_ids,
                     grouping=('product', 'lot',),

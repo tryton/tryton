@@ -81,8 +81,7 @@ class StockMixin(object):
         pool = Pool()
         Product = pool.get('product.product')
 
-        record_ids = [r.id for r in records]
-        quantities = dict.fromkeys(record_ids, 0.0)
+        quantities = defaultdict(float)
         if not location_ids:
             return quantities
 
@@ -98,8 +97,7 @@ class StockMixin(object):
 
         for key, quantity in pbl.items():
             # pbl could return None in some keys
-            if (key[position] is not None
-                    and key[position] in quantities):
+            if key[position] is not None:
                 quantities[key[position]] += quantity
         return quantities
 
@@ -1739,7 +1737,7 @@ class Move(Workflow, ModelSQL, ModelView):
             Model = Template
         id_getter = operator.itemgetter(grouping.index(id_name) + 1)
         ids = set()
-        quantities = defaultdict(int)
+        quantities = defaultdict(float)
         keys = set()
         # We can do a quick loop without propagation if the request is for a
         # single location because all the locations are children and we can sum
