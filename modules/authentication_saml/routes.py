@@ -9,10 +9,6 @@ try:
 except ImportError:
     from http import client as HTTPStatus
 
-import saml2
-import saml2.client
-import saml2.config
-
 import trytond.config as config
 from trytond.protocols.dispatcher import register_authentication_service
 from trytond.protocols.wrappers import (
@@ -74,6 +70,10 @@ def get_url(database, identity, entrypoint):
 
 
 def get_client(database, identity):
+    import saml2
+    import saml2.client
+    import saml2.config
+
     settings = {
         'entityid': get_url(database, identity, 'metadata'),
         'service': {
@@ -125,6 +125,8 @@ def login(request, database, identity):
 @log
 @check_identity
 def metadata(request, database, identity):
+    import saml2.metadata
+
     client = get_client(database, identity)
     metadata = saml2.metadata.create_metadata_string(None, client.config)
     return Response(metadata, headers={'Content-Type': 'text/xml'})
@@ -138,6 +140,8 @@ def metadata(request, database, identity):
 @log
 @check_identity
 def acs(request, pool, identity):
+    import saml2.entity
+
     Session = pool.get('ir.session')
     User = pool.get('res.user')
     client = get_client(pool.database_name, identity)
