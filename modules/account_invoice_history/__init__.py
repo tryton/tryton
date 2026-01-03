@@ -16,3 +16,6 @@ def register():
         account_invoice.PaymentTermLine,
         account_invoice.PaymentTermLineRelativeDelta,
         module='account_invoice_history', type_='model')
+    Pool.register(
+        account_invoice.RefreshInvoiceReport,
+        module='account_invoice_history', type_='wizard')
