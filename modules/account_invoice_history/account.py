@@ -4,9 +4,10 @@ from sql import Null
 from sql.conditionals import Greatest
 from sql.functions import CurrentTimestamp
 
+from trytond import backend
 from trytond.model import ModelView, Workflow, fields
 from trytond.pool import Pool, PoolMeta
-from trytond.tools import grouped_slice, reduce_ids
+from trytond.tools import grouped_slice, reduce_ids, sqlite_apply_types
 from trytond.transaction import Transaction
 
 
@@ -43,7 +44,7 @@ class Invoice(metaclass=PoolMeta):
         invoice_ids = [i.id for i in invoices]
         datetimes = dict.fromkeys(invoice_ids)
         for ids in grouped_slice(invoice_ids):
-            cursor.execute(*table
+            query = (table
                 .join(party, condition=table.party == party.id)
                 .join(address, condition=table.invoice_address == address.id)
                 .join(identifier, 'LEFT',
@@ -53,10 +54,13 @@ class Invoice(metaclass=PoolMeta):
                 .select(table.id,
                     Greatest(table.numbered_at, party.create_date,
                         address.create_date, identifier.create_date,
-                        payment_term.create_date),
+                        payment_term.create_date).as_('history_datetime'),
                     where=reduce_ids(table.id, ids)
                     & (table.numbered_at != Null)
                     & (table.state.in_(cls._history_states()))))
+            if backend.name == 'sqlite':
+                sqlite_apply_types(query, [None, 'DATETIME'])
+            cursor.execute(*query)
             datetimes.update(cursor)
         return datetimes
 
