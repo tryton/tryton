@@ -4,8 +4,6 @@
 import json
 import logging
 
-import stripe
-
 from trytond.protocols.wrappers import (
     HTTPStatus, Response, abort, with_pool, with_transaction)
 from trytond.wsgi import app
@@ -83,6 +81,7 @@ def checkout_end(request, pool, model, id):
 @with_pool
 @with_transaction(context={'_skip_warnings': True})
 def webhooks_endpoint(request, pool, account):
+    import stripe
     Account = pool.get('account.payment.stripe.account')
     account, = Account.search([
             ('webhook_identifier', '=', account),
