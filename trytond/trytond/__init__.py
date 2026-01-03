@@ -1,17 +1,14 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+import importlib
 import os
+import sys
 import time
 import warnings
 from email import charset
 
 import __main__
 from lxml import etree, objectify
-
-try:
-    from requests import utils as requests_utils
-except ImportError:
-    requests_utils = None
 
 __version__ = "7.0.44"
 
@@ -35,9 +32,26 @@ etree.set_default_parser(etree.XMLParser(resolve_entities=False))
 objectify.set_default_parser(objectify.makeparser(resolve_entities=False))
 
 
-def default_user_agent(name="Tryton"):
-    return f"{name}/{__version__}"
+class _RequestPatchFinder:
+    def find_spec(self, fullname, path, target=None):
+        if fullname != 'requests.utils':
+            return
+        sys.meta_path.remove(self)
+        spec = importlib.util.find_spec(fullname)
+        loader = spec.loader
+        original_exec = loader.exec_module
+
+        def exec_module(module):
+            original_exec(module)
+            self._patch_requests_utils(module)
+        loader.exec_module = exec_module
+        return spec
+
+    @staticmethod
+    def _patch_requests_utils(module):
+        def default_user_agent(name="Tryton"):
+            return f"{name}/{__version__}"
+        module.default_user_agent = default_user_agent
 
 
-if requests_utils:
-    requests_utils.default_user_agent = default_user_agent
+sys.meta_path.insert(0, _RequestPatchFinder())
