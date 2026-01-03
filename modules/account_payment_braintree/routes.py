@@ -3,8 +3,6 @@
 import http.client
 import logging
 
-import braintree
-
 from trytond.protocols.wrappers import (
     HTTPStatus, Response, abort, with_pool, with_transaction)
 from trytond.wsgi import app
@@ -60,6 +58,7 @@ def checkout(request, pool, model, id):
 @with_pool
 @with_transaction(context={'_skip_warnings': True})
 def webhooks_endpoint(request, pool, account):
+    import braintree
     Account = pool.get('account.payment.braintree.account')
     account, = Account.search([
             ('webhook_identifier', '=', account),
