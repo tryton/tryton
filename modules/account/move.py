@@ -2384,7 +2384,7 @@ class Reconcile(Wizard):
 
         while True:
             while not next_currency():
-                if self.show.account.party_required or True:
+                if self.show.account.party_required:
                     while not next_party():
                         if not next_account():
                             return 'end'
