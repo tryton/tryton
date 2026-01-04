@@ -2250,7 +2250,9 @@ class Reconcile(Wizard):
 
         if self.model and self.model.__name__ == 'account.move.line':
             lines = [l for l in self.records if not l.reconciliation]
-            return list({l.party for l in lines if l.account == account})
+            return list({
+                    l.party for l in lines
+                    if l.account == account and l.party})
 
         where = ((line.reconciliation == Null)
             & (line.state == 'valid')
