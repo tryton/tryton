@@ -56,6 +56,8 @@ with :guilabel:`Supplier Invoice` type, you may add the metadata fields:
 
    - ``payment_term_date``: ``Date`` (optional)
 
+   - ``payment_reference``: ``String`` (optional)
+
    - ``total_amount``: ``Number``
 
    - ``untaxed_amount``: ``Number`` (optional)

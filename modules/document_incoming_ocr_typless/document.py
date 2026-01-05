@@ -115,8 +115,8 @@ class IncomingOCRService(metaclass=PoolMeta):
         for name in [
                 'company_name', 'company_tax_identifier', 'supplier_name',
                 'tax_identifier', 'currency', 'number', 'description',
-                'invoice_date', 'payment_term_date', 'total_amount',
-                'purchase_orders']:
+                'invoice_date', 'payment_term_date', 'payment_reference',
+                'total_amount', 'purchase_orders']:
             value = get_best_value(fields, name)
             if value is not None:
                 if name == 'total_amount':
@@ -270,6 +270,8 @@ class IncomingOCRService(metaclass=PoolMeta):
                 return invoice.payment_term_date.isoformat()
             else:
                 return ''
+        elif name == 'payment_reference':
+            return invoice.supplier_payment_reference
         elif name == 'untaxed_amount':
             return str(invoice.untaxed_amount)
         elif name == 'tax_amount':

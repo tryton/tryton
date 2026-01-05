@@ -124,6 +124,9 @@ class IncomingSupplierInvoice(metaclass=PoolMeta):
                         "Cannot parse payment term date "
                         f"'{payment_term_date}'")
 
+            if payment_reference := invoice_data.get('payment_reference'):
+                invoice.supplier_payment_reference = payment_reference
+
             lines = []
             for parsed_line in invoice_data.get('lines', []):
                 line = self._process_supplier_invoice_line(
