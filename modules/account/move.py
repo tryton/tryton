@@ -2475,11 +2475,6 @@ class Reconcile(Wizard):
                 date=self.show.date,
                 writeoff=self.show.write_off,
                 description=self.show.description)
-
-        if self.get_currencies(
-                self.show.account, self.show.party,
-                currency=self.show.currency):
-            return 'show'
         return 'next_'
 
 
