@@ -95,11 +95,14 @@ this repository contains the full copyright notices and license terms. -->
     <cbc:LineExtensionAmount py:attrs="{'currencyID': this.invoice.currency.code}">${line.amount}</cbc:LineExtensionAmount>
     <cac:Item>
         <cbc:Description py:if="line.description">${line.description}</cbc:Description>
-        <cbc:Name>${line.product_name or line.summary}</cbc:Name>
+        <cbc:Name>${line.product.name if line.product else line.summary}</cbc:Name>
+        <cac:BuyersItemIdentification py:if="line.product_customer_code">
+            <cbc:ID>${line.product_customer_code}</cbc:ID>
+        </cac:BuyersItemIdentification>
+        <cac:SellersItemIdentification py:if="line.product_supplier_code">
+            <cbc:ID>${line.product_supplier_code}</cbc:ID>
+        </cac:SellersItemIdentification>
         <py:if test="line.product">
-            <cac:SellersItemIdentification py:if="line.product.code">
-                <cbc:ID>${line.product.code}</cbc:ID>
-            </cac:SellersItemIdentification>
             <py:with vars="gtin=line.product.identifier_get(['ean', 'isbn', 'ismn'])">
                 <cac:StandardItemIdentification py:if="gtin">
                     <cbc:ID schemeID="0160">${gtin}</cbc:ID>
