@@ -11,6 +11,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="group" ref="group_sale_point"/>
         </record>
 
+        <record model="ir.ui.menu-res.group" id="menu_sale_group_sale_point">
+            <field name="menu" ref="sale.menu_sale"/>
+            <field name="group" ref="group_sale_point"/>
+        </record>
+
         <record model="res.group" id="group_sale_point_posting">
             <field name="name">POS Posting</field>
         </record>
