@@ -15,6 +15,9 @@ account move line's :guilabel:`Reconciliation` field.
 The `Reconcile Accounts <wizard-account.reconcile>` wizard is used to manually
 run this account reconciliation.
 
+You may want to define some :guilabel:`Reconcile Move Lines Automatically`
+`scheduled tasks <trytond:model-ir.cron>` to automate the reconciliation.
+
 .. note::
 
    Some other processes in Tryton will automatically reconcile account move

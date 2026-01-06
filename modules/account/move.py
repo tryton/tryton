@@ -1864,6 +1864,21 @@ class Line(DescriptionOriginMixin, MoveLineMixin, ModelSQL, ModelView):
     def _reconciliation_sort_key(self):
         return self.maturity_date or self.date
 
+    @classmethod
+    def reconcile_automatic(cls, data=None):
+        pool = Pool()
+        Reconcile = pool.get('account.reconcile', type='wizard')
+
+        data = data.copy() if data is not None else {}
+        data['start'] = {
+            'automatic': True,
+            'only_balanced': True,
+            }
+
+        session_id, _, _ = Reconcile.create()
+        Reconcile.execute(session_id, data, 'setup')
+        Reconcile.delete(session_id)
+
 
 class LineReceivablePayableContext(ModelView):
     __name__ = 'account.move.line.receivable_payable.context'

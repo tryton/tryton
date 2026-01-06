@@ -6,7 +6,7 @@ Imports::
 
     >>> from decimal import Decimal
 
-    >>> from proteus import Model, Wizard
+    >>> from proteus import Model
     >>> from trytond.modules.account.tests.tools import (
     ...     create_chart, create_fiscalyear, get_accounts)
     >>> from trytond.modules.company.tests.tools import create_company
@@ -16,6 +16,7 @@ Activate modules::
 
     >>> config = activate_modules('account', create_company, create_chart)
 
+    >>> Cron = Model.get('ir.cron')
     >>> Journal = Model.get('account.journal')
     >>> Line = Model.get('account.move.line')
     >>> Move = Model.get('account.move')
@@ -73,9 +74,10 @@ Create Moves to reconcile::
 
 Run Reconcile wizard::
 
-    >>> reconcile = Wizard('account.reconcile')
-    >>> reconcile.form.automatic = True
-    >>> reconcile.execute('setup')
+    >>> reconcile = Cron(
+    ...     method='account.move.line|reconcile_automatic',
+    ...     interval_number=1, interval_type='days')
+    >>> reconcile.click('run_once')
 
     >>> lines = Line.find([('account', '=', accounts['receivable'].id)])
     >>> len(lines)
