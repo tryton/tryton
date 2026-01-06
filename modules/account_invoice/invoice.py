@@ -2860,6 +2860,22 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
     def product_name(self):
         return self.product.rec_name if self.product else ''
 
+    @cached_property
+    def product_supplier_code(self):
+        code = ''
+        if self.invoice.type == 'out':
+            if self.product:
+                code = self.product.code
+        return code
+
+    @cached_property
+    def product_customer_code(self):
+        code = ''
+        if self.invoice.type == 'in':
+            if self.product:
+                code = self.product.code
+        return code
+
     @fields.depends('product')
     def on_change_with_product_uom_category(self, name=None):
         return self.product.default_uom_category if self.product else None

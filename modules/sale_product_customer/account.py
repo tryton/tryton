@@ -17,3 +17,14 @@ class InvoiceLine(metaclass=PoolMeta):
                 and self.origin.product_customer):
             name = self.origin.product_customer.rec_name
         return name
+
+    @cached_property
+    def product_customer_code(self):
+        pool = Pool()
+        SaleLine = pool.get('sale.line')
+        code = super().product_customer_code
+        if (self.invoice.type == 'out'
+                and isinstance(self.origin, SaleLine)
+                and self.origin.product_customer):
+            code = self.origin.product_customer.code
+        return code

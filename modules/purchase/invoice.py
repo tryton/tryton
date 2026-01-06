@@ -122,6 +122,17 @@ class InvoiceLine(metaclass=PoolMeta):
             name = self.origin.product_supplier.rec_name
         return name
 
+    @cached_property
+    def product_supplier_code(self):
+        pool = Pool()
+        PurchaseLine = pool.get('purchase.line')
+        code = super().product_supplier_code
+        if (self.invoice.type == 'in'
+                and isinstance(self.origin, PurchaseLine)
+                and self.origin.product_supplier):
+            code = self.origin.product_supplier.code
+        return code
+
     @fields.depends('origin')
     def on_change_with_product_uom_category(self, name=None):
         pool = Pool()
