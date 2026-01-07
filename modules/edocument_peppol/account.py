@@ -57,7 +57,7 @@ class Invoice(metaclass=PoolMeta):
                     'invoice_peppol_required', [
                         invoice.party, invoice.company])
                 if Warning.check(warning_key):
-                    raise InvoicePeppolRequired(gettext(
+                    raise InvoicePeppolRequired(warning_key, gettext(
                             'edocument_peppol'
                             '.msg_invoice_party_peppol_required',
                             party=invoice.party.rec_name,
