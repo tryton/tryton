@@ -156,13 +156,15 @@ class LotTrace(metaclass=PoolMeta):
         return document
 
     def _get_upward_traces(self):
-        traces = super()._get_upward_traces()
         if self.production_input:
-            traces.update(self.production_input.outputs)
+            traces = set(self.production_input.outputs)
+        else:
+            traces = super()._get_upward_traces()
         return traces
 
     def _get_downward_traces(self):
-        traces = super()._get_downward_traces()
         if self.production_output:
-            traces.update(self.production_output.inputs)
+            traces = set(self.production_output.inputs)
+        else:
+            traces = super()._get_downward_traces()
         return traces
