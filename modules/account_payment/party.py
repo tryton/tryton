@@ -132,7 +132,7 @@ class PartyReceptionDirectDebit(
             with Transaction().set_context(company=self.company.id):
                 date = Date.today()
         if line:
-            date = min(line.maturity_date, date)
+            date = min(line.maturity_date or date, date)
             if amount is None:
                 amount = line.payment_amount
         if amount:
