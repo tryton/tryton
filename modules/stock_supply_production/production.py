@@ -181,6 +181,7 @@ class Production(metaclass=PoolMeta):
             origin = 'stock.order_point,-1'
         return cls(
             planned_date=date,
+            origin_planned_date=date,
             company=company,
             warehouse=warehouse,
             location=warehouse.production_location,

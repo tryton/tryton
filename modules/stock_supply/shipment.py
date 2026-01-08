@@ -159,6 +159,7 @@ class ShipmentInternal(ModelSQL, ModelView):
                     from_location=from_location,
                     to_location=to_location,
                     planned_date=date,
+                    origin_planned_date=date,
                     state='request',
                     )
                 shipment_moves = []
@@ -170,6 +171,7 @@ class ShipmentInternal(ModelSQL, ModelView):
                             from_location=from_location,
                             to_location=to_location,
                             planned_date=date,
+                            origin_planned_date=date,
                             product=product,
                             quantity=qty,
                             unit=product.default_uom,
