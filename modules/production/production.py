@@ -29,19 +29,6 @@ class Production(
     _assign_moves_field = 'inputs'
 
     number = fields.Char("Number", readonly=True)
-    reference = fields.Char(
-        "Reference",
-        states={
-            'readonly': ~Eval('state').in_(['request', 'draft']),
-            })
-    planned_date = fields.Date('Planned Date',
-        states={
-            'readonly': Eval('state').in_(['cancelled', 'done']),
-            })
-    effective_date = fields.Date('Effective Date',
-        states={
-            'readonly': Eval('state').in_(['cancelled', 'done']),
-            })
     planned_start_date = fields.Date('Planned Start Date',
         states={
             'readonly': ~Eval('state').in_(['request', 'draft']),
@@ -175,7 +162,10 @@ class Production(
     @classmethod
     def __setup__(cls):
         cls.number.search_unaccented = False
+        cls.number.help = cls.number.help.replace('shipment', 'production')
         cls.reference.search_unaccented = False
+        cls.reference.help = cls.reference.help.replace(
+            'shipment', 'production')
         super().__setup__()
         t = cls.__table__()
         cls._sql_indexes.update({
