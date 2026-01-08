@@ -536,7 +536,7 @@
    <text:p text:style-name="P25">From Date: <text:placeholder text:placeholder-type="text">&lt;format_date(ctx.from_date, user.language) if ctx.from_date else &apos;&apos;&gt;</text:placeholder><text:s/>To <text:placeholder text:placeholder-type="text">&lt;format_date(ctx.to_date, user.language) if ctx.to_date else &apos;&apos;&gt;</text:placeholder></text:p>
    <text:p text:style-name="P24"><text:placeholder text:placeholder-type="text">&lt;/if&gt;</text:placeholder></text:p>
    <text:p text:style-name="P24"><text:placeholder text:placeholder-type="text">&lt;/when&gt;</text:placeholder></text:p>
-   <text:p text:style-name="P24"><text:placeholder text:placeholder-type="text">&lt;when test=&quot;data.get(&apos;model_context&apos;) in [&apos;account.balance_sheet.context&apos;, &apos;account.balance_sheet.comparision.context&apos;]&quot;&gt;</text:placeholder></text:p>
+   <text:p text:style-name="P24"><text:placeholder text:placeholder-type="text">&lt;when test=&quot;data.get(&apos;model_context&apos;) in [&apos;account.balance_sheet.context&apos;, &apos;account.balance_sheet.comparison.context&apos;]&quot;&gt;</text:placeholder></text:p>
    <text:p text:style-name="P28">Balance Sheet</text:p>
    <text:p text:style-name="P26">Date: <text:placeholder text:placeholder-type="text">&lt;format_date(ctx.date, user.language) if ctx.date else &apos;&apos;&gt;</text:placeholder></text:p>
    <text:p text:style-name="P24"><text:placeholder text:placeholder-type="text">&lt;/when&gt;</text:placeholder></text:p>
