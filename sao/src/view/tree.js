@@ -3086,7 +3086,8 @@
             } else {
                 size = this.field.get(record).length;
             }
-            return size? Sao.common.humanize(size, 'B') : '';
+            let file_exist = !((size === undefined) || (size === null));
+            return file_exist ? Sao.common.humanize(size, 'B') : '';
         },
         update_text: function(cell, record) {
             var text = this.get_textual_value(record);

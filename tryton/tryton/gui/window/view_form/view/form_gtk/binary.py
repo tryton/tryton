@@ -233,12 +233,13 @@ class Binary(BinaryMixin, Widget):
             size = self.field.get_size(self.record)
         else:
             size = len(self.field.get(self.record))
-        self.wid_size.set_text(common.humanize(size or 0, 'B'))
+        self.wid_size.set_text(
+            common.humanize(size, 'B') if size is not None else '')
         reset_position(self.wid_size)
         if self.wid_text:
             self.wid_text.set_text(self.filename_field.get(self.record) or '')
             reset_position(self.wid_text)
-            if size:
+            if size is not None:
                 icon, tooltip = 'tryton-open', _("Open...")
             else:
                 icon, tooltip = None, ''
@@ -250,7 +251,7 @@ class Binary(BinaryMixin, Widget):
                 pixbuf = None
             self.wid_text.set_icon_from_pixbuf(pos, pixbuf)
             self.wid_text.set_icon_tooltip_text(pos, tooltip)
-        self.update_buttons(bool(size))
+        self.update_buttons(size is not None)
         return True
 
     def set_value(self):

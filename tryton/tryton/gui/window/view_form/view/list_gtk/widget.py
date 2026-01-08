@@ -604,7 +604,7 @@ class Binary(GenericText):
             size = field.get_size(record)
         else:
             size = len(field.get(record))
-        return common.humanize(size, 'B') if size else ''
+        return common.humanize(size, 'B') if size is not None else ''
 
     def value_from_text(self, record, text, callback=None):
         if callback:
@@ -694,7 +694,7 @@ class _BinarySave(_BinaryIcon):
             size = len(field.get(record))
         field.state_set(record, states=['invisible'])
         invisible = field.get_state_attrs(record).get('invisible', False)
-        cell.set_property('visible', not invisible and size)
+        cell.set_property('visible', not invisible and size is not None)
         self._set_visual(cell, record)
 
 
@@ -763,7 +763,7 @@ class _BinarySelect(_BinaryIcon):
         invisible = field.get_state_attrs(record).get('invisible', False)
         readonly = self.attrs.get('readonly',
             field.get_state_attrs(record).get('readonly', False))
-        if readonly or size:
+        if readonly or size is not None:
             cell.set_property('visible', False)
         else:
             cell.set_property('visible', not invisible)

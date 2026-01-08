@@ -70,7 +70,6 @@ class Binary(Field):
             '%s.%s' % (model.__name__, name), '')
         if format_ == 'size':
             converter = len
-            default = 0
         result = defaultdict(type(default))
 
         if self.file_id:
@@ -104,7 +103,7 @@ class Binary(Field):
             if i['id'] in result:
                 continue
             value = i[name]
-            if value:
+            if value is not None:
                 value = converter(value)
             else:
                 value = default
@@ -152,9 +151,12 @@ class Binary(Field):
         for ids, value in zip(args, args):
             self.queue_for_removal(Model, name, ids)
             if self.file_id:
+                if value is not None:
+                    file_name = filestore.set(value, prefix)
+                else:
+                    file_name = None
                 columns = [Column(table, self.file_id), Column(table, name)]
-                values = [
-                    filestore.set(value, prefix) if value else None, None]
+                values = [file_name, None]
             else:
                 columns = [Column(table, name)]
                 values = [self.sql_format(value)]

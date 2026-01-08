@@ -1140,13 +1140,13 @@ class BinaryField(Field):
         return self.get(record)
 
     def set_client(self, record, value, force_change=False):
-        self._set_file_cache(record, value or b'')
+        self._set_file_cache(record, value)
         self.sig_changed(record)
         record.validate(softvalidation=True)
         record.set_modified(self.name)
 
     def get_size(self, record):
-        result = record.value.get(self.name) or 0
+        result = record.value.get(self.name)
         if isinstance(result, _FileCache):
             result = os.stat(result.path).st_size
         elif isinstance(result, (str, bytes)):

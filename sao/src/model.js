@@ -2863,7 +2863,7 @@
             return previous != value;
         },
         get_size: function(record) {
-            var data = record._values[this.name] || 0;
+            var data = record._values[this.name];
             if ((data instanceof Uint8Array) ||
                 (typeof(data) == 'string')) {
                 return data.length;

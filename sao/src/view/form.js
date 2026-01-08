@@ -4768,17 +4768,22 @@ function eval_pyson(value){
             } else {
                 size = field.get(record).length;
             }
-            this.size.val(Sao.common.humanize(size, 'B'));
+            let is_empty = ((size === undefined) || (size === null));
+            if (!is_empty) {
+                this.size.val(Sao.common.humanize(size, 'B'));
+            } else {
+                this.size.val('');
+            }
 
             if (this.text) {
                 this.text.val(this.filename_field.get(record) || '');
-                if (size) {
+                if (!is_empty) {
                     this.but_open.parent().sao_show();
                 } else {
                     this.but_open.parent().sao_hide();
                 }
             }
-            this.update_buttons(Boolean(size));
+            this.update_buttons(!is_empty);
         },
         key_press: function(evt) {
             var editable = !this.text.prop('readonly');
