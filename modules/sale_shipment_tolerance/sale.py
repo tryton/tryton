@@ -60,7 +60,7 @@ class Line(metaclass=PoolMeta):
         if tolerance is not None:
             maximal_quantity = abs(self.quantity * tolerance)
             if shipped_quantity > maximal_quantity:
-                name = 'over_shipment_sale_line_%d' % self.id
+                name = Warning.format('over_shipment', [self])
                 if Warning.check(name):
                     raise OverShipmentWarning(
                         name,
