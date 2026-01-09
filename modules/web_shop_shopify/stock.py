@@ -170,8 +170,9 @@ class ShipmentShopifyIdentifier(IdentifierMixin, ModelSQL, ModelView):
 class ShipmentOut_PackageShipping(metaclass=PoolMeta):
     __name__ = 'stock.shipment.out'
 
-    def get_shopify(self, sale):
-        fulfillment = super().get_shopify(sale)
+    def get_shopify(self, sale, fulfillment_order_fields=None):
+        fulfillment = super().get_shopify(
+            sale, fulfillment_order_fields=fulfillment_order_fields)
         if fulfillment and self.packages:
             numbers, urls = [], []
             fulfillment['trackingInfo'] = {
