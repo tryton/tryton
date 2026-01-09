@@ -151,6 +151,8 @@ class Move(metaclass=PoolMeta):
         quantity = int(Uom.compute_qty(
                 self.unit, self.quantity, self.origin.unit))
         for fulfillment_order in fulfillment_orders:
+            if fulfillment_order.status in {'cancelled', 'success'}:
+                continue
             if fulfillment_order.assigned_location_id != location_id:
                 continue
             for line_item in fulfillment_order.line_items:
