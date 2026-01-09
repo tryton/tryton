@@ -27,6 +27,8 @@ this repository contains the full copyright notices and license terms. -->
       <field name="invoice_account" ref="451_nl"/>
       <field name="credit_note_account" ref="451_nl"/>
       <field name="account" ref="root_nl"/>
+      <field name="unece_code" depends="edocument_unece">VAT</field>
+      <field name="unece_category_code" depends="edocument_unece">AE</field>
     </record>
     <record id="tva_vente_biens_intracommunautaires_0_nl" model="account.tax.template">
       <field name="name">BTW 0% Intracommunautaire verkoop van goederen</field>
@@ -38,6 +40,8 @@ this repository contains the full copyright notices and license terms. -->
       <field name="credit_note_account" ref="451_nl"/>
       <field name="ec_sales_list_code">L</field>
       <field name="account" ref="root_nl"/>
+      <field name="unece_code" depends="edocument_unece">VAT</field>
+      <field name="unece_category_code" depends="edocument_unece">K</field>
     </record>
     <record id="tva_vente_biens_hors_communaute_0_nl" model="account.tax.template">
       <field name="name">BTW 0% Extracommunautaire verkoop van goederen</field>
@@ -48,6 +52,8 @@ this repository contains the full copyright notices and license terms. -->
       <field name="invoice_account" ref="451_nl"/>
       <field name="credit_note_account" ref="451_nl"/>
       <field name="account" ref="root_nl"/>
+      <field name="unece_code" depends="edocument_unece">VAT</field>
+      <field name="unece_category_code" depends="edocument_unece">G</field>
     </record>
     <record id="tva_vente_biens_0_nl" model="account.tax.template">
       <field name="name">BTW 0% Bijzondere regeling</field>
@@ -58,6 +64,8 @@ this repository contains the full copyright notices and license terms. -->
       <field name="invoice_account" ref="451_nl"/>
       <field name="credit_note_account" ref="451_nl"/>
       <field name="account" ref="root_nl"/>
+      <field name="unece_code" depends="edocument_unece">VAT</field>
+      <field name="unece_category_code" depends="edocument_unece">Z</field>
     </record>
     <record id="tva_vente_biens_6_nl" model="account.tax.template">
       <field name="name">BTW 6% Verkoop van goederen</field>
@@ -68,6 +76,8 @@ this repository contains the full copyright notices and license terms. -->
       <field name="invoice_account" ref="451_nl"/>
       <field name="credit_note_account" ref="451_nl"/>
       <field name="account" ref="root_nl"/>
+      <field name="unece_code" depends="edocument_unece">VAT</field>
+      <field name="unece_category_code" depends="edocument_unece">S</field>
     </record>
     <record id="tva_vente_biens_12_nl" model="account.tax.template">
       <field name="name">BTW 12% Verkoop van goederen</field>
@@ -78,6 +88,8 @@ this repository contains the full copyright notices and license terms. -->
       <field name="invoice_account" ref="451_nl"/>
       <field name="credit_note_account" ref="451_nl"/>
       <field name="account" ref="root_nl"/>
+      <field name="unece_code" depends="edocument_unece">VAT</field>
+      <field name="unece_category_code" depends="edocument_unece">S</field>
     </record>
     <record id="tva_vente_biens_21_nl" model="account.tax.template">
       <field name="name">BTW 21% Verkoop van goederen</field>
@@ -88,6 +100,8 @@ this repository contains the full copyright notices and license terms. -->
       <field name="invoice_account" ref="451_nl"/>
       <field name="credit_note_account" ref="451_nl"/>
       <field name="account" ref="root_nl"/>
+      <field name="unece_code" depends="edocument_unece">VAT</field>
+      <field name="unece_category_code" depends="edocument_unece">S</field>
     </record>
     <record id="tva_vente_services_coco_nl" model="account.tax.template">
       <field name="name">BTW 0% Verkoop van diensten medecontractanten</field>
@@ -98,6 +112,8 @@ this repository contains the full copyright notices and license terms. -->
       <field name="invoice_account" ref="451_nl"/>
       <field name="credit_note_account" ref="451_nl"/>
       <field name="account" ref="root_nl"/>
+      <field name="unece_code" depends="edocument_unece">VAT</field>
+      <field name="unece_category_code" depends="edocument_unece">AE</field>
     </record>
     <record id="tva_vente_services_intracommunautaires_0_nl" model="account.tax.template">
       <field name="name">BTW 0% Intracommunautaire verkoop van diensten</field>
@@ -109,6 +125,8 @@ this repository contains the full copyright notices and license terms. -->
       <field name="credit_note_account" ref="451_nl"/>
       <field name="ec_sales_list_code">S</field>
       <field name="account" ref="root_nl"/>
+      <field name="unece_code" depends="edocument_unece">VAT</field>
+      <field name="unece_category_code" depends="edocument_unece">K</field>
     </record>
     <record id="tva_vente_services_hors_communaute_0_nl" model="account.tax.template">
       <field name="name">BTW 0% Extracommunautaire verkoop van diensten</field>
@@ -119,6 +137,8 @@ this repository contains the full copyright notices and license terms. -->
       <field name="invoice_account" ref="451_nl"/>
       <field name="credit_note_account" ref="451_nl"/>
       <field name="account" ref="root_nl"/>
+      <field name="unece_code" depends="edocument_unece">VAT</field>
+      <field name="unece_category_code" depends="edocument_unece">G</field>
     </record>
     <record id="tva_vente_services_6_nl" model="account.tax.template">
       <field name="name">BTW 6% Verkoop van diensten</field>
@@ -129,6 +149,8 @@ this repository contains the full copyright notices and license terms. -->
       <field name="invoice_account" ref="451_nl"/>
       <field name="credit_note_account" ref="451_nl"/>
       <field name="account" ref="root_nl"/>
+      <field name="unece_code" depends="edocument_unece">VAT</field>
+      <field name="unece_category_code" depends="edocument_unece">S</field>
     </record>
     <record id="tva_vente_services_12_nl" model="account.tax.template">
       <field name="name">BTW 12% Verkoop van diensten</field>
@@ -139,6 +161,8 @@ this repository contains the full copyright notices and license terms. -->
       <field name="invoice_account" ref="451_nl"/>
       <field name="credit_note_account" ref="451_nl"/>
       <field name="account" ref="root_nl"/>
+      <field name="unece_code" depends="edocument_unece">VAT</field>
+      <field name="unece_category_code" depends="edocument_unece">S</field>
     </record>
     <record id="tva_vente_services_21_nl" model="account.tax.template">
       <field name="name">BTW 21% Verkoop van diensten</field>
@@ -149,6 +173,8 @@ this repository contains the full copyright notices and license terms. -->
       <field name="invoice_account" ref="451_nl"/>
       <field name="credit_note_account" ref="451_nl"/>
       <field name="account" ref="root_nl"/>
+      <field name="unece_code" depends="edocument_unece">VAT</field>
+      <field name="unece_category_code" depends="edocument_unece">S</field>
     </record>
     <record id="tva_achat_marchandises_intracommunautaires_0_nl" model="account.tax.template">
       <field name="name">BTW 0% Intracommunautaire aankoop van handelsgoederen, grond- en hulpstoffen</field>
@@ -159,6 +185,8 @@ this repository contains the full copyright notices and license terms. -->
       <field name="invoice_account" ref="411_nl"/>
       <field name="credit_note_account" ref="411_nl"/>
       <field name="account" ref="root_nl"/>
+      <field name="unece_code" depends="edocument_unece">VAT</field>
+      <field name="unece_category_code" depends="edocument_unece">K</field>
     </record>
     <record id="tva_achat_marchandises_coco_6_nl" model="account.tax.template">
       <field name="name">BTW 6% Aankoop van handelsgoederen, grond- en hulpstoffen medecontractanten</field>
@@ -166,6 +194,8 @@ this repository contains the full copyright notices and license terms. -->
       <field name="group" ref="group_tva_achat_nl"/>
       <field name="type">none</field>
       <field name="account" ref="root_nl"/>
+      <field name="unece_code" depends="edocument_unece">VAT</field>
+      <field name="unece_category_code" depends="edocument_unece">AE</field>
     </record>
     <record id="tva_achat_marchandises_coco_6_1_nl" model="account.tax.template">
       <field name="name">BTW 6% Aankoop van handelsgoederen, grond- en hulpstoffen medecontractanten (1)</field>
@@ -220,6 +250,8 @@ this repository contains the full copyright notices and license terms. -->
       <field name="group" ref="group_tva_achat_nl"/>
       <field name="type">none</field>
       <field name="account" ref="root_nl"/>
+      <field name="unece_code" depends="edocument_unece">VAT</field>
+      <field name="unece_category_code" depends="edocument_unece">AE</field>
     </record>
     <record id="tva_achat_marchandises_coco_21_1_nl" model="account.tax.template">
       <field name="name">BTW 21% Aankoop van handelsgoederen, grond- en hulpstoffen medecontractanten (1)</field>
@@ -250,6 +282,8 @@ this repository contains the full copyright notices and license terms. -->
       <field name="invoice_account" ref="411_nl"/>
       <field name="credit_note_account" ref="411_nl"/>
       <field name="account" ref="root_nl"/>
+      <field name="unece_code" depends="edocument_unece">VAT</field>
+      <field name="unece_category_code" depends="edocument_unece">S</field>
     </record>
     <record id="tva_achat_marchandises_intracommunautaires_6_nl" model="account.tax.template">
       <field name="name">BTW 6% Intracommunautaire aankoop van handelsgoederen, grond- en hulpstoffen</field>
@@ -257,6 +291,8 @@ this repository contains the full copyright notices and license terms. -->
       <field name="group" ref="group_tva_achat_nl"/>
       <field name="type">none</field>
       <field name="account" ref="root_nl"/>
+      <field name="unece_code" depends="edocument_unece">VAT</field>
+      <field name="unece_category_code" depends="edocument_unece">K</field>
     </record>
     <record id="tva_achat_marchandises_intracommunautaires_6_1_nl" model="account.tax.template">
       <field name="name">BTW 6% Intracommunautaire aankoop van handelsgoederen, grond- en hulpstoffen (1)</field>
@@ -284,6 +320,8 @@ this repository contains the full copyright notices and license terms. -->
       <field name="group" ref="group_tva_achat_nl"/>
       <field name="type">none</field>
       <field name="account" ref="root_nl"/>
+      <field name="unece_code" depends="edocument_unece">VAT</field>
+      <field name="unece_category_code" depends="edocument_unece">S</field>
     </record>
     <record id="tva_achat_marchandises_12_1_nl" model="account.tax.template">
       <field name="name">BTW 12% Aankoop van handelsgoederen, grond- en hulpstoffen (1)</field>
@@ -311,6 +349,8 @@ this repository contains the full copyright notices and license terms. -->
       <field name="group" ref="group_tva_achat_nl"/>
       <field name="type">none</field>
       <field name="account" ref="root_nl"/>
+      <field name="unece_code" depends="edocument_unece">VAT</field>
+      <field name="unece_category_code" depends="edocument_unece">K</field>
     </record>
     <record id="tva_achat_marchandises_intracommunautaires_12_1_nl" model="account.tax.template">
       <field name="name">BTW 12% Intracommunautaire aankoop van handelsgoederen, grond- en hulpstoffen (1)</field>
@@ -338,6 +378,8 @@ this repository contains the full copyright notices and license terms. -->
       <field name="group" ref="group_tva_achat_nl"/>
       <field name="type">none</field>
       <field name="account" ref="root_nl"/>
+      <field name="unece_code" depends="edocument_unece">VAT</field>
+      <field name="unece_category_code" depends="edocument_unece">S</field>
     </record>
     <record id="tva_achat_marchandises_21_1_nl" model="account.tax.template">
       <field name="name">BTW 21% Aankoop van handelsgoederen, grond- en hulpstoffen (1)</field>
@@ -365,6 +407,8 @@ this repository contains the full copyright notices and license terms. -->
       <field name="group" ref="group_tva_achat_nl"/>
       <field name="type">none</field>
       <field name="account" ref="root_nl"/>
+      <field name="unece_code" depends="edocument_unece">VAT</field>
+      <field name="unece_category_code" depends="edocument_unece">K</field>
     </record>
     <record id="tva_achat_marchandises_intracommunautaires_21_1_nl" model="account.tax.template">
       <field name="name">BTW 21% Intracommunautaire aankoop van handelsgoederen, grond- en hulpstoffen (1)</field>
@@ -395,6 +439,8 @@ this repository contains the full copyright notices and license terms. -->
       <field name="invoice_account" ref="411_nl"/>
       <field name="credit_note_account" ref="411_nl"/>
       <field name="account" ref="root_nl"/>
+      <field name="unece_code" depends="edocument_unece">VAT</field>
+      <field name="unece_category_code" depends="edocument_unece">K</field>
     </record>
     <record id="tva_achat_frais_biens_coco_6_nl" model="account.tax.template">
       <field name="name">BTW 6% Aankoop van diverse goederen en diensten medecontractanten</field>
@@ -402,6 +448,8 @@ this repository contains the full copyright notices and license terms. -->
       <field name="group" ref="group_tva_achat_nl"/>
       <field name="type">none</field>
       <field name="account" ref="root_nl"/>
+      <field name="unece_code" depends="edocument_unece">VAT</field>
+      <field name="unece_category_code" depends="edocument_unece">AE</field>
     </record>
     <record id="tva_achat_frais_biens_coco_6_1_nl" model="account.tax.template">
       <field name="name">BTW 6% Aankoop van diverse goederen en diensten medecontractanten (1)</field>
@@ -429,6 +477,8 @@ this repository contains the full copyright notices and license terms. -->
       <field name="group" ref="group_tva_achat_nl"/>
       <field name="type">none</field>
       <field name="account" ref="root_nl"/>
+      <field name="unece_code" depends="edocument_unece">VAT</field>
+      <field name="unece_category_code" depends="edocument_unece">AE</field>
     </record>
     <record id="tva_achat_frais_biens_coco_12_1_nl" model="account.tax.template">
       <field name="name">BTW 12% Aankoop van diverse goederen en diensten medecontractanten (1)</field>
@@ -456,6 +506,8 @@ this repository contains the full copyright notices and license terms. -->
       <field name="group" ref="group_tva_achat_nl"/>
       <field name="type">none</field>
       <field name="account" ref="root_nl"/>
+      <field name="unece_code" depends="edocument_unece">VAT</field>
+      <field name="unece_category_code" depends="edocument_unece">AE</field>
     </record>
     <record id="tva_achat_frais_biens_coco_21_1_nl" model="account.tax.template">
       <field name="name">BTW 21% Aankoop van diverse goederen en diensten medecontractanten (1)</field>
@@ -493,6 +545,8 @@ this repository contains the full copyright notices and license terms. -->
       <field name="group" ref="group_tva_achat_nl"/>
       <field name="type">none</field>
       <field name="account" ref="root_nl"/>
+      <field name="unece_code" depends="edocument_unece">VAT</field>
+      <field name="unece_category_code" depends="edocument_unece">K</field>
     </record>
     <record id="tva_achat_frais_biens_intracommunautaires_6_1_nl" model="account.tax.template">
       <field name="name">BTW 6% Intracommunautaire aankoop van diverse goederen en diensten (1)</field>
@@ -523,6 +577,8 @@ this repository contains the full copyright notices and license terms. -->
       <field name="invoice_account" ref="411_nl"/>
       <field name="credit_note_account" ref="411_nl"/>
       <field name="account" ref="root_nl"/>
+      <field name="unece_code" depends="edocument_unece">VAT</field>
+      <field name="unece_category_code" depends="edocument_unece">S</field>
     </record>
     <record id="tva_achat_frais_biens_intracommunautaires_12_nl" model="account.tax.template">
       <field name="name">BTW 12% Intracommunautaire aankoop van diverse goederen en diensten</field>
@@ -530,6 +586,8 @@ this repository contains the full copyright notices and license terms. -->
       <field name="group" ref="group_tva_achat_nl"/>
       <field name="type">none</field>
       <field name="account" ref="root_nl"/>
+      <field name="unece_code" depends="edocument_unece">VAT</field>
+      <field name="unece_category_code" depends="edocument_unece">K</field>
     </record>
     <record id="tva_achat_frais_biens_intracommunautaires_12_1_nl" model="account.tax.template">
       <field name="name">BTW 12% Intracommunautaire aankoop van diverse goederen en diensten (1)</field>
@@ -560,6 +618,8 @@ this repository contains the full copyright notices and license terms. -->
       <field name="invoice_account" ref="411_nl"/>
       <field name="credit_note_account" ref="411_nl"/>
       <field name="account" ref="root_nl"/>
+      <field name="unece_code" depends="edocument_unece">VAT</field>
+      <field name="unece_category_code" depends="edocument_unece">S</field>
     </record>
     <record id="tva_achat_frais_biens_intracommunautaires_21_nl" model="account.tax.template">
       <field name="name">BTW 21% Intracommunautaire aankoop van diverse goederen en diensten</field>
@@ -567,6 +627,8 @@ this repository contains the full copyright notices and license terms. -->
       <field name="group" ref="group_tva_achat_nl"/>
       <field name="type">none</field>
       <field name="account" ref="root_nl"/>
+      <field name="unece_code" depends="edocument_unece">VAT</field>
+      <field name="unece_category_code" depends="edocument_unece">K</field>
     </record>
     <record id="tva_achat_frais_biens_intracommunautaires_21_1_nl" model="account.tax.template">
       <field name="name">BTW 21% Intracommunautaire aankoop van diverse goederen en diensten (1)</field>
@@ -597,6 +659,8 @@ this repository contains the full copyright notices and license terms. -->
       <field name="invoice_account" ref="411_nl"/>
       <field name="credit_note_account" ref="411_nl"/>
       <field name="account" ref="root_nl"/>
+      <field name="unece_code" depends="edocument_unece">VAT</field>
+      <field name="unece_category_code" depends="edocument_unece">K</field>
     </record>
     <record id="tva_achat_investissement_coco_6_nl" model="account.tax.template">
       <field name="name">BTW 6% Aankoop van bedrijfsmiddelen medecontractanten</field>
@@ -604,6 +668,8 @@ this repository contains the full copyright notices and license terms. -->
       <field name="group" ref="group_tva_achat_nl"/>
       <field name="type">none</field>
       <field name="account" ref="root_nl"/>
+      <field name="unece_code" depends="edocument_unece">VAT</field>
+      <field name="unece_category_code" depends="edocument_unece">AE</field>
     </record>
     <record id="tva_achat_investissement_coco_6_1_nl" model="account.tax.template">
       <field name="name">BTW 6% Aankoop van bedrijfsmiddelen medecontractanten (1)</field>
@@ -631,6 +697,8 @@ this repository contains the full copyright notices and license terms. -->
       <field name="group" ref="group_tva_achat_nl"/>
       <field name="type">none</field>
       <field name="account" ref="root_nl"/>
+      <field name="unece_code" depends="edocument_unece">VAT</field>
+      <field name="unece_category_code" depends="edocument_unece">AE</field>
     </record>
     <record id="tva_achat_investissement_coco_12_1_nl" model="account.tax.template">
       <field name="name">BTW 12% Aankoop van bedrijfsmiddelen medecontractanten (1)</field>
@@ -658,6 +726,8 @@ this repository contains the full copyright notices and license terms. -->
       <field name="group" ref="group_tva_achat_nl"/>
       <field name="type">none</field>
       <field name="account" ref="root_nl"/>
+      <field name="unece_code" depends="edocument_unece">VAT</field>
+      <field name="unece_category_code" depends="edocument_unece">AE</field>
     </record>
     <record id="tva_achat_investissement_coco_21_1_nl" model="account.tax.template">
       <field name="name">BTW 21% Aankoop van bedrijfsmiddelen medecontractanten (1)</field>
@@ -688,6 +758,8 @@ this repository contains the full copyright notices and license terms. -->
       <field name="invoice_account" ref="411_nl"/>
       <field name="credit_note_account" ref="411_nl"/>
       <field name="account" ref="root_nl"/>
+      <field name="unece_code" depends="edocument_unece">VAT</field>
+      <field name="unece_category_code" depends="edocument_unece">S</field>
     </record>
     <record id="tva_achat_investissement_intracommunautaires_6_nl" model="account.tax.template">
       <field name="name">BTW 6% Intracommunautaire aankoop van bedrijfsmiddelen</field>
@@ -695,6 +767,8 @@ this repository contains the full copyright notices and license terms. -->
       <field name="group" ref="group_tva_achat_nl"/>
       <field name="type">none</field>
       <field name="account" ref="root_nl"/>
+      <field name="unece_code" depends="edocument_unece">VAT</field>
+      <field name="unece_category_code" depends="edocument_unece">K</field>
     </record>
     <record id="tva_achat_investissement_intracommunautaires_6_1_nl" model="account.tax.template">
       <field name="name">BTW 6% Intracommunautaire aankoop van bedrijfsmiddelen (1)</field>
@@ -725,6 +799,8 @@ this repository contains the full copyright notices and license terms. -->
       <field name="invoice_account" ref="411_nl"/>
       <field name="credit_note_account" ref="411_nl"/>
       <field name="account" ref="root_nl"/>
+      <field name="unece_code" depends="edocument_unece">VAT</field>
+      <field name="unece_category_code" depends="edocument_unece">S</field>
     </record>
     <record id="tva_achat_investissement_intracommunautaires_12_nl" model="account.tax.template">
       <field name="name">BTW 12% Intracommunautaire aankoop van bedrijfsmiddelen</field>
@@ -732,6 +808,8 @@ this repository contains the full copyright notices and license terms. -->
       <field name="group" ref="group_tva_achat_nl"/>
       <field name="type">none</field>
       <field name="account" ref="root_nl"/>
+      <field name="unece_code" depends="edocument_unece">VAT</field>
+      <field name="unece_category_code" depends="edocument_unece">K</field>
     </record>
     <record id="tva_achat_investissement_intracommunautaires_12_1_nl" model="account.tax.template">
       <field name="name">BTW 12% Intracommunautaire aankoop van bedrijfsmiddelen (1)</field>
@@ -762,6 +840,8 @@ this repository contains the full copyright notices and license terms. -->
       <field name="invoice_account" ref="411_nl"/>
       <field name="credit_note_account" ref="411_nl"/>
       <field name="account" ref="root_nl"/>
+      <field name="unece_code" depends="edocument_unece">VAT</field>
+      <field name="unece_category_code" depends="edocument_unece">S</field>
     </record>
     <record id="tva_achat_investissement_intracommunautaires_21_nl" model="account.tax.template">
       <field name="name">BTW 21% Intracommunautaire aankoop van bedrijfsmiddelen</field>
@@ -769,6 +849,8 @@ this repository contains the full copyright notices and license terms. -->
       <field name="group" ref="group_tva_achat_nl"/>
       <field name="type">none</field>
       <field name="account" ref="root_nl"/>
+      <field name="unece_code" depends="edocument_unece">VAT</field>
+      <field name="unece_category_code" depends="edocument_unece">K</field>
     </record>
     <record id="tva_achat_investissement_intracommunautaires_21_1_nl" model="account.tax.template">
       <field name="name">BTW 21% Intracommunautaire aankoop van bedrijfsmiddelen (1)</field>

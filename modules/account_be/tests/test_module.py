@@ -9,7 +9,9 @@ from trytond.tests.test_tryton import ModuleTestCase, with_transaction
 class AccountBETestCase(ModuleTestCase):
     'Test Account BE module'
     module = 'account_be'
-    extras = ['account_invoice', 'account_payment', 'account_statement_rule']
+    extras = [
+        'account_invoice', 'account_payment', 'account_statement_rule',
+        'edocument_unece']
     language = 'fr'
 
     @with_transaction()
