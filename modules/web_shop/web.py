@@ -274,6 +274,11 @@ class Shop(DeactivableMixin, ModelSQL, ModelView):
     def update_sales(self, sales):
         assert all(s.web_shop == self for s in sales)
 
+    @property
+    def is_managing_gift_card(self):
+        "Return if the webshop manages gift cards"
+        pass
+
 
 class Shop_PriceList(metaclass=PoolMeta):
     __name__ = 'web.shop'

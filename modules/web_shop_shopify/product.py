@@ -240,6 +240,24 @@ class Template_SaleSecondaryUnit(metaclass=PoolMeta):
         return uom
 
 
+class Template_GiftCard(metaclass=PoolMeta):
+    __name__ = 'product.template'
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        readonly = cls.gift_card.states.get('readonly', False)
+        cls.gift_card.states['readonly'] = (
+            readonly | Eval('shopify_identifiers', []))
+
+    def get_shopify(self, shop, categories):
+        product = super().get_shopify(shop, categories)
+        if not product.get('id'):
+            # The product gift_card attribute cannot be changed after creation
+            product['giftCard'] = self.gift_card
+        return product
+
+
 class Product(IdentifiersMixin, metaclass=PoolMeta):
     __name__ = 'product.product'
 
@@ -363,6 +381,21 @@ class Product(IdentifiersMixin, metaclass=PoolMeta):
         return Uom.compute_qty(
             self.default_uom, quantity, self.shopify_uom, round=True,
             factor=self.shopify_uom_factor, rate=self.shopify_uom_rate)
+
+
+class Product_GiftCard(metaclass=PoolMeta):
+    __name__ = 'product.product'
+
+    def get_shopify(
+            self, shop, sale_price, sale_tax, price, tax,
+            shop_taxes_included=True):
+        variant = super().get_shopify(
+            shop, sale_price, sale_tax, price, tax,
+            shop_taxes_included=shop_taxes_included)
+        if self.gift_card:
+            # taxable is readonly for gift card on Shopify
+            variant.pop('taxable', None)
+        return variant
 
 
 class ProductURL(metaclass=PoolMeta):

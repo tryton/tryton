@@ -110,3 +110,12 @@ class Sale(metaclass=PoolMeta):
     def web_shop_update(cls, sales):
         for web_shop, s_sales in groupby(sales, lambda s: s.web_shop):
             web_shop.update_sales(list(s_sales))
+
+
+class Line_GiftCard(metaclass=PoolMeta):
+    __name__ = 'sale.line'
+
+    def get_gift_cards(self):
+        if self.sale.web_shop and self.sale.web_shop.is_managing_gift_card:
+            return
+        return super().get_gift_cards()

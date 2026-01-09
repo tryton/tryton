@@ -222,6 +222,13 @@ class Shop(metaclass=PoolMeta):
                 '/%(database_name)s/web_shop_shopify/webhook/%(shop)s/order' %
                 url_part))
 
+    @property
+    def is_managing_gift_card(self):
+        managing = super().is_managing_gift_card
+        if self.type == 'shopify':
+            managing = True
+        return managing
+
     @classmethod
     def view_attributes(cls):
         return super().view_attributes() + [
