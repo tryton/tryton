@@ -61,6 +61,7 @@ class ShipmentOut(metaclass=PoolMeta):
                                     },
                                 },
                             },
+                        'status': None,
                         },
                     },
                 })
@@ -202,6 +203,8 @@ class Move(metaclass=PoolMeta):
         quantity = int(Uom.compute_qty(
                 self.unit, self.quantity, self.origin.unit))
         for fulfillment_order in fulfillment_orders['nodes']:
+            if fulfillment_order['status'] in {'CANCELLED', 'CLOSED'}:
+                continue
             if (fulfillment_order['assignedLocation']['location']['id']
                     != location_id):
                 continue
