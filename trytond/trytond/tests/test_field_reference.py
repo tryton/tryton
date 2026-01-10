@@ -118,6 +118,18 @@ class FieldReferenceTestCase(TestCase):
         self.assertEqual(reference.reference, 'test.reference.target,-1')
 
     @with_transaction()
+    def test_create_unknown(self):
+        "Test create unknown reference"
+        pool = Pool()
+        Reference = pool.get('test.reference')
+
+        reference, = Reference.create([{
+                    'reference': 'test.reference.target,48',
+                    }])
+
+        self.assertEqual(reference.reference, None)
+
+    @with_transaction()
     def test_search_equals_string(self):
         "Test search reference equals string"
         pool = Pool()
