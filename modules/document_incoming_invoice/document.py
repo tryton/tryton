@@ -42,10 +42,11 @@ class Incoming(metaclass=PoolMeta):
                     'document_incoming_invoice'
                     '.msg_supplier_invoice_company',
                     document=self.rec_name))
+        invoice.on_change_type()
+        invoice.on_change_company()
         # set party id after company for context
         party = self.supplier_invoice_party or config.default_supplier
         invoice.party = party.id if party else None
-        invoice.set_journal()
         invoice.on_change_party()
         return invoice
 
