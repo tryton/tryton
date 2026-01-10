@@ -611,13 +611,13 @@ class Activity(
                     activity=self.rec_name,
                     exception=exception)) from exception
 
-    def execute(self, activity, **kwargs):
+    def execute(self, record_activity, **kwargs):
         pool = Pool()
         RecordActivity = pool.get('marketing.automation.record.activity')
-        record = activity.record
+        record = record_activity.record
 
         # As it is a reference, the record may have been deleted
-        if not record:
+        if not record.record:
             return
 
         # XXX: use domain
@@ -625,7 +625,7 @@ class Activity(
             return
 
         if self.action:
-            getattr(self, 'execute_' + self.action)(activity, **kwargs)
+            getattr(self, 'execute_' + self.action)(record_activity, **kwargs)
         RecordActivity.save([
                 RecordActivity.get(record, child)
                 for child in self.children])
@@ -823,9 +823,10 @@ class Record(ModelSQL, ModelView):
 
     @property
     def language(self):
-        lang = self.record.marketing_party.lang
-        if lang:
-            return lang.code
+        if self.record:
+            lang = self.record.marketing_party.lang
+            if lang:
+                return lang.code
 
     @dualmethod
     @ModelView.button
