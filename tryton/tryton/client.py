@@ -76,6 +76,7 @@ def main():
     sys.excepthook = excepthook
 
     copy_previous_configuration('tryton.conf')
+    copy_previous_configuration('ca_certs')
     copy_previous_configuration('profiles.cfg')
     copy_previous_configuration('plugins')
     CONFIG.parse()
