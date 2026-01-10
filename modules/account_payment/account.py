@@ -647,9 +647,15 @@ class Invoice(metaclass=PoolMeta):
                             continue
                         payment_amount = Decimal(0)
                         for payment in line.payments:
+                            amount_line_paid = payment.amount_line_paid
+                            if ((invoice.type == 'in'
+                                    and payment.kind == 'receivable')
+                                    or (invoice.type == 'out'
+                                        and payment.kind == 'payable')):
+                                amount_line_paid *= -1
                             with Transaction().set_context(date=payment.date):
                                 payment_amount += Currency.compute(
-                                    payment.currency, payment.amount_line_paid,
+                                    payment.currency, amount_line_paid,
                                     invoice.currency)
                         amounts[invoice.id] -= payment_amount
         return amounts
