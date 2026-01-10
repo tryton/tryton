@@ -79,6 +79,7 @@ def main():
     copy_previous_configuration('ca_certs')
     copy_previous_configuration('profiles.cfg')
     copy_previous_configuration('plugins')
+    copy_previous_configuration('theme.css')
     CONFIG.parse()
     if CONFIG.arguments:
         url = CONFIG.arguments[0]
