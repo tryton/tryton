@@ -484,13 +484,13 @@ class Activity(ModelSQL, ModelView):
                     activity=self.rec_name,
                     exception=exception)) from exception
 
-    def execute(self, activity, **kwargs):
+    def execute(self, record_activity, **kwargs):
         pool = Pool()
         RecordActivity = pool.get('marketing.automation.record.activity')
-        record = activity.record
+        record = record_activity.record
 
         # As it is a reference, the record may have been deleted
-        if not record:
+        if not record.record:
             return
 
         # XXX: use domain
@@ -498,7 +498,7 @@ class Activity(ModelSQL, ModelView):
             return
 
         if self.action:
-            getattr(self, 'execute_' + self.action)(activity, **kwargs)
+            getattr(self, 'execute_' + self.action)(record_activity, **kwargs)
         RecordActivity.save([
                 RecordActivity.get(record, child)
                 for child in self.children])
