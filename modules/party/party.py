@@ -686,6 +686,7 @@ IDENTIFIER_TYPES = [
     ('si_businessid', "Slovenian Corporate Registration Number"),
     ('si_ddv', "Slovenian VAT Number"),
     ('si_emso', "Slovenian Unique Master Citizen Number"),
+    ('si_maticna', "Slovenian Corporate Registration Number"),
     ('sk_dph', "Slovak VAT Number"),
     ('sk_rc', "Slovak Birth Number"),
     ('sm_coe', "San Marino National Tax Number"),
