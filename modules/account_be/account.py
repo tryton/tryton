@@ -2,11 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 import stdnum.exceptions
 from sql.aggregate import Min, Sum
-
-try:
-    from stdnum.be import ogm_vcs
-except ImportError:
-    from . import ogm_vcs
+from stdnum.be import ogm_vcs
 
 from trytond.model import ModelSQL, ModelView, fields
 from trytond.modules.account.exceptions import FiscalYearNotFoundError
