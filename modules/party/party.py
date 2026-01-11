@@ -594,6 +594,7 @@ IDENTIFIER_TYPES = [
     ('ee_kmkr', "Estonian VAT Number"),
     ('ee_registrikood', "Estonian Organisation Registration Code"),
     ('eg_tn', "Egyptian Tax Registration Number"),
+    ('es_cae', "Spanish Activity Establishment Code"),
     ('es_cif', "Spanish Company Tax"),
     ('es_dni', "Spanish Personal Identity Codes"),
     ('es_nie', "Spanish Foreigner Number"),
