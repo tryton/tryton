@@ -610,6 +610,7 @@ IDENTIFIER_TYPES = [
     ('fo_vn', "Faroese Tax Number"),
     ('fr_nif', "French Tax Identification Number"),
     ('fr_nir', "French Personal Identification Number"),
+    ('fr_rcs', "French Trade Registration Number"),
     ('fr_siren', "French Company Identification Number"),
     ('fr_siret', "French Company Establishment Identification Number"),
     ('fr_tva', "French VAT Number"),
