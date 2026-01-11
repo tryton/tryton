@@ -793,7 +793,7 @@ TAX_IDENTIFIER_TYPES = [
     'sk_dph',
     'sm_coe',
     'sv_nit',
-    'th_tin',
+    'th_moa',
     'tn_mf',
     'tr_vkn',
     'tr_vkn',
