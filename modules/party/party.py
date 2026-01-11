@@ -681,6 +681,7 @@ IDENTIFIER_TYPES = [
     ('ro_onrc', "Romanian ONRC Number"),
     ('rs_pib', "Serbian Tax Identification"),
     ('ru_inn', "Russian Tax identifier"),
+    ('ru_ogrn', "Russian Primary State Registration Number"),
     ('se_orgnr', "Swedish Company Number"),
     ('se_personnummer', "Swedish Personal Number"),
     ('se_vat', "Swedish VAT Number"),
