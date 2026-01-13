@@ -179,7 +179,7 @@ class Invoice(metaclass=PoolMeta):
         number = self._customer_payment_reference_number_digit(source)
         if number:
             number = number % 10**10
-            check_digit = ogm_vcs.calc_check_digit(str(number))
+            check_digit = ogm_vcs.calc_check_digits(str(number))
             reference = f'{self.number_digit:0>10}{check_digit}'
             return f'+++{ogm_vcs.format(reference)}+++'
 

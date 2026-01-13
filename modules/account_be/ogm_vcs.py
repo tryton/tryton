@@ -12,14 +12,10 @@ def compact(number: str) -> str:
     return clean(number, ' +/').strip()
 
 
-def checksum(number: str) -> int:
-    """Calculate the checksum."""
-    return (int(number) % 97) or 97
-
-
-def calc_check_digit(number: str) -> str:
+def calc_check_digits(number: str) -> str:
     """Calculate the check digit that should be added."""
-    return '%02d' % checksum(number)
+    number = compact(number)
+    return '%02d' % ((int(number[:10]) % 97) or 97)
 
 
 def validate(number: str) -> str:
@@ -29,7 +25,7 @@ def validate(number: str) -> str:
         raise InvalidFormat()
     if len(number) != 12:
         raise InvalidLength()
-    if checksum(number[:-2]) != int(number[-2:]):
+    if calc_check_digits(number) != number[-2:]:
         raise InvalidChecksum()
     return number
 
