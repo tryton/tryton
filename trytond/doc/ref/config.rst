@@ -53,6 +53,10 @@ The config gives access to the configuration.
 
    Removes the named section.
 
+.. function:: options(section)
+
+   Returns a list of option names for the given section.
+
 .. function:: set(section, option[, value])
 
    Set the given option to the specified value.
