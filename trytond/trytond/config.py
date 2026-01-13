@@ -154,6 +154,7 @@ def update_etc(configfile=os.environ.get('TRYTOND_CONFIG')):
 has_section = _config.has_section
 add_section = _config.add_section
 remove_section = _config.remove_section
+options = _config.options
 
 
 def set(section, option, value=None):
