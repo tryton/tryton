@@ -145,7 +145,7 @@ class PeppolService(metaclass=PoolMeta):
                 'Accept': 'application/json',
                 'X-Api-Key': self.peppyrus_api_key,
                 })
-        if response.status_code == HTTPStatus.UNPROCESSABLE_CONTENT:
+        if response.status_code == HTTPStatus.UNPROCESSABLE_ENTITY:
             raise PeppolServiceError(response.json())
         response.raise_for_status()
         return response.json()['id']
