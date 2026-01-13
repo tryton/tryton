@@ -4,6 +4,7 @@ import logging
 import re
 
 from psycopg2.sql import SQL, Identifier
+from sql import Column
 
 from trytond.backend.table import (
     IndexTranslatorInterface, TableHandlerInterface)
@@ -581,11 +582,18 @@ class IndexMixin:
     @classmethod
     def _get_expression_variables(cls, expression, usage):
         variables = {
-            'expression': SQL(str(expression)),
             'collate': SQL(''),
             'opclass': SQL(''),
             'order': SQL(''),
             }
+        if isinstance(expression, Column):
+            variables['expression'] = SQL(str(expression))
+        else:
+            expression_str = str(expression)
+            if expression_str.startswith('(') and expression_str.endswith(')'):
+                variables['expression'] = SQL(expression)
+            else:
+                variables['expression'] = SQL(f'({expression})')
         if usage.options.get('collation'):
             variables['collate'] = SQL('COLLATE {}').format(
                 usage.options['collation'])
