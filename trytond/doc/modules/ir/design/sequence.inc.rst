@@ -17,7 +17,7 @@ These support formatting that can include the current `Date <model-ir.date>`.
       .. |Administration --> Sequences --> Sequences| replace:: :menuselection:`Administration --> Sequences --> Sequences`
       __ https://demo.tryton.org/model/ir.sequence
 
-.. _model.ir.sequence.strict:
+.. _model-ir.sequence.strict:
 
 Sequence Strict
 ===============
