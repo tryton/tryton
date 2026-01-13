@@ -369,8 +369,9 @@ class ModelSQL(ModelStorage):
                         history_table,
                         (Coalesce(
                                 history_table.write_date,
-                                history_table.create_date).desc,
+                                history_table.create_date),
                             Index.Range()),
+                        order='DESC',
                         include=[
                             Column(history_table, '__id'),
                             history_table.id]),
