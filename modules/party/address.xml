@@ -821,7 +821,7 @@ ${city}
 ${subdivision}
 ${postal_code}
 ${COUNTRY}</field>
-            <field name="street_format">${building_number} ${street_name} - ${building_name}
+            <field name="street_format">${building_number} ${street_name} – ${building_name}
 ${post_box}
 ${post_office}</field>
             <field name="post_box_format">P. O. Box {}</field>
