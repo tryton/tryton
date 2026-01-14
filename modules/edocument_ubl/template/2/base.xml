@@ -41,21 +41,37 @@ this repository contains the full copyright notices and license terms. -->
         </cac:Party>
     </py:def>
     <py:def function="Address(address, specification='')">
-        <cbc:Postbox py:if="address.post_box">${address.post_box}</cbc:Postbox>
-        <cbc:Floor py:if="address.floor_number">${address.floor_number}</cbc:Floor>
-        <cbc:Room py:if="address.room_number">${address.room_number}</cbc:Room>
-        <cbc:StreetName py:if="address.street_name">${address.street_name}</cbc:StreetName>
-        <cbc:BuildingName py:if="address.building_name">${address.building_name}</cbc:BuildingName>
-        <cbc:BuildingNumber py:if="address.building_number">${address.building_number}</cbc:BuildingNumber>
-        <cbc:CityName py:if="address.city">${address.city}</cbc:CityName>
-        <cbc:PostalZone py:if="address.postal_code">${address.postal_code}</cbc:PostalZone>
-        <cbc:CountrySubentity py:if="address.subdivision">${address.subdivision.name}</cbc:CountrySubentity>
-        <cbc:CountrySubentityCode py:if="address.subdivision and not (specification or '').startswith('peppol')">${address.subdivision.code}</cbc:CountrySubentityCode>
-        <cac:AddressLine py:if="address.street_unstructured">
-            <cbc:Line py:for="line in address.street_unstructured.splitlines()">
-                ${line}
-            </cbc:Line>
-        </cac:AddressLine>
+        <py:choose>
+            <py:when test="(specification or '').startswith('peppol')">
+                <py:with vars="streets = (address.street or '').splitlines()">
+                    <cbc:StreetName py:if="len(streets) >= 1">${streets[0]}</cbc:StreetName>
+                    <cbc:AdditionalStreetName py:if="len(streets) >= 2">${street[1]}</cbc:AdditionalStreetName>
+                    <cbc:CityName py:if="address.city">${address.city}</cbc:CityName>
+                    <cbc:PostalZone py:if="address.postal_code">${address.postal_code}</cbc:PostalZone>
+                    <cbc:CountrySubentity py:if="address.subdivision">${address.subdivision.name}</cbc:CountrySubentity>
+                    <cbc:AddressLine py:if="len(streets) >= 3">${streets[2]}</cbc:AddressLine>
+                </py:with>
+            </py:when>
+            <py:otherwise>
+                <cbc:Postbox py:if="address.post_box">${address.post_box}</cbc:Postbox>
+                <cbc:Floor py:if="address.floor_number">${address.floor_number}</cbc:Floor>
+                <cbc:Room py:if="address.room_number">${address.room_number}</cbc:Room>
+                <cbc:StreetName py:if="address.street_name">${address.street_name}</cbc:StreetName>
+                <cbc:BuildingName py:if="address.building_name">${address.building_name}</cbc:BuildingName>
+                <cbc:BuildingNumber py:if="address.building_number">${address.building_number}</cbc:BuildingNumber>
+                <cbc:CityName py:if="address.city">${address.city}</cbc:CityName>
+                <cbc:PostalZone py:if="address.postal_code">${address.postal_code}</cbc:PostalZone>
+                <cbc:CountrySubentity py:if="address.subdivision">${address.subdivision.name}</cbc:CountrySubentity>
+                <cbc:CountrySubentityCode py:if="address.subdivision">${address.subdivision.code}</cbc:CountrySubentityCode>
+                <py:if test="address.street_unstructured">
+                    <cac:AddressLine py:for="line in address.street_unstructured.splitlines()">
+                        <cbc:Line>
+                            ${line}
+                        </cbc:Line>
+                    </cac:AddressLine>
+                </py:if>
+            </py:otherwise>
+        </py:choose>
         <cac:Country py:if="address.country">
             <cbc:IdentificationCode>${address.country.code}</cbc:IdentificationCode>
             <cbc:Name py:if="not (specification or '').startswith('peppol')">${address.country.name}</cbc:Name>

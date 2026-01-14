@@ -31,6 +31,7 @@ def get_invoice():
 
     address = Mock(spec=Address,
         street_unstructured="St sample, 15",
+        street="St sample, 15",
         city="Scranton",
         postal_code="1000",
         subdivision=None,
@@ -60,6 +61,7 @@ def get_invoice():
             spec=Party,
             addresses=[Mock(spec=Address,
                     street_unstructured="Main street, 42",
+                    street="Main street, 42",
                     country=Mock(spec=Country,
                         code='US'))],
             identifiers=[Mock(
