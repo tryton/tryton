@@ -200,7 +200,7 @@ class Invoice(Model):
 
         tree = etree.parse(BytesIO(document))
         root = tree.getroot()
-        namespace = root.nsmap.get(None)
+        namespace = root.nsmap.get(root.prefix)
         invoice, attachments = cls.parser(namespace)(root)
         invoice.save()
         invoice.update_taxes()
