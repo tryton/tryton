@@ -112,11 +112,12 @@ class PeppolService(metaclass=PoolMeta):
             return 'cenbii-procid-ubl::' + tree.findtext('.//{*}ProfileID')
 
     def _peppyrus_document_type(self, type, tree):
+        root = tree.getroot()
+        namespace = root.nsmap.get(root.prefix)
         if type == 'bis-billing-3':
             return (
                 'busdox-docid-qns::'
-                'urn:oasis:names:specification:ubl:'
-                'schema:xsd:Invoice-2::Invoice##'
+                f'{namespace}::{etree.QName(root).localname}##'
                 + tree.findtext('.//{*}CustomizationID') + '::2.1')
 
     @peppyrus_api
