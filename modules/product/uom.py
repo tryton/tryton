@@ -206,25 +206,28 @@ class Uom(SymbolMixin, DigitsMixin, DeactivableMixin, ModelSQL, ModelView):
         elif factor or rate:
             raise ValueError("factor and rate not allowed for same category")
 
-        if from_uom.accurate_field == 'factor':
-            amount = qty * from_uom.factor
-        else:
-            amount = qty / from_uom.rate
-
-        if factor and rate:
-            if _accurate_operator(factor, rate) == 'rate':
-                factor = None
+        if from_uom != to_uom:
+            if from_uom.accurate_field == 'factor':
+                amount = qty * from_uom.factor
             else:
-                rate = None
-        if factor:
-            amount *= factor
-        elif rate:
-            amount /= rate
+                amount = qty / from_uom.rate
 
-        if to_uom.accurate_field == 'factor':
-            amount = amount / to_uom.factor
+            if factor and rate:
+                if _accurate_operator(factor, rate) == 'rate':
+                    factor = None
+                else:
+                    rate = None
+            if factor:
+                amount *= factor
+            elif rate:
+                amount /= rate
+
+            if to_uom.accurate_field == 'factor':
+                amount = amount / to_uom.factor
+            else:
+                amount = amount * to_uom.rate
         else:
-            amount = amount * to_uom.rate
+            amount = qty
 
         if round:
             amount = to_uom.round(amount)
@@ -254,27 +257,30 @@ class Uom(SymbolMixin, DigitsMixin, DeactivableMixin, ModelSQL, ModelView):
         elif factor or rate:
             raise ValueError("factor and rate not allow for same category")
 
-        format_ = '%%.%df' % uom_conversion_digits[1]
+        if from_uom != to_uom:
+            format_ = '%%.%df' % uom_conversion_digits[1]
 
-        if from_uom.accurate_field == 'factor':
-            new_price = price / Decimal(format_ % from_uom.factor)
-        else:
-            new_price = price * Decimal(format_ % from_uom.rate)
-
-        if factor and rate:
-            if _accurate_operator(factor, rate) == 'rate':
-                factor = None
+            if from_uom.accurate_field == 'factor':
+                new_price = price / Decimal(format_ % from_uom.factor)
             else:
-                rate = None
-        if factor:
-            new_price /= Decimal(factor)
-        elif rate:
-            new_price *= Decimal(rate)
+                new_price = price * Decimal(format_ % from_uom.rate)
 
-        if to_uom.accurate_field == 'factor':
-            new_price = new_price * Decimal(format_ % to_uom.factor)
+            if factor and rate:
+                if _accurate_operator(factor, rate) == 'rate':
+                    factor = None
+                else:
+                    rate = None
+            if factor:
+                new_price /= Decimal(factor)
+            elif rate:
+                new_price *= Decimal(rate)
+
+            if to_uom.accurate_field == 'factor':
+                new_price = new_price * Decimal(format_ % to_uom.factor)
+            else:
+                new_price = new_price / Decimal(format_ % to_uom.rate)
         else:
-            new_price = new_price / Decimal(format_ % to_uom.rate)
+            new_price = price
 
         return new_price
 
