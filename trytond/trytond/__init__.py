@@ -10,7 +10,7 @@ from email import charset
 import __main__
 from lxml import etree, objectify
 
-__version__ = "7.0.44"
+__version__ = "7.0.45"
 
 if not os.environ.get('TRYTOND_APPNAME'):
     os.environ['TRYTOND_APPNAME'] = os.path.basename(
