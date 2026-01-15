@@ -149,7 +149,7 @@ class Move(metaclass=PoolMeta):
                 or not self.origin.shopify_identifier):
             return
         identifier = self.origin.shopify_identifier
-        quantity = int(Uom.compute_qty(
+        quantity = round(Uom.compute_qty(
                 self.unit, self.quantity, self.origin.unit))
         for fulfillment_order in fulfillment_orders:
             if fulfillment_order.status in {'cancelled', 'success'}:
