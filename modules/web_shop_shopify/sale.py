@@ -222,6 +222,7 @@ class Sale(IdentifierMixin, metaclass=PoolMeta):
         """
         pool = Pool()
         Payment = pool.get('account.payment')
+        self.lock()
         with self.web_shop.shopify_session():
             for shipment in self.shipments:
                 fulfillment = shipment.get_shopify(self)
@@ -234,6 +235,9 @@ class Sale(IdentifierMixin, metaclass=PoolMeta):
                                     fulfillment.errors.full_messages())))
                     shipment.set_shopify_identifier(self, fulfillment.id)
                     Transaction().commit()
+                    # Start a new transaction as commit release the lock
+                    self.__class__.__queue__._process_shopify(self)
+                    return
 
             # TODO: manage drop shipment
 
