@@ -6,7 +6,7 @@ from trytond.model import fields
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
 
-from .exceptions import InvoicePeppolRequired
+from .exceptions import InvoicePeppolError, InvoicePeppolRequired
 
 
 class Invoice(metaclass=PoolMeta):
@@ -47,6 +47,7 @@ class Invoice(metaclass=PoolMeta):
             peppol_types = invoice.party.get_multivalue(
                 'peppol_types', company=invoice.company.id)
             if peppol_types and 'bis-billing-3' in peppol_types:
+                invoice.check_peppol()
                 peppol.append(Peppol(
                         direction='out',
                         company=invoice.company,
@@ -65,3 +66,13 @@ class Invoice(metaclass=PoolMeta):
         if peppol:
             Peppol.save(peppol)
             Peppol.submit(peppol)
+
+    def check_peppol(self):
+        "Check if the invoice is valid for Peppol"
+        for line in self.lines:
+            if line.type == 'line' and line.unit_price < 0:  # BR-27
+                raise InvoicePeppolError(gettext(
+                        'edocument_peppol.'
+                        'msg_invoice_line_unit_price_not_negative',
+                        invoice=self.rec_name,
+                        line=line.rec_name))

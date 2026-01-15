@@ -9,5 +9,8 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_invoice_party_peppol_required">
             <field name="text">The party "%(party)s" is not set up to send the invoice "%(invoice)s" via the Peppol network.</field>
         </record>
+        <record model="ir.message" id="msg_invoice_line_unit_price_not_negative">
+            <field name="text">In order to post the invoice "%(invoice)s" on the Peppol network, the unit price of the line "%(line)s" must not be negative.</field>
+        </record>
     </data>
 </tryton>
