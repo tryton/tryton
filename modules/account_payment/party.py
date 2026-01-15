@@ -170,6 +170,7 @@ class PartyReceptionDirectDebit(
                 ('maturity_date', '=', None),
                 ],
             ('payment_blocked', '!=', True),
+            ('company', '=', self.company.id),
             ]
 
     def get_balance_pending_payment_domain(self):
@@ -178,6 +179,7 @@ class PartyReceptionDirectDebit(
             ('currency', '=', self.currency.id),
             ('state', 'not in', ['succeeded', 'failed']),
             ('line', '=', None),
+            ('company', '=', self.company.id),
             ]
 
 
