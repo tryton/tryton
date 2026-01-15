@@ -200,7 +200,7 @@ class Move(metaclass=PoolMeta):
             return
         location_id = id2gid('Location', location_id)
         identifier = id2gid('LineItem', self.origin.shopify_identifier)
-        quantity = int(Uom.compute_qty(
+        quantity = round(Uom.compute_qty(
                 self.unit, self.quantity, self.origin.unit))
         for fulfillment_order in fulfillment_orders['nodes']:
             if fulfillment_order['status'] in {'CANCELLED', 'CLOSED'}:
@@ -254,7 +254,7 @@ class Move_Kit(metaclass=PoolMeta):
             ratio = c_quantity / self.origin.quantity
         else:
             ratio = 1
-        quantity = int(sale_line.quantity * ratio)
+        quantity = round(sale_line.quantity * ratio)
         for fulfillment_order in fulfillment_orders['nodes']:
             if (fulfillment_order['assignedLocation']['location']['id']
                     != location_id):
