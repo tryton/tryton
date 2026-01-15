@@ -12,7 +12,7 @@ from email import charset
 import __main__
 from lxml import etree, objectify
 
-__version__ = "7.8.2"
+__version__ = "7.8.3"
 __series__ = '.'.join(__version__.split('.')[:2])
 
 if not os.environ.get('TRYTOND_APPNAME'):
