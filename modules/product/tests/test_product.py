@@ -131,6 +131,7 @@ class ProductTestCase(CompanyTestMixin, ModuleTestCase):
         tests = [
             ('Kilogram', 100, 'Gram', 100000, 100000),
             ('Gram', 1, 'Pound', 0.0022046226218487759, 0.0),
+            ('Ounce', 1 / 7, 'Ounce', 1 / 7, 0.14),
             ('Second', 5, 'Minute', 0.083333333333333343, 0.08),
             ('Second', 25, 'Hour', 0.0069444444444444441, 0.01),
             ('Millimeter', 3, 'Inch', 0.11811023622047245, 0.12),
@@ -202,6 +203,7 @@ class ProductTestCase(CompanyTestMixin, ModuleTestCase):
         tests = [
             ('Kilogram', Decimal('100'), 'Gram', Decimal('0.1')),
             ('Gram', Decimal('1'), 'Pound', Decimal('453.59237')),
+            ('Ounce', Decimal(1 / 7), 'Ounce', Decimal(1 / 7)),
             ('Second', Decimal('5'), 'Minute', Decimal('300')),
             ('Second', Decimal('25'), 'Hour', Decimal('90000')),
             ('Millimeter', Decimal('3'), 'Inch', Decimal('76.2')),
