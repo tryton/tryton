@@ -138,6 +138,12 @@ this repository contains the full copyright notices and license terms. -->
             <field name="string">Process</field>
         </record>
 
+        <record model="ir.model.button" id="edocument_peppol_update_status_button">
+            <field name="model">edocument.peppol</field>
+            <field name="name">update_status</field>
+            <field name="string">Update Status</field>
+        </record>
+
         <record model="ir.model.button" id="edocument_peppol_retry_button">
             <field name="model">edocument.peppol</field>
             <field name="name">retry</field>

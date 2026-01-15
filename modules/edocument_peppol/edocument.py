@@ -146,6 +146,12 @@ class Peppol(Workflow, ModelSQL, ModelView):
                 'invisible': ~Eval('state').in_(['submitted', 'processing']),
                 'depends': ['state'],
                 },
+            update_status={
+                'invisible': (
+                    (Eval('state') != 'processing')
+                    | (Eval('direction') != 'out')),
+                'depends': ['state', 'direction'],
+                },
             retry={
                 'invisible': Eval('state') != 'failed',
                 'depends': ['state'],
@@ -230,6 +236,7 @@ class Peppol(Workflow, ModelSQL, ModelView):
                 self.succeed()
 
     @classmethod
+    @ModelView.button
     def update_status(cls, documents=None):
         if documents is None:
             documents = cls.search([

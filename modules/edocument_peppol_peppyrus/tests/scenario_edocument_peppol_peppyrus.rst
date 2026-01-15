@@ -67,12 +67,8 @@ Send out a Peppol document::
 
 Check Peppol status::
 
-    >>> cron, = Cron.find([
-    ...     ('method', '=', 'edocument.peppol|update_status'),
-    ...     ], limit=1)
     >>> while peppol.state == 'processing':
-    ...     cron.click('run_once')
-    ...     peppol.reload()
+    ...     peppol.click('update_status')
     >>> peppol.state
     'succeeded'
 

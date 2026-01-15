@@ -35,6 +35,7 @@ this repository contains the full copyright notices and license terms. -->
         <button name="draft" icon="tryton-back"/>
         <button name="submit" icon="tryton-forward"/>
         <button name="process"/>
+        <button name="update_status"/>
         <button name="retry" icon="tryton-launch"/>
     </group>
 </form>
