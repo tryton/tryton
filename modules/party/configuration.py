@@ -25,7 +25,7 @@ class Configuration(ModelSingleton, ModelSQL, ModelView, MultiValueMixin):
     party_sequence = fields.MultiValue(party_sequence)
     party_lang = fields.MultiValue(party_lang)
     identifier_types = fields.MultiSelection(
-        IDENTIFIER_TYPES, "Identifier Types",
+        IDENTIFIER_TYPES, "Identifier Types", sort=False,
         help="Defines which identifier types are available.\n"
         "Leave empty for all of them.")
 

@@ -35,7 +35,7 @@ ADDRESS = {
     }
 ADDRESS_COMPANY = ADDRESS.copy()
 ADDRESS_COMPANY['company'] = 'Saber'
-ADDRESS_COMPANY['vat_id'] = 'BE0500923836'
+ADDRESS_COMPANY['vat_id'] = '0500923836'
 
 
 class WebVueStorefrontTestCase(CompanyTestMixin, ModuleTestCase):
