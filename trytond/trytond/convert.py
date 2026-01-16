@@ -584,8 +584,9 @@ class TrytondXmlHandler(sax.handler.ContentHandler):
             if new_values:
                 to_update += [[record], values]
             if values.keys() - set(mdata.field_names):
+                field_names = dict(mdata.get_field_names()).keys()
                 mdata.field_names = tuple(
-                    set(mdata.field_names) | values.keys())
+                    (set(mdata.field_names) & field_names) | values.keys())
                 self.grouped_model_data.add(mdata)
             if (self.module == mdata.module
                     and self.noupdate != mdata.noupdate):
