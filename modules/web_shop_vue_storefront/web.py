@@ -647,7 +647,7 @@ class User(metaclass=PoolMeta):
         if address_data.get('company'):
             for company_party in self.secondary_parties:
                 tax_code = (
-                    company_party.tax_identifier.code
+                    company_party.tax_identifier.code_compact
                     if company_party.tax_identifier else '')
                 if (company_party.name == address_data['company']
                         and (not address_data.get('vat_id')

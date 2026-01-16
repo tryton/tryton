@@ -91,7 +91,9 @@ class IncomingSupplierInvoice(metaclass=PoolMeta):
                 tax_identifier_types = Party.tax_identifier_types()
                 for identifier in invoice.party.identifiers:
                     if (identifier.type in tax_identifier_types
-                            and identifier.code == tax_identifier):
+                            and (
+                                identifier.code == tax_identifier
+                                or identifier.code_compact == tax_identifier)):
                         invoice.party_tax_identifier = identifier
 
             currency = invoice_data.get('currency')
@@ -302,7 +304,10 @@ class IncomingSupplierInvoice(metaclass=PoolMeta):
             tax_identifier = invoice_data.get('company_tax_identifier')
             if tax_identifier:
                 identifiers = Identifier.search([
-                        ('code', '=', tax_identifier),
+                        ['OR',
+                            ('code', '=', tax_identifier),
+                            ('code_compact', '=', tax_identifier),
+                            ],
                         ('type', 'in', Party.tax_identifier_types()),
                         ])
                 if len(identifiers) == 1:
@@ -342,7 +347,10 @@ class IncomingSupplierInvoice(metaclass=PoolMeta):
             tax_identifier = invoice_data.get('tax_identifier')
             if tax_identifier:
                 identifiers = Identifier.search([
-                        ('code', '=', tax_identifier),
+                        ['OR',
+                            ('code', '=', tax_identifier),
+                            ('code_compact', '=', tax_identifier),
+                            ],
                         ('type', 'in', Party.tax_identifier_types()),
                         ])
                 if len(identifiers) == 1:

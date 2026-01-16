@@ -54,11 +54,19 @@ class Identifier(metaclass=PoolMeta):
                     & (t.active == Literal(True))),
                 'account_export_winbooks.'
                 'msg_party_identifier_winbooks_party_unique'),
-            ('winbooks_code_unique',
-                Exclude(t, (t.code, Equal),
+            ('winbooks_code_compact_unique',
+                Exclude(t, (t.code_compact, Equal),
                     where=t.type.in_(
                         ['winbooks_supplier', 'winbooks_customer'])
                     & (t.active == Literal(True))),
                 'account_export_winbooks.'
                 'msg_party_identifier_winbooks_code_unique'),
             ]
+
+    @classmethod
+    def __register__(cls, module):
+        table_h = cls.__table_handler__(module)
+        super().__register__(module)
+
+        # Migration from 7.8: replace winbooks_code_unique
+        table_h.drop_constraint('winbooks_code_unique')

@@ -20,7 +20,7 @@ this repository contains the full copyright notices and license terms. -->
         </ram:SpecifiedLegalOrganization>
         <ram:PostalTradeAddress py:if="address">${TradeAddress(address)}</ram:PostalTradeAddress>
         <ram:SpecifiedTaxRegistration py:if="tax_identifier and tax_identifier.type == 'eu_vat'">
-            <ram:ID schemeID='VA'>${tax_identifier.code}</ram:ID>
+            <ram:ID schemeID='VA'>${tax_identifier.code_compact}</ram:ID>
         </ram:SpecifiedTaxRegistration>
     </py:def>
     <py:def function="TradeAddress(address)">

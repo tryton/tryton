@@ -189,7 +189,7 @@ Post invoice::
     >>> assertEqual(invoice.posted_by, employee)
     >>> invoice.state
     'posted'
-    >>> invoice.tax_identifier.code
+    >>> invoice.tax_identifier.code_compact
     'BE0897290877'
     >>> assertTrue(iso11649.validate(invoice.customer_payment_reference))
     >>> bool(invoice.has_report_cache)

@@ -309,11 +309,11 @@ class MoveExport(metaclass=PoolMeta):
         if line.account.type.receivable and line.party:
             doctype = DOCTYPE.CUSTOMER
             if identifier := line.party.winbooks_customer_identifier:
-                accountrp = identifier.code
+                accountrp = identifier.code_compact
         elif line.account.type.payable and line.party:
             doctype = DOCTYPE.SUPPLIER
             if identifier := line.party.winbooks_supplier_identifier:
-                accountrp = identifier.code
+                accountrp = identifier.code_compact
         else:
             doctype = DOCTYPE.GENERAL
         return {

@@ -281,32 +281,32 @@ class CreateShippingSendcloud_Customs(metaclass=PoolMeta):
                 yield {
                     'name': 'CNP',
                     'country_code': 'BR',
-                    'value': tax_identifier.code[:100],
+                    'value': tax_identifier.code_compact[:100],
                     }
             elif tax_identifier.type == 'ru_vat':
                 yield {
                     'name': 'INN',
                     'country_code': 'RU',
-                    'value': tax_identifier.code[:100],
+                    'value': tax_identifier.code_compact[:100],
                     }
             elif tax_identifier.type == 'eu_vat':
                 yield {
                     'name': 'VAT',
                     'country_code': tax_identifier.code[:2],
-                    'value': tax_identifier.code[2:][:100],
+                    'value': tax_identifier.code_compact[2:][:100],
                     }
             elif tax_identifier.type.endswith('_vat'):
                 yield {
                     'name': 'VAT',
                     'country_code': tax_identifier.type[:2].upper(),
-                    'value': tax_identifier.code[:100],
+                    'value': tax_identifier.code_compact[:100],
                     }
             elif tax_identifier.type in {'us_ein', 'us_ssn'}:
                 country, name = tax_identifier.type.upper().split('_')
                 yield {
                     'name': name,
                     'country_code': country,
-                    'value': tax_identifier.code[:100],
+                    'value': tax_identifier.code_compact[:100],
                     }
 
     def get_parcel_item(

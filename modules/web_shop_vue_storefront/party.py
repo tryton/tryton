@@ -53,7 +53,7 @@ class Address(metaclass=PoolMeta):
         if for_party:
             address['company'] = self.party.name
             address['vat_id'] = (
-                self.party.tax_identifier.code
+                self.party.tax_identifier.code_compact
                 if self.party.tax_identifier else None)
         return address
 

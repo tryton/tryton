@@ -24,7 +24,7 @@ class Invoice(metaclass=PoolMeta):
             return (identifier
                 and (identifier.type == 'be_vat'
                     or (identifier.type == 'eu_vat'
-                        and identifier.code.startswith('BE'))))
+                        and identifier.code_compact.startswith('BE'))))
         if (self.invoice_date
                 and self.invoice_date.year >= 2026
                 and is_be_vat(self.tax_identifier)

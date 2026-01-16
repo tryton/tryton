@@ -13,7 +13,7 @@ this repository contains the full copyright notices and license terms. -->
             </py:with>
             <py:for each="identifier in identifications or party.identifiers">
                 <cac:PartyIdentification py:if="identifier and identifier.iso_6523">
-                    <cbc:ID py:attrs="{'schemeID': identifier.iso_6523}">${identifier.code}</cbc:ID>
+                    <cbc:ID py:attrs="{'schemeID': identifier.iso_6523}">${identifier.code_compact}</cbc:ID>
                 </cac:PartyIdentification>
             </py:for>
             <cac:PostalAddress py:if="address">${Address(address, specification=specification)}</cac:PostalAddress>
@@ -23,7 +23,7 @@ this repository contains the full copyright notices and license terms. -->
                         <cbc:CompanyID>${tax_identifier.vatin}</cbc:CompanyID>
                     </py:when>
                     <py:otherwise>
-                        <cbc:CompanyID py:attrs="{'schemeID': tax_identifier.iso_6523}">${tax_identifier.code}</cbc:CompanyID>
+                        <cbc:CompanyID py:attrs="{'schemeID': tax_identifier.iso_6523}">${tax_identifier.code_compact}</cbc:CompanyID>
                     </py:otherwise>
                 </py:choose>
                 <cac:TaxScheme>
@@ -34,7 +34,7 @@ this repository contains the full copyright notices and license terms. -->
                 <cbc:RegistrationName>${party.name}</cbc:RegistrationName>
                 <py:with vars="identifier = party.identifier_iso6523">
                     <py:if test="identifier">
-                        <cbc:CompanyID py:attrs="{'schemeID': identifier.iso_6523}">${identifier.code}</cbc:CompanyID>
+                        <cbc:CompanyID py:attrs="{'schemeID': identifier.iso_6523}">${identifier.code_compact}</cbc:CompanyID>
                     </py:if>
                 </py:with>
             </cac:PartyLegalEntity>

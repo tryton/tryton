@@ -343,6 +343,7 @@ class Party(
         return [bool_op,
             ('code', operator, code_value, *extra),
             ('identifiers.code', operator, code_value, *extra),
+            ('identifiers.code_compact', operator, code_value, *extra),
             ('name', operator, operand, *extra),
             ('contact_mechanisms.rec_name', operator, operand, *extra),
             ]
@@ -843,9 +844,12 @@ class Identifier(sequence_ordered(), DeactivableMixin, ModelSQL, ModelView):
     type_address = fields.Function(
         fields.Boolean("Type of Address"), 'on_change_with_type_address')
     code = fields.Char('Code', required=True)
+    code_compact = fields.Char("Code Compact", readonly=True, required=True)
 
     @classmethod
     def __setup__(cls):
+        cls.code.search_unaccented = False
+        cls.code_compact.search_unaccented = False
         super().__setup__()
         cls.__access__.add('party')
 
@@ -853,6 +857,11 @@ class Identifier(sequence_ordered(), DeactivableMixin, ModelSQL, ModelView):
     def __register__(cls, module_name):
         cursor = Transaction().connection.cursor()
         table = cls.__table__()
+        table_h = cls.__table_handler__(module_name)
+
+        fill_code_compact = (
+            table_h.column_exist('code')
+            and not table_h.column_exist('code_compact'))
 
         super().__register__(module_name)
 
@@ -870,6 +879,10 @@ class Identifier(sequence_ordered(), DeactivableMixin, ModelSQL, ModelView):
         # Migration from 7.4: Rename co_rut into co_nit
         cursor.execute(*table.update([table.type], ['co_nit'],
                 where=(table.type == 'co_rut')))
+
+        # Migration from 7.8: Fill code_compact
+        if fill_code_compact:
+            cursor.execute(*table.update([table.code_compact], [table.code]))
 
     @classmethod
     def get_types(cls):
@@ -893,14 +906,20 @@ class Identifier(sequence_ordered(), DeactivableMixin, ModelSQL, ModelView):
 
     @fields.depends('type', 'code')
     def on_change_with_code(self):
+        code = self.code
         if self.type and '_' in self.type:
-            module = get_cc_module(*self.type.split('_', 1))
-            if module:
-                try:
-                    return module.compact(self.code)
-                except stdnum.exceptions.ValidationError:
-                    pass
-        return self.code
+            if module := get_cc_module(*self.type.split('_', 1)):
+                if hasattr(module, 'compact'):
+                    try:
+                        code = module.compact(code)
+                    except stdnum.exceptions.ValidationError:
+                        pass
+                if hasattr(module, 'format'):
+                    try:
+                        code = module.format(code)
+                    except stdnum.exceptions.ValidationError:
+                        pass
+        return code
 
     def pre_validate(self):
         super().pre_validate()
@@ -921,6 +940,49 @@ class Identifier(sequence_ordered(), DeactivableMixin, ModelSQL, ModelView):
                             type=self.type_string,
                             code=self.code,
                             party=party))
+
+    @classmethod
+    def preprocess_values(cls, mode, values):
+        values = super().preprocess_values(mode, values)
+        if mode == 'create':
+            values['code_compact'] = values.get('code')
+            if ((type := values.get('type')) and '_' in type
+                    and (code := values.get('code'))):
+                if module := get_cc_module(*type.split('_', 1)):
+                    if hasattr(module, 'format'):
+                        try:
+                            values['code'] = module.format(code)
+                        except stdnum.exceptions.ValidationError:
+                            pass
+                    if hasattr(module, 'compact'):
+                        try:
+                            values['code_compact'] = module.compact(code)
+                        except stdnum.exceptions.ValidationError:
+                            pass
+        return values
+
+    def compute_fields(self, field_names=None):
+        values = super().compute_fields(field_names=field_names)
+        if field_names is None or {'type', 'code'} & field_names:
+            code = getattr(self, 'code', None)
+            code_compact = getattr(self, 'code_compact', None)
+            if (type := getattr(self, 'type', None)) and '_' in type and code:
+                if module := get_cc_module(*type.split('_', 1)):
+                    if hasattr(module, 'format'):
+                        code = module.format(code)
+                    if hasattr(module, 'compact'):
+                        code_compact = module.compact(code)
+                    else:
+                        code_compact = code
+                    if getattr(self, 'code', None) != code:
+                        values['code'] = code
+                    if getattr(self, 'code_compact', None) != code_compact:
+                        values['code_compact'] = code_compact
+                elif code_compact != code:
+                    values['code_compact'] = code
+            elif code_compact != code:
+                values['code_compact'] = code
+        return values
 
     @fields.depends(methods=['_notify_duplicate'])
     def on_change_notify(self):

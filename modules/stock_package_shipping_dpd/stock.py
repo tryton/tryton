@@ -385,7 +385,7 @@ class CreateDPDShipping_Customs(metaclass=PoolMeta):
             if customs_agent := shipment.customs_agent:
                 international.update({
                         'commercialInvoiceConsigneeVatNumber': (
-                            customs_agent.tax_identifier.code)[:20],
+                            customs_agent.tax_identifier.code_compact)[:20],
                         'commercialInvoiceConsignee': self.shipping_party(
                             customs_agent.party,
                             customs_agent.address,
@@ -393,7 +393,7 @@ class CreateDPDShipping_Customs(metaclass=PoolMeta):
                         })
             if shipment.tax_identifier:
                 international['commercialInvoiceConsignorVatNumber'] = (
-                    shipment.tax_identifier.code[:17])
+                    shipment.tax_identifier.code_compact[:17])
             international['commercialInvoiceConsignor'] = self.shipping_party(
                 shipment.company.party, shipment.customs_from_address)
             international['additionalInvoiceLines'] = [

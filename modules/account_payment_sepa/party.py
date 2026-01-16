@@ -28,7 +28,7 @@ class Party(metaclass=PoolMeta):
     def get_sepa_creditor_identifier_used(self, name):
         for identifier in self.identifiers:
             if identifier.type == 'eu_at_02':
-                return identifier.code
+                return identifier.code_compact
 
     def get_sepa_identifier(self, name):
         pool = Pool()

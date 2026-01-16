@@ -319,7 +319,7 @@ class Move(metaclass=PoolMeta):
                             if not fallback:
                                 fallback = identifier
                             if (self.intrastat_country
-                                    and identifier.code.startswith(
+                                    and identifier.code_compact.startswith(
                                         self.intrastat_country.code)):
                                 break
                     else:

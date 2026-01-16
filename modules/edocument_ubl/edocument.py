@@ -881,7 +881,7 @@ class Invoice(Model):
                 ):
             if identifier.text:
                 domain = [
-                    ('code', '=', identifier.text),
+                    ('code_compact', '=', identifier.text),
                     ]
                 if schemeId := identifier.get('schemeID'):
                     if type := ISO6523.get(schemeId):
@@ -999,7 +999,7 @@ class Invoice(Model):
                 for identifier in party.identifiers:
                     if (identifier.type in tax_identifier_types
                             and identifier.iso_6523 == scheme_id
-                            and identifier.code == value):
+                            and identifier.code_compact == value):
                         return identifier
                 else:
                     if create and scheme_id in ISO6523:
@@ -1042,7 +1042,7 @@ class Invoice(Model):
                 ):
             if identifier.text:
                 domain = [
-                    ('code', '=', identifier.text),
+                    ('code_compact', '=', identifier.text),
                     ]
                 if schemeId := identifier.get('schemeID'):
                     if type := ISO6523.get(schemeId):
