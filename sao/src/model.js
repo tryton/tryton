@@ -513,11 +513,14 @@
             } else {
                 cmp = function(a, b) { return a < b; };
             }
+            let max_id = Math.max(0, ...this.map((r) => r.id));
             for (const record of this) {
                 if (record.get_loaded([field]) || changed || record.id < 0) {
+                    let prev_id = null;
                     if (prev) {
                         prev.load(field, false);
                         index = prev.field_get(field);
+                        prev_id = prev.id >= 0 ? prev.id : max_id++;
                     } else {
                         index = null;
                     }
@@ -528,7 +531,7 @@
                             update = true;
                         } else if (prev) {
                             if (record.id >= 0) {
-                                update = cmp(record.id, prev.id);
+                                update = cmp(record.id, prev_id);
                             } else if (position === 0) {
                                 update = true;
                             }
@@ -536,7 +539,7 @@
                     } else if (value === index) {
                         if (prev) {
                             if (record.id >= 0) {
-                                update = cmp(record.id, prev.id);
+                                update = cmp(record.id, prev_id);
                             } else if (position === 0) {
                                 update = true;
                             }
