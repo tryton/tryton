@@ -1,6 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from collections import defaultdict
+from collections import OrderedDict, defaultdict
 from itertools import groupby
 
 from trytond.model import (
@@ -306,7 +306,8 @@ class UIMenuFavorite(ModelSQL):
                 ('user', '=', user),
                 ],
             order=[('id', 'DESC')])
-        return [(f.menu.id, f.menu.rec_name, f.menu.icon) for f in favorites]
+        return list(OrderedDict.fromkeys(
+                (f.menu.id, f.menu.rec_name, f.menu.icon) for f in favorites))
 
     @classmethod
     def set(cls, menu_id):
