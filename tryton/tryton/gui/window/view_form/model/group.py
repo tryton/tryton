@@ -358,12 +358,18 @@ class Group(SignalEvent, list):
             cmp = operator.gt
         else:
             cmp = operator.lt
+        max_id = max(0, *(r.id for r in self))
         for record in self:
             # Assume not loaded records are correctly ordered
             # as far as we do not change any previous records.
             if record.get_loaded([field]) or changed or record.id < 0:
                 if prev:
                     index = prev[field].get(prev)
+                    if prev.id >= 0:
+                        prev_id = prev.id
+                    else:
+                        max_id += 1
+                        prev_id = max_id
                 else:
                     index = None
                 update = False
@@ -373,13 +379,13 @@ class Group(SignalEvent, list):
                         update = True
                     elif prev:
                         if record.id >= 0:
-                            update = cmp(record.id, prev.id)
+                            update = cmp(record.id, prev_id)
                         elif position == 0:
                             update = True
                 elif value == index:
                     if prev:
                         if record.id >= 0:
-                            update = cmp(record.id, prev.id)
+                            update = cmp(record.id, prev_id)
                         elif position == 0:
                             update = True
                 elif value <= (index or 0):
