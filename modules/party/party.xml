@@ -127,6 +127,26 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">identifier_list_sequence</field>
         </record>
 
+        <record model="ir.action.act_window" id="act_identifier_form">
+            <field name="name">Identifiers</field>
+            <field name="res_model">party.identifier</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_identifier_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="identifier_list"/>
+            <field name="act_window" ref="act_identifier_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_identifier_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="identifier_form"/>
+            <field name="act_window" ref="act_identifier_form"/>
+        </record>
+        <menuitem
+            parent="menu_party"
+            action="act_identifier_form"
+            sequence="20"
+            id="menu_identifier_form"/>
+
         <record model="ir.action.wizard" id="wizard_check_vies">
             <field name="name">Check VIES</field>
             <field name="wiz_name">party.check_vies</field>
