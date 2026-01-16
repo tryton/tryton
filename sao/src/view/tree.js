@@ -2386,11 +2386,14 @@
                     cell.text(value);
                 }
             };
+            let prm = jQuery.when();
             if (!record.is_loaded(this.attributes.name)) {
-                record.load(this.attributes.name, true, false).done(render);
-            } else {
-                render();
+                prm = prm.then(() => record.load(this.attributes.name, true, false));
             }
+            if (this.icon && (this.icon in record.model.fields)) {
+                prm = prm.then(() => record.load(this.icon, true, false));
+            }
+            prm.done(render);
             return cell;
         },
         clicked: function(event) {
