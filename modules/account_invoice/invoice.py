@@ -138,7 +138,10 @@ class Invoice(
             ], "State", readonly=True, sort=False)
     invoice_date = fields.Date('Invoice Date',
         states={
-            'readonly': Eval('state').in_(['posted', 'paid', 'cancelled']),
+            'readonly': Eval('state').in_(
+                If(Eval('type') == 'in',
+                    ['validated', 'posted', 'paid'],
+                    ['posted', 'paid'])),
             'required': Eval('state').in_(
                 If(Eval('type') == 'in',
                     ['validated', 'posted', 'paid'],
