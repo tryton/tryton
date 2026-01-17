@@ -2497,6 +2497,8 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
             return self.taxes_date
         elif hasattr(self, 'invoice') and hasattr(self.invoice, 'tax_date'):
             return self.invoice.tax_date
+        else:
+            return super().tax_date
 
     def _get_tax_context(self):
         if self.invoice:
