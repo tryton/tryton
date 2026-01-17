@@ -448,7 +448,7 @@ class POSSale(Workflow, ModelSQL, ModelView, TaxableMixin):
 
     @property
     def tax_date(self):
-        return self.date
+        return self.date or super().tax_date
 
 
 class POSSaleLine(ModelSQL, ModelView, TaxableMixin):
@@ -721,7 +721,7 @@ class POSSaleLine(ModelSQL, ModelView, TaxableMixin):
 
     @property
     def tax_date(self):
-        return self.sale.date
+        return self.sale.date or super().tax_date
 
 
 class POSCashSession(Workflow, ModelSQL, ModelView):
