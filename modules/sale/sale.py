@@ -640,6 +640,7 @@ class Sale(
             self.total_amount = self.currency.round(self.total_amount)
 
     @property
+    @fields.depends('lines')
     def taxable_lines(self):
         taxable_lines = []
         for line in self.lines:
@@ -1683,19 +1684,18 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
         return progress
 
     @property
+    @fields.depends('type', 'taxes', 'unit_price', 'quantity')
     def taxable_lines(self):
-        # In case we're called from an on_change
-        # we have to use some sensible defaults
-        if getattr(self, 'type', None) == 'line':
-            return [(
-                    getattr(self, 'taxes', None) or [],
-                    getattr(self, 'unit_price', None) or Decimal(0),
-                    getattr(self, 'quantity', None) or 0,
+        if self.type == 'line':
+            return [(self.taxes or [],
+                    self.unit_price or Decimal(0),
+                    self.quantity or 0,
                     None,
                     )]
         else:
             return []
 
+    @fields.depends('sale', '_parent_sale.id')
     def _get_tax_context(self):
         return self.sale._get_tax_context()
 

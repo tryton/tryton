@@ -439,6 +439,7 @@ class Rental(
             (t.amount for t in self._get_taxes().values()), Decimal(0))
 
     @property
+    @fields.depends('lines')
     def taxable_lines(self):
         taxable_lines = []
         for line in self.lines:
@@ -1063,17 +1064,16 @@ class RentalLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
         return {}
 
     @property
+    @fields.depends('taxes', 'unit_price', 'quantity', 'duration_unit')
     def taxable_lines(self):
-        # In case we're called from an on_change
-        # we have to use some sensible defaults
         return [(
-                getattr(self, 'taxes', None) or [],
-                getattr(self, 'unit_price', None) or Decimal(0),
-                (getattr(self, 'quantity', None) or 0)
-                * (getattr(self, 'duration_unit', None) or 0),
+                self.taxes or [],
+                self.unit_price or Decimal(0),
+                (self.quantity or 0) * (self.duration_unit or 0),
                 None,
                 )]
 
+    @fields.depends('rental', '_parent_rental.id')
     def _get_tax_context(self):
         return self.rental._get_tax_context()
 

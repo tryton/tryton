@@ -441,10 +441,12 @@ class POSSale(Workflow, ModelSQL, ModelView, TaxableMixin, ChatMixin):
         return lines
 
     @property
+    @fields.depends('lines')
     def taxable_lines(self):
         return sum((line.taxable_lines for line in self.lines), [])
 
     @property
+    @fields.depends('date')
     def tax_date(self):
         return self.date or super().tax_date
 
@@ -706,6 +708,8 @@ class POSSaleLine(ModelSQL, ModelView, TaxableMixin):
             return Product(self.product).customer_taxes_used
 
     @property
+    @fields.depends(
+        'taxes', 'unit_list_price', 'quantity', methods=['tax_date'])
     def taxable_lines(self):
         return [
             (self.taxes, self.unit_list_price, self.quantity, self.tax_date)]
@@ -718,6 +722,7 @@ class POSSaleLine(ModelSQL, ModelView, TaxableMixin):
             return 'credit_note'
 
     @property
+    @fields.depends('sale', '_parent_sale.date')
     def tax_date(self):
         return self.sale.date or super().tax_date
 

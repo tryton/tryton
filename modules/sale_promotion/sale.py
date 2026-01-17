@@ -161,16 +161,16 @@ class Line(metaclass=PoolMeta):
             return amount
 
     @property
+    @fields.depends(
+        'type', 'taxes', 'original_unit_price', 'unit_price', 'quantity')
     def taxable_lines(self):
         lines = super().taxable_lines
-        if (getattr(self, 'type', None) == 'line'
+        if (self.type == 'line'
                 and Transaction().context.get('_original_amount')):
             lines = [(
-                    getattr(self, 'taxes', None) or [],
-                    getattr(self, 'original_unit_price', None)
-                    or getattr(self, 'unit_price', None)
-                    or Decimal(0),
-                    getattr(self, 'quantity', None) or 0,
+                    self.taxes or [],
+                    self.original_unit_price or self.unit_price or Decimal(0),
+                    self.quantity or 0,
                     None,
                     )]
         return lines

@@ -1231,6 +1231,7 @@ class TaxableMixin(object):
         return []
 
     @property
+    @fields.depends('company')
     def tax_date(self):
         "Date to use when computing the tax"
         pool = Pool()
@@ -1241,6 +1242,7 @@ class TaxableMixin(object):
     def _get_tax_context(self):
         return {}
 
+    @fields.depends('currency')
     def _compute_tax_line(self, amount, base, tax):
         if base >= 0:
             type_ = 'invoice'
@@ -1280,7 +1282,9 @@ class TaxableMixin(object):
                     if abs(remainder) < self.currency.rounding:
                         break
 
-    @fields.depends('company', methods=['_get_tax_context', '_round_taxes'])
+    @fields.depends('company', methods=[
+            'taxable_lines', 'tax_date', '_get_tax_context',
+            '_compute_tax_line', '_round_taxes'])
     def _get_taxes(self):
         pool = Pool()
         Tax = pool.get('account.tax')

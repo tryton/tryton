@@ -511,6 +511,7 @@ class Purchase(
             self.total_amount = self.currency.round(self.total_amount)
 
     @property
+    @fields.depends('lines')
     def taxable_lines(self):
         taxable_lines = []
         # In case we're called from an on_change we have to use some sensible

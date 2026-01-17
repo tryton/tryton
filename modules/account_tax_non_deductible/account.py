@@ -53,14 +53,14 @@ class InvoiceLine(metaclass=PoolMeta):
         return amount
 
     @property
+    @fields.depends('invoice', '_parent_invoice.type', 'invoice_type')
     def taxable_lines(self):
         context = Transaction().context
         lines = super().taxable_lines
-        if (getattr(self, 'invoice', None)
-                and getattr(self.invoice, 'type', None)):
+        if self.invoice and self.invoice.type:
             invoice_type = self.invoice.type
         else:
-            invoice_type = getattr(self, 'invoice_type', None)
+            invoice_type = self.invoice_type
         if invoice_type == 'in':
             if context.get('_non_deductible'):
                 for line in lines:
