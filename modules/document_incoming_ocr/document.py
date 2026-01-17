@@ -353,12 +353,13 @@ class IncomingSupplierInvoice(metaclass=PoolMeta):
 class IncomingSupplierInvoicePurchase(metaclass=PoolMeta):
     __name__ = 'document.incoming'
 
-    def _process_supplier_invoice_line(self, invoice, line_data):
+    def _process_supplier_invoice_line(self, invoice, line_data, invoice_data):
         pool = Pool()
         PurchaseLine = pool.get('purchase.line')
         UoM = pool.get('product.uom')
 
-        line = super()._process_supplier_invoice_line(invoice, line_data)
+        line = super()._process_supplier_invoice_line(
+            invoice, line_data, invoice_data)
 
         if (line and line.product and line.unit
                 and (line_data.get('purchase_orders')
