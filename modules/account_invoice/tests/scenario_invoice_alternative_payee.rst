@@ -56,7 +56,7 @@ Create parties::
 
 Post customer invoice::
 
-    >>> invoice = Invoice()
+    >>> invoice = Invoice(type='out')
     >>> invoice.party = party1
     >>> invoice.alternative_payees.append(Party(party2.id))
     >>> line = invoice.lines.new()

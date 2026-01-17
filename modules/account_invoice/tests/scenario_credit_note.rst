@@ -84,7 +84,7 @@ Create product::
 Create credit note::
 
     >>> Invoice = Model.get('account.invoice')
-    >>> invoice = Invoice()
+    >>> invoice = Invoice(type='out')
     >>> invoice.party = party
     >>> line = invoice.lines.new()
     >>> line.product = product

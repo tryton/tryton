@@ -77,8 +77,24 @@ class Invoice(metaclass=PoolMeta):
             'readonly': Eval('state') != 'draft',
             })
 
-    @fields.depends('company', 'type')
+    @fields.depends(methods=['set_cash_rounding'])
     def on_change_company(self):
+        try:
+            super().on_change_company()
+        except AttributeError:
+            pass
+        self.set_cash_rounding()
+
+    @fields.depends(methods=['set_cash_rounding'])
+    def on_change_type(self):
+        try:
+            super().on_change_type()
+        except AttributeError:
+            pass
+        self.set_cash_rounding()
+
+    @fields.depends('company', 'type')
+    def set_cash_rounding(self):
         pool = Pool()
         Config = pool.get('account.configuration')
         config = Config(1)
@@ -90,15 +106,6 @@ class Invoice(metaclass=PoolMeta):
             self.cash_rounding = config.get_multivalue(
                 'cash_rounding',
                 company=self.company.id if self.company else None)
-
-    @classmethod
-    def default_cash_rounding(cls, **pattern):
-        pool = Pool()
-        Config = pool.get('account.configuration')
-        config = Config(1)
-        if cls.default_type() == 'out':
-            return config.get_multivalue(
-                'cash_rounding', **pattern)
 
     @fields.depends(methods=['_on_change_lines_taxes'])
     def on_change_cash_rounding(self):

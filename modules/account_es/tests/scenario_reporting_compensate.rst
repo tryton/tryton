@@ -85,7 +85,7 @@ Create product::
 Create invoice::
 
     >>> Invoice = Model.get('account.invoice')
-    >>> invoice = Invoice()
+    >>> invoice = Invoice(type='out')
     >>> invoice.party = party
     >>> invoice.invoice_date = period.start_date
     >>> line = invoice.lines.new()

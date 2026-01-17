@@ -134,7 +134,7 @@ Create product::
 Create invoices::
 
     >>> Invoice = Model.get('account.invoice')
-    >>> invoice = Invoice()
+    >>> invoice = Invoice(type='out')
     >>> invoice.party = party
     >>> invoice.invoice_date = period.start_date
     >>> line = invoice.lines.new()
@@ -144,8 +144,8 @@ Create invoices::
     >>> invoice.click('post')
     >>> invoice.total_amount
     Decimal('242.00')
-    >>> invoice = Invoice()
-    >>> invoice.type = 'in'
+
+    >>> invoice = Invoice(type='in')
     >>> invoice.party = supplier
     >>> invoice.invoice_date = period.start_date
     >>> line = invoice.lines.new()
@@ -155,8 +155,8 @@ Create invoices::
     >>> invoice.click('post')
     >>> invoice.total_amount
     Decimal('106.00')
-    >>> invoice = Invoice()
-    >>> invoice.type = 'in'
+
+    >>> invoice = Invoice(type='in')
     >>> invoice.party = ec_supplier
     >>> invoice.invoice_date = period.start_date
     >>> line = invoice.lines.new()

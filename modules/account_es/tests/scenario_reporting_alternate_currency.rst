@@ -70,7 +70,7 @@ Create invoices::
     ...     ('name', '=', 'IVA Intracomunitario 21% (bienes)'),
     ...     ])
     >>> Invoice = Model.get('account.invoice')
-    >>> invoice = Invoice()
+    >>> invoice = Invoice(type='out')
     >>> invoice.party = party
     >>> invoice.invoice_date = today
     >>> invoice.currency = eur
@@ -82,8 +82,8 @@ Create invoices::
     >>> invoice.click('post')
     >>> invoice.total_amount
     Decimal('242.00')
-    >>> invoice = Invoice()
-    >>> invoice.type = 'in'
+
+    >>> invoice = Invoice(type='in')
     >>> invoice.party = supplier
     >>> invoice.currency = eur
     >>> invoice.invoice_date = today

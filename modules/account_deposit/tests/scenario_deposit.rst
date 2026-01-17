@@ -43,7 +43,7 @@ Create payment_term::
 Create deposit invoice::
 
     >>> Invoice = Model.get('account.invoice')
-    >>> invoice = Invoice(party=party, payment_term=payment_term)
+    >>> invoice = Invoice(type='out', party=party, payment_term=payment_term)
     >>> line = invoice.lines.new()
     >>> line.account = accounts['deposit']
     >>> line.description = 'Deposit'
@@ -61,7 +61,7 @@ Check party deposit::
 
 Create final invoice::
 
-    >>> invoice = Invoice(party=party, payment_term=payment_term)
+    >>> invoice = Invoice(type='out', party=party, payment_term=payment_term)
     >>> line = invoice.lines.new()
     >>> line.account = accounts['revenue']
     >>> line.description = 'Revenue'

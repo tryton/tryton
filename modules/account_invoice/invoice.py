@@ -536,10 +536,6 @@ class Invoice(
             CharLength(table.number), table.number]
 
     @staticmethod
-    def default_type():
-        return Transaction().context.get('type', 'out')
-
-    @staticmethod
     def default_state():
         return 'draft'
 

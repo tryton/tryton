@@ -73,7 +73,7 @@ Create payment term::
 Create invoice::
 
     >>> Invoice = Model.get('account.invoice')
-    >>> invoice = Invoice()
+    >>> invoice = Invoice(type='out')
     >>> bool(invoice.cash_rounding)
     True
     >>> invoice.party = party

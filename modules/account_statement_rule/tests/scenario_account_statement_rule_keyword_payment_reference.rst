@@ -52,7 +52,7 @@ Create a party::
 
 Create an invoice::
 
-    >>> invoice = Invoice(party=customer)
+    >>> invoice = Invoice(type='out', party=customer)
     >>> line = invoice.lines.new()
     >>> line.quantity = 1
     >>> line.unit_price = Decimal('40.0000')

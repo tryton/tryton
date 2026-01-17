@@ -61,7 +61,7 @@ Create party::
 Create an invoice::
 
     >>> Invoice = Model.get('account.invoice')
-    >>> invoice = Invoice(party=party)
+    >>> invoice = Invoice(type='out', party=party)
     >>> line = invoice.lines.new()
     >>> line.account = accounts['revenue']
     >>> line.quantity = 1

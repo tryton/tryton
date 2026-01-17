@@ -48,7 +48,7 @@ Create chart of accounts::
 
 Create invoice::
 
-    >>> invoice = Invoice()
+    >>> invoice = Invoice(type='out')
     >>> invoice.party = saber.party
     >>> line = invoice.lines.new()
     >>> line.account = accounts['revenue']

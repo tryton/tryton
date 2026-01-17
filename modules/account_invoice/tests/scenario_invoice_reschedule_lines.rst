@@ -52,7 +52,7 @@ Create party::
 
 Post customer invoice::
 
-    >>> invoice = Invoice()
+    >>> invoice = Invoice(type='out')
     >>> invoice.party = party
     >>> line = invoice.lines.new()
     >>> line.account = accounts['revenue']

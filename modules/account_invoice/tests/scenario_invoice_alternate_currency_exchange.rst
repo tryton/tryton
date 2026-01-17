@@ -71,7 +71,7 @@ Create party::
 
 Create invoice::
 
-    >>> invoice = Invoice(party=party)
+    >>> invoice = Invoice(type='out', party=party)
     >>> invoice.currency = eur
     >>> invoice.payment_term = payment_term
     >>> line = invoice.lines.new()

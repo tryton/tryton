@@ -81,7 +81,7 @@ Create party::
 
 Create invoice with alternate currency::
 
-    >>> invoice = Invoice()
+    >>> invoice = Invoice(type='out')
     >>> invoice.party = party
     >>> invoice.currency = eur
     >>> line = invoice.lines.new()

@@ -60,7 +60,8 @@ Create party::
 
 Create deposit invoice::
 
-    >>> invoice = Invoice(party=party, currency=eur, invoice_date=yesterday)
+    >>> invoice = Invoice(
+    ...     type='out', party=party, currency=eur, invoice_date=yesterday)
     >>> line = invoice.lines.new()
     >>> line.account = accounts['deposit']
     >>> line.description = "Deposit"
@@ -78,7 +79,7 @@ Check party deposit::
 
 Create final invoice::
 
-    >>> invoice = Invoice(party=party, currency=eur, invoice_date=today)
+    >>> invoice = Invoice(type='out', party=party, currency=eur, invoice_date=today)
     >>> line = invoice.lines.new()
     >>> line.account = accounts['revenue']
     >>> line.description = "Revenue"

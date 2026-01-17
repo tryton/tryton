@@ -117,7 +117,7 @@ Create product::
 Create invoice with alternate currency::
 
     >>> Invoice = Model.get('account.invoice')
-    >>> invoice = Invoice()
+    >>> invoice = Invoice(type='out')
     >>> invoice.party = party
     >>> invoice.currency = eur
     >>> line = invoice.lines.new()
@@ -157,7 +157,7 @@ Create negative tax::
 
 Create invoice with alternate currency and negative taxes::
 
-    >>> invoice = Invoice()
+    >>> invoice = Invoice(type='out')
     >>> invoice.party = party
     >>> invoice.currency = eur
     >>> line = invoice.lines.new()

@@ -278,7 +278,7 @@ Now create a supplier invoice with an accountant::
 
 Create customer invoice with negative quantity::
 
-    >>> invoice = Invoice()
+    >>> invoice = Invoice(type='out')
     >>> invoice.party = customer
     >>> invoice.payment_term = payment_term
     >>> invoice_line = invoice.lines.new()

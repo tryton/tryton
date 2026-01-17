@@ -72,7 +72,7 @@ Create invoices::
     ...     ('es_reported_with', '=', tax.id),
     ...     ])
     >>> Invoice = Model.get('account.invoice')
-    >>> invoice = Invoice()
+    >>> invoice = Invoice(type='out')
     >>> invoice.party = party
     >>> invoice.invoice_date = fiscalyear.start_date
     >>> line = invoice.lines.new()
@@ -84,7 +84,8 @@ Create invoices::
     >>> invoice.click('post')
     >>> invoice.total_amount
     Decimal('121.00')
-    >>> invoice = Invoice()
+
+    >>> invoice = Invoice(type='out')
     >>> invoice.party = surcharge_party
     >>> invoice.invoice_date = fiscalyear.start_date
     >>> line = invoice.lines.new()

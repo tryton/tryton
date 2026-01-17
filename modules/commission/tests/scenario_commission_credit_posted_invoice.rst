@@ -98,7 +98,7 @@ Create product sold::
 
 Create invoice and credit it before paying::
 
-    >>> invoice = Invoice()
+    >>> invoice = Invoice(type='out')
     >>> invoice.party = customer
     >>> invoice.agent = agent
     >>> line = invoice.lines.new()

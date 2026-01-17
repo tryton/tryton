@@ -77,7 +77,7 @@ Create party::
 Create invoice::
 
     >>> Invoice = Model.get('account.invoice')
-    >>> invoice = Invoice()
+    >>> invoice = Invoice(type='out')
     >>> invoice.cash_rounding = True
     >>> invoice.currency = eur
     >>> bool(invoice.cash_rounding)

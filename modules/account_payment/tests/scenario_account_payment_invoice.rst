@@ -50,7 +50,7 @@ Create party::
 Create invoice::
 
     >>> Invoice = Model.get('account.invoice')
-    >>> invoice = Invoice()
+    >>> invoice = Invoice(type='out')
     >>> invoice.party = party
     >>> line = invoice.lines.new()
     >>> line.description = 'Description'
@@ -138,7 +138,7 @@ Set party as direct debit::
 Create invoice::
 
     >>> Invoice = Model.get('account.invoice')
-    >>> invoice = Invoice()
+    >>> invoice = Invoice(type='out')
     >>> invoice.party = party
     >>> bool(invoice.payment_direct_debit)
     True

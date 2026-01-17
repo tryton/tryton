@@ -135,7 +135,7 @@ Create product sold::
 Create invoice::
 
     >>> Invoice = Model.get('account.invoice')
-    >>> invoice = Invoice()
+    >>> invoice = Invoice(type='out')
     >>> invoice.party = customer
     >>> invoice.payment_term = payment_term
     >>> invoice.agent = agent

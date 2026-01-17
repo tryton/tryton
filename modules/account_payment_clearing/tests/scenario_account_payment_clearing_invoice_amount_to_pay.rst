@@ -70,7 +70,7 @@ Create parties::
 Create and pay an invoice without clearing::
 
     >>> Invoice = Model.get('account.invoice')
-    >>> invoice = Invoice()
+    >>> invoice = Invoice(type='out')
     >>> invoice.party = customer
     >>> line = invoice.lines.new()
     >>> line.account = revenue
@@ -104,7 +104,7 @@ Create and pay an invoice without clearing::
 
 Create an invoice and pay it::
 
-    >>> invoice1 = Invoice()
+    >>> invoice1 = Invoice(type='out')
     >>> invoice1.party = customer
     >>> line = invoice1.lines.new()
     >>> line.account = revenue
@@ -148,7 +148,7 @@ Unreconcile the payment line and check the amount to pay::
 
 Create a second invoice and reconcile its line to pay with the payment::
 
-    >>> invoice2 = Invoice()
+    >>> invoice2 = Invoice(type='out')
     >>> invoice2.party = customer
     >>> line = invoice2.lines.new()
     >>> line.account = revenue
