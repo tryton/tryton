@@ -17,14 +17,12 @@ if __name__ == '__main__':
             text = scenario.read()
 
         with open(filename.with_suffix('.py'), 'w') as file:
-            newline = False
+            lineno = -1
             for line in parser.parse(text):
                 if isinstance(line, doctest.Example):
-                    if newline:
-                        file.write('\n')
+                    file.write(('#\n' * (line.lineno - lineno - 1))[1:])
                     file.write(line.source)
+                    lineno = line.lineno + len(line.source.splitlines()) - 1
                     newline = False
-                elif not line:
-                    pass
                 else:
-                    newline = True
+                    pass
