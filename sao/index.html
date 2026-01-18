@@ -109,6 +109,7 @@ this repository contains the full copyright notices and license terms. -->
                     jQuery('#main_navbar').on('click', 'a:not(.dropdown-toggle)', function() {
                         jQuery('#main_navbar').collapse('hide');
                     });
+                    Sortable.create(jQuery('#tablist').get(0));
                 });
             }
             if (navigator.userAgent.indexOf('iPhone') > -1) {
