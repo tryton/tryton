@@ -29,7 +29,11 @@
                     attributes: true,
                     attributeFilter: ['style'],
                 });
-            this.indicator.hide();
+            jQuery(document).ready(() => {
+                // Wait for the DOM to be ready to let the observer find the
+                // other indicators
+                this.indicator.hide();
+            });
         }
 
         fill() {
