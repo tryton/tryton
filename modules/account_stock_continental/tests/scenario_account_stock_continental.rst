@@ -29,6 +29,19 @@ Activate modules::
     ...         ],
     ...     create_company, create_chart)
 
+    >>> Inventory = Model.get('stock.inventory')
+    >>> Location = Model.get('stock.location')
+    >>> Move = Model.get('stock.move')
+    >>> Party = Model.get('party.party')
+    >>> ProductCategory = Model.get('product.category')
+    >>> ProductSupplier = Model.get('purchase.product_supplier')
+    >>> ProductTemplate = Model.get('product.template')
+    >>> ProductUom = Model.get('product.uom')
+    >>> Purchase = Model.get('purchase.purchase')
+    >>> PurchaseRequest = Model.get('purchase.request')
+    >>> Sale = Model.get('sale.sale')
+    >>> ShipmentIn = Model.get('stock.shipment.in')
+
 Create fiscal year::
 
     >>> fiscalyear = set_fiscalyear_invoice_sequences(
@@ -49,7 +62,6 @@ Get accounts::
 
 Create parties::
 
-    >>> Party = Model.get('party.party')
     >>> supplier = Party(name='Supplier')
     >>> supplier.save()
     >>> customer = Party(name='Customer')
@@ -57,7 +69,6 @@ Create parties::
 
 Create product category::
 
-    >>> ProductCategory = Model.get('product.category')
     >>> account_category = ProductCategory(name="Account Category")
     >>> account_category.accounting = True
     >>> account_category.account_expense = expense
@@ -69,10 +80,8 @@ Create product category::
 
 Create product::
 
-    >>> ProductUom = Model.get('product.uom')
     >>> m, = ProductUom.find([('symbol', '=', 'm')])
     >>> cm, = ProductUom.find([('symbol', '=', 'cm')])
-    >>> ProductTemplate = Model.get('product.template')
     >>> template = ProductTemplate()
     >>> template.name = 'product'
     >>> template.default_uom = cm
@@ -101,7 +110,6 @@ Create payment term::
 
 Purchase 12 products::
 
-    >>> Purchase = Model.get('purchase.purchase')
     >>> purchase = Purchase()
     >>> purchase.party = supplier
     >>> purchase.payment_term = payment_term
@@ -124,8 +132,6 @@ Purchase 12 products::
 
 Receive 9 products::
 
-    >>> ShipmentIn = Model.get('stock.shipment.in')
-    >>> Move = Model.get('stock.move')
     >>> shipment = ShipmentIn(supplier=supplier)
     >>> move, = [m for m in purchase.moves if m.product == product]
     >>> move = Move(move.id)
@@ -152,7 +158,6 @@ Receive 9 products::
 
 Open supplier invoice::
 
-    >>> Invoice = Model.get('account.invoice')
     >>> purchase.reload()
     >>> invoice, = purchase.invoices
     >>> invoice_line, = [l for l in invoice.lines if l.product == product]
@@ -177,7 +182,6 @@ Open supplier invoice::
 
 Sale 5 products::
 
-    >>> Sale = Model.get('sale.sale')
     >>> sale = Sale()
     >>> sale.party = customer
     >>> sale.payment_term = payment_term
@@ -242,8 +246,6 @@ Open customer invoice::
 
 Create an Inventory::
 
-    >>> Inventory = Model.get('stock.inventory')
-    >>> Location = Model.get('stock.location')
     >>> storage, = Location.find([
     ...         ('code', '=', 'STO'),
     ...         ])
@@ -271,7 +273,6 @@ Create an Inventory::
 
 Create Drop Shipment Move::
 
-    >>> ProductSupplier = Model.get('purchase.product_supplier')
     >>> product_supplier = ProductSupplier()
     >>> product_supplier.template = product.template
     >>> product_supplier.party = supplier
@@ -294,7 +295,6 @@ Create Drop Shipment Move::
     >>> sale.state
     'processing'
 
-    >>> PurchaseRequest = Model.get('purchase.request')
     >>> purchase_request, = PurchaseRequest.find()
     >>> create_purchase = Wizard('purchase.request.create_purchase',
     ...     [purchase_request])
@@ -379,7 +379,6 @@ Create Drop Shipment Move::
 
 Modify cost price::
 
-    >>> Account = Model.get('account.account')
     >>> modify_price = Wizard('product.modify_cost_price', [product])
     >>> modify_price.form.cost_price = '3.00'
     >>> modify_price.execute('modify')
