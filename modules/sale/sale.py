@@ -897,6 +897,7 @@ class Sale(
         default.setdefault('invoice_state', 'none')
         default.setdefault('invoices_ignored', None)
         default.setdefault('shipment_state', 'none')
+        default.setdefault('quotation_date')
         default.setdefault('sale_date', None)
         default.setdefault('quoted_by')
         default.setdefault('confirmed_by')
