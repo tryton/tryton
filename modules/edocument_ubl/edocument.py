@@ -630,7 +630,11 @@ class Invoice(Model):
         pool = Pool()
         Party = pool.get('party.party')
 
-        for identifier in party_el.iterfind('./{*}PartyIdentification/{*}ID'):
+        for identifier in chain(
+                party_el.iterfind('./{*}PartyIdentification/{*}ID'),
+                party_el.iterfind('./{*}PartyLegalEntity/{*}CompanyID'),
+                party_el.iterfind('./{*}PartyTaxScheme/{*}CompanyID'),
+                ):
             if identifier.text:
                 parties = Party.search([
                         ('identifiers.code', '=', identifier.text),
@@ -646,10 +650,18 @@ class Invoice(Model):
         party = Party()
         party.name = party_el.findtext('./{*}PartyName/{*}Name')
         identifiers = []
-        for identifier in party_el.iterfind('./{*}PartyIdentification/{*}ID'):
+        identifiers_done = set()
+        for identifier in chain(
+                party_el.iterfind('./{*}PartyIdentification/{*}ID'),
+                party_el.iterfind('./{*}PartyTaxScheme/{*}CompanyID'),
+                party_el.iterfind('./{*}PartyLegalEntity/{*}CompanyID'),
+                ):
             if identifier.text:
-                identifiers.append(cls._create_2_party_identifier(
-                        identifier))
+                identifier_key = (identifier.text, identifier.get('schemeID'))
+                if identifier_key not in identifiers_done:
+                    identifiers.append(cls._create_2_party_identifier(
+                            identifier))
+                identifiers_done.add(identifier_key)
         party.identifiers = identifiers
         if (address := party_el.find('./{*}PostalAddress')
                 ) is not None:
@@ -770,8 +782,12 @@ class Invoice(Model):
                         pass
                     else:
                         return customer_code.company
-        for identifier in customer_party.iterfind(
-                './{*}Party/{*}PartyIdentification/{*}ID'):
+        party_el = customer_party.find('./{*}Party')
+        for identifier in chain(
+                party_el.iterfind('./{*}PartyIdentification/{*}ID'),
+                party_el.iterfind('./{*}PartyTaxScheme/{*}CompanyID'),
+                party_el.iterfind('./{*}PartyLegalEntity/{*}CompanyID'),
+                ):
             if identifier.text:
                 companies = Company.search([
                         ('party.identifiers.code', '=', identifier.text),
@@ -780,19 +796,9 @@ class Invoice(Model):
                     company, = companies
                     return company
 
-        for company_id in customer_party.iterfind(
-                './{*}Party/{*}PartyTaxScheme/{*}CompanyID'):
-            companies = Company.search([
-                    ('party.identifiers.code', '=', company_id.text),
-                    ])
-            if len(companies) == 1:
-                company, = companies
-                return company
-
         for name in chain(
-                customer_party.iterfind(
-                    './{*}Party/{*}PartyTaxScheme/{*}RegistrationName'),
-                customer_party.iterfind('./{*}Party/{*}PartyName/{*}Name'),
+                party_el.iterfind('./{*}PartyTaxScheme/{*}RegistrationName'),
+                party_el.iterfind('./{*}PartyName/{*}Name'),
                 ):
             if name is None:
                 continue
