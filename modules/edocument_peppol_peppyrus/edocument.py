@@ -23,6 +23,14 @@ URLS = {
     'production': 'https://api.peppyrus.be/v1/',
     }
 
+UBL_NAMESPACES = {
+    'urn:oasis:names:specification:ubl:schema:xsd:Invoice-2',
+    'urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2',
+    }
+BIS_BILLING_3 = (
+    'urn:cen.eu:en16931:2017#compliant'
+    '#urn:fdc:peppol.eu:2017:poacc:billing:3.0')
+
 
 def peppyrus_api(func):
     @wraps(func)
@@ -222,11 +230,13 @@ class PeppolService(metaclass=PoolMeta):
 
     @classmethod
     def _peppyrus_type(cls, document_type):
-        if document_type == (
-                'busdox-docid-qns::urn:oasis:names:specification:ubl:'
-                'schema:xsd:Invoice-2::Invoice##'
-                'urn:cen.eu:en16931:2017#compliant#'
-                'urn:fdc:peppol.eu:2017:poacc:billing:3.0::2.1'):
+        schema, document_identifier = document_type.split('::', 1)
+        syntax, customization = document_identifier.split('##', 1)
+        namespace, localname = syntax.split('::', 1)
+        customization_id, version = customization.split('::', 1)
+        if (schema in {'busdox-docid-qns', 'peppol-doctype-wildcard'}
+                and namespace in UBL_NAMESPACES
+                and customization_id in BIS_BILLING_3):
             return 'bis-billing-3'
 
     @classmethod
