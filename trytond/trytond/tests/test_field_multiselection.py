@@ -209,6 +209,30 @@ class FieldMultiSelectionTestCase(TestCase):
         self.assertEqual(selections, [selection])
 
     @with_transaction()
+    def test_search_in_none(self):
+        "Test search selection in None"
+        selection, = self.Selection.create([{
+                    'selects': ['foo', 'bar'],
+                    }])
+
+        result = self.Selection.search([
+                ('selects', 'in', None),
+                ])
+        self.assertEqual(result, [])
+
+    @with_transaction()
+    def test_search_not_in_none(self):
+        "Test search selection not in None"
+        selection, = self.Selection.create([{
+                    'selects': ['foo', 'bar'],
+                    }])
+
+        result = self.Selection.search([
+                ('selects', 'not in', None),
+                ])
+        self.assertEqual(result, [selection])
+
+    @with_transaction()
     def test_search_in_string(self):
         "Test search selection in string"
         selection, = self.Selection.create([{
