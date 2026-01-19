@@ -636,8 +636,14 @@ class Invoice(Model):
                 party_el.iterfind('./{*}PartyTaxScheme/{*}CompanyID'),
                 ):
             if identifier.text:
+                domain = [
+                    ('code', '=', identifier.text),
+                    ]
+                if schemeId := identifier.get('schemeID'):
+                    if type := ISO6523.get(schemeId):
+                        domain.append(('type', '=', type))
                 parties = Party.search([
-                        ('identifiers.code', '=', identifier.text),
+                        ('identifiers', 'where', domain),
                         ])
                 if len(parties) == 1:
                     party, = parties
@@ -791,8 +797,14 @@ class Invoice(Model):
                 party_el.iterfind('./{*}PartyLegalEntity/{*}CompanyID'),
                 ):
             if identifier.text:
+                domain = [
+                    ('code', '=', identifier.text),
+                    ]
+                if schemeId := identifier.get('schemeID'):
+                    if type := ISO6523.get(schemeId):
+                        domain.append(('type', '=', type))
                 companies = Company.search([
-                        ('party.identifiers.code', '=', identifier.text),
+                        ('party.identifiers', 'where', domain),
                         ])
                 if len(companies) == 1:
                     company, = companies
