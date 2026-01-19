@@ -245,7 +245,10 @@ class User(avatar_mixin(100), DeactivableMixin, ModelSQL, ModelView):
     def get_email_validation_url(self, url=None):
         if url is None:
             url = config.get('web', 'email_validation_url')
-        return _add_params(url, token=self.email_token)
+        if url is not None:
+            return _add_params(url, token=self.email_token)
+        else:
+            return ''
 
     @classmethod
     def validate_email_url(cls, url):
@@ -299,8 +302,11 @@ class User(avatar_mixin(100), DeactivableMixin, ModelSQL, ModelView):
     def get_email_reset_password_url(self, url=None):
         if url is None:
             url = config.get('web', 'reset_password_url')
-        return _add_params(
-            url, token=self.reset_password_token, email=self.email)
+        if url is not None:
+            return _add_params(
+                url, token=self.reset_password_token, email=self.email)
+        else:
+            return ''
 
     @classmethod
     def set_password_url(cls, url, password):

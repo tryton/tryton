@@ -151,7 +151,10 @@ class Email(DeactivableMixin, ModelSQL, ModelView):
     def get_email_subscribe_url(self, url=None):
         if url is None:
             url = config.get('marketing', 'email_subscribe_url')
-        return _add_params(url, token=self.email_token)
+        if url is not None:
+            return _add_params(url, token=self.email_token)
+        else:
+            return ''
 
     @classmethod
     def subscribe_url(cls, url):
@@ -183,7 +186,10 @@ class Email(DeactivableMixin, ModelSQL, ModelView):
     def get_email_unsubscribe_url(self, url=None):
         if url is None:
             url = config.get('marketing', 'email_unsubscribe_url')
-        return _add_params(url, token=self.email_token)
+        if url is not None:
+            return _add_params(url, token=self.email_token)
+        else:
+            return ''
 
     @classmethod
     def unsubscribe_url(cls, url):
