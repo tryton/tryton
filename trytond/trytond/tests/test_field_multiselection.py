@@ -232,6 +232,32 @@ class FieldMultiSelectionTestCase(unittest.TestCase):
         self.assertEqual(selections, [selection])
 
     @with_transaction()
+    def test_search_in_none(self):
+        "Test search selection in None"
+        Selection = Pool().get('test.multi_selection')
+        selection, = Selection.create([{
+                    'selects': ['foo', 'bar'],
+                    }])
+
+        result = Selection.search([
+                ('selects', 'in', None),
+                ])
+        self.assertEqual(result, [])
+
+    @with_transaction()
+    def test_search_not_in_none(self):
+        "Test search selection not in None"
+        Selection = Pool().get('test.multi_selection')
+        selection, = Selection.create([{
+                    'selects': ['foo', 'bar'],
+                    }])
+
+        result = Selection.search([
+                ('selects', 'not in', None),
+                ])
+        self.assertEqual(result, [selection])
+
+    @with_transaction()
     def test_search_in_string(self):
         "Test search selection in string"
         Selection = Pool().get('test.multi_selection')

@@ -91,7 +91,9 @@ class MultiSelection(SelectionMixin, Field):
         database = Transaction().database
         table, _ = tables[None]
         raw_column = self.sql_column(table)
-        if isinstance(value, str):
+        if value is None:
+            expression = Literal(False)
+        elif isinstance(value, str):
             try:
                 expression = database.json_key_exists(raw_column, value)
             except NotImplementedError:
