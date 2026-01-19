@@ -30,3 +30,8 @@ class Shop(metaclass=PoolMeta):
     @fields.depends()
     def _get_incoterm_pattern(self):
         return {}
+
+    def get_sale(self, party=None):
+        sale = super().get_sale(party=party)
+        sale.incoterm = sale.incoterm_location = None
+        return sale
