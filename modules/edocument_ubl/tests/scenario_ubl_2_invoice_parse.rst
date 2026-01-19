@@ -70,9 +70,9 @@ Parse the UBL invoice::
     'TOSL108'
     >>> assertEqual(invoice.invoice_date, dt.date(2009, 12, 15))
     >>> invoice.party.name
-    'Salescompany ltd.'
+    'The Sellercompany Incorporated'
     >>> invoice.invoice_address.rec_name
-    'Salescompany ltd., Main street 1 5467, 54321, Big city'
+    'The Sellercompany Incorporated, Main street 1 5467, 54321, Big city'
     >>> assertEqual(invoice.company, company)
     >>> assertEqual(
     ...     invoice.total_amount,

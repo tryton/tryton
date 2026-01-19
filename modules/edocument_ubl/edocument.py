@@ -648,7 +648,9 @@ class Invoice(Model):
         pool = Pool()
         Party = pool.get('party.party')
         party = Party()
-        party.name = party_el.findtext('./{*}PartyName/{*}Name')
+        party.name = (
+            party_el.findtext('./{*}PartyLegalEntity/{*}RegistrationName')
+            or party_el.findtext('./{*}PartyName/{*}Name'))
         identifiers = []
         identifiers_done = set()
         for identifier in chain(
