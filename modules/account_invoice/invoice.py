@@ -305,6 +305,9 @@ class Invoice(
                     Eval('context', {}).get('groups', []))),
             })
     origins = fields.Function(fields.Char('Origins'), 'get_origins')
+    origin_invoices = fields.Function(fields.Many2Many(
+            'account.invoice', None, None, "Origin Invoices"),
+        'get_origin_invoices', searcher='search_origin_invoices')
     untaxed_amount = fields.Function(Monetary(
             "Untaxed", currency='currency', digits='currency'),
         'get_amount', searcher='search_untaxed_amount')
@@ -1533,6 +1536,21 @@ class Invoice(
     def get_origins(self, name):
         return ', '.join(set(filter(None,
                     (l.origin_name for l in self.line_lines))))
+
+    def get_origin_invoices(self, name):
+        pool = Pool()
+        InvoiceLine = pool.get('account.invoice.line')
+        invoices = set()
+        for line in self.lines:
+            if isinstance(line.origin, InvoiceLine):
+                invoices.add(line.origin.invoice.id)
+        invoices.discard(self.id)
+        return list(invoices)
+
+    @classmethod
+    def search_origin_invoices(cls, name, clause):
+        return [('lines.origin.invoice', clause[0][len(name):],
+                *clause[1:3], 'account.invoice.line', *clause[3:])]
 
     def chat_language(self, audience='internal'):
         language = super().chat_language(audience=audience)
