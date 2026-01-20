@@ -2,6 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 import functools
 import os
+from decimal import Decimal
 
 import genshi
 import genshi.template
@@ -78,7 +79,9 @@ class Invoice(Model):
         tmpl = self._get_template(template)
         if not tmpl:
             raise NotImplementedError
-        return (tmpl.generate(this=self)
+        return (tmpl.generate(
+                this=self,
+                Decimal=Decimal)
             .filter(remove_comment)
             .render()
             .encode('utf-8'))

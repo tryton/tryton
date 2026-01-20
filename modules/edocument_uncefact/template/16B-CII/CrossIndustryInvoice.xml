@@ -48,7 +48,7 @@ this repository contains the full copyright notices and license terms. -->
             <ram:ExemptionReason py:if="tax.legal_notice">${tax.legal_notice}</ram:ExemptionReason>
             <ram:BasisAmount py:if="base">${base * this.type_sign}</ram:BasisAmount>
             <ram:CategoryCode py:if="tax.unece_category_code">${tax.unece_category_code}</ram:CategoryCode>
-            <ram:RateApplicablePercent py:if="tax.type == 'percentage'">${tax.rate * 100}</ram:RateApplicablePercent>
+            <ram:RateApplicablePercent py:if="tax.type == 'percentage'">${format((tax.rate * 100).normalize(), 'f')}</ram:RateApplicablePercent>
         </ram:ApplicableTradeTax>
     </py:def>
     <rsm:ExchangedDocumentContext>
@@ -76,7 +76,7 @@ this repository contains the full copyright notices and license terms. -->
                 </ram:NetPriceProductTradePrice>
             </ram:SpecifiedLineTradeAgreement>
             <ram:SpecifiedLineTradeDelivery>
-                <ram:BilledQuantity py:attrs="{'unitCode': line.unit.unece_code} if line.unit and line.unit.unece_code else {}">${line.quantity * this.type_sign}</ram:BilledQuantity>
+                <ram:BilledQuantity py:attrs="{'unitCode': line.unit.unece_code} if line.unit and line.unit.unece_code else {}">${format(Decimal(str(line.quantity * this.type_sign)), 'f')}</ram:BilledQuantity>
             </ram:SpecifiedLineTradeDelivery>
             <ram:SpecifiedLineTradeSettlement>
                 <py:for each="tax in line.invoice_taxes">
