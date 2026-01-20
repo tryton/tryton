@@ -117,7 +117,8 @@ it shows this as an exception in the sale's shipment or invoice state.
 For sales that have a shipment or invoice exception you can use the
 `Handle Shipment Exception <wizard-sale.handle.shipment.exception>` or
 `Handle Invoice Exception <wizard-sale.handle.invoice.exception>` wizards
-to recreate the items that need recreating, and ignore the rest.
+to recreate the items that need recreating, and ignore those that must be
+ignored.
 
 .. tip::
 

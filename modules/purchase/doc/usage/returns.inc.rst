@@ -18,8 +18,8 @@ purchase, you must cancel its `Stock Moves <stock:model-stock.move>` and
 `Invoices <account_invoice:model-account.invoice>`.
 Once you have done this you must
 `handle the exceptions <Handling shipment and invoice exceptions>`,
-ensuring that none of the moves or invoices are selected for
-recreation.
+ensuring that all of the moves or invoices are selected to be ignored (and not
+recreated).
 
 .. _Returning purchases:
 

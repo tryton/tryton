@@ -18,8 +18,8 @@ you must cancel its `Customer Shipments <stock:model-stock.shipment.out>` and
 `Invoices <account_invoice:model-account.invoice>`.
 Once you have done this you must
 `handle the exceptions <Handling shipment and invoice exceptions>` this
-generates, ensuring that none of the moves or invoices are selected for
-recreation.
+generates, ensuring that all of the moves or invoices are selected to be
+ignored (and not recreated).
 
 .. _Handling customer returns:
 
