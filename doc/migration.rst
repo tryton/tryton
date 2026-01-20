@@ -171,7 +171,7 @@ Before
 Before
 ~~~~~~
 
-* If ``account_payment`` module is activated, remove ``account`` if ``line`` is
+* If ``account_payment_clearing`` module is activated, remove ``account`` if ``line`` is
   set:
 
   .. code-block:: SQL
