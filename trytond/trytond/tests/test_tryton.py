@@ -607,7 +607,8 @@ class ModuleTestCase(_DBTestCase):
                 for tfield in target._fields.values():
                     if (tfield._type == 'one2many'
                             and tfield.model_name == mname
-                            and tfield.field == depend):
+                            and tfield.field == depend
+                            and not tfield.readonly):
                         self.assertIn('_parent_%s' % depend, parent_depends,
                             msg='Missing "_parent_%s" in %s' % (
                                 depend, qualname))
