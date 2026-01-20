@@ -86,7 +86,10 @@ class Invoice(Model):
         tmpl = self._get_template(template)
         if not tmpl:
             raise NotImplementedError
-        return (tmpl.generate(this=self, specification=specification)
+        return (tmpl.generate(
+                this=self,
+                specification=specification,
+                Decimal=Decimal)
             .filter(remove_comment)
             .render()
             .encode('utf-8'))
