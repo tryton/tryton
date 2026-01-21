@@ -65,7 +65,7 @@ class TrytondWSGI(object):
                 })
         self.protocols = [JSONProtocol, XMLProtocol]
         self.error_handlers = []
-        self.dev = False
+        self.dev = bool(int(os.getenv('TRYTOND_DEV', 0)))
 
     def route(self, string, methods=None, defaults=None):
         def decorator(func):
