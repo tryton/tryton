@@ -3,12 +3,17 @@
 
 import datetime
 import json
+from base64 import b64encode
 from decimal import Decimal
 
+from trytond.pool import Pool
 from trytond.protocols.jsonrpc import JSONDecoder, JSONEncoder, JSONRequest
+from trytond.protocols.wrappers import (
+    HTTPStatus, Response, user_application, with_pool, with_transaction)
 from trytond.protocols.xmlrpc import XMLRequest, client
-from trytond.tests.test_tryton import TestCase
+from trytond.tests.test_tryton import Client, RouteTestCase, TestCase
 from trytond.tools.immutabledict import ImmutableDict
+from trytond.wsgi import TrytondWSGI
 
 
 def _identity(x):
@@ -130,3 +135,82 @@ class XMLTestCase(DumpsLoadsMixin, TestCase):
         result, _ = client.loads(s)
         result, = result
         self.assertEqual(result, Decimal('3.141592653589793'))
+
+
+class UserApplication(RouteTestCase):
+    module = 'res'
+
+    @classmethod
+    def setUpDatabase(cls):
+        pool = Pool()
+        User = pool.get('res.user')
+        UserApplication = pool.get('res.user.application')
+
+        UserApplication.application.selection.append(('test', "Test"))
+
+        User.create([{
+                    'login': 'user',
+                    'applications': [('create', [{
+                                    'key': 'secret_key',
+                                    'application': 'test',
+                                    'state': 'validated',
+                                    }])],
+                    }])
+
+    def test_authorization_bearer(self):
+        app = TrytondWSGI()
+        test_application = user_application('test')
+
+        @app.route('/<database_name>/test/user_application')
+        @with_pool
+        @with_transaction()
+        @test_application
+        def _route(request, pool):
+            return ''
+
+        client = Client(app, Response)
+        response = client.get(
+            f'/{self.db_name}/test/user_application',
+            headers=[
+                ('Authorization', 'bearer secret_key'),
+                ])
+        self.assertEqual(response.status_code, HTTPStatus.OK)
+
+    def test_authorization_basic(self):
+        app = TrytondWSGI()
+        test_application = user_application('test')
+
+        @app.route('/<database_name>/test/user_application')
+        @with_pool
+        @with_transaction()
+        @test_application
+        def _route(request, pool):
+            return ''
+
+        client = Client(app, Response)
+        auth = b64encode(b':secret_key').decode('ascii')
+        response = client.get(
+            f'/{self.db_name}/test/user_application',
+            headers=[
+                ('Authorization', f'basic {auth}'),
+                ])
+        self.assertEqual(response.status_code, HTTPStatus.OK)
+
+    def test_authorization_bad_auth(self):
+        app = TrytondWSGI()
+        test_application = user_application('test')
+
+        @app.route('/<database_name>/test/user_application')
+        @with_pool
+        @with_transaction()
+        @test_application
+        def _route(request, pool):
+            return ''
+
+        client = Client(app, Response)
+        response = client.get(
+            f'/{self.db_name}/test/user_application',
+            headers=[
+                ('Authorization', 'bearer foo'),
+                ])
+        self.assertEqual(response.status_code, HTTPStatus.UNAUTHORIZED)

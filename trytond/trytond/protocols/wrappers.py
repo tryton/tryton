@@ -292,13 +292,17 @@ def user_application(name, json=True):
                 authorization = parse_authorization_header(header)
             if authorization is None:
                 abort(HTTPStatus.UNAUTHORIZED)
-            if authorization.type != 'bearer':
-                abort(HTTPStatus.FORBIDDEN)
 
-            token = getattr(authorization, 'token', '')
+            if authorization.type == 'bearer':
+                token = getattr(authorization, 'token', '')
+            elif authorization.type == 'basic':
+                token = authorization.get('password')
+            else:
+                abort(HTTPStatus.UNAUTHORIZED)
+
             application = UserApplication.check(token, name)
             if not application:
-                abort(HTTPStatus.FORBIDDEN)
+                abort(HTTPStatus.UNAUTHORIZED)
             transaction = Transaction()
             # TODO language
             with transaction.set_user(application.user.id), \

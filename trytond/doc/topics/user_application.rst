@@ -52,8 +52,9 @@ creation of such route.
 
 ``user_application(name[, json])``
    Set the :attr:`~trytond.transaction.Transaction.user` from the
-   ``Authorization`` header using the type ``bearer`` and a valid key for the
-   named user application.
+   ``Authorization`` header using the ``bearer`` type with the user application
+   key, or the ``basic`` type without a username and with the user application
+   key as the password.
 
 User Application Key
 ====================
