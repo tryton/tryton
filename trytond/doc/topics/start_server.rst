@@ -43,6 +43,7 @@ Following environment variables can be set:
  * ``TRYTOND_COROUTINE``: Use coroutine for concurrency.
  * ``TRYTOND_DATABASE_NAMES``: A list of database names in CSV format, using
    python default dialect.
+ * ``TRYTOND_DEV``: A boolean to enable development mode.
 
 .. warning:: You must manage to serve the static files from the web root.
 
