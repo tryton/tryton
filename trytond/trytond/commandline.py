@@ -75,6 +75,7 @@ def get_parser():
     parser.add_argument("-v", "--verbose", action='count',
         dest="verbose", default=0, help="increase verbosity")
     parser.add_argument('--dev', dest='dev', action='store_true',
+        default=bool(int(os.getenv('TRYTOND_DEV', 0))),
         help='enable development mode')
 
     logging_config = os.environ.get('TRYTOND_LOGGING_CONFIG')
