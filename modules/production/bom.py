@@ -173,10 +173,6 @@ class BOMInput(ModelSQL, ModelView):
             })
     phantom_bom = fields.Many2One(
         'production.bom', "Phantom BOM",
-        domain=[If(Eval('product', None),
-                ('id', '=', None),
-                ()),
-            ],
         states={
             'invisible': Bool(Eval('product')),
             'required': ~Bool(Eval('product')),
@@ -199,6 +195,9 @@ class BOMInput(ModelSQL, ModelView):
     def __setup__(cls):
         super().__setup__()
         cls.phantom_bom.domain = [
+            If(Eval('product', None),
+                ('id', '=', None),
+                ()),
             ('phantom', '=', True),
             ('inputs', '!=', None),
             ]
@@ -325,6 +324,9 @@ class BOMOutput(BOMInput):
     def __setup__(cls):
         super().__setup__()
         cls.phantom_bom.domain = [
+            If(Eval('product', None),
+                ('id', '=', None),
+                ()),
             ('phantom', '=', True),
             ('outputs', '!=', None),
             ]
