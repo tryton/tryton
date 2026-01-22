@@ -91,7 +91,7 @@ this repository contains the full copyright notices and license terms. -->
 </cac:LegalMonetaryTotal>
 <cac:CreditNoteLine py:for="line_id, line in enumerate(this.lines, 1)">
     <cbc:ID>${line_id}</cbc:ID>
-    <cbc:CreditedQuantity py:attrs="{'unitCode': line.unit.unece_code if line.unit and line.unit.unece_code else 'C62'}">${-line.quantity}</cbc:CreditedQuantity>
+    <cbc:CreditedQuantity py:attrs="{'unitCode': line.unit.unece_code if line.unit and line.unit.unece_code else 'ZZ'}">${-line.quantity}</cbc:CreditedQuantity>
     <cbc:LineExtensionAmount py:attrs="{'currencyID': this.invoice.currency.code}">${-line.amount}</cbc:LineExtensionAmount>
     <cac:Item>
         <cbc:Description py:if="line.description">${line.description}</cbc:Description>
