@@ -8,5 +8,8 @@ class Uom(metaclass=PoolMeta):
     __name__ = 'product.uom'
 
     unece_code = fields.Char("UNECE Code",
+        domain=[
+            ('unece_code', 'not in', ['ZZ', 'XZZ']),
+            ],
         help="Standard code of "
         "the United Nations Economic Commission for Europe.")
