@@ -166,6 +166,12 @@ class Sale(IdentifierMixin, metaclass=PoolMeta):
                 'web_shop_shopify.msg_identifier_sale_web_shop_unique'),
             ]
 
+    def get_web_url(self, name):
+        url = super().get_web_url(name)
+        if self.shopify_url:
+            url = self.shopify_url
+        return url
+
     def get_web_status_url(self, name):
         url = super().get_web_status_url(name)
         if self.shopify_status_url:

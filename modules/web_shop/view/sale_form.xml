@@ -8,6 +8,8 @@ this repository contains the full copyright notices and license terms. -->
         <label name="web_id"/>
         <field name="web_id"/>
 
+        <label name="web_url"/>
+        <field name="web_url" widget="url" colspan="3"/>
         <label name="web_status_url"/>
         <field name="web_status_url" widget="url" colspan="3"/>
     </xpath>
