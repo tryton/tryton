@@ -329,7 +329,8 @@ class Invoice(Model):
         if (invoiced_quantity := invoice_line.find('./{*}InvoicedQuantity')
                 ) is not None:
             line.quantity = float(invoiced_quantity.text)
-            if (unit_code := invoiced_quantity.get('unitCode')) is not None:
+            if (unit_code := invoiced_quantity.get('unitCode')) not in {
+                    None, 'ZZ', 'XZZ'}:
                 try:
                     line.unit, = UoM.search([
                             ('unece_code', '=', unit_code),
@@ -501,7 +502,8 @@ class Invoice(Model):
         if (credited_quantity := credit_note_line.find('./{*}CreditedQuantity')
                 ) is not None:
             line.quantity = -float(credited_quantity.text)
-            if (unit_code := credited_quantity.get('unitCode')) is not None:
+            if (unit_code := credited_quantity.get('unitCode')) not in {
+                    None, 'ZZ', 'XZZ'}:
                 try:
                     line.unit, = UoM.search([
                             ('unece_code', '=', unit_code),
