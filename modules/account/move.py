@@ -771,7 +771,7 @@ class MoveLineMixin:
                 None: (move, move.id == table.move),
                 }
         else:
-            move = move[None]
+            move, _ = move[None]
         _, operator, operand = domain
         Operator = fields.SQL_OPERATORS[operator]
         date = Coalesce(table.maturity_date, move.date)
