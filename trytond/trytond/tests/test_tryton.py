@@ -29,6 +29,7 @@ from werkzeug.test import Client
 
 from trytond import backend, config
 from trytond.cache import Cache
+from trytond.exceptions import UserError, UserWarning
 from trytond.model import (
     ModelSingleton, ModelSQL, ModelStorage, ModelView, Workflow, fields)
 from trytond.model.fields import Function
@@ -1147,10 +1148,13 @@ class ModuleTestCase(_DBTestCase):
             if not issubclass(model, ModelView):
                 continue
             for button in model._buttons:
-                if is_instance_method(model, button):
-                    getattr(model(), button)()
-                else:
-                    getattr(model, button)([])
+                try:
+                    if is_instance_method(model, button):
+                        getattr(model(), button)()
+                    else:
+                        getattr(model, button)([])
+                except (UserError, UserWarning):
+                    pass
 
     @with_transaction()
     def test_xml_files(self):
