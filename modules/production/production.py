@@ -93,6 +93,7 @@ class Production(
         depends={'company'})
     bom = fields.Many2One('production.bom', 'BOM',
         domain=[
+            ('phantom', '!=', True),
             If(Eval('type') == 'disassembly',
                 ('input_products', '=', Eval('product', -1)),
                 ('output_products', '=', Eval('product', -1)),
