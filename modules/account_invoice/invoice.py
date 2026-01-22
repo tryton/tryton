@@ -108,6 +108,7 @@ class Invoice(
     number = fields.Char("Number", readonly=True)
     number_alnum = fields.Char("Number Alphanumeric", readonly=True)
     number_digit = fields.Integer("Number Digit", readonly=True)
+    number_digit._sql_type = 'BIGINT'
     reference = fields.Char(
         "Reference",
         states={
@@ -1595,7 +1596,7 @@ class Invoice(
                 if self.number is not None else None)
             try:
                 values['number_digit'] = int(
-                    re.sub(r'\D', '', self.number or ''))
+                    re.sub(r'\D', '', self.number or '')[-18:])
             except ValueError:
                 values['number_digit'] = None
         return values
