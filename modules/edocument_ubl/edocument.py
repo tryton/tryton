@@ -6,6 +6,7 @@ import datetime as dt
 import mimetypes
 import os
 from base64 import b64decode, b64encode
+from collections import namedtuple
 from decimal import Decimal
 from io import BytesIO
 from itertools import chain, groupby
@@ -184,13 +185,32 @@ class Invoice(Model):
 
     @property
     def taxes(self):
+        class Tax(namedtuple(
+                    'Tax',
+                    ('type', 'rate', 'unece_category_code', 'unece_code'))):
+            @classmethod
+            def from_line(cls, line):
+                return Tax(
+                    type=line.tax.type,
+                    rate=line.tax.rate,
+                    unece_category_code=line.tax.unece_category_code,
+                    unece_code=line.tax.unece_code)
+        TaxLine = namedtuple('TaxLine', ('base', 'amount', 'tax'))
         for group, lines in groupby(sorted(
                     self.invoice.taxes,
                     key=sortable_values(self._taxes_key)),
                 key=self._taxes_key):
-            lines = list(lines)
-            amount = sum(l.amount for l in lines)
-            yield group, lines, amount
+            tax_lines, tax_amount = [], 0
+            for tax, lines in groupby(sorted(
+                        lines, key=sortable_values(Tax.from_line)),
+                    key=Tax.from_line):
+                amount = base = 0
+                for line in lines:
+                    tax_amount += line.amount
+                    base += line.base
+                    amount += line.amount
+                tax_lines.append(TaxLine(base=base, amount=amount, tax=tax))
+            yield group, tax_lines, amount
 
     def _taxes_key(self, line):
         return ()
