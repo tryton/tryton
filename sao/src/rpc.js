@@ -165,6 +165,7 @@
                 Sao.common.message.run(
                     Sao.i18n.gettext('Error: "%1". Try again later.', err_msg),
                     'tryton-error').always(dfd.reject);
+                console.error(err_msg, error);
             }
         };
 
