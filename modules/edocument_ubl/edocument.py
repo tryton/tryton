@@ -389,13 +389,18 @@ class Invoice(Model):
 
         if not line.product:
             if line.description:
-                similar_lines = Line.search([
-                        ('description', 'ilike', line.description),
-                        ('invoice.company', '=', company),
-                        ('invoice.type', '=', 'in'),
-                        ('invoice.state', 'in',
-                            ['validated', 'posted', 'paid']),
-                        ],
+                similar_domain = [
+                    ('description', 'ilike', line.description),
+                    ('invoice.company', '=', company),
+                    ('invoice.type', '=', 'in'),
+                    ('invoice.state', 'in',
+                        ['validated', 'posted', 'paid']),
+                    ]
+                if line.unit:
+                    similar_domain.append(
+                        ('unit.category', '=', line.unit.category))
+                similar_lines = Line.search(
+                    similar_domain,
                     order=[('invoice.invoice_date', 'DESC')],
                     limit=1)
             else:
@@ -565,13 +570,18 @@ class Invoice(Model):
 
         if not line.product:
             if line.description:
-                similar_lines = Line.search([
-                        ('description', 'ilike', line.description),
-                        ('invoice.company', '=', company),
-                        ('invoice.type', '=', 'in'),
-                        ('invoice.state', 'in',
-                            ['validated', 'posted', 'paid']),
-                        ],
+                similar_domain = [
+                    ('description', 'ilike', line.description),
+                    ('invoice.company', '=', company),
+                    ('invoice.type', '=', 'in'),
+                    ('invoice.state', 'in',
+                        ['validated', 'posted', 'paid']),
+                    ]
+                if line.unit:
+                    similar_domain.append(
+                        ('unit.category', '=', line.unit.category))
+                similar_lines = Line.search(
+                    similar_domain,
                     order=[('invoice.invoice_date', 'DESC')],
                     limit=1)
             else:
