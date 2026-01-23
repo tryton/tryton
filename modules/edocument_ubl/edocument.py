@@ -18,7 +18,7 @@ import genshi.template
 from genshi.template.astutil import ASTCodeGenerator, ASTTransformer
 from lxml import etree
 
-from trytond.i18n import gettext
+from trytond.i18n import gettext, ngettext
 from trytond.model import Model
 from trytond.modules.product import round_price
 from trytond.pool import Pool, PoolMeta
@@ -392,26 +392,48 @@ class Invoice(Model):
         if (invoiced_quantity := invoice_line.find('./{*}InvoicedQuantity')
                 ) is not None:
             line.quantity = float(invoiced_quantity.text)
+            digits = -Decimal(invoiced_quantity.text).as_tuple().exponent
             if (unit_code := invoiced_quantity.get('unitCode')) not in {
                     None, 'ZZ', 'XZZ'}:
                 try:
                     line.unit, = UoM.search([
                             ('unece_code', '=', unit_code),
-                            ], limit=1)
+                            ('digits', '>=', digits),
+                            ],
+                        order=[('digits', 'ASC')],
+                        limit=1)
                 except ValueError:
-                    raise InvoiceError(gettext(
+                    raise InvoiceError(ngettext(
                             'edocument_ubl.msg_unit_not_found',
-                            code=unit_code))
+                            digits,
+                            code=unit_code,
+                            digits=digits))
             else:
                 line.unit = None
         else:
             line.quantity = 1
             line.unit = None
+            digits = 0
 
         line.product = cls._parse_2_item(
             invoice_line.find('./{*}Item'), supplier=supplier)
         if line.product:
             line.on_change_product()
+            if line.unit and line.unit.digits < digits:
+                # Search the unit with enough digits
+                try:
+                    line.unit, = UoM.search([
+                            ('category', '=', line.unit.category),
+                            ('digits', '>=', digits),
+                            ['OR',
+                                ('factor', '=', line.unit.factor),
+                                ('rate', '=', line.unit.rate),
+                                ],
+                            ],
+                        order=[('digits', 'ASC')],
+                        limit=1)
+                except ValueError:
+                    pass
 
         line.description = '\n'.join(e.text for e in chain(
                 invoice_line.iterfind('./{*}Item/{*}Name'),
@@ -640,26 +662,46 @@ class Invoice(Model):
         if (credited_quantity := credit_note_line.find('./{*}CreditedQuantity')
                 ) is not None:
             line.quantity = -float(credited_quantity.text)
+            digits = -Decimal(credited_quantity.text).as_tuple().exponent
             if (unit_code := credited_quantity.get('unitCode')) not in {
                     None, 'ZZ', 'XZZ'}:
                 try:
                     line.unit, = UoM.search([
                             ('unece_code', '=', unit_code),
+                            ('digits', '>=', digits),
                             ], limit=1)
                 except ValueError:
-                    raise InvoiceError(gettext(
+                    raise InvoiceError(ngettext(
                             'edocument_ubl.msg_unit_not_found',
-                            code=unit_code))
+                            digits,
+                            code=unit_code,
+                            digits=digits))
             else:
                 line.unit = None
         else:
             line.quantity = -1
             line.unit = None
+            digits = 0
 
         line.product = cls._parse_2_item(
             credit_note_line.find('./{*}Item'), supplier=supplier)
         if line.product:
             line.on_change_product()
+            if line.unit and line.unit.digits < digits:
+                # Search the unit with enough digits
+                try:
+                    line.unit, = UoM.search([
+                            ('category', '=', line.unit.category),
+                            ('digits', '>=', digits),
+                            ['OR',
+                                ('factor', '=', line.unit.factor),
+                                ('rate', '=', line.unit.rate),
+                                ],
+                            ],
+                        order=[('digits', 'ASC')],
+                        limit=1)
+                except ValueError:
+                    pass
 
         line.description = '\n'.join(e.text for e in chain(
                 credit_note_line.iterfind('./{*}Item/{*}Name'),

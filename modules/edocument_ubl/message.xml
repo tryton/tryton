@@ -17,7 +17,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="text">Could not find a currency with code "%(code)s".</field>
         </record>
         <record model="ir.message" id="msg_unit_not_found">
-            <field name="text">Could not find a unit with UNECE code "%(code)s".</field>
+            <field name="text">Could not find a unit with UNECE code "%(code)s" and at least %(digits)s digit.</field>
+            <field name="text_plural">Could not find a unit with UNECE code "%(code)s" and at least %(digits)s digits.</field>
         </record>
         <record model="ir.message" id="msg_tax_not_found">
             <field name="text">Could not find tax for:
