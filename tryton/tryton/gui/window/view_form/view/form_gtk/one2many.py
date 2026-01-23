@@ -512,8 +512,6 @@ class One2Many(Widget):
         existing_ids = self.field.get_eval(self.record)
         if existing_ids:
             domain = [domain, ('id', 'not in', existing_ids)]
-        removed_ids = self.field.get_removed_ids(self.record)
-        domain = ['OR', domain, ('id', 'in', removed_ids)]
         text = self.wid_text.get_text()
 
         if self._popup:
@@ -621,8 +619,6 @@ class One2Many(Widget):
         existing_ids = self.field.get_eval(self.record)
         if existing_ids:
             domain = [domain, ('id', 'not in', existing_ids)]
-        removed_ids = self.field.get_removed_ids(self.record)
-        domain = ['OR', domain, ('id', 'in', removed_ids)]
         update_completion(self.wid_text, self.record, self.field, model,
             domain=domain)
 
