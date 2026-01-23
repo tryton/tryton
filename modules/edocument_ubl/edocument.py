@@ -22,7 +22,7 @@ from trytond.model import Model
 from trytond.modules.product import round_price
 from trytond.pool import Pool, PoolMeta
 from trytond.rpc import RPC
-from trytond.tools import cached_property, slugify
+from trytond.tools import cached_property, slugify, sortable_values
 from trytond.transaction import Transaction
 
 from .exceptions import InvoiceError
@@ -184,13 +184,16 @@ class Invoice(Model):
 
     @property
     def taxes(self):
-        def key(line):
-            return line.tax.group
-        for group, lines in groupby(
-                sorted(self.invoice.taxes, key=key), key=key):
+        for group, lines in groupby(sorted(
+                    self.invoice.taxes,
+                    key=sortable_values(self._taxes_key)),
+                key=self._taxes_key):
             lines = list(lines)
             amount = sum(l.amount for l in lines)
             yield group, lines, amount
+
+    def _taxes_key(self, line):
+        return ()
 
     @cached_property
     def lines(self):
