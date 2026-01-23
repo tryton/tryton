@@ -260,6 +260,7 @@ class View(
             encode(root_element)
 
     def get_arch(self, name):
+        pool = Pool()
         value = None
         if self.name and self.module:
             path = os.path.join(self.module, 'view', self.name + '.xml')
@@ -268,6 +269,8 @@ class View(
                         subdir='modules', mode='r', encoding='utf-8') as fp:
                     value = fp.read()
             except IOError:
+                if pool.test:
+                    raise
                 logger.exception("failed to open %r", path)
         if not value:
             value = self.data
