@@ -351,7 +351,8 @@ class Invoice(Model):
 
         account_configuration = AccountConfiguration(1)
 
-        line = Line(type='line', company=company, currency=currency)
+        line = Line(
+            type='line', company=company, currency=currency, invoice_type='in')
         if (invoiced_quantity := invoice_line.find('./{*}InvoicedQuantity')
                 ) is not None:
             line.quantity = float(invoiced_quantity.text)
@@ -526,7 +527,8 @@ class Invoice(Model):
 
         account_configuration = AccountConfiguration(1)
 
-        line = Line(type='line', company=company, currency=currency)
+        line = Line(
+            type='line', company=company, currency=currency, invoice_type='in')
         if (credited_quantity := credit_note_line.find('./{*}CreditedQuantity')
                 ) is not None:
             line.quantity = -float(credited_quantity.text)
