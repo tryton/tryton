@@ -339,6 +339,8 @@ class Invoice(Model):
                     raise InvoiceError(gettext(
                             'edocument_ubl.msg_unit_not_found',
                             code=unit_code))
+            else:
+                line.unit = None
         else:
             line.quantity = 1
             line.unit = None
@@ -512,6 +514,8 @@ class Invoice(Model):
                     raise InvoiceError(gettext(
                             'edocument_ubl.msg_unit_not_found',
                             code=unit_code))
+            else:
+                line.unit = None
         else:
             line.quantity = -1
             line.unit = None
