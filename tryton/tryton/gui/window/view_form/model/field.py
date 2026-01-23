@@ -903,9 +903,6 @@ class O2MField(Field):
         self._set_default_value(record)
         super(O2MField, self).state_set(record, states=states)
 
-    def get_removed_ids(self, record):
-        return [x.id for x in record.value[self.name].record_removed]
-
     def domain_get(self, record):
         screen_domain, attr_domain = self.domains_get(record)
         # Forget screen_domain because it only means at least one record

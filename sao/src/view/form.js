@@ -3501,8 +3501,6 @@ function eval_pyson(value){
             var context = this.field.get_search_context(this.record);
             domain = [domain,
                 this.record.expr_eval(this.attributes.add_remove)];
-            var removed_ids = this.field.get_removed_ids(this.record);
-            domain = ['OR', domain, ['id', 'in', removed_ids]];
             var text = this.wid_text.val();
 
             var sequence = this._sequence();
@@ -3768,8 +3766,6 @@ function eval_pyson(value){
             var domain = this.field.get_domain(this.record);
             domain = [domain,
                 this.record.expr_eval(this.attributes.add_remove)];
-            var removed_ids = this.field.get_removed_ids(this.record);
-            domain = ['OR', domain, ['id', 'in', removed_ids]];
             return Sao.common.update_completion(
                 this.wid_text, this.record, this.field, model, domain);
         },
