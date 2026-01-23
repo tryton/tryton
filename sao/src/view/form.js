@@ -3690,8 +3690,6 @@ function eval_pyson(value){
             if (existing_ids.length) {
                 domain = [domain, ['id', 'not in', existing_ids]];
             }
-            var removed_ids = this.field.get_removed_ids(this.record);
-            domain = ['OR', domain, ['id', 'in', removed_ids]];
             var text = this.wid_text.val();
 
             if (this._popup) {
@@ -3984,8 +3982,6 @@ function eval_pyson(value){
             if (existing_ids.length) {
                 domain = [domain, ['id', 'not in', existing_ids]];
             }
-            var removed_ids = this.field.get_removed_ids(this.record);
-            domain = ['OR', domain, ['id', 'in', removed_ids]];
             return Sao.common.update_completion(
                 this.wid_text, this.record, this.field, model, domain);
         },
