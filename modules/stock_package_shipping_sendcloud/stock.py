@@ -156,7 +156,11 @@ class CreateShippingSendcloud(Wizard):
         email = address.contact_mechanism_get('email', usage=usage)
         street_lines = (address.street or '').splitlines()
         name = address_name(address, party)
-        company_name = party.full_name if party.full_name != name else None
+        if party.full_name != name:
+            company_name = name
+            name = party.full_name
+        else:
+            company_name = None
         parcel = {
             'name': name,
             'company_name': company_name,
