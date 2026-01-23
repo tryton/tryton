@@ -2207,9 +2207,8 @@
             }
             return path;
         },
-        save_tree_state: function(store=true) {
+        save_tree_state: function(store=true, async=true) {
             var prms = [];
-            var prm;
             var i, len, view, widgets, wi, wlen;
             var parent_ = this.group.parent ? this.group.parent.id : null;
             var clear_cache = function() {
@@ -2228,8 +2227,11 @@
                         widgets = view.widgets[wid_key];
                         for (wi = 0, wlen = widgets.length; wi < wlen; wi++) {
                             if (widgets[wi].screen) {
-                                prm = widgets[wi].screen.save_tree_state(store);
-                                prms.push(prm);
+                                let result = widgets[wi].screen.save_tree_state(
+                                    store, async);
+                                if (async) {
+                                    prms.push(result);
+                                }
                             }
                         }
                     }
@@ -2262,19 +2264,23 @@
                     if (store && parseInt(view.attributes.tree_state, 10)) {
                         var tree_state_model = new Sao.Model(
                                 'ir.ui.view_tree_state');
-                        prm = tree_state_model.execute('set', [
+                        let result = tree_state_model.execute('set', [
                                 this.model_name,
                                 this.get_tree_domain(parent_),
                                 view.children_field,
                                 JSON.stringify(paths),
-                                JSON.stringify(selected_paths)], {})
-                            .then(clear_cache)
-                            .fail(set_session_fail);
-                        prms.push(prm);
+                                JSON.stringify(selected_paths)], {}, async)
+                        if (async) {
+                            result.then(clear_cache)
+                                .fail(set_session_fail);
+                            prms.push(result);
+                        }
                     }
                 }
             }
-            return jQuery.when.apply(jQuery, prms);
+            if (async) {
+                return jQuery.when.apply(jQuery, prms);
+            }
         },
         get_tree_domain: function(parent_) {
             var domain;

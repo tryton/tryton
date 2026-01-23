@@ -104,7 +104,11 @@ var Sao = {
 
     window.onbeforeunload = function(e) {
         if (Sao.main_menu_screen) {
-            Sao.main_menu_screen.save_tree_state(true);
+            try {
+                Sao.main_menu_screen.save_tree_state(true, false);
+            } catch (e) {
+                console.error("save tree failed", e);
+            }
         }
         if (Sao.Tab.tabs.length) {
             var dialog = Sao.i18n.gettext("Are your sure to leave?");
