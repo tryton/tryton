@@ -156,7 +156,7 @@ class FiscalYear(Workflow, ModelSQL, ModelView):
                         prefix=sequence.prefix,
                         suffix=sequence.suffix,
                         type=sequence.type,
-                        number_next_internal=sequence.number_next_internal,
+                        number_next=sequence.number_next,
                         number_increment=sequence.number_increment,
                         padding=sequence.padding,
                         timestamp_rounding=sequence.timestamp_rounding,
