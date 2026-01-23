@@ -157,7 +157,8 @@ class Period(Workflow, ModelSQL, ModelView):
                         padding=sequence.padding,
                         timestamp_rounding=sequence.timestamp_rounding,
                         timestamp_offset=sequence.timestamp_offset,
-                        last_timestamp=sequence.last_timestamp)
+                        last_timestamp=sequence.last_timestamp,
+                        company=sequence.company)
                     new_sequence.save()
                     old2new[sequence_id] = new_sequence.id
 
