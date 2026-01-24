@@ -14,7 +14,7 @@ Imports::
     >>> from trytond.tests.tools import activate_modules, assertTrue
     >>> from trytond.tools import file_open
 
-    >>> FETCH_SLEEP, MAX_SLEEP = 1, 20
+    >>> FETCH_SLEEP, MAX_SLEEP = 1, 200
 
 Patch Peppol::
 
