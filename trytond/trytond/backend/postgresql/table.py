@@ -636,9 +636,9 @@ class IndexMixin:
         else:
             expression_str = str(expression)
             if expression_str.startswith('(') and expression_str.endswith(')'):
-                variables['expression'] = SQL(expression)
+                variables['expression'] = SQL(expression_str)
             else:
-                variables['expression'] = SQL(f'({expression})')
+                variables['expression'] = SQL(f'({expression_str})')
         if usage.options.get('collation'):
             variables['collate'] = SQL('COLLATE {}').format(
                 usage.options['collation'])
