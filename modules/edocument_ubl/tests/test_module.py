@@ -79,16 +79,22 @@ def get_invoice():
                 type='percentage',
                 rate=Decimal('.1'),
                 ),
-            base=Decimal('100.00'),
-            amount=Decimal('10.00'),
+            base=Decimal('105.00'),
+            amount=Decimal('10.50'),
             legal_notice="Legal Notice",
             )]
     product = Mock(spec=Product,
         code="12345",
         type='service',
+        unece_special_service_code=None,
         )
     product.name = "Product"
     product.identifier_get.return_value = '98412345678908'
+    charge = Mock(spec=Product,
+        type='service',
+        unece_special_service_code='ZZZ',
+        )
+    charge.name = "Charge"
     lines = [Mock(spec=InvoiceLine,
             type='line',
             product=product,
@@ -98,6 +104,12 @@ def get_invoice():
             unit_price=Decimal('100.0000'),
             amount=Decimal('100.00'),
             description="Description",
+            taxes=[t.tax for t in taxes],
+            ), Mock(spec=Invoice,
+            type='line',
+            product=charge,
+            quantity=1,
+            amount=Decimal('5.00'),
             taxes=[t.tax for t in taxes],
             )]
     invoice = MagicMock(spec=Invoice,
@@ -120,17 +132,19 @@ def get_invoice():
         lines=lines,
         line_lines=lines,
         taxes=taxes,
-        untaxed_amount=Decimal('100.00'),
-        tax_amount=Decimal('10.00'),
-        total_amount=Decimal('110.00'),
-        amount_to_pay=Decimal('110.00'),
+        untaxed_amount=Decimal('105.00'),
+        tax_amount=Decimal('10.50'),
+        total_amount=Decimal('110.50'),
+        amount_to_pay=Decimal('110.50'),
         lines_to_pay=[Mock(spec=MoveLine,
                 maturity_date=datetime.date.today(),
-                amount=Decimal('110.00'),
+                amount=Decimal('110.50'),
                 )],
         sales=[],
         state='posted',
         )
+    for line in invoice.lines:
+        line.invoice = invoice
     return invoice
 
 

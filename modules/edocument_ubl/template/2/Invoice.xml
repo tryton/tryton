@@ -65,6 +65,17 @@ this repository contains the full copyright notices and license terms. -->
         </cac:PaymentTerms>
     </py:otherwise>
 </py:choose>
+<cac:AllowanceCharge py:for="allowance_charge in this.allowance_charge">
+    <cbc:ChargeIndicator>${'true' if allowance_charge.quantity > 0 else 'false'}</cbc:ChargeIndicator>
+    <py:with vars="reason_code=this.allowance_charge_code(allowance_charge, specification=specification)">
+        <cbc:AllowanceChargeReasonCode py:if="reason_code">${reason_code}</cbc:AllowanceChargeReasonCode>
+    </py:with>
+    <cbc:AllowanceChargeReason>${allowance_charge.product.name}</cbc:AllowanceChargeReason>
+    <cbc:Amount py:attrs="{'currencyID': this.invoice.currency.code}">${abs(allowance_charge.amount)}</cbc:Amount>
+    <cac:TaxCategory py:for="tax in allowance_charge.taxes">
+        ${TaxCategory(tax)}
+    </cac:TaxCategory>
+</cac:AllowanceCharge>
 <cac:TaxTotal py:for="group, lines, amount in this.taxes">
     <cbc:TaxAmount py:attrs="{'currencyID': this.invoice.currency.code}">${amount}</cbc:TaxAmount>
     <cac:TaxSubtotal py:for="line in lines">
@@ -72,11 +83,7 @@ this repository contains the full copyright notices and license terms. -->
         <cbc:TaxAmount py:attrs="{'currencyID': this.invoice.currency.code}">${line.amount}</cbc:TaxAmount>
         <cbc:Percent py:if="line.tax.type == 'percentage' and not (specification or '').startswith('peppol')">${format((line.tax.rate * 100).normalize(), 'f')}</cbc:Percent>
         <cac:TaxCategory>
-            <cbc:ID py:if="line.tax.unece_category_code">${line.tax.unece_category_code}</cbc:ID>
-            <cbc:Percent py:if="line.tax.type == 'percentage'">${format((line.tax.rate * 100).normalize(), 'f')}</cbc:Percent>
-            <cac:TaxScheme py:if="line.tax.unece_code">
-                <cbc:ID>${line.tax.unece_code}</cbc:ID>
-            </cac:TaxScheme>
+            ${TaxCategory(line.tax)}
         </cac:TaxCategory>
     </cac:TaxSubtotal>
 </cac:TaxTotal>
@@ -110,11 +117,7 @@ this repository contains the full copyright notices and license terms. -->
             </py:with>
         </py:if>
         <cac:ClassifiedTaxCategory py:for="tax in line.taxes">
-            <cbc:ID py:if="tax.unece_category_code">${tax.unece_category_code}</cbc:ID>
-            <cbc:Percent py:if="tax.type == 'percentage'">${format((tax.rate * 100).normalize(), 'f')}</cbc:Percent>
-            <cac:TaxScheme py:if="tax.unece_code">
-                <cbc:ID>${tax.unece_code}</cbc:ID>
-            </cac:TaxScheme>
+            ${TaxCategory(tax)}
         </cac:ClassifiedTaxCategory>
     </cac:Item>
     <cac:Price>

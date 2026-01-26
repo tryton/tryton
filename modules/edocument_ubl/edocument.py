@@ -30,6 +30,9 @@ from .exceptions import InvoiceError
 from .party import ISO6523_TYPES
 
 ISO6523 = {v: k for k, v in ISO6523_TYPES.items()}
+PEPPOL_ALLOWANCES = {
+    '41', '42', '60', '62', '63', '64', '65', '66', '67', '68', '70', '71',
+    '88', '95', '100', '102', '103', '104', '105'}
 
 if not hasattr(ASTCodeGenerator, 'visit_NameConstant'):
     def visit_NameConstant(self, node):
@@ -217,7 +220,30 @@ class Invoice(Model):
 
     @cached_property
     def lines(self):
-        return [l for l in self.invoice.lines if l.type == 'line']
+        return [
+            l for l in self.invoice.lines
+            if l.type == 'line' and not self.allowance_charge_code(l)]
+
+    @cached_property
+    def allowance_charge(self):
+        return [
+            l for l in self.invoice.lines
+            if l.type == 'line' and self.allowance_charge_code(l)]
+
+    @classmethod
+    def allowance_charge_code(cls, line, specification=None):
+        if product := line.product:
+            sequence_type = line.invoice.sequence_type
+            if ((line.quantity > 0 and sequence_type == 'invoice')
+                    or (line.quantity < 0 and sequence_type == 'credit_note')):
+                return product.unece_special_service_code
+            elif ((line.quantity < 0 and sequence_type == 'invoice')
+                    or (line.quantity < 0 and sequence_type == 'credit_note')):
+                if (specification or '').startswith('peppol'):
+                    if (product.unece_allowance_charge_code
+                            not in PEPPOL_ALLOWANCES):
+                        return
+                return product.unece_allowance_charge_code
 
     @classmethod
     def parse(cls, document):
