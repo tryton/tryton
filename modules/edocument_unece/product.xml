@@ -24,7 +24,8 @@ this repository contains the full copyright notices and license terms. -->
         <record model="product.uom" id="product.uom_unit">
             <field name="unece_code">C62</field>
         </record>
-
+    </data>
+    <data noupdate="1">
         <record model="product.uom" id="product.uom_kilogram">
             <field name="unece_code">KGM</field>
         </record>
