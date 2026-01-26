@@ -80,7 +80,7 @@ Parse the UBL invoice::
     >>> invoice.tax_amount
     Decimal('292.20')
     >>> len(invoice.lines)
-    5
+    7
 
     >>> attachments = Attachment.find([])
     >>> len(attachments)

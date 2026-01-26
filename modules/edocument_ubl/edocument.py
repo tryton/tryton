@@ -323,11 +323,21 @@ class Invoice(Model):
 
         invoice.payment_term_date = cls._parse_2_payment_term_date(
             root.findall('./{*}PaymentTerms'))
-        invoice.lines = [
+        lines = [
             cls._parse_invoice_2_line(
-                line, company=invoice.company, currency=invoice.currency,
+                line,
+                company=invoice.company,
+                currency=invoice.currency,
                 supplier=supplier)
             for line in root.iterfind('./{*}InvoiceLine')]
+        lines += [
+            cls._parse_invoice_2_allowance_charge(
+                allowance_charge,
+                company=invoice.company,
+                currency=invoice.currency,
+                supplier=supplier)
+            for allowance_charge in root.iterfind('./{*}AllowanceCharge')]
+        invoice.lines = lines
         invoice.taxes = [
             cls._parse_2_tax(
                 tax, company=invoice.company)
@@ -458,6 +468,51 @@ class Invoice(Model):
         return line
 
     @classmethod
+    def _parse_invoice_2_allowance_charge(
+            cls, allowance_charge, company, currency, supplier=None):
+        pool = Pool()
+        AccountConfiguration = pool.get('account.configuration')
+        Line = pool.get('account.invoice.line')
+        Tax = pool.get('account.tax')
+
+        account_configuration = AccountConfiguration(1)
+
+        line = Line(
+            type='line', company=company, currency=currency, invoice_type='in')
+
+        indicator = allowance_charge.findtext('./{*}ChargeIndicator')
+        line.quantity = {'true': 1, 'false': -1}[indicator]
+        line.account = account_configuration.get_multivalue(
+            'default_category_account_expense',
+            company=company.id)
+        line.description = allowance_charge.findtext(
+            './{*}AllowanceChargeReason')
+        line.unit_price = round_price(Decimal(allowance_charge.findtext(
+                    './{*}Amount')))
+
+        taxes = []
+        tax_categories = allowance_charge.iterfind('./{*}TaxCategory')
+        for tax_category in tax_categories:
+            domain = cls._parse_2_tax_category(tax_category)
+            domain.extend([
+                    ['OR',
+                        ('group', '=', None),
+                        ('group.kind', 'in', ['purchase', 'both']),
+                        ],
+                    ('company', '=', company.id),
+                    ])
+            try:
+                tax, = Tax.search(domain, limit=1)
+            except ValueError:
+                raise InvoiceError(gettext(
+                        'edocument_ubl.msg_tax_not_found',
+                        tax_category=etree.tostring(
+                            tax_category, pretty_print=True).decode()))
+            taxes.append(tax)
+        line.taxes = taxes
+        return line
+
+    @classmethod
     def _parse_credit_note_2(cls, root):
         pool = Pool()
         Invoice = pool.get('account.invoice')
@@ -504,11 +559,19 @@ class Invoice(Model):
                         code=currency_code))
         invoice.payment_term_date = cls._parse_2_payment_term_date(
             root.findall('./{*}PaymentTerms'))
-        invoice.lines = [
+        lines = [
             cls._parse_credit_note_2_line(
                 line, company=invoice.company, currency=invoice.currency,
                 supplier=supplier)
             for line in root.iterfind('./{*}CreditNoteLine')]
+        lines += [
+            cls._parse_credit_note_2_allowance_charge(
+                allowance_charge,
+                company=invoice.company,
+                currency=invoice.currency,
+                supplier=supplier)
+            for allowance_charge in root.iterfind('./{*}AllowanceCharge')]
+        invoice.lines = lines
         invoice.taxes = [
             cls._parse_2_tax(
                 tax, company=invoice.company)
@@ -620,6 +683,51 @@ class Invoice(Model):
             tax_categories = credit_note_line.iterfind(
                 './{*}TaxTotal/{*}TaxSubtotal/{*}TaxCategory')
         taxes = []
+        for tax_category in tax_categories:
+            domain = cls._parse_2_tax_category(tax_category)
+            domain.extend([
+                    ['OR',
+                        ('group', '=', None),
+                        ('group.kind', 'in', ['purchase', 'both']),
+                        ],
+                    ('company', '=', company.id),
+                    ])
+            try:
+                tax, = Tax.search(domain, limit=1)
+            except ValueError:
+                raise InvoiceError(gettext(
+                        'edocument_ubl.msg_tax_not_found',
+                        tax_category=etree.tostring(
+                            tax_category, pretty_print=True).decode()))
+            taxes.append(tax)
+        line.taxes = taxes
+        return line
+
+    @classmethod
+    def _parse_credit_note_2_allowance_charge(
+            cls, allowance_charge, company, currency, supplier=None):
+        pool = Pool()
+        AccountConfiguration = pool.get('account.configuration')
+        Line = pool.get('account.invoice.line')
+        Tax = pool.get('account.tax')
+
+        account_configuration = AccountConfiguration(1)
+
+        line = Line(
+            type='line', company=company, currency=currency, invoice_type='in')
+
+        indicator = allowance_charge.findtext('./{*}ChargeIndicator')
+        line.quantity = {'true': -1, 'false': 1}[indicator]
+        line.account = account_configuration.get_multivalue(
+            'default_category_account_expense',
+            company=company.id)
+        line.description = allowance_charge.findtext(
+            './{*}AllowanceChargeReason')
+        line.unit_price = round_price(Decimal(allowance_charge.findtext(
+                    './{*}Amount')))
+
+        taxes = []
+        tax_categories = allowance_charge.iterfind('./{*}TaxCategory')
         for tax_category in tax_categories:
             domain = cls._parse_2_tax_category(tax_category)
             domain.extend([
