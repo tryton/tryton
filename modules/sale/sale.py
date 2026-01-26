@@ -504,8 +504,7 @@ class Sale(
         name, operator, value = domain
         Operator = fields.SQL_OPERATORS[operator]
         column = (
-            Coalesce(table.quotation_date, today) + Coalesce(
-                table.quotation_validity, datetime.timedelta()))
+            Coalesce(table.quotation_date, today) + table.quotation_validity)
         expression = Operator(column, field._domain_value(operator, value))
         if isinstance(expression, operators.In) and not expression.right:
             expression = Literal(False)
