@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<data>
+    <xpath expr="//page[@id='accounting']" position="inside">
+        <newline/>
+        <label name="unece_allowance_charge_code"/>
+        <field name="unece_allowance_charge_code"/>
+        <label name="unece_special_service_code"/>
+        <field name="unece_special_service_code"/>
+    </xpath>
+</data>

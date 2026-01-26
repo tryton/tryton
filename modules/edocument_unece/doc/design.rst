@@ -18,6 +18,21 @@ No. 20 code
    The `Unit of Measure <product:model-product.uom>` concept is introduced by
    the :doc:`Product Module <product:index>`.
 
+.. _concept-product:
+
+Product
+=======
+
+The *Product* gains new properties to store the `UNECE code 5189
+<https://unece.org/fileadmin/DAM/trade/untdid/d16b/tred/tred5189.htm>`_ and the
+`UNECE code 7161
+<https://unece.org/fileadmin/DAM/trade/untdid/i98a/uncl/uncl7161.htm>`_
+
+.. seealso::
+
+   The `Product <product:concept-product>` concept is introduced by the
+   :doc:`Product Module <product:index>`.
+
 .. _model-account.tax:
 
 Tax

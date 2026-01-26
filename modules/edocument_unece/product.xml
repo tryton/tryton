@@ -15,6 +15,12 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">product_uom_form</field>
         </record>
 
+        <record model="ir.ui.view" id="product_template_view_form">
+            <field name="model">product.template</field>
+            <field name="inherit" ref="product.template_view_form"/>
+            <field name="name">product_template_form</field>
+        </record>
+
         <record model="product.uom" id="product.uom_unit">
             <field name="unece_code">C62</field>
         </record>
