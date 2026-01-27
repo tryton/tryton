@@ -2712,7 +2712,8 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
     def origin_name(self):
         if isinstance(self.origin, self.__class__) and self.origin.id >= 0:
             return self.origin.invoice.rec_name
-        return self.origin.rec_name if self.origin else None
+        if self.origin and self.origin.id >= 0:
+            return self.origin.rec_name
 
     @classmethod
     def default_taxes_deductible_rate(cls):
