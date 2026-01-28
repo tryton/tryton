@@ -429,7 +429,8 @@ class Report(URLMixin, PoolBase):
         directory = tempfile.mkdtemp(prefix='trytond_')
         input_extension = FORMAT2EXT.get(input_format, input_format)
         output_extension = FORMAT2EXT.get(output_format, output_format)
-        path = pathlib.Path(directory, report.report_name)
+        path = pathlib.Path(
+            directory, report.report_name.replace(os.extsep, '_'))
         input_path = path.with_suffix(os.extsep + input_extension)
         output_path = path.with_suffix(os.extsep + output_extension)
         mode = 'w+' if isinstance(data, str) else 'wb+'
