@@ -500,6 +500,7 @@ class Invoice(Model):
         AccountConfiguration = pool.get('account.configuration')
         Line = pool.get('account.invoice.line')
         Tax = pool.get('account.tax')
+        Product = pool.get('product.product')
 
         account_configuration = AccountConfiguration(1)
 
@@ -508,6 +509,19 @@ class Invoice(Model):
 
         indicator = allowance_charge.findtext('./{*}ChargeIndicator')
         line.quantity = {'true': 1, 'false': -1}[indicator]
+
+        line.product = None
+        if code := allowance_charge.findtext('./{*}AllowanceChargeReasonCode'):
+            try:
+                line.product, = Product.search(['OR',
+                        ('unece_allowance_charge_code', '=', code),
+                        ('unece_special_service_code', '=', code),
+                        ], limit=1)
+            except ValueError:
+                pass
+        if line.product:
+            line.on_change_product()
+
         line.account = account_configuration.get_multivalue(
             'default_category_account_expense',
             company=company.id)
@@ -736,6 +750,7 @@ class Invoice(Model):
         AccountConfiguration = pool.get('account.configuration')
         Line = pool.get('account.invoice.line')
         Tax = pool.get('account.tax')
+        Product = pool.get('product.product')
 
         account_configuration = AccountConfiguration(1)
 
@@ -744,6 +759,19 @@ class Invoice(Model):
 
         indicator = allowance_charge.findtext('./{*}ChargeIndicator')
         line.quantity = {'true': -1, 'false': 1}[indicator]
+
+        line.product = None
+        if code := allowance_charge.findtext('./{*}AllowanceChargeReasonCode'):
+            try:
+                line.product, = Product.search(['OR',
+                        ('unece_allowance_charge_code', '=', code),
+                        ('unece_special_service_code', '=', code),
+                        ], limit=1)
+            except ValueError:
+                pass
+        if line.product:
+            line.on_change_product()
+
         line.account = account_configuration.get_multivalue(
             'default_category_account_expense',
             company=company.id)
