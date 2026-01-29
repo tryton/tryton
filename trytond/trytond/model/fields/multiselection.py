@@ -90,8 +90,7 @@ class MultiSelection(SelectionMixin, Field):
         if operator not in {'in', 'not in'}:
             return super().convert_domain(domain, tables, Model)
         database = Transaction().database
-        table, _ = tables[None]
-        raw_column = self.sql_column(table)
+        raw_column = self.sql_column(tables, Model)
         if value is None:
             expression = Literal(False)
         elif isinstance(value, str):

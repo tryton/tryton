@@ -42,7 +42,7 @@ class Geometry(fields.Field):
 
         assert operator in GEOGRAPHIC_OPERATORS
 
-        column = self.sql_column(table)
+        column = self.sql_column(tables, Model)
 
         if operator in {'=', '!='} and value is Null:
             Operator = SQL_OPERATORS[operator]

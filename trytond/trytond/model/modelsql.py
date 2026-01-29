@@ -1192,6 +1192,7 @@ class ModelSQL(ModelStorage):
             history_clause = (column <= Transaction().context['_datetime'])
             history_order = (column.desc, Column(table, '__id').desc)
             history_limit = 1
+        tables = {None: (table, None)}
 
         columns = {}
         for f in all_fields:
@@ -1200,7 +1201,7 @@ class ModelSQL(ModelStorage):
                 if f in _TABLE_QUERY_COLUMNS and cls._is_table_query():
                     column = _TABLE_QUERY_COLUMNS[f]
                 else:
-                    column = field.sql_column(table)
+                    column = field.sql_column(tables, cls)
                 columns[f] = column.as_(f)
                 if backend.name == 'sqlite':
                     columns[f].output_name += ' [%s]' % field.sql_type().base
@@ -1241,7 +1242,6 @@ class ModelSQL(ModelStorage):
             if 'id' not in fields_names:
                 columns['id'] = table.id.as_('id')
 
-            tables = {None: (table, None)}
             if domain:
                 tables, dom_exp = cls.search_domain(
                     domain, active_test=False, tables=tables)
@@ -1581,10 +1581,9 @@ class ModelSQL(ModelStorage):
 
         tree_ids = {}
         for fname in cls._mptt_fields:
-            field = cls._fields[fname]
             tree_ids[fname] = []
             for sub_ids in grouped_slice(ids):
-                where = reduce_ids(field.sql_column(table), sub_ids)
+                where = reduce_ids(Column(table, fname), sub_ids)
                 cursor.execute(*table.select(table.id, where=where))
                 tree_ids[fname] += [x[0] for x in cursor]
 
@@ -1841,9 +1840,8 @@ class ModelSQL(ModelStorage):
                         rule_domain, active_test=False, tables=tables)
                     expression &= domain_exp
                 main_table, _ = tables[None]
-                table = convert_from(None, tables)
                 columns = cls.__searched_columns(
-                    main_table, eager=not count and not query)
+                    tables, eager=not count and not query)
 
                 o_idx = 0
                 for oexpr, otype in order:
@@ -1858,6 +1856,7 @@ class ModelSQL(ModelStorage):
                         orderings.extend([otype] * len(forder))
                 done_orderings = True
 
+                table = convert_from(None, tables)
                 union_tables.append(table.select(
                         *columns, where=expression))
             expression = None
@@ -1874,7 +1873,8 @@ class ModelSQL(ModelStorage):
         return tables, expression, orderings
 
     @classmethod
-    def __searched_columns(cls, table, *, eager=False, history=False):
+    def __searched_columns(cls, tables, *, eager=False, history=False):
+        table, _ = tables[None]
         columns = [table.id.as_('id')]
         if (cls._history and Transaction().context.get('_datetime')
                 and (eager or history)):
@@ -1884,7 +1884,7 @@ class ModelSQL(ModelStorage):
 
         if eager:
             table_query = cls._is_table_query()
-            columns += [f.sql_column(table).as_(n)
+            columns += [f.sql_column(tables, cls).as_(n)
                 for n, f in sorted(cls._fields.items())
                 if not hasattr(f, 'get')
                     and n != 'id'
@@ -1955,16 +1955,20 @@ class ModelSQL(ModelStorage):
             order_by = cls.__search_order(order, tables)
 
         # compute it here because __search_order might modify tables
-        table = convert_from(None, tables)
         if query:
             columns = [main_table.id.as_('id')]
         else:
-            columns = cls.__searched_columns(main_table, eager=True)
+            columns = cls.__searched_columns(tables, eager=True)
+            if union_orderings:
+                columns = [
+                    Column(main_table, c.output_name).as_(c.output_name)
+                    for c in columns]
             if backend.name == 'sqlite':
                 for column in columns:
                     field = cls._fields.get(column.output_name)
                     if field:
                         column.output_name += ' [%s]' % field.sql_type().base
+        table = convert_from(None, tables)
         select = table.select(
             *columns, where=expression, limit=limit, offset=offset,
             order_by=order_by)

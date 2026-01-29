@@ -146,14 +146,13 @@ class Selection(SelectionMixin, Field):
 
     @order_method
     def convert_order(self, name, tables, Model):
-        table, _ = tables[None]
         selections = Model.fields_get([name])[name]['selection']
         if not isinstance(selections, (tuple, list)):
             if not is_instance_method(Model, selections):
                 selections = getattr(Model, selections)()
             else:
                 selections = []
-        column = self.sql_column(table)
+        column = self.sql_column(tables, Model)
         if not self.sort:
             else_ = len(selections) + 1
             selections = ((k, i) for i, (k, v) in enumerate(selections))

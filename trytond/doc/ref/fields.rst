@@ -191,9 +191,10 @@ Instance methods:
 
     Return the SQL expression with cast with the type of the field.
 
-.. method:: Field.sql_column(table)
+.. method:: Field.sql_column(tables, Model)
 
-    Return the Column instance based on table.
+    Return the Column or SQL expression instance for the field.
+    :ref:`tables <ref-tables>` could be updated to add new joins.
 
 .. method:: Field.set_rpc(model)
 

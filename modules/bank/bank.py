@@ -245,7 +245,7 @@ class AccountNumber(DeactivableMixin, sequence_ordered(), ModelSQL, ModelView):
         Operator = fields.SQL_OPERATORS[operator]
         result = None
         for field in (cls.number, cls.number_compact):
-            column = field.sql_column(table)
+            column = field.sql_column(tables, cls)
             expression = Operator(column, field._domain_value(operator, value))
             if isinstance(expression, operators.In) and not expression.right:
                 expression = Literal(False)

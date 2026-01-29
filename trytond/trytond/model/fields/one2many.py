@@ -338,8 +338,11 @@ class One2Many(Field):
         else:
             target = Target.__table__()
             history_where = None
+        target_tables = {
+            None: (target, None),
+            }
         origin_field = Target._fields[self.field]
-        origin = getattr(Target, self.field).sql_column(target)
+        origin = getattr(Target, self.field).sql_column(target_tables, Target)
         origin_where = None
         if origin_field._type == 'reference':
             origin_where = origin.like(Model.__name__ + ',%')
@@ -408,9 +411,6 @@ class One2Many(Field):
             target_domain = [target_domain, rule_domain]
         if self.filter:
             target_domain = [target_domain, self.filter]
-        target_tables = {
-            None: (target, None),
-            }
         tables, expression = Target.search_domain(
             target_domain, tables=target_tables)
         query_table = convert_from(None, target_tables)

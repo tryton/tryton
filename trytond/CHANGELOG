@@ -1,3 +1,4 @@
+* Use tables and Model as arguments for sql_column of the Field
 * Add support for basic authentication for user application
 * Support the conversion of MJML reports to HTML
 * Allow filtering users to be notified by cron tasks

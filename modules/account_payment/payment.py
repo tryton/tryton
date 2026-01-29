@@ -547,7 +547,7 @@ class Payment(Workflow, ModelSQL, ModelView, ChatMixin):
     def order_amount(cls, tables):
         table, _ = tables[None]
         context = Transaction().context
-        column = cls.amount.sql_column(table)
+        column = cls.amount.sql_column(tables, cls)
         if isinstance(context.get('amount_order'), Decimal):
             return [Abs(column - abs(context['amount_order']))]
         else:

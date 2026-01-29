@@ -421,7 +421,8 @@ class Field(object):
     def sql_cast(self, expression):
         return Cast(expression, self.sql_type().base)
 
-    def sql_column(self, table):
+    def sql_column(self, tables, Model):
+        table, _ = tables[None]
         return Column(table, self.name)
 
     def _domain_column(self, operator, column):
@@ -451,7 +452,7 @@ class Field(object):
         table, _ = tables[None]
         name, operator, value = domain
         Operator = SQL_OPERATORS[operator]
-        column = self.sql_column(table)
+        column = self.sql_column(tables, Model)
         column = self._domain_column(operator, column)
         expression = Operator(column, self._domain_value(operator, value))
         if isinstance(expression, operators.In) and not expression.right:
@@ -464,8 +465,7 @@ class Field(object):
     @order_method
     def convert_order(self, name, tables, Model):
         "Return a SQL expression to order"
-        table, _ = tables[None]
-        return [self.sql_column(table)]
+        return [self.sql_column(tables, Model)]
 
     def set_rpc(self, model):
         for attribute, decorator, result in (
@@ -680,7 +680,7 @@ class FieldTranslate(Field):
         table, _ = tables[None]
         name, operator, value = domain
         model, join, column = self._get_translation_column(Model, name)
-        column = Coalesce(NullIf(column, ''), self.sql_column(model))
+        column = Coalesce(NullIf(column, ''), Column(model, self.name))
         column = self._domain_column(operator, column)
         Operator = SQL_OPERATORS[operator]
         assert name == self.name
@@ -731,9 +731,9 @@ class FieldTranslate(Field):
         if not self.translate:
             return super().convert_order(name, tables, Model)
         assert name == self.name
-        table, _ = tables[None]
         column = self._get_translation_order(tables, Model, name)
-        return [Coalesce(NullIf(column, ''), self.sql_column(table))]
+        return [
+            Coalesce(NullIf(column, ''), self.sql_column(tables, Model))]
 
     def definition(self, model, language):
         definition = super().definition(model, language)

@@ -437,7 +437,7 @@ class Subdivision(DeactivableMixin, ModelSQL, ModelView):
 
         _, op, value = domain
         Operator = fields.SQL_OPERATORS[op]
-        column = cls.code.sql_column(table)
+        column = cls.code.sql_column(tables, cls)
         if op.endswith('like'):
             if op.endswith('ilike') and cls.code.search_unaccented:
                 database = Transaction().database

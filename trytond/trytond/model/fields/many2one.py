@@ -133,7 +133,7 @@ class Many2One(Field):
         name, operator, ids = domain
         red_sql = reduce_ids(table.id, (i for i in ids if i is not None))
         Target = self.get_target()
-        path_column = getattr(Target, self.path).sql_column(table)
+        path_column = getattr(Target, self.path).sql_column(tables, Target)
         path_column = Coalesce(path_column, '')
         cursor.execute(*table.select(
                 path_column, where=red_sql,
@@ -165,8 +165,8 @@ class Many2One(Field):
         name, operator, ids = domain
         red_sql = reduce_ids(table.id, (i for i in ids if i is not None))
         Target = self.get_target()
-        left = getattr(Target, self.left).sql_column(table)
-        right = getattr(Target, self.right).sql_column(table)
+        left = getattr(Target, self.left).sql_column(tables, Target)
+        right = getattr(Target, self.right).sql_column(tables, Target)
         cursor.execute(*table.select(
                 left, right, where=red_sql,
                 order_by=[(right - left).asc, left.asc]))
@@ -228,7 +228,7 @@ class Many2One(Field):
 
         table, _ = tables[None]
         name, operator, value = domain[:3]
-        column = self.sql_column(table)
+        column = self.sql_column(tables, Model)
         if '.' not in name:
             if operator.endswith('child_of') or operator.endswith('parent_of'):
                 if Target != Model:
@@ -307,7 +307,7 @@ class Many2One(Field):
             expression = column.in_(query)
         else:
             target_domain = [target_domain, rule_domain]
-            target_tables = self._get_target_tables(tables)
+            target_tables = self._get_target_tables(tables, Model)
             target_table, _ = target_tables[None]
             _, expression = Target.search_domain(
                 target_domain, tables=target_tables)
@@ -338,13 +338,13 @@ class Many2One(Field):
 
         table, _ = tables[None]
         if oname == 'id':
-            return [self.sql_column(table)]
+            return [self.sql_column(tables, Model)]
 
         ofield = Target._fields[oname]
-        target_tables = self._get_target_tables(tables)
+        target_tables = self._get_target_tables(tables, Model)
         return ofield.convert_order(oexpr, target_tables, Target)
 
-    def _get_target_tables(self, tables):
+    def _get_target_tables(self, tables, Model):
         Target = self.get_target()
         table, _ = tables[None]
         target_tables = tables.get(self.name)
@@ -364,7 +364,7 @@ class Many2One(Field):
             else:
                 target = Target.__table__()
                 history_condition = None
-            condition = target.id == self.sql_column(table)
+            condition = target.id == self.sql_column(tables, Model)
             if history_condition:
                 condition &= history_condition
             target_tables = {

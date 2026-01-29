@@ -204,10 +204,9 @@ class Reference(SelectionMixin, Field):
         pool = Pool()
         name, operator, value, target = domain[:4]
         Target = pool.get(target)
-        table, _ = tables[None]
         name, target_name = name.split('.', 1)
         assert name == self.name
-        column = self.sql_column(table)
+        column = self.sql_column(tables, Model)
         target_domain = [(target_name,) + tuple(domain[1:3])
             + tuple(domain[4:])]
         if 'active' in Target._fields:

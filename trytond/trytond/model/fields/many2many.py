@@ -384,14 +384,19 @@ class Many2Many(Field):
         else:
             relation = Relation.__table__()
             history_where = None
+        relation_tables = {
+            None: (relation, None),
+            }
         origin_field = Relation._fields[self.origin]
-        origin = getattr(Relation, self.origin).sql_column(relation)
+        origin = getattr(Relation, self.origin).sql_column(
+            relation_tables, Relation)
         origin_where = None
         if origin_field._type == 'reference':
             origin_where = origin.like(Model.__name__ + ',%')
             origin = origin_field.sql_id(origin, Relation)
 
-        target = getattr(Relation, self.target).sql_column(relation)
+        target = getattr(Relation, self.target).sql_column(
+            relation_tables, Relation)
         if '.' not in name:
             if operator.endswith('child_of') or operator.endswith('parent_of'):
                 if Target != Model:
@@ -481,9 +486,6 @@ class Many2Many(Field):
                 relation_domain,
                 (self.target, 'where', self.filter),
                 ]
-        relation_tables = {
-            None: (relation, None),
-            }
         tables, expression = Relation.search_domain(
             relation_domain, tables=relation_tables)
         query_table = convert_from(None, relation_tables)

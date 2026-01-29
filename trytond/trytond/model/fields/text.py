@@ -54,7 +54,7 @@ class FullText(Field):
         table, _ = tables[None]
         name, operator, value = domain
         assert name == self.name
-        column = self.sql_column(table)
+        column = self.sql_column(tables, Model)
         column = self._domain_column(operator, column)
         if operator.endswith('like'):
             if database.has_search_full_text():
@@ -81,8 +81,7 @@ class FullText(Field):
 
     @order_method
     def convert_order(self, name, tables, Model):
-        table, _ = tables[None]
-        column = self.sql_column(table)
+        column = self.sql_column(tables, Model)
         column = self._domain_column('ilike', column)
         column = self._rank_column(column, name, Model)
         if column:

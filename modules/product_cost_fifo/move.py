@@ -61,8 +61,8 @@ class Move(metaclass=PoolMeta):
         field = cls.fifo_quantity_available._field
         Operator = fields.SQL_OPERATORS[operator]
         column = (
-            cls.quantity.sql_column(table)
-            - cls.fifo_quantity.sql_column(table))
+            cls.quantity.sql_column(tables, cls)
+            - cls.fifo_quantity.sql_column(tables, cls))
         expression = Operator(column, field._domain_value(operator, value))
         if isinstance(expression, operators.In) and not expression.right:
             expression = Literal(False)
