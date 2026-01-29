@@ -222,6 +222,17 @@ Default value
 
 See :ref:`default value <topics-fields_default_value>`
 
+Reading
+=======
+
+A class method could be defined for each field which must return a SQL
+expression as column instead of the default one.
+The method signature is::
+
+   column_<field name>(tables)
+
+Where ``tables`` is a nested dictionary, see :ref:`tables <ref-tables>`.
+
 Searching
 =========
 

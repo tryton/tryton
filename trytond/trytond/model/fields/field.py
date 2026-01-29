@@ -206,6 +206,16 @@ def on_change_with_result(fieldname):
     return decorator
 
 
+def column_method(func):
+    @wraps(func)
+    def wrapper(self, tables, Model):
+        method = getattr(Model, f'column_{self.name}', None)
+        if method:
+            return method(tables)
+        return func(self, tables, Model)
+    return wrapper
+
+
 def domain_method(func):
     @wraps(func)
     def wrapper(self, domain, tables, Model):
@@ -421,6 +431,7 @@ class Field(object):
     def sql_cast(self, expression):
         return Cast(expression, self.sql_type().base)
 
+    @column_method
     def sql_column(self, tables, Model):
         table, _ = tables[None]
         return Column(table, self.name)

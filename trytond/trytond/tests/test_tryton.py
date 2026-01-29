@@ -655,7 +655,7 @@ class ModuleTestCase(_DBTestCase):
         def test_methods(mname, model, attr):
             for prefixes in [['default_'],
                     ['on_change_', 'on_change_with_'],
-                    ['order_'], ['domain_'], ['autocomplete_']]:
+                    ['column_'], ['order_'], ['domain_'], ['autocomplete_']]:
                 if attr in {'on_change_with', 'on_change_notify'}:
                     continue
                 # TODO those method should be renamed
