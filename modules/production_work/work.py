@@ -421,7 +421,7 @@ class WorkCycle(Workflow, ModelSQL, ModelView):
 
     def set_duration(self, now):
         if self.duration is None:
-            self.duration = now - self.write_date
+            self.duration = now - (self.write_date or self.create_date)
 
     def set_cost(self):
         if self.cost is None:
