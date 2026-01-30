@@ -270,6 +270,9 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_search_function_missing">
             <field name="text">Missing search function for field "%(field)s" in "%(model)s".</field>
         </record>
+        <record model="ir.message" id="msg_order_function_missing">
+            <field name="text">Missing order function for field "%(field)s" in "%(model)s".</field>
+        </record>
         <record model="ir.message" id="msg_setter_function_missing">
             <field name="text">Missing setter function for field "%(field)s" in "%(model)s".</field>
         </record>

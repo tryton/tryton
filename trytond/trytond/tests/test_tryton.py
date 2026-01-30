@@ -972,6 +972,12 @@ class ModuleTestCase(_DBTestCase):
                             'field': field_name,
                             'type': field._type,
                             })
+                if not field.getter and isinstance(model, ModelSQL):
+                    func_name = f'column_{field_name}'
+                    self.assertTrue(
+                        getattr(model, func_name, None),
+                        msg=f"Missing method {func_name!r} "
+                        f"on model {mname!r} for field {field_name!r}")
                 for func_name in [field.getter, field.setter, field.searcher]:
                     if not func_name:
                         continue

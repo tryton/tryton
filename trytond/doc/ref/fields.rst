@@ -1081,7 +1081,7 @@ Instance methods:
 Function
 --------
 
-.. class:: Function(field, getter[, setter[, searcher[, getter_with_context]]])
+.. class:: Function(field, [getter[, setter[, searcher[, getter_with_context]]]])
 
    A function field can emulate any other given :class:`field <Field>`.
 

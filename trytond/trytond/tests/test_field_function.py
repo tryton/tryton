@@ -125,3 +125,141 @@ class FieldFunctionTestCase(TestCase):
             Model.read([record.id], ['function1', 'function2'])
 
             self.assertEqual(getter.call_count, 1)
+
+    @with_transaction()
+    def test_no_getter(self):
+        "Test no getter"
+        pool = Pool()
+        Model = pool.get('test.function.no_getter')
+
+        record = Model(value=42)
+        record.save()
+
+        self.assertEqual(record.value_inc, 43)
+
+    @with_transaction()
+    def test_no_getter_no_column(self):
+        "Test no column without getter"
+        pool = Pool()
+        Model = pool.get('test.function.no_getter')
+
+        table_handler = Model.__table_handler__()
+
+        self.assertFalse(table_handler.column_exist('value_inc'))
+
+    @with_transaction()
+    def test_no_getter_search(self):
+        "Test search without getter"
+        pool = Pool()
+        Model = pool.get('test.function.no_getter')
+
+        record = Model(value=42)
+        record.save()
+
+        result = Model.search([('value_inc', '=', 43)])
+        self.assertEqual(result, [record])
+
+    @with_transaction()
+    def test_no_getter_order(self):
+        "Test order without getter"
+        pool = Pool()
+        Model = pool.get('test.function.no_getter')
+
+        Model.create([{'value': i} for i in range(10)])
+
+        asc = Model.search([], order=[('value_inc', 'ASC')])
+        asc = [r.value_inc for r in asc]
+        desc = Model.search([], order=[('value_inc', 'DESC')])
+        desc = [r.value_inc for r in desc]
+
+        self.assertEqual(asc, sorted(asc))
+        self.assertEqual(desc, sorted(asc, reverse=True))
+
+    @with_transaction()
+    def test_no_getter_relation(self):
+        "Test no getter with relation"
+        pool = Pool()
+        Model = pool.get('test.function.no_getter.relation')
+        Target = pool.get('test.function.no_getter.target')
+
+        target = Target(name="Test")
+        target.save()
+        record = Model(target=target)
+        record.save()
+
+        self.assertEqual(record.target_name, "Test")
+        self.assertEqual(record.target_target, target)
+
+    @with_transaction()
+    def test_no_getter_search_relation(self):
+        "Test search on relation without getter"
+        pool = Pool()
+        Model = pool.get('test.function.no_getter.relation')
+        Target = pool.get('test.function.no_getter.target')
+
+        target = Target(name="Test")
+        target.save()
+        record = Model(target=target)
+        record.save()
+
+        result = Model.search([('target_name', '=', "Test")])
+
+        self.assertEqual(result, [record])
+
+    @with_transaction()
+    def test_no_getter_search_relation_dotted(self):
+        "Test search on dotted relation without getter"
+        pool = Pool()
+        Model = pool.get('test.function.no_getter.relation')
+        Target = pool.get('test.function.no_getter.target')
+
+        target = Target(name="Test")
+        target.save()
+        record = Model(target=target)
+        record.save()
+
+        result = Model.search([('target_target.name', '=', "Test")])
+
+        self.assertEqual(result, [record])
+
+    @with_transaction()
+    def test_no_getter_order_relation(self):
+        "Test order on relation without getter"
+        pool = Pool()
+        Model = pool.get('test.function.no_getter.relation')
+        Target = pool.get('test.function.no_getter.target')
+
+        for i in range(10):
+            target = Target(name=str(i))
+            target.save()
+            record = Model(target=target)
+            record.save()
+
+        asc = Model.search([], order=[('target_name', 'ASC')])
+        asc = [r.target_name for r in asc]
+        desc = Model.search([], order=[('target_name', 'DESC')])
+        desc = [r.target_name for r in desc]
+
+        self.assertEqual(asc, sorted(asc))
+        self.assertEqual(desc, sorted(asc, reverse=True))
+
+    @with_transaction()
+    def test_no_getter_order_relation_dotted(self):
+        "Test order on dotted relation without getter"
+        pool = Pool()
+        Model = pool.get('test.function.no_getter.relation')
+        Target = pool.get('test.function.no_getter.target')
+
+        for i in range(10):
+            target = Target(name=str(i))
+            target.save()
+            record = Model(target=target)
+            record.save()
+
+        asc = Model.search([], order=[('target_target.name', 'ASC')])
+        asc = [r.target_target.name for r in asc]
+        desc = Model.search([], order=[('target_target.name', 'DESC')])
+        desc = [r.target_target.name for r in desc]
+
+        self.assertEqual(asc, sorted(asc))
+        self.assertEqual(desc, sorted(asc, reverse=True))

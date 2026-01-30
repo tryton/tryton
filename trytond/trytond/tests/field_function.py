@@ -1,6 +1,8 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 
+from sql import Literal
+
 from trytond.model import ModelSQL, ModelStorage, fields
 from trytond.pool import Pool
 from trytond.transaction import Transaction
@@ -107,6 +109,63 @@ class FunctionGetterLocalCache(ModelSQL):
         return index
 
 
+class FunctionNoGetter(ModelSQL):
+    __name__ = 'test.function.no_getter'
+
+    value = fields.Integer("Value")
+    value_inc = fields.Function(fields.Integer("Value Inc"))
+
+    @classmethod
+    def column_value_inc(cls, tables):
+        table, _ = tables[None]
+        return table.value + Literal(1)
+
+
+class FunctionNoGetterRelation(ModelSQL):
+    __name__ = 'test.function.no_getter.relation'
+
+    target = fields.Many2One(
+        'test.function.no_getter.target',
+        "Target")
+    target_name = fields.Function(fields.Char("Target Name"))
+    target_target = fields.Function(
+        fields.Many2One('test.function.no_getter.target', "Target Target"))
+
+    @classmethod
+    def column_target_name(cls, tables):
+        pool = Pool()
+        Target = pool.get('test.function.no_getter.target')
+        table, _ = tables[None]
+        if 'target' not in tables:
+            target = Target.__table__()
+            tables['target'] = {
+                None: (target, table.target == target.id),
+                }
+        else:
+            target, _ = tables['target'][None]
+        return target.name
+
+    @classmethod
+    def column_target_target(cls, tables):
+        pool = Pool()
+        Target = pool.get('test.function.no_getter.target')
+        table, _ = tables[None]
+        if 'target' not in tables:
+            target = Target.__table__()
+            tables['target'] = {
+                None: (target, table.target == target.id),
+                }
+        else:
+            target, _ = tables['target'][None]
+        return target.id
+
+
+class FunctionNoGetterTarget(ModelSQL):
+    __name__ = 'test.function.no_getter.target'
+
+    name = fields.Char("Name")
+
+
 def register(module):
     Pool.register(
         FunctionDefinition,
@@ -115,4 +174,7 @@ def register(module):
         FunctonGetter,
         FunctionGetterContext,
         FunctionGetterLocalCache,
+        FunctionNoGetter,
+        FunctionNoGetterRelation,
+        FunctionNoGetterTarget,
         module=module, type_='model')

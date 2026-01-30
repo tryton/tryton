@@ -1885,6 +1885,7 @@ class ModelStorage(Model):
         multiple_getter = None
         if (field.loading == 'lazy'
                 and isinstance(field, fields.Function)
+                and field.getter
                 and field.getter_multiple(
                     getattr(self.__class__, field.getter))):
             multiple_getter = field.getter

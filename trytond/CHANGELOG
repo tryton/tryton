@@ -1,3 +1,4 @@
+* Support Function field without getter but SQL expression
 * Add support for column_<field name> method
 * Use tables and Model as arguments for sql_column of the Field
 * Add support for basic authentication for user application

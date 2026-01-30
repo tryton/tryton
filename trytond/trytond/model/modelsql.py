@@ -493,7 +493,7 @@ class ModelSQL(ModelStorage):
             if field_name == 'id':
                 continue
             sql_type = field.sql_type()
-            if not sql_type:
+            if not sql_type or isinstance(field, fields.Function):
                 continue
 
             if field_name in cls._defaults:
@@ -610,7 +610,7 @@ class ModelSQL(ModelStorage):
         if cls._history:
             history_table = cls.__table_handler__(history=True)
             for field_name, field in cls._fields.items():
-                if not field.sql_type():
+                if not field.sql_type() or isinstance(field, fields.Function):
                     continue
                 history_table.add_column(field_name, field._sql_type)
 
@@ -782,15 +782,15 @@ class ModelSQL(ModelStorage):
         columns = []
         hcolumns = []
         if not deleted:
-            fields = cls._fields
+            fields_ = cls._fields
         else:
-            fields = {
+            fields_ = {
                 'id': cls.id,
                 'write_uid': cls.write_uid,
                 'write_date': cls.write_date,
                 }
-        for fname, field in sorted(fields.items()):
-            if not field.sql_type():
+        for fname, field in sorted(fields_.items()):
+            if not field.sql_type() or isinstance(field, fields.Function):
                 continue
             columns.append(Column(table, fname))
             hcolumns.append(Column(history, fname))
@@ -834,7 +834,7 @@ class ModelSQL(ModelStorage):
         hcolumns = []
         history_columns = []
         fnames = sorted(n for n, f in cls._fields.items()
-            if f.sql_type())
+            if f.sql_type() and not isinstance(f, fields.Function))
         id_idx = fnames.index('id')
         for fname in fnames:
             columns.append(Column(table, fname))
