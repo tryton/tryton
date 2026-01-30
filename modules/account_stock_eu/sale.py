@@ -42,7 +42,7 @@ class Sale_Incoterm(metaclass=PoolMeta):
                                 self.sale_date)
                         else:
                             to_europe = None
-                    required = (
-                        (from_country != to_country)
-                        and not (from_europe and to_europe))
+                        if (from_country != to_country
+                                and from_europe and to_europe):
+                            required = True
         return required
