@@ -720,6 +720,16 @@ function eval_pyson(value){
             for (i = 0; i < grid_rows.length; i++) {
                 rows.push([]);
             }
+            function set_empty(e) {
+                let empty = true;
+                for (const child of e.children(':not(.tooltip)')) {
+                    if (jQuery(child).css('display') != 'none') {
+                        empty = false;
+                        break;
+                    }
+                }
+                e.toggleClass('empty', empty);
+            };
             var col_start, col_end, row_start, row_end;
             for (var child of this.el.children()) {
                 child = jQuery(child);
@@ -735,27 +745,18 @@ function eval_pyson(value){
                 for (i = row_start; i < row_end; i++) {
                     rows[i - 1].push(child);
                 }
+                set_empty(child);
             }
             var row, col;
-            var is_empty = function(e) {
-                var empty = true;
-                for (const child of e.children(':not(.tooltip)')) {
-                    if (jQuery(child).css('display') != 'none') {
-                        empty = false;
-                        break;
-                    }
-                }
-                return empty;
-            };
             for (i = 0; i < grid_cols.length; i++) {
                 col = cols[i];
-                if (col.every(is_empty)) {
+                if (col.every(e => e.hasClass('empty'))) {
                     grid_cols[i] = "0px";
                 }
             }
             for (i = 0; i < grid_rows.length; i++) {
                 row = rows[i];
-                if (row.every(is_empty)) {
+                if (row.every(e => e.hasClass('empty'))) {
                     grid_rows[i] = "0px";
                 }
             }

@@ -1102,11 +1102,35 @@ img.icon {
         display: grid;
         width: 100%;
         height: 100%;
-        column-gap: 5px;
-        row-gap: 5px;
+
+        // fake gap with margins to remove gap on empty
+        column-gap: 0;
+        row-gap: 0;
+        margin-left: -5px;
+        > * {
+            padding-left: 5px;
+        }
+        > * + * {
+            margin-top: 5px;
+            margin-left: 5px;
+        }
+    }
+    .form-hcontainer{
+        > * + * {
+            margin-top: 0;
+        }
+    }
+    .form-vcontainer{
+        > * + * {
+            margin-left: 0;
+        }
     }
     .form-item {
         display: flex;
+
+        &.empty {
+            display: none;
+        }
 
         > .btn {
             margin: 5px 0;
