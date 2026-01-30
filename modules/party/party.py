@@ -1218,8 +1218,8 @@ class Erase(Wizard):
                     'postal_code', 'city', 'country', 'subdivision'],
                 [None] * 14),
             (ContactMechanism, [('party', '=', party_id)], True,
-                ['value', 'name', 'comment'],
-                [None, None, None]),
+                ['type', 'value', 'name', 'comment'],
+                ['other', '****', None, None]),
             ]
 
     @classmethod

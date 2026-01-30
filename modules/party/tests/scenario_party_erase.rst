@@ -59,5 +59,6 @@ Check fields have been erased::
     >>> address.city
     >>> contact_mechanism.reload()
     >>> contact_mechanism.value
+    '****'
     >>> Attachment.find()
     []

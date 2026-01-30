@@ -74,7 +74,7 @@ class ContactMechanism(
     type = fields.Selection(_TYPES, "Type", required=True, sort=False)
     type_string = type.translated('type')
     value = fields.Char(
-        "Value",
+        "Value", required=True,
         # Add all function fields to ensure to always fill them via on_change
         depends={
             'email', 'website', 'skype', 'sip', 'other_value',
