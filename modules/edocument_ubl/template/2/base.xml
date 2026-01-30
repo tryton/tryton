@@ -45,11 +45,15 @@ this repository contains the full copyright notices and license terms. -->
             <py:when test="(specification or '').startswith('peppol')">
                 <py:with vars="streets = (address.street or '').splitlines()">
                     <cbc:StreetName py:if="len(streets) >= 1">${streets[0]}</cbc:StreetName>
-                    <cbc:AdditionalStreetName py:if="len(streets) >= 2">${street[1]}</cbc:AdditionalStreetName>
+                    <cbc:AdditionalStreetName py:if="len(streets) >= 2">${streets[1]}</cbc:AdditionalStreetName>
                     <cbc:CityName py:if="address.city">${address.city}</cbc:CityName>
                     <cbc:PostalZone py:if="address.postal_code">${address.postal_code}</cbc:PostalZone>
                     <cbc:CountrySubentity py:if="address.subdivision">${address.subdivision.name}</cbc:CountrySubentity>
-                    <cbc:AddressLine py:if="len(streets) >= 3">${streets[2]}</cbc:AddressLine>
+                    <cac:AddressLine py:if="len(streets) >= 3">
+                        <cbc:Line>
+                            ${streets[2]}
+                        </cbc:Line>
+                    </cac:AddressLine>
                 </py:with>
             </py:when>
             <py:otherwise>
