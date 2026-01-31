@@ -86,7 +86,10 @@ class Error(Workflow, ModelView, ModelSQL):
                 table,
                 (table.state, Index.Equality(cardinality='low')),
                 where=table.state.in_(['open', 'processing'])))
-        cls._order = [('id', 'DESC')]
+        cls._order = [
+            ('create_date', 'DESC'),
+            ('id', 'DESC'),
+            ]
         cls._transitions |= {
             ('open', 'processing'),
             ('processing', 'solved'),

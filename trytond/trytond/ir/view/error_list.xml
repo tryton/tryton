@@ -2,6 +2,8 @@
 <!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
 this repository contains the full copyright notices and license terms. -->
 <tree>
+    <field name="create_date" widget="date" string="Date"/>
+    <field name="create_date" widget="time" string="Time"/>
     <field name="rec_name" string="Origin" expand="1"/>
     <field name="summary" expand="2"/>
     <field name="state"/>
