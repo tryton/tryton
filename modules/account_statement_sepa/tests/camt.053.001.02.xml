@@ -109,6 +109,11 @@
                 </BkTxCd>
                 <NtryDtls>
                     <TxDtls>
+                        <AmtDtls>
+                            <TxAmt>
+                                <Amt Ccy="EUR">100.00</Amt>
+                            </TxAmt>
+                        </AmtDtls>
                         <RltdPties>
                             <Cdtr>
                                 <Pty>
