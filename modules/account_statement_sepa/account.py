@@ -79,9 +79,12 @@ class StatementImport(metaclass=PoolMeta):
         statement.total_amount = self.camt_statement_total(camt_statement)
         return statement
 
-    def _camt_amount(self, node):
-        amount = Decimal(node.findtext('./{*}Amt'))
-        if node.findtext('./{*}CdtDbtInd') == 'DBIT':
+    def _camt_amount(self, entry, detail=None):
+        if detail is not None:
+            amount = Decimal(detail.findtext('./{*}AmtDtls/{*}TxAmt/{*}Amt'))
+        else:
+            amount = Decimal(entry.findtext('./{*}Amt'))
+        if entry.findtext('./{*}CdtDbtInd') == 'DBIT':
             amount *= -1
         return amount
 
@@ -152,7 +155,7 @@ class StatementImport(metaclass=PoolMeta):
                 elif booking_date.find('./{*}DtTm') is not None:
                     origin.date = dt.date.fromisoformat(
                         booking_date.findtext('./{*}DtTm')).date()
-            origin.amount = self._camt_amount(entry)
+            origin.amount = self._camt_amount(entry, detail)
             origin.description = self.camt_description(camt_statement, entry)
             if detail is not None:
                 origin.party = self.camt_party(camt_statement, entry, detail)
