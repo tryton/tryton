@@ -313,6 +313,7 @@ class ShipmentInternal(ShippingMixin, metaclass=PoolMeta):
                 name = Warning.format('no_carrier', [shipment])
                 if Warning.check(name):
                     raise PackWarning(
+                        name,
                         gettext('stock_package_shipping'
                             '.msg_shipment_without_carrier',
                             shipment=shipment.rec_name))
