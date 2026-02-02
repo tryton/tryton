@@ -731,13 +731,13 @@ function eval_pyson(value){
                 e.toggleClass('empty', empty);
             };
             var col_start, col_end, row_start, row_end;
+            let style;
             for (var child of this.el.children()) {
-                child = jQuery(child);
-                col_start = parseInt(
-                    child.css('grid-column-start'), 10);
-                col_end = parseInt(child.css('grid-column-end'), 10);
-                row_start = parseInt(child.css('grid-row-start'), 10);
-                row_end = parseInt(child.css('grid-row-end'), 10);
+                style = child.style;
+                col_start = parseInt(style.gridColumnStart, 10);
+                col_end = parseInt(style.gridColumnEnd, 10);
+                row_start = parseInt(style.gridRowStart, 10);
+                row_end = parseInt(style.gridRowEnd, 10);
 
                 for (i = col_start; i < col_end; i++) {
                     cols[i - 1].push(child);
@@ -978,7 +978,7 @@ function eval_pyson(value){
                     .find('> .form-container > .form-item')
                     .children(':not(.tooltip)');
                 for (const child of children) {
-                    if (jQuery(child).css('display') != 'none') {
+                    if (child.style.display !== 'none') {
                         to_collapse = false;
                         break;
                     }
