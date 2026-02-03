@@ -409,3 +409,7 @@ class Template(metaclass=PoolMeta):
             },
         help="Standard code of "
         "the United Nations Economic Commission for Europe.")
+
+
+class Product(metaclass=PoolMeta):
+    __name__ = 'product.product'
