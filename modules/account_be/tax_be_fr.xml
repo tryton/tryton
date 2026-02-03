@@ -140,6 +140,18 @@ this repository contains the full copyright notices and license terms. -->
       <field name="unece_code" depends="edocument_unece">VAT</field>
       <field name="unece_category_code" depends="edocument_unece">G</field>
     </record>
+    <record id="tva_vente_services_0_fr" model="account.tax.template">
+      <field name="name">T.V.A. Vente de services 0%</field>
+      <field name="description">T.V.A. 0%</field>
+      <field name="group" ref="group_tva_vente_services_fr"/>
+      <field name="rate" eval="Decimal('0')"/>
+      <field name="type">percentage</field>
+      <field name="invoice_account" ref="451_fr"/>
+      <field name="credit_note_account" ref="451_fr"/>
+      <field name="account" ref="root_fr"/>
+      <field name="unece_code" depends="edocument_unece">VAT</field>
+      <field name="unece_category_code" depends="edocument_unece">Z</field>
+    </record>
     <record id="tva_vente_services_6_fr" model="account.tax.template">
       <field name="name">T.V.A. Vente de services 6%</field>
       <field name="description">T.V.A. 6%</field>
@@ -529,6 +541,18 @@ this repository contains the full copyright notices and license terms. -->
       <field name="credit_note_account" ref="451_fr"/>
       <field name="account" ref="root_fr"/>
     </record>
+    <record id="tva_achat_frais_biens_0_fr" model="account.tax.template">
+      <field name="name">T.V.A. Achat de services et biens divers déductibles 0%</field>
+      <field name="description">T.V.A. 0%</field>
+      <field name="group" ref="group_tva_achat_fr"/>
+      <field name="rate" eval="Decimal('0')"/>
+      <field name="type">percentage</field>
+      <field name="invoice_account" ref="411_fr"/>
+      <field name="credit_note_account" ref="411_fr"/>
+      <field name="account" ref="root_fr"/>
+      <field name="unece_code" depends="edocument_unece">VAT</field>
+      <field name="unece_category_code" depends="edocument_unece">Z</field>
+    </record>
     <record id="tva_achat_frais_biens_6_fr" model="account.tax.template">
       <field name="name">T.V.A. Achat de services et biens divers déductibles 6%</field>
       <field name="description">T.V.A. 6%</field>
@@ -907,6 +931,13 @@ this repository contains the full copyright notices and license terms. -->
     <record id="tax_code_II_A_00-tva_vente_biens_0_fr" model="account.tax.code.line.template">
       <field name="code" ref="tax_code_II_A_00_fr"/>
       <field name="tax" ref="tva_vente_biens_0_fr"/>
+      <field name="operator">+</field>
+      <field name="amount">base</field>
+      <field name="type">invoice</field>
+    </record>
+    <record id="tax_code_II_A_00-tva_vente_services_0_fr" model="account.tax.code.line.template">
+      <field name="code" ref="tax_code_II_A_00_fr"/>
+      <field name="tax" ref="tva_vente_services_0_fr"/>
       <field name="operator">+</field>
       <field name="amount">base</field>
       <field name="type">invoice</field>

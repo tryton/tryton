@@ -140,6 +140,18 @@ this repository contains the full copyright notices and license terms. -->
       <field name="unece_code" depends="edocument_unece">VAT</field>
       <field name="unece_category_code" depends="edocument_unece">G</field>
     </record>
+    <record id="tva_vente_services_0_nl" model="account.tax.template">
+      <field name="name">BTW 0% Verkoop van diensten</field>
+      <field name="description">T.V.A. 0%</field>
+      <field name="group" ref="group_tva_vente_services_nl"/>
+      <field name="rate" eval="Decimal('0')"/>
+      <field name="type">percentage</field>
+      <field name="invoice_account" ref="451_nl"/>
+      <field name="credit_note_account" ref="451_nl"/>
+      <field name="account" ref="root_nl"/>
+      <field name="unece_code" depends="edocument_unece">VAT</field>
+      <field name="unece_category_code" depends="edocument_unece">Z</field>
+    </record>
     <record id="tva_vente_services_6_nl" model="account.tax.template">
       <field name="name">BTW 6% Verkoop van diensten</field>
       <field name="description">T.V.A. 6%</field>
@@ -529,6 +541,18 @@ this repository contains the full copyright notices and license terms. -->
       <field name="credit_note_account" ref="451_nl"/>
       <field name="account" ref="root_nl"/>
     </record>
+    <record id="tva_achat_frais_biens_0_nl" model="account.tax.template">
+      <field name="name">BTW 0% Aankoop van diverse goederen en diensten</field>
+      <field name="description">T.V.A. 0%</field>
+      <field name="group" ref="group_tva_achat_nl"/>
+      <field name="rate" eval="Decimal('0')"/>
+      <field name="type">percentage</field>
+      <field name="invoice_account" ref="411_nl"/>
+      <field name="credit_note_account" ref="411_nl"/>
+      <field name="account" ref="root_nl"/>
+      <field name="unece_code" depends="edocument_unece">VAT</field>
+      <field name="unece_category_code" depends="edocument_unece">Z</field>
+    </record>
     <record id="tva_achat_frais_biens_6_nl" model="account.tax.template">
       <field name="name">BTW 6% Aankoop van diverse goederen en diensten</field>
       <field name="description">T.V.A. 6%</field>
@@ -907,6 +931,13 @@ this repository contains the full copyright notices and license terms. -->
     <record id="tax_code_II_A_00-tva_vente_biens_0_nl" model="account.tax.code.line.template">
       <field name="code" ref="tax_code_II_A_00_nl"/>
       <field name="tax" ref="tva_vente_biens_0_nl"/>
+      <field name="operator">+</field>
+      <field name="amount">base</field>
+      <field name="type">invoice</field>
+    </record>
+    <record id="tax_code_II_A_00-tva_vente_services_0_nl" model="account.tax.code.line.template">
+      <field name="code" ref="tax_code_II_A_00_nl"/>
+      <field name="tax" ref="tva_vente_services_0_nl"/>
       <field name="operator">+</field>
       <field name="amount">base</field>
       <field name="type">invoice</field>
