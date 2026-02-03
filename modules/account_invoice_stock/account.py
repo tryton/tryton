@@ -68,7 +68,10 @@ class InvoiceLine(metaclass=PoolMeta):
                 (Eval('type') != 'line')
                 | ~Eval('product')),
             })
-    shipments = fields.Function(fields.Char("Shipments"), 'get_shipments')
+    shipments = fields.Function(
+        fields.Char("Shipments"),
+        'get_shipments',
+        searcher='search_shipments')
     correction = fields.Boolean(
         "Correction",
         states={
@@ -113,6 +116,23 @@ class InvoiceLine(metaclass=PoolMeta):
         shipments = {
             m.shipment.rec_name for m in self.stock_moves if m.shipment}
         return ', '.join(sorted(shipments))
+
+    @classmethod
+    def search_shipments(cls, name, clause):
+        pool = Pool()
+        Move = pool.get('stock.move')
+        _, operator, operand, *extra = clause
+        if operator.startswith('!') or operator.startswith('not '):
+            bool_op = 'AND'
+        else:
+            bool_op = 'OR'
+        domain = [bool_op]
+        for shipment, _ in Move.get_shipment():
+            if shipment:
+                domain.append(
+                    ('stock_moves.shipment.rec_name',
+                        operator, operand, shipment, *extra))
+        return domain
 
     @classmethod
     def on_modification(cls, mode, lines, field_names=None):
