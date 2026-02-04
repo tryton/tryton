@@ -687,30 +687,38 @@ var Sao = {
             });
             jQuery('#user-favorites').append(menu);
             Sao.rpc(args, session).then(function(fav) {
-                fav.forEach(function(menu_item) {
-                    var a = jQuery('<a/>', {
-                        'href': '#'
-                    });
-                    var id = menu_item[0];
-                    var li = jQuery('<li/>', {
-                        'role': 'presentation'
-                    });
-                    var icon = Sao.common.ICONFACTORY.get_icon_img(
-                        menu_item[2], {'class': 'favorite-icon'});
-                    a.append(icon);
-                    li.append(a);
-                    a.append(menu_item[1]);
-                    a.click(function(evt) {
-                        evt.preventDefault();
-                        Sao.favorites_menu_clear();
-                        // ids is not defined to prevent to add suffix
-                        Sao.Action.exec_keyword('tree_open', {
-                            'model': Sao.main_menu_screen.model_name,
-                            'id': id,
+                if (!fav.length) {
+                    jQuery('<li/>', {
+                        'class': 'dropdown-header',
+                        'role': 'presentation',
+                    }).text(Sao.i18n.gettext("Check menu entries to add favorites"))
+                    .appendTo(menu);
+                } else {
+                    fav.forEach(function(menu_item) {
+                        var a = jQuery('<a/>', {
+                            'href': '#'
                         });
+                        var id = menu_item[0];
+                        var li = jQuery('<li/>', {
+                            'role': 'presentation'
+                        });
+                        var icon = Sao.common.ICONFACTORY.get_icon_img(
+                            menu_item[2], {'class': 'favorite-icon'});
+                        a.append(icon);
+                        li.append(a);
+                        a.append(menu_item[1]);
+                        a.click(function(evt) {
+                            evt.preventDefault();
+                            Sao.favorites_menu_clear();
+                            // ids is not defined to prevent to add suffix
+                            Sao.Action.exec_keyword('tree_open', {
+                                'model': Sao.main_menu_screen.model_name,
+                                'id': id,
+                            });
+                        });
+                        menu.append(li);
                     });
-                    menu.append(li);
-                });
+                }
             });
         }
     };
@@ -857,6 +865,11 @@ var Sao = {
                     var icon = 'tryton-star';
                     if (!record._values.favorite) {
                         icon += '-border';
+                        cell.attr('title', Sao.i18n.gettext(
+                            "Add to favorites"));
+                    } else {
+                        cell.attr('title', Sao.i18n.gettext(
+                            "Remove from favorites"));
                     }
                     cell.data('star', Boolean(record._values.favorite));
                     Sao.common.ICONFACTORY.get_icon_url(icon)
@@ -886,9 +899,13 @@ var Sao = {
             if (!star) {
                 icon = 'tryton-star';
                 method = 'set';
+                button.attr('title', Sao.i18n.gettext(
+                    "Remove from favorites"));
             } else {
                 icon = 'tryton-star-border';
                 method = 'unset';
+                button.attr('title', Sao.i18n.gettext(
+                    "Add to favorites"));
             }
             button.data('star', !star);
             Sao.common.ICONFACTORY.get_icon_url(icon)
