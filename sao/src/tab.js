@@ -986,10 +986,12 @@
                         revision = revisions[revisions.length - 1][0];
                     }
                     if (revision != this.screen.context._datetime) {
-                        this.screen.clear();
                         // Update group context that will be propagated by
                         // recreating new group
                         this.screen.group._context._datetime = revision;
+                        // clear after updating the datetime such that the tab
+                        // compute already the right URL
+                        this.screen.clear();
                         if (this.screen.current_view.view_type != 'form') {
                             this.screen.search_filter(
                                     this.screen.screen_container
