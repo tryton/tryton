@@ -187,14 +187,16 @@ class Invoice(Model):
     def taxes(self):
         class Tax(namedtuple(
                     'Tax',
-                    ('type', 'rate', 'unece_category_code', 'unece_code'))):
+                    ('type', 'rate', 'unece_category_code', 'unece_code',
+                        'legal_notice'))):
             @classmethod
             def from_line(cls, line):
                 return Tax(
                     type=line.tax.type,
                     rate=line.tax.rate,
                     unece_category_code=line.tax.unece_category_code,
-                    unece_code=line.tax.unece_code)
+                    unece_code=line.tax.unece_code,
+                    legal_notice=line.legal_notice or '')
         TaxLine = namedtuple('TaxLine', ('base', 'amount', 'tax'))
         for group, lines in groupby(sorted(
                     self.invoice.taxes,

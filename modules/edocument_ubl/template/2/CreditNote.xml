@@ -74,6 +74,7 @@ this repository contains the full copyright notices and license terms. -->
         <cac:TaxCategory>
             <cbc:ID py:if="line.tax.unece_category_code">${line.tax.unece_category_code}</cbc:ID>
             <cbc:Percent py:if="line.tax.type == 'percentage'">${format((line.tax.rate * 100).normalize(), 'f')}</cbc:Percent>
+            <cbc:TaxExemptionReason py:if="line.tax.legal_notice">${line.tax.legal_notice}</cbc:TaxExemptionReason>
             <cac:TaxScheme py:if="line.tax.unece_code">
                 <cbc:ID>${line.tax.unece_code}</cbc:ID>
             </cac:TaxScheme>
@@ -109,6 +110,7 @@ this repository contains the full copyright notices and license terms. -->
         <cac:ClassifiedTaxCategory py:for="tax_line in line.invoice_taxes">
             <cbc:ID py:if="tax_line.tax.unece_category_code">${tax_line.tax.unece_category_code}</cbc:ID>
             <cbc:Percent py:if="tax_line.tax.type == 'percentage'">${format((tax_line.tax.rate * 100).normalize(), 'f')}</cbc:Percent>
+            <cbc:TaxExemptionReason py:if="tax_line.tax.legal_notice">${tax_line.tax.legal_notice}</cbc:TaxExemptionReason>
             <cac:TaxScheme py:if="tax_line.tax.unece_code">
                 <cbc:ID>${tax_line.tax.unece_code}</cbc:ID>
             </cac:TaxScheme>
