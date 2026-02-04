@@ -72,7 +72,7 @@ this repository contains the full copyright notices and license terms. -->
     </py:with>
     <cbc:AllowanceChargeReason>${allowance_charge.product.name}</cbc:AllowanceChargeReason>
     <cbc:Amount py:attrs="{'currencyID': this.invoice.currency.code}">${abs(allowance_charge.amount)}</cbc:Amount>
-    <cac:TaxCategory py:for="tax in allowance_charge.taxes">
+    <cac:TaxCategory py:for="tax in allowance_charge.invoice_taxes">
         ${TaxCategory(tax)}
     </cac:TaxCategory>
 </cac:AllowanceCharge>
@@ -116,7 +116,7 @@ this repository contains the full copyright notices and license terms. -->
                 </cac:StandardItemIdentification>
             </py:with>
         </py:if>
-        <cac:ClassifiedTaxCategory py:for="tax in line.taxes">
+        <cac:ClassifiedTaxCategory py:for="tax in line.invoice_taxes">
             ${TaxCategory(tax)}
         </cac:ClassifiedTaxCategory>
     </cac:Item>
