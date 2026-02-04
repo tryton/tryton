@@ -707,9 +707,9 @@ class Shop(metaclass=PoolMeta):
                     query = ' OR '.join(
                         f'id:{id}' for id in context['shopify_orders'])
                 elif last_order_id:
-                    query = f'status:open AND id:>{last_order_id}'
+                    query = f'-status:cancelled AND id:>{last_order_id}'
                 else:
-                    query = 'status:open'
+                    query = '-status:cancelled'
                 orders = shopify.GraphQL().execute(
                     QUERY_ORDERS % {
                         'query': query,
