@@ -354,9 +354,9 @@ class Form(TabContent):
                 and revision < revisions[-1][0]):
             revision = revisions[-1][0]
         if revision != self.screen.context.get('_datetime'):
-            self.screen.clear()
             # Update root group context that will be propagated
             self.screen.group._context['_datetime'] = revision
+            self.screen.clear()
             if self.screen.current_view.view_type != 'form':
                 self.screen.search_filter(
                     self.screen.screen_container.get_text())
