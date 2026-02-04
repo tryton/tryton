@@ -29,6 +29,7 @@ this repository contains the full copyright notices and license terms. -->
       <field name="account" ref="root_nl"/>
       <field name="unece_code" depends="edocument_unece">VAT</field>
       <field name="unece_category_code" depends="edocument_unece">AE</field>
+      <field name="vatex_code">VATEX-EU-AE</field>
     </record>
     <record id="tva_vente_biens_intracommunautaires_0_nl" model="account.tax.template">
       <field name="name">BTW 0% Intracommunautaire verkoop van goederen</field>
@@ -42,6 +43,7 @@ this repository contains the full copyright notices and license terms. -->
       <field name="account" ref="root_nl"/>
       <field name="unece_code" depends="edocument_unece">VAT</field>
       <field name="unece_category_code" depends="edocument_unece">K</field>
+      <field name="vatex_code">VATEX-EU-IC</field>
     </record>
     <record id="tva_vente_biens_hors_communaute_0_nl" model="account.tax.template">
       <field name="name">BTW 0% Extracommunautaire verkoop van goederen</field>
@@ -54,6 +56,7 @@ this repository contains the full copyright notices and license terms. -->
       <field name="account" ref="root_nl"/>
       <field name="unece_code" depends="edocument_unece">VAT</field>
       <field name="unece_category_code" depends="edocument_unece">G</field>
+      <field name="vatex_code">VATEX-EU-G</field>
     </record>
     <record id="tva_vente_biens_0_nl" model="account.tax.template">
       <field name="name">BTW 0% Bijzondere regeling</field>
@@ -114,6 +117,7 @@ this repository contains the full copyright notices and license terms. -->
       <field name="account" ref="root_nl"/>
       <field name="unece_code" depends="edocument_unece">VAT</field>
       <field name="unece_category_code" depends="edocument_unece">AE</field>
+      <field name="vatex_code">VATEX-EU-AE</field>
     </record>
     <record id="tva_vente_services_intracommunautaires_0_nl" model="account.tax.template">
       <field name="name">BTW 0% Intracommunautaire verkoop van diensten</field>
@@ -127,6 +131,7 @@ this repository contains the full copyright notices and license terms. -->
       <field name="account" ref="root_nl"/>
       <field name="unece_code" depends="edocument_unece">VAT</field>
       <field name="unece_category_code" depends="edocument_unece">K</field>
+      <field name="vatex_code">VATEX-EU-IC</field>
     </record>
     <record id="tva_vente_services_hors_communaute_0_nl" model="account.tax.template">
       <field name="name">BTW 0% Extracommunautaire verkoop van diensten</field>
@@ -139,6 +144,7 @@ this repository contains the full copyright notices and license terms. -->
       <field name="account" ref="root_nl"/>
       <field name="unece_code" depends="edocument_unece">VAT</field>
       <field name="unece_category_code" depends="edocument_unece">G</field>
+      <field name="vatex_code">VATEX-EU-G</field>
     </record>
     <record id="tva_vente_services_0_nl" model="account.tax.template">
       <field name="name">BTW 0% Verkoop van diensten</field>
@@ -199,6 +205,7 @@ this repository contains the full copyright notices and license terms. -->
       <field name="account" ref="root_nl"/>
       <field name="unece_code" depends="edocument_unece">VAT</field>
       <field name="unece_category_code" depends="edocument_unece">K</field>
+      <field name="vatex_code">VATEX-EU-IC</field>
     </record>
     <record id="tva_achat_marchandises_coco_6_nl" model="account.tax.template">
       <field name="name">BTW 6% Aankoop van handelsgoederen, grond- en hulpstoffen medecontractanten</field>
@@ -208,6 +215,7 @@ this repository contains the full copyright notices and license terms. -->
       <field name="account" ref="root_nl"/>
       <field name="unece_code" depends="edocument_unece">VAT</field>
       <field name="unece_category_code" depends="edocument_unece">AE</field>
+      <field name="vatex_code">VATEX-EU-AE</field>
     </record>
     <record id="tva_achat_marchandises_coco_6_1_nl" model="account.tax.template">
       <field name="name">BTW 6% Aankoop van handelsgoederen, grond- en hulpstoffen medecontractanten (1)</field>
@@ -264,6 +272,7 @@ this repository contains the full copyright notices and license terms. -->
       <field name="account" ref="root_nl"/>
       <field name="unece_code" depends="edocument_unece">VAT</field>
       <field name="unece_category_code" depends="edocument_unece">AE</field>
+      <field name="vatex_code">VATEX-EU-AE</field>
     </record>
     <record id="tva_achat_marchandises_coco_21_1_nl" model="account.tax.template">
       <field name="name">BTW 21% Aankoop van handelsgoederen, grond- en hulpstoffen medecontractanten (1)</field>
@@ -305,6 +314,7 @@ this repository contains the full copyright notices and license terms. -->
       <field name="account" ref="root_nl"/>
       <field name="unece_code" depends="edocument_unece">VAT</field>
       <field name="unece_category_code" depends="edocument_unece">K</field>
+      <field name="vatex_code">VATEX-EU-IC</field>
     </record>
     <record id="tva_achat_marchandises_intracommunautaires_6_1_nl" model="account.tax.template">
       <field name="name">BTW 6% Intracommunautaire aankoop van handelsgoederen, grond- en hulpstoffen (1)</field>
@@ -363,6 +373,7 @@ this repository contains the full copyright notices and license terms. -->
       <field name="account" ref="root_nl"/>
       <field name="unece_code" depends="edocument_unece">VAT</field>
       <field name="unece_category_code" depends="edocument_unece">K</field>
+      <field name="vatex_code">VATEX-EU-IC</field>
     </record>
     <record id="tva_achat_marchandises_intracommunautaires_12_1_nl" model="account.tax.template">
       <field name="name">BTW 12% Intracommunautaire aankoop van handelsgoederen, grond- en hulpstoffen (1)</field>
@@ -421,6 +432,7 @@ this repository contains the full copyright notices and license terms. -->
       <field name="account" ref="root_nl"/>
       <field name="unece_code" depends="edocument_unece">VAT</field>
       <field name="unece_category_code" depends="edocument_unece">K</field>
+      <field name="vatex_code">VATEX-EU-IC</field>
     </record>
     <record id="tva_achat_marchandises_intracommunautaires_21_1_nl" model="account.tax.template">
       <field name="name">BTW 21% Intracommunautaire aankoop van handelsgoederen, grond- en hulpstoffen (1)</field>
@@ -453,6 +465,7 @@ this repository contains the full copyright notices and license terms. -->
       <field name="account" ref="root_nl"/>
       <field name="unece_code" depends="edocument_unece">VAT</field>
       <field name="unece_category_code" depends="edocument_unece">K</field>
+      <field name="vatex_code">VATEX-EU-IC</field>
     </record>
     <record id="tva_achat_frais_biens_coco_6_nl" model="account.tax.template">
       <field name="name">BTW 6% Aankoop van diverse goederen en diensten medecontractanten</field>
@@ -462,6 +475,7 @@ this repository contains the full copyright notices and license terms. -->
       <field name="account" ref="root_nl"/>
       <field name="unece_code" depends="edocument_unece">VAT</field>
       <field name="unece_category_code" depends="edocument_unece">AE</field>
+      <field name="vatex_code">VATEX-EU-AE</field>
     </record>
     <record id="tva_achat_frais_biens_coco_6_1_nl" model="account.tax.template">
       <field name="name">BTW 6% Aankoop van diverse goederen en diensten medecontractanten (1)</field>
@@ -491,6 +505,7 @@ this repository contains the full copyright notices and license terms. -->
       <field name="account" ref="root_nl"/>
       <field name="unece_code" depends="edocument_unece">VAT</field>
       <field name="unece_category_code" depends="edocument_unece">AE</field>
+      <field name="vatex_code">VATEX-EU-AE</field>
     </record>
     <record id="tva_achat_frais_biens_coco_12_1_nl" model="account.tax.template">
       <field name="name">BTW 12% Aankoop van diverse goederen en diensten medecontractanten (1)</field>
@@ -520,6 +535,7 @@ this repository contains the full copyright notices and license terms. -->
       <field name="account" ref="root_nl"/>
       <field name="unece_code" depends="edocument_unece">VAT</field>
       <field name="unece_category_code" depends="edocument_unece">AE</field>
+      <field name="vatex_code">VATEX-EU-AE</field>
     </record>
     <record id="tva_achat_frais_biens_coco_21_1_nl" model="account.tax.template">
       <field name="name">BTW 21% Aankoop van diverse goederen en diensten medecontractanten (1)</field>
@@ -571,6 +587,7 @@ this repository contains the full copyright notices and license terms. -->
       <field name="account" ref="root_nl"/>
       <field name="unece_code" depends="edocument_unece">VAT</field>
       <field name="unece_category_code" depends="edocument_unece">K</field>
+      <field name="vatex_code">VATEX-EU-IC</field>
     </record>
     <record id="tva_achat_frais_biens_intracommunautaires_6_1_nl" model="account.tax.template">
       <field name="name">BTW 6% Intracommunautaire aankoop van diverse goederen en diensten (1)</field>
@@ -612,6 +629,7 @@ this repository contains the full copyright notices and license terms. -->
       <field name="account" ref="root_nl"/>
       <field name="unece_code" depends="edocument_unece">VAT</field>
       <field name="unece_category_code" depends="edocument_unece">K</field>
+      <field name="vatex_code">VATEX-EU-IC</field>
     </record>
     <record id="tva_achat_frais_biens_intracommunautaires_12_1_nl" model="account.tax.template">
       <field name="name">BTW 12% Intracommunautaire aankoop van diverse goederen en diensten (1)</field>
@@ -653,6 +671,7 @@ this repository contains the full copyright notices and license terms. -->
       <field name="account" ref="root_nl"/>
       <field name="unece_code" depends="edocument_unece">VAT</field>
       <field name="unece_category_code" depends="edocument_unece">K</field>
+      <field name="vatex_code">VATEX-EU-IC</field>
     </record>
     <record id="tva_achat_frais_biens_intracommunautaires_21_1_nl" model="account.tax.template">
       <field name="name">BTW 21% Intracommunautaire aankoop van diverse goederen en diensten (1)</field>
@@ -685,6 +704,7 @@ this repository contains the full copyright notices and license terms. -->
       <field name="account" ref="root_nl"/>
       <field name="unece_code" depends="edocument_unece">VAT</field>
       <field name="unece_category_code" depends="edocument_unece">K</field>
+      <field name="vatex_code">VATEX-EU-IC</field>
     </record>
     <record id="tva_achat_investissement_coco_6_nl" model="account.tax.template">
       <field name="name">BTW 6% Aankoop van bedrijfsmiddelen medecontractanten</field>
@@ -694,6 +714,7 @@ this repository contains the full copyright notices and license terms. -->
       <field name="account" ref="root_nl"/>
       <field name="unece_code" depends="edocument_unece">VAT</field>
       <field name="unece_category_code" depends="edocument_unece">AE</field>
+      <field name="vatex_code">VATEX-EU-AE</field>
     </record>
     <record id="tva_achat_investissement_coco_6_1_nl" model="account.tax.template">
       <field name="name">BTW 6% Aankoop van bedrijfsmiddelen medecontractanten (1)</field>
@@ -723,6 +744,7 @@ this repository contains the full copyright notices and license terms. -->
       <field name="account" ref="root_nl"/>
       <field name="unece_code" depends="edocument_unece">VAT</field>
       <field name="unece_category_code" depends="edocument_unece">AE</field>
+      <field name="vatex_code">VATEX-EU-AE</field>
     </record>
     <record id="tva_achat_investissement_coco_12_1_nl" model="account.tax.template">
       <field name="name">BTW 12% Aankoop van bedrijfsmiddelen medecontractanten (1)</field>
@@ -752,6 +774,7 @@ this repository contains the full copyright notices and license terms. -->
       <field name="account" ref="root_nl"/>
       <field name="unece_code" depends="edocument_unece">VAT</field>
       <field name="unece_category_code" depends="edocument_unece">AE</field>
+      <field name="vatex_code">VATEX-EU-AE</field>
     </record>
     <record id="tva_achat_investissement_coco_21_1_nl" model="account.tax.template">
       <field name="name">BTW 21% Aankoop van bedrijfsmiddelen medecontractanten (1)</field>
@@ -793,6 +816,7 @@ this repository contains the full copyright notices and license terms. -->
       <field name="account" ref="root_nl"/>
       <field name="unece_code" depends="edocument_unece">VAT</field>
       <field name="unece_category_code" depends="edocument_unece">K</field>
+      <field name="vatex_code">VATEX-EU-IC</field>
     </record>
     <record id="tva_achat_investissement_intracommunautaires_6_1_nl" model="account.tax.template">
       <field name="name">BTW 6% Intracommunautaire aankoop van bedrijfsmiddelen (1)</field>
@@ -834,6 +858,7 @@ this repository contains the full copyright notices and license terms. -->
       <field name="account" ref="root_nl"/>
       <field name="unece_code" depends="edocument_unece">VAT</field>
       <field name="unece_category_code" depends="edocument_unece">K</field>
+      <field name="vatex_code">VATEX-EU-IC</field>
     </record>
     <record id="tva_achat_investissement_intracommunautaires_12_1_nl" model="account.tax.template">
       <field name="name">BTW 12% Intracommunautaire aankoop van bedrijfsmiddelen (1)</field>
@@ -875,6 +900,7 @@ this repository contains the full copyright notices and license terms. -->
       <field name="account" ref="root_nl"/>
       <field name="unece_code" depends="edocument_unece">VAT</field>
       <field name="unece_category_code" depends="edocument_unece">K</field>
+      <field name="vatex_code">VATEX-EU-IC</field>
     </record>
     <record id="tva_achat_investissement_intracommunautaires_21_1_nl" model="account.tax.template">
       <field name="name">BTW 21% Intracommunautaire aankoop van bedrijfsmiddelen (1)</field>
