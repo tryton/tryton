@@ -84,6 +84,7 @@ this repository contains the full copyright notices and license terms. -->
     <py:def function="TaxCategory(tax)">
         <cbc:ID py:if="tax.unece_category_code">${tax.unece_category_code}</cbc:ID>
         <cbc:Percent py:if="tax.type == 'percentage'">${format((tax.rate * 100).normalize(), 'f')}</cbc:Percent>
+        <cbc:TaxExemptionReason py:if="tax.legal_notice">${tax.legal_notice}</cbc:TaxExemptionReason>
         <cac:TaxScheme py:if="tax.unece_code">
             <cbc:ID>${tax.unece_code}</cbc:ID>
         </cac:TaxScheme>
