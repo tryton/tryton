@@ -554,10 +554,18 @@
                 }
 
                 jQuery('<button/>', {
+                    'class': 'close',
+                    'type': 'button',
+                    'data-dismiss': 'modal',
+                    'aria-label': Sao.i18n.gettext("Close"),
+                }).append(jQuery('<span/>', {
+                    'aria-hidden': true,
+                }).append('&times;')).prependTo(dialog.header);
+                jQuery('<button/>', {
                     'class': 'btn btn-primary',
-                    type: 'submit',
+                    'type': 'submit',
                     'title': Sao.i18n.gettext("Find"),
-                }).text(Sao.i18n.gettext('Find'))
+                }).text(Sao.i18n.gettext("Find"))
                 .appendTo(dialog.footer);
             }
             this.search_modal.modal('show');
