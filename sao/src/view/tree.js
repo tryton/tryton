@@ -1070,7 +1070,7 @@
                     } else {
                         width = column.col.data('default-width');
                     }
-                    if (width.endsWith('%')) {
+                    if (width && width.endsWith('%')) {
                         width = parseInt(width.slice(0, -1), 10) / 100;
                         if (column.attributes.expand) {
                             width /= parseInt(column.attributes.expand, 10);
