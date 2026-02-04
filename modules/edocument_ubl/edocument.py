@@ -194,7 +194,7 @@ class Invoice(Model):
         class Tax(namedtuple(
                     'Tax',
                     ('type', 'rate', 'unece_category_code', 'unece_code',
-                        'legal_notice'))):
+                        'vatex_code', 'legal_notice'))):
             @classmethod
             def from_line(cls, line):
                 return Tax(
@@ -202,6 +202,7 @@ class Invoice(Model):
                     rate=line.tax.rate,
                     unece_category_code=line.tax.unece_category_code,
                     unece_code=line.tax.unece_code,
+                    vatex_code=getattr(line.tax, 'vatex_code', ''),
                     legal_notice=line.legal_notice or '')
         TaxLine = namedtuple('TaxLine', ('base', 'amount', 'tax'))
         for group, lines in groupby(sorted(
@@ -570,8 +571,11 @@ class Invoice(Model):
                         ],
                     ('company', '=', company.id),
                     ])
+            order = []
+            if hasattr(Tax, 'vatex_code'):
+                order.append(('vatex_code', 'ASC NULLS LAST'))
             try:
-                tax, = Tax.search(domain, limit=1)
+                tax, = Tax.search(domain, limit=1, order=order)
             except ValueError:
                 raise InvoiceError(gettext(
                         'edocument_ubl.msg_tax_not_found',
@@ -1135,6 +1139,8 @@ class Invoice(Model):
 
     @classmethod
     def _parse_2_tax_category(cls, tax_category):
+        pool = Pool()
+        Tax = pool.get('account.tax')
         domain = [
             ('parent', '=', None),
             ]
@@ -1148,6 +1154,13 @@ class Invoice(Model):
         if percent:
             domain.append(('type', '=', 'percentage'))
             domain.append(('rate', '=', Decimal(percent) / 100))
+        if (hasattr(Tax, 'vatex_code')
+                and (tax_exemption_reason_code := tax_category.findtext(
+                        './{*}TaxExemptionReasonCode'))):
+            domain.append(['OR',
+                    ('vatex_code', '=', tax_exemption_reason_code),
+                    ('vatex_code', '=', None),
+                    ])
         return domain
 
     @classmethod

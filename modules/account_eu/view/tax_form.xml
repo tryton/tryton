@@ -3,9 +3,13 @@
 this repository contains the full copyright notices and license terms. -->
 <data>
     <xpath expr="/form/notebook" position="inside">
-        <page id="ec_sales_list" string="EC Sales List">
+        <page id="eu_code" string="European Codes">
             <label name="ec_sales_list_code"/>
             <field name="ec_sales_list_code"/>
+            <newline/>
+
+            <label name="vatex_code"/>
+            <field name="vatex_code"/>
         </page>
     </xpath>
 </data>

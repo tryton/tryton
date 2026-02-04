@@ -9,6 +9,7 @@ from trytond.tests.test_tryton import ModuleTestCase, with_transaction
 class AccountFRTestCase(ModuleTestCase):
     'Test Account FR module'
     module = 'account_fr'
+    extras = ['account_eu']
 
     @with_transaction()
     def test_create_chart(self):

@@ -1,3 +1,4 @@
+* Use VATEX as tax exemption reason code
 * Add support for Python 3.14
 * Remove support for Python 3.9
 * Render payment means
