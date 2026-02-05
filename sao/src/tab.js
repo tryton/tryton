@@ -848,6 +848,8 @@
         switch_: function() {
             return this.modified_save().then(function() {
                 return this.screen.switch_view();
+            }.bind(this), function(result) {
+                return result ? this.screen.switch_view() : null;
             }.bind(this));
         },
         reload: function(test_modified) {
