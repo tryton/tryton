@@ -922,7 +922,9 @@
             });
         },
         switch_: function() {
-            return this.modified_save().then(() => this.screen.switch_view());
+            return this.modified_save().then(
+                () => this.screen.switch_view(),
+                (result) => result ? this.screen.switch_view() : null);
         },
         reload: function(test_modified=true) {
             const reload = () => {
