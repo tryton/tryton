@@ -33,48 +33,54 @@ class NotificationMenu:
         notifications = rpc.execute(
             'model', 'res.notification', 'get', rpc.CONTEXT)
 
-        for notification in notifications:
-            item = Gtk.MenuItem()
-
-            hbox = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
-            hbox.set_margin_top(4)
-            hbox.set_margin_bottom(4)
-            hbox.set_margin_start(6)
-            hbox.set_margin_end(6)
-
-            img = common.IconFactory.get_image(
-                notification['icon'] or 'tryton-notification',
-                Gtk.IconSize.MENU)
-            hbox.pack_start(img, False, False, 0)
-
-            vbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=2)
-
-            label = Gtk.Label(notification['label'])
-            label.set_xalign(0)
-            vbox.pack_start(label, False, False, 0)
-
-            description = Gtk.Label(notification['description'])
-            description.set_xalign(0)
-            description.get_style_context().add_class("dim-label")
-            description.set_max_width_chars(30)
-            description.set_line_wrap(True)
-            description.set_line_wrap_mode(Pango.WrapMode.WORD_CHAR)
-            description.set_ellipsize(Pango.EllipsizeMode.END)
-            description.set_lines(2)
-            vbox.pack_start(description, False, False, 0)
-
-            hbox.pack_start(vbox, True, True, 0)
-            item.add(hbox)
-
-            item.connect('activate', self.open, notification)
-
-            if notification['unread']:
-                style = item.get_style_context()
-                style.add_class('unread-notification')
-
+        if not notifications:
+            item = Gtk.MenuItem(
+                label=_("No notifications at this time"))
+            item.set_sensitive(False)
             menu.append(item)
+        else:
+            for notification in notifications:
+                item = Gtk.MenuItem()
 
-        if notifications:
+                hbox = Gtk.Box(
+                    orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
+                hbox.set_margin_top(4)
+                hbox.set_margin_bottom(4)
+                hbox.set_margin_start(6)
+                hbox.set_margin_end(6)
+
+                img = common.IconFactory.get_image(
+                    notification['icon'] or 'tryton-notification',
+                    Gtk.IconSize.MENU)
+                hbox.pack_start(img, False, False, 0)
+
+                vbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=2)
+
+                label = Gtk.Label(notification['label'])
+                label.set_xalign(0)
+                vbox.pack_start(label, False, False, 0)
+
+                description = Gtk.Label(notification['description'])
+                description.set_xalign(0)
+                description.get_style_context().add_class("dim-label")
+                description.set_max_width_chars(30)
+                description.set_line_wrap(True)
+                description.set_line_wrap_mode(Pango.WrapMode.WORD_CHAR)
+                description.set_ellipsize(Pango.EllipsizeMode.END)
+                description.set_lines(2)
+                vbox.pack_start(description, False, False, 0)
+
+                hbox.pack_start(vbox, True, True, 0)
+                item.add(hbox)
+
+                item.connect('activate', self.open, notification)
+
+                if notification['unread']:
+                    style = item.get_style_context()
+                    style.add_class('unread-notification')
+
+                menu.append(item)
+
             menu.append(Gtk.SeparatorMenuItem())
 
             def open_all_notifications(item):
