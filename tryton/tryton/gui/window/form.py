@@ -629,8 +629,8 @@ class Form(TabContent):
                     b.attrs.get('keyword', 'action') == action_type
                     for b in self.screen.get_buttons())
             set_sensitive(button_id, sensitive and can_be_sensitive)
-        for button_id in ['reload', 'action']:
-            set_sensitive(button_id, sensitive)
+        set_sensitive('action', sensitive)
+        set_sensitive('reload', sensitive or (view_type != 'form'))
         set_sensitive(
             'switch',
             (position or view_type == 'form' or next_view_type != 'form')
