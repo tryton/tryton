@@ -292,7 +292,8 @@ class Form(TabContent):
         update('note', label, 'tryton-note', badge)
 
     def sig_switch(self, widget=None):
-        if not self.modified_save():
+        result = self.modified_save()
+        if not result and result is not None:
             return
         self.screen.switch_view()
 
