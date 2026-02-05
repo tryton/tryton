@@ -1571,9 +1571,8 @@
                 }
                 set_sensitive(button_id, sensitive && can_be_sensitive);
             }
-            for (let button_id of ['reload', 'action']) {
-                set_sensitive(button_id, sensitive);
-            }
+            set_sensitive('action', sensitive);
+            set_sensitive('reload', sensitive || (view_type != 'form'))
             set_sensitive(
                 'switch_',
                 (position || (view_type == 'form') || (next_view_type != 'form')) &&
