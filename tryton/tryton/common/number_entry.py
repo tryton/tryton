@@ -71,7 +71,7 @@ class NumberEntry(Gtk.Entry, Gtk.Editable):
                 if int_size is not None and value:
                     if math.ceil(math.log10(abs(value))) > int_size:
                         return position
-                if dec_size is not None:
+                if dec_size is not None and value:
                     if (round(value, dec_size) != value
                             or value.as_tuple().exponent < -dec_size):
                         return position
