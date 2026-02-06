@@ -1204,13 +1204,13 @@ var Sao = {};
         var modalZIndex = 1040;
         jQuery('.modal.in').each(function(index) {
             var $modal = jQuery(this);
-            modalZIndex++;
+            modalZIndex += 10;
             $modal.css('zIndex', modalZIndex);
-            $modal.next('.modal-backdrop.in').addClass('hidden')
-            .css('zIndex', modalZIndex - 1);
+            $modal.prev('.modal-backdrop.in').addClass('hidden')
+            .css('zIndex', modalZIndex - 5);
         });
         jQuery('.modal.in:visible:last').focus()
-        .next('.modal-backdrop.in').removeClass('hidden');
+        .prev('.modal-backdrop.in').removeClass('hidden');
     }
 
 }());
