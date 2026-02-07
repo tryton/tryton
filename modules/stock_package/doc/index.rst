@@ -1,13 +1,13 @@
+####################
 Stock Package Module
 ####################
 
-The stock package module allows to store packaging information about customer
-and supplier return shipments.
+The *Stock Package Module* adds support for handling packages for shipments.
+It allows stock moves to be grouped into packages, representing physical
+containers such as boxes or pallets.
 
-Package
-*******
+.. toctree::
+   :maxdepth: 2
 
-A package groups together some moves from the same shipment.
-The packages can be organized in a tree structure.
-If a package is defined on a shipment, this one could be set to *Done* only if
-all moves are packaged.
+   design
+   releases
