@@ -26,7 +26,7 @@ def activate_modules(config, modules):
     for module in modules:
         if module.state == 'activated':
             module.click('upgrade')
-        else:
+        elif module.state != 'not activated':
             module.click('activate')
     modules = [x.name for x in Module.find([('state', '=', 'to activate')])]
     Wizard('ir.module.activate_upgrade').execute('upgrade')
