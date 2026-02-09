@@ -5,12 +5,13 @@
 import datetime as dt
 import doctest
 import email.message
+import os
 import sys
 import unittest
 from copy import deepcopy
 from decimal import Decimal
 from io import BytesIO
-from multiprocessing import Process
+from multiprocessing import Process, set_start_method
 from multiprocessing.managers import SharedMemoryManager
 from unittest.mock import patch
 from uuid import uuid4
@@ -1531,7 +1532,18 @@ class EmailTestCase(TestCase):
                 self.assertEqual(email_.format_address(address, name), result)
 
 
+@unittest.skipUnless(hasattr(os, 'fork'), "missing fork")
 class ProcessLocalTestCase(TestCase):
+
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        set_start_method('fork', force=True)
+
+    @classmethod
+    def tearDownClass(cls):
+        super().tearDownClass()
+        set_start_method(None, force=True)
 
     def test_without_fork(self):
         mydata = local()
