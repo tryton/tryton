@@ -636,7 +636,7 @@ class PurchaseRequest(metaclass=PoolMeta):
                 cls.state.selection.append(s)
         cls._buttons.update({
                 'create_quotation': {
-                    'invisible': Eval('state').in_(
+                    'invisible': ~Eval('state').in_(
                         ['draft', 'quotation', 'received']),
                     'depends': ['state'],
                     },
