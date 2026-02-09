@@ -408,7 +408,6 @@ Checking Shipments::
     >>> len(mix.shipments)
     1
 
-    >>> mix_return.click('wait')
     >>> mix_return.click('assign_try')
     >>> mix_return.click('do')
     >>> move_return, = mix_return.moves
@@ -475,7 +474,6 @@ Checking Shipments::
     >>> len(mix.shipments)
     1
 
-    >>> mix_return.click('wait')
     >>> mix_return.click('assign_try')
     >>> mix_return.click('do')
     >>> move_return, = mix_return.moves
