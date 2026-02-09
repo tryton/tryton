@@ -68,6 +68,12 @@ class ModelViewButton(ModelView):
         super().__setup__()
         cls._buttons = {
             'test': {},
+            'test_invisible': {
+                'invisible': Eval('value', 0) == 42,
+                },
+            'test_readonly': {
+                'readonly': Eval('value', 0) == 42,
+                },
             }
 
     @classmethod
@@ -77,6 +83,16 @@ class ModelViewButton(ModelView):
 
     @classmethod
     def test_non_decorated(cls, records):
+        pass
+
+    @classmethod
+    @ModelView.button
+    def test_invisible(cls, records):
+        pass
+
+    @classmethod
+    @ModelView.button
+    def test_readonly(cls, records):
         pass
 
 

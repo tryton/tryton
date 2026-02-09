@@ -282,6 +282,9 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_access_button_error">
             <field name="text">Calling button "%(button)s on "%(model)s" is not allowed.</field>
         </record>
+        <record model="ir.message" id="msg_button_state_record">
+            <field name="text">You can not call "%(button)s" on "%(record)s" of "%(model)s".</field>
+        </record>
 
         <record model="ir.message" id="msg_view_invalid_xml">
             <field name="text">Invalid XML for view "%(name)s".</field>

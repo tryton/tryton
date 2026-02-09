@@ -455,6 +455,25 @@ class ModelView(TestCase):
             TestModel.test([test])
 
     @with_transaction(context={'_check_access': True})
+    def test_button_access_state(self):
+        "Test Button Access with states"
+        pool = Pool()
+        Model = pool.get('test.modelview.button')
+
+        record = Model()
+
+        Model.test_invisible([record])
+        Model.test_readonly([record])
+
+        record = Model(value=42)
+
+        with self.assertRaises(AccessButtonError):
+            Model.test_invisible([record])
+
+        with self.assertRaises(AccessButtonError):
+            Model.test_readonly([record])
+
+    @with_transaction(context={'_check_access': True})
     def test_button_no_rule(self):
         "Test no Button Rule"
         pool = Pool()

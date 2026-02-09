@@ -19,6 +19,7 @@ from . import fields
 from .fields import on_change_result
 from .fields.field import _set_value
 from .model import Model
+from .modelstorage import _pyson_encoder, _record_eval_pyson
 
 __all__ = ['ModelView']
 
@@ -764,9 +765,19 @@ class ModelView(Model):
                         raise AccessButtonError(
                             gettext('ir.msg_access_button_error',
                                 button=func.__name__,
-                                model=cls.__name__))
+                                **cls.__names__()))
                 else:
                     ModelAccess.check(cls.__name__, 'write')
+
+                states = cls._buttons.get(func.__name__, {})
+                for state_name in {'invisible', 'readonly'} & states.keys():
+                    state = _pyson_encoder.encode(states[state_name])
+                    for record in records:
+                        if _record_eval_pyson(record, state, encoded=True):
+                            raise AccessButtonError(
+                                gettext('ir.msg_button_state_record',
+                                    button=func.__name__,
+                                    **cls.__names__(record=record)))
 
             if (transaction.user != 0) and check_access:
                 button_rules = Button.get_rules(
