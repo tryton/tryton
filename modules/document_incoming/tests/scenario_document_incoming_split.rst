@@ -5,7 +5,7 @@ Document Incoming Split Scenario
 Imports::
 
     >>> from proteus import Model
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, assertFalse
     >>> from trytond.tools import file_open
 
 Activate modules::
@@ -37,11 +37,5 @@ Split in 2::
 
     >>> len(document.children)
     2
-
-Process parent document::
-
-    >>> document.click('process')
-    >>> document.state
-    'done'
-    >>> bool(document.result)
-    False
+    >>> assertFalse(document.active)
+    >>> assertFalse(document.result)
