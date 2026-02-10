@@ -64,6 +64,7 @@ Create sale::
     >>> Sale = Model.get('sale.sale')
     >>> sale = Sale()
     >>> sale.party = customer
+    >>> line = sale.lines.new(type='comment')
     >>> sale.save()
 
 The agent is assigned on quotation::
@@ -80,6 +81,7 @@ Agent is not set for yesterday sales::
     >>> sale = Sale()
     >>> sale.sale_date = yesterday
     >>> sale.party = customer
+    >>> line = sale.lines.new(type='comment')
     >>> sale.click('quote')
     >>> sale.state
     'quotation'
@@ -99,6 +101,7 @@ Creating a sale and test agent is assigned::
     >>> sale = Sale()
     >>> sale.party = other_customer
     >>> sale.agent
+    >>> line = sale.lines.new(type='comment')
     >>> sale.click('quote')
     >>> sale.state
     'quotation'

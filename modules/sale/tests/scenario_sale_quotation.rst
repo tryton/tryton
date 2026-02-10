@@ -36,6 +36,7 @@ Create customer::
 Create a quotation::
 
     >>> sale = Sale(party=customer)
+    >>> line = sale.lines.new(type='comment')
     >>> sale.click('quote')
     >>> sale.state
     'quotation'

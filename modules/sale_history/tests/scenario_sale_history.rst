@@ -23,6 +23,7 @@ Create a sale::
    >>> Sale = Model.get('sale.sale')
    >>> sale = Sale()
    >>> sale.party = customer
+   >>> line = sale.lines.new(type='comment')
    >>> sale.click('quote')
 
    >>> sale.number

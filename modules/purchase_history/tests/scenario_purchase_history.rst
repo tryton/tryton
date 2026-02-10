@@ -23,6 +23,7 @@ Create a purchase::
    >>> Purchase = Model.get('purchase.purchase')
    >>> purchase = Purchase()
    >>> purchase.party = supplier
+   >>> line = purchase.lines.new(type='comment')
    >>> purchase.click('quote')
 
    >>> purchase.number
