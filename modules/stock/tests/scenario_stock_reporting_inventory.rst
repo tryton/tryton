@@ -12,6 +12,7 @@ Imports::
     >>> from trytond.ir.date import Date
     >>> from trytond.modules.company.tests.tools import create_company
     >>> from trytond.modules.currency.tests.tools import get_currency
+    >>> from trytond.modules.stock.move import Move
     >>> from trytond.tests.tools import activate_modules, assertEqual
 
     >>> period_close = globals().get('period_close', False)
@@ -21,6 +22,12 @@ Patch today::
 
     >>> mock = patch.object(Date, 'today', return_value=dt.date(2025, 1, 15))
     >>> _ = mock.start()
+
+Patch on_change_with_assignation_required::
+
+    >>> _ = patch.object(
+    ...     Move, 'on_change_with_assignation_required',
+    ...     return_value=False).start()
 
 Activate modules::
 

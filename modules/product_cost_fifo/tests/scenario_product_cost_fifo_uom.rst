@@ -6,12 +6,20 @@ Imports::
 
     >>> import datetime as dt
     >>> from decimal import Decimal
+    >>> from unittest.mock import patch
 
     >>> from proteus import Model
     >>> from trytond.modules.company.tests.tools import create_company, get_company
+    >>> from trytond.modules.stock.move import Move
     >>> from trytond.tests.tools import activate_modules
 
     >>> today = dt.date.today()
+
+Patch on_change_with_assignation_required::
+
+    >>> _ = patch.object(
+    ...     Move, 'on_change_with_assignation_required',
+    ...     return_value=False).start()
 
 Activate modules::
 
