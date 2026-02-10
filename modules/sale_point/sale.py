@@ -335,6 +335,7 @@ class POSSale(Workflow, ModelSQL, ModelView, TaxableMixin, ChatMixin):
         cls.save(sales)
 
     @classmethod
+    @ModelView.button
     @Workflow.transition('posted')
     def post(cls, sales):
         pool = Pool()
