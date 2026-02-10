@@ -143,7 +143,7 @@ Sale 2 more products with not enough stock::
 
 Clean sales::
 
-    >>> Sale.click(Sale.find([]), 'draft')
+    >>> Sale.click(Sale.find([('state', '!=', 'draft')]), 'draft')
     >>> Sale.delete(Sale.find([]))
 
 Sale 6 products with not enough stock::
