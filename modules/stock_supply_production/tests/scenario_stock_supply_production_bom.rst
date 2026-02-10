@@ -15,10 +15,10 @@ Activate modules::
 
     >>> BoM = Model.get('production.bom')
     >>> Location = Model.get('stock.location')
-    >>> Move = Model.get('stock.move')
     >>> ProductTemplate = Model.get('product.template')
     >>> ProductUom = Model.get('product.uom')
     >>> Production = Model.get('production')
+    >>> Shipment = Model.get('stock.shipment.internal')
 
 Create product with a BoM::
 
@@ -55,13 +55,16 @@ Get stock locations::
 
 Create needs for product::
 
-    >>> move = Move()
+    >>> shipment = Shipment(from_location=storage_loc, to_location=lost_loc)
+    >>> move = shipment.moves.new()
     >>> move.product = product
     >>> move.quantity = 2
     >>> move.from_location = storage_loc
     >>> move.to_location = lost_loc
-    >>> move.click('do')
-    >>> move.state
+    >>> shipment.click('wait')
+    >>> shipment.click('assign_force')
+    >>> shipment.click('do')
+    >>> shipment.state
     'done'
 
 Create production request::

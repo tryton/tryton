@@ -15,6 +15,8 @@ Activate modules::
     >>> config = activate_modules(
     ...     ['stock_supply_production', 'production_routing'], create_company)
 
+    >>> Shipment = Model.get('stock.shipment.internal')
+
 Create product::
 
     >>> ProductUom = Model.get('product.uom')
@@ -51,14 +53,16 @@ Get stock locations::
 
 Create a need for product::
 
-    >>> Move = Model.get('stock.move')
-    >>> move = Move()
+    >>> shipment = Shipment(from_location=storage_loc, to_location=lost_loc)
+    >>> move = shipment.moves.new()
     >>> move.product = product
     >>> move.quantity = 1
     >>> move.from_location = storage_loc
     >>> move.to_location = lost_loc
-    >>> move.click('do')
-    >>> move.state
+    >>> shipment.click('wait')
+    >>> shipment.click('assign_force')
+    >>> shipment.click('do')
+    >>> shipment.state
     'done'
 
 Create production request::

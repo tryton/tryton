@@ -16,6 +16,8 @@ Activate modules::
 
     >>> config = activate_modules('stock_supply', create_company)
 
+    >>> Shipment = Model.get('stock.shipment.internal')
+
 Create product::
 
     >>> ProductUom = Model.get('product.uom')
@@ -103,14 +105,16 @@ Execute internal supply::
 
 Create negative quantity in Second Storage::
 
-    >>> Move = Model.get('stock.move')
-    >>> move = Move()
+    >>> shipment = Shipment(from_location=sec_storage_loc, to_location=lost_loc)
+    >>> move = shipment.moves.new()
     >>> move.product = product
     >>> move.quantity = 10
     >>> move.from_location = sec_storage_loc
     >>> move.to_location = lost_loc
-    >>> move.click('do')
-    >>> move.state
+    >>> shipment.click('wait')
+    >>> shipment.click('assign_force')
+    >>> shipment.click('do')
+    >>> shipment.state
     'done'
 
 Execute internal supply::

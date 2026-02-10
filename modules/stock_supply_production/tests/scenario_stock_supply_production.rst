@@ -18,6 +18,7 @@ Activate modules::
 
     >>> config = activate_modules('stock_supply_production', create_company)
 
+    >>> Shipment = Model.get('stock.shipment.internal')
     >>> Warning = Model.get('res.user.warning')
 
 Create product::
@@ -51,23 +52,31 @@ Get stock locations::
 
 Create needs for product::
 
-    >>> Move = Model.get('stock.move')
-    >>> move = Move()
+    >>> shipment = Shipment(from_location=storage_loc, to_location=lost_loc)
+    >>> move = shipment.moves.new()
     >>> move.product = product
     >>> move.quantity = 1
     >>> move.from_location = storage_loc
     >>> move.to_location = lost_loc
-    >>> move.click('do')
-    >>> move.state
+    >>> shipment.click('wait')
+    >>> shipment.click('assign_force')
+    >>> shipment.click('do')
+    >>> shipment.state
     'done'
 
-    >>> move, = move.duplicate(
-    ...     default={'effective_date': today + dt.timedelta(days=10)})
+    >>> shipment, = shipment.duplicate()
+    >>> shipment.effective_date = today + dt.timedelta(days=10)
+    >>> move, = shipment.moves
+    >>> move.effective_date = shipment.effective_date
+    >>> shipment.click('wait')
+    >>> shipment.click('assign_force')
     >>> try:
-    ...     move.click('do')
+    ...     shipment.click('do')
     ... except MoveFutureWarning as warning:
     ...     Warning(user=config.user, name=warning.name).save()
-    >>> move.click('do')
+    >>> shipment.click('do')
+    >>> shipment.state
+    'done'
 
 There is no production request::
 
