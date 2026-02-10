@@ -145,6 +145,12 @@ class TableHandler(TableHandlerInterface):
                 and not cls.table_exist(new_history)):
             cursor.execute('ALTER TABLE "%s" RENAME TO "%s"'
                 % (old_history, new_history))
+            # Migrate from 6.6: rename old history sequence
+            old_history_sequence = f'{old_name}__history' + '___id_seq'
+            new_history_sequence = f'{new_name}__history' + '___id_seq'
+            transaction.database.sequence_rename(
+                transaction.connection, old_history_sequence,
+                new_history_sequence)
 
     def column_exist(self, column_name):
         return column_name in self._columns
