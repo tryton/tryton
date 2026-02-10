@@ -910,13 +910,13 @@ class RecordActivity(Workflow, ModelSQL, ModelView):
                 ))
         cls._buttons.update(
             on_email_opened={
-                'invisible': ((Eval('state') != 'waiting')
+                'invisible': ((Eval('state') != 'done')
                     | (Eval('activity_action') != 'send_email')
                     | Eval('email_opened', False)),
                 'depends': ['state', 'activity_action', 'email_opened'],
                 },
             on_email_clicked={
-                'invisible': ((Eval('state') != 'waiting')
+                'invisible': ((Eval('state') != 'done')
                     | (Eval('activity_action') != 'send_email')
                     | Eval('email_clicked', False)),
                 'depends': ['state', 'activity_action', 'email_clicked'],
