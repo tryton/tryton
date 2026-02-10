@@ -19,8 +19,15 @@ Activate modules::
     >>> Lot = Model.get('stock.lot')
     >>> LotTrace = Model.get('stock.lot.trace')
     >>> Move = Model.get('stock.move')
+    >>> Party = Model.get('party.party')
     >>> ProductTemplate = Model.get('product.template')
+    >>> ShipmentOut = Model.get('stock.shipment.out')
     >>> UoM = Model.get('product.uom')
+
+Create customer::
+
+    >>> customer = Party(name="Customer")
+    >>> customer.save()
 
 Create product::
 
@@ -42,6 +49,9 @@ Get locations::
     >>> supplier_loc, = Location.find([('code', '=', 'SUP')])
     >>> storage_loc, = Location.find([('code', '=', 'STO')])
     >>> customer_loc, = Location.find([('code', '=', 'CUS')])
+    >>> warehouse, = Location.find([('type', '=', 'warehouse')])
+    >>> warehouse.output_location = storage_loc
+    >>> warehouse.save()
 
 Make some moves::
 
@@ -55,15 +65,20 @@ Make some moves::
     >>> move_in.state
     'done'
 
-    >>> move_out = Move(product=product, lot=lot)
+    >>> shipment_out = ShipmentOut(customer=customer)
+    >>> move_out = shipment_out.outgoing_moves.new(product=product, lot=lot)
     >>> move_out.quantity = 2
     >>> move_out.from_location = storage_loc
     >>> move_out.to_location = customer_loc
     >>> move_out.currency = get_currency()
     >>> move_out.unit_price = Decimal('0')
-    >>> move_out.click('do')
-    >>> move_out.state
+    >>> shipment_out.click('wait')
+    >>> shipment_out.click('assign_force')
+    >>> shipment_out.click('pack')
+    >>> shipment_out.click('do')
+    >>> shipment_out.state
     'done'
+    >>> move_out, = shipment_out.outgoing_moves
 
 Check lot traces::
 
