@@ -225,6 +225,7 @@ Make a partial shipment of components::
     ...         move.quantity = 4
     ...     else:
     ...         move.quantity = 0
+    >>> shipment.click('assign_force')
     >>> shipment.click('pick')
     >>> shipment.click('pack')
     >>> shipment.click('do')
@@ -248,6 +249,7 @@ Make a partial shipment for a single component::
     ...         move.quantity = 0
     ...     else:
     ...         move.quantity = 10
+    >>> shipment.click('assign_force')
     >>> shipment.click('pick')
     >>> shipment.click('pack')
     >>> shipment.click('do')
@@ -266,6 +268,7 @@ Ship remaining::
 
     >>> sale.reload()
     >>> _, _, shipment = sale.shipments
+    >>> shipment.click('assign_force')
     >>> shipment.click('pick')
     >>> shipment.click('pack')
     >>> shipment.click('do')

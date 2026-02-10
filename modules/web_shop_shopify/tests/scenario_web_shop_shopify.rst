@@ -622,6 +622,7 @@ Make a partial shipment::
     >>> shipment, = sale.shipments
     >>> move, = [m for m in shipment.inventory_moves if m.product == variant1]
     >>> move.quantity = 3
+    >>> shipment.click('assign_force')
     >>> shipment.click('pick')
     >>> shipment.click('pack')
     >>> shipment.click('do')
@@ -643,6 +644,7 @@ Make a partial shipment::
 Ship and cancel remaining shipment::
 
     >>> shipment, = [s for s in sale.shipments if s.state != 'done']
+    >>> shipment.click('assign_force')
     >>> shipment.click('pick')
     >>> shipment.click('pack')
     >>> shipment.click('ship')
