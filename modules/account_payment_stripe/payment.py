@@ -835,7 +835,7 @@ class Refund(Workflow, ModelSQL, ModelView):
                     'depends': ['state'],
                     },
                 'approve': {
-                    'invisible': Eval('state') != 'draft',
+                    'invisible': Eval('state') != 'submitted',
                     'icon': 'tryton-forward',
                     'depends': ['state'],
                     },
