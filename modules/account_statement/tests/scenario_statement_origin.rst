@@ -68,6 +68,7 @@ Statement can not be posted until all origins are finished::
     Traceback (most recent call last):
         ...
     StatementPostError: ...
+    >>> statement.click('cancel')
     >>> statement.click('draft')
     >>> origin, = statement.origins
     >>> line = origin.lines.new()
@@ -82,6 +83,7 @@ Statement can not be posted until all origins are finished::
     Decimal('-2.00')
     >>> line.account = expense
     >>> line.description = "Bank Fees"
+    >>> statement.click('validate_statement')
     >>> statement.click('post')
     >>> statement.state
     'posted'
