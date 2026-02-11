@@ -81,7 +81,6 @@ Create invoices::
     >>> line.quantity = 5
     >>> line.unit_price = Decimal('20')
     >>> invoice.click('post')
-    >>> invoice.click('post')
     >>> invoice.total_amount
     Decimal('121.00')
 
