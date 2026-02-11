@@ -351,7 +351,7 @@ Now we will use a product with different unit of measure::
     >>> move.in_anglo_saxon_quantity
     1.0
 
-    >>> move.click('cancel')
+    >>> shipment.click('cancel')
     Traceback (most recent call last):
         ...
     AccessError: ...
