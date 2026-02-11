@@ -14,6 +14,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Stock Force Assignment</field>
             <field name="parent" ref="group_stock"/>
         </record>
+        <record model="res.group" id="group_stock_cancellation">
+            <field name="name">Stock Cancellation</field>
+            <field name="parent" ref="group_stock"/>
+        </record>
         <record model="res.user-res.group"
             id="user_admin_group_stock_admin">
             <field name="user" ref="res.user_admin"/>
@@ -28,6 +32,10 @@ this repository contains the full copyright notices and license terms. -->
             id="user_admin_group_stock_force_assignment">
             <field name="user" ref="res.user_admin"/>
             <field name="group" ref="group_stock_force_assignment"/>
+        </record>
+        <record model="res.user-res.group" id="user_admin_group_stock_cancellation">
+            <field name="user" ref="res.user_admin"/>
+            <field name="group" ref="group_stock_cancellation"/>
         </record>
 
         <record model="ir.ui.icon" id="stock_icon">

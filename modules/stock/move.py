@@ -18,7 +18,7 @@ from trytond.model import (
 from trytond.model.exceptions import AccessError
 from trytond.modules.product import price_digits, round_price
 from trytond.pool import Pool
-from trytond.pyson import Bool, Eval, If, TimeDelta
+from trytond.pyson import Bool, Eval, Id, If, TimeDelta
 from trytond.tools import cached_property, grouped_slice, reduce_ids
 from trytond.transaction import Transaction, without_check_access
 
@@ -464,7 +464,12 @@ class Move(Workflow, ModelSQL, ModelView):
                 ))
         cls._buttons.update({
                 'cancel': {
-                    'invisible': ~Eval('state').in_(['draft', 'assigned']),
+                    'invisible': (
+                        (Eval('state') == 'cancelled')
+                        | ((Eval('state') == 'done')
+                            & ~Id('stock',
+                                'group_stock_cancellation').in_(
+                                Eval('context', {}).get('groups', [])))),
                     'readonly': Eval('shipment') | Eval('_parent_shipment'),
                     'depends': ['state', 'shipment'],
                     },

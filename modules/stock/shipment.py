@@ -511,7 +511,12 @@ class ShipmentIn(
                 ))
         cls._buttons.update({
                 'cancel': {
-                    'invisible': Eval('state').in_(['cancelled', 'done']),
+                    'invisible': (
+                        (Eval('state') == 'cancelled')
+                        | ((Eval('state') == 'done')
+                            & ~Id('stock',
+                                'group_stock_cancellation').in_(
+                                Eval('context', {}).get('groups', [])))),
                     'depends': ['state'],
                     },
                 'draft': {
@@ -914,7 +919,12 @@ class ShipmentInReturn(
                 ))
         cls._buttons.update({
                 'cancel': {
-                    'invisible': Eval('state').in_(['cancelled', 'done']),
+                    'invisible': (
+                        (Eval('state') == 'cancelled')
+                        | ((Eval('state') == 'done')
+                            & ~Id('stock',
+                                'group_stock_cancellation').in_(
+                                Eval('context', {}).get('groups', [])))),
                     'depends': ['state'],
                     },
                 'draft': {
@@ -1314,7 +1324,12 @@ class ShipmentOut(
                 ))
         cls._buttons.update({
                 'cancel': {
-                    'invisible': Eval('state').in_(['cancelled', 'done']),
+                    'invisible': (
+                        (Eval('state') == 'cancelled')
+                        | ((Eval('state') == 'done')
+                            & ~Id('stock',
+                                'group_stock_cancellation').in_(
+                                Eval('context', {}).get('groups', [])))),
                     'depends': ['state'],
                     },
                 'draft': {
@@ -1984,7 +1999,12 @@ class ShipmentOutReturn(
                 ))
         cls._buttons.update({
                 'cancel': {
-                    'invisible': Eval('state').in_(['cancelled', 'done']),
+                    'invisible': (
+                        (Eval('state') == 'cancelled')
+                        | ((Eval('state') == 'done')
+                            & ~Id('stock',
+                                'group_stock_cancellation').in_(
+                                Eval('context', {}).get('groups', [])))),
                     'depends': ['state'],
                     },
                 'draft': {
@@ -2489,8 +2509,12 @@ class ShipmentInternal(
                 ))
         cls._buttons.update({
                 'cancel': {
-                    'invisible': Eval('state').in_(
-                        ['cancelled', 'shipped', 'done']),
+                    'invisible': (
+                        (Eval('state') == 'cancelled')
+                        | (Eval('state').in_(['shipped', 'done'])
+                            & ~Id('stock',
+                                'group_stock_cancellation').in_(
+                                Eval('context', {}).get('groups', [])))),
                     'depends': ['state'],
                     },
                 'draft': {
