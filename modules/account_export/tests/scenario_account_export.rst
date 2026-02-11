@@ -77,7 +77,6 @@ Try to delete move export done::
     >>> move_export.click('wait')
     >>> move_export.state
     'waiting'
-    >>> move_export.click('wait')
     >>> move_export.click('do')
     >>> move_export.state
     'done'
