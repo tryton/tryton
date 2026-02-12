@@ -170,6 +170,7 @@ Send products to Belgium::
     >>> move.unit_price = Decimal('100.0000')
     >>> move.currency = eur
     >>> shipment.click('wait')
+    >>> shipment.click('assign_force')
     >>> shipment.click('pick')
     >>> shipment.click('pack')
     >>> shipment.click('do')
@@ -198,6 +199,7 @@ Send products to particular to France::
     >>> move.unit_price = Decimal('90.0000')
     >>> move.currency = eur
     >>> shipment.click('wait')
+    >>> shipment.click('assign_force')
     >>> shipment.click('pick')
     >>> shipment.click('pack')
     >>> shipment.click('do')
@@ -243,6 +245,7 @@ Send products to US::
     >>> move.unit_price = Decimal('120.0000')
     >>> move.currency = usd
     >>> shipment.click('wait')
+    >>> shipment.click('assign_force')
     >>> shipment.click('pick')
     >>> shipment.click('pack')
     >>> shipment.click('do')
