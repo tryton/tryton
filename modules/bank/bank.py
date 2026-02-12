@@ -199,6 +199,7 @@ class AccountNumber(DeactivableMixin, sequence_ordered(), ModelSQL, ModelView):
             ('iban', 'IBAN'),
             ('other', 'Other'),
             ], 'Type', required=True)
+    type_string = type.translated('type')
     number = fields.Char("Number", required=True)
     number_compact = fields.Char(
         "Number Compact", readonly=True,
