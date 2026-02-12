@@ -197,7 +197,7 @@ class Model(
         key = 'dict', str(classes)
         dict_ = cls._get_names_cache.get(key)
         if dict_ is None:
-            dict_ = dict(cls.get_name_items())
+            dict_ = dict(cls.get_name_items(classes=classes))
             cls._get_names_cache.set(key, dict_)
         return dict_
 
