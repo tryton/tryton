@@ -1549,7 +1549,7 @@ class ModelStorage(Model):
                         if is_pyson(domain):
                             domain = _record_eval_pyson(records[0], domain)
                         if isinstance(domain, dict):
-                            domain = domain.get(Relation.__class__, [])
+                            domain = domain.get(Relation.__name__, [])
                         msg = gettext(
                             'ir.msg_domain_validation_record',
                             **cls.__names__(field.name, invalid_record))
