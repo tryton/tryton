@@ -490,6 +490,50 @@ class Payment(metaclass=PoolMeta):
             ]
 
 
+class Payment_Invoice(metaclass=PoolMeta):
+    __name__ = 'account.payment'
+
+    @property
+    def sepa_bank_account_number(self):
+        pool = Pool()
+        Invoice = pool.get('account.invoice')
+        BankAccount = pool.get('bank.account')
+        sepa_number = super().sepa_bank_account_number
+        if (self.kind == 'payable'
+                and not self.sepa_payable_bank_account_number
+                and self.line
+                and isinstance(self.line.move.origin, Invoice)):
+            invoice = self.line.move.origin
+            for mean in invoice.payment_means:
+                if isinstance(mean.instrument, BankAccount):
+                    bank_account = mean.instrument
+                    for number in bank_account.numbers:
+                        if number.type == 'iban':
+                            sepa_number = number
+                            break
+        return sepa_number
+
+    @classmethod
+    def get_sepa_mandates(cls, payments):
+        pool = Pool()
+        Invoice = pool.get('account.invoice')
+        ReceptionDirectDebit = pool.get('party.party.reception_direct_debit')
+        mandates = []
+        for payment, mandate in zip(
+                payments,
+                super().get_sepa_mandates(payments)):
+            if (not payment.sepa_mandate
+                    and payment.line
+                    and isinstance(payment.line.move.origin, Invoice)):
+                invoice = payment.line.move.origin
+                for mean in invoice.payment_means:
+                    if (isinstance(mean.instrument, ReceptionDirectDebit)
+                            and mean.instrument.sepa_mandate):
+                        mandate = mean.instrument.sepa_mandate
+            mandates.append(mandate)
+        return mandates
+
+
 class Mandate(Workflow, ModelSQL, ModelView):
     __name__ = 'account.payment.sepa.mandate'
     party = fields.Many2One(

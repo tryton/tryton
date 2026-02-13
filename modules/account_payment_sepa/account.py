@@ -4,7 +4,7 @@
 from trytond.i18n import gettext
 from trytond.model import ModelSQL, fields
 from trytond.modules.company.model import CompanyValueMixin
-from trytond.pool import PoolMeta
+from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval, Id
 
 
@@ -45,3 +45,20 @@ class InvoicePaymentMean(metaclass=PoolMeta):
                 mandate=mandate.identification,
                 account_number=mandate.account_number.number)
         return name
+
+    def is_valid_with_payment(self, payment):
+        pool = Pool()
+        BankAccount = pool.get('bank.account')
+        ReceptionDirectDebit = pool.get('party.party.reception_direct_debit')
+        valid = super().is_valid_with_payment(payment)
+        if payment.journal.process_method == 'sepa':
+            if isinstance(self.instrument, BankAccount):
+                bank_account = self.instrument
+                valid = (
+                    payment.sepa_bank_account_number in bank_account.numbers)
+            elif isinstance(self.instrument, ReceptionDirectDebit):
+                reception = self.instrument
+                if reception.journal == payment.journal:
+                    if payment.sepa_mandate and reception.sepa_mandate:
+                        valid &= payment.sepa_mandate == reception.sepa_mandate
+        return valid

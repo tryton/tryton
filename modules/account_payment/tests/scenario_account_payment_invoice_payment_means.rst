@@ -4,7 +4,9 @@ Invoice Payment Means Scenario
 
 Imports::
 
-    >>> from proteus import Model
+    >>> from decimal import Decimal
+
+    >>> from proteus import Model, Wizard
     >>> from trytond.modules.account.tests.tools import (
     ...     create_chart, create_fiscalyear, get_accounts)
     >>> from trytond.modules.account_invoice.tests.tools import (
@@ -56,8 +58,34 @@ Create invoice with payment means::
 
     >>> invoice = Invoice(type='out')
     >>> invoice.party = customer
+    >>> line = invoice.lines.new()
+    >>> line.account = accounts['revenue']
+    >>> line.quantity = 1
+    >>> line.unit_price = Decimal('10.0000')
     >>> payment_mean = invoice.payment_means.new()
     >>> payment_mean.instrument = customer.reception_direct_debits[0]
     >>> invoice.click('post')
     >>> payment_mean, = invoice.payment_means
     >>> assertEqual(payment_mean.instrument, customer.reception_direct_debits[0])
+
+Try to pay with a different journal::
+
+    >>> other_payment_journal, = payment_journal.duplicate()
+
+    >>> line_to_pay, = invoice.lines_to_pay
+    >>> pay_line = Wizard('account.move.line.pay', [line_to_pay])
+    >>> pay_line.execute('next_')
+    >>> pay_line.form.journal = other_payment_journal
+    >>> pay_line.execute('next_')
+    >>> payment, = pay_line.actions[0]
+    >>> payment.click('submit')
+    Traceback (most recent call last):
+        ...
+    PaymentMeanWarning: ...
+
+Pay with the same journal::
+
+    >>> payment.journal = payment_journal
+    >>> payment.click('submit')
+    >>> payment.state
+    'submitted'

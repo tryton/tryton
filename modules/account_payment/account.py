@@ -866,6 +866,16 @@ class InvoicePaymentMean(metaclass=PoolMeta):
                 'account_payment.msg_invoice_payment_mean_direct_debit')
         return name
 
+    def is_valid_with_payment(self, payment):
+        pool = Pool()
+        ReceptionDirectDebit = pool.get('party.party.reception_direct_debit')
+        valid = None
+        if isinstance(self.instrument, ReceptionDirectDebit):
+            valid = self.instrument.journal == payment.journal
+        elif payment.journal.process_method == 'manual':
+            valid = True
+        return valid
+
 
 class Statement(metaclass=PoolMeta):
     __name__ = 'account.statement'

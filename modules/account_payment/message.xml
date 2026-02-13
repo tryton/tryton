@@ -15,6 +15,10 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_payment_reconciled">
             <field name="text">The line "%(line)s" of payment "%(payment)s" is already reconciled.</field>
         </record>
+        <record model="ir.message" id="msg_payment_means">
+            <field name="text">The journal "%(journal)s" of payment "%(payment)s" is not valid with the payment means of invoice "%(invoice)s".</field>
+        </record>
+
         <record model="ir.message" id="msg_payment_reference_invalid">
             <field name="text">The %(type)s "%(reference)s" on payment "%(payment)s" is not valid.</field>
         </record>

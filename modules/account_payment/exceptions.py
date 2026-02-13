@@ -17,6 +17,10 @@ class ReconciledWarning(UserWarning):
     pass
 
 
+class PaymentMeanWarning(UserWarning):
+    pass
+
+
 class PaymentValidationError(ValidationError):
     pass
 

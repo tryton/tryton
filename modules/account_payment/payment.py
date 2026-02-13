@@ -28,7 +28,8 @@ from trytond.transaction import Transaction
 from trytond.wizard import StateAction, Wizard
 
 from .exceptions import (
-    OverpayWarning, PaymentValidationError, ReconciledWarning)
+    OverpayWarning, PaymentMeanWarning, PaymentValidationError,
+    ReconciledWarning)
 
 KINDS = [
     ('payable', 'Payable'),
@@ -825,6 +826,35 @@ class Payment_Invoice(metaclass=PoolMeta):
             elif self.kind == 'receivable':
                 reference = invoice.customer_payment_reference
         return reference
+
+    @classmethod
+    @ModelView.button
+    @Workflow.transition('submitted')
+    def submit(cls, payments):
+        super().submit(payments)
+        cls._check_payment_means(payments)
+
+    @classmethod
+    def _check_payment_means(cls, payments):
+        pool = Pool()
+        Warning = pool.get('res.user.warning')
+        Invoice = pool.get('account.invoice')
+        for payment in payments:
+            if (payment.line
+                    and isinstance(payment.line.move.origin, Invoice)):
+                invoice = payment.line.move.origin
+                if invoice.payment_means:
+                    if not any(
+                            mean.is_valid_with_payment(payment)
+                            for mean in invoice.payment_means):
+                        key = Warning.format('payment_means', [payment])
+                        if Warning.check(key):
+                            raise PaymentMeanWarning(
+                                key, gettext(
+                                    'account_payment.msg_payment_means',
+                                    journal=payment.journal.rec_name,
+                                    payment=payment.rec_name,
+                                    invoice=invoice.rec_name))
 
 
 class ProcessPayment(Wizard):
