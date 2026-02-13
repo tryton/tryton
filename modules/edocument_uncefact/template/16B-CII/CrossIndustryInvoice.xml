@@ -115,9 +115,30 @@ this repository contains the full copyright notices and license terms. -->
             <ram:InvoiceDateTime>
                 ${DateTime(this.invoice.invoice_date)}
             </ram:InvoiceDateTime>
-            <ram:SpecifiedTradeSettlementPaymentMeans>
-                <ram:TypeCode>1</ram:TypeCode>  <!-- Instrument not defined -->
-            </ram:SpecifiedTradeSettlementPaymentMeans>
+            <py:for each="payment_mean in this.invoice.payment_means">
+                <ram:SpecifiedTradeSettlementPaymentMeans py:if="payment_mean.unece_code">
+                    <ram:TypeCode>${payment_mean.unece_code}</ram:TypeCode>
+                    <ram:ID py:if="this.invoice.customer_payment_reference">${this.invoice.customer_payment_reference}</ram:ID>
+                    <py:choose test="payment_mean.unece_code">
+                        <py:when test="'42'">
+                            <ram:PayeePartyCreditorFinancialAccount>
+                                <udt:IBANID>${payment_mean.instrument.iban}</udt:IBANID>
+                            </ram:PayeePartyCreditorFinancialAccount>
+                            <ram:PayeeSpecifiedCreditorFinancialInstitution py:if="payment_mean.instrument.bank and payment_mean.instrument.bank.bic">
+                                <udt:BICID>${payment_mean.instrument.bank.bic}</udt:BICID>
+                            </ram:PayeeSpecifiedCreditorFinancialInstitution>
+                        </py:when>
+                        <py:when test="'59'">
+                            <ram:PayerPartyDebtorFinancialAccount py:if="payment_mean.instrument.sepa_mandate">
+                                <udt:IBANID>${payment_mean.instrument.account_number.number}</udt:IBANID>
+                                <ram:PayerSpecifiedDebtorFinancialInstitution py:if="payment_mean.instrument.account_number.account.bank and payment_mean.instrument.account_number.account.bank.bic">
+                                    <udt:BICID>${payment_mean.instrument.account_number.account.bank.bic}</udt:BICID>
+                                </ram:PayerSpecifiedDebtorFinancialInstitution>
+                            </ram:PayerPartyDebtorFinancialAccount>
+                        </py:when>
+                    </py:choose>
+                </ram:SpecifiedTradeSettlementPaymentMeans>
+            </py:for>
             <py:for each="tax in this.invoice.taxes">
                 ${TradeTax(tax.tax, tax.amount, tax.base)}
             </py:for>

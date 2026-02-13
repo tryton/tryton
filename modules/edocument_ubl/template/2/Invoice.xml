@@ -57,6 +57,30 @@ this repository contains the full copyright notices and license terms. -->
 <cac:AccountingCustomerParty>
     ${Party(this.accounting_customer_party, this.accounting_customer_address, this.accounting_customer_tax_identifier, identifications=[this.accounting_customer_party.identifier_iso6523] if (specification or '').startswith('peppol') else None, specification=specification)}
 </cac:AccountingCustomerParty>
+<py:for each="payment_mean in this.invoice.payment_means">
+    <cac:PaymentMeans py:if="payment_mean.unece_code">
+        <cbc:PaymentMeansCode>${payment_mean.unece_code}</cbc:PaymentMeansCode>
+        <cbc:PaymentID py:if="this.invoice.customer_payment_reference">${this.invoice.customer_payment_reference}</cbc:PaymentID>
+        <py:choose test="payment_mean.instrument.__name__">
+            <py:when test="'bank.account'">
+                <cac:PayeeFinancialAccount>
+                    <cbc:ID>${payment_mean.instrument.iban_compact}</cbc:ID>
+                    <cac:FinancialInstitutionBranch py:if="payment_mean.instrument.bank and payment_mean.instrument.bank.bic">
+                        <cbc:ID>${payment_mean.instrument.bank.bic}</cbc:ID>
+                    </cac:FinancialInstitutionBranch>
+                </cac:PayeeFinancialAccount>
+            </py:when>
+            <py:when test="'party.party.reception_direct_debit'">
+                <cac:PaymentMandate py:if="payment_mean.instrument.sepa_mandate">
+                    <cbc:ID>${payment_mean.instrument.identification}</cbc:ID>
+                    <cac:PayerFinancialAccount>
+                        <cbc:ID>${payment_mean.instrument.account_number.number}</cbc:ID>
+                    </cac:PayerFinancialAccount>
+                </cac:PaymentMandate>
+            </py:when>
+        </py:choose>
+    </cac:PaymentMeans>
+</py:for>
 <py:choose test="(specification or '').startswith('peppol')">
     <py:when test="True">
         <cac:PaymentTerms py:if="this.invoice.payment_term and this.invoice.payment_term.description">
