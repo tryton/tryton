@@ -132,3 +132,25 @@ class TaxTemplate(metaclass=PoolMeta):
             if not tax or getattr(tax, field) != getattr(self, field):
                 value[field] = getattr(self, field)
         return value
+
+
+class InvoicePaymentMean(metaclass=PoolMeta):
+    __name__ = 'account.invoice.payment.mean'
+
+    @property
+    def unece_code(self):
+        "UNCL4461"
+        if self.instrument.__name__ == 'bank.account':
+            if self.invoice.type == 'out':
+                return '30'
+            else:
+                return '31'
+        elif self.instrument.__name__ == 'party.party.reception_direct_debit':
+            process_method = self.instrument.journal.process_method
+            if process_method == 'sepa':
+                if self.invoice.type == 'in':
+                    return '58'
+                else:
+                    return '59'
+            else:
+                return '49'
