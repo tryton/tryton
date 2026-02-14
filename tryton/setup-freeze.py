@@ -141,7 +141,7 @@ setup(name='tryton',
         },
     executables=[Executable(
             'bin/tryton',
-            base='Win32GUI' if sys.platform == 'win32' else None,
+            base='gui' if sys.platform == 'win32' else None,
             icon=os.path.join(
                 'tryton', 'data', 'pixmaps', 'tryton', 'tryton.ico'),
             )])
