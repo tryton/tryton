@@ -68,7 +68,8 @@ class Bank(ModelSQL, ModelView):
         pool = Pool()
         Party = pool.get('party.party')
         if IBAN:
-            assert isinstance(bic, BIC)
+            if not isinstance(bic, BIC):
+                bic = BIC(bic)
             banks = cls.search([
                     ('bic', '=', bic.compact),
                     ], limit=1)
