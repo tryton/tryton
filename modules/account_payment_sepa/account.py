@@ -1,5 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+
+from trytond.i18n import gettext
 from trytond.model import ModelSQL, fields
 from trytond.modules.company.model import CompanyValueMixin
 from trytond.pool import PoolMeta
@@ -27,3 +29,19 @@ class ConfigurationSepaMandateSequence(ModelSQL, CompanyValueMixin):
                     'account_payment_sepa', 'sequence_type_mandate')),
             ('company', 'in', [Eval('company', -1), None]),
             ])
+
+
+class InvoicePaymentMean(metaclass=PoolMeta):
+    __name__ = 'account.invoice.payment.mean'
+
+    def get_rec_name(self, name):
+        name = super().get_rec_name(name)
+        if (self.instrument.__name__ == 'party.party.reception_direct_debit'
+                and self.instrument.journal.process_method == 'sepa'
+                and self.instrument.sepa_mandate):
+            mandate = self.instrument.sepa_mandate
+            name = gettext(
+                'account_payment_sepa.msg_invoice_payment_mean_direct_debit',
+                mandate=mandate.identification,
+                account_number=mandate.account_number.number)
+        return name

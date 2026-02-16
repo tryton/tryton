@@ -124,6 +124,13 @@ class PartyReceptionDirectDebit(
             'type': type,
             }
 
+    @classmethod
+    def get_pattern_for_invoice(cls, invoice):
+        return {
+            'company': invoice.company.id,
+            'currency': invoice.currency.id,
+            }
+
     def get_payments(self, line=None, amount=None, date=None):
         pool = Pool()
         Date = pool.get('ir.date')

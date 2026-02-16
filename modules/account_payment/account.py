@@ -820,6 +820,52 @@ class Invoice(metaclass=PoolMeta):
                         amounts[invoice.id] -= payment_amount
         return amounts
 
+    @classmethod
+    def set_payment_means(cls, invoices):
+        pool = Pool()
+        PaymentMean = pool.get('account.invoice.payment.mean')
+        Reception = pool.get('party.party.reception_direct_debit')
+        payment_means = []
+        for invoice in invoices:
+            if invoice.type == 'out' and not invoice.payment_means:
+                pattern = Reception.get_pattern_for_invoice(invoice)
+                for reception in invoice.party.reception_direct_debits:
+                    if reception.match(pattern):
+                        payment_mean = PaymentMean.from_reception_direct_debit(
+                            reception)
+                        payment_mean.invoice = invoice
+                        payment_means.append(payment_mean)
+        PaymentMean.save(payment_means)
+        super().set_payment_means(invoices)
+
+
+class InvoicePaymentMean(metaclass=PoolMeta):
+    __name__ = 'account.invoice.payment.mean'
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls.instrument.domain['party.party.reception_direct_debit'] = [
+            ('party', 'in', Eval('payers', [])),
+            ('company', '=', Eval('company', -1)),
+            ]
+
+    @classmethod
+    def _get_instruments(cls):
+        yield from super()._get_instruments()
+        yield 'party.party.reception_direct_debit'
+
+    @classmethod
+    def from_reception_direct_debit(cls, reception):
+        return cls(instrument=reception)
+
+    def get_rec_name(self, name):
+        name = super().get_rec_name(name)
+        if self.instrument.__name__ == 'party.party.reception_direct_debit':
+            name = gettext(
+                'account_payment.msg_invoice_payment_mean_direct_debit')
+        return name
+
 
 class Statement(metaclass=PoolMeta):
     __name__ = 'account.statement'

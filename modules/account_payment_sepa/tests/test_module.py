@@ -154,6 +154,7 @@ class AccountPaymentSepaTestCase(
         PartyCheckReplaceMixin, CompanyTestMixin, ModuleTestCase):
     'Test Account Payment SEPA module'
     module = 'account_payment_sepa'
+    extras = ['account_invoice']
 
     @with_transaction()
     def test_pain001_001_03(self):
@@ -279,7 +280,7 @@ class AccountPaymentSepaTestCase(
             party = Party(
                 bank_accounts_used=[bank_account])
             payment = Payment(
-                kind='payable', party=party,
+                kind='payable', party=party, line=None,
                 sepa_payable_bank_account_number=None)
 
             self.assertEqual(id(payment.sepa_bank_account_number),
