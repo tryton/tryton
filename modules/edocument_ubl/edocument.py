@@ -434,13 +434,9 @@ class Invoice(Model):
             if line.origin:
                 break
 
-        if (price_amount := invoice_line.findtext('./{*}Price/{*}PriceAmount')
-                ) is not None:
-            line.unit_price = round_price(Decimal(price_amount))
-        else:
-            line.unit_price = round_price(
-                Decimal(invoice_line.findtext('./{*}LineExtensionAmount'))
-                / Decimal(str(line.quantity)))
+        line.unit_price = round_price(
+            Decimal(invoice_line.findtext('./{*}LineExtensionAmount'))
+            / Decimal(str(line.quantity)))
 
         if invoice_line.find('./{*}Item/{*}ClassifiedTaxCategory') is not None:
             tax_categories = invoice_line.iterfind(
@@ -669,13 +665,9 @@ class Invoice(Model):
             if line.origin:
                 break
 
-        if (price_amount := credit_note_line.findtext(
-                './{*}Price/{*}PriceAmount')) is not None:
-            line.unit_price = round_price(Decimal(price_amount))
-        else:
-            line.unit_price = round_price(
-                Decimal(credit_note_line.findtext('./{*}LineExtensionAmount'))
-                / line.quantity)
+        line.unit_price = round_price(
+            -Decimal(credit_note_line.findtext('./{*}LineExtensionAmount'))
+            / Decimal(str(line.quantity)))
 
         if (credit_note_line.find('./{*}Item/{*}ClassifiedTaxCategory')
                 is not None):
