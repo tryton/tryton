@@ -106,11 +106,11 @@ this repository contains the full copyright notices and license terms. -->
                 </cac:StandardItemIdentification>
             </py:with>
         </py:if>
-        <cac:ClassifiedTaxCategory py:for="tax in line.invoice_taxes">
-            <cbc:ID py:if="tax.unece_category_code">${tax.unece_category_code}</cbc:ID>
-            <cbc:Percent py:if="tax.type == 'percentage'">${format((tax.rate * 100).normalize(), 'f')}</cbc:Percent>
-            <cac:TaxScheme py:if="tax.unece_code">
-                <cbc:ID>${tax.unece_code}</cbc:ID>
+        <cac:ClassifiedTaxCategory py:for="tax_line in line.invoice_taxes">
+            <cbc:ID py:if="tax_line.tax.unece_category_code">${tax_line.tax.unece_category_code}</cbc:ID>
+            <cbc:Percent py:if="tax_line.tax.type == 'percentage'">${format((tax_line.tax.rate * 100).normalize(), 'f')}</cbc:Percent>
+            <cac:TaxScheme py:if="tax_line.tax.unece_code">
+                <cbc:ID>${tax_line.tax.unece_code}</cbc:ID>
             </cac:TaxScheme>
         </cac:ClassifiedTaxCategory>
     </cac:Item>

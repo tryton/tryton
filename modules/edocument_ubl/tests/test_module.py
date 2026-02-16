@@ -98,7 +98,7 @@ def get_invoice():
             unit_price=Decimal('100.0000'),
             amount=Decimal('100.00'),
             description="Description",
-            invoice_taxes=[t.tax for t in taxes],
+            invoice_taxes=taxes,
             )]
     invoice = MagicMock(spec=Invoice,
         id=-1,
