@@ -144,6 +144,12 @@ class Account(DeactivableMixin, ModelSQL, ModelView):
             if number.type == 'iban':
                 return number.number
 
+    @property
+    def iban_compact(self):
+        for number in self.numbers:
+            if number.type == 'iban':
+                return number.number_compact
+
     @classmethod
     def validate(cls, accounts):
         super().validate(accounts)
