@@ -17,6 +17,7 @@ import genshi.template
 # XXX fix: https://genshi.edgewall.org/ticket/582
 from genshi.template.astutil import ASTCodeGenerator, ASTTransformer
 from lxml import etree
+from stdnum import bic, iban
 
 from trytond.i18n import gettext, ngettext
 from trytond.model import Model
@@ -301,6 +302,7 @@ class Invoice(Model):
             root.findtext('./{*}IssueDate'))
         invoice.party = cls._parse_2_supplier(
             root.find('./{*}AccountingSupplierParty'), create=True)
+        payees = [invoice.party]
         invoice.set_journal()
         invoice.on_change_party()
         invoice.invoice_address = cls._parse_2_address(
@@ -333,6 +335,7 @@ class Invoice(Model):
                 party = cls._create_2_party(payee_party)
                 party.save()
             invoice.alternative_payees = [party]
+            payees.append(party)
 
         currency_code = root.findtext('./{*}DocumentCurrencyCode')
         if not currency_code:
@@ -349,6 +352,10 @@ class Invoice(Model):
                         'edocument_ubl.msg_currency_not_found',
                         code=currency_code))
 
+        invoice.supplier_payment_reference = root.findtext(
+            './{*}PaymentMeans/{*}PaymentID')
+        invoice.payment_means = cls._parse_2_payment_means(
+            root.findall('./{*}PaymentMeans'), payees=payees)
         invoice.payment_term_date = cls._parse_2_payment_term_date(
             root.findall('./{*}PaymentTerms'))
         lines = [
@@ -590,6 +597,7 @@ class Invoice(Model):
             root.findtext('./{*}IssueDate'))
         invoice.party = cls._parse_2_supplier(
             root.find('./{*}AccountingSupplierParty'), create=True)
+        payees = [invoice.party]
         invoice.set_journal()
         invoice.on_change_party()
         if (seller := root.find('./{*}SellerSupplierParty')) is not None:
@@ -607,6 +615,7 @@ class Invoice(Model):
                 party = cls._create_2_party(payee_party)
                 party.save()
             invoice.alternative_payees = [party]
+            payees.append(party)
         if (currency_code := root.findtext('./{*}DocumentCurrencyCode')
                 ) is not None:
             try:
@@ -617,6 +626,11 @@ class Invoice(Model):
                 raise InvoiceError(gettext(
                         'edocument_ubl.msg_currency_not_found',
                         code=currency_code))
+
+        invoice.supplier_payment_reference = root.findtext(
+            './{*}PaymentMeans/{*}PaymentID')
+        invoice.payment_means = cls._parse_2_payment_means(
+            root.findall('./{*}PaymentMeans'), payees=payees)
         invoice.payment_term_date = cls._parse_2_payment_term_date(
             root.findall('./{*}PaymentTerms'))
         lines = [
@@ -1060,6 +1074,20 @@ class Invoice(Model):
                 return company
 
     @classmethod
+    def _parse_2_payment_means(cls, payment_means, payees):
+        pool = Pool()
+        PaymentMean = pool.get('account.invoice.payment.mean')
+        means = []
+        for payment_mean in payment_means:
+            if instrument := cls._parse_2_payment_mean(payment_mean, payees):
+                means.append(PaymentMean(instrument=instrument))
+        return means
+
+    @classmethod
+    def _parse_2_payment_mean(cls, payment_mean, payees):
+        pass
+
+    @classmethod
     def _parse_2_payment_term_date(cls, payment_terms):
         dates = []
         for payment_term in payment_terms:
@@ -1263,6 +1291,80 @@ class Invoice(Model):
                     invoice=invoice.rec_name,
                     tax_amount=lang.format_number(-invoice.tax_amount),
                     tax_total=lang.format_number(tax_total)))
+
+
+class Invoice_Bank(metaclass=PoolMeta):
+    __name__ = 'edocument.ubl.invoice'
+
+    @classmethod
+    def _parse_2_payment_mean(cls, payment_mean, payees):
+        pool = Pool()
+        Account = pool.get('bank.account')
+        instrument = super()._parse_2_payment_mean(payment_mean, payees)
+        if (financial_account := payment_mean.find(
+                    './{*}PayeeFinancialAccount')) is not None:
+            identifier = financial_account.findtext('./{*}ID')
+            try:
+                account, = Account.search([
+                        ('numbers', 'where', ['OR',
+                                ('number', '=', identifier),
+                                ('number_compact', '=', identifier),
+                                ]),
+                        ('owners.id', 'in', payees),
+                        ], limit=1)
+            except ValueError:
+                party = payees[-1]
+                if party.id in Transaction().create_records['party.party']:
+                    account = cls._create_bank_account(
+                        financial_account, party)
+                    account.save()
+                else:
+                    raise InvoiceError(gettext(
+                            'edocument_ubl.msg_account_not_found',
+                            parties=','.join([p.rec_name for p in payees]),
+                            account=etree.tostring(
+                                financial_account,
+                                pretty_print=True).decode()))
+            instrument = account
+        return instrument
+
+    @classmethod
+    def _create_bank_account(cls, financial_account, party):
+        pool = Pool()
+        Bank = pool.get('bank')
+        Account = pool.get('bank.account')
+        Number = pool.get('bank.account.number')
+        account = Account(owners=[party])
+        if identifier := financial_account.findtext('./{*}ID'):
+            number = Number(number=identifier)
+            if iban.is_valid(identifier):
+                number.type = 'iban'
+            else:
+                number.type = 'other'
+            account.numbers = [number]
+        if identifier := financial_account.findtext(
+                './{*}FinancialInstitutionBranch/{*}ID'):
+            if bic.is_valid(identifier):
+                account.bank = Bank.from_bic(identifier)
+        return account
+
+
+class Invoice_Payment(metaclass=PoolMeta):
+    __name__ = 'edocument.ubl.invoice'
+
+    @classmethod
+    def _parse_invoice_2(cls, root):
+        invoice, attachments = super()._parse_invoice_2(root)
+        if root.find('./{*}PaymentMeans/{*}PaymentMandate') is not None:
+            invoice.payment_direct_debit = True
+        return invoice, attachments
+
+    @classmethod
+    def _parse_credit_note_2(cls, root):
+        invoice, attachments = super()._parse_invoice_2(root)
+        if root.find('./{*}PaymentMeans/{*}PaymentMandate') is not None:
+            invoice.payment_direct_debit = True
+        return invoice, attachments
 
 
 class Invoice_Purchase(metaclass=PoolMeta):

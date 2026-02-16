@@ -18,7 +18,7 @@ Imports::
 
 Activate modules::
 
-    >>> modules = ['edocument_ubl', 'account_invoice', 'purchase']
+    >>> modules = ['edocument_ubl', 'account_invoice', 'bank', 'purchase']
     >>> if cash_rounding:
     ...     modules.append('account_cash_rounding')
     >>> config = activate_modules(modules, create_company, create_chart)
@@ -81,6 +81,12 @@ Parse the UBL invoice::
     Decimal('292.20')
     >>> len(invoice.lines)
     7
+
+    >>> payment_mean, = invoice.payment_means
+    >>> account_number, = payment_mean.instrument.numbers
+    >>> account_number.number
+    'DK1212341234123412'
+    >>> assertEqual(payment_mean.instrument.owners, invoice.alternative_payees)
 
     >>> attachments = Attachment.find([])
     >>> len(attachments)

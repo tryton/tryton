@@ -44,7 +44,7 @@ else:
     download_url = 'http://downloads.tryton.org/%s.%s/' % (
         major_version, minor_version)
 
-requires = ['Genshi', 'lxml']
+requires = ['Genshi', 'lxml', 'python-stdnum']
 for dep in info.get('depends', []):
     if not re.match(r'(ir|res)(\W|$)', dep):
         requires.append(get_require_version('trytond_%s' % dep))
@@ -54,6 +54,7 @@ tests_require = [
     get_require_version('proteus'),
     get_require_version('trytond_account_cash_rounding'),
     get_require_version('trytond_account_invoice'),
+    get_require_version('trytond_bank'),
     get_require_version('trytond_document_incoming_invoice'),
     get_require_version('trytond_purchase'),
     get_require_version('trytond_sale'),
