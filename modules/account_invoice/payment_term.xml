@@ -3,11 +3,6 @@
 this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data>
-        <menuitem
-            name="Payment Terms"
-            parent="account.menu_account_configuration"
-            sequence="50"
-            id="menu_payment_terms_configuration"/>
         <record model="ir.ui.view" id="payment_term_view_form">
             <field name="model">account.invoice.payment_term</field>
             <field name="type">form</field>
@@ -33,7 +28,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="act_window" ref="act_payment_term_form"/>
         </record>
         <menuitem
-            parent="menu_payment_terms_configuration"
+            parent="menu_payments_configuration"
             action="act_payment_term_form"
             sequence="10"
             id="menu_payment_term_form"/>
@@ -106,7 +101,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="action" ref="wizard_payment_term_test"/>
         </record>
         <menuitem
-            parent="menu_payment_terms_configuration"
+            parent="menu_payments_configuration"
             action="wizard_payment_term_test"
             sequence="90"
             id="menu_payment_term_test"/>

@@ -83,7 +83,8 @@ this repository contains the full copyright notices and license terms. -->
 
             <label name="customer_payment_reference"/>
             <field name="customer_payment_reference"/>
-            <newline/>
+
+            <field name="payment_means" colspan="4"/>
 
             <label name="amount_to_pay_today"/>
             <field name="amount_to_pay_today"/>

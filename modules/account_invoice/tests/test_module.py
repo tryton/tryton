@@ -40,6 +40,7 @@ class AccountInvoiceTestCase(
         ModuleTestCase):
     'Test AccountInvoice module'
     module = 'account_invoice'
+    extras = ['bank']
 
     @with_transaction()
     def test_payment_term(self):

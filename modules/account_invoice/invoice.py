@@ -18,8 +18,8 @@ from stdnum import iso7064, iso11649
 from trytond import backend, config
 from trytond.i18n import gettext
 from trytond.model import (
-    ChatMixin, DeactivableMixin, Index, ModelSQL, ModelView, Unique, Workflow,
-    dualmethod, fields, sequence_ordered)
+    ChatMixin, DeactivableMixin, Index, MatchMixin, ModelSQL, ModelView,
+    Unique, Workflow, dualmethod, fields, sequence_ordered)
 from trytond.model.exceptions import AccessError
 from trytond.modules.account.exceptions import AccountMissing
 from trytond.modules.account.tax import TaxableMixin
@@ -27,7 +27,7 @@ from trytond.modules.company.model import (
     employee_field, reset_employee, set_employee)
 from trytond.modules.currency.fields import Monetary
 from trytond.modules.product import price_digits
-from trytond.pool import Pool
+from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Bool, Eval, Id, If
 from trytond.report import Report
 from trytond.rpc import RPC
@@ -250,6 +250,9 @@ class Invoice(
     payment_term = fields.Many2One(
         'account.invoice.payment_term', "Payment Term",
         ondelete='RESTRICT', states=_states)
+    payment_means = fields.One2Many(
+        'account.invoice.payment.mean', 'invoice', "Payment Means",
+        states=_states)
     alternative_payees = fields.Many2Many(
         'account.invoice.alternative_payee', 'invoice', 'party',
         "Alternative Payee", states=_states,
@@ -1485,6 +1488,26 @@ class Invoice(
             pattern.setdefault('country', self.invoice_address.country.id)
         return self.company.get_tax_identifier(pattern)
 
+    @classmethod
+    def set_payment_means(cls, invoices):
+        pool = Pool()
+        PaymentMean = pool.get('account.invoice.payment.mean')
+        PaymentMeanRule = pool.get('account.invoice.payment.mean.rule')
+        payment_means = []
+        rules = PaymentMeanRule.search([])
+        for invoice in invoices:
+            if invoice.type != 'out':
+                continue
+            if invoice.payment_means:
+                continue
+            pattern = PaymentMeanRule.pattern_from_invoice(invoice)
+            for rule in rules:
+                if rule.match(pattern):
+                    payment_mean = PaymentMean.from_rule(rule)
+                    payment_mean.invoice = invoice
+                    payment_means.append(payment_mean)
+        PaymentMean.save(payment_means)
+
     @property
     def invoice_report_versioned(self):
         return self.state in {'posted', 'paid'} and self.type == 'out'
@@ -1560,6 +1583,14 @@ class Invoice(
 
     @classmethod
     def view_attributes(cls):
+        pool = Pool()
+        PaymentMean = pool.get('account.invoice.payment.mean')
+        if not PaymentMean.get_instruments():
+            payment_means = [
+                ('/form//field[@name="payment_means"]', 'invisible', '1'),
+                ]
+        else:
+            payment_means = []
         return super().view_attributes() + [
             ('/form//field[@name="comment"]', 'spell', Eval('party_lang')),
             ('/tree', 'visual',
@@ -1570,7 +1601,15 @@ class Invoice(
                         & (Eval('amount_to_pay_today', 0) < 0)),
                     'danger',
                     If(Eval('state') == 'cancelled', 'muted', ''))),
-            ]
+            ] + payment_means
+
+    @classmethod
+    def index_set_field(cls, name):
+        index = super().index_set_field(name)
+        if name == 'payment_means':
+            # payment means domain depends on alternative_payees
+            index = cls.index_set_field('alternative_payees') + 1
+        return index
 
     @classmethod
     def check_modification(cls, mode, invoices, values=None, external=False):
@@ -1974,6 +2013,7 @@ class Invoice(
 
         invoices_in = cls.browse([i for i in invoices if i.type == 'in'])
         cls.set_number(invoices_in)
+        cls.set_payment_means(invoices)
         cls._store_cache(invoices)
         moves = []
         for invoice in invoices_in:
@@ -2045,6 +2085,7 @@ class Invoice(
         context = transaction.context
 
         cls.set_number(invoices)
+        cls.set_payment_means(invoices)
         cls._store_cache(invoices)
         moves = []
         for invoice in invoices:
@@ -3394,6 +3435,178 @@ class InvoiceTax(sequence_ordered(), ModelSQL, ModelView):
         for field in ['description', 'sequence', 'manual', 'account', 'tax']:
             setattr(line, field, getattr(self, field))
         return line
+
+
+class PaymentMean(ModelSQL, ModelView):
+    __name__ = 'account.invoice.payment.mean'
+
+    invoice = fields.Many2One('account.invoice', "Invoice", required=True)
+    payees = fields.Function(
+        fields.Many2Many(
+            'party.party', None, None, "Payees",
+            context={
+                'company': Eval('company', -1),
+                }),
+        'on_change_with_payees')
+    payers = fields.Function(
+        fields.Many2Many(
+            'party.party', None, None, "Payers",
+            context={
+                'company': Eval('company', -1),
+                }),
+        'on_change_with_payers')
+    company = fields.Function(
+        fields.Many2One('company.company', "Company"),
+        'on_change_with_company')
+    instrument = fields.Reference(
+        "Instrument", 'get_instruments', required=True)
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls.__access__.add('invoice')
+
+    @fields.depends(
+        'invoice', '_parent_invoice.type',
+        '_parent_invoice.company', '_parent_invoice.party',
+        '_parent_invoice.alternative_payees')
+    def on_change_with_payees(self, name=None):
+        payees = []
+        if self.invoice:
+            if self.invoice.type == 'out':
+                if self.invoice.company:
+                    payees.append(self.invoice.company.party)
+            elif self.invoice.type == 'in':
+                if self.invoice.party:
+                    payees.append(self.invoice.party)
+                if self.invoice.alternative_payees:
+                    payees.extend(self.invoice.alternative_payees)
+        return payees
+
+    @fields.depends(
+        'invoice', '_parent_invoice.type',
+        '_parent_invoice.company', '_parent_invoice.party',
+        '_parent_invoice.alternative_payees')
+    def on_change_with_payers(self, name=None):
+        payers = []
+        if self.invoice:
+            if self.invoice.type == 'in':
+                if self.invoice.company:
+                    payers.append(self.invoice.company.party)
+            elif self.invoice.type == 'out':
+                if self.invoice.party:
+                    payers.append(self.invoice.party)
+                if self.invoice.alternative_payees:
+                    payers.extend(self.invoice.alternative_payees)
+        return payers
+
+    @fields.depends('invoice', '_parent_invoice.company')
+    def on_change_with_company(self, name=None):
+        return self.invoice.company if self.invoice else None
+
+    @classmethod
+    def _get_instruments(cls):
+        return []
+
+    @classmethod
+    def get_instruments(cls):
+        pool = Pool()
+        Model = pool.get('ir.model')
+        Rule = pool.get('account.invoice.payment.mean.rule')
+        get_name = Model.get_name
+        instruments = Rule.get_instruments()
+        for model in cls._get_instruments():
+            instruments.append((model, get_name(model)))
+        return instruments
+
+    def get_rec_name(self, name):
+        return self.instrument.rec_name
+
+    @classmethod
+    def from_rule(cls, rule):
+        return cls(instrument=rule.instrument)
+
+
+class PaymentMean_Bank(metaclass=PoolMeta):
+    __name__ = 'account.invoice.payment.mean'
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls.instrument.domain['bank.account'] = [
+            ('owners.id', 'in', Eval('payees', [])),
+            ]
+
+    def get_rec_name(self, name):
+        name = super().get_rec_name(name)
+        if self.instrument.__name__ == 'bank.account':
+            for number in self.instrument.numbers:
+                name = f'{number.type_string}: {number.number}'
+                break
+            else:
+                name = ''
+        return name
+
+
+class PaymentMeanRule(sequence_ordered(), MatchMixin, ModelSQL, ModelView):
+    __name__ = 'account.invoice.payment.mean.rule'
+
+    company = fields.Many2One('company.company', "Company", required=True)
+    currency = fields.Many2One('currency.currency', "Currency")
+    payee = fields.Function(
+        fields.Many2One(
+            'party.party', "Payee",
+            context={
+                'company': Eval('company', -1),
+                }),
+        'on_change_with_payee')
+    instrument = fields.Reference(
+        "Instrument", 'get_instruments', required=True)
+
+    @classmethod
+    def default_company(cls):
+        return Transaction().context.get('company')
+
+    @fields.depends('company')
+    def on_change_with_payee(self, name=None):
+        return self.company.party if self.company else None
+
+    @classmethod
+    def _get_instruments(cls):
+        return []
+
+    @classmethod
+    def get_instruments(cls):
+        pool = Pool()
+        Model = pool.get('ir.model')
+        get_name = Model.get_name
+        instruments = []
+        for model in cls._get_instruments():
+            instruments.append((model, get_name(model)))
+        return instruments
+
+    @classmethod
+    def pattern_from_invoice(cls, invoice):
+        return {
+            'company': invoice.company.id,
+            'currency': invoice.currency.id,
+            }
+
+
+class PaymentMeanRule_Bank(metaclass=PoolMeta):
+    __name__ = 'account.invoice.payment.mean.rule'
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls.instrument.domain['bank.account'] = [
+            ('owners.id', '=', Eval('payee', -1)),
+            ]
+
+    @classmethod
+    def _get_instruments(cls):
+        yield from super()._get_instruments()
+        yield 'bank.account'
 
 
 class PaymentMethod(DeactivableMixin, ModelSQL, ModelView):

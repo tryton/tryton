@@ -182,9 +182,9 @@ remainder.
 
    Payment terms are create and managed from the main menu item:
 
-      |Financial --> Configuration --> Payment Terms --> Payment Terms|__
+      |Financial --> Configuration --> Invoice Payments --> Payment Terms|__
 
-      .. |Financial --> Configuration --> Payment Terms --> Payment Terms| replace:: :menuselection:`Financial --> Configuration --> Payment Terms --> Payment Terms`
+      .. |Financial --> Configuration --> Invoice Payments --> Payment Terms| replace:: :menuselection:`Financial --> Configuration --> Invoice Payments --> Payment Terms`
       __ https://demo.tryton.org/model/account.invoice.payment_term
 
 Wizards
@@ -206,3 +206,24 @@ and amounts for each payment that will be required for that payment term.
    Payment terms can be tested out by opening the main menu item:
 
       :menuselection:`Financial --> Configuration --> Payment Terms --> Test Payment Term`
+
+.. _model-account.invoice.payment.mean.rule:
+
+Payment Mean Rule
+=================
+
+The *Payment Mean Rule* stores the payment instruments that are applied
+automatically on `Invoices <model-account.invoice>` without any of them on
+validation or posting.
+The selection is based on criteria such as the `company
+<company:model-company.company>` and the `currency
+<currency:model-currency.currency>` of the invoice.
+
+.. seealso::
+
+   Payment means rules are created and managed from the main menu item:
+
+      |Financial --> Configuration --> Invoice Payments --> Payment Means Rules|__
+
+      .. |Financial --> Configuration --> Invoice Payments --> Payment Means Rules| replace:: :menuselection:`Financial --> Configuration --> Invoice Payments --> Payment Means Rules`
+      __ https://demo.tryton.org/model/account.invoice.payment.mean.rule
