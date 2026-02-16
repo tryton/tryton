@@ -218,7 +218,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="res_model">account.invoice</field>
             <field
                 name="domain"
-                eval="[('lines.origin.subscription.id', 'in', Eval('active_ids'), 'sale.subscription.line')]"
+                eval="[('lines.origin.subscription.id', 'in', Eval('active_ids'), 'sale.subscription.line'), ('type', '=', 'out')]"
                 pyson="1"/>
         </record>
         <record model="ir.action.keyword" id="act_subscription_invoice_relate_keyword1">

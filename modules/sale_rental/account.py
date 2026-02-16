@@ -3,6 +3,7 @@
 
 from trytond.model import fields
 from trytond.pool import Pool, PoolMeta
+from trytond.pyson import Bool, Eval, If
 from trytond.report import Report
 from trytond.tools import cached_property
 
@@ -33,6 +34,21 @@ class Invoice(metaclass=PoolMeta):
 
 class InvoiceLine(metaclass=PoolMeta):
     __name__ = 'account.invoice.line'
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        if not cls.origin.domain:
+            cls.origin.domain = {}
+        cls.origin.domain['sale.rental.line'] = [
+            If(Bool(Eval('_parent_invoice')),
+                If(Eval('_parent_invoice', {}).get('type') != 'out',
+                    ('id', '=', -1),
+                    ()),
+                If(Eval('invoice_type') != 'out',
+                    ('id', '=', -1),
+                    ())),
+            ]
 
     @fields.depends('product', 'origin')
     def on_change_product(self):

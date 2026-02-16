@@ -6,7 +6,7 @@ from trytond.i18n import gettext
 from trytond.model import Workflow, fields
 from trytond.model.exceptions import AccessError
 from trytond.pool import Pool, PoolMeta
-from trytond.pyson import Eval
+from trytond.pyson import Bool, Eval, If
 from trytond.transaction import Transaction, without_check_access
 
 
@@ -118,6 +118,13 @@ class Line(metaclass=PoolMeta):
             cls.origin.domain = {}
         cls.origin.domain['sale.line'] = [
             ('type', '=', Eval('type')),
+            If(Bool(Eval('_parent_invoice')),
+                If(Eval('_parent_invoice', {}).get('type') != 'out',
+                    ('id', '=', -1),
+                    ()),
+                If(Eval('invoice_type') != 'out',
+                    ('id', '=', -1),
+                    ())),
             ]
 
     @fields.depends('origin')
