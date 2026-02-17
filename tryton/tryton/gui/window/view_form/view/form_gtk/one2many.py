@@ -184,6 +184,10 @@ class One2Many(Widget):
 
         self._popup = False
 
+    @property
+    def _styled_widget(self):
+        return
+
     def get_access(self, type_):
         model = self.attrs['relation']
         if model:

@@ -49,6 +49,10 @@ class Many2One(Widget):
 
         self._readonly = False
 
+    @property
+    def _styled_widget(self):
+        return self.wid_text
+
     def get_model(self):
         return self.attrs['relation']
 

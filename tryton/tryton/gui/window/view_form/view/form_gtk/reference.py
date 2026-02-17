@@ -35,6 +35,10 @@ class Reference(Many2One, SelectionMixin, PopdownMixin):
         self.init_selection()
         self.set_popdown(self.selection, self.widget_combo)
 
+    @property
+    def _styled_widget(self):
+        return self.widget
+
     def get_model(self):
         active = self.widget_combo.get_active()
         if active < 0:

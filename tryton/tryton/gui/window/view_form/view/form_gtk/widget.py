@@ -58,15 +58,8 @@ class Widget(object):
     def _required_set(self, required):
         pass
 
-    def _invisible_widget(self):
-        return self.widget
-
     @property
-    def _invalid_widget(self):
-        return self.widget
-
-    @property
-    def _required_widget(self):
+    def _styled_widget(self):
         return self.widget
 
     @property
@@ -89,13 +82,12 @@ class Widget(object):
         return False
 
     def invisible_set(self, value):
-        widget = self._invisible_widget()
         if value and value != '0':
             self.visible = False
-            widget.hide()
+            self.widget.hide()
         else:
             self.visible = True
-            widget.show()
+            self.widget.show()
 
     def _focus_out(self, *args):
         if not self.field:
@@ -106,6 +98,9 @@ class Widget(object):
 
     def display(self):
         if not self.field:
+            if self._styled_widget:
+                for name in ['readonly', 'required', 'invalid', 'modifed']:
+                    widget_class(self._styled_widget, name, False)
             self._readonly_set(self.attrs.get('readonly', True))
             self.invisible_set(self.attrs.get('invisible', False))
             self._required_set(False)
@@ -115,13 +110,22 @@ class Widget(object):
         if self.view.screen.readonly:
             readonly = True
         self._readonly_set(readonly)
-        widget_class(self.widget, 'readonly', readonly)
         self._required_set(not readonly and states.get('required', False))
-        widget_class(
-            self._required_widget, 'required',
-            not readonly and states.get('required', False))
-        invalid = states.get('invalid', False)
-        widget_class(self._invalid_widget, 'invalid', not readonly and invalid)
+        if self._styled_widget:
+            widget_class(self._styled_widget, 'readonly', readonly)
+            widget_class(
+                self._styled_widget,
+                'required',
+                not readonly and states.get('required', False))
+            widget_class(
+                self._styled_widget,
+                'invalid',
+                not readonly and states.get('invalid', False))
+            widget_class(
+                self._styled_widget,
+                'modified',
+                self.record.id >= 0
+                and self.field_name in self.record.modified_fields)
         self.invisible_set(self.attrs.get(
                 'invisible', states.get('invisible', False)))
 

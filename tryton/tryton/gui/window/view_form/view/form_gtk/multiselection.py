@@ -13,7 +13,7 @@ class MultiSelection(Widget, SelectionMixin):
     def __init__(self, view, attrs):
         super().__init__(view, attrs)
 
-        if int(attrs.get('yexpand', self.expand)):
+        if int(attrs.get('yexpand', self.expand)) or True:
             self.widget = Gtk.ScrolledWindow()
             self.widget.set_policy(
                 Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.AUTOMATIC)

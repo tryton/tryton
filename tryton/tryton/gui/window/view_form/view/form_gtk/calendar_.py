@@ -34,6 +34,10 @@ class Date(Widget):
         self.widget.pack_start(self.entry, expand=False, fill=False, padding=0)
 
     @property
+    def _styled_widget(self):
+        return self.entry
+
+    @property
     def real_entry(self):
         return self.entry
 

@@ -23,6 +23,10 @@ class TimeDelta(Widget):
         self.widget.pack_start(self.entry, expand=True, fill=True, padding=0)
 
     @property
+    def _styled_widget(self):
+        return self.entry
+
+    @property
     def modified(self):
         if self.record and self.field:
             value = self.entry.get_text()

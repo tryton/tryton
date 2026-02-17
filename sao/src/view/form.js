@@ -1295,6 +1295,10 @@ function eval_pyson(value){
             var invisible = this.attributes.invisible;
             var required = this.attributes.required;
             if (!field) {
+                if (this._styled_el) {
+                    this._styled_el.removeClass(
+                        ['readonly', 'required', 'has-error', 'has-warning']);
+                }
                 if (readonly === undefined) {
                     readonly = true;
                 }
@@ -1326,24 +1330,18 @@ function eval_pyson(value){
                 readonly = true;
             }
             this.set_readonly(readonly);
-            if (readonly) {
-                this.el.addClass('readonly');
-            } else {
-                this.el.removeClass('readonly');
-            }
-            var required_el = this._required_el();
             this.set_required(required);
-            if (!readonly && required) {
-                required_el.addClass('required');
-            } else {
-                required_el.removeClass('required');
-            }
-            var invalid = state_attrs.invalid;
-            var invalid_el = this._invalid_el();
-            if (!readonly && invalid) {
-                invalid_el.addClass('has-error');
-            } else {
-                invalid_el.removeClass('has-error');
+            if (this._styled_el) {
+                this._styled_el.toggleClass('readonly', readonly);
+                this._styled_el.toggleClass(
+                    'required', !readonly && required);
+                this._styled_el.toggleClass(
+                    'has-error', !readonly && state_attrs.invalid);
+                this._styled_el.toggleClass(
+                    'has-warning',
+                    (this.record.id >= 0)
+                    && Object.hasOwn(
+                        this.record.modified_fields,this.field_name));
             }
             if (invisible === undefined) {
                 invisible = field.get_state_attrs(this.record).invisible;
@@ -1353,10 +1351,7 @@ function eval_pyson(value){
             }
             this.set_invisible(invisible);
         },
-        _required_el: function () {
-            return this.el;
-        },
-        _invalid_el: function() {
+        get _styled_el() {
             return this.el;
         },
         get field_name() {
@@ -3476,6 +3471,9 @@ function eval_pyson(value){
 
             this._popup = false;
         },
+        get _styled_el() {
+            return null;
+        },
         get_access: function(type) {
             var model = this.attributes.relation;
             if (model) {
@@ -4126,6 +4124,9 @@ function eval_pyson(value){
                 this.content.append(this.screen.screen_container.el);
             });
             this._popup = false;
+        },
+        get _styled_el() {
+            return null;
         },
         get_access: function(type) {
             var model = this.attributes.relation;
@@ -5167,10 +5168,7 @@ function eval_pyson(value){
             this._record_id = null;
             this._popup = false;
         },
-        _required_el: function() {
-            return this.wid_text;
-        },
-        _invalid_el: function() {
+        get _styled_el() {
             return this.wid_text;
         },
         add: function() {

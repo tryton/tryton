@@ -51,6 +51,10 @@ class Char(Widget, TranslateMixin, PopdownMixin):
                 IconFactory.get_pixbuf('tryton-translate', Gtk.IconSize.MENU))
             self.entry.connect('icon-press', self.translate)
 
+    @property
+    def _styled_widget(self):
+        return self.entry.get_child() if self.autocomplete else self.entry
+
     def translate_widget(self):
         entry = Gtk.Entry()
         entry.set_property('activates_default', True)

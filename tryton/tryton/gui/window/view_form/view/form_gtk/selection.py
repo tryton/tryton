@@ -35,6 +35,10 @@ class Selection(Widget, SelectionMixin, PopdownMixin):
         self.init_selection()
         self.set_popdown(self.selection, self.entry)
 
+    @property
+    def _styled_widget(self):
+        return self.mnemonic_widget
+
     def changed(self, combobox):
         def focus_out():
             if combobox.props.window:

@@ -122,6 +122,10 @@ class Many2Many(Widget):
 
         self._popup = False
 
+    @property
+    def _styled_widget(self):
+        return
+
     def on_keypress(self, widget, event):
         editable = self.wid_text.get_editable()
         activate_keys = [Gdk.KEY_Tab, Gdk.KEY_ISO_Left_Tab]

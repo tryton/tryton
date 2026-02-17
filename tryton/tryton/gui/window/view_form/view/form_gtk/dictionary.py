@@ -521,7 +521,7 @@ class DictWidget(Widget):
         self._popup = False
 
     @property
-    def _invalid_widget(self):
+    def _styleed_widget(self):
         return self.wid_text
 
     def _new_remove_btn(self):

@@ -49,6 +49,10 @@ class TextBox(Widget, TranslateMixin):
         self.widget.pack_end(
             self.scrolledwindow, expand=True, fill=True, padding=0)
 
+    @property
+    def _styled_widget(self):
+        return self.textview
+
     def _get_textview(self):
         if self.attrs.get('size'):
             textbuffer = TextBufferLimitSize(int(self.attrs['size']))

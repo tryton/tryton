@@ -173,6 +173,10 @@ class Binary(BinaryMixin, Widget):
         self.widget.pack_start(
             self.toolbar(), expand=False, fill=False, padding=0)
 
+    @property
+    def _styled_widget(self):
+        return self.wid_size
+
     def _readonly_set(self, value):
         self.but_select.set_sensitive(not value)
         self.but_clear.set_sensitive(not value)

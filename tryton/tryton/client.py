@@ -15,14 +15,30 @@ from tryton.gui.window.dblogin import DBLogin
 
 def main():
     CSS = b"""
-    .readonly entry, .readonly text {
+    entry.readonly,
+    textview.readonly > text {
         background-color: @insensitive_bg_color;
     }
-    .required entry, entry.required, .required text, text.required {
+    entry.required,
+    textview.required > text,
+    checkbutton.required > check,
+    box.required,
+    scrolledwindow.required {
         border-color: darker(@unfocused_borders);
     }
-    .invalid entry, entry.invalid, .invalid text, text.invalid {
-        border-color: @error_color;
+    entry.invalid,
+    textview.invalid > text,
+    checkbutton.invalid > check,
+    box.invalid,
+    scrolledwindow.invalid {
+        border-bottom: 1px solid @error_color;
+    }
+    entry.modified,
+    textview.modified > text,
+    checkbutton.modified > check,
+    box.modified,
+    scrolledwindow.modified {
+        border-bottom: 1px solid lighter(@warning_color);
     }
     label.required {
         font-weight: bold;

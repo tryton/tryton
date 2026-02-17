@@ -34,6 +34,10 @@ class Integer(Widget):
                 self.symbol_end, expand=False, fill=False, padding=1)
 
     @property
+    def _styled_widget(self):
+        return self.entry
+
+    @property
     def modified(self):
         if self.record and self.field:
             value = self.get_client_value()
