@@ -445,23 +445,6 @@ class ModelField(
                         "could not delete field: %s.%s", model, field,
                         exc_info=True)
 
-    def get_rec_name(self, name):
-        if self.string:
-            return '%s (%s)' % (self.string, self.name)
-        else:
-            return self.name
-
-    @classmethod
-    def search_rec_name(cls, name, clause):
-        if clause[1].startswith('!') or clause[1].startswith('not '):
-            bool_op = 'AND'
-        else:
-            bool_op = 'OR'
-        return [bool_op,
-            ('string',) + tuple(clause[1:]),
-            ('name',) + tuple(clause[1:]),
-            ]
-
     @classmethod
     def get_name(cls, model, field):
         name = cls._get_name_cache.get((model, field))
