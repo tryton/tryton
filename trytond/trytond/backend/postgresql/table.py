@@ -56,11 +56,6 @@ class TableHandler(TableHandlerInterface):
         if view_exists:
             return
 
-        if model.__doc__ and self.is_owner:
-            cursor.execute(SQL('COMMENT ON TABLE {} IS %s').format(
-                        Identifier(self.table_name)),
-                (model.__doc__,))
-
         def migrate_to_identity(table, column):
             previous_seq_name = f"{table}_{column}_seq"
             cursor.execute(
@@ -324,7 +319,7 @@ class TableHandler(TableHandlerInterface):
                 .format(Identifier(self.table_name), Identifier(column_name)),
                 (value,))
 
-    def add_column(self, column_name, sql_type, default=None, comment=''):
+    def add_column(self, column_name, sql_type, default=None):
         cursor = ClientCursor(Transaction().connection)
         database = Transaction().database
 
@@ -332,13 +327,6 @@ class TableHandler(TableHandlerInterface):
         match = VARCHAR_SIZE_RE.match(sql_type)
         field_size = int(match.group(1)) if match else None
 
-        def add_comment():
-            if comment and self.is_owner:
-                cursor.execute(
-                    SQL('COMMENT ON COLUMN {}.{} IS %s').format(
-                        Identifier(self.table_name),
-                        Identifier(column_name)),
-                    (comment,))
         if self.column_exist(column_name):
             if (column_name in ('create_date', 'write_date')
                     and column_type[1].lower() != 'timestamp(6)'):
@@ -350,7 +338,6 @@ class TableHandler(TableHandlerInterface):
                         Identifier(self.table_name),
                         Identifier(column_name)))
 
-            add_comment()
             base_type = column_type[0].lower()
             typname = self._columns[column_name]['typname']
             if base_type != typname:
@@ -411,7 +398,6 @@ class TableHandler(TableHandlerInterface):
                 Identifier(self.table_name),
                 Identifier(column_name),
                 SQL(column_type)))
-        add_comment()
 
         if default:
             # check if table is non-empty:

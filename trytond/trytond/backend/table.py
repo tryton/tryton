@@ -71,7 +71,7 @@ class TableHandlerInterface(object):
     def db_default(self, column_name, value):
         raise NotImplementedError
 
-    def add_column(self, column_name, abstract_type, default=None, comment=''):
+    def add_column(self, column_name, abstract_type, default=None):
         raise NotImplementedError
 
     def add_fk(self, columns, reference, ref_columns=None, on_delete=None):

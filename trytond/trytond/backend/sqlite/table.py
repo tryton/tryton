@@ -190,17 +190,16 @@ class TableHandler(TableHandlerInterface):
     def db_default(self, column_name, value):
         pass
 
-    def add_column(self, column_name, sql_type, default=None, comment=''):
+    def add_column(self, column_name, sql_type, default=None):
         database = Transaction().database
         column_type = database.sql_type(sql_type)
         match = VARCHAR_SIZE_RE.match(sql_type)
         field_size = int(match.group(1)) if match else None
 
-        self._add_raw_column(column_name, column_type, default, field_size,
-            comment)
+        self._add_raw_column(column_name, column_type, default, field_size)
 
-    def _add_raw_column(self, column_name, column_type, default=None,
-            field_size=None, string=''):
+    def _add_raw_column(
+            self, column_name, column_type, default=None, field_size=None):
         if self.column_exist(column_name):
             base_type = column_type[0].upper()
             if base_type != self._columns[column_name]['typname']:
