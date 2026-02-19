@@ -1974,12 +1974,10 @@ class _GeneralLedgerAccount(ActivePeriodMixin, ModelSQL, ModelView):
         return None, None
 
     @classmethod
-    def get_account(cls, records, name):
+    def _account_context(cls, name):
         pool = Pool()
         LedgerAccountContext = pool.get(
             'account.general_ledger.account.context')
-        Account = cls._get_account()
-
         period_ids, from_date, to_date = None, None, None
         context = LedgerAccountContext.get_context()
         if context.get('start_period') or context.get('end_period'):
@@ -1989,10 +1987,17 @@ class _GeneralLedgerAccount(ActivePeriodMixin, ModelSQL, ModelView):
         else:
             if name.startswith('start_'):
                 period_ids = []
+        return {
+            'periods': period_ids,
+            'from_date': from_date,
+            'to_date': to_date,
+            }
 
-        with Transaction().set_context(
-                periods=period_ids,
-                from_date=from_date, to_date=to_date):
+    @classmethod
+    def get_account(cls, records, name):
+        Account = cls._get_account()
+
+        with Transaction().set_context(cls._account_context(name)):
             accounts = Account.browse(records)
         fname = name
         for test in ['start_', 'end_']:
@@ -2005,8 +2010,7 @@ class _GeneralLedgerAccount(ActivePeriodMixin, ModelSQL, ModelView):
     def search_account(cls, name, domain):
         Account = cls._get_account()
 
-        period_ids = cls.get_period_ids(name)
-        with Transaction().set_context(periods=period_ids):
+        with Transaction().set_context(cls._account_context(name)):
             accounts = Account.search([], order=[])
 
         _, operator_, operand = domain
