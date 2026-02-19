@@ -189,7 +189,15 @@
         dialog.modal.uniqueId();
 
         keys.forEach(function(k, i) {
+            let checked;
+            if (!default_) {
+                checked = !i;
+            } else {
+                checked = values[keys[i]] == default_;
+            }
             jQuery('<div/>', {
+                'class': 'form-group',
+            }).append(jQuery('<div/>', {
                 'class': 'radio'
             }).append(jQuery('<label/>')
                 .text(' ' + k)
@@ -197,13 +205,11 @@
                     'type': 'radio',
                     'name': 'selection-' + dialog.modal.attr('id'),
                     'value': i,
-                    'checked': values[keys[i]] == default_,
-                })))
+                    'checked': checked,
+                    'required': true,
+                }))).dblclick(() => dialog.content.submit()))
             .appendTo(dialog.body);
         });
-        if (!default_) {
-            dialog.body.find('input').first().prop('checked', true);
-        }
 
         jQuery('<button/>', {
             'class': 'btn btn-link',
@@ -215,13 +221,16 @@
         }).appendTo(dialog.footer);
         jQuery('<button/>', {
             'class': 'btn btn-primary',
-            'type': 'button',
+            'type': 'submit',
             'title': Sao.i18n.gettext("OK"),
-        }).text(Sao.i18n.gettext('OK')).click(function() {
+        }).text(Sao.i18n.gettext('OK')
+        ).appendTo(dialog.footer);
+        dialog.content.submit(evt => {
+            evt.preventDefault();
             var i = dialog.body.find('input:checked').attr('value');
             dialog.modal.modal('hide');
             prm.resolve(values[keys[i]]);
-        }).appendTo(dialog.footer);
+        });
         dialog.modal.on('hidden.bs.modal', function(e) {
             jQuery(this).remove();
         });
