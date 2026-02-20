@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="utf-8"?>
 <!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
 this repository contains the full copyright notices and license terms. -->
 <tryton>
@@ -469,7 +469,7 @@ this repository contains the full copyright notices and license terms. -->
       <field name="parent" ref="resultats_2016_fr"/>
       <field name="statement">income</field>
     </record>
-    <record id="charges_activit&#xE9;_exploitation_2016_fr" model="account.account.type.template">
+    <record id="charges_activité_exploitation_2016_fr" model="account.account.type.template">
       <field name="name">Activité d'exploitation</field>
       <field name="sequence" eval="10"/>
       <field name="parent" ref="charges_2016_fr"/>
@@ -478,78 +478,78 @@ this repository contains the full copyright notices and license terms. -->
     <record id="charges_ra_2016_fr" model="account.account.type.template">
       <field name="name">RA - Achat de marchandises</field>
       <field name="sequence" eval="10"/>
-      <field name="parent" ref="charges_activit&#xE9;_exploitation_2016_fr"/>
+      <field name="parent" ref="charges_activité_exploitation_2016_fr"/>
       <field name="statement">income</field>
       <field name="expense" eval="True"/>
     </record>
     <record id="charges_rb_2016_fr" model="account.account.type.template">
       <field name="name">RB - Variation de stocks</field>
       <field name="sequence" eval="20"/>
-      <field name="parent" ref="charges_activit&#xE9;_exploitation_2016_fr"/>
+      <field name="parent" ref="charges_activité_exploitation_2016_fr"/>
       <field name="statement">income</field>
     </record>
     <record id="charges_rc_2016_fr" model="account.account.type.template">
       <field name="name">RC - Achat de matières premières et fournitures liées</field>
       <field name="sequence" eval="30"/>
-      <field name="parent" ref="charges_activit&#xE9;_exploitation_2016_fr"/>
+      <field name="parent" ref="charges_activité_exploitation_2016_fr"/>
       <field name="statement">income</field>
       <field name="expense" eval="True"/>
     </record>
     <record id="charges_rd_2016_fr" model="account.account.type.template">
       <field name="name">RC - Variation de stocks</field>
       <field name="sequence" eval="30"/>
-      <field name="parent" ref="charges_activit&#xE9;_exploitation_2016_fr"/>
+      <field name="parent" ref="charges_activité_exploitation_2016_fr"/>
       <field name="statement">income</field>
     </record>
     <record id="charges_re_2016_fr" model="account.account.type.template">
       <field name="name">RE - Autres achats</field>
       <field name="sequence" eval="40"/>
-      <field name="parent" ref="charges_activit&#xE9;_exploitation_2016_fr"/>
+      <field name="parent" ref="charges_activité_exploitation_2016_fr"/>
       <field name="statement">income</field>
       <field name="expense" eval="True"/>
     </record>
     <record id="charges_rh_2016_fr" model="account.account.type.template">
       <field name="name">RH - Variation de stocks</field>
       <field name="sequence" eval="50"/>
-      <field name="parent" ref="charges_activit&#xE9;_exploitation_2016_fr"/>
+      <field name="parent" ref="charges_activité_exploitation_2016_fr"/>
       <field name="statement">income</field>
     </record>
     <record id="charges_ri_2016_fr" model="account.account.type.template">
       <field name="name">RI - Transports</field>
       <field name="sequence" eval="60"/>
-      <field name="parent" ref="charges_activit&#xE9;_exploitation_2016_fr"/>
+      <field name="parent" ref="charges_activité_exploitation_2016_fr"/>
       <field name="statement">income</field>
       <field name="expense" eval="True"/>
     </record>
     <record id="charges_rj_2016_fr" model="account.account.type.template">
       <field name="name">RJ - Services extérieurs</field>
       <field name="sequence" eval="70"/>
-      <field name="parent" ref="charges_activit&#xE9;_exploitation_2016_fr"/>
+      <field name="parent" ref="charges_activité_exploitation_2016_fr"/>
       <field name="statement">income</field>
       <field name="expense" eval="True"/>
     </record>
     <record id="charges_rk_2016_fr" model="account.account.type.template">
       <field name="name">RK - Impôts et taxes</field>
       <field name="sequence" eval="80"/>
-      <field name="parent" ref="charges_activit&#xE9;_exploitation_2016_fr"/>
+      <field name="parent" ref="charges_activité_exploitation_2016_fr"/>
       <field name="statement">income</field>
     </record>
     <record id="charges_rl_2016_fr" model="account.account.type.template">
       <field name="name">RL - Autres charges</field>
       <field name="sequence" eval="90"/>
-      <field name="parent" ref="charges_activit&#xE9;_exploitation_2016_fr"/>
+      <field name="parent" ref="charges_activité_exploitation_2016_fr"/>
       <field name="statement">income</field>
     </record>
     <record id="charges_rp_2016_fr" model="account.account.type.template">
       <field name="name">RP - Charges de personnel</field>
       <field name="sequence" eval="100"/>
-      <field name="parent" ref="charges_activit&#xE9;_exploitation_2016_fr"/>
+      <field name="parent" ref="charges_activité_exploitation_2016_fr"/>
       <field name="statement">income</field>
     </record>
     <record id="charges_rs_2016_fr" model="account.account.type.template">
       <field name="name">RS - Dotations aux amortissements et aux provisions</field>
       <field name="sequence" eval="110"/>
-      <field name="parent" ref="charges_activit&#xE9;_exploitation_2016_fr"/>
+      <field name="parent" ref="charges_activité_exploitation_2016_fr"/>
       <field name="statement">income</field>
     </record>
     <record id="charges_activite_finaciere_2016_fr" model="account.account.type.template">
@@ -618,7 +618,7 @@ this repository contains the full copyright notices and license terms. -->
       <field name="parent" ref="resultats_2016_fr"/>
       <field name="statement">income</field>
     </record>
-    <record id="produits_activit&#xE9;_exploitation_2016_fr" model="account.account.type.template">
+    <record id="produits_activité_exploitation_2016_fr" model="account.account.type.template">
       <field name="name">Activité d'exploitation</field>
       <field name="sequence" eval="10"/>
       <field name="parent" ref="produits_2016_fr"/>
@@ -627,66 +627,66 @@ this repository contains the full copyright notices and license terms. -->
     <record id="produits_ta_2016_fr" model="account.account.type.template">
       <field name="name">TA - Ventes de marchandises</field>
       <field name="sequence" eval="10"/>
-      <field name="parent" ref="produits_activit&#xE9;_exploitation_2016_fr"/>
+      <field name="parent" ref="produits_activité_exploitation_2016_fr"/>
       <field name="statement">income</field>
       <field name="revenue" eval="True"/>
     </record>
     <record id="produits_tc_2016_fr" model="account.account.type.template">
       <field name="name">TC - Ventes de produits fabriqués</field>
       <field name="sequence" eval="20"/>
-      <field name="parent" ref="produits_activit&#xE9;_exploitation_2016_fr"/>
+      <field name="parent" ref="produits_activité_exploitation_2016_fr"/>
       <field name="statement">income</field>
       <field name="revenue" eval="True"/>
     </record>
     <record id="produits_td_2016_fr" model="account.account.type.template">
       <field name="name">TD - Travaux, services vendus</field>
       <field name="sequence" eval="30"/>
-      <field name="parent" ref="produits_activit&#xE9;_exploitation_2016_fr"/>
+      <field name="parent" ref="produits_activité_exploitation_2016_fr"/>
       <field name="statement">income</field>
       <field name="revenue" eval="True"/>
     </record>
     <record id="produits_te_2016_fr" model="account.account.type.template">
       <field name="name">TE - Productions stockée</field>
       <field name="sequence" eval="40"/>
-      <field name="parent" ref="produits_activit&#xE9;_exploitation_2016_fr"/>
+      <field name="parent" ref="produits_activité_exploitation_2016_fr"/>
       <field name="statement">income</field>
     </record>
     <record id="produits_tf_2016_fr" model="account.account.type.template">
       <field name="name">TF - Productions immobilisées</field>
       <field name="sequence" eval="50"/>
-      <field name="parent" ref="produits_activit&#xE9;_exploitation_2016_fr"/>
+      <field name="parent" ref="produits_activité_exploitation_2016_fr"/>
       <field name="statement">income</field>
     </record>
     <record id="produits_th_2016_fr" model="account.account.type.template">
       <field name="name">TH - Produits accessoires</field>
       <field name="sequence" eval="60"/>
-      <field name="parent" ref="produits_activit&#xE9;_exploitation_2016_fr"/>
+      <field name="parent" ref="produits_activité_exploitation_2016_fr"/>
       <field name="statement">income</field>
       <field name="revenue" eval="True"/>
     </record>
     <record id="produits_tk_2016_fr" model="account.account.type.template">
       <field name="name">TK - Subventions d'exploitation</field>
       <field name="sequence" eval="70"/>
-      <field name="parent" ref="produits_activit&#xE9;_exploitation_2016_fr"/>
+      <field name="parent" ref="produits_activité_exploitation_2016_fr"/>
       <field name="statement">income</field>
     </record>
     <record id="produits_tl_2016_fr" model="account.account.type.template">
       <field name="name">TL - Autres produits</field>
       <field name="sequence" eval="80"/>
-      <field name="parent" ref="produits_activit&#xE9;_exploitation_2016_fr"/>
+      <field name="parent" ref="produits_activité_exploitation_2016_fr"/>
       <field name="statement">income</field>
       <field name="revenue" eval="True"/>
     </record>
     <record id="produits_ts_2016_fr" model="account.account.type.template">
       <field name="name">TS - Reprises de provisions</field>
       <field name="sequence" eval="90"/>
-      <field name="parent" ref="produits_activit&#xE9;_exploitation_2016_fr"/>
+      <field name="parent" ref="produits_activité_exploitation_2016_fr"/>
       <field name="statement">income</field>
     </record>
     <record id="produits_tt_2016_fr" model="account.account.type.template">
       <field name="name">TT - Transferts de charges</field>
       <field name="sequence" eval="100"/>
-      <field name="parent" ref="produits_activit&#xE9;_exploitation_2016_fr"/>
+      <field name="parent" ref="produits_activité_exploitation_2016_fr"/>
       <field name="statement">income</field>
     </record>
     <record id="produits_activite_finaciere_2016_fr" model="account.account.type.template">
