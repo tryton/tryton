@@ -26,6 +26,8 @@ with, as a minimum, the :guilabel:`Admin API access scopes`:
 
    * :guilabel:`Orders`: ``write_orders``
 
+   * :guilabel:`Payment terms`: ``read_payment_terms``
+
    * :guilabel:`Product listings`: ``write_product_listings``
 
    * :guilabel:`Products`: ``write_products``

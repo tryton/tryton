@@ -153,6 +153,9 @@ class Sale(IdentifierMixin, metaclass=PoolMeta):
     shopify_tax_adjustment = Monetary(
         "Shopify Tax Adjustment",
         currency='currency', digits='currency', readonly=True)
+    shopify_amount_to_pay = Monetary(
+        "Shopify Amount to Pay",
+        currency='currency', digits='currency', readonly=True)
     shopify_status_url = fields.Char("Shopify Status URL", readonly=True)
     shopify_resource = 'orders'
 
@@ -266,6 +269,9 @@ class Sale(IdentifierMixin, metaclass=PoolMeta):
                     'hasNextPage': None,
                     'endCursor': None,
                     }
+                },
+            'paymentTerms': {
+                'paymentTermsType': None,
                 },
             'transactions': Payment.shopify_fields(),
             'totalPriceSet': {
@@ -488,7 +494,22 @@ class Sale(IdentifierMixin, metaclass=PoolMeta):
             line.quantity = 0
             lines.append(line)
         sale.lines = lines
+        setattr_changed(
+            sale, 'shopify_amount_to_pay',
+            cls._shopify_amount_to_pay(order))
         return sale
+
+    @classmethod
+    def _shopify_amount_to_pay(cls, order):
+        if order['paymentTerms']:
+            return 0
+
+    @property
+    def amount_to_pay(self):
+        amount = super().amount_to_pay
+        if self.shopify_amount_to_pay is not None:
+            amount = self.shopify_amount_to_pay
+        return amount
 
     @property
     def invoice_grouping_method(self):
