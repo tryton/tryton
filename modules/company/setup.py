@@ -50,6 +50,8 @@ for dep in info.get('depends', []):
         requires.append(get_require_version('trytond_%s' % dep))
 requires.append(get_require_version('trytond'))
 
+tests_require = []
+
 setup(name=name,
     version=version,
     description='Tryton module with companies and employees',
@@ -121,6 +123,7 @@ setup(name=name,
     install_requires=requires,
     extras_require={
         'image': ['pillow'],
+        'test': tests_require,
         },
     zip_safe=False,
     entry_points="""
