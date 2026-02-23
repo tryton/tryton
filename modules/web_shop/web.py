@@ -320,7 +320,7 @@ class Shop_ShipmentCost(metaclass=PoolMeta):
 class Shop_TaxRuleCountry(metaclass=PoolMeta):
     __name__ = 'web.shop'
 
-    def get_products(self, pattern=None):
+    def get_products(self, pattern=None, key=None):
         pattern = pattern.copy() if pattern is not None else {}
         if (self.warehouse
                 and self.warehouse.address
@@ -330,7 +330,7 @@ class Shop_TaxRuleCountry(metaclass=PoolMeta):
         else:
             pattern.setdefault('from_country')
         pattern.setdefault('to_country')
-        return super().get_products(pattern=pattern)
+        return super().get_products(pattern=pattern, key=key)
 
 
 class Shop_Warehouse(ModelSQL):
