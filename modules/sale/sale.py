@@ -819,14 +819,7 @@ class Sale(
             return
         for sale in sales:
             if (sale.invoice_method == 'shipment'
-                    and sale.shipment_method in {'invoice', 'manual'}):
-                raise SaleValidationError(
-                    gettext('sale.msg_sale_invalid_method',
-                        invoice_method=sale.invoice_method_string,
-                        shipment_method=sale.shipment_method_string,
-                        sale=sale.rec_name))
-            if (sale.shipment_method == 'invoice'
-                    and sale.invoice_method in {'shipment', 'manual'}):
+                    and sale.shipment_method == 'invoice'):
                 raise SaleValidationError(
                     gettext('sale.msg_sale_invalid_method',
                         invoice_method=sale.invoice_method_string,
