@@ -70,7 +70,7 @@ class Translation(
         ModelSQL, ModelView):
     __name__ = "ir.translation"
 
-    name = fields.Char('Field Name', required=True)
+    name = fields.Char("Name", required=True)
     res_id = fields.Integer('Resource ID', required=True)
     lang = fields.Selection('get_language', string='Language')
     type = fields.Selection(TRANSLATION_TYPE, string='Type',
