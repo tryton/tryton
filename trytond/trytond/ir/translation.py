@@ -8,7 +8,7 @@ from lxml import etree
 
 import polib
 from sql import Column, Null, Literal
-from sql.functions import Substring, Position
+from sql.functions import Substring, Position, CharLength
 from sql.conditionals import Case
 from sql.aggregate import Max
 
@@ -264,7 +264,7 @@ class Translation(ModelSQL, ModelView):
                             Case((
                                     Position(',', table.name) > 0,
                                     Position(',', table.name) - 1),
-                                else_=0)), value)))]
+                                else_=CharLength(table.name))), value)))]
 
     @classmethod
     def get_language(cls):
