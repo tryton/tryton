@@ -14,7 +14,7 @@ from relatorio.templates.opendocument import get_zip_file
 from sql import Column, Literal, Null
 from sql.aggregate import Max
 from sql.conditionals import Case
-from sql.functions import Position, Substring
+from sql.functions import CharLength, Position, Substring
 
 from trytond.cache import Cache
 from trytond.config import config
@@ -295,7 +295,7 @@ class Translation(ModelSQL, ModelView):
                             Case((
                                     Position(',', table.name) > 0,
                                     Position(',', table.name) - 1),
-                                else_=0)), value)))]
+                                else_=CharLength(table.name))), value)))]
 
     @classmethod
     def get_language(cls):
