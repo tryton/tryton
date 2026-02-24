@@ -2,6 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 import datetime
 import logging
+import os.path
 import re
 import time
 from collections import defaultdict
@@ -194,6 +195,7 @@ class RecordTagHandler:
         self.current_field = None
         self.cdata = None
         self.start_cdata = None
+        self.is_path_field = False
 
     def startElement(self, name, attributes):
 
@@ -240,6 +242,7 @@ class RecordTagHandler:
             ref_attr = attributes.get('ref', '')
             eval_attr = attributes.get('eval', '')
             pyson_attr = bool(int(attributes.get('pyson', '0')))
+            self.is_path_field = bool(int(attributes.get('path', '0')))
 
             context = {}
             context['time'] = time
@@ -310,6 +313,10 @@ class RecordTagHandler:
                 self.values[self.current_field] = \
                     CDATA_END.sub('', self.values[self.current_field])
                 self.cdata = 'done'
+            if self.is_path_field:
+                self.values[self.current_field] = os.path.join(
+                    self.mh.base_path, self.values[self.current_field])
+            self.is_path_field = False
             self.current_field = None
             return self
 
@@ -385,6 +392,7 @@ class TrytondXmlHandler(sax.handler.ContentHandler):
         self.skip_data = False
         self.modules = modules
         self.languages = languages
+        self.base_path = None
 
         # Tag handlders are used to delegate the processing
         self.taghandlerlist = {
@@ -402,11 +410,11 @@ class TrytondXmlHandler(sax.handler.ContentHandler):
         self.sax_parser.setFeature(sax.handler.feature_namespaces, 0)
         self.sax_parser.setContentHandler(self)
 
-    def parse_xmlstream(self, stream):
+    def parse_xmlstream(self, stream, base_path):
         """
         Take a byte stream has input and parse the xml content.
         """
-
+        self.base_path = base_path
         source = sax.InputSource()
         source.setByteStream(stream)
 
@@ -415,6 +423,8 @@ class TrytondXmlHandler(sax.handler.ContentHandler):
                 self.sax_parser.parse(source)
             except Exception as e:
                 raise ParsingError("in %s" % self.current_state()) from e
+
+        self.base_path = None
         return self.to_delete
 
     def startElement(self, name, attributes):

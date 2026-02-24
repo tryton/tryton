@@ -218,6 +218,10 @@ Here is the list of valid tags:
    ``pyson``
       Convert the evaluated value into :ref:`PYSON <ref-pyson>` string.
 
+    ``path``
+      Prepend to the value the directory name of the path of the configuration
+      file importing the XML file.
+
    ``depends``
       Set value only if all modules in the comma separated module list value
       are activated.

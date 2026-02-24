@@ -315,7 +315,8 @@ def load_module_graph(graph, pool, update=None, lang=None, indexes=None):
                     # Feed the parser with xml content:
                     with tools.file_open(
                             os.path.join(module, filename), 'rb') as fp:
-                        tryton_parser.parse_xmlstream(fp)
+                        tryton_parser.parse_xmlstream(
+                            fp, base_path=os.path.dirname(filename))
 
                 modules_todo.append((module, list(tryton_parser.to_delete)))
 

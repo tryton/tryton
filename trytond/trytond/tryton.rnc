@@ -20,6 +20,7 @@ attlist.field &= attribute search { text }?
 attlist.field &= attribute ref { text }?
 attlist.field &= attribute eval { text }?
 attlist.field &= attribute pyson { "0" | "1" }?
+attlist.field &= attribute path { "0" | "1" }?
 attlist.field &= attribute type { "xml" }?
 attlist.field &= attribute depends { text }?
 menuitem = element menuitem { attlist.menuitem, empty }
