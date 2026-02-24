@@ -14,6 +14,7 @@ from sql import Column, Literal, Null
 from sql.aggregate import Max
 from sql.conditionals import Case
 from sql.functions import CharLength, Position, Substring
+from sql.operators import Concat
 
 import trytond.config as config
 from trytond.cache import Cache
@@ -67,6 +68,11 @@ class Translation(
         fields.fmany2one(
             'overriding_module_ref', 'overriding_module', 'ir.module,name',
             "Overriding Module", readonly=True),
+        fields.fmany2one(
+            'model_ref', 'model', 'ir.model,name', "Model", readonly=True),
+        fields.fmany2one(
+            'field_ref', 'field,model', 'ir.model.field,name,model', "Field",
+            readonly=True),
         ModelSQL, ModelView):
     __name__ = "ir.translation"
 
@@ -96,8 +102,10 @@ class Translation(
 
     module = fields.Char('Module', readonly=True)
     fuzzy = fields.Boolean('Fuzzy')
-    model = fields.Function(fields.Char('Model'), 'get_model',
-            searcher='search_model')
+    model = fields.Function(
+        fields.Char("Model"), 'get_model', searcher='search_model')
+    field = fields.Function(
+        fields.Char("Field"), 'get_field', searcher='search_field')
     overriding_module = fields.Char('Overriding Module', readonly=True)
     _translation_cache = Cache('ir.translation', context=False)
     _translation_report_cache = Cache(
@@ -285,6 +293,80 @@ class Translation(
         return self.name.split(',')[0]
 
     @classmethod
+    def search_model(cls, name, clause):
+        table = cls.__table__()
+        _, operator, value = clause
+        Operator = fields.SQL_OPERATORS[operator]
+        return [('id', 'in', table.select(table.id,
+                    where=Operator(Substring(table.name, 1,
+                            Case((
+                                    Position(',', table.name) > 0,
+                                    Position(',', table.name) - 1),
+                                else_=CharLength(table.name))), value)))]
+
+    @classmethod
+    def domain_model_ref(cls, clause, tables):
+        pool = Pool()
+        IrModel = pool.get('ir.model')
+        table, _ = tables[None]
+        if 'model_ref' not in tables:
+            ir_model = IrModel.__table__()
+            tables['model_ref'] = {
+                None: (ir_model, ir_model.name == Substring(table.name, 1,
+                        Case((
+                                Position(',', table.name) > 0,
+                                Position(',', table.name) - 1),
+                            else_=CharLength(table.name)))),
+                }
+        nested = clause[0][len('model_ref') + 1:]
+        if not nested:
+            if isinstance(clause[2], str):
+                nested = 'rec_name'
+            else:
+                nested = 'id'
+        domain = [(nested, *clause[1:])]
+        tables, clause = IrModel.search_domain(
+            domain, tables=tables['model_ref'])
+        return clause
+
+    def get_field(self, name):
+        return self.name.split(',', 1)[1] if ',' in self.name else None
+
+    @classmethod
+    def search_field(cls, name, clause):
+        table = cls.__table__()
+        _, operator, value = clause
+        Operator = fields.SQL_OPERATORS[operator]
+        return [('id', 'in', table.select(table.id,
+                    where=Operator(Substring(table.name,
+                            Case((
+                                    Position(',', table.name) > 0,
+                                    Position(',', table.name) - 1),
+                                else_=CharLength(table.name))), value)))]
+
+    @classmethod
+    def domain_field_ref(cls, clause, tables):
+        pool = Pool()
+        Field = pool.get('ir.model.field')
+        table, _ = tables[None]
+        if 'field_ref' not in tables:
+            field = Field.__table__()
+            tables['field_ref'] = {
+                None: (field, (table.name == Concat(Concat(
+                            field.model, ','), field.name))),
+                }
+        nested = clause[0][len('model_ref') + 1:]
+        if not nested:
+            if isinstance(clause[2], str):
+                nested = 'rec_name'
+            else:
+                nested = 'id'
+        domain = [(nested, *clause[1:])]
+        tables, clause = Field.search_domain(
+            domain, tables=tables['field_ref'])
+        return clause
+
+    @classmethod
     def search_rec_name(cls, name, clause):
         clause = tuple(clause)
         if clause[1].startswith('!') or clause[1].startswith('not '):
@@ -296,18 +378,6 @@ class Translation(
             ('value',) + clause[1:],
             (cls._rec_name,) + clause[1:],
             ]
-
-    @classmethod
-    def search_model(cls, name, clause):
-        table = cls.__table__()
-        _, operator, value = clause
-        Operator = fields.SQL_OPERATORS[operator]
-        return [('id', 'in', table.select(table.id,
-                    where=Operator(Substring(table.name, 1,
-                            Case((
-                                    Position(',', table.name) > 0,
-                                    Position(',', table.name) - 1),
-                                else_=CharLength(table.name))), value)))]
 
     @classmethod
     def get_language(cls):

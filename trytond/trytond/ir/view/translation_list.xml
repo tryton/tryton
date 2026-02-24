@@ -6,7 +6,8 @@ this repository contains the full copyright notices and license terms. -->
     <field name="src_plural" widget="char" expand="2" optional="1"/>
     <field name="value" widget="char" expand="2"/>
     <field name="fuzzy"/>
-    <field name="name" expand="1" optional="1"/>
+    <field name="model_ref" expand="1" optional="1"/>
+    <field name="field_ref" expand="1" optional="1"/>
     <field name="lang"/>
     <field name="type" optional="1"/>
     <field name="res_id" optional="1"/>
