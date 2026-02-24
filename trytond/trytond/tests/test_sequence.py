@@ -3,10 +3,12 @@
 # this repository contains the full copyright notices and license terms.
 import datetime
 
+from trytond.convert import import_xml
 from trytond.ir.sequence import LastTimestampError
 from trytond.pool import Pool
 from trytond.tests.test_tryton import (
     TestCase, activate_module, with_transaction)
+from trytond.tools import file_open
 from trytond.transaction import Transaction
 
 
@@ -26,6 +28,9 @@ class SequenceTestCase(TestCase):
     @with_transaction()
     def test_incremental(self):
         'Test incremental'
+        with file_open('sequence.xml', subdir='tests') as xml:
+            import_xml(xml)
+
         pool = Pool()
         Sequence = self.get_model()
         SequenceType = pool.get('ir.sequence.type')
@@ -63,6 +68,9 @@ class SequenceTestCase(TestCase):
     @with_transaction()
     def test_decimal_timestamp(self):
         'Test Decimal Timestamp'
+        with file_open('sequence.xml', subdir='tests') as xml:
+            import_xml(xml)
+
         pool = Pool()
         Sequence = self.get_model()
         SequenceType = pool.get('ir.sequence.type')
@@ -93,6 +101,9 @@ class SequenceTestCase(TestCase):
     @with_transaction()
     def test_hexadecimal_timestamp(self):
         'Test Hexadecimal Timestamp'
+        with file_open('sequence.xml', subdir='tests') as xml:
+            import_xml(xml)
+
         pool = Pool()
         Sequence = self.get_model()
         SequenceType = pool.get('ir.sequence.type')
@@ -124,6 +135,9 @@ class SequenceTestCase(TestCase):
     @with_transaction()
     def test_prefix_suffix(self):
         'Test prefix/suffix'
+        with file_open('sequence.xml', subdir='tests') as xml:
+            import_xml(xml)
+
         pool = Pool()
         Sequence = self.get_model()
         SequenceType = pool.get('ir.sequence.type')

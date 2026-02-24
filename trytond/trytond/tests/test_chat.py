@@ -5,7 +5,9 @@ from email.message import EmailMessage
 from email.utils import getaddresses
 from unittest.mock import patch
 
+from trytond.convert import import_xml
 from trytond.pool import Pool
+from trytond.tools import file_open
 from trytond.transaction import Transaction
 
 from .test_tryton import TestCase, activate_module, with_transaction
@@ -30,6 +32,9 @@ class NotificationTestCase(TestCase):
     @with_transaction()
     def test_chat_post(self):
         "Test posting on chat"
+        with file_open('message.xml', subdir='tests') as xml:
+            import_xml(xml)
+
         pool = Pool()
         User = pool.get('res.user')
         Room = pool.get('test.chat.room')

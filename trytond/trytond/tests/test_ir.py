@@ -17,11 +17,12 @@ except ImportError:
 
 from dateutil.relativedelta import relativedelta
 
+from trytond.convert import import_xml
 from trytond.ir.exceptions import SequenceAffixError
 from trytond.ir.lang import _replace
 from trytond.pool import Pool
 from trytond.pyson import Eval, If, PYSONEncoder
-from trytond.tools import timezone
+from trytond.tools import file_open, timezone
 from trytond.transaction import Transaction
 
 from .test_tryton import (
@@ -99,6 +100,9 @@ class IrTestCase(ModuleTestCase):
     @with_transaction()
     def test_sequence_substitutions(self):
         'Test Sequence Substitutions'
+        with file_open('sequence.xml', subdir='tests') as xml:
+            import_xml(xml)
+
         pool = Pool()
         Sequence = pool.get('ir.sequence')
         SequenceType = pool.get('ir.sequence.type')
