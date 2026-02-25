@@ -201,6 +201,8 @@ class Peppol(Workflow, ModelSQL, ModelView):
     @Workflow.transition('processing')
     def process(cls, documents):
         cls.lock(documents)
+        # write state before calling _process
+        cls.write(documents, {'state': 'processing'})
         for document in documents:
             if document.direction == 'out':
                 cls.__queue__._process(document)
