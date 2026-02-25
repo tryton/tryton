@@ -152,8 +152,17 @@ class Work(
             ('project', 'Project'),
             ('task', 'Task')
             ],
-        "Type", required=True)
-    company = fields.Many2One('company.company', "Company", required=True)
+        "Type", required=True,
+        domain=[
+            If(Eval('origin', None),
+                ('type', '=', 'task'),
+                ()),
+            ])
+    company = fields.Many2One(
+        'company.company', "Company", required=True,
+        states={
+            'readonly': Bool(Eval('origin', None)),
+            })
     number = fields.Char("Number", readonly=True)
     party = fields.Many2One('party.party', 'Party',
         states={
@@ -168,6 +177,9 @@ class Work(
         states={
             'invisible': Eval('type') != 'project',
             })
+    origin = fields.Reference(
+        "Origin", selection='get_origins',
+        help="The source of the task.")
     timesheet_works = fields.One2Many(
         'timesheet.work', 'origin', 'Timesheet Works', readonly=True, size=1)
     timesheet_available = fields.Function(fields.Boolean(
@@ -259,6 +271,17 @@ class Work(
     @classmethod
     def default_company(cls):
         return Transaction().context.get('company')
+
+    @classmethod
+    def _get_origins(cls):
+        return []
+
+    @classmethod
+    def get_origins(cls):
+        IrModel = Pool().get('ir.model')
+        get_name = IrModel.get_name
+        models = cls._get_origins()
+        return [(None, '')] + [(m, get_name(m)) for m in models]
 
     @classmethod
     def default_status(cls):

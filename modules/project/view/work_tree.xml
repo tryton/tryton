@@ -6,6 +6,7 @@ this repository contains the full copyright notices and license terms. -->
         <prefix name="number"/>
     </field>
     <field name="company" expand="1" optional="1"/>
+    <field name="origin" expand="1" optional="1"/>
     <field name="timesheet_duration" optional="0"/>
     <field name="total_effort" optional="0"/>
     <field name="type" optional="1"/>

@@ -12,7 +12,7 @@ from trytond.model import fields
 from trytond.modules.currency.fields import Monetary
 from trytond.modules.product import price_digits, round_price
 from trytond.pool import Pool, PoolMeta
-from trytond.pyson import Eval
+from trytond.pyson import Bool, Eval, If
 from trytond.transaction import Transaction
 
 
@@ -21,7 +21,13 @@ class Work(metaclass=PoolMeta):
     product = fields.Many2One('product.product', 'Product',
         domain=[
             ('type', '=', 'service'),
+            If(Eval('origin', None),
+                ('id', '=', -1),
+                ()),
             ],
+        states={
+            'invisible': Bool(Eval('origin', None)),
+            },
         context={
             'company': Eval('company', -1),
             },

@@ -29,6 +29,8 @@ this repository contains the full copyright notices and license terms. -->
                 <label name="timesheet_end_date" string="End:"/>
                 <field name="timesheet_end_date" xexpand="0"/>
             </group>
+            <label name="origin"/>
+            <field name="origin"/>
             <newline/>
             <label name="effort_duration"/>
             <field name="effort_duration"/>
