@@ -240,10 +240,14 @@ class Function(Field):
 
     def searchable(self, model):
         return super().searchable(model) and (
-            bool(self.searcher) or hasattr(model, f'domain_{self.name}'))
+            bool(self.searcher)
+            or hasattr(model, f'domain_{self.name}')
+            or hasattr(model, f'column_{self.name}'))
 
     def sortable(self, model):
-        return super().sortable(model) and hasattr(model, f'order_{self.name}')
+        return super().sortable(model) and (
+            hasattr(model, f'order_{self.name}')
+            or hasattr(model, f'column_{self.name}'))
 
     def getter_multiple(self, method):
         "Returns True if getter function accepts multiple fields"

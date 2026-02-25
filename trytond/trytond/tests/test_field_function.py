@@ -158,6 +158,7 @@ class FieldFunctionTestCase(TestCase):
 
         result = Model.search([('value_inc', '=', 43)])
         self.assertEqual(result, [record])
+        self.assertTrue(Model.value_inc.searchable(Model))
 
     @with_transaction()
     def test_no_getter_order(self):
@@ -174,6 +175,7 @@ class FieldFunctionTestCase(TestCase):
 
         self.assertEqual(asc, sorted(asc))
         self.assertEqual(desc, sorted(asc, reverse=True))
+        self.assertTrue(Model.value_inc.sortable(Model))
 
     @with_transaction()
     def test_no_getter_relation(self):
