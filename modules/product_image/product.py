@@ -64,7 +64,7 @@ class ImageURLMixin:
                     args['h'] = height
                 if index is not None:
                     args['i'] = index
-            timestamp = int((self.write_date or self.create_date).timestamp())
+            timestamp = int(self.last_modified_at.timestamp())
             args['t'] = (
                 base64.urlsafe_b64encode(timestamp.to_bytes(8, 'big'))
                 .decode().rstrip('='))

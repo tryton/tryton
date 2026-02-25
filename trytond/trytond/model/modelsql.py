@@ -16,7 +16,7 @@ from sql.operators import And, Concat, Equal, Exists, Operator, Or
 from trytond import backend, config
 from trytond.cache import freeze
 from trytond.exceptions import ConcurrencyException
-from trytond.i18n import gettext
+from trytond.i18n import gettext, lazy_gettext
 from trytond.pool import Pool
 from trytond.pyson import PYSONDecoder, PYSONEncoder
 from trytond.rpc import RPC
@@ -321,6 +321,9 @@ class ModelSQL(ModelStorage):
     _order_name = None  # Use to force order field when sorting on Many2One
     _history = False
     table_query = None
+
+    last_modified_at = fields.Function(fields.Timestamp(
+            lazy_gettext('ir.msg_last_modified_at')))
 
     @classmethod
     def __setup__(cls):
@@ -955,6 +958,11 @@ class ModelSQL(ModelStorage):
                 if cursor.fetchone():
                     raise ConcurrencyException(
                         'Records were modified in the meanwhile')
+
+    @classmethod
+    def column_last_modified_at(cls, tables):
+        table, _ = tables[None]
+        return Coalesce(table.write_date, table.create_date)
 
     @classmethod
     @no_table_query

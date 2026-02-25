@@ -116,7 +116,7 @@ class ProductImageTestCase(ModuleTestCase):
                 ).read()
             image.save()
 
-        template.write_date = dt.datetime(2025, 1, 1)  # fix timestamp
+        template.last_modified_at = dt.datetime(2025, 1, 1)  # fix timestamp
 
         self.assertRegex(
             template.get_image_url(i=2),

@@ -65,6 +65,9 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_edited_at">
             <field name="text">Edited at</field>
         </record>
+        <record model="ir.message" id="msg_last_modified_at">
+            <field name="text">Last Modified at</field>
+        </record>
         <record model="ir.message" id="msg_record_name">
             <field name="text">Record Name</field>
         </record>

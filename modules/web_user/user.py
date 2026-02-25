@@ -442,8 +442,7 @@ class UserSession(ModelSQL):
     @property
     def expired(self):
         now = datetime.datetime.now()
-        timestamp = self.write_date or self.create_date
-        return abs(timestamp - now) > self.timeout()
+        return abs(self.last_modified_at - now) > self.timeout()
 
     @classmethod
     def reset(cls, session):

@@ -17,7 +17,7 @@ from trytond.wsgi import app
 
 
 def get_token(record):
-    return str((record.write_date or record.create_date).timestamp())
+    return str(record.last_modified_at.timestamp())
 
 
 def get_config(names, section='html', default=None):

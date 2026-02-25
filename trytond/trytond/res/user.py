@@ -325,8 +325,7 @@ class User(avatar_mixin(100, 'login'), DeactivableMixin, ModelSQL, ModelView):
                         ], order=[('create_uid', 'ASC')])
 
                 def filter_(session):
-                    timestamp = session.write_date or session.create_date
-                    return abs(timestamp - now) < timeout
+                    return abs(session.last_modified_at - now) < timeout
                 result.update(dict((i, len(list(g)))
                         for i, g in groupby(filter(filter_, sessions),
                             attrgetter('create_uid.id'))))
