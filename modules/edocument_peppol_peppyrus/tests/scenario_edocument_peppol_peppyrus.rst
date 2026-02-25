@@ -6,10 +6,12 @@ Imports::
 
     >>> import os
     >>> import time
+    >>> from decimal import Decimal
     >>> from unittest.mock import patch
 
     >>> from proteus import Model
-    >>> from trytond.modules.company.tests.tools import create_company
+    >>> from trytond.modules.account.tests.tools import create_chart, create_tax
+    >>> from trytond.modules.company.tests.tools import create_company, get_company
     >>> from trytond.modules.edocument_peppol.edocument import Peppol
     >>> from trytond.tests.tools import activate_modules, assertTrue
     >>> from trytond.tools import file_open
@@ -33,11 +35,27 @@ Patch Peppol::
 
 Activate modules::
 
-    >>> config = activate_modules('edocument_peppol_peppyrus', create_company)
+    >>> config = activate_modules(
+    ...     'edocument_peppol_peppyrus', create_company, create_chart)
 
     >>> Cron = Model.get('ir.cron')
     >>> Peppol = Model.get('edocument.peppol')
     >>> PeppolService = Model.get('edocument.peppol.service')
+
+Setup company::
+
+    >>> company = get_company()
+    >>> _ = company.party.identifiers.new(type='eu_vat', code=participant_vat)
+    >>> company.party.save()
+    >>> company.currency.code = 'EUR'
+    >>> company.currency.save()
+
+Setup accounting::
+
+    >>> tax = create_tax(Decimal('.1'))
+    >>> tax.unece_code = 'VAT'
+    >>> tax.unece_category_code = 'S'
+    >>> tax.save()
 
 Create a service::
 
@@ -82,5 +100,6 @@ Fetch messages::
     ...     if bool(Peppol.find([('direction', '=', 'in')])):
     ...         break
     ...     time.sleep(FETCH_SLEEP)
-    >>> bool(Peppol.find([('direction', '=', 'in')]))
-    True
+    >>> peppol, = Peppol.find([('direction', '=', 'in')], limit=1)
+    >>> peppol.state
+    'succeeded'
