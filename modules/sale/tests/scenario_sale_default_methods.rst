@@ -17,7 +17,7 @@ Create a party and set their default methods::
     >>> Party = Model.get('party.party')
     >>> customer = Party(name='Customer')
     >>> customer.sale_shipment_method = 'invoice'
-    >>> customer.sale_invoice_method = 'shipment'
+    >>> customer.sale_invoice_method = 'fulfillment'
     >>> customer.save()
 
 Create a sale to to check default methods::
@@ -28,4 +28,4 @@ Create a sale to to check default methods::
     >>> sale.shipment_method
     'invoice'
     >>> sale.invoice_method
-    'shipment'
+    'fulfillment'

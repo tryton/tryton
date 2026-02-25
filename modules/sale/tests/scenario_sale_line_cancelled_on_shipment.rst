@@ -49,7 +49,7 @@ Create product::
 Sale product::
 
     >>> sale = Sale(party=customer)
-    >>> sale.invoice_method = 'shipment'
+    >>> sale.invoice_method = 'fulfillment'
     >>> line = sale.lines.new()
     >>> line.product = product
     >>> line.quantity = 1

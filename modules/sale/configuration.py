@@ -9,6 +9,7 @@ from trytond.modules.company.model import (
     CompanyMultiValueMixin, CompanyValueMixin)
 from trytond.pool import Pool
 from trytond.pyson import Eval, Id, TimeDelta
+from trytond.transaction import Transaction
 
 sale_invoice_method = fields.Selection(
     'get_sale_invoice_methods', "Sale Invoice Method")
@@ -106,6 +107,18 @@ class ConfigurationSaleMethod(ModelSQL, ValueMixin):
     get_sale_invoice_methods = get_sale_methods('invoice_method')
     sale_shipment_method = sale_shipment_method
     get_sale_shipment_methods = get_sale_methods('shipment_method')
+
+    @classmethod
+    def __register__(cls, module_name):
+        cursor = Transaction().connection.cursor()
+        table = cls.__table__()
+
+        super().__register__(module_name)
+
+        # Migration from 7.8: rename invoice method shipment to fulfillment
+        cursor.execute(*table.update(
+                [table.sale_invoice_method], ['fulfillment'],
+                where=table.sale_invoice_method == 'shipment'))
 
     @classmethod
     def default_sale_invoice_method(cls):

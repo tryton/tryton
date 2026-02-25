@@ -124,7 +124,7 @@ class Purchase(metaclass=PoolMeta):
                     })
 
     @classmethod
-    def _process_shipment(cls, purchases):
+    def _process_fulfillment(cls, purchases):
         pool = Pool()
         DropShipment = pool.get('stock.shipment.drop')
 
@@ -138,7 +138,7 @@ class Purchase(metaclass=PoolMeta):
                     drop_shipments.append(drop_shipment)
         DropShipment.save(drop_shipments)
         DropShipment.wait(drop_shipments)
-        super()._process_shipment(purchases)
+        super()._process_fulfillment(purchases)
 
     def create_drop_shipment(self):
         pool = Pool()

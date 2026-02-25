@@ -187,9 +187,10 @@ class Purchase(
         "Total Cache", currency='currency', digits='currency')
     invoice_method = fields.Selection([
             ('manual', 'Manual'),
-            ('order', 'Based On Order'),
-            ('shipment', 'Based On Shipment'),
-            ], 'Invoice Method', required=True, states=_states)
+            ('order', "On Order"),
+            ('fulfillment', "On Fulfillment"),
+            ],
+        "Invoice Method", required=True, states=_states)
     invoice_state = fields.Selection([
             ('none', 'None'),
             ('pending', "Pending"),
@@ -371,6 +372,11 @@ class Purchase(
         cursor.execute(*sql_table.update(
                 [sql_table.invoice_state], ['pending'],
                 where=sql_table.invoice_state == 'waiting'))
+
+        # Migration from 7.8: rename invoice method shipment to fulfillment
+        cursor.execute(*sql_table.update(
+                [sql_table.invoice_method], ['fulfillment'],
+                where=sql_table.invoice_method == 'shipment'))
 
     @classmethod
     def order_number(cls, tables):
@@ -1005,8 +1011,8 @@ class Purchase(
         purchases = [p for p in purchases if p.state in states]
         cls.lock(purchases)
         cls._process_invoice(purchases)
-        cls._process_shipment(purchases)
-        cls._process_invoice_shipment_states(purchases)
+        cls._process_fulfillment(purchases)
+        cls._process_invoice_fulfillment_states(purchases)
         cls._process_state(purchases)
 
     @classmethod
@@ -1029,7 +1035,7 @@ class Purchase(
             purchase.copy_resources_to(invoice)
 
     @classmethod
-    def _process_shipment(cls, purchases):
+    def _process_fulfillment(cls, purchases):
         pool = Pool()
         Move = pool.get('stock.move')
         ShipmentInReturn = pool.get('stock.shipment.in.return')
@@ -1050,7 +1056,7 @@ class Purchase(
             purchase.copy_resources_to(shipment)
 
     @classmethod
-    def _process_invoice_shipment_states(cls, purchases):
+    def _process_invoice_fulfillment_states(cls, purchases):
         pool = Pool()
         Line = pool.get('purchase.line')
         lines = []
@@ -1459,7 +1465,7 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
             return
         skips = set(self.purchase.invoices_ignored)
         quantity = self.quantity
-        if self.purchase.invoice_method == 'shipment':
+        if self.purchase.invoice_method == 'fulfillment':
             moves_ignored = set(self.moves_ignored)
             for move in self.moves:
                 if move in moves_ignored:
@@ -1910,7 +1916,7 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
                 or not self.product
                 or self.product.type == 'service'):
             return self.quantity
-        elif self.purchase.invoice_method == 'shipment':
+        elif self.purchase.invoice_method == 'fulfillment':
             quantity = 0.0
             for move in self.moves:
                 if move.state != 'done':
@@ -1951,7 +1957,7 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
         moves = []
         if self.purchase.invoice_method in {'order', 'manual'}:
             moves.extend(self.moves)
-        elif (self.purchase.invoice_method == 'shipment'
+        elif (self.purchase.invoice_method == 'fulfillment'
                 and samesign(self.quantity, quantity)):
             for move in self.moves:
                 if move.state == 'done':

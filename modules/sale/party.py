@@ -80,6 +80,18 @@ class PartySaleMethod(ModelSQL, CompanyValueMixin):
     get_sale_invoice_method = get_sale_methods('invoice_method')
     get_sale_shipment_method = get_sale_methods('shipment_method')
 
+    @classmethod
+    def __register__(cls, module_name):
+        cursor = Transaction().connection.cursor()
+        table = cls.__table__()
+
+        super().__register__(module_name)
+
+        # Migration from 7.8: rename invoice method shipment to fulfillment
+        cursor.execute(*table.update(
+                [table.sale_invoice_method], ['fulfillment'],
+                where=table.sale_invoice_method == 'shipment'))
+
 
 class PartyCustomerCurrency(ModelSQL, ValueMixin):
     __name__ = 'party.party.customer_currency'

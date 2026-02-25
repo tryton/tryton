@@ -150,7 +150,7 @@ Sale products with cost on shipment::
     >>> sale.party = customer
     >>> sale.carrier = carrier
     >>> sale.payment_term = payment_term
-    >>> sale.invoice_method = 'shipment'
+    >>> sale.invoice_method = 'fulfillment'
     >>> sale.shipment_cost_method = 'shipment'
     >>> sale_line = sale.lines.new()
     >>> sale_line.product = product

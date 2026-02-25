@@ -242,7 +242,7 @@ class Sale(
     invoice_method = fields.Selection([
             ('manual', 'Manual'),
             ('order', 'On Order Processed'),
-            ('shipment', 'On Shipment Sent'),
+            ('fulfillment', "On Fulfillment"),
             ],
         'Invoice Method', required=True, states={
             'readonly': Eval('state') != 'draft',
@@ -442,6 +442,11 @@ class Sale(
         cursor.execute(*sql_table.update(
                 [sql_table.invoice_state], ['pending'],
                 where=sql_table.invoice_state == 'waiting'))
+
+        # Migration from 7.8: rename invoice method shipment to fulfillment
+        cursor.execute(*sql_table.update(
+                [sql_table.invoice_method], ['fulfillment'],
+                where=sql_table.invoice_method == 'shipment'))
 
     @classmethod
     def order_number(cls, tables):
@@ -818,7 +823,7 @@ class Sale(
                     'invoice_method', 'shipment_method'}):
             return
         for sale in sales:
-            if (sale.invoice_method == 'shipment'
+            if (sale.invoice_method == 'fulfillment'
                     and sale.shipment_method == 'invoice'):
                 raise SaleValidationError(
                     gettext('sale.msg_sale_invalid_method',
@@ -1193,8 +1198,8 @@ class Sale(
         sales = [s for s in sales if s.state in states]
         cls.lock(sales)
         cls._process_invoice(sales)
-        cls._process_shipment(sales)
-        cls._process_invoice_shipment_states(sales)
+        cls._process_fulfillment(sales)
+        cls._process_invoice_fulfillment_states(sales)
         cls._process_state(sales)
 
     @classmethod
@@ -1213,7 +1218,7 @@ class Sale(
             sale.copy_resources_to(invoice)
 
     @classmethod
-    def _process_shipment(cls, sales):
+    def _process_fulfillment(cls, sales):
         pool = Pool()
         ShipmentOut = pool.get('stock.shipment.out')
         ShipmentOutReturn = pool.get('stock.shipment.out.return')
@@ -1241,7 +1246,7 @@ class Sale(
                 sale.copy_resources_to(shipment)
 
     @classmethod
-    def _process_invoice_shipment_states(cls, sales):
+    def _process_invoice_fulfillment_states(cls, sales):
         pool = Pool()
         Line = pool.get('sale.line')
         lines = []
@@ -1608,7 +1613,7 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
             return
         skips = set(self.sale.invoices_ignored)
         quantity = self.quantity
-        if self.sale.invoice_method == 'shipment':
+        if self.sale.invoice_method == 'fulfillment':
             moves_ignored = set(self.moves_ignored)
             for move in self.moves:
                 if move in moves_ignored:
@@ -2017,7 +2022,7 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
                 or not self.product
                 or self.product.type == 'service'):
             return self.quantity
-        elif self.sale.invoice_method == 'shipment':
+        elif self.sale.invoice_method == 'fulfillment':
             quantity = 0.0
             for move in self.moves:
                 if move.state != 'done':
@@ -2059,7 +2064,7 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
         if self.sale.invoice_method in {'order', 'manual'}:
             if self.sale.shipment_method not in {'order', 'manual'}:
                 moves.extend(self.moves)
-        elif (self.sale.invoice_method == 'shipment'
+        elif (self.sale.invoice_method == 'fulfillment'
                 and samesign(self.quantity, quantity)):
             for move in self.moves:
                 if move.state == 'done':

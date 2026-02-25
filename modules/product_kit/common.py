@@ -243,7 +243,7 @@ def order_line_mixin(prefix):
 
         def _get_invoice_line_quantity(self):
             quantity = super()._get_invoice_line_quantity()
-            if (getattr(self, prefix).invoice_method == 'shipment'
+            if (getattr(self, prefix).invoice_method == 'fulfillment'
                     and self.components):
                 ratio = min(c.get_moved_ratio() for c in self.components)
                 quantity = self.unit.round(self.quantity * ratio)

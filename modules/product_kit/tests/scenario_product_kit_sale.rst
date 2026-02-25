@@ -137,7 +137,7 @@ Sale composed and kit products::
     >>> Sale = Model.get('sale.sale')
     >>> sale = Sale()
     >>> sale.party = customer
-    >>> sale.invoice_method = 'shipment'
+    >>> sale.invoice_method = 'fulfillment'
     >>> line = sale.lines.new()
     >>> line.product = composed_product
     >>> line.quantity = 2

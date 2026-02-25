@@ -243,7 +243,7 @@ class Sale(metaclass=PoolMeta):
             super().process(sales)
 
     @classmethod
-    def _process_invoice_shipment_states(cls, sales):
+    def _process_invoice_fulfillment_states(cls, sales):
         pool = Pool()
         ShipmentOut = pool.get('stock.shipment.out')
         ShipmentCostSale = pool.get('stock.shipment.cost_sale')
@@ -256,7 +256,7 @@ class Sale(metaclass=PoolMeta):
                 else:
                     not_sent.append(sale)
 
-        super()._process_invoice_shipment_states(sales)
+        super()._process_invoice_fulfillment_states(sales)
 
         to_save, to_delete, shipments = [], [], set()
         for sale in sent:
@@ -453,7 +453,7 @@ class Line(metaclass=PoolMeta):
             if self.sale.shipment_cost_method == 'shipment':
                 quantity = 0
             elif (self.sale.shipment_cost_method == 'order'
-                    and self.sale.invoice_method == 'shipment'):
+                    and self.sale.invoice_method == 'fulfillment'):
                 shipments = [
                     s for s in self.sale.shipments
                     if s.cost_sale_method == 'order']

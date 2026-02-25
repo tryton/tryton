@@ -150,7 +150,7 @@ Purchase composed and kit products::
     >>> Purchase = Model.get('purchase.purchase')
     >>> purchase = Purchase()
     >>> purchase.party = supplier
-    >>> purchase.invoice_method = 'shipment'
+    >>> purchase.invoice_method = 'fulfillment'
     >>> line = purchase.lines.new()
     >>> line.product = composed_product
     >>> line.quantity = 1

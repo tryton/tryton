@@ -82,7 +82,7 @@ Sell products::
     >>> sale = Sale()
     >>> sale.party = customer
     >>> sale.advance_payment_term = advance_payment_term
-    >>> sale.invoice_method = 'shipment'
+    >>> sale.invoice_method = 'fulfillment'
     >>> line = sale.lines.new()
     >>> line.product = product
     >>> line.quantity = 10

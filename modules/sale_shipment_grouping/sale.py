@@ -76,11 +76,11 @@ class Sale(metaclass=PoolMeta):
         return shipment
 
     @classmethod
-    def _process_shipment(cls, sales):
+    def _process_fulfillment(cls, sales):
         for method, sales in groupby(
                 sales, lambda s: s.shipment_grouping_method):
             if method:
                 for sale in sales:
-                    super()._process_shipment([sale])
+                    super()._process_fulfillment([sale])
             else:
-                super()._process_shipment(list(sales))
+                super()._process_fulfillment(list(sales))

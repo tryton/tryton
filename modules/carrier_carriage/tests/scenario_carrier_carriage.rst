@@ -97,7 +97,7 @@ Sale products with cost on shipment::
     >>> sale = Sale()
     >>> sale.party = customer
     >>> sale.carrier = carrier1
-    >>> sale.invoice_method = 'shipment'
+    >>> sale.invoice_method = 'fulfillment'
     >>> sale.shipment_cost_method = 'shipment'
     >>> before_carriage = sale.before_carriages.new(type='before')
     >>> before_carriage.carrier = carrier2

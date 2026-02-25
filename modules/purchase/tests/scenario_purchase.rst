@@ -213,7 +213,7 @@ Purchase 5 products with an invoice method 'on shipment'::
     >>> purchase = Purchase()
     >>> purchase.party = supplier
     >>> purchase.payment_term = payment_term
-    >>> purchase.invoice_method = 'shipment'
+    >>> purchase.invoice_method = 'fulfillment'
     >>> purchase_line = PurchaseLine()
     >>> purchase.lines.append(purchase_line)
     >>> purchase_line.product = product
@@ -307,7 +307,7 @@ Create a Return::
     >>> return_ = Purchase()
     >>> return_.party = supplier
     >>> return_.payment_term = payment_term
-    >>> return_.invoice_method = 'shipment'
+    >>> return_.invoice_method = 'fulfillment'
     >>> return_line = PurchaseLine()
     >>> return_.lines.append(return_line)
     >>> return_line.product = product
@@ -434,7 +434,7 @@ Mixing stuff with an invoice method 'on shipment'::
     >>> mix = Purchase()
     >>> mix.party = supplier
     >>> mix.payment_term = payment_term
-    >>> mix.invoice_method = 'shipment'
+    >>> mix.invoice_method = 'fulfillment'
     >>> mixline = PurchaseLine()
     >>> mix.lines.append(mixline)
     >>> mixline.product = product
@@ -530,7 +530,7 @@ linked to invoices::
     >>> purchase = Purchase()
     >>> purchase.party = supplier
     >>> purchase.payment_term = payment_term
-    >>> purchase.invoice_method = 'shipment'
+    >>> purchase.invoice_method = 'fulfillment'
     >>> line = purchase.lines.new()
     >>> line.product = product
     >>> line.quantity = 10.0

@@ -23,7 +23,7 @@ class Sale(metaclass=PoolMeta):
         return done
 
     @classmethod
-    def _process_shipment(cls, sales):
+    def _process_fulfillment(cls, sales):
         pool = Pool()
         Product = pool.get('product.product')
 
@@ -49,7 +49,7 @@ class Sale(metaclass=PoolMeta):
             # supplier
             cls._process_supply(sub_sales, product_quantities)
             product_quantities.clear()
-        super()._process_shipment(sales)
+        super()._process_fulfillment(sales)
 
     @classmethod
     def _process_supply(cls, sales, product_quantities):

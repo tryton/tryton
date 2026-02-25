@@ -48,7 +48,7 @@ Create product::
 Purchase product::
 
     >>> purchase = Purchase(party=supplier)
-    >>> purchase.invoice_method = 'shipment'
+    >>> purchase.invoice_method = 'fulfillment'
     >>> line = purchase.lines.new()
     >>> line.product = product
     >>> line.quantity = 1

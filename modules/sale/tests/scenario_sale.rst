@@ -214,7 +214,7 @@ Sale 5 products with an invoice method 'on shipment'::
     >>> sale = Sale()
     >>> sale.party = customer
     >>> sale.payment_term = payment_term
-    >>> sale.invoice_method = 'shipment'
+    >>> sale.invoice_method = 'fulfillment'
     >>> sale_line = SaleLine()
     >>> sale.lines.append(sale_line)
     >>> sale_line.product = product
@@ -372,7 +372,7 @@ Create a Return::
     >>> return_ = Sale()
     >>> return_.party = customer
     >>> return_.payment_term = payment_term
-    >>> return_.invoice_method = 'shipment'
+    >>> return_.invoice_method = 'fulfillment'
     >>> return_line = SaleLine()
     >>> return_.lines.append(return_line)
     >>> return_line.product = product
@@ -514,7 +514,7 @@ Mixing stuff with an invoice method 'on shipment'::
     >>> mix = Sale()
     >>> mix.party = customer
     >>> mix.payment_term = payment_term
-    >>> mix.invoice_method = 'shipment'
+    >>> mix.invoice_method = 'fulfillment'
     >>> mixline = SaleLine()
     >>> mix.lines.append(mixline)
     >>> mixline.product = product
@@ -626,7 +626,7 @@ to invoices::
     >>> sale = Sale()
     >>> sale.party = customer
     >>> sale.payment_term = payment_term
-    >>> sale.invoice_method = 'shipment'
+    >>> sale.invoice_method = 'fulfillment'
     >>> line = sale.lines.new()
     >>> line.product = product
     >>> line.quantity = 10.0

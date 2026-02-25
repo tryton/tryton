@@ -113,7 +113,7 @@ Purchase 12 products::
     >>> purchase = Purchase()
     >>> purchase.party = supplier
     >>> purchase.payment_term = payment_term
-    >>> purchase.invoice_method = 'shipment'
+    >>> purchase.invoice_method = 'fulfillment'
     >>> purchase_line = purchase.lines.new()
     >>> purchase_line.product = product
     >>> purchase_line.quantity = 5.0
@@ -185,7 +185,7 @@ Sale 5 products::
     >>> sale = Sale()
     >>> sale.party = customer
     >>> sale.payment_term = payment_term
-    >>> sale.invoice_method = 'shipment'
+    >>> sale.invoice_method = 'fulfillment'
     >>> sale_line = sale.lines.new()
     >>> sale_line.product = product
     >>> sale_line.quantity = 2.0

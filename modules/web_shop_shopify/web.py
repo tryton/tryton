@@ -293,7 +293,7 @@ class Shop(metaclass=PoolMeta):
     def get_sale(self, party=None):
         sale = super().get_sale(party=party)
         if self.type == 'shopify':
-            sale.invoice_method = 'shipment'
+            sale.invoice_method = 'fulfillment'
         return sale
 
     def update_sales(self, sales):
