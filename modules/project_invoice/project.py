@@ -92,8 +92,12 @@ class Effort:
 
 class Progress:
     __slots__ = ()
-    invoiced_progress = fields.One2Many('project.work.invoiced_progress',
-        'work', 'Invoiced Progress', readonly=True)
+    invoiced_progress = fields.One2Many(
+        'project.work.invoiced_progress', 'work',
+        "Invoiced Progress", readonly=True,
+        states={
+            'invisible': ~Eval('invoiced_progress'),
+            })
 
     @classmethod
     def __setup__(cls):
