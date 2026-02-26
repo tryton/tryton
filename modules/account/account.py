@@ -2595,7 +2595,7 @@ class BalanceSheetContext(ModelView):
         return Transaction().context.get('posted', False)
 
 
-class BalanceSheetComparisionContext(BalanceSheetContext):
+class BalanceSheetComparisonContext(BalanceSheetContext):
     __name__ = 'account.balance_sheet.comparison.context'
     comparison = fields.Boolean('Comparison')
     date_cmp = fields.Date('Date', states={
