@@ -379,10 +379,12 @@
             if (new_.length && added.length) {
                 this.model.execute('default_get', [added, this.context])
                     .then(values => {
-                        for (const record of new_) {
-                            record.set_default(values, true, false);
+                        if (!jQuery.isEmptyObject(values)) {
+                            for (const record of new_) {
+                                record.set_default(values, true, false);
+                            }
+                            this.record_modified();
                         }
-                        this.record_modified();
                     });
             }
         };
