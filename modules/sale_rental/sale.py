@@ -613,6 +613,12 @@ class Rental(
         return language
 
     @classmethod
+    def get_resources_to_copy(cls, name):
+        return {
+            'account.invoice',
+            }
+
+    @classmethod
     def copy(cls, rentals, default=None):
         default = default.copy() if default is not None else {}
         default.setdefault('number', None)
