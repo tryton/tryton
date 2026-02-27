@@ -16,7 +16,6 @@ from trytond.model import fields
 from trytond.model.exceptions import AccessError
 from trytond.modules.stock_package_shipping.exceptions import (
     PackingValidationError)
-from trytond.modules.stock_package_shipping.stock import address_name
 from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
 from trytond.wizard import StateAction, StateTransition, Wizard
@@ -214,8 +213,8 @@ class CreateDPDShipping(Wizard):
         else:
             street = address.street_name or ''
             house_no = address.numbers
-        name = address_name(address, party)
-        contact = party.full_name if party.full_name != name else ''
+        name = address.party_full_name
+        contact = address.attn or ''
         if with_contact and not contact:
             contact = party.full_name
         shipping_party = {

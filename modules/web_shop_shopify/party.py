@@ -137,8 +137,10 @@ class Address(metaclass=PoolMeta):
         values = {}
         values['party_name'] = remove_forbidden_chars(address['name'] or '')
         if address['company']:
-            values['party_name'] += (
-                f"({remove_forbidden_chars(address['company'])})")
+            values['attn'] = values['party_name']
+            values['party_name'] = remove_forbidden_chars(address['company'])
+        else:
+            values['attn'] = ''
         values['street'] = '\n'.join(filter(None, [
                     address['address1'], address['address2']]))
         values['city'] = remove_forbidden_chars(address['city'] or '')
@@ -167,6 +169,7 @@ class Address(metaclass=PoolMeta):
     def shopify_values(self):
         values = {}
         values['party_name'] = self.party_name or ''
+        values['attn'] = self.attn or ''
         values['street'] = self.street or ''
         values['city'] = self.city or ''
         values['postal_code'] = self.postal_code or ''

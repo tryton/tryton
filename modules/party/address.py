@@ -34,6 +34,7 @@ class Address(
     party_name = fields.Char(
         "Party Name",
         help="If filled, replace the name of the party for address formatting")
+    attn = fields.Char("Attn")
 
     street = fields.Function(fields.Text(
             "Street",
@@ -263,6 +264,8 @@ class Address(
         if context.get('address_attention_party', False):
             substitutions['attn'] = (
                 context['address_attention_party'].full_name)
+        else:
+            substitutions['attn'] = getattr(self, 'attn', None) or ''
         for key, value in list(substitutions.items()):
             substitutions[key.upper()] = value.upper()
         substitutions.update(self._get_street_substitutions())

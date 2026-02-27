@@ -10,7 +10,6 @@ from trytond.model import fields
 from trytond.model.exceptions import AccessError
 from trytond.modules.stock_package_shipping.exceptions import (
     PackingValidationError)
-from trytond.modules.stock_package_shipping.stock import address_name
 from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
 from trytond.wizard import StateAction, StateTransition, Wizard
@@ -233,8 +232,8 @@ class ShipmentCreateShippingMyGLS(Wizard):
             house_number_info = address.building_name or ''
         phone = address.contact_mechanism_get({'phone', 'mobile'}, usage=usage)
         email = address.contact_mechanism_get('email', usage=usage)
-        name = address_name(address, party)
-        contact_name = party.full_name if party.full_name != name else None
+        name = address.party_full_name
+        contact_name = address.attn or ''
         return {
             'Name': name,
             'Street': street_name,

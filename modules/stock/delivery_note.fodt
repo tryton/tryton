@@ -538,7 +538,6 @@
    <text:p text:style-name="P23"/>
    <text:p text:style-name="P21"><text:placeholder text:placeholder-type="text">&lt;replace text:p=&quot;set_lang(shipment.delivery_address.party.lang)&quot;&gt;</text:placeholder></text:p>
    <text:p text:style-name="P21"><text:placeholder text:placeholder-type="text">&lt;replace text:p=&quot;shipment.set_lang(shipment.delivery_address.party.lang)&quot;&gt;</text:placeholder></text:p>
-   <text:p text:style-name="P21"><text:placeholder text:placeholder-type="text">&lt;shipment.customer.full_name&gt;</text:placeholder></text:p>
    <text:p text:style-name="P21"><text:placeholder text:placeholder-type="text">&lt;for each=&quot;line in shipment.delivery_address.full_address.split(&apos;\n&apos;)&quot;&gt;</text:placeholder></text:p>
    <text:p text:style-name="P19"><text:placeholder text:placeholder-type="text">&lt;line&gt;</text:placeholder></text:p>
    <text:p text:style-name="P19"><text:placeholder text:placeholder-type="text">&lt;/for&gt;</text:placeholder></text:p>

@@ -3101,7 +3101,7 @@ class DeliveryNote(ShipmentReport):
 
     @classmethod
     def execute(cls, ids, data):
-        with Transaction().set_context(address_with_party=False):
+        with Transaction().set_context(address_with_party=True):
             return super().execute(ids, data)
 
     @classmethod

@@ -8,7 +8,6 @@ from math import ceil
 from trytond.i18n import gettext
 from trytond.model import fields
 from trytond.model.exceptions import AccessError
-from trytond.modules.stock_package_shipping.stock import address_name
 from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
 from trytond.wizard import StateAction, StateTransition, Wizard
@@ -149,17 +148,16 @@ class CreateShippingSendcloud(Wizard):
 
         cm = UoM(ModelData.get_id('product', 'uom_centimeter'))
         kg = UoM(ModelData.get_id('product', 'uom_kilogram'))
-        party = shipment.shipping_to
         address = shipment.shipping_to_address
         phone = address.contact_mechanism_get(
             {'phone', 'mobile'}, usage=usage)
         email = address.contact_mechanism_get('email', usage=usage)
         street_lines = (address.street or '').splitlines()
-        name = address_name(address, party)
-        if party.full_name != name:
-            company_name = name
-            name = party.full_name
+        if address.attn:
+            name = address.attn
+            company_name = address.party_full_name
         else:
+            name = address.party_full_name
             company_name = None
         parcel = {
             'name': name,
