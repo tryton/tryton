@@ -3,7 +3,7 @@ Tryton Documentation
 ====================
 
 Main
-----
+====
 
 :doc:`Server <trytond:index>`
    The main application.
@@ -21,16 +21,16 @@ Main
    The library to access REST API.
 
 Backend
--------
+=======
 
 :doc:`GIS <trytond_gis:index>`
    Adds GIS support.
 
 Modules
--------
+=======
 
 Operational
-^^^^^^^^^^^
+-----------
 
 :ref:`Financial Accounting <index-accounting>`
    Reports all transactions of your chart of accounts.
@@ -81,7 +81,7 @@ Operational
    Tracks time spend.
 
 Referential
-^^^^^^^^^^^
+-----------
 
 :doc:`Banking <bank:index>`
    Adds bank and account.
@@ -114,7 +114,7 @@ Referential
    Manages products.
 
 Administration
-^^^^^^^^^^^^^^
+--------------
 
 :ref:`Document Incoming <index-document-incoming>`
    Process incoming document.
