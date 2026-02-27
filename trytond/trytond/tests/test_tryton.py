@@ -437,7 +437,8 @@ class ModuleTestCase(_DBTestCase):
         directory = find_dir(
             self.module,
             subdir='modules' if self.module not in {'ir', 'res'} else '')
-        view_files = set(glob.glob(os.path.join(directory, 'view', '*.xml')))
+        view_files = set(glob.glob(
+                os.path.join(directory, 'view', '**/*.xml'), recursive=True))
         for view in views:
             if view.name:
                 view_files.discard(os.path.join(
