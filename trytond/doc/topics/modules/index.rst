@@ -54,6 +54,15 @@ contain a ``[tryton]`` section with the following keys:
    They will be loaded in the given order when the module is activated or
    updated.
 
+``include_dirs``
+   This is a list of directories containing additional :file:`tryton.cfg`
+   files, organised by line.
+   These files follow the same structure, excluding ``version``, ``depends``
+   and ``extras_depend``.
+
+``test_include_dirs``
+   It's the same as ``include_dirs``, but only applies when running tests.
+
 It may contain some ``[register]`` or ``[register <module> <module>]`` sections
 with the keys ``model``, ``wizard`` and ``report`` defining the ``type_`` and
 qualified name of class relative to the module as a one per line list to pass

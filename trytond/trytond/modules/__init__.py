@@ -30,30 +30,60 @@ MODULES = []
 
 
 @cache
-def parse_module_config(name):
+def parse_module_config(name, path=()):
     "Return a ConfigParser instance and directory of the module"
     config = configparser.ConfigParser()
     config.optionxform = lambda option: option
-    with tools.file_open(os.path.join(name, 'tryton.cfg')) as fp:
+    with tools.file_open(os.path.join(name, *path, 'tryton.cfg')) as fp:
         config.read_file(fp)
         directory = os.path.dirname(fp.name)
     return config, directory
 
 
-def get_module_info(name):
+def _get_subdirs(module_config, with_test):
+    tryton_section = module_config['tryton']
+    if 'include_dirs' in tryton_section:
+        included_dirs = tryton_section['include_dirs'].strip().splitlines()
+    else:
+        included_dirs = []
+    if with_test and 'test_include_dirs' in tryton_section:
+        included_dirs.extend(
+            tryton_section['test_include_dirs'].strip().splitlines())
+    return included_dirs
+
+
+def get_module_info(name, path=(), with_test=False):
     "Return the content of the tryton.cfg"
-    module_config, directory = parse_module_config(name)
+    module_config, directory = parse_module_config(name, path)
+    if module_config is None:
+        return
     info = dict(module_config.items('tryton'))
     info['directory'] = directory
     for key in ('depends', 'extras_depend', 'xml'):
         if key in info:
             info[key] = info[key].strip().splitlines()
+            if key == 'xml':
+                info[key] = [os.path.join(*path, f) for f in info[key]]
+
+    for directory in _get_subdirs(module_config, with_test):
+        mod_info = get_module_info(name, (*path, directory), with_test)
+        if not mod_info:
+            continue
+        for key in ['xml']:
+            if key in mod_info:
+                if key in info:
+                    info[key] += mod_info[key]
+                else:
+                    info[key] = mod_info[key]
+
     return info
 
 
-def get_module_register(name):
+def get_module_register(name, path=(), with_test=False):
     "Return classes to register from tryton.cfg"
-    module_config, _ = parse_module_config(name)
+    module_config, _ = parse_module_config(name, path)
+    if module_config is None:
+        return
     for section in module_config.sections():
         if section == 'register' or section.startswith('register '):
             depends = section[len('register'):].strip().split()
@@ -62,21 +92,32 @@ def get_module_register(name):
                     continue
                 classes = module_config.get(
                     section, type_).strip().splitlines()
+                if path:
+                    prefix = ".".join(path)
+                    classes = [f'{prefix}.{c}' for c in classes]
                 yield classes, {
                     'module': name,
                     'type_': type_,
                     'depends': depends,
                     }
+    for directory in _get_subdirs(module_config, with_test):
+        yield from get_module_register(
+            name, (*path, directory), with_test)
 
 
-def get_module_register_mixin(name):
+def get_module_register_mixin(name, path=(), with_test=False):
     "Return classes to register_mixin from tryton.cfg"
-    module_config, _ = parse_module_config(name)
+    module_config, _ = parse_module_config(name, path)
+    if module_config is None:
+        return
     if module_config.has_section('register_mixin'):
         for mixin, classinfo in module_config.items('register_mixin'):
             yield [mixin, classinfo], {
                 'module': name,
                 }
+    for directory in _get_subdirs(module_config, with_test):
+        yield from get_module_register_mixin(
+            name, (*path, directory), with_test)
 
 
 class Graph(dict):
@@ -125,11 +166,11 @@ class Node(list):
         super().append(node)
 
 
-def create_graph(modules):
+def create_graph(modules, with_test=False):
     all_deps = set()
     graph = Graph()
     for module in modules:
-        info = get_module_info(module)
+        info = get_module_info(module, with_test=with_test)
         deps = info.get('depends', []) + [
             d for d in info.get('extras_depend', []) if d in modules]
         node = graph.add(module, deps)
@@ -394,15 +435,18 @@ def register_classes(with_test=False):
         logger.info("tests register")
         trytond.tests.register()
 
-    for node in create_graph(get_modules(with_test=with_test)):
+    for node in create_graph(
+            get_modules(with_test=with_test), with_test=with_test):
         module_name = node.name
         if module_name in base_modules:
             MODULES.append(module_name)
             continue
         logger.info("%s register", module_name)
-        for args, kwargs in get_module_register(module_name):
+        for args, kwargs in get_module_register(
+                module_name, with_test=with_test):
             Pool.register(*args, **kwargs)
-        for args, kwargs in get_module_register_mixin(module_name):
+        for args, kwargs in get_module_register_mixin(
+                module_name, with_test=with_test):
             Pool.register_mixin(*args, **kwargs)
         module = tools.import_module(module_name)
         if hasattr(module, 'register'):

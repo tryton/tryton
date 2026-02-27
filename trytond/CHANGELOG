@@ -1,3 +1,4 @@
+* Allow to include subdirectories in tryton.cfg
 * Add route for login / logout with cookie
 * Add contextual ``_log`` to force logging events
 * Add notify_user to ModelStorage
