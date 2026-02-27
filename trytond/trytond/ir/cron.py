@@ -100,7 +100,8 @@ class Cron(DeactivableMixin, ModelSQL, ModelView):
             ('ir.model|refresh_materialized', "Refresh Materialized Models"),
             ], "Method", required=True, states=_states)
 
-    logs = fields.One2Many('ir.cron.log', 'cron', "Logs", readonly=True)
+    logs = fields.One2Many(
+        'ir.cron.log', 'cron', "Logs", readonly=True, order=[('id', 'DESC')])
 
     del _states
 
