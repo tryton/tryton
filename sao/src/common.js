@@ -2205,6 +2205,7 @@
                 }
                 var factor = Number(field.factor || 1);
                 digit -= Math.round(Math.log10(factor));
+                digit = Math.max(digit, 0);
                 return (value * factor).toLocaleString(
                     Sao.i18n.BC47(Sao.i18n.getlang()), {
                         useGrouping: true,
