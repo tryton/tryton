@@ -490,8 +490,16 @@ class Statement(Workflow, ModelSQL, ModelView, ChatMixin):
 
         moves = []
         for statement in statements:
-            for key, lines in groupby(
-                    statement.lines, key=statement._group_key):
+            if statement.origins:
+                origin_index = {
+                    o: index for index, o in enumerate(statement.origins)}
+                size = len(statement.origins)
+                sorted_lines = sorted(
+                    statement.lines,
+                    key=lambda l: origin_index.get(l.origin, size))
+            else:
+                sorted_lines = statement.lines
+            for key, lines in groupby(sorted_lines, key=statement._group_key):
                 lines = list(lines)
                 key = dict(key)
                 move = statement._get_move(key)
