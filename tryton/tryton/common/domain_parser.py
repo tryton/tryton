@@ -347,8 +347,8 @@ def format_value(field, value, target=None, context=None, _quote_empty=False):
             cast = float
         factor = cast(field.get('factor', 1))
         digit -= round(math.log10(factor))
-        return locale.localize(
-            '{0:.{1}f}'.format(value * factor or 0, digit), True)
+        digit = max(digit, 0)
+        return locale.localize('{0:.{1}f}'.format(value * factor, digit), True)
 
     def format_selection():
         if isinstance(field['selection'], (tuple, list)):
