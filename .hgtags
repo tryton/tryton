@@ -9533,3 +9533,4 @@ e89ca5a5bbd7dedfbd08e335fe4a90be05a3464a tryton-7.0.34
 3e76f0a5a1f557ff2d35d2677390b4a45964160c timesheet_cost-7.0.1
 3737673cb59601c292dc73e7a7f34fde133c65ca timesheet-7.0.2
 937414d7f0506664e7a8e5efefa784969c0805fe stock_supply_day-7.0.1
+34db4b078dec46ff3aee7e0df087f03c9c04653c stock_location_sequence-7.0.1
