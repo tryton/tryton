@@ -583,7 +583,7 @@ class ModelSQL(ModelStorage):
                     *h_table.select(h_table.id, limit=1))
                 if not cursor.fetchone():
                     columns = [n for n, f in cls._fields.items()
-                        if f.sql_type()]
+                        if f.sql_type() and not isinstance(f, fields.Function)]
                     cursor.execute(*h_table.insert(
                             [Column(h_table, c) for c in columns],
                             sql_table.select(*(Column(sql_table, c)
