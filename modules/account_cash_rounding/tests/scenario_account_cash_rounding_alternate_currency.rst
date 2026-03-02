@@ -105,6 +105,6 @@ Post invoice::
 
     >>> line_to_pay, = invoice.lines_to_pay
     >>> line_to_pay.debit, line_to_pay.credit
-    (Decimal('21.02'), Decimal('0'))
+    (Decimal('21.02'), Decimal('0.00'))
     >>> line_to_pay.amount_second_currency
     Decimal('42.05')
