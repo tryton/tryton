@@ -100,6 +100,13 @@ intersphinx_mapping.update({
         for m in info['modules']
         })
 linkcheck_ignore = [r'/.*', r'https://demo.tryton.org/*']
+linkcheck_request_headers = {
+    'User-Agent': (
+        'TrytonBot/0.0 (https://www.tryton.org/foundation) '
+        'sphinx-linkcheck/0.0'),
+    'Accept-Encoding': 'gzip',
+    }
+linkcheck_workers = 1
 
 try:
     with open(os.path.join(
