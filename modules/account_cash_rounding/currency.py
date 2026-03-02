@@ -15,4 +15,8 @@ class Currency(metaclass=PoolMeta):
         digits=(12, Eval('digits', 6)))
 
     def cash_round(self, amount, rounding=ROUND_HALF_EVEN):
-        return self._round(amount, self.cash_rounding, rounding)
+        if self.cash_rounding is not None:
+            factor = self.cash_rounding
+        else:
+            factor = self.rounding
+        return self._round(amount, factor, rounding)
