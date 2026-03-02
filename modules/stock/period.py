@@ -79,6 +79,12 @@ class Period(Workflow, ModelSQL, ModelView):
         return str(self.date)
 
     @classmethod
+    def copy(cls, periods, default=None):
+        default = default.copy() if default is not None else {}
+        default.setdefault('caches')
+        return super().copy(periods, default=default)
+
+    @classmethod
     @ModelView.button
     @Workflow.transition('draft')
     def draft(cls, periods):
