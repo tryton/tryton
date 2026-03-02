@@ -8331,3 +8331,4 @@ faa41047b2f5896ab52d1b2eb001adbfbc4b8c3e trytond-6.0.74
 73abeed1ec8d2bb1b979e1e11b989731c48c714c timesheet-6.0.3
 072c9f3d28efb767735c345a490a0bce1ce29f51 stock_supply_day-6.0.1
 0127ad716e8c691500b2b27e2bf58288f8570e0e stock_location_sequence-6.0.1
+dc21ad03ec7830bd4b3c050250650048f5eb959e stock_forecast-6.0.4
