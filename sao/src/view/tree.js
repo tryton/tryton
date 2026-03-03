@@ -475,7 +475,7 @@
 
             let tree_column_width = (
                 Sao.Screen.tree_column_width[this.screen.model_name] || {});
-            let width = tree_column_width[name];
+            let width = tree_column_width[column.attributes.name];
             if (width || column.attributes.width) {
                 if (!width) {
                     width = column.attributes.width;
