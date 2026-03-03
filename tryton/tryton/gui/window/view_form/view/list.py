@@ -434,6 +434,17 @@ class TreeXMLViewParser(XMLViewParser):
         column.set_widget(widget)
         column.set_alignment(align)
 
+    def _get_column_occurence(self, column):
+        occurrence = 0
+        for col in self.view.treeview.get_columns():
+            if col.name == column.name:
+                occurrence += 1
+                if col == column:
+                    break
+        else:
+            occurrence += 1
+        return occurrence
+
     def _set_column_width(self, column, attributes):
         default_width = {
             'integer': 80,
@@ -454,7 +465,13 @@ class TreeXMLViewParser(XMLViewParser):
             computed_width = 80
 
         screen = self.view.screen
-        width = screen.tree_column_width[screen.model_name].get(column.name)
+        index = self._get_column_occurence(column) - 1
+        widths = screen.tree_column_width[screen.model_name].get(
+            column.name, [])
+        try:
+            width = widths[index]
+        except IndexError:
+            width = None
         if width or attributes.get('width'):
             if not width:
                 width = int(attributes['width'])
@@ -1117,23 +1134,24 @@ class ViewTree(View):
     def save_width(self):
         if not CONFIG['client.save_tree_width']:
             return
-        fields = {}
+        fields = defaultdict(list)
         last_col = None
         for col in self.treeview.get_columns():
             if col.get_visible():
                 last_col = col
             if not hasattr(col, 'name') or not hasattr(col, 'width'):
                 continue
-            if (col.get_width() != col.width and col.get_visible()
-                    and not col.get_expand()):
-                fields[col.name] = col.get_width()
+            width = col.get_width()
+            if width == col.width or not col.get_visible() or col.get_expand():
+                width = None
+            fields[col.name].append(width)
         # Don't set width for last visible columns
         # as it depends of the screen size
-        if last_col and last_col.name in fields:
-            del fields[last_col.name]
+        if last_col and fields[last_col.name]:
+            fields[last_col.name][-1] = None
 
         screen_width, _ = get_monitor_size()
-        if fields and any(fields.values()):
+        if any(any(w) for w in fields.values()):
             model_name = self.screen.model_name
             try:
                 RPCExecute('model', 'ir.ui.view_tree_width', 'set_width',

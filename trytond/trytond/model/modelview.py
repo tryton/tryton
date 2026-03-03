@@ -430,7 +430,7 @@ class ModelView(Model):
                 if nodes and depends:
                     view_depends.extend(depends)
 
-        fields_width = {}
+        fields_width = collections.defaultdict(list)
         fields_optional = {}
         tree_root = tree.getroottree().getroot()
 
@@ -497,10 +497,7 @@ class ModelView(Model):
             width, _ = Transaction().context.get('screen_size', (None, None))
             if Transaction().context.get('view_tree_width'):
                 ViewTreeWidth = pool.get('ir.ui.view_tree_width')
-                col_widths = ViewTreeWidth.get_width(cls.__name__, width)
-                fields_width.update({fname: w
-                        for fname, w in col_widths.items()
-                        if w > 0})
+                fields_width = ViewTreeWidth.get_width(cls.__name__, width)
 
             if view_id:
                 ViewTreeOptional = pool.get('ir.ui.view_tree_optional')
@@ -571,7 +568,7 @@ class ModelView(Model):
         ActionWindow = pool.get('ir.action.act_window')
 
         if fields_width is None:
-            fields_width = {}
+            fields_width = collections.defaultdict(list)
         if fields_optional is None:
             fields_optional = {}
         if _fields_attrs is None:
@@ -639,9 +636,13 @@ class ModelView(Model):
                     fields_attrs[fname].setdefault('views', {}).update(views)
 
             if type == 'tree':
-                if element.get('name') in fields_width:
-                    element.set(
-                        'width', str(fields_width[element.get('name')]))
+                try:
+                    width = fields_width[element.get('name')].pop(0)
+                except IndexError:
+                    pass
+                else:
+                    if width is not None:
+                        element.set('width', str(width))
                 if element.get('optional'):
                     if element.get('name') in fields_optional:
                         optional = str(int(

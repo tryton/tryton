@@ -214,8 +214,8 @@ class IrTestCase(ModuleTestCase):
 
         model = 'ir.ui.view_tree_width'
         ViewTreeWidth.set_width(model, {
-                'user': 100,
-                'screen_width': 50,
+                'user': [100],
+                'screen_width': [50],
                 }, 1000)
 
         records = ViewTreeWidth.search([
@@ -242,16 +242,10 @@ class IrTestCase(ModuleTestCase):
                     'field': 'user',
                     'screen_width': 992,
                     'width': 200,
-                    }, {
-                    'user': Transaction().user,
-                    'model': model,
-                    'field': 'user',
-                    'screen_width': 992,
-                    'width': 300,
                     }])
         ViewTreeWidth.set_width(model, {
-                'user': 100,
-                'screen_width': 50,
+                'user': [100],
+                'screen_width': [50],
                 }, 1000)
 
         records = ViewTreeWidth.search([
@@ -307,16 +301,16 @@ class IrTestCase(ModuleTestCase):
 
         model = 'ir.ui.view_tree_width'
         ViewTreeWidth.set_width(model, {
-                'user': 100,
-                'screen_width': 50,
+                'user': [100],
+                'screen_width': [50],
                 }, 1000)
 
         widths = ViewTreeWidth.get_width(model, 1000)
 
         self.assertEqual(
             widths, {
-                'user': 100,
-                'screen_width': 50,
+                'user': [100],
+                'screen_width': [50],
                 })
 
     @with_transaction()
@@ -327,16 +321,16 @@ class IrTestCase(ModuleTestCase):
 
         model = 'ir.ui.view_tree_width'
         ViewTreeWidth.set_width(model, {
-                'user': 100,
-                'screen_width': 50,
+                'user': [100],
+                'screen_width': [50],
                 }, 500)
 
         widths = ViewTreeWidth.get_width(model, 1000)
 
         self.assertEqual(
             widths, {
-                'user': 100,
-                'screen_width': 50,
+                'user': [100],
+                'screen_width': [50],
                 })
 
     @with_transaction()

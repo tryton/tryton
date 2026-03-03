@@ -455,6 +455,23 @@
             }
             Sao.Screen.tree_column_optional[this.view_id] = fields;
         },
+        _get_column_occurence: function(column) {
+            let occurrence = 0;
+            let found = false;
+            for (let col of this.columns) {
+                if (col.attributes.name == column.attributes.name) {
+                    occurrence += 1;
+                    if (col === column) {
+                        found = true;
+                        break;
+                    }
+                }
+            }
+            if (!found) {
+                occurrence += 1;
+            }
+            return occurrence;
+        },
         _set_column_width: function(column) {
             let default_width = {
                 'integer': 8,
@@ -475,9 +492,10 @@
             default_width = default_width * 100 * factor  + '%';
             column.col.data('default-width', default_width);
 
+            let index = this._get_column_occurence(column) - 1;
             let tree_column_width = (
                 Sao.Screen.tree_column_width[this.screen.model_name] || {});
-            let width = tree_column_width[column.attributes.name];
+            let width = (tree_column_width[column.attributes.name] || [])[index];
             if (width || column.attributes.width) {
                 if (!width) {
                     width = column.attributes.width;
@@ -489,9 +507,9 @@
             column.col.css('width', width);
         },
         save_width: function() {
-            var widths = {};
+            let fields = {};
             for (let column of this.columns) {
-                if (!column.get_visible() || !column.attributes.name ||
+                if (!column.attributes.name ||
                     column instanceof Sao.View.Tree.ButtonColumn) {
                     continue;
                 }
@@ -499,25 +517,30 @@
                 // Use the DOM element to retrieve the exact style set
                 var width = column.col[0].style.width;
                 let custom_width = column.col.data('custom-width');
-                if (width.endsWith('px') && (width != custom_width)) {
-                    widths[column.attributes.name] = Number(width.slice(0, -2));
+                if (!width.endsWith('px') ||
+                    (width == custom_width) ||
+                    !column.get_visible()) {
+                    width = null;
+                } else {
+                    width = Number(width.slice(0, -2));
                 }
+                Sao.setdefault(fields, column.attributes.name, []).push(width);
             }
 
-            if (!jQuery.isEmptyObject(widths)) {
+            if (Object.values(fields).some(w => w.some(v => v))) {
                 let model_name = this.screen.model_name;
                 let TreeWidth = new Sao.Model('ir.ui.view_tree_width');
                 TreeWidth.execute(
                     'set_width',
-                    [model_name, widths, window.screen.width],
+                    [model_name, fields, window.screen.width],
                     {});
                 if (Object.prototype.hasOwnProperty.call(
                         Sao.Screen.tree_column_width, model_name)) {
                     Object.assign(
                         Sao.Screen.tree_column_width[model_name],
-                        widths);
+                        fields);
                 } else {
-                    Sao.Screen.tree_column_width[model_name] = widths;
+                    Sao.Screen.tree_column_width[model_name] = fields;
                 }
             }
         },

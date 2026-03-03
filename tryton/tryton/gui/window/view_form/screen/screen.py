@@ -38,7 +38,8 @@ class Screen:
 
     # Width of tree columns per model
     # It is shared with all connection but it is the price for speed.
-    tree_column_width = collections.defaultdict(lambda: {})
+    tree_column_width = collections.defaultdict(
+        lambda: collections.defaultdict(list))
     tree_column_optional = {}
 
     def __init__(self, model_name, **attributes):

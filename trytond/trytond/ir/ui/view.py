@@ -1,15 +1,21 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+
+import copy
 import json
 import logging
 import os
+from collections import defaultdict
 
 from lxml import etree
 from sql import Literal, Null
+from sql.conditionals import Coalesce
+from sql.operators import Equal
 
 from trytond.cache import Cache, MemoryCache
 from trytond.i18n import gettext
-from trytond.model import Index, ModelSQL, ModelView, fields, sequence_ordered
+from trytond.model import (
+    Exclude, Index, ModelSQL, ModelView, fields, sequence_ordered)
 from trytond.model.exceptions import ValidationError
 from trytond.pool import Pool
 from trytond.pyson import PYSON, Bool, Eval, If, PYSONDecoder
@@ -456,10 +462,20 @@ class ViewTreeWidth(
     __name__ = 'ir.ui.view_tree_width'
     model = fields.Char('Model', required=True)
     field = fields.Char('Field', required=True)
+    occurrence = fields.Integer("Occurrence", required=True)
     user = fields.Many2One('res.user', 'User', required=True,
         ondelete='CASCADE')
-    screen_width = fields.Integer("Screen Width")
-    width = fields.Integer('Width', required=True)
+    screen_width = fields.Integer(
+        "Screen Width",
+        domain=[
+            ('screen_width', '>=', 0),
+            ])
+    width = fields.Integer(
+        "Width",
+        domain=['OR',
+            ('width', '=', None),
+            ('width', '>=', 0),
+            ])
 
     @classmethod
     def __setup__(cls):
@@ -469,12 +485,36 @@ class ViewTreeWidth(
                 'set_width': RPC(readonly=False),
                 'reset_width': RPC(readonly=False),
                 })
+        cls._sql_constraints += [
+            ('field_occurrence_user_unique',
+                Exclude(table,
+                    (table.model, Equal),
+                    (table.field, Equal),
+                    (table.occurrence, Equal),
+                    (table.user, Equal),
+                    (Coalesce(table.screen_width, -1), Equal)),
+                'ir.msg_view_tree_width_field_occurrence_user_unique'),
+            ]
         cls._sql_indexes.add(
             Index(
                 table,
                 (table.user, Index.Range()),
                 (table.model, Index.Equality()),
-                (table.field, Index.Equality())))
+                (table.field, Index.Equality()),
+                (table.occurrence, Index.Equality())))
+
+    @classmethod
+    def __register__(cls, module):
+        table_h = cls.__table_handler__(module)
+
+        super().__register__(module)
+
+        # Migration from 7.8: remove required on width
+        table_h.not_null_action('width', 'remove')
+
+    @classmethod
+    def default_occurrence(cls):
+        return 1
 
     def get_rec_name(self, name):
         return f'{self.field_ref.rec_name} @ {self.model_ref.rec_name}'
@@ -502,14 +542,15 @@ class ViewTreeWidth(
             if width >= screen_width:
                 break
         else:
-            screen_width = 0
+            screen_width = None
 
         user = Transaction().user
         records = cls.search([
             ('user', '=', user),
             ('model', '=', model),
             ('screen_width', '=', screen_width),
-            ])
+            ],
+            order=[('occurrence', 'ASC')])
 
         if not records:
             records = cls.search([
@@ -522,58 +563,70 @@ class ViewTreeWidth(
                 ],
                 order=[
                     ('screen_width', 'DESC NULLS LAST'),
+                    ('occurrence', 'ASC'),
                     ])
-        widths = {}
+        screen_width = None
+        widths = defaultdict(list)
         for width in records:
-            if width.field not in widths:
-                widths[width.field] = width.width
+            if screen_width is None:
+                screen_width = width.screen_width
+            if screen_width != width.screen_width:
+                break
+            if len(widths[width.field]) + 1 < width.occurrence:
+                for _ in range(
+                        width.occurrence - len(widths[width.field]) - 1):
+                    widths[width.field].append(None)
+            widths[width.field].insert(width.occurrence, width.width)
         return widths
 
     @classmethod
     def set_width(cls, model, fields, width):
         '''
         Set width for the current user on the model.
-        fields is a dictionary with key: field name and value: width.
+        fields is dictionary with field name as key and a list of widths
+        as value.
+        width is the screen width.
         '''
         for screen_width in WIDTH_BREAKPOINTS:
             if width >= screen_width:
                 break
         else:
-            screen_width = 0
+            screen_width = None
 
         user_id = Transaction().user
         records = cls.search([
                 ('user', '=', user_id),
                 ('model', '=', model),
                 ('field', 'in', list(fields.keys())),
-                ['OR',
-                    ('screen_width', '=', screen_width),
-                    ('screen_width', '=', None),
-                    ],
-                ])
+                ('screen_width', '=', screen_width),
+                ],
+            order=[('occurrence', 'DESC')])
 
-        fields = fields.copy()
-        to_save, to_delete = [], []
+        fields = copy.deepcopy(fields)
+        to_save = []
         for tree_width in records:
             if tree_width.screen_width == screen_width:
-                if tree_width.field in fields:
-                    tree_width.width = fields.pop(tree_width.field)
-                    to_save.append(tree_width)
-                else:
-                    to_delete.append(tree_width)
+                index = tree_width.occurrence - 1
+                if index <= len(fields[tree_width.field]):
+                    width = fields[tree_width.field][index]
+                    fields[tree_width.field][index] = None
+                    if width is not None:
+                        tree_width.width = width
+                        to_save.append(tree_width)
 
-        for name, width in fields.items():
-            to_save.append(cls(
-                    user=user_id,
-                    model=model,
-                    field=name,
-                    screen_width=screen_width,
-                    width=width))
+        for name, widths in fields.items():
+            for occurrence, width in enumerate(widths, start=1):
+                if width is not None:
+                    to_save.append(cls(
+                            user=user_id,
+                            model=model,
+                            field=name,
+                            occurrence=occurrence,
+                            screen_width=screen_width,
+                            width=width))
 
         if to_save:
             cls.save(to_save)
-        if to_delete:
-            cls.delete(to_delete)
 
     @classmethod
     def reset_width(cls, model, width):
@@ -581,7 +634,7 @@ class ViewTreeWidth(
             if width >= screen_width:
                 break
         else:
-            screen_width = 0
+            screen_width = None
 
         user_id = Transaction().user
         records = cls.search([

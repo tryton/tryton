@@ -5,7 +5,10 @@ this repository contains the full copyright notices and license terms. -->
     <label name="model_ref"/>
     <field name="model_ref"/>
     <label name="field_ref"/>
-    <field name="field_ref"/>
+    <group id="field" col="-1">
+        <field name="field_ref"/>
+        <field name="occurrence"/>
+    </group>
     <label name="user"/>
     <field name="user"/>
     <label name="screen_width"/>

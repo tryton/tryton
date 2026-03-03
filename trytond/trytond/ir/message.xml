@@ -287,6 +287,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="text">Invalid XML for view "%(name)s".</field>
         </record>
 
+        <record model="ir.message" id="msg_view_tree_width_field_occurrence_user_unique">
+            <field name="text">A user can set only one width per occurrence of field.</field>
+        </record>
+
         <record model="ir.message" id="msg_action_wrong_wizard_model">
             <field name="text">Wrong wizard model in keyword action "%(name)s".</field>
         </record>
