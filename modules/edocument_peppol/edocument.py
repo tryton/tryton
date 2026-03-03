@@ -84,6 +84,7 @@ class Peppol(Workflow, ModelSQL, ModelView):
         "Data",
         file_id=file_id, store_prefix=store_prefix,
         states={
+            'readonly': _states['readonly'],
             'invisible': (
                 (Eval('state') == 'draft')
                 & (Eval('direction') == 'out')),

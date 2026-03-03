@@ -107,7 +107,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="field">data</field>
             <field name="group" ref="res.group_admin"/>
             <field name="perm_read" eval="True"/>
-            <field name="perm_write" eval="False"/>
+            <field name="perm_write" eval="True"/>
         </record>
 
         <record model="ir.rule.group" id="rule_group_edocument_peppol_companies">
