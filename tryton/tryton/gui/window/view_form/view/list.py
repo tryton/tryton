@@ -21,6 +21,7 @@ from tryton.common.popup_menu import populate, popup
 from tryton.config import CONFIG
 from tryton.gui.window import Window
 from tryton.pyson import PYSONDecoder
+from tryton.rpc import clear_cache
 
 from . import View, XMLViewParser
 from .list_gtk.editabletree import EditableTreeView, TreeView
@@ -612,6 +613,7 @@ class ViewTree(View):
                 self.screen.model_name, screen_width)
         except RPCException:
             pass
+        clear_cache(f'model.{self.screen.model_name}.fields_view_get')
         self.screen.tree_column_width.pop(self.screen.model_name, None)
 
         for col in self.treeview.get_columns():

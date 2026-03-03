@@ -426,6 +426,8 @@
                         'reset_width',
                         [this.screen.model_name, window.screen.width],
                         {});
+                    Sao.Session.current_session.cache.clear(
+                        `model.${this.screen.model_name}.fields_view_get`);
 
                     for (let column of this.columns) {
                         if (column.col.data('default-width')) {
