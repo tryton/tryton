@@ -455,11 +455,11 @@ class TreeXMLViewParser(XMLViewParser):
 
         screen = self.view.screen
         width = screen.tree_column_width[screen.model_name].get(column.name)
-        if not width:
-            if 'width' in attributes:
-                computed_width = width = int(attributes['width'])
-            else:
-                width = computed_width
+        if width or attributes.get('width'):
+            if not width:
+                width = int(attributes['width'])
+        else:
+            width = computed_width
         column.width = width
         column.computed_width = computed_width
         if width > 0:
@@ -619,6 +619,7 @@ class ViewTree(View):
         for col in self.treeview.get_columns():
             if col.name:
                 col.set_fixed_width(col.computed_width)
+                col.width = col.computed_width
 
     def get_column_widget(self, column):
         'Return the widget of the column'
