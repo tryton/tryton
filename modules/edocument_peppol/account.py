@@ -17,6 +17,17 @@ class Invoice(metaclass=PoolMeta):
         states={
             'invisible': ~Eval('peppol', []),
             })
+    send_via_peppol = fields.Function(
+        fields.Boolean("Send via Peppol"),
+        'get_send_via_peppol')
+
+    def get_send_via_peppol(self, name):
+        if not self.peppol:
+            peppol_types = self.party.get_multivalue(
+                'peppol_types', company=self.company.id)
+            return peppol_types and 'bis-billing-3' in peppol_types
+        else:
+            return bool(self.peppol)
 
     @property
     def peppol_required(self):
@@ -44,9 +55,7 @@ class Invoice(metaclass=PoolMeta):
         for invoice in posted_invoices:
             if invoice.type != 'out':
                 continue
-            peppol_types = invoice.party.get_multivalue(
-                'peppol_types', company=invoice.company.id)
-            if peppol_types and 'bis-billing-3' in peppol_types:
+            if invoice.send_via_peppol:
                 invoice.check_peppol()
                 peppol.append(Peppol(
                         direction='out',
