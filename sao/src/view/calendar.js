@@ -47,7 +47,7 @@
                 timeFormat: 'H:mm',
                 events: this.view.get_events.bind(this.view),
                 contentHeight: 'auto',
-                locale: Sao.i18n.getlang().slice(0, 2),
+                locale: Sao.i18n.BC47(Sao.i18n.getlang()).toLowerCase(),
                 isRTL: Sao.i18n.rtl,
                 themeSystem: 'bootstrap3',
                 bootstrapGlyphicons: {
