@@ -416,7 +416,7 @@ var Sao = {
                  navigator.userLanguage ||
                  'en').replace('-', '_');
         }
-        jQuery('html').attr('lang', lang);
+        jQuery('html').attr('lang', Sao.i18n.BC47(lang));
         Sao.i18n.setLocale(lang);
         moment.locale(lang.slice(0, 2));
         return jQuery.getJSON('locale/' + lang + '.json').then(function(data) {

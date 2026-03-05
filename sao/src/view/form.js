@@ -2062,7 +2062,7 @@ function eval_pyson(value){
         input_text.attr('type', 'text');
         input.attr('type', 'number');
         input.attr('step', 1);
-        input.attr('lang', Sao.i18n.getlang());
+        input.attr('lang', Sao.i18n.BC47(Sao.i18n.getlang()));
 
         input.hide().on('focusout', function() {
             if (input[0].checkValidity()) {

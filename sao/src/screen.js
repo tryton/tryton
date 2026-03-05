@@ -746,7 +746,7 @@
                 'class': 'form-control input-sm',
                 'type': 'number',
                 'step': 'any',
-                'lang': Sao.i18n.getlang(),
+                'lang': Sao.i18n.BC47(Sao.i18n.getlang()),
             }).appendTo(el);
             return entry;
         },
