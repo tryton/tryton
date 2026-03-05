@@ -40,7 +40,8 @@ class DummyTagHandler:
 
 
 class MenuitemTagHandler:
-    """Taghandler for the tag <record> """
+    """Taghandler for the tag <menuitem>"""
+
     def __init__(self, master_handler):
         self.mh = master_handler
         self.xml_id = None
