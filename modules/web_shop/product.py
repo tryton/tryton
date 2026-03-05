@@ -36,7 +36,12 @@ class ProductURL(DeactivableMixin, ModelSQL, ModelView):
 
     shop = fields.Many2One('web.shop', "Shop", required=True)
     product = fields.Many2One('product.product', "Product", required=True)
-    url = fields.Function(fields.Char("Shop URL"), 'get_url')
+    url = fields.Function(fields.Char(
+            "Shop URL",
+            states={
+                'invisible': ~Eval('url'),
+                }),
+        'get_url')
 
     @classmethod
     def __setup__(cls):
