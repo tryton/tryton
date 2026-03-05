@@ -3,7 +3,7 @@
 
 from trytond.model import DeactivableMixin, ModelSQL, ModelView, fields
 from trytond.pool import Pool, PoolMeta
-from trytond.pyson import Eval
+from trytond.pyson import Eval, If
 
 
 class Template(metaclass=PoolMeta):
@@ -20,9 +20,23 @@ class Product(metaclass=PoolMeta):
         states={
             'invisible': ~Eval('salable'),
             },
+        domain=[
+            If(~Eval('active'),
+                ('id', '=', -1),
+                ()),
+            ],
         help="The list of web shops on which the product is published.")
     web_shop_urls = fields.One2Many(
         'product.web_shop_url', 'product', "Web Shop URLs", readonly=True)
+
+    @fields.depends('active', 'web_shops')
+    def on_change_active(self):
+        try:
+            super().on_change_active()
+        except AttributeError:
+            pass
+        if not self.active and self.web_shops:
+            self.web_shops = None
 
     @classmethod
     def copy(cls, products, default=None):
