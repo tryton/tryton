@@ -485,8 +485,8 @@ class Database(DatabaseInterface):
             path = os.path.join(config.get('database', 'path'),
                     database_name + '.sqlite')
         with sqlite.connect(path) as conn:
-            cursor = conn.cursor()
-            cursor.close()
+            conn.cursor()
+        conn.close()
 
     @classmethod
     def drop(cls, connection, database_name):
