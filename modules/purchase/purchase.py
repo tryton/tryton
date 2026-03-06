@@ -485,11 +485,11 @@ class Purchase(
                 return self.party.lang.code
         return Config.get_language()
 
-    @fields.depends('party', 'company')
+    @fields.depends('party_lang', 'company')
     def _get_tax_context(self):
         context = {}
-        if self.party and self.party.lang:
-            context['language'] = self.party.lang.code
+        if self.party_lang:
+            context['language'] = self.party_lang
         if self.company:
             context['company'] = self.company.id
         return context
@@ -736,7 +736,7 @@ class Purchase(
     def chat_language(self, audience='internal'):
         language = super().chat_language(audience=audience)
         if audience == 'public':
-            language = self.party.lang.code if self.party.lang else None
+            language = self.party_lang
         return language
 
     @classmethod
