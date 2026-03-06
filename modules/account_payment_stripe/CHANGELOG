@@ -1,3 +1,4 @@
+* Update to Stripe API version 2025-09-30.clover
 * Add support for Python 3.14
 * Remove support for Python 3.9
 

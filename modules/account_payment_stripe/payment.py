@@ -41,7 +41,7 @@ stripe.max_network_retries = config.getint(
     'account_payment_stripe', 'max_network_retries', default=3)
 
 RETRY_CODES = {'lock_timeout', 'token_in_use'}
-STRIPE_VERSION = '2023-08-16'
+STRIPE_VERSION = '2025-09-30.clover'
 if STRIPE_VERSION != stripe.api_version:
     warnings.warn(
         f"A new Stripe API version {stripe.api_version!r} is available",
@@ -715,7 +715,7 @@ class Payment(StripeCustomerMethodMixin, CheckoutMixin, metaclass=PoolMeta):
         assert (
             (charge.id == self.stripe_charge_id)
             or (charge.payment_intent == self.stripe_payment_intent_id))
-        amount = charge.amount - charge.amount_refunded
+        amount = charge.amount_captured - charge.amount_refunded
         if (self.state not in {'succeeded', 'failed'}
                 or self.stripe_amount != amount
                 or (not amount and self.state != 'failed')):
@@ -1144,7 +1144,7 @@ class Account(ModelSQL, ModelView):
                 Payment.proceed([payment])
             payment.stripe_captured = charge['captured']
             payment.stripe_amount = (
-                charge['amount'] - charge['amount_refunded'])
+                charge['amount_captured'] - charge['amount_refunded'])
             payment.stripe_error_code = charge['failure_code']
             payment.stripe_error_message = charge['failure_message']
             payment.stripe_error_param = None
