@@ -4,6 +4,7 @@ import datetime as dt
 import logging
 import urllib.parse
 import uuid
+import warnings
 from decimal import Decimal
 from itertools import groupby
 from operator import attrgetter
@@ -41,6 +42,10 @@ stripe.max_network_retries = config.getint(
 
 RETRY_CODES = {'lock_timeout', 'token_in_use'}
 STRIPE_VERSION = '2023-08-16'
+if STRIPE_VERSION != stripe.api_version:
+    warnings.warn(
+        f"A new Stripe API version {stripe.api_version!r} is available",
+        DeprecationWarning)
 
 
 class Journal(metaclass=PoolMeta):
