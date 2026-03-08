@@ -30,8 +30,8 @@ Region
 The *Region* represents a geographical region that groups `Countries <model-country.country>`.
 The main usage is for reporting and statistics.
 
-The `UN M49 <https://unstats.un.org/unsd/methodology/m49/>`_ methodology and
-codes are used when `Loading and updating countries and subdivisions`.
+The `UN M49 <https://en.wikipedia.org/wiki/UN_M49>`_ methodology and codes are
+used when `Loading and updating countries and subdivisions`.
 
 .. seealso::
 
