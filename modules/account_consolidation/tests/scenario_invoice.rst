@@ -50,6 +50,8 @@ Create invoice::
 
     >>> invoice = Invoice(type='out')
     >>> invoice.party = saber.party
+    >>> assertEqual(invoice.consolidation_company, saber)
+    >>> invoice.consolidation_company = None
     >>> line = invoice.lines.new()
     >>> line.account = accounts['revenue']
     >>> line.quantity = 5
