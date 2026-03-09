@@ -126,7 +126,8 @@ class Invoice(metaclass=PoolMeta):
             for party, companies in groupby(companies, attrgetter('party'))}
         for invoice in invoices:
             if not invoice.consolidation_company:
-                companies = party2company.get(invoice.party, [])
+                companies = set(party2company.get(invoice.party, []))
+                companies.discard(invoice.company)
                 if len(companies) == 1:
                     invoice.consolidation_company, = companies
                 elif companies:
