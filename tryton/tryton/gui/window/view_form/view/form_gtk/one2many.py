@@ -30,17 +30,16 @@ class One2Many(Widget):
         vbox = Gtk.VBox(homogeneous=False, spacing=2)
         self.widget.add(vbox)
         self._readonly = True
-        self._required = False
         self._position = None
         self._length = 0
 
         self.title_box = hbox = Gtk.HBox(homogeneous=False, spacing=0)
         hbox.set_border_width(2)
 
-        self.title = Gtk.Label(
+        self.label = Gtk.Label(
             label=set_underline(attrs.get('string', '')),
             use_underline=True, halign=Gtk.Align.START)
-        hbox.pack_start(self.title, expand=True, fill=True, padding=0)
+        hbox.pack_start(self.label, expand=True, fill=True, padding=0)
 
         hbox.pack_start(Gtk.VSeparator(), expand=False, fill=True, padding=0)
 
@@ -62,8 +61,8 @@ class One2Many(Widget):
         self.but_pre.set_relief(Gtk.ReliefStyle.NONE)
         hbox.pack_start(self.but_pre, expand=False, fill=False, padding=0)
 
-        self.label = Gtk.Label(label='(_/0)')
-        hbox.pack_start(self.label, expand=False, fill=False, padding=0)
+        self.badge = Gtk.Label(label='(_/0)')
+        hbox.pack_start(self.badge, expand=False, fill=False, padding=0)
 
         self.but_next = Gtk.Button(can_focus=False)
         tooltips.set_tip(self.but_next, _('Next'))
@@ -175,7 +174,7 @@ class One2Many(Widget):
 
         vbox.pack_start(self.screen.widget, expand=True, fill=True, padding=0)
 
-        self.title.set_mnemonic_widget(
+        self.label.set_mnemonic_widget(
             self.screen.current_view.mnemonic_widget)
 
         self.screen.widget.connect('key_press_event', self.on_keypress)
@@ -266,25 +265,16 @@ class One2Many(Widget):
         string = self.attrs.get('string', '')
         if mnemonic_widget:
             string = set_underline(string)
-        self.title.set_mnemonic_widget(mnemonic_widget)
-        self.title.set_label(string)
+        self.label.set_mnemonic_widget(mnemonic_widget)
+        self.label.set_label(string)
 
     @property
     def modified(self):
         return self.screen.current_view.modified
 
     def _readonly_set(self, value):
-        self._readonly = value
+        super()._readonly_set(value)
         self._set_button_sensitive()
-        self._set_label_state()
-
-    def _required_set(self, value):
-        self._required = value
-        self._set_label_state()
-
-    def _set_label_state(self):
-        common.apply_label_attributes(
-            self.title, self._readonly, self._required)
 
     def _set_button_sensitive(self):
         if self.record and self.field:
@@ -555,7 +545,7 @@ class One2Many(Widget):
         if selected > 1:
             name += '#%i' % selected
         name = '(%s/%s)' % (name, common.humanize(size))
-        self.label.set_text(name)
+        self.badge.set_text(name)
         self._set_button_sensitive()
 
     def display(self):

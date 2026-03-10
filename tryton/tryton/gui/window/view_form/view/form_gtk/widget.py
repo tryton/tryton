@@ -26,6 +26,7 @@ class Widget(object):
         self.mnemonic_widget = None
         self.visible = True
         self._readonly = False
+        self.label = None  # optional label
 
     @property
     def field_name(self):
@@ -110,13 +111,11 @@ class Widget(object):
         if self.view.screen.readonly:
             readonly = True
         self._readonly_set(readonly)
-        self._required_set(not readonly and states.get('required', False))
+        required = not readonly and states.get('required', False)
+        self._required_set(required)
         if self._styled_widget:
             widget_class(self._styled_widget, 'readonly', readonly)
-            widget_class(
-                self._styled_widget,
-                'required',
-                not readonly and states.get('required', False))
+            widget_class(self._styled_widget, 'required', required)
             widget_class(
                 self._styled_widget,
                 'invalid',
@@ -128,6 +127,8 @@ class Widget(object):
                 and self.field_name in self.record.modified_fields)
         self.invisible_set(self.attrs.get(
                 'invisible', states.get('invisible', False)))
+        if self.label:
+            common.apply_label_attributes(self.label, readonly, required)
 
     def get_value(self):
         pass

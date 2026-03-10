@@ -1287,6 +1287,7 @@ function eval_pyson(value){
             this.position = 0;
             this.visible = true;
             this.labelled = null;  // Element which received the labelledby
+            this.label = null;  // Optional element rendering the field label
         },
         display: function() {
             var field = this.field;
@@ -1350,6 +1351,10 @@ function eval_pyson(value){
                 }
             }
             this.set_invisible(invisible);
+            if (this.label) {
+                Sao.common.apply_label_attributes(
+                    this.label, readonly, required);
+            }
         },
         get _styled_el() {
             return this.el;
@@ -3268,7 +3273,6 @@ function eval_pyson(value){
             Sao.View.Form.One2Many._super.init.call(this, view, attributes);
 
             this._readonly = true;
-            this._required = false;
             this._position = undefined;
             this._length = 0;
 
@@ -3280,16 +3284,16 @@ function eval_pyson(value){
             });
             this.el.append(this.menu);
 
-            this.title = jQuery('<label/>', {
+            this.label = jQuery('<label/>', {
                 'class': this.class_ + '-string',
                 text: attributes.string
             });
-            this.menu.append(this.title);
+            this.menu.append(this.label);
 
-            this.title.uniqueId();
+            this.label.uniqueId();
             this.el.uniqueId();
-            this.el.attr('aria-labelledby', this.title.attr('id'));
-            this.title.attr('for', this.el.attr('id'));
+            this.el.attr('aria-labelledby', this.label.attr('id'));
+            this.label.attr('for', this.el.attr('id'));
 
             var toolbar = jQuery('<div/>', {
                 'class': this.class_ + '-toolbar'
@@ -3335,7 +3339,7 @@ function eval_pyson(value){
             ).appendTo(buttons);
             this.but_previous.click(disable_during(this.previous.bind(this)));
 
-            this.label = jQuery('<span/>', {
+            this.badge = jQuery('<span/>', {
                 'class': 'badge',
             }).text('_ / 0'
             ).appendTo(jQuery('<span/>', {
@@ -3511,15 +3515,6 @@ function eval_pyson(value){
         set_readonly: function(readonly) {
             Sao.View.Form.One2Many._super.set_readonly.call(this, readonly);
             this.prm.done(() => this._set_button_sensitive());
-            this._set_label_state();
-        },
-        set_required: function(required) {
-            this._required = required;
-            this._set_label_state();
-        },
-        _set_label_state: function() {
-            Sao.common.apply_label_attributes(this.title, this._readonly,
-                    this._required);
         },
         _set_button_sensitive: function() {
             var size_limit, o2m_size;
@@ -3947,7 +3942,7 @@ function eval_pyson(value){
                 }
             }
             var message = name + ' / ' + Sao.common.humanize(size);
-            this.label.text(message).attr('title', message);
+            this.badge.text(message).attr('title', message);
             this.prm.done(() => this._set_button_sensitive());
         },
         validate: function() {
@@ -4013,7 +4008,6 @@ function eval_pyson(value){
             Sao.View.Form.Many2Many._super.init.call(this, view, attributes);
 
             this._readonly = true;
-            this._required = false;
             this._position = 0;
 
             this.el = jQuery('<div/>', {
@@ -4024,16 +4018,16 @@ function eval_pyson(value){
             });
             this.el.append(this.menu);
 
-            this.title = jQuery('<label/>', {
+            this.label = jQuery('<label/>', {
                 'class': this.class_ + '-string',
                 text: attributes.string
             });
-            this.menu.append(this.title);
+            this.menu.append(this.label);
 
-            this.title.uniqueId();
+            this.label.uniqueId();
             this.el.uniqueId();
-            this.el.attr('aria-labelledby', this.title.attr('id'));
-            this.title.attr('for', this.el.attr('id'));
+            this.el.attr('aria-labelledby', this.label.attr('id'));
+            this.label.attr('for', this.el.attr('id'));
 
             var toolbar = jQuery('<div/>', {
                 'class': this.class_ + '-toolbar'
@@ -4074,7 +4068,7 @@ function eval_pyson(value){
             ).appendTo(buttons);
             this.but_add.click(this.add.bind(this));
 
-            this.label = jQuery('<span/>', {
+            this.badge = jQuery('<span/>', {
                 'class': 'badge',
             }).text('_ / 0'
             ).appendTo(jQuery('<span/>', {
@@ -4150,15 +4144,6 @@ function eval_pyson(value){
         set_readonly: function(readonly) {
             Sao.View.Form.Many2Many._super.set_readonly.call(this, readonly);
             this._set_button_sensitive();
-            this._set_label_state();
-        },
-        set_required: function(required) {
-            this._required = required;
-            this._set_label_state();
-        },
-        _set_label_state: function() {
-            Sao.common.apply_label_attributes(this.title, this._readonly,
-                    this._required);
         },
         _set_button_sensitive: function() {
             var size_limit = false,
@@ -4203,7 +4188,7 @@ function eval_pyson(value){
                 }
             }
             var message = name + ' / ' + Sao.common.humanize(size);
-            this.label.text(message).attr('title', message);
+            this.badge.text(message).attr('title', message);
             this._set_button_sensitive();
         },
         display: function() {
