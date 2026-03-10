@@ -46,8 +46,6 @@ Make a production::
 
     >>> production = Production()
     >>> output = production.outputs.new()
-    >>> output.from_location = production.location
-    >>> output.to_location = production.warehouse.storage_location
     >>> output.product = product
     >>> output.quantity = 1
     >>> output.unit_price = Decimal(0)

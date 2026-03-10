@@ -51,14 +51,10 @@ Make a production::
 
     >>> production = Production()
     >>> input = production.inputs.new()
-    >>> input.from_location = production.warehouse.storage_location
-    >>> input.to_location = production.location
     >>> input.product = component
     >>> input.lot = component_lot
     >>> input.quantity = 1
     >>> output = production.outputs.new()
-    >>> output.from_location = production.location
-    >>> output.to_location = production.warehouse.storage_location
     >>> output.product = product
     >>> output.lot = product_lot
     >>> output.quantity = 1

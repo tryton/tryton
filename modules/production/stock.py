@@ -71,7 +71,8 @@ class Move(metaclass=PoolMeta):
             'production', "Production",
             states={
                 'invisible': ~Eval('production'),
-                }),
+                },
+            depends=['production_input', 'production_output']),
         'on_change_with_production', searcher='search_production')
     production_cost_price_updated = fields.Boolean(
         "Cost Price Updated", readonly=True,
@@ -92,10 +93,29 @@ class Move(metaclass=PoolMeta):
         cls._allow_modify_closed_period.add('production_cost_price_updated')
 
     @fields.depends(
-        'production_output', '_parent_production_output.company',
-        'to_location')
+        'production_input',
+        '_parent_production_input.warehouse',
+        '_parent_production_input.location',
+        'from_location', 'to_location')
+    def on_change_production_input(self):
+        if self.production_input:
+            if not self.from_location:
+                self.from_location = self.production_input.picking_location
+            if not self.to_location:
+                self.to_location = self.production_input.location
+
+    @fields.depends(
+        'production_output',
+        '_parent_production_output.company',
+        '_parent_production_output.warehouse',
+        '_parent_production_output.location',
+        'from_location', 'to_location')
     def on_change_production_output(self):
         if self.production_output:
+            if not self.from_location:
+                self.from_location = self.production_output.location
+            if not self.to_location:
+                self.to_location = self.production_output.output_location
             if self.production_output.company:
                 self.currency = self.production_output.company.currency
             if self.to_location and self.to_location.type == 'lost_found':
@@ -117,9 +137,9 @@ class Move(metaclass=PoolMeta):
         'production_input', '_parent_production_input.id',
         'production_output', '_parent_production_output.id')
     def on_change_with_production(self, name=None):
-        if self.production_input:
+        if self.production_input and self.production_input.id >= 0:
             return self.production_input
-        elif self.production_output:
+        elif self.production_output and self.production_output.id >= 0:
             return self.production_output
 
     @classmethod

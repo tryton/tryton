@@ -56,8 +56,6 @@ Run the production::
     >>> input = production.inputs.new()
     >>> input.quantity = 20.0
     >>> input.product = component
-    >>> input.from_location = warehouse_loc.storage_location
-    >>> input.to_location = production.location
     >>> production.click('wait')
     >>> production.click('assign_force')
     >>> production.click('run')
@@ -67,14 +65,11 @@ Create outputs including waste products::
     >>> output = production.outputs.new()
     >>> output.quantity = 1.0
     >>> output.product = product
-    >>> output.from_location = production.location
-    >>> output.to_location = warehouse_loc.storage_location
     >>> output.unit_price = Decimal('0')
     >>> output.currency = production.company.currency
     >>> waste_output = production.outputs.new()
     >>> waste_output.quantity = 1.0
     >>> waste_output.product = product
-    >>> waste_output.from_location = production.location
     >>> waste_output.to_location = lost_found_loc
     >>> production.click('do')
     >>> production.cost
