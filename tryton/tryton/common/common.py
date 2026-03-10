@@ -229,7 +229,7 @@ class IconFactory:
                     cls._empty_gif, size, size)
             return cls._empty_pixbufs[size]
         else:
-            return cls._get_pixbuf_url(url, size, size_param)
+            return cls._get_pixbuf_url(url, size)
 
 
 IconFactory.load_local_icons()
