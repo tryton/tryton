@@ -8,7 +8,7 @@ from itertools import groupby, zip_longest
 
 from dateutil.relativedelta import relativedelta
 from sql import Column, Literal, Null, Window
-from sql.aggregate import Count, Min, Sum
+from sql.aggregate import Count, Sum
 from sql.conditionals import Case, Coalesce
 
 from trytond import backend
@@ -22,8 +22,8 @@ from trytond.pool import Pool
 from trytond.pyson import Bool, Eval, Id, If, PYSONEncoder
 from trytond.report import Report
 from trytond.tools import (
-    grouped_slice, is_full_text, lstrip_wildcard, reduce_ids,
-    sqlite_apply_types)
+    grouped_slice, is_full_text, lstrip_wildcard, pair, reduce_ids,
+    sql_pairing, sqlite_apply_types)
 from trytond.transaction import Transaction, check_access, inactive_records
 from trytond.wizard import (
     Button, StateAction, StateTransition, StateView, Wizard)
@@ -1472,26 +1472,42 @@ class AccountParty(ActivePeriodMixin, ModelSQL):
         Account = pool.get('account.account')
         line = Line.__table__()
         account = Account.__table__()
+        account_p = Account.__table__()
+        account_c = Account.__table__()
 
-        account_party = line.select(
-                Min(line.id).as_('id'), line.account, line.party,
-                where=line.party != Null,
-                group_by=[line.account, line.party])
+        account_party = (line
+            .join(account_c, condition=line.account == account_c.id)
+            .join(account_p,
+                condition=(account_c.left >= account_p.left)
+                & (account_c.right <= account_p.right))
+            .select(
+                account_p.id.as_('account'),
+                line.party.as_('party'),
+                distinct=True,
+                where=(line.party != Null)
+                & (account_p.party_required)))
 
         columns = []
         for fname, field in cls._fields.items():
             if not hasattr(field, 'set'):
-                if fname in {'id', 'account', 'party'}:
+                if fname == 'id':
+                    column = sql_pairing(
+                        account_party.party,
+                        account.id)
+                elif fname == 'account':
+                    column = account.id
+                elif fname == 'party':
                     column = Column(account_party, fname)
                 else:
                     column = Column(account, fname)
                 columns.append(column.as_(fname))
+
         return (
-            account_party.join(
-                account, condition=account_party.account == account.id)
+            account_party
+            .join(account,
+                condition=account_party.account == account.id)
             .select(
-                *columns,
-                where=account.party_required))
+                *columns))
 
     @classmethod
     def get_balance(cls, records, name):
@@ -1512,8 +1528,6 @@ class AccountParty(ActivePeriodMixin, ModelSQL):
             c_records = list(c_records)
             account_ids = {a.account.id for a in c_records}
             party_ids = {a.party.id for a in c_records}
-            account_party2id = {
-                (a.account.id, a.party.id): a.id for a in c_records}
             with transaction.set_context(company=company.id):
                 line_query, fiscalyear_ids = MoveLine.query_get(line)
             for sub_account_ids in grouped_slice(account_ids):
@@ -1541,13 +1555,7 @@ class AccountParty(ActivePeriodMixin, ModelSQL):
                         sqlite_apply_types(query, [None, None, 'NUMERIC'])
                     cursor.execute(*query)
                     for account_id, party_id, balance in cursor:
-                        try:
-                            id_ = account_party2id[(account_id, party_id)]
-                        except KeyError:
-                            # There can be more combinations of account-party
-                            # in the database than from records
-                            continue
-                        balances[id_] = balance
+                        balances[pair(party_id, account_id)] = balance
 
             for record in c_records:
                 balances[record.id] = record.currency.round(
@@ -1581,7 +1589,7 @@ class AccountParty(ActivePeriodMixin, ModelSQL):
 
         table = Account.__table__()
         line = MoveLine.__table__()
-        columns = [table.id, line.party]
+        columns = [line.party, table.id]
         types = [None, None]
         for name in names:
             if name == 'line_count':
@@ -1595,8 +1603,6 @@ class AccountParty(ActivePeriodMixin, ModelSQL):
             c_records = list(c_records)
             account_ids = {a.account.id for a in c_records}
             party_ids = {a.party.id for a in c_records}
-            account_party2id = {
-                (a.account.id, a.party.id): a.id for a in c_records}
 
             with transaction.set_context(company=company.id):
                 line_query, fiscalyear_ids = MoveLine.query_get(line)
@@ -1614,12 +1620,7 @@ class AccountParty(ActivePeriodMixin, ModelSQL):
                         sqlite_apply_types(query, types)
                     cursor.execute(*query)
                     for row in cursor:
-                        try:
-                            id_ = account_party2id[tuple(row[0:2])]
-                        except KeyError:
-                            # There can be more combinations of account-party
-                            # in the database than from records
-                            continue
+                        id_ = pair(*row[0:2])
                         for i, name in enumerate(names, 2):
                             result[name][id_] = row[i]
             for record in c_records:
