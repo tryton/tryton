@@ -130,6 +130,7 @@ class Transaction(object):
             instance.delete_records = None
             instance.trigger_records = None
             instance.log_records = None
+            instance.user_notifications = None
             instance.check_warnings = None
             instance.timestamp = None
             instance.started_at = None
@@ -198,6 +199,7 @@ class Transaction(object):
             self.delete_records = defaultdict(set)
             self.trigger_records = defaultdict(set)
             self.log_records = []
+            self.user_notifications = []
             self.check_warnings = defaultdict(set)
             self.timestamp = {}
             self.counter = 0
@@ -265,6 +267,7 @@ class Transaction(object):
                     self.delete_records = None
                     self.trigger_records = None
                     self.log_records = None
+                    self.user_notifications = None
                     self.timestamp = None
                     self._datamanagers = []
 
@@ -340,6 +343,19 @@ class Transaction(object):
         if self.log_records:
             self.log_records.clear()
 
+    def _store_user_notifications(self):
+        from trytond.pool import Pool
+        if self.user_notifications:
+            pool = Pool()
+            Notification = pool.get('res.notification')
+            with without_check_access():
+                Notification.save(self.user_notifications)
+        self._clear_user_notifications()
+
+    def _clear_user_notifications(self):
+        if self.user_notifications:
+            self.user_notifications.clear()
+
     def _remove_warnings(self):
         from trytond.pool import Pool
         if self.check_warnings:
@@ -358,6 +374,7 @@ class Transaction(object):
         from trytond.cache import Cache
         try:
             self._store_log_records()
+            self._store_user_notifications()
             self._remove_warnings()
             if self._datamanagers:
                 for datamanager in self._datamanagers:
@@ -391,6 +408,7 @@ class Transaction(object):
             datamanager.tpc_abort(self)
         Cache.rollback(self)
         self._clear_log_records()
+        self._clear_user_notifications()
         self._clear_warnings()
         if self.connection:
             self.connection.rollback()

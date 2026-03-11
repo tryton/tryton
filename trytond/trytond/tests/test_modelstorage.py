@@ -743,6 +743,30 @@ class ModelStorageTestCase(TestCase):
 
         Model.delete([record])
 
+    @with_transaction()
+    def test_notify_user(self):
+        "Test notify user"
+        pool = Pool()
+        Model = pool.get('test.modelstorage')
+        Notification = pool.get('res.notification')
+        transaction = Transaction()
+
+        record = Model(name="Foo")
+        record.save()
+
+        record.notify_user(
+            'tryton-notification',
+            "Test notification",
+            "Long description")
+        transaction._store_user_notifications()
+
+        notification, = Notification.search([])
+
+        self.assertEqual(notification.user.id, transaction.user)
+        self.assertEqual(notification.icon, 'tryton-notification')
+        self.assertEqual(notification.label, "Test notification")
+        self.assertEqual(notification.description, "Long description")
+
 
 class EvalEnvironmentTestCase(TestCase):
     "Test EvalEnvironment"

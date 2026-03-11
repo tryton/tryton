@@ -356,6 +356,11 @@ Class methods:
 
    Log event for records.
 
+
+.. classmethod:: ModelStorage.notify_user(records, icon, label[, description[, user[, \**extra]]])
+
+   Notify user about records.
+
 .. classmethod:: ModelStorage.preprocess_values(cls, mode, values)
 
    Returns a copy of ``values`` to be used for :meth:`~ModelStorage.create` and

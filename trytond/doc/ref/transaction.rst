@@ -54,6 +54,8 @@ Transaction
 
 .. attribute:: Transaction.log_records
 
+.. attribute:: Transaction.user_notifications
+
 .. attribute:: Transaction.check_warnings
 
     The dictionary of warnings already checked with user and warning

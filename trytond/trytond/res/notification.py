@@ -54,7 +54,7 @@ class Notification(
     @classmethod
     def __setup__(cls):
         super().__setup__()
-
+        cls._order = [('id', 'DESC')]
         cls.__rpc__.update({
                 'get': RPC(),
                 'get_count': RPC(),

@@ -5,6 +5,7 @@ import base64
 import csv
 import datetime
 import decimal
+import json
 import math
 import random
 import time
@@ -244,6 +245,25 @@ class ModelStorage(Model):
                     transaction.log_records.append(Log(
                             resource=record, event=event, target=target,
                             user=user, **extra))
+
+    @dualmethod
+    def notify_user(
+            cls, records, icon, label, description=None, user=None, **extra):
+        pool = Pool()
+        Notification = pool.get('res.notification')
+        for transaction, sub_records in groupby(
+                records, lambda r: r._transaction):
+            with Transaction().set_current_transaction(transaction):
+                if user is None:
+                    user = transaction.user
+                transaction.user_notifications.append(Notification(
+                        user=user,
+                        icon=icon,
+                        label=label,
+                        description=description,
+                        model=cls.__name__,
+                        records=json.dumps([r.id for r in records]),
+                        **extra))
 
     @classmethod
     def preprocess_values(cls, mode, values):
