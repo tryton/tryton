@@ -683,6 +683,7 @@ this repository contains the full copyright notices and license terms. -->
                 name="domain"
                 eval="[('account', 'in', Eval('active_ids', []))]"
                 pyson="1"/>
+            <field name="search_value" eval="[('line_count', '!=', 0)]" pyson="1"/>
         </record>
         <record model="ir.action.act_window.view" id="act_general_ledger_account_party_form_view1">
             <field name="sequence" eval="10"/>
