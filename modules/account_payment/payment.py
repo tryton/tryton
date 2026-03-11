@@ -303,7 +303,14 @@ class Payment(Workflow, ModelSQL, ModelView, ChatMixin):
     date = fields.Date('Date', required=True, states=_STATES)
     amount = Monetary(
         "Amount", currency='currency', digits='currency', required=True,
-        domain=[('amount', '>=', 0)],
+        domain=[
+            If(Eval('state').in_(
+                    If(Eval('process_method') == 'manual',
+                        ['draft', 'processing'],
+                        ['draft'])),
+                ('amount', '>', 0),
+                ('amount', '>=', 0)),
+            ],
         states={
             'readonly': ~Eval('state').in_(
                 If(Eval('process_method') == 'manual',
