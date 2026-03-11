@@ -2299,7 +2299,7 @@ class GeneralLedgerAccountParty(_GeneralLedgerAccount):
     @classmethod
     def __setup__(cls):
         super().__setup__()
-        cls._order.insert(2, ('party', 'ASC'))
+        cls._order.insert(1, ('party', 'ASC'))
 
     @classmethod
     def _get_account(cls):
