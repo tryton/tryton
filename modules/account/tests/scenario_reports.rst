@@ -131,7 +131,7 @@ Print some reports::
     >>> gl_revenue.debit
     Decimal('0.00')
     >>> gl_revenue.end_balance
-    Decimal('-10.00')
+    Decimal('0.00')
     >>> gl_revenue.line_count
     0
     >>> glp_receivable.start_balance
@@ -179,7 +179,7 @@ Print some reports::
     >>> gl_revenue.debit
     Decimal('0.00')
     >>> gl_revenue.end_balance
-    Decimal('-10.00')
+    Decimal('0.00')
     >>> gl_revenue.line_count
     0
     >>> glp_receivable.start_balance
@@ -222,7 +222,7 @@ Print some reports::
     >>> gl_revenue.debit
     Decimal('0.00')
     >>> gl_revenue.end_balance
-    Decimal('-10.00')
+    Decimal('0.00')
     >>> gl_revenue.line_count
     0
 
@@ -249,13 +249,13 @@ Print some reports::
     >>> gl_child_revenue.line_count
     0
     >>> gl_revenue.start_balance
-    Decimal('-10.00')
+    Decimal('0.00')
     >>> gl_revenue.credit
     Decimal('0.00')
     >>> gl_revenue.debit
     Decimal('0.00')
     >>> gl_revenue.end_balance
-    Decimal('-10.00')
+    Decimal('0.00')
     >>> gl_revenue.line_count
     0
 
@@ -288,7 +288,7 @@ Print some reports::
     >>> gl_revenue.debit
     Decimal('0.00')
     >>> gl_revenue.end_balance
-    Decimal('-10.00')
+    Decimal('0.00')
     >>> gl_revenue.line_count
     0
 
@@ -315,13 +315,13 @@ Print some reports::
     >>> gl_child_revenue.line_count
     0
     >>> gl_revenue.start_balance
-    Decimal('-10.00')
+    Decimal('0.00')
     >>> gl_revenue.credit
     Decimal('0.00')
     >>> gl_revenue.debit
     Decimal('0.00')
     >>> gl_revenue.end_balance
-    Decimal('-10.00')
+    Decimal('0.00')
     >>> gl_revenue.line_count
     0
 

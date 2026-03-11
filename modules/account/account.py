@@ -1007,6 +1007,7 @@ class Account(
         FiscalYear = pool.get('account.fiscalyear')
         transaction = Transaction()
         cursor = transaction.connection.cursor()
+        context = transaction.context
 
         table_a = cls.__table__()
         table_c = cls.__table__()
@@ -1019,16 +1020,21 @@ class Account(
                 line_query, fiscalyear_ids = MoveLine.query_get(line)
             for sub_ids in grouped_slice(ids):
                 red_sql = reduce_ids(table_a.id, sub_ids)
-                query = (table_a.join(table_c,
-                        condition=(table_c.left >= table_a.left)
-                        & (table_c.right <= table_a.right)
-                        ).join(line, condition=line.account == table_c.id
-                        ).select(
-                        table_a.id,
-                        Sum(Coalesce(line.debit, 0) - Coalesce(line.credit, 0)
-                            ).as_('balance'),
-                        where=red_sql & line_query,
-                        group_by=table_a.id))
+                if context.get('flat_balance'):
+                    query = (table_a
+                        .join(line, condition=line.account == table_a.id))
+                else:
+                    query = (table_a
+                        .join(table_c,
+                            condition=(table_c.left >= table_a.left)
+                            & (table_c.right <= table_a.right))
+                        .join(line, condition=line.account == table_c.id))
+                query = query.select(
+                    table_a.id,
+                    Sum(Coalesce(line.debit, 0) - Coalesce(line.credit, 0)
+                        ).as_('balance'),
+                    where=red_sql & line_query,
+                    group_by=table_a.id)
                 if backend.name == 'sqlite':
                     sqlite_apply_types(query, [None, 'NUMERIC'])
                 cursor.execute(*query)
@@ -1495,6 +1501,7 @@ class AccountParty(ActivePeriodMixin, ModelSQL):
         FiscalYear = pool.get('account.fiscalyear')
         transaction = Transaction()
         cursor = transaction.connection.cursor()
+        context = transaction.context
 
         table_a = Account.__table__()
         table_c = Account.__table__()
@@ -1513,18 +1520,23 @@ class AccountParty(ActivePeriodMixin, ModelSQL):
                 account_sql = reduce_ids(table_a.id, sub_account_ids)
                 for sub_party_ids in grouped_slice(party_ids):
                     party_sql = reduce_ids(line.party, sub_party_ids)
-                    query = (table_a.join(table_c,
-                            condition=(table_c.left >= table_a.left)
-                            & (table_c.right <= table_a.right)
-                            ).join(line, condition=line.account == table_c.id
-                            ).select(
-                            table_a.id,
-                            line.party,
-                            Sum(
-                                Coalesce(line.debit, 0)
-                                - Coalesce(line.credit, 0)).as_('balance'),
-                            where=account_sql & party_sql & line_query,
-                            group_by=[table_a.id, line.party]))
+                    if context.get('flat_balance'):
+                        query = (table_a
+                            .join(line, condition=line.account == table_a.id))
+                    else:
+                        query = (table_a
+                            .join(table_c,
+                                condition=(table_c.left >= table_a.left)
+                                & (table_c.right <= table_a.right))
+                            .join(line, condition=line.account == table_c.id))
+                    query = query.select(
+                        table_a.id,
+                        line.party,
+                        Sum(
+                            Coalesce(line.debit, 0)
+                            - Coalesce(line.credit, 0)).as_('balance'),
+                        where=account_sql & party_sql & line_query,
+                        group_by=[table_a.id, line.party])
                     if backend.name == 'sqlite':
                         sqlite_apply_types(query, [None, None, 'NUMERIC'])
                     cursor.execute(*query)
@@ -1991,6 +2003,7 @@ class _GeneralLedgerAccount(ActivePeriodMixin, ModelSQL, ModelView):
             'periods': period_ids,
             'from_date': from_date,
             'to_date': to_date,
+            'flat_balance': True,
             }
 
     @classmethod
