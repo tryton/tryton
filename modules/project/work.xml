@@ -3,6 +3,56 @@
 this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data>
+        <record model="ir.ui.view" id="project_configuration_view_form">
+            <field name="model">project.configuration</field>
+            <field name="type">form</field>
+            <field name="name">project_configuration_form</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_project_configuration">
+            <field name="name">Configuration</field>
+            <field name="res_model">project.configuration</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_project_configuration_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="project_configuration_view_form"/>
+            <field name="act_window" ref="act_project_configuration"/>
+        </record>
+        <menuitem
+            parent="menu_configuration"
+            action="act_project_configuration"
+            sequence="10"
+            id="menu_project_configuration"
+            icon="tryton-list"/>
+
+        <record model="ir.model.access" id="access_project_configuration">
+            <field name="model">project.configuration</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_project_configuration_party_admin">
+            <field name="model">project.configuration</field>
+            <field name="group" ref="group_project_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <record model="ir.sequence.type" id="sequence_type_work">
+            <field name="name">Project Work Effort</field>
+        </record>
+        <record model="ir.sequence.type-res.group" id="sequence_type_work_group_admin">
+            <field name="sequence_type" ref="sequence_type_work"/>
+            <field name="group" ref="res.group_admin"/>
+        </record>
+        <record model="ir.sequence.type-res.group" id="sequence_type_work_group_project_admin">
+            <field name="sequence_type" ref="sequence_type_work"/>
+            <field name="group" ref="group_project_admin"/>
+        </record>
+
         <record model="ir.ui.view" id="work_status_view_list">
             <field name="model">project.work.status</field>
             <field name="type">tree</field>
@@ -261,6 +311,15 @@ this repository contains the full copyright notices and license terms. -->
 
     </data>
     <data noupdate="1">
+        <record model="ir.sequence" id="sequence_work">
+            <field name="name">Work Effort</field>
+            <field name="sequence_type" ref="sequence_type_work"/>
+        </record>
+
+        <record model="project.configuration.sequence" id="project_configuration_sequence">
+            <field name="work_sequence" ref="sequence_work"/>
+        </record>
+
         <record model="project.work.status" id="work_open_status">
             <field name="name">Open</field>
             <field name="default" eval="True"/>

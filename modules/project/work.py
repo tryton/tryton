@@ -4,16 +4,57 @@
 import datetime
 from collections import defaultdict
 
+from sql import Null
+from sql.functions import CharLength
+
 from trytond.cache import Cache
 from trytond.i18n import gettext
 from trytond.model import (
-    ChatMixin, DeactivableMixin, Index, ModelSQL, ModelView, fields,
-    sequence_ordered, sum_tree, tree)
+    ChatMixin, DeactivableMixin, Index, ModelSingleton, ModelSQL, ModelView,
+    Unique, ValueMixin, fields, sequence_ordered, sum_tree, tree)
+from trytond.modules.company.model import CompanyMultiValueMixin
 from trytond.pool import Pool
-from trytond.pyson import Bool, Eval, If, PYSONEncoder, TimeDelta
+from trytond.pyson import Bool, Eval, Id, If, PYSONEncoder, TimeDelta
+from trytond.tools import is_full_text, lstrip_wildcard
 from trytond.transaction import Transaction
 
 from .exceptions import WorkProgressValidationError
+
+_work_sequence = fields.Many2One(
+    'ir.sequence', "Work Effort Sequence", required=True,
+    domain=[
+        ('sequence_type', '=', Id('project', 'sequence_type_work')),
+        ],
+    help="Used to generate the work number.")
+
+
+class Configuration(
+        ModelSingleton, ModelSQL, ModelView, CompanyMultiValueMixin):
+    __name__ = 'project.configuration'
+
+    work_sequence = fields.MultiValue(_work_sequence)
+
+    @classmethod
+    def multivalue_model(cls, field):
+        pool = Pool()
+        if field == 'work_sequence':
+            return pool.get('project.configuration.sequence')
+        return super().multivalue_model(field)
+
+    @classmethod
+    def default_work_sequence(cls, **pattern):
+        pool = Pool()
+        ModelData = pool.get('ir.model.data')
+        try:
+            return ModelData.get_id('project', 'sequence_work')
+        except KeyError:
+            return None
+
+
+class ConfigurationSequence(ModelSQL, ValueMixin):
+    __name__ = 'project.configuration.sequence'
+
+    work_sequence = _work_sequence
 
 
 class WorkStatus(DeactivableMixin, sequence_ordered(), ModelSQL, ModelView):
@@ -113,6 +154,7 @@ class Work(
             ],
         "Type", required=True)
     company = fields.Many2One('company.company', "Company", required=True)
+    number = fields.Char("Number", readonly=True)
     party = fields.Many2One('party.party', 'Party',
         states={
             'invisible': Eval('type') != 'project',
@@ -191,12 +233,24 @@ class Work(
 
     @classmethod
     def __setup__(cls):
+        cls.number.search_unaccented = False
         cls.path.search_unaccented = False
         super().__setup__()
         t = cls.__table__()
+        cls._sql_constraints += [
+            ('number_unique', Unique(t, t.number),
+                'project.msg_work_number_unique'),
+            ]
         cls._sql_indexes.update({
+                Index(t, (t.number, Index.Equality(cardinality='high'))),
+                Index(t, (t.number, Index.Similarity(cardinality='high'))),
                 Index(t, (t.path, Index.Similarity(begin=True))),
                 })
+
+    @classmethod
+    def order_number(cls, tables):
+        table, _ = tables[None]
+        return [table.number != Null, CharLength(table.number), table.number]
 
     @staticmethod
     def default_type():
@@ -404,6 +458,38 @@ class Work(
         return language
 
     @classmethod
+    def search_rec_name(cls, name, clause):
+        _, operator, value = clause
+        if operator.startswith('!') or operator.startswith('not '):
+            bool_op = 'AND'
+        else:
+            bool_op = 'OR'
+        code_value = value
+        if operator.endswith('like') and is_full_text(value):
+            code_value = lstrip_wildcard(value)
+        domain = [bool_op,
+            ('number', operator, code_value),
+            ('name', operator, value),
+            ]
+        return domain
+
+    @classmethod
+    def _number_sequence(cls, **pattern):
+        pool = Pool()
+        Configuration = pool.get('project.configuration')
+        config = Configuration(1)
+        return config.get_multivalue('work_sequence', **pattern)
+
+    @classmethod
+    def preprocess_values(cls, mode, values):
+        values = super().preprocess_values(mode, values)
+        if mode == 'create':
+            if not values.get('number'):
+                if sequence := cls._number_sequence():
+                    values['number'] = sequence.get()
+        return values
+
+    @classmethod
     def copy(cls, project_works, default=None):
         pool = Pool()
         WorkStatus = pool.get('project.work.status')
@@ -411,6 +497,7 @@ class Work(
             default = {}
         else:
             default = default.copy()
+        default.setdefault('number')
         default.setdefault('progress', None)
         default.setdefault(
             'status', lambda data: WorkStatus.get_default_status(data['type']))

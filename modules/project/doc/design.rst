@@ -13,8 +13,8 @@ Work Effort
 The *Work Effort* concept is used to represent work that must be done for
 projects, or parts of projects.
 
-Each *Work Effort* is described by a name and a type, and there is space
-for additional comments to be added when required.
+Each *Work Effort* is described by a name, a number and a type, and there is
+space for additional comments to be added when required.
 
 The estimated time and effort needed for the work is recorded, and it is also
 possible to track the actual time and effort required.
