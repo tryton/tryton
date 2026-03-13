@@ -46,11 +46,12 @@ class AccountType(AccountTypeMixin(), metaclass=PoolMeta):
 class Reconcile(metaclass=PoolMeta):
     __name__ = 'account.reconcile'
 
-    def get_currencies(self, account, party, currency=None, _balanced=False):
+    @classmethod
+    def currencies_to_reconcile(cls, account, party, _balanced=False):
         if account.type.deposit:
             _balanced = True
-        return super().get_currencies(
-            account, party, currency=None, _balanced=_balanced)
+        return super().currencies_to_reconcile(
+            account, party, _balanced=_balanced)
 
 
 class Payment(metaclass=PoolMeta):

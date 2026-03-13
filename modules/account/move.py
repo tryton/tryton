@@ -1865,19 +1865,34 @@ class Line(DescriptionOriginMixin, MoveLineMixin, ModelSQL, ModelView):
         return self.maturity_date or self.date
 
     @classmethod
-    def reconcile_automatic(cls, data=None):
+    def reconcile_automatic(cls):
         pool = Pool()
         Reconcile = pool.get('account.reconcile', type='wizard')
+        transaction = Transaction()
+        context = transaction.context
 
-        data = data.copy() if data is not None else {}
-        data['start'] = {
-            'automatic': True,
-            'only_balanced': True,
-            }
+        company_id = context.get('company')
 
-        session_id, _, _ = Reconcile.create()
-        Reconcile.execute(session_id, data, 'setup')
-        Reconcile.delete(session_id)
+        def lines_to_reconcile(account, party, currency):
+            lines, _ = cls.find_best_reconciliation(
+                Reconcile.to_reconcile(account, party, currency),
+                currency)
+            return lines
+
+        accounts = Reconcile.accounts_to_reconcile(company=company_id)
+        for account in accounts:
+            if account.party_required:
+                parties = Reconcile.parties_to_reconcile(account)
+            else:
+                parties = [None]
+            for party in parties:
+                currencies = Reconcile.currencies_to_reconcile(
+                    account, party)
+                for currency in currencies:
+                    while lines := lines_to_reconcile(
+                            account, party, currency):
+                        Line.reconcile(lines)
+                        transaction.commit()
 
 
 class LineReceivablePayableContext(ModelView):
@@ -2234,8 +2249,8 @@ class Reconcile(Wizard):
             ])
     reconcile = StateTransition()
 
-    def get_accounts(self):
-        'Return a list of account id to reconcile'
+    @classmethod
+    def accounts_to_reconcile(cls, company=None, with_rule=False):
         pool = Pool()
         Rule = pool.get('ir.rule')
         Line = pool.get('account.move.line')
@@ -2244,25 +2259,25 @@ class Reconcile(Wizard):
         AccountType = pool.get('account.account.type')
         account = Account.__table__()
         account_type = AccountType.__table__()
-        cursor = Transaction().connection.cursor()
-        account_rule = Rule.query_get(Account.__name__)
-
-        if self.model and self.model.__name__ == 'account.move.line':
-            lines = [l for l in self.records if not l.reconciliation]
-            return list({l.account for l in lines if l.account.reconcile})
+        transaction = Transaction()
+        cursor = transaction.connection.cursor()
 
         balance = line.debit - line.credit
-        cursor.execute(*line.join(account,
+        query = (line
+            .join(account,
                 condition=line.account == account.id)
             .join(account_type, condition=account.type == account_type.id)
             .select(
                 account.id,
-                where=((line.reconciliation == Null)
+                where=(
+                    (line.reconciliation == Null)
                     & (line.state == 'valid')
-                    & account.reconcile
-                    & account.id.in_(account_rule)),
-                group_by=[account.id,
-                    account_type.receivable, account_type.payable],
+                    & account.reconcile),
+                group_by=[
+                    account.id,
+                    account_type.receivable,
+                    account_type.payable,
+                    ],
                 having=((
                         Sum(Case((balance > 0, 1), else_=0)) > 0)
                     & (Sum(Case((balance < 0, 1), else_=0)) > 0)
@@ -2275,74 +2290,112 @@ class Reconcile(Wizard):
                             Sum(balance) > 0),
                         else_=False)
                     )))
-        return [a for a, in cursor]
+        if with_rule:
+            account_rule = Rule.query_get(Account.__name__)
+            query.where &= account.id.in_(account_rule)
+        if company:
+            query.where &= account.company == int(company)
+        cursor.execute(*query)
+        return Account.browse([a for a, in cursor])
 
-    def get_parties(self, account, party=None):
-        'Return a list party to reconcile for the account'
+    @classmethod
+    def parties_to_reconcile(cls, account):
         pool = Pool()
+        Party = pool.get('party.party')
         Line = pool.get('account.move.line')
         line = Line.__table__()
-        cursor = Transaction().connection.cursor()
+        transaction = Transaction()
+        cursor = transaction.connection.cursor()
 
-        if self.model and self.model.__name__ == 'account.move.line':
-            lines = [l for l in self.records if not l.reconciliation]
-            return list({
-                    l.party for l in lines
-                    if l.account == account and l.party})
-
-        where = ((line.reconciliation == Null)
-            & (line.state == 'valid')
-            & (line.account == account.id))
-        if party:
-            where &= (line.party == party.id)
-        else:
-            where &= (line.party != Null)
-        cursor.execute(*line.select(line.party,
-                where=where,
+        query = (line
+            .select(line.party,
+                where=(
+                    (line.reconciliation == Null)
+                    & (line.state == 'valid')
+                    & (line.account == int(account))
+                    & (line.party != Null)),
                 group_by=line.party))
-        return [p for p, in cursor]
+        cursor.execute(*query)
+        return Party.browse([p for p, in cursor])
 
-    def get_currencies(self, account, party, currency=None, _balanced=False):
-        "Return a list of currencies to reconcile for the account and party"
+    @classmethod
+    def currencies_to_reconcile(cls, account, party, _balanced=False):
         pool = Pool()
+        Currency = pool.get('currency.currency')
         Line = pool.get('account.move.line')
         line = Line.__table__()
-        cursor = Transaction().connection.cursor()
-
-        if self.model and self.model.__name__ == 'account.move.line':
-            lines = [l for l in self.records if not l.reconciliation]
-            return list({
-                    (l.second_currency or l.currency).id
-                    for l in lines
-                    if l.account == account and l.party == party})
+        transaction = Transaction()
+        cursor = transaction.connection.cursor()
 
         balance = Case(
             (line.second_currency != Null, line.amount_second_currency),
             else_=line.debit - line.credit)
+        currency_expr = Coalesce(line.second_currency, account.currency.id)
+        query = (line
+            .select(
+                currency_expr,
+                where=((line.reconciliation == Null)
+                    & (line.state == 'valid')
+                    & (line.account == int(account))
+                    & (line.party == (int(party) if party else None))),
+                group_by=line.second_currency))
         if _balanced:
-            having = Sum(balance) == 0
+            query.having = Sum(balance) == 0
         else:
-            having = ((
+            query.having = ((
                     Sum(Case((balance > 0, 1), else_=0)) > 0)
                 & (Sum(Case((balance < 0, 1), else_=0)) > 0)
                 | Case((account.type.receivable, Sum(balance) < 0),
                     else_=False)
                 | Case((account.type.payable, Sum(balance) > 0),
-                    else_=False)
-                )
-        where = ((line.reconciliation == Null)
-            & (line.state == 'valid')
-            & (line.account == account.id)
-            & (line.party == (party.id if party else None)))
-        currency_expr = Coalesce(line.second_currency, account.currency.id)
-        if currency:
-            where &= (currency_expr == currency.id)
-        cursor.execute(*line.select(
-                currency_expr,
-                where=where,
-                group_by=line.second_currency,
-                having=having))
-        return [p for p, in cursor]
+                    else_=False))
+        cursor.execute(*query)
+        return Currency.browse([p for p, in cursor])
+
+    @classmethod
+    def to_reconcile(cls, account, party, currency):
+        pool = Pool()
+        Line = pool.get('account.move.line')
+        return Line.search([
+                ('account', '=', account),
+                ('party', '=', party),
+                ('reconciliation', '=', None),
+                ['OR',
+                    [
+                        ('currency', '=', currency),
+                        ('second_currency', '=', None),
+                        ],
+                    ('second_currency', '=', currency),
+                    ],
+                ('state', '=', 'valid'),
+                ],
+            order=[])
+
+    def get_accounts(self):
+        'Return a list of account id to reconcile'
+        if self.model and self.model.__name__ == 'account.move.line':
+            lines = [l for l in self.records if not l.reconciliation]
+            return list({l.account for l in lines if l.account.reconcile})
+        return self.accounts_to_reconcile(with_rule=True)
+
+    def get_parties(self, account, party=None):
+        'Return a list party to reconcile for the account'
+        if self.model and self.model.__name__ == 'account.move.line':
+            lines = [l for l in self.records if not l.reconciliation]
+            return list({
+                    l.party for l in lines
+                    if l.account == account and l.party})
+        return self.parties_to_reconcile(account)
+
+    def get_currencies(self, account, party):
+        "Return a list of currencies to reconcile for the account and party"
+        if self.model and self.model.__name__ == 'account.move.line':
+            lines = [l for l in self.records if not l.reconciliation]
+            return list({
+                    l.second_currency or l.currency
+                    for l in lines
+                    if l.account == account and l.party == party})
+        return self.currencies_to_reconcile(account, party)
 
     def transition_setup(self):
         return self.transition_next_(first=True)
@@ -2436,29 +2489,6 @@ class Reconcile(Wizard):
             defaults['date'] = Date.today()
         return defaults
 
-    def _all_lines(self):
-        'Return all lines to reconcile for the current state'
-        pool = Pool()
-        Line = pool.get('account.move.line')
-        return Line.search([
-                ('account', '=', self.show.account.id),
-                ('party', '=',
-                    self.show.party.id if self.show.party else None),
-                ('reconciliation', '=', None),
-                ['OR',
-                    [
-                        ('currency', '=', self.show.currency.id),
-                        ('second_currency', '=', None),
-                        ],
-                    ('second_currency', '=', self.show.currency.id),
-                    ],
-                ('state', '=', 'valid'),
-                ],
-            order=[])
-
-    def _line_sort_key(self, line):
-        return [line.maturity_date or line.date]
-
     def _default_lines(self):
         'Return the larger list of lines which can be reconciled'
         pool = Pool()
@@ -2472,10 +2502,13 @@ class Reconcile(Wizard):
                 and (l.second_currency or l.currency) == self.show.currency}
         else:
             requested = []
+
+        account = self.show.account
         currency = self.show.currency
+        party = self.show.party
 
         lines, remaining = Line.find_best_reconciliation(
-            self._all_lines(), currency)
+            self.to_reconcile(account, party, currency), currency)
         if remaining:
             return requested
         else:
