@@ -282,7 +282,6 @@ class Invoice(Model):
         invoice, attachments = cls.parser(namespace)(root)
         invoice.save()
         invoice.update_taxes()
-        cls.checker(namespace)(root, invoice)
         attachments = list(attachments)
         for attachment in attachments:
             attachment.resource = invoice
@@ -296,15 +295,6 @@ class Invoice(Model):
                 cls._parse_invoice_2),
             'urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2': (
                 cls._parse_credit_note_2),
-            }.get(namespace)
-
-    @classmethod
-    def checker(cls, namespace):
-        return {
-            'urn:oasis:names:specification:ubl:schema:xsd:Invoice-2': (
-                cls._check_invoice_2),
-            'urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2': (
-                cls._check_credit_note_2),
             }.get(namespace)
 
     @classmethod
@@ -406,6 +396,41 @@ class Invoice(Model):
                     './{*}LegalMonetaryTotal/{*}PayableRoundingAmount')
                     is not None)):
             invoice.cash_rounding = True
+
+        if tax_exlusive_amount := root.findtext(
+                './{*}LegalMonetaryTotal/{*}TaxExclusiveAmount'):
+            untaxed_amount = Decimal(tax_exlusive_amount)
+
+            if allowance_total_amount := root.findtext(
+                    './{*}LegalMonetaryTotal/{*}AllowanceTotalAmount'):
+                allowance_total_amount = Decimal(allowance_total_amount)
+                untaxed_amount -= allowance_total_amount
+
+            if charge_total_amount := root.findtext(
+                    './{*}LegalMonetaryTotal/{*}ChargeTotalAmount'):
+                charge_total_amount = Decimal(charge_total_amount)
+                untaxed_amount += charge_total_amount
+
+            invoice.source_untaxed_amount = untaxed_amount
+
+        tax_amount = sum(Decimal(amount.text) for amount in root.iterfind(
+                './{*}TaxTotal/{*}TaxAmount'))
+        invoice.source_tax_amount = tax_amount
+
+        payable_amount = Decimal(
+            root.findtext('./{*}LegalMonetaryTotal/{*}PayableAmount'))
+        prepaid_amount = Decimal(
+            root.findtext('./{*}LegalMonetaryTotal/{*}PrepaidAmount')
+            or 0)
+        total_amount = payable_amount + prepaid_amount
+        if not getattr(invoice, 'cash_rounding', False):
+            payable_rounding_amount = Decimal(
+                root.findtext(
+                    './{*}LegalMonetaryTotal/{*}PayableRoundingAmount')
+                or 0)
+            total_amount -= payable_rounding_amount
+        invoice.source_total_amount = total_amount
+
         return invoice, cls._parse_2_attachments(root)
 
     @classmethod
@@ -682,6 +707,41 @@ class Invoice(Model):
                     './{*}LegalMonetaryTotal/{*}PayableRoundingAmount')
                 is not None):
             invoice.cash_rounding = True
+
+        if tax_exlusive_amount := root.findtext(
+                './{*}LegalMonetaryTotal/{*}TaxExclusiveAmount'):
+            untaxed_amount = Decimal(tax_exlusive_amount)
+
+            if allowance_total_amount := root.findtext(
+                    './{*}LegalMonetaryTotal/{*}AllowanceTotalAmount'):
+                allowance_total_amount = Decimal(allowance_total_amount)
+                untaxed_amount -= allowance_total_amount
+
+            if charge_total_amount := root.findtext(
+                    './{*}LegalMonetaryTotal/{*}ChargeTotalAmount'):
+                charge_total_amount = Decimal(charge_total_amount)
+                untaxed_amount += charge_total_amount
+
+            invoice.source_untaxed_amount = -untaxed_amount
+
+        tax_amount = sum(Decimal(amount.text) for amount in root.iterfind(
+                './{*}TaxTotal/{*}TaxAmount'))
+        invoice.source_tax_amount = -tax_amount
+
+        payable_amount = Decimal(
+            root.findtext('./{*}LegalMonetaryTotal/{*}PayableAmount'))
+        prepaid_amount = Decimal(
+            root.findtext('./{*}LegalMonetaryTotal/{*}PrepaidAmount')
+            or 0)
+        total_amount = payable_amount + prepaid_amount
+        if not getattr(invoice, 'cash_rounding', False):
+            payable_rounding_amount = Decimal(
+                root.findtext(
+                    './{*}LegalMonetaryTotal/{*}PayableRoundingAmount')
+                or 0)
+            total_amount -= payable_rounding_amount
+        invoice.source_total_amount = -total_amount
+
         return invoice, cls._parse_2_attachments(root)
 
     @classmethod
@@ -1258,74 +1318,6 @@ class Invoice(Model):
                     Attachment.link = url
                 attachment.name = name
                 yield attachment
-
-    @classmethod
-    def _check_invoice_2(cls, root, invoice):
-        pool = Pool()
-        Lang = pool.get('ir.lang')
-        lang = Lang.get()
-
-        payable_amount = Decimal(
-            root.findtext('./{*}LegalMonetaryTotal/{*}PayableAmount'))
-        prepaid_amount = Decimal(
-            root.findtext('./{*}LegalMonetaryTotal/{*}PrepaidAmount')
-            or 0)
-        amount = payable_amount + prepaid_amount
-        if not getattr(invoice, 'cash_rounding', False):
-            payable_rounding_amount = Decimal(
-                root.findtext(
-                    './{*}LegalMonetaryTotal/{*}PayableRoundingAmount')
-                or 0)
-            amount -= payable_rounding_amount
-        if invoice.total_amount != amount:
-            raise InvoiceError(gettext(
-                    'edocument_ubl.msg_invoice_total_amount_different',
-                    invoice=invoice.rec_name,
-                    total_amount=lang.format_number(invoice.total_amount),
-                    amount=lang.format_number(amount)))
-
-        tax_total = sum(Decimal(amount.text) for amount in root.iterfind(
-                './{*}TaxTotal/{*}TaxAmount'))
-        if invoice.tax_amount != tax_total:
-            raise InvoiceError(gettext(
-                    'edocument_ubl.msg_invoice_tax_amount_different',
-                    invoice=invoice.rec_name,
-                    tax_amount=lang.format_number(invoice.tax_amount),
-                    tax_total=lang.format_number(tax_total)))
-
-    @classmethod
-    def _check_credit_note_2(cls, root, invoice):
-        pool = Pool()
-        Lang = pool.get('ir.lang')
-        lang = Lang.get()
-
-        payable_amount = Decimal(
-            root.findtext('./{*}LegalMonetaryTotal/{*}PayableAmount'))
-        prepaid_amount = Decimal(
-            root.findtext('./{*}LegalMonetaryTotal/{*}PrepaidAmount')
-            or 0)
-        amount = payable_amount + prepaid_amount
-        if not getattr(invoice, 'cash_rounding', False):
-            payable_rounding_amount = Decimal(
-                root.findtext(
-                    './{*}LegalMonetaryTotal/{*}PayableRoundingAmount')
-                or 0)
-            amount -= payable_rounding_amount
-        if -invoice.total_amount != amount:
-            raise InvoiceError(gettext(
-                    'edocument_ubl.msg_invoice_total_amount_different',
-                    invoice=invoice.rec_name,
-                    total_amount=lang.format_number(-invoice.total_amount),
-                    amount=lang.format_number(amount)))
-
-        tax_total = sum(Decimal(amount.text) for amount in root.iterfind(
-                './{*}TaxTotal/{*}TaxAmount'))
-        if -invoice.tax_amount != tax_total:
-            raise InvoiceError(gettext(
-                    'edocument_ubl.msg_invoice_tax_amount_different',
-                    invoice=invoice.rec_name,
-                    tax_amount=lang.format_number(-invoice.tax_amount),
-                    tax_total=lang.format_number(tax_total)))
 
 
 class Invoice_Bank(metaclass=PoolMeta):

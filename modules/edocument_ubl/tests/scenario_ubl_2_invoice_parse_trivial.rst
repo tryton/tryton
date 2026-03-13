@@ -5,6 +5,7 @@ UBL 2 Invoice Parse Trivial
 Imports::
 
     >>> import datetime as dt
+    >>> from decimal import Decimal
 
     >>> from proteus import Model
     >>> from trytond.modules.account.tests.tools import create_chart
@@ -46,6 +47,9 @@ Parse the UBL invoice::
     >>> assertEqual(invoice.company, company)
     >>> invoice.total_amount
     Decimal('100.00')
+    >>> invoice.source_untaxed_amount
+    >>> assertEqual(invoice.source_tax_amount, Decimal('0.00'))
+    >>> assertEqual(invoice.source_total_amount, Decimal('100.00'))
     >>> line, = invoice.lines
     >>> line.description
     'Cotter pin, MIL-SPEC'
