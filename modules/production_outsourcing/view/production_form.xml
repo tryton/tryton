@@ -2,7 +2,9 @@
 <!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
 this repository contains the full copyright notices and license terms. -->
 <data>
-    <xpath expr="//field[@name='cost']" position="after">
-        <field name="purchase_lines" colspan="4" widget="many2many"/>
+    <xpath expr="//page[@name='inputs']" position="after">
+        <page name="purchase_lines">
+            <field name="purchase_lines" colspan="4" widget="many2many"/>
+        </page>
     </xpath>
 </data>
