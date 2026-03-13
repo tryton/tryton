@@ -13,7 +13,7 @@ export default [
                 QUnit: "readonly",
                 Sao: "readonly",
                 Sortable: "readonly",
-                c3: "readonly",
+                bb: "readonly",
                 i18n: "readonly",
                 jQuery: "readonly",
                 moment: "readonly",

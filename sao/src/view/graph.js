@@ -95,7 +95,7 @@
                 return () => {
                     record = group[index];
                     var x = record.field_get_client(this.xfield.name);
-                    // c3 does not support moment
+                    // billboard does not support moment
                     if (x && (x.isDate || x.isDateTime)) {
                         x = x.toString();
                     }
@@ -164,18 +164,18 @@
         display: function(group) {
             var update_prm = this.update_data(group);
             update_prm.done(data => {
-                c3.generate(this._c3_config(data));
+                bb.generate(this._bb_config(data));
             });
             return update_prm;
         },
-        _c3_config: function(data) {
-            var c3_config = {};
+        _bb_config: function(data) {
+            var bb_config = {};
 
-            c3_config.bindto = '#' + this.el.attr('id');
-            c3_config.data = data;
-            c3_config.data.type = this._chart_type;
-            c3_config.data.x = 'labels';
-            c3_config.data.onclick = this.action.bind(this);
+            bb_config.bindto = '#' + this.el.attr('id');
+            bb_config.data = data;
+            bb_config.data.type = this._chart_type;
+            bb_config.data.x = 'labels';
+            bb_config.data.onclick = this.action.bind(this);
 
             var type = this.view.screen.model.fields[this.xfield.name]
                 .description.type;
@@ -185,18 +185,18 @@
                     this.view.screen.context.date_format);
                 time_format = '%X';
                 if (type == 'datetime') {
-                    c3_config.data.xFormat = '%Y-%m-%d %H:%M:%S';
+                    bb_config.data.xFormat = '%Y-%m-%d %H:%M:%S';
                     format_func = function(dt) {
                         return Sao.common.format_datetime(
                             date_format + ' ' + time_format, moment(dt));
                     };
                 } else {
-                    c3_config.data.xFormat = '%Y-%m-%d';
+                    bb_config.data.xFormat = '%Y-%m-%d';
                     format_func = function(dt) {
                         return Sao.common.format_date(date_format, moment(dt));
                     };
                 }
-                c3_config.axis = {
+                bb_config.axis = {
                     x: {
                         type: 'timeseries',
                         tick: {
@@ -205,7 +205,7 @@
                     }
                 };
             } else {
-                c3_config.axis = {
+                bb_config.axis = {
                     x: {
                         type: 'category',
                     }
@@ -224,12 +224,12 @@
                     colors[yfield.key || yfield.name] = yfield.color;
                 }
             }
-            c3_config.data.color = function(color, column) {
+            bb_config.data.color = function(color, column) {
                 // column is an object when called for legend
                 var key = column.id || column;
                 return colors[key] || color;
             };
-            return c3_config;
+            return bb_config;
         },
         _data_keys: function(data) {
             let keys = [];
@@ -269,8 +269,8 @@
 
     Sao.View.Graph.HorizontalBar = Sao.class_(Sao.View.Graph.Chart, {
         _chart_type: 'bar',
-        _c3_config: function(data) {
-            var config = Sao.View.Graph.HorizontalBar._super._c3_config
+        _bb_config: function(data) {
+            var config = Sao.View.Graph.HorizontalBar._super._bb_config
                 .call(this, data);
             config.axis.rotated = true;
             return config;
@@ -279,8 +279,8 @@
 
     Sao.View.Graph.Line = Sao.class_(Sao.View.Graph.Chart, {
         _chart_type: 'line',
-        _c3_config: function(data) {
-            var config =  Sao.View.Graph.Line._super._c3_config
+        _bb_config: function(data) {
+            var config =  Sao.View.Graph.Line._super._bb_config
                 .call(this, data);
             config.line = {
                 connectNull: true,
@@ -291,8 +291,8 @@
 
     Sao.View.Graph.Pie = Sao.class_(Sao.View.Graph.Chart, {
         _chart_type: 'pie',
-        _c3_config: function(data) {
-            var config = Sao.View.Graph.Pie._super._c3_config.call(this, data);
+        _bb_config: function(data) {
+            var config = Sao.View.Graph.Pie._super._bb_config.call(this, data);
             var pie_columns = [], pie_names = {};
             var i, len;
             var labels, values;

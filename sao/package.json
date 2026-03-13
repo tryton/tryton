@@ -50,11 +50,12 @@
     "tryton"
   ],
   "dependencies": {
+    "billboard.js": "^3.17",
+    "d3": "^7.9",
     "jquery": "^3",
     "bootstrap": "^3.3.7",
     "moment": "^2.10",
     "gettext.js": "^2",
-    "c3": "^0.7",
     "papaparse": "^5.0",
     "fullcalendar": "^3.10.2",
     "mousetrap": "^1.6",
