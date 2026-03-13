@@ -1,3 +1,4 @@
+* Check the invoice amounts against the source amounts
 * Add support for Python 3.14
 * Remove support for Python 3.9
 * Add payment means to invoices

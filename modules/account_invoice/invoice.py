@@ -310,16 +310,31 @@ class Invoice(
     origin_invoices = fields.Function(fields.Many2Many(
             'account.invoice', None, None, "Origin Invoices"),
         'get_origin_invoices', searcher='search_origin_invoices')
+    source_untaxed_amount = Monetary(
+        "Source Untaxed", digits='currency', readonly=True,
+        states={
+            'invisible': Eval('source_untaxed_amount', None) == Null,
+            })
     untaxed_amount = fields.Function(Monetary(
             "Untaxed", currency='currency', digits='currency'),
         'get_amount', searcher='search_untaxed_amount')
     untaxed_amount_cache = fields.Numeric(
         "Untaxed Cache", digits='currency', readonly=True)
+    source_tax_amount = Monetary(
+        "Source Tax", digits='currency', readonly=True,
+        states={
+            'invisible': Eval('source_tax_amount', None) == Null,
+            })
     tax_amount = fields.Function(Monetary(
             "Tax", currency='currency', digits='currency'),
         'get_amount', searcher='search_tax_amount')
     tax_amount_cache = fields.Numeric(
         "Tax Cache", digits='currency', readonly=True)
+    source_total_amount = Monetary(
+        "Source Total", digits='currency', readonly=True,
+        states={
+            'invisible': Eval('source_total_amount', None) == Null,
+            })
     total_amount = fields.Function(Monetary(
             "Total", currency='currency', digits='currency'),
         'get_amount', searcher='search_total_amount')
@@ -1719,7 +1734,29 @@ class Invoice(
     @classmethod
     def validate_fields(cls, invoices, field_names):
         super().validate_fields(invoices, field_names)
+        cls.check_source(invoices, field_names)
         cls.check_supplier_payment_reference(invoices, field_names)
+
+    @classmethod
+    def check_source(cls, invoices, field_names):
+        pool = Pool()
+        Lang = pool.get('ir.lang')
+        if field_names and 'state' not in field_names:
+            return
+        for invoice in invoices:
+            if invoice.state not in {'draft', 'cancelled'}:
+                for field in ['untaxed_amount', 'tax_amount', 'total_amount']:
+                    source = getattr(invoice, f'source_{field}')
+                    value = getattr(invoice, field)
+                    if source not in {None, value}:
+                        lang = Lang.get()
+                        raise InvoiceValidationError(
+                            gettext('account_invoice'
+                                '.msg_invoice_source_mismatch',
+                                invoice=invoice.rec_name,
+                                source=lang.currency(source, invoice.currency),
+                                value=lang.currency(value, invoice.currency),
+                                **cls.__names__(field=field)))
 
     @classmethod
     def check_supplier_payment_reference(cls, invoices, field_names):
