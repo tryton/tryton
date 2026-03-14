@@ -1587,7 +1587,7 @@ class Invoice(
         PaymentMean = pool.get('account.invoice.payment.mean')
         if not PaymentMean.get_instruments():
             payment_means = [
-                ('/form//field[@name="payment_means"]', 'invisible', '1'),
+                ('/form//field[@name="payment_means"]', 'invisible', 1),
                 ]
         else:
             payment_means = []
