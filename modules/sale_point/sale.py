@@ -322,7 +322,8 @@ class POSSale(Workflow, ModelSQL, ModelView, TaxableMixin):
     @classmethod
     @Workflow.transition('done')
     def do(cls, sales):
-        for sale in sales:
+        sales_without_number = (sale for sale in sales if not sale.number)
+        for sale in sales_without_number:
             with Transaction().set_context(company=sale.company.id):
                 sale.number = sale.point.sequence.get()
         cls.save(sales)
