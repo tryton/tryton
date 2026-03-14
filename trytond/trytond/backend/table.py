@@ -34,7 +34,7 @@ class TableHandlerInterface(object):
             self.table_name = model._table + '__history'
         else:
             self.table_name = model._table
-        self.object_name = model.__name__
+        self.model = model
         if history:
             self.sequence_name = self.table_name + '___id_seq'
         else:

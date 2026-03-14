@@ -253,6 +253,10 @@ TableHandler
    Handle table for the ``model``.
    If ``history`` is set, the table is the one storing the history.
 
+.. attribute:: TableHandler.model
+
+   The :class:`~trytond.model.ModelSQL` of the handled table.
+
 .. attribute:: TableHandler.history
 
    A boolean to handle the history table.

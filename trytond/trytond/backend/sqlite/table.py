@@ -29,7 +29,6 @@ class TableHandler(TableHandlerInterface):
         super()._init(model, history=history)
         self.__columns = None
         self.__indexes = None
-        self._model = model
 
         cursor = Transaction().connection.cursor()
         # Create new table if necessary
@@ -90,7 +89,7 @@ class TableHandler(TableHandlerInterface):
         temp_table = '__temp_%s' % self.table_name
         temp_columns = dict(self._columns)
         self.table_rename(self.table_name, temp_table)
-        self._init(self._model, history=self.history)
+        self._init(self.model, history=self.history)
         columns, old_columns = [], []
         for name, values in temp_columns.items():
             if name in drop_columns:
@@ -125,7 +124,7 @@ class TableHandler(TableHandlerInterface):
                 if not self.history:
                     history_table = self.table_name + '__history'
                     if self.__class__.table_exist(history_table):
-                        history_h = self.__class__(self._model, True)
+                        history_h = self.__class__(self.model, True)
                         history_h.column_rename(old_name, new_name)
             else:
                 logger.warning(
