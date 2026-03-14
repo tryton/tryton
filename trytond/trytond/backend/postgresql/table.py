@@ -26,6 +26,7 @@ class TableHandler(TableHandlerInterface):
         self.__constraints = None
         self.__fk_deltypes = None
         self.__indexes = None
+        self._model = model
 
         transaction = Transaction()
         cursor = transaction.connection.cursor()
@@ -165,6 +166,11 @@ class TableHandler(TableHandlerInterface):
                         Identifier(old_name),
                         Identifier(new_name)))
                 self._update_definitions(columns=True)
+                if not self.history:
+                    history_table = self.table_name + '__history'
+                    if self.__class__.table_exist(history_table):
+                        history_h = self.__class__(self._model, True)
+                        history_h.column_rename(old_name, new_name)
             else:
                 logger.warning(
                     'Unable to rename column %s on table %s to %s.',

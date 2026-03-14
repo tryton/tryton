@@ -122,6 +122,11 @@ class TableHandler(TableHandlerInterface):
                     self._update_definitions(columns=True)
                 else:
                     self._recreate_table({old_name: {'name': new_name}})
+                if not self.history:
+                    history_table = self.table_name + '__history'
+                    if self.__class__.table_exist(history_table):
+                        history_h = self.__class__(self._model, True)
+                        history_h.column_rename(old_name, new_name)
             else:
                 logger.warning(
                     'Unable to rename column %s on table %s to %s.',
