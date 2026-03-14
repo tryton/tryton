@@ -325,8 +325,10 @@ class POSSale(Workflow, ModelSQL, ModelView, TaxableMixin, ChatMixin):
     @classmethod
     @Workflow.transition('done')
     def do(cls, sales):
+        sales_without_number = (sale for sale in sales if not sale.number)
         for (company, sequence), c_sales in groupby(
-                sales, key=lambda s: (s.company, s.point.sequence)):
+                sales_without_number,
+                key=lambda s: (s.company, s.point.sequence)):
             c_sales = list(c_sales)
             with Transaction().set_context(company=company.id):
                 for sale, number in zip(
