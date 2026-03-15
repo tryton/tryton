@@ -32,8 +32,8 @@ class Identifier(metaclass=PoolMeta):
 
     def es_code(self):
         if self.type == 'eu_vat':
-            return self.code[2:]
-        return self.code
+            return self.code_compact[2:]
+        return self.code_compact
 
     def es_vat_type(self):
         country = self.es_country()
