@@ -69,9 +69,13 @@ def dump(path):
 
 def dumper(path):
     while True:
-        if dump(path):
-            time.sleep(5)
-        else:
+        try:
+            if dump(path):
+                time.sleep(5)
+            else:
+                time.sleep(60)
+        except Exception:
+            logger.exception("status dumper crashed")
             time.sleep(60)
 
 
