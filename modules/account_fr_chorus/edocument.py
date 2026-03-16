@@ -16,5 +16,5 @@ class UNCEFACTInvoice(metaclass=PoolMeta):
     def party_legal_ids(cls, party, address):
         ids = super().party_legal_ids(party, address)
         if Transaction().context.get('account_fr_chorus') and address:
-            ids.append((address.siret.code, {'schemeID': '1'}))
+            ids.append((address.siret.code_compact, {'schemeID': '1'}))
         return ids
