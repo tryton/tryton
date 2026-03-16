@@ -1020,6 +1020,14 @@ class Tax(sequence_ordered(), ModelSQL, ModelView, DeactivableMixin):
             price_unit += unit_price_variation
         return res
 
+    def _reverse_rate_amount_from_type(self, rate, amount):
+        if self.type == 'percentage':
+            return rate + self.rate, amount
+        elif self.type == 'fixed':
+            return rate, amount + self.amount
+        elif self.type == 'none':
+            return rate, amount
+
     @classmethod
     def _reverse_rate_amount(cls, taxes, date):
         rate, amount = 0, 0
@@ -1029,10 +1037,7 @@ class Tax(sequence_ordered(), ModelSQL, ModelView, DeactivableMixin):
             if not (start_date <= date <= end_date):
                 continue
 
-            if tax.type == 'percentage':
-                rate += tax.rate
-            elif tax.type == 'fixed':
-                amount += tax.amount
+            rate, amount = tax._reverse_rate_amount_from_type(rate, amount)
 
             if tax.childs:
                 child_rate, child_amount = cls._reverse_rate_amount(
