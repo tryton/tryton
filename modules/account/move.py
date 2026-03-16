@@ -484,6 +484,7 @@ class Move(DescriptionOriginMixin, ModelSQL, ModelView):
                         where=reduce_ids(line.move, sub_moves_ids)
                         & (line.debit == Decimal(0))
                         & (line.credit == Decimal(0))
+                        & (line.reconciliation == Null)
                         & ((line.amount_second_currency == Null)
                             | (line.amount_second_currency == Decimal(0)))
                         ))
