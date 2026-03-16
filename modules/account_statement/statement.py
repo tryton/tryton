@@ -288,7 +288,10 @@ class Statement(Workflow, ModelSQL, ModelView, ChatMixin):
                             except AttributeError:
                                 pass
                         new_line.amount = line.amount + amount_to_pay
-                        new_line.invoice = None
+                        # As the line is overpaying an invoice we can assume
+                        # that the additional line will be used to pay an
+                        # invoice
+                        new_line.related_to = ('account.invoice', -1)
                         line_offset += 1
                         lines.insert(index + line_offset, new_line)
                         invoice_id2amount_to_pay[line.invoice.id] = Decimal(0)
