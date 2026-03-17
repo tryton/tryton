@@ -386,6 +386,7 @@ class Lang(DeactivableMixin, ModelSQL, ModelView):
                     n=n,
                     exception=exception)) from exception
 
+    @classmethod
     def get_translatable_languages(cls):
         languages = cls._lang_cache.get('translatable_languages')
         if languages is None:
