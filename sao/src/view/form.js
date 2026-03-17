@@ -722,13 +722,16 @@ function eval_pyson(value){
             }
             function set_empty(e) {
                 let empty = true;
-                for (const child of e.children(':not(.tooltip)')) {
-                    if (jQuery(child).css('display') != 'none') {
+                for (let child of e.children) {
+                    if (child.classList.contains('tooltip')) {
+                        continue;
+                    }
+                    if (child.style.display != 'none') {
                         empty = false;
                         break;
                     }
                 }
-                e.toggleClass('empty', empty);
+                e.classList.toggle('empty', empty);
             };
             var col_start, col_end, row_start, row_end;
             let style;
@@ -750,13 +753,13 @@ function eval_pyson(value){
             var row, col;
             for (i = 0; i < grid_cols.length; i++) {
                 col = cols[i];
-                if (col.every(e => e.hasClass('empty'))) {
+                if (col.every(e => e.classList.contains('empty'))) {
                     grid_cols[i] = "0px";
                 }
             }
             for (i = 0; i < grid_rows.length; i++) {
                 row = rows[i];
-                if (row.every(e => e.hasClass('empty'))) {
+                if (row.every(e => e.classList.contains('empty'))) {
                     grid_rows[i] = "0px";
                 }
             }
