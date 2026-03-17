@@ -322,6 +322,7 @@
                 if (service_window.closed) {
                     window.clearInterval(timer);
                     session.database = database;
+                    session.login = null;
                     session.restore();
                     if (session.session) {
                         dfd.resolve(session);
