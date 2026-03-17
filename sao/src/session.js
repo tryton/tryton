@@ -341,6 +341,7 @@
                 if (service_window.closed) {
                     window.clearInterval(timer);
                     session.database = database;
+                    session.login = null;
                     session.restore();
                     if (session.session) {
                         dfd.resolve(session);
@@ -559,6 +560,9 @@
                         });
                     }).prependTo(dialog.footer);
                     dialog.modal.find('.modal-dialog').removeClass('modal-sm');
+                    prm.fail(() => {
+                        session.login = null;
+                    });
                     return dialog;
                 },
             });
