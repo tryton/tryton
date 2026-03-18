@@ -872,6 +872,10 @@ img.icon {
             position: relative;
             padding: 5px;
 
+            &.sortable {
+                cursor: pointer;
+            }
+
             > label {
                 display: inline-block;
                 overflow: hidden;
@@ -880,9 +884,6 @@ img.icon {
                 margin: 0;
                 vertical-align: bottom;
 
-                &.sortable {
-                    cursor: pointer;
-                }
             }
 
             > div.resizer {

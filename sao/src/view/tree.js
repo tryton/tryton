@@ -239,7 +239,7 @@
                         }
                         this.sort_model(e);
                     });
-                    label.addClass('sortable');
+                    th.addClass('sortable');
                 }
                 tr.append(th.append(label));
                 let resizer = jQuery('<div/>', {
