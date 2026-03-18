@@ -124,30 +124,34 @@ class InvoiceLine(metaclass=PoolMeta):
         pattern = super()._get_tax_rule_pattern()
 
         from_country = from_subdivision = to_country = to_subdivision = None
+        origin = self.origin
+        # find the first origin which is not an invoice line
+        while isinstance(origin, self.__class__) and origin.id >= 0:
+            origin = origin.origin
         if (SaleLine
-                and isinstance(self.origin, SaleLine)
-                and self.origin.id >= 0):
-            warehouse = self.origin.warehouse
+                and isinstance(origin, SaleLine)
+                and origin.id >= 0):
+            warehouse = origin.warehouse
             if warehouse and warehouse.address:
                 from_country = warehouse.address.country
                 from_subdivision = warehouse.address.subdivision
-            shipment_address = self.origin.sale.shipment_address
+            shipment_address = origin.sale.shipment_address
             to_country = shipment_address.country
             to_subdivision = shipment_address.subdivision
         elif (PurchaseLine
-                and isinstance(self.origin, PurchaseLine)
-                and self.origin.id >= 0):
-            invoice_address = self.origin.purchase.invoice_address
+                and isinstance(origin, PurchaseLine)
+                and origin.id >= 0):
+            invoice_address = origin.purchase.invoice_address
             from_country = invoice_address.country
             from_subdivision = invoice_address.subdivision
-            warehouse = self.origin.warehouse
+            warehouse = origin.warehouse
             if warehouse and warehouse.address:
                 to_country = warehouse.address.country
                 to_subdivision = warehouse.address.subdivision
         elif (Move
-                and isinstance(self.origin, Move)
-                and self.origin.id >= 0):
-            move = self.origin
+                and isinstance(origin, Move)
+                and origin.id >= 0):
+            move = origin
             if move.from_location.warehouse:
                 warehouse_address = move.from_location.warehouse.address
                 if warehouse_address:
