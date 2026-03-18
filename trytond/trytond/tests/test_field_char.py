@@ -820,6 +820,40 @@ class FieldCharSimilarityTestCase(ExtensionTestCase):
         pool = Pool()
         self._test_search(pool.get('test.char_translate'))
 
+    @with_transaction()
+    def test_search_empty(self):
+        "Test a full text search with an empty string"
+        pool = Pool()
+        Char = pool.get('test.char')
+
+        record1, record2 = Char.create([{
+                    'char': "word",
+                    }, {
+                    'char': "",
+                    }])
+
+        with Transaction().set_context(search_similarity=0.3):
+            self.assertEqual(
+                Char.search([('char', 'ilike', '')]),
+                [record2])
+
+    @with_transaction()
+    def test_search_null(self):
+        "Test a full text search with NULL"
+        pool = Pool()
+        Char = pool.get('test.char')
+
+        record1, record2 = Char.create([{
+                    'char': "word",
+                    }, {
+                    'char': None,
+                    }])
+
+        with Transaction().set_context(search_similarity=0.3):
+            self.assertEqual(
+                Char.search([('char', 'ilike', None)]),
+                [record2])
+
     def _test_order(self, Model):
         record1, record2 = Model.create([{
                     'char': "word",
