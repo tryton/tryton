@@ -212,7 +212,8 @@ class ShipmentInternal_Location(ModelSQL):
     __name__ = 'stock.shipment.internal-location'
 
     shipment = fields.Many2One(
-        'stock.shipment.internal', "Shipment", required=True)
+        'stock.shipment.internal', "Shipment", required=True,
+        ondelete='CASCADE')
     location = fields.Many2One(
         'stock.location', "Location", required=True,
         domain=[
