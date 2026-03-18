@@ -3737,11 +3737,9 @@
                 'class': 'alert alert-info',
                 'role': 'alert',
             });
-            var label = jQuery('<p/>', {
-                'text': Sao.i18n.gettext('Processing'),
-            }).appendTo(this.el);
+            this.label = jQuery('<p/>').appendTo(this.el);
             for (var i = 0; i < 3; i ++) {
-                label.append(jQuery('<span/>', {
+                this.label.append(jQuery('<span/>', {
                     'class': 'dot',
                     'text': '.',
                 }));
@@ -3752,6 +3750,7 @@
             });
         },
         show: function(timeout=null) {
+            this.label.text(Sao.i18n.gettext("Processing"));
             if (timeout === null) {
                 timeout = this.timeout;
             }
