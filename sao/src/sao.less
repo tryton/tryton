@@ -844,11 +844,6 @@ img.icon {
     > table.tree {
         width: 100%;
         table-layout: fixed;
-        border: 1px solid transparent;
-
-        &.table-bordered {
-            border-color: @table-border-color;
-        }
 
         col.selection-state, col.favorite, col.tree-menu {
             width: 30px;
@@ -883,6 +878,7 @@ img.icon {
                 text-overflow: ellipsis;
                 white-space: nowrap;
                 margin: 0;
+                vertical-align: bottom;
 
                 &.sortable {
                     cursor: pointer;
@@ -890,15 +886,21 @@ img.icon {
             }
 
             > div.resizer {
-                z-index: 1;
+                background-color: @table-border-color;
+                cursor: ew-resize;
+                height: 100%;
+                inset-inline-end: -5px;
+                opacity: 0;
+                padding: 0 4px;
                 position: absolute;
                 top: 0;
-                inset-inline-end: -5px;
+                transition: opacity 0.2s;
                 width: 2px;
-                height: 100%;
-                cursor: ew-resize;
-                padding: 0 4px;
-                background-color: transparent;
+                z-index: 1;
+
+                &:hover {
+                    opacity: 1;
+                }
             }
 
             &.tree-menu {
@@ -921,17 +923,26 @@ img.icon {
             position: sticky;
             top: 0;
             z-index: 100;
+            box-shadow: inset 0 1px 0 @table-border-color, inset 0 -1px 0 @table-border-color;
 
             th {
-                border: 1px solid transparent;
                 border-bottom: 2px solid @table-border-color;
             }
 
             &:hover th {
-                border: 1px solid @table-border-color;
-                border-bottom-width: 2px;
+                box-shadow: inset 1px 0 0 @table-border-color, inset -1px 0 0 @table-border-color;
             }
         }
+        &.table-bordered > thead > tr:first-child {
+            th {
+                box-shadow: inset .5px 0 0 @table-border-color, inset -.5px 0 0 @table-border-color;
+            }
+        }
+
+        &.resizing td:not(:last-child) {
+            border-right: 2px dashed @table-border-color;
+        }
+
         > tfoot > tr {
             background-color: @body-bg;
             bottom: 0;
@@ -1073,26 +1084,6 @@ img.icon {
     .btn {
         padding-top: 0;
         padding-bottom: 0;
-    }
-
-    > table.table-bordered {
-        border: 1px solid @table-border-color;
-        > thead,
-        > tbody,
-        > tfoot {
-            > tr:first-child {
-                > th,
-                > td {
-                    border: 1px solid @table-border-color;
-                }
-            }
-        }
-        > thead > tr:first-child {
-            > th,
-            > td {
-                border-bottom-width: 2px;
-            }
-        }
     }
 }
 

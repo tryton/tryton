@@ -249,6 +249,8 @@
                 let is_resizing = false;
                 resizer.on('mousedown', (event) => {
                     is_resizing = true;
+                    let table = this.table;
+                    table.addClass('resizing');
                     let th = event.target.parentNode;
                     let headers = th.parentNode.childNodes;
                     let cols = this.colgroup[0].childNodes;
@@ -280,12 +282,12 @@
                         document.removeEventListener('mousemove', on_mouse_move);
                         document.removeEventListener('mouseup', on_mouse_up);
                         setTimeout(() => is_resizing = false, 0);
+                        table.removeClass('resizing');
                     }
 
                     document.addEventListener('mousemove', on_mouse_move);
                     document.addEventListener('mouseup', on_mouse_up);
 
-                    this.table.addClass('table-bordered');
                     event.preventDefault();
                 });
 
