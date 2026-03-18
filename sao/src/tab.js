@@ -141,6 +141,8 @@
             if (this.info_bar) {
                 this.el.append(this.info_bar.el);
             }
+
+            this._chat = null;
         },
         set_menu: function(menu) {
             var previous;
@@ -350,6 +352,9 @@
                 tabs.trigger('ready');
                 if (this._chat) {
                     this._chat.unregister();
+                    let chat = this.sidebar_content.find('.chat');
+                    chat.remove();
+                    this._chat = null;
                 }
             });
         },
@@ -1409,6 +1414,8 @@
             let chat = this.sidebar_content.find('.chat');
             if (chat.length) {
                 chat.remove();
+                this._chat.unregister()
+                this._chat = null;
             } else {
                 if (this.screen.current_reference) {
                     this._chat = new Sao.Chat(this.screen.current_reference);
