@@ -345,7 +345,7 @@ class Group(list):
             cmp = operator.gt
         else:
             cmp = operator.lt
-        max_id = max(0, *(r.id for r in self))
+        max_id = max(0, 0, *(r.id for r in self))
         for record in self:
             # Assume not loaded records are correctly ordered
             # as far as we do not change any previous records.
