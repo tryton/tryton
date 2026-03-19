@@ -70,9 +70,28 @@ Create product::
 
 Setup Typless service::
 
-    >>> ocr_service = OCRService(type='typless')
+    >>> ocr_service = OCRService(type='typless', document_type='supplier_invoice')
     >>> ocr_service.typless_api_key = os.getenv('TYPLESS_API_KEY')
     >>> ocr_service.typless_document_type = os.getenv('TYPLESS_DOCUMENT_TYPE')
+    >>> ocr_service.typless_fields = [
+    ...     'supplier_name',
+    ...     'company_name',
+    ...     'number',
+    ...     'purchase_orders',
+    ...     'invoice_date',
+    ...     'payment_term_date',
+    ...     'total_amount',
+    ...     'untaxed_amount',
+    ...     ]
+    >>> ocr_service.typless_line_item_fields = [
+    ...     'description',
+    ...     'product_name',
+    ...     'unit',
+    ...     'amount',
+    ...     'quantity',
+    ...     'unit_price',
+    ...     ]
+    >>> ocr_service.typless_vat_rates = True
     >>> ocr_service.save()
 
 Create incoming document::

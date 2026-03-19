@@ -24,6 +24,35 @@ EXTRACT_DATA = 'https://developers.typless.com/api/extract-data'
 ADD_DOCUMENT_FEEDBACK = (
     'https://developers.typless.com/api/add-document-feedback')
 
+SUPPLIER_INVOICE_FIELDS = [
+    'company_name',
+    'company_tax_identifier',
+    'supplier_name',
+    'tax_identifier',
+    'currency',
+    'number',
+    'description',
+    'invoice_date',
+    'payment_term_date',
+    'payment_reference',
+    'total_amount',
+    'untaxed_amount',
+    'tax_amount',
+    'purchase_orders',
+    ]
+SUPPLIER_INVOICE_FIELDS = [(x, x) for x in SUPPLIER_INVOICE_FIELDS]
+SUPPLIER_INVOICE_LINE_ITEM_FIELDS = [
+    'product_name',
+    'description',
+    'unit',
+    'quantity',
+    'unit_price',
+    'amount',
+    'purchase_order',
+    ]
+SUPPLIER_INVOICE_LINE_ITEM_FIELDS = [
+    (x, x) for x in SUPPLIER_INVOICE_LINE_ITEM_FIELDS]
+
 
 def typless_api(func):
     @wraps(func)
@@ -66,11 +95,38 @@ class IncomingOCRService(metaclass=PoolMeta):
     typless_document_type = fields.Char(
         "Document Type", states=_states,
         help="The name of the document type on Typless.")
+    typless_fields = fields.MultiSelection(
+        'get_typless_fields', "Fields",
+        translate=False,
+        states={
+            'invisible': _states['invisible'],
+            },
+        help="The metadata fields setup for this document type.")
+    typless_line_item_fields = fields.MultiSelection(
+        'get_typless_line_item_fields', "Line Item Fields",
+        translate=False,
+        states={
+            'invisible': _states['invisible'],
+            },
+        help="The line item fields setup for this document type.")
+    typless_vat_rates = fields.Boolean(
+        "VAT Rates",
+        states={
+            'invisible': _states['invisible'],
+            },
+        help="Check if the vat rate net plugin is activated "
+        "for this document type.")
 
     @classmethod
     def __setup__(cls):
         super().__setup__()
         cls.type.selection.append(('typless', "Typless"))
+
+    def get_typless_fields(self):
+        return [('document_type', 'document_type')]
+
+    def get_typless_line_item_fields(self):
+        return []
 
     def match_mime_type(self, mime_type):
         match = super().match_mime_type(mime_type)
@@ -107,16 +163,119 @@ class IncomingOCRService(metaclass=PoolMeta):
             document_data['document_type'] = document_type
         return document_data
 
+    @typless_api
+    def _send_feedback_typless(self, document):
+        payload = self._typless_feedback_payload(document)
+        headers = {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Authorization': self.typless_api_key,
+            }
+        response = requests.post(
+            ADD_DOCUMENT_FEEDBACK, json=payload, headers=headers)
+        response.raise_for_status()
+
+    def _typless_feedback_payload(self, document):
+        source = document.result
+        fields = document.ocr_service.typless_fields
+        learning_fields = []
+        getter = getattr(self, f'_typless_feedback_payload_{document.type}')
+        for name in fields:
+            value = getter(source, name)
+            learning_fields.append({
+                    'name': name,
+                    'value': value,
+                    })
+        payload = {
+            'document_type_name': self.typless_document_type,
+            'document_object_id': document.parsed_data['object_id'],
+            'learning_fields': learning_fields,
+            }
+        line_items = document.ocr_service.typless_line_item_fields
+        if line_items:
+            lines = []
+            getter = getattr(
+                self, f'_typless_feedback_payload_line_items_{document.type}')
+            for line in source.line_lines:
+                line_item = []
+                for name in line_items:
+                    value = getter(line, name)
+                    line_item.append({
+                            'name': name,
+                            'value': value,
+                            })
+                lines.append(line_item)
+            payload['line_items'] = lines
+        if document.ocr_service.typless_vat_rates:
+            taxes = []
+            getter = getattr(
+                self, f'_typless_feedback_payload_vat_rates_{document.type}')
+            for tax_line in source.taxes:
+                percentage = getter(tax_line, 'vat_rate_percentage')
+                net = getter(tax_line, 'vat_rate_net')
+                if percentage and net:
+                    taxes.append([{
+                                'name': 'vat_rate_percentage',
+                                'value': percentage,
+                                }, {
+                                'name': 'vat_rate_net',
+                                'value': net,
+                                }])
+            payload['vat_rates'] = taxes
+        return payload
+
+    def _typless_feedback_payload_document_incoming(self, document, name):
+        if name == 'document_type':
+            return document.type
+
+    def _typless_feedback_payload_line_items_document_incoming(
+            self, line, name):
+        pass
+
+    def _typless_feedback_payload_vat_rates_document_incoming(
+            self, tax_line, name):
+        pass
+
+    @classmethod
+    def check_modification(cls, mode, services, values=None, external=False):
+        pool = Pool()
+        Warning = pool.get('res.user.warning')
+
+        super().check_modification(
+            mode, services, values=values, external=external)
+
+        if mode == 'write' and external and 'typless_api_key' in values:
+            warning_name = Warning.format('typless_credential', services)
+            if Warning.check(warning_name):
+                raise TyplessCredentialWarning(
+                    warning_name,
+                    gettext('document_incoming_ocr_typless'
+                        '.msg_typless_credential_modified'))
+
+
+class IncomingOCRService_IncomingInvoice(metaclass=PoolMeta):
+    __name__ = 'document.incoming.ocr.service'
+
+    @fields.depends('document_type')
+    def get_typless_fields(self):
+        selection = super().get_typless_fields()
+        if self.document_type == 'supplier_invoice':
+            selection += SUPPLIER_INVOICE_FIELDS
+        return selection
+
+    @fields.depends('document_type')
+    def get_typless_line_item_fields(self):
+        selection = super().get_typless_line_item_fields()
+        if self.document_type == 'supplier_invoice':
+            selection += SUPPLIER_INVOICE_LINE_ITEM_FIELDS
+        return selection
+
     def _get_supplier_invoice_typless(self, document):
         invoice_data = {}
         if not document.parsed_data:
             return invoice_data
         fields = document.parsed_data.get('extracted_fields', [])
-        for name in [
-                'company_name', 'company_tax_identifier', 'supplier_name',
-                'tax_identifier', 'currency', 'number', 'description',
-                'invoice_date', 'payment_term_date', 'payment_reference',
-                'total_amount', 'purchase_orders']:
+        for name in self.typless_fields:
             value = get_best_value(fields, name)
             if value is not None:
                 if name == 'total_amount':
@@ -136,9 +295,7 @@ class IncomingOCRService(metaclass=PoolMeta):
         line = {}
         if 'purchase_orders' in invoice_data:
             line['purchase_orders'] = invoice_data['purchase_orders']
-        for name in [
-                'product_name', 'description', 'unit', 'quantity',
-                'unit_price', 'amount', 'purchase_order']:
+        for name in self.typless_line_item_fields:
             value = get_best_value(parsed_line, name)
             if value is not None:
                 if name in {'unit_price', 'amount'}:
@@ -157,90 +314,6 @@ class IncomingOCRService(metaclass=PoolMeta):
         if net is not None:
             tax['base'] = Decimal(net)
         return tax
-
-    @typless_api
-    def _send_feedback_typless(self, document):
-        payload = self._typless_feedback_payload(document)
-        headers = {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-            'Authorization': self.typless_api_key,
-            }
-        response = requests.post(
-            ADD_DOCUMENT_FEEDBACK, json=payload, headers=headers)
-        response.raise_for_status()
-
-    def _typless_feedback_payload(self, document):
-        source = document.result
-        fields = document.parsed_data.get('extracted_fields', [])
-        learning_fields = []
-        getter = getattr(self, f'_typless_feedback_payload_{document.type}')
-        for field in fields:
-            name = field['name']
-            value = getter(source, name)
-            if value is None:
-                value = get_best_value(fields, name)
-            learning_fields.append({
-                    'name': name,
-                    'value': value,
-                    })
-        payload = {
-            'document_type_name': self.typless_document_type,
-            'document_object_id': document.parsed_data['object_id'],
-            'learning_fields': learning_fields,
-            }
-        line_items = document.parsed_data.get('line_items')
-        if line_items is not None:
-            lines = []
-            getter = getattr(
-                self, f'_typless_feedback_payload_line_items_{document.type}')
-            for i, line_item in enumerate(line_items):
-                line = []
-                for field in line_item:
-                    name = field['name']
-                    value = getter(i, name, source)
-                    if value is None:
-                        value = get_best_value(line_item, name)
-                    line.append({
-                            'name': name,
-                            'value': value,
-                            })
-                lines.append(line)
-            payload['line_items'] = lines
-        vat_rates = document.parsed_data.get('vat_rates')
-        if vat_rates is not None:
-            taxes = []
-            getter = getattr(
-                self, f'_typless_feedback_payload_vat_rates_{document.type}')
-            for i, vat_rate in enumerate(vat_rates):
-                percentage = getter(i, 'vat_rate_percentage', source)
-                if percentage is None:
-                    percentage = get_best_value(
-                        vat_rate, 'vat_rate_percentage')
-                net = getter(i, 'vat_rate_net', source)
-                if net is None:
-                    net = get_best_value(vat_rate, 'vat_rate_net')
-                taxes.append([{
-                            'name': 'vat_rate_percentage',
-                            'value': percentage,
-                            }, {
-                            'name': 'vat_rate_net',
-                            'value': net,
-                            }])
-            payload['vat_rates'] = taxes
-        return payload
-
-    def _typless_feedback_payload_document_incoming(self, document, name):
-        if name == 'document_type':
-            return document.type
-
-    def _typless_feedback_payload_line_items_document_incoming(
-            self, index, name, document):
-        pass
-
-    def _typless_feedback_payload_vat_rates_document_incoming(
-            self, index, name, document):
-        pass
 
     def _typless_feedback_payload_supplier_invoice(self, invoice, name):
         if name == 'company_name':
@@ -282,12 +355,7 @@ class IncomingOCRService(metaclass=PoolMeta):
             return invoice.origins
 
     def _typless_feedback_payload_line_items_supplier_invoice(
-            self, index, name, invoice):
-        lines = [l for l in invoice.lines if l.type == 'line']
-        try:
-            line = lines[index]
-        except IndexError:
-            return ''
+            self, line, name):
         if name == 'product_name':
             if line.product:
                 return line.product.name
@@ -310,31 +378,11 @@ class IncomingOCRService(metaclass=PoolMeta):
             return line.origin_name
 
     def _typless_feedback_payload_vat_rates_supplier_invoice(
-            self, index, name, invoice):
-        try:
-            line = invoice.taxes[index]
-        except IndexError:
-            return ''
+            self, tax_line, name):
         if name == 'vat_rate_percentage':
-            if line.tax and line.tax.type == 'percentage':
-                return str(line.tax.rate * 100)
+            if tax_line.tax and tax_line.tax.type == 'percentage':
+                return str(tax_line.tax.rate * 100)
             else:
                 return ''
         elif name == 'vat_rate_net':
-            return str(line.base)
-
-    @classmethod
-    def check_modification(cls, mode, services, values=None, external=False):
-        pool = Pool()
-        Warning = pool.get('res.user.warning')
-
-        super().check_modification(
-            mode, services, values=values, external=external)
-
-        if mode == 'write' and external and 'typless_api_key' in values:
-            warning_name = Warning.format('typless_credential', services)
-            if Warning.check(warning_name):
-                raise TyplessCredentialWarning(
-                    warning_name,
-                    gettext('document_incoming_ocr_typless'
-                        '.msg_typless_credential_modified'))
+            return str(tax_line.base)

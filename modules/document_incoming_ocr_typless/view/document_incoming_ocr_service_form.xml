@@ -8,6 +8,15 @@ this repository contains the full copyright notices and license terms. -->
         <field name="typless_api_key" widget="password"/>
         <label name="typless_document_type"/>
         <field name="typless_document_type"/>
+
+        <separator name="typless_fields" colspan="4"/>
+        <field name="typless_fields" colspan="4"/>
+
+        <separator name="typless_line_item_fields" colspan="4"/>
+        <field name="typless_line_item_fields" colspan="4"/>
+
+        <label name="typless_vat_rates"/>
+        <field name="typless_vat_rates"/>
         <newline/>
     </xpath>
 </data>
