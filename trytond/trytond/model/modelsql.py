@@ -1345,15 +1345,16 @@ class ModelSQL(ModelStorage):
                         else:
                             for fname in field_list:
                                 row[fname] = cache[row['id']][fname]
-                    getter_results = field.get(
-                        sub_ids, cls, field_list, values=sub_values)
-                    for fname in field_list:
-                        getter_result = getter_results[fname]
-                        for row in sub_values:
-                            row[fname] = getter_result[row['id']]
-                            if (transaction.readonly
-                                    and not getter_with_context):
-                                cache[row['id']][fname] = row[fname]
+                    if sub_ids:
+                        getter_results = field.get(
+                            sub_ids, cls, field_list, values=sub_values)
+                        for fname in field_list:
+                            getter_result = getter_results[fname]
+                            for row in sub_values:
+                                row[fname] = getter_result[row['id']]
+                                if (transaction.readonly
+                                        and not getter_with_context):
+                                    cache[row['id']][fname] = row[fname]
 
         def read_related(field, Target, rows, fields):
             name = field.name
