@@ -2,8 +2,10 @@
 <!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
 this repository contains the full copyright notices and license terms. -->
 <data>
-    <xpath expr="//field[@name='moves']" position="after">
-        <field name="root_packages" colspan="4"
-            view_ids="stock_package.package_view_tree"/>
+    <xpath expr="//page[@name='moves']" position="after">
+        <page name="root_packages">
+            <field name="root_packages" colspan="4" view_ids="stock_package.package_view_tree"/>
+            <button name="pack_wizard" colspan="4"/>
+        </page>
     </xpath>
 </data>

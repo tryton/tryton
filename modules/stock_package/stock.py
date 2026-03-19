@@ -8,6 +8,8 @@ from trytond.model import (
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Bool, Eval, Id, If
 from trytond.transaction import Transaction
+from trytond.wizard import (
+    Button, StateAction, StateTransition, StateView, Wizard)
 
 from .exceptions import PackageError, PackageValidationError
 
@@ -200,16 +202,21 @@ class Package(tree(), MeasurementsMixin, ModelSQL, ModelView):
             ],
         states={
             'readonly': Eval('state') == 'closed',
-            })
+            },
+        help="The package that contains this package.")
     children = fields.One2Many(
         'stock.package', 'parent', 'Children',
         domain=[
             ('company', '=', Eval('company', -1)),
             ('shipment', '=', Eval('shipment')),
             ],
+        add_remove=[
+            ('parent', '=', None),
+            ],
         states={
             'readonly': Eval('state') == 'closed',
-            })
+            },
+        help="The packages contained in this package.")
     state = fields.Function(fields.Selection([
                 ('open', "Open"),
                 ('closed', "Closed"),
@@ -229,6 +236,12 @@ class Package(tree(), MeasurementsMixin, ModelSQL, ModelView):
             field.states = {
                 'readonly': Eval('state') == 'closed',
                 }
+        cls._buttons.update(
+            fill={
+                'invisible': Eval('state') != 'open',
+                'icon': 'tryton-launch',
+                'depends': ['state'],
+                })
 
     @classmethod
     def __register__(cls, module):
@@ -285,6 +298,11 @@ class Package(tree(), MeasurementsMixin, ModelSQL, ModelView):
             for name in dir(MeasurementsMixin):
                 if isinstance(getattr(MeasurementsMixin, name), fields.Field):
                     setattr(self, name, getattr(self.type, name))
+
+    @classmethod
+    @ModelView.button_action('stock_package.wizard_package_pack')
+    def fill(cls, packages):
+        pass
 
     @classmethod
     def validate(cls, packages):
@@ -394,6 +412,13 @@ class PackageMixin(object):
             ])
 
     @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls._buttons.update(pack_wizard={
+                'icon': 'tryton-launch',
+                })
+
+    @classmethod
     def check_packages(cls, shipments):
         for shipment in shipments:
             if not shipment.packages:
@@ -407,6 +432,11 @@ class PackageMixin(object):
     @property
     def packages_moves(self):
         raise NotImplementedError
+
+    @classmethod
+    @ModelView.button_action('stock_package.wizard_shipment_pack')
+    def pack_wizard(cls, shipments):
+        pass
 
     @classmethod
     def copy(cls, shipments, default=None):
@@ -428,6 +458,9 @@ class ShipmentOut(PackageMixin, object, metaclass=PoolMeta):
             Eval('state') != 'picked')
         for field in [cls.packages, cls.root_packages]:
             field.states['readonly'] = packages_readonly
+        cls._buttons['pack_wizard']['invisible'] = packages_readonly
+        cls._buttons['pack_wizard']['depends'] = [
+            'warehouse_storage', 'warehouse_output', 'state']
 
     @classmethod
     @ModelView.button
@@ -482,6 +515,8 @@ class ShipmentInReturn(PackageMixin, object, metaclass=PoolMeta):
         packages_readonly = ~Eval('state').in_(['waiting', 'assigned'])
         for field in [cls.packages, cls.root_packages]:
             field.states['readonly'] = packages_readonly
+        cls._buttons['pack_wizard']['invisible'] = packages_readonly
+        cls._buttons['pack_wizard']['depends'] = ['state']
 
     @classmethod
     @ModelView.button
@@ -508,6 +543,8 @@ class ShipmentInternal(PackageMixin, object, metaclass=PoolMeta):
         for field in [cls.packages, cls.root_packages]:
             field.states['readonly'] = packages_readonly
             field.states['invisible'] = packages_invisible
+        cls._buttons['pack_wizard']['invisible'] = packages_invisible
+        cls._buttons['pack_wizard']['depends'] = ['state', 'transit_location']
 
     @classmethod
     @ModelView.button
@@ -521,3 +558,117 @@ class ShipmentInternal(PackageMixin, object, metaclass=PoolMeta):
         return [
             m for m in self.outgoing_moves
             if m.state != 'cancelled' and m.quantity]
+
+
+class ShipmentPack(Wizard):
+    __name__ = 'stock.shipment.pack'
+    start_state = 'package'
+    package = StateView(
+        'stock.package',
+        'stock_package.package_view_form_pack', [
+            Button("End", 'end', 'tryton-cancel'),
+            Button("Add Package", 'add_package', 'tryton-ok'),
+            Button(
+                "Add Package and Fill", 'add_fill_package', 'tryton-add',
+                default=True),
+            ])
+    add_package = StateTransition()
+    add_fill_package = StateAction('stock_package.wizard_package_pack')
+
+    def default_package(self, fields):
+        return {
+            'company': self.record.company,
+            'shipment': self.record,
+            }
+
+    def transition_add_package(self):
+        self.package.save()
+        return 'package'
+
+    def do_add_fill_package(self, action):
+        self.package.save()
+        return action, {
+            'id': self.package.id,
+            'ids': [self.package.id],
+            'model': self.package.__name__,
+            }
+
+    def transition_add_fill_package(self):
+        return 'package'
+
+
+class PackagePack(Wizard):
+    __name__ = 'stock.package.pack'
+    start_state = 'next_'
+    next_ = StateTransition()
+    move = StateView(
+        'stock.package.pack.move',
+        'stock_package.package_pack_move_view_form', [
+            Button("End", 'end', 'tryton-ok'),
+            Button("Add", 'add_move', 'tryton-forward', default=True),
+            ])
+    add_move = StateTransition()
+
+    def transition_next_(self):
+        if any(not m.package for m in self.record.allowed_moves):
+            return 'move'
+        else:
+            return 'end'
+
+    def default_move(self, fields):
+        return {
+            'allowed_moves': [
+                m for m in self.record.allowed_moves if not m.package],
+            }
+
+    def transition_add_move(self):
+        pool = Pool()
+        Move = pool.get('stock.move')
+        move = self.move.source
+        if self.move.quantity and self.move.quantity != move.quantity:
+            with Transaction().set_context(_stock_move_split=True):
+                Move.copy([move], {
+                        'quantity': move.quantity - self.move.quantity,
+                        })
+            move.quantity = self.move.quantity
+        move.package = self.record
+        move.save()
+        return 'next_'
+
+
+class PackagePackMove(ModelView):
+    __name__ = 'stock.package.pack.move'
+
+    source = fields.Many2One(
+        'stock.move', "Source", required=True,
+        domain=[
+            ('id', 'in', Eval('allowed_moves', [])),
+            ('package', '=', None),
+            ])
+    quantity = fields.Float(
+        "Quantity", digits='unit',
+        domain=['OR',
+            ('quantity', '=', None),
+            [
+                ('quantity', '>', 0),
+                ('quantity', '<=', Eval('move_quantity', 0)),
+                ],
+            ],
+        help="The quantity to pack from the move.\n"
+        "Leave empty for the full quantity of the move.")
+    unit = fields.Function(
+        fields.Many2One('product.uom', "Unit"),
+        'on_change_with_unit')
+    move_quantity = fields.Function(
+        fields.Float("Move Quantity"),
+        'on_change_with_move_quantity')
+    allowed_moves = fields.Many2Many(
+        'stock.move', None, None, "Allowed Moves", readonly=True)
+
+    @fields.depends('source')
+    def on_change_with_unit(self, name=None):
+        return self.source.unit if self.source else None
+
+    @fields.depends('source')
+    def on_change_with_move_quantity(self, name=None):
+        return self.source.quantity if self.source else None

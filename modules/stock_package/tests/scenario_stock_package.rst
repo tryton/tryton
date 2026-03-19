@@ -7,7 +7,7 @@ Imports::
     >>> import datetime as dt
     >>> from decimal import Decimal
 
-    >>> from proteus import Model
+    >>> from proteus import Model, Wizard
     >>> from trytond.modules.company.tests.tools import create_company
     >>> from trytond.modules.currency.tests.tools import get_currency
     >>> from trytond.tests.tools import activate_modules
@@ -17,6 +17,8 @@ Imports::
 Activate modules::
 
     >>> config = activate_modules('stock_package', create_company)
+
+    >>> Package = Model.get('stock.package')
 
 Get currency::
 
@@ -66,7 +68,7 @@ Add two shipment lines of same product::
     >>> for move in shipment_out.outgoing_moves:
     ...     move.product = product
     ...     move.unit = unit
-    ...     move.quantity = 1
+    ...     move.quantity = 2
     ...     move.from_location = output_loc
     ...     move.to_location = customer_loc
     ...     move.unit_price = Decimal('1')
@@ -91,37 +93,60 @@ Package products::
     >>> box.packaging_volume
     >>> box.packaging_volume_uom, = ProductUom.find([('name', '=', "Cubic meter")])
     >>> box.save()
-    >>> package1 = shipment_out.packages.new(type=box)
-    >>> package1.length
-    80.0
-    >>> package1.height = 50
-    >>> package1.packaging_volume
-    0.4
-    >>> package_child = package1.children.new(shipment=shipment_out, type=box)
-    >>> package_child.height = 100
-    >>> moves = package_child.moves.find()
+
+    >>> shipment_pack = Wizard('stock.shipment.pack', [shipment_out])
+
+    >>> shipment_pack.form.type = box
+    >>> shipment_pack.form.height = 100
+    >>> shipment_pack.execute('add_fill_package')
+
+    >>> package_pack, = shipment_pack.actions
+    >>> moves = package_pack.form.allowed_moves
     >>> len(moves)
     2
-    >>> package_child.moves.append(moves[0])
+    >>> package_pack.form.source = moves[0]
+    >>> package_pack.execute('add_move')
+    >>> package_pack.execute('end')
 
-    >>> shipment_out.save()
+    >>> shipment_out.reload()
+    >>> package, = shipment_out.root_packages
+
+    >>> shipment_pack.form.type = box
+    >>> shipment_pack.form.children.append(Package(package.id))
+    >>> shipment_pack.form.length
+    80.0
+    >>> shipment_pack.form.height = 50
+    >>> shipment_pack.form.packaging_volume
+    0.4
+
+    >>> shipment_pack.execute('add_package')
     Traceback (most recent call last):
         ...
     PackageValidationError: ...
 
-    >>> package1.height = 120
-    >>> package1.packaging_volume
+    >>> shipment_pack.form.height = 120
+    >>> shipment_pack.form.packaging_volume
     0.96
+    >>> shipment_pack.execute('add_package')
 
+    >>> shipment_out.reload()
     >>> shipment_out.click('pack')
     Traceback (most recent call last):
         ...
     PackageError: ...
 
     >>> package2 = shipment_out.packages.new(type=box)
-    >>> moves = package2.moves.find()
-    >>> len(moves)
-    1
-    >>> package2.moves.append(moves[0])
+    >>> shipment_pack.form.type = box
+    >>> shipment_pack.execute('add_fill_package')
+    >>> package_pack, = shipment_pack.actions
+    >>> package_pack.form.source, = package_pack.form.allowed_moves
+    >>> package_pack.form.quantity = 1
+    >>> package_pack.execute('add_move')
+    >>> package_pack.form.source, = package_pack.form.allowed_moves
+    >>> package_pack.execute('add_move')
+    >>> package_pack.execute('end')
+    >>> shipment_pack.execute('end')
 
     >>> shipment_out.click('pack')
+    >>> shipment_out.state
+    'packed'

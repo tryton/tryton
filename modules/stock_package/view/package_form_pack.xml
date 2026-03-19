@@ -6,19 +6,11 @@ this repository contains the full copyright notices and license terms. -->
     <field name="type" widget="selection"/>
     <label name="number"/>
     <field name="number"/>
-    <label name="parent"/>
+    <label name="parent" string="Is contained in:"/>
     <field name="parent"/>
-    <label name="company"/>
-    <field name="company"/>
-    <label name="shipment"/>
-    <field name="shipment"/>
     <notebook colspan="4">
-        <page name="moves">
-            <field name="moves" colspan="4" widget="many2many"/>
-            <button name="fill" colspan="4"/>
-        </page>
-        <page name="children">
-            <field name="children" colspan="4"/>
+        <page name="children" string="Containing">
+            <field name="children" colspan="4" widget="many2many" string="Containing"/>
         </page>
         <page string="Measurements" col="3" id="measurements">
             <label name="length"/>
@@ -42,6 +34,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="packaging_weight_uom"/>
         </page>
     </notebook>
-    <label name="state"/>
-    <field name="state"/>
+    <field name="company" invisible="1" colspan="4"/>
+    <field name="shipment" invisible="1" colspan="4"/>
 </form>
