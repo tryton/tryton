@@ -2079,7 +2079,7 @@
                 if (this.current_view &&
                     ~['tree', 'graph', 'calendar'].indexOf(this.current_view.view_type) &&
                         !this.group.parent) {
-                    this.search_filter();
+                    this.search_filter(this.screen_container.get_text());
                 }
             } else if (action == 'reload menu') {
                 Sao.Session.current_session.reload_context()
