@@ -9,6 +9,7 @@ from functools import partial
 from sql.aggregate import Count
 
 from trytond.bus import Bus
+from trytond.i18n import ngettext
 from trytond.ir.ui.menu import CLIENT_ICONS
 from trytond.model import Index, ModelSQL, ModelView, fields
 from trytond.pool import Pool
@@ -82,6 +83,10 @@ class Notification(
 
     @classmethod
     def create(cls, vlist):
+        pool = Pool()
+        Lang = pool.get('ir.lang')
+        lang = Lang.get()
+
         notifications = super().create(vlist)
 
         notifications_by_user = defaultdict(list)
@@ -102,6 +107,11 @@ class Notification(
             messages = [
                 '\n'.join(map(shorten, filter(None, (n.label, n.description))))
                 for n in user_notifications[:4]]
+            if len(user_notifications) > 4:
+                n = len(user_notifications) - 4
+                messages.append(ngettext(
+                        'res.msg_notification_silenced', n,
+                        number=lang.format_number(n)))
             Bus.publish(
                 f'notification:{user}', {
                     'type': 'user-notification',
