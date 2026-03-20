@@ -2,7 +2,9 @@
 # this repository contains the full copyright notices and license terms.
 
 import json
+import textwrap
 from collections import defaultdict
+from functools import partial
 
 from sql.aggregate import Count
 
@@ -94,10 +96,12 @@ class Notification(
                 where=((notification.user.in_(list(notifications_by_user)))
                     & notification.unread),
                 group_by=[notification.user]))
+        shorten = partial(textwrap.shorten, width=100, placeholder="...")
         for user, count in cursor.fetchall():
+            user_notifications = notifications_by_user[user]
             messages = [
-                '\n'.join(filter(None, (n.label, n.description)))
-                for n in notifications_by_user[user]]
+                '\n'.join(map(shorten, filter(None, (n.label, n.description))))
+                for n in user_notifications[:4]]
             Bus.publish(
                 f'notification:{user}', {
                     'type': 'user-notification',
