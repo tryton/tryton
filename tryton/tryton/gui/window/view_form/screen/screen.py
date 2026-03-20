@@ -1350,7 +1350,7 @@ class Screen:
                     and self.current_view.view_type in [
                         'tree', 'graph', 'calendar']
                     and not self.parent):
-                self.search_filter()
+                self.search_filter(self.screen_container.get_text())
         elif action == 'reload menu':
             from tryton.gui import Main
             RPCContextReload(Main().sig_win_menu)

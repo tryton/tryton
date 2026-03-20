@@ -2140,7 +2140,7 @@
                 if (this.current_view && 
                     ~['tree', 'graph', 'calendar'].indexOf(this.current_view.view_type) &&
                     !this.group.parent) {
-                    return this.search_filter();
+                    return this.search_filter(this.screen_container.get_text());
                 }
             } else if (action == 'reload menu') {
                 return Sao.Session.current_session.reload_context()
