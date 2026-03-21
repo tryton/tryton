@@ -1,3 +1,4 @@
+* Add support for Python 3.14
 * Remove support for Python 3.9
 * Charge duties and taxes to shipper based on incoterm
 

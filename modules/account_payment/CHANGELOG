@@ -1,3 +1,4 @@
+* Add support for Python 3.14
 * Remove support for Python 3.9
 * Add direct debit as instrument for invoice payment means
 * Warn against creating an overpayment

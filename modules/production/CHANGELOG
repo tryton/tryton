@@ -1,3 +1,4 @@
+* Add support for Python 3.14
 * Remove support for Python 3.9
 * Allow cancellation stock group to cancel running and done productions
 

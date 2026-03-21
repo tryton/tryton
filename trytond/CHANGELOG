@@ -1,3 +1,4 @@
+* Add support for Python 3.14
 * Remove support for Python 3.9
 * Support fmany2one based on Function fields
 * Add timestamp field on ModelSQL for last modified

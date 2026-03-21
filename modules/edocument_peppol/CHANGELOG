@@ -1,3 +1,4 @@
+* Add support for Python 3.14
 * Remove support for Python 3.9
 * Ensure that the unit price on the invoice line is not negative
 * Add an "Update Status" button to the Peppol document
