@@ -36,7 +36,7 @@ from trytond.model.fields import Function
 from trytond.modules import parse_module_config
 from trytond.pool import Pool, isregisteredby
 from trytond.protocols.wrappers import Response
-from trytond.pyson import PYSONDecoder, PYSONEncoder
+from trytond.pyson import PYSON, PYSONDecoder, PYSONEncoder
 from trytond.tools import file_open, find_dir, is_instance_method
 from trytond.transaction import Transaction, TransactionError
 from trytond.wizard import StateAction, StateView
@@ -1151,6 +1151,14 @@ class ModuleTestCase(_DBTestCase):
                             'model': mname,
                             'keys': set(states) - keys,
                             })
+                    for state in ['readonly', 'invisible']:
+                        if state not in states:
+                            continue
+                        with self.subTest(state=state):
+                            self.assertIsInstance(
+                                states[state], (bool, PYSON))
+                            if hasattr(states[state], 'types'):
+                                self.assertEqual(states[state].types(), {bool})
 
     @with_transaction()
     def test_button_methods(self):
