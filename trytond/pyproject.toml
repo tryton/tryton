@@ -50,7 +50,7 @@ email-validation = [
 graphviz = ['pydot']
 html2text = ['html2text']
 image = ['pillow']
-mjml = ['mrml']
+mjml = ['mrml; python_version < "3.14"']
 qrcode = [
     'qrcode[pil]',
     'webcolors',
