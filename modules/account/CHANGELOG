@@ -1,3 +1,4 @@
+* Remove support for Python 3.9
 * Use flat balance for general ledger
 * Add cron job to reconcile move lines
 

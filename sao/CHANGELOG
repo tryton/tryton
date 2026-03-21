@@ -1,3 +1,4 @@
+* Remove support for Python 3.9
 * Remove bower dependency
 * Allow tabs to be reordered
 

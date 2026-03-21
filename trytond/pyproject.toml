@@ -19,7 +19,7 @@ dependencies = [
     'simpleeval',
     'werkzeug >= 0.12',
     ]
-requires-python = '>=3.9'
+requires-python = '>=3.10'
 maintainers = [
     {name = "Tryton", email = "foundation@tryton.org"},
     ]

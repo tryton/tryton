@@ -1,3 +1,4 @@
+* Remove support for Python 3.9
 * Define fields per document type
 * Add support for payment reference of invoice
 

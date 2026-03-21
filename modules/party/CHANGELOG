@@ -1,3 +1,4 @@
+* Remove support for Python 3.9
 * Add a menu entry for party identifiers
 * Format identifier codes
 * Add Senegal Tax Number identifier

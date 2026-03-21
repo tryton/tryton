@@ -5,7 +5,7 @@ build-backend = 'hatchling.build'
 [project]
 name = 'trytond_account_invoice_stock'
 dynamic = ['version', 'dependencies', 'optional-dependencies', 'authors', 'readme']
-requires-python = '>=3.9'
+requires-python = '>=3.10'
 maintainers = [
     {name = "Tryton", email = "foundation@tryton.org"},
     ]

@@ -1,3 +1,4 @@
+* Remove support for Python 3.9
 * Add UNCL4461 code to invoice payment mean
 * Add allowance, charge and special service code
 

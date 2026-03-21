@@ -5,7 +5,7 @@ build-backend = 'hatchling.build'
 [project]
 name = '{{ cookiecutter.package_name }}'
 dynamic = ['version', 'dependencies', 'optional-dependencies', 'authors', 'readme']
-requires-python = '>=3.9'
+requires-python = '>=3.10'
 maintainers = [
 {%- if cookiecutter.prefix %}
     {name = "{{ cookiecutter.author }}", email = "{{ cookiecutter.author_email }}"},
