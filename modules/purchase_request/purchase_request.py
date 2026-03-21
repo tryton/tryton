@@ -117,7 +117,7 @@ class PurchaseRequest(ModelSQL, ModelView, ChatMixin):
         cls._order[0] = ('id', 'DESC')
         cls._buttons.update({
                 'create_purchase': {
-                    'invisible': Eval('purchase_line'),
+                    'invisible': Bool(Eval('purchase_line')),
                     'depends': ['purchase_line'],
                     },
                 'handle_purchase_cancellation_exception': {
