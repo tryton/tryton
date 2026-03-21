@@ -15,7 +15,7 @@ import trytond.config as config
 from trytond.model import (
     ModelSQL, ModelStorage, ModelView, fields, sequence_ordered)
 from trytond.pool import Pool
-from trytond.pyson import Eval
+from trytond.pyson import Bool, Eval
 from trytond.transaction import Transaction
 from trytond.url import http_host
 
@@ -130,7 +130,7 @@ class Email(ModelSQL, ModelView):
         cls._order = [('id', 'DESC')]
         cls._buttons.update(
             process={
-                'readonly': Eval('rule'),
+                'readonly': Bool(Eval('rule')),
                 'depends': ['rule'],
                 },
             )
