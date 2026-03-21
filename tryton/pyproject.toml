@@ -1,0 +1,57 @@
+[build-system]
+requires = ['hatchling >= 1', 'hatch-tryton', 'babel']
+build-backend = 'hatchling.build'
+
+[project]
+name = 'tryton'
+dynamic = ['version', 'authors', 'readme']
+dependencies = [
+    'pycairo',
+    'python-dateutil',
+    'PyGObject >= 3.19',
+    ]
+requires-python = '>=3.9'
+maintainers = [
+    {name = "Tryton", email = "foundation@tryton.org"},
+    ]
+description = "Desktop client for Tryton"
+license = 'GPL-3.0-or-later'
+license-files = ['LICENSE', 'COPYRIGHT']
+keywords = ["tryton", "desktop", "client"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Environment :: X11 Applications :: GTK",
+    "Framework :: Tryton",
+    "Topic :: Office/Business",
+    ]
+
+[project.optional-dependencies]
+calendar = ['GooCalendar >= 0.7']
+sound = ['playsound3']
+
+[project.gui-scripts]
+tryton = 'tryton.client:main'
+
+[project.urls]
+homepage = "https://www.tryton.org/"
+documentation = "https://docs.tryton.org/client-desktop/"
+changelog = "https://docs.tryton.org/client-desktop/releases.html"
+forum = "https://www.tryton.org/forum"
+issues = "https://bugs.tryton.org/tryton"
+repository = "https://code.tryton.org/tryton"
+funding = "https://www.tryton.org/donate"
+
+[tool.hatch.version]
+path = 'tryton/__init__.py'
+
+[tool.hatch.build]
+packages = ['tryton']
+
+[tool.hatch.build.targets.wheel]
+artifacts = ['*.mo']
+
+[tool.hatch.build.hooks.custom]
+
+[tool.hatch.metadata.hooks.tryton]
+copyright = 'COPYRIGHT'
+readme = 'README.rst'

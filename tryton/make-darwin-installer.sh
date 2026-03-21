@@ -1,6 +1,6 @@
 #!/bin/sh
 set -e
-version=`./setup.py --version`
+version=`python -m build -q --metadata 2>/dev/null | jq -r .version`
 machine=`python3 -c "import platform; print(platform.machine())"`
 rm -rf build dist
 mkdir -p darwin/gtk-3.0
@@ -13,7 +13,7 @@ gtk-query-immodules-3.0 \
     | sed -e '/^#/d' \
     | sed  -e 's@/.*/lib/gtk-3.0@\@executable_path/lib/gtk-3.0@' \
     > darwin/gtk-3.0/gtk.immodules
-./setup.py compile_catalog
+python ./hatch_build.py
 ./setup-freeze.py bdist_mac
 mkdir dist
 mv build/Tryton.app dist/

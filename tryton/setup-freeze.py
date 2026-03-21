@@ -8,7 +8,8 @@ import re
 import ssl
 import sys
 import tempfile
-from subprocess import PIPE, Popen, check_call
+from pathlib import Path
+from subprocess import check_call
 
 from cx_Freeze import Executable, setup
 from setuptools import find_packages
@@ -117,10 +118,9 @@ if os.path.exists(ssl_paths.openssl_capath):
     include_files.append(
         (ssl_paths.openssl_capath, os.path.join('share', 'ssl', 'certs')))
 
-version = Popen(
-    'python3 ./setup.py --version', stdout=PIPE, shell=True, encoding='utf-8'
-    ).stdout.read()
-version = version.strip()
+version = re.search(
+    r'__version__ = "([0-9.]*)"',
+    Path('tryton', '__init__.py').read_text()).group(1)
 
 setup(name='tryton',
     version=version,

@@ -1,0 +1,55 @@
+[build-system]
+requires = ['hatchling >= 1', 'hatch-tryton']
+build-backend = 'hatchling.build'
+
+[project]
+name = 'proteus'
+dynamic = ['version', 'dependencies', 'optional-dependencies', 'authors', 'readme']
+requires-python = '>=3.9'
+maintainers = [
+    {name = "Tryton", email = "foundation@tryton.org"},
+    ]
+description = "Client library for Tryton"
+license = 'LGPL-3.0-or-later'
+license-files = ['LICENSE', 'COPYRIGHT']
+keywords = ["tryton", "cli"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Environment :: Plugins",
+    "Framework :: Tryton",
+    "Intended Audience :: Developers",
+    "Topic :: Office/Business",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    ]
+
+[project.urls]
+homepage = "https://www.tryton.org/"
+documentation = "https://docs.tryton.org/client-library/"
+changelog = "https://docs.tryton.org/client-library/releases.html"
+forum = "https://discuss.tryton.org/tags/proteus"
+issues = "https://bugs.tryton.org/tryton"
+repository = "https://code.tryton.org/tryton"
+funding = "https://www.tryton.org/donate"
+
+[tool.hatch.version]
+path = 'proteus/__init__.py'
+
+[tool.hatch.build]
+packages = ['proteus']
+
+[tool.hatch.metadata.hooks.tryton]
+dependencies = [
+    'defusedxml',
+    'python-dateutil',
+    ]
+copyright = 'COPYRIGHT'
+readme = 'README.rst'
+
+[tool.hatch.metadata.hooks.tryton.tryton-optional-dependencies]
+trytond = [
+    'trytond',
+    ]
+test = [
+    'trytond',
+    'trytond_party',
+    ]

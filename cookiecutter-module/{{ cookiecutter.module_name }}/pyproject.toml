@@ -1,0 +1,89 @@
+[build-system]
+requires = ['hatchling >= 1', 'hatch-tryton']
+build-backend = 'hatchling.build'
+
+[project]
+name = '{{ cookiecutter.package_name }}'
+dynamic = ['version', 'dependencies', 'optional-dependencies', 'authors', 'readme']
+requires-python = '>=3.9'
+maintainers = [
+{%- if cookiecutter.prefix %}
+    {name = "{{ cookiecutter.author }}", email = "{{ cookiecutter.author_email }}"},
+{%- else %}
+    {name = "Tryton", email = "foundation@tryton.org"},
+{%- endif %}
+    ]
+description = "{{ cookiecutter.description }}"
+license = 'GPL-3.0-or-later'
+license-files = ['LICENSE', 'icons/LICENSE', 'COPYRIGHT']
+keywords = {{ cookiecutter.keywords.split() | tojson }}
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Environment :: Plugins",
+    "Framework :: Tryton",
+    "Topic :: Office/Business",
+{%- if cookiecutter.module_name.startswith('account')  or cookiecutter.module_name.startswith('analytic_account')%}
+    "Topic :: Office/Business :: Financial :: Accounting",
+{%- endif %}
+{%- if cookiecutter.module_name.startswith('sale') %}
+    "Topic :: Office/Business :: Financial :: Point-Of-Sale",
+{%- endif %}
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    ]
+
+[project.entry-points.'trytond.modules']
+{%- if cookiecutter.prefix %}
+{{ cookiecutter.module_name }} = '{{ cookiecutter.package_name }}'
+{%- else %}
+{{ cookiecutter.module_name }} = 'trytond.modules.{{ cookiecutter.module_name }}'
+{%- endif %}
+
+[project.urls]
+{%- if not cookiecutter.prefix %}
+homepage = "https://www.tryton.org/"
+documentation = "https://docs.tryton.org/modules-{{ cookiecutter.module_name|replace('_', '-') }}/"
+changelog = "https://docs.tryton.org/modules-{{ cookiecutter.module_name|replace('_', '-') }}/releases.html"
+forum = "https://www.tryton.org/forum"
+issues = "https://bugs.tryton.org/tryton"
+repository = "https://code.tryton.org/tryton"
+funding = "https://www.tryton.org/donate"
+{%- endif %}
+
+[tool.hatch.build]
+include = [
+    '**/tryton.cfg',
+    '**/*.py',
+    '**/*.xml',
+    'view/**/*.xml',
+    'locale/**/*.po',
+    '**/*.fodt',
+    'icons/**/*.svg',
+    'tests/**/*.rst',
+    'tests/**/*.json',
+    ]
+exclude = ['doc']
+{%- if cookiecutter.prefix %}
+dev-mode-dirs = ["."]
+{%- endif %}
+
+[tool.hatch.build.targets.wheel.sources]
+{%- if cookiecutter.prefix %}
+"" = "{{ cookiecutter.module_name }}"
+{%- else %}
+"" = "trytond/modules/{{ cookiecutter.module_name }}"
+{%- endif %}
+
+[tool.hatch.metadata.hooks.tryton]
+{%- if cookiecutter.prefix %}
+prefix = {}
+{%- endif %}
+dependencies = []
+copyright = 'COPYRIGHT'
+readme = 'README.rst'
+
+[tool.hatch.metadata.hooks.tryton.tryton-optional-dependencies]
+{%- if cookiecutter.test_with_scenario %}
+test = ['proteus']
+{%- else %}
+test = []
+{%- endif %}

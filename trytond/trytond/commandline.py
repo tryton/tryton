@@ -222,6 +222,15 @@ def get_parser_stat():
     return parser
 
 
+def set_autocomplete(parser):
+    try:
+        import argcomplete
+    except ImportError:
+        argcomplete = None
+    if argcomplete:
+        argcomplete.autocomplete(parser)
+
+
 def config_log(options):
     if options.logconf:
         logging.config.fileConfig(

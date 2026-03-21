@@ -1,5 +1,0 @@
-include CHANGELOG
-include COPYRIGHT
-include LICENSE
-include README.rst
-graft doc

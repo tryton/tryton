@@ -1,0 +1,56 @@
+[build-system]
+requires = ['hatchling >= 1', 'hatch-tryton']
+build-backend = 'hatchling.build'
+
+[project]
+name = 'trytond_gis'
+dynamic = ['version', 'dependencies', 'optional-dependencies', 'authors', 'readme']
+requires-python = '>=3.9'
+maintainers = [
+    {name = "Tryton", email = "foundation@tryton.org"},
+    ]
+description = "Geographic Information System for Tryton"
+license = 'GPL-3.0-or-later'
+license-files = ['LICENSE', 'COPYRIGHT']
+keywords = ["tryton", "GIS"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Environment :: Plugins",
+    "Framework :: Tryton",
+    "Intended Audience :: Developers",
+    "Topic :: Office/Business",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    ]
+
+[project.entry-points.'trytond.backend']
+postgis = 'trytond_gis.postgis'
+
+[project.entry-points.'trytond.tests']
+test_geographic_fields = 'trytond_gis.tests'
+
+[project.urls]
+homepage = "https://www.tryton.org/"
+documentation = "https://docs.tryton.org/backend-gis/"
+changelog = "https://docs.tryton.org/backend-gis/releases.html"
+forum = "https://discuss.tryton.org/tags/gis"
+issues = "https://bugs.tryton.org/tryton"
+repository = "https://code.tryton.org/tryton"
+funding = "https://www.tryton.org/donate"
+
+[tool.hatch.version]
+path = 'trytond_gis/__init__.py'
+
+[tool.hatch.build]
+packages = ['trytond_gis']
+
+[tool.hatch.metadata.hooks.tryton]
+dependencies = [
+    'geomet',
+    'psycopg2 >= 2.0.14',
+    ]
+tryton_dependencies = ['trytond']
+copyright = 'COPYRIGHT'
+readme = 'README.rst'
+
+[tool.hatch.metadata.hooks.tryton.tryton-optional-dependencies]
+test = ['trytond[test]']

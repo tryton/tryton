@@ -1,0 +1,96 @@
+[build-system]
+requires = ['hatchling >= 1', 'hatch-tryton', 'rnc2rng']
+build-backend = 'hatchling.build'
+
+[project]
+name = 'trytond'
+dynamic = ['version', 'authors', 'readme']
+dependencies = [
+    'Genshi',
+    'backports.entry-points-selectable; python_version < "3.10"',
+    'defusedxml',
+    'lxml >= 2.0',
+    'polib',
+    'pwdlib[argon2] >= 0.2',
+    'python-dateutil',
+    'python-sql >= 1.5',
+    'pytz; python_version < "3.9"',
+    'relatorio[fodt] >= 0.7.0',
+    'simpleeval',
+    'werkzeug >= 0.12',
+    ]
+requires-python = '>=3.9'
+maintainers = [
+    {name = "Tryton", email = "foundation@tryton.org"},
+    ]
+description = "Tryton server"
+license = 'GPL-3.0-or-later'
+license-files = ['LICENSE', 'COPYRIGHT']
+keywords = ["tryton"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Environment :: Console",
+    "Environment :: No Input/Output (Daemon)",
+    "Framework :: Tryton",
+    "Intended Audience :: Developers",
+    "Topic :: Office/Business",
+    "Topic :: Software Development :: Libraries :: Application Frameworks",
+    ]
+
+[project.optional-dependencies]
+Levenshtein = ['python-Levenshtein']
+PostgreSQL = ['psycopg2 >= 2.7.0']
+barcode = ['python-barcode[images]']
+completion = ['argcomplete']
+coroutine = ['gevent >= 1.1']
+email-validation = [
+    'email-validator >= 2',
+    'dnspython',
+    ]
+graphviz = ['pydot']
+html2text = ['html2text']
+image = ['pillow']
+mjml = ['mrml']
+qrcode = [
+    'qrcode[pil]',
+    'webcolors',
+    ]
+test = [
+    'html2text',
+    'pillow',
+    'pydot',
+    ]
+weasyprint = ['weasyprint']
+
+[project.scripts]
+trytond = 'trytond.cli:main'
+trytond-admin = 'trytond.cli.admin:main'
+trytond-console = 'trytond.cli.console:main'
+trytond-cron = 'trytond.cli.cron:main'
+trytond-stat = 'trytond.cli.stat:main'
+trytond-worker = 'trytond.cli.worker:main'
+
+[project.urls]
+homepage = "https://www.tryton.org/"
+documentation = "https://docs.tryton.org/server/"
+changelog = "https://docs.tryton.org/server/releases.html"
+forum = "https://www.tryton.org/forum"
+issues = "https://bugs.tryton.org/tryton"
+repository = "https://code.tryton.org/tryton"
+funding = "https://www.tryton.org/donate"
+
+[tool.hatch.version]
+path = 'trytond/__init__.py'
+
+[tool.hatch.build]
+packages = ['trytond']
+exclude = ['trytond/modules/*/**/*']
+
+[tool.hatch.build.targets.wheel]
+artifacts = ['*.rng']
+
+[tool.hatch.build.hooks.custom]
+
+[tool.hatch.metadata.hooks.tryton]
+copyright = 'COPYRIGHT'
+readme = 'README.rst'

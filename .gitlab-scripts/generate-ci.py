@@ -62,7 +62,7 @@ def render(file):
 def all_packages():
     root_dir = os.path.dirname(BASE_DIR)
     for filename in chain(
-            glob.glob('modules/*/setup.py', root_dir=root_dir)):
+            glob.glob('modules/*/pyproject.toml', root_dir=root_dir)):
         yield os.path.dirname(filename)
 
 

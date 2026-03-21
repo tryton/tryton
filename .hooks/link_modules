@@ -12,11 +12,11 @@ destination = os.path.join(root, 'trytond', 'trytond', 'modules')
 
 modules = set()
 try:
-    filenames = glob.glob('modules/*/setup.py', root_dir=root)
+    filenames = glob.glob('modules/*/pyproject.toml', root_dir=root)
 except TypeError:
     # If root_dir is not supported, fallback considering the hook is executed
     # from the repository root
-    filenames = glob.glob('modules/*/setup.py')
+    filenames = glob.glob('modules/*/pyproject.toml')
 for filename in filenames:
     modules.add(os.path.basename(os.path.dirname(filename)))
 

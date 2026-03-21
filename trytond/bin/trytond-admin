@@ -2,32 +2,15 @@
 # PYTHON_ARGCOMPLETE_OK
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+
 import os
 import sys
-
-try:
-    import argcomplete
-except ImportError:
-    argcomplete = None
 
 DIR = os.path.abspath(os.path.normpath(os.path.join(__file__,
     '..', '..', 'trytond')))
 if os.path.isdir(DIR):
     sys.path.insert(0, os.path.dirname(DIR))
 
-import trytond.commandline as commandline
-import trytond.config as config
+from trytond.cli.admin import main  # noqa: E402
 
-parser = commandline.get_parser_admin()
-if argcomplete:
-    argcomplete.autocomplete(parser)
-options = parser.parse_args()
-if options.indexes is None:
-    options.indexes = bool(options.update)
-config.update_etc(options.configfile)
-commandline.config_log(options)
-
-# Import after application is configured
-import trytond.admin as admin
-
-admin.run(options)
+main()

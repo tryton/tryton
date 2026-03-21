@@ -22,6 +22,12 @@ packages:
   image: ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/tryton/ci
   variables:
     DOC_BASE_URL: ${CI_PROJECT_DIR}/docs
+    PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
+  cache:
+    paths:
+      - .cache/pip/http-v2
+  before_script:
+    - pip install build "hatchling >= 1" hatch-tryton babel rnc2rng
   script:
     - .gitlab-scripts/generate-packages.sh packages
   artifacts:
@@ -32,6 +38,14 @@ packages:
 documentation:
   stage: preparation
   image: ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/sphinxdoc/sphinx
+  variables:
+    DOC_NO_ISOLATION: true
+    PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
+  cache:
+    paths:
+      - .cache/pip/http-v2
+  before_script:
+    - pip install build "hatchling >= 1" hatch-tryton babel rnc2rng
   script:
     - .gitlab-scripts/generate-doc.sh docs
     - find docs -type f -not -name 'objects.inv' -delete
@@ -60,13 +74,14 @@ documentation:
   variables:
     DOC_BASE_URL: ${CI_PROJECT_DIR}/docs
     DOC_DIR: doc
+    DOC_NO_ISOLATION: true
     PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
   cache:
     paths:
       - .cache/pip/http-v2
   before_script:
-    - pip install setuptools
     - pip install -r "${PACKAGE}/${DOC_DIR}/requirements-doc.txt"
+    - pip install build "hatchling >= 1" hatch-tryton babel rnc2rng
     - pip install sphinx-lint rstcheck[sphinx]
   script:
     - cd "${PACKAGE}"
@@ -244,10 +259,10 @@ check-account-chart:
   coverage: '/(?i)total.*? (100(?:\.0+)?\%|[1-9]?\d(?:\.\d+)?\%)$/'
   artifacts:
     reports:
-      junit: ${PACKAGE}/junit.xml
+      junit: ${PACKAGE}/.tox/junit.xml
       coverage_report:
         coverage_format: cobertura
-        path: ${PACKAGE}/coverage.xml
+        path: ${PACKAGE}/.tox/coverage.xml
   parallel:
     matrix:
       - PYTHON_VERSION: ["3.9", "3.10", "3.11", "3.12", "3.13"]
@@ -312,26 +327,6 @@ check-doc-trytond:
   extends: .check-doc
   variables:
     PACKAGE: trytond
-
-check-trytond-rng:
-  extends: .check
-  variables:
-    PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
-  cache:
-    paths:
-      - .cache/pip/http-v2
-  before_script:
-    - pip install rnc2rng
-  script:
-    - python trytond/setup.py update_rng
-    - |
-      if [ `hg status trytond| wc -l` -ne 0 ]; then
-        false
-      fi
-  rules:
-    - changes:
-        - trytond/**/*.rnc
-        - trytond/**/*.rng
 
 test-trytond-sqlite:
   extends: .test-sqlite

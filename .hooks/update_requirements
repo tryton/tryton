@@ -3,9 +3,12 @@
 # this repository contains the full copyright notices and license terms.
 
 import io
+import json
 import os
 import subprocess
 from multiprocessing.dummy import Pool
+
+from packaging.requirements import Requirement
 
 root = os.path.dirname(os.path.dirname(__file__))
 module_path = os.path.join(root, 'modules')
@@ -23,64 +26,42 @@ development_dependencies = {
 FNULL = open(os.devnull, 'w')
 
 
-def add_dependencies(package, path):
-    egg_info_name = '%s.egg-info' % package
-    egg_info = os.path.join(path, egg_info_name)
-    if (not os.path.isdir(egg_info)
-            or (os.path.getmtime(os.path.join(path, 'setup.py'))
-                > os.path.getmtime(os.path.join(egg_info, 'requires.txt')))
-            or (os.path.exists(os.path.join(path, 'tryton.cfg'))
-                and os.path.getmtime(os.path.join(path, 'tryton.cfg'))
-                > os.path.getmtime(os.path.join(egg_info, 'requires.txt')))):
-        subprocess.call(
-            ['./setup.py', 'egg_info'],
-            cwd=path,
-            stdout=FNULL,
-            stderr=FNULL)
-    with io.open(os.path.join(egg_info, 'requires.txt')) as f:
-        development = False
-        for dependency in f.readlines():
-            dependency = dependency.strip('\n')
-            # Do not include trytond requirements as we have its source code
-            if (not dependency
-                    or dependency.startswith('trytond')
-                    or dependency.startswith('proteus')):
-                continue
-            # Always include optional dependencies as development
-            if dependency[0].startswith('['):
-                development = True
-                continue
-            # Remove version numbers
-            for char in ['>', '<', '=']:
-                dependency = dependency.split(char)[0]
-            if development:
-                development_dependencies.add(dependency)
-            else:
-                dependencies.add(dependency)
+def add_dependencies(package):
+    metadata = subprocess.check_output(
+        'python -m build -n -q --metadata',
+        shell=True, encoding='utf-8', cwd=package).strip()
+    metadata = json.loads(metadata)
+    for requirement in metadata.get('requires_dist', []):
+        requirement = Requirement(requirement)
+        if (requirement.name.startswith('trytond')
+                or requirement.name in {'proteus', 'tryton'}):
+            continue
+        development = bool(requirement.marker)
+        requirement.marker = None
+        if development:
+            development_dependencies.add(requirement)
+        else:
+            dependencies.add(requirement)
 
 
 pool = Pool()
-pool.apply_async(add_dependencies,
-    ('trytond', os.path.join(root, 'trytond')))
-pool.apply_async(add_dependencies,
-    ('tryton', os.path.join(root, 'tryton')))
-pool.apply_async(add_dependencies,
-    ('proteus', os.path.join(root, 'proteus')))
-pool.apply_async(add_dependencies,
-    ('trytond_gis', os.path.join(root, 'trytond-gis')))
+pool.apply_async(add_dependencies, (os.path.join(root, 'trytond'),))
+pool.apply_async(add_dependencies, (os.path.join(root, 'tryton'),))
+pool.apply_async(add_dependencies, (os.path.join(root, 'proteus'),))
+pool.apply_async(add_dependencies, (os.path.join(root, 'trytond-gis'),))
 
 for module in os.listdir(module_path):
     path = os.path.join(module_path, module)
     if not os.path.isdir(path):
         continue
-    pool.apply_async(
-        add_dependencies, ('trytond_%s' % module, path))
+    pool.apply_async(add_dependencies, (path,))
 
 pool.close()
 pool.join()
 
 with io.open(os.path.join(root, 'requirements.txt'), 'w') as fp:
-    fp.writelines(map(lambda d: d + '\n', sorted(dependencies)))
+    fp.writelines(map(lambda d: d + '\n', sorted(map(str, dependencies))))
 
 with io.open(os.path.join(root, 'requirements-dev.txt'), 'w') as fp:
-    fp.writelines(map(lambda d: d + '\n', sorted(development_dependencies)))
+    fp.writelines(
+        map(lambda d: d + '\n', sorted(map(str, development_dependencies))))

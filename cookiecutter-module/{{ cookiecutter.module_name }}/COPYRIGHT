@@ -1,4 +1,4 @@
-Copyright (C) {% now 'local', '%Y' %} {{ cookiecutter.fullname }}
+Copyright (C) {% now 'local', '%Y' %} {{ cookiecutter.author }}{% if cookiecutter.author_email %} <{{ cookiecutter.author_email }}>{% endif %}
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by

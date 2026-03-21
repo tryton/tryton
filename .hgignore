@@ -1,5 +1,7 @@
 syntax: glob
 *.py[cdo]
+*.mo
+*.rng
 *.egg-info
 dist/
 build/

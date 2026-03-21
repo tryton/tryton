@@ -19,18 +19,20 @@ else:
 
 
 def get_info():
+    import json
     import subprocess
-    import sys
 
     trytond_dir = os.path.join(os.path.dirname(__file__), '../trytond')
 
     info = dict()
 
-    result = subprocess.run(
-        [sys.executable, 'setup.py', '--version'],
-        stdout=subprocess.PIPE, check=True, cwd=trytond_dir)
-    version = result.stdout.decode('utf-8').strip()
-    major_version, minor_version, _ = version.split('.', 2)
+    metadata_cmd = 'python -m build --quiet --metadata'
+    if os.environ.get('DOC_NO_ISOLATION'):
+        metadata_cmd += ' --no-isolation'
+    metadata = subprocess.check_output(
+        metadata_cmd, shell=True, encoding='utf-8', cwd=trytond_dir).strip()
+    metadata = json.loads(metadata)
+    major_version, minor_version, _ = metadata['version'].split('.', 2)
     major_version = int(major_version)
     minor_version = int(minor_version)
     if minor_version % 2:

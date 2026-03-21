@@ -1,0 +1,59 @@
+[build-system]
+requires = ['hatchling >= 1', 'hatch-tryton']
+build-backend = 'hatchling.build'
+
+[project]
+name = 'trytond_purchase'
+dynamic = ['version', 'dependencies', 'optional-dependencies', 'authors', 'readme']
+requires-python = '>=3.9'
+maintainers = [
+    {name = "Tryton", email = "foundation@tryton.org"},
+    ]
+description = "Purchases for Tryton"
+license = 'GPL-3.0-or-later'
+license-files = ['LICENSE', 'icons/LICENSE', 'COPYRIGHT']
+keywords = ["tryton", "purchase"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Environment :: Plugins",
+    "Framework :: Tryton",
+    "Topic :: Office/Business",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    ]
+
+[project.entry-points.'trytond.modules']
+purchase = 'trytond.modules.purchase'
+
+[project.urls]
+homepage = "https://www.tryton.org/"
+documentation = "https://docs.tryton.org/modules-purchase/"
+changelog = "https://docs.tryton.org/modules-purchase/releases.html"
+forum = "https://www.tryton.org/forum"
+issues = "https://bugs.tryton.org/tryton"
+repository = "https://code.tryton.org/tryton"
+funding = "https://www.tryton.org/donate"
+
+[tool.hatch.build]
+include = [
+    '**/tryton.cfg',
+    '**/*.py',
+    '**/*.xml',
+    'view/**/*.xml',
+    'locale/**/*.po',
+    '**/*.fodt',
+    'icons/**/*.svg',
+    'tests/**/*.rst',
+    'tests/**/*.json',
+    ]
+exclude = ['doc']
+
+[tool.hatch.build.targets.wheel.sources]
+"" = "trytond/modules/purchase"
+
+[tool.hatch.metadata.hooks.tryton]
+dependencies = ['python-sql >= 0.4']
+copyright = 'COPYRIGHT'
+readme = 'README.rst'
+
+[tool.hatch.metadata.hooks.tryton.tryton-optional-dependencies]
+test = ['proteus']
