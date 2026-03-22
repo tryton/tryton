@@ -198,10 +198,10 @@ def load_module_graph(graph, pool, update=None, lang=None, indexes=None):
     with transaction.connection.cursor() as cursor:
         modules = [x.name for x in graph]
         module2state = defaultdict(lambda: 'not activated')
-        for sub_modules in tools.grouped_slice(modules):
-            cursor.execute(*ir_module.select(ir_module.name, ir_module.state,
-                    where=ir_module.name.in_(list(sub_modules))))
-            module2state.update(cursor)
+        cursor.execute(*ir_module.select(
+                ir_module.name, ir_module.state,
+                where=ir_module.name.in_(modules)))
+        module2state.update(cursor)
         modules = set(modules)
 
         new_modules = modules - module2state.keys()

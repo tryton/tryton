@@ -10,7 +10,6 @@ from trytond.model import fields
 from trytond.modules.account_invoice.exceptions import (
     InvoiceLineValidationError)
 from trytond.pool import Pool, PoolMeta
-from trytond.tools import grouped_slice
 from trytond.transaction import Transaction
 
 
@@ -90,18 +89,16 @@ class InvoiceLine(metaclass=PoolMeta):
         durations = dict.fromkeys(map(int, lines))
         query = ts_line.select(
             ts_line.invoice_line, Sum(ts_line.duration),
+            where=fields.SQL_OPERATORS['in'](
+                ts_line.invoice_line, map(int, lines)),
             group_by=ts_line.invoice_line)
-        for sub_lines in grouped_slice(lines):
-            query.where = fields.SQL_OPERATORS['in'](
-                ts_line.invoice_line, map(int, sub_lines))
-            cursor.execute(*query)
-
-            for line_id, duration in cursor:
-                # SQLite uses float for SUM
-                if (duration is not None
-                        and not isinstance(duration, dt.timedelta)):
-                    duration = dt.timedelta(seconds=duration)
-                durations[line_id] = duration
+        cursor.execute(*query)
+        for line_id, duration in cursor:
+            # SQLite uses float for SUM
+            if (duration is not None
+                    and not isinstance(duration, dt.timedelta)):
+                duration = dt.timedelta(seconds=duration)
+            durations[line_id] = duration
         return durations
 
     @classmethod

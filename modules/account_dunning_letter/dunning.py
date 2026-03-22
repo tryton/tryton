@@ -1,12 +1,11 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from itertools import chain, groupby
+from itertools import groupby
 from operator import attrgetter
 
 from trytond.model import fields
 from trytond.modules.company import CompanyReport
 from trytond.pool import Pool, PoolMeta
-from trytond.tools import grouped_slice
 from trytond.transaction import Transaction
 from trytond.wizard import StateReport
 
@@ -120,19 +119,16 @@ class Letter(CompanyReport, metaclass=PoolMeta):
         """
         pool = Pool()
         Line = pool.get('account.move.line')
-        payments = []
-        for sub_parties in grouped_slice(parties):
-            payments.append(Line.search([
-                        ('account.type.receivable', '=', True),
-                        ['OR',
-                            ('debit', '<', 0),
-                            ('credit', '>', 0),
-                            ],
-                        ('party', 'in', [p.id for p in sub_parties]),
-                        ('reconciliation', '=', None),
-                        ],
-                    order=[('party', 'ASC'), ('id', 'ASC')]))
-        payments = list(chain(*payments))
+        payments = Line.search([
+                ('account.type.receivable', '=', True),
+                ['OR',
+                    ('debit', '<', 0),
+                    ('credit', '>', 0),
+                    ],
+                ('party', 'in', parties),
+                ('reconciliation', '=', None),
+                ],
+            order=[('party', 'ASC'), ('id', 'ASC')])
         return dict((party, list(payments))
             for party, payments in groupby(payments, attrgetter('party')))
 

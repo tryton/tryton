@@ -806,8 +806,7 @@ class Translated:
                 language = Transaction().language
             read_size = max(1, min(
                     inst._cache.size_limit,
-                    inst._local_cache.size_limit,
-                    inst._transaction.database.IN_MAX))
+                    inst._local_cache.size_limit))
             index = inst._ids.index(inst.id)
             ids = inst._ids[index:index + read_size]
             translations = Translation.get_ids(

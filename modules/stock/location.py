@@ -14,7 +14,6 @@ from trytond.model import (
 from trytond.modules.product import price_digits, round_price
 from trytond.pool import Pool
 from trytond.pyson import Eval, If, TimeDelta
-from trytond.tools import grouped_slice
 from trytond.transaction import (
     Transaction, inactive_records, without_check_access)
 
@@ -314,18 +313,16 @@ class Location(DeactivableMixin, tree(), ModelSQL, ModelView):
             for (location_id, product), quantity in quantities.items():
                 if quantity and product not in consumables:
                     empty.discard(location_id)
-            for sub_ids in grouped_slice(list(empty)):
-                sub_ids = list(sub_ids)
-                moves = Move.search([
-                        ('state', 'not in', ['done', 'cancelled']),
-                        ['OR',
-                            ('from_location', 'in', sub_ids),
-                            ('to_location', 'in', sub_ids),
-                            ],
-                        ])
-                for move in moves:
-                    for location in [move.from_location, move.to_location]:
-                        empty.discard(location.id)
+            moves = Move.search([
+                    ('state', 'not in', ['done', 'cancelled']),
+                    ['OR',
+                        ('from_location', 'in', empty),
+                        ('to_location', 'in', empty),
+                        ],
+                    ])
+            for move in moves:
+                for location in [move.from_location, move.to_location]:
+                    empty.discard(location.id)
         return cls.browse(empty)
 
     @staticmethod
@@ -434,15 +431,13 @@ class Location(DeactivableMixin, tree(), ModelSQL, ModelView):
         if not grouping:
             return {loc.id: None for loc in locations}
 
-        pbl = {}
-        for sub_locations in grouped_slice(locations):
-            location_ids = [l.id for l in sub_locations]
-            with Transaction().set_context(context):
-                pbl.update(Product.products_by_location(
-                        location_ids,
-                        grouping=grouping,
-                        grouping_filter=grouping_filter,
-                        with_childs=trans_context.get('with_childs', True)))
+        location_ids = [l.id for l in locations]
+        with Transaction().set_context(context):
+            pbl = Product.products_by_location(
+                location_ids,
+                grouping=grouping,
+                grouping_filter=grouping_filter,
+                with_childs=trans_context.get('with_childs', True))
 
         return dict((loc.id, pbl.get((loc.id,) + key, 0)) for loc in locations)
 

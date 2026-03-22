@@ -1,7 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from trytond.pool import Pool, PoolMeta
-from trytond.tools import grouped_slice
 
 
 class Move(metaclass=PoolMeta):
@@ -25,11 +24,9 @@ def _payments_to_update(reconciliations):
             moves.add(line.move)
             others.update(line.reconciliations_delegated)
 
-    payments = set()
-    for sub_moves in grouped_slice(moves):
-        payments.update(Payment.search([
-                    ('clearing_move', 'in', [m.id for m in sub_moves]),
-                    ], order=[]))
+    payments = set(Payment.search([
+                ('clearing_move', 'in', moves),
+                ], order=[]))
     if others:
         payments.update(_payments_to_update(Reconciliation.browse(others)))
 

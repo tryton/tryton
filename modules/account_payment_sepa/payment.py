@@ -4,6 +4,7 @@ import datetime
 import os
 import unicodedata
 import uuid
+from collections import defaultdict
 from io import BytesIO
 from itertools import groupby
 from operator import attrgetter
@@ -26,8 +27,7 @@ from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval, If
 from trytond.report import Report
 from trytond.tools import (
-    cached_property, grouped_slice, is_full_text, lstrip_wildcard,
-    sortable_values)
+    cached_property, is_full_text, lstrip_wildcard, sortable_values)
 from trytond.transaction import Transaction
 
 from .sepa_handler import CAMT054
@@ -785,14 +785,12 @@ class Mandate(Workflow, ModelSQL, ModelView):
         payment = Payment.__table__()
         cursor = Transaction().connection.cursor()
 
-        has_payments = dict.fromkeys([m.id for m in mandates], False)
-        for sub_mandates in grouped_slice(mandates):
-            red_sql = fields.SQL_OPERATORS['in'](
-                payment.sepa_mandate, map(int, sub_mandates))
-            cursor.execute(*payment.select(payment.sepa_mandate, Literal(True),
-                    where=red_sql,
-                    group_by=payment.sepa_mandate))
-            has_payments.update(cursor)
+        has_payments = defaultdict(lambda: False)
+        cursor.execute(*payment.select(payment.sepa_mandate, Literal(True),
+                where=fields.SQL_OPERATORS['in'](
+                    payment.sepa_mandate, map(int, mandates)),
+                group_by=payment.sepa_mandate))
+        has_payments.update(cursor)
 
         return has_payments
 
@@ -803,22 +801,20 @@ class Mandate(Workflow, ModelSQL, ModelView):
         payment = Payment.__table__()
         cursor = Transaction().connection.cursor()
 
-        is_first = dict.fromkeys([m.id for m in mandates], True)
-        for sub_mandates in grouped_slice(mandates):
-            red_sql = fields.SQL_OPERATORS['in'](
-                payment.sepa_mandate, map(int, sub_mandates))
-            cursor.execute(*payment.select(
-                    payment.sepa_mandate, Literal(False),
-                    where=red_sql
-                    & (payment.sepa_mandate_sequence_type != Null)
-                    & ~(  # Same as property rejected
-                        (payment.state == 'failed')
-                        & ((payment.sepa_return_reason_code != Null)
-                            | (payment.sepa_return_reason_code != ''))
-                        & (payment.sepa_return_reason_information
-                            == '/RTYP/RJCT')),
-                    group_by=payment.sepa_mandate))
-            is_first.update(cursor)
+        is_first = defaultdict(lambda: True)
+        cursor.execute(*payment.select(
+                payment.sepa_mandate, Literal(False),
+                where=fields.SQL_OPERATORS['in'](
+                    payment.sepa_mandate, map(int, mandates))
+                & (payment.sepa_mandate_sequence_type != Null)
+                & ~(  # Same as property rejected
+                    (payment.state == 'failed')
+                    & ((payment.sepa_return_reason_code != Null)
+                        | (payment.sepa_return_reason_code != ''))
+                    & (payment.sepa_return_reason_information
+                        == '/RTYP/RJCT')),
+                group_by=payment.sepa_mandate))
+        is_first.update(cursor)
         return is_first
 
     @classmethod

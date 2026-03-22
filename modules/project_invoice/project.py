@@ -18,7 +18,7 @@ from trytond.model.exceptions import AccessError
 from trytond.modules.currency.fields import Monetary
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Bool, Eval, Id, If
-from trytond.tools import grouped_slice, sqlite_apply_types
+from trytond.tools import sqlite_apply_types
 from trytond.transaction import Transaction
 from trytond.wizard import StateAction, Wizard
 
@@ -112,28 +112,26 @@ class Progress:
 
         invoiced_progress = {}
         quantities = {}
-        for sub_works in grouped_slice(works):
-            sub_works = list(sub_works)
-            where = fields.SQL_OPERATORS['in'](
-                table.id, [x.id for x in sub_works if x.invoice_unit_price])
-            cursor.execute(*table.join(progress,
-                    condition=progress.work == table.id
-                    ).select(table.id, Sum(progress.progress),
-                    where=where,
-                    group_by=table.id))
-            invoiced_progress.update(dict(cursor))
+        where = fields.SQL_OPERATORS['in'](
+            table.id, [x.id for x in works if x.invoice_unit_price])
+        cursor.execute(*table.join(progress,
+                condition=progress.work == table.id
+                ).select(table.id, Sum(progress.progress),
+                where=where,
+                group_by=table.id))
+        invoiced_progress.update(dict(cursor))
 
-            for work in sub_works:
-                delta = (
-                    (work.progress or 0)
-                    - invoiced_progress.get(work.id, 0.0))
-                if work.invoice_unit_price and delta > 0:
-                    quantity = delta
-                    if work.price_list_hour:
-                        quantity *= work.effort_hours
-                    if work.unit_to_invoice:
-                        quantity = work.unit_to_invoice.round(quantity)
-                    quantities[work.id] = quantity
+        for work in works:
+            delta = (
+                (work.progress or 0)
+                - invoiced_progress.get(work.id, 0.0))
+            if work.invoice_unit_price and delta > 0:
+                quantity = delta
+                if work.price_list_hour:
+                    quantity *= work.effort_hours
+                if work.unit_to_invoice:
+                    quantity = work.unit_to_invoice.round(quantity)
+                quantities[work.id] = quantity
         return quantities
 
     @property
@@ -161,32 +159,31 @@ class Progress:
         amounts = defaultdict(Decimal)
         work2currency = {}
         ids2work = dict((w.id, w) for w in works)
-        for sub_ids in grouped_slice(ids2work.keys()):
-            where = fields.SQL_OPERATORS['in'](table.id, sub_ids)
-            query = (table.join(progress,
-                    condition=progress.work == table.id
-                    ).join(invoice_line,
-                    condition=progress.invoice_line == invoice_line.id
-                    ).select(
-                    table.id,
-                    Sum(Cast(progress.progress, 'NUMERIC')
-                        * invoice_line.unit_price).as_('amount'),
-                    where=where,
-                    group_by=table.id))
-            if backend.name == 'sqlite':
-                sqlite_apply_types(query, [None, 'NUMERIC'])
-            cursor.execute(*query)
-            for work_id, amount in cursor:
-                work = ids2work[work_id]
-                if work.price_list_hour:
-                    amount *= Decimal(str(work.effort_hours))
-                amounts[work_id] = amount
+        where = fields.SQL_OPERATORS['in'](table.id, list(ids2work.keys()))
+        query = (table.join(progress,
+                condition=progress.work == table.id
+                ).join(invoice_line,
+                condition=progress.invoice_line == invoice_line.id
+                ).select(
+                table.id,
+                Sum(Cast(progress.progress, 'NUMERIC')
+                    * invoice_line.unit_price).as_('amount'),
+                where=where,
+                group_by=table.id))
+        if backend.name == 'sqlite':
+            sqlite_apply_types(query, [None, 'NUMERIC'])
+        cursor.execute(*query)
+        for work_id, amount in cursor:
+            work = ids2work[work_id]
+            if work.price_list_hour:
+                amount *= Decimal(str(work.effort_hours))
+            amounts[work_id] = amount
 
-            cursor.execute(*table.join(company,
-                    condition=table.company == company.id
-                    ).select(table.id, company.currency,
-                    where=where))
-            work2currency.update(cursor)
+        cursor.execute(*table.join(company,
+                condition=table.company == company.id
+                ).select(table.id, company.currency,
+                where=where))
+        work2currency.update(cursor)
 
         currencies = Currency.browse(set(work2currency.values()))
         id2currency = {c.id: c for c in currencies}
@@ -274,20 +271,19 @@ class Timesheet:
             line.work, Sum(line.duration),
             group_by=line.work)
         for upto, tworks in upto2tworks.items():
-            for sub_ids in grouped_slice(tworks):
-                query.where = (
-                    fields.SQL_OPERATORS['in'](line.work, sub_ids)
-                    & (line.invoice_line == Null))
-                if upto:
-                    query.where &= (line.date <= upto)
-                cursor.execute(*query)
+            query.where = (
+                fields.SQL_OPERATORS['in'](line.work, tworks)
+                & (line.invoice_line == Null))
+            if upto:
+                query.where &= (line.date <= upto)
+            cursor.execute(*query)
 
-                for twork_id, duration in cursor:
-                    if duration:
-                        # SQLite uses float for SUM
-                        if not isinstance(duration, datetime.timedelta):
-                            duration = datetime.timedelta(seconds=duration)
-                        durations[twork2work[twork_id]] += duration
+            for twork_id, duration in cursor:
+                if duration:
+                    # SQLite uses float for SUM
+                    if not isinstance(duration, datetime.timedelta):
+                        duration = datetime.timedelta(seconds=duration)
+                    durations[twork2work[twork_id]] += duration
 
         quantities = {}
         for work in works:
@@ -317,28 +313,26 @@ class Timesheet:
 
         amounts = {}
         work2currency = {}
-        work_ids = [w.id for w in works]
-        for sub_ids in grouped_slice(work_ids):
-            where = fields.SQL_OPERATORS['in'](table.id, sub_ids)
-            cursor.execute(*table.join(timesheet_work,
-                    condition=(
-                        Concat(cls.__name__ + ',', table.id)
-                        == timesheet_work.origin)
-                    ).join(timesheet_line,
-                    condition=timesheet_line.work == timesheet_work.id
-                    ).join(invoice_line,
-                    condition=timesheet_line.invoice_line == invoice_line.id
-                    ).select(table.id,
-                    Sum(timesheet_line.duration * invoice_line.unit_price),
-                    where=where,
-                    group_by=table.id))
-            amounts.update(cursor)
+        where = fields.SQL_OPERATORS['in'](table.id, map(int, works))
+        cursor.execute(*table.join(timesheet_work,
+                condition=(
+                    Concat(cls.__name__ + ',', table.id)
+                    == timesheet_work.origin)
+                ).join(timesheet_line,
+                condition=timesheet_line.work == timesheet_work.id
+                ).join(invoice_line,
+                condition=timesheet_line.invoice_line == invoice_line.id
+                ).select(table.id,
+                Sum(timesheet_line.duration * invoice_line.unit_price),
+                where=where,
+                group_by=table.id))
+        amounts.update(cursor)
 
-            cursor.execute(*table.join(company,
-                    condition=table.company == company.id
-                    ).select(table.id, company.currency,
-                    where=where))
-            work2currency.update(cursor)
+        cursor.execute(*table.join(company,
+                condition=table.company == company.id
+                ).select(table.id, company.currency,
+                where=where))
+        work2currency.update(cursor)
 
         currencies = Currency.browse(set(work2currency.values()))
         id2currency = {c.id: c for c in currencies}

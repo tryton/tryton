@@ -16,7 +16,7 @@ from trytond.modules.currency.fields import Monetary
 from trytond.modules.party.exceptions import EraseError
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval, If
-from trytond.tools import grouped_slice, sqlite_apply_types
+from trytond.tools import sqlite_apply_types
 from trytond.tools import timezone as tz
 from trytond.transaction import Transaction
 
@@ -200,14 +200,13 @@ class Party(CompanyMultiValueMixin, metaclass=PoolMeta):
 
         company = user.company
         currency = company.currency
-        for sub_parties in grouped_slice(parties):
-            query = cls._receivable_payable_query(names, company, sub_parties)
-            if backend.name == 'sqlite':
-                sqlite_apply_types(query, [None] + ['NUMERIC'] * 4)
-            cursor.execute(*query)
-            for party_id, *values in cursor:
-                for name, value in zip(names, values):
-                    amounts[name][party_id] = currency.round(value)
+        query = cls._receivable_payable_query(names, company, parties)
+        if backend.name == 'sqlite':
+            sqlite_apply_types(query, [None] + ['NUMERIC'] * 4)
+        cursor.execute(*query)
+        for party_id, *values in cursor:
+            for name, value in zip(names, values):
+                amounts[name][party_id] = currency.round(value)
         return amounts
 
     @classmethod

@@ -18,7 +18,6 @@ from trytond.pool import Pool
 from trytond.pyson import Bool, Eval, If
 from trytond.sql.functions import DateRange
 from trytond.sql.operators import RangeOverlap
-from trytond.tools import grouped_slice
 from trytond.transaction import Transaction
 from trytond.wizard import Button, StateTransition, StateView, Wizard
 
@@ -355,31 +354,30 @@ class ForecastLine(ModelSQL, ModelView):
         for forecast_id, lines in itertools.groupby(lines, key):
             forecast = Forecast(forecast_id)
             product2line = dict((line.product.id, line) for line in lines)
-            product_ids = product2line.keys()
-            for sub_ids in grouped_slice(product_ids):
-                where = fields.SQL_OPERATORS['in'](move.product, sub_ids)
-                cursor.execute(*move.join(location_from,
-                        condition=move.from_location == location_from.id
-                        ).join(location_to,
-                        condition=move.to_location == location_to.id
-                        ).select(move.product, Sum(move.internal_quantity),
-                        where=where
-                        & (location_from.left >= forecast.warehouse.left)
-                        & (location_from.right <= forecast.warehouse.right)
-                        & (location_to.left >= forecast.destination.left)
-                        & (location_to.right <= forecast.destination.right)
-                        & (move.state != 'cancelled')
-                        & (Coalesce(move.effective_date, move.planned_date)
-                            >= forecast.from_date)
-                        & (Coalesce(move.effective_date, move.planned_date)
-                            <= forecast.to_date)
-                        & ((move.origin == Null)
-                            | ~move.origin.like('stock.forecast.line,%')),
-                        group_by=move.product))
-                for product_id, quantity in cursor:
-                    line = product2line[product_id]
-                    result[line.id] = Uom.compute_qty(
-                        line.product.default_uom, quantity, line.unit)
+            where = fields.SQL_OPERATORS['in'](
+                move.product, product2line.keys())
+            cursor.execute(*move.join(location_from,
+                    condition=move.from_location == location_from.id
+                    ).join(location_to,
+                    condition=move.to_location == location_to.id
+                    ).select(move.product, Sum(move.internal_quantity),
+                    where=where
+                    & (location_from.left >= forecast.warehouse.left)
+                    & (location_from.right <= forecast.warehouse.right)
+                    & (location_to.left >= forecast.destination.left)
+                    & (location_to.right <= forecast.destination.right)
+                    & (move.state != 'cancelled')
+                    & (Coalesce(move.effective_date, move.planned_date)
+                        >= forecast.from_date)
+                    & (Coalesce(move.effective_date, move.planned_date)
+                        <= forecast.to_date)
+                    & ((move.origin == Null)
+                        | ~move.origin.like('stock.forecast.line,%')),
+                    group_by=move.product))
+            for product_id, quantity in cursor:
+                line = product2line[product_id]
+                result[line.id] = Uom.compute_qty(
+                    line.product.default_uom, quantity, line.unit)
         return result
 
     @classmethod

@@ -828,17 +828,16 @@ class Invoice(
 
         type_name = cls.tax_amount._field.sql_type().base
         tax = InvoiceTax.__table__()
-        for sub_invoices in grouped_slice(invoices_no_cache):
-            red_sql = fields.SQL_OPERATORS['in'](
-                tax.invoice, map(int, sub_invoices))
-            query = (tax.select(tax.invoice,
-                    Coalesce(Sum(tax.amount), 0).as_(type_name),
-                    where=red_sql,
-                    group_by=tax.invoice))
-            if backend.name == 'sqlite':
-                sqlite_apply_types(query, [None, 'NUMERIC'])
-            cursor.execute(*query)
-            tax_amount.update(cursor)
+        where = fields.SQL_OPERATORS['in'](
+            tax.invoice, map(int, invoices_no_cache))
+        query = (tax.select(tax.invoice,
+                Coalesce(Sum(tax.amount), 0).as_(type_name),
+                where=where,
+                group_by=tax.invoice))
+        if backend.name == 'sqlite':
+            sqlite_apply_types(query, [None, 'NUMERIC'])
+        cursor.execute(*query)
+        tax_amount.update(cursor)
         # Float amount must be rounded to get the right precision
         if backend.name == 'sqlite':
             for invoice in invoices:
@@ -915,14 +914,13 @@ class Invoice(
     def get_lines_to_pay(cls, invoices, name):
         cursor = Transaction().connection.cursor()
         lines = defaultdict(list)
-        for sub_invoices in grouped_slice(invoices):
-            query = cls._query_lines_to_pay(sub_invoices)
-            query = query.select(
-                query.invoice, query.line,
-                order_by=query.maturity_date.nulls_last)
-            cursor.execute(*query)
-            for invoice_id, line_id in cursor:
-                lines[invoice_id].append(line_id)
+        query = cls._query_lines_to_pay(invoices)
+        query = query.select(
+            query.invoice, query.line,
+            order_by=query.maturity_date.nulls_last)
+        cursor.execute(*query)
+        for invoice_id, line_id in cursor:
+            lines[invoice_id].append(line_id)
         return lines
 
     @classmethod
@@ -934,27 +932,25 @@ class Invoice(
         move = Move.__table__()
         cursor = Transaction().connection.cursor()
         lines = defaultdict(list)
-        for sub_invoices in grouped_slice(invoices):
-            sub_invoices = list(sub_invoices)
-            lines_to_pay = cls._query_lines_to_pay(sub_invoices)
-            query = cls._query_lines_to_pay(sub_invoices)
-            query = (
-                query
-                .join(line,
-                    condition=query.reconciliation == line.reconciliation)
-                .join(move, condition=line.move == move.id)
-                .select(
-                    query.invoice, line.id,
-                    where=~Exists(
-                        lines_to_pay.select(
-                            lines_to_pay.line,
-                            where=(lines_to_pay.invoice == query.invoice)
-                            & (lines_to_pay.line == line.id))),
-                    group_by=[query.invoice, line.id, move.date],
-                    order_by=move.date.asc))
-            cursor.execute(*query)
-            for invoice_id, line_id in cursor:
-                lines[invoice_id].append(line_id)
+        lines_to_pay = cls._query_lines_to_pay(invoices)
+        query = cls._query_lines_to_pay(invoices)
+        query = (
+            query
+            .join(line,
+                condition=query.reconciliation == line.reconciliation)
+            .join(move, condition=line.move == move.id)
+            .select(
+                query.invoice, line.id,
+                where=~Exists(
+                    lines_to_pay.select(
+                        lines_to_pay.line,
+                        where=(lines_to_pay.invoice == query.invoice)
+                        & (lines_to_pay.line == line.id))),
+                group_by=[query.invoice, line.id, move.date],
+                order_by=move.date.asc))
+        cursor.execute(*query)
+        for invoice_id, line_id in cursor:
+            lines[invoice_id].append(line_id)
         return lines
 
     @classmethod
@@ -1146,16 +1142,13 @@ class Invoice(
         table = cls.__table__()
         cursor = Transaction().connection.cursor()
 
-        result = {}
         has_cache = (
             (table.invoice_report_cache_id != Null)
             | (table.invoice_report_cache != Null))
-        for sub_invoices in grouped_slice(invoices):
-            sub_ids = map(int, sub_invoices)
-            cursor.execute(*table.select(table.id, has_cache,
-                    where=fields.SQL_OPERATORS['in'](table.id, sub_ids)))
-            result.update(cursor)
-        return result
+        cursor.execute(*table.select(table.id, has_cache,
+                where=fields.SQL_OPERATORS['in'](
+                    table.id, map(int, invoices))))
+        return dict(cursor)
 
     @property
     @fields.depends('lines', 'type')
@@ -1896,13 +1889,11 @@ class Invoice(
         PaymentLine = pool.get('account.invoice-account.move.line')
 
         payments = defaultdict(list)
-        ids = list(map(int, lines))
-        for sub_ids in grouped_slice(ids):
-            payment_lines = PaymentLine.search([
-                    ('line', 'in', list(sub_ids)),
-                    ])
-            for payment_line in payment_lines:
-                payments[payment_line.invoice].append(payment_line.line)
+        payment_lines = PaymentLine.search([
+                ('line', 'in', lines),
+                ])
+        for payment_line in payment_lines:
+            payments[payment_line.invoice].append(payment_line.line)
 
         to_write = []
         for invoice, lines in payments.items():
@@ -2144,7 +2135,8 @@ class Invoice(
     def _check_similar(cls, invoices, type='in'):
         pool = Pool()
         Warning = pool.get('res.user.warning')
-        for sub_invoices in grouped_slice(invoices):
+        for sub_invoices in grouped_slice(
+                invoices, backend.MAX_QUERY_PARAMS // 10):
             sub_invoices = list(sub_invoices)
             domain = list(filter(None,
                         (i._similar_domain() for i in sub_invoices

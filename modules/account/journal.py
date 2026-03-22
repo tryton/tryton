@@ -13,8 +13,7 @@ from trytond.model.exceptions import AccessError
 from trytond.modules.currency.fields import Monetary
 from trytond.pool import Pool
 from trytond.pyson import Eval
-from trytond.tools import (
-    grouped_slice, is_full_text, lstrip_wildcard, sqlite_apply_types)
+from trytond.tools import is_full_text, lstrip_wildcard, sqlite_apply_types
 from trytond.transaction import Transaction
 
 STATES = {
@@ -111,29 +110,27 @@ class Journal(
             & (move.date <= context.get('end_date'))
             & ~Coalesce(account_type.receivable, False)
             & ~Coalesce(account_type.payable, False)
-            & (move.company == company.id))
-        for sub_journals in grouped_slice(journals):
-            sub_journals = list(sub_journals)
-            red_sql = fields.SQL_OPERATORS['in'](
-                move.journal, [j.id for j in sub_journals])
-            query = line.join(move, 'LEFT', condition=line.move == move.id
-                ).join(account, 'LEFT', condition=line.account == account.id
-                ).join(account_type, 'LEFT',
-                    condition=account.type == account_type.id
-                ).select(
-                    move.journal,
-                    Sum(line.debit).as_('debit'),
-                    Sum(line.credit).as_('credit'),
-                    where=where & red_sql,
-                    group_by=move.journal)
-            if backend.name == 'sqlite':
-                sqlite_apply_types(query, [None, 'NUMERIC', 'NUMERIC'])
-            cursor.execute(*query)
-            for journal_id, debit, credit in cursor:
-                result['debit'][journal_id] = company.currency.round(debit)
-                result['credit'][journal_id] = company.currency.round(credit)
-                result['balance'][journal_id] = company.currency.round(
-                    debit - credit)
+            & (move.company == company.id)
+            & fields.SQL_OPERATORS['in'](
+                move.journal, [j.id for j in journals]))
+        query = line.join(move, 'LEFT', condition=line.move == move.id
+            ).join(account, 'LEFT', condition=line.account == account.id
+            ).join(account_type, 'LEFT',
+                condition=account.type == account_type.id
+            ).select(
+                move.journal,
+                Sum(line.debit).as_('debit'),
+                Sum(line.credit).as_('credit'),
+                where=where,
+                group_by=move.journal)
+        if backend.name == 'sqlite':
+            sqlite_apply_types(query, [None, 'NUMERIC', 'NUMERIC'])
+        cursor.execute(*query)
+        for journal_id, debit, credit in cursor:
+            result['debit'][journal_id] = company.currency.round(debit)
+            result['credit'][journal_id] = company.currency.round(credit)
+            result['balance'][journal_id] = company.currency.round(
+                debit - credit)
         return result
 
     @classmethod
@@ -154,16 +151,15 @@ class Journal(
         super().check_modification(
             mode, journals, values=values, external=external)
         if mode == 'write' and 'type' in values:
-            for sub_journals in grouped_slice(journals):
-                moves = Move.search([
-                        ('journal', 'in', [j.id for j in sub_journals]),
-                        ('state', '=', 'posted')
-                        ], order=[], limit=1)
-                if moves:
-                    move, = moves
-                    raise AccessError(gettext(
-                            'account.msg_journal_account_moves',
-                            journal=move.journal.rec_name))
+            moves = Move.search([
+                    ('journal', 'in', [j.id for j in journals]),
+                    ('state', '=', 'posted')
+                    ], order=[], limit=1)
+            if moves:
+                move, = moves
+                raise AccessError(gettext(
+                        'account.msg_journal_account_moves',
+                        journal=move.journal.rec_name))
 
 
 class JournalCashContext(ModelView):

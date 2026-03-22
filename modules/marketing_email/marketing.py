@@ -22,7 +22,6 @@ from trytond.pool import Pool
 from trytond.pyson import Eval
 from trytond.report import Report, get_email, html_to_text, mjml_to_html
 from trytond.sendmail import SMTPDataManager, send_message_transactional
-from trytond.tools import grouped_slice
 from trytond.tools.email_ import (
     EmailNotValidError, format_address, normalize_email, set_from_header,
     validate_email)
@@ -84,23 +83,22 @@ class Email(DeactivableMixin, ModelSQL, ModelView):
         result = {}
         web_user = 'web_user' in names
         if web_user:
-            web_users = dict.fromkeys(list(map(int, records)))
+            web_users = defaultdict(lambda: None)
             result['web_user'] = web_users
         party = 'party' in names
         if party:
-            parties = dict.fromkeys(list(map(int, records)))
+            parties = defaultdict(lambda: None)
             result['party'] = parties
-        for sub_records in grouped_slice(records):
-            email2id = {r.email: r.id for r in sub_records}
-            users = WebUser.search([
-                    ('email', 'in', list(email2id.keys())),
-                    ])
-            if web_user:
-                web_users.update((email2id[u.email], u.id) for u in users)
-            if party:
-                parties.update(
-                    (email2id[u.email], u.party.id)
-                    for u in users if u.party)
+        email2id = {r.email: r.id for r in records}
+        users = WebUser.search([
+                ('email', 'in', list(email2id.keys())),
+                ])
+        if web_user:
+            web_users.update((email2id[u.email], u.id) for u in users)
+        if party:
+            parties.update(
+                (email2id[u.email], u.party.id)
+                for u in users if u.party)
         return result
 
     @classmethod
@@ -256,14 +254,14 @@ class EmailList(DeactivableMixin, ModelSQL, ModelView):
 
         subscribed = defaultdict(int)
         query = email.select(
-            email.list_, Count(), group_by=[email.list_])
-        for sub_lists in grouped_slice(lists):
-            query.where = (
+            email.list_, Count(),
+            where=(
                 fields.SQL_OPERATORS['in'](
-                    email.list_, map(int, sub_lists))
-                & email.active)
-            cursor.execute(*query)
-            subscribed.update(cursor)
+                    email.list_, map(int, lists))
+                & email.active),
+            group_by=[email.list_])
+        cursor.execute(*query)
+        subscribed.update(cursor)
         return subscribed
 
     def request_subscribe(self, email, from_=None):

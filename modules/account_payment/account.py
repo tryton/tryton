@@ -19,7 +19,6 @@ from trytond.modules.company.model import CompanyValueMixin
 from trytond.modules.currency.fields import Monetary
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Bool, Eval, Id, If
-from trytond.tools import grouped_slice
 from trytond.transaction import Transaction, check_access, without_check_access
 from trytond.wizard import (
     Button, StateAction, StateTransition, StateView, Wizard)
@@ -192,12 +191,9 @@ class MoveLine(metaclass=PoolMeta):
                 where=table.account.in_(accounts)))
 
         if lines:
-            for sub_lines in grouped_slice(lines):
-                query.where = (
-                    table.account.in_(accounts)
-                    & fields.SQL_OPERATORS['in'](
-                        table.id, map(int, sub_lines)))
-                cursor.execute(*query)
+            query.where &= fields.SQL_OPERATORS['in'](
+                table.id, map(int, lines))
+            cursor.execute(*query)
         else:
             cursor.execute(*query)
 

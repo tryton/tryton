@@ -6,7 +6,7 @@ import logging
 from sql import Column, Null
 
 from trytond.filestore import filestore
-from trytond.tools import cached_property, grouped_slice
+from trytond.tools import cached_property
 from trytond.transaction import Transaction
 
 from .field import SQL_OPERATORS, Field
@@ -83,19 +83,18 @@ class Binary(Field):
                 def store_func(id, prefix):
                     return self.cast(filestore.get(id, prefix=prefix))
 
-            for sub_ids in grouped_slice(ids):
-                cursor.execute(*table.select(
-                        table.id, Column(table, self.file_id),
-                        where=SQL_OPERATORS['in'](table.id, sub_ids)
-                        & (Column(table, self.file_id) != Null)
-                        & (Column(table, self.file_id) != '')))
-                for record_id, file_id in cursor:
-                    try:
-                        res[record_id] = store_func(file_id, prefix)
-                    except (IOError, OSError):
-                        logger.exception(
-                            "failed to retrieve %r from filestore at %r",
-                            file_id, prefix)
+            cursor.execute(*table.select(
+                    table.id, Column(table, self.file_id),
+                    where=SQL_OPERATORS['in'](table.id, ids)
+                    & (Column(table, self.file_id) != Null)
+                    & (Column(table, self.file_id) != '')))
+            for record_id, file_id in cursor:
+                try:
+                    res[record_id] = store_func(file_id, prefix)
+                except (IOError, OSError):
+                    logger.exception(
+                        "failed to retrieve %r from filestore at %r",
+                        file_id, prefix)
 
         for i in values:
             if i['id'] in res:

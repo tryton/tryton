@@ -6,7 +6,14 @@ from .database import (
     DatabaseOperationalError, DatabaseTimeoutError)
 from .table import TableHandler
 
+MAX_QUERY_PARAMS = 50_000  # rounded down from 65_535
+
 __all__ = [
-    Database, TableHandler,
-    DatabaseIntegrityError, DatabaseDataError, DatabaseOperationalError,
-    DatabaseTimeoutError]
+    Database,
+    DatabaseDataError,
+    DatabaseIntegrityError,
+    DatabaseOperationalError,
+    DatabaseTimeoutError,
+    MAX_QUERY_PARAMS,
+    TableHandler,
+    ]

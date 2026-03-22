@@ -1,5 +1,8 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+
+from collections import defaultdict
+
 from sql import Null
 from sql.conditionals import Greatest
 from sql.functions import CurrentTimestamp
@@ -7,7 +10,7 @@ from sql.functions import CurrentTimestamp
 from trytond import backend
 from trytond.model import ModelView, Workflow, fields
 from trytond.pool import Pool, PoolMeta
-from trytond.tools import grouped_slice, sqlite_apply_types
+from trytond.tools import sqlite_apply_types
 from trytond.transaction import Transaction
 
 
@@ -41,27 +44,25 @@ class Invoice(metaclass=PoolMeta):
         payment_term = PaymentTerm.__table__()
         cursor = Transaction().connection.cursor()
 
-        invoice_ids = [i.id for i in invoices]
-        datetimes = dict.fromkeys(invoice_ids)
-        for ids in grouped_slice(invoice_ids):
-            query = (table
-                .join(party, condition=table.party == party.id)
-                .join(address, condition=table.invoice_address == address.id)
-                .join(identifier, 'LEFT',
-                    condition=table.party_tax_identifier == identifier.id)
-                .join(payment_term, 'LEFT',
-                    condition=table.payment_term == payment_term.id)
-                .select(table.id,
-                    Greatest(table.numbered_at, party.create_date,
-                        address.create_date, identifier.create_date,
-                        payment_term.create_date).as_('history_datetime'),
-                    where=fields.SQL_OPERATORS['in'](table.id, ids)
-                    & (table.numbered_at != Null)
-                    & (table.state.in_(cls._history_states()))))
-            if backend.name == 'sqlite':
-                sqlite_apply_types(query, [None, 'DATETIME'])
-            cursor.execute(*query)
-            datetimes.update(cursor)
+        datetimes = defaultdict(lambda: None)
+        query = (table
+            .join(party, condition=table.party == party.id)
+            .join(address, condition=table.invoice_address == address.id)
+            .join(identifier, 'LEFT',
+                condition=table.party_tax_identifier == identifier.id)
+            .join(payment_term, 'LEFT',
+                condition=table.payment_term == payment_term.id)
+            .select(table.id,
+                Greatest(table.numbered_at, party.create_date,
+                    address.create_date, identifier.create_date,
+                    payment_term.create_date).as_('history_datetime'),
+                where=fields.SQL_OPERATORS['in'](table.id, map(int, invoices))
+                & (table.numbered_at != Null)
+                & (table.state.in_(cls._history_states()))))
+        if backend.name == 'sqlite':
+            sqlite_apply_types(query, [None, 'DATETIME'])
+        cursor.execute(*query)
+        datetimes.update(cursor)
         return datetimes
 
     @classmethod

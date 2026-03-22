@@ -16,7 +16,6 @@ class DatabaseInterface(object):
     Define generic interface for database connection
     '''
     flavor = None
-    IN_MAX = 1000
 
     def __new__(cls, name=''):
         return object.__new__(cls)

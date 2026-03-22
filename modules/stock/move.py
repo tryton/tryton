@@ -19,7 +19,7 @@ from trytond.model.exceptions import AccessError
 from trytond.modules.product import price_digits, round_price
 from trytond.pool import Pool
 from trytond.pyson import Bool, Eval, Id, If, TimeDelta
-from trytond.tools import cached_property, grouped_slice
+from trytond.tools import cached_property
 from trytond.transaction import Transaction, without_check_access
 
 from .exceptions import MoveFutureWarning, MoveOriginWarning
@@ -1314,7 +1314,6 @@ class Move(Workflow, ModelSQL, ModelView):
         connection = transaction.connection
 
         if database.has_select_for():
-            count = database.IN_MAX // 2
             PeriodCache = Period.get_cache(grouping)
             with connection.cursor() as cursor:
                 for company_id in company_ids:
@@ -1327,24 +1326,22 @@ class Move(Workflow, ModelSQL, ModelView):
                                 ], order=[('date', 'DESC')], limit=1)
                         if periods:
                             period, = periods
-                    for sub_location_ids in grouped_slice(location_ids, count):
-                        sub_location_ids = list(sub_location_ids)
-                        table = cls.__table__()
-                        query = table.select(Literal(1),
-                            where=(fields.SQL_OPERATORS['in'](
-                                    table.to_location, sub_location_ids)
-                                | fields.SQL_OPERATORS['in'](
-                                    table.from_location, sub_location_ids))
-                            & table.product.in_(product_ids)
-                            & (table.company == company_id),
-                            for_=For('UPDATE', nowait=True))
+                    table = cls.__table__()
+                    query = table.select(Literal(1),
+                        where=(fields.SQL_OPERATORS['in'](
+                                table.to_location, location_ids)
+                            | fields.SQL_OPERATORS['in'](
+                                table.from_location, location_ids))
+                        & table.product.in_(product_ids)
+                        & (table.company == company_id),
+                        for_=For('UPDATE', nowait=True))
 
-                        if period:
-                            query.where &= Coalesce(
-                                table.effective_date,
-                                table.planned_date,
-                                datetime.date.max) > period.date
-                        cursor.execute(*query)
+                    if period:
+                        query.where &= Coalesce(
+                            table.effective_date,
+                            table.planned_date,
+                            datetime.date.max) > period.date
+                    cursor.execute(*query)
         else:
             cls.lock()
 

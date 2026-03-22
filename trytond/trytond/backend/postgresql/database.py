@@ -29,7 +29,6 @@ from sql.operators import Any, BinaryOperator, Concat, NotEqual
 from trytond import __series__, config
 from trytond.backend.database import DatabaseInterface, SQLType
 from trytond.sql.operators import RangeOperator
-from trytond.tools import grouped_slice
 
 from .table import index_method
 
@@ -486,11 +485,11 @@ class Database(DatabaseInterface):
     def lock_records(cls, connection, table, ids):
         table = Table(table)
         cursor = connection.cursor()
-        for sub_ids in grouped_slice(ids):
-            where = table.id == Any(list(sub_ids))
-            query = table.select(
-                Literal(1), where=where, for_=For('UPDATE', nowait=True))
-            cursor.execute(*query)
+        query = table.select(
+            Literal(1),
+            where=table.id == Any(list(ids)),
+            for_=For('UPDATE', nowait=True))
+        cursor.execute(*query)
 
     def lock_id(self, id, timeout=None):
         if not timeout:

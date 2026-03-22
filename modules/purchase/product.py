@@ -13,7 +13,7 @@ from trytond.modules.product import (
     ProductDeactivatableMixin, price_digits, round_price)
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Bool, Eval, If, TimeDelta
-from trytond.tools import grouped_slice, is_full_text, lstrip_wildcard
+from trytond.tools import is_full_text, lstrip_wildcard
 from trytond.transaction import Transaction
 
 from .exceptions import PurchaseUOMWarning
@@ -154,16 +154,15 @@ class Product(metaclass=PoolMeta):
         supplier = context.get('supplier')
         if supplier:
             where &= purchase.party == supplier
-        for sub_products in grouped_slice(products):
-            query = (line
-                .join(purchase, condition=line.purchase == purchase.id)
-                .select(
-                    Max(line.id),
-                    where=where & fields.SQL_OPERATORS['in'](
-                        line.product, map(int, sub_products)),
-                    group_by=[line.product]))
-            cursor.execute(*query)
-            line_ids.extend(i for i, in cursor)
+        query = (line
+            .join(purchase, condition=line.purchase == purchase.id)
+            .select(
+                Max(line.id),
+                where=where & fields.SQL_OPERATORS['in'](
+                    line.product, map(int, products)),
+                group_by=[line.product]))
+        cursor.execute(*query)
+        line_ids.extend(i for i, in cursor)
         lines = Line.browse(line_ids)
 
         uom = None

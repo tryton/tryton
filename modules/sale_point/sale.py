@@ -21,7 +21,7 @@ from trytond.modules.currency.fields import Monetary
 from trytond.modules.product import price_digits, round_price
 from trytond.pool import Pool
 from trytond.pyson import Bool, Eval, Id, If
-from trytond.tools import grouped_slice, sqlite_apply_types
+from trytond.tools import sqlite_apply_types
 from trytond.transaction import Transaction
 from trytond.wizard import Button, StateTransition, StateView, Wizard
 
@@ -82,15 +82,14 @@ class POS(ModelSQL, ModelView):
 
         if mode == 'write':
             if 'tax_included' in values:
-                for sub_points in grouped_slice(points):
-                    if Sale.search([
-                                ('point', 'in',
-                                    list(map(int, sub_points))),
-                                ],
-                            limit=1, order=[]):
-                        raise AccessError(gettext(
-                                'sale_point.'
-                                'msg_point_change_tax_included'))
+                if Sale.search([
+                            ('point', 'in',
+                                list(map(int, points))),
+                            ],
+                        limit=1, order=[]):
+                    raise AccessError(gettext(
+                            'sale_point.'
+                            'msg_point_change_tax_included'))
 
 
 class POSSale(Workflow, ModelSQL, ModelView, TaxableMixin, ChatMixin):
@@ -859,29 +858,28 @@ class POSCashSession(Workflow, ModelSQL, ModelView):
         transfer = Transfer.__table__()
         cursor = Transaction().connection.cursor()
         balances = defaultdict(Decimal)
-        for sub_sessions in grouped_slice(sessions):
-            sub_ids = [s.id for s in sub_sessions]
-            query = Union(
-                payment.select(
-                    payment.session.as_('session'),
-                    Sum(payment.amount).as_('amount'),
-                    where=fields.SQL_OPERATORS['in'](
-                        payment.session, sub_ids),
-                    group_by=[payment.session]),
-                transfer.select(
-                    transfer.session.as_('session'),
-                    Sum(transfer.amount).as_('amount'),
-                    where=fields.SQL_OPERATORS['in'](
-                        transfer.session, sub_ids),
-                    group_by=[transfer.session]),
-                all_=True)
-            query = query.select(
-                query.session, Sum(query.amount).as_('amount'),
-                group_by=[query.session])
-            if backend.name == 'sqlite':
-                sqlite_apply_types(query, [None, 'NUMERIC'])
-            cursor.execute(*query)
-            balances.update(cursor)
+        session_ids = [s.id for s in sessions]
+        query = Union(
+            payment.select(
+                payment.session.as_('session'),
+                Sum(payment.amount).as_('amount'),
+                where=fields.SQL_OPERATORS['in'](
+                    payment.session, session_ids),
+                group_by=[payment.session]),
+            transfer.select(
+                transfer.session.as_('session'),
+                Sum(transfer.amount).as_('amount'),
+                where=fields.SQL_OPERATORS['in'](
+                    transfer.session, session_ids),
+                group_by=[transfer.session]),
+            all_=True)
+        query = query.select(
+            query.session, Sum(query.amount).as_('amount'),
+            group_by=[query.session])
+        if backend.name == 'sqlite':
+            sqlite_apply_types(query, [None, 'NUMERIC'])
+        cursor.execute(*query)
+        balances.update(cursor)
         for session in sessions:
             balances[session.id] = session.currency.round(balances[session.id])
         return balances

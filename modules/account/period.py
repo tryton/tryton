@@ -4,6 +4,7 @@
 from sql import Null
 from sql.operators import Equal, NotEqual
 
+from trytond import backend
 from trytond.cache import Cache
 from trytond.const import OPERATORS
 from trytond.i18n import gettext
@@ -226,7 +227,8 @@ class Period(Workflow, ModelSQL, ModelView):
             return
         lang = Lang.get()
 
-        for sub_periods in grouped_slice(periods):
+        for sub_periods in grouped_slice(
+                periods, backend.MAX_QUERY_PARAMS // 3):
             domain = ['OR']
             for period in sub_periods:
                 domain.append([

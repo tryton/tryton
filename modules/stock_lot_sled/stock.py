@@ -11,7 +11,6 @@ from trytond.model.exceptions import AccessError
 from trytond.modules.stock.exceptions import PeriodCloseError
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
-from trytond.tools import grouped_slice
 from trytond.transaction import Transaction
 
 from .exceptions import LotExpiredError, LotExpiredWarning
@@ -122,23 +121,21 @@ class Lot(LotSledMixin, metaclass=PoolMeta):
         if not periods:
             return
         period, = periods
-        for lots in grouped_slice(lots):
-            lot_ids = [l.id for l in lots]
-            moves = Move.search([
-                    ('lot', 'in', lot_ids),
-                    ['OR', [
-                            ('effective_date', '=', None),
-                            ('planned_date', '<=', period.date),
-                            ],
-                        ('effective_date', '<=', period.date),
-                        ]], limit=1)
-            if moves:
-                move, = moves
-                raise AccessError(
-                    gettext('stock_lot_sled'
-                        '.msg_lot_modify_expiration_date_period_close',
-                        lot=move.lot.rec_name,
-                        move=move.rec_name))
+        moves = Move.search([
+                ('lot', 'in', lots),
+                ['OR', [
+                        ('effective_date', '=', None),
+                        ('planned_date', '<=', period.date),
+                        ],
+                    ('effective_date', '<=', period.date),
+                    ]], limit=1)
+        if moves:
+            move, = moves
+            raise AccessError(
+                gettext('stock_lot_sled'
+                    '.msg_lot_modify_expiration_date_period_close',
+                    lot=move.lot.rec_name,
+                    move=move.rec_name))
 
 
 class MoveAddLotsStartLot(LotSledMixin, metaclass=PoolMeta):

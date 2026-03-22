@@ -7,7 +7,6 @@ from trytond.model import ModelView, Workflow, fields
 from trytond.modules.product import round_price
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
-from trytond.tools import grouped_slice
 from trytond.transaction import Transaction
 
 
@@ -59,15 +58,13 @@ class Invoice(metaclass=PoolMeta):
         for company, c_invoices in groupby(invoices, key=lambda i: i.company):
             with Transaction().set_context(company=company.id):
                 today = Date.today()
-            for sub_invoices in grouped_slice(list(c_invoices)):
-                ids = [i.id for i in sub_invoices]
-                for commission in Commission.search([
-                            ('date', '=', None),
-                            ('origin.invoice', 'in', ids,
-                                'account.invoice.line'),
-                            ]):
-                    date = commission.origin.invoice.reconciled or today
-                    date2commissions[date].append(commission)
+            for commission in Commission.search([
+                        ('date', '=', None),
+                        ('origin.invoice', 'in', list(c_invoices),
+                            'account.invoice.line'),
+                        ]):
+                date = commission.origin.invoice.reconciled or today
+                date2commissions[date].append(commission)
         to_write = []
         for date, commissions in date2commissions.items():
             to_write.append(commissions)
@@ -103,19 +100,19 @@ class Invoice(metaclass=PoolMeta):
 
         to_delete = []
         to_save = []
-        for sub_invoices in grouped_slice(invoices_to_revert_commission):
-            ids = [i.id for i in sub_invoices]
-            to_delete += Commission.search([
-                    ('invoice_line', '=', None),
-                    ('origin.invoice', 'in', ids, 'account.invoice.line'),
-                    ])
-            to_cancel = Commission.search([
-                    ('invoice_line', '!=', None),
-                    ('origin.invoice', 'in', ids, 'account.invoice.line'),
-                    ])
-            for commission in Commission.copy(to_cancel):
-                commission.amount *= -1
-                to_save.append(commission)
+        to_delete += Commission.search([
+                ('invoice_line', '=', None),
+                ('origin.invoice', 'in', invoices_to_revert_commission,
+                    'account.invoice.line'),
+                ])
+        to_cancel = Commission.search([
+                ('invoice_line', '!=', None),
+                ('origin.invoice', 'in', invoices_to_revert_commission,
+                    'account.invoice.line'),
+                ])
+        for commission in Commission.copy(to_cancel):
+            commission.amount *= -1
+            to_save.append(commission)
 
         Commission.delete(to_delete)
         Commission.save(to_save)

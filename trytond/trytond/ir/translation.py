@@ -23,7 +23,7 @@ from trytond.i18n import gettext
 from trytond.model import Index, ModelSQL, ModelView, fields
 from trytond.pool import Pool
 from trytond.pyson import Eval, PYSONEncoder
-from trytond.tools import cursor_dict, file_open, grouped_slice
+from trytond.tools import cursor_dict, file_open
 from trytond.tools.string_ import LazyString, StringPartitioned
 from trytond.transaction import (
     Transaction, inactive_records, without_check_access)
@@ -493,16 +493,15 @@ class Translation(
                 fuzzy_clause = []
             else:
                 fuzzy_clause = [('fuzzy', '=', False)]
-            for sub_to_fetch in grouped_slice(to_fetch):
-                for translation in cls.search([
-                            ('lang', '=', lang),
-                            ('type', '=', ttype),
-                            ('name', '=', name),
-                            ('value', '!=', ''),
-                            ('value', '!=', None),
-                            ('res_id', 'in', list(sub_to_fetch)),
-                            ] + fuzzy_clause):
-                    translations[translation.res_id] = translation.value
+            for translation in cls.search([
+                        ('lang', '=', lang),
+                        ('type', '=', ttype),
+                        ('name', '=', name),
+                        ('value', '!=', ''),
+                        ('value', '!=', None),
+                        ('res_id', 'in', to_fetch),
+                        ] + fuzzy_clause):
+                translations[translation.res_id] = translation.value
             # Don't store fuzzy translation in cache
             if not fuzzy_translation:
                 for res_id in to_fetch:
@@ -519,15 +518,6 @@ class Translation(
         ModelFields = pool.get('ir.model.field')
         Model = pool.get('ir.model')
         Config = pool.get('ir.configuration')
-        transaction = Transaction()
-        in_max = transaction.database.IN_MAX
-
-        if len(ids) > in_max:
-            for i in range(0, len(ids), in_max):
-                sub_ids = ids[i:i + in_max]
-                sub_values = values[i:i + in_max]
-                cls.set_ids(name, ttype, lang, sub_ids, sub_values)
-            return
 
         model_name, field_name = name.split(',')
         if model_name in ('ir.model.field', 'ir.model'):
@@ -649,13 +639,11 @@ class Translation(
     @without_check_access
     def delete_ids(cls, model, ttype, ids):
         "Delete translation for each id"
-        translations = []
-        for sub_ids in grouped_slice(ids):
-            translations += cls.search([
-                    ('type', '=', ttype),
-                    ('name', 'like', model + ',%'),
-                    ('res_id', 'in', list(sub_ids)),
-                    ])
+        translations = cls.search([
+                ('type', '=', ttype),
+                ('name', 'like', model + ',%'),
+                ('res_id', 'in', ids),
+                ])
         cls.delete(translations)
 
     @classmethod
@@ -676,12 +664,6 @@ class Translation(
         parent_args = []
         parent_langs = []
         clauses = []
-        transaction = Transaction()
-        if len(args) > transaction.database.IN_MAX:
-            for sub_args in grouped_slice(args):
-                res.update(cls.get_sources(list(sub_args)))
-            return res
-
         to_cache = []
         for name, ttype, lang, source in args:
             name = str(name)
@@ -720,9 +702,10 @@ class Translation(
                 res[(name, ttype, lang, source)] = parent_src[
                     (name, ttype, parent_lang, source)]
 
-        in_max = transaction.database.IN_MAX // 7
-        for sub_clause in grouped_slice(clauses, in_max):
-            for translation in cls.search(['OR'] + list(sub_clause)):
+        while clauses:
+            clauses_slice = clauses[:100]
+            clauses = clauses[100:]
+            for translation in cls.search(['OR'] + clauses_slice):
                 key = (translation.name, translation.type,
                     translation.lang, translation.src)
                 if key not in args:
@@ -1524,11 +1507,10 @@ class TranslationClean(Wizard):
         with inactive_records():
             for model_name, translations in records.items():
                 Model = pool.get(model_name)
-                for sub_ids in grouped_slice(translations.keys()):
-                    sub_ids = list(sub_ids)
-                    records = Model.search([('id', 'in', sub_ids)])
-                    for record_id in set(sub_ids) - set(map(int, records)):
-                        to_delete.extend(translations[record_id])
+                ids = translations.keys()
+                records = Model.search([('id', 'in', ids)])
+                for record_id in set(ids) - set(map(int, records)):
+                    to_delete.extend(translations[record_id])
 
         # skip translation handled in ir.model.data
         models_data = ModelData.search([

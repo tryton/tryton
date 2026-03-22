@@ -16,8 +16,7 @@ from trytond.model.exceptions import AccessError
 from trytond.modules.currency.fields import Monetary
 from trytond.pool import Pool
 from trytond.pyson import Eval, If, PYSONDecoder, PYSONEncoder
-from trytond.tools import (
-    grouped_slice, is_full_text, lstrip_wildcard, sqlite_apply_types)
+from trytond.tools import is_full_text, lstrip_wildcard, sqlite_apply_types
 from trytond.transaction import Transaction
 
 from .exceptions import AccountValidationError
@@ -140,16 +139,14 @@ class Account(
             return
         accounts = [
             a for a in accounts if a.type in {'root', 'view', 'distribution'}]
-        for sub_accounts in grouped_slice(accounts):
-            sub_accounts = list(sub_accounts)
-            lines = Line.search([
-                    ('account', 'in', [a.id for a in sub_accounts]),
-                    ], order=[], limit=1)
-            if lines:
-                line, = lines
-                raise AccountValidationError(gettext(
-                        'analytic_account.msg_account_wrong_type_line',
-                        account=line.account.rec_name))
+        lines = Line.search([
+                ('account', 'in', accounts),
+                ], order=[], limit=1)
+        if lines:
+            line, = lines
+            raise AccountValidationError(gettext(
+                    'analytic_account.msg_account_wrong_type_line',
+                    account=line.account.rec_name))
 
     @fields.depends('company')
     def on_change_with_currency(self, name=None):
@@ -313,17 +310,16 @@ class Account(
             mode, accounts, values=values, external=external)
 
         if mode == 'write' and 'root' in values:
-            for sub_records in grouped_slice(accounts):
-                entries = Entry.search([
-                        ('account', 'in', list(map(int, sub_records))),
-                        ],
-                    limit=1, order=[])
-                if entries:
-                    entry, = entries
-                    raise AccessError(gettext(
-                            'analytic_account'
-                            '.msg_analytic_account_root_change',
-                            account=entry.account.rec_name))
+            entries = Entry.search([
+                    ('account', 'in', accounts),
+                    ],
+                limit=1, order=[])
+            if entries:
+                entry, = entries
+                raise AccessError(gettext(
+                        'analytic_account'
+                        '.msg_analytic_account_root_change',
+                        account=entry.account.rec_name))
 
 
 class AccountContext(ModelView):

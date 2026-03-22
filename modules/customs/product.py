@@ -3,7 +3,6 @@
 from trytond.model import ModelSQL, ModelView, fields, sequence_ordered
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Bool, Eval, Or
-from trytond.tools import grouped_slice
 
 
 class Category(metaclass=PoolMeta):
@@ -82,15 +81,10 @@ class Category(metaclass=PoolMeta):
 
         callback = super().on_delete(categories)
 
-        product_tariffcodes = set()
-        products = [str(t) for t in categories]
-        for products in grouped_slice(products):
-            product_tariffcodes.update(Product_TariffCode.search([
-                        'product', 'in', list(products),
-                        ]))
+        product_tariffcodes = Product_TariffCode.search([
+                'product', 'in', [str(t) for t in categories],
+                ])
         if product_tariffcodes:
-            product_tariffcodes = Product_TariffCode.browse(
-                product_tariffcodes)
             callback.append(
                 lambda: Product_TariffCode.delete(product_tariffcodes))
         return callback
@@ -157,15 +151,10 @@ class Template(metaclass=PoolMeta):
 
         callback = super().on_delete(templates)
 
-        product_tariffcodes = set()
-        products = [str(t) for t in templates]
-        for products in grouped_slice(products):
-            product_tariffcodes.update(Product_TariffCode.search([
-                        'product', 'in', list(products),
-                        ]))
+        product_tariffcodes = Product_TariffCode.search([
+                'product', 'in', [str(t) for t in templates],
+                ])
         if product_tariffcodes:
-            product_tariffcodes = Product_TariffCode.browse(
-                product_tariffcodes)
             callback.append(
                 lambda: Product_TariffCode.delete(product_tariffcodes))
         return callback

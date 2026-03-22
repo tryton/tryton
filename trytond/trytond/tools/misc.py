@@ -149,9 +149,11 @@ def reduce_domain(domain):
 
 def grouped_slice(records, count=None):
     'Grouped slice'
-    from trytond.transaction import Transaction
     if count is None:
-        count = Transaction().database.IN_MAX
+        warnings.warn(
+            "grouped_slice without size is deprecated",
+            DeprecationWarning)
+        count = 1
     count = max(1, count)
     if not isinstance(records, Sized):
         records = list(records)

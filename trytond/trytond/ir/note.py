@@ -1,5 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+from collections import defaultdict
 from textwrap import TextWrapper
 
 from sql import Null
@@ -9,7 +10,6 @@ from trytond.i18n import lazy_gettext
 from trytond.model import ModelSQL, ModelView, fields
 from trytond.pool import Pool
 from trytond.pyson import Eval
-from trytond.tools import grouped_slice
 from trytond.transaction import Transaction
 
 from .resource import ResourceMixin, resource_copy
@@ -42,7 +42,7 @@ class Note(ResourceMixin, ModelSQL, ModelView):
         return '\n'.join(map(wrapper.fill, message.splitlines()))
 
     @classmethod
-    def get_unread(cls, ids, name):
+    def get_unread(cls, notes, name):
         pool = Pool()
         Read = pool.get('ir.note.read')
         cursor = Transaction().connection.cursor()
@@ -50,17 +50,16 @@ class Note(ResourceMixin, ModelSQL, ModelView):
         table = cls.__table__()
         read = Read.__table__()
 
-        unread = {}
-        for sub_ids in grouped_slice(ids):
-            where = fields.SQL_OPERATORS['in'](table.id, sub_ids)
-            query = table.join(read, 'LEFT',
-                condition=(table.id == read.note)
-                & (read.user == user_id)
-                ).select(table.id,
-                    Case((read.user != Null, False), else_=True),
-                    where=where)
-            cursor.execute(*query)
-            unread.update(cursor)
+        unread = defaultdict(bool)
+        query = table.join(read, 'LEFT',
+            condition=(table.id == read.note)
+            & (read.user == user_id)
+            ).select(table.id,
+                Case((read.user != Null, False), else_=True),
+                where=fields.SQL_OPERATORS['in'](
+                    table.id, map(int, notes)))
+        cursor.execute(*query)
+        unread.update(cursor)
         return unread
 
     @classmethod
@@ -90,12 +89,10 @@ class Note(ResourceMixin, ModelSQL, ModelView):
         if not value:
             Read.create([{'note': n.id, 'user': user_id} for n in notes])
         else:
-            reads = []
-            for sub_notes in grouped_slice(notes):
-                reads += Read.search([
-                        ('note', 'in', [n.id for n in sub_notes]),
-                        ('user', '=', user_id),
-                        ])
+            reads = Read.search([
+                    ('note', 'in', notes),
+                    ('user', '=', user_id),
+                    ])
             Read.delete(reads)
 
     @classmethod

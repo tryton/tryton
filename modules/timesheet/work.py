@@ -2,6 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 
 import datetime
+from collections import defaultdict
 
 from sql import Literal
 from sql.aggregate import Sum
@@ -10,7 +11,6 @@ from trytond.i18n import gettext
 from trytond.model import ModelSQL, ModelStorage, ModelView, Unique, fields
 from trytond.pool import Pool
 from trytond.pyson import Bool, Eval, If
-from trytond.tools import grouped_slice
 from trytond.transaction import Transaction
 
 from .exceptions import CompanyValidationError
@@ -92,8 +92,7 @@ class Work(ModelSQL, ModelView):
 
         table_w = cls.__table__()
         line = Line.__table__()
-        ids = [w.id for w in works]
-        durations = dict.fromkeys(ids, None)
+        durations = defaultdict(lambda: None)
         where = Literal(True)
         if context.get('from_date'):
             where &= line.date >= context['from_date']
@@ -105,16 +104,15 @@ class Work(ModelSQL, ModelView):
         query_table = table_w.join(line, 'LEFT',
             condition=line.work == table_w.id)
 
-        for sub_ids in grouped_slice(ids):
-            cursor.execute(*query_table.select(table_w.id, Sum(line.duration),
-                    where=where
-                    & fields.SQL_OPERATORS['in'](table_w.id, sub_ids),
-                    group_by=table_w.id))
-            for work_id, duration in cursor:
-                # SQLite uses float for SUM
-                if duration and not isinstance(duration, datetime.timedelta):
-                    duration = datetime.timedelta(seconds=duration)
-                durations[work_id] = duration
+        cursor.execute(*query_table.select(table_w.id, Sum(line.duration),
+                where=where
+                & fields.SQL_OPERATORS['in'](table_w.id, map(int, works)),
+                group_by=table_w.id))
+        for work_id, duration in cursor:
+            # SQLite uses float for SUM
+            if duration and not isinstance(duration, datetime.timedelta):
+                duration = datetime.timedelta(seconds=duration)
+            durations[work_id] = duration
         return durations
 
     def get_work(self, name):

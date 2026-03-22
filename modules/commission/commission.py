@@ -1,6 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 
+from collections import defaultdict
 from decimal import Decimal
 from itertools import groupby
 
@@ -21,7 +22,7 @@ from trytond.modules.currency.fields import Monetary
 from trytond.modules.product import price_digits, round_price
 from trytond.pool import Pool
 from trytond.pyson import Bool, Eval, Id, If
-from trytond.tools import decistmt, grouped_slice, sqlite_apply_types
+from trytond.tools import decistmt, sqlite_apply_types
 from trytond.transaction import Transaction, check_access
 from trytond.wizard import Button, StateAction, StateView, Wizard
 
@@ -125,19 +126,17 @@ class Agent(DeactivableMixin, ModelSQL, ModelView):
         commission = Commission.__table__()
         cursor = Transaction().connection.cursor()
 
-        ids = [a.id for a in agents]
-        amounts = dict.fromkeys(ids, None)
-        for sub_ids in grouped_slice(ids):
-            where = fields.SQL_OPERATORS['in'](commission.agent, sub_ids)
-            where &= commission.invoice_line == Null
-            query = commission.select(
-                commission.agent, Sum(commission.amount).as_('pending_amount'),
-                where=where,
-                group_by=commission.agent)
-            if backend.name == 'sqlite':
-                sqlite_apply_types(query, [None, 'NUMERIC'])
-            cursor.execute(*query)
-            amounts.update(dict(cursor))
+        amounts = defaultdict(lambda: None)
+        query = commission.select(
+            commission.agent, Sum(commission.amount).as_('pending_amount'),
+            where=fields.SQL_OPERATORS['in'](
+                commission.agent, map(int, agents))
+            & (commission.invoice_line == Null),
+            group_by=commission.agent)
+        if backend.name == 'sqlite':
+            sqlite_apply_types(query, [None, 'NUMERIC'])
+        cursor.execute(*query)
+        amounts.update(dict(cursor))
         if backend.name == 'sqlite':
             for agent_id, amount in amounts.items():
                 if amount is not None:

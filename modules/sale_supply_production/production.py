@@ -7,7 +7,6 @@ from trytond.i18n import gettext
 from trytond.model import Model, ModelView, Workflow
 from trytond.model.exceptions import AccessError
 from trytond.pool import Pool, PoolMeta
-from trytond.tools import grouped_slice
 from trytond.transaction import Transaction, without_check_access
 
 
@@ -21,11 +20,9 @@ def process_sale_supply(func):
 
         sales = set()
         with without_check_access():
-            for sub_productions in grouped_slice(productions):
-                ids = [p.id for p in sub_productions]
-                sales.update([s.id for s in Sale.search([
-                                ('lines.productions', 'in', ids),
-                                ])])
+            sales.update([s.id for s in Sale.search([
+                            ('lines.productions', 'in', productions),
+                            ])])
         result = func(cls, productions)
         if sales:
             with transaction.set_context(

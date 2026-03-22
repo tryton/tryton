@@ -3,6 +3,7 @@
 
 from sql import Column, Literal
 
+from trytond import backend
 from trytond.pool import Pool
 from trytond.tools import grouped_slice
 
@@ -62,7 +63,8 @@ def fmany2one(
         values = set(filter(all,
                 (tuple(getattr(r, s) for s in sources) for r in records)))
         values2id = {}
-        for sub_values in grouped_slice(values):
+        for sub_values in grouped_slice(
+                values, backend.MAX_QUERY_PARAMS // len(target_fields)):
             domain = ['OR']
             for values in sub_values:
                 domain.append(

@@ -541,54 +541,51 @@ class HistoryTestCase(TestCase):
             [l.name for l in history.lines_at_stamp], ['a', 'b'])
 
     @with_transaction()
-    def test_search_cursor_max(self):
-        'Test search with number of history entries at database.IN_MAX'
+    def test_search_large_number(self):
+        'Test search with large number of history entries'
         pool = Pool()
         History = pool.get('test.history')
         transaction = Transaction()
-        database = transaction.database
 
         history = History(value=-1)
         history.save()
 
-        for history.value in range(database.IN_MAX + 1):
+        for history.value in range(1_000 + 1):
             history.save()
 
         with transaction.set_context(_datetime=datetime.datetime.max):
             record, = History.search([])
 
-            self.assertEqual(record.value, database.IN_MAX)
+            self.assertEqual(record.value, 1_000)
 
     @with_transaction()
-    def test_search_cursor_max_entries(self):
-        'Test search for skipping first history entries at database.IN_MAX'
+    def test_search_large_number_entries(self):
+        'Test search for skipping first history entries of large number'
         pool = Pool()
         History = pool.get('test.history')
         transaction = Transaction()
-        database = transaction.database
 
         for i in range(0, 2):
             history = History(value=-1)
             history.save()
 
-            for history.value in range(database.IN_MAX + 1):
+            for history.value in range(1_000 + 1):
                 history.save()
 
         with transaction.set_context(_datetime=datetime.datetime.max):
             records = History.search([])
 
-            self.assertEqual({r.value for r in records}, {database.IN_MAX})
+            self.assertEqual({r.value for r in records}, {1_000})
             self.assertEqual(len(records), 2)
 
     @with_transaction()
-    def test_search_cursor_max_histories(self):
-        'Test search with number of histories at database.IN_MAX'
+    def test_search_large_number_histories(self):
+        'Test search with large number of histories'
         pool = Pool()
         History = pool.get('test.history')
         transaction = Transaction()
-        database = transaction.database
 
-        n = database.IN_MAX + 1
+        n = 1_000
         History.create([{'value': 1}] * n)
 
         with transaction.set_context(_datetime=datetime.datetime.max):

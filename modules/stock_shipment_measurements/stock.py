@@ -13,7 +13,6 @@ from trytond.model import Index, ModelSQL, ModelView, Workflow, fields
 from trytond.modules.company.model import CompanyValueMixin
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Bool, Eval, Id
-from trytond.tools import grouped_slice
 from trytond.transaction import Transaction
 
 
@@ -282,15 +281,9 @@ class MeasurementsMixin(object):
                 where=table.state.in_(states)))
 
         if shipments is not None:
-            where = query.where
-            for sub_shipments in grouped_slice(shipments):
-                query.where = (
-                    where
-                    & fields.SQL_OPERATORS['in'](
-                        table.id, map(int, sub_shipments)))
-                cursor.execute(*query)
-        else:
-            cursor.execute(*query)
+            query.where &= fields.SQL_OPERATORS['in'](
+                table.id, map(int, shipments))
+        cursor.execute(*query)
 
         if shipments:
             cls.write(shipments, {})
@@ -328,17 +321,15 @@ class MeasurementsMixin(object):
 
         weights, volumes = {}, {}
         states = cls._measurements_states()
-        for sub_shipments in grouped_slice(
-                (s for s in shipments
+        query.where = fields.SQL_OPERATORS['in'](
+            table.id, map(int, (s for s in shipments
                     if s.state not in states
                     or s.internal_weight is None
-                    or s.internal_volume is None)):
-            query.where = fields.SQL_OPERATORS['in'](
-                table.id, [s.id for s in sub_shipments])
-            cursor.execute(*query)
-            for id_, weight, volume in cursor:
-                weights[id_] = weight
-                volumes[id_] = volume
+                    or s.internal_volume is None)))
+        cursor.execute(*query)
+        for id_, weight, volume in cursor:
+            weights[id_] = weight
+            volumes[id_] = volume
 
         for shipment in shipments:
             if 'weight' in names:

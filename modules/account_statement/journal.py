@@ -1,6 +1,8 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 
+from collections import defaultdict
+
 from sql import Window
 from sql.functions import FirstValue
 
@@ -10,7 +12,7 @@ from trytond.modules.currency.fields import Monetary
 from trytond.pool import Pool
 from trytond.pyson import Eval
 from trytond.rpc import RPC
-from trytond.tools import cursor_dict, grouped_slice, sqlite_apply_types
+from trytond.tools import cursor_dict, sqlite_apply_types
 from trytond.transaction import Transaction
 
 
@@ -129,38 +131,37 @@ class Journal(DeactivableMixin, ModelSQL, ModelView):
 
         result = {}
         for name in names:
-            result[name] = dict.fromkeys(id2currency.keys(), None)
+            result[name] = defaultdict(lambda: None)
 
-        for sub_ids in grouped_slice(id2currency.keys()):
-            columns = [statement.journal]
-            w = Window(
-                partition=[statement.journal],
-                order_by=[statement.date.desc, statement.id.desc])
+        columns = [statement.journal]
+        w = Window(
+            partition=[statement.journal],
+            order_by=[statement.date.desc, statement.id.desc])
+        if 'last_amount' in names:
+            columns.append(
+                FirstValue(statement.end_balance,
+                    window=w).as_('last_amount'))
+        if 'last_date' in names:
+            columns.append(
+                FirstValue(statement.date, window=w).as_('last_date'))
+        query = statement.select(*columns,
+            distinct=True,
+            where=(fields.SQL_OPERATORS['in'](
+                    statement.journal, id2currency.keys())
+                & (statement.state != 'cancelled')))
+        if backend.name == 'sqlite':
+            types = [None]
             if 'last_amount' in names:
-                columns.append(
-                    FirstValue(statement.end_balance,
-                        window=w).as_('last_amount'))
+                types.append('NUMERIC')
             if 'last_date' in names:
-                columns.append(
-                    FirstValue(statement.date, window=w).as_('last_date'))
-            query = statement.select(*columns,
-                distinct=True,
-                where=(fields.SQL_OPERATORS['in'](
-                        statement.journal, sub_ids)
-                    & (statement.state != 'cancelled')))
-            if backend.name == 'sqlite':
-                types = [None]
-                if 'last_amount' in names:
-                    types.append('NUMERIC')
-                if 'last_date' in names:
-                    types.append('DATE')
-                sqlite_apply_types(query, types)
-            cursor.execute(*query)
-            for row in cursor_dict(cursor):
-                journal = row['journal']
-                if 'last_amount' in names:
-                    result['last_amount'][journal] = (
-                        id2currency[journal].round(row['last_amount']))
-                if 'last_date' in names:
-                    result['last_date'][journal] = row['last_date']
+                types.append('DATE')
+            sqlite_apply_types(query, types)
+        cursor.execute(*query)
+        for row in cursor_dict(cursor):
+            journal = row['journal']
+            if 'last_amount' in names:
+                result['last_amount'][journal] = (
+                    id2currency[journal].round(row['last_amount']))
+            if 'last_date' in names:
+                result['last_date'][journal] = row['last_date']
         return result

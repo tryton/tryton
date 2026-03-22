@@ -832,12 +832,11 @@ class ModelStorage(Model):
 
         ids = dict.fromkeys(map(int, records))
         with without_check_access():
-            for sub_records in grouped_slice(records):
-                for record in ModelData.search([
-                            ('model', '=', cls.__name__),
-                            ('db_id', 'in', [r.id for r in sub_records]),
-                            ]):
-                    ids[record.db_id] = f'{record.module}.{record.fs_id}'
+            for record in ModelData.search([
+                        ('model', '=', cls.__name__),
+                        ('db_id', 'in', records),
+                        ]):
+                ids[record.db_id] = f'{record.module}.{record.fs_id}'
         return ids
 
     @classmethod
@@ -1453,33 +1452,20 @@ class ModelStorage(Model):
                     domains[context][domain].append(record)
                 # Select strategy depending if it is closer to one domain per
                 # record or one domain for all records
-                # Do not use IN_MAX to let spaces for the pyson domain
-                in_max = Transaction().database.IN_MAX
-                count = in_max // 10
                 for context, ctx_domains in domains.items():
                     if (not dict_domain
                             and len(ctx_domains) > len(records) * 0.5):
-                        new_domains = {}
-                        for sub_domains in grouped_slice(
-                                list(ctx_domains.keys()), count):
-                            grouped_domain = ['OR']
-                            grouped_records = []
-                            for d in sub_domains:
-                                sub_records = ctx_domains[d]
-                                grouped_records.extend(sub_records)
-                                relations = relation_domain(field, sub_records)
-                                if len(relations) > in_max:
-                                    break
-                                grouped_domain.append(
-                                    [('id', 'in',
-                                            [r.id for r in relations]), d])
-                            else:
-                                new_domains[freeze(grouped_domain)] = \
-                                    grouped_records
-                                continue
-                            break
-                        else:
-                            domains[context] = new_domains
+                        grouped_domain = ['OR']
+                        grouped_records = []
+                        for d, sub_records in ctx_domains.items():
+                            grouped_records.extend(sub_records)
+                            relations = relation_domain(field, sub_records)
+                            grouped_domain.append(
+                                [('id', 'in',
+                                        [r.id for r in relations]), d])
+                        domains[context] = {
+                            freeze(grouped_domain): grouped_records,
+                            }
             else:
                 domains[freeze(field.context)][freeze(field.domain)].extend(
                     records)
@@ -1517,68 +1503,67 @@ class ModelStorage(Model):
 
         def validate_relation_domain(field, records, Relation, domain):
             relations = relation_domain(field, records)
-            if relations:
-                for sub_relations in grouped_slice(relations):
-                    sub_relations = set(sub_relations)
-                    finds = Relation.search(['AND',
-                            [('id', 'in', [r.id for r in sub_relations])],
-                            domain,
-                            ])
-                    invalid_relations = sub_relations - set(finds)
-                    if Relation == cls and field._type not in {
-                            'many2one', 'one2many', 'many2many', 'one2one',
-                            'reference'}:
-                        invalid_records = invalid_relations
-                    elif field._type.endswith('2many'):
-                        invalid_records = [
-                            r for r in records
-                            if invalid_relations.intersection(
-                                getattr(r, field.name))]
-                    else:
-                        invalid_records = [
-                            r for r in records
-                            if getattr(r, field.name) in invalid_relations]
-                    if invalid_records:
-                        invalid_record = invalid_records.pop()
-                        if invalid_relations == invalid_records:
-                            invalid_relation = invalid_record
-                        else:
-                            invalid_relation = getattr(
-                                invalid_record, field.name)
-                        domain = field.domain
-                        if is_pyson(domain):
-                            domain = _record_eval_pyson(records[0], domain)
-                        if isinstance(domain, dict):
-                            domain = domain.get(Relation.__name__, [])
-                        msg = gettext(
-                            'ir.msg_domain_validation_record',
-                            **cls.__names__(field.name, invalid_record))
-                        fields = set()
-                        level = 0
-                        if field not in Relation._fields.values():
-                            expression = domain_parse(domain)
-                            for variable in expression.variables:
-                                parts = variable.split('.')
-                                fields.add(parts[0])
-                                level = max(level, len(parts))
-                        else:
-                            fields.add(field.name)
-                        for field_name in sorted(fields):
-                            env = EvalEnvironment(invalid_relation, Relation)
-                            invalid_domain = domain_inversion(
-                                domain, field_name, env)
-                            if isinstance(invalid_domain, bool):
-                                continue
-                            if (len(fields) > 1  # no need to evaluate
-                                    and eval_domain(invalid_domain, env)):
-                                continue
-                            field_def = Relation.fields_get(
-                                [field_name], level=level)
-                            raise DomainValidationError(
-                                msg, domain=(invalid_domain, field_def))
-                        field_def = Relation.fields_get(fields, level=level)
-                        raise DomainValidationError(
-                            msg, domain=(domain, field_def))
+            if not relations:
+                return
+            finds = Relation.search(['AND',
+                    [('id', 'in', relations)],
+                    domain,
+                    ])
+            invalid_relations = set(relations) - set(finds)
+            if Relation == cls and field._type not in {
+                    'many2one', 'one2many', 'many2many', 'one2one',
+                    'reference'}:
+                invalid_records = invalid_relations
+            elif field._type.endswith('2many'):
+                invalid_records = [
+                    r for r in records
+                    if invalid_relations.intersection(
+                        getattr(r, field.name))]
+            else:
+                invalid_records = [
+                    r for r in records
+                    if getattr(r, field.name) in invalid_relations]
+            if invalid_records:
+                invalid_record = invalid_records.pop()
+                if invalid_relations == invalid_records:
+                    invalid_relation = invalid_record
+                else:
+                    invalid_relation = getattr(
+                        invalid_record, field.name)
+                domain = field.domain
+                if is_pyson(domain):
+                    domain = _record_eval_pyson(records[0], domain)
+                if isinstance(domain, dict):
+                    domain = domain.get(Relation.__name__, [])
+                msg = gettext(
+                    'ir.msg_domain_validation_record',
+                    **cls.__names__(field.name, invalid_record))
+                fields = set()
+                level = 0
+                if field not in Relation._fields.values():
+                    expression = domain_parse(domain)
+                    for variable in expression.variables:
+                        parts = variable.split('.')
+                        fields.add(parts[0])
+                        level = max(level, len(parts))
+                else:
+                    fields.add(field.name)
+                for field_name in sorted(fields):
+                    env = EvalEnvironment(invalid_relation, Relation)
+                    invalid_domain = domain_inversion(
+                        domain, field_name, env)
+                    if isinstance(invalid_domain, bool):
+                        continue
+                    if (len(fields) > 1  # no need to evaluate
+                            and eval_domain(invalid_domain, env)):
+                        continue
+                    field_def = Relation.fields_get(
+                        [field_name], level=level)
+                    raise DomainValidationError(
+                        msg, domain=(invalid_domain, field_def))
+                field_def = Relation.fields_get(fields, level=level)
+                raise DomainValidationError(
+                    msg, domain=(domain, field_def))
 
         if field_names is None:
             field_names = cls._fields.keys()
@@ -1960,8 +1945,7 @@ class ModelStorage(Model):
                     s.add(id_)
                     yield id_
         read_size = max(1, min(
-                self._cache.size_limit, self._local_cache.size_limit,
-                self._transaction.database.IN_MAX))
+                self._cache.size_limit, self._local_cache.size_limit))
         index = self._ids.index(self.id)
         ids = islice(self._ids, index, index + read_size)
         ids = unique(filter(filter_, ids))

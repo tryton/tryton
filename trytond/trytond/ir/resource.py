@@ -10,7 +10,6 @@ from trytond.model import (
     Index, Model, ModelSQL, ModelStorage, ModelView, fields)
 from trytond.pool import Pool
 from trytond.pyson import Eval
-from trytond.tools import grouped_slice
 from trytond.transaction import Transaction, without_check_access
 
 __all__ = ['ResourceAccessMixin', 'ResourceMixin', 'resource_copy']
@@ -90,10 +89,9 @@ class ResourceAccessMixin(ModelStorage):
                         record.resource.id)
 
             for RModel, ids in resources.items():
-                for sub_ids in grouped_slice(ids):
-                    allowed.update(RModel.search([
-                                ('id', 'in', list(sub_ids)),
-                                ]))
+                allowed.update(RModel.search([
+                            ('id', 'in', ids),
+                            ]))
 
             records = [
                 r for r in records

@@ -15,7 +15,6 @@ from trytond.model import (
 from trytond.model.exceptions import ValidationError
 from trytond.pool import Pool
 from trytond.pyson import Eval, If, PYSONDecoder, TimeDelta
-from trytond.tools import grouped_slice
 from trytond.transaction import Transaction
 
 
@@ -204,20 +203,18 @@ class Trigger(DeactivableMixin, ModelSQL, ModelView):
         # Filter on limit_number
         if self.limit_number:
             new_ids = []
-            for sub_ids in grouped_slice(ids):
-                sub_ids = list(sub_ids)
-                where = fields.SQL_OPERATORS['in'](trigger_log.record_id, sub_ids)
-                cursor.execute(*trigger_log.select(
-                        trigger_log.record_id, Count(),
-                        where=where & (trigger_log.trigger == self.id),
-                        group_by=trigger_log.record_id))
-                number = dict(cursor)
-                for record_id in sub_ids:
-                    if record_id not in number:
-                        new_ids.append(record_id)
-                        continue
-                    if number[record_id] < self.limit_number:
-                        new_ids.append(record_id)
+            where = fields.SQL_OPERATORS['in'](trigger_log.record_id, ids)
+            cursor.execute(*trigger_log.select(
+                    trigger_log.record_id, Count(),
+                    where=where & (trigger_log.trigger == self.id),
+                    group_by=trigger_log.record_id))
+            number = dict(cursor)
+            for record_id in ids:
+                if record_id not in number:
+                    new_ids.append(record_id)
+                    continue
+                if number[record_id] < self.limit_number:
+                    new_ids.append(record_id)
             ids = new_ids
 
         # Filter on minimum_time_delay
@@ -229,25 +226,23 @@ class Trigger(DeactivableMixin, ModelSQL, ModelView):
             now, = cursor.fetchone()
             if isinstance(now, str):
                 now = datetime.datetime.fromisoformat(now)
-            for sub_ids in grouped_slice(ids):
-                sub_ids = list(sub_ids)
-                where = fields.SQL_OPERATORS['in'](
-                    trigger_log.record_id, sub_ids)
-                cursor.execute(*trigger_log.select(
-                        trigger_log.record_id, Max(trigger_log.create_date),
-                        where=where & (trigger_log.trigger == self.id),
-                        group_by=trigger_log.record_id))
-                delay = dict(cursor)
-                for record_id in sub_ids:
-                    if record_id not in delay:
-                        new_ids.append(record_id)
-                        continue
-                    # SQLite return string for MAX
-                    if isinstance(delay[record_id], str):
-                        delay[record_id] = datetime.datetime.fromisoformat(
-                            delay[record_id])
-                    if now - delay[record_id] >= self.minimum_time_delay:
-                        new_ids.append(record_id)
+            where = fields.SQL_OPERATORS['in'](
+                trigger_log.record_id, ids)
+            cursor.execute(*trigger_log.select(
+                    trigger_log.record_id, Max(trigger_log.create_date),
+                    where=where & (trigger_log.trigger == self.id),
+                    group_by=trigger_log.record_id))
+            delay = dict(cursor)
+            for record_id in ids:
+                if record_id not in delay:
+                    new_ids.append(record_id)
+                    continue
+                # SQLite return string for MAX
+                if isinstance(delay[record_id], str):
+                    delay[record_id] = datetime.datetime.fromisoformat(
+                        delay[record_id])
+                if now - delay[record_id] >= self.minimum_time_delay:
+                    new_ids.append(record_id)
             ids = new_ids
 
         records = Model.browse(ids)

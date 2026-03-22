@@ -158,12 +158,9 @@ class Queue(ModelSQL):
                     else:
                         instances = None
             else:
-                ids = set()
                 with inactive_records():
-                    for sub_ids in grouped_slice(instances):
-                        records = Model.search([('id', 'in', list(sub_ids))])
-                        ids.update(map(int, records))
-                if ids:
+                    records = Model.search([('id', 'in', instances)])
+                if ids := set(map(int, records)):
                     instances = Model.browse(
                         [i for i in instances if i in ids])
                 else:

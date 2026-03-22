@@ -22,8 +22,7 @@ from trytond.pool import Pool
 from trytond.pyson import Bool, Eval, Id, If, PYSONEncoder
 from trytond.report import Report
 from trytond.tools import (
-    grouped_slice, is_full_text, lstrip_wildcard, pair, sql_pairing,
-    sqlite_apply_types)
+    is_full_text, lstrip_wildcard, pair, sql_pairing, sqlite_apply_types)
 from trytond.transaction import Transaction, check_access, inactive_records
 from trytond.wizard import (
     Button, StateAction, StateTransition, StateView, Wizard)
@@ -1018,27 +1017,26 @@ class Account(
             ids = [a.id for a in c_accounts]
             with transaction.set_context(company=company.id):
                 line_query, fiscalyear_ids = MoveLine.query_get(line)
-            for sub_ids in grouped_slice(ids):
-                red_sql = fields.SQL_OPERATORS['in'](table_a.id, sub_ids)
-                if context.get('flat_balance'):
-                    query = (table_a
-                        .join(line, condition=line.account == table_a.id))
-                else:
-                    query = (table_a
-                        .join(table_c,
-                            condition=(table_c.left >= table_a.left)
-                            & (table_c.right <= table_a.right))
-                        .join(line, condition=line.account == table_c.id))
-                query = query.select(
-                    table_a.id,
-                    Sum(Coalesce(line.debit, 0) - Coalesce(line.credit, 0)
-                        ).as_('balance'),
-                    where=red_sql & line_query,
-                    group_by=table_a.id)
-                if backend.name == 'sqlite':
-                    sqlite_apply_types(query, [None, 'NUMERIC'])
-                cursor.execute(*query)
-                balances.update(dict(cursor))
+            red_sql = fields.SQL_OPERATORS['in'](table_a.id, ids)
+            if context.get('flat_balance'):
+                query = (table_a
+                    .join(line, condition=line.account == table_a.id))
+            else:
+                query = (table_a
+                    .join(table_c,
+                        condition=(table_c.left >= table_a.left)
+                        & (table_c.right <= table_a.right))
+                    .join(line, condition=line.account == table_c.id))
+            query = query.select(
+                table_a.id,
+                Sum(Coalesce(line.debit, 0) - Coalesce(line.credit, 0)
+                    ).as_('balance'),
+                where=red_sql & line_query,
+                group_by=table_a.id)
+            if backend.name == 'sqlite':
+                sqlite_apply_types(query, [None, 'NUMERIC'])
+            cursor.execute(*query)
+            balances.update(dict(cursor))
 
             for account in c_accounts:
                 balances[account.id] = account.currency.round(
@@ -1091,20 +1089,19 @@ class Account(
                     columns.append(
                         Sum(Coalesce(Column(line, name), 0)).as_(name))
                     types.append('NUMERIC')
-            for sub_ids in grouped_slice(ids):
-                red_sql = fields.SQL_OPERATORS['in'](table.id, sub_ids)
-                query = (table.join(line, 'LEFT',
-                        condition=line.account == table.id
-                        ).select(*columns,
-                        where=red_sql & line_query,
-                        group_by=table.id))
-                if backend.name == 'sqlite':
-                    sqlite_apply_types(query, types)
-                cursor.execute(*query)
-                for row in cursor:
-                    account_id = row[0]
-                    for i, name in enumerate(names, 1):
-                        result[name][account_id] = row[i]
+            where = fields.SQL_OPERATORS['in'](table.id, ids)
+            query = (table.join(line, 'LEFT',
+                    condition=line.account == table.id
+                    ).select(*columns,
+                    where=where & line_query,
+                    group_by=table.id))
+            if backend.name == 'sqlite':
+                sqlite_apply_types(query, types)
+            cursor.execute(*query)
+            for row in cursor:
+                account_id = row[0]
+                for i, name in enumerate(names, 1):
+                    result[name][account_id] = row[i]
             for account in c_accounts:
                 for name in names:
                     if name == 'line_count':
@@ -1161,14 +1158,12 @@ class Account(
         if fiscalyear.state == 'closed' and deferral:
             Deferral = pool.get(deferral)
             id2deferral = {}
-            ids = [a.id for a in accounts]
-            for sub_ids in grouped_slice(ids):
-                deferrals = Deferral.search([
-                    ('fiscalyear', '=', fiscalyear.id),
-                    ('account', 'in', list(sub_ids)),
-                    ])
-                for deferral in deferrals:
-                    id2deferral[deferral.account.id] = deferral
+            deferrals = Deferral.search([
+                ('fiscalyear', '=', fiscalyear),
+                ('account', 'in', accounts),
+                ])
+            for deferral in deferrals:
+                id2deferral[deferral.account.id] = deferral
 
             for account in accounts:
                 if account.id in id2deferral:
@@ -1246,26 +1241,24 @@ class Account(
         if field_names and not (field_names & {'closed', 'type'}):
             return
         accounts = [a for a in accounts if a.closed or not a.type]
-        for sub_accounts in grouped_slice(accounts):
-            sub_accounts = list(sub_accounts)
-            if Line.search([
-                        ('account', 'in', [a.id for a in sub_accounts]),
-                        ], order=[], limit=1):
-                for account in sub_accounts:
-                    if not account.closed:
-                        continue
-                    lines = Line.search([
-                            ('account', '=', account.id),
-                            ], order=[], limit=1)
-                    if lines:
-                        if account.closed:
-                            raise AccountValidationError(gettext(
-                                    'account.msg_account_closed_lines',
-                                    account=account.rec_name))
-                        elif account.type:
-                            raise AccountValidationError(gettext(
-                                    'account.msg_account_no_type_lines',
-                                    account=account.rec_name))
+        if Line.search([
+                    ('account', 'in', accounts),
+                    ], order=[], limit=1):
+            for account in accounts:
+                if not account.closed:
+                    continue
+                lines = Line.search([
+                        ('account', '=', account.id),
+                        ], order=[], limit=1)
+                if lines:
+                    if account.closed:
+                        raise AccountValidationError(gettext(
+                                'account.msg_account_closed_lines',
+                                account=account.rec_name))
+                    elif account.type:
+                        raise AccountValidationError(gettext(
+                                'account.msg_account_no_type_lines',
+                                account=account.rec_name))
 
     @classmethod
     def copy(cls, accounts, default=None):
@@ -1530,34 +1523,30 @@ class AccountParty(ActivePeriodMixin, ModelSQL):
             party_ids = {a.party.id for a in c_records}
             with transaction.set_context(company=company.id):
                 line_query, fiscalyear_ids = MoveLine.query_get(line)
-            for sub_account_ids in grouped_slice(account_ids):
-                account_sql = fields.SQL_OPERATORS['in'](
-                    table_a.id, sub_account_ids)
-                for sub_party_ids in grouped_slice(party_ids):
-                    party_sql = fields.SQL_OPERATORS['in'](
-                        line.party, sub_party_ids)
-                    if context.get('flat_balance'):
-                        query = (table_a
-                            .join(line, condition=line.account == table_a.id))
-                    else:
-                        query = (table_a
-                            .join(table_c,
-                                condition=(table_c.left >= table_a.left)
-                                & (table_c.right <= table_a.right))
-                            .join(line, condition=line.account == table_c.id))
-                    query = query.select(
-                        table_a.id,
-                        line.party,
-                        Sum(
-                            Coalesce(line.debit, 0)
-                            - Coalesce(line.credit, 0)).as_('balance'),
-                        where=account_sql & party_sql & line_query,
-                        group_by=[table_a.id, line.party])
-                    if backend.name == 'sqlite':
-                        sqlite_apply_types(query, [None, None, 'NUMERIC'])
-                    cursor.execute(*query)
-                    for account_id, party_id, balance in cursor:
-                        balances[pair(party_id, account_id)] = balance
+            account_sql = fields.SQL_OPERATORS['in'](table_a.id, account_ids)
+            party_sql = fields.SQL_OPERATORS['in'](line.party, party_ids)
+            if context.get('flat_balance'):
+                query = (table_a
+                    .join(line, condition=line.account == table_a.id))
+            else:
+                query = (table_a
+                    .join(table_c,
+                        condition=(table_c.left >= table_a.left)
+                        & (table_c.right <= table_a.right))
+                    .join(line, condition=line.account == table_c.id))
+            query = query.select(
+                table_a.id,
+                line.party,
+                Sum(
+                    Coalesce(line.debit, 0)
+                    - Coalesce(line.credit, 0)).as_('balance'),
+                where=account_sql & party_sql & line_query,
+                group_by=[table_a.id, line.party])
+            if backend.name == 'sqlite':
+                sqlite_apply_types(query, [None, None, 'NUMERIC'])
+            cursor.execute(*query)
+            for account_id, party_id, balance in cursor:
+                balances[pair(party_id, account_id)] = balance
 
             for record in c_records:
                 balances[record.id] = record.currency.round(
@@ -1609,24 +1598,20 @@ class AccountParty(ActivePeriodMixin, ModelSQL):
             with transaction.set_context(company=company.id):
                 line_query, fiscalyear_ids = MoveLine.query_get(line)
 
-            for sub_account_ids in grouped_slice(account_ids):
-                account_sql = fields.SQL_OPERATORS['in'](
-                    table.id, sub_account_ids)
-                for sub_party_ids in grouped_slice(party_ids):
-                    party_sql = fields.SQL_OPERATORS['in'](
-                        line.party, sub_party_ids)
-                    query = (table.join(line, 'LEFT',
-                            condition=line.account == table.id
-                            ).select(*columns,
-                            where=account_sql & party_sql & line_query,
-                            group_by=[table.id, line.party]))
-                    if backend.name == 'sqlite':
-                        sqlite_apply_types(query, types)
-                    cursor.execute(*query)
-                    for row in cursor:
-                        id_ = pair(*row[0:2])
-                        for i, name in enumerate(names, 2):
-                            result[name][id_] = row[i]
+            account_sql = fields.SQL_OPERATORS['in'](table.id, account_ids)
+            party_sql = fields.SQL_OPERATORS['in'](line.party, party_ids)
+            query = (table.join(line, 'LEFT',
+                    condition=line.account == table.id
+                    ).select(*columns,
+                    where=account_sql & party_sql & line_query,
+                    group_by=[table.id, line.party]))
+            if backend.name == 'sqlite':
+                sqlite_apply_types(query, types)
+            cursor.execute(*query)
+            for row in cursor:
+                id_ = pair(*row[0:2])
+                for i, name in enumerate(names, 2):
+                    result[name][id_] = row[i]
             for record in c_records:
                 for name in names:
                     if name == 'line_count':
@@ -1753,26 +1738,25 @@ class AccountDeferral(ModelSQL, ModelView):
         account_child = Account.__table__()
         balances = defaultdict(Decimal)
 
-        for sub_deferrals in grouped_slice(deferrals):
-            red_sql = fields.SQL_OPERATORS['in'](
-                table.id, [d.id for d in sub_deferrals])
-            query = (table
-                .join(account, condition=table.account == account.id)
-                .join(account_child,
-                    condition=(account_child.left >= account.left)
-                    & (account_child.right <= account.right))
-                .join(table_child,
-                    condition=(table_child.account == account_child.id)
-                    & (table_child.fiscalyear == table.fiscalyear))
-                .select(
-                    table.id.as_('id'),
-                    Sum(table_child.debit - table_child.credit).as_('balance'),
-                    where=red_sql,
-                    group_by=table.id))
-            if backend.name == 'sqlite':
-                sqlite_apply_types(query, [None, 'NUMERIC'])
-            cursor.execute(*query)
-            balances.update(dict(cursor))
+        where = fields.SQL_OPERATORS['in'](
+            table.id, [d.id for d in deferrals])
+        query = (table
+            .join(account, condition=table.account == account.id)
+            .join(account_child,
+                condition=(account_child.left >= account.left)
+                & (account_child.right <= account.right))
+            .join(table_child,
+                condition=(table_child.account == account_child.id)
+                & (table_child.fiscalyear == table.fiscalyear))
+            .select(
+                table.id.as_('id'),
+                Sum(table_child.debit - table_child.credit).as_('balance'),
+                where=where,
+                group_by=table.id))
+        if backend.name == 'sqlite':
+            sqlite_apply_types(query, [None, 'NUMERIC'])
+        cursor.execute(*query)
+        balances.update(dict(cursor))
         return balances
 
     def get_currency(self, name):
@@ -2490,25 +2474,22 @@ class GeneralLedgerLine(DescriptionOriginMixin, ModelSQL, ModelView):
             party_ids.add(r.party.id)
 
         query = account_party.select(
-            account_party.account, account_party.party, account_party.id)
-        for sub_account_ids in grouped_slice(account_ids):
-            account_where = fields.SQL_OPERATORS['in'](
-                account_party.account, sub_account_ids)
-            for sub_party_ids in grouped_slice(party_ids):
-                query.where = (account_where
-                    & fields.SQL_OPERATORS['in'](
-                        account_party.party, sub_party_ids))
-                cursor.execute(*query)
-                for account, party, id_ in cursor:
-                    key = (account, party)
-                    try:
-                        account_party_ids = account_party2ids[key]
-                    except KeyError:
-                        # There can be more combinations of account-party in
-                        # the database than from records
-                        continue
-                    for record_id in account_party_ids:
-                        account_parties[record_id] = id_
+            account_party.account, account_party.party, account_party.id,
+            where=fields.SQL_OPERATORS['in'](
+                account_party.account, account_ids)
+            & fields.SQL_OPERATORS['in'](
+                account_party.party, party_ids))
+        cursor.execute(*query)
+        for account, party, id_ in cursor:
+            key = (account, party)
+            try:
+                account_party_ids = account_party2ids[key]
+            except KeyError:
+                # There can be more combinations of account-party in
+                # the database than from records
+                continue
+            for record_id in account_party_ids:
+                account_parties[record_id] = id_
         return account_parties
 
     @classmethod

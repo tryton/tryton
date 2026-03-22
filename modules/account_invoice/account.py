@@ -1,6 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from collections import OrderedDict
+from collections import OrderedDict, defaultdict
 from itertools import islice
 
 from trytond.i18n import gettext
@@ -10,7 +10,6 @@ from trytond.modules.account.exceptions import ClosePeriodError
 from trytond.modules.company.model import CompanyValueMixin
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Bool, Eval, Id, If
-from trytond.tools import grouped_slice
 from trytond.transaction import Transaction
 
 from .exceptions import CancelInvoiceMoveWarning
@@ -224,13 +223,11 @@ class MoveLine(metaclass=PoolMeta):
         pool = Pool()
         InvoicePaymentLine = pool.get('account.invoice-account.move.line')
 
-        ids = list(map(int, lines))
-        result = dict.fromkeys(ids, None)
-        for sub_ids in grouped_slice(ids):
-            payment_lines = InvoicePaymentLine.search([
-                    ('line', 'in', list(sub_ids)),
-                    ])
-            result.update({p.line.id: p.invoice.id for p in payment_lines})
+        result = defaultdict(lambda: None)
+        payment_lines = InvoicePaymentLine.search([
+                ('line', 'in', lines),
+                ])
+        result.update({p.line.id: p.invoice.id for p in payment_lines})
         return result
 
     @classmethod
@@ -269,13 +266,10 @@ def _invoices_to_process(reconciliations):
             move_ids.add(line.move.id)
             others.update(line.reconciliations_delegated)
 
-    invoices = set()
-    for sub_ids in grouped_slice(move_ids):
-        sub_ids = list(sub_ids)
-        invoices.update(Invoice.search(['OR',
-                    ('move', 'in', sub_ids),
-                    ('additional_moves', 'in', sub_ids),
-                    ]))
+    invoices = set(Invoice.search(['OR',
+                ('move', 'in', move_ids),
+                ('additional_moves', 'in', move_ids),
+                ]))
     if others:
         invoices.update(_invoices_to_process(Reconciliation.browse(others)))
 

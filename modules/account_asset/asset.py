@@ -16,7 +16,7 @@ from trytond.modules.company import CompanyReport
 from trytond.modules.currency.fields import Monetary
 from trytond.pool import Pool
 from trytond.pyson import Bool, Eval, If
-from trytond.tools import cached_property, grouped_slice
+from trytond.tools import cached_property
 from trytond.transaction import Transaction, check_access, without_check_access
 from trytond.wizard import (
     Button, StateReport, StateTransition, StateView, Wizard)
@@ -559,13 +559,11 @@ class Asset(Workflow, ModelSQL, ModelView):
         cls.create_lines(assets)
 
         moves = []
-        lines = []
-        for asset_ids in grouped_slice(assets):
-            lines += Line.search([
-                    ('asset', 'in', list(asset_ids)),
-                    ('date', '<=', date),
-                    ('move', '=', None),
-                    ])
+        lines = Line.search([
+                ('asset', 'in', assets),
+                ('date', '<=', date),
+                ('move', '=', None),
+                ])
         for line in lines:
             moves.append(line.asset.get_move(line))
         Move.save(moves)

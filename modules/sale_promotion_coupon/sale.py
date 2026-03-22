@@ -15,7 +15,6 @@ from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval, If
 from trytond.sql.functions import DateRange
 from trytond.sql.operators import RangeOverlap
-from trytond.tools import grouped_slice
 from trytond.transaction import Transaction
 
 from .exceptions import PromotionCouponNumberDatesError
@@ -299,14 +298,10 @@ class PromotionCouponNumber(DeactivableMixin, ModelSQL, ModelView):
 
         query, table, active = cls._active_query()
         query.columns = [table.id, active]
-
-        result = {}
-        for sub_numbers in grouped_slice(numbers):
-            query.where = fields.SQL_OPERATORS['in'](
-                table.id, map(int, sub_numbers))
-            cursor.execute(*query)
-            result.update(dict(cursor))
-        return result
+        query.where = fields.SQL_OPERATORS['in'](
+            table.id, map(int, numbers))
+        cursor.execute(*query)
+        return dict(cursor)
 
     @classmethod
     def search_active(cls, name, clause):

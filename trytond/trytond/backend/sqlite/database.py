@@ -444,7 +444,6 @@ class Database(DatabaseInterface):
     flavor = Flavor(
         paramstyle='qmark', function_mapping=MAPPING,
         max_limit=-1, filter_=True)
-    IN_MAX = 200
 
     TYPES_MAPPING = {
         'BIGINT': SQLType('INTEGER', 'INTEGER'),

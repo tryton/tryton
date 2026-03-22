@@ -18,7 +18,6 @@ from trytond.modules.stock import StockMixin
 from trytond.modules.stock.exceptions import ShipmentCheckQuantityWarning
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Bool, Eval, If, Len
-from trytond.tools import grouped_slice
 from trytond.transaction import Transaction
 from trytond.wizard import Button, StateTransition, StateView, Wizard
 
@@ -81,12 +80,10 @@ class Lot(DeactivableMixin, ModelSQL, ModelView, LotMixin, StockMixin):
     def get_quantity(cls, lots, name):
         location_ids = Transaction().context.get('locations')
         product_ids = list(set(l.product.id for l in lots))
-        quantities = defaultdict(float)
-        for product_ids in grouped_slice(product_ids):
-            quantities.update(cls._get_quantity(lots, name, location_ids,
-                    grouping=('product', 'lot',),
-                    grouping_filter=(list(product_ids),)))
-        return quantities
+        return cls._get_quantity(
+            lots, name, location_ids,
+            grouping=('product', 'lot',),
+            grouping_filter=(product_ids,))
 
     @classmethod
     def search_quantity(cls, name, domain=None):
@@ -131,16 +128,13 @@ class Lot(DeactivableMixin, ModelSQL, ModelView, LotMixin, StockMixin):
         transaction = Transaction()
 
         def find_moves(cls, state=None):
-            for sub_records in grouped_slice(lots):
-                domain = [
-                    ('lot', 'in', [r.id for r in sub_records])
-                    ]
-                if state:
-                    domain.append(('state', '=', state))
-                moves = Move.search(domain, limit=1, order=[])
-                if moves:
-                    return True
-            return False
+            domain = [
+                ('lot', 'in', lots)
+                ]
+            if state:
+                domain.append(('state', '=', state))
+            moves = Move.search(domain, limit=1, order=[])
+            return bool(moves)
 
         super().check_modification(
             mode, lots, values=values, external=external)

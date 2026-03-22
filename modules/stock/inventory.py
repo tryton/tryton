@@ -11,7 +11,7 @@ from trytond.model import (
 from trytond.model.exceptions import AccessError
 from trytond.pool import Pool
 from trytond.pyson import Bool, Eval, If
-from trytond.tools import grouped_slice, is_full_text, lstrip_wildcard
+from trytond.tools import is_full_text, lstrip_wildcard
 from trytond.transaction import Transaction
 from trytond.wizard import Button, StateTransition, StateView, Wizard
 
@@ -257,11 +257,10 @@ class Inventory(Workflow, ModelSQL, ModelView, ChatMixin):
                 else:
                     product_ids = [l.product.id for l in inventory.lines]
                     pbl = defaultdict(int)
-                    for product_ids in grouped_slice(product_ids):
-                        pbl.update(Product.products_by_location(
-                                [inventory.location.id],
-                                grouping=grouping,
-                                grouping_filter=(list(product_ids),)))
+                    pbl.update(Product.products_by_location(
+                            [inventory.location.id],
+                            grouping=grouping,
+                            grouping_filter=(list(product_ids),)))
 
             # Update existing lines
             for line in inventory.lines:

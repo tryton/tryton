@@ -1,8 +1,10 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+
+from collections import defaultdict
+
 from trytond.model import fields
 from trytond.pool import Pool, PoolMeta
-from trytond.tools import grouped_slice
 from trytond.transaction import Transaction
 
 
@@ -24,20 +26,19 @@ class Lot(metaclass=PoolMeta):
         Date = pool.get('ir.date')
         SubscriptionLine = pool.get('sale.subscription.line')
 
-        subscribed_lines = {l.id: None for l in lots}
+        subscribed_lines = defaultdict(lambda: None)
         date = Transaction().context.get('date', Date.today())
-        for sub_lots in grouped_slice(lots):
-            lines = SubscriptionLine.search([
-                    ('asset_lot', 'in', [l.id for l in sub_lots]),
-                    [
-                        ('start_date', '<=', date),
-                        ['OR',
-                            ('end_date', '=', None),
-                            ('end_date', '>', date),
-                            ],
-                        ]
-                    ])
-            subscribed_lines.update((s.asset_lot.id, s.id) for s in lines)
+        lines = SubscriptionLine.search([
+                ('asset_lot', 'in', lots),
+                [
+                    ('start_date', '<=', date),
+                    ['OR',
+                        ('end_date', '=', None),
+                        ('end_date', '>', date),
+                        ],
+                    ]
+                ])
+        subscribed_lines.update((s.asset_lot.id, s.id) for s in lines)
         return subscribed_lines
 
     @classmethod

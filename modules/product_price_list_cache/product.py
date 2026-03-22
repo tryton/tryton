@@ -10,7 +10,6 @@ from trytond.cache import Cache, freeze
 from trytond.model import ModelSQL, dualmethod, fields
 from trytond.pool import Pool, PoolMeta
 from trytond.protocols.jsonrpc import JSONDecoder, JSONEncoder
-from trytond.tools import grouped_slice
 from trytond.transaction import Transaction
 
 dumps = partial(
@@ -163,23 +162,17 @@ class PriceListCache(ModelSQL):
         if price_lists is None and products is None:
             cursor.execute(*cache.delete())
         elif price_lists and products is None:
-            for sub_price_lists in grouped_slice(price_lists):
-                cursor.execute(*cache.delete(where=fields.SQL_OPERATORS['in'](
-                            cache.price_list, [
-                                p.id for p in sub_price_lists])))
+            cursor.execute(*cache.delete(where=fields.SQL_OPERATORS['in'](
+                        cache.price_list, map(int, price_lists))))
         elif price_lists is None and products:
-            for sub_products in grouped_slice(products):
-                cursor.execute(*cache.delete(where=fields.SQL_OPERATORS['in'](
-                            cache.product, [p.id for p in sub_products])))
+            cursor.execute(*cache.delete(where=fields.SQL_OPERATORS['in'](
+                        cache.product, map(int, products))))
         else:
-            for sub_products in grouped_slice(products):
-                for sub_price_lists in grouped_slice(price_lists):
-                    cursor.execute(*cache.delete(
-                            where=fields.SQL_OPERATORS['in'](
-                                cache.price_list, [
-                                    p.id for p in sub_price_lists])
-                            & fields.SQL_OPERATORS['in'](
-                                cache.product, [p.id for p in sub_products])))
+            cursor.execute(*cache.delete(
+                    where=fields.SQL_OPERATORS['in'](
+                        cache.price_list, map(int, price_lists))
+                    & fields.SQL_OPERATORS['in'](
+                        cache.product, map(int, products))))
 
     @classmethod
     def on_modification(cls, mode, records, field_names=None):

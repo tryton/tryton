@@ -42,7 +42,6 @@ from trytond.pyson import Bool, Eval, PYSONEncoder
 from trytond.report import Report, get_email
 from trytond.rpc import RPC
 from trytond.sendmail import send_message_transactional
-from trytond.tools import grouped_slice
 from trytond.tools.email_ import (
     EmailNotValidError, normalize_email, set_from_header, validate_email)
 from trytond.transaction import Transaction, without_check_access
@@ -319,16 +318,16 @@ class User(avatar_mixin(100, 'login'), DeactivableMixin, ModelSQL, ModelView):
             seconds=config.getint('session', 'max_age'))
         result = dict((u.id, 0) for u in users)
         with without_check_access():
-            for sub_ids in grouped_slice(users):
-                sessions = Session.search([
-                        ('create_uid', 'in', sub_ids),
-                        ], order=[('create_uid', 'ASC')])
+            sessions = Session.search([
+                    ('create_uid', 'in', users),
+                    ],
+                order=[('create_uid', 'ASC')])
 
-                def filter_(session):
-                    return abs(session.last_modified_at - now) < timeout
-                result.update(dict((i, len(list(g)))
-                        for i, g in groupby(filter(filter_, sessions),
-                            attrgetter('create_uid.id'))))
+            def filter_(session):
+                return abs(session.last_modified_at - now) < timeout
+            result.update(dict((i, len(list(g)))
+                    for i, g in groupby(filter(filter_, sessions),
+                        attrgetter('create_uid.id'))))
         return result
 
     @classmethod
@@ -882,10 +881,9 @@ class UserDevice(ModelSQL):
 
     @classmethod
     def clear(cls, logins):
-        for sub_logins in grouped_slice(logins):
-            cls.delete(cls.search([
-                        ('login', 'in', list(sub_logins)),
-                        ]))
+        cls.delete(cls.search([
+                    ('login', 'in', logins),
+                    ]))
 
 
 class UserAction(ModelSQL):

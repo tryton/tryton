@@ -4,7 +4,6 @@
 from trytond.model import ModelView, Workflow, fields
 from trytond.pool import PoolMeta
 from trytond.pyson import Eval
-from trytond.tools import grouped_slice
 from trytond.transaction import Transaction
 
 
@@ -45,12 +44,11 @@ class Purchase(metaclass=PoolMeta):
         table = cls.__table__()
 
         # Use SQL and before super to avoid two history entries
-        for sub_purchases in grouped_slice(purchases):
-            cursor.execute(*table.update(
-                    [table.revision],
-                    [table.revision + 1],
-                    where=fields.SQL_OPERATORS['in'](
-                        table.id, map(int, sub_purchases))))
+        cursor.execute(*table.update(
+                [table.revision],
+                [table.revision + 1],
+                where=fields.SQL_OPERATORS['in'](
+                    table.id, map(int, purchases))))
 
         super().draft(purchases)
 

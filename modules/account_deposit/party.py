@@ -12,7 +12,7 @@ from trytond.model import fields
 from trytond.modules.currency.fields import Monetary
 from trytond.modules.party.exceptions import EraseError
 from trytond.pool import Pool, PoolMeta
-from trytond.tools import grouped_slice, sqlite_apply_types
+from trytond.tools import sqlite_apply_types
 from trytond.transaction import Transaction
 
 
@@ -45,26 +45,25 @@ class Party(metaclass=PoolMeta):
 
         line_clause, _ = MoveLine.query_get(line)
 
-        for sub_parties in grouped_slice(parties):
-            party_clause = fields.SQL_OPERATORS['in'](
-                line.party, [p.id for p in sub_parties])
-            query = (line
-                .join(account, condition=account.id == line.account)
-                .join(account_type, condition=account.type == account_type.id)
-                .select(line.party,
-                    # Use credit - debit to positive deposit amount
-                    Sum(Coalesce(line.credit, 0) - Coalesce(line.debit, 0)
-                        ).as_('debit'),
-                    where=account_type.deposit
-                    & party_clause
-                    & (line.reconciliation == Null)
-                    & (account.company == user.company.id)
-                    & line_clause,
-                    group_by=line.party))
-            if backend.name == 'sqlite':
-                sqlite_apply_types(query, [None, 'NUMERIC'])
-            cursor.execute(*query)
-            values.update((p, currency.round(a)) for p, a in cursor)
+        party_clause = fields.SQL_OPERATORS['in'](
+            line.party, [p.id for p in parties])
+        query = (line
+            .join(account, condition=account.id == line.account)
+            .join(account_type, condition=account.type == account_type.id)
+            .select(line.party,
+                # Use credit - debit to positive deposit amount
+                Sum(Coalesce(line.credit, 0) - Coalesce(line.debit, 0)
+                    ).as_('debit'),
+                where=account_type.deposit
+                & party_clause
+                & (line.reconciliation == Null)
+                & (account.company == user.company.id)
+                & line_clause,
+                group_by=line.party))
+        if backend.name == 'sqlite':
+            sqlite_apply_types(query, [None, 'NUMERIC'])
+        cursor.execute(*query)
+        values.update((p, currency.round(a)) for p, a in cursor)
         return values
 
     @classmethod

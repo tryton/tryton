@@ -10,7 +10,6 @@ from trytond.model import Check, Index, ModelSQL, ModelView, fields
 from trytond.model.exceptions import AccessError, ValidationError
 from trytond.pool import Pool
 from trytond.pyson import Eval, If, PYSONDecoder
-from trytond.tools import grouped_slice
 from trytond.transaction import Transaction, inactive_records
 
 
@@ -346,18 +345,13 @@ class Rule(ModelSQL, ModelView):
         transaction = Transaction()
 
         def test_domain(ids, domain):
-            wrong_ids = []
             # Use root to prevent infinite recursion
             with transaction.set_user(0, set_context=True), inactive_records():
-                for sub_ids in grouped_slice(ids):
-                    sub_ids = list(sub_ids)
-                    records = Model.search([
-                            ('id', 'in', sub_ids),
-                            domain,
-                            ], order=[])
-                    wrong_ids.extend(
-                        set(sub_ids).difference(map(int, records)))
-            return wrong_ids
+                records = Model.search([
+                        ('id', 'in', ids),
+                        domain,
+                        ], order=[])
+            return list(set(ids).difference(map(int, records)))
 
         domain = cls.domain_get(model_name, mode=mode)
         forbidden = test_domain(ids, domain)

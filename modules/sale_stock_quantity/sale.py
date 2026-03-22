@@ -9,7 +9,7 @@ from operator import attrgetter
 from trytond.i18n import gettext
 from trytond.model import ModelView, Workflow, fields
 from trytond.pool import Pool, PoolMeta
-from trytond.tools import grouped_slice, sortable_values
+from trytond.tools import sortable_values
 from trytond.transaction import Transaction
 
 from .exceptions import StockQuantityError, StockQuantityWarning
@@ -104,12 +104,11 @@ class Sale(metaclass=PoolMeta):
                     stock_date_start=date,
                     stock_date_end=date):
                 pbl = defaultdict(int)
-                for sub_products in grouped_slice(products):
-                    sub_product_ids = [p.id for p in sub_products]
-                    pbl.update(Product.products_by_location(
-                            [warehouse.id],
-                            with_childs=True,
-                            grouping_filter=(sub_product_ids,)))
+                product_ids = [p.id for p in products]
+                pbl.update(Product.products_by_location(
+                        [warehouse.id],
+                        with_childs=True,
+                        grouping_filter=(product_ids,)))
             delta = {}
             for key, qty in pbl.items():
                 _, product_id = key
@@ -153,27 +152,26 @@ class Sale(metaclass=PoolMeta):
                 (p, p.forecast_quantity) for p in products)
 
             # Remove quantities from other sales
-            for sub_products in grouped_slice(products):
-                other_lines = Line.search([
-                        ('sale.company', '=', self.company.id),
-                        ('sale.state', 'in', self._stock_quantity_states()),
-                        ('sale.id', '!=', self.id),
-                        ('product', 'in', sub_products),
-                        ('quantity', '>', 0),
-                        ])
-                for line in other_lines:
-                    if line.warehouse != warehouse:
-                        continue
-                    if (line.shipping_date
-                            and line.shipping_date > shipping_date):
-                        continue
-                    product = line.product
-                    date = line.sale.sale_date or today
-                    if date > today:
-                        continue
-                    quantity = Uom.compute_qty(line.unit, line.quantity,
-                        product.default_uom, round=False)
-                    quantities[line.warehouse][product] -= quantity
+            other_lines = Line.search([
+                    ('sale.company', '=', self.company.id),
+                    ('sale.state', 'in', self._stock_quantity_states()),
+                    ('sale.id', '!=', self.id),
+                    ('product', 'in', products),
+                    ('quantity', '>', 0),
+                    ])
+            for line in other_lines:
+                if line.warehouse != warehouse:
+                    continue
+                if (line.shipping_date
+                        and line.shipping_date > shipping_date):
+                    continue
+                product = line.product
+                date = line.sale.sale_date or today
+                if date > today:
+                    continue
+                quantity = Uom.compute_qty(line.unit, line.quantity,
+                    product.default_uom, round=False)
+                quantities[line.warehouse][product] -= quantity
 
         for line in lines:
             warehouse = line.warehouse

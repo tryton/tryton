@@ -13,7 +13,7 @@ from trytond.model import Exclude, ModelSQL, ModelView, fields
 from trytond.modules.product.exceptions import TemplateValidationError
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Bool, Eval, If
-from trytond.tools import grouped_slice, slugify
+from trytond.tools import slugify
 from trytond.transaction import Transaction
 
 from . import graphql
@@ -481,11 +481,9 @@ class Product_TariffCode(IdentifiersUpdateMixin, metaclass=PoolMeta):
             elif isinstance(record.product, Category):
                 categories.add(record.product)
         if categories:
-            for sub_categories in grouped_slice(list(categories)):
-                templates.update(Template.search([
-                            ('customs_category', 'in',
-                                [c.id for c in sub_categories]),
-                            ]))
+            templates.update(Template.search([
+                        ('customs_category', 'in', map(int, categories)),
+                        ]))
         templates = Template.browse(list(templates))
         return Template.get_shopify_identifier_to_update(templates)
 
@@ -579,11 +577,9 @@ class AttributeSet(IdentifiersUpdateMixin, metaclass=PoolMeta):
     def get_shopify_identifier_to_update(cls, sets):
         pool = Pool()
         Template = pool.get('product.template')
-        templates = []
-        for sub_sets in grouped_slice(sets):
-            templates.extend(Template.search([
-                        ('attribute_set', 'in', [s.id for s in sub_sets]),
-                        ]))
+        templates = Template.search([
+                ('attribute_set', 'in', sets),
+                ])
         return Template.get_shopify_identifier_to_update(templates)
 
 

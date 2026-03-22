@@ -21,8 +21,7 @@ from trytond.modules.currency.fields import Monetary
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval, If
 from trytond.rpc import RPC
-from trytond.tools import (
-    cursor_dict, grouped_slice, sortable_values, sqlite_apply_types)
+from trytond.tools import cursor_dict, sortable_values, sqlite_apply_types
 from trytond.transaction import Transaction
 from trytond.wizard import StateAction, Wizard
 
@@ -201,32 +200,31 @@ class Group(ModelSQL, ModelView, ChatMixin):
                 ).as_('payment_not_complete'),
             ]
 
-        for sub_groups in grouped_slice(groups):
-            query = payment.select(*columns,
-                where=fields.SQL_OPERATORS['in'](
-                    payment.group, map(int, sub_groups)),
-                group_by=payment.group)
-            if backend.name == 'sqlite':
-                sqlite_apply_types(
-                    query, [None, None, 'NUMERIC', 'NUMERIC', None])
-            cursor.execute(*query)
-            for row in cursor_dict(cursor):
-                group = cls(row['group_id'])
+        query = payment.select(*columns,
+            where=fields.SQL_OPERATORS['in'](
+                payment.group, map(int, groups)),
+            group_by=payment.group)
+        if backend.name == 'sqlite':
+            sqlite_apply_types(
+                query, [None, None, 'NUMERIC', 'NUMERIC', None])
+        cursor.execute(*query)
+        for row in cursor_dict(cursor):
+            group = cls(row['group_id'])
 
-                result['payment_count'][group.id] = row['payment_count']
-                result['payment_complete'][group.id] = \
-                    not row['payment_not_complete']
+            result['payment_count'][group.id] = row['payment_count']
+            result['payment_complete'][group.id] = \
+                not row['payment_not_complete']
 
-                amount = row['payment_amount']
-                succeeded = row['payment_amount_succeeded']
+            amount = row['payment_amount']
+            succeeded = row['payment_amount_succeeded']
 
-                if amount is not None and backend.name == 'sqlite':
-                    amount = group.company.currency.round(amount)
-                result['payment_amount'][group.id] = amount
+            if amount is not None and backend.name == 'sqlite':
+                amount = group.company.currency.round(amount)
+            result['payment_amount'][group.id] = amount
 
-                if succeeded is not None and backend.name == 'sqlite':
-                    succeeded = group.company.currency.round(succeeded)
-                result['payment_amount_succeeded'][group.id] = succeeded
+            if succeeded is not None and backend.name == 'sqlite':
+                succeeded = group.company.currency.round(succeeded)
+            result['payment_amount_succeeded'][group.id] = succeeded
 
         for key in list(result.keys()):
             if key not in names:

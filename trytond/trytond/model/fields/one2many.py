@@ -2,7 +2,6 @@
 # this repository contains the full copyright notices and license terms.
 import warnings
 from collections import defaultdict
-from itertools import chain
 
 from sql import Literal
 from sql.conditionals import Coalesce
@@ -11,7 +10,7 @@ from sql.operators import Exists
 import trytond.config as config
 from trytond.pool import Pool
 from trytond.pyson import PYSONEncoder
-from trytond.tools import cached_property, grouped_slice
+from trytond.tools import cached_property
 from trytond.transaction import Transaction
 
 from .field import (
@@ -156,17 +155,14 @@ class One2Many(Field):
             order += self.order
         elif Target._order:
             order += Target._order
-        targets = []
-        for sub_ids in grouped_slice(ids):
-            if reference_key:
-                references = ['%s,%s' % (model.__name__, x) for x in sub_ids]
-                clause = [(self.field, 'in', references)]
-            else:
-                clause = [(self.field, 'in', list(sub_ids))]
-            if self.filter:
-                clause.append(self.filter)
-            targets.append([r.id for r in Target.search(clause, order=order)])
-        to_read = list(chain(*targets))
+        if reference_key:
+            references = ['%s,%s' % (model.__name__, x) for x in ids]
+            clause = [(self.field, 'in', references)]
+        else:
+            clause = [(self.field, 'in', ids)]
+        if self.filter:
+            clause.append(self.filter)
+        to_read = [r.id for r in Target.search(clause, order=order)]
         targets = {t['id']: t
             for t in Target.read(to_read, ['id', self.field])}
 
@@ -235,7 +231,6 @@ class One2Many(Field):
             to_delete.extend(Target.browse(target_ids))
 
         def add(ids, target_ids):
-            target_ids = list(map(int, target_ids))
             if not target_ids:
                 return
             targets = Target.browse(target_ids)
@@ -249,17 +244,15 @@ class One2Many(Field):
                                 }))
 
         def remove(ids, target_ids):
-            target_ids = list(map(int, target_ids))
             if not target_ids:
                 return
-            for sub_ids in grouped_slice(target_ids):
-                targets = Target.search([
-                        search_clause(ids),
-                        ('id', 'in', list(sub_ids)),
-                        ])
-                to_write.extend((targets, {
-                            self.field: None,
-                            }))
+            targets = Target.search([
+                    search_clause(ids),
+                    ('id', 'in', target_ids),
+                    ])
+            to_write.extend((targets, {
+                        self.field: None,
+                        }))
 
         def copy(ids, copy_ids, default=None):
             copy_ids = list(map(int, copy_ids))

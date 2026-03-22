@@ -13,7 +13,6 @@ from trytond.modules import get_module_info, get_modules
 from trytond.pool import Pool
 from trytond.pyson import Eval
 from trytond.rpc import RPC
-from trytond.tools import grouped_slice
 from trytond.transaction import Transaction
 from trytond.wizard import (
     Button, StateAction, StateTransition, StateView, Wizard)
@@ -249,11 +248,10 @@ class Module(ModelSQL, ModelView):
         pool = Pool()
         Dependency = pool.get('ir.module.dependency')
         module_names = get_modules(with_test=Pool.test)
-        for sub_module_names in grouped_slice(module_names):
-            cls.delete(cls.search([
-                        ('state', '!=', 'activated'),
-                        ('name', 'not in', list(sub_module_names)),
-                        ]))
+        cls.delete(cls.search([
+                    ('state', '!=', 'activated'),
+                    ('name', 'not in', module_names),
+                    ]))
         modules = cls.search([])
         name2module = {m.name: m for m in modules}
 
@@ -303,12 +301,10 @@ class ModuleDependency(ModelSQL, ModelView):
     def get_state(cls, dependencies, name):
         pool = Pool()
         Module = pool.get('ir.module')
-        modules = []
         names = [d.name for d in dependencies]
-        for sub_names in grouped_slice(names):
-            modules.extend(Module.search([
-                        ('name', 'in', list(sub_names)),
-                        ]))
+        modules = Module.search([
+                ('name', 'in', names),
+                ])
         name2state = {m.name: m.state for m in modules}
         return {d.id: name2state.get(d.name, 'unknown') for d in dependencies}
 

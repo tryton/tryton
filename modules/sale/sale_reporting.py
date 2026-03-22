@@ -15,7 +15,7 @@ from trytond.model import ModelSQL, ModelView, UnionMixin, fields, sum_tree
 from trytond.modules.currency.fields import Monetary
 from trytond.pool import Pool
 from trytond.pyson import Eval, If
-from trytond.tools import grouped_slice, pairwise_longest
+from trytond.tools import pairwise_longest
 from trytond.tools.chart import sparkline
 from trytond.transaction import Transaction
 from trytond.wizard import StateAction, StateTransition, Wizard
@@ -513,16 +513,13 @@ class CustomerCategoryTree(ModelSQL, ModelView):
         categories = cls.search([
                 ('parent', 'child_of', [c.id for c in categories]),
                 ])
-        ids = [c.id for c in categories]
         reporting_customer_categories = []
-        for sub_ids in grouped_slice(ids):
-            sub_ids = list(sub_ids)
-            where = fields.SQL_OPERATORS['in'](
-                reporting_product_category.id, sub_ids)
-            cursor.execute(
-                *reporting_product_category.select(
-                    reporting_product_category.id, where=where))
-            reporting_customer_categories.extend(r for r, in cursor)
+        where = fields.SQL_OPERATORS['in'](
+            reporting_product_category.id, map(int, categories))
+        cursor.execute(
+            *reporting_product_category.select(
+                reporting_product_category.id, where=where))
+        reporting_customer_categories.extend(r for r, in cursor)
 
         result = {}
         reporting_product_categories = ReportingCustomerCategory.browse(
@@ -755,16 +752,13 @@ class ProductCategoryTree(ModelSQL, ModelView):
         categories = cls.search([
                 ('parent', 'child_of', [c.id for c in categories]),
                 ])
-        ids = [c.id for c in categories]
         reporting_product_categories = []
-        for sub_ids in grouped_slice(ids):
-            sub_ids = list(sub_ids)
-            where = fields.SQL_OPERATORS['in'](
-                reporting_product_category.id, sub_ids)
-            cursor.execute(
-                *reporting_product_category.select(
-                    reporting_product_category.id, where=where))
-            reporting_product_categories.extend(r for r, in cursor)
+        where = fields.SQL_OPERATORS['in'](
+            reporting_product_category.id, map(int, categories))
+        cursor.execute(
+            *reporting_product_category.select(
+                reporting_product_category.id, where=where))
+        reporting_product_categories.extend(r for r, in cursor)
 
         result = {}
         reporting_product_categories = ReportingProductCategory.browse(

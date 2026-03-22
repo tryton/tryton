@@ -16,6 +16,10 @@ The backend manages the database connection and schema manipulation.
 
    The name of the backend configured.
 
+.. attribute:: MAX_QUERY_PARAMS
+
+   The maximum number of parameters supported by the backend.
+
 Database
 ========
 

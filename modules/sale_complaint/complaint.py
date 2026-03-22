@@ -8,6 +8,7 @@ from decimal import Decimal
 from sql import Null
 from sql.functions import CharLength
 
+from trytond import backend
 from trytond.i18n import gettext
 from trytond.model import (
     ChatMixin, DeactivableMixin, Index, ModelSQL, ModelView, Workflow, fields)
@@ -392,7 +393,8 @@ class Complaint(Workflow, ModelSQL, ModelView, ChatMixin):
     def _check_similar(cls, complaints):
         pool = Pool()
         Warning = pool.get('res.user.warning')
-        for sub_complaints in grouped_slice(complaints):
+        for sub_complaints in grouped_slice(
+                complaints, backend.MAX_QUERY_PARAMS // 10):
             sub_complaints = list(sub_complaints)
             domain = list(filter(None,
                     (c._similar_domain() for c in sub_complaints)))

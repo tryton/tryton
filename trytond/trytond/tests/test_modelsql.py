@@ -742,11 +742,6 @@ class ModelSQLTestCase(TestCase):
         pool = Pool()
         Model = pool.get('test.modelsql.fk.tree')
 
-        # Delete all records at a time
-        in_max = Transaction().database.IN_MAX
-        self.addCleanup(setattr, Transaction().database, 'IN_MAX', in_max)
-        Transaction().database.IN_MAX = 2
-
         parent = Model()
         parent.save()
         child = Model(parent_restrict=parent)
@@ -759,11 +754,6 @@ class ModelSQLTestCase(TestCase):
         "Test tree Foreign key on delete restrict grouped branch"
         pool = Pool()
         Model = pool.get('test.modelsql.fk.tree')
-
-        # Delete one record at a time
-        in_max = Transaction().database.IN_MAX
-        self.addCleanup(setattr, Transaction().database, 'IN_MAX', in_max)
-        Transaction().database.IN_MAX = 1
 
         parent = Model()
         parent.save()

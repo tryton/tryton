@@ -13,7 +13,6 @@ from trytond.modules.currency.fields import Monetary
 from trytond.modules.product import price_digits, round_price
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
-from trytond.tools import grouped_slice
 from trytond.transaction import Transaction
 
 
@@ -93,23 +92,21 @@ class Work(metaclass=PoolMeta):
         work = Work.__table__()
         line = Line.__table__()
 
-        work_ids = [w.id for w in works]
-        for sub_ids in grouped_slice(work_ids):
-            where = fields.SQL_OPERATORS['in'](table.id, sub_ids)
-            cursor.execute(*table.join(work,
-                    condition=(
-                        Concat(cls.__name__ + ',', table.id) == work.origin)
-                    ).join(line, condition=line.work == work.id
-                    ).select(table.id, Sum(line.cost_price * line.duration),
-                    where=where,
-                    group_by=[table.id]))
-            for work_id, cost in cursor:
-                # SQLite stores timedelta as float
-                if isinstance(cost, dt.timedelta):
-                    cost = cost.total_seconds()
-                # Convert from seconds
-                cost /= 60 * 60
-                yield work_id, Decimal(str(cost))
+        where = fields.SQL_OPERATORS['in'](table.id, map(int, works))
+        cursor.execute(*table.join(work,
+                condition=(
+                    Concat(cls.__name__ + ',', table.id) == work.origin)
+                ).join(line, condition=line.work == work.id
+                ).select(table.id, Sum(line.cost_price * line.duration),
+                where=where,
+                group_by=[table.id]))
+        for work_id, cost in cursor:
+            # SQLite stores timedelta as float
+            if isinstance(cost, dt.timedelta):
+                cost = cost.total_seconds()
+            # Convert from seconds
+            cost /= 60 * 60
+            yield work_id, Decimal(str(cost))
 
     @classmethod
     def _purchase_cost(cls, works):
@@ -131,27 +128,25 @@ class Work(metaclass=PoolMeta):
         invoice = Invoice.__table__()
         company = Company.__table__()
 
-        work_ids = [w.id for w in works]
         work2currency = {}
         iline2work = {}
-        for sub_ids in grouped_slice(work_ids):
-            where = fields.SQL_OPERATORS['in'](table.id, sub_ids)
-            cursor.execute(*table.join(purchase_line,
-                    condition=purchase_line.work == table.id
-                    ).join(invoice_line,
-                    condition=invoice_line.origin == Concat(
-                        'purchase.line,', purchase_line.id)
-                    ).join(invoice,
-                    condition=invoice_line.invoice == invoice.id
-                    ).select(invoice_line.id, table.id,
-                    where=where & ~invoice.state.in_(['draft', 'cancelled'])))
-            iline2work.update(cursor)
+        where = fields.SQL_OPERATORS['in'](table.id, map(int, works))
+        cursor.execute(*table.join(purchase_line,
+                condition=purchase_line.work == table.id
+                ).join(invoice_line,
+                condition=invoice_line.origin == Concat(
+                    'purchase.line,', purchase_line.id)
+                ).join(invoice,
+                condition=invoice_line.invoice == invoice.id
+                ).select(invoice_line.id, table.id,
+                where=where & ~invoice.state.in_(['draft', 'cancelled'])))
+        iline2work.update(cursor)
 
-            cursor.execute(*table.join(company,
-                    condition=table.company == company.id
-                    ).select(table.id, company.currency,
-                    where=where))
-            work2currency.update(cursor)
+        cursor.execute(*table.join(company,
+                condition=table.company == company.id
+                ).select(table.id, company.currency,
+                where=where))
+        work2currency.update(cursor)
 
         currencies = Currency.browse(set(work2currency.values()))
         id2currency = {c.id: c for c in currencies}

@@ -21,7 +21,7 @@ from trytond.pool import Pool
 from trytond.pyson import Bool, Eval, If, PYSONEncoder
 from trytond.report import Report
 from trytond.rpc import RPC
-from trytond.tools import firstline, grouped_slice, sqlite_apply_types
+from trytond.tools import firstline, sqlite_apply_types
 from trytond.transaction import Transaction, check_access
 from trytond.wizard import (
     Button, StateAction, StateTransition, StateView, Wizard)
@@ -361,33 +361,32 @@ class Move(DescriptionOriginMixin, ModelSQL, ModelView):
 
         for company, moves in groupby(moves, key=lambda m: m.company):
             currency = company.currency
-            for sub_moves in grouped_slice(list(moves)):
-                red_sql = fields.SQL_OPERATORS['in'](
-                    line.move, [m.id for m in sub_moves])
+            where = fields.SQL_OPERATORS['in'](
+                line.move, [m.id for m in moves])
 
-                valid_move_query = line.select(
-                    line.move,
-                    where=red_sql,
-                    group_by=line.move,
-                    having=Abs(Round(
-                            Sum(line.debit - line.credit),
-                            currency.digits)) < abs(currency.rounding))
-                cursor.execute(*line.update(
-                        [line.state],
-                        ['valid'],
-                        where=line.move.in_(valid_move_query)))
+            valid_move_query = line.select(
+                line.move,
+                where=where,
+                group_by=line.move,
+                having=Abs(Round(
+                        Sum(line.debit - line.credit),
+                        currency.digits)) < abs(currency.rounding))
+            cursor.execute(*line.update(
+                    [line.state],
+                    ['valid'],
+                    where=line.move.in_(valid_move_query)))
 
-                draft_move_query = line.select(
-                    line.move,
-                    where=red_sql,
-                    group_by=line.move,
-                    having=Abs(Round(
-                            Sum(line.debit - line.credit),
-                            currency.digits)) >= abs(currency.rounding))
-                cursor.execute(*line.update(
-                        [line.state],
-                        ['draft'],
-                        where=line.move.in_(draft_move_query)))
+            draft_move_query = line.select(
+                line.move,
+                where=where,
+                group_by=line.move,
+                having=Abs(Round(
+                        Sum(line.debit - line.credit),
+                        currency.digits)) >= abs(currency.rounding))
+            cursor.execute(*line.update(
+                    [line.state],
+                    ['draft'],
+                    where=line.move.in_(draft_move_query)))
 
         Transaction().counter += 1
         for cache in Transaction().cache.values():
@@ -460,53 +459,49 @@ class Move(DescriptionOriginMixin, ModelSQL, ModelView):
                 today = Date.today()
             currency = company.currency
             c_moves = list(c_moves)
-            for sub_moves in grouped_slice(c_moves):
-                sub_moves_ids = [m.id for m in sub_moves]
+            moves_ids = [m.id for m in moves]
 
-                cursor.execute(*move.select(
-                        move.id,
-                        where=fields.SQL_OPERATORS['in'](
-                            move.id, sub_moves_ids)
-                        & ~Exists(line.select(
-                                line.move,
-                                where=line.move == move.id))))
-                try:
-                    move_id, = cursor.fetchone()
-                except TypeError:
-                    pass
-                else:
-                    raise PostError(
-                        gettext('account.msg_post_empty_move',
-                            move=cls(move_id).rec_name))
+            cursor.execute(*move.select(
+                    move.id,
+                    where=fields.SQL_OPERATORS['in'](move.id, moves_ids)
+                    & ~Exists(line.select(
+                            line.move,
+                            where=line.move == move.id))))
+            try:
+                move_id, = cursor.fetchone()
+            except TypeError:
+                pass
+            else:
+                raise PostError(
+                    gettext('account.msg_post_empty_move',
+                        move=cls(move_id).rec_name))
 
-                cursor.execute(*line.select(
-                        line.move,
-                        where=fields.SQL_OPERATORS['in'](
-                            line.move, sub_moves_ids),
-                        group_by=line.move,
-                        having=Abs(Round(
-                                Sum(line.debit - line.credit),
-                                currency.digits)) >= abs(currency.rounding)))
-                try:
-                    move_id, = cursor.fetchone()
-                except TypeError:
-                    pass
-                else:
-                    raise PostError(
-                        gettext('account.msg_post_unbalanced_move',
-                            move=cls(move_id).rec_name))
+            cursor.execute(*line.select(
+                    line.move,
+                    where=fields.SQL_OPERATORS['in'](line.move, moves_ids),
+                    group_by=line.move,
+                    having=Abs(Round(
+                            Sum(line.debit - line.credit),
+                            currency.digits)) >= abs(currency.rounding)))
+            try:
+                move_id, = cursor.fetchone()
+            except TypeError:
+                pass
+            else:
+                raise PostError(
+                    gettext('account.msg_post_unbalanced_move',
+                        move=cls(move_id).rec_name))
 
-                cursor.execute(*line.select(
-                        line.id,
-                        where=fields.SQL_OPERATORS['in'](
-                            line.move, sub_moves_ids)
-                        & (line.debit == Decimal(0))
-                        & (line.credit == Decimal(0))
-                        & (line.reconciliation == Null)
-                        & ((line.amount_second_currency == Null)
-                            | (line.amount_second_currency == Decimal(0)))
-                        ))
-                to_reconcile.extend(l for l, in cursor)
+            cursor.execute(*line.select(
+                    line.id,
+                    where=fields.SQL_OPERATORS['in'](line.move, moves_ids)
+                    & (line.debit == Decimal(0))
+                    & (line.credit == Decimal(0))
+                    & (line.reconciliation == Null)
+                    & ((line.amount_second_currency == Null)
+                        | (line.amount_second_currency == Decimal(0)))
+                    ))
+            to_reconcile.extend(l for l, in cursor)
 
             missing_number = defaultdict(list)
             for move in c_moves:
@@ -832,63 +827,62 @@ class MoveLineMixin:
         date = Coalesce(line.maturity_date, move.date)
 
         for company, lines in groupby(lines, lambda l: l.company):
-            for sub_lines in grouped_slice(lines):
-                sub_lines = list(sub_lines)
-                id2currency = {
-                    l.id: l.second_currency or company.currency
-                    for l in sub_lines}
-                where = account.company == company.id
-                where_type = Literal(False)
-                if context.get('receivable', True):
-                    where_type |= account_type.receivable
-                if context.get('payable', True):
-                    where_type |= account_type.payable
-                where &= where_type
-                if not context.get('reconciled'):
-                    if hasattr(cls, 'reconciliation'):
-                        where &= line.reconciliation == Null
-                    elif hasattr(cls, 'reconciled'):
-                        where &= ~line.reconciled
+            lines = list(lines)
+            id2currency = {
+                l.id: l.second_currency or company.currency
+                for l in lines}
+            where = account.company == company.id
+            where_type = Literal(False)
+            if context.get('receivable', True):
+                where_type |= account_type.receivable
+            if context.get('payable', True):
+                where_type |= account_type.payable
+            where &= where_type
+            if not context.get('reconciled'):
+                if hasattr(cls, 'reconciliation'):
+                    where &= line.reconciliation == Null
+                elif hasattr(cls, 'reconciled'):
+                    where &= ~line.reconciled
 
-                currency = Coalesce(line.second_currency, company.currency.id)
-                sign = Case(
-                    (account_type.statement == 'income', -1),
-                    else_=1)
-                balance = sign * Case(
-                    (line.amount_second_currency != Null,
-                        line.amount_second_currency),
-                    else_=line.debit - line.credit)
-                balance = Sum(balance,
-                    window=Window(
-                        [line.party, currency],
-                        order_by=[date.asc.nulls_first, line.id.desc]))
+            currency = Coalesce(line.second_currency, company.currency.id)
+            sign = Case(
+                (account_type.statement == 'income', -1),
+                else_=1)
+            balance = sign * Case(
+                (line.amount_second_currency != Null,
+                    line.amount_second_currency),
+                else_=line.debit - line.credit)
+            balance = Sum(balance,
+                window=Window(
+                    [line.party, currency],
+                    order_by=[date.asc.nulls_first, line.id.desc]))
 
-                party_where = Literal(False)
-                parties = {l.party for l in sub_lines}
-                if None in parties:
-                    party_where |= line.party == parties.discard(None)
-                party_where |= fields.SQL_OPERATORS['in'](
-                    line.party, map(int, parties))
-                where &= party_where
+            party_where = Literal(False)
+            parties = {l.party for l in lines}
+            if None in parties:
+                party_where |= line.party == parties.discard(None)
+            party_where |= fields.SQL_OPERATORS['in'](
+                line.party, map(int, parties))
+            where &= party_where
 
-                query = (line
-                    .join(move, condition=line.move == move.id)
-                    .join(account, condition=line.account == account.id)
-                    .join(
-                        account_type,
-                        condition=account.type == account_type.id)
-                    .select(
-                        line.id.as_('id'), balance.as_('balance'),
-                        where=where))
-                query = query.select(
-                    query.id, query.balance.as_('balance'),
-                    where=fields.SQL_OPERATORS['in'](
-                        query.id, [l.id for l in sub_lines]))
-                if backend.name == 'sqlite':
-                    sqlite_apply_types(query, [None, 'NUMERIC'])
-                cursor.execute(*query)
-                balances.update(
-                    (i, id2currency[i].round(a)) for (i, a) in cursor)
+            query = (line
+                .join(move, condition=line.move == move.id)
+                .join(account, condition=line.account == account.id)
+                .join(
+                    account_type,
+                    condition=account.type == account_type.id)
+                .select(
+                    line.id.as_('id'), balance.as_('balance'),
+                    where=where))
+            query = query.select(
+                query.id, query.balance.as_('balance'),
+                where=fields.SQL_OPERATORS['in'](
+                    query.id, [l.id for l in lines]))
+            if backend.name == 'sqlite':
+                sqlite_apply_types(query, [None, 'NUMERIC'])
+            cursor.execute(*query)
+            balances.update(
+                (i, id2currency[i].round(a)) for (i, a) in cursor)
         return balances
 
     def get_rec_name(self, name):

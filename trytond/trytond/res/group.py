@@ -7,7 +7,6 @@ from sql import With
 from trytond.model import (
     DeactivableMixin, ModelSQL, ModelView, Unique, fields, tree)
 from trytond.pool import Pool
-from trytond.tools import grouped_slice
 
 
 class MenuMany2Many(fields.Many2Many):
@@ -17,12 +16,9 @@ class MenuMany2Many(fields.Many2Many):
         res = super().get(ids, model, name,
                 values=values)
         menu_ids = list(set(chain(*res.values())))
-        test_ids = []
-        for sub_ids in grouped_slice(menu_ids):
-            test_ids.append(list(map(int, Menu.search([
-                            ('id', 'in', sub_ids),
-                            ]))))
-        menu_ids = set(chain(*test_ids))
+        menu_ids = list(map(int, Menu.search([
+                        ('id', 'in', menu_ids),
+                        ])))
         for group_id, ids in res.items():
             res[group_id] = tuple(id_ for id_ in ids if id_ in menu_ids)
         return res

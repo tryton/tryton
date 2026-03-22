@@ -3,6 +3,7 @@
 
 import logging
 import string
+from collections import defaultdict
 from urllib.parse import quote, urljoin
 
 from sql.aggregate import Count
@@ -10,7 +11,6 @@ from sql.aggregate import Count
 import trytond.config as config
 from trytond.model import ModelSQL, ModelView, fields
 from trytond.pool import Pool
-from trytond.tools import grouped_slice
 from trytond.transaction import Transaction
 from trytond.url import http_host
 from trytond.wsgi import Base64Converter
@@ -52,13 +52,13 @@ class ShortenedURL(ModelSQL, ModelView):
         access = URLAccess.__table__()
         cursor = Transaction().connection.cursor()
 
-        counts = {s.id: 0 for s in shortened_urls}
-        for sub_ids in grouped_slice(shortened_urls):
-            cursor.execute(*access.select(
-                    access.url, Count(access.id),
-                    where=fields.SQL_OPERATORS['in'](access.url, sub_ids),
-                    group_by=[access.url]))
-            counts.update(cursor)
+        counts = defaultdict(int)
+        cursor.execute(*access.select(
+                access.url, Count(access.id),
+                where=fields.SQL_OPERATORS['in'](
+                    access.url, map(int, shortened_urls)),
+                group_by=[access.url]))
+        counts.update(cursor)
         return counts
 
     @classmethod

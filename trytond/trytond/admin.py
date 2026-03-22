@@ -217,14 +217,13 @@ def validate(models, percentage=100):
     if not models:
         models = sorted([n for n, _ in pool.iterobject()])
     ratio = min(100, percentage) / 100
-    in_max = Transaction().database.IN_MAX
+    limit = 1_000
     for name in models:
         logger.info("validate: %s", name)
         Model = pool.get(name)
         if not issubclass(Model, ModelStorage):
             continue
         offset = 0
-        limit = in_max
         while True:
             records = Model.search(
                 [], order=[('id', 'ASC')], offset=offset, limit=limit)

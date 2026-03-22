@@ -245,15 +245,14 @@ class Period(metaclass=PoolMeta):
     def check_es_sii_posted_invoices(cls, periods):
         pool = Pool()
         Invoice = pool.get('account.invoice')
-        for sub_ids in grouped_slice(list(map(int, periods))):
-            invoices = Invoice.search([
-                    ('move.period', 'in', sub_ids),
-                    ], limit=1, order=[])
-            if invoices:
-                invoice, = invoices
-                raise ESSIIPostedInvoicesError(gettext(
-                        'account_es_sii.msg_es_sii_posted_invoices',
-                        period=invoice.move.period.rec_name))
+        invoices = Invoice.search([
+                ('move.period', 'in', periods),
+                ], limit=1, order=[])
+        if invoices:
+            invoice, = invoices
+            raise ESSIIPostedInvoicesError(gettext(
+                    'account_es_sii.msg_es_sii_posted_invoices',
+                    period=invoice.move.period.rec_name))
 
 
 class Invoice(metaclass=PoolMeta):

@@ -27,10 +27,10 @@ from trytond.pool import Pool
 from trytond.tests.test_tryton import TestCase
 from trytond.tools import (
     cached_property, decimal_, email_, escape_wildcard, file_open, firstline,
-    grouped_slice, is_full_text, is_instance_method, likify, lstrip_wildcard,
-    pair, pairwise_longest, reduce_domain, remove_forbidden_chars,
-    rstrip_wildcard, slugify, sortable_values, sqlite_apply_types,
-    strip_wildcard, timezone, unescape_wildcard, unpair)
+    is_full_text, is_instance_method, likify, lstrip_wildcard, pair,
+    pairwise_longest, reduce_domain, remove_forbidden_chars, rstrip_wildcard,
+    slugify, sortable_values, sqlite_apply_types, strip_wildcard, timezone,
+    unescape_wildcard, unpair)
 from trytond.tools.chart import sparkline
 from trytond.tools.domain_inversion import (
     canonicalize, concat, domain_inversion, eval_domain,
@@ -82,23 +82,6 @@ class ToolsTestCase(TestCase):
         for i, j in tests:
             self.assertEqual(reduce_domain(i), j,
                     '%s -> %s != %s' % (i, reduce_domain(i), j))
-
-    def test_grouped_slice(self):
-        "Test grouped slice"
-        for (values, count, result) in [
-                (list(range(10)), 5, [[0, 1, 2, 3, 4], [5, 6, 7, 8, 9]]),
-                (list(range(5)), 5, [[0, 1, 2, 3, 4]]),
-                (list(range(5)), 2, [[0, 1], [2, 3], [4]]),
-                ]:
-            with self.subTest(values=values, count=count):
-                self.assertEqual(
-                    list(map(list, grouped_slice(values, count))), result)
-
-    def test_grouped_slice_generator(self):
-        "Test grouped slice"
-        self.assertEqual(
-            list(map(list, grouped_slice((x for x in range(10)), 5))),
-            [[0, 1, 2, 3, 4], [5, 6, 7, 8, 9]])
 
     def test_pairwise_longest(self):
         "Test pairwise_longest"

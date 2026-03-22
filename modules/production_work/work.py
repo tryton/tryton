@@ -19,7 +19,7 @@ from trytond.modules.company.model import employee_field, set_employee
 from trytond.modules.product import price_digits, round_price
 from trytond.pool import Pool
 from trytond.pyson import Bool, Eval, If, TimeDelta
-from trytond.tools import grouped_slice, sqlite_apply_types
+from trytond.tools import sqlite_apply_types
 from trytond.transaction import Transaction
 
 from .exceptions import PickerError
@@ -249,19 +249,16 @@ class Work(sequence_ordered(), ModelSQL, ModelView, ChatMixin):
         cursor = Transaction().connection.cursor()
         costs = defaultdict(Decimal)
 
-        for sub_works in grouped_slice(works):
-            red_sql = fields.SQL_OPERATORS['in'](
-                cycle.work, [w.id for w in sub_works])
-            query = cycle.select(
-                cycle.work, Sum(Coalesce(cycle.cost, 0)).as_('cost'),
-                where=red_sql & (cycle.state == 'done'),
-                group_by=cycle.work)
-            if backend.name == 'sqlite':
-                sqlite_apply_types(query, [None, 'NUMERIC'])
-            cursor.execute(*query)
-            costs.update(cursor)
-        for cost in costs:
-            costs[cost] = round_price(costs[cost])
+        query = cycle.select(
+            cycle.work, Sum(Coalesce(cycle.cost, 0)).as_('cost'),
+            where=fields.SQL_OPERATORS['in'](cycle.work, map(int, works))
+            & (cycle.state == 'done'),
+            group_by=cycle.work)
+        if backend.name == 'sqlite':
+            sqlite_apply_types(query, [None, 'NUMERIC'])
+        cursor.execute(*query)
+        for work_id, cost in cursor:
+            costs[work_id] = round_price(cost)
         return costs
 
     @classmethod

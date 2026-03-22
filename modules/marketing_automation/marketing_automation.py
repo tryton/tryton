@@ -26,7 +26,7 @@ from trytond.pool import Pool
 from trytond.pyson import Eval, If, PYSONDecoder, TimeDelta
 from trytond.report import Report, html_to_text, mjml_to_html
 from trytond.sendmail import SMTPDataManager, send_message_transactional
-from trytond.tools import grouped_slice, pairwise_longest
+from trytond.tools import pairwise_longest
 from trytond.tools.chart import sparkline
 from trytond.tools.email_ import format_address, has_rcpt, set_from_header
 from trytond.transaction import Transaction
@@ -178,19 +178,18 @@ class Scenario(
                 others.append(scenario)
 
         count = {name: defaultdict(int) for name in names}
-        for sub_others in grouped_slice(others):
-            cursor.execute(*record.select(
-                    record.scenario,
-                    Count(),
-                    Count(filter_=record.blocked),
-                    where=fields.SQL_OPERATORS['in'](
-                        record.scenario, map(int, sub_others)),
-                    group_by=record.scenario))
-            for id_, all_, blocked in cursor:
-                if 'record_count' in count:
-                    count['record_count'][id_] = all_
-                if 'record_count_blocked' in count:
-                    count['record_count_blocked'][id_] = blocked
+        cursor.execute(*record.select(
+                record.scenario,
+                Count(),
+                Count(filter_=record.blocked),
+                where=fields.SQL_OPERATORS['in'](
+                    record.scenario, map(int, others)),
+                group_by=record.scenario))
+        for id_, all_, blocked in cursor:
+            if 'record_count' in count:
+                count['record_count'][id_] = all_
+            if 'record_count_blocked' in count:
+                count['record_count_blocked'][id_] = blocked
         for scenario in drafts:
             Model = pool.get(scenario.model)
             domain = PYSONDecoder({}).decode(scenario.domain)
@@ -522,22 +521,21 @@ class Activity(
         cursor = Transaction().connection.cursor()
 
         count = {name: defaultdict(int) for name in names}
-        for sub_activities in grouped_slice(activities):
-            cursor.execute(*record_activity.select(
-                    record_activity.activity,
-                    Count(filter_=record_activity.state == 'done'),
-                    Count(filter_=record_activity.email_opened),
-                    Count(filter_=record_activity.email_clicked),
-                    where=fields.SQL_OPERATORS['in'](
-                        record_activity.activity, map(int, sub_activities)),
-                    group_by=record_activity.activity))
-            for id_, all_, email_opened, email_clicked in cursor:
-                if 'record_count' in count:
-                    count['record_count'][id_] = all_
-                if 'email_opened' in count:
-                    count['email_opened'][id_] = email_opened
-                if 'email_clicked' in count:
-                    count['email_clicked'][id_] = email_clicked
+        cursor.execute(*record_activity.select(
+                record_activity.activity,
+                Count(filter_=record_activity.state == 'done'),
+                Count(filter_=record_activity.email_opened),
+                Count(filter_=record_activity.email_clicked),
+                where=fields.SQL_OPERATORS['in'](
+                    record_activity.activity, map(int, activities)),
+                group_by=record_activity.activity))
+        for id_, all_, email_opened, email_clicked in cursor:
+            if 'record_count' in count:
+                count['record_count'][id_] = all_
+            if 'email_opened' in count:
+                count['email_opened'][id_] = email_opened
+            if 'email_clicked' in count:
+                count['email_clicked'][id_] = email_clicked
         return count
 
     @classmethod

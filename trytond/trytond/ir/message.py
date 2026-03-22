@@ -6,7 +6,6 @@ from collections import defaultdict
 from trytond.cache import Cache
 from trytond.model import ModelSQL, ModelView, fields
 from trytond.pool import Pool
-from trytond.tools import grouped_slice
 from trytond.transaction import Transaction
 
 from .lang import get_parent_language as get_parent
@@ -111,22 +110,20 @@ class Message(ModelSQL, ModelView):
 
         id2translations = {}
         other_translations = defaultdict(list)
-        for sub_messages in grouped_slice(messages):
-            res_ids = [m.id for m in sub_messages]
-            translations = Translation.search([
-                    ('lang', '=', INTERNAL_LANG),
+        translations = Translation.search([
+                ('lang', '=', INTERNAL_LANG),
+                ('type', '=', 'model'),
+                ('name', '=', f'{cls.__name__},text'),
+                ('res_id', 'in', messages),
+                ])
+        id2translations.update((t.res_id, t) for t in translations)
+        for translation in Translation.search([
+                    ('lang', '!=', INTERNAL_LANG),
                     ('type', '=', 'model'),
                     ('name', '=', f'{cls.__name__},text'),
-                    ('res_id', 'in', res_ids),
-                    ])
-            id2translations.update((t.res_id, t) for t in translations)
-            for translation in Translation.search([
-                        ('lang', '!=', INTERNAL_LANG),
-                        ('type', '=', 'model'),
-                        ('name', '=', f'{cls.__name__},text'),
-                        ('res_id', 'in', res_ids),
-                        ]):
-                other_translations[translation.res_id].append(translation)
+                    ('res_id', 'in', messages),
+                    ]):
+            other_translations[translation.res_id].append(translation)
 
         to_save = []
         for message in messages:

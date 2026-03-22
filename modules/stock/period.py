@@ -1,6 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from itertools import chain, groupby
+from itertools import groupby
 
 from sql import For, Literal
 
@@ -8,7 +8,6 @@ from trytond.i18n import gettext
 from trytond.model import Index, ModelSQL, ModelView, Workflow, fields
 from trytond.pool import Pool
 from trytond.pyson import Eval
-from trytond.tools import grouped_slice
 from trytond.transaction import Transaction
 
 from .exceptions import PeriodCloseError
@@ -89,13 +88,10 @@ class Period(Workflow, ModelSQL, ModelView):
     def draft(cls, periods):
         for grouping in cls.groupings():
             Cache = cls.get_cache(grouping)
-            caches = []
-            for sub_periods in grouped_slice(periods):
-                caches.append(Cache.search([
-                            ('period', 'in',
-                                [p.id for p in sub_periods]),
-                            ], order=[]))
-            Cache.delete(list(chain(*caches)))
+            caches = Cache.search([
+                    ('period', 'in', periods),
+                    ], order=[])
+            Cache.delete(caches)
 
     @classmethod
     @ModelView.button
