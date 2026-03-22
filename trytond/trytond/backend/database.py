@@ -31,7 +31,7 @@ class DatabaseInterface(object):
             self, autocommit=False, readonly=False, statement_timeout=None):
         raise NotImplementedError
 
-    def put_connection(self, connection, close=False):
+    def put_connection(self, connection):
         raise NotImplementedError
 
     def close(self):

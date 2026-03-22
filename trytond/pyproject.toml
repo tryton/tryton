@@ -13,7 +13,7 @@ dependencies = [
     'polib',
     'pwdlib[argon2] >= 0.2',
     'python-dateutil',
-    'python-sql >= 1.5',
+    'python-sql >= 1.8',
     'pytz; python_version < "3.9"',
     'relatorio[fodt] >= 0.7.0',
     'simpleeval',
@@ -39,7 +39,7 @@ classifiers = [
 
 [project.optional-dependencies]
 Levenshtein = ['python-Levenshtein']
-PostgreSQL = ['psycopg2 >= 2.7.0']
+PostgreSQL = ['psycopg[pool] >= 3']
 barcode = ['python-barcode[images]']
 completion = ['argcomplete']
 coroutine = ['gevent >= 1.1']

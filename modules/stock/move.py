@@ -7,7 +7,7 @@ from collections import defaultdict
 from decimal import Decimal
 from itertools import groupby
 
-from sql import Column, For, Literal, Null, Union
+from sql import Column, For, Literal, Null, Table, Union
 from sql.aggregate import Max, Sum
 from sql.conditionals import Case, Coalesce
 from sql.functions import Round
@@ -1411,7 +1411,7 @@ class Move(Workflow, ModelSQL, ModelView):
         company = User(transaction.user).company
 
         def get_column(name, table):
-            if name == 'date':
+            if name == 'date' and isinstance(table, Table):
                 return cls.effective_date.sql_cast(
                     Coalesce(
                         table.effective_date,
@@ -1659,8 +1659,7 @@ class Move(Workflow, ModelSQL, ModelView):
         # One that sums incoming moves towards locations, one that sums
         # outgoing moves and one for the period cache.  UNION ALL is used
         # because we already know that there will be no duplicates.
-        move_keys_alias = [get_column(key, move).as_(key) for key in grouping]
-        move_keys = [get_column(key, move) for key in grouping]
+        move_keys = [get_column(key, move).as_(key) for key in grouping]
 
         if company:
             company_clause = move.company == company.id
@@ -1670,22 +1669,22 @@ class Move(Workflow, ModelSQL, ModelView):
             company_clause = Literal(False)
         query = move.select(move.to_location.as_('location'),
             Sum(move.internal_quantity).as_('quantity'),
-            *move_keys_alias,
+            *move_keys,
             where=state_date_clause_in
             & where
             & move.to_location.in_(location_query)
             & company_clause
             & dest_clause_from,
-            group_by=[move.to_location] + move_keys)
+            group_by=[move.to_location.as_('location')] + move_keys)
         query = Union(query, move.select(move.from_location.as_('location'),
                 (-Sum(move.internal_quantity)).as_('quantity'),
-                *move_keys_alias,
+                *move_keys,
                 where=state_date_clause_out
                 & where
                 & move.from_location.in_(location_query)
                 & company_clause
                 & dest_clause_to,
-                group_by=[move.from_location] + move_keys),
+                group_by=[move.from_location.as_('location')] + move_keys),
             all_=True)
         if PeriodCache and period:
             period_keys = [Column(period_cache, key).as_(key)
@@ -1707,7 +1706,7 @@ class Move(Workflow, ModelSQL, ModelView):
             + query_keys
             + [quantity.as_('quantity')])
         query = query.select(*columns,
-            group_by=[query.location] + query_keys)
+            group_by=[query.location.as_('location')] + query_keys)
         return query
 
     @classmethod

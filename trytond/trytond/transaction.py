@@ -124,7 +124,6 @@ class Transaction(object):
             instance.database = None
             instance.readonly = False
             instance.connection = None
-            instance.close = None
             instance.user = None
             instance.context = None
             instance.create_records = None
@@ -173,7 +172,7 @@ class Transaction(object):
         return cache
 
     def start(self, database_name, user, readonly=False, context=None,
-            close=False, autocommit=False, timeout=None, **extras):
+            autocommit=False, timeout=None, **extras):
         '''
         Start transaction
         '''
@@ -181,7 +180,6 @@ class Transaction(object):
             from trytond import backend
             assert self.user is None
             assert self.database is None
-            assert self.close is None
             assert self.context is None
             # Compute started_at before connect to ensure
             # it is strictly before all transactions started after
@@ -195,7 +193,6 @@ class Transaction(object):
             self.user = user
             self.database = database
             self.readonly = readonly
-            self.close = close
             self.context = ImmutableDict(context or {})
             self.create_records = defaultdict(list)
             self.delete_records = defaultdict(set)
@@ -257,13 +254,11 @@ class Transaction(object):
                             self.rollback()
                     finally:
                         if self.connection:
-                            self.database.put_connection(
-                                self.connection, self.close)
+                            self.database.put_connection(self.connection)
                 finally:
                     self.database = None
                     self.readonly = False
                     self.connection = None
-                    self.close = None
                     self.user = None
                     self.context = None
                     self.create_records = None
@@ -329,7 +324,7 @@ class Transaction(object):
     def new_transaction(self, autocommit=False, readonly=False, **extras):
         transaction = Transaction(new=True)
         return transaction.start(self.database.name, self.user,
-            context=self.context, close=self.close, readonly=readonly,
+            context=self.context, readonly=readonly,
             autocommit=autocommit, **extras)
 
     def _store_log_records(self):

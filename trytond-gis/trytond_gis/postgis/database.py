@@ -1,20 +1,41 @@
 # This file is part of trytond_gis.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import binascii
+from functools import cache
 
 from geomet import wkb
-from psycopg2.extensions import (
-    Binary, new_type, register_adapter, register_type)
+from psycopg.adapt import Dumper, Loader
+from psycopg.postgres import adapters
+from psycopg.pq import Format
+from psycopg.types import TypeInfo
 
 from trytond.backend.postgresql.database import Database as PGDatabase
 from trytond.config import parse_uri
 from trytond_gis import _GeoJSON
 
 
-def ewkb2geojson(value, cursor):
-    if value is None:
-        return None
-    return wkb.loads(binascii.a2b_hex(value))
+class GeometryBinaryLoader(Loader):
+    format = Format.BINARY
+
+    def load(self, data):
+        return wkb.loads(binascii.a2b_hex(data))
+
+
+class GeometryLoader(Loader):
+    def load(self, data):
+        return wkb.loads(binascii.a2b_hex(data))
+
+
+class BaseGeometryBinaryDumper(Dumper):
+    format = Format.BINARY
+
+    def dump(self, obj):
+        return wkb.dumps(obj)
+
+
+class BaseGeometryDumper(Dumper):
+    def dump(self, obj):
+        return wkb.dumps(obj).encode()
 
 
 class Database(PGDatabase):
@@ -33,8 +54,8 @@ class Database(PGDatabase):
     @classmethod
     def _connection_params(cls, name):
         params = super()._connection_params(name)
-        uri = parse_uri(params['dsn'])
-        params['dsn'] = uri._replace(scheme='postgresql').geturl()
+        uri = parse_uri(params['conninfo'])
+        params['conninfo'] = uri._replace(scheme='postgresql').geturl()
         return params
 
     def get_connection(
@@ -48,21 +69,35 @@ class Database(PGDatabase):
             cursor.execute(
                 "SELECT 1 FROM pg_extension WHERE extname='postgis'")
             if cursor.fetchone():
-                cursor.execute('SELECT NULL::geometry, NULL::geography')
-                geometry_oid = cursor.description[0][1]
-                geography_oid = cursor.description[1][1]
+                geometry_info = TypeInfo.fetch(conn, 'geometry')
+                geometry_info.register()
+
+                adapters.register_loader(
+                    geometry_info.oid, GeometryBinaryLoader)
+                adapters.register_loader(geometry_info.oid, GeometryLoader)
+
+                adapters.register_dumper(
+                    _GeoJSON, _make_dumper(geometry_info.oid))
+                adapters.register_dumper(
+                    _GeoJSON, _make_binary_dumper(geometry_info.oid))
+
                 self._GIS_OIDS = {
-                    'geometry': geometry_oid,
-                    'geography': geography_oid,
+                    'geometry': geometry_info.oid,
                     }
-
-                GEOMETRY = new_type((geometry_oid,), 'GEOMETRY', ewkb2geojson)
-                register_type(GEOMETRY)
-                GEOGRAPHY = new_type(
-                    (geography_oid,), 'GEOGRAPHY', ewkb2geojson)
-                register_type(GEOGRAPHY)
-
         return conn
 
 
-register_adapter(_GeoJSON, lambda value: Binary(wkb.dumps(value)))
+@cache
+def _make_dumper(oid_in):
+    class GeometryDumper(BaseGeometryDumper):
+        oid = oid_in
+
+    return GeometryDumper
+
+
+@cache
+def _make_binary_dumper(oid_in):
+    class GeometryBinaryDumper(BaseGeometryBinaryDumper):
+        oid = oid_in
+
+    return GeometryBinaryDumper

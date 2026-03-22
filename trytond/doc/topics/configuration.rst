@@ -155,15 +155,15 @@ The available databases are:
 PostgreSQL
 **********
 
-``psycopg2`` supports two type of connections:
+``psycopg`` supports two type of connections:
 
 - TCP/IP connection: ``postgresql://user:password@localhost:5432/``
 - Unix domain connection:
    - with password authentication: ``postgresql://username:password``
    - with operating system user name: ``postgresql://``
 
-Please refer to `psycopg2 for the complete specification of the URI
-<https://www.psycopg.org/docs/module.html#psycopg2.connect>`_.
+Please refer to `psycopg for the complete specification of the URI
+<https://www.psycopg.org/psycopg3/docs/api/connections.html#psycopg.Connection.connect>`_.
 
 A list of parameters supported by PostgreSQL can be found in the
 `documentation

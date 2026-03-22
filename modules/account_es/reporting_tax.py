@@ -196,7 +196,9 @@ class AEATPartyReport(AEATReport):
 
             from_ = convert_from(None, tables)
             cursor.execute(*from_.select(
-                    expression, where=where, group_by=(expression,))
+                    expression.as_('aeat'),
+                    where=where,
+                    group_by=[expression.as_('aeat')])
                 .select(Count()))
             row = cursor.fetchone()
             if row:
@@ -880,7 +882,7 @@ class ESVATBook(ModelSQL, ModelView):
                     invoice.party,
                     invoice.invoice_date,
                     invoice.party_tax_identifier,
-                    Coalesce(tax.es_reported_with, tax.id),
+                    Coalesce(tax.es_reported_with, tax.id).as_('tax'),
                     ]))
         return query
 

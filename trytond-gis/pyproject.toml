@@ -46,7 +46,7 @@ packages = ['trytond_gis']
 [tool.hatch.metadata.hooks.tryton]
 dependencies = [
     'geomet',
-    'psycopg2 >= 2.0.14',
+    'psycopg[pool] >= 3',
     ]
 tryton_dependencies = ['trytond']
 copyright = 'COPYRIGHT'

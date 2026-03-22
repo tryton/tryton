@@ -4,7 +4,7 @@
 import datetime as dt
 
 from dateutil.relativedelta import relativedelta
-from sql import Literal, Null, Window
+from sql import Column, Literal, Null, Window
 from sql.aggregate import Min, Sum
 from sql.conditionals import Case, Coalesce, Greatest, Least, NullIf
 from sql.functions import Function, NthValue, Round
@@ -165,38 +165,32 @@ class _InventoryMixin:
 
         date_column = Greatest(move_date, from_date)
         if context.get('product_type') == 'product.product':
-            partition = [move.product]
+            partition = move.product
         else:
-            partition = [product_table.template]
-
-        # Use NthValue instead of LastValue to get NULL for the last row
-        next_date_column = NthValue(
-            date_column, 2, window=Window(
-                partition,
-                order_by=[date_column.asc],
-                frame='ROWS', start=0, end=1))
+            partition = product_table.template
 
         state_clause = cls._state_clause(move, to_date)
 
+        quantities_columns = list(cls._quantities_columns(move, product_table))
         quantities = quantities.select(
             Min(move.id).as_('id'),
             product_reference.as_('product_reference'),
             product_template.as_('product_template'),
             product.as_('product'),
             date_column.as_('date'),
-            next_date_column.as_('next_date'),
+            partition.as_('partition'),
             start_quantity.as_('start_quantity'),
             input_quantity.as_('input_quantity'),
             output_quantity.as_('output_quantity'),
-            *cls._quantities_columns(move, product_table),
+            *quantities_columns,
             where=(((input_clause & ~output_clause)
                     | (output_clause & ~input_clause))
                 & (move_date <= to_date)
                 & state_clause
                 & (move.company == company)),
             group_by=[
-                *partition,
-                date_column,
+                partition.as_('partition'),
+                date_column.as_('date'),
                 *cls._quantities_group_by(move, product_table),
                 ],
             )
@@ -222,14 +216,18 @@ class _InventoryMixin:
                         period_cache_product.template.as_('product'),
                         Sum(period_cache.internal_quantity
                             ).as_('quantity'),
-                        group_by=[period_cache_product.template]))
+                        group_by=[
+                            period_cache_product.template.as_('product'),
+                            ]))
             else:
                 cache = (
                     period_cache
                     .select(
                         period_cache.product.as_('product'),
                         Sum(period_cache.internal_quantity).as_('quantity'),
-                        group_by=[period_cache.product]))
+                        group_by=[
+                            period_cache.product.as_('product'),
+                            ]))
             location_cache = Location.__table__()
             cache.where = (
                 (period_cache.period == period.id)
@@ -247,20 +245,40 @@ class _InventoryMixin:
         else:
             query = quantities
 
+        query = query.select(
+            quantities.id.as_('id'),
+            Literal(company).as_('company'),
+            quantities.product_reference.as_('product_reference'),
+            quantities.product_template.as_('product_template'),
+            quantities.product.as_('product'),
+            quantities.date.as_('date'),
+            # Use NthValue instead of LastValue to get NULL for the last row
+            NthValue(
+                quantities.date, 2, window=Window(
+                    [quantities.partition],
+                    order_by=[quantities.date.asc],
+                    frame='ROWS', start=0, end=1)).as_('next_date'),
+            quantities.input_quantity.as_('input_quantity'),
+            quantities.output_quantity.as_('output_quantity'),
+            quantity.as_('quantity'),
+            *[Column(quantities, col.output_name).as_(col.output_name)
+                for col in quantities_columns],
+            )
+
         return (query
             .select(
-                quantities.id.as_('id'),
+                query.id.as_('id'),
                 Literal(company).as_('company'),
-                quantities.product_reference.as_('product_reference'),
-                quantities.product_template.as_('product_template'),
-                quantities.product.as_('product'),
-                quantities.input_quantity.as_('input_quantity'),
-                quantities.output_quantity.as_('output_quantity'),
-                quantity.as_('quantity'),
-                *cls._columns(quantities),
+                query.product_reference.as_('product_reference'),
+                query.product_template.as_('product_template'),
+                query.product.as_('product'),
+                query.input_quantity.as_('input_quantity'),
+                query.output_quantity.as_('output_quantity'),
+                query.quantity.as_('quantity'),
+                *cls._columns(query),
                 where=(
-                    (Coalesce(quantities.next_date, dt.date.max) >= from_date)
-                    | (quantities.date >= from_date))))
+                    (Coalesce(query.next_date, dt.date.max) >= from_date)
+                    | (query.date >= from_date))))
 
     @classmethod
     def _quantities_columns(cls, move, product):
@@ -414,10 +432,10 @@ class InventoryMove(_InventoryMixin, ModelSQL, ModelView):
         yield from super()._quantities_group_by(move, product)
         yield Case(
             (move_date < from_date, Null),
-            else_=move.id)
+            else_=move.id).as_('move')
         yield Case(
             (move_date < from_date, Null),
-            else_=move.origin)
+            else_=move.origin).as_('origin')
 
     @classmethod
     def _columns(cls, quantities):
@@ -594,9 +612,9 @@ class InventoryTurnover(ModelSQL, ModelView):
                     output_quantity / NullIf(average_quantity, 0),
                     cls.turnover.digits[1]).as_('turnover'),
                 group_by=[
-                    inventory.product_reference,
-                    inventory.product_template,
-                    inventory.product,
+                    inventory.product_reference.as_('product_reference'),
+                    inventory.product_template.as_('product_template'),
+                    inventory.product.as_('product'),
                     ]))
 
     @fields.depends('product_reference')

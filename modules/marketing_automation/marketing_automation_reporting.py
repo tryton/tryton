@@ -127,7 +127,7 @@ class Scenario(Abstract):
     @classmethod
     def _group_by(cls, tables, withs):
         record = tables['record']
-        return [record.scenario, cls._column_date(tables, withs)]
+        return [record.scenario, cls._column_date(tables, withs).as_('date')]
 
     @classmethod
     def _where(cls, tables, withs):
@@ -239,7 +239,9 @@ class Activity(Abstract):
     @classmethod
     def _group_by(cls, tables, withs):
         record_activity = tables['record_activity']
-        return [record_activity.activity, cls._column_date(tables, withs)]
+        return [
+            record_activity.activity,
+            cls._column_date(tables, withs).as_('date')]
 
     @classmethod
     def _where(cls, tables, withs):

@@ -730,7 +730,11 @@ class ProductQuantitiesByWarehouse(ModelSQL, ModelView):
                             warehouse.select(warehouse.id))))
                 & ((date_column < today) & (move.state == 'done')
                     | (date_column > today)),
-                group_by=(date_column, product_column, move.company),
+                group_by=[
+                    date_column.as_('date'),
+                    product_column.as_('product'),
+                    move.company.as_('company'),
+                    ],
                 with_=warehouse))
         for model, id_ in products:
             gap = ['product.template', 'product.product'].index(model) + 1

@@ -169,7 +169,8 @@ def _sqlite_copy(file_, restore=False):
         try:
             database.create(connection, DB_NAME)
         finally:
-            database.put_connection(connection, True)
+            database.put_connection(connection)
+            database.close()
 
     with Transaction().start(DB_NAME, 0) as transaction:
         conn1 = transaction.connection
@@ -1246,7 +1247,8 @@ def create_db(name=DB_NAME, lang='en'):
         try:
             database.create(connection, name)
         finally:
-            database.put_connection(connection, True)
+            database.put_connection(connection)
+            database.close()
 
         database = backend.Database(name)
         connection = database.get_connection()

@@ -7,40 +7,29 @@ import time
 import warnings
 from collections import defaultdict
 from datetime import datetime
-from decimal import Decimal
 from itertools import chain, repeat
 from threading import RLock
 
-from psycopg2 import Binary, connect
-from psycopg2.extensions import (
-    ISOLATION_LEVEL_REPEATABLE_READ, UNICODE, AsIs, cursor, register_adapter,
-    register_type)
-from psycopg2.pool import PoolError, ThreadedConnectionPool
-from psycopg2.sql import SQL, Identifier
-from sql.operators import NotEqual
-
-try:
-    from psycopg2.extensions import PYDATE, PYDATETIME, PYINTERVAL, PYTIME
-except ImportError:
-    PYDATE, PYDATETIME, PYTIME, PYINTERVAL = None, None, None, None
-from psycopg2 import DataError as DatabaseDataError
-from psycopg2 import IntegrityError as DatabaseIntegrityError
-from psycopg2 import InterfaceError
-from psycopg2 import OperationalError as DatabaseOperationalError
-from psycopg2.errors import QueryCanceled as DatabaseTimeoutError
-from psycopg2.errors import UndefinedColumn
-from psycopg2.extras import register_default_json, register_default_jsonb
+import psycopg
+from psycopg import Binary, ClientCursor, Cursor
+from psycopg import DataError as DatabaseDataError
+from psycopg import IntegrityError as DatabaseIntegrityError
+from psycopg import IsolationLevel
+from psycopg import OperationalError as DatabaseOperationalError
+from psycopg import connect
+from psycopg.errors import QueryCanceled as DatabaseTimeoutError
+from psycopg.sql import SQL, Identifier
+from psycopg_pool import ConnectionPool
 from sql import Cast, Flavor, For, Literal, Table
 from sql.aggregate import Count
 from sql.conditionals import Coalesce
 from sql.functions import Function
-from sql.operators import BinaryOperator, Concat
+from sql.operators import BinaryOperator, Concat, NotEqual
 
 from trytond import __series__, config
 from trytond.backend.database import DatabaseInterface, SQLType
 from trytond.sql.operators import RangeOperator
 from trytond.tools import grouped_slice, reduce_ids
-from trytond.tools.gevent import is_gevent_monkey_patched
 
 from .table import index_method
 
@@ -67,11 +56,12 @@ def replace_special_values(s, **mapping):
     return s
 
 
-class LoggingCursor(cursor):
-    def execute(self, sql, args=None):
+class LoggingCursor(Cursor):
+
+    def execute(self, query, params=None, *, prepare=None, binary=None):
         if logger.isEnabledFor(logging.DEBUG):
-            logger.debug('query: %s', self.mogrify(sql, args).decode())
-        cursor.execute(self, sql, args)
+            logger.debug(ClientCursor(self.connection).mogrify(query, params))
+        return super().execute(query, params, prepare=prepare, binary=binary)
 
 
 class ForSkipLocked(For):
@@ -223,8 +213,7 @@ class Database(DatabaseInterface):
             timeout = config.getint('database', 'timeout')
             for database in list(databases.values()):
                 if ((now - database._last_use).total_seconds() > timeout
-                        and database.name != name
-                        and not database._connpool._used):
+                        and database.name != name):
                     database.close()
             if name in databases:
                 inst = databases[name]
@@ -232,10 +221,16 @@ class Database(DatabaseInterface):
                 inst = DatabaseInterface.__new__(cls, name=name)
                 minconn = config.getint('database', 'minconn', default=1)
                 maxconn = config.getint('database', 'maxconn', default=64)
+                kwargs = cls._connection_params(name)
+                kwargs['cursor_factory'] = LoggingCursor
+                conninfo = kwargs.pop('conninfo')
                 try:
-                    inst._connpool = ThreadedConnectionPool(
-                        minconn, maxconn, **cls._connection_params(name),
-                        cursor_factory=LoggingCursor)
+                    inst._connpool = ConnectionPool(
+                        conninfo,
+                        kwargs=kwargs,
+                        open=True,
+                        check=ConnectionPool.check_connection,
+                        min_size=minconn, max_size=maxconn)
                 except Exception:
                     logger.error(
                         'connection to "%s" failed', name, exc_info=True)
@@ -254,63 +249,35 @@ class Database(DatabaseInterface):
         uri = config.parse_uri(config.get('database', 'uri'))
         if uri.path and uri.path != '/':
             warnings.warn("The path specified in the URI will be overridden")
-        params = {
-            'dsn': uri._replace(path='/' + name).geturl(),
+        return {
+            'conninfo': uri._replace(
+                scheme='postgresql', path='/' + name).geturl(),
             'fallback_application_name': os.environ.get(
                 'TRYTOND_APPNAME', 'trytond'),
             }
-        return params
 
     def connect(self):
         return self
 
     def get_connection(
             self, autocommit=False, readonly=False, statement_timeout=None):
-        retry = max(
-            config.getint('database', 'retry'),
-            config.getint('database', 'maxconn', default=64))
-        for count in range(retry, -1, -1):
-            try:
-                conn = self._connpool.getconn()
-            except (PoolError, DatabaseOperationalError):
-                if count and not self._connpool.closed:
-                    logger.info('waiting a connection')
-                    time.sleep(1)
-                    continue
-                raise
-            except Exception:
-                logger.error(
-                    'connection to "%s" failed', self.name, exc_info=True)
-                raise
-            try:
-                conn.set_session(
-                    isolation_level=ISOLATION_LEVEL_REPEATABLE_READ,
-                    readonly=readonly,
-                    autocommit=autocommit)
-                with conn.cursor() as cur:
-                    if statement_timeout:
-                        cur.execute('SET statement_timeout=%s' %
-                            (statement_timeout * 1000))
-                    else:
-                        # Detect disconnection
-                        cur.execute('SELECT 1')
-            except DatabaseOperationalError:
-                self._connpool.putconn(conn, close=True)
-                continue
-            break
+        conn = self._connpool.getconn()
+        conn.isolation_level = IsolationLevel.REPEATABLE_READ
+        conn.read_only = readonly
+        conn.autocommit = autocommit
+        if statement_timeout:
+            with conn.cursor() as cur:
+                cur.execute('SET statement_timeout=%s' %
+                    (statement_timeout * 1000))
         return conn
 
-    def put_connection(self, connection, close=False):
-        try:
-            connection.reset()
-        except InterfaceError:
-            pass
-        self._connpool.putconn(connection, close=close)
+    def put_connection(self, connection):
+        self._connpool.putconn(connection)
 
     def close(self):
         with self._lock:
             logger.info('disconnection from "%s"', self.name)
-            self._connpool.closeall()
+            self._connpool.close()
             self._databases[os.getpid()].pop(self.name)
 
     @classmethod
@@ -346,7 +313,7 @@ class Database(DatabaseInterface):
         cls._search_full_text_languages.clear()
 
     def get_version(self, connection):
-        version = connection.server_version
+        version = connection.info.server_version
         major, rest = divmod(int(version), 10000)
         minor, patch = divmod(rest, 100)
         return (major, minor, patch)
@@ -359,28 +326,29 @@ class Database(DatabaseInterface):
         if res and abs(timestamp - now) < timeout:
             return res
 
-        res = []
         connection = self.get_connection()
         try:
-            cursor = connection.cursor()
-            cursor.execute('SELECT datname FROM pg_database '
-                'WHERE datistemplate = false ORDER BY datname')
-            for db_name, in cursor:
-                try:
-                    conn = connect(**self._connection_params(db_name))
+            with connection.cursor() as cursor:
+                cursor.execute('SELECT datname FROM pg_database '
+                    'WHERE datistemplate = false ORDER BY datname')
+                res = []
+                for db_name, in cursor:
+                    params = self._connection_params(db_name)
                     try:
-                        with conn:
-                            if self._test(
-                                    conn, hostname=hostname, series=True):
-                                res.append(db_name)
-                    finally:
-                        conn.close()
-                except Exception:
-                    logger.debug(
-                        'Test failed for "%s"', db_name, exc_info=True)
-                    continue
+                        conn = connect(params['conninfo'])
+                        try:
+                            with conn:
+                                if self._test(conn, hostname=hostname):
+                                    res.append(db_name)
+                        finally:
+                            conn.close()
+                    except Exception:
+                        logger.debug(
+                            'Test failed for "%s"', db_name, exc_info=True)
+                        continue
         finally:
-            self.put_connection(connection, close=True)
+            connection.rollback()
+            self.put_connection(connection)
 
         self.__class__._list_cache[hostname] = res
         self.__class__._list_cache_timestamp[hostname] = now
@@ -391,26 +359,26 @@ class Database(DatabaseInterface):
 
         connection = self.get_connection()
         try:
-            cursor = connection.cursor()
-            sql_file = os.path.join(os.path.dirname(__file__), 'init.sql')
-            with open(sql_file) as fp:
-                for line in fp.read().split(';'):
-                    if (len(line) > 0) and (not line.isspace()):
-                        cursor.execute(line)
+            with connection.cursor() as cursor:
+                sql_file = os.path.join(os.path.dirname(__file__), 'init.sql')
+                with open(sql_file) as fp:
+                    for line in fp.read().split(';'):
+                        if line and not line.isspace():
+                            cursor.execute(line)
 
-            for module in ['ir', 'res']:
-                info = get_module_info(module)
-                cursor.execute('INSERT INTO ir_module '
-                    '(create_uid, create_date, name, state) '
-                    'VALUES (%s, now(), %s, %s) '
-                    'RETURNING id',
-                    (0, module, 'to activate'))
-                module_id = cursor.fetchone()[0]
-                for dependency in info.get('depends', []):
-                    cursor.execute('INSERT INTO ir_module_dependency '
-                        '(create_uid, create_date, module, name) '
-                        'VALUES (%s, now(), %s, %s)',
-                        (0, module_id, dependency))
+                for module in ['ir', 'res']:
+                    info = get_module_info(module)
+                    cursor.execute('INSERT INTO ir_module '
+                        '(create_uid, create_date, name, state) '
+                        'VALUES (%s, now(), %s, %s) '
+                        'RETURNING id',
+                        (0, module, 'to activate'))
+                    module_id = cursor.fetchone()[0]
+                    for dependency in info.get('depends', []):
+                        cursor.execute('INSERT INTO ir_module_dependency '
+                            '(create_uid, create_date, module, name) '
+                            'VALUES (%s, now(), %s, %s)',
+                            (0, module_id, dependency))
 
             connection.commit()
         finally:
@@ -425,36 +393,35 @@ class Database(DatabaseInterface):
         try:
             return self._test(connection, hostname=hostname, series=series)
         finally:
-            self.put_connection(connection, close=True)
+            connection.rollback()
+            self.put_connection(connection)
 
     @classmethod
     def _test(cls, connection, hostname=None, series=False):
-        cursor = connection.cursor()
-        cursor.execute(
-            'SELECT table_name FROM information_schema.tables '
-            'WHERE table_name = %s', ('ir_configuration',))
-        if not cursor.rowcount:
-            return False
-        try:
+        with connection.cursor() as cursor:
+            cursor.execute(
+                'SELECT table_name FROM information_schema.tables '
+                'WHERE table_name = %s', ('ir_configuration',))
+            if not cursor.rowcount:
+                return False
             if series:
                 cursor.execute('SELECT series FROM ir_configuration')
                 config_series = {s for s, in cursor if s}
                 if config_series and __series__ not in config_series:
                     return False
             if hostname:
-                cursor.execute('SELECT hostname FROM ir_configuration')
+                cursor.execute(
+                    'SELECT hostname FROM ir_configuration')
                 hostnames = {h for h, in cursor if h}
                 if hostnames and hostname not in hostnames:
                     return False
-        except UndefinedColumn:
-            return False
-        return True
+            return True
 
     def nextid(self, connection, table, count=1):
         column = 'id' if not table.endswith('__history') else '__id'
         cursor = connection.cursor()
         cursor.execute(
-            "SELECT nextval(pg_get_serial_sequence(format(%s, %s), %s)) "
+            "SELECT nextval(pg_get_serial_sequence(format(%s, %s::text), %s)) "
             "FROM generate_series(1, %s)",
             ('%I', table, column, count))
         if count == 1:
@@ -468,14 +435,15 @@ class Database(DatabaseInterface):
         column = 'id' if not table.endswith('__history') else '__id'
         cursor = connection.cursor()
         cursor.execute(
-            "SELECT setval(pg_get_serial_sequence(format(%s, %s), %s), %s)",
+            "SELECT setval("
+            "pg_get_serial_sequence(format(%s, %s::text), %s), %s)",
             ('%I', table, column, value))
 
     def currid(self, connection, table):
         column = 'id' if not table.endswith('__history') else '__id'
         cursor = connection.cursor()
         cursor.execute(
-            "SELECT pg_get_serial_sequence(format(%s, %s), %s)",
+            "SELECT pg_get_serial_sequence(format(%s, %s::text), %s)",
             ('%I', table, column))
         sequence_name, = cursor.fetchone()
         cursor.execute(f"SELECT last_value FROM {sequence_name}")
@@ -494,14 +462,12 @@ class Database(DatabaseInterface):
 
     def notify(self, connection, channel, payload):
         cursor = connection.cursor()
-        cursor.execute('NOTIFY "%s", %%s' % channel, (payload,))
+        cursor.execute('SELECT pg_notify(%s, %s)', (channel, payload))
 
     def get_notifications(self, connection):
-        connection.poll()
-        return connection.notifies
+        return list(connection.notifies(timeout=2))
 
-    @classmethod
-    def lock(cls, connection, table):
+    def lock(self, connection, table):
         cursor = connection.cursor()
         cursor.execute(SQL('LOCK {} IN EXCLUSIVE MODE NOWAIT').format(
                 Identifier(table)))
@@ -563,10 +529,12 @@ class Database(DatabaseInterface):
         if self._current_user is None:
             connection = self.get_connection()
             try:
-                cursor = connection.cursor()
-                cursor.execute('SELECT current_user')
-                self._current_user = cursor.fetchone()[0]
+                with connection.cursor() as cursor:
+                    cursor.execute('SELECT current_user')
+                    self._current_user = cursor.fetchone()[0]
+                    return self._current_user
             finally:
+                connection.rollback()
                 self.put_connection(connection)
         return self._current_user
 
@@ -575,17 +543,18 @@ class Database(DatabaseInterface):
         if self._search_path is None:
             connection = self.get_connection()
             try:
-                cursor = connection.cursor()
-                cursor.execute('SHOW search_path')
-                path, = cursor.fetchone()
-                special_values = {
-                    'user': self.current_user,
-                }
-                self._search_path = [
-                    unescape_quote(replace_special_values(
-                            p.strip(), **special_values))
-                    for p in path.split(',')]
+                with connection.cursor() as cursor:
+                    cursor.execute('SHOW search_path')
+                    path, = cursor.fetchone()
+                    special_values = {
+                        'user': self.current_user,
+                    }
+                    self._search_path = [
+                        unescape_quote(replace_special_values(
+                                p.strip(), **special_values))
+                        for p in path.split(',')]
             finally:
+                connection.rollback()
                 self.put_connection(connection)
         return self._search_path
 
@@ -596,6 +565,7 @@ class Database(DatabaseInterface):
                 # RETURNING clause is available since PostgreSQL 8.2
                 self._has_returning = self.get_version(connection) >= (8, 2)
             finally:
+                connection.rollback()
                 self.put_connection(connection)
         return self._has_returning
 
@@ -609,6 +579,7 @@ class Database(DatabaseInterface):
                 self._has_insert_on_conflict = (
                     self.get_version(connection) >= (9, 5))
             finally:
+                connection.rollback()
                 self.put_connection(connection)
         return self._has_insert_on_conflict
 
@@ -620,6 +591,7 @@ class Database(DatabaseInterface):
                 self._has_select_for_skip_locked = (
                     self.get_version(connection) >= (9, 5))
             finally:
+                connection.rollback()
                 self.put_connection(connection)
         if self._has_select_for_skip_locked:
             return ForSkipLocked
@@ -637,14 +609,15 @@ class Database(DatabaseInterface):
         connection = self.get_connection()
         result = False
         try:
-            cursor = connection.cursor()
-            cursor.execute(
-                SQL('SELECT {} FROM pg_proc WHERE proname=%s').format(
-                    Identifier(property)), (name,))
-            result = cursor.fetchone()
-            if result:
-                result, = result
+            with connection.cursor() as cursor:
+                cursor.execute(
+                    SQL('SELECT {} FROM pg_proc WHERE proname=%s').format(
+                        Identifier(property)), (name,))
+                result = cursor.fetchone()
+                if result:
+                    result, = result
         finally:
+            connection.rollback()
             self.put_connection(connection)
         self._has_proc[self.name][name][property] = result
         return result
@@ -670,13 +643,14 @@ class Database(DatabaseInterface):
             lang = Table('ir_lang')
             connection = self.get_connection()
             try:
-                cursor = connection.cursor()
-                cursor.execute(*lang.select(
-                        Coalesce(lang.pg_text_search, 'simple'),
-                        where=lang.code == language,
-                        limit=1))
-                config_name, = cursor.fetchone()
+                with connection.cursor() as cursor:
+                    cursor.execute(*lang.select(
+                            Coalesce(lang.pg_text_search, 'simple'),
+                            where=lang.code == language,
+                            limit=1))
+                    config_name, = cursor.fetchone()
             finally:
+                connection.rollback()
                 self.put_connection(connection)
             languages[language] = config_name
         else:
@@ -715,6 +689,7 @@ class Database(DatabaseInterface):
         try:
             version = self.get_version(connection)
         finally:
+            connection.rollback()
             self.put_connection(connection)
         if not isinstance(query, TsQuery):
             if version >= (11, 0):
@@ -778,7 +753,7 @@ class Database(DatabaseInterface):
 
     def sequence_create(
             self, connection, name, number_increment=1, start_value=1):
-        cursor = connection.cursor()
+        cursor = ClientCursor(connection)
 
         cursor.execute(
             SQL("CREATE SEQUENCE {} INCREMENT BY %s START WITH %s").format(
@@ -787,14 +762,14 @@ class Database(DatabaseInterface):
 
     def sequence_update(
             self, connection, name, number_increment=1, start_value=1):
-        cursor = connection.cursor()
+        cursor = ClientCursor(connection)
         cursor.execute(
             SQL("ALTER SEQUENCE {} INCREMENT BY %s RESTART WITH %s").format(
                 Identifier(name)),
             (number_increment, start_value))
 
     def sequence_rename(self, connection, old_name, new_name):
-        cursor = connection.cursor()
+        cursor = ClientCursor(connection)
         if (self.sequence_exist(connection, old_name)
                 and not self.sequence_exist(connection, new_name)):
             cursor.execute(
@@ -804,16 +779,15 @@ class Database(DatabaseInterface):
 
     def sequence_delete(self, connection, name):
         cursor = connection.cursor()
-        cursor.execute(SQL("DROP SEQUENCE {}").format(
-                Identifier(name)))
+        cursor.execute(SQL("DROP SEQUENCE {}").format(Identifier(name)))
 
     def sequence_nextval(self, connection, name):
-        cursor = connection.cursor()
+        cursor = ClientCursor(connection)
         cursor.execute('SELECT NEXTVAL(%s)', (name,))
         return cursor.fetchone()[0]
 
     def sequence_nextvals(self, connection, name, n):
-        cursor = connection.cursor()
+        cursor = ClientCursor(connection)
         cursor.execute(
             'SELECT NEXTVAL(%s) FROM generate_series(1, %s)', (name, n))
         for val, in cursor:
@@ -853,14 +827,16 @@ class Database(DatabaseInterface):
             return self._extensions[self.name][extension_name]
 
         connection = self.get_connection()
-        result = False
         try:
-            cursor = connection.cursor()
-            cursor.execute(
-                "SELECT 1 FROM pg_extension WHERE extname=%s",
-                (extension_name,))
-            result = bool(cursor.rowcount)
+            result = False
+            with connection.cursor() as cursor:
+                cursor = connection.cursor()
+                cursor.execute(
+                    "SELECT 1 FROM pg_extension WHERE extname=%s",
+                    (extension_name,))
+                result = bool(cursor.rowcount)
         finally:
+            connection.rollback()
             self.put_connection(connection)
         self._extensions[self.name][extension_name] = result
         return result
@@ -914,28 +890,9 @@ class Database(DatabaseInterface):
                 ))
 
 
-register_type(UNICODE)
-if PYDATE:
-    register_type(PYDATE)
-if PYDATETIME:
-    register_type(PYDATETIME)
-if PYTIME:
-    register_type(PYTIME)
-if PYINTERVAL:
-    register_type(PYINTERVAL)
-register_adapter(float, lambda value: AsIs(repr(value)))
-register_adapter(Decimal, lambda value: AsIs(str(value)))
-
-
 def convert_json(value):
     from trytond.protocols.jsonrpc import JSONDecoder
     return json.loads(value, object_hook=JSONDecoder())
 
 
-register_default_json(loads=convert_json)
-register_default_jsonb(loads=convert_json)
-
-if is_gevent_monkey_patched():
-    from psycopg2.extensions import set_wait_callback
-    from psycopg2.extras import wait_select
-    set_wait_callback(wait_select)
+psycopg.types.json.set_json_loads(convert_json)

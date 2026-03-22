@@ -33,10 +33,9 @@ Database
    If autocommit is set, the connection is committed after each statement.
    If readonly is set, the connection is read only.
 
-.. method:: Database.put_connection(connection[, close])
+.. method:: Database.put_connection(connection)
 
    Release the connection.
-   If close is set, the connection is discarded.
 
 .. method:: Database.close()
 

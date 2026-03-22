@@ -157,7 +157,8 @@ class AbstractTimeseries(Abstract):
 
     @classmethod
     def _group_by(cls, tables):
-        return super()._group_by(tables) + [cls._column_date(tables)]
+        return super()._group_by(tables) + [
+            cls._column_date(tables).as_('date')]
 
 
 class Context(ModelView):

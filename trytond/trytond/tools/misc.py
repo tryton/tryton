@@ -17,7 +17,7 @@ from collections.abc import Iterable, Sized
 from functools import cache, wraps
 from itertools import chain, islice, tee, zip_longest
 
-from sql import As, Literal, Select
+from sql import As, Cast, Literal, Select
 from sql.conditionals import Case
 from sql.operators import Or
 
@@ -302,9 +302,11 @@ def sortable_values(func):
 def sql_pairing(x, y):
     """Return SQL expression to pair x and y
     Pairing function from http://szudzik.com/ElegantPairing.pdf"""
-    return Case(
-        (x < y, (y * y) + x),
-        else_=(x * x) + x + y)
+    x = Cast(x, 'BIGINT')
+    y = Cast(y, 'BIGINT')
+    return Cast(Case(
+            (x < y, (y * y) + x),
+            else_=(x * x) + x + y), 'BIGINT')
 
 
 def pair(x, y):

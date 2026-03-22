@@ -83,7 +83,7 @@ Transaction
 
    Return a monotonic time used to populate :attr:`~Transaction.started_at`.
 
-.. method:: Transaction.start(database_name, user[, readonly[, context[, close[, autocommit, \**extras]]]])
+.. method:: Transaction.start(database_name, user[, readonly[, context[, autocommit, \**extras]]])
 
    Start a new transaction and return a `context manager`_.
    The non-readonly transaction will be committed when exiting the ``with``

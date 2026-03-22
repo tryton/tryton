@@ -391,7 +391,11 @@ def div(a, b):
     return a // b
 
 
-def trunc(value, digits):
+def trunc(value, digits=0):
+    if isinstance(value, bytes):
+        value = value.decode()
+    if isinstance(value, str):
+        value = Decimal(value)
     return math.trunc(value * 10 ** digits) / 10 ** digits
 
 
@@ -493,7 +497,7 @@ class Database(DatabaseInterface):
         self._conn.create_function('radians', 1, math.radians)
         self._conn.create_function('sign', 1, sign)
         self._conn.create_function('sqrt', 1, math.sqrt)
-        self._conn.create_function('trunc', 1, math.trunc)
+        self._conn.create_function('trunc', 1, trunc)
         self._conn.create_function('trunc', 2, trunc)
 
         # Trigonomentric functions
@@ -563,16 +567,8 @@ class Database(DatabaseInterface):
             self._conn.isolation_level = 'IMMEDIATE'
         return self._conn
 
-    def put_connection(self, connection=None, close=False):
+    def put_connection(self, connection=None):
         assert connection == self._conn or self._conn is None
-        if self.name == ':memory:':
-            if (self._local.memory_database._conn is None
-                    and connection and close):
-                connection.close()
-                self._conn = None
-        elif close:
-            connection.close()
-            self._conn = None
 
     def close(self):
         if self.name == ':memory:':

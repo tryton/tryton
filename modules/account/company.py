@@ -117,10 +117,13 @@ class Company(metaclass=PoolMeta):
         # Need to cast numeric for sqlite
         cast_ = MoveLine.debit.sql_cast
         amount = cast_(Sum(Coalesce(line.debit, 0) - Coalesce(line.credit, 0)))
-        if operator in {'in', 'not in'}:
-            value = [cast_(Literal(Decimal(v or 0))) for v in value]
-        else:
-            value = cast_(Literal(Decimal(value or 0)))
+
+        if backend.name == 'sqlite':
+            if operator in {'in', 'not in'}:
+                value = [cast_(Literal(Decimal(v or 0))) for v in value]
+            else:
+                value = cast_(Literal(Decimal(value or 0)))
+
         query = (line
             .join(account, condition=account.id == line.account)
             .join(account_type, condition=account.type == account_type.id)
