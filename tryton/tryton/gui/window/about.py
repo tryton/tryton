@@ -19,7 +19,7 @@ AUTHORS = [
         'Franz Wiesinger',
         'Hartmut Goebel',
         'Korbinian Preisler <info@virtual-things.biz>',
-        'Mathias Behrle <info@m9s.biz>',
+        'Mathias Behrle <mbehrle@m9s.biz>',
         'Maxime Richez <maxime.richez@saluc.com>',
         'Nicolas Évrard <nicolas.evrard@b2ck.com>',
         'Sednacom <contact@sednacom.fr>',
