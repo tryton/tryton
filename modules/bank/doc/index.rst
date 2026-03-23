@@ -16,7 +16,7 @@ Bank
 
 A bank links a party with a `BIC`_.
 
-.. _`BIC`: http://en.wikipedia.org/wiki/Bank_Identifier_Code
+.. _`BIC`: https://en.wikipedia.org/wiki/Bank_Identifier_Code
 
 Bank Account
 ************
@@ -32,4 +32,4 @@ A bank account is defined by a *Bank* and at least one number.
   - `IBAN`_
   - Other
 
-.. _`IBAN`: http://en.wikipedia.org/wiki/IBAN
+.. _`IBAN`: https://en.wikipedia.org/wiki/IBAN

@@ -53,5 +53,5 @@ lists the :guilabel:`Bank Accounts` owned by the party.
    The `Party <party:model-party.party>` concept is introduced by the
    :doc:`Party Module <party:index>`.
 
-.. _BIC: http://en.wikipedia.org/wiki/Bank_Identifier_Code
+.. _BIC: https://en.wikipedia.org/wiki/Bank_Identifier_Code
 .. _IBAN: https://en.wikipedia.org/wiki/International_Bank_Account_Number
