@@ -2577,6 +2577,7 @@ class ReconcileShow(ModelView):
                     ],
                 ('second_currency', '=', Eval('currency', -1)),
                 ],
+            ('state', '=', 'valid'),
             ])
 
     _write_off_states = {
