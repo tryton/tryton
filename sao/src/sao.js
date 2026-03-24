@@ -785,13 +785,6 @@ var Sao = {
             }));
         }
         user.prepend(Sao.NotificationMenu.indicator);
-        var title = Sao.i18n.gettext("Logout");
-        jQuery('#user-logout > a')
-            .attr('title', title)
-            .attr('aria-label', title)
-            .off()
-            .click(Sao.logout)
-            .find('span:not(.icon)').text(title);
     };
 
     Sao.main_menu_row_activate = function() {
@@ -1194,7 +1187,7 @@ var Sao = {
                 shortcut: 'f1',
                 label: Sao.i18n.gettext('Show this help'),
                 callback: function() {
-                    help_dialog();
+                    Sao.help_dialog();
                 },
             }, {
                 shortcut: 'ctrl+f1',
@@ -1272,7 +1265,7 @@ var Sao = {
 
     var _help_dialog = null;
 
-    function help_dialog() {
+    Sao.help_dialog = function() {
         Mousetrap.pause();
         var dialog;
         if (!_help_dialog) {

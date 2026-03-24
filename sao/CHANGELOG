@@ -1,3 +1,4 @@
+* Move the logout entry and add a help entry to the notification menu
 * Add visual hint on widget of modified field
 * Add support for Python 3.14
 * Remove support for Python 3.9
