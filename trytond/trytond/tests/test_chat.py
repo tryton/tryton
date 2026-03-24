@@ -49,6 +49,7 @@ class NotificationTestCase(TestCase):
         self.assertEqual(message.audience, 'public')
         self.assertEqual(message.content, "Chat Message: Bar")
         with Transaction().set_user(alice.id):
+            self.assertEqual(Notification.get_count(), 1)
             notification, = Notification.get()
             self.assertEqual(notification, {
                     'id': notification['id'],

@@ -4,7 +4,6 @@
 import json
 from collections import defaultdict
 
-from sql import Literal
 from sql.aggregate import Count
 
 from trytond.bus import Bus
@@ -149,7 +148,7 @@ class Notification(
         notification = cls.__table__()
         cursor = Transaction().connection.cursor()
         cursor.execute(*notification.select(
-                Count(Literal('*')),
+                Count(),
                 where=((notification.user == Transaction().user)
                     & notification.unread)))
         return cursor.fetchone()[0]
