@@ -1384,6 +1384,9 @@ class Invoice_Payment(metaclass=PoolMeta):
         invoice, attachments = super()._parse_invoice_2(root)
         if root.find('./{*}PaymentMeans/{*}PaymentMandate') is not None:
             invoice.payment_direct_debit = True
+        else:
+            invoice.payment_direct_debit = invoice.party.get_multivalue(
+                'payment_direct_debit', company=invoice.company.id)
         return invoice, attachments
 
     @classmethod
@@ -1391,6 +1394,9 @@ class Invoice_Payment(metaclass=PoolMeta):
         invoice, attachments = super()._parse_invoice_2(root)
         if root.find('./{*}PaymentMeans/{*}PaymentMandate') is not None:
             invoice.payment_direct_debit = True
+        else:
+            invoice.payment_direct_debit = invoice.party.get_multivalue(
+                'payment_direct_debit', company=invoice.company.id)
         return invoice, attachments
 
 
