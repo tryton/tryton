@@ -783,6 +783,16 @@ The prefix to use with the ``FileStore``.
 
 Default: ``None``
 
+.. _config-attachment.retention_delay:
+
+retention_days
+~~~~~~~~~~~~~~
+
+The number of days before unused files are actually removed from the
+:ref:`FileStore <ref-filestore>`.
+
+Default: 90
+
 .. _config-bus:
 
 bus

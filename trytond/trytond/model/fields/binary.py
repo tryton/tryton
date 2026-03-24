@@ -3,9 +3,11 @@
 
 import logging
 
-from sql import Column, Null
+from sql import Column, Literal, Null
+from sql.functions import CurrentTimestamp
 
 from trytond.filestore import filestore
+from trytond.pool import Pool
 from trytond.tools import cached_property
 from trytond.transaction import Transaction
 
@@ -109,6 +111,34 @@ class Binary(Field):
             res.setdefault(i, default)
         return res
 
+    def queue_for_removal(self, Model, name, ids):
+        pool = Pool()
+        Queue = pool.get('ir.filestore.queue')
+        queue = Queue.__table__()
+
+        assert name == self.name
+
+        if not self.file_id:
+            return
+
+        transaction = Transaction()
+        table = Model.__table__()
+        cursor = transaction.connection.cursor()
+
+        prefix = self.store_prefix
+        fileid_col = Column(table, self.file_id)
+        cursor.execute(*queue.insert(
+                [queue.create_date, queue.create_uid,
+                    queue.file_id, queue.model,
+                    queue.prefix, queue.field],
+                table.select(
+                    CurrentTimestamp(), Literal(transaction.user),
+                    fileid_col, Literal(Model.__name__),
+                    Literal(prefix), Literal(name),
+                    where=(SQL_OPERATORS['in'](table.id, ids)
+                        & (fileid_col != Null)))
+                ))
+
     def set(self, Model, name, ids, value, *args):
         transaction = Transaction()
         table = Model.__table__()
@@ -120,6 +150,7 @@ class Binary(Field):
 
         args = iter((ids, value) + args)
         for ids, value in zip(args, args):
+            self.queue_for_removal(Model, name, ids)
             if self.file_id:
                 columns = [Column(table, self.file_id), Column(table, name)]
                 values = [

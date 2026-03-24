@@ -1,3 +1,4 @@
+* Remove the files of Binary fields from the Filestore
 * Add delete and delete_many to Filestore
 * Deprecate ``grouped_slice`` without size
 * Replace ``Database.IN_MAX`` by ``backend.MAX_QUERY_PARAMS``

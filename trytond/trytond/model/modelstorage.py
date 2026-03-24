@@ -449,6 +449,11 @@ class ModelStorage(Model):
                     # Do not queue because records will be deleted
                     trigger.trigger_action(records)
 
+        record_ids = [r.id for r in records]
+        for fname, field in cls._fields.items():
+            if isinstance(field, fields.Binary):
+                field.queue_for_removal(cls, fname, record_ids)
+
         # Increase transaction counter
         transaction.counter += 1
 

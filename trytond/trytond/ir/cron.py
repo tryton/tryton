@@ -96,6 +96,7 @@ class Cron(DeactivableMixin, ModelSQL, ModelView):
             ('ir.queue|clean', "Clean Task Queue"),
             ('ir.error|clean', "Clean Errors"),
             ('ir.cron.log|clean', "Clean Cron Logs"),
+            ('ir.filestore.queue|remove', "Remove Deleted Binaries"),
             ('ir.model|refresh_materialized', "Refresh Materialized Models"),
             ], "Method", required=True, states=_states)
 

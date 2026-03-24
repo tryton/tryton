@@ -42,6 +42,9 @@ class BinaryFileStorage(ModelSQL):
     __name__ = 'test.binary_filestorage'
     binary = fields.Binary('Binary', file_id='binary_id')
     binary_id = fields.Char('Binary ID')
+    deleted_binary = fields.Binary(
+        'Deleted Binary', file_id='deleted_binary_id', store_prefix='test')
+    deleted_binary_id = fields.Char('Deleted Binary ID')
 
 
 def register(module):

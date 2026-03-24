@@ -107,6 +107,7 @@ class TrytonConfigParser(configparser.ConfigParser):
         self.set('bus', 'select_timeout', '5')
         self.add_section('report')
         self.add_section('html')
+        self.add_section('attachment')
         self.update_environ()
         self.update_etc()
 

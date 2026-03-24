@@ -574,6 +574,11 @@ Binary
 
    Default value is ``None`` which means the database name is used.
 
+:class:`Binary` has extra method:
+
+.. method:: Binary.queue_for_removal(Model, name, ids)
+
+
 Selection
 ---------
 

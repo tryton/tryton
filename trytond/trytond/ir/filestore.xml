@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<tryton>
+    <data noupdate="1">
+        <record model="ir.cron" id="cron_filestore_queue_remove">
+            <field name="method">ir.filestore.queue|remove</field>
+            <field name="interval_number" eval="1"/>
+            <field name="interval_type">months</field>
+        </record>
+    </data>
+</tryton>
