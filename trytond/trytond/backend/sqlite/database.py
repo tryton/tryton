@@ -568,6 +568,10 @@ class Database(DatabaseInterface):
 
     def put_connection(self, connection=None):
         assert connection == self._conn or self._conn is None
+        if (self.name == ':memory:'
+                and connection
+                and self._local.memory_database._conn is None):
+            connection.close()
 
     def close(self):
         if self.name == ':memory:':
