@@ -1881,6 +1881,7 @@ class ReconcileShow(ModelView):
             ('account', '=', Eval('account')),
             ('party', '=', Eval('party')),
             ('reconciliation', '=', None),
+            ('state', '=', 'valid'),
             ],
         depends=['account', 'party'])
 
