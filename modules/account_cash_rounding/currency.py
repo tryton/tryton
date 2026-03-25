@@ -13,7 +13,11 @@ class Currency(metaclass=PoolMeta):
 
     cash_rounding = fields.Numeric(
         "Cash Rounding Factor",
-        digits=(None, Eval('digits', None)))
+        digits=(None, Eval('digits', None)),
+        domain=['OR',
+            ('cash_rounding', '=', None),
+            ('cash_rounding', '>', 0),
+            ])
 
     def cash_round(self, amount, rounding=ROUND_HALF_EVEN, opposite=False):
         if opposite:
