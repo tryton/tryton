@@ -374,8 +374,7 @@ class MemoryCache(BaseCache):
             database = backend.Database(dbname)
             conn = database.get_connection()
             try:
-                cursor = conn.cursor()
-                cursor.execute('NOTIFY "%s"' % cls._channel)
+                database.notify(conn, cls._channel, "")
                 conn.commit()
             finally:
                 database.put_connection(conn)
@@ -396,8 +395,7 @@ class MemoryCache(BaseCache):
             process_id = cls._local.portable_id
             payload = f"{REFRESH_POOL_MSG} {process_id}"
             try:
-                cursor = conn.cursor()
-                cursor.execute(f'NOTIFY "{cls._channel}", %s', (payload,))
+                database.notify(conn, cls._channel, payload)
                 conn.commit()
             finally:
                 database.put_connection(conn)

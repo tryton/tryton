@@ -8,7 +8,8 @@ from unittest.mock import patch
 
 from trytond import backend, config
 from trytond.cache import (
-    LRUDict, LRUDictTransaction, MemoryCache, freeze, unfreeze)
+    REFRESH_POOL_MSG, LRUDict, LRUDictTransaction, MemoryCache, freeze,
+    unfreeze)
 from trytond.tests.test_tryton import (
     DB_NAME, USER, TestCase, activate_module, with_transaction)
 from trytond.transaction import Transaction
@@ -263,6 +264,19 @@ class MemoryCacheChannelTestCase(MemoryCacheTestCase):
     @unittest.skip("No cache sync on transaction start with channel")
     def test_memory_cache_sync(self):
         super().test_memory_cache_sync()
+
+    @with_transaction()
+    def test_memory_cache_refresh_pool(self):
+        "Test MemoryCache refresh_pool uses Database.notify"
+        transaction = Transaction()
+        with patch(
+                'trytond.backend.Database.notify',
+                side_effect=transaction.database.notify) as notify:
+            cache.refresh_pool(transaction)
+            self.assertEqual(
+                notify.call_args.args[1:],
+                (cache._channel,
+                    f"{REFRESH_POOL_MSG} {cache._local.portable_id}"))
 
 
 class LRUDictTestCase(TestCase):
