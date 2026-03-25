@@ -1,7 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import heapq
-import json
 import logging
 import re
 from collections import defaultdict
@@ -20,7 +19,6 @@ from trytond.model import (
     ModelSQL, ModelView, Unique, Workflow, fields)
 from trytond.model.exceptions import AccessError, ValidationError
 from trytond.pool import Pool
-from trytond.protocols.jsonrpc import JSONDecoder, JSONEncoder
 from trytond.pyson import Bool, Eval, PYSONDecoder
 from trytond.report import Report
 from trytond.rpc import RPC
@@ -1420,16 +1418,6 @@ class ModelData(
             raise KeyError(f"Reference to '{module}.{fs_id}' not found")
 
         return cls._get_id_cache.set(key, data.db_id)
-
-    @classmethod
-    def dump_values(cls, values):
-        return json.dumps(
-            sorted(values.items()), cls=JSONEncoder, separators=(',', ':'),
-            sort_keys=True)
-
-    @classmethod
-    def load_values(cls, values):
-        return dict(json.loads(values, object_hook=JSONDecoder()))
 
 
 class Log(ResourceAccessMixin, ModelSQL, ModelView):
