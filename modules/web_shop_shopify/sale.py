@@ -441,6 +441,8 @@ class Sale(IdentifierMixin, metaclass=PoolMeta):
             address.save()
             sale.invoice_address = address
 
+        sale._set_header_from_shopify(shop, order)
+
         id2line = {
             l.shopify_identifier: l for l in getattr(sale, 'lines', [])
             if l.shopify_identifier}
@@ -503,6 +505,9 @@ class Sale(IdentifierMixin, metaclass=PoolMeta):
             sale, 'shopify_amount_to_pay',
             cls._shopify_amount_to_pay(order))
         return sale
+
+    def _set_header_from_shopify(self, shop, order):
+        pass
 
     @classmethod
     def _shopify_amount_to_pay(cls, order):
@@ -766,17 +771,17 @@ class Sale_ShipmentCost(metaclass=PoolMeta):
         shipping_line.setdefault('title')
         return fields
 
-    @classmethod
-    def get_from_shopify(cls, shop, order, sale=None):
-        pool = Pool()
-        Tax = pool.get('account.tax')
+    def _set_header_from_shopify(self, shop, order):
+        super()._set_header_from_shopify(shop, order)
 
-        sale = super().get_from_shopify(shop, order, sale=sale)
-
-        shipment_cost_method = None
-        if shipping_line := order['shippingLine']:
-            available_carriers = sale.on_change_with_available_carriers()
-            carrier = None
+        if (self.shipment_address
+                and self.shipment_address == self.warehouse.address):
+            shipment_cost_method = None
+        else:
+            shipment_cost_method = 'order'
+        carrier = None
+        if shipment_cost_method and (shipping_line := order['shippingLine']):
+            available_carriers = self.on_change_with_available_carriers()
             for carrier in available_carriers:
                 if carrier.shopify_match(shop, shipping_line):
                     carrier = carrier
@@ -784,25 +789,10 @@ class Sale_ShipmentCost(metaclass=PoolMeta):
             else:
                 if available_carriers:
                     carrier = available_carriers[0]
-            setattr_changed(sale, 'carrier', carrier)
-            if sale.carrier:
-                shipment_cost_method = 'order'
-                for line in sale.lines:
-                    if getattr(line, 'shipment_cost', None) is not None:
-                        unit_price = line.unit_price
-                        base_price = getattr(line, 'base_price', None)
-                        if setattr_changed(
-                                line, 'product', sale.carrier.carrier_product):
-                            line.on_change_product()
-                        unit_price = round_price(Tax.reverse_compute(
-                                unit_price, line.taxes, sale.sale_date))
-                        setattr_changed(line, 'unit_price', unit_price)
-                        if base_price is not None:
-                            base_price = round_price(Tax.reverse_compute(
-                                    base_price, line.taxes, sale.sale_date))
-                            setattr_changed(line, 'base_price', base_price)
-        setattr_changed(sale, 'shipment_cost_method', shipment_cost_method)
-        return sale
+                else:
+                    shipment_cost_method = None
+        setattr_changed(self, 'carrier', carrier)
+        setattr_changed(self, 'shipment_cost_method', shipment_cost_method)
 
 
 class Line(IdentifierMixin, metaclass=PoolMeta):
