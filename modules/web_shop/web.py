@@ -255,11 +255,16 @@ class Shop(DeactivableMixin, ModelSQL, ModelView):
         Sale = pool.get('sale.sale')
         if not party:
             party = self.guest_party
-        sale = Sale(party=party)
+        sale = Sale()
         sale.company = self.company
         sale.warehouse = self.warehouse
         sale.web_shop = self
-        sale.on_change_party()
+        if party:
+            sale.party = party
+            sale.invoice_address = party.address_get(type='invoice')
+            with Transaction().set_context(
+                    warehouse=self.warehouse.id if self.warehouse else None):
+                sale.shipment_address = party.address_get(type='delivery')
         sale.on_change_web_shop()
         sale.currency = self.currency
         sale.invoice_method = 'order'
