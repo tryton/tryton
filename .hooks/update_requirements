@@ -28,7 +28,7 @@ FNULL = open(os.devnull, 'w')
 
 def add_dependencies(package):
     metadata = subprocess.check_output(
-        'python -m build -n -q --metadata',
+        'python3 -m build -n -q --metadata',
         shell=True, encoding='utf-8', cwd=package).strip()
     metadata = json.loads(metadata)
     for requirement in metadata.get('requires_dist', []):

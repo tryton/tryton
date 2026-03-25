@@ -15,7 +15,7 @@ Let's create a virtual environment inside your working directory:
 
    $ python3 -m venv .venv
    $ source .venv/bin/activate
-   $ python -m pip install --upgrade pip
+   $ python3 -m pip install --upgrade pip
 
 Install cookiecutter and mercurial
 ----------------------------------

@@ -26,7 +26,7 @@ def get_info():
     config.read_file(open(os.path.join(module_dir, 'tryton.cfg')))
     info = dict(config.items('tryton'))
 
-    metadata_cmd = 'python -m build -qq --metadata'
+    metadata_cmd = 'python3 -m build -qq --metadata'
     if os.environ.get('DOC_NO_ISOLATION'):
         metadata_cmd += ' --no-isolation'
     metadata = subprocess.check_output(

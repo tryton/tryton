@@ -30,4 +30,4 @@ pip install -r "${requirements}"
         package="modules-${package}"
     fi
     echo "${path}/doc" "${OUTPUTDIR}/${package}"
-done) | xargs --max-args=2 --max-procs=${MAX_PROCS} python -m sphinx -Q -T -E -b html
+done) | xargs --max-args=2 --max-procs=${MAX_PROCS} python3 -m sphinx -Q -T -E -b html

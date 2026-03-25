@@ -16,11 +16,11 @@ There are three options to install Tryton:
 
       .. code-block:: console
 
-         $ python -m pip install tryton
+         $ python3 -m pip install tryton
 
     * Without installation, you need to make sure you have all the dependencies
       installed and then run:
 
       .. code-block:: console
 
-         $ python bin/tryton
+         $ python3 bin/tryton

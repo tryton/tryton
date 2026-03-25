@@ -26,7 +26,7 @@ def get_info():
 
     info = dict()
 
-    metadata_cmd = 'python -m build --quiet --metadata'
+    metadata_cmd = 'python3 -m build --quiet --metadata'
     if os.environ.get('DOC_NO_ISOLATION'):
         metadata_cmd += ' --no-isolation'
     metadata = subprocess.check_output(
