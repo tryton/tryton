@@ -17,6 +17,7 @@ From the root directory of the repository run:
 
 .. code-block:: console
 
+   pip install packaging build
    .hooks/update_requirements
    .hooks/link_modules
 
