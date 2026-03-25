@@ -255,14 +255,16 @@ check-account-chart:
   before_script:
     - pip install tox
   script:
-    - tox -e "py${PYTHON_VERSION/./}" -c "${PACKAGE}" -- -v --output-file junit.xml
+    - tox -e "py${PYTHON_VERSION/./}" -c "${PACKAGE}" -- -v --output-file "${CI_PROJECT_DIR}/${PACKAGE}/junit.xml"
+  after_script:
+    - .gitlab-scripts/rewrite-coverage-paths.py "trytond/" "" ${PACKAGE}/junit.xml ${PACKAGE}/coverage.xml
   coverage: '/(?i)total.*? (100(?:\.0+)?\%|[1-9]?\d(?:\.\d+)?\%)$/'
   artifacts:
     reports:
-      junit: ${PACKAGE}/.tox/junit.xml
+      junit: ${PACKAGE}/junit.xml
       coverage_report:
         coverage_format: cobertura
-        path: ${PACKAGE}/.tox/coverage.xml
+        path: ${PACKAGE}/coverage.xml
   parallel:
     matrix:
       - PYTHON_VERSION: ["3.10", "3.11", "3.12", "3.13", "3.14"]
@@ -272,7 +274,7 @@ check-account-chart:
   variables:
     DB_CACHE: "${TMPDIR}/cache"
   script:
-    - tox -e "py${PYTHON_VERSION/./}-${DATABASE}" -c "${PACKAGE}" -- -v --output-file junit.xml
+    - tox -e "py${PYTHON_VERSION/./}-${DATABASE}" -c "${PACKAGE}" -- -v --output-file "${CI_PROJECT_DIR}/${PACKAGE}/junit.xml"
 
 .test-sqlite:
   extends: .test-db
@@ -301,7 +303,7 @@ check-account-chart:
     POSTGIS_URI: postgis://postgres@postgis:5432/
     POSTGRES_HOST_AUTH_METHOD: trust
   script:
-    - tox -e "py${PYTHON_VERSION/./}" -c "${PACKAGE}" -- -v --output-file junit.xml
+    - tox -e "py${PYTHON_VERSION/./}" -c "${PACKAGE}" -- -v --output-file "${CI_PROJECT_DIR}/${PACKAGE}/junit.xml"
   services:
     - name: ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/postgis/postgis
       alias: postgis
@@ -330,12 +332,16 @@ check-doc-trytond:
 
 test-trytond-sqlite:
   extends: .test-sqlite
+  after_script:
+    - .gitlab-scripts/rewrite-coverage-paths.py "" "${PACKAGE}/" ${PACKAGE}/junit.xml ${PACKAGE}/coverage.xml
   variables:
     PACKAGE: trytond
     TAG_PATTERN: '/^trytond-.*/'
 
 test-trytond-postgresql:
   extends: .test-postgresql
+  after_script:
+    - .gitlab-scripts/rewrite-coverage-paths.py "" "${PACKAGE}/" ${PACKAGE}/junit.xml ${PACKAGE}/coverage.xml
   variables:
     PACKAGE: trytond
     TAG_PATTERN: '/^trytond-.*/'
@@ -350,6 +356,8 @@ check-doc-trytond-gis:
 
 test-trytond-gis-postgis:
   extends: .test-postgis
+  after_script:
+    - .gitlab-scripts/rewrite-coverage-paths.py "" "${PACKAGE}/" ${PACKAGE}/junit.xml ${PACKAGE}/coverage.xml
   variables:
     PACKAGE: trytond-gis
     TAG_PATTERN: '/^trytond-gis-.*/'
@@ -361,6 +369,8 @@ check-doc-proteus:
 
 test-proteus:
   extends: .test-tox
+  after_script:
+    - .gitlab-scripts/rewrite-coverage-paths.py "" "${PACKAGE}/" ${PACKAGE}/junit.xml ${PACKAGE}/coverage.xml
   variables:
     PACKAGE: proteus
     TAG_PATTERN: '/^proteus-.*/'
@@ -373,6 +383,8 @@ check-doc-tryton:
 test-tryton:
   extends: .test-tox
   image: ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/tryton/tryton-test:${PYTHON_VERSION}
+  after_script:
+    - .gitlab-scripts/rewrite-coverage-paths.py "" "${PACKAGE}/" ${PACKAGE}/junit.xml ${PACKAGE}/coverage.xml
   variables:
     PACKAGE: tryton
     TAG_PATTERN: '/^tryton-.*/'
