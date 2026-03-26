@@ -115,9 +115,10 @@ class Period(Workflow, ModelSQL, ModelView):
             with connection.cursor() as cursor:
                 cursor.execute(*query)
 
-        locations = Location.search([
-                ('type', 'not in', ['warehouse', 'view']),
-                ], order=[])
+        with Transaction().set_context(active_test=False):
+            locations = Location.search([
+                    ('type', 'not in', ['warehouse', 'view']),
+                    ], order=[])
         today = Date.today()
 
         recent_date = max(period.date for period in periods)
