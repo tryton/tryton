@@ -154,7 +154,9 @@ class One2Many(Field):
         if self.order:
             order += self.order
         elif Target._order:
-            order += Target._order
+            order += [
+                (oexpr, otype) for oexpr, otype in Target._order
+                if not oexpr.startswith(f'{self.field}.')]
         if reference_key:
             references = ['%s,%s' % (model.__name__, x) for x in ids]
             clause = [(self.field, 'in', references)]
