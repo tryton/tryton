@@ -1,3 +1,4 @@
+* Add contextual ``_log`` to force logging events
 * Add notify_user to ModelStorage
 * Check button states when testing access
 * Remove the files of Binary fields from the Filestore

@@ -747,6 +747,7 @@ class ModelView(Model):
 
             transaction = Transaction()
             check_access = transaction.check_access
+            log = transaction.context.get('_log', False)
 
             assert len(records) == len(set(records)), "Duplicate records"
 
@@ -793,7 +794,7 @@ class ModelView(Model):
             if names:
                 ButtonClick.reset(cls.__name__, names, records)
 
-            if check_access and issubclass(cls, ModelStorage):
+            if (check_access or log) and issubclass(cls, ModelStorage):
                 cls.log(records, 'button', func.__name__)
             with without_check_access():
                 return func(cls, records, *args, **kwargs)

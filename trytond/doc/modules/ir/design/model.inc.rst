@@ -131,6 +131,12 @@ Model Log
 The *Model Log* records events such as modification, suppression, click, launch
 and transition that happened to a :class:`~trytond.model.ModelStorage` record.
 
+.. note::
+   Only events happening under check access are logged by default except for
+   transition that are always logged.
+   But the ``_log`` key if set to ``True`` in the
+   :attr:`~trytond.transaction.Transaction.context` forces the logging.
+
 .. seealso::
 
    Model Logs are found by opening the main menu item:
