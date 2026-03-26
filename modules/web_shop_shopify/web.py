@@ -812,7 +812,8 @@ class Shop(metaclass=PoolMeta):
                     to_update[sale] = order
                     states_to_restore[sale.state].append(sale)
         Sale.write(list(to_update.keys()), {'state': 'draft'})
-        Sale.save(to_update.keys())
+        with Transaction().set_context(_log=True):
+            Sale.save(to_update.keys())
         for state, state_sales in states_to_restore.items():
             Sale.write(list(state_sales), {'state': state})
         for sale, order in to_update.items():
