@@ -9,7 +9,7 @@ from trytond.model import Index, ModelSQL, ModelView, Workflow, fields
 from trytond.pool import Pool
 from trytond.pyson import Eval
 from trytond.tools import grouped_slice
-from trytond.transaction import Transaction
+from trytond.transaction import Transaction, inactive_records
 
 from .exceptions import PeriodCloseError
 
@@ -117,9 +117,11 @@ class Period(Workflow, ModelSQL, ModelView):
             with connection.cursor() as cursor:
                 cursor.execute(*query)
 
-        locations = Location.search([
-                ('type', 'not in', ['warehouse', 'view']),
-                ], order=[])
+        with inactive_records():
+            locations = Location.search([
+                    ('type', 'not in', ['warehouse', 'view']),
+                    ],
+                order=[])
 
         for company, c_periods in groupby(periods, key=lambda p: p.company):
             c_periods = list(c_periods)
