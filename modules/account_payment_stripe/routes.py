@@ -65,7 +65,7 @@ def webhooks_endpoint(request, pool, account):
     if account.webhook_signing_secret:
         sig_header = request.headers['STRIPE_SIGNATURE']
         try:
-            stripe.Webhook.construct_event(
+            event = stripe.Webhook.construct_event(
                 request_body, sig_header, account.webhook_signing_secret)
         except ValueError:  # Invalid payload
             abort(http.client.BAD_REQUEST)
@@ -73,11 +73,15 @@ def webhooks_endpoint(request, pool, account):
             abort(http.client.BAD_REQUEST)
     else:
         logger.warn("Stripe signature ignored")
+        try:
+            event = stripe.Event.construct_from(
+                json.loads(request_body), account.secret_key)
+        except ValueError:
+            abort(HTTPStatus.BAD_REQUEST)
 
-    payload = json.loads(request_body)
-    result = account.webhook(payload)
+    result = account.webhook(event)
     if result is None:
-        logger.info("No callback for payload type '%s'", payload['type'])
+        logger.info("No callback for event type '%s'", event['type'])
     elif not result:
         return Response(status=http.client.NOT_FOUND)
     return Response(status=http.client.NO_CONTENT)
