@@ -119,6 +119,26 @@ class Invoice(Model):
         else:
             return '389'
 
+    def allowed_additional_documents(self, specification=None):
+        allowed_mimetypes = self._allowed_addition_document_mimetypes(
+            specification)
+        for document in self.additional_documents:
+            if (document.get('code') != '130'
+                    and allowed_mimetypes
+                    and document.get('mimetype', '') not in allowed_mimetypes):
+                continue
+            yield document
+
+    @classmethod
+    def _allowed_addition_document_mimetypes(cls, specification=None):
+        if specification and specification.startswith('peppol'):
+            return {'application/pdf', 'image/png', 'image/jpeg', 'text/csv',
+                'application/'
+                'vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+                'application/vnd.oasis.opendocument.spreadsheet'}
+        else:
+            return {}
+
     @property
     def additional_documents(self):
         pool = Pool()

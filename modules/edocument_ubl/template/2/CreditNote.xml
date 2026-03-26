@@ -30,7 +30,7 @@ this repository contains the full copyright notices and license terms. -->
         <cbc:IssueDate>${origin_invoice.invoice_date}</cbc:IssueDate>
     </cac:InvoiceDocumentReference>
 </cac:BillingReference>
-<cac:AdditionalDocumentReference py:for="document in this.additional_documents">
+<cac:AdditionalDocumentReference py:for="document in this.allowed_additional_documents(specification)">
     <cbc:ID>${document['id']}</cbc:ID>
     <cbc:DocumentTypeCode py:if="document.get('code')">${document['code']}</cbc:DocumentTypeCode>
     <cbc:DocumentDescription py:if="document.get('description')">${document['description']}</cbc:DocumentDescription>
