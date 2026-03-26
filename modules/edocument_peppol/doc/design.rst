@@ -12,6 +12,11 @@ Document
 The *Document* keeps track of the document sent or received on the
 `Peppol network <https://peppol.org/>`_.
 
+.. note::
+   A `scheduled task <trytond:model-ir.cron>` is run every hour to update the
+   status of the :guilabel:`processing` documents with their `service
+   <model-edocument.peppol.service>`.
+
 .. seealso::
 
    Documents can be seen by opening the main menu item:
