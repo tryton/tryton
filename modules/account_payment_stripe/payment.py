@@ -1073,16 +1073,16 @@ class Account(ModelSQL, ModelView):
                     account.save()
                     Transaction().commit()
 
-    def webhook(self, payload):
+    def webhook(self, event):
         """This method handles stripe webhook callbacks
 
         The return values are:
-            - None if the method could not handle payload['type']
-            - True if the payload has been handled
+            - None if the method could not handle event.type
+            - True if the event has been handled
             - False if the webhook should be retried by Stripe
         """
-        data = payload['data']
-        type_ = payload['type']
+        data = event.data
+        type_ = event.type
         if type_ == 'charge.succeeded':
             return self.webhook_charge_succeeded(data)
         if type_ == 'charge.captured':
@@ -1126,7 +1126,7 @@ class Account(ModelSQL, ModelView):
                 ('stripe_charge_id', '=', charge['id']),
                 ])
         if not payments:
-            payment_intent_id = charge.get('payment_intent')
+            payment_intent_id = getattr(charge, 'payment_intent', None)
             if payment_intent_id:
                 found = Payment.search([
                         ('stripe_payment_intent_id', '=', payment_intent_id),
@@ -1181,7 +1181,7 @@ class Account(ModelSQL, ModelView):
         if not refunds:
             logger.error("charge.refund.updated: No refund '%s'", rf['id'])
         for refund in refunds:
-            refund.stripe_error_code = rf.get('failure_reason')
+            refund.stripe_error_code = getattr(rf, 'failure_reason', None)
             if rf['status'] == 'pending':
                 Refund.process([refund])
             elif rf['status'] == 'succeeded':
@@ -1202,7 +1202,7 @@ class Account(ModelSQL, ModelView):
                 ('stripe_charge_id', '=', charge['id']),
                 ])
         if not payments:
-            payment_intent_id = charge.get('payment_intent')
+            payment_intent_id = getattr(charge, 'payment_intent', None)
             if payment_intent_id:
                 found = Payment.search([
                         ('stripe_payment_intent_id', '=', payment_intent_id),
