@@ -108,7 +108,7 @@ Create fully disputed payment::
 
 Simulate charge.dispute.created event::
 
-    >>> StripeAccount.webhook([stripe_account], {
+    >>> StripeAccount.webhook([stripe_account], stripe.Event.construct_from({
     ...         'type': 'charge.dispute.created',
     ...         'data': {
     ...             'object': {
@@ -120,7 +120,7 @@ Simulate charge.dispute.created event::
     ...                 'status': 'needs_response',
     ...                 },
     ...             },
-    ...         }, {})
+    ...         }, stripe_account.secret_key), {})
     [True]
     >>> payment.reload()
     >>> payment.state
@@ -132,7 +132,7 @@ Simulate charge.dispute.created event::
 
 Simulate charge.dispute.closed event::
 
-    >>> StripeAccount.webhook([stripe_account], {
+    >>> StripeAccount.webhook([stripe_account], stripe.Event.construct_from({
     ...         'type': 'charge.dispute.closed',
     ...         'data': {
     ...             'object': {
@@ -144,7 +144,7 @@ Simulate charge.dispute.closed event::
     ...                 'status': 'lost',
     ...                 },
     ...             },
-    ...         }, {})
+    ...         }, stripe_account.secret_key), {})
     [True]
     >>> payment.reload()
     >>> payment.state
@@ -202,7 +202,7 @@ Create partial disputed payment::
 
 Simulate charge.dispute.closed event::
 
-    >>> StripeAccount.webhook([stripe_account], {
+    >>> StripeAccount.webhook([stripe_account], stripe.Event.construct_from({
     ...         'type': 'charge.dispute.closed',
     ...         'data': {
     ...             'object': {
@@ -214,7 +214,7 @@ Simulate charge.dispute.closed event::
     ...                 'status': 'lost',
     ...                 },
     ...             },
-    ...         }, {})
+    ...         }, stripe_account.secret_key), {})
     [True]
     >>> payment.reload()
     >>> payment.state
