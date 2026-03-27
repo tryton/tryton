@@ -39,8 +39,9 @@ can be printed out or saved, and sent to your customer.
 .. tip::
 
    The *Invoice report* is saved for posted customer invoices.
-   This means that every time you print it you will get an identical copy
-   of it.
+   This means that each time you print, you will get an identical copy unless
+   you print using :guilabel:`Invoice (revised)` which generates a new, updated
+   copy and archives the previous one.
 
 .. _Handling supplier invoices:
 
