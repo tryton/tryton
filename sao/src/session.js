@@ -298,7 +298,7 @@
         };
 
         var login = function() {
-            var login = dialog.login_input.val();
+            var login = dialog.login_input.val().trim();
             var database = database || dialog.database_select.val() ||
                 dialog.database_input.val();
             dialog.modal.find('.has-error').removeClass('has-error');

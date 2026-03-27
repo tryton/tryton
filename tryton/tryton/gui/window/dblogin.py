@@ -703,7 +703,7 @@ class DBLogin(object):
             CONFIG['login.db'] = database
             CONFIG['login.expanded'] = self.expander.props.expanded
             if response == Gtk.ResponseType.OK:
-                authentication = self.entry_login.get_text()
+                authentication = self.entry_login.get_text().strip()
                 CONFIG['login.login'] = authentication
                 CONFIG['login.service'] = ''
             else:
