@@ -102,7 +102,9 @@ def activate_module(modules, lang='en'):
         records = Module.search([
                 ('name', 'in', modules),
                 ])
-        assert len(records) == len(modules)
+        assert len(records) == len(modules), (
+            f"Not found: {', '.join(set(modules) - {r.name for r in records})}"
+            )
 
         records = Module.search([
                 ('name', 'in', modules),

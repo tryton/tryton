@@ -35,7 +35,8 @@ def activate_modules(modules, *setup):
     records = Module.find([
             ('name', 'in', modules),
             ])
-    assert len(records) == len(modules)
+    assert len(records) == len(modules), (
+        f"Not found: {', '.join(set(modules) - {r.name for r in records})}")
     Module.click(records, 'activate')
     Wizard('ir.module.activate_upgrade').execute('upgrade')
 
