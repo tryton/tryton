@@ -2725,6 +2725,23 @@ test-modules-sale_product_recommendation_association_rule-postgresql:
     PACKAGE: modules/sale_product_recommendation_association_rule
     TAG_PATTERN: '/^sale_product_recommendation_association_rule-.*/'
 
+check-doc-modules-sale_project_task:
+  extends: .check-doc
+  variables:
+    PACKAGE: modules/sale_project_task
+
+test-modules-sale_project_task-sqlite:
+  extends: .test-sqlite
+  variables:
+    PACKAGE: modules/sale_project_task
+    TAG_PATTERN: '/^sale_project_task-.*/'
+
+test-modules-sale_project_task-postgresql:
+  extends: .test-postgresql
+  variables:
+    PACKAGE: modules/sale_project_task
+    TAG_PATTERN: '/^sale_project_task-.*/'
+
 check-doc-modules-sale_promotion:
   extends: .check-doc
   variables:

@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<data>
+    <xpath expr="//field[@name='shipment_method']" position="after">
+        <label name="task_creation_method"/>
+        <field name="task_creation_method"/>
+        <newline/>
+    </xpath>
+    <xpath expr="//field[@name='shipment_state']" position="after">
+        <label name="tasks_state"/>
+        <field name="tasks_state"/>
+    </xpath>
+    <xpath expr="//button[@name='manual_shipment']" position="after">
+        <button name="manual_task_creation" icon="tryton-forward"/>
+        <button name="manual_task_invoice" icon="tryton-forward"/>
+    </xpath>
+</data>

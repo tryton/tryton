@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="product_template_view_form">
+            <field name="model">product.template</field>
+            <field name="inherit" ref="product.template_view_form"/>
+            <field name="name">product_template_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="product_template_view_list">
+            <field name="model">product.template</field>
+            <field name="inherit" ref="product.template_view_tree"/>
+            <field name="name">product_template_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="product_project_task_view_form">
+            <field name="model">product.project_task</field>
+            <field name="type">form</field>
+            <field name="name">product_project_task_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="product_project_task_view_list">
+            <field name="model">product.project_task</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="10"/>
+            <field name="name">product_project_task_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="product_project_task_view_tree">
+            <field name="model">product.project_task</field>
+            <field name="type">tree</field>
+            <field name="field_childs">children</field>
+            <field name="priority" eval="20"/>
+            <field name="name">product_project_task_tree</field>
+        </record>
+
+        <record model="ir.model.access" id="access_product_project_task">
+            <field name="model">product.project_task</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <record model="ir.model.access" id="access_product_project_task_product_admin">
+            <field name="model">product.project_task</field>
+            <field name="group" ref="product.group_product_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+    </data>
+</tryton>

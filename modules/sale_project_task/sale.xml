@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="sale_configuration_view_form">
+            <field name="model">sale.configuration</field>
+            <field name="inherit" ref="sale.sale_configuration_view_form"/>
+            <field name="name">sale_configuration_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="sale_sale_view_form">
+            <field name="model">sale.sale</field>
+            <field name="inherit" ref="sale.sale_view_form"/>
+            <field name="name">sale_sale_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="sale_view_list">
+            <field name="model">sale.sale</field>
+            <field name="inherit" ref="sale.sale_view_tree"/>
+            <field name="name">sale_sale_list</field>
+        </record>
+
+        <record model="ir.model.button" id="sale_manual_task_creation_button">
+            <field name="model">sale.sale</field>
+            <field name="name">manual_task_creation</field>
+            <field name="string">Create Tasks</field>
+        </record>
+
+        <record model="ir.model.button" id="sale_manual_task_invoice_button">
+            <field name="model">sale.sale</field>
+            <field name="name">manual_task_invoice</field>
+            <field name="string">Invoice Tasks</field>
+        </record>
+
+        <record model="ir.ui.view" id="sale_line_view_form">
+            <field name="model">sale.line</field>
+            <field name="inherit" ref="sale.sale_line_view_form"/>
+            <field name="priority" eval="10"/>
+            <field name="name">sale_line_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="sale_line_view_list">
+            <field name="model">sale.line</field>
+            <field name="inherit" ref="sale.sale_line_view_tree"/>
+            <field name="priority" eval="10"/>
+            <field name="name">sale_line_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="sale_line_view_list_sequence">
+            <field name="model">sale.line</field>
+            <field name="inherit" ref="sale.sale_line_view_tree_sequence"/>
+            <field name="priority" eval="10"/>
+            <field name="name">sale_line_list_sequence</field>
+        </record>
+    </data>
+    <data depends="project_revenue">
+        <record model="ir.ui.view" id="sale_line_view_form_revenue">
+            <field name="model">sale.line</field>
+            <field name="inherit" ref="sale.sale_line_view_form"/>
+            <field name="priority" eval="20"/>
+            <field name="name">sale_line_form_revenue</field>
+        </record>
+
+        <record model="ir.ui.view" id="sale_line_view_list_revenue">
+            <field name="model">sale.line</field>
+            <field name="inherit" ref="sale.sale_line_view_tree"/>
+            <field name="priority" eval="20"/>
+            <field name="name">sale_line_list_revenue</field>
+        </record>
+
+        <record model="ir.ui.view" id="sale_line_view_list_sequence_revenue">
+            <field name="model">sale.line</field>
+            <field name="inherit" ref="sale.sale_line_view_tree_sequence"/>
+            <field name="priority" eval="20"/>
+            <field name="name">sale_line_list_revenue</field>
+        </record>
+
+    </data>
+</tryton>

@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<data>
+    <xpath expr="//group[@id='checkboxes']/field[@name='salable']" position="after">
+        <label name="taskable"/>
+        <field name="taskable" xexpand="0" width="25"/>
+    </xpath>
+    <xpath expr="//page[@id='customers']/group[@id='customers_links']" position="before">
+        <newline/>
+        <label name="taskable"/>
+        <field name="taskable"/>
+
+        <field name="tasks" colspan="4" view_ids="sale_project_task.product_project_task_view_tree"/>
+    </xpath>
+</data>

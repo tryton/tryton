@@ -1,0 +1,3 @@
+build
+sphinx_book_theme
+sphinx_copybutton

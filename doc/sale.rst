@@ -62,6 +62,9 @@ Sale
 :doc:`Product Recommendation Association Rule <sale_product_recommendation_association_rule:index>`
    Recommend products based on association rules.
 
+:doc:`Project Task <sale_project_task:index>`
+   Create tasks for services sold.
+
 :doc:`Promotion <sale_promotion:index>`
    Apply promotions.
 

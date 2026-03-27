@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.action.act_window" id="act_project_work_relate_sale">
+            <field name="name">Tasks</field>
+            <field name="res_model">project.work</field>
+            <field
+                name="domain"
+                eval="[
+                If(Eval('active_model') == 'sale.sale',
+                ('origin.sale.id', 'in', Eval('active_ids', []), 'sale.line'), ()),
+                If(Eval('active_model') == 'sale.line',
+                ('origin.id', 'in', Eval('active_ids', []), 'sale.line'), ()),
+                ]"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_project_work_relate_sale_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="project.work_view_list"/>
+            <field name="act_window" ref="act_project_work_relate_sale"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_project_work_relate_sale_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="project.work_view_form"/>
+            <field name="act_window" ref="act_project_work_relate_sale"/>
+        </record>
+        <record model="ir.action.keyword" id="act_project_work_relate_sale_keyword_sale">
+            <field name="keyword">form_relate</field>
+            <field name="model">sale.sale,-1</field>
+            <field name="action" ref="act_project_work_relate_sale"/>
+        </record>
+        <record model="ir.action.keyword" id="act_project_work_relate_sale_keyword_sale_line">
+            <field name="keyword">form_relate</field>
+            <field name="model">sale.line,-1</field>
+            <field name="action" ref="act_project_work_relate_sale"/>
+        </record>
+    </data>
+</tryton>
