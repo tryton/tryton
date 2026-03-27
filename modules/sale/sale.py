@@ -256,6 +256,7 @@ class Sale(
             ('paid', 'Paid'),
             ('exception', 'Exception'),
             ], 'Invoice State', readonly=True, required=True, sort=False)
+    to_invoice = fields.Boolean("To Invoice", readonly=True)
     invoices = fields.Function(fields.Many2Many(
             'account.invoice', None, None, "Invoices"),
         'get_invoices', searcher='search_invoices')
@@ -288,6 +289,7 @@ class Sale(
             ('sent', 'Sent'),
             ('exception', 'Exception'),
             ], "Shipment State", readonly=True, required=True, sort=False)
+    to_ship = fields.Boolean("To Ship", readonly=True)
     shipments = fields.Function(fields.Many2Many(
             'stock.shipment.out', None, None, "Shipments"),
         'get_shipments', searcher='search_shipments')
@@ -402,15 +404,17 @@ class Sale(
                     },
                 'manual_invoice': {
                     'invisible': (
-                        (Eval('invoice_method') != 'manual')
+                        ~Eval('to_invoice', False)
+                        | (Eval('invoice_method') != 'manual')
                         | ~Eval('state').in_(['processing', 'done'])),
-                    'depends': ['invoice_method', 'state'],
+                    'depends': ['to_invoice', 'invoice_method', 'state'],
                     },
                 'manual_shipment': {
                     'invisible': (
-                        (Eval('shipment_method') != 'manual')
+                        ~Eval('to_ship', False)
+                        | (Eval('shipment_method') != 'manual')
                         | ~Eval('state').in_(['processing', 'done'])),
-                    'depends': ['shipment_method', 'state'],
+                    'depends': ['to_ship', 'shipment_method', 'state'],
                     },
                 'handle_invoice_exception': {
                     'invisible': ((Eval('invoice_state') != 'exception')
@@ -900,8 +904,10 @@ class Sale(
         default.setdefault('number', None)
         default.setdefault('reference')
         default.setdefault('invoice_state', 'none')
+        default.setdefault('to_invoice')
         default.setdefault('invoices_ignored', None)
         default.setdefault('shipment_state', 'none')
+        default.setdefault('to_ship')
         default.setdefault('quotation_date')
         default.setdefault('sale_date', None)
         default.setdefault('quoted_by')
@@ -1250,6 +1256,7 @@ class Sale(
         pool = Pool()
         Line = pool.get('sale.line')
         lines = []
+        sales_to_invoice, sales_to_ship = defaultdict(list), defaultdict(list)
         invoice_states, shipment_states = defaultdict(list), defaultdict(list)
         for sale in sales:
             invoice_state = sale.get_invoice_state()
@@ -1259,10 +1266,21 @@ class Sale(
             if sale.shipment_state != shipment_state:
                 shipment_states[shipment_state].append(sale)
 
+            to_invoice = to_ship = False
             for line in sale.line_lines:
-                line.set_actual_quantity()
+                line.set_quantities()
+                to_invoice |= bool(line.quantity_to_invoice)
+                to_ship |= bool(line.quantity_to_ship)
                 lines.append(line)
+            if sale.to_invoice != to_invoice:
+                sales_to_invoice[to_invoice].append(sale)
+            if sale.to_ship != to_ship:
+                sales_to_ship[to_ship].append(sale)
 
+        for to_invoice, sales in sales_to_invoice.items():
+            cls.write(sales, {'to_invoice': to_invoice})
+        for to_ship, sales in sales_to_ship.items():
+            cls.write(sales, {'to_ship': to_ship})
         for invoice_state, sales in invoice_states.items():
             cls.write(sales, {'invoice_state': invoice_state})
             cls.log(sales, 'transition', f'invoice_state:{invoice_state}')
@@ -1395,6 +1413,16 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
             ],
         states={
             'invisible': ((Eval('type') != 'line') | ~Eval('actual_quantity')),
+            })
+    quantity_to_ship = fields.Float(
+        "Quantity to Ship", digits='unit', readonly=True,
+        states={
+            'invisible': ~Eval('quantity_to_ship'),
+            })
+    quantity_to_invoice = fields.Float(
+        "Quantity to Invoice", digits='unit', readonly=True,
+        states={
+            'invisible': ~Eval('quantity_to_invoice'),
             })
     unit = fields.Many2One('product.uom', 'Unit', ondelete='RESTRICT',
             states={
@@ -2192,9 +2220,11 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
                         invoice_lines.append(invoice_line)
         return invoice_lines
 
-    def set_actual_quantity(self):
+    def set_quantities(self):
         pool = Pool()
         Uom = pool.get('product.uom')
+        Move = pool.get('stock.move')
+
         if self.type != 'line':
             return
         moved_quantity = 0
@@ -2219,6 +2249,26 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
             actual_quantity = self.unit.round(actual_quantity)
         if self.actual_quantity != actual_quantity:
             self.actual_quantity = actual_quantity
+
+        if self.product and self.product.type in Move.get_product_types():
+            shipment_type = 'out' if self.quantity >= 0 else 'in'
+            quantity_to_ship = (
+                self._get_move_quantity(shipment_type)
+                - self._get_shipped_quantity(shipment_type))
+            if self.unit:
+                quantity_to_ship = self.unit.round(quantity_to_ship)
+        else:
+            quantity_to_ship = None
+        if self.quantity_to_ship != quantity_to_ship:
+            self.quantity_to_ship = quantity_to_ship
+
+        quantity_to_invoice = (
+            self._get_invoice_line_quantity()
+            - self._get_invoiced_quantity())
+        if self.unit:
+            quantity_to_invoice = self.unit.round(quantity_to_invoice)
+        if self.quantity_to_invoice != quantity_to_invoice:
+            self.quantity_to_invoice = quantity_to_invoice
 
     def get_rec_name(self, name):
         pool = Pool()
@@ -2278,6 +2328,8 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
         default.setdefault('moves_recreated', None)
         default.setdefault('invoice_lines', None)
         default.setdefault('actual_quantity')
+        default.setdefault('quantity_to_invoice')
+        default.setdefault('quantity_to_ship')
         return super().copy(lines, default=default)
 
 

@@ -10,6 +10,8 @@ this repository contains the full copyright notices and license terms. -->
     <field name="summary" expand="1" optional="1"/>
     <field name="actual_quantity" symbol="unit" optional="0"/>
     <field name="quantity" symbol="unit" optional="0"/>
+    <field name="quantity_to_ship" symbol="unit" optional="1"/>
+    <field name="quantity_to_invoice" symbol="unit" optional="1"/>
     <field name="unit_price"/>
     <field name="amount"/>
     <field name="moves_progress" string="Shipping" widget="progressbar" optional="1"/>

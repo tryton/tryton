@@ -199,6 +199,7 @@ class Purchase(
             ('paid', 'Paid'),
             ('exception', 'Exception'),
             ], 'Invoice State', readonly=True, required=True, sort=False)
+    to_invoice = fields.Boolean("To Invoice", readonly=True)
     invoices = fields.Function(fields.Many2Many(
             'account.invoice', None, None, "Invoices"),
         'get_invoices', searcher='search_invoices')
@@ -338,9 +339,10 @@ class Purchase(
                     },
                 'manual_invoice': {
                     'invisible': (
-                        (Eval('invoice_method') != 'manual')
+                        ~Eval('to_invoice', False)
+                        | (Eval('invoice_method') != 'manual')
                         | ~Eval('state').in_(['processing', 'done'])),
-                    'depends': ['invoice_method', 'state'],
+                    'depends': ['to_invoice', 'invoice_method', 'state'],
                     },
                 'handle_invoice_exception': {
                     'invisible': ((Eval('invoice_state') != 'exception')
@@ -761,6 +763,7 @@ class Purchase(
         default.setdefault('number', None)
         default.setdefault('reference')
         default.setdefault('invoice_state', 'none')
+        default.setdefault('to_invoice')
         default.setdefault('invoices_ignored', None)
         default.setdefault('shipment_state', 'none')
         default.setdefault('purchase_date', None)
@@ -1060,6 +1063,7 @@ class Purchase(
         pool = Pool()
         Line = pool.get('purchase.line')
         lines = []
+        purchases_to_invoice = defaultdict(list)
         invoice_states, shipment_states = defaultdict(list), defaultdict(list)
         for purchase in purchases:
             invoice_state = purchase.get_invoice_state()
@@ -1069,10 +1073,16 @@ class Purchase(
             if purchase.shipment_state != shipment_state:
                 shipment_states[shipment_state].append(purchase)
 
+            to_invoice = False
             for line in purchase.line_lines:
-                line.set_actual_quantity()
+                line.set_quantities()
+                to_invoice |= bool(line.quantity_to_invoice)
                 lines.append(line)
+            if purchase.to_invoice != to_invoice:
+                purchases_to_invoice[to_invoice].append(purchase)
 
+        for to_invoice, purchases in purchases_to_invoice.items():
+            cls.write(purchases, {'to_invoice': to_invoice})
         for invoice_state, purchases in invoice_states.items():
             cls.write(purchases, {'invoice_state': invoice_state})
             cls.log(purchases, 'transition', f'invoice_state:{invoice_state}')
@@ -1187,6 +1197,11 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
             ],
         states={
             'invisible': ((Eval('type') != 'line') | ~Eval('actual_quantity')),
+            })
+    quantity_to_invoice = fields.Float(
+        "Quantity to Invoice", digits='unit', readonly=True,
+        states={
+            'invisible': ~Eval('quantity_to_invoice'),
             })
     unit = fields.Many2One('product.uom', 'Unit',
         ondelete='RESTRICT',
@@ -2069,7 +2084,7 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
                 lambda l: samesign(self.quantity, l.quantity), lines)
         return list(lines)
 
-    def set_actual_quantity(self):
+    def set_quantities(self):
         pool = Pool()
         Uom = pool.get('product.uom')
         if self.type != 'line':
@@ -2096,6 +2111,14 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
             actual_quantity = self.unit.round(actual_quantity)
         if self.actual_quantity != actual_quantity:
             self.actual_quantity = actual_quantity
+
+        quantity_to_invoice = (
+            self._get_invoice_line_quantity()
+            - self._get_invoiced_quantity())
+        if self.unit:
+            quantity_to_invoice = self.unit.round(quantity_to_invoice)
+        if self.quantity_to_invoice != quantity_to_invoice:
+            self.quantity_to_invoice = quantity_to_invoice
 
     def get_rec_name(self, name):
         pool = Pool()
@@ -2159,6 +2182,7 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
         default.setdefault('moves_recreated', None)
         default.setdefault('invoice_lines', None)
         default.setdefault('actual_quantity')
+        default.setdefault('quantity_to_invoice')
         return super().copy(lines, default=default)
 
 

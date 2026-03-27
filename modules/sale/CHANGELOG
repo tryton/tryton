@@ -1,3 +1,4 @@
+* Calculate the quantities to ship and to invoice for sale
 * Rename invoice method on shipment into on fulfillment
 * Add support for Python 3.14
 * Remove support for Python 3.9

@@ -53,6 +53,11 @@ Sale with manual shipment method::
     'processing'
     >>> len(sale.shipments)
     0
+    >>> bool(sale.to_ship)
+    True
+    >>> line, = sale.lines
+    >>> line.quantity_to_ship
+    10.0
 
 Manually create a shipment::
 
@@ -61,16 +66,29 @@ Manually create a shipment::
     'processing'
     >>> sale.shipment_state
     'waiting'
+    >>> bool(sale.to_ship)
+    False
+    >>> line, = sale.lines
+    >>> line.quantity_to_ship
+    0.0
 
 Change quantity on shipment and create a new shipment::
 
     >>> shipment, = sale.shipments
-    >>> move, = shipment.outgoing_moves
+    >>> move, = shipment.inventory_moves
     >>> move.quantity = 5
-    >>> shipment.save()
+    >>> shipment.click('assign_force')
+    >>> shipment.click('pick')
+    >>> shipment.click('pack')
+    >>> shipment.click('ship')
+    >>> shipment.state
+    'shipped'
 
+    >>> sale.reload()
     >>> len(sale.shipments)
     1
+    >>> bool(sale.to_ship)
+    True
     >>> sale.click('manual_shipment')
     >>> len(sale.shipments)
     2

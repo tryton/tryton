@@ -7,7 +7,10 @@ Imports::
     >>> from decimal import Decimal
 
     >>> from proteus import Model
-    >>> from trytond.modules.account.tests.tools import create_chart, get_accounts
+    >>> from trytond.modules.account.tests.tools import (
+    ...     create_chart, create_fiscalyear, get_accounts)
+    >>> from trytond.modules.account_invoice.tests.tools import (
+    ...     set_fiscalyear_invoice_sequences)
     >>> from trytond.modules.company.tests.tools import create_company
     >>> from trytond.tests.tools import activate_modules
 
@@ -24,6 +27,11 @@ Activate modules::
 Get accounts::
 
     >>> accounts = get_accounts()
+
+Create fiscal year::
+
+    >>> fiscalyear = set_fiscalyear_invoice_sequences(create_fiscalyear())
+    >>> fiscalyear.click('create_period')
 
 Create party::
 
@@ -67,6 +75,11 @@ Sale with manual invoice method::
     'none'
     >>> len(sale.invoices)
     0
+    >>> bool(sale.to_invoice)
+    True
+    >>> line, = sale.lines
+    >>> line.quantity_to_invoice
+    10.0
 
 Manually create an invoice::
 
@@ -75,16 +88,26 @@ Manually create an invoice::
     'processing'
     >>> sale.invoice_state
     'pending'
+    >>> bool(sale.to_invoice)
+    False
+    >>> line, = sale.lines
+    >>> line.quantity_to_invoice
+    0.0
 
 Change quantity on invoice and create a new invoice::
 
     >>> invoice, = sale.invoices
     >>> line, = invoice.lines
     >>> line.quantity = 5
-    >>> invoice.save()
+    >>> invoice.click('post')
+    >>> invoice.state
+    'posted'
 
+    >>> sale.reload()
     >>> len(sale.invoices)
     1
+    >>> bool(sale.to_invoice)
+    True
     >>> sale.click('manual_invoice')
     >>> len(sale.invoices)
     2
