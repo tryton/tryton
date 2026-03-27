@@ -9,6 +9,8 @@ this repository contains the full copyright notices and license terms. -->
 
     <label name="origin"/>
     <field name="origin"/>
+    <label name="reference"/>
+    <field name="reference"/>
 
     <notebook>
         <page name="points">

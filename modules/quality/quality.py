@@ -9,8 +9,9 @@ from sql.functions import CharLength
 
 from trytond.i18n import gettext, lazy_gettext
 from trytond.model import (
-    ChatMixin, DeactivableMixin, DictSchemaMixin, MatchMixin, ModelSingleton,
-    ModelSQL, ModelStorage, ModelView, Unique, Workflow, dualmethod, fields)
+    ChatMixin, DeactivableMixin, DictSchemaMixin, Index, MatchMixin,
+    ModelSingleton, ModelSQL, ModelStorage, ModelView, Unique, Workflow,
+    dualmethod, fields)
 from trytond.model.exceptions import AccessError, ButtonActionException
 from trytond.modules.company.model import (
     CompanyMultiValueMixin, CompanyValueMixin, employee_field, reset_employee,
@@ -350,6 +351,7 @@ class Inspection(Workflow, ModelSQL, ModelView, ChatMixin):
         }
 
     number = fields.Char("Number", required=True, readonly=True)
+    reference = fields.Char("Reference")
     company = fields.Many2One(
         'company.company', "Company", required=True, states=_states)
     origin = fields.Reference(
@@ -406,7 +408,12 @@ class Inspection(Workflow, ModelSQL, ModelView, ChatMixin):
     @classmethod
     def __setup__(cls):
         cls.number.search_unaccented = False
+        cls.reference.search_unaccented = False
         super().__setup__()
+        t = cls.__table__()
+        cls._sql_indexes.update({
+                Index(t, (t.reference, Index.Similarity())),
+                })
         cls._transitions |= {
             ('pending', 'passed'),
             ('pending', 'failed'),
@@ -510,6 +517,24 @@ class Inspection(Workflow, ModelSQL, ModelView, ChatMixin):
                     ])
 
         return attributes
+
+    def get_rec_name(self, name):
+        items = [self.number]
+        if self.reference:
+            items.append('[%s]' % self.reference)
+        return ' '.join(items)
+
+    @classmethod
+    def search_rec_name(cls, name, clause):
+        _, operator, value = clause
+        if operator.startswith('!') or operator.startswith('not'):
+            bool_op = 'AND'
+        else:
+            bool_op = 'OR'
+        return [bool_op,
+            ('number', operator, value),
+            ('reference', operator, value),
+            ]
 
     @classmethod
     @ModelView.button
