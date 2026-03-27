@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.sequence.type" id="sequence_type_account_payment_check">
+            <field name="name">Account Payment Check</field>
+        </record>
+        <record model="ir.sequence.type-res.group" id="sequence_type_account_payment_check_group_admin">
+            <field name="sequence_type" ref="sequence_type_account_payment_check"/>
+            <field name="group" ref="res.group_admin"/>
+        </record>
+        <record model="ir.sequence.type-res.group" id="sequence_type_account_payment_check_group_account_admin">
+            <field name="sequence_type" ref="sequence_type_account_payment_check"/>
+            <field name="group" ref="account.group_account_admin"/>
+        </record>
+
+        <record model="ir.ui.view" id="account_payment_journal_view_form">
+            <field name="model">account.payment.journal</field>
+            <field name="inherit" ref="account_payment.payment_journal_view_form"/>
+            <field name="name">account_payment_journal_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="account_payment_group_view_form">
+            <field name="model">account.payment.group</field>
+            <field name="inherit" ref="account_payment.payment_group_view_form"/>
+            <field name="name">account_payment_group_form</field>
+        </record>
+
+        <record model="ir.model.button" id="account_payment_group_check_print_button">
+            <field name="model">account.payment.group</field>
+            <field name="name">check_print</field>
+            <field name="string">Print Checks</field>
+        </record>
+
+        <record model="ir.action.act_window.domain" id="act_payment_group_form_domain_check_to_print">
+            <field name="name">Check to Print</field>
+            <field name="sequence" eval="10"/>
+            <field name="domain" eval="[('process_method', '=', 'check'), ('check_printed', '=', False)]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="account_payment.act_payment_group_form"/>
+        </record>
+
+        <record model="ir.ui.view" id="account_payment_view_list">
+            <field name="model">account.payment</field>
+            <field name="inherit" ref="account_payment.payment_view_list"/>
+            <field name="name">account_payment_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="account_payment_view_form">
+            <field name="model">account.payment</field>
+            <field name="inherit" ref="account_payment.payment_view_form"/>
+            <field name="name">account_payment_form</field>
+        </record>
+
+        <record model="ir.action.wizard" id="account_payment_check_print">
+            <field name="name">Print Check</field>
+            <field name="wiz_name">account.payment.check.print</field>
+            <field name="model">account.payment.group</field>
+        </record>
+
+        <record model="ir.ui.view" id="account_payment_check_print_number_view_form">
+            <field name="model">account.payment.check.print.number</field>
+            <field name="type">form</field>
+            <field name="name">account_payment_check_print_number_form</field>
+        </record>
+
+        <record model="ir.action.report" id="report_account_payment_check_print">
+            <field name="name">Check</field>
+            <field name="model">account.payment</field>
+            <field name="report_name">account.payment.check</field>
+            <field name="report">account_payment_check/check.fodt</field>
+        </record>
+    </data>
+</tryton>

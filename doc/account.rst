@@ -98,6 +98,9 @@ Accounting
 :doc:`Payment Braintree <account_payment_braintree:index>`
    Receive payment from Braintree.
 
+:doc:`Payment Check <account_payment_check:index>`
+   Manage and print checks.
+
 :doc:`Payment Clearing <account_payment_clearing:index>`
    Use clearing account for payments.
 

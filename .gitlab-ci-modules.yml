@@ -528,6 +528,23 @@ test-modules-account_payment_braintree-postgresql:
     PACKAGE: modules/account_payment_braintree
     TAG_PATTERN: '/^account_payment_braintree-.*/'
 
+check-doc-modules-account_payment_check:
+  extends: .check-doc
+  variables:
+    PACKAGE: modules/account_payment_check
+
+test-modules-account_payment_check-sqlite:
+  extends: .test-sqlite
+  variables:
+    PACKAGE: modules/account_payment_check
+    TAG_PATTERN: '/^account_payment_check-.*/'
+
+test-modules-account_payment_check-postgresql:
+  extends: .test-postgresql
+  variables:
+    PACKAGE: modules/account_payment_check
+    TAG_PATTERN: '/^account_payment_check-.*/'
+
 check-doc-modules-account_payment_clearing:
   extends: .check-doc
   variables:

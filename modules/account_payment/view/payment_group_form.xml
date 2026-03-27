@@ -23,5 +23,7 @@ this repository contains the full copyright notices and license terms. -->
     <group id="links" col="-1" colspan="2">
         <link name="account_payment.act_payment_form_group_open"/>
     </group>
-    <button name="succeed" colspan="2"/>
+    <group id="buttons" col="-1" colspan="2">
+        <button name="succeed"/>
+    </group>
 </form>

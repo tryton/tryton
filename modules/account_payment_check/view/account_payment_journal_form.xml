@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<data>
+    <xpath expr="//field[@name='process_method']" position="after">
+        <separator name="check_sequence" string="Check" colspan="4"/>
+        <label name="check_sequence"/>
+        <field name="check_sequence"/>
+        <label name="check_max_number"/>
+        <field name="check_max_number" grouping="0"/>
+
+        <label name="check_format"/>
+        <field name="check_format"/>
+    </xpath>
+</data>
