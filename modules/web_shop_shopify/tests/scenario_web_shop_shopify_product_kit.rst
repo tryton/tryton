@@ -36,6 +36,7 @@ Activate modules::
     >>> Account = Model.get('account.account')
     >>> Category = Model.get('product.category')
     >>> Cron = Model.get('ir.cron')
+    >>> Country = Model.get('country.country')
     >>> Location = Model.get('stock.location')
     >>> PaymentJournal = Model.get('account.payment.journal')
     >>> Product = Model.get('product.product')
@@ -44,6 +45,11 @@ Activate modules::
     >>> ShopifyIdentifier = Model.get('web.shop.shopify_identifier')
     >>> Uom = Model.get('product.uom')
     >>> WebShop = Model.get('web.shop')
+
+Create country::
+
+    >>> belgium = Country(name="Belgium", code='BE')
+    >>> belgium.save()
 
 Get company::
 
@@ -161,16 +167,17 @@ Create an order on Shopify::
     ...         'lastName': "Customer",
     ...         'email': (''.join(
     ...                 random.choice(string.ascii_letters) for _ in range(10))
-    ...             + '@example.com'),
-    ...         'addresses': [{
-    ...                 'address1': "Street",
-    ...                 'city': "City",
-    ...                 'countryCode': 'BE',
-    ...                 }],
+    ...             + '@example.com')
     ...         })
 
     >>> order = tools.create_order({
     ...         'customerId': customer['id'],
+    ...         'shippingAddress': {
+    ...                 'lastName': "Customer",
+    ...                 'address1': "Street",
+    ...                 'city': "City",
+    ...                 'countryCode': 'BE',
+    ...                 },
     ...         'lineItems': [{
     ...             'variantId': id2gid(
     ...                 'ProductVariant',

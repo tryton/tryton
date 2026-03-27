@@ -251,6 +251,9 @@ class Sale(IdentifierMixin, metaclass=PoolMeta):
                             'id': None,
                             },
                         },
+                    'deliveryMethod': {
+                        'methodType': None,
+                        },
                     'lineItems(first: 100)': {
                         'nodes': {
                             'lineItem': {
@@ -264,6 +267,7 @@ class Sale(IdentifierMixin, metaclass=PoolMeta):
                             'endCursor': None,
                             },
                         },
+                    'status': None,
                     },
                 'pageInfo': {
                     'hasNextPage': None,
@@ -348,22 +352,8 @@ class Sale(IdentifierMixin, metaclass=PoolMeta):
             else:
                 invoice_address = None
         else:
-            shipment_address = sale.party.address_get(type='delivery')
+            shipment_address = None
             invoice_address = sale.party.address_get(type='invoice')
-
-        if shipment_address:
-            setattr_changed(sale, 'shipment_address', shipment_address)
-        if invoice_address or shipment_address:
-            setattr_changed(
-                sale, 'invoice_address', invoice_address or shipment_address)
-
-        if not party.addresses:
-            address = Address(party=party)
-            address.save()
-            if not sale.shipment_address:
-                sale.shipment_address = address
-            if not sale.invoice_address:
-                sale.invoice_address = address
 
         setattr_changed(sale, 'reference', order['name'])
         setattr_changed(sale, 'shopify_status_url', order['statusPageUrl'])
@@ -419,6 +409,10 @@ class Sale(IdentifierMixin, metaclass=PoolMeta):
                     break
             else:
                 continue
+            if fulfillment_order['status'] != 'CANCELLED':
+                method_type = fulfillment_order['deliveryMethod']['methodType']
+                if method_type == 'PICK_UP':
+                    shipment_address = sale.warehouse.address
             shopify_line_items = graphql.iterate(
                 QUERY_FULFILLMENT_ORDER % {
                     'fields': graphql.selection({
@@ -435,6 +429,17 @@ class Sale(IdentifierMixin, metaclass=PoolMeta):
                 if line_item['remainingQuantity']:
                     line2warehouses[gid2id(line_item['lineItem']['id'])].add(
                         warehouse)
+
+        if shipment_address:
+            setattr_changed(sale, 'shipment_address', shipment_address)
+        if invoice_address or shipment_address:
+            setattr_changed(
+                sale, 'invoice_address', invoice_address or shipment_address)
+
+        if not party.addresses and not sale.invoice_address:
+            address = Address(party=party)
+            address.save()
+            sale.invoice_address = address
 
         id2line = {
             l.shopify_identifier: l for l in getattr(sale, 'lines', [])

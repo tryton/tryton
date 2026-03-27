@@ -13,10 +13,22 @@ from trytond.pool import Pool, PoolMeta
 from . import graphql
 from .common import IdentifierMixin, id2gid
 from .exceptions import ShopifyError
+from .shopify_retry import GraphQLException
 
 QUERY_FULFILLMENT_ORDERS = '''\
 query FulfillmentOrders($orderId: ID!) {
     order(id: $orderId) %(fields)s
+}'''
+
+MUTATION_FULFILLMENT_ORDER_LINE_ITEMS_PREPARED_FOR_PICKUP = '''\
+mutation fulfillmentOrderLineItemsPreparedForPickup(\
+        $input: FulfillmentOrderLineItemsPreparedForPickupInput!) {
+    fulfillmentOrderLineItemsPreparedForPickup(input: $input) {
+        userErrors {
+            field
+            message
+        }
+    }
 }'''
 
 
@@ -144,6 +156,52 @@ class ShipmentOut(metaclass=PoolMeta):
                         'msg_shipment_cancelled_draft_shopify',
                         shipment=shipment.rec_name))
         super().draft(shipments)
+
+    @classmethod
+    @ModelView.button
+    @Workflow.transition('packed')
+    def pack(cls, shipments):
+        super().pack(shipments)
+        if pickup := [
+                s for s in shipments
+                if s.delivery_address == s.warehouse.address]:
+            cls.__queue__._shopify_prepared_for_pickup(pickup)
+
+    @classmethod
+    def _shopify_prepared_for_pickup(cls, shipments):
+        mutation = MUTATION_FULFILLMENT_ORDER_LINE_ITEMS_PREPARED_FOR_PICKUP
+        fullfilments = defaultdict(set)
+        for shipment in shipments:
+            if shipment.state == 'packed':
+                for record in shipment.shopify_identifiers:
+                    fullfilments[record.sale.web_shop].add(record)
+        for shop, records in fullfilments.items():
+            with shop.shopify_session():
+                fullfilment_ids = list({
+                        id2gid('FulfillmentOrder', r.shopify_identifier)
+                        for r in records})
+                try:
+                    result = shopify.GraphQL().execute(
+                        mutation, {
+                            'input': list(fullfilment_ids),
+                            }
+                        )['data']['fulfillmentOrderLineItemsPreparedForPickup']
+                    if errors := result.get('userErrors'):
+                        raise GraphQLException({'errors': errors})
+                except GraphQLException as e:
+                    shipments = ", ".join(
+                        r.shipment.rec_name for r in records[:5])
+                    sales = ", ".join(r.sale.rec_name for r in records[:5])
+                    if len(records) > 5:
+                        shipments += "..."
+                        sales += "..."
+                    raise ShopifyError(gettext(
+                            'web_shop_shopify'
+                            '.msg_fulfillment_prepared_for_pickup_fail',
+                            shipments=shipments,
+                            sales=sales,
+                            error="\n".join(
+                                err['message'] for err in e.errors))) from e
 
 
 class ShipmentShopifyIdentifier(IdentifierMixin, ModelSQL, ModelView):

@@ -51,6 +51,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="text">Failed to set inventory with error:
 %(error)s</field>
         </record>
+        <record model="ir.message" id="msg_fulfillment_prepared_for_pickup_fail">
+            <field name="text">Failed to prepare for pickup fulfillments for shipments "%(shipments)s" and sales "%(sales)s" with error:
+%(error)s</field>
+        </record>
         <record model="ir.message" id="msg_fulfillment_fail">
             <field name="text">Failed to save fulfillment for sale "%(sale)s" with error:
 %(error)s</field>
