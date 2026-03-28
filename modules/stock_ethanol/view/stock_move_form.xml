@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<data>
+    <xpath expr="//field[@name='currency']" position="after">
+        <label name="ethanol_volume"/>
+        <field name="ethanol_volume" symbol="ethanol_volume_unit"/>
+        <label name="ethanol_by_volume"/>
+        <group col="-1" id="ethanol_by_volume">
+            <field name="ethanol_by_volume" factor="100" xexpand="0"/>
+            <label name="ethanol_by_volume" string="%" xalign="0" xexpand="1"/>
+        </group>
+    </xpath>
+</data>

@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data grouped="1">
+        <record model="ir.message" id="msg_move_internal_ethanol_volume_positive">
+            <field name="text">Internal ethanol volume must be positive.</field>
+        </record>
+        <record model="ir.message" id="msg_product_change_contain_ethanol">
+            <field name="text">You cannot change the contain alcohol of a product which is associated with stock moves.</field>
+        </record>
+        <record model="ir.message" id="msg_product_change_ethanol_by_volume">
+            <field name="text">You cannot change the alcohol by volume of a product which is associated with stock moves.</field>
+        </record>
+    </data>
+</tryton>

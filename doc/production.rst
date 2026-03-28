@@ -8,6 +8,9 @@ Production
 :doc:`Production <production:index>`
    Fundamentals for production management.
 
+:doc:`Ethanol <production_ethanol:index>`
+   Track produced ethanol.
+
 :doc:`Outsourcing <production_outsourcing:index>`
    Outsource the production.
 

@@ -2011,6 +2011,23 @@ test-modules-production-postgresql:
     PACKAGE: modules/production
     TAG_PATTERN: '/^production-.*/'
 
+check-doc-modules-production_ethanol:
+  extends: .check-doc
+  variables:
+    PACKAGE: modules/production_ethanol
+
+test-modules-production_ethanol-sqlite:
+  extends: .test-sqlite
+  variables:
+    PACKAGE: modules/production_ethanol
+    TAG_PATTERN: '/^production_ethanol-.*/'
+
+test-modules-production_ethanol-postgresql:
+  extends: .test-postgresql
+  variables:
+    PACKAGE: modules/production_ethanol
+    TAG_PATTERN: '/^production_ethanol-.*/'
+
 check-doc-modules-production_outsourcing:
   extends: .check-doc
   variables:
@@ -3047,6 +3064,23 @@ test-modules-stock_consignment-postgresql:
   variables:
     PACKAGE: modules/stock_consignment
     TAG_PATTERN: '/^stock_consignment-.*/'
+
+check-doc-modules-stock_ethanol:
+  extends: .check-doc
+  variables:
+    PACKAGE: modules/stock_ethanol
+
+test-modules-stock_ethanol-sqlite:
+  extends: .test-sqlite
+  variables:
+    PACKAGE: modules/stock_ethanol
+    TAG_PATTERN: '/^stock_ethanol-.*/'
+
+test-modules-stock_ethanol-postgresql:
+  extends: .test-postgresql
+  variables:
+    PACKAGE: modules/stock_ethanol
+    TAG_PATTERN: '/^stock_ethanol-.*/'
 
 check-doc-modules-stock_forecast:
   extends: .check-doc
