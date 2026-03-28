@@ -1,0 +1,310 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="account_stock_eu_excise_tax_view_form">
+            <field name="model">account.stock.eu.excise.tax</field>
+            <field name="type">form</field>
+            <field name="name">account_stock_eu_excise_tax_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="account_stock_eu_excise_tax_view_list">
+            <field name="model">account.stock.eu.excise.tax</field>
+            <field name="type">tree</field>
+            <field name="name">account_stock_eu_excise_tax_list</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_account_stock_eu_excise_tax_form">
+            <field name="name">Excise Taxes</field>
+            <field name="res_model">account.stock.eu.excise.tax</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_account_stock_eu_excise_tax_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="account_stock_eu_excise_tax_view_list"/>
+            <field name="act_window" ref="act_account_stock_eu_excise_tax_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_account_stock_eu_excise_tax_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="account_stock_eu_excise_tax_view_form"/>
+            <field name="act_window" ref="act_account_stock_eu_excise_tax_form"/>
+        </record>
+
+        <menuitem
+            parent="account.menu_taxes"
+            action="act_account_stock_eu_excise_tax_form"
+            sequence="20"
+            id="menu_account_stock_eu_excise_tax_form"/>
+
+        <record model="ir.model.access" id="access_account_stock_eu_excise_tax">
+            <field name="model">account.stock.eu.excise.tax</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_account_stock_eu_excise_tax_account_admin">
+            <field name="model">account.stock.eu.excise.tax</field>
+            <field name="group" ref="account.group_account_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.ui.view" id="account_stock_eu_excise_tax_rate_view_form">
+            <field name="model">account.stock.eu.excise.tax.rate</field>
+            <field name="type">form</field>
+            <field name="name">account_stock_eu_excise_tax_rate_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="account_stock_eu_excise_tax_rate_view_list">
+            <field name="model">account.stock.eu.excise.tax.rate</field>
+            <field name="type">tree</field>
+            <field name="name">account_stock_eu_excise_tax_rate_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="account_stock_eu_excise_declaration_context_view_form">
+            <field name="model">account.stock.eu.excise.declaration.context</field>
+            <field name="type">form</field>
+            <field name="name">account_stock_eu_excise_declaration_context_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="account_stock_eu_excise_declaration_view_list">
+            <field name="model">account.stock.eu.excise.declaration</field>
+            <field name="type">tree</field>
+            <field name="name">account_stock_eu_excise_declaration_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="account_stock_eu_excise_declaration_view_form">
+            <field name="model">account.stock.eu.excise.declaration</field>
+            <field name="type">form</field>
+            <field name="name">account_stock_eu_excise_declaration_form</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_account_stock_eu_excise_declaration_form">
+            <field name="name">Excise Declarations</field>
+            <field name="res_model">account.stock.eu.excise.declaration</field>
+            <field name="context_model">account.stock.eu.excise.declaration.context</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_account_stock_eu_excise_declaration_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="account_stock_eu_excise_declaration_view_list"/>
+            <field name="act_window" ref="act_account_stock_eu_excise_declaration_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_account_stock_eu_excise_declaration_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="account_stock_eu_excise_declaration_view_form"/>
+            <field name="act_window" ref="act_account_stock_eu_excise_declaration_form"/>
+        </record>
+
+        <menuitem
+            parent="account.menu_reporting"
+            action="act_account_stock_eu_excise_declaration_form"
+            sequence="50"
+            id="menu_account_stock_eu_excise_declaration_form"/>
+
+        <record model="ir.model.access" id="access_account_stock_eu_excise_declaration">
+            <field name="model">account.stock.eu.excise.declaration</field>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <record model="ir.model.access" id="access_account_stock_eu_excise_declaration_account">
+            <field name="model">account.stock.eu.excise.declaration</field>
+            <field name="group" ref="account.group_account"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_account_stock_eu_excise_declaration_companies">
+            <field name="name">User in companies</field>
+            <field name="model">account.stock.eu.excise.declaration</field>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_account_stock_eu_excise_declaration_companies">
+            <field name="domain" eval="[('company', 'in', Eval('companies', []))]" pyson="1"/>
+            <field name="rule_group" ref="rule_group_account_stock_eu_excise_declaration_companies"/>
+        </record>
+
+        <record model="ir.ui.view" id="account_stock_eu_excise_declaration_product_view_list">
+            <field name="model">account.stock.eu.excise.declaration.product</field>
+            <field name="type">tree</field>
+            <field name="name">account_stock_eu_excise_declaration_product_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="account_stock_eu_excise_declaration_product_view_form">
+            <field name="model">account.stock.eu.excise.declaration.product</field>
+            <field name="type">form</field>
+            <field name="name">account_stock_eu_excise_declaration_product_form</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_account_stock_eu_excise_declaration_product_form">
+            <field name="name">Excise Declaration Products</field>
+            <field name="res_model">account.stock.eu.excise.declaration.product</field>
+            <field name="context_model">account.stock.eu.excise.declaration.context</field>
+            <field name="domain" eval="If(Eval('active_model') == 'account.stock.eu.excise.declaration', [('eu_excise_tax', 'in', Eval('active_ids', []))], [])" pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_account_stock_eu_excise_declaration_product_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="account_stock_eu_excise_declaration_product_view_list"/>
+            <field name="act_window" ref="act_account_stock_eu_excise_declaration_product_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_account_stock_eu_excise_declaration_product_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="account_stock_eu_excise_declaration_product_view_form"/>
+            <field name="act_window" ref="act_account_stock_eu_excise_declaration_product_form"/>
+        </record>
+        <record model="ir.action.keyword" id="act_account_stock_eu_excise_declaration_product_form_keyword1">
+            <field name="keyword">form_relate</field>
+            <field name="model">account.stock.eu.excise.declaration,-1</field>
+            <field name="action" ref="act_account_stock_eu_excise_declaration_product_form"/>
+        </record>
+
+        <menuitem
+            parent="menu_account_stock_eu_excise_declaration_form"
+            action="act_account_stock_eu_excise_declaration_product_form"
+            sequence="10"
+            id="menu_account_stock_eu_excise_declaration_product_form"/>
+
+        <record model="ir.model.access" id="access_account_stock_eu_excise_declaration_product">
+            <field name="model">account.stock.eu.excise.declaration.product</field>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <record model="ir.model.access" id="access_account_stock_eu_excise_declaration_product_account">
+            <field name="model">account.stock.eu.excise.declaration.product</field>
+            <field name="group" ref="account.group_account"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_account_stock_eu_excise_declaration_product_companies">
+            <field name="name">User in companies</field>
+            <field name="model">account.stock.eu.excise.declaration.product</field>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_account_stock_eu_excise_declaration_product_companies">
+            <field name="domain" eval="[('company', 'in', Eval('companies', []))]" pyson="1"/>
+            <field name="rule_group" ref="rule_group_account_stock_eu_excise_declaration_product_companies"/>
+        </record>
+
+        <record model="ir.ui.view" id="account_stock_eu_excise_declaration_product_line_view_list">
+            <field name="model">account.stock.eu.excise.declaration.product.line</field>
+            <field name="type">tree</field>
+            <field name="name">account_stock_eu_excise_declaration_product_line_list</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_account_stock_eu_excise_declaration_product_line_form">
+            <field name="name">Excise Declaration Product Lines</field>
+            <field name="res_model">account.stock.eu.excise.declaration.product.line</field>
+            <field name="context_model">account.stock.eu.excise.declaration.context</field>
+            <field name="domain" eval="[('product', 'in', Eval('active_ids', []))]" pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_account_stock_eu_excise_declaration_product_line_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="account_stock_eu_excise_declaration_product_line_view_list"/>
+            <field name="act_window" ref="act_account_stock_eu_excise_declaration_product_line_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_account_stock_eu_excise_declaration_product_line_form_all">
+            <field name="name">All</field>
+            <field name="sequence" eval="10"/>
+            <field name="act_window" ref="act_account_stock_eu_excise_declaration_product_line_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_account_stock_eu_excise_declaration_product_line_form_input_production">
+            <field name="name">Input Production</field>
+            <field name="sequence" eval="20"/>
+            <field name="domain" eval="[('direction', '=', 'input'), ('location.type', '=', 'production')]" pyson="1"/>
+            <field name="act_window" ref="act_account_stock_eu_excise_declaration_product_line_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_account_stock_eu_excise_declaration_product_line_form_input_duty_suspension">
+            <field name="name">Input Duty Suspension</field>
+            <field name="sequence" eval="30"/>
+            <field name="domain" eval="[('direction', '=', 'input'), ('location.type', 'not in', ['production', 'lost_found']), ('move.eu_excise_duty', '!=', None)]" pyson="1"/>
+            <field name="act_window" ref="act_account_stock_eu_excise_declaration_product_line_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_account_stock_eu_excise_declaration_product_line_form_input_replacement">
+            <field name="name">Input Replacement</field>
+            <field name="sequence" eval="40"/>
+            <field name="domain" eval="[('direction', '=', 'input'), ('location.type', 'not in', ['production', 'lost_found']), ('move.eu_excise_duty', '=', None)]" pyson="1"/>
+            <field name="act_window" ref="act_account_stock_eu_excise_declaration_product_line_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_account_stock_eu_excise_declaration_product_line_form_input_other">
+            <field name="name">Input Other</field>
+            <field name="sequence" eval="90"/>
+            <field name="domain" eval="[('direction', '=', 'input'), ('location.type', '=', 'lost_found')]" pyson="1"/>
+            <field name="act_window" ref="act_account_stock_eu_excise_declaration_product_line_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_account_stock_eu_excise_declaration_product_line_form_output_production">
+            <field name="name">Output Production</field>
+            <field name="sequence" eval="100"/>
+            <field name="domain" eval="[('direction', '=', 'output'), ('location.type', '=', 'production')]" pyson="1"/>
+            <field name="act_window" ref="act_account_stock_eu_excise_declaration_product_line_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_account_stock_eu_excise_declaration_product_line_form_output_duty_suspension">
+            <field name="name">Output Duty Suspension</field>
+            <field name="sequence" eval="110"/>
+            <field name="domain" eval="[('direction', '=', 'output'), ('location.type', 'not in', ['production', 'lost_found']), ('move.eu_excise_duty', '=', 'suspension')]" pyson="1"/>
+            <field name="act_window" ref="act_account_stock_eu_excise_declaration_product_line_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_account_stock_eu_excise_declaration_product_line_form_output_duty_free">
+            <field name="name">Output Duty Free</field>
+            <field name="sequence" eval="120"/>
+            <field name="domain" eval="[('direction', '=', 'output'), ('location.type', 'not in', ['production', 'lost_found']), ('move.eu_excise_duty', '=', 'free')]" pyson="1"/>
+            <field name="act_window" ref="act_account_stock_eu_excise_declaration_product_line_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_account_stock_eu_excise_declaration_product_line_form_output_with_duty">
+            <field name="name">Output with Duty</field>
+            <field name="sequence" eval="130"/>
+            <field name="domain" eval="[('direction', '=', 'output'), ('location.type', 'not in', ['production', 'lost_found']), ('move.eu_excise_duty', '=', None)]" pyson="1"/>
+            <field name="act_window" ref="act_account_stock_eu_excise_declaration_product_line_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_account_stock_eu_excise_declaration_product_line_form_output_other">
+            <field name="name">Output Other</field>
+            <field name="sequence" eval="190"/>
+            <field name="domain" eval="[('direction', '=', 'output'), ('location.type', '=', 'lost_found')]" pyson="1"/>
+            <field name="act_window" ref="act_account_stock_eu_excise_declaration_product_line_form"/>
+        </record>
+        <record model="ir.action.keyword" id="act_account_stock_eu_excise_declaration_product_line_form_keyword1">
+            <field name="keyword">form_relate</field>
+            <field name="model">account.stock.eu.excise.declaration.product,-1</field>
+            <field name="action" ref="act_account_stock_eu_excise_declaration_product_line_form"/>
+        </record>
+
+        <record model="ir.model.access" id="access_account_stock_eu_excise_declaration_product_line">
+            <field name="model">account.stock.eu.excise.declaration.product.line</field>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <record model="ir.model.access" id="access_account_stock_eu_excise_declaration_product_line_account">
+            <field name="model">account.stock.eu.excise.declaration.product.line</field>
+            <field name="group" ref="account.group_account"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_account_stock_eu_excise_declaration_product_line_companies">
+            <field name="name">User in companies</field>
+            <field name="model">account.stock.eu.excise.declaration.product.line</field>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_account_stock_eu_excise_declaration_product_line_companies">
+            <field name="domain" eval="[('company', 'in', Eval('companies', []))]" pyson="1"/>
+            <field name="rule_group" ref="rule_group_account_stock_eu_excise_declaration_product_line_companies"/>
+        </record>
+    </data>
+</tryton>

@@ -152,6 +152,9 @@ Accounting
 :doc:`Stock European <account_stock_eu:index>`
    Common stock European requirements.
 
+:doc:`Stock European Excise <account_stock_eu_excise:index>`
+   Common European requirements for excise products.
+
 :doc:`Stock Landed Cost <account_stock_landed_cost:index>`
    Allocate landed cost.
 

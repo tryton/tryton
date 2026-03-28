@@ -1,0 +1,88 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="product_template_view_form">
+            <field name="model">product.template</field>
+            <field name="inherit" ref="product.template_view_form"/>
+            <field name="name">product_template_form</field>
+        </record>
+
+        <record model="ir.model.field.access" id="access_template_eu_excise_code">
+            <field name="model">product.template</field>
+            <field name="field">eu_excise_code</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+        </record>
+        <record model="ir.model.field.access" id="access_template_eu_excise_code_account_product_admin">
+            <field name="model">product.template</field>
+            <field name="field">eu_excise_code</field>
+            <field name="group" ref="account_product.group_account_product_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+        </record>
+
+        <record model="ir.ui.view" id="product_eu_excise_code_view_form">
+            <field name="model">product.eu.excise_code</field>
+            <field name="type">form</field>
+            <field name="name">product_eu_excise_code_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="product_eu_excise_code_view_list">
+            <field name="model">product.eu.excise_code</field>
+            <field name="type">tree</field>
+            <field name="name">product_eu_excise_code_list</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_product_eu_excise_code_form">
+            <field name="name">Excise Codes</field>
+            <field name="res_model">product.eu.excise_code</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_product_eu_excise_code_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="product_eu_excise_code_view_list"/>
+            <field name="act_window" ref="act_product_eu_excise_code_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_product_eu_excise_code_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="product_eu_excise_code_view_form"/>
+            <field name="act_window" ref="act_product_eu_excise_code_form"/>
+        </record>
+
+        <menuitem
+            parent="product.menu_configuration"
+            action="act_product_eu_excise_code_form"
+            sequence="50"
+            id="menu_product_eu_excise_code_form"/>
+
+        <record model="ir.model.access" id="access_product_eu_excise_code">
+            <field name="model">product.eu.excise_code</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_product_eu_excise_code_account_product_admin">
+            <field name="model">product.eu.excise_code</field>
+            <field name="group" ref="account_product.group_account_product_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.ui.view" id="product-account_stock_eu_excise_tax_view_list">
+            <field name="model">product-account.stock.eu.excise.tax</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="10"/>
+            <field name="name">product-account_stock_eu_excise_tax_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="product-account_stock_eu_excise_tax_view_form">
+            <field name="model">product-account.stock.eu.excise.tax</field>
+            <field name="type">form</field>
+            <field name="name">product-account_stock_eu_excise_tax_form</field>
+        </record>
+    </data>
+</tryton>

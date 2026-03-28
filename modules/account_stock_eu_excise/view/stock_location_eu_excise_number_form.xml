@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form>
+    <label name="warehouse"/>
+    <field name="warehouse" colspan="3"/>
+
+    <label name="company"/>
+    <field name="company"/>
+    <label name="eu_excise_number"/>
+    <field name="eu_excise_number"/>
+</form>

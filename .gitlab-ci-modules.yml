@@ -836,6 +836,23 @@ test-modules-account_stock_eu-postgresql:
     PACKAGE: modules/account_stock_eu
     TAG_PATTERN: '/^account_stock_eu-.*/'
 
+check-doc-modules-account_stock_eu_excise:
+  extends: .check-doc
+  variables:
+    PACKAGE: modules/account_stock_eu_excise
+
+test-modules-account_stock_eu_excise-sqlite:
+  extends: .test-sqlite
+  variables:
+    PACKAGE: modules/account_stock_eu_excise
+    TAG_PATTERN: '/^account_stock_eu_excise-.*/'
+
+test-modules-account_stock_eu_excise-postgresql:
+  extends: .test-postgresql
+  variables:
+    PACKAGE: modules/account_stock_eu_excise
+    TAG_PATTERN: '/^account_stock_eu_excise-.*/'
+
 check-doc-modules-account_stock_landed_cost:
   extends: .check-doc
   variables:

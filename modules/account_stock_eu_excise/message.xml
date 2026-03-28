@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data grouped="1">
+        <record model="ir.message" id="msg_warehouse_excise_company_unique">
+            <field name="text">Only one excise number is allowed for a warehouse per company.</field>
+        </record>
+        <record model="ir.message" id="msg_excise_tax_template_country_unique">
+            <field name="text">Only one excise tax per country can be applied to a product.</field>
+        </record>
+        <record model="ir.message" id="msg_invalid_formula">
+            <field name="text">Invalid formula "%(formula)s" in excise tax rate "%(tax_rate)s" with exception "%(exception)s".</field>
+        </record>
+    </data>
+</tryton>

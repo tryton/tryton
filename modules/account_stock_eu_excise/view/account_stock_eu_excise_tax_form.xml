@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form>
+    <label name="code"/>
+    <field name="code"/>
+    <label name="active"/>
+    <field name="active"/>
+
+    <label name="description"/>
+    <field name="description" colspan="3"/>
+
+    <label name="country"/>
+    <field name="country"/>
+    <newline/>
+
+    <label name="quantity"/>
+    <field name="quantity"/>
+    <label name="uom"/>
+    <field name="uom"/>
+
+    <label name="currency"/>
+    <field name="currency"/>
+    <field name="tax_rates" colspan="4"/>
+</form>

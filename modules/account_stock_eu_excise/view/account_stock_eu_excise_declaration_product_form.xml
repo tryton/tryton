@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form>
+    <label name="product"/>
+    <field name="product"/>
+    <newline/>
+
+    <label name="eu_excise_code"/>
+    <field name="eu_excise_code"/>
+    <label name="eu_excise_tax"/>
+    <field name="eu_excise_tax"/>
+
+    <label name="start_quantity"/>
+    <field name="start_quantity" symbol="unit"/>
+    <newline/>
+
+    <separator id="input" string="Input" colspan="2"/>
+    <separator id="output" string="Output" colspan="2"/>
+
+    <label name="input_production"/>
+    <field name="input_production" symbol="unit"/>
+    <label name="output_production"/>
+    <field name="output_production" symbol="unit"/>
+
+    <label name="input_duty_suspension"/>
+    <field name="input_duty_suspension" symbol="unit"/>
+    <label name="output_duty_suspension"/>
+    <field name="output_duty_suspension" symbol="unit"/>
+
+    <label id="empty" colspan="2"/>
+    <label name="output_duty_free"/>
+    <field name="output_duty_free" symbol="unit"/>
+
+    <label name="input_replacement"/>
+    <field name="input_replacement" symbol="unit"/>
+    <label name="output_with_duty"/>
+    <field name="output_with_duty" symbol="unit"/>
+
+    <label name="input_other"/>
+    <field name="input_other" symbol="unit"/>
+    <label name="output_other"/>
+    <field name="output_other" symbol="unit"/>
+
+    <separator colspan="4" id="total"/>
+
+    <label name="input_total"/>
+    <field name="input_total" symbol="unit"/>
+    <label name="output_total"/>
+    <field name="output_total" symbol="unit"/>
+
+    <label name="end_quantity"/>
+    <field name="end_quantity" symbol="unit"/>
+
+    <group id="links" col="-1" colspan="4">
+        <link icon="tryton-list" name="account_stock_eu_excise.act_account_stock_eu_excise_declaration_product_line_form"/>
+    </group>
+</form>
