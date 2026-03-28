@@ -4,6 +4,7 @@
 from trytond.model import DeactivableMixin, ModelSQL, ModelView, Unique, fields
 from trytond.pool import PoolMeta
 from trytond.pyson import Bool, Eval, If
+from trytond.transaction import Transaction
 
 
 class Template(metaclass=PoolMeta):
@@ -105,3 +106,25 @@ class Product_EUExciseTax(ModelSQL, ModelView):
     @classmethod
     def search_rec_name(cls, name, clause):
         return [('excise_tax.rec_name', *clause[1:])]
+
+
+class PriceList(metaclass=PoolMeta):
+    __name__ = 'product.price_list'
+
+    def compute(self, product, quantity, uom, pattern=None):
+        context = Transaction().context
+        pattern = pattern.copy() if pattern is not None else {}
+        pattern.setdefault('eu_excise_tax', context.get('eu_excise_tax'))
+        pattern.setdefault('eu_excise_duty', context.get('eu_excise_duty'))
+        return super().compute(product, quantity, uom, pattern=pattern)
+
+
+class PriceListLine(metaclass=PoolMeta):
+    __name__ = 'product.price_list.line'
+
+    eu_excise_tax = fields.Many2One(
+        'account.stock.eu.excise.tax', "Excise Tax")
+    eu_excise_duty = fields.Selection([
+            (None, ""),
+            ('suspension', "Suspension"),
+            ], "Excise Duty Suspension")

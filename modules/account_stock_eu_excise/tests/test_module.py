@@ -8,7 +8,9 @@ from trytond.tests.test_tryton import ModuleTestCase
 class AccountStockEuExciseTestCase(CompanyTestMixin, ModuleTestCase):
     "Test Account Stock Eu Excise module"
     module = 'account_stock_eu_excise'
-    extras = ['product_measurements', 'production']
+    extras = [
+        'product_price_list', 'production', 'sale', 'sale_shipment_grouping',
+        'sale_price_list']
 
 
 del ModuleTestCase

@@ -119,6 +119,19 @@ The excise code stores the codes from the `System for Exchange of Excise Data
       .. |Products --> Configuration --> Excise Codes| replace:: :menuselection:`Products --> Configuration --> Excise Codes`
       __ https://demo.tryton.org/model/product.eu.excise_code
 
+.. _model-product.price_list:
+
+Price List
+==========
+
+When the *Account Stock EU Excise Module* is activated, the price list gains
+new criteria based on `Excise Tax <model-account.stock.eu.excise.tax>` and duty
+suspension.
+
+.. seealso::
+
+   The Price List concept is introduced by the :doc:`Product Price List Module
+   <product_price_list:index>`.
 
 .. _concept-stock.location.warehouse:
 
@@ -160,3 +173,17 @@ the type of excise duty that applies.
 
    The `Stock Move <stock:model-stock.move>` concept is introduced by the
    :doc:`Stock Module <stock:index>`.
+
+.. _model-sale.sale:
+
+Sale
+====
+
+When the *Account Stock EU Excise Module* is activated, sales gain new
+properties for storing the `Excise Number <model-party.identifier>` of the
+customer and calculating the duty amount.
+
+.. seealso::
+
+   The `Sale <sale:model-sale.sale>` concept is introduced by the :doc:`Sale
+   Module <sale:index>`.
