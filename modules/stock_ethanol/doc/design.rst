@@ -30,3 +30,16 @@ properties that define whether the product contains alcohol and its volume per
 
    The `Product <product:concept-product>` concept is introduced by the
    :doc:`Product Module <product:index>`.
+
+.. _model-product.price_list:
+
+Price List
+==========
+
+When the *Stock Ethanol Module* is activated, a new parameter based on the
+volume of ethanol is added to the *Price List* formula.
+
+.. seealso::
+
+   The Price List concept is introduced by the :doc:`Product Price List Module
+   <product_price_list:index>`.

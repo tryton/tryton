@@ -1,11 +1,13 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 
+from decimal import Decimal
+
 from sql.conditionals import Coalesce
 
 from trytond.model import fields
 from trytond.pool import Pool, PoolMeta
-from trytond.pyson import Eval, If
+from trytond.pyson import Eval, Id, If
 
 
 class Template(metaclass=PoolMeta):
@@ -173,3 +175,54 @@ class Product(metaclass=PoolMeta):
                     volume = quantity * self.volume * ethanol_by_volume
                     unit = self.volume_uom
             return UoM.compute_qty(unit, volume, unit_volume, round=round)
+
+
+class PriceList(metaclass=PoolMeta):
+    __name__ = 'product.price_list'
+
+    def get_context_formula(self, product, quantity, uom, pattern=None):
+        pool = Pool()
+        UoM = pool.get('product.uom')
+        ModelData = pool.get('ir.model.data')
+
+        liter = UoM(ModelData.get_id('product', 'uom_liter'))
+
+        context = super().get_context_formula(
+            product, quantity, uom, pattern=pattern)
+        ethanol_volume = None
+        if product:
+            ethanol_volume = product.compute_ethanol_volume(
+                1, product.default_uom, liter, round=False)
+        if ethanol_volume is None:
+            ethanol_volume = 0
+        context['names']['ethanol_volume'] = Decimal(str(ethanol_volume))
+        return context
+
+
+class PriceListLine(metaclass=PoolMeta):
+    __name__ = 'product.price_list.line'
+
+    ethanol_volume_uom = fields.Many2One(
+        'product.uom', "AlcoholVolume UoM",
+        domain=[('category', '=', Id('product', 'uom_cat_volume'))],
+        help="Leave empty for liter.")
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls.formula.help += ("\n"
+            "-ethanol_volume: the volume of alcohol in 1 unit of product")
+
+    def get_unit_price(self, **context):
+        pool = Pool()
+        UoM = pool.get('product.uom')
+        ModelData = pool.get('ir.model.data')
+
+        if self.ethanol_volume_uom:
+            context['names'] = context['names'].copy()
+            liter = UoM(ModelData.get_id('product', 'uom_liter'))
+            ethanol_volume = UoM.compute_qty(
+                liter, float(context['names']['ethanol_volume']),
+                self.ethanol_volume_uom, round=False)
+            context['names']['ethanol_volume'] = Decimal(str(ethanol_volume))
+        return super().get_unit_price(**context)
