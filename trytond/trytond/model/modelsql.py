@@ -956,8 +956,11 @@ class ModelSQL(ModelStorage):
 
     @classmethod
     def column_last_modified_at(cls, tables):
-        table, _ = tables[None]
-        return Coalesce(table.write_date, table.create_date)
+        if cls._is_table_query():
+            return CurrentTimestamp()
+        else:
+            table, _ = tables[None]
+            return Coalesce(table.write_date, table.create_date)
 
     @classmethod
     @no_table_query
