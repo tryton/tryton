@@ -12,7 +12,7 @@ from trytond.pool import Pool
 from trytond.pyson import Eval, PYSONDecoder
 from trytond.rpc import RPC
 from trytond.tools import slugify
-from trytond.transaction import Transaction
+from trytond.transaction import Transaction, inactive_records
 
 _request_timeout = config.getint('request', 'timeout', default=0)
 _request_records_limit = config.getint('request', 'records_limit')
@@ -198,7 +198,8 @@ class DictSchemaMixin(object):
 
     @classmethod
     def search_get_keys(cls, domain, limit=None):
-        schemas = cls.search(domain, limit=limit)
+        with inactive_records():
+            schemas = cls.search(domain, limit=limit)
         return cls.get_keys(schemas)
 
     @classmethod
