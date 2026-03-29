@@ -8,8 +8,8 @@ from trytond.tests.test_tryton import TEST_NETWORK, load_doc_tests
 
 def load_tests(*args, **kwargs):
     if (not TEST_NETWORK
-            or not (os.getenv('SHOPIFY_PASSWORD')
-                and os.getenv('SHOPIFY_URL'))):
+            or not (os.getenv('SHOPIFY_ACCESS_TOKEN')
+                and os.getenv('SHOPIFY_SHOP'))):
         kwargs.setdefault('skips', set()).update({
                 'scenario_web_shop_shopify.rst',
                 'scenario_web_shop_shopify_secondary_unit.rst',

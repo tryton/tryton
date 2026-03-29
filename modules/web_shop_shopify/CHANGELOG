@@ -1,3 +1,4 @@
+* Replace ShopifyAPI by shopifyapp
 * Add support for pick-up delivery method
 * Log the update of sales
 * Add support for gift card products

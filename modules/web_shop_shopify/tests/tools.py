@@ -1,24 +1,53 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 
-import shopify
+from shopify_app import admin_graphql_request
 
+from trytond.modules.web_shop_shopify import SHOPIFY_VERSION
 from trytond.modules.web_shop_shopify.common import id2gid
-from trytond.modules.web_shop_shopify.shopify_retry import GraphQLException
+from trytond.modules.web_shop_shopify.exceptions import GraphQLException
 
 
-def get_location():
-    return shopify.GraphQL().execute('''{
+def shopify_request(shop, query, variables=None, user_errors=None):
+    result = admin_graphql_request(
+        query=query,
+        variables=variables,
+        shop=shop.shopify_shop_name,
+        access_token=shop.shopify_access_token,
+        api_version=SHOPIFY_VERSION)
+    if not result.ok:
+        msg = []
+        if result.log and result.log.detail:
+            msg.append(result.log.detail)
+        for log in result.http_logs:
+            if log.detail:
+                msg.append(log.detail)
+        raise GraphQLException("\n".join(msg))
+    if user_errors:
+        names = user_errors.split('.')
+        errors = result.data
+        for name in names:
+            errors = getattr(errors, name, None)
+            if errors is None:
+                break
+        if errors:
+            raise GraphQLException("\n".join(
+                    f"{e['field']}: {e['message']}" for e in errors))
+    return result
+
+
+def get_location(shop):
+    return shopify_request(shop, '''{
         locations(first:1) {
             nodes {
                 id
             }
         }
-    }''')['data']['locations']['nodes'][0]
+    }''').data['locations']['nodes'][0]
 
 
-def get_inventory_levels(location):
-    return shopify.GraphQL().execute('''query InventoryLevels($id: ID!) {
+def get_inventory_levels(shop, location):
+    return shopify_request(shop, '''query InventoryLevels($id: ID!) {
         location(id: $id) {
             inventoryLevels(first: 250) {
                 nodes {
@@ -34,21 +63,21 @@ def get_inventory_levels(location):
         }
     }''', {
             'id': location['id'],
-            })['data']['location']['inventoryLevels']['nodes']
+            }).data['location']['inventoryLevels']['nodes']
 
 
-def get_product(id):
-    return shopify.GraphQL().execute('''query Product($id: ID!) {
+def get_product(shop, id):
+    return shopify_request(shop, '''query Product($id: ID!) {
         product(id: $id) {
             status
         }
     }''', {
             'id': id2gid('Product', id),
-            })['data']['product']
+            }).data['product']
 
 
-def delete_product(id):
-    result = shopify.GraphQL().execute('''mutation productDelete($id: ID!) {
+def delete_product(shop, id):
+    shopify_request(shop, '''mutation productDelete($id: ID!) {
         productDelete(input: {id: $id}) {
             userErrors {
                 field
@@ -57,13 +86,12 @@ def delete_product(id):
         }
     }''', {
             'id': id,
-            })['data']['productDelete']
-    if errors := result.get('userErrors'):
-        raise GraphQLException({'errors': errors})
+            },
+        user_errors='productDelete.userErrors')
 
 
-def delete_collection(id):
-    result = shopify.GraphQL().execute('''mutation collectionDelete($id: ID!) {
+def delete_collection(shop, id):
+    shopify_request(shop, '''mutation collectionDelete($id: ID!) {
         collectionDelete(input: {id: $id}) {
             userErrors {
                 field
@@ -72,13 +100,12 @@ def delete_collection(id):
         }
     }''', {
             'id': id,
-            })['data']['collectionDelete']
-    if errors := result.get('userErrors'):
-        raise GraphQLException({'errors': errors})
+            },
+        user_errors='collectionDelete.userErrors')
 
 
-def create_customer(customer):
-    result = shopify.GraphQL().execute('''mutation customerCreate(
+def create_customer(shop, customer):
+    return shopify_request(shop, '''mutation customerCreate(
     $input: CustomerInput!) {
         customerCreate(input: $input) {
             customer {
@@ -91,14 +118,13 @@ def create_customer(customer):
         }
     }''', {
             'input': customer,
-            })['data']['customerCreate']
-    if errors := result.get('userErrors'):
-        raise GraphQLException({'errors': errors})
-    return result['customer']
+            },
+        user_errors='customerCreate.userErrors',
+        ).data['customerCreate']['customer']
 
 
-def delete_customer(id):
-    result = shopify.GraphQL().execute('''mutation customerDelete($id: ID!) {
+def delete_customer(shop, id):
+    shopify_request(shop, '''mutation customerDelete($id: ID!) {
         customerDelete(input: {id: $id}) {
             userErrors {
                 field
@@ -107,13 +133,12 @@ def delete_customer(id):
         }
     }''', {
             'id': id,
-            })['data']['customerDelete']
-    if errors := result.get('userErrors'):
-        raise GraphQLException({'errors': errors})
+            },
+        user_errors='customerDelete.userErrors')
 
 
-def create_order(order):
-    result = shopify.GraphQL().execute('''mutation orderCreate(
+def create_order(shop, order):
+    return shopify_request(shop, '''mutation orderCreate(
     $order: OrderCreateOrderInput!) {
         orderCreate(order: $order) {
             order {
@@ -141,14 +166,13 @@ def create_order(order):
         }
     }''', {
             'order': order,
-            })['data']['orderCreate']
-    if errors := result.get('userErrors'):
-        raise GraphQLException({'errors': errors})
-    return result['order']
+            },
+        user_errors='orderCreate.userErrors',
+        ).data['orderCreate']['order']
 
 
-def get_order(id):
-    return shopify.GraphQL().execute('''query Order($id: ID!) {
+def get_order(shop, id):
+    return shopify_request(shop, '''query Order($id: ID!) {
         order(id: $id) {
             id
             totalPriceSet {
@@ -174,11 +198,11 @@ def get_order(id):
         }
     }''', {
             'id': id,
-            })['data']['order']
+            }).data['order']
 
 
-def capture_order(id, amount, parent_transaction_id):
-    result = shopify.GraphQL().execute('''mutation orderCapture(
+def capture_order(shop, id, amount, parent_transaction_id):
+    return shopify_request(shop, '''mutation orderCapture(
     $input: OrderCaptureInput!) {
         orderCapture(input: $input) {
             transaction {
@@ -195,14 +219,13 @@ def capture_order(id, amount, parent_transaction_id):
                 'id': id,
                 'parentTransactionId': parent_transaction_id,
                 },
-            })['data']['orderCapture']
-    if errors := result.get('userErrors'):
-        raise GraphQLException({'errors': errors})
-    return result['transaction']
+            },
+        user_errors='orderCapture.userErrors',
+        ).data['orderCapture']['transaction']
 
 
-def delete_order(id):
-    result = shopify.GraphQL().execute('''mutation orderDelete($orderId: ID!) {
+def delete_order(shop, id):
+    shopify_request(shop, '''mutation orderDelete($orderId: ID!) {
         orderDelete(orderId: $orderId) {
             userErrors {
                 field
@@ -211,6 +234,5 @@ def delete_order(id):
         }
     }''', {
             'orderId': id,
-            })['data']['orderDelete']
-    if errors := result.get('userErrors'):
-        raise GraphQLException({'errors': errors})
+            },
+        user_errors='orderDelete.userErrors')

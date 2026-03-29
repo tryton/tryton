@@ -1,9 +1,9 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import base64
-import hashlib
-import hmac
+
 import logging
+
+from shopify_app import RequestInput, verify_webhook_req
 
 from trytond.protocols.wrappers import (
     HTTPStatus, Response, abort, redirect, with_pool, with_transaction)
@@ -12,10 +12,12 @@ from trytond.wsgi import app
 logger = logging.getLogger(__name__)
 
 
-def verify_webhook(data, hmac_header, secret):
-    digest = hmac.new(secret, data, hashlib.sha256).digest()
-    computed_hmac = base64.b64encode(digest)
-    return hmac.compare_digest(computed_hmac, hmac_header.encode('utf-8'))
+def request_to_shopify_req(request):
+    return RequestInput(
+        method=request.method,
+        headers=request.headers,
+        url=request.url,
+        body=request.get_data())
 
 
 @app.route(
@@ -26,12 +28,11 @@ def order(request, pool, shop):
     Sale = pool.get('sale.sale')
     Shop = pool.get('web.shop')
     shop = Shop.get(shop)
-    data = request.get_data()
-    verified = verify_webhook(
-        data, request.headers.get('X-Shopify-Hmac-SHA256'),
-        shop.shopify_webhook_shared_secret.encode('utf-8'))
-    if not verified:
-        abort(HTTPStatus.UNAUTHORIZED)
+
+    result = verify_webhook_req(request_to_shopify_req(request))
+    if not result.ok:
+        logger.debug("unauthorized %s", result)
+        abort(result.response.status, result.response.body)
 
     topic = request.headers.get('X-Shopify-Topic')
     order = request.get_json()

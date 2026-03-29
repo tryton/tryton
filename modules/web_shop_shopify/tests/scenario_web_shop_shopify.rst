@@ -13,9 +13,6 @@ Imports::
     >>> from itertools import cycle
     >>> from unittest.mock import patch
 
-    >>> import shopify
-    >>> from shopify.api_version import ApiVersion
-
     >>> from proteus import Model
     >>> from trytond.modules.account.tests.tools import (
     ...     create_chart, create_fiscalyear, create_tax, get_accounts)
@@ -137,21 +134,15 @@ Define a web shop::
 
     >>> web_shop = WebShop(name="Web Shop")
     >>> web_shop.type = 'shopify'
-    >>> web_shop.shopify_url = os.getenv('SHOPIFY_URL')
-    >>> web_shop.shopify_password = os.getenv('SHOPIFY_PASSWORD')
-    >>> web_shop.shopify_version = sorted(ApiVersion.versions, reverse=True)[1]
+    >>> web_shop.shopify_shop_name = os.getenv('SHOPIFY_SHOP')
+    >>> web_shop.shopify_access_token = os.getenv('SHOPIFY_ACCESS_TOKEN')
     >>> shop_warehouse = web_shop.shopify_warehouses.new()
     >>> shop_warehouse.warehouse, = Location.find([('type', '=', 'warehouse')])
     >>> shopify_payment_journal = web_shop.shopify_payment_journals.new()
     >>> shopify_payment_journal.journal = payment_journal
     >>> web_shop.save()
 
-    >>> shopify.ShopifyResource.activate_session(shopify.Session(
-    ...         web_shop.shopify_url,
-    ...         web_shop.shopify_version,
-    ...         web_shop.shopify_password))
-
-    >>> location = tools.get_location()
+    >>> location = tools.get_location(web_shop)
 
     >>> shop_warehouse, = web_shop.shopify_warehouses
     >>> shop_warehouse.shopify_id = str(gid2id(location['id']))
@@ -389,7 +380,7 @@ Check inventory item::
     >>> inventory_item_ids = [i.shopify_identifier
     ...     for inv in inventory_items for i in inv.shopify_identifiers]
     >>> for _ in range(MAX_SLEEP):
-    ...     inventory_levels = tools.get_inventory_levels(location)
+    ...     inventory_levels = tools.get_inventory_levels(web_shop, location)
     ...     if inventory_levels and len(inventory_levels) == 2:
     ...         break
     ...     time.sleep(FETCH_SLEEP)
@@ -448,7 +439,7 @@ Run update product::
     >>> len(product2.shopify_identifiers)
     0
     >>> identifier, = product2.template.shopify_identifiers
-    >>> tools.get_product(identifier.shopify_identifier)['status']
+    >>> tools.get_product(web_shop, identifier.shopify_identifier)['status']
     'ARCHIVED'
     >>> variant1.reload()
     >>> len(variant1.shopify_identifiers)
@@ -470,7 +461,7 @@ Create an order on Shopify::
     ...     ''.join(random.choice(string.digits) for _ in range(3)))
     >>> customer_address_phone = '+32-495-555-' + (
     ...     ''.join(random.choice(string.digits) for _ in range(3)))
-    >>> customer = tools.create_customer({
+    >>> customer = tools.create_customer(web_shop, {
     ...         'lastName': "Customer",
     ...         'email': (''.join(
     ...                 random.choice(string.ascii_letters) for _ in range(10))
@@ -479,7 +470,7 @@ Create an order on Shopify::
     ...         'locale': 'en-CA',
     ...         })
 
-    >>> order = tools.create_order({
+    >>> order = tools.create_order(web_shop, {
     ...         'customer': {
     ...             'toAssociate': {
     ...                 'id': customer['id'],
@@ -596,7 +587,7 @@ Run fetch order::
 Capture full amount::
 
     >>> transaction = tools.capture_order(
-    ...     order['id'], 258.98, order['transactions'][0]['id'])
+    ...     web_shop, order['id'], 258.98, order['transactions'][0]['id'])
 
     >>> with config.set_context(shopify_orders=[gid2id(order['id'])]):
     ...     cron_update_order, = Cron.find([
@@ -633,7 +624,7 @@ Make a partial shipment::
     >>> len(sale.invoices)
     0
 
-    >>> order = tools.get_order(order['id'])
+    >>> order = tools.get_order(web_shop, order['id'])
     >>> order['displayFulfillmentStatus']
     'PARTIALLY_FULFILLED'
     >>> len(order['fulfillments'])
@@ -651,7 +642,7 @@ Ship and cancel remaining shipment::
     >>> shipment.state
     'shipped'
 
-    >>> order = tools.get_order(order['id'])
+    >>> order = tools.get_order(web_shop, order['id'])
     >>> order['displayFulfillmentStatus']
     'FULFILLED'
     >>> len(order['fulfillments'])
@@ -661,7 +652,7 @@ Ship and cancel remaining shipment::
     >>> shipment.state
     'cancelled'
 
-    >>> order = tools.get_order(order['id'])
+    >>> order = tools.get_order(web_shop, order['id'])
     >>> order['displayFulfillmentStatus']
     'PARTIALLY_FULFILLED'
     >>> len(order['fulfillments'])
@@ -685,7 +676,7 @@ Cancel remaining shipment::
     >>> len(sale.invoices)
     0
 
-    >>> order = tools.get_order(order['id'])
+    >>> order = tools.get_order(web_shop, order['id'])
     >>> order['displayFulfillmentStatus']
     'PARTIALLY_FULFILLED'
     >>> len(order['fulfillments'])
@@ -700,7 +691,7 @@ Ignore shipment exception::
     ...     shipment_exception.form.ignore_moves.find())
     >>> shipment_exception.execute('handle')
 
-    >>> order = tools.get_order(order['id'])
+    >>> order = tools.get_order(web_shop, order['id'])
     >>> order['displayFulfillmentStatus']
     'FULFILLED'
     >>> len(order['fulfillments'])
@@ -731,25 +722,25 @@ Post invoice::
     >>> sale.reload()
     >>> sale.state
     'done'
-    >>> order = tools.get_order(order['id'])
+    >>> order = tools.get_order(web_shop, order['id'])
     >>> bool(order['closed'])
     True
 
 Clean up::
 
-    >>> tools.delete_order(order['id'])
+    >>> tools.delete_order(web_shop, order['id'])
     >>> for product in ShopifyIdentifier.find(
     ...         [('record', 'like', 'product.template,%')]):
-    ...     tools.delete_product(id2gid('Product', product.shopify_identifier))
+    ...     tools.delete_product(
+    ...         web_shop, id2gid('Product', product.shopify_identifier))
     >>> for category in ShopifyIdentifier.find(
     ...         [('record', 'like', 'product.category,%')]):
-    ...     tools.delete_collection(id2gid('Collection', category.shopify_identifier))
+    ...     tools.delete_collection(
+    ...         web_shop, id2gid('Collection', category.shopify_identifier))
     >>> for _ in range(MAX_SLEEP):
     ...     try:
-    ...         tools.delete_customer(customer['id'])
+    ...         tools.delete_customer(web_shop, customer['id'])
     ...     except Exception:
     ...         time.sleep(FETCH_SLEEP)
     ...     else:
     ...         break
-
-    >>> shopify.ShopifyResource.clear_session()

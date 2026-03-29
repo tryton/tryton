@@ -3,8 +3,6 @@
 
 from collections import defaultdict
 
-import shopify
-
 from trytond.i18n import gettext, lazy_gettext
 from trytond.model import ModelSQL, ModelView, Unique, Workflow, fields
 from trytond.model.exceptions import AccessError
@@ -12,8 +10,7 @@ from trytond.pool import Pool, PoolMeta
 
 from . import graphql
 from .common import IdentifierMixin, id2gid
-from .exceptions import ShopifyError
-from .shopify_retry import GraphQLException
+from .exceptions import GraphQLException, ShopifyError
 
 QUERY_FULFILLMENT_ORDERS = '''\
 query FulfillmentOrders($orderId: ID!) {
@@ -78,10 +75,10 @@ class ShipmentOut(metaclass=PoolMeta):
                     },
                 })
         order_id = id2gid('Order', sale.shopify_identifier)
-        fulfillment_orders = shopify.GraphQL().execute(
+        fulfillment_orders = sale.web_shop.shopify_request(
             QUERY_FULFILLMENT_ORDERS % {
                 'fields': graphql.selection(fulfillment_order_fields),
-                }, {'orderId': order_id})['data']['order']['fulfillmentOrders']
+                }, {'orderId': order_id}).data['order']['fulfillmentOrders']
         line_items = defaultdict(list)
         for move in self.outgoing_moves:
             if move.sale == sale:
@@ -170,6 +167,7 @@ class ShipmentOut(metaclass=PoolMeta):
     @classmethod
     def _shopify_prepared_for_pickup(cls, shipments):
         mutation = MUTATION_FULFILLMENT_ORDER_LINE_ITEMS_PREPARED_FOR_PICKUP
+        output = 'fulfillmentOrderLineItemsPreparedForPickup'
         fullfilments = defaultdict(set)
         for shipment in shipments:
             if shipment.state == 'packed':
@@ -181,13 +179,11 @@ class ShipmentOut(metaclass=PoolMeta):
                         id2gid('FulfillmentOrder', r.shopify_identifier)
                         for r in records})
                 try:
-                    result = shopify.GraphQL().execute(
+                    shop.shopify_request(
                         mutation, {
                             'input': list(fullfilment_ids),
-                            }
-                        )['data']['fulfillmentOrderLineItemsPreparedForPickup']
-                    if errors := result.get('userErrors'):
-                        raise GraphQLException({'errors': errors})
+                            },
+                        user_errors=f'{output}.userErrors')
                 except GraphQLException as e:
                     shipments = ", ".join(
                         r.shipment.rec_name for r in records[:5])
@@ -200,8 +196,7 @@ class ShipmentOut(metaclass=PoolMeta):
                             '.msg_fulfillment_prepared_for_pickup_fail',
                             shipments=shipments,
                             sales=sales,
-                            error="\n".join(
-                                err['message'] for err in e.errors))) from e
+                            error=e.message)) from e
 
 
 class ShipmentShopifyIdentifier(IdentifierMixin, ModelSQL, ModelView):

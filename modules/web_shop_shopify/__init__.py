@@ -1,8 +1,8 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 
-from . import routes, shopify_retry
+from . import routes
+
+SHOPIFY_VERSION = '2024-10'
 
 __all__ = [routes]
-
-shopify_retry.patch()

@@ -5,7 +5,6 @@ from decimal import Decimal
 from itertools import zip_longest
 
 import dateutil
-import shopify
 
 from trytond.i18n import gettext
 from trytond.model import ModelView, Unique, fields
@@ -18,8 +17,7 @@ from trytond.transaction import Transaction
 
 from . import graphql
 from .common import IdentifierMixin, gid2id, id2gid, setattr_changed
-from .exceptions import ShopifyError
-from .shopify_retry import GraphQLException
+from .exceptions import GraphQLException, ShopifyError
 
 QUERY_ORDER = '''\
 query GetOrder($id: ID!) {
@@ -315,7 +313,7 @@ class Sale(IdentifierMixin, metaclass=PoolMeta):
             sale.shopify_identifier = gid2id(order['id'])
 
             shopify_fulfillments = graphql.iterate(
-                QUERY_ORDER_CURSOR % {
+                shop, QUERY_ORDER_CURSOR % {
                     'fields': graphql.selection({
                             'fulfillmentOrders(first: 10, after: $cursor)': (
                                 shopify_fields[
@@ -376,7 +374,7 @@ class Sale(IdentifierMixin, metaclass=PoolMeta):
         refund_line_items = defaultdict(list)
         for refund in order['refunds']:
             shopify_refund_line_items = graphql.iterate(
-                QUERY_REFUND_CURSOR % {
+                shop, QUERY_REFUND_CURSOR % {
                     'fields': graphql.selection({
                             'refundLineItems(first: 10, after: $cursor)': (
                                 shopify_fields['refunds'][
@@ -391,7 +389,7 @@ class Sale(IdentifierMixin, metaclass=PoolMeta):
 
         line2warehouses = defaultdict(set)
         shopify_fulfillment_orders = graphql.iterate(
-            QUERY_ORDER_CURSOR % {
+            shop, QUERY_ORDER_CURSOR % {
                 'fields': graphql.selection({
                         'fulfillmentOrders(first: 10, after: $cursor)': (
                             shopify_fields[
@@ -414,7 +412,7 @@ class Sale(IdentifierMixin, metaclass=PoolMeta):
                 if method_type == 'PICK_UP':
                     shipment_address = sale.warehouse.address
             shopify_line_items = graphql.iterate(
-                QUERY_FULFILLMENT_ORDER % {
+                shop, QUERY_FULFILLMENT_ORDER % {
                     'fields': graphql.selection({
                             'lineItems(first: 100, after: $cursor)': (
                                 shopify_fields[
@@ -451,7 +449,7 @@ class Sale(IdentifierMixin, metaclass=PoolMeta):
             l.shopify_identifier]
         lines = []
         shopify_line_items = graphql.iterate(
-            QUERY_ORDER_CURSOR % {
+            shop, QUERY_ORDER_CURSOR % {
                 'fields': graphql.selection({
                         'lineItems(first: 100, after: $cursor)': (
                             shopify_fields['lineItems(first: 100)']),
@@ -481,7 +479,7 @@ class Sale(IdentifierMixin, metaclass=PoolMeta):
             lines.append(Line.get_from_shopify(
                     sale, line_item, quantity, warehouse=warehouse, line=line))
         shopify_shipping_lines = graphql.iterate(
-            QUERY_ORDER_CURSOR % {
+            shop, QUERY_ORDER_CURSOR % {
                 'fields': graphql.selection({
                         'shippingLines(first: 10, after: $cursor)': (
                             shopify_fields['shippingLines(first: 10)']),
@@ -594,96 +592,85 @@ class Sale(IdentifierMixin, metaclass=PoolMeta):
         pool = Pool()
         Payment = pool.get('account.payment')
         self.lock()
-        with self.web_shop.shopify_session():
-            for shipment in self.shipments:
-                fulfillment = shipment.get_shopify(self)
-                if fulfillment:
-                    try:
-                        result = shopify.GraphQL().execute(
-                            MUTATION_FULFILLMENT_CREATE,
-                            {'fulfillment': fulfillment}
-                            )['data']['fulfillmentCreate']
-                        if errors := result.get('userErrors'):
-                            raise GraphQLException({'errors': errors})
-                        fulfillment = result['fulfillment']
-                    except GraphQLException as e:
-                        raise ShopifyError(gettext(
-                                'web_shop_shopify.msg_fulfillment_fail',
-                                sale=self.rec_name,
-                                error="\n".join(
-                                    err['message'] for err in e.errors))
-                            ) from e
-                    shipment.set_shopify_identifier(
-                        self, gid2id(fulfillment['id']))
-                    Transaction().commit()
-                    # Start a new transaction as commit release the lock
-                    self.__class__.__queue__._process_shopify(self)
-                    return
-                elif shipment.state == 'cancelled':
-                    fulfillment_id = shipment.get_shopify_identifier(self)
-                    if fulfillment_id:
-                        fulfillment_id = id2gid('Fulfillment', fulfillment_id)
-                        result = shopify.GraphQL().execute(
-                            MUTATION_FULFILLMENT_CANCEL,
-                            {'id': fulfillment_id}
-                            )['data']['fulfillmentCancel']
-                        if errors := result.get('userErrors'):
-                            raise GraphQLException({'errors': errors})
+        shopify_request = self.web_shop.shopify_request
+        for shipment in self.shipments:
+            fulfillment = shipment.get_shopify(self)
+            if fulfillment:
+                try:
+                    fulfillment = shopify_request(
+                        MUTATION_FULFILLMENT_CREATE,
+                        {'fulfillment': fulfillment},
+                        user_errors='fulfillmentCreate.userErrors',
+                        ).data['fulfillmentCreate']['fulfillment']
+                except GraphQLException as e:
+                    raise ShopifyError(gettext(
+                            'web_shop_shopify.msg_fulfillment_fail',
+                            sale=self.rec_name,
+                            error=e.message)) from e
+                shipment.set_shopify_identifier(
+                    self, gid2id(fulfillment['id']))
+                Transaction().commit()
+                # Start a new transaction as commit release the lock
+                self.__class__.__queue__._process_shopify(self)
+                return
+            elif shipment.state == 'cancelled':
+                fulfillment_id = shipment.get_shopify_identifier(self)
+                if fulfillment_id:
+                    fulfillment_id = id2gid('Fulfillment', fulfillment_id)
+                    self.web_shop.shopify_request(
+                        MUTATION_FULFILLMENT_CANCEL,
+                        {'id': fulfillment_id},
+                        user_errors='fulfillmentCancel.userErrors')
 
-            # TODO: manage drop shipment
+        # TODO: manage drop shipment
 
-            shopify_id = id2gid('Order', self.shopify_identifier)
-            if self.shipment_state == 'sent' or self.state == 'done':
-                # TODO: manage shopping refund
-                refund = self.get_shopify_refund(
-                    shipping=self.shipment_state == 'none')
-                if refund:
-                    try:
-                        result = shopify.GraphQL().execute(
-                            MUTATION_REFUND_CREATE,
-                            {'input': refund})['data']['refundCreate']
-                        if errors := result.get('userErrors'):
-                            raise GraphQLException({'errors': errors})
-                    except GraphQLException as e:
-                        raise ShopifyError(gettext(
-                                'web_shop_shopify.msg_refund_fail',
-                                sale=self.rec_name,
-                                error="\n".join(
-                                    err['message'] for err in e.errors))
-                            ) from e
-                    order = shopify.GraphQL().execute(
-                        QUERY_ORDER % {
-                            'fields': graphql.selection(self.shopify_fields()),
-                            }, {'id': shopify_id})['data']['order']
-                    Payment.get_from_shopify(self, order)
+        shopify_id = id2gid('Order', self.shopify_identifier)
+        if self.shipment_state == 'sent' or self.state == 'done':
+            # TODO: manage shopping refund
+            refund = self.get_shopify_refund(
+                shipping=self.shipment_state == 'none')
+            if refund:
+                try:
+                    shopify_request(
+                        MUTATION_REFUND_CREATE,
+                        {'input': refund},
+                        user_errors='refundCreate.userErrors')
+                except GraphQLException as e:
+                    raise ShopifyError(gettext(
+                            'web_shop_shopify.msg_refund_fail',
+                            sale=self.rec_name,
+                            error=e.message)) from e
+                order = shopify_request(
+                    QUERY_ORDER % {
+                        'fields': graphql.selection(self.shopify_fields()),
+                        }, {'id': shopify_id}).data['order']
+                Payment.get_from_shopify(self, order)
 
-            shopify_id = id2gid('Order', self.shopify_identifier)
-            order = shopify.GraphQL().execute(
-                QUERY_ORDER_CLOSED, {'id': shopify_id})['data']['order']
-            if self.state == 'done':
-                if not order['closed']:
-                    result = shopify.GraphQL().execute(
-                        MUTATION_ORDER_CLOSE, {
-                            'input': {
-                                'id': shopify_id,
-                                },
-                            })['data']['orderClose']
-                    if errors := result.get('userErrors'):
-                        raise GraphQLException({'errors': errors})
-            elif order['closed']:
-                result = shopify.GraphQL().execute(
-                    MUTATION_ORDER_OPEN, {
+        shopify_id = id2gid('Order', self.shopify_identifier)
+        order = shopify_request(
+            QUERY_ORDER_CLOSED, {'id': shopify_id}).data['order']
+        if self.state == 'done':
+            if not order['closed']:
+                shopify_request(
+                    MUTATION_ORDER_CLOSE, {
                         'input': {
                             'id': shopify_id,
                             },
-                        })['data']['orderOpen']
-                if errors := result.get('userErrors'):
-                    raise GraphQLException({'errors': errors})
+                        },
+                    user_errors='orderClose.userErrors')
+        elif order['closed']:
+            shopify_request(
+                MUTATION_ORDER_OPEN, {
+                    'input': {
+                        'id': shopify_id,
+                        },
+                    },
+                user_errors='orderOpen.userErrors')
 
     def get_shopify_refund(self, shipping=False):
         order_id = id2gid('Order', self.shopify_identifier)
         shopify_line_items = graphql.iterate(
-            QUERY_ORDER_FULFILLABLE_QUANTITIES,
+            self.web_shop, QUERY_ORDER_FULFILLABLE_QUANTITIES,
             {'id': order_id}, 'order', 'lineItems')
         fulfillable_quantities = {
             gid2id(l['id']): l['fulfillableQuantity']
@@ -693,11 +680,11 @@ class Sale(IdentifierMixin, metaclass=PoolMeta):
         if not refund_line_items:
             return
 
-        order = shopify.GraphQL().execute(
+        order = self.web_shop.shopify_request(
             QUERY_ORDER_SUGGESTED_REFUND, {
                 'id': order_id,
                 'refundShipping': shipping,
-                'refundLineItems': refund_line_items})['data']['order']
+                'refundLineItems': refund_line_items}).data['order']
         currencies = set()
         transactions = []
         for transaction in order['suggestedRefund']['suggestedTransactions']:

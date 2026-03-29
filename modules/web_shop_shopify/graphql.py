@@ -1,10 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 
-import shopify
-
-from .shopify_retry import GraphQLException
-
 
 def deep_merge(d1, d2):
     "Merge 2 fields dictionary"
@@ -27,7 +23,7 @@ def selection(fields):
     return _format('', fields).strip()
 
 
-def iterate(query, params, query_name, path=None, data=None):
+def iterate(shop, query, params, query_name, path=None, data=None):
     def getter(data):
         if path:
             for name in path.split('.'):
@@ -35,13 +31,11 @@ def iterate(query, params, query_name, path=None, data=None):
         return data
 
     if data is None:
-        data = shopify.GraphQL().execute(
+        data = shop.shopify_request(
             query, {
                 **params,
                 'cursor': None,
-                })['data'][query_name]
-        if errors := data.get('userErrors'):
-            raise GraphQLException({'errors': errors})
+                }).data[query_name]
 
     while True:
         lst = getter(data)
@@ -49,10 +43,8 @@ def iterate(query, params, query_name, path=None, data=None):
             yield item
         if not lst['pageInfo']['hasNextPage']:
             break
-        data = shopify.GraphQL().execute(
+        data = shop.shopify_request(
             query, {
                 **params,
                 'cursor': lst['pageInfo']['endCursor'],
-                })['data'][query_name]
-        if errors := data.get('userErrors'):
-            raise GraphQLException({'errors': errors})
+                }).data[query_name]

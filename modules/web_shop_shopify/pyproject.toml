@@ -52,10 +52,9 @@ exclude = ['doc']
 
 [tool.hatch.metadata.hooks.tryton]
 dependencies = [
-    'ShopifyAPI',
-    'pyactiveresource',
     'python-dateutil',
     'python-sql',
+    'shopifyapp',
     ]
 copyright = 'COPYRIGHT'
 readme = 'README.rst'

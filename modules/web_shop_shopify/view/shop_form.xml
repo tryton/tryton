@@ -8,22 +8,21 @@ this repository contains the full copyright notices and license terms. -->
         </page>
     </xpath>
     <xpath expr="//page[@id='products']" position="after">
-        <page string="Shopify" id="shopify" col="6">
-            <label name="shopify_url"/>
-            <field name="shopify_url"/>
-            <label name="shopify_password"/>
-            <field name="shopify_password" widget="password"/>
-            <label name="shopify_version"/>
-            <field name="shopify_version"/>
+        <page string="Shopify" id="shopify">
+            <label name="shopify_shop_name"/>
+            <field name="shopify_shop_name"/>
+            <label name="shopify_access_token"/>
+            <field name="shopify_access_token" widget="password"/>
 
             <label name="shopify_webhook_shared_secret"/>
             <field name="shopify_webhook_shared_secret"/>
             <label name="shopify_webhook_endpoint_order"/>
             <field name="shopify_webhook_endpoint_order"/>
+
             <label name="shopify_fulfillment_notify_customer"/>
             <field name="shopify_fulfillment_notify_customer"/>
 
-            <field name="shopify_payment_journals" colspan="6"/>
+            <field name="shopify_payment_journals" colspan="4"/>
         </page>
     </xpath>
 </data>

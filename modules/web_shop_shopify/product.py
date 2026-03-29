@@ -4,7 +4,6 @@ import re
 from decimal import Decimal
 from urllib.parse import urljoin
 
-import shopify
 from sql.conditionals import NullIf
 from sql.operators import Equal
 
@@ -47,12 +46,12 @@ class Category(IdentifiersMixin, metaclass=PoolMeta):
         shopify_id = self.get_shopify_identifier(shop)
         if shopify_id:
             shopify_id = id2gid('Collection', shopify_id)
-            collection = shopify.GraphQL().execute(
+            collection = shop.shopify_request(
                 QUERY_COLLECTION % {
                     'fields': graphql.selection({
                             'id': None,
                             }),
-                    }, {'id': shopify_id})['data']['collection'] or {}
+                    }, {'id': shopify_id}).data['collection'] or {}
         else:
             collection = {}
         collection['title'] = self.name[:255]
@@ -144,13 +143,13 @@ class Template(IdentifiersMixin, metaclass=PoolMeta):
         product = {}
         if shopify_id:
             shopify_id = id2gid('Product', shopify_id)
-            product = shopify.GraphQL().execute(
+            product = shop.shopify_request(
                 QUERY_PRODUCT % {
                     'fields': graphql.selection({
                             'id': None,
                             'status': None,
                             }),
-                    }, {'id': shopify_id})['data']['product'] or {}
+                    }, {'id': shopify_id}).data['product'] or {}
             if product.get('status') == 'ARCHIVED':
                 product['status'] = 'ACTIVE'
         product['title'] = self.name
@@ -298,12 +297,12 @@ class Product(IdentifiersMixin, metaclass=PoolMeta):
         shopify_id = self.get_shopify_identifier(shop)
         if shopify_id:
             shopify_id = id2gid('ProductVariant', shopify_id)
-            variant = shopify.GraphQL().execute(
+            variant = shop.shopify_request(
                 QUERY_VARIANT % {
                     'fields': graphql.selection({
                             'id': None,
                             }),
-                    }, {'id': shopify_id})['data']['productVariant'] or {}
+                    }, {'id': shopify_id}).data['productVariant'] or {}
         else:
             variant = {}
         sale_price = self.shopify_price(
@@ -405,7 +404,7 @@ class ProductURL(metaclass=PoolMeta):
         url = super().get_url(name)
         if (self.shop.type == 'shopify'
                 and (handle := self.product.template.shopify_handle)):
-            url = urljoin(self.shop.shopify_url + '/', f'products/{handle}')
+            url = urljoin(self.shop.shopify_url, f'products/{handle}')
         return url
 
 

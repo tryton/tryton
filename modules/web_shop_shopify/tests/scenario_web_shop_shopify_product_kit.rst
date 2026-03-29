@@ -10,9 +10,6 @@ Imports::
     >>> import time
     >>> from decimal import Decimal
 
-    >>> import shopify
-    >>> from shopify.api_version import ApiVersion
-
     >>> from proteus import Model
     >>> from trytond.modules.account.tests.tools import (
     ...     create_chart, create_fiscalyear, get_accounts)
@@ -81,21 +78,15 @@ Define a web shop::
 
     >>> web_shop = WebShop(name="Web Shop")
     >>> web_shop.type = 'shopify'
-    >>> web_shop.shopify_url = os.getenv('SHOPIFY_URL')
-    >>> web_shop.shopify_password = os.getenv('SHOPIFY_PASSWORD')
-    >>> web_shop.shopify_version = sorted(ApiVersion.versions, reverse=True)[1]
+    >>> web_shop.shopify_shop_name = os.getenv('SHOPIFY_SHOP')
+    >>> web_shop.shopify_access_token = os.getenv('SHOPIFY_ACCESS_TOKEN')
     >>> shop_warehouse = web_shop.shopify_warehouses.new()
     >>> shop_warehouse.warehouse, = Location.find([('type', '=', 'warehouse')])
     >>> shopify_payment_journal = web_shop.shopify_payment_journals.new()
     >>> shopify_payment_journal.journal = payment_journal
     >>> web_shop.save()
 
-    >>> shopify.ShopifyResource.activate_session(shopify.Session(
-    ...         web_shop.shopify_url,
-    ...         web_shop.shopify_version,
-    ...         web_shop.shopify_password))
-
-    >>> location = tools.get_location()
+    >>> location = tools.get_location(web_shop)
 
     >>> shop_warehouse, = web_shop.shopify_warehouses
     >>> shop_warehouse.shopify_id = str(gid2id(location['id']))
@@ -163,14 +154,14 @@ Run update product::
 
 Create an order on Shopify::
 
-    >>> customer = tools.create_customer({
+    >>> customer = tools.create_customer(web_shop, {
     ...         'lastName': "Customer",
     ...         'email': (''.join(
     ...                 random.choice(string.ascii_letters) for _ in range(10))
     ...             + '@example.com')
     ...         })
 
-    >>> order = tools.create_order({
+    >>> order = tools.create_order(web_shop, {
     ...         'customerId': customer['id'],
     ...         'shippingAddress': {
     ...                 'lastName': "Customer",
@@ -203,7 +194,7 @@ Create an order on Shopify::
     'AUTHORIZED'
 
     >>> transaction = tools.capture_order(
-    ...     order['id'], 300, order['transactions'][0]['id'])
+    ...     web_shop, order['id'], 300, order['transactions'][0]['id'])
 
 Run fetch order::
 
@@ -239,7 +230,7 @@ Make a partial shipment of components::
     >>> shipment.state
     'done'
 
-    >>> order = tools.get_order(order['id'])
+    >>> order = tools.get_order(web_shop, order['id'])
     >>> order['displayFulfillmentStatus']
     'PARTIALLY_FULFILLED'
     >>> fulfillment, = order['fulfillments']
@@ -263,7 +254,7 @@ Make a partial shipment for a single component::
     >>> shipment.state
     'done'
 
-    >>> order = tools.get_order(order['id'])
+    >>> order = tools.get_order(web_shop, order['id'])
     >>> order['displayFulfillmentStatus']
     'PARTIALLY_FULFILLED'
     >>> fulfillment, = order['fulfillments']
@@ -282,25 +273,25 @@ Ship remaining::
     >>> shipment.state
     'done'
 
-    >>> order = tools.get_order(order['id'])
+    >>> order = tools.get_order(web_shop, order['id'])
     >>> order['displayFulfillmentStatus']
     'FULFILLED'
 
 Clean up::
 
-    >>> tools.delete_order(order['id'])
+    >>> tools.delete_order(web_shop, order['id'])
     >>> for product in ShopifyIdentifier.find(
     ...         [('record', 'like', 'product.template,%')]):
-    ...     tools.delete_product(id2gid('Product', product.shopify_identifier))
+    ...     tools.delete_product(
+    ...         web_shop, id2gid('Product', product.shopify_identifier))
     >>> for category in ShopifyIdentifier.find(
     ...         [('record', 'like', 'product.category,%')]):
-    ...     tools.delete_collection(id2gid('Collection', category.shopify_identifier))
+    ...     tools.delete_collection(
+    ...         web_shop, id2gid('Collection', category.shopify_identifier))
     >>> for _ in range(MAX_SLEEP):
     ...     try:
-    ...         tools.delete_customer(customer['id'])
+    ...         tools.delete_customer(web_shop, customer['id'])
     ...     except Exception:
     ...         time.sleep(FETCH_SLEEP)
     ...     else:
     ...         break
-
-    >>> shopify.ShopifyResource.clear_session()
