@@ -41,7 +41,7 @@ stripe.max_network_retries = config.getint(
     'account_payment_stripe', 'max_network_retries', default=3)
 
 RETRY_CODES = {'lock_timeout', 'token_in_use'}
-STRIPE_VERSION = '2025-09-30.clover'
+STRIPE_VERSION = '2026-03-25.dahlia'
 if STRIPE_VERSION != stripe.api_version:
     warnings.warn(
         f"A new Stripe API version {stripe.api_version!r} is available",

@@ -53,7 +53,7 @@ exclude = ['doc']
 "" = "trytond/modules/account_payment_stripe"
 
 [tool.hatch.metadata.hooks.tryton]
-dependencies = ['stripe >= 7.8.0']
+dependencies = ['stripe >= 15']
 copyright = 'COPYRIGHT'
 readme = 'README.rst'
 
