@@ -5,8 +5,6 @@ import logging
 import pydoc
 import time
 
-from sql import Table
-
 from trytond import __series__, backend, config, security
 from trytond.exceptions import (
     ConcurrencyException, LoginException, RateLimitException, UserError,
@@ -23,11 +21,6 @@ from .wrappers import HTTPStatus, Response, abort, with_pool
 __all__ = ['register_authentication_service']
 
 logger = logging.getLogger(__name__)
-
-ir_configuration = Table('ir_configuration')
-ir_lang = Table('ir_lang')
-ir_module = Table('ir_module')
-res_user = Table('res_user')
 
 
 @app.route('/<string:database_name>/', methods=['POST'])
