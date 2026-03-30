@@ -1,5 +1,12 @@
+################################
 Production Work Timesheet Module
 ################################
 
-The production work timesheet module allows to enter timesheet for production
-works.
+The *Production Work Timesheet Module* records the time employees spend on
+production work.
+
+.. toctree::
+   :maxdepth: 2
+
+   design
+   releases
