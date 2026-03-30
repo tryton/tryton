@@ -10,9 +10,12 @@ from werkzeug.routing import Map, Rule
 from trytond import security
 from trytond.exceptions import TrytonException
 from trytond.pool import Pool
-from trytond.protocols.wrappers import Response
+from trytond.protocols.wrappers import (
+    TRYTON_SESSION_COOKIE, Response, decode_session_cookie,
+    encode_session_cookie)
 from trytond.tests.test_tryton import Client, RouteTestCase, TestCase
-from trytond.wsgi import Base64Converter, TrytondWSGI
+from trytond.transaction import Transaction
+from trytond.wsgi import Base64Converter, TrytondWSGI, app
 
 
 class WSGIAppTestCase(TestCase):
@@ -152,6 +155,32 @@ class TrytonWSGITestCase(RouteTestCase):
                     'password': '12345678',
                     }])
 
+    def test_basic_good_auth(self):
+        "Test that auth_required works with basic auth"
+        @app.route('/<database_name>/auth_required')
+        @app.auth_required
+        def _route(request, database_name):
+            return Response(b'')
+
+        basic_auth = 'Basic ' + base64.b64encode(b"user:12345678").decode()
+        response = self.client().get(
+            f'/{self.db_name}/auth_required',
+            headers=[('Authorization', basic_auth)])
+        self.assertEqual(response.status_code, HTTPStatus.OK)
+
+    def test_basic_bad_auth(self):
+        "Test that auth_required don't accept wrong password with basic auth"
+        @app.route('/<database_name>/auth_required')
+        @app.auth_required
+        def _route(request, database_name):
+            return Response(b'')
+
+        basic_auth = 'Basic ' + base64.b64encode(b"1:Wrong Password").decode()
+        response = self.client().get(
+            f'/{self.db_name}/auth_required',
+            headers=[('Authorization', basic_auth)])
+        self.assertEqual(response.status_code, HTTPStatus.UNAUTHORIZED)
+
     def test_session_valid_good_auth(self):
         "Test that session_valid correctly authenticates"
         app = TrytondWSGI()
@@ -220,4 +249,116 @@ class TrytonWSGITestCase(RouteTestCase):
 
         client = Client(app, Response)
         response = client.get(f'/{self.db_name}/session_required')
+        self.assertEqual(response.status_code, HTTPStatus.UNAUTHORIZED)
+
+    def test_cookie_authentication_good_auth(self):
+        "Test that session_valid authenticates with the cookie"
+        @app.route('/<database_name>/session_required')
+        @app.session_valid
+        def _route(request, database_name):
+            return Response(b'')
+
+        user_id, key = security.login(
+            self.db_name, 'user', {'password': '12345678'})
+
+        client = self.client()
+        client.set_cookie(
+            TRYTON_SESSION_COOKIE,
+            encode_session_cookie('user', str(user_id), key),
+            path=f'/{self.db_name}')
+        response = client.get(f'/{self.db_name}/session_required')
+        self.assertEqual(response.status_code, HTTPStatus.OK)
+
+    def test_cookie_authentication_bad_auth(self):
+        "Test that session_valid refuses wrong cookie content"
+        @app.route('/<database_name>/session_required')
+        @app.session_valid
+        def _route(request, database_name):
+            return Response(b'')
+
+        client = self.client()
+        client.set_cookie(
+            TRYTON_SESSION_COOKIE,
+            encode_session_cookie('user', '1', 'Wrong Token'),
+            path=f'/{self.db_name}')
+        response = client.get(f'/{self.db_name}/session_required')
+        self.assertEqual(response.status_code, HTTPStatus.UNAUTHORIZED)
+
+    def test_cookie_login(self):
+        "Test logging in through the cookie setting route"
+        client = self.client()
+        client.post(f'/{self.db_name}/session/login', json={
+                'method': 'common.db.login',
+                'params': ['user', {'password': '12345678'}, 'en'],
+                })
+        session_cookie = client.get_cookie(
+            TRYTON_SESSION_COOKIE, path=f'/{self.db_name}').value
+        _, _, token = session_cookie.rsplit(':', 2)
+
+        with Transaction().start(self.db_name, 0):
+            pool = Pool()
+            Session = pool.get('ir.session')
+            sessions = Session.search([('key', '=', token)])
+            self.assertEqual(len(sessions), 1)
+
+    def test_cookie_logout(self):
+        "Test logging out through the cookie unsetting route"
+        client = self.client()
+        client.post(f'/{self.db_name}/session/login', json={
+                'method': 'common.db.login',
+                'params': ['user', {'password': '12345678'}, 'en'],
+                })
+        session_cookie = client.get_cookie(
+            TRYTON_SESSION_COOKIE, path=f'/{self.db_name}').value
+        _, _, token = decode_session_cookie(session_cookie)
+        client.post(f'/{self.db_name}/session/logout')
+
+        self.assertIsNone(
+            client.get_cookie(TRYTON_SESSION_COOKIE, path=f'/{self.db_name}'))
+        with Transaction().start(self.db_name, 0):
+            pool = Pool()
+            Session = pool.get('ir.session')
+            sessions = Session.search([('key', '=', token)])
+            self.assertEqual(len(sessions), 0)
+
+    def test_cookie_precedence_good_auth(self):
+        "Test the cookie have precedence over Authorization header"
+        @app.route('/<database_name>/session_required')
+        @app.session_valid
+        def _route(request, database_name):
+            return Response(b'')
+
+        user_id, key = security.login(
+            self.db_name, 'user', {'password': '12345678'})
+        client = self.client()
+        client.set_cookie(
+            TRYTON_SESSION_COOKIE,
+            encode_session_cookie('user', str(user_id), key),
+            path=f'/{self.db_name}')
+        session_hdr = 'Session ' + base64.b64encode(
+            f'user:{user_id}:Wrong Key'.encode('utf8')).decode('utf8')
+        response = client.get(
+            f'/{self.db_name}/session_required',
+            headers=[('Authorization', session_hdr)])
+        self.assertEqual(response.status_code, HTTPStatus.OK)
+
+    def test_cookie_precedence_bad_auth(self):
+        "Test the cookie have precedence over Authorization header"
+        @app.route('/<database_name>/session_required')
+        @app.session_valid
+        def _route(request, database_name):
+            return Response(b'')
+
+        user_id, key = security.login(
+            self.db_name, 'user', {'password': '12345678'})
+        client = self.client()
+        client.set_cookie(
+            TRYTON_SESSION_COOKIE,
+            encode_session_cookie('user', str(user_id), 'Wrong Key'),
+            path=f'/{self.db_name}')
+        session_hdr = 'Session ' + base64.b64encode(
+            f'user:{user_id}:{key}'.encode('utf8')).decode('utf8')
+        response = client.get(
+            f'/{self.db_name}/session_required',
+            headers=[('Authorization', session_hdr)])
         self.assertEqual(response.status_code, HTTPStatus.UNAUTHORIZED)

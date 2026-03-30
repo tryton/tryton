@@ -16,7 +16,9 @@ from trytond.transaction import Transaction, TransactionError
 from trytond.worker import run_task
 from trytond.wsgi import app
 
-from .wrappers import HTTPStatus, Response, abort, with_pool
+from .wrappers import (
+    TRYTON_SESSION_COOKIE, HTTPStatus, Response, abort, add_auth_cookies,
+    decode_session_cookie, remove_auth_cookies, with_pool)
 
 __all__ = ['register_authentication_service']
 
@@ -66,6 +68,28 @@ def logout(request, database_name):
     security.logout(
         database_name, auth.get('userid'), auth.get('session'),
         context={'_request': request.context})
+
+
+@app.route('/<string:database_name>/session/login', methods=['POST'])
+def login_w_cookies(request, database_name):
+    user_id, token, bus_url_host = login(
+        request, database_name, *request.json['params'])
+    response = app.make_response(request, (user_id, bus_url_host))
+    add_auth_cookies(
+        response, database_name, request.json['params'][0], str(user_id),
+        token)
+    return response
+
+
+@app.route('/<string:database_name>/session/logout', methods=['POST'])
+def logout_w_cookies(request, database_name):
+    cookie = request.cookies.get(TRYTON_SESSION_COOKIE)
+    _, user_id, token = decode_session_cookie(cookie)
+    security.logout(
+        database_name, user_id, token, context={'_request': request.context})
+    response = app.make_response(request, None)
+    remove_auth_cookies(response, database_name)
+    return response
 
 
 def reset_password(request, database_name, user, language=None):
@@ -168,9 +192,14 @@ def _dispatch(request, pool, *args, **kwargs):
         abort(HTTPStatus.FORBIDDEN)
 
     user = request.user_id
-    session = None
-    if request.authorization.type == 'session':
-        session = request.authorization.get('session')
+    if request.session:
+        username = request.session.username
+        session = request.session.token
+    elif request.authorization:
+        username = request.authorization.username
+        session = None
+    if isinstance(username, bytes):
+        username = username.decode('utf-8')
 
     if rpc.fresh_session and session:
         context = {'_request': request.context}
@@ -179,9 +208,6 @@ def _dispatch(request, pool, *args, **kwargs):
             abort(HTTPStatus.UNAUTHORIZED)
 
     log_message = '%s.%s%s from %s@%s%s in %i ms'
-    username = request.authorization.username
-    if isinstance(username, bytes):
-        username = username.decode('utf-8')
     log_args = (
         obj.__name__, method,
         format_args(args, kwargs, logger.isEnabledFor(logging.DEBUG)),

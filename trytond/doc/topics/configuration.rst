@@ -668,6 +668,19 @@ authentication method option.
 
 Default: ``''``
 
+.. _config-session.cookie_domain:
+
+cookie_domain
+~~~~~~~~~~~~~
+
+The cookie `Domain attribute`_ set when the authentication completes.
+
+Default: ``''``
+
+.. note::
+   When accessing the server through ``localhost`` this option should be left
+   empty as cookies with the domain ``localhost`` are not strored by browsers.
+
 .. _config-session.max_age:
 
 max_age
@@ -952,3 +965,4 @@ Example::
 .. _STARTTLS: http://en.wikipedia.org/wiki/STARTTLS
 .. _WSGI middleware: https://en.wikipedia.org/wiki/Web_Server_Gateway_Interface#Specification_overview
 .. _`multi-factor authentication`: https://en.wikipedia.org/wiki/Multi-factor_authentication
+.. _`Domain attribute`: https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Set-Cookie#domaindomain-value

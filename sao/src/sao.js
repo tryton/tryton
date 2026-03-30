@@ -1201,13 +1201,12 @@ var Sao = {
 
     jQuery(document).ready(function() {
         var url = new URL(window.location);
-        if (url.searchParams.has('session')) {
+        if (url.searchParams.has('login_service')) {
             var database = url.searchParams.get('database');
             var session = {
                 login_service: url.searchParams.get('login_service'),
                 login: url.searchParams.get('login'),
                 user_id: parseInt(url.searchParams.get('user_id'), 10),
-                session: url.searchParams.get('session'),
                 bus_url_host: url.searchParams.get('bus_url_host'),
             };
             if (url.searchParams.has('renew')) {

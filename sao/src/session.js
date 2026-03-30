@@ -3,16 +3,10 @@
 (function() {
     'use strict';
 
-    // https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/btoa#Unicode_strings
-    function utoa(str) {
-        return window.btoa(unescape(encodeURIComponent(str)));
-    }
-
     Sao.Session = Sao.class_(Object, {
         init: function(database, login) {
             this.login_service = null;
             this.user_id = null;
-            this.session = null;
             this.bus_url_host = null;
             this.cache = new Cache();
             this.prm = jQuery.when();  // renew promise
@@ -24,9 +18,6 @@
             if (!Sao.Session.current_session) {
                 Sao.Session.current_session = this;
             }
-        },
-        get_auth: function() {
-            return utoa(this.login + ':' + this.user_id + ':' + this.session);
         },
         do_login: function(parameters) {
             var dfd = jQuery.Deferred();
@@ -47,14 +38,12 @@
             new Sao.Login(func, this).run().then(result => {
                 this.login = login;
                 this.user_id = result[0];
-                this.session = result[1];
-                this.bus_url_host = result[2];
+                this.bus_url_host = result[1];
                 this.store();
                 this.renew_device_cookie();
                 dfd.resolve();
             }, () => {
                 this.user_id = null;
-                this.session = null;
                 this.bus_url_host = null;
                 this.store();
                 dfd.reject();
@@ -62,29 +51,20 @@
             return dfd.promise();
         },
         do_logout: function() {
-            if (!(this.user_id && this.session)) {
+            if (!this.user_id) {
                 return jQuery.when();
             }
-            var args = {
-                'id': 0,
-                'method': 'common.db.logout',
-                'params': []
-            };
             var prm = jQuery.ajax({
-                'headers': {
-                    'Authorization': 'Session ' + this.get_auth()
-                },
                 'contentType': 'application/json',
-                'data': JSON.stringify(args),
+                'data': JSON.stringify({}),
                 'dataType': 'json',
-                'url': '/' + this.database + '/',
+                'url': `/${this.database}/session/logout`,
                 'type': 'post',
             });
             this.unstore();
             this.database = null;
             this.login = null;
             this.user_id = null;
-            this.session = null;
             if (Sao.Session.current_session === this) {
                 Sao.Session.current_session = null;
             }
@@ -141,7 +121,7 @@
             sessionStorage.setItem('sao_context_' + this.database, context);
         },
         restore: function() {
-            if (this.database && !this.session) {
+            if (this.database) {
                 var session_data = localStorage.getItem(
                     'sao_session_' + this.database);
                 if (session_data !== null) {
@@ -150,7 +130,6 @@
                         this.login_service = session_data.login_service;
                         this.login = session_data.login;
                         this.user_id = session_data.user_id;
-                        this.session = session_data.session;
                         this.bus_url_host = session_data.bus_url_host;
                     }
                 }
@@ -160,7 +139,6 @@
             var session = {
                 'login': this.login,
                 'user_id': this.user_id,
-                'session': this.session,
                 'bus_url_host': this.bus_url_host,
             };
             session = JSON.stringify(session);
@@ -280,7 +258,7 @@
         var database = database_url();
 
         var session = new Sao.Session(database, null);
-        if (session.session) {
+        if (session.user_id) {
             dfd.resolve(session);
             return dfd;
         }
@@ -311,7 +289,7 @@
             session.database = database;
             session.login = login;
             session.restore();
-            (session.session ? jQuery.when() : session.do_login())
+            (session.user_id ? jQuery.when() : session.do_login())
                 .then(function() {
                     dialog.modal.modal('hide');
                     dfd.resolve(session);
@@ -348,7 +326,7 @@
                     session.database = database;
                     session.login = null;
                     session.restore();
-                    if (session.session) {
+                    if (session.user_id) {
                         dfd.resolve(session);
                         dialog.modal.remove();
                         if (database_url() != database) {
@@ -421,7 +399,6 @@
             return session.prm;
         }
         var dfd = jQuery.Deferred();
-        session.session = null;
         session.prm = dfd.promise();
         if (!session.login_service) {
             session.do_login().then(dfd.resolve, function() {
@@ -441,7 +418,7 @@
                 if (service_window.closed) {
                     window.clearInterval(timer);
                     session.restore();
-                    if (session.session) {
+                    if (session.user_id) {
                         dfd.resolve();
                     } else {
                         Sao.logout();
@@ -472,17 +449,12 @@
                 'contentType': 'application/json',
                 'data': JSON.stringify(data),
                 'dataType': 'json',
-                'url': '/' + this.session.database + '/',
+                'url': `/${this.session.database}/session/login`,
                 'type': 'post',
                 'complete': [function() {
                     Sao.common.processing.hide(timeoutID);
                 }]
             };
-            if (this.session.user_id && this.session.session) {
-                args.headers = {
-                    'Authorization': 'Session ' + this.session.get_auth()
-                };
-            }
             var ajax_prm = jQuery.ajax(args);
 
             var ajax_success = function(data) {

@@ -171,9 +171,6 @@
 
         jQuery.ajax({
             'async': async,
-            'headers': {
-                'Authorization': 'Session ' + session.get_auth()
-            },
             'contentType': 'application/json',
             'data': JSON.stringify(Sao.rpc.prepareObject({
                 'id': id_,

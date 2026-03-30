@@ -95,15 +95,11 @@ class TrytondWSGI(object):
     def session_valid(self, func):
         @wraps(func)
         def wrapper(request, *args, **kwargs):
-            if (not request.authorization
-                    or request.authorization.type != 'session'):
+            if request.session is None:
                 _do_basic_auth(request)
-            userid = request.authorization.get('userid')
-            session = request.authorization.get('session')
             dbname = request.view_args.get('database_name')
-
             session_check = security.check(
-                dbname, userid, session, {
+                dbname, request.session.userid, request.session.token, {
                     '_request': {
                         'remote_addr': request.remote_addr,
                         },

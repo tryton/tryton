@@ -12,8 +12,8 @@ except ImportError:
 import trytond.config as config
 from trytond.protocols.dispatcher import register_authentication_service
 from trytond.protocols.wrappers import (
-    Response, abort, allow_null_origin, exceptions, redirect, with_pool,
-    with_transaction)
+    Response, abort, add_auth_cookies, allow_null_origin, exceptions, redirect,
+    with_pool, with_transaction)
 from trytond.transaction import Transaction
 from trytond.url import http_host
 from trytond.wsgi import app
@@ -171,8 +171,17 @@ def acs(request, pool, identity):
     query.append(('database', pool.database_name))
     query.append(('login', login))
     query.append(('user_id', user_id))
-    query.append(('session', session))
+    tryton_client = redirect_url.startswith('http://localhost:')
+    if tryton_client:
+        # Add the session as a parameter
+        # such that the Tryton client can retrieve it
+        query.append(('session', session))
     query.append(('bus_url_host', bus_url_host if allow_subscribe else ''))
     parts = list(parts)
     parts[3] = urllib.parse.urlencode(query)
-    return redirect(urllib.parse.urlunsplit(parts))
+    response = redirect(urllib.parse.urlunsplit(parts))
+    if not tryton_client:
+        # Do not set cookies for Tryton client
+        add_auth_cookies(
+            response, pool.database_name, login, str(user_id), session)
+    return response

@@ -1,6 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import base64
+import collections
 import gzip
 import logging
 import time
@@ -38,9 +39,49 @@ __all__ = [
     'user_application',
     'with_pool',
     'with_transaction',
+    'encode_session_cookie',
+    'decode_session_cookie',
+    'add_auth_cookies',
+    'remove_auth_cookies',
+    'add_cookie',
+    'remove_cookie',
+    'TRYTON_SESSION_COOKIE',
     ]
 
+TRYTON_SESSION_COOKIE = 'tryton_session'
 logger = logging.getLogger(__name__)
+
+
+def encode_session_cookie(login, userid, token):
+    return ':'.join((login, userid, token))
+
+
+def decode_session_cookie(cookie):
+    return cookie.rsplit(':', 2)
+
+
+def add_cookie(response, database, name, value):
+    response.set_cookie(name, value,
+        max_age=config.getint('session', 'max_age'),
+        path=f'/{database}',
+        domain=config.get('session', 'cookie_domain'),
+        secure=True, httponly=True, samesite='Strict')
+
+
+def add_auth_cookies(response, database, username, userid, token):
+    session_cookie = encode_session_cookie(username, userid, token)
+    add_cookie(response, database, TRYTON_SESSION_COOKIE, session_cookie)
+
+
+def remove_cookie(response, database, name):
+    response.set_cookie(
+        name, '', expires=0, path=f'/{database}',
+        domain=config.get('session', 'cookie_domain'),
+        secure=True, httponly=True, samesite='Strict')
+
+
+def remove_auth_cookies(response, database):
+    remove_cookie(response, database, TRYTON_SESSION_COOKIE)
 
 
 class Request(_Request):
@@ -92,6 +133,25 @@ class Request(_Request):
         return
 
     @cached_property
+    def session(self):
+        cookie = self.cookies.get(TRYTON_SESSION_COOKIE)
+        if cookie:
+            try:
+                username, userid, token = decode_session_cookie(cookie)
+                session = Session('cookie', username, int(userid), token)
+            except ValueError:
+                session = None
+        elif self.authorization and self.authorization.type == 'session':
+            session = Session(
+                'authorization',
+                self.authorization.username,
+                int(self.authorization.get('userid')),
+                self.authorization.get('session'))
+        else:
+            session = None
+        return session
+
+    @cached_property
     def authorization(self):
         authorization = super().authorization
         if authorization is None:
@@ -114,12 +174,12 @@ class Request(_Request):
         if not database_name:
             return None
         auth = self.authorization
-        if not auth:
+        if not self.session and not auth:
             return None
         context = {'_request': self.context}
-        if auth.type == 'session':
+        if self.session:
             user_id = security.check(
-                database_name, auth.get('userid'), auth.get('session'),
+                database_name, self.session.userid, self.session.token,
                 context=context)
         elif auth.username:
             parameters = getattr(auth, 'parameters', auth)
@@ -141,6 +201,9 @@ class Request(_Request):
             'scheme': self.scheme,
             'is_secure': self.is_secure,
             }
+
+
+Session = collections.namedtuple('Session', 'type username userid token')
 
 
 def parse_authorization_header(value):

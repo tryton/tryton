@@ -1,3 +1,4 @@
+* Add route for login / logout with cookie
 * Add contextual ``_log`` to force logging events
 * Add notify_user to ModelStorage
 * Check button states when testing access

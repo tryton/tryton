@@ -25,9 +25,6 @@
         let url = new URL(`${session.database}/bus`, session.bus_url_host);
         Sao.Bus.last_message = last_message;
         Sao.Bus.request = jQuery.ajax({
-            headers: {
-                Authorization: 'Session ' + session.get_auth(),
-            },
             contentType: 'application/json',
             data: JSON.stringify({
                 last_message: last_message,
