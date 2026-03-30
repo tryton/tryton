@@ -14,6 +14,18 @@ a database from another series.
 .. warning::
    You cannot skip more than 2 series ending with ``.0``.
 
+8.0
+---
+
+Before
+~~~~~~
+
+* Remove ``google_maps`` module:
+
+   .. code-block:: SQL
+
+      DELETE FROM "ir_module" WHERE name = 'google_maps';
+
 7.8
 ---
 

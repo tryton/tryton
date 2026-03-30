@@ -101,9 +101,6 @@ Referential
 :doc:`Dashboard <dashboard:index>`
    Customized dashboard.
 
-:doc:`Google Maps <google_maps:index>`
-   Links address to Google map.
-
 :doc:`Incoterm <incoterm:index>`
    Defines incoterms.
 

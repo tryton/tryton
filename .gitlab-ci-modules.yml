@@ -1518,23 +1518,6 @@ test-modules-edocument_unece-postgresql:
     PACKAGE: modules/edocument_unece
     TAG_PATTERN: '/^edocument_unece-.*/'
 
-check-doc-modules-google_maps:
-  extends: .check-doc
-  variables:
-    PACKAGE: modules/google_maps
-
-test-modules-google_maps-sqlite:
-  extends: .test-sqlite
-  variables:
-    PACKAGE: modules/google_maps
-    TAG_PATTERN: '/^google_maps-.*/'
-
-test-modules-google_maps-postgresql:
-  extends: .test-postgresql
-  variables:
-    PACKAGE: modules/google_maps
-    TAG_PATTERN: '/^google_maps-.*/'
-
 check-doc-modules-inbound_email:
   extends: .check-doc
   variables:
