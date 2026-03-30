@@ -37,7 +37,7 @@ from trytond.modules import parse_module_config
 from trytond.pool import Pool, isregisteredby
 from trytond.protocols.wrappers import Response
 from trytond.pyson import PYSON, PYSONDecoder, PYSONEncoder
-from trytond.tools import file_open, find_dir, is_instance_method
+from trytond.tools import file_open, find_dir, find_path, is_instance_method
 from trytond.transaction import Transaction, TransactionError
 from trytond.wizard import StateAction, StateView
 from trytond.wsgi import app
@@ -471,11 +471,11 @@ class ModuleTestCase(_DBTestCase):
                     view_id = view.id
                 model = view.model
                 Model = pool.get(model)
-                view = Model.fields_view_get(view_id)
-                self.assertEqual(view['model'], model)
-                tree = etree.fromstring(view['arch'])
+                fields_view = Model.fields_view_get(view_id)
+                self.assertEqual(fields_view['model'], model)
+                tree = etree.fromstring(fields_view['arch'])
 
-                validator = etree.RelaxNG(etree=View.get_rng(view['type']))
+                validator = view.validator()
                 validator.assertValid(tree)
 
                 tree_root = tree.getroottree().getroot()
@@ -520,11 +520,11 @@ class ModuleTestCase(_DBTestCase):
                                     button_name, Model.__name__))
 
                         for field in fields_to_check:
-                            self.assertIn(field, view['fields'].keys(),
+                            self.assertIn(field, fields_view['fields'].keys(),
                                 msg="Missing field %r in %r" % (
                                     field, Model.__name__))
                         for field, t_fields in target_fields_to_check.items():
-                            for t_view in view['fields'][field].get(
+                            for t_view in fields_view['fields'][field].get(
                                     'views', {}).values():
                                 for t_field in t_fields:
                                     self.assertIn(
@@ -1186,9 +1186,11 @@ class ModuleTestCase(_DBTestCase):
             config.read_file(fp)
         if not config.has_option('tryton', 'xml'):
             return
-        with file_open('tryton.rng', subdir='', mode='rb') as fp:
-            rng = etree.parse(fp)
-        validator = etree.RelaxNG(etree=rng)
+        try:
+            filepath = find_path('tryton.rng', subdir='')
+        except FileNotFoundError:
+            filepath = find_path('tryton.rnc', subdir='')
+        validator = etree.RelaxNG(file=filepath)
         for xml_file in filter(None, config.get('tryton', 'xml').splitlines()):
             with self.subTest(xml=xml_file):
                 with file_open('%s/%s' % (self.module, xml_file),

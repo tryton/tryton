@@ -288,7 +288,7 @@ class ModelView(Model):
                     ],
                 ]
             views = View.search(domain)
-            views = [v for v in views if v.rng_type == view_type]
+            views = [v for v in views if v.real_type == view_type]
             if views:
                 view = views[0]
                 view_id = view.id

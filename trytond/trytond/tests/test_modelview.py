@@ -707,7 +707,7 @@ class ModelView(TestCase):
         arch = TestModel.fields_view_get()['arch']
         parser = etree.XMLParser()
         tree = etree.fromstring(arch, parser=parser)
-        validator = etree.RelaxNG(etree=UIView.get_rng('form'))
+        validator = UIView._validator('form')
 
         self.assertTrue(validator.validate(tree))
 

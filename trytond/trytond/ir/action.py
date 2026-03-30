@@ -935,7 +935,7 @@ class ActionActWindow(
                                 action=action.rec_name)) from exception
 
     def get_views(self, name):
-        return [(view.view.id, view.view.rng_type)
+        return [(view.view.id, view.view.real_type)
             for view in self.act_window_views]
 
     def get_domains(self, name):

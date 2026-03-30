@@ -6,6 +6,7 @@ import json
 import logging
 import os
 from collections import defaultdict
+from pathlib import Path
 
 from lxml import etree
 from sql import Literal, Null
@@ -113,7 +114,7 @@ class View(
     domain = fields.Char('Domain', states={
             'invisible': ~Eval('inherit'),
             }, depends=['inherit'])
-    _get_rng_cache = MemoryCache('ir_ui_view.get_rng', context=False)
+    _get_validator_cache = MemoryCache('ir_ui_view.validator', context=False)
     _view_get_cache = Cache('ir_ui_view.view_get')
     __module_index = None
 
@@ -196,23 +197,27 @@ class View(
     def show(cls, views):
         pass
 
+    def validator(self):
+        return self._validator(self.real_type)
+
     @classmethod
-    def get_rng(cls, type_):
-        key = (cls.__name__, type_)
-        rng = cls._get_rng_cache.get(key)
-        if rng is None:
-            if type_ == 'list-form':
-                type_ = 'form'
-            rng_name = os.path.join(os.path.dirname(__file__), type_ + '.rng')
-            with open(rng_name, 'rb') as fp:
-                rng = etree.fromstring(fp.read())
-            rng = cls._get_rng_cache.set(key, rng)
-        return rng
+    def _validator(cls, type):
+        key = (cls.__name__, type)
+        validator = cls._get_validator_cache.get(key)
+        if validator is None:
+            if type == 'list-form':
+                type = 'form'
+            filepath = Path(os.path.dirname(__file__), f'{type}.rng')
+            if not filepath.exists():
+                filepath = filepath.with_suffix('.rnc')
+            validator = etree.RelaxNG(file=str(filepath))
+            validator = cls._get_validator_cache.set(key, validator)
+        return validator
 
     @property
-    def rng_type(self):
+    def real_type(self):
         if self.inherit:
-            return self.inherit.rng_type
+            return self.inherit.real_type
         return self.type
 
     @classmethod
@@ -231,14 +236,13 @@ class View(
                 continue
             tree = etree.fromstring(xml)
 
-            if hasattr(etree, 'RelaxNG'):
-                validator = etree.RelaxNG(etree=cls.get_rng(view.rng_type))
-                if not validator.validate(tree):
-                    error_log = '\n'.join(map(str,
-                            validator.error_log.filter_from_errors()))
-                    raise XMLError(
-                        gettext('ir.msg_view_invalid_xml', name=view.rec_name),
-                        error_log)
+            validator = view.validator()
+            if not validator.validate(tree):
+                error_log = '\n'.join(map(str,
+                        validator.error_log.filter_from_errors()))
+                raise XMLError(
+                    gettext('ir.msg_view_invalid_xml', name=view.rec_name),
+                    error_log)
             root_element = tree.getroottree().getroot()
 
             # validate pyson attributes
@@ -340,7 +344,7 @@ class View(
             self._translate(root, model, Transaction().language)
         arch = etree.tostring(tree, encoding='utf-8').decode('utf-8')
         result = {
-            'type': self.rng_type,
+            'type': self.real_type,
             'view_id': self.id,
             'arch': arch,
             'field_childs': self.field_childs,
@@ -712,7 +716,7 @@ class ViewTreeOptional(
         if fields_names and 'view' not in fields_names:
             return
         for record in records:
-            if record.view and record.view.rng_type != 'tree':
+            if record.view and record.view.real_type != 'tree':
                 raise ViewError(gettext(
                         'ir.msg_view_tree_optional_type',
                         view=record.view.rec_name))
