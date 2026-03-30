@@ -22,7 +22,7 @@ more other products.
       .. |Productions --> Configuration --> BOMs| replace:: :menuselection:`Productions --> Configuration --> BOMs`
       __ https://demo.tryton.org/model/production.bom
 
-.. _model-concept-product:
+.. _concept-product:
 
 Product
 =======
