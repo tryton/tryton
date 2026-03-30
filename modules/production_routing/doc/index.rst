@@ -1,21 +1,12 @@
+#########################
 Production Routing Module
 #########################
 
-The production routing module defines the routings for production: Routing,
-Step and Operation.
+The *Production Routing Module* provides the fundamental concept for
+managing operations on productions.
 
-Routing
-*******
+.. toctree::
+   :maxdepth: 2
 
-Routings are a list of steps to follow with one of the BOMs to produce a
-product.
-
-Step
-****
-
-Steps define the operation to perform at a specific point of the routing.
-
-Operation
-*********
-
-An operation is a generic action.
+   design
+   releases
