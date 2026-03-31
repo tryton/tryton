@@ -370,14 +370,22 @@ class ModelSQL(ModelStorage):
                         (history_table.id, Index.Equality())),
                     Index(
                         history_table,
+                        (history_table.id, Index.Equality()),
                         (Coalesce(
                                 history_table.write_date,
                                 history_table.create_date),
                             Index.Range()),
                         order='DESC',
-                        include=[
-                            Column(history_table, '__id'),
-                            history_table.id]),
+                        include=[Column(history_table, '__id')]),
+                    Index(
+                        history_table,
+                        (Coalesce(
+                                history_table.write_date,
+                                history_table.create_date),
+                            Index.Range()),
+                        (Column(history_table, '__id'), Index.Range()),
+                        order='DESC',
+                        include=[history_table.id]),
                     })
 
     @classmethod
