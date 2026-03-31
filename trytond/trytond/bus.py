@@ -226,19 +226,22 @@ def subscribe(request, database_name):
     url_host = config.get('bus', 'url_host')
     if url_host and url_host != request.host_url:
         abort(HTTPStatus.UNAUTHORIZED)
-    user = request.authorization.get('userid')
+    if session := request.session:
+        userid = session.userid
+    else:
+        abort(HTTPStatus.UNAUTHORIZED)
     channels = request.parsed_data.get('channels', [])
-    if user is None:
+    if userid is None:
         raise exceptions.BadRequest
 
     channels = set(filter(lambda c: not c.startswith('user:'), channels))
-    channels.add('user:%s' % user)
+    channels.add('user:%s' % userid)
 
     last_message = request.parsed_data.get('last_message')
 
     logger.info(
         "get bus messages for %s since %s from %s@%s%s",
-        channels, last_message, request.authorization.username,
+        channels, last_message, session.username,
         request.remote_addr, request.path)
     bus_response = Bus.subscribe(database_name, channels, last_message)
     return Response(
