@@ -80,8 +80,9 @@ class AmendmentLine(metaclass=PoolMeta):
             ],
         states={
             'invisible': Eval('action') != 'line',
+            'readonly': Eval('state') != 'draft',
             },
-        depends=['action', 'product', 'party'])
+        depends=['action', 'product', 'party', 'state'])
 
     @fields.depends('line')
     def on_change_line(self):
