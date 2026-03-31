@@ -80,6 +80,7 @@ class AmendmentLine(metaclass=PoolMeta):
             ],
         states={
             'invisible': Eval('action') != 'line',
+            'readonly': Eval('state') != 'draft',
             })
 
     @fields.depends('line')
