@@ -478,6 +478,18 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_chat_channel_resource_unique">
             <field name="text">Only one channel per resource is allowed.</field>
         </record>
+        <record model="ir.message" id="msg_chat_channel_identifier_unique">
+            <field name="text">Identifier must be unique per channel.</field>
+        </record>
+        <record model="ir.message" id="msg_chat_follower_joined">
+            <field name="text">"%(name)s" joined</field>
+        </record>
+        <record model="ir.message" id="msg_chat_follower_left">
+            <field name="text">"%(name)s" left</field>
+        </record>
+        <record model="ir.message" id="msg_subject">
+            <field name="text">%(resource)s: %(author)s left a message</field>
+        </record>
         <record model="ir.message" id="msg_chat_user_or_email">
             <field name="text">Only user or email can be filled.</field>
         </record>

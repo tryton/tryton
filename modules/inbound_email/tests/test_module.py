@@ -6,6 +6,9 @@ import uuid
 from email.message import EmailMessage
 from unittest.mock import patch
 
+import trytond.config as config
+from trytond.modules.inbound_email.ir import (
+    REPLY_LINE, _get_channel_identifier)
 from trytond.pool import Pool
 from trytond.protocols.wrappers import HTTPStatus
 from trytond.tests.test_tryton import (
@@ -16,6 +19,16 @@ from trytond.transaction import Transaction
 class InboundEmailTestCase(ModuleTestCase):
     "Test Inbound Email module"
     module = 'inbound_email'
+
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        email_from = config.get('email', 'from', default='')
+        config.set('email', 'from', 'tryton@example.org')
+        cls.addClassCleanup(config.set, 'email', 'from', email_from)
+        config.add_section('inbound_email')
+        config.set('inbound_email', 'chat_reply_to', 'chat@example.org')
+        cls.addClassCleanup(config.remove_section, 'inbound_email')
 
     def get_message(self):
         message = EmailMessage()
@@ -302,6 +315,40 @@ class InboundEmailTestCase(ModuleTestCase):
 
             func.assert_called_once_with(email, rule)
             self.assertEqual(email.result, result)
+
+    def test_get_channel_identifier(self):
+        "Test parsing the recipients to find the email channel"
+        channel_id = uuid.uuid4().hex
+
+        for value, expected in [
+                (f'chat+{channel_id}@example.org', channel_id),
+                (['chat@example.org', f'chat+{channel_id}@example.org'],
+                    channel_id),
+                ('chat@example.org', None),
+                ('chat+foo@example.org', None),
+                (f'{channel_id}@example.org', None),
+                (f'chat+{channel_id}@example.com', None),
+                ]:
+            for recipient_hdr in ('To', 'Cc'):
+                with self.subTest(f"{recipient_hdr}: {value}"):
+                    msg = EmailMessage()
+                    msg[recipient_hdr] = value
+                    self.assertEqual(_get_channel_identifier(msg), expected)
+
+    @with_transaction()
+    def test_find_email_content(self):
+        "Test finding the content of the reply"
+        pool = Pool()
+        Channel = pool.get('ir.chat.channel')
+
+        for (body, expected) in [
+                ("Foo", "Foo"),
+                ("Foo\n-----\nBar", "Foo\n-----\nBar"),
+                (f"Foo\n{REPLY_LINE}\nLorem Ipsum", "Foo"),
+                (f"Foo\n> {REPLY_LINE}\n> Lorem Ipsum", "Foo"),
+                ]:
+            with self.subTest(body):
+                self.assertEqual(Channel._email_content(body), expected)
 
 
 class InboundEmailRouteTestCase(RouteTestCase):

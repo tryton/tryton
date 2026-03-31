@@ -255,6 +255,7 @@ class Rule(sequence_ordered(), ModelSQL, ModelView):
 
     action = fields.Selection([
             (None, ""),
+            ('ir.chat.channel|post_inbound_email', "Post to Channel"),
             ], "Action")
 
     @classmethod

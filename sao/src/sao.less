@@ -520,6 +520,40 @@ html[theme="default"] {
     padding-left: 5px;
     padding-right: 5px;
 
+    .btn-toolbar {
+        display: flex;
+
+        .input-group {
+            flex: 1;
+
+            .img-circle {
+                height: 2em;
+                margin-inline-end: 1ex;
+            }
+        }
+
+        ul.dropdown-menu {
+            width: 20em;
+
+            div {
+                display: flex;
+                margin: 1ex;
+                gap: 5px;
+
+                img {
+                    align-self: center;
+                    width: 32px;
+                    height: 32px;
+                }
+
+                span {
+                    flex: 1;
+                    align-self: center;
+                }
+            }
+        }
+    }
+
     .chat-messages-outer {
         display: flex;
         flex-direction: column;
@@ -535,6 +569,15 @@ html[theme="default"] {
 
     .chat-message {
         margin-top: 5px;
+
+        &.system-message {
+            align-items: center;
+            color: @text-muted;
+            display: flex;
+            font-size: small;
+            justify-content: center;
+            padding: 0 2ex;
+        }
     }
 
     .chat-content {

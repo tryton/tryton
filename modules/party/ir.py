@@ -2,7 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 from trytond.model import fields
 from trytond.pool import Pool, PoolMeta
-from trytond.tools import escape_wildcard
+from trytond.tools import escape_wildcard, grouped_slice
 from trytond.transaction import Transaction
 
 
@@ -101,3 +101,56 @@ class EmailTemplate(metaclass=PoolMeta):
             elif record.party.lang:
                 language = record.party.lang
         return language
+
+
+class Channel(metaclass=PoolMeta):
+    __name__ = 'ir.chat.channel'
+
+    @classmethod
+    def _get_followers(cls, resource):
+        pool = Pool()
+        Party = pool.get('party.party')
+        ContactMechanism = pool.get('party.contact_mechanism')
+
+        followers = super()._get_followers(resource)
+        has_avatar = 'avatar_url' in Party._fields
+
+        for emails in grouped_slice([e for t, e in followers if t == 'email']):
+            contacts = ContactMechanism.search([
+                    ('type', '=', 'email'),
+                    ('value', 'in', list(emails)),
+                    ])
+            followers |= {('email', c.value): {
+                    'type': 'email',
+                    'key': c.value,
+                    'name': f'{c.name}',
+                    'avatar_url': c.party.avatar_url if has_avatar else None,
+                    } for c in contacts}
+
+        return followers
+
+    @classmethod
+    def _search_followers(cls, resource, text):
+        pool = Pool()
+        Party = pool.get('party.party')
+        ContactMechanism = pool.get('party.contact_mechanism')
+
+        followers = super()._search_followers(resource, text)
+        has_avatar = 'avatar_url' in Party._fields
+
+        contacts = ContactMechanism.search([
+                'OR',
+                [
+                    ('rec_name', 'ilike', '{text}%'),
+                    ('type', '=', 'email'),
+                    ],
+                ('name', 'ilike', f'%{text}%'),
+                ])
+        return followers | {
+            ('email', c.value): {
+                'type': 'email',
+                'key': c.value,
+                'name': f'{c.name}',
+                'avatar_url': c.party.avatar_url if has_avatar else None,
+                }
+            for c in contacts}

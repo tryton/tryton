@@ -5,6 +5,19 @@ Configuration
 The *Inbound Email Module* uses values from settings in the ``[inbound_email]``
 section of the :ref:`trytond:topics-configuration`.
 
+.. _config-inbound_email.chat_reply_to:
+
+``chat_reply_to``
+=================
+
+``chat_reply_to`` defines the email address used in the ``Reply-To`` header
+when sending a message from a chat channel.
+Tryton uses `sub-addressing`_ to discriminate between channels.
+
+.. _`sub-addressing`: https://en.wikipedia.org/wiki/Email_address#Sub-addressing
+
+Default: To the value of :ref:`trytond:config-email.from`.
+
 .. _config-inboud_email.filestore:
 
 ``filestore``
