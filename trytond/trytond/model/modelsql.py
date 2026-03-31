@@ -408,6 +408,9 @@ class ModelSQL(ModelStorage):
                     continue
                 table = cls.__table__()
                 column = Column(table, field_name)
+                if cls._history:
+                    history_table = cls.__table_history__()
+                    history_column = Column(history_table, field_name)
                 if not field.required and cls != Target:
                     where = column != Null
                 else:
@@ -424,12 +427,32 @@ class ModelSQL(ModelStorage):
                                 (field.sql_id(column, Target), Index.Range()),
                                 where=where),
                             })
+                    if cls._history:
+                        cls._history_sql_indexes.update({
+                                Index(
+                                    history_table,
+                                    (history_column, Index.Equality()),
+                                    where=where),
+                                Index(
+                                    history_table,
+                                    (history_column,
+                                        Index.Similarity(begin=True)),
+                                    (field.sql_id(history_column, Target),
+                                        Index.Range()),
+                                    where=history_column != Null),
+                                })
                 else:
                     cls._sql_indexes.add(
                         Index(
                             table,
                             (column, Index.Range()),
                             where=where))
+                    if cls._history:
+                        cls._history_sql_indexes.add(
+                            Index(
+                                history_table,
+                                (history_column, Index.Range()),
+                                where=history_column != Null))
                     break
 
     @classmethod
