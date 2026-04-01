@@ -47,12 +47,6 @@ Accounting
 :doc:`Export WinBooks <account_export_winbooks:index>`
    Export to WinBooks.
 
-:doc:`Spanish <account_es:index>`
-   Spanish accounting.
-
-:doc:`Spanish SII <account_es_sii:index>`
-   Send invoices to "Subministro Inmediato de Información" (SII).
-
 :doc:`Europe <account_eu:index>`
    Common European requirements.
 

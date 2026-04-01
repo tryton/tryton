@@ -226,8 +226,6 @@ check-account-chart:
         - modules/account/account_chart*.xml
         - modules/account_be/account_be*.xml
         - modules/account_be/tax_be*.xml
-        - modules/account_es/account*.xml
-        - modules/account_es/tax*.xml
         - modules/account_syscohada/account_syscohada*.xml
       when: on_success
     - when: never

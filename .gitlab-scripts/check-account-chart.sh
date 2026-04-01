@@ -31,20 +31,6 @@ do
     printf "OK\n"
 done
 
-module="modules/account_es"
-mkdir -p "${OUTPUT}/${module}"
-for chart in normal pyme
-do
-    printf "Check ${module} ${chart} ..."
-    for template in account tax
-    do
-        file="${module}/${template}_${chart}.xml"
-        xsltproc --stringparam chart "${chart}" "${module}/create_chart.xsl" "${module}/${template}.xml" > "${OUTPUT}/${file}"
-        cmp "${file}" "${OUTPUT}/${file}"
-    done
-    printf "OK\n"
-done
-
 module="modules/account_syscohada"
 mkdir -p "${OUTPUT}/${module}"
 for chart in 2001 2016

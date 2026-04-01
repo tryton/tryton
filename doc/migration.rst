@@ -30,6 +30,13 @@ Before
 
       DELETE FROM "ir_module" WHERE name = 'google_maps';
 
+* Remove ``account_es`` and ``account_es_sii`` modules if you are not
+  installing external replacements:
+
+   .. code-block:: SQL
+
+      DELETE FROM "ir_module" WHERE name in ('account_es', 'account_es_sii');
+
 .. _migration-7.8:
 
 7.8
