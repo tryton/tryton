@@ -44,7 +44,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.model.access" id="access_chat_channel">
             <field name="model">ir.chat.channel</field>
-            <field name="perm_read" eval="True"/>
+            <field name="perm_read" eval="False"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
