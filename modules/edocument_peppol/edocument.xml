@@ -47,23 +47,16 @@ this repository contains the full copyright notices and license terms. -->
             <field name="count" eval="True"/>
             <field name="act_window" ref="act_edocument_peppol"/>
         </record>
-        <record model="ir.action.act_window.domain" id="act_edocument_peppol_domain_pending">
-            <field name="name">Pending</field>
-            <field name="sequence" eval="20"/>
-            <field name="domain" eval="[('state', '=', 'pending')]" pyson="1"/>
-            <field name="count" eval="True"/>
-            <field name="act_window" ref="act_edocument_peppol"/>
-        </record>
         <record model="ir.action.act_window.domain" id="act_edocument_peppol_domain_processing">
             <field name="name">Processing</field>
-            <field name="sequence" eval="30"/>
-            <field name="domain" eval="[('state', '=', 'processing')]" pyson="1"/>
+            <field name="sequence" eval="20"/>
+            <field name="domain" eval="[('state', 'in', ['submitted', 'processing'])]" pyson="1"/>
             <field name="count" eval="True"/>
             <field name="act_window" ref="act_edocument_peppol"/>
         </record>
         <record model="ir.action.act_window.domain" id="act_edocument_peppol_domain_failed">
             <field name="name">Failed</field>
-            <field name="sequence" eval="40"/>
+            <field name="sequence" eval="30"/>
             <field name="domain" eval="[('state', '=', 'failed')]" pyson="1"/>
             <field name="count" eval="True"/>
             <field name="act_window" ref="act_edocument_peppol"/>
