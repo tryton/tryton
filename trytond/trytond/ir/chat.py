@@ -94,6 +94,9 @@ class Channel(ModelSQL, ModelView):
             (m, n) for m, n in Model.get_name_items()
             if issubclass(pool.get(m), ChatMixin)]
 
+    def get_rec_name(self, name):
+        return self.resource.rec_name
+
     @classmethod
     def check_access(cls, resource):
         pool = Pool()
