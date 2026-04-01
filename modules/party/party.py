@@ -690,7 +690,6 @@ IDENTIFIER_TYPES = [
     ('se_personnummer', "Swedish Personal Number"),
     ('se_vat', "Swedish VAT Number"),
     ('sg_uen', "Singapore's Unique Entity Number"),
-    ('si_businessid', "Slovenian Corporate Registration Number"),
     ('si_ddv', "Slovenian VAT Number"),
     ('si_emso', "Slovenian Unique Master Citizen Number"),
     ('si_maticna', "Slovenian Corporate Registration Number"),
@@ -883,6 +882,10 @@ class Identifier(sequence_ordered(), DeactivableMixin, ModelSQL, ModelView):
         # Migration from 7.8: Fill code_compact
         if fill_code_compact:
             cursor.execute(*table.update([table.code_compact], [table.code]))
+
+        # Migration from 7.8: rename si_businessid into si_maticna
+        cursor.execute(*table.update([table.type], ['si_maticna'],
+                where=(table.type == 'si_businessid')))
 
     @classmethod
     def get_types(cls):
