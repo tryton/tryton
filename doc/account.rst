@@ -56,9 +56,6 @@ Accounting
 :doc:`French Chorus <account_fr_chorus:index>`
    Send invoices via Chorus Pro.
 
-:doc:`German <account_de_skr03:index>`
-   German accounting.
-
 :doc:`Invoice <account_invoice:index>`
    Manage customer and supplier invoices.
 

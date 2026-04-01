@@ -37,6 +37,13 @@ Before
 
       DELETE FROM "ir_module" WHERE name in ('account_es', 'account_es_sii');
 
+* Remove ``account_de_skr03`` module if you are not installing external
+  replacement:
+
+   .. code-block:: SQL
+
+      DELETE FROM "ir_module" WHERE name = 'account_de_skr03';
+
 .. _migration-7.8:
 
 7.8
