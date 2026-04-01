@@ -311,7 +311,8 @@ class Channel(ModelSQL, ModelView):
             channel=channel,
             email=from_,
             audience='public',
-            content=cls._email_content(content))
+            content=cls._email_content(content),
+            reference=email.get('Message-ID'))
         message.save()
 
         cls.dispatch_message(message, lambda u: u == from_)
