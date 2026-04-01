@@ -528,18 +528,34 @@ class Follower(AuthorMixin, ModelView, ModelSQL):
                 ).save()
 
 
-class Message(AuthorMixin, ModelSQL):
+class Message(AuthorMixin, ModelSQL, ModelView):
     "Chat Message"
     __name__ = 'ir.chat.message'
 
     channel = fields.Many2One(
         'ir.chat.channel', "Channel", required=True, ondelete='RESTRICT')
     content = fields.Text("Content", required=True)
+    summary = fields.Function(
+        fields.Char("Summary"), 'on_change_with_summary',
+        searcher='search_summary')
     audience = fields.Selection([
             ('internal', "Internal"),
             ('public', "Public"),
             ], "Audience", required=True)
     reference = fields.Char("Reference", readonly=True)
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls.__access__.add('channel')
+
+    @fields.depends('content')
+    def on_change_with_summary(self, name=None):
+        return firstline(self.content or '')
+
+    @classmethod
+    def search_summary(cls, name, clause):
+        return [('content', *clause[1:])]
 
     @classmethod
     def default_audience(cls):

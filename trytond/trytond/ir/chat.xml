@@ -70,5 +70,40 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">chat_follower_form</field>
         </record>
 
+        <record model="ir.ui.view" id="chat_message_view_list">
+            <field name="model">ir.chat.message</field>
+            <field name="type">tree</field>
+            <field name="name">chat_message_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="chat_message_view_form">
+            <field name="model">ir.chat.message</field>
+            <field name="type">form</field>
+            <field name="name">chat_message_form</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_chat_message">
+            <field name="name">Messages</field>
+            <field name="res_model">ir.chat.message</field>
+            <field
+                name="domain"
+                eval="[('channel', 'in', Eval('active_ids', []))]"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_chat_message_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="chat_message_view_list"/>
+            <field name="act_window" ref="act_chat_message"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_chat_message_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="chat_message_view_form"/>
+            <field name="act_window" ref="act_chat_message"/>
+        </record>
+        <record model="ir.action.keyword" id="act_chat_message_keyword1">
+            <field name="keyword">form_relate</field>
+            <field name="model">ir.chat.channel,-1</field>
+            <field name="action" ref="act_chat_message"/>
+        </record>
     </data>
 </tryton>
