@@ -2,6 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 import datetime
 import gettext
+import operator
 
 from gi.repository import Gdk, GLib, GObject, Gtk
 
@@ -627,6 +628,8 @@ class ScreenContainer(object):
                         entry.append_text(selection)
                 elif field['type'] in ['selection', 'multiselection']:
                     selections = tuple(x[1] for x in field['selection'])
+                    if field.get('sort', True):
+                        selections.sort(key=operator.itemgetter(1))
                     entry = Selection(selections)
                     entry.set_vexpand(True)
                 elif field['type'] in ('date', 'datetime', 'time'):

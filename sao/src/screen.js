@@ -501,8 +501,14 @@
                             break;
                         case 'selection':
                         case 'multiselection':
+                            var selection = jQuery.extend([], field.selection);
+                            if (field.sort === undefined || field.sort) {
+                                selection.sort(function(a, b) {
+                                    return a[1].localeCompare(b[1]);
+                                });
+                            }
                             entry = new Sao.ScreenContainer.Selection(
-                                    field.selection, prefix + field.name);
+                                    selection, prefix + field.name);
                             input = entry.el;
                             input.prop('size', field.selection.length);
                             break;
