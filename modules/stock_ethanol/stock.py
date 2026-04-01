@@ -61,7 +61,7 @@ class Move(metaclass=PoolMeta):
                 'invisible': ~Eval('contain_ethanol'),
                 },
             help="How much ethanol/alcohol is contained "
-            "in a given volume at 20°C."),
+            "in a given volume at 20 degrees Celsius."),
         'on_change_with_ethanol_by_volume')
     internal_ethanol_volume = fields.Float(
         "Internal Alcohol Volume", readonly=True,

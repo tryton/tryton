@@ -34,7 +34,7 @@ class Template(metaclass=PoolMeta):
             'invisible': ~Eval('contain_ethanol'),
             },
         help="How much ethanol/alcohol is contained "
-        "in a given volume at 20°C.")
+        "in a given volume at 20 degrees Celsius.")
     ethanol_volume = fields.Function(
         fields.Float(
             "Alcohol Volume", digits='ethanol_volume_unit',
@@ -93,7 +93,7 @@ class Product(metaclass=PoolMeta):
             'invisible': ~Eval('contain_ethanol'),
             },
         help="How much ethanol/alcohol is contained "
-        "in a given volume at 20°C.\n"
+        "in a given volume at 20 degrees Celsius.\n"
         "Leave empty to use the template value.")
     ethanol_by_volume_used = fields.Function(fields.Float(
             "Alcohol By Volume", digits=(1, 4),
@@ -101,7 +101,7 @@ class Product(metaclass=PoolMeta):
                 'invisible': ~Eval('contain_ethanol'),
                 },
             help="How much ethanol/alcohol is contained "
-            "in a given volume at 20°C."),
+            "in a given volume at 20 degrees Celsius."),
         'get_ethanol_by_volume_used',
         searcher='search_ethanol_by_volume_used')
 
