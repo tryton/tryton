@@ -3,8 +3,9 @@
 
 from trytond.model import (
     MatchMixin, ModelSQL, ModelView, fields, sequence_ordered)
-from trytond.modules.product import ProductDeactivatableMixin
-from trytond.pool import Pool, PoolMeta
+from trytond.modules.product import (
+    ProductDeactivatableMixin, copy_product_filtered, copy_template_filtered)
+from trytond.pool import PoolMeta
 from trytond.pyson import Bool, Eval, If
 from trytond.tools import is_full_text, lstrip_wildcard
 
@@ -85,7 +86,8 @@ class ProductCustomer(
             ]
 
 
-class Template(metaclass=PoolMeta):
+class Template(
+        copy_template_filtered('product_customers'), metaclass=PoolMeta):
     __name__ = 'product.template'
     product_customers = fields.One2Many(
         'sale.product_customer', 'template', "Customers",
@@ -98,33 +100,9 @@ class Template(metaclass=PoolMeta):
             if product_customer.match(pattern):
                 yield product_customer
 
-    @classmethod
-    def copy(cls, templates, default=None):
-        pool = Pool()
-        ProductCustomer = pool.get('sale.product_customer')
-        if default is None:
-            default = {}
-        else:
-            default = default.copy()
 
-        copy_customers = 'product_customers' not in default
-        default.setdefault('product_customers', None)
-        new_templates = super().copy(templates, default)
-        if copy_customers:
-            old2new = {}
-            to_copy = []
-            for template, new_template in zip(templates, new_templates):
-                to_copy.extend(
-                    pc for pc in template.product_customers if not pc.product)
-                old2new[template.id] = new_template.id
-            if to_copy:
-                ProductCustomer.copy(to_copy, {
-                        'template': lambda d: old2new[d['template']],
-                        })
-        return new_templates
-
-
-class Product(metaclass=PoolMeta):
+class Product(
+        copy_product_filtered('product_customers'), metaclass=PoolMeta):
     __name__ = 'product.product'
     product_customers = fields.One2Many(
         'sale.product_customer', 'product', "Customers",
@@ -141,32 +119,3 @@ class Product(metaclass=PoolMeta):
                 yield product_customer
         pattern['product'] = None
         yield from self.template.product_customer_used(**pattern)
-
-    @classmethod
-    def copy(cls, products, default=None):
-        pool = Pool()
-        ProductCustomer = pool.get('sale.product_customer')
-        if default is None:
-            default = {}
-        else:
-            default = default.copy()
-
-        copy_customers = 'product_customers' not in default
-        if 'template' in default:
-            default.setdefault('product_customers', None)
-        new_products = super().copy(products, default)
-        if 'template' in default and copy_customers:
-            template2new = {}
-            product2new = {}
-            to_copy = []
-            for product, new_product in zip(products, new_products):
-                if product.product_customers:
-                    to_copy.extend(product.product_customers)
-                    template2new[product.template.id] = new_product.template.id
-                    product2new[product.id] = new_product.id
-            if to_copy:
-                ProductCustomer.copy(to_copy, {
-                        'product': lambda d: product2new[d['product']],
-                        'template': lambda d: template2new[d['template']],
-                        })
-        return new_products

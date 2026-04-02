@@ -12,7 +12,8 @@ from trytond.modules.account_product.exceptions import TaxError
 from trytond.modules.account_product.product import (
     account_used, template_property)
 from trytond.modules.currency.fields import Monetary
-from trytond.modules.product import price_digits, round_price
+from trytond.modules.product import (
+    copy_product_filtered, copy_template_filtered, price_digits, round_price)
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval, Id, If, TimeDelta
 from trytond.transaction import Transaction
@@ -97,7 +98,7 @@ class CategoryCustomerRentalTax(ModelSQL):
         cls.__access__.add('tax')
 
 
-class Template(metaclass=PoolMeta):
+class Template(copy_template_filtered('rental_prices'), metaclass=PoolMeta):
     __name__ = 'product.template'
 
     rentable = fields.Boolean(
@@ -160,30 +161,8 @@ class Template(metaclass=PoolMeta):
                     'invisible': ~Eval('rentable', False),
                     })]
 
-    @classmethod
-    def copy(cls, templates, default=None):
-        pool = Pool()
-        RentalPrice = pool.get('product.rental.price')
-        default = default.copy() if default is not None else {}
 
-        copy_rental_prices = 'rental_prices' not in default
-        default.setdefault('rental_prices', None)
-        new_templates = super().copy(templates, default=default)
-        if copy_rental_prices:
-            old2new = {}
-            to_copy = []
-            for template, new_template in zip(templates, new_templates):
-                to_copy.extend(
-                    rp for rp in template.rental_prices if not rp.product)
-                old2new[template.id] = new_template.id
-            if to_copy:
-                RentalPrice.copy(to_copy, {
-                        'template': lambda d: old2new[d['template']],
-                        })
-        return new_templates
-
-
-class Product(metaclass=PoolMeta):
+class Product(copy_product_filtered('rental_prices'), metaclass=PoolMeta):
     __name__ = 'product.product'
 
     rental_prices = fields.One2Many(
@@ -260,32 +239,6 @@ class Product(metaclass=PoolMeta):
         for price in chain(self.rental_prices, self.template.rental_prices):
             if price.match(quantity, duration, pattern):
                 return price.get_unit_price(self.rental_unit)
-
-    @classmethod
-    def copy(cls, products, default=None):
-        pool = Pool()
-        RentalPrice = pool.get('product.rental.price')
-        default = default.copy() if default is not None else {}
-
-        copy_rental_prices = 'rental_prices' not in default
-        if 'template' in default:
-            default.setdefault('rental_prices', None)
-        new_products = super().copy(products, default=default)
-        if 'template' in default and copy_rental_prices:
-            template2new = {}
-            product2new = {}
-            to_copy = []
-            for product, new_product in zip(products, new_products):
-                if product.rental_prices:
-                    to_copy.extend(product.rental_prices)
-                    template2new[product.template.id] = new_product.template.id
-                    product2new[product.id] = new_product.id
-            if to_copy:
-                RentalPrice.copy(to_copy, {
-                        'product': lambda d: product2new[d['product']],
-                        'template': lambda d: template2new[d['template']],
-                        })
-        return new_products
 
 
 class RentalPrice(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
