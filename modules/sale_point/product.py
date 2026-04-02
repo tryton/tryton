@@ -2,7 +2,8 @@
 # this repository contains the full copyright notices and license terms.
 from trytond.model import ModelSQL, fields
 from trytond.modules.company.model import CompanyValueMixin
-from trytond.modules.product import price_digits, round_price
+from trytond.modules.product import (
+    copy_product_filtered, copy_template_filtered, price_digits, round_price)
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
 
@@ -26,7 +27,9 @@ class _GrossPriceMixin:
                 today))
 
 
-class Template(_GrossPriceMixin, metaclass=PoolMeta):
+class Template(
+        copy_template_filtered('gross_prices'),
+        _GrossPriceMixin, metaclass=PoolMeta):
     __name__ = 'product.template'
 
     gross_price = fields.MultiValue(fields.Numeric(
@@ -46,7 +49,9 @@ class Template(_GrossPriceMixin, metaclass=PoolMeta):
         return super().multivalue_model(field)
 
 
-class Product(_GrossPriceMixin, metaclass=PoolMeta):
+class Product(
+        copy_product_filtered('gross_prices'),
+        _GrossPriceMixin, metaclass=PoolMeta):
     __name__ = 'product.product'
 
     gross_price = fields.MultiValue(fields.Numeric(

@@ -3,7 +3,8 @@
 
 __all__ = [
     'price_digits', 'round_price', 'uom_conversion_digits',
-    'ProductDeactivatableMixin', 'TemplateDeactivatableMixin']
+    'ProductDeactivatableMixin', 'TemplateDeactivatableMixin',
+    'copy_template_filtered', 'copy_product_filtered']
 
 
 def __getattr__(name):
@@ -12,7 +13,8 @@ def __getattr__(name):
         return uom_conversion_digits
     elif name in {
             'price_digits', 'round_price',
-            'ProductDeactivatableMixin', 'TemplateDeactivatableMixin'}:
+            'ProductDeactivatableMixin', 'TemplateDeactivatableMixin',
+            'copy_template_filtered', 'copy_product_filtered'}:
         from . import product
         return getattr(product, name)
     raise AttributeError(f"module {__name__!r} has no attribute {name!r}")
