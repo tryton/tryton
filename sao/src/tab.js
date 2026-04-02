@@ -875,6 +875,8 @@
                                 }.bind(this));
                                 return set_cursor;
                             }.bind(this));
+                    } else {
+                        this.refresh_resources(true);
                     }
                     return set_cursor;
                 }.bind(this))
