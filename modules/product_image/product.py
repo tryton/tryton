@@ -9,6 +9,15 @@ import PIL.Image
 from trytond.config import config
 from trytond.model import (
     MatchMixin, ModelSQL, ModelView, Unique, fields, sequence_ordered)
+try:
+    from trytond.modules.product import (
+        copy_product_filtered, copy_template_filtered)
+except ImportError:
+    class copy_product_filtered:
+        pass
+
+    class copy_template_filtered:
+        pass
 from trytond.pool import PoolMeta
 from trytond.pyson import Bool, Eval, If
 from trytond.tools import slugify
@@ -82,13 +91,17 @@ class ImageURLMixin:
                 yield image
 
 
-class Template(ImageURLMixin, metaclass=PoolMeta):
+class Template(
+        copy_template_filtered('images'),
+        ImageURLMixin, metaclass=PoolMeta):
     __name__ = 'product.template'
     __image_url__ = '/product/image'
     images = fields.One2Many('product.image', 'template', "Images")
 
 
-class Product(ImageURLMixin, metaclass=PoolMeta):
+class Product(
+        copy_product_filtered('images'),
+        ImageURLMixin, metaclass=PoolMeta):
     __name__ = 'product.product'
     __image_url__ = '/product/variant/image'
     images = fields.One2Many(

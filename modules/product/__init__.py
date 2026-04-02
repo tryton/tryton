@@ -6,11 +6,12 @@ from trytond.pool import Pool
 from . import category, configuration, ir, product, uom
 from .product import (
     ProductDeactivatableMixin, TemplateDeactivatableMixin, price_digits,
-    round_price)
+    round_price, copy_template_filtered, copy_product_filtered)
 from .uom import uom_conversion_digits
 
 __all__ = [price_digits, round_price, uom_conversion_digits,
-    ProductDeactivatableMixin, TemplateDeactivatableMixin]
+    ProductDeactivatableMixin, TemplateDeactivatableMixin,
+    copy_template_filtered, copy_product_filtered]
 
 
 def register():
