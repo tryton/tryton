@@ -2,11 +2,13 @@
 # this repository contains the full copyright notices and license terms.
 
 from trytond.model import ModelSQL, ModelView, fields, sequence_ordered, tree
+from trytond.modules.product import (
+    copy_product_filtered, copy_template_filtered)
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Bool, Eval, If
 
 
-class Template(metaclass=PoolMeta):
+class Template(copy_template_filtered('tasks'), metaclass=PoolMeta):
     __name__ = 'product.template'
 
     taskable = fields.Boolean(
@@ -29,7 +31,7 @@ class Template(metaclass=PoolMeta):
             ])
 
 
-class Product(metaclass=PoolMeta):
+class Product(copy_product_filtered('tasks'), metaclass=PoolMeta):
     __name__ = 'product.product'
 
     tasks = fields.One2Many(
