@@ -4,10 +4,12 @@
 from trytond.pool import Pool
 
 from . import category, configuration, ir, product, uom
-from .product import price_digits, round_price
+from .product import (
+    copy_product_filtered, copy_template_filtered, price_digits, round_price)
 from .uom import uom_conversion_digits
 
-__all__ = [price_digits, round_price, uom_conversion_digits]
+__all__ = [price_digits, round_price, uom_conversion_digits,
+    copy_template_filtered, copy_product_filtered]
 
 
 def register():

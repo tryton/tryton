@@ -30,7 +30,9 @@ except ImportError:
 from .exceptions import InvalidIdentifierCode
 from .ir import price_decimal
 
-__all__ = ['price_digits', 'round_price', 'TemplateFunction']
+__all__ = [
+    'price_digits', 'round_price', 'TemplateFunction',
+    'copy_template_filtered', 'copy_product_filtered']
 logger = logging.getLogger(__name__)
 
 TYPES = [
@@ -52,6 +54,72 @@ def round_price(value, rounding=None):
         return Decimal(value)
     return value.quantize(
         Decimal(1) / 10 ** price_digits[1], rounding=rounding)
+
+
+def copy_template_filtered(
+        field_name, template_name='template', product_name='product'):
+    class TemplateCopyFiltered:
+        __slots__ = ()
+
+        @classmethod
+        def copy(cls, templates, default=None):
+            Target = getattr(cls, field_name).get_target()
+            assert (getattr(Target, template_name).model_name
+                == 'product.template')
+            assert (getattr(Target, product_name).model_name
+                == 'product.product')
+            default = default.copy() if default is not None else {}
+            copy_field = field_name not in default
+            default.setdefault(field_name)
+            new_templates = super().copy(templates, default=default)
+            if copy_field:
+                old2new, to_copy = {}, []
+                for template, new_template in zip(templates, new_templates):
+                    to_copy.extend(
+                        l for l in getattr(template, field_name)
+                        if not getattr(l, product_name))
+                    old2new[template.id] = new_template.id
+                if to_copy:
+                    Target.copy(to_copy, {
+                            template_name: lambda d: old2new[d[template_name]],
+                            })
+            return new_templates
+    return TemplateCopyFiltered
+
+
+def copy_product_filtered(
+        field_name, template_name='template', product_name='product'):
+    class ProductCopyFiltered:
+        __slots__ = ()
+
+        @classmethod
+        def copy(cls, products, default=None):
+            Target = getattr(cls, field_name).get_target()
+            assert (getattr(Target, template_name).model_name
+                == 'product.template')
+            assert (getattr(Target, product_name).model_name
+                == 'product.product')
+            default = default.copy() if default is not None else {}
+            copy_field = field_name not in default
+            default.setdefault(field_name)
+            new_products = super().copy(products, default=default)
+            if copy_field:
+                template2new, product2new, to_copy = {}, {}, []
+                for product, new_product in zip(products, new_products):
+                    if targets := getattr(product, field_name):
+                        to_copy.extend(targets)
+                        template2new[product.template.id] = (
+                            new_product.template.id)
+                        product2new[product.id] = new_product.id
+                if to_copy:
+                    Target.copy(to_copy, {
+                            product_name: lambda d: product2new[
+                                d[product_name]],
+                            template_name: lambda d: template2new[
+                                d[template_name]],
+                            })
+            return new_products
+    return ProductCopyFiltered
 
 
 class Template(

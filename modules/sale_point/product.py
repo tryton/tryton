@@ -7,7 +7,8 @@ from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
 
 
-class Template(metaclass=PoolMeta):
+class Template(
+        metaclass=PoolMeta):
     __name__ = 'product.template'
 
     gross_price = fields.MultiValue(fields.Numeric(
