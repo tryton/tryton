@@ -270,7 +270,7 @@ class MoveLine(metaclass=PoolMeta):
                 ('account.type.receivable', '=', True),
                 ('account.type.payable', '=', True),
                 ],
-            ('party', '!=', None),
+            ('party.reception_direct_debits', '!=', None),
             ('reconciliation', '=', None),
             ('payment_amount', '!=', 0),
             ('move_state', '=', 'posted'),
