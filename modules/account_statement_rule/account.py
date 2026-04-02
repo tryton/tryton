@@ -9,6 +9,7 @@ from simpleeval import simple_eval
 from stdnum import iso11649
 
 from trytond.model import ModelSQL, ModelView, fields, sequence_ordered
+from trytond.modules.account.exceptions import AccountMissing
 from trytond.modules.currency.fields import Monetary
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval, If
@@ -350,10 +351,13 @@ class StatementRuleLine(sequence_ordered(), ModelSQL, ModelView):
                         date=origin.date,
                         company=origin.company.id):
                     party = Party(party.id)
-                    if amount > Decimal(0):
-                        account = party.account_receivable_used
-                    else:
-                        account = party.account_payable_used
+                    try:
+                        if amount > Decimal(0):
+                            account = party.account_receivable_used
+                        else:
+                            account = party.account_payable_used
+                    except AccountMissing:
+                        pass
 
         if not account:
             return
