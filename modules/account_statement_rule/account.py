@@ -317,6 +317,7 @@ class StatementRuleLine(sequence_ordered(), ModelSQL, ModelView):
     def get_line(self, origin, keywords, **context):
         pool = Pool()
         Line = pool.get('account.statement.line')
+        Party = pool.get('party.party')
         context.setdefault('functions', {})['Decimal'] = Decimal
         context.setdefault('names', {}).update(keywords)
 
@@ -343,7 +344,10 @@ class StatementRuleLine(sequence_ordered(), ModelSQL, ModelView):
             if related_to_account:
                 account = related_to_account
             elif party:
-                with Transaction().set_context(date=origin.date):
+                with Transaction().set_context(
+                        date=origin.date,
+                        company=origin.company.id):
+                    party = Party(party.id)
                     if amount > Decimal(0):
                         account = party.account_receivable_used
                     else:
