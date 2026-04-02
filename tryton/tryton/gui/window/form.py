@@ -508,6 +508,8 @@ class Form(TabContent):
                     self.screen.current_record = record
                     set_cursor = True
                     break
+        else:
+            self.refresh_resources(True)
         self.screen.display(set_cursor=set_cursor)
         self.info_bar_clear()
         self.set_buttons_sensitive()
