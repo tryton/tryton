@@ -69,6 +69,13 @@ class PartyReceptionDirectDebit(metaclass=PoolMeta):
         payment.sepa_mandate = self.sepa_mandate
         return payment
 
+    def match(self, pattern, match_none=False):
+        result = super().match(pattern, match_none=match_none)
+        if (self.process_method == 'sepa'
+                and self.sepa_mandate.state != 'validated'):
+            result = False
+        return result
+
 
 class PartyIdentifier(metaclass=PoolMeta):
     __name__ = 'party.identifier'
