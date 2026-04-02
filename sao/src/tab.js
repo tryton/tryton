@@ -951,6 +951,8 @@
                                 }
                                 return set_cursor;
                             });
+                    } else {
+                        this.refresh_resources(true);
                     }
                     return set_cursor;
                 })
