@@ -170,8 +170,9 @@ def _sqlite_copy(file_, restore=False):
         finally:
             database.put_connection(connection, True)
 
-    with Transaction().start(DB_NAME, 0) as transaction:
-        conn1 = transaction.connection
+    database = backend.Database(DB_NAME).connect()
+    conn1 = database.get_connection()
+    try:
         with sqlite.connect(file_) as conn2:
             if restore:
                 in_, out = conn2, conn1
@@ -186,6 +187,9 @@ def _sqlite_copy(file_, restore=False):
                     return False
                 sqlitebck.copy(in_, out)
         conn2.close()
+    finally:
+        database.put_connection(conn1)
+        database.close()
     return True
 
 
