@@ -1013,7 +1013,9 @@ class Main(Gtk.Application):
                 attributes['view_ids'] = loads(params.get('views', '[]'))
                 if 'limit' in params:
                     attributes['limit'] = loads(params.get('limit', 'null'))
-                attributes['name'] = loads(params.get('name', '""'))
+                attributes['name'] = (loads(n)
+                    if (n := params.get('name'))
+                    else common.MODELNAME.get(model))
                 attributes['search_value'] = loads(
                     params.get('search_value', '[]'))
                 attributes['domain'] = loads(params.get('domain', '[]'))
