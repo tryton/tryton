@@ -56,6 +56,7 @@ class PartyReceptionDirectDebit(metaclass=PoolMeta):
         'account.payment.sepa.mandate', "Mandate", ondelete='CASCADE',
         domain=[
             ('party', '=', Eval('party', -1)),
+            ('company', '=', Eval('company', -1)),
             ],
         states={
             'invisible': Eval('process_method') != 'sepa',
