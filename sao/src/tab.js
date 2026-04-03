@@ -992,12 +992,15 @@
                 || !this.screen.deletable) {
                 return jQuery.when();
             }
-            var msg;
+            let size;
             if (this.screen.current_view.view_type == 'form') {
-                msg = Sao.i18n.gettext('Are you sure to remove this record?');
+                size = 1;
             } else {
-                msg = Sao.i18n.gettext('Are you sure to remove those records?');
+                size = this.screen.selected_records.length;
             }
+            let msg = Sao.i18n.ngettext(
+                "Are you sure you want to delete this record?",
+                "Are you sure you want to delete these %1 records?", size, size);
             return Sao.common.sur.run(msg).then(() => {
                 return this.screen.remove(true, false, true).then(
                     () => {

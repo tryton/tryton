@@ -31,6 +31,7 @@ from tryton.gui.window.win_import import WinImport
 from .tabcontent import TabContent
 
 _ = gettext.gettext
+N_ = gettext.ngettext
 
 
 class Form(TabContent):
@@ -414,9 +415,15 @@ class Form(TabContent):
                 or not self.screen.deletable):
             return
         if self.screen.current_view.view_type == 'form':
-            msg = _('Are you sure to remove this record?')
+            size = 1
         else:
-            msg = _('Are you sure to remove those records?')
+            size = len(self.screen.selected_records)
+        msg = N_(
+            "Are you sure you want to delete this record?",
+            "Are you sure you want to delete these %(size)d records?",
+            size) % {
+                'size': size,
+                }
         if sur(msg):
             if not self.screen.remove(delete=True, force_remove=True):
                 self.info_bar_add(
