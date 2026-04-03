@@ -63,7 +63,7 @@
                 }, {
                     id: 'delete_',
                     icon: 'tryton-delete',
-                    label: Sao.i18n.gettext('Delete'),
+                    label: Sao.i18n.gettext("Delete..."),
                 }, null, {
                     id: 'logs',
                     icon: 'tryton-log',
@@ -77,13 +77,13 @@
                 }, null, {
                     id: 'attach',
                     icon: 'tryton-attach',
-                    label: Sao.i18n.gettext('Attachment'),
+                    label: Sao.i18n.gettext("Attachments..."),
                     tooltip: Sao.i18n.gettext('Add an attachment to the record'),
                     dropdown: true,
                 }, {
                     id: 'note',
                     icon: 'tryton-note',
-                    label: Sao.i18n.gettext('Note'),
+                    label: Sao.i18n.gettext("Notes..."),
                     tooltip: Sao.i18n.gettext('Add a note to the record'),
                 }, {
                     id: (this.screen &&
@@ -95,15 +95,15 @@
                 }, {
                     id: 'action',
                     icon: 'tryton-launch',
-                    label: Sao.i18n.gettext('Action'),
+                    label: Sao.i18n.gettext("Actions..."),
                 }, null, {
                     id: 'relate',
                     icon: 'tryton-link',
-                    label: Sao.i18n.gettext('Relate'),
+                    label: Sao.i18n.gettext("Relate..."),
                 }, {
                     id: 'print',
                     icon: 'tryton-print',
-                    label: Sao.i18n.gettext('Print'),
+                    label: Sao.i18n.gettext("Print..."),
                 }, {
                     id: 'email',
                     icon: 'tryton-email',
@@ -112,11 +112,11 @@
                 }, null, {
                     id: 'export',
                     icon: 'tryton-export',
-                    label: Sao.i18n.gettext('Export'),
+                    label: Sao.i18n.gettext("Export..."),
                 }, {
                     id: 'import',
                     icon: 'tryton-import',
-                    label: Sao.i18n.gettext('Import'),
+                    label: Sao.i18n.gettext("Import..."),
                 }, null, {
                     id: 'close',
                     icon: 'tryton-close',
