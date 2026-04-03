@@ -211,6 +211,7 @@ class AmendmentLine(ModelSQL, ModelView):
     payment_term = fields.Many2One(
         'account.invoice.payment_term', "Payment Term", ondelete='RESTRICT',
         states={
+            'readonly': Eval('state') != 'draft',
             'invisible': Eval('action') != 'payment_term',
             })
 
