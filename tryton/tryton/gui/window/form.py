@@ -308,7 +308,9 @@ class Form(TabContent):
 
         attachment_count = resources.get('attachment_count', 0)
         badge = 1 if attachment_count else None
-        label = _("Attachment (%s)") % attachment_count
+        label = N_(
+            "Attachment (%d)", "Attachments (%d)",
+            max(attachment_count, 1)) % attachment_count
         update('attach', label, 'tryton-attach', badge)
 
         note_count = resources.get('note_count', 0)
@@ -319,7 +321,8 @@ class Form(TabContent):
             badge = 1
         else:
             badge = None
-        label = _("Note (%d/%d)") % (note_unread, note_count)
+        label = N_("Note (%d/%d)", "Notes (%d/%d",
+            max(note_count, 1)) % (note_unread, note_count)
         update('note', label, 'tryton-note', badge)
 
     def sig_switch(self, widget=None):

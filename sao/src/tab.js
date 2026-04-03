@@ -1521,7 +1521,9 @@
             if (count > 99) {
                 badge = '99+';
             }
-            var title= Sao.i18n.gettext("Attachment (%1)", count);
+            var title= Sao.i18n.ngettext(
+                "Attachment (%1)", "Attachments (%1)",
+                Math.max(count, 1), count);
             update('attach', title, badge, 1);
 
             count = resources.note_count || 0;
@@ -1540,7 +1542,9 @@
                     badge = unread + '/' + badge;
                 }
             }
-            title = Sao.i18n.gettext("Note (%1/%2)", unread, count);
+            title = Sao.i18n.ngettext(
+                "Note (%1/%2)", "Notes (%1/%2)",
+                Math.max(count, 1), unread, count);
             update('note', title, badge, color);
         },
         record_message: function(position, size, max_size, record_id) {
