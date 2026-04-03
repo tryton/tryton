@@ -42,7 +42,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.model.access" id="access_notification">
             <field name="model">res.notification</field>
             <field name="perm_read" eval="True"/>
-            <field name="perm_write" eval="False"/>
+            <field name="perm_write" eval="True"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
@@ -80,6 +80,12 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.rule.group-res.group" id="rule_group_notification_admin_admin">
             <field name="rule_group" ref="rule_group_notification_admin"/>
             <field name="group" ref="group_admin"/>
+        </record>
+
+        <record model="ir.model.button" id="notification_mark_read_button">
+            <field name="model">res.notification</field>
+            <field name="name">mark_read</field>
+            <field name="string">Mark as Read</field>
         </record>
     </data>
 </tryton>

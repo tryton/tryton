@@ -6,4 +6,5 @@ this repository contains the full copyright notices and license terms. -->
     <field name="label" icon="icon" expand="1"/>
     <field name="description" expand="2"/>
     <field name="unread" optional="0"/>
+    <button name="mark_read" multiple="1"/>
 </tree>

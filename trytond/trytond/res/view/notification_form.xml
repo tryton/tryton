@@ -10,4 +10,6 @@ this repository contains the full copyright notices and license terms. -->
     <field name="description"/>
     <label name="unread"/>
     <field name="unread"/>
+
+    <button name="mark_read" colspan="2"/>
 </form>

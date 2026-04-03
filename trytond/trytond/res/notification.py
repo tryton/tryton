@@ -25,31 +25,37 @@ class Notification(
         ModelSQL, ModelView):
     __name__ = 'res.notification'
 
+    _states = {
+        'readonly': Eval('id', 0) >= 0,
+        }
+
     user = fields.Many2One(
         'res.user', "User", required=True, ondelete='CASCADE',
-        states={
-            'readonly': Eval('id', 0) > 0,
-            })
-    label = fields.Char("Label")
-    description = fields.Char("Description")
-    icon = fields.Selection('list_icons', 'Icon', translate=False)
+        states=_states)
+    label = fields.Char("Label", states=_states)
+    description = fields.Char("Description", states=_states)
+    icon = fields.Selection(
+        'list_icons', "Icon", translate=False, states=_states)
     unread = fields.Boolean("Unread")
     model = fields.Char(
         "Model",
         states={
+            'readonly': _states['readonly'],
             'required': Bool(Eval('records')),
             })
     records = fields.Char(
         "Records",
         states={
+            'readonly': _states['readonly'],
             'required': Bool(Eval('model')),
             })
     action = fields.Many2One(
         'ir.action', "Action", ondelete='CASCADE',
         states={
+            'readonly': _states['readonly'],
             'required': Bool(Eval('action_value')),
             })
-    action_value = fields.Char("Action Value")
+    action_value = fields.Char("Action Value", states=_states)
 
     @classmethod
     def __setup__(cls):
@@ -58,9 +64,8 @@ class Notification(
         cls.__rpc__.update({
                 'get': RPC(),
                 'get_count': RPC(),
-                'mark_read': RPC(
-                    readonly=False, instantiate=0, check_access=False),
                 })
+        cls._buttons.update(mark_read={})
 
         table = cls.__table__()
         cls._sql_indexes.update({
@@ -168,7 +173,6 @@ class Notification(
         return cursor.fetchone()[0]
 
     @classmethod
+    @ModelView.button
     def mark_read(cls, notifications):
-        current_user = Transaction().user
-        notifications = [n for n in notifications if n.user.id == current_user]
         cls.write(notifications, {'unread': False})
