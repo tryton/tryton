@@ -25,7 +25,8 @@ from trytond.transaction import Transaction
 from trytond.wizard import Button, StateAction, StateView, Wizard
 
 from .exceptions import (
-    StatementPostError, StatementValidateError, StatementValidateWarning)
+    ImportStatementError, StatementPostError, StatementValidateError,
+    StatementValidateWarning)
 
 if config.getboolean('account_statement', 'filestore', default=False):
     file_id = 'origin_file_id'
@@ -1281,7 +1282,15 @@ class ImportStatement(Wizard):
     def do_import_(self, action):
         pool = Pool()
         Statement = pool.get('account.statement')
-        statements = list(getattr(self, 'parse_%s' % self.start.file_format)())
+        try:
+            statements = list(
+                getattr(self, 'parse_%s' % self.start.file_format)())
+        except ImportStatementError:
+            raise
+        except Exception as exception:
+            raise ImportStatementError(gettext(
+                    'account_statement.msg_statement_import_error',
+                    exception=exception)) from exception
         for statement in statements:
             statement.origin_file = fields.Binary.cast(self.start.file_)
         Statement.save(statements)
