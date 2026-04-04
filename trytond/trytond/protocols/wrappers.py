@@ -18,7 +18,7 @@ from werkzeug.datastructures import Authorization
 from werkzeug.exceptions import abort
 from werkzeug.utils import redirect, send_file
 from werkzeug.wrappers import Request as _Request
-from werkzeug.wrappers import Response
+from werkzeug.wrappers import Response as _Response
 
 from trytond import backend, config, security
 from trytond.exceptions import RateLimitException, UserError, UserWarning
@@ -204,6 +204,44 @@ class Request(_Request):
             }
 
 
+class Response(_Response):
+
+    def get_json(self, force=False, silent=False):
+        from .jsonrpc import JSONDecoder, json
+
+        if not (force or self.is_json):
+            return None
+
+        data = self.get_data()
+
+        try:
+            return json.loads(data, object_hook=JSONDecoder())
+        except ValueError:
+            if not silent:
+                raise
+
+            return None
+
+
+class JSONBadRequest(exceptions.BadRequest):
+    def __init__(self, e):
+        super().__init__()
+        self.message = e.message
+        self.description = e.description
+
+    def get_body(self, environment, scope):
+        from .jsonrpc import JSONEncoder, json
+
+        return json.dumps({
+                'status': self.code,
+                'message': self.message,
+                'description': self.description,
+                }, cls=JSONEncoder)
+
+    def get_headers(self, environment, scope):
+        return [('Content-Type', 'application/json')]
+
+
 Session = collections.namedtuple('Session', 'type username userid token')
 
 
@@ -371,7 +409,10 @@ def user_application(name, json=True):
             # TODO language
             with transaction.set_user(application.user.id), \
                     check_access():
-                response = func(request, *args, **kwargs)
+                try:
+                    response = func(request, *args, **kwargs)
+                except (UserError, UserWarning) as e:
+                    response = JSONBadRequest(e)
             if not isinstance(response, Response) and json:
                 response = Response(json_.dumps(response, cls=JSONEncoder),
                     content_type='application/json')

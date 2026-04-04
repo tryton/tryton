@@ -9,12 +9,11 @@ from types import MappingProxyType
 from werkzeug.exceptions import (
     BadRequest, Conflict, Forbidden, HTTPException, InternalServerError,
     Locked, TooManyRequests)
-from werkzeug.wrappers import Response
 
 from trytond.exceptions import (
     ConcurrencyException, LoginException, MissingDependenciesException,
     RateLimitException, TrytonException, UserWarning)
-from trytond.protocols.wrappers import GzipStream, Request
+from trytond.protocols.wrappers import GzipStream, Request, Response
 from trytond.tools import cached_property
 
 

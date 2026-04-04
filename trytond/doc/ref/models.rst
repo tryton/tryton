@@ -352,6 +352,13 @@ Static methods:
 
 Class methods:
 
+.. method:: ModelStorage.__json__([usages])
+
+   Returns a :py:class:`list <list>` of the fields to construct the JSON for
+   the REST API.
+   ``usages`` is a :py:class:`set <set>` containing the usage strings.
+
+
 .. classmethod:: ModelStorage.log(records, event[, target[, user[, \**extra]]])
 
    Log event for records.

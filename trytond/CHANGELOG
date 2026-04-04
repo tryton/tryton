@@ -1,3 +1,4 @@
+* Add REST API
 * Add rpc suffix to URL for RPC call
 * Support mounting application under a prefix
 * Send emails on chat messages

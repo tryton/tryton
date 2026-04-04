@@ -1844,6 +1844,10 @@ class ModelStorage(Model):
 
         super().__init__(id, **kwargs)
 
+    @classmethod
+    def __json__(cls, usages=None):
+        return ['__name__', 'id', 'rec_name']
+
     @property
     def _cache(self):
         return self._transaction_cache[self.__name__]

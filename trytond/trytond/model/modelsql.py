@@ -1165,7 +1165,7 @@ class ModelSQL(ModelStorage):
         if 'write_date' not in fields_names:
             extra_fields.add('write_date')
         for field_name in fields_names:
-            if field_name in {'_timestamp', '_write', '_delete'}:
+            if field_name in {'_timestamp', '_write', '_delete', '__name__'}:
                 continue
             if '.' in field_name:
                 field_name, field_related = field_name.split('.', 1)
@@ -1237,6 +1237,8 @@ class ModelSQL(ModelStorage):
                 columns[f] = Extract(
                     'EPOCH', Coalesce(table.write_date, table.create_date)
                     ).cast(sql_type).as_('_timestamp')
+            elif f == '__name__':
+                columns[f] = Literal(cls.__name__).as_('__name__')
 
         if ('write_date' not in fields_names
                 and columns.keys() == {'write_date'}):
