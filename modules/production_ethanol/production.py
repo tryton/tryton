@@ -10,7 +10,6 @@ from sql.conditionals import Coalesce
 
 from trytond.model import fields
 from trytond.pool import Pool, PoolMeta
-from trytond.tools import grouped_slice
 from trytond.transaction import Transaction
 
 
@@ -51,13 +50,13 @@ class Production(metaclass=PoolMeta):
             group_by=[production])
 
         ethanol_volumes = defaultdict(int)
-        for sub_productions in grouped_slice(productions):
-            sub_production_ids = [p.id for p in sub_productions]
-            query.where = (
-                move.production_input.in_(sub_production_ids)
-                | move.production_output.in_(sub_production_ids))
-            cursor.execute(*query)
-            ethanol_volumes.update(cursor)
+        production_ids = [p.id for p in productions]
+        query.where = (
+            fields.SQL_OPERATORS['in'](move.production_input, production_ids)
+            | fields.SQL_OPERATORS['in'](
+                move.production_output, production_ids))
+        cursor.execute(*query)
+        ethanol_volumes.update(cursor)
 
         for company, production in groupby(
                 productions, key=lambda p: p.company):
