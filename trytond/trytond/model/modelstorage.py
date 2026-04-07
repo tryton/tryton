@@ -518,11 +518,17 @@ class ModelStorage(Model):
     @classmethod
     @without_check_access
     def _after_delete(cls, ids, on_delete):
+        from trytond.ir.resource import ResourceMixin
         pool = Pool()
         Translation = pool.get('ir.translation')
         if any(getattr(f, 'translate', False) and not hasattr(f, 'set')
                 for f in cls._fields.values()):
             Translation.delete_ids(cls.__name__, 'model', ids)
+        resource_models = (
+            m for _, m in pool.iterobject() if issubclass(m, ResourceMixin))
+        resources = [f'{cls.__name__},{id}' for id in ids]
+        for model in resource_models:
+            model.delete(model.search([('resource', 'in', resources)]))
         for meth in on_delete:
             meth()
 
