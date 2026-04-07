@@ -1,18 +1,21 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 
-import datetime as dt
 from collections import defaultdict
 from decimal import Decimal
 
 from sql.aggregate import Sum
+from sql.conditionals import Coalesce
+from sql.functions import Extract
 from sql.operators import Concat
 
+from trytond import backend
 from trytond.model import fields
 from trytond.modules.currency.fields import Monetary
 from trytond.modules.product import price_digits, round_price
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Bool, Eval, If
+from trytond.tools import sqlite_apply_types
 from trytond.transaction import Transaction
 
 
@@ -98,21 +101,19 @@ class Work(metaclass=PoolMeta):
         work = Work.__table__()
         line = Line.__table__()
 
+        cost = line.cost_price * Extract('EPOCH', line.duration) / (60 * 60)
         where = fields.SQL_OPERATORS['in'](table.id, map(int, works))
-        cursor.execute(*table.join(work,
+        query = (table.join(work,
                 condition=(
                     Concat(cls.__name__ + ',', table.id) == work.origin)
                 ).join(line, condition=line.work == work.id
-                ).select(table.id, Sum(line.cost_price * line.duration),
+                ).select(table.id, Sum(Coalesce(cost, 0)).as_('cost'),
                 where=where,
                 group_by=[table.id]))
-        for work_id, cost in cursor:
-            # SQLite stores timedelta as float
-            if isinstance(cost, dt.timedelta):
-                cost = cost.total_seconds()
-            # Convert from seconds
-            cost /= 60 * 60
-            yield work_id, Decimal(str(cost))
+        if backend.name == 'sqlite':
+            sqlite_apply_types(query, [None, 'NUMERIC'])
+        cursor.execute(*query)
+        yield from cursor
 
     @classmethod
     def _purchase_cost(cls, works):
