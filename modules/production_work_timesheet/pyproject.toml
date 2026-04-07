@@ -56,4 +56,4 @@ copyright = 'COPYRIGHT'
 readme = 'README.rst'
 
 [tool.hatch.metadata.hooks.tryton.tryton-optional-dependencies]
-test = []
+test = ['proteus']

@@ -2,10 +2,29 @@
 # this repository contains the full copyright notices and license terms.
 from collections import defaultdict
 
+from sql import Literal
+from sql.aggregate import Sum
+from sql.conditionals import Coalesce
+from sql.functions import Extract
+
+from trytond import backend
 from trytond.model import fields
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
+from trytond.tools import sqlite_apply_types
 from trytond.transaction import Transaction
+
+
+class WorkCenter(metaclass=PoolMeta):
+    __name__ = 'production.work.center'
+
+    include_timesheet_cost = fields.Boolean(
+        "Include Timesheet Cost",
+        help="Check to add the timesheet cost to the work cost.")
+
+    @classmethod
+    def default_include_timesheet_cost(cls):
+        return False
 
 
 class Work(metaclass=PoolMeta):
@@ -110,3 +129,39 @@ class Work(metaclass=PoolMeta):
             Timesheet.write(timesheets, {
                     'timesheet_end_date': date,
                     })
+
+    @classmethod
+    def _get_cost(cls, works):
+        pool = Pool()
+        Line = pool.get('timesheet.line')
+        TimesheetWork = pool.get('timesheet.work')
+        Work = pool.get('production.work')
+        WorkCenter = pool.get('production.work.center')
+        line = Line.__table__()
+        t_work = TimesheetWork.__table__()
+        work = Work.__table__()
+        center = WorkCenter.__table__()
+
+        cursor = Transaction().connection.cursor()
+
+        costs = super()._get_cost(works)
+
+        cost = line.cost_price * Extract('EPOCH', line.duration) / (60 * 60)
+        work_origin = TimesheetWork.origin.sql_id(t_work.origin, TimesheetWork)
+        query = line.join(
+            t_work, condition=(t_work.id == line.work)).join(
+            work, condition=(work.id == work_origin)).join(
+            center, condition=(
+                (center.id == work.work_center)
+                & (center.include_timesheet_cost == Literal(True)))
+            ).select(work.id, Sum(Coalesce(cost, 0)).as_('cost'),
+            where=(
+                fields.SQL_OPERATORS['in'](work_origin, map(int, works))
+                & (t_work.origin.like(cls.__name__ + ',%'))),
+            group_by=work.id)
+        if backend.name == 'sqlite':
+            sqlite_apply_types(query, [None, 'NUMERIC'])
+        cursor.execute(*query)
+        for work_id, cost in cursor:
+            costs[work_id] += cost
+        return costs

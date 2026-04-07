@@ -242,12 +242,11 @@ class Work(sequence_ordered(), ModelSQL, ModelView, ChatMixin):
             ]
 
     @classmethod
-    def get_cost(cls, works, name):
+    def _get_cost(cls, works):
         pool = Pool()
         Cycle = pool.get('production.work.cycle')
         cycle = Cycle.__table__()
         cursor = Transaction().connection.cursor()
-        costs = defaultdict(Decimal)
 
         query = cycle.select(
             cycle.work, Sum(Coalesce(cycle.cost, 0)).as_('cost'),
@@ -257,7 +256,12 @@ class Work(sequence_ordered(), ModelSQL, ModelView, ChatMixin):
         if backend.name == 'sqlite':
             sqlite_apply_types(query, [None, 'NUMERIC'])
         cursor.execute(*query)
-        for work_id, cost in cursor:
+        return defaultdict(Decimal, cursor)
+
+    @classmethod
+    def get_cost(cls, works, name):
+        costs = defaultdict(Decimal)
+        for work_id, cost in cls._get_cost(works).items():
             costs[work_id] = round_price(cost)
         return costs
 

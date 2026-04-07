@@ -12,6 +12,7 @@ from trytond.tests.test_tryton import ModuleTestCase, with_transaction
 class ProductionWorkTimesheetTestCase(CompanyTestMixin, ModuleTestCase):
     'Test Production Work Timesheet module'
     module = 'production_work_timesheet'
+    extras = ['timesheet_cost']
 
     def create_work(self, production_state='draft'):
         pool = Pool()

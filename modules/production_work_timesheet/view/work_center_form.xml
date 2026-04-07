@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<data>
+    <xpath expr="/form/field[@name='cost_method']" position="after">
+        <label name="include_timesheet_cost"/>
+        <field name="include_timesheet_cost"/>
+    </xpath>
+</data>

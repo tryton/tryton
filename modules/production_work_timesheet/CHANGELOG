@@ -1,3 +1,4 @@
+* Add an option to include the timesheet costs in the production costs
 * Add support for Python 3.14
 * Remove support for Python 3.9
 

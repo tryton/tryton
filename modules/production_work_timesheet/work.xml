@@ -9,4 +9,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">work_form</field>
         </record>
     </data>
+    <data depends="timesheet_cost">
+        <record model="ir.ui.view" id="work_center_view_form">
+            <field name="model">production.work.center</field>
+            <field name="inherit" ref="production_work.work_center_view_form"/>
+            <field name="name">work_center_form</field>
+        </record>
+    </data>
 </tryton>
