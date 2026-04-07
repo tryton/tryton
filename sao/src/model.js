@@ -2514,10 +2514,7 @@
                         if (record2) {
                             let to_update = Object.fromEntries(
                                 Object.entries(vals).filter(
-                                    ([k, v]) => {
-                                        !Object.prototype.hasOwnProperty.call(
-                                            vals_to_set, k)
-                                    }
+                                    ([k, v]) => !Object.hasOwn(vals_to_set, k)
                                 ));
                             record2.set_on_change(to_update);
                         }
