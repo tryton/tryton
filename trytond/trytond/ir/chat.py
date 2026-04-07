@@ -127,8 +127,6 @@ class Channel(ModelSQL, ModelView):
         pool = Pool()
         Follower = pool.get('ir.chat.follower')
         User = pool.get('res.user')
-        Message = pool.get('ir.message')
-        ModelData = pool.get('ir.model.data')
 
         if username is not None:
             user, = User.search([
@@ -141,16 +139,14 @@ class Channel(ModelSQL, ModelView):
 
         with Transaction().set_context(
                 language=channel.language, user=0, _notify=False):
-            msg = Message(ModelData.get_id('ir', 'msg_chat_follower_joined'))
-            cls.post(resource, msg.text % {'name': user.login})
+            msg = gettext('ir.msg_chat_follower_joined', name=user.login)
+            cls.post(resource, msg)
 
     @classmethod
     def unsubscribe(cls, resource, username=None):
         pool = Pool()
         Follower = pool.get('ir.chat.follower')
         User = pool.get('res.user')
-        Message = pool.get('ir.message')
-        ModelData = pool.get('ir.model.data')
 
         if username:
             cls.check_access(resource)
@@ -166,8 +162,8 @@ class Channel(ModelSQL, ModelView):
 
         with Transaction().set_context(
                 language=channel.language, user=0, _notify=False):
-            msg = Message(ModelData.get_id('ir', 'msg_chat_follower_left'))
-            cls.post(resource, msg.text % {'name': user.login})
+            msg = gettext('ir.msg_chat_follower_left', name=user.login)
+            cls.post(resource, msg)
 
     @classmethod
     def subscribe_email(cls, resource, email):
@@ -175,16 +171,15 @@ class Channel(ModelSQL, ModelView):
 
         pool = Pool()
         Follower = pool.get('ir.chat.follower')
-        Message = pool.get('ir.message')
-        ModelData = pool.get('ir.model.data')
 
         channel = cls._get_channel(resource)
-        Follower.add_email(channel, email)
+        email = Follower.add_email(channel, email)
 
-        with Transaction().set_context(
-                language=channel.language, user=0, _notify=False):
-            msg = Message(ModelData.get_id('ir', 'msg_chat_follower_joined'))
-            cls.post(resource, msg.text % {'name': email})
+        if email:
+            with Transaction().set_context(
+                    language=channel.language, user=0, _notify=False):
+                msg = gettext('ir.msg_chat_follower_joined', name=email)
+                cls.post(resource, msg)
 
     @classmethod
     def unsubscribe_email(cls, resource, email):
@@ -192,16 +187,15 @@ class Channel(ModelSQL, ModelView):
 
         pool = Pool()
         Follower = pool.get('ir.chat.follower')
-        Message = pool.get('ir.message')
-        ModelData = pool.get('ir.model.data')
 
         channel = cls._get_channel(resource)
-        Follower.remove_email(channel, email)
+        email = Follower.remove_email(channel, email)
 
-        with Transaction().set_context(
-                language=channel.language, user=0, _notify=False):
-            msg = Message(ModelData.get_id('ir', 'msg_chat_follower_left'))
-            cls.post(resource, msg.text % {'name': email})
+        if email:
+            with Transaction().set_context(
+                    language=channel.language, user=0, _notify=False):
+                msg = gettext('ir.msg_chat_follower_left', name=email)
+                cls.post(resource, msg)
 
     @classmethod
     def _get_followers(cls, resource):
@@ -333,10 +327,6 @@ class Channel(ModelSQL, ModelView):
 
     @classmethod
     def dispatch_message(cls, message, is_sender):
-        pool = Pool()
-        Message = pool.get('ir.message')
-        ModelData = pool.get('ir.model.data')
-
         Bus.publish(
             f'chat:{str(message.channel.resource)}', {
                 'type': 'message',
@@ -357,8 +347,10 @@ class Channel(ModelSQL, ModelView):
 
         if to_email:
             with Transaction().set_context(language=message.channel.language):
-                subject_msg = Message(ModelData.get_id('ir', 'msg_subject'))
-                subject = subject_msg.text
+                subject = gettext(
+                    'ir.msg_chat_subject',
+                    author=message.author,
+                    channel=message.channel.rec_name)
 
             from_ = cls._email_from(message)
             domain = host()
@@ -373,10 +365,7 @@ class Channel(ModelSQL, ModelView):
                     f'channel-{message.channel.id}@{domain}'),
                 'utf-8')
             msg['Message-ID'] = message.reference = make_msgid(domain=domain)
-            msg['Subject'] = subject % {
-                'author': message.author,
-                'resource': message.channel.resource.rec_name,
-                }
+            msg['Subject'] = subject
             msg.set_content(cls._email_body(message))
             send_message_transactional(msg)
 
@@ -510,14 +499,18 @@ class Follower(AuthorMixin, ModelView, ModelSQL):
                     ('email', '=', email),
                     ]):
             cls(channel=channel, email=email).save()
+            return email
 
     @classmethod
     def remove_email(cls, channel, email):
         email = normalize_email(email)
-        cls.delete(cls.search([
-                    ('channel', '=', channel),
-                    ('email', '=', email),
-                    ]))
+        found = cls.search([
+                ('channel', '=', channel),
+                ('email', '=', email),
+                ])
+        if found:
+            cls.delete(found)
+            return email
 
     def notify(self, message):
         pool = Pool()

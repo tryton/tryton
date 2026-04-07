@@ -487,8 +487,8 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_chat_follower_left">
             <field name="text">"%(name)s" left</field>
         </record>
-        <record model="ir.message" id="msg_subject">
-            <field name="text">%(resource)s: %(author)s left a message</field>
+        <record model="ir.message" id="msg_chat_subject">
+            <field name="text">%(channel)s: %(author)s left a message</field>
         </record>
         <record model="ir.message" id="msg_chat_user_or_email">
             <field name="text">Only user or email can be filled.</field>

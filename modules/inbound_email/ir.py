@@ -8,7 +8,8 @@ import re
 from email.utils import getaddresses
 
 import trytond.config as config
-from trytond.pool import Pool, PoolMeta
+from trytond.i18n import gettext
+from trytond.pool import PoolMeta
 from trytond.transaction import Transaction
 
 REPLY_LINE = '\N{EM DASH}' * 80
@@ -70,10 +71,6 @@ class Channel(metaclass=PoolMeta):
 
     @classmethod
     def _email_body(cls, message):
-        pool = Pool()
-        Message = pool.get('ir.message')
-        ModelData = pool.get('ir.model.data')
-
         with Transaction().set_context(language=message.channel.language):
-            above_msg = Message(ModelData.get_id('ir', 'msg_reply_above'))
+            above_msg = gettext('ir.msg_reply_above')
             return f'{REPLY_LINE}\n{above_msg.text}\n\n{message.content}'
