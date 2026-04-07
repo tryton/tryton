@@ -366,7 +366,6 @@ class Channel(ModelSQL, ModelView):
             if (reply_to := cls._email_reply_to(message)):
                 msg['Reply-To'] = reply_to
             msg['Bcc'] = to_email
-            msg['Auto-Submitted'] = 'auto-generated'
             msg['Message-ID'] = message.reference = make_msgid(domain=host())
             msg['Subject'] = subject % {
                 'author': message.author,
