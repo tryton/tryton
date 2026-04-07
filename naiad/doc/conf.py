@@ -1,30 +1,22 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+
 import os
 
 base_url = os.environ.get('DOC_BASE_URL')
 if base_url:
     modules_url = base_url + '/modules-{module}/'
     trytond_url = base_url + '/server/'
-    trytond_gis_url = base_url + '/backend-gis/'
-    tryton_url = base_url + '/client-desktop/'
-    proteus_url = base_url + '/client-library/'
-    naiad_url = base_url + '/client-rest/'
 else:
-    modules_url = (
-        'https://docs.tryton.org/${series}/modules-{module}/')
-    trytond_url = 'https://docs.tryton.org/${series}/server/'
-    trytond_gis_url = 'https://docs.tryton.org/${series}/backend-gis/'
-    tryton_url = 'https://docs.tryton.org/${series}/client-desktop/'
-    proteus_url = 'https://docs.tryton.org/${series}/client-library/'
-    naiad_url = 'https://docs.tryton.org/${series}/client-rest/'
+    modules_url = 'https://docs.tryton.org/{series}/modules-{module}/'
+    trytond_url = 'https://docs.tryton.org/{series}/server/'
 
 
 def get_info():
     import json
     import subprocess
 
-    trytond_dir = os.path.join(os.path.dirname(__file__), '../trytond')
+    module_dir = os.path.dirname(os.path.dirname(__file__))
 
     info = dict()
 
@@ -32,8 +24,10 @@ def get_info():
     if os.environ.get('DOC_NO_ISOLATION'):
         metadata_cmd += ' --no-isolation'
     metadata = subprocess.check_output(
-        metadata_cmd, shell=True, encoding='utf-8', cwd=trytond_dir).strip()
+        metadata_cmd, shell=True, encoding='utf-8', cwd=module_dir).strip()
     metadata = json.loads(metadata)
+    info['name'] = metadata['name']
+    info['description'] = metadata['summary']
     major_version, minor_version, _ = metadata['version'].split('.', 2)
     major_version = int(major_version)
     minor_version = int(minor_version)
@@ -43,9 +37,6 @@ def get_info():
     else:
         info['series'] = '.'.join(version.split('.', 2)[:2])
         info['branch'] = 'branch/' + info['series']
-
-    info['modules'] = [
-         e.name for e in os.scandir('../modules') if e.is_dir()]
 
     return info
 
@@ -68,11 +59,11 @@ html_theme_options = {
     'use_edit_page_button': True,
     'use_repository_button': True,
     'use_download_button': False,
-    'path_to_docs': 'doc',
+    'path_to_docs': 'naiad/doc',
     }
-html_title = "Tryton Documentation"
+html_title = info['description']
 master_doc = 'index'
-project = "Tryton Documentation"
+project = info['name']
 release = version = info['series']
 default_role = 'ref'
 highlight_language = 'none'
@@ -82,18 +73,7 @@ extensions = [
     ]
 intersphinx_mapping = {
     'python': ('https://docs.python.org/', None),
-    'trytond': (trytond_url.format(series=version), None),
-    'trytond_gis': (trytond_gis_url.format(series=version), None),
-    'tryton': (tryton_url.format(series=version), None),
-    'proteus': (proteus_url.format(series=version), None),
-    'naiad': (naiad_url.format(series=version), None),
     }
-intersphinx_mapping.update({
-        m: (modules_url.format(
-                module=m.replace('_', '-'), series=version), None)
-        for m in info['modules']
-        })
 linkcheck_ignore = [r'/.*', r'https://demo.tryton.org/*']
-del (
-    get_info, info, base_url, modules_url, trytond_url, trytond_gis_url,
-    tryton_url, proteus_url, naiad_url)
+
+del get_info, info, base_url, modules_url, trytond_url

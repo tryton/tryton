@@ -22,6 +22,8 @@ pip install -r "${requirements}"
         package="client-desktop"
     elif [ "${package}" = "proteus" ]; then
         package="client-library"
+    elif [ "${package}" = "naiad" ]; then
+        package="client-rest"
     elif [ "${package}" = "trytond-gis" ]; then
         package="backend-gis"
     elif [ "${package}" = "." ]; then

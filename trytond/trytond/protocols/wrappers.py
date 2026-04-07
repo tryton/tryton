@@ -412,7 +412,7 @@ def user_application(name, json=True):
                 try:
                     response = func(request, *args, **kwargs)
                 except (UserError, UserWarning) as e:
-                    response = JSONBadRequest(e)
+                    raise JSONBadRequest(e)
             if not isinstance(response, Response) and json:
                 response = Response(json_.dumps(response, cls=JSONEncoder),
                     content_type='application/json')

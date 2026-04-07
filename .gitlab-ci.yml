@@ -373,6 +373,19 @@ test-proteus:
     PACKAGE: proteus
     TAG_PATTERN: '/^proteus-.*/'
 
+check-doc-naiad:
+  extends: .check-doc
+  variables:
+    PACKAGE: naiad
+
+test-naiad:
+  extends: .test-tox
+  after_script:
+    - .gitlab-scripts/rewrite-coverage-paths.py "" "${PACKAGE}/" ${PACKAGE}/junit.xml ${PACKAGE}/coverage.xml
+  variables:
+    PACKAGE: naiad
+    TAG_PATTERN: '/^naiad-.*/'
+
 check-doc-tryton:
   extends: .check-doc
   variables:

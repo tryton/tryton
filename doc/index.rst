@@ -17,6 +17,9 @@ Main
 :doc:`Scripting Client <proteus:index>`
    The library to access models, wizards and reports like a client.
 
+:doc:`REST Client <naiad:index>`
+   The library to access REST API.
+
 Backend
 -------
 
