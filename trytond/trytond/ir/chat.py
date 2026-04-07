@@ -4,7 +4,7 @@
 import json
 import uuid
 from email.message import EmailMessage
-from email.utils import getaddresses, make_msgid
+from email.utils import formataddr, getaddresses, make_msgid
 from operator import itemgetter
 
 from sql import Null
@@ -361,12 +361,18 @@ class Channel(ModelSQL, ModelView):
                 subject = subject_msg.text
 
             from_ = cls._email_from(message)
+            domain = host()
             msg = EmailMessage()
             set_from_header(msg, from_, from_)
             if (reply_to := cls._email_reply_to(message)):
                 msg['Reply-To'] = reply_to
+                msg['List-Post'] = f'<{reply_to}>'
             msg['Bcc'] = to_email
-            msg['Message-ID'] = message.reference = make_msgid(domain=host())
+            msg['List-Id'] = formataddr(
+                (message.channel.rec_name,
+                    f'channel-{message.channel.id}@{domain}'),
+                'utf-8')
+            msg['Message-ID'] = message.reference = make_msgid(domain=domain)
             msg['Subject'] = subject % {
                 'author': message.author,
                 'resource': message.channel.resource.rec_name,
