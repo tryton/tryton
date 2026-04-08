@@ -231,21 +231,21 @@ def convert_value(field, value, context=None):
     def convert_float():
         factor = float(field.get('factor', 1))
         try:
-            return locale.atof(value) / factor
+            return locale.atof(value.replace(' ', '')) / factor
         except (ValueError, AttributeError):
             return
 
     def convert_integer():
         factor = float(field.get('factor', 1))
         try:
-            return int(locale.atof(value) / factor)
+            return int(locale.atof(value.replace(' ', '')) / factor)
         except (ValueError, AttributeError):
             return
 
     def convert_numeric():
         factor = Decimal(field.get('factor', 1))
         try:
-            return Decimal(locale.delocalize(value)) / factor
+            return Decimal(locale.delocalize(value.replace(' ', ''))) / factor
         except (decimal.InvalidOperation, AttributeError):
             return
 
