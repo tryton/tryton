@@ -352,6 +352,7 @@ class IncomingSupplierInvoice(metaclass=PoolMeta):
                             ('code_compact', '=', tax_identifier),
                             ],
                         ('type', 'in', Party.tax_identifier_types()),
+                        ('party.active', '=', True),
                         ])
                 if len(identifiers) == 1:
                     identifier, = identifiers
