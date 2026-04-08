@@ -472,6 +472,19 @@ class Payment(metaclass=PoolMeta):
             ('sepa_info_id', operator, code_value, *extra),
             ]
 
+    @classmethod
+    @ModelView.button
+    @Workflow.transition('draft')
+    def draft(cls, payments):
+        to_remove_mandate = []
+        for payment in payments:
+            if (payment.sepa_mandate
+                    and payment.sepa_mandate.state != 'validated'):
+                to_remove_mandate.append(payment)
+        if to_remove_mandate:
+            cls.write(to_remove_mandate, {'sepa_mandate': None})
+        super().draft(payments)
+
 
 class Mandate(Workflow, ModelSQL, ModelView):
     'SEPA Mandate'
