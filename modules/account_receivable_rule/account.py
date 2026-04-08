@@ -1,6 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import datetime as dt
+from collections import defaultdict
 
 from sql import Literal, Null
 from sql.aggregate import Sum
@@ -124,7 +125,7 @@ class AccountRuleAbstract(DeactivableMixin, ModelSQL, ModelView):
 
     @dualmethod
     @ModelView.button
-    def apply(cls, rules=None):
+    def apply(cls, rules=None, parties=None, rules_parties=None):
         pool = Pool()
         User = pool.get('res.user')
         Move = pool.get('account.move')
@@ -134,11 +135,12 @@ class AccountRuleAbstract(DeactivableMixin, ModelSQL, ModelView):
                     ('company', '=', company.id),
                     ])
         moves = []
-        for rule in rules:
-            moves.extend(rule._apply())
+        for rules, parties in [(rules, parties), *(rules_parties or [])]:
+            for rule in rules:
+                moves.extend(rule._apply(parties=parties))
         Move.post(moves)
 
-    def _apply(self):
+    def _apply(self, parties=None):
         pool = Pool()
         Move = pool.get('account.move')
         Line = pool.get('account.move.line')
@@ -147,7 +149,7 @@ class AccountRuleAbstract(DeactivableMixin, ModelSQL, ModelView):
         lines = []
         to_reconcile = []
         to_reconcile_delegate = []
-        for party, amount in self._amounts():
+        for party, amount in self._amounts(parties=parties):
             for line in self._lines_to_reconcile(party):
                 line_amount = -self._amount(line)
                 account_rule = self.get_account_rule(line.account)
@@ -281,7 +283,7 @@ class AccountRuleAbstract(DeactivableMixin, ModelSQL, ModelView):
             ]
         return move, lines
 
-    def _amounts(self):
+    def _amounts(self, parties=None):
         "Yield party id and amount to dispatch"
         pool = Pool()
         Line = pool.get('account.move.line')
@@ -291,15 +293,19 @@ class AccountRuleAbstract(DeactivableMixin, ModelSQL, ModelView):
         cursor = Transaction().connection.cursor()
 
         amount = Sum(self._amount(line))
+        where = (
+            (line.account == self.account.id)
+            & (line.reconciliation == Null)
+            & (move.state == 'posted'))
+        if parties is not None:
+            where &= fields.SQL_OPERATORS['in'](
+                line.party, [p.id for p in parties])
         query = (line
             .join(move, condition=line.move == move.id)
             .select(
                 line.party,
                 amount.as_('amount'),
-                where=(
-                    (line.account == self.account.id)
-                    & (line.reconciliation == Null)
-                    & (move.state == 'posted')),
+                where=where,
                 group_by=line.party,
                 having=amount > 0))
         if backend.name == 'sqlite':
@@ -459,8 +465,11 @@ class Statement(metaclass=PoolMeta):
         pool = Pool()
         Rule = pool.get('account.account.receivable.rule')
         super().post(statements)
-        rules = set()
+        accounts = defaultdict(set)
         for statement in statements:
             for line in statement.lines:
-                rules.update(line.account.receivable_rules)
-        Rule.apply(Rule.browse(rules))
+                if line.account.receivable_rules:
+                    accounts[line.account].add(line.party)
+        rules_parties = [(a.receivable_rules, p) for a, p in accounts.items()]
+        if rules_parties:
+            Rule.apply(*rules_parties[0], rules_parties[1:])
