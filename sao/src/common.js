@@ -2086,6 +2086,7 @@
                 let [, thousandSeparator] = /^10(.)?000/.exec(format(10000));
                 let [, decimalSign] = /^0(.)1$/.exec(format(0.1));
                 return Number(string
+                    .replaceAll(' ', '')
                     .replaceAll(thousandSeparator, '')
                     .replace(decimalSign, '.'));
             }
