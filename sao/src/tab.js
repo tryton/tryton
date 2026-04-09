@@ -838,7 +838,7 @@
             } else {
                 prm = jQuery.when();
             }
-            prm.then(() => {
+            return prm.then(() => {
                 var access = Sao.common.MODELACCESS.get(this.screen.model_name);
                 if (this.screen.readonly || !(access.write || access.create)) {
                     return jQuery.Deferred().reject();
