@@ -141,7 +141,7 @@ class Channel(metaclass=PoolMeta):
         contacts = ContactMechanism.search([
                 'OR',
                 [
-                    ('rec_name', 'ilike', '{text}%'),
+                    ('rec_name', 'ilike', f'{text}%'),
                     ('type', '=', 'email'),
                     ],
                 ('name', 'ilike', f'%{text}%'),
