@@ -52,6 +52,7 @@ class Party(
         'get_code_readonly')
     code_alnum = fields.Char("Code Alphanumeric", readonly=True)
     code_digit = fields.Integer("Code Digit", readonly=True)
+    code_digit._sql_type = 'BIGINT'
     lang = fields.MultiValue(
         fields.Many2One('ir.lang', "Language",
             help="Used to translate communications with the party."))
@@ -305,7 +306,8 @@ class Party(
                 re.sub(r'[\W_]', '', self.code)
                 if self.code is not None else None)
             try:
-                values['code_digit'] = int(re.sub(r'\D', '', self.code or ''))
+                values['code_digit'] = int(
+                    re.sub(r'\D', '', self.code or '')[-18:])
             except ValueError:
                 values['code_digit'] = None
         return values
