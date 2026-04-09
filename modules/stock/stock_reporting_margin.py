@@ -467,7 +467,8 @@ class CategoryMixin:
         # by using number one order bigger.
         nb_category = category.select(
             Power(10, (Ceil(Log(Max(category.id))) + Literal(1))))
-        return Min(move.id * nb_category + template_category.id)
+        return cls.id.sql_cast(
+            Min(move.id * nb_category + template_category.id))
 
     @classmethod
     def _group_by(cls, tables, withs):
