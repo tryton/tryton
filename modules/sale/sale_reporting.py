@@ -417,7 +417,7 @@ class CustomerCategoryMixin:
         # by using a number one order bigger.
         nb_category = category.select(
             Power(10, (Ceil(Log(Max(category.id))) + Literal(1))))
-        return Min(line.id * nb_category + party_category.id)
+        return cls.id.sql_cast(Min(line.id * nb_category + party_category.id))
 
     @classmethod
     def _group_by(cls, tables, withs):
@@ -664,7 +664,8 @@ class ProductCategoryMixin(object):
         # by using number one order bigger.
         nb_category = category.select(
             Power(10, (Ceil(Log(Max(category.id))) + Literal(1))))
-        return Min(line.id * nb_category + template_category.id)
+        return cls.id.sql_cast(
+            Min(line.id * nb_category + template_category.id))
 
     @classmethod
     def _group_by(cls, tables, withs):
