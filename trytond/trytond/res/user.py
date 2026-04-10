@@ -11,6 +11,7 @@ import re
 import string
 import time
 import uuid
+from secrets import compare_digest
 
 try:
     import secrets
@@ -749,7 +750,7 @@ class User(avatar_mixin(100, 'login'), DeactivableMixin, ModelSQL, ModelView):
                                     })
                 return user_id
         if user_id and password_reset:
-            if password_reset == parameters['password']:
+            if compare_digest(password_reset, parameters['password']):
                 return user_id
 
     @classmethod

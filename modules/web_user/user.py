@@ -5,7 +5,7 @@ import logging
 import random
 import time
 import urllib.parse
-from secrets import token_hex
+from secrets import compare_digest, token_hex
 
 from sql import Literal, Null
 from sql.conditionals import Coalesce
@@ -329,7 +329,7 @@ class User(avatar_mixin(100), DeactivableMixin, ModelSQL, ModelView):
                 ])
         if users:
             user, = users
-            if user.reset_password_token == token:
+            if compare_digest(user.reset_password_token, token):
                 now = datetime.datetime.now()
                 expire = user.reset_password_token_expire
                 user.clear_reset_password_token()
