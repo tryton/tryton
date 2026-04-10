@@ -1114,6 +1114,11 @@ class TranslationSet(Wizard):
                     txt = node.nodeValue.strip()
                     if txt:
                         yield txt
+            if (node.nodeType == node.ELEMENT_NODE
+                    and node.tagName == 'text:a'
+                    and node.getAttribute('xlink:href').startswith(
+                        'relatorio://')):
+                return
 
             for child in [x for x in node.childNodes]:
                 for string in extract(child):
