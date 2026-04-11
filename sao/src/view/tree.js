@@ -212,9 +212,13 @@
                 });
                 th.uniqueId();
                 th.get(0).dataset.column = idx;
+                let header = jQuery('<div/>', {
+                    'class': 'header',
+                });
                 var label = jQuery('<label/>')
                     .text(column.attributes.string)
-                    .attr('title', column.attributes.string);
+                    .attr('title', column.attributes.string)
+                    .appendTo(header);
                 if (this.editable) {
                     if (column.attributes.required) {
                         label.addClass('required');
@@ -230,7 +234,7 @@
                     var arrow = jQuery('<img/>', {
                         'class': 'icon',
                     });
-                    label.append(arrow);
+                    header.append(arrow);
                     column.arrow = arrow;
                     th.click(column, (e) => {
                         if (is_resizing) {
@@ -241,7 +245,7 @@
                     });
                     th.addClass('sortable');
                 }
-                tr.append(th.append(label));
+                tr.append(th.append(header));
                 let resizer = jQuery('<div/>', {
                     'class': 'resizer',
                     'draggable': true,

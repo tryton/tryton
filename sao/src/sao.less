@@ -919,14 +919,17 @@ img.icon {
                 cursor: pointer;
             }
 
-            > label {
-                display: inline-block;
+            > div {
+                display: flex;
                 overflow: hidden;
-                text-overflow: ellipsis;
-                white-space: nowrap;
-                margin: 0;
-                vertical-align: bottom;
 
+                > label {
+                    margin: 0;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    width: 100%;
+                }
             }
 
             > div.resizer {
