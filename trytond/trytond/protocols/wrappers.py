@@ -17,8 +17,8 @@ from werkzeug import exceptions
 from werkzeug.datastructures import Authorization
 from werkzeug.exceptions import abort
 from werkzeug.utils import redirect, send_file
-from werkzeug.wrappers import Request as _Request
-from werkzeug.wrappers import Response as _Response
+from werkzeug.wrappers import Request as BaseRequest
+from werkzeug.wrappers import Response as BaseResponse
 
 from trytond import backend, config, security
 from trytond.exceptions import RateLimitException, UserError, UserWarning
@@ -84,7 +84,7 @@ def remove_auth_cookies(response, database):
     remove_cookie(response, database, TRYTON_SESSION_COOKIE)
 
 
-class Request(_Request):
+class Request(BaseRequest):
 
     view_args = None
 
@@ -204,7 +204,7 @@ class Request(_Request):
             }
 
 
-class Response(_Response):
+class Response(BaseResponse):
 
     def get_json(self, force=False, silent=False):
         from .jsonrpc import JSONDecoder, json
@@ -413,7 +413,7 @@ def user_application(name, json=True):
                     response = func(request, *args, **kwargs)
                 except (UserError, UserWarning) as e:
                     raise JSONBadRequest(e)
-            if not isinstance(response, Response) and json:
+            if not isinstance(response, BaseResponse) and json:
                 response = Response(json_.dumps(response, cls=JSONEncoder),
                     content_type='application/json')
             return response

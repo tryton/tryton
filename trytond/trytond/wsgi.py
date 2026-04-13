@@ -30,7 +30,7 @@ except ImportError:
 from trytond import backend, config, security
 from trytond.protocols.jsonrpc import JSONProtocol
 from trytond.protocols.wrappers import (
-    HTTPStatus, Request, Response, abort, exceptions)
+    BaseResponse, HTTPStatus, Request, Response, abort, exceptions)
 from trytond.protocols.xmlrpc import XMLProtocol
 from trytond.status import processing
 from trytond.tools import resolve, safe_join
@@ -142,7 +142,7 @@ class TrytondWSGI(object):
             response = e
             for error_handler in self.error_handlers:
                 rv = error_handler(self, request, e)
-                if isinstance(rv, Response):
+                if isinstance(rv, BaseResponse):
                     response = rv
             return response
 
@@ -205,12 +205,13 @@ class TrytondWSGI(object):
 
             with processing(request):
                 data = self.dispatch_request(request)
-                if not isinstance(data, (Response, exceptions.HTTPException)):
+                if not isinstance(
+                        data, (BaseResponse, exceptions.HTTPException)):
                     response = self.make_response(request, data)
                 else:
                     response = data
 
-            if origin and isinstance(response, Response):
+            if origin and isinstance(response, BaseResponse):
                 response.headers['Access-Control-Allow-Origin'] = origin
                 response.headers['Vary'] = 'Origin'
                 method = request.headers.get('Access-Control-Request-Method')
