@@ -1,6 +1,8 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 
+from itertools import groupby
+
 from sql.conditionals import NullIf
 from sql.operators import Equal
 
@@ -9,7 +11,7 @@ from trytond.model import (
     Exclude, MatchMixin, ModelSQL, ModelView, Workflow, dualmethod, fields,
     sequence_ordered)
 from trytond.pool import Pool
-from trytond.pyson import Eval, If
+from trytond.pyson import Eval, If, TimeDelta
 from trytond.transaction import Transaction
 
 from .exceptions import PeppolServiceError
@@ -182,13 +184,16 @@ class Peppol(Workflow, ModelSQL, ModelView):
     def submit(cls, documents):
         pool = Pool()
         Service = pool.get('edocument.peppol.service')
+        transaction = Transaction()
         for document in documents:
             if not document.service:
                 document.service = Service.get_service(document)
-            if document.direction == 'out':
-                document.data = document.render()
         cls.save(documents)
-        cls.__queue__.process(documents)
+        for process_after, sub_documents in groupby(
+                documents, lambda d: d.service.process_after):
+            with transaction.set_context(
+                    queue_scheduled_at=process_after):
+                cls.__queue__.process(documents)
 
     def get_service_pattern(self):
         return {
@@ -212,9 +217,11 @@ class Peppol(Workflow, ModelSQL, ModelView):
         cls.write(documents, {'state': 'processing'})
         for document in documents:
             if document.direction == 'out':
+                document.data = document.render()
                 cls.__queue__._process(document)
             else:
                 document._process()
+        cls.save(documents)
 
     def _process(self):
         pool = Pool()
@@ -299,6 +306,15 @@ class PeppolService(sequence_ordered(), MatchMixin, ModelSQL, ModelView):
     types = fields.MultiSelection(
         'get_peppol_types', "Types",
         help="The types of document supported by the service provider.")
+    process_after = fields.TimeDelta(
+        "Process Document after",
+        domain=['OR',
+            ('process_after', '=', None),
+            ('process_after', '>=', TimeDelta()),
+            ],
+        help="The time taken to process a document "
+        "after it has been submitted.\n"
+        "Applied if a worker queue is activated.")
 
     @classmethod
     def default_company(cls):
