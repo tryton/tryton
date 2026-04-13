@@ -124,7 +124,8 @@ this repository contains the full copyright notices and license terms. -->
     <py:if test="this.invoice.total_amount != (this.invoice.untaxed_amount + this.invoice.tax_amount)">
         <cbc:PayableRoundingAmount py:attrs="{'currencyID': this.invoice.currency.code}">${-(this.invoice.total_amount - this.invoice.untaxed_amount - this.invoice.tax_amount)}</cbc:PayableRoundingAmount>
     </py:if>
-    <cbc:PayableAmount py:attrs="{'currencyID': this.invoice.currency.code}">${-this.invoice.total_amount}</cbc:PayableAmount>
+    <cbc:PrepaidAmount py:if="this.prepaid_amount" py:attrs="{'currencyID': this.invoice.currency.code}">${-this.prepaid_amount}</cbc:PrepaidAmount>
+    <cbc:PayableAmount py:attrs="{'currencyID': this.invoice.currency.code}">${-this.invoice.total_amount + this.prepaid_amount}</cbc:PayableAmount>
 </cac:LegalMonetaryTotal>
 <cac:CreditNoteLine py:for="line_id, line in enumerate(this.lines, 1)">
     <cbc:ID>${line_id}</cbc:ID>

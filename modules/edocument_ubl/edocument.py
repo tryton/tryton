@@ -271,6 +271,17 @@ class Invoice(Model):
                         return
                 return product.unece_allowance_charge_code
 
+    @cached_property
+    def prepaid_amount(self):
+        def balance(line):
+            if self.invoice.currency == line.second_currency:
+                return line.amount_second_currency
+            elif self.invoice.currency == self.invoice.company.currency:
+                return line.debit - line.credit
+            else:
+                return 0
+        return sum(map(balance, self.invoice.lines_to_pay))
+
     @classmethod
     def parse(cls, document):
         pool = Pool()
