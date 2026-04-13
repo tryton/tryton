@@ -5,7 +5,7 @@ import math
 from decimal import Decimal
 
 from sql import Cast, Literal, Select, Table, functions
-from sql.functions import CurrentTimestamp, DateTrunc, Extract, ToChar
+from sql.functions import Age, CurrentTimestamp, DateTrunc, Extract, ToChar
 
 from trytond import backend
 from trytond.model import fields
@@ -268,6 +268,47 @@ class BackendTestCase(TestCase):
         cursor.execute(*Select([DateTrunc(None, dt.datetime.now())]))
         value, = cursor.fetchone()
         self.assertEqual(value, None)
+
+    @with_transaction()
+    def test_function_age(self):
+        "Test Age function"
+        cursor = Transaction().connection.cursor()
+
+        for t1, t2, result in [
+                (dt.date(2026, 4, 13), dt.date(2026, 4, 1),
+                    dt.timedelta(days=12)),
+                (dt.date(2026, 4, 13), dt.datetime(2026, 4, 1, 12, 0),
+                    dt.timedelta(days=11, hours=12)),
+                (dt.datetime(2026, 4, 13, 12, 0), dt.date(2026, 4, 1),
+                    dt.timedelta(days=12, hours=12)),
+                (dt.datetime(2026, 4, 13, 12, 0),
+                    dt.datetime(2026, 4, 1, 12, 0),
+                    dt.timedelta(days=12)),
+                ]:
+            for t1, t2, result in [
+                    (t1, t2, result),
+                    (t2, t1, -result),
+                    ]:
+                with self.subTest(t1=t1, t2=t2):
+                    query = Select([Age(t1, t2).as_('age')])
+                    if backend.name == 'sqlite':
+                        sqlite_apply_types(query, ['INTERVAL'])
+                    cursor.execute(*query)
+                    value, = cursor.fetchone()
+                    self.assertEqual(value, result)
+
+    @with_transaction()
+    def test_function_age_current_date(self):
+        "Test Age function with current_date"
+        cursor = Transaction().connection.cursor()
+
+        today = dt.date.today()
+        query = Select([Age(today - dt.timedelta(days=10)).as_('age')])
+        if backend.name == 'sqlite':
+            sqlite_apply_types(query, ['INTERVAL'])
+        cursor.execute(*query)
+        value, = cursor.fetchone()
+        self.assertEqual(value, dt.timedelta(days=10))
 
     @with_transaction()
     def test_operator_range_contain(self):

@@ -218,6 +218,30 @@ def _date_trunc_interval(field, source):
     return adapt_timedelta(value)
 
 
+def age(timestamp1, timestamp2=None):
+    def convert(value):
+        for fromisoformat in [
+                dt.date.fromisoformat,
+                dt.datetime.fromisoformat,
+                ]:
+            try:
+                value = fromisoformat(value)
+            except ValueError:
+                continue
+            break
+        else:
+            raise ValueError
+        if not isinstance(value, dt.datetime):
+            value = dt.datetime.combine(value, dt.time())
+        return value
+    timestamp1 = convert(timestamp1)
+    if timestamp2 is None:
+        timestamp2 = dt.datetime.combine(dt.date.today(), dt.time())
+    else:
+        timestamp1, timestamp2 = convert(timestamp2), timestamp1
+    return adapt_timedelta(timestamp2 - timestamp1)
+
+
 def split_part(text, delimiter, count):
     if text is None:
         return None
@@ -473,6 +497,8 @@ class Database(DatabaseInterface):
             factory=SQLiteConnection)
         self._conn.create_function('extract', 2, SQLiteExtract.extract)
         self._conn.create_function('date_trunc', 2, date_trunc)
+        self._conn.create_function('age', 1, age)
+        self._conn.create_function('age', 2, age)
         self._conn.create_function('split_part', 3, split_part)
         self._conn.create_function('to_char', 2, to_char)
         self._conn.create_function('now', 0, now)

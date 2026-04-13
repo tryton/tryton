@@ -1,3 +1,4 @@
+* Add support for AGE to SQLite backend
 * Add button to mark notification as read
 
 Version 8.0.0 - 2026-04-20
