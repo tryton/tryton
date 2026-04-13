@@ -63,14 +63,14 @@ VATEX_CODES = [
     ('VATEX-FR-CGI277A',
         "Exempt based on article 277 A of the General tax code (CGI)"),
     ('VATEX-FR-CGI275',
-        " Exempt based on article 275 of the General tax code (CGI)"),
+        "Exempt based on article 275 of the General tax code (CGI)"),
     ('VATEX-FR-298SEXDECIESA',
-        " Exempt based on article 298 sexdecies A "
+        "Exempt based on article 298 sexdecies A "
         "of the General tax code (CGI)"),
     ('VATEX-FR-CGI295',
         "Exempt based on article 295 of the General tax code (CGI)"),
     ('VATEX-FR-AE',
-        " Exempt based on 2 of article 283 of the General tax code (CGI)"),
+        "Exempt based on 2 of article 283 of the General tax code (CGI)"),
     ]
 
 
