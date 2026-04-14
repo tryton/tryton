@@ -11,8 +11,9 @@ Tax Rule
 
 When the *Account Tax Rule Country Module* is activated, the *Tax Rule* gains
 additional criteria for the origin and destination `Country
-<country:model-country.country>` and `Subdivision
-<country:model-country.subdivision>` to match against.
+<country:model-country.country>`, `Subdivision
+<country:model-country.subdivision>` and `Organization
+<country:model-country.organization>` to match against.
 
 The countries and subdivisions are taken from the origin document that applies
 the tax rule:

@@ -3,10 +3,19 @@
 this repository contains the full copyright notices and license terms. -->
 <data>
     <xpath expr="/form/field[@name='origin_tax']" position="after">
+        <label name="from_organization"/>
+        <field name="from_organization"/>
+        <newline/>
+
         <label name="from_country"/>
         <field name="from_country"/>
         <label name="from_subdivision"/>
         <field name="from_subdivision"/>
+
+        <label name="to_organization"/>
+        <field name="to_organization"/>
+        <newline/>
+
         <label name="to_country"/>
         <field name="to_country"/>
         <label name="to_subdivision"/>

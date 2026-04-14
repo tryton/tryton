@@ -3,7 +3,8 @@
 
 from trytond.model import fields
 from trytond.pool import Pool, PoolMeta
-from trytond.pyson import Eval
+from trytond.pyson import Bool, Eval, If
+from trytond.transaction import Transaction
 
 
 class TaxRule(metaclass=PoolMeta):
@@ -32,9 +33,29 @@ class TaxRule(metaclass=PoolMeta):
 
 class _TaxRuleLineMixin:
     __slots__ = ()
+
+    from_organization = fields.Many2One(
+        'country.organization', "From Organization", ondelete='RESTRICT',
+        domain=[
+            If(Eval('from_country'),
+                ('id', '=', -1),
+                ()),
+            ],
+        states={
+            'invisible': Bool(Eval('from_country')),
+            },
+        help="Apply only to the addresses from this organization.")
     from_country = fields.Many2One(
         'country.country', 'From Country', ondelete='RESTRICT',
-        help="Apply only to addresses of this country.")
+        domain=[
+            If(Eval('from_organization'),
+                ('id', '=', -1),
+                ()),
+            ],
+        states={
+            'invisible': Bool(Eval('from_organization')),
+            },
+        help="Apply only to the addresses from this country.")
     from_subdivision = fields.Many2One(
         'country.subdivision', "From Subdivision", ondelete='RESTRICT',
         domain=[
@@ -43,10 +64,29 @@ class _TaxRuleLineMixin:
         states={
             'invisible': ~Eval('from_country'),
             },
-        help="Apply only to addresses in this subdivision.")
+        help="Apply only to the addresses from this subdivision.")
+    to_organization = fields.Many2One(
+        'country.organization', "To Organization", ondelete='RESTRICT',
+        domain=[
+            If(Eval('to_country'),
+                ('id', '=', -1),
+                ()),
+            ],
+        states={
+            'invisible': Bool(Eval('to_country')),
+            },
+        help="Apply only to the addresses of this organization.")
     to_country = fields.Many2One(
         'country.country', 'To Country', ondelete='RESTRICT',
-        help="Apply only to addresses of this country.")
+        domain=[
+            If(Eval('to_organization'),
+                ('id', '=', -1),
+                ()),
+            ],
+        states={
+            'invisible': Bool(Eval('to_organization')),
+            },
+        help="Apply only to the addresses to this country.")
     to_subdivision = fields.Many2One(
         'country.subdivision', "To Subdivision", ondelete='RESTRICT',
         domain=[
@@ -55,7 +95,7 @@ class _TaxRuleLineMixin:
         states={
             'invisible': ~Eval('to_country'),
             },
-        help="Apply only to addresses in this subdivision.")
+        help="Apply only to the addresses to this subdivision.")
 
 
 class TaxRuleLineTemplate(_TaxRuleLineMixin, metaclass=PoolMeta):
@@ -85,6 +125,26 @@ class TaxRuleLine(_TaxRuleLineMixin, metaclass=PoolMeta):
     __name__ = 'account.tax.rule.line'
 
     def match(self, pattern):
+        pool = Pool()
+        Date = pool.get('ir.date')
+        Country = pool.get('country.country')
+
+        with Transaction().set_context(company=self.rule.company.id):
+            date = pattern.get('date') or Date.today()
+
+        for organization, name in [
+                (self.from_organization, 'from_country'),
+                (self.to_organization, 'to_country'),
+                ]:
+            if organization:
+                pattern = pattern.copy()
+                country = pattern.pop(name, None)
+                if not country:
+                    return False
+                country = Country(country)
+                if not country.is_member(organization, date=date):
+                    return False
+
         for name in ['from_subdivision', 'to_subdivision']:
             subdivision = getattr(self, name)
             if name not in pattern:

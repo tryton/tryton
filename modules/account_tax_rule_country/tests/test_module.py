@@ -35,10 +35,14 @@ class AccountTaxRuleCountryTestCase(CompanyTestMixin, ModuleTestCase):
     @classmethod
     def _create_countries(cls):
         pool = Pool()
+        Organization = pool.get('country.organization')
         Country = pool.get('country.country')
         Subdivision = pool.get('country.subdivision')
 
+        organization1 = Organization(name="Org 1")
+        organization1.save()
         country1 = Country(name="Country 1")
+        country1.members = [{'organization': organization1}]
         country1.save()
         subdivision1 = Subdivision(
             country=country1, name="Subdivision 1", code="SUB1",
@@ -48,7 +52,11 @@ class AccountTaxRuleCountryTestCase(CompanyTestMixin, ModuleTestCase):
             country=country1, parent=subdivision1,
             name="Sub-Subdivision 1", code="SUBSUB1", type='province')
         subdivision11.save()
+
+        organization2 = Organization(name="Org 2")
+        organization2.save()
         country2 = Country(name="Country 2")
+        country2.members = [{'organization': organization2}]
         country2.save()
         subdivision2 = Subdivision(
             country=country2, name="Subdivision 2", code="SUB2",
@@ -125,6 +133,34 @@ class AccountTaxRuleCountryTestCase(CompanyTestMixin, ModuleTestCase):
                 }
 
             self.assertListEqual(tax_rule.apply(tax, pattern), [target_tax.id])
+
+    @with_transaction()
+    def test_tax_rule_organization(self):
+        "Test tax rule with organization"
+        country1, country2 = self._create_countries()
+        organization1 = country1.organizations[0]
+        organization2 = country2.organizations[0]
+        company = create_company()
+        with set_company(company):
+            create_chart(company, tax=True)
+            tax, target_tax = self._get_taxes()[:2]
+            tax_rule = self._create_rule([{
+                        'from_organization': organization1.id,
+                        'to_organization': organization2.id,
+                        'origin_tax': tax.id,
+                        'tax': target_tax.id,
+                        }])
+
+            for pattern, result in [
+                    ({'from_country': country1.id, 'to_country': country2.id},
+                        [target_tax.id]),
+                    ({'from_country': country2.id, 'to_country': country1.id},
+                        [tax.id]),
+                    ({'from_country': None, 'to_country': country2.id},
+                        [tax.id]),
+                    ]:
+                with self.subTest(pattern=pattern):
+                    self.assertListEqual(tax_rule.apply(tax, pattern), result)
 
     @with_transaction()
     def test_tax_rule_no_subdivision(self):
