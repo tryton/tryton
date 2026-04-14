@@ -943,6 +943,12 @@ class DomainParserTestCase(TestCase):
                     'name': 'integer',
                     'type': 'integer',
                     },
+                'timestamp': {
+                    'name': 'timestamp',
+                    'string': 'Timestamp',
+                    'type': 'timestamp',
+                    'format': '"%H:%M:%S"',
+                    },
                 'selection': {
                     'string': 'Selection',
                     'name': 'selection',
@@ -1161,6 +1167,33 @@ class DomainParserTestCase(TestCase):
         self.assertEqual(
             rlist(dom.parse_clause(iter([['AND']]))),
             [('rec_name', 'ilike', "%AND%")])
+        for search_text, domain in [
+                ([('Timestamp', None, None)], [('timestamp', '=', None)]),
+                (
+                    [('Timestamp', '=', dt.date(2002, 12, 4).strftime('%x'))],
+                    [[
+                            ('timestamp', '>=',
+                                untimezoned_date(dt.datetime(2002, 12, 4))),
+                            ('timestamp', '<',
+                                untimezoned_date(dt.datetime(2002, 12, 5)))]]),
+                (
+                    [('Timestamp', '=',
+                        dt.datetime(2002, 12, 4, 12, 30).strftime('%x %X'))
+                        ],
+                    [('timestamp', '=', untimezoned_date(
+                                dt.datetime(2002, 12, 4, 12, 30)))]),
+                (
+                    [('Timestamp', None, [
+                                f"{dt.date(2002, 12, 4).strftime('%x')}",
+                                f"{dt.date(2002, 12, 5).strftime('%x')}",
+                                ])],
+                    [('timestamp', 'in', [
+                                untimezoned_date(dt.datetime(2002, 12, 4)),
+                                untimezoned_date(dt.datetime(2002, 12, 5)),
+                                ])]),
+                ]:
+            with self.subTest(f'parse_clause({search_text})'):
+                self.assertEqual(rlist(dom.parse_clause(search_text)), domain)
 
     def test_completion_char(self):
         "Test completion char"
