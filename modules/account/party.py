@@ -60,7 +60,10 @@ class Party(CompanyMultiValueMixin, metaclass=PoolMeta):
                 ],
             states={
                 'invisible': ~Eval('context', {}).get('company'),
-                }, help='Apply this rule on taxes when party is customer.'))
+                },
+            help="Apply this rule to the default taxes "
+            "when the party is a customer.\n"
+            "Leave it empty to keep the default taxes."))
     supplier_tax_rule = fields.MultiValue(fields.Many2One(
             'account.tax.rule', "Supplier Tax Rule",
             domain=[
@@ -69,7 +72,10 @@ class Party(CompanyMultiValueMixin, metaclass=PoolMeta):
                 ],
             states={
                 'invisible': ~Eval('context', {}).get('company'),
-                }, help='Apply this rule on taxes when party is supplier.'))
+                },
+            help="Apply this rule to the default taxes "
+            "when the party is a supplier.\n"
+            "Leave it empty to keep the default taxes."))
     currency = fields.Function(fields.Many2One(
             'currency.currency', "Currency"), 'get_currency')
     receivable = fields.Function(Monetary(
