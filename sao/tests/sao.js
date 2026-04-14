@@ -1933,6 +1933,12 @@
                 'name': 'integer',
                 'type': 'integer'
             },
+            'timestamp': {
+                'name': 'timestamp',
+                'string': 'Timestamp',
+                'type': 'timestamp',
+                'format': '"%H:%M:%S"',
+            },
             'selection': {
                 'string': 'Selection',
                 'name': 'selection',
@@ -2033,6 +2039,7 @@
             c(['integer', '>=', 3]),
             c(['integer', '<=', 5])
             ]]],
+        [[c(['Timestamp', null, null])], [c(['timestamp', '=', null])]],
         [[c(['Reference', null, 'foo'])],
             [c(['reference', 'ilike', '%foo%'])]],
         [[c(['Reference', null, 'Spam'])],
@@ -2073,6 +2080,33 @@
             QUnit.assert.deepEqual(parser.parse_clause(value), result,
                 'parse_clause(' + JSON.stringify(value) + ')');
         });
+
+        let clause = parser.parse_clause([c(
+            ['Timestamp', '=', Sao.common.format_date('%x', Sao.Date(2002, 12, 4))])]);
+        QUnit.assert.strictEqual(clause[0].length, 2);
+        let [ , operator, value] = clause[0][0];
+        QUnit.assert.strictEqual(operator, '>=');
+        QUnit.assert.ok(value.isSame(Sao.Date(2002, 12, 4)));
+        [ , operator, value] = clause[0][1];
+        QUnit.assert.strictEqual(operator, '<');
+        QUnit.assert.ok(value.isSame(Sao.Date(2002, 12, 5)));
+
+        clause = parser.parse_clause([c(
+            ['Timestamp', '=',
+                Sao.common.format_datetime('%x %X', Sao.DateTime(2002, 12, 4, 12, 30))])]);
+        [ , operator, value] = clause[0];
+        QUnit.assert.strictEqual(operator, '=');
+        QUnit.assert.ok(value.isSame(Sao.DateTime(2002, 12, 4, 12, 30)));
+
+        clause = parser.parse_clause([c(
+            ['Timestamp', null, [
+                        `${Sao.common.format_date('%x', Sao.Date(2002, 12, 4))}`,
+                        `${Sao.common.format_date('%x', Sao.Date(2002, 12, 5))}`,
+                        ]])]);
+        [ , operator, value] = clause[0];
+        QUnit.assert.strictEqual(operator, 'in');
+        QUnit.assert.ok(value[0].isSame(Sao.DateTime(2002, 12, 4)));
+        QUnit.assert.ok(value[1].isSame(Sao.DateTime(2002, 12, 5)));
     });
 
     QUnit.test('DomainParser.format_value', function() {
