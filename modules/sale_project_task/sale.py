@@ -79,7 +79,7 @@ class Sale(metaclass=PoolMeta):
             (None, "None"),
             ('waiting', "Waiting"),
             ('partially', "Partially fulfilled"),
-            ('fulfilled', "fulfilled"),
+            ('fulfilled', "Fulfilled"),
             ],
         "Tasks State", readonly=True, sort=False)
     tasks_to_create = fields.Boolean("Tasks to Create", readonly=True)
