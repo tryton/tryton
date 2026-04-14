@@ -203,7 +203,7 @@ class PriceListLine(metaclass=PoolMeta):
     __name__ = 'product.price_list.line'
 
     ethanol_volume_uom = fields.Many2One(
-        'product.uom', "AlcoholVolume UoM",
+        'product.uom', "Alcohol Volume UoM",
         domain=[('category', '=', Id('product', 'uom_cat_volume'))],
         help="Leave empty for liter.")
 
