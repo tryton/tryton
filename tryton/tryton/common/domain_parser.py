@@ -880,6 +880,26 @@ class DomainParser(object):
                                     (field_name, '<=', rvalue),
                                     ])
                             continue
+                        if (isinstance(value, str)
+                                and field['type'] in {'datetime', 'timestamp'}
+                                and operator == '='):
+                            ctx = self.context if self.context else {}
+                            format_ = date_format(ctx.get('date_format'))
+                            try:
+                                dt = datetime.datetime.strptime(
+                                    value, format_).date()
+                            except (ValueError, TypeError):
+                                dt = None
+                            if dt:
+                                date = untimezoned_date(
+                                    datetime.datetime.combine(
+                                        dt, datetime.time()))
+                                next_date = date + datetime.timedelta(days=1)
+                                yield iter([
+                                        (field_name, '>=', date),
+                                        (field_name, '<', next_date),
+                                        ])
+                                continue
                     if isinstance(value, list):
                         value = [convert_value(field, v, self.context)
                             for v in value]

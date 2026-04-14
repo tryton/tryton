@@ -1930,6 +1930,32 @@
                                     ]);
                             return;
                         }
+                        if ((typeof value == 'string') &&
+                            ['datetime', 'timestamp'].includes(field.type) &&
+                            (operator == '=')) {
+                            let ctx, format_, parsed_date;
+                            if (this.context && Object.keys(this.context).length) {
+                                ctx = this.context;
+                            } else {
+                                ctx = {};
+                            }
+                            format_ = Sao.common.date_format(ctx.date_format);
+                            parsed_date = Sao.common.parse_date(format_, value);
+                            if (parsed_date &&
+                                (Sao.common.format_date(format_, parsed_date) == value)) {
+                                let date = Sao.DateTime.combine(parsed_date, Sao.Time());
+                                let next_day = Sao.DateTime(
+                                    date.year(), date.month(), date.date(),
+                                    date.hour(), date.minute(), date.second(),
+                                    date.millisecond())
+                                next_day.add(1, 'day');
+                                result.push(this._clausify([
+                                    [field_name, '>=', date],
+                                    [field_name, '<', next_day]
+                                ]));
+                                return;
+                            }
+                        }
                     }
                     if (value instanceof Array) {
                         value = value.map(
