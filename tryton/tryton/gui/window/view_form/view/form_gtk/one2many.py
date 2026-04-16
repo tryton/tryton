@@ -584,8 +584,6 @@ class One2Many(Widget):
 
     def set_value(self):
         self.screen.current_view.set_value()
-        if self.screen.modified():  # TODO check if required
-            self.view.screen.record_modified(display=False)
         return True
 
     def _completion_match_selected(self, completion, model, iter_):
