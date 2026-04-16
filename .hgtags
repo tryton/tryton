@@ -9889,3 +9889,4 @@ a8b581ef1999b78cea377c738e24dbb02eb397e2 product-7.6.4
 b5d83206b604aa87d108343ac57fa7f5213a1359 inbound_email-7.6.1
 71a484c2c99942f6144f74f82650850ce500207b document_incoming_ocr-7.6.1
 cbe4fdac4165eb4183dffeb12dd62461adeae8f0 account_tax_rule_country-7.6.1
+9f436e6c7ca994233b87760e995be9c2aae26dfb account_statement_rule-7.6.2
