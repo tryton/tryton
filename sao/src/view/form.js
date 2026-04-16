@@ -370,7 +370,8 @@ function eval_pyson(value){
                 }
             }
             return jQuery.when.apply(jQuery,promesses)
-                .done(() => {
+                .then(() => {
+                    let promesses = [];
                     var record = this.record;
                     for (const name in this.widgets) {
                         var widgets = this.widgets[name];
@@ -382,10 +383,12 @@ function eval_pyson(value){
                             field.set_state(record);
                         }
                         for (const widget of widgets) {
-                            widget.display();
+                            let prm = widget.display();
+                            if (prm) {
+                                promesses.push(prm);
+                            }
                         }
                     }
-                    var promesses = [];
                     for (const j in this.state_widgets) {
                         var state_widget = this.state_widgets[j];
                         var prm = state_widget.set_state(record);
@@ -398,7 +401,7 @@ function eval_pyson(value){
                     }
                     // re-set the grid templates for the StateWidget that are
                     // asynchronous
-                    jQuery.when.apply(jQuery, promesses).done(() => {
+                    return jQuery.when.apply(jQuery, promesses).then(() => {
                         for (const container of this.containers) {
                             container.set_grid_template();
                         }
@@ -3435,7 +3438,7 @@ function eval_pyson(value){
         display: function() {
             Sao.View.Form.One2Many._super.display.call(this);
 
-            this.prm.done(() => {
+            return this.prm.then(() => {
                 this._set_button_sensitive();
 
                 var record = this.record;
@@ -3445,8 +3448,7 @@ function eval_pyson(value){
                     this.screen.new_group();
                     this.screen.current_record = null;
                     this.screen.group.parent = null;
-                    this.screen.display();
-                    return;
+                    return this.screen.display();
                 }
 
                 var new_group = record.field_get_client(this.field_name);
@@ -3475,13 +3477,13 @@ function eval_pyson(value){
                     this.screen.domain = domain;
                 }
                 this.screen.size_limit = size_limit;
-                this.screen.display();
                 if (this.attributes.height !== undefined) {
                     this.content
                         .find('.treeview,.list-form').first()
                         .css('min-height', this.attributes.height + 'px')
                         .css('max-height', this.attributes.height + 'px');
                 }
+                return this.screen.display();
             });
         },
         focus: function() {
@@ -3960,7 +3962,7 @@ function eval_pyson(value){
         display: function() {
             Sao.View.Form.Many2Many._super.display.call(this);
 
-            this.prm.done(() => {
+            return this.prm.then(() => {
                 var record = this.record;
                 var field = this.field;
 
@@ -3968,20 +3970,19 @@ function eval_pyson(value){
                     this.screen.new_group();
                     this.screen.current_record = null;
                     this.screen.group.parent = null;
-                    this.screen.display();
-                    return;
+                    return this.screen.display();
                 }
                 var new_group = record.field_get_client(this.field_name);
                 if (new_group != this.screen.group) {
                     this.screen.set_group(new_group);
                 }
-                this.screen.display();
                 if (this.attributes.height !== undefined) {
                     this.content
                         .find('.treeview,.list-form').first()
                         .css('min-height', this.attributes.height + 'px')
                         .css('max-height', this.attributes.height + 'px');
                 }
+                return this.screen.display();
             });
         },
         focus: function() {
