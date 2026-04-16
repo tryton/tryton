@@ -72,5 +72,5 @@ class Channel(metaclass=PoolMeta):
     @classmethod
     def _email_body(cls, message):
         with Transaction().set_context(language=message.channel.language):
-            above_msg = gettext('ir.msg_reply_above')
-            return f'{REPLY_LINE}\n{above_msg.text}\n\n{message.content}'
+            above_msg = gettext('inbound_email.msg_reply_above')
+            return f'{REPLY_LINE}\n{above_msg}\n\n{message.content}'
