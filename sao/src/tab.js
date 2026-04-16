@@ -18,6 +18,7 @@
                 'class': 'hidden-lg',
             }).appendTo(this.name_el);
             this.view_prm = jQuery.when();
+            this._action_running = false;
         },
         menu_def: function() {
             return [
@@ -167,8 +168,13 @@
                     this.menu_buttons[item.id] = menuitem;
                     link.click(evt => {
                         evt.preventDefault();
-                        if (!menuitem.hasClass('disabled')) {
-                            this[item.id]();
+                        if (!menuitem.hasClass('disabled')
+                            && !this._action_running) {
+                            this._action_running = true;
+                            (this[item.id]() || jQuery.when())
+                                .always(() => {
+                                    this._action_running = false;
+                                });
                         }
                     });
                 } else if (!item && previous) {
@@ -272,17 +278,14 @@
                 }
                 this.buttons[item.id].click(item, event => {
                     var item = event.data;
-                    var button = this.buttons[item.id];
-                    // Use data instead of disabled prop because the action may
-                    // actually disable the button.
-                    if (button.data('disabled')) {
+                    if (this._action_running) {
                         event.preventDefault();
                         return;
                     }
-                    button.data('disabled', true);
+                    this._action_running = true;
                     (this[item.id](this) || jQuery.when())
-                        .always(function() {
-                            button.data('disabled', false);
+                        .always(() => {
+                            this._action_running = false;
                         });
                 });
             };
