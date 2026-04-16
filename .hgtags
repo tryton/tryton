@@ -9891,3 +9891,4 @@ b5d83206b604aa87d108343ac57fa7f5213a1359 inbound_email-7.6.1
 cbe4fdac4165eb4183dffeb12dd62461adeae8f0 account_tax_rule_country-7.6.1
 9f436e6c7ca994233b87760e995be9c2aae26dfb account_statement_rule-7.6.2
 927ec3642870b67d6f7887b4de6aaf65fd7216c2 account_statement-7.6.3
+d148cdebb6027322bd6f7076da1c9240b17af5f4 account_payment_stripe-7.6.4
