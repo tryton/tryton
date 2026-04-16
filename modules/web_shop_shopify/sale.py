@@ -7,7 +7,7 @@ from itertools import zip_longest
 import dateutil
 
 from trytond.i18n import gettext
-from trytond.model import ModelView, Unique, fields
+from trytond.model import ModelView, Unique, Workflow, fields
 from trytond.modules.currency.fields import Monetary
 from trytond.modules.product import round_price
 from trytond.modules.sale.exceptions import SaleConfirmError
@@ -154,6 +154,8 @@ class Sale(IdentifierMixin, metaclass=PoolMeta):
     shopify_amount_to_pay = Monetary(
         "Shopify Amount to Pay",
         currency='currency', digits='currency', readonly=True)
+    shopify_refunded = fields.Boolean(
+        "Shopify Refunded", readonly=True)
     shopify_status_url = fields.Char("Shopify Status URL", readonly=True)
     shopify_resource = 'orders'
 
@@ -561,6 +563,23 @@ class Sale(IdentifierMixin, metaclass=PoolMeta):
         return invoice
 
     @classmethod
+    @Workflow.transition('processing')
+    def proceed(cls, sales):
+        if shopify_refunded_sales := [s for s in sales if s.shopify_refunded]:
+            cls.write(shopify_refunded_sales, {'shopify_refunded': False})
+        super().proceed(sales)
+
+    @classmethod
+    def _process_invoice_fulfillment_states(cls, sales):
+        shopify_refunded_sales = [
+            s for s in sales if s.shopify_refunded]
+        super()._process_invoice_fulfillment_states(sales)
+        if shopify_refunded_sales := [
+                s for s in shopify_refunded_sales
+                if s.shipment_state != 'sent']:
+            cls.write(shopify_refunded_sales, {'shopify_refunded': False})
+
+    @classmethod
     @ModelView.button
     def process(cls, sales):
         for sale in sales:
@@ -625,7 +644,8 @@ class Sale(IdentifierMixin, metaclass=PoolMeta):
         # TODO: manage drop shipment
 
         shopify_id = id2gid('Order', self.shopify_identifier)
-        if self.shipment_state == 'sent' or self.state == 'done':
+        if ((self.shipment_state == 'sent' or self.state == 'done')
+                and not self.shopify_refunded):
             # TODO: manage shopping refund
             refund = self.get_shopify_refund(
                 shipping=self.shipment_state == 'none')
@@ -645,6 +665,8 @@ class Sale(IdentifierMixin, metaclass=PoolMeta):
                         'fields': graphql.selection(self.shopify_fields()),
                         }, {'id': shopify_id}).data['order']
                 Payment.get_from_shopify(self, order)
+            self.shopify_refunded = True
+            self.save()
 
         shopify_id = id2gid('Order', self.shopify_identifier)
         order = shopify_request(
