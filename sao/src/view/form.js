@@ -3968,9 +3968,7 @@ function eval_pyson(value){
             return prm;
         },
         set_value: function() {
-            if (this.screen.modified()) {  // TODO check if required
-                this.view.screen.record_modified(false);
-            }
+            this.screen.current_view.set_value();
         },
         _update_completion: function(text) {
             if (!this.record) {
