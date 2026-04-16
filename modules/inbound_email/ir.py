@@ -53,7 +53,7 @@ class Channel(metaclass=PoolMeta):
                 body.splitlines()))
 
     @classmethod
-    def post_inbound_email(cls, inbound_email):
+    def post_inbound_email(cls, inbound_email, rule):
         parser = email.parser.BytesParser(policy=email.policy.default)
         message = parser.parsebytes(inbound_email.data)
         return cls.post_from_email(message)
