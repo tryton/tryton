@@ -10022,3 +10022,4 @@ d05db05ca812a27bd1ee9941977d9d3fa1241f68 document_incoming_ocr-7.8.2
 4f04cb8ea44cfd0882cc5f67c4339f287fae1a87 account_statement_rule-7.8.1
 ef8abdac32122030c4e92f26c6e30cd484069213 account_statement-7.8.2
 326c866b6f833b148ddf5383c117fdb4b1ce6331 account_payment_stripe-7.8.3
+1b44a94eab6351b6ad8dc2bdc2577f86bd328b84 account_payment_sepa-7.8.1
