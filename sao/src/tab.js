@@ -1011,18 +1011,18 @@
         },
         previous: function() {
             return this.modified_save().then(() => {
-                var prm = this.screen.display_previous();
-                this.info_bar.clear();
-                this.set_buttons_sensitive();
-                return prm;
+                return this.screen.display_previous().then(() => {
+                    this.info_bar.clear();
+                    this.set_buttons_sensitive();
+                });
             });
         },
         next: function() {
             return this.modified_save().then(() => {
-                var prm = this.screen.display_next();
-                this.info_bar.clear();
-                this.set_buttons_sensitive();
-                return prm;
+                return this.screen.display_next().then(() => {
+                    this.info_bar.clear();
+                    this.set_buttons_sensitive();
+                });
             });
         },
         search: function() {
