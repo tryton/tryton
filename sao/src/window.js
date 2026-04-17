@@ -981,6 +981,7 @@
             }
             this.title = title;
             this.exclude_field = kwargs.exclude_field || null;
+            let button = kwargs.button || Sao.Window.Search.Button.OK;
             var dialog = new Sao.Dialog(Sao.i18n.gettext(
                 'Search %1', this.title), '', 'lg', false);
             this.el = dialog.modal;
@@ -1015,11 +1016,26 @@
                     this.response('RESPONSE_ACCEPT');
                 }).appendTo(dialog.footer);
             }
+            let label;
+            switch (button) {
+                case Sao.Window.Search.Button.OK:
+                    label = Sao.i18n.gettext("OK");
+                    break;
+                case Sao.Window.Search.Button.ADD:
+                    label = Sao.i18n.gettext("Add");
+                    break;
+                case Sao.Window.Search.Button.REMOVE:
+                    label = Sao.i18n.gettext("Remove");
+                    break;
+                case Sao.Window.Search.Button.DELETE:
+                    label = Sao.i18n.gettext("Delete");
+                    break;
+            }
             jQuery('<button/>', {
                 'class': 'btn btn-primary',
                 'type': 'submit',
-                'title': Sao.i18n.gettext("OK"),
-            }).text(Sao.i18n.gettext('OK')).appendTo(dialog.footer);
+                'title': label,
+            }).text(label).appendTo(dialog.footer);
             dialog.content.submit(e => {
                 e.preventDefault();
                 this.response('RESPONSE_OK');
@@ -1047,10 +1063,15 @@
                     }
                     dialog.body.append(this.screen.screen_container.el);
                     this.el.modal('show');
-                    this.screen.display();
-                    if (kwargs.search_filter !== undefined) {
-                        this.screen.search_filter(kwargs.search_filter);
-                    }
+                    this.screen.display().then(() => {
+                        if (kwargs.search_filter !== undefined) {
+                            return this.screen.search_filter(kwargs.search_filter);
+                        }
+                    }).then(() => {
+                        if (kwargs.selected_nodes !== undefined) {
+                            return this.screen.current_view.display(kwargs.selected_nodes);
+                        }
+                    });
                 });
             });
             this.el.on('shown.bs.modal', () => {
@@ -1114,6 +1135,13 @@
             this.callback(value);
             this.el.modal('hide');
         }
+    });
+
+    Sao.Window.Search.Button = Object.freeze({
+        OK: 'ok',
+        ADD: 'add',
+        REMOVE: 'remove',
+        DELETE: 'delete',
     });
 
     Sao.Window.Preferences = Sao.class_(Object, {

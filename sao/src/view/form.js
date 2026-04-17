@@ -3551,7 +3551,7 @@ function eval_pyson(value){
             }
             var deletable =
                 this.screen.deletable &&
-                this.screen.selected_records.some((r) => !r.deleted && !r.removed);
+                this.screen.group.some((r) => !r.deleted && !r.removed);
             var undeletable =
                 this.screen.selected_records.some((r) => r.deleted || r.removed);
             const view_type = this.screen.current_view.view_type;
@@ -3575,7 +3575,6 @@ function eval_pyson(value){
                 this._readonly ||
                 !record ||
                 !this.delete_access ||
-                !this._position ||
                 !deletable);
             this.but_undel.prop(
                 'disabled',
@@ -3601,6 +3600,8 @@ function eval_pyson(value){
                 !this._length ||
                 first);
             if (this.attributes.add_remove) {
+                let removable =
+                    this.screen.group.some((r) => !r.deleted && !r.removed);
                 this.but_add.prop(
                     'disabled',
                     this._readonly ||
@@ -3613,9 +3614,9 @@ function eval_pyson(value){
                     'disabled',
                     this._readonly ||
                     !record ||
-                    (typeof this._position != 'number') ||
                     !this.write_access ||
-                    !this.read_access);
+                    !this.read_access ||
+                    !removable);
             }
         },
         _sequence: function() {
@@ -3733,7 +3734,7 @@ function eval_pyson(value){
                 this._popup = false;
             };
             var parser = new Sao.common.DomainParser();
-            var order = this.field.get_search_order(this.record);
+            var order = this.field.description.order;
             new Sao.Window.Search(this.attributes.relation,
                     callback, {
                         sel_multi: true,
@@ -3745,8 +3746,10 @@ function eval_pyson(value){
                         views_preload: this.attributes.views || {},
                         new_: !this.but_new.prop('disabled'),
                         search_filter: parser.quote(text),
-                        title: this.attributes.string,
                         exclude_field: this.attributes.relation_field,
+                        title: Sao.i18n.gettext(
+                            "%s to add", this.attributes.string),
+                        button: Sao.Window.Search.Button.ADD,
                     });
         },
         remove: function(event_) {
@@ -3754,7 +3757,56 @@ function eval_pyson(value){
             if (!this.write_access || !this.read_access || !writable) {
                 return;
             }
-            this.screen.remove(false, true, false);
+            this._remove(true);
+        },
+        _remove: function(remove=false) {
+            let selected_records = this.screen.selected_records;
+            if (selected_records.length <= 0 || selected_records.length >= 2) {
+                let domain = [['id', 'in', this.field.get_eval(this.record)]];
+                let context = this.field.get_search_context(this.record);
+                let order = this.field.description.order;
+                let callback = result => {
+                    if (!jQuery.isEmptyObject(result)) {
+                        let records = [];
+                        for (let [id,] of result) {
+                            records.push(this.screen.group.get(id));
+                        }
+                        this.screen.remove(false, remove, false, records);
+                    }
+                };
+                let button, title;
+                if (remove) {
+                    button = Sao.Window.Search.Button.REMOVE;
+                    title = Sao.i18n.gettext(
+                        "%1 to remove", this.attributes.string);
+                } else {
+                    button = Sao.Window.Search.Button.DELETE;
+                    title = Sao.i18n.gettext(
+                        "%1 to delete", this.attributes.string);
+                }
+
+                let nodes;
+                if (this.screen.selected_records.length) {
+                    nodes = this.screen.selected_records.map((r) => [r.id]);
+                }
+                new Sao.Window.Search(
+                    this.attributes.relation, callback, {
+                        sel_multi: true,
+                        context: context,
+                        domain: domain,
+                        order: order,
+                        view_ids: (this.attributes.view_ids ||
+                                '').split(','),
+                        views_preload: this.attributes.views || {},
+                        new_: false,
+                        title: title,
+                        button: button,
+                        search_filter: '',
+                        selected_nodes: nodes,
+                    });
+            } else {
+                this.screen.remove(false, remove, false);
+            }
         },
         new_: function(defaults=null) {
             if (!Sao.common.MODELACCESS.get(this.screen.model_name).create) {
@@ -3892,7 +3944,7 @@ function eval_pyson(value){
                 !this.screen.deletable) {
                 return;
             }
-            this.screen.remove(false, false, false);
+            this._remove(false);
         },
         undelete: function(event_) {
             this.screen.unremove();
@@ -4167,7 +4219,7 @@ function eval_pyson(value){
             }
 
             var removable =
-                this.screen.selected_records.some((r) => !r.deleted && !r.removed);
+                this.screen.group.some((r) => !r.deleted && !r.removed);
             var unremovable =
                 this.screen.selected_records.some((r) => r.deleted || r.removed);
 
@@ -4177,8 +4229,7 @@ function eval_pyson(value){
                 'disabled',
                 this._readonly ||
                 !record ||
-                !removable ||
-                this._position === 0);
+                !removable);
             this.but_unremove.prop(
                 'disabled',
                 this._readonly ||
@@ -4283,7 +4334,44 @@ function eval_pyson(value){
                     });
         },
         remove: function() {
-            this.screen.remove(false, true, false);
+            let selected_records = this.screen.selected_records;
+            if (selected_records.length <= 0 || selected_records.length >= 20) {
+                let domain = [['id', 'in', this.field.get_eval(this.record)]];
+                let context = this.field.get_search_context(this.record);
+                let order = this.field.get_search_order(this.record);
+                let callback = result => {
+                    if (!jQuery.isEmptyObject(result)) {
+                        let records = [];
+                        for (let [id,] of result) {
+                            records.push(this.screen.group.get(id));
+                        }
+                        this.screen.remove(false, true, false, records);
+                    }
+                };
+                let nodes;
+                if (this.screen.selected_records.length) {
+                    nodes = this.screen.selected_records.map((r) => [r.id]);
+                }
+                new Sao.Window.Search(
+                    this.attributes.relation, callback, {
+                        sel_multi: true,
+                        context: context,
+                        domain: domain,
+                        order: order,
+                        view_ids: (this.attributes.view_ids ||
+                                '').split(','),
+                        views_preload: this.attributes.views || {},
+                        new_: false,
+                        title: Sao.i18n.gettext(
+                            "%1 to remove", this.attributes.string),
+                        button: Sao.Window.Search.Button.REMOVE,
+                        search_filter: '',
+                        selected_nodes: nodes,
+                    });
+
+            } else {
+                this.screen.remove(false, true, false);
+            }
         },
         unremove: function() {
             this.screen.unremove();

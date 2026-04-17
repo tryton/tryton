@@ -10,7 +10,7 @@ from tryton.common.domain_parser import quote
 from tryton.common.underline import set_underline
 from tryton.gui.window.view_form.screen import Screen
 from tryton.gui.window.win_form import WinForm
-from tryton.gui.window.win_search import WinSearch
+from tryton.gui.window.win_search import WinSearch, WinSearchButton
 
 from .widget import Widget
 
@@ -205,12 +205,38 @@ class Many2Many(Widget):
             view_ids=self.attrs.get('view_ids', '').split(','),
             views_preload=self.attrs.get('views', {}),
             new=self.create_access,
-            title=self.attrs.get('string'))
+            title=_("%s to add") % self.attrs.get('string'),
+            button=WinSearchButton.ADD)
         win.screen.search_filter(quote(value))
         win.show()
 
     def _sig_remove(self, *args):
-        self.screen.remove(remove=True)
+        if not (0 < len(self.screen.selected_records) < 20):
+            domain = [('id', 'in', self.field.get_eval(self.record))]
+            context = self.field.get_search_context(self.record)
+            order = self.field.attrs.get('order')
+
+            def callback(result):
+                if result:
+                    records = []
+                    for id, _ in result:
+                        records.append(self.screen.group.get(id))
+                    self.screen.remove(remove=True, records=records)
+            win = WinSearch(
+                self.attrs['relation'], callback, sel_multi=True,
+                context=context, domain=domain, order=order,
+                view_ids=self.attrs.get('view_ids', '').split(','),
+                views_preload=self.attrs.get('views', {}),
+                title=_("%s to remove") % self.attrs.get('string'),
+                new=False,
+                button=WinSearchButton.REMOVE)
+            win.screen.search_filter()
+            if self.screen.selected_records:
+                nodes = [[r.id] for r in self.screen.selected_records]
+                win.screen.current_view.select_nodes(nodes)
+            win.show()
+        else:
+            self.screen.remove(remove=True)
 
     def _sig_unremove(self, *args):
         self.screen.unremove()
@@ -297,7 +323,7 @@ class Many2Many(Widget):
 
         removable = any(
             not r.deleted and not r.removed
-            for r in self.screen.selected_records)
+            for r in self.screen.group)
         unremovable = any(
             r.deleted or r.removed for r in self.screen.selected_records)
 
@@ -306,8 +332,7 @@ class Many2Many(Widget):
                 and not size_limit))
         self.but_remove.set_sensitive(bool(
                 not self._readonly
-                and removable
-                and self._position))
+                and removable))
         self.but_unremove.set_sensitive(bool(
                 not self._readonly
                 and not size_limit

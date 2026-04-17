@@ -1,6 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import gettext
+from enum import Enum, auto
 
 from gi.repository import Gdk, Gtk
 
@@ -15,11 +16,19 @@ from tryton.gui.window.win_form import WinForm
 _ = gettext.gettext
 
 
+class WinSearchButton(Enum):
+    OK = auto()
+    ADD = auto()
+    REMOVE = auto()
+    DELETE = auto()
+
+
 class WinSearch(NoModal):
 
     def __init__(self, model, callback, sel_multi=True, context=None,
             domain=None, order=None, view_ids=None,
-            views_preload=None, new=True, title='', exclude_field=None):
+            views_preload=None, new=True, title='', exclude_field=None,
+            button=WinSearchButton.OK):
         NoModal.__init__(self)
         if view_ids is None:
             view_ids = []
@@ -38,8 +47,7 @@ class WinSearch(NoModal):
         self.exclude_field = exclude_field
 
         self.win = Gtk.Dialog(
-            title=_('Search'), transient_for=self.parent,
-            destroy_with_parent=True)
+            transient_for=self.parent, destroy_with_parent=True)
         Main().add_window(self.win)
         self.win.set_icon(TRYTON_ICON)
         self.win.set_position(Gtk.WindowPosition.CENTER_ON_PARENT)
@@ -69,10 +77,24 @@ class WinSearch(NoModal):
             self.but_new.set_always_show_image(True)
             self.but_new.set_accel_path('<tryton>/Form/New', self.accel_group)
 
+        match button:
+            case WinSearchButton.OK:
+                label = _("OK")
+                icon = 'tryton-ok'
+            case WinSearchButton.ADD:
+                label = _("Add")
+                icon = 'tryton-add'
+            case WinSearchButton.REMOVE:
+                label = _("Remove")
+                icon = 'tryton-remove'
+            case WinSearchButton.DELETE:
+                label = _("Delete")
+                icon = 'tryton-delete'
+
         self.but_ok = self.win.add_button(
-            set_underline(_("OK")), Gtk.ResponseType.OK)
+            set_underline(label), Gtk.ResponseType.OK)
         self.but_ok.set_image(common.IconFactory.get_image(
-                'tryton-ok', Gtk.IconSize.BUTTON))
+                icon, Gtk.IconSize.BUTTON))
         self.but_ok.set_always_show_image(True)
         self.but_ok.add_accelerator(
             'clicked', self.accel_group, Gdk.KEY_Return,

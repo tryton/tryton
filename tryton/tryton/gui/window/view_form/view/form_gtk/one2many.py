@@ -11,7 +11,7 @@ from tryton.common.domain_parser import quote
 from tryton.common.underline import set_underline
 from tryton.gui.window.view_form.screen import Screen
 from tryton.gui.window.win_form import WinForm
-from tryton.gui.window.win_search import WinSearch
+from tryton.gui.window.win_search import WinSearch, WinSearchButton
 
 from .widget import Widget
 
@@ -294,7 +294,7 @@ class One2Many(Widget):
             self.screen.deletable
             and any(
                 not r.deleted and not r.removed
-                for r in self.screen.selected_records))
+                for r in self.screen.group))
         undeletable = any(
             r.deleted or r.removed for r in self.screen.selected_records)
         view_type = self.screen.current_view.view_type
@@ -310,8 +310,7 @@ class One2Many(Widget):
         self.but_del.set_sensitive(bool(
                 not self._readonly
                 and self.delete_access
-                and deletable
-                and self._position is not None))
+                and deletable))
         self.but_undel.set_sensitive(bool(
                 not self._readonly
                 and not size_limit
@@ -328,6 +327,9 @@ class One2Many(Widget):
                 self._length
                 and not first))
         if self.attrs.get('add_remove'):
+            removable = any(
+                not r.deleted and not r.removed
+                for r in self.screen.group)
             self.but_add.set_sensitive(bool(
                     not self._readonly
                     and not size_limit
@@ -335,9 +337,9 @@ class One2Many(Widget):
                     and self.read_access))
             self.but_remove.set_sensitive(bool(
                     not self._readonly
-                    and self._position is not None
                     and self.write_access
-                    and self.read_access))
+                    and self.read_access
+                    and removable))
             self.wid_text.set_sensitive(self.but_add.get_sensitive())
             self.wid_text.set_editable(self.but_add.get_sensitive())
 
@@ -491,7 +493,36 @@ class One2Many(Widget):
         else:
             if not self.delete_access or not deletable:
                 return
-        self.screen.remove(remove=remove)
+        if not (0 < len(self.screen.selected_records) < 20):
+            domain = [('id', 'in', self.field.get_eval(self.record))]
+            context = self.field.get_search_context(self.record)
+            order = self.field.attrs.get('order')
+
+            def callback(result):
+                if result:
+                    records = []
+                    for id, _ in result:
+                        records.append(self.screen.group.get(id))
+                    self.screen.remove(remove=True, records=records)
+            if remove:
+                button = WinSearchButton.REMOVE
+                title = _("%s to remove") % self.attrs.get('string')
+            else:
+                button = WinSearchButton.DELETE
+                title = _("%s to delete") % self.attrs.get('string')
+            win = WinSearch(
+                self.attrs['relation'], callback, sel_multi=True,
+                context=context, domain=domain, order=order,
+                view_ids=self.attrs.get('view_ids', '').split(','),
+                views_preload=self.attrs.get('views', {}),
+                title=title, new=False, button=button)
+            win.screen.search_filter()
+            if self.screen.selected_records:
+                nodes = [[r.id] for r in self.screen.selected_records]
+                win.screen.current_view.select_nodes(nodes)
+            win.show()
+        else:
+            self.screen.remove(remove=remove)
 
     def _sig_undelete(self, button):
         self.screen.unremove()
@@ -532,8 +563,9 @@ class One2Many(Widget):
             view_ids=self.attrs.get('view_ids', '').split(','),
             views_preload=self.attrs.get('views', {}),
             new=self.but_new.get_property('sensitive'),
-            title=self.attrs.get('string'),
-            exclude_field=self.attrs.get('relation_field'))
+            title=_("%s to add") % self.attrs.get('string'),
+            exclude_field=self.attrs.get('relation_field'),
+            button=WinSearchButton.ADD)
         win.screen.search_filter(quote(text))
         win.show()
 
