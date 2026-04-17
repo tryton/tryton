@@ -196,7 +196,7 @@ class IncomingOCRService(metaclass=PoolMeta):
             lines = []
             getter = getattr(
                 self, f'_typless_feedback_payload_line_items_{document.type}')
-            for line in source.line_lines:
+            for line in self._typless_feedback_payload_line_items(source):
                 line_item = []
                 for name in line_items:
                     value = getter(line, name)
@@ -210,7 +210,7 @@ class IncomingOCRService(metaclass=PoolMeta):
             taxes = []
             getter = getattr(
                 self, f'_typless_feedback_payload_vat_rates_{document.type}')
-            for tax_line in source.taxes:
+            for tax_line in self._typless_feedback_payload_vat_rates(source):
                 percentage = getter(tax_line, 'vat_rate_percentage')
                 net = getter(tax_line, 'vat_rate_net')
                 if percentage and net:
@@ -228,9 +228,15 @@ class IncomingOCRService(metaclass=PoolMeta):
         if name == 'document_type':
             return document.type
 
+    def _typless_feedback_payload_line_items(self, record):
+        yield from []
+
     def _typless_feedback_payload_line_items_document_incoming(
             self, line, name):
         pass
+
+    def _typless_feedback_payload_vat_rates(self, record):
+        yield from []
 
     def _typless_feedback_payload_vat_rates_document_incoming(
             self, tax_line, name):
@@ -354,6 +360,13 @@ class IncomingOCRService_IncomingInvoice(metaclass=PoolMeta):
         elif name == 'purchase_orders':
             return invoice.origins
 
+    def _typless_feedback_payload_line_items(self, record):
+        pool = Pool()
+        Invoice = pool.get('account.invoice')
+        yield from super()._typless_feedback_payload_line_items(record)
+        if isinstance(record, Invoice):
+            yield from record.line_lines
+
     def _typless_feedback_payload_line_items_supplier_invoice(
             self, line, name):
         if name == 'product_name':
@@ -376,6 +389,13 @@ class IncomingOCRService_IncomingInvoice(metaclass=PoolMeta):
             return str(line.amount)
         elif name == 'purchase_order':
             return line.origin_name
+
+    def _typless_feedback_payload_vat_rates(self, record):
+        pool = Pool()
+        Invoice = pool.get('account.invoice')
+        yield from super()._typless_feedback_payload_vat_rates(record)
+        if isinstance(record, Invoice):
+            yield from record.taxes
 
     def _typless_feedback_payload_vat_rates_supplier_invoice(
             self, tax_line, name):
