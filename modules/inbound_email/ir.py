@@ -41,13 +41,15 @@ class Channel(metaclass=PoolMeta):
 
     @classmethod
     def _email_channel(cls, email):
+        channel = super()._email_channel(email)
         channels = []
         if (channel_id := _get_channel_identifier(email)):
             channels = cls.search([('identifier', '=', channel_id)])
-        return None if len(channels) != 1 else channels[0]
+        return channel if len(channels) != 1 else channels[0]
 
     @classmethod
     def _email_content(cls, body):
+        body = super()._email_content(body)
         return '\n'.join(itertools.takewhile(
                 lambda l: REPLY_LINE not in l,
                 body.splitlines()))
@@ -60,9 +62,10 @@ class Channel(metaclass=PoolMeta):
 
     @classmethod
     def _email_reply_to(cls, message):
+        reply_to = super()._email_reply_to(message)
         base = config.get(
             'inbound_email', 'chat_reply_to',
-            default=config.get('email', 'from'))
+            default=reply_to or config.get('email', 'from'))
         local_part, domain_part = base.split('@', 1)
         if '+' in local_part:
             local_part, _ = local_part.split('+', 1)
@@ -71,6 +74,7 @@ class Channel(metaclass=PoolMeta):
 
     @classmethod
     def _email_body(cls, message):
+        body = super()._email_body(message)
         with Transaction().set_context(language=message.channel.language):
             above_msg = gettext('inbound_email.msg_reply_above')
-            return f'{REPLY_LINE}\n{above_msg}\n\n{message.content}'
+            return f'{REPLY_LINE}\n{above_msg}\n\n{body}'
