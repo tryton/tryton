@@ -3745,9 +3745,8 @@ function eval_pyson(value){
                 var fields = this.screen.current_view.get_fields();
                 record.validate(fields).then(validate => {
                     if (!validate) {
-                        this.screen.display(true);
-                        prm.reject();
-                        return;
+                        this.screen.display(true).always(() => prm.reject());
+                        return prm;
                     }
                     if (this.screen.pre_validate) {
                         return record.pre_validate().then(
