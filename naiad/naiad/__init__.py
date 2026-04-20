@@ -15,7 +15,7 @@ import httpx
 
 from ._json import JSONDecoder, JSONEncoder
 
-__version__ = "7.9.0"
+__version__ = "8.0.0"
 __all__ = ['Client', 'Record', 'set_delete', 'set_remove']
 _json_decoder = JSONDecoder()
 

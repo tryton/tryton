@@ -1,3 +1,7 @@
+
+Version 8.0.0 - 2026-04-20
+--------------------------
+* Bug fixes (see mercurial logs for details)
 * Render prepaid amount
 * Fill invoice source amounts instead of checking amounts
 * Filter the MIME type of the additional documents allowed by the specification

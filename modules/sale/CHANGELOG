@@ -1,3 +1,7 @@
+
+Version 8.0.0 - 2026-04-20
+--------------------------
+* Bug fixes (see mercurial logs for details)
 * Calculate the quantities to ship and to invoice for sale
 * Rename invoice method on shipment into on fulfillment
 * Add support for Python 3.14

@@ -1,3 +1,7 @@
+
+Version 8.0.0 - 2026-04-20
+--------------------------
+* Bug fixes (see mercurial logs for details)
 * Check the invoice amounts against the source amounts
 * Add support for Python 3.14
 * Remove support for Python 3.9

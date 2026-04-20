@@ -1,3 +1,7 @@
+
+Version 8.0.0 - 2026-04-20
+--------------------------
+* Bug fixes (see mercurial logs for details)
 * Use relative path for server requests
 * Use cookie to store session
 * Move the logout entry and add a help entry to the notification menu

@@ -1,3 +1,7 @@
+
+Version 8.0.0 - 2026-04-20
+--------------------------
+* Bug fixes (see mercurial logs for details)
 * Add REST API
 * Add rpc suffix to URL for RPC call
 * Support mounting application under a prefix
