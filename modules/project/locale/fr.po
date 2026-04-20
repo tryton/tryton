@@ -2,6 +2,14 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgctxt "field:project.configuration,work_sequence:"
+msgid "Work Effort Sequence"
+msgstr "Séquence d'effort de travail"
+
+msgctxt "field:project.configuration.sequence,work_sequence:"
+msgid "Work Effort Sequence"
+msgstr "Séquence d'effort de travail"
+
 msgctxt "field:project.work,children:"
 msgid "Children"
 msgstr "Enfants"
@@ -21,6 +29,14 @@ msgstr "Effort"
 msgctxt "field:project.work,name:"
 msgid "Name"
 msgstr "Nom"
+
+msgctxt "field:project.work,number:"
+msgid "Number"
+msgstr "Numéro"
+
+msgctxt "field:project.work,origin:"
+msgid "Origin"
+msgstr "Origine"
 
 msgctxt "field:project.work,parent:"
 msgid "Parent"
@@ -98,9 +114,21 @@ msgctxt "field:project.work.status,types:"
 msgid "Types"
 msgstr "Types"
 
+msgctxt "help:project.configuration,work_sequence:"
+msgid "Used to generate the work number."
+msgstr "Utilisé pour générer le numéro de travail."
+
+msgctxt "help:project.configuration.sequence,work_sequence:"
+msgid "Used to generate the work number."
+msgstr "Utilisé pour générer le numéro de travail."
+
 msgctxt "help:project.work,effort_duration:"
 msgid "Estimated Effort for this work."
 msgstr "Effort estimé pour ce travail."
+
+msgctxt "help:project.work,origin:"
+msgid "The source of the task."
+msgstr "La source de la tâche."
 
 msgctxt "help:project.work,progress:"
 msgid "Estimated progress for this work."
@@ -141,6 +169,10 @@ msgstr "Le type de travaux qui peuvent utiliser ce statut."
 msgctxt "model:ir.action,name:act_open_child_work"
 msgid "Tasks"
 msgstr "Tâches"
+
+msgctxt "model:ir.action,name:act_project_configuration"
+msgid "Configuration"
+msgstr "Configuration"
 
 msgctxt "model:ir.action,name:act_project_form"
 msgid "Projects"
@@ -199,6 +231,10 @@ msgstr ""
 "Pour définir le travail « %(work)s » dans le statut « %(status)s », vous "
 "devez augmenter sa progression jusqu'à au moins %(progress)s."
 
+msgctxt "model:ir.message,text:msg_work_number_unique"
+msgid "The number on work must be unique."
+msgstr "Le numéro sur le travail doit être unique."
+
 #, python-format
 msgctxt "model:ir.message,text:msg_work_parent_progress"
 msgid ""
@@ -212,6 +248,14 @@ msgctxt "model:ir.rule.group,name:rule_group_work_companies"
 msgid "User in companies"
 msgstr "Utilisateur dans les sociétés"
 
+msgctxt "model:ir.sequence,name:sequence_work"
+msgid "Work Effort"
+msgstr "Effort de travail"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_work"
+msgid "Project Work Effort"
+msgstr "Effort de travail de projet"
+
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
 msgstr "Configuration"
@@ -219,6 +263,10 @@ msgstr "Configuration"
 msgctxt "model:ir.ui.menu,name:menu_project"
 msgid "Projects"
 msgstr "Projets"
+
+msgctxt "model:ir.ui.menu,name:menu_project_configuration"
+msgid "Configuration"
+msgstr "Configuration"
 
 msgctxt "model:ir.ui.menu,name:menu_project_form"
 msgid "Projects"
@@ -247,6 +295,14 @@ msgstr "Statut de travail"
 msgctxt "model:ir.ui.menu,name:menu_work_tree"
 msgid "Works Efforts"
 msgstr "Efforts de travail"
+
+msgctxt "model:project.configuration,string:"
+msgid "Project Configuration"
+msgstr "Configuration de projet"
+
+msgctxt "model:project.configuration.sequence,string:"
+msgid "Project Configuration Sequence"
+msgstr "Séquence de configuration de projet"
 
 msgctxt "model:project.work,string:"
 msgid "Project Work"

@@ -97,7 +97,7 @@ msgstr "Partnersko razmerje"
 
 #, fuzzy
 msgctxt "model:party.relation.all,string:"
-msgid "Party Relation"
+msgid "Party Relation All"
 msgstr "Partnersko razmerje"
 
 #, fuzzy

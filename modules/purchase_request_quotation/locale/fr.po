@@ -228,7 +228,7 @@ msgstr "Ligne de demande de devis d'achat"
 
 msgctxt "report:purchase.request.quotation:"
 msgid ":"
-msgstr " : "
+msgstr ":"
 
 msgctxt "report:purchase.request.quotation:"
 msgid "Customer Code:"

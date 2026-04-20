@@ -18,6 +18,22 @@ msgctxt "field:account.tax.template,unece_code:"
 msgid "UNECE Code"
 msgstr "Código UNECE"
 
+msgctxt "field:product.product,unece_allowance_charge_code:"
+msgid "UNECE Allowance/Charge Code"
+msgstr "Código UNECE de abono/cargo"
+
+msgctxt "field:product.product,unece_special_service_code:"
+msgid "UNECE Special Service Code"
+msgstr "Código UNECE de servicio especial"
+
+msgctxt "field:product.template,unece_allowance_charge_code:"
+msgid "UNECE Allowance/Charge Code"
+msgstr "Código UNECE de abono/cargo"
+
+msgctxt "field:product.template,unece_special_service_code:"
+msgid "UNECE Special Service Code"
+msgstr "Código de servicio especial para UNECE"
+
 msgctxt "field:product.uom,unece_code:"
 msgid "UNECE Code"
 msgstr "Código UNECE"
@@ -31,6 +47,26 @@ msgctxt "help:account.tax,unece_code:"
 msgid "Standard code of the United Nations Economic Commission for Europe."
 msgstr ""
 "Código estándar de la comisión económica de las naciones unidas a Europa."
+
+msgctxt "help:product.product,unece_allowance_charge_code:"
+msgid "Standard code of the United Nations Economic Commission for Europe."
+msgstr ""
+"Código estándar de la Comisión Económica de las Naciones Unidas para Europa."
+
+msgctxt "help:product.product,unece_special_service_code:"
+msgid "Standard code of the United Nations Economic Commission for Europe."
+msgstr ""
+"Código estándar de la Comisión Económica de las Naciones Unidas para Europa."
+
+msgctxt "help:product.template,unece_allowance_charge_code:"
+msgid "Standard code of the United Nations Economic Commission for Europe."
+msgstr ""
+"Código estándar de la comisión económica de las naciones unidas para Europa."
+
+msgctxt "help:product.template,unece_special_service_code:"
+msgid "Standard code of the United Nations Economic Commission for Europe."
+msgstr ""
+"Código estándar de la comisión económica de las naciones unidas para Europa."
 
 msgctxt "help:product.uom,unece_code:"
 msgid "Standard code of the United Nations Economic Commission for Europe."
@@ -344,6 +380,2958 @@ msgstr "Deposito de valoración"
 msgctxt "selection:account.tax,unece_code:"
 msgid "Value added tax"
 msgstr "Impuesto sobre el valor añadido"
+
+msgctxt "selection:product.product,unece_allowance_charge_code:"
+msgid "Acceptance commission"
+msgstr "Comisión de aceptación"
+
+msgctxt "selection:product.product,unece_allowance_charge_code:"
+msgid "Additional processing costs"
+msgstr "Costos adicionales de procesamiento"
+
+msgctxt "selection:product.product,unece_allowance_charge_code:"
+msgid "Advising commission"
+msgstr "Comisión de asesoramiento"
+
+msgctxt "selection:product.product,unece_allowance_charge_code:"
+msgid "Agreed debit interest charge"
+msgstr "Cargo de interés de débito acordado"
+
+msgctxt "selection:product.product,unece_allowance_charge_code:"
+msgid "Aluminum surcharge"
+msgstr "Recargo de aluminio"
+
+msgctxt "selection:product.product,unece_allowance_charge_code:"
+msgid "Amendment commission"
+msgstr "Comisión de enmienda"
+
+msgctxt "selection:product.product,unece_allowance_charge_code:"
+msgid "Attesting charge"
+msgstr "Cargo de atestiguamento"
+
+msgctxt "selection:product.product,unece_allowance_charge_code:"
+msgid "B/L splitting charges"
+msgstr "Cargos de división B/L"
+
+msgctxt "selection:product.product,unece_allowance_charge_code:"
+msgid "Bank charges"
+msgstr "Cargos bancarios"
+
+msgctxt "selection:product.product,unece_allowance_charge_code:"
+msgid "Bank charges information"
+msgstr "Información de cargos bancarios"
+
+msgctxt "selection:product.product,unece_allowance_charge_code:"
+msgid "Bonus for works ahead of schedule"
+msgstr "Bonos por trabajos adelantados"
+
+msgctxt "selection:product.product,unece_allowance_charge_code:"
+msgid "Brokerage"
+msgstr "Corretaje"
+
+msgctxt "selection:product.product,unece_allowance_charge_code:"
+msgid "Carbon footprint charge"
+msgstr "Cargo por huella de carbono"
+
+msgctxt "selection:product.product,unece_allowance_charge_code:"
+msgid "Chamber of commerce charge"
+msgstr "Cargo por cámara de comercio"
+
+msgctxt "selection:product.product,unece_allowance_charge_code:"
+msgid "Charge for a customer specific finish"
+msgstr "Cargo por acabado específico del usuario"
+
+msgctxt "selection:product.product,unece_allowance_charge_code:"
+msgid "Charge per credit cover"
+msgstr "Cargo por cobertura de crédito"
+
+msgctxt "selection:product.product,unece_allowance_charge_code:"
+msgid "Charge per unused credit cover"
+msgstr "Cargo por cobertura de crédito no utilizada"
+
+msgctxt "selection:product.product,unece_allowance_charge_code:"
+msgid "Collection commission"
+msgstr "Comisión por recolección"
+
+msgctxt "selection:product.product,unece_allowance_charge_code:"
+msgid "Commission for obtaining acceptance"
+msgstr "Comisión por obtención de aceptación"
+
+msgctxt "selection:product.product,unece_allowance_charge_code:"
+msgid "Commission for opening irrevocable documentary credits"
+msgstr "Comisión por apertura de créditos documentarios irrevocables"
+
+msgctxt "selection:product.product,unece_allowance_charge_code:"
+msgid "Commission for release of goods"
+msgstr "Comisión por liberación de mercancías"
+
+msgctxt "selection:product.product,unece_allowance_charge_code:"
+msgid "Commission for taking up documents"
+msgstr "Comisión por recepción de documentos"
+
+msgctxt "selection:product.product,unece_allowance_charge_code:"
+msgid "Commission on delivery"
+msgstr "Comisión sobre la entrega"
+
+msgctxt "selection:product.product,unece_allowance_charge_code:"
+msgid "Confirmation commission"
+msgstr "Comisión de confirmación"
+
+msgctxt "selection:product.product,unece_allowance_charge_code:"
+msgid "Contractual retention"
+msgstr "Retención contractual"
+
+msgctxt "selection:product.product,unece_allowance_charge_code:"
+msgid "Copper surcharge"
+msgstr "Recargo por cobre"
+
+msgctxt "selection:product.product,unece_allowance_charge_code:"
+msgid "Courier fee"
+msgstr "Cargo de mensajería"
+
+msgctxt "selection:product.product,unece_allowance_charge_code:"
+msgid "Deferred payment commission"
+msgstr "Comisión por pago diferido"
+
+msgctxt "selection:product.product,unece_allowance_charge_code:"
+msgid "Discount"
+msgstr "Descuento"
+
+msgctxt "selection:product.product,unece_allowance_charge_code:"
+msgid "Discrepancy fee"
+msgstr "Cargo por discrepancia"
+
+msgctxt "selection:product.product,unece_allowance_charge_code:"
+msgid "Domicilation commission"
+msgstr "Comisión de domiciliación"
+
+msgctxt "selection:product.product,unece_allowance_charge_code:"
+msgid "Due to military status"
+msgstr "Debido a situación militar"
+
+msgctxt "selection:product.product,unece_allowance_charge_code:"
+msgid "Due to work accident"
+msgstr "Debido a accidente laboral"
+
+msgctxt "selection:product.product,unece_allowance_charge_code:"
+msgid "End-of-range discount"
+msgstr "Descuento de fin de gama"
+
+msgctxt "selection:product.product,unece_allowance_charge_code:"
+msgid "Factoring commission"
+msgstr "Comisión de factoring"
+
+msgctxt "selection:product.product,unece_allowance_charge_code:"
+msgid "Fax advice charge"
+msgstr "Cargo por aviso por fax"
+
+msgctxt "selection:product.product,unece_allowance_charge_code:"
+msgid "Fee for payment under reserve"
+msgstr "Tasa por pago bajo reserva"
+
+msgctxt "selection:product.product,unece_allowance_charge_code:"
+msgid "Fixed long term"
+msgstr "Fijo a largo plazo"
+
+msgctxt "selection:product.product,unece_allowance_charge_code:"
+msgid "Foreign exchange charges"
+msgstr "Cargos por cambio de divisa"
+
+msgctxt "selection:product.product,unece_allowance_charge_code:"
+msgid "Freight charges"
+msgstr "Cargos por flete"
+
+msgctxt "selection:product.product,unece_allowance_charge_code:"
+msgid "Gold surcharge"
+msgstr "Recargo por oro"
+
+msgctxt "selection:product.product,unece_allowance_charge_code:"
+msgid "Guarantee commission"
+msgstr "Comisión de garantía"
+
+msgctxt "selection:product.product,unece_allowance_charge_code:"
+msgid "Handling commission"
+msgstr "Comisión de manipulación"
+
+msgctxt "selection:product.product,unece_allowance_charge_code:"
+msgid "Incoterm discount"
+msgstr "Descuento por Incoterm"
+
+msgctxt "selection:product.product,unece_allowance_charge_code:"
+msgid "Insurance"
+msgstr "Seguro"
+
+msgctxt "selection:product.product,unece_allowance_charge_code:"
+msgid "Interest"
+msgstr "Interés"
+
+msgctxt "selection:product.product,unece_allowance_charge_code:"
+msgid "Interest on arrears"
+msgstr "Intereses de demora"
+
+msgctxt "selection:product.product,unece_allowance_charge_code:"
+msgid "Job-order production costs"
+msgstr "Costes de producción por orden de trabajo"
+
+msgctxt "selection:product.product,unece_allowance_charge_code:"
+msgid "Lead surcharge"
+msgstr "Recargo por plomo"
+
+msgctxt "selection:product.product,unece_allowance_charge_code:"
+msgid "Loading charge"
+msgstr "Cargo de carga"
+
+msgctxt "selection:product.product,unece_allowance_charge_code:"
+msgid "Manufacturer's consumer discount"
+msgstr "Descuento al consumidor del fabricante"
+
+msgctxt "selection:product.product,unece_allowance_charge_code:"
+msgid "Material surcharge (special materials)"
+msgstr "Recargo por material (materiales especiales)"
+
+msgctxt "selection:product.product,unece_allowance_charge_code:"
+msgid "Material surcharge/deduction"
+msgstr "Recargo/deducción por material"
+
+msgctxt "selection:product.product,unece_allowance_charge_code:"
+msgid "Minimum commission"
+msgstr "Comisión mínima"
+
+msgctxt "selection:product.product,unece_allowance_charge_code:"
+msgid "Minimum order / minimum billing charge"
+msgstr "Cargo por pedido mínimo / facturación mínima"
+
+msgctxt "selection:product.product,unece_allowance_charge_code:"
+msgid "Miscellaneous charges"
+msgstr "Cargos varios"
+
+msgctxt "selection:product.product,unece_allowance_charge_code:"
+msgid "Model charges"
+msgstr "Cargos por modelo"
+
+msgctxt "selection:product.product,unece_allowance_charge_code:"
+msgid "Negotiation commission"
+msgstr "Comisión de negociación"
+
+msgctxt "selection:product.product,unece_allowance_charge_code:"
+msgid "New outlet discount"
+msgstr "Descuento por nuevo punto de venta"
+
+msgctxt "selection:product.product,unece_allowance_charge_code:"
+msgid "Off-premises costs"
+msgstr "Costes fuera de las instalaciones"
+
+msgctxt "selection:product.product,unece_allowance_charge_code:"
+msgid "Opening commission"
+msgstr "Comisión de apertura"
+
+msgctxt "selection:product.product,unece_allowance_charge_code:"
+msgid "Other bonus"
+msgstr "Otro bono"
+
+msgctxt "selection:product.product,unece_allowance_charge_code:"
+msgid "Other penalties"
+msgstr "Otras penalizaciones"
+
+msgctxt "selection:product.product,unece_allowance_charge_code:"
+msgid "Other retentions"
+msgstr "Otras retenciones"
+
+msgctxt "selection:product.product,unece_allowance_charge_code:"
+msgid "Packing charge"
+msgstr "Cargo por embalaje"
+
+msgctxt "selection:product.product,unece_allowance_charge_code:"
+msgid "Penalty for execution of works behind schedule"
+msgstr "Penalización por ejecución de obras fuera de plazo"
+
+msgctxt "selection:product.product,unece_allowance_charge_code:"
+msgid "Penalty for late delivery of documents"
+msgstr "Penalización por entrega tardía de documentos"
+
+msgctxt "selection:product.product,unece_allowance_charge_code:"
+msgid "Penalty for late delivery of valuation of works"
+msgstr "Penalización por entrega tardía de la valoración de las obras"
+
+msgctxt "selection:product.product,unece_allowance_charge_code:"
+msgid "Phone fee"
+msgstr "Cargo telefónico"
+
+msgctxt "selection:product.product,unece_allowance_charge_code:"
+msgid "Platinum surcharge"
+msgstr "Recargo por platino"
+
+msgctxt "selection:product.product,unece_allowance_charge_code:"
+msgid "Point of sales threshold allowance"
+msgstr "Bonificación por umbral de punto de venta"
+
+msgctxt "selection:product.product,unece_allowance_charge_code:"
+msgid "Postage fee"
+msgstr "Tasa de franqueo"
+
+msgctxt "selection:product.product,unece_allowance_charge_code:"
+msgid "Pre-advice commission"
+msgstr "Comisión de preaviso"
+
+msgctxt "selection:product.product,unece_allowance_charge_code:"
+msgid "Price index surcharge"
+msgstr "Recargo por índice de precios"
+
+msgctxt "selection:product.product,unece_allowance_charge_code:"
+msgid "Pro rata retention"
+msgstr "Retención prorrateada"
+
+msgctxt "selection:product.product,unece_allowance_charge_code:"
+msgid "Production error discount"
+msgstr "Descuento por error de producción"
+
+msgctxt "selection:product.product,unece_allowance_charge_code:"
+msgid "Project management cost"
+msgstr "Coste de gestión de proyecto"
+
+msgctxt "selection:product.product,unece_allowance_charge_code:"
+msgid "Reimbursement commission"
+msgstr "Comisión de reembolso"
+
+msgctxt "selection:product.product,unece_allowance_charge_code:"
+msgid "Repair charge"
+msgstr "Cargo por reparación"
+
+msgctxt "selection:product.product,unece_allowance_charge_code:"
+msgid "Repatriation charges"
+msgstr "Cargos de repatriación"
+
+msgctxt "selection:product.product,unece_allowance_charge_code:"
+msgid "Return commission"
+msgstr "Comisión de devolución"
+
+msgctxt "selection:product.product,unece_allowance_charge_code:"
+msgid "Risk commission"
+msgstr "Comisión de riesgo"
+
+msgctxt "selection:product.product,unece_allowance_charge_code:"
+msgid "Rush delivery surcharge"
+msgstr "Recargo por entrega urgente"
+
+msgctxt "selection:product.product,unece_allowance_charge_code:"
+msgid "S.W.I.F.T. fee"
+msgstr "Tasa S.W.I.F.T."
+
+msgctxt "selection:product.product,unece_allowance_charge_code:"
+msgid "Sample discount"
+msgstr "Descuento por muestra"
+
+msgctxt "selection:product.product,unece_allowance_charge_code:"
+msgid "Setup charge"
+msgstr "Cargo de preparación"
+
+msgctxt "selection:product.product,unece_allowance_charge_code:"
+msgid "Silver surcharge"
+msgstr "Recargo por plata"
+
+msgctxt "selection:product.product,unece_allowance_charge_code:"
+msgid "Special agreement"
+msgstr "Acuerdo especial"
+
+msgctxt "selection:product.product,unece_allowance_charge_code:"
+msgid "Special construction costs"
+msgstr "Costes especiales de construcción"
+
+msgctxt "selection:product.product,unece_allowance_charge_code:"
+msgid "Special rebate"
+msgstr "Rebaja especial"
+
+msgctxt "selection:product.product,unece_allowance_charge_code:"
+msgid "Stamp duty"
+msgstr "Impuesto de timbre"
+
+msgctxt "selection:product.product,unece_allowance_charge_code:"
+msgid "Standard"
+msgstr "Estándar"
+
+msgctxt "selection:product.product,unece_allowance_charge_code:"
+msgid "Supervisory commission"
+msgstr "Comisión de supervisión"
+
+msgctxt "selection:product.product,unece_allowance_charge_code:"
+msgid "Surcharge"
+msgstr "Recargo"
+
+msgctxt "selection:product.product,unece_allowance_charge_code:"
+msgid "Technical modification costs"
+msgstr "Costes de modificación técnica"
+
+msgctxt "selection:product.product,unece_allowance_charge_code:"
+msgid "Telex fee"
+msgstr "Tasa de télex"
+
+msgctxt "selection:product.product,unece_allowance_charge_code:"
+msgid "Temporary"
+msgstr "Temporal"
+
+msgctxt "selection:product.product,unece_allowance_charge_code:"
+msgid "Testing charge"
+msgstr "Cargo por ensayo"
+
+msgctxt "selection:product.product,unece_allowance_charge_code:"
+msgid "Transfer charges"
+msgstr "Gastos de transferencia"
+
+msgctxt "selection:product.product,unece_allowance_charge_code:"
+msgid "Transfer commission"
+msgstr "Comisión por transferencia"
+
+msgctxt "selection:product.product,unece_allowance_charge_code:"
+msgid "Trust commission"
+msgstr "Comisión fiduciaria"
+
+msgctxt "selection:product.product,unece_allowance_charge_code:"
+msgid "Warehousing charge"
+msgstr "Cargo por almacenaje"
+
+msgctxt "selection:product.product,unece_allowance_charge_code:"
+msgid "Wolfram surcharge"
+msgstr "Recargo por wolframio"
+
+msgctxt "selection:product.product,unece_allowance_charge_code:"
+msgid "Yearly turnover"
+msgstr "Volumen anual"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Acceptance cost"
+msgstr "Coste de aceptación"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Additional material"
+msgstr "Material adicional"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Adjustments"
+msgstr "Ajustes"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Advertising allowance"
+msgstr "Bonificación publicitaria"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Air freight transportation"
+msgstr "Transporte aéreo de mercancías"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Airbag charge"
+msgstr "Cargo por airbag"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Aircraft refueling"
+msgstr "Repostaje de aeronaves"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Airport fee"
+msgstr "Tasa aeroportuaria"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Airport system fee"
+msgstr "Tasa del sistema aeroportuario"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Allowance"
+msgstr "Bonificación"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Alloy surcharge"
+msgstr "Recargo por aleación"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Aluminium surcharge"
+msgstr "Recargo por aluminio"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Attestation fee"
+msgstr "Tasa de certificación"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Authentication charge"
+msgstr "Cargo por autenticación"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Below schedule quantity after quantity-based surcharge"
+msgstr "Cantidad inferior a la prevista tras recargo por cantidad"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Bill of lading charge"
+msgstr "Cargo por conocimiento de embarque"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Binding services"
+msgstr "Servicios de encuadernación"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Bopsheet charge"
+msgstr "Cargo por hoja BOP"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Brass surcharge"
+msgstr "Recargo por latón"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "COD charge"
+msgstr "Cargo por reembolso"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Cancellation charge"
+msgstr "Cargo por cancelación"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Car loading"
+msgstr "Carga de vehículos"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Carriage charge"
+msgstr "Cargo por transporte"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Cartage"
+msgstr "Acarreo"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Carton packing"
+msgstr "Embalaje en cartón"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Cash discount"
+msgstr "Descuento por pronto pago"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Cataloguing services"
+msgstr "Servicios de catalogación"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Cents off"
+msgstr "Descuento en céntimos"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Certificate of conformance"
+msgstr "Certificado de conformidad"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Certificate of origin"
+msgstr "Certificado de origen"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Certification fee"
+msgstr "Tasa de certificación"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Cigarette stamping"
+msgstr "Timbrado de cigarrillos"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Cleaning charge"
+msgstr "Cargo de limpieza"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Coke surcharge"
+msgstr "Recargo por coque"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Combine all same day shipment"
+msgstr "Agrupar todos los envíos del mismo día"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Commission"
+msgstr "Comisión"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Competitive allowance"
+msgstr "Bonificación competitiva"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Competitive auto allowance"
+msgstr "Bonificación competitiva para automoción"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Competitive price"
+msgstr "Precio competitivo"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Compulsory storage fee"
+msgstr "Tasa de almacenamiento obligatorio"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Concession fee"
+msgstr "Canon de concesión"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Consolidation"
+msgstr "Consolidación"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Consular costs"
+msgstr "Costes consulares"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Container allowance"
+msgstr "Bonificación por contenedor"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Container deposit charge"
+msgstr "Cargo por depósito de contenedor"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Containerisation"
+msgstr "Contenerización"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Contract allowance"
+msgstr "Bonificación contractual"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Copper surcharge"
+msgstr "Recargo por cobre"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Count and recount"
+msgstr "Conteo y reconteo"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Customer collection rebate"
+msgstr "Descuento por recogida por el cliente"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Customs bond charge"
+msgstr "Cargo por fianza aduanera"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Customs duty charge"
+msgstr "Cargo por derechos de aduana"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Cutting charge"
+msgstr "Cargo por corte"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Damaged merchandise"
+msgstr "Mercancía dañada"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Deduction for delayed return"
+msgstr "Deducción por devolución tardía"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Deduction for missing parts"
+msgstr "Deducción por piezas faltantes"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Defective allowance"
+msgstr "Bonificación por defectos"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Deficit freight"
+msgstr "Flete deficitario"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Defuel"
+msgstr "Extracción de combustible"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Delivery"
+msgstr "Entrega"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Demurrage"
+msgstr "Demora"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Direct delivery"
+msgstr "Entrega directa"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Disconnect"
+msgstr "Desconexión"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Discount"
+msgstr "Descuento"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Distribution"
+msgstr "Distribución"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Distributor discount/allowance"
+msgstr "Descuento/bonificación del distribuidor"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Diversion"
+msgstr "Desvío"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Driver assigned unloading"
+msgstr "Descarga asignada al conductor"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Drop dock"
+msgstr "Descarga en muelle"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Drop yard"
+msgstr "Descarga en patio"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Drum deposit"
+msgstr "Depósito por bidón"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Dunnage charge"
+msgstr "Cargo por material de estiba"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Early buy allowance"
+msgstr "Bonificación por compra anticipada"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Early payment allowance"
+msgstr "Bonificación por pronto pago"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Efficient logistics"
+msgstr "Logística eficiente"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Enamelling treatment"
+msgstr "Tratamiento de esmaltado"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Energy surcharge"
+msgstr "Recargo energético"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Engraving"
+msgstr "Grabado"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Exchange rate guarantee charge"
+msgstr "Cargo por garantía de tipo de cambio"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Excise tax-destination"
+msgstr "Impuesto especial en destino"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Expediting premium"
+msgstr "Recargo por tramitación urgente"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Export shipping charge"
+msgstr "Cargo por envío de exportación"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Fabrication charge"
+msgstr "Cargo de fabricación"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Filling/handling charge"
+msgstr "Cargo por llenado/manipulación"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Finance charge"
+msgstr "Cargo financiero"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Fitting surcharge"
+msgstr "Recargo por montaje"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Flat rate"
+msgstr "Tarifa fija"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Free goods"
+msgstr "Mercancía gratuita"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Freight allowance"
+msgstr "Bonificación por flete"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Freight charge"
+msgstr "Cargo por flete"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Freight charge/costs of loading"
+msgstr "Cargo por flete/costes de carga"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Freight equalization"
+msgstr "Igualación de flete"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Freight surcharge"
+msgstr "Recargo por flete"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Fuel shipped into storage"
+msgstr "Combustible enviado a almacenamiento"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Full pallet ordering"
+msgstr "Pedido por palé completo"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Future discount off retail"
+msgstr "Descuento futuro sobre precio minorista"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Gold surcharge"
+msgstr "Recargo por oro"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Grinding"
+msgstr "Rectificado"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Handling"
+msgstr "Manipulación"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Handling by the 1st level sub-contractor"
+msgstr "Manipulación por el subcontratista de primer nivel"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Handling by the 2nd level sub-contractor"
+msgstr "Manipulación por el subcontratista de segundo nivel"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Handling by the contractor"
+msgstr "Manipulación por el contratista"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Handling of hazardous cargo"
+msgstr "Manipulación de mercancía peligrosa"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Heat treatment"
+msgstr "Tratamiento térmico"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Hessian wrapped"
+msgstr "Embalado en arpillera"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Hoisting and hauling"
+msgstr "Izado y arrastre"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Hose charge"
+msgstr "Cargo por manguera"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Inland transportation"
+msgstr "Transporte interior"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Inside delivery charge"
+msgstr "Cargo por entrega interior"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Inspection fee"
+msgstr "Tasa de inspección"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Installation"
+msgstr "Instalación"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Installation and training"
+msgstr "Instalación y formación"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Installation and warranty"
+msgstr "Instalación y garantía"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Insurance"
+msgstr "Seguro"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Into plane fee"
+msgstr "Tasa por entrega al avión"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Invoice adjustment"
+msgstr "Ajuste de factura"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Invoice services"
+msgstr "Servicios de facturación"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Job-order production"
+msgstr "Producción por orden de trabajo"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Koshering"
+msgstr "Certificación kosher"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Labelling"
+msgstr "Etiquetado"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Labour (repair and return orders)"
+msgstr "Mano de obra (órdenes de reparación y devolución)"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Labour charge"
+msgstr "Cargo de mano de obra"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Layout/design"
+msgstr "Maquetación/diseño"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Lead surcharge"
+msgstr "Recargo por plomo"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Legalisation fee"
+msgstr "Tasa de legalización"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "License fee"
+msgstr "Tasa de licencia"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Local sales tax"
+msgstr "Impuesto de ventas locales"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Location differential"
+msgstr "Diferencial por ubicación"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Mail invoice"
+msgstr "Enviar factura por correo"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Mail invoice to each location"
+msgstr "Enviar factura por correo a cada ubicación"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Material allowance (special materials)"
+msgstr "Bonificación por material (materiales especiales)"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Material surcharge (special materials)"
+msgstr "Recargo por material (materiales especiales)"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Material surcharge/deduction"
+msgstr "Recargo/deducción por material"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Merchandising"
+msgstr "Merchandising"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Mileage fee (for repair and return)"
+msgstr "Cargo por kilometraje (para reparación y devolución)"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Mileage or travel"
+msgstr "Kilometraje o desplazamiento"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Minimum amount costs for quantity based surcharges"
+msgstr "Costes de importe mínimo para recargos basados en cantidad"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Minimum order/minimum billing charge"
+msgstr "Cargo por pedido mínimo/facturación mínima"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Miscellaneous"
+msgstr "Varios"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Miscellaneous customs charge"
+msgstr "Cargo aduanero varios"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Miscellaneous other surcharges"
+msgstr "Otros recargos varios"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Miscellaneous rebate or discount"
+msgstr "Rebaja o descuento varios"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Miscellaneous setting costs (tooling)"
+msgstr "Costes varios de preparación (utillaje)"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Miscellaneous special tooling charge"
+msgstr "Cargo varios por utillaje especial"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Miscellaneous treatment"
+msgstr "Tratamiento varios"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Modification costs"
+msgstr "Costes de modificación"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Monthly rental"
+msgstr "Alquiler mensual"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Mounting"
+msgstr "Montaje"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Mutually defined"
+msgstr "Definido mutuamente"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "New product introduction"
+msgstr "Introducción de nuevo producto"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Non-returnable containers"
+msgstr "Contenedores no retornables"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Non-standard surcharge"
+msgstr "Recargo no estándar"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Ocean freight charge"
+msgstr "Cargo por flete marítimo"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Off-premises surcharge"
+msgstr "Recargo fuera de las instalaciones"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Other services"
+msgstr "Otros servicios"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Outlays"
+msgstr "Desembolsos"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Outside cable connectors"
+msgstr "Conectores de cable externos"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Overtime"
+msgstr "Horas extraordinarias"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Overtime loading"
+msgstr "Carga en horas extraordinarias"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Pack invoice with shipment"
+msgstr "Incluir factura con el envío"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Packaging surcharge"
+msgstr "Recargo por embalaje"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Packing"
+msgstr "Embalaje"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Painting"
+msgstr "Pintura"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Palladium surcharge"
+msgstr "Recargo por paladio"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Pallet charge"
+msgstr "Cargo por palé"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Palletizing"
+msgstr "Paletización"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Per order charge"
+msgstr "Cargo por pedido"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Per pound charge"
+msgstr "Cargo por libra"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Phosphatizing (steel treatment)"
+msgstr "Fosfatado (tratamiento del acero)"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Pick-up"
+msgstr "Recogida"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Pick-up allowance"
+msgstr "Bonificación por recogida"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Plating treatment"
+msgstr "Tratamiento de recubrimiento"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Platinum surcharge"
+msgstr "Recargo por platino"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Polishing"
+msgstr "Pulido"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Polyethylene wrap packing"
+msgstr "Embalaje con envoltura de polietileno"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Postage charge"
+msgstr "Cargo de franqueo"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Premium charge"
+msgstr "Cargo adicional"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Preservation treatment"
+msgstr "Tratamiento de conservación"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Price index surcharge"
+msgstr "Recargo por índice de precios"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Priming"
+msgstr "Imprimación"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Processing surcharge"
+msgstr "Recargo por procesamiento"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Product mix"
+msgstr "Combinación de productos"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Promotional allowance"
+msgstr "Bonificación promocional"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Promotional discount"
+msgstr "Descuento promocional"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Quantity discount"
+msgstr "Descuento por cantidad"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Quantity surcharge"
+msgstr "Recargo por cantidad"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Rail wagon hire"
+msgstr "Alquiler de vagón ferroviario"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Re-delivery charge"
+msgstr "Cargo por nueva entrega"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Rebate"
+msgstr "Bonificación"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Refurbishing charge"
+msgstr "Cargo por reacondicionamiento"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Rents and leases"
+msgstr "Alquileres y arrendamientos"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Repack charge"
+msgstr "Cargo por reembalaje"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Repair"
+msgstr "Reparación"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Repair charge"
+msgstr "Cargo por reparación"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Repair or replacement of broken returnable package"
+msgstr "Reparación o sustitución de envase retornable roto"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Resellers discount"
+msgstr "Descuento para revendedores"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Reservicing charge"
+msgstr "Cargo por nuevo servicio"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Restocking charge"
+msgstr "Cargo por reposición de existencias"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Returnable container"
+msgstr "Contenedor retornable"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Returned goods charges"
+msgstr "Cargos por mercancía devuelta"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Road/rail tanker rebate"
+msgstr "Bonificación por cisterna carretera/ferrocarril"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Roe allowance/charge"
+msgstr "Bonificación/cargo por tipo de cambio"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Roll rebate"
+msgstr "Bonificación por bobina"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Royalties"
+msgstr "Cánones"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Royalty surcharge"
+msgstr "Recargo por cánones"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Rubber surcharge"
+msgstr "Recargo por caucho"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Rush delivery"
+msgstr "Entrega urgente"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Salvage"
+msgstr "Salvamento"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Scrap surcharge"
+msgstr "Recargo por chatarra"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Selenium surcharge"
+msgstr "Recargo por selenio"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Set-up"
+msgstr "Puesta en marcha"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Shipper load, carrier count"
+msgstr "Carga del expedidor, recuento del transportista"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Shipper load, consignee unload"
+msgstr "Carga del expedidor, descarga del consignatario"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Shipping and handling"
+msgstr "Envío y manipulación"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Shrink-wrap charge"
+msgstr "Cargo por retractilado"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Shrinkage allowance"
+msgstr "Bonificación por merma"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Silver surcharge"
+msgstr "Recargo por plata"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Slipsheet charge"
+msgstr "Cargo por hoja deslizante"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Small packages charge"
+msgstr "Cargo por paquetes pequeños"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Special allowance"
+msgstr "Abono especial"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Special construction charge"
+msgstr "Cargo por construcción especial"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Special credit"
+msgstr "Crédito especial"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Special finish"
+msgstr "Acabado especial"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Special finish charge"
+msgstr "Cargo por acabado especial"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Special handling service"
+msgstr "Servicio de manipulación especial"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Special packaging"
+msgstr "Embalaje especial"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Special rebate"
+msgstr "Rebaja especial"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Split pickup"
+msgstr "Recogida fraccionada"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Stamp duties"
+msgstr "Derechos de timbre"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Stamping"
+msgstr "Estampación"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Standard surcharge"
+msgstr "Recargo estándar"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "State tax"
+msgstr "Impuesto estatal"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Steel surcharge"
+msgstr "Recargo por acero"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Superfund fee"
+msgstr "Tasa Superfund"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Supplemental items"
+msgstr "Artículos suplementarios"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Surcharge"
+msgstr "Recargo"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Surcharge (dollar value)"
+msgstr "Recargo (importe en dólares)"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Surcharge (percentage)"
+msgstr "Recargo (porcentaje)"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "System usage"
+msgstr "Uso del sistema"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Tank rental"
+msgstr "Alquiler de depósito"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Tax"
+msgstr "Impuesto"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Telecommunication charges"
+msgstr "Cargos de telecomunicaciones"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Telephone charge"
+msgstr "Cargo telefónico"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Temporary allowance"
+msgstr "Bonificación temporal"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Testing allowance"
+msgstr "Bonificación por ensayo"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Testing charge"
+msgstr "Cargo por ensayo"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Throughput allowance"
+msgstr "Bonificación por rendimiento"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Tonnage rebate"
+msgstr "Rebaja por tonelaje"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Tooling amortisation"
+msgstr "Amortización de utillaje"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Tooling charge"
+msgstr "Cargo por utillaje"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Tooling cost"
+msgstr "Coste de utillaje"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Trade discount"
+msgstr "Descuento comercial"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Transfer charge"
+msgstr "Cargo por transferencia"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Transportation - third party billing"
+msgstr "Transporte - facturación a terceros"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Transportation - vendor provided"
+msgstr "Transporte - proporcionado por el proveedor"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Truckload discount"
+msgstr "Descuento por carga completa"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Unsaleable merchandise allowance"
+msgstr "Bonificación por mercancía no vendible"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Vehicle load allowance"
+msgstr "Bonificación por carga de vehículo"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Vendor freight"
+msgstr "Flete del proveedor"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Volume discount"
+msgstr "Descuento por volumen"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Warehousing"
+msgstr "Almacenaje"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Washer surcharge"
+msgstr "Recargo por arandela"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Wheel handling charge"
+msgstr "Cargo por manipulación de ruedas"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Wheel surcharge"
+msgstr "Recargo por rueda"
+
+msgctxt "selection:product.product,unece_special_service_code:"
+msgid "Wolfram surcharge"
+msgstr "Recargo por wolframio"
+
+msgctxt "selection:product.template,unece_allowance_charge_code:"
+msgid "Acceptance commission"
+msgstr "Comisión de aceptación"
+
+msgctxt "selection:product.template,unece_allowance_charge_code:"
+msgid "Additional processing costs"
+msgstr "Costos adicionales de procesamiento"
+
+msgctxt "selection:product.template,unece_allowance_charge_code:"
+msgid "Advising commission"
+msgstr "Comisión de asesoramiento"
+
+msgctxt "selection:product.template,unece_allowance_charge_code:"
+msgid "Agreed debit interest charge"
+msgstr "Cargo de interés de débito acordado"
+
+msgctxt "selection:product.template,unece_allowance_charge_code:"
+msgid "Aluminum surcharge"
+msgstr "Recargo de aluminio"
+
+msgctxt "selection:product.template,unece_allowance_charge_code:"
+msgid "Amendment commission"
+msgstr "Comisión de enmienda"
+
+msgctxt "selection:product.template,unece_allowance_charge_code:"
+msgid "Attesting charge"
+msgstr "Cargo de atestiguamento"
+
+msgctxt "selection:product.template,unece_allowance_charge_code:"
+msgid "B/L splitting charges"
+msgstr "Cargos de división B/L"
+
+msgctxt "selection:product.template,unece_allowance_charge_code:"
+msgid "Bank charges"
+msgstr "Cargos bancarios"
+
+msgctxt "selection:product.template,unece_allowance_charge_code:"
+msgid "Bank charges information"
+msgstr "Información de cargos bancarios"
+
+msgctxt "selection:product.template,unece_allowance_charge_code:"
+msgid "Bonus for works ahead of schedule"
+msgstr "Bonos por trabajos adelantados"
+
+msgctxt "selection:product.template,unece_allowance_charge_code:"
+msgid "Brokerage"
+msgstr "Corretaje"
+
+msgctxt "selection:product.template,unece_allowance_charge_code:"
+msgid "Carbon footprint charge"
+msgstr "Cargo por huella de carbono"
+
+msgctxt "selection:product.template,unece_allowance_charge_code:"
+msgid "Chamber of commerce charge"
+msgstr "Cargo por cámara de comercio"
+
+msgctxt "selection:product.template,unece_allowance_charge_code:"
+msgid "Charge for a customer specific finish"
+msgstr "Cargo por acabado específico del usuario"
+
+msgctxt "selection:product.template,unece_allowance_charge_code:"
+msgid "Charge per credit cover"
+msgstr "Cargo por cobertura de crédito"
+
+msgctxt "selection:product.template,unece_allowance_charge_code:"
+msgid "Charge per unused credit cover"
+msgstr "Cargo por cobertura de crédito no utilizada"
+
+msgctxt "selection:product.template,unece_allowance_charge_code:"
+msgid "Collection commission"
+msgstr "Comisión por recolección"
+
+msgctxt "selection:product.template,unece_allowance_charge_code:"
+msgid "Commission for obtaining acceptance"
+msgstr "Comisión por obtención de aceptación"
+
+msgctxt "selection:product.template,unece_allowance_charge_code:"
+msgid "Commission for opening irrevocable documentary credits"
+msgstr "Comisión por apertura de créditos documentarios irrevocables"
+
+msgctxt "selection:product.template,unece_allowance_charge_code:"
+msgid "Commission for release of goods"
+msgstr "Comisión por liberación de mercancías"
+
+msgctxt "selection:product.template,unece_allowance_charge_code:"
+msgid "Commission for taking up documents"
+msgstr "Comisión por recepción de documentos"
+
+msgctxt "selection:product.template,unece_allowance_charge_code:"
+msgid "Commission on delivery"
+msgstr "Comisión sobre la entrega"
+
+msgctxt "selection:product.template,unece_allowance_charge_code:"
+msgid "Confirmation commission"
+msgstr "Comisión de confirmación"
+
+msgctxt "selection:product.template,unece_allowance_charge_code:"
+msgid "Contractual retention"
+msgstr "Retención contractual"
+
+msgctxt "selection:product.template,unece_allowance_charge_code:"
+msgid "Copper surcharge"
+msgstr "Recargo por cobre"
+
+msgctxt "selection:product.template,unece_allowance_charge_code:"
+msgid "Courier fee"
+msgstr "Cargo de mensajería"
+
+msgctxt "selection:product.template,unece_allowance_charge_code:"
+msgid "Deferred payment commission"
+msgstr "Comisión por pago diferido"
+
+msgctxt "selection:product.template,unece_allowance_charge_code:"
+msgid "Discount"
+msgstr "Descuento"
+
+msgctxt "selection:product.template,unece_allowance_charge_code:"
+msgid "Discrepancy fee"
+msgstr "Cargo por discrepancia"
+
+msgctxt "selection:product.template,unece_allowance_charge_code:"
+msgid "Domicilation commission"
+msgstr "Comisión de domiciliación"
+
+msgctxt "selection:product.template,unece_allowance_charge_code:"
+msgid "Due to military status"
+msgstr "Debido a situación militar"
+
+msgctxt "selection:product.template,unece_allowance_charge_code:"
+msgid "Due to work accident"
+msgstr "Debido a accidente laboral"
+
+msgctxt "selection:product.template,unece_allowance_charge_code:"
+msgid "End-of-range discount"
+msgstr "Descuento de fin de gama"
+
+msgctxt "selection:product.template,unece_allowance_charge_code:"
+msgid "Factoring commission"
+msgstr "Comisión de factoring"
+
+msgctxt "selection:product.template,unece_allowance_charge_code:"
+msgid "Fax advice charge"
+msgstr "Cargo por aviso por fax"
+
+msgctxt "selection:product.template,unece_allowance_charge_code:"
+msgid "Fee for payment under reserve"
+msgstr "Tasa por pago bajo reserva"
+
+msgctxt "selection:product.template,unece_allowance_charge_code:"
+msgid "Fixed long term"
+msgstr "Fijo a largo plazo"
+
+msgctxt "selection:product.template,unece_allowance_charge_code:"
+msgid "Foreign exchange charges"
+msgstr "Cargos por cambio de divisa"
+
+msgctxt "selection:product.template,unece_allowance_charge_code:"
+msgid "Freight charges"
+msgstr "Cargos por flete"
+
+msgctxt "selection:product.template,unece_allowance_charge_code:"
+msgid "Gold surcharge"
+msgstr "Recargo por oro"
+
+msgctxt "selection:product.template,unece_allowance_charge_code:"
+msgid "Guarantee commission"
+msgstr "Comisión de garantía"
+
+msgctxt "selection:product.template,unece_allowance_charge_code:"
+msgid "Handling commission"
+msgstr "Comisión de manipulación"
+
+msgctxt "selection:product.template,unece_allowance_charge_code:"
+msgid "Incoterm discount"
+msgstr "Descuento por Incoterm"
+
+msgctxt "selection:product.template,unece_allowance_charge_code:"
+msgid "Insurance"
+msgstr "Seguro"
+
+msgctxt "selection:product.template,unece_allowance_charge_code:"
+msgid "Interest"
+msgstr "Interés"
+
+msgctxt "selection:product.template,unece_allowance_charge_code:"
+msgid "Interest on arrears"
+msgstr "Intereses de demora"
+
+msgctxt "selection:product.template,unece_allowance_charge_code:"
+msgid "Job-order production costs"
+msgstr "Costes de producción por orden de trabajo"
+
+msgctxt "selection:product.template,unece_allowance_charge_code:"
+msgid "Lead surcharge"
+msgstr "Recargo por plomo"
+
+msgctxt "selection:product.template,unece_allowance_charge_code:"
+msgid "Loading charge"
+msgstr "Cargo de carga"
+
+msgctxt "selection:product.template,unece_allowance_charge_code:"
+msgid "Manufacturer's consumer discount"
+msgstr "Descuento al consumidor del fabricante"
+
+msgctxt "selection:product.template,unece_allowance_charge_code:"
+msgid "Material surcharge (special materials)"
+msgstr "Recargo por material (materiales especiales)"
+
+msgctxt "selection:product.template,unece_allowance_charge_code:"
+msgid "Material surcharge/deduction"
+msgstr "Recargo/deducción por material"
+
+msgctxt "selection:product.template,unece_allowance_charge_code:"
+msgid "Minimum commission"
+msgstr "Comisión mínima"
+
+msgctxt "selection:product.template,unece_allowance_charge_code:"
+msgid "Minimum order / minimum billing charge"
+msgstr "Cargo por pedido mínimo / facturación mínima"
+
+msgctxt "selection:product.template,unece_allowance_charge_code:"
+msgid "Miscellaneous charges"
+msgstr "Cargos varios"
+
+msgctxt "selection:product.template,unece_allowance_charge_code:"
+msgid "Model charges"
+msgstr "Cargos por modelo"
+
+msgctxt "selection:product.template,unece_allowance_charge_code:"
+msgid "Negotiation commission"
+msgstr "Comisión de negociación"
+
+msgctxt "selection:product.template,unece_allowance_charge_code:"
+msgid "New outlet discount"
+msgstr "Descuento por nuevo punto de venta"
+
+msgctxt "selection:product.template,unece_allowance_charge_code:"
+msgid "Off-premises costs"
+msgstr "Costes fuera de las instalaciones"
+
+msgctxt "selection:product.template,unece_allowance_charge_code:"
+msgid "Opening commission"
+msgstr "Comisión de apertura"
+
+msgctxt "selection:product.template,unece_allowance_charge_code:"
+msgid "Other bonus"
+msgstr "Otro bono"
+
+msgctxt "selection:product.template,unece_allowance_charge_code:"
+msgid "Other penalties"
+msgstr "Otras penalizaciones"
+
+msgctxt "selection:product.template,unece_allowance_charge_code:"
+msgid "Other retentions"
+msgstr "Otras retenciones"
+
+msgctxt "selection:product.template,unece_allowance_charge_code:"
+msgid "Packing charge"
+msgstr "Cargo por embalaje"
+
+msgctxt "selection:product.template,unece_allowance_charge_code:"
+msgid "Penalty for execution of works behind schedule"
+msgstr "Penalización por ejecución de obras fuera de plazo"
+
+msgctxt "selection:product.template,unece_allowance_charge_code:"
+msgid "Penalty for late delivery of documents"
+msgstr "Penalización por entrega tardía de documentos"
+
+msgctxt "selection:product.template,unece_allowance_charge_code:"
+msgid "Penalty for late delivery of valuation of works"
+msgstr "Penalización por entrega tardía de la valoración de las obras"
+
+msgctxt "selection:product.template,unece_allowance_charge_code:"
+msgid "Phone fee"
+msgstr "Cargo telefónico"
+
+msgctxt "selection:product.template,unece_allowance_charge_code:"
+msgid "Platinum surcharge"
+msgstr "Recargo por platino"
+
+msgctxt "selection:product.template,unece_allowance_charge_code:"
+msgid "Point of sales threshold allowance"
+msgstr "Bonificación por umbral de punto de venta"
+
+msgctxt "selection:product.template,unece_allowance_charge_code:"
+msgid "Postage fee"
+msgstr "Tasa de franqueo"
+
+msgctxt "selection:product.template,unece_allowance_charge_code:"
+msgid "Pre-advice commission"
+msgstr "Comisión de preaviso"
+
+msgctxt "selection:product.template,unece_allowance_charge_code:"
+msgid "Price index surcharge"
+msgstr "Recargo por índice de precios"
+
+msgctxt "selection:product.template,unece_allowance_charge_code:"
+msgid "Pro rata retention"
+msgstr "Retención prorrateada"
+
+msgctxt "selection:product.template,unece_allowance_charge_code:"
+msgid "Production error discount"
+msgstr "Descuento por error de producción"
+
+msgctxt "selection:product.template,unece_allowance_charge_code:"
+msgid "Project management cost"
+msgstr "Coste de gestión de proyecto"
+
+msgctxt "selection:product.template,unece_allowance_charge_code:"
+msgid "Reimbursement commission"
+msgstr "Comisión de reembolso"
+
+msgctxt "selection:product.template,unece_allowance_charge_code:"
+msgid "Repair charge"
+msgstr "Cargo por reparación"
+
+msgctxt "selection:product.template,unece_allowance_charge_code:"
+msgid "Repatriation charges"
+msgstr "Cargos de repatriación"
+
+msgctxt "selection:product.template,unece_allowance_charge_code:"
+msgid "Return commission"
+msgstr "Comisión de devolución"
+
+msgctxt "selection:product.template,unece_allowance_charge_code:"
+msgid "Risk commission"
+msgstr "Comisión de riesgo"
+
+msgctxt "selection:product.template,unece_allowance_charge_code:"
+msgid "Rush delivery surcharge"
+msgstr "Recargo por entrega urgente"
+
+msgctxt "selection:product.template,unece_allowance_charge_code:"
+msgid "S.W.I.F.T. fee"
+msgstr "Tasa S.W.I.F.T."
+
+msgctxt "selection:product.template,unece_allowance_charge_code:"
+msgid "Sample discount"
+msgstr "Descuento por muestra"
+
+msgctxt "selection:product.template,unece_allowance_charge_code:"
+msgid "Setup charge"
+msgstr "Cargo de preparación"
+
+msgctxt "selection:product.template,unece_allowance_charge_code:"
+msgid "Silver surcharge"
+msgstr "Recargo por plata"
+
+msgctxt "selection:product.template,unece_allowance_charge_code:"
+msgid "Special agreement"
+msgstr "Acuerdo especial"
+
+msgctxt "selection:product.template,unece_allowance_charge_code:"
+msgid "Special construction costs"
+msgstr "Costes especiales de construcción"
+
+msgctxt "selection:product.template,unece_allowance_charge_code:"
+msgid "Special rebate"
+msgstr "Rebaja especial"
+
+msgctxt "selection:product.template,unece_allowance_charge_code:"
+msgid "Stamp duty"
+msgstr "Impuesto de timbre"
+
+msgctxt "selection:product.template,unece_allowance_charge_code:"
+msgid "Standard"
+msgstr "Estándar"
+
+msgctxt "selection:product.template,unece_allowance_charge_code:"
+msgid "Supervisory commission"
+msgstr "Comisión de supervisión"
+
+msgctxt "selection:product.template,unece_allowance_charge_code:"
+msgid "Surcharge"
+msgstr "Recargo"
+
+msgctxt "selection:product.template,unece_allowance_charge_code:"
+msgid "Technical modification costs"
+msgstr "Costes de modificación técnica"
+
+msgctxt "selection:product.template,unece_allowance_charge_code:"
+msgid "Telex fee"
+msgstr "Tasa de télex"
+
+msgctxt "selection:product.template,unece_allowance_charge_code:"
+msgid "Temporary"
+msgstr "Temporal"
+
+msgctxt "selection:product.template,unece_allowance_charge_code:"
+msgid "Testing charge"
+msgstr "Cargo por ensayo"
+
+msgctxt "selection:product.template,unece_allowance_charge_code:"
+msgid "Transfer charges"
+msgstr "Gastos de transferencia"
+
+msgctxt "selection:product.template,unece_allowance_charge_code:"
+msgid "Transfer commission"
+msgstr "Comisión por transferencia"
+
+msgctxt "selection:product.template,unece_allowance_charge_code:"
+msgid "Trust commission"
+msgstr "Comisión fiduciaria"
+
+msgctxt "selection:product.template,unece_allowance_charge_code:"
+msgid "Warehousing charge"
+msgstr "Cargo por almacenaje"
+
+msgctxt "selection:product.template,unece_allowance_charge_code:"
+msgid "Wolfram surcharge"
+msgstr "Recargo por wolframio"
+
+msgctxt "selection:product.template,unece_allowance_charge_code:"
+msgid "Yearly turnover"
+msgstr "Volumen anual"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Acceptance cost"
+msgstr "Coste de aceptación"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Additional material"
+msgstr "Material adicional"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Adjustments"
+msgstr "Ajustes"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Advertising allowance"
+msgstr "Bonificación publicitaria"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Air freight transportation"
+msgstr "Transporte aéreo de mercancías"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Airbag charge"
+msgstr "Cargo por airbag"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Aircraft refueling"
+msgstr "Repostaje de aeronaves"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Airport fee"
+msgstr "Tasa aeroportuaria"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Airport system fee"
+msgstr "Tasa del sistema aeroportuario"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Allowance"
+msgstr "Bonificación"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Alloy surcharge"
+msgstr "Recargo por aleación"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Aluminium surcharge"
+msgstr "Recargo por aluminio"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Attestation fee"
+msgstr "Tasa de certificación"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Authentication charge"
+msgstr "Cargo por autenticación"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Below schedule quantity after quantity-based surcharge"
+msgstr "Cantidad inferior a la prevista tras recargo por cantidad"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Bill of lading charge"
+msgstr "Cargo por conocimiento de embarque"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Binding services"
+msgstr "Servicios de encuadernación"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Bopsheet charge"
+msgstr "Cargo por hoja BOP"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Brass surcharge"
+msgstr "Recargo por latón"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "COD charge"
+msgstr "Cargo por reembolso"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Cancellation charge"
+msgstr "Cargo por cancelación"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Car loading"
+msgstr "Carga de vehículos"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Carriage charge"
+msgstr "Cargo por transporte"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Cartage"
+msgstr "Acarreo"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Carton packing"
+msgstr "Embalaje en cartón"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Cash discount"
+msgstr "Descuento por pronto pago"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Cataloguing services"
+msgstr "Servicios de catalogación"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Cents off"
+msgstr "Descuento en céntimos"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Certificate of conformance"
+msgstr "Certificado de conformidad"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Certificate of origin"
+msgstr "Certificado de origen"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Certification fee"
+msgstr "Tasa de certificación"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Cigarette stamping"
+msgstr "Timbrado de cigarrillos"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Cleaning charge"
+msgstr "Cargo de limpieza"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Coke surcharge"
+msgstr "Recargo por coque"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Combine all same day shipment"
+msgstr "Agrupar todos los envíos del mismo día"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Commission"
+msgstr "Comisión"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Competitive allowance"
+msgstr "Bonificación competitiva"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Competitive auto allowance"
+msgstr "Bonificación competitiva para automoción"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Competitive price"
+msgstr "Precio competitivo"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Compulsory storage fee"
+msgstr "Tasa de almacenamiento obligatorio"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Concession fee"
+msgstr "Canon de concesión"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Consolidation"
+msgstr "Consolidación"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Consular costs"
+msgstr "Costes consulares"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Container allowance"
+msgstr "Bonificación por contenedor"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Container deposit charge"
+msgstr "Cargo por depósito de contenedor"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Containerisation"
+msgstr "Contenerización"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Contract allowance"
+msgstr "Bonificación contractual"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Copper surcharge"
+msgstr "Recargo por cobre"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Count and recount"
+msgstr "Conteo y reconteo"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Customer collection rebate"
+msgstr "Descuento por recogida por el cliente"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Customs bond charge"
+msgstr "Cargo por fianza aduanera"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Customs duty charge"
+msgstr "Cargo por derechos de aduana"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Cutting charge"
+msgstr "Cargo por corte"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Damaged merchandise"
+msgstr "Mercancía dañada"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Deduction for delayed return"
+msgstr "Deducción por devolución tardía"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Deduction for missing parts"
+msgstr "Deducción por piezas faltantes"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Defective allowance"
+msgstr "Bonificación por defectos"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Deficit freight"
+msgstr "Flete deficitario"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Defuel"
+msgstr "Extracción de combustible"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Delivery"
+msgstr "Entrega"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Demurrage"
+msgstr "Demora"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Direct delivery"
+msgstr "Entrega directa"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Disconnect"
+msgstr "Desconexión"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Discount"
+msgstr "Descuento"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Distribution"
+msgstr "Distribución"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Distributor discount/allowance"
+msgstr "Descuento/bonificación del distribuidor"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Diversion"
+msgstr "Desvío"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Driver assigned unloading"
+msgstr "Descarga asignada al conductor"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Drop dock"
+msgstr "Descarga en muelle"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Drop yard"
+msgstr "Descarga en patio"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Drum deposit"
+msgstr "Depósito por bidón"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Dunnage charge"
+msgstr "Cargo por material de estiba"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Early buy allowance"
+msgstr "Bonificación por compra anticipada"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Early payment allowance"
+msgstr "Bonificación por pronto pago"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Efficient logistics"
+msgstr "Logística eficiente"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Enamelling treatment"
+msgstr "Tratamiento de esmaltado"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Energy surcharge"
+msgstr "Recargo energético"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Engraving"
+msgstr "Grabado"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Exchange rate guarantee charge"
+msgstr "Cargo por garantía de tipo de cambio"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Excise tax-destination"
+msgstr "Impuesto especial en destino"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Expediting premium"
+msgstr "Recargo por tramitación urgente"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Export shipping charge"
+msgstr "Cargo por envío de exportación"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Fabrication charge"
+msgstr "Cargo de fabricación"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Filling/handling charge"
+msgstr "Cargo por llenado/manipulación"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Finance charge"
+msgstr "Cargo financiero"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Fitting surcharge"
+msgstr "Recargo por montaje"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Flat rate"
+msgstr "Tarifa fija"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Free goods"
+msgstr "Mercancía gratuita"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Freight allowance"
+msgstr "Bonificación por flete"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Freight charge"
+msgstr "Cargo por flete"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Freight charge/costs of loading"
+msgstr "Cargo por flete/costes de carga"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Freight equalization"
+msgstr "Igualación de flete"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Freight surcharge"
+msgstr "Recargo por flete"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Fuel shipped into storage"
+msgstr "Combustible enviado a almacenamiento"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Full pallet ordering"
+msgstr "Pedido por palé completo"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Future discount off retail"
+msgstr "Descuento futuro sobre precio minorista"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Gold surcharge"
+msgstr "Recargo por oro"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Grinding"
+msgstr "Rectificado"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Handling"
+msgstr "Manipulación"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Handling by the 1st level sub-contractor"
+msgstr "Manipulación por el subcontratista de primer nivel"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Handling by the 2nd level sub-contractor"
+msgstr "Manipulación por el subcontratista de segundo nivel"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Handling by the contractor"
+msgstr "Manipulación por el contratista"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Handling of hazardous cargo"
+msgstr "Manipulación de mercancía peligrosa"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Heat treatment"
+msgstr "Tratamiento térmico"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Hessian wrapped"
+msgstr "Embalado en arpillera"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Hoisting and hauling"
+msgstr "Izado y arrastre"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Hose charge"
+msgstr "Cargo por manguera"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Inland transportation"
+msgstr "Transporte interior"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Inside delivery charge"
+msgstr "Cargo por entrega interior"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Inspection fee"
+msgstr "Tasa de inspección"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Installation"
+msgstr "Instalación"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Installation and training"
+msgstr "Instalación y formación"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Installation and warranty"
+msgstr "Instalación y garantía"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Insurance"
+msgstr "Seguro"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Into plane fee"
+msgstr "Tasa por entrega al avión"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Invoice adjustment"
+msgstr "Ajuste de factura"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Invoice services"
+msgstr "Servicios de facturación"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Job-order production"
+msgstr "Producción por orden de trabajo"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Koshering"
+msgstr "Certificación kosher"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Labelling"
+msgstr "Etiquetado"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Labour (repair and return orders)"
+msgstr "Mano de obra (órdenes de reparación y devolución)"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Labour charge"
+msgstr "Cargo de mano de obra"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Layout/design"
+msgstr "Maquetación/diseño"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Lead surcharge"
+msgstr "Recargo por plomo"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Legalisation fee"
+msgstr "Tasa de legalización"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "License fee"
+msgstr "Tasa de licencia"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Local sales tax"
+msgstr "Impuesto de ventas locales"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Location differential"
+msgstr "Diferencial por ubicación"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Mail invoice"
+msgstr "Enviar factura por correo"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Mail invoice to each location"
+msgstr "Enviar factura por correo a cada ubicación"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Material allowance (special materials)"
+msgstr "Bonificación por material (materiales especiales)"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Material surcharge (special materials)"
+msgstr "Recargo por material (materiales especiales)"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Material surcharge/deduction"
+msgstr "Recargo/deducción por material"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Merchandising"
+msgstr "Merchandising"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Mileage fee (for repair and return)"
+msgstr "Cargo por kilometraje (para reparación y devolución)"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Mileage or travel"
+msgstr "Kilometraje o desplazamiento"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Minimum amount costs for quantity based surcharges"
+msgstr "Costes de importe mínimo para recargos basados en cantidad"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Minimum order/minimum billing charge"
+msgstr "Cargo por pedido mínimo/facturación mínima"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Miscellaneous"
+msgstr "Varios"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Miscellaneous customs charge"
+msgstr "Cargo aduanero varios"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Miscellaneous other surcharges"
+msgstr "Otros recargos varios"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Miscellaneous rebate or discount"
+msgstr "Rebaja o descuento varios"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Miscellaneous setting costs (tooling)"
+msgstr "Costes varios de preparación (utillaje)"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Miscellaneous special tooling charge"
+msgstr "Cargo varios por utillaje especial"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Miscellaneous treatment"
+msgstr "Tratamiento varios"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Modification costs"
+msgstr "Costes de modificación"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Monthly rental"
+msgstr "Alquiler mensual"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Mounting"
+msgstr "Montaje"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Mutually defined"
+msgstr "Definido mutuamente"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "New product introduction"
+msgstr "Introducción de nuevo producto"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Non-returnable containers"
+msgstr "Contenedores no retornables"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Non-standard surcharge"
+msgstr "Recargo no estándar"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Ocean freight charge"
+msgstr "Cargo por flete marítimo"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Off-premises surcharge"
+msgstr "Recargo fuera de las instalaciones"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Other services"
+msgstr "Otros servicios"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Outlays"
+msgstr "Desembolsos"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Outside cable connectors"
+msgstr "Conectores de cable externos"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Overtime"
+msgstr "Horas extraordinarias"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Overtime loading"
+msgstr "Carga en horas extraordinarias"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Pack invoice with shipment"
+msgstr "Incluir factura con el envío"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Packaging surcharge"
+msgstr "Recargo por embalaje"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Packing"
+msgstr "Embalaje"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Painting"
+msgstr "Pintura"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Palladium surcharge"
+msgstr "Recargo por paladio"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Pallet charge"
+msgstr "Cargo por palé"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Palletizing"
+msgstr "Paletización"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Per order charge"
+msgstr "Cargo por pedido"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Per pound charge"
+msgstr "Cargo por libra"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Phosphatizing (steel treatment)"
+msgstr "Fosfatado (tratamiento del acero)"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Pick-up"
+msgstr "Recogida"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Pick-up allowance"
+msgstr "Bonificación por recogida"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Plating treatment"
+msgstr "Tratamiento de recubrimiento"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Platinum surcharge"
+msgstr "Recargo por platino"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Polishing"
+msgstr "Pulido"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Polyethylene wrap packing"
+msgstr "Embalaje con envoltura de polietileno"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Postage charge"
+msgstr "Cargo de franqueo"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Premium charge"
+msgstr "Cargo adicional"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Preservation treatment"
+msgstr "Tratamiento de conservación"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Price index surcharge"
+msgstr "Recargo por índice de precios"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Priming"
+msgstr "Imprimación"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Processing surcharge"
+msgstr "Recargo por procesamiento"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Product mix"
+msgstr "Combinación de productos"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Promotional allowance"
+msgstr "Bonificación promocional"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Promotional discount"
+msgstr "Descuento promocional"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Quantity discount"
+msgstr "Descuento por cantidad"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Quantity surcharge"
+msgstr "Recargo por cantidad"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Rail wagon hire"
+msgstr "Alquiler de vagón ferroviario"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Re-delivery charge"
+msgstr "Cargo por nueva entrega"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Rebate"
+msgstr "Bonificación"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Refurbishing charge"
+msgstr "Cargo por reacondicionamiento"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Rents and leases"
+msgstr "Alquileres y arrendamientos"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Repack charge"
+msgstr "Cargo por reembalaje"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Repair"
+msgstr "Reparación"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Repair charge"
+msgstr "Cargo por reparación"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Repair or replacement of broken returnable package"
+msgstr "Reparación o sustitución de envase retornable roto"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Resellers discount"
+msgstr "Descuento para revendedores"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Reservicing charge"
+msgstr "Cargo por nuevo servicio"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Restocking charge"
+msgstr "Cargo por reposición de existencias"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Returnable container"
+msgstr "Contenedor retornable"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Returned goods charges"
+msgstr "Cargos por mercancía devuelta"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Road/rail tanker rebate"
+msgstr "Bonificación por cisterna carretera/ferrocarril"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Roe allowance/charge"
+msgstr "Bonificación/cargo por tipo de cambio"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Roll rebate"
+msgstr "Bonificación por bobina"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Royalties"
+msgstr "Cánones"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Royalty surcharge"
+msgstr "Recargo por cánones"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Rubber surcharge"
+msgstr "Recargo por caucho"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Rush delivery"
+msgstr "Entrega urgente"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Salvage"
+msgstr "Salvamento"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Scrap surcharge"
+msgstr "Recargo por chatarra"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Selenium surcharge"
+msgstr "Recargo por selenio"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Set-up"
+msgstr "Puesta en marcha"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Shipper load, carrier count"
+msgstr "Carga del expedidor, recuento del transportista"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Shipper load, consignee unload"
+msgstr "Carga del expedidor, descarga del consignatario"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Shipping and handling"
+msgstr "Envío y manipulación"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Shrink-wrap charge"
+msgstr "Cargo por retractilado"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Shrinkage allowance"
+msgstr "Bonificación por merma"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Silver surcharge"
+msgstr "Recargo por plata"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Slipsheet charge"
+msgstr "Cargo por hoja deslizante"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Small packages charge"
+msgstr "Cargo por paquetes pequeños"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Special allowance"
+msgstr "Abono especial"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Special construction charge"
+msgstr "Cargo por construcción especial"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Special credit"
+msgstr "Crédito especial"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Special finish"
+msgstr "Acabado especial"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Special finish charge"
+msgstr "Cargo por acabado especial"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Special handling service"
+msgstr "Servicio de manipulación especial"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Special packaging"
+msgstr "Embalaje especial"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Special rebate"
+msgstr "Rebaja especial"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Split pickup"
+msgstr "Recogida fraccionada"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Stamp duties"
+msgstr "Derechos de timbre"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Stamping"
+msgstr "Estampación"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Standard surcharge"
+msgstr "Recargo estándar"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "State tax"
+msgstr "Impuesto estatal"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Steel surcharge"
+msgstr "Recargo por acero"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Superfund fee"
+msgstr "Tasa Superfund"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Supplemental items"
+msgstr "Artículos suplementarios"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Surcharge"
+msgstr "Recargo"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Surcharge (dollar value)"
+msgstr "Recargo (importe en dólares)"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Surcharge (percentage)"
+msgstr "Recargo (porcentaje)"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "System usage"
+msgstr "Uso del sistema"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Tank rental"
+msgstr "Alquiler de depósito"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Tax"
+msgstr "Impuesto"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Telecommunication charges"
+msgstr "Cargos de telecomunicaciones"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Telephone charge"
+msgstr "Cargo telefónico"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Temporary allowance"
+msgstr "Bonificación temporal"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Testing allowance"
+msgstr "Bonificación por ensayo"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Testing charge"
+msgstr "Cargo por ensayo"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Throughput allowance"
+msgstr "Bonificación por rendimiento"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Tonnage rebate"
+msgstr "Rebaja por tonelaje"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Tooling amortisation"
+msgstr "Amortización de utillaje"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Tooling charge"
+msgstr "Cargo por utillaje"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Tooling cost"
+msgstr "Coste de utillaje"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Trade discount"
+msgstr "Descuento comercial"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Transfer charge"
+msgstr "Cargo por transferencia"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Transportation - third party billing"
+msgstr "Transporte - facturación a terceros"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Transportation - vendor provided"
+msgstr "Transporte - proporcionado por el proveedor"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Truckload discount"
+msgstr "Descuento por carga completa"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Unsaleable merchandise allowance"
+msgstr "Bonificación por mercancía no vendible"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Vehicle load allowance"
+msgstr "Bonificación por carga de vehículo"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Vendor freight"
+msgstr "Flete del proveedor"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Volume discount"
+msgstr "Descuento por volumen"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Warehousing"
+msgstr "Almacenaje"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Washer surcharge"
+msgstr "Recargo por arandela"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Wheel handling charge"
+msgstr "Cargo por manipulación de ruedas"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Wheel surcharge"
+msgstr "Recargo por rueda"
+
+msgctxt "selection:product.template,unece_special_service_code:"
+msgid "Wolfram surcharge"
+msgstr "Recargo por wolframio"
 
 msgctxt "view:account.tax.template:"
 msgid "UNECE"

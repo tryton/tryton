@@ -200,6 +200,11 @@ msgctxt "field:account.invoice,number_digit:"
 msgid "Number Digit"
 msgstr "عدد"
 
+#, fuzzy
+msgctxt "field:account.invoice,origin_invoices:"
+msgid "Origin Invoices"
+msgstr "صورتحساب ها"
+
 msgctxt "field:account.invoice,origins:"
 msgid "Origins"
 msgstr "مبداء"
@@ -218,6 +223,11 @@ msgstr "شناسه مالیاتی نهاد/سازمان"
 
 msgctxt "field:account.invoice,payment_lines:"
 msgid "Payment Lines"
+msgstr "خطوط پرداخت"
+
+#, fuzzy
+msgctxt "field:account.invoice,payment_means:"
+msgid "Payment Means"
 msgstr "خطوط پرداخت"
 
 msgctxt "field:account.invoice,payment_term:"
@@ -255,6 +265,20 @@ msgstr "ادامه"
 msgctxt "field:account.invoice,sequence_type_cache:"
 msgid "Sequence Type Cache"
 msgstr ""
+
+#, fuzzy
+msgctxt "field:account.invoice,source_tax_amount:"
+msgid "Source Tax"
+msgstr "مالیات های صورتحساب"
+
+msgctxt "field:account.invoice,source_total_amount:"
+msgid "Source Total"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.invoice,source_untaxed_amount:"
+msgid "Source Untaxed"
+msgstr "بدون اعمال مالیات"
 
 msgctxt "field:account.invoice,state:"
 msgid "State"
@@ -577,6 +601,46 @@ msgstr ""
 msgctxt "field:account.invoice.pay.start,payment_method:"
 msgid "Payment Method"
 msgstr "روش پرداخت"
+
+#, fuzzy
+msgctxt "field:account.invoice.payment.mean,company:"
+msgid "Company"
+msgstr "شرکت"
+
+msgctxt "field:account.invoice.payment.mean,instrument:"
+msgid "Instrument"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.invoice.payment.mean,invoice:"
+msgid "Invoice"
+msgstr "صورت حساب"
+
+msgctxt "field:account.invoice.payment.mean,payees:"
+msgid "Payees"
+msgstr ""
+
+msgctxt "field:account.invoice.payment.mean,payers:"
+msgid "Payers"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.invoice.payment.mean.rule,company:"
+msgid "Company"
+msgstr "شرکت"
+
+#, fuzzy
+msgctxt "field:account.invoice.payment.mean.rule,currency:"
+msgid "Currency"
+msgstr "واحد پول"
+
+msgctxt "field:account.invoice.payment.mean.rule,instrument:"
+msgid "Instrument"
+msgstr ""
+
+msgctxt "field:account.invoice.payment.mean.rule,payee:"
+msgid "Payee"
+msgstr ""
 
 msgctxt "field:account.invoice.payment.method,company:"
 msgid "Company"
@@ -923,6 +987,16 @@ msgid "Account Invoice Pay Start"
 msgstr "صورتحساب نهاد/سازمان"
 
 #, fuzzy
+msgctxt "model:account.invoice.payment.mean,string:"
+msgid "Account Invoice Payment Mean"
+msgstr "روش پرداخت صورتحساب"
+
+#, fuzzy
+msgctxt "model:account.invoice.payment.mean.rule,string:"
+msgid "Account Invoice Payment Mean Rule"
+msgstr "روش پرداخت صورتحساب"
+
+#, fuzzy
 msgctxt "model:account.invoice.payment.method,string:"
 msgid "Account Invoice Payment Method"
 msgstr "روش پرداخت صورتحساب"
@@ -1017,6 +1091,11 @@ msgstr "صورت حسابهای تامین کننده"
 msgctxt "model:ir.action,name:act_invoice_out_form"
 msgid "Customer Invoices"
 msgstr "صورتحساب های مشتری"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_invoice_payment_mean_rule_form"
+msgid "Payment Means Rules"
+msgstr "خطوط پرداخت"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_invoice_relate"
@@ -1289,6 +1368,13 @@ msgid "The invoice \"%(invoice)s\" is similar to invoice \"%(similar)s\"."
 msgstr "برای حذف صورتحساب : \"%(invoice)s\" شما باید آنرا لغو کنید."
 
 #, python-format
+msgctxt "model:ir.message,text:msg_invoice_source_mismatch"
+msgid ""
+"The \"%(field)s\" value of the invoice \"%(invoice)s\", %(value)s, must "
+"equal the source value, %(source)s."
+msgstr ""
+
+#, python-format
 msgctxt "model:ir.message,text:msg_invoice_supplier_payment_reference_invalid"
 msgid "The %(type)s \"%(reference)s\" on invoice \"%(invoice)s\" is not valid."
 msgstr ""
@@ -1406,6 +1492,11 @@ msgctxt "model:ir.rule.group,name:rule_group_invoice_line_companies"
 msgid "User in companies"
 msgstr ""
 
+msgctxt ""
+"model:ir.rule.group,name:rule_group_invoice_payment_mean_rule_companies"
+msgid "User in companies"
+msgstr ""
+
 msgctxt "model:ir.rule.group,name:rule_group_invoice_sequence_companies"
 msgid "User in companies"
 msgstr ""
@@ -1426,6 +1517,11 @@ msgctxt "model:ir.ui.menu,name:menu_invoice_out_form"
 msgid "Customer Invoices"
 msgstr "صورتحساب های مشتری"
 
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_invoice_payment_mean_rule"
+msgid "Payment Means Rules"
+msgstr "خطوط پرداخت"
+
 msgctxt "model:ir.ui.menu,name:menu_invoices"
 msgid "Invoices"
 msgstr "صورتحساب ها"
@@ -1442,9 +1538,10 @@ msgctxt "model:ir.ui.menu,name:menu_payment_term_test"
 msgid "Test Payment Term"
 msgstr "شرایط پرداخت آزمایشی"
 
-msgctxt "model:ir.ui.menu,name:menu_payment_terms_configuration"
-msgid "Payment Terms"
-msgstr "دوره های پرداخت"
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_payments_configuration"
+msgid "Invoice Payments"
+msgstr "صورتحساب پرداخت ها"
 
 #, fuzzy
 msgctxt "model:party.party.payment_term,string:"
@@ -1487,6 +1584,11 @@ msgstr "پیش نویس صورتحساب"
 msgctxt "report:account.invoice:"
 msgid "Invoice No:"
 msgstr "صورتحساب N°:"
+
+#, fuzzy
+msgctxt "report:account.invoice:"
+msgid "Payment Means"
+msgstr "خطوط پرداخت"
 
 msgctxt "report:account.invoice:"
 msgid "Payment Term"
@@ -1683,6 +1785,10 @@ msgstr "پرداخت"
 msgctxt "view:account.invoice:"
 msgid "Tax Identifier:"
 msgstr "شناسه مالیاتی:"
+
+msgctxt "view:account.invoice:"
+msgid "expected"
+msgstr ""
 
 #, fuzzy
 msgctxt "view:company.company:"

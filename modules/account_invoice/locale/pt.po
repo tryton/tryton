@@ -193,6 +193,11 @@ msgctxt "field:account.invoice,number_digit:"
 msgid "Number Digit"
 msgstr "Numero"
 
+#, fuzzy
+msgctxt "field:account.invoice,origin_invoices:"
+msgid "Origin Invoices"
+msgstr "Faturas"
+
 msgctxt "field:account.invoice,origins:"
 msgid "Origins"
 msgstr "Origens"
@@ -211,6 +216,11 @@ msgstr "Identificador de Tributos da Pessoa"
 
 msgctxt "field:account.invoice,payment_lines:"
 msgid "Payment Lines"
+msgstr "Linhas de Pagamento"
+
+#, fuzzy
+msgctxt "field:account.invoice,payment_means:"
+msgid "Payment Means"
 msgstr "Linhas de Pagamento"
 
 msgctxt "field:account.invoice,payment_term:"
@@ -244,6 +254,20 @@ msgstr "Sequência"
 msgctxt "field:account.invoice,sequence_type_cache:"
 msgid "Sequence Type Cache"
 msgstr "Cache de Tipo de Sequência"
+
+#, fuzzy
+msgctxt "field:account.invoice,source_tax_amount:"
+msgid "Source Tax"
+msgstr "Tributos da Fatura"
+
+msgctxt "field:account.invoice,source_total_amount:"
+msgid "Source Total"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.invoice,source_untaxed_amount:"
+msgid "Source Untaxed"
+msgstr "Não tributado"
 
 msgctxt "field:account.invoice,state:"
 msgid "State"
@@ -552,6 +576,49 @@ msgstr "Beneficiários"
 msgctxt "field:account.invoice.pay.start,payment_method:"
 msgid "Payment Method"
 msgstr "Método de Pagamento"
+
+#, fuzzy
+msgctxt "field:account.invoice.payment.mean,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:account.invoice.payment.mean,instrument:"
+msgid "Instrument"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.invoice.payment.mean,invoice:"
+msgid "Invoice"
+msgstr "Fatura"
+
+#, fuzzy
+msgctxt "field:account.invoice.payment.mean,payees:"
+msgid "Payees"
+msgstr "Beneficiários"
+
+#, fuzzy
+msgctxt "field:account.invoice.payment.mean,payers:"
+msgid "Payers"
+msgstr "Beneficiários"
+
+#, fuzzy
+msgctxt "field:account.invoice.payment.mean.rule,company:"
+msgid "Company"
+msgstr "Empresa"
+
+#, fuzzy
+msgctxt "field:account.invoice.payment.mean.rule,currency:"
+msgid "Currency"
+msgstr "Moeda"
+
+msgctxt "field:account.invoice.payment.mean.rule,instrument:"
+msgid "Instrument"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.invoice.payment.mean.rule,payee:"
+msgid "Payee"
+msgstr "Beneficiário"
 
 msgctxt "field:account.invoice.payment.method,company:"
 msgid "Company"
@@ -884,6 +951,16 @@ msgctxt "model:account.invoice.pay.start,string:"
 msgid "Account Invoice Pay Start"
 msgstr "Início do Pagamento da Fatura"
 
+#, fuzzy
+msgctxt "model:account.invoice.payment.mean,string:"
+msgid "Account Invoice Payment Mean"
+msgstr "Método de pagamento da Fatura"
+
+#, fuzzy
+msgctxt "model:account.invoice.payment.mean.rule,string:"
+msgid "Account Invoice Payment Mean Rule"
+msgstr "Método de pagamento da Fatura"
+
 msgctxt "model:account.invoice.payment.method,string:"
 msgid "Account Invoice Payment Method"
 msgstr "Método de pagamento da Fatura"
@@ -967,6 +1044,11 @@ msgstr "Faturas de Fornecedores"
 msgctxt "model:ir.action,name:act_invoice_out_form"
 msgid "Customer Invoices"
 msgstr "Faturas de Clientes"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_invoice_payment_mean_rule_form"
+msgid "Payment Means Rules"
+msgstr "Linhas de Pagamento"
 
 msgctxt "model:ir.action,name:act_invoice_relate"
 msgid "Invoices"
@@ -1238,6 +1320,13 @@ msgctxt "model:ir.message,text:msg_invoice_similar"
 msgid "The invoice \"%(invoice)s\" is similar to invoice \"%(similar)s\"."
 msgstr "A fatura \"%(invoice)s\" é semelhante à fatura \"%(similar)s\"."
 
+#, python-format
+msgctxt "model:ir.message,text:msg_invoice_source_mismatch"
+msgid ""
+"The \"%(field)s\" value of the invoice \"%(invoice)s\", %(value)s, must "
+"equal the source value, %(source)s."
+msgstr ""
+
 #, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_invoice_supplier_payment_reference_invalid"
 msgid "The %(type)s \"%(reference)s\" on invoice \"%(invoice)s\" is not valid."
@@ -1355,6 +1444,12 @@ msgctxt "model:ir.rule.group,name:rule_group_invoice_line_companies"
 msgid "User in companies"
 msgstr "Usuário em Empresas"
 
+#, fuzzy
+msgctxt ""
+"model:ir.rule.group,name:rule_group_invoice_payment_mean_rule_companies"
+msgid "User in companies"
+msgstr "Usuário em Empresas"
+
 msgctxt "model:ir.rule.group,name:rule_group_invoice_sequence_companies"
 msgid "User in companies"
 msgstr "Usuário em Empresas"
@@ -1375,6 +1470,11 @@ msgctxt "model:ir.ui.menu,name:menu_invoice_out_form"
 msgid "Customer Invoices"
 msgstr "Faturas de Clientes"
 
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_invoice_payment_mean_rule"
+msgid "Payment Means Rules"
+msgstr "Linhas de Pagamento"
+
 msgctxt "model:ir.ui.menu,name:menu_invoices"
 msgid "Invoices"
 msgstr "Faturas"
@@ -1391,9 +1491,10 @@ msgctxt "model:ir.ui.menu,name:menu_payment_term_test"
 msgid "Test Payment Term"
 msgstr "Simulação do Prazo de Pagamento"
 
-msgctxt "model:ir.ui.menu,name:menu_payment_terms_configuration"
-msgid "Payment Terms"
-msgstr "Condições de Pagamento"
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_payments_configuration"
+msgid "Invoice Payments"
+msgstr "Pagamentos de Faturas"
 
 msgctxt "model:party.party.payment_term,string:"
 msgid "Party Payment Term"
@@ -1435,6 +1536,11 @@ msgstr "Rascunho de Fatura"
 msgctxt "report:account.invoice:"
 msgid "Invoice No:"
 msgstr "Fatura n°:"
+
+#, fuzzy
+msgctxt "report:account.invoice:"
+msgid "Payment Means"
+msgstr "Linhas de Pagamento"
 
 msgctxt "report:account.invoice:"
 msgid "Payment Term"
@@ -1626,6 +1732,10 @@ msgstr "Pagamento"
 msgctxt "view:account.invoice:"
 msgid "Tax Identifier:"
 msgstr "Identificador de Impostos:"
+
+msgctxt "view:account.invoice:"
+msgid "expected"
+msgstr ""
 
 msgctxt "view:company.company:"
 msgid "Invoice"

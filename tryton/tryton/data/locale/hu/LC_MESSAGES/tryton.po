@@ -5,15 +5,31 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-#, fuzzy
-msgid "Toggle notification"
-msgstr "Aktuális sor kijelölése ki/be"
+msgid "Show followers"
+msgstr ""
+
+#, fuzzy, python-format
+msgid "Are you sure to unsubscribe \"%(name)s\" from this channel?"
+msgstr "Biztos törölni szeretné?"
+
+msgid "Unsubscribe"
+msgstr ""
+
+msgid "Subscribe"
+msgstr ""
 
 msgid "Make this an _internal message"
 msgstr ""
 
 msgid "Send"
 msgstr "Küldés"
+
+#, fuzzy
+msgid "Add a follower"
+msgstr "Érték hozzáadása"
+
+msgid "Subscribe a follower to this channel"
+msgstr ""
 
 msgid "specify alternate config file"
 msgstr "adjon meg alternatív konfigurációs fájlt"
@@ -366,6 +382,9 @@ msgstr "Súgó"
 msgid "No result found."
 msgstr "Nincs találat"
 
+msgid "Check menu entries to add favorites"
+msgstr ""
+
 msgid "Action"
 msgstr "Művelet"
 
@@ -533,6 +552,10 @@ msgstr "Minden sor felnyitása"
 
 msgid "Close Tab"
 msgstr "Lap bezárása"
+
+#, fuzzy
+msgid "No notifications at this time"
+msgstr "Módosítás dátuma"
 
 #, fuzzy
 msgid "All Notifications..."

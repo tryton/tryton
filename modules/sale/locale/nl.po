@@ -274,6 +274,14 @@ msgctxt "field:sale.line,quantity:"
 msgid "Quantity"
 msgstr "Hoeveelheid"
 
+msgctxt "field:sale.line,quantity_to_invoice:"
+msgid "Quantity to Invoice"
+msgstr "Aantal te factureren"
+
+msgctxt "field:sale.line,quantity_to_ship:"
+msgid "Quantity to Ship"
+msgstr "Hoeveelheid te verzenden"
+
 msgctxt "field:sale.line,sale:"
 msgid "Sale"
 msgstr "Verkoop"
@@ -637,6 +645,14 @@ msgstr "Belasting"
 msgctxt "field:sale.sale,tax_amount_cache:"
 msgid "Tax Cache"
 msgstr "Belastingcache"
+
+msgctxt "field:sale.sale,to_invoice:"
+msgid "To Invoice"
+msgstr "Te factureren"
+
+msgctxt "field:sale.sale,to_ship:"
+msgid "To Ship"
+msgstr "Te verzenden"
 
 msgctxt "field:sale.sale,total_amount:"
 msgid "Total"
@@ -1559,12 +1575,12 @@ msgid "Manual"
 msgstr "Handmatig"
 
 msgctxt "selection:sale.sale,invoice_method:"
-msgid "On Order Processed"
-msgstr "Na verwerking order"
+msgid "On Fulfillment"
+msgstr "Bij levering"
 
 msgctxt "selection:sale.sale,invoice_method:"
-msgid "On Shipment Sent"
-msgstr "Na verzending"
+msgid "On Order Processed"
+msgstr "Na verwerking order"
 
 msgctxt "selection:sale.sale,invoice_state:"
 msgid "Awaiting Payment"

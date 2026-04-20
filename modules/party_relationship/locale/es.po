@@ -95,8 +95,8 @@ msgid "Party Relation"
 msgstr "Relación entre terceros"
 
 msgctxt "model:party.relation.all,string:"
-msgid "Party Relation"
-msgstr "Relación entre terceros"
+msgid "Party Relation All"
+msgstr "Todas las relaciones entre terceros"
 
 msgctxt "model:party.relation.type,string:"
 msgid "Party Relation Type"

@@ -42,9 +42,21 @@ msgctxt "field:account.tax,ec_sales_list_code:"
 msgid "EC Sales List Code"
 msgstr "EL müügitulu loendi kood"
 
+msgctxt "field:account.tax,vatex_code:"
+msgid "Tax Exemption Code"
+msgstr ""
+
 msgctxt "field:account.tax.template,ec_sales_list_code:"
 msgid "EC Sales List Code"
 msgstr "EL müügitulu loendi kood"
+
+msgctxt "field:account.tax.template,vatex_code:"
+msgid "Tax Exemption Code"
+msgstr ""
+
+msgctxt "help:account.tax,vatex_code:"
+msgid "The reason why the amount is exempted from VAT."
+msgstr ""
 
 #, fuzzy
 msgctxt "model:account.ec_sales_list,string:"
@@ -64,10 +76,294 @@ msgctxt "model:ir.ui.menu,name:menu_ec_sales_list"
 msgid "EC Sales List"
 msgstr "EL müügitulu loend"
 
+msgctxt "selection:account.tax,vatex_code:"
+msgid "Exempt based on article 132 of Council Directive 2006/112/EC"
+msgstr ""
+
+msgctxt "selection:account.tax,vatex_code:"
+msgid ""
+"Exempt based on article 132, section 1 (a) of Council Directive 2006/112/EC"
+msgstr ""
+
+msgctxt "selection:account.tax,vatex_code:"
+msgid ""
+"Exempt based on article 132, section 1 (b) of Council Directive 2006/112/EC"
+msgstr ""
+
+msgctxt "selection:account.tax,vatex_code:"
+msgid ""
+"Exempt based on article 132, section 1 (c) of Council Directive 2006/112/EC"
+msgstr ""
+
+msgctxt "selection:account.tax,vatex_code:"
+msgid ""
+"Exempt based on article 132, section 1 (d) of Council Directive 2006/112/EC"
+msgstr ""
+
+msgctxt "selection:account.tax,vatex_code:"
+msgid ""
+"Exempt based on article 132, section 1 (e) of Council Directive 2006/112/EC"
+msgstr ""
+
+msgctxt "selection:account.tax,vatex_code:"
+msgid ""
+"Exempt based on article 132, section 1 (f) of Council Directive 2006/112/EC"
+msgstr ""
+
+msgctxt "selection:account.tax,vatex_code:"
+msgid ""
+"Exempt based on article 132, section 1 (g) of Council Directive 2006/112/EC"
+msgstr ""
+
+msgctxt "selection:account.tax,vatex_code:"
+msgid ""
+"Exempt based on article 132, section 1 (h) of Council Directive 2006/112/EC"
+msgstr ""
+
+msgctxt "selection:account.tax,vatex_code:"
+msgid ""
+"Exempt based on article 132, section 1 (i) of Council Directive 2006/112/EC"
+msgstr ""
+
+msgctxt "selection:account.tax,vatex_code:"
+msgid ""
+"Exempt based on article 132, section 1 (j) of Council Directive 2006/112/EC"
+msgstr ""
+
+msgctxt "selection:account.tax,vatex_code:"
+msgid ""
+"Exempt based on article 132, section 1 (k) of Council Directive 2006/112/EC"
+msgstr ""
+
+msgctxt "selection:account.tax,vatex_code:"
+msgid ""
+"Exempt based on article 132, section 1 (l) of Council Directive 2006/112/EC"
+msgstr ""
+
+msgctxt "selection:account.tax,vatex_code:"
+msgid ""
+"Exempt based on article 132, section 1 (m) of Council Directive 2006/112/EC"
+msgstr ""
+
+msgctxt "selection:account.tax,vatex_code:"
+msgid ""
+"Exempt based on article 132, section 1 (n) of Council Directive 2006/112/EC"
+msgstr ""
+
+msgctxt "selection:account.tax,vatex_code:"
+msgid ""
+"Exempt based on article 132, section 1 (o) of Council Directive 2006/112/EC"
+msgstr ""
+
+msgctxt "selection:account.tax,vatex_code:"
+msgid ""
+"Exempt based on article 132, section 1 (p) of Council Directive 2006/112/EC"
+msgstr ""
+
+msgctxt "selection:account.tax,vatex_code:"
+msgid ""
+"Exempt based on article 132, section 1 (q) of Council Directive 2006/112/EC"
+msgstr ""
+
+msgctxt "selection:account.tax,vatex_code:"
+msgid "Exempt based on article 143 of Council Directive 2006/112/EC"
+msgstr ""
+
+msgctxt "selection:account.tax,vatex_code:"
+msgid ""
+"Exempt based on article 143, section 1 (a) of Council Directive 2006/112/EC"
+msgstr ""
+
+msgctxt "selection:account.tax,vatex_code:"
+msgid ""
+"Exempt based on article 143, section 1 (b) of Council Directive 2006/112/EC"
+msgstr ""
+
+msgctxt "selection:account.tax,vatex_code:"
+msgid ""
+"Exempt based on article 143, section 1 (c) of Council Directive 2006/112/EC"
+msgstr ""
+
+msgctxt "selection:account.tax,vatex_code:"
+msgid ""
+"Exempt based on article 143, section 1 (d) of Council Directive 2006/112/EC"
+msgstr ""
+
+msgctxt "selection:account.tax,vatex_code:"
+msgid ""
+"Exempt based on article 143, section 1 (e) of Council Directive 2006/112/EC"
+msgstr ""
+
+msgctxt "selection:account.tax,vatex_code:"
+msgid ""
+"Exempt based on article 143, section 1 (f) of Council Directive 2006/112/EC"
+msgstr ""
+
+msgctxt "selection:account.tax,vatex_code:"
+msgid ""
+"Exempt based on article 143, section 1 (fa) of Council Directive 2006/112/EC"
+msgstr ""
+
+msgctxt "selection:account.tax,vatex_code:"
+msgid ""
+"Exempt based on article 143, section 1 (g) of Council Directive 2006/112/EC"
+msgstr ""
+
+msgctxt "selection:account.tax,vatex_code:"
+msgid ""
+"Exempt based on article 143, section 1 (h) of Council Directive 2006/112/EC"
+msgstr ""
+
+msgctxt "selection:account.tax,vatex_code:"
+msgid ""
+"Exempt based on article 143, section 1 (i) of Council Directive 2006/112/EC"
+msgstr ""
+
+msgctxt "selection:account.tax,vatex_code:"
+msgid ""
+"Exempt based on article 143, section 1 (j) of Council Directive 2006/112/EC"
+msgstr ""
+
+msgctxt "selection:account.tax,vatex_code:"
+msgid ""
+"Exempt based on article 143, section 1 (k) of Council Directive 2006/112/EC"
+msgstr ""
+
+msgctxt "selection:account.tax,vatex_code:"
+msgid ""
+"Exempt based on article 143, section 1 (l) of Council Directive 2006/112/EC"
+msgstr ""
+
+msgctxt "selection:account.tax,vatex_code:"
+msgid "Exempt based on article 144 of Council Directive 2006/112/EC"
+msgstr ""
+
+msgctxt "selection:account.tax,vatex_code:"
+msgid ""
+"Exempt based on article 146 section 1 (e) of Council Directive 2006/112/EC"
+msgstr ""
+
+msgctxt "selection:account.tax,vatex_code:"
+msgid "Exempt based on article 148 of Council Directive 2006/112/EC"
+msgstr ""
+
+msgctxt "selection:account.tax,vatex_code:"
+msgid ""
+"Exempt based on article 148, section (a) of Council Directive 2006/112/EC"
+msgstr ""
+
+msgctxt "selection:account.tax,vatex_code:"
+msgid ""
+"Exempt based on article 148, section (b) of Council Directive 2006/112/EC"
+msgstr ""
+
+msgctxt "selection:account.tax,vatex_code:"
+msgid ""
+"Exempt based on article 148, section (c) of Council Directive 2006/112/EC"
+msgstr ""
+
+msgctxt "selection:account.tax,vatex_code:"
+msgid ""
+"Exempt based on article 148, section (d) of Council Directive 2006/112/EC"
+msgstr ""
+
+msgctxt "selection:account.tax,vatex_code:"
+msgid ""
+"Exempt based on article 148, section (e) of Council Directive 2006/112/EC"
+msgstr ""
+
+msgctxt "selection:account.tax,vatex_code:"
+msgid ""
+"Exempt based on article 148, section (f) of Council Directive 2006/112/EC"
+msgstr ""
+
+msgctxt "selection:account.tax,vatex_code:"
+msgid ""
+"Exempt based on article 148, section (g) of Council Directive 2006/112/EC"
+msgstr ""
+
+msgctxt "selection:account.tax,vatex_code:"
+msgid "Exempt based on article 151 of Council Directive 2006/112/EC"
+msgstr ""
+
+msgctxt "selection:account.tax,vatex_code:"
+msgid ""
+"Exempt based on article 151, section 1 (a) of Council Directive 2006/112/EC"
+msgstr ""
+
+msgctxt "selection:account.tax,vatex_code:"
+msgid ""
+"Exempt based on article 151, section 1 (aa) of Council Directive 2006/112/EC"
+msgstr ""
+
+msgctxt "selection:account.tax,vatex_code:"
+msgid ""
+"Exempt based on article 151, section 1 (b) of Council Directive 2006/112/EC"
+msgstr ""
+
+msgctxt "selection:account.tax,vatex_code:"
+msgid ""
+"Exempt based on article 151, section 1 (c) of Council Directive 2006/112/EC"
+msgstr ""
+
+msgctxt "selection:account.tax,vatex_code:"
+msgid ""
+"Exempt based on article 151, section 1 (d) of Council Directive 2006/112/EC"
+msgstr ""
+
+msgctxt "selection:account.tax,vatex_code:"
+msgid ""
+"Exempt based on article 151, section 1 (e) of Council Directive 2006/112/EC"
+msgstr ""
+
+msgctxt "selection:account.tax,vatex_code:"
+msgid "Exempt based on article 159 of Council Directive 2006/112/EC"
+msgstr ""
+
+msgctxt "selection:account.tax,vatex_code:"
+msgid "Exempt based on article 309 of Council Directive 2006/112/EC"
+msgstr ""
+
+msgctxt "selection:account.tax,vatex_code:"
+msgid "Exempt based on article 79, point c of Council Directive 2006/112/EC"
+msgstr ""
+
+msgctxt "selection:account.tax,vatex_code:"
+msgid "Export outside the EU"
+msgstr ""
+
+msgctxt "selection:account.tax,vatex_code:"
+msgid "Intra-Community acquisition from second hand means of transport"
+msgstr ""
+
+msgctxt "selection:account.tax,vatex_code:"
+msgid "Intra-Community acquisition of collectors items and antiques"
+msgstr ""
+
+msgctxt "selection:account.tax,vatex_code:"
+msgid "Intra-Community acquisition of second hand goods"
+msgstr ""
+
+msgctxt "selection:account.tax,vatex_code:"
+msgid "Intra-Community acquisition of works of art"
+msgstr ""
+
+msgctxt "selection:account.tax,vatex_code:"
+msgid "Intra-Community supply"
+msgstr ""
+
+msgctxt "selection:account.tax,vatex_code:"
+msgid "Not subject to VAT"
+msgstr ""
+
+msgctxt "selection:account.tax,vatex_code:"
+msgid "Reverse charge"
+msgstr ""
+
 msgctxt "view:account.tax.template:"
-msgid "EC Sales List"
-msgstr "EL müügitulu loend"
+msgid "European Codes"
+msgstr ""
 
 msgctxt "view:account.tax:"
-msgid "EC Sales List"
-msgstr "EL müügitulu loend"
+msgid "European Codes"
+msgstr ""

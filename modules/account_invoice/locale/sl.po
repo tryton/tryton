@@ -194,6 +194,11 @@ msgctxt "field:account.invoice,number_digit:"
 msgid "Number Digit"
 msgstr "Številka"
 
+#, fuzzy
+msgctxt "field:account.invoice,origin_invoices:"
+msgid "Origin Invoices"
+msgstr "Računi"
+
 msgctxt "field:account.invoice,origins:"
 msgid "Origins"
 msgstr "Porekla"
@@ -212,6 +217,11 @@ msgstr "Davčna identifikacija partnerja"
 
 msgctxt "field:account.invoice,payment_lines:"
 msgid "Payment Lines"
+msgstr "Postavke plačila"
+
+#, fuzzy
+msgctxt "field:account.invoice,payment_means:"
+msgid "Payment Means"
 msgstr "Postavke plačila"
 
 msgctxt "field:account.invoice,payment_term:"
@@ -245,6 +255,20 @@ msgstr "Zap. št."
 msgctxt "field:account.invoice,sequence_type_cache:"
 msgid "Sequence Type Cache"
 msgstr ""
+
+#, fuzzy
+msgctxt "field:account.invoice,source_tax_amount:"
+msgid "Source Tax"
+msgstr "Davki računa"
+
+msgctxt "field:account.invoice,source_total_amount:"
+msgid "Source Total"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.invoice,source_untaxed_amount:"
+msgid "Source Untaxed"
+msgstr "Neobdavčeno"
 
 msgctxt "field:account.invoice,state:"
 msgid "State"
@@ -553,6 +577,49 @@ msgstr "Plačniki"
 msgctxt "field:account.invoice.pay.start,payment_method:"
 msgid "Payment Method"
 msgstr "Plačilni pogoji"
+
+#, fuzzy
+msgctxt "field:account.invoice.payment.mean,company:"
+msgid "Company"
+msgstr "Družba"
+
+msgctxt "field:account.invoice.payment.mean,instrument:"
+msgid "Instrument"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.invoice.payment.mean,invoice:"
+msgid "Invoice"
+msgstr "Račun"
+
+#, fuzzy
+msgctxt "field:account.invoice.payment.mean,payees:"
+msgid "Payees"
+msgstr "Plačniki"
+
+#, fuzzy
+msgctxt "field:account.invoice.payment.mean,payers:"
+msgid "Payers"
+msgstr "Plačniki"
+
+#, fuzzy
+msgctxt "field:account.invoice.payment.mean.rule,company:"
+msgid "Company"
+msgstr "Družba"
+
+#, fuzzy
+msgctxt "field:account.invoice.payment.mean.rule,currency:"
+msgid "Currency"
+msgstr "Valuta"
+
+msgctxt "field:account.invoice.payment.mean.rule,instrument:"
+msgid "Instrument"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.invoice.payment.mean.rule,payee:"
+msgid "Payee"
+msgstr "Plačnik"
 
 msgctxt "field:account.invoice.payment.method,company:"
 msgid "Company"
@@ -895,6 +962,16 @@ msgid "Account Invoice Pay Start"
 msgstr "Partner fakture"
 
 #, fuzzy
+msgctxt "model:account.invoice.payment.mean,string:"
+msgid "Account Invoice Payment Mean"
+msgstr "Plačilni pogoji fakture"
+
+#, fuzzy
+msgctxt "model:account.invoice.payment.mean.rule,string:"
+msgid "Account Invoice Payment Mean Rule"
+msgstr "Plačilni pogoji fakture"
+
+#, fuzzy
 msgctxt "model:account.invoice.payment.method,string:"
 msgid "Account Invoice Payment Method"
 msgstr "Plačilni pogoji fakture"
@@ -988,6 +1065,11 @@ msgstr "Fakture dobaviteljev"
 msgctxt "model:ir.action,name:act_invoice_out_form"
 msgid "Customer Invoices"
 msgstr "Fakture kupcev"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_invoice_payment_mean_rule_form"
+msgid "Payment Means Rules"
+msgstr "Postavke plačila"
 
 msgctxt "model:ir.action,name:act_invoice_relate"
 msgid "Invoices"
@@ -1253,6 +1335,13 @@ msgid "The invoice \"%(invoice)s\" is similar to invoice \"%(similar)s\"."
 msgstr "Faktura \"%(invoice)s\" je podobna fakturi \"%(similar)s\"."
 
 #, python-format
+msgctxt "model:ir.message,text:msg_invoice_source_mismatch"
+msgid ""
+"The \"%(field)s\" value of the invoice \"%(invoice)s\", %(value)s, must "
+"equal the source value, %(source)s."
+msgstr ""
+
+#, python-format
 msgctxt "model:ir.message,text:msg_invoice_supplier_payment_reference_invalid"
 msgid "The %(type)s \"%(reference)s\" on invoice \"%(invoice)s\" is not valid."
 msgstr ""
@@ -1364,6 +1453,12 @@ msgctxt "model:ir.rule.group,name:rule_group_invoice_line_companies"
 msgid "User in companies"
 msgstr "Uporabnik v družbah"
 
+#, fuzzy
+msgctxt ""
+"model:ir.rule.group,name:rule_group_invoice_payment_mean_rule_companies"
+msgid "User in companies"
+msgstr "Uporabniki v družbah"
+
 msgctxt "model:ir.rule.group,name:rule_group_invoice_sequence_companies"
 msgid "User in companies"
 msgstr "Uporabnik v družbah"
@@ -1384,6 +1479,11 @@ msgctxt "model:ir.ui.menu,name:menu_invoice_out_form"
 msgid "Customer Invoices"
 msgstr "Fakture kupcev"
 
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_invoice_payment_mean_rule"
+msgid "Payment Means Rules"
+msgstr "Postavke plačila"
+
 msgctxt "model:ir.ui.menu,name:menu_invoices"
 msgid "Invoices"
 msgstr "Računi"
@@ -1400,9 +1500,10 @@ msgctxt "model:ir.ui.menu,name:menu_payment_term_test"
 msgid "Test Payment Term"
 msgstr "Preizkusi plačilne pogoje"
 
-msgctxt "model:ir.ui.menu,name:menu_payment_terms_configuration"
-msgid "Payment Terms"
-msgstr "Pogoji plačilai"
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_payments_configuration"
+msgid "Invoice Payments"
+msgstr "Plačila fakture"
 
 #, fuzzy
 msgctxt "model:party.party.payment_term,string:"
@@ -1445,6 +1546,11 @@ msgstr "Osnutek računa"
 msgctxt "report:account.invoice:"
 msgid "Invoice No:"
 msgstr "Račun št."
+
+#, fuzzy
+msgctxt "report:account.invoice:"
+msgid "Payment Means"
+msgstr "Postavke plačila"
 
 msgctxt "report:account.invoice:"
 msgid "Payment Term"
@@ -1638,6 +1744,10 @@ msgstr "Plačilo"
 msgctxt "view:account.invoice:"
 msgid "Tax Identifier:"
 msgstr "Davčni identifikator:"
+
+msgctxt "view:account.invoice:"
+msgid "expected"
+msgstr ""
 
 msgctxt "view:company.company:"
 msgid "Invoice"

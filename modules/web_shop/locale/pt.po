@@ -58,6 +58,11 @@ msgctxt "field:sale.sale,web_status_url:"
 msgid "Web Status URL"
 msgstr ""
 
+#, fuzzy
+msgctxt "field:sale.sale,web_url:"
+msgid "Web URL"
+msgstr "Lojas Virtuais"
+
 msgctxt "field:web.shop,attributes:"
 msgid "Attributes"
 msgstr "Atributos"
@@ -185,6 +190,11 @@ msgstr "A Lista de Lojas Virtuais nas Quais o Produto é Publicado."
 msgctxt "help:sale.sale,web_status_url:"
 msgid "The URL where the customer can check the order's current status."
 msgstr ""
+
+#, fuzzy
+msgctxt "help:sale.sale,web_url:"
+msgid "The URL of the order on the web shop."
+msgstr "O Front-end Usado para a Loja Virtual."
 
 msgctxt "help:web.shop,attributes:"
 msgid "The list of attributes to publish."

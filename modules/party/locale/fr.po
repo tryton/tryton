@@ -6,6 +6,10 @@ msgctxt "field:ir.email.template,contact_mechanism:"
 msgid "Contact Mechanism"
 msgstr "Moyen de contact"
 
+msgctxt "field:party.address,attn:"
+msgid "Attn"
+msgstr "À l'attention de"
+
 msgctxt "field:party.address,building_name:"
 msgid "Building Name"
 msgstr "Nom du bâtiment"
@@ -265,6 +269,10 @@ msgstr "Adresse"
 msgctxt "field:party.identifier,code:"
 msgid "Code"
 msgstr "Code"
+
+msgctxt "field:party.identifier,code_compact:"
+msgid "Code Compact"
+msgstr "Code Compact"
 
 msgctxt "field:party.identifier,party:"
 msgid "Party"
@@ -585,6 +593,10 @@ msgctxt "model:ir.action,name:act_contact_mechanism_form"
 msgid "Contact Mechanisms"
 msgstr "Moyens de contact"
 
+msgctxt "model:ir.action,name:act_identifier_form"
+msgid "Identifiers"
+msgstr "Identifiants"
+
 msgctxt "model:ir.action,name:act_party_by_category"
 msgid "Parties by Category"
 msgstr "Tiers par catégorie"
@@ -750,6 +762,10 @@ msgctxt "model:ir.ui.menu,name:menu_contact_mechanism_form"
 msgid "Contact Mechanisms"
 msgstr "Moyens de contact"
 
+msgctxt "model:ir.ui.menu,name:menu_identifier_form"
+msgid "Identifiers"
+msgstr "Identifiants"
+
 msgctxt "model:ir.ui.menu,name:menu_party"
 msgid "Parties"
 msgstr "Tiers"
@@ -879,6 +895,10 @@ msgid "Austrian Umsatzsteuer-Identifikationsnummer"
 msgstr "Umsatzsteuer-Identifikationsnummer autrichien"
 
 msgctxt "selection:party.configuration,identifier_types:"
+msgid "Azerbaijan Tax Number"
+msgstr "Numéro fiscal azerbaïdjanais"
+
+msgctxt "selection:party.configuration,identifier_types:"
 msgid "Belarus VAT Number"
 msgstr "Numéro de TVA biélorusse"
 
@@ -893,6 +913,10 @@ msgstr "Numéro d'entreprise belge"
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Belgian National Number"
 msgstr "Numéro national belge"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Belgian Social Security Number"
+msgstr "Numéro de sécurité sociale belge"
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Belgian VAT Number"
@@ -1087,6 +1111,10 @@ msgid "French Tax Identification Number"
 msgstr "Numéro d'identification fiscale français"
 
 msgctxt "selection:party.configuration,identifier_types:"
+msgid "French Trade Registration Number"
+msgstr "Numéro de registre du commerce et des sociétés français"
+
+msgctxt "selection:party.configuration,identifier_types:"
 msgid "French VAT Number"
 msgstr "Numéro de TVA français"
 
@@ -1247,6 +1275,10 @@ msgid "Moroccan Tax Number"
 msgstr "Numéro fiscal marocain"
 
 msgctxt "selection:party.configuration,identifier_types:"
+msgid "Mozambique Tax Number"
+msgstr "Numéro fiscal mozambicain"
+
+msgctxt "selection:party.configuration,identifier_types:"
 msgid "New Zealand Inland Revenue Department Number"
 msgstr "Numéro du département des revenus intérieures néo-zélandais"
 
@@ -1311,6 +1343,10 @@ msgid "Romanian VAT Number"
 msgstr "Numéro de TVA roumain"
 
 msgctxt "selection:party.configuration,identifier_types:"
+msgid "Russian Primary State Registration Number"
+msgstr "Numéro d'enregistrement d'état primaire russe"
+
+msgctxt "selection:party.configuration,identifier_types:"
 msgid "Russian Tax identifier"
 msgstr "Identifiant fiscal russe"
 
@@ -1321,6 +1357,10 @@ msgstr "Identifiant SEPA de créditeur (AT-02)"
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "San Marino National Tax Number"
 msgstr "Numéro fiscal national saint-marinais"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Senegal Tax Number"
+msgstr "Numéro fiscal sénégalais"
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Serbian Tax Identification"
@@ -1365,6 +1405,10 @@ msgstr "Numéro d'enregistrement d'entreprise sud–coréen"
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "South Korean Resident Registration Number"
 msgstr "Numéro d'enregistrement de résident sud–coréen"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Spanish Activity Establishment Code"
+msgstr "Code d'établissement d'activité espagnol"
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Spanish Company Tax"

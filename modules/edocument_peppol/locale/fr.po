@@ -1,11 +1,14 @@
 #
-#, fuzzy
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:account.invoice,peppol:"
 msgid "Peppol"
 msgstr "Peppol"
+
+msgctxt "field:account.invoice,send_via_peppol:"
+msgid "Send via Peppol"
+msgstr "Envoyer par Peppol"
 
 msgctxt "field:edocument.peppol,company:"
 msgid "Company"
@@ -123,14 +126,18 @@ msgid "Failed"
 msgstr "Échoués"
 
 msgctxt ""
-"model:ir.action.act_window.domain,name:act_edocument_peppol_domain_pending"
-msgid "Pending"
-msgstr "En attentes"
-
-msgctxt ""
 "model:ir.action.act_window.domain,name:act_edocument_peppol_domain_processing"
 msgid "Processing"
 msgstr "En traitements"
+
+#, python-format
+msgctxt "model:ir.message,text:msg_invoice_line_unit_price_not_negative"
+msgid ""
+"In order to post the invoice \"%(invoice)s\" on the Peppol network, the unit"
+" price of the line \"%(line)s\" must not be negative."
+msgstr ""
+"Pour que la facture « %(invoice)s » soit envoyée sur le réseau Peppol, le "
+"prix unitaire de la ligne « %(line)s » ne doit pas être négatif."
 
 #, python-format
 msgctxt "model:ir.message,text:msg_invoice_party_peppol_required"
@@ -164,6 +171,10 @@ msgstr "Réessayer"
 msgctxt "model:ir.model.button,string:edocument_peppol_submit_button"
 msgid "Submit"
 msgstr "Soumettre"
+
+msgctxt "model:ir.model.button,string:edocument_peppol_update_status_button"
+msgid "Update Status"
+msgstr "Mise à jour des statuts"
 
 msgctxt "model:ir.rule.group,name:rule_group_edocument_peppol_companies"
 msgid "User in companies"

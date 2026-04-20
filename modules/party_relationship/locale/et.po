@@ -101,7 +101,7 @@ msgstr "Osapoole seos"
 
 #, fuzzy
 msgctxt "model:party.relation.all,string:"
-msgid "Party Relation"
+msgid "Party Relation All"
 msgstr "Osapoole seos"
 
 #, fuzzy

@@ -2,6 +2,14 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgctxt "field:project.configuration,work_sequence:"
+msgid "Work Effort Sequence"
+msgstr "Projektfortschritt Nummernkreis"
+
+msgctxt "field:project.configuration.sequence,work_sequence:"
+msgid "Work Effort Sequence"
+msgstr "Projektfortschritt Nummernkreis"
+
 msgctxt "field:project.work,children:"
 msgid "Children"
 msgstr "Untergeordnet (Projekte/Projektaufgaben)"
@@ -21,6 +29,14 @@ msgstr "Veranschlagte Zeit"
 msgctxt "field:project.work,name:"
 msgid "Name"
 msgstr "Name"
+
+msgctxt "field:project.work,number:"
+msgid "Number"
+msgstr "Nummer"
+
+msgctxt "field:project.work,origin:"
+msgid "Origin"
+msgstr "Herkunft"
 
 msgctxt "field:project.work,parent:"
 msgid "Parent"
@@ -98,9 +114,21 @@ msgctxt "field:project.work.status,types:"
 msgid "Types"
 msgstr "Typen"
 
+msgctxt "help:project.configuration,work_sequence:"
+msgid "Used to generate the work number."
+msgstr "Wird verwendet um die Projektaufgabennummer zu generieren."
+
+msgctxt "help:project.configuration.sequence,work_sequence:"
+msgid "Used to generate the work number."
+msgstr "Wird verwendet um die Projektaufgabennummer zu generieren."
+
 msgctxt "help:project.work,effort_duration:"
 msgid "Estimated Effort for this work."
 msgstr "Geschätzter Zeitaufwand für diese Projektaufgabe."
+
+msgctxt "help:project.work,origin:"
+msgid "The source of the task."
+msgstr "Der Ursprung der Projektaufgabe."
 
 msgctxt "help:project.work,progress:"
 msgid "Estimated progress for this work."
@@ -148,6 +176,10 @@ msgstr "Die Typen, die diesen Status verwenden können."
 msgctxt "model:ir.action,name:act_open_child_work"
 msgid "Tasks"
 msgstr "Projektaufgabe"
+
+msgctxt "model:ir.action,name:act_project_configuration"
+msgid "Configuration"
+msgstr "Einstellungen"
 
 msgctxt "model:ir.action,name:act_project_form"
 msgid "Projects"
@@ -206,6 +238,10 @@ msgstr ""
 "Um \"%(work)s\" in den Status \"%(status)s\" setzen zu können, muss der "
 "Fortschritt mindestens auf %(progress)s gesetzt werden."
 
+msgctxt "model:ir.message,text:msg_work_number_unique"
+msgid "The number on work must be unique."
+msgstr "Die Nummer der Projektaufgabe muss eindeutig sein."
+
 #, python-format
 msgctxt "model:ir.message,text:msg_work_parent_progress"
 msgid ""
@@ -219,6 +255,14 @@ msgctxt "model:ir.rule.group,name:rule_group_work_companies"
 msgid "User in companies"
 msgstr "Benutzer in Unternehmen"
 
+msgctxt "model:ir.sequence,name:sequence_work"
+msgid "Work Effort"
+msgstr "Projektfortschritt"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_work"
+msgid "Project Work Effort"
+msgstr "Projektfortschritt"
+
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
 msgstr "Einstellungen"
@@ -226,6 +270,10 @@ msgstr "Einstellungen"
 msgctxt "model:ir.ui.menu,name:menu_project"
 msgid "Projects"
 msgstr "Projekte"
+
+msgctxt "model:ir.ui.menu,name:menu_project_configuration"
+msgid "Configuration"
+msgstr "Einstellungen"
 
 msgctxt "model:ir.ui.menu,name:menu_project_form"
 msgid "Projects"
@@ -254,6 +302,14 @@ msgstr "Projektaufgabenstatus"
 msgctxt "model:ir.ui.menu,name:menu_work_tree"
 msgid "Works Efforts"
 msgstr "Projekte und Projektaufgaben"
+
+msgctxt "model:project.configuration,string:"
+msgid "Project Configuration"
+msgstr "Projekt Einstellungen"
+
+msgctxt "model:project.configuration.sequence,string:"
+msgid "Project Configuration Sequence"
+msgstr "Projekt Einstellungen Nummernkreis"
 
 msgctxt "model:project.work,string:"
 msgid "Project Work"

@@ -20,8 +20,15 @@ msgstr "Jegyzet hozzáadása a rekordhoz"
 msgid "Connection error"
 msgstr "Alkalmazáshiba"
 
-msgid "Logout"
-msgstr "Kilépés"
+msgid "Check menu entries to add favorites"
+msgstr ""
+
+#, fuzzy
+msgid "Add to favorites"
+msgstr "Könyvjelzők"
+
+msgid "Remove from favorites"
+msgstr ""
 
 msgid "Favorites"
 msgstr "Könyvjelzők"
@@ -795,8 +802,24 @@ msgstr ""
 msgid "Wizard"
 msgstr ""
 
-msgid "Toggle notification"
+msgid "Add a follower"
 msgstr ""
+
+msgid "Subscribe a follower to this channel"
+msgstr ""
+
+msgid "Show followers"
+msgstr ""
+
+msgid "Unsubscribe"
+msgstr ""
+
+msgid "Subscribe"
+msgstr ""
+
+#, fuzzy
+msgid "Are you sure to unsubscribe \"%1\" from this channel?"
+msgstr "Biztos törölni szeretné?"
 
 msgid "Enter a message"
 msgstr ""
@@ -807,11 +830,20 @@ msgstr ""
 msgid "Make this an internal message"
 msgstr ""
 
+msgid "No notifications at this time"
+msgstr ""
+
 msgid "All Notifications..."
 msgstr ""
 
 msgid "Preferences..."
 msgstr ""
+
+msgid "Help..."
+msgstr ""
+
+msgid "Logout"
+msgstr "Kilépés"
 
 msgid "Translate view"
 msgstr "Nézet fordítása."

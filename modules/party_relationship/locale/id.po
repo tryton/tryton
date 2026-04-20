@@ -95,7 +95,7 @@ msgid "Party Relation"
 msgstr ""
 
 msgctxt "model:party.relation.all,string:"
-msgid "Party Relation"
+msgid "Party Relation All"
 msgstr ""
 
 msgctxt "model:party.relation.type,string:"

@@ -671,6 +671,16 @@ msgstr "Quantità vuota"
 
 #, fuzzy
 msgctxt "field:stock.reporting.inventory,product:"
+msgid "Variant"
+msgstr "Variante"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory,product_reference:"
+msgid "Product Reference"
+msgstr "Riferimento"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory,product_template:"
 msgid "Product"
 msgstr "Prodotto"
 
@@ -725,6 +735,16 @@ msgstr "Quantità vuota"
 
 #, fuzzy
 msgctxt "field:stock.reporting.inventory.daily,product:"
+msgid "Variant"
+msgstr "Variante"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.daily,product_reference:"
+msgid "Product Reference"
+msgstr "Riferimento"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.daily,product_template:"
 msgid "Product"
 msgstr "Prodotto"
 
@@ -778,6 +798,16 @@ msgstr "Quantità vuota"
 
 #, fuzzy
 msgctxt "field:stock.reporting.inventory.move,product:"
+msgid "Variant"
+msgstr "Variante"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.move,product_reference:"
+msgid "Product Reference"
+msgstr "Riferimento"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.move,product_template:"
 msgid "Product"
 msgstr "Prodotto"
 
@@ -827,6 +857,16 @@ msgstr "Quantità vuota"
 
 #, fuzzy
 msgctxt "field:stock.reporting.inventory.turnover,product:"
+msgid "Variant"
+msgstr "Variante"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.turnover,product_reference:"
+msgid "Product"
+msgstr "Prodotto"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.turnover,product_template:"
 msgid "Product"
 msgstr "Prodotto"
 
@@ -2485,11 +2525,6 @@ msgid ""
 msgstr ""
 
 #, python-format
-msgctxt "model:ir.message,text:msg_product_quantities_max"
-msgid "You cannot select more than %(max)s products to compute quantities."
-msgstr ""
-
-#, python-format
 msgctxt "model:ir.message,text:msg_shipment_check_quantity"
 msgid ""
 "The quantities of shipment \"%(shipment)s\" are different by %(quantities)s."
@@ -3063,6 +3098,11 @@ msgstr "Magazzino"
 msgctxt "model:res.group,name:group_stock_admin"
 msgid "Stock Administration"
 msgstr "Stock Administration"
+
+#, fuzzy
+msgctxt "model:res.group,name:group_stock_cancellation"
+msgid "Stock Cancellation"
+msgstr "Locations List Quantity"
 
 msgctxt "model:res.group,name:group_stock_force_assignment"
 msgid "Stock Force Assignment"
@@ -3701,12 +3741,12 @@ msgid "Variant"
 msgstr "Variante"
 
 #, fuzzy
-msgctxt "selection:stock.reporting.inventory,product:"
+msgctxt "selection:stock.reporting.inventory,product_reference:"
 msgid "Product"
 msgstr "Prodotto"
 
 #, fuzzy
-msgctxt "selection:stock.reporting.inventory,product:"
+msgctxt "selection:stock.reporting.inventory,product_reference:"
 msgid "Variant"
 msgstr "Variante"
 
@@ -3721,32 +3761,32 @@ msgid "Variant"
 msgstr "Variante"
 
 #, fuzzy
-msgctxt "selection:stock.reporting.inventory.daily,product:"
+msgctxt "selection:stock.reporting.inventory.daily,product_reference:"
 msgid "Product"
 msgstr "Prodotto"
 
 #, fuzzy
-msgctxt "selection:stock.reporting.inventory.daily,product:"
+msgctxt "selection:stock.reporting.inventory.daily,product_reference:"
 msgid "Variant"
 msgstr "Variante"
 
 #, fuzzy
-msgctxt "selection:stock.reporting.inventory.move,product:"
+msgctxt "selection:stock.reporting.inventory.move,product_reference:"
 msgid "Product"
 msgstr "Prodotto"
 
 #, fuzzy
-msgctxt "selection:stock.reporting.inventory.move,product:"
+msgctxt "selection:stock.reporting.inventory.move,product_reference:"
 msgid "Variant"
 msgstr "Variante"
 
 #, fuzzy
-msgctxt "selection:stock.reporting.inventory.turnover,product:"
+msgctxt "selection:stock.reporting.inventory.turnover,product_reference:"
 msgid "Product"
 msgstr "Prodotto"
 
 #, fuzzy
-msgctxt "selection:stock.reporting.inventory.turnover,product:"
+msgctxt "selection:stock.reporting.inventory.turnover,product_reference:"
 msgid "Variant"
 msgstr "Variante"
 

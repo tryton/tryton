@@ -1,0 +1,746 @@
+#
+#, fuzzy
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.stock.eu.excise.declaration,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:account.stock.eu.excise.declaration,end_quantity:"
+msgid "End Quantity"
+msgstr "Quantitat final"
+
+msgctxt "field:account.stock.eu.excise.declaration,eu_excise_tax:"
+msgid "Excise Tax"
+msgstr "Impost especial"
+
+msgctxt "field:account.stock.eu.excise.declaration,input_duty_suspension:"
+msgid "Input Duty Suspension"
+msgstr "Entrada en règim suspensiu"
+
+msgctxt "field:account.stock.eu.excise.declaration,input_other:"
+msgid "Input Other"
+msgstr "Entrada altra"
+
+msgctxt "field:account.stock.eu.excise.declaration,input_production:"
+msgid "Input Production"
+msgstr "Entrada producció"
+
+msgctxt "field:account.stock.eu.excise.declaration,input_replacement:"
+msgid "Input Replacement"
+msgstr "Entrada per reposició"
+
+msgctxt "field:account.stock.eu.excise.declaration,input_total:"
+msgid "Input Total"
+msgstr "Total d'entrada"
+
+msgctxt "field:account.stock.eu.excise.declaration,output_duty_free:"
+msgid "Output Duty Free"
+msgstr "Sortida lliure d'impostos"
+
+msgctxt "field:account.stock.eu.excise.declaration,output_duty_suspension:"
+msgid "Output Duty Suspension"
+msgstr "Sortida en règim suspensiu"
+
+msgctxt "field:account.stock.eu.excise.declaration,output_other:"
+msgid "Output Other"
+msgstr "Sortida altra"
+
+msgctxt "field:account.stock.eu.excise.declaration,output_production:"
+msgid "Output Production"
+msgstr "Sortida producció"
+
+msgctxt "field:account.stock.eu.excise.declaration,output_total:"
+msgid "Output Total"
+msgstr "Total de sortida"
+
+msgctxt "field:account.stock.eu.excise.declaration,output_with_duty:"
+msgid "Output with Duty"
+msgstr "Sortida amb impost"
+
+msgctxt "field:account.stock.eu.excise.declaration,products:"
+msgid "Products"
+msgstr "Productes"
+
+msgctxt "field:account.stock.eu.excise.declaration,start_quantity:"
+msgid "Start Quantity"
+msgstr "Quantitat inicial"
+
+msgctxt "field:account.stock.eu.excise.declaration,unit:"
+msgid "Unit"
+msgstr "Unitat"
+
+msgctxt "field:account.stock.eu.excise.declaration.context,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:account.stock.eu.excise.declaration.context,from_date:"
+msgid "From Date"
+msgstr "Des de la data"
+
+msgctxt "field:account.stock.eu.excise.declaration.context,to_date:"
+msgid "To Date"
+msgstr "Fins a la data"
+
+msgctxt "field:account.stock.eu.excise.declaration.context,warehouse:"
+msgid "Warehouse"
+msgstr "Magatzem"
+
+msgctxt "field:account.stock.eu.excise.declaration.product,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:account.stock.eu.excise.declaration.product,end_quantity:"
+msgid "End Quantity"
+msgstr "Quantitat final"
+
+msgctxt "field:account.stock.eu.excise.declaration.product,eu_excise_code:"
+msgid "Excise Code"
+msgstr "Codi d'impost especial"
+
+msgctxt "field:account.stock.eu.excise.declaration.product,eu_excise_tax:"
+msgid "Excise Tax"
+msgstr "Impost especial"
+
+msgctxt ""
+"field:account.stock.eu.excise.declaration.product,input_duty_suspension:"
+msgid "Input Duty Suspension"
+msgstr "Entrada en règim suspensiu"
+
+msgctxt "field:account.stock.eu.excise.declaration.product,input_other:"
+msgid "Input Other"
+msgstr "Entrada altra"
+
+msgctxt "field:account.stock.eu.excise.declaration.product,input_production:"
+msgid "Input Production"
+msgstr "Entrada producció"
+
+msgctxt "field:account.stock.eu.excise.declaration.product,input_replacement:"
+msgid "Input Replacement"
+msgstr "Entrada per reposició"
+
+msgctxt "field:account.stock.eu.excise.declaration.product,input_total:"
+msgid "Input Total"
+msgstr "Total d'entrada"
+
+msgctxt "field:account.stock.eu.excise.declaration.product,output_duty_free:"
+msgid "Output Duty Free"
+msgstr "Sortida lliure d'impostos"
+
+msgctxt ""
+"field:account.stock.eu.excise.declaration.product,output_duty_suspension:"
+msgid "Output Duty Suspension"
+msgstr "Sortida en règim suspensiu"
+
+msgctxt "field:account.stock.eu.excise.declaration.product,output_other:"
+msgid "Output Other"
+msgstr "Sortida altra"
+
+msgctxt "field:account.stock.eu.excise.declaration.product,output_production:"
+msgid "Output Production"
+msgstr "Sortida producció"
+
+msgctxt "field:account.stock.eu.excise.declaration.product,output_total:"
+msgid "Output Total"
+msgstr "Total de sortida"
+
+msgctxt "field:account.stock.eu.excise.declaration.product,output_with_duty:"
+msgid "Output with Duty"
+msgstr "Sortida amb impost"
+
+msgctxt "field:account.stock.eu.excise.declaration.product,product:"
+msgid "Product"
+msgstr "Producte"
+
+msgctxt "field:account.stock.eu.excise.declaration.product,start_quantity:"
+msgid "Start Quantity"
+msgstr "Quantitat inicial"
+
+msgctxt "field:account.stock.eu.excise.declaration.product,unit:"
+msgid "Unit"
+msgstr "Unitat"
+
+msgctxt "field:account.stock.eu.excise.declaration.product.line,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:account.stock.eu.excise.declaration.product.line,date:"
+msgid "Date"
+msgstr "Data"
+
+msgctxt "field:account.stock.eu.excise.declaration.product.line,direction:"
+msgid "Direction"
+msgstr "Direcció"
+
+msgctxt "field:account.stock.eu.excise.declaration.product.line,document:"
+msgid "Document"
+msgstr "Document"
+
+msgctxt "field:account.stock.eu.excise.declaration.product.line,duty:"
+msgid "Duty"
+msgstr "Règim"
+
+msgctxt ""
+"field:account.stock.eu.excise.declaration.product.line,eu_excise_code:"
+msgid "Excise Code"
+msgstr "Codi d'impost especial"
+
+msgctxt ""
+"field:account.stock.eu.excise.declaration.product.line,eu_excise_tax:"
+msgid "Excise Tax"
+msgstr "Impost especial"
+
+msgctxt ""
+"field:account.stock.eu.excise.declaration.product.line,internal_quantity:"
+msgid "Internal Quantity"
+msgstr "Quantitat interna"
+
+msgctxt "field:account.stock.eu.excise.declaration.product.line,location:"
+msgid "Location"
+msgstr "Ubicació"
+
+msgctxt "field:account.stock.eu.excise.declaration.product.line,move:"
+msgid "Move"
+msgstr "Moviment"
+
+msgctxt "field:account.stock.eu.excise.declaration.product.line,origin:"
+msgid "Origin"
+msgstr "Origen"
+
+msgctxt "field:account.stock.eu.excise.declaration.product.line,product:"
+msgid "Product"
+msgstr "Producte"
+
+msgctxt "field:account.stock.eu.excise.declaration.product.line,quantity:"
+msgid "Quantity"
+msgstr "Quantitat"
+
+msgctxt "field:account.stock.eu.excise.declaration.product.line,unit:"
+msgid "Unit"
+msgstr "Unitat"
+
+msgctxt "field:account.stock.eu.excise.tax,code:"
+msgid "Code"
+msgstr "Codi"
+
+msgctxt "field:account.stock.eu.excise.tax,country:"
+msgid "Country"
+msgstr "País"
+
+msgctxt "field:account.stock.eu.excise.tax,currency:"
+msgid "Currency"
+msgstr "Moneda"
+
+msgctxt "field:account.stock.eu.excise.tax,description:"
+msgid "Description"
+msgstr "Descripció"
+
+msgctxt "field:account.stock.eu.excise.tax,quantity:"
+msgid "Quantity"
+msgstr "Quantitat"
+
+msgctxt "field:account.stock.eu.excise.tax,tax_rates:"
+msgid "Tax Rates"
+msgstr "Taxes impositives"
+
+msgctxt "field:account.stock.eu.excise.tax,uom:"
+msgid "UoM"
+msgstr "UdM"
+
+msgctxt "field:account.stock.eu.excise.tax.rate,end_date:"
+msgid "End Date"
+msgstr "Data final"
+
+msgctxt "field:account.stock.eu.excise.tax.rate,excise_tax:"
+msgid "Excise Tax"
+msgstr "Impost especial"
+
+msgctxt "field:account.stock.eu.excise.tax.rate,formula:"
+msgid "Formula"
+msgstr "Fórmula"
+
+msgctxt "field:account.stock.eu.excise.tax.rate,start_date:"
+msgid "Start Date"
+msgstr "Data inicial"
+
+msgctxt "field:party.identifier,eu_excise_codes:"
+msgid "Excise Codes"
+msgstr "Codis d'impostos especials"
+
+msgctxt "field:party.identifier-product.eu.excise_code,excise_code:"
+msgid "Excise Code"
+msgstr "Codi d'impost especial"
+
+msgctxt "field:party.identifier-product.eu.excise_code,identifier:"
+msgid "Identifier"
+msgstr "Identificador"
+
+msgctxt "field:product-account.stock.eu.excise.tax,country:"
+msgid "Country"
+msgstr "País"
+
+msgctxt "field:product-account.stock.eu.excise.tax,excise_tax:"
+msgid "Tax"
+msgstr "Impost"
+
+msgctxt "field:product-account.stock.eu.excise.tax,template:"
+msgid "Product"
+msgstr "Producte"
+
+msgctxt "field:product.eu.excise_code,code:"
+msgid "Code"
+msgstr "Codi"
+
+msgctxt "field:product.eu.excise_code,description:"
+msgid "Description"
+msgstr "Descripció"
+
+msgctxt "field:product.price_list.line,eu_excise_duty:"
+msgid "Excise Duty Suspension"
+msgstr "Règim suspensiu d'impostos especials"
+
+msgctxt "field:product.price_list.line,eu_excise_tax:"
+msgid "Excise Tax"
+msgstr "Impost especial"
+
+msgctxt "field:product.product,eu_excise_code:"
+msgid "Excise Code"
+msgstr "Codi d'impost especial"
+
+msgctxt "field:product.product,eu_excise_taxes:"
+msgid "Excise Tax"
+msgstr "Impost especial"
+
+msgctxt "field:product.template,eu_excise_code:"
+msgid "Excise Code"
+msgstr "Codi d'impost especial"
+
+msgctxt "field:product.template,eu_excise_taxes:"
+msgid "Excise Tax"
+msgstr "Impost especial"
+
+msgctxt "field:sale.line,eu_excise_duty_amount:"
+msgid "Excise Duty Amount"
+msgstr "Import de l'impost especial"
+
+msgctxt "field:sale.sale,eu_excise_duty_amount:"
+msgid "Excise Duty Amount"
+msgstr "Import de l'impost especial"
+
+msgctxt "field:sale.sale,eu_excise_number:"
+msgid "Excise Number"
+msgstr "Número d'impost especial"
+
+msgctxt "field:sale.sale,eu_excise_types:"
+msgid "Excise Types"
+msgstr "Tipus d'impostos especials"
+
+msgctxt "field:sale.sale,warehouse_eu_excise_number:"
+msgid "Warehouse Excise Number"
+msgstr "Número d'impost especial de magatzem"
+
+msgctxt "field:stock.location,eu_excise_numbers:"
+msgid "Excise Number"
+msgstr "Número d'impost especial"
+
+msgctxt "field:stock.location.eu_excise_number,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:stock.location.eu_excise_number,company_party:"
+msgid "Company Party"
+msgstr "Tercer de l'empresa"
+
+msgctxt "field:stock.location.eu_excise_number,eu_excise_number:"
+msgid "Excise Number"
+msgstr "Número d'impost especial"
+
+msgctxt "field:stock.location.eu_excise_number,warehouse:"
+msgid "Warehouse"
+msgstr "Magatzem"
+
+msgctxt "field:stock.location.eu_excise_number,warehouse_address:"
+msgid "Warehouse Address"
+msgstr "Adreça del magatzem"
+
+msgctxt "field:stock.move,eu_excise_duty:"
+msgid "Excise Duty"
+msgstr "Impostos especials"
+
+msgctxt "field:stock.move,eu_excise_duty_applicable:"
+msgid "Excise Duty Applicable"
+msgstr "Impost especial aplicable"
+
+msgctxt "field:stock.shipment.in,eu_excise_number:"
+msgid "Excise Number"
+msgstr "Número d'impost especial"
+
+msgctxt "field:stock.shipment.in,eu_excise_party:"
+msgid "Excise Party"
+msgstr "Tercer d'impost especial"
+
+msgctxt "field:stock.shipment.in,eu_excise_types:"
+msgid "Excise Types"
+msgstr "Tipus d'impostos especials"
+
+msgctxt "field:stock.shipment.in,has_eu_excise_goods:"
+msgid "Has Excise Goods"
+msgstr "Té productes subjectes a impostos especials"
+
+msgctxt "field:stock.shipment.in,warehouse_eu_excise_number:"
+msgid "Warehouse Excise Number"
+msgstr "Número d'impost especial del magatzem"
+
+msgctxt "field:stock.shipment.in.return,eu_excise_number:"
+msgid "Excise Number"
+msgstr "Número d'impost especial"
+
+msgctxt "field:stock.shipment.in.return,eu_excise_party:"
+msgid "Excise Party"
+msgstr "Tercer d'impost especial"
+
+msgctxt "field:stock.shipment.in.return,eu_excise_types:"
+msgid "Excise Types"
+msgstr "Tipus d'impostos especials"
+
+msgctxt "field:stock.shipment.in.return,has_eu_excise_goods:"
+msgid "Has Excise Goods"
+msgstr "Té productes subjectes a impostos especials"
+
+msgctxt "field:stock.shipment.in.return,warehouse_eu_excise_number:"
+msgid "Warehouse Excise Number"
+msgstr "Número d'impost especial del magatzem"
+
+msgctxt "field:stock.shipment.out,eu_excise_number:"
+msgid "Excise Number"
+msgstr "Número d'impost especial"
+
+msgctxt "field:stock.shipment.out,eu_excise_party:"
+msgid "Excise Party"
+msgstr "Tercer d'impost especial"
+
+msgctxt "field:stock.shipment.out,eu_excise_types:"
+msgid "Excise Types"
+msgstr "Tipus d'impostos especials"
+
+msgctxt "field:stock.shipment.out,has_eu_excise_goods:"
+msgid "Has Excise Goods"
+msgstr "Té productes subjectes a impostos especials"
+
+msgctxt "field:stock.shipment.out,warehouse_eu_excise_number:"
+msgid "Warehouse Excise Number"
+msgstr "Número d'impost especial del magatzem"
+
+msgctxt "field:stock.shipment.out.return,eu_excise_number:"
+msgid "Excise Number"
+msgstr "Número d'impost especial"
+
+msgctxt "field:stock.shipment.out.return,eu_excise_party:"
+msgid "Excise Party"
+msgstr "Tercer d'impost especial"
+
+msgctxt "field:stock.shipment.out.return,eu_excise_types:"
+msgid "Excise Types"
+msgstr "Tipus d'impostos especials"
+
+msgctxt "field:stock.shipment.out.return,has_eu_excise_goods:"
+msgid "Has Excise Goods"
+msgstr "Té productes subjectes a impostos especials"
+
+msgctxt "field:stock.shipment.out.return,warehouse_eu_excise_number:"
+msgid "Warehouse Excise Number"
+msgstr "Número d'impost especial del magatzem"
+
+msgctxt "help:account.stock.eu.excise.tax,quantity:"
+msgid "Define which quantity to use for excise declaration."
+msgstr ""
+"Definiu quina quantitat utilitzar per a la declaració d'impostos especials."
+
+msgctxt "help:account.stock.eu.excise.tax,uom:"
+msgid "The Unit of Measure for excise declaration."
+msgstr "La unitat de mesura per a la declaració d'impostos especials."
+
+msgctxt "help:account.stock.eu.excise.tax.rate,formula:"
+msgid ""
+"A python expression that will be evaluated with:\n"
+"-quantity: the quantity of product"
+msgstr ""
+"Una expressió de Python que s'avaluarà amb:\n"
+"-quantity: la quantitat de producte"
+
+msgctxt "help:party.identifier,eu_excise_codes:"
+msgid "Authorized codes for the excise number."
+msgstr "Codis autoritzats per al número d'impost especial."
+
+msgctxt "help:product.eu.excise_code,code:"
+msgid "The code from the System for Exchange of Excise Data"
+msgstr "El codi del sistema d'intercanvi de dades d'impostos especials"
+
+msgctxt "model:account.stock.eu.excise.declaration,string:"
+msgid "Account Stock Eu Excise Declaration"
+msgstr "Declaració d'impostos especials de la UE"
+
+msgctxt "model:account.stock.eu.excise.declaration.context,string:"
+msgid "Account Stock Eu Excise Declaration Context"
+msgstr "Context de la declaració d'impostos especials de la UE"
+
+msgctxt "model:account.stock.eu.excise.declaration.product,string:"
+msgid "Account Stock Eu Excise Declaration Product"
+msgstr "Producte de la declaració d'impostos especials de la UE"
+
+msgctxt "model:account.stock.eu.excise.declaration.product.line,string:"
+msgid "Account Stock Eu Excise Declaration Product Line"
+msgstr "Línia de producte de la declaració d'impostos especials de la UE"
+
+msgctxt "model:account.stock.eu.excise.tax,string:"
+msgid "Account Stock Eu Excise Tax"
+msgstr "Impostos especials de la UE"
+
+msgctxt "model:account.stock.eu.excise.tax.rate,string:"
+msgid "Account Stock Eu Excise Tax Rate"
+msgstr "Taxa d'impost especial de la UE"
+
+msgctxt "model:ir.action,name:act_account_stock_eu_excise_declaration_form"
+msgid "Excise Declarations"
+msgstr "Declaracions d'impostos especials"
+
+msgctxt ""
+"model:ir.action,name:act_account_stock_eu_excise_declaration_product_form"
+msgid "Excise Declaration Products"
+msgstr "Productes de declaració d'impostos especials"
+
+msgctxt ""
+"model:ir.action,name:act_account_stock_eu_excise_declaration_product_line_form"
+msgid "Excise Declaration Product Lines"
+msgstr "Línies de productes de declaració d'impostos especials"
+
+msgctxt "model:ir.action,name:act_account_stock_eu_excise_tax_form"
+msgid "Excise Taxes"
+msgstr "Impostos especials"
+
+msgctxt "model:ir.action,name:act_product_eu_excise_code_form"
+msgid "Excise Codes"
+msgstr "Codis d'impostos especials"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_account_stock_eu_excise_declaration_product_line_form_all"
+msgid "All"
+msgstr "Tot"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_account_stock_eu_excise_declaration_product_line_form_input_duty_suspension"
+msgid "Input Duty Suspension"
+msgstr "Entrada en règim suspensiu"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_account_stock_eu_excise_declaration_product_line_form_input_other"
+msgid "Input Other"
+msgstr "Entrada altra"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_account_stock_eu_excise_declaration_product_line_form_input_production"
+msgid "Input Production"
+msgstr "Entrada producció"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_account_stock_eu_excise_declaration_product_line_form_input_replacement"
+msgid "Input Replacement"
+msgstr "Entrada per reposició"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_account_stock_eu_excise_declaration_product_line_form_output_duty_free"
+msgid "Output Duty Free"
+msgstr "Sortida lliure d'impostos"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_account_stock_eu_excise_declaration_product_line_form_output_duty_suspension"
+msgid "Output Duty Suspension"
+msgstr "Sortida en règim suspensiu"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_account_stock_eu_excise_declaration_product_line_form_output_other"
+msgid "Output Other"
+msgstr "Sortida altra"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_account_stock_eu_excise_declaration_product_line_form_output_production"
+msgid "Output Production"
+msgstr "Sortida producció"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_account_stock_eu_excise_declaration_product_line_form_output_with_duty"
+msgid "Output with Duty"
+msgstr "Sortida amb impost"
+
+msgctxt "model:ir.message,text:msg_excise_tax_template_country_unique"
+msgid "Only one excise tax per country can be applied to a product."
+msgstr "Només es pot aplicar un impost especial per país a un producte."
+
+#, python-format
+msgctxt "model:ir.message,text:msg_invalid_formula"
+msgid ""
+"Invalid formula \"%(formula)s\" in excise tax rate \"%(tax_rate)s\" with "
+"exception \"%(exception)s\"."
+msgstr ""
+"Fórmula no vàlida \"%(formula)s\" a la taxa d'impost especial "
+"\"%(tax_rate)s\" amb l'excepció \"%(exception)s\"."
+
+msgctxt "model:ir.message,text:msg_warehouse_excise_company_unique"
+msgid "Only one excise number is allowed for a warehouse per company."
+msgstr "Només es permet un número d'impost especial per magatzem i empresa."
+
+msgctxt ""
+"model:ir.rule.group,name:rule_group_account_stock_eu_excise_declaration_companies"
+msgid "User in companies"
+msgstr "Usuari a les empreses"
+
+msgctxt ""
+"model:ir.rule.group,name:rule_group_account_stock_eu_excise_declaration_product_companies"
+msgid "User in companies"
+msgstr "Usuari a les empreses"
+
+msgctxt ""
+"model:ir.rule.group,name:rule_group_account_stock_eu_excise_declaration_product_line_companies"
+msgid "User in companies"
+msgstr "Usuari a les empreses"
+
+msgctxt "model:ir.ui.menu,name:menu_account_stock_eu_excise_declaration_form"
+msgid "Excise Declarations"
+msgstr "Declaracions d'impostos especials"
+
+msgctxt ""
+"model:ir.ui.menu,name:menu_account_stock_eu_excise_declaration_product_form"
+msgid "Excise Declaration Products"
+msgstr "Productes de declaració d'impostos especials"
+
+msgctxt "model:ir.ui.menu,name:menu_account_stock_eu_excise_tax_form"
+msgid "Excise Taxes"
+msgstr "Impostos especials"
+
+msgctxt "model:ir.ui.menu,name:menu_product_eu_excise_code_form"
+msgid "Excise Codes"
+msgstr "Codis d'impostos especials"
+
+msgctxt "model:party.identifier-product.eu.excise_code,string:"
+msgid "Party Identifier - Product Eu Excise Code"
+msgstr ""
+"Identificador del tercer - Codi d'impostos especials de la UE del producte"
+
+msgctxt "model:product-account.stock.eu.excise.tax,string:"
+msgid "Product - Account Stock Eu Excise Tax"
+msgstr "Producte - Compte d'existències Impost especial de la UE"
+
+msgctxt "model:product.eu.excise_code,string:"
+msgid "Product Eu Excise Code"
+msgstr "Codi d'impostos especials de la UE del producte"
+
+msgctxt "model:stock.location.eu_excise_number,string:"
+msgid "Stock Location Eu Excise Number"
+msgstr "Ubicació d'existències Número d'impost especial de la UE"
+
+msgctxt ""
+"selection:account.stock.eu.excise.declaration.product.line,direction:"
+msgid "Input"
+msgstr "Entrada"
+
+msgctxt ""
+"selection:account.stock.eu.excise.declaration.product.line,direction:"
+msgid "Output"
+msgstr "Sortida"
+
+msgctxt "selection:account.stock.eu.excise.declaration.product.line,duty:"
+msgid "Free"
+msgstr "Lliure"
+
+msgctxt "selection:account.stock.eu.excise.declaration.product.line,duty:"
+msgid "Suspension"
+msgstr "Suspensió"
+
+msgctxt "selection:account.stock.eu.excise.tax,quantity:"
+msgid "Volume Measurements"
+msgstr "Mesures de volum"
+
+msgctxt "selection:account.stock.eu.excise.tax,quantity:"
+msgid "Weight Measurements"
+msgstr "Mesures de pes"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "European Excise Number"
+msgstr "Número d'impost especial europeu"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "French Excise Number"
+msgstr "Número d'impost especial francès"
+
+msgctxt "selection:product.price_list.line,eu_excise_duty:"
+msgid "Suspension"
+msgstr "Suspensió"
+
+msgctxt "selection:sale.sale,eu_excise_types:"
+msgid "European Excise Number"
+msgstr "Número d'impost especial europeu"
+
+msgctxt "selection:sale.sale,eu_excise_types:"
+msgid "French Excise Number"
+msgstr "Número d'impost especial francès"
+
+msgctxt "selection:stock.move,eu_excise_duty:"
+msgid "Free"
+msgstr "Lliure"
+
+msgctxt "selection:stock.move,eu_excise_duty:"
+msgid "Suspension"
+msgstr "Suspensió"
+
+msgctxt "selection:stock.shipment.in,eu_excise_types:"
+msgid "European Excise Number"
+msgstr "Número d'impost especial europeu"
+
+msgctxt "selection:stock.shipment.in,eu_excise_types:"
+msgid "French Excise Number"
+msgstr "Número d'impost especial francès"
+
+msgctxt "selection:stock.shipment.in.return,eu_excise_types:"
+msgid "European Excise Number"
+msgstr "Número d'impost especial europeu"
+
+msgctxt "selection:stock.shipment.in.return,eu_excise_types:"
+msgid "French Excise Number"
+msgstr "Número d'impost especial francès"
+
+msgctxt "selection:stock.shipment.out,eu_excise_types:"
+msgid "European Excise Number"
+msgstr "Número d'impost especial europeu"
+
+msgctxt "selection:stock.shipment.out,eu_excise_types:"
+msgid "French Excise Number"
+msgstr "Número d'impost especial francès"
+
+msgctxt "selection:stock.shipment.out.return,eu_excise_types:"
+msgid "European Excise Number"
+msgstr "Número d'impost especial europeu"
+
+msgctxt "selection:stock.shipment.out.return,eu_excise_types:"
+msgid "French Excise Number"
+msgstr "Número d'impost especial francès"
+
+msgctxt "view:account.stock.eu.excise.declaration.product:"
+msgid "Input"
+msgstr "Entrada"
+
+msgctxt "view:account.stock.eu.excise.declaration.product:"
+msgid "Output"
+msgstr "Sortida"
+
+msgctxt "view:account.stock.eu.excise.declaration:"
+msgid "Input"
+msgstr "Entrada"
+
+msgctxt "view:account.stock.eu.excise.declaration:"
+msgid "Output"
+msgstr "Sortida"
+
+msgctxt "view:product.template:"
+msgid "Excise"
+msgstr "Impostos especials"

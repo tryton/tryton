@@ -142,6 +142,10 @@ msgctxt "field:quality.inspection,processed_by:"
 msgid "Processed by"
 msgstr "Obdelal"
 
+msgctxt "field:quality.inspection,reference:"
+msgid "Reference"
+msgstr ""
+
 msgctxt "field:quality.inspection,state:"
 msgid "State"
 msgstr ""

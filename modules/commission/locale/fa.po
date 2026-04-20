@@ -467,7 +467,7 @@ msgstr "عامل حق العمل"
 
 #, fuzzy
 msgctxt "model:commission.reporting.agent.time_series,string:"
-msgid "Commission Reporting Agent"
+msgid "Commission Reporting Agent Time Series"
 msgstr "عامل حق العمل"
 
 #, fuzzy

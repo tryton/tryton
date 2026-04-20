@@ -34,8 +34,15 @@ msgstr "امکان دسترسی به سرور وجود ندارد."
 msgid "Connection error"
 msgstr "ایجاد کاربر"
 
-msgid "Logout"
-msgstr "خروج"
+msgid "Check menu entries to add favorites"
+msgstr ""
+
+#, fuzzy
+msgid "Add to favorites"
+msgstr "علاقه مندی ها"
+
+msgid "Remove from favorites"
+msgstr ""
 
 msgid "Favorites"
 msgstr "علاقه مندی ها"
@@ -831,8 +838,24 @@ msgstr ""
 msgid "Wizard"
 msgstr "دستیار نصب"
 
-msgid "Toggle notification"
+msgid "Add a follower"
 msgstr ""
+
+msgid "Subscribe a follower to this channel"
+msgstr ""
+
+msgid "Show followers"
+msgstr ""
+
+msgid "Unsubscribe"
+msgstr ""
+
+msgid "Subscribe"
+msgstr ""
+
+#, fuzzy
+msgid "Are you sure to unsubscribe \"%1\" from this channel?"
+msgstr "برای حذف این پرونده اطمینان کامل دارید؟"
 
 msgid "Enter a message"
 msgstr ""
@@ -843,11 +866,20 @@ msgstr ""
 msgid "Make this an internal message"
 msgstr ""
 
+msgid "No notifications at this time"
+msgstr ""
+
 msgid "All Notifications..."
 msgstr ""
 
 msgid "Preferences..."
 msgstr ""
+
+msgid "Help..."
+msgstr ""
+
+msgid "Logout"
+msgstr "خروج"
 
 msgid "Translate view"
 msgstr ""

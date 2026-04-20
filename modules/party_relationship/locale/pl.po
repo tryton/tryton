@@ -101,7 +101,7 @@ msgstr "Relacje strony"
 
 #, fuzzy
 msgctxt "model:party.relation.all,string:"
-msgid "Party Relation"
+msgid "Party Relation All"
 msgstr "Relacje strony"
 
 #, fuzzy

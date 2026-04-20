@@ -256,6 +256,11 @@ msgctxt "field:purchase.line,quantity:"
 msgid "Quantity"
 msgstr "数量"
 
+#, fuzzy
+msgctxt "field:purchase.line,quantity_to_invoice:"
+msgid "Quantity to Invoice"
+msgstr "创建发票"
+
 msgctxt "field:purchase.line,summary:"
 msgid "Summary"
 msgstr "总结"
@@ -502,6 +507,11 @@ msgstr "税"
 msgctxt "field:purchase.purchase,tax_amount_cache:"
 msgid "Tax Cache"
 msgstr "税收缓存"
+
+#, fuzzy
+msgctxt "field:purchase.purchase,to_invoice:"
+msgid "To Invoice"
+msgstr "发票"
 
 msgctxt "field:purchase.purchase,total_amount:"
 msgid "Total"
@@ -1327,16 +1337,17 @@ msgid "Title"
 msgstr "标题"
 
 msgctxt "selection:purchase.purchase,invoice_method:"
-msgid "Based On Order"
-msgstr "基于订单"
-
-msgctxt "selection:purchase.purchase,invoice_method:"
-msgid "Based On Shipment"
-msgstr "基于发货"
-
-msgctxt "selection:purchase.purchase,invoice_method:"
 msgid "Manual"
 msgstr "手工"
+
+msgctxt "selection:purchase.purchase,invoice_method:"
+msgid "On Fulfillment"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:purchase.purchase,invoice_method:"
+msgid "On Order"
+msgstr "基于订单"
 
 msgctxt "selection:purchase.purchase,invoice_state:"
 msgid "Awaiting Payment"

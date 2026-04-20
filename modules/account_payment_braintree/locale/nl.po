@@ -100,7 +100,7 @@ msgstr "Webhook eindpunt"
 
 msgctxt "field:account.payment.braintree.account,webhook_identifier:"
 msgid "Webhook Identifier"
-msgstr "Webhook ID"
+msgstr "Webhook identificatie"
 
 msgctxt "field:account.payment.braintree.customer,braintree_account:"
 msgid "Account"

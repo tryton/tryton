@@ -2610,8 +2610,8 @@ msgid "Account Aged Balance Context"
 msgstr "Context del balanç històric"
 
 msgctxt "model:account.balance_sheet.comparison.context,string:"
-msgid "Account Balance Sheet Context"
-msgstr "Context del balanç de situació"
+msgid "Account Balance Sheet Comparison Context"
+msgstr "Context de la comparació del balanç de situació"
 
 msgctxt "model:account.balance_sheet.context,string:"
 msgid "Account Balance Sheet Context"
@@ -2686,8 +2686,8 @@ msgid "Account General Ledger Line"
 msgstr "Apunt llibre major"
 
 msgctxt "model:account.general_ledger.line.context,string:"
-msgid "Account General Ledger Account Context"
-msgstr "Context del compte llibre major"
+msgid "Account General Ledger Line Context"
+msgstr "Context de la línia del compte del llibre major"
 
 msgctxt "model:account.income_statement.context,string:"
 msgid "Account Income Statement Context"
@@ -4770,6 +4770,10 @@ msgstr "Cap"
 msgctxt "selection:account.tax.template,type:"
 msgid "Percentage"
 msgstr "Percentatge"
+
+msgctxt "selection:ir.cron,method:"
+msgid "Reconcile Move Lines Automatically"
+msgstr "Concilia apunts automàticament"
 
 msgctxt "view:account.account.type:"
 msgid "Comparison"

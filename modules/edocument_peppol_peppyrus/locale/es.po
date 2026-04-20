@@ -1,5 +1,4 @@
 #
-#, fuzzy
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -7,9 +6,29 @@ msgctxt "field:edocument.peppol.service,peppyrus_api_key:"
 msgid "API Key"
 msgstr "Clave API"
 
+msgctxt "field:edocument.peppol.service,peppyrus_identifier:"
+msgid "Identifier"
+msgstr "Identificador"
+
+msgctxt "field:edocument.peppol.service,peppyrus_incoming_webhook:"
+msgid "Incoming webhook"
+msgstr "Webhook entrante"
+
+msgctxt "field:edocument.peppol.service,peppyrus_outgoing_webhook:"
+msgid "Outgoing webhook"
+msgstr "Webhook saliente"
+
 msgctxt "field:edocument.peppol.service,peppyrus_server:"
 msgid "Server"
 msgstr "Servidor"
+
+msgctxt "help:edocument.peppol.service,peppyrus_incoming_webhook:"
+msgid "The URL for the incoming documents webhook."
+msgstr "La URL para el webhook de los documentos entrantes."
+
+msgctxt "help:edocument.peppol.service,peppyrus_outgoing_webhook:"
+msgid "The URL for the outgoing documents webhook."
+msgstr "La URL para el webhook de los documentos salientes."
 
 msgctxt "model:ir.message,text:msg_peppyrus_credential_modified"
 msgid "Are you sure you want to modify Peppyrus credentials?"
@@ -23,6 +42,17 @@ msgid ""
 msgstr ""
 "Ha fallado la llamada al servicio web de Peppyrus con el siguiente mensaje de error: \n"
 "%(message)s"
+
+msgctxt ""
+"model:ir.model.button,confirm:edocument_peppol_service_new_identifier_button"
+msgid ""
+"This action will make the previous URLs unusable. Do you want to continue?"
+msgstr "Esta acción volverá inutilizables las URLs previas. ¿Desea continuar?"
+
+msgctxt ""
+"model:ir.model.button,string:edocument_peppol_service_new_identifier_button"
+msgid "New URLs"
+msgstr "Nuevas URLs"
 
 msgctxt "selection:edocument.peppol.service,peppyrus_server:"
 msgid "Production"

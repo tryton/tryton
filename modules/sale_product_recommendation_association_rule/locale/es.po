@@ -104,15 +104,15 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_product_association_rule_form"
 msgid "Sale Association Rules"
-msgstr "Reglas de associación de venta"
+msgstr "Reglas de asociación de venta"
 
 msgctxt "model:ir.ui.menu,name:menu_product_association_rule_form"
 msgid "Sale Association Rules"
-msgstr "Reglas de associación de venta"
+msgstr "Reglas de asociación de venta"
 
 msgctxt "model:sale.product.association.rule,string:"
 msgid "Sale Product Association Rule"
-msgstr "Reglas de associación de productos"
+msgstr "Reglas de asociación de productos"
 
 msgctxt "model:sale.product.association.rule.antecedent,string:"
 msgid "Sale Product Association Rule Antecedent"

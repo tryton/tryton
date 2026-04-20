@@ -1,10 +1,26 @@
-msgid "Toggle notification"
+msgid "Show followers"
+msgstr ""
+
+#, python-format
+msgid "Are you sure to unsubscribe \"%(name)s\" from this channel?"
+msgstr ""
+
+msgid "Unsubscribe"
+msgstr ""
+
+msgid "Subscribe"
 msgstr ""
 
 msgid "Make this an _internal message"
 msgstr ""
 
 msgid "Send"
+msgstr ""
+
+msgid "Add a follower"
+msgstr ""
+
+msgid "Subscribe a follower to this channel"
 msgstr ""
 
 msgid "specify alternate config file"
@@ -349,6 +365,9 @@ msgstr ""
 msgid "No result found."
 msgstr ""
 
+msgid "Check menu entries to add favorites"
+msgstr ""
+
 msgid "Action"
 msgstr ""
 
@@ -511,6 +530,9 @@ msgid "Expand all rows"
 msgstr ""
 
 msgid "Close Tab"
+msgstr ""
+
+msgid "No notifications at this time"
 msgstr ""
 
 msgid "All Notifications..."

@@ -58,6 +58,11 @@ msgctxt "field:sale.sale,web_status_url:"
 msgid "Web Status URL"
 msgstr ""
 
+#, fuzzy
+msgctxt "field:sale.sale,web_url:"
+msgid "Web URL"
+msgstr "Веб-магазини"
+
 msgctxt "field:web.shop,attributes:"
 msgid "Attributes"
 msgstr "Атрибути"
@@ -187,6 +192,11 @@ msgstr "Список веб-магазинів, у яких опублікова
 msgctxt "help:sale.sale,web_status_url:"
 msgid "The URL where the customer can check the order's current status."
 msgstr ""
+
+#, fuzzy
+msgctxt "help:sale.sale,web_url:"
+msgid "The URL of the order on the web shop."
+msgstr "Інтерфейс, який використовується для веб-магазину."
 
 msgctxt "help:web.shop,attributes:"
 msgid "The list of attributes to publish."

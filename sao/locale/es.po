@@ -17,8 +17,14 @@ msgstr "No se ha podido conectar con el servidor."
 msgid "Connection error"
 msgstr "Error de conexión"
 
-msgid "Logout"
-msgstr "Cerrar sesión"
+msgid "Check menu entries to add favorites"
+msgstr "Marca las opciones del menú para añadirlas a tus favoritos"
+
+msgid "Add to favorites"
+msgstr "Agregar a favoritos"
+
+msgid "Remove from favorites"
+msgstr "Eliminar de favoritos"
 
 msgid "Favorites"
 msgstr "Favoritos"
@@ -743,7 +749,7 @@ msgid "Cc:"
 msgstr "Cc:"
 
 msgid "Bcc:"
-msgstr "CCo:"
+msgstr "Cco:"
 
 msgid "Subject:"
 msgstr "Asunto:"
@@ -775,8 +781,23 @@ msgstr "Alternar sonido"
 msgid "Wizard"
 msgstr "Asistente"
 
-msgid "Toggle notification"
-msgstr "Conmutar notificación"
+msgid "Add a follower"
+msgstr "Añadir un seguidor"
+
+msgid "Subscribe a follower to this channel"
+msgstr "Suscribir un seguidor este canal"
+
+msgid "Show followers"
+msgstr "Mostrar seguidores"
+
+msgid "Unsubscribe"
+msgstr "Darse de baja"
+
+msgid "Subscribe"
+msgstr "Suscribirse"
+
+msgid "Are you sure to unsubscribe \"%1\" from this channel?"
+msgstr "¿Estás seguro de que quieres dar de baja a \"%1\" de este canal?"
 
 msgid "Enter a message"
 msgstr "Introduce un mensaje"
@@ -787,11 +808,20 @@ msgstr "Enviar el mensaje"
 msgid "Make this an internal message"
 msgstr "Convierte esto en un mensaje interno"
 
+msgid "No notifications at this time"
+msgstr "No hay notificaciones en este momento"
+
 msgid "All Notifications..."
 msgstr "Todas las notificaciones..."
 
 msgid "Preferences..."
 msgstr "Preferencias..."
+
+msgid "Help..."
+msgstr "Ayuda..."
+
+msgid "Logout"
+msgstr "Cerrar sesión"
 
 msgid "Translate view"
 msgstr "Traducir vista"

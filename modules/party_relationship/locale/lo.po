@@ -103,7 +103,7 @@ msgstr "ຄວາມສຳພັນຂອງພາກສ່ວນ"
 
 #, fuzzy
 msgctxt "model:party.relation.all,string:"
-msgid "Party Relation"
+msgid "Party Relation All"
 msgstr "ຄວາມສຳພັນຂອງພາກສ່ວນ"
 
 #, fuzzy

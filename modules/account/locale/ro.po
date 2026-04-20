@@ -2674,7 +2674,7 @@ msgstr "Context Cont"
 
 #, fuzzy
 msgctxt "model:account.balance_sheet.comparison.context,string:"
-msgid "Account Balance Sheet Context"
+msgid "Account Balance Sheet Comparison Context"
 msgstr "Contextul Bilanţului"
 
 #, fuzzy
@@ -2767,7 +2767,7 @@ msgstr "Registru General Rând"
 
 #, fuzzy
 msgctxt "model:account.general_ledger.line.context,string:"
-msgid "Account General Ledger Account Context"
+msgid "Account General Ledger Line Context"
 msgstr "Registru General Conturi Context"
 
 #, fuzzy
@@ -4893,6 +4893,11 @@ msgstr "Nici unul"
 msgctxt "selection:account.tax.template,type:"
 msgid "Percentage"
 msgstr "Procent"
+
+#, fuzzy
+msgctxt "selection:ir.cron,method:"
+msgid "Reconcile Move Lines Automatically"
+msgstr "Reconciliere Rânduri"
 
 msgctxt "view:account.account.type:"
 msgid "Comparison"

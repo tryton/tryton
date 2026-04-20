@@ -1,0 +1,16 @@
+#
+#, fuzzy
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:production,ethanol_volume:"
+msgid "Alcohol Volume"
+msgstr "Volum d'alcohol"
+
+msgctxt "field:production,ethanol_volume_unit:"
+msgid "Alcohol Volume UoM"
+msgstr "UdM del volum d'alcohol"
+
+msgctxt "help:production,ethanol_volume:"
+msgid "The volume of ethanol/alcohol gained or lost."
+msgstr "El volum d'etanol/alcohol guanyat o perdut."

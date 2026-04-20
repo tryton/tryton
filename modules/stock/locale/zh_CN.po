@@ -646,6 +646,16 @@ msgstr "数量为空"
 
 #, fuzzy
 msgctxt "field:stock.reporting.inventory,product:"
+msgid "Variant"
+msgstr "变体"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory,product_reference:"
+msgid "Product Reference"
+msgstr "参考"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory,product_template:"
 msgid "Product"
 msgstr "产品"
 
@@ -701,6 +711,16 @@ msgstr "数量为空"
 
 #, fuzzy
 msgctxt "field:stock.reporting.inventory.daily,product:"
+msgid "Variant"
+msgstr "变体"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.daily,product_reference:"
+msgid "Product Reference"
+msgstr "参考"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.daily,product_template:"
 msgid "Product"
 msgstr "产品"
 
@@ -756,6 +776,16 @@ msgstr "数量为空"
 
 #, fuzzy
 msgctxt "field:stock.reporting.inventory.move,product:"
+msgid "Variant"
+msgstr "变体"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.move,product_reference:"
+msgid "Product Reference"
+msgstr "参考"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.move,product_template:"
 msgid "Product"
 msgstr "产品"
 
@@ -806,6 +836,16 @@ msgstr "数量为空"
 
 #, fuzzy
 msgctxt "field:stock.reporting.inventory.turnover,product:"
+msgid "Variant"
+msgstr "变体"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.turnover,product_reference:"
+msgid "Product"
+msgstr "产品"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.turnover,product_template:"
 msgid "Product"
 msgstr "产品"
 
@@ -2407,11 +2447,6 @@ msgid ""
 msgstr "建议在停用产品之前清除库位的库存。"
 
 #, python-format
-msgctxt "model:ir.message,text:msg_product_quantities_max"
-msgid "You cannot select more than %(max)s products to compute quantities."
-msgstr ""
-
-#, python-format
 msgctxt "model:ir.message,text:msg_shipment_check_quantity"
 msgid ""
 "The quantities of shipment \"%(shipment)s\" are different by %(quantities)s."
@@ -2983,6 +3018,11 @@ msgstr "库存"
 msgctxt "model:res.group,name:group_stock_admin"
 msgid "Stock Administration"
 msgstr "库存管理"
+
+#, fuzzy
+msgctxt "model:res.group,name:group_stock_cancellation"
+msgid "Stock Cancellation"
+msgstr "库位"
 
 msgctxt "model:res.group,name:group_stock_force_assignment"
 msgid "Stock Force Assignment"
@@ -3592,12 +3632,12 @@ msgid "Variant"
 msgstr "变体"
 
 #, fuzzy
-msgctxt "selection:stock.reporting.inventory,product:"
+msgctxt "selection:stock.reporting.inventory,product_reference:"
 msgid "Product"
 msgstr "产品"
 
 #, fuzzy
-msgctxt "selection:stock.reporting.inventory,product:"
+msgctxt "selection:stock.reporting.inventory,product_reference:"
 msgid "Variant"
 msgstr "变体"
 
@@ -3612,32 +3652,32 @@ msgid "Variant"
 msgstr "变体"
 
 #, fuzzy
-msgctxt "selection:stock.reporting.inventory.daily,product:"
+msgctxt "selection:stock.reporting.inventory.daily,product_reference:"
 msgid "Product"
 msgstr "产品"
 
 #, fuzzy
-msgctxt "selection:stock.reporting.inventory.daily,product:"
+msgctxt "selection:stock.reporting.inventory.daily,product_reference:"
 msgid "Variant"
 msgstr "变体"
 
 #, fuzzy
-msgctxt "selection:stock.reporting.inventory.move,product:"
+msgctxt "selection:stock.reporting.inventory.move,product_reference:"
 msgid "Product"
 msgstr "产品"
 
 #, fuzzy
-msgctxt "selection:stock.reporting.inventory.move,product:"
+msgctxt "selection:stock.reporting.inventory.move,product_reference:"
 msgid "Variant"
 msgstr "变体"
 
 #, fuzzy
-msgctxt "selection:stock.reporting.inventory.turnover,product:"
+msgctxt "selection:stock.reporting.inventory.turnover,product_reference:"
 msgid "Product"
 msgstr "产品"
 
 #, fuzzy
-msgctxt "selection:stock.reporting.inventory.turnover,product:"
+msgctxt "selection:stock.reporting.inventory.turnover,product_reference:"
 msgid "Variant"
 msgstr "变体"
 

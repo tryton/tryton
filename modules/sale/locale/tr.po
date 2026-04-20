@@ -292,6 +292,15 @@ msgid "Quantity"
 msgstr ""
 
 #, fuzzy
+msgctxt "field:sale.line,quantity_to_invoice:"
+msgid "Quantity to Invoice"
+msgstr "Invoices"
+
+msgctxt "field:sale.line,quantity_to_ship:"
+msgid "Quantity to Ship"
+msgstr ""
+
+#, fuzzy
 msgctxt "field:sale.line,sale:"
 msgid "Sale"
 msgstr "Sales"
@@ -670,6 +679,15 @@ msgstr ""
 
 msgctxt "field:sale.sale,tax_amount_cache:"
 msgid "Tax Cache"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:sale.sale,to_invoice:"
+msgid "To Invoice"
+msgstr "Invoices"
+
+msgctxt "field:sale.sale,to_ship:"
+msgid "To Ship"
 msgstr ""
 
 msgctxt "field:sale.sale,total_amount:"
@@ -1616,11 +1634,11 @@ msgid "Manual"
 msgstr ""
 
 msgctxt "selection:sale.sale,invoice_method:"
-msgid "On Order Processed"
+msgid "On Fulfillment"
 msgstr ""
 
 msgctxt "selection:sale.sale,invoice_method:"
-msgid "On Shipment Sent"
+msgid "On Order Processed"
 msgstr ""
 
 msgctxt "selection:sale.sale,invoice_state:"

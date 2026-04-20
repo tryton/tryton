@@ -313,6 +313,16 @@ msgctxt "field:sale.line,quantity:"
 msgid "Quantity"
 msgstr "Količina"
 
+#, fuzzy
+msgctxt "field:sale.line,quantity_to_invoice:"
+msgid "Quantity to Invoice"
+msgstr "Ponovno izdelani računi"
+
+#, fuzzy
+msgctxt "field:sale.line,quantity_to_ship:"
+msgid "Quantity to Ship"
+msgstr "Količina"
+
 msgctxt "field:sale.line,sale:"
 msgid "Sale"
 msgstr "Prodajni nalog"
@@ -703,6 +713,15 @@ msgstr "Davek"
 msgctxt "field:sale.sale,tax_amount_cache:"
 msgid "Tax Cache"
 msgstr "Davek predpomnjen"
+
+#, fuzzy
+msgctxt "field:sale.sale,to_invoice:"
+msgid "To Invoice"
+msgstr "Račun"
+
+msgctxt "field:sale.sale,to_ship:"
+msgid "To Ship"
+msgstr ""
 
 msgctxt "field:sale.sale,total_amount:"
 msgid "Total"
@@ -1670,12 +1689,12 @@ msgid "Manual"
 msgstr "Ročno"
 
 msgctxt "selection:sale.sale,invoice_method:"
-msgid "On Order Processed"
-msgstr "Po obdelavi naloga"
+msgid "On Fulfillment"
+msgstr ""
 
 msgctxt "selection:sale.sale,invoice_method:"
-msgid "On Shipment Sent"
-msgstr "Po izvršeni odpremi"
+msgid "On Order Processed"
+msgstr "Po obdelavi naloga"
 
 msgctxt "selection:sale.sale,invoice_state:"
 msgid "Awaiting Payment"

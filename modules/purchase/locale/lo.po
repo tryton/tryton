@@ -279,6 +279,11 @@ msgctxt "field:purchase.line,quantity:"
 msgid "Quantity"
 msgstr "ຈຳນວນ"
 
+#, fuzzy
+msgctxt "field:purchase.line,quantity_to_invoice:"
+msgid "Quantity to Invoice"
+msgstr "ໃບເກັບເງິນ"
+
 msgctxt "field:purchase.line,summary:"
 msgid "Summary"
 msgstr ""
@@ -560,6 +565,11 @@ msgstr "ອາກອນ"
 msgctxt "field:purchase.purchase,tax_amount_cache:"
 msgid "Tax Cache"
 msgstr ""
+
+#, fuzzy
+msgctxt "field:purchase.purchase,to_invoice:"
+msgid "To Invoice"
+msgstr "ໃບເກັບເງິນ"
 
 #, fuzzy
 msgctxt "field:purchase.purchase,total_amount:"
@@ -1431,18 +1441,18 @@ msgctxt "selection:purchase.line,type:"
 msgid "Title"
 msgstr ""
 
-msgctxt "selection:purchase.purchase,invoice_method:"
-msgid "Based On Order"
-msgstr ""
-
-msgctxt "selection:purchase.purchase,invoice_method:"
-msgid "Based On Shipment"
-msgstr ""
-
 #, fuzzy
 msgctxt "selection:purchase.purchase,invoice_method:"
 msgid "Manual"
 msgstr "ໃສ່ເອົາເອງ"
+
+msgctxt "selection:purchase.purchase,invoice_method:"
+msgid "On Fulfillment"
+msgstr ""
+
+msgctxt "selection:purchase.purchase,invoice_method:"
+msgid "On Order"
+msgstr ""
 
 msgctxt "selection:purchase.purchase,invoice_state:"
 msgid "Awaiting Payment"

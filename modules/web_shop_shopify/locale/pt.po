@@ -67,6 +67,10 @@ msgctxt "field:sale.line,shopify_warehouse:"
 msgid "Shopify Warehouse"
 msgstr "Armazéms"
 
+msgctxt "field:sale.sale,shopify_amount_to_pay:"
+msgid "Shopify Amount to Pay"
+msgstr ""
+
 #, fuzzy
 msgctxt "field:sale.sale,shopify_status_url:"
 msgid "Shopify Status URL"
@@ -84,25 +88,27 @@ msgctxt "field:stock.shipment.shopify_identifier,shipment:"
 msgid "Shipment"
 msgstr "Remessa"
 
+#, fuzzy
+msgctxt "field:web.shop,shopify_access_token:"
+msgid "Access Token"
+msgstr "Token de Acesso"
+
 msgctxt "field:web.shop,shopify_fulfillment_notify_customer:"
 msgid "Notify Customer about Fulfillment"
 msgstr ""
-
-msgctxt "field:web.shop,shopify_password:"
-msgid "Access Token"
-msgstr "Token de Acesso"
 
 msgctxt "field:web.shop,shopify_payment_journals:"
 msgid "Payment Journals"
 msgstr "Diários de Pagamento"
 
+#, fuzzy
+msgctxt "field:web.shop,shopify_shop_name:"
+msgid "Shop Name"
+msgstr "Loja"
+
 msgctxt "field:web.shop,shopify_url:"
 msgid "Shop URL"
 msgstr "URL da Loja"
-
-msgctxt "field:web.shop,shopify_version:"
-msgid "Version"
-msgstr "Versão"
 
 msgctxt "field:web.shop,shopify_warehouses:"
 msgid "Warehouses"
@@ -236,6 +242,15 @@ msgid "Failed to find fulfillment order for %(quantity)s of move \"%(move)s\"."
 msgstr ""
 "Falha ao Encontrar a ordem de Atendimento para %(quantity)s do Movimento "
 "\"%(move)s\"."
+
+#, fuzzy, python-format
+msgctxt "model:ir.message,text:msg_fulfillment_prepared_for_pickup_fail"
+msgid ""
+"Failed to prepare for pickup fulfillments for shipments \"%(shipments)s\" and sales \"%(sales)s\" with error:\n"
+"%(error)s"
+msgstr ""
+"Falha ao Salvar o Atendimento da Venda \"%(sale)s\" com erro:\n"
+"%(error)s"
 
 msgctxt "model:ir.message,text:msg_identifier_payment_unique"
 msgid "A shopify transaction can only be imported as payment once."

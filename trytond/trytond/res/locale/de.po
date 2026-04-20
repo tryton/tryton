@@ -259,6 +259,13 @@ msgctxt "model:ir.message,text:msg_email_invalid"
 msgid "The email address \"%(email)s\" for \"%(user)s\" is not valid."
 msgstr "Die E-Mail-Adresse \"%(email)s\" von \"%(user)s\" ist ungültig."
 
+#, python-format
+msgctxt "model:ir.message,text:msg_notification_silenced"
+msgid "%(number)s notification silenced."
+msgid_plural "%(number)s notifications silenced."
+msgstr[0] "%(number)s Benachrichtigung stummgeschaltet."
+msgstr[1] "%(number)s Benachrichtigungen stummgeschaltet."
+
 msgctxt "model:ir.message,text:msg_password_email"
 msgid "The password cannot be the same as user's email address."
 msgstr ""
@@ -419,6 +426,10 @@ msgstr "Passwort zurücksetzen"
 msgctxt "report:res.user.email_reset_password:"
 msgid "The password will expire in [1:%(datetime)s]."
 msgstr "Das Passwort wird in [1:%(datetime)s] ablaufen."
+
+msgctxt "selection:res.user.application,application:"
+msgid "REST API"
+msgstr "REST-API"
 
 msgctxt "selection:res.user.application,state:"
 msgid "Cancelled"

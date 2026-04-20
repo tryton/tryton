@@ -2679,7 +2679,7 @@ msgstr "Account Move"
 
 #, fuzzy
 msgctxt "model:account.balance_sheet.comparison.context,string:"
-msgid "Account Balance Sheet Context"
+msgid "Account Balance Sheet Comparison Context"
 msgstr "Balance Sheet"
 
 #, fuzzy
@@ -2772,7 +2772,7 @@ msgstr "General Ledger - Lines"
 
 #, fuzzy
 msgctxt "model:account.general_ledger.line.context,string:"
-msgid "Account General Ledger Account Context"
+msgid "Account General Ledger Line Context"
 msgstr "General Ledger - Accounts"
 
 #, fuzzy
@@ -4864,6 +4864,11 @@ msgstr "Brak"
 msgctxt "selection:account.tax.template,type:"
 msgid "Percentage"
 msgstr "Procentowy"
+
+#, fuzzy
+msgctxt "selection:ir.cron,method:"
+msgid "Reconcile Move Lines Automatically"
+msgstr "Uzgodnij pozycje"
 
 msgctxt "view:account.account.type:"
 msgid "Comparison"

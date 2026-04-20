@@ -179,7 +179,7 @@ msgstr "Alle"
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_gift_card_form_domain_pending"
 msgid "Pending"
-msgstr "In afwachting"
+msgstr "In behandeling"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_gift_card_form_domain_sent"
@@ -238,7 +238,7 @@ msgstr "Verkoop cadeaubon"
 
 msgctxt "model:sale.point.sale.pay.gift_card,string:"
 msgid "Sale Point Sale Pay Gift Card"
-msgstr "Verkoop POS betaal cadeaubon"
+msgstr "Verkoop punt betaal cadeaubon"
 
 msgctxt "report:sale.gift_card.email:"
 msgid "Gift Card"

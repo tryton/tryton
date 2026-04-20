@@ -2,15 +2,31 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-#, fuzzy
-msgid "Toggle notification"
-msgstr "Переключити вибір"
+msgid "Show followers"
+msgstr ""
+
+#, fuzzy, python-format
+msgid "Are you sure to unsubscribe \"%(name)s\" from this channel?"
+msgstr "Ви впевнені, що бажаєте видалити цей запис?"
+
+msgid "Unsubscribe"
+msgstr ""
+
+msgid "Subscribe"
+msgstr ""
 
 msgid "Make this an _internal message"
 msgstr ""
 
 msgid "Send"
 msgstr "Надіслати"
+
+#, fuzzy
+msgid "Add a follower"
+msgstr "Додати значення"
+
+msgid "Subscribe a follower to this channel"
+msgstr ""
 
 msgid "specify alternate config file"
 msgstr "вкажіть альтернативний конфігураційний файл"
@@ -360,6 +376,9 @@ msgstr "Довідка"
 msgid "No result found."
 msgstr "Нічого не знайдено."
 
+msgid "Check menu entries to add favorites"
+msgstr ""
+
 msgid "Action"
 msgstr "Дія"
 
@@ -527,6 +546,9 @@ msgstr "Розгорнути всі рядки"
 
 msgid "Close Tab"
 msgstr "Закрити вкладку"
+
+msgid "No notifications at this time"
+msgstr ""
 
 #, fuzzy
 msgid "All Notifications..."

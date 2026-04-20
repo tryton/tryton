@@ -274,6 +274,14 @@ msgctxt "field:sale.line,quantity:"
 msgid "Quantity"
 msgstr "Quantitat"
 
+msgctxt "field:sale.line,quantity_to_invoice:"
+msgid "Quantity to Invoice"
+msgstr "Quantitat a facturar"
+
+msgctxt "field:sale.line,quantity_to_ship:"
+msgid "Quantity to Ship"
+msgstr "Quantitat a enviar"
+
 msgctxt "field:sale.line,sale:"
 msgid "Sale"
 msgstr "Venda"
@@ -637,6 +645,14 @@ msgstr "Impost"
 msgctxt "field:sale.sale,tax_amount_cache:"
 msgid "Tax Cache"
 msgstr "Impostos precalculats"
+
+msgctxt "field:sale.sale,to_invoice:"
+msgid "To Invoice"
+msgstr "A facturar"
+
+msgctxt "field:sale.sale,to_ship:"
+msgid "To Ship"
+msgstr "Per enviar"
 
 msgctxt "field:sale.sale,total_amount:"
 msgid "Total"
@@ -1559,12 +1575,12 @@ msgid "Manual"
 msgstr "Manual"
 
 msgctxt "selection:sale.sale,invoice_method:"
-msgid "On Order Processed"
-msgstr "Al processar la comanda"
+msgid "On Fulfillment"
+msgstr "Segons l'enviament"
 
 msgctxt "selection:sale.sale,invoice_method:"
-msgid "On Shipment Sent"
-msgstr "Al enviar-ho"
+msgid "On Order Processed"
+msgstr "Al processar la comanda"
 
 msgctxt "selection:sale.sale,invoice_state:"
 msgid "Awaiting Payment"

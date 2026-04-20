@@ -312,8 +312,8 @@ msgid "The main identifier for the shipment."
 msgstr "De hoofd identificatie voor de zending."
 
 msgctxt "help:production,reference:"
-msgid "The external identifier for the shipment."
-msgstr "De externe referentie voor de zending."
+msgid "The external identifier for the production."
+msgstr "De externe referentie voor de productie."
 
 msgctxt "help:production,uom_category:"
 msgid "The category of Unit of Measure."
@@ -528,7 +528,7 @@ msgstr "Producties"
 
 msgctxt "model:product.product-production.bom,string:"
 msgid "Product - Production Bom"
-msgstr "Product - Productie BOM"
+msgstr "Product - Productie Bom"
 
 msgctxt "model:production,string:"
 msgid "Production"
@@ -536,27 +536,27 @@ msgstr "Productie"
 
 msgctxt "model:production.bom,string:"
 msgid "Production Bom"
-msgstr "Productie BOM"
+msgstr "Productie Bom"
 
 msgctxt "model:production.bom.input,string:"
 msgid "Production Bom Input"
-msgstr "Productie BOM invoer"
+msgstr "Productie Bom invoer"
 
 msgctxt "model:production.bom.output,string:"
 msgid "Production Bom Output"
-msgstr "Productie BOM uitvoer"
+msgstr "Productie Bom uitvoer"
 
 msgctxt "model:production.bom.tree,string:"
 msgid "Production Bom Tree"
-msgstr "Productie BOM structuur"
+msgstr "Productie Bom structuur"
 
 msgctxt "model:production.bom.tree.open.start,string:"
 msgid "Production Bom Tree Open Start"
-msgstr "Productie BOM structuur openen start"
+msgstr "Productie Bom structuur openen start"
 
 msgctxt "model:production.bom.tree.open.tree,string:"
 msgid "Production Bom Tree Open Tree"
-msgstr "Productie BOM structuur open structuur"
+msgstr "Productie Bom structuur open structuur"
 
 msgctxt "model:production.configuration,string:"
 msgid "Production Configuration"

@@ -10,6 +10,18 @@ msgctxt "field:document.incoming.ocr.service,typless_document_type:"
 msgid "Document Type"
 msgstr "Tipo de documento"
 
+msgctxt "field:document.incoming.ocr.service,typless_fields:"
+msgid "Fields"
+msgstr "Campos"
+
+msgctxt "field:document.incoming.ocr.service,typless_line_item_fields:"
+msgid "Line Item Fields"
+msgstr "Campos línea de pedido"
+
+msgctxt "field:document.incoming.ocr.service,typless_vat_rates:"
+msgid "VAT Rates"
+msgstr "Tipos de IVA"
+
 msgctxt "help:document.incoming.ocr.service,typless_api_key:"
 msgid "The standard token from Typless settings page."
 msgstr "El token estándar de la pagina de configuración de Typless."
@@ -17,6 +29,21 @@ msgstr "El token estándar de la pagina de configuración de Typless."
 msgctxt "help:document.incoming.ocr.service,typless_document_type:"
 msgid "The name of the document type on Typless."
 msgstr "El nombre del tipo de documento en Typless."
+
+msgctxt "help:document.incoming.ocr.service,typless_fields:"
+msgid "The metadata fields setup for this document type."
+msgstr "Los campos de metadatos configurados para este tipo de documento."
+
+msgctxt "help:document.incoming.ocr.service,typless_line_item_fields:"
+msgid "The line item fields setup for this document type."
+msgstr ""
+"Los campos de la línea de pedido configurados para este tipo de documento."
+
+msgctxt "help:document.incoming.ocr.service,typless_vat_rates:"
+msgid "Check if the vat rate net plugin is activated for this document type."
+msgstr ""
+"Compruebe si el complemento de cálculo del tipo neto de impuesto está "
+"activado para este tipo de documento."
 
 msgctxt "model:ir.message,text:msg_typless_credential_modified"
 msgid "Are you sure you want to modify Typless credentials?"

@@ -121,7 +121,7 @@ msgid ""
 "otherwise first ordered received quotation line will be selected."
 msgstr ""
 "De offerte die gebruikt wordt om de aankoop te maken\n"
-"anders wordt de eerste  offertelijn geselecteerd."
+"anders wordt de eerste offertelijn geselecteerd."
 
 msgctxt "help:purchase.request.quotation,number:"
 msgid "The unique identifier of the quotation."

@@ -267,6 +267,13 @@ msgctxt "model:ir.message,text:msg_email_invalid"
 msgid "The email address \"%(email)s\" for \"%(user)s\" is not valid."
 msgstr ""
 
+#, python-format
+msgctxt "model:ir.message,text:msg_notification_silenced"
+msgid "%(number)s notification silenced."
+msgid_plural "%(number)s notifications silenced."
+msgstr[0] ""
+msgstr[1] ""
+
 msgctxt "model:ir.message,text:msg_password_email"
 msgid "The password cannot be the same as user's email address."
 msgstr ""
@@ -431,6 +438,10 @@ msgstr "Jelszó visszaállítása"
 msgctxt "report:res.user.email_reset_password:"
 msgid "The password will expire in [1:%(datetime)s]."
 msgstr "Az ideiglenes jelszó az [1:%(datetime)s UTC] időpontig érvényes."
+
+msgctxt "selection:res.user.application,application:"
+msgid "REST API"
+msgstr ""
 
 msgctxt "selection:res.user.application,state:"
 msgid "Cancelled"

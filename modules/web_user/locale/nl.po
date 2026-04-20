@@ -120,8 +120,8 @@ msgid "Web User - Party Secondary"
 msgstr "Web gebruiker - Secundaire relatie"
 
 msgctxt "model:web.user.authenticate.attempt,string:"
-msgid "User Login Attempt"
-msgstr "Login poging"
+msgid "Web User Authenticate Attempt"
+msgstr "Inlog poging web gebruikers"
 
 msgctxt "model:web.user.session,string:"
 msgid "Web User Session"

@@ -1,0 +1,107 @@
+#
+#, fuzzy
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.payment,check_number:"
+msgid "Check Number"
+msgstr "Número de xec"
+
+msgctxt "field:account.payment,check_printed:"
+msgid "Check Printed"
+msgstr "Xec imprès"
+
+msgctxt "field:account.payment.check.print.number,start_number:"
+msgid "Start Number"
+msgstr "Número inicial"
+
+msgctxt "field:account.payment.group,check_printed:"
+msgid "Check Printed"
+msgstr "Xec imprès"
+
+msgctxt "field:account.payment.journal,check_format:"
+msgid "Check Format"
+msgstr "Comprovar xec"
+
+msgctxt "field:account.payment.journal,check_max_number:"
+msgid "Maximum Check Number"
+msgstr "Nombre xec màxim"
+
+msgctxt "field:account.payment.journal,check_sequence:"
+msgid "Check Sequence"
+msgstr "Seqüència de xec"
+
+msgctxt "help:account.payment.journal,check_format:"
+msgid "The report layout for printing checks."
+msgstr "El disseny de l'informe per a la impressió de xecs."
+
+msgctxt "help:account.payment.journal,check_max_number:"
+msgid "The highest check number allowed for this journal."
+msgstr "El número de xec més alt permès per a aquest diari."
+
+msgctxt "help:account.payment.journal,check_sequence:"
+msgid "Leave empty for manual numbering."
+msgstr "Deixeu-ho en blanc per a la numeració manual."
+
+msgctxt "help:account.statement.rule,description:"
+msgid ""
+"\n"
+"'check'"
+msgstr ""
+"\n"
+"'check'"
+
+msgctxt "model:account.payment.check.print.number,string:"
+msgid "Account Payment Check Print Number"
+msgstr "Impressió número de xec en pagaments"
+
+msgctxt "model:ir.action,name:account_payment_check_print"
+msgid "Print Check"
+msgstr "Imprimeix el xec"
+
+msgctxt "model:ir.action,name:report_account_payment_check_print"
+msgid "Check"
+msgstr "Xec"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_payment_group_form_domain_check_to_print"
+msgid "Check to Print"
+msgstr "Xecs a imprimir"
+
+#, python-format
+msgctxt "model:ir.message,text:msg_payment_group_journal_max_number"
+msgid ""
+"The number of checks available for the journal \"%(journal)s\" exceeds the "
+"number of payments in the group \"%(group)s\"."
+msgstr ""
+"El nombre de xecs disponibles per al diari \"%(journal)s\" supera el nombre "
+"de pagaments del grup \"%(group)s\"."
+
+msgctxt ""
+"model:ir.model.button,string:account_payment_group_check_print_button"
+msgid "Print Checks"
+msgstr "Imprimir xecs"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_account_payment_check"
+msgid "Account Payment Check"
+msgstr "Xecs de cobrament/pagament"
+
+msgctxt "selection:account.payment.journal,process_method:"
+msgid "Check"
+msgstr "Xec"
+
+msgctxt "view:account.payment.journal:"
+msgid "Check"
+msgstr "Xec"
+
+msgctxt "view:account.payment:"
+msgid "Check"
+msgstr "Xec"
+
+msgctxt "wizard_button:account.payment.check.print,number,end:"
+msgid "Cancel"
+msgstr "Cancel·la"
+
+msgctxt "wizard_button:account.payment.check.print,number,print_:"
+msgid "Print"
+msgstr "Imprimeix"

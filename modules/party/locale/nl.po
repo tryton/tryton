@@ -6,6 +6,10 @@ msgctxt "field:ir.email.template,contact_mechanism:"
 msgid "Contact Mechanism"
 msgstr "Contactmogelijkheid"
 
+msgctxt "field:party.address,attn:"
+msgid "Attn"
+msgstr "T.a.v."
+
 msgctxt "field:party.address,building_name:"
 msgid "Building Name"
 msgstr "Gebouwnaam"
@@ -265,6 +269,10 @@ msgstr "Adres"
 msgctxt "field:party.identifier,code:"
 msgid "Code"
 msgstr "Code"
+
+msgctxt "field:party.identifier,code_compact:"
+msgid "Code Compact"
+msgstr "Compacte code"
 
 msgctxt "field:party.identifier,party:"
 msgid "Party"
@@ -586,6 +594,10 @@ msgctxt "model:ir.action,name:act_contact_mechanism_form"
 msgid "Contact Mechanisms"
 msgstr "Contactmogelijkheden"
 
+msgctxt "model:ir.action,name:act_identifier_form"
+msgid "Identifiers"
+msgstr "Identificaties"
+
 msgctxt "model:ir.action,name:act_party_by_category"
 msgid "Parties by Category"
 msgstr "Relaties per categorie"
@@ -746,6 +758,10 @@ msgctxt "model:ir.ui.menu,name:menu_contact_mechanism_form"
 msgid "Contact Mechanisms"
 msgstr "Contactmogelijkheden"
 
+msgctxt "model:ir.ui.menu,name:menu_identifier_form"
+msgid "Identifiers"
+msgstr "Identificaties"
+
 msgctxt "model:ir.ui.menu,name:menu_party"
 msgid "Parties"
 msgstr "Relaties"
@@ -848,7 +864,7 @@ msgstr "Argentijns belastingnummer"
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Australian Business Number"
-msgstr "Australisch bedrijfsnummer(ABN)"
+msgstr "Australisch bedrijfsnummer (ABN)"
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Australian Company Number"
@@ -856,7 +872,7 @@ msgstr "Australisch bedrijfsnummer (ACN)"
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Australian Tax File Number"
-msgstr "Australisch belastingdossiernummer (TFN)"
+msgstr "Australisch belasting dossiernummer (TFN)"
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Austrian Company Register"
@@ -875,6 +891,10 @@ msgid "Austrian Umsatzsteuer-Identifikationsnummer"
 msgstr "Oostenrijkse Umsatzsteuer-Identifikationsnummer"
 
 msgctxt "selection:party.configuration,identifier_types:"
+msgid "Azerbaijan Tax Number"
+msgstr "Belastingnummer Azerbeidzjan"
+
+msgctxt "selection:party.configuration,identifier_types:"
 msgid "Belarus VAT Number"
 msgstr "Bulgaars BTW-nummer"
 
@@ -891,12 +911,16 @@ msgid "Belgian National Number"
 msgstr "Belgisch nationaal nummer"
 
 msgctxt "selection:party.configuration,identifier_types:"
+msgid "Belgian Social Security Number"
+msgstr "Belgisch burgerservicenummer"
+
+msgctxt "selection:party.configuration,identifier_types:"
 msgid "Belgian VAT Number"
 msgstr "Belgisch belasting nummer"
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Brazillian Company Identifier"
-msgstr "Braziliaanse ondernemings ID (CPNJ)"
+msgstr "Braziliaanse bedrijfsidentificatie ID (CPNJ)"
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Brazillian National Identifier"
@@ -1083,6 +1107,10 @@ msgid "French Tax Identification Number"
 msgstr "Frans belastingidentificatienummer"
 
 msgctxt "selection:party.configuration,identifier_types:"
+msgid "French Trade Registration Number"
+msgstr "Frans handelsregistratienummer"
+
+msgctxt "selection:party.configuration,identifier_types:"
 msgid "French VAT Number"
 msgstr "Frans BTW-nummer"
 
@@ -1243,6 +1271,10 @@ msgid "Moroccan Tax Number"
 msgstr "Marokkaans belastingnummer"
 
 msgctxt "selection:party.configuration,identifier_types:"
+msgid "Mozambique Tax Number"
+msgstr "Belastingnummer Mozambique"
+
+msgctxt "selection:party.configuration,identifier_types:"
 msgid "New Zealand Inland Revenue Department Number"
 msgstr "Nummer van de belastingdienst van Nieuw-Zeeland"
 
@@ -1307,6 +1339,10 @@ msgid "Romanian VAT Number"
 msgstr "Roemeense BTW-nummer"
 
 msgctxt "selection:party.configuration,identifier_types:"
+msgid "Russian Primary State Registration Number"
+msgstr "Russisch primair staatsregistratienummer"
+
+msgctxt "selection:party.configuration,identifier_types:"
 msgid "Russian Tax identifier"
 msgstr "Russische belastingidentificatie"
 
@@ -1317,6 +1353,10 @@ msgstr "SEPA-identificatie van de crediteur (AT-02)"
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "San Marino National Tax Number"
 msgstr "Nationaal belastingnummer San Marino"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Senegal Tax Number"
+msgstr "Senegalees belastingnummer"
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Serbian Tax Identification"
@@ -1361,6 +1401,10 @@ msgstr "Zuid Koreaans bedrijfsbelastingnummer"
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "South Korean Resident Registration Number"
 msgstr "Zuid-Koreaans belastingidentificatienummer"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Spanish Activity Establishment Code"
+msgstr "Spaanse code voor vestiging van een bedrijf"
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Spanish Company Tax"

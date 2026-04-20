@@ -274,6 +274,11 @@ msgctxt "field:purchase.line,quantity:"
 msgid "Quantity"
 msgstr "Kogus"
 
+#, fuzzy
+msgctxt "field:purchase.line,quantity_to_invoice:"
+msgid "Quantity to Invoice"
+msgstr "Taasloo arved"
+
 msgctxt "field:purchase.line,summary:"
 msgid "Summary"
 msgstr ""
@@ -527,6 +532,11 @@ msgstr "Maks"
 msgctxt "field:purchase.purchase,tax_amount_cache:"
 msgid "Tax Cache"
 msgstr ""
+
+#, fuzzy
+msgctxt "field:purchase.purchase,to_invoice:"
+msgid "To Invoice"
+msgstr "Arve"
 
 msgctxt "field:purchase.purchase,total_amount:"
 msgid "Total"
@@ -1385,16 +1395,17 @@ msgid "Title"
 msgstr "Pealkiri"
 
 msgctxt "selection:purchase.purchase,invoice_method:"
-msgid "Based On Order"
-msgstr "Põhineb tellimusel"
-
-msgctxt "selection:purchase.purchase,invoice_method:"
-msgid "Based On Shipment"
-msgstr "Põhineb tarnel"
-
-msgctxt "selection:purchase.purchase,invoice_method:"
 msgid "Manual"
 msgstr "Käsitsi"
+
+msgctxt "selection:purchase.purchase,invoice_method:"
+msgid "On Fulfillment"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:purchase.purchase,invoice_method:"
+msgid "On Order"
+msgstr "Põhineb tellimusel"
 
 msgctxt "selection:purchase.purchase,invoice_state:"
 msgid "Awaiting Payment"

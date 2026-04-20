@@ -115,16 +115,16 @@ msgid "Sale Opportunity Reporting Marketing"
 msgstr "Rapports d'opportunités de vente et marketing"
 
 msgctxt "model:sale.opportunity.reporting.marketing.context,string:"
-msgid "Sale Opportunity Reporting Context"
-msgstr "Contexte de rapport sur les opportunités de vente"
+msgid "Sale Opportunity Reporting Marketing Context"
+msgstr "Contexte de rapport marketing sur les opportunités de vente"
 
 msgctxt "model:sale.reporting.marketing,string:"
 msgid "Sale Reporting Marketing"
 msgstr "Rapports de vente marketing"
 
 msgctxt "model:sale.reporting.marketing.context,string:"
-msgid "Sale Reporting Context"
-msgstr "Contexte de rapport de vente"
+msgid "Sale Reporting Marketing Context"
+msgstr "Contexte de rapports marketing de vente"
 
 msgctxt "selection:sale.opportunity.reporting.marketing.context,period:"
 msgid "Day"

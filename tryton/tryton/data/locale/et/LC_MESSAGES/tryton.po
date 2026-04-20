@@ -5,13 +5,30 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgid "Toggle notification"
+msgid "Show followers"
+msgstr ""
+
+#, fuzzy, python-format
+msgid "Are you sure to unsubscribe \"%(name)s\" from this channel?"
+msgstr "Oled kindel, et kustutada see kirje?"
+
+msgid "Unsubscribe"
+msgstr ""
+
+msgid "Subscribe"
 msgstr ""
 
 msgid "Make this an _internal message"
 msgstr ""
 
 msgid "Send"
+msgstr ""
+
+#, fuzzy
+msgid "Add a follower"
+msgstr "Lisa väärtus"
+
+msgid "Subscribe a follower to this channel"
 msgstr ""
 
 msgid "specify alternate config file"
@@ -363,6 +380,9 @@ msgstr "Abi"
 msgid "No result found."
 msgstr "Tulemusi ei leitud."
 
+msgid "Check menu entries to add favorites"
+msgstr ""
+
 msgid "Action"
 msgstr "Toiming"
 
@@ -531,6 +551,10 @@ msgstr "Ava kõik read"
 
 msgid "Close Tab"
 msgstr "Sulge vaheleht"
+
+#, fuzzy
+msgid "No notifications at this time"
+msgstr "Muutmise kuupäev"
 
 #, fuzzy
 msgid "All Notifications..."

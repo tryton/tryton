@@ -54,6 +54,10 @@ msgctxt "field:sale.sale,web_status_url:"
 msgid "Web Status URL"
 msgstr "URL estado Web"
 
+msgctxt "field:sale.sale,web_url:"
+msgid "Web URL"
+msgstr "URL Tienda Web"
+
 msgctxt "field:web.shop,attributes:"
 msgid "Attributes"
 msgstr "Atributos"
@@ -181,6 +185,10 @@ msgstr "La lista de tiendas en que el producto se ha publicado."
 msgctxt "help:sale.sale,web_status_url:"
 msgid "The URL where the customer can check the order's current status."
 msgstr "La URL donde el cliente puede comprobar el estado de su pedido."
+
+msgctxt "help:sale.sale,web_url:"
+msgid "The URL of the order on the web shop."
+msgstr "La URL del pedido en la tienda online."
 
 msgctxt "help:web.shop,attributes:"
 msgid "The list of attributes to publish."

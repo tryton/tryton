@@ -2610,8 +2610,8 @@ msgid "Account Aged Balance Context"
 msgstr "Contexte de la balance âgée comptable"
 
 msgctxt "model:account.balance_sheet.comparison.context,string:"
-msgid "Account Balance Sheet Context"
-msgstr "Contexte de bilan comptable"
+msgid "Account Balance Sheet Comparison Context"
+msgstr "Contexte de comparaison de bilan comptable"
 
 msgctxt "model:account.balance_sheet.context,string:"
 msgid "Account Balance Sheet Context"
@@ -2686,8 +2686,8 @@ msgid "Account General Ledger Line"
 msgstr "Ligne du grand livre comptable"
 
 msgctxt "model:account.general_ledger.line.context,string:"
-msgid "Account General Ledger Account Context"
-msgstr "Contexte de compte du grand livre comptable"
+msgid "Account General Ledger Line Context"
+msgstr "Contexte de ligne du grand livre comptable"
 
 msgctxt "model:account.income_statement.context,string:"
 msgid "Account Income Statement Context"
@@ -2963,7 +2963,7 @@ msgstr "Années fiscales"
 
 msgctxt "model:ir.action,name:act_fiscalyear_form_close"
 msgid "Close Fiscal Years"
-msgstr "Clôturer les années fiscales"
+msgstr "Clôture d'années fiscales"
 
 msgctxt "model:ir.action,name:act_general_ledger_account_form"
 msgid "General Ledger - Accounts"
@@ -2999,7 +2999,7 @@ msgstr "Journaux d'espèces"
 
 msgctxt "model:ir.action,name:act_journal_period_form_close"
 msgid "Close Journals - Periods"
-msgstr "Clôturer les journaux - périodes"
+msgstr "Clôture de journaux - périodes"
 
 msgctxt "model:ir.action,name:act_journal_period_tree"
 msgid "Journals - Periods"
@@ -3071,7 +3071,7 @@ msgstr "Périodes"
 
 msgctxt "model:ir.action,name:act_period_form_close"
 msgid "Close Periods"
-msgstr "Clôturer les périodes"
+msgstr "Clôture de périodes"
 
 msgctxt "model:ir.action,name:act_reconcile"
 msgid "Reconcile Accounts"
@@ -3979,15 +3979,15 @@ msgstr "Équilibrer les non-reports"
 
 msgctxt "model:ir.ui.menu,name:menu_close_fiscalyear"
 msgid "Close Fiscal Years"
-msgstr "Clôturer les années fiscales"
+msgstr "Clôture d'années fiscales"
 
 msgctxt "model:ir.ui.menu,name:menu_close_journal_period"
 msgid "Close Journals - Periods"
-msgstr "Clôturer les journaux - périodes"
+msgstr "Clôture de journaux - périodes"
 
 msgctxt "model:ir.ui.menu,name:menu_close_period"
 msgid "Close Periods"
-msgstr "Clôturer les périodes"
+msgstr "Clôture de périodes"
 
 msgctxt "model:ir.ui.menu,name:menu_create_chart"
 msgid "Create Chart of Accounts from Template"
@@ -4792,6 +4792,10 @@ msgstr "Aucun"
 msgctxt "selection:account.tax.template,type:"
 msgid "Percentage"
 msgstr "Pourcentage"
+
+msgctxt "selection:ir.cron,method:"
+msgid "Reconcile Move Lines Automatically"
+msgstr "Réconcilier automatiquement les lignes de mouvement"
 
 msgctxt "view:account.account.type:"
 msgid "Comparison"

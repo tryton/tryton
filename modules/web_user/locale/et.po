@@ -125,7 +125,7 @@ msgid "Web User - Party Secondary"
 msgstr ""
 
 msgctxt "model:web.user.authenticate.attempt,string:"
-msgid "User Login Attempt"
+msgid "Web User Authenticate Attempt"
 msgstr ""
 
 #, fuzzy

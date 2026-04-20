@@ -5,14 +5,30 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-#, fuzzy
-msgid "Toggle notification"
-msgstr "Sukeisti atranką"
+msgid "Show followers"
+msgstr ""
+
+#, fuzzy, python-format
+msgid "Are you sure to unsubscribe \"%(name)s\" from this channel?"
+msgstr "Ar tikrai norite ištrinti šį įrašą?"
+
+msgid "Unsubscribe"
+msgstr ""
+
+msgid "Subscribe"
+msgstr ""
 
 msgid "Make this an _internal message"
 msgstr ""
 
 msgid "Send"
+msgstr ""
+
+#, fuzzy
+msgid "Add a follower"
+msgstr "Pridėti reikšmę"
+
+msgid "Subscribe a follower to this channel"
 msgstr ""
 
 msgid "specify alternate config file"
@@ -364,6 +380,9 @@ msgstr "Pagalba"
 msgid "No result found."
 msgstr "Nerasta rezultatų."
 
+msgid "Check menu entries to add favorites"
+msgstr ""
+
 msgid "Action"
 msgstr "Veiksmai"
 
@@ -533,6 +552,10 @@ msgstr "Išplėsti visas eilutes"
 
 msgid "Close Tab"
 msgstr "Uždaryti kortelę"
+
+#, fuzzy
+msgid "No notifications at this time"
+msgstr "Paskutinio pakeitimo data"
 
 #, fuzzy
 msgid "All Notifications..."

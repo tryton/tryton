@@ -62,6 +62,10 @@ msgctxt "field:sale.line,shopify_warehouse:"
 msgid "Shopify Warehouse"
 msgstr "Entrepôt Shopify"
 
+msgctxt "field:sale.sale,shopify_amount_to_pay:"
+msgid "Shopify Amount to Pay"
+msgstr "Montant à payer Shopify"
+
 msgctxt "field:sale.sale,shopify_status_url:"
 msgid "Shopify Status URL"
 msgstr "URL de statut Shopify"
@@ -78,25 +82,25 @@ msgctxt "field:stock.shipment.shopify_identifier,shipment:"
 msgid "Shipment"
 msgstr "Expédition"
 
+msgctxt "field:web.shop,shopify_access_token:"
+msgid "Access Token"
+msgstr "Jeton d'accès"
+
 msgctxt "field:web.shop,shopify_fulfillment_notify_customer:"
 msgid "Notify Customer about Fulfillment"
 msgstr "Informer le client de la livraison"
-
-msgctxt "field:web.shop,shopify_password:"
-msgid "Access Token"
-msgstr "Jeton d'accès"
 
 msgctxt "field:web.shop,shopify_payment_journals:"
 msgid "Payment Journals"
 msgstr "Journaux de paiement"
 
+msgctxt "field:web.shop,shopify_shop_name:"
+msgid "Shop Name"
+msgstr "Nom de boutique"
+
 msgctxt "field:web.shop,shopify_url:"
 msgid "Shop URL"
 msgstr "URL de la boutique"
-
-msgctxt "field:web.shop,shopify_version:"
-msgid "Version"
-msgstr "Version"
 
 msgctxt "field:web.shop,shopify_warehouses:"
 msgid "Warehouses"
@@ -240,6 +244,15 @@ msgid "Failed to find fulfillment order for %(quantity)s of move \"%(move)s\"."
 msgstr ""
 "Impossible de trouver la commande d'exécution pour %(quantity)s du mouvement"
 " « %(move)s »."
+
+#, python-format
+msgctxt "model:ir.message,text:msg_fulfillment_prepared_for_pickup_fail"
+msgid ""
+"Failed to prepare for pickup fulfillments for shipments \"%(shipments)s\" and sales \"%(sales)s\" with error:\n"
+"%(error)s"
+msgstr ""
+"Échec de la préparation des enlèvements pour les expéditions « %(shipments)s » et les ventes « %(sales)s » avec l'erreur :\n"
+"%(error)s"
 
 msgctxt "model:ir.message,text:msg_identifier_payment_unique"
 msgid "A shopify transaction can only be imported as payment once."

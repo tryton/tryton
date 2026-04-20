@@ -120,8 +120,8 @@ msgstr "Poročanje prodajnih priložnosti po marketingu"
 
 #, fuzzy
 msgctxt "model:sale.opportunity.reporting.marketing.context,string:"
-msgid "Sale Opportunity Reporting Context"
-msgstr "Konteks poročanja prodajnih priložnosti"
+msgid "Sale Opportunity Reporting Marketing Context"
+msgstr "Poročanje prodajnih priložnosti po marketingu"
 
 #, fuzzy
 msgctxt "model:sale.reporting.marketing,string:"
@@ -130,8 +130,8 @@ msgstr "Poročanje prodaje po marketingu"
 
 #, fuzzy
 msgctxt "model:sale.reporting.marketing.context,string:"
-msgid "Sale Reporting Context"
-msgstr "Kontekst poročanja prodaje"
+msgid "Sale Reporting Marketing Context"
+msgstr "Poročanje prodaje po marketingu"
 
 msgctxt "selection:sale.opportunity.reporting.marketing.context,period:"
 msgid "Day"

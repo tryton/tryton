@@ -5,14 +5,30 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-#, fuzzy
-msgid "Toggle notification"
-msgstr "ສະຫຼັບການເລືອກ"
+msgid "Show followers"
+msgstr ""
+
+#, fuzzy, python-format
+msgid "Are you sure to unsubscribe \"%(name)s\" from this channel?"
+msgstr "ທ່ານແນ່ໃຈບໍ່ທີ່ຈະລຶບແຖວຂໍ້ມູນນີ້?"
+
+msgid "Unsubscribe"
+msgstr ""
+
+msgid "Subscribe"
+msgstr ""
 
 msgid "Make this an _internal message"
 msgstr ""
 
 msgid "Send"
+msgstr ""
+
+#, fuzzy
+msgid "Add a follower"
+msgstr "ເພີ່ມຄ່າ"
+
+msgid "Subscribe a follower to this channel"
 msgstr ""
 
 msgid "specify alternate config file"
@@ -379,6 +395,9 @@ msgstr "_ຊ່ອຍເຫຼືອ"
 msgid "No result found."
 msgstr "ບໍ່ພົບຜົນຊອກຫາ"
 
+msgid "Check menu entries to add favorites"
+msgstr ""
+
 msgid "Action"
 msgstr "ການດຳເນີນການ"
 
@@ -550,6 +569,10 @@ msgstr "ຂະຫຽາຍແຖວທັງໝົດ"
 
 msgid "Close Tab"
 msgstr "ອັດແຖບງານ"
+
+#, fuzzy
+msgid "No notifications at this time"
+msgstr "ວັນທີປັບປ່ຽນ"
 
 #, fuzzy
 msgid "All Notifications..."

@@ -17,8 +17,14 @@ msgstr "Verbindung zum Server nicht möglich."
 msgid "Connection error"
 msgstr "Verbindungsfehler"
 
-msgid "Logout"
-msgstr "Abmelden"
+msgid "Check menu entries to add favorites"
+msgstr "Menüeinträge markieren um sie zu den Favoriten hinzuzufügen"
+
+msgid "Add to favorites"
+msgstr "Zu Favoriten hinzufügen"
+
+msgid "Remove from favorites"
+msgstr "Aus Favoriten entfernen"
 
 msgid "Favorites"
 msgstr "Favoriten"
@@ -781,8 +787,23 @@ msgstr "Ton ein-/ausschalten"
 msgid "Wizard"
 msgstr "Assistent"
 
-msgid "Toggle notification"
-msgstr "Benachrichtigung an/aus"
+msgid "Add a follower"
+msgstr "Follower hinzufügen"
+
+msgid "Subscribe a follower to this channel"
+msgstr "Diesen Channel für einen Follower abonnieren"
+
+msgid "Show followers"
+msgstr "Follower anzeigen"
+
+msgid "Unsubscribe"
+msgstr "Abbestellen"
+
+msgid "Subscribe"
+msgstr "Abonnieren"
+
+msgid "Are you sure to unsubscribe \"%1\" from this channel?"
+msgstr "Möchten Sie diesen Channel wirklich für \"%1\" abbestellen?"
 
 msgid "Enter a message"
 msgstr "Nachricht eingeben"
@@ -791,13 +812,22 @@ msgid "Submit the message"
 msgstr "Nachricht senden"
 
 msgid "Make this an internal message"
-msgstr "In interne Nachricht umwandeln"
+msgstr "Nur intern versenden"
+
+msgid "No notifications at this time"
+msgstr "Derzeit keine Benachrichtigungen"
 
 msgid "All Notifications..."
 msgstr "Alle Benachrichtigungen..."
 
 msgid "Preferences..."
 msgstr "Einstellungen..."
+
+msgid "Help..."
+msgstr "Hilfe..."
+
+msgid "Logout"
+msgstr "Abmelden"
 
 msgid "Translate view"
 msgstr "Aktuelle Sicht übersetzen"

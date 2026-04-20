@@ -6,14 +6,30 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgid "Toggle notification"
-msgstr "Commuta notificació"
+msgid "Show followers"
+msgstr "Mostra els seguidors"
+
+#, python-format
+msgid "Are you sure to unsubscribe \"%(name)s\" from this channel?"
+msgstr "Segur que vols cancel·lar la subscripció de \"%(name)s\" d'aquest canal?"
+
+msgid "Unsubscribe"
+msgstr "Donar-se de baixa"
+
+msgid "Subscribe"
+msgstr "Subscriu-te"
 
 msgid "Make this an _internal message"
 msgstr "Fes que això sigui un missatge _intern"
 
 msgid "Send"
 msgstr "Envia"
+
+msgid "Add a follower"
+msgstr "Afegeix un seguidor"
+
+msgid "Subscribe a follower to this channel"
+msgstr "Subscriu un seguidor a aquest canal"
 
 msgid "specify alternate config file"
 msgstr "Indica un fitxer de configuració alternatiu"
@@ -359,6 +375,9 @@ msgstr "Ajuda"
 msgid "No result found."
 msgstr "No s'han trobat resultats."
 
+msgid "Check menu entries to add favorites"
+msgstr "Marqueu les entrades del menú per afegir-les als preferits"
+
 msgid "Action"
 msgstr "Acció"
 
@@ -524,6 +543,9 @@ msgstr "Expandeix totes les files"
 
 msgid "Close Tab"
 msgstr "Tanca pestanya"
+
+msgid "No notifications at this time"
+msgstr "No hi ha notificacions en aquest moment"
 
 msgid "All Notifications..."
 msgstr "Totes les notificacions..."

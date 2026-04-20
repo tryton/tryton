@@ -64,7 +64,7 @@ msgstr "Cuentas bancarias utilizadas"
 
 msgctxt "help:bank,bic:"
 msgid "Bank/Business Identifier Code."
-msgstr "Código Identificador de Banco/Negocio (BIC)."
+msgstr "Código identificador de Banco/Negocio (BIC)."
 
 msgctxt "help:bank.account,bank:"
 msgid "The bank where the account is open."

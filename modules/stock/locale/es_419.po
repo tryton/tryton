@@ -661,8 +661,17 @@ msgctxt "field:stock.reporting.inventory,output_quantity:"
 msgid "Output Quantity"
 msgstr "Envío interno"
 
-#, fuzzy
 msgctxt "field:stock.reporting.inventory,product:"
+msgid "Variant"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory,product_reference:"
+msgid "Product Reference"
+msgstr "Referencias:"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory,product_template:"
 msgid "Product"
 msgstr "Costo"
 
@@ -712,8 +721,17 @@ msgctxt "field:stock.reporting.inventory.daily,output_quantity:"
 msgid "Output Quantity"
 msgstr "Envío interno"
 
-#, fuzzy
 msgctxt "field:stock.reporting.inventory.daily,product:"
+msgid "Variant"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.daily,product_reference:"
+msgid "Product Reference"
+msgstr "Referencias:"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.daily,product_template:"
 msgid "Product"
 msgstr "Costo"
 
@@ -761,8 +779,17 @@ msgctxt "field:stock.reporting.inventory.move,output_quantity:"
 msgid "Output Quantity"
 msgstr "Envío interno"
 
-#, fuzzy
 msgctxt "field:stock.reporting.inventory.move,product:"
+msgid "Variant"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.move,product_reference:"
+msgid "Product Reference"
+msgstr "Referencias:"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.move,product_template:"
 msgid "Product"
 msgstr "Costo"
 
@@ -807,8 +834,17 @@ msgctxt "field:stock.reporting.inventory.turnover,output_quantity:"
 msgid "Output Quantity"
 msgstr "Envío interno"
 
-#, fuzzy
 msgctxt "field:stock.reporting.inventory.turnover,product:"
+msgid "Variant"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.turnover,product_reference:"
+msgid "Product"
+msgstr "Costo"
+
+#, fuzzy
+msgctxt "field:stock.reporting.inventory.turnover,product_template:"
 msgid "Product"
 msgstr "Costo"
 
@@ -2424,11 +2460,6 @@ msgid ""
 msgstr ""
 
 #, python-format
-msgctxt "model:ir.message,text:msg_product_quantities_max"
-msgid "You cannot select more than %(max)s products to compute quantities."
-msgstr ""
-
-#, python-format
 msgctxt "model:ir.message,text:msg_shipment_check_quantity"
 msgid ""
 "The quantities of shipment \"%(shipment)s\" are different by %(quantities)s."
@@ -3005,6 +3036,11 @@ msgstr "Stock"
 msgctxt "model:res.group,name:group_stock_admin"
 msgid "Stock Administration"
 msgstr ""
+
+#, fuzzy
+msgctxt "model:res.group,name:group_stock_cancellation"
+msgid "Stock Cancellation"
+msgstr "Bodega de almacenamiento"
 
 msgctxt "model:res.group,name:group_stock_force_assignment"
 msgid "Stock Force Assignment"
@@ -3615,11 +3651,11 @@ msgid "Variant"
 msgstr ""
 
 #, fuzzy
-msgctxt "selection:stock.reporting.inventory,product:"
+msgctxt "selection:stock.reporting.inventory,product_reference:"
 msgid "Product"
 msgstr "Costo"
 
-msgctxt "selection:stock.reporting.inventory,product:"
+msgctxt "selection:stock.reporting.inventory,product_reference:"
 msgid "Variant"
 msgstr ""
 
@@ -3633,29 +3669,29 @@ msgid "Variant"
 msgstr ""
 
 #, fuzzy
-msgctxt "selection:stock.reporting.inventory.daily,product:"
+msgctxt "selection:stock.reporting.inventory.daily,product_reference:"
 msgid "Product"
 msgstr "Costo"
 
-msgctxt "selection:stock.reporting.inventory.daily,product:"
+msgctxt "selection:stock.reporting.inventory.daily,product_reference:"
 msgid "Variant"
 msgstr ""
 
 #, fuzzy
-msgctxt "selection:stock.reporting.inventory.move,product:"
+msgctxt "selection:stock.reporting.inventory.move,product_reference:"
 msgid "Product"
 msgstr "Costo"
 
-msgctxt "selection:stock.reporting.inventory.move,product:"
+msgctxt "selection:stock.reporting.inventory.move,product_reference:"
 msgid "Variant"
 msgstr ""
 
 #, fuzzy
-msgctxt "selection:stock.reporting.inventory.turnover,product:"
+msgctxt "selection:stock.reporting.inventory.turnover,product_reference:"
 msgid "Product"
 msgstr "Costo"
 
-msgctxt "selection:stock.reporting.inventory.turnover,product:"
+msgctxt "selection:stock.reporting.inventory.turnover,product_reference:"
 msgid "Variant"
 msgstr ""
 

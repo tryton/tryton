@@ -6,8 +6,28 @@ msgctxt "field:edocument.peppol.service,peppyrus_api_key:"
 msgid "API Key"
 msgstr ""
 
+msgctxt "field:edocument.peppol.service,peppyrus_identifier:"
+msgid "Identifier"
+msgstr ""
+
+msgctxt "field:edocument.peppol.service,peppyrus_incoming_webhook:"
+msgid "Incoming webhook"
+msgstr ""
+
+msgctxt "field:edocument.peppol.service,peppyrus_outgoing_webhook:"
+msgid "Outgoing webhook"
+msgstr ""
+
 msgctxt "field:edocument.peppol.service,peppyrus_server:"
 msgid "Server"
+msgstr ""
+
+msgctxt "help:edocument.peppol.service,peppyrus_incoming_webhook:"
+msgid "The URL for the incoming documents webhook."
+msgstr ""
+
+msgctxt "help:edocument.peppol.service,peppyrus_outgoing_webhook:"
+msgid "The URL for the outgoing documents webhook."
 msgstr ""
 
 msgctxt "model:ir.message,text:msg_peppyrus_credential_modified"
@@ -19,6 +39,17 @@ msgctxt "model:ir.message,text:msg_peppyrus_webserver_error"
 msgid ""
 "Peppyrus webservice call failed with the following error message:\n"
 "%(message)s"
+msgstr ""
+
+msgctxt ""
+"model:ir.model.button,confirm:edocument_peppol_service_new_identifier_button"
+msgid ""
+"This action will make the previous URLs unusable. Do you want to continue?"
+msgstr ""
+
+msgctxt ""
+"model:ir.model.button,string:edocument_peppol_service_new_identifier_button"
+msgid "New URLs"
 msgstr ""
 
 msgctxt "selection:edocument.peppol.service,peppyrus_server:"

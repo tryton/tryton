@@ -2616,8 +2616,8 @@ msgid "Account Aged Balance Context"
 msgstr "Buchhaltung Fälligkeitsliste Kontext"
 
 msgctxt "model:account.balance_sheet.comparison.context,string:"
-msgid "Account Balance Sheet Context"
-msgstr "Buchhaltung Bilanz Kontext"
+msgid "Account Balance Sheet Comparison Context"
+msgstr "Buchhaltung Bilanz Vergleich Kontext"
 
 msgctxt "model:account.balance_sheet.context,string:"
 msgid "Account Balance Sheet Context"
@@ -2692,8 +2692,8 @@ msgid "Account General Ledger Line"
 msgstr "Buchhaltung Kontenblätter Zeile"
 
 msgctxt "model:account.general_ledger.line.context,string:"
-msgid "Account General Ledger Account Context"
-msgstr "Buchhaltung Kontenblätter Konto Kontext"
+msgid "Account General Ledger Line Context"
+msgstr "Buchhaltung Kontenblätter Zeile Kontext"
 
 msgctxt "model:account.income_statement.context,string:"
 msgid "Account Income Statement Context"
@@ -4819,6 +4819,10 @@ msgstr "Keine"
 msgctxt "selection:account.tax.template,type:"
 msgid "Percentage"
 msgstr "Prozentsatz"
+
+msgctxt "selection:ir.cron,method:"
+msgid "Reconcile Move Lines Automatically"
+msgstr "Buchungszeilen automatisch abstimmen"
 
 msgctxt "view:account.account.type:"
 msgid "Comparison"

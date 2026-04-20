@@ -6,6 +6,10 @@ msgctxt "field:ir.email.template,contact_mechanism:"
 msgid "Contact Mechanism"
 msgstr "Kontaktid"
 
+msgctxt "field:party.address,attn:"
+msgid "Attn"
+msgstr ""
+
 #, fuzzy
 msgctxt "field:party.address,building_name:"
 msgid "Building Name"
@@ -278,6 +282,10 @@ msgstr "Aadress"
 msgctxt "field:party.identifier,code:"
 msgid "Code"
 msgstr "Kood"
+
+msgctxt "field:party.identifier,code_compact:"
+msgid "Code Compact"
+msgstr ""
 
 msgctxt "field:party.identifier,party:"
 msgid "Party"
@@ -572,6 +580,11 @@ msgctxt "model:ir.action,name:act_contact_mechanism_form"
 msgid "Contact Mechanisms"
 msgstr "Kontaktid"
 
+#, fuzzy
+msgctxt "model:ir.action,name:act_identifier_form"
+msgid "Identifiers"
+msgstr "Identifikaatorid"
+
 msgctxt "model:ir.action,name:act_party_by_category"
 msgid "Parties by Category"
 msgstr "Kategooriatepõhised osapooled"
@@ -723,6 +736,11 @@ msgstr "Seadistus"
 msgctxt "model:ir.ui.menu,name:menu_contact_mechanism_form"
 msgid "Contact Mechanisms"
 msgstr "Kontaktid"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_identifier_form"
+msgid "Identifiers"
+msgstr "Identifikaatorid"
 
 msgctxt "model:ir.ui.menu,name:menu_party"
 msgid "Parties"
@@ -881,6 +899,11 @@ msgstr "Austria KMKR"
 
 #, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
+msgid "Azerbaijan Tax Number"
+msgstr "Saksamaa maksu number"
+
+#, fuzzy
+msgctxt "selection:party.configuration,identifier_types:"
 msgid "Belarus VAT Number"
 msgstr "Bulgaaria KMKR"
 
@@ -898,6 +921,11 @@ msgstr "Austraalia ettevõtte number"
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Belgian National Number"
 msgstr "Tšiili KMKR"
+
+#, fuzzy
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Belgian Social Security Number"
+msgstr "Šveitsi sotsiaalkindlustuse number"
 
 #, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
@@ -1139,6 +1167,11 @@ msgstr "Prantsuse KMKR"
 
 #, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
+msgid "French Trade Registration Number"
+msgstr "U.S. isikuline maksumaksja tunnusnumber"
+
+#, fuzzy
+msgctxt "selection:party.configuration,identifier_types:"
 msgid "French VAT Number"
 msgstr "Prantsuse KMKR"
 
@@ -1336,6 +1369,11 @@ msgctxt "selection:party.configuration,identifier_types:"
 msgid "Moroccan Tax Number"
 msgstr "Mehhiko KM number"
 
+#, fuzzy
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Mozambique Tax Number"
+msgstr "Mehhiko KM number"
+
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "New Zealand Inland Revenue Department Number"
 msgstr ""
@@ -1417,6 +1455,11 @@ msgstr "Rumeenia KMKR"
 
 #, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
+msgid "Russian Primary State Registration Number"
+msgstr "Kolumbia KMKR"
+
+#, fuzzy
+msgctxt "selection:party.configuration,identifier_types:"
 msgid "Russian Tax identifier"
 msgstr "Vene KMKR"
 
@@ -1429,6 +1472,11 @@ msgstr "Kreeditori SEPA (AT-02)"
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "San Marino National Tax Number"
 msgstr "San-Marino riiklik maksu number"
+
+#, fuzzy
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Senegal Tax Number"
+msgstr "Argentiina KMKR"
 
 #, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
@@ -1484,6 +1532,10 @@ msgstr "Kolumbia KMKR"
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "South Korean Resident Registration Number"
 msgstr "Prantsuse KMKR"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Spanish Activity Establishment Code"
+msgstr ""
 
 #, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"

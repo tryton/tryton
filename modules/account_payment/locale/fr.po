@@ -511,6 +511,10 @@ msgstr ""
 "Vous ne pouvez pas effacer le tiers « %(party)s » tant qu'il y a des "
 "paiements en attente avec la société « %(company)s »."
 
+msgctxt "model:ir.message,text:msg_invoice_payment_mean_direct_debit"
+msgid "Direct debit"
+msgstr "Prélèvement automatique"
+
 #, python-format
 msgctxt "model:ir.message,text:msg_move_cancel_payments"
 msgid ""
@@ -562,11 +566,29 @@ msgstr ""
 "« %(line)s »."
 
 #, python-format
+msgctxt "model:ir.message,text:msg_pay_line_overpay"
+msgid ""
+"The payment of %(payment_amount)s for lines \"%(names)s\" exceeds the amount"
+" for %(party)s, which is %(amount)s."
+msgstr ""
+"Le paiement de %(payment_amount)s pour les lignes « %(names)s » dépasse le "
+"montant de %(party)s, qui est de %(amount)s."
+
+#, python-format
 msgctxt "model:ir.message,text:msg_payment_delete_draft"
 msgid "To delete payment \"%(payment)s\" you must reset it to draft state."
 msgstr ""
 "Pour supprimer le paiement « %(payment)s », vous devez le réinitialiser à "
 "l'état brouillon."
+
+#, python-format
+msgctxt "model:ir.message,text:msg_payment_means"
+msgid ""
+"The journal \"%(journal)s\" of payment \"%(payment)s\" is not valid with the"
+" payment means of invoice \"%(invoice)s\"."
+msgstr ""
+"Le journal « %(journal)s » du paiement « %(payment)s » n’est pas valable "
+"avec le moyen de paiement de la facture « %(invoice)s »."
 
 #, python-format
 msgctxt "model:ir.message,text:msg_payment_overpay"

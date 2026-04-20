@@ -521,6 +521,10 @@ msgctxt "field:ir.chat.channel,followers:"
 msgid "Followers"
 msgstr ""
 
+msgctxt "field:ir.chat.channel,identifier:"
+msgid "Identifier"
+msgstr ""
+
 #, fuzzy
 msgctxt "field:ir.chat.channel,resource:"
 msgid "Resource"
@@ -566,6 +570,15 @@ msgstr "Conţinut"
 msgctxt "field:ir.chat.message,email:"
 msgid "Email"
 msgstr "E-mail"
+
+msgctxt "field:ir.chat.message,reference:"
+msgid "Reference"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:ir.chat.message,summary:"
+msgid "Summary"
+msgstr "Rezumat"
 
 #, fuzzy
 msgctxt "field:ir.chat.message,user:"
@@ -846,6 +859,36 @@ msgstr "Export"
 msgctxt "field:ir.export.line,name:"
 msgid "Name"
 msgstr "Denumire"
+
+#, fuzzy
+msgctxt "field:ir.filestore.queue,field:"
+msgid "Field"
+msgstr "Câmp"
+
+#, fuzzy
+msgctxt "field:ir.filestore.queue,field_ref:"
+msgid "Field"
+msgstr "Câmp"
+
+#, fuzzy
+msgctxt "field:ir.filestore.queue,file_id:"
+msgid "File ID"
+msgstr "ID al fișierului"
+
+#, fuzzy
+msgctxt "field:ir.filestore.queue,model:"
+msgid "Model"
+msgstr "Model"
+
+#, fuzzy
+msgctxt "field:ir.filestore.queue,model_ref:"
+msgid "Model"
+msgstr "Model"
+
+#, fuzzy
+msgctxt "field:ir.filestore.queue,prefix:"
+msgid "Prefix"
+msgstr "Prefix"
 
 msgctxt "field:ir.lang,am:"
 msgid "AM"
@@ -1598,6 +1641,16 @@ msgctxt "field:ir.session.wizard,data:"
 msgid "Data"
 msgstr "Date"
 
+#, fuzzy
+msgctxt "field:ir.translation,field:"
+msgid "Field"
+msgstr "Câmp"
+
+#, fuzzy
+msgctxt "field:ir.translation,field_ref:"
+msgid "Field"
+msgstr "Câmp"
+
 msgctxt "field:ir.translation,fuzzy:"
 msgid "Fuzzy"
 msgstr "Neclar"
@@ -1610,6 +1663,11 @@ msgctxt "field:ir.translation,model:"
 msgid "Model"
 msgstr "Model"
 
+#, fuzzy
+msgctxt "field:ir.translation,model_ref:"
+msgid "Model"
+msgstr "Model"
+
 msgctxt "field:ir.translation,module:"
 msgid "Module"
 msgstr "Modul"
@@ -1619,9 +1677,10 @@ msgctxt "field:ir.translation,module_ref:"
 msgid "Module"
 msgstr "Modul"
 
+#, fuzzy
 msgctxt "field:ir.translation,name:"
-msgid "Field Name"
-msgstr "Denumire Câmpului"
+msgid "Name"
+msgstr "Denumire"
 
 msgctxt "field:ir.translation,overriding_module:"
 msgid "Overriding Module"
@@ -1996,6 +2055,10 @@ msgctxt "field:ir.ui.view_tree_width,model_ref:"
 msgid "Model"
 msgstr "Model"
 
+msgctxt "field:ir.ui.view_tree_width,occurrence:"
+msgid "Occurrence"
+msgstr ""
+
 #, fuzzy
 msgctxt "field:ir.ui.view_tree_width,screen_width:"
 msgid "Screen Width"
@@ -2326,6 +2389,15 @@ msgstr "Asistenți"
 msgctxt "model:ir.action,name:act_attachment_form"
 msgid "Attachments"
 msgstr "Fișiere atașate"
+
+msgctxt "model:ir.action,name:act_chat_channel"
+msgid "Channels"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_chat_message"
+msgid "Messages"
+msgstr "Mesaje"
 
 msgctxt "model:ir.action,name:act_config_wizard_item_form"
 msgid "Config Wizard Items"
@@ -2856,6 +2928,10 @@ msgctxt "model:ir.export.line,string:"
 msgid "Export Line"
 msgstr "Rând Export"
 
+msgctxt "model:ir.filestore.queue,string:"
+msgid "Filestore Queue"
+msgstr ""
+
 msgctxt "model:ir.lang,name:lang_bg"
 msgid "Bulgarian"
 msgstr "Bulgară"
@@ -3071,6 +3147,11 @@ msgctxt "model:ir.message,text:msg_button_name_unique"
 msgid "The name of the button must be unique per model."
 msgstr "Numele butonului trebuie sa fie unic per model."
 
+#, fuzzy, python-format
+msgctxt "model:ir.message,text:msg_button_state_record"
+msgid "You can not call \"%(button)s\" on \"%(record)s\" of \"%(model)s\"."
+msgstr "Nu aveți voie să ștergeți înregistrarea \"%(record)s\" din \"%(model)s\"."
+
 #, fuzzy
 msgctxt "model:ir.message,text:msg_cache_name_unique"
 msgid "The name of cache must be unique."
@@ -3080,6 +3161,11 @@ msgstr "Codul de limbă trebuie să fie unic."
 msgctxt "model:ir.message,text:msg_chat_author_email_invalid"
 msgid "The email address \"%(email)s\" is not valid."
 msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_chat_channel_identifier_unique"
+msgid "Identifier must be unique per channel."
+msgstr "Numele butonului trebuie sa fie unic per model."
 
 #, fuzzy
 msgctxt "model:ir.message,text:msg_chat_channel_resource_unique"
@@ -3092,6 +3178,21 @@ msgstr ""
 
 msgctxt "model:ir.message,text:msg_chat_follower_channel_user_unique"
 msgid "A user can follow a channel only once."
+msgstr ""
+
+#, python-format
+msgctxt "model:ir.message,text:msg_chat_follower_joined"
+msgid "\"%(name)s\" joined"
+msgstr ""
+
+#, python-format
+msgctxt "model:ir.message,text:msg_chat_follower_left"
+msgid "\"%(name)s\" left"
+msgstr ""
+
+#, python-format
+msgctxt "model:ir.message,text:msg_chat_subject"
+msgid "%(channel)s: %(author)s left a message"
 msgstr ""
 
 msgctxt "model:ir.message,text:msg_chat_user_or_email"
@@ -3402,6 +3503,11 @@ msgstr ""
 "\"%(exception)s\"."
 
 #, fuzzy
+msgctxt "model:ir.message,text:msg_last_modified_at"
+msgid "Last Modified at"
+msgstr "Ultima Modificare"
+
+#, fuzzy
 msgctxt "model:ir.message,text:msg_model_data_db_id_model_unique"
 msgid "The database ID must be unique per model."
 msgstr "Numele butonului trebuie sa fie unic per model."
@@ -3437,6 +3543,11 @@ msgstr ""
 msgctxt "model:ir.message,text:msg_notes"
 msgid "Notes"
 msgstr "Notițe"
+
+#, fuzzy, python-format
+msgctxt "model:ir.message,text:msg_order_function_missing"
+msgid "Missing order function for field \"%(field)s\" in \"%(model)s\"."
+msgstr "Lipsește funcția de setare pentru câmpul \"%(field)s\" din \"%(model)s\"."
 
 #, python-format
 msgctxt "model:ir.message,text:msg_read_error"
@@ -3699,6 +3810,11 @@ msgctxt "model:ir.message,text:msg_view_tree_optional_type"
 msgid "You cannot store optional on view \"%(view)s\"."
 msgstr ""
 
+msgctxt ""
+"model:ir.message,text:msg_view_tree_width_field_occurrence_user_unique"
+msgid "A user can set only one width per occurrence of field."
+msgstr ""
+
 #, python-format
 msgctxt "model:ir.message,text:msg_write_error"
 msgid ""
@@ -3740,6 +3856,12 @@ msgctxt "model:ir.model.access,string:"
 msgid "Model Access"
 msgstr "Acces la modele"
 
+msgctxt "model:ir.model.button,confirm:chat_channel_reset_identifier_button"
+msgid ""
+"This action will make previous entry point unusable. Do you want to "
+"continue?"
+msgstr ""
+
 msgctxt "model:ir.model.button,confirm:lang_load_translations_button"
 msgid "Are you sure you want to load languages' translations?"
 msgstr "Sigur doriți să încărcați traducerile limbilor?"
@@ -3752,6 +3874,10 @@ msgstr "Sigur doriți să eliminați traducerile limbilor?"
 msgctxt "model:ir.model.button,string:"
 msgid "Model Button"
 msgstr "Relația modelului"
+
+msgctxt "model:ir.model.button,string:chat_channel_reset_identifier_button"
+msgid "Reset Identifier"
+msgstr ""
 
 #, fuzzy
 msgctxt "model:ir.model.button,string:cron_run_once_button"
@@ -3945,8 +4071,8 @@ msgstr "Secventa"
 
 #, fuzzy
 msgctxt "model:ir.sequence.strict,string:"
-msgid "Sequence"
-msgstr "Secventa"
+msgid "Sequence Strict"
+msgstr "Secvențe Stricte"
 
 #, fuzzy
 msgctxt "model:ir.sequence.type,string:"
@@ -4055,6 +4181,10 @@ msgstr "Administrare"
 msgctxt "model:ir.ui.menu,name:menu_attachment_form"
 msgid "Attachments"
 msgstr "Atașament"
+
+msgctxt "model:ir.ui.menu,name:menu_chat_channel_form"
+msgid "Channels"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_config_wizard_item_form"
 msgid "Config Wizard Items"
@@ -4479,6 +4609,10 @@ msgid "Refresh Materialized Models"
 msgstr ""
 
 msgctxt "selection:ir.cron,method:"
+msgid "Remove Deleted Binaries"
+msgstr ""
+
+msgctxt "selection:ir.cron,method:"
 msgid "Run On Time Triggers"
 msgstr ""
 
@@ -4717,9 +4851,19 @@ msgctxt "view:ir.email.template:"
 msgid "Secondary Recipients:"
 msgstr "Destinatari Secundari:"
 
+#, fuzzy
+msgctxt "view:ir.error:"
+msgid "Date"
+msgstr "Data"
+
 msgctxt "view:ir.error:"
 msgid "Origin"
 msgstr "Origine"
+
+#, fuzzy
+msgctxt "view:ir.error:"
+msgid "Time"
+msgstr "Timp"
 
 msgctxt "view:ir.lang.config.start:"
 msgid "You can now load additional translations to the system."

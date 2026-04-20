@@ -26,6 +26,14 @@ msgctxt "field:incoterm.incoterm,companies:"
 msgid "Companies"
 msgstr "Bedrijven"
 
+msgctxt "field:incoterm.incoterm,export_duties:"
+msgid "Export Duties"
+msgstr "Uitvoerrechten"
+
+msgctxt "field:incoterm.incoterm,import_duties:"
+msgid "Import Duties"
+msgstr "Invoerrechten"
+
 msgctxt "field:incoterm.incoterm,location:"
 msgid "Location"
 msgstr "Plaats"
@@ -219,6 +227,22 @@ msgid "Buyer"
 msgstr "Koper"
 
 msgctxt "selection:incoterm.incoterm,carrier:"
+msgid "Seller"
+msgstr "Verkoper"
+
+msgctxt "selection:incoterm.incoterm,export_duties:"
+msgid "Buyer"
+msgstr "Koper"
+
+msgctxt "selection:incoterm.incoterm,export_duties:"
+msgid "Seller"
+msgstr "Verkoper"
+
+msgctxt "selection:incoterm.incoterm,import_duties:"
+msgid "Buyer"
+msgstr "Koper"
+
+msgctxt "selection:incoterm.incoterm,import_duties:"
 msgid "Seller"
 msgstr "Verkoper"
 

@@ -313,6 +313,16 @@ msgctxt "field:sale.line,quantity:"
 msgid "Quantity"
 msgstr "Кол-во"
 
+#, fuzzy
+msgctxt "field:sale.line,quantity_to_invoice:"
+msgid "Quantity to Invoice"
+msgstr "Создать заново инвойсы"
+
+#, fuzzy
+msgctxt "field:sale.line,quantity_to_ship:"
+msgid "Quantity to Ship"
+msgstr "Кол-во"
+
 msgctxt "field:sale.line,sale:"
 msgid "Sale"
 msgstr "Продажа"
@@ -706,6 +716,15 @@ msgstr "Налог"
 msgctxt "field:sale.sale,tax_amount_cache:"
 msgid "Tax Cache"
 msgstr "Облагаемые налогом"
+
+#, fuzzy
+msgctxt "field:sale.sale,to_invoice:"
+msgid "To Invoice"
+msgstr "Инвойс"
+
+msgctxt "field:sale.sale,to_ship:"
+msgid "To Ship"
+msgstr ""
 
 msgctxt "field:sale.sale,total_amount:"
 msgid "Total"
@@ -1687,12 +1706,12 @@ msgid "Manual"
 msgstr "Ручной"
 
 msgctxt "selection:sale.sale,invoice_method:"
-msgid "On Order Processed"
-msgstr "При обработке заказа"
+msgid "On Fulfillment"
+msgstr ""
 
 msgctxt "selection:sale.sale,invoice_method:"
-msgid "On Shipment Sent"
-msgstr "При отправке груза"
+msgid "On Order Processed"
+msgstr "При обработке заказа"
 
 msgctxt "selection:sale.sale,invoice_state:"
 msgid "Awaiting Payment"

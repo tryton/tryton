@@ -312,8 +312,8 @@ msgid "The main identifier for the shipment."
 msgstr "Das Hauptidentifizierungsmerkmal für die Lieferung."
 
 msgctxt "help:production,reference:"
-msgid "The external identifier for the shipment."
-msgstr "Das externe Identifizierungsmerkmal der Lieferung."
+msgid "The external identifier for the production."
+msgstr "Das externe Identifizierungsmerkmal des Produktionsauftrags."
 
 msgctxt "help:production,uom_category:"
 msgid "The category of Unit of Measure."

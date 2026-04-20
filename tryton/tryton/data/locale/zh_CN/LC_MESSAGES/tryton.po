@@ -5,15 +5,31 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-#, fuzzy
-msgid "Toggle notification"
-msgstr "切换选择状态"
+msgid "Show followers"
+msgstr ""
+
+#, fuzzy, python-format
+msgid "Are you sure to unsubscribe \"%(name)s\" from this channel?"
+msgstr "确定要删除这条记录吗？"
+
+msgid "Unsubscribe"
+msgstr ""
+
+msgid "Subscribe"
+msgstr ""
 
 msgid "Make this an _internal message"
 msgstr ""
 
 msgid "Send"
 msgstr "发送"
+
+#, fuzzy
+msgid "Add a follower"
+msgstr "添加值"
+
+msgid "Subscribe a follower to this channel"
+msgstr ""
 
 msgid "specify alternate config file"
 msgstr "指定备选配置文件"
@@ -358,6 +374,9 @@ msgstr "帮助"
 msgid "No result found."
 msgstr "无符合条件的数据."
 
+msgid "Check menu entries to add favorites"
+msgstr ""
+
 msgid "Action"
 msgstr "操作"
 
@@ -523,6 +542,10 @@ msgstr "展开所有"
 
 msgid "Close Tab"
 msgstr "关闭标签"
+
+#, fuzzy
+msgid "No notifications at this time"
+msgstr "修改日期"
 
 #, fuzzy
 msgid "All Notifications..."

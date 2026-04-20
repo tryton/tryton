@@ -1,11 +1,14 @@
 #
-#, fuzzy
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:account.invoice,peppol:"
 msgid "Peppol"
 msgstr "Peppol"
+
+msgctxt "field:account.invoice,send_via_peppol:"
+msgid "Send via Peppol"
+msgstr "Verzenden via Peppol"
 
 msgctxt "field:edocument.peppol,company:"
 msgid "Company"
@@ -123,14 +126,18 @@ msgid "Failed"
 msgstr "Mislukt"
 
 msgctxt ""
-"model:ir.action.act_window.domain,name:act_edocument_peppol_domain_pending"
-msgid "Pending"
-msgstr "In behandeling"
-
-msgctxt ""
 "model:ir.action.act_window.domain,name:act_edocument_peppol_domain_processing"
 msgid "Processing"
 msgstr "In uitvoering"
+
+#, python-format
+msgctxt "model:ir.message,text:msg_invoice_line_unit_price_not_negative"
+msgid ""
+"In order to post the invoice \"%(invoice)s\" on the Peppol network, the unit"
+" price of the line \"%(line)s\" must not be negative."
+msgstr ""
+"Om de factuur \"%(invoice)s\" via het Peppol-netwerk te kunnen versturen, "
+"mag de eenheidsprijs van de regel \"%(line)s\" niet negatief zijn."
 
 #, python-format
 msgctxt "model:ir.message,text:msg_invoice_party_peppol_required"
@@ -164,6 +171,10 @@ msgstr "Opnieuw proberen"
 msgctxt "model:ir.model.button,string:edocument_peppol_submit_button"
 msgid "Submit"
 msgstr "Indienen"
+
+msgctxt "model:ir.model.button,string:edocument_peppol_update_status_button"
+msgid "Update Status"
+msgstr "Status bijwerken"
 
 msgctxt "model:ir.rule.group,name:rule_group_edocument_peppol_companies"
 msgid "User in companies"

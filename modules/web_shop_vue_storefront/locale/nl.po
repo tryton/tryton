@@ -32,7 +32,7 @@ msgstr "Eindtotaal"
 
 msgctxt "model:ir.message,text:msg_identifier_record_unique"
 msgid "The Vue Storefront identifier must be unique for each record."
-msgstr "De Vue Storefront-ID moet uniek zijn voor elk record."
+msgstr "De Vue Storefront identificatie moet uniek zijn voor elk record."
 
 #, python-format
 msgctxt "model:ir.message,text:msg_invalid_tax_identifier"

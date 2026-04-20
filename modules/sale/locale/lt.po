@@ -314,6 +314,16 @@ msgctxt "field:sale.line,quantity:"
 msgid "Quantity"
 msgstr "Kiekis"
 
+#, fuzzy
+msgctxt "field:sale.line,quantity_to_invoice:"
+msgid "Quantity to Invoice"
+msgstr "Atkurtos sąskaitos faktūros"
+
+#, fuzzy
+msgctxt "field:sale.line,quantity_to_ship:"
+msgid "Quantity to Ship"
+msgstr "Kiekis"
+
 msgctxt "field:sale.line,sale:"
 msgid "Sale"
 msgstr "Pardavimas"
@@ -709,6 +719,15 @@ msgstr "PVM"
 msgctxt "field:sale.sale,tax_amount_cache:"
 msgid "Tax Cache"
 msgstr "Išsaugota PVM vertė"
+
+#, fuzzy
+msgctxt "field:sale.sale,to_invoice:"
+msgid "To Invoice"
+msgstr "Sąskaita faktūra"
+
+msgctxt "field:sale.sale,to_ship:"
+msgid "To Ship"
+msgstr ""
 
 msgctxt "field:sale.sale,total_amount:"
 msgid "Total"
@@ -1683,12 +1702,12 @@ msgid "Manual"
 msgstr "Rankiniu būdu"
 
 msgctxt "selection:sale.sale,invoice_method:"
-msgid "On Order Processed"
-msgstr "Vykdant užsakymą"
+msgid "On Fulfillment"
+msgstr ""
 
 msgctxt "selection:sale.sale,invoice_method:"
-msgid "On Shipment Sent"
-msgstr "Išsiunčiant krovinį"
+msgid "On Order Processed"
+msgstr "Vykdant užsakymą"
 
 msgctxt "selection:sale.sale,invoice_state:"
 msgid "Awaiting Payment"

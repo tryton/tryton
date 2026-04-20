@@ -514,6 +514,10 @@ msgctxt "field:ir.chat.channel,followers:"
 msgid "Followers"
 msgstr "Seguidores"
 
+msgctxt "field:ir.chat.channel,identifier:"
+msgid "Identifier"
+msgstr "Identificador"
+
 msgctxt "field:ir.chat.channel,resource:"
 msgid "Resource"
 msgstr "Recurso"
@@ -553,6 +557,14 @@ msgstr "Contenido"
 msgctxt "field:ir.chat.message,email:"
 msgid "Email"
 msgstr "Correo electrónico"
+
+msgctxt "field:ir.chat.message,reference:"
+msgid "Reference"
+msgstr "Referencia"
+
+msgctxt "field:ir.chat.message,summary:"
+msgid "Summary"
+msgstr "Resumen"
 
 msgctxt "field:ir.chat.message,user:"
 msgid "User"
@@ -821,6 +833,30 @@ msgstr "Exportar"
 msgctxt "field:ir.export.line,name:"
 msgid "Name"
 msgstr "Nombre"
+
+msgctxt "field:ir.filestore.queue,field:"
+msgid "Field"
+msgstr "Campo"
+
+msgctxt "field:ir.filestore.queue,field_ref:"
+msgid "Field"
+msgstr "Campo"
+
+msgctxt "field:ir.filestore.queue,file_id:"
+msgid "File ID"
+msgstr "Identificador del fichero"
+
+msgctxt "field:ir.filestore.queue,model:"
+msgid "Model"
+msgstr "Modelo"
+
+msgctxt "field:ir.filestore.queue,model_ref:"
+msgid "Model"
+msgstr "Modelo"
+
+msgctxt "field:ir.filestore.queue,prefix:"
+msgid "Prefix"
+msgstr "Prefijo"
 
 msgctxt "field:ir.lang,am:"
 msgid "AM"
@@ -1542,6 +1578,14 @@ msgctxt "field:ir.session.wizard,data:"
 msgid "Data"
 msgstr "Datos"
 
+msgctxt "field:ir.translation,field:"
+msgid "Field"
+msgstr "Campo"
+
+msgctxt "field:ir.translation,field_ref:"
+msgid "Field"
+msgstr "Campo"
+
 msgctxt "field:ir.translation,fuzzy:"
 msgid "Fuzzy"
 msgstr "Revisión"
@@ -1554,6 +1598,10 @@ msgctxt "field:ir.translation,model:"
 msgid "Model"
 msgstr "Modelo"
 
+msgctxt "field:ir.translation,model_ref:"
+msgid "Model"
+msgstr "Modelo"
+
 msgctxt "field:ir.translation,module:"
 msgid "Module"
 msgstr "Módulo"
@@ -1563,8 +1611,8 @@ msgid "Module"
 msgstr "Módulo"
 
 msgctxt "field:ir.translation,name:"
-msgid "Field Name"
-msgstr "Nombre del campo"
+msgid "Name"
+msgstr "Nombre"
 
 msgctxt "field:ir.translation,overriding_module:"
 msgid "Overriding Module"
@@ -1914,6 +1962,10 @@ msgctxt "field:ir.ui.view_tree_width,model_ref:"
 msgid "Model"
 msgstr "Modelo"
 
+msgctxt "field:ir.ui.view_tree_width,occurrence:"
+msgid "Occurrence"
+msgstr "Ocurrencia"
+
 msgctxt "field:ir.ui.view_tree_width,screen_width:"
 msgid "Screen Width"
 msgstr "Ancho de pantalla"
@@ -2228,6 +2280,14 @@ msgstr "Asistentes"
 msgctxt "model:ir.action,name:act_attachment_form"
 msgid "Attachments"
 msgstr "Adjuntos"
+
+msgctxt "model:ir.action,name:act_chat_channel"
+msgid "Channels"
+msgstr "Canales"
+
+msgctxt "model:ir.action,name:act_chat_message"
+msgid "Messages"
+msgstr "Mensajes"
 
 msgctxt "model:ir.action,name:act_config_wizard_item_form"
 msgid "Config Wizard Items"
@@ -2724,6 +2784,10 @@ msgctxt "model:ir.export.line,string:"
 msgid "Export Line"
 msgstr "Línea de exportación"
 
+msgctxt "model:ir.filestore.queue,string:"
+msgid "Filestore Queue"
+msgstr "Cola almacenamiento de archivos"
+
 msgctxt "model:ir.lang,name:lang_bg"
 msgid "Bulgarian"
 msgstr "Búlgaro"
@@ -2939,6 +3003,11 @@ msgctxt "model:ir.message,text:msg_button_name_unique"
 msgid "The name of the button must be unique per model."
 msgstr "El nombre del botón debe ser único por cada modelo."
 
+#, python-format
+msgctxt "model:ir.message,text:msg_button_state_record"
+msgid "You can not call \"%(button)s\" on \"%(record)s\" of \"%(model)s\"."
+msgstr "No puedes ejecutar \"%(button)s\" en \"%(record)s\" de \"%(model)s\"."
+
 msgctxt "model:ir.message,text:msg_cache_name_unique"
 msgid "The name of cache must be unique."
 msgstr "El nombre del caché debe ser único."
@@ -2947,6 +3016,10 @@ msgstr "El nombre del caché debe ser único."
 msgctxt "model:ir.message,text:msg_chat_author_email_invalid"
 msgid "The email address \"%(email)s\" is not valid."
 msgstr "La dirección de correo electrónico \"%(email)s\" no es válida."
+
+msgctxt "model:ir.message,text:msg_chat_channel_identifier_unique"
+msgid "Identifier must be unique per channel."
+msgstr "El identificador debe ser único por canal."
 
 msgctxt "model:ir.message,text:msg_chat_channel_resource_unique"
 msgid "Only one channel per resource is allowed."
@@ -2959,6 +3032,21 @@ msgstr "Un correo electrónico solo puede seguir un canal una vez."
 msgctxt "model:ir.message,text:msg_chat_follower_channel_user_unique"
 msgid "A user can follow a channel only once."
 msgstr "Un usuario puede seguir un canal solo una vez."
+
+#, python-format
+msgctxt "model:ir.message,text:msg_chat_follower_joined"
+msgid "\"%(name)s\" joined"
+msgstr "\"%(name)s\" se unió"
+
+#, python-format
+msgctxt "model:ir.message,text:msg_chat_follower_left"
+msgid "\"%(name)s\" left"
+msgstr "\"%(name)s\" se fué"
+
+#, python-format
+msgctxt "model:ir.message,text:msg_chat_subject"
+msgid "%(channel)s: %(author)s left a message"
+msgstr "%(channel)s: %(author)s dejó un mensaje"
 
 msgctxt "model:ir.message,text:msg_chat_user_or_email"
 msgid "Only user or email can be filled."
@@ -3270,6 +3358,10 @@ msgstr ""
 "El plural \"%(plural)s\" del idioma \"%(language)s\" es invalido con la "
 "excepción \"%(exception)s\" y la n %(n)r."
 
+msgctxt "model:ir.message,text:msg_last_modified_at"
+msgid "Last Modified at"
+msgstr "Última modificación el"
+
 msgctxt "model:ir.message,text:msg_model_data_db_id_model_unique"
 msgid "The database ID must be unique per model."
 msgstr "El identificador de la base de datos debe ser único por cada modelo."
@@ -3304,6 +3396,11 @@ msgstr "No puede eliminar un módulo que está activado o será activado."
 msgctxt "model:ir.message,text:msg_notes"
 msgid "Notes"
 msgstr "Notas"
+
+#, python-format
+msgctxt "model:ir.message,text:msg_order_function_missing"
+msgid "Missing order function for field \"%(field)s\" in \"%(model)s\"."
+msgstr "Falta la función de ordenación para el campo \"%(field)s\" en \"%(model)s\"."
 
 #, python-format
 msgctxt "model:ir.message,text:msg_read_error"
@@ -3574,6 +3671,12 @@ msgctxt "model:ir.message,text:msg_view_tree_optional_type"
 msgid "You cannot store optional on view \"%(view)s\"."
 msgstr "No se puede guardar los opcionales en la vista \"%(view)s\"."
 
+msgctxt ""
+"model:ir.message,text:msg_view_tree_width_field_occurrence_user_unique"
+msgid "A user can set only one width per occurrence of field."
+msgstr ""
+"Un usuario solo puede establecer un ancho por cada ocurrencia del campo."
+
 #, python-format
 msgctxt "model:ir.message,text:msg_write_error"
 msgid ""
@@ -3613,6 +3716,13 @@ msgctxt "model:ir.model.access,string:"
 msgid "Model Access"
 msgstr "Acceso modelos"
 
+msgctxt "model:ir.model.button,confirm:chat_channel_reset_identifier_button"
+msgid ""
+"This action will make previous entry point unusable. Do you want to "
+"continue?"
+msgstr ""
+"Esta acción inutilizará el punto de acceso anterior. ¿Desea continuar?"
+
 msgctxt "model:ir.model.button,confirm:lang_load_translations_button"
 msgid "Are you sure you want to load languages' translations?"
 msgstr "¿Está seguro que desea cargar las traducciones de los idiomas?"
@@ -3624,6 +3734,10 @@ msgstr "¿Está seguro que desea eliminar las traducciones de los idiomas?"
 msgctxt "model:ir.model.button,string:"
 msgid "Model Button"
 msgstr "Botón modelo"
+
+msgctxt "model:ir.model.button,string:chat_channel_reset_identifier_button"
+msgid "Reset Identifier"
+msgstr "Restablecer identificador"
 
 msgctxt "model:ir.model.button,string:cron_run_once_button"
 msgid "Run Once"
@@ -3790,8 +3904,8 @@ msgid "Sequence"
 msgstr "Secuencia"
 
 msgctxt "model:ir.sequence.strict,string:"
-msgid "Sequence"
-msgstr "Secuencia"
+msgid "Sequence Strict"
+msgstr "Secuencia estricta"
 
 msgctxt "model:ir.sequence.type,string:"
 msgid "Sequence Type"
@@ -3884,6 +3998,10 @@ msgstr "Administración"
 msgctxt "model:ir.ui.menu,name:menu_attachment_form"
 msgid "Attachments"
 msgstr "Adjuntos"
+
+msgctxt "model:ir.ui.menu,name:menu_chat_channel_form"
+msgid "Channels"
+msgstr "Canales"
 
 msgctxt "model:ir.ui.menu,name:menu_config_wizard_item_form"
 msgid "Config Wizard Items"
@@ -4270,6 +4388,10 @@ msgid "Refresh Materialized Models"
 msgstr "Refrescar modelos materializados"
 
 msgctxt "selection:ir.cron,method:"
+msgid "Remove Deleted Binaries"
+msgstr "Eliminar archivos binarios borrados"
+
+msgctxt "selection:ir.cron,method:"
 msgid "Run On Time Triggers"
 msgstr "Ejecutar disparadores de tiempo"
 
@@ -4502,8 +4624,16 @@ msgid "Secondary Recipients:"
 msgstr "Destinatarios secundarios:"
 
 msgctxt "view:ir.error:"
+msgid "Date"
+msgstr "Fecha"
+
+msgctxt "view:ir.error:"
 msgid "Origin"
 msgstr "Origen"
+
+msgctxt "view:ir.error:"
+msgid "Time"
+msgstr "Hora"
 
 msgctxt "view:ir.lang.config.start:"
 msgid "You can now load additional translations to the system."

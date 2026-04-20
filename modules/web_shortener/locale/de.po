@@ -40,4 +40,4 @@ msgstr "Gekürzte URL"
 
 msgctxt "model:web.shortened_url.access,string:"
 msgid "Web Shortened Url Access"
-msgstr "Gekürzte URLs"
+msgstr "Gekürzte URLs Zugang"

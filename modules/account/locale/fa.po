@@ -2798,7 +2798,7 @@ msgstr "مفاد تراز قدیمی"
 
 #, fuzzy
 msgctxt "model:account.balance_sheet.comparison.context,string:"
-msgid "Account Balance Sheet Context"
+msgid "Account Balance Sheet Comparison Context"
 msgstr "مفاد برگه تراز"
 
 #, fuzzy
@@ -2891,7 +2891,7 @@ msgstr "سطر دفتر کل"
 
 #, fuzzy
 msgctxt "model:account.general_ledger.line.context,string:"
-msgid "Account General Ledger Account Context"
+msgid "Account General Ledger Line Context"
 msgstr "مفاد حساب دفتر کل"
 
 #, fuzzy
@@ -5067,6 +5067,11 @@ msgstr "هیجکدام"
 msgctxt "selection:account.tax.template,type:"
 msgid "Percentage"
 msgstr "درصد"
+
+#, fuzzy
+msgctxt "selection:ir.cron,method:"
+msgid "Reconcile Move Lines Automatically"
+msgstr "تطبیق دادن سطرها"
 
 msgctxt "view:account.account.type:"
 msgid "Comparison"

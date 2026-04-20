@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:account.configuration,sepa_mandate_sequence:"
 msgid "SEPA Mandate Sequence"
-msgstr "SEPA Mandaat Reeks"
+msgstr "SEPA machtiging Reeks"
 
 msgctxt "field:account.configuration.sepa_mandate_sequence,company:"
 msgid "Company"
@@ -13,7 +13,7 @@ msgstr "Bedrijf"
 msgctxt ""
 "field:account.configuration.sepa_mandate_sequence,sepa_mandate_sequence:"
 msgid "SEPA Mandate Sequence"
-msgstr "SEPA Mandaat Reeks"
+msgstr "SEPA machtiging reeks"
 
 msgctxt "field:account.payment,sepa_end_to_end_id:"
 msgid "SEPA End To End ID"
@@ -29,11 +29,11 @@ msgstr "SEPA Instructie ID"
 
 msgctxt "field:account.payment,sepa_mandate:"
 msgid "Mandate"
-msgstr "Mandaat"
+msgstr "Machtiging"
 
 msgctxt "field:account.payment,sepa_mandate_sequence_type:"
 msgid "Mandate Sequence Type"
-msgstr "Type opdrachtvolgorde"
+msgstr "Machtiging reeks soort"
 
 msgctxt "field:account.payment,sepa_payable_bank_account_number:"
 msgid "Bank Account Number"
@@ -73,7 +73,7 @@ msgstr "Commissiehouder"
 
 msgctxt "field:account.payment.journal,sepa_payable_flavor:"
 msgid "Payable Flavor"
-msgstr "Verplichtingen van het SEPA-type"
+msgstr "Soort betaling"
 
 msgctxt "field:account.payment.journal,sepa_payable_initiator_id:"
 msgid "SEPA Payable Initiator Identifier"
@@ -81,7 +81,7 @@ msgstr "SEPA identificatie client transfer"
 
 msgctxt "field:account.payment.journal,sepa_receivable_flavor:"
 msgid "Receivable Flavor"
-msgstr "SEPA-type claims"
+msgstr "Te ontvangen soort"
 
 msgctxt "field:account.payment.journal,sepa_receivable_initiator_id:"
 msgid "SEPA Receivable Initiator Identifier"
@@ -197,11 +197,11 @@ msgstr "De identificator die wordt gebruikt voor de initiërende partij."
 
 msgctxt "model:account.configuration.sepa_mandate_sequence,string:"
 msgid "Account Configuration Sepa Mandate Sequence"
-msgstr "Grootboek configuratie SEPA volmacht reeks"
+msgstr "Grootboek configuratie SEPA machtiging reeks"
 
 msgctxt "model:account.payment.sepa.mandate,string:"
 msgid "Account Payment Sepa Mandate"
-msgstr "Grootboek betaling SEPA volmacht"
+msgstr "Grootboek betaling SEPA machtiging"
 
 msgctxt "model:account.payment.sepa.message,string:"
 msgid "Account Payment Sepa Message"
@@ -271,6 +271,13 @@ msgctxt ""
 "model:ir.action.act_window.domain,name:act_move_line_form_domain_receivable_mandate"
 msgid "Receivable with Mandate"
 msgstr "Vorderingen op mandaat (automatische incasso)"
+
+#, python-format
+msgctxt "model:ir.message,text:msg_invoice_payment_mean_direct_debit"
+msgid "SEPA direct debit using mandate %(mandate)s on %(account_number)s"
+msgstr ""
+"SEPA automatische incasso gebruikt machtiging %(mandate)s voor "
+"%(account_number)s"
 
 #, python-format
 msgctxt "model:ir.message,text:msg_mandate_authorisation_statement"
@@ -428,7 +435,7 @@ msgstr "Land"
 
 msgctxt "report:account.payment.sepa.mandate:"
 msgid "Creditor identifier"
-msgstr "Schuldeiser-ID"
+msgstr "Crediteur identificatie"
 
 msgctxt "report:account.payment.sepa.mandate:"
 msgid "Creditor name"
@@ -548,7 +555,7 @@ msgstr "Bedrijf tot bedrijf"
 
 msgctxt "selection:account.payment.sepa.mandate,scheme:"
 msgid "Core"
-msgstr "B2C-Schema (SEPA CORE)"
+msgstr "Basis"
 
 msgctxt "selection:account.payment.sepa.mandate,state:"
 msgid "Cancelled"

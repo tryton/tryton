@@ -2676,7 +2676,7 @@ msgstr "Контекст вікового балансу"
 
 #, fuzzy
 msgctxt "model:account.balance_sheet.comparison.context,string:"
-msgid "Account Balance Sheet Context"
+msgid "Account Balance Sheet Comparison Context"
 msgstr "Контекст бухгалтерського балансу"
 
 #, fuzzy
@@ -2769,7 +2769,7 @@ msgstr "Рядок головної книги"
 
 #, fuzzy
 msgctxt "model:account.general_ledger.line.context,string:"
-msgid "Account General Ledger Account Context"
+msgid "Account General Ledger Line Context"
 msgstr "Контекст рахунку головної книги"
 
 #, fuzzy
@@ -4895,6 +4895,11 @@ msgstr "Немає"
 msgctxt "selection:account.tax.template,type:"
 msgid "Percentage"
 msgstr "Відсоток"
+
+#, fuzzy
+msgctxt "selection:ir.cron,method:"
+msgid "Reconcile Move Lines Automatically"
+msgstr "Звірити рядки"
 
 msgctxt "view:account.account.type:"
 msgid "Comparison"

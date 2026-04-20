@@ -1,0 +1,212 @@
+#
+#, fuzzy
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.price_list.line,ethanol_volume_uom:"
+msgid "AlcoholVolume UoM"
+msgstr "UdM volumen de alcohol"
+
+msgctxt "field:product.product,contain_ethanol:"
+msgid "Contain Alcohol"
+msgstr "Contiene alcohol"
+
+msgctxt "field:product.product,ethanol_by_volume:"
+msgid "Alcohol By Volume"
+msgstr "Alcohol por volumen"
+
+msgctxt "field:product.product,ethanol_by_volume_used:"
+msgid "Alcohol By Volume"
+msgstr "Alcohol por volumen"
+
+msgctxt "field:product.product,ethanol_volume:"
+msgid "Alcohol Volume"
+msgstr "Volumen de alcohol"
+
+msgctxt "field:product.product,ethanol_volume_unit:"
+msgid "Alcohol Volume UoM"
+msgstr "UdM del volumen de alcohol"
+
+msgctxt "field:product.template,contain_ethanol:"
+msgid "Contain Alcohol"
+msgstr "Contiene alcohol"
+
+msgctxt "field:product.template,ethanol_by_volume:"
+msgid "Alcohol By Volume"
+msgstr "Alcohol por volumen"
+
+msgctxt "field:product.template,ethanol_volume:"
+msgid "Alcohol Volume"
+msgstr "Volumen de alcohol"
+
+msgctxt "field:product.template,ethanol_volume_unit:"
+msgid "Alcohol Volume UoM"
+msgstr "UdM del volumen de alcohol"
+
+msgctxt "field:stock.configuration,ethanol_volume_uom:"
+msgid "Alcohol Volume UoM"
+msgstr "UdM del volumen de alcohol"
+
+msgctxt "field:stock.configuration.ethanol,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:stock.configuration.ethanol,ethanol_volume_uom:"
+msgid "Ethanol Volume UoM"
+msgstr "UdM del volumen de etanol"
+
+msgctxt "field:stock.move,contain_ethanol:"
+msgid "Contain Alcohol"
+msgstr "Contiene alcohol"
+
+msgctxt "field:stock.move,ethanol_by_volume:"
+msgid "Alcohol By Volume"
+msgstr "Alcohol por volumen"
+
+msgctxt "field:stock.move,ethanol_volume:"
+msgid "Alcohol Volume"
+msgstr "Volumen de alcohol"
+
+msgctxt "field:stock.move,ethanol_volume_required:"
+msgid "Alcohol Volume Required"
+msgstr "Volumen de alcohol requerido"
+
+msgctxt "field:stock.move,ethanol_volume_unit:"
+msgid "Alcohol Volume UoM"
+msgstr "UdM del volumen de alcohol"
+
+msgctxt "field:stock.move,internal_ethanol_volume:"
+msgid "Internal Alcohol Volume"
+msgstr "Volumen interno de alcohol"
+
+msgctxt "field:stock.products_by_locations,ethanol_volume:"
+msgid "Alcohol Volume"
+msgstr "Volumen de alcohol"
+
+msgctxt "field:stock.products_by_locations,ethanol_volume_unit:"
+msgid "Alcohol Volume UoM"
+msgstr "UdM del volumen de alcohol"
+
+msgctxt "help:account.stock.eu.excise.tax.rate,formula:"
+msgid ""
+"\n"
+"-ethanol_by_volume: the percentage of alcohol by volume"
+msgstr ""
+"\n"
+"-ethanol_by_volume: el porcentaje de alcohol por volumen"
+
+msgctxt "help:product.price_list.line,ethanol_volume_uom:"
+msgid "Leave empty for liter."
+msgstr "Dejar vacio para litros."
+
+msgctxt "help:product.price_list.line,formula:"
+msgid ""
+"\n"
+"-ethanol_volume: the volume of alcohol in 1 unit of product"
+msgstr ""
+"\n"
+"- ethanol_volume: el volumen de alcohol en 1 unidad de producto"
+
+msgctxt "help:product.product,contain_ethanol:"
+msgid "Check if goods contain ethanol/alcohol."
+msgstr "Marcar si los productos contienen etanol/alcohol."
+
+msgctxt "help:product.product,ethanol_by_volume:"
+msgid ""
+"How much ethanol/alcohol is contained in a given volume at 20 degrees Celsius.\n"
+"Leave empty to use the template value."
+msgstr ""
+"Cantidad de etanol/alcohol contenida en un volumen determinado a 20 grados Celsius.\n"
+"Deje este campo en blanco para usar el valor de la plantilla."
+
+msgctxt "help:product.product,ethanol_by_volume_used:"
+msgid ""
+"How much ethanol/alcohol is contained in a given volume at 20 degrees "
+"Celsius."
+msgstr ""
+"Cantidad de etanol/alcohol contenida en un volumen determinado a 20 grados "
+"Celsius."
+
+msgctxt "help:product.product,ethanol_volume:"
+msgid "The volume of ethanol/alcohol in the location."
+msgstr "El volumen de etanol/alcohol en la ubicación."
+
+msgctxt "help:product.template,contain_ethanol:"
+msgid "Check if goods contain ethanol/alcohol."
+msgstr "Marcar si los productos contienen etanol/alcohol."
+
+msgctxt "help:product.template,ethanol_by_volume:"
+msgid ""
+"How much ethanol/alcohol is contained in a given volume at 20 degrees "
+"Celsius."
+msgstr ""
+"Cantidad de etanol/alcohol contenida en un volumen determinado a 20 grados "
+"Celsius."
+
+msgctxt "help:product.template,ethanol_volume:"
+msgid "The volume of ethanol/alcohol in the location."
+msgstr "El volumen de etanol/alcohol en la ubicación."
+
+msgctxt "help:stock.move,ethanol_by_volume:"
+msgid ""
+"How much ethanol/alcohol is contained in a given volume at 20 degrees "
+"Celsius."
+msgstr ""
+"Cantidad de etanol/alcohol contenida en un volumen determinado a 20 grados "
+"Celsius."
+
+msgctxt "help:stock.move,ethanol_volume:"
+msgid "The volume of ethanol/alcohol moved."
+msgstr "El volumen de etanol/alcohol movido."
+
+msgctxt "help:stock.move,internal_ethanol_volume:"
+msgid "The volume of ethanol/alcohol moved in liter."
+msgstr "El volumen de etanol/alcohol movido en litros."
+
+msgctxt "model:ir.message,text:msg_move_internal_ethanol_volume_positive"
+msgid "Internal ethanol volume must be positive."
+msgstr "El volumen interno de etanol debe ser positivo."
+
+msgctxt "model:ir.message,text:msg_product_change_contain_ethanol"
+msgid ""
+"You cannot change the contain alcohol of a product which is associated with "
+"stock moves."
+msgstr ""
+"No se puede cambiar el contenido de alcohol de un producto que está asociado"
+" a movimientos de existencias."
+
+msgctxt "model:ir.message,text:msg_product_change_ethanol_by_volume"
+msgid ""
+"You cannot change the alcohol by volume of a product which is associated "
+"with stock moves."
+msgstr ""
+"No se puede modificar el porcentaje de alcohol por volumen de un producto "
+"que está asociado a movimientos de existencias."
+
+msgctxt "model:stock.configuration.ethanol,string:"
+msgid "Stock Configuration Ethanol"
+msgstr "Configuración de Etanol en logística"
+
+msgctxt "selection:account.stock.eu.excise.tax,quantity:"
+msgid "Alcohol Volume"
+msgstr "Volumen de alcohol"
+
+msgctxt "view:product.product:"
+msgid "%"
+msgstr "%"
+
+msgctxt "view:product.template:"
+msgid "%"
+msgstr "%"
+
+msgctxt "view:product.template:"
+msgid "Ethanol"
+msgstr "Etanol"
+
+msgctxt "view:stock.configuration:"
+msgid "Ethanol"
+msgstr "Etanol"
+
+msgctxt "view:stock.move:"
+msgid "%"
+msgstr "%"

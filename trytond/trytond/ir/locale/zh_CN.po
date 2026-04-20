@@ -521,6 +521,10 @@ msgctxt "field:ir.chat.channel,followers:"
 msgid "Followers"
 msgstr ""
 
+msgctxt "field:ir.chat.channel,identifier:"
+msgid "Identifier"
+msgstr ""
+
 #, fuzzy
 msgctxt "field:ir.chat.channel,resource:"
 msgid "Resource"
@@ -566,6 +570,15 @@ msgstr "内容"
 msgctxt "field:ir.chat.message,email:"
 msgid "Email"
 msgstr "电子邮箱"
+
+msgctxt "field:ir.chat.message,reference:"
+msgid "Reference"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:ir.chat.message,summary:"
+msgid "Summary"
+msgstr "摘要"
 
 #, fuzzy
 msgctxt "field:ir.chat.message,user:"
@@ -846,6 +859,36 @@ msgstr "导出"
 msgctxt "field:ir.export.line,name:"
 msgid "Name"
 msgstr "名称"
+
+#, fuzzy
+msgctxt "field:ir.filestore.queue,field:"
+msgid "Field"
+msgstr "字段"
+
+#, fuzzy
+msgctxt "field:ir.filestore.queue,field_ref:"
+msgid "Field"
+msgstr "字段"
+
+#, fuzzy
+msgctxt "field:ir.filestore.queue,file_id:"
+msgid "File ID"
+msgstr "文件 ID"
+
+#, fuzzy
+msgctxt "field:ir.filestore.queue,model:"
+msgid "Model"
+msgstr "模型"
+
+#, fuzzy
+msgctxt "field:ir.filestore.queue,model_ref:"
+msgid "Model"
+msgstr "模型"
+
+#, fuzzy
+msgctxt "field:ir.filestore.queue,prefix:"
+msgid "Prefix"
+msgstr "前缀"
 
 msgctxt "field:ir.lang,am:"
 msgid "AM"
@@ -1595,6 +1638,16 @@ msgctxt "field:ir.session.wizard,data:"
 msgid "Data"
 msgstr "数据"
 
+#, fuzzy
+msgctxt "field:ir.translation,field:"
+msgid "Field"
+msgstr "字段"
+
+#, fuzzy
+msgctxt "field:ir.translation,field_ref:"
+msgid "Field"
+msgstr "字段"
+
 msgctxt "field:ir.translation,fuzzy:"
 msgid "Fuzzy"
 msgstr "模糊"
@@ -1607,6 +1660,11 @@ msgctxt "field:ir.translation,model:"
 msgid "Model"
 msgstr "模型"
 
+#, fuzzy
+msgctxt "field:ir.translation,model_ref:"
+msgid "Model"
+msgstr "模型"
+
 msgctxt "field:ir.translation,module:"
 msgid "Module"
 msgstr "模块"
@@ -1616,9 +1674,10 @@ msgctxt "field:ir.translation,module_ref:"
 msgid "Module"
 msgstr "模块"
 
+#, fuzzy
 msgctxt "field:ir.translation,name:"
-msgid "Field Name"
-msgstr "字段名称"
+msgid "Name"
+msgstr "名称"
 
 msgctxt "field:ir.translation,overriding_module:"
 msgid "Overriding Module"
@@ -1994,6 +2053,10 @@ msgctxt "field:ir.ui.view_tree_width,model_ref:"
 msgid "Model"
 msgstr "模型"
 
+msgctxt "field:ir.ui.view_tree_width,occurrence:"
+msgid "Occurrence"
+msgstr ""
+
 #, fuzzy
 msgctxt "field:ir.ui.view_tree_width,screen_width:"
 msgid "Screen Width"
@@ -2288,6 +2351,15 @@ msgstr "向导"
 msgctxt "model:ir.action,name:act_attachment_form"
 msgid "Attachments"
 msgstr "附件"
+
+msgctxt "model:ir.action,name:act_chat_channel"
+msgid "Channels"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_chat_message"
+msgid "Messages"
+msgstr "消息"
 
 msgctxt "model:ir.action,name:act_config_wizard_item_form"
 msgid "Config Wizard Items"
@@ -2815,6 +2887,10 @@ msgctxt "model:ir.export.line,string:"
 msgid "Export Line"
 msgstr "导出行"
 
+msgctxt "model:ir.filestore.queue,string:"
+msgid "Filestore Queue"
+msgstr ""
+
 msgctxt "model:ir.lang,name:lang_bg"
 msgid "Bulgarian"
 msgstr "保加利亚语"
@@ -3028,6 +3104,11 @@ msgctxt "model:ir.message,text:msg_button_name_unique"
 msgid "The name of the button must be unique per model."
 msgstr "每个模型的按钮名称不能重复。"
 
+#, fuzzy, python-format
+msgctxt "model:ir.message,text:msg_button_state_record"
+msgid "You can not call \"%(button)s\" on \"%(record)s\" of \"%(model)s\"."
+msgstr "不允许删除 \"%(model)s\" 对应的记录 \"%(record)s\" ."
+
 #, fuzzy
 msgctxt "model:ir.message,text:msg_cache_name_unique"
 msgid "The name of cache must be unique."
@@ -3037,6 +3118,11 @@ msgstr "语言代码不能重复。"
 msgctxt "model:ir.message,text:msg_chat_author_email_invalid"
 msgid "The email address \"%(email)s\" is not valid."
 msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_chat_channel_identifier_unique"
+msgid "Identifier must be unique per channel."
+msgstr "每个模型的按钮名称不能重复。"
 
 #, fuzzy
 msgctxt "model:ir.message,text:msg_chat_channel_resource_unique"
@@ -3049,6 +3135,21 @@ msgstr ""
 
 msgctxt "model:ir.message,text:msg_chat_follower_channel_user_unique"
 msgid "A user can follow a channel only once."
+msgstr ""
+
+#, python-format
+msgctxt "model:ir.message,text:msg_chat_follower_joined"
+msgid "\"%(name)s\" joined"
+msgstr ""
+
+#, python-format
+msgctxt "model:ir.message,text:msg_chat_follower_left"
+msgid "\"%(name)s\" left"
+msgstr ""
+
+#, python-format
+msgctxt "model:ir.message,text:msg_chat_subject"
+msgid "%(channel)s: %(author)s left a message"
 msgstr ""
 
 msgctxt "model:ir.message,text:msg_chat_user_or_email"
@@ -3341,6 +3442,11 @@ msgid ""
 msgstr "电子邮件模板 \"%(template)s\" 中的 PYSON %(field)s无效，异常为 \"%(exception)s\"."
 
 #, fuzzy
+msgctxt "model:ir.message,text:msg_last_modified_at"
+msgid "Last Modified at"
+msgstr "最后修改"
+
+#, fuzzy
 msgctxt "model:ir.message,text:msg_model_data_db_id_model_unique"
 msgid "The database ID must be unique per model."
 msgstr "每个模型的按钮名称不能重复。"
@@ -3371,6 +3477,11 @@ msgstr "无法移除未安装或者待安装状态的模块."
 msgctxt "model:ir.message,text:msg_notes"
 msgid "Notes"
 msgstr "注释"
+
+#, fuzzy, python-format
+msgctxt "model:ir.message,text:msg_order_function_missing"
+msgid "Missing order function for field \"%(field)s\" in \"%(model)s\"."
+msgstr "模型 \"%(model)s\" 的字段\"%(field)s\" 没有 setter 函数."
 
 #, python-format
 msgctxt "model:ir.message,text:msg_read_error"
@@ -3611,6 +3722,11 @@ msgctxt "model:ir.message,text:msg_view_tree_optional_type"
 msgid "You cannot store optional on view \"%(view)s\"."
 msgstr "无法在视图 \"%(view)s\" 上存储可选项。"
 
+msgctxt ""
+"model:ir.message,text:msg_view_tree_width_field_occurrence_user_unique"
+msgid "A user can set only one width per occurrence of field."
+msgstr ""
+
 #, python-format
 msgctxt "model:ir.message,text:msg_write_error"
 msgid ""
@@ -3648,6 +3764,12 @@ msgctxt "model:ir.model.access,string:"
 msgid "Model Access"
 msgstr "模型访问权限"
 
+msgctxt "model:ir.model.button,confirm:chat_channel_reset_identifier_button"
+msgid ""
+"This action will make previous entry point unusable. Do you want to "
+"continue?"
+msgstr ""
+
 msgctxt "model:ir.model.button,confirm:lang_load_translations_button"
 msgid "Are you sure you want to load languages' translations?"
 msgstr "确定要加载语言翻译?"
@@ -3660,6 +3782,10 @@ msgstr "确定要删除语言翻译？"
 msgctxt "model:ir.model.button,string:"
 msgid "Model Button"
 msgstr "模型按钮"
+
+msgctxt "model:ir.model.button,string:chat_channel_reset_identifier_button"
+msgid "Reset Identifier"
+msgstr ""
 
 msgctxt "model:ir.model.button,string:cron_run_once_button"
 msgid "Run Once"
@@ -3856,8 +3982,8 @@ msgstr "序列"
 
 #, fuzzy
 msgctxt "model:ir.sequence.strict,string:"
-msgid "Sequence"
-msgstr "序列"
+msgid "Sequence Strict"
+msgstr "严格序列"
 
 #, fuzzy
 msgctxt "model:ir.sequence.type,string:"
@@ -3965,6 +4091,10 @@ msgstr "管理"
 msgctxt "model:ir.ui.menu,name:menu_attachment_form"
 msgid "Attachments"
 msgstr "附件"
+
+msgctxt "model:ir.ui.menu,name:menu_chat_channel_form"
+msgid "Channels"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_config_wizard_item_form"
 msgid "Config Wizard Items"
@@ -4364,6 +4494,10 @@ msgid "Refresh Materialized Models"
 msgstr ""
 
 msgctxt "selection:ir.cron,method:"
+msgid "Remove Deleted Binaries"
+msgstr ""
+
+msgctxt "selection:ir.cron,method:"
 msgid "Run On Time Triggers"
 msgstr "运行基于时间的触发器"
 
@@ -4595,9 +4729,19 @@ msgctxt "view:ir.email.template:"
 msgid "Secondary Recipients:"
 msgstr "次要收件人:"
 
+#, fuzzy
+msgctxt "view:ir.error:"
+msgid "Date"
+msgstr "日期"
+
 msgctxt "view:ir.error:"
 msgid "Origin"
 msgstr "起源"
+
+#, fuzzy
+msgctxt "view:ir.error:"
+msgid "Time"
+msgstr "时间"
 
 msgctxt "view:ir.lang.config.start:"
 msgid "You can now load additional translations to the system."

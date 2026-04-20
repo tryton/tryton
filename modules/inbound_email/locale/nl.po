@@ -16,7 +16,7 @@ msgstr "Soort gegevens"
 
 msgctxt "field:inbound.email,inbox:"
 msgid "Inbox"
-msgstr "Postvak IN"
+msgstr "Postvak in"
 
 msgctxt "field:inbound.email,result:"
 msgid "Result"
@@ -60,7 +60,7 @@ msgstr "Koppen"
 
 msgctxt "field:inbound.email.rule,inbox:"
 msgid "Inbox"
-msgstr "Postvak IN"
+msgstr "Postvak in"
 
 msgctxt "field:inbound.email.rule,origin:"
 msgid "Origin"
@@ -138,7 +138,11 @@ msgstr "Emails"
 
 msgctxt "model:ir.action,name:act_inbound_email_inbox_form"
 msgid "Inbox"
-msgstr "Postvak IN"
+msgstr "Postvak in"
+
+msgctxt "model:ir.message,text:msg_reply_above"
+msgid "Please reply above the line."
+msgstr "Gelieve boven de streep te antwoorden."
 
 msgctxt ""
 "model:ir.model.button,confirm:inbound_email_inbox_new_identifier_button"
@@ -161,4 +165,8 @@ msgstr "Inkomende e-mail"
 
 msgctxt "model:ir.ui.menu,name:menu_inbound_email_inbox_form"
 msgid "Inbox"
-msgstr "Postvak IN"
+msgstr "Postvak in"
+
+msgctxt "selection:inbound.email.rule,action:"
+msgid "Post to Channel"
+msgstr "Plaatsen in kanaal"

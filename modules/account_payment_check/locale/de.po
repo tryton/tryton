@@ -1,0 +1,106 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.payment,check_number:"
+msgid "Check Number"
+msgstr "Schecknummer"
+
+msgctxt "field:account.payment,check_printed:"
+msgid "Check Printed"
+msgstr "Scheck gedruckt"
+
+msgctxt "field:account.payment.check.print.number,start_number:"
+msgid "Start Number"
+msgstr "Startnummer"
+
+msgctxt "field:account.payment.group,check_printed:"
+msgid "Check Printed"
+msgstr "Scheck gedruckt"
+
+msgctxt "field:account.payment.journal,check_format:"
+msgid "Check Format"
+msgstr "Scheckformat"
+
+msgctxt "field:account.payment.journal,check_max_number:"
+msgid "Maximum Check Number"
+msgstr "Höchste Schecknummer"
+
+msgctxt "field:account.payment.journal,check_sequence:"
+msgid "Check Sequence"
+msgstr "Nummernkreis Scheck"
+
+msgctxt "help:account.payment.journal,check_format:"
+msgid "The report layout for printing checks."
+msgstr "Das Berichtslayout für den Scheckdruck."
+
+msgctxt "help:account.payment.journal,check_max_number:"
+msgid "The highest check number allowed for this journal."
+msgstr "Die höchste zulässige Schecknummer für dieses Journal."
+
+msgctxt "help:account.payment.journal,check_sequence:"
+msgid "Leave empty for manual numbering."
+msgstr "Für die manuelle Nummerierung leer lassen."
+
+msgctxt "help:account.statement.rule,description:"
+msgid ""
+"\n"
+"'check'"
+msgstr ""
+"\n"
+"'check'"
+
+msgctxt "model:account.payment.check.print.number,string:"
+msgid "Account Payment Check Print Number"
+msgstr "Buchhaltung Zahlung Scheck Druck Nummer"
+
+msgctxt "model:ir.action,name:account_payment_check_print"
+msgid "Print Check"
+msgstr "Scheck drucken"
+
+msgctxt "model:ir.action,name:report_account_payment_check_print"
+msgid "Check"
+msgstr "Scheck"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_payment_group_form_domain_check_to_print"
+msgid "Check to Print"
+msgstr "Schecks Druckreif"
+
+#, python-format
+msgctxt "model:ir.message,text:msg_payment_group_journal_max_number"
+msgid ""
+"The number of checks available for the journal \"%(journal)s\" exceeds the "
+"number of payments in the group \"%(group)s\"."
+msgstr ""
+"Die Anzahl der für das Journal \"%(journal)s\" verfügbaren Schecks "
+"übersteigt die Anzahl der Zahlungen in der Gruppe \"%(group)s\"."
+
+msgctxt ""
+"model:ir.model.button,string:account_payment_group_check_print_button"
+msgid "Print Checks"
+msgstr "Schecks drucken"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_account_payment_check"
+msgid "Account Payment Check"
+msgstr "Buchhaltung Zahlung Scheck"
+
+msgctxt "selection:account.payment.journal,process_method:"
+msgid "Check"
+msgstr "Scheck"
+
+msgctxt "view:account.payment.journal:"
+msgid "Check"
+msgstr "Scheck"
+
+msgctxt "view:account.payment:"
+msgid "Check"
+msgstr "Scheck"
+
+msgctxt "wizard_button:account.payment.check.print,number,end:"
+msgid "Cancel"
+msgstr "Abbrechen"
+
+msgctxt "wizard_button:account.payment.check.print,number,print_:"
+msgid "Print"
+msgstr "Drucken"

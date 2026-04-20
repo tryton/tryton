@@ -7,6 +7,10 @@ msgctxt "field:ir.email.template,contact_mechanism:"
 msgid "Contact Mechanism"
 msgstr "Mekanisme Kontak"
 
+msgctxt "field:party.address,attn:"
+msgid "Attn"
+msgstr ""
+
 #, fuzzy
 msgctxt "field:party.address,building_name:"
 msgid "Building Name"
@@ -279,6 +283,10 @@ msgstr "Alamat"
 msgctxt "field:party.identifier,code:"
 msgid "Code"
 msgstr "Kode"
+
+msgctxt "field:party.identifier,code_compact:"
+msgid "Code Compact"
+msgstr ""
 
 msgctxt "field:party.identifier,party:"
 msgid "Party"
@@ -597,6 +605,11 @@ msgctxt "model:ir.action,name:act_contact_mechanism_form"
 msgid "Contact Mechanisms"
 msgstr "Mekanisme Kontak"
 
+#, fuzzy
+msgctxt "model:ir.action,name:act_identifier_form"
+msgid "Identifiers"
+msgstr "NPWP"
+
 msgctxt "model:ir.action,name:act_party_by_category"
 msgid "Parties by Category"
 msgstr "Pihak berdasarkan Kategori"
@@ -749,6 +762,11 @@ msgid "Contact Mechanisms"
 msgstr "Mekanisme Kontak"
 
 #, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_identifier_form"
+msgid "Identifiers"
+msgstr "NPWP"
+
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_party"
 msgid "Parties"
 msgstr "Para Pihak"
@@ -889,6 +907,11 @@ msgctxt "selection:party.configuration,identifier_types:"
 msgid "Austrian Umsatzsteuer-Identifikationsnummer"
 msgstr ""
 
+#, fuzzy
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Azerbaijan Tax Number"
+msgstr "Nama Gedung"
+
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Belarus VAT Number"
 msgstr ""
@@ -904,6 +927,11 @@ msgstr ""
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Belgian National Number"
 msgstr ""
+
+#, fuzzy
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Belgian Social Security Number"
+msgstr "Nama Gedung"
 
 #, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
@@ -1103,6 +1131,11 @@ msgctxt "selection:party.configuration,identifier_types:"
 msgid "French Tax Identification Number"
 msgstr "Nomor Pokok Wajib Pajak"
 
+#, fuzzy
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "French Trade Registration Number"
+msgstr "Nomor Pokok Wajib Pajak"
+
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "French VAT Number"
 msgstr ""
@@ -1266,6 +1299,10 @@ msgid "Moroccan Tax Number"
 msgstr ""
 
 msgctxt "selection:party.configuration,identifier_types:"
+msgid "Mozambique Tax Number"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
 msgid "New Zealand Inland Revenue Department Number"
 msgstr ""
 
@@ -1329,6 +1366,11 @@ msgctxt "selection:party.configuration,identifier_types:"
 msgid "Romanian VAT Number"
 msgstr ""
 
+#, fuzzy
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Russian Primary State Registration Number"
+msgstr "Nomor Pokok Wajib Pajak"
+
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Russian Tax identifier"
 msgstr ""
@@ -1340,6 +1382,11 @@ msgstr ""
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "San Marino National Tax Number"
 msgstr ""
+
+#, fuzzy
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Senegal Tax Number"
+msgstr "Nama Gedung"
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Serbian Tax Identification"
@@ -1383,6 +1430,10 @@ msgstr ""
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "South Korean Resident Registration Number"
+msgstr ""
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Spanish Activity Establishment Code"
 msgstr ""
 
 msgctxt "selection:party.configuration,identifier_types:"

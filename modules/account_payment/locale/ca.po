@@ -302,11 +302,11 @@ msgstr "La suma dels imports dels pagaments exitosos."
 
 msgctxt "help:account.payment.group,payment_complete:"
 msgid "All the payments in the group are complete."
-msgstr "S'han completat tots els pagaments del grup."
+msgstr "S'han completat tots els pagaments de la remesa."
 
 msgctxt "help:account.payment.group,payment_count:"
 msgid "The number of payments in the group."
-msgstr "El nombre de pagaments del grup."
+msgstr "El nombre de pagaments en la remesa."
 
 msgctxt "help:account.statement.rule,description:"
 msgid ""
@@ -338,7 +338,7 @@ msgstr "Feu un pagament per línia."
 
 msgctxt "model:account.configuration.payment_group_sequence,string:"
 msgid "Account Configuration Payment Group Sequence"
-msgstr "Configuració de la seqüencia de grups de pagament"
+msgstr "Configuració de la seqüencia de les remeses"
 
 msgctxt "model:account.configuration.payment_sequence,string:"
 msgid "Account Configuration Payment Sequence"
@@ -362,11 +362,11 @@ msgstr "Cobraments/Pagaments"
 
 msgctxt "model:account.payment.group,string:"
 msgid "Account Payment Group"
-msgstr "Grups de cobraments/pagaments"
+msgstr "Remeses"
 
 msgctxt "model:account.payment.journal,string:"
 msgid "Account Payment Journal"
-msgstr "Diari de cobraments/pagaments"
+msgstr "Diari de remeses"
 
 msgctxt "model:ir.action,name:act_move_line_form"
 msgid "Lines to Pay"
@@ -402,7 +402,7 @@ msgstr "Pagaments"
 
 msgctxt "model:ir.action,name:act_payment_group_form"
 msgid "Payment Groups"
-msgstr "Grups de pagaments"
+msgstr "Remeses"
 
 msgctxt "model:ir.action,name:act_payment_journal_form"
 msgid "Payment Journals"
@@ -510,6 +510,10 @@ msgstr ""
 "No podeu eliminar el tercer \"%(party)s\" mentre tingui pagaments pendents "
 "amb l'empresa \"%(company)s\"."
 
+msgctxt "model:ir.message,text:msg_invoice_payment_mean_direct_debit"
+msgid "Direct debit"
+msgstr "Domiciliació Bancària"
+
 #, python-format
 msgctxt "model:ir.message,text:msg_move_cancel_payments"
 msgid ""
@@ -561,11 +565,29 @@ msgstr ""
 "\"%(line)s\"."
 
 #, python-format
+msgctxt "model:ir.message,text:msg_pay_line_overpay"
+msgid ""
+"The payment of %(payment_amount)s for lines \"%(names)s\" exceeds the amount"
+" for %(party)s, which is %(amount)s."
+msgstr ""
+"El pagament de %(payment_amount)s dels apunts \"%(names)s\" excedeix "
+"l'import del tercer %(party)s, que és %(amount)s."
+
+#, python-format
 msgctxt "model:ir.message,text:msg_payment_delete_draft"
 msgid "To delete payment \"%(payment)s\" you must reset it to draft state."
 msgstr ""
 "Per eliminar el pagament \"%(payment)s\" heu de restablir el seu estat a "
 "esborrany."
+
+#, python-format
+msgctxt "model:ir.message,text:msg_payment_means"
+msgid ""
+"The journal \"%(journal)s\" of payment \"%(payment)s\" is not valid with the"
+" payment means of invoice \"%(invoice)s\"."
+msgstr ""
+"El diari \"%(journal)s\" del pagament \"%(payment)s\" no és vàlid amb el "
+"mitjà de pagament de la factura \"%(invoice)s\"."
 
 #, python-format
 msgctxt "model:ir.message,text:msg_payment_overpay"
@@ -657,11 +679,11 @@ msgstr "Grup de pagaments per defecte"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_account_payment"
 msgid "Account Payment Group"
-msgstr "Grups de pagaments"
+msgstr "Remeses"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_account_payment_group"
 msgid "Account Payment Group"
-msgstr "Grup de pagaments"
+msgstr "Remeses"
 
 msgctxt "model:ir.ui.menu,name:menu_create_direct_debit"
 msgid "Create Direct Debit"
@@ -685,7 +707,7 @@ msgstr "Pagaments a cobrar"
 
 msgctxt "model:ir.ui.menu,name:menu_payment_group_form"
 msgid "Payment Groups"
-msgstr "Grups de pagaments"
+msgstr "Remeses"
 
 msgctxt "model:ir.ui.menu,name:menu_payment_journal_form"
 msgid "Payment Journals"

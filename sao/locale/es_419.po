@@ -30,8 +30,15 @@ msgstr "No se ha podido conectar con el servidor."
 msgid "Connection error"
 msgstr "Error de conexión"
 
-msgid "Logout"
-msgstr "Desconectar"
+msgid "Check menu entries to add favorites"
+msgstr ""
+
+#, fuzzy
+msgid "Add to favorites"
+msgstr "Favoritos"
+
+msgid "Remove from favorites"
+msgstr ""
 
 msgid "Favorites"
 msgstr "Favoritos"
@@ -800,8 +807,24 @@ msgstr ""
 msgid "Wizard"
 msgstr "Asistente"
 
-msgid "Toggle notification"
+msgid "Add a follower"
 msgstr ""
+
+msgid "Subscribe a follower to this channel"
+msgstr ""
+
+msgid "Show followers"
+msgstr ""
+
+msgid "Unsubscribe"
+msgstr ""
+
+msgid "Subscribe"
+msgstr ""
+
+#, fuzzy
+msgid "Are you sure to unsubscribe \"%1\" from this channel?"
+msgstr "¿Está seguro que quiere eliminar este registro?"
 
 msgid "Enter a message"
 msgstr ""
@@ -812,11 +835,21 @@ msgstr ""
 msgid "Make this an internal message"
 msgstr ""
 
+msgid "No notifications at this time"
+msgstr ""
+
 msgid "All Notifications..."
 msgstr ""
 
 msgid "Preferences..."
 msgstr ""
+
+#, fuzzy
+msgid "Help..."
+msgstr "Ayuda"
+
+msgid "Logout"
+msgstr "Desconectar"
 
 msgid "Translate view"
 msgstr "Traducir vista"

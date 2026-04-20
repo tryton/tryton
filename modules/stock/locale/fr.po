@@ -639,6 +639,14 @@ msgid "Output Quantity"
 msgstr "Quantité sortante"
 
 msgctxt "field:stock.reporting.inventory,product:"
+msgid "Variant"
+msgstr "Variante"
+
+msgctxt "field:stock.reporting.inventory,product_reference:"
+msgid "Product Reference"
+msgstr "Référence produit"
+
+msgctxt "field:stock.reporting.inventory,product_template:"
 msgid "Product"
 msgstr "Produit"
 
@@ -683,6 +691,14 @@ msgid "Output Quantity"
 msgstr "Quantité sortante"
 
 msgctxt "field:stock.reporting.inventory.daily,product:"
+msgid "Variant"
+msgstr "Variante"
+
+msgctxt "field:stock.reporting.inventory.daily,product_reference:"
+msgid "Product Reference"
+msgstr "Référence produit"
+
+msgctxt "field:stock.reporting.inventory.daily,product_template:"
 msgid "Product"
 msgstr "Produit"
 
@@ -727,6 +743,14 @@ msgid "Output Quantity"
 msgstr "Quantité sortante"
 
 msgctxt "field:stock.reporting.inventory.move,product:"
+msgid "Variant"
+msgstr "Variante"
+
+msgctxt "field:stock.reporting.inventory.move,product_reference:"
+msgid "Product Reference"
+msgstr "Référence produit"
+
+msgctxt "field:stock.reporting.inventory.move,product_template:"
 msgid "Product"
 msgstr "Produit"
 
@@ -767,6 +791,14 @@ msgid "Output Quantity"
 msgstr "Quantité sortante"
 
 msgctxt "field:stock.reporting.inventory.turnover,product:"
+msgid "Variant"
+msgstr "Variante"
+
+msgctxt "field:stock.reporting.inventory.turnover,product_reference:"
+msgid "Product"
+msgstr "Produit"
+
+msgctxt "field:stock.reporting.inventory.turnover,product_template:"
 msgid "Product"
 msgstr "Produit"
 
@@ -2397,13 +2429,6 @@ msgstr ""
 "désactiver le produit."
 
 #, python-format
-msgctxt "model:ir.message,text:msg_product_quantities_max"
-msgid "You cannot select more than %(max)s products to compute quantities."
-msgstr ""
-"Vous ne pouvez pas sélectionner plus de %(max)s produits pour calculer les "
-"quantités."
-
-#, python-format
 msgctxt "model:ir.message,text:msg_shipment_check_quantity"
 msgid ""
 "The quantities of shipment \"%(shipment)s\" are different by %(quantities)s."
@@ -2954,6 +2979,10 @@ msgstr "Stock"
 msgctxt "model:res.group,name:group_stock_admin"
 msgid "Stock Administration"
 msgstr "Administration des stocks"
+
+msgctxt "model:res.group,name:group_stock_cancellation"
+msgid "Stock Cancellation"
+msgstr "Annulation de stock"
 
 msgctxt "model:res.group,name:group_stock_force_assignment"
 msgid "Stock Force Assignment"
@@ -3519,11 +3548,11 @@ msgctxt "selection:stock.product_quantities_warehouse.move,product:"
 msgid "Variant"
 msgstr "Variante"
 
-msgctxt "selection:stock.reporting.inventory,product:"
+msgctxt "selection:stock.reporting.inventory,product_reference:"
 msgid "Product"
 msgstr "Produit"
 
-msgctxt "selection:stock.reporting.inventory,product:"
+msgctxt "selection:stock.reporting.inventory,product_reference:"
 msgid "Variant"
 msgstr "Variante"
 
@@ -3535,27 +3564,27 @@ msgctxt "selection:stock.reporting.inventory.context,product_type:"
 msgid "Variant"
 msgstr "Variante"
 
-msgctxt "selection:stock.reporting.inventory.daily,product:"
+msgctxt "selection:stock.reporting.inventory.daily,product_reference:"
 msgid "Product"
 msgstr "Produit"
 
-msgctxt "selection:stock.reporting.inventory.daily,product:"
+msgctxt "selection:stock.reporting.inventory.daily,product_reference:"
 msgid "Variant"
 msgstr "Variante"
 
-msgctxt "selection:stock.reporting.inventory.move,product:"
+msgctxt "selection:stock.reporting.inventory.move,product_reference:"
 msgid "Product"
 msgstr "Produit"
 
-msgctxt "selection:stock.reporting.inventory.move,product:"
+msgctxt "selection:stock.reporting.inventory.move,product_reference:"
 msgid "Variant"
 msgstr "Variante"
 
-msgctxt "selection:stock.reporting.inventory.turnover,product:"
+msgctxt "selection:stock.reporting.inventory.turnover,product_reference:"
 msgid "Product"
 msgstr "Produit"
 
-msgctxt "selection:stock.reporting.inventory.turnover,product:"
+msgctxt "selection:stock.reporting.inventory.turnover,product_reference:"
 msgid "Variant"
 msgstr "Variante"
 

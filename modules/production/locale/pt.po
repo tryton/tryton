@@ -314,8 +314,9 @@ msgctxt "help:production,number:"
 msgid "The main identifier for the shipment."
 msgstr "Identificador principal do envio."
 
+#, fuzzy
 msgctxt "help:production,reference:"
-msgid "The external identifier for the shipment."
+msgid "The external identifier for the production."
 msgstr "Identificador externo do envio."
 
 msgctxt "help:production,uom_category:"

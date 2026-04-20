@@ -5,15 +5,31 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-#, fuzzy
-msgid "Toggle notification"
-msgstr "Przełącz zaznaczenie"
+msgid "Show followers"
+msgstr ""
+
+#, fuzzy, python-format
+msgid "Are you sure to unsubscribe \"%(name)s\" from this channel?"
+msgstr "Czy na pewno usunąć wybrany rekord?"
+
+msgid "Unsubscribe"
+msgstr ""
+
+msgid "Subscribe"
+msgstr ""
 
 msgid "Make this an _internal message"
 msgstr ""
 
 msgid "Send"
 msgstr "Wyślij"
+
+#, fuzzy
+msgid "Add a follower"
+msgstr "Dodaj wartość"
+
+msgid "Subscribe a follower to this channel"
+msgstr ""
 
 msgid "specify alternate config file"
 msgstr "podaj alternatywny plik konfiguracji"
@@ -359,6 +375,9 @@ msgstr "Pomoc"
 msgid "No result found."
 msgstr "Nie znaleziono wyniku."
 
+msgid "Check menu entries to add favorites"
+msgstr ""
+
 msgid "Action"
 msgstr "Akcja"
 
@@ -524,6 +543,10 @@ msgstr "Rozwiń wszystkie wiersze"
 
 msgid "Close Tab"
 msgstr "Zamknij kartę"
+
+#, fuzzy
+msgid "No notifications at this time"
+msgstr "Data modyfikacji"
 
 #, fuzzy
 msgid "All Notifications..."

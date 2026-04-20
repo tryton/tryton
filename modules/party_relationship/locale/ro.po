@@ -94,8 +94,9 @@ msgctxt "model:party.relation,string:"
 msgid "Party Relation"
 msgstr "Relații Parteneri"
 
+#, fuzzy
 msgctxt "model:party.relation.all,string:"
-msgid "Party Relation"
+msgid "Party Relation All"
 msgstr "Relații Parteneri"
 
 msgctxt "model:party.relation.type,string:"

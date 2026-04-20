@@ -417,9 +417,10 @@ msgstr ""
 #, python-format
 msgctxt "model:ir.message,text:msg_import_no_journal"
 msgid ""
-"To import statement, you must create a journal for account \"%(account)s\"."
+"To import statement, you must create a unique journal for account "
+"\"%(account)s\"."
 msgstr ""
-"Para importar extractos, debe crear un diario para la cuenta "
+"Para importar extractos, debe crear un diario único para la cuenta "
 "\"%(account)s\"."
 
 msgctxt "model:ir.message,text:msg_journal_bank_account_unique"

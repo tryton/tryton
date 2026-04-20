@@ -62,6 +62,10 @@ msgctxt "field:sale.line,shopify_warehouse:"
 msgid "Shopify Warehouse"
 msgstr "Shopify magazijnen"
 
+msgctxt "field:sale.sale,shopify_amount_to_pay:"
+msgid "Shopify Amount to Pay"
+msgstr "Shopify te betalen bedrag"
+
 msgctxt "field:sale.sale,shopify_status_url:"
 msgid "Shopify Status URL"
 msgstr "Shopify status URL"
@@ -78,25 +82,25 @@ msgctxt "field:stock.shipment.shopify_identifier,shipment:"
 msgid "Shipment"
 msgstr "Levering"
 
+msgctxt "field:web.shop,shopify_access_token:"
+msgid "Access Token"
+msgstr "Toegangssleutel"
+
 msgctxt "field:web.shop,shopify_fulfillment_notify_customer:"
 msgid "Notify Customer about Fulfillment"
 msgstr "Informeer de klant over de afhandeling"
-
-msgctxt "field:web.shop,shopify_password:"
-msgid "Access Token"
-msgstr "Toegangssleutel"
 
 msgctxt "field:web.shop,shopify_payment_journals:"
 msgid "Payment Journals"
 msgstr "Betalingsdagboeken"
 
+msgctxt "field:web.shop,shopify_shop_name:"
+msgid "Shop Name"
+msgstr "Naam winkel"
+
 msgctxt "field:web.shop,shopify_url:"
 msgid "Shop URL"
 msgstr "Winkel-URL"
-
-msgctxt "field:web.shop,shopify_version:"
-msgid "Version"
-msgstr "Versie"
 
 msgctxt "field:web.shop,shopify_warehouses:"
 msgid "Warehouses"
@@ -209,11 +213,11 @@ msgstr "Koerier selectie Shopify"
 
 msgctxt "model:ir.action,name:act_shop_shopify_identifier_form"
 msgid "Shopify Identifiers"
-msgstr "Shopify-ID's"
+msgstr "Shopify identificaties"
 
 msgctxt "model:ir.action,name:act_stock_shipment_shopify_identifier_form"
 msgid "Shipment Identifiers"
-msgstr "Zendings-ID's"
+msgstr "Verzending indentificaties"
 
 #, python-format
 msgctxt "model:ir.message,text:msg_custom_collection_fail"
@@ -238,6 +242,15 @@ msgctxt "model:ir.message,text:msg_fulfillment_order_line_not_found"
 msgid "Failed to find fulfillment order for %(quantity)s of move \"%(move)s\"."
 msgstr "Kan opdracht voor %(quantity)s van boeking \"%(move)s\" niet vinden."
 
+#, python-format
+msgctxt "model:ir.message,text:msg_fulfillment_prepared_for_pickup_fail"
+msgid ""
+"Failed to prepare for pickup fulfillments for shipments \"%(shipments)s\" and sales \"%(sales)s\" with error:\n"
+"%(error)s"
+msgstr ""
+"Het voorbereiden van de ophaalorders voor zendingen \"%(shipments)s\" en verkopen \"%(sales)s\" is mislukt met de volgende foutmelding:\n"
+"%(error)s"
+
 msgctxt "model:ir.message,text:msg_identifier_payment_unique"
 msgid "A shopify transaction can only be imported as payment once."
 msgstr ""
@@ -246,7 +259,8 @@ msgstr ""
 
 msgctxt "model:ir.message,text:msg_identifier_record_web_shop_unique"
 msgid "The record cannot have more than one Shopify identifier per web shop."
-msgstr "Het record kan niet meer dan één Shopify-ID per webshop bevatten."
+msgstr ""
+"Het record kan niet meer dan één Shopify identificatie per webshop hebben."
 
 msgctxt "model:ir.message,text:msg_identifier_sale_web_shop_unique"
 msgid "A Shopify order can only be imported as a sale once."
@@ -255,7 +269,8 @@ msgstr ""
 
 msgctxt "model:ir.message,text:msg_identifier_shipment_sale_unique"
 msgid "The shipment can not have more than one Shopify identifier per sale."
-msgstr "De zending mag niet meer dan één Shopify-ID per verkoop hebben."
+msgstr ""
+"De zending mag niet meer dan één Shopify identificatie per verkoop hebben."
 
 #, python-format
 msgctxt "model:ir.message,text:msg_inventory_set_fail"
@@ -349,11 +364,11 @@ msgstr "Weet u zeker dat u de inloggegevens bij Shopify wil wijzigen?"
 
 msgctxt "model:ir.message,text:msg_shopify_identifier"
 msgid "Shopify Identifier"
-msgstr "Shopify-ID"
+msgstr "Shopify identificatie"
 
 msgctxt "model:ir.message,text:msg_shopify_identifiers"
 msgid "Shopify Identifiers"
-msgstr "Shopify-ID's"
+msgstr "Shopify identificaties"
 
 msgctxt "model:ir.message,text:msg_shopify_url"
 msgid "Shopify URL"
@@ -379,11 +394,11 @@ msgstr "Instellen om te updaten"
 
 msgctxt "model:ir.ui.menu,name:menu_shop_shopify_identifier_form"
 msgid "Shopify Identifiers"
-msgstr "Shopify-ID's"
+msgstr "Shopify identificaties"
 
 msgctxt "model:ir.ui.menu,name:menu_stock_shipment_shopify_identifier_form"
 msgid "Shipment Identifiers"
-msgstr "Zendings-ID's"
+msgstr "Verzending identificaties"
 
 msgctxt "model:product.shopify_inventory_item,string:"
 msgid "Product Shopify Inventory Item"

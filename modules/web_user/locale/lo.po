@@ -132,9 +132,10 @@ msgctxt "model:web.user-party.party.secondary,string:"
 msgid "Web User - Party Secondary"
 msgstr "ເທື່ອເຂົ້າໃຊ້ຂອງຜູ້ໃຊ້ງານເວັບ"
 
+#, fuzzy
 msgctxt "model:web.user.authenticate.attempt,string:"
-msgid "User Login Attempt"
-msgstr ""
+msgid "Web User Authenticate Attempt"
+msgstr "ພະຍາຍາມກວດສອບສິດທີ່ຖືກຕ້ອງຂອງຜູ້ໃຊ້ງານເວັບ"
 
 #, fuzzy
 msgctxt "model:web.user.session,string:"

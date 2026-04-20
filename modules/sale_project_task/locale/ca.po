@@ -1,0 +1,149 @@
+#
+#, fuzzy
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.product,taskable:"
+msgid "Taskable"
+msgstr "Genera tasques"
+
+msgctxt "field:product.product,tasks:"
+msgid "Tasks"
+msgstr "Tasques"
+
+msgctxt "field:product.project_task,children:"
+msgid "Children"
+msgstr "Fills"
+
+msgctxt "field:product.project_task,name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:product.project_task,parent:"
+msgid "Parent"
+msgstr "Pare"
+
+msgctxt "field:product.project_task,product:"
+msgid "Product"
+msgstr "Producte"
+
+msgctxt "field:product.project_task,template:"
+msgid "Template"
+msgstr "Plantilla"
+
+msgctxt "field:product.project_task,timesheet_available:"
+msgid "Available on timesheets"
+msgstr "Disponible en fulls de treball"
+
+msgctxt "field:product.template,taskable:"
+msgid "Taskable"
+msgstr "Genera tasques"
+
+msgctxt "field:product.template,tasks:"
+msgid "Tasks"
+msgstr "Tasques"
+
+msgctxt "field:sale.configuration,sale_task_creation_method:"
+msgid "Sale Task Creation Method"
+msgstr "Mètode de creació de tasques de venda"
+
+msgctxt "field:sale.configuration.sale_method,sale_task_creation_method:"
+msgid "Sale Task Creation Method"
+msgstr "Mètode de creació de tasques de venda"
+
+msgctxt "field:sale.line,quantity_task_to_create:"
+msgid "Quantity Task to Create"
+msgstr "Quantitat tasques a crear"
+
+msgctxt "field:sale.line,tasks:"
+msgid "Tasks"
+msgstr "Tasques"
+
+msgctxt "field:sale.line,tasks_progress:"
+msgid "Tasks Progress"
+msgstr "Progrés de les tasques"
+
+msgctxt "field:sale.line,tasks_revenue:"
+msgid "Tasks Revenue"
+msgstr "Ingressos de tasques"
+
+msgctxt "field:sale.sale,task_creation_method:"
+msgid "Task Creation Method"
+msgstr "Mètode de creació de tasques"
+
+msgctxt "field:sale.sale,tasks_state:"
+msgid "Tasks State"
+msgstr "Estat de les tasques"
+
+msgctxt "field:sale.sale,tasks_to_create:"
+msgid "Tasks to Create"
+msgstr "Tasques per crear"
+
+msgctxt "help:product.product,taskable:"
+msgid "Create tasks on sale."
+msgstr "Crea tasques en la venta."
+
+msgctxt "help:product.template,taskable:"
+msgid "Create tasks on sale."
+msgstr "Crea tasques en la venta."
+
+msgctxt "model:ir.action,name:act_project_work_relate_sale"
+msgid "Tasks"
+msgstr "Tasques"
+
+#, python-format
+msgctxt "model:ir.message,text:msg_sale_invalid_method"
+msgid ""
+"You cannot use together invoice \"%(invoice_method)s\" and task creation "
+"\"%(task_creation_method)s\" on sale \"%(sale)s\"."
+msgstr ""
+"No podeu utilitzar junts el métode de facturació \"%(invoice_method)s\" i el"
+" de creació de tasques \"%(task_creation_method)s\" a la venda \"%(sale)s\"."
+
+msgctxt "model:ir.model.button,string:sale_manual_task_creation_button"
+msgid "Create Tasks"
+msgstr "Crea tasques"
+
+msgctxt "model:ir.model.button,string:sale_manual_task_invoice_button"
+msgid "Invoice Tasks"
+msgstr "Factura tasques"
+
+msgctxt "model:product.project_task,string:"
+msgid "Product Project Task"
+msgstr "Tasca del projecte de producte"
+
+msgctxt "selection:sale.sale,task_creation_method:"
+msgid "Manual"
+msgstr "Manual"
+
+msgctxt "selection:sale.sale,task_creation_method:"
+msgid "On Invoice Paid"
+msgstr "Al pagar la factura"
+
+msgctxt "selection:sale.sale,task_creation_method:"
+msgid "On Order Processed"
+msgstr "Al processar la comanda"
+
+msgctxt "selection:sale.sale,tasks_state:"
+msgid "None"
+msgstr "Cap"
+
+msgctxt "selection:sale.sale,tasks_state:"
+msgid "Partially fulfilled"
+msgstr "Parcialment complert"
+
+msgctxt "selection:sale.sale,tasks_state:"
+msgid "Waiting"
+msgstr "En espera"
+
+msgctxt "selection:sale.sale,tasks_state:"
+msgid "fulfilled"
+msgstr "complert"
+
+msgctxt "view:product.project_task:"
+msgid "General"
+msgstr "General"
+
+msgctxt "view:sale.line:"
+msgid "Tasks"
+msgstr "Tasques"

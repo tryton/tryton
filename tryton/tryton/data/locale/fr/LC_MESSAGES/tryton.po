@@ -5,14 +5,30 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgid "Toggle notification"
-msgstr "Activer/désactiver les notifications"
+msgid "Show followers"
+msgstr "Afficher les abonnés"
+
+#, python-format
+msgid "Are you sure to unsubscribe \"%(name)s\" from this channel?"
+msgstr "Êtes-vous sûr de désabonner « %(name)s » de cette chaîne ?"
+
+msgid "Unsubscribe"
+msgstr "Se désabonner"
+
+msgid "Subscribe"
+msgstr "S'abonner"
 
 msgid "Make this an _internal message"
 msgstr "En faire un message _interne"
 
 msgid "Send"
 msgstr "Envoyer"
+
+msgid "Add a follower"
+msgstr "Ajouter un abonné"
+
+msgid "Subscribe a follower to this channel"
+msgstr "Inscrire un abonné à cette chaîne"
 
 msgid "specify alternate config file"
 msgstr "spécifier un fichier de configuration alternatif"
@@ -361,6 +377,9 @@ msgstr "Aide"
 msgid "No result found."
 msgstr "Aucun résultat trouvé."
 
+msgid "Check menu entries to add favorites"
+msgstr "Cochez des entrées du menu pour ajouter des favoris"
+
 msgid "Action"
 msgstr "Action"
 
@@ -526,6 +545,9 @@ msgstr "Déplier toutes les lignes"
 
 msgid "Close Tab"
 msgstr "Fermer l'onglet"
+
+msgid "No notifications at this time"
+msgstr "Aucune notification pour le moment"
 
 msgid "All Notifications..."
 msgstr "Toutes les notifications..."

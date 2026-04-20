@@ -2,6 +2,16 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+#, fuzzy
+msgctxt "field:project.configuration,work_sequence:"
+msgid "Work Effort Sequence"
+msgstr "工作量"
+
+#, fuzzy
+msgctxt "field:project.configuration.sequence,work_sequence:"
+msgid "Work Effort Sequence"
+msgstr "工作量"
+
 msgctxt "field:project.work,children:"
 msgid "Children"
 msgstr "子工作"
@@ -21,6 +31,14 @@ msgstr "投入"
 msgctxt "field:project.work,name:"
 msgid "Name"
 msgstr "名称"
+
+msgctxt "field:project.work,number:"
+msgid "Number"
+msgstr ""
+
+msgctxt "field:project.work,origin:"
+msgid "Origin"
+msgstr ""
 
 msgctxt "field:project.work,parent:"
 msgid "Parent"
@@ -98,9 +116,21 @@ msgctxt "field:project.work.status,types:"
 msgid "Types"
 msgstr "类型"
 
+msgctxt "help:project.configuration,work_sequence:"
+msgid "Used to generate the work number."
+msgstr ""
+
+msgctxt "help:project.configuration.sequence,work_sequence:"
+msgid "Used to generate the work number."
+msgstr ""
+
 msgctxt "help:project.work,effort_duration:"
 msgid "Estimated Effort for this work."
 msgstr "这项工作的估计工作量."
+
+msgctxt "help:project.work,origin:"
+msgid "The source of the task."
+msgstr ""
 
 msgctxt "help:project.work,progress:"
 msgid "Estimated progress for this work."
@@ -141,6 +171,11 @@ msgstr "可以使用此状态的工作类型."
 msgctxt "model:ir.action,name:act_open_child_work"
 msgid "Tasks"
 msgstr "任务"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_project_configuration"
+msgid "Configuration"
+msgstr "设置"
 
 msgctxt "model:ir.action,name:act_project_form"
 msgid "Projects"
@@ -193,6 +228,10 @@ msgid ""
 "progress up to at least %(progress)s."
 msgstr "如果要设置工作 \"%(work)s\" 的状态为 \"%(status)s\"，你必须将其进度推进到至少 %(progress)s."
 
+msgctxt "model:ir.message,text:msg_work_number_unique"
+msgid "The number on work must be unique."
+msgstr ""
+
 #, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_work_parent_progress"
 msgid ""
@@ -204,6 +243,16 @@ msgctxt "model:ir.rule.group,name:rule_group_work_companies"
 msgid "User in companies"
 msgstr ""
 
+#, fuzzy
+msgctxt "model:ir.sequence,name:sequence_work"
+msgid "Work Effort"
+msgstr "工作量"
+
+#, fuzzy
+msgctxt "model:ir.sequence.type,name:sequence_type_work"
+msgid "Project Work Effort"
+msgstr "项目"
+
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
 msgstr "设置"
@@ -212,6 +261,11 @@ msgstr "设置"
 msgctxt "model:ir.ui.menu,name:menu_project"
 msgid "Projects"
 msgstr "项目"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_project_configuration"
+msgid "Configuration"
+msgstr "设置"
 
 msgctxt "model:ir.ui.menu,name:menu_project_form"
 msgid "Projects"
@@ -240,6 +294,16 @@ msgstr "工作状态"
 msgctxt "model:ir.ui.menu,name:menu_work_tree"
 msgid "Works Efforts"
 msgstr "工作量"
+
+#, fuzzy
+msgctxt "model:project.configuration,string:"
+msgid "Project Configuration"
+msgstr "设置"
+
+#, fuzzy
+msgctxt "model:project.configuration.sequence,string:"
+msgid "Project Configuration Sequence"
+msgstr "项目管理"
 
 #, fuzzy
 msgctxt "model:project.work,string:"

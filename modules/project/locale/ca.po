@@ -2,6 +2,14 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgctxt "field:project.configuration,work_sequence:"
+msgid "Work Effort Sequence"
+msgstr "Seqüència projectes i tasques"
+
+msgctxt "field:project.configuration.sequence,work_sequence:"
+msgid "Work Effort Sequence"
+msgstr "Seqüència projectes i tasques"
+
 msgctxt "field:project.work,children:"
 msgid "Children"
 msgstr "Fills"
@@ -21,6 +29,14 @@ msgstr "Esforç"
 msgctxt "field:project.work,name:"
 msgid "Name"
 msgstr "Nom"
+
+msgctxt "field:project.work,number:"
+msgid "Number"
+msgstr "Número"
+
+msgctxt "field:project.work,origin:"
+msgid "Origin"
+msgstr "Origen"
 
 msgctxt "field:project.work,parent:"
 msgid "Parent"
@@ -98,9 +114,21 @@ msgctxt "field:project.work.status,types:"
 msgid "Types"
 msgstr "Tipus"
 
+msgctxt "help:project.configuration,work_sequence:"
+msgid "Used to generate the work number."
+msgstr "Utilitzat per generar el número de projecte/tasca."
+
+msgctxt "help:project.configuration.sequence,work_sequence:"
+msgid "Used to generate the work number."
+msgstr "Utilitzat per generar el número de projecte/tasca."
+
 msgctxt "help:project.work,effort_duration:"
 msgid "Estimated Effort for this work."
 msgstr "Esforç estimat per aquest treball."
+
+msgctxt "help:project.work,origin:"
+msgid "The source of the task."
+msgstr "L'origen de la tasca."
 
 msgctxt "help:project.work,progress:"
 msgid "Estimated progress for this work."
@@ -141,6 +169,10 @@ msgstr "Els tipus de treball que poden utilitzar aquest estat."
 msgctxt "model:ir.action,name:act_open_child_work"
 msgid "Tasks"
 msgstr "Tasques"
+
+msgctxt "model:ir.action,name:act_project_configuration"
+msgid "Configuration"
+msgstr "Configuració"
 
 msgctxt "model:ir.action,name:act_project_form"
 msgid "Projects"
@@ -199,6 +231,10 @@ msgstr ""
 "Per actualitzar el treball \"%(work)s\" al estat \"%(status)s\", heu "
 "d'incrementar el seu progres com a mínim fins a %(progress)s."
 
+msgctxt "model:ir.message,text:msg_work_number_unique"
+msgid "The number on work must be unique."
+msgstr "El número de projecte/tasca ha de ser únic."
+
 #, python-format
 msgctxt "model:ir.message,text:msg_work_parent_progress"
 msgid ""
@@ -212,6 +248,14 @@ msgctxt "model:ir.rule.group,name:rule_group_work_companies"
 msgid "User in companies"
 msgstr "Usuari a les empreses"
 
+msgctxt "model:ir.sequence,name:sequence_work"
+msgid "Work Effort"
+msgstr "Projecte/Tasca"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_work"
+msgid "Project Work Effort"
+msgstr "Projecte/Tasca"
+
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
 msgstr "Configuració"
@@ -219,6 +263,10 @@ msgstr "Configuració"
 msgctxt "model:ir.ui.menu,name:menu_project"
 msgid "Projects"
 msgstr "Projectes"
+
+msgctxt "model:ir.ui.menu,name:menu_project_configuration"
+msgid "Configuration"
+msgstr "Configuració"
 
 msgctxt "model:ir.ui.menu,name:menu_project_form"
 msgid "Projects"
@@ -247,6 +295,14 @@ msgstr "Estat del treball"
 msgctxt "model:ir.ui.menu,name:menu_work_tree"
 msgid "Works Efforts"
 msgstr "Arbre de projectes i tasques"
+
+msgctxt "model:project.configuration,string:"
+msgid "Project Configuration"
+msgstr "Configuració projectes"
+
+msgctxt "model:project.configuration.sequence,string:"
+msgid "Project Configuration Sequence"
+msgstr "Seqüència configuració de projectes"
 
 msgctxt "model:project.work,string:"
 msgid "Project Work"

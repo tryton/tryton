@@ -2854,7 +2854,7 @@ msgstr "ບໍລິບົດສະຫຼຸບໜີ້ຕາມກຳນົດ
 
 #, fuzzy
 msgctxt "model:account.balance_sheet.comparison.context,string:"
-msgid "Account Balance Sheet Context"
+msgid "Account Balance Sheet Comparison Context"
 msgstr "ບໍລິບົດສະຫຼຸບຊັບສົມບັດ"
 
 #, fuzzy
@@ -2946,7 +2946,7 @@ msgstr "ດຸນບັນຊີແຍກປະເພດທົ່ວໄປ"
 
 #, fuzzy
 msgctxt "model:account.general_ledger.line.context,string:"
-msgid "Account General Ledger Account Context"
+msgid "Account General Ledger Line Context"
 msgstr "ບໍລິບົດບັນຊີແຍກປະເພດທົ່ວໄປ"
 
 #, fuzzy
@@ -5158,6 +5158,11 @@ msgstr "ບໍ່ມີ"
 msgctxt "selection:account.tax.template,type:"
 msgid "Percentage"
 msgstr "ອັດຕາສ່ວນຮ້ອຍ"
+
+#, fuzzy
+msgctxt "selection:ir.cron,method:"
+msgid "Reconcile Move Lines Automatically"
+msgstr "Reconcile Lines"
 
 msgctxt "view:account.account.type:"
 msgid "Comparison"

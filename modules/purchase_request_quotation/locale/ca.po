@@ -121,7 +121,7 @@ msgid ""
 "otherwise first ordered received quotation line will be selected."
 msgstr ""
 "El pressupost que s'utilitzarà per crear la compra\n"
-"Si no s'especifica s'utilitzarà la primera línia."
+"Si no s'especifica s'utilitzarà el primer pressupost rebut."
 
 msgctxt "help:purchase.request.quotation,number:"
 msgid "The unique identifier of the quotation."

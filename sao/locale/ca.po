@@ -17,8 +17,14 @@ msgstr "No s'ha pogut connectar amb el servidor."
 msgid "Connection error"
 msgstr "Error de connexió"
 
-msgid "Logout"
-msgstr "Sortir"
+msgid "Check menu entries to add favorites"
+msgstr "Marqueu les entrades del menú per afegir-les als preferits"
+
+msgid "Add to favorites"
+msgstr "Afegeix als preferits"
+
+msgid "Remove from favorites"
+msgstr "Elimina dels preferits"
 
 msgid "Favorites"
 msgstr "Preferits"
@@ -775,8 +781,23 @@ msgstr "Alterna so"
 msgid "Wizard"
 msgstr "Assistent"
 
-msgid "Toggle notification"
-msgstr "Commuta notificació"
+msgid "Add a follower"
+msgstr "Afegeix un seguidor"
+
+msgid "Subscribe a follower to this channel"
+msgstr "Subscriu un seguidor a aquest canal"
+
+msgid "Show followers"
+msgstr "Mostra els seguidors"
+
+msgid "Unsubscribe"
+msgstr "Donar-se de baixa"
+
+msgid "Subscribe"
+msgstr "Subscriu-te"
+
+msgid "Are you sure to unsubscribe \"%1\" from this channel?"
+msgstr "Esteu segur de voler cancel·lar la subscripció de \"%1\" d'aquest canal?"
 
 msgid "Enter a message"
 msgstr "Introdueix un missatge"
@@ -787,11 +808,20 @@ msgstr "Envia el missatge"
 msgid "Make this an internal message"
 msgstr "Fes que això sigui un missatge intern"
 
+msgid "No notifications at this time"
+msgstr "No hi ha notificacions en aquest moment"
+
 msgid "All Notifications..."
 msgstr "Totes les notificacions..."
 
 msgid "Preferences..."
 msgstr "Preferències..."
+
+msgid "Help..."
+msgstr "Ajuda..."
+
+msgid "Logout"
+msgstr "Sortir"
 
 msgid "Translate view"
 msgstr "Tradueix la vista"

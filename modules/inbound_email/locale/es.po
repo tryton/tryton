@@ -141,6 +141,10 @@ msgctxt "model:ir.action,name:act_inbound_email_inbox_form"
 msgid "Inbox"
 msgstr "Bandeja de entrada"
 
+msgctxt "model:ir.message,text:msg_reply_above"
+msgid "Please reply above the line."
+msgstr "Por favor, responda encima de la línea."
+
 msgctxt ""
 "model:ir.model.button,confirm:inbound_email_inbox_new_identifier_button"
 msgid ""
@@ -165,3 +169,7 @@ msgstr "Correo electrónico entrante"
 msgctxt "model:ir.ui.menu,name:menu_inbound_email_inbox_form"
 msgid "Inbox"
 msgstr "Bandeja de entrada"
+
+msgctxt "selection:inbound.email.rule,action:"
+msgid "Post to Channel"
+msgstr "Publicar en el canal"

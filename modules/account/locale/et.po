@@ -2779,7 +2779,7 @@ msgstr "Aegunud saldo sisu"
 
 #, fuzzy
 msgctxt "model:account.balance_sheet.comparison.context,string:"
-msgid "Account Balance Sheet Context"
+msgid "Account Balance Sheet Comparison Context"
 msgstr "Aegunud saldo sisu"
 
 #, fuzzy
@@ -2872,7 +2872,7 @@ msgstr "Pearaamatu rida"
 
 #, fuzzy
 msgctxt "model:account.general_ledger.line.context,string:"
-msgid "Account General Ledger Account Context"
+msgid "Account General Ledger Line Context"
 msgstr "Pearaamatu konto sisu"
 
 #, fuzzy
@@ -5024,6 +5024,11 @@ msgstr "Mitte"
 msgctxt "selection:account.tax.template,type:"
 msgid "Percentage"
 msgstr "Protsent"
+
+#, fuzzy
+msgctxt "selection:ir.cron,method:"
+msgid "Reconcile Move Lines Automatically"
+msgstr "Saldeeri read"
 
 msgctxt "view:account.account.type:"
 msgid "Comparison"

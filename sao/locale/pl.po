@@ -32,8 +32,15 @@ msgstr "Brak dostępu do serwera."
 msgid "Connection error"
 msgstr "Błąd połączenia"
 
-msgid "Logout"
-msgstr "Wyloguj"
+msgid "Check menu entries to add favorites"
+msgstr ""
+
+#, fuzzy
+msgid "Add to favorites"
+msgstr "Ulubione"
+
+msgid "Remove from favorites"
+msgstr ""
 
 msgid "Favorites"
 msgstr "Ulubione"
@@ -797,8 +804,24 @@ msgstr "Przełącz dźwięk"
 msgid "Wizard"
 msgstr "Kreator"
 
-msgid "Toggle notification"
+msgid "Add a follower"
 msgstr ""
+
+msgid "Subscribe a follower to this channel"
+msgstr ""
+
+msgid "Show followers"
+msgstr ""
+
+msgid "Unsubscribe"
+msgstr ""
+
+msgid "Subscribe"
+msgstr ""
+
+#, fuzzy
+msgid "Are you sure to unsubscribe \"%1\" from this channel?"
+msgstr "Czy na pewno usunąć wybrany rekord?"
 
 msgid "Enter a message"
 msgstr ""
@@ -809,11 +832,21 @@ msgstr ""
 msgid "Make this an internal message"
 msgstr ""
 
+msgid "No notifications at this time"
+msgstr ""
+
 msgid "All Notifications..."
 msgstr ""
 
 msgid "Preferences..."
 msgstr ""
+
+#, fuzzy
+msgid "Help..."
+msgstr "Pomoc"
+
+msgid "Logout"
+msgstr "Wyloguj"
 
 msgid "Translate view"
 msgstr "Widok tłumaczenia"

@@ -378,7 +378,7 @@ msgstr ""
 
 msgctxt "help:product.product,code:"
 msgid "A unique identifier for the variant."
-msgstr "Een unieke ID voor de variant."
+msgstr "Een unieke identificatie voor de variant."
 
 msgctxt "help:product.product,consumable:"
 msgid "Check to allow stock moves to be assigned regardless of stock level."
@@ -412,7 +412,7 @@ msgstr "De categorie van de standaard maateenheden."
 
 msgctxt "help:product.product,identifiers:"
 msgid "Other identifiers associated with the variant."
-msgstr "Andere ID's die aan de variant zijn gekoppeld."
+msgstr "Andere identificaties die aan de variant zijn gekoppeld."
 
 msgctxt "help:product.product,list_price:"
 msgid ""
@@ -1076,7 +1076,7 @@ msgstr "Internationaal artikelnummer"
 
 msgctxt "selection:product.identifier,type:"
 msgid "International Securities Identification Number"
-msgstr "Internationaal veiligheids idendificatie nummer (ISIN)"
+msgstr "Internationaal veiligheidsidentificatie nummer (ISIN)"
 
 msgctxt "selection:product.identifier,type:"
 msgid "International Standard Audiovisual Number"

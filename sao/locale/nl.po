@@ -17,8 +17,14 @@ msgstr "Kan geen verbinding maken met server."
 msgid "Connection error"
 msgstr "Verbindingsfout"
 
-msgid "Logout"
-msgstr "Uitloggen"
+msgid "Check menu entries to add favorites"
+msgstr "Vink menu-items aan om ze aan de favorieten toe te voegen"
+
+msgid "Add to favorites"
+msgstr "Toevoegen aan favorieten"
+
+msgid "Remove from favorites"
+msgstr "Verwijderen uit favorieten"
 
 msgid "Favorites"
 msgstr "Favorieten"
@@ -775,8 +781,23 @@ msgstr "Schakel geluid"
 msgid "Wizard"
 msgstr "Assistent"
 
-msgid "Toggle notification"
-msgstr "Meldingen in-/uitschakelen"
+msgid "Add a follower"
+msgstr "Voeg een volger toe"
+
+msgid "Subscribe a follower to this channel"
+msgstr "Abonneer een volger op dit kanaal"
+
+msgid "Show followers"
+msgstr "Toon volgers"
+
+msgid "Unsubscribe"
+msgstr "Uitschrijven"
+
+msgid "Subscribe"
+msgstr "Abonneren"
+
+msgid "Are you sure to unsubscribe \"%1\" from this channel?"
+msgstr "Weet u zeker dat u \"%1\" wilt uitschrijven van dit kanaal?"
 
 msgid "Enter a message"
 msgstr "Voer in bericht in"
@@ -787,11 +808,20 @@ msgstr "Verzend het bericht"
 msgid "Make this an internal message"
 msgstr "Maak dit een intern bericht"
 
+msgid "No notifications at this time"
+msgstr "Geen meldingen op dit moment"
+
 msgid "All Notifications..."
 msgstr "Alle meldingen..."
 
 msgid "Preferences..."
 msgstr "Voorkeuren..."
+
+msgid "Help..."
+msgstr "Help..."
+
+msgid "Logout"
+msgstr "Uitloggen"
 
 msgid "Translate view"
 msgstr "Vertaal weergave"

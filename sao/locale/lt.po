@@ -20,7 +20,14 @@ msgstr "Prisegti pastabą prie įrašo"
 msgid "Connection error"
 msgstr "Sukūręs naudotojas"
 
-msgid "Logout"
+msgid "Check menu entries to add favorites"
+msgstr ""
+
+#, fuzzy
+msgid "Add to favorites"
+msgstr "Mėgstami"
+
+msgid "Remove from favorites"
 msgstr ""
 
 msgid "Favorites"
@@ -799,8 +806,24 @@ msgstr ""
 msgid "Wizard"
 msgstr "Vedlys"
 
-msgid "Toggle notification"
+msgid "Add a follower"
 msgstr ""
+
+msgid "Subscribe a follower to this channel"
+msgstr ""
+
+msgid "Show followers"
+msgstr ""
+
+msgid "Unsubscribe"
+msgstr ""
+
+msgid "Subscribe"
+msgstr ""
+
+#, fuzzy
+msgid "Are you sure to unsubscribe \"%1\" from this channel?"
+msgstr "Ar tikrai norite ištrinti šį įrašą?"
 
 msgid "Enter a message"
 msgstr ""
@@ -811,10 +834,19 @@ msgstr ""
 msgid "Make this an internal message"
 msgstr ""
 
+msgid "No notifications at this time"
+msgstr ""
+
 msgid "All Notifications..."
 msgstr ""
 
 msgid "Preferences..."
+msgstr ""
+
+msgid "Help..."
+msgstr ""
+
+msgid "Logout"
 msgstr ""
 
 msgid "Translate view"

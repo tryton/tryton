@@ -1,0 +1,748 @@
+#
+#, fuzzy
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.stock.eu.excise.declaration,company:"
+msgid "Company"
+msgstr "Bedrijf"
+
+msgctxt "field:account.stock.eu.excise.declaration,end_quantity:"
+msgid "End Quantity"
+msgstr "Eindhoeveelheid"
+
+msgctxt "field:account.stock.eu.excise.declaration,eu_excise_tax:"
+msgid "Excise Tax"
+msgstr "Accijns belasting"
+
+msgctxt "field:account.stock.eu.excise.declaration,input_duty_suspension:"
+msgid "Input Duty Suspension"
+msgstr "Vrijgesteld van invoerrechten"
+
+msgctxt "field:account.stock.eu.excise.declaration,input_other:"
+msgid "Input Other"
+msgstr "Overige invoer"
+
+msgctxt "field:account.stock.eu.excise.declaration,input_production:"
+msgid "Input Production"
+msgstr "Invoer voor productie"
+
+msgctxt "field:account.stock.eu.excise.declaration,input_replacement:"
+msgid "Input Replacement"
+msgstr "Invoer voor vervanging"
+
+msgctxt "field:account.stock.eu.excise.declaration,input_total:"
+msgid "Input Total"
+msgstr "Invoer totaal"
+
+msgctxt "field:account.stock.eu.excise.declaration,output_duty_free:"
+msgid "Output Duty Free"
+msgstr "Vrijgesteld van uitvoerrechten"
+
+msgctxt "field:account.stock.eu.excise.declaration,output_duty_suspension:"
+msgid "Output Duty Suspension"
+msgstr "Vrijgesteld van uitvoerrechten"
+
+msgctxt "field:account.stock.eu.excise.declaration,output_other:"
+msgid "Output Other"
+msgstr "Uitvoer overig"
+
+msgctxt "field:account.stock.eu.excise.declaration,output_production:"
+msgid "Output Production"
+msgstr "Uitvoer productie"
+
+msgctxt "field:account.stock.eu.excise.declaration,output_total:"
+msgid "Output Total"
+msgstr "Uitvoer totaal"
+
+msgctxt "field:account.stock.eu.excise.declaration,output_with_duty:"
+msgid "Output with Duty"
+msgstr "Uitvoer met belasting"
+
+msgctxt "field:account.stock.eu.excise.declaration,products:"
+msgid "Products"
+msgstr "Producten"
+
+msgctxt "field:account.stock.eu.excise.declaration,start_quantity:"
+msgid "Start Quantity"
+msgstr "Starthoeveelheid"
+
+msgctxt "field:account.stock.eu.excise.declaration,unit:"
+msgid "Unit"
+msgstr "Eenheid"
+
+msgctxt "field:account.stock.eu.excise.declaration.context,company:"
+msgid "Company"
+msgstr "Bedrijf"
+
+msgctxt "field:account.stock.eu.excise.declaration.context,from_date:"
+msgid "From Date"
+msgstr "Vanaf datum"
+
+msgctxt "field:account.stock.eu.excise.declaration.context,to_date:"
+msgid "To Date"
+msgstr "Tot datum"
+
+msgctxt "field:account.stock.eu.excise.declaration.context,warehouse:"
+msgid "Warehouse"
+msgstr "Magazijn"
+
+msgctxt "field:account.stock.eu.excise.declaration.product,company:"
+msgid "Company"
+msgstr "Bedrijf"
+
+msgctxt "field:account.stock.eu.excise.declaration.product,end_quantity:"
+msgid "End Quantity"
+msgstr "Eindhoeveelheid"
+
+msgctxt "field:account.stock.eu.excise.declaration.product,eu_excise_code:"
+msgid "Excise Code"
+msgstr "Accijnscode"
+
+msgctxt "field:account.stock.eu.excise.declaration.product,eu_excise_tax:"
+msgid "Excise Tax"
+msgstr "Accijns belasting"
+
+msgctxt ""
+"field:account.stock.eu.excise.declaration.product,input_duty_suspension:"
+msgid "Input Duty Suspension"
+msgstr "Vrijgesteld van invoerrechten"
+
+msgctxt "field:account.stock.eu.excise.declaration.product,input_other:"
+msgid "Input Other"
+msgstr "Overige invoer"
+
+msgctxt "field:account.stock.eu.excise.declaration.product,input_production:"
+msgid "Input Production"
+msgstr "Invoer voor productie"
+
+msgctxt "field:account.stock.eu.excise.declaration.product,input_replacement:"
+msgid "Input Replacement"
+msgstr "Invoer voor vervanging"
+
+msgctxt "field:account.stock.eu.excise.declaration.product,input_total:"
+msgid "Input Total"
+msgstr "Invoer totaal"
+
+msgctxt "field:account.stock.eu.excise.declaration.product,output_duty_free:"
+msgid "Output Duty Free"
+msgstr "Zonder uitvoerrechten"
+
+msgctxt ""
+"field:account.stock.eu.excise.declaration.product,output_duty_suspension:"
+msgid "Output Duty Suspension"
+msgstr "Vrijgesteld van uitvoerrechten"
+
+msgctxt "field:account.stock.eu.excise.declaration.product,output_other:"
+msgid "Output Other"
+msgstr "Uitvoer overig"
+
+msgctxt "field:account.stock.eu.excise.declaration.product,output_production:"
+msgid "Output Production"
+msgstr "Uitvoer productie"
+
+msgctxt "field:account.stock.eu.excise.declaration.product,output_total:"
+msgid "Output Total"
+msgstr "Uitvoer totaal"
+
+msgctxt "field:account.stock.eu.excise.declaration.product,output_with_duty:"
+msgid "Output with Duty"
+msgstr "Uitvoer met belasting"
+
+msgctxt "field:account.stock.eu.excise.declaration.product,product:"
+msgid "Product"
+msgstr "Product"
+
+msgctxt "field:account.stock.eu.excise.declaration.product,start_quantity:"
+msgid "Start Quantity"
+msgstr "Starthoeveelheid"
+
+msgctxt "field:account.stock.eu.excise.declaration.product,unit:"
+msgid "Unit"
+msgstr "Eenheid"
+
+msgctxt "field:account.stock.eu.excise.declaration.product.line,company:"
+msgid "Company"
+msgstr "Bedrijf"
+
+msgctxt "field:account.stock.eu.excise.declaration.product.line,date:"
+msgid "Date"
+msgstr "Datum"
+
+msgctxt "field:account.stock.eu.excise.declaration.product.line,direction:"
+msgid "Direction"
+msgstr "Richting"
+
+msgctxt "field:account.stock.eu.excise.declaration.product.line,document:"
+msgid "Document"
+msgstr "Document"
+
+msgctxt "field:account.stock.eu.excise.declaration.product.line,duty:"
+msgid "Duty"
+msgstr "Recht"
+
+msgctxt ""
+"field:account.stock.eu.excise.declaration.product.line,eu_excise_code:"
+msgid "Excise Code"
+msgstr "Accijnscode"
+
+msgctxt ""
+"field:account.stock.eu.excise.declaration.product.line,eu_excise_tax:"
+msgid "Excise Tax"
+msgstr "Accijns belasting"
+
+msgctxt ""
+"field:account.stock.eu.excise.declaration.product.line,internal_quantity:"
+msgid "Internal Quantity"
+msgstr "Interne hoeveelheid"
+
+msgctxt "field:account.stock.eu.excise.declaration.product.line,location:"
+msgid "Location"
+msgstr "Locatie"
+
+msgctxt "field:account.stock.eu.excise.declaration.product.line,move:"
+msgid "Move"
+msgstr "Mutatie"
+
+msgctxt "field:account.stock.eu.excise.declaration.product.line,origin:"
+msgid "Origin"
+msgstr "Oorsprong"
+
+msgctxt "field:account.stock.eu.excise.declaration.product.line,product:"
+msgid "Product"
+msgstr "Product"
+
+msgctxt "field:account.stock.eu.excise.declaration.product.line,quantity:"
+msgid "Quantity"
+msgstr "Hoeveelheid"
+
+msgctxt "field:account.stock.eu.excise.declaration.product.line,unit:"
+msgid "Unit"
+msgstr "Eenheid"
+
+msgctxt "field:account.stock.eu.excise.tax,code:"
+msgid "Code"
+msgstr "Code"
+
+msgctxt "field:account.stock.eu.excise.tax,country:"
+msgid "Country"
+msgstr "Land"
+
+msgctxt "field:account.stock.eu.excise.tax,currency:"
+msgid "Currency"
+msgstr "Valuta"
+
+msgctxt "field:account.stock.eu.excise.tax,description:"
+msgid "Description"
+msgstr "Omschrijving"
+
+msgctxt "field:account.stock.eu.excise.tax,quantity:"
+msgid "Quantity"
+msgstr "Hoeveelheid"
+
+msgctxt "field:account.stock.eu.excise.tax,tax_rates:"
+msgid "Tax Rates"
+msgstr "Belastingtarieven"
+
+msgctxt "field:account.stock.eu.excise.tax,uom:"
+msgid "UoM"
+msgstr "Maateenheid"
+
+msgctxt "field:account.stock.eu.excise.tax.rate,end_date:"
+msgid "End Date"
+msgstr "Eind datum"
+
+msgctxt "field:account.stock.eu.excise.tax.rate,excise_tax:"
+msgid "Excise Tax"
+msgstr "Accijns belasting"
+
+msgctxt "field:account.stock.eu.excise.tax.rate,formula:"
+msgid "Formula"
+msgstr "Formule"
+
+msgctxt "field:account.stock.eu.excise.tax.rate,start_date:"
+msgid "Start Date"
+msgstr "Start datum"
+
+msgctxt "field:party.identifier,eu_excise_codes:"
+msgid "Excise Codes"
+msgstr "Accijnscodes"
+
+msgctxt "field:party.identifier-product.eu.excise_code,excise_code:"
+msgid "Excise Code"
+msgstr "Accijnscode"
+
+msgctxt "field:party.identifier-product.eu.excise_code,identifier:"
+msgid "Identifier"
+msgstr "Identificatie"
+
+msgctxt "field:product-account.stock.eu.excise.tax,country:"
+msgid "Country"
+msgstr "Land"
+
+msgctxt "field:product-account.stock.eu.excise.tax,excise_tax:"
+msgid "Tax"
+msgstr "Belasting"
+
+msgctxt "field:product-account.stock.eu.excise.tax,template:"
+msgid "Product"
+msgstr "Product"
+
+msgctxt "field:product.eu.excise_code,code:"
+msgid "Code"
+msgstr "Code"
+
+msgctxt "field:product.eu.excise_code,description:"
+msgid "Description"
+msgstr "Omschrijving"
+
+msgctxt "field:product.price_list.line,eu_excise_duty:"
+msgid "Excise Duty Suspension"
+msgstr "Schorsing van accijns"
+
+msgctxt "field:product.price_list.line,eu_excise_tax:"
+msgid "Excise Tax"
+msgstr "Accijns belasting"
+
+msgctxt "field:product.product,eu_excise_code:"
+msgid "Excise Code"
+msgstr "Accijnscode"
+
+msgctxt "field:product.product,eu_excise_taxes:"
+msgid "Excise Tax"
+msgstr "Accijns belasting"
+
+msgctxt "field:product.template,eu_excise_code:"
+msgid "Excise Code"
+msgstr "Accijnscode"
+
+msgctxt "field:product.template,eu_excise_taxes:"
+msgid "Excise Tax"
+msgstr "Accijns belasting"
+
+msgctxt "field:sale.line,eu_excise_duty_amount:"
+msgid "Excise Duty Amount"
+msgstr "Accijnsbedrag"
+
+msgctxt "field:sale.sale,eu_excise_duty_amount:"
+msgid "Excise Duty Amount"
+msgstr "Accijnsbedrag"
+
+msgctxt "field:sale.sale,eu_excise_number:"
+msgid "Excise Number"
+msgstr "Accijnsnummer"
+
+msgctxt "field:sale.sale,eu_excise_types:"
+msgid "Excise Types"
+msgstr "Soorten accijnzen"
+
+msgctxt "field:sale.sale,warehouse_eu_excise_number:"
+msgid "Warehouse Excise Number"
+msgstr "Magazijnaccijnsnummer"
+
+msgctxt "field:stock.location,eu_excise_numbers:"
+msgid "Excise Number"
+msgstr "Accijnsnummer"
+
+msgctxt "field:stock.location.eu_excise_number,company:"
+msgid "Company"
+msgstr "Bedrijf"
+
+msgctxt "field:stock.location.eu_excise_number,company_party:"
+msgid "Company Party"
+msgstr "Bedrijf relatie"
+
+msgctxt "field:stock.location.eu_excise_number,eu_excise_number:"
+msgid "Excise Number"
+msgstr "Accijnsnummer"
+
+msgctxt "field:stock.location.eu_excise_number,warehouse:"
+msgid "Warehouse"
+msgstr "Magazijn"
+
+msgctxt "field:stock.location.eu_excise_number,warehouse_address:"
+msgid "Warehouse Address"
+msgstr "Adres magazijn"
+
+msgctxt "field:stock.move,eu_excise_duty:"
+msgid "Excise Duty"
+msgstr "Accijns"
+
+msgctxt "field:stock.move,eu_excise_duty_applicable:"
+msgid "Excise Duty Applicable"
+msgstr "Accijns van toepassing"
+
+msgctxt "field:stock.shipment.in,eu_excise_number:"
+msgid "Excise Number"
+msgstr "Accijnsnummer"
+
+msgctxt "field:stock.shipment.in,eu_excise_party:"
+msgid "Excise Party"
+msgstr "Accijns relatie"
+
+msgctxt "field:stock.shipment.in,eu_excise_types:"
+msgid "Excise Types"
+msgstr "Soorten accijnzen"
+
+msgctxt "field:stock.shipment.in,has_eu_excise_goods:"
+msgid "Has Excise Goods"
+msgstr "Bevat accijnsgoederen"
+
+msgctxt "field:stock.shipment.in,warehouse_eu_excise_number:"
+msgid "Warehouse Excise Number"
+msgstr "Magazijnaccijnsnummer"
+
+msgctxt "field:stock.shipment.in.return,eu_excise_number:"
+msgid "Excise Number"
+msgstr "Accijnsnummer"
+
+msgctxt "field:stock.shipment.in.return,eu_excise_party:"
+msgid "Excise Party"
+msgstr "Accijns relatie"
+
+msgctxt "field:stock.shipment.in.return,eu_excise_types:"
+msgid "Excise Types"
+msgstr "Soorten accijnzen"
+
+msgctxt "field:stock.shipment.in.return,has_eu_excise_goods:"
+msgid "Has Excise Goods"
+msgstr "Bevat accijnsgoederen"
+
+msgctxt "field:stock.shipment.in.return,warehouse_eu_excise_number:"
+msgid "Warehouse Excise Number"
+msgstr "Magazijnaccijnsnummer"
+
+msgctxt "field:stock.shipment.out,eu_excise_number:"
+msgid "Excise Number"
+msgstr "Accijnsnummer"
+
+msgctxt "field:stock.shipment.out,eu_excise_party:"
+msgid "Excise Party"
+msgstr "Accijns relatie"
+
+msgctxt "field:stock.shipment.out,eu_excise_types:"
+msgid "Excise Types"
+msgstr "Soorten accijnzen"
+
+msgctxt "field:stock.shipment.out,has_eu_excise_goods:"
+msgid "Has Excise Goods"
+msgstr "Bevat accijnsgoederen"
+
+msgctxt "field:stock.shipment.out,warehouse_eu_excise_number:"
+msgid "Warehouse Excise Number"
+msgstr "Magazijnaccijnsnummer"
+
+msgctxt "field:stock.shipment.out.return,eu_excise_number:"
+msgid "Excise Number"
+msgstr "Accijnsnummer"
+
+msgctxt "field:stock.shipment.out.return,eu_excise_party:"
+msgid "Excise Party"
+msgstr "Accijns relatie"
+
+msgctxt "field:stock.shipment.out.return,eu_excise_types:"
+msgid "Excise Types"
+msgstr "Soorten accijnzen"
+
+msgctxt "field:stock.shipment.out.return,has_eu_excise_goods:"
+msgid "Has Excise Goods"
+msgstr "Bevat accijnsgoederen"
+
+msgctxt "field:stock.shipment.out.return,warehouse_eu_excise_number:"
+msgid "Warehouse Excise Number"
+msgstr "Magazijnaccijnsnummer"
+
+msgctxt "help:account.stock.eu.excise.tax,quantity:"
+msgid "Define which quantity to use for excise declaration."
+msgstr ""
+"Bepaald welke hoeveelheid gebruikt moet worden voor de accijnsaangifte."
+
+msgctxt "help:account.stock.eu.excise.tax,uom:"
+msgid "The Unit of Measure for excise declaration."
+msgstr "De eenheid voor accijnsaangifte."
+
+msgctxt "help:account.stock.eu.excise.tax.rate,formula:"
+msgid ""
+"A python expression that will be evaluated with:\n"
+"-quantity: the quantity of product"
+msgstr ""
+"Een Python-expressie die wordt geëvalueerd met:\n"
+"-quantity: de hoeveelheid product"
+
+msgctxt "help:party.identifier,eu_excise_codes:"
+msgid "Authorized codes for the excise number."
+msgstr "Geautoriseerde codes voor het accijnsnummer."
+
+msgctxt "help:product.eu.excise_code,code:"
+msgid "The code from the System for Exchange of Excise Data"
+msgstr ""
+"De code afkomstig van het systeem voor de uitwisseling van accijnsgegevens"
+
+msgctxt "model:account.stock.eu.excise.declaration,string:"
+msgid "Account Stock Eu Excise Declaration"
+msgstr "Rekeningvoorraad EU-accijnsaangifte"
+
+msgctxt "model:account.stock.eu.excise.declaration.context,string:"
+msgid "Account Stock Eu Excise Declaration Context"
+msgstr "Context rekeningvoorraad EU-accijnsaangifte"
+
+msgctxt "model:account.stock.eu.excise.declaration.product,string:"
+msgid "Account Stock Eu Excise Declaration Product"
+msgstr "Rekeningvoorraad EU-accijnsaangifte Product"
+
+msgctxt "model:account.stock.eu.excise.declaration.product.line,string:"
+msgid "Account Stock Eu Excise Declaration Product Line"
+msgstr "Rekeningvoorraad EU-accijnsaangifte Product regel"
+
+msgctxt "model:account.stock.eu.excise.tax,string:"
+msgid "Account Stock Eu Excise Tax"
+msgstr "Rekeningvoorraad EU Accijnsbelasting"
+
+msgctxt "model:account.stock.eu.excise.tax.rate,string:"
+msgid "Account Stock Eu Excise Tax Rate"
+msgstr "Rekeningvoorraad EU Accijnsbelasting tarief"
+
+msgctxt "model:ir.action,name:act_account_stock_eu_excise_declaration_form"
+msgid "Excise Declarations"
+msgstr "Accijnsaangiften"
+
+msgctxt ""
+"model:ir.action,name:act_account_stock_eu_excise_declaration_product_form"
+msgid "Excise Declaration Products"
+msgstr "Accijnsaangifte producten"
+
+msgctxt ""
+"model:ir.action,name:act_account_stock_eu_excise_declaration_product_line_form"
+msgid "Excise Declaration Product Lines"
+msgstr "Accijnsaangifte product regels"
+
+msgctxt "model:ir.action,name:act_account_stock_eu_excise_tax_form"
+msgid "Excise Taxes"
+msgstr "Accijns belastingen"
+
+msgctxt "model:ir.action,name:act_product_eu_excise_code_form"
+msgid "Excise Codes"
+msgstr "Accijnscodes"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_account_stock_eu_excise_declaration_product_line_form_all"
+msgid "All"
+msgstr "Alles"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_account_stock_eu_excise_declaration_product_line_form_input_duty_suspension"
+msgid "Input Duty Suspension"
+msgstr "Vrijgesteld van invoerrechten"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_account_stock_eu_excise_declaration_product_line_form_input_other"
+msgid "Input Other"
+msgstr "Overige invoer"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_account_stock_eu_excise_declaration_product_line_form_input_production"
+msgid "Input Production"
+msgstr "Invoer voor productie"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_account_stock_eu_excise_declaration_product_line_form_input_replacement"
+msgid "Input Replacement"
+msgstr "Invoer voor vervanging"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_account_stock_eu_excise_declaration_product_line_form_output_duty_free"
+msgid "Output Duty Free"
+msgstr "Vrijgesteld van uitvoerrechten"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_account_stock_eu_excise_declaration_product_line_form_output_duty_suspension"
+msgid "Output Duty Suspension"
+msgstr "Vrijgesteld van uitvoerrechten"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_account_stock_eu_excise_declaration_product_line_form_output_other"
+msgid "Output Other"
+msgstr "Uitvoer overig"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_account_stock_eu_excise_declaration_product_line_form_output_production"
+msgid "Output Production"
+msgstr "Uitvoer productie"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_account_stock_eu_excise_declaration_product_line_form_output_with_duty"
+msgid "Output with Duty"
+msgstr "Uitvoer met belasting"
+
+msgctxt "model:ir.message,text:msg_excise_tax_template_country_unique"
+msgid "Only one excise tax per country can be applied to a product."
+msgstr ""
+"Er kan slechts één accijnsbelasting per land worden toegepast op een "
+"product."
+
+#, python-format
+msgctxt "model:ir.message,text:msg_invalid_formula"
+msgid ""
+"Invalid formula \"%(formula)s\" in excise tax rate \"%(tax_rate)s\" with "
+"exception \"%(exception)s\"."
+msgstr ""
+"Ongeldige formule \"%(formula)s\" in accijnstarief \"%(tax_rate)s\" met "
+"uitzondering \"%(exception)s\"."
+
+msgctxt "model:ir.message,text:msg_warehouse_excise_company_unique"
+msgid "Only one excise number is allowed for a warehouse per company."
+msgstr "Per bedrijf is slechts één accijnsnummer toegestaan per magazijn."
+
+msgctxt ""
+"model:ir.rule.group,name:rule_group_account_stock_eu_excise_declaration_companies"
+msgid "User in companies"
+msgstr "Gebruiker in bedrijven"
+
+msgctxt ""
+"model:ir.rule.group,name:rule_group_account_stock_eu_excise_declaration_product_companies"
+msgid "User in companies"
+msgstr "Gebruiker in bedrijven"
+
+msgctxt ""
+"model:ir.rule.group,name:rule_group_account_stock_eu_excise_declaration_product_line_companies"
+msgid "User in companies"
+msgstr "Gebruiker in bedrijven"
+
+msgctxt "model:ir.ui.menu,name:menu_account_stock_eu_excise_declaration_form"
+msgid "Excise Declarations"
+msgstr "Accijnsaangiften"
+
+msgctxt ""
+"model:ir.ui.menu,name:menu_account_stock_eu_excise_declaration_product_form"
+msgid "Excise Declaration Products"
+msgstr "Accijnsaangifte producten"
+
+msgctxt "model:ir.ui.menu,name:menu_account_stock_eu_excise_tax_form"
+msgid "Excise Taxes"
+msgstr "Accijns belastingen"
+
+msgctxt "model:ir.ui.menu,name:menu_product_eu_excise_code_form"
+msgid "Excise Codes"
+msgstr "Accijnscodes"
+
+msgctxt "model:party.identifier-product.eu.excise_code,string:"
+msgid "Party Identifier - Product Eu Excise Code"
+msgstr "Relatie identificatie - Product EU-accijnscode"
+
+msgctxt "model:product-account.stock.eu.excise.tax,string:"
+msgid "Product - Account Stock Eu Excise Tax"
+msgstr "Product - Rekening voorraad EU-accijns belasting"
+
+msgctxt "model:product.eu.excise_code,string:"
+msgid "Product Eu Excise Code"
+msgstr "Product EU-accijnscode"
+
+msgctxt "model:stock.location.eu_excise_number,string:"
+msgid "Stock Location Eu Excise Number"
+msgstr "Voorraadlocatie EU-accijnsnummer"
+
+msgctxt ""
+"selection:account.stock.eu.excise.declaration.product.line,direction:"
+msgid "Input"
+msgstr "Invoer"
+
+msgctxt ""
+"selection:account.stock.eu.excise.declaration.product.line,direction:"
+msgid "Output"
+msgstr "Uitvoer"
+
+msgctxt "selection:account.stock.eu.excise.declaration.product.line,duty:"
+msgid "Free"
+msgstr "Vrij"
+
+msgctxt "selection:account.stock.eu.excise.declaration.product.line,duty:"
+msgid "Suspension"
+msgstr "Uitstel"
+
+msgctxt "selection:account.stock.eu.excise.tax,quantity:"
+msgid "Volume Measurements"
+msgstr "Volumemetingen"
+
+msgctxt "selection:account.stock.eu.excise.tax,quantity:"
+msgid "Weight Measurements"
+msgstr "Gewichtsmetingen"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "European Excise Number"
+msgstr "Europees accijnsnummer"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "French Excise Number"
+msgstr "Frans accijnsnummer"
+
+msgctxt "selection:product.price_list.line,eu_excise_duty:"
+msgid "Suspension"
+msgstr "Uitstel"
+
+msgctxt "selection:sale.sale,eu_excise_types:"
+msgid "European Excise Number"
+msgstr "Europees accijnsnummer"
+
+msgctxt "selection:sale.sale,eu_excise_types:"
+msgid "French Excise Number"
+msgstr "Frans accijnsnummer"
+
+msgctxt "selection:stock.move,eu_excise_duty:"
+msgid "Free"
+msgstr "Vrij"
+
+msgctxt "selection:stock.move,eu_excise_duty:"
+msgid "Suspension"
+msgstr "Uitstel"
+
+msgctxt "selection:stock.shipment.in,eu_excise_types:"
+msgid "European Excise Number"
+msgstr "Europees accijnsnummer"
+
+msgctxt "selection:stock.shipment.in,eu_excise_types:"
+msgid "French Excise Number"
+msgstr "Frans accijnsnummer"
+
+msgctxt "selection:stock.shipment.in.return,eu_excise_types:"
+msgid "European Excise Number"
+msgstr "Europees accijnsnummer"
+
+msgctxt "selection:stock.shipment.in.return,eu_excise_types:"
+msgid "French Excise Number"
+msgstr "Frans accijnsnummer"
+
+msgctxt "selection:stock.shipment.out,eu_excise_types:"
+msgid "European Excise Number"
+msgstr "Europees accijnsnummer"
+
+msgctxt "selection:stock.shipment.out,eu_excise_types:"
+msgid "French Excise Number"
+msgstr "Frans accijnsnummer"
+
+msgctxt "selection:stock.shipment.out.return,eu_excise_types:"
+msgid "European Excise Number"
+msgstr "Europees accijnsnummer"
+
+msgctxt "selection:stock.shipment.out.return,eu_excise_types:"
+msgid "French Excise Number"
+msgstr "Frans accijnsnummer"
+
+msgctxt "view:account.stock.eu.excise.declaration.product:"
+msgid "Input"
+msgstr "Invoer"
+
+msgctxt "view:account.stock.eu.excise.declaration.product:"
+msgid "Output"
+msgstr "Uitvoer"
+
+msgctxt "view:account.stock.eu.excise.declaration:"
+msgid "Input"
+msgstr "Invoer"
+
+msgctxt "view:account.stock.eu.excise.declaration:"
+msgid "Output"
+msgstr "Uitvoer"
+
+msgctxt "view:product.template:"
+msgid "Excise"
+msgstr "Accijns"

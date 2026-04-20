@@ -90,6 +90,26 @@ msgctxt "field:stock.package,width_uom:"
 msgid "Width UoM"
 msgstr ""
 
+msgctxt "field:stock.package.pack.move,allowed_moves:"
+msgid "Allowed Moves"
+msgstr ""
+
+msgctxt "field:stock.package.pack.move,move_quantity:"
+msgid "Move Quantity"
+msgstr ""
+
+msgctxt "field:stock.package.pack.move,quantity:"
+msgid "Quantity"
+msgstr ""
+
+msgctxt "field:stock.package.pack.move,source:"
+msgid "Source"
+msgstr ""
+
+msgctxt "field:stock.package.pack.move,unit:"
+msgid "Unit"
+msgstr ""
+
 msgctxt "field:stock.package.type,height:"
 msgid "Height"
 msgstr ""
@@ -161,6 +181,10 @@ msgctxt "field:stock.shipment.out,root_packages:"
 msgid "Packages"
 msgstr ""
 
+msgctxt "help:stock.package,children:"
+msgid "The packages contained in this package."
+msgstr ""
+
 msgctxt "help:stock.package,height:"
 msgid "The height of the package."
 msgstr ""
@@ -193,12 +217,22 @@ msgctxt "help:stock.package,packaging_weight_uom:"
 msgid "The Unit of Measure for the packaging weight."
 msgstr ""
 
+msgctxt "help:stock.package,parent:"
+msgid "The package that contains this package."
+msgstr ""
+
 msgctxt "help:stock.package,width:"
 msgid "The width of the package."
 msgstr ""
 
 msgctxt "help:stock.package,width_uom:"
 msgid "The Unit of Measure for the package width."
+msgstr ""
+
+msgctxt "help:stock.package.pack.move,quantity:"
+msgid ""
+"The quantity to pack from the move.\n"
+"Leave empty for the full quantity of the move."
 msgstr ""
 
 msgctxt "help:stock.package.type,height:"
@@ -245,6 +279,15 @@ msgctxt "model:ir.action,name:act_package_type_form"
 msgid "Package Types"
 msgstr "Package Types"
 
+#, fuzzy
+msgctxt "model:ir.action,name:wizard_package_pack"
+msgid "Pack Package"
+msgstr "Stock Package"
+
+msgctxt "model:ir.action,name:wizard_shipment_pack"
+msgid "Pack Shipment"
+msgstr ""
+
 #, python-format
 msgctxt "model:ir.message,text:msg_package_mismatch"
 msgid "To process shipment \"%(shipment)s\", you must pack all its moves."
@@ -256,6 +299,24 @@ msgid ""
 "The volume (%(volume)s) of package \"%(package)s\" is too small for summed "
 "volume (%(children_volume)s) of its children packages."
 msgstr ""
+
+msgctxt "model:ir.model.button,string:package_fill_button"
+msgid "Fill"
+msgstr ""
+
+msgctxt "model:ir.model.button,string:shipment_in_return_pack_wizard_button"
+msgid "Fill"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.model.button,string:shipment_internal_pack_wizard_button"
+msgid "Add Package"
+msgstr "Package Types"
+
+#, fuzzy
+msgctxt "model:ir.model.button,string:shipment_out_pack_wizard_button"
+msgid "Pack"
+msgstr "Package Types"
 
 msgctxt "model:ir.rule.group,name:rule_group_package_companies"
 msgid "User in companies"
@@ -276,6 +337,11 @@ msgstr "Package Types"
 #, fuzzy
 msgctxt "model:stock.package,string:"
 msgid "Stock Package"
+msgstr "Stock Package"
+
+#, fuzzy
+msgctxt "model:stock.package.pack.move,string:"
+msgid "Stock Package Pack Move"
 msgstr "Stock Package"
 
 #, fuzzy
@@ -305,5 +371,34 @@ msgid "Measurements"
 msgstr ""
 
 msgctxt "view:stock.package:"
+msgid "Containing"
+msgstr ""
+
+msgctxt "view:stock.package:"
+msgid "Is contained in:"
+msgstr ""
+
+msgctxt "view:stock.package:"
 msgid "Measurements"
+msgstr ""
+
+msgctxt "wizard_button:stock.package.pack,move,add_move:"
+msgid "Add"
+msgstr ""
+
+msgctxt "wizard_button:stock.package.pack,move,end:"
+msgid "End"
+msgstr ""
+
+msgctxt "wizard_button:stock.shipment.pack,package,add_fill_package:"
+msgid "Add Package and Fill"
+msgstr ""
+
+#, fuzzy
+msgctxt "wizard_button:stock.shipment.pack,package,add_package:"
+msgid "Add Package"
+msgstr "Package Types"
+
+msgctxt "wizard_button:stock.shipment.pack,package,end:"
+msgid "End"
 msgstr ""

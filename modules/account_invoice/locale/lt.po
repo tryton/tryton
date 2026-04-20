@@ -200,6 +200,11 @@ msgctxt "field:account.invoice,number_digit:"
 msgid "Number Digit"
 msgstr "Numeris"
 
+#, fuzzy
+msgctxt "field:account.invoice,origin_invoices:"
+msgid "Origin Invoices"
+msgstr "Sąskaitos faktūros"
+
 msgctxt "field:account.invoice,origins:"
 msgid "Origins"
 msgstr "Šaltiniai"
@@ -218,6 +223,11 @@ msgstr "Kontrahento mokesčių mokėtojo identifikatorius"
 
 msgctxt "field:account.invoice,payment_lines:"
 msgid "Payment Lines"
+msgstr "Mokėjimo eilutės"
+
+#, fuzzy
+msgctxt "field:account.invoice,payment_means:"
+msgid "Payment Means"
 msgstr "Mokėjimo eilutės"
 
 msgctxt "field:account.invoice,payment_term:"
@@ -254,6 +264,20 @@ msgstr "Numeruotė"
 msgctxt "field:account.invoice,sequence_type_cache:"
 msgid "Sequence Type Cache"
 msgstr ""
+
+#, fuzzy
+msgctxt "field:account.invoice,source_tax_amount:"
+msgid "Source Tax"
+msgstr "Sąskaitos faktūros mokesčiai"
+
+msgctxt "field:account.invoice,source_total_amount:"
+msgid "Source Total"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.invoice,source_untaxed_amount:"
+msgid "Source Untaxed"
+msgstr "Viso"
 
 msgctxt "field:account.invoice,state:"
 msgid "State"
@@ -575,6 +599,46 @@ msgstr ""
 msgctxt "field:account.invoice.pay.start,payment_method:"
 msgid "Payment Method"
 msgstr "Mokėjimo būdas"
+
+#, fuzzy
+msgctxt "field:account.invoice.payment.mean,company:"
+msgid "Company"
+msgstr "Organizacija"
+
+msgctxt "field:account.invoice.payment.mean,instrument:"
+msgid "Instrument"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.invoice.payment.mean,invoice:"
+msgid "Invoice"
+msgstr "Sąskaita faktūra"
+
+msgctxt "field:account.invoice.payment.mean,payees:"
+msgid "Payees"
+msgstr ""
+
+msgctxt "field:account.invoice.payment.mean,payers:"
+msgid "Payers"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.invoice.payment.mean.rule,company:"
+msgid "Company"
+msgstr "Organizacija"
+
+#, fuzzy
+msgctxt "field:account.invoice.payment.mean.rule,currency:"
+msgid "Currency"
+msgstr "Valiuta"
+
+msgctxt "field:account.invoice.payment.mean.rule,instrument:"
+msgid "Instrument"
+msgstr ""
+
+msgctxt "field:account.invoice.payment.mean.rule,payee:"
+msgid "Payee"
+msgstr ""
 
 msgctxt "field:account.invoice.payment.method,company:"
 msgid "Company"
@@ -920,6 +984,16 @@ msgid "Account Invoice Pay Start"
 msgstr "Sąskaitos faktūros kontrahentas"
 
 #, fuzzy
+msgctxt "model:account.invoice.payment.mean,string:"
+msgid "Account Invoice Payment Mean"
+msgstr "Sąskaitų faktūrų apmokėjimo būdai"
+
+#, fuzzy
+msgctxt "model:account.invoice.payment.mean.rule,string:"
+msgid "Account Invoice Payment Mean Rule"
+msgstr "Sąskaitų faktūrų apmokėjimo būdai"
+
+#, fuzzy
 msgctxt "model:account.invoice.payment.method,string:"
 msgid "Account Invoice Payment Method"
 msgstr "Sąskaitų faktūrų apmokėjimo būdai"
@@ -1015,6 +1089,11 @@ msgstr "Tiekėjų sąskaitos"
 msgctxt "model:ir.action,name:act_invoice_out_form"
 msgid "Customer Invoices"
 msgstr "Sąskaitos pirkėjams"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_invoice_payment_mean_rule_form"
+msgid "Payment Means Rules"
+msgstr "Mokėjimo eilutės"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_invoice_relate"
@@ -1259,6 +1338,13 @@ msgid "The invoice \"%(invoice)s\" is similar to invoice \"%(similar)s\"."
 msgstr ""
 
 #, python-format
+msgctxt "model:ir.message,text:msg_invoice_source_mismatch"
+msgid ""
+"The \"%(field)s\" value of the invoice \"%(invoice)s\", %(value)s, must "
+"equal the source value, %(source)s."
+msgstr ""
+
+#, python-format
 msgctxt "model:ir.message,text:msg_invoice_supplier_payment_reference_invalid"
 msgid "The %(type)s \"%(reference)s\" on invoice \"%(invoice)s\" is not valid."
 msgstr ""
@@ -1366,6 +1452,12 @@ msgid "User in companies"
 msgstr "Organizacijos naudotojas"
 
 #, fuzzy
+msgctxt ""
+"model:ir.rule.group,name:rule_group_invoice_payment_mean_rule_companies"
+msgid "User in companies"
+msgstr "Organizacijos naudotojas"
+
+#, fuzzy
 msgctxt "model:ir.rule.group,name:rule_group_invoice_sequence_companies"
 msgid "User in companies"
 msgstr "Organizacijos naudotojas"
@@ -1387,6 +1479,11 @@ msgctxt "model:ir.ui.menu,name:menu_invoice_out_form"
 msgid "Customer Invoices"
 msgstr "Sąskaitos pirkėjams"
 
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_invoice_payment_mean_rule"
+msgid "Payment Means Rules"
+msgstr "Mokėjimo eilutės"
+
 msgctxt "model:ir.ui.menu,name:menu_invoices"
 msgid "Invoices"
 msgstr "Sąskaitos faktūros"
@@ -1403,9 +1500,10 @@ msgctxt "model:ir.ui.menu,name:menu_payment_term_test"
 msgid "Test Payment Term"
 msgstr "Tikrinti mokėjimo sąlygą"
 
-msgctxt "model:ir.ui.menu,name:menu_payment_terms_configuration"
-msgid "Payment Terms"
-msgstr "Mokėjimo sąlygos"
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_payments_configuration"
+msgid "Invoice Payments"
+msgstr "Sąskaitų faktūrų apmokėjimai"
 
 #, fuzzy
 msgctxt "model:party.party.payment_term,string:"
@@ -1448,6 +1546,11 @@ msgstr "Sąskaitos faktūros juodraštis"
 msgctxt "report:account.invoice:"
 msgid "Invoice No:"
 msgstr "Sąskaita faktūra Nr.:"
+
+#, fuzzy
+msgctxt "report:account.invoice:"
+msgid "Payment Means"
+msgstr "Mokėjimo eilutės"
 
 msgctxt "report:account.invoice:"
 msgid "Payment Term"
@@ -1644,6 +1747,10 @@ msgstr "Mokėjimas"
 msgctxt "view:account.invoice:"
 msgid "Tax Identifier:"
 msgstr "Mokesčių mokėtojo identifikatorius:"
+
+msgctxt "view:account.invoice:"
+msgid "expected"
+msgstr ""
 
 msgctxt "view:company.company:"
 msgid "Invoice"

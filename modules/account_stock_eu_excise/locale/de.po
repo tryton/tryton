@@ -1,0 +1,749 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.stock.eu.excise.declaration,company:"
+msgid "Company"
+msgstr "Unternehmen"
+
+msgctxt "field:account.stock.eu.excise.declaration,end_quantity:"
+msgid "End Quantity"
+msgstr "Endmenge"
+
+msgctxt "field:account.stock.eu.excise.declaration,eu_excise_tax:"
+msgid "Excise Tax"
+msgstr "Verbrauchssteuer"
+
+msgctxt "field:account.stock.eu.excise.declaration,input_duty_suspension:"
+msgid "Input Duty Suspension"
+msgstr "Eingang Verbrauchssteueraussetzung"
+
+msgctxt "field:account.stock.eu.excise.declaration,input_other:"
+msgid "Input Other"
+msgstr "Eingang Sonstiges"
+
+msgctxt "field:account.stock.eu.excise.declaration,input_production:"
+msgid "Input Production"
+msgstr "Eingang Produktion"
+
+msgctxt "field:account.stock.eu.excise.declaration,input_replacement:"
+msgid "Input Replacement"
+msgstr "Eingang Ersatz"
+
+msgctxt "field:account.stock.eu.excise.declaration,input_total:"
+msgid "Input Total"
+msgstr "Eingang Gesamt"
+
+msgctxt "field:account.stock.eu.excise.declaration,output_duty_free:"
+msgid "Output Duty Free"
+msgstr "Ausgang Verbrauchssteuerfrei"
+
+msgctxt "field:account.stock.eu.excise.declaration,output_duty_suspension:"
+msgid "Output Duty Suspension"
+msgstr "Ausgang Verbrauchssteueraussetzung"
+
+msgctxt "field:account.stock.eu.excise.declaration,output_other:"
+msgid "Output Other"
+msgstr "Ausgang Sonstiges"
+
+msgctxt "field:account.stock.eu.excise.declaration,output_production:"
+msgid "Output Production"
+msgstr "Ausgang Produktion"
+
+msgctxt "field:account.stock.eu.excise.declaration,output_total:"
+msgid "Output Total"
+msgstr "Ausgang Gesamt"
+
+msgctxt "field:account.stock.eu.excise.declaration,output_with_duty:"
+msgid "Output with Duty"
+msgstr "Ausgang mit Verbrauchssteuer"
+
+msgctxt "field:account.stock.eu.excise.declaration,products:"
+msgid "Products"
+msgstr "Artikel"
+
+msgctxt "field:account.stock.eu.excise.declaration,start_quantity:"
+msgid "Start Quantity"
+msgstr "Startmenge"
+
+msgctxt "field:account.stock.eu.excise.declaration,unit:"
+msgid "Unit"
+msgstr "Einheit"
+
+msgctxt "field:account.stock.eu.excise.declaration.context,company:"
+msgid "Company"
+msgstr "Unternehmen"
+
+msgctxt "field:account.stock.eu.excise.declaration.context,from_date:"
+msgid "From Date"
+msgstr "Von Datum"
+
+msgctxt "field:account.stock.eu.excise.declaration.context,to_date:"
+msgid "To Date"
+msgstr "Bis Datum"
+
+msgctxt "field:account.stock.eu.excise.declaration.context,warehouse:"
+msgid "Warehouse"
+msgstr "Logistikstandort"
+
+msgctxt "field:account.stock.eu.excise.declaration.product,company:"
+msgid "Company"
+msgstr "Unternehmen"
+
+msgctxt "field:account.stock.eu.excise.declaration.product,end_quantity:"
+msgid "End Quantity"
+msgstr "Endmenge"
+
+msgctxt "field:account.stock.eu.excise.declaration.product,eu_excise_code:"
+msgid "Excise Code"
+msgstr "Verbrauchssteuerkennziffer"
+
+msgctxt "field:account.stock.eu.excise.declaration.product,eu_excise_tax:"
+msgid "Excise Tax"
+msgstr "Verbrauchssteuer"
+
+msgctxt ""
+"field:account.stock.eu.excise.declaration.product,input_duty_suspension:"
+msgid "Input Duty Suspension"
+msgstr "Eingang Verbrauchssteueraussetzung"
+
+msgctxt "field:account.stock.eu.excise.declaration.product,input_other:"
+msgid "Input Other"
+msgstr "Eingang Sonstiges"
+
+msgctxt "field:account.stock.eu.excise.declaration.product,input_production:"
+msgid "Input Production"
+msgstr "Eingang Produktion"
+
+msgctxt "field:account.stock.eu.excise.declaration.product,input_replacement:"
+msgid "Input Replacement"
+msgstr "Eingang Ersatz"
+
+msgctxt "field:account.stock.eu.excise.declaration.product,input_total:"
+msgid "Input Total"
+msgstr "Eingang Gesamt"
+
+msgctxt "field:account.stock.eu.excise.declaration.product,output_duty_free:"
+msgid "Output Duty Free"
+msgstr "Ausgang Verbrauchssteuerfrei"
+
+msgctxt ""
+"field:account.stock.eu.excise.declaration.product,output_duty_suspension:"
+msgid "Output Duty Suspension"
+msgstr "Ausgang Verbrauchssteueraussetzung"
+
+msgctxt "field:account.stock.eu.excise.declaration.product,output_other:"
+msgid "Output Other"
+msgstr "Ausgang Sonstiges"
+
+msgctxt "field:account.stock.eu.excise.declaration.product,output_production:"
+msgid "Output Production"
+msgstr "Ausgang Produktion"
+
+msgctxt "field:account.stock.eu.excise.declaration.product,output_total:"
+msgid "Output Total"
+msgstr "Ausgang Gesamt"
+
+msgctxt "field:account.stock.eu.excise.declaration.product,output_with_duty:"
+msgid "Output with Duty"
+msgstr "Ausgang mit Verbrauchssteuer"
+
+msgctxt "field:account.stock.eu.excise.declaration.product,product:"
+msgid "Product"
+msgstr "Artikel"
+
+msgctxt "field:account.stock.eu.excise.declaration.product,start_quantity:"
+msgid "Start Quantity"
+msgstr "Startmenge"
+
+msgctxt "field:account.stock.eu.excise.declaration.product,unit:"
+msgid "Unit"
+msgstr "Einheit"
+
+msgctxt "field:account.stock.eu.excise.declaration.product.line,company:"
+msgid "Company"
+msgstr "Unternehmen"
+
+msgctxt "field:account.stock.eu.excise.declaration.product.line,date:"
+msgid "Date"
+msgstr "Datum"
+
+msgctxt "field:account.stock.eu.excise.declaration.product.line,direction:"
+msgid "Direction"
+msgstr "Richtung"
+
+msgctxt "field:account.stock.eu.excise.declaration.product.line,document:"
+msgid "Document"
+msgstr "Dokument"
+
+msgctxt "field:account.stock.eu.excise.declaration.product.line,duty:"
+msgid "Duty"
+msgstr "Verbrauchssteuerpflicht"
+
+msgctxt ""
+"field:account.stock.eu.excise.declaration.product.line,eu_excise_code:"
+msgid "Excise Code"
+msgstr "Verbrauchssteuerkennziffer"
+
+msgctxt ""
+"field:account.stock.eu.excise.declaration.product.line,eu_excise_tax:"
+msgid "Excise Tax"
+msgstr "Verbrauchssteuer"
+
+msgctxt ""
+"field:account.stock.eu.excise.declaration.product.line,internal_quantity:"
+msgid "Internal Quantity"
+msgstr "Interne Menge"
+
+msgctxt "field:account.stock.eu.excise.declaration.product.line,location:"
+msgid "Location"
+msgstr "Lagerort"
+
+msgctxt "field:account.stock.eu.excise.declaration.product.line,move:"
+msgid "Move"
+msgstr "Warenbewegung"
+
+msgctxt "field:account.stock.eu.excise.declaration.product.line,origin:"
+msgid "Origin"
+msgstr "Herkunft"
+
+msgctxt "field:account.stock.eu.excise.declaration.product.line,product:"
+msgid "Product"
+msgstr "Artikel"
+
+msgctxt "field:account.stock.eu.excise.declaration.product.line,quantity:"
+msgid "Quantity"
+msgstr "Menge"
+
+msgctxt "field:account.stock.eu.excise.declaration.product.line,unit:"
+msgid "Unit"
+msgstr "Einheit"
+
+msgctxt "field:account.stock.eu.excise.tax,code:"
+msgid "Code"
+msgstr "Kennziffer"
+
+msgctxt "field:account.stock.eu.excise.tax,country:"
+msgid "Country"
+msgstr "Land"
+
+msgctxt "field:account.stock.eu.excise.tax,currency:"
+msgid "Currency"
+msgstr "Währung"
+
+msgctxt "field:account.stock.eu.excise.tax,description:"
+msgid "Description"
+msgstr "Beschreibung"
+
+msgctxt "field:account.stock.eu.excise.tax,quantity:"
+msgid "Quantity"
+msgstr "Menge"
+
+msgctxt "field:account.stock.eu.excise.tax,tax_rates:"
+msgid "Tax Rates"
+msgstr "Steuersätze"
+
+msgctxt "field:account.stock.eu.excise.tax,uom:"
+msgid "UoM"
+msgstr "Maßeinheit"
+
+msgctxt "field:account.stock.eu.excise.tax.rate,end_date:"
+msgid "End Date"
+msgstr "Enddatum"
+
+msgctxt "field:account.stock.eu.excise.tax.rate,excise_tax:"
+msgid "Excise Tax"
+msgstr "Verbrauchssteuer"
+
+msgctxt "field:account.stock.eu.excise.tax.rate,formula:"
+msgid "Formula"
+msgstr "Formel"
+
+msgctxt "field:account.stock.eu.excise.tax.rate,start_date:"
+msgid "Start Date"
+msgstr "Startdatum"
+
+msgctxt "field:party.identifier,eu_excise_codes:"
+msgid "Excise Codes"
+msgstr "Verbrauchssteuerkennziffern"
+
+msgctxt "field:party.identifier-product.eu.excise_code,excise_code:"
+msgid "Excise Code"
+msgstr "Verbrauchssteuerkennziffer"
+
+msgctxt "field:party.identifier-product.eu.excise_code,identifier:"
+msgid "Identifier"
+msgstr "Identifikator"
+
+msgctxt "field:product-account.stock.eu.excise.tax,country:"
+msgid "Country"
+msgstr "Land"
+
+msgctxt "field:product-account.stock.eu.excise.tax,excise_tax:"
+msgid "Tax"
+msgstr "Steuer"
+
+msgctxt "field:product-account.stock.eu.excise.tax,template:"
+msgid "Product"
+msgstr "Artikel"
+
+msgctxt "field:product.eu.excise_code,code:"
+msgid "Code"
+msgstr "Kennziffer"
+
+msgctxt "field:product.eu.excise_code,description:"
+msgid "Description"
+msgstr "Beschreibung"
+
+msgctxt "field:product.price_list.line,eu_excise_duty:"
+msgid "Excise Duty Suspension"
+msgstr "Verbrauchssteueraussetzung"
+
+msgctxt "field:product.price_list.line,eu_excise_tax:"
+msgid "Excise Tax"
+msgstr "Verbrauchssteuer"
+
+msgctxt "field:product.product,eu_excise_code:"
+msgid "Excise Code"
+msgstr "Verbrauchssteuerkennziffer"
+
+msgctxt "field:product.product,eu_excise_taxes:"
+msgid "Excise Tax"
+msgstr "Verbrauchssteuer"
+
+msgctxt "field:product.template,eu_excise_code:"
+msgid "Excise Code"
+msgstr "Verbrauchssteuerkennziffer"
+
+msgctxt "field:product.template,eu_excise_taxes:"
+msgid "Excise Tax"
+msgstr "Verbrauchssteuer"
+
+msgctxt "field:sale.line,eu_excise_duty_amount:"
+msgid "Excise Duty Amount"
+msgstr "Verbrauchssteuerbetrag"
+
+msgctxt "field:sale.sale,eu_excise_duty_amount:"
+msgid "Excise Duty Amount"
+msgstr "Verbrauchsteuerbetrag"
+
+msgctxt "field:sale.sale,eu_excise_number:"
+msgid "Excise Number"
+msgstr "Verbrauchssteuernummer"
+
+msgctxt "field:sale.sale,eu_excise_types:"
+msgid "Excise Types"
+msgstr "Verbrauchssteuernummerarten"
+
+msgctxt "field:sale.sale,warehouse_eu_excise_number:"
+msgid "Warehouse Excise Number"
+msgstr "Logistikstandort Verbrauchssteuernummer"
+
+msgctxt "field:stock.location,eu_excise_numbers:"
+msgid "Excise Number"
+msgstr "Verbrauchssteuernummer"
+
+msgctxt "field:stock.location.eu_excise_number,company:"
+msgid "Company"
+msgstr "Unternehmen"
+
+msgctxt "field:stock.location.eu_excise_number,company_party:"
+msgid "Company Party"
+msgstr "Partei des Unternehmens"
+
+msgctxt "field:stock.location.eu_excise_number,eu_excise_number:"
+msgid "Excise Number"
+msgstr "Verbrauchssteuernummer"
+
+msgctxt "field:stock.location.eu_excise_number,warehouse:"
+msgid "Warehouse"
+msgstr "Logistikstandort"
+
+msgctxt "field:stock.location.eu_excise_number,warehouse_address:"
+msgid "Warehouse Address"
+msgstr "Adresse Logistikstandort"
+
+msgctxt "field:stock.move,eu_excise_duty:"
+msgid "Excise Duty"
+msgstr "Verbrauchssteuerpflicht"
+
+msgctxt "field:stock.move,eu_excise_duty_applicable:"
+msgid "Excise Duty Applicable"
+msgstr "Verbrauchssteueranwendung erforderlich"
+
+msgctxt "field:stock.shipment.in,eu_excise_number:"
+msgid "Excise Number"
+msgstr "Verbrauchssteuernummer"
+
+msgctxt "field:stock.shipment.in,eu_excise_party:"
+msgid "Excise Party"
+msgstr "Partei Verbrauchssteuer"
+
+msgctxt "field:stock.shipment.in,eu_excise_types:"
+msgid "Excise Types"
+msgstr "Verbrauchssteuernummerarten"
+
+msgctxt "field:stock.shipment.in,has_eu_excise_goods:"
+msgid "Has Excise Goods"
+msgstr "Hat Verbrauchssteuerpflichtige Waren"
+
+msgctxt "field:stock.shipment.in,warehouse_eu_excise_number:"
+msgid "Warehouse Excise Number"
+msgstr "Verbrauchssteuernummer Logistikstandort"
+
+msgctxt "field:stock.shipment.in.return,eu_excise_number:"
+msgid "Excise Number"
+msgstr "Verbrauchssteuernummer"
+
+msgctxt "field:stock.shipment.in.return,eu_excise_party:"
+msgid "Excise Party"
+msgstr "Partei Verbrauchssteuer"
+
+msgctxt "field:stock.shipment.in.return,eu_excise_types:"
+msgid "Excise Types"
+msgstr "Verbrauchssteuernummerarten"
+
+msgctxt "field:stock.shipment.in.return,has_eu_excise_goods:"
+msgid "Has Excise Goods"
+msgstr "Hat Verbrauchssteuerpflichtige Waren"
+
+msgctxt "field:stock.shipment.in.return,warehouse_eu_excise_number:"
+msgid "Warehouse Excise Number"
+msgstr "Verbrauchssteuernummer Logistikstandort"
+
+msgctxt "field:stock.shipment.out,eu_excise_number:"
+msgid "Excise Number"
+msgstr "Verbrauchssteuernummer"
+
+msgctxt "field:stock.shipment.out,eu_excise_party:"
+msgid "Excise Party"
+msgstr "Partei Verbrauchssteuer"
+
+msgctxt "field:stock.shipment.out,eu_excise_types:"
+msgid "Excise Types"
+msgstr "Verbrauchssteuernummerarten"
+
+msgctxt "field:stock.shipment.out,has_eu_excise_goods:"
+msgid "Has Excise Goods"
+msgstr "Hat Verbrauchssteuerpflichtige Waren"
+
+msgctxt "field:stock.shipment.out,warehouse_eu_excise_number:"
+msgid "Warehouse Excise Number"
+msgstr "Verbrauchssteuernummer Logistikstandort"
+
+msgctxt "field:stock.shipment.out.return,eu_excise_number:"
+msgid "Excise Number"
+msgstr "Verbrauchssteuernummer"
+
+msgctxt "field:stock.shipment.out.return,eu_excise_party:"
+msgid "Excise Party"
+msgstr "Partei Verbrauchssteuer"
+
+msgctxt "field:stock.shipment.out.return,eu_excise_types:"
+msgid "Excise Types"
+msgstr "Verbrauchssteuernummerarten"
+
+msgctxt "field:stock.shipment.out.return,has_eu_excise_goods:"
+msgid "Has Excise Goods"
+msgstr "Hat Verbrauchssteuerpflichtige Waren"
+
+msgctxt "field:stock.shipment.out.return,warehouse_eu_excise_number:"
+msgid "Warehouse Excise Number"
+msgstr "Verbrauchssteuernummer Logistikstandort"
+
+msgctxt "help:account.stock.eu.excise.tax,quantity:"
+msgid "Define which quantity to use for excise declaration."
+msgstr ""
+"Definiert, welche Menge für die Verbrauchssteuererklärung verwendet werden "
+"soll."
+
+msgctxt "help:account.stock.eu.excise.tax,uom:"
+msgid "The Unit of Measure for excise declaration."
+msgstr "Die Maßeinheit für die Verbrauchssteuererklärung."
+
+msgctxt "help:account.stock.eu.excise.tax.rate,formula:"
+msgid ""
+"A python expression that will be evaluated with:\n"
+"-quantity: the quantity of product"
+msgstr ""
+"Ein Python-Ausdruck, der ausgewertet wird mit:\n"
+"- quantity: Die Menge des Artikels"
+
+msgctxt "help:party.identifier,eu_excise_codes:"
+msgid "Authorized codes for the excise number."
+msgstr "Autorisierte Kennziffern für die Verbrauchssteuernummer."
+
+msgctxt "help:product.eu.excise_code,code:"
+msgid "The code from the System for Exchange of Excise Data"
+msgstr ""
+"Die Kennziffer des Systems für die Übermittlung der Verbrauchssteuerdaten"
+
+msgctxt "model:account.stock.eu.excise.declaration,string:"
+msgid "Account Stock Eu Excise Declaration"
+msgstr "Buchhaltung Lager EU Verbrauchssteuererklärung"
+
+msgctxt "model:account.stock.eu.excise.declaration.context,string:"
+msgid "Account Stock Eu Excise Declaration Context"
+msgstr "Buchhaltung Lager EU Verbrauchssteuererklärung Kontext"
+
+msgctxt "model:account.stock.eu.excise.declaration.product,string:"
+msgid "Account Stock Eu Excise Declaration Product"
+msgstr "Buchhaltung Lager EU Verbrauchssteuererklärung Artikel"
+
+msgctxt "model:account.stock.eu.excise.declaration.product.line,string:"
+msgid "Account Stock Eu Excise Declaration Product Line"
+msgstr "Buchhaltung Lager EU Verbrauchssteuererklärung Artikel Position"
+
+msgctxt "model:account.stock.eu.excise.tax,string:"
+msgid "Account Stock Eu Excise Tax"
+msgstr "Buchhaltung Lager EU Verbrauchssteuer"
+
+msgctxt "model:account.stock.eu.excise.tax.rate,string:"
+msgid "Account Stock Eu Excise Tax Rate"
+msgstr "Buchhaltung Lager EU Verbrauchssteuersatz"
+
+msgctxt "model:ir.action,name:act_account_stock_eu_excise_declaration_form"
+msgid "Excise Declarations"
+msgstr "Verbrauchssteuererklärungen"
+
+msgctxt ""
+"model:ir.action,name:act_account_stock_eu_excise_declaration_product_form"
+msgid "Excise Declaration Products"
+msgstr "Verbrauchsteuererklärung Artikel"
+
+msgctxt ""
+"model:ir.action,name:act_account_stock_eu_excise_declaration_product_line_form"
+msgid "Excise Declaration Product Lines"
+msgstr "Verbrauchsteuererklärung Artikel Positionen"
+
+msgctxt "model:ir.action,name:act_account_stock_eu_excise_tax_form"
+msgid "Excise Taxes"
+msgstr "Verbrauchssteuern"
+
+msgctxt "model:ir.action,name:act_product_eu_excise_code_form"
+msgid "Excise Codes"
+msgstr "Verbrauchssteuerkennziffern"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_account_stock_eu_excise_declaration_product_line_form_all"
+msgid "All"
+msgstr "Alle"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_account_stock_eu_excise_declaration_product_line_form_input_duty_suspension"
+msgid "Input Duty Suspension"
+msgstr "Eingang Verbrauchssteueraussetzung"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_account_stock_eu_excise_declaration_product_line_form_input_other"
+msgid "Input Other"
+msgstr "Eingang Sonstiges"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_account_stock_eu_excise_declaration_product_line_form_input_production"
+msgid "Input Production"
+msgstr "Eingang Produktion"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_account_stock_eu_excise_declaration_product_line_form_input_replacement"
+msgid "Input Replacement"
+msgstr "Eingang Ersatz"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_account_stock_eu_excise_declaration_product_line_form_output_duty_free"
+msgid "Output Duty Free"
+msgstr "Ausgang Verbrauchssteuerfrei"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_account_stock_eu_excise_declaration_product_line_form_output_duty_suspension"
+msgid "Output Duty Suspension"
+msgstr "Ausgang Verbrauchssteueraussetzung"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_account_stock_eu_excise_declaration_product_line_form_output_other"
+msgid "Output Other"
+msgstr "Ausgang Sonstiges"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_account_stock_eu_excise_declaration_product_line_form_output_production"
+msgid "Output Production"
+msgstr "Ausgang Produktion"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_account_stock_eu_excise_declaration_product_line_form_output_with_duty"
+msgid "Output with Duty"
+msgstr "Ausgang mit Verbrauchssteuer"
+
+msgctxt "model:ir.message,text:msg_excise_tax_template_country_unique"
+msgid "Only one excise tax per country can be applied to a product."
+msgstr ""
+"Pro Land und Artikel kann nur eine Verbrauchssteuer angewendet werden."
+
+#, python-format
+msgctxt "model:ir.message,text:msg_invalid_formula"
+msgid ""
+"Invalid formula \"%(formula)s\" in excise tax rate \"%(tax_rate)s\" with "
+"exception \"%(exception)s\"."
+msgstr ""
+"Ungültige Formel \"%(formula)s\" im Verbrauchsteuersatz \"%(tax_rate)s\" mit"
+" Fehler \"%(exception)s\"."
+
+msgctxt "model:ir.message,text:msg_warehouse_excise_company_unique"
+msgid "Only one excise number is allowed for a warehouse per company."
+msgstr ""
+"Pro Unternehmen und Logistikstandort ist nur eine Verbrauchssteuernummer "
+"zulässig."
+
+msgctxt ""
+"model:ir.rule.group,name:rule_group_account_stock_eu_excise_declaration_companies"
+msgid "User in companies"
+msgstr "Benutzer in Unternehmen"
+
+msgctxt ""
+"model:ir.rule.group,name:rule_group_account_stock_eu_excise_declaration_product_companies"
+msgid "User in companies"
+msgstr "Benutzer in Unternehmen"
+
+msgctxt ""
+"model:ir.rule.group,name:rule_group_account_stock_eu_excise_declaration_product_line_companies"
+msgid "User in companies"
+msgstr "Benutzer in Unternehmen"
+
+msgctxt "model:ir.ui.menu,name:menu_account_stock_eu_excise_declaration_form"
+msgid "Excise Declarations"
+msgstr "Verbrauchssteuererklärungen"
+
+msgctxt ""
+"model:ir.ui.menu,name:menu_account_stock_eu_excise_declaration_product_form"
+msgid "Excise Declaration Products"
+msgstr "Verbrauchssteuererklärung Artikel"
+
+msgctxt "model:ir.ui.menu,name:menu_account_stock_eu_excise_tax_form"
+msgid "Excise Taxes"
+msgstr "Verbrauchssteuern"
+
+msgctxt "model:ir.ui.menu,name:menu_product_eu_excise_code_form"
+msgid "Excise Codes"
+msgstr "Verbrauchssteuerkennziffern"
+
+msgctxt "model:party.identifier-product.eu.excise_code,string:"
+msgid "Party Identifier - Product Eu Excise Code"
+msgstr "Partei Identifikator - Artikel EU Verbrauchssteuerkennziffer"
+
+msgctxt "model:product-account.stock.eu.excise.tax,string:"
+msgid "Product - Account Stock Eu Excise Tax"
+msgstr "Artikel - Buchhaltung Lager EU Verbrauchssteuer"
+
+msgctxt "model:product.eu.excise_code,string:"
+msgid "Product Eu Excise Code"
+msgstr "Artikel EU Verbrauchssteuerkennziffer"
+
+msgctxt "model:stock.location.eu_excise_number,string:"
+msgid "Stock Location Eu Excise Number"
+msgstr "Lagerort EU Verbrauchssteuernummer"
+
+msgctxt ""
+"selection:account.stock.eu.excise.declaration.product.line,direction:"
+msgid "Input"
+msgstr "Eingang"
+
+msgctxt ""
+"selection:account.stock.eu.excise.declaration.product.line,direction:"
+msgid "Output"
+msgstr "Ausgang"
+
+msgctxt "selection:account.stock.eu.excise.declaration.product.line,duty:"
+msgid "Free"
+msgstr "Frei"
+
+msgctxt "selection:account.stock.eu.excise.declaration.product.line,duty:"
+msgid "Suspension"
+msgstr "Aussetzung"
+
+msgctxt "selection:account.stock.eu.excise.tax,quantity:"
+msgid "Volume Measurements"
+msgstr "Volumeneinheiten"
+
+msgctxt "selection:account.stock.eu.excise.tax,quantity:"
+msgid "Weight Measurements"
+msgstr "Gewichtseinheiten"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "European Excise Number"
+msgstr "Europäische Verbrauchssteuernummer"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "French Excise Number"
+msgstr "Französische Verbrauchssteuernummer"
+
+msgctxt "selection:product.price_list.line,eu_excise_duty:"
+msgid "Suspension"
+msgstr "Aussetzung"
+
+msgctxt "selection:sale.sale,eu_excise_types:"
+msgid "European Excise Number"
+msgstr "Europäische Verbrauchssteuernummer"
+
+msgctxt "selection:sale.sale,eu_excise_types:"
+msgid "French Excise Number"
+msgstr "Französische Verbrauchssteuernummer"
+
+msgctxt "selection:stock.move,eu_excise_duty:"
+msgid "Free"
+msgstr "Frei"
+
+msgctxt "selection:stock.move,eu_excise_duty:"
+msgid "Suspension"
+msgstr "Aussetzung"
+
+msgctxt "selection:stock.shipment.in,eu_excise_types:"
+msgid "European Excise Number"
+msgstr "Europäische Verbrauchssteuernummer"
+
+msgctxt "selection:stock.shipment.in,eu_excise_types:"
+msgid "French Excise Number"
+msgstr "Französische Verbrauchssteuernummer"
+
+msgctxt "selection:stock.shipment.in.return,eu_excise_types:"
+msgid "European Excise Number"
+msgstr "Europäische Verbrauchssteuernummer"
+
+msgctxt "selection:stock.shipment.in.return,eu_excise_types:"
+msgid "French Excise Number"
+msgstr "Französische Verbrauchssteuernummer"
+
+msgctxt "selection:stock.shipment.out,eu_excise_types:"
+msgid "European Excise Number"
+msgstr "Europäische Verbrauchssteuernummer"
+
+msgctxt "selection:stock.shipment.out,eu_excise_types:"
+msgid "French Excise Number"
+msgstr "Französische Verbrauchssteuernummer"
+
+msgctxt "selection:stock.shipment.out.return,eu_excise_types:"
+msgid "European Excise Number"
+msgstr "Europäische Verbrauchssteuernummer"
+
+msgctxt "selection:stock.shipment.out.return,eu_excise_types:"
+msgid "French Excise Number"
+msgstr "Französische Verbrauchssteuernummer"
+
+msgctxt "view:account.stock.eu.excise.declaration.product:"
+msgid "Input"
+msgstr "Eingang"
+
+msgctxt "view:account.stock.eu.excise.declaration.product:"
+msgid "Output"
+msgstr "Ausgang"
+
+msgctxt "view:account.stock.eu.excise.declaration:"
+msgid "Input"
+msgstr "Eingang"
+
+msgctxt "view:account.stock.eu.excise.declaration:"
+msgid "Output"
+msgstr "Ausgang"
+
+msgctxt "view:product.template:"
+msgid "Excise"
+msgstr "Verbrauchssteuer"

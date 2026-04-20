@@ -2,6 +2,16 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+#, fuzzy
+msgctxt "field:project.configuration,work_sequence:"
+msgid "Work Effort Sequence"
+msgstr "Дейност"
+
+#, fuzzy
+msgctxt "field:project.configuration.sequence,work_sequence:"
+msgid "Work Effort Sequence"
+msgstr "Дейност"
+
 msgctxt "field:project.work,children:"
 msgid "Children"
 msgstr "Наследници"
@@ -22,6 +32,14 @@ msgstr ""
 msgctxt "field:project.work,name:"
 msgid "Name"
 msgstr "Име"
+
+msgctxt "field:project.work,number:"
+msgid "Number"
+msgstr ""
+
+msgctxt "field:project.work,origin:"
+msgid "Origin"
+msgstr ""
 
 msgctxt "field:project.work,parent:"
 msgid "Parent"
@@ -105,10 +123,22 @@ msgctxt "field:project.work.status,types:"
 msgid "Types"
 msgstr "Вид"
 
+msgctxt "help:project.configuration,work_sequence:"
+msgid "Used to generate the work number."
+msgstr ""
+
+msgctxt "help:project.configuration.sequence,work_sequence:"
+msgid "Used to generate the work number."
+msgstr ""
+
 #, fuzzy
 msgctxt "help:project.work,effort_duration:"
 msgid "Estimated Effort for this work."
 msgstr "Предполагаеми общо усилия за тази задача и подзадачите"
+
+msgctxt "help:project.work,origin:"
+msgid "The source of the task."
+msgstr ""
 
 #, fuzzy
 msgctxt "help:project.work,progress:"
@@ -154,6 +184,11 @@ msgstr ""
 msgctxt "model:ir.action,name:act_open_child_work"
 msgid "Tasks"
 msgstr "Tasks"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_project_configuration"
+msgid "Configuration"
+msgstr "Configuration"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_project_form"
@@ -211,6 +246,10 @@ msgid ""
 "progress up to at least %(progress)s."
 msgstr ""
 
+msgctxt "model:ir.message,text:msg_work_number_unique"
+msgid "The number on work must be unique."
+msgstr ""
+
 #, python-format
 msgctxt "model:ir.message,text:msg_work_parent_progress"
 msgid ""
@@ -223,6 +262,16 @@ msgid "User in companies"
 msgstr ""
 
 #, fuzzy
+msgctxt "model:ir.sequence,name:sequence_work"
+msgid "Work Effort"
+msgstr "Дейност"
+
+#, fuzzy
+msgctxt "model:ir.sequence.type,name:sequence_type_work"
+msgid "Project Work Effort"
+msgstr "Проект"
+
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
 msgstr "Configuration"
@@ -231,6 +280,11 @@ msgstr "Configuration"
 msgctxt "model:ir.ui.menu,name:menu_project"
 msgid "Projects"
 msgstr "Projects"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_project_configuration"
+msgid "Configuration"
+msgstr "Configuration"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_project_form"
@@ -264,6 +318,16 @@ msgstr ""
 msgctxt "model:ir.ui.menu,name:menu_work_tree"
 msgid "Works Efforts"
 msgstr "Works Efforts"
+
+#, fuzzy
+msgctxt "model:project.configuration,string:"
+msgid "Project Configuration"
+msgstr "Configuration"
+
+#, fuzzy
+msgctxt "model:project.configuration.sequence,string:"
+msgid "Project Configuration Sequence"
+msgstr "Project Administration"
 
 #, fuzzy
 msgctxt "model:project.work,string:"

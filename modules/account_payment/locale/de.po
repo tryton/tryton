@@ -513,6 +513,10 @@ msgstr ""
 "Partei \"%(party)s\" kann nicht gelöscht werden, solange noch Zahlungen bei "
 "Unternehmen \"%(company)s\" ausstehen."
 
+msgctxt "model:ir.message,text:msg_invoice_payment_mean_direct_debit"
+msgid "Direct debit"
+msgstr "Lastschrifteinzug"
+
 #, python-format
 msgctxt "model:ir.message,text:msg_move_cancel_payments"
 msgid ""
@@ -567,11 +571,29 @@ msgstr ""
 "Buchungszeile \"%(line)s\" gruppiert werden."
 
 #, python-format
+msgctxt "model:ir.message,text:msg_pay_line_overpay"
+msgid ""
+"The payment of %(payment_amount)s for lines \"%(names)s\" exceeds the amount"
+" for %(party)s, which is %(amount)s."
+msgstr ""
+"Die Zahlung von %(payment_amount)s für die Zeilen \"%(names)s\" übersteigt "
+"den Betrag für %(party)s, der %(amount)s beträgt."
+
+#, python-format
 msgctxt "model:ir.message,text:msg_payment_delete_draft"
 msgid "To delete payment \"%(payment)s\" you must reset it to draft state."
 msgstr ""
 "Um Zahlung \"%(payment)s\" zu löschen, muss sie auf den Entwurfsstatus "
 "zurückgesetzt werden."
+
+#, python-format
+msgctxt "model:ir.message,text:msg_payment_means"
+msgid ""
+"The journal \"%(journal)s\" of payment \"%(payment)s\" is not valid with the"
+" payment means of invoice \"%(invoice)s\"."
+msgstr ""
+"Der Zahlungsjournal \"%(journal)s\" der Zahlung \"%(payment)s\" ist nicht "
+"mit dem Zahlungsmittel der Rechnung \"%(invoice)s\" kompatibel."
 
 #, python-format
 msgctxt "model:ir.message,text:msg_payment_overpay"

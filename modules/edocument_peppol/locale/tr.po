@@ -6,6 +6,10 @@ msgctxt "field:account.invoice,peppol:"
 msgid "Peppol"
 msgstr ""
 
+msgctxt "field:account.invoice,send_via_peppol:"
+msgid "Send via Peppol"
+msgstr ""
+
 msgctxt "field:edocument.peppol,company:"
 msgid "Company"
 msgstr ""
@@ -122,13 +126,15 @@ msgid "Failed"
 msgstr ""
 
 msgctxt ""
-"model:ir.action.act_window.domain,name:act_edocument_peppol_domain_pending"
-msgid "Pending"
-msgstr ""
-
-msgctxt ""
 "model:ir.action.act_window.domain,name:act_edocument_peppol_domain_processing"
 msgid "Processing"
+msgstr ""
+
+#, python-format
+msgctxt "model:ir.message,text:msg_invoice_line_unit_price_not_negative"
+msgid ""
+"In order to post the invoice \"%(invoice)s\" on the Peppol network, the unit"
+" price of the line \"%(line)s\" must not be negative."
 msgstr ""
 
 #, python-format
@@ -160,6 +166,10 @@ msgstr ""
 
 msgctxt "model:ir.model.button,string:edocument_peppol_submit_button"
 msgid "Submit"
+msgstr ""
+
+msgctxt "model:ir.model.button,string:edocument_peppol_update_status_button"
+msgid "Update Status"
 msgstr ""
 
 msgctxt "model:ir.rule.group,name:rule_group_edocument_peppol_companies"

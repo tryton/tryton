@@ -72,7 +72,7 @@ msgstr "Productie routering"
 
 msgctxt "model:production.routing-production.bom,string:"
 msgid "Production Routing - Production Bom"
-msgstr "Productie routering - Productie BOM"
+msgstr "Productie routering - Productie Bom"
 
 msgctxt "model:production.routing.operation,string:"
 msgid "Production Routing Operation"

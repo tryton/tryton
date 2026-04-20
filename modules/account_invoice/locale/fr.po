@@ -188,6 +188,10 @@ msgctxt "field:account.invoice,number_digit:"
 msgid "Number Digit"
 msgstr "Numéro chiffre"
 
+msgctxt "field:account.invoice,origin_invoices:"
+msgid "Origin Invoices"
+msgstr "Factures d'origine"
+
 msgctxt "field:account.invoice,origins:"
 msgid "Origins"
 msgstr "Origines"
@@ -207,6 +211,10 @@ msgstr "Identifiant de taxe du tiers"
 msgctxt "field:account.invoice,payment_lines:"
 msgid "Payment Lines"
 msgstr "Lignes de paiement"
+
+msgctxt "field:account.invoice,payment_means:"
+msgid "Payment Means"
+msgstr "Moyens de paiement"
 
 msgctxt "field:account.invoice,payment_term:"
 msgid "Payment Term"
@@ -239,6 +247,18 @@ msgstr "Séquence"
 msgctxt "field:account.invoice,sequence_type_cache:"
 msgid "Sequence Type Cache"
 msgstr "Cache de type de séquence"
+
+msgctxt "field:account.invoice,source_tax_amount:"
+msgid "Source Tax"
+msgstr "Taxe de la source"
+
+msgctxt "field:account.invoice,source_total_amount:"
+msgid "Source Total"
+msgstr "Total de la source"
+
+msgctxt "field:account.invoice,source_untaxed_amount:"
+msgid "Source Untaxed"
+msgstr "Hors taxe de la source"
 
 msgctxt "field:account.invoice,state:"
 msgid "State"
@@ -543,6 +563,42 @@ msgstr "Bénéficiaires"
 msgctxt "field:account.invoice.pay.start,payment_method:"
 msgid "Payment Method"
 msgstr "Méthode de paiement"
+
+msgctxt "field:account.invoice.payment.mean,company:"
+msgid "Company"
+msgstr "Société"
+
+msgctxt "field:account.invoice.payment.mean,instrument:"
+msgid "Instrument"
+msgstr "Instrument"
+
+msgctxt "field:account.invoice.payment.mean,invoice:"
+msgid "Invoice"
+msgstr "Facture"
+
+msgctxt "field:account.invoice.payment.mean,payees:"
+msgid "Payees"
+msgstr "Bénéficiaires"
+
+msgctxt "field:account.invoice.payment.mean,payers:"
+msgid "Payers"
+msgstr "Payeurs"
+
+msgctxt "field:account.invoice.payment.mean.rule,company:"
+msgid "Company"
+msgstr "Société"
+
+msgctxt "field:account.invoice.payment.mean.rule,currency:"
+msgid "Currency"
+msgstr "Devise"
+
+msgctxt "field:account.invoice.payment.mean.rule,instrument:"
+msgid "Instrument"
+msgstr "Instrument"
+
+msgctxt "field:account.invoice.payment.mean.rule,payee:"
+msgid "Payee"
+msgstr "Bénéficiaire"
 
 msgctxt "field:account.invoice.payment.method,company:"
 msgid "Company"
@@ -872,6 +928,14 @@ msgctxt "model:account.invoice.pay.start,string:"
 msgid "Account Invoice Pay Start"
 msgstr "Payer la facture comptable Début"
 
+msgctxt "model:account.invoice.payment.mean,string:"
+msgid "Account Invoice Payment Mean"
+msgstr "Moyen de paiement de la facture comptable"
+
+msgctxt "model:account.invoice.payment.mean.rule,string:"
+msgid "Account Invoice Payment Mean Rule"
+msgstr "Règle de moyen paiement des factures comptables"
+
 msgctxt "model:account.invoice.payment.method,string:"
 msgid "Account Invoice Payment Method"
 msgstr "Méthode de paiement de la facture comptable"
@@ -955,6 +1019,10 @@ msgstr "Factures fournisseur"
 msgctxt "model:ir.action,name:act_invoice_out_form"
 msgid "Customer Invoices"
 msgstr "Factures client"
+
+msgctxt "model:ir.action,name:act_invoice_payment_mean_rule_form"
+msgid "Payment Means Rules"
+msgstr "Règles de moyens de paiement"
 
 msgctxt "model:ir.action,name:act_invoice_relate"
 msgid "Invoices"
@@ -1237,6 +1305,15 @@ msgstr ""
 "La facture « %(invoice)s » est similaire à la facture « %(similar)s »."
 
 #, python-format
+msgctxt "model:ir.message,text:msg_invoice_source_mismatch"
+msgid ""
+"The \"%(field)s\" value of the invoice \"%(invoice)s\", %(value)s, must "
+"equal the source value, %(source)s."
+msgstr ""
+"La valeur « %(field)s » de la facture « %(invoice)s », %(value)s, doit être "
+"égale à la valeur de la source, %(source)s."
+
+#, python-format
 msgctxt "model:ir.message,text:msg_invoice_supplier_payment_reference_invalid"
 msgid "The %(type)s \"%(reference)s\" on invoice \"%(invoice)s\" is not valid."
 msgstr ""
@@ -1354,6 +1431,11 @@ msgctxt "model:ir.rule.group,name:rule_group_invoice_line_companies"
 msgid "User in companies"
 msgstr "Utilisateur dans les sociétés"
 
+msgctxt ""
+"model:ir.rule.group,name:rule_group_invoice_payment_mean_rule_companies"
+msgid "User in companies"
+msgstr "Utilisateur dans les sociétés"
+
 msgctxt "model:ir.rule.group,name:rule_group_invoice_sequence_companies"
 msgid "User in companies"
 msgstr "Utilisateur dans les sociétés"
@@ -1374,6 +1456,10 @@ msgctxt "model:ir.ui.menu,name:menu_invoice_out_form"
 msgid "Customer Invoices"
 msgstr "Factures client"
 
+msgctxt "model:ir.ui.menu,name:menu_invoice_payment_mean_rule"
+msgid "Payment Means Rules"
+msgstr "Règles de moyens de paiement"
+
 msgctxt "model:ir.ui.menu,name:menu_invoices"
 msgid "Invoices"
 msgstr "Factures"
@@ -1390,9 +1476,9 @@ msgctxt "model:ir.ui.menu,name:menu_payment_term_test"
 msgid "Test Payment Term"
 msgstr "Test de conditions de paiement"
 
-msgctxt "model:ir.ui.menu,name:menu_payment_terms_configuration"
-msgid "Payment Terms"
-msgstr "Conditions de paiement"
+msgctxt "model:ir.ui.menu,name:menu_payments_configuration"
+msgid "Invoice Payments"
+msgstr "Paiements de factures"
 
 msgctxt "model:party.party.payment_term,string:"
 msgid "Party Payment Term"
@@ -1433,6 +1519,10 @@ msgstr "Facture brouillon"
 msgctxt "report:account.invoice:"
 msgid "Invoice No:"
 msgstr "N° de facture :"
+
+msgctxt "report:account.invoice:"
+msgid "Payment Means"
+msgstr "Moyens de paiement"
 
 msgctxt "report:account.invoice:"
 msgid "Payment Term"
@@ -1619,6 +1709,10 @@ msgstr "Paiement"
 msgctxt "view:account.invoice:"
 msgid "Tax Identifier:"
 msgstr "Identifiant de taxe :"
+
+msgctxt "view:account.invoice:"
+msgid "expected"
+msgstr "attendu"
 
 msgctxt "view:company.company:"
 msgid "Invoice"

@@ -265,6 +265,11 @@ msgctxt "field:purchase.line,quantity:"
 msgid "Quantity"
 msgstr "Mennyiség"
 
+#, fuzzy
+msgctxt "field:purchase.line,quantity_to_invoice:"
+msgid "Quantity to Invoice"
+msgstr "Számla"
+
 msgctxt "field:purchase.line,summary:"
 msgid "Summary"
 msgstr "Leírás"
@@ -515,6 +520,11 @@ msgstr "Adó"
 msgctxt "field:purchase.purchase,tax_amount_cache:"
 msgid "Tax Cache"
 msgstr ""
+
+#, fuzzy
+msgctxt "field:purchase.purchase,to_invoice:"
+msgid "To Invoice"
+msgstr "Számla"
 
 msgctxt "field:purchase.purchase,total_amount:"
 msgid "Total"
@@ -1379,16 +1389,17 @@ msgid "Title"
 msgstr "Címsor"
 
 msgctxt "selection:purchase.purchase,invoice_method:"
-msgid "Based On Order"
-msgstr "rendelésből"
-
-msgctxt "selection:purchase.purchase,invoice_method:"
-msgid "Based On Shipment"
-msgstr "szállítmányról"
-
-msgctxt "selection:purchase.purchase,invoice_method:"
 msgid "Manual"
 msgstr "kézzel"
+
+msgctxt "selection:purchase.purchase,invoice_method:"
+msgid "On Fulfillment"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:purchase.purchase,invoice_method:"
+msgid "On Order"
+msgstr "rendelésből"
 
 msgctxt "selection:purchase.purchase,invoice_state:"
 msgid "Awaiting Payment"

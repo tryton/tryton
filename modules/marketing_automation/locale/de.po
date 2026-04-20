@@ -249,7 +249,7 @@ msgstr "Status"
 
 msgctxt "field:marketing.automation.scenario,unsubscribable:"
 msgid "Unsubscribable"
-msgstr "Abmeldung möglich"
+msgstr "Abbestellung möglich"
 
 msgctxt "field:party.party,marketing_party:"
 msgid "Marketing Party"
@@ -257,7 +257,7 @@ msgstr "Marketing Partei"
 
 msgctxt "field:party.party,marketing_scenario_unsubscribed:"
 msgid "Marketing Automation Scenario Unsubscribed"
-msgstr "Marketingautomatisierungsszenario abgemeldet"
+msgstr "Marketingautomatisierungsszenario abbestellt"
 
 msgctxt "field:party.party-unsubscribed-marketing.automation.scenario,party:"
 msgid "Party"
@@ -320,7 +320,7 @@ msgstr ""
 
 msgctxt "help:marketing.automation.scenario,unsubscribable:"
 msgid "If checked parties are also unsubscribed from the scenario."
-msgstr "Bei Aktivierung werden Parteien auch vom Szenario abgemeldet."
+msgstr "Bei Aktivierung werden Parteien auch vom Szenario abbestellt."
 
 msgctxt "model:ir.action,name:act_activity_tree"
 msgid "Activities"
@@ -352,7 +352,7 @@ msgstr "Szenarien"
 
 msgctxt "model:ir.action,name:report_unsubscribe"
 msgid "Marketing Automation Unsubscribe"
-msgstr "Abmeldung Marketingautomatisierung"
+msgstr "Marketingautomatisierung Abbestellen"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_record_activity_form_domain_all"
@@ -498,11 +498,11 @@ msgstr "Marketing Automatisierung Szenario"
 
 msgctxt "model:party.party-unsubscribed-marketing.automation.scenario,string:"
 msgid "Party - Unsubscribed - Marketing Automation Scenario"
-msgstr "Partei - Abgemeldet - Marketing Automatisierung Szenario"
+msgstr "Partei - Abbestellt - Marketing Automatisierung Szenario"
 
 msgctxt "report:marketing.automation.unsubscribe:"
 msgid "Unsubscribe"
-msgstr "Abmelden"
+msgstr "Abbestellen"
 
 msgctxt "report:marketing.automation.unsubscribe:"
 msgid ""
@@ -513,11 +513,11 @@ msgstr ""
 
 msgctxt "report:marketing.automation.unsubscribe:"
 msgid "You are unsubscribed"
-msgstr "Sie sind abgemeldet"
+msgstr "Sie haben abbestellt"
 
 msgctxt "report:marketing.automation.unsubscribe:"
 msgid "You have been successfully unsubscribed from this kind of email."
-msgstr "Sie haben sich für diese Art von E-Mails erfolgreich abgemeldet."
+msgstr "Sie haben diese Art von E-Mails erfolgreich abbestellt."
 
 msgctxt "selection:ir.cron,method:"
 msgid "Process Marketing Activity"

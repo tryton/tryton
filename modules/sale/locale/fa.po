@@ -314,6 +314,16 @@ msgctxt "field:sale.line,quantity:"
 msgid "Quantity"
 msgstr "مقدار/تعداد"
 
+#, fuzzy
+msgctxt "field:sale.line,quantity_to_invoice:"
+msgid "Quantity to Invoice"
+msgstr "ایجاد دوباره صورتحساب ها"
+
+#, fuzzy
+msgctxt "field:sale.line,quantity_to_ship:"
+msgid "Quantity to Ship"
+msgstr "مقدار/تعداد"
+
 msgctxt "field:sale.line,sale:"
 msgid "Sale"
 msgstr "فروش"
@@ -709,6 +719,15 @@ msgstr "مالیات"
 msgctxt "field:sale.sale,tax_amount_cache:"
 msgid "Tax Cache"
 msgstr "مالیات نقدی"
+
+#, fuzzy
+msgctxt "field:sale.sale,to_invoice:"
+msgid "To Invoice"
+msgstr "صورت حساب"
+
+msgctxt "field:sale.sale,to_ship:"
+msgid "To Ship"
+msgstr ""
 
 msgctxt "field:sale.sale,total_amount:"
 msgid "Total"
@@ -1699,12 +1718,12 @@ msgid "Manual"
 msgstr "دستی"
 
 msgctxt "selection:sale.sale,invoice_method:"
-msgid "On Order Processed"
-msgstr "در دستور پردازش شده"
+msgid "On Fulfillment"
+msgstr ""
 
 msgctxt "selection:sale.sale,invoice_method:"
-msgid "On Shipment Sent"
-msgstr "در ارسال حمل و نقل"
+msgid "On Order Processed"
+msgstr "در دستور پردازش شده"
 
 msgctxt "selection:sale.sale,invoice_state:"
 msgid "Awaiting Payment"

@@ -301,6 +301,16 @@ msgctxt "field:sale.line,quantity:"
 msgid "Quantity"
 msgstr "Mennyiség"
 
+#, fuzzy
+msgctxt "field:sale.line,quantity_to_invoice:"
+msgid "Quantity to Invoice"
+msgstr "Számla"
+
+#, fuzzy
+msgctxt "field:sale.line,quantity_to_ship:"
+msgid "Quantity to Ship"
+msgstr "Mennyiség"
+
 msgctxt "field:sale.line,sale:"
 msgid "Sale"
 msgstr "Vevői rendelés"
@@ -691,6 +701,15 @@ msgstr "Adó"
 
 msgctxt "field:sale.sale,tax_amount_cache:"
 msgid "Tax Cache"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:sale.sale,to_invoice:"
+msgid "To Invoice"
+msgstr "Számla"
+
+msgctxt "field:sale.sale,to_ship:"
+msgid "To Ship"
 msgstr ""
 
 msgctxt "field:sale.sale,total_amount:"
@@ -1659,12 +1678,12 @@ msgid "Manual"
 msgstr "kézzel"
 
 msgctxt "selection:sale.sale,invoice_method:"
-msgid "On Order Processed"
-msgstr "a rendelés alapján"
+msgid "On Fulfillment"
+msgstr ""
 
 msgctxt "selection:sale.sale,invoice_method:"
-msgid "On Shipment Sent"
-msgstr "a vevői szállítmány alapján"
+msgid "On Order Processed"
+msgstr "a rendelés alapján"
 
 msgctxt "selection:sale.sale,invoice_state:"
 msgid "Awaiting Payment"

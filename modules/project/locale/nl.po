@@ -2,6 +2,14 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgctxt "field:project.configuration,work_sequence:"
+msgid "Work Effort Sequence"
+msgstr "Reeks arbeidsinspanning"
+
+msgctxt "field:project.configuration.sequence,work_sequence:"
+msgid "Work Effort Sequence"
+msgstr "Reeks arbeidsinspanning"
+
 msgctxt "field:project.work,children:"
 msgid "Children"
 msgstr "Onderliggende niveaus"
@@ -21,6 +29,14 @@ msgstr "Inspanning"
 msgctxt "field:project.work,name:"
 msgid "Name"
 msgstr "Naam"
+
+msgctxt "field:project.work,number:"
+msgid "Number"
+msgstr "Nummer"
+
+msgctxt "field:project.work,origin:"
+msgid "Origin"
+msgstr "Oorsprong"
 
 msgctxt "field:project.work,parent:"
 msgid "Parent"
@@ -98,9 +114,21 @@ msgctxt "field:project.work.status,types:"
 msgid "Types"
 msgstr "Types"
 
+msgctxt "help:project.configuration,work_sequence:"
+msgid "Used to generate the work number."
+msgstr "Wordt gebruikt om het werknummer te genereren."
+
+msgctxt "help:project.configuration.sequence,work_sequence:"
+msgid "Used to generate the work number."
+msgstr "Wordt gebruikt om het werknummer te genereren."
+
 msgctxt "help:project.work,effort_duration:"
 msgid "Estimated Effort for this work."
 msgstr "Geschatte inspanning voor dit werk."
+
+msgctxt "help:project.work,origin:"
+msgid "The source of the task."
+msgstr "De oorsprong van de taak."
 
 msgctxt "help:project.work,progress:"
 msgid "Estimated progress for this work."
@@ -141,6 +169,10 @@ msgstr "Het soort werken dat deze status kan gebruiken."
 msgctxt "model:ir.action,name:act_open_child_work"
 msgid "Tasks"
 msgstr "taken"
+
+msgctxt "model:ir.action,name:act_project_configuration"
+msgid "Configuration"
+msgstr "Configuratie"
 
 msgctxt "model:ir.action,name:act_project_form"
 msgid "Projects"
@@ -199,6 +231,10 @@ msgstr ""
 "Om werk \"%(work)s\" in te stellen op \"%(status)s\" status, moet u de "
 "progressie (vooruitgang) verhogen tot minstens %(progress)s."
 
+msgctxt "model:ir.message,text:msg_work_number_unique"
+msgid "The number on work must be unique."
+msgstr "Het werknummer moet uniek zijn."
+
 #, python-format
 msgctxt "model:ir.message,text:msg_work_parent_progress"
 msgid ""
@@ -212,6 +248,14 @@ msgctxt "model:ir.rule.group,name:rule_group_work_companies"
 msgid "User in companies"
 msgstr "Gebruiker in het bedrijf"
 
+msgctxt "model:ir.sequence,name:sequence_work"
+msgid "Work Effort"
+msgstr "Arbeidsinspanning"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_work"
+msgid "Project Work Effort"
+msgstr "Project arbeidsinspanning"
+
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
 msgstr "Configuratie"
@@ -219,6 +263,10 @@ msgstr "Configuratie"
 msgctxt "model:ir.ui.menu,name:menu_project"
 msgid "Projects"
 msgstr "Projecten"
+
+msgctxt "model:ir.ui.menu,name:menu_project_configuration"
+msgid "Configuration"
+msgstr "Configuratie"
 
 msgctxt "model:ir.ui.menu,name:menu_project_form"
 msgid "Projects"
@@ -247,6 +295,14 @@ msgstr "Werk status"
 msgctxt "model:ir.ui.menu,name:menu_work_tree"
 msgid "Works Efforts"
 msgstr "Werkt inspanningen"
+
+msgctxt "model:project.configuration,string:"
+msgid "Project Configuration"
+msgstr "Project configuratie"
+
+msgctxt "model:project.configuration.sequence,string:"
+msgid "Project Configuration Sequence"
+msgstr "Project configuratie reeks"
 
 msgctxt "model:project.work,string:"
 msgid "Project Work"

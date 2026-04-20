@@ -1,5 +1,4 @@
 #
-#, fuzzy
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -27,24 +26,6 @@ msgid "Could not find a currency with code \"%(code)s\"."
 msgstr "No se ha podido encontrar una moneda con código \"%(code)s\"."
 
 #, python-format
-msgctxt "model:ir.message,text:msg_invoice_tax_amount_different"
-msgid ""
-"The tax amount %(tax_amount)s of the invoice \"%(invoice)s\" is different "
-"from the tax total %(tax_total)s."
-msgstr ""
-"El importe del impuesto %(tax_amount)s de la factura \"%(invoice)s\" es "
-"distinto del total de impuestos %(tax_total)s."
-
-#, python-format
-msgctxt "model:ir.message,text:msg_invoice_total_amount_different"
-msgid ""
-"The total amount %(total_amount)s of the invoice \"%(invoice)s\" is "
-"different from the amount %(amount)s."
-msgstr ""
-"El importe total %(total_amount)s de la factura \"%(invoice)s\" es distinto "
-"del importe %(amount)s."
-
-#, python-format
 msgctxt "model:ir.message,text:msg_invoice_type_code_unsupported"
 msgid "Unsupported invoice type code \"%(type_code)s\"."
 msgstr "Tipo de código de factura no soportado: \"%(type_code)s\"."
@@ -60,8 +41,18 @@ msgstr ""
 
 #, python-format
 msgctxt "model:ir.message,text:msg_unit_not_found"
-msgid "Could not find a unit with UNECE code \"%(code)s\"."
-msgstr "No se ha podido encontrar una unidad con código UNECE \"%(code)s\"."
+msgid ""
+"Could not find a unit with UNECE code \"%(code)s\" and at least %(digits)s "
+"digit."
+msgid_plural ""
+"Could not find a unit with UNECE code \"%(code)s\" and at least %(digits)s "
+"digits."
+msgstr[0] ""
+"No se ha podido encontrar una unidad con código UNECE \"%(code)s\" y con un "
+"mínimo de %(digits)s\" digito."
+msgstr[1] ""
+"No se ha podido encontrar una unidad con código UNECE \"%(code)s\" y con un "
+"mínimo de %(digits)s\" digitos."
 
 msgctxt "selection:account.invoice.edocument.start,format:"
 msgid "UBL"

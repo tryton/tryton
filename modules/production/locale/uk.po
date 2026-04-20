@@ -312,7 +312,7 @@ msgid "The main identifier for the shipment."
 msgstr ""
 
 msgctxt "help:production,reference:"
-msgid "The external identifier for the shipment."
+msgid "The external identifier for the production."
 msgstr ""
 
 msgctxt "help:production,uom_category:"

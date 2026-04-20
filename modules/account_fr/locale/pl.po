@@ -50,6 +50,116 @@ msgctxt "selection:account.fr.fec.start,type:"
 msgid "IS-BIC"
 msgstr ""
 
+msgctxt "selection:account.tax,vatex_code:"
+msgid "Exempt based on 1 of article 261 of the General tax code (CGI)"
+msgstr ""
+
+msgctxt "selection:account.tax,vatex_code:"
+msgid "Exempt based on 1. of article 261 C of the General tax code (CGI)"
+msgstr ""
+
+msgctxt "selection:account.tax,vatex_code:"
+msgid "Exempt based on 1. of article 261 D of the General tax code (CGI)"
+msgstr ""
+
+msgctxt "selection:account.tax,vatex_code:"
+msgid "Exempt based on 1. of article 261 E of the General tax code (CGI)"
+msgstr ""
+
+msgctxt "selection:account.tax,vatex_code:"
+msgid "Exempt based on 1.bis of article 261 D of the General tax code (CGI)"
+msgstr ""
+
+msgctxt "selection:account.tax,vatex_code:"
+msgid "Exempt based on 2 of article 261 of the General tax code (CGI)"
+msgstr ""
+
+msgctxt "selection:account.tax,vatex_code:"
+msgid "Exempt based on 2 of article 283 of the General tax code (CGI)"
+msgstr ""
+
+msgctxt "selection:account.tax,vatex_code:"
+msgid "Exempt based on 2. of article 261 C of the General tax code (CGI)"
+msgstr ""
+
+msgctxt "selection:account.tax,vatex_code:"
+msgid "Exempt based on 2. of article 261 D of the General tax code (CGI)"
+msgstr ""
+
+msgctxt "selection:account.tax,vatex_code:"
+msgid "Exempt based on 2. of article 261 E of the General tax code (CGI)"
+msgstr ""
+
+msgctxt "selection:account.tax,vatex_code:"
+msgid "Exempt based on 3 of article 261 of the General tax code (CGI)"
+msgstr ""
+
+msgctxt "selection:account.tax,vatex_code:"
+msgid "Exempt based on 3. of article 261 C of the General tax code (CGI)"
+msgstr ""
+
+msgctxt "selection:account.tax,vatex_code:"
+msgid "Exempt based on 3. of article 261 D of the General tax code (CGI)"
+msgstr ""
+
+msgctxt "selection:account.tax,vatex_code:"
+msgid "Exempt based on 4 of article 261 of the General tax code (CGI)"
+msgstr ""
+
+msgctxt "selection:account.tax,vatex_code:"
+msgid "Exempt based on 4. of article 261 D of the General tax code (CGI)"
+msgstr ""
+
+msgctxt "selection:account.tax,vatex_code:"
+msgid "Exempt based on 5 of article 261 of the General tax code (CGI)"
+msgstr ""
+
+msgctxt "selection:account.tax,vatex_code:"
+msgid "Exempt based on 7 of article 261 of the General tax code (CGI)"
+msgstr ""
+
+msgctxt "selection:account.tax,vatex_code:"
+msgid "Exempt based on 8 of article 261 of the General tax code (CGI)"
+msgstr ""
+
+msgctxt "selection:account.tax,vatex_code:"
+msgid "Exempt based on article 153 of Council Directive 2006/112/EC"
+msgstr ""
+
+msgctxt "selection:account.tax,vatex_code:"
+msgid "Exempt based on article 261 A of the General tax code (CGI)"
+msgstr ""
+
+msgctxt "selection:account.tax,vatex_code:"
+msgid "Exempt based on article 261 B of the General tax code (CGI)"
+msgstr ""
+
+msgctxt "selection:account.tax,vatex_code:"
+msgid "Exempt based on article 275 of the General tax code (CGI)"
+msgstr ""
+
+msgctxt "selection:account.tax,vatex_code:"
+msgid "Exempt based on article 277 A of the General tax code (CGI)"
+msgstr ""
+
+msgctxt "selection:account.tax,vatex_code:"
+msgid "Exempt based on article 295 of the General tax code (CGI)"
+msgstr ""
+
+msgctxt "selection:account.tax,vatex_code:"
+msgid "Exempt based on article 298 sexdecies A of the General tax code (CGI)"
+msgstr ""
+
+msgctxt "selection:account.tax,vatex_code:"
+msgid ""
+"France domestic Credit Notes without VAT, due to supplier forfeit of VAT for"
+" discount"
+msgstr ""
+
+msgctxt "selection:account.tax,vatex_code:"
+msgid "France domestic VAT franchise in base"
+msgstr ""
+
 msgctxt "wizard_button:account.fr.fec,result,end:"
 msgid "Close"
 msgstr "Zamknij"

@@ -197,6 +197,11 @@ msgctxt "field:account.invoice,number_digit:"
 msgid "Number Digit"
 msgstr "Szám"
 
+#, fuzzy
+msgctxt "field:account.invoice,origin_invoices:"
+msgid "Origin Invoices"
+msgstr "Számlák"
+
 msgctxt "field:account.invoice,origins:"
 msgid "Origins"
 msgstr ""
@@ -215,6 +220,11 @@ msgstr ""
 
 msgctxt "field:account.invoice,payment_lines:"
 msgid "Payment Lines"
+msgstr "Fizetések tételei"
+
+#, fuzzy
+msgctxt "field:account.invoice,payment_means:"
+msgid "Payment Means"
 msgstr "Fizetések tételei"
 
 msgctxt "field:account.invoice,payment_term:"
@@ -249,6 +259,19 @@ msgstr "Sorszám"
 msgctxt "field:account.invoice,sequence_type_cache:"
 msgid "Sequence Type Cache"
 msgstr ""
+
+msgctxt "field:account.invoice,source_tax_amount:"
+msgid "Source Tax"
+msgstr ""
+
+msgctxt "field:account.invoice,source_total_amount:"
+msgid "Source Total"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.invoice,source_untaxed_amount:"
+msgid "Source Untaxed"
+msgstr "Nettó"
 
 msgctxt "field:account.invoice,state:"
 msgid "State"
@@ -567,6 +590,46 @@ msgstr ""
 msgctxt "field:account.invoice.pay.start,payment_method:"
 msgid "Payment Method"
 msgstr "Fizetési mód"
+
+#, fuzzy
+msgctxt "field:account.invoice.payment.mean,company:"
+msgid "Company"
+msgstr "Cég"
+
+msgctxt "field:account.invoice.payment.mean,instrument:"
+msgid "Instrument"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.invoice.payment.mean,invoice:"
+msgid "Invoice"
+msgstr "Számla"
+
+msgctxt "field:account.invoice.payment.mean,payees:"
+msgid "Payees"
+msgstr ""
+
+msgctxt "field:account.invoice.payment.mean,payers:"
+msgid "Payers"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.invoice.payment.mean.rule,company:"
+msgid "Company"
+msgstr "Cég"
+
+#, fuzzy
+msgctxt "field:account.invoice.payment.mean.rule,currency:"
+msgid "Currency"
+msgstr "Pénznem"
+
+msgctxt "field:account.invoice.payment.mean.rule,instrument:"
+msgid "Instrument"
+msgstr ""
+
+msgctxt "field:account.invoice.payment.mean.rule,payee:"
+msgid "Payee"
+msgstr ""
 
 msgctxt "field:account.invoice.payment.method,company:"
 msgid "Company"
@@ -915,6 +978,16 @@ msgid "Account Invoice Pay Start"
 msgstr "Számlázó ügyfél"
 
 #, fuzzy
+msgctxt "model:account.invoice.payment.mean,string:"
+msgid "Account Invoice Payment Mean"
+msgstr "Számla fizetési módok"
+
+#, fuzzy
+msgctxt "model:account.invoice.payment.mean.rule,string:"
+msgid "Account Invoice Payment Mean Rule"
+msgstr "Számla fizetési módok"
+
+#, fuzzy
 msgctxt "model:account.invoice.payment.method,string:"
 msgid "Account Invoice Payment Method"
 msgstr "Számla fizetési módok"
@@ -1007,6 +1080,11 @@ msgstr "Szállítói számlák"
 msgctxt "model:ir.action,name:act_invoice_out_form"
 msgid "Customer Invoices"
 msgstr "Vevői számlák"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_invoice_payment_mean_rule_form"
+msgid "Payment Means Rules"
+msgstr "Fizetések tételei"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_invoice_relate"
@@ -1251,6 +1329,13 @@ msgid "The invoice \"%(invoice)s\" is similar to invoice \"%(similar)s\"."
 msgstr ""
 
 #, python-format
+msgctxt "model:ir.message,text:msg_invoice_source_mismatch"
+msgid ""
+"The \"%(field)s\" value of the invoice \"%(invoice)s\", %(value)s, must "
+"equal the source value, %(source)s."
+msgstr ""
+
+#, python-format
 msgctxt "model:ir.message,text:msg_invoice_supplier_payment_reference_invalid"
 msgid "The %(type)s \"%(reference)s\" on invoice \"%(invoice)s\" is not valid."
 msgstr ""
@@ -1360,6 +1445,12 @@ msgid "User in companies"
 msgstr "Felhasználó a cég alkalmazotta"
 
 #, fuzzy
+msgctxt ""
+"model:ir.rule.group,name:rule_group_invoice_payment_mean_rule_companies"
+msgid "User in companies"
+msgstr "Felhasználó a cég alkalmazotta"
+
+#, fuzzy
 msgctxt "model:ir.rule.group,name:rule_group_invoice_sequence_companies"
 msgid "User in companies"
 msgstr "Felhasználó a cég alkalmazotta"
@@ -1381,6 +1472,11 @@ msgctxt "model:ir.ui.menu,name:menu_invoice_out_form"
 msgid "Customer Invoices"
 msgstr "Vevői számlák"
 
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_invoice_payment_mean_rule"
+msgid "Payment Means Rules"
+msgstr "Fizetések tételei"
+
 msgctxt "model:ir.ui.menu,name:menu_invoices"
 msgid "Invoices"
 msgstr "Kereskedelmi számlák"
@@ -1397,9 +1493,10 @@ msgctxt "model:ir.ui.menu,name:menu_payment_term_test"
 msgid "Test Payment Term"
 msgstr "Fizetési feltétel szimuláció"
 
-msgctxt "model:ir.ui.menu,name:menu_payment_terms_configuration"
-msgid "Payment Terms"
-msgstr "Fizetési feltételek"
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_payments_configuration"
+msgid "Invoice Payments"
+msgstr "Számla fizetési módok"
 
 #, fuzzy
 msgctxt "model:party.party.payment_term,string:"
@@ -1443,6 +1540,11 @@ msgstr "Vázlatos számla"
 msgctxt "report:account.invoice:"
 msgid "Invoice No:"
 msgstr "Számla"
+
+#, fuzzy
+msgctxt "report:account.invoice:"
+msgid "Payment Means"
+msgstr "Fizetések tételei"
 
 msgctxt "report:account.invoice:"
 msgid "Payment Term"
@@ -1637,6 +1739,10 @@ msgstr "Fizetés"
 msgctxt "view:account.invoice:"
 msgid "Tax Identifier:"
 msgstr "Adóazonosító:"
+
+msgctxt "view:account.invoice:"
+msgid "expected"
+msgstr ""
 
 msgctxt "view:company.company:"
 msgid "Invoice"

@@ -96,7 +96,7 @@ msgstr "Mailing Anmeldung"
 
 msgctxt "model:ir.action,name:report_email_unsubscribe"
 msgid "Unsubscribe Request"
-msgstr "Mailing Abmeldung"
+msgstr "Mailing Abbestellen"
 
 msgctxt "model:ir.action,name:wizard_send_test"
 msgid "Send Test"
@@ -201,11 +201,11 @@ msgstr "Nur noch ein weiterer Schritt..."
 
 msgctxt "report:marketing.email.unsubscribe:"
 msgid "Request to Unsubscribe"
-msgstr "Abmeldeanfrage"
+msgstr "Abbestellanfrage"
 
 msgctxt "report:marketing.email.unsubscribe:"
 msgid "Unsubscribe from"
-msgstr "Abmelden von"
+msgstr "Abbestellen von"
 
 msgctxt "selection:ir.cron,method:"
 msgid "Send Marketing Messages"

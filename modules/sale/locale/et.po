@@ -314,6 +314,16 @@ msgctxt "field:sale.line,quantity:"
 msgid "Quantity"
 msgstr "Kogus"
 
+#, fuzzy
+msgctxt "field:sale.line,quantity_to_invoice:"
+msgid "Quantity to Invoice"
+msgstr "Taasloo arved"
+
+#, fuzzy
+msgctxt "field:sale.line,quantity_to_ship:"
+msgid "Quantity to Ship"
+msgstr "Kogus"
+
 msgctxt "field:sale.line,sale:"
 msgid "Sale"
 msgstr "Müük"
@@ -709,6 +719,15 @@ msgstr "Maks"
 msgctxt "field:sale.sale,tax_amount_cache:"
 msgid "Tax Cache"
 msgstr "Maksu vahemälu"
+
+#, fuzzy
+msgctxt "field:sale.sale,to_invoice:"
+msgid "To Invoice"
+msgstr "Arve"
+
+msgctxt "field:sale.sale,to_ship:"
+msgid "To Ship"
+msgstr ""
 
 msgctxt "field:sale.sale,total_amount:"
 msgid "Total"
@@ -1687,12 +1706,12 @@ msgid "Manual"
 msgstr "Käsitsi"
 
 msgctxt "selection:sale.sale,invoice_method:"
-msgid "On Order Processed"
-msgstr "Protsessitakse tellimusel"
+msgid "On Fulfillment"
+msgstr ""
 
 msgctxt "selection:sale.sale,invoice_method:"
-msgid "On Shipment Sent"
-msgstr "Tarnel saadetud"
+msgid "On Order Processed"
+msgstr "Protsessitakse tellimusel"
 
 msgctxt "selection:sale.sale,invoice_state:"
 msgid "Awaiting Payment"

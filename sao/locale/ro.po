@@ -17,8 +17,15 @@ msgstr "Nu s-a putut efectua conexiunea la server."
 msgid "Connection error"
 msgstr "Eroare de conexiune"
 
-msgid "Logout"
-msgstr "Deconectare"
+msgid "Check menu entries to add favorites"
+msgstr ""
+
+#, fuzzy
+msgid "Add to favorites"
+msgstr "Favorite"
+
+msgid "Remove from favorites"
+msgstr ""
 
 msgid "Favorites"
 msgstr "Favorite"
@@ -782,8 +789,24 @@ msgstr "Comutați sunetul"
 msgid "Wizard"
 msgstr "Asistent"
 
-msgid "Toggle notification"
+msgid "Add a follower"
 msgstr ""
+
+msgid "Subscribe a follower to this channel"
+msgstr ""
+
+msgid "Show followers"
+msgstr ""
+
+msgid "Unsubscribe"
+msgstr ""
+
+msgid "Subscribe"
+msgstr ""
+
+#, fuzzy
+msgid "Are you sure to unsubscribe \"%1\" from this channel?"
+msgstr "Sigur eliminați această înregistrare?"
 
 msgid "Enter a message"
 msgstr ""
@@ -794,11 +817,21 @@ msgstr ""
 msgid "Make this an internal message"
 msgstr ""
 
+msgid "No notifications at this time"
+msgstr ""
+
 msgid "All Notifications..."
 msgstr ""
 
 msgid "Preferences..."
 msgstr ""
+
+#, fuzzy
+msgid "Help..."
+msgstr "Ajutor"
+
+msgid "Logout"
+msgstr "Deconectare"
 
 msgid "Translate view"
 msgstr "Traducere vedere"

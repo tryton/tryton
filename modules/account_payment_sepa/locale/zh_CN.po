@@ -288,6 +288,11 @@ msgid "Receivable with Mandate"
 msgstr "Receivable with Mandate"
 
 #, python-format
+msgctxt "model:ir.message,text:msg_invoice_payment_mean_direct_debit"
+msgid "SEPA direct debit using mandate %(mandate)s on %(account_number)s"
+msgstr ""
+
+#, python-format
 msgctxt "model:ir.message,text:msg_mandate_authorisation_statement"
 msgid ""
 "By signing this mandate form, you authorise (A) %(creditor)s to send "

@@ -198,6 +198,11 @@ msgctxt "field:account.invoice,number_digit:"
 msgid "Number Digit"
 msgstr "Nomor"
 
+#, fuzzy
+msgctxt "field:account.invoice,origin_invoices:"
+msgid "Origin Invoices"
+msgstr "Faktur-Faktur"
+
 msgctxt "field:account.invoice,origins:"
 msgid "Origins"
 msgstr "Asal"
@@ -216,6 +221,11 @@ msgstr ""
 
 msgctxt "field:account.invoice,payment_lines:"
 msgid "Payment Lines"
+msgstr "Baris Pembayaran"
+
+#, fuzzy
+msgctxt "field:account.invoice,payment_means:"
+msgid "Payment Means"
 msgstr "Baris Pembayaran"
 
 msgctxt "field:account.invoice,payment_term:"
@@ -250,6 +260,18 @@ msgstr "Urutan"
 
 msgctxt "field:account.invoice,sequence_type_cache:"
 msgid "Sequence Type Cache"
+msgstr ""
+
+msgctxt "field:account.invoice,source_tax_amount:"
+msgid "Source Tax"
+msgstr ""
+
+msgctxt "field:account.invoice,source_total_amount:"
+msgid "Source Total"
+msgstr ""
+
+msgctxt "field:account.invoice,source_untaxed_amount:"
+msgid "Source Untaxed"
 msgstr ""
 
 msgctxt "field:account.invoice,state:"
@@ -566,6 +588,46 @@ msgstr ""
 msgctxt "field:account.invoice.pay.start,payment_method:"
 msgid "Payment Method"
 msgstr "Metode pembayaran"
+
+#, fuzzy
+msgctxt "field:account.invoice.payment.mean,company:"
+msgid "Company"
+msgstr "Perusahaan"
+
+msgctxt "field:account.invoice.payment.mean,instrument:"
+msgid "Instrument"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.invoice.payment.mean,invoice:"
+msgid "Invoice"
+msgstr "Faktur"
+
+msgctxt "field:account.invoice.payment.mean,payees:"
+msgid "Payees"
+msgstr ""
+
+msgctxt "field:account.invoice.payment.mean,payers:"
+msgid "Payers"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.invoice.payment.mean.rule,company:"
+msgid "Company"
+msgstr "Perusahaan"
+
+#, fuzzy
+msgctxt "field:account.invoice.payment.mean.rule,currency:"
+msgid "Currency"
+msgstr "Mata Uang"
+
+msgctxt "field:account.invoice.payment.mean.rule,instrument:"
+msgid "Instrument"
+msgstr ""
+
+msgctxt "field:account.invoice.payment.mean.rule,payee:"
+msgid "Payee"
+msgstr ""
 
 msgctxt "field:account.invoice.payment.method,company:"
 msgid "Company"
@@ -909,6 +971,16 @@ msgid "Account Invoice Pay Start"
 msgstr "Status Faktur"
 
 #, fuzzy
+msgctxt "model:account.invoice.payment.mean,string:"
+msgid "Account Invoice Payment Mean"
+msgstr "Metode Pembayaran Faktur"
+
+#, fuzzy
+msgctxt "model:account.invoice.payment.mean.rule,string:"
+msgid "Account Invoice Payment Mean Rule"
+msgstr "Metode Pembayaran Faktur"
+
+#, fuzzy
 msgctxt "model:account.invoice.payment.method,string:"
 msgid "Account Invoice Payment Method"
 msgstr "Metode Pembayaran Faktur"
@@ -999,6 +1071,11 @@ msgstr "Faktur Pemasok"
 msgctxt "model:ir.action,name:act_invoice_out_form"
 msgid "Customer Invoices"
 msgstr "Faktur Pelanggan"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_invoice_payment_mean_rule_form"
+msgid "Payment Means Rules"
+msgstr "Baris Pembayaran"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_invoice_relate"
@@ -1256,6 +1333,13 @@ msgstr ""
 "lampau."
 
 #, python-format
+msgctxt "model:ir.message,text:msg_invoice_source_mismatch"
+msgid ""
+"The \"%(field)s\" value of the invoice \"%(invoice)s\", %(value)s, must "
+"equal the source value, %(source)s."
+msgstr ""
+
+#, python-format
 msgctxt "model:ir.message,text:msg_invoice_supplier_payment_reference_invalid"
 msgid "The %(type)s \"%(reference)s\" on invoice \"%(invoice)s\" is not valid."
 msgstr ""
@@ -1362,6 +1446,12 @@ msgctxt "model:ir.rule.group,name:rule_group_invoice_line_companies"
 msgid "User in companies"
 msgstr "Pengguna di dalam perusahaan"
 
+#, fuzzy
+msgctxt ""
+"model:ir.rule.group,name:rule_group_invoice_payment_mean_rule_companies"
+msgid "User in companies"
+msgstr "Pengguna di dalam perusahaan"
+
 msgctxt "model:ir.rule.group,name:rule_group_invoice_sequence_companies"
 msgid "User in companies"
 msgstr "Pengguna di dalam perusahaan"
@@ -1382,6 +1472,11 @@ msgctxt "model:ir.ui.menu,name:menu_invoice_out_form"
 msgid "Customer Invoices"
 msgstr "Faktur Pelanggan"
 
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_invoice_payment_mean_rule"
+msgid "Payment Means Rules"
+msgstr "Baris Pembayaran"
+
 msgctxt "model:ir.ui.menu,name:menu_invoices"
 msgid "Invoices"
 msgstr "Faktur-Faktur"
@@ -1398,9 +1493,10 @@ msgctxt "model:ir.ui.menu,name:menu_payment_term_test"
 msgid "Test Payment Term"
 msgstr ""
 
-msgctxt "model:ir.ui.menu,name:menu_payment_terms_configuration"
-msgid "Payment Terms"
-msgstr ""
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_payments_configuration"
+msgid "Invoice Payments"
+msgstr "Metode Pembayaran Faktur"
 
 #, fuzzy
 msgctxt "model:party.party.payment_term,string:"
@@ -1443,6 +1539,11 @@ msgstr "Faktur Rancangan"
 msgctxt "report:account.invoice:"
 msgid "Invoice No:"
 msgstr "Faktur N°:"
+
+#, fuzzy
+msgctxt "report:account.invoice:"
+msgid "Payment Means"
+msgstr "Baris Pembayaran"
 
 msgctxt "report:account.invoice:"
 msgid "Payment Term"
@@ -1637,6 +1738,10 @@ msgstr "Pembayaran"
 msgctxt "view:account.invoice:"
 msgid "Tax Identifier:"
 msgstr "NPWP:"
+
+msgctxt "view:account.invoice:"
+msgid "expected"
+msgstr ""
 
 msgctxt "view:company.company:"
 msgid "Invoice"

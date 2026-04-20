@@ -5,14 +5,30 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-#, fuzzy
-msgid "Toggle notification"
-msgstr "انتخاب زنجیر"
+msgid "Show followers"
+msgstr ""
+
+#, fuzzy, python-format
+msgid "Are you sure to unsubscribe \"%(name)s\" from this channel?"
+msgstr "برای حذف این پرونده اطمینان کامل دارید؟"
+
+msgid "Unsubscribe"
+msgstr ""
+
+msgid "Subscribe"
+msgstr ""
 
 msgid "Make this an _internal message"
 msgstr ""
 
 msgid "Send"
+msgstr ""
+
+#, fuzzy
+msgid "Add a follower"
+msgstr "افزودن مقدار"
+
+msgid "Subscribe a follower to this channel"
 msgstr ""
 
 msgid "specify alternate config file"
@@ -364,6 +380,9 @@ msgstr "راهنما"
 msgid "No result found."
 msgstr "نتیجه ای پیدا نشد."
 
+msgid "Check menu entries to add favorites"
+msgstr ""
+
 msgid "Action"
 msgstr "اقدام"
 
@@ -536,6 +555,10 @@ msgstr "گشودن همه ردیف ها"
 
 msgid "Close Tab"
 msgstr "بستن برگه"
+
+#, fuzzy
+msgid "No notifications at this time"
+msgstr "تاریخ اصلاح"
 
 #, fuzzy
 msgid "All Notifications..."

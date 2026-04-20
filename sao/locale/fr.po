@@ -17,8 +17,14 @@ msgstr "Impossible de se connecter au serveur."
 msgid "Connection error"
 msgstr "Erreur de connexion"
 
-msgid "Logout"
-msgstr "Déconnexion"
+msgid "Check menu entries to add favorites"
+msgstr "Cochez des entrées du menu pour ajouter des favoris"
+
+msgid "Add to favorites"
+msgstr "Ajouter aux favoris"
+
+msgid "Remove from favorites"
+msgstr "Retirer des favoris"
 
 msgid "Favorites"
 msgstr "Favoris"
@@ -777,8 +783,23 @@ msgstr "Basculer le son"
 msgid "Wizard"
 msgstr "Assistant"
 
-msgid "Toggle notification"
-msgstr "Activer/désactiver les notifications"
+msgid "Add a follower"
+msgstr "Ajouter un abonné"
+
+msgid "Subscribe a follower to this channel"
+msgstr "Inscrire un abonné à cette chaîne"
+
+msgid "Show followers"
+msgstr "Afficher les abonnés"
+
+msgid "Unsubscribe"
+msgstr "Se désabonner"
+
+msgid "Subscribe"
+msgstr "S'abonner"
+
+msgid "Are you sure to unsubscribe \"%1\" from this channel?"
+msgstr "Êtes-vous sûr de désabonner « %1 » de cette chaîne ?"
 
 msgid "Enter a message"
 msgstr "Entrez un message"
@@ -789,11 +810,20 @@ msgstr "Soumettre le message"
 msgid "Make this an internal message"
 msgstr "En faire un message interne"
 
+msgid "No notifications at this time"
+msgstr "Aucune notification pour le moment"
+
 msgid "All Notifications..."
 msgstr "Toutes les notifications..."
 
 msgid "Preferences..."
 msgstr "Préférences..."
+
+msgid "Help..."
+msgstr "Aide..."
+
+msgid "Logout"
+msgstr "Déconnexion"
 
 msgid "Translate view"
 msgstr "Traduire la vue"

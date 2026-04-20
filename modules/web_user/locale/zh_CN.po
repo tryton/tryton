@@ -126,9 +126,10 @@ msgctxt "model:web.user-party.party.secondary,string:"
 msgid "Web User - Party Secondary"
 msgstr "web 用户 - 第二参与者"
 
+#, fuzzy
 msgctxt "model:web.user.authenticate.attempt,string:"
-msgid "User Login Attempt"
-msgstr ""
+msgid "Web User Authenticate Attempt"
+msgstr "Web用户验证尝试"
 
 #, fuzzy
 msgctxt "model:web.user.session,string:"

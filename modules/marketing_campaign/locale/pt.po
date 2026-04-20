@@ -116,7 +116,7 @@ msgid "Sale Opportunity Reporting Marketing"
 msgstr ""
 
 msgctxt "model:sale.opportunity.reporting.marketing.context,string:"
-msgid "Sale Opportunity Reporting Context"
+msgid "Sale Opportunity Reporting Marketing Context"
 msgstr ""
 
 msgctxt "model:sale.reporting.marketing,string:"
@@ -124,7 +124,7 @@ msgid "Sale Reporting Marketing"
 msgstr ""
 
 msgctxt "model:sale.reporting.marketing.context,string:"
-msgid "Sale Reporting Context"
+msgid "Sale Reporting Marketing Context"
 msgstr ""
 
 msgctxt "selection:sale.opportunity.reporting.marketing.context,period:"

@@ -2609,8 +2609,8 @@ msgid "Account Aged Balance Context"
 msgstr "Context ouderdomsanalyse"
 
 msgctxt "model:account.balance_sheet.comparison.context,string:"
-msgid "Account Balance Sheet Context"
-msgstr "Balans context"
+msgid "Account Balance Sheet Comparison Context"
+msgstr "Grootboekrekening balans vergelijking context"
 
 msgctxt "model:account.balance_sheet.context,string:"
 msgid "Account Balance Sheet Context"
@@ -2685,8 +2685,8 @@ msgid "Account General Ledger Line"
 msgstr "Grootboek grootboekrekening regel"
 
 msgctxt "model:account.general_ledger.line.context,string:"
-msgid "Account General Ledger Account Context"
-msgstr "Grootboek grootboekrekening context"
+msgid "Account General Ledger Line Context"
+msgstr "Grootboek grootboek regel context"
 
 msgctxt "model:account.income_statement.context,string:"
 msgid "Account Income Statement Context"
@@ -4779,6 +4779,10 @@ msgstr "Geen"
 msgctxt "selection:account.tax.template,type:"
 msgid "Percentage"
 msgstr "Percentage"
+
+msgctxt "selection:ir.cron,method:"
+msgid "Reconcile Move Lines Automatically"
+msgstr "Automatisch boekingsregels afletteren"
 
 msgctxt "view:account.account.type:"
 msgid "Comparison"

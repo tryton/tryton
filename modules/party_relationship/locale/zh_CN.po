@@ -101,7 +101,7 @@ msgstr "参与者关系"
 
 #, fuzzy
 msgctxt "model:party.relation.all,string:"
-msgid "Party Relation"
+msgid "Party Relation All"
 msgstr "参与者关系"
 
 #, fuzzy

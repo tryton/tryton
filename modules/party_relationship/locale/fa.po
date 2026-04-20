@@ -101,7 +101,7 @@ msgstr "رابطه نهاد/سازمان"
 
 #, fuzzy
 msgctxt "model:party.relation.all,string:"
-msgid "Party Relation"
+msgid "Party Relation All"
 msgstr "رابطه نهاد/سازمان"
 
 #, fuzzy

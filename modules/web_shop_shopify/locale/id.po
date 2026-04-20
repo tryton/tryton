@@ -63,6 +63,10 @@ msgctxt "field:sale.line,shopify_warehouse:"
 msgid "Shopify Warehouse"
 msgstr ""
 
+msgctxt "field:sale.sale,shopify_amount_to_pay:"
+msgid "Shopify Amount to Pay"
+msgstr ""
+
 msgctxt "field:sale.sale,shopify_status_url:"
 msgid "Shopify Status URL"
 msgstr ""
@@ -79,25 +83,26 @@ msgctxt "field:stock.shipment.shopify_identifier,shipment:"
 msgid "Shipment"
 msgstr ""
 
-msgctxt "field:web.shop,shopify_fulfillment_notify_customer:"
-msgid "Notify Customer about Fulfillment"
+msgctxt "field:web.shop,shopify_access_token:"
+msgid "Access Token"
 msgstr ""
 
-msgctxt "field:web.shop,shopify_password:"
-msgid "Access Token"
+msgctxt "field:web.shop,shopify_fulfillment_notify_customer:"
+msgid "Notify Customer about Fulfillment"
 msgstr ""
 
 msgctxt "field:web.shop,shopify_payment_journals:"
 msgid "Payment Journals"
 msgstr ""
 
+#, fuzzy
+msgctxt "field:web.shop,shopify_shop_name:"
+msgid "Shop Name"
+msgstr "Toko"
+
 msgctxt "field:web.shop,shopify_url:"
 msgid "Shop URL"
 msgstr ""
-
-msgctxt "field:web.shop,shopify_version:"
-msgid "Version"
-msgstr "Versi"
 
 msgctxt "field:web.shop,shopify_warehouses:"
 msgid "Warehouses"
@@ -224,6 +229,13 @@ msgstr ""
 #, python-format
 msgctxt "model:ir.message,text:msg_fulfillment_order_line_not_found"
 msgid "Failed to find fulfillment order for %(quantity)s of move \"%(move)s\"."
+msgstr ""
+
+#, python-format
+msgctxt "model:ir.message,text:msg_fulfillment_prepared_for_pickup_fail"
+msgid ""
+"Failed to prepare for pickup fulfillments for shipments \"%(shipments)s\" and sales \"%(sales)s\" with error:\n"
+"%(error)s"
 msgstr ""
 
 msgctxt "model:ir.message,text:msg_identifier_payment_unique"

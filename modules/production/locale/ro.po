@@ -318,8 +318,9 @@ msgctxt "help:production,number:"
 msgid "The main identifier for the shipment."
 msgstr "Identificatorul principal pentru expediere."
 
+#, fuzzy
 msgctxt "help:production,reference:"
-msgid "The external identifier for the shipment."
+msgid "The external identifier for the production."
 msgstr "Identificatorul extern pentru expediere."
 
 msgctxt "help:production,uom_category:"

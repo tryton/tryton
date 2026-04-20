@@ -2,15 +2,31 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-#, fuzzy
-msgid "Toggle notification"
-msgstr "Comutare selecția"
+msgid "Show followers"
+msgstr ""
+
+#, fuzzy, python-format
+msgid "Are you sure to unsubscribe \"%(name)s\" from this channel?"
+msgstr "Sigur eliminați această înregistrare?"
+
+msgid "Unsubscribe"
+msgstr ""
+
+msgid "Subscribe"
+msgstr ""
 
 msgid "Make this an _internal message"
 msgstr ""
 
 msgid "Send"
 msgstr "Trimite"
+
+#, fuzzy
+msgid "Add a follower"
+msgstr "Adaugă valoare"
+
+msgid "Subscribe a follower to this channel"
+msgstr ""
 
 msgid "specify alternate config file"
 msgstr "specificare alt fisier de configurare"
@@ -355,6 +371,9 @@ msgstr "Ajutor"
 msgid "No result found."
 msgstr "Niciun rezultat găsit."
 
+msgid "Check menu entries to add favorites"
+msgstr ""
+
 msgid "Action"
 msgstr "Acțiune"
 
@@ -520,6 +539,9 @@ msgstr "Extindeți toate rândurile"
 
 msgid "Close Tab"
 msgstr "Închidere fila"
+
+msgid "No notifications at this time"
+msgstr ""
 
 #, fuzzy
 msgid "All Notifications..."

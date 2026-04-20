@@ -6,6 +6,10 @@ msgctxt "field:ir.email.template,contact_mechanism:"
 msgid "Contact Mechanism"
 msgstr "Mitjà de contacte"
 
+msgctxt "field:party.address,attn:"
+msgid "Attn"
+msgstr "A l'atenció de"
+
 msgctxt "field:party.address,building_name:"
 msgid "Building Name"
 msgstr "Nom de l'edifici"
@@ -265,6 +269,10 @@ msgstr "Adreça"
 msgctxt "field:party.identifier,code:"
 msgid "Code"
 msgstr "Codi"
+
+msgctxt "field:party.identifier,code_compact:"
+msgid "Code Compact"
+msgstr "Codi compacte"
 
 msgctxt "field:party.identifier,party:"
 msgid "Party"
@@ -586,6 +594,10 @@ msgctxt "model:ir.action,name:act_contact_mechanism_form"
 msgid "Contact Mechanisms"
 msgstr "Mitjans de contacte"
 
+msgctxt "model:ir.action,name:act_identifier_form"
+msgid "Identifiers"
+msgstr "Identificadors"
+
 msgctxt "model:ir.action,name:act_party_by_category"
 msgid "Parties by Category"
 msgstr "Tercers per categoria"
@@ -745,6 +757,10 @@ msgctxt "model:ir.ui.menu,name:menu_contact_mechanism_form"
 msgid "Contact Mechanisms"
 msgstr "Mitjans de contacte"
 
+msgctxt "model:ir.ui.menu,name:menu_identifier_form"
+msgid "Identifiers"
+msgstr "Identificadors"
+
 msgctxt "model:ir.ui.menu,name:menu_party"
 msgid "Parties"
 msgstr "Tercers"
@@ -775,7 +791,7 @@ msgstr "Categoria de tercer"
 
 msgctxt "model:party.check_vies.result,string:"
 msgid "Party Check Vies Result"
-msgstr "Resultat comprovaió VIES"
+msgstr "Resultat comprovació VIES"
 
 msgctxt "model:party.configuration,string:"
 msgid "Party Configuration"
@@ -874,6 +890,10 @@ msgid "Austrian Umsatzsteuer-Identifikationsnummer"
 msgstr "Número d'identificació IVA austríac"
 
 msgctxt "selection:party.configuration,identifier_types:"
+msgid "Azerbaijan Tax Number"
+msgstr "Identificador fiscal d'Azerbaijan"
+
+msgctxt "selection:party.configuration,identifier_types:"
 msgid "Belarus VAT Number"
 msgstr "Identificador fiscal Búlgar"
 
@@ -888,6 +908,10 @@ msgstr "Número d'empresa belga"
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Belgian National Number"
 msgstr "Número nacional Belga"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Belgian Social Security Number"
+msgstr "Número de la seguretat social Belga"
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Belgian VAT Number"
@@ -1082,6 +1106,10 @@ msgid "French Tax Identification Number"
 msgstr "Número identificador fiscal Francès"
 
 msgctxt "selection:party.configuration,identifier_types:"
+msgid "French Trade Registration Number"
+msgstr "Número de registre del contribuent frances"
+
+msgctxt "selection:party.configuration,identifier_types:"
 msgid "French VAT Number"
 msgstr "Identificador fiscal Francès"
 
@@ -1242,6 +1270,10 @@ msgid "Moroccan Tax Number"
 msgstr "Identificador fiscal Marroquí"
 
 msgctxt "selection:party.configuration,identifier_types:"
+msgid "Mozambique Tax Number"
+msgstr "Identificador fiscal de Moçambic"
+
+msgctxt "selection:party.configuration,identifier_types:"
 msgid "New Zealand Inland Revenue Department Number"
 msgstr "Número de departament d'ingresos de Nova Zelanda"
 
@@ -1306,6 +1338,10 @@ msgid "Romanian VAT Number"
 msgstr "Identificador fiscal Romanès"
 
 msgctxt "selection:party.configuration,identifier_types:"
+msgid "Russian Primary State Registration Number"
+msgstr "Número de registre estatal primari rus"
+
+msgctxt "selection:party.configuration,identifier_types:"
 msgid "Russian Tax identifier"
 msgstr "Identificador fiscal Rus"
 
@@ -1318,12 +1354,16 @@ msgid "San Marino National Tax Number"
 msgstr "Identificador fiscal nacional de San Marino"
 
 msgctxt "selection:party.configuration,identifier_types:"
+msgid "Senegal Tax Number"
+msgstr "Identificador fiscal del Senegal"
+
+msgctxt "selection:party.configuration,identifier_types:"
 msgid "Serbian Tax Identification"
 msgstr "Identificador fiscal Serbi"
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Singapore's Unique Entity Number"
-msgstr "Número d'entitat únic de Singapur"
+msgstr "Indentificador fiscal de Singapur"
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Slovak Birth Number"
@@ -1360,6 +1400,10 @@ msgstr "Número de registre d'empreses de Corea del Sud"
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "South Korean Resident Registration Number"
 msgstr "Número de registre de resident de Corea del Sud"
+
+msgctxt "selection:party.configuration,identifier_types:"
+msgid "Spanish Activity Establishment Code"
+msgstr "Codi d'establiment d'activitats Espanyol"
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Spanish Company Tax"

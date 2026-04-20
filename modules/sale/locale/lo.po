@@ -313,6 +313,16 @@ msgid "Quantity"
 msgstr "ຈຳນວນ"
 
 #, fuzzy
+msgctxt "field:sale.line,quantity_to_invoice:"
+msgid "Quantity to Invoice"
+msgstr "ໃບເກັບເງິນພາສີທີ່ດິນ"
+
+#, fuzzy
+msgctxt "field:sale.line,quantity_to_ship:"
+msgid "Quantity to Ship"
+msgstr "ຈຳນວນ"
+
+#, fuzzy
 msgctxt "field:sale.line,sale:"
 msgid "Sale"
 msgstr "ຂາຍ"
@@ -719,6 +729,15 @@ msgstr "ອາກອນ"
 
 msgctxt "field:sale.sale,tax_amount_cache:"
 msgid "Tax Cache"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:sale.sale,to_invoice:"
+msgid "To Invoice"
+msgstr "ໃບເກັບເງິນພາສີທີ່ດິນ"
+
+msgctxt "field:sale.sale,to_ship:"
+msgid "To Ship"
 msgstr ""
 
 #, fuzzy
@@ -1703,11 +1722,11 @@ msgid "Manual"
 msgstr "ໃສ່ເອົາເອງ"
 
 msgctxt "selection:sale.sale,invoice_method:"
-msgid "On Order Processed"
+msgid "On Fulfillment"
 msgstr ""
 
 msgctxt "selection:sale.sale,invoice_method:"
-msgid "On Shipment Sent"
+msgid "On Order Processed"
 msgstr ""
 
 msgctxt "selection:sale.sale,invoice_state:"

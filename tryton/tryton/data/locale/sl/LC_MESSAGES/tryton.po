@@ -5,15 +5,31 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-#, fuzzy
-msgid "Toggle notification"
-msgstr "Vklopi/Izklopi izbor"
+msgid "Show followers"
+msgstr ""
+
+#, fuzzy, python-format
+msgid "Are you sure to unsubscribe \"%(name)s\" from this channel?"
+msgstr "Ali res želiš izbrisati ta zapis?"
+
+msgid "Unsubscribe"
+msgstr ""
+
+msgid "Subscribe"
+msgstr ""
 
 msgid "Make this an _internal message"
 msgstr ""
 
 msgid "Send"
 msgstr "Pošlji"
+
+#, fuzzy
+msgid "Add a follower"
+msgstr "Dodaj vrednost"
+
+msgid "Subscribe a follower to this channel"
+msgstr ""
 
 msgid "specify alternate config file"
 msgstr "določi alterntivno konfiguracijsko datoteko"
@@ -361,6 +377,9 @@ msgstr "Pomoč"
 msgid "No result found."
 msgstr "Brez rezultatov."
 
+msgid "Check menu entries to add favorites"
+msgstr ""
+
 msgid "Action"
 msgstr "Ukrep"
 
@@ -526,6 +545,10 @@ msgstr "Razširi vse vrstice"
 
 msgid "Close Tab"
 msgstr "Zapri zavihek"
+
+#, fuzzy
+msgid "No notifications at this time"
+msgstr "Popravljeno"
 
 #, fuzzy
 msgid "All Notifications..."

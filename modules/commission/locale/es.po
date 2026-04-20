@@ -431,8 +431,8 @@ msgid "Commission Reporting Agent"
 msgstr "Informe de comisiones por agente"
 
 msgctxt "model:commission.reporting.agent.time_series,string:"
-msgid "Commission Reporting Agent"
-msgstr "Informe de comisiones por agente"
+msgid "Commission Reporting Agent Time Series"
+msgstr "Serie temporal del informe de comisiones por agent"
 
 msgctxt "model:commission.reporting.context,string:"
 msgid "Commission Reporting Context"

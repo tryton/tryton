@@ -312,8 +312,8 @@ msgid "The main identifier for the shipment."
 msgstr "El identificador principal de l'albarà."
 
 msgctxt "help:production,reference:"
-msgid "The external identifier for the shipment."
-msgstr "L'identificador extern de l'albarà."
+msgid "The external identifier for the production."
+msgstr "L'identificador extern de la producció."
 
 msgctxt "help:production,uom_category:"
 msgid "The category of Unit of Measure."

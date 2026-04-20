@@ -188,6 +188,10 @@ msgctxt "field:account.invoice,number_digit:"
 msgid "Number Digit"
 msgstr "Número digits"
 
+msgctxt "field:account.invoice,origin_invoices:"
+msgid "Origin Invoices"
+msgstr "Factures origen"
+
 msgctxt "field:account.invoice,origins:"
 msgid "Origins"
 msgstr "Orígens"
@@ -207,6 +211,10 @@ msgstr "Identificador fiscal del tercer"
 msgctxt "field:account.invoice,payment_lines:"
 msgid "Payment Lines"
 msgstr "Línies de pagament"
+
+msgctxt "field:account.invoice,payment_means:"
+msgid "Payment Means"
+msgstr "Mitjans de pagament"
 
 msgctxt "field:account.invoice,payment_term:"
 msgid "Payment Term"
@@ -239,6 +247,18 @@ msgstr "Seqüència"
 msgctxt "field:account.invoice,sequence_type_cache:"
 msgid "Sequence Type Cache"
 msgstr "Memòria cau de tipus de seqüència"
+
+msgctxt "field:account.invoice,source_tax_amount:"
+msgid "Source Tax"
+msgstr "Impostos origen"
+
+msgctxt "field:account.invoice,source_total_amount:"
+msgid "Source Total"
+msgstr "Total origen"
+
+msgctxt "field:account.invoice,source_untaxed_amount:"
+msgid "Source Untaxed"
+msgstr "Base imposable origen"
 
 msgctxt "field:account.invoice,state:"
 msgid "State"
@@ -543,6 +563,42 @@ msgstr "Pagadors"
 msgctxt "field:account.invoice.pay.start,payment_method:"
 msgid "Payment Method"
 msgstr "Mètode de pagament"
+
+msgctxt "field:account.invoice.payment.mean,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:account.invoice.payment.mean,instrument:"
+msgid "Instrument"
+msgstr "Instrument"
+
+msgctxt "field:account.invoice.payment.mean,invoice:"
+msgid "Invoice"
+msgstr "Factura"
+
+msgctxt "field:account.invoice.payment.mean,payees:"
+msgid "Payees"
+msgstr "Pagadors"
+
+msgctxt "field:account.invoice.payment.mean,payers:"
+msgid "Payers"
+msgstr "Pagadors"
+
+msgctxt "field:account.invoice.payment.mean.rule,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:account.invoice.payment.mean.rule,currency:"
+msgid "Currency"
+msgstr "Moneda"
+
+msgctxt "field:account.invoice.payment.mean.rule,instrument:"
+msgid "Instrument"
+msgstr "Instrument"
+
+msgctxt "field:account.invoice.payment.mean.rule,payee:"
+msgid "Payee"
+msgstr "Pagador"
 
 msgctxt "field:account.invoice.payment.method,company:"
 msgid "Company"
@@ -872,6 +928,14 @@ msgctxt "model:account.invoice.pay.start,string:"
 msgid "Account Invoice Pay Start"
 msgstr "Inici pagament de la factura"
 
+msgctxt "model:account.invoice.payment.mean,string:"
+msgid "Account Invoice Payment Mean"
+msgstr "Mitjans de pagament de la factura"
+
+msgctxt "model:account.invoice.payment.mean.rule,string:"
+msgid "Account Invoice Payment Mean Rule"
+msgstr "Regles dels mitjans de pagament de factura"
+
 msgctxt "model:account.invoice.payment.method,string:"
 msgid "Account Invoice Payment Method"
 msgstr "Mètodes de pagament de factura"
@@ -955,6 +1019,10 @@ msgstr "Factures de proveïdor"
 msgctxt "model:ir.action,name:act_invoice_out_form"
 msgid "Customer Invoices"
 msgstr "Factures de client"
+
+msgctxt "model:ir.action,name:act_invoice_payment_mean_rule_form"
+msgid "Payment Means Rules"
+msgstr "Regles de mitjans de pagament"
 
 msgctxt "model:ir.action,name:act_invoice_relate"
 msgid "Invoices"
@@ -1231,6 +1299,15 @@ msgid "The invoice \"%(invoice)s\" is similar to invoice \"%(similar)s\"."
 msgstr "La factura \"%(invoice)s\" és similar a la factura \"%(similar)s\"."
 
 #, python-format
+msgctxt "model:ir.message,text:msg_invoice_source_mismatch"
+msgid ""
+"The \"%(field)s\" value of the invoice \"%(invoice)s\", %(value)s, must "
+"equal the source value, %(source)s."
+msgstr ""
+"El \"%(field)s\" de la factura \"%(invoice)s\", %(value)s, ha de ser igual "
+"al valor d'origen, %(source)s."
+
+#, python-format
 msgctxt "model:ir.message,text:msg_invoice_supplier_payment_reference_invalid"
 msgid "The %(type)s \"%(reference)s\" on invoice \"%(invoice)s\" is not valid."
 msgstr "El %(type)s \"%(reference)s\" de la factura \"%(invoice)s\" no és vàlid."
@@ -1345,6 +1422,11 @@ msgctxt "model:ir.rule.group,name:rule_group_invoice_line_companies"
 msgid "User in companies"
 msgstr "Usuari a les empreses"
 
+msgctxt ""
+"model:ir.rule.group,name:rule_group_invoice_payment_mean_rule_companies"
+msgid "User in companies"
+msgstr "Usuari a les empreses"
+
 msgctxt "model:ir.rule.group,name:rule_group_invoice_sequence_companies"
 msgid "User in companies"
 msgstr "Usuari a les empreses"
@@ -1365,6 +1447,10 @@ msgctxt "model:ir.ui.menu,name:menu_invoice_out_form"
 msgid "Customer Invoices"
 msgstr "Factures de client"
 
+msgctxt "model:ir.ui.menu,name:menu_invoice_payment_mean_rule"
+msgid "Payment Means Rules"
+msgstr "Regles de mitjans de pagament"
+
 msgctxt "model:ir.ui.menu,name:menu_invoices"
 msgid "Invoices"
 msgstr "Facturació"
@@ -1381,9 +1467,9 @@ msgctxt "model:ir.ui.menu,name:menu_payment_term_test"
 msgid "Test Payment Term"
 msgstr "Prova termini de pagament"
 
-msgctxt "model:ir.ui.menu,name:menu_payment_terms_configuration"
-msgid "Payment Terms"
-msgstr "Terminis de pagament"
+msgctxt "model:ir.ui.menu,name:menu_payments_configuration"
+msgid "Invoice Payments"
+msgstr "Pagaments de factura"
 
 msgctxt "model:party.party.payment_term,string:"
 msgid "Party Payment Term"
@@ -1424,6 +1510,10 @@ msgstr "Factura esborrany"
 msgctxt "report:account.invoice:"
 msgid "Invoice No:"
 msgstr "Factura Núm.:"
+
+msgctxt "report:account.invoice:"
+msgid "Payment Means"
+msgstr "Mitjans de pagament"
 
 msgctxt "report:account.invoice:"
 msgid "Payment Term"
@@ -1610,6 +1700,10 @@ msgstr "Pagament"
 msgctxt "view:account.invoice:"
 msgid "Tax Identifier:"
 msgstr "Identificador fiscal:"
+
+msgctxt "view:account.invoice:"
+msgid "expected"
+msgstr "esperat"
 
 msgctxt "view:company.company:"
 msgid "Invoice"

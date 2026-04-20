@@ -680,7 +680,7 @@ msgstr "Emiraat"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Entity"
-msgstr "Eenheid"
+msgstr "Entiteit"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "European collectivity"

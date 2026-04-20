@@ -6,9 +6,10 @@ msgctxt "field:account.account,active:"
 msgid "Active"
 msgstr "Ativo"
 
+#, fuzzy
 msgctxt "field:account.account,amount_second_currency:"
 msgid "Amount Second Currency"
-msgstr "Valor da Moeda Secundária"
+msgstr "Montante na Moeda Secundária"
 
 msgctxt "field:account.account,balance:"
 msgid "Balance"
@@ -2616,8 +2617,9 @@ msgctxt "model:account.aged_balance.context,string:"
 msgid "Account Aged Balance Context"
 msgstr "Contexto do Balanço Histórico"
 
+#, fuzzy
 msgctxt "model:account.balance_sheet.comparison.context,string:"
-msgid "Account Balance Sheet Context"
+msgid "Account Balance Sheet Comparison Context"
 msgstr "Contexto do Balanço Patrimonial"
 
 msgctxt "model:account.balance_sheet.context,string:"
@@ -2692,8 +2694,9 @@ msgctxt "model:account.general_ledger.line,string:"
 msgid "Account General Ledger Line"
 msgstr "Linha do Livro Razão"
 
+#, fuzzy
 msgctxt "model:account.general_ledger.line.context,string:"
-msgid "Account General Ledger Account Context"
+msgid "Account General Ledger Line Context"
 msgstr "Contexto da Conta do Livro Razão"
 
 msgctxt "model:account.income_statement.context,string:"
@@ -4778,6 +4781,11 @@ msgstr "Nenhum"
 msgctxt "selection:account.tax.template,type:"
 msgid "Percentage"
 msgstr "Porcentagem"
+
+#, fuzzy
+msgctxt "selection:ir.cron,method:"
+msgid "Reconcile Move Lines Automatically"
+msgstr "Reconciliar Linhas"
 
 msgctxt "view:account.account.type:"
 msgid "Comparison"

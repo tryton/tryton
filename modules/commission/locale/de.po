@@ -440,8 +440,8 @@ msgid "Commission Reporting Agent"
 msgstr "Provisionsauswertung Provisionsempfänger"
 
 msgctxt "model:commission.reporting.agent.time_series,string:"
-msgid "Commission Reporting Agent"
-msgstr "Provisionsauswertung Provisionsempfänger"
+msgid "Commission Reporting Agent Time Series"
+msgstr "Provisionsauswertung Provisionsempfänger Zeitreihe"
 
 msgctxt "model:commission.reporting.context,string:"
 msgid "Commission Reporting Context"

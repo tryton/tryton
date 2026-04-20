@@ -90,6 +90,26 @@ msgctxt "field:stock.package,width_uom:"
 msgid "Width UoM"
 msgstr "UdM del ancho"
 
+msgctxt "field:stock.package.pack.move,allowed_moves:"
+msgid "Allowed Moves"
+msgstr "Movimientos permitidos"
+
+msgctxt "field:stock.package.pack.move,move_quantity:"
+msgid "Move Quantity"
+msgstr "Cantidad del movimiento"
+
+msgctxt "field:stock.package.pack.move,quantity:"
+msgid "Quantity"
+msgstr "Cantidad"
+
+msgctxt "field:stock.package.pack.move,source:"
+msgid "Source"
+msgstr "Origen"
+
+msgctxt "field:stock.package.pack.move,unit:"
+msgid "Unit"
+msgstr "Unidad"
+
 msgctxt "field:stock.package.type,height:"
 msgid "Height"
 msgstr "Altura"
@@ -158,6 +178,10 @@ msgctxt "field:stock.shipment.out,root_packages:"
 msgid "Packages"
 msgstr "Paquetes"
 
+msgctxt "help:stock.package,children:"
+msgid "The packages contained in this package."
+msgstr "Los paquetes contenidos en este paquete."
+
 msgctxt "help:stock.package,height:"
 msgid "The height of the package."
 msgstr "La altura del paquete."
@@ -190,6 +214,10 @@ msgctxt "help:stock.package,packaging_weight_uom:"
 msgid "The Unit of Measure for the packaging weight."
 msgstr "La unidad de medida de la altura del paquete."
 
+msgctxt "help:stock.package,parent:"
+msgid "The package that contains this package."
+msgstr "El paquete que contiene este paquete."
+
 msgctxt "help:stock.package,width:"
 msgid "The width of the package."
 msgstr "El ancho del paquete."
@@ -197,6 +225,14 @@ msgstr "El ancho del paquete."
 msgctxt "help:stock.package,width_uom:"
 msgid "The Unit of Measure for the package width."
 msgstr "La unidad de medida del ancho del paquete."
+
+msgctxt "help:stock.package.pack.move,quantity:"
+msgid ""
+"The quantity to pack from the move.\n"
+"Leave empty for the full quantity of the move."
+msgstr ""
+"Cantidad del movimiento a empaquetar.\n"
+"Dejar vacío para la cantidad total del movimiento."
 
 msgctxt "help:stock.package.type,height:"
 msgid "The height of the package."
@@ -242,6 +278,14 @@ msgctxt "model:ir.action,name:act_package_type_form"
 msgid "Package Types"
 msgstr "Tipos de paquete"
 
+msgctxt "model:ir.action,name:wizard_package_pack"
+msgid "Pack Package"
+msgstr "Empaquetar paquete"
+
+msgctxt "model:ir.action,name:wizard_shipment_pack"
+msgid "Pack Shipment"
+msgstr "Empaquetar albarán"
+
 #, python-format
 msgctxt "model:ir.message,text:msg_package_mismatch"
 msgid "To process shipment \"%(shipment)s\", you must pack all its moves."
@@ -257,6 +301,22 @@ msgid ""
 msgstr ""
 "El volumen (%(volume)s) del paquete \"%(package)s\" es demasiado pequeño "
 "respecto el volumen total (%(children_volume)s) de sus paquetes hijos."
+
+msgctxt "model:ir.model.button,string:package_fill_button"
+msgid "Fill"
+msgstr "Llenar"
+
+msgctxt "model:ir.model.button,string:shipment_in_return_pack_wizard_button"
+msgid "Fill"
+msgstr "Llenar"
+
+msgctxt "model:ir.model.button,string:shipment_internal_pack_wizard_button"
+msgid "Add Package"
+msgstr "Añadir paquete"
+
+msgctxt "model:ir.model.button,string:shipment_out_pack_wizard_button"
+msgid "Pack"
+msgstr "Empaquetar"
 
 msgctxt "model:ir.rule.group,name:rule_group_package_companies"
 msgid "User in companies"
@@ -277,6 +337,10 @@ msgstr "Tipos de paquete"
 msgctxt "model:stock.package,string:"
 msgid "Stock Package"
 msgstr "Paquete"
+
+msgctxt "model:stock.package.pack.move,string:"
+msgid "Stock Package Pack Move"
+msgstr "Paquete empaquetar movimiento"
 
 msgctxt "model:stock.package.type,string:"
 msgid "Stock Package Type"
@@ -303,5 +367,33 @@ msgid "Measurements"
 msgstr "Medidas"
 
 msgctxt "view:stock.package:"
+msgid "Containing"
+msgstr "Que contiene"
+
+msgctxt "view:stock.package:"
+msgid "Is contained in:"
+msgstr "Está contenido en:"
+
+msgctxt "view:stock.package:"
 msgid "Measurements"
 msgstr "Medidas"
+
+msgctxt "wizard_button:stock.package.pack,move,add_move:"
+msgid "Add"
+msgstr "Añadir"
+
+msgctxt "wizard_button:stock.package.pack,move,end:"
+msgid "End"
+msgstr "Finalizar"
+
+msgctxt "wizard_button:stock.shipment.pack,package,add_fill_package:"
+msgid "Add Package and Fill"
+msgstr "Añadir paquete y completar"
+
+msgctxt "wizard_button:stock.shipment.pack,package,add_package:"
+msgid "Add Package"
+msgstr "Añadir paquete"
+
+msgctxt "wizard_button:stock.shipment.pack,package,end:"
+msgid "End"
+msgstr "Finalizar"

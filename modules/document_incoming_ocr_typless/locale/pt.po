@@ -10,12 +10,36 @@ msgctxt "field:document.incoming.ocr.service,typless_document_type:"
 msgid "Document Type"
 msgstr ""
 
+msgctxt "field:document.incoming.ocr.service,typless_fields:"
+msgid "Fields"
+msgstr ""
+
+msgctxt "field:document.incoming.ocr.service,typless_line_item_fields:"
+msgid "Line Item Fields"
+msgstr ""
+
+msgctxt "field:document.incoming.ocr.service,typless_vat_rates:"
+msgid "VAT Rates"
+msgstr ""
+
 msgctxt "help:document.incoming.ocr.service,typless_api_key:"
 msgid "The standard token from Typless settings page."
 msgstr ""
 
 msgctxt "help:document.incoming.ocr.service,typless_document_type:"
 msgid "The name of the document type on Typless."
+msgstr ""
+
+msgctxt "help:document.incoming.ocr.service,typless_fields:"
+msgid "The metadata fields setup for this document type."
+msgstr ""
+
+msgctxt "help:document.incoming.ocr.service,typless_line_item_fields:"
+msgid "The line item fields setup for this document type."
+msgstr ""
+
+msgctxt "help:document.incoming.ocr.service,typless_vat_rates:"
+msgid "Check if the vat rate net plugin is activated for this document type."
 msgstr ""
 
 msgctxt "model:ir.message,text:msg_typless_credential_modified"

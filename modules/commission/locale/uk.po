@@ -424,7 +424,7 @@ msgid "Commission Reporting Agent"
 msgstr ""
 
 msgctxt "model:commission.reporting.agent.time_series,string:"
-msgid "Commission Reporting Agent"
+msgid "Commission Reporting Agent Time Series"
 msgstr ""
 
 msgctxt "model:commission.reporting.context,string:"

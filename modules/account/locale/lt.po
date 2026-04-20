@@ -2762,7 +2762,7 @@ msgstr "Vėluojančio mokėjimo kontekstas"
 
 #, fuzzy
 msgctxt "model:account.balance_sheet.comparison.context,string:"
-msgid "Account Balance Sheet Context"
+msgid "Account Balance Sheet Comparison Context"
 msgstr "Balanso kontekstas"
 
 #, fuzzy
@@ -2857,7 +2857,7 @@ msgstr "Didžiosios knygos eilutė"
 
 #, fuzzy
 msgctxt "model:account.general_ledger.line.context,string:"
-msgid "Account General Ledger Account Context"
+msgid "Account General Ledger Line Context"
 msgstr "Didžiosios knygos koresponduojančios sąskaitos kontekstas"
 
 #, fuzzy
@@ -5046,6 +5046,11 @@ msgstr "Pastaba"
 msgctxt "selection:account.tax.template,type:"
 msgid "Percentage"
 msgstr "Procentinis"
+
+#, fuzzy
+msgctxt "selection:ir.cron,method:"
+msgid "Reconcile Move Lines Automatically"
+msgstr "Sudengimo eilutės"
 
 msgctxt "view:account.account.type:"
 msgid "Comparison"

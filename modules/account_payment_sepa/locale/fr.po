@@ -273,6 +273,12 @@ msgid "Receivable with Mandate"
 msgstr "À recevoir avec mandat"
 
 #, python-format
+msgctxt "model:ir.message,text:msg_invoice_payment_mean_direct_debit"
+msgid "SEPA direct debit using mandate %(mandate)s on %(account_number)s"
+msgstr ""
+"Prélèvement SEPA utilisant le mandat %(mandate)s sur %(account_number)s"
+
+#, python-format
 msgctxt "model:ir.message,text:msg_mandate_authorisation_statement"
 msgid ""
 "By signing this mandate form, you authorise (A) %(creditor)s to send "

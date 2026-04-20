@@ -247,6 +247,10 @@ msgctxt "field:purchase.line,quantity:"
 msgid "Quantity"
 msgstr "Hoeveelheid"
 
+msgctxt "field:purchase.line,quantity_to_invoice:"
+msgid "Quantity to Invoice"
+msgstr "Aantal te factureren"
+
 msgctxt "field:purchase.line,summary:"
 msgid "Summary"
 msgstr "Samenvatting"
@@ -490,6 +494,10 @@ msgstr "Belasting"
 msgctxt "field:purchase.purchase,tax_amount_cache:"
 msgid "Tax Cache"
 msgstr "Belastingcache"
+
+msgctxt "field:purchase.purchase,to_invoice:"
+msgid "To Invoice"
+msgstr "Te factureren"
 
 msgctxt "field:purchase.purchase,total_amount:"
 msgid "Total"
@@ -1307,16 +1315,16 @@ msgid "Title"
 msgstr "Titel"
 
 msgctxt "selection:purchase.purchase,invoice_method:"
-msgid "Based On Order"
-msgstr "Op basis van bestelling"
-
-msgctxt "selection:purchase.purchase,invoice_method:"
-msgid "Based On Shipment"
-msgstr "Op basis van verzending"
-
-msgctxt "selection:purchase.purchase,invoice_method:"
 msgid "Manual"
 msgstr "Handmatig"
+
+msgctxt "selection:purchase.purchase,invoice_method:"
+msgid "On Fulfillment"
+msgstr "Bij levering"
+
+msgctxt "selection:purchase.purchase,invoice_method:"
+msgid "On Order"
+msgstr "Bij bestelling"
 
 msgctxt "selection:purchase.purchase,invoice_state:"
 msgid "Awaiting Payment"
