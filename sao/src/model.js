@@ -992,7 +992,7 @@
                                 this.group.parent.id;
                         }
                     }
-                    return this.set_default(values);
+                    return this.set_default(values).then(() => values);
                 });
             }
             return jQuery.when();
