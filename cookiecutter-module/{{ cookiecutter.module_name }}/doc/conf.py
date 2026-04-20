@@ -43,7 +43,7 @@ def get_info():
         info['branch'] = 'branch/default'
         {%- endif %}
     else:
-        info['series'] = '.'.join(version.split('.', 2)[:2])
+        info['series'] = '.'.join(metadata['version'].split('.', 2)[:2])
         {%- if not cookiecutter.prefix %}
         info['branch'] = 'branch/' + info['series']
         {%- endif %}
