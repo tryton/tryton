@@ -39,7 +39,7 @@ def get_info():
         info['series'] = 'latest'
         info['branch'] = 'branch/default'
     else:
-        info['series'] = '.'.join(version.split('.', 2)[:2])
+        info['series'] = '.'.join(metadata['version'].split('.', 2)[:2])
         info['branch'] = 'branch/' + info['series']
 
     for key in {'depends', 'extras_depend'}:
