@@ -11,8 +11,8 @@ from trytond.modules.currency.currency import CronFetchError
 from trytond.pool import PoolMeta
 from trytond.pyson import Eval, If
 
-URL_10DAYS = 'https://bnr.ro/nbrfxrates10days.xml'
-URL_YEAR = 'https://bnr.ro/files/xml/years/nbrfxrates%s.xml'
+URL_10DAYS = 'https://www.bnr.ro/nbrfxrates10days.xml'
+URL_YEAR = 'https://www.bnr.ro/files/xml/years/nbrfxrates%s.xml'
 
 
 class Cron(metaclass=PoolMeta):
