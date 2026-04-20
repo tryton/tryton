@@ -3,7 +3,7 @@ requires = ['hatchling >= 1', 'hatch-tryton']
 build-backend = 'hatchling.build'
 
 [project]
-name = 'naiad'
+name = 'tryton-naiad'
 dynamic = ['version', 'dependencies', 'optional-dependencies', 'authors', 'readme']
 requires-python = '>=3.10'
 maintainers = [
