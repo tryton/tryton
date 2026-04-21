@@ -103,3 +103,28 @@ class ResourceTestCase(unittest.TestCase):
             self.assertEqual(notes, [note2])
             self.assertEqual(count, 1)
             self.assertTrue(query)
+
+    @with_transaction()
+    def test_resources_search_limit(self):
+        "Test resource search limit work as expected"
+        pool = Pool()
+        Note = pool.get('ir.note')
+        Warning_ = pool.get('res.user.warning')
+
+        warning1 = Warning_(user=0, name="root")
+        warning1.save()
+        warning2 = Warning_(user=1, name="admin")
+        warning2.save()
+        for i in range(100):
+            note = Note(resource=warning2 if i % 3 else warning1)
+            note.save()
+
+        with Transaction().set_context(_check_access=True):
+            notes = Note.search([], limit=10, offset=0)
+            self.assertEqual(len(notes), 10)
+
+            notes = Note.search([], limit=200, offset=0)
+            self.assertEqual(len(notes), 66)
+
+            notes = Note.search([])
+            self.assertEqual(len(notes), 66)
