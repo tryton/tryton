@@ -12,7 +12,7 @@ from pathlib import Path
 from subprocess import check_call
 
 from cx_Freeze import Executable, setup
-from setuptools import find_packages
+from setuptools import Distribution, find_packages
 
 home = os.path.expanduser('~/')
 pythonrc = os.path.join(home, '.pythonrc.py')
@@ -21,6 +21,9 @@ try:
         exec(fp.read())
 except IOError:
     pass
+
+# Prevent parsing pyproject.toml
+Distribution.parse_config_files = lambda *a, **k: None
 
 
 include_files = [
