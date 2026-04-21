@@ -140,7 +140,7 @@ class Queue(ModelSQL):
                 seconds, = row
 
         if not task_id and database.has_channel():
-            cursor.execute('LISTEN "%s"', (cls.__name__,))
+            cursor.execute('LISTEN "%s"' % cls.__name__)
         return task_id, seconds
 
     def run(self):
