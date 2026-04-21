@@ -6,7 +6,7 @@ from gi.repository import Gdk, Gio, GLib, GObject, Gtk
 
 from tryton import common, rpc
 from tryton.bus import Bus
-from tryton.common import sur
+from tryton.common import RPCException, RPCExecute, sur
 
 _ = gettext.gettext
 
@@ -66,13 +66,18 @@ class Chat:
         Bus.unregister(f"chat:{self.record}", self.notify)
 
     def send_message(self, message, internal):
-        rpc.execute(
-            'model', 'ir.chat.channel', 'post', self.record, message,
-            'internal' if internal else 'public', rpc.CONTEXT)
+        try:
+            RPCExecute(
+                'model', 'ir.chat.channel', 'post', self.record, message,
+                'internal' if internal else 'public')
+        except RPCException:
+            pass
 
     def get_messages(self):
-        return rpc.execute(
-            'model', 'ir.chat.channel', 'get', self.record, rpc.CONTEXT)
+        try:
+            return RPCExecute('model', 'ir.chat.channel', 'get', self.record)
+        except RPCException:
+            return []
 
     def notify(self, message):
         self.refresh()
@@ -138,9 +143,12 @@ class Chat:
                         method = 'unsubscribe'
                     elif follower['type'] == 'email':
                         method = 'unsubscribe_email'
-                    rpc.execute(
-                        'model', 'ir.chat.channel', method,
-                        self.record, follower['key'], rpc.CONTEXT)
+                    try:
+                        RPCExecute(
+                            'model', 'ir.chat.channel', method,
+                            self.record, follower['key'])
+                    except RPCException:
+                        pass
                     subscribe_popover.popdown()
             return do_unsubscribe
 
@@ -181,14 +189,15 @@ class Chat:
 
         def toggle_subscribe(button):
             nonlocal subscribed
-            if subscribed:
-                rpc.execute(
-                    'model', 'ir.chat.channel', 'unsubscribe', self.record,
-                    rpc.CONTEXT)
-            else:
-                rpc.execute(
-                    'model', 'ir.chat.channel', 'subscribe', self.record,
-                    rpc.CONTEXT)
+            try:
+                if subscribed:
+                    RPCExecute(
+                        'model', 'ir.chat.channel', 'unsubscribe', self.record)
+                else:
+                    RPCExecute(
+                        'model', 'ir.chat.channel', 'subscribe', self.record)
+            except RPCException:
+                return
             subscribed = not subscribed
             set_subscribe_state()
             if subscribed:
@@ -246,25 +255,33 @@ class Chat:
         return widget
 
     def _get_followers(self):
-        return rpc.execute(
-            'model', 'ir.chat.channel', 'get_followers', self.record,
-            rpc.CONTEXT)
+        try:
+            return RPCExecute(
+                'model', 'ir.chat.channel', 'get_followers', self.record)
+        except RPCException:
+            return []
 
     def _search_followers(self, text):
-        followers = rpc.execute(
-            'model', 'ir.chat.channel', 'search_followers',
-            str(self.record), text, rpc.CONTEXT)
+        try:
+            followers = RPCExecute(
+                'model', 'ir.chat.channel', 'search_followers',
+                str(self.record), text)
+        except RPCException:
+            followers = []
         return filter(lambda f: not _follower_self(f), followers)
 
     def _add_follower(self, follower):
-        if follower['type'] == 'user':
-            rpc.execute(
-                'model', 'ir.chat.channel', 'subscribe',
-                self.record, follower['key'], rpc.CONTEXT)
-        elif follower['type'] == 'email':
-            rpc.execute(
-                'model', 'ir.chat.channel', 'subscribe_email',
-                self.record, follower['key'], rpc.CONTEXT)
+        try:
+            if follower['type'] == 'user':
+                RPCExecute(
+                    'model', 'ir.chat.channel', 'subscribe',
+                    self.record, follower['key'])
+            elif follower['type'] == 'email':
+                RPCExecute(
+                    'model', 'ir.chat.channel', 'subscribe_email',
+                    self.record, follower['key'])
+        except RPCException:
+            pass
 
     def __build_follower_entry(self):
         tooltips = common.Tooltips()
