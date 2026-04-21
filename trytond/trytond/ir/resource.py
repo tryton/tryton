@@ -78,7 +78,12 @@ class ResourceAccessMixin(ModelStorage):
         result = super().search(
             domain, offset=offset, limit=limit, order=order,
             count=False if enforce_access else count, query=query)
-        if enforce_access:
+        if not enforce_access:
+            return result
+
+        loop = 0
+        fetched = []
+        while True:
             records = result
             resources = defaultdict(set)
             allowed = set()
@@ -95,15 +100,27 @@ class ResourceAccessMixin(ModelStorage):
                                 ('id', 'in', list(sub_ids)),
                                 ]))
 
-            records = [
+            fetched.extend([
                 r for r in records
-                if not r.resource or r.resource in allowed]
-            if count:
-                result = len(records)
-            else:
-                # re-browse to have same context
-                result = cls.browse(records)
-        return result
+                if not r.resource or r.resource in allowed])
+
+            if limit is None or len(fetched) >= limit:
+                if limit is not None:
+                    fetched = fetched[:limit]
+                break
+
+            loop += 1
+            result = super().search(
+                domain, offset=offset + loop * limit, limit=limit, order=order,
+                count=False, query=False)
+            if not result:
+                break
+
+        if count:
+            return len(fetched)
+        else:
+            # re-browse to have same context
+            return cls.browse(fetched)
 
     @classmethod
     def read(cls, ids, fields_names):
