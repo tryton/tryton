@@ -22,7 +22,7 @@ from trytond.sendmail import send_message_transactional
 from trytond.tools import cached_property, firstline
 from trytond.tools.email_ import (
     EmailNotValidError, normalize_email, set_from_header, validate_email)
-from trytond.transaction import Transaction
+from trytond.transaction import Transaction, check_access
 from trytond.url import host
 
 FOLLOWER_SEARCH_LIMIT = 20
@@ -53,15 +53,15 @@ class Channel(ModelSQL, ModelView):
                 'ir.msg_chat_channel_identifier_unique'),
             ]
         cls.__rpc__.update(
-            subscribe=RPC(readonly=False),
-            unsubscribe=RPC(readonly=False),
-            subscribe_email=RPC(readonly=False),
-            unsubscribe_email=RPC(readonly=False),
-            get_followers=RPC(),
-            search_followers=RPC(),
-            post=RPC(readonly=False, result=int),
+            subscribe=RPC(readonly=False, check_access=False),
+            unsubscribe=RPC(readonly=False, check_access=False),
+            subscribe_email=RPC(readonly=False, check_access=False),
+            unsubscribe_email=RPC(readonly=False, check_access=False),
+            get_followers=RPC(check_access=False),
+            search_followers=RPC(check_access=False),
+            post=RPC(readonly=False, check_access=False, result=int),
             get_models=RPC(),
-            get=RPC(),
+            get=RPC(check_access=False),
             )
         cls._buttons.update({
                 'reset_identifier': {
@@ -98,6 +98,7 @@ class Channel(ModelSQL, ModelView):
         return self.resource.rec_name
 
     @classmethod
+    @check_access
     def check_access(cls, resource):
         pool = Pool()
         ModelAccess = pool.get('ir.model.access')
@@ -107,7 +108,6 @@ class Channel(ModelSQL, ModelView):
 
     @classmethod
     def _get_channel(cls, resource):
-        cls.check_access(resource)
         channels = cls.search([
                 ('resource', '=', str(resource)),
                 ])
@@ -144,12 +144,13 @@ class Channel(ModelSQL, ModelView):
 
     @classmethod
     def unsubscribe(cls, resource, username=None):
+        cls.check_access(resource)
+
         pool = Pool()
         Follower = pool.get('ir.chat.follower')
         User = pool.get('res.user')
 
         if username:
-            cls.check_access(resource)
             try:
                 user, = User.search([('login', '=', username)], limit=1)
             except ValueError:
@@ -226,6 +227,8 @@ class Channel(ModelSQL, ModelView):
 
     @classmethod
     def get_followers(cls, resource):
+        cls.check_access(resource)
+
         return sorted(
             cls._get_followers(resource).values(), key=itemgetter('name'))
 
@@ -246,6 +249,8 @@ class Channel(ModelSQL, ModelView):
 
     @classmethod
     def search_followers(cls, resource, text, limit=FOLLOWER_SEARCH_LIMIT):
+        cls.check_access(resource)
+
         potential_followers = cls._search_followers(resource, text)
         current_followers = cls.get_followers(resource)
 
@@ -256,6 +261,8 @@ class Channel(ModelSQL, ModelView):
 
     @classmethod
     def post(cls, resource, content, audience='internal'):
+        cls.check_access(resource)
+
         pool = Pool()
         Message = pool.get('ir.chat.message')
         User = pool.get('res.user')
@@ -373,9 +380,10 @@ class Channel(ModelSQL, ModelView):
 
     @classmethod
     def get(cls, resource, before=None, after=None):
+        cls.check_access(resource)
+
         pool = Pool()
         Message = pool.get('ir.chat.message')
-        cls.check_access(resource)
         domain = [
             ('channel.resource', '=', resource),
             ]
