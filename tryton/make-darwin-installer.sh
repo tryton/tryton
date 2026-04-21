@@ -13,7 +13,7 @@ gtk-query-immodules-3.0 \
     | sed -e '/^#/d' \
     | sed  -e 's@/.*/lib/gtk-3.0@\@executable_path/lib/gtk-3.0@' \
     > darwin/gtk-3.0/gtk.immodules
-python ./hatch_build.py
+python3 ./hatch_build.py
 ./setup-freeze.py bdist_mac
 mkdir dist
 mv build/Tryton.app dist/
