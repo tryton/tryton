@@ -36,6 +36,7 @@ def setup(config, modules, company):
     payments = random.sample(payments, len(payments) * 2 // 3)
 
     for payment in payments:
+        payment.click('submit')
         payment.click('approve')
 
     payments = random.sample(payments, len(payments) * 2 // 3)
