@@ -1,6 +1,6 @@
 #!/bin/sh
 set -e
-version=`python3 -m build -q --metadata 2>/dev/null | jq -r .version`
+version=`./setup-freeze.py --version`
 series=${version%.*}
 bits=`python -c "import platform; print(platform.architecture()[0])"`
 rm -rf build dist
