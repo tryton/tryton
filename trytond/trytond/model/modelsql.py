@@ -1904,12 +1904,6 @@ class ModelSQL(ModelStorage):
     def __searched_columns(cls, tables, *, eager=False, history=False):
         table, _ = tables[None]
         columns = [table.id.as_('id')]
-        if (cls._history and Transaction().context.get('_datetime')
-                and (eager or history)):
-            columns.append(
-                Coalesce(table.write_date, table.create_date).as_('_datetime'))
-            columns.append(Column(table, '__id').as_('__id'))
-
         if eager:
             table_query = cls._is_table_query()
             columns += [f.sql_column(tables, cls).as_(n)
@@ -1919,11 +1913,6 @@ class ModelSQL(ModelStorage):
                     and (not table_query or n not in _TABLE_QUERY_COLUMNS)
                     and not getattr(f, 'translate', False)
                     and f.loading == 'eager']
-            if not table_query:
-                sql_type = fields.Char('timestamp').sql_type().base
-                columns += [Extract('EPOCH',
-                        Coalesce(table.write_date, table.create_date)
-                        ).cast(sql_type).as_('_timestamp')]
         return columns
 
     @classmethod
@@ -2027,8 +2016,6 @@ class ModelSQL(ModelStorage):
                     if no_cache is None:
                         no_cache = list(data.keys())
                         for k in no_cache[:]:
-                            if k in ('_timestamp', '_datetime', '__id'):
-                                continue
                             field = cls._fields[k]
                             if not getattr(field, 'datetime_field', None):
                                 no_cache.remove(k)
