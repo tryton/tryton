@@ -745,6 +745,8 @@ Class methods:
 
    If ``active_test`` is set to ``False``, no clause against
    :attr:`DeactivableMixin.active` field is added to the domain.
+   If it is set to ``None`` the value of the ``active_test`` key in
+   :attr:`~trytond.transaction.Transaction.context` is used.
 
    .. _ref-tables:
 
