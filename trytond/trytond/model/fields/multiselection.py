@@ -1,6 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the toplevel of this
 # repository contains the full copyright notices and license terms.
 import json
+from collections import defaultdict
 from functools import partial
 
 from sql import Literal, operators
@@ -57,15 +58,15 @@ class MultiSelection(SelectionMixin, Field):
                 self.selection, RPC(instantiate=instantiate, cache=cache))
 
     def get(self, ids, model, name, values=None):
-        lists = {id: () for id in ids}
+        result = defaultdict(tuple)
         for value in values or []:
             data = value[name]
             if data:
                 # If stored as JSON conversion is done on backend
                 if isinstance(data, str):
                     data = json.loads(data)
-                lists[value['id']] = tuple(data)
-        return lists
+                result[value['id']] = tuple(data)
+        return result
 
     def sql_format(self, value):
         value = super().sql_format(value)

@@ -1,6 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import warnings
+from collections import defaultdict
 
 from sql import Cast, Expression, Literal, Null, Query
 from sql.functions import Position, Substring
@@ -123,17 +124,17 @@ class Reference(SelectionMixin, Field):
         pool = Pool()
         if values is None:
             values = {}
-        res = {}
+        result = defaultdict(type(None))
         for i in values:
-            res[i['id']] = i[name]
+            result[i['id']] = i[name]
         ref_to_check = {}
         for i in ids:
-            if not (i in res):
-                res[i] = None
+            if not (i in result):
+                result[i] = None
                 continue
-            if not res[i]:
+            if not result[i]:
                 continue
-            ref_model, ref_id = res[i].split(',', 1)
+            ref_model, ref_id = result[i].split(',', 1)
             if not ref_model:
                 continue
             try:
@@ -142,7 +143,7 @@ class Reference(SelectionMixin, Field):
                 continue
             if ref_id < 0:
                 continue
-            res[i] = ref_model + ',' + str(ref_id)
+            result[i] = ref_model + ',' + str(ref_id)
             ref_to_check.setdefault(ref_model, (set(), []))
             ref_to_check[ref_model][0].add(ref_id)
             ref_to_check[ref_model][1].append(i)
@@ -153,7 +154,8 @@ class Reference(SelectionMixin, Field):
                 try:
                     pool.get(ref_model)
                 except KeyError:
-                    res.update(dict((i, None) for i in ids))
+                    for i in ids:
+                        result.pop(i, None)
                     continue
                 Ref = pool.get(ref_model)
                 refs = Ref.search([
@@ -161,9 +163,9 @@ class Reference(SelectionMixin, Field):
                     ], order=[])
                 refs = list(map(str, refs))
                 for i in ids:
-                    if res[i] not in refs:
-                        res[i] = None
-        return res
+                    if result[i] not in refs:
+                        result.pop(i, None)
+        return result
 
     def __set__(self, inst, value):
         from ..model import Model

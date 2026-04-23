@@ -2,6 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 
 import logging
+from collections import defaultdict
 
 from sql import Column, Literal, Null
 from sql.functions import CurrentTimestamp
@@ -63,7 +64,6 @@ class Binary(Field):
         if values is None:
             values = {}
         transaction = Transaction()
-        res = {}
         converter = self.cast
         default = None
         format_ = Transaction().context.get(
@@ -71,6 +71,7 @@ class Binary(Field):
         if format_ == 'size':
             converter = len
             default = 0
+        result = defaultdict(type(default))
 
         if self.file_id:
             table = model.__table__()
@@ -93,24 +94,22 @@ class Binary(Field):
                     & (Column(table, self.file_id) != '')))
             for record_id, file_id in cursor:
                 try:
-                    res[record_id] = store_func(file_id, prefix)
+                    result[record_id] = store_func(file_id, prefix)
                 except (IOError, OSError):
                     logger.exception(
                         "failed to retrieve %r from filestore at %r",
                         file_id, prefix)
 
         for i in values:
-            if i['id'] in res:
+            if i['id'] in result:
                 continue
             value = i[name]
             if value:
                 value = converter(value)
             else:
                 value = default
-            res[i['id']] = value
-        for i in ids:
-            res.setdefault(i, default)
-        return res
+            result[i['id']] = value
+        return result
 
     def queue_for_removal(self, Model, name, ids):
         pool = Pool()

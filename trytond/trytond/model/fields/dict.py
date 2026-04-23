@@ -1,6 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the toplevel of this
 # repository contains the full copyright notices and license terms.
 import json
+from collections import defaultdict
 from functools import partial
 
 from sql import Cast, CombiningQuery, Literal, Null, Select, operators
@@ -34,7 +35,7 @@ class Dict(Field):
         self.search_unaccented = True
 
     def get(self, ids, model, name, values=None):
-        dicts = dict((id, None) for id in ids)
+        result = defaultdict(type(None))
         for value in values or []:
             data = value[name]
             if data:
@@ -44,8 +45,8 @@ class Dict(Field):
                 for key, val in data.items():
                     if isinstance(val, list):
                         data[key] = tuple(val)
-                dicts[value['id']] = ImmutableDict(data)
-        return dicts
+                result[value['id']] = ImmutableDict(data)
+        return result
 
     def sql_format(self, value):
         value = super().sql_format(value)

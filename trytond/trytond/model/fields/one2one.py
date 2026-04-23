@@ -1,6 +1,8 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 
+from collections import defaultdict
+
 from trytond.model.fields.field import Field, instantiate_context
 from trytond.model.fields.many2many import Many2Many
 from trytond.pool import Pool
@@ -21,10 +23,9 @@ class One2One(Many2Many):
         :param values: a dictionary with the read values
         :return: a dictionary with ids as key and target id as value
         '''
-        res = super().get(ids, model, name, values=values)
-        for i, vals in res.items():
-            res[i] = vals[0] if vals else None
-        return res
+        result = super().get(ids, model, name, values=values)
+        return defaultdict(
+            type(None), ((k, v[0] if v else None) for k, v in result.items()))
 
     def set(self, Model, name, ids, value, *args):
         '''

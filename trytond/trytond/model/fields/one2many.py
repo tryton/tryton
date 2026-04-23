@@ -140,9 +140,7 @@ class One2Many(Field):
         Target = self.get_target()
         field = Target._fields[self.field]
         reference_key = field._type == 'reference'
-        res = {}
-        for i in ids:
-            res[i] = []
+        result = defaultdict(list)
 
         if field.sortable(Target):
             if reference_key:
@@ -175,8 +173,9 @@ class One2Many(Field):
                 origin_id = int(origin_id)
             else:
                 origin_id = target[self.field]
-            res[origin_id].append(target['id'])
-        return dict((key, tuple(value)) for key, value in res.items())
+            result[origin_id].append(target['id'])
+        return defaultdict(
+            tuple, ((key, tuple(value)) for key, value in result.items()))
 
     def set(self, Model, name, ids, values, *args):
         '''

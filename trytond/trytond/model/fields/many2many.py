@@ -128,13 +128,7 @@ class Many2Many(Field):
         '''
         Return target records ordered.
         '''
-        if values is None:
-            values = {}
-        res = {}
-        if not ids:
-            return res
-        for i in ids:
-            res[i] = []
+        result = defaultdict(list)
 
         Relation = self.get_relation()
         origin_field = Relation._fields[self.origin]
@@ -171,8 +165,9 @@ class Many2Many(Field):
                 origin_id = int(origin_id)
             else:
                 origin_id = relation[self.origin]
-            res[origin_id].append(relation[self.target])
-        return dict((key, tuple(value)) for key, value in res.items())
+            result[origin_id].append(relation[self.target])
+        return defaultdict(
+            tuple, ((key, tuple(value)) for key, value in result.items()))
 
     def set(self, Model, name, ids, values, *args):
         '''
