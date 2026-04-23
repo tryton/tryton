@@ -836,10 +836,12 @@
             this._current_domain = [];
             this.offset = 0;
             this.order = this.default_order = attributes.order;
-            this.readonly = this.attributes.readonly || false;
+            this.screen_readonly = this.attributes.readonly || false;
             var access = Sao.common.MODELACCESS.get(model_name);
             if (!(access.write || access.create)) {
                 this.readonly = true;
+            } else {
+                this.readonly = this.screen_readonly;
             }
             this.search_count = 0;
             this.new_group(attributes.context || {});
@@ -2015,7 +2017,7 @@
         get_buttons: function() {
             var selected_records = (
                 this.current_view ? this.current_view.selected_records : []);
-            if (jQuery.isEmptyObject(selected_records)) {
+            if (jQuery.isEmptyObject(selected_records) || this.screen_readonly) {
                 return [];
             }
             var buttons = (

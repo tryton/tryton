@@ -87,6 +87,9 @@
             }
         },
         _parse_button: function(node, attributes) {
+            if (this.view.screen.screen_readonly) {
+                return;
+            }
             let button;
             if (parseInt(attributes.multiple || '0', 10)) {
                 button = new Sao.View.Tree.ButtonMultiple(attributes);

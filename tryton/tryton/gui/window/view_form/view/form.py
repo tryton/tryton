@@ -261,9 +261,12 @@ class FormXMLViewParser(XMLViewParser):
             label.set_mnemonic_widget(widget.mnemonic_widget)
 
     def _parse_button(self, node, attributes):
-        button = Button(attributes)
-        button.connect('clicked', self.view.button_clicked)
-        self.view.state_widgets.append(button)
+        if self.view.screen.screen_readonly:
+            button = None
+        else:
+            button = Button(attributes)
+            button.connect('clicked', self.view.button_clicked)
+            self.view.state_widgets.append(button)
         self.container.add(button, attributes)
 
     def _parse_link(self, node, attributes):

@@ -49,10 +49,12 @@ class Screen:
         self.offset = 0
         self.windows = []
 
-        self.readonly = attributes.get('readonly', False)
+        self.screen_readonly = attributes.get('readonly', False)
         if not (MODELACCESS[model_name]['write']
                 or MODELACCESS[model_name]['create']):
             self.readonly = True
+        else:
+            self.readonly = self.screen_readonly
         self.search_count = 0
         if not attributes.get('row_activate'):
             self.row_activate = self.default_row_activate
@@ -1245,7 +1247,7 @@ class Screen:
             states = record.expr_eval(button.attrs.get('states', {}))
             return not (states.get('invisible') or states.get('readonly'))
 
-        if not self.selected_records:
+        if not self.selected_records or self.screen_readonly:
             return []
 
         buttons = self.current_view.get_buttons() if self.current_view else []

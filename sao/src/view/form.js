@@ -130,9 +130,14 @@ function eval_pyson(value){
             }
         },
         _parse_button: function(node, attributes) {
-            var button = new Sao.common.Button(attributes);
-            button.el.click(button, this.view.button_clicked.bind(this.view));
-            this.view.state_widgets.push(button);
+            let button;
+            if (this.view.screen.screen_readonly) {
+                button = null;
+            } else {
+                button = new Sao.common.Button(attributes);
+                button.el.click(button, this.view.button_clicked.bind(this.view));
+                this.view.state_widgets.push(button);
+            }
             this.container.add(button, attributes);
         },
         _parse_link: function(node, attributes) {

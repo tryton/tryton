@@ -372,6 +372,8 @@ class TreeXMLViewParser(XMLViewParser):
             self.view.optionals[column.name].append(column)
 
     def _parse_button(self, node, attributes):
+        if self.view.screen.screen_readonly:
+            return
         if int(attributes.get('multiple', 0)):
             button = ButtonMutiple(attributes)
             button.connect('clicked', self.view.button_clicked)
