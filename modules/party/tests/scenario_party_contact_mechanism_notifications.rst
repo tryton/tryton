@@ -42,7 +42,7 @@ Check notifications::
 
 Change contact mechanism type::
 
-    >>> contact_mechanism.type = 'other'
+    >>> contact_mechanism.type = 'jabber'
     >>> contact_mechanism.value = "test@example.com"
 
 Check notifications::

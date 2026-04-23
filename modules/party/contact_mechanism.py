@@ -1,5 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+
+import re
 from itertools import chain
 
 try:
@@ -38,6 +40,8 @@ _PHONE_TYPES = {
     'mobile',
     'fax',
     }
+
+_URL_REGEX = re.compile(r'^(http|ftp)s?://', re.IGNORECASE)
 
 
 class _ContactMechanismMixin:
@@ -140,7 +144,7 @@ class ContactMechanism(
 
     @staticmethod
     def default_type():
-        return 'phone'
+        return 'other'
 
     @classmethod
     def default_party(cls):
@@ -219,9 +223,39 @@ class ContactMechanism(
         #  Setting value is done by on_changes
         pass
 
+    def _guess_types(self, value, type_):
+        types = []
+        if type_ in {'skype', 'sip', 'irc', 'jabber'}:
+            return types
+        if phonenumbers:
+            if phonenumber := self._parse_phonenumber(value):
+                phonenumber_type = phonenumbers.number_type(phonenumber)
+                if phonenumber_type in {
+                        phonenumbers.PhoneNumberType.FIXED_LINE}:
+                    types.append('phone')
+                elif phonenumber_type in {
+                        phonenumbers.PhoneNumberType.MOBILE}:
+                    types.append('mobile')
+                else:
+                    types.extend(_PHONE_TYPES)
+        try:
+            validate_email(value, check_deliverability=False)
+        except EmailNotValidError:
+            pass
+        else:
+            types.append('email')
+        if re.match(_URL_REGEX, value):
+            types.append('website')
+        return types
+
     @fields.depends(
         methods=['on_change_with_url', 'format_value', 'format_value_compact'])
     def _change_value(self, value, type_):
+        if value:
+            guess_types = self._guess_types(value, type_)
+            if guess_types and type_ not in guess_types:
+                self.type = type_ = guess_types[0]
+
         self.value = self.format_value(value=value, type_=type_)
         self.value_compact = self.format_value_compact(
             value=value, type_=type_)
