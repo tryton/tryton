@@ -17,9 +17,9 @@ Email
    Return a string suitable for an :rfc:`2822` ``From``, ``To`` or ``Cc``
    header.
 
-.. function:: validate_email(email)
+.. function:: validate_email(email[, check_deliverability])
 
-   Validate the email address.
+   Validate the email address and check deliverability.
 
 .. function:: normalize_email(email)
 

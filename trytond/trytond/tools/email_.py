@@ -49,9 +49,9 @@ try:
         else:
             raise
 
-    def validate_email(email):
+    def validate_email(email, check_deliverability=True):
         emailinfo = _validate_email(
-            email, check_deliverability=True,
+            email, check_deliverability=check_deliverability,
             dns_resolver=resolver,
             test_environment=Pool.test)
         return emailinfo.normalized
@@ -76,7 +76,7 @@ try:
 
 except ImportError:
 
-    def validate_email(email):
+    def validate_email(email, check_deliverability=True):
         return email
 
     def normalize_email(email):
