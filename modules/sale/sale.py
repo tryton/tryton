@@ -1913,7 +1913,7 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
         Lang = pool.get('ir.lang')
         Warning = pool.get('res.user.warning')
         lang = Lang.get()
-        move_type = 'in' if self.quantity >= 0 else 'return'
+        move_type = 'out' if self.quantity >= 0 else 'return'
         quantity = (
             self._get_move_quantity(move_type)
             - self._get_shipped_quantity(move_type))
