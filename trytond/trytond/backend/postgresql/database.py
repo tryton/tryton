@@ -221,7 +221,7 @@ class Database(DatabaseInterface):
             for database in list(databases.values()):
                 if ((now - database._last_use).total_seconds() > timeout
                         and database.name != name):
-                    database._connpool.resize(0, 0)
+                    database._connpool.resize(0, 1)
 
         if not (inst := databases.get(name)):
             with cls._lock:
