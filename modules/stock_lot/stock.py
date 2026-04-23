@@ -528,6 +528,11 @@ class MoveAddLots(Wizard):
                     'stock_lot.msg_move_add_lot_quantity',
                     lot_quantity=lang.format_number(lot_quantity, digits),
                     move_quantity=lang.format_number(move_quantity, digits)))
+        moves = [self.record]
+        state = self.record.state
+        self.model.write(moves, {
+                'state': 'draft',
+                })
         lots = []
         for line in self.start.lots:
             lot = line.get_lot(self.record)
@@ -555,10 +560,13 @@ class MoveAddLots(Wizard):
                     self.record.save()
                 else:
                     with Transaction().set_context(_stock_move_split=True):
-                        self.model.copy([self.record], {
+                        moves.extend(self.model.copy([self.record], {
                                 'quantity': line.quantity,
                                 'lot': lot.id,
-                                })
+                                }))
+        self.model.write(moves, {
+                'state': state,
+                })
         return 'end'
 
 
