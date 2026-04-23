@@ -2189,7 +2189,7 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
         Lang = pool.get('ir.lang')
         Warning = pool.get('res.user.warning')
         lang = Lang.get()
-        move_type = 'in' if self.quantity >= 0 else 'return'
+        move_type = 'out' if self.quantity >= 0 else 'return'
         quantity = (
             self._get_move_quantity(move_type)
             - self._get_shipped_quantity(move_type))
@@ -2251,7 +2251,7 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
             self.actual_quantity = actual_quantity
 
         if self.product and self.product.type in Move.get_product_types():
-            shipment_type = 'out' if self.quantity >= 0 else 'in'
+            shipment_type = 'out' if self.quantity >= 0 else 'return'
             quantity_to_ship = (
                 self._get_move_quantity(shipment_type)
                 - self._get_shipped_quantity(shipment_type))
