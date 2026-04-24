@@ -162,7 +162,7 @@ class One2Many(Field):
             clause = [(self.field, 'in', ids)]
         if self.filter:
             clause.append(self.filter)
-        to_read = [r.id for r in Target.search(clause, order=order)]
+        to_read = Target.search(clause, order=order).ids
         targets = {t['id']: t
             for t in Target.read(to_read, ['id', self.field])}
 

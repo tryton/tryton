@@ -3,7 +3,7 @@
 
 import warnings
 
-from trytond.model import EvalEnvironment
+from trytond.model import BrowseList, EvalEnvironment
 from trytond.model.exceptions import (
     AccessError, DomainValidationError, RequiredValidationError)
 from trytond.model.modelstorage import _UnsavedRecordError
@@ -766,6 +766,301 @@ class ModelStorageTestCase(TestCase):
         self.assertEqual(notification.icon, 'tryton-notification')
         self.assertEqual(notification.label, "Test notification")
         self.assertEqual(notification.description, "Long description")
+
+
+class BrowseListTestCase(TestCase):
+    "Test BrowseList"
+
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        activate_module('tests')
+
+    @with_transaction()
+    def test_contains(self):
+        "Test __contains__"
+        pool = Pool()
+        Model = pool.get('test.modelstorage')
+
+        blist = BrowseList(Model, [1, 2, 3])
+
+        self.assertIn(Model(2), blist)
+
+    @with_transaction()
+    def test_delitem(self):
+        "Test __delitem__"
+        pool = Pool()
+        Model = pool.get('test.modelstorage')
+
+        blist = BrowseList(Model, [1, 2, 3])
+
+        del blist[1]
+
+        self.assertEqual(len(blist), 2)
+        self.assertEqual(blist.ids, [1, 3])
+        self.assertEqual(blist[0]._ids, blist.ids)
+
+    @with_transaction()
+    def test_eq(self):
+        "Test __eq__"
+        pool = Pool()
+        Model = pool.get('test.modelstorage')
+
+        blist = BrowseList(Model, [1, 2, 3])
+
+        self.assertEqual(blist, [Model(1), Model(2), Model(3)])
+
+    @with_transaction()
+    def test_getitem(self):
+        "Test __getitem__"
+        pool = Pool()
+        Model = pool.get('test.modelstorage')
+
+        blist = BrowseList(Model, [1, 2, 3])
+
+        self.assertEqual(blist[0], Model(1))
+        self.assertEqual(blist[1], Model(2))
+        self.assertEqual(blist[2], Model(3))
+        with self.assertRaises(IndexError):
+            blist[42]
+
+    @with_transaction()
+    def test_getitem_slice(self):
+        "Test __getitem__ with slice"
+        pool = Pool()
+        Model = pool.get('test.modelstorage')
+
+        blist = BrowseList(Model, [1, 2, 3])
+
+        self.assertEqual(blist[:0], [])
+        self.assertEqual(blist[:10], [Model(1), Model(2), Model(3)])
+        self.assertEqual(blist[1:3], [Model(2), Model(3)])
+        self.assertEqual(blist[10:20], [])
+
+    @with_transaction()
+    def test_iter(self):
+        "Test __iter__"
+        pool = Pool()
+        Model = pool.get('test.modelstorage')
+
+        blist = BrowseList(Model, [1, 2, 3])
+
+        self.assertEqual(blist, [Model(i) for i in range(1, 4)])
+
+    @with_transaction()
+    def test_len(self):
+        "Test __len__"
+        pool = Pool()
+        Model = pool.get('test.modelstorage')
+
+        blist = BrowseList(Model, [1, 2, 3])
+
+        self.assertEqual(list.__len__(blist), 0)
+        self.assertEqual(len(blist), 3)
+
+        list(blist)
+        self.assertEqual(list.__len__(blist), 3)
+        self.assertEqual(len(blist), 3)
+
+    @with_transaction()
+    def test_repr(self):
+        "Test __repr__"
+        pool = Pool()
+        Model = pool.get('test.modelstorage')
+
+        blist = BrowseList(Model, [1, 2])
+
+        self.assertEqual(
+            repr(blist),
+            "BrowseList(<class 'trytond.pool.test.modelstorage'>, [1, 2])")
+
+    @with_transaction()
+    def test_setitem(self):
+        "Test __setitem__"
+        pool = Pool()
+        Model = pool.get('test.modelstorage')
+
+        blist = BrowseList(Model, [1, 2, 3])
+
+        blist[1] = Model(42)
+
+        self.assertEqual(blist[1], Model(42))
+        self.assertEqual(blist.ids, [1, 42, 3])
+        self.assertEqual(blist[0]._ids, blist.ids)
+
+    @with_transaction()
+    def test_setitem_slice(self):
+        "Test __setitem__ slice"
+        pool = Pool()
+        Model = pool.get('test.modelstorage')
+
+        blist = BrowseList(Model, [1, 2, 3, 4, 5])
+
+        blist[1:4] = [Model(42)]
+
+        self.assertEqual(blist, [Model(1), Model(42), Model(5)])
+        self.assertEqual(blist.ids, [1, 42, 5])
+
+    @with_transaction()
+    def test_not_contains(self):
+        "Test not __contains__"
+        pool = Pool()
+        Model = pool.get('test.modelstorage')
+
+        blist = BrowseList(Model, [1, 2, 3])
+
+        self.assertNotIn(Model(42), blist)
+
+    @with_transaction()
+    def test_append(self):
+        "Test append"
+        pool = Pool()
+        Model = pool.get('test.modelstorage')
+
+        blist = BrowseList(Model, [1])
+        blist.append(Model(2))
+
+        self.assertEqual(blist, [Model(1), Model(2)])
+
+    @with_transaction()
+    def test_clear(self):
+        "Test clear"
+        pool = Pool()
+        Model = pool.get('test.modelstorage')
+
+        blist = BrowseList(Model, [1, 2, 3])
+
+        blist.clear()
+        self.assertEqual(blist, [])
+        self.assertEqual(blist.ids, [])
+
+    @with_transaction()
+    def test_copy(self):
+        "Test copy"
+        pool = Pool()
+        Model = pool.get('test.modelstorage')
+
+        blist = BrowseList(Model, [1, 2, 3])
+
+        blist_copy = blist.copy()
+        self.assertEqual(blist, blist_copy)
+        self.assertIsInstance(blist_copy, list)
+
+    @with_transaction()
+    def test_count(self):
+        "Test count"
+        pool = Pool()
+        Model = pool.get('test.modelstorage')
+
+        blist = BrowseList(Model, [1, 2, 3, 1])
+
+        self.assertEqual(blist.count(Model(1)), 2)
+
+    @with_transaction()
+    def test_extend(self):
+        "Test extend"
+        pool = Pool()
+        Model = pool.get('test.modelstorage')
+
+        blist = BrowseList(Model, [1])
+        blist.extend([Model(2), Model(3)])
+
+        self.assertEqual(blist, [Model(1), Model(2), Model(3)])
+        self.assertEqual(blist.ids, [1, 2, 3])
+
+    @with_transaction()
+    def test_index(self):
+        "Test index"
+        pool = Pool()
+        Model = pool.get('test.modelstorage')
+
+        blist = BrowseList(Model, [1, 2, 3])
+
+        self.assertEqual(blist.index(Model(2)), 1)
+
+    @with_transaction()
+    def test_index_stop(self):
+        "Test index with stop"
+        pool = Pool()
+        Model = pool.get('test.modelstorage')
+
+        blist = BrowseList(Model, [1, 2, 3, 4, 5])
+
+        with self.assertRaises(ValueError):
+            blist.index(Model(4), 0, 2)
+        self.assertEqual(list.__len__(blist), 2)
+
+    @with_transaction()
+    def test_insert(self):
+        "Test insert"
+        pool = Pool()
+        Model = pool.get('test.modelstorage')
+
+        blist = BrowseList(Model, [1, 2, 3])
+        blist.insert(2, Model(42))
+
+        self.assertEqual(blist, [Model(1), Model(2), Model(42), Model(3)])
+        self.assertEqual(blist.ids, [1, 2, 42, 3])
+
+    @with_transaction()
+    def test_pop(self):
+        "Test pop"
+        pool = Pool()
+        Model = pool.get('test.modelstorage')
+
+        blist = BrowseList(Model, [1, 2, 3])
+        blist.pop(1)
+
+        self.assertEqual(blist, [Model(1), Model(3)])
+        self.assertEqual(blist.ids, [1, 3])
+
+    @with_transaction()
+    def test_pop_negative_index(self):
+        "Test pop negative index"
+        pool = Pool()
+        Model = pool.get('test.modelstorage')
+
+        blist = BrowseList(Model, [1, 2, 3])
+        blist.pop(-2)
+
+        self.assertEqual(blist, [Model(1), Model(3)])
+        self.assertEqual(blist.ids, [1, 3])
+
+    @with_transaction()
+    def test_remove(self):
+        "Test remove"
+        pool = Pool()
+        Model = pool.get('test.modelstorage')
+
+        blist = BrowseList(Model, [1, 2, 3])
+        blist.remove(Model(2))
+
+        self.assertEqual(blist, [Model(1), Model(3)])
+        self.assertEqual(blist.ids, [1, 3])
+
+    @with_transaction()
+    def test_reverse(self):
+        "Test reverse"
+        pool = Pool()
+        Model = pool.get('test.modelstorage')
+
+        blist = BrowseList(Model, [1, 2, 3])
+        blist.reverse()
+
+        self.assertEqual(blist, [Model(3), Model(2), Model(1)])
+        self.assertEqual(blist.ids, [3, 2, 1])
+
+    @with_transaction()
+    def test_sort(self):
+        "Test sort"
+        pool = Pool()
+        Model = pool.get('test.modelstorage')
+
+        blist = BrowseList(Model, [2, 3, 1])
+        blist.sort()
+
+        self.assertEqual(blist, [Model(1), Model(2), Model(3)])
+        self.assertEqual(blist.ids, [1, 2, 3])
 
 
 class EvalEnvironmentTestCase(TestCase):

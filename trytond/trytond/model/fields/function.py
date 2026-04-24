@@ -132,14 +132,14 @@ class Function(Field):
         multiple = self.getter_multiple(method)
 
         records = Model.browse(ids)
-        for record, value in zip(records, values):
-            assert record.id == value['id']
+        for id, value in zip(records.ids, values):
+            assert id == value['id']
             for fname, val in value.items():
                 field = Model._fields.get(fname)
                 if field and field._type not in {
                         'many2one', 'reference',
                         'one2many', 'many2many', 'one2one'}:
-                    record._local_cache[record.id][fname] = val
+                    records._local_cache[id][fname] = val
 
         def call(name):
             if not instance_method:

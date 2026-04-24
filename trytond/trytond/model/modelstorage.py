@@ -8,13 +8,14 @@ import decimal
 import json
 import math
 import random
+import sys
 import time
 import warnings
 from collections import defaultdict
 from decimal import Decimal
 from functools import lru_cache
 from io import StringIO
-from itertools import chain, groupby, islice
+from itertools import chain, groupby, islice, tee
 from operator import itemgetter
 
 import trytond.config as config
@@ -36,7 +37,7 @@ from . import fields
 from .descriptors import dualmethod
 from .model import Model
 
-__all__ = ['ModelStorage', 'EvalEnvironment']
+__all__ = ['ModelStorage', 'BrowseList', 'EvalEnvironment']
 
 
 def local_cache(Model, transaction=None):
@@ -106,6 +107,13 @@ class _search_RPC(RPC):
         return args, kwargs, context, timestamp
 
 
+def _rpc_record_ids(lst):
+    if isinstance(lst, BrowseList):
+        return lst.ids
+    else:
+        return list(map(int, lst))
+
+
 class ModelStorage(Model):
     """
     Define a model with storage capability in Tryton.
@@ -146,7 +154,7 @@ class ModelStorage(Model):
                         size_limits={
                             0: request_records_limit,
                             },
-                        result=lambda r: list(map(int, r))),
+                        result=_rpc_record_ids),
                     'read': RPC(
                         timeout=request_timeout,
                         size_limits={
@@ -171,9 +179,9 @@ class ModelStorage(Model):
                         size_limits={
                             0: request_records_limit,
                             },
-                        result=lambda r: list(map(int, r))),
+                        result=_rpc_record_ids),
                     'search': _search_RPC(
-                        result=lambda r: list(map(int, r)),
+                        result=_rpc_record_ids,
                         size_limits={
                             2: request_records_limit,
                             },
@@ -895,14 +903,7 @@ class ModelStorage(Model):
         '''
         Return a list of instance for the ids
         '''
-        transaction = Transaction()
-        ids = list(map(int, ids))
-        _local_cache = local_cache(cls, transaction)
-        transaction_cache = transaction.get_cache()
-        return [cls(x, _ids=ids,
-                _local_cache=_local_cache,
-                _transaction_cache=transaction_cache,
-                _transaction=transaction) for x in ids]
+        return BrowseList(cls, map(int, ids))
 
     def __export_row(self, fields_names):
         pool = Pool()
@@ -1835,7 +1836,7 @@ class ModelStorage(Model):
             transaction = Transaction()
         self._transaction = transaction
         self._user = transaction.user
-        self._context = transaction.context
+        self._context = kwargs.pop('_context', transaction.context)
         if id is not None:
             id = int(id)
         if _ids is not None:
@@ -1991,9 +1992,13 @@ class ModelStorage(Model):
                     yield id_
         read_size = max(1, min(
                 self._cache.size_limit, self._local_cache.size_limit))
-        index = self._ids.index(self.id)
-        ids = islice(self._ids, index, index + read_size)
-        ids = unique(filter(filter_, ids))
+        try:
+            index = self._ids.index(self.id)
+        except ValueError:
+            ids = [self.id]
+        else:
+            ids = islice(self._ids, index, index + read_size)
+            ids = unique(filter(filter_, ids))
 
         kwargs_cache = {}
         pysoned_ctx = {}
@@ -2263,6 +2268,175 @@ class ModelStorage(Model):
                 record._deleted = None
                 record._removed = None
             records = latter
+
+
+class BrowseList(list):
+    __slots__ = (
+        '_Model', '_ids',
+        '_transaction', '_context', '_local_cache', '_transaction_cache',
+        )
+
+    def __init__(self, Model, ids):
+        super().__init__()
+        assert issubclass(Model, ModelStorage)
+        self._Model = Model
+        self._ids = list(ids)
+        self._transaction = Transaction()
+        self._context = self._transaction.context
+        self._local_cache = local_cache(Model, self._transaction)
+        self._transaction_cache = self._transaction.get_cache()
+
+    @property
+    def ids(self):
+        return self._ids.copy()
+
+    def __instantiates_idx(self, start, end):
+        return (self.__instantiate_idx(i) for i in range(start, end))
+
+    def __instantiate_idx(self, index):
+        id = self._ids[index]
+        return self.__instantiate(id)
+
+    def __instantiates(self, ids):
+        return (self.__instantiate(id) for id in ids)
+
+    def __instantiate(self, id):
+        return self._Model(
+            id,
+            _ids=self._ids,
+            _local_cache=self._local_cache,
+            _transaction_cache=self._transaction_cache,
+            _transaction=self._transaction,
+            _context=self._context)
+
+    def __check_size(self, index):
+        if index >= len(self._ids):
+            raise IndexError("list index out of range")
+
+    def __fill(self, end=None):
+        if end is None:
+            end = len(self._ids) - 1
+        else:
+            end = min(end, len(self._ids) - 1)
+        length = list.__len__(self)
+        assert end < len(self._ids)
+        if end == length:
+            list.append(self, self.__instantiate_idx(end))
+        elif end > length:
+            list.extend(self, self.__instantiates_idx(length, end + 1))
+
+    def __contains__(self, item):
+        self.__fill()
+        return super().__contains__(item)
+
+    def __delitem__(self, index):
+        self.__check_size(index)
+        self.__fill(index + 1)
+        super().__delitem__(index)
+        del self._ids[index]
+
+    def __eq__(self, value):
+        return list(self) == value
+
+    def __getitem__(self, index):
+        if isinstance(index, slice):
+            size = len(self._ids)
+            end = min(index.stop or size, size) - 1
+        else:
+            end = index
+        self.__check_size(end)
+        self.__fill(end)
+        return super().__getitem__(index)
+
+    def __iter__(self):
+        for i in range(len(self._ids)):
+            if not i % 100 and i + 100 < len(self._ids):
+                self[i:i + 100]
+            yield self[i]
+
+    def __len__(self):
+        return len(self._ids)
+
+    def __repr__(self):
+        return f'{self.__class__.__name__}({self._Model!r}, {self._ids!r})'
+
+    def __setitem__(self, index, value):
+        if isinstance(index, slice):
+            size = len(self._ids)
+            end = min(index.stop or size, size) - 1
+            id = map(int, value)
+        else:
+            end = index
+            id = int(value)
+        self.__check_size(end)
+        self.__fill(end + 1)
+        self._ids[index] = id
+        if isinstance(index, slice):
+            instance = self.__instantiates(value)
+        else:
+            instance = self.__instantiate(value)
+        super().__setitem__(index, instance)
+
+    def append(self, value):
+        self.__fill()
+        self._ids.append(int(value))
+        instance = self.__instantiate(value)
+        super().append(instance)
+
+    def clear(self):
+        super().clear()
+        self._ids = []
+
+    def copy(self):
+        self.__fill()
+        return super().copy()
+
+    def count(self, value):
+        self.__fill()
+        return super().count(value)
+
+    def extend(self, iterable):
+        iterable, iterable_ids = tee(iterable)
+        self.__fill()
+        self._ids.extend(map(int, iterable_ids))
+        super().extend(self.__instantiates(iterable))
+
+    def index(self, value, start=0, stop=sys.maxsize):
+        self.__fill(min(stop, len(self._ids)) - 1)
+        return super().index(value, start, stop)
+
+    def insert(self, index, value):
+        self.__fill(min(index, len(self._ids)))
+        self._ids.insert(index, int(value))
+        instance = self.__instantiate(value)
+        super().insert(index, instance)
+
+    def pop(self, index=-1):
+        if index < 0:
+            end = len(self.ids)
+        else:
+            end = index + 1
+        self.__fill(end)
+        super().pop(index)
+        self._ids.pop(index)
+
+    def remove(self, value):
+        if not isinstance(value, self._Model):
+            raise ValueError(f"unsupported value {value!r}")
+        self.__fill(self._ids.index(value.id) + 1)
+        super().remove(value)
+        self._ids.remove(value.id)
+
+    def reverse(self):
+        self.__fill()
+        super().reverse()
+        self._ids.reverse()
+
+    def sort(self, /, *, key=None, reverse=False):
+        self.__fill()
+        super().sort(key=key, reverse=reverse)
+        self._ids.clear()
+        self._ids.extend(map(int, list.__iter__(self)))
 
 
 class EvalEnvironment(dict):

@@ -154,7 +154,7 @@ class Many2Many(Field):
         clause += [(self.target, '!=', None)]
         if self.filter:
             clause.append((self.target, 'where', self.filter))
-        to_read = [r.id for r in Relation.search(clause, order=order)]
+        to_read = Relation.search(clause, order=order).ids
         relations = {t['id']: t
             for t in Relation.read(to_read, [self.origin, self.target])}
 

@@ -539,7 +539,7 @@ Class methods:
 
 .. classmethod:: ModelStorage.browse(ids)
 
-   Return a list of record instance for the ``ids``.
+   Return a :class:`BrowseList` of record instance for the ``ids``.
 
 .. classmethod:: ModelStorage.export_data(records, fields_names[, header])
 
@@ -880,6 +880,23 @@ Additional options are available:
 
    * ``begin``: optimize for constant pattern and anchored to the beginning of
      the string
+
+BrowseList
+==========
+
+.. class:: BrowseList(Model, ids)
+
+   A class inheriting from :py:class:`list <list>` that lazily stores
+   :class:`ModelStorage` instances together.
+   The instances are created and stored when accessed.
+   The mutation methods from the list accept :class:`ModelStorage` instances or
+   :py:class:`integer <int>` and always store a new instance.
+
+Instance attributes:
+
+.. method:: BrowseList.ids
+
+   The list of ids of the instances.
 
 
 convert_from
