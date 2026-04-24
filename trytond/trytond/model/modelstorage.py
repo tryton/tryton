@@ -898,7 +898,7 @@ class ModelStorage(Model):
         pool = Pool()
         ModelData = pool.get('ir.model.data')
 
-        ids = dict.fromkeys(map(int, records))
+        ids = defaultdict(type(None))
         with without_check_access():
             for record in ModelData.search([
                         ('model', '=', cls.__name__),
