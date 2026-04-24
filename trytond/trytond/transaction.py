@@ -373,8 +373,9 @@ class Transaction(object):
         from trytond.cache import Cache
         for cache in self.cache.values():
             cache.clear()
-        for datamanager in self._datamanagers:
-            datamanager.tpc_abort(self)
+        if self._datamanagers:
+            for datamanager in self._datamanagers:
+                datamanager.tpc_abort(self)
         Cache.rollback(self)
         self._clear_log_records()
         self.connection.rollback()
