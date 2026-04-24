@@ -2134,11 +2134,13 @@ function eval_pyson(value){
             this.el = jQuery('<div/>', {
                 'class': this.class_
             });
+            this.group = jQuery('<div/>', {
+                'class': 'input-group input-group-sm'
+            }).css('width', '100%').appendTo(this.el);
             this.select = this.labelled = jQuery('<select/>', {
                 'class': 'form-control input-sm mousetrap',
                 'name': attributes.name,
-            });
-            this.el.append(this.select);
+            }).appendTo(this.group);
             this.select.change(this.focus_out.bind(this));
             Sao.common.selection_mixin.init.call(this);
             this.init_selection();
@@ -2239,11 +2241,14 @@ function eval_pyson(value){
             this.el = jQuery('<div/>', {
                 'class': this.class_
             });
+            this.group = jQuery('<div/>', {
+                'class': 'input-group input-group-sm'
+            }).css('width', '100%').appendTo(this.el);
             this.input = this.labelled = jQuery('<input/>', {
                 'type': 'checkbox',
                 'class': 'form-control input-sm mousetrap',
                 'name': attributes.name,
-            }).appendTo(this.el);
+            }).appendTo(this.group);
             this.input.change(this.focus_out.bind(this));
             this.input.click(function() {
                 // Dont trigger click if field is readonly as readonly has no
