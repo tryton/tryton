@@ -29,8 +29,8 @@ from trytond.transaction import (
 from . import fields
 from .descriptors import dualmethod
 from .modelstorage import (
-    AccessError, ModelStorage, RequiredValidationError, SizeValidationError,
-    ValidationError, is_leaf)
+    AccessError, BrowseList, ModelStorage, RequiredValidationError,
+    SizeValidationError, ValidationError, is_leaf)
 from .modelview import ModelView
 
 
@@ -1526,7 +1526,10 @@ class ModelSQL(ModelStorage):
         fields_to_set = {}
         actions = iter(args)
         for records, values in zip(actions, actions):
-            ids = [r.id for r in records]
+            if isinstance(records, BrowseList):
+                ids = records.ids
+            else:
+                ids = [r.id for r in records]
             values = values.copy()
 
             # Clean values
@@ -2349,8 +2352,12 @@ class ModelSQL(ModelStorage):
     def lock(cls, records=None):
         transaction = Transaction()
         if records is not None:
+            if isinstance(records, BrowseList):
+                record_ids = set(records.ids)
+            else:
+                record_ids = set(map(int, records))
             new_ids = set(transaction.create_records[cls.__name__])
-            ids = [id_ for id_ in map(int, records) if id_ not in new_ids]
+            ids = record_ids - new_ids
             transaction.lock_records(cls._table, ids)
         else:
             transaction.lock_table(cls._table)

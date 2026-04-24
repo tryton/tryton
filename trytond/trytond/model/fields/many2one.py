@@ -127,6 +127,12 @@ class Many2One(Field):
             value = int(value)
         return super().sql_format(value)
 
+    def _domain_value(self, operator, value):
+        from ..modelstorage import BrowseList
+        if isinstance(value, BrowseList):
+            value = value.ids
+        return super()._domain_value(operator, value)
+
     def convert_domain_path(self, domain, tables):
         cursor = Transaction().connection.cursor()
         table, _ = tables[None]

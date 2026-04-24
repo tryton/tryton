@@ -267,6 +267,11 @@ class ModelStorage(Model):
             cls, records, icon, label, description=None, user=None, **extra):
         pool = Pool()
         Notification = pool.get('res.notification')
+        if isinstance(records, BrowseList):
+            record_ids = records.ids
+        else:
+            record_ids = [r.id for r in records]
+        records_json = json.dumps(record_ids)
         for transaction, sub_records in groupby(
                 records, lambda r: r._transaction):
             with Transaction().set_current_transaction(transaction):
@@ -278,7 +283,7 @@ class ModelStorage(Model):
                         label=label,
                         description=description,
                         model=cls.__name__,
-                        records=json.dumps([r.id for r in records]),
+                        records=records_json,
                         **extra))
 
     @classmethod
@@ -487,7 +492,10 @@ class ModelStorage(Model):
                     # Do not queue because records will be deleted
                     trigger.trigger_action(records)
 
-        record_ids = [r.id for r in records]
+        if isinstance(records, BrowseList):
+            record_ids = records.ids
+        else:
+            record_ids = [r.id for r in records]
         for fname, field in cls._fields.items():
             if isinstance(field, fields.Binary):
                 field.queue_for_removal(cls, fname, record_ids)
@@ -661,7 +669,10 @@ class ModelStorage(Model):
         assert _default_fields() <= fields_.keys(), (
             f"Invalid default fields {_default_fields() - fields_.keys()} "
             f"for {cls.__name__}")
-        ids = list(map(int, records))
+        if isinstance(records, BrowseList):
+            ids = records.ids
+        else:
+            ids = list(map(int, records))
         with without_check_access():
             values = {
                 d['id']: d for d in cls.read(ids, fields_names=fields_names)}
@@ -671,6 +682,10 @@ class ModelStorage(Model):
             data = convert_data(fields_, values[id_], default_values)
             to_create.append(data)
         new_records = cls.create(to_create)
+        if isinstance(new_records, BrowseList):
+            new_ids = new_records.ids
+        else:
+            new_ids = list(map(int, new_records))
 
         fields_translate = {}
         for field_name, field in fields_.items():
@@ -682,9 +697,9 @@ class ModelStorage(Model):
                 ('translatable', '=', True),
                 ])
             if langs:
-                id2new_records = defaultdict(list)
-                for id_, new_record in zip(ids, new_records):
-                    id2new_records[id_].append(new_record)
+                id2new_ids = defaultdict(list)
+                for id_, new_id in zip(ids, new_ids):
+                    id2new_ids[id_].append(new_id)
                 fields_names = list(fields_translate.keys()) + ['id']
                 for lang in langs:
                     # Prevent fuzzing translations when copying as the terms
@@ -696,7 +711,7 @@ class ModelStorage(Model):
                         values = cls.read(ids, fields_names=fields_names)
                         to_write = []
                         for data in values:
-                            to_write.append(id2new_records[data['id']])
+                            to_write.append(cls.browse(id2new_ids[data['id']]))
                             to_write.append(
                                 convert_data(
                                     fields_translate, data, default_values))
@@ -790,8 +805,12 @@ class ModelStorage(Model):
             fields_names = ['id']
         if 'id' not in fields_names:
             fields_names.append('id')
-        rows = cls.read(list(map(int, records)), fields_names)
-        index = {r.id: i for i, r in enumerate(records)}
+        if isinstance(records, BrowseList):
+            ids = records.ids
+        else:
+            ids = list(map(int, records))
+        rows = cls.read(ids, fields_names)
+        index = {id: i for i, id in enumerate(ids)}
         rows.sort(key=lambda r: index[r['id']])
         return rows
 
