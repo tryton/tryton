@@ -13,10 +13,12 @@ this repository contains the full copyright notices and license terms. -->
     <label name="parent"/>
     <field name="parent" colspan="3"/>
 
-    <button name="add_products" colspan="6"/>
     <notebook colspan="6">
         <page string="Children" col="1" id="childs">
             <field name="childs"/>
+        </page>
+        <page name="templates" col="1">
+            <field name="templates"/>
         </page>
     </notebook>
 </form>

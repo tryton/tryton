@@ -22,13 +22,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="priority" eval="10"/>
             <field name="name">category_form</field>
         </record>
-        <record model="ir.ui.view" id="category_view_form_product">
-            <field name="model">product.category</field>
-            <field name="type">form</field>
-            <field name="priority" eval="20"/>
-            <field name="name">category_product_form</field>
-        </record>
-
         <record model="ir.action.act_window" id="act_category_tree">
             <field name="name">Categories</field>
             <field name="res_model">product.category</field>
@@ -70,22 +63,6 @@ this repository contains the full copyright notices and license terms. -->
             action="act_category_list"
             sequence="10"
             id="menu_category_list"/>
-
-        <record model="ir.action.act_window" id="act_category_product">
-            <field name="name">Add products</field>
-            <field name="res_model">product.category</field>
-        </record>
-        <record model="ir.action.act_window.view" id="act_category_product_view1">
-            <field name="sequence" eval="10"/>
-            <field name="view" ref="category_view_form_product"/>
-            <field name="act_window" ref="act_category_product"/>
-        </record>
-
-        <record model="ir.model.button" id="category_add_products_button">
-            <field name="model">product.category</field>
-            <field name="name">add_products</field>
-            <field name="string">Add products</field>
-        </record>
 
         <record model="ir.model.access" id="access_product_category">
             <field name="model">product.category</field>

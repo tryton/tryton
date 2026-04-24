@@ -27,5 +27,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="customer_taxes" colspan="2"/>
             <field name="supplier_taxes" colspan="2"/>
         </page>
+        <page name="accounting_templates" col="1">
+            <field name="accounting_templates" widget="many2many"/>
+        </page>
     </xpath>
 </data>
