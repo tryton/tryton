@@ -133,6 +133,7 @@ class Transaction(object):
             instance.trigger_records = None
             instance.log_records = None
             instance.check_warnings = None
+            instance._datamanagers = None
             instance.timestamp = None
             instance.started_at = None
             instance.cache = WeakValueDictionary()
