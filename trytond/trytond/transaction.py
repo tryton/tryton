@@ -369,7 +369,8 @@ class Transaction(object):
         self._clear_warnings()
 
     def _clear_warnings(self):
-        self.check_warnings.clear()
+        if self.check_warnings:
+            self.check_warnings.clear()
 
     def commit(self):
         from trytond.cache import Cache
@@ -405,8 +406,9 @@ class Transaction(object):
         from trytond.cache import Cache
         for cache in self.cache.values():
             cache.clear()
-        for datamanager in self._datamanagers:
-            datamanager.tpc_abort(self)
+        if self._datamanagers:
+            for datamanager in self._datamanagers:
+                datamanager.tpc_abort(self)
         Cache.rollback(self)
         self._clear_log_records()
         self._clear_user_notifications()
