@@ -520,6 +520,10 @@ img.icon {
             width: unit(@line-height-base, em);
             height: unit(@line-height-base, em);
             display: block;
+
+            [dir="rtl"] & {
+                transform: scaleX(-1);
+            }
         }
 
         tr.more-row {
@@ -610,6 +614,7 @@ img.icon {
             [dir="rtl"] & {
                 float: right;
                 margin-left: 1em;
+                transform: scaleX(-1);
             }
             width: unit(@line-height-base, em);
             height: unit(@line-height-base, em);
