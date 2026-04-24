@@ -1439,6 +1439,7 @@ class TranslationTestCase(TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
+        activate_module('tests')
         cls.setup_language()
 
     @classmethod
@@ -1495,7 +1496,6 @@ class ModelSQLTranslationTestCase(TranslationTestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
-        activate_module('tests')
 
     @with_transaction()
     def test_create_default_language(self):
