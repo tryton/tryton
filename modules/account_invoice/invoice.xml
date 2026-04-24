@@ -193,6 +193,60 @@ this repository contains the full copyright notices and license terms. -->
             <field name="action" ref="act_invoice_relate"/>
         </record>
 
+        <record model="ir.action.act_window" id="act_invoice_relate_period">
+            <field name="name">Invoices</field>
+            <field name="res_model">account.invoice</field>
+            <field name="domain"
+                eval="[
+                If(Eval('active_model') == 'account.period',
+                ('move.period', 'in', Eval('active_ids', [])), ()),
+                If(Eval('active_model') == 'account.fiscalyear',
+                ('move.period.fiscalyear', 'in', Eval('active_ids', [])), ()),
+                ]"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_invoice_relate_period_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="invoice_view_tree"/>
+            <field name="act_window" ref="act_invoice_relate_period"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_invoice_relate_period_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="invoice_view_form"/>
+            <field name="act_window" ref="act_invoice_relate_period"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_invoice_relate_period_out">
+            <field name="name">Customer</field>
+            <field name="sequence" eval="10"/>
+            <field name="domain" eval="[('type', '=', 'out')]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_invoice_relate_period"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_invoice_relate_period_in">
+            <field name="name">Supplier</field>
+            <field name="sequence" eval="20"/>
+            <field name="domain" eval="[('type', '=', 'in')]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_invoice_relate_period"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_invoice_relate_period_all">
+            <field name="name">All</field>
+            <field name="sequence" eval="9999"/>
+            <field name="domain"></field>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_invoice_relate_period"/>
+        </record>
+        <record model="ir.action.keyword" id="act_invoice_relate_period_keyword_period">
+            <field name="keyword">form_relate</field>
+            <field name="model">account.period,-1</field>
+            <field name="action" ref="act_invoice_relate_period"/>
+        </record>
+        <record model="ir.action.keyword" id="act_invoice_relate_period_keyword_fiscalyear">
+            <field name="keyword">form_relate</field>
+            <field name="model">account.fiscalyear,-1</field>
+            <field name="action" ref="act_invoice_relate_period"/>
+        </record>
+
         <record model="ir.model.access" id="access_invoice">
             <field name="model">account.invoice</field>
             <field name="perm_read" eval="False"/>
