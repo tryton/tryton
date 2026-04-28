@@ -2,18 +2,10 @@
 # this repository contains the full copyright notices and license terms.
 import logging
 import os
+import zoneinfo
 
-try:
-    import zoneinfo
-    ZoneInfo = zoneinfo.ZoneInfo
-    ZoneInfoNotFoundError = zoneinfo.ZoneInfoNotFoundError
-except ImportError:
-    zoneinfo = None
-    import pytz
-    from dateutil.tz import gettz as ZoneInfo
-
-    class ZoneInfoNotFoundError(KeyError):
-        pass
+ZoneInfo = zoneinfo.ZoneInfo
+ZoneInfoNotFoundError = zoneinfo.ZoneInfoNotFoundError
 
 __all__ = ['SERVER', 'UTC', 'get_tzinfo', 'available_timezones']
 logger = logging.getLogger(__name__)
@@ -24,10 +16,7 @@ def available_timezones():
     global _ALL_ZONES
 
     if not _ALL_ZONES:
-        if zoneinfo:
-            _ALL_ZONES = zoneinfo.available_timezones()
-        else:
-            _ALL_ZONES = set(pytz.all_timezones)
+        _ALL_ZONES = zoneinfo.available_timezones()
     return set(_ALL_ZONES)
 
 

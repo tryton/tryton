@@ -7,14 +7,12 @@ name = 'trytond'
 dynamic = ['version', 'authors', 'readme']
 dependencies = [
     'Genshi',
-    'backports.entry-points-selectable; python_version < "3.10"',
     'defusedxml',
     'lxml >= 2.0',
     'polib',
     'pwdlib[argon2] >= 0.2',
     'python-dateutil',
     'python-sql >= 1.8',
-    'pytz; python_version < "3.9"',
     'relatorio[fodt] >= 0.7.0',
     'simpleeval',
     'werkzeug >= 0.12',
