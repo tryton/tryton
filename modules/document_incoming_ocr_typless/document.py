@@ -61,10 +61,10 @@ def typless_api(func):
             return func(*args, **kwargs)
         except requests.HTTPError as e:
             error_message = e.args[0]
-        raise TyplessError(
-            gettext('document_incoming_ocr_typless'
-                '.msg_typless_webserver_error',
-                message=error_message))
+            raise TyplessError(
+                gettext('document_incoming_ocr_typless'
+                    '.msg_typless_webserver_error',
+                    message=error_message)) from e
     return wrapper
 
 
