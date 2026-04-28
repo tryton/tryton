@@ -10,8 +10,8 @@ Configure Typless service
 First you must `register to Typless <https://app.typless.com/>`_ and retrieve
 the API key from your profile.
 
-Then create a document type and configured it for the `Incoming Documents
-<document_incoming:model-document.incoming>` you want to process
+Then create a document type and configure it for the `Incoming Documents
+<document_incoming:model-document.incoming>` you want to process.
 
 When setting the `OCR Service
 <document_incoming_ocr:model-document.incoming.ocr.service>`'s type to
