@@ -99,7 +99,7 @@ Create incoming document::
     >>> document = Document()
     >>> document.name = 'invoice.pdf'
     >>> with file_open(
-    ...         'document_incoming_ocr_typless/tests/'
+    ...         'document_incoming_ocr/tests/'
     ...         'supplier-invoice-sample.pdf',
     ...         mode='rb') as fp:
     ...     document.data = fp.read()
