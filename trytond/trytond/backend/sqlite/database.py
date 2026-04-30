@@ -436,7 +436,8 @@ class Database(DatabaseInterface):
             db_path = safe_join(
                 config.get('database', 'path'), self.name + '.sqlite')
             if not os.path.isfile(db_path):
-                raise IOError("Database '%s' doesn't exist!" % db_path)
+                raise DatabaseOperationalError(
+                    f"Database '{db_path}' doesn't exist!")
             db_uri = base_uri._replace(path=db_path)
 
         # Use unparse before replacing sqlite with file because SQLite accepts

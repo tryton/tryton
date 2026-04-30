@@ -3,6 +3,7 @@
 import unittest
 from unittest.mock import Mock
 
+from trytond import backend
 from trytond.tests.test_tryton import CONTEXT, DB_NAME, USER, activate_module
 from trytond.transaction import Transaction
 
@@ -30,8 +31,8 @@ class TransactionTestCase(unittest.TestCase):
         and ensure that it stops cleanly and allows starting of next
         transaction'''
         self.assertRaises(
-            Exception, empty_transaction, "Non existant DB", USER,
-            context=CONTEXT)
+            backend.DatabaseOperationalError, empty_transaction,
+            "Non%20existant%20DB", USER, context=CONTEXT)
         self.assertTrue(empty_transaction(DB_NAME, USER, context=CONTEXT))
 
     def test_set_user(self):
