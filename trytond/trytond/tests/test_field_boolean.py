@@ -230,6 +230,32 @@ class FieldBooleanTestCase(TestCase):
         self.assertListEqual(booleans, [])
 
     @with_transaction()
+    def test_search_equals_true_with_none(self):
+        "Test search boolean equals True with None"
+        Boolean = Pool().get('test.boolean')
+        boolean, = Boolean.create([{
+                    'boolean': None,
+                    }])
+
+        booleans = Boolean.search([
+                ('boolean', '=', True),
+                ])
+        self.assertListEqual(booleans, [])
+
+    @with_transaction()
+    def test_search_non_equals_true_with_none(self):
+        "Test search boolean non equals True with None"
+        Boolean = Pool().get('test.boolean')
+        boolean, = Boolean.create([{
+                    'boolean': None,
+                    }])
+
+        booleans = Boolean.search([
+                ('boolean', '!=', True),
+                ])
+        self.assertListEqual(booleans, [boolean])
+
+    @with_transaction()
     def test_write_false(self):
         "Test write boolean False"
         Boolean = Pool().get('test.boolean')
