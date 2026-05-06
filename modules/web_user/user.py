@@ -272,14 +272,12 @@ class User(avatar_mixin(100), DeactivableMixin, ModelSQL, ModelView):
     @ModelView.button
     def reset_password(cls, users, from_=None):
         now = datetime.datetime.now()
-
-        # Prevent abusive reset
-        def reset(user):
-            return not (user.reset_password_token_expire
-                and user.reset_password_token_expire > now)
-        users = list(filter(reset, users))
-
         for user in users:
+            if (user.reset_password_token
+                    and user.reset_password_token_expire
+                    and user.reset_password_token_expire > now):
+                # Prevent abusive reset
+                continue
             user.set_reset_password_token()
         cls.save(users)
         _send_email(from_, users, cls.get_email_reset_password)
