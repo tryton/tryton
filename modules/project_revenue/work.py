@@ -47,24 +47,6 @@ class Work(metaclass=PoolMeta):
         'Currency'), 'on_change_with_currency')
 
     @classmethod
-    def __setup__(cls):
-        pool = Pool()
-
-        super().__setup__()
-
-        try:
-            pool.get('purchase.line')
-        except KeyError:
-            pass
-        else:
-            # Add purchase lines if purchase is activated
-            cls.purchase_lines = fields.One2Many('purchase.line', 'work',
-                'Purchase Lines', domain=[
-                    ('purchase.company', '=', Eval('company', -1)),
-                    ('type', '=', 'line'),
-                    ])
-
-    @classmethod
     def get_total(cls, works, names):
         result = super().get_total(works, names)
         currencies = []
@@ -82,11 +64,7 @@ class Work(metaclass=PoolMeta):
     @classmethod
     def _get_cost(cls, works):
         costs = defaultdict(Decimal)
-
         for work_id, cost in cls._timesheet_cost(works):
-            costs[work_id] += cost
-
-        for work_id, cost in cls._purchase_cost(works):
             costs[work_id] += cost
         return costs
 
@@ -116,11 +94,71 @@ class Work(metaclass=PoolMeta):
         yield from cursor
 
     @classmethod
-    def _purchase_cost(cls, works):
-        'Compute direct purchase cost'
-        if not hasattr(cls, 'purchase_lines'):
+    def _get_revenue(cls, works):
+        revenues = defaultdict(Decimal)
+        for work in works:
+            if not work.list_price:
+                continue
+            if work.price_list_hour:
+                revenue = work.list_price * Decimal(str(work.effort_hours))
+            else:
+                revenue = work.list_price
+            revenues[work.id] = revenue
+        return revenues
+
+    @fields.depends('company')
+    def on_change_with_currency(self, name=None):
+        return self.company.currency if self.company else None
+
+    @fields.depends('product')
+    def on_change_product(self):
+        pool = Pool()
+        ModelData = pool.get('ir.model.data')
+        Uom = pool.get('product.uom')
+
+        if not self.product:
             return
 
+        list_price = self.product.list_price_used
+        if list_price is not None:
+            if self.price_list_hour:
+                hour_uom = Uom(ModelData.get_id('product', 'uom_hour'))
+                list_price = Uom.compute_price(
+                    self.product.default_uom, list_price, hour_uom)
+            list_price = round_price(list_price)
+        self.list_price = list_price
+
+    @property
+    def price_list_hour(self):
+        pool = Pool()
+        ModelData = pool.get('ir.model.data')
+        Category = pool.get('product.uom.category')
+        if not self.product:
+            return
+        time = Category(ModelData.get_id('product', 'uom_cat_time'))
+        return self.product.default_uom_category == time
+
+
+class Work_Purchase(metaclass=PoolMeta):
+    __name__ = 'project.work'
+
+    purchase_lines = fields.One2Many(
+        'purchase.line', 'work', "Purchase Lines",
+        domain=[
+            ('purchase.company', '=', Eval('company', -1)),
+            ('type', '=', 'line'),
+            ])
+
+    @classmethod
+    def _get_cost(cls, works):
+        costs = super()._get_cost(works)
+        for work_id, cost in cls._purchase_cost(works):
+            costs[work_id] += cost
+        return costs
+
+    @classmethod
+    def _purchase_cost(cls, works):
+        "Compute direct purchase cost"
         pool = Pool()
         Currency = pool.get('currency.currency')
         PurchaseLine = pool.get('purchase.line')
@@ -173,57 +211,7 @@ class Work(metaclass=PoolMeta):
             yield work_id, amount
 
     @classmethod
-    def _get_revenue(cls, works):
-        revenues = defaultdict(Decimal)
-        for work in works:
-            if not work.list_price:
-                continue
-            if work.price_list_hour:
-                revenue = work.list_price * Decimal(str(work.effort_hours))
-            else:
-                revenue = work.list_price
-            revenues[work.id] = revenue
-        return revenues
-
-    @fields.depends('company')
-    def on_change_with_currency(self, name=None):
-        return self.company.currency if self.company else None
-
-    @fields.depends('product')
-    def on_change_product(self):
-        pool = Pool()
-        ModelData = pool.get('ir.model.data')
-        Uom = pool.get('product.uom')
-
-        if not self.product:
-            return
-
-        list_price = self.product.list_price_used
-        if list_price is not None:
-            if self.price_list_hour:
-                hour_uom = Uom(ModelData.get_id('product', 'uom_hour'))
-                list_price = Uom.compute_price(
-                    self.product.default_uom, list_price, hour_uom)
-            list_price = round_price(list_price)
-        self.list_price = list_price
-
-    @property
-    def price_list_hour(self):
-        pool = Pool()
-        ModelData = pool.get('ir.model.data')
-        Category = pool.get('product.uom.category')
-        if not self.product:
-            return
-        time = Category(ModelData.get_id('product', 'uom_cat_time'))
-        return self.product.default_uom_category == time
-
-    @classmethod
     def copy(cls, records, default=None):
-        if default is None:
-            default = {}
-        else:
-            default = default.copy()
-        if hasattr(cls, 'purchase_lines'):
-            # Do not copy purchase lines if purchase is activated
-            default.setdefault('purchase_lines', None)
+        default = default.copy() if default is not None else {}
+        default.setdefault('purchase_lines', None)
         return super().copy(records, default=default)
