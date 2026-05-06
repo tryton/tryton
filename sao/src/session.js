@@ -181,15 +181,16 @@
 
     Sao.Session.server_version = function() {
         var timeoutID = Sao.common.processing.show();
-        return jQuery.ajax({
-            'contentType': 'application/json',
-            'data': JSON.stringify({
+        let args = {
                 'id': 0,
                 'method': 'common.server.version',
                 'params': []
-            }),
+            };
+        return jQuery.ajax({
+            'contentType': 'application/json',
+            'data': JSON.stringify(args),
             'dataType': 'json',
-            'url': 'rpc/',
+            'url': 'rpc/#' + args.method,
             'type': 'post',
             'complete': [function() {
                 Sao.common.processing.hide(timeoutID);
@@ -594,15 +595,16 @@
 
     Sao.DB.list = function() {
         var timeoutID = Sao.common.processing.show();
-        return jQuery.ajax({
-            'contentType': 'application/json',
-            'data': JSON.stringify({
+        let args = {
                 'id': 0,
                 'method': 'common.db.list',
                 'params': []
-            }),
+            };
+        return jQuery.ajax({
+            'contentType': 'application/json',
+            'data': JSON.stringify(args),
             'dataType': 'json',
-            'url': 'rpc/',
+            'url': 'rpc/#' + args.method,
             'type': 'post',
             'complete': [function() {
                 Sao.common.processing.hide(timeoutID);
@@ -616,15 +618,16 @@
 
     Sao.Authentication.services = function() {
         var timeoutID = Sao.common.processing.show();
-        return jQuery.ajax({
-            'contentType': 'application/json',
-            'data': JSON.stringify({
+        let args = {
                 'id': 0,
                 'method': 'common.authentication.services',
                 'params': []
-            }),
+            }
+        return jQuery.ajax({
+            'contentType': 'application/json',
+            'data': JSON.stringify(args),
             'dataType': 'json',
-            'url': 'rpc/',
+            'url': 'rpc/#' + args.method,
             'type': 'post',
             'complete': [function() {
                 Sao.common.processing.hide(timeoutID);
