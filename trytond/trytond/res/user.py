@@ -285,8 +285,13 @@ class User(avatar_mixin(100, 'login'), DeactivableMixin, ModelSQL, ModelView):
     @dualmethod
     @ModelView.button
     def reset_password(cls, users, length=8, from_=None):
+        now = datetime.datetime.now()
         length = max(length, config.getint('password', 'length', default=0))
         for user in users:
+            if (user.password_reset
+                    and user.password_reset_expire
+                    and user.password_reset_expire > now):
+                continue
             user.password_reset = gen_password(length=length)
             user.password_reset_expire = (
                 datetime.datetime.now() + datetime.timedelta(
