@@ -83,7 +83,7 @@
                 'contentType': 'application/json',
                 'data': JSON.stringify(args),
                 'dataType': 'json',
-                'url': '/' + this.database + '/',
+                'url': (this.database || '.') + '/rpc/#' + args.method,
                 'type': 'post',
             });
         },
