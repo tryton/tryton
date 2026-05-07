@@ -12,7 +12,7 @@ def avatar_mixin(size=64, default=None):
         avatars = fields.One2Many(
             'ir.avatar', 'resource', lazy_gettext('ir.msg_avatars'), size=1)
         avatar = fields.Function(
-            fields.Binary(lazy_gettext('ir.msg_avatar')),
+            fields.Binary(lazy_gettext('ir.msg_avatar'), filename_ext='jpg'),
             '_get_avatar', setter='_set_avatar')
         avatar_url = fields.Function(
             fields.Char(lazy_gettext('ir.msg_avatar_url')), '_get_avatar_url')
