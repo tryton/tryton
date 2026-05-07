@@ -40,6 +40,9 @@ class Queue(object):
     def run(self, task_id):
         return self.executor.submit(run_task, self.database.name, task_id)
 
+    def get_notifications(self):
+        return self.database.get_notifications(self.connection)
+
 
 class TaskList(list):
     def filter(self):
@@ -79,7 +82,8 @@ def work(options):
         tasks = TaskList()
 
         for queue in queues:
-            selector.register(queue.connection, selectors.EVENT_READ)
+            selector.register(
+                queue.connection, selectors.EVENT_READ, data=queue)
 
         while True:
             timeout = options.timeout
@@ -104,10 +108,8 @@ def work(options):
                     break
             else:
                 for key, _ in selector.select(timeout=timeout):
-                    connection = key.fileobj
-                    connection.poll()
-                    while connection.notifies:
-                        connection.notifies.pop(0)
+                    queue = key.data
+                    queue.get_notifications()
 
 
 def initializer(database_names, worker=True):
