@@ -249,6 +249,12 @@ class Image(ImageMixin, sequence_ordered(), ModelSQL, ModelView, MatchMixin):
         super().__setup__()
         cls.__access__.add('template')
 
+    def get_rec_name(self, name):
+        if self.product:
+            return self.product.rec_name
+        else:
+            return self.template.rec_name
+
     def _store_cache(self, size, image):
         cache = super()._store_cache(size, image)
         cache.product_image = self
