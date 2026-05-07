@@ -45,7 +45,7 @@ this repository contains the full copyright notices and license terms. -->
             id="act_purchase_request_form_domain_draft">
             <field name="name">Draft</field>
             <field name="sequence" eval="10"/>
-            <field name="domain" eval="[('purchase_line', '=', None)]"
+            <field name="domain" eval="[('state', '=', 'draft')]"
                 pyson="1"/>
             <field name="count" eval="True"/>
             <field name="act_window" ref="act_purchase_request_form"/>
