@@ -128,7 +128,8 @@ class Product(
 class _ImageMixin:
     __slots__ = ()
     image = fields.Binary(
-        "Image", file_id=file_id, store_prefix=store_prefix, required=True)
+        "Image", required=True, filename_ext='jpg',
+        file_id=file_id, store_prefix=store_prefix)
     image_id = fields.Char("Image ID", readonly=True)
 
 
