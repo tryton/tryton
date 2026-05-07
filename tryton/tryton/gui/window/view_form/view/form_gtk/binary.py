@@ -139,9 +139,11 @@ class BinaryMixin(Widget):
         file_open(file_path, type_)
 
     def save_as(self, widget=None):
-        filename = ''
+        filename = None
         if self.filename_field:
             filename = self.filename_field.get(self.record)
+        if not filename:
+            filename = self.record.rec_name()
         filename = file_selection(_('Save As...'), filename=filename,
             action=Gtk.FileChooserAction.SAVE)
         if filename:

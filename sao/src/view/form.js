@@ -4641,13 +4641,21 @@ function eval_pyson(value){
             } else {
                 prm = jQuery.when(field.get(record));
             }
-            prm.done(data => {
+            prm.then(data => {
                 var name;
                 var field = this.filename_field;
                 if (field) {
                     name = field.get(this.record);
                 }
-                Sao.common.download_file(data, name);
+                let prm;
+                if (!name) {
+                    prm = this.record.rec_name();
+                } else {
+                    prm = jQuery.when(name);
+                }
+                return prm.then(name => {
+                    Sao.common.download_file(data, name);
+                });
             });
         },
         clear: function() {
