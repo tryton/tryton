@@ -82,8 +82,6 @@ class Location(DeactivableMixin, tree(), ModelSQL, ModelView):
         "Flat Children",
         help="Check to enforce a single level of children with no "
         "grandchildren.")
-    warehouse = fields.Function(fields.Many2One('stock.location', 'Warehouse'),
-        'get_warehouse')
     input_location = fields.Many2One(
         "stock.location", "Input", states={
             'invisible': Eval('type') != 'warehouse',
@@ -341,7 +339,8 @@ class Location(DeactivableMixin, tree(), ModelSQL, ModelView):
     def default_type():
         return 'storage'
 
-    def get_warehouse(self, name):
+    @property
+    def warehouse(self):
         # Order by descending left to get the first one in the tree
         with inactive_records():
             locations = self.search([
@@ -349,7 +348,7 @@ class Location(DeactivableMixin, tree(), ModelSQL, ModelView):
                     ('type', '=', 'warehouse'),
                     ], order=[('left', 'DESC')])
         if locations:
-            return locations[0].id
+            return locations[0]
 
     @classmethod
     def get_default_warehouse(cls):
