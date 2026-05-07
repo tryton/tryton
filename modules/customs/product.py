@@ -1,5 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+from sql import Null
+
 from trytond.model import ModelSQL, ModelView, fields, sequence_ordered
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Bool, Eval, Or
@@ -158,6 +160,32 @@ class Template(metaclass=PoolMeta):
             callback.append(
                 lambda: Product_TariffCode.delete(product_tariffcodes))
         return callback
+
+
+class TemplateCustomsCategory(ModelSQL):
+    __name__ = 'product.template-product.category.customs'
+    template = fields.Many2One('product.template', 'Template')
+    category = fields.Many2One('product.category', 'Category')
+
+    @classmethod
+    def table_query(cls):
+        pool = Pool()
+        Template = pool.get('product.template')
+        template = Template.__table__()
+        return template.select(
+            template.id.as_('id'),
+            template.id.as_('template'),
+            template.customs_category.as_('category'),
+            where=template.customs_category != Null)
+
+
+class TemplateCategoryAll(metaclass=PoolMeta):
+    __name__ = 'product.template-product.category.all'
+
+    @classmethod
+    def union_models(cls):
+        return super().union_models() + [
+            'product.template-product.category.customs']
 
 
 class Product_TariffCode(sequence_ordered(), ModelSQL, ModelView):
