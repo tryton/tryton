@@ -4595,6 +4595,12 @@ function eval_pyson(value){
             Sao.common.get_input_data(this.input_select, function(data, filename) {
                 field.set_client(record, data);
                 if (filename_field) {
+                    let ext = field.description.filename_ext
+                    if (ext) {
+                        if (filename.endsWith(`.${ext}`)) {
+                            filename = filename.slice(0, -`.${ext}`.length);
+                        }
+                    }
                     filename_field.set_client(record, filename);
                 }
             }, !field.get_size);
@@ -4654,6 +4660,10 @@ function eval_pyson(value){
                     prm = jQuery.when(name);
                 }
                 return prm.then(name => {
+                    let ext = this.field.description.filename_ext;
+                    if (ext) {
+                        name = `${name}.${ext}`;
+                    }
                     Sao.common.download_file(data, name);
                 });
             });

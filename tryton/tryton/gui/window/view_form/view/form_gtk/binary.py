@@ -114,8 +114,10 @@ class BinaryMixin(Widget):
         uri = unquote(uri)
         self.field.set_client(self.record, url_open(uri).read())
         if self.filename_field:
-            self.filename_field.set_client(self.record,
-                os.path.basename(urlparse(uri).path))
+            filename = os.path.basename(urlparse(uri).path)
+            if ext := self.field.attrs.get('filename_ext'):
+                filename = filename.removesuffix(os.path.extsep + ext)
+            self.filename_field.set_client(self.record, filename)
 
     def get_data(self):
         if hasattr(self.field, 'get_data'):
@@ -127,11 +129,15 @@ class BinaryMixin(Widget):
         return data
 
     def open_(self, widget=None):
-        if not self.filename_field:
-            return
-        filename = self.filename_field.get(self.record)
+        filename = None
+        if self.filename_field:
+            filename = self.filename_field.get(self.record)
+        if not filename:
+            filename = self.record.rec_name()
         if not filename:
             return
+        if ext := self.field.attrs.get('filename_ext'):
+            filename = ''.join([filename, os.extsep, ext])
         file_path = file_write(filename, self.get_data())
         root, type_ = os.path.splitext(filename)
         if type_:
@@ -144,6 +150,8 @@ class BinaryMixin(Widget):
             filename = self.filename_field.get(self.record)
         if not filename:
             filename = self.record.rec_name()
+        if ext := self.field.attrs.get('filename_ext'):
+            filename = ''.join([filename, os.extsep, ext])
         filename = file_selection(_('Save As...'), filename=filename,
             action=Gtk.FileChooserAction.SAVE)
         if filename:

@@ -552,8 +552,13 @@ Binary
    Name of the field that holds the data's filename.
 
    Default value is an empty string, which means the data has no filename (in
-   this case, the filename is hidden, and the "Open" button is hidden when the
-   widget is set to "image").
+   this case, the filename is hidden).
+
+.. attribute:: Binary.filename_ext
+
+   The extension to append to the :attr:`~Binary.filename`.
+
+   The default value is empty.
 
 .. attribute:: Binary.file_id
 

@@ -1,3 +1,4 @@
+* Support filename extension for Binary field
 * Use record name as fallback for filename of Binary field
 * Support filters attribute for binary and image widgets
 * Use search window to delete/remove records from xxx2Many widgets

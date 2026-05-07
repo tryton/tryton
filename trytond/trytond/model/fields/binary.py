@@ -33,8 +33,9 @@ class Binary(Field):
     def __init__(self, string='', help='', required=False, readonly=False,
             domain=None, states=None, on_change=None,
             on_change_with=None, depends=None, context=None, loading='lazy',
-            filename=None, file_id=None, store_prefix=None):
+            filename=None, filename_ext=None, file_id=None, store_prefix=None):
         self.filename = filename
+        self.filename_ext = filename_ext
         self.file_id = file_id
         self.store_prefix = store_prefix
         super().__init__(string=string, help=help,
@@ -165,4 +166,5 @@ class Binary(Field):
         definition = super().definition(model, language)
         definition['searchable'] = False
         definition['filename'] = self.filename
+        definition['filename_ext'] = self.filename_ext
         return definition
