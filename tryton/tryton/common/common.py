@@ -595,7 +595,10 @@ def _slugify_filename(filename):
         name, ext = filename
     else:
         name, ext = os.path.splitext(filename)
-    return ''.join([slugify(name), os.extsep, slugify(ext)])
+    parts = [slugify(name)]
+    if ext:
+        parts.extend([os.extsep, slugify(ext)])
+    return ''.join(parts)
 
 
 def file_write(filename, data):
