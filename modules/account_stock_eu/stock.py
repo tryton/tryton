@@ -249,6 +249,8 @@ class Move(metaclass=PoolMeta):
                     and (not move.intrastat_from_country
                         or not move.intrastat_to_country)):
                 unknown_country.append(move)
+            if move.intrastat_type and move.internal_weight is None:
+                move.internal_weight = move.on_change_with_internal_weight()
         if unknown_country:
             warning_name = Warning.format(
                 'intrastat_country', unknown_country)
