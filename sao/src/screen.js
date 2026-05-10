@@ -1356,6 +1356,9 @@
             });
         },
         get current_record() {
+            if (this.__current_record && this.__current_record.destroyed) {
+                this.__current_record = null;
+            }
             return this.__current_record;
         },
         set current_record(record) {
