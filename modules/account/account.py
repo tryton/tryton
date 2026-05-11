@@ -2110,7 +2110,8 @@ class GeneralLedgerAccount(_GeneralLedgerAccount):
     debit_type = fields.Many2One('account.account.type', "Debit Type")
     credit_type = fields.Many2One('account.account.type', "Credit Type")
     lines = fields.One2Many(
-        'account.general_ledger.line', 'account', "Lines", readonly=True)
+        'account.general_ledger.line', 'account', "Lines", readonly=True,
+        order=[('move.date', 'ASC'), ('id', None)])
     general_ledger_balance = fields.Boolean("General Ledger Balance")
 
     @classmethod
