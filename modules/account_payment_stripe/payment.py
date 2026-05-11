@@ -41,7 +41,7 @@ stripe.max_network_retries = config.getint(
     'account_payment_stripe', 'max_network_retries', default=3)
 
 RETRY_CODES = {'lock_timeout', 'token_in_use'}
-STRIPE_VERSION = '2026-03-25.dahlia'
+STRIPE_VERSION = '2026-04-22.dahlia'
 if STRIPE_VERSION != stripe.api_version:
     warnings.warn(
         f"A new Stripe API version {stripe.api_version!r} is available",
