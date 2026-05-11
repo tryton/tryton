@@ -2112,6 +2112,10 @@ class GeneralLedgerAccount(_GeneralLedgerAccount):
     lines = fields.One2Many(
         'account.general_ledger.line', 'account', "Lines", readonly=True,
         order=[('move.date', 'ASC'), ('id', None)])
+    parties = fields.One2Many(
+        'account.general_ledger.account.party', 'account', "Parties",
+        readonly=True)
+    party_required = fields.Boolean("Party Required")
     general_ledger_balance = fields.Boolean("General Ledger Balance")
 
     @classmethod
@@ -2285,11 +2289,43 @@ class GeneralLedgerAccountParty(_GeneralLedgerAccount):
             'company': Eval('company', -1),
             },
         depends={'company'})
+    lines = fields.Function(fields.Many2Many(
+            'account.general_ledger.line', None, None, "Lines", readonly=True,
+            context={
+                'party_cumulate': True,
+                }),
+        'get_lines')
 
     @classmethod
     def __setup__(cls):
         super().__setup__()
         cls._order.insert(1, ('party', 'ASC'))
+
+    @classmethod
+    def get_lines(cls, parties, name):
+        pool = Pool()
+        Line = pool.get('account.general_ledger.line')
+        Move = pool.get('account.move')
+        table = cls.__table__()
+        line = Line.__table__()
+        move = Move.__table__()
+        cursor = Transaction().connection.cursor()
+
+        query = (line
+            .join(table,
+                condition=(
+                    (line.account == table.account)
+                    & (line.party == table.party)))
+            .join(move,
+                condition=line.move == move.id)
+            .select(table.id, line.id,
+                where=fields.SQL_OPERATORS['in'](
+                    table.id, list(map(int, parties))),
+                order_by=[table.id, move.date.asc, line.id]))
+        cursor.execute(*query)
+        return defaultdict(list, (
+            (i, [r[1] for r in g])
+            for i, g in groupby(cursor, lambda row: row[0])))
 
     @classmethod
     def _get_account(cls):
