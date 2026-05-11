@@ -2496,38 +2496,20 @@ class GeneralLedgerLine(DescriptionOriginMixin, ModelSQL, ModelView):
     def get_account_party(cls, records, name):
         pool = Pool()
         AccountParty = pool.get('account.general_ledger.account.party')
+        table = cls.__table__()
         account_party = AccountParty.__table__()
         cursor = Transaction().connection.cursor()
 
-        account_parties = {}
-        account_party2ids = defaultdict(list)
-        account_ids, party_ids = set(), set()
-        for r in records:
-            account_parties[r.id] = None
-            if not r.party:
-                continue
-            account_party2ids[r.account.id, r.party.id].append(r.id)
-            account_ids.add(r.account.id)
-            party_ids.add(r.party.id)
-
-        query = account_party.select(
-            account_party.account, account_party.party, account_party.id,
-            where=fields.SQL_OPERATORS['in'](
-                account_party.account, account_ids)
-            & fields.SQL_OPERATORS['in'](
-                account_party.party, party_ids))
+        query = (account_party
+            .join(table,
+                condition=(
+                    (account_party.account == table.account)
+                    & (account_party.party == table.party)))
+            .select(table.id, account_party.id,
+                where=fields.SQL_OPERATORS['in'](
+                    table.id, list(map(int, records)))))
         cursor.execute(*query)
-        for account, party, id_ in cursor:
-            key = (account, party)
-            try:
-                account_party_ids = account_party2ids[key]
-            except KeyError:
-                # There can be more combinations of account-party in
-                # the database than from records
-                continue
-            for record_id in account_party_ids:
-                account_parties[record_id] = id_
-        return account_parties
+        return defaultdict(type(None), cursor)
 
     @classmethod
     def reconcile(cls, *lines_list, **kwargs):
