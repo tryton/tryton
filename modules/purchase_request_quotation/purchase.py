@@ -421,6 +421,29 @@ class QuotationLine(ModelSQL, ModelView):
         return domain
 
     @classmethod
+    def on_modification(cls, mode, records, field_names=None):
+        pool = Pool()
+        Request = pool.get('purchase.request')
+        super().on_modification(mode, records, field_names=field_names)
+        if mode in {'create', 'write'}:
+            if field_names is None or 'request' in field_names:
+                requests = {r.request for r in records if r.request}
+                if requests:
+                    Request.update_state(requests)
+
+    @classmethod
+    def on_write(cls, lines, values):
+        pool = Pool()
+        Request = pool.get('purchase.request')
+
+        callback = super().on_write(lines, values)
+
+        if 'request' in values:
+            if requests := {l.request for l in lines if l.request}:
+                callback.append(lambda: Request.update_state(requests))
+        return callback
+
+    @classmethod
     def on_delete(cls, lines):
         pool = Pool()
         Request = pool.get('purchase.request')
