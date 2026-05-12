@@ -699,6 +699,24 @@ class _BinarySave(_BinaryIcon):
 
 
 class _BinarySelect(_BinaryIcon):
+
+    default_filters = None
+
+    @property
+    def filters(self):
+        file_filter = Gtk.FileFilter()
+        if filters := self.attrs.get('filters', self.default_filters):
+            file_filter.set_name(_("All Supported Types"))
+            for type in filters.split(','):
+                if type.startswith('.'):
+                    file_filter.add_pattern(type)
+                else:
+                    file_filter.add_mime_type(type)
+        else:
+            file_filter.set_name(_("All files"))
+            file_filter.add_pattern("*")
+        return [file_filter]
+
     def clicked(self, renderer, path):
         record, field = self._get_record_field_from_path(path)
         if hasattr(field, 'get_size'):
@@ -715,7 +733,7 @@ class _BinarySelect(_BinaryIcon):
             field.set_client(record, None)
         else:
             def _select():
-                filename = file_selection(_('Open...'))
+                filename = file_selection(_("Select"), filters=self.filters)
                 if filename:
                     with open(filename, 'rb') as fp:
                         field.set_client(record, fp.read())

@@ -47,17 +47,7 @@ class Image(BinaryMixin, Widget):
 
         self._readonly = False
 
-    @property
-    def filters(self):
-        filters = super().filters
-        filter_image = Gtk.FileFilter()
-        filter_image.set_name(_('Images'))
-        for mime in ("image/png", "image/jpeg", "image/gif"):
-            filter_image.add_mime_type(mime)
-        for pat in ("*.png", "*.jpg", "*.gif", "*.tif", "*.xpm"):
-            filter_image.add_pattern(pat)
-        filters.insert(0, filter_image)
-        return filters
+    default_filters = 'image/png,image/jpeg,image/gif,.png,.jpg,.gif,.tif,.xpm'
 
     def _readonly_set(self, value):
         self._readonly = value

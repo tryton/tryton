@@ -1,3 +1,4 @@
+* Add filters attribute for binary and image widgets
 * Move last_user and last_modification to ResourceAccessMixin
 * Add check deliverability option to validate email tool
 * Add support for AGE to SQLite backend

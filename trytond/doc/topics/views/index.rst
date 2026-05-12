@@ -365,6 +365,14 @@ attributes:
    ``rounded`` or ``circle``.
    The default value is ``square``.
 
+``filters``
+   A comma separated list of mime type and file extension (starting with a
+   period ``.``) to restrict the files being shown for selection of binary and
+   image widgets.
+   The default value for binary widget is no filter.
+   The default value for image widget is:
+   ``image/png,image/jpeg,image/gif,.png,.jpg,.gif,.tif,.xpm``.
+
 ``visible``
    When set to ``1`` for :class:`~trytond.model.fields.One2Many` and
    :class:`~trytond.model.fields.Many2Many` the client may try to read the

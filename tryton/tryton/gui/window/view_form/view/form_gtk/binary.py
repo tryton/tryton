@@ -64,12 +64,22 @@ class BinaryMixin(Widget):
     def filename_field(self):
         return self.record.group.fields.get(self.filename)
 
+    default_filters = None
+
     @property
     def filters(self):
-        filter_all = Gtk.FileFilter()
-        filter_all.set_name(_('All files'))
-        filter_all.add_pattern("*")
-        return [filter_all]
+        file_filter = Gtk.FileFilter()
+        if filters := self.attrs.get('filters', self.default_filters):
+            file_filter.set_name(_("All Supported Types"))
+            for type in filters.split(','):
+                if type.startswith('.'):
+                    file_filter.add_pattern(type)
+                else:
+                    file_filter.add_mime_type(type)
+        else:
+            file_filter.set_name(_("All files"))
+            file_filter.add_pattern("*")
+        return [file_filter]
 
     @property
     def preview(self):
