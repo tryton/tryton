@@ -130,6 +130,10 @@ class Work(metaclass=PoolMeta):
                     'timesheet_end_date': date,
                     })
 
+
+class Work_TimesheetCost(metaclass=PoolMeta):
+    __name__ = 'production.work'
+
     @classmethod
     def _get_cost(cls, works):
         pool = Pool()
