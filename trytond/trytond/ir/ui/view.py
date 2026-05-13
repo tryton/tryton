@@ -16,7 +16,7 @@ from sql.operators import Equal
 from trytond.cache import Cache, MemoryCache
 from trytond.i18n import gettext
 from trytond.model import (
-    Exclude, Index, ModelSQL, ModelView, fields, sequence_ordered)
+    Exclude, Index, ModelSQL, ModelView, Unique, fields, sequence_ordered)
 from trytond.model.exceptions import ValidationError
 from trytond.pool import Pool
 from trytond.pyson import PYSON, Bool, Eval, If, PYSONDecoder
@@ -466,7 +466,11 @@ class ViewTreeWidth(
     __name__ = 'ir.ui.view_tree_width'
     model = fields.Char('Model', required=True)
     field = fields.Char('Field', required=True)
-    occurrence = fields.Integer("Occurrence", required=True)
+    occurrence = fields.Integer(
+        "Occurrence", required=True,
+        domain=[
+            ('occurrence', '>', 0),
+            ])
     user = fields.Many2One('res.user', 'User', required=True,
         ondelete='CASCADE')
     screen_width = fields.Integer(
@@ -611,7 +615,7 @@ class ViewTreeWidth(
         for tree_width in records:
             if tree_width.screen_width == screen_width:
                 index = tree_width.occurrence - 1
-                if index <= len(fields[tree_width.field]):
+                if index < len(fields[tree_width.field]):
                     width = fields[tree_width.field][index]
                     fields[tree_width.field][index] = None
                     if width is not None:
@@ -671,6 +675,11 @@ class ViewTreeOptional(
         'res.user', "User", required=True, ondelete='CASCADE')
     model = fields.Char("Model", required=True)
     field = fields.Char("Field", required=True)
+    occurrence = fields.Integer(
+        "Occurrence", required=True,
+        domain=[
+            ('occurrence', '>', 0),
+            ])
     value = fields.Boolean("Value")
 
     @classmethod
@@ -680,6 +689,12 @@ class ViewTreeOptional(
                 'set_optional': RPC(readonly=False),
                 })
         table = cls.__table__()
+        cls._sql_constraints += [
+            ('model_field_occurrence_user_unique',
+                Unique(table,
+                    table.view, table.field, table.occurrence, table.user),
+                'ir.msg_view_tree_optional_field_occurrence_user_unique'),
+            ]
         cls._sql_indexes.add(
             Index(
                 table,
@@ -707,6 +722,10 @@ class ViewTreeOptional(
                 where=table.model == Null))
 
     @classmethod
+    def default_occurrence(cls):
+        return 1
+
+    @classmethod
     def validate_fields(cls, records, fields_names):
         super().validate_fields(records, fields_names)
         cls.check_view(records, fields_names)
@@ -727,8 +746,33 @@ class ViewTreeOptional(
         ModelView._fields_view_get_cache.clear()
 
     @classmethod
+    def get_optional(cls, view_id):
+        user = Transaction().user
+
+        records = cls.search([
+                ('view', '=', view_id),
+                ('user', '=', user),
+                ],
+            order=[('occurrence', 'ASC')])
+
+        optionals = defaultdict(list)
+        for optional in records:
+            if len(optionals[optional.field]) + 1 < optional.occurrence:
+                for _ in range(
+                        optional.occurrence
+                        - len(optionals[optional.field]) - 1):
+                    optionals[optional.field].append(None)
+            optionals[optional.field].insert(
+                optional.occurrence, optional.value)
+        return optionals
+
+    @classmethod
     def set_optional(cls, view_id, fields):
-        "Store optional field that must be displayed"
+        '''
+        Store optional fields that must be displayed.
+        fields is dictionary with field name as key and a list of boolean as
+        value.
+        '''
         pool = Pool()
         View = pool.get('ir.ui.view')
         user = Transaction().user
@@ -736,20 +780,32 @@ class ViewTreeOptional(
         records = cls.search([
                 ('view', '=', view.id),
                 ('user', '=', user),
-                ('field', 'in', list(fields)),
-                ])
-        cls.delete(records)
-        to_create = []
-        for field, value in fields.items():
-            to_create.append({
-                    'view': view,
-                    'user': user,
-                    'model': view.model,
-                    'field': field,
-                    'value': bool(value),
-                    })
-        if to_create:
-            cls.create(to_create)
+                ('field', 'in', list(fields.keys())),
+                ],
+            order=[('occurrence', 'DESC')])
+
+        fields = copy.deepcopy(fields)
+        to_save = []
+
+        for tree_optional in records:
+            index = tree_optional.occurrence - 1
+            if index < len(fields[tree_optional.field]):
+                tree_optional.value = fields[tree_optional.field][index]
+                fields[tree_optional.field][index] = None
+                to_save.append(tree_optional)
+
+        for name, optionals in fields.items():
+            for occurrence, optional in enumerate(optionals, start=1):
+                if optional is not None:
+                    to_save.append(cls(
+                            view=view,
+                            user=user,
+                            model=view.model,
+                            field=name,
+                            occurrence=occurrence,
+                            value=optional))
+        if to_save:
+            cls.save(to_save)
 
 
 class ViewTreeState(

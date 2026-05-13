@@ -1,5 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+
+import copy
 import csv
 import gettext
 import json
@@ -369,7 +371,7 @@ class TreeXMLViewParser(XMLViewParser):
         self.view.treeview.append_column(column)
 
         if 'optional' in attributes and name != self.exclude_field:
-            self.view.optionals[column.name].append(column)
+            self.view.optionals.append(column)
 
     def _parse_button(self, node, attributes):
         if self.view.screen.screen_readonly:
@@ -499,7 +501,7 @@ class ViewTree(View):
 
     def __init__(self, view_id, screen, xml, children_field):
         self.children_field = children_field
-        self.optionals = defaultdict(list)
+        self.optionals = []
         self.sum_widgets = []
         self.sum_box = Gtk.HBox()
         self.hbuttonbox = Gtk.HButtonBox()
@@ -590,20 +592,19 @@ class ViewTree(View):
             self.treeview.append_column(column)
 
     def optional_menu(self, column):
-        def toggle(menuitem, columns):
+        def toggle(menuitem, column):
             visible = menuitem.get_active()
-            for column in columns:
-                column.set_visible(visible)
+            column.set_visible(visible)
             self.save_optional()
 
         widget = column.get_widget()
         menu = Gtk.Menu()
-        for name, columns in self.optionals.items():
-            visible = any(c.get_visible() for c in columns)
-            title = ' / '.join({c.get_title() for c in columns})
+        for column in self.optionals:
+            visible = column.get_visible()
+            title = column.get_title()
             menuitem = Gtk.CheckMenuItem(label=title)
             menuitem.set_active(visible)
-            menuitem.connect('toggled', toggle, columns)
+            menuitem.connect('toggled', toggle, column)
             menu.add(menuitem)
         if self.optionals:
             menu.add(Gtk.SeparatorMenuItem())
@@ -613,9 +614,9 @@ class ViewTree(View):
         popup(menu, widget)
 
     def save_optional(self):
-        fields = {}
-        for name, columns in self.optionals.items():
-            fields[name] = all(not c.get_visible() for c in columns)
+        fields = defaultdict(list)
+        for column in self.optionals:
+            fields[column.name].append(not column.get_visible())
         try:
             RPCExecute(
                 'model', 'ir.ui.view_tree_optional', 'set_optional',
@@ -1287,8 +1288,8 @@ class ViewTree(View):
             domain.append(tab_domain)
         domain = simplify(domain)
         decoder = PYSONDecoder(self.screen.context)
-        tree_column_optional = self.screen.tree_column_optional.get(
-            self.view_id, {})
+        tree_column_optional = copy.deepcopy(
+            self.screen.tree_column_optional.get(self.view_id, {}))
         for column in self.treeview.get_columns():
             name = column.name
             if not name:
@@ -1296,8 +1297,8 @@ class ViewTree(View):
             widget = self.get_column_widget(column)
             widget.set_editable()
             if ('optional' in widget.attrs
-                    and column.name in tree_column_optional):
-                optional = tree_column_optional[column.name]
+                    and tree_column_optional.get(column.name)):
+                optional = tree_column_optional[column.name].pop(0)
             else:
                 optional = bool(int(widget.attrs.get('optional', '0')))
             invisible = decoder.decode(widget.attrs.get('tree_invisible', '0'))

@@ -72,8 +72,7 @@
             this.view.columns.push(column);
 
             if (attributes.optional && (name !== this.exclude_field)) {
-                Sao.setdefault(
-                    this.view.optionals, column.attributes.name, []).push(column);
+                this.view.optionals.push(column);
             }
 
             if (parseInt(attributes.sum || '0', 10)) {
@@ -112,7 +111,7 @@
         display_size: null,
         init: function(view_id, screen, xml, children_field) {
             this.children_field = children_field;
-            this.optionals = {};
+            this.optionals = [];
             this.sum_widgets = new Map();
             this.columns = [];
             this.selection_mode = (screen.attributes.selection_mode ||
@@ -365,19 +364,18 @@
         },
         tree_menu: function(evt) {
             const toggle = evt => {
-                let columns = evt.data;
+                let column = evt.data;
                 let visible = jQuery(evt.delegateTarget).prop('checked');
-                columns.forEach(c => c.set_visible(visible));
+                column.set_visible(visible);
                 this.save_optional();
                 this.display();
                 this.update_visible();
             };
             var menu = evt.data;
             menu.empty();
-            for (let columns of Object.values(this.optionals)) {
-                let visible = columns.some(c => c.get_visible());
-                let string = [...new Set(columns.map(c => c.attributes.string))]
-                    .join(' / ');
+            for (let column of this.optionals) {
+                let visible = column.get_visible();
+                let string = column.attributes.string;
                 menu.append(jQuery('<li/>', {
                     'role': 'presentation',
                 }).append(jQuery('<a/>', {
@@ -388,7 +386,7 @@
                 }).append(jQuery('<input/>', {
                     'type': 'checkbox',
                     'checked': visible,
-                }).change(columns, toggle))
+                }).change(column, toggle))
                     .append(' ' + string)))));
             }
             if (!jQuery.isEmptyObject(this.optionals)) {
@@ -449,12 +447,9 @@
                 })));
         },
         save_optional: function(store=true) {
-            if (jQuery.isEmptyObject(this.optionals)) {
-                return;
-            }
-            var fields = {};
-            for (let [name, columns] of Object.entries(this.optionals)) {
-                fields[name] = columns.every(c => !c.get_visible());
+            let fields = {};
+            for (let column of this.optionals) {
+                Sao.setdefault(fields, column.attributes.name, []).push(!column.get_visible());
             }
             if (store) {
                 var tree_optional_model = new Sao.Model(
@@ -1042,7 +1037,7 @@
             domain = inversion.simplify(domain);
             var decoder = new Sao.PYSON.Decoder(this.screen.context);
             var min_width = [];
-            var tree_column_optional = (
+            var tree_column_optional = structuredClone(
                 Sao.Screen.tree_column_optional[this.view_id] || {});
             for (const column of this.columns) {
                 visible_columns += 1;
@@ -1053,8 +1048,9 @@
                 var optional;
                 if ((column.attributes.optional) &&
                     Object.prototype.hasOwnProperty.call(
-                        tree_column_optional, name)) {
-                    optional = tree_column_optional[name];
+                        tree_column_optional, name) &&
+                    !jQuery.isEmptyObject(tree_column_optional[name])) {
+                    optional = tree_column_optional[name].shift();
                 } else {
                     optional = Boolean(parseInt(
                         column.attributes.optional || '0', 10));

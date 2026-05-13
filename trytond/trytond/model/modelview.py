@@ -494,7 +494,6 @@ class ModelView(Model):
                     if field._type in {'one2many', 'many2many'}})
 
         if type == 'tree':
-            user = Transaction().user
             width, _ = Transaction().context.get('screen_size', (None, None))
             if Transaction().context.get('view_tree_width'):
                 ViewTreeWidth = pool.get('ir.ui.view_tree_width')
@@ -502,11 +501,7 @@ class ModelView(Model):
 
             if view_id:
                 ViewTreeOptional = pool.get('ir.ui.view_tree_optional')
-                viewtreeoptionals = ViewTreeOptional.search([
-                        ('view', '=', view_id),
-                        ('user', '=', user),
-                        ])
-                fields_optional = {o.field: o.value for o in viewtreeoptionals}
+                fields_optional = ViewTreeOptional.get_optional(view_id)
 
         fields_def = cls.__parse_fields(
             tree_root, type,
@@ -571,7 +566,7 @@ class ModelView(Model):
         if fields_width is None:
             fields_width = collections.defaultdict(list)
         if fields_optional is None:
-            fields_optional = {}
+            fields_optional = collections.defaultdict(list)
         if _fields_attrs is None:
             fields_attrs = {}
         else:
@@ -645,10 +640,13 @@ class ModelView(Model):
                     if width is not None:
                         element.set('width', str(width))
                 if element.get('optional'):
-                    if element.get('name') in fields_optional:
-                        optional = str(int(
-                                fields_optional[element.get('name')]))
-                        element.set('optional', optional)
+                    try:
+                        value = fields_optional[element.get('name')].pop(0)
+                    except IndexError:
+                        pass
+                    else:
+                        if value is not None:
+                            element.set('optional', str(int(value)))
 
         encoder = PYSONEncoder()
         if element.tag == 'button':
