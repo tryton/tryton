@@ -5,6 +5,7 @@
 Miscelleanous tools used by tryton
 """
 import importlib
+import importlib.resources
 import io
 import math
 import os
@@ -71,13 +72,27 @@ def find_path(name, subdir='modules', _test=os.path.isfile):
                 path = secure_join(_root_path, module_name, module_path)
             else:
                 try:
-                    module = import_module(module_name)
+                    ep, = entry_points().select(
+                        group=MODULES_GROUP, name=module_name)
+                except ValueError:
+                    ep = None
+                try:
+                    if ep is None:
+                        spec = importlib.util.find_spec(
+                            f'{MODULES_GROUP}.{module_name}')
+                    else:
+                        spec = importlib.util.find_spec(ep.module)
                 except ModuleNotFoundError:
-                    path = secure_join(_root_path, subdir, name)
+                    raise FileNotFoundError(
+                        f"No such file or directory: {name!r}")
                 else:
-                    path = os.path.dirname(module.__file__)
-                    if module_path:
-                        path = secure_join(path, module_path)
+                    if spec and spec.has_location:
+                        path = os.path.dirname(spec.origin)
+                        if module_path:
+                            path = secure_join(path, module_path)
+                    else:
+                        raise FileNotFoundError(
+                            f"No such file or directory: {name!r}")
         else:
             path = secure_join(_root_path, subdir, name)
     else:

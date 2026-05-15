@@ -125,11 +125,13 @@ class ToolsTestCase(TestCase):
             with file_open('ir/noexist'):
                 pass
 
-        with self.assertRaisesRegex(IOError, "Permission denied:"):
+        with self.assertRaisesRegex(
+                FileNotFoundError, "No such file or directory:"):
             with file_open('/etc/passwd'):
                 pass
 
-        with self.assertRaisesRegex(IOError, "Permission denied:"):
+        with self.assertRaisesRegex(
+                FileNotFoundError, "No such file or directory:"):
             with file_open('../../foo'):
                 pass
 
