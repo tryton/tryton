@@ -40,11 +40,6 @@ this repository contains the full copyright notices and license terms. -->
             <label name="quotation_expire"/>
             <field name="quotation_expire"/>
 
-            <label name="warehouse"/>
-            <field name="warehouse"/>
-            <label name="shipping_date"/>
-            <field name="shipping_date"/>
-
             <field name="lines" colspan="6" view_ids="sale.sale_line_view_tree_sequence"/>
 
             <group col="2" colspan="3" id="states" yfill="1">
@@ -73,6 +68,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="company"/>
             <label name="origin"/>
             <field name="origin"/>
+
+            <label name="warehouse"/>
+            <field name="warehouse"/>
+            <label name="shipping_date"/>
+            <field name="shipping_date"/>
 
             <label name="invoice_method"/>
             <field name="invoice_method"/>
