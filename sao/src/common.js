@@ -1621,7 +1621,9 @@
             };
 
             var complete_datetime = function() {
-                return [Sao.Date(), Sao.DateTime().utc()];
+                return [Sao.Date(), Sao.DateTime(
+                    undefined, undefined, undefined,
+                    0, 0, 0, 0, true)];
             };
 
             var complete_date = function() {
