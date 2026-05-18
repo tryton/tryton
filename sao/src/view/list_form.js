@@ -12,6 +12,7 @@
         },
         button_clicked: function(event) {
             if (Sao.common.compare(this.screen.selected_records, [this.record])) {
+                event.stopPropagation();
                 Sao.View.ListGroupViewForm._super.button_clicked.call(this, event);
             }
         }
