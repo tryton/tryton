@@ -82,44 +82,57 @@ class Notification(
         return super().copy(notifications, default=default)
 
     @classmethod
-    def create(cls, vlist):
+    def on_modification(cls, mode, notifications, field_names=None):
         pool = Pool()
         Lang = pool.get('ir.lang')
         lang = Lang.get()
-
-        notifications = super().create(vlist)
-
-        notifications_by_user = defaultdict(list)
-        for notification in notifications:
-            notifications_by_user[notification.user.id].append(
-                notification)
-
-        notification = cls.__table__()
         cursor = Transaction().connection.cursor()
-        cursor.execute(*notification.select(
-                notification.user, Count(),
-                where=((notification.user.in_(list(notifications_by_user)))
-                    & notification.unread),
-                group_by=[notification.user]))
-        shorten = partial(textwrap.shorten, width=100, placeholder="...")
-        for user, count in cursor.fetchall():
-            user_notifications = notifications_by_user[user]
-            messages = [
-                '\n'.join(map(shorten, filter(None, (n.label, n.description))))
-                for n in user_notifications[:4]]
-            if len(user_notifications) > 4:
-                n = len(user_notifications) - 4
-                messages.append(ngettext(
-                        'res.msg_notification_silenced', n,
-                        number=lang.format_number(n)))
-            Bus.publish(
-                f'notification:{user}', {
-                    'type': 'user-notification',
-                    'count': count,
-                    'content': messages,
-                    })
+        table = cls.__table__()
 
-        return notifications
+        super().on_modification(mode, notifications, field_names=field_names)
+
+        if (mode in {'create', 'delete'}
+                or (mode == 'write'
+                    and (not field_names or 'unread' in field_names))):
+            notifications_by_user = defaultdict(list)
+            for notification in notifications:
+                notifications_by_user[notification.user.id].append(
+                    notification)
+
+            query = table.select(
+                table.user, Count(),
+                where=(table.user.in_(list(notifications_by_user))
+                    & table.unread),
+                group_by=[table.user])
+            if mode == 'delete':
+                query.where &= ~table.id.in_([n.id for n in notifications])
+
+            cursor.execute(*query)
+            shorten = partial(textwrap.shorten, width=100, placeholder="...")
+            for user, count in cursor:
+                user_notifications = notifications_by_user.pop(user)
+                messages = [
+                    '\n'.join(
+                        map(shorten, filter(None, (n.label, n.description))))
+                    for n in user_notifications[:4]]
+                if len(user_notifications) > 4:
+                    n = len(user_notifications) - 4
+                    messages.append(ngettext(
+                            'res.msg_notification_silenced', n,
+                            number=lang.format_number(n)))
+                Bus.publish(
+                    f'notification:{user}', {
+                        'type': 'user-notification',
+                        'count': count,
+                        'content': messages,
+                        })
+            for user in notifications_by_user:
+                Bus.publish(
+                    f'notification:{user}', {
+                        'type': 'user-notification',
+                        'count': 0,
+                        'content': [],
+                        })
 
     @classmethod
     def list_icons(cls):
