@@ -17,7 +17,8 @@ class ProductSupplier(metaclass=PoolMeta):
         date = super(ProductSupplier, self).compute_supply_date(date=date)
         earlier_date = None
         if date != datetime.date.max:
-            for weekday in self.weekdays:
+            # Use getattr because it can be called with an unsaved instance
+            for weekday in getattr(self, 'weekdays', []):
                 diff = weekday.index - date.weekday()
                 if diff < 0:
                     diff += 7
@@ -30,7 +31,8 @@ class ProductSupplier(metaclass=PoolMeta):
 
     def compute_purchase_date(self, date):
         later_date = None
-        for weekday in self.weekdays:
+        # Use getattr because it can be called with an unsaved instance
+        for weekday in getattr(self, 'weekdays', []):
             diff = (date.weekday() - weekday.index) % 7
             new_date = date - datetime.timedelta(diff)
             if later_date and later_date >= new_date:
