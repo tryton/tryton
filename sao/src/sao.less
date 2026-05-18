@@ -1189,10 +1189,20 @@ img.icon {
         border-color: @panel-default-border;
         border-style: solid;
         border-width: 1px;
+        display: flex;
+        flex-direction: column;
 
         .nav-tabs {
             background: @navbar-default-bg;
             margin-bottom: 5px;
+        }
+
+        > .tab-content {
+            flex: 1;
+
+            > .tab-pane {
+                height: 100%;
+            }
         }
     }
     .form-label {
