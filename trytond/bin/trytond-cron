@@ -13,4 +13,6 @@ if os.path.isdir(DIR):
 
 from trytond.cli.cron import main  # noqa: E402
 
-main()
+# Ensure main module can be safely imported by a new interpreter
+if __name__ == '__main__':
+    main()

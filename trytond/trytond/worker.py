@@ -12,7 +12,8 @@ from multiprocessing import cpu_count
 
 from sql import Flavor
 
-from trytond import backend, config
+import trytond.commandline as commandline
+import trytond.config as config
 from trytond.exceptions import UserError, UserWarning
 from trytond.pool import Pool
 from trytond.status import processing
@@ -24,6 +25,7 @@ logger = logging.getLogger(__name__)
 
 class Queue(object):
     def __init__(self, database_name, executor):
+        from trytond import backend
         self.database = backend.Database(database_name).connect()
         self.connection = self.database.get_connection(autocommit=True)
         self.executor = executor
@@ -57,6 +59,7 @@ def _noop():
 
 
 def work(options):
+    from trytond import backend
     Flavor.set(backend.Database.flavor)
     if not config.getboolean('queue', 'worker', default=False):
         return
@@ -69,7 +72,7 @@ def work(options):
         max_workers=processes,
         mp_context=None,
         initializer=initializer,
-        initargs=(options.database_names,),
+        initargs=(options,),
         max_tasks_per_child=options.maxtasksperchild or None,
         )
     if sys.version_info < (3, 11):
@@ -112,12 +115,15 @@ def work(options):
                     queue.get_notifications()
 
 
-def initializer(database_names, worker=True):
+def initializer(options, worker=True):
+    # restore configuration when mp context is spawn
+    config.update_etc(options.configfile)
+    commandline.config_log(options)
     if worker:
         signal.signal(signal.SIGINT, signal.SIG_IGN)
     pools = []
     database_list = Pool.database_list()
-    for database_name in database_names:
+    for database_name in options.database_names:
         pool = Pool(database_name)
         if database_name not in database_list:
             with Transaction().start(database_name, 0, readonly=True):
@@ -127,6 +133,7 @@ def initializer(database_names, worker=True):
 
 
 def run_task(pool, task_id):
+    from trytond import backend
     if not isinstance(pool, Pool):
         database_list = Pool.database_list()
         pool = Pool(pool)

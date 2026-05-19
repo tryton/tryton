@@ -8,6 +8,8 @@ import time
 from concurrent import futures
 from multiprocessing import cpu_count
 
+import trytond.commandline as commandline
+import trytond.config as config
 from trytond.pool import Pool
 from trytond.transaction import Transaction
 
@@ -25,7 +27,7 @@ def run(options):
         max_workers=processes,
         mp_context=None,
         initializer=initializer,
-        initargs=(options.database_names,),
+        initargs=(options,),
         max_tasks_per_child=options.maxtasksperchild or None,
         )
     if sys.version_info < (3, 11):
@@ -42,12 +44,15 @@ def run(options):
                 time.sleep(60 - (now.second + now.microsecond / 10**6))
 
 
-def initializer(database_names, worker=True):
+def initializer(options, worker=True):
+    # restore configuration when mp context is spawn
+    config.update_etc(options.configfile)
+    commandline.config_log(options)
     if worker:
         signal.signal(signal.SIGINT, signal.SIG_IGN)
     pools = []
     database_list = Pool.database_list()
-    for database_name in database_names:
+    for database_name in options.database_names:
         pool = Pool(database_name)
         if database_name not in database_list:
             with Transaction().start(database_name, 0, readonly=True):
