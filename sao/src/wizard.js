@@ -231,11 +231,14 @@
             this.footer.empty();
         },
         _get_button: function(definition) {
+            let state = this.state;
             var button = Sao.Wizard.Form._super._get_button.call(this,
                 definition);
             this.footer.append(button.el);
             button.el.click(() => {
-                this.response(definition);
+                if (this.state === state) {
+                    this.response(definition);
+                }
             });
             return button;
         },
@@ -283,19 +286,24 @@
             this.footer.empty();
         },
         _get_button: function(definition) {
+            let state = this.state;
             var button = Sao.Wizard.Dialog._super._get_button.call(this,
                     definition);
             this.footer.append(button.el);
             if (definition['default']) {
                 this.content.unbind('submit');
                 this.content.submit(e => {
-                    this.response(definition);
                     e.preventDefault();
+                    if (this.state === state) {
+                        this.response(definition);
+                    }
                 });
                 button.el.attr('type', 'submit');
             } else {
                 button.el.click(() => {
-                    this.response(definition);
+                    if (this.state === state) {
+                        this.response(definition);
+                    }
                 });
             }
             return button;
