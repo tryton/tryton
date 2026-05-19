@@ -53,6 +53,7 @@
             if (this.__processing || this.__waiting_response) {
                 return;
             }
+            this.__processing = true;
             var process = function() {
                 if (this.state == this.end_state) {
                     this.end();
