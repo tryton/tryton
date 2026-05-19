@@ -2762,7 +2762,7 @@
                 fields, false, false)) {
                 var value = cell.prop('checked');
                 this.field.set_client(record, value);
-                if (record !== current_record) {
+                if ((!this.group.parent) & (record !== current_record)) {
                     // we can not rely on editable tree handler to save the row
                     record.save();
                 }
