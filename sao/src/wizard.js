@@ -55,6 +55,7 @@
             if (this.__processing || this.__waiting_response) {
                 return jQuery.when();
             }
+            this.__processing = true;
             var process = function() {
                 if (this.state == this.end_state) {
                     return this.end();
@@ -113,8 +114,8 @@
                     } else {
                         prms.push(execute_actions());
                     }
-                    this.__processing = false;
-                    return jQuery.when.apply(jQuery, prms);
+                    return jQuery.when.apply(jQuery, prms).then(
+                        () => this.__processing = false);
                 }, result => {
                     if (!result || !this.screen) {
                         this.state = this.end_state;
