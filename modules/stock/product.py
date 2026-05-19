@@ -273,11 +273,12 @@ class Product(StockMixin, object, metaclass=PoolMeta):
         pool = Pool()
         Move = pool.get('stock.move')
         deactivated = super().deactivate_replaced(products=products)
-        moves = Move.search([
-                ('product', 'in', list(map(int, products))),
-                ('state', 'in', ['staging', 'draft']),
-                ])
-        Move.delete(moves)
+        if deactivated:
+            moves = Move.search([
+                    ('product', 'in', list(map(int, deactivated))),
+                    ('state', 'in', ['staging', 'draft']),
+                    ])
+            Move.delete(moves)
         return deactivated
 
     @classmethod
