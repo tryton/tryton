@@ -286,7 +286,7 @@ class Database(DatabaseInterface):
     def close(self):
         with self._lock:
             logger.info('disconnection from "%s"', self.name)
-            self._connpool.close()
+            self._connpool.close(None)
             self._databases[os.getpid()].pop(self.name)
 
     @classmethod

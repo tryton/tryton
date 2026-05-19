@@ -31,11 +31,16 @@ Pool.start()
 # TRYTOND_CONFIG it's managed by importing config
 db_names = os.environ.get('TRYTOND_DATABASE_NAMES')
 if db_names:
+    from trytond import backend
+
+    def initializer(name):
+        Pool(name).init()
+        backend.Database(name).close()
     # Read with csv so database name can include special chars
     reader = csv.reader(StringIO(db_names))
     threads = []
     for name in next(reader):
-        thread = threading.Thread(target=lambda: Pool(name).init())
+        thread = threading.Thread(target=initializer, args=(name,))
         thread.start()
         threads.append(thread)
     for thread in threads:
