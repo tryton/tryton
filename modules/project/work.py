@@ -492,7 +492,7 @@ class Work(
             code_value = lstrip_wildcard(value)
         domain = [bool_op,
             ('number', operator, code_value),
-            ('name', operator, value),
+            super().search_rec_name(name, clause),
             ]
         return domain
 
