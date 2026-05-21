@@ -460,6 +460,9 @@ html[theme="default"] {
     }
 
     ul.notification-menu {
+        background-color: @body-bg;
+        color: @text-color;
+
         @media (min-width: @grid-float-breakpoint) {
             width: 320px;
         }
@@ -472,6 +475,7 @@ html[theme="default"] {
             }
 
             > a {
+                color: @text-color;
                 display: flex;
                 padding: 3px 10px;
 
@@ -507,6 +511,10 @@ html[theme="default"] {
                     background-color: @dropdown-link-hover-bg;
                 }
             }
+        }
+
+        > li.divider {
+            background-color: @dropdown-divider-bg;
         }
     }
 }
