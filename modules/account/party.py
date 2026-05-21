@@ -132,6 +132,7 @@ class Party(CompanyMultiValueMixin, metaclass=PoolMeta):
         Date = pool.get('ir.date')
         Move = pool.get('account.move')
         MoveLine = pool.get('account.move.line')
+        Reconciliation = pool.get('account.move.reconciliation')
 
         transaction = Transaction()
         context = transaction.context
@@ -139,6 +140,7 @@ class Party(CompanyMultiValueMixin, metaclass=PoolMeta):
         account_type = AccountType.__table__()
         move = Move.__table__()
         move_line = MoveLine.__table__()
+        reconciliation = Reconciliation.__table__()
 
         if date := context.get('date'):
             today = date
@@ -181,11 +183,15 @@ class Party(CompanyMultiValueMixin, metaclass=PoolMeta):
             .join(move, condition=move_line.move == move.id)
             .join(account, condition=move_line.account == account.id)
             .join(account_type, condition=account.type == account_type.id)
+            .left_join(
+                reconciliation,
+                condition=move_line.reconciliation == reconciliation.id)
             .select(
                 move_line.party.as_('party'),
                 *columns,
                 where=(
-                    (move_line.reconciliation == Null)
+                    ((move_line.reconciliation == Null)
+                        | (reconciliation.date > today))
                     & (account.company == company.id)
                     & party_where),
                 group_by=move_line.party))
