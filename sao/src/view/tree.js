@@ -1345,6 +1345,13 @@
                 this.display_size = this.group.length;
                 this.display();
             }
+            if (reset_view) {
+                let current_path = this.record.get_path(this.group);
+                current_path = current_path.map(function(e) {
+                    return e[1];
+                });
+                this.display([current_path]);
+            }
             if (path.length > 1) {
                 prm = this.rows[path[0]].expand_to_path(
                     path.slice(1),

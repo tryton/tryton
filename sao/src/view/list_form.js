@@ -115,6 +115,12 @@
             return this.group.slice();
         },
         set_cursor: function(new_, reset_view) {
+            if (!this.record) {
+                return;
+            }
+            if (reset_view) {
+                this.display([this.record.id]);
+            }
             if (new_) {
                 this.el.animate({
                     scrollTop: this.el[0].scrollHeight
