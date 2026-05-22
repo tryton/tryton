@@ -376,6 +376,79 @@ class IrTestCase(ModuleTestCase):
                 result)
 
     @with_transaction()
+    def test_lang_currency_negative_parentheses(self):
+        "Test Lang.currency with negative parentheses"
+        pool = Pool()
+        Lang = pool.get('ir.lang')
+        lang = Lang.get('en')
+        Lang.write([lang], {
+            'n_sign_posn': 0,
+            })
+        currency = Mock()
+        currency.digits = 2
+        currency.symbol = '$'
+
+        self.assertEqual(
+            lang.currency(Decimal('-10.50'), currency, True, False, None),
+            '($10.50)')
+
+    @with_transaction()
+    def test_lang_currency_negative_empty_sign(self):
+        "Test Lang.currency with empty negative sign"
+        pool = Pool()
+        Lang = pool.get('ir.lang')
+        lang = Lang.get('en')
+        Lang.write([lang], {
+            'negative_sign': '',
+            'positive_sign': '+',
+            })
+        currency = Mock()
+        currency.digits = 2
+        currency.symbol = '$'
+
+        self.assertEqual(
+            lang.currency(Decimal('-10.50'), currency, True, False, None),
+            '$10.50')
+
+    @with_transaction()
+    def test_lang_currency_negative_symbol_after_value(self):
+        "Test Lang.currency with symbol after negative value"
+        pool = Pool()
+        Lang = pool.get('ir.lang')
+        lang = Lang.get('en')
+        Lang.write([lang], {
+            'n_cs_precedes': False,
+            'p_cs_precedes': True,
+            'negative_sign': '',
+            })
+        currency = Mock()
+        currency.digits = 2
+        currency.symbol = '$'
+
+        self.assertEqual(
+            lang.currency(Decimal('-10.50'), currency, True, False, None),
+            '10.50$')
+
+    @with_transaction()
+    def test_lang_currency_negative_without_space(self):
+        "Test Lang.currency without space for negative value"
+        pool = Pool()
+        Lang = pool.get('ir.lang')
+        lang = Lang.get('en')
+        Lang.write([lang], {
+            'n_sep_by_space': False,
+            'p_sep_by_space': True,
+            'negative_sign': '',
+            })
+        currency = Mock()
+        currency.digits = 2
+        currency.symbol = '$'
+
+        self.assertEqual(
+            lang.currency(Decimal('-10.50'), currency, True, False, None),
+            '$10.50')
+
+    @with_transaction()
     def test_lang_currency_without_symbol(self):
         "Test Lang.currency without symbol"
         pool = Pool()
