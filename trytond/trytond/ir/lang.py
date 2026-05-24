@@ -4,6 +4,7 @@
 import datetime
 from ast import literal_eval
 from decimal import Decimal
+from functools import partial
 from itertools import takewhile
 from locale import CHAR_MAX
 
@@ -506,6 +507,7 @@ class Lang(DeactivableMixin, ModelSQL, ModelView):
         Formats val according to the currency settings in lang.
         """
         # Code from currency in locale.py
+        conv = partial(getattr, self)
 
         # check for illegal values
         if digits is None:
@@ -522,10 +524,8 @@ class Lang(DeactivableMixin, ModelSQL, ModelView):
 
         if symbol:
             smb = currency.symbol
-            precedes = (val < 0 and self.n_cs_precedes
-                or self.p_cs_precedes)
-            separated = (val < 0 and self.n_sep_by_space
-                or self.p_sep_by_space)
+            precedes = conv(val < 0 and 'n_cs_precedes' or 'p_cs_precedes')
+            separated = conv(val < 0 and 'n_sep_by_space' or 'p_sep_by_space')
             if not smb and hasattr(currency, 'code'):
                 smb = currency.code
                 separated = True
@@ -535,8 +535,8 @@ class Lang(DeactivableMixin, ModelSQL, ModelView):
             else:
                 s = s + (separated and ' ' or '') + smb
 
-        sign_pos = val < 0 and self.n_sign_posn or self.p_sign_posn
-        sign = val < 0 and self.negative_sign or self.positive_sign
+        sign_pos = conv(val < 0 and 'n_sign_posn' or 'p_sign_posn')
+        sign = conv(val < 0 and 'negative_sign' or 'positive_sign')
 
         if sign_pos == 0:
             s = '(' + s + ')'
