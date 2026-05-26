@@ -238,6 +238,8 @@ class ContactMechanism(
                     types.append('mobile')
                 else:
                     types.extend(_PHONE_TYPES)
+        else:
+            types.extend(_PHONE_TYPES)
         try:
             validate_email(value, check_deliverability=False)
         except EmailNotValidError:
