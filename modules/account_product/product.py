@@ -260,6 +260,12 @@ class Category(CompanyMultiValueMixin, metaclass=PoolMeta):
         else:
             return self.supplier_taxes_deductible_rate
 
+    @classmethod
+    def copy(cls, categories, default=None):
+        default = default.copy() if default is not None else {}
+        default.setdefault('accounting_templates')
+        return super().copy(categories, default=default)
+
 
 class CategoryAccount(ModelSQL, CompanyValueMixin):
     __name__ = 'product.category.account'
