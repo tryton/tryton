@@ -198,6 +198,12 @@ class ShippingMixin:
             ]
 
     @classmethod
+    def copy(cls, shipments, default=None):
+        default = default.copy() if default is not None else {}
+        default.setdefault('shipping_reference')
+        return super().copy(shipments, default=default)
+
+    @classmethod
     def validate(cls, shipments):
         super().validate(shipments)
         for shipment in shipments:
