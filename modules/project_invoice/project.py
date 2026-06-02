@@ -579,16 +579,13 @@ class Work(Effort, Progress, Timesheet, metaclass=PoolMeta):
         InvoiceLine = pool.get('account.invoice.line')
 
         quantity = sum(l['quantity'] for l in lines)
-        product = key['product']
 
         invoice_line = InvoiceLine(invoice=invoice)
         invoice_line.on_change_invoice()
         invoice_line.type = 'line'
-        invoice_line.description = key['description']
-        invoice_line.unit_price = key['unit_price']
+        for name, value in key.items():
+            setattr(invoice_line, name, value)
         invoice_line.quantity = quantity
-        invoice_line.unit = key['unit']
-        invoice_line.product = product
         invoice_line.on_change_product()
         if not getattr(invoice_line, 'account', None):
             if invoice_line.product:
