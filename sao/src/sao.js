@@ -93,7 +93,7 @@ var Sao = {
             let display = element.style.display;
             if (show) {
                 if (display === 'none') {
-                    element.style.display = 'revert';
+                    element.style.display = '';
                 }
             } else {
                 if (display !== 'none') {
