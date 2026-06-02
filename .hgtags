@@ -10046,3 +10046,4 @@ c9311b7062f41d3cdec7a745facd6c8d452981cc trytond-7.8.10
 2ad5f31ba21821b8380b277d7da034188c4b32aa purchase_request_quotation-7.8.2
 ecfd4a06ffd3a1e21da57f0c95cc0d612d6a88fc product_kit-7.8.1
 0624ae6bafd3330112d7b6184d2a9124134f7f38 account_stock_eu-7.8.2
+a9e3f39a15ac40b711108e08d1a584b2e2399769 account_payment_sepa-7.8.3
