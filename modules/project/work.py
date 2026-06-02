@@ -126,7 +126,13 @@ class Work(sequence_ordered(), tree(separator='\\'), ModelSQL, ModelView):
             ('task', 'Task')
             ],
         "Type", required=True)
-    company = fields.Many2One('company.company', "Company", required=True)
+    company = fields.Many2One('company.company', "Company", required=True,
+        states={
+            'readonly': (
+                Eval('parent', None)
+                | Eval('children', [])
+                | Eval('timesheet_duration', 0)),
+            })
     party = fields.Many2One('party.party', 'Party',
         states={
             'invisible': Eval('type') != 'project',
