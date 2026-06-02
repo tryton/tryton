@@ -161,7 +161,11 @@ class Work(
     company = fields.Many2One(
         'company.company', "Company", required=True,
         states={
-            'readonly': Bool(Eval('origin', None)),
+            'readonly': (
+                Eval('origin', None)
+                | Eval('parent', None)
+                | Eval('children', [])
+                | Eval('timesheet_duration', 0)),
             })
     number = fields.Char("Number", readonly=True)
     party = fields.Many2One('party.party', 'Party',
