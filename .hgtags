@@ -10043,3 +10043,4 @@ c9311b7062f41d3cdec7a745facd6c8d452981cc trytond-7.8.10
 08ad34800c7bf6ef3a21f1ff6e5554df8f019a63 sao-7.8.11
 541ed775e7e45a734e4ab72c244997b8b17a0ea8 stock_supply_day-7.8.2
 65def5775fc86794ec17b028f13eb7378bfaaee1 stock_package_shipping-7.8.2
+2ad5f31ba21821b8380b277d7da034188c4b32aa purchase_request_quotation-7.8.2
