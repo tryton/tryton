@@ -18,7 +18,7 @@ this repository contains the full copyright notices and license terms. -->
     <label name="nplurals"/>
     <field name="nplurals"/>
     <label name="plural"/>
-    <field name="plural" colspan="4"/>
+    <field name="plural" colspan="3"/>
 
     <separator string="Date Formatting" colspan="6" id="date"/>
     <label name="date"/>
