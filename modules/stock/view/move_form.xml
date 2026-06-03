@@ -34,7 +34,6 @@ this repository contains the full copyright notices and license terms. -->
             <label name="origin"/>
             <field name="origin"/>
 
-            <separator string="Cost" id="cost" colspan="4"/>
             <label name="cost_price"/>
             <field name="cost_price"/>
         </page>
