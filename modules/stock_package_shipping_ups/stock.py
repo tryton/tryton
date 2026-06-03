@@ -421,11 +421,15 @@ class CreateShippingUPS_Customs_Incoterm(metaclass=PoolMeta):
         if (shipment.customs_international
                 and shipment.incoterm
                 and shipment.incoterm.import_duties == 'seller'):
+            if customs_agent := shipment.customs_agent:
+                account_number = customs_agent.ups_account_number
+            else:
+                account_number = credential.account_number
             payment_information['ShipmentCharge'].append({
                     # Type 02 is for Duties and Taxes
                     'Type': '02',
                     'BillShipper': {
-                        'AccountNumber': credential.account_number,
+                        'AccountNumber': account_number,
                         },
                     })
         return payment_information
