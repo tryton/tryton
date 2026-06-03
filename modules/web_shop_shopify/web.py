@@ -595,8 +595,7 @@ class Shop(metaclass=PoolMeta):
         for sale in to_update:
             if sale.party == sale.web_shop.guest_party:
                 continue
-            if (sale.payment_amount_authorized >= sale.amount_to_pay
-                    or sale.state in {'processing', 'done'}):
+            if sale.payment_amount_authorized >= sale.amount_to_pay:
                 to_process.append(sale)
             else:
                 to_quote.append(sale)
