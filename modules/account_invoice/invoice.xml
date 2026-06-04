@@ -498,7 +498,7 @@ this repository contains the full copyright notices and license terms. -->
         <menuitem
             parent="menu_payments_configuration"
             action="act_invoice_payment_mean_rule_form"
-            sequence="20"
+            sequence="30"
             id="menu_invoice_payment_mean_rule"/>
 
         <record model="ir.model.access" id="access_invoice_payment_mean_rule">
@@ -554,7 +554,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">payment_method_tree</field>
         </record>
         <record model="ir.action.act_window" id="act_payment_method_form">
-            <field name="name">Invoice Payment Methods</field>
+            <field name="name">Payment Methods</field>
             <field name="res_model">account.invoice.payment.method</field>
         </record>
         <record model="ir.action.act_window.view" id="act_payment_method_form_view1">
@@ -568,9 +568,9 @@ this repository contains the full copyright notices and license terms. -->
             <field name="act_window" ref="act_payment_method_form"/>
         </record>
         <menuitem
-            parent="account.menu_journal_configuration"
+            parent="menu_payments_configuration"
             action="act_payment_method_form"
-            sequence="50"
+            sequence="20"
             id="menu_payment_method_form"/>
 
         <record model="ir.rule.group" id="rule_group_payment_method_companies">

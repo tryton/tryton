@@ -139,9 +139,9 @@ wizard.
 
    Invoice payment methods can be found using the main menu item:
 
-      |Financial --> Configuration --> Journals --> Invoice Payment Methods|__
+      |Financial --> Configuration --> Invoice Payments --> Payment Methods|__
 
-      .. |Financial --> Configuration --> Journals --> Invoice Payment Methods| replace:: :menuselection:`Financial --> Configuration --> Journals --> Invoice Payment Methods`
+      .. |Financial --> Configuration --> Invoice Payments --> Payment Methods| replace:: :menuselection:`Financial --> Configuration --> Invoice Payments --> Payment Methods`
       __ https://demo.tryton.org/model/account.invoice.payment.method
 
 .. _model-account.fiscalyear.invoice_sequence:
