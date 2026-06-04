@@ -54,20 +54,9 @@ class ClassProperty(property):
         return self.fget.__get__(None, owner)()
 
 
-def cursor_dict(cursor, size=None):
-    size = cursor.arraysize if size is None else size
-    while True:
-        rows = cursor.fetchmany(size)
-        if not rows:
-            break
-        for row in rows:
-            yield {d[0]: v for d, v in zip(cursor.description, row)}
-
-
 __all__ = [
     ClassProperty,
     cached_property,
-    cursor_dict,
     decistmt,
     entry_points,
     escape_wildcard,

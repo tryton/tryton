@@ -20,6 +20,19 @@ The backend manages the database connection and schema manipulation.
 
    The maximum number of parameters supported by the backend.
 
+.. attribute:: dict_row
+
+   A row factory for cursor returning rows as :py:class:`dictionary <dict>`.
+
+.. attribute:: namedtuple_row
+
+   A row factory for cursor returning rows as
+   :py:func:`~collections.namedtuple`.
+
+.. attribute:: scalar_row
+
+   A row factory for cursor returning the first column as a scalar value.
+
 Database
 ========
 
@@ -33,7 +46,8 @@ Database
 
 .. method:: Database.get_connection([autocommit[, readonly]])
 
-   Retrieve a connection object as defined by :pep:`249#connection`.
+   Retrieve a connection object as defined by :pep:`249#connection`, bearing in
+   mind that the ``cursor()`` method accepts a row_factory keyword parameter.
    If autocommit is set, the connection is committed after each statement.
    If readonly is set, the connection is read only.
 

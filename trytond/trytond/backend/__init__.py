@@ -13,7 +13,8 @@ import trytond.config as config
 __all__ = [
     'name', 'Database', 'TableHandler',
     'DatabaseIntegrityError', 'DatabaseDataError', 'DatabaseOperationalError',
-    'DatabaseTimeoutError', 'MAX_QUERY_PARAMS']
+    'DatabaseTimeoutError', 'MAX_QUERY_PARAMS',
+    'dict_row', 'namedtuple_row', 'scalar_row']
 
 
 name = urllib.parse.urlparse(config.get('database', 'uri', default='')).scheme
@@ -38,3 +39,6 @@ DatabaseOperationalError = _module.DatabaseOperationalError
 DatabaseTimeoutError = _module.DatabaseTimeoutError
 TableHandler = _module.TableHandler
 MAX_QUERY_PARAMS = _module.MAX_QUERY_PARAMS
+dict_row = _module.dict_row
+namedtuple_row = _module.namedtuple_row
+scalar_row = _module.scalar_row

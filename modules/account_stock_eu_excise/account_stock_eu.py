@@ -12,12 +12,13 @@ from sql.aggregate import Sum
 from sql.conditionals import Case
 from sql.operators import Exists
 
+from trytond import backend
 from trytond.i18n import gettext
 from trytond.model import (
     DeactivableMixin, MatchMixin, ModelSQL, ModelView, fields)
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Bool, Eval, Id, If
-from trytond.tools import cursor_dict, decistmt
+from trytond.tools import decistmt
 from trytond.tools.decimal_ import DecimalNull
 from trytond.transaction import Transaction
 
@@ -541,7 +542,7 @@ class ExciseDeclarationProduct(ModelSQL, ModelView):
         Move = pool.get('stock.move')
         transaction = Transaction()
         context = transaction.context
-        cursor = transaction.connection.cursor()
+        connection = transaction.connection
 
         move = Move.__table__()
         location = Location.__table__()
@@ -578,8 +579,9 @@ class ExciseDeclarationProduct(ModelSQL, ModelView):
         declaration_ids = [s.id for s in declarations]
         query.where = where & fields.SQL_OPERATORS['in'](
             move.product, declaration_ids)
+        cursor = connection.cursor(row_factory=backend.dict_row)
         cursor.execute(*query)
-        for values in cursor_dict(cursor):
+        for values in cursor:
             declaration = id2declaration[values['id']]
             for name in names:
                 if qty := values[name]:
@@ -614,7 +616,7 @@ class ExciseDeclarationProduct(ModelSQL, ModelView):
         Move = pool.get('stock.move')
         transaction = Transaction()
         context = transaction.context
-        cursor = transaction.connection.cursor()
+        connection = transaction.connection
 
         move = Move.__table__()
         location = Location.__table__()
@@ -651,8 +653,9 @@ class ExciseDeclarationProduct(ModelSQL, ModelView):
         declaration_ids = [s.id for s in declarations]
         query.where = where & fields.SQL_OPERATORS['in'](
             move.product, declaration_ids)
+        cursor = connection.cursor(row_factory=backend.dict_row)
         cursor.execute(*query)
-        for values in cursor_dict(cursor):
+        for values in cursor:
             declaration = id2declaration[values['id']]
             for name in names:
                 if qty := values[name]:

@@ -21,7 +21,7 @@ from trytond.pool import Pool
 from trytond.pyson import PYSONDecoder, PYSONEncoder
 from trytond.rpc import RPC
 from trytond.sql.functions import Range
-from trytond.tools import cursor_dict, grouped_slice
+from trytond.tools import grouped_slice
 from trytond.tools.domain_inversion import simplify
 from trytond.transaction import (
     Transaction, inactive_records, record_cache_size, without_check_access)
@@ -997,7 +997,7 @@ class ModelSQL(ModelStorage):
     @no_table_query
     def create(cls, vlist):
         transaction = Transaction()
-        cursor = transaction.connection.cursor()
+        cursor = transaction.connection.cursor(row_factory=backend.scalar_row)
         pool = Pool()
         Translation = pool.get('ir.translation')
 
@@ -1039,7 +1039,7 @@ class ModelSQL(ModelStorage):
                         if transaction.database.has_returning():
                             cursor.execute(*table.insert(
                                     cols, [val], [table.id]))
-                            yield from (r[0] for r in cursor)
+                            yield from cursor
                         else:
                             id_new = transaction.database.nextid(
                                 transaction.connection, cls._table)
@@ -1181,7 +1181,7 @@ class ModelSQL(ModelStorage):
         Rule = pool.get('ir.rule')
         Translation = pool.get('ir.translation')
         transaction = Transaction()
-        cursor = Transaction().connection.cursor()
+        connection = transaction.connection
 
         ids, fields_names = cls._before_read(ids, fields_names)
 
@@ -1290,9 +1290,10 @@ class ModelSQL(ModelStorage):
                     where &= history_clause
                 if domain:
                     where &= dom_exp
+                cursor = connection.cursor(row_factory=backend.dict_row)
                 cursor.execute(*from_.select(*columns.values(), where=where,
                         order_by=history_order, limit=history_limit))
-                fetchall = list(cursor_dict(cursor))
+                fetchall = list(cursor)
                 if not len(fetchall) == len({}.fromkeys(sub_ids)):
                     cls.__check_domain_rule(ids, 'read')
                     raise RuntimeError("Undetected access error")
@@ -1938,7 +1939,7 @@ class ModelSQL(ModelStorage):
     def search(cls, domain, offset=0, limit=None, order=None, count=False,
             query=False):
         transaction = Transaction()
-        cursor = transaction.connection.cursor()
+        connection = transaction.connection
 
         super().search(
             domain, offset=offset, limit=limit, order=order, count=count)
@@ -1965,6 +1966,7 @@ class ModelSQL(ModelStorage):
             if query:
                 return select
             else:
+                cursor = connection.cursor()
                 cursor.execute(*select)
                 return cursor.fetchone()[0]
 
@@ -2001,9 +2003,10 @@ class ModelSQL(ModelStorage):
 
         if query:
             return select
+        cursor = connection.cursor(row_factory=backend.dict_row)
         cursor.execute(*select)
 
-        rows = list(cursor_dict(cursor))
+        rows = list(cursor)
         cache = transaction.get_cache()
         delete_records = transaction.delete_records[cls.__name__]
 

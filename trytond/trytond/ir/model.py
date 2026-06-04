@@ -12,6 +12,7 @@ from sql.conditionals import Case
 from sql.operators import Equal
 
 import trytond.config as config
+from trytond import backend
 from trytond.cache import Cache
 from trytond.i18n import gettext
 from trytond.model import (
@@ -22,7 +23,7 @@ from trytond.pool import Pool
 from trytond.pyson import Bool, Eval, PYSONDecoder
 from trytond.report import Report
 from trytond.rpc import RPC
-from trytond.tools import cursor_dict, is_instance_method
+from trytond.tools import is_instance_method
 from trytond.tools.string_ import StringMatcher
 from trytond.transaction import Transaction, without_check_access
 from trytond.wizard import (
@@ -352,11 +353,13 @@ class ModelField(
         pool = Pool()
         Model = pool.get('ir.model')
 
-        cursor = Transaction().connection.cursor()
+        connection = Transaction().connection
+        cursor_select = connection.cursor(row_factory=backend.dict_row)
+        cursor = connection.cursor()
 
         ir_model_field = cls.__table__()
 
-        cursor.execute(*ir_model_field
+        cursor_select.execute(*ir_model_field
             .select(
                 ir_model_field.id.as_('id'),
                 ir_model_field.name.as_('name'),
@@ -367,7 +370,7 @@ class ModelField(
                 ir_model_field.help.as_('help'),
                 ir_model_field.access.as_('access'),
                 where=ir_model_field.model == model.__name__))
-        model_fields = {f['name']: f for f in cursor_dict(cursor)}
+        model_fields = {f['name']: f for f in cursor_select}
 
         for field_name, field in model._fields.items():
             if hasattr(field, 'get_target'):

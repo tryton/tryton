@@ -16,7 +16,7 @@ from psycopg import DataError as DatabaseDataError
 from psycopg import IntegrityError as DatabaseIntegrityError
 from psycopg import IsolationLevel
 from psycopg import OperationalError as DatabaseOperationalError
-from psycopg import connect
+from psycopg import connect, rows
 from psycopg.errors import QueryCanceled as DatabaseTimeoutError
 from psycopg.sql import SQL, Identifier
 from psycopg_pool import ConnectionPool
@@ -35,7 +35,8 @@ from .table import index_method
 __all__ = [
     'Database',
     'DatabaseIntegrityError', 'DatabaseDataError', 'DatabaseOperationalError',
-    'DatabaseTimeoutError']
+    'DatabaseTimeoutError',
+    'dict_row', 'namedtuple_row', 'scalar_row']
 
 logger = logging.getLogger(__name__)
 
@@ -61,6 +62,11 @@ class LoggingCursor(Cursor):
         if logger.isEnabledFor(logging.DEBUG):
             logger.debug(ClientCursor(self.connection).mogrify(query, params))
         return super().execute(query, params, prepare=prepare, binary=binary)
+
+
+dict_row = rows.dict_row
+namedtuple_row = rows.namedtuple_row
+scalar_row = rows.scalar_row
 
 
 class ForSkipLocked(For):

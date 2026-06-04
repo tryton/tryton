@@ -1,3 +1,5 @@
+* Remove cursor_dict
+* Add row factory to cursor
 * Add filename extension to Binary field
 * Add filters attribute for binary and image widgets
 * Move last_user and last_modification to ResourceAccessMixin

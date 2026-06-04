@@ -6,7 +6,8 @@ import sys
 
 from .database import (
     Database, DatabaseDataError, DatabaseIntegrityError,
-    DatabaseOperationalError, DatabaseTimeoutError)
+    DatabaseOperationalError, DatabaseTimeoutError, dict_row, namedtuple_row,
+    scalar_row)
 from .table import TableHandler
 
 MAX_QUERY_PARAMS = 200  # estimation from the SQLITE_MAX_EXPR_DEPTH=1_000
@@ -20,6 +21,9 @@ __all__ = [
     DatabaseIntegrityError,
     DatabaseOperationalError,
     DatabaseTimeoutError,
+    dict_row,
+    namedtuple_row,
+    scalar_row,
     MAX_QUERY_PARAMS,
     TableHandler,
     ]

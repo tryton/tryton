@@ -12,7 +12,7 @@ from trytond.modules.currency.fields import Monetary
 from trytond.pool import Pool
 from trytond.pyson import Eval
 from trytond.rpc import RPC
-from trytond.tools import cursor_dict, sqlite_apply_types
+from trytond.tools import sqlite_apply_types
 from trytond.transaction import Transaction
 
 
@@ -125,7 +125,7 @@ class Journal(DeactivableMixin, ModelSQL, ModelView):
         Statement = pool.get('account.statement')
         statement = Statement.__table__()
         transaction = Transaction()
-        cursor = transaction.connection.cursor()
+        connection = transaction.connection
 
         id2currency = {j.id: j.currency for j in journals}
 
@@ -156,12 +156,13 @@ class Journal(DeactivableMixin, ModelSQL, ModelView):
             if 'last_date' in names:
                 types.append('DATE')
             sqlite_apply_types(query, types)
+        cursor = connection.cursor(row_factory=backend.namedtuple_row)
         cursor.execute(*query)
-        for row in cursor_dict(cursor):
-            journal = row['journal']
+        for row in cursor:
+            journal = row.journal
             if 'last_amount' in names:
                 result['last_amount'][journal] = (
-                    id2currency[journal].round(row['last_amount']))
+                    id2currency[journal].round(row.last_amount))
             if 'last_date' in names:
-                result['last_date'][journal] = row['last_date']
+                result['last_date'][journal] = row.last_date
         return result

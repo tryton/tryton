@@ -19,8 +19,7 @@ from trytond.model.exceptions import AccessError
 from trytond.modules.currency.fields import Monetary
 from trytond.pool import Pool
 from trytond.pyson import Bool, Eval, If, PYSONEncoder
-from trytond.tools import (
-    cursor_dict, is_full_text, lstrip_wildcard, sqlite_apply_types)
+from trytond.tools import is_full_text, lstrip_wildcard, sqlite_apply_types
 from trytond.transaction import Transaction
 from trytond.wizard import Button, StateAction, StateView, Wizard
 
@@ -884,7 +883,7 @@ class Tax(sequence_ordered(), ModelSQL, ModelView, DeactivableMixin):
         Move = pool.get('account.move')
         MoveLine = pool.get('account.move.line')
         TaxLine = pool.get('account.tax.line')
-        cursor = Transaction().connection.cursor()
+        connection = Transaction().connection
 
         move = Move.__table__()
         move_line = MoveLine.__table__()
@@ -943,8 +942,9 @@ class Tax(sequence_ordered(), ModelSQL, ModelView, DeactivableMixin):
         if backend.name == 'sqlite':
             sqlite_apply_types(query, [None] + ['NUMERIC'] * len(names))
 
+        cursor = connection.cursor(row_factory=backend.dict_row)
         cursor.execute(*query)
-        for row in cursor_dict(cursor):
+        for row in cursor:
             for name in names:
                 result[name][row['tax']] = row[name] or 0
         return result

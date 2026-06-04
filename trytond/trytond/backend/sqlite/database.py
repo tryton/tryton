@@ -10,6 +10,7 @@ import threading
 import time
 import urllib.parse
 import warnings
+from collections import namedtuple
 from decimal import Decimal
 from sqlite3 import DatabaseError
 from sqlite3 import IntegrityError as DatabaseIntegrityError
@@ -32,7 +33,8 @@ from trytond.transaction import Transaction
 __all__ = [
     'Database',
     'DatabaseIntegrityError', 'DatabaseDataError', 'DatabaseOperationalError',
-    'DatabaseTimeoutError']
+    'DatabaseTimeoutError',
+    'dict_row', 'namedtuple_row', 'scalar_row']
 logger = logging.getLogger(__name__)
 
 _default_name = config.get('database', 'default_name', default=':memory:')
@@ -455,8 +457,25 @@ class SQLiteCursor(sqlite.Cursor):
 
 class SQLiteConnection(sqlite.Connection):
 
-    def cursor(self):
-        return super().cursor(SQLiteCursor)
+    def cursor(self, *, row_factory=None):
+        cursor = super().cursor(SQLiteCursor)
+        cursor.row_factory = row_factory
+        return cursor
+
+
+def dict_row(cursor, row):
+    fields = [column[0] for column in cursor.description]
+    return {key: value for key, value in zip(fields, row)}
+
+
+def namedtuple_row(cursor, row):
+    fields = [column[0] for column in cursor.description]
+    cls = namedtuple("Row", fields)
+    return cls._make(row)
+
+
+def scalar_row(cursor, row):
+    return row[0]
 
 
 class Database(DatabaseInterface):
