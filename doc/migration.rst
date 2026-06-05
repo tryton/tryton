@@ -14,6 +14,23 @@ a database from another series.
 .. warning::
    You cannot skip more than 2 series ending with ``.0``.
 
+.. _migration-8.2:
+
+8.2
+---
+
+.. _migration-8.2-after:
+
+After
+~~~~~
+
+* If ``account`` module is activated, update the reconciliation date using
+  maturity date:
+
+  .. code-block:: SQL
+
+      UPDATE "account_move_reconciliation" AS r SET date = (SELECT GREATEST(MAX(l.maturity_date), MAX(m.date)) FROM account_move_line AS l JOIN account_move AS m ON l.move = m.id WHERE l.reconciliation = r.id);
+
 .. _migration-8.0:
 
 8.0

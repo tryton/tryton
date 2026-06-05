@@ -1079,7 +1079,7 @@ class Line(DescriptionOriginMixin, MoveLineMixin, ModelSQL, ModelView):
         cls._check_modify_exclude = {
             'maturity_date', 'reconciliation', 'tax_lines'}
         cls._reconciliation_modify_disallow = {
-            'account', 'debit', 'credit', 'party',
+            'account', 'debit', 'credit', 'party', 'maturity_date',
             }
         table = cls.__table__()
         cls._sql_constraints += [
@@ -1673,7 +1673,9 @@ class Line(DescriptionOriginMixin, MoveLineMixin, ModelSQL, ModelView):
             reconciliations.append({
                     'company': reconcile_account.company,
                     'lines': [('add', [x.id for x in lines])],
-                    'date': max(l.date for l in lines),
+                    'date': max(filter(None,
+                            (d for l in lines
+                                for d in (l.maturity_date, l.date)))),
                     'delegate_to': delegate_to,
                     })
         if to_post:
