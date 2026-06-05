@@ -3,7 +3,7 @@
 import datetime
 from collections import defaultdict
 from functools import wraps
-from itertools import groupby, islice, product, repeat
+from itertools import groupby, product, repeat
 
 from sql import (
     Asc, Column, Desc, Expression, Literal, Null, NullsFirst, NullsLast, Table,
@@ -1809,7 +1809,7 @@ class ModelSQL(ModelStorage):
                 raise AccessError(msg, '\n'.join(ctx_msg))
 
     @classmethod
-    def __search_query(cls, domain, count, query, order):
+    def __search_query(cls, domain, count, query, order, prefetch):
         pool = Pool()
         Rule = pool.get('ir.rule')
 
@@ -1868,7 +1868,8 @@ class ModelSQL(ModelStorage):
                     expression &= domain_exp
                 main_table, _ = tables[None]
                 columns = cls.__searched_columns(
-                    tables, eager=not count and not query)
+                    tables,
+                    eager=not count and not query and prefetch)
 
                 o_idx = 0
                 for oexpr, otype in order:
@@ -1940,6 +1941,8 @@ class ModelSQL(ModelStorage):
             query=False):
         transaction = Transaction()
         connection = transaction.connection
+        context = transaction.context
+        prefetch = context.get('_search_prefetch', True)
 
         super().search(
             domain, offset=offset, limit=limit, order=order, count=count)
@@ -1952,7 +1955,7 @@ class ModelSQL(ModelStorage):
                 order.append(('id', None))
 
         tables, expression, union_orderings = cls.__search_query(
-            domain, count, query, order)
+            domain, count, query, order, prefetch)
 
         main_table, _ = tables[None]
         if count:
@@ -1986,7 +1989,7 @@ class ModelSQL(ModelStorage):
         if query:
             columns = [main_table.id.as_('id')]
         else:
-            columns = cls.__searched_columns(tables, eager=True)
+            columns = cls.__searched_columns(tables, eager=prefetch)
             if union_orderings:
                 columns = [
                     Column(main_table, c.output_name).as_(c.output_name)
@@ -2003,31 +2006,39 @@ class ModelSQL(ModelStorage):
 
         if query:
             return select
-        cursor = connection.cursor(row_factory=backend.dict_row)
+        if prefetch:
+            row_factory = backend.dict_row
+        else:
+            row_factory = backend.scalar_row
+        cursor = connection.cursor(row_factory=row_factory)
         cursor.execute(*select)
 
-        rows = list(cursor)
-        cache = transaction.get_cache()
-        delete_records = transaction.delete_records[cls.__name__]
+        if prefetch:
+            cache = transaction.get_cache()
+            delete_records = transaction.delete_records[cls.__name__]
 
-        keys = None
-        for data in islice(rows, 0, cache.size_limit):
-            if data['id'] in delete_records:
-                continue
-            if keys is None:
-                keys = list(data.keys())
-                for k in keys[:]:
-                    if k in ('_timestamp', '_datetime', '__id'):
+            no_cache = None
+            ids = []
+            for i, data in enumerate(cursor):
+                ids.append(data['id'])
+                if i < cache.size_limit:
+                    if data['id'] in delete_records:
                         continue
-                    field = cls._fields[k]
-                    if not getattr(field, 'datetime_field', None):
-                        keys.remove(k)
-                        continue
-            for k in keys:
-                del data[k]
-            cache[cls.__name__][data['id']]._update(data)
+                    if no_cache is None:
+                        no_cache = list(data.keys())
+                        for k in no_cache[:]:
+                            if k in ('_timestamp', '_datetime', '__id'):
+                                continue
+                            field = cls._fields[k]
+                            if not getattr(field, 'datetime_field', None):
+                                no_cache.remove(k)
+                    for k in no_cache:
+                        del data[k]
+                    cache[cls.__name__][data['id']]._update(data)
+        else:
+            ids = cursor
 
-        return cls.browse([x['id'] for x in rows])
+        return cls.browse(ids)
 
     @classmethod
     def search_domain(cls, domain, active_test=None, tables=None):

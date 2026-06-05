@@ -98,6 +98,14 @@ def is_leaf(expression):
         and expression[1] in OPERATORS)  # TODO remove OPERATORS test
 
 
+class _search_RPC(RPC):
+    def convert(self, obj, *args, **kwargs):
+        args, kwargs, context, timestamp = super().convert(
+            obj, *args, **kwargs)
+        context['_search_prefetch'] = False
+        return args, kwargs, context, timestamp
+
+
 class ModelStorage(Model):
     """
     Define a model with storage capability in Tryton.
@@ -164,7 +172,7 @@ class ModelStorage(Model):
                             0: request_records_limit,
                             },
                         result=lambda r: list(map(int, r))),
-                    'search': RPC(
+                    'search': _search_RPC(
                         result=lambda r: list(map(int, r)),
                         size_limits={
                             2: request_records_limit,
