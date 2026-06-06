@@ -291,14 +291,16 @@ class Email(NoModal):
 
     def _fill_with(self, template=None):
         try:
+            context = self.record.get_context()
             if template:
                 values = RPCExecute(
                     'model', 'ir.email.template', 'get',
-                    template, self.record.id)
+                    template, self.record.id, context=context)
             else:
                 values = RPCExecute(
                     'model', 'ir.email.template', 'get_default',
-                    self.record.model_name, self.record.id)
+                    self.record.model_name, self.record.id,
+                    context=context)
         except RPCException:
             return
         self.to.set_text(', '.join(values.get('to', [])))
