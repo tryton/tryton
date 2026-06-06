@@ -2699,15 +2699,16 @@
         },
         _fill_with: function(template) {
             var prm;
+            let context = this.record.get_context();
             if (template) {
                 prm = Sao.rpc({
                     'method': 'model.ir.email.template.get',
-                    'params': [template, this.record.id, {}],
+                    'params': [template, this.record.id, context],
                 }, this.record.model.session);
             } else {
                 prm = Sao.rpc({
                     'method': 'model.ir.email.template.get_default',
-                    'params': [this.record.model.name, this.record.id, {}],
+                    'params': [this.record.model.name, this.record.id, context],
                 }, this.record.model.session);
             }
             prm.then(values => {
