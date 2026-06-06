@@ -81,13 +81,15 @@ def get_module_info(name, path=(), with_test=False):
 
 def get_module_register(name, path=(), with_test=False):
     "Return classes to register from tryton.cfg"
+    from trytond.pool import Pool
+
     module_config, _ = parse_module_config(name, path)
     if module_config is None:
         return
     for section in module_config.sections():
         if section == 'register' or section.startswith('register '):
             depends = section[len('register'):].strip().split()
-            for type_ in ['model', 'report', 'wizard']:
+            for type_ in Pool.classes:
                 if not module_config.has_option(section, type_):
                     continue
                 classes = module_config.get(

@@ -89,7 +89,7 @@ class Pool(object):
             module = kwargs['module']
             type_ = kwargs['type_']
             depends = set(kwargs.get('depends', []))
-            assert type_ in {'model', 'report', 'wizard'}, (
+            assert type_ in Pool.classes, (
                 f"{type_} is not a valid type_")
             for cls in classes:
                 mpool = Pool.classes[type_][module]
