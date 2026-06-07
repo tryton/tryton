@@ -2,7 +2,8 @@
 # this repository contains the full copyright notices and license terms.
 from trytond.backend.postgresql import (
     MAX_QUERY_PARAMS, DatabaseDataError, DatabaseIntegrityError,
-    DatabaseOperationalError, DatabaseTimeoutError)
+    DatabaseOperationalError, DatabaseTimeoutError, dict_row, namedtuple_row,
+    scalar_row)
 
 from .database import Database
 from .table import TableHandler
@@ -13,6 +14,9 @@ __all__ = [
     DatabaseIntegrityError,
     DatabaseOperationalError,
     DatabaseTimeoutError,
+    dict_row,
+    namedtuple_row,
+    scalar_row,
     MAX_QUERY_PARAMS,
     TableHandler,
     ]
