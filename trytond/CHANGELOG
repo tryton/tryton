@@ -1,3 +1,4 @@
+* Restrict Genshi evaluation (issue14869, issue5160)
 
 Version 7.0.52 - 2026-06-18
 ---------------------------

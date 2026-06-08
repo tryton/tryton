@@ -10,6 +10,8 @@ from email import charset
 import __main__
 from lxml import etree, objectify
 
+from ._safe_genshi import genshi_patch
+
 __version__ = "7.0.53"
 
 if not os.environ.get('TRYTOND_APPNAME'):
@@ -30,6 +32,8 @@ charset.add_charset('utf-8', charset.QP, charset.QP)
 # prevent XML vulnerabilities by default
 etree.set_default_parser(etree.XMLParser(resolve_entities=False))
 objectify.set_default_parser(objectify.makeparser(resolve_entities=False))
+
+genshi_patch()
 
 
 class _RequestPatchFinder:
