@@ -1574,8 +1574,9 @@ class Line(DescriptionOriginMixin, MoveLineMixin, ModelSQL, ModelView):
                     ('company', '=', company),
                     ('journal', '=', journal),
                     ])
+            toolbar = dict(toolbar)
+            action = list(toolbar['action'])
             for template in templates:
-                action = toolbar['action']
                 # Use template id for action id to auto-select the template
                 action.append({
                         'name': template.name,
@@ -1583,6 +1584,7 @@ class Line(DescriptionOriginMixin, MoveLineMixin, ModelSQL, ModelView):
                         'wiz_name': 'account.move.template.create',
                         'id': template.id,
                         })
+            toolbar['action'] = action
         return toolbar
 
     @classmethod
