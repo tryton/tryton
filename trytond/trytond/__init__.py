@@ -12,6 +12,8 @@ from email import charset
 import __main__
 from lxml import etree, objectify
 
+from ._safe_genshi import genshi_patch
+
 __version__ = "8.0.6"
 __series__ = '.'.join(__version__.split('.')[:2])
 
@@ -35,6 +37,8 @@ etree.set_default_parser(etree.XMLParser(resolve_entities=False))
 objectify.set_default_parser(objectify.makeparser(resolve_entities=False))
 
 decimal.DefaultContext.prec = int(os.environ.get('TRYTOND_DECIMAL_PREC', 28))
+
+genshi_patch()
 
 
 class _RequestPatchFinder:
