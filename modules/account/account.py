@@ -1374,7 +1374,7 @@ class Account(
         childs = [self]
         while childs:
             for child in childs:
-                if not child.template:
+                if not child.template or child.template_override:
                     continue
                 values = {}
                 tax_ids = [template2tax[x.id] for x in child.template.taxes
