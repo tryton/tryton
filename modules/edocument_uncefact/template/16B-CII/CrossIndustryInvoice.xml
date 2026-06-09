@@ -45,7 +45,7 @@ this repository contains the full copyright notices and license terms. -->
         <ram:ApplicableTradeTax>
             <ram:CalculatedAmount py:if="amount" py:attrs="{'currencyID': this.invoice.currency.code}">${amount * this.type_sign}</ram:CalculatedAmount>
             <ram:TypeCode py:if="tax.unece_code">${tax.unece_code}</ram:TypeCode>
-            <ram:ExemptionReasonCode py:if="getattr(tax, 'vatex_code', None)">${tax.vatex_code}</ram:ExemptionReasonCode>
+            <ram:ExemptionReasonCode py:if="hasattr(tax, 'vatex_code') and tax.vatex_code">${tax.vatex_code}</ram:ExemptionReasonCode>
             <ram:ExemptionReason py:if="tax.legal_notice">${tax.legal_notice}</ram:ExemptionReason>
             <ram:BasisAmount py:if="base">${base * this.type_sign}</ram:BasisAmount>
             <ram:CategoryCode py:if="tax.unece_category_code">${tax.unece_category_code}</ram:CategoryCode>

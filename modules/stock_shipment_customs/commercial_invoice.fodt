@@ -710,7 +710,7 @@
     <text:p text:style-name="Text_20_body">Date: <text:placeholder text:placeholder-type="text">&lt;format_date(shipment.effective_date or shipment.planned_date) if (shipment.effective_date or shipment.planned_date) else &apos;&apos;&gt;</text:placeholder></text:p>
     <text:p text:style-name="P54">Terms of Trade: <text:placeholder text:placeholder-type="text">&lt;shipment.incoterm.name if shipment.incoterm else &apos;&apos;&gt;</text:placeholder></text:p>
     <text:p text:style-name="P37">Reason for Export: <text:placeholder text:placeholder-type="text">&lt;get_reason(shipment)&gt;</text:placeholder></text:p>
-    <text:p text:style-name="P57">Carrier: <text:placeholder text:placeholder-type="text">&lt;shipment.carrier.rec_name if getattr(shipment, &apos;carrier&apos;, None) else &apos;&apos;&gt;</text:placeholder></text:p>
+    <text:p text:style-name="P57">Carrier: <text:placeholder text:placeholder-type="text">&lt;shipment.carrier.rec_name if hasattr(shipment, &apos;carrier&apos;) and shipment.carrier else &apos;&apos;&gt;</text:placeholder></text:p>
     <text:p text:style-name="P57">Shipping reference: <text:placeholder text:placeholder-type="text">&lt;shipment.shipping_reference&gt;</text:placeholder></text:p>
    </text:section>
    <text:section text:style-name="Sect2" text:name="Section4">
