@@ -1588,6 +1588,15 @@
             }
             return results;
         },
+        contains_without_diacritics: function(main, sub) {
+            main = main.normalize('NFD').toLowerCase();
+            sub = sub.normalize('NFD').toLowerCase();
+
+            main = main.replace(/[\u0300-\u036f]/g, '');
+            sub = sub.replace(/[\u0300-\u036f]/g, '');
+
+            return main.includes(sub);
+        },
         complete_value: function(field, value) {
             var complete_boolean = function() {
                 if ((value === null) || (value === undefined)) {
@@ -1599,18 +1608,15 @@
                 }
             };
 
-            var complete_selection = function() {
+            var complete_selection = () => {
                 var results = [];
                 var test_value = value !== null ? value : '';
                 if (value instanceof Array) {
                     test_value = value[value.length - 1] || '';
                 }
                 test_value = test_value.replace(/^%*|%*$/g, '');
-                var i, len, svalue, test;
-                for (i=0, len=field.selection.length; i<len; i++) {
-                    svalue = field.selection[i][0];
-                    test = field.selection[i][1].toLowerCase();
-                    if (test.startsWith(test_value.toLowerCase())) {
+                for(let [svalue, test] of field.selection) {
+                    if (this.contains_without_diacritics(test, test_value)) {
                         if (value instanceof Array) {
                             results.push(value.slice(0, -1).concat([svalue]));
                         } else {
@@ -1628,11 +1634,8 @@
                     test_value = value[value.length - 1];
                 }
                 test_value = test_value.replace(/^%*|%*$/g, '');
-                var i, len, svalue, test;
-                for (i=0, len=field.selection.length; i<len; i++) {
-                    svalue = field.selection[i][0];
-                    test = field.selection[i][1].toLowerCase();
-                    if (test.startsWith(test_value.toLowerCase())) {
+                for (let [svalue, test] of field.selection) {
+                    if (this.contains_without_diacritics(test, test_value)) {
                         if (value instanceof Array) {
                             results.push(value.slice(0, -1).concat([svalue]));
                         } else {

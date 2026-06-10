@@ -2427,6 +2427,25 @@
         });
     });
 
+    QUnit.test('DomainParser.contains_without_diacritics', function() {
+        let parser = new Sao.common.DomainParser();
+        for (let [main, sub, expected] of [
+            ["Café au lait", "cafe", true],
+            ["Café au lait", "café", true],
+            ["Café au lait", "lait", true],
+            ["Café au lait", "the", false],
+            ["Héllò Wörld", "hello", true],
+            ["Héllò Wörld", "world", true],
+            ["Héllò Wörld", "hallo", false],
+        ]) {
+            QUnit.assert.strictEqual(
+                parser.contains_without_diacritics(main, sub), expected,
+                'contains_without_diacritics('
+                + JSON.stringify(main) + ',' + JSON.stringify(sub) + ')');
+        }
+
+    });
+
     QUnit.test('DomainParser.complete_value', function () {
         var parser = new Sao.common.DomainParser();
         var field;
@@ -2456,7 +2475,7 @@
                 ],
         };
         [
-            ['m', ['male']],
+            ['f', ['female']],
             ['test', []],
             ['', ['male', 'female']],
             [null, ['male', 'female']],
@@ -2473,7 +2492,7 @@
                 ],
         };
         [
-            ['m', ['male']],
+            ['f', ['female']],
             ['test', []],
             ['', ['male', 'female', '']],
             [null, ['male', 'female', '']],

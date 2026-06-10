@@ -6,6 +6,7 @@ import gettext
 import io
 import locale
 import math
+import unicodedata
 from collections import OrderedDict
 from decimal import Decimal
 from shlex import shlex
@@ -426,6 +427,16 @@ def format_value(field, value, target=None, context=None, _quote_empty=False):
             lambda: value if value is not None else '')(), empty=_quote_empty)
 
 
+def contains_without_diacritics(main, sub):
+    main = unicodedata.normalize('NFD', main.lower())
+    sub = unicodedata.normalize('NFD', sub.lower())
+
+    main = ''.join(c for c in main if not unicodedata.combining(c))
+    sub = ''.join(c for c in sub if not unicodedata.combining(c))
+
+    return sub in main
+
+
 def complete_value(field, value):
     "Complete value for field"
 
@@ -444,7 +455,7 @@ def complete_value(field, value):
             test_value = value[-1] or ''
         test_value = test_value.strip('%')
         for svalue, test in field['selection']:
-            if test.lower().startswith(test_value.lower()):
+            if contains_without_diacritics(test, test_value):
                 if isinstance(value, list):
                     yield value[:-1] + [svalue]
                 else:
@@ -454,9 +465,9 @@ def complete_value(field, value):
         test_value = value if value is not None else ''
         if isinstance(value, list):
             test_value = value[-1]
-        test_value = test_value.strip('%')
+        test_value = test_value.strip('%').lower()
         for svalue, test in field['selection']:
-            if test.lower().startswith(test_value.lower()):
+            if contains_without_diacritics(test, test_value):
                 if isinstance(value, list):
                     yield value[:-1] + [svalue]
                 else:

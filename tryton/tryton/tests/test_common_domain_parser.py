@@ -6,8 +6,9 @@ from unittest import TestCase
 
 from tryton.common import untimezoned_date
 from tryton.common.domain_parser import (
-    DomainParser, complete_value, convert_value, format_value, group_operator,
-    likify, operatorize, parenthesize, quote, rlist, split_target_value, udlex)
+    DomainParser, complete_value, contains_without_diacritics, convert_value,
+    format_value, group_operator, likify, operatorize, parenthesize, quote,
+    rlist, split_target_value, udlex)
 
 
 class DomainParserTestCase(TestCase):
@@ -433,6 +434,21 @@ class DomainParserTestCase(TestCase):
                 format_value(field, value), result,
                 msg="format_value(%r, %r)" % (field, value))
 
+    def test_contains_without_diacritics(self):
+        "Test contains without diacritics"
+        for main, sub, expected in [
+                ("Café au lait", "cafe", True),
+                ("Café au lait", "café", True),
+                ("Café au lait", "lait", True),
+                ("Café au lait", "the", False),
+                ("Héllò Wörld", "hello", True),
+                ("Héllò Wörld", "world", True),
+                ("Héllò Wörld", "hallo", False),
+                ]:
+            with self.subTest(main=main, sub=sub):
+                self.assertEqual(
+                    contains_without_diacritics(main, sub), expected)
+
     def test_complete_boolean(self):
         "Test complete boolean"
         field = {
@@ -457,7 +473,7 @@ class DomainParserTestCase(TestCase):
                 ],
             }
         for value, result in (
-                ('m', ['male']),
+                ('f', ['female']),
                 ('test', []),
                 ('', ['male', 'female']),
                 (None, ['male', 'female']),
@@ -472,7 +488,7 @@ class DomainParserTestCase(TestCase):
         field_with_empty['selection'] = (field_with_empty['selection']
             + [('', '')])
         for value, result in (
-                ('m', ['male']),
+                ('f', ['female']),
                 ('test', []),
                 ('', ['male', 'female', '']),
                 (None, ['male', 'female', '']),
