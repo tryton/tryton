@@ -332,6 +332,27 @@ class SearchTestCaseMixin:
                 ], query=True)
         self.assertIn(self._strategy, str(query))
 
+    @with_transaction()
+    def test_search_where_target_union(self):
+        "Test search on Many2One using where and UNION-ed query on target"
+        pool = Pool()
+        Target = pool.get('test.many2one_target')
+        Many2One = pool.get('test.many2one')
+        target1, target2 = Target.create([
+                {'value': 1},
+                {'value': 2},
+                ])
+        many2one1, many2one2 = Many2One.create([
+                {'many2one': target1},
+                {'many2one': target2},
+                ])
+
+        many2ones = Many2One.search([
+                ('many2one', 'where',
+                    ['OR', ('value', '=', 1), ('write_uid.id', '=', -1)]),
+                ])
+        self.assertListEqual(many2ones, [many2one1])
+
 
 class FieldMany2OneTestCase(
         TestCase, CommonTestCaseMixin, SearchTestCaseMixin):
