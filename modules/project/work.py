@@ -15,7 +15,6 @@ from trytond.model import (
 from trytond.modules.company.model import CompanyMultiValueMixin
 from trytond.pool import Pool
 from trytond.pyson import Bool, Eval, Id, If, PYSONEncoder, TimeDelta
-from trytond.tools import is_full_text, lstrip_wildcard
 from trytond.transaction import Transaction
 
 from .exceptions import WorkProgressValidationError
@@ -491,11 +490,8 @@ class Work(
             bool_op = 'AND'
         else:
             bool_op = 'OR'
-        code_value = value
-        if operator.endswith('like') and is_full_text(value):
-            code_value = lstrip_wildcard(value)
         domain = [bool_op,
-            ('number', operator, code_value),
+            ('number', operator, value),
             super().search_rec_name(name, clause),
             ]
         return domain
