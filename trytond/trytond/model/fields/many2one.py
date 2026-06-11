@@ -250,7 +250,10 @@ class Many2One(Field):
                 target_id, = query.columns
                 if isinstance(target_id, As):
                     target_id = target_id.expression
-                query.where &= target_id == column
+                if query.where is None:
+                    query.where = target_id == column
+                else:
+                    query.where &= target_id == column
                 expression = column.in_(query)
                 if operator.startswith('not'):
                     return ~expression
