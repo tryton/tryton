@@ -168,6 +168,9 @@ def acs(request, pool, identity):
         redirect_url = http_host()
     parts = urllib.parse.urlsplit(redirect_url)
     query = urllib.parse.parse_qsl(parts.query)
+    if 'login_service' not in dict(query):
+        query.append(
+            ('login_service', f'/authentication/saml/{identity}/login'))
     query.append(('database', pool.database_name))
     query.append(('login', login))
     query.append(('user_id', user_id))
