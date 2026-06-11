@@ -151,6 +151,12 @@ class StockMixin(object):
             pbl = Product.products_by_location(
                 location_ids, with_childs=with_childs, grouping=grouping)
 
+        quantities = defaultdict(float)
+        for key, quantity in pbl.items():
+            # pbl could return None in some keys
+            if key[position] is not None:
+                quantities[key[position]] += quantity
+
         operator_ = {
             '=': operator.eq,
             '>=': operator.ge,
@@ -161,15 +167,8 @@ class StockMixin(object):
             'in': lambda v, l: v in l,
             'not in': lambda v, l: v not in l,
             }.get(operator_, lambda v, l: False)
-        record_ids = []
-        for key, quantity in pbl.items():
-            if (quantity is not None and operand is not None
-                    and operator_(quantity, operand)):
-                # pbl could return None in some keys
-                if key[position] is not None:
-                    record_ids.append(key[position])
-
-        return [('id', 'in', record_ids)]
+        return [('id', 'in',
+                [k for k, v in quantities.items() if operator_(v, operand)])]
 
 
 class Move(Workflow, ModelSQL, ModelView):
