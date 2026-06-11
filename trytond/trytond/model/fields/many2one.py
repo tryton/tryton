@@ -281,7 +281,10 @@ class Many2One(Field):
                 if use_subquery:
                     expression = column.in_(query)
                 else:
-                    query.where &= target_id == column
+                    if query.where is None:
+                        query.where = target_id == column
+                    else:
+                        query.where &= target_id == column
                     expression = Exists(query)
                 if operator.startswith('not'):
                     return ~expression
