@@ -330,6 +330,25 @@ class StockTestCase(
 
             test_products_by_location()
 
+            with transaction.set_context(
+                    locations=[supplier.id, customer.id, storage.id]):
+                for domain, found in [
+                        ([('quantity', '=', 0)], True),
+                        ([('quantity', '>=', 0)], True),
+                        ([('quantity', '>', 0)], False),
+                        ([('quantity', '<=', 0)], True),
+                        ([('quantity', '<', 0)], False),
+                        ([('quantity', '!=', 0)], False),
+                        ([('quantity', 'in', [0])], True),
+                        ([('quantity', 'in', [1])], False),
+                        ([('quantity', 'not in', [0])], False),
+                        ([('quantity', 'not in', [1])], True),
+                        ]:
+                    with self.subTest(domain=domain):
+                        self.assertEqual(
+                            Product.search(domain),
+                            [product] if found else [])
+
             periods = [
                 today + relativedelta(days=-6),
                 today + relativedelta(days=-5),
