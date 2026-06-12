@@ -401,7 +401,7 @@ class AmendmentLine(ModelSQL, ModelView):
 
     @fields.depends(
         'party', 'invoice_party', 'invoice_address',
-        'shipment_party', 'warehouse')
+        'shipment_party', 'shipment_address', 'warehouse')
     def on_change_party(self):
         if not self.invoice_party:
             self.invoice_address = None
@@ -410,7 +410,7 @@ class AmendmentLine(ModelSQL, ModelView):
         if self.party:
             if not self.invoice_address:
                 self.invoice_address = self.party.address_get(type='invoice')
-            if not self.shipment_party:
+            if not self.shipment_address:
                 with Transaction().set_context(
                         warehouse=(
                             self.warehouse.id if self.warehouse else None)):
