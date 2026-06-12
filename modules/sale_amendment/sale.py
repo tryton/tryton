@@ -399,7 +399,9 @@ class AmendmentLine(ModelSQL, ModelView):
             self.product = self.quantity = self.unit = self.unit_price = None
             self.description = None
 
-    @fields.depends('party', 'invoice_party', 'shipment_party', 'warehouse')
+    @fields.depends(
+        'party', 'invoice_party', 'invoice_address',
+        'shipment_party', 'warehouse')
     def on_change_party(self):
         if not self.invoice_party:
             self.invoice_address = None
