@@ -3783,15 +3783,18 @@ class InvoiceReport(Report):
                 invoice.invoice_report_cache)
         else:
             result = super()._execute(records, header, data, action)
-            if invoice.invoice_report_versioned:
-                format_, data = result
-                if isinstance(data, str):
-                    data = bytes(data, 'utf-8')
-                invoice.invoice_report_format = format_
-                invoice.invoice_report_cache = \
-                    Invoice.invoice_report_cache.cast(data)
-                invoice.save()
-            return result
+            return cls.store(invoice, *result)
+
+    @classmethod
+    def store(cls, invoice, format_, data):
+        if invoice.invoice_report_versioned:
+            if isinstance(data, str):
+                data = bytes(data, 'utf-8')
+            invoice.invoice_report_format = format_
+            invoice.invoice_report_cache = \
+                Invoice.invoice_report_cache.cast(data)
+            invoice.save()
+        return format_, data
 
     @classmethod
     def render(cls, *args, **kwargs):
