@@ -43,20 +43,22 @@
                 'params': [this.session.context]
             }, this.session).then(result => {
                 this.session_id = result[0];
-                this.start_state = this.state = result[1];
+                this.start_state = result[1];
                 this.end_state = result[2];
-                return this.process();
+                return this.process(this.start_state);
             }, () => {
                 this.destroy();
             });
             return this.__prm.promise();
         },
-        process: function() {
+        process: function(state) {
             if (this.__processing || this.__waiting_response) {
                 return jQuery.when();
             }
             this.__processing = true;
             var process = function() {
+                let current_state = this.state;
+                this.state = state;
                 if (this.state == this.end_state) {
                     return this.end();
                 }
@@ -121,6 +123,7 @@
                         this.state = this.end_state;
                         this.end();
                     }
+                    this.state = current_state;
                     this.__processing = false;
                 });
             };
@@ -158,8 +161,7 @@
                 return;
             }
             this.info_bar.clear();
-            this.state = definition.state;
-            this.process();
+            this.process(definition.state);
         },
         _get_button: function(definition) {
             var style = 'btn-default';
@@ -401,9 +403,6 @@
         hide: function() {
             this.dialog.modal('hide');
         },
-        state_changed: function() {
-            this.process();
-        }
     });
 
 }());

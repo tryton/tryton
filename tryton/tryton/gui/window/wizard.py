@@ -71,11 +71,10 @@ class Wizard(InfoBar):
                 self.destroy()
                 return
             self.session_id, self.start_state, self.end_state = result
-            self.state = self.start_state
-            self.process()
+            self.process(self.start_state)
         RPCExecute('wizard', action, 'create', callback=callback)
 
-    def process(self):
+    def process(self, state):
         from tryton.action import Action
         if self.__processing or self.__waiting_response:
             return
@@ -88,6 +87,7 @@ class Wizard(InfoBar):
                 }
         else:
             data = {}
+        current_state, self.state = self.state, state
 
         def callback(result):
             try:
@@ -98,6 +98,7 @@ class Wizard(InfoBar):
                         or not self.screen):
                     self.state = self.end_state
                     self.end()
+                self.state = current_state
                 self.__processing = False
                 return
 
@@ -179,8 +180,7 @@ class Wizard(InfoBar):
                 self.screen.invalid_message(), Gtk.MessageType.ERROR)
             return
         self.info_bar_clear()
-        self.state = state
-        self.process()
+        self.process(state)
 
     def _get_button(self, definition):
         button = Button(definition)
