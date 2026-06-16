@@ -2003,14 +2003,17 @@ class OpenJournal(Wizard):
                 ('period', '=', period.id),
                 ], limit=1)
         if not journal_periods:
-            journal_period, = JournalPeriod.create([{
-                        'journal': journal.id,
-                        'period': period.id,
-                        }])
+            with Transaction().new_transaction():
+                journal_period, = JournalPeriod.create([{
+                            'journal': journal.id,
+                            'period': period.id,
+                            }])
+                name = journal_period.rec_name
         else:
             journal_period, = journal_periods
+            name = journal_period.rec_name
 
-        action['name'] += ' (%s)' % journal_period.rec_name
+        action['name'] += ' (%s)' % name
         action['pyson_domain'] = PYSONEncoder().encode([
             ('journal', '=', journal.id),
             ('period', '=', period.id),
