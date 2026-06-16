@@ -212,6 +212,36 @@ class Sale(IdentifierMixin, metaclass=PoolMeta):
                         'endCursor': None,
                         },
                     },
+                'refundShippingLines(first: 10)': {
+                    'nodes': {
+                        'shippingLine': {
+                            'id': None,
+                            },
+                        },
+                    'pageInfo': {
+                        'hasNextPage': None,
+                        'endCursor': None,
+                        },
+                    },
+                'orderAdjustments(first: 10)': {
+                    'nodes': {
+                        'amountSet': {
+                            'presentmentMoney': {
+                                'amount': None,
+                                },
+                            },
+                        'taxAmountSet': {
+                            'presentmentMoney': {
+                                'amount': None,
+                                },
+                            },
+                        },
+                    },
+                'totalRefundedSet': {
+                    'presentmentMoney': {
+                        'amount': None,
+                        }
+                    },
                 },
             'lineItems(first: 100)': {
                 'nodes': Line.shopify_fields(),
@@ -268,6 +298,11 @@ class Sale(IdentifierMixin, metaclass=PoolMeta):
                     },
                 },
             'currentTotalPriceSet': {
+                'presentmentMoney': {
+                    'amount': None,
+                    },
+                },
+            'totalRefundedSet': {
                 'presentmentMoney': {
                     'amount': None,
                     },
@@ -372,6 +407,7 @@ class Sale(IdentifierMixin, metaclass=PoolMeta):
             setattr_changed(sale, 'contact', contact_mechanism)
 
         refund_line_items = defaultdict(list)
+        refunded_amount = Decimal(0)
         for refund in order['refunds']:
             shopify_refund_line_items = graphql.iterate(
                 QUERY_REFUND_CURSOR % {
@@ -386,6 +422,9 @@ class Sale(IdentifierMixin, metaclass=PoolMeta):
             for refund_line_item in shopify_refund_line_items:
                 line_item_id = gid2id(refund_line_item['lineItem']['id'])
                 refund_line_items[line_item_id].append(refund_line_item)
+            if refund['orderAdjustments']['nodes']:
+                refunded_amount += Decimal(
+                    refund['totalRefundedSet']['presentmentMoney']['amount'])
 
         line2warehouses = defaultdict(set)
         shopify_fulfillment_orders = graphql.iterate(
@@ -428,8 +467,15 @@ class Sale(IdentifierMixin, metaclass=PoolMeta):
             l.shopify_identifier: l for l in getattr(sale, 'lines', [])
             if l.shopify_identifier}
         shipping_lines = [
-            l for l in getattr(sale, 'lines', []) if not
-            l.shopify_identifier]
+            l for l in getattr(sale, 'lines', [])
+            if l.type == 'line'
+            and not l.shopify_identifier
+            and l.quantity > 0]
+        refund_lines = [
+            l for l in getattr(sale, 'lines', [])
+            if l.type == 'line'
+            and not l.shopify_identifier
+            and l.quantity < 0]
         lines = []
         shopify_line_items = graphql.iterate(
             QUERY_ORDER_CURSOR % {
@@ -478,6 +524,20 @@ class Sale(IdentifierMixin, metaclass=PoolMeta):
             else:
                 line.quantity = 0
             lines.append(line)
+
+        if refund_lines:
+            line = refund_lines[0]
+        else:
+            line = None
+        if refunded_amount or line:
+            line = Line.get_from_shopify_refund(
+                sale, refunded_amount, line=line)
+            lines.append(line)
+        if len(refund_lines) > 1:
+            for line in refund_lines[1:]:
+                line.quantity = 0
+                lines.append(line)
+
         for line in id2line.values():
             line.quantity = 0
             lines.append(line)
@@ -896,6 +956,27 @@ class Line(IdentifierMixin, metaclass=PoolMeta):
         return line
 
     def _set_shopify_shipping_product(self, sale, shipping_line):
+        pass
+
+    @classmethod
+    def get_from_shopify_refund(cls, sale, amount, line=None):
+        pool = Pool()
+        Tax = pool.get('account.tax')
+
+        if not line:
+            line = cls(type='line')
+            line.sale = sale
+            line.product = None
+        line._set_shopify_refund_product(sale)
+        setattr_changed(line, 'quantity', -1)
+        if line._changed_values:
+            line.on_change_product()
+        unit_price = round_price(Tax.reverse_compute(
+                amount, line.taxes, sale.sale_date))
+        setattr_changed(line, 'unit_price', unit_price)
+        return line
+
+    def _set_shopify_refund_product(self, sale):
         pass
 
     def _get_invoice_line_quantity(self):
