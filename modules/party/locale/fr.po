@@ -12,7 +12,7 @@ msgstr "Nom du bâtiment"
 
 msgctxt "field:party.address,building_number:"
 msgid "Building Number"
-msgstr "Nom du bâtiment"
+msgstr "Numéro de bâtiment"
 
 msgctxt "field:party.address,city:"
 msgid "City"
