@@ -871,8 +871,13 @@ class Shop(metaclass=PoolMeta):
         for sale, order in to_update.items():
             current_total_price = Decimal(
                 order['currentTotalPriceSet']['presentmentMoney']['amount'])
+            total_refunded = sum(
+                l.amount for l in sale.lines
+                if l.type == 'line'
+                and not l.shopify_identifier
+                and l.quantity < 0)
             sale.shopify_tax_adjustment = (
-                current_total_price - sale.total_amount)
+                current_total_price + total_refunded - sale.total_amount)
         Sale.save(to_update.keys())
         Sale.store_cache(to_update.keys())
         Amendment._clear_sale(to_update.keys())
