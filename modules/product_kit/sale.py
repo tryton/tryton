@@ -148,7 +148,7 @@ class LineComponent(
         pool = Pool()
         Uom = pool.get('product.uom')
 
-        if self.line.sale.shipment_method == 'order':
+        if self.line.sale.shipment_method in {'order', 'manual'}:
             return abs(self.quantity)
         elif self.line.sale.shipment_method == 'invoice':
             quantity = 0.0
