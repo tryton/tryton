@@ -89,7 +89,7 @@ Create submitted payment::
     >>> payment.kind = 'receivable'
     >>> payment.party = customer
     >>> # Use random amount to prevent gateway rejection for duplicate
-    >>> payment.amount = amount = Decimal(random.randint(0, 1999))
+    >>> payment.amount = amount = Decimal(random.randint(1, 1999))
     >>> payment.click('submit')
     >>> payment.state
     'submitted'
@@ -168,7 +168,7 @@ Make payment with customer::
 
     >>> payment, = payment.duplicate()
     >>> payment.braintree_customer = braintree_customer
-    >>> payment.amount = amount = Decimal(random.randint(0, 1999))
+    >>> payment.amount = amount = Decimal(random.randint(1, 1999))
     >>> payment.save()
     >>> _, method = Payment.get_braintree_customer_methods(payment.id, config.context)
     >>> method_token, _ = method
@@ -208,7 +208,7 @@ Create payment to settle::
     >>> payment, = payment.duplicate()
     >>> payment.braintree_customer = None
     >>> payment.braintree_settle_payment = False
-    >>> payment.amount = amount = Decimal(random.randint(0, 1999))
+    >>> payment.amount = amount = Decimal(random.randint(3, 1999))
     >>> payment.click('submit')
     >>> payment.state
     'submitted'
