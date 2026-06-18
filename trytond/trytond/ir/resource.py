@@ -81,13 +81,14 @@ class ResourceAccessMixin(ModelStorage):
     @classmethod
     def search(
             cls, domain, offset=0, limit=None, order=None, count=False,
-            query=False):
+            **kwargs):
         transaction = Transaction()
         enforce_access = (
-            not query and transaction.user and transaction.check_access)
+            not kwargs.get('query', False)
+            and transaction.user and transaction.check_access)
         result = super().search(
             domain, offset=offset, limit=limit, order=order,
-            count=False if enforce_access else count, query=query)
+            count=False if enforce_access else count, **kwargs)
         if not enforce_access:
             return result
 
@@ -121,7 +122,7 @@ class ResourceAccessMixin(ModelStorage):
             loop += 1
             result = super().search(
                 domain, offset=offset + loop * limit, limit=limit, order=order,
-                count=False, query=False)
+                count=False)
             if not result:
                 break
 
