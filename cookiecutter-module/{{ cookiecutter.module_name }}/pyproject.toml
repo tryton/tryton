@@ -68,7 +68,7 @@ dev-mode-dirs = ["."]
 
 [tool.hatch.build.targets.wheel.sources]
 {%- if cookiecutter.prefix %}
-"" = "{{ cookiecutter.module_name }}"
+"" = "{{ cookiecutter.package_name }}"
 {%- else %}
 "" = "trytond/modules/{{ cookiecutter.module_name }}"
 {%- endif %}
