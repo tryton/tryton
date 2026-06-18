@@ -133,8 +133,9 @@ class TrytondWSGI(object):
             return exceptions.ServiceUnavailable(description=str(e))
         except Exception as e:
             logger.exception("Exception when processing %s", request)
+            tb_s = ''.join(traceback.format_exception(*sys.exc_info()))
+            request.environ['wsgi.errors'].write(tb_s)
             if self.dev:
-                tb_s = ''.join(traceback.format_exception(*sys.exc_info()))
                 for path in sys.path:
                     tb_s = tb_s.replace(path, '')
                 e.__format_traceback__ = tb_s
