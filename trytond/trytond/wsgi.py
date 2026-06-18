@@ -164,9 +164,9 @@ class TrytondWSGI(object):
                 if isinstance(data, Exception):
                     try:
                         response = exceptions.InternalServerError(
-                            original_exception=data)
+                            str(data), original_exception=data)
                     except TypeError:
-                        response = exceptions.InternalServerError(data)
+                        response = exceptions.InternalServerError(str(data))
                 else:
                     response = Response(data)
         return response

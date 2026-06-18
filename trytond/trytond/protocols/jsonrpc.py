@@ -195,19 +195,19 @@ class JSONProtocol:
                 response['result'] = data
         else:
             if isinstance(data, UserWarning):
-                return Conflict(data)
+                return Conflict(str(data))
             elif isinstance(data, LoginException):
-                return Forbidden(data)
+                return Forbidden(str(data))
             elif isinstance(data, ConcurrencyException):
-                return Locked(data)
+                return Locked(str(data))
             elif isinstance(data, RateLimitException):
-                return TooManyRequests(data)
+                return TooManyRequests(str(data))
             elif isinstance(data, MissingDependenciesException):
-                return InternalServerError(data)
+                return InternalServerError(str(data))
             elif isinstance(data, TrytonException):
-                return BadRequest(data)
+                return BadRequest(str(data))
             elif isinstance(data, Exception):
-                return InternalServerError(data)
+                return InternalServerError(str(data))
             response = data
         headers = {}
 
