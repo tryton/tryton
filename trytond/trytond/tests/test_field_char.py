@@ -3,7 +3,7 @@
 # this repository contains the full copyright notices and license terms.
 import unittest
 
-from sql import Literal
+from sql import Literal, Select
 
 from trytond import backend
 from trytond.model.exceptions import (
@@ -55,9 +55,17 @@ class CommonTestCaseMixin:
         chars_bar = Char.search([
                 ('char', '=', "Bar"),
                 ])
+        chars_select_foo = Char.search([
+                ('char', '=', Select([Literal('Foo')])),
+                ])
+        chars_select_bar = Char.search([
+                ('char', '=', Select([Literal('Bar')])),
+                ])
 
         self.assertListEqual(chars_foo, [char])
         self.assertListEqual(chars_bar, [])
+        self.assertListEqual(chars_select_foo, [char])
+        self.assertListEqual(chars_select_bar, [])
 
     @with_transaction()
     def test_search_equals_none(self):
@@ -178,10 +186,18 @@ class CommonTestCaseMixin:
         chars_empty = Char.search([
                 ('char', 'in', []),
                 ])
+        chars_select_foo = Char.search([
+                ('char', 'in', Select([Literal('Foo')])),
+                ])
+        chars_select_bar = Char.search([
+                ('char', 'in', Select([Literal('Bar')])),
+                ])
 
         self.assertListEqual(chars_foo, [char])
         self.assertListEqual(chars_bar, [])
         self.assertListEqual(chars_empty, [])
+        self.assertListEqual(chars_select_foo, [char])
+        self.assertListEqual(chars_select_bar, [])
 
     @with_transaction()
     def test_search_in_none(self):
