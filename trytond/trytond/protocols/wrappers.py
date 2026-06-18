@@ -304,21 +304,7 @@ def with_pool(func):
             with Transaction().start(database_name, 0, readonly=True):
                 pool.init()
 
-        try:
-            result = func(request, pool, *args, **kwargs)
-        except (UserError, UserWarning) as e:
-            if request.rpc_method:
-                raise
-            else:
-                abort(HTTPStatus.BAD_REQUEST, e)
-        except exceptions.HTTPException:
-            raise
-        except Exception as e:
-            if request.rpc_method:
-                raise
-            else:
-                abort(HTTPStatus.INTERNAL_SERVER_ERROR, e)
-        return result
+        return func(request, pool, *args, **kwargs)
     return wrapper
 
 
