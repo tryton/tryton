@@ -7,7 +7,7 @@ from trytond.model import fields
 from trytond.modules.product import round_price
 from trytond.modules.stock.exceptions import MoveValidationError
 from trytond.pool import Pool, PoolMeta
-from trytond.pyson import Bool, Eval
+from trytond.pyson import Eval
 from trytond.transaction import Transaction
 
 
@@ -46,7 +46,6 @@ class Location(metaclass=PoolMeta):
         states={
             'invisible': (
                 (Eval('type') != 'storage')
-                | Bool(Eval('warehouse'))
                 | (Eval('id', -1) < 0)),
             })
 

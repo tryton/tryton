@@ -89,7 +89,7 @@ Concurrently move pallet::
 
 Add lead time between warehouses::
 
-    >>> warehouse1 = storage_loc.warehouse
+    >>> warehouse1, = Location.find([('type', '=', 'warehouse')])
     >>> warehouse2, = warehouse1.duplicate()
 
     >>> LeadTime = Model.get('stock.location.lead_time')
