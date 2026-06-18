@@ -8,7 +8,7 @@ from functools import partial
 from urllib.parse import unquote, urlparse
 
 from tryton.common import (
-    RPCException, RPCExecute, file_open, file_write, url_open)
+    MODELACCESS, RPCException, RPCExecute, file_open, file_write, url_open)
 from tryton.gui.window.view_form.screen import Screen
 from tryton.gui.window.win_form import WinForm
 
@@ -21,10 +21,13 @@ class Attachment(WinForm):
     def __init__(self, record, callback=None):
         self.resource = '%s,%s' % (record.model_name, record.id)
         self.attachment_callback = callback
+        access = MODELACCESS[record.model_name]
         title = _('Attachments (%s)') % (record.rec_name())
         screen = Screen('ir.attachment', domain=[
             ('resource', '=', self.resource),
-            ], mode=['tree', 'form'])
+            ],
+            mode=['tree', 'form'],
+            readonly=not access['write'])
         super().__init__(screen, self.callback,
             view_type='tree', title=title)
         screen.search_filter()

@@ -1189,6 +1189,7 @@
             var record = this.screen.current_record;
             var menu = dropdown.find('.dropdown-menu');
             menu.empty();
+            let access = Sao.common.MODELACCESS.get(this.screen.model_name);
             return Sao.Window.Attachment.get_attachments(record)
                 .then(function(attachments) {
                     attachments.forEach(function(value) {
@@ -1215,25 +1216,27 @@
                     menu.append(jQuery('<li/>', {
                         'class': 'divider',
                     }));
-                    menu.append(jQuery('<li/>', {
-                        'role': 'presentation',
-                        'class': 'input-file',
-                    }).append(jQuery('<input/>', {
-                        'type': 'file',
-                        'role': 'menuitem',
-                        'multiple': true,
-                        'tabindex': -1,
-                    }).change(function() {
-                        var attachment = window_();
-                        Sao.common.get_input_data(
-                            jQuery(this), function(data, filename) {
-                                attachment.add_data(data, filename);
-                            });
-                    })).append(jQuery('<a/>', {
-                        'role': 'menuitem',
-                        'href': '#',
-                        'tabindex': -1,
-                    }).text(Sao.i18n.gettext('Add...'))));
+                    if (access.write) {
+                        menu.append(jQuery('<li/>', {
+                            'role': 'presentation',
+                            'class': 'input-file',
+                        }).append(jQuery('<input/>', {
+                            'type': 'file',
+                            'role': 'menuitem',
+                            'multiple': true,
+                            'tabindex': -1,
+                        }).change(function() {
+                            var attachment = window_();
+                            Sao.common.get_input_data(
+                                jQuery(this), function(data, filename) {
+                                    attachment.add_data(data, filename);
+                                });
+                        })).append(jQuery('<a/>', {
+                            'role': 'menuitem',
+                            'href': '#',
+                            'tabindex': -1,
+                        }).text(Sao.i18n.gettext('Add...'))));
+                    }
                     menu.append(jQuery('<li/>', {
                         'role': 'presentation',
                     }).append(jQuery('<a/>', {

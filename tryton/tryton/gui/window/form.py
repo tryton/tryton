@@ -166,6 +166,7 @@ class Form(TabContent):
         def activate(widget, callback):
             callback()
 
+        access = common.MODELACCESS[self.model]
         button = self.buttons['attach']
         if widget != button:
             if button.props.sensitive:
@@ -178,9 +179,10 @@ class Form(TabContent):
             item.connect('activate', activate, callback)
             menu.add(item)
         menu.add(Gtk.SeparatorMenuItem())
-        add_item = Gtk.MenuItem(label=_("Add..."))
-        add_item.connect('activate', add_file)
-        menu.add(add_item)
+        if access['write']:
+            add_item = Gtk.MenuItem(label=_("Add..."))
+            add_item.connect('activate', add_file)
+            menu.add(add_item)
         preview_item = Gtk.CheckMenuItem(label=_("Preview"))
         preview_item.set_active(bool(
                 self.attachment_preview.get_children()))

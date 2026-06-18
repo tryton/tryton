@@ -668,10 +668,12 @@
             this.resource = record.model.name + ',' + record.id;
             this.attachment_callback = callback;
             var context = jQuery.extend({}, record.get_context());
+            let access = Sao.common.MODELACCESS.get(record.model.name);
             var screen = new Sao.Screen('ir.attachment', {
                 domain: [['resource', '=', this.resource]],
                 mode: ['tree', 'form'],
                 context: context,
+                readonly: !access.write,
             });
             var title = record.rec_name().then(function(rec_name) {
                 return Sao.i18n.gettext('Attachments (%1)', rec_name);
