@@ -3,7 +3,7 @@
 import string
 import warnings
 
-from sql import Expression, Query
+from sql import CombiningQuery, Expression, Query, Select
 from sql.conditionals import Coalesce, NullIf
 from sql.functions import Trim
 from sql.operators import Not
@@ -121,10 +121,11 @@ class Char(FieldTranslate):
         return column
 
     def _domain_value(self, operator, value):
-        if operator in {'in', 'not in'}:
-            value = [v if v is not None else '' for v in value]
-        elif value is None:
-            value = ''
+        if not isinstance(value, (Select, CombiningQuery)):
+            if operator in {'in', 'not in'}:
+                value = [v if v is not None else '' for v in value]
+            elif value is None:
+                value = ''
         value = super()._domain_value(operator, value)
         if self.search_unaccented and operator.endswith('ilike'):
             database = Transaction().database
