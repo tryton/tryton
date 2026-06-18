@@ -1400,7 +1400,7 @@ class Line(DescriptionOriginMixin, MoveLineMixin, ModelSQL, ModelView):
 
     @classmethod
     def validate_fields(cls, lines, field_names):
-        super().validate(lines)
+        super().validate_fields(lines, field_names)
         cls.check_account(lines, field_names)
 
     @classmethod
