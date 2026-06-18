@@ -298,13 +298,15 @@ class ContactMechanism(
 
     @classmethod
     def search_rec_name(cls, name, clause):
-        if clause[1].startswith('!') or clause[1].startswith('not '):
+        operator = clause[1]
+        if operator.startswith('!') or operator.startswith('not '):
             bool_op = 'AND'
         else:
             bool_op = 'OR'
         return [bool_op,
-            ('value',) + tuple(clause[1:]),
-            ('value_compact',) + tuple(clause[1:]),
+            ('value', *clause[1:]),
+            ('value_compact', *clause[1:]),
+            ('name', *clause[1:]),
             ]
 
     def compute_fields(self, field_names=None):
