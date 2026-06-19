@@ -5,6 +5,22 @@ Design
 The *Project Module* introduces some new concepts and extends some existing
 concepts:
 
+.. _model-project.configuration:
+
+Configuration
+=============
+
+The *Project Configuration* contains the settings used to configure the
+behavior for project related activities.
+
+.. seealso::
+
+   Project configuration settings are found by opening the main menu item:
+      |Projects --> Configuration --> Configuration|__
+
+      .. |Projects --> Configuration --> Configuration| replace:: :menuselection:`Projects --> Configuration --> Configuration`
+      __ https://demo.tryton.org/model/project.configuration/1
+
 .. _model-project.work:
 
 Work Effort
