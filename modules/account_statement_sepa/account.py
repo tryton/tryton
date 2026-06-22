@@ -80,7 +80,8 @@ class StatementImport(metaclass=PoolMeta):
         return statement
 
     def _camt_amount(self, entry, detail=None):
-        if detail is not None:
+        if (detail is not None
+                and detail.find('./{*}AmtDtls/{*}TxAmt/{*}Amt') is not None):
             amount = Decimal(detail.findtext('./{*}AmtDtls/{*}TxAmt/{*}Amt'))
         else:
             amount = Decimal(entry.findtext('./{*}Amt'))
