@@ -17,7 +17,8 @@ import trytond.config as config
 from trytond.i18n import gettext
 from trytond.ir.session import token_hex
 from trytond.model import (
-    DeactivableMixin, Index, ModelSQL, ModelView, Unique, Workflow, fields)
+    DeactivableMixin, Index, ModelAccessProxy, ModelSQL, ModelView, Unique,
+    Workflow, fields)
 from trytond.pool import Pool
 from trytond.pyson import Eval
 from trytond.report import Report, get_email, html_to_text, mjml_to_html
@@ -427,6 +428,7 @@ class Message(Workflow, ModelSQL, ModelView):
     def process(cls, messages=None, emails=None, smtpd_datamanager=None):
         pool = Pool()
         WebShortener = pool.get('web.shortened_url')
+        ModelData = pool.get('ir.model.data')
         spy_pixel = config.getboolean(
             'marketing', 'email_spy_pixel', default=False)
 
@@ -480,6 +482,11 @@ class Message(Workflow, ModelSQL, ModelView):
                         message=message.rec_name,
                         exception=exception)) from exception
             for email in (emails or message.list_.emails):
+                email = ModelAccessProxy(
+                    email, {
+                        '_groups': [
+                            ModelData.get_id('marketing.group_marketing')],
+                        })
                 content = (template
                     .generate(
                         email=email,

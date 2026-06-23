@@ -1,3 +1,4 @@
+* Enforce access rights on the email template record (issue14907)
 
 Version 8.0.0 - 2026-04-20
 --------------------------
