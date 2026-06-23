@@ -148,6 +148,7 @@ class Report(URLMixin, PoolBase):
         User = pool.get('res.user')
         Group = pool.get('res.group')
         ModelAccess = pool.get('ir.model.access')
+        Rule = pool.get('ir.rule')
 
         if Transaction().user == 0:
             return
@@ -166,10 +167,8 @@ class Report(URLMixin, PoolBase):
                         groups=', '.join(g.rec_name for g in groups)))
 
             if model:
-                Model = pool.get(model)
                 ModelAccess.check(model, 'read')
-                # Check read access
-                Model.read(ids, ['id'])
+                Rule.check(model, ids)
 
     @classmethod
     def header_key(cls, record, data):

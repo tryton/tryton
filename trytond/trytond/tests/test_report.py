@@ -1,6 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import datetime
+import json
 import unittest
 from email.message import EmailMessage
 from unittest.mock import Mock, patch
@@ -89,9 +90,23 @@ class ReportTestCase(TestCase):
         "Execute report without read access"
         pool = Pool()
         Report = pool.get('test.test_report', type='report')
+        Model = pool.get('test.access')
+        RuleGroup = pool.get('ir.rule.group')
+
+        record, = Model.create([{'field1': 'foo'}])
+        rule_group, = RuleGroup.create([{
+                    'name': "Field different from foo",
+                    'model': Model.__name__,
+                    'global_p': True,
+                    'perm_read': True,
+                    'rules': [('create', [{
+                                    'domain': json.dumps(
+                                        [('field1', '!=', 'foo')]),
+                                    }])],
+                    }])
 
         with self.assertRaises(AccessError):
-            Report.execute([1], {'model': 'test.access'})
+            Report.execute([record.id], {'model': 'test.access'})
 
     @unittest.skipUnless(mrml, "required mrml")
     @with_transaction()
