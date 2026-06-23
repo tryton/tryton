@@ -20,8 +20,8 @@ from sql.aggregate import Count
 import trytond.config as config
 from trytond.i18n import gettext
 from trytond.model import (
-    EvalEnvironment, Index, ModelSQL, ModelView, Unique, Workflow, dualmethod,
-    fields)
+    EvalEnvironment, Index, ModelAccessProxy, ModelSQL, ModelView, Unique,
+    Workflow, dualmethod, fields)
 from trytond.pool import Pool
 from trytond.pyson import Eval, If, PYSONDecoder, TimeDelta
 from trytond.report import Report, html_to_text, mjml_to_html
@@ -728,8 +728,10 @@ class Activity(
             email.save()
 
     def email_context(self, record):
+        record = ModelAccessProxy(
+            record.record, record.record.marketing_access_context)
         return {
-            'record': record.record,
+            'record': record,
             'format_date': Report.format_date,
             'format_datetime': Report.format_datetime,
             'format_timedelta': Report.format_timedelta,
