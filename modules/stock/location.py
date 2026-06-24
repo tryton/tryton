@@ -5,6 +5,7 @@ import operator
 from decimal import Decimal
 
 from sql import Column
+from sql.conditionals import Coalesce
 
 from trytond.cache import Cache
 from trytond.i18n import gettext
@@ -195,7 +196,7 @@ class Location(DeactivableMixin, tree(), ModelSQL, ModelView):
         super().__setup__()
         t = cls.__table__()
         cls._sql_indexes.update({
-                Index(t, (t.code, Index.Similarity())),
+                Index(t, (Coalesce(t.code, ''), Index.Similarity())),
                 Index(
                     t,
                     (t.left, Index.Range(cardinality='high')),

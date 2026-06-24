@@ -844,7 +844,7 @@ class ViewTreeState(
                 table,
                 (table.user, Index.Range()),
                 (table.model, Index.Equality()),
-                (table.child_name, Index.Equality()),
+                (Coalesce(table.child_name, ''), Index.Equality()),
                 (table.domain, Index.Equality())))
 
     @staticmethod

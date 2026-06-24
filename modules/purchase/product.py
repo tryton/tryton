@@ -335,7 +335,7 @@ class ProductSupplier(
         super().__setup__()
         t = cls.__table__()
         cls._sql_indexes.update({
-                Index(t, (t.code, Index.Similarity())),
+                Index(t, (Coalesce(t.code, ''), Index.Similarity())),
                 })
 
     @staticmethod

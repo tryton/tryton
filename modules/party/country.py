@@ -1,6 +1,8 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 
+from sql.conditionals import Coalesce
+
 from trytond.model import Index
 from trytond.pool import PoolMeta
 
@@ -15,7 +17,8 @@ class PostalCode(metaclass=PoolMeta):
         cls._sql_indexes.update({
                 Index(
                     t,
-                    (Index.Unaccent(t.city), Index.Similarity()),
+                    (Index.Unaccent(Coalesce(t.city, '')),
+                        Index.Similarity()),
                     (t.country, Index.Range()),
                     (t.subdivision, Index.Range())),
                 })
