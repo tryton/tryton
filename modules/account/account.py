@@ -527,6 +527,7 @@ def AccountMixin(template=False):
 
         @classmethod
         def __setup__(cls):
+            cls.code.search_unaccented = False
             super().__setup__()
 
             if not cls.childs.domain:
@@ -964,11 +965,17 @@ class Account(
             ('only_one_debit_credit_types', Check(
                     table, (table.debit_type + table.credit_type) == Null),
                 'account.msg_only_one_debit_credit_types'))
-        cls._sql_indexes.add(
-            Index(
-                table,
-                (table.left, Index.Range(cardinality='high')),
-                (table.right, Index.Range(cardinality='high'))))
+        cls._sql_indexes.update({
+                Index(table,
+                    (Coalesce(table.code, ''),
+                        Index.Equality(cardinality='high'))),
+                Index(table,
+                    (Coalesce(table.code, ''),
+                        Index.Similarity(cardinality='high'))),
+                Index(
+                    table,
+                    (table.left, Index.Range(cardinality='high')),
+                    (table.right, Index.Range(cardinality='high')))})
 
     @classmethod
     def validate_fields(cls, accounts, field_names):
