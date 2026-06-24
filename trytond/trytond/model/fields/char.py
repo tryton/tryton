@@ -114,7 +114,8 @@ class Char(FieldTranslate):
 
     def _domain_column(self, operator, column):
         column = super()._domain_column(operator, column)
-        column = Coalesce(column, '')
+        if not self.required:
+            column = Coalesce(column, '')
         if self.search_unaccented and operator.endswith('ilike'):
             database = Transaction().database
             column = database.unaccent(column)
