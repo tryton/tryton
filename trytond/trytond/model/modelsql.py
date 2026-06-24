@@ -349,7 +349,9 @@ class ModelSQL(ModelStorage):
             rec_name_field = getattr(cls, cls._rec_name, None)
             if (isinstance(rec_name_field, fields.Field)
                     and not hasattr(rec_name_field, 'set')):
-                column = Coalesce(Column(table, cls._rec_name), '')
+                column = Column(table, cls._rec_name)
+                if not rec_name_field.required:
+                    column = Coalesce(column, '')
                 if getattr(rec_name_field, 'search_unaccented', False):
                     column = Index.Unaccent(column)
                 cls._sql_indexes.add(
