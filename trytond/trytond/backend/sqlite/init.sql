@@ -83,6 +83,8 @@ CREATE TABLE ir_lang (
     direction VARCHAR NOT NULL
 );
 
+INSERT INTO ir_lang (name, code, translatable, active, direction) VALUES ('English', 'en', False, True, 'ltr');
+
 CREATE TABLE res_user (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     name VARCHAR,

@@ -566,8 +566,8 @@ class TrytondXmlHandler(sax.handler.ContentHandler):
                     field_names=(),
                     noupdate=self.noupdate,
                     )
+                mdata.save()
                 self.fs2db.set(module, fs_id, mdata)
-                self.grouped_model_data.add(mdata)
                 exists = True
 
         if exists:
