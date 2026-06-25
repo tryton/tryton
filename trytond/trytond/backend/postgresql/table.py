@@ -384,12 +384,21 @@ class TableHandler(TableHandlerInterface):
                 elif from_size and from_size < field_size:
                     self.alter_size(column_name, column_type[1])
                 else:
-                    logger.warning(
-                        'Unable to migrate column %s on table %s '
-                        'from varchar(%s) to varchar(%s).',
-                        column_name, self.table_name,
-                        from_size if from_size and from_size > 0 else "",
-                        field_size)
+                    cursor.execute(SQL(
+                            'SELECT id FROM {} '
+                            'WHERE CHAR_LENGTH({}) > %s LIMIT 1').format(
+                            Identifier(self.table_name),
+                            Identifier(column_name)),
+                        (field_size,))
+                    if not cursor.rowcount:
+                        self.alter_size(column_name, column_type[1])
+                    else:
+                        logger.warning(
+                            'Unable to migrate column %s on table %s '
+                            'from varchar(%s) to varchar(%s).',
+                            column_name, self.table_name,
+                            from_size if from_size and from_size > 0 else "",
+                            field_size)
             return
 
         column_type = column_type[1]

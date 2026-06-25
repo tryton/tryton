@@ -200,6 +200,7 @@ class TableHandler(TableHandlerInterface):
 
     def _add_raw_column(
             self, column_name, column_type, default=None, field_size=None):
+        cursor = Transaction().connection.cursor()
         if self.column_exist(column_name):
             base_type = column_type[0].upper()
             if base_type != self._columns[column_name]['typname']:
@@ -231,12 +232,20 @@ class TableHandler(TableHandlerInterface):
                 elif from_size and from_size < field_size:
                     self.alter_size(column_name, column_type[1])
                 else:
-                    logger.warning(
-                        'Unable to migrate column %s on table %s '
-                        'from varchar(%s) to varchar(%s).',
-                        column_name, self.table_name,
-                        from_size if from_size and from_size > 0 else "",
-                        field_size)
+                    cursor.execute(
+                        'SELECT id FROM %s WHERE LENGTH(%s) > %%s LIMIT 1' % (
+                            _escape_identifier(self.table_name),
+                            _escape_identifier(column_name)),
+                        (field_size,))
+                    if not cursor.fetchone():
+                        self.alter_size(column_name, column_type[1])
+                    else:
+                        logger.warning(
+                            'Unable to migrate column %s on table %s '
+                            'from varchar(%s) to varchar(%s).',
+                            column_name, self.table_name,
+                            from_size if from_size and from_size > 0 else "",
+                            field_size)
             return
 
         cursor = Transaction().connection.cursor()
