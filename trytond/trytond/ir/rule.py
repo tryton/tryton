@@ -11,7 +11,8 @@ from trytond.model.exceptions import AccessError, ValidationError
 from trytond.pool import Pool
 from trytond.pyson import Eval, If, PYSONDecoder
 from trytond.tools import grouped_slice
-from trytond.transaction import Transaction, inactive_records
+from trytond.transaction import (
+    Transaction, inactive_records, without_check_access)
 
 
 class DomainError(ValidationError):
@@ -240,9 +241,6 @@ class Rule(ModelSQL, ModelView):
         model_names = list(model_names)
 
         cursor = transaction.connection.cursor()
-        # root user above constraint
-        if transaction.user == 0:
-            return {}, {}
         cursor.execute(*rule_table.join(rule_group,
                 condition=rule_group.id == rule_table.rule_group
                 ).join(rule_group_group, 'LEFT',
@@ -267,8 +265,8 @@ class Rule(ModelSQL, ModelView):
 
         clause = defaultdict(lambda: ['OR'])
         clause_global = defaultdict(lambda: ['OR'])
-        # Use root user without context to prevent recursion
-        with transaction.set_user(0), transaction.set_context(user=0):
+        # Without check access to prevent recursion
+        with without_check_access():
             rules = cls.browse(ids)
         for rule in rules:
             decoder = PYSONDecoder(
@@ -296,9 +294,8 @@ class Rule(ModelSQL, ModelView):
     @classmethod
     def domain_get(cls, model_name, mode='read'):
         pool = Pool()
-        transaction = Transaction()
-        # root user above constraint
-        if transaction.user == 0 or not transaction.check_access:
+
+        if not Transaction().check_access:
             return []
 
         assert mode in cls.modes
@@ -349,7 +346,9 @@ class Rule(ModelSQL, ModelView):
         def test_domain(ids, domain):
             wrong_ids = []
             # Use root to prevent infinite recursion
-            with transaction.set_user(0, set_context=True), inactive_records():
+            with transaction.set_user(0, set_context=True), \
+                    inactive_records(), \
+                    without_check_access():
                 for sub_ids in grouped_slice(ids):
                     sub_ids = list(sub_ids)
                     records = Model.search([
@@ -361,6 +360,8 @@ class Rule(ModelSQL, ModelView):
             return wrong_ids
 
         domain = cls.domain_get(model_name, mode=mode)
+        if not domain:
+            return
         forbidden = test_domain(ids, domain)
         if forbidden:
             ids = ', '.join(map(str, forbidden[:5]))

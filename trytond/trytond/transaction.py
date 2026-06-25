@@ -437,7 +437,9 @@ class Transaction(object):
 
     @property
     def check_access(self):
-        return self.context.get('_check_access', False)
+        return (
+            self.context.get('_check_access', False)
+            and self.user != 0)
 
     @property
     def active_records(self):
