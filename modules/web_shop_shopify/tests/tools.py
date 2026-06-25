@@ -1,11 +1,25 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 
+import time
+from functools import wraps
+
 from shopify_app import admin_graphql_request
 
 from trytond.modules.web_shop_shopify import SHOPIFY_VERSION
 from trytond.modules.web_shop_shopify.common import id2gid
 from trytond.modules.web_shop_shopify.exceptions import GraphQLException
+
+
+def retry(func):
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+        for _ in range(10):
+            try:
+                return func(*args, **kwargs)
+            except Exception:
+                time.sleep(1)
+    return wrapper
 
 
 def shopify_request(shop, query, variables=None, user_errors=None):
@@ -76,6 +90,7 @@ def get_product(shop, id):
             }).data['product']
 
 
+@retry
 def delete_product(shop, id):
     shopify_request(shop, '''mutation productDelete($id: ID!) {
         productDelete(input: {id: $id}) {
@@ -90,6 +105,7 @@ def delete_product(shop, id):
         user_errors='productDelete.userErrors')
 
 
+@retry
 def delete_collection(shop, id):
     shopify_request(shop, '''mutation collectionDelete($id: ID!) {
         collectionDelete(input: {id: $id}) {
@@ -104,6 +120,7 @@ def delete_collection(shop, id):
         user_errors='collectionDelete.userErrors')
 
 
+@retry
 def create_customer(shop, customer):
     return shopify_request(shop, '''mutation customerCreate(
     $input: CustomerInput!) {
@@ -123,6 +140,7 @@ def create_customer(shop, customer):
         ).data['customerCreate']['customer']
 
 
+@retry
 def delete_customer(shop, id):
     shopify_request(shop, '''mutation customerDelete($id: ID!) {
         customerDelete(input: {id: $id}) {
@@ -137,6 +155,7 @@ def delete_customer(shop, id):
         user_errors='customerDelete.userErrors')
 
 
+@retry
 def create_order(shop, order):
     return shopify_request(shop, '''mutation orderCreate(
     $order: OrderCreateOrderInput!) {
@@ -201,6 +220,7 @@ def get_order(shop, id):
             }).data['order']
 
 
+@retry
 def capture_order(shop, id, amount, parent_transaction_id):
     return shopify_request(shop, '''mutation orderCapture(
     $input: OrderCaptureInput!) {
@@ -224,6 +244,7 @@ def capture_order(shop, id, amount, parent_transaction_id):
         ).data['orderCapture']['transaction']
 
 
+@retry
 def delete_order(shop, id):
     shopify_request(shop, '''mutation orderDelete($orderId: ID!) {
         orderDelete(orderId: $orderId) {
