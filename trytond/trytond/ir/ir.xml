@@ -6,7 +6,7 @@ this repository contains the full copyright notices and license terms. -->
         <!--
         lang_en is defined here to be in translation lang selection
         -->
-        <record model="ir.lang" id="lang_en">
+        <record model="ir.lang" id="lang_en" search="[('code', '=', 'en')]">
             <field name="code">en</field>
             <field name="name">English</field>
             <field name="nplurals" eval="2"/>

@@ -10,7 +10,7 @@ this repository contains the full copyright notices and license terms. -->
             id="menu_localization"/>
     </data>
     <data grouped="1" noupdate="1">
-         <record model="ir.lang" id="lang_bg">
+         <record model="ir.lang" id="lang_bg" search="[('code', '=', 'bg')]">
             <field name="code">bg</field>
             <field name="name">Bulgarian</field>
             <field name="nplurals" eval="2"/>
@@ -33,7 +33,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="p_sep_by_space" eval="True"/>
             <field name="n_sep_by_space" eval="True"/>
         </record>
-        <record model="ir.lang" id="lang_ca">
+        <record model="ir.lang" id="lang_ca" search="[('code', '=', 'ca')]">
             <field name="code">ca</field>
             <field name="name">Català</field>
             <field name="nplurals" eval="2"/>
@@ -56,7 +56,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="p_sep_by_space" eval="True"/>
             <field name="n_sep_by_space" eval="True"/>
         </record>
-        <record model="ir.lang" id="lang_cs">
+        <record model="ir.lang" id="lang_cs" search="[('code', '=', 'cs')]">
             <field name="code">cs</field>
             <field name="name">Czech</field>
             <field name="nplurals" eval="3"/>
@@ -79,7 +79,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="p_sep_by_space" eval="True"/>
             <field name="n_sep_by_space" eval="True"/>
         </record>
-        <record model="ir.lang" id="lang_de">
+        <record model="ir.lang" id="lang_de" search="[('code', '=', 'de')]">
             <field name="code">de</field>
             <field name="name">German</field>
             <field name="nplurals" eval="2"/>
@@ -105,7 +105,7 @@ this repository contains the full copyright notices and license terms. -->
         <!--
         lang_en is defined in ir.xml
         -->
-        <record model="ir.lang" id="lang_es">
+        <record model="ir.lang" id="lang_es" search="[('code', '=', 'es')]">
             <field name="code">es</field>
             <field name="name">Spanish</field>
             <field name="nplurals" eval="2"/>
@@ -128,7 +128,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="p_sep_by_space" eval="True"/>
             <field name="n_sep_by_space" eval="True"/>
         </record>
-        <record model="ir.lang" id="lang_es_419">
+        <record model="ir.lang" id="lang_es_419" search="[('code', '=', 'es_419')]">
             <field name="code">es_419</field>
             <field name="name">Spanish (Latin American)</field>
             <field name="nplurals" eval="2"/>
@@ -151,7 +151,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="p_sep_by_space" eval="True"/>
             <field name="n_sep_by_space" eval="True"/>
         </record>
-        <record model="ir.lang" id="lang_et">
+        <record model="ir.lang" id="lang_et" search="[('code', '=', 'et')]">
             <field name="code">et</field>
             <field name="name">Estonian</field>
             <field name="nplurals" eval="2"/>
@@ -172,7 +172,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="p_sep_by_space" eval="True"/>
             <field name="n_sep_by_space" eval="True"/>
         </record>
-        <record model="ir.lang" id="lang_fa">
+        <record model="ir.lang" id="lang_fa" search="[('code', '=', 'fa')]">
             <field name="code">fa</field>
             <field name="name">Persian</field>
             <field name="nplurals" eval="2"/>
@@ -196,7 +196,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="p_sep_by_space" eval="True"/>
             <field name="n_sep_by_space" eval="True"/>
         </record>
-        <record model="ir.lang" id="lang_fi">
+        <record model="ir.lang" id="lang_fi" search="[('code', '=', 'fi')]">
             <field name="code">fi</field>
             <field name="name">Finnish</field>
             <field name="nplurals" eval="2"/>
@@ -217,7 +217,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="p_sep_by_space" eval="True"/>
             <field name="n_sep_by_space" eval="True"/>
         </record>
-        <record model="ir.lang" id="lang_fr">
+        <record model="ir.lang" id="lang_fr" search="[('code', '=', 'fr')]">
             <field name="code">fr</field>
             <field name="name">French</field>
             <field name="nplurals" eval="2"/>
@@ -240,7 +240,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="p_sep_by_space" eval="True"/>
             <field name="n_sep_by_space" eval="True"/>
         </record>
-        <record model="ir.lang" id="lang_hu">
+        <record model="ir.lang" id="lang_hu" search="[('code', '=', 'hu')]">
             <field name="code">hu</field>
             <field name="name">Hungarian</field>
             <field name="nplurals" eval="2"/>
@@ -263,7 +263,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="p_sep_by_space" eval="True"/>
             <field name="n_sep_by_space" eval="True"/>
         </record>
-        <record model="ir.lang" id="lang_id">
+        <record model="ir.lang" id="lang_id" search="[('code', '=', 'id')]">
             <field name="code">id</field>
             <field name="name">Indonesian</field>
             <field name="nplurals" eval="1"/>
@@ -286,7 +286,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="p_sep_by_space" eval="False"/>
             <field name="n_sep_by_space" eval="False"/>
         </record>
-        <record model="ir.lang" id="lang_it">
+        <record model="ir.lang" id="lang_it" search="[('code', '=', 'it')]">
             <field name="code">it</field>
             <field name="name">Italian</field>
             <field name="nplurals" eval="2"/>
@@ -309,7 +309,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="p_sep_by_space" eval="True"/>
             <field name="n_sep_by_space" eval="True"/>
         </record>
-        <record model="ir.lang" id="lang_lo">
+        <record model="ir.lang" id="lang_lo" search="[('code', '=', 'lo')]">
             <field name="code">lo</field>
             <field name="name">Lao</field>
             <field name="nplurals" eval="1"/>
@@ -332,7 +332,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="p_sep_by_space" eval="True"/>
             <field name="n_sep_by_space" eval="True"/>
         </record>
-        <record model="ir.lang" id="lang_lt">
+        <record model="ir.lang" id="lang_lt" search="[('code', '=', 'lt')]">
             <field name="code">lt</field>
             <field name="name">Lithuanian</field>
             <field name="nplurals" eval="3"/>
@@ -355,7 +355,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="p_sep_by_space" eval="True"/>
             <field name="n_sep_by_space" eval="True"/>
         </record>
-        <record model="ir.lang" id="lang_nl">
+        <record model="ir.lang" id="lang_nl" search="[('code', '=', 'nl')]">
             <field name="code">nl</field>
             <field name="name">Dutch</field>
             <field name="nplurals" eval="2"/>
@@ -378,7 +378,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="p_sep_by_space" eval="True"/>
             <field name="n_sep_by_space" eval="True"/>
         </record>
-        <record model="ir.lang" id="lang_pl">
+        <record model="ir.lang" id="lang_pl" search="[('code', '=', 'pl')]">
             <field name="code">pl</field>
             <field name="name">Polish</field>
             <field name="nplurals" eval="3"/>
@@ -401,7 +401,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="p_sep_by_space" eval="True"/>
             <field name="n_sep_by_space" eval="True"/>
         </record>
-        <record model="ir.lang" id="lang_pt">
+        <record model="ir.lang" id="lang_pt" search="[('code', '=', 'pt')]">
             <field name="code">pt</field>
             <field name="name">Portuguese</field>
             <field name="nplurals" eval="2"/>
@@ -424,7 +424,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="p_sep_by_space" eval="True"/>
             <field name="n_sep_by_space" eval="True"/>
         </record>
-        <record model="ir.lang" id="lang_ro">
+        <record model="ir.lang" id="lang_ro" search="[('code', '=', 'ro')]">
             <field name="code">ro</field>
             <field name="name">Romanian</field>
             <field name="nplurals" eval="3"/>
@@ -447,7 +447,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="p_sep_by_space" eval="True"/>
             <field name="n_sep_by_space" eval="True"/>
         </record>
-        <record model="ir.lang" id="lang_ru">
+        <record model="ir.lang" id="lang_ru" search="[('code', '=', 'ru')]">
             <field name="code">ru</field>
             <field name="name">Russian</field>
             <field name="nplurals" eval="3"/>
@@ -470,7 +470,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="p_sep_by_space" eval="True"/>
             <field name="n_sep_by_space" eval="True"/>
         </record>
-        <record model="ir.lang" id="lang_sl">
+        <record model="ir.lang" id="lang_sl" search="[('code', '=', 'sl')]">
             <field name="code">sl</field>
             <field name="name">Slovenian</field>
             <field name="nplurals" eval="4"/>
@@ -493,7 +493,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="p_sep_by_space" eval="True"/>
             <field name="n_sep_by_space" eval="True"/>
         </record>
-        <record model="ir.lang" id="lang_tr">
+        <record model="ir.lang" id="lang_tr" search="[('code', '=', 'tr')]">
             <field name="code">tr</field>
             <field name="name">Turkish</field>
             <field name="nplurals" eval="2"/>
@@ -514,7 +514,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="p_sep_by_space" eval="True"/>
             <field name="n_sep_by_space" eval="True"/>
         </record>
-        <record model="ir.lang" id="lang_uk">
+        <record model="ir.lang" id="lang_uk" search="[('code', '=', 'uk')]">
             <field name="code">uk</field>
             <field name="name">Ukrainian</field>
             <field name="nplurals" eval="3"/>
@@ -535,7 +535,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="p_sep_by_space" eval="True"/>
             <field name="n_sep_by_space" eval="True"/>
         </record>
-        <record model="ir.lang" id="lang_zh_CN">
+        <record model="ir.lang" id="lang_zh_CN" search="[('code', '=', 'zh_CN')]">
             <field name="code">zh_CN</field>
             <field name="name">Chinese Simplified</field>
             <field name="nplurals" eval="1"/>

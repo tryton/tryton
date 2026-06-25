@@ -12,6 +12,7 @@ attlist.data &= attribute language { text }?
 record = element record { attlist.record, field* }
 attlist.record &= attribute model { text }
 attlist.record &= attribute id { text }
+attlist.record &= attribute search { text }?
 attlist.record &=
   [ a:defaultValue = "0" ] attribute update { "0" | "1" }?
 field = element field { attlist.field, text }

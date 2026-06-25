@@ -1,3 +1,4 @@
+* Add search attribute to XML record tag
 * Enforce access right on the email template record (issue14907)
 * Add ModelAccessProxy (issue14907)
 * Restrict Genshi evaluation (issue14869, issue5160)

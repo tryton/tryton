@@ -184,6 +184,9 @@ Here is the list of valid tags:
    database.
    The ``id`` attribute can be used to refer to the record later in any XML
    file.
+   The ``search`` attribute may be set as a domain which is used to search for
+   existing record instead of creating a new one when the ``id`` is not yet
+   known.
 
 ``field``
    Set the value of the field with the name defined by the attribute ``name``.

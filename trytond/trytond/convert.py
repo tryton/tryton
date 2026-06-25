@@ -190,6 +190,7 @@ class RecordTagHandler:
         self.xml_ids = []
         self.model = None
         self.xml_id = None
+        self.search_domain = None
         self.update = None
         self.values = None
         self.current_field = None
@@ -206,6 +207,7 @@ class RecordTagHandler:
             except KeyError:
                 self.xml_id = None
                 raise ParsingError("missing 'id' attribute")
+            self.search_domain = attributes.get('search', None)
 
             self.model = self.mh.pool.get(attributes["model"])
 
@@ -324,7 +326,8 @@ class RecordTagHandler:
             if self.xml_id in self.xml_ids and not self.update:
                 raise ParsingError("duplicate id: %s" % self.xml_id)
             self.mh.import_record(
-                self.model.__name__, self.values, self.xml_id)
+                self.model.__name__, self.values, self.xml_id,
+                self.search_domain)
             self.xml_ids.append(self.xml_id)
             return None
         else:
@@ -534,7 +537,7 @@ class TrytondXmlHandler(sax.handler.ContentHandler):
                 ], order=[('id', 'DESC')])
         return set(rec.fs_id for rec in module_data)
 
-    def import_record(self, model, values, fs_id):
+    def import_record(self, model, values, fs_id, domain=None):
         module = self.module
 
         if not fs_id:
@@ -549,7 +552,25 @@ class TrytondXmlHandler(sax.handler.ContentHandler):
         # This means that the corresponding record have been found.
         self.to_delete.discard(fs_id)
 
-        if self.fs2db.exists(module, fs_id):
+        exists = self.fs2db.exists(module, fs_id)
+        if not exists and domain:
+            Model = self.pool.get(model)
+            records = Model.search(eval(domain), limit=1)
+            if records:
+                record, = records
+                mdata = self.ModelData(
+                    fs_id=fs_id,
+                    model=model,
+                    module=module,
+                    db_id=record.id,
+                    field_names=(),
+                    noupdate=self.noupdate,
+                    )
+                self.fs2db.set(module, fs_id, mdata)
+                self.grouped_model_data.add(mdata)
+                exists = True
+
+        if exists:
             if self.noupdate and self.module_state != 'to activate':
                 return
             mdata = self.fs2db.get(module, fs_id)
