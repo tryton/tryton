@@ -10,7 +10,8 @@ from .match import MatchMixin
 from .model import Model
 from .modelsingleton import ModelSingleton
 from .modelsql import Check, Exclude, Index, ModelSQL, Unique, convert_from
-from .modelstorage import BrowseList, EvalEnvironment, ModelStorage
+from .modelstorage import (
+    BrowseList, EvalEnvironment, ModelAccessProxy, ModelStorage)
 from .modelview import ModelView
 from .multivalue import MultiValueMixin, ValueMixin
 from .order import sequence_ordered, sequence_reorder, sort
@@ -31,6 +32,7 @@ __all__ = [
     Index,
     MatchMixin,
     Model,
+    ModelAccessProxy,
     ModelSQL,
     ModelSingleton,
     ModelStorage,

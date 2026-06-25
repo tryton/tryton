@@ -901,6 +901,15 @@ Instance attributes:
    The list of ids of the instances.
 
 
+ModelAccessProxy
+================
+
+.. class:: ModelAccessProxy(record[, context])
+
+   A class proxying instance of :class:`ModelStorage` with check access using
+   ``context``.
+
+
 convert_from
 ------------
 

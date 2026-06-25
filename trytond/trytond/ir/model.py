@@ -591,10 +591,6 @@ class ModelAccess(
     @classmethod
     def get_access(cls, models):
         'Return access for models'
-        # root user above constraint
-        if Transaction().user == 0:
-            return defaultdict(lambda: defaultdict(lambda: True))
-
         pool = Pool()
         User = pool.get('res.user')
         cursor = Transaction().connection.cursor()
@@ -684,9 +680,8 @@ class ModelAccess(
         Model = pool.get(model_name)
         assert mode in ['read', 'write', 'create', 'delete'], \
             'Invalid access mode for security'
-        transaction = Transaction()
-        if (transaction.user == 0
-                or (raise_exception and not transaction.check_access)):
+
+        if not Transaction().check_access:
             return True
 
         User = pool.get('res.user')
@@ -831,11 +826,6 @@ class ModelFieldAccess(
     @classmethod
     def get_access(cls, models):
         'Return fields access for models'
-        # root user above constraint
-        if Transaction().user == 0:
-            return defaultdict(lambda: defaultdict(
-                    lambda: defaultdict(lambda: True)))
-
         pool = Pool()
         User = pool.get('res.user')
         field_access = cls.__table__()
@@ -881,8 +871,7 @@ class ModelFieldAccess(
         return accesses
 
     @classmethod
-    def check(cls, model_name, fields, mode='read', raise_exception=True,
-            access=False):
+    def check(cls, model_name, fields, mode='read', raise_exception=True):
         '''
         Check access for fields on model_name.
         '''
@@ -890,11 +879,8 @@ class ModelFieldAccess(
         Model = pool.get(model_name)
         assert mode in ('read', 'write', 'create', 'delete'), \
             'Invalid access mode'
-        transaction = Transaction()
-        if (transaction.user == 0
-                or (raise_exception and not transaction.check_access)):
-            if access:
-                return dict((x, True) for x in fields)
+
+        if not Transaction().check_access:
             return True
 
         User = pool.get('res.user')
@@ -902,8 +888,6 @@ class ModelFieldAccess(
 
         accesses = dict((f, a[mode])
             for f, a in cls.get_access([model_name])[model_name].items())
-        if access:
-            return accesses
         for field in fields:
             if not accesses.get(field, True):
                 if raise_exception:

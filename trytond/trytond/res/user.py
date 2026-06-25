@@ -623,6 +623,10 @@ class User(avatar_mixin(100, 'login'), DeactivableMixin, ModelSQL, ModelView):
         Group = pool.get('res.group')
 
         transaction = Transaction()
+
+        if '_groups' in transaction.context:
+            return transaction.context['_groups']
+
         user = transaction.user
         groups = cls._get_groups_cache.get(user)
         if groups is not None:

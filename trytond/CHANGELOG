@@ -1,3 +1,4 @@
+* Add ModelAccessProxy (issue14907)
 * Restrict Genshi evaluation (issue14869, issue5160)
 * Add BrowseList for Model instances
 * Remove cursor_dict
