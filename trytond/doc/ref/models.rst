@@ -882,6 +882,15 @@ Additional options are available:
      the string
 
 
+ModelAccessProxy
+================
+
+.. class:: ModelAccessProxy(record[, context])
+
+   A class proxying instance of :class:`ModelStorage` with check access using
+   ``context``.
+
+
 convert_from
 ------------
 
