@@ -70,19 +70,24 @@ class ShipmentOut(metaclass=PoolMeta):
             QUERY_FULFILLMENT_ORDERS % {
                 'fields': graphql.selection(fulfillment_order_fields),
                 }, {'orderId': order_id})['data']['order']['fulfillmentOrders']
-        line_items = defaultdict(list)
+        order_line_items = defaultdict(lambda: defaultdict(int))
         for move in self.outgoing_moves:
             if move.sale == sale:
                 for order_id, line_item in move.get_shopify(
                         fulfillment_orders, location_id):
-                    line_items[order_id].append(line_item)
-        if not line_items:
+                    order_line_items[order_id][line_item['id']] += (
+                        line_item['quantity'])
+        if not order_line_items:
             return
         fulfillment['lineItemsByFulfillmentOrder'] = [{
                 'fulfillmentOrderId': order_id,
-                'fulfillmentOrderLineItems': line_items,
+                'fulfillmentOrderLineItems': [{
+                        'id': id,
+                        'quantity': quantity,
+                        }
+                    for id, quantity in line_items.items()],
                 }
-            for order_id, line_items in line_items.items()]
+            for order_id, line_items in order_line_items.items()]
         fulfillment['notifyCustomer'] = bool(
             sale.web_shop.shopify_fulfillment_notify_customer)
         return fulfillment
