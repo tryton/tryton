@@ -192,8 +192,15 @@ def is_instance_method(cls, method):
 def resolve(name):
     "Resolve a dotted name to a global object."
     name = name.split('.')
-    used = name.pop(0)
-    found = importlib.import_module(used)
+    if name[:2] == ['trytond', 'modules']:
+        # import the Tryton module using entry point
+        name = name[2:]
+        used = name.pop(0)
+        found = import_module(used)
+        used = found.__name__
+    else:
+        used = name.pop(0)
+        found = importlib.import_module(used)
     for n in name:
         used = used + '.' + n
         try:
