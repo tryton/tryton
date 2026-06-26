@@ -942,7 +942,7 @@ class ModelSQL(ModelStorage):
 
         if to_delete:
             cursor.execute(*table.delete(
-                    where=fields.SQL_OPERATORS['in'](table.id, ids)))
+                    where=fields.SQL_OPERATORS['in'](table.id, to_delete)))
             cls._insert_history(list(to_delete), True)
         if to_update:
             cls._insert_history(list(to_update))

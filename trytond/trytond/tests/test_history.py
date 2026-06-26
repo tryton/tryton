@@ -239,6 +239,30 @@ class HistoryTestCase(TestCase):
         self.assertEqual(history.dico, {'a': 1})
 
     @with_transaction()
+    def test_restore_history_with_deletion(self):
+        "Test restoring records when some should be deleted"
+        pool = Pool()
+        History = pool.get('test.history')
+        transaction = Transaction()
+
+        history = History(value=1)
+        history.save()
+        first = history.create_date
+
+        transaction.commit()
+
+        history_2 = History(value=2)
+        history_2.save()
+
+        transaction.commit()
+
+        History.restore_history([history.id, history_2.id], first)
+        History.read([history.id], {'value'})
+
+        with self.assertRaises(AccessError):
+            History.read([history_2.id], ['value'])
+
+    @with_transaction()
     def test_restore_history_before(self):
         'Test restore history before'
         pool = Pool()
