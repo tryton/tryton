@@ -897,7 +897,9 @@ class Production_Lot(metaclass=PoolMeta):
             for move in production.outputs:
                 if not move.lot and move.product.lot_is_required(
                         move.from_location, move.to_location):
-                    move.add_lot()
+                    date = move.effective_date or production.effective_date
+                    with Transaction().set_context(date=date):
+                        move.add_lot()
                     if move.lot:
                         lots.append(move.lot)
                         moves.append(move)

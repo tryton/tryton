@@ -436,8 +436,11 @@ class Move(metaclass=PoolMeta):
         pass
 
     def add_lot(self):
+        transaction = Transaction()
         if not self.lot and self.product:
-            lot = self.product.create_lot()
+            date = transaction.context.get('date') or self.effective_date
+            with Transaction().set_context(date=date):
+                lot = self.product.create_lot()
             if lot:
                 self.lot = lot
 
