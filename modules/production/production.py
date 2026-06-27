@@ -189,6 +189,7 @@ class Production(
                 ('assigned', 'running'),
                 ('running', 'done'),
                 ('running', 'waiting'),
+                ('running', 'cancelled'),
                 ('assigned', 'waiting'),
                 ('waiting', 'waiting'),
                 ('waiting', 'draft'),
