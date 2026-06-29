@@ -1963,10 +1963,10 @@
                                     date.hour(), date.minute(), date.second(),
                                     date.millisecond())
                                 next_day.add(1, 'day');
-                                result.push(this._clausify([
-                                    [field_name, '>=', date],
-                                    [field_name, '<', next_day]
-                                ]));
+                                result.push([
+                                    this._clausify([field_name, '>=', date]),
+                                    this._clausify([field_name, '<', next_day]),
+                                ]);
                                 return;
                             }
                         }
