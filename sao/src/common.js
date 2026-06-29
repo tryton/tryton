@@ -1717,12 +1717,12 @@
         },
         group: function(tokens) {
             var result = [];
+            let clausify = this._clausify;
 
             const _group = parts => {
                 var result = [];
                 var push_result = function(part) {
-                    var clause = [part];
-                    clause.clause = true;
+                    var clause = clausify([part]);
                     result.push(clause);
                 };
                 var i = parts.indexOf(':');
@@ -1738,12 +1738,10 @@
                                 if (part[0] !== null) {
                                     lvalue.push(part[0]);
                                 }
-                                clause = name.concat([lvalue]);
-                                clause.clause = true;
+                                clause = clausify(name.concat([lvalue]));
                                 result.push(clause);
                             } else {
-                                clause = name.concat(part);
-                                clause.clause = true;
+                                clause = clausify(name.concat(part));
                                 result.push(clause);
                             }
                             name.splice(0, name.length);
@@ -1784,12 +1782,10 @@
                         if (!jQuery.isEmptyObject(name)) {
                             var clause;
                             if (!jQuery.isEmptyObject(lvalue)) {
-                                clause = name.concat([lvalue]);
-                                clause.clause = true;
+                                clause = clausify(name.concat([lvalue]));
                                 result.push(clause);
                             } else {
-                                clause = name.concat([null]);
-                                clause.clause = true;
+                                clause = clausify(name.concat([null]));
                                 result.push(clause);
                             }
                         }
