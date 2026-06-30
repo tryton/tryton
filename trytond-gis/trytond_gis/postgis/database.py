@@ -38,7 +38,7 @@ class BaseGeometryDumper(Dumper):
         return wkb.dumps(obj).encode()
 
 
-class Database(PGDatabase):
+class DatabaseMixin:
 
     _GIS_OIDS = None
 
@@ -85,6 +85,10 @@ class Database(PGDatabase):
                     'geometry': geometry_info.oid,
                     }
         return conn
+
+
+class Database(DatabaseMixin, PGDatabase):
+    pass
 
 
 @cache

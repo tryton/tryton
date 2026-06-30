@@ -5,13 +5,14 @@ from trytond.backend.postgresql import (
     DatabaseOperationalError, DatabaseTimeoutError, dict_row, namedtuple_row,
     scalar_row)
 
-from .database import Database
-from .table import TableHandler
+from .database import Database, DatabaseMixin
+from .table import TableHandler, TableHandlerMixin
 
 __all__ = [
     Database,
     DatabaseDataError,
     DatabaseIntegrityError,
+    DatabaseMixin,
     DatabaseOperationalError,
     DatabaseTimeoutError,
     dict_row,
@@ -19,4 +20,5 @@ __all__ = [
     scalar_row,
     MAX_QUERY_PARAMS,
     TableHandler,
+    TableHandlerMixin,
     ]

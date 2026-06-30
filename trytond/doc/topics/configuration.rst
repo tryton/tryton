@@ -296,6 +296,22 @@ maxconn
 The maximum number of simultaneous connections to the database per process.
 Default: ``64``
 
+.. _config-database.database_mixins:
+
+database_mixins
+~~~~~~~~~~~~~~~
+
+The qualified names of mixin_ as a one per line list to apply to the
+:class:`~trytond.backend.Database`
+
+.. _config-database.table_handler_mixins:
+
+table_handler_mixins
+~~~~~~~~~~~~~~~~~~~~
+
+The qualified names of mixin_ as a one per line list to apply to the
+:class:`~trytond.backend.TableHandler`
+
 .. _config-database.unaccent_function:
 
 unaccent_function
@@ -976,3 +992,4 @@ Example::
 .. _WSGI middleware: https://en.wikipedia.org/wiki/Web_Server_Gateway_Interface#Specification_overview
 .. _`multi-factor authentication`: https://en.wikipedia.org/wiki/Multi-factor_authentication
 .. _`Domain attribute`: https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Set-Cookie#domaindomain-value
+.. _mixin: https://en.wikipedia.org/wiki/Mixin
