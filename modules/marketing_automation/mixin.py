@@ -2,6 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 
 from trytond.model import fields
+from trytond.pool import Pool
 
 
 class MarketingAutomationMixin:
@@ -17,3 +18,11 @@ class MarketingAutomationMixin:
     @classmethod
     def search_marketing_party(cls, name, clause):
         raise NotImplementedError
+
+    @property
+    def marketing_access_context(self):
+        pool = Pool()
+        ModelData = pool.get('ir.model.data')
+        return {
+            '_groups': [ModelData.get_id('marketing.group_marketing')],
+            }
