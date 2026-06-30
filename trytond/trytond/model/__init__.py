@@ -9,7 +9,7 @@ from .match import MatchMixin
 from .model import Model
 from .modelsingleton import ModelSingleton
 from .modelsql import Check, Exclude, Index, ModelSQL, Unique, convert_from
-from .modelstorage import EvalEnvironment, ModelStorage
+from .modelstorage import EvalEnvironment, ModelAccessProxy, ModelStorage
 from .modelview import ModelView
 from .multivalue import MultiValueMixin, ValueMixin
 from .order import sequence_ordered, sort
@@ -23,4 +23,4 @@ __all__ = ['Model', 'ModelView', 'ModelStorage', 'ModelSingleton', 'ModelSQL',
     'Workflow', 'DictSchemaMixin', 'MatchMixin', 'UnionMixin', 'dualmethod',
     'MultiValueMixin', 'ValueMixin', 'SymbolMixin', 'DigitsMixin',
     'EvalEnvironment', 'sequence_ordered', 'sort', 'DeactivableMixin', 'tree',
-    'sum_tree', 'avatar_mixin']
+    'sum_tree', 'avatar_mixin', 'ModelAccessProxy']

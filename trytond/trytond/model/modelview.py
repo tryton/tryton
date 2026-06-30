@@ -408,10 +408,9 @@ class ModelView(Model):
         tree_root = tree.getroottree().getroot()
 
         # Find field without read access
-        fread_accesses = FieldAccess.check(cls.__name__,
-                list(cls._fields.keys()), 'read', access=True)
-        fields_to_remove = set(
-            x for x, y in fread_accesses.items() if not y)
+        fields_access = FieldAccess.get_access([cls.__name__])[cls.__name__]
+        fields_to_remove = {
+            f for f, a in fields_access.items() if not a['read']}
 
         # Find relation field without read access
         for name, field in cls._fields.items():
@@ -631,8 +630,8 @@ class ModelView(Model):
             button_groups = Button.get_groups(cls.__name__, button_name)
             if ((button_groups and not groups & button_groups)
                     or (not button_groups
-                        and not ModelAccess.check(
-                            cls.__name__, 'write', raise_exception=False))):
+                        and not ModelAccess.get_access(
+                            [cls.__name__])[cls.__name__]['write'])):
                 states = states.copy()
                 states['readonly'] = True
             element.set('states', encoder.encode(states))
@@ -667,8 +666,8 @@ class ModelView(Model):
                 action = None
             if (not action
                     or not action.res_model
-                    or not ModelAccess.check(
-                        action.res_model, 'read', raise_exception=False)):
+                    or not ModelAccess.get_access(
+                        [action.res_model])[action.res_model]['read']):
                 element.tag = 'label'
                 colspan = element.attrib.get('colspan')
                 link_name = element.attrib['name']

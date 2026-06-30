@@ -7,10 +7,11 @@ from sql import Literal
 from trytond.cache import Cache
 from trytond.i18n import gettext
 from trytond.model import Check, Index, ModelSQL, ModelView, fields
-from trytond.model.exceptions import ValidationError
+from trytond.model.exceptions import AccessError, ValidationError
 from trytond.pool import Pool
 from trytond.pyson import PYSONDecoder
-from trytond.transaction import Transaction, inactive_records
+from trytond.transaction import (
+    Transaction, inactive_records, without_check_access)
 
 
 class DomainError(ValidationError):
@@ -205,9 +206,6 @@ class Rule(ModelSQL, ModelView):
         model_names = list(model_names)
 
         cursor = transaction.connection.cursor()
-        # root user above constraint
-        if transaction.user == 0:
-            return {}, {}
         cursor.execute(*rule_table.join(rule_group,
                 condition=rule_group.id == rule_table.rule_group
                 ).join(model,
@@ -236,8 +234,8 @@ class Rule(ModelSQL, ModelView):
 
         clause = defaultdict(lambda: ['OR'])
         clause_global = defaultdict(lambda: ['OR'])
-        # Use root user without context to prevent recursion
-        with transaction.set_user(0), transaction.set_context(user=0):
+        # Without check access to prevent recursion
+        with without_check_access():
             rules = cls.browse(ids)
         for rule in rules:
             decoder = PYSONDecoder(
@@ -265,9 +263,8 @@ class Rule(ModelSQL, ModelView):
     @classmethod
     def domain_get(cls, model_name, mode='read'):
         pool = Pool()
-        transaction = Transaction()
-        # root user above constraint
-        if transaction.user == 0 or not transaction.check_access:
+
+        if not Transaction().check_access:
             return []
 
         assert mode in cls.modes
@@ -310,6 +307,47 @@ class Rule(ModelSQL, ModelView):
         # Use root to prevent infinite recursion
         with Transaction().set_user(0, set_context=True), inactive_records():
             return Model.search(domain, order=[], query=True)
+
+    @classmethod
+    def check(cls, model_name, ids, mode='read'):
+        pool = Pool()
+        Model = pool.get(model_name)
+        transaction = Transaction()
+
+        def test_domain(ids, domain):
+            # Use root to prevent infinite recursion
+            with transaction.set_user(0, set_context=True), \
+                    inactive_records(), \
+                    without_check_access():
+                records = Model.search([
+                        ('id', 'in', ids),
+                        domain,
+                        ], order=[])
+            return list(set(ids).difference(map(int, records)))
+
+        domain = cls.domain_get(model_name, mode=mode)
+        if not domain:
+            return
+        forbidden = test_domain(ids, domain)
+        if forbidden:
+            ids = ', '.join(map(str, forbidden[:5]))
+            if len(forbidden) > 5:
+                ids += '...'
+            rules = []
+            clause, clause_global = cls.get(model_name, mode=mode)
+            if clause:
+                dom = list(clause.values())
+                dom.insert(0, 'OR')
+                if test_domain(forbidden, dom):
+                    rules.extend(clause.keys())
+                for rule, dom in clause_global.items():
+                    if test_domain(forbidden, dom):
+                        rules.append(rule)
+            raise AccessError(gettext(
+                    f'ir.msg_{mode}_rule_error',
+                    ids=ids,
+                    rules='\n'.join(r.name for r in rules),
+                    **Model.__names__()))
 
     @classmethod
     def delete(cls, rules):

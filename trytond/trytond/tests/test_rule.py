@@ -3,6 +3,7 @@
 import json
 import unittest
 
+from trytond.model import ModelAccessProxy
 from trytond.model.exceptions import AccessError
 from trytond.pool import Pool
 from trytond.tests.test_tryton import activate_module, with_transaction
@@ -708,3 +709,52 @@ class ModelRuleTestCase(unittest.TestCase):
 
         with self.assertRaisesRegex(AccessError, "Field different from foo"):
             TestRuleModel.read([test.id], ['name'])
+
+    @with_transaction()
+    def test_model_access_proxy(self):
+        "Test model access proxy"
+        pool = Pool()
+        TestRule = pool.get('test.rule')
+        RuleGroup = pool.get('ir.rule.group')
+        Model = pool.get('ir.model')
+
+        model, = Model.search([('model', '=', 'test.rule')])
+        rule_group, = RuleGroup.create([{
+                    'name': "Field different from foo",
+                    'model': model.id,
+                    'global_p': True,
+                    'perm_read': False,
+                    'rules': [('create', [{
+                                    'domain': json.dumps(
+                                        [('field', '!=', 'foo')]),
+                                    }])],
+                    }])
+        record, = TestRule.create([{'field': 'foo'}])
+
+        proxy = ModelAccessProxy(record, {})
+
+        self.assertEqual(proxy.field, 'foo')
+
+    @with_transaction()
+    def test_model_access_proxy_no_access(self):
+        "Test model access proxy without access"
+        pool = Pool()
+        TestRule = pool.get('test.rule')
+        RuleGroup = pool.get('ir.rule.group')
+        Model = pool.get('ir.model')
+
+        model, = Model.search([('model', '=', 'test.rule')])
+        rule_group, = RuleGroup.create([{
+                    'name': "Field different from foo",
+                    'model': model.id,
+                    'global_p': True,
+                    'perm_read': True,
+                    'rules': [('create', [{
+                                    'domain': json.dumps(
+                                        [('field', '!=', 'foo')]),
+                                    }])],
+                    }])
+        record, = TestRule.create([{'field': 'foo'}])
+
+        with self.assertRaises(AccessError):
+            ModelAccessProxy(record, {})

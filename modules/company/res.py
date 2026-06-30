@@ -193,6 +193,10 @@ class User(metaclass=PoolMeta):
         Return an ordered tuple of company ids for the user
         '''
         transaction = Transaction()
+
+        if '_companies' in transaction.context:
+            return transaction.context['_companies']
+
         user_id = transaction.user
         companies = cls._get_companies_cache.get(user_id)
         if companies is not None:

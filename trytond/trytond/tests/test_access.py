@@ -3,6 +3,7 @@
 # this repository contains the full copyright notices and license terms.
 import unittest
 
+from trytond.model import ModelAccessProxy
 from trytond.model.exceptions import AccessError
 from trytond.pool import Pool
 from trytond.tests.test_tryton import activate_module, with_transaction
@@ -403,6 +404,39 @@ class ModelAccessReadTestCase(_ModelAccessTestCase):
                 [('reference.value', '=', 42, 'test.access.relate')])
         with self.assertRaises(AccessError):
             TestAccess.search([], order=[('relate.value', 'ASC')])
+
+    @with_transaction()
+    def test_model_access_proxy(self):
+        "Test model access proxy"
+        pool = Pool()
+        Model = pool.get('ir.model')
+        ModelAccess = pool.get('ir.model.access')
+        TestAccess = pool.get(self.model_name)
+        record, = TestAccess.create([{}])
+        model, = Model.search([('model', '=', self.model_name)])
+        ModelAccess.create([{
+                    'model': model.id,
+                    'perm_read': True,
+                    }])
+
+        ModelAccessProxy(record, {})
+
+    @with_transaction()
+    def test_model_access_proxy_no_access(self):
+        "Test model access proxy without access"
+        pool = Pool()
+        Model = pool.get('ir.model')
+        ModelAccess = pool.get('ir.model.access')
+        TestAccess = pool.get(self.model_name)
+        record, = TestAccess.create([{}])
+        model, = Model.search([('model', '=', self.model_name)])
+        ModelAccess.create([{
+                    'model': model.id,
+                    'perm_read': False,
+                    }])
+
+        with self.assertRaises(AccessError):
+            ModelAccessProxy(record, {})
 
 
 class ModelAccessWriteTestCase(_ModelAccessTestCase):
@@ -1104,6 +1138,49 @@ class ModelFieldAccessReadTestCase(_ModelFieldAccessTestCase):
 
         with self.assertRaises(AccessError):
             TestAccess.search([('relate', 'child_of', 42, 'parent')])
+
+    @with_transaction()
+    def test_model_access_proxy(self):
+        "Test model access proxy"
+        pool = Pool()
+        Field = pool.get('ir.model.field')
+        FieldAccess = pool.get('ir.model.field.access')
+        TestAccess = pool.get('test.access')
+        record, = TestAccess.create([{'field1': "foo"}])
+        field, = Field.search([
+                ('model.model', '=', 'test.access'),
+                ('name', '=', 'field1'),
+                ])
+        FieldAccess.create([{
+                    'field': field.id,
+                    'perm_read': True,
+                    }])
+
+        proxy = ModelAccessProxy(record, {})
+
+        self.assertEqual(proxy.field1, 'foo')
+
+    @with_transaction()
+    def test_model_access_proxy_no_access(self):
+        "Test model access proxy without access"
+        pool = Pool()
+        Field = pool.get('ir.model.field')
+        FieldAccess = pool.get('ir.model.field.access')
+        TestAccess = pool.get('test.access')
+        record, = TestAccess.create([{'field1': "foo"}])
+        field, = Field.search([
+                ('model.model', '=', 'test.access'),
+                ('name', '=', 'field1'),
+                ])
+        FieldAccess.create([{
+                    'field': field.id,
+                    'perm_read': False,
+                    }])
+
+        proxy = ModelAccessProxy(record, {})
+
+        with self.assertRaises(AccessError):
+            ModelAccessProxy(proxy.field1)
 
 
 class ModelFieldAccessWriteTestCase(_ModelFieldAccessTestCase):

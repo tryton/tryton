@@ -28,7 +28,8 @@ from trytond.tools import (
 from trytond.tools.domain_inversion import domain_inversion, eval_domain
 from trytond.tools.domain_inversion import parse as domain_parse
 from trytond.transaction import (
-    Transaction, inactive_records, record_cache_size, without_check_access)
+    Transaction, check_access, inactive_records, record_cache_size,
+    without_check_access)
 
 from . import fields
 from .descriptors import dualmethod
@@ -1705,11 +1706,11 @@ class ModelStorage(Model):
 
         if load_eager or multiple_getter:
             FieldAccess = Pool().get('ir.model.field.access')
-            fread_accesses = {}
-            fread_accesses.update(FieldAccess.check(self.__name__,
-                list(self._fields.keys()), 'read', access=True))
-            to_remove = set(x for x, y in fread_accesses.items()
-                    if not y and x != name)
+            fields_access = FieldAccess.get_access(
+                [self.__name__])[self.__name__]
+            to_remove = {
+                f for f, a in fields_access.items() if not a['read']}
+            to_remove.discard(name)
 
             def not_cached(item):
                 fname, field = item
@@ -2090,3 +2091,42 @@ def _record_eval_pyson(record, source, encoded=False):
 
 
 _pyson_encoder = PYSONEncoder()
+
+
+def ModelAccessProxy(record, context=None):
+    pool = Pool()
+    ModelAccess = pool.get('ir.model.access')
+    FieldAccess = pool.get('ir.model.field.access')
+    Rule = pool.get('ir.rule')
+
+    model = record.__class__
+    with Transaction().set_context(context), check_access():
+        ModelAccess.check(model.__name__)
+        Rule.check(model.__name__, [record.id])
+
+    class _ModelAccessProxy:
+        __class__ = model
+
+        def __init__(self, id):
+            self.id = id
+
+        def __getattr__(self, name):
+            if name in model._fields:
+                with Transaction().set_context(context), check_access():
+                    FieldAccess.check(model.__name__, [name])
+            value = getattr(record, name)
+            if isinstance(value, Model):
+                value = ModelAccessProxy(value, context)
+            elif isinstance(value, (list, tuple)):
+                value = [
+                    ModelAccessProxy(r, context)
+                    if isinstance(r, Model) else r for r in value]
+            return value
+
+        def __int__(self):
+            return int(self.id)
+
+        def __str__(self):
+            return f'{model.__name__},{self.id}'
+
+    return _ModelAccessProxy(record.id)
