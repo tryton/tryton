@@ -33,6 +33,11 @@ from trytond.transaction import Transaction
 from trytond.url import http_base
 from trytond.wsgi import Base64Converter
 
+try:
+    from trytond.model import ModelAccessProxy
+except ImportError:
+    ModelAccessProxy = None
+
 from .exceptions import ConditionError, DomainError, TemplateError
 from .mixin import MarketingAutomationMixin
 
@@ -728,8 +733,13 @@ class Activity(
             email.save()
 
     def email_context(self, record):
+        if ModelAccessProxy:
+            record = ModelAccessProxy(
+                record.record, record.record.marketing_access_context)
+        else:
+            record = record.record
         return {
-            'record': record.record,
+            'record': record,
             'format_date': Report.format_date,
             'format_datetime': Report.format_datetime,
             'format_timedelta': Report.format_timedelta,
