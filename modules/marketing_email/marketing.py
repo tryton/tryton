@@ -38,6 +38,11 @@ from trytond.transaction import Transaction, inactive_records
 from trytond.url import http_host
 from trytond.wizard import Button, StateTransition, StateView, Wizard
 
+try:
+    from trytond.model import ModelAccessProxy
+except ImportError:
+    ModelAccessProxy = None
+
 from .exceptions import EMailValidationError, TemplateError
 
 if not config.get(
@@ -470,6 +475,7 @@ class Message(Workflow, ModelSQL, ModelView):
     def process(cls, messages=None, emails=None, smtpd_datamanager=None):
         pool = Pool()
         WebShortener = pool.get('web.shortened_url')
+        ModelData = pool.get('ir.model.data')
         spy_pixel = config.getboolean(
             'marketing', 'email_spy_pixel', default=False)
 
@@ -513,6 +519,12 @@ class Message(Workflow, ModelSQL, ModelView):
         for message in messages:
             template = MarkupTemplate(message.content)
             for email in (emails or message.list_.emails):
+                if ModelAccessProxy:
+                    email = ModelAccessProxy(
+                        email, {
+                            '_groups': [
+                                ModelData.get_id('marketing.group_marketing')],
+                            })
                 content = (template
                     .generate(email=email)
                     .filter(convert_href(message))
