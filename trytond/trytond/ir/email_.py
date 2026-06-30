@@ -10,7 +10,8 @@ from genshi.template import TextTemplate
 
 import trytond.config as config
 from trytond.i18n import gettext
-from trytond.model import EvalEnvironment, ModelSQL, ModelView, fields
+from trytond.model import (
+    EvalEnvironment, ModelAccessProxy, ModelSQL, ModelView, fields)
 from trytond.model.exceptions import AccessError, ValidationError
 from trytond.pool import Pool
 from trytond.pyson import Bool, Eval, PYSONDecoder
@@ -400,7 +401,7 @@ class EmailTemplate(ModelSQL, ModelView):
     def get(self, record):
         pool = Pool()
         Model = pool.get(self.model.name)
-        record = Model(int(record))
+        record = ModelAccessProxy(Model(int(record)))
 
         values = {}
         for attr, key in [
