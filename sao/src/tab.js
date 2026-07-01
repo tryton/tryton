@@ -762,6 +762,9 @@
                 (compare(
                     this.attributes.domain || [], attributes.domain || [])) &&
                 (compare(
+                    this.attributes.context_domain || [],
+                    attributes.context_domain || [])) &&
+                (compare(
                     this.attributes.view_ids || [],
                     attributes.view_ids || [])) &&
                 (attributes.view_ids ||
