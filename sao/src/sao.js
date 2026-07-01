@@ -533,6 +533,8 @@ var Sao = {
                 }
                 attributes.search_value = loads(params.search_value || '[]');
                 attributes.domain = loads(params.domain || '[]');
+                attributes.context_domain = loads(
+                    params.context_domain || '[]');
                 attributes.context = loads(params.context || '{}');
                 attributes.context_model = params.context_model;
                 attributes.tab_domain = loads(params.tab_domain || '[]');

@@ -122,6 +122,8 @@ class Form(TabContent):
             and self.model == model
             and self.res_id == attributes.get('res_id')
             and self.attributes.get('domain') == attributes.get('domain')
+            and (self.attributes.get('context_domain')
+                == attributes.get('context_domain'))
             and self.attributes.get('view_ids') == attributes.get('view_ids')
             and (attributes.get('view_ids')
                 or (self.attributes.get('mode') or ['tree', 'form']) == (
