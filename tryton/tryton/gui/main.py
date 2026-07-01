@@ -1011,6 +1011,8 @@ class Main(Gtk.Application):
                 attributes['search_value'] = loads(
                     params.get('search_value', '[]'))
                 attributes['domain'] = loads(params.get('domain', '[]'))
+                attributes['context_domain'] = loads(
+                    params.get('context_domain', '[]'))
                 attributes['context'] = loads(params.get('context', '{}'))
                 attributes['context_model'] = params.get('context_model')
                 attributes['tab_domain'] = loads(
