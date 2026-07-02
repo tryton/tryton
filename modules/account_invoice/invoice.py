@@ -1010,6 +1010,8 @@ class Invoice(
                             invoice.company.currency, amount, invoice.currency)
                 if invoice.type == 'in' and amount_currency:
                     amount_currency *= -1
+                if name == 'amount_to_pay_today':
+                    amount_currency = max(0, amount_currency)
                 amounts[invoice.id] = amount_currency
         return amounts
 

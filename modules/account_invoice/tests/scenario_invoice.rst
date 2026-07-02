@@ -327,7 +327,7 @@ Pay invoice::
 
     >>> pay = invoice.click('pay')
     >>> pay.form.amount
-    Decimal('-20.00')
+    Decimal('100.00')
     >>> pay.form.amount = Decimal('99.00')
     >>> pay.form.payment_method = payment_method
     >>> pay.execute('choice')

@@ -815,6 +815,9 @@ class Invoice(metaclass=PoolMeta):
                                     payment.currency, amount_line_paid,
                                     invoice.currency)
                         amounts[invoice.id] -= payment_amount
+                        if name == 'amount_to_pay_today':
+                            amounts[invoice.id] = max(
+                                0, amounts[invoice.id])
         return amounts
 
     @classmethod
