@@ -1548,11 +1548,7 @@ class Invoice(
         return super().view_attributes() + [
             ('/form//field[@name="comment"]', 'spell', Eval('party_lang')),
             ('/tree', 'visual',
-                If((
-                        (Eval('type') == 'out')
-                        & (Eval('amount_to_pay_today', 0) > 0))
-                    | ((Eval('type') == 'in')
-                        & (Eval('amount_to_pay_today', 0) < 0)),
+                If(Eval('amount_to_pay_today', 0) > 0,
                     'danger',
                     If(Eval('state') == 'cancelled', 'muted', ''))),
             ]
