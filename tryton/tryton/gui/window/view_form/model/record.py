@@ -747,7 +747,7 @@ class Record:
                 'model', self.model_name, 'on_scan_code', values, code,
                 context=self.get_context(), process_exception=False)
         except RPCException:
-            changes = []
+            return False
         self.set_on_change(changes)
         self.set_modified()
         return bool(changes)
