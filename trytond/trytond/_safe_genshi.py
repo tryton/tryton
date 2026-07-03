@@ -77,7 +77,7 @@ ALLOWED_BUILTINS = {
     'repr',
     'reversed',
     'round',
-    'set'
+    'set',
     'slice',
     'sorted',
     'str',
