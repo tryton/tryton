@@ -521,8 +521,8 @@
         <text:p text:style-name="Table_20_Heading">Date:<text:line-break/> <text:placeholder text:placeholder-type="text">&lt;format_date(move.date, user.language)&gt;</text:placeholder></text:p>
        </table:table-cell>
        <table:table-cell table:style-name="Table4.C1" office:value-type="string">
-        <text:p text:style-name="Table_20_Heading"><text:placeholder text:placeholder-type="text">&lt;if test=&quot;move.origin&quot;&gt;</text:placeholder></text:p>
-        <text:p text:style-name="Table_20_Heading">Origin:<text:line-break/><text:placeholder text:placeholder-type="text">&lt;getattr(move.origin, &apos;rec_name&apos;, &apos;&apos;)&gt;</text:placeholder></text:p>
+        <text:p text:style-name="Table_20_Heading"><text:placeholder text:placeholder-type="text">&lt;if test=&quot;move.origin and hasattr(move.origin, 'rec_name')&quot;&gt;</text:placeholder></text:p>
+        <text:p text:style-name="Table_20_Heading">Origin:<text:line-break/><text:placeholder text:placeholder-type="text">&lt;move.origin.rec_name&gt;</text:placeholder></text:p>
         <text:p text:style-name="Table_20_Heading"><text:placeholder text:placeholder-type="text">&lt;/if&gt;</text:placeholder></text:p>
        </table:table-cell>
        <table:table-cell table:style-name="Table4.D1" table:number-columns-spanned="2" office:value-type="string">
