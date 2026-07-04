@@ -39,7 +39,8 @@ from trytond.wizard import (
 
 from .exceptions import (
     InvoiceFutureWarning, InvoiceNumberError, InvoicePaymentTermDateWarning,
-    InvoiceSimilarWarning, InvoiceTaxesWarning, InvoiceTaxValidationError,
+    InvoiceSimilarWarning, InvoiceTaxesWarning, InvoiceTaxIdentifierError,
+    InvoiceTaxIdentifierWarning, InvoiceTaxValidationError,
     InvoiceValidationError, PayInvoiceError)
 
 if config.getboolean('account_invoice', 'filestore', default=False):
@@ -2060,6 +2061,7 @@ class Invoice(
         transaction = Transaction()
         context = transaction.context
         cls.set_number(invoices)
+        cls._check_tax_identifiers(invoices)
         for company, grouped_invoices in groupby(
                 invoices, key=lambda i: i.company):
             with Transaction().set_context(company=company.id):
@@ -2113,6 +2115,7 @@ class Invoice(
 
         cls.set_number(invoices)
         cls.set_payment_means(invoices)
+        cls._check_tax_identifiers(invoices)
         cls._store_cache(invoices)
         moves = []
         for invoice in invoices:
@@ -2139,6 +2142,31 @@ class Invoice(
             with transaction.set_context(
                     queue_batch=context.get('queue_batch', True)):
                 cls.__queue__.process(reconciled)
+
+    @classmethod
+    def _check_tax_identifiers(cls, invoices):
+        pool = Pool()
+        Warning = pool.get('res.user.warning')
+        for invoice in invoices:
+            for identifier in [
+                    invoice.tax_identifier,
+                    invoice.party_tax_identifier,
+                    ]:
+                if (identifier
+                        and identifier.type == 'eu_vat'
+                        and not identifier.eu_vat_valid):
+                    msg = gettext(
+                        'account_invoice.msg_invoice_tax_identifier_invalid',
+                        invoice=invoice.rec_name,
+                        identifier=identifier.rec_name)
+                    if not identifier.eu_vat_validated_at:
+                        key = Warning.format(
+                            'account.invoice eu_vat valid',
+                            [identifier])
+                        if Warning.check(key):
+                            raise InvoiceTaxIdentifierWarning(key, msg)
+                    else:
+                        raise InvoiceTaxIdentifierError(msg)
 
     @classmethod
     def _check_taxes(cls, invoices):

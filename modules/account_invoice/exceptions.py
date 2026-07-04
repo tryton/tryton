@@ -51,3 +51,11 @@ class InvoiceSimilarWarning(UserWarning):
 
 class CancelInvoiceMoveWarning(UserWarning):
     pass
+
+
+class InvoiceTaxIdentifierWarning(UserWarning):
+    pass
+
+
+class InvoiceTaxIdentifierError(ValidationError):
+    pass

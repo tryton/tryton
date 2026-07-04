@@ -105,6 +105,9 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_invoice_currency_exchange_debit_account_missing">
             <field name="text">To post invoice "%(invoice)s", you must define a currency exchange debit account for "%(company)s".</field>
         </record>
+        <record model="ir.message" id="msg_invoice_tax_identifier_invalid">
+            <field name="text">The tax identifier "%(identifier)s" on invoice "%(invoice)s" has not been validated.</field>
+        </record>
     </data>
 </tryton>
 
