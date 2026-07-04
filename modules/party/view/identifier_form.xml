@@ -15,6 +15,14 @@ this repository contains the full copyright notices and license terms. -->
     <label name="code"/>
     <field name="code"/>
 
+    <group colspan="2" col="-1" id="eu_vat">
+        <label name="eu_vat_valid" string="Valid:"/>
+        <field name="eu_vat_valid"/>
+        <label name="eu_vat_validated_at" string="at"/>
+        <field name="eu_vat_validated_at"/>
+    </group>
+    <button name="check_vies_button" colspan="2"/>
+
     <label name="address"/>
     <field name="address"/>
 </form>

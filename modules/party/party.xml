@@ -147,21 +147,10 @@ this repository contains the full copyright notices and license terms. -->
             sequence="20"
             id="menu_identifier_form"/>
 
-        <record model="ir.action.wizard" id="wizard_check_vies">
-            <field name="name">Check VIES</field>
-            <field name="wiz_name">party.check_vies</field>
-            <field name="model">party.party</field>
-        </record>
-        <record model="ir.action.keyword" id="check_vies_keyword">
-            <field name="keyword">form_action</field>
-            <field name="model">party.party,-1</field>
-            <field name="action" ref="wizard_check_vies"/>
-        </record>
-
-        <record model="ir.ui.view" id="check_vies_result">
-            <field name="model">party.check_vies.result</field>
-            <field name="type">form</field>
-            <field name="name">check_vies_result</field>
+        <record model="ir.model.button" id="identifier_check_view_button">
+            <field name="model">party.identifier</field>
+            <field name="name">check_vies_button</field>
+            <field name="string">Check VIES</field>
         </record>
 
         <record model="ir.action.wizard" id="wizard_replace">
@@ -205,6 +194,13 @@ this repository contains the full copyright notices and license terms. -->
             <field name="model">party.erase.ask</field>
             <field name="type">form</field>
             <field name="name">erase_ask_form</field>
+        </record>
+    </data>
+    <data noupdate="1">
+        <record model="ir.cron" id="cron_party_identifier_check_vies">
+            <field name="method">party.identifier|check_vies</field>
+            <field name="interval_number" eval="1"/>
+            <field name="interval_type">days</field>
         </record>
     </data>
 </tryton>

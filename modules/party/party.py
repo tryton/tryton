@@ -1,12 +1,13 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 
+import datetime as dt
 import logging
 import re
 from collections import defaultdict
 
 import stdnum.exceptions
-from sql import Column, Literal
+from sql import Column, Literal, Null
 from sql.aggregate import Min
 from sql.functions import CharLength
 from stdnum import get_cc_module
@@ -19,7 +20,7 @@ from trytond.model import (
     ValueMixin, convert_from, fields, sequence_ordered)
 from trytond.model.exceptions import AccessError
 from trytond.pool import Pool
-from trytond.pyson import Bool, Eval
+from trytond.pyson import Bool, Eval, If, PYSONEncoder
 from trytond.tools import is_full_text, lstrip_wildcard
 from trytond.transaction import Transaction, inactive_records
 from trytond.wizard import Button, StateTransition, StateView, Wizard
@@ -847,13 +848,47 @@ class Identifier(sequence_ordered(), DeactivableMixin, ModelSQL, ModelView):
         fields.Boolean("Type of Address"), 'on_change_with_type_address')
     code = fields.Char('Code', required=True)
     code_compact = fields.Char("Code Compact", readonly=True, required=True)
+    eu_vat_valid = fields.Boolean(
+        "European VAT Number Valid", readonly=True,
+        states={
+            'invisible': Eval('type') != 'eu_vat',
+            },
+        help="Checked if the number has been validated on VIES service.")
+    eu_vat_validated_at = fields.DateTime(
+        "European VAT Number Validated At", readonly=True,
+        states={
+            'invisible': Eval('type') != 'eu_vat',
+            })
 
     @classmethod
     def __setup__(cls):
         cls.code.search_unaccented = False
         cls.code_compact.search_unaccented = False
         super().__setup__()
+        t = cls.__table__()
+        cls._sql_indexes.update({
+                Index(
+                    t,
+                    (t.active, Index.Equality(cardinality='low')),
+                    (t.type, Index.Equality(cardinality='low')),
+                    (t.eu_vat_valid, Index.Equality(cardinality='low')),
+                    where=(t.type == 'eu_vat')
+                    & ((t.eu_vat_valid == Literal(False))
+                        | (t.eu_vat_valid == Null))
+                    & (t.active == Literal(True))),
+                Index(
+                    t,
+                    (t.active, Index.Equality(cardinality='low')),
+                    (t.type, Index.Equality(cardinality='low')),
+                    (t.eu_vat_validated_at, Index.Range()),
+                    where=(t.type == 'eu_vat')
+                    & (t.active == Literal(True))),
+                })
         cls.__access__.add('party')
+        cls._buttons.update(
+            check_vies_button={
+                'invisible': Eval('type') != 'eu_vat',
+                })
 
     @classmethod
     def __register__(cls, module_name):
@@ -965,7 +1000,20 @@ class Identifier(sequence_ordered(), DeactivableMixin, ModelSQL, ModelView):
                             values['code_compact'] = module.compact(code)
                         except stdnum.exceptions.ValidationError:
                             pass
+        if mode == 'write':
+            if {'type', 'code'} & values.keys():
+                values['eu_vat_valid'] = None
+                values['eu_vat_validated_at'] = None
         return values
+
+    @classmethod
+    def on_modification(cls, mode, identifiers, field_names=None):
+        super().on_modification(mode, identifiers, field_names=field_names)
+        if (mode == 'create'
+                or (mode == 'write' and (
+                        field_names is None
+                        or {'type', 'code'} & field_names))):
+            cls.__queue__.check_vies(identifiers)
 
     def compute_fields(self, field_names=None):
         values = super().compute_fields(field_names=field_names)
@@ -1015,68 +1063,107 @@ class Identifier(sequence_ordered(), DeactivableMixin, ModelSQL, ModelView):
                         type=other.type_string,
                         code=other.code))
 
+    @classmethod
+    def copy(cls, identifiers, default=None):
+        default = default.copy() if default is not None else {}
+        default.setdefault('eu_vat_valid')
+        default.setdefault('eu_vat_validated_at')
+        return super().copy(identifiers, default=default)
 
-class CheckVIESResult(ModelView):
-    __name__ = 'party.check_vies.result'
-    parties_succeed = fields.Many2Many('party.party', None, None,
-        'Parties Succeed', readonly=True, states={
-            'invisible': ~Eval('parties_succeed'),
-            })
-    parties_failed = fields.Many2Many('party.party', None, None,
-        'Parties Failed', readonly=True, states={
-            'invisible': ~Eval('parties_failed'),
-            })
+    @classmethod
+    def view_attributes(cls):
+        return super().view_attributes() + [
+            ('/tree', 'visual',
+                If((Eval('type') == 'eu_vat')
+                    & ~Eval('eu_vat_valid'),
+                    If(Eval('eu_vat_validated_at'),
+                        'danger',
+                        'warning'),
+                    '')),
+            ]
 
+    @classmethod
+    @ModelView.button
+    def check_vies_button(cls, identifiers):
+        cls.check_vies(identifiers)
 
-class CheckVIES(Wizard):
-    __name__ = 'party.check_vies'
-    start_state = 'check'
+    @classmethod
+    def check_vies(cls, identifiers=None):
+        pool = Pool()
+        Configuration = pool.get('party.configuration')
+        Cron = pool.get('ir.cron')
 
-    check = StateTransition()
-    result = StateView('party.check_vies.result',
-        'party.check_vies_result', [
-            Button('OK', 'end', 'tryton-ok', True),
-            ])
-
-    def transition_check(self):
-        parties_succeed = []
-        parties_failed = []
-        for party in self.records:
-            for identifier in party.identifiers:
-                if identifier.type != 'eu_vat':
-                    continue
-                eu_vat = get_cc_module('eu', 'vat')
-                try:
-                    if not eu_vat.check_vies(identifier.code)['valid']:
-                        parties_failed.append(party.id)
-                    else:
-                        parties_succeed.append(party.id)
-                except Exception as e:
-                    for msg in e.args:
-                        if msg == 'INVALID_INPUT':
-                            parties_failed.append(party.id)
-                            break
-                        elif msg in {
-                                'SERVICE_UNAVAILABLE',
-                                'MS_UNAVAILABLE',
-                                'MS_MAX_CONCURRENT_REQ',
-                                'GLOBAL_MS_MAX_CONCURRENT_REQ',
-                                'TIMEOUT',
-                                'SERVER_BUSY',
-                                }:
-                            raise VIESUnavailable(
-                                gettext('party.msg_vies_unavailable')) from e
-                    else:
-                        raise
-        self.result.parties_succeed = parties_succeed
-        self.result.parties_failed = parties_failed
-        return 'result'
-
-    def default_result(self, fields):
-        return {
-            'parties_succeed': [p.id for p in self.result.parties_succeed],
-            'parties_failed': [p.id for p in self.result.parties_failed],
-            }
+        config = Configuration(1)
+        now = dt.datetime.now()
+        if identifiers is None:
+            identifiers = cls.search([
+                    ('type', '=', 'eu_vat'),
+                    ['OR',
+                        ('eu_vat_valid', '=', False),
+                        ('eu_vat_validated_at', '<',
+                            now - config.identifier_eu_vat_validation_period),
+                        ],
+                    ],
+                order=[])
+        if not identifiers:
+            return
+        failed, succeeded = [], []
+        for identifier in identifiers:
+            if identifier.type != 'eu_vat':
+                continue
+            eu_vat = get_cc_module('eu', 'vat')
+            try:
+                if not eu_vat.check_vies(identifier.code)['valid']:
+                    failed.append(identifier)
+                else:
+                    succeeded.append(identifier)
+            except ImportError:
+                # Missing dependencies so we consider the identifier as valid
+                succeeded.append(identifier)
+            except Exception as e:
+                for msg in e.args:
+                    if msg == 'INVALID_INPUT':
+                        failed.append(identifier)
+                        break
+                    elif msg in {
+                            'SERVICE_UNAVAILABLE',
+                            'MS_UNAVAILABLE',
+                            'MS_MAX_CONCURRENT_REQ',
+                            'GLOBAL_MS_MAX_CONCURRENT_REQ',
+                            'TIMEOUT',
+                            'SERVER_BUSY',
+                            }:
+                        raise VIESUnavailable(
+                            gettext('party.msg_vies_unavailable')) from e
+                else:
+                    raise
+        cls.write(succeeded, {
+                'eu_vat_valid': True,
+                'eu_vat_validated_at': now,
+                })
+        if failed:
+            encoder = PYSONEncoder()
+            cls.write(failed, {
+                    'eu_vat_valid': False,
+                    'eu_vat_validated_at': now,
+                    })
+            names = ', '.join(i.rec_name for i in failed[:5])
+            if len(failed) < 5:
+                domain = [('id', 'in', [i.id for i in failed])]
+            else:
+                names += '...'
+                domain = [
+                    ('type', '=', 'eu_vat'),
+                    ('eu_vat_valid', '=', False),
+                    ]
+            Cron.notify(
+                'tryton-error',
+                'party.act_identifier_form', {
+                    'pyson_domain': encoder.encode(domain),
+                    },
+                'party.msg_party_identifier_eu_vat_invalid',
+                identifiers=names,
+                )
 
 
 class Replace(Wizard):

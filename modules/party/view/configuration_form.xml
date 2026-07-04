@@ -9,4 +9,6 @@ this repository contains the full copyright notices and license terms. -->
 
     <separator name="identifier_types" colspan="4"/>
     <field name="identifier_types" colspan="4" height="200"/>
+    <label name="identifier_eu_vat_validation_period"/>
+    <field name="identifier_eu_vat_validation_period"/>
 </form>

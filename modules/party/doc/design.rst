@@ -43,17 +43,6 @@ stuck onto envelopes.
 Wizards
 -------
 
-.. _wizard-party.check_vies:
-
-Check VIES
-^^^^^^^^^^
-
-The *Check* :abbr:`VIES (VAT Information Exchange System)` wizard uses the
-European Commission's `VIES web service`_ to verify that a party's
-VAT-identification number is valid.
-
-.. _VIES web service: https://ec.europa.eu/taxation_customs/vies/
-
 .. _wizard-party.replace:
 
 Replace
@@ -90,6 +79,10 @@ They include things like company, personal identification, social security,
 tax and vat registration numbers.
 Most types of identifiers are checked by Tryton before they get saved to
 ensure that they are valid.
+The :guilabel:`European VAT Number`'s are also checked automatically against
+the European Commission's `VIES web service`_.
+
+.. _VIES web service: https://ec.europa.eu/taxation_customs/vies/
 
 .. _model-party.address:
 

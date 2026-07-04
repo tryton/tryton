@@ -78,15 +78,6 @@ that new parties are given a language.
 This, in turn, can be important as Tryton will automatically generate reports,
 such as invoices and delivery notes, in the correct language for each party.
 
-.. _Checking VAT numbers are valid:
-
-Checking VAT numbers are valid
-==============================
-
-If the `Party <model-party.party>` is in the European Union you can use the
-`Check VIES <wizard-party.check_vies>` on it to check whether its VAT number
-is valid or not.
-
 .. _Merging duplicate parties together:
 
 Merging duplicate parties together

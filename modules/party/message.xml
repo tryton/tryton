@@ -30,6 +30,9 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_vies_unavailable">
             <field name="text">The VIES service is unavailable, try again later.</field>
         </record>
+        <record model="ir.message" id="msg_party_identifier_eu_vat_invalid">
+            <field name="text">The VAT numbers "%(identifiers)s" are not valid for the VIES service.</field>
+        </record>
         <record model="ir.message" id="msg_different_name">
             <field name="text">Parties have different names: "%(source_name)s" vs "%(destination_name)s".</field>
         </record>

@@ -1,5 +1,8 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+
+import datetime as dt
+
 from trytond.i18n import gettext
 from trytond.model import (
     ModelSingleton, ModelSQL, ModelView, MultiValueMixin, ValueMixin, fields)
@@ -28,6 +31,9 @@ class Configuration(ModelSingleton, ModelSQL, ModelView, MultiValueMixin):
         IDENTIFIER_TYPES, "Identifier Types", sort=False,
         help="Defines which identifier types are available.\n"
         "Leave empty for all of them.")
+    identifier_eu_vat_validation_period = fields.TimeDelta(
+        "European VAT Number Validation Period", required=True,
+        help="The period during which the number is still considered valid.")
 
     @classmethod
     def __register__(cls, module):
@@ -54,6 +60,10 @@ class Configuration(ModelSingleton, ModelSQL, ModelView, MultiValueMixin):
             return ModelData.get_id('party', 'sequence_party')
         except KeyError:
             return None
+
+    @classmethod
+    def default_identifier_eu_vat_validation_period(cls):
+        return dt.timedelta(days=365)
 
     def get_identifier_types(self):
         selection = self.fields_get(

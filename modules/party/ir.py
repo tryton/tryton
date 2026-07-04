@@ -6,6 +6,21 @@ from trytond.tools import escape_wildcard, grouped_slice
 from trytond.transaction import Transaction
 
 
+class Cron(metaclass=PoolMeta):
+    __name__ = 'ir.cron'
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls.method.selection.extend([
+                ('party.identifier|check_vies',
+                    "Check European VAT Number with VIES"),
+                ])
+        cls._notifications.update({
+                'party.identifier|check_vies',
+                })
+
+
 class Email(metaclass=PoolMeta):
     __name__ = 'ir.email'
 
