@@ -37,7 +37,7 @@ classifiers = [
 
 [project.optional-dependencies]
 Levenshtein = ['python-Levenshtein']
-PostgreSQL = ['psycopg[pool] >= 3']
+PostgreSQL = ['psycopg[pool] >= 3.1']
 barcode = ['python-barcode[images]']
 completion = ['argcomplete']
 coroutine = ['gevent >= 1.1']

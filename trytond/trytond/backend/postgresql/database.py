@@ -19,7 +19,7 @@ from psycopg import OperationalError as DatabaseOperationalError
 from psycopg import connect, rows
 from psycopg.errors import QueryCanceled as DatabaseTimeoutError
 from psycopg.sql import SQL, Identifier
-from psycopg_pool import ConnectionPool
+from psycopg_pool import ConnectionPool, NullConnectionPool
 from sql import Cast, Flavor, For, Literal, Table
 from sql.aggregate import Count
 from sql.conditionals import Coalesce
@@ -221,6 +221,8 @@ class Database(DatabaseInterface):
 
         minconn = config.getint('database', 'minconn', default=1)
         maxconn = config.getint('database', 'maxconn', default=64)
+        if name == _default_name:
+            minconn = 0
         timeout = config.getint('database', 'timeout')
         last_clean = (now - cls._clean_last).total_seconds()
         if last_clean > timeout:
@@ -236,12 +238,16 @@ class Database(DatabaseInterface):
                     kwargs = cls._connection_params(name)
                     kwargs['cursor_factory'] = LoggingCursor
                     conninfo = kwargs.pop('conninfo')
+                    if name == _default_name:
+                        Pool = NullConnectionPool
+                    else:
+                        Pool = ConnectionPool
                     try:
-                        inst._connpool = ConnectionPool(
+                        inst._connpool = Pool(
                             conninfo,
                             kwargs=kwargs,
                             open=True,
-                            check=ConnectionPool.check_connection,
+                            check=Pool.check_connection,
                             min_size=minconn, max_size=maxconn)
                     except Exception:
                         logger.error(
