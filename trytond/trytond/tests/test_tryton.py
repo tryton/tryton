@@ -699,6 +699,8 @@ class ModuleTestCase(_DBTestCase):
                         getattr(model, attr)()
                 elif attr.startswith('order_'):
                     model.search([], order=[(attr[len('order_'):], None)])
+                elif attr.startswith('column_'):
+                    model.search([(attr[len('column_'):], '=', None)])
                 elif attr.startswith('domain_'):
                     model.search([(attr[len('domain_'):], '=', None)])
                 elif any(attr.startswith(p) for p in [
