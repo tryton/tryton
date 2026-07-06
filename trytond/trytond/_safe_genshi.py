@@ -10,7 +10,8 @@ class _SafeASTTransformer(ASTTransformer):
 
     def visit_Attribute(self, node):
         if (node.attr.startswith('_')
-                and node.attr not in {'__class__', '__name__'}):
+                and node.attr not in {
+                    '__class__', '__name__', '__url__', '__href__'}):
             raise ValueError(f"invalid attribute {node.attr!r}")
         return super().visit_Attribute(node)
 
