@@ -21,6 +21,7 @@ Activate modules::
     >>> Party = Model.get('party.party')
     >>> Move = Model.get('account.move')
     >>> ReceivableRule = Model.get('account.account.receivable.rule')
+    >>> Reconciliation = Model.get('account.move.reconciliation')
 
 Create fiscal year::
 
@@ -149,3 +150,11 @@ Check balance of accounts::
     >>> receivable2.reload()
     >>> receivable2.balance
     Decimal('20.00')
+
+Test delete reconciliation of receivable rule::
+
+    >>> reconciliations = Reconciliation.find([('delegate_to', '=', None)])
+    >>> Reconciliation.delete(reconciliations)
+    Traceback (most recent call last):
+        ...
+    ReconciliationDeleteWarning: ...

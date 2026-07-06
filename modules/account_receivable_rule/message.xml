@@ -9,5 +9,9 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_rule_account_unique">
             <field name="text">Only one account is allowed by rule.</field>
         </record>
+        <record model="ir.message" id="msg_reconciliation_delete_receivable_rule">
+            <field name="text">The reconciliation "%(reconciliation)s" is linked to the line "%(line)s" from the receivable rule %(receivable_rule)s.
+You may need to cancel its move "%(move)s".</field>
+        </record>
     </data>
 </tryton>

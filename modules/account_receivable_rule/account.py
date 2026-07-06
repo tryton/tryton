@@ -8,9 +8,11 @@ from sql.aggregate import Sum
 from sql.operators import Equal
 
 from trytond import backend
+from trytond.i18n import gettext
 from trytond.model import (
     DeactivableMixin, Exclude, ModelSQL, ModelView, Unique, Workflow,
     dualmethod, fields, sequence_ordered)
+from trytond.modules.account.exceptions import ReconciliationDeleteWarning
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
 from trytond.tools import sqlite_apply_types
@@ -31,6 +33,36 @@ class Move(metaclass=PoolMeta):
     @classmethod
     def _get_origin(cls):
         return super()._get_origin() + ['account.account.receivable.rule']
+
+
+class Reconciliation(ModelSQL, ModelView):
+    __name__ = 'account.move.reconciliation'
+
+    @classmethod
+    def check_modification(
+            cls, mode, reconciliations, values=None, external=False):
+        pool = Pool()
+        ReceivableRule = pool.get('account.account.receivable.rule')
+        Warning = pool.get('res.user.warning')
+
+        super().check_modification(
+            mode, reconciliations, values=values, external=external)
+
+        if mode == 'delete':
+            for reconciliation in reconciliations:
+                for line in reconciliation.lines:
+                    if isinstance(line.move.origin, ReceivableRule):
+                        key = Warning.format(
+                            'delete.receivable.rule', [reconciliation])
+                        if Warning.check(key):
+                            raise ReconciliationDeleteWarning(key, gettext(
+                                    'account_receivable_rule.'
+                                    'msg_reconciliation_delete'
+                                    '_receivable_rule',
+                                    reconciliation=reconciliation.rec_name,
+                                    line=line.rec_name,
+                                    receivable_rule=line.move.origin.rec_name,
+                                    move=line.move.rec_name))
 
 
 class AccountRuleAbstract(DeactivableMixin, ModelSQL, ModelView):
@@ -472,4 +504,5 @@ class Statement(metaclass=PoolMeta):
                     accounts[line.account].add(line.party)
         rules_parties = [(a.receivable_rules, p) for a, p in accounts.items()]
         if rules_parties:
+            Rule.apply(*rules_parties[0], rules_parties[1:])
             Rule.apply(*rules_parties[0], rules_parties[1:])
