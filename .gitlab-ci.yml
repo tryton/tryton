@@ -148,10 +148,9 @@ check-isort:
     - isort --multi-line VERTICAL_GRID --check --diff --skip-glob 'cookiecutter*' .
 
 check-dist:
-  stage: check
+  extends: .check
   needs:
     - packages
-  image: ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/tryton/ci
   script:
     - twine check packages/*
 
