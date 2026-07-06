@@ -134,7 +134,7 @@ Create same moves for Saber::
     ...     debit=Decimal('40.00'))
     >>> move.click('post')
 
- Setup consolidation::
+Setup consolidation::
 
     >>> balance_group = Consolidation(name="Balance")
     >>> balance_group.statement = 'balance'
