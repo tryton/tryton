@@ -14,7 +14,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">move_tree</field>
         </record>
         <record model="ir.action.act_window" id="act_move_form">
-            <field name="name">Account Moves</field>
+            <field name="name">Moves</field>
             <field name="res_model">account.move</field>
             <field name="context_model">account.move.context</field>
             <!-- Migration from 7.4: force empty domain for multi company -->

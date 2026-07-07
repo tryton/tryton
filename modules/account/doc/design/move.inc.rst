@@ -26,9 +26,9 @@ Only account moves whose line's debits and credits are balanced can be posted.
 
    Account moves can be found by opening the main menu item:
 
-      |Financial --> Entries --> Account Moves|__
+      |Financial --> Entries --> Moves|__
 
-      .. |Financial --> Entries --> Account Moves| replace:: :menuselection:`Financial --> Entries --> Account Moves`
+      .. |Financial --> Entries --> Moves| replace:: :menuselection:`Financial --> Entries --> Moves`
       __ https://demo.tryton.org/model/account.move
 
 Reports
