@@ -365,7 +365,7 @@ this repository contains the full copyright notices and license terms. -->
         <menuitem
             parent="menu_processing"
             action="act_reconcile"
-            sequence="20"
+            sequence="10"
             id="menu_reconcile"/>
 
         <record model="ir.ui.view" id="reconcile_start_view_form">
