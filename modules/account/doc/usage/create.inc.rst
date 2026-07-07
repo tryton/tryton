@@ -52,6 +52,7 @@ happen more than once is to use an
 You must first create the *Account Move Template* and set it up to ask for the
 things that might change each time it is used.
 
-You then run the
-`Create Move from Template <wizard-account.move.template.create>` wizard to
-create account moves based on a template of your choice.
+You then run the `Create Move from Template
+<wizard-account.move.template.create>` wizard from [:menuselection:`Financial
+--> Entries --> Create Move from Template`] to create account moves based on a
+template of your choice.
