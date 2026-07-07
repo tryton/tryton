@@ -61,7 +61,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.action.act_window" id="act_period_form_close">
-            <field name="name">Close Periods</field>
+            <field name="name">Periods</field>
             <field name="res_model">account.period</field>
             <field name="search_value"
                 eval="[('state', '=', 'open')]" pyson="1"/>

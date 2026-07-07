@@ -96,7 +96,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.action.act_window" id="act_fiscalyear_form_close">
-            <field name="name">Close Fiscal Years</field>
+            <field name="name">Fiscal Years</field>
             <field name="res_model">account.fiscalyear</field>
             <field name="search_value"
                 eval="[('state', '=', 'open')]" pyson="1"/>

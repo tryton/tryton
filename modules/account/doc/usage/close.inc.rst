@@ -22,16 +22,15 @@ account moves have been posted.
    If you are not ready to close the period, but want to restrict which
    `Journals <model-account.journal>` are still open then you can partially
    close a period.
-   In Tryton this is done by using the
-   [:menuselection:`Financial --> Processing --> Close Journals - Periods`]
-   main menu item.
+   In Tryton this is done by using the [:menuselection:`Financial -->
+   Processing --> Journals - Periods`] main menu item.
 
 Close the period
 ----------------
 
 Once you are happy everything seems to be okay you use the
-[:menuselection:`Financial --> Processing --> Close Periods`] main menu item
-to close the period.
+[:menuselection:`Financial --> Processing --> Periods`] main menu item to close
+the period.
 
 .. note::
 
@@ -45,7 +44,7 @@ to close the period.
    not locked.
 
    To reopen a closed period use the [:menuselection:`Financial --> Processing
-   --> Close Periods`] menu item.
+   --> Periods`] menu item.
    To find a closed period, you will need to clear the filter so that all the
    periods are listed, not just the open ones.
 
@@ -102,5 +101,5 @@ Close the fiscal year
 ---------------------
 
 Finally once all the year end and closing moves have been posted you can close
-the fiscal year from the
-[:menuselection:`Financial --> Processing --> Close Fiscal Year`] menu item.
+the fiscal year from the [:menuselection:`Financial --> Processing --> Fiscal
+Year`] menu item.
