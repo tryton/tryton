@@ -1173,13 +1173,14 @@ class ModuleTestCase(_DBTestCase):
             if not issubclass(model, ModelView):
                 continue
             for button in model._buttons:
-                try:
-                    if is_instance_method(model, button):
-                        getattr(model(), button)()
-                    else:
-                        getattr(model, button)([])
-                except (UserError, UserWarning):
-                    pass
+                with self.subTest(model=model.__name__, button=button):
+                    try:
+                        if is_instance_method(model, button):
+                            getattr(model(), button)()
+                        else:
+                            getattr(model, button)([])
+                    except (UserError, UserWarning):
+                        pass
 
     @with_transaction()
     def test_xml_files(self):
