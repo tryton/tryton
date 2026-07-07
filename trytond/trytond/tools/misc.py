@@ -15,17 +15,13 @@ import unicodedata
 import warnings
 from collections.abc import Iterable, Sized
 from functools import cache, wraps
+from importlib.metadata import entry_points as _entry_points
 from itertools import chain, islice, tee, zip_longest
 
 from sql import As, Cast, Select
 from sql.conditionals import Case
 
 from trytond.const import MODULES_GROUP, OPERATORS
-
-try:
-    from backports.entry_points_selectable import entry_points as _entry_points
-except ImportError:
-    from importlib.metadata import entry_points as _entry_points
 
 
 @cache

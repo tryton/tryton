@@ -1,10 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 
-try:
-    from backports.entry_points_selectable import entry_points
-except ImportError:
-    from importlib.metadata import entry_points
+from importlib.metadata import entry_points
 
 
 def register():

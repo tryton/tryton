@@ -2,11 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 import importlib
 import urllib.parse
-
-try:
-    from backports.entry_points_selectable import entry_points
-except ImportError:
-    from importlib.metadata import entry_points
+from importlib.metadata import entry_points
 
 import trytond.config as config
 
