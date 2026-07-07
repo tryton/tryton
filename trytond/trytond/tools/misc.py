@@ -33,6 +33,7 @@ def entry_points():
     return _entry_points()
 
 
+@cache
 def import_module(name):
     try:
         ep, = entry_points().select(group=MODULES_GROUP, name=name)
