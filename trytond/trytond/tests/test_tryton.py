@@ -1173,6 +1173,7 @@ class ModuleTestCase(_DBTestCase):
             if not issubclass(model, ModelView):
                 continue
             for button in model._buttons:
+                transaction_error = None
                 with self.subTest(model=model.__name__, button=button):
                     try:
                         if is_instance_method(model, button):
@@ -1181,6 +1182,11 @@ class ModuleTestCase(_DBTestCase):
                             getattr(model, button)([])
                     except (UserError, UserWarning):
                         pass
+                    except TransactionError as e:
+                        transaction_error = e
+                        pass
+                if transaction_error:
+                    raise transaction_error
 
     @with_transaction()
     def test_xml_files(self):
