@@ -1124,34 +1124,42 @@ class Line(DescriptionOriginMixin, MoveLineMixin, ModelSQL, ModelView):
                 })
 
     @classmethod
+    def _last_move_line(cls):
+        "Last move line created by the current user"
+        transaction = Transaction()
+        context = transaction.context
+        domain = [
+            ('company', '=', context.get('company')),
+            ('create_uid', '=', transaction.user),
+            ('state', '=', 'draft'),
+            ]
+        if context.get('journal') is not None:
+            domain.append(('move.journal', '=', context['journal']))
+        if context.get('period') is not None:
+            domain.append(('move.period', '=', context['period']))
+        lines = cls.search(domain, order=[('id', 'DESC')], limit=1)
+        if lines:
+            line, = lines
+            return line
+
+    @classmethod
     def default_date(cls):
-        '''
-        Return the date of the last line for journal, period
-        or the starting date of the period
-        or today
-        '''
         pool = Pool()
         Period = pool.get('account.period')
         Date = pool.get('ir.date')
         context = Transaction().context
 
         date = Date.today()
-        lines = cls.search([
-                ('company', '=', context.get('company')),
-                ('journal', '=', context.get('journal')),
-                ('period', '=', context.get('period')),
-                ],
-            order=[('date', 'DESC')], limit=1)
-        if lines:
-            line, = lines
+        if (context.get('default_last_move_line')
+                and (line := cls._last_move_line())):
             date = line.date
-        elif context.get('period'):
+        elif context.get('period') is not None:
             period = Period(context['period'])
             if period.start_date >= date:
                 date = period.start_date
             else:
                 date = period.end_date
-        if context.get('date'):
+        elif context.get('date'):
             date = context['date']
         return date
 
@@ -1159,21 +1167,15 @@ class Line(DescriptionOriginMixin, MoveLineMixin, ModelSQL, ModelView):
     def default_move(cls):
         transaction = Transaction()
         context = transaction.context
-        if context.get('journal') and context.get('period'):
-            lines = cls.search([
-                    ('company', '=', context.get('company')),
-                    ('move.journal', '=', context['journal']),
-                    ('move.period', '=', context['period']),
-                    ('create_uid', '=', transaction.user),
-                    ('state', '=', 'draft'),
-                    ], order=[('id', 'DESC')], limit=1)
-            if lines:
-                line, = lines
-                return line.move.id
+        if context.get('default_last_move_line'):
+            if line := cls._last_move_line():
+                return line.move
 
     @fields.depends(
         'move', 'debit', 'credit',
-        '_parent_move.lines', '_parent_move.company')
+        'company', 'period', 'journal',
+        '_parent_move.lines',
+        '_parent_move.company', '_parent_move.period', '_parent_move.journal')
     def on_change_move(self):
         if self.move:
             if not self.debit and not self.credit:
@@ -1182,10 +1184,20 @@ class Line(DescriptionOriginMixin, MoveLineMixin, ModelSQL, ModelView):
                 self.debit = -total if total < 0 else Decimal(0)
                 self.credit = total if total > 0 else Decimal(0)
             self.company = self.move.company
+            self.period = self.move.period
+            self.journal = self.move.journal
 
     @classmethod
     def default_company(cls):
         return Transaction().context.get('company')
+
+    @classmethod
+    def default_journal(cls):
+        return Transaction().context.get('journal')
+
+    @classmethod
+    def default_period(cls):
+        return Transaction().context.get('period')
 
     @staticmethod
     def default_state():
@@ -1502,6 +1514,10 @@ class Line(DescriptionOriginMixin, MoveLineMixin, ModelSQL, ModelView):
             attributes.append(
                 ('/tree', 'visual',
                     If(Bool(Eval('reconciliation')), 'muted', '')))
+        else:
+            attributes.append(
+                ('/tree', 'visual',
+                    If(Eval('state') != 'valid', 'muted', '')))
         return attributes
 
     @classmethod
@@ -1565,13 +1581,10 @@ class Line(DescriptionOriginMixin, MoveLineMixin, ModelSQL, ModelView):
 
         # Add a wizard entry for each templates
         context = Transaction().context
-        company = context.get('company')
-        journal = context.get('journal')
-        period = context.get('period')
-        if company and journal and period:
+        if context.get('default_last_move_line'):
             templates = Template.search([
-                    ('company', '=', company),
-                    ('journal', '=', journal),
+                    ('company', '=', context.get('company')),
+                    ('journal', '=', context.get('journal')),
                     ])
             toolbar = dict(toolbar)
             action = list(toolbar['action'])
@@ -1959,15 +1972,16 @@ class WriteOff(DeactivableMixin, ModelSQL, ModelView):
         return Transaction().context.get('company')
 
 
-class OpenJournalAsk(ModelView):
-    __name__ = 'account.move.open_journal.ask'
+class LineContext(ModelView):
+    __name__ = 'account.move.line.context'
     company = fields.Many2One('company.company', "Company", required=True)
     journal = fields.Many2One(
-        'account.journal', 'Journal', required=True,
+        'account.journal', "Journal",
         context={
             'company': Eval('company', None),
             })
-    period = fields.Many2One('account.period', 'Period', required=True,
+    period = fields.Many2One(
+        'account.period', "Period",
         domain=[
             ('company', '=', Eval('company', -1)),
             ('state', '!=', 'closed'),
@@ -1978,87 +1992,20 @@ class OpenJournalAsk(ModelView):
         return Transaction().context.get('company')
 
     @classmethod
+    def default_journal(cls):
+        return Transaction().context.get('journal')
+
+    @classmethod
     def default_period(cls):
         pool = Pool()
         Period = pool.get('account.period')
-        if company := cls.default_company():
+        if period := Transaction().context.get('period'):
+            return period
+        elif company := cls.default_company():
             try:
-                period = Period.find(company)
+                return Period.find(company)
             except PeriodNotFoundError:
-                return None
-            return period.id
-
-
-class OpenJournal(Wizard):
-    __name__ = 'account.move.open_journal'
-    _readonly = True
-    start = StateTransition()
-    ask = StateView('account.move.open_journal.ask',
-        'account.open_journal_ask_view_form', [
-            Button('Cancel', 'end', 'tryton-cancel'),
-            Button('Open', 'open_', 'tryton-ok', default=True),
-            ])
-    open_ = StateAction('account.act_move_line_form')
-
-    def transition_start(self):
-        if (self.model
-                and self.model.__name__ == 'account.journal.period'
-                and self.record):
-            return 'open_'
-        return 'ask'
-
-    def default_ask(self, fields):
-        if (self.model
-                and self.model.__name__ == 'account.journal.period'
-                and self.record):
-            return {
-                'company': self.record.company.id,
-                'journal': self.record.journal.id,
-                'period': self.record.period.id,
-                }
-        return {}
-
-    def do_open_(self, action):
-        JournalPeriod = Pool().get('account.journal.period')
-
-        if (self.model
-                and self.model.__name__ == 'account.journal.period'
-                and self.record):
-            journal = self.record.journal
-            period = self.record.period
-        else:
-            journal = self.ask.journal
-            period = self.ask.period
-        journal_periods = JournalPeriod.search([
-                ('journal', '=', journal.id),
-                ('period', '=', period.id),
-                ], limit=1)
-        if not journal_periods:
-            with Transaction().new_transaction():
-                journal_period, = JournalPeriod.create([{
-                            'journal': journal.id,
-                            'period': period.id,
-                            }])
-                name = journal_period.rec_name
-        else:
-            journal_period, = journal_periods
-            name = journal_period.rec_name
-
-        action['name'] += ' (%s)' % name
-        action['pyson_domain'] = PYSONEncoder().encode([
-            ('journal', '=', journal.id),
-            ('period', '=', period.id),
-            ('company', '=', period.company.id),
-            ])
-        action['pyson_context'] = PYSONEncoder().encode({
-            'journal': journal.id,
-            'period': period.id,
-            'company': period.company.id,
-            })
-        return action, {}
-
-    def transition_open_(self):
-        return 'end'
+                pass
 
 
 class OpenAccount(Wizard):

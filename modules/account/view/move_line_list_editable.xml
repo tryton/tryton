@@ -1,11 +1,9 @@
 <?xml version="1.0"?>
 <!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
 this repository contains the full copyright notices and license terms. -->
-<tree>
-    <field name="company" expand="1" optional="1"/>
-    <field name="move"/>
-    <field name="move_origin" expand="1" optional="1"/>
-    <field name="origin" expand="1" optional="1"/>
+<tree editable="1" on_write="on_written">
+    <field name="period" optional="1"/>
+    <field name="journal" optional="0"/>
     <field name="date"/>
     <field name="account" expand="1"/>
     <field name="party" expand="1"/>
@@ -13,11 +11,14 @@ this repository contains the full copyright notices and license terms. -->
     <field name="credit" sum="1"/>
     <field name="amount_second_currency" symbol="" optional="1"/>
     <field name="second_currency" optional="1"/>
-    <field name="delegated_amount" optional="0"/>
+    <field name="delegated_amount" optional="1"/>
     <field name="tax_lines" optional="1"/>
     <field name="move_description_used" expand="1" optional="1"/>
     <field name="description_used" expand="1" optional="1"/>
     <field name="reconciliation" optional="1"/>
+    <field name="origin" expand="1" optional="1"/>
+    <field name="move"/>
+    <field name="move_origin" expand="1" optional="1"/>
     <field name="move_state" optional="0"/>
     <field name="state" tree_invisible="1"/>
 </tree>

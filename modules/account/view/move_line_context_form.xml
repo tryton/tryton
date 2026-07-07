@@ -1,12 +1,11 @@
 <?xml version="1.0"?>
 <!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
 this repository contains the full copyright notices and license terms. -->
-<form cursor="journal">
+<form col="6">
     <label name="company"/>
     <field name="company"/>
     <label name="period"/>
     <field name="period"/>
-
     <label name="journal"/>
     <field name="journal" widget="selection"/>
 </form>

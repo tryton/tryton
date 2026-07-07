@@ -36,8 +36,8 @@ One-off entries
 For entries that are only needed once, for example to set an account's
 initial opening balance, you can manually create an *Account Move*.
 
-The [:menuselection:`Financial --> Entries --> Open Journal`] main menu item
-provides another way of entering the details of an account move.
+The [:menuselection:`Financial --> Entries --> Lines`] main menu item provides
+another way of entering the details of an account move.
 It provides a list of individual
 `Account Move Lines <model-account.move.line>`, which can be added to as
 required.
