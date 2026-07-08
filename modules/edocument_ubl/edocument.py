@@ -1357,8 +1357,9 @@ class Invoice_Bank(metaclass=PoolMeta):
                         financial_account, party)
                     account.save()
                 else:
-                    raise InvoiceError(gettext(
-                            'edocument_ubl.msg_account_not_found',
+                    raise InvoiceError(ngettext(
+                            'edocument_ubl.msg_bank_account_not_found',
+                            len(payees),
                             parties=','.join([p.rec_name for p in payees]),
                             account=etree.tostring(
                                 financial_account,
