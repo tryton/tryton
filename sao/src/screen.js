@@ -2170,7 +2170,7 @@
             }
             if (!jQuery.isEmptyObject(this.context_domain)) {
                 query_string.push(
-                    ['context_domain', dumps(this.context_domain)]);
+                    ['context_domain', this.context_domain]);
             }
             var context = this.local_context;  // Avoid rpc context
             if (!jQuery.isEmptyObject(context)) {
