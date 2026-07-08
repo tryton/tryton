@@ -595,13 +595,15 @@ class ModelView(Model):
                 # Prefetch only the first view to prevent infinite loop
                 if view_ids:
                     for view_id in view_ids:
-                        view = Relation.fields_view_get(view_id=view_id)
+                        view = Relation.fields_view_get(
+                            view_id=view_id, level=0)
                         views[str(view_id)] = view
                         break
                 else:
                     for view_type in mode:
                         views[view_type] = (
-                            Relation.fields_view_get(view_type=view_type))
+                            Relation.fields_view_get(
+                                view_type=view_type, level=0))
                         break
             return views
 
