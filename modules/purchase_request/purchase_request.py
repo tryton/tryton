@@ -311,7 +311,9 @@ class PurchaseRequest(ModelSQL, ModelView, ChatMixin):
             timedelta = date - supply_date
             if timedelta >= datetime.timedelta(0):
                 return product_supplier
-            if supply_date < earlier_date or earlier_date is datetime.date.max:
+            if (supply_date < earlier_date
+                    or (earlier_date is datetime.date.max
+                        and fastest is None)):
                 earlier_date, fastest = supply_date, product_supplier
         return fastest
 
