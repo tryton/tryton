@@ -497,7 +497,7 @@ class PurchaseRequisitionLine(sequence_ordered(), ModelSQL, ModelView):
         if self.requisition:
             return self.requisition.state
 
-    @fields.depends('product', 'unit', 'quantity', 'supplier')
+    @fields.depends('product', 'unit')
     def on_change_product(self):
         if not self.product:
             return
