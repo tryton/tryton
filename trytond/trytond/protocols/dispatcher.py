@@ -232,7 +232,7 @@ def _dispatch(request, pool, *args, **kwargs):
             except backend.DatabaseTimeoutError:
                 logger.warning(
                     log_message, *log_args, duration(), exc_info=True)
-                abort(HTTPStatus.REQUEST_TIMEOUT)
+                abort(HTTPStatus.GATEWAY_TIMEOUT)
             except backend.DatabaseOperationalError:
                 if count < retry and not rpc.readonly:
                     transaction.rollback()
