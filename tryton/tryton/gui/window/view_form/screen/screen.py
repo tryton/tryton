@@ -1365,9 +1365,7 @@ class Screen:
             query_string.append(('domain', json.dumps(
                         self.domain, cls=JSONEncoder, separators=(',', ':'))))
         if self.context_domain:
-            query_string.append(('context_domain', json.dumps(
-                        self.context_domain, cls=JSONEncoder,
-                        separators=(',', ':'))))
+            query_string.append(('context_domain', self.context_domain))
         context = self.local_context  # Avoid rpc context
         if context:
             query_string.append(('context', json.dumps(
