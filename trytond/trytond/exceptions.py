@@ -64,6 +64,10 @@ class RateLimitException(TrytonException):
     """User has sent too many requests in a given amount of time."""
 
 
+class TimeOutException(TrytonException):
+    pass
+
+
 class MissingDependenciesException(TrytonException):
 
     def __init__(self, missings):

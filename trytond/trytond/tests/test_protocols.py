@@ -3,9 +3,13 @@
 
 import datetime
 import json
+import time
 from base64 import b64encode
 from decimal import Decimal
+from unittest.mock import patch
 
+from trytond import config
+from trytond.model import ModelStorage
 from trytond.pool import Pool
 from trytond.protocols.jsonrpc import JSONDecoder, JSONEncoder, JSONRequest
 from trytond.protocols.wrappers import (
@@ -135,6 +139,53 @@ class XMLTestCase(DumpsLoadsMixin, TestCase):
         result, _ = client.loads(s)
         result, = result
         self.assertEqual(result, Decimal('3.141592653589793'))
+
+
+class RPCTimeout(RouteTestCase):
+    module = 'res'
+
+    @classmethod
+    def setUpClass(cls):
+        timeout = config.get('request', 'timeout')
+        config.set('request', 'timeout', '1')
+        cls.addClassCleanup(config.set, 'request', 'timeout', timeout)
+        super().setUpClass()
+
+    @classmethod
+    def setUpDatabase(cls):
+        pool = Pool()
+        User = pool.get('res.user')
+        User.create([{
+                    'name': 'user',
+                    'login': 'user',
+                    'password': 'password',
+                    }])
+
+    def test_timeout(self):
+        "Test RPC with timeout"
+        basic_auth = 'Basic ' + b64encode(b"user:password").decode()
+        response = self.client().post(
+            f'/{self.db_name}/rpc/',
+            json={
+                'method': 'model.ir.model.search',
+                'params': [[], {}],
+                },
+            headers=[('Authorization', basic_auth)])
+        self.assertEqual(response.status_code, HTTPStatus.OK)
+
+    def test_timeout_exceeded(self):
+        "Test RPC with timeout exceeded"
+        with patch.object(ModelStorage, 'search') as search:
+            search.side_effect = lambda *a, **k: time.sleep(2)
+            basic_auth = 'Basic ' + b64encode(b"user:password").decode()
+            response = self.client().post(
+                f'/{self.db_name}/rpc/',
+                json={
+                    'method': 'model.ir.model.search',
+                    'params': [[], {}],
+                    },
+                headers=[('Authorization', basic_auth)])
+            self.assertEqual(response.status_code, HTTPStatus.GATEWAY_TIMEOUT)
 
 
 class UserApplication(RouteTestCase):

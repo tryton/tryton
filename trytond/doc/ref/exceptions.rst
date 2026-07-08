@@ -31,6 +31,10 @@ Exceptions
 
    The exception raised when user has sent too many login requests.
 
+.. exception:: TimeOutException
+
+   The exception raised when a request last longer then its timeout.
+
 .. exception:: MissingDependenciesException(missings)
 
    The exception raised when modules are missing.

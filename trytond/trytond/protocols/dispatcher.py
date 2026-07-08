@@ -1,14 +1,16 @@
 # -*- coding: utf-8 -*-
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+import ctypes
 import logging
 import pydoc
+import threading
 import time
 
 from trytond import __series__, backend, config, security
 from trytond.exceptions import (
-    ConcurrencyException, LoginException, RateLimitException, UserError,
-    UserWarning)
+    ConcurrencyException, LoginException, RateLimitException, TimeOutException,
+    UserError, UserWarning)
 from trytond.rpc import RPCReturnException
 from trytond.tools import is_instance_method
 from trytond.tools.logging import format_args
@@ -213,6 +215,10 @@ def _dispatch(request, pool, *args, **kwargs):
         format_args(args, kwargs, logger.isEnabledFor(logging.DEBUG)),
         username, request.remote_addr, request.path)
 
+    def raise_timeout(ident):
+        ctypes.pythonapi.PyThreadState_SetAsyncExc(
+            ctypes.c_ulong(ident), ctypes.py_object(TimeOutException))
+
     def duration():
         return (time.monotonic() - started) * 1000
     started = time.monotonic()
@@ -220,35 +226,48 @@ def _dispatch(request, pool, *args, **kwargs):
     retry = config.getint('database', 'retry')
     count = 0
     transaction_extras = {}
+    timer = None
     while True:
+        if timer is not None:
+            timer.cancel()
         if count:
             time.sleep(0.02 * count)
         with Transaction().start(
                 pool.database_name, user,
                 readonly=rpc.readonly, timeout=rpc.timeout,
                 **transaction_extras) as transaction:
+            if rpc.timeout:
+                timer = threading.Timer(
+                    rpc.timeout, raise_timeout, (threading.get_ident(),))
+                timer.start()
             try:
-                c_args, c_kwargs, transaction.context, transaction.timestamp \
-                    = rpc.convert(obj, *args, **kwargs)
-                transaction.context['_request'] = request.context
-                meth = rpc.decorate(getattr(obj, method))
-                if (rpc.instantiate is None
-                        or not is_instance_method(obj, method)):
-                    result = rpc.result(meth(*c_args, **c_kwargs))
-                else:
-                    assert rpc.instantiate == 0
-                    inst = c_args.pop(0)
-                    if hasattr(inst, method):
-                        result = rpc.result(meth(inst, *c_args, **c_kwargs))
+                try:
+                    (c_args, c_kwargs,
+                        transaction.context, transaction.timestamp) \
+                        = rpc.convert(obj, *args, **kwargs)
+                    transaction.context['_request'] = request.context
+                    meth = rpc.decorate(getattr(obj, method))
+                    if (rpc.instantiate is None
+                            or not is_instance_method(obj, method)):
+                        result = rpc.result(meth(*c_args, **c_kwargs))
                     else:
-                        result = [rpc.result(meth(i, *c_args, **c_kwargs))
-                            for i in inst]
+                        assert rpc.instantiate == 0
+                        inst = c_args.pop(0)
+                        if hasattr(inst, method):
+                            result = rpc.result(
+                                meth(inst, *c_args, **c_kwargs))
+                        else:
+                            result = [rpc.result(meth(i, *c_args, **c_kwargs))
+                                for i in inst]
+                finally:
+                    if timer is not None:
+                        timer.cancel()
             except TransactionError as e:
                 transaction.rollback()
                 transaction.tasks.clear()
                 e.fix(transaction_extras)
                 continue
-            except backend.DatabaseTimeoutError:
+            except (backend.DatabaseTimeoutError, TimeOutException):
                 logger.warning(
                     log_message, *log_args, duration(), exc_info=True)
                 abort(HTTPStatus.GATEWAY_TIMEOUT)
