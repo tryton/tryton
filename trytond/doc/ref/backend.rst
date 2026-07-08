@@ -411,3 +411,7 @@ Exceptions
 .. exception:: DatabaseOperationalError
 
    Exception raised for errors that are related to the database’s operation.
+
+.. exception:: DatabaseTimeoutError
+
+   The exception raised when a query last longer than the defined timeout.
