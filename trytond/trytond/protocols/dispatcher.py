@@ -230,7 +230,8 @@ def _dispatch(request, pool, *args, **kwargs):
                 e.fix(transaction_extras)
                 continue
             except backend.DatabaseTimeoutError:
-                logger.warning(log_message, *log_args, exc_info=True)
+                logger.warning(
+                    log_message, *log_args, duration(), exc_info=True)
                 abort(HTTPStatus.REQUEST_TIMEOUT)
             except backend.DatabaseOperationalError:
                 if count < retry and not rpc.readonly:
