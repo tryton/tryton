@@ -24,5 +24,9 @@ this repository contains the full copyright notices and license terms. -->
             <field name="text">Could not find tax for:
 %(tax_category)s</field>
         </record>
+        <record model="ir.message" id="msg_bank_account_not_found">
+            <field name="text">Could not find bank account "%(account)s" for party "%(parties)s".</field>
+            <field name="text_plural">Could not find bank account "%(account)s" for any of the parties "%(parties)s".</field>
+        </record>
     </data>
 </tryton>
