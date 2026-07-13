@@ -1049,10 +1049,7 @@ class Sale(
         shipment = Shipment(**values)
         shipment.on_change_warehouse()
         if Shipment.__name__ == 'stock.shipment.out':
-            if self.shipment_address == self.warehouse.address:
-                shipment.delivery_address = shipment.warehouse.address
-            else:
-                shipment.delivery_address = self.shipment_address
+            shipment.delivery_address = self.shipment_address
         elif Shipment.__name__ == 'stock.shipment.out.return':
             shipment.contact_address = values['customer'].address_get()
         return shipment
