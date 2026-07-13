@@ -1010,7 +1010,6 @@ class ModelSQL(ModelStorage):
         defaults_cache = {}  # Store already computed default values
         missing_defaults = {}  # Store missing default values by schema
         new_ids = []
-        vlist = [v.copy() for v in vlist]
 
         def db_insert(columns, vlist, column_names):
             if transaction.database.has_multirow_insert():
