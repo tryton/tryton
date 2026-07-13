@@ -72,6 +72,7 @@ Create parties::
     >>> agent_identifier.code = "CHE-123.456.788 IVA"
     >>> agent_party.save()
     >>> agent = Agent(party=agent_party)
+    >>> agent.ups_account_number = os.getenv('UPS_ACCOUNT_NUMBER')
     >>> agent.save()
     >>> AgentSelection(to_country=switzerland, agent=agent).save()
 
