@@ -2,11 +2,11 @@ Stock Package Shipping DPD Module
 #################################
 
 The Stock Package Shipping DPD module allows you to generate the DPD label
-using the DPD webservices.
+using the `DPD webservices <https://esolutions.dpd.com/>`_.
 DPD has many different web services, the module supports:
 
-- `LoginService 2.0 <https://esolutions.dpd.com/dokumente/LoginService_V2_0.pdf>`_
-- `ShipmentService 4.5 <https://esolutions.dpd.com/dokumente/ShipmentService_V4_5.pdf>`_
+- LoginService 2.0
+- ShipmentService 4.5
 
 Carrier Credential
 ******************
