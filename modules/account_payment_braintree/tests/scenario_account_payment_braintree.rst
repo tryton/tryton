@@ -139,7 +139,6 @@ Run cron::
     >>> cron_customer_create, = Cron.find([
     ...     ('method', '=', 'account.payment.braintree.customer|braintree_create'),
     ...     ])
-    >>> cron_customer_create.companies.append(Company(company.id))
     >>> cron_customer_create.click('run_once')
 
     >>> braintree_customer.reload()
@@ -190,7 +189,6 @@ Run cron::
     >>> cron_customer_delete, = Cron.find([
     ...     ('method', '=', 'account.payment.braintree.customer|braintree_delete'),
     ...     ])
-    >>> cron_customer_delete.companies.append(Company(company.id))
     >>> cron_customer_delete.click('run_once')
 
     >>> braintree_customer.reload()
@@ -246,7 +244,6 @@ Refund some amount::
     >>> cron_refund, = Cron.find([
     ...     ('method', '=', 'account.payment.braintree.refund|braintree_refund'),
     ...     ])
-    >>> cron_refund.companies.append(Company(company.id))
     >>> cron_refund.click('run_once')
 
     >>> refund.reload()
@@ -259,7 +256,6 @@ Refund some amount::
     >>> cron_refund_pull, = Cron.find([
     ...     ('method', '=', 'account.payment.braintree.refund|braintree_pull'),
     ...     ])
-    >>> cron_refund_pull.companies.append(Company(company.id))
     >>> cron_refund_pull.click('run_once')
     >>> refund.reload()
     >>> refund.state

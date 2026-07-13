@@ -14,3 +14,7 @@ class Cron(metaclass=PoolMeta):
                 ('account.invoice.chorus|update',
                     "Update invoices from Chorus"),
                 ])
+        cls.methods_company_needed.update({
+                'account.invoice.chorus|send',
+                'account.invoice.chorus|update',
+                })

@@ -12,3 +12,5 @@ class Cron(metaclass=PoolMeta):
         cls.method.selection.append(
             ('account.payment.journal|cron_post_clearing_moves',
                 "Post Clearing Moves"))
+        cls.methods_company_needed.add(
+            'account.payment.journal|cron_post_clearing_moves')

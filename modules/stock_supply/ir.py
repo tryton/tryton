@@ -12,3 +12,4 @@ class Cron(metaclass=PoolMeta):
         cls.method.selection.extend([
                 ('stock.order_point|supply_stock', "Supply Stock"),
                 ])
+        cls.methods_company_needed.add('stock.order_point|supply_stock')

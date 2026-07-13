@@ -23,3 +23,7 @@ class Cron(metaclass=PoolMeta):
                 ('account.payment.stripe.account|fetch_events',
                     "Fetch Stripe Events"),
                 ])
+        cls.methods_company_needed.update({
+                'account.payment|stripe_charge',
+                'account.payment|stripe_capture_',
+                })

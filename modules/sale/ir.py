@@ -14,3 +14,5 @@ class Cron(metaclass=PoolMeta):
                 ('sale.sale|cancel_expired_quotation',
                     "Cancel Expired Sale Quotation"),
                 ])
+        cls.methods_company_needed.add(
+            'sale.sale|cancel_expired_quotation')

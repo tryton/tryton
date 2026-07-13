@@ -12,3 +12,5 @@ class Cron(metaclass=PoolMeta):
         super().__setup__()
         cls.method.selection.append(
             ('product.price_list|fill_cache', "Fill Product Price List Cache"))
+        cls.methods_company_needed.add(
+            'product.price_list|fill_cache')

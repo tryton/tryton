@@ -13,7 +13,7 @@ Imports::
 
     >>> from proteus import Model
     >>> from trytond.modules.account.tests.tools import create_chart, create_fiscalyear
-    >>> from trytond.modules.company.tests.tools import create_company, get_company
+    >>> from trytond.modules.company.tests.tools import create_company
     >>> from trytond.tests.tools import activate_modules
 
     >>> today = dt.date.today()
@@ -45,7 +45,6 @@ Setup fetch events cron::
     >>> cron_fetch_events, = Cron.find([
     ...     ('method', '=', 'account.payment.stripe.account|fetch_events'),
     ...     ])
-    >>> cron_fetch_events.companies.append(get_company())
 
 Create payment journal::
 

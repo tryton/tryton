@@ -23,3 +23,8 @@ class Cron(metaclass=PoolMeta):
                 ('account.payment.braintree.refund|braintree_pull',
                     "Pull Braintree Refund"),
                 ])
+        cls.methods_company_needed.update({
+                'account.payment|braintree_transact',
+                'account.payment|braintree_pull',
+                'account.payment.braintree.refund|braintree_pull',
+                })

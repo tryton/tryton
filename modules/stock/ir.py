@@ -27,6 +27,10 @@ class Cron(metaclass=PoolMeta):
                     "Reschedule Internal Shipments"),
                 ('ir.cron|stock_shipment_assign_try', "Assign Shipments"),
                 ])
+        cls.methods_company_needed.update({
+                'product.product|recompute_cost_price_from_moves',
+                'ir.cron|stock_shipment_assign_try',
+                })
 
     @classmethod
     def __register__(cls, module):

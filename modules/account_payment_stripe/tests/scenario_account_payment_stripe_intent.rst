@@ -13,7 +13,7 @@ Imports::
 
     >>> from proteus import Model
     >>> from trytond.modules.account.tests.tools import create_chart, create_fiscalyear
-    >>> from trytond.modules.company.tests.tools import create_company, get_company
+    >>> from trytond.modules.company.tests.tools import create_company
     >>> from trytond.tests.tools import activate_modules
 
     >>> today = dt.date.today()
@@ -25,10 +25,7 @@ Activate modules::
     >>> config = activate_modules(
     ...     'account_payment_stripe', create_company, create_chart)
 
-Get company::
-
-    >>> Company = Model.get('company.company')
-    >>> company = get_company()
+    >>> Cron = Model.get('ir.cron')
 
 Create fiscal year::
 
@@ -46,11 +43,9 @@ Create Stripe account::
 
 Setup fetch events cron::
 
-    >>> Cron = Model.get('ir.cron')
     >>> cron_fetch_events, = Cron.find([
     ...     ('method', '=', 'account.payment.stripe.account|fetch_events'),
     ...     ])
-    >>> cron_fetch_events.companies.append(Company(company.id))
 
 Create payment journal::
 
@@ -67,7 +62,6 @@ Create party::
 
 Register card::
 
-    >>> Cron = Model.get('ir.cron')
     >>> Customer = Model.get('account.payment.stripe.customer')
     >>> customer = Customer()
     >>> customer.party = party
@@ -82,7 +76,6 @@ Register card::
     >>> cron_update_intent, = Cron.find([
     ...     ('method', '=', 'account.payment.stripe.customer|stripe_intent_update'),
     ...     ])
-    >>> cron_update_intent.companies.append(Company(company.id))
     >>> cron_update_intent.click('run_once')
     >>> customer.reload()
     >>> bool(customer.stripe_customer_id)

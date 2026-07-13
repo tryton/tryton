@@ -4,7 +4,7 @@
 from trytond import backend
 from trytond.model import ModelSQL, ModelView, dualmethod, fields
 from trytond.pool import Pool, PoolMeta
-from trytond.pyson import Eval
+from trytond.pyson import Eval, If
 from trytond.tools import timezone as tz
 from trytond.transaction import Transaction
 
@@ -75,8 +75,22 @@ class Cron(metaclass=PoolMeta):
         'ir.cron-company.company', 'cron', 'company', "Companies",
         states={
             'readonly': Eval('running', False),
+            'invisible': ~Eval('company_needed', False),
             },
+        domain=[
+            If(~Eval('company_needed'),
+                ('id', '=', None),
+                ()),
+            ],
         help='Companies registered for this cron.')
+    company_needed = fields.Function(fields.Boolean(
+            "Company Needed"),
+        'on_change_with_company_needed')
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls.methods_company_needed = set()
 
     @dualmethod
     @ModelView.button
@@ -89,10 +103,18 @@ class Cron(metaclass=PoolMeta):
                     with Transaction().set_context(company=company.id):
                         super().run_once([cron])
 
-    @staticmethod
-    def default_companies():
-        Company = Pool().get('company.company')
-        return list(map(int, Company.search([])))
+    @fields.depends('method')
+    def on_change_with_company_needed(self, name=None):
+        return self.method in self.__class__.methods_company_needed
+
+    @fields.depends('companies', methods=['on_change_with_company_needed'])
+    def on_change_method(self):
+        pool = Pool()
+        Company = pool.get('company.company')
+        if self.on_change_with_company_needed():
+            self.companies = Company.search([])
+        else:
+            self.companies = []
 
 
 class CronCompany(ModelSQL):

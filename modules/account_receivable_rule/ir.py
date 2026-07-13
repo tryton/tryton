@@ -13,3 +13,5 @@ class Cron(metaclass=PoolMeta):
                 ('account.account.receivable.rule|apply',
                     "Apply Account Receivable Rules"),
                 ])
+        cls.methods_company_needed.add(
+            'account.account.receivable.rule|apply')

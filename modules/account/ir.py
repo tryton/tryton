@@ -14,3 +14,4 @@ class Cron(metaclass=PoolMeta):
                 ('account.move.line|reconcile_automatic',
                     "Reconcile Move Lines Automatically"),
                 ])
+        cls.methods_company_needed.add('account.move.line|reconcile_automatic')

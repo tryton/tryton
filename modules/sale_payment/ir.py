@@ -12,3 +12,4 @@ class Cron(metaclass=PoolMeta):
         super().__setup__()
         cls.method.selection.append(
             ('sale.sale|payment_confirm', "Confirm sales based on payment"))
+        cls.methods_company_needed.add('sale.sale|payment_confirm')

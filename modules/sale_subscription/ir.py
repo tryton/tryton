@@ -15,3 +15,7 @@ class Cron(metaclass=PoolMeta):
                 ('sale.subscription|generate_invoice',
                     "Generate Subscription Invoices"),
                 ])
+        cls.methods_company_needed.update({
+                'sale.subscription.line|generate_consumption',
+                'sale.subscription|generate_invoice',
+                })

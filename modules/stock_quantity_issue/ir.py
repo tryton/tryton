@@ -13,3 +13,5 @@ class Cron(metaclass=PoolMeta):
                 ('stock.quantity.issue|generate_issues',
                     "Generate Stock Quantity Issues"),
                 ])
+        cls.methods_company_needed.add(
+            'stock.quantity.issue|generate_issues')
