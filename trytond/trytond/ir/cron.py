@@ -93,6 +93,7 @@ class Cron(DeactivableMixin, ModelSQL, ModelView):
         fields.Boolean("Running"), 'get_running')
     method = fields.Selection([
             ('ir.trigger|trigger_time', "Run On Time Triggers"),
+            ('ir.queue|retry', "Retry Queued Tasks"),
             ('ir.queue|clean', "Clean Task Queue"),
             ('ir.error|clean', "Clean Errors"),
             ('ir.cron.log|clean', "Clean Cron Logs"),

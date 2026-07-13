@@ -81,11 +81,15 @@ class Error(Workflow, ModelView, ModelSQL):
         super().__setup__()
         table = cls.__table__()
 
-        cls._sql_indexes.add(
-            Index(
-                table,
-                (table.state, Index.Equality(cardinality='low')),
-                where=table.state.in_(['open', 'processing'])))
+        cls._sql_indexes.update({
+                Index(
+                    table,
+                    (table.state, Index.Equality(cardinality='low')),
+                    where=table.state.in_(['open', 'processing'])),
+                Index(
+                    table,
+                    (table.origin, Index.Equality(cardinality='high'))),
+                })
         cls._order = [
             ('create_date', 'DESC'),
             ('id', 'DESC'),
@@ -194,4 +198,6 @@ class Error(Workflow, ModelView, ModelSQL):
                 Cron.__queue__.run_once([error.origin])
             elif isinstance(error.origin, Queue):
                 task = error.origin
+                task.finished_at = dt.datetime.now()
+                task.save()
                 Queue.push(task.name, task.data)

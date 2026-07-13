@@ -150,7 +150,11 @@ def run_task(pool, task_id):
     retry = config.getint('database', 'retry')
     try:
         count = 0
-        transaction_extras = {}
+        transaction_extras = {
+            '_lock_records': {
+                Queue._table: [task_id],
+                }
+            }
         while True:
             if count:
                 time.sleep(0.02 * count)
@@ -188,11 +192,21 @@ def run_task(pool, task_id):
         if not config.getboolean('queue', 'worker', default=False):
             time.sleep(0.02 * retry)
         try:
-            with Transaction().start(pool.database_name, 0) as transaction:
+            transaction_extras = {
+                '_lock_records': {
+                    Queue._table: [task_id],
+                    }
+                }
+            with Transaction().start(
+                    pool.database_name, 0,
+                    **transaction_extras) as transaction:
                 if not transaction.database.has_channel():
                     logger.critical('%s failed', name, exc_info=True)
                     return
                 task = Queue(task_id)
+                task.lock()
+                task.finished_at = dt.datetime.now()
+                task.save()
                 if task.scheduled_at and task.enqueued_at < task.scheduled_at:
                     duration = (task.scheduled_at - task.enqueued_at) * 2
                 else:
@@ -201,8 +215,9 @@ def run_task(pool, task_id):
                 scheduled_at = dt.datetime.now() + duration * random.random()
                 Queue.push(task.name, task.data, scheduled_at=scheduled_at)
         except Exception:
-            logger.critical(
-                "rescheduling %s failed", name, exc_info=True)
+            logger.info(
+                "rescheduling %s failed", name,
+                exc_info=logger.isEnabledFor(logging.DEBUG))
     except (UserError, UserWarning):
         logger.info(
             "%s failed after %i ms", name, duration(),
@@ -210,3 +225,15 @@ def run_task(pool, task_id):
     except Exception:
         logger.critical(
             "%s failed after %i ms", name, duration(), exc_info=True)
+        transaction_extras = {
+                '_lock_records': {
+                    Queue._table: [task_id],
+                    }
+                }
+        with Transaction().start(
+                pool.database_name, 0,
+                **transaction_extras) as transaction:
+            task = Queue(task_id)
+            task.lock()
+            # Avoid retrying tasks that fail unexpectedly
+            task.finished_at = dt.datetime.now()

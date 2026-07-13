@@ -19,6 +19,18 @@ a database from another series.
 8.2
 ---
 
+.. _migration-8.2-before:
+
+Before
+~~~~~~
+
+* If the ``trytond-worker`` is configured, stop it and finish all dequeued
+  tasks:
+
+   .. code-block:: SQL
+
+      UPDATE "ir_queue" SET finished_at = CURRENT_TIMESTAMP WHERE dequeued_at IS NOT NULL AND finished_at IS NULL;
+
 .. _migration-8.2-after:
 
 After
