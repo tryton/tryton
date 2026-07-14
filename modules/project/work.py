@@ -5,6 +5,7 @@ import datetime
 from collections import defaultdict
 
 from sql import Null
+from sql.conditionals import Coalesce
 from sql.functions import CharLength
 
 from trytond.cache import Cache
@@ -257,9 +258,13 @@ class Work(
                 'project.msg_work_number_unique'),
             ]
         cls._sql_indexes.update({
-                Index(t, (t.number, Index.Equality(cardinality='high'))),
-                Index(t, (t.number, Index.Similarity(cardinality='high'))),
-                Index(t, (t.path, Index.Similarity(begin=True))),
+                Index(t,
+                    (Coalesce(t.number, ''),
+                        Index.Equality(cardinality='high'))),
+                Index(t,
+                    (Coalesce(t.number, ''),
+                        Index.Similarity(cardinality='high'))),
+                Index(t, (Coalesce(t.path, ''), Index.Similarity(begin=True))),
                 })
 
     @classmethod

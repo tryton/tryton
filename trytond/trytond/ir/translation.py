@@ -12,7 +12,7 @@ from relatorio.reporting import MIMETemplateLoader
 from relatorio.templates.opendocument import get_zip_file
 from sql import Column, Literal, Null
 from sql.aggregate import Max
-from sql.conditionals import Case
+from sql.conditionals import Case, Coalesce
 from sql.functions import CharLength, Position, Substring
 from sql.operators import Concat
 
@@ -120,9 +120,11 @@ class Translation(
 
         cls._sql_indexes.update({
                 Index(
-                    table, (Index.Unaccent(table.src), Index.Similarity())),
+                    table, (Index.Unaccent(Coalesce(table.src, '')),
+                        Index.Similarity())),
                 Index(
-                    table, (Index.Unaccent(table.value), Index.Similarity())),
+                    table, (Index.Unaccent(Coalesce(table.value, '')),
+                        Index.Similarity())),
                 Index(
                     table,
                     (table.type, Index.Equality(cardinality='low')),
@@ -130,7 +132,8 @@ class Translation(
                     (table.lang, Index.Equality(cardinality='low')),
                     (table.res_id, Index.Range()),
                     (table.fuzzy, Index.Equality(cardinality='low')),
-                    (Index.Unaccent(table.value), Index.Similarity())),
+                    (Index.Unaccent(Coalesce(table.value, '')),
+                        Index.Similarity())),
                 Index(
                     table,
                     (table.type, Index.Equality(cardinality='low')),

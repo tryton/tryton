@@ -6,6 +6,7 @@ from collections import defaultdict
 from decimal import Decimal
 
 from sql import Null
+from sql.conditionals import Coalesce
 from sql.functions import CharLength
 
 from trytond import backend
@@ -139,7 +140,7 @@ class Complaint(Workflow, ModelSQL, ModelView, ChatMixin):
         super().__setup__()
         t = cls.__table__()
         cls._sql_indexes.update({
-                Index(t, (t.reference, Index.Similarity())),
+                Index(t, (Coalesce(t.reference, ''), Index.Similarity())),
                 Index(
                     t,
                     (t.state, Index.Equality(cardinality='low')),

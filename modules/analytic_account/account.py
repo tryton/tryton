@@ -98,7 +98,7 @@ class Account(
         super().__setup__()
         t = cls.__table__()
         cls._sql_indexes.add(
-            Index(t, (t.code, Index.Similarity())))
+            Index(t, (Coalesce(t.code, ''), Index.Similarity())))
         cls._order.insert(0, ('code', 'ASC'))
         cls._order.insert(1, ('name', 'ASC'))
 

@@ -52,7 +52,7 @@ exclude = ['doc']
 "" = "trytond/modules/sale_rental"
 
 [tool.hatch.metadata.hooks.tryton]
-dependencies = []
+dependencies = ['python-sql']
 copyright = 'COPYRIGHT'
 readme = 'README.rst'
 

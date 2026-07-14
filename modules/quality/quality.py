@@ -5,6 +5,7 @@ import datetime as dt
 from functools import wraps
 from random import Random
 
+from sql.conditionals import Coalesce
 from sql.functions import CharLength
 
 from trytond.i18n import gettext, lazy_gettext
@@ -412,7 +413,7 @@ class Inspection(Workflow, ModelSQL, ModelView, ChatMixin):
         super().__setup__()
         t = cls.__table__()
         cls._sql_indexes.update({
-                Index(t, (t.reference, Index.Similarity())),
+                Index(t, (Coalesce(t.reference, ''), Index.Similarity())),
                 })
         cls._transitions |= {
             ('pending', 'passed'),
