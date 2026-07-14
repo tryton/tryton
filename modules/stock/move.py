@@ -80,25 +80,34 @@ class StockMixin(object):
         """
         pool = Pool()
         Product = pool.get('product.product')
+        Location = pool.get('stock.location')
 
         quantities = defaultdict(float)
         if not location_ids:
             return quantities
 
-        with_childs = Transaction().context.get(
-            'with_childs', len(location_ids) == 1)
+        warehouse_only = all(
+            l.type == 'warehouse' for l in Location.browse(location_ids))
+        if warehouse_only:
+            grouped_location_ids = ([l] for l in location_ids)
+        else:
+            grouped_location_ids = [location_ids]
 
-        with Transaction().set_context(cls._quantity_context(name)):
-            pbl = Product.products_by_location(
-                location_ids,
-                with_childs=with_childs,
-                grouping=grouping,
-                grouping_filter=grouping_filter)
+        for sub_location_ids in grouped_location_ids:
+            with_childs = Transaction().context.get(
+                'with_childs', len(sub_location_ids) == 1)
 
-        for key, quantity in pbl.items():
-            # pbl could return None in some keys
-            if key[position] is not None:
-                quantities[key[position]] += quantity
+            with Transaction().set_context(cls._quantity_context(name)):
+                pbl = Product.products_by_location(
+                    sub_location_ids,
+                    with_childs=with_childs,
+                    grouping=grouping,
+                    grouping_filter=grouping_filter)
+
+            for key, quantity in pbl.items():
+                # pbl could return None in some keys
+                if key[position] is not None:
+                    quantities[key[position]] += quantity
         return quantities
 
     @classmethod
@@ -118,19 +127,27 @@ class StockMixin(object):
         Product = pool.get('product.product')
         Move = pool.get('stock.move')
         Uom = pool.get('product.uom')
+        Location = pool.get('stock.location')
+        transaction = Transaction()
+        context = transaction.context
         uom = Uom.__table__()
 
         if not location_ids or not domain:
             return []
-        with_childs = Transaction().context.get(
-            'with_childs', len(location_ids) == 1)
+
+        warehouse_only = all(
+            l.type == 'warehouse' for l in Location.browse(location_ids))
+        with_childs = context.get(
+            'with_childs', len(location_ids) == 1 or warehouse_only)
         _, operator_, operand = domain
 
-        with Transaction().set_context(cls._quantity_context(name)):
-            if (len(location_ids) == 1
-                    and not Transaction().context.get('stock_skip_warehouse')):
+        with transaction.set_context(cls._quantity_context(name)):
+            if ((len(location_ids) == 1 or warehouse_only)
+                    and not context.get('stock_skip_warehouse')):
                 # We can use the compute quantities query if the request is for
-                # a single location because all the locations are children and
+                # a single location because all the locations are children or
+                # if the request is for only warehouses because all the
+                # children locations are under a single warehouse
                 # so we can do a SUM.
                 Operator = fields.SQL_OPERATORS[operator_]
                 query = Move.compute_quantities_query(
