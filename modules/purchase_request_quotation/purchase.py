@@ -5,7 +5,7 @@ from functools import wraps
 from itertools import groupby
 
 from sql import Null
-from sql.conditionals import Case
+from sql.conditionals import Case, Coalesce
 from sql.functions import CharLength
 
 from trytond.i18n import gettext
@@ -140,7 +140,7 @@ class Quotation(Workflow, ModelSQL, ModelView, ChatMixin):
         super().__setup__()
         t = cls.__table__()
         cls._sql_indexes.update({
-                Index(t, (t.reference, Index.Similarity())),
+                Index(t, (Coalesce(t.reference, ''), Index.Similarity())),
                 Index(
                     t, (t.state, Index.Equality(cardinality='low')),
                     where=t.state.in_(['draft', 'sent'])),

@@ -201,7 +201,8 @@ class Template(
         super().__setup__()
         t = cls.__table__()
         cls._sql_indexes.update({
-                Index(t, (t.code, Index.Similarity())),
+                Index(t, (Coalesce(t.code, ''), Index.Equality())),
+                Index(t, (Coalesce(t.code, ''), Index.Similarity())),
                 })
         cls._order.insert(0, ('rec_name', 'ASC'))
 
@@ -587,12 +588,17 @@ class Product(
                     & (t.code != '')),
                 'product.msg_product_code_unique'),
             ]
-        cls._sql_indexes.add(
-            Index(t, (t.code, Index.Similarity(cardinality='high'))))
-        cls._sql_indexes.add(
-            Index(t,
-                (t.position, Index.Range(order='ASC NULLS FIRST')),
-                (t.id, Index.Range(order='ASC'))))
+        cls._sql_indexes.update({
+                Index(t,
+                    (Coalesce(t.code, ''),
+                        Index.Equality(cardinality='high'))),
+                Index(t,
+                    (Coalesce(t.code, ''),
+                        Index.Similarity(cardinality='high'))),
+                Index(t,
+                    (t.position, Index.Range(order='ASC NULLS FIRST')),
+                    (t.id, Index.Range(order='ASC'))),
+                })
 
         for attr in dir(Template):
             tfield = getattr(Template, attr)

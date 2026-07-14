@@ -5,6 +5,7 @@ import os
 
 from lxml import etree
 from sql import Literal, Null
+from sql.conditionals import Coalesce
 
 from trytond.cache import Cache, MemoryCache
 from trytond.i18n import gettext
@@ -726,7 +727,7 @@ class ViewTreeState(
                 table,
                 (table.user, Index.Range()),
                 (table.model, Index.Equality()),
-                (table.child_name, Index.Equality()),
+                (Coalesce(table.child_name, ''), Index.Equality()),
                 (table.domain, Index.Equality())))
 
     @staticmethod

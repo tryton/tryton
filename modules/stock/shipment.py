@@ -66,7 +66,7 @@ class ShipmentMixin:
         super().__setup__()
         t = cls.__table__()
         cls._sql_indexes.update({
-                Index(t, (t.reference, Index.Similarity())),
+                Index(t, (Coalesce(t.reference, ''), Index.Similarity())),
                 })
         cls._order = [
             ('effective_date', 'ASC NULLS LAST'),

@@ -5,6 +5,7 @@ from collections import defaultdict
 
 from sql import Literal
 from sql.aggregate import Count, Max
+from sql.conditionals import Coalesce
 
 from trytond.i18n import gettext
 from trytond.model import (
@@ -378,7 +379,7 @@ class ProductSupplier(
         super().__setup__()
         t = cls.__table__()
         cls._sql_indexes.update({
-                Index(t, (t.code, Index.Similarity())),
+                Index(t, (Coalesce(t.code, ''), Index.Similarity())),
                 })
 
     @staticmethod

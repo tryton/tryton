@@ -8,7 +8,7 @@ from itertools import cycle, groupby
 
 from sql import Literal
 from sql.aggregate import Sum
-from sql.conditionals import Case
+from sql.conditionals import Case, Coalesce
 
 from trytond import backend
 from trytond.i18n import gettext
@@ -164,7 +164,7 @@ class TaxCode(
         super().__setup__()
         t = cls.__table__()
         cls._sql_indexes.add(
-            Index(t, (t.code, Index.Similarity())))
+            Index(t, (Coalesce(t.code, ''), Index.Similarity())))
         for date in [cls.start_date, cls.end_date]:
             date.states = {
                 'readonly': (Bool(Eval('template', -1))

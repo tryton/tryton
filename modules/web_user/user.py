@@ -89,10 +89,12 @@ class User(avatar_mixin(100), DeactivableMixin, ModelSQL, ModelView):
             ]
         cls._sql_indexes.update({
                 Index(
-                    table, (table.email, Index.Equality(cardinality='high'))),
+                    table, (Coalesce(table.email, ''),
+                        Index.Equality(cardinality='high'))),
                 Index(
                     table,
-                    (table.email_token, Index.Equality(cardinality='high')),
+                    (Coalesce(table.email_token, ''),
+                        Index.Equality(cardinality='high')),
                     where=table.email_token != Null),
                 })
         cls._buttons.update({
