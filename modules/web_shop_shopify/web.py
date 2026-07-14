@@ -519,7 +519,7 @@ class Shop(metaclass=PoolMeta):
                 for prod, s_p, s_t, p, t in zip(
                     products, sale_prices, sale_taxes, prices, taxes))
             or any(
-                prod in self.products_removed for prod in products))
+                prod in self.products_removed for prod in template.products))
 
     def _shopify_update_product(
             self, shopify_shop, categories, template, products,
