@@ -13,7 +13,7 @@ this repository contains the full copyright notices and license terms. -->
             <CreDtTm>${datetime.datetime.now().replace(microsecond=0).isoformat()}</CreDtTm>
             <!-- Authstn -->
             <NbOfTxs>${len(group.payments)}</NbOfTxs>
-            <CtrlSum>${sum(p.amount for p in group.payments)}</CtrlSum>
+            <CtrlSum>${format(sum(p.amount for p in group.payments).normalize(), 'f')}</CtrlSum>
             <!-- PmtTpInf -->
             <!-- ReqdColltnDt -->
             <InitgPty>
@@ -26,7 +26,7 @@ this repository contains the full copyright notices and license terms. -->
             <PmtMtd>DD</PmtMtd>
             <BtchBookg>${'true' if group.journal.sepa_batch_booking else 'false'}</BtchBookg>
             <NbOfTxs>${len(payments)}</NbOfTxs>
-            <CtrlSum>${sum(p.amount for p in payments)}</CtrlSum>
+            <CtrlSum>${format(sum(p.amount for p in payments).normalize(), 'f')}</CtrlSum>
             <PmtTpInf>
                 <!-- InstrPrty -->
                 <SvcLvl>
@@ -64,7 +64,7 @@ this repository contains the full copyright notices and license terms. -->
                     <EndToEndId>${payment.sepa_end_to_end_id}</EndToEndId>
                 </PmtId>
                 <!-- PmtTpInf -->
-                <InstdAmt py:attrs="{'Ccy': payment.currency.code}">${payment.amount}</InstdAmt>
+                <InstdAmt py:attrs="{'Ccy': payment.currency.code}">${format(payment.amount.normalize(), 'f')}</InstdAmt>
                 <!-- ChrgBr --> <!-- EPC only at payment information level -->
                 <DrctDbtTx>
                     <MndtRltdInf py:with="mandate = payment.sepa_mandate">

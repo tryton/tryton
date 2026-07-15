@@ -90,7 +90,7 @@ this repository contains the full copyright notices and license terms. -->
     <py:otherwise>
         <cac:PaymentTerms py:for="line in this.invoice.lines_to_pay">
             <cbc:Note py:if="this.invoice.payment_term and this.invoice.payment_term.description">${this.invoice.payment_term.description}</cbc:Note>
-            <cbc:Amount py:attrs="{'currencyID': this.invoice.currency.code}">${line.amount}</cbc:Amount>
+            <cbc:Amount py:attrs="{'currencyID': this.invoice.currency.code}">${format(line.amount.normalize(), 'f')}</cbc:Amount>
             <cbc:PaymentDueDate>${line.maturity_date}</cbc:PaymentDueDate>
         </cac:PaymentTerms>
     </py:otherwise>
@@ -101,16 +101,16 @@ this repository contains the full copyright notices and license terms. -->
         <cbc:AllowanceChargeReasonCode py:if="reason_code">${reason_code}</cbc:AllowanceChargeReasonCode>
     </py:with>
     <cbc:AllowanceChargeReason>${allowance_charge.product.name}</cbc:AllowanceChargeReason>
-    <cbc:Amount py:attrs="{'currencyID': this.invoice.currency.code}">${abs(allowance_charge.amount)}</cbc:Amount>
+    <cbc:Amount py:attrs="{'currencyID': this.invoice.currency.code}">${format(abs(allowance_charge.amount).normalize(), 'f')}</cbc:Amount>
     <cac:TaxCategory py:for="tax_line in allowance_charge.invoice_taxes">
         ${TaxCategory(tax_line.tax)}
     </cac:TaxCategory>
 </cac:AllowanceCharge>
 <cac:TaxTotal py:for="group, lines, amount in this.taxes">
-    <cbc:TaxAmount py:attrs="{'currencyID': this.invoice.currency.code}">${amount}</cbc:TaxAmount>
+    <cbc:TaxAmount py:attrs="{'currencyID': this.invoice.currency.code}">${format(amount.normalize(), 'f')}</cbc:TaxAmount>
     <cac:TaxSubtotal py:for="line in lines">
-        <cbc:TaxableAmount py:attrs="{'currencyID': this.invoice.currency.code}">${line.base}</cbc:TaxableAmount>
-        <cbc:TaxAmount py:attrs="{'currencyID': this.invoice.currency.code}">${line.amount}</cbc:TaxAmount>
+        <cbc:TaxableAmount py:attrs="{'currencyID': this.invoice.currency.code}">${format(line.base.normalize(), 'f')}</cbc:TaxableAmount>
+        <cbc:TaxAmount py:attrs="{'currencyID': this.invoice.currency.code}">${format(line.amount.normalize(), 'f')}</cbc:TaxAmount>
         <cbc:Percent py:if="line.tax.type == 'percentage' and not (specification or '').startswith('peppol')">${format((line.tax.rate * 100).normalize(), 'f')}</cbc:Percent>
         <cac:TaxCategory>
             ${TaxCategory(line.tax)}
@@ -118,19 +118,19 @@ this repository contains the full copyright notices and license terms. -->
     </cac:TaxSubtotal>
 </cac:TaxTotal>
 <cac:LegalMonetaryTotal>
-    <cbc:LineExtensionAmount py:attrs="{'currencyID': this.invoice.currency.code}">${this.invoice.untaxed_amount}</cbc:LineExtensionAmount>
-    <cbc:TaxExclusiveAmount py:attrs="{'currencyID': this.invoice.currency.code}">${this.invoice.untaxed_amount}</cbc:TaxExclusiveAmount>
-    <cbc:TaxInclusiveAmount py:attrs="{'currencyID': this.invoice.currency.code}">${this.invoice.untaxed_amount + this.invoice.tax_amount}</cbc:TaxInclusiveAmount>
+    <cbc:LineExtensionAmount py:attrs="{'currencyID': this.invoice.currency.code}">${format(this.invoice.untaxed_amount.normalize(), 'f')}</cbc:LineExtensionAmount>
+    <cbc:TaxExclusiveAmount py:attrs="{'currencyID': this.invoice.currency.code}">${format(this.invoice.untaxed_amount.normalize(), 'f')}</cbc:TaxExclusiveAmount>
+    <cbc:TaxInclusiveAmount py:attrs="{'currencyID': this.invoice.currency.code}">${format((this.invoice.untaxed_amount + this.invoice.tax_amount).normalize(), 'f')}</cbc:TaxInclusiveAmount>
     <py:if test="this.invoice.total_amount != (this.invoice.untaxed_amount + this.invoice.tax_amount)">
-        <cbc:PayableRoundingAmount py:attrs="{'currencyID': this.invoice.currency.code}">${this.invoice.total_amount - this.invoice.untaxed_amount - this.invoice.tax_amount}</cbc:PayableRoundingAmount>
+        <cbc:PayableRoundingAmount py:attrs="{'currencyID': this.invoice.currency.code}">${format((this.invoice.total_amount - this.invoice.untaxed_amount - this.invoice.tax_amount).normalize(), 'f')}</cbc:PayableRoundingAmount>
     </py:if>
-    <cbc:PrepaidAmount py:if="this.prepaid_amount" py:attrs="{'currencyID': this.invoice.currency.code}">${this.prepaid_amount}</cbc:PrepaidAmount>
-    <cbc:PayableAmount py:attrs="{'currencyID': this.invoice.currency.code}">${this.invoice.total_amount - this.prepaid_amount}</cbc:PayableAmount>
+    <cbc:PrepaidAmount py:if="this.prepaid_amount" py:attrs="{'currencyID': this.invoice.currency.code}">${format(this.prepaid_amount.normalize(), 'f')}</cbc:PrepaidAmount>
+    <cbc:PayableAmount py:attrs="{'currencyID': this.invoice.currency.code}">${format((this.invoice.total_amount - this.prepaid_amount).normalize(), 'f')}</cbc:PayableAmount>
 </cac:LegalMonetaryTotal>
 <cac:InvoiceLine py:for="line_id, line in enumerate(this.lines, 1)">
     <cbc:ID>${line_id}</cbc:ID>
     <cbc:InvoicedQuantity py:attrs="{'unitCode': line.unit.unece_code if line.unit and line.unit.unece_code else 'ZZ'}">${format(Decimal(str(line.quantity)), 'f')}</cbc:InvoicedQuantity>
-    <cbc:LineExtensionAmount py:attrs="{'currencyID': this.invoice.currency.code}">${line.amount}</cbc:LineExtensionAmount>
+    <cbc:LineExtensionAmount py:attrs="{'currencyID': this.invoice.currency.code}">${format(line.amount.normalize(), 'f')}</cbc:LineExtensionAmount>
     <cac:Item>
         <cbc:Description py:if="line.description">${line.description}</cbc:Description>
         <cbc:Name>${line.product.name if line.product else line.summary}</cbc:Name>
@@ -152,7 +152,7 @@ this repository contains the full copyright notices and license terms. -->
         </cac:ClassifiedTaxCategory>
     </cac:Item>
     <cac:Price>
-        <cbc:PriceAmount py:attrs="{'currencyID': this.invoice.currency.code}">${line.unit_price}</cbc:PriceAmount>
+        <cbc:PriceAmount py:attrs="{'currencyID': this.invoice.currency.code}">${format(line.unit_price.normalize(), 'f')}</cbc:PriceAmount>
     </cac:Price>
 </cac:InvoiceLine>
 </Invoice>
