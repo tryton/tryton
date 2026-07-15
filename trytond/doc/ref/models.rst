@@ -382,6 +382,10 @@ Class methods:
    ``vlist`` is list of dictionaries with fields names as key and created
    values as value and return the list of new instances.
 
+.. classmethod:: ModelStorage.bulk_create([batch_size[, auto]])
+
+   Returns a :class:`BulkBuffer` for the :meth:`~ModelStorage.create` method.
+
 .. classmethod:: ModelStorage.read(ids, fields_names)
 
    Return a list of dictionary for the record ids.
@@ -425,6 +429,10 @@ Class methods:
 .. classmethod:: ModelStorage.delete(records)
 
    Delete records.
+
+.. classmethod:: ModelStorage.bulk_delete([batch_size[, auto]])
+
+   Returns a :class:`BulkBuffer` for the :meth:`~ModelStorage.delete` method.
 
 .. classmethod:: ModelStorage.check_modification(mode, records[, values[, external]])
 
@@ -585,6 +593,14 @@ Class methods:
    Validate the integrity of records after modification of the fields. This
    method must be overridden to add validation for the field names set and must
    raise an exception if validation fails.
+
+.. classmethod:: ModelStorage.bulk_save([batch_size[, auto]])
+
+   Returns a :class:`BulkBuffer` for the :meth:`~ModelStorage.save` method.
+
+.. classmethod:: ModelStorage.bulk_func(name[, batch_size[, auto]])
+
+   Returns a :class:`BulkBuffer` for the named method.
 
 Dual methods:
 
@@ -883,6 +899,28 @@ Additional options are available:
 
    * ``begin``: optimize for constant pattern and anchored to the beginning of
      the string
+
+BulkBuffer
+==========
+
+.. class:: BulkBuffer(function[, batch_size[, auto]])
+
+   A `context manager`_ that bufferizes a list of values.
+   When the list is greater than the ``batch_size`` and ``auto`` is ``True`` or
+   the context is exited, the buffer is flushed by calling the function with
+   the values in the list by ``batch_size``.
+
+.. method:: BulkBuffer.push(values)
+
+   Push a values into the buffer.
+
+.. method:: BulkBuffer.extend(vlist)
+
+   Extend the buffer by appending the values from the iterable.
+
+.. method:: BulkBuffer.flush()
+
+   Call the function with the current valuess in the list and clear it.
 
 BrowseList
 ==========
@@ -1347,3 +1385,4 @@ Instance methods:
 .. _mixin: http://en.wikipedia.org/wiki/Mixin
 .. _JSON: http://en.wikipedia.org/wiki/Json
 .. _UNION: http://en.wikipedia.org/wiki/Union_(SQL)#UNION_operator
+.. _`context manager`: http://docs.python.org/reference/datamodel.html#context-managers

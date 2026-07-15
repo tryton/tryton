@@ -347,6 +347,10 @@ class ModelStorage(Model):
             return ids
 
     @classmethod
+    def bulk_create(cls, batch_size=None, auto=True):
+        return BulkBuffer(cls.create, batch_size=batch_size, auto=auto)
+
+    @classmethod
     def _before_read(cls, ids, fields_names):
         pool = Pool()
         ModelAccess = pool.get('ir.model.access')
@@ -557,6 +561,10 @@ class ModelStorage(Model):
             model.delete(model.search([('resource', 'in', resources)]))
         for meth in on_delete:
             meth()
+
+    @classmethod
+    def bulk_delete(cls, batch_size=None, auto=True):
+        return BulkBuffer(cls.delete, batch_size=batch_size, auto=auto)
 
     @classmethod
     def check_modification(cls, mode, records, values=None, external=False):
@@ -2321,6 +2329,59 @@ class ModelStorage(Model):
                 record._deleted = None
                 record._removed = None
             records = latter
+
+    @classmethod
+    def bulk_save(cls, batch_size=None, auto=True):
+        return BulkBuffer(cls.save, batch_size=batch_size, auto=auto)
+
+    @classmethod
+    def bulk_func(cls, name, batch_size=None, auto=True):
+        return BulkBuffer(getattr(cls, name), batch_size=batch_size, auto=auto)
+
+
+class BulkBuffer:
+    __slots__ = ('_func', '_batch_size', '_auto', '_pending')
+
+    def __init__(self, function, batch_size=None, auto=True):
+        if batch_size is None:
+            batch_size = record_cache_size(Transaction())
+        if batch_size <= 0:
+            raise ValueError("batch_size must be greater than 0")
+        self._func = function
+        self._batch_size = batch_size
+        self._auto = auto
+        self._pending = []
+
+    def push(self, values):
+        self._pending.append(values)
+        if self._auto and len(self._pending) >= self._batch_size:
+            self.flush()
+
+    def extend(self, vlist):
+        if self._auto:
+            for value in vlist:
+                self.push(value)
+        else:
+            self._pending.extend(vlist)
+
+    def flush(self):
+        while self._pending:
+            batch = self._pending[:self._batch_size]
+            del self._pending[:self._batch_size]
+            self._func(batch)
+
+    def __enter__(self):
+        return self
+
+    def __exit__(self, type, value, traceback):
+        if type is None:
+            self.flush()
+
+    def __len__(self):
+        return len(self._pending)
+
+    def __bool__(self):
+        return bool(self._pending)
 
 
 class BrowseList(list):

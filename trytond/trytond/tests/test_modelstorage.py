@@ -108,6 +108,51 @@ class ModelStorageTestCase(DBTestCase):
             self.assertEqual(record.context.get('foo'), 'bar')
 
     @with_transaction()
+    def test_bulk_create(self):
+        "Test bulk create"
+        pool = Pool()
+        ModelStorage = pool.get('test.modelstorage')
+
+        with ModelStorage.bulk_create(batch_size=2) as create:
+            for i in range(3):
+                create.push({'name': str(i)})
+
+        records = ModelStorage.search([])
+        self.assertEqual(len(records), 3)
+
+    @with_transaction()
+    def test_bulk_delete(self):
+        "Test bulk delete"
+        pool = Pool()
+        ModelStorage = pool.get('test.modelstorage')
+
+        records = ModelStorage.create([{'name': str(i)} for i in range(1, 4)])
+
+        with ModelStorage.bulk_delete(batch_size=2) as delete:
+            delete.extend(records)
+
+        records = ModelStorage.search([])
+        self.assertEqual(len(records), 0)
+
+    @with_transaction()
+    def test_bulk_save(self):
+        "Test bulk save"
+        pool = Pool()
+        ModelStorage = pool.get('test.modelstorage')
+
+        record = ModelStorage(name="foo")
+        record.save()
+
+        with ModelStorage.bulk_save(batch_size=2) as save:
+            record.name = "bar"
+            save.push(record)
+            for i in range(3):
+                save.push(ModelStorage(name=str(i)))
+
+        records = ModelStorage.search([])
+        self.assertEqual(len(records), 4)
+
+    @with_transaction()
     def test_save_mixed_context(self):
         'Test save with mixed context '
         pool = Pool()
