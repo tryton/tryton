@@ -236,30 +236,29 @@ class FiscalYear(Workflow, ModelSQL, ModelView):
         '''
         Create periods for the fiscal years with month interval
         '''
-        Period = Pool().get('account.period')
-        to_create = []
-        for fiscalyear in fiscalyears:
-            period_start_date = fiscalyear.start_date
-            while period_start_date < fiscalyear.end_date:
-                month_offset = 1 if period_start_date.day < end_day else 0
-                period_end_date = (period_start_date
-                    + relativedelta(months=interval - month_offset)
-                    + relativedelta(day=end_day))
-                if period_end_date > fiscalyear.end_date:
-                    period_end_date = fiscalyear.end_date
-                name = period_start_date.strftime('%Y-%m')
-                if name != period_end_date.strftime('%Y-%m'):
-                    name += ' - ' + period_end_date.strftime('%Y-%m')
-                to_create.append({
-                    'name': name,
-                    'start_date': period_start_date,
-                    'end_date': period_end_date,
-                    'fiscalyear': fiscalyear.id,
-                    'type': 'standard',
-                    })
-                period_start_date = period_end_date + relativedelta(days=1)
-        if to_create:
-            Period.create(to_create)
+        pool = Pool()
+        Period = pool.get('account.period')
+        with Period.bulk_create() as create:
+            for fiscalyear in fiscalyears:
+                period_start_date = fiscalyear.start_date
+                while period_start_date < fiscalyear.end_date:
+                    month_offset = 1 if period_start_date.day < end_day else 0
+                    period_end_date = (period_start_date
+                        + relativedelta(months=interval - month_offset)
+                        + relativedelta(day=end_day))
+                    if period_end_date > fiscalyear.end_date:
+                        period_end_date = fiscalyear.end_date
+                    name = period_start_date.strftime('%Y-%m')
+                    if name != period_end_date.strftime('%Y-%m'):
+                        name += ' - ' + period_end_date.strftime('%Y-%m')
+                    create.push({
+                        'name': name,
+                        'start_date': period_start_date,
+                        'end_date': period_end_date,
+                        'fiscalyear': fiscalyear.id,
+                        'type': 'standard',
+                        })
+                    period_start_date = period_end_date + relativedelta(days=1)
 
     @classmethod
     @ModelView.button_action('account.act_create_periods')

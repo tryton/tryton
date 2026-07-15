@@ -323,13 +323,12 @@ class QuantityEarlyPlan(Workflow, ModelSQL, ModelView):
                         cls._add(parent, plans)
         cls.save(plans.values())
 
-        to_delete = []
-        for plan in cls.browse(plans.values()):
-            if (plan.state == 'open'
-                    and not isinstance(plan.origin, Move)
-                    and plan.earliest_date == plan.planned_date):
-                to_delete.append(plan)
-        cls.delete(to_delete)
+        with cls.bulk_delete() as delete:
+            for plan in cls.browse(plans.values()):
+                if (plan.state == 'open'
+                        and not isinstance(plan.origin, Move)
+                        and plan.earliest_date == plan.planned_date):
+                    delete.push(plan)
 
         # Update early date based on internal incoming requests
         for warehouse in warehouses:
@@ -354,32 +353,30 @@ class QuantityEarlyPlan(Workflow, ModelSQL, ModelView):
                     product2in[product][plan.planned_date].append(
                         (quantity, plan))
 
-            to_save = []
-            products = set()
-            for product_plan in product_plans:
-                if product_plan.warehouse != warehouse:
-                    continue
-                product = product_plan.origin.product
-                quantity = product_plan.origin.internal_quantity
-                plans = product2in[product][product_plan.early_date]
-                plans = cls._pick_incoming(quantity, plans)
-                if plans:
-                    incoming_products = {p
-                        for pl in plans
-                        for p, q in pl._incoming_quantities(warehouse)}
-                    if incoming_products & products:
-                        cls.save(to_save)
-                        del to_save[:]
-                        products.clear()
+            with cls.bulk_save(auto=False) as save:
+                products = set()
+                for product_plan in product_plans:
+                    if product_plan.warehouse != warehouse:
+                        continue
+                    product = product_plan.origin.product
+                    quantity = product_plan.origin.internal_quantity
+                    plans = product2in[product][product_plan.early_date]
+                    plans = cls._pick_incoming(quantity, plans)
+                    if plans:
+                        incoming_products = {p
+                            for pl in plans
+                            for p, q in pl._incoming_quantities(warehouse)}
+                        if incoming_products & products:
+                            save.flush()
+                            products.clear()
 
-                    earlier_date = max(p.earlier_date for p in plans)
+                        earlier_date = max(p.earlier_date for p in plans)
 
-                    if (not product_plan.early_date
-                            or product_plan.early_date > earlier_date):
-                        product_plan.early_date = earlier_date
-                        to_save.append(product_plan)
-                        products.add(product)
-            cls.save(to_save)
+                        if (not product_plan.early_date
+                                or product_plan.early_date > earlier_date):
+                            product_plan.early_date = earlier_date
+                            save.push(product_plan)
+                            products.add(product)
 
     @classmethod
     def _get_earlier_date(cls, move, warehouse):

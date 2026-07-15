@@ -91,13 +91,10 @@ class Sale(metaclass=PoolMeta):
                 abs(authorized) >= abs(amount)
                 and (authorized * amount >= 0))
 
-        to_confirm = []
-        for sale in sales:
-            if cover(sale.payment_amount_authorized, sale.amount_to_pay):
-                to_confirm.append(sale)
-        if to_confirm:
-            to_confirm = cls.browse(to_confirm)  # optimize cache
-            cls.confirm(to_confirm)
+        with cls.bulk_func('confirm') as confirm:
+            for sale in sales:
+                if cover(sale.payment_amount_authorized, sale.amount_to_pay):
+                    confirm.push(sale)
 
     @property
     def credit_limit_amount(self):

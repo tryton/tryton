@@ -473,28 +473,26 @@ class Commission(ModelSQL, ModelView, ChatMixin):
         def line_key(c):
             return c._group_to_invoice_line_key()
         commissions.sort(key=invoice_key)
-        invoices = []
-        invoice_lines = []
-        to_save = []
-        for key, commissions in groupby(commissions, key=invoice_key):
-            commissions = list(commissions)
-            key = dict(key)
-            invoice = cls._get_invoice(key)
-            invoices.append(invoice)
+        with cls.bulk_save(auto=False) as save:
+            with InvoiceLine.bulk_save(auto=False) as invoice_line_save, \
+                    Invoice.bulk_save(auto=False) as invoice_save:
+                for key, commissions in groupby(commissions, key=invoice_key):
+                    commissions = list(commissions)
+                    key = dict(key)
+                    invoice = cls._get_invoice(key)
+                    invoice_save.push(invoice)
 
-            commissions.sort(key=line_key)
-            for key, commissions in groupby(commissions, key=line_key):
-                commissions = [c for c in commissions if not c.invoice_line]
-                key = dict(key)
-                invoice_line = cls._get_invoice_line(key, invoice, commissions)
-                invoice_lines.append(invoice_line)
-                for commission in commissions:
-                    commission.invoice_line = invoice_line
-                    to_save.append(commission)
-        Invoice.save(invoices)
-        InvoiceLine.save(invoice_lines)
-        Invoice.update_taxes(invoices)
-        cls.save(to_save)
+                    commissions.sort(key=line_key)
+                    for key, commissions in groupby(commissions, key=line_key):
+                        commissions = [
+                            c for c in commissions if not c.invoice_line]
+                        key = dict(key)
+                        invoice_line = cls._get_invoice_line(
+                            key, invoice, commissions)
+                        invoice_line_save.push(invoice_line)
+                        for commission in commissions:
+                            commission.invoice_line = invoice_line
+                            save.push(commission)
 
         if Move and hasattr(Move, 'update_unit_price'):
             moves = list(set().union(*(c.stock_moves for c in commissions)))

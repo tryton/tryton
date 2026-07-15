@@ -258,18 +258,19 @@ class Sale(metaclass=PoolMeta):
 
         super()._process_invoice_fulfillment_states(sales)
 
-        to_save, to_delete, shipments = [], [], set()
-        for sale in sent:
-            if sale.shipment_state != 'sent':
-                to_delete.extend(sale.shipment_costs)
-                shipments.update(sale.shipments)
-        for sale in not_sent:
-            if sale.shipment_state == 'sent':
-                to_save.extend(sale._get_shipment_costs())
-                shipments.update(sale.shipments)
+        shipments = set()
+        with ShipmentCostSale.bulk_delete() as delete:
+            for sale in sent:
+                if sale.shipment_state != 'sent':
+                    for shipment_cost in sale.shipment_costs:
+                        delete.push(shipment_cost)
+                    shipments.update(sale.shipments)
+        with ShipmentCostSale.bulk_save() as save:
+            for sale in not_sent:
+                if sale.shipment_state == 'sent':
+                    save.extend(sale._get_shipment_costs())
+                    shipments.update(sale.shipments)
 
-        ShipmentCostSale.delete(to_delete)
-        ShipmentCostSale.save(to_save)
         ShipmentOut.set_shipment_cost(shipments)
 
     @property

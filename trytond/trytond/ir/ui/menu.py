@@ -248,16 +248,14 @@ class UIMenu(
             return
         Action = pool.get(action_type)
         action = Action(int(action_id))
-        to_create = []
-        for menu in menus:
-            with Transaction().set_context(_timestamp=False):
-                to_create.append({
+        with Transaction().set_context(_timestamp=False), \
+                ActionKeyword.bulk_create() as create:
+            for menu in menus:
+                create.push({
                         'keyword': 'tree_open',
                         'model': str(menu),
                         'action': action.action.id,
                         })
-        if to_create:
-            ActionKeyword.create(to_create)
 
     @classmethod
     def get_favorite(cls, menus, name):

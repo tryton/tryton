@@ -700,14 +700,12 @@ class Rental(
 
     @dualmethod
     def try_picked_up(cls, rentals):
-        to_picked_up = []
-        for rental in rentals:
-            if all(
-                    l.rental_state in {'picked up', 'done'}
-                    for l in rental.lines):
-                to_picked_up.append(rental)
-        if to_picked_up:
-            cls.picked_up(to_picked_up)
+        with cls.bulk_func('picked_up') as picked_up:
+            for rental in rentals:
+                if all(
+                        l.rental_state in {'picked up', 'done'}
+                        for l in rental.lines):
+                    picked_up.push(rental)
 
     @classmethod
     @Workflow.transition('picked up')
@@ -739,12 +737,10 @@ class Rental(
 
     @dualmethod
     def try_done(cls, rentals):
-        to_do = []
-        for rental in rentals:
-            if all(l.rental_state == 'done' for l in rental.lines):
-                to_do.append(rental)
-        if to_do:
-            cls.do(to_do)
+        with cls.bulk_func('do') as do:
+            for rental in rentals:
+                if all(l.rental_state == 'done' for l in rental.lines):
+                    do.push(rental)
 
     @classmethod
     @Workflow.transition('done')

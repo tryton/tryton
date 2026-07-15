@@ -197,11 +197,10 @@ class Work(sequence_ordered(), ModelSQL, ModelView, ChatMixin):
         pool = Pool()
         Cycle = pool.get('production.work.cycle')
 
-        to_do = []
-        for work in works:
-            for cycle in work.active_cycles:
-                to_do.append(cycle)
-        Cycle.do(to_do)
+        with Cycle.bulk_func('do', auto=False) as do:
+            for work in works:
+                for cycle in work.active_cycles:
+                    do.push(cycle)
 
     @property
     def _state(self):

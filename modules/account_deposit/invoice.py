@@ -51,23 +51,21 @@ class Invoice(metaclass=PoolMeta):
         else:
             if balance < 0 and total_amount > 0:
                 amount = -min(-balance, total_amount)
-        to_delete = []
-        for line in self.lines:
-            if line.account == account:
-                to_delete.append(line)
-        if amount < 0:
-            line = self._get_deposit_recall_invoice_line(
-                amount, account, description)
-            try:
-                line.sequence = max(l.sequence for l in self.lines
-                    if l.sequence is not None)
-            except ValueError:
-                pass
-            line.save()
-        else:
-            amount = Decimal(0)
-        if to_delete:
-            InvoiceLine.delete(to_delete)
+        with InvoiceLine.bulk_delete(auto=False) as delete:
+            for line in self.lines:
+                if line.account == account:
+                    delete.push(line)
+            if amount < 0:
+                line = self._get_deposit_recall_invoice_line(
+                    amount, account, description)
+                try:
+                    line.sequence = max(l.sequence for l in self.lines
+                        if l.sequence is not None)
+                except ValueError:
+                    pass
+                line.save()
+            else:
+                amount = Decimal(0)
         return amount
 
     def _get_deposit_recall_invoice_line(self, amount, account, description):

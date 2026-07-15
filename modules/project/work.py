@@ -392,21 +392,16 @@ class Work(
         pool = Pool()
         Timesheet = pool.get('timesheet.work')
 
-        to_create = []
-        to_delete = []
-        for project in projects:
-            if not project.timesheet_works and value:
-                to_create.append({
-                        'origin': str(project),
-                        'company': project.company.id,
-                        })
-            elif project.timesheet_works and not value:
-                to_delete.extend(project.timesheet_works)
-
-        if to_create:
-            Timesheet.create(to_create)
-        if to_delete:
-            Timesheet.delete(to_delete)
+        with Timesheet.bulk_create() as create, \
+                Timesheet.bulk_delete() as delete:
+            for project in projects:
+                if not project.timesheet_works and value:
+                    create.push({
+                            'origin': str(project),
+                            'company': project.company.id,
+                            })
+                elif project.timesheet_works and not value:
+                    delete.extend(project.timesheet_works)
 
     def get_timesheet_date(self, name):
         if self.timesheet_works:
@@ -530,15 +525,13 @@ class Work(
         default.setdefault(
             'status', lambda data: WorkStatus.get_default_status(data['type']))
         new_works = super().copy(project_works, default=default)
-        to_save = []
-        for work, new_work in zip(project_works, new_works):
-            if work.timesheet_available:
-                new_work.timesheet_available = work.timesheet_available
-                new_work.timesheet_start_date = work.timesheet_start_date
-                new_work.timesheet_end_date = work.timesheet_end_date
-                to_save.append(new_work)
-        if to_save:
-            cls.save(to_save)
+        with cls.bulk_save() as save:
+            for work, new_work in zip(project_works, new_works):
+                if work.timesheet_available:
+                    new_work.timesheet_available = work.timesheet_available
+                    new_work.timesheet_start_date = work.timesheet_start_date
+                    new_work.timesheet_end_date = work.timesheet_end_date
+                    save.push(new_work)
         return new_works
 
     @classmethod

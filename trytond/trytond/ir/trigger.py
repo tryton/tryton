@@ -249,14 +249,12 @@ class Trigger(DeactivableMixin, ModelSQL, ModelView):
         if records:
             getattr(ActionModel, method)(records, self)
         if self.limit_number or self.minimum_time_delay:
-            to_create = []
-            for record in records:
-                to_create.append({
-                        'trigger': self.id,
-                        'record_id': record.id,
-                        })
-            if to_create:
-                TriggerLog.create(to_create)
+            with TriggerLog.bulk_create() as create:
+                for record in records:
+                    create.push({
+                            'trigger': self.id,
+                            'record_id': record.id,
+                            })
 
     @classmethod
     def trigger_time(cls):

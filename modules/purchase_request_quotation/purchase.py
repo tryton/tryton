@@ -691,15 +691,12 @@ class CreatePurchase(Wizard):
         super().__setup__()
 
     def transition_start(self):
-        to_save = []
-        reqs = [r for r in self.records
-            if not r.purchase_line and r.quotation_lines]
-        to_save = []
-        for req in reqs:
-            if req.best_quotation_line:
-                to_save.append(self.apply_quotation(req))
-        if to_save:
-            self.model.save(to_save)
+        reqs = (r for r in self.records
+            if not r.purchase_line and r.quotation_lines)
+        with self.model.bulk_save() as save:
+            for req in reqs:
+                if req.best_quotation_line:
+                    save.push(self.apply_quotation(req))
         state = super().transition_start()
         return state
 

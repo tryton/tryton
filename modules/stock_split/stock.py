@@ -107,20 +107,20 @@ class Move(metaclass=PoolMeta):
         def unit_precision(unit):
             return unit.factor * unit.rounding
 
-        to_save, to_clear = [], []
-        for group in groups:
-            if len(group) <= 1:
-                continue
-            quantity = sum(m.internal_quantity for m in group)
-            unit = min((m.unit for m in group), key=unit_precision)
-            move, *others = group
-            move.quantity = UoM.compute_qty(
-                move.product.default_uom, quantity, unit)
-            move.unit = unit
-            to_save.append(move)
-            to_clear.extend(others)
+        to_clear = []
+        with cls.bulk_save() as save:
+            for group in groups:
+                if len(group) <= 1:
+                    continue
+                quantity = sum(m.internal_quantity for m in group)
+                unit = min((m.unit for m in group), key=unit_precision)
+                move, *others = group
+                move.quantity = UoM.compute_qty(
+                    move.product.default_uom, quantity, unit)
+                move.unit = unit
+                save.push(move)
+                to_clear.extend(others)
         cls.write(to_clear, {'quantity': 0})
-        cls.save(to_save)
 
 
 class SplitMoveStart(ModelView):

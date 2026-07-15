@@ -29,11 +29,12 @@ class Invoice(metaclass=PoolMeta):
 
     @classmethod
     def _post(cls, invoices):
-        # Create commission only the first time the invoice is posted
-        to_commission = [i for i in invoices
-            if i.state not in ['posted', 'paid']]
-        super()._post(invoices)
-        cls.create_commissions(to_commission)
+        with cls.bulk_func('create_commissions', auto=False) as create:
+            # Create commission only the first time the invoice is posted
+            for invoice in invoices:
+                if invoice.state not in {'posted', 'paid'}:
+                    create.push(invoice)
+            super()._post(invoices)
 
     @classmethod
     def create_commissions(cls, invoices):
@@ -98,24 +99,21 @@ class Invoice(metaclass=PoolMeta):
         super().cancel(invoices)
         cls.set_commissions_date(invoices_to_set_date)
 
-        to_delete = []
-        to_save = []
-        to_delete += Commission.search([
-                ('invoice_line', '=', None),
-                ('origin.invoice', 'in', invoices_to_revert_commission,
-                    'account.invoice.line'),
-                ])
+        with Commission.bulk_delete() as delete:
+            delete.extend(Commission.search([
+                        ('invoice_line', '=', None),
+                        ('origin.invoice', 'in', invoices_to_revert_commission,
+                            'account.invoice.line'),
+                        ]))
+
         to_cancel = Commission.search([
                 ('invoice_line', '!=', None),
                 ('origin.invoice', 'in', invoices_to_revert_commission,
                     'account.invoice.line'),
                 ])
-        for commission in Commission.copy(to_cancel):
-            commission.amount *= -1
-            to_save.append(commission)
-
-        Commission.delete(to_delete)
-        Commission.save(to_save)
+        Commission.copy(to_cancel, default={
+                'amount': lambda data: -data['amount'],
+                })
 
     def _credit(self, **values):
         values.setdefault('agent', self.agent)

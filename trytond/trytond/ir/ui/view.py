@@ -618,30 +618,27 @@ class ViewTreeWidth(
             order=[('occurrence', 'DESC')])
 
         fields = copy.deepcopy(fields)
-        to_save = []
-        for tree_width in records:
-            if tree_width.screen_width == screen_width:
-                index = tree_width.occurrence - 1
-                if index < len(fields[tree_width.field]):
-                    width = fields[tree_width.field][index]
-                    fields[tree_width.field][index] = None
+        with cls.bulk_save() as save:
+            for tree_width in records:
+                if tree_width.screen_width == screen_width:
+                    index = tree_width.occurrence - 1
+                    if index < len(fields[tree_width.field]):
+                        width = fields[tree_width.field][index]
+                        fields[tree_width.field][index] = None
+                        if width is not None:
+                            tree_width.width = width
+                            save.push(tree_width)
+
+            for name, widths in fields.items():
+                for occurrence, width in enumerate(widths, start=1):
                     if width is not None:
-                        tree_width.width = width
-                        to_save.append(tree_width)
-
-        for name, widths in fields.items():
-            for occurrence, width in enumerate(widths, start=1):
-                if width is not None:
-                    to_save.append(cls(
-                            user=user_id,
-                            model=model,
-                            field=name,
-                            occurrence=occurrence,
-                            screen_width=screen_width,
-                            width=width))
-
-        if to_save:
-            cls.save(to_save)
+                        save.push(cls(
+                                user=user_id,
+                                model=model,
+                                field=name,
+                                occurrence=occurrence,
+                                screen_width=screen_width,
+                                width=width))
 
     @classmethod
     def reset_width(cls, model, width):
@@ -792,27 +789,25 @@ class ViewTreeOptional(
             order=[('occurrence', 'DESC')])
 
         fields = copy.deepcopy(fields)
-        to_save = []
 
-        for tree_optional in records:
-            index = tree_optional.occurrence - 1
-            if index < len(fields[tree_optional.field]):
-                tree_optional.value = fields[tree_optional.field][index]
-                fields[tree_optional.field][index] = None
-                to_save.append(tree_optional)
+        with cls.bulk_save() as save:
+            for tree_optional in records:
+                index = tree_optional.occurrence - 1
+                if index < len(fields[tree_optional.field]):
+                    tree_optional.value = fields[tree_optional.field][index]
+                    fields[tree_optional.field][index] = None
+                    save.push(tree_optional)
 
-        for name, optionals in fields.items():
-            for occurrence, optional in enumerate(optionals, start=1):
-                if optional is not None:
-                    to_save.append(cls(
-                            view=view,
-                            user=user,
-                            model=view.model,
-                            field=name,
-                            occurrence=occurrence,
-                            value=optional))
-        if to_save:
-            cls.save(to_save)
+            for name, optionals in fields.items():
+                for occurrence, optional in enumerate(optionals, start=1):
+                    if optional is not None:
+                        save.push(cls(
+                                view=view,
+                                user=user,
+                                model=view.model,
+                                field=name,
+                                occurrence=occurrence,
+                                value=optional))
 
 
 class ViewTreeState(

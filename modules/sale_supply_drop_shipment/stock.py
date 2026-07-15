@@ -392,34 +392,33 @@ class ShipmentDrop(
         Move = pool.get('stock.move')
         UoM = pool.get('product.uom')
 
-        to_save = []
-        for shipment in shipments:
-            product_cost = defaultdict(int)
-            s_product_qty = defaultdict(int)
-            for s_move in shipment.supplier_moves:
-                if s_move.state == 'cancelled':
-                    continue
-                internal_quantity = Decimal(str(s_move.internal_quantity))
-                product_cost[s_move.product] += (
-                    s_move.get_cost_price() * internal_quantity)
+        with Move.bulk_save() as save:
+            for shipment in shipments:
+                product_cost = defaultdict(int)
+                s_product_qty = defaultdict(int)
+                for s_move in shipment.supplier_moves:
+                    if s_move.state == 'cancelled':
+                        continue
+                    internal_quantity = Decimal(str(s_move.internal_quantity))
+                    product_cost[s_move.product] += (
+                        s_move.get_cost_price() * internal_quantity)
 
-                quantity = UoM.compute_qty(
-                    s_move.unit, s_move.quantity, s_move.product.default_uom,
-                    round=False)
-                s_product_qty[s_move.product] += quantity
+                    quantity = UoM.compute_qty(
+                        s_move.unit, s_move.quantity,
+                        s_move.product.default_uom,
+                        round=False)
+                    s_product_qty[s_move.product] += quantity
 
-            for product, cost in product_cost.items():
-                qty = Decimal(str(s_product_qty[product]))
-                if qty:
-                    product_cost[product] = round_price(cost / qty)
+                for product, cost in product_cost.items():
+                    qty = Decimal(str(s_product_qty[product]))
+                    if qty:
+                        product_cost[product] = round_price(cost / qty)
 
-            for move in shipment.moves:
-                cost_price = product_cost[move.product]
-                if cost_price != move.cost_price:
-                    move.cost_price = cost_price
-                    to_save.append(move)
-        if to_save:
-            Move.save(to_save)
+                for move in shipment.moves:
+                    cost_price = product_cost[move.product]
+                    if cost_price != move.cost_price:
+                        move.cost_price = cost_price
+                        save.push(move)
 
     @classmethod
     @ModelView.button
@@ -429,23 +428,24 @@ class ShipmentDrop(
         PurchaseLine = pool.get('purchase.line')
         Move = pool.get('stock.move')
 
-        to_save = []
-        for shipment in shipments:
-            for s_move in shipment.supplier_moves:
-                if not isinstance(s_move.origin, PurchaseLine):
-                    continue
-                p_line = s_move.origin
-                for request in p_line.requests:
-                    for sale_line in request.sale_lines:
-                        for c_move in sale_line.moves:
-                            if (c_move.state not in {'cancelled', 'done'}
-                                    and not c_move.shipment
-                                    and c_move.from_location.type == 'drop'):
-                                c_move.shipment = shipment
-                                c_move.origin_drop = s_move
-                                to_save.append(c_move)
-        Move.save(to_save)
-        Move.draft(to_save)
+        with Move.bulk_func('draft', auto=False) as draft, \
+                Move.bulk_func('save', auto=False) as save:
+            for shipment in shipments:
+                for s_move in shipment.supplier_moves:
+                    if not isinstance(s_move.origin, PurchaseLine):
+                        continue
+                    p_line = s_move.origin
+                    for request in p_line.requests:
+                        for sale_line in request.sale_lines:
+                            for c_move in sale_line.moves:
+                                if (c_move.state not in {'cancelled', 'done'}
+                                        and not c_move.shipment
+                                        and c_move.from_location.type
+                                        == 'drop'):
+                                    c_move.shipment = shipment
+                                    c_move.origin_drop = s_move
+                                    save.push(c_move)
+                                    draft.push(c_move)
         cls._synchronize_moves(shipments)
 
     @classmethod
@@ -458,14 +458,14 @@ class ShipmentDrop(
         Move = pool.get('stock.move')
         Move.do([m for s in shipments for m in s.supplier_moves])
         cls._synchronize_moves(shipments)
-        to_assign, to_delete = [], []
-        for shipment in shipments:
-            for move in shipment.customer_moves:
-                if move.quantity:
-                    to_assign.append(move)
-                else:
-                    to_delete.append(move)
-        Move.delete(to_delete)
+        with Move.bulk_delete(auto=False) as delete:
+            to_assign = []
+            for shipment in shipments:
+                for move in shipment.customer_moves:
+                    if move.quantity:
+                        to_assign.append(move)
+                    else:
+                        delete.push(move)
         Move.assign(to_assign)
 
     @classmethod
@@ -477,15 +477,15 @@ class ShipmentDrop(
         Move = pool.get('stock.move')
         Date = pool.get('ir.date')
         cls.set_cost(shipments)
-        customer_moves, to_delete = [], []
-        for shipment in shipments:
-            shipment.check_quantity()
-            for move in shipment.customer_moves:
-                if move.quantity:
-                    customer_moves.append(move)
-                else:
-                    to_delete.append(move)
-        Move.delete(to_delete)
+        with Move.bulk_delete() as delete:
+            customer_moves = []
+            for shipment in shipments:
+                shipment.check_quantity()
+                for move in shipment.customer_moves:
+                    if move.quantity:
+                        customer_moves.append(move)
+                    else:
+                        delete.push(move)
         Move.do(customer_moves)
         for company, shipments in groupby(shipments, key=lambda s: s.company):
             with Transaction().set_context(company=company.id):
@@ -617,17 +617,16 @@ class MoveSplit(metaclass=PoolMeta):
         with Transaction().set_context(_stock_move_split_drop=True):
             moves = super().split(quantity, unit, count=count)
         if self.moves_drop:
-            to_save = []
-            moves_drop = list(self.moves_drop)
-            for move in moves:
-                remainder = move.quantity
-                while remainder > 0 and moves_drop:
-                    move_drop = moves_drop.pop(0)
-                    splits = move_drop.split(remainder, move.unit, count=1)
-                    move_drop.origin_drop = move
-                    remainder -= move_drop.quantity
-                    to_save.append(move_drop)
-                    splits.remove(move_drop)
-                    moves_drop.extend(splits)
-            self.__class__.save(to_save)
+            with self.__class__.bulk_save() as save:
+                moves_drop = list(self.moves_drop)
+                for move in moves:
+                    remainder = move.quantity
+                    while remainder > 0 and moves_drop:
+                        move_drop = moves_drop.pop(0)
+                        splits = move_drop.split(remainder, move.unit, count=1)
+                        move_drop.origin_drop = move
+                        remainder -= move_drop.quantity
+                        save.push(move_drop)
+                        splits.remove(move_drop)
+                        moves_drop.extend(splits)
         return moves

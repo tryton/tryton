@@ -176,36 +176,36 @@ class TaxLine(metaclass=PoolMeta):
     def update_cash_basis(cls, lines, ratio, period):
         if not lines:
             return
-        to_save = []
         lines = cls.browse(sorted(
                 lines, key=sortable_values(cls.group_cash_basis_key)))
-        for key, lines in groupby(lines, key=cls.group_cash_basis_key):
-            key = dict(key)
-            if not key['on_cash_basis']:
-                continue
-            lines = list(lines)
-            company = lines[0].company
-            line_no_periods = [l for l in lines if not l.period]
-            if line_no_periods:
-                line_no_period, = line_no_periods
-            else:
-                line_no_period = None
-            total = sum(l.amount for l in lines)
-            amount = total * ratio - sum(l.amount for l in lines if l.period)
-            amount = company.currency.round(amount)
-            if amount:
-                if line_no_period and line_no_period.amount == amount:
-                    line_no_period.period = period
+        with cls.bulk_save() as save:
+            for key, lines in groupby(lines, key=cls.group_cash_basis_key):
+                key = dict(key)
+                if not key['on_cash_basis']:
+                    continue
+                lines = list(lines)
+                company = lines[0].company
+                line_no_periods = [l for l in lines if not l.period]
+                if line_no_periods:
+                    line_no_period, = line_no_periods
                 else:
-                    line = cls(**key, amount=amount)
+                    line_no_period = None
+                total = sum(l.amount for l in lines)
+                amount = total * ratio
+                amount -= sum(l.amount for l in lines if l.period)
+                amount = company.currency.round(amount)
+                if amount:
+                    if line_no_period and line_no_period.amount == amount:
+                        line_no_period.period = period
+                    else:
+                        line = cls(**key, amount=amount)
+                        if line_no_period:
+                            line_no_period.amount -= line.amount
+                        line.period = period
+                        if line.amount:
+                            save.push(line)
                     if line_no_period:
-                        line_no_period.amount -= line.amount
-                    line.period = period
-                    if line.amount:
-                        to_save.append(line)
-                if line_no_period:
-                    to_save.append(line_no_period)
-        cls.save(to_save)
+                        save.push(line_no_period)
 
 
 class Move(metaclass=PoolMeta):

@@ -523,22 +523,21 @@ class Location(DeactivableMixin, tree(), ModelSQL, ModelView):
         '''
         Set the parent of child location of warehouse if not set
         '''
-        to_update = set()
-        to_save = []
-        for location in locations:
-            if location.type == 'warehouse':
-                if not location.input_location.parent:
-                    to_update.add(location.input_location)
-                if not location.output_location.parent:
-                    to_update.add(location.output_location)
-                if not location.storage_location.parent:
-                    to_update.add(location.storage_location)
-                if to_update:
-                    for child_location in to_update:
-                        child_location.parent = location
-                        to_save.append(child_location)
-                    to_update.clear()
-        cls.save(to_save)
+        with cls.bulk_save() as save:
+            to_update = set()
+            for location in locations:
+                if location.type == 'warehouse':
+                    if not location.input_location.parent:
+                        to_update.add(location.input_location)
+                    if not location.output_location.parent:
+                        to_update.add(location.output_location)
+                    if not location.storage_location.parent:
+                        to_update.add(location.storage_location)
+                    if to_update:
+                        for child_location in to_update:
+                            child_location.parent = location
+                            save.push(child_location)
+                        to_update.clear()
 
     @classmethod
     def on_modification(cls, mode, locations, field_names=None):

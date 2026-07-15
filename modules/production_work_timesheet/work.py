@@ -97,34 +97,30 @@ class Work(metaclass=PoolMeta):
         Timesheet = pool.get('timesheet.work')
         Date = pool.get('ir.date')
 
-        to_create = []
-        to_delete = []
         to_write = defaultdict(list)
-        for work in works:
-            with Transaction().set_context(company=work.company.id):
-                today = Date.today()
-            if work.timesheet_available:
-                ended = work.state in {'done', 'cancelled'}
-                if not work.timesheet_works:
-                    to_create.append({
-                            'origin': str(work),
-                            'company': work.company.id,
-                            'timesheet_end_date': today if ended else None,
-                            })
-                elif ended:
-                    for timesheet in work.timesheet_works:
-                        date = max([today]
-                            + [l.date for l in timesheet.timesheet_lines])
-                        to_write[date].append(timesheet)
-            if (not work.timesheet_available
-                    and work.timesheet_works):
-                if all(not w.timesheet_lines
-                        for w in work.timesheet_works):
-                    to_delete.extend(work.timesheet_works)
-        if to_create:
-            Timesheet.create(to_create)
-        if to_delete:
-            Timesheet.delete(to_delete)
+        with Timesheet.bulk_create() as create, \
+                Timesheet.bulk_delete() as delete:
+            for work in works:
+                with Transaction().set_context(company=work.company.id):
+                    today = Date.today()
+                if work.timesheet_available:
+                    ended = work.state in {'done', 'cancelled'}
+                    if not work.timesheet_works:
+                        create.push({
+                                'origin': str(work),
+                                'company': work.company.id,
+                                'timesheet_end_date': today if ended else None,
+                                })
+                    elif ended:
+                        for timesheet in work.timesheet_works:
+                            date = max([today]
+                                + [l.date for l in timesheet.timesheet_lines])
+                            to_write[date].append(timesheet)
+                if (not work.timesheet_available
+                        and work.timesheet_works):
+                    if all(not w.timesheet_lines
+                            for w in work.timesheet_works):
+                        delete.extend(work.timesheet_works)
         for date, timesheets in list(to_write.items()):
             Timesheet.write(timesheets, {
                     'timesheet_end_date': date,

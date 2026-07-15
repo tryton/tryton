@@ -141,22 +141,23 @@ class PurchaseRequest(metaclass=PoolMeta):
                 ('company', '=', company.id),
                 ('origin', 'like', 'stock.order_point,%'),
                 ])
-        reqs = [r for r in reqs
-            if r.product in products and r.warehouse in warehouses]
-        cls.delete(reqs)
+        with cls.bulk_delete() as delete:
+            for request in reqs:
+                if (request.product in products
+                        and request.warehouse in warehouses):
+                    delete.push(request)
         new_requests = cls.compare_requests(new_requests, company)
 
         cls.create_requests(new_requests)
 
     @classmethod
     def create_requests(cls, new_requests):
-        to_save = []
-        for new_req in new_requests:
-            if new_req.supply_date == datetime.date.max:
-                new_req.supply_date = None
-            if new_req.computed_quantity > 0:
-                to_save.append(new_req)
-        cls.save(to_save)
+        with cls.bulk_save() as save:
+            for new_req in new_requests:
+                if new_req.supply_date == datetime.date.max:
+                    new_req.supply_date = None
+                if new_req.computed_quantity > 0:
+                    save.push(new_req)
 
     @classmethod
     def compare_requests(cls, new_requests, company):

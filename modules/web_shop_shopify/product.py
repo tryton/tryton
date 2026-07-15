@@ -712,11 +712,11 @@ class Image(IdentifiersMixin, metaclass=PoolMeta):
         Identifier = pool.get('web.shop.shopify_identifier')
         callback = super().on_write(images, values)
         if values.keys() & {'image', 'template', 'web_shop'}:
-            to_delete = []
+            delete = Identifier.bulk_delete(auto=False)
             for image in images:
-                to_delete.extend(image.shopify_identifiers)
-            if to_delete:
-                callback.append(lambda: Identifier.delete(to_delete))
+                delete.extend(image.shopify_identifiers)
+            if delete:
+                callback.append(delete.flush)
         return callback
 
     @classmethod

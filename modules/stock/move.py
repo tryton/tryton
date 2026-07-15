@@ -895,13 +895,13 @@ class Move(Workflow, ModelSQL, ModelView):
 
         cls.check_origin(moves)
         for key, grouped_moves in groupby(moves, key=cls._cost_price_key):
-            to_save = []
             cost_values = []
             products = set()
             grouped_moves = list(grouped_moves)
             context = dict(key)
             context.update(cls._cost_price_context(grouped_moves))
-            with Transaction().set_context(context):
+            with Transaction().set_context(context), \
+                    cls.bulk_save(auto=False) as save:
                 grouped_moves = cls.browse(grouped_moves)
                 for move in grouped_moves:
                     move.set_effective_date()
@@ -912,9 +912,8 @@ class Move(Workflow, ModelSQL, ModelView):
                             # The average computation of product cost price
                             # requires each previous move of the same product
                             # to be saved
-                            cls.save(to_save)
+                            save.flush()
                             set_cost_values(cost_values)
-                            del to_save[:]
                             del cost_values[:]
                             products.clear()
                             # Recompute with unmodified move but including new
@@ -924,7 +923,7 @@ class Move(Workflow, ModelSQL, ModelView):
                         cost_values.append(
                             (move.product, cost_price,
                                 move._cost_price_pattern))
-                    to_save.extend(extra_to_save)
+                    save.extend(extra_to_save)
                     if move.cost_price_required and move.cost_price is None:
                         if cost_price is None:
                             cost_price = move.product.get_multivalue(
@@ -932,11 +931,9 @@ class Move(Workflow, ModelSQL, ModelView):
                         move.cost_price = cost_price
                     move.state = 'done'
 
-                    to_save.append(move)
+                    save.push(move)
                     products.add(move.product)
 
-                if to_save:
-                    cls.save(to_save)
                 if cost_values:
                     set_cost_values(cost_values)
 

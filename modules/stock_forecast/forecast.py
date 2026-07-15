@@ -221,12 +221,12 @@ class Forecast(Workflow, ModelSQL, ModelView, ChatMixin):
         'Create stock moves for the forecast ids'
         pool = Pool()
         Move = pool.get('stock.move')
-        to_save = []
-        for forecast in forecasts:
-            if forecast.state == 'done':
-                for line in forecast.lines:
-                    to_save.extend(line.get_moves())
-        Move.save(to_save)
+
+        with Move.bulk_save() as save:
+            for forecast in forecasts:
+                if forecast.state == 'done':
+                    for line in forecast.lines:
+                        save.extend(line.get_moves())
 
     @staticmethod
     def delete_moves(forecasts):
@@ -535,14 +535,13 @@ class ForecastComplete(Wizard):
         ForecastLine = pool.get('stock.forecast.line')
 
         product2line = {l.product: l for l in self.record.lines}
-        to_save = []
         # Ensure context is set
         self.ask.products = map(int, self.ask.products)
-        for product in self.ask.products:
-            line = product2line.get(product, ForecastLine())
-            self._fill_line(line, product)
-            to_save.append(line)
-        ForecastLine.save(to_save)
+        with ForecastLine.bulk_save() as save:
+            for product in self.ask.products:
+                line = product2line.get(product, ForecastLine())
+                self._fill_line(line, product)
+                save.push(line)
         return 'end'
 
     def _fill_line(self, line, product):

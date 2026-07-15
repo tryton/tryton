@@ -504,37 +504,36 @@ class Production(
     def set_moves(cls, productions):
         pool = Pool()
         Move = pool.get('stock.move')
-        to_save = []
-        for production in productions:
-            dates = production._get_move_planned_date()
-            input_date, output_date = dates
-            if not production.bom:
-                if production.product:
+        with Move.bulk_save() as save:
+            for production in productions:
+                dates = production._get_move_planned_date()
+                input_date, output_date = dates
+                if not production.bom:
+                    if production.product:
+                        move = production._move(
+                            'output', production.product, production.unit,
+                            production.quantity)
+                        move.planned_date = output_date
+                        save.push(move)
+                    continue
+
+                factor = production.bom.compute_factor(
+                    production.product, production.quantity, production.unit)
+                for input_ in production.bom.inputs:
+                    quantity = input_.compute_quantity(factor)
+                    product = input_.product
                     move = production._move(
-                        'output', production.product, production.unit,
-                        production.quantity)
+                        'input', product, input_.unit, quantity)
+                    move.planned_date = input_date
+                    save.push(input_.prepare_move(production, move))
+
+                for output in production.bom.outputs:
+                    quantity = output.compute_quantity(factor)
+                    product = output.product
+                    move = production._move(
+                        'output', product, output.unit, quantity)
                     move.planned_date = output_date
-                    to_save.append(move)
-                continue
-
-            factor = production.bom.compute_factor(
-                production.product, production.quantity, production.unit)
-            for input_ in production.bom.inputs:
-                quantity = input_.compute_quantity(factor)
-                product = input_.product
-                move = production._move(
-                    'input', product, input_.unit, quantity)
-                move.planned_date = input_date
-                to_save.append(input_.prepare_move(production, move))
-
-            for output in production.bom.outputs:
-                quantity = output.compute_quantity(factor)
-                product = output.product
-                move = production._move(
-                    'output', product, output.unit, quantity)
-                move.planned_date = output_date
-                to_save.append(output.prepare_move(production, move))
-        Move.save(to_save)
+                    save.push(output.prepare_move(production, move))
 
     @classmethod
     def set_cost_from_moves(cls):
@@ -745,15 +744,14 @@ class Production(
         pool = Pool()
         Move = pool.get('stock.move')
 
-        to_draft, to_delete = [], []
-        for production in productions:
-            for move in chain(production.inputs, production.outputs):
-                if move.state != 'cancelled':
-                    to_draft.append(move)
-                else:
-                    to_delete.append(move)
-        Move.draft(to_draft)
-        Move.delete(to_delete)
+        with Move.bulk_delete() as delete, \
+                Move.bulk_func('draft') as draft:
+            for production in productions:
+                for move in chain(production.inputs, production.outputs):
+                    if move.state != 'cancelled':
+                        draft.push(move)
+                    else:
+                        delete.push(move)
 
     @classmethod
     @ModelView.button
@@ -824,16 +822,14 @@ class Production(
         if Move.assign_try(to_assign):
             cls.assign(productions)
         else:
-            to_assign = []
-            for production in productions:
-                if any(
-                        m.state in {'staging', 'draft'}
-                        for m in production.assign_moves
-                        if m.assignation_required):
-                    continue
-                to_assign.append(production)
-            if to_assign:
-                cls.assign(to_assign)
+            with cls.bulk_func('assign', auto=False) as assign:
+                for production in productions:
+                    if any(
+                            m.state in {'staging', 'draft'}
+                            for m in production.assign_moves
+                            if m.assignation_required):
+                        continue
+                    assign.push(production)
 
     @classmethod
     def _get_reschedule_planned_start_dates_domain(cls, date):

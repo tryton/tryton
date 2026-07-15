@@ -125,32 +125,30 @@ class Message(ModelSQL, ModelView):
                     ]):
             other_translations[translation.res_id].append(translation)
 
-        to_save = []
-        for message in messages:
-            translation = id2translations.get(message.id)
-            if translation:
-                if ((translation.src == message.text)
-                        and (translation.src_plural == message.text_plural)):
-                    continue
-            else:
-                translation = Translation(
-                    lang=INTERNAL_LANG,
-                    type='model',
-                    name=f'{cls.__name__},text',
-                    res_id=message.id)
-            translation.src = message.text
-            translation.src_plural = message.text_plural
-            translation.value = message.text
-            translation.value_1 = message.text_plural
-            to_save.append(translation)
-            for other_translation in other_translations[message.id]:
-                other_translation.src = message.text
-                other_translation.src_plural = message.text_plural
-                other_translation.fuzzy = True
-                to_save.append(other_translation)
-
-        if to_save:
-            Translation.save(to_save)
+        with Translation.bulk_save() as save:
+            for message in messages:
+                translation = id2translations.get(message.id)
+                if translation:
+                    if ((translation.src == message.text)
+                            and (translation.src_plural
+                                == message.text_plural)):
+                        continue
+                else:
+                    translation = Translation(
+                        lang=INTERNAL_LANG,
+                        type='model',
+                        name=f'{cls.__name__},text',
+                        res_id=message.id)
+                translation.src = message.text
+                translation.src_plural = message.text_plural
+                translation.value = message.text
+                translation.value_1 = message.text_plural
+                save.push(translation)
+                for other_translation in other_translations[message.id]:
+                    other_translation.src = message.text
+                    other_translation.src_plural = message.text_plural
+                    other_translation.fuzzy = True
+                    save.push(other_translation)
 
     @classmethod
     def search_rec_name(cls, name, clause):

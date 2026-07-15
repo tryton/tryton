@@ -233,13 +233,13 @@ class ShipmentAssignMixin(ShipmentMixin):
         Move.write(moves, {
                 'quantity': 0,
                 })
-        to_assign = [
-            s for s in shipments
-            if all(
-                m.state not in {'staging', 'draft'}
-                for m in s.assign_moves if m.assignation_required)]
-        if to_assign:
-            cls.assign(to_assign)
+        with cls.bulk_func('assign', auto=False) as assign:
+            for shipment in shipments:
+                if all(
+                        m.state not in {'staging', 'draft'}
+                        for m in shipment.assign_moves
+                        if m.assignation_required):
+                    assign.push(shipment)
 
     @classmethod
     def _get_assign_domain(cls):
@@ -767,16 +767,21 @@ class ShipmentIn(
     @set_employee('received_by')
     def receive(cls, shipments):
         Move = Pool().get('stock.move')
-        Move.do([m for s in shipments for m in s.incoming_moves])
-        Move.delete([m for s in shipments for m in s.inventory_moves
-            if m.state in ('draft', 'cancelled')])
+        with Move.bulk_func('do', auto=False) as do:
+            for shipment in shipments:
+                do.extend(shipment.incoming_moves)
+        with Move.bulk_delete(auto=False) as delete:
+            for shipment in shipments:
+                for move in shipment.inventory_moves:
+                    if move.state in {'draft', 'cancelled'}:
+                        delete.push(move)
         cls.create_inventory_moves(shipments)
         # Set received state to allow done transition
         cls.write(shipments, {'state': 'received'})
-        to_do = [s for s in shipments
-            if s.warehouse_storage == s.warehouse_input]
-        if to_do:
-            cls.do(to_do)
+        with cls.bulk_func('do', auto=False) as do:
+            for shipment in shipments:
+                if shipment.warehouse_storage == shipment.warehouse_input:
+                    do.push(shipment)
 
     @classmethod
     @ModelView.button
@@ -1129,16 +1134,14 @@ class ShipmentInReturn(
         if success:
             cls.assign(shipments)
         else:
-            to_assign = []
-            for shipment in shipments:
-                if any(
-                        m.state in {'staging', 'draft'}
-                        for m in shipment.assign_moves
-                        if m.assignation_required):
-                    continue
-                to_assign.append(shipment)
-            if to_assign:
-                cls.assign(to_assign)
+            with cls.bulk_func('assign', auto=False) as assign:
+                for shipment in shipments:
+                    if any(
+                            m.state in {'staging', 'draft'}
+                            for m in shipment.assign_moves
+                            if m.assignation_required):
+                        continue
+                    assign.push(shipment)
 
     @classmethod
     def _get_reschedule_domain(cls, date):
@@ -1540,25 +1543,25 @@ class ShipmentOut(
         else:
             assert all(m.shipment in shipments for m in moves)
         Move.draft(moves)
-        Move.delete([m for s in shipments for m in s.inventory_moves
-                if m.state in ('draft', 'cancelled')])
+        with Move.bulk_delete(auto=False) as delete:
+            for shipment in shipments:
+                for move in shipment.inventory_moves:
+                    if move.state in {'draft', 'cancelled'}:
+                        delete.push(move)
         Move.draft([
                 m for s in shipments for m in s.outgoing_moves
                 if m.state != 'staging'])
 
-        to_create = []
-        for shipment in shipments:
-            if shipment.warehouse_storage == shipment.warehouse_output:
-                # Do not create inventory moves
-                continue
-            for move in shipment.outgoing_moves:
-                if move.state in ('cancelled', 'done'):
+        with Move.bulk_save(auto=False) as save:
+            for shipment in shipments:
+                if shipment.warehouse_storage == shipment.warehouse_output:
+                    # Do not create inventory moves
                     continue
-                inventory_move = shipment._get_inventory_move(move)
-                if inventory_move:
-                    to_create.append(inventory_move)
-        if to_create:
-            Move.save(to_create)
+                for move in shipment.outgoing_moves:
+                    if move.state in {'cancelled', 'done'}:
+                        continue
+                    if inventory_move := shipment._get_inventory_move(move):
+                        save.push(inventory_move)
         cls.set_number(shipments)
 
     def _get_inventory_move(self, move):
@@ -1624,21 +1627,21 @@ class ShipmentOut(
     def pack(cls, shipments):
         pool = Pool()
         Move = pool.get('stock.move')
-        outgoing_moves, to_delete = [], []
-        for shipment in shipments:
-            for move in shipment.inventory_moves:
-                if move.state not in {'done', 'cancelled'}:
-                    raise AccessError(
-                        gettext('stock.msg_shipment_pack_inventory_done',
-                            shipment=shipment.rec_name))
-            if shipment.warehouse_storage != shipment.warehouse_output:
-                shipment.check_quantity()
-            for move in shipment.outgoing_moves:
-                if move.quantity:
-                    outgoing_moves.append(move)
-                else:
-                    to_delete.append(move)
-        Move.delete(to_delete)
+        with Move.bulk_delete() as delete:
+            outgoing_moves = []
+            for shipment in shipments:
+                for move in shipment.inventory_moves:
+                    if move.state not in {'done', 'cancelled'}:
+                        raise AccessError(
+                            gettext('stock.msg_shipment_pack_inventory_done',
+                                shipment=shipment.rec_name))
+                if shipment.warehouse_storage != shipment.warehouse_output:
+                    shipment.check_quantity()
+                for move in shipment.outgoing_moves:
+                    if move.quantity:
+                        outgoing_moves.append(move)
+                    else:
+                        delete.push(move)
         Move.assign(outgoing_moves)
 
     @property
@@ -1846,16 +1849,14 @@ class ShipmentOut(
         if Move.assign_try(to_assign):
             cls.assign(shipments)
         else:
-            to_assign = []
-            for shipment in shipments:
-                if any(
-                        m.state in {'staging', 'draft'}
-                        for m in shipment.assign_moves
-                        if m.assignation_required):
-                    continue
-                to_assign.append(shipment)
-            if to_assign:
-                cls.assign(to_assign)
+            with cls.bulk_func('assign', auto=False) as assign:
+                for shipment in shipments:
+                    if any(
+                            m.state in {'staging', 'draft'}
+                            for m in shipment.assign_moves
+                            if m.assignation_required):
+                        continue
+                    assign.push(shipment)
 
     @classmethod
     def _get_reschedule_domain(cls, date):
@@ -2228,15 +2229,19 @@ class ShipmentOutReturn(
     @Workflow.transition('received')
     @set_employee('received_by')
     def receive(cls, shipments):
-        Move = Pool().get('stock.move')
-        Move.do([m for s in shipments for m in s.incoming_moves])
+        pool = Pool()
+        Move = pool.get('stock.move')
+
+        with Move.bulk_func('do', auto=False) as do:
+            for shipment in shipments:
+                do.extend(shipment.incoming_moves)
         cls.create_inventory_moves(shipments)
         # Set received state to allow done transition
         cls.write(shipments, {'state': 'received'})
-        to_do = [s for s in shipments
-            if s.warehouse_storage == s.warehouse_input]
-        if to_do:
-            cls.do(to_do)
+        with cls.bulk_func('do', auto=False) as do:
+            for shipment in shipments:
+                if shipment.warehouse_storage == shipment.warehouse_input:
+                    do.push(shipment)
 
     @classmethod
     @ModelView.button
@@ -2982,16 +2987,14 @@ class ShipmentInternal(
         if Move.assign_try(to_assign):
             cls.assign(shipments)
         else:
-            to_assign = []
-            for shipment in shipments:
-                if any(
-                        m.state in {'staging', 'draft'}
-                        for m in shipment.assign_moves
-                        if m.assignation_required):
-                    continue
-                to_assign.append(shipment)
-            if to_assign:
-                cls.assign(to_assign)
+            with cls.bulk_func('assign', auto=False) as assign:
+                for shipment in shipments:
+                    if any(
+                            m.state in {'staging', 'draft'}
+                            for m in shipment.assign_moves
+                            if m.assignation_required):
+                        continue
+                    assign.push(shipment)
 
     @property
     def _move_planned_date(self):

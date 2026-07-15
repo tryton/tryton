@@ -1213,39 +1213,35 @@ class Invoice(
     @dualmethod
     def update_taxes(cls, invoices, exception=False):
         Tax = Pool().get('account.invoice.tax')
-        to_create = []
-        to_delete = []
         to_write = []
-        for invoice in invoices:
-            if invoice.state in ('posted', 'paid', 'cancelled'):
-                continue
-            computed_taxes = dict(invoice._compute_taxes())
-            if not invoice.taxes:
-                to_create.extend(computed_taxes.values())
-            else:
-                tax_keys = set()
-                for tax in invoice.taxes:
-                    if tax.manual:
-                        continue
-                    key = tax._key
-                    if (key not in computed_taxes) or (key in tax_keys):
-                        to_delete.append(tax)
-                        continue
-                    tax_keys.add(key)
-                    if not invoice.currency.is_zero(
-                            computed_taxes[key]['base'] - tax.base):
-                        to_write.extend(([tax], computed_taxes[key]))
-                for key in computed_taxes:
-                    if key not in tax_keys:
-                        to_create.append(computed_taxes[key])
-            if exception and (to_create or to_delete or to_write):
-                raise InvoiceTaxValidationError(
-                    gettext('account_invoice.msg_invoice_tax_invalid',
-                        invoice=invoice.rec_name))
-        if to_create:
-            Tax.create(to_create)
-        if to_delete:
-            Tax.delete(to_delete)
+        with Tax.bulk_create(auto=False) as create, \
+                Tax.bulk_delete(auto=False) as delete:
+            for invoice in invoices:
+                if invoice.state in ('posted', 'paid', 'cancelled'):
+                    continue
+                computed_taxes = dict(invoice._compute_taxes())
+                if not invoice.taxes:
+                    create.extend(computed_taxes.values())
+                else:
+                    tax_keys = set()
+                    for tax in invoice.taxes:
+                        if tax.manual:
+                            continue
+                        key = tax._key
+                        if (key not in computed_taxes) or (key in tax_keys):
+                            delete.push(tax)
+                            continue
+                        tax_keys.add(key)
+                        if not invoice.currency.is_zero(
+                                computed_taxes[key]['base'] - tax.base):
+                            to_write.extend(([tax], computed_taxes[key]))
+                    for key in computed_taxes:
+                        if key not in tax_keys:
+                            create.push(computed_taxes[key])
+                if exception and (create or delete or to_write):
+                    raise InvoiceTaxValidationError(
+                        gettext('account_invoice.msg_invoice_tax_invalid',
+                            invoice=invoice.rec_name))
         if to_write:
             Tax.write(*to_write)
 
@@ -2271,23 +2267,21 @@ class Invoice(
     @classmethod
     @ModelView.button
     def process(cls, invoices):
-        to_save = []
         paid = []
         posted = []
-        for invoice in invoices:
-            if invoice.state in {'posted', 'paid'}:
-                if invoice.reconciled:
-                    paid.append(invoice)
-                else:
-                    posted.append(invoice)
-            elif invoice.state == 'cancelled' and invoice.move:
-                if not invoice.reconciled:
-                    if invoice.cancel_move:
-                        invoice.cancel_move = None
-                        invoice.save()
-                        to_save.append(invoice)
-                    posted.append(invoice)
-        cls.save(to_save)
+        with cls.bulk_save() as save:
+            for invoice in invoices:
+                if invoice.state in {'posted', 'paid'}:
+                    if invoice.reconciled:
+                        paid.append(invoice)
+                    else:
+                        posted.append(invoice)
+                elif invoice.state == 'cancelled' and invoice.move:
+                    if not invoice.reconciled:
+                        if invoice.cancel_move:
+                            invoice.cancel_move = None
+                            save.push(invoice)
+                        posted.append(invoice)
         cls.paid(paid)
         cls._post(posted)
 
@@ -2305,36 +2299,33 @@ class Invoice(
         Move = pool.get('account.move')
         Line = pool.get('account.move.line')
 
-        cancel_moves = []
-        delete_moves = []
-        to_save = []
-        for invoice in invoices:
-            if invoice.move or invoice.number:
-                if invoice.move and invoice.move.state == 'draft':
-                    delete_moves.append(invoice.move)
-                    delete_moves.extend(invoice.additional_moves)
-                elif not invoice.cancel_move:
-                    if (invoice.type == 'out'
-                            and not invoice.company.cancel_invoice_out):
-                        raise AccessError(
-                            gettext('account_invoice'
-                                '.msg_invoice_customer_cancel_move',
-                                invoice=invoice.rec_name))
-                    if invoice.move:
-                        invoice.cancel_move = invoice.move.cancel()
-                        additional_cancel_moves = [
-                            m.cancel() for m in invoice.additional_moves]
-                        invoice.additional_moves += tuple(
-                            additional_cancel_moves)
-                        to_save.append(invoice)
-                        cancel_moves.append(invoice.cancel_move)
-                        cancel_moves.extend(additional_cancel_moves)
-        if cancel_moves:
-            Move.save(cancel_moves)
-        cls._store_cache(invoices)
-        cls.save(to_save)
-        if delete_moves:
-            Move.delete(delete_moves)
+        with Move.bulk_delete(auto=False) as move_delete, \
+                cls.bulk_save(auto=False) as save:
+            cancel_moves = []
+            for invoice in invoices:
+                if invoice.move or invoice.number:
+                    if invoice.move and invoice.move.state == 'draft':
+                        move_delete.push(invoice.move)
+                        move_delete.extend(invoice.additional_moves)
+                    elif not invoice.cancel_move:
+                        if (invoice.type == 'out'
+                                and not invoice.company.cancel_invoice_out):
+                            raise AccessError(
+                                gettext('account_invoice'
+                                    '.msg_invoice_customer_cancel_move',
+                                    invoice=invoice.rec_name))
+                        if invoice.move:
+                            invoice.cancel_move = invoice.move.cancel()
+                            additional_cancel_moves = [
+                                m.cancel() for m in invoice.additional_moves]
+                            invoice.additional_moves += tuple(
+                                additional_cancel_moves)
+                            save.push(invoice)
+                            cancel_moves.append(invoice.cancel_move)
+                            cancel_moves.extend(additional_cancel_moves)
+            if cancel_moves:
+                Move.save(cancel_moves)
+            cls._store_cache(invoices)
         if cancel_moves:
             Move.post(cancel_moves)
         # Write state before reconcile to prevent invoice to go to paid state

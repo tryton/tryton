@@ -404,12 +404,11 @@ class Subscription(Workflow, ModelSQL, ModelView, ChatMixin):
 
     @classmethod
     def process(cls, subscriptions):
-        to_close = []
-        for subscription in subscriptions:
-            if all(l.next_consumption_date is None
-                    for l in subscription.lines):
-                to_close.append(subscription)
-        cls.close(to_close)
+        with cls.bulk_func('close') as close:
+            for subscription in subscriptions:
+                if all(l.next_consumption_date is None
+                        for l in subscription.lines):
+                    close.push(subscription)
 
     @classmethod
     @Workflow.transition('closed')

@@ -100,10 +100,9 @@ class MultiValueMixin(object):
     @classmethod
     def _multivalue_setter(cls, records, name, val):
         Value = cls.multivalue_model(name)
-        to_save = []
-        for record in records:
-            to_save.extend(record.set_multivalue(name, val, save=False))
-        Value.save(to_save)
+        with Value.bulk_save() as save:
+            for record in records:
+                save.extend(record.set_multivalue(name, val, save=False))
 
 
 class ValueMixin(MatchMixin, ModelStorage):

@@ -555,14 +555,13 @@ class Inspection(Workflow, ModelSQL, ModelView, ChatMixin):
         cls.write([i for i in inspections if not i.processed_at], {
                 'processed_at': dt.datetime.now(),
                 })
-        to_pass, to_fail = [], []
-        for inspection in inspections:
-            if inspection.check():
-                to_pass.append(inspection)
-            else:
-                to_fail.append(inspection)
-        cls.pass_(to_pass)
-        cls.fail(to_fail)
+        with cls.bulk_func('pass_') as pass_, \
+                cls.bulk_func('fail') as fail:
+            for inspection in inspections:
+                if inspection.check():
+                    pass_.push(inspection)
+                else:
+                    fail.push(inspection)
 
     @classmethod
     @ModelView.button

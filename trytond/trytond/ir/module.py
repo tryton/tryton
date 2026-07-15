@@ -266,18 +266,15 @@ class Module(ModelSQL, ModelView):
             name2module[name] = cls(name=name, state=cls.default_state())
         cls.save(name2module.values())
 
-        to_save, to_delete = [], []
-        for module in name2module.values():
-            depends = set(get_module_info(module.name).get('depends', []))
-            for dependency in module.dependencies:
-                if dependency.name not in depends:
-                    to_delete.append(dependency)
-            for name in depends - {d.name for d in module.dependencies}:
-                to_save.append(Dependency(name=name, module=module))
-        if to_delete:
-            Dependency.delete(to_delete)
-        if to_save:
-            Dependency.save(to_save)
+        with Dependency.bulk_save(auto=False) as save, \
+                Dependency.bulk_delete(auto=False) as delete:
+            for module in name2module.values():
+                depends = set(get_module_info(module.name).get('depends', []))
+                for dependency in module.dependencies:
+                    if dependency.name not in depends:
+                        delete.push(dependency)
+                for name in depends - {d.name for d in module.dependencies}:
+                    save.push(Dependency(name=name, module=module))
 
 
 class ModuleDependency(ModelSQL, ModelView):

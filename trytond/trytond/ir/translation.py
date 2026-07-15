@@ -572,31 +572,30 @@ class Translation(
                         ]):
                 name2translations[translation.name].append(translation)
 
-            to_save, to_delete = [], []
-            for record, value in zip(records, values):
-                translations = name2translations[get_name(record)]
-                if lang == INTERNAL_LANG:
-                    src = value
-                else:
-                    src = getattr(record, field_name)
-                if not translations:
+            with cls.bulk_save() as save, \
+                    cls.bulk_delete() as delete:
+                for record, value in zip(records, values):
+                    translations = name2translations[get_name(record)]
+                    if lang == INTERNAL_LANG:
+                        src = value
+                    else:
+                        src = getattr(record, field_name)
+                    if not translations:
+                        if not src and not value:
+                            continue
+                        translation = cls()
+                        translation.name = get_name(record)
+                        translation.lang = lang
+                        translation.type = ttype
+                        translations.append(translation)
                     if not src and not value:
-                        continue
-                    translation = cls()
-                    translation.name = get_name(record)
-                    translation.lang = lang
-                    translation.type = ttype
-                    translations.append(translation)
-                if not src and not value:
-                    to_delete.extend(translations)
-                else:
-                    for translation in translations:
-                        translation.src = src
-                        translation.value = value
-                        translation.fuzzy = False
-                        to_save.append(translation)
-            cls.save(to_save)
-            cls.delete(to_delete)
+                        delete.extend(translations)
+                    else:
+                        for translation in translations:
+                            translation.src = src
+                            translation.value = value
+                            translation.fuzzy = False
+                            save.push(translation)
             return
 
         Model = pool.get(model_name)
@@ -623,41 +622,40 @@ class Translation(
                         ]):
                 other_translations[translation.res_id].append(translation)
 
-        to_save, to_delete = [], []
-        for record, value in zip(records, values):
-            translations = id2translations[record.id]
-            if lang == Config.get_language():
-                src = value
-            else:
-                src = getattr(record, field_name)
-            if not translations:
-                if not src and not value:
-                    continue
-                translation = cls()
-                translation.name = name
-                translation.lang = lang
-                translation.type = ttype
-                translation.res_id = record.id
-                translations.append(translation)
-            else:
-                other_langs = other_translations[record.id]
-                if not src and not value:
-                    to_delete.extend(other_langs)
+        with cls.bulk_save() as save, \
+                cls.bulk_delete() as delete:
+            for record, value in zip(records, values):
+                translations = id2translations[record.id]
+                if lang == Config.get_language():
+                    src = value
                 else:
-                    for other_lang in other_langs:
-                        other_lang.src = src
-                        other_lang.fuzzy = True
-                        to_save.append(other_lang)
-            if not src and not value:
-                to_delete.extend(translations)
-            else:
-                for translation in translations:
-                    translation.value = value
-                    translation.src = src
-                    translation.fuzzy = False
-                    to_save.append(translation)
-        cls.save(to_save)
-        cls.delete(to_delete)
+                    src = getattr(record, field_name)
+                if not translations:
+                    if not src and not value:
+                        continue
+                    translation = cls()
+                    translation.name = name
+                    translation.lang = lang
+                    translation.type = ttype
+                    translation.res_id = record.id
+                    translations.append(translation)
+                else:
+                    other_langs = other_translations[record.id]
+                    if not src and not value:
+                        delete.extend(other_langs)
+                    else:
+                        for other_lang in other_langs:
+                            other_lang.src = src
+                            other_lang.fuzzy = True
+                            save.push(other_lang)
+                if not src and not value:
+                    delete.extend(translations)
+                else:
+                    for translation in translations:
+                        translation.value = value
+                        translation.src = src
+                        translation.fuzzy = False
+                        save.push(translation)
 
     @classmethod
     @without_check_access
@@ -1015,12 +1013,13 @@ class Translation(
         translations |= set(to_save)
 
         if translations:
-            all_translations = set(cls.search([
-                        ('module', '=', module),
-                        ('lang', '=', lang),
-                        ]))
-            translations_to_delete = all_translations - translations
-            cls.delete(list(translations_to_delete))
+            with cls.bulk_delete(auto=False) as delete:
+                all_translations = set(cls.search([
+                            ('module', '=', module),
+                            ('lang', '=', lang),
+                            ]))
+                translations_to_delete = all_translations - translations
+                delete.extend(translations_to_delete)
         return len(translations)
 
     @classmethod
@@ -1639,8 +1638,8 @@ class TranslationUpdate(Wizard):
                     where=(translation.lang == lang)
                     & source_clause
                     & translation.type.in_(self._source_types))))
-        if to_create := list(cursor):
-            Translation.create(to_create)
+        with Translation.bulk_create() as create:
+            create.extend(cursor)
 
         if parent_lang:
             columns.append(translation.value)
@@ -1679,8 +1678,8 @@ class TranslationUpdate(Wizard):
                 - translation.select(*columns,
                     where=(translation.lang == lang)
                     & translation.type.in_(self._ressource_types))))
-        if to_create := list(cursor):
-            Translation.create(to_create)
+        with Translation.bulk_create() as create:
+            create.extend(cursor)
 
         if parent_lang:
             columns.append(translation.value)

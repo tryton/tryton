@@ -62,16 +62,15 @@ def set_origin_consignment(state):
         def wrapper(cls, moves):
             pool = Pool()
             InvoiceLine = pool.get('account.invoice.line')
-            to_save = []
             move2line = {}
-            for move in moves:
-                if not move.consignment_invoice_lines:
-                    lines = move.get_invoice_lines_consignment()
-                    if lines:
-                        to_save.extend(lines)
-                        move2line[move] = lines[0]
-            if to_save:
-                InvoiceLine.save(to_save)
+            with InvoiceLine.bulk_save() as save:
+                for move in moves:
+                    if not move.consignment_invoice_lines:
+                        lines = move.get_invoice_lines_consignment()
+                        if lines:
+                            save.extend(lines)
+                            move2line[move] = lines[0]
+            with cls.bulk_save() as save:
                 for move, line in move2line.items():
                     if not move.origin:
                         move.origin = line
@@ -84,7 +83,7 @@ def set_origin_consignment(state):
                         move.unit_price = None
                         move.currency = None
                     move.state = original_state
-                cls.save(list(move2line.keys()))
+                    save.push(move)
             return func(cls, moves)
         return wrapper
     return decorator
@@ -96,22 +95,18 @@ def unset_origin_consignment(state):
         def wrapper(cls, moves):
             pool = Pool()
             InvoiceLine = pool.get('account.invoice.line')
-            lines, to_save = [], set()
-            for move in moves:
-                for invoice_line in move.consignment_invoice_lines:
-                    lines.append(invoice_line)
-                    if move.origin == move:
-                        move.origin = None
-                    to_save.add(move)
-                if (not move.on_change_with_unit_price_required()
-                        and (move.unit_price or move.currency)):
-                    move.unit_price = None
-                    move.currency = None
-                    to_save.add(move)
-            if lines:
-                InvoiceLine.delete(lines)
-            if to_save:
-                cls.save(list(to_save))
+            with InvoiceLine.bulk_delete() as delete, \
+                    cls.bulk_save() as save:
+                for move in moves:
+                    for invoice_line in move.consignment_invoice_lines:
+                        delete.push(invoice_line)
+                        if move.origin == move:
+                            move.origin = None
+                    if (not move.on_change_with_unit_price_required()
+                            and (move.unit_price or move.currency)):
+                        move.unit_price = None
+                        move.currency = None
+                    save.push(move)
             return func(cls, moves)
         return wrapper
     return decorator
@@ -339,13 +334,11 @@ class Move(metaclass=PoolMeta):
 
         moves = super().copy(moves, default=default)
         if not Transaction().context.get('_stock_move_split'):
-            to_save = []
-            for move in moves:
-                if isinstance(move.origin, InvoiceLine):
-                    move.origin = None
-                    to_save.append(move)
-            if to_save:
-                cls.save(to_save)
+            with cls.bulk_save() as save:
+                for move in moves:
+                    if isinstance(move.origin, InvoiceLine):
+                        move.origin = None
+                        save.push(move)
         return moves
 
 

@@ -395,27 +395,26 @@ class Type(
             self.write(*values)
 
         # Update parent
-        to_save = []
         childs = [self]
-        while childs:
-            for child in childs:
-                if child.template:
-                    if not child.template_override:
-                        if child.template.parent:
-                            # Fallback to current parent
-                            # to keep under the same root
-                            parent = template2type.get(
-                                child.template.parent.id,
-                                child.parent)
-                        else:
-                            parent = None
-                        old_parent = (
-                            child.parent.id if child.parent else None)
-                        if parent != old_parent:
-                            child.parent = parent
-                            to_save.append(child)
-            childs = sum((c.childs for c in childs), ())
-        self.__class__.save(to_save)
+        with self.__class__.bulk_save() as save:
+            while childs:
+                for child in childs:
+                    if child.template:
+                        if not child.template_override:
+                            if child.template.parent:
+                                # Fallback to current parent
+                                # to keep under the same root
+                                parent = template2type.get(
+                                    child.template.parent.id,
+                                    child.parent)
+                            else:
+                                parent = None
+                            old_parent = (
+                                child.parent.id if child.parent else None)
+                            if parent != old_parent:
+                                child.parent = parent
+                                save.push(child)
+                childs = sum((c.childs for c in childs), ())
 
 
 class OpenType(Wizard):

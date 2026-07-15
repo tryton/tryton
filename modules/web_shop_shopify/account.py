@@ -133,33 +133,33 @@ class Payment(IdentifierMixin, metaclass=PoolMeta):
                 refunded[payment] += Decimal(
                     transaction['amountSet']['presentmentMoney']['amount'])
 
-        to_save = []
-        for payment in id2payments.values():
-            if payment.kind == 'payable':
-                amount = refunded[payment]
-            else:
-                amount = captured[payment]
-            if payment.amount != amount:
-                payment.amount = captured[payment]
-                to_save.append(payment)
-        cls.proceed(to_save)
-        cls.save(to_save)
-
-        to_succeed, to_fail, to_proceed = set(), set(), set()
-        for transaction_id, payment in id2payments.items():
-            amount = captured[payment] + voided[payment] + refunded[payment]
-            if amounts[transaction_id] == amount:
-                if payment.amount:
-                    if payment.state != 'succeeded':
-                        to_succeed.add(payment)
+        with cls.bulk_func('proceed', auto=False) as proceed, \
+                cls.bulk_save() as save:
+            for payment in id2payments.values():
+                if payment.kind == 'payable':
+                    amount = refunded[payment]
                 else:
-                    if payment.state != 'failed':
-                        to_fail.add(payment)
-            elif payment.state != 'processing':
-                to_proceed.add(payment)
-        cls.fail(to_fail)
-        cls.proceed(to_proceed)
-        cls.succeed(to_succeed)
+                    amount = captured[payment]
+                if payment.amount != amount:
+                    payment.amount = captured[payment]
+                    save.push(payment)
+                    proceed.push(payment)
+
+        with cls.bulk_func('succeed', auto=False) as succeed, \
+                cls.bulk_func('proceed', auto=False) as proceed, \
+                cls.bulk_func('fail', auto=False) as fail:
+            for transaction_id, payment in id2payments.items():
+                amount = (
+                    captured[payment] + voided[payment] + refunded[payment])
+                if amounts[transaction_id] == amount:
+                    if payment.amount:
+                        if payment.state != 'succeeded':
+                            succeed.push(payment)
+                    else:
+                        if payment.state != 'failed':
+                            fail.push(payment)
+                elif payment.state != 'processing':
+                    proceed.push(payment)
 
         return list(id2payments.values())
 

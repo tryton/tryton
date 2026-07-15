@@ -274,27 +274,26 @@ class TaxCode(
             cls.write(*values)
 
         # Update parent
-        to_save = []
-        childs = cls.search([
-                ('company', '=', company_id),
-                ('parent', '=', None),
-                ])
-        while childs:
-            for child in childs:
-                if child.template:
-                    if not child.template_override:
-                        if child.template.parent:
-                            parent = template2tax_code.get(
-                                child.template.parent.id)
-                        else:
-                            parent = None
-                        old_parent = (
-                            child.parent.id if child.parent else None)
-                        if parent != old_parent:
-                            child.parent = parent
-                            to_save.append(child)
-            childs = sum((c.childs for c in childs), ())
-        cls.save(to_save)
+        with cls.bulk_save() as save:
+            childs = cls.search([
+                    ('company', '=', company_id),
+                    ('parent', '=', None),
+                    ])
+            while childs:
+                for child in childs:
+                    if child.template:
+                        if not child.template_override:
+                            if child.template.parent:
+                                parent = template2tax_code.get(
+                                    child.template.parent.id)
+                            else:
+                                parent = None
+                            old_parent = (
+                                child.parent.id if child.parent else None)
+                            if parent != old_parent:
+                                child.parent = parent
+                                save.push(child)
+                childs = sum((c.childs for c in childs), ())
 
 
 class TaxCodeLineTemplate(ModelSQL, ModelView):
@@ -1158,26 +1157,26 @@ class Tax(sequence_ordered(), ModelSQL, ModelView, DeactivableMixin):
             cls.write(*values)
 
         # Update parent
-        to_save = []
-        childs = cls.search([
-                ('company', '=', company_id),
-                ('parent', '=', None),
-                ])
-        while childs:
-            for child in childs:
-                if child.template:
-                    if not child.template_override:
-                        if child.template.parent:
-                            parent = template2tax.get(child.template.parent.id)
-                        else:
-                            parent = None
-                        old_parent = (
-                            child.parent.id if child.parent else None)
-                        if parent != old_parent:
-                            child.parent = parent
-                            to_save.append(child)
-            childs = sum((c.childs for c in childs), ())
-        cls.save(to_save)
+        with cls.bulk_save() as save:
+            childs = cls.search([
+                    ('company', '=', company_id),
+                    ('parent', '=', None),
+                    ])
+            while childs:
+                for child in childs:
+                    if child.template:
+                        if not child.template_override:
+                            if child.template.parent:
+                                parent = template2tax.get(
+                                    child.template.parent.id)
+                            else:
+                                parent = None
+                            old_parent = (
+                                child.parent.id if child.parent else None)
+                            if parent != old_parent:
+                                child.parent = parent
+                                save.push(child)
+                childs = sum((c.childs for c in childs), ())
 
 
 class _TaxLine:

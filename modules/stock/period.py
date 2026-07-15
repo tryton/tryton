@@ -148,29 +148,27 @@ class Period(Workflow, ModelSQL, ModelView):
 
         for grouping in cls.groupings():
             Cache = cls.get_cache(grouping)
-            to_create = []
-            for period in periods:
-                with Transaction().set_context(
-                        stock_date_end=period.date,
-                        stock_date_start=None,
-                        stock_assign=False,
-                        forecast=False,
-                        stock_destinations=None,
-                        ):
-                    pbl = Product.products_by_location(
-                        [l.id for l in locations], grouping=grouping)
-                for key, quantity in pbl.items():
-                    if quantity:
-                        values = {
-                            'location': key[0],
-                            'period': period.id,
-                            'internal_quantity': quantity,
-                            }
-                        for i, field in enumerate(grouping, 1):
-                            values[field] = key[i]
-                        to_create.append(values)
-            if to_create:
-                Cache.create(to_create)
+            with Cache.bulk_create() as create:
+                for period in periods:
+                    with Transaction().set_context(
+                            stock_date_end=period.date,
+                            stock_date_start=None,
+                            stock_assign=False,
+                            forecast=False,
+                            stock_destinations=None,
+                            ):
+                        pbl = Product.products_by_location(
+                            [l.id for l in locations], grouping=grouping)
+                    for key, quantity in pbl.items():
+                        if quantity:
+                            values = {
+                                'location': key[0],
+                                'period': period.id,
+                                'internal_quantity': quantity,
+                                }
+                            for i, field in enumerate(grouping, 1):
+                                values[field] = key[i]
+                            create.push(values)
 
     @classmethod
     def auto_create(cls):

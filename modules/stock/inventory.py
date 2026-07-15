@@ -273,70 +273,69 @@ class Inventory(Workflow, ModelSQL, ModelView, ChatMixin):
         Product = pool.get('product.product')
 
         grouping = cls.grouping()
-        to_save, to_delete = [], []
-        for inventory in inventories:
-            # Once done computation is wrong because include created moves
-            if inventory.state == 'done':
-                continue
-            # Compute product quantities
-            with Transaction().set_context(
-                    company=inventory.company.id,
-                    stock_date_end=inventory.date):
-                if fill:
-                    pbl = Product.products_by_location(
-                        [inventory.location.id],
-                        grouping=grouping)
-                else:
-                    product_ids = [l.product.id for l in inventory.lines]
-                    pbl = defaultdict(int)
-                    pbl.update(Product.products_by_location(
+        with Line.bulk_save() as save, \
+                Line.bulk_delete() as delete:
+            for inventory in inventories:
+                # Once done computation is wrong because include created moves
+                if inventory.state == 'done':
+                    continue
+                # Compute product quantities
+                with Transaction().set_context(
+                        company=inventory.company.id,
+                        stock_date_end=inventory.date):
+                    if fill:
+                        pbl = Product.products_by_location(
                             [inventory.location.id],
-                            grouping=grouping,
-                            grouping_filter=(list(product_ids),)))
+                            grouping=grouping)
+                    else:
+                        product_ids = [l.product.id for l in inventory.lines]
+                        pbl = defaultdict(int)
+                        pbl.update(Product.products_by_location(
+                                [inventory.location.id],
+                                grouping=grouping,
+                                grouping_filter=(list(product_ids),)))
 
-            # Update existing lines
-            for line in inventory.lines:
-                if line.product.type != 'goods':
-                    to_delete.append(line)
+                # Update existing lines
+                for line in inventory.lines:
+                    if line.product.type != 'goods':
+                        delete.push(line)
+                        continue
+
+                    key = (inventory.location.id,) + line.unique_key
+                    if key in pbl:
+                        quantity = pbl.pop(key)
+                    else:
+                        quantity = 0.0
+                    line.update_for_complete(quantity)
+                    save.push(line)
+
+                if not fill:
                     continue
 
-                key = (inventory.location.id,) + line.unique_key
-                if key in pbl:
-                    quantity = pbl.pop(key)
-                else:
-                    quantity = 0.0
-                line.update_for_complete(quantity)
-                to_save.append(line)
+                product_idx = grouping.index('product') + 1
+                # Index some data
+                product2type = {}
+                product2consumable = {}
+                for product in Product.browse(
+                        {line[product_idx] for line in pbl}):
+                    product2type[product.id] = product.type
+                    product2consumable[product.id] = product.consumable
 
-            if not fill:
-                continue
+                # Create lines if needed
+                for key, quantity in pbl.items():
+                    product_id = key[product_idx]
+                    if (product2type[product_id] != 'goods'
+                            or product2consumable[product_id]):
+                        continue
+                    if not quantity:
+                        continue
 
-            product_idx = grouping.index('product') + 1
-            # Index some data
-            product2type = {}
-            product2consumable = {}
-            for product in Product.browse({line[product_idx] for line in pbl}):
-                product2type[product.id] = product.type
-                product2consumable[product.id] = product.consumable
-
-            # Create lines if needed
-            for key, quantity in pbl.items():
-                product_id = key[product_idx]
-                if (product2type[product_id] != 'goods'
-                        or product2consumable[product_id]):
-                    continue
-                if not quantity:
-                    continue
-
-                line = Line(
-                    inventory=inventory,
-                    **{fname: key[i] for i, fname in enumerate(grouping, 1)})
-                line.update_for_complete(quantity)
-                to_save.append(line)
-        if to_delete:
-            Line.delete(to_delete)
-        if to_save:
-            Line.save(to_save)
+                    line = Line(
+                        inventory=inventory,
+                        **{fname: key[i]
+                            for i, fname in enumerate(grouping, 1)})
+                    line.update_for_complete(quantity)
+                    save.push(line)
 
     @classmethod
     @ModelView.button_action('stock.wizard_inventory_count')

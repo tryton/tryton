@@ -1617,84 +1617,82 @@ class Line(DescriptionOriginMixin, MoveLineMixin, ModelSQL, ModelView):
         delegate_to = delegate_to.id if delegate_to else None
 
         reconciliations = []
-        to_post = []
-        for lines in lines_list:
-            if not lines:
-                continue
-            for line in lines:
-                if line.reconciliation:
-                    raise AccessError(
-                        gettext('account.msg_line_already_reconciled',
-                            line=line.rec_name))
+        with Move.bulk_func('post', auto=False) as post:
+            for lines in lines_list:
+                if not lines:
+                    continue
+                for line in lines:
+                    if line.reconciliation:
+                        raise AccessError(
+                            gettext('account.msg_line_already_reconciled',
+                                line=line.rec_name))
 
-            lines = list(lines)
-            reconcile_account = None
-            reconcile_party = None
-            amount = Decimal(0)
-            amount_second_currency = Decimal(0)
-            second_currencies = set()
-            posted = True
-            for line in lines:
-                posted &= line.move.state == 'posted'
-                amount += line.debit - line.credit
-                if not reconcile_account:
-                    reconcile_account = line.account
-                if not reconcile_party:
-                    reconcile_party = line.party
-                if line.amount_second_currency is not None:
-                    amount_second_currency += line.amount_second_currency
-                second_currencies.add(line.second_currency)
-            company = reconcile_account.company
+                lines = list(lines)
+                reconcile_account = None
+                reconcile_party = None
+                amount = Decimal(0)
+                amount_second_currency = Decimal(0)
+                second_currencies = set()
+                posted = True
+                for line in lines:
+                    posted &= line.move.state == 'posted'
+                    amount += line.debit - line.credit
+                    if not reconcile_account:
+                        reconcile_account = line.account
+                    if not reconcile_party:
+                        reconcile_party = line.party
+                    if line.amount_second_currency is not None:
+                        amount_second_currency += line.amount_second_currency
+                    second_currencies.add(line.second_currency)
+                company = reconcile_account.company
 
-            try:
-                second_currency, = second_currencies
-            except ValueError:
-                amount_second_currency = None
-                second_currency = None
-            if second_currency:
-                writeoff_amount = amount_second_currency
-                writeoff_currency = second_currency
-            else:
-                writeoff_amount = amount
-                writeoff_currency = company.currency
-            if writeoff_amount:
-                if not writeoff:
-                    raise ReconciliationError(gettext(
-                            'account.msg_reconciliation_write_off_missing',
-                            amount=lang.currency(
-                                writeoff_amount, writeoff_currency)))
-                move = cls._get_writeoff_move(
-                    reconcile_account, reconcile_party,
-                    writeoff_amount, writeoff_currency,
-                    writeoff, date=date, description=description)
-                move.save()
-                if posted:
-                    to_post.append(move)
-                for line in move.lines:
-                    if line.account == reconcile_account:
-                        lines.append(line)
-                        amount += line.debit - line.credit
-            if second_currency and amount:
-                move = cls._get_exchange_move(
-                    reconcile_account, reconcile_party, amount, date)
-                move.save()
-                if posted:
-                    to_post.append(move)
-                for line in move.lines:
-                    if line.account == reconcile_account:
-                        lines.append(line)
-                        amount += line.debit - line.credit
-            assert not amount, f"{amount} must be zero"
-            reconciliations.append({
-                    'company': reconcile_account.company,
-                    'lines': [('add', [x.id for x in lines])],
-                    'date': max(filter(None,
-                            (d for l in lines
-                                for d in (l.maturity_date, l.date)))),
-                    'delegate_to': delegate_to,
-                    })
-        if to_post:
-            Move.post(to_post)
+                try:
+                    second_currency, = second_currencies
+                except ValueError:
+                    amount_second_currency = None
+                    second_currency = None
+                if second_currency:
+                    writeoff_amount = amount_second_currency
+                    writeoff_currency = second_currency
+                else:
+                    writeoff_amount = amount
+                    writeoff_currency = company.currency
+                if writeoff_amount:
+                    if not writeoff:
+                        raise ReconciliationError(gettext(
+                                'account.msg_reconciliation_write_off_missing',
+                                amount=lang.currency(
+                                    writeoff_amount, writeoff_currency)))
+                    move = cls._get_writeoff_move(
+                        reconcile_account, reconcile_party,
+                        writeoff_amount, writeoff_currency,
+                        writeoff, date=date, description=description)
+                    move.save()
+                    if posted:
+                        post.push(move)
+                    for line in move.lines:
+                        if line.account == reconcile_account:
+                            lines.append(line)
+                            amount += line.debit - line.credit
+                if second_currency and amount:
+                    move = cls._get_exchange_move(
+                        reconcile_account, reconcile_party, amount, date)
+                    move.save()
+                    if posted:
+                        post.push(move)
+                    for line in move.lines:
+                        if line.account == reconcile_account:
+                            lines.append(line)
+                            amount += line.debit - line.credit
+                assert not amount, f"{amount} must be zero"
+                reconciliations.append({
+                        'company': reconcile_account.company,
+                        'lines': [('add', [x.id for x in lines])],
+                        'date': max(filter(None,
+                                (d for l in lines
+                                    for d in (l.maturity_date, l.date)))),
+                        'delegate_to': delegate_to,
+                        })
         return Reconciliation.create(reconciliations)
 
     @classmethod

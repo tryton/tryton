@@ -513,14 +513,14 @@ class Asset(Workflow, ModelSQL, ModelView):
     @classmethod
     @ModelView.button
     def clear_lines(cls, assets):
-        Line = Pool().get('account.asset.line')
+        pool = Pool()
+        Line = pool.get('account.asset.line')
 
-        lines_to_delete = []
-        for asset in assets:
-            for line in asset.lines:
-                if not line.move or line.move.state != 'posted':
-                    lines_to_delete.append(line)
-        Line.delete(lines_to_delete)
+        with Line.bulk_delete() as delete:
+            for asset in assets:
+                for line in asset.lines:
+                    if not line.move or line.move.state != 'posted':
+                        delete.push(line)
 
     @classmethod
     @ModelView.button_action('account_asset.wizard_update')
