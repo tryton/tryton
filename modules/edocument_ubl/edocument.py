@@ -279,7 +279,7 @@ class Invoice(Model):
             elif self.invoice.currency == self.invoice.company.currency:
                 return line.debit - line.credit
             else:
-                return 0
+                return Decimal(0)
         return sum(map(balance, self.invoice.lines_to_pay))
 
     @classmethod
