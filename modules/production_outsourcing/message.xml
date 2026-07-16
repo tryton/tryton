@@ -4,13 +4,16 @@ this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data grouped="1">
         <record model="ir.message" id="msg_pending_purchase_draft">
-            <field name="text">The productions "%(productions)s" cannot be reset to draft as they have pending purchases.</field>
+            <field name="text">The production "%(productions)s" cannot be reset to draft as it has pending purchases.</field>
+            <field name="text_plural">The productions "%(productions)s" cannot be reset to draft as they have pending purchases.</field>
         </record>
         <record model="ir.message" id="msg_pending_purchase_cancel">
-            <field name="text">The productions "%(productions)s" cannot be cancelled as they have pending purchases.</field>
+            <field name="text">The production "%(productions)s" cannot be cancelled as it has pending purchases.</field>
+            <field name="text_plural">The productions "%(productions)s" cannot be cancelled as they have pending purchases.</field>
         </record>
         <record model="ir.message" id="msg_pending_purchase_done">
-            <field name="text">The productions "%(productions)s" cannot be processed as they have pending purchases.</field>
+            <field name="text">The production "%(productions)s" cannot be processed as it has pending purchases.</field>
+            <field name="text_plural">The productions "%(productions)s" cannot be processed as they have pending purchases.</field>
         </record>
     </data>
 </tryton>

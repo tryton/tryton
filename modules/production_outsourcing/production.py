@@ -3,7 +3,7 @@
 
 from itertools import groupby
 
-from trytond.i18n import gettext
+from trytond.i18n import ngettext
 from trytond.model import ModelView, Workflow, fields
 from trytond.modules.product import round_price
 from trytond.pool import Pool, PoolMeta
@@ -147,8 +147,9 @@ class Production(metaclass=PoolMeta):
             if Warning.check(warning_name):
                 raise PurchaseWarning(
                     warning_name,
-                    gettext(
+                    ngettext(
                         'production_outsourcing.msg_pending_purchase_draft',
+                        len(pendings),
                         productions=names))
         PurchaseLine.delete(to_delete)
 
@@ -175,8 +176,9 @@ class Production(metaclass=PoolMeta):
             if Warning.check(warning_name):
                 raise PurchaseWarning(
                     warning_name,
-                    gettext(
+                    ngettext(
                         'production_outsourcing.msg_pending_purchase_cancel',
+                        len(pendings),
                         productions=names))
         PurchaseLine.delete(to_delete)
 
@@ -278,6 +280,8 @@ class Production(metaclass=PoolMeta):
             if Warning.check(warning_name):
                 raise PurchaseWarning(
                     warning_name,
-                    gettext('production_outsourcing.msg_pending_purchase_done',
+                    ngettext(
+                        'production_outsourcing.msg_pending_purchase_done',
+                        len(productions),
                         productions=names))
         super().do(productions)
