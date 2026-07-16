@@ -162,8 +162,12 @@ class Production(metaclass=PoolMeta):
 
         def has_supplier(production):
             return production.routing and production.routing.supplier
+
+        def not_has_purchase_lines(production):
+            return not production.purchase_lines
         productions = cls.browse(sorted(
-                filter(has_supplier, draft_productions),
+                filter(not_has_purchase_lines,
+                    filter(has_supplier, draft_productions)),
                 key=cls._group_purchase_key))
         for key, grouped in groupby(productions, key=cls._group_purchase_key):
             productions = list(grouped)
