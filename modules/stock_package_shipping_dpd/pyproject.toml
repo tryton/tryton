@@ -54,7 +54,7 @@ exclude = ['doc']
 dependencies = [
     'lxml',
     'pypdf >= 3',
-    'zeep >= 0.12',
+    'zeep >= 4',
     ]
 copyright = 'COPYRIGHT'
 readme = 'README.rst'

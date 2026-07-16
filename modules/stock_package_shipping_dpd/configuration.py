@@ -3,6 +3,7 @@
 from urllib.parse import urljoin
 
 from zeep import Client
+from zeep.cache import InMemoryCache
 from zeep.transports import Transport
 
 import trytond.config as config
@@ -22,9 +23,5 @@ def get_client(server, service):
     url = urljoin(api_base_url, service)
     timeout = config.get(
         'stock_package_shipping_dpd', 'requests_timeout', default=300)
-    # Disable the cache for testing because zeep's bug
-    # https://github.com/mvantellingen/python-zeep/issues/48
-    # which makes testing environments fail
-    transport = (Transport(cache=None, operation_timeout=timeout)
-        if url.startswith(SERVER_URLS['testing']) else None)
+    transport = Transport(cache=InMemoryCache(), operation_timeout=timeout)
     return Client(url, transport=transport)
