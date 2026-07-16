@@ -473,7 +473,6 @@ class ShipmentIn(
         'get_inventory_moves', setter='set_inventory_moves')
     moves = fields.One2Many(
         'stock.move', 'shipment', "Moves",
-        domain=[('company', '=', Eval('company', -1))],
         states={
             'readonly': True,
             })
@@ -532,6 +531,10 @@ class ShipmentIn(
                     'depends': ['state'],
                     },
                 })
+        cls.moves.domain = ['OR',
+            cls.incoming_moves.domain,
+            cls.inventory_moves.domain,
+            ]
 
     @classmethod
     def __register__(cls, module_name):
@@ -1265,7 +1268,6 @@ class ShipmentOut(
         'get_inventory_moves', setter='set_inventory_moves')
     moves = fields.One2Many(
         'stock.move', 'shipment', "Moves",
-        domain=[('company', '=', Eval('company', -1))],
         states={
             'readonly': True,
             })
@@ -1387,6 +1389,10 @@ class ShipmentOut(
                 'assign_try': {},
                 'assign_force': {},
                 })
+        cls.moves.domain = ['OR',
+            cls.outgoing_moves.domain,
+            cls.inventory_moves.domain,
+            ]
 
     @classmethod
     def __register__(cls, module_name):
@@ -1963,7 +1969,6 @@ class ShipmentOutReturn(
         'get_inventory_moves', setter='set_inventory_moves')
     moves = fields.One2Many(
         'stock.move', 'shipment', "Moves",
-        domain=[('company', '=', Eval('company', -1))],
         states={
             'readonly': True,
             })
@@ -2020,6 +2025,10 @@ class ShipmentOutReturn(
                     'depends': ['state'],
                     },
                 })
+        cls.moves.domain = ['OR',
+            cls.incoming_moves.domain,
+            cls.inventory_moves.domain,
+            ]
 
     @classmethod
     def __register__(cls, module_name):
