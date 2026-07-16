@@ -130,9 +130,27 @@ class Production(metaclass=PoolMeta):
     def draft(cls, productions):
         pool = Pool()
         PurchaseLine = pool.get('purchase.line')
+        Warning = pool.get('res.user.warning')
         super().draft(productions)
-        PurchaseLine.delete([l for p in productions for l in p.purchase_lines
-                if l.purchase_state in {'draft', 'cancelled'}])
+        to_delete, pendings = [], set()
+        for production in productions:
+            for line in production.purchase_lines:
+                if line.purchase_state in {'draft', 'cancelled'}:
+                    to_delete.append(line)
+                else:
+                    pendings.add(production)
+        if pendings:
+            names = ', '.join(p.rec_name for p in pendings[:5])
+            if len(pendings) > 5:
+                names += '...'
+            warning_name = Warning.format('pending_purchase.draft', pendings)
+            if Warning.check(warning_name):
+                raise PurchaseWarning(
+                    warning_name,
+                    gettext(
+                        'production_outsourcing.msg_pending_purchase_draft',
+                        productions=names))
+        PurchaseLine.delete(to_delete)
 
     @classmethod
     @ModelView.button
@@ -140,9 +158,27 @@ class Production(metaclass=PoolMeta):
     def cancel(cls, productions):
         pool = Pool()
         PurchaseLine = pool.get('purchase.line')
+        Warning = pool.get('res.user.warning')
         super().cancel(productions)
-        PurchaseLine.delete([l for p in productions for l in p.purchase_lines
-                if l.purchase_state in {'draft', 'cancelled'}])
+        to_delete, pendings = [], set()
+        for production in productions:
+            for line in production.purchase_lines:
+                if line.purchase_state in {'draft', 'cancelled'}:
+                    to_delete.append(line)
+                else:
+                    pendings.add(production)
+        if pendings:
+            names = ', '.join(p.rec_name for p in pendings[:5])
+            if len(pendings) > 5:
+                names += '...'
+            warning_name = Warning.format('pending_purchase.cancel', pendings)
+            if Warning.check(warning_name):
+                raise PurchaseWarning(
+                    warning_name,
+                    gettext(
+                        'production_outsourcing.msg_pending_purchase_cancel',
+                        productions=names))
+        PurchaseLine.delete(to_delete)
 
     @classmethod
     @ModelView.button
