@@ -18,7 +18,7 @@ from trytond.model import (
 from trytond.model.exceptions import AccessError
 from trytond.modules.product import price_digits, round_price
 from trytond.pool import Pool
-from trytond.pyson import Bool, Eval, Id, If, TimeDelta
+from trytond.pyson import Bool, Equal, Eval, Id, If, TimeDelta
 from trytond.tools import cached_property
 from trytond.transaction import Transaction, without_check_access
 
@@ -237,7 +237,13 @@ class Move(Workflow, ModelSQL, ModelView):
             ])
     from_location = fields.Many2One(
         'stock.location', "From Location",
-        required=True, states=STATES,
+        required=True,
+        states={
+            'readonly': (
+                STATES['readonly']
+                | (Eval('shipment')
+                    & Equal(Eval('_parent_shipment.id', None), None))),
+            },
         domain=[
             LOCATION_DOMAIN,
             ('id', '!=', Eval('to_location', -1)),
@@ -256,7 +262,13 @@ class Move(Workflow, ModelSQL, ModelView):
         'on_change_with_from_location_name')
     to_location = fields.Many2One(
         'stock.location', "To Location",
-        required=True, states=STATES,
+        required=True,
+        states={
+            'readonly': (
+                STATES['readonly']
+                | (Eval('shipment')
+                    & Equal(Eval('_parent_shipment.id', None), None))),
+            },
         domain=[
             LOCATION_DOMAIN,
             ('id', '!=', Eval('from_location', -1)),
