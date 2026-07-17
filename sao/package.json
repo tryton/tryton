@@ -57,5 +57,8 @@
     "grunt-contrib-concat": "^1.0",
     "grunt-contrib-less": "^2.0",
     "grunt-contrib-uglify": "^5.0"
+  },
+  "allowScripts": {
+      "puppeteer": true
   }
 }
