@@ -45,8 +45,11 @@ else:
     download_url = 'http://downloads.tryton.org/%s.%s/' % (
         major_version, minor_version)
 
-requires = ['geomet', get_require_version('trytond'), 'psycopg2 >= 2.0.14']
-tests_require = [get_require_version('trytond[test]')]
+requires = ['geomet', get_require_version('trytond')]
+tests_require = [
+    'psycopg2-binary >= 2.0.14',
+    get_require_version('trytond[test]'),
+    ]
 
 setup(name=name,
     version=version,
@@ -82,6 +85,7 @@ setup(name=name,
     python_requires='>=3.8',
     install_requires=requires,
     extras_require={
+        'db': ['psycopg2 >= 2.0.14'],
         'test': tests_require,
         },
     entry_points={
