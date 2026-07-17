@@ -827,7 +827,7 @@
             }
             var compare = Sao.common.compare;
             return (
-                (this.screen.view_index === 0) &&
+                (this.screen.view_index <= 0) &&
                 (this.screen.model_name === attributes.model) &&
                 (this.attributes.res_id === attributes.res_id) &&
                 (compare(
