@@ -65,5 +65,8 @@
     "grunt-cli": "^1.5",
     "grunt-contrib-concat": "^2.1",
     "grunt-contrib-less": "^3.0"
+  },
+  "allowScripts": {
+      "puppeteer": true
   }
 }
