@@ -7,7 +7,7 @@ Imports::
     >>> from decimal import Decimal
 
     >>> from proteus import Model
-    >>> from trytond.modules.company.tests.tools import create_company, get_company
+    >>> from trytond.modules.company.tests.tools import create_company
     >>> from trytond.modules.currency.tests.tools import get_currency
     >>> from trytond.tests.tools import activate_modules
 
@@ -93,7 +93,6 @@ Launch cron task::
     >>> cron_set_cost, = Cron.find([
     ...     ('method', '=', 'production|set_cost_from_moves'),
     ...     ])
-    >>> cron_set_cost.companies.append(get_company())
     >>> cron_set_cost.click('run_once')
 
     >>> production.reload()
