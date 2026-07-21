@@ -129,7 +129,7 @@ class Lot(DeactivableMixin, ModelSQL, ModelView, LotMixin, StockMixin):
         pool = Pool()
         Move = pool.get('stock.move')
 
-        def find_moves(cls, state=None):
+        def find_moves(state=None):
             for sub_records in grouped_slice(lots):
                 domain = [
                     ('lot', 'in', [r.id for r in sub_records])
