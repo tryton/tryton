@@ -126,7 +126,7 @@ class Lot(DeactivableMixin, ModelSQL, ModelView, LotMixin, StockMixin):
         pool = Pool()
         Move = pool.get('stock.move')
 
-        def find_moves(cls, state=None):
+        def find_moves(state=None):
             domain = [
                 ('lot', 'in', lots)
                 ]
