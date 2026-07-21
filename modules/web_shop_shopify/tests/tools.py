@@ -19,6 +19,7 @@ def retry(func):
                 return func(*args, **kwargs)
             except Exception:
                 time.sleep(1)
+        return func(*args, **kwargs)
     return wrapper
 
 
