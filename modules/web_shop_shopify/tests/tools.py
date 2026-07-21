@@ -41,7 +41,7 @@ def shopify_request(shop, query, variables=None, user_errors=None):
         names = user_errors.split('.')
         errors = result.data
         for name in names:
-            errors = getattr(errors, name, None)
+            errors = errors.get(name, None)
             if errors is None:
                 break
         if errors:
