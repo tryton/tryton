@@ -125,7 +125,6 @@ class Lot(DeactivableMixin, ModelSQL, ModelView, LotMixin, StockMixin):
     def check_modification(cls, mode, lots, values=None, external=False):
         pool = Pool()
         Move = pool.get('stock.move')
-        transaction = Transaction()
 
         def find_moves(cls, state=None):
             domain = [
@@ -139,7 +138,7 @@ class Lot(DeactivableMixin, ModelSQL, ModelView, LotMixin, StockMixin):
         super().check_modification(
             mode, lots, values=values, external=external)
         if mode == 'write':
-            if transaction.user and transaction.check_access:
+            if external:
                 for field, state, error in cls._modify_no_move:
                     if field in values:
                         if find_moves(state):
