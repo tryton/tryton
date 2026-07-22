@@ -104,7 +104,10 @@ class Statement(Workflow, ModelSQL, ModelView, ChatMixin):
         states=_number_states)
     lines = fields.One2Many('account.statement.line', 'statement',
         'Lines', states={
-            'readonly': (Eval('state') != 'draft') | ~Eval('journal'),
+            'readonly': (
+                (Eval('state') != 'draft')
+                | ~Eval('journal')
+                | Eval('origins', [])),
             })
     origins = fields.One2Many('account.statement.origin', 'statement',
         "Origins", states={
@@ -253,10 +256,14 @@ class Statement(Workflow, ModelSQL, ModelView, ChatMixin):
             origin.lines = lines
         self.origins = origins
 
-    @fields.depends('lines')
+    @fields.depends('lines', 'origins')
     def on_change_lines(self):
         pool = Pool()
         Line = pool.get('account.statement.line')
+
+        if self.origins:
+            # let origin manage the pending amounts
+            return
 
         invoices = {l.invoice for l in self.lines if l.invoice}
         invoice_id2amount_to_pay = {}
