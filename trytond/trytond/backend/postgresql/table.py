@@ -569,14 +569,15 @@ class TableHandler(TableHandlerInterface):
                 if (idx_valid := cursor.fetchone()) and not idx_valid[0]:
                     cursor.execute(
                         SQL("DROP INDEX {}").format(Identifier(name)))
-                cursor.execute(
-                    SQL('CREATE INDEX {} IF NOT EXISTS {} ON {} USING {}')
-                    .format(
-                        SQL('CONCURRENTLY' if concurrently else ''),
-                        Identifier(name),
-                        Identifier(self.table_name),
-                        query),
-                    params)
+                if not idx_valid or not idx_valid[0]:
+                    cursor.execute(
+                        SQL('CREATE INDEX {} {} ON {} USING {}')
+                        .format(
+                            SQL('CONCURRENTLY' if concurrently else ''),
+                            Identifier(name),
+                            Identifier(self.table_name),
+                            query),
+                        params)
                 old.discard(name)
         for name in old:
             if name.startswith('idx_') or name.endswith('_index'):
