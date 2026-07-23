@@ -105,3 +105,20 @@ Among other things it defines how the statements must be validated.
 
       .. |Financial --> Configuration --> Statements --> Statement Journals| replace:: :menuselection:`Financial --> Configuration --> Statements --> Statement Journals`
       __ https://demo.tryton.org/model/account.statement.journal
+
+.. _model-account.statement.import.csv:
+
+CSV Import
+==========
+
+A *CSV Import* defines the format of :abbr:`CSV (Comma-Separated Values)` files
+that can be used to `import statements <wizard-account.statement.import>`.
+
+.. seealso::
+
+   CSV Import can be found by opening the main menu item:
+
+      |Financial --> Configuration --> Statements --> CSV Imports|__
+
+      .. |Financial --> Configuration --> Statements --> CSV Imports| replace:: :menuselection:`Financial --> Configuration --> Statements --> CSV Imports`
+      __ https://demo.tryton.org/model/account.statement.import.csv

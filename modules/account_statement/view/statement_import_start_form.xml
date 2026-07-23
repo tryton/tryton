@@ -5,8 +5,17 @@ copyright notices and license terms. -->
     <label name="company"/>
     <field name="company"/>
     <newline/>
+
     <label name="file_"/>
-    <field name="file_"/>
+    <field name="file_" filename_visible="1" colspan="3"/>
+
     <label name="file_format"/>
     <field name="file_format"/>
+    <newline/>
+
+    <label name="csv_format"/>
+    <field name="csv_format" widget="selection"/>
+    <label name="csv_journal"/>
+    <field name="csv_journal" widget="selection"/>
+    <newline/>
 </form>

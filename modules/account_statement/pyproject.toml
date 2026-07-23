@@ -45,6 +45,7 @@ include = [
     'icons/**/*.svg',
     'tests/**/*.rst',
     'tests/**/*.json',
+    'tests/**/*.csv',
     ]
 exclude = ['doc']
 

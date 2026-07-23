@@ -1,7 +1,12 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+
+import csv
+import datetime as dt
+import os.path
 from collections import defaultdict, namedtuple
 from decimal import Decimal
+from io import StringIO
 from itertools import groupby
 
 from sql import Null
@@ -25,8 +30,8 @@ from trytond.transaction import Transaction
 from trytond.wizard import Button, StateAction, StateView, Wizard
 
 from .exceptions import (
-    ImportStatementError, StatementPostError, StatementValidateError,
-    StatementValidateWarning)
+    ImportStatementError, StatementImportCSVValidationError,
+    StatementPostError, StatementValidateError, StatementValidateWarning)
 
 if config.getboolean('account_statement', 'filestore', default=False):
     file_id = 'origin_file_id'
@@ -1264,17 +1269,49 @@ class OriginInformation(DictSchemaMixin, ModelSQL, ModelView):
 class ImportStatementStart(ModelView):
     __name__ = 'account.statement.import.start'
     company = fields.Many2One('company.company', "Company", required=True)
-    file_ = fields.Binary("File", required=True)
-    file_format = fields.Selection(
-        [(None, '')], "File Format", required=True, translate=False)
+    file_ = fields.Binary("File", required=True, filename='file_name')
+    file_name = fields.Char("File Name")
+    file_format = fields.Selection([
+            ('csv', "CSV"),
+            ], "File Format", required=True, translate=False)
+    csv_format = fields.Many2One(
+        'account.statement.import.csv', "CSV Format",
+        states={
+            'required': Eval('file_format') == 'csv',
+            'invisible': Eval('file_format') != 'csv',
+            })
+    csv_journal = fields.Many2One(
+        'account.statement.journal', "Journal",
+        domain=[
+            ('validation', '!=', 'balance'),
+            ],
+        states={
+            'required': Eval('file_format') == 'csv',
+            'invisible': Eval('file_format') != 'csv',
+            })
 
     @classmethod
-    def default_file_format(cls):
-        return None
+    def __setup__(cls):
+        super().__setup__()
+        cls.file_name.states = {
+            'required': Eval('file_format').in_(cls._file_name_required()),
+            }
+
+    @classmethod
+    def _file_name_required(cls):
+        return ['csv']
 
     @classmethod
     def default_company(cls):
         return Transaction().context.get('company')
+
+    @property
+    def file_name_used(self):
+        name = self.file_name
+        while True:
+            name, ext = os.path.splitext(name)
+            if not ext:
+                return name
 
 
 class ImportStatement(Wizard):
@@ -1307,6 +1344,233 @@ class ImportStatement(Wizard):
         if len(statements) == 1:
             action['views'].reverse()
         return action, data
+
+    def parse_csv(self):
+        csv_format = self.start.csv_format
+        file_ = StringIO(self.start.file_.decode(csv_format.encoding))
+        reader = csv_format.reader(file_)
+        for _ in range(csv_format.lines_to_skip):
+            next(reader, None)
+        statement = self.csv_statement()
+        origins = []
+        count = 0
+        for count, row in enumerate(reader, start=1):
+            origins.extend(self.csv_origin(row, csv_format))
+        statement.origins = origins
+        statement.total_amount = sum(o.amount for o in origins)
+        statement.number_of_lines = count
+        yield statement
+
+    def csv_statement(self):
+        pool = Pool()
+        Date = pool.get('ir.date')
+        Statement = pool.get('account.statement')
+
+        statement = Statement()
+        statement.name = self.start.file_name_used
+        statement.company = self.start.company
+        statement.journal = self.start.csv_journal
+        statement.date = Date.today()
+        return statement
+
+    def csv_origin(self, row, format_):
+        pool = Pool()
+        Origin = pool.get('account.statement.origin')
+
+        origin = Origin()
+        if format_.number_column is not None:
+            origin.number = row[format_.number_column]
+        origin.date = format_.parse_date(row[format_.date_column])
+        origin.amount = format_.parse_number(row[format_.amount_column])
+        origin.party = self.csv_party(row, format_)
+        if format_.description_column is not None:
+            origin.description = row[format_.description_column]
+        origin.information = self.csv_information(row)
+        return [origin]
+
+    def csv_party(self, row, format_):
+        pool = Pool()
+        Party = pool.get('party.party')
+        AccountNumber = pool.get('bank.account.number')
+
+        if format_.account_column is not None:
+            account_number = row[format_.account_column]
+            if account_number:
+                numbers = AccountNumber.search(['OR',
+                        ('number', '=', account_number),
+                        ('number_compact', '=', account_number),
+                        ])
+                if len(numbers) == 1:
+                    number, = numbers
+                    if number.account.owners:
+                        return number.account.owners[0]
+        if format_.party_column is not None:
+            party_name = row[format_.party_column]
+            if party_name:
+                parties = Party.search([('rec_name', 'ilike', party_name)])
+                if len(parties) == 1:
+                    party, = parties
+                    return party
+
+    def csv_information(self, row):
+        output = StringIO()
+        writer = csv.writer(
+            output,
+            delimiter=',',
+            quoting=csv.QUOTE_NONE,
+            escapechar='\\')
+        writer.writerow(row)
+        value = output.getvalue().strip()
+        return {
+            'csv_row': value,
+            }
+
+
+encodings = ["ascii", "big5", "big5hkscs", "cp037", "cp424", "cp437", "cp500",
+    "cp720", "cp737", "cp775", "cp850", "cp852", "cp855", "cp856", "cp857",
+    "cp858", "cp860", "cp861", "cp862", "cp863", "cp864", "cp865", "cp866",
+    "cp869", "cp874", "cp875", "cp932", "cp949", "cp950", "cp1006", "cp1026",
+    "cp1140", "cp1250", "cp1251", "cp1252", "cp1253", "cp1254", "cp1255",
+    "cp1256", "cp1257", "cp1258", "euc_jp", "euc_jis_2004", "euc_jisx0213",
+    "euc_kr", "gb2312", "gbk", "gb18030", "hz", "iso2022_jp", "iso2022_jp_1",
+    "iso2022_jp_2", "iso2022_jp_2004", "iso2022_jp_3", "iso2022_jp_ext",
+    "iso2022_kr", "latin_1", "iso8859_2", "iso8859_3", "iso8859_4",
+    "iso8859_5", "iso8859_6", "iso8859_7", "iso8859_8", "iso8859_9",
+    "iso8859_10", "iso8859_13", "iso8859_14", "iso8859_15", "iso8859_16",
+    "johab", "koi8_r", "koi8_u", "mac_cyrillic", "mac_greek", "mac_iceland",
+    "mac_latin2", "mac_roman", "mac_turkish", "ptcp154", "shift_jis",
+    "shift_jis_2004", "shift_jisx0213", "utf_32", "utf_32_be", "utf_32_le",
+    "utf_16", "utf_16_be", "utf_16_le", "utf_7", "utf_8", "utf_8_sig"]
+
+
+class StatementImportCSV(ModelSQL, ModelView):
+    __name__ = 'account.statement.import.csv'
+
+    name = fields.Char("Name", required=True)
+    encoding = fields.Selection(
+        [(e, e) for e in encodings],
+        "Encoding", required=True, translate=False)
+    delimiter = fields.Char("Delimiter", size=1, required=True, strip=False)
+    quotechar = fields.Char("Quote char", size=1, strip=False)
+    lines_to_skip = fields.Integer("Lines to Skip", required=True)
+    date_format = fields.Char(
+        "Date Format", required=True, strip=False,
+        help="The format of the date using the 1989 C standard.")
+    decimal_point = fields.Char(
+        "Decimal Separator", required=True, strip=False)
+    thousands_sep = fields.Char("Thousands Separator", strip=False)
+
+    number_column = fields.Integer(
+        "Number",
+        domain=['OR',
+            ('number_column', '=', None),
+            ('number_column', '>=', 0),
+            ])
+    date_column = fields.Integer(
+        "Date", required=True,
+        domain=[('date_column', '>=', 0)])
+    amount_column = fields.Integer(
+        "Amount", required=True,
+        domain=[('amount_column', '>=', 0)])
+    account_column = fields.Integer(
+        "Account Number",
+        domain=['OR',
+            ('account_column', '=', None),
+            ('account_column', '>=', 0),
+            ])
+    party_column = fields.Integer(
+        "Party",
+        domain=['OR',
+            ('party_column', '=', None),
+            ('party_column', '>=', 0),
+            ])
+    description_column = fields.Integer(
+        "Description",
+        domain=['OR',
+            ('description_column', '=', None),
+            ('description_column', '>=', 0),
+            ])
+
+    @classmethod
+    def default_encoding(cls):
+        return 'utf_8'
+
+    @classmethod
+    def default_delimiter(cls):
+        return ','
+
+    @classmethod
+    def default_quotechar(cls):
+        return '"'
+
+    @classmethod
+    def default_lines_to_skip(cls):
+        return 0
+
+    @classmethod
+    def default_date_format(cls):
+        pool = Pool()
+        Lang = pool.get('ir.lang')
+        lang = Lang.get()
+        return lang.date
+
+    @classmethod
+    def default_decimal_point(cls):
+        pool = Pool()
+        Lang = pool.get('ir.lang')
+        lang = Lang.get()
+        return lang.mon_decimal_point
+
+    @classmethod
+    def default_thousands_sep(cls):
+        pool = Pool()
+        Lang = pool.get('ir.lang')
+        lang = Lang.get()
+        return lang.mon_thousands_sep
+
+    def reader(self, csvfile):
+        return csv.reader(csvfile, **self.fmtparams)
+
+    @property
+    def fmtparams(self):
+        return {
+            'delimiter': self.delimiter,
+            'quotechar': self.quotechar,
+            }
+
+    @classmethod
+    def validate_fields(cls, records, field_names):
+        super().validate_fields(records, field_names)
+        cls.check_date_format(records, field_names)
+
+    @classmethod
+    def check_date_format(cls, records, field_names=None):
+        if field_names and 'date_format' not in field_names:
+            return
+        for record in records:
+            if record.date_format:
+                try:
+                    dt.datetime.strptime(
+                        dt.datetime.now().strftime(record.date_format),
+                        record.date_format)
+                except ValueError as e:
+                    raise StatementImportCSVValidationError(
+                        gettext(
+                            'account_statement'
+                            '.msg_statement_import_csv_invalid_date_format',
+                            date_format=record.date_format,
+                            record=record.rec_name,
+                            error=e)) from e
+
+    def parse_date(self, value):
+        return dt.datetime.strptime(value, self.date_format).date()
+
+    def parse_number(self, value):
+        if self.thousands_sep:
+            value = value.replace(self.thousands_sep, '')
+        if self.decimal_point:
+            value = value.replace(self.decimal_point, '.')
+        return Decimal(value)
 
 
 class ReconcileStatement(Wizard):

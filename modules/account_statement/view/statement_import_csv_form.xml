@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form>
+    <label name="name"/>
+    <field name="name" colspan="3"/>
+
+    <separator string="Format" id="format" colspan="4"/>
+    <label name="encoding"/>
+    <field name="encoding"/>
+    <label name="lines_to_skip"/>
+    <field name="lines_to_skip"/>
+
+    <label name="delimiter"/>
+    <field name="delimiter"/>
+    <label name="quotechar"/>
+    <field name="quotechar"/>
+
+    <label name="date_format"/>
+    <field name="date_format"/>
+    <newline/>
+
+    <label name="decimal_point"/>
+    <field name="decimal_point"/>
+    <label name="thousands_sep"/>
+    <field name="thousands_sep"/>
+
+    <separator string="Columns" id="columns" colspan="4"/>
+    <label name="number_column"/>
+    <field name="number_column"/>
+    <newline/>
+
+    <label name="date_column"/>
+    <field name="date_column"/>
+    <newline/>
+
+    <label name="amount_column"/>
+    <field name="amount_column"/>
+    <newline/>
+
+    <label name="account_column"/>
+    <field name="account_column"/>
+    <newline/>
+
+    <label name="party_column"/>
+    <field name="party_column"/>
+    <newline/>
+
+    <label name="description_column"/>
+    <field name="description_column"/>
+    <newline/>
+</form>

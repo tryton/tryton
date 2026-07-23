@@ -52,5 +52,8 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_statement_import_error">
             <field name="text">The statement file could not be parsed with the following exception: "%(exception)s".</field>
         </record>
+        <record model="ir.message" id="msg_statement_import_csv_invalid_date_format">
+            <field name="text">Invalid date format "%(date_format)s" for the CSV import "%(record)s" with error: "%(error)s"</field>
+        </record>
     </data>
 </tryton>
