@@ -1017,7 +1017,7 @@ class ModelSQL(ModelStorage):
                 vlist = (
                     s for s in grouped_slice(
                         vlist,
-                        backend.MAX_QUERY_PARAMS // (len(column_names) + 1)))
+                        backend.MAX_QUERY_PARAMS // (len(columns) + 1)))
             else:
                 vlist = ([v] for v in vlist)
 
