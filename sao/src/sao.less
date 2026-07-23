@@ -263,6 +263,12 @@ html[theme="default"] {
     @media (max-width: (@screen-sm-max)) {
         width: 100% !important;
     }
+
+    .treeview {
+        > table.tree > tbody > tr > td {
+            cursor: pointer;
+        }
+    }
 }
 
 [dir="rtl"] #menu {
@@ -1019,7 +1025,7 @@ img.icon {
             }
         }
         > tbody > tr > td {
-            cursor: pointer;
+            cursor: cell;
             > * {
                 vertical-align: middle;
             }
