@@ -2838,6 +2838,11 @@
                 params.context = this.field.get_context(record);
                 Sao.Tab.create(params);
             });
+            cell.dblclick((evt) => {
+                // prevent calling switch_row on td
+                evt.preventDefault();
+                evt.stopImmediatePropagation();
+            });
         }
     });
 
