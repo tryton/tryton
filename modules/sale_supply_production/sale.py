@@ -89,7 +89,7 @@ class Line(metaclass=PoolMeta):
             available_qty = Uom.compute_qty(
                 product.default_uom, available_qty, self.unit,
                 round=False)
-            if quantity < available_qty:
+            if quantity <= available_qty:
                 product_quantities[product] -= Uom.compute_qty(
                     self.unit, quantity, product.default_uom, round=False)
                 return
