@@ -104,3 +104,21 @@ Sale 4 products with production request::
     >>> move, = line.moves
     >>> move.state
     'staging'
+
+Sale remaining 2 products without production request::
+
+    >>> sale = Sale()
+    >>> sale.party = customer
+    >>> line = sale.lines.new()
+    >>> line.product = product
+    >>> line.quantity = 2
+    >>> sale.click('quote')
+    >>> sale.click('confirm')
+    >>> sale.state
+    'processing'
+    >>> line, = sale.lines
+    >>> len(line.productions)
+    0
+    >>> move, = line.moves
+    >>> move.state
+    'draft'
