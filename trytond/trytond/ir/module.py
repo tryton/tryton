@@ -82,7 +82,11 @@ class Module(ModelSQL, ModelView):
                         ['to activate', 'to remove', 'to upgrade']),
                     'depends': ['state'],
                     },
-                'apply': {},
+                'apply': {
+                    'readonly': ~Eval('state').in_(
+                        ['to upgrade', 'to remove', 'to activate']),
+                    'depends': ['state'],
+                    },
                 })
 
     @staticmethod
@@ -240,7 +244,10 @@ class Module(ModelSQL, ModelView):
     @classmethod
     @ModelView.button_action('ir.act_module_activate_upgrade')
     def apply(cls, modules):
-        pass
+        return {
+            # Set keyword to prevent record names to be appended
+            'keyword': 'form_relate',
+            }
 
     @classmethod
     def update_list(cls):
@@ -424,7 +431,9 @@ class ModuleConfigWizard(Wizard):
 
 class ModuleActivateUpgradeStart(ModelView):
     __name__ = 'ir.module.activate_upgrade.start'
-    module_info = fields.Text('Modules to update', readonly=True)
+    modules = fields.Many2Many(
+        'ir.module', None, None,
+        "Modules to Activate / Upgrade", readonly=True)
 
 
 class ModuleActivateUpgradeDone(ModelView):
@@ -437,7 +446,10 @@ class ModuleActivateUpgrade(Wizard):
     start = StateView('ir.module.activate_upgrade.start',
         'ir.module_activate_upgrade_start_view_form', [
             Button('Cancel', 'end', 'tryton-cancel'),
-            Button('Start Upgrade', 'upgrade', 'tryton-ok', default=True),
+            Button("OK", 'upgrade', 'tryton-ok', default=True,
+                states={
+                    'readonly': ~Eval('modules'),
+                    }),
             ])
     upgrade = StateTransition()
     done = StateView('ir.module.activate_upgrade.done',
@@ -453,16 +465,15 @@ class ModuleActivateUpgrade(Wizard):
         with Transaction().new_transaction():
             super().check_access()
 
-    @staticmethod
-    def default_start(fields):
+    @classmethod
+    def default_start(cls, fields):
         pool = Pool()
         Module = pool.get('ir.module')
         modules = Module.search([
                 ('state', 'in', ['to upgrade', 'to remove', 'to activate']),
                 ])
         return {
-            'module_info': '\n'.join(x.name + ': ' + x.state
-                for x in modules),
+            'modules': [m.id for m in modules],
             }
 
     def __init__(self, session_id):
