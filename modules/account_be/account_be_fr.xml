@@ -671,18 +671,21 @@ this repository contains the full copyright notices and license terms. -->
       <field name="sequence" eval="50"/>
       <field name="parent" ref="passif_IX_fr"/>
       <field name="statement">balance</field>
+      <field name="payable" eval="True"/>
     </record>
     <record id="passif_IX_E_1_fr" model="account.account.type.template">
       <field name="name">1. Impôts</field>
       <field name="sequence" eval="10"/>
       <field name="parent" ref="passif_IX_E_fr"/>
       <field name="statement">balance</field>
+      <field name="payable" eval="True"/>
     </record>
     <record id="passif_IX_E_2_fr" model="account.account.type.template">
       <field name="name">2. Rémunérations et charges sociales</field>
       <field name="sequence" eval="20"/>
       <field name="parent" ref="passif_IX_E_fr"/>
       <field name="statement">balance</field>
+      <field name="payable" eval="True"/>
     </record>
     <record id="passif_IX_F_fr" model="account.account.type.template">
       <field name="name">F. Autres dettes</field>

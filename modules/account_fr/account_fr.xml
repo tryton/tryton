@@ -839,6 +839,7 @@
             <field name="sequence" eval="20"/>
             <field name="parent" ref="dettes_exploitation"/>
             <field name="statement">balance</field>
+            <field name="payable" eval="True"/>
         </record>
         <record model="account.account.type.template" id="dettes_exploitation_autres">
             <field name="name">Autres</field>
