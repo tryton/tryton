@@ -386,7 +386,12 @@ class Report(URLMixin, PoolBase):
         if (weasyprint
                 and input_format in {'html', 'xhtml'}
                 and output_format == 'pdf'):
-            return output_format, weasyprint.HTML(string=data).write_pdf()
+            return output_format, weasyprint.HTML(
+                string=data,
+                url_fetcher=weasyprint.URLFetcher(
+                    allowed_protocols={'http', 'https'},
+                    ),
+                ).write_pdf()
 
         if input_format == output_format and output_format in MIMETYPES:
             return output_format, data
