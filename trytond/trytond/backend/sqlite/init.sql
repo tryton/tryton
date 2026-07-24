@@ -89,14 +89,13 @@ CREATE TABLE res_user (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     name VARCHAR,
     active BOOLEAN NOT NULL,
-    login VARCHAR NOT NULL,
-    password VARCHAR
+    login VARCHAR NOT NULL
 );
 
 CREATE UNIQUE INDEX res_user_login_key ON res_user (login);
 
-INSERT INTO res_user (id, login, password, name, active) VALUES (0, 'root', NULL, 'Root', 0);
-INSERT INTO res_user (id, login, password, name, active) VALUES (1, 'admin', NULL, 'Administrator', 1);
+INSERT INTO res_user (id, login, name, active) VALUES (0, 'root', 'Root', 0);
+INSERT INTO res_user (id, login, name, active) VALUES (1, 'admin', 'Administrator', 1);
 
 CREATE TABLE res_group (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
