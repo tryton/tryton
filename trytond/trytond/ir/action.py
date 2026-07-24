@@ -530,7 +530,7 @@ class ActionReport(
         'get_report_content', setter='set_report_content')
     report_content_name = fields.Function(fields.Char('Content Name'),
         'on_change_with_report_content_name')
-    report_content_html = fields.Function(fields.Binary(
+    report_content_html = fields.Function(fields.Text(
             "Content HTML",
             states={
                 'invisible': ~Eval('template_extension').in_(
@@ -692,11 +692,18 @@ class ActionReport(
 
     @classmethod
     def get_report_content_html(cls, reports, name):
-        return cls.get_report_content(reports, name[:-5])
+        contents = cls.get_report_content(reports, name[:-5])
+        for report_id, content in contents.items():
+            if isinstance(content, bytes):
+                try:
+                    contents[report_id] = content.decode('utf-8')
+                except UnicodeDecodeError:
+                    pass
+        return contents
 
     @classmethod
     def set_report_content_html(cls, reports, name, value):
-        if value is not None:
+        if isinstance(value, str):
             value = value.encode('utf-8')
         cls.set_report_content(reports, name[:-5], value)
 
