@@ -58,7 +58,7 @@ test = [
     'pillow',
     'pydot',
     ]
-weasyprint = ['weasyprint']
+weasyprint = ['weasyprint >= 68.0']
 
 [project.scripts]
 trytond = 'trytond.cli:main'

@@ -1,3 +1,4 @@
+* Restrict protocols allowed for weasyprint to http(s) (issue14947)
 * Add search attribute to XML record tag
 * Enforce access right on the email template record (issue14907)
 * Add ModelAccessProxy (issue14907)

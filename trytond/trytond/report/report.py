@@ -413,7 +413,12 @@ class Report(URLMixin, PoolBase):
         if (input_format in {'html', 'xhtml'}
                 and output_format == 'pdf'):
             if weasyprint := _lazy_import('weasyprint'):
-                return output_format, weasyprint.HTML(string=data).write_pdf()
+                return output_format, weasyprint.HTML(
+                    string=data,
+                    url_fetcher=weasyprint.URLFetcher(
+                        allowed_protocols={'http', 'https'},
+                        ),
+                    ).write_pdf()
 
         if (input_format == 'xml'
                 and output_format == 'html'
