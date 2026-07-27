@@ -4531,11 +4531,12 @@ function eval_pyson(value){
                 field = this.field,
                 filename_field = this.filename_field;
 
-            Sao.common.get_input_data(this.input_select, function(data, filename) {
+            Sao.common.get_input_data(this.input_select, (data, filename) => {
                 field.set_client(record, data);
                 if (filename_field) {
                     filename_field.set_client(record, filename);
                 }
+                this.input_select.val(undefined);
             }, !field.get_size);
         },
         select_drop: function(evt) {
