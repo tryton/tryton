@@ -9,6 +9,7 @@ import os
 import shutil
 import sys
 from tempfile import NamedTemporaryFile
+from threading import Lock
 
 from gi.repository import GdkPixbuf
 
@@ -16,6 +17,7 @@ from tryton import __version__
 
 logger = logging.getLogger(__name__)
 _ = gettext.gettext
+_lock = Lock()
 
 
 def _reverse_series_iterator(starting_version):
@@ -172,8 +174,9 @@ class ConfigManager(object):
                 if not parser.has_section(section):
                     parser.add_section(section)
                 parser.set(section, name, str(self.config[entry]))
-            with open(self.rcfile, 'w') as fp:
-                parser.write(fp)
+            with _lock:
+                with open(self.rcfile, 'w') as fp:
+                    parser.write(fp)
         except IOError:
             logger.warn("Unable to write config file %s", self.rcfile)
             return False
