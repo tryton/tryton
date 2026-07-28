@@ -246,13 +246,17 @@ class Peppol(Workflow, ModelSQL, ModelView):
                 self.succeed()
 
     @classmethod
-    @ModelView.button
     def update_status(cls, documents=None):
         if documents is None:
             documents = cls.search([
                     ('direction', '=', 'out'),
                     ('state', '=', 'processing'),
                     ])
+        cls.update_status_button(documents)
+
+    @classmethod
+    @ModelView.button
+    def update_status_button(cls, documents):
         for document in documents:
             document._update_status()
         cls.save(documents)
