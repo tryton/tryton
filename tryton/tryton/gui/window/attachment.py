@@ -28,8 +28,9 @@ class Attachment(WinForm):
             ],
             mode=['tree', 'form'],
             readonly=not access['write'])
-        super().__init__(screen, self.callback,
-            view_type='tree', title=title)
+        super().__init__(
+            screen, self.callback, view_type='tree', title=title,
+            prev_view=screen.current_view)
         screen.search_filter()
 
     def destroy(self):

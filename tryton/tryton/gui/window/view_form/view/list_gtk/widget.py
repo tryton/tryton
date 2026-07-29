@@ -974,13 +974,15 @@ class M2O(GenericText):
         if target_id and target_id >= 0:
             screen.load([target_id])
             screen.current_record = screen.group.get(target_id)
-            WinForm(screen, open_callback, save_current=True)
+            WinForm(
+                screen, open_callback, save_current=True,
+                prev_view=screen.current_view)
         else:
             defaults = defaults.copy() if defaults is not None else {}
             defaults['rec_name'] = text
             WinForm(
                 screen, open_callback, new=True, save_current=True,
-                defaults=defaults)
+                defaults=defaults, prev_view=screen.current_view)
 
     def search_remote(self, record, field, text, callback=None):
         model = self.get_model(record, field)
@@ -1127,7 +1129,9 @@ class O2M(GenericText):
         def open_callback(result):
             if callback:
                 callback()
-        WinForm(screen, open_callback, view_type='tree', context=context)
+        WinForm(
+            screen, open_callback, view_type='tree', context=context,
+            prev_view=screen.current_view)
 
 
 class M2M(O2M):
@@ -1154,8 +1158,9 @@ class M2M(O2M):
         def open_callback(result):
             if callback:
                 callback()
-        WinForm(screen, open_callback, view_type='tree', domain=domain,
-            context=context)
+        WinForm(
+            screen, open_callback, view_type='tree', domain=domain,
+            context=context, prev_view=screen.current_view)
 
 
 class Selection(GenericText, SelectionMixin, PopdownMixin):

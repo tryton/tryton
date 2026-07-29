@@ -16,6 +16,7 @@ from tryton.gui.window.nomodal import NoModal
 from .infobar import InfoBar
 
 _ = gettext.gettext
+SENTINEL = object()
 
 
 class WinForm(NoModal, InfoBar):
@@ -23,7 +24,7 @@ class WinForm(NoModal, InfoBar):
 
     def __init__(self, screen, callback=None, view_type='form',
             new=False, many=0, domain=None, context=None,
-            save_current=False, title='', defaults=None):
+            save_current=False, title='', defaults=None, prev_view=SENTINEL):
         tooltips = common.Tooltips()
         NoModal.__init__(self)
 
@@ -49,7 +50,10 @@ class WinForm(NoModal, InfoBar):
             if not title:
                 title = MODELNAME.get(screen.model_name)
             self.title = title
-        self.prev_view = self.screen.current_view
+        if prev_view is not SENTINEL:
+            self.prev_view = prev_view
+        else:
+            self.prev_view = screen.current_view
         self.screen.screen_container.alternate_view = True
         self.screen.switch_view(view_type=view_type)
         if self.screen.current_view.view_type != view_type:
@@ -519,7 +523,8 @@ class WinForm(NoModal, InfoBar):
         viewport = self.screen.screen_container.alternate_viewport
         if viewport and viewport.get_parent():
             viewport.get_parent().remove(viewport)
-        self.screen.switch_view(view_type=self.prev_view.view_type)
+        if self.prev_view:
+            self.screen.switch_view(view_type=self.prev_view.view_type)
         if getattr(self, 'win', None):
             self.win.destroy()
         NoModal.destroy(self)

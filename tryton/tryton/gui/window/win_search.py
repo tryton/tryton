@@ -167,7 +167,9 @@ class WinSearch(NoModal):
                 else:
                     self.callback(None)
             self.destroy()
-            WinForm(screen, callback, new=True, save_current=True)
+            WinForm(
+                screen, callback, new=True, save_current=True,
+                prev_view=screen.current_view)
             return
         if res:
             group = self.screen.group

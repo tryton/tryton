@@ -110,7 +110,9 @@ class Log(WinForm):
         screen = Screen('ir.model.log', domain=[
                 ('resource', '=', self.resource),
                 ], mode=['tree', 'form'])
-        super().__init__(screen, view_type='tree', title=title)
+        super().__init__(
+            screen, view_type='tree', title=title,
+            prev_view=screen.current_view)
         screen.search_filter()
 
         self.win.vbox.pack_start(grid, expand=False, fill=True, padding=0)

@@ -186,7 +186,8 @@ class Many2One(Widget):
                         screen.current_record.rec_name()))
             self._popup = False
         WinForm(
-            screen, callback, new=True, save_current=True, defaults=defaults)
+            screen, callback, new=True, save_current=True, defaults=defaults,
+            prev_view=None)
 
     def sig_edit(self, entry=None, icon_pos=None, *args):
         if entry:
@@ -225,7 +226,7 @@ class Many2One(Widget):
                         force_change=True)
                 self._popup = False
                 self.changed = True
-            WinForm(screen, callback, save_current=True)
+            WinForm(screen, callback, save_current=True, prev_view=None)
             return
         if not self._readonly:
             domain = self.field.domain_get(self.record)

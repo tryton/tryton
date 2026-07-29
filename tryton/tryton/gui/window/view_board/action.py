@@ -120,7 +120,9 @@ class Action:
                     self.screen.current_record.save()
                 else:
                     self.screen.current_record.cancel()
-            WinForm(self.screen, callback, title=self.title.get_text())
+            WinForm(
+                self.screen, callback, title=self.title.get_text(),
+                prev_view=self.screen.current_view)
 
     def display(self):
         self.screen.search_filter(self.screen.screen_container.get_text())

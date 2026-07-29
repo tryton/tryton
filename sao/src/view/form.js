@@ -2928,6 +2928,7 @@ function eval_pyson(value){
                     screen.current_record = screen.group.get(m2o_id);
                     new Sao.Window.Form(screen, callback, {
                         save_current: true,
+                        prev_view: null,
                     });
                 });
                 return;
@@ -2998,6 +2999,7 @@ function eval_pyson(value){
                     new_: true,
                     save_current: true,
                     defaults: defaults,
+                    prev_view: null,
                 });
             });
         },

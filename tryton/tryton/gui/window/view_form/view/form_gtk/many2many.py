@@ -284,7 +284,8 @@ class Many2Many(Widget):
                 # Force a display to clear the CellCache
                 self.screen.display()
             self._popup = False
-        WinForm(screen, callback, save_current=True)
+        WinForm(
+            screen, callback, save_current=True, prev_view=screen.current_view)
 
     def _sig_new(self, defaults=None):
         if self._popup:
@@ -304,7 +305,8 @@ class Many2Many(Widget):
             self._popup = False
 
         WinForm(
-            screen, callback, new=True, save_current=True, defaults=defaults)
+            screen, callback, new=True, save_current=True, defaults=defaults,
+            prev_view=screen.current_view)
 
     def _readonly_set(self, value):
         super()._readonly_set(value)

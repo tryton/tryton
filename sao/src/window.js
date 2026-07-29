@@ -162,7 +162,12 @@
                     return label;
                 });
 
-            this.prev_view = screen.current_view;
+            // prev_view should stay null
+            if (kwargs.prev_view !== undefined) {
+                this.prev_view = kwargs.prev_view;
+            } else {
+                this.prev_view = screen.current_view;
+            }
             this.screen.screen_container.alternate_view = true;
             this.info_bar = new Sao.Window.InfoBar();
             var view_type = kwargs.view_type || 'form';

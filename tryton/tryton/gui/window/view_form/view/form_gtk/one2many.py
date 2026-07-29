@@ -398,7 +398,8 @@ class One2Many(Widget):
             field_size -= len(self.field.get_eval(self.record)) + 1
             WinForm(
                 self.screen, lambda a: update_sequence(), new=True,
-                defaults=defaults, many=field_size)
+                defaults=defaults, many=field_size,
+                prev_view=self.screen.current_view)
 
     def _new_product(self, defaults=None):
         fields = self.attrs['product'].split(',')
@@ -472,7 +473,7 @@ class One2Many(Widget):
 
             def callback(result):
                 self._popup = False
-            WinForm(self.screen, callback)
+            WinForm(self.screen, callback, prev_view=self.screen.current_view)
 
     def _sig_next(self, widget):
         if not self._validate():
