@@ -1,5 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+
+import datetime as dt
 from itertools import groupby
 from secrets import token_hex
 
@@ -110,6 +112,23 @@ class Sale(metaclass=PoolMeta):
     def web_shop_update(cls, sales):
         for web_shop, s_sales in groupby(sales, lambda s: s.web_shop):
             web_shop.update_sales(list(s_sales))
+
+    @classmethod
+    def web_cancel_draft_abandoned(cls):
+        pool = Pool()
+        WebShop = pool.get('web.shop')
+        now = dt.datetime.now()
+        sales = []
+        for web_shop in WebShop.search([
+                    ('sale_draft_abandon_delay', '!=', None),
+                    ]):
+            sales.extend(cls.search([
+                        ('state', '=', 'draft'),
+                        ('web_shop', '=', web_shop),
+                        ('last_modified_at', '<',
+                            now - web_shop.sale_draft_abandon_delay),
+                        ]))
+        cls.cancel(sales)
 
 
 class Line_GiftCard(metaclass=PoolMeta):

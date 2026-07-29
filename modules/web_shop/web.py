@@ -1,5 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+
+import datetime as dt
 from collections import defaultdict
 
 from sql import Literal
@@ -70,6 +72,15 @@ class Shop(DeactivableMixin, ModelSQL, ModelView):
             'company': Eval('company', -1),
             },
         depends={'company'})
+    sale_draft_abandon_delay = fields.TimeDelta(
+        "Sale Draft Abandon Delay",
+        domain=['OR',
+            ('sale_draft_abandon_delay', '>=', dt.timedelta()),
+            ('sale_draft_abandon_delay', '=', None),
+            ],
+        help="The time period after which a sale made via the web shop "
+        "without modification is cancelled.\n"
+        "Leave empty to never cancel any draft sales.")
     countries = fields.Many2Many(
         'web.shop-country.country', 'shop', 'country', "Countries")
 

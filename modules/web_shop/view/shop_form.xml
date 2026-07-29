@@ -19,6 +19,8 @@ this repository contains the full copyright notices and license terms. -->
 
     <label name="guest_party"/>
     <field name="guest_party"/>
+    <label name="sale_draft_abandon_delay"/>
+    <field name="sale_draft_abandon_delay"/>
 
     <notebook colspan="4">
         <page name="warehouses">
