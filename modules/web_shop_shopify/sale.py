@@ -858,8 +858,8 @@ class Sale_ShipmentCost(metaclass=PoolMeta):
             else:
                 if available_carriers:
                     carrier = available_carriers[0]
-                else:
-                    shipment_cost_method = None
+        if not carrier:
+            shipment_cost_method = None
         setattr_changed(self, 'carrier', carrier)
         setattr_changed(self, 'shipment_cost_method', shipment_cost_method)
 
