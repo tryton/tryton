@@ -90,7 +90,7 @@ class PaymentTermLine(sequence_ordered(), ModelSQL, ModelView):
             ('percent_on_total', 'Percentage on Total'),
             ('remainder', 'Remainder'),
             ], 'Type', required=True)
-    ratio = fields.Numeric('Ratio', digits=(14, 10),
+    ratio = fields.Numeric('Ratio', digits=(8, 8),
         domain=[
             If(Eval('type').in_(['percent', 'percent_on_total'])
                 & ~Eval('divisor', 0),
@@ -101,7 +101,7 @@ class PaymentTermLine(sequence_ordered(), ModelSQL, ModelView):
             'invisible': ~Eval('type').in_(['percent', 'percent_on_total']),
             'required': Eval('type').in_(['percent', 'percent_on_total']),
             })
-    divisor = fields.Numeric('Divisor', digits=(10, 14),
+    divisor = fields.Numeric('Divisor', digits=(8, 8),
         states={
             'invisible': ~Eval('type').in_(['percent', 'percent_on_total']),
             'required': Eval('type').in_(['percent', 'percent_on_total']),

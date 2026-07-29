@@ -10,7 +10,7 @@ from trytond.transaction import Transaction
 
 __all__ = ['price_digits']
 
-price_digits = (16, config.getint(
+price_digits = (None, config.getint(
         'timesheet_cost', 'price_decimal', default=4))
 
 

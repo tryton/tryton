@@ -1,5 +1,8 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+
+import warnings
+
 from trytond.pyson import PYSON, PYSONEncoder
 from trytond.tools import cached_property
 
@@ -17,6 +20,11 @@ def digits_validate(value):
                 if isinstance(i, PYSON):
                     assert i.types() <= {int, type(None)}, \
                         "PYSON digits must return an integer or None"
+            if (digits := sum(v for v in value if isinstance(v, int))) > 17:
+                warnings.warn(
+                    f"{digits} significant digits is greater than 17, "
+                    "there may be lost of fidelity",
+                    stacklevel=4)
 
 
 def _get_digits_depends(field):

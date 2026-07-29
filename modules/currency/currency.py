@@ -49,7 +49,7 @@ class Currency(
     numeric_code = fields.Char('Numeric Code', size=3,
         help="The 3 digits ISO currency code.")
     rate = fields.Function(fields.Numeric(
-            "Current rate", digits=(rate_decimal * 2, rate_decimal)),
+            "Current rate", digits=(rate_decimal * 2 - 1, rate_decimal)),
         'get_rate')
     rates = fields.One2Many('currency.currency.rate', 'currency', 'Rates',
         help="Add floating exchange rates for the currency.")
@@ -248,7 +248,7 @@ class CurrencyRate(ModelSQL, ModelView):
         "Date", required=True,
         help="From when the rate applies.")
     rate = fields.Numeric(
-        "Rate", digits=(rate_decimal * 2, rate_decimal), required=True,
+        "Rate", digits=(rate_decimal * 2 - 1, rate_decimal), required=True,
         domain=[
             ('rate', '>', 0),
             ],

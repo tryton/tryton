@@ -16,7 +16,7 @@ from .exceptions import UOMAccessError, UOMValidationError
 __all__ = ['uom_conversion_digits']
 
 uom_conversion_digits = (
-    config.getint('product', 'uom_conversion_decimal', default=12),) * 2
+    None, config.getint('product', 'uom_conversion_decimal', default=12))
 
 
 class UomCategory(ModelSQL, ModelView):

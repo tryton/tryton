@@ -116,7 +116,7 @@ class AccountInvoiceTestCase(
                         ('create', [{
                                     'type': 'percent',
                                     'divisor': Decimal(3),
-                                    'ratio': Decimal('0.3333333333'),
+                                    'ratio': Decimal('0.33333333'),
                                     }, {
                                     'type': 'remainder',
                                     }]),
