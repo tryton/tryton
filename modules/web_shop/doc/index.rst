@@ -1,5 +1,12 @@
+###############
 Web Shop Module
 ###############
 
-The web_shop module provides facilities to store configuration of online web
+The *Web Shop Module* provides facilities to store configuration of online web
 shop.
+
+.. toctree::
+   :maxdepth: 2
+
+   design
+   releases
