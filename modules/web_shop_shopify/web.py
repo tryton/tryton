@@ -603,6 +603,8 @@ class Shop(metaclass=PoolMeta):
                             template=template.rec_name,
                             error="\n".join(
                                 err['message'] for err in e.errors))) from e
+            else:
+                template.set_shopify_identifier(self)
 
     @classmethod
     def shopify_update_inventory(cls, shops=None):
