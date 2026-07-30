@@ -666,6 +666,8 @@ class Shop(metaclass=PoolMeta):
                             'web_shop_shopify.msg_product_fail',
                             template=template.rec_name,
                             error=e.message)) from e
+            else:
+                template.set_shopify_identifier(self)
 
     @classmethod
     def shopify_update_inventory(cls, shops=None):
