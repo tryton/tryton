@@ -1198,8 +1198,7 @@ class Invoice(Model):
     def _parse_2_payment_term_date(cls, payment_terms):
         dates = []
         for payment_term in payment_terms:
-            if (date := payment_term.findtext('./{*}PaymentDueDate')
-                    ) is not None:
+            if date := payment_term.findtext('./{*}PaymentDueDate'):
                 dates.append(dt.date.fromisoformat(date))
         return min(dates, default=None)
 
