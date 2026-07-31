@@ -247,7 +247,7 @@ class POSSale(Workflow, ModelSQL, ModelView, TaxableMixin, ChatMixin):
     def on_change_with_total_tax(self, name=None):
         return sum(line.tax_amount for line in self.lines)
 
-    @fields.depends('company', 'lines')
+    @fields.depends('lines')
     def on_change_with_total(self, name=None):
         return sum(line.gross_amount for line in self.lines)
 
