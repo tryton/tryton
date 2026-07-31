@@ -2278,7 +2278,9 @@ class ModelStorage(Model):
                             record._ids.append(record.id)
                     if to_write:
                         cls.write(*sum(
-                                (([r], save_values[r]) for r in to_write), ()))
+                                ((list(gr), v) for v, gr in groupby(
+                                        to_write, lambda r: save_values[r])),
+                                ()))
             except Exception:
                 for record in chain(to_create, to_write):
                     record._values = values.get(record)

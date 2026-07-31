@@ -2,6 +2,7 @@
 # repository contains the full copyright notices and license terms.
 
 import warnings
+from unittest.mock import patch
 
 from trytond.model import BrowseList, EvalEnvironment
 from trytond.model.exceptions import (
@@ -123,6 +124,22 @@ class ModelStorageTestCase(TestCase):
         ModelStorage.save([foo, bar])
 
         self.assertNotEqual(foo._context, bar._context)
+
+    @with_transaction()
+    def test_save_same_write_values(self):
+        "Test save with same write values"
+        pool = Pool()
+        ModelStorage = pool.get('test.modelstorage')
+
+        records = ModelStorage.create([{}, {}])
+
+        with patch.object(
+                ModelStorage, 'write', wraps=ModelStorage.write) as mock:
+            for record in records:
+                record.name = "test"
+            ModelStorage.save(records)
+
+            mock.assert_called_once_with(records, {'name': "test"})
 
     @with_transaction()
     def test_fail_saving_mixed_context1(self):
