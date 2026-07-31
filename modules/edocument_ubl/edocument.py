@@ -382,6 +382,9 @@ class Invoice(Model):
             root.findall('./{*}PaymentMeans'), payees=payees)
         invoice.payment_term_date = cls._parse_2_payment_term_date(
             root.findall('./{*}PaymentTerms'))
+        if not invoice.payment_term_date:
+            if due_date := root.findtext('./{*}DueDate'):
+                invoice.payment_term_date = dt.date.fromisoformat(due_date)
         lines = [
             cls._parse_invoice_2_line(
                 line,
@@ -697,6 +700,9 @@ class Invoice(Model):
             root.findall('./{*}PaymentMeans'), payees=payees)
         invoice.payment_term_date = cls._parse_2_payment_term_date(
             root.findall('./{*}PaymentTerms'))
+        if not invoice.payment_term_date:
+            if due_date := root.findtext('./{*}DueDate'):
+                invoice.payment_term_date = dt.date.fromisoformat(due_date)
         lines = [
             cls._parse_credit_note_2_line(
                 line, company=invoice.company, currency=invoice.currency,
