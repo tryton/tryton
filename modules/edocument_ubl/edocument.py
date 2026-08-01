@@ -1323,13 +1323,16 @@ class Invoice(Model):
                         ) is not None:
                     mime_code = (
                         data.get('mimeCode') or 'application/octet-stream')
-                    name += mimetypes.guess_extension(mime_code) or ''
+                    if extension := mimetypes.guess_extension(mime_code):
+                        if not name.lower().endswith(extension):
+                            name += extension
                     attachment.type = 'data'
                     data = b64decode(data.text)
                     attachment.data = data
                 elif data := document.findtext(
                         './{*}Attachment/{*}EmbeddedDocument'):
-                    name += '.txt'
+                    if not name.lower().endswith('.txt'):
+                        name += '.txt'
                     attachment.type = 'data'
                     attachment.data = data
                 elif url := document.findtext(
