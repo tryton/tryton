@@ -246,6 +246,13 @@ class AccountNumber(DeactivableMixin, sequence_ordered(), ModelSQL, ModelView):
     def default_type(cls):
         return 'iban'
 
+    @fields.depends('type', 'number')
+    def on_change_with_number(self):
+        number = self.number
+        if self.type == 'iban' and number:
+            number = iban.format(number)
+        return number
+
     @classmethod
     def domain_number(cls, domain, tables):
         table, _ = tables[None]
