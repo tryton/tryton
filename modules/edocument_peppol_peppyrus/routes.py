@@ -31,8 +31,7 @@ def incoming(request, pool, identifier):
     except ValueError:
         abort(HTTPStatus.NOT_FOUND)
 
-    request_body = request.get_data(as_text=True)
-    message = json.loads(request_body)
+    message = json.loads(request.data)
     Service.peppyrus_store(message)
     return Response(status=HTTPStatus.NO_CONTENT)
 
@@ -56,8 +55,7 @@ def outgoing(request, pool, identifier):
     except ValueError:
         abort(HTTPStatus.NOT_FOUND)
 
-    request_body = request.get_data(as_text=True)
-    message = json.loads(request_body)
+    message = json.loads(request.data)
     document, = Document.search([
             ('service', '=', service),
             ('transmission_id', '=', message['id']),
