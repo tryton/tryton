@@ -436,6 +436,15 @@ class AnalyticAccountEntry(ModelView, ModelSQL):
             analytic_line.date = date
             yield analytic_line
 
+    @classmethod
+    def copy_to(cls, entries, origin):
+        for entry in entries:
+            new = cls()
+            new.origin = origin
+            new.root = entry.root
+            new.account = entry.account
+            yield new
+
 
 class AnalyticMixin(object):
     __slots__ = ()

@@ -26,11 +26,8 @@ class PurchaseLine(AnalyticMixin, metaclass=PoolMeta):
 
         invoice_lines = super().get_invoice_line()
         for invoice_line in invoice_lines:
-            new_entries = AnalyticAccountEntry.copy(self.analytic_accounts,
-                default={
-                    'origin': None,
-                    })
-            invoice_line.analytic_accounts = new_entries
+            invoice_line.analytic_accounts = AnalyticAccountEntry.copy_to(
+                self.analytic_accounts, invoice_line)
         return invoice_lines
 
 
