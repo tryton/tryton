@@ -425,7 +425,7 @@ class BlanketAgreement(Workflow, ModelSQL, ModelView, ChatMixin):
         cls.set_date(agreements, 'to_date')
         for agreement in agreements:
             if agreement.to_date > today:
-                if any(l.remaining_quantity > 0 for l in agreement.lines):
+                if any(l.remaining_quantity for l in agreement.lines):
                     warning_key = Warning.format(
                             'closed_remaining_quantity', [agreement])
                     if Warning.check(warning_key):
