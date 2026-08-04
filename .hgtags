@@ -10211,3 +10211,4 @@ b72bf9f5463aeca4aeeeeee6e3ed891330bc9249 edocument_peppol-8.0.1
 6ae4f92d5c9c10c3ffd5d2877bc3cd079a088f76 authentication_saml-8.0.1
 bc72b60c7d66ff780a7dfd718ade8f33f27587fe account_statement-8.0.1
 63edd9d8801eecb2c87df8d8d23f58854a3dd250 account_payment_sepa_cfonb-8.0.1
+11943a0789a15d1cf60daabd00832ce1ed3ec2c4 account_payment_sepa-8.0.2
