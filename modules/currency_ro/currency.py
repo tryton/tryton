@@ -44,12 +44,12 @@ class Cron(metaclass=PoolMeta):
 
         origin, = tree.xpath(
             '//x:Body/x:OrigCurrency',
-            namespaces={'x': 'http://www.bnr.ro/xsd'})
+            namespaces={'x': 'https://www.bnr.ro/xsd'})
         assert origin.text == self.currency.code
 
         cubes = tree.xpath(
             '//x:Body/x:Cube[@date="%s"]' % date.isoformat(),
-            namespaces={'x': 'http://www.bnr.ro/xsd'})
+            namespaces={'x': 'https://www.bnr.ro/xsd'})
         if cubes:
             cube, = cubes
             return {
