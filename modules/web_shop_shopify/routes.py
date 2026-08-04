@@ -29,7 +29,10 @@ def order(request, pool, shop):
     Shop = pool.get('web.shop')
     shop = Shop.get(shop)
 
-    result = verify_webhook_req(request_to_shopify_req(request))
+    result = verify_webhook_req(
+        request_to_shopify_req(request), {
+            'client_secret': shop.shopify_webhook_shared_secret,
+            })
     if not result.ok:
         logger.debug("unauthorized %s", result)
         abort(result.response.status, result.response.body)
