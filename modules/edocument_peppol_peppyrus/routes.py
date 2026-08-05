@@ -32,7 +32,7 @@ def incoming(request, pool, identifier):
         abort(HTTPStatus.NOT_FOUND)
 
     message = json.loads(request.data)
-    Service.peppyrus_store(message)
+    service.peppyrus_store(message)
     return Response(status=HTTPStatus.NO_CONTENT)
 
 
