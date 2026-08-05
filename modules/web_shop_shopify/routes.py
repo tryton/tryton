@@ -39,20 +39,20 @@ def order(request, pool, shop):
 
     topic = request.headers.get('X-Shopify-Topic')
     order = request.get_json()
-    logger.info("Shopify webhook %s for %s", topic, order['id'])
+    if topic == 'orders/edited':
+        order_id = order['order_edit']['id']
+    else:
+        order_id = order['id']
+    logger.info("Shopify webhook %s for %s", topic, order_id)
     if topic == 'orders/create':
         if not Sale.search([
                     ('web_shop', '=', shop.id),
-                    ('shopify_identifier', '=', order['id']),
+                    ('shopify_identifier', '=', order_id),
                     ], order=[], limit=1):
             Shop.__queue__.shopify_fetch_order([shop])
     elif topic in {
             'orders/updated', 'orders/edited', 'orders/paid',
             'orders/cancelled'}:
-        if topic == 'orders/edited':
-            order_id = order['order_edit']['id']
-        else:
-            order_id = order['id']
         sales = Sale.search([
                 ('web_shop', '=', shop.id),
                 ('shopify_identifier', '=', order_id),
