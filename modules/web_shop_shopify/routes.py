@@ -15,9 +15,9 @@ logger = logging.getLogger(__name__)
 def request_to_shopify_req(request):
     return RequestInput(
         method=request.method,
-        headers=request.headers,
+        headers=dict(request.headers),
         url=request.url,
-        body=request.get_data())
+        body=request.get_data(as_text=True, parse_form_data=True))
 
 
 @app.route(
