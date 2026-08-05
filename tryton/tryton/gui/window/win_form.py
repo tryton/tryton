@@ -319,11 +319,24 @@ class WinForm(NoModal, InfoBar):
         self.screen.new()
         self.screen.current_view.widget.set_sensitive(True)
 
+    def _validate(self):
+        self.screen.current_view.set_value()
+        if record := self.screen.current_record:
+            fields = self.screen.current_view.get_fields()
+            if not record.validate(fields):
+                self.screen.display(set_cursor=True)
+                return False
+            if self.screen.pre_validate and not record.pre_validate():
+                return False
+        return True
+
     def _sig_next(self, widget):
-        self.screen.display_next()
+        if self._validate():
+            self.screen.display_next()
 
     def _sig_previous(self, widget):
-        self.screen.display_prev()
+        if self._validate():
+            self.screen.display_prev()
 
     def _sig_remove(self, widget, remove=False):
         self.screen.remove(remove=remove)
