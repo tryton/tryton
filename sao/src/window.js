@@ -540,11 +540,29 @@
         undelete: function() {
             this.screen.unremove();
         },
+        validate: function() {
+            let prm = jQuery.Deferred();
+            this.screen.current_view.set_value();
+            var record = this.screen.current_record;
+            if (record) {
+                var fields = this.screen.current_view.get_fields();
+                if (!record.validate(fields)) {
+                    this.screen.display(true).always(() => prm.reject());
+                    return prm;
+                }
+                if (this.screen.pre_validate) {
+                    return record.pre_validate().then(
+                        prm.resolve, prm.reject);
+                }
+            }
+            prm.resolve();
+            return prm;
+        },
         previous: function() {
-            return this.screen.display_previous();
+            return this.validate().then(() => this.screen.display_previous());
         },
         next: function() {
-            return this.screen.display_next();
+            return this.validate().then(() => this.screen.display_next());
         },
         switch_: function() {
             return this.screen.switch_view();
