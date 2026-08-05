@@ -54,6 +54,7 @@ class Address(
         states={
             'invisible': (
                 (Eval('street_name')
+                    | Eval('building_name')
                     | Eval('building_number')
                     | Eval('unit_number')
                     | Eval('floor_number')
