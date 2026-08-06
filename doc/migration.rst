@@ -108,7 +108,7 @@ After
          ])
 
      for mandate in mandates:
-         mandate.address = mandate.on_change_party()
+         mandate.on_change_party()
 
      Mandate.save(mandates)
 
