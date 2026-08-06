@@ -190,6 +190,8 @@ class PeppolService(metaclass=PoolMeta):
     @peppyrus_api
     def _update_status_peppyrus(self, document):
         assert document.direction == 'out'
+        if not document.transmission_id:
+            return
         response = requests.get(
             urljoin(
                 URLS[self.peppyrus_server],
