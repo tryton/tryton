@@ -138,11 +138,15 @@ class PeppolService(metaclass=PoolMeta):
     @peppyrus_api
     def _post_peppyrus(self, document):
         tree = etree.parse(BytesIO(document.data))
+        if not (sender := self._peppyrus_sender(document.type, tree)):
+            raise PeppolServiceError("Missing sender")
+        if not (recipient := self._peppyrus_recipient(document.type, tree)):
+            raise PeppolServiceError("Missing recipient")
         response = requests.post(
             urljoin(URLS[self.peppyrus_server], 'message'),
             json={
-                'sender': self._peppyrus_sender(document.type, tree),
-                'recipient': self._peppyrus_recipient(document.type, tree),
+                'sender': sender,
+                'recipient': recipient,
                 'processType': (
                     self._peppyrus_process_type(document.type, tree)),
                 'documentType': (
