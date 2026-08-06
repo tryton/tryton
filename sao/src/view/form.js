@@ -4010,16 +4010,29 @@ function eval_pyson(value){
                 return;
             }
             return this.validate().then(() => {
-                var record = this.screen.current_record;
-                if (record) {
+                let records = Array.from(this.screen.selected_records);
+                let size = records.length;
+                if (size) {
                     if (this._popup) {
                         return;
-                    } else {
-                        this._popup = true;
                     }
-                    new Sao.Window.Form(this.screen, () => {
-                        this._popup = false;
-                    });
+                    let edit_next_record = () => {
+                        if (records.length) {
+                            this.screen.current_record = records.shift();
+                            this._popup = true;
+                            new Sao.Window.Form(this.screen, (result) => {
+                                this._popup = false;
+                                if (!result) {
+                                    records.length = 0;
+                                }
+                            }, {
+                                title: (size > 1 ?
+                                    `(${size - records.length}/${size})` : ''),
+                                on_destroy: edit_next_record,
+                            });
+                        }
+                    };
+                    edit_next_record();
                 }
             });
         },

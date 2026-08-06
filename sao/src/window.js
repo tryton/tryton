@@ -124,6 +124,7 @@
             this.domain = kwargs.domain || null;
             this.context = kwargs.context || null;
             this.save_current = kwargs.save_current;
+            this.on_destroy = kwargs.on_destroy;
             var title_prm = jQuery.when(kwargs.title || '').then(
                 title => {
                     if (screen.breadcrumb.length) {
@@ -683,6 +684,9 @@
                 this.screen.switch_view(this.prev_view.view_type);
             }
             this.el.modal('hide');
+            if (this.on_destroy) {
+                this.el.on('hidden.bs.modal', () => this.on_destroy());
+            }
         }
     });
 

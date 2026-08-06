@@ -24,7 +24,8 @@ class WinForm(NoModal, InfoBar):
 
     def __init__(self, screen, callback=None, view_type='form',
             new=False, many=0, domain=None, context=None,
-            save_current=False, title='', defaults=None, prev_view=SENTINEL):
+            save_current=False, title='', defaults=None, prev_view=SENTINEL,
+            on_destroy=None):
         tooltips = common.Tooltips()
         NoModal.__init__(self)
 
@@ -37,6 +38,7 @@ class WinForm(NoModal, InfoBar):
         self.domain = domain
         self.context = context
         self.save_current = save_current
+        self.on_destroy = on_destroy
         if screen.breadcrumb:
             breadcrumb = list(screen.breadcrumb)
             if title:
@@ -528,6 +530,8 @@ class WinForm(NoModal, InfoBar):
         if getattr(self, 'win', None):
             self.win.destroy()
         NoModal.destroy(self)
+        if self.on_destroy:
+            self.on_destroy()
 
     def show(self):
         self.win.show()

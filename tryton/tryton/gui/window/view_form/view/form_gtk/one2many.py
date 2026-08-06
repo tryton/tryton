@@ -464,16 +464,28 @@ class One2Many(Widget):
             return
         if not self._validate():
             return
-        record = self.screen.current_record
-        if record:
+        records = list(self.screen.selected_records)
+        size = len(records)
+        if records:
             if self._popup:
                 return
-            else:
-                self._popup = True
 
             def callback(result):
                 self._popup = False
-            WinForm(self.screen, callback, prev_view=self.screen.current_view)
+                if not result:
+                    records.clear()
+
+            def edit_next_record():
+                if records:
+                    self.screen.current_record = records.pop(0)
+                    self._popup = True
+                    WinForm(
+                        self.screen, callback,
+                        title=('(%s/%s)' % (size - len(records), size)
+                            if size > 1 else ''),
+                        prev_view=self.screen.current_view,
+                        on_destroy=edit_next_record)
+            edit_next_record()
 
     def _sig_next(self, widget):
         if not self._validate():
