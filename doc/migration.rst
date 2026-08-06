@@ -111,6 +111,7 @@ After
          mandate.on_change_party()
 
      Mandate.save(mandates)
+     transaction.commit()
 
 .. _migration-7.6:
 
