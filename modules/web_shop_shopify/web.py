@@ -322,6 +322,12 @@ class Shop(metaclass=PoolMeta):
                 if log.detail:
                     msg.append(log.detail)
             raise GraphQLException("\n".join(msg))
+        logger.info("shopify request %s", format_args(
+                query, {
+                    'variables': variables,
+                    'headers': headers,
+                    'max_retries': max_retries,
+                    }, logger.isEnabledFor(logging.DEBUG)))
         if user_errors:
             names = user_errors.split('.')
             errors = result.data
