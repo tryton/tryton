@@ -920,7 +920,7 @@ class Line(IdentifierMixin, metaclass=PoolMeta):
             line.sale = sale
             line.shopify_identifier = gid2id(line_item['id'])
             line.product = None
-        line.shopify_warehouse = warehouse
+        setattr_changed(line, 'shopify_warehouse', warehouse)
         assert line.shopify_identifier == gid2id(line_item['id'])
         if line_item['variant'] and line_item['variant']['id']:
             if product := Product.search_shopify_identifier(
