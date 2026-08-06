@@ -310,7 +310,7 @@ class Shop(metaclass=PoolMeta):
         if not result.ok:
             logger.exception(
                 "shopify request %s", format_args(
-                    query, {
+                    [query], {
                         'variables': variables,
                         'headers': headers,
                         'max_retries': max_retries,
@@ -323,7 +323,7 @@ class Shop(metaclass=PoolMeta):
                     msg.append(log.detail)
             raise GraphQLException("\n".join(msg))
         logger.info("shopify request %s", format_args(
-                query, {
+                [query], {
                     'variables': variables,
                     'headers': headers,
                     'max_retries': max_retries,
