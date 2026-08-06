@@ -47,6 +47,7 @@ After
          mandate.on_change_party()
 
      Mandate.save(mandates)
+     transaction.commit()
 
 7.6
 ---
