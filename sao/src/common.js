@@ -2095,6 +2095,9 @@
                 if (!string) {
                     throw("empty string");
                 }
+                function escapeRegExp(str) {
+                    return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+                }
                 let { format } = new Intl.NumberFormat(
                     Sao.i18n.BC47(Sao.i18n.getlang()));
                 // use 10000 because some language (ex: es) add thousand
@@ -2103,7 +2106,8 @@
                 let [, decimalSign] = /^0(.)1$/.exec(format(0.1));
                 return Number(string
                     .replace(new RegExp(' ', 'g'), '')
-                    .replace(new RegExp(thousandSeparator, 'g'), '')
+                    .replace(new RegExp(
+                        escapeRegExp(thousandSeparator), 'g'), '')
                     .replace(decimalSign, '.'));
             }
             var convert_selection = function() {
