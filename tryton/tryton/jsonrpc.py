@@ -325,7 +325,7 @@ class ServerProxy(xmlrpc.client.ServerProxy):
                 self.__transport.close()
                 response = self.__transport.request(
                     self.__host,
-                    self.__handler,
+                    self.__handler + 'rpc/',
                     request,
                     verbose=self.__verbose
                     )
