@@ -42,6 +42,8 @@ from trytond.transaction import Transaction, TransactionError
 from trytond.wizard import StateAction, StateView
 from trytond.wsgi import app
 
+from . import TABLES_CREATED as _TABLES_CREATED
+
 __all__ = [
     'CONTEXT',
     'Client',
@@ -1348,6 +1350,7 @@ def drop_db(name=DB_NAME):
             database.drop(transaction.connection, name)
             Pool.stop(name)
             Cache.drop(name)
+            _TABLES_CREATED.clear()
 
 
 def drop_create(name=DB_NAME, lang='en'):

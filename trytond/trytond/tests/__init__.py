@@ -3,6 +3,8 @@
 
 from importlib.metadata import entry_points
 
+TABLES_CREATED = set()
+
 
 def register():
     from . import (
