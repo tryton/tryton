@@ -302,7 +302,6 @@ def apply_sorting(keywords):
     return lambda col: NullOrdering(Order(col))
 
 
-_TABLES_CREATED = set()
 _TABLE_QUERY_COLUMNS = {
     'create_uid': Literal(0),
     'create_date': CurrentTimestamp(),
@@ -509,20 +508,24 @@ class ModelSQL(ModelStorage):
 
         # create/update table in the database
         table = cls.__table_handler__(module_name)
-        if Pool.test and cls._table not in _TABLES_CREATED:
-            database.setnextid(
-                transaction.connection, cls._table,
-                len(_TABLES_CREATED) * 500 + 1)
-        _TABLES_CREATED.add(cls._table)
+        if Pool.test:
+            from trytond.tests import TABLES_CREATED
+            if cls._table not in TABLES_CREATED:
+                database.setnextid(
+                    transaction.connection, cls._table,
+                    len(TABLES_CREATED) * 500 + 1)
+                TABLES_CREATED.add(cls._table)
 
         if cls._history:
             history_table = cls.__table_handler__(module_name, history=True)
-            table_history = f'{cls._table}__history'
-            if Pool.test and table_history not in _TABLES_CREATED:
-                database.setnextid(
-                    transaction.connection, table_history,
-                    len(_TABLES_CREATED) * 500 + 1)
-            _TABLES_CREATED.add(table_history)
+            if Pool.test:
+                from trytond.tests import TABLES_CREATED
+                table_history = f'{cls._table}__history'
+                if table_history not in TABLES_CREATED:
+                    database.setnextid(
+                        transaction.connection, table_history,
+                        len(TABLES_CREATED) * 500 + 1)
+                    TABLES_CREATED.add(table_history)
 
         for field_name, field in cls._fields.items():
             if field_name == 'id':
