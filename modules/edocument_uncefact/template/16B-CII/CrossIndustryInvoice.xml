@@ -9,7 +9,7 @@ this repository contains the full copyright notices and license terms. -->
     xmlns:py="http://genshi.edgewall.org/"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <py:def function="DateTime(value)">
-        <udt:DateTimeString>${value.strftime('%Y%m%d')}</udt:DateTimeString>
+        <udt:DateTimeString format="102">${value.strftime('%Y%m%d')}</udt:DateTimeString>
     </py:def>
     <py:def function="TradeParty(party, address=None, tax_identifier=None)">
         <ram:Name>${party.name}</ram:Name>
