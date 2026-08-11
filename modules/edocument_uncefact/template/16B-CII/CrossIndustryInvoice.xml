@@ -78,14 +78,14 @@ this repository contains the full copyright notices and license terms. -->
                 </ram:NetPriceProductTradePrice>
             </ram:SpecifiedLineTradeAgreement>
             <ram:SpecifiedLineTradeDelivery>
-                <ram:BilledQuantity py:attrs="{'unitCode': line.unit.unece_code} if line.unit and line.unit.unece_code else {}">${format(Decimal(str(line.quantity * this.type_sign)), 'f')}</ram:BilledQuantity>
+                <ram:BilledQuantity py:attrs="{'unitCode': line.unit.unece_code} if line.unit and line.unit.unece_code else {}">${format(abs(Decimal(str(line.quantity))), 'f')}</ram:BilledQuantity>
             </ram:SpecifiedLineTradeDelivery>
             <ram:SpecifiedLineTradeSettlement>
                 <py:for each="tax in line.invoice_taxes">
                     ${TradeTax(tax.tax)}
                 </py:for>
                 <ram:SpecifiedTradeSettlementLineMonetarySummation>
-                    <ram:LineTotalAmount py:attrs="{'currencyID': this.invoice.currency.code}">${format(line.amount.normalize(), 'f')}</ram:LineTotalAmount>
+                    <ram:LineTotalAmount py:attrs="{'currencyID': this.invoice.currency.code}">${format((line.amount * this.type_sign).normalize(), 'f')}</ram:LineTotalAmount>
                 </ram:SpecifiedTradeSettlementLineMonetarySummation>
             </ram:SpecifiedLineTradeSettlement>
         </ram:IncludedSupplyChainTradeLineItem>
