@@ -1080,9 +1080,8 @@ class Invoice(Model):
         address.building_number = address_el.findtext('./{*}BuildingNumber')
         address.city = address_el.findtext('./{*}CityName')
         address.postal_code = address_el.findtext('./{*}PostalZone')
-        if (country_code := address_el.findtext(
-                    './{*}Country/{*}IdentificationCode[@listId="ISO3166-1"]')
-                ) is not None:
+        if country_code := address_el.findtext(
+                './{*}Country/{*}IdentificationCode[@listId="ISO3166-1"]'):
             try:
                 country, = Country.search([
                         ('code', '=', country_code),
@@ -1221,8 +1220,7 @@ class Invoice(Model):
                     pass
                 else:
                     return product
-        if (code := item.findtext('./{*}BuyersItemIdentification/{*}ID')
-                ) is not None:
+        if code := item.findtext('./{*}BuyersItemIdentification/{*}ID'):
             try:
                 product, = Product.search([
                         ('code', '=', code),
