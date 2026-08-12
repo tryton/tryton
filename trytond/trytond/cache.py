@@ -83,7 +83,15 @@ class _CacheLocal(local):
         self.portable_id = str(uuid4())
 
 
-class BaseCache(object):
+class _CacheMeta(type):
+    def __call__(cls, *args, **kwargs):
+        inst = super().__call__(*args, **kwargs)
+        assert inst._name not in BaseCache._instances, inst._name
+        BaseCache._instances[inst._name] = inst
+        return inst
+
+
+class BaseCache(metaclass=_CacheMeta):
     _instances = {}
     context_ignored_keys = {
         'client', '_request', '_check_access', '_skip_warnings',
@@ -112,8 +120,6 @@ class BaseCache(object):
             self.duration = dt.timedelta(**duration)
         else:
             self.duration = None
-        assert self._name not in self._instances, self._name
-        self._instances[self._name] = self
 
     @classmethod
     def stats(cls):
