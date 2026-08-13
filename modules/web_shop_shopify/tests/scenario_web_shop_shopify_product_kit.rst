@@ -265,7 +265,7 @@ Make a partial shipment for a single component::
 Ship remaining::
 
     >>> sale.reload()
-    >>> _, _, shipment = sale.shipments
+    >>> shipment, = [s for s in sale.shipments if s.state == 'waiting']
     >>> shipment.click('assign_force')
     >>> shipment.click('pick')
     >>> shipment.click('pack')
