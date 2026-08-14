@@ -373,6 +373,11 @@ class CustomerCategoryMixin:
     category = fields.Many2One('party.category', "Category")
 
     @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls.id._sql_type = 'BIGINT'
+
+    @classmethod
     def _joins(cls):
         pool = Pool()
         PartyCategory = pool.get('party.party-party.category')
@@ -604,6 +609,11 @@ class ProductCategoryMixin(object):
             'company': Eval('company', -1),
             },
         depends={'company'})
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls.id._sql_type = 'BIGINT'
 
     @classmethod
     def _joins(cls):

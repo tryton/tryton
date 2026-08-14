@@ -431,6 +431,11 @@ class CategoryMixin:
     category = fields.Many2One('product.category', "Category")
 
     @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls.id._sql_type = 'BIGINT'
+
+    @classmethod
     def _joins(cls):
         pool = Pool()
         Product = pool.get('product.product')
