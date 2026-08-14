@@ -973,7 +973,7 @@ class Line(IdentifierMixin, metaclass=PoolMeta):
         line._set_shopify_shipping_product(sale, shipping_line)
         setattr_changed(line, 'quantity', 1)
         if line.product:
-            if line._changed_values:
+            if line._changed_values():
                 line.on_change_product()
         else:
             setattr_changed(line, 'taxes', ())
@@ -1000,7 +1000,7 @@ class Line(IdentifierMixin, metaclass=PoolMeta):
             line.product = None
         line._set_shopify_refund_product(sale)
         setattr_changed(line, 'quantity', -1)
-        if line._changed_values:
+        if line._changed_values():
             line.on_change_product()
         unit_price = round_price(Tax.reverse_compute(
                 amount, line.taxes, sale.sale_date))
