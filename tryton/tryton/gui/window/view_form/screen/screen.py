@@ -504,6 +504,7 @@ class Screen:
         return self.__current_record
 
     def __set_current_record(self, record):
+        changed = self.__current_record != record
         self.__current_record = record
         if record:
             try:
@@ -516,9 +517,13 @@ class Screen:
         self.record_message(
             pos, len(self.group) + self.offset,
             self.search_count, record and record.id)
-        self.update_resources(record.resources if record else None)
-        # update resources after 1 second
-        GLib.timeout_add(1000, self._update_resources, record)
+        if changed:
+            for window in self.windows:
+                if hasattr(window, 'record_changed'):
+                    window.record_changed()
+            self.update_resources(record.resources if record else None)
+            # update resources after 1 second
+            GLib.timeout_add(1000, self._update_resources, record)
 
     current_record = property(__get_current_record, __set_current_record)
 

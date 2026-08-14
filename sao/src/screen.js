@@ -1364,6 +1364,7 @@
             return this.__current_record;
         },
         set current_record(record) {
+            let changed = this.__current_record !== record;
             this.__current_record = record;
             var pos = null;
             var record_id = null;
@@ -1379,15 +1380,22 @@
             this.record_message(
                 pos || 0, this.group.length + this.offset, this.search_count,
                 record_id);
-            if (this.switch_callback) {
-                this.switch_callback();
-            }
-            if (this.has_update_resources()) {
-                if (record) {
-                    record.get_resources().always(
-                        this.update_resources.bind(this));
-                } else {
-                    this.update_resources();
+            if (changed) {
+                for (let window_ of this.windows) {
+                    if (window_.record_changed) {
+                        window_.record_changed();
+                    }
+                }
+                if (this.switch_callback) {
+                    this.switch_callback();
+                }
+                if (this.has_update_resources()) {
+                    if (record) {
+                        record.get_resources().always(
+                            this.update_resources.bind(this));
+                    } else {
+                        this.update_resources();
+                    }
                 }
             }
         },

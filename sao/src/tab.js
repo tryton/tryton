@@ -1621,8 +1621,18 @@
                 msg = name + '/' + Sao.common.humanize(size);
             }
             this.status_label.text(msg).attr('title', msg);
-            this.info_bar.clear();
             this.set_buttons_sensitive();
+        },
+        record_modified: function() {
+            this.set_buttons_sensitive();
+            this.info_bar.refresh();
+        },
+        record_saved: function() {
+            this.set_buttons_sensitive();
+            this.refresh_resources();
+        },
+        record_changed: function() {
+            this.info_bar.clear();
             this.refresh_attachment_preview();
 
             if (this._chat) {
@@ -1636,14 +1646,6 @@
                 }
                 this.update_sidebar();
             }
-        },
-        record_modified: function() {
-            this.set_buttons_sensitive();
-            this.info_bar.refresh();
-        },
-        record_saved: function() {
-            this.set_buttons_sensitive();
-            this.refresh_resources();
         },
         action: function() {
             window.setTimeout(() => {

@@ -664,19 +664,7 @@ class Form(TabContent):
         else:
             msg = "%s/%s" % (name, common.humanize(size))
         self.status_label.set_text(msg)
-        self.info_bar_clear()
         self.set_buttons_sensitive()
-        self.refresh_attachment_preview()
-        if self._chat:
-            self._chat.unregister()
-            self.chat.remove(self._chat.widget)
-            if self.screen.current_reference:
-                self._chat = Chat(self.screen.current_reference)
-                self.chat.add(self._chat.widget)
-                self.chat.show_all()
-                self._chat.refresh()
-            else:
-                self.buttons['chat'].set_active(False)
 
     def record_modified(self):
         def _record_modified():
@@ -690,6 +678,20 @@ class Form(TabContent):
     def record_saved(self):
         self.set_buttons_sensitive()
         self.refresh_resources()
+
+    def record_changed(self):
+        self.info_bar_clear()
+        self.refresh_attachment_preview()
+        if self._chat:
+            self._chat.unregister()
+            self.chat.remove(self._chat.widget)
+            if self.screen.current_reference:
+                self._chat = Chat(self.screen.current_reference)
+                self.chat.add(self._chat.widget)
+                self.chat.show_all()
+                self._chat.refresh()
+            else:
+                self.buttons['chat'].set_active(False)
 
     def modified_save(self):
         self.screen.save_tree_state()
