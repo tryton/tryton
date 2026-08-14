@@ -615,9 +615,7 @@ class Form(TabContent):
         else:
             msg = "%s/%s" % (name, common.humanize(size))
         self.status_label.set_text(msg)
-        self.info_bar_clear()
         self.set_buttons_sensitive()
-        self.refresh_attachment_preview()
 
     def record_modified(self):
         def _record_modified():
@@ -631,6 +629,10 @@ class Form(TabContent):
     def record_saved(self):
         self.set_buttons_sensitive()
         self.refresh_resources()
+
+    def record_changed(self):
+        self.info_bar_clear()
+        self.refresh_attachment_preview()
 
     def modified_save(self):
         self.screen.save_tree_state()
