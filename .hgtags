@@ -10213,3 +10213,4 @@ bc72b60c7d66ff780a7dfd718ade8f33f27587fe account_statement-8.0.1
 63edd9d8801eecb2c87df8d8d23f58854a3dd250 account_payment_sepa_cfonb-8.0.1
 11943a0789a15d1cf60daabd00832ce1ed3ec2c4 account_payment_sepa-8.0.2
 79ea9e7f767c862491bdb71cc6084ad90eb58e6d trytond-8.0.9
+131ef6fa8bf2e7490fdbbb217782d79d10567e58 tryton-8.0.8
