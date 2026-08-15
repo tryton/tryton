@@ -12,7 +12,7 @@ from lxml import etree, objectify
 
 from ._safe_genshi import genshi_patch
 
-__version__ = "7.0.56"
+__version__ = "7.0.57"
 
 if not os.environ.get('TRYTOND_APPNAME'):
     os.environ['TRYTOND_APPNAME'] = os.path.basename(
