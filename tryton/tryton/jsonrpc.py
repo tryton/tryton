@@ -312,10 +312,6 @@ class ServerProxy(xmlrpc.client.ServerProxy):
                                 delay = int(
                                     e.headers.get('Retry-After', count))
                             except ValueError:
-                                if isinstance(
-                                        e.errcode, HTTPStatus.GATEWAY_TIMEOUT):
-                                    # Do not retry on timeout without delay
-                                    raise
                                 delay = count
                             delay = min(delay, 10)
                             time.sleep(delay)
