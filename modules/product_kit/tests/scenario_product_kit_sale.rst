@@ -272,7 +272,7 @@ Handle shipment exception::
     ...         [('product', '=', product1.id)]))
     >>> shipment_exception.execute('handle')
 
-    >>> _, _, shipment = sale.shipments
+    >>> shipment, = [s for s in sale.shipments if s.state == 'waiting']
     >>> len(shipment.outgoing_moves)
     1
     >>> backorder.reload()
