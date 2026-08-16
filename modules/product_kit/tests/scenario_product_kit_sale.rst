@@ -277,7 +277,7 @@ Handle shipment exception::
     >>> shipment_exception.form.recreate_moves.remove(move)
     >>> shipment_exception.execute('handle')
 
-    >>> _, _, shipment = sale.shipments
+    >>> shipment, = [s for s in sale.shipments if s.state == 'waiting']
     >>> len(shipment.outgoing_moves)
     1
     >>> backorder.reload()
