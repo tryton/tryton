@@ -188,13 +188,7 @@ class Transaction(object):
             # it is strictly before all transactions started after
             # but it may be also before transactions started before
             self.started_at = self.monotonic_time()
-            if not database_name:
-                database = backend.Database().connect()
-            else:
-                database = backend.Database(database_name).connect()
-            Flavor.set(backend.Database.flavor)
             self.user = user
-            self.database = database
             self.readonly = readonly
             self.close = close
             self.context = ImmutableDict(context or {})
@@ -207,6 +201,12 @@ class Transaction(object):
             self.counter = 0
             self._datamanagers = []
 
+            if not database_name:
+                database = backend.Database().connect()
+            else:
+                database = backend.Database(database_name).connect()
+            Flavor.set(backend.Database.flavor)
+            self.database = database
             self.connection = database.get_connection(readonly=readonly,
                 autocommit=autocommit, statement_timeout=timeout)
             count = 0
