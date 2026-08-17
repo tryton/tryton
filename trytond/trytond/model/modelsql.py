@@ -510,10 +510,12 @@ class ModelSQL(ModelStorage):
         table = cls.__table_handler__(module_name)
         if Pool.test:
             from trytond.tests import TABLES_CREATED
+            range_ = 500
+            prime = 101  # coprime of 500
             if cls._table not in TABLES_CREATED:
                 database.setnextid(
                     transaction.connection, cls._table,
-                    len(TABLES_CREATED) * 500 + 1)
+                    (len(TABLES_CREATED) * prime) % range_ + 1)
                 TABLES_CREATED.add(cls._table)
 
         if cls._history:
@@ -524,7 +526,7 @@ class ModelSQL(ModelStorage):
                 if table_history not in TABLES_CREATED:
                     database.setnextid(
                         transaction.connection, table_history,
-                        len(TABLES_CREATED) * 500 + 1)
+                        (len(TABLES_CREATED) * prime) % range_ + 1)
                     TABLES_CREATED.add(table_history)
 
         for field_name, field in cls._fields.items():
