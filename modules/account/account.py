@@ -1422,6 +1422,26 @@ class Account(
                     }),
             ]
 
+    @classmethod
+    def check_modification(cls, mode, accounts, values=None, external=False):
+        pool = Pool()
+        MoveLine = pool.get('account.move.line')
+        super().check_modification(
+            mode, accounts, values=values, external=external)
+        # Only external to allow update from template
+        if mode == 'write' and external and 'party_required' in values:
+            if to_check := [
+                    a.id for a in accounts
+                    if a.party_required != values['party_required']]:
+                if lines := MoveLine.search([
+                            ('account', 'in', to_check),
+                            ],
+                        limit=1, order=[]):
+                    line, = lines
+                    raise AccessError(gettext(
+                            'account.msg_account_party_required_with_moves',
+                            account=line.account.rec_name))
+
 
 class AccountParty(ActivePeriodMixin, ModelSQL):
     __name__ = 'account.account.party'
