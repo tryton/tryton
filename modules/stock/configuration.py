@@ -5,7 +5,7 @@ from trytond.model import (
 from trytond.modules.company.model import (
     CompanyMultiValueMixin, CompanyValueMixin)
 from trytond.pool import Pool
-from trytond.pyson import Eval, Id
+from trytond.pyson import Eval, Id, TimeDelta
 
 sequences = ['shipment_in_sequence', 'shipment_in_return_sequence',
     'shipment_out_sequence', 'shipment_out_return_sequence',
@@ -104,6 +104,16 @@ class Configuration(
             help="Used to generate the number given to inventories."))
     shipment_internal_transit = fields.MultiValue(shipment_internal_transit)
 
+    period_creation_interval = fields.MultiValue(
+        fields.TimeDelta(
+            "Period Creation Interval",
+            domain=['OR',
+                ('period_creation_interval', '=', None),
+                ('period_creation_interval', '>=', TimeDelta(days=1)),
+                ],
+            help="Leave it empty to prevent periods "
+            "from being created automatically."))
+
     @classmethod
     def multivalue_model(cls, field):
         pool = Pool()
@@ -111,6 +121,8 @@ class Configuration(
             return pool.get('stock.configuration.sequence')
         if field == 'shipment_internal_transit':
             return pool.get('stock.configuration.location')
+        if field == 'period_creation_interval':
+            return pool.get('stock.configuration.period')
         return super().multivalue_model(field)
 
     default_shipment_in_sequence = default_func('shipment_in_sequence')
@@ -194,3 +206,14 @@ class ConfigurationLocation(ModelSQL, ValueMixin):
             return ModelData.get_id('stock', 'location_transit')
         except KeyError:
             return None
+
+
+class Period(ModelSQL, CompanyValueMixin):
+    __name__ = 'stock.configuration.period'
+
+    period_creation_interval = fields.TimeDelta(
+        "Period Creation Interval",
+        domain=['OR',
+            ('period_creation_interval', '=', None),
+            ('period_creation_interval', '>=', TimeDelta(days=1)),
+            ])

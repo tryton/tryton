@@ -14,3 +14,10 @@ date, and to improve the performance of Tryton when looking at and using
    `Company <company:model-company.company>` generates you may find it useful
    to create new stock periods as part of your accounting period end, or
    fiscal year end, processes.
+
+.. tip::
+
+   You can set a :guilabel:`Period Creation Interval` on the `stock
+   configuration <model-stock.configuration>` and add the `company
+   <company:model-company.company>` to the `scheduled task
+   <trytond:model-ir.cron>` to create periods automatically.

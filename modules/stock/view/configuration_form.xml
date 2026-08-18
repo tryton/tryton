@@ -18,4 +18,7 @@ this repository contains the full copyright notices and license terms. -->
     <separator id="inventory" colspan="4" string="Inventory"/>
     <label name="inventory_sequence" string="Sequence"/>
     <field name="inventory_sequence"/>
+    <separator id="period" colspan="4" string="Period"/>
+    <label name="period_creation_interval"/>
+    <field name="period_creation_interval"/>
 </form>

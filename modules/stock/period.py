@@ -172,6 +172,36 @@ class Period(Workflow, ModelSQL, ModelView):
             if to_create:
                 Cache.create(to_create)
 
+    @classmethod
+    def auto_create(cls):
+        pool = Pool()
+        Date = pool.get('ir.date')
+        Configuration = pool.get('stock.configuration')
+
+        company = Transaction().context.get('company')
+        if company is None:
+            return
+        config = Configuration(1)
+        interval = config.get_multivalue(
+            'period_creation_interval', company=company)
+        if interval is None:
+            return
+        today = Date.today()
+        last_period = cls.search([
+                ('company', '=', company),
+                ],
+            limit=1, order=[('date', 'DESC')])
+        if last_period:
+            next_date = last_period.date + interval
+        else:
+            next_date = today - interval
+        if next_date >= today:
+            return
+        return cls.create([{
+                    'date': next_date,
+                    'company': company,
+                    }])[0]
+
 
 class Cache(ModelSQL, ModelView):
     "It is used to store cached computation of stock quantities"

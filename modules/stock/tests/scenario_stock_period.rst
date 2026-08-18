@@ -8,9 +8,9 @@ Imports::
     >>> from decimal import Decimal
 
     >>> from proteus import Model
-    >>> from trytond.modules.company.tests.tools import create_company
+    >>> from trytond.modules.company.tests.tools import create_company, get_company
     >>> from trytond.modules.currency.tests.tools import get_currency
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, assertEqual
 
     >>> today = dt.date.today()
     >>> yesterday = today - dt.timedelta(days=1)
@@ -19,6 +19,8 @@ Activate modules::
 
     >>> config = activate_modules('stock', create_company)
 
+    >>> Configuration = Model.get('stock.configuration')
+    >>> Cron = Model.get('ir.cron')
     >>> Location = Model.get('stock.location')
     >>> Move = Model.get('stock.move')
     >>> Period = Model.get('stock.period')
@@ -43,10 +45,21 @@ Get stock locations::
     >>> storage_loc, = Location.find([('code', '=', 'STO')])
     >>> customer_loc, = Location.find([('code', '=', 'CUS')])
 
-Create a period::
+Setup period configuration::
 
-    >>> period = Period(date=yesterday)
-    >>> period.save()
+    >>> configuration = Configuration(1)
+    >>> configuration.period_creation_interval = dt.timedelta(days=1)
+    >>> configuration.save()
+
+Create periods::
+
+    >>> cron, = Cron.find([('method', '=', 'stock.period|auto_create')], limit=1)
+    >>> cron.companies.append(get_company())
+    >>> cron.click('run_once')
+
+    >>> period, = Period.find([])
+    >>> assertEqual(period.date, yesterday)
+    >>> assertEqual(period.state, 'draft')
 
 Close the period::
 
