@@ -27,11 +27,13 @@ class Cron(metaclass=PoolMeta):
                     "Reschedule Internal Shipments"),
                 ('ir.cron|stock_shipment_assign_try', "Assign Shipments"),
                 ('stock.period|auto_create', "Create Stock Periods"),
+                ('stock.period|auto_close', "Close Stock Periods"),
                 ])
         cls.methods_company_needed.update({
                 'product.product|recompute_cost_price_from_moves',
                 'ir.cron|stock_shipment_assign_try',
                 'stock.period|auto_create',
+                'stock.period|auto_close',
                 })
 
     @classmethod

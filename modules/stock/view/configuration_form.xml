@@ -21,4 +21,6 @@ this repository contains the full copyright notices and license terms. -->
     <separator id="period" colspan="4" string="Period"/>
     <label name="period_creation_interval"/>
     <field name="period_creation_interval"/>
+    <label name="period_closing_delay"/>
+    <field name="period_closing_delay"/>
 </form>

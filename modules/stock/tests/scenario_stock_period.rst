@@ -49,6 +49,7 @@ Setup period configuration::
 
     >>> configuration = Configuration(1)
     >>> configuration.period_creation_interval = dt.timedelta(days=1)
+    >>> configuration.period_closing_delay = dt.timedelta()
     >>> configuration.save()
 
 Create periods::
@@ -63,9 +64,12 @@ Create periods::
 
 Close the period::
 
-    >>> period.click('close')
-    >>> period.state
-    'closed'
+    >>> cron, = Cron.find([('method', '=', 'stock.period|auto_close')], limit=1)
+    >>> cron.companies.append(get_company())
+    >>> cron.click('run_once')
+
+    >>> period, = Period.find([])
+    >>> assertEqual(period.state, 'closed')
 
 Try to create a move::
 

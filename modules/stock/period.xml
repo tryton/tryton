@@ -123,5 +123,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="interval_number" eval="1"/>
             <field name="interval_type">days</field>
         </record>
+        <record model="ir.cron" id="cron_close_period">
+            <field name="method">stock.period|auto_close</field>
+            <field name="interval_number" eval="1"/>
+            <field name="interval_type">days</field>
+        </record>
     </data>
 </tryton>

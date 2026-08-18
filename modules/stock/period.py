@@ -202,6 +202,27 @@ class Period(Workflow, ModelSQL, ModelView):
                     'company': company,
                     }])[0]
 
+    @classmethod
+    def auto_close(cls):
+        pool = Pool()
+        Date = pool.get('ir.date')
+        Configuration = pool.get('stock.configuration')
+        company = Transaction().context.get('company')
+        if company is None:
+            return
+        config = Configuration(1)
+        delay = config.get_multivalue(
+            'period_closing_delay', company=company)
+        if delay is None:
+            return
+        today = Date.today()
+        periods = cls.search([
+                ('company', '=', company),
+                ('date', '<', today - delay),
+                ('state', '=', 'draft'),
+                ])
+        cls.close(periods)
+
 
 class Cache(ModelSQL, ModelView):
     "It is used to store cached computation of stock quantities"

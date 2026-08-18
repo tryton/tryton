@@ -113,6 +113,15 @@ class Configuration(
                 ],
             help="Leave it empty to prevent periods "
             "from being created automatically."))
+    period_closing_delay = fields.MultiValue(
+        fields.TimeDelta(
+            "Period Closing Delay",
+            domain=['OR',
+                ('period_closing_delay', '=', None),
+                ('period_closing_delay', '>=', TimeDelta()),
+                ],
+            help="Leave it empty to prevent periods "
+            "from being closed automatically."))
 
     @classmethod
     def multivalue_model(cls, field):
@@ -121,7 +130,7 @@ class Configuration(
             return pool.get('stock.configuration.sequence')
         if field == 'shipment_internal_transit':
             return pool.get('stock.configuration.location')
-        if field == 'period_creation_interval':
+        if field in {'period_creation_interval', 'period_closing_delay'}:
             return pool.get('stock.configuration.period')
         return super().multivalue_model(field)
 
@@ -216,4 +225,10 @@ class Period(ModelSQL, CompanyValueMixin):
         domain=['OR',
             ('period_creation_interval', '=', None),
             ('period_creation_interval', '>=', TimeDelta(days=1)),
+            ])
+    period_closing_delay = fields.TimeDelta(
+        "Period Closing Delay",
+        domain=['OR',
+            ('period_closing_delay', '=', None),
+            ('period_closing_delay', '>=', TimeDelta()),
             ])

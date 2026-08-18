@@ -21,3 +21,10 @@ date, and to improve the performance of Tryton when looking at and using
    configuration <model-stock.configuration>` and add the `company
    <company:model-company.company>` to the `scheduled task
    <trytond:model-ir.cron>` to create periods automatically.
+
+.. tip::
+
+   You can set a :guilabel:`Period Close Delay` on the `stock configuration
+   <model-stock.configuration>` and add the `company
+   <company:model-company.company>` to the `scheduled task
+   <trytond:model-ir.cron>` to close periods automatically after the delay.
