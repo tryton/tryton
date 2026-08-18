@@ -362,7 +362,8 @@ class Chat:
         hbox = Gtk.HBox(spacing=10)
         row.add(hbox)
 
-        timestamp = message['timestamp'].strftime('%x %X')
+        timestamp = common.timezoned_date(
+            message['timestamp']).strftime('%x %X')
 
         if message.get('user'):
             if avatar_url := message.get('avatar_url'):
