@@ -112,16 +112,25 @@
                 let container_rect = container.getBoundingClientRect();
                 let top_ = rect.top - container_rect.top;
                 let bottom = top_ + rect.height;
+                let left = rect.left - container_rect.left;
+                let right = left + rect.width;
 
                 let target_top = container.scrollTop;
+                let target_left = container.scrollLeft;
 
                 if (top_ < 0) {
                     target_top += top_ - container.clientHeight / 2;
                 } else if (bottom > container.clientHeight) {
                     target_top += bottom - container.clientHeight / 2
                 }
+                if (left < 0) {
+                    target_left += left - container.clientWidth / 2;
+                } else if (right > container.clientWidth) {
+                    target_left += right - container.clientWidth / 2;
+                }
                 container.scrollTo({
                     top: Math.max(0, target_top),
+                    left: Math.max(0, target_left),
                 });
             }
         }
