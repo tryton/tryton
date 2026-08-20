@@ -136,7 +136,7 @@ class ShippingMixin:
                     'readonly': (Eval('shipping_reference', False)
                         | ~Eval('root_packages', False)
                         | ~Eval('carrier', False)
-                        | ~Eval('state').in_(['packed', 'done'])),
+                        | ~Eval('state').in_(['packed', 'shipped', 'done'])),
                     'depends': [
                         'state', 'carrier', 'shipping_reference',
                         'root_packages'],
