@@ -129,10 +129,10 @@
                 'class': 'panel panel-default ' + this.class_,
             });
 
-            var toolbar = this.create_toolbar().appendTo(this.el);
-            this.title = toolbar.find('.title');
-            this.title_short = toolbar.find('.title-short');
-            this.title_long = toolbar.find('.title-long');
+            this.toolbar = this.create_toolbar().appendTo(this.el);
+            this.title = this.toolbar.find('.title');
+            this.title_short = this.toolbar.find('.title-short');
+            this.title_long = this.toolbar.find('.title-long');
 
             this.main = jQuery('<div/>', {
                 'class': 'panel-body',
@@ -144,6 +144,12 @@
             }
 
             this._chat = null;
+        },
+        disable_toolbar: function() {
+            this.toolbar.get(0).inert = true;
+        },
+        enable_toolbar: function() {
+            this.toolbar.get(0).inert = false;
         },
         set_menu: function(menu) {
             var previous;
@@ -562,7 +568,9 @@
                 }
             };
 
+            this.disable_toolbar();
             this.view_prm = this.screen.switch_view().done(() => {
+                this.enable_toolbar();
                 this.set_buttons_sensitive();
                 this.content.append(screen.screen_container.el);
                 if (attributes.res_id) {
@@ -933,11 +941,14 @@
             });
         },
         switch_: function() {
+            this.disable_toolbar();
             return this.modified_save().then(
                 () => this.screen.switch_view(),
-                (result) => result ? this.screen.switch_view() : null);
+                (result) => result ? this.screen.switch_view() : null)
+                .always(() => this.enable_toolbar());
         },
         reload: function(test_modified=true) {
+            this.disable_toolbar();
             const reload = () => {
                 return this.screen.cancel_current().then(() => {
                     var record_id = null;
@@ -968,16 +979,19 @@
                     });
                 });
             };
+            let prm;
             if (test_modified) {
-                return this.modified_save().then(reload);
+                prm = this.modified_save();
             } else {
-                return this.screen.save_tree_state(false).then(reload);
+                prm = this.screen.save_tree_state(false);
             }
+            return prm.then(reload).always(() => this.enable_toolbar());
         },
         copy: function() {
             if (!Sao.common.MODELACCESS.get(this.screen.model_name).create) {
                 return jQuery.when();
             }
+            this.disable_toolbar();
             return this.modified_save().then(() => {
                 return this.screen.copy().then(() => {
                     this.info_bar.add(
@@ -986,7 +1000,7 @@
                             'info');
                     this.screen.count_tab_domain(true);
                 });
-            });
+            }).always(() => this.enable_toolbar());
         },
         delete_: function() {
             if (!Sao.common.MODELACCESS.get(this.screen.model_name)['delete']
@@ -1003,6 +1017,7 @@
                 "Are you sure you want to delete this record?",
                 "Are you sure you want to delete these %1 records?", size, size);
             return Sao.common.sur.run(msg).then(() => {
+                this.disable_toolbar();
                 return this.screen.remove(true, false, true).then(
                     () => {
                         this.info_bar.add(
@@ -1013,24 +1028,26 @@
                         this.info_bar.add(
                             Sao.i18n.gettext("Records not removed."),
                             'danger');
-                    });
+                    }).always(() => this.enable_toolbar());
             });
         },
         previous: function() {
             return this.modified_save().then(() => {
+                this.disable_toolbar();
                 return this.screen.display_previous().then(() => {
                     this.info_bar.clear();
                     this.set_buttons_sensitive();
                 });
-            });
+            }).always(() => this.enable_toolbar());
         },
         next: function() {
             return this.modified_save().then(() => {
+                this.disable_toolbar();
                 return this.screen.display_next().then(() => {
                     this.info_bar.clear();
                     this.set_buttons_sensitive();
                 });
-            });
+            }).always(() => this.enable_toolbar());
         },
         search: function() {
             return this.modified_save().then(() => {
