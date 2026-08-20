@@ -227,6 +227,12 @@
                 this.search_entry.focus();
             }, 0);
         },
+        disable: function() {
+            this.el.get(0).inert = true;
+        },
+        enable: function() {
+            this.el.get(0).inert = false;
+        },
         set_text: function(value) {
             this.search_entry.val(value);
             this.bookmark_match();
@@ -1437,6 +1443,7 @@
                 () => this.set_tree_state().then(() => {
                     var record = this.current_record
                     this.current_record = record;
+                    this.screen_container.enable();
                     // set_cursor must be called after set_tree_state because
                     // set_tree_state redraws the tree
                     if (set_cursor) {
@@ -1476,14 +1483,18 @@
                 (next_record !== this.current_record);
         },
         display_next: function() {
+            this.screen_container.disable();
             var view = this.current_view;
             if (view) {
                 view.set_value();
             }
             this.set_cursor(false, false);
             this.current_record = this._get_next_record();
-            this.set_cursor(false, false);
-            return view ? view.display() : jQuery.when();
+            return (view ? view.display() : jQuery.when()).then(
+                () => {
+                    this.screen_container.enable();
+                    this.set_cursor(false, false);
+                });
         },
         _get_previous_record: function() {
             var view = this.current_view;
@@ -1517,14 +1528,18 @@
                 (previous_record !== this.current_record);
         },
         display_previous: function() {
+            this.screen_container.disable();
             var view = this.current_view;
             if (view) {
                 view.set_value();
             }
             this.set_cursor(false, false);
             this.current_record = this._get_previous_record();
-            this.set_cursor(false, false);
-            return view ? view.display() : jQuery.when();
+            return (view ? view.display() : jQuery.when()).then(
+                () => {
+                    this.screen_container.enable();
+                    this.set_cursor(false, false);
+                });
         },
         get selected_records() {
             if (this.current_view) {
@@ -1662,13 +1677,14 @@
             }
         },
         cancel_current: function(initial_value) {
+            this.screen_container.disable();
             var prms = [];
             if (this.current_record) {
                 this.current_record.cancel();
                 if (this.current_record.id < 0) {
                     if (initial_value) {
                         this.current_record.reset(initial_value);
-                        this.display();
+                        prms.push(this.display());
                     } else {
                         prms.push(this.remove(
                             false, false, false, [this.current_record]));
@@ -1694,6 +1710,7 @@
                 this.current_view.set_value();
                 var fields = this.current_view.get_fields();
             }
+            this.screen_container.disable();
             var path = current_record.get_path(this.group);
             var prm = jQuery.Deferred();
             if (this.current_view && (this.current_view.view_type == 'tree')) {
@@ -1702,6 +1719,7 @@
                 prm = current_record.save().then(() => current_record);
             } else if (this.current_view) {
                 return this.current_view.display().then(() => {
+                    this.screen_container.enable();
                     this.set_cursor();
                     return jQuery.Deferred().reject();
                 });
@@ -2013,6 +2031,7 @@
             return this.current_record.get_on_change_value();
         },
         reload: function(ids, written) {
+            this.screen_container.disable();
             this.group.reload(ids);
             var promises = [];
             if (written) {
@@ -2022,7 +2041,7 @@
                 promises.push(this.group.parent.root_parent.reload());
             }
             return jQuery.when.apply(jQuery, promises).then(() => {
-                return this.display();
+                return this.display(true);
             });
         },
         get_buttons: function() {
