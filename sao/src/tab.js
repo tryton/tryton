@@ -940,7 +940,6 @@
         reload: function(test_modified=true) {
             const reload = () => {
                 return this.screen.cancel_current().then(() => {
-                    var set_cursor = false;
                     var record_id = null;
                     if (this.screen.current_record) {
                         record_id = this.screen.current_record.id;
@@ -952,18 +951,17 @@
                                 for (const record of this.screen.group) {
                                     if (record.id == record_id) {
                                         this.screen.current_record = record;
-                                        set_cursor = true;
                                     }
                                 }
-                                return set_cursor;
                             });
                     } else {
                         this.refresh_resources(true);
                     }
-                    return set_cursor;
                 })
-                .then(set_cursor => {
-                    return this.screen.display(set_cursor).then(() => {
+                .then(() => {
+                    // Always set the cursor as the screen loose the cursor due
+                    // to inert
+                    return this.screen.display(true).then(() => {
                         this.info_bar.clear();
                         this.set_buttons_sensitive();
                         this.screen.count_tab_domain();
