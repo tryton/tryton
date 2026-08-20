@@ -79,6 +79,7 @@ class Wizard(InfoBar):
         if self.__processing or self.__waiting_response:
             return
         self.__processing = True
+        self.update_buttons()
 
         ctx = self.context.copy()
         if self.screen:
@@ -100,6 +101,7 @@ class Wizard(InfoBar):
                     self.end()
                 self.state = current_state
                 self.__processing = False
+                self.update_buttons()
                 return
 
             if 'view' in result:
@@ -141,6 +143,7 @@ class Wizard(InfoBar):
             else:
                 execute_actions()
             self.__processing = False
+            self.update_buttons()
 
         RPCExecute('wizard', self.action, 'execute', self.session_id, data,
             self.state, context=ctx, callback=callback)
@@ -188,6 +191,8 @@ class Wizard(InfoBar):
         response = len(self.states)
         self.response2button[response] = button
         button.show()
+        button.state_set(
+            self.screen.current_record if self.screen else None)
         return button
 
     def record_modified(self):
@@ -195,14 +200,14 @@ class Wizard(InfoBar):
         self.info_bar_refresh()
 
     def update_buttons(self):
-        record = self.screen.current_record
+        record = self.screen.current_record if self.screen else None
         for button in self.states.values():
             button.state_set(record)
+            if self.__processing:
+                button.set_sensitive(False)
 
     def update(self, view, buttons):
         tooltips = common.Tooltips()
-        for button in buttons:
-            self._get_button(button)
 
         if self.screen:
             self.screen.windows.remove(self)
@@ -249,6 +254,9 @@ class Wizard(InfoBar):
 
         self.widget.pack_start(
             self.create_info_bar(), expand=False, fill=True, padding=0)
+
+        for button in buttons:
+            self._get_button(button)
 
 
 class WizardForm(Wizard, TabContent):

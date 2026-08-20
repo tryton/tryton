@@ -56,6 +56,7 @@
                 return jQuery.when();
             }
             this.__processing = true;
+            this.update_buttons();
             var process = function() {
                 let current_state = this.state;
                 this.state = state;
@@ -117,7 +118,10 @@
                         prms.push(execute_actions());
                     }
                     return jQuery.when.apply(jQuery, prms).then(
-                        () => this.__processing = false);
+                        () => {
+                            this.__processing = false;
+                            this.update_buttons();
+                        });
                 }, result => {
                     if (!result || !this.screen) {
                         this.state = this.end_state;
@@ -125,6 +129,7 @@
                     }
                     this.state = current_state;
                     this.__processing = false;
+                    this.update_buttons();
                 });
             };
             return process.call(this);
@@ -172,6 +177,7 @@
             }
             var button = new Sao.common.Button(
                 definition, undefined, undefined, style);
+            button.set_state(this.screen ? this.screen.current_record : null);
             this.states[definition.state] = button;
             return button;
         },
@@ -180,16 +186,16 @@
             this.info_bar.refresh();
         },
         update_buttons: function() {
-            var record = this.screen.current_record;
+            let record = this.screen ? this.screen.current_record : null;
             for (var state in this.states) {
-                var button = this.states[state];
+                let button = this.states[state];
                 button.set_state(record);
+                if (this.__processing) {
+                    button.el.prop('disabled', true);
+                }
             }
         },
         update: function(view, buttons) {
-            for (const button of buttons) {
-                this._get_button(button);
-            }
             if (this.screen) {
                 this.screen.windows.splice(
                     this.screen.windows.indexOf(this), 1);
@@ -204,6 +210,9 @@
                 'title': this.name,
             }).text(Sao.common.ellipsize(this.name, 80)));
             this.widget.append(this.screen.screen_container.el);
+            for (let button of buttons) {
+                this._get_button(button);
+            }
         }
     });
 
