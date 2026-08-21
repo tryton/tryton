@@ -775,10 +775,7 @@
 
     Sao.common.selection_mixin = {};
     Sao.common.selection_mixin.init = function() {
-        this.selection = null;
-        this.help = null;
         this.inactive_selection = [];
-        this._last_domain = null;
         this._values2selection = {};
         this._domain_cache = {};
         if (this.nullable_widget === undefined) {
@@ -802,9 +799,8 @@
                     return a[1].localeCompare(b[1]);
                 });
             }
-            this.selection = jQuery.extend([], selection);
-            this.help = this.attributes.help_selection || {};
-            if (callback) callback(this.selection, this.help);
+            let help = this.attributes.help_selection || {};
+            if (callback) callback(selection, help);
         };
         if (!(selection instanceof Array) &&
                 !(key in this._values2selection)) {
@@ -835,7 +831,7 @@
         const _update_selection = () => {
             if (!field) {
                 if (callback) {
-                    callback(this.selection, this.help);
+                    callback([], {});
                 }
                 return;
             }
@@ -845,26 +841,25 @@
                 var value = record._get_on_change_args(change_with);
                 delete value.id;
                 Sao.common.selection_mixin.init_selection.call(
-                    this, value, () => {
-                        Sao.common.selection_mixin.filter_selection.call(
-                            this, domain, record, field);
-                        if (callback) {
-                            callback(this.selection, this.help);
+                    this, value, (selection, help) => {
+                        let cur_value = record._get_on_change_args(change_with);
+                        delete cur_value.id;
+                        if (JSON.stringify(value) == JSON.stringify(cur_value)) {
+                            selection = Sao.common.selection_mixin
+                                .filter_selection.call(
+                                    this, domain, record, field, selection);
+                            if (callback) {
+                                callback(selection, help);
+                            }
                         }
                     });
             } else {
                 var context = field.get_context(record);
                 var jdomain = JSON.stringify([domain, context]);
                 if (jdomain in this._domain_cache) {
-                    this.selection = this._domain_cache[jdomain];
-                    this._last_domain = [domain, context];
-                }
-                if ((this._last_domain !== null) &&
-                        Sao.common.compare(domain, this._last_domain[0]) &&
-                        (JSON.stringify(context) ==
-                         JSON.stringify(this._last_domain[1]))) {
+                    let selection = this._domain_cache[jdomain];
                     if (callback) {
-                        callback(this.selection, this.help);
+                        callback(selection, {});
                     }
                     return;
                 }
@@ -892,23 +887,31 @@
                             help[x.id] = x[help_field];
                         }
                     }
-                    this._last_domain = [domain, context];
                     this._domain_cache[jdomain] = selection;
-                    this.selection = jQuery.extend([], selection);
-                    this.help = help;
-                    if (callback) {
-                        callback(this.selection, this.help);
+
+                    let cur_domain = field.get_domain(record);
+                    let cur_context = field.get_context(record);
+                    if (Sao.common.compare(domain, cur_domain)
+                        && (JSON.stringify(context) ==
+                            JSON.stringify(cur_context))) {
+                        if (callback) {
+                            callback(selection, help);
+                        }
                     }
                 });
                 prm.fail(() => {
-                    var selection = [];
+                    var selection = [], help = {};
                     if (this.nullable_widget) {
                         selection.push([null, '']);
                     }
-                    this._last_domain = null;
-                    this.selection = selection;
-                    if (callback) {
-                        callback(this.selection, this.help);
+                    let cur_domain = field.get_domain(record);
+                    let cur_context = field.get_context(record);
+                    if (Sao.common.compare(domain, cur_domain)
+                        && (JSON.stringify(context) ==
+                            JSON.stringify(cur_context))) {
+                        if (callback) {
+                            callback(selection, help);
+                        }
                     }
                 });
             }
@@ -916,9 +919,9 @@
         this._selection_prm.always(_update_selection);
     };
     Sao.common.selection_mixin.filter_selection = function(
-            domain, record, field) {
+            domain, record, field, selection) {
         if (jQuery.isEmptyObject(domain)) {
-            return;
+            return selection;
         }
 
         var inversion = new Sao.common.DomainInversion();
@@ -941,12 +944,12 @@
             var allowed_models = field.get_models(record);
             evaluator = _model_evaluator(allowed_models);
         } else if (type_ == 'multiselection') {
-            return;
+            return selection;
         } else {
             evaluator = _value_evaluator;
         }
 
-        this.selection = this.selection.filter(evaluator);
+        return selection.filter(evaluator);
     };
     Sao.common.selection_mixin.get_inactive_selection = function(value) {
         if (!this.attributes.relation) {

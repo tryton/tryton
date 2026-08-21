@@ -2288,7 +2288,7 @@ function eval_pyson(value){
                 field, (selection, help) => {
                     this.set_selection(selection, help);
                     if (callbak) {
-                        callbak(help);
+                        callbak(selection, help);
                     }
                 });
         },
@@ -2306,14 +2306,14 @@ function eval_pyson(value){
         display_update_selection: function() {
             var record = this.record;
             var field = this.field;
-            this.update_selection(record, field, help => {
+            this.update_selection(record, field, (selection, help) => {
                 if (!field) {
                     this.select.val('');
                     return;
                 }
                 var value = field.get(record);
                 var prm, found = false;
-                for (const option of this.selection) {
+                for (const option of selection) {
                     if (option[0] === value) {
                         found = true;
                         break;
