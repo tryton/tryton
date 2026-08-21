@@ -65,7 +65,8 @@ class SelectionMixin(object):
             context = field.get_context(record)
             domain_cache_key = (freeze_value(domain), freeze_value(context))
             if domain_cache_key in self._domain_cache:
-                self.selection = self._domain_cache[domain_cache_key]
+                self.selection, self.help = (
+                    self._domain_cache[domain_cache_key])
                 self._last_domain = (domain, context)
             if (domain, context) == self._last_domain:
                 return
@@ -88,7 +89,7 @@ class SelectionMixin(object):
                 else:
                     help_ = {}
                 self._last_domain = (domain, context)
-                self._domain_cache[domain_cache_key] = selection
+                self._domain_cache[domain_cache_key] = (selection, help_)
             else:
                 selection = []
                 if self.nullable_widget:
