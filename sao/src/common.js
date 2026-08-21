@@ -857,9 +857,9 @@
                 var context = field.get_context(record);
                 var jdomain = JSON.stringify([domain, context]);
                 if (jdomain in this._domain_cache) {
-                    let selection = this._domain_cache[jdomain];
+                    let [selection, help] = this._domain_cache[jdomain];
                     if (callback) {
-                        callback(selection, {});
+                        callback(selection, help);
                     }
                     return;
                 }
@@ -887,7 +887,7 @@
                             help[x.id] = x[help_field];
                         }
                     }
-                    this._domain_cache[jdomain] = selection;
+                    this._domain_cache[jdomain] = [selection, help];
 
                     let cur_domain = field.get_domain(record);
                     let cur_context = field.get_context(record);
