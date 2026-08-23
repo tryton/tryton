@@ -108,7 +108,7 @@ Not yet a purchase request::
 Pay for remaining products::
 
     >>> sale.reload()
-    >>> _, invoice = sale.invoices
+    >>> invoice, = [i for i in sale.invoices if i != invoice]
     >>> invoice.click('post')
     >>> pay = invoice.click('pay')
     >>> pay.form.payment_method = payment_method
