@@ -233,7 +233,7 @@ Receive partial shipment::
 Check new invoice::
 
     >>> purchase.reload()
-    >>> _, invoice = purchase.invoices
+    >>> invoice, = [i for i in purchase.invoices if i != invoice]
     >>> len(invoice.lines)
     3
     >>> product2quantity = {l.product: l.quantity for l in invoice.lines}

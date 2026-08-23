@@ -216,7 +216,7 @@ Ship partially::
 Check new invoice::
 
     >>> sale.reload()
-    >>> _, invoice = sale.invoices
+    >>> invoice, = [i for i in sale.invoices if i != invoice]
     >>> len(invoice.lines)
     3
     >>> product2quantity = {l.product: l.quantity for l in invoice.lines}
