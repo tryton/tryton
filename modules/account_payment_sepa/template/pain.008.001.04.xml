@@ -100,6 +100,7 @@ this repository contains the full copyright notices and license terms. -->
                 <!-- RltdRmtInf -->
                 <RmtInf py:if="payment.sepa_remittance_information">
                     <Ustrd>${payment.sepa_remittance_information[:140]}</Ustrd>
+                    <!-- Strd -->
                 </RmtInf>
                 <!-- SplmtryData -->
             </DrctDbtTxInf>
