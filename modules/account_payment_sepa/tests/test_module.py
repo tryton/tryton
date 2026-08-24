@@ -187,6 +187,11 @@ class AccountPaymentSepaTestCase(
         validate_file('pain.008.001.04', 'receivable')
 
     @with_transaction()
+    def test_pain008_001_08(self):
+        'Test pain008.001.08 xsd validation'
+        validate_file('pain.008.001.08', 'receivable')
+
+    @with_transaction()
     def test_pain008_003_02(self):
         'Test pain008.003.02 xsd validation'
         validate_file('pain.008.003.02', 'receivable')
