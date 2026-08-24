@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<py:strip xmlns:py="http://genshi.edgewall.org/">
+    <py:def function="PostalAddress(address)">
+        <!-- AdrTp -->
+        <!-- Dept -->
+        <!-- SubDept -->
+        <StrtNm py:if="address.street_name">${address.street_name[:70]}</StrtNm>
+        <BldgNb py:if="address.building_number">${address.building_number[:16]}</BldgNb>
+        <BldgNm py:if="address.building_name">${address.building_name[:35]}</BldgNm>
+        <Flr py:if="address.floor_number">${address.floor_number[70:]}</Flr>
+        <PstBx py:if="address.post_box">${address.post_box[:16]}</PstBx>
+        <Room py:if="address.room_number">${address.room_number[:70]}</Room>
+        <PstCd py:if="address.postal_code">${address.postal_code[:16]}</PstCd>
+        <TwnNm py:if="address.city">${address.city[:35]}</TwnNm>
+        <!-- TwnLctnNm -->
+        <!-- DstrctNm -->
+        <CtrySubDvsn py:if="address.subdivision">${address.subdivision.rec_name[:35]}</CtrySubDvsn>
+        <Ctry py:if="address.country">${address.country.code}</Ctry>
+        <py:if test="address.street_unstructured">
+            <py:for each="line in address.street_unstructured.splitlines()[:8]">
+                <AdrLine py:if="line">${line[:70]}</AdrLine>
+            </py:for>
+        </py:if>
+    </py:def>
+</py:strip>

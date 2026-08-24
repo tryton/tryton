@@ -14,6 +14,8 @@ this repository contains the full copyright notices and license terms. -->
             <py:with vars="identifier = party.get_sepa_identifier(id)">
                 <OrgId py:if="identifier['Type'] == 'OrgId'">
                     <BICOrBEI py:if="identifier.get('BICOrBEI')">${identifier['BICOrBEI']}</BICOrBEI>
+                    <AnyBIC py:if="identifier.get('AnyBIC')">${identifier['AnyBIC']}</AnyBIC>
+                    <LEI py:if="identifier.get('LEI')">${identifier['LEI']}</LEI>
                     <Othr py:if="identifier.get('Id')">
                         <Id>${identifier['Id']}</Id>
                         <SchmeNm py:if="identifier.get('SchmeNm')">
