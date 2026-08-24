@@ -50,7 +50,7 @@ this repository contains the full copyright notices and license terms. -->
     <py:def function="PostalAddress(address)">
         <Ctry py:if="address.country">${normalize('NFKD', address.country.code).encode('ascii', 'replace')}</Ctry>
         <py:if test="address.street">
-            <py:for each="line in address.street.splitlines()[1:8]">
+            <py:for each="line in address.street.splitlines()[:8]">
                 <AdrLine py:if="address.street">${normalize('NFKD', line).encode('ascii', 'replace')[:70]}</AdrLine>
             </py:for>
         </py:if>
