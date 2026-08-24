@@ -55,7 +55,7 @@ this repository contains the full copyright notices and license terms. -->
         <CtrySubDvsn py:if="address.subdivision">${address.subdivision.rec_name[:35]}</CtrySubDvsn>
         <Ctry py:if="address.country">${address.country.code}</Ctry>
         <py:if test="address.street_unstructured">
-            <py:for each="line in address.street_unstructured.splitlines()[1:8]">
+            <py:for each="line in address.street_unstructured.splitlines()[:8]">
                 <AdrLine py:if="line">${line[:70]}</AdrLine>
             </py:for>
         </py:if>
