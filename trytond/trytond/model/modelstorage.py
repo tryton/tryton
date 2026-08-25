@@ -521,7 +521,8 @@ class ModelStorage(Model):
                     'cache', 'count_clear', default=1000):
                 cls._count_cache.set(cls.__name__, None)
             else:
-                cls._count_cache.set(cls.__name__, count - len(records))
+                cls._count_cache.set(
+                    cls.__name__, max(count - len(records), 0))
 
         ids = [r.id for r in records]
         if cls.__name__ in transaction.delete_records:
