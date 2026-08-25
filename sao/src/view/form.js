@@ -2283,14 +2283,22 @@ function eval_pyson(value){
             Sao.common.selection_mixin.init_selection.call(this, key,
                 this.set_selection.bind(this));
         },
-        update_selection: function(record, field, callbak) {
+        update_selection: function(record, field, callback) {
+            let deferred = jQuery.Deferred();
             Sao.common.selection_mixin.update_selection.call(this, record,
                 field, (selection, help) => {
                     this.set_selection(selection, help);
-                    if (callbak) {
-                        callbak(selection, help);
+                    let prm;
+                    if (callback) {
+                        prm = callback(selection, help);
+                    }
+                    if (prm) {
+                        prm.always(deferred.resolve);
+                    } else {
+                        deferred.resolve();
                     }
                 });
+            return deferred;
         },
         set_selection: function(selection, help) {
             var select = this.select;
@@ -2304,9 +2312,13 @@ function eval_pyson(value){
             }
         },
         display_update_selection: function() {
-            var record = this.record;
-            var field = this.field;
-            this.update_selection(record, field, (selection, help) => {
+            let record = this.record,
+                field = this.field;
+            return this.update_selection(record, field, (selection, help) => {
+                if (record !== this.record) {
+                    return;
+                }
+
                 if (!field) {
                     this.select.val('');
                     return;
@@ -2322,7 +2334,7 @@ function eval_pyson(value){
                 if (!found) {
                     prm = Sao.common.selection_mixin.get_inactive_selection
                         .call(this, value);
-                    prm.done(inactive => {
+                    prm = prm.then(inactive => {
                         this.select.append(jQuery('<option/>', {
                             value: JSON.stringify(inactive[0]),
                             text: inactive[1],
@@ -2332,7 +2344,7 @@ function eval_pyson(value){
                 } else {
                     prm = jQuery.when();
                 }
-                prm.done(() => {
+                return prm.then(() => {
                     this.select.val(JSON.stringify(value));
                     var title = help[value] || null;
                     if (this.attributes.help && title) {
@@ -2344,7 +2356,7 @@ function eval_pyson(value){
         },
         display: function() {
             Sao.View.Form.Selection._super.display.call(this);
-            this.display_update_selection();
+            return this.display_update_selection();
         },
         focus: function() {
             this.select.focus();
@@ -3147,13 +3159,21 @@ function eval_pyson(value){
                 this.set_selection.bind(this));
         },
         update_selection: function(record, field, callback) {
+            let deferred = jQuery.Deferred();
             Sao.common.selection_mixin.update_selection.call(this, record,
                 field, (selection, help) => {
                     this.set_selection(selection, help);
+                    let prm;
                     if (callback) {
-                        callback();
+                        prm = callback(help);
+                    }
+                    if (prm) {
+                        prm.always(deferred.resolve);
+                    } else {
+                        deferred.resolve();
                     }
                 });
+            return deferred;
         },
         set_selection: function(selection, help) {
             var select = this.select;
@@ -3276,7 +3296,11 @@ function eval_pyson(value){
             }
         },
         display: function() {
-            this.update_selection(this.record, this.field, () => {
+            let record = this.record;
+            return this.update_selection(this.record, this.field, () => {
+                if (record !== this.record) {
+                    return;
+                }
                 Sao.View.Form.Reference._super.display.call(this);
             });
         },
@@ -3643,13 +3667,17 @@ function eval_pyson(value){
         display: function() {
             Sao.View.Form.One2Many._super.display.call(this);
 
-            let display = function() {
+            let record = this.record,
+                field = this.field;
+
+            let display = () => {
+                if (record !== this.record) {
+                    return;
+                }
+
                 this._set_button_sensitive();
 
-                var record = this.record;
-                var field = this.field;
-
-                if (!field) {
+                        if (!field) {
                     this.screen.new_group();
                     this.screen.current_record = null;
                     this.screen.group.parent = null;
@@ -3690,7 +3718,7 @@ function eval_pyson(value){
                         .css('max-height', this.attributes.height + 'px');
                 }
                 return this.screen.display();
-            }.bind(this);
+            };
 
             if (this.prm.state() == 'pending') {
                 return this.prm.then(() => display());
@@ -4275,9 +4303,13 @@ function eval_pyson(value){
         display: function() {
             Sao.View.Form.Many2Many._super.display.call(this);
 
-            let display = function() {
-                var record = this.record;
-                var field = this.field;
+            let record = this.record,
+                field = this.field;
+
+            let display = () => {
+                if (record !== this.record) {
+                    return;
+                }
 
                 if (!field) {
                     this.screen.new_group();
@@ -4297,7 +4329,7 @@ function eval_pyson(value){
                         .css('max-height', this.attributes.height + 'px');
                 }
                 return this.screen.display();
-            }.bind(this);
+            };
 
             if (this.prm.state() == 'pending') {
                 return this.prm.then(() => display());
@@ -5458,8 +5490,8 @@ function eval_pyson(value){
         _display: function() {
             Sao.View.Form.Dict._super.display.call(this);
 
-            var record = this.record;
-            var field = this.field;
+            let record = this.record,
+                field = this.field;
             if (!field) {
                 return;
             }
@@ -5485,6 +5517,10 @@ function eval_pyson(value){
                 prm = jQuery.when();
             }
             prm.then(() => {
+                if (record !== this.record) {
+                    return;
+                }
+
                 var i, len, key;
                 var keys = Object.keys(value)
                     .filter(function(key) {
