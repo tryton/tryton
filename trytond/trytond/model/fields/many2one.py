@@ -268,13 +268,13 @@ class Many2One(Field):
                     return expression
                 elif (self.left and self.right
                         and len(ids) <= math.floor(math.log10(
-                                Target.estimated_count() or 1))):
+                                max(Target.estimated_count(), 1)))):
                     return self.convert_domain_mptt(
                         (name, operator, ids), tables)
                 elif (self.path
                         and (operator.endswith('parent_of')
                             or len(ids) <= math.floor(math.log10(
-                                    Target.estimated_count() or 1)))):
+                                    max(Target.estimated_count(), 1))))):
                     return self.convert_domain_path(
                         (name, operator, ids), tables)
                 else:
