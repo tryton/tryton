@@ -76,7 +76,7 @@
                         this.update(view.fields_view, view.buttons);
 
                         this.screen.new_(false).then(() => {
-                            this.screen.current_record.set_default(
+                            return this.screen.current_record.set_default(
                                 view.defaults || {})
                                 .then(() => {
                                     this.screen.current_record.set(
