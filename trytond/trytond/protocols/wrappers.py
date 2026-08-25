@@ -15,7 +15,7 @@ except ImportError:
 
 from werkzeug import exceptions
 from werkzeug.datastructures import Authorization
-from werkzeug.exceptions import abort
+from werkzeug.exceptions import BadRequest, abort
 from werkzeug.utils import redirect, send_file
 from werkzeug.wrappers import Request as BaseRequest
 from werkzeug.wrappers import Response as BaseResponse
@@ -104,7 +104,10 @@ class Request(BaseRequest):
             args.append("'%s'" % url)
             args.append("[%s]" % self.method)
             if self.view_args:
-                args.append("%s" % (self.rpc_method or ''))
+                try:
+                    args.append("%s" % (self.rpc_method or ''))
+                except BadRequest:
+                    pass
         except Exception:
             args.append("(invalid WSGI environ)")
         return "<%s %s>" % (
@@ -126,11 +129,11 @@ class Request(BaseRequest):
 
     @property
     def rpc_method(self):
-        return
+        raise BadRequest("Not a RPC request")
 
     @property
     def rpc_params(self):
-        return
+        raise BadRequest("Not a RPC request")
 
     @cached_property
     def session(self):
