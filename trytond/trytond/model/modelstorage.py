@@ -353,7 +353,8 @@ class ModelStorage(Model):
             if random.random() < 1 / _cache_count_clear:
                 cls._count_cache.set(cls.__name__, None)
             else:
-                cls._count_cache.set(cls.__name__, count - len(records))
+                cls._count_cache.set(
+                    cls.__name__, max(count - len(records), 0))
 
     @classmethod
     @without_check_access
