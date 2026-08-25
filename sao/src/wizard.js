@@ -78,15 +78,18 @@
                         var view = result.view;
                         this.update(view.fields_view, view.buttons);
 
-                        prms.push(this.screen.new_(false).then(() => {
-                            return this.screen.current_record.set_default(
-                                view.defaults || {})
-                                .then(() => {
-                                    this.screen.current_record.set(
-                                        view.values || {});
-                                    this.update_buttons();
-                                    this.screen.set_cursor();
-                                });
+                        prms.push(this.screen.new_(false, null, false)
+                            .then(() => {
+                                return this.screen.current_record.set_default(
+                                    view.defaults || {})
+                                    .then(() => {
+                                        this.screen.current_record.set(
+                                            view.values || {});
+                                        this.update_buttons();
+                                        return this.screen.display().then(() => {
+                                            this.screen.set_cursor();
+                                        });
+                                    });
                         }));
 
                         this.screen_state = view.state;

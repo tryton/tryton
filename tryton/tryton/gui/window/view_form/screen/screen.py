@@ -681,7 +681,7 @@ class Screen:
 
         return view
 
-    def new(self, default=True, defaults=None):
+    def new(self, default=True, defaults=None, display=True):
         previous_view = self.current_view
         if self.current_view and self.current_view.view_type == 'calendar':
             selected_date = self.current_view.get_selected_date()
@@ -698,9 +698,10 @@ class Screen:
         if previous_view.view_type == 'calendar':
             previous_view.set_default_date(record, selected_date)
         self.current_record = record
-        self.display()
-        # Postpone set of the cursor to ensure widgets are allocated
-        GLib.idle_add(self.set_cursor, True)
+        if display:
+            self.display()
+            # Postpone set of the cursor to ensure widgets are allocated
+            GLib.idle_add(self.set_cursor, True)
         return self.current_record
 
     @property

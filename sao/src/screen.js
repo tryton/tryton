@@ -1603,7 +1603,7 @@
                 return this.current_record.id;
             }
         },
-        new_: function(default_=true, defaults=null) {
+        new_: function(default_=true, defaults=null, display=true) {
             var previous_view = this.current_view;
             var prm = jQuery.when();
             if (this.current_view &&
@@ -1636,10 +1636,14 @@
                     if (previous_view.view_type == 'calendar') {
                         previous_view.set_default_date(record, selected_date);
                     }
-                    return this.display().then(() => {
-                        this.set_cursor(true, true);
+                    if (display) {
+                        return this.display().then(() => {
+                            this.set_cursor(true, true);
+                            return record;
+                        });
+                    } else {
                         return record;
-                    });
+                    }
                 });
             });
         },
