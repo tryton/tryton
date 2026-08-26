@@ -1419,10 +1419,9 @@
                 return;
             }
             var record = this.screen.current_record;
-            if (!record) {
-                return;
-            }
-            var resource = record.model.name + ',' + record.id;
+            var resource = (
+                record ? record.model.name + ',' + record.id :
+                this.screen.model_name + ',-1');
             var domain = [
                 ['resource', '=', resource],
                 ['type', '=', 'data'],

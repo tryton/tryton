@@ -248,9 +248,9 @@ class Form(TabContent):
         if not self.attachment_screen:
             return
         record = self.screen.current_record
-        if not record:
-            return
-        resource = '%s,%s' % (record.model_name, record.id)
+        resource = '%s,%s' % (
+            (record.model_name, record.id) if record
+            else (self.screen.model_name, -1))
         domain = [
             ('resource', '=', resource),
             ('type', '=', 'data'),
