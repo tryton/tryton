@@ -24,54 +24,59 @@ class URLAccessor(object):
         self._protocol = protocol
 
     @classmethod
-    def is_secure(cls):
-        context = Transaction().context
-        if context:
-            request = context.get('_request')
-            if request and request['is_secure']:
-                return True
+    def is_secure(cls, request=None):
+        if request is None:
+            context = Transaction().context
+            if context:
+                request = context.get('_request')
+        if request and request['is_secure']:
+            return True
         return bool(
             config.get('ssl', 'certificate')
             or config.get('ssl', 'privatekey'))
 
     @classmethod
-    def host(cls):
-        context = Transaction().context
-        if context:
-            request = context.get('_request')
-            if request:
-                return request['http_host']
+    def host(cls, request=None):
+        if request is None:
+            context = Transaction().context
+            if context:
+                request = context.get('_request')
+        if request:
+            return request['http_host']
         return HOSTNAME
 
     @classmethod
-    def http_host(cls):
+    def http_host(cls, request=None):
         return urllib.parse.urlunsplit((
                 'http' + ('s' if cls.is_secure() else ''),
-                cls.host(), '', '', ''))
+                cls.host(request=request), '', '', ''))
 
     @classmethod
-    def http_root_path(cls):
-        context = Transaction().context
-        if context:
-            request = context.get('_request')
-            if request:
-                return request['root_path']
+    def http_root_path(cls, request=None):
+        if request is None:
+            context = Transaction().context
+            if context:
+                request = context.get('_request')
+        if request:
+            return request['root_path']
         return ROOT_PATH
 
     @classmethod
-    def http_base(cls):
-        return urllib.parse.urljoin(cls.http_host(), cls.http_root_path())
+    def http_base(cls, request=None):
+        return urllib.parse.urljoin(
+            cls.http_host(request=request),
+            cls.http_root_path(request=request))
 
     @property
-    def protocol(self):
+    def protocol(self, request=None):
         if self._protocol == 'http':
-            return 'http' + ('s' if self.is_secure() else '')
+            return 'http' + ('s' if self.is_secure(request=request) else '')
         return self._protocol
 
     @property
-    def root_path(self):
+    def root_path(self, request=None):
         if self._protocol == 'http':
-            return self.http_root_path()
+            return self.http_root_path(request=request)
         return '/'
 
     @property

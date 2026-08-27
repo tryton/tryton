@@ -1,3 +1,4 @@
+* Add explicit request context in URLAccessor
 * Retry unfinished queued tasks
 * Add a timer to prevent requests from lasting longer than their timeout
 * Apply mixin to Database and TableHandler from configuration
