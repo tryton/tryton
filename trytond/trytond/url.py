@@ -28,7 +28,7 @@ class URLAccessor(object):
         context = Transaction().context
         if context:
             request = context.get('_request')
-            if request and request['is_secure']:
+            if request and request.get('is_secure'):
                 return True
         return bool(
             config.get('ssl', 'certificate')
@@ -39,7 +39,7 @@ class URLAccessor(object):
         context = Transaction().context
         if context:
             request = context.get('_request')
-            if request:
+            if request and 'http_host' in request:
                 return request['http_host']
         return HOSTNAME
 
@@ -54,7 +54,7 @@ class URLAccessor(object):
         context = Transaction().context
         if context:
             request = context.get('_request')
-            if request:
+            if request and 'root_path' in request:
                 return request['root_path']
         return ROOT_PATH
 
