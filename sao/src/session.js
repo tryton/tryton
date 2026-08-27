@@ -378,6 +378,9 @@
 
         jQuery.when(Sao.Authentication.services()).then(function(services) {
             if (services.length) {
+                let localhost = (
+                    (window.location.protocol == 'http:')
+                    && window.location.host.startsWith('localhost:'));
                 var panel_body = jQuery('<div/>', {
                     'class': 'panel-body',
                 }).append(jQuery('<p/>')
@@ -389,7 +392,13 @@
                     panel_body.append(jQuery('<button/>', {
                         'class': 'btn btn-block btn-default',
                         'type': 'button',
+                        'disabled': localhost,
                     }).text(name).click(url, login_service));
+                }
+                if (localhost) {
+                    panel_body.append(jQuery('<p/>', {
+                        'class': 'text-warning',
+                    }).text(Sao.i18n.gettext("Disabled on localhost")));
                 }
             }
         });
