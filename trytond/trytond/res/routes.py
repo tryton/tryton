@@ -7,61 +7,83 @@ import time
 import trytond.config as config
 from trytond.protocols.wrappers import (
     abort, allow_null_origin, with_pool, with_transaction)
+from trytond.routing import Route, Router, Rule
 from trytond.transaction import Transaction
-from trytond.wsgi import app
 
 logger = logging.getLogger(__name__)
 
 
-@app.route('/<database_name>/user/application/', methods=['POST', 'DELETE'])
-@allow_null_origin
-@with_pool
-@with_transaction(readonly=False)
-def user_application(request, pool):
-    User = pool.get('res.user')
-    UserApplication = pool.get('res.user.application')
-    LoginAttempt = pool.get('res.user.login.attempt')
-    data = request.parsed_data
-    login = data.get('user')
+class User(Router):
+    __name__ = 'user'
 
-    if request.method == 'POST':
-        # Make time random to process and try to use the same path as much as
-        # possible to prevent guessing between valid and invalid requests.
-        Transaction().atexit(time.sleep, random.random())
-        users = User.search([
-                ('login', '=', login),
-                ])
-        if not users:
-            logger.info('User Application not found: %s', data.get('user'))
-            user_id = None
-        else:
-            user, = users
-            user_id = user.id
-        if UserApplication.count(user_id):
-            logger.info('User Application has already a request: %s', login)
-            user_id = None
-        data['user'] = user_id
-        data.pop('key', None)
-        data['state'] = 'requested'
-        application, = UserApplication.create([data])
-        key = application.key
-        UserApplication.delete(UserApplication.search([
-                    ('user', '=', None),
-                    ]))
-        return key
-    elif request.method == 'DELETE':
-        count = LoginAttempt.count(login)
-        if count > config.getint('session', 'max_attempt', default=5):
-            LoginAttempt.add(login)
-            abort(429)
-        Transaction().atexit(time.sleep, 2 ** count - 1)
-        applications = UserApplication.search([
-                ('user.login', '=', login),
-                ('key', '=', data.get('key')),
-                ('application', '=', data.get('application')),
-                ])
-        if applications:
-            UserApplication.delete(applications)
-            LoginAttempt.remove(login)
-        else:
-            LoginAttempt.add(login)
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls.__routes__.update({
+                'application': Route(
+                    Rule('application/', methods={'POST', 'DELETE'}),
+                    Rule('/<database_name>/user/'
+                        'application/', methods={'POST', 'DELETE'},
+                        redirect_to='application/'),
+                    decorators=[
+                        allow_null_origin,
+                        with_pool,
+                        with_transaction(readonly=False),
+                        ]),
+                })
+
+    @classmethod
+    def application(cls, request, pool):
+        User = pool.get('res.user')
+        UserApplication = pool.get('res.user.application')
+        LoginAttempt = pool.get('res.user.login.attempt')
+        data = request.parsed_data
+        login = data.get('user')
+
+        if request.method == 'POST':
+            # Make time random to process and try to use the same path as much
+            # as possible to prevent guessing between valid and invalid
+            # requests.
+            Transaction().atexit(time.sleep, random.random())
+            users = User.search([
+                    ('login', '=', login),
+                    ])
+            if not users:
+                logger.info('User Application not found: %s', data.get('user'))
+                user_id = None
+            else:
+                user, = users
+                user_id = user.id
+            if UserApplication.count(user_id):
+                logger.info(
+                    'User Application has already a request: %s', login)
+                user_id = None
+            data['user'] = user_id
+            data.pop('key', None)
+            data['state'] = 'requested'
+            application, = UserApplication.create([data])
+            key = application.key
+            UserApplication.delete(UserApplication.search([
+                        ('user', '=', None),
+                        ]))
+            return key
+        elif request.method == 'DELETE':
+            count = LoginAttempt.count(login)
+            if count > config.getint('session', 'max_attempt', default=5):
+                LoginAttempt.add(login)
+                abort(429)
+            Transaction().atexit(time.sleep, 2 ** count - 1)
+            applications = UserApplication.search([
+                    ('user.login', '=', login),
+                    ('key', '=', data.get('key')),
+                    ('application', '=', data.get('application')),
+                    ])
+            if applications:
+                UserApplication.delete(applications)
+                LoginAttempt.remove(login)
+            else:
+                LoginAttempt.add(login)
+
+
+class Authentication(Router):
+    __name__ = 'authentication'

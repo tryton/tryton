@@ -7,43 +7,60 @@ import trytond.config as config
 from trytond.protocols.wrappers import (
     HTTPStatus, Response, abort, set_max_request_size, user_application,
     with_pool, with_transaction)
-from trytond.wsgi import app
+from trytond.routing import Route, Router, Rule
 
 document_incoming_application = user_application('document_incoming')
 
 
-@app.route('/<database_name>/document_incoming', methods=['POST'])
-@set_max_request_size(config.getint(
-        'document_incoming', 'max_size',
-        default=config.getint('request', 'max_size')))
-@with_pool
-@with_transaction()
-@document_incoming_application
-def document_incoming(request, pool):
-    Document = pool.get('document.incoming')
+class DocumentIncoming(Router):
+    __name__ = 'document_incoming'
 
-    def convert_boolean(value):
-        try:
-            return bool(int(value))
-        except ValueError:
-            abort(HTTPStatus.BAD_REQUEST)
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls.__routes__.update({
+                'document_incoming': Route(
+                    Rule('', methods={'POST'}),
+                    Rule('/<database_name>/document_incoming',
+                        methods={'POST'}, redirect_to=''),
+                    decorators=[
+                        set_max_request_size(
+                            config.getint(
+                                'document_incoming', 'max_size',
+                                default=config.getint('request', 'max_size'))),
+                        with_pool,
+                        with_transaction(),
+                        document_incoming_application,
+                        ]),
+                })
 
-    if isinstance(request.parsed_data, dict):
-        values = request.parsed_data.copy()
-        values['data'] = base64.b64decode(values.get('data', b''))
-    else:
-        values = request.args.to_dict()
-        values['data'] = request.data
+    @classmethod
+    def document_incoming(cls, request, pool):
+        Document = pool.get('document.incoming')
 
-    values.setdefault('name', 'data.bin')
+        def convert_boolean(value):
+            try:
+                return bool(int(value))
+            except ValueError:
+                abort(HTTPStatus.BAD_REQUEST)
 
-    fields = {n for n, f in Document._fields.items() if not f.readonly}
-    for extra in values.keys() - fields:
-        del values[extra]
+        if isinstance(request.parsed_data, dict):
+            values = request.parsed_data.copy()
+            values['data'] = base64.b64decode(values.get('data', b''))
+        else:
+            values = request.args.to_dict()
+            values['data'] = request.data
 
-    document = Document(**values)
-    document.save()
+        values.setdefault('name', 'data.bin')
 
-    if convert_boolean(request.args.get('process', False)) and document.type:
-        Document.process([document], with_children=True)
-    return Response(status=HTTPStatus.NO_CONTENT)
+        fields = {n for n, f in Document._fields.items() if not f.readonly}
+        for extra in values.keys() - fields:
+            del values[extra]
+
+        document = Document(**values)
+        document.save()
+
+        if (convert_boolean(request.args.get('process', False))
+                and document.type):
+            Document.process([document], with_children=True)
+        return Response(status=HTTPStatus.NO_CONTENT)

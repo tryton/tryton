@@ -1,7 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import logging
-import urllib
 import uuid
 
 import braintree
@@ -29,7 +28,6 @@ from trytond.pyson import Bool, Eval
 from trytond.report import Report
 from trytond.tools import sql_pairing
 from trytond.transaction import Transaction
-from trytond.url import http_host
 from trytond.wizard import Button, StateTransition, StateView, Wizard
 
 from .common import BraintreeCustomerMethodMixin
@@ -126,17 +124,11 @@ class CheckoutMixin:
     @property
     def braintree_checkout_url(self):
         pool = Pool()
-        database = Transaction().database.name
-        ModelData = pool.get('ir.model.data')
-        URL = pool.get('ir.action.url')
-        action = URL(ModelData.get_id(
-                'account_payment_braintree.url_checkout'))
-        return action.url % {
-            'http_host': http_host(),
-            'database': database,
-            'model': self.__class__.__name__,
-            'id': self.braintree_checkout_id,
-            }
+        BraintreeRouter = pool.get('account_payment_braintree', type='router')
+        return BraintreeRouter.url_for(
+            'checkout',
+            model=self.__class__.__name__,
+            id=self.braintree_checkout_id)
 
     def braintree_set_nonce(self, nonce, device_data=None):
         self.braintree_nonce = nonce
@@ -830,16 +822,13 @@ class PaymentBraintreeAccount(ModelSQL, ModelView):
 
     @fields.depends('webhook_identifier')
     def on_change_with_webhook_endpoint(self, name=None):
+        pool = Pool()
+        BraintreeRouter = pool.get('account_payment_braintree', type='router')
+
         if not self.webhook_identifier:
             return
-        url_part = {
-            'identifier': self.webhook_identifier,
-            'database_name': Transaction().database.name,
-            }
-        return http_host() + (
-            urllib.parse.quote(
-                '/%(database_name)s/account_payment_braintree'
-                '/webhook/%(identifier)s' % url_part))
+        return BraintreeRouter.url_for(
+            'webhooks_endpoint', account=self.webhook_identifier)
 
     @property
     def configuration(self):

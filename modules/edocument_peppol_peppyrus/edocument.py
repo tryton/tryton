@@ -5,7 +5,7 @@ import uuid
 from base64 import b64decode, b64encode
 from functools import wraps
 from io import BytesIO
-from urllib.parse import quote, urljoin
+from urllib.parse import urljoin
 
 import requests
 from lxml import etree
@@ -17,7 +17,6 @@ from trytond.pool import Pool, PoolMeta
 from trytond.protocols.wrappers import HTTPStatus
 from trytond.pyson import Eval
 from trytond.transaction import Transaction
-from trytond.url import http_host
 
 from .exceptions import PeppyrusCredentialWarning, PeppyrusError
 
@@ -102,29 +101,19 @@ class PeppolService(metaclass=PoolMeta):
 
     @fields.depends('peppyrus_identifier')
     def on_change_with_peppyrus_incoming_webhook(self, name=None):
+        pool = Pool()
+        PeppyrusRouter = pool.get('edocument_peppol_peppyrus', type='router')
         if self.peppyrus_identifier:
-            url_part = {
-                'identifier': self.peppyrus_identifier,
-                'database_name': Transaction().database.name,
-                }
-            return http_host() + (
-                quote(
-                    '/%(database_name)s/edocument_peppol_peppyrus/'
-                    '%(identifier)s/in'
-                    % url_part))
+            return PeppyrusRouter.url_for(
+                'incoming', identifier=self.peppyrus_identifier)
 
     @fields.depends('peppyrus_identifier')
     def on_change_with_peppyrus_outgoing_webhook(self, name=None):
+        pool = Pool()
+        PeppyrusRouter = pool.get('edocument_peppol_peppyrus', type='router')
         if self.peppyrus_identifier:
-            url_part = {
-                'identifier': self.peppyrus_identifier,
-                'database_name': Transaction().database.name,
-                }
-            return http_host() + (
-                quote(
-                    '/%(database_name)s/edocument_peppol_peppyrus/'
-                    '%(identifier)s/out'
-                    % url_part))
+            return PeppyrusRouter.url_for(
+                'outgoing', identifier=self.peppyrus_identifier)
 
     @classmethod
     def peppyrus_new_identifier(cls, services):

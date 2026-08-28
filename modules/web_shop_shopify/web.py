@@ -2,7 +2,6 @@
 # this repository contains the full copyright notices and license terms.
 import datetime as dt
 import logging
-import urllib.parse
 from collections import defaultdict
 from decimal import Decimal
 from itertools import groupby
@@ -21,7 +20,6 @@ from trytond.pyson import Eval
 from trytond.tools import grouped_slice
 from trytond.tools.logging import format_args
 from trytond.transaction import Transaction
-from trytond.url import http_host
 
 from . import SHOPIFY_VERSION, graphql
 from .common import IdentifierMixin, IdentifiersMixin, gid2id, id2gid
@@ -239,16 +237,12 @@ class Shop(metaclass=PoolMeta):
 
     @fields.depends('name')
     def on_change_with_shopify_webhook_endpoint_order(self, name=None):
+        pool = Pool()
+        ShopifyRouter = pool.get('web_shop_shopify', type='router')
+
         if not self.name:
             return
-        url_part = {
-            'database_name': Transaction().database.name,
-            'shop': self.name,
-            }
-        return http_host() + (
-            urllib.parse.quote(
-                '/%(database_name)s/web_shop_shopify/webhook/%(shop)s/order' %
-                url_part))
+        return ShopifyRouter.url_for('webhook_order', shop=self.name)
 
     @property
     def is_managing_gift_card(self):

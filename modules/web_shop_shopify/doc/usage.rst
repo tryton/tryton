@@ -82,13 +82,13 @@ record based on the Shopify identifier.
 You can use these links to create an `admin link extension
 <https://shopify.dev/docs/apps/build/admin/admin-links>`_.
 
-   - ``GET`` ``/<database_name>/web_shop_shopify/products/<product id>``
+   - ``GET`` ``/<database_name>/r/web_shop_shopify/products/<product id>``
 
-   - ``GET`` ``/<database_name>/web_shop_shopify/products/<product id>/variants/<variant id>``
+   - ``GET`` ``/<database_name>/r/web_shop_shopify/products/<product id>/variants/<variant id>``
 
-   - ``GET`` ``/<database_name>/web_shop_shopify/customers/<customer id>``
+   - ``GET`` ``/<database_name>/r/web_shop_shopify/customers/<customer id>``
 
-   - ``GET`` ``/<database_name>/web_shop_shopify/orders/<order id>``
+   - ``GET`` ``/<database_name>/r/web_shop_shopify/orders/<order id>``
 
 .. _Setup Gift Cards:
 

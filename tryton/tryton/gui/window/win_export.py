@@ -495,7 +495,7 @@ class WinExport(WinCSV, InfoBar):
         self.sel_predef(model.get_path(selected))
 
     def get_url(self):
-        path = [CONFIG['login.db'], 'data', self.model]
+        path = [CONFIG['login.db'], 'r', 'base', 'data', self.model]
         protocol = 'https' if CONNECTION.ssl else 'http'
         host = common.get_hostname(CONFIG['login.host'])
         port = common.get_port(CONFIG['login.host'])

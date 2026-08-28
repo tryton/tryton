@@ -5162,7 +5162,7 @@ function eval_pyson(value){
                 uri = '';
             } else {
                 uri = record.model.session.database +
-                    '/ir/html/' + record.model.name + '/' + record.id + '/' +
+                    '/r/base/html/' + record.model.name + '/' + record.id + '/' +
                     this.field_name;
                 uri += '?language=' + encodeURIComponent(
                     language || Sao.i18n.getlang());

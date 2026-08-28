@@ -360,6 +360,7 @@ def load_module_graph(graph, pool, update=None, lang=None, indexes=None):
             ModelField.clean()
 
         pool.setup_mixin()
+        pool.setup_routers()
 
         for model_name in models_with_indexes:
             model = pool.get(model_name)

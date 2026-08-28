@@ -7,14 +7,15 @@ Pool
 .. class:: Pool([database_name])
 
    Store the instances of :class:`~trytond.model.Model`,
-   :class:`~trytond.wizard.Wizard` and *Report* per database.
+   :class:`~trytond.wizard.Wizard`, :class:`~trytond.report.Report` and
+   :class:`~trytond.routing.Router` per database.
 
 Static methods:
 
 .. staticmethod:: Pool.register(klass, ..., type_, module[, depends])
 
-   Register the classes of type (``model``, ``report`` or ``wizard``) for the
-   module.
+   Register the classes of type (``model``, ``report``, ``wizard`` or
+   ``router``) for the module.
 
    If ``depends`` is set, the registration happens only if all the modules are
    activated.

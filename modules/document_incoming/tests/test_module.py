@@ -135,7 +135,7 @@ class DocumentIncomingRouteTestCase(RouteTestCase):
         client = self.client()
 
         response = client.post(
-            f'/{self.db_name}/document_incoming'
+            f'/{self.db_name}/r/document_incoming'
             '?name=test&type=document_incoming',
             data=b'data',
             headers={
@@ -164,7 +164,7 @@ class DocumentIncomingRouteTestCase(RouteTestCase):
         client = self.client()
 
         response = client.post(
-            f'/{self.db_name}/document_incoming',
+            f'/{self.db_name}/r/document_incoming',
             json={
                 'name': 'test',
                 'type': 'document_incoming',
@@ -196,7 +196,7 @@ class DocumentIncomingRouteTestCase(RouteTestCase):
         client = self.client()
 
         response = client.post(
-            f'/{self.db_name}/document_incoming?foo=bar',
+            f'/{self.db_name}/r/document_incoming?foo=bar',
             data=b'data',
             headers={
                 'Authorization': f'bearer {self.key}',
@@ -223,7 +223,7 @@ class DocumentIncomingRouteTestCase(RouteTestCase):
 
         with patch.object(self.Document, 'process') as process:
             response = client.post(
-                f'/{self.db_name}/document_incoming'
+                f'/{self.db_name}/r/document_incoming'
                 '?process=1&type=document_incoming',
                 data=b'data',
                 headers={

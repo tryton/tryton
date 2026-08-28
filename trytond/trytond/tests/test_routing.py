@@ -3,11 +3,14 @@
 
 import base64
 import json
+import urllib.parse
 
 from trytond.pool import Pool
 from trytond.protocols.wrappers import HTTPStatus, Response
+from trytond.routing import BuildURLError
 from trytond.tests.test_tryton import (
-    DB_NAME, Client, TestCase, activate_module, drop_db)
+    DB_NAME, Client, RouteTestCase, TestCase, activate_module, drop_db,
+    with_transaction)
 from trytond.transaction import Transaction
 from trytond.wsgi import app
 
@@ -39,7 +42,7 @@ class RoutesTestCase(TestCase):
             }
 
     def data_url(self, model):
-        return '/%(database)s/data/%(model)s' % {
+        return '/%(database)s/r/base/data/%(model)s' % {
             'database': DB_NAME,
             'model': model,
             }
@@ -196,3 +199,111 @@ class RoutesTestCase(TestCase):
         self.assertEqual(response_std.status_code, HTTPStatus.OK)
         self.assertEqual(response_locale.status_code, HTTPStatus.OK)
         self.assertNotEqual(response_std.data, response_locale.data)
+
+
+class RoutingTestCase(RouteTestCase):
+    module = 'tests'
+
+    def test_route(self):
+        "Test route"
+        c = self.client()
+
+        response = c.get(f'/{self.db_name}/r/test/hello')
+        self.assertEqual(response.status_code, HTTPStatus.OK)
+        self.assertEqual(response.text, "Hello, World!")
+
+    def test_route_with_parameters(self):
+        "Test route with parameters"
+        c = self.client()
+
+        response = c.get(f'/{self.db_name}/r/test/hello/Foo')
+        self.assertEqual(response.status_code, HTTPStatus.OK)
+        self.assertEqual(response.text, "Hello, Foo!")
+
+    def test_router_redirection(self):
+        "Test route with redirection"
+        c = self.client()
+
+        response = c.get('/test/redirection/redirect/Foo')
+        self.assertEqual(response.status_code, HTTPStatus.PERMANENT_REDIRECT)
+        location = urllib.parse.urlsplit(response.location)
+        self.assertEqual(
+            location.path, f'/{self.db_name}/r/test/redirection/Foo')
+
+        response = c.get(response.location)
+        self.assertEqual(response.status_code, HTTPStatus.OK)
+        self.assertEqual(response.text, "Foo succeeded!")
+
+    @with_transaction()
+    def test_url_for(self):
+        "Test url_for"
+        pool = Pool()
+        Router = pool.get('test', type='router')
+
+        for values, expected_url in [
+                ({'model': 'foo', 'id': 1},
+                    f'/{self.db_name}/r/test/url/foo/1'),
+                ({'model': 'bar', 'id': 2, 'field': 'baz'},
+                    f'/{self.db_name}/r/test/url/bar/2/baz'),
+                ]:
+            with self.subTest(values=values):
+                url = Router.url_for('url_rel', **values)
+                parsed_url = urllib.parse.urlsplit(url)
+                self.assertEqual(parsed_url.path, expected_url)
+
+    @with_transaction()
+    def test_url_for_absolute_url(self):
+        "Test url_for with an absolute URL"
+        pool = Pool()
+        Router = pool.get('test', type='router')
+
+        for values, expected_url in [
+                ({'model': 'foo', 'id': 1}, '/test/url/foo/1'),
+                ({'model': 'bar', 'id': 2, 'field': 'baz'},
+                    '/test/url/bar/2/baz'),
+                ]:
+            with self.subTest(values=values):
+                url = Router.url_for('url_abs', **values)
+                parsed_url = urllib.parse.urlsplit(url)
+                self.assertEqual(parsed_url.path, expected_url)
+
+    @with_transaction()
+    def test_url_for_with_arguments(self):
+        "Test url_for with arguments"
+        pool = Pool()
+        Router = pool.get('test', type='router')
+        find_me_url = Router.url_for('url_rel', model='foo', id=1, a1=1, a2=2)
+        parsed_url = urllib.parse.urlsplit(find_me_url)
+        self.assertEqual(
+            parsed_url.path, f'/{self.db_name}/r/test/url/foo/1')
+        self.assertEqual(
+            urllib.parse.parse_qs(parsed_url.query),
+            {'a1': ['1'], 'a2': ['2']})
+
+    @with_transaction()
+    def test_url_for_no_match(self):
+        "Test url_for when the arguments does not match"
+        pool = Pool()
+        Router = pool.get('test', type='router')
+
+        for values in (
+                {},
+                {'model': 'foo'},
+                {'id': 1},
+                {'field': 'baz'},
+                {'model': 'foo', 'field': 'baz'},
+                {'field': 'baz', 'id': 2},
+                {'model': 'foo', 'field': 'baz', 'extra': 'yes'},
+                ):
+            with self.subTest(values=values):
+                with self.assertRaises(BuildURLError):
+                    Router.url_for('url_rel', **values)
+
+    @with_transaction()
+    def test_url_for_no_match_method(self):
+        "Test url_for when the method does not match"
+        pool = Pool()
+        Router = pool.get('test', type='router')
+
+        with self.assertRaises(BuildURLError):
+            Router.url_for('url_rel', model='foo', id=1, _method='POST')

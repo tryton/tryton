@@ -11,6 +11,7 @@ from trytond.i18n import gettext
 from trytond.protocols.jsonrpc import JSONDecoder
 from trytond.protocols.wrappers import (
     HTTPStatus, Response, abort, redirect, with_pool, with_transaction)
+from trytond.routing import Route, Router, Rule
 from trytond.tools import slugify
 from trytond.transaction import Transaction
 from trytond.wsgi import app
@@ -28,75 +29,6 @@ def get_config(names, section='html', default=None):
             return value
         names = names[:-1]
     return default
-
-
-@app.route('/<database_name>/ir/html/<model>/<int:record>/<field>',
-    methods={'GET', 'POST'})
-@app.auth_required
-@with_pool
-@with_transaction(
-    user='request', context=dict(_check_access=True, fuzzy_translation=True))
-def html_editor(request, pool, model, record, field):
-    Field = pool.get('ir.model.field')
-    field, = Field.search([
-            ('name', '=', field),
-            ('model.name', '=', model),
-            ])
-
-    transaction = Transaction()
-    language = request.args.get('language', transaction.language)
-    with transaction.set_context(language=language):
-        Model = pool.get(model)
-        record = Model(record)
-        values = Model.read([record.id], ['rec_name', field.name])[0]
-
-        status = HTTPStatus.OK
-        error = ''
-        if request.method == 'POST':
-            setattr(record, field.name, request.form['text'])
-            if request.form['_csrf_token'] == get_token(record):
-                Model.write([record], {field.name: request.form['text']})
-                return redirect(request.url)
-            else:
-                status = HTTPStatus.BAD_REQUEST
-                error = gettext('ir.msg_html_editor_save_fail')
-
-        csrf_token = get_token(record)
-        text = values[field.name] or ''
-        if isinstance(text, bytes):
-            try:
-                text = text.decode('utf-8')
-            except UnicodeDecodeError as e:
-                error = str(e).replace("'", "\\'")
-                text = ''
-        elif not isinstance(text, str):
-            abort(HTTPStatus.BAD_REQUEST)
-        title = '%(model)s "%(name)s" %(field)s - %(title)s' % {
-            'model': field.model_ref.name,
-            'name': values['rec_name'],
-            'field': field.string,
-            'title': request.args.get('title', "Tryton"),
-            }
-        source = config.get(
-            'html', 'src',
-            default='https://cdn.tiny.cloud'
-            '/1/no-api-key/tinymce/7/tinymce.min.js')
-        license_key = config.get('html', 'license_key', default='gpl')
-        return Response(TEMPLATE % {
-                'source': source,
-                'license_key': license_key,
-                'plugins': get_config(
-                    ['plugins', model, field.name], default=''),
-                'css': get_config(
-                    ['css', model, field.name], default='[]'),
-                'class': get_config(
-                    ['class', model, field.name], default="''"),
-                'language': transaction.language,
-                'title': title,
-                'text': text,
-                'csrf_token': csrf_token,
-                'error': error,
-                }, status, content_type='text/html')
 
 
 TEMPLATE = '''<!DOCTYPE html>
@@ -183,98 +115,199 @@ TEMPLATE = '''<!DOCTYPE html>
 </html>'''
 
 
-@app.route('/<database_name>/data/<model>', methods={'GET'})
-@app.auth_required
-@with_pool
-@with_transaction(
-    user='request', context=dict(_check_access=True),
-    timeout=config.getint('request', 'timeout', default=0))
-def data(request, pool, model):
-    User = pool.get('res.user')
-    Lang = pool.get('ir.lang')
-    try:
-        Model = pool.get(model)
-    except KeyError:
-        abort(HTTPStatus.NOT_FOUND)
-    transaction = Transaction()
-    context = User(transaction.user).get_preferences(context_only=True)
-    language = request.args.get('l')
-    if language:
-        context['language'] = language
-    try:
-        domain = json.loads(
-            request.args.get('d', '[]'), object_hook=JSONDecoder())
-    except json.JSONDecodeError:
-        abort(HTTPStatus.BAD_REQUEST)
-    try:
-        ctx = json.loads(
-            request.args.get('c', '{}'), object_hook=JSONDecoder())
-    except json.JSONDecoder:
-        abort(HTTPStatus.BAD_REQUEST)
-    for key in list(ctx.keys()):
-        if key.startswith('_') and key != '_datetime':
-            del ctx[key]
-    context.update(ctx)
-    limit = None
-    offset = 0
-    if 's' in request.args:
+class Base(Router):
+    __name__ = 'base'
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls.__routes__.update({
+                'html_editor': Route(
+                    Rule(
+                        'html/<model>/<int:record>/<field>',
+                        methods={'GET', 'POST'}),
+                    decorators=[
+                        app.auth_required,
+                        with_pool,
+                        with_transaction(
+                            user='request',
+                            context={
+                                '_check_access': True,
+                                'fuzzy_translation': True,
+                                }),
+                        ]),
+                'data': Route(
+                    Rule('data/<model>', methods={'GET'}),
+                    decorators=[
+                        app.auth_required,
+                        with_pool,
+                        with_transaction(
+                            user='request',
+                            context={'_check_access': True},
+                            timeout=config.getint(
+                                'request', 'timeout', default=0)),
+                        ],
+                    ),
+                'old_data': Route(
+                    Rule('/<database_name>/ir/data/<model>', methods={'GET'})),
+                })
+
+    @classmethod
+    def html_editor(cls, request, pool, model, record, field):
+        Field = pool.get('ir.model.field')
+        field, = Field.search([
+                ('name', '=', field),
+                ('model.name', '=', model),
+                ])
+
+        transaction = Transaction()
+        language = request.args.get('language', transaction.language)
+        with transaction.set_context(language=language):
+            Model = pool.get(model)
+            record = Model(record)
+            values = Model.read([record.id], ['rec_name', field.name])[0]
+
+            status = HTTPStatus.OK
+            error = ''
+            if request.method == 'POST':
+                setattr(record, field.name, request.form['text'])
+                if request.form['_csrf_token'] == get_token(record):
+                    Model.write([record], {field.name: request.form['text']})
+                    return redirect(request.url)
+                else:
+                    status = HTTPStatus.BAD_REQUEST
+                    error = gettext('ir.msg_html_editor_save_fail')
+
+            csrf_token = get_token(record)
+            text = values[field.name] or ''
+            if isinstance(text, bytes):
+                try:
+                    text = text.decode('utf-8')
+                except UnicodeDecodeError as e:
+                    error = str(e).replace("'", "\\'")
+                    text = ''
+            elif not isinstance(text, str):
+                abort(HTTPStatus.BAD_REQUEST)
+            title = '%(model)s "%(name)s" %(field)s - %(title)s' % {
+                'model': field.model_ref.name,
+                'name': values['rec_name'],
+                'field': field.string,
+                'title': request.args.get('title', "Tryton"),
+                }
+            source = config.get(
+                'html', 'src',
+                default='https://cdn.tiny.cloud'
+                '/1/no-api-key/tinymce/7/tinymce.min.js')
+            license_key = config.get('html', 'license_key', default='gpl')
+            return Response(TEMPLATE % {
+                    'source': source,
+                    'license_key': license_key,
+                    'plugins': get_config(
+                        ['plugins', model, field.name], default=''),
+                    'css': get_config(
+                        ['css', model, field.name], default='[]'),
+                    'class': get_config(
+                        ['class', model, field.name], default="''"),
+                    'language': transaction.language,
+                    'title': title,
+                    'text': text,
+                    'csrf_token': csrf_token,
+                    'error': error,
+                    }, status, content_type='text/html')
+
+    @classmethod
+    def data(cls, request, pool, model):
+        User = pool.get('res.user')
+        Lang = pool.get('ir.lang')
         try:
-            limit = int(request.args.get('s'))
-            if 'p' in request.args:
-                offset = int(request.args.get('p')) * limit
+            Model = pool.get(model)
+        except KeyError:
+            abort(HTTPStatus.NOT_FOUND)
+        transaction = Transaction()
+        context = User(transaction.user).get_preferences(context_only=True)
+        language = request.args.get('l')
+        if language:
+            context['language'] = language
+        try:
+            domain = json.loads(
+                request.args.get('d', '[]'), object_hook=JSONDecoder())
+        except json.JSONDecodeError:
+            abort(HTTPStatus.BAD_REQUEST)
+        try:
+            ctx = json.loads(
+                request.args.get('c', '{}'), object_hook=JSONDecoder())
+        except json.JSONDecoder:
+            abort(HTTPStatus.BAD_REQUEST)
+        for key in list(ctx.keys()):
+            if key.startswith('_') and key != '_datetime':
+                del ctx[key]
+        context.update(ctx)
+        limit = None
+        offset = 0
+        if 's' in request.args:
+            try:
+                limit = int(request.args.get('s'))
+                if 'p' in request.args:
+                    offset = int(request.args.get('p')) * limit
+            except ValueError:
+                abort(HTTPStatus.BAD_REQUEST)
+        if 'o' in request.args:
+            order = [(o.split(',', 1) + [''])[:2]
+                for o in request.args.getlist('o')]
+        else:
+            order = None
+        fields_names = request.args.getlist('f')
+        encoding = request.args.get('enc', 'UTF-8')
+        delimiter = request.args.get('dl', ',')
+        quotechar = request.args.get('qc', '"')
+        try:
+            header = bool(int(request.args.get('h', True)))
+            locale_format = bool(int(request.args.get('loc', False)))
         except ValueError:
             abort(HTTPStatus.BAD_REQUEST)
-    if 'o' in request.args:
-        order = [(o.split(',', 1) + [''])[:2]
-            for o in request.args.getlist('o')]
-    else:
-        order = None
-    fields_names = request.args.getlist('f')
-    encoding = request.args.get('enc', 'UTF-8')
-    delimiter = request.args.get('dl', ',')
-    quotechar = request.args.get('qc', '"')
-    try:
-        header = bool(int(request.args.get('h', True)))
-        locale_format = bool(int(request.args.get('loc', False)))
-    except ValueError:
-        abort(HTTPStatus.BAD_REQUEST)
 
-    with transaction.set_context(**context):
-        lang = Lang.get(transaction.language)
+        with transaction.set_context(**context):
+            lang = Lang.get(transaction.language)
 
-        def format_(row):
-            for i, value in enumerate(row):
-                if locale_format:
-                    if isinstance(value, Number):
-                        value = lang.format('%.12g', value)
-                    elif isinstance(value, (dt.date, dt.datetime)):
-                        value = lang.strftime(value)
-                elif isinstance(value, bool):
-                    value = int(value)
-                row[i] = value
-            return row
+            def format_(row):
+                for i, value in enumerate(row):
+                    if locale_format:
+                        if isinstance(value, Number):
+                            value = lang.format('%.12g', value)
+                        elif isinstance(value, (dt.date, dt.datetime)):
+                            value = lang.strftime(value)
+                    elif isinstance(value, bool):
+                        value = int(value)
+                    row[i] = value
+                return row
 
-        try:
-            if domain and isinstance(domain[0], (int, float)):
-                rows = Model.export_data(
-                    Model.browse(domain), fields_names, header)
-            else:
-                rows = Model.export_data_domain(
-                    domain, fields_names,
-                    limit=limit, offset=offset, order=order, header=header)
-        except (ValueError, KeyError):
-            abort(HTTPStatus.BAD_REQUEST)
-        data = io.StringIO(newline='')
-        writer = csv.writer(data, delimiter=delimiter, quotechar=quotechar)
-        for row in rows:
-            writer.writerow(format_(row))
-        data = data.getvalue().encode(encoding)
-        filename = slugify(Model.__names__()['model']) + '.csv'
-        filename = filename.encode('latin-1', 'ignore')
-        response = Response(data, mimetype='text/csv; charset=' + encoding)
-        response.headers.add(
-            'Content-Disposition', 'attachment', filename=filename)
-        return response
+            try:
+                if domain and isinstance(domain[0], (int, float)):
+                    rows = Model.export_data(
+                        Model.browse(domain), fields_names, header)
+                else:
+                    rows = Model.export_data_domain(
+                        domain, fields_names,
+                        limit=limit, offset=offset, order=order, header=header)
+            except (ValueError, KeyError):
+                abort(HTTPStatus.BAD_REQUEST)
+            data = io.StringIO(newline='')
+            writer = csv.writer(data, delimiter=delimiter, quotechar=quotechar)
+            for row in rows:
+                writer.writerow(format_(row))
+            data = data.getvalue().encode(encoding)
+            filename = slugify(Model.__names__()['model']) + '.csv'
+            filename = filename.encode('latin-1', 'ignore')
+            response = Response(data, mimetype='text/csv; charset=' + encoding)
+            response.headers.add(
+                'Content-Disposition', 'attachment', filename=filename)
+            return response
+
+    @classmethod
+    def old_data(cls, request, database_name, model):
+        url = cls.url_for('data', model=model, _request=request.context)
+        url += f'?{request.environ["QUERY_STRING"]}'
+        return redirect(url)
 
 
 @app.route('/avatar/<base64:database_name>/<uuid>', methods={'GET'})

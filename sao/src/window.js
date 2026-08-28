@@ -2427,7 +2427,9 @@
                     "%1 record saved", "%1 records saved", size, size), 'info');
         },
         set_url: function() {
-            var path = [this.session.database, 'data', this.screen.model_name];
+            var path = [
+                this.session.database, 'r', 'base', 'data',
+                this.screen.model_name];
             var query_string = [];
             var domain;
             if (JSON.parse(this.selected_records.val())) {

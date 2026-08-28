@@ -174,7 +174,7 @@ class WebShopProductDataFeedRouteTestCase(RouteTestCase):
         with patch.object(self.Shop, 'get') as get:
             get.return_value = shop = Mock(self.Shop)()
             response = client.get(
-                f'/{self.db_name}/web_shop/1/google/products.csv')
+                f'/{self.db_name}/r/web_shop/1/google/products.csv')
 
             self.assertEqual(response.status_code, HTTPStatus.OK)
             shop.product_data_feed_csv.assert_called_once_with('google', None)

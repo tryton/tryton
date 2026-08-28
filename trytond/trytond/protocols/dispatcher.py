@@ -128,6 +128,22 @@ def options(request, path=None):
     return Response(status=HTTPStatus.NO_CONTENT)
 
 
+@app.route('/<db>/r/<path:path>')
+def start_pool(request, db, path=None):
+    from trytond.pool import Pool
+
+    if db not in _db_list(request):
+        abort(HTTPStatus.NOT_FOUND)
+    elif db not in Pool.database_list():
+        pool = Pool(db)
+        with Transaction().start(db, 0, readonly=True):
+            pool.init()
+
+        return app.dispatch_request(request)
+    else:
+        abort(HTTPStatus.NOT_FOUND)
+
+
 def db_exist(request, database_name):
     try:
         backend.Database(database_name).connect()
@@ -136,15 +152,19 @@ def db_exist(request, database_name):
         return False
 
 
-def db_list(request, *args):
-    if not config.getboolean('database', 'list'):
-        abort(HTTPStatus.FORBIDDEN)
+def _db_list(request):
     context = {'_request': request.context}
     hostname = config.get_hostname(request.host)
     with Transaction().start(
             None, 0, context=context, readonly=True, close=True,
             ) as transaction:
         return transaction.database.list(hostname=hostname)
+
+
+def db_list(request, *args):
+    if not config.getboolean('database', 'list'):
+        abort(HTTPStatus.FORBIDDEN)
+    return _db_list(request)
 
 
 def authentication_services(request):

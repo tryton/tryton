@@ -139,7 +139,7 @@ class HTML(Widget, TranslateMixin):
         if not self.record or self.record.id < 0 or CONNECTION.url is None:
             uri = ''
         else:
-            path = ['ir/html', self.model_name, str(self.record.id),
+            path = ['r/base/html', self.model_name, str(self.record.id),
                 self.field_name]
             params = {
                 'language': language or CONFIG['client.lang'],

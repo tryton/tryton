@@ -15,7 +15,7 @@ def register():
         field_one2many, field_one2one, field_reference, field_selection,
         field_text, field_time, field_timedelta, history, import_data, mixin,
         model, model_log, modelsql, modelstorage, modelview, mptt, multivalue,
-        path, resource, rule, tree, trigger, wizard, workflow)
+        path, resource, routing, rule, tree, trigger, wizard, workflow)
 
     access.register('tests')
     copy_.register('tests')
@@ -60,6 +60,7 @@ def register():
     trigger.register('tests')
     wizard.register('tests')
     workflow.register('tests')
+    routing.register('tests')
 
     for test_ep in entry_points().select(group='trytond.tests'):
         test_module = test_ep.load()

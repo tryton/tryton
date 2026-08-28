@@ -369,7 +369,7 @@ class InboundEmailRouteTestCase(RouteTestCase):
         client = self.client()
 
         response = client.post(
-            f'/{self.db_name}/inbound_email/inbox/{self.identifier}',
+            f'/{self.db_name}/r/inbound_email/inbox/{self.identifier}',
             data=b'data')
 
         self.assertEqual(response.status_code, HTTPStatus.NO_CONTENT)
@@ -394,7 +394,7 @@ class InboundEmailRouteTestCase(RouteTestCase):
         client = self.client()
 
         response = client.post(
-            f'/{self.db_name}/inbound_email/inbox/{self.identifier}',
+            f'/{self.db_name}/r/inbound_email/inbox/{self.identifier}',
             data={
                 'email': 'data',
                 })
@@ -421,7 +421,7 @@ class InboundEmailRouteTestCase(RouteTestCase):
         client = self.client()
 
         response = client.post(
-            f'/{self.db_name}/inbound_email/inbox/unknown',
+            f'/{self.db_name}/r/inbound_email/inbox/unknown',
             data=b'foo')
 
         self.assertEqual(response.status_code, HTTPStatus.NOT_FOUND)

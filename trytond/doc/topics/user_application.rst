@@ -4,66 +4,21 @@
 User Application
 ================
 
-Tryton provides a way to connect URL rules to an callable endpoint using the
-decorator method ``route`` of the ``trytond.wsgi.app`` instance. This
-allows you to define a custom API based on HTTP that can be used to create a
-specific user application.
+User applications are a way to authenticate a user on a specific subset of URL
+served by the Tryton server.
 
-The decorator takes as first parameter a string which follow the `Rule
-Format`_ of Werkzeug and as second parameter sequence of HTTP methods.
-
-Example::
-
-    from trytond.wsgi import app
-
-    @app.route('/hello', methods=['GET'])
-    def hello(request):
-        return 'Hello world'
-
-.. _Rule Format: http://werkzeug.pocoo.org/docs/latest/routing/#rule-format
-
-The following converter is added by Tryton:
-
-``base64``
-   This converter accepts any Base64_ string and transforms it into its
-   corresponding bytes value.
-
-.. _Base64: https://en.wikipedia.org/wiki/Base64
-
-Tryton also provides some wrappers in ``trytond.protocols.wrappers`` to ease the
-creation of such route.
-
-``set_max_request_size(size)``
-   Change the default limit of the request to the size in bytes.
-
-``allow_null_origin``
-   Allow requests which have their ``Origin`` set to ``null``.
-
-``with_pool``
-   Take the first parameter as database name and replace it by the
-   corresponding instance of the :ref:`Pool <ref-pool>`.
-
-``with_transaction([readonly[, user[, context[, timeout]]]])``
-   Start a :class:`~trytond.transaction.Transaction` using the :ref:`Pool
-   <ref-pool>` from ``with_pool``.
-   If ``readonly`` is not set, the transaction will not be readonly for
-   ``POST``, ``PUT``, ``DELETE`` and ``PATCH`` methods and readonly for all
-   others.
-
-``user_application(name[, json])``
-   Set the :attr:`~trytond.transaction.Transaction.user` from the
-   ``Authorization`` header using the ``bearer`` type with the user application
-   key, or the ``basic`` type without a username and with the user application
-   key as the password.
+This subset of routes is created by using the
+:ref:`user application decorator <topics-user_application_decorator>` on
+those routes.
 
 User Application Key
 ====================
 
-Tryton also provides a easy way to manage access to user application using
-keys per named application.
+Tryton provides an easy way to manage access to user application using keys per
+named application.
 A key is created with a ``POST`` request on the ``URL``
-``/<database_name>/user/application/`` which returns the key. The request must
-contain as data a JSON object with the keys:
+``/<database_name>/r/user/application/`` which returns the key.
+The request must contain as data a JSON object with the keys:
 
 ``user``
    The user login.

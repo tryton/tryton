@@ -43,5 +43,6 @@ For Developer:
    triggers
    backend_types
    rpc
+   url_routing
    user_application
    testing

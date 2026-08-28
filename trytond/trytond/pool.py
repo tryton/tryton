@@ -50,6 +50,7 @@ class Pool(object):
         'model': defaultdict(OrderedDict),
         'wizard': defaultdict(OrderedDict),
         'report': defaultdict(OrderedDict),
+        'router': defaultdict(dict),
     }
     classes_mixin = defaultdict(list)
     _started = False
@@ -272,6 +273,11 @@ class Pool(object):
                         cls = builtins.type(
                             cls.__name__, (mixin, cls), {'__slots__': ()})
                         self.add(cls, type=type_)
+
+    def setup_routers(self):
+        for _, router in self.iterobject('router'):
+            for name, route in router.__routes__.items():
+                route.start(self.database_name, router, name)
 
     @classmethod
     def refresh(cls, database_name, modules):

@@ -1104,7 +1104,7 @@ class ModuleTestCase(_DBTestCase):
     @with_transaction()
     def test_pool_slots(self):
         "Test pool object has __slots__"
-        for type_ in ['model', 'wizard', 'report']:
+        for type_ in Pool.classes:
             for name, cls in Pool().iterobject(type_):
                 if not isregisteredby(cls, self.module):
                     continue
@@ -1238,6 +1238,17 @@ class ModuleTestCase(_DBTestCase):
                     depends, extras_depend,
                     msg="Missing extras_depend %s in %s" % (
                         list(depends - extras_depend), self.module))
+
+    @with_transaction()
+    def test_routers(self):
+        "Test that routers' routes are callable"
+        for name, router in Pool().iterobject('route'):
+            if not isregisteredby(router, self.module):
+                continue
+
+            for r_name, route in router.__routes__.items():
+                with self.subTest(f"{r_name}@{router.__name__}"):
+                    self.assertTrue(callable(getattr(router, r_name, None)))
 
 
 class RouteTestCase(_DBTestCase):

@@ -2,7 +2,6 @@
 # this repository contains the full copyright notices and license terms.
 import datetime as dt
 import logging
-import urllib.parse
 import uuid
 import warnings
 from decimal import Decimal
@@ -30,7 +29,6 @@ from trytond.sendmail import send_message_transactional
 from trytond.tools import sql_pairing
 from trytond.tools.email_ import set_from_header
 from trytond.transaction import Transaction
-from trytond.url import http_host
 from trytond.wizard import Button, StateTransition, StateView, Wizard
 
 from .common import StripeCustomerMethodMixin
@@ -103,16 +101,11 @@ class CheckoutMixin:
     @property
     def stripe_checkout_url(self):
         pool = Pool()
-        database = Transaction().database.name
-        ModelData = pool.get('ir.model.data')
-        URL = pool.get('ir.action.url')
-        action = URL(ModelData.get_id('account_payment_stripe.url_checkout'))
-        return action.url % {
-            'http_host': http_host(),
-            'database': database,
-            'model': self.__class__.__name__,
-            'id': self.stripe_checkout_id,
-            }
+        StripeRouter = pool.get('account_payment_stripe', type='router')
+        return StripeRouter.url_for(
+            'checkout',
+            model=self.__class__.__name__,
+            id=self.stripe_checkout_id)
 
 
 class Payment(StripeCustomerMethodMixin, CheckoutMixin, metaclass=PoolMeta):
@@ -1032,18 +1025,13 @@ class Account(ModelSQL, ModelView):
 
     @fields.depends('webhook_identifier')
     def on_change_with_webhook_endpoint(self, name=None):
+        pool = Pool()
+        StripeRouter = pool.get('account_payment_stripe', type='router')
+
         if not self.webhook_identifier:
             return ''
-        # TODO add basic authentication support
-        url_part = {
-            'identifier': self.webhook_identifier,
-            'database_name': Transaction().database.name,
-            }
-        return http_host() + (
-            urllib.parse.quote(
-                '/%(database_name)s/account_payment_stripe'
-                '/webhook/%(identifier)s'
-                % url_part))
+        return StripeRouter.url_for(
+            'webhooks_endpoint', account=self.webhook_identifier)
 
     @classmethod
     def default_setup_intent_delay(cls):
