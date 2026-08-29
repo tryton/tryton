@@ -9,7 +9,7 @@ requires-python = '>=3.10'
 maintainers = [
     {name = "Tryton", email = "foundation@tryton.org"},
     ]
-description = "Package shipping with MyGSL for Tryton"
+description = "Package shipping with MyGLS for Tryton"
 license = 'GPL-3.0-or-later'
 license-files = ['LICENSE', 'icons/LICENSE', 'COPYRIGHT']
 keywords = ["tryton", "stock"]
