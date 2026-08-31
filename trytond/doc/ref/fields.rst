@@ -61,9 +61,14 @@ All are optional except :attr:`~Field.string`.
    A dictionary that defines dynamic states of the field and overrides the
    static one.
 
-   Possible keys are ``required``, ``readonly`` and ``invisible``.
+   Possible keys are ``required``, ``readonly``, ``editable`` and
+   ``invisible``.
    The values are :class:`~trytond.pyson.PYSON` statements that is evaluated
    with the values of the record.
+
+   .. note::
+
+      ``editable`` is not enforced but only used for the UI.
 
 .. attribute:: Field.on_change
 

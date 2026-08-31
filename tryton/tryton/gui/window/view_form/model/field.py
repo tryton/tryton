@@ -194,6 +194,8 @@ class Field(object):
                 self.get_state_attrs(record)[key] = state_changes[key]
             elif key in self.attrs:
                 self.get_state_attrs(record)[key] = self.attrs[key]
+            if key == 'readonly' and not state_changes.get('editable', True):
+                self.get_state_attrs(record)['readonly'] = True
         if (record.group.readonly
                 or self.get_state_attrs(record).get('domain_readonly')
                 or record.parent_name == self.name):

@@ -50,10 +50,12 @@ def domain_validate(value):
 
 def states_validate(value):
     assert isinstance(value, dict), 'states must be a dict'
-    assert set(value).issubset({'required', 'readonly', 'invisible'}), (
-        'extra keys "%(keys)s" in states' % {
-            'keys': set(value) - {'required', 'readonly', 'invisible'},
-            })
+    assert set(value).issubset(
+        {'required', 'readonly', 'editable', 'invisible'}), (
+            'extra keys "%(keys)s" in states' % {
+                'keys': set(value) - {
+                    'required', 'readonly', 'editable', 'invisible'},
+                })
     for state in value:
         assert isinstance(value[state], (bool, PYSON)), \
             'values of states must be PYSON'
@@ -413,6 +415,7 @@ class Field(object):
     def edition_depends(self):
         depends = get_eval_fields(self.domain)
         depends |= get_eval_fields(self.states.get('readonly'))
+        depends |= get_eval_fields(self.states.get('editable'))
         depends |= get_eval_fields(self.states.get('required'))
         return self.depends | depends
 

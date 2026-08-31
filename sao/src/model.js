@@ -1701,6 +1701,10 @@
                     this.get_state_attrs(record)[state] =
                         this.description[state];
                 }
+                if ((state == 'readonly') &&
+                    !(Object.hasOwn(state_changes, 'editable') ? state_changes.editable : true)) {
+                    this.get_state_attrs(record).readonly = true;
+                }
             }
             if (record.group.readonly ||
                 this.get_state_attrs(record).domain_readonly ||
