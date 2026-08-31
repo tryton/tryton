@@ -105,7 +105,8 @@ class PeppolService(metaclass=PoolMeta):
         PeppyrusRouter = pool.get('edocument_peppol_peppyrus', type='router')
         if self.peppyrus_identifier:
             return PeppyrusRouter.url_for(
-                'incoming', identifier=self.peppyrus_identifier)
+                'incoming', identifier=self.peppyrus_identifier,
+                _method='POST')
 
     @fields.depends('peppyrus_identifier')
     def on_change_with_peppyrus_outgoing_webhook(self, name=None):
@@ -113,7 +114,8 @@ class PeppolService(metaclass=PoolMeta):
         PeppyrusRouter = pool.get('edocument_peppol_peppyrus', type='router')
         if self.peppyrus_identifier:
             return PeppyrusRouter.url_for(
-                'outgoing', identifier=self.peppyrus_identifier)
+                'outgoing', identifier=self.peppyrus_identifier,
+                _method='POST')
 
     @classmethod
     def peppyrus_new_identifier(cls, services):
