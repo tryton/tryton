@@ -321,11 +321,24 @@ class Invoice(Model):
                     type_code=type_code))
 
         invoice = Invoice(type='in')
+
+        if (customer_party := root.find('./{*}AccountingCustomerParty')
+                ) is not None:
+            invoice.company = cls._parse_2_company(customer_party)
+        else:
+            invoice.company = Invoice.default_company()
+        if not invoice.company:
+            raise InvoiceError(gettext(
+                    'edocument_ubl.msg_company_not_found',
+                    company=etree.tostring(
+                        customer_party, pretty_print=True).decode()
+                    if customer_party else ''))
+
         invoice.reference = root.findtext('./{*}ID')
         invoice.invoice_date = dt.date.fromisoformat(
             root.findtext('./{*}IssueDate'))
         invoice.party = cls._parse_2_supplier(
-            root.find('./{*}AccountingSupplierParty'), create=True)
+            root.find('./{*}AccountingSupplierParty'), create=True).id
         payees = [invoice.party]
         invoice.set_journal()
         invoice.on_change_party()
@@ -341,17 +354,6 @@ class Invoice(Model):
             supplier = cls._parse_2_supplier(seller)
         else:
             supplier = invoice.party
-        if (customer_party := root.find('./{*}AccountingCustomerParty')
-                ) is not None:
-            invoice.company = cls._parse_2_company(customer_party)
-        else:
-            invoice.company = Invoice.default_company()
-        if not invoice.company:
-            raise InvoiceError(gettext(
-                    'edocument_ubl.msg_company_not_found',
-                    company=etree.tostring(
-                        customer_party, pretty_print=True).decode()
-                    if customer_party else ''))
 
         if (payee_party := root.find('./{*}PayeeParty')) is not None:
             party = cls._parse_2_party(payee_party)
@@ -659,11 +661,24 @@ class Invoice(Model):
                     type_code=type_code))
 
         invoice = Invoice(type='in')
+
+        if (customer_party := root.find('./{*}AccountingCustomerParty')
+                ) is not None:
+            invoice.company = cls._parse_2_company(customer_party)
+        else:
+            invoice.company = Invoice.default_company()
+        if not invoice.company:
+            raise InvoiceError(gettext(
+                    'edocument_ubl.msg_company_not_found',
+                    company=etree.tostring(
+                        customer_party, pretty_print=True).decode()
+                    if customer_party else ''))
+
         invoice.reference = root.findtext('./{*}ID')
         invoice.invoice_date = dt.date.fromisoformat(
             root.findtext('./{*}IssueDate'))
         invoice.party = cls._parse_2_supplier(
-            root.find('./{*}AccountingSupplierParty'), create=True)
+            root.find('./{*}AccountingSupplierParty'), create=True).id
         payees = [invoice.party]
         invoice.set_journal()
         invoice.on_change_party()
@@ -671,11 +686,7 @@ class Invoice(Model):
             supplier = cls._parse_2_supplier(seller)
         else:
             supplier = invoice.party
-        if (customer_party := root.find('./{*}AccountingCustomerParty')
-                ) is not None:
-            invoice.company = cls._parse_2_company(customer_party)
-        else:
-            invoice.company = Invoice.default_company()
+
         if (payee_party := root.find('./{*}PayeeParty')) is not None:
             party = cls._parse_2_party(payee_party)
             if not party:

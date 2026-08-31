@@ -62,7 +62,7 @@ Parse the UBL invoice::
     >>> with file_open(
     ...         'edocument_ubl/tests/UBL-CreditNote-2.1-Example.xml',
     ...         mode='rb') as fp:
-    ...     invoice_id = EInvoice.parse(fp.read(), config.context)
+    ...     invoice_id = EInvoice.parse(fp.read(), {**config.context, 'company': None})
 
     >>> invoice = Invoice(invoice_id)
 
