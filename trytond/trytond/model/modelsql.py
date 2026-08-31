@@ -1639,7 +1639,7 @@ class ModelSQL(ModelStorage):
                         where=foreign_red_sql))
                 related_records = Model.browse([x[0] for x in cursor])
             else:
-                with without_check_access(), inactive_records():
+                with inactive_records():
                     related_records = Model.search(
                         [(field_name, 'in', sub_ids)],
                         order=[])
@@ -1651,27 +1651,27 @@ class ModelSQL(ModelStorage):
                 grouped_slice(ids), grouped_slice(records)):
             sub_ids = list(sub_ids)
             red_sql = reduce_ids(table.id, sub_ids)
+            with without_check_access():
+                for Model, field_name in foreign_keys_toupdate:
+                    related_records = get_related_records(
+                        Model, field_name, sub_ids)
+                    if related_records:
+                        Model.write(related_records, {
+                                field_name: None,
+                                })
 
-            for Model, field_name in foreign_keys_toupdate:
-                related_records = get_related_records(
-                    Model, field_name, sub_ids)
-                if related_records:
-                    Model.write(related_records, {
-                            field_name: None,
-                            })
+                for Model, field_name in foreign_keys_todelete:
+                    related_records = get_related_records(
+                        Model, field_name, sub_ids)
+                    if related_records:
+                        Model.delete(related_records)
 
-            for Model, field_name in foreign_keys_todelete:
-                related_records = get_related_records(
-                    Model, field_name, sub_ids)
-                if related_records:
-                    Model.delete(related_records)
-
-            for Model, field_name in foreign_keys_tocheck:
-                if get_related_records(Model, field_name, sub_ids):
-                    error_args = Model.__names__(field_name)
-                    raise ForeignKeyError(
-                        gettext('ir.msg_foreign_model_exist',
-                            **error_args))
+                for Model, field_name in foreign_keys_tocheck:
+                    if get_related_records(Model, field_name, sub_ids):
+                        error_args = Model.__names__(field_name)
+                        raise ForeignKeyError(
+                            gettext('ir.msg_foreign_model_exist',
+                                **error_args))
 
             try:
                 cursor.execute(*table.delete(where=red_sql))
