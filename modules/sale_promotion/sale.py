@@ -184,7 +184,7 @@ class Promotion(
     company = fields.Many2One(
         'company.company', "Company", required=True,
         states={
-            'readonly': Eval('id', 0) > 0,
+            'readonly': Eval('id', -1) >= 0,
             })
     start_date = fields.Date('Start Date',
         domain=['OR',

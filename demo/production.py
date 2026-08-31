@@ -111,13 +111,11 @@ def setup(config, activated, company):
                         if 'production_work' in activated:
                             for work in production.works:
                                 for _ in range(0, random.randint(1, 2)):
-                                    cycle = WorkCycle(
-                                        work=work,
-                                        duration=dt.timedelta(
-                                            seconds=random.randint(60, 3600)),
-                                        )
+                                    cycle = WorkCycle(work=work)
                                     cycle.save()
                                     cycle.click('run')
+                                    cycle.duration = dt.timedelta(
+                                        seconds=random.randint(60, 3600))
                                     cycle.click('do')
                         output, = production.outputs
                         output.unit_price = (production.cost

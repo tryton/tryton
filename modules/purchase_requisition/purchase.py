@@ -78,7 +78,8 @@ class PurchaseRequisition(Workflow, ModelSQL, ModelView, ChatMixin):
     company = fields.Many2One(
         'company.company', "Company", required=True,
         states={
-            'readonly': (Eval('state') != 'draft') | Eval('lines', [0]),
+            'readonly': Eval('state') != 'draft',
+            'editable': ~Eval('lines', [0]),
             })
     number = fields.Char('Number', readonly=True)
     description = fields.Char('Description', states=_states)
@@ -99,8 +100,8 @@ class PurchaseRequisition(Workflow, ModelSQL, ModelView, ChatMixin):
     currency = fields.Many2One(
         'currency.currency', 'Currency',
         states={
-            'readonly': (_states['readonly']
-                | (Eval('lines', [0]) & Eval('currency'))),
+            'readonly': _states['readonly'],
+            'editable': ~(Eval('lines', [0]) & Eval('currency')),
             })
     total_amount = fields.Function(
         Monetary("Total", currency='currency', digits='currency'),

@@ -130,7 +130,8 @@ class Rental(
     company = fields.Many2One(
         'company.company', "Company", required=True,
         states={
-            'readonly': (Eval('state') != 'draft') | Eval('party', True),
+            'readonly': Eval('state') != 'draft',
+            'editable': ~Eval('party', True),
             },
         help="Make the sale rental belong to the company.")
 
@@ -149,9 +150,8 @@ class Rental(
     party = fields.Many2One(
         'party.party', "Party", required=True,
         states={
-            'readonly': (
-                (Eval('state') != 'draft')
-                | (Eval('lines', [0]) & Eval('party'))),
+            'readonly': Eval('state') != 'draft',
+            'editable': ~(Eval('lines', [0]) & Eval('party')),
             },
         context={
             'company': Eval('company', -1),
@@ -169,8 +169,8 @@ class Rental(
         depends={'company', 'party'})
     invoice_party = fields.Many2One('party.party', "Invoice Party",
         states={
-            'readonly': ((Eval('state') != 'draft')
-                | Eval('lines', [0])),
+            'readonly': Eval('state') != 'draft',
+            'editable': ~Eval('lines', [0]),
             },
         context={
             'company': Eval('company', -1),
@@ -207,8 +207,8 @@ class Rental(
     currency = fields.Many2One(
         'currency.currency', "Currency", required=True,
         states={
-            'readonly': ((Eval('state') != 'draft')
-                | (Eval('lines', [0]) & Eval('currency', 0))),
+            'readonly': Eval('state') != 'draft',
+            'editable': ~(Eval('lines', [0]) & Eval('currency', None)),
             })
 
     start = fields.Function(

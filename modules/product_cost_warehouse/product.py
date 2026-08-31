@@ -40,7 +40,7 @@ class Product(metaclass=PoolMeta):
         readonly = (
             Eval('context', {}).get('cost_price_warehouse', False)
             & ~Eval('context', {}).get('warehouse'))
-        if cls.cost_price.states['readonly']:
+        if cls.cost_price.states.get('readonly'):
             cls.cost_price.states['readonly'] |= readonly
         else:
             cls.cost_price.states['readonly'] = readonly

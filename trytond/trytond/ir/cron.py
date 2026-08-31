@@ -36,7 +36,7 @@ def str2bigint(s):
 class Cron(DeactivableMixin, ModelSQL, ModelView):
     __name__ = "ir.cron"
     _states = {
-        'readonly': Eval('running', False),
+        'editable': Eval('running', False),
         }
     interval_number = fields.Integer(
         "Interval Number", required=True, states=_states)
@@ -53,7 +53,7 @@ class Cron(DeactivableMixin, ModelSQL, ModelView):
             [('minute', '>=', 0), ('minute', '<=', 59)],
             ],
         states={
-            'readonly': _states['readonly'],
+            'editable': _states['editable'],
             'invisible': Eval('interval_type').in_(['minutes']),
             },
         depends=['interval_type'])
@@ -63,14 +63,14 @@ class Cron(DeactivableMixin, ModelSQL, ModelView):
             [('hour', '>=', 0), ('hour', '<=', 23)],
             ],
         states={
-            'readonly': _states['readonly'],
+            'editable': _states['editable'],
             'invisible': Eval('interval_type').in_(['minutes', 'hours']),
             },
         depends=['interval_type'])
     weekday = fields.Many2One(
         'ir.calendar.day', "Day of Week",
         states={
-            'readonly': _states['readonly'],
+            'editable': _states['editable'],
             'invisible': Eval('interval_type').in_(
                 ['minutes', 'hours', 'days']),
             },
@@ -81,7 +81,7 @@ class Cron(DeactivableMixin, ModelSQL, ModelView):
             ('day', '>=', 0),
             ],
         states={
-            'readonly': _states['readonly'],
+            'editable': _states['editable'],
             'invisible': Eval('interval_type').in_(
                 ['minutes', 'hours', 'days', 'weeks']),
             },

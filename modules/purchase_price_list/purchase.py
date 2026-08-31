@@ -10,10 +10,7 @@ class Purchase(metaclass=PoolMeta):
     @classmethod
     def __setup__(cls):
         super().__setup__()
-        cls.party.states['readonly'] = (cls.party.states['readonly']
-            | Eval('lines', [0]))
-        cls.lines.states['readonly'] = (cls.lines.states['readonly']
-            | ~Eval('party'))
+        cls.lines.states['editable'] &= Eval('party', None)
 
 
 class Line(metaclass=PoolMeta):

@@ -29,7 +29,8 @@ class Sale(metaclass=PoolMeta):
             ],
         states={
             'invisible': ~Eval('warehouse_eu_excise_number'),
-            'readonly': (Eval('state') != 'draft') | Eval('lines', [0]),
+            'readonly': Eval('state') != 'draft',
+            'editable': ~Eval('lines', [0]),
             })
     eu_excise_types = fields.Function(
         fields.MultiSelection(IDENTIFIER_TYPES, "Excise Types"),
@@ -41,9 +42,11 @@ class Sale(metaclass=PoolMeta):
     @classmethod
     def __setup__(cls):
         super().__setup__()
-        cls.warehouse.states['readonly'] = (
-            cls.warehouse.states.get('readonly', False)
-            | Eval('eu_excise_number'))
+        editable = ~Eval('eu_excise_number')
+        if cls.warehouse.states.get('editable'):
+            cls.warehouse.states['editable'] &= editable
+        else:
+            cls.warehouse.states['editable'] = editable
 
     @fields.depends(methods=['_clear_eu_excise_number'])
     def on_change_party(self):

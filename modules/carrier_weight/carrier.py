@@ -17,14 +17,14 @@ class Carrier(metaclass=PoolMeta):
         states={
             'invisible': Eval('carrier_cost_method') != 'weight',
             'required': Eval('carrier_cost_method') == 'weight',
-            'readonly': Bool(Eval('weight_price_list', [])),
+            'editable': Bool(Eval('weight_price_list', [])),
             },
         help="The Unit of Measure of weight criteria for the price list.")
     weight_currency = fields.Many2One('currency.currency', 'Currency',
         states={
             'invisible': Eval('carrier_cost_method') != 'weight',
             'required': Eval('carrier_cost_method') == 'weight',
-            'readonly': Bool(Eval('weight_price_list', [])),
+            'editable': Bool(Eval('weight_price_list', [])),
             },
         help="The currency of the price.")
     weight_price_list = fields.One2Many('carrier.weight_price_list', 'carrier',

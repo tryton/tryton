@@ -53,7 +53,7 @@ class Budget(BudgetMixin, ModelSQL, ModelView):
             ('type', '=', 'root'),
             ],
         states={
-            'readonly': Eval('root') & Eval('lines', [-1]),
+            'editable': ~(Eval('root') & Eval('lines', [-1])),
             })
     lines = fields.One2Many(
         'analytic_account.budget.line', 'budget', "Lines",

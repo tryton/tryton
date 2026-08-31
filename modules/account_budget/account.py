@@ -93,7 +93,8 @@ class BudgetMixin(ChatMixin):
     company = fields.Many2One(
         'company.company', "Company", required=True,
         states={
-            'readonly': Eval('company') & Eval('lines', [-1]),
+            'readonly': Eval('id', -1) >= 0,
+            'editable': ~Eval('lines', [-1]),
             },
         help="The company that the budget is associated with.")
     lines = None
@@ -305,13 +306,13 @@ class Budget(BudgetMixin, ModelSQL, ModelView):
     lines = fields.One2Many(
         'account.budget.line', 'budget', "Lines",
         states={
-            'readonly': Eval('id', -1) < 0,
+            'editable': Eval('id', -1) < 0,
             },
         order=[('left', 'ASC'), ('id', 'ASC')])
     root_lines = fields.One2Many(
         'account.budget.line', 'budget', "Lines",
         states={
-            'readonly': Eval('id', -1) < 0,
+            'editable': Eval('id', -1) < 0,
             },
         filter=[
             ('parent', '=', None),

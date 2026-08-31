@@ -65,7 +65,8 @@ class SaleOpportunity(
     company = fields.Many2One(
         'company.company', "Company", required=True,
         states={
-            'readonly': _states_stop['readonly'] | Eval('party', True),
+            'readonly': _states_stop['readonly'],
+            'editable': ~Eval('party', True),
             },
         domain=[
             ('id', If(In('company', Eval('context', {})), '=', '!='),

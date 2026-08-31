@@ -81,9 +81,9 @@ class Sale(
     company = fields.Many2One(
         'company.company', "Company", required=True,
         states={
-            'readonly': (
-                (Eval('state') != 'draft')
-                | Eval('lines', [0])
+            'readonly': Eval('state') != 'draft',
+            'editable': ~(
+                Eval('lines', [0])
                 | Eval('party', True)
                 | Eval('invoice_party', True)
                 | Eval('shipment_party', True)),
@@ -97,9 +97,8 @@ class Sale(
     quotation_date = fields.Date(
         "Quotation Date",
         states={
-            'readonly': (
-                (Eval('state') != 'draft')
-                | (Eval('number') & Eval('lines'))),
+            'readonly': Eval('state') != 'draft',
+            'editable': ~(Eval('number') & Eval('lines', [0])),
             'invisible': ~Eval('state').in_(['draft', 'quotation']),
             },
         help="When the quotation was edited.")
@@ -140,8 +139,8 @@ class Sale(
     party = fields.Many2One(
         'party.party', "Party", required=True,
         states={
-            'readonly': ((Eval('state') != 'draft')
-                | (Eval('lines', [0]) & Eval('party'))),
+            'readonly': Eval('state') != 'draft',
+            'editable': ~(Eval('lines', [0]) & Eval('party')),
             },
         context={
             'company': Eval('company', -1),
@@ -160,8 +159,8 @@ class Sale(
         depends={'company'})
     invoice_party = fields.Many2One('party.party', "Invoice Party",
         states={
-            'readonly': ((Eval('state') != 'draft')
-                | Eval('lines', [0])),
+            'readonly': Eval('state') != 'draft',
+            'editable': ~Eval('lines', [0]),
             },
         context={
             'company': Eval('company', -1),
@@ -213,16 +212,14 @@ class Sale(
             })
     currency = fields.Many2One('currency.currency', 'Currency', required=True,
         states={
-            'readonly': ((Eval('state') != 'draft')
-                | (Eval('lines', [0]) & Eval('currency', 0))),
+            'readonly': Eval('state') != 'draft',
+            'editable': ~(Eval('lines', [0]) & Eval('currency', 0)),
             })
     lines = fields.One2Many(
         'sale.line', 'sale', "Lines",
         states={
-            'readonly': (
-                (Eval('state') != 'draft')
-                | ~Eval('company')
-                | ~Eval('currency')),
+            'readonly': Eval('state') != 'draft',
+            'editable': Eval('company', None) & Eval('currency', None),
             })
     line_lines = fields.One2Many(
         'sale.line', 'sale', "Line - Lines", readonly=True,
@@ -557,6 +554,10 @@ class Sale(
         return 'none'
 
     @classmethod
+    def default_to_invoice(cls):
+        return False
+
+    @classmethod
     def default_shipment_method(cls, **pattern):
         Config = Pool().get('sale.configuration')
         config = Config(1)
@@ -565,6 +566,10 @@ class Sale(
     @staticmethod
     def default_shipment_state():
         return 'none'
+
+    @classmethod
+    def default_to_ship(cls):
+        return False
 
     @fields.depends(
         'company', 'party', 'invoice_party', 'shipment_party', 'warehouse',
@@ -916,10 +921,10 @@ class Sale(
         default.setdefault('number', None)
         default.setdefault('reference')
         default.setdefault('invoice_state', 'none')
-        default.setdefault('to_invoice')
+        default.setdefault('to_invoice', cls.default_to_invoice())
         default.setdefault('invoices_ignored', None)
         default.setdefault('shipment_state', 'none')
-        default.setdefault('to_ship')
+        default.setdefault('to_ship', cls.default_to_ship())
         default.setdefault('quotation_date')
         default.setdefault('sale_date', None)
         default.setdefault('quoted_by')
@@ -1389,8 +1394,8 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
     sale = fields.Many2One(
         'sale.sale', "Sale", ondelete='CASCADE', required=True,
         states={
-            'readonly': ((Eval('sale_state') != 'draft')
-                & Bool(Eval('sale'))),
+            'readonly': Eval('sale_state') != 'draft',
+            'editable': ~Eval('sale'),
             })
     type = fields.Selection([
         ('line', 'Line'),

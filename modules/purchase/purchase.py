@@ -85,9 +85,9 @@ class Purchase(
     company = fields.Many2One(
         'company.company', "Company", required=True,
         states={
-            'readonly': (
-                (Eval('state') != 'draft')
-                | Eval('lines', [0])
+            'readonly': Eval('state') != 'draft',
+            'editable': ~(
+                Eval('lines', [0])
                 | Eval('party', True)
                 | Eval('invoice_party', True)),
             })
@@ -112,8 +112,8 @@ class Purchase(
             })
     party = fields.Many2One('party.party', 'Party', required=True,
         states={
-            'readonly': ((Eval('state') != 'draft')
-                | (Eval('lines', [0]) & Eval('party'))),
+            'readonly': Eval('state') != 'draft',
+            'editable': ~(Eval('lines', [0]) & Eval('party')),
             },
         context={
             'company': Eval('company', -1),
@@ -132,8 +132,8 @@ class Purchase(
         depends={'company'})
     invoice_party = fields.Many2One('party.party', "Invoice Party",
         states={
-            'readonly': ((Eval('state') != 'draft')
-                | Eval('lines', [0])),
+            'readonly': Eval('state') != 'draft',
+            'editable': ~Eval('lines', [0]),
             },
         context={
             'company': Eval('company', -1),
@@ -157,16 +157,14 @@ class Purchase(
         domain=[('type', '=', 'warehouse')], states=_states)
     currency = fields.Many2One('currency.currency', 'Currency', required=True,
         states={
-            'readonly': ((Eval('state') != 'draft')
-                | (Eval('lines', [0]) & Eval('currency'))),
+            'readonly': Eval('state') != 'draft',
+            'editable': ~(Eval('lines', [0]) & Eval('currency')),
             })
     lines = fields.One2Many(
         'purchase.line', 'purchase', "Lines",
         states={
-            'readonly': (
-                (Eval('state') != 'draft')
-                | ~Eval('company')
-                | ~Eval('currency')),
+            'readonly': Eval('state') != 'draft',
+            'editable': Eval('company', None) & Eval('currency', None),
             })
     line_lines = fields.One2Many(
         'purchase.line', 'purchase', "Line - Lines", readonly=True,
@@ -1177,8 +1175,8 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
     purchase = fields.Many2One(
         'purchase.purchase', "Purchase", ondelete='CASCADE', required=True,
         states={
-            'readonly': ((Eval('purchase_state') != 'draft')
-                & Bool(Eval('purchase'))),
+            'readonly': Eval('purchase_state') != 'draft',
+            'editable': ~Eval('purchase'),
             })
     type = fields.Selection([
         ('line', 'Line'),
@@ -1403,9 +1401,9 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
     delivery_date = fields.Function(fields.Date('Delivery Date',
             states={
                 'invisible': Eval('type') != 'line',
-                'readonly': (Eval('purchase_state').in_(
-                        ['processing', 'done', 'cancelled'])
-                    | ~Eval('delivery_date_edit', False)),
+                'readonly': Eval('purchase_state').in_(
+                        ['processing', 'done', 'cancelled']),
+                'editable': Eval('delivery_date_edit', False),
                 }),
         'on_change_with_delivery_date', setter='set_delivery_date')
     delivery_date_edit = fields.Boolean(
@@ -1425,7 +1423,7 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
             },
         help="Check to edit the delivery date.")
     delivery_date_store = fields.Date(
-        "Delivery Date", readonly=True,
+        "Delivery Date",
         domain=[
             If(Eval('type') != 'line',
                 ('delivery_date_store', '=', None),
@@ -1433,6 +1431,7 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
             ],
         states={
             'invisible': Eval('type') != 'line',
+            'editable': False
             })
     purchase_state = fields.Function(
         fields.Selection('get_purchase_states', 'Purchase State'),

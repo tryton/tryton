@@ -942,8 +942,9 @@ class Line(DescriptionOriginMixin, MoveLineMixin, ModelSQL, ModelView):
         ondelete='CASCADE',
         states={
             'required': False,
-            'readonly': (((Eval('state') == 'valid') | _states['readonly'])
-                & Bool(Eval('move'))),
+            'readonly': (
+                ((Eval('state') == 'valid') | _states['readonly'])
+                & (Eval('move') & (Eval('id', -1) >= 0))),
             })
     journal = fields.Function(fields.Many2One(
             'account.journal', 'Journal',
@@ -1567,6 +1568,7 @@ class Line(DescriptionOriginMixin, MoveLineMixin, ModelSQL, ModelView):
             default = {}
         else:
             default = default.copy()
+        default.setdefault('state', 'draft')
         default.setdefault('move', None)
         default.setdefault('reconciliation', None)
         default.setdefault('reconciliations_delegated', [])

@@ -70,7 +70,7 @@ class Move(metaclass=PoolMeta):
     __name__ = 'stock.move'
 
     from_place = fields.Many2One(
-        'stock.product.location.place', "From Place", readonly=True,
+        'stock.product.location.place', "From Place",
         domain=[
             If(~Eval('state').in_(['done', 'cancelled']),
                 ['OR',
@@ -79,9 +79,12 @@ class Move(metaclass=PoolMeta):
                     ],
                 ('location', '=', Eval('from_location', -1)),
                 ),
-            ])
+            ],
+        states={
+            'editable': False,
+        })
     to_place = fields.Many2One(
-        'stock.product.location.place', "To Place", readonly=True,
+        'stock.product.location.place', "To Place",
         domain=[
             If(~Eval('state').in_(['done', 'cancelled']),
                 ['OR',
@@ -90,7 +93,10 @@ class Move(metaclass=PoolMeta):
                     ],
                 ('location', '=', Eval('to_location', -1)),
                 ),
-            ])
+            ],
+        states={
+            'editable': False,
+        })
 
     @classmethod
     def __setup__(cls):

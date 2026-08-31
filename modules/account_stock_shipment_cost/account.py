@@ -448,9 +448,9 @@ class InvoiceLine(metaclass=PoolMeta):
     __name__ = 'account.invoice.line'
     shipment_cost = fields.Many2One(
         'account.shipment_cost', "Shipment Cost",
-        readonly=True,
         states={
             'invisible': ~Eval('shipment_cost'),
+            'editable': False,
             })
 
     @classmethod

@@ -18,7 +18,7 @@ from trytond.model import (
 from trytond.model.exceptions import AccessError
 from trytond.modules.product import price_digits, round_price
 from trytond.pool import Pool
-from trytond.pyson import Bool, Equal, Eval, Id, If, TimeDelta
+from trytond.pyson import Bool, Eval, Id, If, TimeDelta
 from trytond.tools import cached_property
 from trytond.transaction import Transaction, without_check_access
 
@@ -214,8 +214,8 @@ class Move(Workflow, ModelSQL, ModelView):
     unit = fields.Many2One(
         'product.uom', "Unit", required=True,
         states={
-            'readonly': (Eval('state').in_(['cancelled', 'assigned', 'done'])
-                | Eval('unit_price')),
+            'readonly': Eval('state').in_(['cancelled', 'assigned', 'done']),
+            'editable': ~Eval('unit_price'),
             },
         domain=[
             If(~Eval('state').in_(['done', 'cancelled']),
@@ -239,10 +239,10 @@ class Move(Workflow, ModelSQL, ModelView):
         'stock.location', "From Location",
         required=True,
         states={
-            'readonly': (
-                STATES['readonly']
-                | (Eval('shipment')
-                    & Equal(Eval('_parent_shipment.id', None), None))),
+            'readonly': STATES['readonly'],
+            'editable': ~(
+                Eval('shipment')
+                | Eval('_parent_shipment', None)),
             },
         domain=[
             LOCATION_DOMAIN,
@@ -264,10 +264,10 @@ class Move(Workflow, ModelSQL, ModelView):
         'stock.location', "To Location",
         required=True,
         states={
-            'readonly': (
-                STATES['readonly']
-                | (Eval('shipment')
-                    & Equal(Eval('_parent_shipment.id', None), None))),
+            'readonly': STATES['readonly'],
+            'editable': ~(
+                Eval('shipment')
+                | Eval('_parent_shipment', None)),
             },
         domain=[
             LOCATION_DOMAIN,
@@ -286,9 +286,10 @@ class Move(Workflow, ModelSQL, ModelView):
             "To Location"),
         'on_change_with_to_location_name')
     shipment = fields.Reference(
-        "Shipment", selection='get_shipment', readonly=True,
+        "Shipment", selection='get_shipment',
         states={
             'invisible': ~Eval('shipment'),
+            'readonly': Eval('id', -1) >= 0,
             },
         help="Used to group several stock moves together.")
     origin = fields.Reference(
@@ -305,20 +306,20 @@ class Move(Workflow, ModelSQL, ModelView):
     planned_date = fields.Date(
         "Planned Date",
         states={
-            'readonly': (
-                Eval('state').in_(['cancelled', 'assigned', 'done'])
-                | Eval('shipment')
-                | Eval('_parent_shipment'))
+            'readonly': Eval('state').in_(['cancelled', 'assigned', 'done']),
+            'editable': ~(
+                Eval('shipment', None)
+                | Eval('_parent_shipment', None)),
             },
         help="When the stock is expected to be moved.")
     effective_date = fields.Date(
         "Effective Date",
         states={
             'required': Eval('state') == 'done',
-            'readonly': (
-                Eval('state').in_(['cancelled', 'done'])
-                | Eval('shipment')
-                | Eval('_parent_shipment')),
+            'readonly': Eval('state').in_(['cancelled', 'done']),
+            'editable': ~(
+                Eval('shipment', None)
+                | Eval('_parent_shipment', None)),
             },
         help="When the stock was actually moved.")
     delay = fields.Function(
@@ -1024,6 +1025,8 @@ class Move(Workflow, ModelSQL, ModelView):
     @classmethod
     def copy(cls, moves, default=None):
         default = default.copy() if default is not None else {}
+        default.setdefault('internal_quantity', 0)
+        default.setdefault('cost_price')
         default.setdefault('outcome_moves', None)
         return super().copy(moves, default=default)
 

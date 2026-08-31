@@ -11,7 +11,7 @@ from trytond.model import Exclude, ModelSQL, ModelView, Workflow, fields
 from trytond.modules.company.model import CompanyValueMixin
 from trytond.modules.currency.fields import Monetary
 from trytond.pool import Pool, PoolMeta
-from trytond.pyson import Bool, Eval, Id
+from trytond.pyson import Eval, Id
 from trytond.report import Report, get_email
 from trytond.sendmail import send_message_transactional
 from trytond.tools.email_ import (
@@ -58,7 +58,9 @@ class GiftCard(ModelSQL, ModelView):
     _rec_name = 'number'
 
     _states = {
-        'readonly': Bool(Eval('origin')) | Bool(Eval('spent_on')),
+        'readonly': (
+            (Eval('origin', None) | Eval('spent_on', None))
+            & (Eval('id', -1) >= 0)),
         }
 
     number = fields.Char(
@@ -80,9 +82,16 @@ class GiftCard(ModelSQL, ModelView):
     currency = fields.Many2One(
         'currency.currency', "Currency", required=True, states=_states)
 
-    origin = fields.Reference("Origin", selection='get_origin', readonly=True)
+    origin = fields.Reference(
+        "Origin", selection='get_origin',
+        states={
+            'editable': Eval('id', -1) >= 0,
+        })
     spent_on = fields.Reference(
-        "Spent On", selection='get_spent_on', readonly=True)
+        "Spent On", selection='get_spent_on',
+        states={
+            'editable': Eval('id', -1) >= 0,
+        })
 
     del _states
 

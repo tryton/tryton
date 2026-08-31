@@ -161,7 +161,7 @@ class Work(
     company = fields.Many2One(
         'company.company', "Company", required=True,
         states={
-            'readonly': (
+            'editable': ~(
                 Eval('origin', None)
                 | Eval('parent', None)
                 | Eval('children', [])

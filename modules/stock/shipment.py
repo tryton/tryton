@@ -359,9 +359,10 @@ class ShipmentIn(
         help="The company the shipment is associated with.")
     supplier = fields.Many2One('party.party', 'Supplier',
         states={
-            'readonly': (((Eval('state') != 'draft')
-                    | Eval('incoming_moves', [0]))
-                & Eval('supplier')),
+            'readonly': Eval('state') != 'draft',
+            'editable': ~(
+                Eval('incoming_moves', [0])
+                & Eval('supplier', None)),
             }, required=True,
         context={
             'company': Eval('company', -1),
@@ -381,8 +382,10 @@ class ShipmentIn(
     warehouse = fields.Many2One('stock.location', "Warehouse",
         required=True, domain=[('type', '=', 'warehouse')],
         states={
-            'readonly': (Eval('state').in_(['cancelled', 'done'])
-                | Eval('incoming_moves', [0]) | Eval('inventory_moves', [0])),
+            'readonly': Eval('state').in_(['cancelled', 'done']),
+            'editable': ~(
+                Eval('incoming_moves', [0])
+                | Eval('inventory_moves', [0])),
             },
         help="Where the stock is received.")
     warehouse_input = fields.Many2One(
@@ -822,10 +825,12 @@ class ShipmentInReturn(
         help="The company the shipment is associated with.")
     supplier = fields.Many2One('party.party', 'Supplier',
         states={
-            'readonly': (((Eval('state') != 'draft')
-                    | Eval('moves', [0]))
-                    & Eval('supplier', 0)),
-            }, required=True,
+            'readonly': Eval('state') != 'draft',
+            'editable': ~(
+                Eval('moves', [0])
+                & Eval('supplier', None)),
+            },
+        required=True,
         context={
             'company': Eval('company', -1),
             'party_contact_mechanism_usage': 'delivery',
@@ -847,14 +852,20 @@ class ShipmentInReturn(
             ],
         help="Where the stock is sent to.")
     from_location = fields.Many2One('stock.location', "From Location",
-        required=True, states={
-            'readonly': (Eval('state') != 'draft') | Eval('moves', [0]),
-            }, domain=[('type', 'in', ['storage', 'view'])],
+        required=True,
+        states={
+            'readonly': Eval('state') != 'draft',
+            'editable': ~Eval('moves', [0]),
+            },
+        domain=[('type', 'in', ['storage', 'view'])],
         help="Where the stock is moved from.")
     to_location = fields.Many2One('stock.location', "To Location",
-        required=True, states={
-            'readonly': (Eval('state') != 'draft') | Eval('moves', [0]),
-            }, domain=[('type', '=', 'supplier')],
+        required=True,
+        states={
+            'readonly': Eval('state') != 'draft',
+            'editable': ~Eval('moves', [0]),
+            },
+        domain=[('type', '=', 'supplier')],
         help="Where the stock is moved to.")
     warehouse = fields.Function(
         fields.Many2One('stock.location', "Warehouse"),
@@ -1162,8 +1173,8 @@ class ShipmentOut(
         help="The company the shipment is associated with.")
     customer = fields.Many2One('party.party', 'Customer', required=True,
         states={
-            'readonly': ((Eval('state') != 'draft')
-                | Eval('outgoing_moves', [0])),
+            'readonly': Eval('state') != 'draft',
+            'editable': ~Eval('outgoing_moves', [0]),
             },
         context={
             'company': Eval('company', -1),
@@ -1190,9 +1201,12 @@ class ShipmentOut(
         help="Where the stock is sent to.")
     warehouse = fields.Many2One('stock.location', "Warehouse", required=True,
         states={
-            'readonly': ((Eval('state') != 'draft')
-                | Eval('outgoing_moves', [0]) | Eval('inventory_moves', [0])),
-            }, domain=[('type', '=', 'warehouse')],
+            'readonly': Eval('state') != 'draft',
+            'editable': ~(
+                Eval('outgoing_moves', [0])
+                | Eval('inventory_moves', [0])),
+            },
+        domain=[('type', '=', 'warehouse')],
         help="Where the stock is sent from.")
     warehouse_storage = fields.Many2One(
         'stock.location', "Warehouse Storage", required=True,
@@ -1876,8 +1890,8 @@ class ShipmentOutReturn(
         help="The company the shipment is associated with.")
     customer = fields.Many2One('party.party', 'Customer', required=True,
         states={
-            'readonly': ((Eval('state') != 'draft')
-                | Eval('incoming_moves', [0])),
+            'readonly': Eval('state') != 'draft',
+            'editable': ~Eval('incoming_moves', [0]),
             },
         context={
             'company': Eval('company', -1),
@@ -1896,9 +1910,12 @@ class ShipmentOutReturn(
         help="The address the customer can be contacted at.")
     warehouse = fields.Many2One('stock.location', "Warehouse", required=True,
         states={
-            'readonly': ((Eval('state') != 'draft')
-                | Eval('incoming_moves', [0]) | Eval('inventory_moves', [0])),
-            }, domain=[('type', '=', 'warehouse')],
+            'readonly': Eval('state') != 'draft',
+            'editable': ~(
+                Eval('incoming_moves', [0])
+                | Eval('inventory_moves', [0])),
+            },
+        domain=[('type', '=', 'warehouse')],
         help="Where the stock is returned.")
     warehouse_storage = fields.Many2One(
         'stock.location', "Warehouse Storage", required=True,
@@ -2337,18 +2354,20 @@ class ShipmentInternal(
         help="The company the shipment is associated with.")
     from_location = fields.Many2One('stock.location', "From Location",
         required=True, states={
-            'readonly': (~Eval('state').in_(['request', 'draft'])
-                | Eval('moves', [0])),
+            'readonly': ~Eval('state').in_(['request', 'draft']),
+            'editable': ~Eval('moves', [0]),
             },
         domain=[
             ('type', 'in', ['view', 'storage', 'lost_found']),
             ],
         help="Where the stock is moved from.")
     to_location = fields.Many2One('stock.location', "To Location",
-        required=True, states={
-            'readonly': (~Eval('state').in_(['request', 'draft'])
-                    | Eval('moves', [0])),
-            }, domain=[
+        required=True,
+        states={
+            'readonly': ~Eval('state').in_(['request', 'draft']),
+            'editable': ~Eval('moves', [0]),
+            },
+        domain=[
             ('type', 'in', ['view', 'storage', 'lost_found']),
             ],
         help="Where the stock is moved to.")

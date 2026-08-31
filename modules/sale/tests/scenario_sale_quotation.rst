@@ -46,8 +46,9 @@ Create a quotation::
 
 Expire quotation::
 
-    >>> sale.quotation_date = today - dt.timedelta(weeks=2)
-    >>> sale.save()
+    >>> Sale.write([sale.id], {
+    ...        'quotation_date': today - dt.timedelta(weeks=2)
+    ...        }, {**config._context, '_check_access': False})
 
     >>> cron, = Cron.find(
     ...     [('method', '=', 'sale.sale|cancel_expired_quotation')], limit=1)

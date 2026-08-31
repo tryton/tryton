@@ -75,9 +75,9 @@ class Invoice(
     company = fields.Many2One(
         'company.company', "Company", required=True,
         states={
-            'readonly': (
-                _states['readonly']
-                | Eval('party', True)
+            'readonly': _states['readonly'],
+            'editable': ~(
+                Eval('party', True)
                 | Eval('lines', [0])),
             },
         context={
@@ -100,8 +100,9 @@ class Invoice(
             ('in', "Supplier"),
             ], "Type", required=True,
         states={
-            'readonly': ((Eval('state') != 'draft')
-                | Eval('context', {}).get('type')
+            'readonly': Eval('state') != 'draft',
+            'editable': ~(
+                Eval('context', {}).get('type')
                 | (Eval('lines', [0]) & Eval('type'))),
             })
     type_name = fields.Function(fields.Char('Type'), 'get_type_name')
@@ -200,9 +201,8 @@ class Invoice(
         domain=[('party', '=', Eval('party', -1))])
     currency = fields.Many2One('currency.currency', 'Currency', required=True,
         states={
-            'readonly': (
-                _states['readonly']
-                | (Eval('lines', [0]) & Eval('currency'))),
+            'readonly': _states['readonly'],
+            'editable': ~(Eval('lines', [0]) & Eval('currency')),
             })
     currency_date = fields.Function(fields.Date('Currency Date'),
         'on_change_with_currency_date')
@@ -1692,6 +1692,7 @@ class Invoice(
         default.setdefault('supplier_payment_reference')
         default.setdefault('supplier_payment_reference_type')
         default.setdefault('sequence')
+        default.setdefault('sequence_type_cache')
         default.setdefault('move', None)
         default.setdefault('additional_moves', None)
         default.setdefault('cancel_move', None)
@@ -2459,7 +2460,8 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
             'required': (~Eval('invoice_type') & Eval('party')
                 & Eval('currency') & Eval('company')),
             'invisible': Bool(Eval('context', {}).get('standalone')),
-            'readonly': _states['readonly'] & Bool(Eval('invoice')),
+            'readonly': _states['readonly'],
+            'editable': ~Eval('invoice'),
             })
     invoice_party = fields.Function(
         fields.Many2One(
@@ -2480,7 +2482,9 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
     invoice_type = fields.Selection(
         'get_invoice_types', "Invoice Type",
         states={
-            'readonly': Eval('context', {}).get('type') | Eval('type'),
+            'editable': (
+                ~Eval('context', {}).get('type')
+                & ~Eval('invoice_type')),
             'required': ~Eval('invoice'),
             })
     party = fields.Many2One(
@@ -3241,7 +3245,8 @@ class InvoiceTax(sequence_ordered(), ModelSQL, ModelView):
     invoice = fields.Many2One(
         'account.invoice', "Invoice", ondelete='CASCADE', required=True,
         states={
-            'readonly': _states['readonly'] & Bool(Eval('invoice')),
+            'readonly': _states['readonly'],
+            'editable': ~Eval('invoice'),
             })
     invoice_state = fields.Function(
         fields.Selection('get_invoice_states', "Invoice State"),
@@ -3287,18 +3292,18 @@ class InvoiceTax(sequence_ordered(), ModelSQL, ModelView):
             ('company', '=', Eval('_parent_invoice', {}).get('company', 0)),
             ],
         states={
-            'readonly': (
-                ~Eval('manual', False) | ~Bool(Eval('invoice'))
-                | _states['readonly']),
+            'readonly': _states['readonly'],
+            'editable': Eval('manual', False) & Bool(Eval('invoice')),
             },
         depends={'invoice'})
     legal_notice = fields.Text(
         "Legal Notice",
         states={
-            'readonly': (_states['readonly']
-                & ~Id('account', 'group_account_admin').in_(
+            'readonly': _states['readonly'],
+            'editable': (
+                Id('account', 'group_account_admin').in_(
                     Eval('context', {}).get('groups', []))
-                & ~Eval('context', {}).get('administrator', False)),
+                | Eval('context', {}).get('administrator', False)),
             })
 
     del _states

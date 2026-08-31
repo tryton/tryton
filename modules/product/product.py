@@ -153,7 +153,7 @@ class Template(
     list_price = fields.MultiValue(fields.Numeric(
             "List Price", digits=price_digits,
             states={
-                'readonly': ~Eval('context', {}).get('company'),
+                'editable': ~Eval('context', {}).get('company'),
                 },
             help="The standard price the product is sold at."))
     list_prices = fields.One2Many(
@@ -515,7 +515,7 @@ class Product(
     list_price = fields.MultiValue(fields.Numeric(
             "List Price", digits=price_digits,
             states={
-                'readonly': ~Eval('context', {}).get('company'),
+                'editable': ~Eval('context', {}).get('company'),
                 },
             help="The standard price the variant is sold at.\n"
             "Leave empty to use the list price of the product."))
@@ -528,7 +528,7 @@ class Product(
     cost_price = fields.MultiValue(fields.Numeric(
             "Cost Price", digits=price_digits,
             states={
-                'readonly': ~Eval('context', {}).get('company'),
+                'editable': ~Eval('context', {}).get('company'),
                 },
             help="The amount it costs to purchase or make the variant, "
             "or carry out the service."))
@@ -633,6 +633,7 @@ class Product(
                     setattr(cls, 'order_%s' % attr, order_method)
                 if isinstance(tfield, fields.One2Many):
                     getattr(cls, attr).setter = '_set_template_function'
+                    getattr(cls, attr)._field.readonly = False
 
     @classmethod
     def _set_template_function(cls, products, name, value):

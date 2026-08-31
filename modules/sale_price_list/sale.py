@@ -2,7 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 from trytond.model import fields
 from trytond.pool import Pool, PoolMeta
-from trytond.pyson import Bool, Equal, Eval, Not, Or
+from trytond.pyson import Eval
 
 
 class Sale(metaclass=PoolMeta):
@@ -11,17 +11,14 @@ class Sale(metaclass=PoolMeta):
         help="Use to compute the unit price of lines.",
         domain=[('company', '=', Eval('company', -1))],
         states={
-            'readonly': Or(Not(Equal(Eval('state'), 'draft')),
-                Bool(Eval('lines', [0]))),
+            'readonly': Eval('state') != 'draft',
+            'editable': ~Eval('lines', [0]),
             })
 
     @classmethod
     def __setup__(cls):
         super().__setup__()
-        cls.party.states['readonly'] = (cls.party.states['readonly']
-            | Eval('lines', [0]))
-        cls.lines.states['readonly'] = (cls.lines.states['readonly']
-            | ~Eval('party') | ~Eval('company'))
+        cls.lines.states['editable'] &= Eval('party', None)
 
     @fields.depends('company')
     def on_change_party(self):

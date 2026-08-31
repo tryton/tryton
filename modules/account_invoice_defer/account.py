@@ -63,7 +63,8 @@ class InvoiceDeferred(Workflow, ModelSQL, ModelView):
     company = fields.Many2One(
         'company.company', "Company", required=True,
         states={
-            'readonly': (Eval('state') != 'draft') & Eval('invoice_line'),
+            'readonly': Eval('state') != 'draft',
+            'editable': ~Eval('invoice_line'),
             })
     type = fields.Selection([
             ('out', "Customer"),

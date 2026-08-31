@@ -196,7 +196,8 @@ class RelationAll(Relation, ModelView):
         Relation = pool.get('party.relation')
         vlist = cls._before_create(vlist)
         relations = Relation.create(vlist)
-        return cls.browse(cls._after_create([r.id * 2 for r in relations]))
+        return cls.browse(cls._after_create(
+                [r.id * 2 for r in relations], vlist))
 
     @classmethod
     def write(cls, *args):

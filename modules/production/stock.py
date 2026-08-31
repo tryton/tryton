@@ -46,7 +46,7 @@ class Location(metaclass=PoolMeta):
 class Move(metaclass=PoolMeta):
     __name__ = 'stock.move'
     production_input = fields.Many2One(
-        'production', "Production Input", readonly=True, ondelete='CASCADE',
+        'production', "Production Input", ondelete='CASCADE',
         domain=[
             ('company', '=', Eval('company', -1)),
             If(Eval('production_output', None),
@@ -55,9 +55,10 @@ class Move(metaclass=PoolMeta):
             ],
         states={
             'invisible': ~Eval('production_input'),
+            'readonly': Eval('id', -1) >= 0,
             })
     production_output = fields.Many2One(
-        'production', "Production Output", readonly=True, ondelete='CASCADE',
+        'production', "Production Output", ondelete='CASCADE',
         domain=[
             ('company', '=', Eval('company', -1)),
             If(Eval('production_input', None),
@@ -66,6 +67,7 @@ class Move(metaclass=PoolMeta):
             ],
         states={
             'invisible': ~Eval('production_output'),
+            'readonly': Eval('id', -1) >= 0,
             })
     production = fields.Function(fields.Many2One(
             'production', "Production",

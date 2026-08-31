@@ -111,7 +111,7 @@ class Quotation(Workflow, ModelSQL, ModelView, ChatMixin):
     supplier = fields.Many2One(
         'party.party', "Supplier", required=True,
         states={
-            'readonly': Eval('lines', [0]) & Eval('supplier'),
+            'editable': Eval('lines', [0]) & Eval('supplier'),
             },
         context={
             'company': Eval('company', -1),

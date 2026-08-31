@@ -47,7 +47,8 @@ class Party(
     code = fields.Char(
         "Code", required=True,
         states={
-            'readonly': Eval('code_readonly', True),
+            'readonly': Eval('id', -1) >= 0,
+            'editable': ~Eval('code_readonly', True),
             },
         help="The unique identifier of the party.")
     code_readonly = fields.Function(fields.Boolean('Code Readonly'),

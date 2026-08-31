@@ -3,7 +3,7 @@
 
 from trytond.model import DeactivableMixin, ModelSQL, ModelView, Unique, fields
 from trytond.pool import PoolMeta
-from trytond.pyson import Bool, Eval, If
+from trytond.pyson import Eval, If
 from trytond.transaction import Transaction
 
 
@@ -75,7 +75,7 @@ class Product_EUExciseTax(ModelSQL, ModelView):
     country = fields.Many2One(
         'country.country', "Country", required=True,
         states={
-            'readonly': Bool(Eval('excise_tax')),
+            'editable': ~Eval('excise_tax'),
             })
 
     @classmethod

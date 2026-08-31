@@ -42,7 +42,8 @@ class Amendment(Workflow, ModelSQL, ModelView):
             ('state', 'in', ['processing', 'done']),
             ],
         states={
-            'readonly': (Eval('state') != 'draft') | Eval('lines', [0]),
+            'readonly': Eval('state') != 'draft',
+            'editable': ~Eval('lines', [0]),
             })
     date = fields.Date(
         "Date", required=True,
@@ -286,9 +287,8 @@ class AmendmentLine(ModelSQL, ModelView):
             ('default_uom_category', '=', Eval('product_uom_category', -1)),
             ],
         states={
-            'readonly': (
-                (Eval('state') != 'draft')
-                | ~Eval('product_uom_category', None)),
+            'readonly': Eval('state') != 'draft',
+            'editable': Bool(Eval('product_uom_category', None)),
             'invisible': Eval('action') != 'line',
             })
     quantity = fields.Float(

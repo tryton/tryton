@@ -58,7 +58,7 @@ Create invoice::
     ...         'source_untaxed_amount': Decimal('100.00'),
     ...         'source_tax_amount': Decimal('10.00'),
     ...         'source_total_amount': Decimal('110.00'),
-    ...         }, invoice._context)
+    ...         }, {**invoice._context, '_check_access': False})
 
 Try to validate::
 

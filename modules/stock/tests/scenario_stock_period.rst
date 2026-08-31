@@ -107,7 +107,10 @@ Reopen the period::
 
 Create an assigned move::
 
-    >>> Move.write([move], {'state': 'assigned'}, config._context)
+    >>> Move.write(
+    ...     [move], {'state': 'assigned'},
+    ...     {**config._context, '_check_access': False})
+    >>> move.reload()
     >>> move.state
     'assigned'
 

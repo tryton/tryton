@@ -17,9 +17,8 @@ class ShipmentCostSaleMixin:
             'currency.currency', "Cost Sale Currency",
             states={
                 'invisible': Eval('cost_sale_method') != 'shipment',
-                'readonly': (
-                    Eval('shipment_cost_sale_readonly', True)
-                    | ~Eval('cost_edit', False)),
+                'readonly': Eval('shipment_cost_sale_readonly', True),
+                'editable': Eval('cost_edit', False),
                 }),
         'on_change_with_cost_sale_currency_used', setter='set_cost')
     cost_sale_currency = fields.Many2One(
@@ -33,9 +32,8 @@ class ShipmentCostSaleMixin:
             "Cost Sale", digits=price_digits,
             states={
                 'invisible': Eval('cost_sale_method') != 'shipment',
-                'readonly': (
-                    Eval('shipment_cost_sale_readonly', True)
-                    | ~Eval('cost_edit', False)),
+                'readonly': Eval('shipment_cost_sale_readonly', True),
+                'editable': Eval('cost_edit', False),
                 }),
         'on_change_with_cost_sale_used', setter='set_cost')
     cost_sale = fields.Numeric(

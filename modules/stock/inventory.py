@@ -34,12 +34,15 @@ class Inventory(Workflow, ModelSQL, ModelView, ChatMixin):
         help="The main identifier for the inventory.")
     location = fields.Many2One(
         'stock.location', 'Location', required=True,
-        domain=[('type', '=', 'storage')], states={
-            'readonly': (Eval('state') != 'draft') | Eval('lines', [0]),
+        domain=[('type', '=', 'storage')],
+        states={
+            'readonly': Eval('state') != 'draft',
+            'editable': ~Eval('lines', [0]),
             },
         help="The location inventoried.")
     date = fields.Date('Date', required=True, states={
-            'readonly': (Eval('state') != 'draft') | Eval('lines', [0]),
+            'readonly': Eval('state') != 'draft',
+            'editable': ~Eval('lines', [0]),
             },
         help="The date of the stock count.")
     lines = fields.One2Many(
@@ -56,7 +59,8 @@ class Inventory(Workflow, ModelSQL, ModelView, ChatMixin):
         help="How lines without a quantity are handled.")
     company = fields.Many2One('company.company', 'Company', required=True,
         states={
-            'readonly': (Eval('state') != 'draft') | Eval('lines', [0]),
+            'readonly': Eval('state') != 'draft',
+            'editable': ~Eval('lines', [0]),
             },
         help="The company the inventory is associated with.")
     state = fields.Selection([

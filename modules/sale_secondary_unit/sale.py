@@ -43,14 +43,16 @@ class Line(metaclass=PoolMeta):
     secondary_uom_factor = fields.Float(
         "Secondary UoM Factor",
         states={
-            'readonly': True,
+            'readonly': Eval('sale_state') != 'draft',
+            'editable': False,
             'required': (Eval('type') == 'line') & Eval('secondary_unit'),
             },
         help="The factor for the secondary Unit of Measure.")
     secondary_uom_rate = fields.Float(
         "Secondary UoM Rate",
         states={
-            'readonly': True,
+            'readonly': Eval('sale_state') != 'draft',
+            'editable': False,
             'required': (Eval('type') == 'line') & Eval('secondary_unit'),
             },
         help="The rate for the secondary Unit of Measure.")

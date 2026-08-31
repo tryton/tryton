@@ -111,9 +111,8 @@ class POSSale(Workflow, ModelSQL, ModelView, TaxableMixin, ChatMixin):
     point = fields.Many2One(
         'sale.point', "Point", required=True, ondelete='RESTRICT',
         states={
-            'readonly': ((Eval('id', 0) > 0)
-                | Bool(Eval('lines', [0]))
-                | _states['readonly']),
+            'readonly': (Eval('id', -1) >= 0) | _states['readonly'],
+            'editable': ~Eval('lines', [0]),
             },
         domain=[
             ('company', '=', Eval('company', -1)),
@@ -482,12 +481,12 @@ class POSSaleLine(ModelSQL, ModelView, TaxableMixin):
     unit_list_price = fields.Numeric(
         "Unit List Price", digits=price_digits, required=True,
         states={
-            'readonly': True,  # Allow client to sent value
+            'editable': False,
             })
     unit_gross_price = fields.Numeric(
         "Unit Gross Price", digits=price_digits, required=True,
         states={
-            'readonly': True,  # Allow client to sent value
+            'editable': False,
             })
     unit_price = fields.Function(fields.Numeric(
             "Unit Price", digits=price_digits,

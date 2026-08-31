@@ -115,9 +115,9 @@ class BlanketAgreement(Workflow, ModelSQL, ModelView, ChatMixin):
     company = fields.Many2One(
         'company.company', "Company", required=True,
         states={
-            'readonly': (
-                (Eval('state') != 'draft')
-                | Eval('lines', [0])
+            'readonly': Eval('state') != 'draft',
+            'editable': ~(
+                Eval('lines', [0])
                 | Eval('supplier', True)),
             })
     number = fields.Char("Number", readonly=True)
@@ -130,9 +130,8 @@ class BlanketAgreement(Workflow, ModelSQL, ModelView, ChatMixin):
     supplier = fields.Many2One(
         'party.party', "Supplier", required=True,
         states={
-            'readonly': (
-                (Eval('state') != 'draft')
-                | (Eval('lines', [0]) & Eval('supplier'))),
+            'readonly': Eval('state') != 'draft',
+            'editable': ~(Eval('lines', [0]) & Eval('supplier', None)),
             },
         context={
             'company': Eval('company', -1),
@@ -163,16 +162,14 @@ class BlanketAgreement(Workflow, ModelSQL, ModelView, ChatMixin):
     currency = fields.Many2One(
         'currency.currency', "Currency", required=True,
         states={
-            'readonly': (
-                (Eval('state') != 'draft')
-                | (Eval('lines', [0]) & Eval('currency', 0))),
+            'readonly': Eval('state') != 'draft',
+            'editable': ~(Eval('lines', [0]) & Eval('currency', 0)),
             })
     lines = fields.One2Many(
         'purchase.blanket_agreement.line', 'blanket_agreement', "Lines",
         states={
-            'readonly': (
-                (Eval('state') != 'draft')
-                | ~Eval('supplier'))
+            'readonly': Eval('state') != 'draft',
+            'editable': Bool(Eval('supplier', None)),
             })
 
     amount = fields.Function(Monetary(

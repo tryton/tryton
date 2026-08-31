@@ -56,7 +56,8 @@ class Complaint(Workflow, ModelSQL, ModelView, ChatMixin):
     company = fields.Many2One(
         'company.company', 'Company', required=True,
         states={
-            'readonly': _states['readonly'] | Eval('origin'),
+            'readonly': _states['readonly'],
+            'editable': ~Eval('origin'),
             })
     type = fields.Many2One('sale.complaint.type', 'Type', required=True,
         states=_states)
@@ -96,8 +97,8 @@ class Complaint(Workflow, ModelSQL, ModelView, ChatMixin):
                 ],
             },
         states={
-            'readonly': ((Eval('state') != 'draft')
-                | Bool(Eval('actions', [0]))),
+            'readonly': Eval('state') != 'draft',
+            'editable': ~Eval('actions', [0]),
             'required': Bool(Eval('origin_model')),
             },
         depends={'origin_model'})
@@ -108,8 +109,9 @@ class Complaint(Workflow, ModelSQL, ModelView, ChatMixin):
     description = fields.Text('Description', states=_states)
     actions = fields.One2Many('sale.complaint.action', 'complaint', 'Actions',
         states={
-            'readonly': ((Eval('state') != 'draft')
-                | (If(~Eval('origin_id', 0), 0, Eval('origin_id', 0)) <= 0)),
+            'readonly': Eval('state') != 'draft',
+            'editable': (
+                If(~Eval('origin_id', 0), -1, Eval('origin_id', -1)) < 0),
             },
         depends={'origin_model'})
     submitted_by = employee_field(

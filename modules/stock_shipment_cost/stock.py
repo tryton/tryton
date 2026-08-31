@@ -26,6 +26,16 @@ class Move(metaclass=PoolMeta):
         super().__setup__()
         cls._allow_modify_closed_period.add('shipment_out_cost_price')
 
+    @classmethod
+    def default_shipment_out_cost_price(cls):
+        return None
+
+    @classmethod
+    def copy(cls, moves, default=None):
+        default = default.copy() if default is not None else {}
+        default.setdefault('shipment_out_cost_price')
+        return super().copy(moves, default=default)
+
 
 class ShipmentCostMixin:
     __slots__ = ()
@@ -43,9 +53,8 @@ class ShipmentCostMixin:
     cost_currency_used = fields.Function(fields.Many2One(
             'currency.currency', "Cost Currency",
             states={
-                'readonly': (
-                    Eval('shipment_cost_readonly', True)
-                    | ~Eval('cost_edit', False)),
+                'readonly': Eval('shipment_cost_readonly', True),
+                'editable': Eval('cost_edit', False),
                 }),
         'on_change_with_cost_currency_used', setter='set_cost')
     cost_currency = fields.Many2One(
@@ -58,12 +67,15 @@ class ShipmentCostMixin:
     cost_used = fields.Function(fields.Numeric(
             "Cost", digits=price_digits,
             states={
-                'readonly': (
-                    Eval('shipment_cost_readonly', True)
-                    | ~Eval('cost_edit', False)),
+                'readonly': Eval('shipment_cost_readonly', True),
+                'editable': Eval('cost_edit', False),
                 }),
         'on_change_with_cost_used', setter='set_cost')
-    cost = fields.Numeric("Cost", digits=price_digits, readonly=True)
+    cost = fields.Numeric(
+        "Cost", digits=price_digits,
+        states={
+            'editable': False,
+        })
     cost_edit = fields.Boolean(
         "Edit Cost",
         states={

@@ -32,9 +32,9 @@ class Subscription(Workflow, ModelSQL, ModelView, ChatMixin):
     company = fields.Many2One(
         'company.company', "Company", required=True,
         states={
-            'readonly': (
-                (Eval('state') != 'draft')
-                | Eval('lines', [0])
+            'readonly': Eval('state') != 'draft',
+            'editable': ~(
+                Eval('lines', [0])
                 | Eval('party', True)
                 | Eval('invoice_party', True)),
             },
@@ -54,8 +54,8 @@ class Subscription(Workflow, ModelSQL, ModelView, ChatMixin):
     party = fields.Many2One(
         'party.party', "Party", required=True,
         states={
-            'readonly': ((Eval('state') != 'draft')
-                | (Eval('lines', [0]) & Eval('party'))),
+            'readonly': Eval('state') != 'draft',
+            'editable': ~(Eval('lines', [0]) & Eval('party', None)),
             },
         context={
             'company': Eval('company', -1),
@@ -73,8 +73,8 @@ class Subscription(Workflow, ModelSQL, ModelView, ChatMixin):
         depends={'company', 'party'})
     invoice_party = fields.Many2One('party.party', "Invoice Party",
         states={
-            'readonly': ((Eval('state') != 'draft')
-                | Eval('lines', [0])),
+            'readonly': Eval('state') != 'draft',
+            'editable': ~Eval('lines', [0]),
             },
         context={
             'company': Eval('company', -1),
@@ -102,8 +102,8 @@ class Subscription(Workflow, ModelSQL, ModelView, ChatMixin):
     currency = fields.Many2One(
         'currency.currency', "Currency", required=True,
         states={
-            'readonly': ((Eval('state') != 'draft')
-                | (Eval('lines', [0]) & Eval('currency', 0))),
+            'readonly': Eval('state') != 'draft',
+            'editable': ~(Eval('lines', [0]) & Eval('currency', 0)),
             })
 
     start_date = fields.Date(

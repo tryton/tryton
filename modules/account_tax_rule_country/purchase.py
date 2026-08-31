@@ -13,8 +13,11 @@ class Purchase(metaclass=PoolMeta):
     def __setup__(cls):
         super().__setup__()
         for field in (cls.invoice_address, cls.warehouse):
-            field.states['readonly'] |= (
-                Eval('lines', [0]) & Eval('invoice_address'))
+            editable = ~(Eval('lines', [0]) & Eval('invoice_address'))
+            if field.states.get('editable'):
+                field.states['editable'] &= editable
+            else:
+                field.states['editable'] = editable
 
 
 class Line(metaclass=PoolMeta):

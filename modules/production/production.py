@@ -47,16 +47,20 @@ class Production(
             ('type', '=', 'warehouse'),
             ],
         states={
-            'readonly': (~Eval('state').in_(['request', 'draft'])
-                | Eval('inputs', [-1]) | Eval('outputs', [-1])),
+            'readonly': ~Eval('state').in_(['request', 'draft']),
+            'editable': ~(
+                Eval('inputs', [-1])
+                | Eval('outputs', [-1])),
             })
     location = fields.Many2One('stock.location', 'Location', required=True,
         domain=[
             ('type', '=', 'production'),
             ],
         states={
-            'readonly': (~Eval('state').in_(['request', 'draft'])
-                | Eval('inputs', [-1]) | Eval('outputs', [-1])),
+            'readonly': ~Eval('state').in_(['request', 'draft']),
+            'editable': ~(
+                Eval('inputs', [-1])
+                | Eval('outputs', [-1])),
             })
     type = fields.Selection([
             ('assembly', "Assembly"),
@@ -87,8 +91,8 @@ class Production(
                 ),
             ],
         states={
-            'readonly': (~Eval('state').in_(['request', 'draft'])
-                | ~Eval('warehouse', 0) | ~Eval('location', 0)),
+            'readonly': ~Eval('state').in_(['request', 'draft']),
+            'editable': Eval('warehouse', None) & Eval('location', None),
             'invisible': ~Eval('product'),
             })
     uom_category = fields.Function(fields.Many2One(
@@ -123,8 +127,8 @@ class Production(
             ('company', '=', Eval('company', -1)),
             ],
         states={
-            'readonly': (~Eval('state').in_(['request', 'draft', 'waiting'])
-                | ~Eval('warehouse') | ~Eval('location')),
+            'readonly': ~Eval('state').in_(['request', 'draft', 'waiting']),
+            'editable': Eval('warehouse', None) & Eval('location', None),
             })
     outputs = fields.One2Many(
         'stock.move', 'production_output', "Output Materials",
@@ -138,8 +142,8 @@ class Production(
             ('company', '=', Eval('company', -1)),
             ],
         states={
-            'readonly': (Eval('state').in_(['done', 'cancelled'])
-                | ~Eval('warehouse') | ~Eval('location')),
+            'readonly': Eval('state').in_(['done', 'cancelled']),
+            'editable': Eval('warehouse', None) & Eval('location', None),
             })
 
     assigned_by = employee_field("Assigned By")

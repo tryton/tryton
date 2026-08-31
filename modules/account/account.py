@@ -629,8 +629,8 @@ def AccountMixin(template=False):
             if (not isinstance(field, fields.Field)
                     or isinstance(field, fields.Function)):
                 continue
-            field.states['readonly'] = (
-                Bool(Eval('template', -1)) & ~Eval('template_override', False))
+            field.states['editable'] = (
+                Eval('template', None) & ~Eval('template_override', False))
     return Mixin
 
 
@@ -828,8 +828,7 @@ class Account(
         ModelSQL, ModelView):
     __name__ = 'account.account'
     _states = {
-        'readonly': (Bool(Eval('template', -1))
-            & ~Eval('template_override', False)),
+        'editable': Eval('template', None) & ~Eval('template_override', False),
         }
     company = fields.Many2One('company.company', 'Company', required=True,
             ondelete="RESTRICT")
@@ -842,14 +841,14 @@ class Account(
             ('id', '!=', Eval('currency', -1)),
             ],
         states={
-            'readonly': _states['readonly'],
+            'editable': _states['editable'],
             'invisible': ~Eval('deferral', False),
             },
         help="Force all moves for this account to have this second currency.")
     type = fields.Many2One(
         'account.account.type', "Type", ondelete='RESTRICT',
         states={
-            'readonly': _states['readonly'],
+            'editable': _states['editable'],
             },
         domain=[
             ('company', '=', Eval('company', -1)),
@@ -857,10 +856,10 @@ class Account(
     debit_type = fields.Many2One(
         'account.account.type', "Debit Type", ondelete='RESTRICT',
         states={
-            'readonly': _states['readonly'],
+            'editable': _states['editable'],
             'invisible': (
                 ~Eval('type') | Eval('credit_type')
-                | (_states['readonly']) & ~Eval('debit_type')),
+                | (_states['editable']) & ~Eval('debit_type')),
             },
         domain=[
             ('company', '=', Eval('company', -1)),
@@ -872,10 +871,10 @@ class Account(
     credit_type = fields.Many2One(
         'account.account.type', "Credit Type", ondelete='RESTRICT',
         states={
-            'readonly': _states['readonly'],
+            'editable': _states['editable'],
             'invisible': (
                 ~Eval('type') | Eval('debit_type')
-                | (_states['readonly']) & ~Eval('credit_type')),
+                | (_states['editable']) & ~Eval('credit_type')),
             },
         domain=[
             ('company', '=', Eval('company', -1)),
@@ -939,7 +938,7 @@ class Account(
         'account.account', "Replaced By",
         domain=[('company', '=', Eval('company', -1))],
         states={
-            'readonly': _states['readonly'],
+            'editable': _states['editable'],
             'invisible': ~Eval('end_date'),
             })
     template = fields.Many2One('account.account.template', 'Template')
@@ -955,8 +954,8 @@ class Account(
         super().__setup__()
         for date in [cls.start_date, cls.end_date]:
             date.states = {
-                'readonly': (Bool(Eval('template', -1))
-                    & ~Eval('template_override', False)),
+                'editable': (
+                    Eval('template', -1) & ~Eval('template_override', False)),
                 }
         cls._order.insert(0, ('code', 'ASC'))
         cls._order.insert(1, ('name', 'ASC'))

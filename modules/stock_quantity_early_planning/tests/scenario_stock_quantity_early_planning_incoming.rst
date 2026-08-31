@@ -93,7 +93,8 @@ Request to ship to first warehouse in 2 and 3 weeks::
     >>> move.quantity = 10
     >>> shipment_int1.save()
     >>> ShipmentInternal.write(
-    ...     [shipment_int1.id], {'state': 'request'}, shipment_int1._context)
+    ...     [shipment_int1.id], {'state': 'request'},
+    ...     {**shipment_int1._context, '_check_access': False})
 
     >>> shipment_int2 = ShipmentInternal()
     >>> shipment_int2.planned_date = week2
@@ -106,7 +107,8 @@ Request to ship to first warehouse in 2 and 3 weeks::
     >>> move.quantity = 5
     >>> shipment_int2.save()
     >>> ShipmentInternal.write(
-    ...     [shipment_int2.id], {'state': 'request'}, shipment_int2._context)
+    ...     [shipment_int2.id], {'state': 'request'},
+    ...     {**shipment_int2._context, '_check_access': False})
 
 Plan to ship in 3 weeks::
 

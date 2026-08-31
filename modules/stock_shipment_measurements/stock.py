@@ -83,6 +83,14 @@ class Move(metaclass=PoolMeta):
         "Internal Volume", readonly=True,
         help="The volume of the moved product in liter.")
 
+    @classmethod
+    def default_internal_weight(cls):
+        return None
+
+    @classmethod
+    def default_internal_volume(cls):
+        return None
+
     @fields.depends(
         'quantity', 'unit', 'product',
         methods=['on_change_with_internal_quantity'])
@@ -146,6 +154,13 @@ class Move(metaclass=PoolMeta):
             if getattr(self, 'internal_volume', None) != internal_volume:
                 values['internal_volume'] = internal_volume
         return values
+
+    @classmethod
+    def copy(cls, moves, default=None):
+        default = default.copy() if default is not None else {}
+        default.setdefault('internal_weight', cls.default_internal_weight())
+        default.setdefault('internal_volume', cls.default_internal_volume())
+        return super().copy(moves, default=default)
 
     @classmethod
     @ModelView.button
@@ -228,6 +243,14 @@ class MeasurementsMixin(object):
 
         if set_measurements:
             cls.set_measurements()
+
+    @classmethod
+    def default_internal_weight(cls):
+        return None
+
+    @classmethod
+    def default_internal_volume(cls):
+        return None
 
     @classmethod
     def _measurements_states(cls):
@@ -432,6 +455,13 @@ class MeasurementsMixin(object):
     @classmethod
     def _measurements_location_condition(cls, table, move, location):
         raise NotImplementedError
+
+    @classmethod
+    def copy(cls, records, default=None):
+        default = default.copy() if default is not None else {}
+        default.setdefault('internal_weight', cls.default_internal_weight())
+        default.setdefault('internal_volume', cls.default_internal_volume())
+        return super().copy(records, default=default)
 
 
 def set_measurements(func):

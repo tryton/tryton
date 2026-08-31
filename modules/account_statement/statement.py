@@ -79,7 +79,8 @@ class Statement(Workflow, ModelSQL, ModelView, ChatMixin):
     company = fields.Many2One(
         'company.company', "Company", required=True,
         states={
-            'readonly': (Eval('state') != 'draft') | Eval('lines', [0]),
+            'readonly': Eval('state') != 'draft',
+            'editable': ~Eval('lines', [0]),
             })
     journal = fields.Many2One(
         'account.statement.journal', "Journal", required=True,
@@ -87,7 +88,8 @@ class Statement(Workflow, ModelSQL, ModelView, ChatMixin):
             ('company', '=', Eval('company', -1)),
             ],
         states={
-            'readonly': (Eval('state') != 'draft') | Eval('lines', [0]),
+            'readonly': Eval('state') != 'draft',
+            'editable': ~Eval('lines', [0]),
             })
     currency = fields.Function(fields.Many2One(
             'currency.currency', "Currency"), 'on_change_with_currency')
@@ -786,10 +788,11 @@ class Line(origin_mixin(_states), sequence_ordered(), ModelSQL, ModelView):
         states=_states,
         context={'with_payment': False})
     origin = fields.Many2One(
-        'account.statement.origin', 'Origin', readonly=True,
+        'account.statement.origin', 'Origin',
         ondelete='RESTRICT',
         states={
             'invisible': ~Bool(Eval('origin')),
+            'readonly': Eval('id', -1) >= 0,
             },
         domain=[
             ('statement', '=', Eval('statement', -1)),
@@ -802,9 +805,8 @@ class Line(origin_mixin(_states), sequence_ordered(), ModelSQL, ModelView):
     def __setup__(cls):
         super().__setup__()
         table = cls.__table__()
-        cls.date.states['readonly'] = (
-            cls.date.states.get('readonly', False)
-            | Bool(Eval('origin', 0)))
+        cls.date.states['readonly'] = cls.date.states.get('readonly', False)
+        cls.date.states['editable'] = ~Bool(Eval('origin', 0))
         cls.account.required = True
         cls.party.states['required'] = (
             cls.party.states.get('required', False)
@@ -1184,7 +1186,8 @@ class LineGroup(ModelSQL, ModelView):
 
 
 _states = {
-    'readonly': (Eval('statement_state') != 'draft') | Eval('lines', []),
+    'readonly': Eval('statement_state') != 'draft',
+    'editable': ~Eval('lines', []),
     }
 
 

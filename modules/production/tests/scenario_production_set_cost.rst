@@ -82,7 +82,9 @@ Change cost of input::
 
     >>> Move = Model.get('stock.move')
     >>> input, = production.inputs
-    >>> Move.write([input], {'cost_price': Decimal(6)}, config.context)
+    >>> Move.write(
+    ...     [input], {'cost_price': Decimal(6)},
+    ...     {**config.context, '_check_access': False})
     >>> input.reload()
     >>> bool(input.production_cost_price_updated)
     True

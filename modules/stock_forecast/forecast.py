@@ -32,7 +32,8 @@ class Forecast(Workflow, ModelSQL, ModelView, ChatMixin):
     warehouse = fields.Many2One(
         'stock.location', 'Location', required=True,
         domain=[('type', '=', 'warehouse')], states={
-            'readonly': (Eval('state') != 'draft') | Eval('lines', [0]),
+            'readonly': Eval('state') != 'draft',
+            'editable': ~Eval('lines', [0]),
             })
     destination = fields.Many2One(
         'stock.location', 'Destination', required=True,
@@ -49,7 +50,8 @@ class Forecast(Workflow, ModelSQL, ModelView, ChatMixin):
         'stock.forecast.line', 'forecast', 'Lines', states=_states)
     company = fields.Many2One(
         'company.company', 'Company', required=True, states={
-            'readonly': (Eval('state') != 'draft') | Eval('lines', [0]),
+            'readonly': Eval('state') != 'draft',
+            'editable': ~Eval('lines', [0]),
             })
     state = fields.Selection([
             ('draft', "Draft"),

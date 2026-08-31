@@ -564,7 +564,10 @@ class ModelStorage(Model):
 
         def test_readonly(records, field_name, override):
             field = cls._fields[field_name]
-            if isinstance(field, (fields.One2Many, fields.Many2Many)):
+            if (isinstance(field, (fields.One2Many, fields.Many2Many))
+                or (isinstance(field, fields.Function)
+                    and isinstance(
+                        field._field, (fields.One2Many, fields.Many2Many)))):
                 # Must be enforced on the target
                 return
             if field.readonly:
