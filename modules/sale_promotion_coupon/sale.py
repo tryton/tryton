@@ -285,7 +285,6 @@ class PromotionCouponNumber(DeactivableMixin, ModelSQL, ModelView):
                     Count(sale_number.sale) < coupon.number_of_use),
                 else_=Literal(True))
 
-        active &= Coalesce(table.start_date, dt.date.min) <= today
         active &= Coalesce(table.end_date, dt.date.max) >= today
 
         query = query.select(
