@@ -110,7 +110,7 @@ def get_invoice():
 class EDocumentUNCEFACTTestCase(ModuleTestCase):
     'Test EDocument UN/CEFACT module'
     module = 'edocument_uncefact'
-    extras = ['account_invoice']
+    extras = ['account_invoice', 'bank', 'purchase']
 
     @with_transaction()
     def test_16B_CII_CrossIndustryInvoice(self):

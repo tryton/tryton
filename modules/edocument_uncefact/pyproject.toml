@@ -45,6 +45,7 @@ include = [
     'tests/**/*.rst',
     'tests/**/*.json',
     'tests/**/*.xsd',
+    'tests/**/*.xml',
     ]
 exclude = ['doc']
 
@@ -52,7 +53,11 @@ exclude = ['doc']
 "" = "trytond/modules/edocument_uncefact"
 
 [tool.hatch.metadata.hooks.tryton]
-dependencies = ['Genshi']
+dependencies = [
+    'Genshi',
+    'lxml',
+    'python-stdnum',
+    ]
 copyright = 'COPYRIGHT'
 readme = 'README.rst'
 
@@ -60,4 +65,4 @@ readme = 'README.rst'
 test = ['lxml']
 
 [tool.hatch.metadata.hooks.tryton.tryton-optional-dependencies]
-test = []
+test = ['proteus']
