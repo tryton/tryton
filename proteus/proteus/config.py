@@ -204,6 +204,13 @@ class _TrytondMethod(object):
                             = rpc.convert(self._object, *args, **kwargs)
                     if self._config.skip_warning:
                         transaction.context['_skip_warnings'] = True
+                    if 'context' in kwargs:
+                        ctx = kwargs['context']
+                    else:
+                        ctx = args[-1]
+                    if '_check_access' in ctx:
+                        transaction.context['_check_access'] = (
+                            ctx['_check_access'])
                     meth = getattr(self._object, self._name)
                     if (rpc.instantiate is None
                             or not is_instance_method(
