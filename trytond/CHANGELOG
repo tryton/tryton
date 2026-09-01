@@ -1,3 +1,4 @@
+* Add function to import XML files
 * Add support for router in Pool
 * Add explicit request context in URLAccessor
 * Retry unfinished queued tasks

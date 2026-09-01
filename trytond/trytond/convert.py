@@ -1,6 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import datetime
+import io
 import logging
 import os.path
 import re
@@ -12,6 +13,8 @@ from xml import sax
 from trytond import __version__
 from trytond.pyson import CONTEXT, PYSONEncoder
 from trytond.transaction import Transaction, inactive_records
+
+__all__ = ['import_xml']
 
 logger = logging.getLogger(__name__)
 
@@ -377,13 +380,16 @@ class FS2DBAccessor:
 
 class TrytondXmlHandler(sax.handler.ContentHandler):
 
-    def __init__(self, pool, module, module_state, modules, languages):
+    def __init__(
+            self, pool, module, module_state, modules, languages,
+            store_model_data=True):
         "Register known taghandlers, and managed tags."
-        sax.handler.ContentHandler.__init__(self)
+        super().__init__()
 
         self.pool = pool
         self.module = module
         self.ModelData = pool.get('ir.model.data')
+        self.store_model_data = store_model_data
         self.fs2db = FS2DBAccessor(self.ModelData)
         self.to_delete = self.populate_to_delete()
         self.noupdate = None
@@ -474,7 +480,8 @@ class TrytondXmlHandler(sax.handler.ContentHandler):
                 self.write_records(model, *actions)
             self.grouped_write.clear()
         if name == 'data' and self.grouped_model_data:
-            self.ModelData.save(self.grouped_model_data)
+            if self.store_model_data:
+                self.ModelData.save(self.grouped_model_data)
             self.grouped_model_data.clear()
 
         # Closing tag found, if we are in a delegation the handler
@@ -531,11 +538,15 @@ class TrytondXmlHandler(sax.handler.ContentHandler):
         process. The records that are not encountered are deleted from the
         database in post_import."""
 
-        # Fetch the data in id descending order to avoid depedendcy
-        # problem when the corresponding recordds will be deleted:
-        module_data = self.ModelData.search([
-                ('module', '=', self.module),
-                ], order=[('id', 'DESC')])
+        if self.store_model_data:
+            # Fetch the data in id descending order to avoid depedendcy
+            # problem when the corresponding recordds will be deleted:
+            module_data = self.ModelData.search([
+                    ('module', '=', self.module),
+                    ], order=[('id', 'DESC')])
+        else:
+            module_data = []
+
         return set(rec.fs_id for rec in module_data)
 
     def import_record(self, model, values, fs_id, domain=None):
@@ -691,3 +702,27 @@ def post_import(pool, module, to_delete):
         transaction.commit()
 
     return True
+
+
+def import_xml(xml):
+    from trytond.pool import Pool
+
+    pool = Pool()
+    Modules = pool.get('ir.module')
+    modules = {m.name for m in Modules.search([
+                ('state', '=', 'activated'),
+                ])}
+    Lang = pool.get('ir.lang')
+    langs = {l.code for l in Lang.search([
+                ('translatable', '=', True),
+                ])}
+    parser = TrytondXmlHandler(
+        pool, None, 'to activate', modules, langs, store_model_data=False)
+
+    if isinstance(xml, str):
+        stream = io.BytesIO(xml.encode('utf8'))
+    elif isinstance(xml, bytes):
+        stream = io.BytesIO(xml)
+    else:
+        stream = xml
+    parser.parse_xmlstream(stream)

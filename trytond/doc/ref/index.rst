@@ -28,4 +28,5 @@ Reference of the ``trytond`` API:
    filestore
    cache
    bus
+   convert
    tests
