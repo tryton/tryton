@@ -395,7 +395,7 @@ class TrytondXmlHandler(sax.handler.ContentHandler):
         self.skip_data = False
         self.modules = modules
         self.languages = languages
-        self.base_path = None
+        self.base_path = ''
 
         # Tag handlders are used to delegate the processing
         self.taghandlerlist = {
@@ -413,11 +413,12 @@ class TrytondXmlHandler(sax.handler.ContentHandler):
         self.sax_parser.setFeature(sax.handler.feature_namespaces, 0)
         self.sax_parser.setContentHandler(self)
 
-    def parse_xmlstream(self, stream, base_path):
+    def parse_xmlstream(self, stream):
         """
         Take a byte stream has input and parse the xml content.
         """
-        self.base_path = base_path
+        self.base_path = (
+            os.path.dirname(stream.name) if hasattr(stream, 'name') else '')
         source = sax.InputSource()
         source.setByteStream(stream)
 
@@ -427,7 +428,7 @@ class TrytondXmlHandler(sax.handler.ContentHandler):
             except Exception as e:
                 raise ParsingError("in %s" % self.current_state()) from e
 
-        self.base_path = None
+        self.base_path = ''
         return self.to_delete
 
     def startElement(self, name, attributes):
