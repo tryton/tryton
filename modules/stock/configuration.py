@@ -18,6 +18,16 @@ shipment_internal_transit = fields.Many2One(
         ],
     help="The default location used for stock that is in transit between "
     "warehouses.")
+inventory_quantity_tolerance = fields.Float(
+    "Inventory Quantity Tolerance", digits=(None, 4),
+    help="The inventory quantity variation accepted in percentage.")
+inventory_cost_thresold = fields.Numeric(
+    "Inventory Cost Thresold",
+    domain=['OR',
+        ('inventory_cost_thresold', '=', None),
+        ('inventory_cost_thresold', '>', 0),
+        ],
+    help="The inventory cost thresold accepted in company currency.")
 
 
 def default_func(field_name):
@@ -103,6 +113,21 @@ class Configuration(
                 ],
             help="Used to generate the number given to inventories."))
     shipment_internal_transit = fields.MultiValue(shipment_internal_transit)
+    inventory_quantity_tolerance = fields.MultiValue(
+        inventory_quantity_tolerance)
+    inventory_cost_thresold = fields.MultiValue(
+        inventory_cost_thresold)
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls.inventory_quantity_tolerance.domain = [
+            'OR',
+            ('inventory_quantity_tolerance', '=', None),
+            [
+                ('inventory_quantity_tolerance', '>=', 0),
+                ('inventory_quantity_tolerance', '<=', 1),
+                ]]
 
     period_creation_interval = fields.MultiValue(
         fields.TimeDelta(
@@ -132,6 +157,11 @@ class Configuration(
             return pool.get('stock.configuration.location')
         if field in {'period_creation_interval', 'period_closing_delay'}:
             return pool.get('stock.configuration.period')
+        if field in {
+                'inventory_quantity_tolerance',
+                'inventory_cost_thresold',
+                }:
+            return pool.get('stock.configuration.inventory')
         return super().multivalue_model(field)
 
     default_shipment_in_sequence = default_func('shipment_in_sequence')
@@ -145,6 +175,10 @@ class Configuration(
     default_inventory_sequence = default_func('inventory_sequence')
     default_shipment_internal_transit = default_func(
         'shipment_internal_transit')
+    default_inventory_quantity_tolerance = default_func(
+        'inventory_quantity_tolerance')
+    default_inventory_cost_thresold = default_func(
+        'inventory_cost_thresold')
 
 
 class ConfigurationSequence(ModelSQL, CompanyValueMixin):
@@ -232,3 +266,20 @@ class Period(ModelSQL, CompanyValueMixin):
             ('period_closing_delay', '=', None),
             ('period_closing_delay', '>=', TimeDelta()),
             ])
+
+
+class ConfigurationInventory(ModelSQL, ValueMixin):
+    __name__ = 'stock.configuration.inventory'
+    inventory_quantity_tolerance = inventory_quantity_tolerance
+    inventory_cost_thresold = inventory_cost_thresold
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls.inventory_quantity_tolerance.domain = ['OR',
+            ('inventory_quantity_tolerance', '=', None),
+            [
+                ('inventory_quantity_tolerance', '>=', 0),
+                ('inventory_quantity_tolerance', '<=', 1),
+                ],
+            ]

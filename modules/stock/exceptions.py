@@ -28,6 +28,10 @@ class InventoryCountWarning(UserWarning):
     pass
 
 
+class InventoryOverToleranceWarning(UserWarning):
+    pass
+
+
 class MoveOriginWarning(UserWarning):
     pass
 

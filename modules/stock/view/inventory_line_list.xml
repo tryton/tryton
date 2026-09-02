@@ -6,4 +6,8 @@ this repository contains the full copyright notices and license terms. -->
     <field name="product" expand="2"/>
     <field name="expected_quantity" symbol="unit"/>
     <field name="quantity" symbol="unit"/>
+    <field name="quantity_variation" symbol="unit" optional="0"/>
+    <field name="tolerance_quantity_variation" tree_invisible="1"/>
+    <field name="cost_variation" optional="1"/>
+    <field name="tolerance_cost_variation" tree_invisible="1"/>
 </tree>

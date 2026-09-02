@@ -1,21 +1,25 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from collections import defaultdict
+from decimal import Decimal
 
 from sql import Null
 from sql.functions import CharLength
 
-from trytond.i18n import gettext
+from trytond.i18n import gettext, ngettext
 from trytond.model import (
     ChatMixin, Check, Index, Model, ModelSQL, ModelView, Workflow, fields)
 from trytond.model.exceptions import AccessError
+from trytond.modules.product import price_digits, round_price
 from trytond.pool import Pool
 from trytond.pyson import Bool, Eval, If
 from trytond.tools import is_full_text, lstrip_wildcard
 from trytond.transaction import Transaction
 from trytond.wizard import Button, StateTransition, StateView, Wizard
 
-from .exceptions import InventoryCountWarning, InventoryValidationError
+from .exceptions import (
+    InventoryCountWarning, InventoryOverToleranceWarning,
+    InventoryValidationError)
 
 
 class Inventory(Workflow, ModelSQL, ModelView, ChatMixin):
@@ -118,6 +122,29 @@ class Inventory(Workflow, ModelSQL, ModelView, ChatMixin):
     def default_company():
         return Transaction().context.get('company')
 
+    def check_tolerance(self):
+        pool = Pool()
+        Warning = pool.get('res.user.warning')
+
+        over_tolerance_lines = [
+            l for l in self.lines
+            if (l.tolerance_quantity_variation
+                and l.tolerance_quantity_variation > 1)
+            or (l.tolerance_cost_variation
+                and l.tolerance_cost_variation > 1)]
+        if over_tolerance_lines:
+            names = ', '.join(l.rec_name for l in over_tolerance_lines[:5])
+            if len(over_tolerance_lines) > 5:
+                names += '...'
+            warning_key = Warning.format(
+                'inventory_over_tolerance', over_tolerance_lines)
+            if Warning.check(warning_key):
+                raise InventoryOverToleranceWarning(
+                    warning_key,
+                    ngettext('stock.msg_inventory_over_tolerance',
+                        len(over_tolerance_lines),
+                        lines=names))
+
     def get_rec_name(self, name):
         pool = Pool()
         Lang = pool.get('ir.lang')
@@ -155,6 +182,7 @@ class Inventory(Workflow, ModelSQL, ModelView, ChatMixin):
         transaction = Transaction()
         moves = []
         for inventory in inventories:
+            inventory.check_tolerance()
             keys = set()
             for line in inventory.lines:
                 key = line.unique_key
@@ -340,6 +368,20 @@ class InventoryLine(ModelSQL, ModelView):
                 ()),
             ],
         help="The actual quantity found in the location.")
+    quantity_variation = fields.Function(
+        fields.Float("Quantity Variation", digits='unit',
+            help="The difference between "
+            "expected quantity and actual quantity."),
+        'on_change_with_quantity_variation')
+    tolerance_quantity_variation = fields.Function(
+        fields.Float("Tolerance Quantity Variation", digits=(None, 4)),
+        'on_change_with_tolerance_quantity_variation')
+    cost_variation = fields.Function(
+        fields.Numeric("Cost Variation", digits=price_digits),
+        'on_change_with_cost_variation')
+    tolerance_cost_variation = fields.Function(
+        fields.Numeric("Tolerance Cost Variation", digits=(None, 4)),
+        'on_change_with_tolerance_cost_variation')
     moves = fields.One2Many('stock.move', 'origin', 'Moves', readonly=True)
     inventory = fields.Many2One('stock.inventory', 'Inventory', required=True,
         ondelete='CASCADE',
@@ -420,6 +462,57 @@ class InventoryLine(ModelSQL, ModelView):
     def get_unit(self, name):
         return self.product.default_uom
 
+    @fields.depends('quantity', 'expected_quantity', 'unit')
+    def on_change_with_quantity_variation(self, name=None):
+        if self.quantity and self.expected_quantity:
+            diff = self.quantity - self.expected_quantity
+            if self.unit:
+                diff = self.unit.round(diff)
+            return diff
+
+    @fields.depends('expected_quantity', 'inventory',
+        '_parent_inventory.company',
+        methods=['on_change_with_quantity_variation'])
+    def on_change_with_tolerance_quantity_variation(self, name=None):
+        if self.inventory:
+            pool = Pool()
+            Configuration = pool.get('stock.configuration')
+            config = Configuration(1)
+            quantity_tolerance = config.get_multivalue(
+                'inventory_quantity_tolerance',
+                company=self.inventory.company.id)
+            quantity_variation = self.on_change_with_quantity_variation()
+            percentage = None
+            if self.expected_quantity and quantity_variation is not None:
+                percentage = abs(quantity_variation) / self.expected_quantity
+            if quantity_tolerance and percentage is not None:
+                return round(
+                    percentage / quantity_tolerance,
+                    self.__class__.tolerance_quantity_variation.digits[1])
+
+    @fields.depends('product',
+        methods=['on_change_with_quantity_variation'])
+    def on_change_with_cost_variation(self, name=None):
+        quantity_variation = self.on_change_with_quantity_variation()
+        if quantity_variation is not None and self.product:
+            return round_price(
+                self.product.cost_price * Decimal(str(quantity_variation)))
+
+    @fields.depends('expected_quantity', 'inventory',
+        '_parent_inventory.company',
+        methods=['on_change_with_cost_variation'])
+    def on_change_with_tolerance_cost_variation(self, name=None):
+        if self.inventory:
+            pool = Pool()
+            Configuration = pool.get('stock.configuration')
+            config = Configuration(1)
+            cost_thresold = config.get_multivalue(
+                'inventory_cost_thresold',
+                company=self.inventory.company.id)
+            cost_variation = self.on_change_with_cost_variation()
+            if cost_thresold and cost_variation is not None:
+                return round(abs(cost_variation) / cost_thresold, 4)
+
     @property
     def unique_key(self):
         key = []
@@ -496,6 +589,23 @@ class InventoryLine(ModelSQL, ModelView):
                             'stock.msg_inventory_line_delete_cancel',
                             line=line.rec_name,
                             inventory=line.inventory.rec_name))
+
+    @classmethod
+    def view_attributes(cls):
+        return super().view_attributes() + [
+            ('/tree/field[@name="quantity_variation"]',
+                'visual',
+                If(Eval('tolerance_quantity_variation', 0.0) > 1,
+                    'danger',
+                    If(Eval('tolerance_quantity_variation', 0.0) > .5,
+                        'warning', ''))),
+            ('/tree/field[@name="cost_variation"]',
+                'visual',
+                If(Eval('tolerance_cost_variation', 0.0) > 1,
+                    'danger',
+                    If(Eval('tolerance_cost_variation', 0.0) > .5,
+                        'warning', ''))),
+            ]
 
 
 class Count(Wizard):

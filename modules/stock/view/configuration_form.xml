@@ -18,6 +18,16 @@ this repository contains the full copyright notices and license terms. -->
     <separator id="inventory" colspan="4" string="Inventory"/>
     <label name="inventory_sequence" string="Sequence"/>
     <field name="inventory_sequence"/>
+    <newline/>
+
+    <label name="inventory_quantity_tolerance" string="Quantity Tolerance"/>
+    <group col="-1" id="inventory_quantity_tolerance">
+        <field name="inventory_quantity_tolerance" factor="100" xexpand="0"/>
+        <label name="inventory_quantity_tolerance" string="%" xalign="0.0" xexpand="1"/>
+    </group>
+    <label name="inventory_cost_thresold" string="Cost Thresold"/>
+    <field name="inventory_cost_thresold"/>
+
     <separator id="period" colspan="4" string="Period"/>
     <label name="period_creation_interval"/>
     <field name="period_creation_interval"/>

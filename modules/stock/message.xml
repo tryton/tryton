@@ -83,6 +83,10 @@ because the type does not support moves and location has existing moves.</field>
         <record model="ir.message" id="msg_inventory_count_create_line">
             <field name="text">No existing line found for "%(search)s".</field>
         </record>
+        <record model="ir.message" id="msg_inventory_over_tolerance">
+            <field name="text">The inventory line "%(lines)s" is outside the tolerance range.</field>
+            <field name="text_plural">The inventory lines "%(lines)s" are outside the tolerance range.</field>
+        </record>
         <record model="ir.message" id="msg_erase_party_shipment">
             <field name="text">You cannot erase party "%(party)s" while they have pending shipments with company "%(company)s".</field>
         </record>

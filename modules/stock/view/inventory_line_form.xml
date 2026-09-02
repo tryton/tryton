@@ -14,5 +14,10 @@ this repository contains the full copyright notices and license terms. -->
     <label name="quantity"/>
     <field name="quantity" symbol="unit"/>
 
+    <label name="quantity_variation"/>
+    <field name="quantity_variation" symbol="unit"/>
+    <label name="cost_variation"/>
+    <field name="cost_variation"/>
+
     <field name="moves" colspan="4"/>
 </form>

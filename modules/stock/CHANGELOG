@@ -1,3 +1,5 @@
+* Check tolerance on quantity and cost variation of inventory line
+* Calculate quantity and cost variation of inventory line
 * Add scheduled task to close period automatically
 * Add scheduled task to create period automatically
 
