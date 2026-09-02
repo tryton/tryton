@@ -40,7 +40,7 @@ class User(metaclass=PoolMeta):
         if user_id:
             SMSCode.send(user_id)
         if 'sms_code' in parameters:
-            code = parameters['sms_code']
+            code = str(parameters['sms_code'])
             if not code:
                 return
             if SMSCode.check(user_id, code):

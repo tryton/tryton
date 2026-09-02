@@ -135,7 +135,7 @@ class User(metaclass=PoolMeta):
         if 'password' not in parameters:
             msg = gettext('res.msg_user_password', login=login)
             raise LoginException('password', msg, type='password')
-        password = parameters['password']
+        password = str(parameters['password'])
         try:
             server = ldap_server()
             if server:

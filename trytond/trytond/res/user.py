@@ -775,21 +775,22 @@ class User(avatar_mixin(100, 'login'), DeactivableMixin, ModelSQL, ModelView):
             msg = gettext('res.msg_user_password', login=login)
             raise LoginException('password', msg, type='password')
         user_id, password_hash, password_reset = cls._get_login(login)
-        if user_id and password_hash:
-            password = parameters['password']
-            valid, new_hash = cls.check_password(password, password_hash)
-            if valid:
-                if new_hash:
-                    logger.info("Update password hash for %s", user_id)
-                    with Transaction().new_transaction():
-                        with without_check_access():
-                            cls.write([cls(user_id)], {
-                                    'password_hash': new_hash,
-                                    })
-                return user_id
-        if user_id and password_reset:
-            if compare_digest(password_reset, parameters['password']):
-                return user_id
+        if user_id:
+            password = str(parameters['password'])
+            if password_hash:
+                valid, new_hash = cls.check_password(password, password_hash)
+                if valid:
+                    if new_hash:
+                        logger.info("Update password hash for %s", user_id)
+                        with Transaction().new_transaction():
+                            with without_check_access():
+                                cls.write([cls(user_id)], {
+                                        'password_hash': new_hash,
+                                        })
+                    return user_id
+            if password_reset:
+                if compare_digest(password_reset, password):
+                    return user_id
 
     @classmethod
     def hash_password(cls, password):
@@ -894,7 +895,7 @@ class UserDevice(ModelSQL):
         try:
             device, = cls.search([
                     ('login', '=', login),
-                    ('cookie', '=', cookie),
+                    ('cookie', '=', str(cookie)),
                     ], limit=1)
         except ValueError:
             return None
