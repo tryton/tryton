@@ -46,6 +46,8 @@ def login(request, database_name, user, parameters, language=None):
         'language': language,
         '_request': request.context,
         }
+    if not isinstance(user, str):
+        abort(HTTPStatus.BAD_REQUEST, "user argument must be a string")
     try:
         session = security.login(
             database_name, user, parameters, context=context)
@@ -103,6 +105,8 @@ def reset_password(request, database_name, user, language=None):
         'language': language,
         '_request': request.context,
         }
+    if not isinstance(user, str):
+        abort(HTTPStatus.BAD_REQUEST, "user argument must be a string")
     try:
         security.reset_password(database_name, user, context=context)
     except backend.DatabaseOperationalError:
