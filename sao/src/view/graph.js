@@ -69,7 +69,6 @@
             this.xfield = xfield;
             this.yfields = yfields;
             this.el = jQuery('<div/>');
-            this.el.uniqueId();
         },
         update_data: function(group) {
             var data = {};
@@ -171,7 +170,7 @@
         _bb_config: function(data) {
             var bb_config = {};
 
-            bb_config.bindto = '#' + this.el.attr('id');
+            bb_config.bindto = this.el.get(0);
             bb_config.data = data;
             bb_config.data.type = this._chart_type;
             bb_config.data.x = 'labels';
