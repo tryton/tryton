@@ -248,14 +248,15 @@ class TableHandler(TableHandlerInterface):
     def _fk_deltypes(self):
         if self.__fk_deltypes is None:
             cursor = Transaction().connection.cursor()
-            cursor.execute('SELECT k.column_name, r.delete_rule '
+            cursor.execute(
+                'SELECT k.constraint_name, k.column_name, r.delete_rule '
                 'FROM information_schema.key_column_usage AS k '
                 'JOIN information_schema.referential_constraints AS r '
                 'ON r.constraint_schema = k.constraint_schema '
                 'AND r.constraint_name = k.constraint_name '
                 'WHERE k.table_name = %s AND k.table_schema = %s',
                 (self.table_name, self.table_schema))
-            self.__fk_deltypes = dict(cursor)
+            self.__fk_deltypes = {r[:2]: r[2] for r in cursor}
         return self.__fk_deltypes
 
     @property
@@ -446,7 +447,7 @@ class TableHandler(TableHandlerInterface):
             + ref_columns_name + '_fkey')
         if name in self._constraints:
             for column_name in columns:
-                if self._fk_deltypes.get(column_name) != on_delete:
+                if self._fk_deltypes.get((name, column_name)) != on_delete:
                     self.drop_fk(columns, ref_columns)
                     add = True
                     break
