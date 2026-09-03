@@ -170,6 +170,7 @@ class ModelView(Model):
                     depend = depend[len('_parent_'):]
                 if dep_field := getattr(cls, depend, None):
                     if (isinstance(dep_field, fields.Function)
+                            and dep_field.getter
                             and dep_field.getter.startswith('on_change_with')):
                         meth_names.append(dep_field.getter)
 
