@@ -2058,6 +2058,8 @@
                                 .fail(() => this.reload(ids, true));
                         });
                     }
+                }, () => {
+                    this.display();
                 });
             });
         },
