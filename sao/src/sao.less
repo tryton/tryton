@@ -315,10 +315,11 @@ html[theme="default"] {
 
                 > div {
                     display: inline-flex;
-                    width: 100%;
+                    flex: 1 1 0;
+                    min-width: 0;
 
                     &:first-child {
-                        flex: 2;
+                        flex-grow: 2;
                     }
                 }
             }
@@ -335,7 +336,6 @@ html[theme="default"] {
         border-color: @panel-default-border;
         border-style: solid;
         border-width: 0 0 0 1px;
-        flex: 1;
         overflow: unset;
 
         .sidebar-resizer {
