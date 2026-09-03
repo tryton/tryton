@@ -75,7 +75,7 @@ dev-mode-dirs = ["."]
 
 [tool.hatch.metadata.hooks.tryton]
 {%- if cookiecutter.prefix %}
-prefix = {}
+prefixes = {}
 {%- endif %}
 dependencies = []
 copyright = 'COPYRIGHT'
