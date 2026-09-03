@@ -188,6 +188,6 @@ class IdentifiersMixin(IdentifiersUpdateMixin):
 
 
 def setattr_changed(record, name, value):
-    if getattr(record, name, None) != value:
+    if getattr(record, name, object()) != value:
         setattr(record, name, value)
         return True
