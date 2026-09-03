@@ -2148,6 +2148,8 @@
                             .fail(() => this.reload(ids, true));
                     });
                 }
+            }, () => {
+                this.display();
             });
         },
         client_action: function(action) {
