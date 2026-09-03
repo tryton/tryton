@@ -242,7 +242,8 @@ class Shop(metaclass=PoolMeta):
 
         if not self.name:
             return
-        return ShopifyRouter.url_for('webhook_order', shop=self.name)
+        return ShopifyRouter.url_for(
+            'webhook_order', shop=self.name, _method='POST')
 
     @property
     def is_managing_gift_card(self):

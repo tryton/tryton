@@ -1031,7 +1031,8 @@ class Account(ModelSQL, ModelView):
         if not self.webhook_identifier:
             return ''
         return StripeRouter.url_for(
-            'webhooks_endpoint', account=self.webhook_identifier)
+            'webhooks_endpoint', account=self.webhook_identifier,
+            _method='POST')
 
     @classmethod
     def default_setup_intent_delay(cls):

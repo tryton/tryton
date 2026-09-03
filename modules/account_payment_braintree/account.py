@@ -828,7 +828,8 @@ class PaymentBraintreeAccount(ModelSQL, ModelView):
         if not self.webhook_identifier:
             return
         return BraintreeRouter.url_for(
-            'webhooks_endpoint', account=self.webhook_identifier)
+            'webhooks_endpoint', account=self.webhook_identifier,
+            _method='POST')
 
     @property
     def configuration(self):
