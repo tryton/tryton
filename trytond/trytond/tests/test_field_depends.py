@@ -275,7 +275,10 @@ class FieldDependsTestCase(TestCase):
             bar = fields.Char("Bar")
             baz = fields.Function(fields.Char("Baz"))
 
-            @fields.depends('foo', 'baz')
+            @fields.depends(
+                'foo',  # with a getter
+                'baz',  # without getter
+                )
             def on_change_test(self):
                 pass
 
