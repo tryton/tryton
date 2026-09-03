@@ -68,7 +68,7 @@ class Stripe(Router):
         data = {
             'model': Model.__name__,
             'customer_session_client_secret': customer_session_client_secret,
-            'return_url': request.base_url + '/end'
+            'return_url': cls.url_for('checkout_end', model=model, id=id),
             }
         ext, content, _, _ = Report.execute([record.id], data)
         assert ext == 'html'
