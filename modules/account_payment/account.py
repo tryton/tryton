@@ -267,10 +267,7 @@ class MoveLine(metaclass=PoolMeta):
     @classmethod
     def _pay_direct_debit_domain(cls, date):
         return [
-            ['OR',
-                ('account.type.receivable', '=', True),
-                ('account.type.payable', '=', True),
-                ],
+            ('account.type.receivable', '=', True),
             ('party.reception_direct_debits', '!=', None),
             ('reconciliation', '=', None),
             ('payment_amount', '!=', 0),
