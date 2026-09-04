@@ -1584,7 +1584,7 @@ class Invoice(
 
     @classmethod
     def search_origin_invoices(cls, name, clause):
-        return [('lines.origin.invoice', clause[0][len(name):],
+        return [('lines.origin.invoice' + clause[0][len(name):],
                 *clause[1:3], 'account.invoice.line', *clause[3:])]
 
     def chat_language(self, audience='internal'):
