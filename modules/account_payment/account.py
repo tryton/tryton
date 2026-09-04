@@ -351,7 +351,14 @@ class CreateDirectDebit(Wizard):
     def do_create_(self, action):
         pool = Pool()
         Line = pool.get('account.move.line')
-        payments = Line.pay_direct_debit(date=self.start.date)
+        User = pool.get('res.user')
+        transaction = Transaction()
+
+        companies = {c.id for c in self.start.companies}
+        companies &= set(User.get_companies())
+
+        with transaction.set_context(_companies=companies):
+            payments = Line.pay_direct_debit(date=self.start.date)
         action['domains'] = []
         return action, {
             'res_id': [p.id for p in payments],
@@ -364,10 +371,20 @@ class CreateDirectDebitStart(ModelView):
     date = fields.Date(
         "Date", required=True,
         help="Create direct debit for lines due up to this date.")
+    companies = fields.Many2Many(
+        'company.company', None, None, "Companies", required=True,
+        domain=[
+            ('id', 'in', Eval('context', {}).get('companies', [])),
+            ],
+        help="Limit to lines from these companies.")
 
     @classmethod
     def default_date(cls):
         return Pool().get('ir.date').today()
+
+    @classmethod
+    def default_companies(cls):
+        return Transaction().context.get('companies')
 
 
 class PayLineStart(ModelView):

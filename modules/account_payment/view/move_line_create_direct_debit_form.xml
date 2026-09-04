@@ -6,5 +6,7 @@ this repository contains the full copyright notices and license terms. -->
     <group col="2" xexpand="1" id="create_date">
         <label string="Create Direct Debit for date" id="create"/>
         <field name="date"/>
+
+        <field name="companies" colspan="2"/>
     </group>
 </form>
