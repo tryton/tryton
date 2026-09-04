@@ -352,9 +352,10 @@ class Template(
 
 class TemplateFunction(fields.Function):
 
-    def __init__(self, field):
-        super(TemplateFunction, self).__init__(
-            field, 'get_template', searcher='search_template')
+    def __init__(self, field, searchable=True):
+        super().__init__(
+            field, 'get_template',
+            searcher='search_template' if searchable else None)
         # Disable on_change as it is managed by on_change_template
         self.on_change = set()
         self.on_change_with = set()
@@ -478,7 +479,9 @@ class Product(
                     tfield.states['invisible'] |= invisible_state
                 else:
                     tfield.states['invisible'] = invisible_state
-                setattr(cls, attr, TemplateFunction(tfield))
+                searchable = tfield.searchable(Template)
+                setattr(
+                    cls, attr, TemplateFunction(tfield, searchable=searchable))
                 order_method = getattr(cls, 'order_%s' % attr, None)
                 if (not order_method
                         and not isinstance(tfield, (
