@@ -335,11 +335,21 @@ class CreateDunningStart(ModelView):
     __name__ = 'account.dunning.create.start'
     date = fields.Date('Date', required=True,
         help="Create dunning up to this date.")
+    companies = fields.Many2Many(
+        'company.company', None, None, "Companies", required=True,
+        domain=[
+            ('id', 'in', Eval('context', {}).get('companies', [])),
+            ],
+        help="Limit to lines from these companies.")
 
     @staticmethod
     def default_date():
         Date = Pool().get('ir.date')
         return Date.today()
+
+    @classmethod
+    def default_companies(cls):
+        return Transaction().context.get('companies')
 
 
 class CreateDunning(Wizard):
@@ -354,7 +364,14 @@ class CreateDunning(Wizard):
     def do_create_(self, action):
         pool = Pool()
         Dunning = pool.get('account.dunning')
-        Dunning.generate_dunnings(date=self.start.date)
+        User = pool.get('res.user')
+        transaction = Transaction()
+
+        companies = {c.id for c in self.start.companies}
+        companies &= set(User.get_companies())
+
+        with transaction.set_context(_companies=companies):
+            Dunning.generate_dunnings(date=self.start.date)
         return action, {}
 
 
