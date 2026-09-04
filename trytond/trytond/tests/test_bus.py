@@ -126,8 +126,9 @@ class BusTestCase(TestCase):
             notify("Test", "Message", user=1)
             transaction.commit()
         # Let the listen thread registers the message
-        time.sleep(1)
-        response = Bus.subscribe(DB_NAME, ['user:1'])
+        while not (
+                response := Bus.subscribe(DB_NAME, ['user:1'])).get('message'):
+            time.sleep(.01)
 
         self.assertTrue(response['message'].pop('message_id'))
         self.assertEqual(response, {
