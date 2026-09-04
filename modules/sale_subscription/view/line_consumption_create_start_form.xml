@@ -7,5 +7,7 @@ this repository contains the full copyright notices and license terms. -->
         <label string="Create Subscription Line Consumptions for date"
             id="create"/>
         <field name="date"/>
+
+        <field name="companies" colspan="2"/>
     </group>
 </form>

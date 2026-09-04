@@ -18,7 +18,7 @@ from trytond.modules.product import price_digits
 from trytond.pool import Pool
 from trytond.pyson import Bool, Eval, If
 from trytond.tools import firstline, sortable_values
-from trytond.transaction import Transaction
+from trytond.transaction import Transaction, check_access
 from trytond.wizard import (
     Button, StateAction, StateTransition, StateView, Wizard)
 
@@ -430,17 +430,16 @@ class Subscription(Workflow, ModelSQL, ModelView, ChatMixin):
 
         if date is None:
             date = Date.today()
-        company_id = Transaction().context.get('company', -1)
 
-        consumptions = Consumption.search([
-                ('invoice_line', '=', None),
-                ('line.subscription.next_invoice_date', '<=', date),
-                ('line.subscription.state', 'in', ['running', 'closed']),
-                ('line.subscription.company', '=', company_id),
-                ],
-            order=[
-                ('line.subscription.id', 'DESC'),
-                ])
+        with check_access():
+            consumptions = Consumption.search([
+                    ('invoice_line', '=', None),
+                    ('line.subscription.next_invoice_date', '<=', date),
+                    ('line.subscription.state', 'in', ['running', 'closed']),
+                    ],
+                order=[
+                    ('line.subscription.id', 'DESC'),
+                    ])
 
         def keyfunc(consumption):
             return consumption.line.subscription
@@ -471,10 +470,10 @@ class Subscription(Workflow, ModelSQL, ModelView, ChatMixin):
 
         Invoice.update_taxes(all_invoices)
 
-        subscriptions = cls.search([
-                ('next_invoice_date', '<=', date),
-                ('company', '=', company_id),
-                ])
+        with check_access():
+            subscriptions = cls.search([
+                    ('next_invoice_date', '<=', date),
+                    ])
         for subscription in subscriptions:
             if subscription.state == 'running':
                 while subscription.next_invoice_date <= date:
@@ -959,7 +958,14 @@ class CreateLineConsumption(Wizard):
     def do_create_(self, action):
         pool = Pool()
         Line = pool.get('sale.subscription.line')
-        Line.generate_consumption(date=self.start.date)
+        User = pool.get('res.user')
+        transaction = Transaction()
+
+        companies = {c.id for c in self.start.companies}
+        companies &= set(User.get_companies())
+
+        with transaction.set_context(_companies=companies):
+            Line.generate_consumption(date=self.start.date)
         return action, {}
 
     def transition_create_(self):
@@ -970,12 +976,22 @@ class CreateLineConsumptionStart(ModelView):
     __name__ = 'sale.subscription.line.consumption.create.start'
 
     date = fields.Date("Date")
+    companies = fields.Many2Many(
+        'company.company', None, None, "Companies", required=True,
+        domain=[
+            ('id', 'in', Eval('context', {}).get('companies', [])),
+            ],
+        help="Limit to subscription lines from these companies.")
 
     @classmethod
     def default_date(cls):
         pool = Pool()
         Date = pool.get('ir.date')
         return Date.today()
+
+    @classmethod
+    def default_companies(cls):
+        return Transaction().context.get('companies')
 
 
 class CreateSubscriptionInvoice(Wizard):
@@ -991,7 +1007,14 @@ class CreateSubscriptionInvoice(Wizard):
     def transition_create_(self):
         pool = Pool()
         Subscription = pool.get('sale.subscription')
-        Subscription.generate_invoice(date=self.start.date)
+        User = pool.get('res.user')
+        transaction = Transaction()
+
+        companies = {c.id for c in self.start.companies}
+        companies &= set(User.get_companies())
+
+        with transaction.set_context(_companies=companies):
+            Subscription.generate_invoice(date=self.start.date)
         return 'end'
 
 
@@ -999,9 +1022,19 @@ class CreateSubscriptionInvoiceStart(ModelView):
     __name__ = 'sale.subscription.create_invoice.start'
 
     date = fields.Date("Date")
+    companies = fields.Many2Many(
+        'company.company', None, None, "Companies", required=True,
+        domain=[
+            ('id', 'in', Eval('context', {}).get('companies', [])),
+            ],
+        help="Limit to subscription lines from these companies.")
 
     @classmethod
     def default_date(cls):
         pool = Pool()
         Date = pool.get('ir.date')
         return Date.today()
+
+    @classmethod
+    def default_companies(cls):
+        return Transaction().context.get('companies')
