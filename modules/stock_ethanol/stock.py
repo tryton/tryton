@@ -215,7 +215,7 @@ class ProductsByLocations(metaclass=PoolMeta):
     ethanol_volume = fields.Function(
         fields.Float(
             "Alcohol Volume", digits='ethanol_volume_unit'),
-        'get_product', searcher='search_product')
+        'get_product')
     ethanol_volume_unit = fields.Function(
         fields.Many2One('product.uom', "Alcohol Volume UoM"),
         'get_product')
