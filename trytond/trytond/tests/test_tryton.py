@@ -1015,7 +1015,7 @@ class ModuleTestCase(_DBTestCase):
                         if func_name == field.searcher:
                             domain = getattr(model, field.searcher)(
                                 field_name, (field_name, '=', None))
-                            self.assertIsInstance(domain, list)
+                            model.search(domain, limit=1, order=[])
 
     @with_transaction()
     def test_ir_action_window(self):
