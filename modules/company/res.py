@@ -85,7 +85,9 @@ class User(metaclass=PoolMeta):
     def __setup__(cls):
         super().__setup__()
         cls._context_fields.insert(0, 'company')
+        cls._context_fields.insert(0, 'companies')
         cls._context_fields.insert(0, 'employee')
+        cls._context_fields.insert(0, 'employees')
         cls._context_fields.insert(0, 'company_filter')
 
     @classmethod
@@ -147,15 +149,6 @@ class User(metaclass=PoolMeta):
             e for e in (self.employees or []) if e.company == self.company]
         if len(employees) == 1:
             self.employee, = employees
-
-    @classmethod
-    def _get_preferences(cls, user, context_only=False):
-        res = super()._get_preferences(user,
-            context_only=context_only)
-        if not context_only:
-            res['companies'] = [c.id for c in user.companies]
-            res['employees'] = [e.id for e in user.employees]
-        return res
 
     @classmethod
     def get_companies(cls):
