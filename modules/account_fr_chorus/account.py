@@ -337,9 +337,20 @@ class InvoiceChorus(
             }
 
     @classmethod
+    def send(cls, records=None):
+        transaction = Transaction()
+        if not records:
+            records = cls.search([
+                    ('invoice.company', '=',
+                        transaction.context.get('company')),
+                    ('state', '=', 'draft'),
+                    ])
+        cls.send_button(records)
+
+    @classmethod
     @ModelView.button
     @Workflow.transition('sent')
-    def send(cls, records=None):
+    def send_button(cls, records=None):
         """Send invoice to Chorus
 
         The transaction is committed after each invoice.
@@ -347,13 +358,6 @@ class InvoiceChorus(
         pool = Pool()
         Credential = pool.get('account.credential.chorus')
         transaction = Transaction()
-
-        if not records:
-            records = cls.search([
-                    ('invoice.company', '=',
-                        transaction.context.get('company')),
-                    ('state', '=', 'draft'),
-                    ])
 
         sessions = defaultdict(Credential.get_session)
         cls.lock(records)
@@ -392,11 +396,7 @@ class InvoiceChorus(
             }
 
     @classmethod
-    @ModelView.button
     def update(cls, records=None):
-        "Update state from Chorus"
-        pool = Pool()
-        Credential = pool.get('account.credential.chorus')
         transaction = Transaction()
 
         if not records:
@@ -405,6 +405,15 @@ class InvoiceChorus(
                         transaction.context.get('company')),
                     ('state', '=', 'sent'),
                     ])
+        cls.update_button(records)
+
+    @classmethod
+    @ModelView.button
+    def update_button(cls, records=None):
+        "Update state from Chorus"
+        pool = Pool()
+        Credential = pool.get('account.credential.chorus')
+        transaction = Transaction()
 
         sessions = defaultdict(Credential.get_session)
         succeeded, failed = [], []
