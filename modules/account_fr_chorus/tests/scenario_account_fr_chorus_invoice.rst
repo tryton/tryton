@@ -125,7 +125,11 @@ Check Chorus invoice::
 
 Send to Chorus::
 
-    >>> invoice_chorus.click('send')
+    >>> invoice_send, = Cron.find(
+    ...     [('method', '=', 'account.invoice.chorus|send')], limit=1)
+    >>> invoice_send.click('run_once')
+
+    >>> invoice_chorus.reload()
     >>> invoice_chorus.state
     'sent'
     >>> bool(invoice_chorus.number)
@@ -138,8 +142,11 @@ Send to Chorus::
 
 Update from Chorus::
 
+    >>> invoice_update, = Cron.find(
+    ...     [('method', '=', 'account.invoice.chorus|update')], limit=1)
     >>> while invoice_chorus.state == 'sent':
-    ...     invoice_chorus.click('update')
+    ...     invoice_update.click('run_once')
+    ...     invoice_chorus.reload()
     ...     time.sleep(1)
     >>> invoice_chorus.state
     'exception'
