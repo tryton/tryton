@@ -16,8 +16,8 @@ from trytond import backend
 from trytond.config import config
 from trytond.i18n import gettext
 from trytond.model import (
-    DeactivableMixin, Index, ModelSQL, ModelView, Unique, Workflow, dualmethod,
-    fields, sequence_ordered)
+    DeactivableMixin, Index, ModelSQL, ModelStorage, ModelView, Unique,
+    Workflow, dualmethod, fields, sequence_ordered)
 from trytond.model.exceptions import AccessError
 from trytond.modules.account.tax import TaxableMixin
 from trytond.modules.company.model import (
@@ -2452,7 +2452,7 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
     def origin_name(self):
         if isinstance(self.origin, self.__class__) and self.origin.id >= 0:
             return self.origin.invoice.rec_name
-        if self.origin and self.origin.id >= 0:
+        if isinstance(self.origin, ModelStorage) and self.origin.id >= 0:
             return self.origin.rec_name
 
     @classmethod
