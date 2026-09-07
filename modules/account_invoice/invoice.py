@@ -18,8 +18,8 @@ from stdnum import iso7064, iso11649
 from trytond import backend, config
 from trytond.i18n import gettext
 from trytond.model import (
-    ChatMixin, DeactivableMixin, Index, MatchMixin, ModelSQL, ModelView,
-    Unique, Workflow, dualmethod, fields, sequence_ordered)
+    ChatMixin, DeactivableMixin, Index, MatchMixin, ModelSQL, ModelStorage,
+    ModelView, Unique, Workflow, dualmethod, fields, sequence_ordered)
 from trytond.model.exceptions import AccessError
 from trytond.modules.account.exceptions import AccountMissing
 from trytond.modules.account.tax import TaxableMixin
@@ -2794,7 +2794,7 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
     def origin_name(self):
         if isinstance(self.origin, self.__class__) and self.origin.id >= 0:
             return self.origin.invoice.rec_name
-        if self.origin and self.origin.id >= 0:
+        if isinstance(self.origin, ModelStorage) and self.origin.id >= 0:
             return self.origin.rec_name
 
     @classmethod
