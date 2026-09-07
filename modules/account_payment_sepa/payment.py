@@ -825,7 +825,10 @@ class Message(Workflow, ModelSQL, ModelView):
         }
     message = fields.Binary('Message', filename='filename',
         file_id=file_id, store_prefix=store_prefix,
-        states=_states)
+        states={
+            'required': True,
+            'readonly': _states['readonly'],
+            })
     message_file_id = fields.Char("Message File ID", readonly=True)
     filename = fields.Function(fields.Char('Filename'), 'get_filename')
     type = fields.Selection([
