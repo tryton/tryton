@@ -225,7 +225,7 @@ class JournalPeriod(Workflow, ModelSQL, ModelView):
         cursor.execute(
             *t.update([t.state], ['closed'], where=t.state == 'close'))
 
-    @fields.depends('period')
+    @fields.depends('period', '_parent_period.company')
     def on_change_with_company(self, name=None):
         return self.period.company if self.period else None
 

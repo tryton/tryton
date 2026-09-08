@@ -58,6 +58,9 @@ class Period(Workflow, ModelSQL, ModelView):
             ('adjustment', 'Adjustment'),
             ], 'Type', required=True,
         states=_STATES)
+    journals = fields.One2Many(
+        'account.journal.period', 'period', "Journals",
+        help="Filled automatically when a first move is created.")
     company = fields.Function(fields.Many2One('company.company', 'Company',),
         'on_change_with_company', searcher='search_company')
     icon = fields.Function(fields.Char("Icon"), 'get_icon')
@@ -439,3 +442,9 @@ class Period(Workflow, ModelSQL, ModelView):
     @property
     def move_sequence_used(self):
         return self.move_sequence or self.fiscalyear.move_sequence
+
+    @classmethod
+    def copy(cls, periods, default=None):
+        default = default.copy() if default is not None else {}
+        default.setdefault('journals')
+        return super().copy(periods, default=default)
