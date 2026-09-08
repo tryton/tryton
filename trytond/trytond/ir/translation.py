@@ -869,6 +869,21 @@ class Translation(
             )
         return translation, res_id
 
+    def update_from_translation(self, translation, **values):
+        """Updates the values from translation and values.
+        Returns if it was modified"""
+        modified = False
+        for key in ['value', 'value_1', 'value_2', 'value_3']:
+            value = getattr(translation, key)
+            if getattr(self, key, None) != value:
+                setattr(self, key, value)
+                modified = True
+        for key, value in values.items():
+            if getattr(self, key, None) != value:
+                setattr(self, key, value)
+                modified = True
+        return modified
+
     @classmethod
     def translation_import(cls, lang, module, po_path):
         pool = Pool()
@@ -930,14 +945,7 @@ class Translation(
                     domain.append(('src_plural', '=',
                             new_translation.src_plural))
                 translation, = cls.search(domain)
-                if ((translation.value != new_translation.value)
-                        or (translation.value_1 != new_translation.value_1)
-                        or (translation.value_2 != new_translation.value_2)
-                        or (translation.value_3 != new_translation.value_3)):
-                    translation.value = new_translation.value
-                    translation.value_1 = new_translation.value_1
-                    translation.value_2 = new_translation.value_2
-                    translation.value_3 = new_translation.value_3
+                if translation.update_from_translation(new_translation):
                     translation.overriding_module = module
                     translation.fuzzy = new_translation.fuzzy
                     return translation
@@ -965,8 +973,9 @@ class Translation(
                     noupdate = False
 
                     if '.' in res_id:
-                        to_save.append(override_translation(res_id,
-                                translation))
+                        if overrided_translation := override_translation(
+                                res_id, translation):
+                            to_save.append(overrided_translation)
                         continue
 
                     model = translation.name.split(',')[0]
@@ -999,17 +1008,14 @@ class Translation(
                         to_save.append(translation)
                     else:
                         for translation_id in ids:
-                            old_translation = id2translation[translation_id]
-                            if not noupdate:
-                                old_translation.value = translation.value
-                                old_translation.value_1 = translation.value_1
-                                old_translation.value_2 = translation.value_2
-                                old_translation.value_3 = translation.value_3
-                                old_translation.fuzzy = translation.fuzzy
-                                to_save.append(old_translation)
+                            old_trans = id2translation[translation_id]
+                            if (not noupdate
+                                    and old_trans.update_from_translation(
+                                        translation, fuzzy=translation.fuzzy)):
+                                to_save.append(old_trans)
                             else:
-                                translations.add(old_translation)
-        cls.save([_f for _f in to_save if _f])
+                                translations.add(old_trans)
+        cls.save(to_save)
         translations |= set(to_save)
 
         if translations:
