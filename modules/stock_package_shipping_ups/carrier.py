@@ -12,6 +12,8 @@ from trytond.pyson import Eval
 
 from .exceptions import UPSCredentialWarning
 
+UPS_VERSION = 'v2409'
+
 
 class CredentialUPS(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
     __name__ = 'carrier.credential.ups'
@@ -64,9 +66,10 @@ class CredentialUPS(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
 
     def get_shipment_url(self):
         if self.server == 'production':
-            return 'https://onlinetools.ups.com/api/shipments/v2403/ship'
+            hostname = 'onlinetools.ups.com'
         else:
-            return 'https://wwwcie.ups.com/api/shipments/v2403/ship'
+            hostname = 'wwwcie.ups.com'
+        return f'https://{hostname}/api/shipments/{UPS_VERSION}/ship'
 
     @classmethod
     def check_modification(
