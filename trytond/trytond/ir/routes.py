@@ -2,8 +2,10 @@
 # this repository contains the full copyright notices and license terms.
 import csv
 import datetime as dt
+import hashlib
 import io
 import json
+import os.path
 from numbers import Number
 
 import trytond.config as config
@@ -12,7 +14,7 @@ from trytond.protocols.jsonrpc import JSONDecoder
 from trytond.protocols.wrappers import (
     HTTPStatus, Response, abort, redirect, with_pool, with_transaction)
 from trytond.routing import Route, Router, Rule
-from trytond.tools import slugify
+from trytond.tools import file_open, find_path, slugify
 from trytond.transaction import Transaction
 from trytond.wsgi import app
 
@@ -115,6 +117,49 @@ TEMPLATE = '''<!DOCTYPE html>
 </html>'''
 
 
+def etag_for_files(paths, chunk_size=1024 * 1024):
+    digest = hashlib.sha256()
+    content_length = 0
+    for path in paths:
+        content_length += os.path.getsize(find_path(path))
+        with file_open(path) as f:
+            while chunk := f.read(chunk_size):
+                digest.update(chunk)
+    return digest.hexdigest(), content_length
+
+
+class ChainedFiles:
+    def __init__(self, paths, chunk_size=64 * 1014):
+        self.paths = paths
+        self.chunk_size = chunk_size
+        self._files = []
+        self._closed = False
+
+    def __iter__(self):
+        try:
+            for path in self.paths:
+                f = file_open(path)
+                self._files.append(f)
+                try:
+                    while True:
+                        chunk = f.read(self.chunk_size)
+                        if not chunk:
+                            break
+                        yield chunk
+                finally:
+                    self._files.remove(f)
+                    f.close()
+        finally:
+            self.close()
+
+    def close(self):
+        if not self._closed:
+            self._closed = True
+            for f in self._files:
+                f.close()
+            self._files.clear()
+
+
 class Base(Router):
     __name__ = 'base'
 
@@ -122,6 +167,8 @@ class Base(Router):
     def __setup__(cls):
         super().__setup__()
         cls.__routes__.update({
+                'custom_js': Route(Rule('/custom.js', methods={'GET'})),
+                'custom_css': Route(Rule('/custom.css', methods={'GET'})),
                 'html_editor': Route(
                     Rule(
                         'html/<model>/<int:record>/<field>',
@@ -151,6 +198,56 @@ class Base(Router):
                 'old_data': Route(
                     Rule('/<database_name>/ir/data/<model>', methods={'GET'})),
                 })
+
+    @classmethod
+    def custom_js(cls, request):
+        cache_timeout = config.getint('web', 'cache_timeout')
+        paths = cls.custom_js_files()
+        etag, content_length = etag_for_files(paths)
+        if request.if_none_match and request.if_none_match.contains(etag):
+            response = Response(status=HTTPStatus.NOT_MODIFIED)
+        else:
+            response = Response(
+                ChainedFiles(paths),
+                HTTPStatus.OK,
+                content_type='text/javascript',
+                direct_passthrough=True)
+            response.content_length = content_length
+            response.cache_control.public = True
+            response.cache_control.max_age = cache_timeout
+        response.set_etag(etag)
+        return response
+
+    @classmethod
+    def custom_js_files(cls):
+        """Returns the list of file paths relative to modules
+        to include in custom.js"""
+        return []
+
+    @classmethod
+    def custom_css(cls, request):
+        cache_timeout = config.getint('web', 'cache_timeout')
+        paths = cls.custom_css_files()
+        etag, content_length = etag_for_files(paths)
+        if request.if_none_match and request.if_none_match.contains(etag):
+            response = Response(status=HTTPStatus.NOT_MODIFIED)
+        else:
+            response = Response(
+                ChainedFiles(paths),
+                HTTPStatus.OK,
+                content_type='text/css',
+                direct_passthrough=True)
+            response.content_length = content_length
+            response.cache_control.public = True
+            response.cache_control.max_age = cache_timeout
+        response.set_etag(etag)
+        return response
+
+    @classmethod
+    def custom_css_files(cls):
+        """Returns the list of file paths relative to modules
+        to include in custom.css"""
+        return []
 
     @classmethod
     def html_editor(cls, request, pool, model, record, field):
