@@ -87,6 +87,7 @@ Check Peppol status::
 
     >>> while peppol.state == 'processing':
     ...     peppol.click('update_status')
+    ...     time.sleep(FETCH_SLEEP)
     >>> peppol.state
     'succeeded'
 
