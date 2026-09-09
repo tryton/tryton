@@ -1,6 +1,8 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 
+from functools import wraps
+
 from sql.conditionals import NullIf
 from sql.operators import Equal
 
@@ -20,6 +22,18 @@ if config.getboolean('edocument_peppol', 'filestore', default=True):
         'edocument_peppol', 'store_prefix', default=None)
 else:
     file_id = store_prefix = None
+
+
+def default_records(func):
+    @wraps(func)
+    def wrapper(cls, documents=None):
+        if documents is None:
+            documents = cls.search([
+                    ('direction', '=', 'out'),
+                    ('state', '=', 'processing'),
+                    ])
+        return func(cls, documents)
+    return wrapper
 
 
 class Peppol(Workflow, ModelSQL, ModelView):
@@ -239,17 +253,9 @@ class Peppol(Workflow, ModelSQL, ModelView):
                 self.succeed()
 
     @classmethod
-    def update_status(cls, documents=None):
-        if documents is None:
-            documents = cls.search([
-                    ('direction', '=', 'out'),
-                    ('state', '=', 'processing'),
-                    ])
-        cls.update_status_button(documents)
-
-    @classmethod
+    @default_records
     @ModelView.button
-    def update_status_button(cls, documents):
+    def update_status(cls, documents):
         for document in documents:
             document._update_status()
         cls.save(documents)
