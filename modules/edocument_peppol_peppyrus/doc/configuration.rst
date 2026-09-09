@@ -15,3 +15,13 @@ The maximum size in bytes of the Peppyrus Webhook request (zero means no
 limit):
 
 The default value is: `trytond:config-request.max_size`
+
+.. _config-edocument_peppol_peppyrus.requests_timeout:
+
+``requests_timeout``
+====================
+
+The ``requests_timeout`` defines the time in seconds to wait for the Peppyrus
+APIs answer before failing.
+
+The default value is: ``300``

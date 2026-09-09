@@ -10,6 +10,7 @@ from urllib.parse import urljoin
 import requests
 from lxml import etree
 
+import trytond.config as config
 from trytond.i18n import gettext
 from trytond.model import fields
 from trytond.modules.edocument_peppol.exceptions import PeppolServiceError
@@ -144,6 +145,9 @@ class PeppolService(metaclass=PoolMeta):
                     self._peppyrus_document_type(document.type, tree)),
                 'fileContent': b64encode(document.data).decode(),
                 },
+            timeout=config.getfloat(
+                'edocument_peppol_peppyrus', 'requests_timeout',
+                default=300),
             headers={
                 'Accept': 'application/json',
                 'X-Api-Key': self.peppyrus_api_key,
@@ -191,6 +195,9 @@ class PeppolService(metaclass=PoolMeta):
             urljoin(
                 URLS[self.peppyrus_server],
                 f'message/{document.transmission_id}'),
+            timeout=config.getfloat(
+                'edocument_peppol_peppyrus', 'requests_timeout',
+                default=300),
             headers={
                 'Accept': 'application/json',
                 'X-Api-Key': self.peppyrus_api_key,
@@ -212,6 +219,9 @@ class PeppolService(metaclass=PoolMeta):
             urljoin(
                 URLS[self.peppyrus_server],
                 f'message/{document.transmission_id}/report'),
+            timeout=config.getfloat(
+                'edocument_peppol_peppyrus', 'requests_timeout',
+                default=300),
             headers={
                 'Accept': 'application/json',
                 'X-Api-Key': self.peppyrus_api_key,
@@ -237,6 +247,9 @@ class PeppolService(metaclass=PoolMeta):
                 'confirmed': 'false',
                 'perPage': 100,
                 },
+            timeout=config.getfloat(
+                'edocument_peppol_peppyrus', 'requests_timeout',
+                default=300),
             headers={
                 'Accept': 'application/json',
                 'X-Api-Key': self.peppyrus_api_key,
@@ -257,6 +270,9 @@ class PeppolService(metaclass=PoolMeta):
                     urljoin(
                         URLS[server],
                         f"message/{message['id']}/confirm"),
+                    timeout=config.getfloat(
+                        'edocument_peppol_peppyrus', 'requests_timeout',
+                        default=300),
                     headers={
                         'Accept': 'application/json',
                         'X-Api-Key': api_key,
