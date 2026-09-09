@@ -9,7 +9,7 @@ from collections import defaultdict
 from itertools import groupby
 
 from dateutil.relativedelta import relativedelta
-from sql import Literal
+from sql import Literal, Select
 from sql.conditionals import Case, Coalesce
 from sql.functions import CurrentTimestamp, Extract
 
@@ -133,7 +133,11 @@ class Cron(DeactivableMixin, ModelSQL, ModelView):
         running = defaultdict(bool)
         if database.has_select_for():
             # Avoid concurrent locking read
-            database.lock_id(str2bigint(f'{cls.__name__},running'))
+            cursor = transaction.connection.cursor()
+            cursor.execute(*Select([
+                        database.lock_id(
+                            str2bigint(f'{cls.__name__},running'),
+                            True)]))
             with transaction.new_transaction() as transaction:
                 cursor = transaction.connection.cursor()
                 For = database.get_select_for_skip_locked()
