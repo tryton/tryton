@@ -54,11 +54,9 @@ class ShipmentIn(metaclass=PoolMeta):
     @ModelView.button
     @Workflow.transition('draft')
     def draft(cls, shipments):
-        PurchaseLine = Pool().get('purchase.line')
         for shipment in shipments:
             for move in shipment.incoming_moves:
-                if (move.state == 'cancelled'
-                        and isinstance(move.origin, PurchaseLine)):
+                if move.state == 'cancelled' and move.purchase:
                     raise AccessError(
                         gettext('purchase.msg_purchase_move_reset_draft',
                             move=move.rec_name))
@@ -93,11 +91,9 @@ class ShipmentInReturn(metaclass=PoolMeta):
     @ModelView.button
     @Workflow.transition('draft')
     def draft(cls, shipments):
-        PurchaseLine = Pool().get('purchase.line')
         for shipment in shipments:
             for move in shipment.moves:
-                if (move.state == 'cancelled'
-                        and isinstance(move.origin, PurchaseLine)):
+                if move.state == 'cancelled' and move.purchase:
                     raise AccessError(
                         gettext('purchase.msg_purchase_move_reset_draft',
                             move=move.rec_name))
