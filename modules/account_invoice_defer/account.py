@@ -426,7 +426,9 @@ class Period(metaclass=PoolMeta):
     @classmethod
     def close(cls, periods):
         for period in periods:
-            period.check_invoice_deferred_running()
+            if period.type == 'standard':
+                # Invoice deferred creates moves only on standard period
+                period.check_invoice_deferred_running()
         super().close(periods)
 
     def check_invoice_deferred_running(self):
