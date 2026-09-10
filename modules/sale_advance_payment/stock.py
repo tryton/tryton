@@ -17,12 +17,11 @@ class ShipmentOut(metaclass=PoolMeta):
     def pack(cls, shipments):
         pool = Pool()
         Sale = pool.get('sale.sale')
-        SaleLine = pool.get('sale.line')
 
-        sales = {move.origin.sale
-            for shipment in shipments for move in shipment.moves
-            if isinstance(move.origin, SaleLine)}
-        for sale in Sale.browse([s.id for s in sales]):
+        sales = {
+            move.sale for shipment in shipments for move in shipment.moves
+            if move.sale}
+        for sale in Sale.browse(sales):
             if sale.shipping_blocked:
                 raise ShippingBlocked(
                     gettext('sale_advance_payment.msg_shipping_blocked',

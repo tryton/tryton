@@ -46,13 +46,11 @@ class ShipmentIn_Purchase(metaclass=PoolMeta):
     def receive(cls, shipments):
         pool = Pool()
         Warning = pool.get('res.user.warning')
-        PurchaseLine = pool.get('purchase.line')
         for shipment in shipments:
             if shipment.incoterm:
                 incoterms = {
-                    move.origin.purchase.incoterm for move in shipment.moves
-                    if isinstance(move.origin, PurchaseLine)
-                    and move.state != 'cancelled'}
+                    move.purchase.incoterm for move in shipment.moves
+                    if move.state != 'cancelled' and move.purchase}
                 if {shipment.incoterm} != incoterms:
                     incoterms.discard(shipment.incoterm)
                     origin_incoterms = ', '.join(
@@ -99,13 +97,11 @@ class ShipmentOut_Sale(metaclass=PoolMeta):
     def wait(cls, shipments, moves=None):
         pool = Pool()
         Warning = pool.get('res.user.warning')
-        SaleLine = pool.get('sale.line')
         for shipment in shipments:
             if shipment.incoterm:
                 incoterms = {
-                    move.origin.sale.incoterm for move in shipment.moves
-                    if isinstance(move.origin, SaleLine)
-                    and move.state != 'cancelled'}
+                    move.sale.incoterm for move in shipment.moves
+                    if move.state != 'cancelled' and move.sale}
                 if {shipment.incoterm} != incoterms:
                     incoterms.discard(shipment.incoterm)
                     origin_incoterms = ', '.join(
