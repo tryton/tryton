@@ -41,7 +41,7 @@ class Function(Field):
             ``lazy`` or ``eager``.
         '''
         assert isinstance(field, Field)
-        self._field = field
+        self._field = copy.deepcopy(field)
         self._type = field._type
         self.getter = getter
         self.getter_with_context = getter_with_context
