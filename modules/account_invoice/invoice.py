@@ -3507,7 +3507,8 @@ class InvoiceTax(sequence_ordered(), ModelSQL, ModelView):
 class PaymentMean(ModelSQL, ModelView):
     __name__ = 'account.invoice.payment.mean'
 
-    invoice = fields.Many2One('account.invoice', "Invoice", required=True)
+    invoice = fields.Many2One(
+        'account.invoice', "Invoice", required=True, ondelete='CASCADE')
     payees = fields.Function(
         fields.Many2Many(
             'party.party', None, None, "Payees",
