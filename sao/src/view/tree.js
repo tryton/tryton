@@ -2890,10 +2890,10 @@
                 var text_value = this.get_textual_value(record);
                 cell.text(text_value).attr('title', text_value);
             } else {
-                this.update_selection(record, () => {
+                this.update_selection(record, (selection, help) => {
                     var value = this.field.get(record);
                     var prm, text, found = false;
-                    for (const option of this.selection) {
+                    for (const option of selection) {
                         if (option[0] === value) {
                             found = true;
                             text = option[1];
