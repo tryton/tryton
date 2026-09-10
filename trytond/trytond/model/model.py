@@ -103,11 +103,6 @@ class Model(URLMixin, PoolBase, metaclass=ModelMeta):
             if callable(default_method):
                 cls._defaults[field_name] = default_method
 
-        for k in cls._defaults:
-            assert k in cls._fields, \
-                'Default function defined in %s but field %s does not exist!' \
-                % (cls.__name__, k,)
-
         # Set name to fields
         for name, field in cls._fields.items():
             if field.name is None:
