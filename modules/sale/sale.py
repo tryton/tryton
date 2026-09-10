@@ -17,7 +17,7 @@ from trytond.ir.attachment import AttachmentCopyMixin
 from trytond.ir.note import NoteCopyMixin
 from trytond.model import (
     ChatMixin, Index, ModelSQL, ModelView, Unique, Workflow, fields,
-    sequence_ordered)
+    sequence_ordered, sort)
 from trytond.model.exceptions import AccessError
 from trytond.modules.account.tax import TaxableMixin
 from trytond.modules.account_product.exceptions import AccountError
@@ -45,13 +45,16 @@ def samesign(a, b):
 def get_shipments_returns(model_name):
     "Computes the returns or shipments"
     def method(self, name):
-        Model = Pool().get(model_name)
+        pool = Pool()
+        Model = pool.get(model_name)
+        field = getattr(self.__class__, name)
+        order = field.order if field.order is not None else Model._order
         shipments = set()
         for line in self.line_lines:
             for move in line.moves:
                 if isinstance(move.shipment, Model):
-                    shipments.add(move.shipment.id)
-        return list(shipments)
+                    shipments.add(move.shipment)
+        return sort(shipments, order)
     return method
 
 
@@ -694,12 +697,16 @@ class Sale(
         return result
 
     def get_invoices(self, name):
+        pool = Pool()
+        Invoice = pool.get('account.invoice')
+        field = getattr(self.__class__, name)
+        order = field.order if field.order is not None else Invoice._order
         invoices = set()
         for line in self.line_lines:
             for invoice_line in line.invoice_lines:
                 if invoice_line.invoice:
-                    invoices.add(invoice_line.invoice.id)
-        return list(invoices)
+                    invoices.add(invoice_line.invoice)
+        return sort(invoices, order)
 
     @classmethod
     def search_invoices(cls, name, clause):
