@@ -4,7 +4,7 @@ import datetime as dt
 
 from trytond.model import ModelSQL, ModelView, fields
 from trytond.pool import Pool, PoolMeta
-from trytond.pyson import Bool, Eval, If
+from trytond.pyson import Bool, Eval, Id, If
 
 
 class Role(ModelSQL, ModelView):
@@ -37,7 +37,11 @@ class RoleGroup(ModelSQL):
 
 class User(metaclass=PoolMeta):
     __name__ = 'res.user'
-    roles = fields.One2Many('res.user.role', 'user', "Roles")
+    roles = fields.One2Many(
+        'res.user.role', 'user', "Roles",
+        states={
+            'invisible': Eval('id', -1) == Id('res', 'user_admin'),
+            })
 
     @classmethod
     def __setup__(cls):
@@ -63,12 +67,19 @@ class User(metaclass=PoolMeta):
 
     @classmethod
     def sync_roles(cls, users=None, date=None):
+        pool = Pool()
+        ModelData = pool.get('ir.model.data')
+
+        admin_id = ModelData.get_id('res', 'user_admin')
+
         if date is None:
             date = dt.datetime.now()
         if users is None:
             users = cls.search([])
         to_write = []
         for user in users:
+            if user.id == admin_id:
+                continue
             if not user.roles:
                 continue
             new = {g.id for r in user.roles for g in r.role.groups
@@ -88,7 +99,12 @@ class UserRole(ModelSQL, ModelView):
     "User Role"
     __name__ = 'res.user.role'
     user = fields.Many2One(
-        'res.user', "User", ondelete='CASCADE', required=True)
+        'res.user', "User", ondelete='CASCADE', required=True,
+        domain=[
+            If(Eval('user', -1) == Id('res', 'user_admin'),
+                ('id', '=', -1),
+                ()),
+            ])
     role = fields.Many2One('res.role', "Role", required=True)
     from_date = fields.DateTime(
         "From Date",
