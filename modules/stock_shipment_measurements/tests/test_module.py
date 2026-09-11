@@ -6,8 +6,7 @@ from decimal import Decimal
 from trytond.modules.company.tests import (
     CompanyTestMixin, create_company, set_company)
 from trytond.pool import Pool
-from trytond.tests.test_tryton import (
-    ModuleTestCase, activate_module, with_transaction)
+from trytond.tests.test_tryton import ModuleTestCase, with_transaction
 
 
 class StockShipmentMeasurementsTestCase(CompanyTestMixin, ModuleTestCase):
@@ -15,11 +14,6 @@ class StockShipmentMeasurementsTestCase(CompanyTestMixin, ModuleTestCase):
     module = 'stock_shipment_measurements'
     extras = ['stock_package']
     longMessage = True
-
-    @classmethod
-    def setUpClass(cls):
-        super().setUpClass()
-        activate_module('stock_package')
 
     @with_transaction()
     def test_move_internal_measurements(self):
