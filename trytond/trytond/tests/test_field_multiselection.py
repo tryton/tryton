@@ -4,17 +4,12 @@
 from trytond.model.exceptions import (
     RequiredValidationError, SelectionValidationError)
 from trytond.pool import Pool
-from trytond.tests.test_tryton import (
-    TestCase, activate_module, with_transaction)
+from trytond.tests.test_tryton import DBTestCase, with_transaction
 
 
-class FieldMultiSelectionTestCase(TestCase):
+class FieldMultiSelectionTestCase(DBTestCase):
     "Test Field MultiSelection"
-
-    @classmethod
-    def setUpClass(cls):
-        super().setUpClass()
-        activate_module('tests')
+    module = 'tests'
 
     @property
     def Selection(self):

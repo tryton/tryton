@@ -11,17 +11,12 @@ from trytond.model.exceptions import (
 from trytond.model.modelview import set_visible
 from trytond.pool import Pool
 from trytond.pyson import Eval, PYSONDecoder, PYSONEncoder
-from trytond.tests.test_tryton import (
-    TestCase, activate_module, with_transaction)
+from trytond.tests.test_tryton import DBTestCase, with_transaction
 
 
-class ModelView(TestCase):
+class ModelView(DBTestCase):
     "Test ModelView"
-
-    @classmethod
-    def setUpClass(cls):
-        super().setUpClass()
-        activate_module('tests')
+    module = 'tests'
 
     def test_set_visible(self):
         "Test loading of visible x2m fields in group"

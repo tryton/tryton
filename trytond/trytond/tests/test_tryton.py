@@ -49,6 +49,7 @@ __all__ = [
     'Client',
     'DB_NAME',
     'TestCase',
+    'DBTestCase',
     'ModuleTestCase',
     'RouteTestCase',
     'ExtensionTestCase',
@@ -370,7 +371,7 @@ class TestCase(unittest.TestCase):
             warnings.filterwarnings(action, message, category, module, lineno)
 
 
-class _DBTestCase(TestCase):
+class DBTestCase(TestCase):
     module = None
     extras = None
     language = 'en'
@@ -390,7 +391,7 @@ class _DBTestCase(TestCase):
         drop_db()
 
 
-class ModuleTestCase(_DBTestCase):
+class ModuleTestCase(DBTestCase):
     "Tryton Module Test Case"
 
     @with_transaction()
@@ -1251,7 +1252,7 @@ class ModuleTestCase(_DBTestCase):
                     self.assertTrue(callable(getattr(router, r_name, None)))
 
 
-class RouteTestCase(_DBTestCase):
+class RouteTestCase(DBTestCase):
     "Tryton Route Test Case"
 
     @classmethod
@@ -1319,7 +1320,7 @@ def create_db(name=DB_NAME, lang='en'):
         pool.init()
 
 
-class ExtensionTestCase(TestCase):
+class ExtensionTestCase(DBTestCase):
     extension = None
 
     @classmethod
@@ -1329,8 +1330,8 @@ class ExtensionTestCase(TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        super().tearDownClass()
         cls._deactivate_extension()
+        super().tearDownClass()
 
     @classmethod
     @with_transaction()

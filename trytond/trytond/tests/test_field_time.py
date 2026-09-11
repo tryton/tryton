@@ -7,8 +7,7 @@ from sql.functions import CurrentTimestamp
 from trytond.model.exceptions import (
     RequiredValidationError, TimeFormatValidationError)
 from trytond.pool import Pool
-from trytond.tests.test_tryton import (
-    TestCase, activate_module, with_transaction)
+from trytond.tests.test_tryton import DBTestCase, with_transaction
 
 pre_evening = datetime.time(16, 30)
 evening = datetime.time(18, 45, 3)
@@ -16,13 +15,9 @@ night = datetime.time(20, 00)
 default_time = datetime.time(16, 30)
 
 
-class FieldTimeTestCase(TestCase):
+class FieldTimeTestCase(DBTestCase):
     "Test Field Time"
-
-    @classmethod
-    def setUpClass(cls):
-        super().setUpClass()
-        activate_module('tests')
+    module = 'tests'
 
     @with_transaction()
     def test_set_string(self):

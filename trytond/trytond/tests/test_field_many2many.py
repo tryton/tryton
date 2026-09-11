@@ -4,8 +4,7 @@
 from trytond.model.exceptions import (
     DomainValidationError, RequiredValidationError, SizeValidationError)
 from trytond.pool import Pool
-from trytond.tests.test_tryton import (
-    TestCase, activate_module, with_transaction)
+from trytond.tests.test_tryton import DBTestCase, with_transaction
 
 
 class CommonTestCaseMixin:
@@ -416,13 +415,9 @@ class CommonTestCaseMixin:
         self.assertIsNone(relation.write_date)
 
 
-class FieldMany2ManyTestCase(TestCase, CommonTestCaseMixin):
+class FieldMany2ManyTestCase(DBTestCase, CommonTestCaseMixin):
     "Test Field Many2Many"
-
-    @classmethod
-    def setUpClass(cls):
-        super().setUpClass()
-        activate_module('tests')
+    module = 'tests'
 
     def Many2Many(self):
         return Pool().get('test.many2many')
@@ -826,13 +821,9 @@ class FieldMany2ManyTestCase(TestCase, CommonTestCaseMixin):
             sorted([t.id for t in targets], reverse=True))
 
 
-class FieldMany2ManyReferenceTestCase(TestCase, CommonTestCaseMixin):
+class FieldMany2ManyReferenceTestCase(DBTestCase, CommonTestCaseMixin):
     "Test Field Many2Many Reference"
-
-    @classmethod
-    def setUpClass(cls):
-        super().setUpClass()
-        activate_module('tests')
+    module = 'tests'
 
     def Many2Many(self):
         return Pool().get('test.many2many_reference')

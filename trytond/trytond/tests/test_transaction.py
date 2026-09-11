@@ -4,8 +4,7 @@ import unittest
 from unittest.mock import Mock
 
 from trytond import backend
-from trytond.tests.test_tryton import (
-    CONTEXT, DB_NAME, USER, TestCase, activate_module)
+from trytond.tests.test_tryton import CONTEXT, DB_NAME, USER, DBTestCase
 from trytond.transaction import Transaction
 
 
@@ -20,13 +19,9 @@ def empty_transaction(*args, **kwargs):
         return True
 
 
-class TransactionTestCase(TestCase):
+class TransactionTestCase(DBTestCase):
     'Test the Transaction Context manager'
-
-    @classmethod
-    def setUpClass(cls):
-        super().setUpClass()
-        activate_module('tests')
+    module = 'tests'
 
     def test_nonexistdb(self):
         '''Attempt opening a transaction with a non existant DB

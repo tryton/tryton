@@ -6,17 +6,12 @@ import re
 from trytond.model.exceptions import (
     DomainValidationError, RequiredValidationError, SQLConstraintError)
 from trytond.pool import Pool
-from trytond.tests.test_tryton import (
-    TestCase, activate_module, with_transaction)
+from trytond.tests.test_tryton import DBTestCase, with_transaction
 
 
-class FieldOne2OneTestCase(TestCase):
+class FieldOne2OneTestCase(DBTestCase):
     "Test Field One2One"
-
-    @classmethod
-    def setUpClass(cls):
-        super().setUpClass()
-        activate_module('tests')
+    module = 'tests'
 
     @with_transaction()
     def test_create_id(self):

@@ -2,16 +2,11 @@
 # repository contains the full copyright notices and license terms.
 
 from trytond.pool import Pool
-from trytond.tests.test_tryton import (
-    TestCase, activate_module, with_transaction)
+from trytond.tests.test_tryton import DBTestCase, with_transaction
 
 
-class WorkflowTestCase(TestCase):
-
-    @classmethod
-    def setUpClass(cls):
-        super().setUpClass()
-        activate_module('tests')
+class WorkflowTestCase(DBTestCase):
+    module = 'tests'
 
     # TODO add test for Workflow.transition
     @with_transaction()

@@ -5,21 +5,16 @@ import sys
 from unittest.mock import patch
 
 from trytond.pool import Pool
-from trytond.tests.test_tryton import (
-    TestCase, activate_module, with_transaction)
+from trytond.tests.test_tryton import DBTestCase, with_transaction
 from trytond.transaction import inactive_records
 
 from .test_tree import TreeTestCaseMixin
 
 
-class MPTTTestCase(TreeTestCaseMixin, TestCase):
+class MPTTTestCase(TreeTestCaseMixin, DBTestCase):
     'Test Modified Preorder Tree Traversal'
+    module = 'tests'
     model_name = 'test.mptt'
-
-    @classmethod
-    def setUpClass(cls):
-        super().setUpClass()
-        activate_module('tests')
 
     def check_tree(self, parent_id=None, left=-1, right=sys.maxsize):
         pool = Pool()

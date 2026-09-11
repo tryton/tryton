@@ -48,16 +48,16 @@ TestCase
    It setups warning filters based on ``TEST_PYTHONWARNINGS`` environment
    variable.
 
-ModuleTestCase
---------------
+DBTestCase
+----------
 
-.. class:: ModuleTestCase()
+.. class:: DBTestCase()
 
-   A subclass of :class:`TestCase` that tests a Tryton module.
-   Some tests are included to ensure that the module works properly.
+   A subclass of :class:`TestCase` for testing a Tryton module.
 
    It creates a temporary database with the module activated in setUpClass_ and
    drops it in the tearDownClass_ method.
+
 
 .. attribute:: ModuleTestCase.module
 
@@ -71,6 +71,14 @@ ModuleTestCase
 
    The language to activate.
    Default value is ``en``.
+
+ModuleTestCase
+--------------
+
+.. class:: ModuleTestCase()
+
+   A subclass of :class:`DBTestCase` that tests a Tryton module.
+   Some tests are included to ensure that the module works properly.
 
 RouteTestCase
 -------------
@@ -114,8 +122,8 @@ ExtensionTestCase
 
 .. class:: ExtensionTestCase()
 
-   A subclass of :class:`TestCase` to test a Tryton with an database extension
-   activated.
+   A subclass of :class:`DBTestCase` to test a Tryton with an database
+   extension activated.
 
 .. attribute:: ExtensionTestCase.extension
 

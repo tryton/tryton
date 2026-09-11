@@ -2,17 +2,12 @@
 # this repository contains the full copyright notices and license terms.
 
 from trytond.pool import Pool
-from trytond.tests.test_tryton import (
-    TestCase, activate_module, with_transaction)
+from trytond.tests.test_tryton import DBTestCase, with_transaction
 
 
-class MultiValueTestCase(TestCase):
+class MultiValueTestCase(DBTestCase):
     "Test MultiValue"
-
-    @classmethod
-    def setUpClass(cls):
-        super().setUpClass()
-        activate_module('tests')
+    module = 'tests'
 
     @with_transaction()
     def test_get_multivalue(self):

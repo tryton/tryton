@@ -14,17 +14,13 @@ from trytond.model.exceptions import (
 from trytond.model.modelsql import split_subquery_domain
 from trytond.pool import Pool
 from trytond.tests.test_tryton import (
-    CONTEXT, DB_NAME, USER, TestCase, activate_module, with_transaction)
+    CONTEXT, DB_NAME, USER, DBTestCase, with_transaction)
 from trytond.transaction import Transaction, TransactionError
 
 
-class ModelSQLTestCase(TestCase):
+class ModelSQLTestCase(DBTestCase):
     'Test ModelSQL'
-
-    @classmethod
-    def setUpClass(cls):
-        super().setUpClass()
-        activate_module('tests')
+    module = 'tests'
 
     @with_transaction()
     def test_read(self):
@@ -1422,14 +1418,14 @@ class ModelSQLTestCase(TestCase):
         self.assertEqual(stats, [("Foo", 2), ("Bar", 1)])
 
 
-class TranslationTestCase(TestCase):
+class TranslationTestCase(DBTestCase):
+    module = 'tests'
     default_language = 'fr'
     other_language = 'en'
 
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
-        activate_module('tests')
         cls.setup_language()
 
     @classmethod
@@ -1455,8 +1451,8 @@ class TranslationTestCase(TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        super().tearDownClass()
         cls.restore_language()
+        super().tearDownClass()
 
     @classmethod
     @with_transaction()

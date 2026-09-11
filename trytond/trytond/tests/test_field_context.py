@@ -2,17 +2,12 @@
 # this repository contains the full copyright notices and license terms.
 
 from trytond.pool import Pool
-from trytond.tests.test_tryton import (
-    TestCase, activate_module, with_transaction)
+from trytond.tests.test_tryton import DBTestCase, with_transaction
 
 
-class FieldContextTestCase(TestCase):
+class FieldContextTestCase(DBTestCase):
     "Test context on field"
-
-    @classmethod
-    def setUpClass(cls):
-        super().setUpClass()
-        activate_module('tests')
+    module = 'tests'
 
     @with_transaction()
     def test_context(self):

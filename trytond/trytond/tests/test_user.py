@@ -9,8 +9,7 @@ import trytond.config as config
 from trytond.pool import Pool
 from trytond.res import user as user_module
 from trytond.res.user import PasswordError
-from trytond.tests.test_tryton import (
-    TestCase, activate_module, with_transaction)
+from trytond.tests.test_tryton import DBTestCase, with_transaction
 from trytond.transaction import Transaction
 
 FROM = 'tryton@example.com'
@@ -26,13 +25,9 @@ def set_authentications(methods):
         config.set('session', 'authentications', saved_methods)
 
 
-class UserTestCase(TestCase):
+class UserTestCase(DBTestCase):
     'Test User'
-
-    @classmethod
-    def setUpClass(cls):
-        super().setUpClass()
-        activate_module('res')
+    module = 'res'
 
     def setUp(self):
         methods = config.get('session', 'authentications')

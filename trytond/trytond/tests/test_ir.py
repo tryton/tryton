@@ -25,8 +25,7 @@ from trytond.pyson import Eval, If, PYSONEncoder
 from trytond.tools import file_open, timezone
 from trytond.transaction import Transaction
 
-from .test_tryton import (
-    ModuleTestCase, TestCase, activate_module, drop_db, with_transaction)
+from .test_tryton import DBTestCase, ModuleTestCase, with_transaction
 
 
 class IrTestCase(ModuleTestCase):
@@ -792,19 +791,9 @@ class IrTestCase(ModuleTestCase):
         self.assertEqual(filename, "Workflow Graph")
 
 
-class IrCronTestCase(TestCase):
+class IrCronTestCase(DBTestCase):
     "Test ir.cron features"
-
-    @classmethod
-    def setUpClass(cls):
-        super().setUpClass()
-        drop_db()
-        activate_module(['ir'])
-
-    @classmethod
-    def tearDownClass(cls):
-        super().tearDownClass()
-        drop_db()
+    module = 'ir'
 
     def setUp(self):
         server_tz = timezone.SERVER

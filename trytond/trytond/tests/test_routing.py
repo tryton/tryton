@@ -9,30 +9,25 @@ from trytond.pool import Pool
 from trytond.protocols.wrappers import HTTPStatus, Response
 from trytond.routing import BuildURLError
 from trytond.tests.test_tryton import (
-    DB_NAME, Client, RouteTestCase, TestCase, activate_module, drop_db,
-    with_transaction)
+    DB_NAME, Client, DBTestCase, RouteTestCase, with_transaction)
 from trytond.transaction import Transaction
 from trytond.wsgi import app
 
 
-class RoutesTestCase(TestCase):
+class RoutesTestCase(DBTestCase):
+    module = 'ir'
+    extras = ['res']
+    language = 'fr'
 
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
-        drop_db()
-        activate_module(['ir', 'res'], 'fr')
         pool = Pool(DB_NAME)
         with Transaction().start(DB_NAME, 0):
             User = pool.get('res.user')
             admin, = User.search([('login', '=', 'admin')])
             admin.password = 'password'
             admin.save()
-
-    @classmethod
-    def tearDownClass(cls):
-        super().tearDownClass()
-        drop_db()
 
     @property
     def auth_headers(self):

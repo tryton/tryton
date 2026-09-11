@@ -11,20 +11,15 @@ from trytond.model import fields
 from trytond.model.exceptions import (
     RequiredValidationError, SQLConstraintError)
 from trytond.pool import Pool
-from trytond.tests.test_tryton import (
-    TestCase, activate_module, with_transaction)
+from trytond.tests.test_tryton import DBTestCase, with_transaction
 from trytond.transaction import Transaction
 
 cast = fields.Binary.cast
 
 
-class FieldBinaryTestCase(TestCase):
+class FieldBinaryTestCase(DBTestCase):
     "Test Field Binary"
-
-    @classmethod
-    def setUpClass(cls):
-        super().setUpClass()
-        activate_module('tests')
+    module = 'tests'
 
     def setUp(self):
         super().setUp()

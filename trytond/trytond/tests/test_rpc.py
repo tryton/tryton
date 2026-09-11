@@ -4,18 +4,13 @@ from unittest.mock import DEFAULT, Mock, call
 
 from trytond.protocols.wrappers import exceptions
 from trytond.rpc import RPC
-from trytond.tests.test_tryton import (
-    TestCase, activate_module, with_transaction)
+from trytond.tests.test_tryton import DBTestCase, with_transaction
 from trytond.transaction import Transaction
 
 
-class RPCTestCase(TestCase):
+class RPCTestCase(DBTestCase):
     "Test RPC"
-
-    @classmethod
-    def setUpClass(cls):
-        super().setUpClass()
-        activate_module('ir')
+    module = 'ir'
 
     @with_transaction()
     def test_simple(self):

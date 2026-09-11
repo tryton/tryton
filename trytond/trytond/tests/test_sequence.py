@@ -6,19 +6,14 @@ import datetime
 from trytond.convert import import_xml
 from trytond.ir.sequence import LastTimestampError
 from trytond.pool import Pool
-from trytond.tests.test_tryton import (
-    TestCase, activate_module, with_transaction)
+from trytond.tests.test_tryton import DBTestCase, with_transaction
 from trytond.tools import file_open
 from trytond.transaction import Transaction
 
 
-class SequenceTestCase(TestCase):
+class SequenceTestCase(DBTestCase):
     'Test Sequence'
-
-    @classmethod
-    def setUpClass(cls):
-        super().setUpClass()
-        activate_module('tests')
+    module = 'tests'
 
     @staticmethod
     def get_model():

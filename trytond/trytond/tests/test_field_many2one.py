@@ -9,8 +9,7 @@ from sql import Join, Table
 import trytond.config as config
 from trytond.model.exceptions import DomainValidationError
 from trytond.pool import Pool
-from trytond.tests.test_tryton import (
-    TestCase, activate_module, with_transaction)
+from trytond.tests.test_tryton import DBTestCase, with_transaction
 
 
 class CommonTestCaseMixin:
@@ -355,25 +354,17 @@ class SearchTestCaseMixin:
 
 
 class FieldMany2OneTestCase(
-        TestCase, CommonTestCaseMixin, SearchTestCaseMixin):
+        DBTestCase, CommonTestCaseMixin, SearchTestCaseMixin):
     "Test Field Many2One"
+    module = 'tests'
     _strategy = 'IN'
-
-    @classmethod
-    def setUpClass(cls):
-        super().setUpClass()
-        activate_module('tests')
 
 
 class FieldMany2OneExistsTestCase(
-        TestCase, CommonTestCaseMixin, SearchTestCaseMixin):
+        DBTestCase, CommonTestCaseMixin, SearchTestCaseMixin):
     "Test Field Many2One"
+    module = 'tests'
     _strategy = 'EXISTS'
-
-    @classmethod
-    def setUpClass(cls):
-        super().setUpClass()
-        activate_module('tests')
 
     def setUp(self):
         super().setUp()
@@ -382,14 +373,10 @@ class FieldMany2OneExistsTestCase(
         self.addCleanup(config.set, 'database', 'subquery_threshold', previous)
 
 
-class FieldMany2OneTreeTestCase(TestCase):
+class FieldMany2OneTreeTestCase(DBTestCase):
     "Test Field Many2One Tree"
+    module = 'tests'
     model_name = 'test.many2one_tree'
-
-    @classmethod
-    def setUpClass(cls):
-        super().setUpClass()
-        activate_module('tests')
 
     def create_tree(self, Many2One):
         self.root1, self.root2 = Many2One.create([{}, {}])

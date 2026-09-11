@@ -7,8 +7,7 @@ from trytond import backend
 from trytond.model.exceptions import (
     RequiredValidationError, SizeValidationError)
 from trytond.pool import Pool
-from trytond.tests.test_tryton import (
-    TestCase, activate_module, with_transaction)
+from trytond.tests.test_tryton import DBTestCase, with_transaction
 from trytond.transaction import Transaction
 
 
@@ -418,13 +417,9 @@ class CommonTestCaseMixin:
         self.assertEqual(text.text, "é")
 
 
-class FieldTextTestCase(TestCase, CommonTestCaseMixin):
+class FieldTextTestCase(DBTestCase, CommonTestCaseMixin):
     "Test Field Text"
-
-    @classmethod
-    def setUpClass(cls):
-        super().setUpClass()
-        activate_module('tests')
+    module = 'tests'
 
     def Text(self):
         return Pool().get('test.text')
@@ -540,20 +535,17 @@ class FieldTextTestCase(TestCase, CommonTestCaseMixin):
                     })
 
 
-class FieldTextTranslatedTestCase(TestCase, CommonTestCaseMixin):
+class FieldTextTranslatedTestCase(DBTestCase, CommonTestCaseMixin):
     "Test Field Text Translated"
+    module = 'tests'
 
     def Text(self):
         return Pool().get('test.text_translate')
 
 
-class FieldFullTextTestCase(TestCase):
+class FieldFullTextTestCase(DBTestCase):
     "Test Field FullText"
-
-    @classmethod
-    def setUpClass(cls):
-        super().setUpClass()
-        activate_module('tests')
+    module = 'tests'
 
     @with_transaction()
     def test_create(self):

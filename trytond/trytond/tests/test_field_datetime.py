@@ -7,8 +7,7 @@ from sql.functions import CurrentTimestamp
 from trytond.model.exceptions import (
     RequiredValidationError, TimeFormatValidationError)
 from trytond.pool import Pool
-from trytond.tests.test_tryton import (
-    TestCase, activate_module, with_transaction)
+from trytond.tests.test_tryton import DBTestCase, with_transaction
 
 today = datetime.datetime(2009, 1, 1, 12, 0, 0)
 tomorrow = today + datetime.timedelta(1)
@@ -16,13 +15,9 @@ yesterday = today - datetime.timedelta(1)
 default_datetime = datetime.datetime(2000, 1, 1, 12, 0, 0)
 
 
-class FieldDateTimeTestCase(TestCase):
+class FieldDateTimeTestCase(DBTestCase):
     "Test Field DateTime"
-
-    @classmethod
-    def setUpClass(cls):
-        super().setUpClass()
-        activate_module('tests')
+    module = 'tests'
 
     @with_transaction()
     def test_set_string(self):

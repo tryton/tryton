@@ -10,16 +10,12 @@ from trytond.pool import Pool
 from trytond.tools import file_open
 from trytond.transaction import Transaction
 
-from .test_tryton import TestCase, activate_module, with_transaction
+from .test_tryton import DBTestCase, with_transaction
 
 
-class NotificationTestCase(TestCase):
+class NotificationTestCase(DBTestCase):
     "Test Notification"
-
-    @classmethod
-    def setUpClass(cls):
-        super().setUpClass()
-        activate_module('tests')
+    module = 'tests'
 
     def run_tasks(self):
         pool = Pool()

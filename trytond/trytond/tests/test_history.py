@@ -6,18 +6,13 @@ import unittest
 from trytond import backend
 from trytond.model.exceptions import AccessError
 from trytond.pool import Pool
-from trytond.tests.test_tryton import (
-    TestCase, activate_module, with_transaction)
+from trytond.tests.test_tryton import DBTestCase, with_transaction
 from trytond.transaction import Transaction
 
 
-class HistoryTestCase(TestCase):
+class HistoryTestCase(DBTestCase):
     'Test History'
-
-    @classmethod
-    def setUpClass(cls):
-        super().setUpClass()
-        activate_module('tests')
+    module = 'tests'
 
     @with_transaction()
     def tearDown(self):

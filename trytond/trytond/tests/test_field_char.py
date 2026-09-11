@@ -10,7 +10,7 @@ from trytond.model.exceptions import (
     ForbiddenCharValidationError, RequiredValidationError, SizeValidationError)
 from trytond.pool import Pool
 from trytond.tests.test_tryton import (
-    ExtensionTestCase, TestCase, activate_module, with_transaction)
+    DBTestCase, ExtensionTestCase, with_transaction)
 from trytond.transaction import Transaction
 
 
@@ -426,13 +426,9 @@ class CommonTestCaseMixin:
         self.assertEqual(char.char_unstripped, " Foo ")
 
 
-class FieldCharTestCase(TestCase, CommonTestCaseMixin):
+class FieldCharTestCase(DBTestCase, CommonTestCaseMixin):
     "Test Field Char"
-
-    @classmethod
-    def setUpClass(cls):
-        super().setUpClass()
-        activate_module('tests')
+    module = 'tests'
 
     def Char(self):
         return Pool().get('test.char')
@@ -653,13 +649,9 @@ class FieldCharTestCase(TestCase, CommonTestCaseMixin):
         self.assertEqual(read_record.char_unstripped, " Bar ")
 
 
-class FieldCharTranslatedTestCase(TestCase, CommonTestCaseMixin):
+class FieldCharTranslatedTestCase(DBTestCase, CommonTestCaseMixin):
     "Test Field Char Translated"
-
-    @classmethod
-    def setUpClass(cls):
-        super().setUpClass()
-        activate_module('tests')
+    module = 'tests'
 
     def Char(self):
         return Pool().get('test.char_translate')
@@ -725,12 +717,8 @@ class FieldCharTranslatedTestCase(TestCase, CommonTestCaseMixin):
     "unaccent works only on postgresql")
 class FieldCharUnaccentedTestCase(ExtensionTestCase):
     "Test Field Char with unaccented searches"
+    module = 'tests'
     extension = 'unaccent'
-
-    @classmethod
-    def setUpClass(cls):
-        super().setUpClass()
-        activate_module('tests')
 
     @with_transaction()
     def test_normal_search(self):
@@ -805,12 +793,8 @@ class FieldCharUnaccentedTestCase(ExtensionTestCase):
     "similarity works only on postgresql")
 class FieldCharSimilarityTestCase(ExtensionTestCase):
     "Test Field Char with similarity searches"
+    module = 'tests'
     extension = 'pg_trgm'
-
-    @classmethod
-    def setUpClass(cls):
-        super().setUpClass()
-        activate_module('tests')
 
     def _test_search(self, Model):
         record1, record2 = Model.create([{

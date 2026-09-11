@@ -9,18 +9,13 @@ from trytond.model.exceptions import (
     AccessError, DomainValidationError, RequiredValidationError)
 from trytond.model.modelstorage import _UnsavedRecordError
 from trytond.pool import Pool
-from trytond.tests.test_tryton import (
-    TestCase, activate_module, with_transaction)
+from trytond.tests.test_tryton import DBTestCase, with_transaction
 from trytond.transaction import Transaction, check_access
 
 
-class ModelStorageTestCase(TestCase):
+class ModelStorageTestCase(DBTestCase):
     'Test ModelStorage'
-
-    @classmethod
-    def setUpClass(cls):
-        super().setUpClass()
-        activate_module('tests')
+    module = 'tests'
 
     @with_transaction()
     def test_search_read_order(self):
@@ -785,13 +780,9 @@ class ModelStorageTestCase(TestCase):
         self.assertEqual(notification.description, "Long description")
 
 
-class BrowseListTestCase(TestCase):
+class BrowseListTestCase(DBTestCase):
     "Test BrowseList"
-
-    @classmethod
-    def setUpClass(cls):
-        super().setUpClass()
-        activate_module('tests')
+    module = 'tests'
 
     @with_transaction()
     def test_contains(self):
@@ -1080,13 +1071,9 @@ class BrowseListTestCase(TestCase):
         self.assertEqual(blist.ids, [1, 2, 3])
 
 
-class EvalEnvironmentTestCase(TestCase):
+class EvalEnvironmentTestCase(DBTestCase):
     "Test EvalEnvironment"
-
-    @classmethod
-    def setUpClass(cls):
-        super().setUpClass()
-        activate_module('tests')
+    module = 'tests'
 
     @with_transaction()
     def test_char_field(self):

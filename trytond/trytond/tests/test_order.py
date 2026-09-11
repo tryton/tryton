@@ -4,17 +4,12 @@ from unittest.mock import Mock
 
 from trytond.model import sequence_reorder, sort
 from trytond.pool import Pool
-from trytond.tests.test_tryton import (
-    TestCase, activate_module, with_transaction)
+from trytond.tests.test_tryton import DBTestCase, with_transaction
 
 
-class SequenceOrderedMixinTestCase(TestCase):
+class SequenceOrderedMixinTestCase(DBTestCase):
     'Test SequenceOrderedMixin'
-
-    @classmethod
-    def setUpClass(cls):
-        super().setUpClass()
-        activate_module('tests')
+    module = 'tests'
 
     @with_transaction()
     def test_order(self):

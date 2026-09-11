@@ -5,20 +5,15 @@
 from trytond.model import ModelAccessProxy
 from trytond.model.exceptions import AccessError
 from trytond.pool import Pool
-from trytond.tests.test_tryton import (
-    TestCase, activate_module, with_transaction)
+from trytond.tests.test_tryton import DBTestCase, with_transaction
 from trytond.transaction import Transaction
 
 _context = {'_check_access': True}
 
 
-class _ModelAccessTestCase(TestCase):
+class _ModelAccessTestCase(DBTestCase):
+    module = 'tests'
     _perm = None
-
-    @classmethod
-    def setUpClass(cls):
-        super().setUpClass()
-        activate_module('tests')
 
     model_name = model_access_name = 'test.access'
 
@@ -489,13 +484,9 @@ class ModelAccessModelTestCase(_ModelAccessTestCase):
             TestAccess.search([])
 
 
-class _ModelFieldAccessTestCase(TestCase):
+class _ModelFieldAccessTestCase(DBTestCase):
+    module = 'tests'
     _perm = None
-
-    @classmethod
-    def setUpClass(cls):
-        super().setUpClass()
-        activate_module('tests')
 
     @property
     def group(self):
@@ -1193,12 +1184,8 @@ class ModelFieldAccessWriteTestCase(_ModelFieldAccessTestCase):
             TestAccess.write([record], {'field2': 'test'})
 
 
-class MenuActionAccessReadTestCase(TestCase):
-
-    @classmethod
-    def setUpClass(cls):
-        super().setUpClass()
-        activate_module('tests')
+class MenuActionAccessReadTestCase(DBTestCase):
+    module = 'tests'
 
     def create_menu(self, access=None):
         pool = Pool()

@@ -5,19 +5,14 @@ import json
 from trytond.model import ModelAccessProxy
 from trytond.model.exceptions import AccessError
 from trytond.pool import Pool
-from trytond.tests.test_tryton import (
-    TestCase, activate_module, with_transaction)
+from trytond.tests.test_tryton import DBTestCase, with_transaction
 
 _context = {'_check_access': True}
 
 
-class ModelRuleTestCase(TestCase):
+class ModelRuleTestCase(DBTestCase):
     "Test Model Rule"
-
-    @classmethod
-    def setUpClass(cls):
-        super().setUpClass()
-        activate_module('tests')
+    module = 'tests'
 
     @with_transaction(context=_context)
     def test_perm_create_without_rule(self):

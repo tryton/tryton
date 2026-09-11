@@ -6,17 +6,11 @@ from collections import defaultdict
 from trytond.model import sum_tree
 from trytond.model.exceptions import DomainValidationError, RecursionError
 from trytond.pool import Pool
-from trytond.tests.test_tryton import (
-    TestCase, activate_module, with_transaction)
+from trytond.tests.test_tryton import DBTestCase, with_transaction
 
 
 class TreeTestCaseMixin:
     model_name = None
-
-    @classmethod
-    def setUpClass(cls):
-        super().setUpClass()
-        activate_module('tests')
 
     def create(self):
         pool = Pool()
@@ -173,13 +167,9 @@ class TreeTestCaseMixin:
         self.check_tree()
 
 
-class TreeMixinTestCase(TestCase):
+class TreeMixinTestCase(DBTestCase):
     "Test TreeMixin"
-
-    @classmethod
-    def setUpClass(cls):
-        super().setUpClass()
-        activate_module('tests')
+    module = 'tests'
 
     @with_transaction()
     def test_name_domain(self):
@@ -435,13 +425,9 @@ class TreeMixinTestCase(TestCase):
             parent1.save()
 
 
-class TreeTestCase(TestCase):
+class TreeTestCase(DBTestCase):
     "Test Tree"
-
-    @classmethod
-    def setUpClass(cls):
-        super().setUpClass()
-        activate_module('tests')
+    module = 'tests'
 
     @with_transaction()
     def test_sum_tree(self):

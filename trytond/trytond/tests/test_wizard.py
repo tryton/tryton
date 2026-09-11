@@ -3,17 +3,12 @@
 
 from trytond.model.exceptions import AccessError
 from trytond.pool import Pool
-from trytond.tests.test_tryton import (
-    TestCase, activate_module, with_transaction)
+from trytond.tests.test_tryton import DBTestCase, with_transaction
 from trytond.transaction import Transaction
 
 
-class WizardTestCase(TestCase):
-
-    @classmethod
-    def setUpClass(cls):
-        super().setUpClass()
-        activate_module('tests')
+class WizardTestCase(DBTestCase):
+    module = 'tests'
 
     @with_transaction()
     def test_create(self):

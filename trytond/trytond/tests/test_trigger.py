@@ -8,19 +8,14 @@ from trytond.ir.exceptions import TriggerConditionError
 from trytond.model.exceptions import DomainValidationError, SQLConstraintError
 from trytond.pool import Pool
 from trytond.pyson import Eval, PYSONEncoder
-from trytond.tests.test_tryton import (
-    TestCase, activate_module, with_transaction)
+from trytond.tests.test_tryton import DBTestCase, with_transaction
 from trytond.tests.trigger import TRIGGER_LOGS
 from trytond.transaction import Transaction
 
 
-class TriggerTestCase(TestCase):
+class TriggerTestCase(DBTestCase):
     'Test Trigger'
-
-    @classmethod
-    def setUpClass(cls):
-        super().setUpClass()
-        activate_module('tests')
+    module = 'tests'
 
     def setUp(self):
         TRIGGER_LOGS.clear()

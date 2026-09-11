@@ -4,8 +4,7 @@ import datetime
 
 from trytond.model.exceptions import RequiredValidationError
 from trytond.pool import Pool
-from trytond.tests.test_tryton import (
-    TestCase, activate_module, with_transaction)
+from trytond.tests.test_tryton import DBTestCase, with_transaction
 
 minute = datetime.timedelta(minutes=1)
 hour = datetime.timedelta(hours=1)
@@ -13,13 +12,9 @@ day = datetime.timedelta(days=1)
 default_timedelta = datetime.timedelta(seconds=3600)
 
 
-class FieldTimeDeltaTestCase(TestCase):
+class FieldTimeDeltaTestCase(DBTestCase):
     "Test Field TimeDelta"
-
-    @classmethod
-    def setUpClass(cls):
-        super().setUpClass()
-        activate_module('tests')
+    module = 'tests'
 
     @with_transaction()
     def test_set_string(self):

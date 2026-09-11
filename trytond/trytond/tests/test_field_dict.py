@@ -7,16 +7,12 @@ from trytond.model.dictschema import SelectionError
 from trytond.model.exceptions import RequiredValidationError
 from trytond.pool import Pool
 from trytond.tests.test_tryton import (
-    ExtensionTestCase, TestCase, activate_module, with_transaction)
+    DBTestCase, ExtensionTestCase, with_transaction)
 
 
-class FieldDictTestCase(TestCase):
+class FieldDictTestCase(DBTestCase):
     "Test Field Dict"
-
-    @classmethod
-    def setUpClass(cls):
-        super().setUpClass()
-        activate_module('tests')
+    module = 'tests'
 
     def create_schema(self):
         DictSchema = Pool().get('test.dict.schema')
@@ -878,12 +874,8 @@ class FieldDictTestCase(TestCase):
     "unaccent works only on postgresql")
 class FieldDictUnaccentedTestCase(ExtensionTestCase):
     "Test Field Dict with unaccented searched"
+    module = 'tests'
     extension = 'unaccent'
-
-    @classmethod
-    def setUpClass(cls):
-        super().setUpClass()
-        activate_module('tests')
 
     @with_transaction()
     def test_search_unaccented_off(self):

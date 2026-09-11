@@ -6,21 +6,16 @@ import urllib.parse
 
 from trytond.model import ModelView
 from trytond.pool import Pool
-from trytond.tests.test_tryton import (
-    TestCase, activate_module, with_transaction)
+from trytond.tests.test_tryton import DBTestCase, with_transaction
 from trytond.transaction import Transaction
 from trytond.url import HOSTNAME, http_host
 
 from .mixin import NotMixin, ReportMixin, TestMixin, TestSecondMixin
 
 
-class UrlTestCase(TestCase):
+class UrlTestCase(DBTestCase):
     "Test URL generation"
-
-    @classmethod
-    def setUpClass(cls):
-        super().setUpClass()
-        activate_module('tests')
+    module = 'tests'
 
     @with_transaction()
     def testModelURL(self):
@@ -75,13 +70,9 @@ class UrlTestCase(TestCase):
                 http_host(), urllib.parse.quote(db_name)))
 
 
-class MixinTestCase(TestCase):
+class MixinTestCase(DBTestCase):
     "Test Mixin"
-
-    @classmethod
-    def setUpClass(cls):
-        super().setUpClass()
-        activate_module('tests')
+    module = 'tests'
 
     @with_transaction()
     def test_mixin_on_modelview(self):
@@ -114,13 +105,9 @@ class MixinTestCase(TestCase):
         self.assertTrue(issubclass(Report, ReportMixin))
 
 
-class DeactivableMixinTestCase(TestCase):
+class DeactivableMixinTestCase(DBTestCase):
     "Test DeactivableMixin"
-
-    @classmethod
-    def setUpClass(cls):
-        super().setUpClass()
-        activate_module('tests')
+    module = 'tests'
 
     @with_transaction()
     def test_deactivable_default_active(self):

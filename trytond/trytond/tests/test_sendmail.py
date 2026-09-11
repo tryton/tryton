@@ -8,16 +8,12 @@ from trytond.sendmail import (
     SMTPDataManager, get_smtp_server, sendmail, sendmail_transactional)
 from trytond.transaction import Transaction
 
-from .test_tryton import TestCase, activate_module, with_transaction
+from .test_tryton import DBTestCase, with_transaction
 
 
-class SendmailTestCase(TestCase):
+class SendmailTestCase(DBTestCase):
     'Test sendmail'
-
-    @classmethod
-    def setUpClass(cls):
-        super().setUpClass()
-        activate_module('tests')
+    module = 'tests'
 
     @with_transaction()
     def test_sendmail_transactional(self):

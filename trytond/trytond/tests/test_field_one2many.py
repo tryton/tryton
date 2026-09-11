@@ -5,8 +5,7 @@ import trytond.config as config
 from trytond.model.exceptions import (
     DomainValidationError, RequiredValidationError, SizeValidationError)
 from trytond.pool import Pool
-from trytond.tests.test_tryton import (
-    TestCase, activate_module, with_transaction)
+from trytond.tests.test_tryton import DBTestCase, with_transaction
 
 
 class SearchTestCaseMixin:
@@ -490,14 +489,10 @@ class CommonTestCaseMixin:
 
 
 class FieldOne2ManyTestCase(
-        TestCase, CommonTestCaseMixin, SearchTestCaseMixin):
+        DBTestCase, CommonTestCaseMixin, SearchTestCaseMixin):
     "Test Field One2Many"
+    module = 'tests'
     _strategy = 'IN'
-
-    @classmethod
-    def setUpClass(cls):
-        super().setUpClass()
-        activate_module('tests')
 
     def One2Many(self):
         return Pool().get('test.one2many')
@@ -778,14 +773,10 @@ class FieldOne2ManyTestCase(
 
 
 class FieldOne2ManyReferenceTestCase(
-        TestCase, CommonTestCaseMixin, SearchTestCaseMixin):
+        DBTestCase, CommonTestCaseMixin, SearchTestCaseMixin):
     "Test Field One2Many Reference"
+    module = 'tests'
     _strategy = 'IN'
-
-    @classmethod
-    def setUpClass(cls):
-        super().setUpClass()
-        activate_module('tests')
 
     def One2Many(self):
         return Pool().get('test.one2many_reference')
@@ -797,14 +788,10 @@ class FieldOne2ManyReferenceTestCase(
         return Pool().get('test.one2many_reference.active')
 
 
-class FieldOne2ManyExistsTestCase(TestCase, SearchTestCaseMixin):
+class FieldOne2ManyExistsTestCase(DBTestCase, SearchTestCaseMixin):
     "Test Field One2Many when using EXISTS"
+    module = 'tests'
     _strategy = 'EXISTS'
-
-    @classmethod
-    def setUpClass(cls):
-        super().setUpClass()
-        activate_module('tests')
 
     def setUp(self):
         super().setUp()
@@ -823,14 +810,10 @@ class FieldOne2ManyExistsTestCase(TestCase, SearchTestCaseMixin):
 
 
 class FieldOne2ManyReferenceExistsTestCase(
-        TestCase, SearchTestCaseMixin):
+        DBTestCase, SearchTestCaseMixin):
     "Test Field One2Many Reference when using EXISTS"
+    module = 'tests'
     _strategy = 'EXISTS'
-
-    @classmethod
-    def setUpClass(cls):
-        super().setUpClass()
-        activate_module('tests')
 
     def setUp(self):
         super().setUp()

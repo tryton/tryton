@@ -3,17 +3,12 @@
 
 from trytond.model import ModelView, fields
 from trytond.pyson import Eval, If
-from trytond.tests.test_tryton import (
-    TestCase, activate_module, with_transaction)
+from trytond.tests.test_tryton import DBTestCase, with_transaction
 
 
-class FieldDependsTestCase(TestCase):
+class FieldDependsTestCase(DBTestCase):
     'Test Field Depends'
-
-    @classmethod
-    def setUpClass(cls):
-        super().setUpClass()
-        activate_module('tests')
+    module = 'tests'
 
     def test_empty_depends(self):
         'Test depends are set if empty'

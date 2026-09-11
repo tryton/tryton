@@ -15,19 +15,14 @@ from trytond.convert import import_xml
 from trytond.model.exceptions import AccessError
 from trytond.pool import Pool
 from trytond.report.report import Report, get_email
-from trytond.tests.test_tryton import (
-    TestCase, activate_module, with_transaction)
+from trytond.tests.test_tryton import DBTestCase, with_transaction
 from trytond.tools import file_open
 from trytond.transaction import Transaction
 
 
-class ReportTestCase(TestCase):
+class ReportTestCase(DBTestCase):
     'Test Report'
-
-    @classmethod
-    def setUpClass(cls):
-        super().setUpClass()
-        activate_module('tests')
+    module = 'tests'
 
     @with_transaction()
     def test_format_datetime(self):

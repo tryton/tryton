@@ -2,14 +2,15 @@
 # this repository contains the full copyright notices and license terms.
 
 from trytond.pool import Pool
-from trytond.tests.test_tryton import TestCase
+from trytond.tests.test_tryton import DBTestCase
 from trytond.transaction import inactive_records
 
 from .test_tree import TreeTestCaseMixin
 
 
-class PathTestCase(TreeTestCaseMixin, TestCase):
+class PathTestCase(TreeTestCaseMixin, DBTestCase):
     "Test Path"
+    module = 'tests'
     model_name = 'test.path'
 
     def check_tree(self, parent_id=None):

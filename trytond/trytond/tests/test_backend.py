@@ -11,19 +11,14 @@ from trytond import backend
 from trytond.model import fields
 from trytond.sql.functions import NumRange
 from trytond.sql.operators import RangeContain, RangeIn, RangeOverlap
-from trytond.tests.test_tryton import (
-    TestCase, activate_module, with_transaction)
+from trytond.tests.test_tryton import DBTestCase, with_transaction
 from trytond.tools import sqlite_apply_types
 from trytond.transaction import Transaction
 
 
-class BackendTestCase(TestCase):
+class BackendTestCase(DBTestCase):
     "Test the backend"
-
-    @classmethod
-    def setUpClass(cls):
-        super().setUpClass()
-        activate_module('tests')
+    module = 'tests'
 
     @with_transaction()
     def test_current_timestamp_static_transaction(self):

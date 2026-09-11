@@ -6,18 +6,13 @@ from decimal import Decimal
 
 from trytond.model.exceptions import ImportDataError
 from trytond.pool import Pool
-from trytond.tests.test_tryton import (
-    TestCase, activate_module, with_transaction)
+from trytond.tests.test_tryton import DBTestCase, with_transaction
 from trytond.transaction import Transaction
 
 
-class ImportDataTestCase(TestCase):
+class ImportDataTestCase(DBTestCase):
     'Test import_data'
-
-    @classmethod
-    def setUpClass(cls):
-        super().setUpClass()
-        activate_module('tests')
+    module = 'tests'
 
     @with_transaction()
     def test_missing_values(self):

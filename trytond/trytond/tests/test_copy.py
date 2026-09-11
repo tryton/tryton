@@ -7,20 +7,15 @@ from unittest.mock import patch
 from trytond.model import fields
 from trytond.model.exceptions import AccessError
 from trytond.pool import Pool
-from trytond.tests.test_tryton import (
-    TestCase, activate_module, with_transaction)
+from trytond.tests.test_tryton import DBTestCase, with_transaction
 from trytond.transaction import Transaction
 
 from .test_modelsql import TranslationTestCase
 
 
-class CopyTestCase(TestCase):
+class CopyTestCase(DBTestCase):
     'Test copy'
-
-    @classmethod
-    def setUpClass(cls):
-        super().setUpClass()
-        activate_module('tests')
+    module = 'tests'
 
     @with_transaction()
     def test_copy(self):
