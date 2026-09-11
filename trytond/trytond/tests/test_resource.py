@@ -79,31 +79,6 @@ class ResourceTestCase(DBTestCase):
         self.assertEqual(user_note.write_date, write_date)
 
     @with_transaction()
-    def test_resources_rule(self):
-        "Test resources rules are applied on search"
-        pool = Pool()
-        Note = pool.get('ir.note')
-        Warning = pool.get('res.user.warning')
-
-        warning1 = Warning(user=0, name="root")
-        warning1.save()
-        note1 = Note(resource=warning1)
-        note1.save()
-        warning2 = Warning(user=1, name="admin")
-        warning2.save()
-        note2 = Note(resource=warning2)
-        note2.save()
-
-        with Transaction().set_context(_check_access=True):
-            notes = Note.search([])
-            count = Note.search([], count=True)
-            query = Note.search([], query=True)
-
-            self.assertEqual(notes, [note2])
-            self.assertEqual(count, 1)
-            self.assertTrue(query)
-
-    @with_transaction()
     def test_resource_with_access(self):
         "Test create/write/read/delete on resource with access"
         pool = Pool()
@@ -251,27 +226,92 @@ class ResourceTestCase(DBTestCase):
             with self.assertRaises(AccessError):
                 Note.delete([note])
 
-    @with_transaction()
-    def test_resources_search_limit(self):
-        "Test resource search limit work as expected"
+    @with_transaction(context={'_check_access': True})
+    def test_resource_search_with_access(self):
+        "Test searching on the resource when the user has access"
         pool = Pool()
         Note = pool.get('ir.note')
-        Warning_ = pool.get('res.user.warning')
+        Resource = pool.get('test.resource')
+        ModelAccess = pool.get('ir.model.access')
+        User = pool.get('res.user')
 
-        warning1 = Warning_(user=0, name="root")
-        warning1.save()
-        warning2 = Warning_(user=1, name="admin")
-        warning2.save()
-        for i in range(100):
-            note = Note(resource=warning2 if i % 3 else warning1)
-            note.save()
+        user = User(login='foo')
+        user.save()
+        ModelAccess.create([{
+                    'model': Resource.__name__,
+                    'group': None,
+                    'perm_write': True,
+                    'perm_read': True,
+                    }])
+        record1, record2 = Resource.create([{}, {}])
+        note, = Note.create([{
+                    'resource': record1,
+                    'message': "Foo",
+                    }])
 
-        with Transaction().set_context(_check_access=True):
-            notes = Note.search([], limit=10, offset=0)
-            self.assertEqual(len(notes), 10)
+        with Transaction().set_user(user.id):
+            notes = Note.search([
+                    ('message', '=', 'Foo'),
+                    ('resource', '=', str(record1)),
+                    ])
+            self.assertEqual([note], notes)
 
-            notes = Note.search([], limit=200, offset=0)
-            self.assertEqual(len(notes), 66)
+            notes = Note.search([
+                    ('message', '=', 'Foo'),
+                    ('resource', 'in', [str(record1), str(record2)]),
+                    ])
+            self.assertEqual([note], notes)
 
-            notes = Note.search([])
-            self.assertEqual(len(notes), 66)
+            notes = Note.search([
+                    ('message', '=', 'Foo'),
+                    ('resource', '=', str(record2)),
+                    ])
+            self.assertEqual([], notes)
+
+            with self.assertRaises(AccessError):
+                Note.search([('message', '=', 'Foo')])
+
+    @with_transaction(context={'_check_access': True})
+    def test_resource_search_without_access(self):
+        "Test searching on the resource when the user doesn't have access"
+        pool = Pool()
+        Note = pool.get('ir.note')
+        Resource = pool.get('test.resource')
+        ModelAccess = pool.get('ir.model.access')
+        User = pool.get('res.user')
+
+        user = User(login='foo')
+        user.save()
+        ModelAccess.create([{
+                    'model': Resource.__name__,
+                    'group': None,
+                    'perm_write': False,
+                    'perm_read': False,
+                    }])
+        record1, record2 = Resource.create([{}, {}])
+        note, = Note.create([{
+                    'resource': record1,
+                    'message': "Foo",
+                    }])
+
+        with Transaction().set_user(user.id):
+            with self.assertRaises(AccessError):
+                Note.search([
+                        ('message', '=', 'Foo'),
+                        ('resource', '=', str(record1)),
+                        ])
+
+            with self.assertRaises(AccessError):
+                Note.search([
+                        ('message', '=', 'Foo'),
+                        ('resource', 'in', [str(record1), str(record2)]),
+                        ])
+
+            with self.assertRaises(AccessError):
+                Note.search([
+                        ('message', '=', 'Foo'),
+                        ('resource', '=', str(record2)),
+                        ])
+
+            with self.assertRaises(AccessError):
+                Note.search([('message', '=', 'Foo')])
