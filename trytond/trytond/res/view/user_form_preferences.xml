@@ -23,8 +23,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="menu" widget="selection"/>
             <field name="actions" colspan="4"/>
         </page>
-        <page string="Group Membership" col="1" id="membership">
-            <field name="groups"/>
+        <page string="Access Permissions" id="permissions">
+            <label name="administrator"/>
+            <field name="administrator"/>
+
+            <field name="groups" colspan="4"/>
         </page>
         <page name="applications" col="1">
             <field name="applications"/>

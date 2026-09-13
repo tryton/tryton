@@ -73,7 +73,10 @@ class WizardTestCase(DBTestCase):
         ActionWizard = pool.get('ir.action.wizard')
         Group = pool.get('res.group')
         Wizard = pool.get('test.test_wizard', type='wizard')
+        User = pool.get('res.user')
 
+        user = User(login='foo')
+        user.save()
         group = Group(name="Test")
         group.save()
         action_wizard, = ActionWizard.search([
@@ -82,8 +85,9 @@ class WizardTestCase(DBTestCase):
         action_wizard.groups = [group]
         action_wizard.save()
 
-        with self.assertRaises(AccessError):
-            session_id, start_state, end_state = Wizard.create()
+        with Transaction().set_user(user.id):
+            with self.assertRaises(AccessError):
+                session_id, start_state, end_state = Wizard.create()
 
     @with_transaction()
     def test_execute(self):
@@ -121,16 +125,19 @@ class WizardTestCase(DBTestCase):
                     }}, 'next_')
         self.assertEqual(len(result['actions']), 1)
 
-    @with_transaction()
+    @with_transaction(context={'_check_access': True})
     def test_execute_without_access(self):
         "Execute wizard without access"
         pool = Pool()
         ActionWizard = pool.get('ir.action.wizard')
         Group = pool.get('res.group')
         Wizard = pool.get('test.test_wizard', type='wizard')
+        User = pool.get('res.user')
 
         session_id, start_state, end_state = Wizard.create()
 
+        user = User(login='foo')
+        user.save()
         group = Group(name="Test")
         group.save()
         action_wizard, = ActionWizard.search([
@@ -139,49 +146,61 @@ class WizardTestCase(DBTestCase):
         action_wizard.groups = [group]
         action_wizard.save()
 
-        with self.assertRaises(AccessError):
-            with Transaction().set_context(active_model='test.access'):
+        with Transaction().set_user(user.id):
+            with self.assertRaises(AccessError):
                 Wizard.execute(session_id, {}, start_state)
 
-    @with_transaction()
+    @with_transaction(context={'_check_access': True})
     def test_execute_without_model_access(self):
         "Execute wizard without model access"
         pool = Pool()
         Wizard = pool.get('test.test_wizard', type='wizard')
         ModelAccess = pool.get('ir.model.access')
+        User = pool.get('res.user')
+
+        user = User(login='foo')
+        user.save()
         ModelAccess.create([{
                     'model': 'test.access',
                     'perm_write': False,
                     }])
 
         session_id, start_state, end_state = Wizard.create()
+        with Transaction().set_user(user.id):
+            with self.assertRaises(AccessError):
+                with Transaction().set_context(active_model='test.access'):
+                    Wizard.execute(session_id, {}, start_state)
 
-        with self.assertRaises(AccessError):
-            with Transaction().set_context(active_model='test.access'):
-                Wizard.execute(session_id, {}, start_state)
-
-    @with_transaction()
+    @with_transaction(context={'_check_access': True})
     def test_execute_without_read_access(self):
         "Execute wizard without read access"
         pool = Pool()
         Wizard = pool.get('test.test_wizard', type='wizard')
+        User = pool.get('res.user')
 
+        user = User(login='foo')
+        user.save()
         session_id, start_state, end_state = Wizard.create()
 
-        with self.assertRaises(AccessError):
-            with Transaction().set_context(
-                    active_model='test.access', active_id=1):
-                Wizard.execute(session_id, {}, start_state)
+        with Transaction().set_user(user.id):
+            with self.assertRaises(AccessError):
+                with Transaction().set_context(
+                        active_model='test.access', active_id=1):
+                    Wizard.execute(session_id, {}, start_state)
 
-    @with_transaction()
+    @with_transaction(context={'_check_access': True})
     def test_execute_wrong_model(self):
         "Execute wizard on wrong model"
         pool = Pool()
         Wizard = pool.get('test.test_wizard', type='wizard')
+        User = pool.get('res.user')
 
+        user = User(login='foo')
+        user.save()
         session_id, start_state, end_state = Wizard.create()
 
-        with self.assertRaises(AccessError):
-            with Transaction().set_context(
-                    active_model='test.test_wizard.start'):
-                Wizard.execute(session_id, {}, start_state)
+        with Transaction().set_user(user.id):
+            with self.assertRaises(AccessError):
+                with Transaction().set_context(
+                        active_model='test.test_wizard.start'):
+                    Wizard.execute(session_id, {}, start_state)

@@ -6,10 +6,5 @@ this repository contains the full copyright notices and license terms. -->
         <record model="res.group" id="group_analytic_admin">
             <field name="name">Analytic Administration</field>
         </record>
-        <record model="res.user-res.group"
-            id="user_admin_group_analytic_admin">
-            <field name="user" ref="res.user_admin"/>
-            <field name="group" ref="group_analytic_admin"/>
-        </record>
     </data>
 </tryton>

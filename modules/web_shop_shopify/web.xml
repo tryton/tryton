@@ -63,15 +63,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_delete" eval="False"/>
         </record>
 
-        <record model="ir.model.access" id="access_shop_shopify_identifier_admin">
-            <field name="model">web.shop.shopify_identifier</field>
-            <field name="group" ref="res.group_admin"/>
-            <field name="perm_read" eval="True"/>
-            <field name="perm_write" eval="True"/>
-            <field name="perm_create" eval="True"/>
-            <field name="perm_delete" eval="True"/>
-        </record>
-
         <record model="ir.model.button" id="shop_shopify_identifier_set_to_update_button">
             <field name="model">web.shop.shopify_identifier</field>
             <field name="name">set_to_update</field>

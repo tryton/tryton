@@ -150,12 +150,15 @@ def get_parser_admin():
     parser.add_argument("--activate-dependencies", dest="activatedeps",
         action="store_true",
         help="activate missing dependencies of updated modules")
+    parser.add_argument(
+        "--admin-login", dest="admin_login", default="admin",
+        help="login of an administrator user (default: admin)")
     parser.add_argument("--email", dest="email", type=validate_email,
         help="set the admin email")
     parser.add_argument("-p", "--password", dest="password",
-        action='store_true', help="set the admin password")
+        action='store_true', help="set the administrator password")
     parser.add_argument("--reset-password", dest='reset_password',
-        action='store_true', help="reset the admin password")
+        action='store_true', help="reset the administrator password")
     parser.add_argument("--test-email", dest='test_email', type=validate_email,
         help="send a test email to the specified address")
     parser.add_argument("-m", "--update-modules-list", action="store_true",
@@ -176,7 +179,7 @@ def get_parser_admin():
         help="export module translations to locale folder")
 
     parser.epilog = ('The first time a database is initialized '
-        'or when the password is set, the admin password is read '
+        'or when the password is set, the administrator password is read '
         'from file defined by TRYTONPASSFILE environment variable '
         'or interactively asked from the user.\n'
         'The config file can be specified in the TRYTOND_CONFIG '

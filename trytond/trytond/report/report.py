@@ -154,20 +154,23 @@ class Report(URLMixin, PoolBase):
             return
 
         with check_access():
-            groups = set(User.get_groups())
-            report_groups = ActionReport.get_groups(cls.__name__, action.id)
-            if report_groups and not groups & report_groups:
-                groups = Group.browse(User.get_groups())
-                raise AccessError(
-                    gettext(
-                        'ir.msg_access_report_error',
-                        report=cls.__name__),
-                    gettext(
-                        'ir.msg_context_groups',
-                        groups=', '.join(g.rec_name for g in groups)))
+            if not User.is_administrator():
+                groups = set(User.get_groups())
+                report_groups = ActionReport.get_groups(
+                    cls.__name__, action.id)
+                if report_groups and not groups & report_groups:
+                    groups = Group.browse(User.get_groups())
+                    raise AccessError(
+                        gettext(
+                            'ir.msg_access_report_error',
+                            report=cls.__name__),
+                        gettext(
+                            'ir.msg_context_groups',
+                            groups=', '.join(g.rec_name for g in groups)))
 
+                if model:
+                    ModelAccess.check(model, 'read')
             if model:
-                ModelAccess.check(model, 'read')
                 Rule.check(model, ids)
 
     @classmethod

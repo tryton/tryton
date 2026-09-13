@@ -7,18 +7,8 @@ this repository contains the full copyright notices and license terms.
         <record model="res.group" id="group_purchase_requisition_approval">
             <field name="name">Purchase Requisition Approval</field>
         </record>
-        <record model="res.user-res.group"
-            id="user_admin_group_purchase_requisition_approval">
-            <field name="user" ref="res.user_admin"/>
-            <field name="group" ref="group_purchase_requisition_approval"/>
-        </record>
         <record model="res.group" id="group_purchase_requisition">
             <field name="name">Purchase Requisition</field>
-        </record>
-        <record model="res.user-res.group"
-            id="user_admin_group_purchase_requisition">
-            <field name="user" ref="res.user_admin"/>
-            <field name="group" ref="group_purchase_requisition"/>
         </record>
 
         <record model="ir.ui.menu-res.group"
@@ -154,12 +144,6 @@ this repository contains the full copyright notices and license terms.
         <record model="ir.sequence.type"
             id="sequence_type_purchase_requisition">
             <field name="name">Purchase Requisition</field>
-        </record>
-        <record model="ir.sequence.type-res.group"
-            id="sequence_type_purchase_requisition_group_admin">
-            <field name="sequence_type"
-                ref="sequence_type_purchase_requisition"/>
-            <field name="group" ref="res.group_admin"/>
         </record>
         <record model="ir.sequence.type-res.group"
             id="sequence_type_purchase_requisition_group_purchase_admin">

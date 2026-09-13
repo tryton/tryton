@@ -66,8 +66,9 @@ class MenuitemTagHandler:
                 values[attr] = attributes.get(attr)
         values['icon'] = attributes.get('icon', 'tryton-folder')
 
-        if attributes.get('active'):
-            values['active'] = bool(eval(attributes['active']))
+        for attr in ['active', 'administration']:
+            if attr in attributes:
+                values[attr] = bool(eval(attributes[attr]))
 
         if values.get('parent'):
             model, id_ = self.mh.get_id(values['parent'])

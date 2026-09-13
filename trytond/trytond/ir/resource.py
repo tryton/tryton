@@ -57,10 +57,11 @@ class ResourceAccessMixin(ModelStorage):
     @classmethod
     def check_access(cls, ids, mode='read'):
         pool = Pool()
+        User = pool.get('res.user')
         ModelAccess = pool.get('ir.model.access')
         Rule = pool.get('ir.rule')
         transaction = Transaction()
-        if transaction.user == 0 or not transaction.check_access:
+        if not transaction.check_access or User.is_administrator():
             return
         records = defaultdict(set)
         with without_check_access():

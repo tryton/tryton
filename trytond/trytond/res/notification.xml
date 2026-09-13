@@ -47,15 +47,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_delete" eval="False"/>
         </record>
 
-        <record model="ir.model.access" id="access_notification_admin">
-            <field name="model">res.notification</field>
-            <field name="group" ref="group_admin"/>
-            <field name="perm_read" eval="True"/>
-            <field name="perm_write" eval="True"/>
-            <field name="perm_create" eval="True"/>
-            <field name="perm_delete" eval="True"/>
-        </record>
-
         <record model="ir.rule.group" id="rule_group_notification">
             <field name="name">Own notification</field>
             <field name="model">res.notification</field>
@@ -76,10 +67,6 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.rule" id="rule_user_notification_admin1">
             <field name="domain" eval="[]" pyson="1"/>
             <field name="rule_group" ref="rule_group_notification_admin"/>
-        </record>
-        <record model="ir.rule.group-res.group" id="rule_group_notification_admin_admin">
-            <field name="rule_group" ref="rule_group_notification_admin"/>
-            <field name="group" ref="group_admin"/>
         </record>
 
         <record model="ir.model.button" id="notification_mark_read_button">

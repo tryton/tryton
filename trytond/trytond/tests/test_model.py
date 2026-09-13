@@ -330,16 +330,19 @@ class ModelTestCase(DBTestCase):
         pool = Pool()
         Model = pool.get('test.model')
         FieldAccess = pool.get('ir.model.field.access')
+        User = pool.get('res.user')
 
+        user = User(login='foo')
+        user.save()
         FieldAccess.create([{
                     'model': Model.__name__,
                     'field': 'name',
                     'perm_write': False,
                     }])
 
-        definition = Model.fields_get(['name'])
-
-        self.assertTrue(definition['name']['readonly'])
+        with Transaction().set_user(user.id):
+            definition = Model.fields_get(['name'])
+            self.assertTrue(definition['name']['readonly'])
 
     @with_transaction()
     def test_copy(self):

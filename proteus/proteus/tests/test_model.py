@@ -1,11 +1,30 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from proteus import Model
+from proteus import Model, config
 
 from .common import ProteusTestCase
 
 
 class TestModel(ProteusTestCase):
+
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        config.set_trytond()
+
+        Group = Model.get('res.group')
+        User = Model.get('res.user')
+        ModelAccess = Model.get('ir.model.access')
+
+        group = Group(name="Administration")
+        group.save()
+
+        admin, = User.find([('login', '=', 'admin')])
+        admin.groups.append(group)
+        admin.save()
+
+        access = ModelAccess(model='res.user', perm_read=True, group=group)
+        access.save()
 
     def test_class_cache(self):
         User1 = Model.get('res.user')

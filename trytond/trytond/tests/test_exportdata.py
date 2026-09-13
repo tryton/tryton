@@ -544,6 +544,7 @@ class ExportDataTestCase(DBTestCase):
         pool = Pool()
         ExportData = pool.get('test.export_data')
         ModelAccess = pool.get('ir.model.access')
+        User = pool.get('res.user')
 
         export, = ExportData.create([{
                     'char': "Test",
@@ -553,16 +554,24 @@ class ExportDataTestCase(DBTestCase):
                     'perm_read': False,
                     }])
 
-        with self.assertRaises(AccessError):
-            ExportData.export_data([export], ['char'])
+        u, = User.create([{
+                    'login': 'user',
+                    'administrator': False,
+                    }])
+        with Transaction().set_user(u.id):
+            with self.assertRaises(AccessError):
+                ExportData.export_data([export], ['char'])
 
     @with_transaction(context={'_check_access': True})
     def test_field_access(self):
         "Test export without field access"
         pool = Pool()
+        User = pool.get('res.user')
         ExportData = pool.get('test.export_data')
         FieldAccess = pool.get('ir.model.field.access')
 
+        user = User(login='user')
+        user.save()
         export, = ExportData.create([{
                     'char': "Test",
                     }])
@@ -572,16 +581,20 @@ class ExportDataTestCase(DBTestCase):
                     'perm_read': False,
                     }])
 
-        with self.assertRaises(AccessError):
-            ExportData.export_data([export], ['char'])
+        with Transaction().set_user(user.id):
+            with self.assertRaises(AccessError):
+                ExportData.export_data([export], ['char'])
 
     @with_transaction(context={'_check_access': True})
     def test_rule_access(self):
         "Test export with rule access"
         pool = Pool()
+        User = pool.get('res.user')
         ExportData = pool.get('test.export_data')
         RuleGroup = pool.get('ir.rule.group')
 
+        user = User(login='user')
+        user.save()
         export1, export2 = ExportData.create([{
                     'char': "foo",
                     }, {
@@ -598,6 +611,7 @@ class ExportDataTestCase(DBTestCase):
                                     }])],
                     }])
 
-        ExportData.export_data([export1], ['char'])
-        with self.assertRaises(AccessError):
-            ExportData.export_data([export2], ['char'])
+        with Transaction().set_user(user.id):
+            ExportData.export_data([export1], ['char'])
+            with self.assertRaises(AccessError):
+                ExportData.export_data([export2], ['char'])

@@ -13,7 +13,7 @@ from trytond.pool import Pool
 from trytond.sendmail import send_test_email
 from trytond.tools import file_open, find_path
 from trytond.tools.email_ import EmailNotValidError, validate_email
-from trytond.transaction import Transaction, TransactionError, inactive_records
+from trytond.transaction import Transaction, TransactionError
 
 __all__ = ['run']
 logger = logging.getLogger(__name__)
@@ -76,12 +76,15 @@ def run(options):
                         })
 
     for db_name in options.database_names:
+        if options.admin_login:
+            admin_login = options.admin_login
         if options.email is not None:
             email = options.email
         elif init[db_name]:
             while True:
                 email = input(
-                    '"admin" email for "%s" (empty for none): ' % db_name)
+                    f'email for "{admin_login}" of "{db_name}"'
+                    ' (empty for none): ')
                 if email:
                     try:
                         validate_email(email)
@@ -108,14 +111,17 @@ def run(options):
             if not password and not options.reset_password:
                 while True:
                     password = getpass(
-                        '"admin" password for "%s": ' % db_name)
-                    password2 = getpass('"admin" password confirmation: ')
+                        f'password for "{admin_login}" of "{db_name}": ')
+                    password2 = getpass(
+                        f'password confirmation for "{admin_login}": ')
                     if password != password2:
-                        sys.stderr.write('"admin" password confirmation '
-                            'doesn\'t match "admin" password.\n')
+                        sys.stderr.write(
+                            f'password confirmation for "{admin_login}" '
+                            f'doesn\'t match "{admin_login}" password.\n')
                         continue
                     if not password:
-                        sys.stderr.write('"admin" password is required.\n')
+                        sys.stderr.write(
+                            f'password for "{admin_login}" is required.\n')
                         continue
                     break
 
@@ -130,19 +136,31 @@ def run(options):
                     configuration = Configuration(1)
                     if init[db_name]:
                         configuration.series = __series__
-
-                    with inactive_records():
-                        admin, = User.search([('login', '=', 'admin')])
-
-                    if email is not None:
-                        admin.email = email
-                    if init[db_name] or options.password:
                         configuration.language = main_lang
+
+                    if (init[db_name]
+                            or options.password
+                            or options.reset_password):
+                        try:
+                            admin, = User.search([
+                                    ('id', '!=', 0),
+                                    ('login', '=', admin_login),
+                                    ('administrator', '=', True),
+                                    ])
+                        except ValueError:
+                            admin = User()
+                            admin.login = admin_login
+                            admin.administrator = True
+                        else:
+                            if not admin.administrator:
+                                admin.administrator = True
+                        if email is not None:
+                            admin.email = email
                         if not options.reset_password:
                             admin.password = password
-                    admin.save()
-                    if options.reset_password:
-                        User.reset_password([admin])
+                        admin.save()
+                        if options.reset_password:
+                            User.reset_password([admin])
                     if options.hostname is not None:
                         configuration.hostname = options.hostname or None
                     if options.export_translations:

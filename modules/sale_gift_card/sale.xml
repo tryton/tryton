@@ -6,10 +6,6 @@ this repository contains the full copyright notices and license terms. -->
         <record model="res.group" id="group_gift_card_admin">
             <field name="name">Gift Card Administration</field>
         </record>
-        <record model="res.user-res.group" id="user_admin_group_gift_card_admin">
-            <field name="user" ref="res.user_admin"/>
-            <field name="group" ref="group_gift_card_admin"/>
-        </record>
 
         <record model="ir.sequence.type" id="sequence_type_gift_card">
             <field name="name">Gift Card</field>

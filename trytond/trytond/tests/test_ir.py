@@ -573,22 +573,26 @@ class IrTestCase(ModuleTestCase):
         ModelData = pool.get('ir.model.data')
         User = pool.get('res.user')
 
-        admin_id = ModelData.get_id('res', 'user_admin')
-        admin, = User.search([('login', '=', 'admin')])
+        root_id = ModelData.get_id('res', 'user_root')
+        root, = User.search([('login', '=', 'root'), ('active', '=', False)])
 
-        self.assertEqual(admin_id, admin.id)
+        self.assertEqual(root_id, root.id)
 
     @with_transaction()
     def test_model_data_get_id_dot(self):
         "Test ModelData.get_id with dot"
         pool = Pool()
         ModelData = pool.get('ir.model.data')
-        User = pool.get('res.user')
+        Button = pool.get('ir.model.button')
 
-        admin_id = ModelData.get_id('res.user_admin')
-        admin, = User.search([('login', '=', 'admin')])
+        validate_id = ModelData.get_id(
+            'res.user_application_validate_button')
+        button, = Button.search([
+                ('model', '=', 'res.user.application'),
+                ('name', '=', 'validate_'),
+                ])
 
-        self.assertEqual(admin_id, admin.id)
+        self.assertEqual(validate_id, button.id)
 
     @with_transaction()
     def test_email_send(self):

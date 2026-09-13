@@ -31,6 +31,7 @@ from sql.conditionals import Case
 from sql.functions import CurrentTimestamp
 
 import trytond.config as config
+from trytond.backend import scalar_row
 from trytond.cache import Cache
 from trytond.exceptions import LoginException, RateLimitException, UserError
 from trytond.i18n import gettext, ngettext
@@ -122,6 +123,14 @@ class User(avatar_mixin(100, 'login'), DeactivableMixin, ModelSQL, ModelView):
             'invisible': not _has_password,
             },
         depends=['password_reset'])
+    administrator = fields.Boolean(
+        "Administrator",
+        states={
+            'readonly': (Eval('administrator', False)
+                & ((Eval('id') == Eval('context', {}).get('user'))
+                    | (Eval('id', -1) == 0))),
+            },
+        help="When checked the user has the access rights of all groups.")
     signature = fields.Text('Signature')
     menu = fields.Many2One(
         'ir.action', "Menu",
@@ -130,8 +139,11 @@ class User(avatar_mixin(100, 'login'), DeactivableMixin, ModelSQL, ModelView):
     actions = fields.Many2Many('res.user-ir.action', 'user', 'action',
         'Actions', help='Actions that will be run at login.',
         size=5)
-    groups = fields.Many2Many('res.user-res.group',
-       'user', 'group', 'Groups')
+    groups = fields.Many2Many(
+        'res.user-res.group', 'user', 'group', "Groups",
+        states={
+            'invisible': Eval('administrator', False),
+            })
     applications = fields.One2Many(
         'res.user.application', 'user', "Applications")
     language = fields.Many2One('ir.lang', 'Language',
@@ -152,6 +164,7 @@ class User(avatar_mixin(100, 'login'), DeactivableMixin, ModelSQL, ModelView):
     sessions = fields.Function(fields.Integer('Sessions'),
             'get_sessions')
     _get_groups_cache = Cache('res_user.get_groups', context=False)
+    _is_administrator_cache = Cache('res_user.is_administrator', context=False)
 
     @classmethod
     def __setup__(cls):
@@ -191,6 +204,7 @@ class User(avatar_mixin(100, 'login'), DeactivableMixin, ModelSQL, ModelView):
         cls._context_fields = [
             'language',
             'language_direction',
+            'administrator',
             'groups',
         ]
         cls._order.insert(0, ('name', 'ASC'))
@@ -366,6 +380,8 @@ class User(avatar_mixin(100, 'login'), DeactivableMixin, ModelSQL, ModelView):
                     or {'active', 'password'} & set(field_names)):
                 Session.clear(users)
                 UserDevice.clear([u.login for u in users])
+            if field_names is None or 'administrator' in field_names:
+                cls._is_administrator_cache.clear()
 
             # Clean cursor cache as it could be filled by domain_get
             for cache in Transaction().cache.values():
@@ -487,8 +503,7 @@ class User(avatar_mixin(100, 'login'), DeactivableMixin, ModelSQL, ModelView):
                             getattr(user, field).rec_name
             elif cls._fields[field]._type in ('one2many', 'many2many'):
                 res[field] = [x.id for x in getattr(user, field)]
-                admin_id = ModelData.get_id('res.user_admin')
-                if field == 'actions' and user.id == admin_id:
+                if field == 'actions' and user.is_administrator(user.id):
                     config_wizard_id = ModelData.get_id('ir',
                         'act_module_config_wizard')
                     action_id = Action.get_action_id(config_wizard_id)
@@ -550,7 +565,8 @@ class User(avatar_mixin(100, 'login'), DeactivableMixin, ModelSQL, ModelView):
         user_id = Transaction().user
         user = cls(user_id)
         for field in values:
-            if field not in fields or field == 'groups':
+            if (field not in fields
+                    or field in {'administrator', 'groups'}):
                 del values_clean[field]
             if field == 'language':
                 langs = Lang.search([
@@ -581,7 +597,8 @@ class User(avatar_mixin(100, 'login'), DeactivableMixin, ModelSQL, ModelView):
         for name, definition in result['fields'].items():
             definition = dict(definition)
             result['fields'][name] = definition
-            definition['readonly'] = name in {'groups', 'language_direction'}
+            definition['readonly'] = name in {
+                'administrator', 'groups', 'language_direction'}
 
         def convert2selection(definition, name):
             del definition[name]['relation']
@@ -612,6 +629,23 @@ class User(avatar_mixin(100, 'login'), DeactivableMixin, ModelSQL, ModelView):
             for action in actions:
                 selection.append((action.id, action.rec_name))
         return result
+
+    @classmethod
+    def is_administrator(cls, user=None):
+        transaction = Transaction()
+        if user is None:
+            user = transaction.user
+        else:
+            user = int(user)
+        if (is_admin := cls._is_administrator_cache.get(user)) is not None:
+            return is_admin
+
+        table = cls.__table__()
+        cursor = transaction.connection.cursor(row_factory=scalar_row)
+        cursor.execute(*table.select(
+                table.administrator, where=table.id == user))
+        administrator = cursor.fetchone()
+        return cls._is_administrator_cache.set(user, bool(administrator))
 
     @classmethod
     def get_groups(cls):

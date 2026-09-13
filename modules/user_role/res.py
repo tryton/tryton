@@ -4,7 +4,7 @@ import datetime as dt
 
 from trytond.model import ModelSQL, ModelView, fields
 from trytond.pool import Pool, PoolMeta
-from trytond.pyson import Bool, Eval, Id, If
+from trytond.pyson import Bool, Eval, If
 
 
 class Role(ModelSQL, ModelView):
@@ -52,7 +52,7 @@ class User(metaclass=PoolMeta):
     roles = fields.One2Many(
         'res.user.role', 'user', "Roles",
         states={
-            'invisible': Eval('id', -1) == Id('res', 'user_admin'),
+            'invisible': Eval('administrator', False),
             })
 
     @classmethod
@@ -65,6 +65,15 @@ class User(metaclass=PoolMeta):
 
         cls._context_fields.append('roles')
 
+    @fields.depends('administrator', 'roles')
+    def on_change_administrator(self):
+        try:
+            super().on_change_administrator()
+        except AttributeError:
+            pass
+        if self.administrator:
+            self.roles = []
+
     @classmethod
     def on_modification(cls, mode, users, field_names=None):
         super().on_modification(mode, users, field_names=field_names)
@@ -73,18 +82,13 @@ class User(metaclass=PoolMeta):
 
     @classmethod
     def sync_roles(cls, users=None, date=None, clear=False):
-        pool = Pool()
-        ModelData = pool.get('ir.model.data')
-
-        admin_id = ModelData.get_id('res', 'user_admin')
-
         if date is None:
             date = dt.datetime.now()
         if users is None:
             users = cls.search([])
         to_write = []
         for user in users:
-            if user.id == admin_id:
+            if user.administrator:
                 continue
             if not user.roles and not clear:
                 continue
@@ -106,9 +110,7 @@ class UserRole(ModelSQL, ModelView):
     user = fields.Many2One(
         'res.user', "User", ondelete='CASCADE', required=True,
         domain=[
-            If(Eval('user', -1) == Id('res', 'user_admin'),
-                ('id', '=', -1),
-                ()),
+            ('administrator', '=', False),
             ])
     role = fields.Many2One(
         'res.role', "Role", ondelete='CASCADE', required=True)

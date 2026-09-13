@@ -6,10 +6,6 @@ this repository contains the full copyright notices and license terms. -->
         <record model="res.group" id="group_statement">
             <field name="name">Statement</field>
         </record>
-        <record model="res.user-res.group" id="user_admin_group_statement">
-            <field name="user" ref="res.user_admin"/>
-            <field name="group" ref="group_statement"/>
-        </record>
 
         <menuitem
             name="Statements"

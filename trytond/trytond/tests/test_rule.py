@@ -5,7 +5,9 @@ import json
 from trytond.model import ModelAccessProxy
 from trytond.model.exceptions import AccessError
 from trytond.pool import Pool
-from trytond.tests.test_tryton import DBTestCase, with_transaction
+from trytond.tests.test_tryton import (
+    DB_NAME, USER, DBTestCase, with_transaction)
+from trytond.transaction import Transaction
 
 _context = {'_check_access': True}
 
@@ -14,13 +16,27 @@ class ModelRuleTestCase(DBTestCase):
     "Test Model Rule"
     module = 'tests'
 
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        with Transaction().start(DB_NAME, USER):
+            pool = Pool()
+            User = pool.get('res.user')
+
+            user, = User.create([{
+                        'login': 'user',
+                        'administrator': False,
+                        }])
+            cls.user_id = user.id
+
     @with_transaction(context=_context)
     def test_perm_create_without_rule(self):
         "Test create without rule"
         pool = Pool()
         TestRule = pool.get('test.rule')
 
-        test, = TestRule.create([{}])
+        with Transaction().set_user(self.user_id):
+            test, = TestRule.create([{}])
 
     @with_transaction(context=_context)
     def test_perm_create_with_rule(self):
@@ -43,7 +59,8 @@ class ModelRuleTestCase(DBTestCase):
                                     }])],
                     }])
 
-        test, = TestRule.create([{'field': 'bar'}])
+        with Transaction().set_user(self.user_id):
+            test, = TestRule.create([{'field': 'bar'}])
 
     @with_transaction(context=_context)
     def test_perm_create_with_rule_fail(self):
@@ -66,8 +83,10 @@ class ModelRuleTestCase(DBTestCase):
                                     }])],
                     }])
 
-        with self.assertRaisesRegex(AccessError, "Field different from foo"):
-            test, = TestRule.create([{'field': 'foo'}])
+        with Transaction().set_user(self.user_id):
+            with self.assertRaisesRegex(
+                    AccessError, "Field different from foo"):
+                test, = TestRule.create([{'field': 'foo'}])
 
     @with_transaction(context=_context)
     def test_perm_create_with_default_rule_fail(self):
@@ -91,8 +110,10 @@ class ModelRuleTestCase(DBTestCase):
                                     }])],
                     }])
 
-        with self.assertRaisesRegex(AccessError, "Field different from foo"):
-            test, = TestRule.create([{'field': 'foo'}])
+        with Transaction().set_user(self.user_id):
+            with self.assertRaisesRegex(
+                    AccessError, "Field different from foo"):
+                test, = TestRule.create([{'field': 'foo'}])
 
     @with_transaction(context=_context)
     def test_perm_write_without_rule(self):
@@ -102,7 +123,8 @@ class ModelRuleTestCase(DBTestCase):
 
         test, = TestRule.create([{}])
 
-        TestRule.write([test], {'field': 'foo'})
+        with Transaction().set_user(self.user_id):
+            TestRule.write([test], {'field': 'foo'})
 
     @with_transaction(context=_context)
     def test_perm_write_with_rule(self):
@@ -126,7 +148,8 @@ class ModelRuleTestCase(DBTestCase):
                     }])
         test, = TestRule.create([{'field': 'test'}])
 
-        TestRule.write([test], {'field': 'bar'})
+        with Transaction().set_user(self.user_id):
+            TestRule.write([test], {'field': 'bar'})
 
     @with_transaction(context=_context)
     def test_perm_write_with_rule_fail_before(self):
@@ -150,8 +173,10 @@ class ModelRuleTestCase(DBTestCase):
                     }])
         test, = TestRule.create([{'field': 'foo'}])
 
-        with self.assertRaisesRegex(AccessError, "Field different from foo"):
-            TestRule.write([test], {'field': 'bar'})
+        with Transaction().set_user(self.user_id):
+            with self.assertRaisesRegex(
+                    AccessError, "Field different from foo"):
+                TestRule.write([test], {'field': 'bar'})
 
     @with_transaction(context=_context)
     def test_perm_write_with_rule_fail_after(self):
@@ -175,8 +200,10 @@ class ModelRuleTestCase(DBTestCase):
                     }])
         test, = TestRule.create([{'field': 'bar'}])
 
-        with self.assertRaisesRegex(AccessError, "Field different from foo"):
-            TestRule.write([test], {'field': 'foo'})
+        with Transaction().set_user(self.user_id):
+            with self.assertRaisesRegex(
+                    AccessError, "Field different from foo"):
+                TestRule.write([test], {'field': 'foo'})
 
     @with_transaction(context=_context)
     def test_perm_delete_without_rule(self):
@@ -186,7 +213,8 @@ class ModelRuleTestCase(DBTestCase):
 
         test, = TestRule.create([{}])
 
-        TestRule.delete([test])
+        with Transaction().set_user(self.user_id):
+            TestRule.delete([test])
 
     @with_transaction(context=_context)
     def test_perm_delete_with_rule(self):
@@ -210,7 +238,8 @@ class ModelRuleTestCase(DBTestCase):
                     }])
         test, = TestRule.create([{'field': 'bar'}])
 
-        TestRule.delete([test])
+        with Transaction().set_user(self.user_id):
+            TestRule.delete([test])
 
     @with_transaction(context=_context)
     def test_perm_delete_with_rule_fail(self):
@@ -234,8 +263,10 @@ class ModelRuleTestCase(DBTestCase):
                     }])
         test, = TestRule.create([{'field': 'foo'}])
 
-        with self.assertRaisesRegex(AccessError, "Field different from foo"):
-            TestRule.delete([test])
+        with Transaction().set_user(self.user_id):
+            with self.assertRaisesRegex(
+                    AccessError, "Field different from foo"):
+                TestRule.delete([test])
 
     @with_transaction(context=_context)
     def test_perm_read_without_rule(self):
@@ -245,7 +276,8 @@ class ModelRuleTestCase(DBTestCase):
 
         test, = TestRule.create([{'field': 'foo'}])
 
-        TestRule.read([test.id], ['field'])
+        with Transaction().set_user(self.user_id):
+            TestRule.read([test.id], ['field'])
 
     @with_transaction(context=_context)
     def test_perm_read_with_rule(self):
@@ -269,7 +301,8 @@ class ModelRuleTestCase(DBTestCase):
                     }])
         test, = TestRule.create([{'field': 'bar'}])
 
-        TestRule.read([test.id], ['field'])
+        with Transaction().set_user(self.user_id):
+            TestRule.read([test.id], ['field'])
 
     @with_transaction(context=_context)
     def test_perm_read_with_rule_fail(self):
@@ -293,8 +326,10 @@ class ModelRuleTestCase(DBTestCase):
                     }])
         test, = TestRule.create([{'field': 'foo'}])
 
-        with self.assertRaisesRegex(AccessError, "Field different from foo"):
-            TestRule.read([test.id], ['field'])
+        with Transaction().set_user(self.user_id):
+            with self.assertRaisesRegex(
+                    AccessError, "Field different from foo"):
+                TestRule.read([test.id], ['field'])
 
     @with_transaction(context=_context)
     def test_perm_read_with_rule_no_sql_type_fail(self):
@@ -318,8 +353,10 @@ class ModelRuleTestCase(DBTestCase):
                     }])
         test, = TestRule.create([{'field': 'foo'}])
 
-        with self.assertRaisesRegex(AccessError, "Field different from foo"):
-            TestRule.read([test.id], ['rec_name'])
+        with Transaction().set_user(self.user_id):
+            with self.assertRaisesRegex(
+                    AccessError, "Field different from foo"):
+                TestRule.read([test.id], ['rec_name'])
 
     @with_transaction(context=_context)
     def test_search_without_rule(self):
@@ -329,7 +366,8 @@ class ModelRuleTestCase(DBTestCase):
 
         test, = TestRule.create([{'field': 'foo'}])
 
-        self.assertListEqual(TestRule.search([]), [test])
+        with Transaction().set_user(self.user_id):
+            self.assertEqual(TestRule.search([]), [test])
 
     @with_transaction(context=_context)
     def test_search_with_rule(self):
@@ -353,7 +391,8 @@ class ModelRuleTestCase(DBTestCase):
                     }])
         test, = TestRule.create([{'field': 'bar'}])
 
-        self.assertListEqual(TestRule.search([]), [test])
+        with Transaction().set_user(self.user_id):
+            self.assertEqual(TestRule.search([]), [test])
 
     @with_transaction(context=_context)
     def test_search_with_rule_match(self):
@@ -377,7 +416,8 @@ class ModelRuleTestCase(DBTestCase):
                     }])
         test, = TestRule.create([{'field': 'foo'}])
 
-        self.assertListEqual(TestRule.search([]), [])
+        with Transaction().set_user(self.user_id):
+            self.assertEqual(TestRule.search([]), [])
 
     @with_transaction(context=_context)
     def test_write_field_no_rule(self):
@@ -386,8 +426,9 @@ class ModelRuleTestCase(DBTestCase):
         TestRule = pool.get('test.rule')
         writable, = TestRule.create([{'field': 'foo'}])
 
-        value, = TestRule.read([writable.id], ['_write'])
-        self.assertEqual(value['_write'], True)
+        with Transaction().set_user(self.user_id):
+            value, = TestRule.read([writable.id], ['_write'])
+            self.assertEqual(value['_write'], True)
 
     @with_transaction(context=_context)
     def test_write_field_rule_True(self):
@@ -411,8 +452,9 @@ class ModelRuleTestCase(DBTestCase):
                     }])
         writable, = TestRule.create([{'field': 'bar'}])
 
-        value, = TestRule.read([writable.id], ['_write'])
-        self.assertEqual(value['_write'], True)
+        with Transaction().set_user(self.user_id):
+            value, = TestRule.read([writable.id], ['_write'])
+            self.assertEqual(value['_write'], True)
 
     @with_transaction(context=_context)
     def test_write_field_rule_False(self):
@@ -436,8 +478,9 @@ class ModelRuleTestCase(DBTestCase):
                     }])
         non_writable, = TestRule.create([{'field': 'foo'}])
 
-        value, = TestRule.read([non_writable.id], ['_write'])
-        self.assertEqual(value['_write'], False)
+        with Transaction().set_user(self.user_id):
+            value, = TestRule.read([non_writable.id], ['_write'])
+            self.assertEqual(value['_write'], False)
 
     @with_transaction(context=_context)
     def test_write_field_relation_rule_True(self):
@@ -463,8 +506,9 @@ class ModelRuleTestCase(DBTestCase):
         relation, = TestRuleRelation.create([{'field': 'bar'}])
         writable, = TestRule.create([{'relation': relation}])
 
-        value, = TestRule.read([writable.id], ['_write'])
-        self.assertEqual(value['_write'], True)
+        with Transaction().set_user(self.user_id):
+            value, = TestRule.read([writable.id], ['_write'])
+            self.assertEqual(value['_write'], True)
 
     @with_transaction(context=_context)
     def test_write_field_relation_rule_False(self):
@@ -490,8 +534,9 @@ class ModelRuleTestCase(DBTestCase):
         relation, = TestRuleRelation.create([{'field': 'foo'}])
         non_writable, = TestRule.create([{'relation': relation}])
 
-        value, = TestRule.read([non_writable.id], ['_write'])
-        self.assertEqual(value['_write'], False)
+        with Transaction().set_user(self.user_id):
+            value, = TestRule.read([non_writable.id], ['_write'])
+            self.assertEqual(value['_write'], False)
 
     @with_transaction(context=_context)
     def test_delete_field_no_rule(self):
@@ -500,8 +545,9 @@ class ModelRuleTestCase(DBTestCase):
         TestRule = pool.get('test.rule')
         deletable, = TestRule.create([{'field': 'foo'}])
 
-        value, = TestRule.read([deletable.id], ['_delete'])
-        self.assertEqual(value['_delete'], True)
+        with Transaction().set_user(self.user_id):
+            value, = TestRule.read([deletable.id], ['_delete'])
+            self.assertEqual(value['_delete'], True)
 
     @with_transaction(context=_context)
     def test_delete_field_rule_True(self):
@@ -525,8 +571,9 @@ class ModelRuleTestCase(DBTestCase):
                     }])
         deletable, = TestRule.create([{'field': 'bar'}])
 
-        value, = TestRule.read([deletable.id], ['_delete'])
-        self.assertEqual(value['_delete'], True)
+        with Transaction().set_user(self.user_id):
+            value, = TestRule.read([deletable.id], ['_delete'])
+            self.assertEqual(value['_delete'], True)
 
     @with_transaction(context=_context)
     def test_delete_field_rule_False(self):
@@ -550,8 +597,9 @@ class ModelRuleTestCase(DBTestCase):
                     }])
         non_deletable, = TestRule.create([{'field': 'foo'}])
 
-        value, = TestRule.read([non_deletable.id], ['_delete'])
-        self.assertEqual(value['_delete'], False)
+        with Transaction().set_user(self.user_id):
+            value, = TestRule.read([non_deletable.id], ['_delete'])
+            self.assertEqual(value['_delete'], False)
 
     @with_transaction(context=_context)
     def test_delete_field_relation_rule_True(self):
@@ -577,8 +625,9 @@ class ModelRuleTestCase(DBTestCase):
         relation, = TestRuleRelation.create([{'field': 'bar'}])
         deletable, = TestRule.create([{'relation': relation}])
 
-        value, = TestRule.read([deletable.id], ['_delete'])
-        self.assertEqual(value['_delete'], True)
+        with Transaction().set_user(self.user_id):
+            value, = TestRule.read([deletable.id], ['_delete'])
+            self.assertEqual(value['_delete'], True)
 
     @with_transaction(context=_context)
     def test_delete_field_relation_rule_False(self):
@@ -604,8 +653,9 @@ class ModelRuleTestCase(DBTestCase):
         relation, = TestRuleRelation.create([{'field': 'foo'}])
         non_deletable, = TestRule.create([{'relation': relation}])
 
-        value, = TestRule.read([non_deletable.id], ['_delete'])
-        self.assertEqual(value['_delete'], False)
+        with Transaction().set_user(self.user_id):
+            value, = TestRule.read([non_deletable.id], ['_delete'])
+            self.assertEqual(value['_delete'], False)
 
     @with_transaction(context=_context)
     def test_model_with_rule(self):
@@ -631,7 +681,8 @@ class ModelRuleTestCase(DBTestCase):
         rule, = TestRule.create([{'field': 'bar'}])
         test, = TestRuleModel.create([{'rule': rule.id, 'name': 'foo'}])
 
-        TestRuleModel.read([test.id], ['name'])
+        with Transaction().set_user(self.user_id):
+            TestRuleModel.read([test.id], ['name'])
 
     @with_transaction(context=_context)
     def test_model_with_rule_fail(self):
@@ -657,8 +708,10 @@ class ModelRuleTestCase(DBTestCase):
         rule, = TestRule.create([{'field': 'foo'}])
         test, = TestRuleModel.create([{'rule': rule.id, 'name': 'foo'}])
 
-        with self.assertRaisesRegex(AccessError, "Field different from foo"):
-            TestRuleModel.read([test.id], ['name'])
+        with Transaction().set_user(self.user_id):
+            with self.assertRaisesRegex(
+                    AccessError, "Field different from foo"):
+                TestRuleModel.read([test.id], ['name'])
 
     @with_transaction()
     def test_model_access_proxy(self):
@@ -700,5 +753,6 @@ class ModelRuleTestCase(DBTestCase):
                     }])
         record, = TestRule.create([{'field': 'foo'}])
 
-        with self.assertRaises(AccessError):
-            ModelAccessProxy(record, {})
+        with Transaction().set_user(self.user_id):
+            with self.assertRaises(AccessError):
+                ModelAccessProxy(record, {})

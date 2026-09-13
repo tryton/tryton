@@ -14,11 +14,6 @@ this repository contains the full copyright notices and license terms. -->
             sequence="30"
             id="menu_country"
             icon="tryton-country"/>
-        <record model="ir.ui.menu-res.group"
-            id="menu_country_group_admin">
-            <field name="menu" ref="menu_country"/>
-            <field name="group" ref="res.group_admin"/>
-        </record>
 
         <record model="ir.ui.view" id="organization_view_form">
             <field name="model">country.organization</field>
@@ -58,14 +53,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
-        </record>
-        <record model="ir.model.access" id="access_organization_admin">
-            <field name="model">country.organization</field>
-            <field name="group" ref="res.group_admin"/>
-            <field name="perm_read" eval="True"/>
-            <field name="perm_write" eval="True"/>
-            <field name="perm_create" eval="True"/>
-            <field name="perm_delete" eval="True"/>
         </record>
 
         <record model="ir.ui.view" id="organization_member_view_form">
@@ -149,14 +136,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
-        <record model="ir.model.access" id="access_region_admin">
-            <field name="model">country.region</field>
-            <field name="group" ref="res.group_admin"/>
-            <field name="perm_read" eval="True"/>
-            <field name="perm_write" eval="True"/>
-            <field name="perm_create" eval="True"/>
-            <field name="perm_delete" eval="True"/>
-        </record>
 
         <record model="ir.ui.view" id="country_view_form">
             <field name="model">country.country</field>
@@ -209,14 +188,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
-        <record model="ir.model.access" id="access_country_admin">
-            <field name="model">country.country</field>
-            <field name="group" ref="res.group_admin"/>
-            <field name="perm_read" eval="True"/>
-            <field name="perm_write" eval="True"/>
-            <field name="perm_create" eval="True"/>
-            <field name="perm_delete" eval="True"/>
-        </record>
 
         <record model="ir.ui.view" id="subdivision_view_form">
             <field name="model">country.subdivision</field>
@@ -235,14 +206,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
-        </record>
-        <record model="ir.model.access" id="access_subdivision_admin">
-            <field name="model">country.subdivision</field>
-            <field name="group" ref="res.group_admin"/>
-            <field name="perm_read" eval="True"/>
-            <field name="perm_write" eval="True"/>
-            <field name="perm_create" eval="True"/>
-            <field name="perm_delete" eval="True"/>
         </record>
 
         <record model="ir.ui.view" id="postal_code_view_form">
@@ -284,14 +247,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
-        </record>
-        <record model="ir.model.access" id="access_postal_code_admin">
-            <field name="model">country.postal_code</field>
-            <field name="group" ref="res.group_admin"/>
-            <field name="perm_read" eval="True"/>
-            <field name="perm_write" eval="True"/>
-            <field name="perm_create" eval="True"/>
-            <field name="perm_delete" eval="True"/>
         </record>
     </data>
 </tryton>

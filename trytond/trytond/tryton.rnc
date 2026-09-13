@@ -33,4 +33,5 @@ attlist.menuitem &= attribute parent { text }?
 attlist.menuitem &= attribute action { text }?
 attlist.menuitem &= attribute groups { text }?
 attlist.menuitem &= attribute active { text }?
+attlist.menuitem &= attribute administration { text }?
 start = tryton

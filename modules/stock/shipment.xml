@@ -445,11 +445,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Customer Shipment</field>
         </record>
         <record model="ir.sequence.type-res.group"
-            id="sequence_type_shipment_out_group_admin">
-            <field name="sequence_type" ref="sequence_type_shipment_out"/>
-            <field name="group" ref="res.group_admin"/>
-        </record>
-        <record model="ir.sequence.type-res.group"
             id="sequence_type_shipment_out_group_stock_admin">
             <field name="sequence_type" ref="sequence_type_shipment_out"/>
             <field name="group" ref="group_stock_admin"/>
@@ -462,11 +457,6 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.sequence.type" id="sequence_type_shipment_in">
             <field name="name">Supplier Shipment</field>
-        </record>
-        <record model="ir.sequence.type-res.group"
-            id="sequence_type_shipment_in_group_admin">
-            <field name="sequence_type" ref="sequence_type_shipment_in"/>
-            <field name="group" ref="res.group_admin"/>
         </record>
         <record model="ir.sequence.type-res.group"
             id="sequence_type_shipment_in_group_stock_admin">
@@ -483,11 +473,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Internal Shipment</field>
         </record>
         <record model="ir.sequence.type-res.group"
-            id="sequence_type_shipment_internal_group_admin">
-            <field name="sequence_type" ref="sequence_type_shipment_internal"/>
-            <field name="group" ref="res.group_admin"/>
-        </record>
-        <record model="ir.sequence.type-res.group"
             id="sequence_type_shipment_internal_group_stock_admin">
             <field name="sequence_type" ref="sequence_type_shipment_internal"/>
             <field name="group" ref="group_stock_admin"/>
@@ -500,11 +485,6 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.sequence.type" id="sequence_type_shipment_out_return">
             <field name="name">Customer Return Shipment</field>
-        </record>
-        <record model="ir.sequence.type-res.group"
-            id="sequence_type_shipment_out_return_group_admin">
-            <field name="sequence_type" ref="sequence_type_shipment_out_return"/>
-            <field name="group" ref="res.group_admin"/>
         </record>
         <record model="ir.sequence.type-res.group"
             id="sequence_type_shipment_out_return_group_stock_admin">
@@ -520,11 +500,6 @@ this repository contains the full copyright notices and license terms. -->
         <!-- Sequence shipment in return -->
         <record model="ir.sequence.type" id="sequence_type_shipment_in_return">
             <field name="name">Supplier Return Shipment</field>
-        </record>
-        <record model="ir.sequence.type-res.group"
-            id="sequence_type_shipment_in_return_group_admin">
-            <field name="sequence_type" ref="sequence_type_shipment_in_return"/>
-            <field name="group" ref="res.group_admin"/>
         </record>
         <record model="ir.sequence.type-res.group"
             id="sequence_type_shipment_in_return_group_stock_admin">

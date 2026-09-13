@@ -6,10 +6,6 @@ this repository contains the full copyright notices and license terms. -->
         <record model="res.group" id="group_carrier_admin">
             <field name="name">Carrier Administration</field>
         </record>
-        <record model="res.user-res.group" id="user_admin_group_carrier_admin">
-            <field name="user" ref="res.user_admin"/>
-            <field name="group" ref="group_carrier_admin"/>
-        </record>
 
         <record model="ir.ui.icon" id="carrier_icon">
             <field name="name">tryton-carrier</field>

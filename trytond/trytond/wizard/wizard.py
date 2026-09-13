@@ -259,37 +259,40 @@ class Wizard(URLMixin, PoolBase):
             model = context.get('active_model')
             if model:
                 Model = pool.get(model)
-            if model and model != 'ir.ui.menu':
-                ModelAccess.check(model, 'read')
-            models = ActionWizard.get_models(
-                cls.__name__, action_id=context.get('action_id'))
-            if model and models and model not in models:
-                groups = Group.browse(User.get_groups())
-                raise AccessError(
-                    gettext(
-                        'ir.msg_access_wizard_model_error',
-                        wizard=cls.__name__,
-                        model=model),
-                    gettext(
-                        'ir.msg_context_groups',
-                        groups=', '.join(g.rec_name for g in groups)))
-            groups = set(User.get_groups())
-            wizard_groups = ActionWizard.get_groups(cls.__name__,
-                action_id=context.get('action_id'))
-            if wizard_groups:
-                if not groups & wizard_groups:
+            if not User.is_administrator():
+                if model and model != 'ir.ui.menu':
+                    ModelAccess.check(model, 'read')
+                models = ActionWizard.get_models(
+                    cls.__name__, action_id=context.get('action_id'))
+                if model and models and model not in models:
                     groups = Group.browse(User.get_groups())
                     raise AccessError(
                         gettext(
-                            'ir.msg_access_wizard_error',
-                            wizard=cls.__name__),
+                            'ir.msg_access_wizard_model_error',
+                            wizard=cls.__name__,
+                            model=model),
                         gettext(
                             'ir.msg_context_groups',
                             groups=', '.join(g.rec_name for g in groups)))
-            elif model and model != 'ir.ui.menu' and not transaction.readonly:
-                if (not callable(getattr(Model, 'table_query', None))
-                        or Model.write.__func__ != ModelSQL.write.__func__):
-                    ModelAccess.check(model, 'write')
+                groups = set(User.get_groups())
+                wizard_groups = ActionWizard.get_groups(cls.__name__,
+                    action_id=context.get('action_id'))
+                if wizard_groups:
+                    if not groups & wizard_groups:
+                        groups = Group.browse(User.get_groups())
+                        raise AccessError(
+                            gettext(
+                                'ir.msg_access_wizard_error',
+                                wizard=cls.__name__),
+                            gettext(
+                                'ir.msg_context_groups',
+                                groups=', '.join(g.rec_name for g in groups)))
+                elif (model and model != 'ir.ui.menu'
+                        and not transaction.readonly):
+                    if (not callable(getattr(Model, 'table_query', None))
+                            or Model.write.__func__ != ModelSQL.write.__func__
+                            ):
+                        ModelAccess.check(model, 'write')
 
             if model:
                 ids = context.get('active_ids') or []

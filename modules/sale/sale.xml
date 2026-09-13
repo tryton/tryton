@@ -10,14 +10,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Sales Administrator</field>
             <field name="parent" ref="group_sale"/>
         </record>
-        <record model="res.user-res.group" id="user_admin_group_sale">
-            <field name="user" ref="res.user_admin"/>
-            <field name="group" ref="group_sale"/>
-        </record>
-        <record model="res.user-res.group" id="user_admin_group_sale_admin">
-            <field name="user" ref="res.user_admin"/>
-            <field name="group" ref="group_sale_admin"/>
-        </record>
 
         <record model="ir.ui.icon" id="sale_icon">
             <field name="name">tryton-sale</field>
@@ -381,11 +373,6 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.sequence.type" id="sequence_type_sale">
             <field name="name">Sale</field>
-        </record>
-        <record model="ir.sequence.type-res.group"
-            id="sequence_type_sale_group_admin">
-            <field name="sequence_type" ref="sequence_type_sale"/>
-            <field name="group" ref="res.group_admin"/>
         </record>
         <record model="ir.sequence.type-res.group"
             id="sequence_type_sale_group_sale_admin">

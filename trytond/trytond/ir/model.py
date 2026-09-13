@@ -596,11 +596,13 @@ class ModelAccess(
         cursor = Transaction().connection.cursor()
         model_access = cls.__table__()
 
+        is_administrator = User.is_administrator()
         groups = User.get_groups()
 
         access = {}
         for model in models:
-            maccess = cls._get_access_cache.get((groups, model), default=-1)
+            maccess = cls._get_access_cache.get(
+                (is_administrator, groups, model), default=-1)
             if maccess == -1:
                 break
             access[model] = maccess
@@ -639,38 +641,42 @@ class ModelAccess(
                 access[model] = default_singleton
             else:
                 access[model] = default
-        cursor.execute(*model_access.select(
-                model_access.model,
-                Max(Case(
-                        (model_access.perm_read == Literal(True), 1),
-                        else_=0)),
-                Max(Case(
-                        (model_access.perm_write == Literal(True), 1),
-                        else_=0)),
-                Max(Case(
-                        (model_access.perm_create == Literal(True), 1),
-                        else_=0)),
-                Max(Case(
-                        (model_access.perm_delete == Literal(True), 1),
-                        else_=0)),
-                where=model_access.model.in_(all_models)
-                & (model_access.active == Literal(True))
-                & (model_access.group.in_(groups or [-1])
-                    | (model_access.group == Null)),
-                group_by=model_access.model))
-        raw_access = {
-            m: {'read': r, 'write': w, 'create': c, 'delete': d}
-            for m, r, w, c, d in cursor}
 
-        for model in models:
-            access[model] = {
-                perm: max(
-                    (raw_access[m][perm] for m in model2models[model]
-                        if m in raw_access),
-                    default=access[model][perm])
-                for perm in ['read', 'write', 'create', 'delete']}
+        if not is_administrator:
+            cursor.execute(*model_access.select(
+                    model_access.model,
+                    Max(Case(
+                            (model_access.perm_read == Literal(True), 1),
+                            else_=0)),
+                    Max(Case(
+                            (model_access.perm_write == Literal(True), 1),
+                            else_=0)),
+                    Max(Case(
+                            (model_access.perm_create == Literal(True), 1),
+                            else_=0)),
+                    Max(Case(
+                            (model_access.perm_delete == Literal(True), 1),
+                            else_=0)),
+                    where=model_access.model.in_(all_models)
+                    & (model_access.active == Literal(True))
+                    & (model_access.group.in_(groups or [-1])
+                        | (model_access.group == Null)),
+                    group_by=model_access.model))
+            raw_access = {
+                m: {'read': r, 'write': w, 'create': c, 'delete': d}
+                for m, r, w, c, d in cursor}
+
+            for model in models:
+                access[model] = {
+                    perm: max(
+                        (raw_access[m][perm] for m in model2models[model]
+                            if m in raw_access),
+                        default=access[model][perm])
+                    for perm in ['read', 'write', 'create', 'delete']}
+
         for model, maccess in access.items():
-            cls._get_access_cache.set((groups, model), maccess)
+            cls._get_access_cache.set(
+                (is_administrator, groups, model), maccess)
         return access
 
     @classmethod
@@ -829,12 +835,13 @@ class ModelFieldAccess(
         pool = Pool()
         User = pool.get('res.user')
         field_access = cls.__table__()
-
+        is_administrator = User.is_administrator()
         groups = User.get_groups()
 
         accesses = {}
         for model in models:
-            maccesses = cls._get_access_cache.get((groups, model))
+            maccesses = cls._get_access_cache.get(
+                (is_administrator, groups, model))
             if maccesses is None:
                 break
             accesses[model] = maccesses
@@ -843,31 +850,34 @@ class ModelFieldAccess(
 
         default = {}
         accesses = dict((m, default) for m in models)
-        cursor = Transaction().connection.cursor()
-        cursor.execute(*field_access.select(
-                field_access.model,
-                field_access.field,
-                Max(Case(
-                        (field_access.perm_read == Literal(True), 1),
-                        else_=0)),
-                Max(Case(
-                        (field_access.perm_write == Literal(True), 1),
-                        else_=0)),
-                Max(Case(
-                        (field_access.perm_create == Literal(True), 1),
-                        else_=0)),
-                Max(Case(
-                        (field_access.perm_delete == Literal(True), 1),
-                        else_=0)),
-                where=field_access.model.in_(models)
-                & (field_access.active == Literal(True))
-                & (field_access.group.in_(groups or [-1])
-                    | (field_access.group == Null)),
-                group_by=[field_access.model, field_access.field]))
-        for m, f, r, w, c, d in cursor:
-            accesses[m][f] = {'read': r, 'write': w, 'create': c, 'delete': d}
+        if not is_administrator:
+            cursor = Transaction().connection.cursor()
+            cursor.execute(*field_access.select(
+                    field_access.model,
+                    field_access.field,
+                    Max(Case(
+                            (field_access.perm_read == Literal(True), 1),
+                            else_=0)),
+                    Max(Case(
+                            (field_access.perm_write == Literal(True), 1),
+                            else_=0)),
+                    Max(Case(
+                            (field_access.perm_create == Literal(True), 1),
+                            else_=0)),
+                    Max(Case(
+                            (field_access.perm_delete == Literal(True), 1),
+                            else_=0)),
+                    where=field_access.model.in_(models)
+                    & (field_access.active == Literal(True))
+                    & (field_access.group.in_(groups or [-1])
+                        | (field_access.group == Null)),
+                    group_by=[field_access.model, field_access.field]))
+            for m, f, r, w, c, d in cursor:
+                accesses[m][f] = {
+                    'read': r, 'write': w, 'create': c, 'delete': d}
         for model, maccesses in accesses.items():
-            cls._get_access_cache.set((groups, model), maccesses)
+            cls._get_access_cache.set(
+                (is_administrator, groups, model), maccesses)
         return accesses
 
     @classmethod

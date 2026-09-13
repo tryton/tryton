@@ -6,11 +6,6 @@ this repository contains the full copyright notices and license terms. -->
         <record model="res.group" id="group_stock_location_movable">
             <field name="name">Stock Location Movable</field>
         </record>
-        <record model="res.user-res.group"
-            id="user_admin_group_stock_location_movable">
-            <field name="user" ref="res.user_admin"/>
-            <field name="group" ref="group_stock_location_movable"/>
-        </record>
 
         <record model="ir.model.access" id="access_location">
             <field name="model">stock.location</field>

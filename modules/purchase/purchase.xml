@@ -10,14 +10,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Purchase Administrator</field>
             <field name="parent" ref="group_purchase"/>
         </record>
-        <record model="res.user-res.group" id="user_admin_group_purchase">
-            <field name="user" ref="res.user_admin"/>
-            <field name="group" ref="group_purchase"/>
-        </record>
-        <record model="res.user-res.group" id="user_admin_group_purchase_admin">
-            <field name="user" ref="res.user_admin"/>
-            <field name="group" ref="group_purchase_admin"/>
-        </record>
 
         <record model="ir.ui.icon" id="purchase_icon">
             <field name="name">tryton-purchase</field>
@@ -368,11 +360,6 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.sequence.type" id="sequence_type_purchase">
             <field name="name">Purchase</field>
-        </record>
-        <record model="ir.sequence.type-res.group"
-            id="sequence_type_purchase_group_admin">
-            <field name="sequence_type" ref="sequence_type_purchase"/>
-            <field name="group" ref="res.group_admin"/>
         </record>
         <record model="ir.sequence.type-res.group"
             id="sequence_type_purchase_group_purchase_admin">

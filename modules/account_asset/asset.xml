@@ -81,11 +81,6 @@
             <field name="name">Asset</field>
         </record>
         <record model="ir.sequence.type-res.group"
-            id="sequence_type_asset_group_admin">
-            <field name="sequence_type" ref="sequence_type_asset"/>
-            <field name="group" ref="res.group_admin"/>
-        </record>
-        <record model="ir.sequence.type-res.group"
             id="sequence_type_asset_group_account_admin">
             <field name="sequence_type" ref="sequence_type_asset"/>
             <field name="group" ref="account.group_account_admin"/>

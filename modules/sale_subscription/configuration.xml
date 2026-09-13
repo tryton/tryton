@@ -13,11 +13,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Subscription</field>
         </record>
         <record model="ir.sequence.type-res.group"
-            id="sequence_type_subscription_group_admin">
-            <field name="sequence_type" ref="sequence_type_subscription"/>
-            <field name="group" ref="res.group_admin"/>
-        </record>
-        <record model="ir.sequence.type-res.group"
             id="sequence_type_subscription_group_sale_admin">
             <field name="sequence_type" ref="sequence_type_subscription"/>
             <field name="group" ref="sale.group_sale_admin"/>

@@ -37,10 +37,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="model">ir.chat.channel</field>
             <field name="confirm">This action will make previous entry point unusable. Do you want to continue?</field>
         </record>
-        <record model="ir.model.button-res.group" id="chat_channel_reset_identifier_button_group_admin">
-            <field name="button" ref="chat_channel_reset_identifier_button"/>
-            <field name="group" ref="res.group_admin"/>
-        </record>
 
         <record model="ir.model.access" id="access_chat_channel">
             <field name="model">ir.chat.channel</field>
@@ -48,14 +44,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
-        </record>
-        <record model="ir.model.access" id="access_chat_channel_admin">
-            <field name="model">ir.chat.channel</field>
-            <field name="group" ref="res.group_admin"/>
-            <field name="perm_read" eval="True"/>
-            <field name="perm_write" eval="True"/>
-            <field name="perm_create" eval="True"/>
-            <field name="perm_delete" eval="True"/>
         </record>
 
         <record model="ir.ui.view" id="chat_follower_view_list">

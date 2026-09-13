@@ -57,14 +57,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
-        <record model="ir.model.access" id="access_translation_admin">
-            <field name="model">ir.translation</field>
-            <field name="group" ref="res.group_admin"/>
-            <field name="perm_read" eval="True"/>
-            <field name="perm_write" eval="True"/>
-            <field name="perm_create" eval="True"/>
-            <field name="perm_delete" eval="True"/>
-        </record>
 
         <record model="ir.action.wizard" id="wizard_translation_report">
             <field name="name">Translations</field>
@@ -147,10 +139,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Synchronize Translations</field>
             <field name="wiz_name">ir.translation.update</field>
         </record>
-        <record model="ir.action-res.group" id="act_translation_update_group_admin">
-            <field name="action" ref="act_translation_update"/>
-            <field name="group" ref="res.group_admin"/>
-        </record>
         <record model="ir.action.keyword"
             id="act_translation_update_keyword_report">
             <field name="keyword">form_action</field>
@@ -184,10 +172,6 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.wizard" id="act_translation_export">
             <field name="name">Export Translations</field>
             <field name="wiz_name">ir.translation.export</field>
-        </record>
-        <record model="ir.action-res.group" id="act_translation_export_group_admin">
-            <field name="action" ref="act_translation_export"/>
-            <field name="group" ref="res.group_admin"/>
         </record>
         <menuitem
             parent="menu_localization"

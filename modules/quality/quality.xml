@@ -6,18 +6,9 @@ this repository contains the full copyright notices and license terms. -->
         <record model="res.group" id="group_quality">
             <field name="name">Quality</field>
         </record>
-        <record model="res.user-res.group" id="user_admin_group_quality">
-            <field name="user" ref="res.user_admin"/>
-            <field name="group" ref="group_quality"/>
-        </record>
-
         <record model="res.group" id="group_quality_admin">
             <field name="name">Quality Administration</field>
             <field name="parent" ref="group_quality"/>
-        </record>
-        <record model="res.user-res.group" id="user_admin_group_quality_admin">
-            <field name="user" ref="res.user_admin"/>
-            <field name="group" ref="group_quality_admin"/>
         </record>
 
         <record model="ir.ui.icon" id="quality_icon">
@@ -87,10 +78,6 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.sequence.type" id="sequence_type_quality_inspection">
             <field name="name">Quality Inspection</field>
         </record>
-        <record model="ir.sequence.type-res.group" id="sequence_type_quality_inspection_group_admin">
-            <field name="sequence_type" ref="sequence_type_quality_inspection"/>
-            <field name="group" ref="res.group_admin"/>
-        </record>
         <record model="ir.sequence.type-res.group" id="sequence_type_quality_inspection_group_quality_admin">
             <field name="sequence_type" ref="sequence_type_quality_inspection"/>
             <field name="group" ref="group_quality_admin"/>
@@ -98,10 +85,6 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.sequence.type" id="sequence_type_quality_alert">
             <field name="name">Quality Alert</field>
-        </record>
-        <record model="ir.sequence.type-res.group" id="sequence_type_quality_alert_group_admin">
-            <field name="sequence_type" ref="sequence_type_quality_alert"/>
-            <field name="group" ref="res.group_admin"/>
         </record>
         <record model="ir.sequence.type-res.group" id="sequence_type_quality_alert_group_quality_admin">
             <field name="sequence_type" ref="sequence_type_quality_alert"/>

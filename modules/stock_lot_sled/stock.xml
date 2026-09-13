@@ -6,11 +6,6 @@ this repository contains the full copyright notices and license terms. -->
         <record model="res.group" id="group_stock_force_expiration">
             <field name="name">Stock Force Expiration</field>
         </record>
-        <record model="res.user-res.group"
-            id="user_admin_group_stock_force_assignment">
-            <field name="user" ref="res.user_admin"/>
-            <field name="group" ref="group_stock_force_expiration"/>
-        </record>
 
         <record model="ir.ui.view" id="stock_configuration_view_form">
             <field name="model">stock.configuration</field>

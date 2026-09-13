@@ -6,11 +6,6 @@ this repository contains the full copyright notices and license terms. -->
         <record model="res.group" id="group_party_admin">
             <field name="name">Party Administration</field>
         </record>
-        <record model="res.user-res.group"
-            id="user_admin_group_party_admin">
-            <field name="user" ref="res.user_admin"/>
-            <field name="group" ref="group_party_admin"/>
-        </record>
 
         <record model="ir.ui.icon" id="party_icon">
             <field name="name">tryton-party</field>
@@ -92,11 +87,6 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.sequence.type" id="sequence_type_party">
             <field name="name">Party</field>
-        </record>
-        <record model="ir.sequence.type-res.group"
-            id="sequence_type_party_group_admin">
-            <field name="sequence_type" ref="sequence_type_party"/>
-            <field name="group" ref="res.group_admin"/>
         </record>
         <record model="ir.sequence.type-res.group"
             id="sequence_type_party_group_party_admin">

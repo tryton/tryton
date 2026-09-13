@@ -110,7 +110,11 @@ class ResourceTestCase(DBTestCase):
         Note = pool.get('ir.note')
         Resource = pool.get('test.resource')
         ModelAccess = pool.get('ir.model.access')
+        User = pool.get('res.user')
+        transaction = Transaction()
 
+        user = User(login='foo')
+        user.save()
         ModelAccess.create([{
                     'model': Resource.__name__,
                     'group': None,
@@ -119,7 +123,8 @@ class ResourceTestCase(DBTestCase):
                     }])
         record, = Resource.create([{}])
 
-        with Transaction().set_context(_check_access=True):
+        with (transaction.set_user(user.id),
+                transaction.set_context(_check_access=True)):
             note, = Note.create([{
                         'resource': record,
                         'message': "Foo",
@@ -135,7 +140,11 @@ class ResourceTestCase(DBTestCase):
         Note = pool.get('ir.note')
         Resource = pool.get('test.resource')
         ModelAccess = pool.get('ir.model.access')
+        User = pool.get('res.user')
+        transaction = Transaction()
 
+        user = User(login='foo')
+        user.save()
         ModelAccess.create([{
                     'model': Resource.__name__,
                     'group': None,
@@ -149,7 +158,8 @@ class ResourceTestCase(DBTestCase):
                     'message': "Message",
                     }])
 
-        with Transaction().set_context(_check_access=True):
+        with (transaction.set_user(user.id),
+                transaction.set_context(_check_access=True)):
             with self.assertRaises(AccessError):
                 Note.create([{
                             'resource': record,
@@ -170,7 +180,11 @@ class ResourceTestCase(DBTestCase):
         Note = pool.get('ir.note')
         Resource = pool.get('test.resource')
         RuleGroup = pool.get('ir.rule.group')
+        User = pool.get('res.user')
+        transaction = Transaction()
 
+        user = User(login='foo')
+        user.save()
         RuleGroup.create([{
                     'name': "Test",
                     'model': Resource.__name__,
@@ -183,7 +197,8 @@ class ResourceTestCase(DBTestCase):
                     }])
         record, = Resource.create([{}])
 
-        with Transaction().set_context(_check_access=True):
+        with (transaction.set_user(user.id),
+                transaction.set_context(_check_access=True)):
             note, = Note.create([{
                         'resource': record,
                         'message': "Foo",
@@ -199,7 +214,11 @@ class ResourceTestCase(DBTestCase):
         Note = pool.get('ir.note')
         Resource = pool.get('test.resource')
         RuleGroup = pool.get('ir.rule.group')
+        User = pool.get('res.user')
+        transaction = Transaction()
 
+        user = User(login='foo')
+        user.save()
         RuleGroup.create([{
                     'name': "Test",
                     'model': Resource.__name__,
@@ -217,7 +236,8 @@ class ResourceTestCase(DBTestCase):
                     'message': "Message",
                     }])
 
-        with Transaction().set_context(_check_access=True):
+        with (transaction.set_user(user.id),
+                transaction.set_context(_check_access=True)):
             with self.assertRaises(AccessError):
                 Note.create([{
                             'resource': record,

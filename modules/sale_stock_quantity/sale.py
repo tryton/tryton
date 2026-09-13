@@ -84,7 +84,7 @@ class Sale(metaclass=PoolMeta):
             if user_id == 0:
                 return True
             user = User(user_id)
-            return group in user.groups
+            return group in user.groups or User.is_administrator(user_id)
 
         def filter_line(line):
             return (line.warehouse

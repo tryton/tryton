@@ -50,7 +50,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_read" eval="False"/>
         </record>
         <record model="ir.rule" id="rule_sequence">
-            <field name="domain" eval="[('sequence_type.groups', 'in', Eval('groups', []))]" pyson="1"/>
+            <field name="domain" eval="[If(~Eval('is_administrator', False), ('sequence_type.groups', 'in', Eval('groups', [])), ())]" pyson="1"/>
             <field name="rule_group" ref="rule_group_sequence"/>
         </record>
 
@@ -96,7 +96,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_read" eval="False"/>
         </record>
         <record model="ir.rule" id="rule_sequence_strict">
-            <field name="domain" eval="[('sequence_type.groups', 'in', Eval('groups', []))]" pyson="1"/>
+            <field name="domain" eval="[If(~Eval('is_administrator', False), ('sequence_type.groups', 'in', Eval('groups', [])), ())]" pyson="1"/>
             <field name="rule_group" ref="rule_group_sequence_strict"/>
         </record>
 
@@ -140,14 +140,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
-        </record>
-        <record model="ir.model.access" id="access_sequence_type_admin">
-            <field name="model">ir.sequence.type</field>
-            <field name="group" ref="res.group_admin"/>
-            <field name="perm_read" eval="True"/>
-            <field name="perm_write" eval="True"/>
-            <field name="perm_create" eval="True"/>
-            <field name="perm_delete" eval="True"/>
         </record>
     </data>
 </tryton>

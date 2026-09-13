@@ -6,17 +6,8 @@ this repository contains the full copyright notices and license terms. -->
         <record model="res.group" id="group_company_admin">
             <field name="name">Company Administration</field>
         </record>
-        <record model="res.user-res.group" id="user_admin_company_admin">
-            <field name="user" ref="res.user_admin"/>
-            <field name="group" ref="group_company_admin"/>
-        </record>
-
         <record model="res.group" id="group_employee_admin">
             <field name="name">Employee Administration</field>
-        </record>
-        <record model="res.user-res.group" id="user_admin_employee_admin">
-            <field name="user" ref="res.user_admin"/>
-            <field name="group" ref="group_employee_admin"/>
         </record>
 
         <record model="ir.ui.icon" id="company_icon">

@@ -47,19 +47,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">activate</field>
             <field name="string">Activate</field>
         </record>
-        <record model="ir.model.button-res.group" id="module_activate_button_group_admin">
-            <field name="button" ref="module_activate_button"/>
-            <field name="group" ref="res.group_admin"/>
-        </record>
 
         <record model="ir.model.button" id="module_deactivate_button">
             <field name="model">ir.module</field>
             <field name="name">deactivate</field>
             <field name="string">Deactivate (beta)</field>
-        </record>
-        <record model="ir.model.button-res.group" id="module_deactivate_button_group_admin">
-            <field name="button" ref="module_deactivate_button"/>
-            <field name="group" ref="res.group_admin"/>
         </record>
 
         <record model="ir.model.button" id="module_upgrade_button">
@@ -67,29 +59,17 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">upgrade</field>
             <field name="string">Upgrade</field>
         </record>
-        <record model="ir.model.button-res.group" id="module_upgrade_button_group_admin">
-            <field name="button" ref="module_upgrade_button"/>
-            <field name="group" ref="res.group_admin"/>
-        </record>
 
         <record model="ir.model.button" id="module_cancel_button">
             <field name="model">ir.module</field>
             <field name="name">cancel</field>
             <field name="string">Cancel</field>
         </record>
-        <record model="ir.model.button-res.group" id="module_cancel_button_group_admin">
-            <field name="button" ref="module_cancel_button"/>
-            <field name="group" ref="res.group_admin"/>
-        </record>
 
         <record model="ir.model.button" id="module_apply_button">
             <field name="model">ir.module</field>
             <field name="name">apply</field>
             <field name="string">Apply</field>
-        </record>
-        <record model="ir.model.button-res.group" id="module_apply_button_group_admin">
-            <field name="button" ref="module_apply_button"/>
-            <field name="group" ref="res.group_admin"/>
         </record>
 
         <record model="ir.model.access" id="access_module">
@@ -98,14 +78,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
-        </record>
-        <record model="ir.model.access" id="access_module_admin">
-            <field name="model">ir.module</field>
-            <field name="group" ref="res.group_admin"/>
-            <field name="perm_read" eval="True"/>
-            <field name="perm_write" eval="True"/>
-            <field name="perm_create" eval="True"/>
-            <field name="perm_delete" eval="True"/>
         </record>
 
         <record model="ir.ui.view" id="module_dependency_view_form">
@@ -174,10 +146,6 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.wizard" id="act_module_activate_upgrade">
             <field name="name">Perform Pending Activation/Upgrade</field>
             <field name="wiz_name">ir.module.activate_upgrade</field>
-        </record>
-        <record model="ir.action-res.group" id="act_module_activate_upgrade_group_admin">
-            <field name="action" ref="act_module_activate_upgrade"/>
-            <field name="group" ref="res.group_admin"/>
         </record>
 
         <record model="ir.ui.view" id="module_activate_upgrade_start_view_form">

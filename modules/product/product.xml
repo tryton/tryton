@@ -7,10 +7,6 @@ this repository contains the full copyright notices and license terms. -->
         <record model="res.group" id="group_product_admin">
             <field name="name">Product Administration</field>
         </record>
-        <record model="res.user-res.group" id="user_admin_group_product_admin">
-            <field name="user" ref="res.user_admin"/>
-            <field name="group" ref="group_product_admin"/>
-        </record>
 
         <record model="ir.ui.icon" id="product_icon">
             <field name="name">tryton-product</field>
@@ -241,22 +237,12 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Variant</field>
         </record>
         <record model="ir.sequence.type-res.group"
-            id="sequence_type_product_group_admin">
-            <field name="sequence_type" ref="sequence_type_product"/>
-            <field name="group" ref="res.group_admin"/>
-        </record>
-        <record model="ir.sequence.type-res.group"
             id="sequence_type_product_group_product_admin">
             <field name="sequence_type" ref="sequence_type_product"/>
             <field name="group" ref="group_product_admin"/>
         </record>
         <record model="ir.sequence.type" id="sequence_type_template">
             <field name="name">Product</field>
-        </record>
-        <record model="ir.sequence.type-res.group"
-            id="sequence_type_template_group_admin">
-            <field name="sequence_type" ref="sequence_type_template"/>
-            <field name="group" ref="res.group_admin"/>
         </record>
         <record model="ir.sequence.type-res.group"
             id="sequence_type_template_group_template_admin">

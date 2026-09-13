@@ -128,11 +128,6 @@ The following snippet gives a first idea of what an XML file looks:
           <record model="res.group" id="group_party_admin">
               <field name="name">Party Administration</field>
           </record>
-          <record model="res.user-res.group"
-              id="user_admin_group_party_admin">
-              <field name="user" ref="res.user_admin"/>
-              <field name="group" ref="group_party_admin"/>
-          </record>
 
           <menuitem
               name="Party Management"

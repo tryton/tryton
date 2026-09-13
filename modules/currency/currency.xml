@@ -6,10 +6,6 @@ this repository contains the full copyright notices and license terms. -->
         <record model="res.group" id="group_currency_admin">
             <field name="name">Currency Administration</field>
         </record>
-        <record model="res.user-res.group" id="user_admin_group_currency_admin">
-            <field name="user" ref="res.user_admin"/>
-            <field name="group" ref="group_currency_admin"/>
-        </record>
 
         <record model="ir.ui.icon" id="currency_icon">
             <field name="name">tryton-currency</field>

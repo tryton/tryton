@@ -6,10 +6,6 @@ this repository contains the full copyright notices and license terms. -->
         <record model="res.group" id="group_budget">
             <field name="name">Account Budget</field>
         </record>
-        <record model="res.user-res.group" id="user_admin_group_budget">
-            <field name="user" ref="res.user_admin"/>
-            <field name="group" ref="group_budget"/>
-        </record>
         <menuitem
             name="Budgets"
             parent="account.menu_account"

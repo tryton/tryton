@@ -6,10 +6,6 @@ this repository contains the full copyright notices and license terms. -->
         <record model="res.group" id="group_project_invoice">
             <field name="name">Project Invoice</field>
         </record>
-        <record model="res.user-res.group" id="user_admin_group_project_invoice">
-            <field name="user" ref="res.user_admin"/>
-            <field name="group" ref="group_project_invoice"/>
-        </record>
 
         <record model="ir.ui.view" id="work_view_list">
             <field name="model">project.work</field>

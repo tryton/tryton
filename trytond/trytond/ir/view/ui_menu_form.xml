@@ -17,7 +17,10 @@ this repository contains the full copyright notices and license terms. -->
     <field name="sequence"/>
 
     <notebook>
-        <page name="groups">
+        <page string="Access Permissions" id="permissions">
+            <label name="administration"/>
+            <field name="administration"/>
+
             <field name="groups" colspan="4"/>
         </page>
         <page name="favorites">

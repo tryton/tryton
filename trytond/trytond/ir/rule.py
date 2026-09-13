@@ -210,7 +210,8 @@ class Rule(ModelSQL, ModelView):
         pool = Pool()
         User = pool.get('res.user')
         return {
-            'groups': User.get_groups()
+            'is_administrator': User.is_administrator(),
+            'groups': User.get_groups(),
             }
 
     @classmethod
@@ -218,7 +219,11 @@ class Rule(ModelSQL, ModelView):
         pool = Pool()
         User = pool.get('res.user')
         # _datetime value will be added to the domain
-        return (Transaction().context.get('_datetime'), User.get_groups())
+        return (
+            Transaction().context.get('_datetime'),
+            User.is_administrator(),
+            User.get_groups(),
+            )
 
     @classmethod
     def get(cls, model_name, mode='read'):
@@ -234,7 +239,11 @@ class Rule(ModelSQL, ModelView):
 
         assert mode in cls.modes
 
-        groups = User.get_groups()
+        if User.is_administrator():
+            group_clause = Literal(True)
+        else:
+            groups = User.get_groups()
+            group_clause = rule_group_group.group.in_(groups or [-1])
 
         model_names, model2field = _get_access_models(pool.get(model_name))
         model_names = list(model_names)
@@ -247,7 +256,7 @@ class Rule(ModelSQL, ModelView):
                 ).select(rule_table.id,
                 where=(rule_group.model.in_(model_names))
                 & (getattr(rule_group, 'perm_%s' % mode) == Literal(True))
-                & (rule_group_group.group.in_(groups or [-1])
+                & (group_clause
                     | (rule_group.default_p == Literal(True))
                     | (rule_group.global_p == Literal(True))
                     )))
@@ -259,7 +268,7 @@ class Rule(ModelSQL, ModelView):
                 ).select(rule_group.id,
                 where=(rule_group.model.in_(model_names))
                 & ~rule_group.id.in_(rule_table.select(rule_table.rule_group))
-                & rule_group_group.group.in_(groups or [-1])))
+                & group_clause))
         no_rules = cursor.fetchone()
 
         clause = defaultdict(lambda: ['OR'])

@@ -6,6 +6,7 @@ from itertools import groupby
 from trytond.model import (
     DeactivableMixin, ModelSQL, ModelView, fields, sequence_ordered, tree)
 from trytond.pool import Pool
+from trytond.pyson import Eval
 from trytond.rpc import RPC
 from trytond.transaction import Transaction, inactive_records
 
@@ -112,7 +113,13 @@ class UIMenu(
         'ir.ui.menu-res.group', 'menu', 'group', "Groups",
         filter=[
             ('active', '=', True),
-            ])
+            ],
+        states={
+            'invisible': Eval('administration', False),
+            })
+    administration = fields.Boolean(
+        "Administrator",
+        help="Check to restrict access to only administrators.")
     favorite = fields.Function(fields.Boolean('Favorite'), 'get_favorite')
     favorites = fields.Many2Many(
         'ir.ui.menu.favorite', 'menu', 'user', "Favorites")
@@ -128,6 +135,10 @@ class UIMenu(
     @classmethod
     def default_sequence(cls):
         return 50
+
+    @classmethod
+    def default_administration(cls):
+        return False
 
     @staticmethod
     def list_icons():

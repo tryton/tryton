@@ -751,7 +751,7 @@ class ModelView(Model):
 
             assert len(records) == len(set(records)), "Duplicate records"
 
-            if (transaction.user != 0) and check_access:
+            if not User.is_administrator() and check_access:
                 ModelAccess.check(cls.__name__, 'read')
                 if issubclass(cls, ModelStorage):
                     # Check record rule access
@@ -770,6 +770,7 @@ class ModelView(Model):
                 else:
                     ModelAccess.check(cls.__name__, 'write')
 
+            if (transaction.user != 0) and check_access:
                 states = cls._buttons.get(func.__name__, {})
                 for state_name in {'invisible', 'readonly'} & states.keys():
                     state = _pyson_encoder.encode(states[state_name])

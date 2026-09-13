@@ -11,18 +11,8 @@ this repository contains the full copyright notices and license terms. -->
         <record model="res.group" id="group_payment">
             <field name="name">Payment</field>
         </record>
-        <record model="res.user-res.group" id="user_admin_group_payment">
-            <field name="user" ref="res.user_admin"/>
-            <field name="group" ref="group_payment"/>
-        </record>
-
         <record model="res.group" id="group_payment_approval">
             <field name="name">Payment Approval</field>
-        </record>
-        <record model="res.user-res.group"
-            id="user_admin_group_payment_approval">
-            <field name="user" ref="res.user_admin"/>
-            <field name="group" ref="group_payment_approval"/>
         </record>
 
         <menuitem
@@ -193,12 +183,6 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.sequence.type"
             id="sequence_type_account_payment_group">
             <field name="name">Account Payment Group</field>
-        </record>
-        <record model="ir.sequence.type-res.group"
-            id="sequence_type_account_payment_group_group_admin">
-            <field name="sequence_type"
-                ref="sequence_type_account_payment_group"/>
-            <field name="group" ref="res.group_admin"/>
         </record>
         <record model="ir.sequence.type-res.group"
             id="sequence_type_account_payment_group_group_account_admin">
@@ -546,10 +530,6 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.sequence.type" id="sequence_type_account_payment">
             <field name="name">Account Payment Group</field>
-        </record>
-        <record model="ir.sequence.type-res.group" id="sequence_type_account_payment_group_admin">
-            <field name="sequence_type" ref="sequence_type_account_payment"/>
-            <field name="group" ref="res.group_admin"/>
         </record>
         <record model="ir.sequence.type-res.group" id="sequence_type_account_payment_group_account_admin">
             <field name="sequence_type" ref="sequence_type_account_payment"/>

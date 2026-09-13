@@ -6,20 +6,9 @@ this repository contains the full copyright notices and license terms. -->
         <record model="res.group" id="group_production">
             <field name="name">Production</field>
         </record>
-        <record model="res.user-res.group"
-            id="user_admin_group_production">
-            <field name="user" ref="res.user_admin"/>
-            <field name="group" ref="group_production"/>
-        </record>
-
         <record model="res.group" id="group_production_admin">
             <field name="name">Production Administration</field>
             <field name="parent" ref="group_production"/>
-        </record>
-        <record model="res.user-res.group"
-            id="user_admin_group_production_admin">
-            <field name="user" ref="res.user_admin"/>
-            <field name="group" ref="group_production_admin"/>
         </record>
 
         <record model="ir.ui.icon" id="production_icon">
@@ -171,11 +160,6 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.sequence.type" id="sequence_type_production">
             <field name="name">Production</field>
-        </record>
-        <record model="ir.sequence.type-res.group"
-            id="sequence_type_production_group_admin">
-            <field name="sequence_type" ref="sequence_type_production"/>
-            <field name="group" ref="res.group_admin"/>
         </record>
         <record model="ir.sequence.type-res.group"
             id="sequence_type_production_group_production_admin">

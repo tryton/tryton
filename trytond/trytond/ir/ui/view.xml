@@ -55,10 +55,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">show</field>
             <field name="string">Show</field>
         </record>
-        <record model="ir.model.button-res.group" id="view_show_button_group_admin">
-            <field name="button" ref="view_show_button"/>
-            <field name="group" ref="res.group_admin"/>
-        </record>
 
         <record model="ir.model.access" id="access_ui_view">
             <field name="model">ir.ui.view</field>
@@ -66,14 +62,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
-        </record>
-        <record model="ir.model.access" id="access_ui_view_admin">
-            <field name="model">ir.ui.view</field>
-            <field name="group" ref="res.group_admin"/>
-            <field name="perm_read" eval="True"/>
-            <field name="perm_write" eval="True"/>
-            <field name="perm_create" eval="True"/>
-            <field name="perm_delete" eval="True"/>
         </record>
 
         <record model="ir.ui.view" id="view_tree_width_view_form">
@@ -185,14 +173,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_create" eval="False" />
             <field name="perm_delete" eval="False" />
         </record>
-        <record model="ir.model.access" id="rule_group_view_tree_state">
-            <field name="model">ir.ui.view_tree_state</field>
-            <field name="group" ref="res.group_admin" />
-            <field name="perm_read" eval="True" />
-            <field name="perm_write" eval="True" />
-            <field name="perm_create" eval="True" />
-            <field name="perm_delete" eval="True" />
-        </record>
 
         <record model="ir.ui.view" id="view_search_form">
             <field name="model">ir.ui.view_search</field> 
@@ -234,14 +214,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_write" eval="False" />
             <field name="perm_create" eval="False" />
             <field name="perm_delete" eval="False" />
-        </record>
-        <record model="ir.model.access" id="access_view_search_admin">
-            <field name="model">ir.ui.view_search</field>
-            <field name="group" ref="res.group_admin" />
-            <field name="perm_read" eval="True" />
-            <field name="perm_write" eval="True" />
-            <field name="perm_create" eval="True" />
-            <field name="perm_delete" eval="True" />
         </record>
     </data>
 </tryton>

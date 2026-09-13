@@ -139,10 +139,6 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.sequence.type" id="sequence_type_bom">
             <field name="name">BOM</field>
         </record>
-        <record model="ir.sequence.type-res.group" id="sequence_type_bom_group_admin">
-            <field name="sequence_type" ref="sequence_type_bom"/>
-            <field name="group" ref="res.group_admin"/>
-        </record>
         <record model="ir.sequence.type-res.group" id="sequence_type_bom_group_production_admin">
             <field name="sequence_type" ref="sequence_type_bom"/>
             <field name="group" ref="group_production_admin"/>

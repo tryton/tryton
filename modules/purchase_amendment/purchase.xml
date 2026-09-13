@@ -6,10 +6,6 @@ this repository contains the full copyright notices and license terms. -->
         <record model="res.group" id="group_purchase_amendment">
             <field name="name">Purchase Amendment</field>
         </record>
-        <record model="res.user-res.group" id="user_admin_group_purchase_amendment">
-            <field name="user" ref="res.user_admin"/>
-            <field name="group" ref="group_purchase_amendment"/>
-        </record>
 
         <record model="ir.ui.view" id="purchase_view_form">
             <field name="model">purchase.purchase</field>

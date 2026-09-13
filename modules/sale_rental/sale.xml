@@ -6,10 +6,6 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.sequence.type" id="sequence_type_rental">
             <field name="name">Rental</field>
         </record>
-        <record model="ir.sequence.type-res.group" id="sequence_type_rental_group_admin">
-            <field name="sequence_type" ref="sequence_type_rental"/>
-            <field name="group" ref="res.group_admin"/>
-        </record>
         <record model="ir.sequence.type-res.group" id="sequence_type_rental_group_sale_admin">
             <field name="sequence_type" ref="sequence_type_rental"/>
             <field name="group" ref="sale.group_sale_admin"/>

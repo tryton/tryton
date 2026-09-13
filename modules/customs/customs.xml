@@ -6,11 +6,6 @@ this repository contains the full copyright notices and license terms. -->
         <record model="res.group" id="group_customs_admin">
             <field name="name">Customs Administration</field>
         </record>
-        <record model="res.user-res.group"
-            id="user_admin_group_customs_admin">
-            <field name="user" ref="res.user_admin"/>
-            <field name="group" ref="group_customs_admin"/>
-        </record>
 
         <record model="ir.ui.icon" id="customs_icon">
             <field name="name">tryton-customs</field>

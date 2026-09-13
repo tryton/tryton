@@ -74,7 +74,8 @@ class Party(metaclass=PoolMeta):
             if user_id == 0:
                 return True
             user = User(user_id)
-            return origin and group in user.groups
+            return origin and (group in user.groups
+                or User.is_administrator(user_id))
 
         for model in self._credit_limit_to_lock():
             Model = pool.get(model)

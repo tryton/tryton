@@ -29,10 +29,18 @@ class RESTTestCase(RouteTestCase):
     def setUpDatabase(cls):
         pool = Pool()
         User = pool.get('res.user')
+        Group = pool.get('res.group')
         UserApplication = pool.get('res.user.application')
+
+        group = Group(name="Group")
+        group.save()
+        cls.user_group_id = group.id
+        user = User(login='user', email='user@tryton.org')
+        user.groups = [group]
+        user.save()
+        cls.user_id = user.id
+
         admin, = User.search([('login', '=', 'admin')])
-        admin.email = 'admin@tryton.org'
-        admin.save()
         application = UserApplication(user=admin, application='rest')
         application.save()
         cls.key = application.key
@@ -49,13 +57,13 @@ class RESTTestCase(RouteTestCase):
             f'{self.db_name}/rest/model/res.user', headers=self.headers,
             query_string=[
                 ('d', urlsafe_b64encode(json.dumps(
-                            [('login', '=', 'admin')]).encode())),
+                            [('login', '=', 'user')]).encode())),
                 ])
 
         self.assertEqual(response.status_code, HTTPStatus.OK)
         self.assertEqual(
             response.json,
-            [{'id': 1, '__name__': 'res.user', 'rec_name': 'Administrator'}])
+            [{'id': self.user_id, '__name__': 'res.user', 'rec_name': 'user'}])
         self.assertEqual(response.headers.get('Content-Language'), 'fr')
 
     def test_search_range(self):
@@ -129,43 +137,45 @@ class RESTTestCase(RouteTestCase):
     def test_get(self):
         "Test get"
         response = self.client().get(
-            f'{self.db_name}/rest/model/res.user/1', headers=self.headers)
+            f'{self.db_name}/rest/model/res.user/{self.user_id}',
+            headers=self.headers)
 
         self.assertEqual(
             response.json,
-            {'id': 1, '__name__': 'res.user', 'rec_name': 'Administrator'})
+            {'id': self.user_id, '__name__': 'res.user', 'rec_name': 'user'})
 
     def test_get_fields(self):
         "Test get fields"
         response = self.client().get(
-            f'{self.db_name}/rest/model/res.user/1', headers=self.headers,
+            f'{self.db_name}/rest/model/res.user/{self.user_id}',
+            headers=self.headers,
             query_string=[
-                ('f', 'name'),
                 ('f', 'login'),
                 ('f', 'groups.name'),
                 ])
 
         self.assertEqual(
             response.json,
-            {'id': 1, '__name__': 'res.user',
-                'name': "Administrator", 'login': 'admin',
+            {'id': self.user_id, '__name__': 'res.user',
+                'login': 'user',
                 'groups': [
-                    {'id': 1, '__name__': 'res.group',
-                        'name': 'Administration'}],
+                    {'id': self.user_group_id, '__name__': 'res.group',
+                        'name': 'Group'}],
                 })
 
     def test_get_fields_2many(self):
         "Test get only xxx2many fields"
         response = self.client().get(
-            f'{self.db_name}/rest/model/res.user/1', headers=self.headers,
+            f'{self.db_name}/rest/model/res.user/{self.user_id}',
+            headers=self.headers,
             query_string=[
                 ('f', 'groups'),
                 ])
 
         self.assertEqual(
             response.json,
-            {'id': 1, '__name__': 'res.user',
-                'groups': [1],
+            {'id': self.user_id, '__name__': 'res.user',
+                'groups': [self.user_group_id],
                 })
 
     def test_get_not_found(self):
@@ -241,13 +251,17 @@ class RESTTestCase(RouteTestCase):
     def test_button(self):
         "Test button"
         response = self.client().post(
-            f'{self.db_name}/rest/model/res.user/1/reset_password',
+            f'{self.db_name}/rest/model/'
+            f'res.user/{self.user_id}/reset_password',
             headers=self.headers)
 
         self.assertEqual(response.status_code, HTTPStatus.OK)
         self.assertEqual(
-            response.json,
-            {'id': 1, '__name__': 'res.user', 'rec_name': 'Administrator'})
+            response.json, {
+                'id': self.user_id,
+                '__name__': 'res.user',
+                'rec_name': 'user',
+                })
 
     def test_button_no_record(self):
         "Test button without record"
@@ -261,7 +275,8 @@ class RESTTestCase(RouteTestCase):
     def test_button_data(self):
         "Test button with data"
         response = self.client().post(
-            f'{self.db_name}/rest/model/res.user/1/reset_password',
+            f'{self.db_name}/rest/model/'
+            f'res.user/{self.user_id}/reset_password',
             json={
                 'length': 12,
                 },
@@ -280,7 +295,8 @@ class RESTTestCase(RouteTestCase):
     def test_button_no_button(self):
         "Test no button"
         response = self.client().post(
-            f'{self.db_name}/rest/model/res.user/1/validate',
+            f'{self.db_name}/rest/model/'
+            f'res.user/{self.user_id}/validate',
             headers=self.headers)
 
         self.assertEqual(response.status_code, HTTPStatus.FORBIDDEN)
@@ -290,10 +306,12 @@ class RESTTestCase(RouteTestCase):
         c = self.client()
 
         response = c.post(
-            f'{self.db_name}/rest/model/res.user/1/reset_password',
+            f'{self.db_name}/rest/model/'
+            f'res.user/{self.user_id}/reset_password',
             headers=self.headers)
         response = c.get(
-            f'{self.db_name}/rest/report/res.user.email_reset_password/1',
+            f'{self.db_name}/rest/report/'
+            f'res.user.email_reset_password/{self.user_id}',
             headers=self.headers)
 
         self.assertEqual(response.status_code, HTTPStatus.OK)

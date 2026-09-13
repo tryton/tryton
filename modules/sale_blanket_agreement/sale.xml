@@ -7,10 +7,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Sale Blanket Agreement</field>
             <field name="parent" ref="sale.group_sale"/>
         </record>
-        <record model="res.user-res.group" id="user_admin_group_sale_blanket_agreement">
-            <field name="user" ref="res.user_admin"/>
-            <field name="group" ref="group_sale_blanket_agreement"/>
-        </record>
 
         <record model="ir.ui.view" id="sale_configuration_view_form">
             <field name="model">sale.configuration</field>
@@ -20,10 +16,6 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.sequence.type" id="sequence_type_blanket_agreement">
             <field name="name">Sale Blanket Agreement</field>
-        </record>
-        <record model="ir.sequence.type-res.group" id="sequence_type_blanket_agreement_group_admin">
-            <field name="sequence_type" ref="sequence_type_blanket_agreement"/>
-            <field name="group" ref="res.group_admin"/>
         </record>
         <record model="ir.sequence.type-res.group" id="sequence_type_group_sale_admin">
             <field name="sequence_type" ref="sequence_type_blanket_agreement"/>

@@ -1309,10 +1309,17 @@ def create_db(name=DB_NAME, lang='en'):
             language, = Lang.search([('code', '=', lang)])
             language.translatable = True
             language.save()
-            users = User.search([('login', '!=', 'root')])
-            User.write(users, {
-                    'language': language.id,
-                    })
+            user = User.__table__()
+            u, = User.create([{
+                        'login': 'admin',
+                        'name': 'Administrator',
+                        'administrator': True,
+                        'language': language.id,
+                        }])
+            cursor = Transaction().connection.cursor()
+            # Tests relies on the admin user being the one with a fixed
+            cursor.execute(
+                *user.update([user.id], [USER], where=user.id == u.id))
             Module = pool.get('ir.module')
             Module.update_list()
     else:

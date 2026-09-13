@@ -43,13 +43,5 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_delete" eval="False"/>
         </record>
 
-        <record model="ir.model.access" id="access_stock_shipment_shopify_identifier_admin">
-            <field name="model">stock.shipment.shopify_identifier</field>
-            <field name="group" ref="res.group_admin"/>
-            <field name="perm_read" eval="True"/>
-            <field name="perm_write" eval="True"/>
-            <field name="perm_create" eval="True"/>
-            <field name="perm_delete" eval="True"/>
-        </record>
     </data>
 </tryton>

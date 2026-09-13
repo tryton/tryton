@@ -6,18 +6,9 @@ this repository contains the full copyright notices and license terms. -->
         <record model="res.group" id="group_document_incoming">
             <field name="name">Document Incoming</field>
         </record>
-        <record model="res.user-res.group" id="user_admin_group_document_incoming">
-            <field name="user" ref="res.user_admin"/>
-            <field name="group" ref="group_document_incoming"/>
-        </record>
-
         <record model="res.group" id="group_document_incoming_admin">
             <field name="name">Document Incoming Administrator</field>
             <field name="parent" ref="group_document_incoming"/>
-        </record>
-        <record model="res.user-res.group" id="user_admin_group_document_incoming_admin">
-            <field name="user" ref="res.user_admin"/>
-            <field name="group" ref="group_document_incoming_admin"/>
         </record>
 
         <record model="ir.ui.icon" id="document_incoming_icon">

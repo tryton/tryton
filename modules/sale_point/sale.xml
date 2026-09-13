@@ -6,31 +6,16 @@ this repository contains the full copyright notices and license terms. -->
         <record model="res.group" id="group_sale_point">
             <field name="name">POS</field>
         </record>
-        <record model="res.user-res.group" id="user_admin_group_sale_point">
-            <field name="user" ref="res.user_admin"/>
-            <field name="group" ref="group_sale_point"/>
-        </record>
-
         <record model="ir.ui.menu-res.group" id="menu_sale_group_sale_point">
             <field name="menu" ref="sale.menu_sale"/>
             <field name="group" ref="group_sale_point"/>
         </record>
-
         <record model="res.group" id="group_sale_point_posting">
             <field name="name">POS Posting</field>
-        </record>
-        <record model="res.user-res.group" id="user_admin_group_sale_point_posting">
-            <field name="user" ref="res.user_admin"/>
-            <field name="group" ref="group_sale_point_posting"/>
         </record>
 
         <record model="ir.sequence.type" id="sequence_type_sale">
             <field name="name">POS</field>
-        </record>
-        <record model="ir.sequence.type-res.group"
-            id="sequence_type_sale_group_admin">
-            <field name="sequence_type" ref="sequence_type_sale"/>
-            <field name="group" ref="res.group_admin"/>
         </record>
         <record model="ir.sequence.type-res.group"
             id="sequence_type_sale_group_sale_admin">

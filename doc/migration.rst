@@ -24,6 +24,14 @@ a database from another series.
 Before
 ~~~~~~
 
+* Remove hard-coded admin user and add root user:
+
+   .. code-block:: SQL
+
+      DELETE FROM "ir_model_data" WHERE module = 'res' AND fs_id = 'user_admin';
+      INSERT INTO ir_model_data (fs_id, model, module, db_id, noupdate, field_names) VALUES
+          ('user_root', 'res.user', 'res', 0, False, '["login", "name", "active", "administrator"]');
+
 * If the ``trytond-worker`` is configured, stop it and finish all dequeued
   tasks:
 
@@ -35,6 +43,15 @@ Before
 
 After
 ~~~~~
+
+* Set the administrator flag on the ``admin`` user:
+
+   .. code-block:: SQL
+
+        UPDATE "res_user" SET administrator = true WHERE login IN ('root', 'admin');
+
+   .. note::
+      Include in the clause all the users' login that are administrators.
 
 * If ``account`` module is activated, update the reconciliation date using
   maturity date:

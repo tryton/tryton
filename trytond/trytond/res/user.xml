@@ -3,16 +3,13 @@
 this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data>
-        <record model="res.user" id="user_admin">
-            <field name="login">admin</field>
-            <field name="name">Administrator</field>
-            <field name="menu" ref="ir.act_menu_tree"/>
+        <record model="res.user" id="user_root">
+            <field name="login">root</field>
+            <field name="name">Root</field>
+            <field name="active" eval="False"/>
+            <field name="administrator" eval="True"/>
         </record>
 
-        <record model="res.user-res.group" id="user_admin_group_admin">
-            <field name="user" ref="user_admin"/>
-            <field name="group" ref="group_admin"/>
-        </record>
         <record model="ir.ui.view" id="user_view_form">
             <field name="model">res.user</field>
             <field name="type">form</field>
@@ -58,14 +55,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
-        </record>
-        <record model="ir.model.access" id="access_user_admin">
-            <field name="model">res.user</field>
-            <field name="group" ref="group_admin"/>
-            <field name="perm_read" eval="True"/>
-            <field name="perm_write" eval="True"/>
-            <field name="perm_create" eval="True"/>
-            <field name="perm_delete" eval="True"/>
         </record>
         <record model="ir.model.button" id="user_reset_password_button">
             <field name="model">res.user</field>
@@ -145,11 +134,6 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.rule" id="rule_user_application_admin1">
             <field name="domain" eval="[]" pyson="1"/>
             <field name="rule_group" ref="rule_group_user_application_admin"/>
-        </record>
-        <record model="ir.rule.group-res.group"
-            id="rule_user_application_admin_admin">
-            <field name="rule_group" ref="rule_group_user_application_admin"/>
-            <field name="group" ref="group_admin"/>
         </record>
 
         <record model="ir.action.report" id="report_email_reset_password">

@@ -35,12 +35,12 @@ CREATE TABLE ir_model_data (
     model VARCHAR NOT NULL,
     module VARCHAR NOT NULL,
     db_id INTEGER,
-    noupdate BOOLEAN
+    noupdate BOOLEAN,
+    field_names TEXT
 );
 
-INSERT INTO ir_model_data (id, fs_id, model, module, db_id, noupdate) VALUES
-    (1, 'user_admin', 'res.user', 'res', 1, False),
-    (2, 'group_admin', 'res.group', 'res', 1, False);
+INSERT INTO ir_model_data (id, fs_id, model, module, db_id, noupdate, field_names) VALUES
+    (1, 'user_root', 'res.user', 'res', 0, False, '["login", "name", "active", "administrator"]');
 
 CREATE TABLE ir_ui_view (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -89,20 +89,18 @@ CREATE TABLE res_user (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     name VARCHAR,
     active BOOLEAN NOT NULL,
-    login VARCHAR NOT NULL
+    login VARCHAR NOT NULL,
+    administrator BOOLEAN NOT NULL
 );
 
 CREATE UNIQUE INDEX res_user_login_key ON res_user (login);
 
-INSERT INTO res_user (id, login, name, active) VALUES (0, 'root', 'Root', 0);
-INSERT INTO res_user (id, login, name, active) VALUES (1, 'admin', 'Administrator', 1);
+INSERT INTO res_user (id, login, name, active, administrator) VALUES (0, 'root', 'Root', 0, 1);
 
 CREATE TABLE res_group (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     name VARCHAR
 );
-
-INSERT INTO res_group (id, name) VALUES (1, 'Administration');
 
 CREATE TABLE "res_user-res_group" (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
