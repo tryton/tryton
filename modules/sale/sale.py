@@ -260,7 +260,8 @@ class Sale(
             ('exception', 'Exception'),
             ], 'Invoice State', readonly=True, required=True, sort=False)
     invoices = fields.Function(fields.Many2Many(
-            'account.invoice', None, None, "Invoices"),
+            'account.invoice', None, None, "Invoices",
+            order=[('id', 'ASC')]),
         'get_invoices', searcher='search_invoices')
     invoices_ignored = fields.Many2Many(
         'sale.sale-ignored-account.invoice', 'sale', 'invoice',
@@ -269,12 +270,14 @@ class Sale(
             ('id', 'in', Eval('invoices', [])),
             ('state', '=', 'cancelled'),
             ],
+        order=[('id', 'ASC')],
         states={
             'invisible': ~Eval('invoices_ignored', []),
             })
     invoices_recreated = fields.Many2Many(
         'sale.sale-recreated-account.invoice', 'sale', 'invoice',
-        'Recreated Invoices', readonly=True)
+        'Recreated Invoices', readonly=True,
+        order=[('id', 'ASC')])
     shipment_method = fields.Selection([
             ('manual', 'Manual'),
             ('order', 'On Order Processed'),
@@ -292,10 +295,12 @@ class Sale(
             ('exception', 'Exception'),
             ], "Shipment State", readonly=True, required=True, sort=False)
     shipments = fields.Function(fields.Many2Many(
-            'stock.shipment.out', None, None, "Shipments"),
+            'stock.shipment.out', None, None, "Shipments",
+            order=[('id', 'ASC')]),
         'get_shipments', searcher='search_shipments')
     shipment_returns = fields.Function(fields.Many2Many(
-            'stock.shipment.out.return', None, None, "Shipment Returns"),
+            'stock.shipment.out.return', None, None, "Shipment Returns",
+            order=[('id', 'ASC')]),
         'get_shipment_returns', searcher='search_shipment_returns')
     moves = fields.Function(
         fields.Many2Many('stock.move', None, None, "Stock Moves"),
