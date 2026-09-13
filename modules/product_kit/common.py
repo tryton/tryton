@@ -4,7 +4,7 @@ from collections import defaultdict
 from decimal import Decimal
 from functools import wraps
 
-from trytond.model import ModelStorage, ModelView, Workflow, fields
+from trytond.model import ModelStorage, ModelView, Workflow, fields, sort
 from trytond.pool import Pool
 from trytond.pyson import Eval
 
@@ -15,13 +15,15 @@ def get_shipments_returns(model_name):
         def wrapper(self, name):
             pool = Pool()
             Model = pool.get(model_name)
+            field = getattr(self.__class__, name)
+            order = field.order if field.order is not None else Model._order
             shipments = set(func(self, name))
             for line in self.lines:
                 for component in line.components:
                     for move in component.moves:
                         if isinstance(move.shipment, Model):
-                            shipments.add(move.shipment.id)
-            return list(shipments)
+                            shipments.add(move.shipment)
+            return sort(shipments, order)
         return wrapper
     return _get_shipments_returns
 
