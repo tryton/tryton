@@ -341,6 +341,23 @@ test-modules-account_invoice_defer-postgresql:
     PACKAGE: modules/account_invoice_defer
     TAG_PATTERN: '/^account_invoice_defer-.*/'
 
+check-doc-modules-account_invoice_factur_x:
+  extends: .check-doc
+  variables:
+    PACKAGE: modules/account_invoice_factur_x
+
+test-modules-account_invoice_factur_x-sqlite:
+  extends: .test-sqlite
+  variables:
+    PACKAGE: modules/account_invoice_factur_x
+    TAG_PATTERN: '/^account_invoice_factur_x-.*/'
+
+test-modules-account_invoice_factur_x-postgresql:
+  extends: .test-postgresql
+  variables:
+    PACKAGE: modules/account_invoice_factur_x
+    TAG_PATTERN: '/^account_invoice_factur_x-.*/'
+
 check-doc-modules-account_invoice_history:
   extends: .check-doc
   variables:

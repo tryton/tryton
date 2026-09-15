@@ -11,40 +11,55 @@ this repository contains the full copyright notices and license terms. -->
     <py:def function="DateTime(value)">
         <udt:DateTimeString format="102">${value.strftime('%Y%m%d')}</udt:DateTimeString>
     </py:def>
-    <py:def function="TradeParty(party, address=None, tax_identifier=None)">
+    <py:def function="TradeParty(party, address=None, tax_identifier=None, exchange_context=None)">
         <ram:Name>${party.name}</ram:Name>
-        <ram:SpecifiedLegalOrganization>
+        <ram:SpecifiedLegalOrganization py:if="this.party_legal_ids(party, address)">
             <py:for each="id, attrs in this.party_legal_ids(party, address)">
                 <ram:ID py:attrs="attrs">${id}</ram:ID>
             </py:for>
         </ram:SpecifiedLegalOrganization>
-        <ram:PostalTradeAddress py:if="address">${TradeAddress(address)}</ram:PostalTradeAddress>
+        <ram:PostalTradeAddress py:if="address">${TradeAddress(address, exchange_context=exchange_context)}</ram:PostalTradeAddress>
         <ram:SpecifiedTaxRegistration py:if="tax_identifier and tax_identifier.type == 'eu_vat'">
             <ram:ID schemeID='VA'>${tax_identifier.code_compact}</ram:ID>
         </ram:SpecifiedTaxRegistration>
     </py:def>
-    <py:def function="TradeAddress(address)">
-        <ram:PostcodeCode py:if="address.postal_code">${address.postal_code}</ram:PostcodeCode>
-        <ram:PostOfficeBox py:if="address.post_box">${address.post_box}</ram:PostOfficeBox>
-        <ram:BuildingName py:if="address.building_name">${address.building_name}</ram:BuildingName>
-        <py:with vars="lines = (address.street_unstructured or '').splitlines()">
-            <ram:LineOne py:if="len(lines) > 0">${lines[0]}</ram:LineOne>
-            <ram:LineTwo py:if="len(lines) > 1">${lines[1]}</ram:LineTwo>
-            <ram:LineThree  py:if="len(lines) > 2">${lines[2]}</ram:LineThree>
-            <ram:LineFour py:if="len(lines) > 3">${lines[3]}</ram:LineFour>
-            <ram:LineFive py:if="len(lines) > 4">${lines[4]}</ram:LineFive>
-        </py:with>
-        <ram:StreetName py:if="address.street_name">${address.street_name}</ram:StreetName>
-        <ram:CityName py:if="address.city">${address.city}</ram:CityName>
-        <ram:CountryID py:if="address.country">${address.country.code}</ram:CountryID>
-        <ram:CountryName py:if="address.country">${address.country.name}</ram:CountryName>
-        <ram:CountrySubDivisionID py:if="address.subdivision">${address.subdivision.code}</ram:CountrySubDivisionID>
-        <ram:CountrySubDivisionName py:if="address.subdivision">${address.subdivision.name}</ram:CountrySubDivisionName>
-        <ram:BuildingNumber py:if="address.building_number">${address.building_number}</ram:BuildingNumber>
+    <py:def function="TradeAddress(address, exchange_context=None)">
+        <py:choose>
+            <py:when test="(exchange_context or '').startswith('urn:cen.eu:en16931:2017') or (exchange_context or '').startswith('urn:factur-x.eu:1p0')">
+                <ram:PostcodeCode py:if="address.postal_code">${address.postal_code}</ram:PostcodeCode>
+                <py:with vars="lines = (address.street or '').splitlines()">
+                    <ram:LineOne py:if="len(lines) > 0">${lines[0]}</ram:LineOne>
+                    <ram:LineTwo py:if="len(lines) > 1">${lines[1]}</ram:LineTwo>
+                    <ram:LineThree  py:if="len(lines) > 2">${lines[2]}</ram:LineThree>
+                </py:with>
+                <ram:CityName py:if="address.city">${address.city}</ram:CityName>
+                <ram:CountryID py:if="address.country">${address.country.code}</ram:CountryID>
+                <ram:CountrySubDivisionName py:if="address.subdivision">${address.subdivision.name}</ram:CountrySubDivisionName>
+            </py:when>
+            <py:otherwise>
+                <ram:PostcodeCode py:if="address.postal_code">${address.postal_code}</ram:PostcodeCode>
+                <ram:PostOfficeBox py:if="address.post_box">${address.post_box}</ram:PostOfficeBox>
+                <ram:BuildingName py:if="address.building_name">${address.building_name}</ram:BuildingName>
+                <py:with vars="lines = (address.street_unstructured or '').splitlines()">
+                    <ram:LineOne py:if="len(lines) > 0">${lines[0]}</ram:LineOne>
+                    <ram:LineTwo py:if="len(lines) > 1">${lines[1]}</ram:LineTwo>
+                    <ram:LineThree  py:if="len(lines) > 2">${lines[2]}</ram:LineThree>
+                    <ram:LineFour py:if="len(lines) > 3">${lines[3]}</ram:LineFour>
+                    <ram:LineFive py:if="len(lines) > 4">${lines[4]}</ram:LineFive>
+                </py:with>
+                <ram:StreetName py:if="address.street_name">${address.street_name}</ram:StreetName>
+                <ram:CityName py:if="address.city">${address.city}</ram:CityName>
+                <ram:CountryID py:if="address.country">${address.country.code}</ram:CountryID>
+                <ram:CountryName py:if="address.country">${address.country.name}</ram:CountryName>
+                <ram:CountrySubDivisionID py:if="address.subdivision">${address.subdivision.code}</ram:CountrySubDivisionID>
+                <ram:CountrySubDivisionName py:if="address.subdivision">${address.subdivision.name}</ram:CountrySubDivisionName>
+                <ram:BuildingNumber py:if="address.building_number">${address.building_number}</ram:BuildingNumber>
+            </py:otherwise>
+        </py:choose>
     </py:def>
     <py:def function="TradeTax(tax, amount=None, base=None)">
         <ram:ApplicableTradeTax>
-            <ram:CalculatedAmount py:if="amount" py:attrs="{'currencyID': this.invoice.currency.code}">${format((amount * this.type_sign).normalize(), 'f')}</ram:CalculatedAmount>
+            <ram:CalculatedAmount py:if="amount" py:attrs="{'currencyID': this.invoice.currency.code} if not (exchange_context or '').startswith('urn:cen.eu:en16931:2017') and not (exchange_context or '').startswith('urn:factur-x.eu:1p') else {}">${format((amount * this.type_sign).normalize(), 'f')}</ram:CalculatedAmount>
             <ram:TypeCode py:if="tax.unece_code">${tax.unece_code}</ram:TypeCode>
             <ram:ExemptionReasonCode py:if="hasattr(tax, 'vatex_code') and tax.vatex_code">${tax.vatex_code}</ram:ExemptionReasonCode>
             <ram:ExemptionReason py:if="tax.legal_notice">${tax.legal_notice}</ram:ExemptionReason>
@@ -54,6 +69,9 @@ this repository contains the full copyright notices and license terms. -->
         </ram:ApplicableTradeTax>
     </py:def>
     <rsm:ExchangedDocumentContext>
+        <ram:GuidelineSpecifiedDocumentContextParameter py:if="exchange_context">
+            <ram:ID>${exchange_context}</ram:ID>
+        </ram:GuidelineSpecifiedDocumentContextParameter>
     </rsm:ExchangedDocumentContext>
     <rsm:ExchangedDocument>
         <ram:ID>${this.invoice.number}</ram:ID>
@@ -63,18 +81,18 @@ this repository contains the full copyright notices and license terms. -->
         </ram:IssueDateTime>
     </rsm:ExchangedDocument>
     <rsm:SupplyChainTradeTransaction>
-        <ram:IncludedSupplyChainTradeLineItem py:for="line_id, line in enumerate(this.lines, 1)">
+        <ram:IncludedSupplyChainTradeLineItem py:for="line_id, line in enumerate(this.lines, 1)" py:if="not (exchange_context or '').startswith('urn:factur-x.eu:1p0')">
             <ram:AssociatedDocumentLineDocument>
                 <ram:LineID>${line_id}</ram:LineID>
             </ram:AssociatedDocumentLineDocument>
-            <ram:SpecifiedTradeProduct py:if="line.product">
-                <ram:ID py:if="line.product.code">${line.product.code}</ram:ID>
-                <ram:Name>${line.product.name}</ram:Name>
-                <ram:Description py:if="line.description">${line.description}</ram:Description>
+            <ram:SpecifiedTradeProduct>
+                <ram:ID py:if="line.product and line.product.code and not (exchange_context or '').startswith('urn:cen.eu:en16931:2017')">${line.product.code}</ram:ID>
+                <ram:Name>${line.product.name if line.product else line.summary}</ram:Name>
+                <ram:Description py:if="line.description and (exchange_context or '') != 'urn:cen.eu:en16931:2017#compliant#urn:factur-x.eu:1p0:basic'">${line.description}</ram:Description>
             </ram:SpecifiedTradeProduct>
             <ram:SpecifiedLineTradeAgreement>
                 <ram:NetPriceProductTradePrice>
-                    <ram:ChargeAmount py:attrs="{'currencyID': this.invoice.currency.code}">${format(this.invoice.currency.round(line.unit_price).normalize(), 'f')}</ram:ChargeAmount>
+                    <ram:ChargeAmount py:attrs="{'currencyID': this.invoice.currency.code} if not (exchange_context or '').startswith('urn:cen.eu:en16931:2017') and not (exchange_context or '').startswith('urn:factur-x.eu:1p') else {}">${format(this.invoice.currency.round(line.unit_price).normalize(), 'f')}</ram:ChargeAmount>
                 </ram:NetPriceProductTradePrice>
             </ram:SpecifiedLineTradeAgreement>
             <ram:SpecifiedLineTradeDelivery>
@@ -85,87 +103,93 @@ this repository contains the full copyright notices and license terms. -->
                     ${TradeTax(tax.tax)}
                 </py:for>
                 <ram:SpecifiedTradeSettlementLineMonetarySummation>
-                    <ram:LineTotalAmount py:attrs="{'currencyID': this.invoice.currency.code}">${format((line.amount * this.type_sign).normalize(), 'f')}</ram:LineTotalAmount>
+                    <ram:LineTotalAmount py:attrs="{'currencyID': this.invoice.currency.code} if not (exchange_context or '').startswith('urn:cen.eu:en16931:2017') and not (exchange_context or '').startswith('urn:factur-x.eu:1p') else {}">${format((line.amount * this.type_sign).normalize(), 'f')}</ram:LineTotalAmount>
                 </ram:SpecifiedTradeSettlementLineMonetarySummation>
             </ram:SpecifiedLineTradeSettlement>
         </ram:IncludedSupplyChainTradeLineItem>
         <ram:ApplicableHeaderTradeAgreement>
             <ram:SellerTradeParty>
-                ${TradeParty(this.seller_trade_party, this.seller_trade_address, this.seller_trade_tax_identifier)}
+                ${TradeParty(this.seller_trade_party, this.seller_trade_address, this.seller_trade_tax_identifier, exchange_context=exchange_context)}
             </ram:SellerTradeParty>
             <ram:BuyerTradeParty>
-                ${TradeParty(this.buyer_trade_party, this.buyer_trade_address, this.buyer_trade_tax_identifier)}
+                ${TradeParty(this.buyer_trade_party, this.buyer_trade_address if (exchange_context or '') != 'urn:factur-x.eu:1p0:minimum' else None, this.buyer_trade_tax_identifier, exchange_context=exchange_context)}
             </ram:BuyerTradeParty>
-            <ram:SellerOrderReferencedDocument py:if="this.invoice.type == 'in'">
-                <ram:IssuerAssignedID>${this.invoice.reference}</ram:IssuerAssignedID>
-            </ram:SellerOrderReferencedDocument>
-            <ram:BuyerOrderReferencedDocument py:if="this.invoice.type == 'out'">
-                <ram:IssuerAssignedID>${this.invoice.reference}</ram:IssuerAssignedID>
-            </ram:BuyerOrderReferencedDocument>
+            <py:if test="this.invoice.reference">
+                <ram:SellerOrderReferencedDocument py:if="this.invoice.type == 'in'">
+                    <ram:IssuerAssignedID>${this.invoice.reference}</ram:IssuerAssignedID>
+                </ram:SellerOrderReferencedDocument>
+                <ram:BuyerOrderReferencedDocument py:if="this.invoice.type == 'out'">
+                    <ram:IssuerAssignedID>${this.invoice.reference}</ram:IssuerAssignedID>
+                </ram:BuyerOrderReferencedDocument>
+            </py:if>
         </ram:ApplicableHeaderTradeAgreement>
         <ram:ApplicableHeaderTradeDelivery>
-            <ram:ShipToTradeParty py:if="this.ship_to_trade_party">
-                ${TradeParty(this.ship_to_trade_party, this.ship_to_trade_address)}
-            </ram:ShipToTradeParty>
-            <ram:ShipFromTradeParty py:if="this.ship_from_trade_party">
-                ${TradeParty(this.ship_from_trade_party, this.ship_from_trade_address)}
-            </ram:ShipFromTradeParty>
+            <py:if test="(exchange_context or '') != 'urn:factur-x.eu:1p0:minimum'">
+                <ram:ShipToTradeParty py:if="this.ship_to_trade_party">
+                    ${TradeParty(this.ship_to_trade_party, this.ship_to_trade_address, exchange_context=exchange_context)}
+                </ram:ShipToTradeParty>
+                <ram:ShipFromTradeParty py:if="this.ship_from_trade_party and ((exchange_context or '') != 'urn:cen.eu:en16931:2017')">
+                    ${TradeParty(this.ship_from_trade_party, this.ship_from_trade_address, exchange_context=exchange_context)}
+                </ram:ShipFromTradeParty>
+            </py:if>
         </ram:ApplicableHeaderTradeDelivery>
         <ram:ApplicableHeaderTradeSettlement>
-            <ram:PaymentReference>${this.payment_reference}</ram:PaymentReference>
+            <ram:PaymentReference py:if="(exchange_context or '') != 'urn:factur-x.eu:1p0:minimum'">${this.payment_reference}</ram:PaymentReference>
             <ram:InvoiceCurrencyCode>${this.invoice.currency.code}</ram:InvoiceCurrencyCode>
-            <ram:InvoiceDateTime>
+            <ram:InvoiceDateTime py:if="not (exchange_context or '').startswith('urn:cen.eu:en16931:2017') and not (exchange_context or '').startswith('urn:factur-x.eu:1p0')">
                 ${DateTime(this.invoice.invoice_date)}
             </ram:InvoiceDateTime>
-            <py:choose test="len(this.invoice.payment_means)">
-                <py:when test="0">
-                    <ram:SpecifiedTradeSettlementPaymentMeans>
-                        <ram:TypeCode>1</ram:TypeCode>  <!-- Instrument not defined -->
-                    </ram:SpecifiedTradeSettlementPaymentMeans>
-                </py:when>
-                <py:otherwise>
-                    <py:for each="payment_mean in this.invoice.payment_means">
-                        <ram:SpecifiedTradeSettlementPaymentMeans py:if="payment_mean.unece_code">
-                            <ram:TypeCode>${payment_mean.unece_code}</ram:TypeCode>
-                            <ram:ID py:if="this.invoice.customer_payment_reference">${this.invoice.customer_payment_reference}</ram:ID>
-                            <py:choose test="payment_mean.unece_code">
-                                <py:when test="'42'">
-                                    <ram:PayeePartyCreditorFinancialAccount>
-                                        <udt:IBANID>${payment_mean.instrument.iban}</udt:IBANID>
-                                    </ram:PayeePartyCreditorFinancialAccount>
-                                    <ram:PayeeSpecifiedCreditorFinancialInstitution py:if="payment_mean.instrument.bank and payment_mean.instrument.bank.bic">
-                                        <udt:BICID>${payment_mean.instrument.bank.bic}</udt:BICID>
-                                    </ram:PayeeSpecifiedCreditorFinancialInstitution>
-                                </py:when>
-                                <py:when test="'59'">
-                                    <ram:PayerPartyDebtorFinancialAccount py:if="payment_mean.instrument.sepa_mandate">
-                                        <udt:IBANID>${payment_mean.instrument.account_number.number}</udt:IBANID>
-                                        <ram:PayerSpecifiedDebtorFinancialInstitution py:if="payment_mean.instrument.account_number.account.bank and payment_mean.instrument.account_number.account.bank.bic">
-                                            <udt:BICID>${payment_mean.instrument.account_number.account.bank.bic}</udt:BICID>
-                                        </ram:PayerSpecifiedDebtorFinancialInstitution>
-                                    </ram:PayerPartyDebtorFinancialAccount>
-                                </py:when>
-                            </py:choose>
+            <py:if test="(exchange_context or '') != 'urn:factur-x.eu:1p0:minimum'">
+                <py:choose test="len(this.invoice.payment_means)">
+                    <py:when test="0">
+                        <ram:SpecifiedTradeSettlementPaymentMeans>
+                            <ram:TypeCode>1</ram:TypeCode>  <!-- Instrument not defined -->
                         </ram:SpecifiedTradeSettlementPaymentMeans>
-                    </py:for>
-                </py:otherwise>
-            </py:choose>
-            <py:for each="tax in this.invoice.taxes">
-                ${TradeTax(tax.tax, tax.amount, tax.base)}
-            </py:for>
-            <ram:SpecifiedTradePaymentTerms py:for="line in this.invoice.lines_to_pay">
-                <ram:Description py:if="this.invoice.payment_term and this.invoice.payment_term.description">${this.invoice.payment_term.description}</ram:Description>
-                <ram:DueDateDateTime>
-                    ${DateTime(line.maturity_date)}
-                </ram:DueDateDateTime>
-                <ram:PartialPaymentAmount py:attrs="{'currencyID': this.invoice.currency.code}">${format(((line.amount_second_currency or (line.debit - line.credit)) * this.type_sign).normalize(), 'f')}</ram:PartialPaymentAmount>
-            </ram:SpecifiedTradePaymentTerms>
+                    </py:when>
+                    <py:otherwise>
+                        <py:for each="payment_mean in this.invoice.payment_means">
+                            <ram:SpecifiedTradeSettlementPaymentMeans py:if="payment_mean.unece_code">
+                                <ram:TypeCode>${payment_mean.unece_code}</ram:TypeCode>
+                                <ram:ID py:if="this.invoice.customer_payment_reference">${this.invoice.customer_payment_reference}</ram:ID>
+                                <py:choose test="payment_mean.unece_code">
+                                    <py:when test="'42'">
+                                        <ram:PayeePartyCreditorFinancialAccount>
+                                            <udt:IBANID>${payment_mean.instrument.iban}</udt:IBANID>
+                                        </ram:PayeePartyCreditorFinancialAccount>
+                                        <ram:PayeeSpecifiedCreditorFinancialInstitution py:if="payment_mean.instrument.bank and payment_mean.instrument.bank.bic">
+                                            <udt:BICID>${payment_mean.instrument.bank.bic}</udt:BICID>
+                                        </ram:PayeeSpecifiedCreditorFinancialInstitution>
+                                    </py:when>
+                                    <py:when test="'59'">
+                                        <ram:PayerPartyDebtorFinancialAccount py:if="payment_mean.instrument.sepa_mandate">
+                                            <udt:IBANID>${payment_mean.instrument.account_number.number}</udt:IBANID>
+                                            <ram:PayerSpecifiedDebtorFinancialInstitution py:if="payment_mean.instrument.account_number.account.bank and payment_mean.instrument.account_number.account.bank.bic">
+                                                <udt:BICID>${payment_mean.instrument.account_number.account.bank.bic}</udt:BICID>
+                                            </ram:PayerSpecifiedDebtorFinancialInstitution>
+                                        </ram:PayerPartyDebtorFinancialAccount>
+                                    </py:when>
+                                </py:choose>
+                            </ram:SpecifiedTradeSettlementPaymentMeans>
+                        </py:for>
+                    </py:otherwise>
+                </py:choose>
+                <py:for each="tax in this.invoice.taxes">
+                    ${TradeTax(tax.tax, tax.amount, tax.base)}
+                </py:for>
+                <ram:SpecifiedTradePaymentTerms py:for="line in this.invoice.lines_to_pay">
+                    <ram:Description py:if="this.invoice.payment_term and this.invoice.payment_term.description">${this.invoice.payment_term.description}</ram:Description>
+                    <ram:DueDateDateTime>
+                        ${DateTime(line.maturity_date)}
+                    </ram:DueDateDateTime>
+                    <ram:PartialPaymentAmount py:attrs="{'currencyID': this.invoice.currency.code} if not (exchange_context or '').startswith('urn:cen.eu:en16931:2017') else {}" py:if="(exchange_context or '') != 'urn:cen.eu:en16931:2017' and (exchange_context or '') != 'urn:cen.eu:en16931:2017#compliant#urn:factur-x.eu:1p0:basic' and not (exchange_context or '').startswith('urn:factur-x.eu:1p0')">${format(((line.amount_second_currency or (line.debit - line.credit)) * this.type_sign).normalize(), 'f')}</ram:PartialPaymentAmount>
+                </ram:SpecifiedTradePaymentTerms>
+            </py:if>
             <ram:SpecifiedTradeSettlementHeaderMonetarySummation>
-                <ram:LineTotalAmount py:attrs="{'currencyID': this.invoice.currency.code}">${format((this.invoice.untaxed_amount * this.type_sign).normalize(), 'f')}</ram:LineTotalAmount>
-                <ram:TaxBasisTotalAmount py:attrs="{'currencyID': this.invoice.currency.code}">${format((this.invoice.untaxed_amount * this.type_sign).normalize(), 'f')}</ram:TaxBasisTotalAmount>
+                <ram:LineTotalAmount py:attrs="{'currencyID': this.invoice.currency.code} if not (exchange_context or '').startswith('urn:cen.eu:en16931:2017') and not (exchange_context or '').startswith('urn:factur-x.eu:1p') else {}" py:if="(exchange_context or '') != 'urn:factur-x.eu:1p0:minimum'">${format((this.invoice.untaxed_amount * this.type_sign).normalize(), 'f')}</ram:LineTotalAmount>
+                <ram:TaxBasisTotalAmount py:attrs="{'currencyID': this.invoice.currency.code} if not (exchange_context or '').startswith('urn:cen.eu:en16931:2017') and not (exchange_context or '').startswith('urn:factur-x.eu:1p') else {}">${format((this.invoice.untaxed_amount * this.type_sign).normalize(), 'f')}</ram:TaxBasisTotalAmount>
                 <ram:TaxTotalAmount py:attrs="{'currencyID': this.invoice.currency.code}">${format((this.invoice.tax_amount * this.type_sign).normalize(), 'f')}</ram:TaxTotalAmount>
-                <ram:GrandTotalAmount py:attrs="{'currencyID': this.invoice.currency.code}">${format((this.invoice.total_amount * this.type_sign).normalize(), 'f')}</ram:GrandTotalAmount>
-                <ram:DuePayableAmount py:attrs="{'currencyID': this.invoice.currency.code}">${format((this.invoice.amount_to_pay * this.type_sign).normalize(), 'f')}</ram:DuePayableAmount>
+                <ram:GrandTotalAmount py:attrs="{'currencyID': this.invoice.currency.code} if not (exchange_context or '').startswith('urn:cen.eu:en16931:2017') and not (exchange_context or '').startswith('urn:factur-x.eu:1p0') else {}">${format((this.invoice.total_amount * this.type_sign).normalize(), 'f')}</ram:GrandTotalAmount>
+                <ram:DuePayableAmount py:attrs="{'currencyID': this.invoice.currency.code} if not (exchange_context or '').startswith('urn:cen.eu:en16931:2017') and not (exchange_context or '').startswith('urn:factur-x.eu:1p0') else {}">${format((this.invoice.amount_to_pay * this.type_sign).normalize(), 'f')}</ram:DuePayableAmount>
             </ram:SpecifiedTradeSettlementHeaderMonetarySummation>
         </ram:ApplicableHeaderTradeSettlement>
     </rsm:SupplyChainTradeTransaction>

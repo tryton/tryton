@@ -59,3 +59,7 @@ class InvoiceTaxIdentifierWarning(UserWarning):
 
 class InvoiceTaxIdentifierError(ValidationError):
     pass
+
+
+class InvoiceReportError(UserError):
+    pass

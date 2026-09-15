@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data grouped="1">
+        <record model="ir.message" id="msg_invoice_pdf_factur_x">
+            <field name="text">To generate a Factur-X document for the invoice "%(invoice)s", you must set the report output to PDF.</field>
+        </record>
+    </data>
+</tryton>

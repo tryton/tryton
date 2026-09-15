@@ -1,0 +1,7 @@
+[
+    {"profile": "urn:cen.eu:en16931:2017"}
+    ,{"profile": "urn:cen.eu:en16931:2017#conformant#urn:factur-x.eu:1p0:extended"}
+    ,{"profile": "urn:cen.eu:en16931:2017#compliant#urn:factur-x.eu:1p0:basic"}
+    ,{"profile": "urn:factur-x.eu:1p0:basicwl"}
+    ,{"profile": "urn:factur-x.eu:1p0:minimum"}
+]

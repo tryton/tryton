@@ -73,7 +73,7 @@ class Invoice(Model):
         else:
             self.invoice = invoice
 
-    def render(self, template):
+    def render(self, template, exchange_context=None):
         if self.invoice.state not in {'posted', 'paid'}:
             raise ValueError("Invoice must be posted")
         tmpl = self._get_template(template)
@@ -81,6 +81,7 @@ class Invoice(Model):
             raise NotImplementedError
         return (tmpl.generate(
                 this=self,
+                exchange_context=exchange_context,
                 Decimal=Decimal)
             .filter(remove_comment)
             .render()

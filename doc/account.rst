@@ -65,6 +65,9 @@ Accounting
 :doc:`Invoice Defer <account_invoice_defer:index>`
    Defer expense and revenue.
 
+:doc:`Invoice Factur-X <account_invoice_factur_x:index>`
+   Generate Factur-X.
+
 :doc:`Invoice History <account_invoice_history:index>`
    Historize invoice.
 
