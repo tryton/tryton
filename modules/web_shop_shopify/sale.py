@@ -851,13 +851,17 @@ class Sale_ShipmentCost(metaclass=PoolMeta):
         carrier = None
         if shipment_cost_method and (shipping_line := order['shippingLine']):
             available_carriers = self.on_change_with_available_carriers()
+            first_carrier = None
             for carrier in available_carriers:
+                if not carrier.carrier_product.salable:
+                    continue
                 if carrier.shopify_match(shop, shipping_line):
                     carrier = carrier
                     break
+                elif first_carrier is None:
+                    first_carrier = carrier
             else:
-                if available_carriers:
-                    carrier = available_carriers[0]
+                carrier = first_carrier
         if not carrier:
             shipment_cost_method = None
         setattr_changed(self, 'carrier', carrier)
@@ -925,7 +929,8 @@ class Line(IdentifierMixin, metaclass=PoolMeta):
         if line_item['variant'] and line_item['variant']['id']:
             if product := Product.search_shopify_identifier(
                     sale.web_shop, gid2id(line_item['variant']['id'])):
-                setattr_changed(line, 'product', product)
+                if product.salable:
+                    setattr_changed(line, 'product', product)
         if line.product:
             line._set_shopify_quantity(line.product, quantity)
             if line._changed_values():
