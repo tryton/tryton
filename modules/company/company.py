@@ -111,7 +111,7 @@ class Company(ModelSQL, ModelView):
 
     @classmethod
     def search_rec_name(cls, name, clause):
-        return [('party.rec_name',) + tuple(clause[1:])]
+        return [('party.name', *clause[1:])]
 
     @classmethod
     def preprocess_values(cls, mode, values):
@@ -404,7 +404,7 @@ class Employee(ModelSQL, ModelView):
 
     @classmethod
     def search_rec_name(cls, name, clause):
-        return [('party.rec_name',) + tuple(clause[1:])]
+        return [('party.name', *clause[1:])]
 
 
 class CompanyConfigStart(ModelView):
