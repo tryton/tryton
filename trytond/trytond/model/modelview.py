@@ -772,14 +772,18 @@ class ModelView(Model):
 
             if (transaction.user != 0) and check_access:
                 states = cls._buttons.get(func.__name__, {})
-                for state_name in {'invisible', 'readonly'} & states.keys():
-                    state = _pyson_encoder.encode(states[state_name])
-                    for record in records:
-                        if _record_eval_pyson(record, state, encoded=True):
-                            raise AccessButtonError(
-                                gettext('ir.msg_button_state_record',
-                                    button=func.__name__,
-                                    **cls.__names__(record=record)))
+                with transaction.set_context(
+                        groups=User.get_groups(),
+                        administrator=User.is_administrator()):
+                    for state_name in (
+                            {'invisible', 'readonly'} & states.keys()):
+                        state = _pyson_encoder.encode(states[state_name])
+                        for record in records:
+                            if _record_eval_pyson(record, state, encoded=True):
+                                raise AccessButtonError(
+                                    gettext('ir.msg_button_state_record',
+                                        button=func.__name__,
+                                        **cls.__names__(record=record)))
 
             if (transaction.user != 0) and check_access:
                 button_rules = Button.get_rules(
