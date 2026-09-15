@@ -223,8 +223,11 @@ class BlanketAgreement(Workflow, ModelSQL, ModelView, ChatMixin):
                 'run': {
                     'invisible': (
                         (Eval('state') != 'draft')
-                        & ~(Id('purchase', 'group_purchase_admin').in_(
-                                Eval('context', {}).get('groups', []))
+                        & ~(
+                            (Id('purchase', 'group_purchase_admin').in_(
+                                    Eval('context', {}).get('groups', []))
+                                | Eval('context', {}).get(
+                                    'administrator', False))
                             & (Eval('state') == 'closed'))),
                     'readonly': (~Eval('lines')
                         | (Eval('from_date', Date()) > Date())),

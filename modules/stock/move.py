@@ -497,7 +497,9 @@ class Move(Workflow, ModelSQL, ModelView):
                         | ((Eval('state') == 'done')
                             & ~Id('stock',
                                 'group_stock_cancellation').in_(
-                                Eval('context', {}).get('groups', [])))),
+                                Eval('context', {}).get('groups', []))
+                            & ~Eval('context', {}).get(
+                                'administrator', False))),
                     'readonly': Eval('shipment') | Eval('_parent_shipment'),
                     'depends': ['state', 'shipment'],
                     },

@@ -515,7 +515,9 @@ class ShipmentIn(
                         | ((Eval('state') == 'done')
                             & ~Id('stock',
                                 'group_stock_cancellation').in_(
-                                Eval('context', {}).get('groups', [])))),
+                                Eval('context', {}).get('groups', []))
+                            & ~Eval('context', {}).get(
+                                'administrator', False))),
                     'depends': ['state'],
                     },
                 'draft': {
@@ -927,7 +929,9 @@ class ShipmentInReturn(
                         | ((Eval('state') == 'done')
                             & ~Id('stock',
                                 'group_stock_cancellation').in_(
-                                Eval('context', {}).get('groups', [])))),
+                                Eval('context', {}).get('groups', []))
+                            & ~Eval('context', {}).get(
+                                'administrator', False))),
                     'depends': ['state'],
                     },
                 'draft': {
@@ -1331,7 +1335,9 @@ class ShipmentOut(
                         | ((Eval('state') == 'done')
                             & ~Id('stock',
                                 'group_stock_cancellation').in_(
-                                Eval('context', {}).get('groups', [])))),
+                                Eval('context', {}).get('groups', []))
+                            & ~Eval('context', {}).get(
+                                'administrator', False))),
                     'depends': ['state'],
                     },
                 'draft': {
@@ -2009,7 +2015,9 @@ class ShipmentOutReturn(
                         | ((Eval('state') == 'done')
                             & ~Id('stock',
                                 'group_stock_cancellation').in_(
-                                Eval('context', {}).get('groups', [])))),
+                                Eval('context', {}).get('groups', []))
+                            & ~Eval('context', {}).get(
+                                'administrator', False))),
                     'depends': ['state'],
                     },
                 'draft': {
@@ -2523,7 +2531,9 @@ class ShipmentInternal(
                         | (Eval('state').in_(['shipped', 'done'])
                             & ~Id('stock',
                                 'group_stock_cancellation').in_(
-                                Eval('context', {}).get('groups', [])))),
+                                Eval('context', {}).get('groups', []))
+                            & ~Eval('context', {}).get(
+                                'administrator', False))),
                     'depends': ['state'],
                     },
                 'draft': {
@@ -3044,9 +3054,11 @@ class Assign(Wizard):
             Button("Ignore", 'ignore', 'tryton-forward'),
             Button("Force", 'force', 'tryton-forward',
                 states={
-                    'invisible': ~Id('stock',
-                        'group_stock_force_assignment').in_(
-                        Eval('context', {}).get('groups', [])),
+                    'invisible': (
+                        ~Id('stock',
+                            'group_stock_force_assignment').in_(
+                            Eval('context', {}).get('groups', []))
+                        & ~Eval('context', {}).get('administrator', False)),
                 }),
             ])
     cancel = StateTransition()

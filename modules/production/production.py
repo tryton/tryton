@@ -207,7 +207,9 @@ class Production(
                         | (Eval('state').in_(['running', 'done'])
                             & ~Id('stock',
                                 'group_stock_cancellation').in_(
-                                Eval('context', {}).get('groups', [])))),
+                                Eval('context', {}).get('groups', []))
+                            & ~Eval('context', {}).get(
+                                'administrator', False))),
                     'depends': ['state'],
                     },
                 'draft': {

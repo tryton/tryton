@@ -115,14 +115,16 @@ class Invoice(
             'readonly': (
                 Eval('has_report_cache', False)
                 & ~Id('account', 'group_account_admin').in_(
-                    Eval('context', {}).get('groups', []))),
+                    Eval('context', {}).get('groups', []))
+                & ~Eval('context', {}).get('administrator', False)),
             })
     description = fields.Char("Description", size=None,
         states={
             'readonly': (
                 (Eval('state') != 'draft')
                 & ~Id('account', 'group_account_admin').in_(
-                    Eval('context', {}).get('groups', []))),
+                    Eval('context', {}).get('groups', []))
+                & ~Eval('context', {}).get('administrator', False)),
             })
     validated_by = employee_field(
         "Validated By",
@@ -305,7 +307,8 @@ class Invoice(
             'readonly': (
                 (Eval('state') != 'draft')
                 & ~Id('account', 'group_account_admin').in_(
-                    Eval('context', {}).get('groups', []))),
+                    Eval('context', {}).get('groups', []))
+                & ~Eval('context', {}).get('administrator', False)),
             })
     origins = fields.Function(fields.Char('Origins'), 'get_origins')
     origin_invoices = fields.Function(fields.Many2Many(
@@ -2581,7 +2584,8 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
         states={
             'readonly': (_states['readonly']
                 & ~Id('account', 'group_account_admin').in_(
-                    Eval('context', {}).get('groups', []))),
+                    Eval('context', {}).get('groups', []))
+                & ~Eval('context', {}).get('administrator', False)),
                 })
     summary = fields.Function(
         fields.Char('Summary'), 'on_change_with_summary',
@@ -3247,7 +3251,8 @@ class InvoiceTax(sequence_ordered(), ModelSQL, ModelView):
         states={
             'readonly': (_states['readonly']
                 & ~Id('account', 'group_account_admin').in_(
-                    Eval('context', {}).get('groups', []))),
+                    Eval('context', {}).get('groups', []))
+                & ~Eval('context', {}).get('administrator', False)),
             })
     sequence_number = fields.Function(fields.Integer('Sequence Number'),
             'get_sequence_number')
@@ -3292,7 +3297,8 @@ class InvoiceTax(sequence_ordered(), ModelSQL, ModelView):
         states={
             'readonly': (_states['readonly']
                 & ~Id('account', 'group_account_admin').in_(
-                    Eval('context', {}).get('groups', []))),
+                    Eval('context', {}).get('groups', []))
+                & ~Eval('context', {}).get('administrator', False)),
             })
 
     del _states
