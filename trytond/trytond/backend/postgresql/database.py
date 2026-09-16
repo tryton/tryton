@@ -486,7 +486,7 @@ class Database(DatabaseInterface):
         cursor.execute('SELECT pg_notify(%s, %s)', (channel, payload))
 
     def get_notifications(self, connection):
-        return list(connection.notifies(timeout=2))
+        return list(connection.notifies(timeout=0))
 
     def lock(self, connection, table):
         cursor = connection.cursor()
