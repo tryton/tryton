@@ -2676,37 +2676,29 @@
                 return record._values[related];
             } else {
                 var value = this.field.get(record);
-                for (const option of this.selection) {
-                    if (option[0] === value) {
-                        return option[1];
-                    }
+                if (Object.hasOwn(this.any_selection, value)) {
+                    return this.any_selection[value];
+                } else {
+                    return value;
                 }
-                return value;
             }
         },
         update_text: function(cell, record) {
             if (!this.tree.editable &&
                     (this.field.name + ':string' in record._values)) {
-                var text_value = this.get_textual_value(record);
+                let text_value = record._values[this.field.name + ':string'];
                 cell.text(text_value).attr('title', text_value);
             } else {
                 this.update_selection(record, (selection, help) => {
-                    var value = this.field.get(record);
-                    var prm, text, found = false;
-                    for (const option of selection) {
-                        if (option[0] === value) {
-                            found = true;
-                            text = option[1];
-                            break;
-                        }
-                    }
-                    if (!found) {
+                    let value = this.field.get(record),
+                        prm;
+                    if (Object.hasOwn(this.any_selection, value)) {
+                        prm = jQuery.when(this.any_selection[value]);
+                    } else {
                         prm = Sao.common.selection_mixin.get_inactive_selection
                             .call(this, value).then(function(inactive) {
                                 return inactive[1];
                             });
-                    } else {
-                        prm = jQuery.when(text);
                     }
                     prm.done(text_value => {
                         cell.text(text_value).attr('title', text_value);
@@ -2737,10 +2729,8 @@
                 return record._values[related];
             } else {
                 var values = this.field.get_eval(record).map(value => {
-                    for (const option of this.selection) {
-                        if (option[0] === value) {
-                            return option[1];
-                        }
+                    if (Object.hasOwn(this.any_selection, value)) {
+                        return this.any_selection[value];
                     }
                     return '';
                 });
@@ -2750,7 +2740,7 @@
         update_text: function(cell, record) {
             if (!this.tree.editable &&
                     (this.field_name + ':string' in record._values)) {
-                var text_value = this.get_textual_value(record);
+                let text_value = record._values[this.field_name + ':string'];
                 cell.text(text_value).attr('title', text_value);
             } else {
                 this.update_selection(record, () => {
@@ -2796,11 +2786,8 @@
                 name = value[1];
             }
             if (model) {
-                for (const option of this.selection) {
-                    if (option[0] === model) {
-                        model = option[1];
-                        break;
-                    }
+                if (Object.hasOwn(this.any_selection, model)) {
+                    model = this.any_selection[model];
                 }
                 text = model + ',' + name;
             } else {
