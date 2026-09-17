@@ -767,6 +767,7 @@
     Sao.common.selection_mixin = {};
     Sao.common.selection_mixin.init = function() {
         this.inactive_selection = [];
+        this.any_selection = {}
         this._values2selection = {};
         this._domain_cache = {};
         if (this.nullable_widget === undefined) {
@@ -791,6 +792,7 @@
                 });
             }
             let help = this.attributes.help_selection || {};
+            Object.assign(this.any_selection, Object.fromEntries(selection));
             if (callback) callback(selection, help);
         };
         if (!(selection instanceof Array) &&
@@ -839,6 +841,9 @@
                             selection = Sao.common.selection_mixin
                                 .filter_selection.call(
                                     this, domain, record, field, selection);
+                            Object.assign(
+                                this.any_selection,
+                                Object.fromEntries(selection));
                             if (callback) {
                                 callback(selection, help);
                             }
@@ -879,6 +884,8 @@
                         }
                     }
                     this._domain_cache[jdomain] = [selection, help];
+                    Object.assign(
+                        this.any_selection, Object.fromEntries(selection));
 
                     let cur_domain = field.get_domain(record);
                     let cur_context = field.get_context(record);
@@ -959,8 +966,9 @@
             'params': [[value], ['rec_name'], {}]
         }, Sao.Session.current_session);
         return prm.then(result => {
-            this.inactive_selection.push([result[0].id, result[0].rec_name]);
-            return [result[0].id, result[0].rec_name];
+            let selection = [result[0].id, result[0].rec_name];
+            this.inactive_selection.push(selection);
+            return selection;
         });
     };
 
