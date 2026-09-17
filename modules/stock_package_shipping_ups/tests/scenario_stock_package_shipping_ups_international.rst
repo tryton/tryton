@@ -11,6 +11,8 @@ Imports::
     >>> from trytond.modules.company.tests.tools import create_company, get_company
     >>> from trytond.tests.tools import activate_modules, assertEqual
 
+    >>> agent_account = globals().get('agent_account', False)
+
 Activate modules::
 
     >>> config = activate_modules(
@@ -72,7 +74,10 @@ Create parties::
     >>> agent_identifier.code = "CHE-123.456.788 IVA"
     >>> agent_party.save()
     >>> agent = Agent(party=agent_party)
-    >>> agent.ups_account_number = os.getenv('UPS_ACCOUNT_NUMBER')
+    >>> agent.ups_account_number = (
+    ...     os.getenv('UPS_ACCOUNT_NUMBER_AGENT')
+    ...     if agent_account and os.getenv('UPS_ACCOUNT_NUMBER_AGENT')
+    ...     else os.getenv('UPS_ACCOUNT_NUMBER'))
     >>> agent.save()
     >>> AgentSelection(to_country=switzerland, agent=agent).save()
 
