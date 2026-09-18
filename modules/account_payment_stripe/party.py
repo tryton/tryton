@@ -52,9 +52,9 @@ class PartyReceptionDirectDebit(
 
     def _get_payment(self, line, date, amount):
         payment = super()._get_payment(line, date, amount)
-        self.stripe_customer = self.stripe_customer
-        self.stripe_customer_source = self.stripe_customer_source
-        self.stripe_customer_payment_method = (
+        payment.stripe_customer = self.stripe_customer
+        payment.stripe_customer_source = self.stripe_customer_source
+        payment.stripe_customer_payment_method = (
             self.stripe_customer_payment_method)
         return payment
 
