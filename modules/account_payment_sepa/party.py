@@ -60,6 +60,7 @@ class PartyReceptionDirectDebit(metaclass=PoolMeta):
             ],
         states={
             'invisible': Eval('process_method') != 'sepa',
+            'required': Eval('process_method') == 'sepa',
             'readonly': ~Eval('party') | (Eval('party', -1) < 0),
             })
 
