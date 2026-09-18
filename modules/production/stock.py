@@ -77,7 +77,7 @@ class Move(metaclass=PoolMeta):
             depends=['production_input', 'production_output']),
         'on_change_with_production', searcher='search_production')
     production_cost_price_updated = fields.Boolean(
-        "Cost Price Updated", readonly=True,
+        "Production Cost Price Updated", readonly=True,
         states={
             'invisible': ~Eval('production_input') & (Eval('state') == 'done'),
             })
