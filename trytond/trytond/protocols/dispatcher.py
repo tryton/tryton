@@ -171,8 +171,12 @@ def authentication_services(request):
     return _AUTHENTICATION_SERVICES
 
 
-def register_authentication_service(name, url):
-    _AUTHENTICATION_SERVICES.append((name, url))
+def register_authentication_service(name, url, icon=None):
+    _AUTHENTICATION_SERVICES.append({
+            'name': name,
+            'url': url,
+            'icon': icon,
+            })
 
 
 _AUTHENTICATION_SERVICES = []

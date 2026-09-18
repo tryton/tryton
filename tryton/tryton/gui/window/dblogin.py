@@ -2,6 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 
 import configparser
+import functools
 import gettext
 import logging
 import os
@@ -622,8 +623,20 @@ class DBLogin(object):
             self.service_base, self.services = rpc.authentication_services(
                 hostname, port)
             self._services[key] = (self.services, self.service_base)
-        for response_id, (name, url) in enumerate(self.services, 1):
-            button = Gtk.Button(label=name)
+
+        def show_image(image, pixbuf):
+            image.set_from_pixbuf(pixbuf)
+            image.show()
+
+        for response_id, service in enumerate(self.services, 1):
+            button = Gtk.Button(label=service['name'])
+            if service['icon']:
+                image = Gtk.Image()
+                pixbuf = common.IconFactory.get_pixbuf_url(
+                    service['icon'], size=16,
+                    callback=functools.partial(show_image, image))
+                image.set_from_pixbuf(pixbuf)
+                button.set_image(image)
             self.dialog.add_action_widget(button, response_id)
             button.show()
 

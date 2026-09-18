@@ -24,13 +24,16 @@ IDENTITIES = set()
 METADATA = {}
 CONFIG_FILENAME = {}
 LOGIN = {}
+ICON = {}
 
 if config.has_section('authentication_saml'):
     for identity in config.options('authentication_saml'):
         IDENTITIES.add(identity)
         name = config.get('authentication_saml', identity)
+        icon = ICON[identity] = config.get(
+            f'authentication_saml {identity}', 'icon', default='')
         register_authentication_service(
-            name, f'/r/authentication/saml/{identity}/login')
+            name, f'/r/authentication/saml/{identity}/login', icon)
         metadata = config.get(
             f'authentication_saml {identity}', 'metadata', default=None)
         if metadata:

@@ -23,6 +23,7 @@ Reference of the ``trytond`` API:
    tools/index
    pool
    rpc
+   protocols/index
    i18n
    sendmail
    filestore

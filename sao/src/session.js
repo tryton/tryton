@@ -388,12 +388,20 @@
                 dialog.body.append(jQuery('<div/>', {
                     'class': 'panel panel-default',
                 }).append(panel_body));
-                for (const [name, url] of services) {
-                    panel_body.append(jQuery('<button/>', {
+                for (let service of services) {
+                    let button = jQuery('<button/>', {
                         'class': 'btn btn-block btn-default',
                         'type': 'button',
                         'disabled': localhost,
-                    }).text(name).click(url, login_service));
+                    }).text(service.name).click(service.url, login_service);
+                    if (service.icon) {
+                        let icon = jQuery('<img/>', {
+                            'class': 'icon',
+                            'src': service.icon,
+                        });
+                        icon.prependTo(button);
+                    }
+                    panel_body.append(button);
                 }
                 if (localhost) {
                     panel_body.append(jQuery('<p/>', {
