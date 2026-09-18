@@ -475,8 +475,9 @@ class ViewTreeWidth(
         ondelete='CASCADE')
     screen_width = fields.Integer(
         "Screen Width",
-        domain=[
+        domain=['OR',
             ('screen_width', '>=', 0),
+            ('screen_width', '=', None),
             ])
     width = fields.Integer(
         "Width",
@@ -546,11 +547,14 @@ class ViewTreeWidth(
 
     @classmethod
     def get_width(cls, model, width):
-        for screen_width in WIDTH_BREAKPOINTS:
-            if width >= screen_width:
-                break
-        else:
+        if width is None:
             screen_width = None
+        else:
+            for screen_width in WIDTH_BREAKPOINTS:
+                if width >= screen_width:
+                    break
+            else:
+                screen_width = None
 
         user = Transaction().user
         records = cls.search([
@@ -595,11 +599,14 @@ class ViewTreeWidth(
         as value.
         width is the screen width.
         '''
-        for screen_width in WIDTH_BREAKPOINTS:
-            if width >= screen_width:
-                break
-        else:
+        if width is None:
             screen_width = None
+        else:
+            for screen_width in WIDTH_BREAKPOINTS:
+                if width >= screen_width:
+                    break
+            else:
+                screen_width = None
 
         user_id = Transaction().user
         records = cls.search([
