@@ -12,7 +12,7 @@ class Category(metaclass=PoolMeta):
     customs = fields.Boolean(
         "Customs",
         states={
-            'readonly': Bool(Eval('childs', [0])) | Bool(Eval('parent')),
+            'editable': Bool(Eval('childs', [0])) | Bool(Eval('parent')),
             })
     tariff_codes_parent = fields.Boolean("Use Parent's Tariff Codes",
         states={
