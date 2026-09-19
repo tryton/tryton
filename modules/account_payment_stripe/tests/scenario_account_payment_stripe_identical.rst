@@ -61,7 +61,8 @@ Create a customer::
     ...         },
     ...     )
     >>> StripeCustomer.write(
-    ...     [stripe_customer1.id], {'stripe_token': token.id}, config.context)
+    ...     [stripe_customer1.id], {'stripe_token': token.id},
+    ...     {**config.context, '_check_access': False})
 
 Run cron::
 
@@ -86,7 +87,8 @@ Create a second customer with same card::
     ...         },
     ...     )
     >>> StripeCustomer.write(
-    ...     [stripe_customer2.id], {'stripe_token': token.id}, config.context)
+    ...     [stripe_customer2.id], {'stripe_token': token.id},
+    ...     {**config.context, '_check_access': False})
 
 Run cron::
 

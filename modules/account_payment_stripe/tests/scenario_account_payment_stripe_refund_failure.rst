@@ -86,7 +86,7 @@ Checkout the payment::
     >>> Payment.write([payment.id], {
     ...     'stripe_token': token.id,
     ...     'stripe_chargeable': True,
-    ...     }, config.context)
+    ...     }, {**config.context, '_check_access': False})
 
 Process the payment::
 

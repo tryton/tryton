@@ -88,7 +88,7 @@ Create fully disputed payment::
     ...     'stripe_token': token.id,
     ...     'stripe_chargeable': True,
     ...     'stripe_payment_intent_id': None,  # Remove intent from checkout
-    ...     }, config.context)
+    ...     }, {**config.context, '_check_access': False})
 
     >>> process_payment = payment.click('process_wizard')
     >>> payment.state
@@ -182,7 +182,7 @@ Create partial disputed payment::
     ...     'stripe_token': token.id,
     ...     'stripe_chargeable': True,
     ...     'stripe_payment_intent_id': None,  # Remove intent from checkout
-    ...     }, config.context)
+    ...     }, {**config.context, '_check_access': False})
 
     >>> process_payment = payment.click('process_wizard')
     >>> payment.state
@@ -254,7 +254,7 @@ Create won disputed payment::
     ...     'stripe_token': token.id,
     ...     'stripe_chargeable': True,
     ...     'stripe_payment_intent_id': None,  # Remove intent from checkout
-    ...     }, config.context)
+    ...     }, {**config.context, '_check_access': False})
 
     >>> process_payment = payment.click('process_wizard')
     >>> payment.state

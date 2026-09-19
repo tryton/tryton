@@ -103,7 +103,7 @@ Checkout the payment::
     ...     'stripe_token': token.id,
     ...     'stripe_chargeable': True,
     ...     'stripe_payment_intent_id': None,  # Remove intent from checkout
-    ...     }, config.context)
+    ...     }, {**config.context, '_check_access': False})
 
 Process the payment::
 
@@ -146,7 +146,7 @@ Create failing payment::
     ...     'stripe_token': token.id,
     ...     'stripe_chargeable': True,
     ...     'stripe_payment_intent_id': None,  # Remove intent from checkout
-    ...     }, config.context)
+    ...     }, {**config.context, '_check_access': False})
     >>> process_payment = payment.click('process_wizard')
     >>> payment.state
     'failed'
@@ -175,7 +175,8 @@ Checkout the customer::
     ...         },
     ...     )
     >>> Customer.write(
-    ...     [stripe_customer.id], {'stripe_token': token.id}, config.context)
+    ...     [stripe_customer.id], {'stripe_token': token.id},
+    ...     {**config.context, '_check_access': False})
 
 Run cron::
 
@@ -277,7 +278,7 @@ Checkout the capture payment::
     ...     )
     >>> Payment.write([payment.id], {
     ...     'stripe_token': token.id,
-    ...     }, config.context)
+    ...     }, {**config.context, '_check_access': False})
 
 Process the capture payment::
 

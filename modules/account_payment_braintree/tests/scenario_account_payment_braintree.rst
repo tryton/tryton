@@ -98,7 +98,7 @@ Checkout the payment::
 
     >>> Payment.write([payment.id], {
     ...     'braintree_nonce': Nonces.Transactable,
-    ...     }, config.context)
+    ...     }, {**config.context, '_check_access': False})
 
 Process the payment::
 
@@ -132,7 +132,7 @@ Create a customer::
     >>> braintree_customer.save()
     >>> Customer.write([braintree_customer.id], {
     ...     'braintree_nonce': Nonces.Transactable,
-    ...     }, config.context)
+    ...     }, {**config.context, '_check_access': False})
 
 Run cron::
 
@@ -206,7 +206,7 @@ Create payment to settle::
 
     >>> Payment.write([payment.id], {
     ...     'braintree_nonce': Nonces.Transactable,
-    ...     }, config.context)
+    ...     }, {**config.context, '_check_access': False})
 
     >>> process_payment = payment.click('process_wizard')
     >>> payment.state
