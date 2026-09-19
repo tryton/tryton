@@ -235,6 +235,7 @@ class MoveLine(metaclass=PoolMeta):
         else:
             default = default.copy()
         default.setdefault('payments', None)
+        default.setdefault('payment_amount_cache')
         return super().copy(lines, default=default)
 
     @classmethod
