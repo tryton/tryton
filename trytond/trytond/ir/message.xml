@@ -244,6 +244,12 @@ this repository contains the full copyright notices and license terms. -->
             <field name="text">You are not allowed to delete records "%(ids)s" of "%(model)s" because of at lease one of those rules:
 %(rules)s</field>
         </record>
+        <record model="ir.message" id="msg_modification_readonly_field_error">
+            <field name="text">You are not allowed to modify the field "%(field)s" of "%(model)s".</field>
+        </record>
+        <record model="ir.message" id="msg_modification_readonly_field_record_error">
+            <field name="text">You are not allowed to modify the field "%(field)s" in record "%(record)s" of "%(model)s".</field>
+        </record>
         <record model="ir.message" id="msg_context_datetime">
             <field name="text">At date/time: %(datetime)s</field>
         </record>

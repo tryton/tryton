@@ -1008,6 +1008,7 @@ class ModelSQL(ModelStorage):
         pool = Pool()
         Translation = pool.get('ir.translation')
 
+        vlist_orig = vlist
         vlist = cls._before_create(vlist)
 
         table = cls.__table__()
@@ -1179,7 +1180,7 @@ class ModelSQL(ModelStorage):
         cls._insert_history(new_ids)
 
         cls.__check_domain_rule(new_ids, 'create')
-        return cls.browse(cls._after_create(new_ids))
+        return cls.browse(cls._after_create(new_ids, vlist_orig))
 
     @classmethod
     def read(cls, ids, fields_names):

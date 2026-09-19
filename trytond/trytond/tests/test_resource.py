@@ -104,7 +104,7 @@ class ResourceTestCase(DBTestCase):
                         'resource': record,
                         'message': "Foo",
                         }])
-            Note.write([note], {'message': "Bar"})
+            Note.write([note], {'unread': False})
             Note.read([note.id], ['message'])
             Note.delete([note])
 
@@ -178,7 +178,7 @@ class ResourceTestCase(DBTestCase):
                         'resource': record,
                         'message': "Foo",
                         }])
-            Note.write([note], {'message': "Bar"})
+            Note.write([note], {'unread': False})
             Note.read([note.id], ['message'])
             Note.delete([note])
 

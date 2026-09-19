@@ -12,6 +12,80 @@ from trytond.transaction import Transaction
 _context = {'_check_access': True}
 
 
+class ReadonlyTestCase(DBTestCase):
+    module = 'tests'
+
+    @with_transaction(context=_context)
+    def test_create_readonly(self):
+        "Test create readonly field"
+        pool = Pool()
+        Model = pool.get('test.access')
+
+        with self.assertRaises(AccessError):
+            Model.create([{'field_readonly': "test"}])
+
+    @with_transaction(context=_context)
+    def test_write_readonly(self):
+        pool = Pool()
+        Model = pool.get('test.access')
+
+        record, = Model.create([{}])
+
+        with self.assertRaises(AccessError):
+            Model.write([record], {'field_readonly': "test"})
+
+    @with_transaction(context=_context)
+    def test_create_readonly_state(self):
+        "Test create field with readonly states"
+        pool = Pool()
+        Model = pool.get('test.access')
+
+        Model.create([{
+                    'field1': 'not readonly',
+                    'field_readonly_state': 'test',
+                    }])
+        Model.create([{
+                    'field1': 'readonly',
+                    }])
+        with self.assertRaises(AccessError):
+            Model.create([{
+                        'field1': 'readonly',
+                        'field_readonly_state': 'test',
+                        }])
+
+    @with_transaction(context=_context)
+    def test_write_readonly_state(self):
+        "Test write field with readonly states"
+        pool = Pool()
+        Model = pool.get('test.access')
+
+        record, = Model.create([{}])
+
+        Model.write([record], {
+                'field1': 'not readonly',
+                'field_readonly_state': 'foo',
+                })
+        Model.write([record], {
+                'field1': 'readonly',
+                })
+        with self.assertRaises(AccessError):
+            Model.write([record], {
+                    'field_readonly_state': 'bar',
+                    })
+
+    @with_transaction(context=_context)
+    def test_readonly_id(self):
+        "Test field with readonly based on id"
+        pool = Pool()
+        Model = pool.get('test.access')
+
+        record, = Model.create([{'field_readonly_id': 'foo'}])
+        with self.assertRaises(AccessError):
+            Model.write([record], {
+                    'field_readonly_id': 'bar',
+                    })
+
+
 class _ModelAccessTestCase(DBTestCase):
     module = 'tests'
     _perm = None
@@ -261,7 +335,9 @@ class _ModelAccessTestCase(DBTestCase):
         ModelAccess = pool.get('ir.model.access')
         TestAccess = pool.get(self.model_name)
 
-        inactive_group, = Group.create([{'name': 'Test', 'active': False}])
+        inactive_group, = Group.create([{'name': 'Test'}])
+        inactive_group.active = False
+        inactive_group.save()
         record, = TestAccess.create([{}])
         ModelAccess.create([{
                     'model': self.model_name,
@@ -287,9 +363,10 @@ class _ModelAccessTestCase(DBTestCase):
 
         inactive_group, = Group.create([{
                     'name': 'Test',
-                    'active': False,
                     'users': [('add', [Transaction().user])],
                     }])
+        inactive_group.active = False
+        inactive_group.save()
         record, = TestAccess.create([{}])
         ModelAccess.create([{
                     'model': self.model_name,
@@ -810,7 +887,9 @@ class _ModelFieldAccessTestCase(DBTestCase):
         FieldAccess = pool.get('ir.model.field.access')
         TestAccess = pool.get('test.access')
 
-        inactive_group, = Group.create([{'name': 'Test', 'active': False}])
+        inactive_group, = Group.create([{'name': 'Test'}])
+        inactive_group.active = False
+        inactive_group.save()
         record, = TestAccess.create([{}])
         FieldAccess.create([{
                     'model': 'test.access',
@@ -839,9 +918,10 @@ class _ModelFieldAccessTestCase(DBTestCase):
 
         inactive_group, = Group.create([{
                     'name': 'Test',
-                    'active': False,
                     'users': [('add', [Transaction().user])],
                     }])
+        inactive_group.active = False
+        inactive_group.save()
         record, = TestAccess.create([{}])
         FieldAccess.create([{
                     'model': 'test.access',

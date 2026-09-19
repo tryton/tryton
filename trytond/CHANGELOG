@@ -1,3 +1,4 @@
+* Enforce readonly on field when checking access
 * Add the icon parameter to register_authentication_service
 * Add routes for sao custom in base router
 * Replace the administration group by a flag on the user

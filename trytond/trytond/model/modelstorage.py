@@ -324,7 +324,7 @@ class ModelStorage(Model):
         raise NotImplementedError
 
     @classmethod
-    def _after_create(cls, ids):
+    def _after_create(cls, ids, vlist):
         Trigger = Pool().get('ir.trigger')
         transaction = Transaction()
         check_access = transaction.user and transaction.check_access
@@ -336,7 +336,7 @@ class ModelStorage(Model):
                 records = cls.browse(sub_ids)
                 cls._validate(records)
                 cls.check_modification(
-                    'create', records, external=check_access)
+                    'create', records, values=vlist, external=check_access)
                 cls._compute_fields(records)
                 cls.on_modification('create', records)
                 if triggers:
@@ -561,6 +561,52 @@ class ModelStorage(Model):
     @classmethod
     def check_modification(cls, mode, records, values=None, external=False):
         assert mode in {'create', 'write', 'delete'}
+
+        def test_readonly(records, field_name, override):
+            field = cls._fields[field_name]
+            if isinstance(field, (fields.One2Many, fields.Many2Many)):
+                # Must be enforced on the target
+                return
+            if field.readonly:
+                raise AccessError(
+                    gettext('ir.msg_modification_readonly_field_error',
+                        **cls.__names__(field=field_name)))
+            if 'readonly' not in field.states:
+                return
+            if is_pyson(field.states['readonly']):
+                pyson_readonly = PYSONEncoder().encode(
+                    field.states['readonly'])
+                for record in sub_records:
+                    readonly = _record_eval_pyson(
+                        record, pyson_readonly, encoded=True,
+                        override=override)
+                    if readonly:
+                        raise AccessError(
+                            gettext(
+                                'ir.'
+                                'msg_modification_readonly_field_record_error',
+                                **cls.__names__(
+                                    field=field_name,
+                                    record=record)))
+            elif field.states['readonly']:
+                for record in sub_records:
+                    raise AccessError(
+                        gettext(
+                            'ir.msg_modification_readonly_field_record_error',
+                            **cls.__names__(
+                                field=field_name,
+                                record=record)))
+
+        if external and values and mode in {'create', 'write'}:
+            if mode == 'create':
+                iterator = (([r], v) for r, v in zip(records, values))
+                override = {'id': -1}
+            else:
+                iterator = ((records, values),)
+                override = {}
+            for sub_records, sub_values in iterator:
+                for field_name in sub_values:
+                    test_readonly(sub_records, field_name, override)
 
     @classmethod
     def on_modification(cls, mode, records, field_names=None):
@@ -1448,25 +1494,6 @@ class ModelStorage(Model):
     @classmethod
     def _validate(cls, records, field_names=None):
         pool = Pool()
-
-        def is_pyson(test):
-            if isinstance(test, PYSON):
-                return True
-            if isinstance(test, (list, tuple)):
-                for i in test:
-                    if isinstance(i, PYSON):
-                        return True
-                    if isinstance(i, (list, tuple)):
-                        if is_pyson(i):
-                            return True
-            if isinstance(test, dict):
-                for key, value in list(test.items()):
-                    if isinstance(value, PYSON):
-                        return True
-                    if isinstance(value, (list, tuple, dict)):
-                        if is_pyson(value):
-                            return True
-            return False
 
         def validate_domain(field):
             if not field.domain:
@@ -2462,15 +2489,38 @@ class BrowseList(list):
         self._ids.extend(map(int, list.__iter__(self)))
 
 
-class EvalEnvironment(dict):
-    __slots__ = ('_record', '_model')
+def is_pyson(test):
+    if isinstance(test, PYSON):
+        return True
+    if isinstance(test, (list, tuple)):
+        for i in test:
+            if isinstance(i, PYSON):
+                return True
+            if isinstance(i, (list, tuple)):
+                if is_pyson(i):
+                    return True
+    if isinstance(test, dict):
+        for key, value in list(test.items()):
+            if isinstance(value, PYSON):
+                return True
+            if isinstance(value, (list, tuple, dict)):
+                if is_pyson(value):
+                    return True
+    return False
 
-    def __init__(self, record, Model):
+
+class EvalEnvironment(dict):
+    __slots__ = ('_record', '_model', '_override')
+
+    def __init__(self, record, Model, override=None):
         super().__init__()
         self._record = record
         self._model = Model
+        self._override = dict(override) if override is not None else {}
 
     def __getitem__(self, item):
+        if item in self._override:
+            return self._override[item]
         if item.startswith('_parent_'):
             field = item[8:]
             model_name = self._model._fields[field].model_name
@@ -2506,13 +2556,13 @@ class EvalEnvironment(dict):
         return bool(self._record)
 
 
-def _record_eval_pyson(record, source, encoded=False):
+def _record_eval_pyson(record, source, encoded=False, override=None):
     transaction = Transaction()
     if not encoded:
         pyson = _pyson_encoder.encode(source)
     else:
         pyson = source
-    env = EvalEnvironment(record, record.__class__)
+    env = EvalEnvironment(record, record.__class__, override=override)
     env['context'] = transaction.context
     env['active_model'] = record.__class__.__name__
     env['active_id'] = record.id

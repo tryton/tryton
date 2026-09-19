@@ -428,8 +428,9 @@ Class methods:
 
 .. classmethod:: ModelStorage.check_modification(mode, records[, values[, external]])
 
-   Method called after ``records`` are created and before ``records`` are
-   modified with ``values`` or deleted.
+   Method called after ``records`` are created with ``values`` as a list of
+   created values and before ``records`` are modified with the modified
+   ``values`` or deleted without ``values``.
    ``external`` specifies whether remote access check must be enforced.
 
    .. note::

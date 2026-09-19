@@ -52,7 +52,7 @@ class ReportTestCase(DBTestCase):
             Report.execute([], {}),
             ('txt', 'Administrator\n', False, 'Test Report'))
 
-    @with_transaction(context={'_check_access': True})
+    @with_transaction()
     def test_execute_without_access(self):
         "Execute report without model access"
         with file_open('report.xml', subdir='tests') as xml:
@@ -63,6 +63,7 @@ class ReportTestCase(DBTestCase):
         User = pool.get('res.user')
         Group = pool.get('res.group')
         Report = pool.get('test.test_report', type='report')
+        transaction = Transaction()
 
         user = User(login='foo')
         user.save()
@@ -75,12 +76,13 @@ class ReportTestCase(DBTestCase):
         action_report.save()
 
         with self.assertRaises(AccessError):
-            with Transaction().set_user(user.id):
+            with (transaction.set_user(user.id),
+                    transaction.set_context(_check_access=True)):
                 Report.execute(
                     [],
                     {'model': 'test.access', 'action_id': action_report.id})
 
-    @with_transaction(context={'_check_access': True})
+    @with_transaction()
     def test_execute_without_model_access(self):
         "Execute report without model access"
         with file_open('report.xml', subdir='tests') as xml:
@@ -90,6 +92,7 @@ class ReportTestCase(DBTestCase):
         Report = pool.get('test.test_report', type='report')
         ModelAccess = pool.get('ir.model.access')
         User = pool.get('res.user')
+        transaction = Transaction()
 
         user = User(login='foo')
         user.save()
@@ -99,10 +102,11 @@ class ReportTestCase(DBTestCase):
                     }])
 
         with self.assertRaises(AccessError):
-            with Transaction().set_user(user.id):
+            with (transaction.set_user(user.id),
+                    transaction.set_context(_check_access=True)):
                 Report.execute([], {'model': 'test.access'})
 
-    @with_transaction(context={'_check_access': True})
+    @with_transaction()
     def test_execute_without_read_access(self):
         "Execute report without read access"
         with file_open('report.xml', subdir='tests') as xml:
@@ -113,6 +117,7 @@ class ReportTestCase(DBTestCase):
         Report = pool.get('test.test_report', type='report')
         Model = pool.get('test.access')
         RuleGroup = pool.get('ir.rule.group')
+        transaction = Transaction()
 
         record, = Model.create([{'field1': 'foo'}])
         rule_group, = RuleGroup.create([{
@@ -130,7 +135,8 @@ class ReportTestCase(DBTestCase):
         user.save()
 
         with self.assertRaises(AccessError):
-            with Transaction().set_user(user.id):
+            with (transaction.set_user(user.id),
+                    transaction.set_context(_check_access=True)):
                 Report.execute([record.id], {'model': 'test.access'})
 
     @unittest.skipUnless(mrml, "required mrml")
