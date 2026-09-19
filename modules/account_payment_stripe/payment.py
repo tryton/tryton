@@ -162,8 +162,9 @@ class Payment(StripeCustomerMethodMixin, CheckoutMixin, metaclass=PoolMeta):
                 | ~Eval('stripe_capture_needed')),
             })
     stripe_idempotency_key = fields.Char(
-        "Stripe Idempotency Key", readonly=True, strip=False,
+        "Stripe Idempotency Key", strip=False,
         states={
+            'readonly': Eval('id', -1) >= 0,
             'invisible': Eval('process_method') != 'stripe',
             })
     stripe_error_message = fields.Char("Stripe Error Message", readonly=True,
