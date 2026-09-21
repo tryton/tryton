@@ -80,7 +80,7 @@ Create some moves::
     >>> Move.write([move.id], {
     ...         'post_date': period_previous.start_date,
     ...         'number': '1',
-    ...         }, config.context)
+    ...         }, {**config.context, '_check_access': False})
     >>> move.click('post')
 
 With an empty line::
@@ -103,7 +103,7 @@ With an empty line::
     >>> Move.write([move.id], {
     ...         'post_date': period.start_date,
     ...         'number': '1',
-    ...         }, config.context)
+    ...         }, {**config.context, '_check_access': False})
     >>> move.click('post')
 
 With reconciliation::
@@ -124,7 +124,7 @@ With reconciliation::
     >>> Move.write([move.id], {
     ...         'post_date': period.start_date,
     ...         'number': '2',
-    ...         }, config.context)
+    ...         }, {**config.context, '_check_access': False})
     >>> move.click('post')
     >>> move = Move()
     >>> move.period = period
@@ -141,7 +141,7 @@ With reconciliation::
     >>> Move.write([move.id], {
     ...         'post_date': period.start_date,
     ...         'number': '3',
-    ...         }, config.context)
+    ...         }, {**config.context, '_check_access': False})
     >>> move.click('post')
     >>> reconcile2, = [l for l in move.lines if l.account == receivable]
     >>> reconcile_lines = Wizard('account.move.reconcile_lines',
