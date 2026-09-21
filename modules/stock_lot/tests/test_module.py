@@ -3,6 +3,8 @@
 
 import datetime as dt
 from decimal import Decimal
+from functools import wraps
+from unittest.mock import patch
 
 from trytond.modules.company.tests import (
     CompanyTestMixin, create_company, set_company)
@@ -11,12 +13,24 @@ from trytond.tests.test_tryton import ModuleTestCase, with_transaction
 from trytond.transaction import Transaction
 
 
+def disable_check_origin(func):
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+        pool = Pool()
+        Move = pool.get('stock.move')
+        with patch.object(Move, 'check_origin') as check_origin:
+            check_origin.return_value = set()
+            return func(*args, **kwargs)
+    return wrapper
+
+
 class StockLotTestCase(CompanyTestMixin, ModuleTestCase):
     'Test Stock Lot module'
     module = 'stock_lot'
-    extras = ['stock_split', 'stock_conversion']
+    extras = ['sale_point', 'stock_split', 'stock_conversion']
 
     @with_transaction()
+    @disable_check_origin
     def test_products_by_location(self):
         'Test products_by_location'
         pool = Pool()
@@ -215,6 +229,7 @@ class StockLotTestCase(CompanyTestMixin, ModuleTestCase):
                     quantities[(lot_cache.location, lot_cache.lot)])
 
     @with_transaction()
+    @disable_check_origin
     def test_assign_try_with_lot(self):
         "Test Move assign_try with lot"
         pool = Pool()

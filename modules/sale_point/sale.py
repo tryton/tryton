@@ -663,14 +663,20 @@ class POSSaleLine(ModelSQL, ModelView, TaxableMixin):
         return move
 
     @property
+    @fields.depends('quantity', 'sale', '_parent_sale.point')
     def from_location(self):
+        if self.quantity is None:
+            return
         if self.quantity >= 0:
             return self.sale.point.storage_location
         else:
             return self.sale.point.customer_location
 
     @property
+    @fields.depends('quantity', 'sale', '_parent_sale.point')
     def to_location(self):
+        if self.quantity is None:
+            return
         if self.quantity >= 0:
             return self.sale.point.customer_location
         else:

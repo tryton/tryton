@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data depends="sale_point">
+        <record model="ir.ui.view" id="sale_point_sale_line_view_form">
+            <field name="model">sale.point.sale.line</field>
+            <field name="inherit" ref="sale_point.sale_line_view_form"/>
+            <field name="name">sale_point_sale_line_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="sale_point_sale_line_view_list">
+            <field name="model">sale.point.sale.line</field>
+            <field name="inherit" ref="sale_point.sale_line_view_list"/>
+            <field name="name">sale_point_sale_line_list</field>
+        </record>
+    </data>
+</tryton>
