@@ -546,8 +546,9 @@ class LandedCostShowMove(ModelView):
 class InvoiceLine(metaclass=PoolMeta):
     __name__ = 'account.invoice.line'
     landed_cost = fields.Many2One(
-        'account.landed_cost', "Landed Cost", readonly=True,
+        'account.landed_cost', "Landed Cost",
         states={
+            'editable': False,
             'invisible': ~Eval('landed_cost'),
             })
 
