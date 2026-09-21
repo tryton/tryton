@@ -125,8 +125,7 @@ class TaxCode(
         ContextCompanyMixin, ActivePeriodMixin, tree(), ModelSQL, ModelView):
     __name__ = 'account.tax.code'
     _states = {
-        'readonly': (Bool(Eval('template', -1))
-            & ~Eval('template_override', False)),
+        'editable': ~Eval('template', None) | Eval('template_override', False),
         }
     name = fields.Char('Name', required=True, states=_states)
     code = fields.Char('Code', states=_states)
@@ -166,8 +165,9 @@ class TaxCode(
             Index(t, (Coalesce(t.code, ''), Index.Similarity())))
         for date in [cls.start_date, cls.end_date]:
             date.states = {
-                'readonly': (Bool(Eval('template', -1))
-                    & ~Eval('template_override', False)),
+                'editable': (
+                    ~Eval('template', None)
+                    | Eval('template_override', False)),
                 }
         cls._order.insert(0, ('code', 'ASC'))
 
@@ -358,8 +358,7 @@ class TaxCodeLineTemplate(ModelSQL, ModelView):
 class TaxCodeLine(ModelSQL, ModelView):
     __name__ = 'account.tax.code.line'
     _states = {
-        'readonly': (Bool(Eval('template', -1))
-            & ~Eval('template_override', False)),
+        'editable': ~Eval('template', None) | Eval('template_override', False),
         }
 
     code = fields.Many2One('account.tax.code', "Code", required=True)
@@ -745,8 +744,7 @@ class Tax(sequence_ordered(), ModelSQL, ModelView, DeactivableMixin):
            none: tax = none"""
     __name__ = 'account.tax'
     _states = {
-        'readonly': (Bool(Eval('template', -1))
-            & ~Eval('template_override', False)),
+        'editable': ~Eval('template', None) | Eval('template_override', False),
         }
     name = fields.Char('Name', required=True, states=_states)
     description = fields.Char('Description', required=True, translate=True,
@@ -754,7 +752,7 @@ class Tax(sequence_ordered(), ModelSQL, ModelView, DeactivableMixin):
     group = fields.Many2One('account.tax.group', 'Group',
         states={
             'invisible': Bool(Eval('parent')),
-            'readonly': _states['readonly'],
+            'editable': _states['editable'],
             })
     start_date = fields.Date("Start Date", states=_states)
     end_date = fields.Date("End Date", states=_states)
@@ -763,14 +761,14 @@ class Tax(sequence_ordered(), ModelSQL, ModelView, DeactivableMixin):
         states={
             'required': Eval('type') == 'fixed',
             'invisible': Eval('type') != 'fixed',
-            'readonly': _states['readonly'],
+            'editable': _states['editable'],
             }, help='In company\'s currency.')
     rate = fields.Numeric(
         "Rate", digits=(None, 10),
         states={
             'required': Eval('type') == 'percentage',
             'invisible': Eval('type') != 'percentage',
-            'readonly': _states['readonly'],
+            'editable': _states['editable'],
             })
     type = fields.Selection([
         ('percentage', 'Percentage'),
@@ -780,7 +778,7 @@ class Tax(sequence_ordered(), ModelSQL, ModelView, DeactivableMixin):
     update_unit_price = fields.Boolean('Update Unit Price',
         states={
             'invisible': Bool(Eval('parent')),
-            'readonly': _states['readonly'],
+            'editable': _states['editable'],
             },
         help=('If checked then the unit price for further tax computation will'
             ' be modified by this tax.'))
@@ -802,7 +800,7 @@ class Tax(sequence_ordered(), ModelSQL, ModelView, DeactivableMixin):
             ('closed', '!=', True),
             ],
         states={
-            'readonly': _states['readonly'],
+            'editable': _states['editable'],
             'required': Eval('type') != 'none',
             })
     credit_note_account = fields.Many2One('account.account',
@@ -813,7 +811,7 @@ class Tax(sequence_ordered(), ModelSQL, ModelView, DeactivableMixin):
             ('closed', '!=', True),
             ],
         states={
-            'readonly': _states['readonly'],
+            'editable': _states['editable'],
             'required': Eval('type') != 'none',
             })
     legal_notice = fields.Text("Legal Notice", translate=True,
@@ -1500,8 +1498,7 @@ class TaxRuleTemplate(ModelSQL, ModelView):
 class TaxRule(ModelSQL, ModelView):
     __name__ = 'account.tax.rule'
     _states = {
-        'readonly': (Bool(Eval('template', -1))
-            & ~Eval('template_override', False)),
+        'editable': ~Eval('template', None) | Eval('template_override', False),
         }
     name = fields.Char('Name', required=True, states=_states)
     kind = fields.Selection(KINDS, 'Kind', required=True, states=_states)
@@ -1695,8 +1692,7 @@ class TaxRuleLineTemplate(sequence_ordered(), ModelSQL, ModelView):
 class TaxRuleLine(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
     __name__ = 'account.tax.rule.line'
     _states = {
-        'readonly': (Bool(Eval('template', -1))
-            & ~Eval('template_override', False)),
+        'editable': ~Eval('template', None) | Eval('template_override', False),
         }
     rule = fields.Many2One(
         'account.tax.rule', "Rule",

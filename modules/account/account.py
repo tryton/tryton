@@ -125,8 +125,8 @@ def TypeMixin(template=False):
             field = getattr(Mixin, fname)
             if not isinstance(field, fields.Field):
                 continue
-            field.states['readonly'] = (
-                Bool(Eval('template', -1)) & ~Eval('template_override', False))
+            field.states['ediable'] = (
+                ~Eval('template', None) | Eval('template_override', False))
     return Mixin
 
 
@@ -216,8 +216,9 @@ class Type(
     parent = fields.Many2One(
         'account.account.type', 'Parent', ondelete='RESTRICT',
         states={
-            'readonly': (Bool(Eval('template', -1))
-                & ~Eval('template_override', False)),
+            'editable': (
+                ~Eval('template', None)
+                | Eval('template_override', False)),
             },
         domain=[
             ('company', '=', Eval('company', -1)),
@@ -629,7 +630,7 @@ def AccountMixin(template=False):
                     or isinstance(field, fields.Function)):
                 continue
             field.states['editable'] = (
-                Eval('template', None) & ~Eval('template_override', False))
+                ~Eval('template', None) | Eval('template_override', False))
     return Mixin
 
 
@@ -827,7 +828,7 @@ class Account(
         ModelSQL, ModelView):
     __name__ = 'account.account'
     _states = {
-        'editable': Eval('template', None) & ~Eval('template_override', False),
+        'editable': ~Eval('template', None) | Eval('template_override', False),
         }
     company = fields.Many2One('company.company', 'Company', required=True,
             ondelete="RESTRICT")
@@ -954,7 +955,8 @@ class Account(
         for date in [cls.start_date, cls.end_date]:
             date.states = {
                 'editable': (
-                    Eval('template', -1) & ~Eval('template_override', False)),
+                    ~Eval('template', None)
+                    | Eval('template_override', False)),
                 }
         cls._order.insert(0, ('code', 'ASC'))
         cls._order.insert(1, ('name', 'ASC'))

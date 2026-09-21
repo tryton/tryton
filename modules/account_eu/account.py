@@ -7,7 +7,7 @@ from trytond.model import ModelSQL, ModelView, fields
 from trytond.modules.account.exceptions import FiscalYearNotFoundError
 from trytond.modules.currency.fields import Monetary
 from trytond.pool import Pool, PoolMeta
-from trytond.pyson import Bool, Eval
+from trytond.pyson import Eval
 from trytond.transaction import Transaction
 
 VATEX_CODES = [
@@ -200,14 +200,16 @@ class Tax(metaclass=PoolMeta):
 
     ec_sales_list_code = fields.Char("EC Sales List Code",
         states={
-            'readonly': (Bool(Eval('template', -1))
-                & ~Eval('template_override', False)),
+            'editable': (
+                ~Eval('template', None)
+                | Eval('template_override', False)),
             })
     vatex_code = fields.Selection(
         [(None, "")] + VATEX_CODES, "Tax Exemption Code", sort=False,
         states={
-            'readonly': (Bool(Eval('template', -1))
-                & ~Eval('template_override', False)),
+            'editable': (
+                ~Eval('template', None)
+                | Eval('template_override', False)),
             },
         help="The reason why the amount is exempted from VAT.")
 

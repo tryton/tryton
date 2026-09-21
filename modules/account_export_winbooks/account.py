@@ -13,7 +13,7 @@ from sql.operators import Equal
 
 from trytond.model import Exclude, fields
 from trytond.pool import Pool, PoolMeta
-from trytond.pyson import Bool, Eval
+from trytond.pyson import Eval
 
 _ACT_FIELDNAMES = [
     'DOCTYPE', 'DBKCODE', 'DBKTYPE', 'DOCNUMBER', 'DOCORDER', 'OPCODE',
@@ -168,9 +168,9 @@ class Tax(metaclass=PoolMeta):
     winbooks_code = fields.Char(
         "WinBooks Code", size=10,
         states={
-            'readonly': (
-                Bool(Eval('template', -1)
-                    & ~Eval('template_override', False))),
+            'editable': (
+                ~Eval('template', None)
+                | Eval('template_override', False)),
             })
 
 

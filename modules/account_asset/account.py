@@ -5,7 +5,7 @@ from trytond.model import ModelSQL, fields
 from trytond.model.exceptions import AccessError
 from trytond.modules.company.model import CompanyValueMixin
 from trytond.pool import Pool, PoolMeta
-from trytond.pyson import Bool, Eval, Id, If
+from trytond.pyson import Eval, Id, If
 
 asset_bymonthday = fields.Selection([
         ('1', "First"),
@@ -146,8 +146,8 @@ def AccountTypeMixin(template=False):
             field = getattr(Mixin, fname)
             if not isinstance(field, fields.Field):
                 continue
-            field.states['readonly'] = (
-                Bool(Eval('template', -1)) & ~Eval('template_override', False))
+            field.states['editable'] = (
+                ~Eval('template', None) | Eval('template_override', False))
     return Mixin
 
 

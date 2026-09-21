@@ -2,7 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 from trytond.model import fields
 from trytond.pool import Pool, PoolMeta
-from trytond.pyson import Bool, Eval
+from trytond.pyson import Eval
 
 
 class Tax(metaclass=PoolMeta):
@@ -66,8 +66,9 @@ class Tax(metaclass=PoolMeta):
             ('VAT', "Value added tax"),
             ], "UNECE Code",
         states={
-            'readonly': (Bool(Eval('template', -1))
-                & ~Eval('template_override', False)),
+            'editable': (
+                ~Eval('template', None)
+                | Eval('template_override', False)),
             },
         help="Standard code of "
         "the United Nations Economic Commission for Europe.")
@@ -99,8 +100,9 @@ class Tax(metaclass=PoolMeta):
             ('Z', "Zero rated goods"),
             ], "UNECE Category Code",
         states={
-            'readonly': (Bool(Eval('template', -1))
-                & ~Eval('template_override', False)),
+            'editable': (
+                ~Eval('template', None)
+                | Eval('template_override', False)),
             },
         help="Standard code of "
         "the United Nations Economic Commission for Europe.")

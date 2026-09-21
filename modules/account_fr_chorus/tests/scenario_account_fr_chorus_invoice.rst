@@ -108,7 +108,7 @@ Create invoice::
     >>> Invoice.write([invoice], {
     ...         'number': str(uuid.uuid4())[:20],
     ...         'invoice_date': today,
-    ...         }, config._context)
+    ...         }, {**config._context, '_check_access': False})
     >>> invoice.click('post')
     >>> invoice.state
     'posted'

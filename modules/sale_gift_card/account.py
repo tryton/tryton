@@ -3,7 +3,7 @@
 from trytond.model import ModelSQL, fields
 from trytond.modules.company.model import CompanyValueMixin
 from trytond.pool import Pool, PoolMeta
-from trytond.pyson import Bool, Eval, If
+from trytond.pyson import Eval, If
 
 
 class Configuration(metaclass=PoolMeta):
@@ -69,8 +69,8 @@ def AccountTypeMixin(template=False):
             field = getattr(Mixin, fname)
             if not isinstance(field, fields.Field):
                 continue
-            field.states['readonly'] = (
-                Bool(Eval('template', -1)) & ~Eval('template_override', False))
+            field.states['editable'] = (
+                ~Eval('template', None) | Eval('template_override', False))
     return Mixin
 
 
