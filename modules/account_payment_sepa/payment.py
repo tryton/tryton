@@ -582,7 +582,10 @@ class Mandate(Workflow, ModelSQL, ModelView):
             ])
     identification = fields.Char('Identification', size=35,
         states={
-            'readonly': Eval('identification_readonly', True),
+            'readonly': (
+                (Eval('id', -1) >= 0)
+                & Eval('identification')),
+            'editable': ~Eval('identification_readonly', True),
             'required': Eval('state') == 'validated',
             })
     identification_readonly = fields.Function(fields.Boolean(
