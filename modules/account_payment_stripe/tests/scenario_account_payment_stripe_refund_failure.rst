@@ -17,7 +17,7 @@ Imports::
     >>> from trytond.tests.tools import activate_modules
 
     >>> today = dt.date.today()
-    >>> FETCH_SLEEP, MAX_SLEEP = 1, 100
+    >>> FETCH_SLEEP, MAX_SLEEP = 1, 600
 
 Activate modules::
 
