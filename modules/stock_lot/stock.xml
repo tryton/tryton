@@ -392,4 +392,17 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
     </data>
+    <data depends="stock_conversion">
+        <record model="ir.ui.view" id="stock_conversion_view_list">
+            <field name="model">stock.conversion</field>
+            <field name="inherit" ref="stock_conversion.stock_conversion_view_list"/>
+            <field name="name">stock_conversion_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="stock_conversion_view_form">
+            <field name="model">stock.conversion</field>
+            <field name="inherit" ref="stock_conversion.stock_conversion_view_form"/>
+            <field name="name">stock_conversion_form</field>
+        </record>
+    </data>
 </tryton>

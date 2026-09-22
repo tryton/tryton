@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form cursor="output_product" col="5">
+    <label name="input_quantity" string="Input:"/>
+    <field name="input_quantity" symbol="input_unit" xexpand="0"/>
+    <field name="input_product"/>
+    <label name="active"/>
+    <field name="active" xexpand="0" width="100"/>
+
+    <label name="output_quantity" string="Output:"/>
+    <field name="output_quantity" symbol="output_unit" xexpand="0"/>
+    <field name="output_product"/>
+</form>

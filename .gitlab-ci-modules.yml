@@ -3048,6 +3048,23 @@ test-modules-stock_consignment-postgresql:
     PACKAGE: modules/stock_consignment
     TAG_PATTERN: '/^stock_consignment-.*/'
 
+check-doc-modules-stock_conversion:
+  extends: .check-doc
+  variables:
+    PACKAGE: modules/stock_conversion
+
+test-modules-stock_conversion-sqlite:
+  extends: .test-sqlite
+  variables:
+    PACKAGE: modules/stock_conversion
+    TAG_PATTERN: '/^stock_conversion-.*/'
+
+test-modules-stock_conversion-postgresql:
+  extends: .test-postgresql
+  variables:
+    PACKAGE: modules/stock_conversion
+    TAG_PATTERN: '/^stock_conversion-.*/'
+
 check-doc-modules-stock_ethanol:
   extends: .check-doc
   variables:

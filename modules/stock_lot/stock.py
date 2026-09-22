@@ -930,3 +930,53 @@ class InventoryCountQuantity(ModelView):
         states={
             'invisible': ~Eval('lot', None),
             })
+
+
+class Conversion(metaclass=PoolMeta):
+    __name__ = 'stock.conversion'
+
+    input_lot = fields.Many2One(
+        'stock.lot', "Input Lot",
+        ondelete='RESTRICT',
+        domain=[
+            ('product', '=', Eval('input_product', -1)),
+            ],
+        states={
+            'readonly': Eval('state') != 'draft',
+            },
+        search_context={
+            'locations': If(Eval('location', None),
+                [Eval('location', -1)], []),
+            'stock_date_end': Eval('date', None),
+            })
+    output_lot = fields.Many2One(
+        'stock.lot', "Output Lot",
+        ondelete='RESTRICT',
+        domain=[
+            ('product', '=', Eval('output_product', -1)),
+            ],
+        states={
+            'readonly': Eval('state') != 'draft',
+            })
+
+    @fields.depends('input_product', 'input_lot')
+    def on_change_input_product(self):
+        super().on_change_input_product()
+        if self.input_product and self.input_lot:
+            if self.input_lot.product != self.input_product:
+                self.input_lot = None
+
+    @fields.depends('output_product', 'output_lot')
+    def on_change_output_product(self):
+        super().on_change_output_product()
+        if self.output_product and self.output_lot:
+            if self.output_lot.product != self.output_product:
+                self.output_lot = None
+
+    def _move(self, type):
+        move = super()._move(type)
+        if type == 'input':
+            move.lot = self.input_lot
+        elif type == 'output':
+            move.lot = self.output_lot
+        return move
