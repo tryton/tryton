@@ -209,9 +209,6 @@ class RelationAll(Relation, ModelView):
             cls._before_write(*args))
 
         relations = cls.browse(ids)
-        # Clean local cache of reverse
-        for relation in relations:
-            relation._local_cache.pop(relation.reverse_id, None)
         # Clean cursor cache of reverse
         for cache in Transaction().cache.values():
             if cls.__name__ in cache:

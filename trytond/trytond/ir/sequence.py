@@ -377,7 +377,6 @@ class Sequence(DeactivableMixin, ModelSQL, ModelView):
                     transaction.connection, self._sql_sequence_name, n)
                 # clean cache
                 transaction.counter += 1
-                self._local_cache.pop(self.id, None)
             else:
                 # pre-fetch number_next
                 start = self.number_next_internal

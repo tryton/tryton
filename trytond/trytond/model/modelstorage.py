@@ -425,10 +425,6 @@ class ModelStorage(Model):
         # Increase transaction counter
         transaction.counter += 1
 
-        # Clean local cache
-        for record in all_records:
-            record._local_cache.pop(record.id, None)
-
         # Clean transaction cache
         for cache in transaction.cache.values():
             if cls.__name__ in cache:
@@ -507,10 +503,6 @@ class ModelStorage(Model):
 
         # Increase transaction counter
         transaction.counter += 1
-
-        # Clean local cache
-        for record in records:
-            record._local_cache.pop(record.id, None)
 
         # Clean transaction cache
         for cache in transaction.cache.values():
