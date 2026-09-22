@@ -1,3 +1,4 @@
+* Allow trytond-admin to manage any user
 * Add bulk_create, bulk_delete, bulk_save and bulk_func to ModelStorage
 * Add editable state on field
 * Enforce readonly on field when checking access
