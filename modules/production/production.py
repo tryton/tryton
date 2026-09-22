@@ -19,7 +19,9 @@ from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Bool, Eval, Id, If
 from trytond.transaction import Transaction
 
-from .exceptions import CostWarning
+from .exceptions import (
+    CostWarning, OverProductionWarning, UnderProductionWarning,
+    UnexpectedProductionWarning)
 
 
 class Production(
@@ -665,6 +667,78 @@ class Production(
                     production.number = number
         cls.save(productions)
 
+    def check_input_quantities(self):
+        self._check_quantities('inputs')
+
+    def check_output_quantities(self):
+        self._check_quantities('outputs')
+
+    def _check_quantities(self, type):
+        pool = Pool()
+        Lang = pool.get('ir.lang')
+        UoM = pool.get('product.uom')
+        Warning = pool.get('res.user.warning')
+
+        assert type in {'inputs', 'outputs'}
+
+        if not self.bom or self.bom.tolerance is None:
+            return
+
+        lang = Lang.get()
+        factor = self.bom.compute_factor(
+            self.product, self.quantity or 0, self.unit,
+            type='inputs' if self.type == 'disassembly' else 'outputs')
+        expected_quantities = defaultdict(float)
+        for move in getattr(self.bom, type):
+            quantity = move.compute_quantity(factor)
+            for line, quantity in move.lines_for_quantity(quantity):
+                expected_quantities[line.product] += UoM.compute_qty(
+                    line.unit, quantity, line.product.default_uom,
+                    round=False)
+
+        actual_quantities = defaultdict(float)
+        for move in getattr(self, type):
+            actual_quantities[move.product] += move.internal_quantity
+
+        for product, expected_quantity in expected_quantities.items():
+            actual_quantity = actual_quantities[product]
+            minimal_quantity = expected_quantity * (1 - self.bom.tolerance)
+            maximal_quantity = expected_quantity * (1 + self.bom.tolerance)
+            if actual_quantity < minimal_quantity:
+                name = Warning.format('under_tolerance', [self, product])
+                if Warning.check(name):
+                    raise UnderProductionWarning(
+                        name,
+                        gettext(f'production.msg_under_production_{type}',
+                            production=self.rec_name,
+                            product=product.rec_name,
+                            actual=lang.format_number_symbol(
+                                actual_quantity, product.default_uom),
+                            minimal=lang.format_number_symbol(
+                                minimal_quantity, product.default_uom)))
+            elif actual_quantity > maximal_quantity:
+                name = Warning.format('over_tolerance', [self, product])
+                if Warning.check(name):
+                    raise OverProductionWarning(
+                        name,
+                        gettext(f'production.msg_over_production_{type}',
+                            production=self.rec_name,
+                            product=product.rec_name,
+                            actual=lang.format_number_symbol(
+                                actual_quantity, product.default_uom),
+                            maximal=lang.format_number_symbol(
+                                maximal_quantity, product.default_uom)))
+
+        for product in actual_quantities.keys() - expected_quantities.keys():
+            name = Warning.format('unexpected_product', [self, product])
+            if Warning.check(name):
+                raise UnexpectedProductionWarning(
+                    name,
+                    gettext(
+                        f'production.msg_unexpected_product_production_{type}',
+                        production=self.rec_name,
+                        product=product.rec_name))
+
     @classmethod
     def on_modification(cls, mode, productions, field_names=None):
         pool = Pool()
@@ -779,6 +853,8 @@ class Production(
         pool = Pool()
         Move = pool.get('stock.move')
         Date = pool.get('ir.date')
+        for production in productions:
+            production.check_input_quantities()
         Move.do([m for p in productions for m in p.inputs])
         for company, productions in groupby(
                 productions, key=lambda p: p.company):
@@ -796,6 +872,8 @@ class Production(
         pool = Pool()
         Move = pool.get('stock.move')
         Date = pool.get('ir.date')
+        for production in productions:
+            production.check_output_quantities()
         cls.set_cost(productions)
         Move.do([m for p in productions for m in p.outputs])
         for company, productions in groupby(

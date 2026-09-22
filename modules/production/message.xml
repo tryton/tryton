@@ -15,5 +15,23 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_stock_move_production_single">
             <field name="text">Move can not be used for production input and output.</field>
         </record>
+        <record model="ir.message" id="msg_under_production_inputs">
+            <field name="text">The production "%(production)s" input of product "%(product)s" is lower than the tolerance (%(actual)s consumed &lt; %(minimal)s).</field>
+        </record>
+        <record model="ir.message" id="msg_over_production_inputs">
+            <field name="text">The production "%(production)s" input of product "%(product)s" is greater than the tolerance (%(actual)s consumed > %(maximal)s).</field>
+        </record>
+        <record model="ir.message" id="msg_unexpected_product_production_inputs">
+            <field name="text">The production "%(production)s" input has an unexpected product "%(product)s".</field>
+        </record>
+        <record model="ir.message" id="msg_under_production_outputs">
+            <field name="text">The production "%(production)s" output of product "%(product)s" is lower than the tolerance (%(actual)s produced &lt; %(minimal)s).</field>
+        </record>
+        <record model="ir.message" id="msg_over_production_outputs">
+            <field name="text">The production "%(production)s" output of product "%(product)s" is greater than the tolerance (%(actual)s produced > %(maximal)s).</field>
+        </record>
+        <record model="ir.message" id="msg_unexpected_product_production_outputs">
+            <field name="text">The production "%(production)s" output has an unexpected product "%(product)s".</field>
+        </record>
     </data>
 </tryton>

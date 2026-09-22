@@ -14,6 +14,13 @@ this repository contains the full copyright notices and license terms. -->
     <field name="phantom_quantity"/>
     <label name="phantom_unit"/>
     <field name="phantom_unit"/>
+
+    <label name="tolerance"/>
+    <group col="-1" id="tolerance">
+        <field name="tolerance" factor="100" xexpand="0"/>
+        <label name="tolerance" string="%" xexpand="1" xalign="0"/>
+    </group>
+
     <notebook colspan="6">
         <page string="Lines" id="lines" col="2">
             <field name="inputs"/>

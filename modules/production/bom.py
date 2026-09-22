@@ -66,6 +66,9 @@ class BOM(DeactivableMixin, ModelSQL, ModelView):
             })
     output_products = fields.Many2Many('production.bom.output',
         'bom', 'product', 'Output Products')
+    tolerance = fields.Float(
+        "Tolerance",
+        help="The percentage tolerance that is accepted for production.")
 
     @classmethod
     def order_code(cls, tables):

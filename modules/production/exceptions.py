@@ -5,3 +5,19 @@ from trytond.exceptions import UserWarning
 
 class CostWarning(UserWarning):
     pass
+
+
+class ToleranceProductionWarning(UserWarning):
+    pass
+
+
+class UnderProductionWarning(ToleranceProductionWarning):
+    pass
+
+
+class OverProductionWarning(ToleranceProductionWarning):
+    pass
+
+
+class UnexpectedProductionWarning(ToleranceProductionWarning):
+    pass
