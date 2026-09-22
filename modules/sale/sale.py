@@ -2287,13 +2287,22 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
     def get_rec_name(self, name):
         pool = Pool()
         Lang = pool.get('ir.lang')
-        if self.product:
+        name = self.product.rec_name if self.product else self.summary
+        if self.type == 'line':
             lang = Lang.get()
-            return (lang.format_number_symbol(
+            if self.unit:
+                quantity = lang.format_number_symbol(
                     self.quantity or 0, self.unit, digits=self.unit.digits)
-                + ' %s @ %s' % (self.product.rec_name, self.sale.rec_name))
-        else:
-            return self.sale.rec_name
+            else:
+                quantity = lang.format_number(self.quantity or 0)
+            if name:
+                name = f'{quantity} {name}'
+            else:
+                name = quantity
+        elif not name:
+            name = f'({self.id})'
+
+        return f'{name} @ {self.sale.rec_name}'
 
     @classmethod
     def search_rec_name(cls, name, clause):
@@ -2305,6 +2314,7 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
         return [bool_op,
             ('sale.rec_name', *clause[1:]),
             ('product.rec_name', *clause[1:]),
+            ('summary', *clause[1:]),
             ]
 
     @classmethod

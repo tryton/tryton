@@ -3054,19 +3054,27 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
     def get_rec_name(self, name):
         pool = Pool()
         Lang = pool.get('ir.lang')
-        if self.product:
+        name = self.product.rec_name if self.product else self.summary
+        if not name and self.account:
+            name = self.account.rec_name
+
+        if self.type == 'line':
             lang = Lang.get()
-            prefix = (lang.format_number_symbol(
-                self.quantity or 0, self.unit, digits=self.unit.digits)
-                + ' %s' % self.product.rec_name)
-        elif self.account:
-            prefix = self.account.rec_name
-        else:
-            prefix = '(%s)' % self.id
+            if self.unit:
+                quantity = lang.format_number_symbol(
+                    self.quantity or 0, self.unit, digits=self.unit.digits)
+            else:
+                quantity = lang.format_number(self.quantity or 0)
+            if name:
+                name = f'{quantity} {name}'
+            else:
+                name = quantity
+        elif not name:
+            name = f'({self.id})'
+
         if self.invoice:
-            return '%s @ %s' % (prefix, self.invoice.rec_name)
-        else:
-            return prefix
+            name = f'{name} @ {self.invoice.rec_name}'
+        return name
 
     @classmethod
     def search_rec_name(cls, name, clause):
@@ -3079,6 +3087,7 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
             ('invoice.rec_name', *clause[1:]),
             ('product.rec_name', *clause[1:]),
             ('account.rec_name', *clause[1:]),
+            ('summary', *clause[1:]),
             ]
 
     @classmethod
