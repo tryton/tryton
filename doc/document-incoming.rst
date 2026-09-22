@@ -14,5 +14,8 @@ Document Incoming
 :doc:`OCR <document_incoming_ocr:index>`
    Basis to interact with OCR services.
 
+:doc:`OCR Eagle Doc <document_incoming_ocr_eagle_doc:index>`
+   Integrate with Eagle Doc services.
+
 :doc:`OCR Typless <document_incoming_ocr_typless:index>`
    Integrate with Typless services.

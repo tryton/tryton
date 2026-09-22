@@ -1414,6 +1414,23 @@ test-modules-document_incoming_ocr-postgresql:
     PACKAGE: modules/document_incoming_ocr
     TAG_PATTERN: '/^document_incoming_ocr-.*/'
 
+check-doc-modules-document_incoming_ocr_eagle_doc:
+  extends: .check-doc
+  variables:
+    PACKAGE: modules/document_incoming_ocr_eagle_doc
+
+test-modules-document_incoming_ocr_eagle_doc-sqlite:
+  extends: .test-sqlite
+  variables:
+    PACKAGE: modules/document_incoming_ocr_eagle_doc
+    TAG_PATTERN: '/^document_incoming_ocr_eagle_doc-.*/'
+
+test-modules-document_incoming_ocr_eagle_doc-postgresql:
+  extends: .test-postgresql
+  variables:
+    PACKAGE: modules/document_incoming_ocr_eagle_doc
+    TAG_PATTERN: '/^document_incoming_ocr_eagle_doc-.*/'
+
 check-doc-modules-document_incoming_ocr_typless:
   extends: .check-doc
   variables:

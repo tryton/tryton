@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<data>
+    <xpath expr="//separator[@id='criteria']" position="before">
+        <newline/>
+        <label name="eagle_doc_api_key"/>
+        <field name="eagle_doc_api_key" widget="password"/>
+        <label name="eagle_doc_endpoint"/>
+        <field name="eagle_doc_endpoint"/>
+
+        <label name="eagle_doc_privacy"/>
+        <field name="eagle_doc_privacy"/>
+    </xpath>
+</data>
