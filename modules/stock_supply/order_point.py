@@ -42,7 +42,13 @@ class OrderPoint(ModelSQL, ModelView):
             ])
     provisioning_location = fields.Many2One(
         'stock.location', 'Provisioning Location',
-        domain=[('type', 'in', ['storage', 'view'])],
+        domain=[
+            ['OR',
+                ('provisioning_location', '=', None),
+                ('provisioning_location.parent',
+                    'not child_of', [Eval('location', -1)]),
+                ],
+            ],
         states={
             'invisible': Eval('type') != 'internal',
             'required': ((Eval('type') == 'internal')
@@ -50,7 +56,13 @@ class OrderPoint(ModelSQL, ModelView):
         })
     overflowing_location = fields.Many2One(
         'stock.location', 'Overflowing Location',
-        domain=[('type', 'in', ['storage', 'view'])],
+        domain=[
+            ['OR',
+                ('overflowing_location', '=', None),
+                ('overflowing_location.parent',
+                    'not child_of', [Eval('location', -1)]),
+                ],
+            ],
         states={
             'invisible': Eval('type') != 'internal',
             'required': ((Eval('type') == 'internal')
@@ -116,6 +128,23 @@ class OrderPoint(ModelSQL, ModelView):
             ('product_location_purchase_unique',
                 Unique(t, t.product, t.location, t.company),
                 'stock_supply.msg_order_point_unique'))
+
+        cls.provisioning_location.domain = [
+            cls.provisioning_location.domain,
+            ('type', 'in', cls._provisioning_types()),
+            ]
+        cls.overflowing_location.domain = [
+            cls.overflowing_location.domain,
+            ('type', 'in', cls._overflowing_types()),
+            ]
+
+    @classmethod
+    def _provisioning_types(cls):
+        return ['storage', 'view']
+
+    @classmethod
+    def _overflowing_types(cls):
+        return ['storage', 'view']
 
     @classmethod
     def __register__(cls, module):

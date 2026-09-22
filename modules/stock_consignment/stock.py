@@ -383,9 +383,5 @@ class OrderPoint(metaclass=PoolMeta):
     __name__ = 'stock.order_point'
 
     @classmethod
-    def __setup__(cls):
-        super().__setup__()
-        cls.provisioning_location.domain = ['OR',
-            cls.provisioning_location.domain,
-            ('type', '=', 'supplier'),
-            ]
+    def _provisioning_types(cls):
+        return super()._provisioning_types() + ['supplier']
