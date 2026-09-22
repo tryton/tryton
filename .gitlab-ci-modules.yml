@@ -2113,6 +2113,23 @@ test-modules-project-postgresql:
     PACKAGE: modules/project
     TAG_PATTERN: '/^project-.*/'
 
+check-doc-modules-project_disbursement:
+  extends: .check-doc
+  variables:
+    PACKAGE: modules/project_disbursement
+
+test-modules-project_disbursement-sqlite:
+  extends: .test-sqlite
+  variables:
+    PACKAGE: modules/project_disbursement
+    TAG_PATTERN: '/^project_disbursement-.*/'
+
+test-modules-project_disbursement-postgresql:
+  extends: .test-postgresql
+  variables:
+    PACKAGE: modules/project_disbursement
+    TAG_PATTERN: '/^project_disbursement-.*/'
+
 check-doc-modules-project_invoice:
   extends: .check-doc
   variables:

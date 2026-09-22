@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form>
+    <label name="payee"/>
+    <field name="payee"/>
+    <label name="number"/>
+    <field name="number"/>
+
+    <label name="reference"/>
+    <field name="reference"/>
+    <label name="reference_type"/>
+    <field name="reference_type"/>
+
+    <label name="description"/>
+    <field name="description" colspan="3"/>
+
+    <label name="work"/>
+    <field name="work" colspan="3"/>
+
+    <label name="amount"/>
+    <field name="amount"/>
+    <label name="currency"/>
+    <field name="currency"/>
+
+    <label name="payment_date"/>
+    <field name="payment_date"/>
+
+    <notebook>
+        <page name="attachments">
+            <field name="attachments" colspan="4"/>
+        </page>
+        <page name="payments">
+            <field name="payments" colspan="4"/>
+        </page>
+        <page name="invoice_lines">
+            <field name="invoice_lines" colspan="4"/>
+        </page>
+        <page string="Other Info" id="info">
+            <label name="company"/>
+            <field name="company"/>
+            <newline/>
+
+            <label name="validated_by"/>
+            <field name="validated_by"/>
+        </page>
+    </notebook>
+
+
+    <label name="state"/>
+    <field name="state"/>
+    <group col="-1" colspan="2" id="buttons">
+        <button name="cancel" icon="tryton-cancel"/>
+        <button name="draft" icon="tryton-back"/>
+        <button name="validate_disbursement" icon="tryton-forward"/>
+        <button name="process" icon="tryton-refresh"/>
+    </group>
+</form>

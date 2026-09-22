@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<data>
+    <xpath expr="//notebook" position="inside">
+        <page name="disbursements">
+            <label name="account_disbursement"/>
+            <field name="account_disbursement"/>
+
+            <field name="disbursement_journals" colspan="4" view_ids="project_disbursement.project_disbursement_journal_view_list_sequence"/>
+
+            <field name="disbursements" colspan="4"/>
+        </page>
+    </xpath>
+</data>
