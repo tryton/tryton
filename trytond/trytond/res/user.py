@@ -881,7 +881,7 @@ class UserDevice(ModelSQL):
     __name__ = 'res.user.device'
 
     login = fields.Char("Login", required=True)
-    cookie = fields.Char("Cookie", readonly=True, required=True, strip=False)
+    cookie = fields.Char("Cookie", required=True, strip=False)
 
     @classmethod
     def __setup__(cls):
