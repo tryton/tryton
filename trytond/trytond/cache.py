@@ -255,6 +255,8 @@ class MemoryCache(BaseCache):
 
     @classmethod
     def sync(cls, transaction):
+        if not Pool().ready:
+            return
         if cls._clean_last is None:
             cls._clean_last = dt.datetime.now()
             return
@@ -297,7 +299,7 @@ class MemoryCache(BaseCache):
         cls._clean_last = dt.datetime.now()
 
     def sync_since(self, value):
-        return self._clean_last > value
+        return self._clean_last is not None and self._clean_last > value
 
     @classmethod
     def commit(cls, transaction):
