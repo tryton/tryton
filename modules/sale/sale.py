@@ -1242,6 +1242,8 @@ class Sale(
         pool = Pool()
         ShipmentOut = pool.get('stock.shipment.out')
         ShipmentOutReturn = pool.get('stock.shipment.out.return')
+        Config = pool.get('sale.configuration')
+        config = Config(1)
 
         shipments_out, shipments_return = {}, {}
         for sale in sales:
@@ -1254,7 +1256,15 @@ class Sale(
 
         shipments = sum((v for v in shipments_out.values()), [])
         ShipmentOut.save(shipments)
-        ShipmentOut.wait(shipments)
+
+        to_wait = []
+        for company, c_shipments in groupby(
+                shipments, key=lambda s: s.company):
+            if config.get_multivalue('sale_wait_shipment', company=company.id):
+                to_wait.extend(c_shipments)
+        if to_wait:
+            ShipmentOut.wait(to_wait)
+
         for sale, shipments in shipments_out.items():
             for shipment in shipments:
                 sale.copy_resources_to(shipment)

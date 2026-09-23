@@ -5,11 +5,17 @@ this repository contains the full copyright notices and license terms. -->
     <label name="sale_sequence"/>
     <field name="sale_sequence"/>
     <newline />
+
     <label name="sale_invoice_method" />
     <field name="sale_invoice_method" />
+    <newline/>
+
     <label name="sale_shipment_method" />
     <field name="sale_shipment_method" />
+    <label name="sale_wait_shipment"/>
+    <field name="sale_wait_shipment"/>
     <newline/>
+
     <label name="sale_quotation_validity"/>
     <field name="sale_quotation_validity"/>
     <label name="sale_process_after"/>
