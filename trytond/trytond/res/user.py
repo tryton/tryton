@@ -849,7 +849,7 @@ class UserDevice(ModelSQL):
     def __setup__(cls):
         super().__setup__()
         cls.__rpc__.update({
-                'renew': RPC(readonly=False),
+                'renew': RPC(readonly=False, check_access=False),
                 })
 
     @classmethod
