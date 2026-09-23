@@ -33,17 +33,10 @@ db_names = os.environ.get('TRYTOND_DATABASE_NAMES')
 if db_names:
     from trytond import backend
 
-    def initializer(name):
-        Pool(name).init()
-        backend.Database(name).close()
     # Read with csv so database name can include special chars
     reader = csv.reader(StringIO(db_names))
-    threads = []
     for name in next(reader):
-        thread = threading.Thread(target=initializer, args=(name,))
-        thread.start()
-        threads.append(thread)
-    for thread in threads:
-        thread.join()
+        Pool(name).init()
+        backend.Database(name).close()
 
 assert len(threads := threading.enumerate()) == 1, f"len({threads}) != 1"

@@ -5,7 +5,6 @@
 import glob
 import logging
 import os
-import threading
 
 import trytond.commandline as commandline
 import trytond.config as config
@@ -31,13 +30,8 @@ def main():
 
     with commandline.pidfile(options):
         Pool.start()
-        threads = []
         for name in options.database_names:
-            thread = threading.Thread(target=lambda: Pool(name).init())
-            thread.start()
-            threads.append(thread)
-        for thread in threads:
-            thread.join()
+            Pool(name).init()
         hostname, port = config.split_netloc(config.get('web', 'listen'))
         certificate = config.get('ssl', 'certificate')
         try:
