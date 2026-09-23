@@ -4471,7 +4471,9 @@ function eval_pyson(value){
                     yexpand = this.expand;
                 }
                 if (!yexpand) {
-                    this.select.prop('size', this.select.children().length);
+                    this.select.prop(
+                        'size', Math.max(2, this.select.children().length));
+
                 }
                 if (!field) {
                     return;
