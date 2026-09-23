@@ -46,4 +46,7 @@ if db_names:
     for thread in threads:
         thread.join()
 
-assert len(threads := threading.enumerate()) == 1, f"len({threads}) != 1"
+if len(threads := threading.enumerate()) != 1:
+    raise RuntimeError(
+        f"There are {len(threads)} threads running after initializing"
+        " the Pool")
