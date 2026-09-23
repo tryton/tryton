@@ -891,7 +891,9 @@ class UserDevice(ModelSQL):
                 })
 
     @classmethod
-    def get_valid_cookie(cls, login, cookie):
+    def get_valid_cookie(cls, login, cookie=None):
+        if not cookie:
+            return None
         try:
             device, = cls.search([
                     ('login', '=', login),
@@ -903,16 +905,19 @@ class UserDevice(ModelSQL):
         return device.cookie
 
     @classmethod
-    def renew(cls, current_cookie):
+    def renew(cls, current_cookie=None):
         pool = Pool()
         User = pool.get('res.user')
 
         user = User(Transaction().user)
         new_cookie = uuid.uuid4().hex
-        current_devices = cls.search([
-                    ('login', '=', user.login),
-                    ('cookie', '=', current_cookie),
-                    ])
+        if current_cookie is not None:
+            current_devices = cls.search([
+                        ('login', '=', user.login),
+                        ('cookie', '=', current_cookie),
+                        ])
+        else:
+            current_devices = []
         if current_devices:
             cls.write(current_devices, {
                     'cookie': new_cookie
