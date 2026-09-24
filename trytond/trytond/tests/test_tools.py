@@ -6,13 +6,14 @@ import datetime as dt
 import doctest
 import email.message
 import os
+import threading
 import unittest
 from copy import deepcopy
 from decimal import Decimal
 from io import BytesIO
 from multiprocessing import Process, set_start_method
 from multiprocessing.managers import SharedMemoryManager
-from unittest.mock import patch
+from unittest.mock import Mock, patch
 from uuid import uuid4
 
 import sql
@@ -38,7 +39,7 @@ from trytond.tools.domain_inversion import (
     prepare_reference_domain, simplify, sort, unique_value)
 from trytond.tools.immutabledict import ImmutableDict
 from trytond.tools.logging import format_args
-from trytond.tools.multiprocessing import local
+from trytond.tools.multiprocessing import _local_impl, local
 from trytond.tools.string_ import LazyString, StringPartitioned
 
 try:
@@ -1518,27 +1519,80 @@ class ProcessLocalTestCase(TestCase):
         set_start_method(None, force=True)
 
     def test_without_fork(self):
-        mydata = local()
-        mydata.number = 42
+        initialize = Mock(wraps=_local_impl.initialize)
+
+        def initialize_wrapper(self, local_obj):
+            initialize(self, local_obj)
+
+        with patch.object(
+                _local_impl, 'initialize', initialize_wrapper):
+            mydata = local()
+            mydata.number = 42
+            initialize.assert_called_once()
         self.assertEqual(mydata.number, 42)
         self.assertEqual(mydata.__dict__, {'number': 42})
 
     def test_fork(self):
-        mydata = local()
-        mydata.number = 42
+        initialize = Mock(wraps=_local_impl.initialize)
 
-        def f(l, num):
-            mydata.number = num
-            l[0] = mydata.number
+        def initialize_wrapper(self, local_obj):
+            initialize(self, local_obj)
 
-        with SharedMemoryManager() as smm:
-            sl = smm.ShareableList([None])
-            p = Process(target=f, args=(sl, 1))
-            p.start()
-            p.join()
-            self.assertEqual(list(sl), [1])
+        with patch.object(
+                _local_impl, 'initialize', initialize_wrapper):
+            mydata = local()
+            mydata.number = 42
+            initialize.assert_called_once()
 
-        self.assertEqual(mydata.number, 42)
+            def f(l, num):
+                mydata.number = num
+                l[0] = mydata.number
+                l[1] = initialize.call_count
+
+            with SharedMemoryManager() as smm:
+                sl = smm.ShareableList([None, None])
+                p = Process(target=f, args=(sl, 1))
+                p.start()
+                p.join()
+                self.assertEqual(list(sl), [1, 2])
+
+            initialize.assert_called_once()
+            self.assertEqual(mydata.number, 42)
+
+    def test_fork_with_threads(self):
+        initialize = Mock(wraps=_local_impl.initialize)
+
+        def initialize_wrapper(self, local_obj):
+            initialize(self, local_obj)
+
+        with patch.object(
+                _local_impl, 'initialize', initialize_wrapper):
+            mydata = local()
+            initialize.assert_not_called()
+
+            def worker_thread():
+                mydata.number = 0
+
+            def f(l):
+                threads = []
+                for _ in range(4):
+                    t = threading.Thread(target=worker_thread)
+                    t.start()
+                    threads.append(t)
+                for t in threads:
+                    t.join()
+
+                l[0] = mydata.number
+                l[1] = initialize.call_count
+
+            with SharedMemoryManager() as smm:
+                sl = smm.ShareableList([None, None])
+                p = Process(target=f, args=(sl,))
+                p.start()
+                p.join()
+                self.assertEqual(list(sl), [0, 1])
+
+            initialize.assert_not_called()
 
     def test_inheritance_setattr(self):
         class MyLocal(local):
