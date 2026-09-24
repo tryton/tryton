@@ -244,3 +244,31 @@ Check Inventory turnover::
     >>> turnover.turnover
     0.045
     >>> assertEqual(turnover.product_reference.__class__.__name__, product_type)
+
+    >>> with config.set_context(
+    ...         location=warehouse_loc.id,
+    ...         from_date=dt.date(2025, 1, 1),
+    ...         to_date=dt.date(2025, 1, 1),
+    ...         product_type=product_type):
+    ...     turnover, = InventoryTurnover.find([])
+
+    >>> turnover.output_quantity
+    1.0
+    >>> turnover.average_quantity
+    10.0
+    >>> turnover.turnover
+    0.1
+
+    >>> with config.set_context(
+    ...         location=warehouse_loc.id,
+    ...         from_date=dt.date(2025, 1, 1),
+    ...         to_date=dt.date(2025, 1, 5),
+    ...         product_type=product_type):
+    ...     turnover, = InventoryTurnover.find([])
+
+    >>> turnover.output_quantity
+    0.2
+    >>> turnover.average_quantity
+    9.2
+    >>> turnover.turnover
+    0.022

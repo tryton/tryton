@@ -583,11 +583,12 @@ class InventoryTurnover(ModelSQL, ModelView):
             inventory_from_date = _SQLite_JulianDay(inventory_from_date)
             inventory_to_date = _SQLite_JulianDay(inventory_to_date)
         average_quantity = (
-            Sum(Case(
-                    (inventory.quantity >= 0, inventory.quantity),
-                    else_=0)
+            (Sum(Greatest(inventory.quantity, 0)
                 * (inventory_to_date - inventory_from_date
                     + Case((inventory.to_date == to_date, 1), else_=0)))
+                + Sum(Least(
+                        Greatest(inventory.input_quantity, 0),
+                        Greatest(inventory.output_quantity, 0))))
             / days)
 
         def round_sql(expression, digits=2):
