@@ -325,7 +325,7 @@ class Form(TabContent):
             badge = 1
         else:
             badge = None
-        label = N_("Note (%d/%d)", "Notes (%d/%d",
+        label = N_("Note (%d/%d)", "Notes (%d/%d)",
             max(note_count, 1)) % (note_unread, note_count)
         update('note', label, 'tryton-note', badge)
 
