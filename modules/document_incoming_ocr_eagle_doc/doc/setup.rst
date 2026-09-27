@@ -7,9 +7,8 @@ Setup
 Configure Eagle Doc service
 ===========================
 
-First you must `sign up to Eagle Doc
-<https://www.eagle-doc.com/app/apis/#/auth/signup>`_ and retrieve the API key
-from the developer section.
+First you must `sign up to Eagle Doc <https://docai.eagle-doc.com/>`_ and
+retrieve the API key from the developer section.
 
 The create a document type and configure it for the `Incoming Documents
 <document_incoming:model-document.incoming>` you want to process.
