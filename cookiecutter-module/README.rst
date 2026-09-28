@@ -9,7 +9,7 @@ Cookiecutter_ template for a Tryton module
 Features
 --------
 
-* Ready to use setup.py
+* Ready to use pyproject.toml
 * Vanilla testing setup with `unittest`
 * Tox_: Setup to easily test for Python, PyPy, SQlite and PostgreSQL
 * Documentation folder with standard layout
