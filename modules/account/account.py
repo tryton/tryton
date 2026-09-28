@@ -1078,7 +1078,6 @@ class Account(
             col_type = int if name == 'line_count' else Decimal
             result[name] = defaultdict(col_type)
 
-        table = cls.__table__()
         line = MoveLine.__table__()
 
         for company, c_accounts in groupby(accounts, key=lambda a: a.company):
@@ -1086,7 +1085,7 @@ class Account(
             ids = [a.id for a in c_accounts]
             with transaction.set_context(company=company.id):
                 line_query, fiscalyear_ids = MoveLine.query_get(line)
-            columns = [table.id]
+            columns = [line.account]
             types = [None]
             for name in names:
                 if name == 'line_count':
@@ -1096,12 +1095,11 @@ class Account(
                     columns.append(
                         Sum(Coalesce(Column(line, name), 0)).as_(name))
                     types.append('NUMERIC')
-            where = fields.SQL_OPERATORS['in'](table.id, ids)
-            query = (table.join(line, 'LEFT',
-                    condition=line.account == table.id
-                    ).select(*columns,
-                    where=where & line_query,
-                    group_by=table.id))
+            where = fields.SQL_OPERATORS['in'](line.account, ids)
+            query = line.select(
+                *columns,
+                where=where & line_query,
+                group_by=line.account)
             if backend.name == 'sqlite':
                 sqlite_apply_types(query, types)
             cursor.execute(*query)
@@ -1605,9 +1603,8 @@ class AccountParty(ActivePeriodMixin, ModelSQL):
             column_type = int if name == 'line_count' else Decimal
             result[name] = defaultdict(column_type)
 
-        table = Account.__table__()
         line = MoveLine.__table__()
-        columns = [line.party, table.id]
+        columns = [line.party, line.account]
         types = [None, None]
         for name in names:
             if name == 'line_count':
@@ -1625,13 +1622,12 @@ class AccountParty(ActivePeriodMixin, ModelSQL):
             with transaction.set_context(company=company.id):
                 line_query, fiscalyear_ids = MoveLine.query_get(line)
 
-            account_sql = fields.SQL_OPERATORS['in'](table.id, account_ids)
+            account_sql = fields.SQL_OPERATORS['in'](line.account, account_ids)
             party_sql = fields.SQL_OPERATORS['in'](line.party, party_ids)
-            query = (table.join(line, 'LEFT',
-                    condition=line.account == table.id
-                    ).select(*columns,
-                    where=account_sql & party_sql & line_query,
-                    group_by=[table.id, line.party]))
+            query = line.select(
+                *columns,
+                where=account_sql & party_sql & line_query,
+                group_by=[line.account, line.party])
             if backend.name == 'sqlite':
                 sqlite_apply_types(query, types)
             cursor.execute(*query)
