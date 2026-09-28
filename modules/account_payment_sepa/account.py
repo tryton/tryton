@@ -1,6 +1,9 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 
+from sql import Literal
+from sql.operators import Exists
+
 from trytond.i18n import gettext
 from trytond.model import ModelSQL, fields
 from trytond.modules.company.model import CompanyValueMixin
@@ -29,6 +32,33 @@ class ConfigurationSepaMandateSequence(ModelSQL, CompanyValueMixin):
                     'account_payment_sepa', 'sequence_type_mandate')),
             ('company', 'in', [Eval('company', -1), None]),
             ])
+
+
+class MoveLine(metaclass=PoolMeta):
+    __name__ = 'account.move.line'
+
+    sepa_mandate_available = fields.Function(fields.Boolean(
+            "SEPA Mandate Available"))
+
+    @classmethod
+    def column_sepa_mandate_available(cls, tables):
+        pool = Pool()
+        Move = pool.get('account.move')
+        Mandate = pool.get('account.payment.sepa.mandate')
+        line, _ = tables[None]
+        move_tables = tables.get('move')
+        if move_tables is None:
+            move = Move.__table__()
+            tables['move'] = {
+                None: (move, move.id == line.move),
+                }
+        else:
+            move, _ = move_tables[None]
+        mandate = Mandate.__table__()
+        return Exists(mandate.select(Literal(1),
+                where=(mandate.party == line.party)
+                & (mandate.company == move.company)
+                & (mandate.state == 'validated')))
 
 
 class InvoicePaymentMean(metaclass=PoolMeta):
