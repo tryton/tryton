@@ -24,15 +24,17 @@ First we define a :class:`~trytond.model.ModelView` class in
 
         end_date = fields.Date("End Date", required=True)
 
-And we register it in the :class:`~trytond.pool.Pool` in :file:`__init__.py`:
+And we register it in the :class:`~trytond.pool.Pool` in :file:`tryton.cfg`:
 
-.. code-block:: python
+.. code-block:: ini
 
-    def register():
-        Pool.register(
-            ...,
-            opportunity.ConvertStart,
-            module='opportunity', type_='model')
+   [tryton]
+   ...
+   [register]
+   ...
+   model:
+     opportunity.ConvertStart
+
 
 Then the form view record in :file:`opportunity.xml`:
 
