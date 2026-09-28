@@ -15,6 +15,7 @@ class Configuration(metaclass=PoolMeta):
     default_account_disbursement = fields.MultiValue(fields.Many2One(
             'account.account', "Default Account Disbursement",
             domain=[
+                ('type.disbursement', '=', True),
                 ('closed', '!=', True),
                 ('company', '=', Eval('context', {}).get('company', -1)),
                 ]))
@@ -33,6 +34,7 @@ class ConfigurationDefaultAccount(metaclass=PoolMeta):
     default_account_disbursement = fields.Many2One(
         'account.account', "Default Account Disbursement",
         domain=[
+            ('type.disbursement', '=', True),
             ('closed', '!=', True),
             ('company', '=', Eval('company', -1)),
             ])

@@ -61,6 +61,7 @@ class Work(metaclass=PoolMeta):
     account_disbursement = fields.Many2One(
         'account.account', "Account Disbursement",
         domain=[
+            ('type.disbursement', '=', True),
             ('closed', '!=', True),
             ('company', '=', Eval('company', -1)),
             ],
