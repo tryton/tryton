@@ -25,7 +25,7 @@ And we register it in the :class:`~trytond.pool.Pool` as type ``report`` in
    ...
    [register]
    ...
-   wizard:
+   report:
       opportunity.OpportunityReport
 
 
