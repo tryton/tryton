@@ -56,7 +56,7 @@ class Sale(order_mixin('sale'), metaclass=PoolMeta):
 
     @property
     def _invoice_grouping_origins(self):
-        return super()._shipment_grouping_origins + ['sale.line.component']
+        return super()._invoice_grouping_origins + ['sale.line.component']
 
     @property
     def _shipment_grouping_origins(self):
