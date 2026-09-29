@@ -207,7 +207,7 @@ ${COUNTRY}</field>
             <field name="format_">${party_name}
 ${street}
 ${city}
-${COUNTRY_CODE}-${postal_code}
+${COUNTRY_CODE}–${postal_code}
 ${COUNTRY}</field>
             <field name="street_format">${unit_number}</field>
             <field name="unit_number_format">P.O. {}</field>
@@ -334,7 +334,7 @@ ${building_name}</field>
             <field name="country_code">BD</field>
             <field name="format_">${party_name}
 ${street}
-${CITY} - ${postal_code}
+${CITY} – ${postal_code}
 ${COUNTRY}</field>
             <field name="street_format">${unit_number}/${floor_number}/${room_number} ${building_name}
 ${street_name} ${building_number}</field>
@@ -453,7 +453,7 @@ ${post_box}</field>
             <field name="country_code">BR</field>
             <field name="format_">${party_name}
 ${street}
-${CITY} - ${SUBDIVISION_CODE}
+${CITY} – ${SUBDIVISION_CODE}
 ${postal_code}
 ${COUNTRY}</field>
             <field name="street_format">${street_name}, ${building_number}, ${unit_number}/${floor_number}/${room_number}
@@ -677,10 +677,10 @@ ${street_name} ${building_number} ${unit_number}</field>
             <field name="format_">${party_name}
 ${street}
 ${subdivision}
-${post_box}-${postal_code}
+${post_box}–${postal_code}
 ${COUNTRY}</field>
             <field name="street_format">${street_name} ${building_number}
-${post_office}-${post_box}</field>
+${post_office}–${post_box}</field>
             <field name="building_number_format"># {}</field>
             <field name="post_box_format">Apdo {}</field>
         </record>
@@ -710,7 +710,7 @@ ${post_box}</field>
             <field name="country_code">CY</field>
             <field name="format_">${party_name}
 ${street}
-${COUNTRY_CODE}-${postal_code} ${city}
+${COUNTRY_CODE}–${postal_code} ${city}
 ${COUNTRY}</field>
             <field name="street_format">${street_name} ${building_number}
 ${post_box}</field>
@@ -796,7 +796,7 @@ ${COUNTRY}</field>
             <field name="country_code">EC</field>
             <field name="format_">${party_name}
 ${street}
-${postal_code} - ${CITY}
+${postal_code} – ${CITY}
 ${COUNTRY}</field>
             <field name="street_format">${street_name} ${building_number}
 ${building_name}, ${floor_number}</field>
@@ -1045,7 +1045,7 @@ ${post_box}</field>
             <field name="country_code">GR</field>
             <field name="format_">${party_name}
 ${STREET}
-${COUNTRY_CODE}-${POSTAL_CODE} ${CITY}
+${COUNTRY_CODE}–${POSTAL_CODE} ${CITY}
 ${COUNTRY}</field>
             <field name="street_format">${building_number}, ${street_name}
 ${post_box}</field>
@@ -1065,9 +1065,9 @@ SOUTH GEORGIA ISLAND</field>
             <field name="country_code">GT</field>
             <field name="format_">${party_name}
 ${street}
-${postal_code} - ${city}
+${postal_code} – ${city}
 ${COUNTRY}, ${SUBDIVISION_CODE}</field>
-            <field name="street_format">${street_name} {building_number}
+            <field name="street_format">${street_name} ${building_number}
 ${unit_number} ${floor_number} ${room_number}</field>
         </record>
 
@@ -1130,7 +1130,7 @@ ${COUNTRY}</field>
             <field name="country_code">HR</field>
             <field name="format_">${party_name}
 ${street}
-${COUNTRY_CODE}-${POSTAL_CODE} ${CITY}
+${COUNTRY_CODE}–${POSTAL_CODE} ${CITY}
 ${COUNTRY}</field>
             <field name="street_format">${street_name} ${building_number} ${floor_number} ${room_number}
 ${post_box}</field>
@@ -1337,7 +1337,7 @@ ${COUNTRY}</field>
             <field name="street_format">${building_number}, ${street_name}, ${unit_number}
 ${post_box}
 ${post_office}</field>
-            <field name="post_box_format">PO-{}</field>
+            <field name="post_box_format">PO–{}</field>
         </record>
 
         <record model="party.address.format" id="address_format_kh">
@@ -1435,7 +1435,7 @@ ${party_name}
 ${street}
 ${POSTAL_CODE} ${CITY}
 ${COUNTRY}</field>
-            <field name="street_format">${street_name}, ${building_number}, {unit_number}
+            <field name="street_format">${street_name}, ${building_number}, ${unit_number}
 ${post_box}</field>
             <field name="building_number_format">dom {}</field>
             <field name="unit_number_format">kv {}</field>
@@ -1528,7 +1528,7 @@ ${street}
 ${city}
 ${COUNTRY_CODE}–${postal_code} ${SUBDIVISION}
 ${COUNTRY}</field>
-            <field name="street_format">${street_name} ${building_number}-${unit_number}
+            <field name="street_format">${street_name} ${building_number}–${unit_number}
 ${post_box}
 ${post_office}</field>
             <field name="post_box_format">P. d. {}</field>
@@ -1540,7 +1540,7 @@ ${post_office}</field>
 ${party_name}
 ${unit_number}
 ${street}
-L-${postal_code} ${CITY}
+L–${postal_code} ${CITY}
 ${COUNTRY}</field>
             <field name="street_format">${private_bag}
 ${building_number}, ${street_name}
@@ -1552,7 +1552,7 @@ ${post_box}</field>
             <field name="country_code">LV</field>
             <field name="format_">${party_name}
 ${street}
-${city}, ${COUNTRY_CODE}-${POSTAL_CODE}
+${city}, ${COUNTRY_CODE}–${POSTAL_CODE}
 ${COUNTRY}</field>
             <field name="street_format">${street_name} ${building_number}–${unit_number}</field>
         </record>
@@ -2484,10 +2484,10 @@ ${post_office}</field>
         <record model="party.address.format" id="address_format_tj">
             <field name="country_code">TJ</field>
             <field name="format_">${party_name}
-${street}
+${street} street
 ${postal_code} ${CITY}
 ${COUNTRY}</field>
-            <field name="street_format">${street_name} ${building_number} street</field>
+            <field name="street_format">${street_name} ${building_number}</field>
         </record>
 
         <record model="party.address.format" id="address_format_tl">
