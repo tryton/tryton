@@ -1,0 +1,4 @@
+[
+    {"payment_direct_debit": false}
+    ,{"payment_direct_debit": true}
+]

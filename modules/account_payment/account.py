@@ -774,6 +774,11 @@ class Invoice(metaclass=PoolMeta):
     __name__ = 'account.invoice'
 
     payment_direct_debit = fields.Boolean("Direct Debit",
+        domain=[
+            If(Eval('type') != 'in',
+                ('payment_direct_debit', '=', False),
+                ()),
+            ],
         states={
             'invisible': Eval('type') != 'in',
             'readonly': Eval('state') != 'draft',
@@ -784,11 +789,13 @@ class Invoice(metaclass=PoolMeta):
     def default_payment_direct_debit(cls):
         return False
 
-    @fields.depends('party')
+    @fields.depends('party', 'type')
     def on_change_party(self):
         super().on_change_party()
-        if self.party:
+        if self.type == 'in' and self.party:
             self.payment_direct_debit = self.party.payment_direct_debit
+        else:
+            self.payment_direct_debit = False
 
     def _get_move_line(self, date, amount):
         line = super()._get_move_line(date, amount)
