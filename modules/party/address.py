@@ -571,11 +571,16 @@ ${COUNTRY}"""
         substitutions = address._get_street_substitutions()
         for format_ in formats:
             try:
-                Template(format_.street_format).substitute(**substitutions)
+                value = Template(format_.street_format).substitute(
+                    **substitutions)
             except Exception as exception:
                 raise InvalidFormat(gettext('party.msg_invalid_format',
                         format=format_.street_format,
                         exception=exception)) from exception
+            if value := Address._strip(value, doublespace=True):
+                raise InvalidFormat(gettext('party.msg_invalid_format_strip',
+                        format=format_.format_,
+                        value=value)) from ValueError(value)
 
     @classmethod
     def check_number_format(cls, formats, field_names=None):

@@ -48,6 +48,9 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_invalid_format">
             <field name="text">Invalid format "%(format)s" with exception "%(exception)s".</field>
         </record>
+        <record model="ir.message" id="msg_invalid_format_strip">
+            <field name="text">Invalid format "%(format)s". Empty address generates "%(value)s".</field>
+        </record>
         <record model="ir.message" id="msg_category_name_unique">
             <field name="text">The name of party category must be unique by parent.</field>
         </record>
