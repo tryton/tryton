@@ -2319,34 +2319,33 @@ function eval_pyson(value){
                     return;
                 }
                 var value = field.get(record);
-                var prm, found = false;
+                var found = false;
                 for (const option of selection) {
                     if (option[0] === value) {
                         found = true;
                         break;
                     }
                 }
-                if (!found) {
-                    prm = Sao.common.selection_mixin.get_inactive_selection
-                        .call(this, value);
-                    prm = prm.then(inactive => {
-                        this.select.append(jQuery('<option/>', {
-                            value: JSON.stringify(inactive[0]),
-                            text: inactive[1],
-                            disabled: true
-                        }));
-                    });
-                } else {
-                    prm = jQuery.when();
-                }
-                return prm.then(() => {
+                let set_value = () => {
                     this.select.val(JSON.stringify(value));
                     var title = help[value] || null;
                     if (this.attributes.help && title) {
                         title = this.attributes.help + '\n' + title;
                     }
                     this.select.attr('title', title);
-                });
+                };
+                if (!found) {
+                    return Sao.common.selection_mixin.get_inactive_selection
+                        .call(this, value)
+                        .then(inactive => {
+                            this.select.append(jQuery('<option/>', {
+                                value: JSON.stringify(inactive[0]),
+                                text: inactive[1],
+                                disabled: true
+                            }));
+                        }).then(set_value);
+                }
+                set_value();
             });
         },
         display: function() {
