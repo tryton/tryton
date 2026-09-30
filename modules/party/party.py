@@ -358,12 +358,15 @@ class Party(
         else:
             for country in eu_vat.guess_country(text):
                 if 'eu_vat' in identifier_types:
-                    code = eu_vat.compact(country + text)
-                    add('eu_vat', code)
+                    code = country + text
+                    if eu_vat.is_valid(code):
+                        code = eu_vat.compact(code)
+                        add('eu_vat', code)
                 elif f'{country}_vat' in identifier_types:
                     vat = get_cc_module(country, 'vat')
-                    code = vat.compact(text)
-                    add(f'{country}_vat', code)
+                    if vat.is_valid(text):
+                        code = vat.compact(text)
+                        add(f'{country}_vat', code)
         return result
 
     @classmethod
@@ -819,10 +822,12 @@ class Identifier(sequence_ordered(), DeactivableMixin, ModelSQL, ModelView):
         if self.type and '_' in self.type:
             module = get_cc_module(*self.type.split('_', 1))
             if module:
-                try:
-                    return module.compact(self.code)
-                except stdnum.exceptions.ValidationError:
-                    pass
+                if (hasattr(module, 'is_valid')
+                        and module.is_valid(self.code)):
+                    try:
+                        return module.compact(self.code)
+                    except stdnum.exceptions.ValidationError:
+                        pass
         return self.code
 
     def pre_validate(self):
