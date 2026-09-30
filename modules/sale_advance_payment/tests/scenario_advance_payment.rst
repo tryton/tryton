@@ -392,7 +392,7 @@ it::
     ...     handle_exception.form.recreate_invoices.find())
     >>> handle_exception.execute('handle')
     >>> sale.reload()
-    >>> _, inv_recreated = sale.advance_payment_invoices
+    >>> inv_recreated, _ = sale.advance_payment_invoices
     >>> inv_recreated.total_amount
     Decimal('10.00')
     >>> assertEqual(inv_recreated.invoice_date, next_week)
