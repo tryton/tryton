@@ -29,7 +29,8 @@ class Configuration(metaclass=PoolMeta):
 
     default_factur_x_profile = fields.MultiValue(fields.Selection(
             PROFILES, "Default Factur-X Profile", sort=False,
-            help="Leave this field empty if you do want to include Factur-X."))
+            help="Leave this field empty "
+            "if you do not want to include Factur-X."))
 
     @classmethod
     def multivalue_model(cls, field):
