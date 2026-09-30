@@ -54,7 +54,10 @@ class Action(DeactivableMixin, ModelSQL, ModelView):
     __name__ = 'ir.action'
     name = fields.Char('Name', required=True, translate=True)
     type = fields.Selection(
-        ACTION_SELECTION, "Type", required=True, readonly=True)
+        ACTION_SELECTION, "Type", required=True,
+        states={
+            'readonly': Eval('id', -1) >= 0,
+            })
     action = fields.Function(
         fields.Reference("Action", selection=ACTION_SELECTION),
         'get_action')
@@ -345,7 +348,10 @@ class ActionMixin(ModelSQL):
 
     action = fields.Many2One(
         'ir.action', "Action",
-        required=True, readonly=True, ondelete='CASCADE')
+        required=True, ondelete='CASCADE',
+        states={
+            'readonly': Eval('id', -1) >= 0,
+            })
 
     @classmethod
     def __setup__(cls):
