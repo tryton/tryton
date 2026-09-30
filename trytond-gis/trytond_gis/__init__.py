@@ -4,7 +4,7 @@ import trytond.config as config
 
 from .const import WGS_84
 
-__version__ = "7.8.1"
+__version__ = "7.8.2"
 
 
 class _GeoJSON(dict):
