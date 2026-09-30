@@ -20,7 +20,7 @@ __all__ = ['NoteCopyMixin']
 class Note(ResourceMixin, ModelSQL, ModelView):
     __name__ = 'ir.note'
     message = fields.Text('Message', states={
-            'readonly': Eval('id', 0) > 0,
+            'readonly': Eval('id', -1) >= 0,
             })
     message_wrapped = fields.Function(fields.Text('Message'),
         'on_change_with_message_wrapped')

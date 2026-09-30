@@ -26,7 +26,7 @@ class Notification(
     __name__ = 'res.notification'
 
     _states = {
-        'readonly': Eval('id', 0) >= 0,
+        'readonly': Eval('id', -1) >= 0,
         }
 
     user = fields.Many2One(
