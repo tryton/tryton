@@ -397,12 +397,15 @@ class Party(
         else:
             for country in eu_vat.guess_country(text):
                 if 'eu_vat' in identifier_types:
-                    code = eu_vat.compact(country + text)
-                    add('eu_vat', code)
+                    code = country + text
+                    if eu_vat.is_valid(code):
+                        code = eu_vat.compact(code)
+                        add('eu_vat', code)
                 elif f'{country}_vat' in identifier_types:
                     vat = get_cc_module(country, 'vat')
-                    code = vat.compact(text)
-                    add(f'{country}_vat', code)
+                    if vat.is_valid(text):
+                        code = vat.compact(text)
+                        add(f'{country}_vat', code)
         return result
 
     @classmethod
@@ -949,18 +952,20 @@ class Identifier(sequence_ordered(), DeactivableMixin, ModelSQL, ModelView):
     @fields.depends('type', 'code')
     def on_change_with_code(self):
         code = self.code
-        if self.type and '_' in self.type:
+        if code and self.type and '_' in self.type:
             if module := get_cc_module(*self.type.split('_', 1)):
-                if hasattr(module, 'compact'):
-                    try:
-                        code = module.compact(code)
-                    except stdnum.exceptions.ValidationError:
-                        pass
-                if hasattr(module, 'format'):
-                    try:
-                        code = module.format(code)
-                    except stdnum.exceptions.ValidationError:
-                        pass
+                if (hasattr(module, 'is_valid')
+                        and module.is_valid(code)):
+                    if hasattr(module, 'compact'):
+                        try:
+                            code = module.compact(code)
+                        except stdnum.exceptions.ValidationError:
+                            pass
+                    if hasattr(module, 'format'):
+                        try:
+                            code = module.format(code)
+                        except stdnum.exceptions.ValidationError:
+                            pass
         return code
 
     def pre_validate(self):
@@ -991,16 +996,18 @@ class Identifier(sequence_ordered(), DeactivableMixin, ModelSQL, ModelView):
             if ((type := values.get('type')) and '_' in type
                     and (code := values.get('code'))):
                 if module := get_cc_module(*type.split('_', 1)):
-                    if hasattr(module, 'format'):
-                        try:
-                            values['code'] = module.format(code)
-                        except stdnum.exceptions.ValidationError:
-                            pass
-                    if hasattr(module, 'compact'):
-                        try:
-                            values['code_compact'] = module.compact(code)
-                        except stdnum.exceptions.ValidationError:
-                            pass
+                    if (hasattr(module, 'is_valid')
+                            and module.is_valid(code)):
+                        if hasattr(module, 'format'):
+                            try:
+                                values['code'] = module.format(code)
+                            except stdnum.exceptions.ValidationError:
+                                pass
+                        if hasattr(module, 'compact'):
+                            try:
+                                values['code_compact'] = module.compact(code)
+                            except stdnum.exceptions.ValidationError:
+                                pass
         if mode == 'write':
             if {'type', 'code'} & values.keys():
                 values['eu_vat_valid'] = None
@@ -1023,12 +1030,14 @@ class Identifier(sequence_ordered(), DeactivableMixin, ModelSQL, ModelView):
             code_compact = getattr(self, 'code_compact', None)
             if (type := getattr(self, 'type', None)) and '_' in type and code:
                 if module := get_cc_module(*type.split('_', 1)):
-                    if hasattr(module, 'format'):
-                        code = module.format(code)
-                    if hasattr(module, 'compact'):
-                        code_compact = module.compact(code)
-                    else:
-                        code_compact = code
+                    if (hasattr(module, 'is_valid')
+                            and module.is_valid(code)):
+                        if hasattr(module, 'format'):
+                            code = module.format(code)
+                        if hasattr(module, 'compact'):
+                            code_compact = module.compact(code)
+                        else:
+                            code_compact = code
                     if getattr(self, 'code', None) != code:
                         values['code'] = code
                     if getattr(self, 'code_compact', None) != code_compact:
