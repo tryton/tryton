@@ -1,3 +1,4 @@
+* Escape arguments of report convert command (issue15035)
 * Escape title and text when rendering HTML editor (issue15032)
 * Allow trytond-admin to manage any user
 * Add bulk_create, bulk_delete, bulk_save and bulk_func to ModelStorage
