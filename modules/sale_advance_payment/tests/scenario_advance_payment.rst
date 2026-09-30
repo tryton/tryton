@@ -401,7 +401,7 @@ it::
     >>> handle_exception = sale.click('handle_invoice_exception')
     >>> handle_exception.execute('handle')
     >>> sale.reload()
-    >>> _, inv_recreated = sale.advance_payment_invoices
+    >>> inv_recreated, _ = sale.advance_payment_invoices
     >>> inv_recreated.total_amount
     Decimal('10.00')
     >>> inv_recreated.invoice_date == next_week

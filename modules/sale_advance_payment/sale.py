@@ -7,7 +7,7 @@ from simpleeval import simple_eval
 
 from trytond.i18n import gettext
 from trytond.model import (
-    DeactivableMixin, ModelSQL, ModelView, Workflow, fields)
+    DeactivableMixin, ModelSQL, ModelView, Workflow, fields, sort)
 from trytond.modules.company.model import (
     CompanyMultiValueMixin, CompanyValueMixin)
 from trytond.modules.currency.fields import Monetary
@@ -329,12 +329,16 @@ class Sale(metaclass=PoolMeta):
                 advance_payment_term.get_conditions(self)
 
     def get_advance_payment_invoices(self, name):
+        pool = Pool()
+        Invoice = pool.get('account.invoice')
+        field = getattr(self.__class__, name)
+        order = field.order if field.order is not None else Invoice._order
         invoices = set()
         for condition in self.advance_payment_conditions:
             for invoice_line in condition.invoice_lines:
                 if invoice_line.invoice:
-                    invoices.add(invoice_line.invoice.id)
-        return list(invoices)
+                    invoices.add(invoice_line.invoice)
+        return sort(invoices, order)
 
     @classmethod
     def search_advance_payment_invoices(cls, name, clause):
