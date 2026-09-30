@@ -3,6 +3,7 @@
 import csv
 import datetime as dt
 import hashlib
+import html
 import io
 import json
 import os.path
@@ -306,8 +307,8 @@ class Base(Router):
                     'class': get_config(
                         ['class', model, field.name], default="''"),
                     'language': transaction.language,
-                    'title': title,
-                    'text': text,
+                    'title': html.escape(title),
+                    'text': html.escape(text),
                     'csrf_token': csrf_token,
                     'error': error,
                     }, status, content_type='text/html')
