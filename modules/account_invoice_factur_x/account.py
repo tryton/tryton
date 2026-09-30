@@ -28,7 +28,7 @@ class Configuration(metaclass=PoolMeta):
     __name__ = 'account.configuration'
 
     default_factur_x_profile = fields.MultiValue(fields.Selection(
-            PROFILES, "Default Factur-X Profile", sort=False,
+            PROFILES, "Default Factur-X Profile", sort=False, translate=False,
             help="Leave this field empty "
             "if you do not want to include Factur-X."))
 
