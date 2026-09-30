@@ -1,3 +1,4 @@
+* Escape arguments of report convert command (issue15035)
 * Escape title and text when rendering HTML editor (issue15032)
 
 Version 8.0.10 - 2026-09-16
