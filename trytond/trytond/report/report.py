@@ -8,6 +8,7 @@ import mimetypes
 import operator
 import os
 import pathlib
+import shlex
 import shutil
 import subprocess
 import tempfile
@@ -440,20 +441,20 @@ class Report(URLMixin, PoolBase):
                 '--convert-to "%(output_extension)s" '
                 '--outdir "%(directory)s" '
                 '"%(input_path)s"')
-            cmd %= {
-                'directory': directory,
-                'input_format': input_format,
-                'input_extension': input_extension,
-                'input_path': input_path,
-                'output_format': output_format,
-                'output_extension': output_extension,
-                'output_path': output_path,
-                }
+            args = map(lambda s: s % {
+                    'directory': directory,
+                    'input_format': input_format,
+                    'input_extension': input_extension,
+                    'input_path': input_path,
+                    'output_format': output_format,
+                    'output_extension': output_extension,
+                    'output_path': output_path,
+                    }, shlex.split(cmd))
             for count in range(retry, -1, -1):
                 if count != retry:
                     time.sleep(0.02 * (retry - count))
                 try:
-                    subprocess.check_call(cmd, timeout=timeout, shell=True)
+                    subprocess.run(args, timeout=timeout, check=True)
                 except subprocess.CalledProcessError:
                     if count:
                         continue
