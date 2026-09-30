@@ -2,6 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 import csv
 import datetime as dt
+import html
 import io
 import json
 from numbers import Number
@@ -92,8 +93,8 @@ def html_editor(request, pool, model, record, field):
                 'class': get_config(
                     ['class', model, field.name], default="''"),
                 'language': transaction.language,
-                'title': title,
-                'text': text,
+                'title': html.escape(title),
+                'text': html.escape(text),
                 'csrf_token': csrf_token,
                 'error': error,
                 }, status, content_type='text/html')
