@@ -14,7 +14,7 @@ from lxml import etree, objectify
 
 from ._safe_genshi import genshi_patch
 
-__version__ = "7.8.17"
+__version__ = "7.8.18"
 __series__ = '.'.join(__version__.split('.')[:2])
 
 if not os.environ.get('TRYTOND_APPNAME'):
