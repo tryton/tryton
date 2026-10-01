@@ -1101,11 +1101,13 @@
                         width = column.col.data('default-width');
                     }
                     if (width && width.endsWith('%')) {
-                        width = parseInt(width.slice(0, -1), 10) / 100;
+                        // Reverse the calculation from _set_column_width
+                        let factor = 1;
                         if (column.attributes.expand) {
-                            width /= parseInt(column.attributes.expand, 10);
+                            factor += parseInt(column.attributes.expand, 10);
                         }
-                        width = `${width}em`;
+                        width = parseInt(width.slice(0, -1), 10);
+                        width = `${width / 100 / factor}em`;
                     }
                     min_width.push(width);
                     column.col.sao_show();
