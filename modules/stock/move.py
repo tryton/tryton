@@ -322,8 +322,10 @@ class Move(Workflow, ModelSQL, ModelView):
                 ()),
             ],
         states={
-            'invisible': ~Eval('unit_price_required'),
-            'required': Bool(Eval('unit_price_required')),
+            'invisible': (
+                ~Eval('unit_price_required', False)
+                & (Eval('unit_price', None) == None)),  # noqa: E711
+            'required': Eval('unit_price_required', False),
             'readonly': Eval('state') != 'draft',
             })
     unit_price_company = fields.Function(
@@ -346,7 +348,7 @@ class Move(Workflow, ModelSQL, ModelView):
                 ()),
             ],
         states={
-            'invisible': ~Eval('cost_price_required'),
+            'invisible': ~Eval('cost_price_required', False),
             'required': (
                 (Eval('state') == 'done')
                 & Eval('cost_price_required', False)),
@@ -370,8 +372,10 @@ class Move(Workflow, ModelSQL, ModelView):
                 ()),
             ],
         states={
-            'invisible': ~Eval('unit_price_required'),
-            'required': Bool(Eval('unit_price_required')),
+            'invisible': (
+                ~Eval('unit_price_required')
+                & (Eval('currency', None) == None)),  # noqa: E711
+            'required': Eval('unit_price_required', False),
             'readonly': Eval('state') != 'draft',
             },
         help="The currency in which the unit price is specified.")
