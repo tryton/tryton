@@ -271,7 +271,11 @@ class ModelView(Model):
         pool = Pool()
         User = pool.get('res.user')
 
-        key = (User.get_groups(), cls.__name__, view_id, view_type, level)
+        is_administrator = User.is_administrator()
+        groups = User.get_groups()
+
+        key = (
+            is_administrator, groups, cls.__name__, view_id, view_type, level)
         result = cls._fields_view_get_cache.get(key)
         if result:
             return result
@@ -563,6 +567,9 @@ class ModelView(Model):
         User = pool.get('res.user')
         ActionWindow = pool.get('ir.action.act_window')
 
+        is_administrator = User.is_administrator()
+        groups = set(User.get_groups())
+
         if fields_width is None:
             fields_width = collections.defaultdict(list)
         if fields_optional is None:
@@ -657,17 +664,17 @@ class ModelView(Model):
                 states = cls._buttons[button_name]
             else:
                 states = {}
-            groups = set(User.get_groups())
             button_attr = Button.get_view_attributes(
                 cls.__name__, button_name)
             for attr, value in button_attr.items():
                 if not element.get(attr):
                     element.set(attr, value or '')
             button_groups = Button.get_groups(cls.__name__, button_name)
-            if ((button_groups and not groups & button_groups)
-                    or (not button_groups
-                        and not ModelAccess.get_access(
-                            [cls.__name__])[cls.__name__]['write'])):
+            if (not is_administrator
+                    and ((button_groups and not groups & button_groups)
+                        or (not button_groups
+                            and not ModelAccess.get_access(
+                                [cls.__name__])[cls.__name__]['write']))):
                 states = states.copy()
                 states['readonly'] = True
             element.set('states', encoder.encode(states))
