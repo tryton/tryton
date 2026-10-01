@@ -10257,3 +10257,4 @@ c55b90a70a053d67b31c948462a93f8ce30090c7 sao-8.0.12
 f7802c4cd99f5d1a8e8afeed793649afac5439f5 edocument_peppol-8.0.2
 2e6b024651d78bc6baff76d953d2e5ef18da8e98 document_incoming_ocr_typless-8.0.1
 9bfdfe67b0c27e48b131e080341726870e2f9a43 account_payment_stripe-8.0.1
+22623d7ef6b81070982632f7624e14e232e082a8 account_payment_sepa-8.0.4
