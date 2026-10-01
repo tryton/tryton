@@ -276,8 +276,10 @@ class Move(Workflow, ModelSQL, ModelView):
         help="The company the stock move is associated with.")
     unit_price = fields.Numeric('Unit Price', digits=price_digits,
         states={
-            'invisible': ~Eval('unit_price_required'),
-            'required': Bool(Eval('unit_price_required')),
+            'invisible': (
+                ~Eval('unit_price_required', False)
+                & (Eval('unit_price', None) == None)),  # noqa: E711
+            'required': Eval('unit_price_required', False),
             'readonly': Eval('state') != 'draft',
             })
     unit_price_company = fields.Function(
@@ -295,7 +297,7 @@ class Move(Workflow, ModelSQL, ModelView):
     cost_price = fields.Numeric(
         "Cost Price", digits=price_digits, readonly=True,
         states={
-            'invisible': ~Eval('cost_price_required'),
+            'invisible': ~Eval('cost_price_required', False),
             'required': (
                 (Eval('state') == 'done')
                 & Eval('cost_price_required', False)),
@@ -309,8 +311,10 @@ class Move(Workflow, ModelSQL, ModelView):
         "when different from the cost price of the move.")
     currency = fields.Many2One('currency.currency', 'Currency',
         states={
-            'invisible': ~Eval('unit_price_required'),
-            'required': Bool(Eval('unit_price_required')),
+            'invisible': (
+                ~Eval('unit_price_required')
+                & (Eval('currency', None) == None)),  # noqa: E711
+            'required': Eval('unit_price_required', False),
             'readonly': Eval('state') != 'draft',
             },
         help="The currency in which the unit price is specified.")
