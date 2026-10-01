@@ -284,10 +284,18 @@ class CreateDPDShipping(Wizard):
         cm3 = UoM(ModelData.get_id('product', 'uom_cubic_centimeter'))
         kg = UoM(ModelData.get_id('product', 'uom_kilogram'))
 
+        volume = sum(
+            UoM.compute_qty(
+                p.volume_uom, p.total_volume, shipment.volume_uom, round=False)
+            for p in shipment.root_packages)
         volume = round(UoM.compute_qty(
-                shipment.volume_uom, shipment.volume, cm3, round=False))
+                shipment.volume_uom, volume, cm3, round=False))
+        weight = sum(
+            UoM.compute_qty(
+                p.weight_uom, p.total_weight, shipment.weight_uom, round=False)
+            for p in shipment.root_packages)
         weight = round(UoM.compute_qty(
-                shipment.weight_uom, shipment.weight, kg, round=False), 2)
+                shipment.weight_uom, weight, kg, round=False), 2)
         return {
             'generalShipmentData': {
                 'identificationNumber': shipment.number,
