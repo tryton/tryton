@@ -136,7 +136,9 @@ Create Package Type::
     ...     name='Box',
     ...     length=10, length_uom=cm,
     ...     height=8, height_uom=cm,
-    ...     width=5, width_uom=cm)
+    ...     width=5, width_uom=cm,
+    ...     packaging_weight=50,
+    ...     packaging_weight_uom=g)
     >>> box.save()
 
 Create a DPD Carrier and the related credential::
