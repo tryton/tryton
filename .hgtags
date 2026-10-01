@@ -9674,3 +9674,4 @@ f7e6e7cbdbea655dae6ca03c8ce2f4b99eff811e trytond-gis-7.0.2
 8faf54cf8607e508d2a54c781c2dcfc5bd7db05b purchase_amendment-7.0.5
 d3a6080807090d254fbfba39a70de7c74f280598 purchase-7.0.19
 aa755500a46a6cf93a65b7aebbc09c1ed09b2b63 document_incoming_ocr_typless-7.0.2
+e4ea7ae173968f567c4d5b8566d3e3ccede9b267 account_payment_stripe-7.0.9
