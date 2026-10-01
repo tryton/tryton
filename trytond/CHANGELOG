@@ -1,3 +1,7 @@
+
+Version 7.0.58 - 2026-10-01
+---------------------------
+* Bug fixes (see mercurial logs for details)
 * Escape title and text when rendering HTML editor (issue15032)
 * Allow trytond-admin to manage any user
 
