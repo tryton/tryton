@@ -1,3 +1,7 @@
+
+Version 7.8.17 - 2026-10-01
+---------------------------
+* Bug fixes (see mercurial logs for details)
 * Escape arguments of report convert command (issue15035)
 * Escape title and text when rendering HTML editor (issue15032)
 
