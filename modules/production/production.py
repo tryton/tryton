@@ -43,6 +43,9 @@ class Production(
     company = fields.Many2One('company.company', 'Company', required=True,
         states={
             'readonly': ~Eval('state').in_(['request', 'draft']),
+            'editable': ~(
+                Eval('inputs', [-1])
+                | Eval('outputs', [-1])),
             })
     warehouse = fields.Many2One('stock.location', 'Warehouse', required=True,
         domain=[
@@ -130,7 +133,10 @@ class Production(
             ],
         states={
             'readonly': ~Eval('state').in_(['request', 'draft', 'waiting']),
-            'editable': Eval('warehouse', None) & Eval('location', None),
+            'editable': (
+                Eval('warehouse', None)
+                & Eval('location', None)
+                & Eval('company', None)),
             })
     outputs = fields.One2Many(
         'stock.move', 'production_output', "Output Materials",
@@ -145,7 +151,10 @@ class Production(
             ],
         states={
             'readonly': Eval('state').in_(['done', 'cancelled']),
-            'editable': Eval('warehouse', None) & Eval('location', None),
+            'editable': (
+                Eval('warehouse', None)
+                & Eval('location', None)
+                & Eval('company', None)),
             })
 
     assigned_by = employee_field("Assigned By")
