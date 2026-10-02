@@ -10,7 +10,7 @@ from trytond.model import ModelSQL, fields
 from trytond.modules.company.model import (
     CompanyMultiValueMixin, CompanyValueMixin)
 from trytond.pool import Pool, PoolMeta
-from trytond.pyson import Bool, Eval, Or
+from trytond.pyson import Eval, Or
 from trytond.transaction import Transaction
 
 from .exceptions import AccountError, TaxError
@@ -57,7 +57,7 @@ class Category(CompanyMultiValueMixin, metaclass=PoolMeta):
     accounting = fields.Boolean(
         "Accounting",
         states={
-            'editable': Bool(Eval('childs', [0])) | Bool(Eval('parent')),
+            'editable': ~Eval('childs', [0]) & ~Eval('parent', None),
             },
         help="Check to indicate the category is used for accounting.")
     account_parent = fields.Boolean('Use Parent\'s accounts',
