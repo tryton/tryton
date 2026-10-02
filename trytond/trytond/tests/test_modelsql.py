@@ -1755,6 +1755,55 @@ class ModelSQLTranslationTestCase(TranslationTestCase):
         self.assertEqual(other.name, "Bar")
 
     @with_transaction()
+    def test_read_multiple_languages(self):
+        "Test read multiple languages"
+        pool = Pool()
+        Model = pool.get('test.modelsql.translation')
+        transaction = Transaction()
+
+        with transaction.set_context(language=self.default_language):
+            record, = Model.create([{'name': "Foo"}])
+        with transaction.set_context(language=self.other_language):
+            Model.write([record], {'name': "Bar"})
+
+        values = Model.read([record.id], [
+                'name',
+                f'name:{self.default_language}',
+                f'name:{self.other_language}',
+                ])
+
+        self.assertEqual(values, [{
+                    'id': record.id,
+                    'name': "Foo",
+                    f'name:{self.default_language}': "Foo",
+                    f'name:{self.other_language}': "Bar",
+                    }])
+
+    @with_transaction()
+    def test_read_multiple_languages_fallback(self):
+        "Test read multiple languages with fallback"
+        pool = Pool()
+        Model = pool.get('test.modelsql.translation')
+        transaction = Transaction()
+
+        with transaction.set_context(language=self.default_language):
+            record, = Model.create([{'name': "Foo"}])
+        with transaction.set_context(language=self.other_language):
+            Model.write([record], {'name': "Bar"})
+
+        with transaction.set_context(language=self.other_language):
+            values = Model.read([record.id], [
+                    f'name:{self.other_language}',
+                    'name:unknown',
+                    ])
+
+        self.assertEqual(values, [{
+                    'id': record.id,
+                    f'name:{self.other_language}': "Bar",
+                    'name:unknown': "Foo",
+                    }])
+
+    @with_transaction()
     def test_read_last_translation(self):
         "Test read last translation record"
         pool = Pool()

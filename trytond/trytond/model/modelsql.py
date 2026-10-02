@@ -1202,6 +1202,7 @@ class ModelSQL(ModelStorage):
         extra_fields = set()
         if 'write_date' not in fields_names:
             extra_fields.add('write_date')
+        fields_translated = []
         for field_name in fields_names:
             if field_name in {'_timestamp', '_write', '_delete', '__name__'}:
                 continue
@@ -1211,6 +1212,10 @@ class ModelSQL(ModelStorage):
             if field_name.endswith(':string'):
                 field_name = field_name[:-len(':string')]
                 fields_related[field_name]
+            elif ':' in field_name:
+                field_name, language = field_name.split(':', 1)
+                fields_translated.append((field_name, language))
+                extra_fields.add(field_name)
             field = cls._fields[field_name]
             if hasattr(field, 'datetime_field') and field.datetime_field:
                 extra_fields.add(field.datetime_field)
@@ -1312,6 +1317,15 @@ class ModelSQL(ModelStorage):
         max_write_date = max(
             (r['write_date'] for r in result if r.get('write_date')),
             default=None)
+
+        for fname, language in fields_translated:
+            translations = Translation.get_ids(
+                f'{cls.__name__},{fname}', 'model', language, ids,
+                cached_after=max_write_date)
+            for row in result:
+                row[f'{fname}:{language}'] = (
+                    translations.get(row['id']) or row[fname])
+
         for fname, column in columns.items():
             if fname.startswith('_'):
                 continue
