@@ -455,7 +455,7 @@ class Report(URLMixin, PoolBase):
                     time.sleep(0.02 * (retry - count))
                 try:
                     subprocess.run(args, timeout=timeout, check=True)
-                except subprocess.CalledProcessError:
+                except (subprocess.SubprocessError, OSError):
                     if count:
                         continue
                     logger.error(
