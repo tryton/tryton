@@ -523,19 +523,19 @@ class Production(
                     production.product, production.quantity, production.unit)
                 for input_ in production.bom.inputs:
                     quantity = input_.compute_quantity(factor)
-                    product = input_.product
-                    move = production._move(
-                        'input', product, input_.unit, quantity)
-                    move.planned_date = input_date
-                    save.push(input_.prepare_move(production, move))
+                    for line, quantity in input_.lines_for_quantity(quantity):
+                        move = production._move(
+                            'input', line.product, line.unit, quantity)
+                        move.planned_date = input_date
+                        save.push(input_.prepare_move(production, move))
 
                 for output in production.bom.outputs:
                     quantity = output.compute_quantity(factor)
-                    product = output.product
-                    move = production._move(
-                        'output', product, output.unit, quantity)
-                    move.planned_date = output_date
-                    save.push(output.prepare_move(production, move))
+                    for line, quantity in output.lines_for_quantity(quantity):
+                        move = production._move(
+                            'output', line.product, line.unit, quantity)
+                        move.planned_date = output_date
+                        save.push(output.prepare_move(production, move))
 
     @classmethod
     def set_cost_from_moves(cls):
