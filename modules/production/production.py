@@ -478,7 +478,7 @@ class Production(
         for input_ in self.inputs:
             if input_.state == 'cancelled':
                 continue
-            cost_price = input_.get_cost_price()
+            cost_price = input_.get_cost_price() or 0
             cost += (Decimal(str(input_.internal_quantity)) * cost_price)
         return round_price(cost)
 
@@ -499,7 +499,7 @@ class Production(
             product = input_.product
             quantity = Uom.compute_qty(
                 input_.unit, input_.quantity, product.default_uom)
-            cost += Decimal(str(quantity)) * product.cost_price
+            cost += Decimal(str(quantity)) * (product.cost_price or 0)
         return cost
 
     @dualmethod
@@ -571,7 +571,7 @@ class Production(
             for input_ in production.inputs:
                 if input_.state == 'cancelled':
                     continue
-                cost_price = input_.get_cost_price()
+                cost_price = input_.get_cost_price() or 0
                 input_quantities[input_.product] += (
                     Decimal(str(input_.internal_quantity)))
                 input_costs[input_.product] += (
