@@ -89,13 +89,16 @@
         function getScrollableAncestors(el) {
             let ancestors = [];
             let parent = el.parentElement;
-            while (parent && parent !== document.body) {
+            while (parent && (parent !== document.body ||
+                !parent.classList.contains('modal'))) {
                 if (isScrollable(parent)) {
                     ancestors.push(parent);
                 }
                 parent = parent.parentElement;
             }
-            ancestors.push(window);
+            if (!parent.classList.contains('modal')) {
+                ancestors.push(window);
+            }
             return ancestors;
         }
 
