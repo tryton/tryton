@@ -724,9 +724,15 @@ class Move(Workflow, ModelSQL, ModelView):
 
     @classmethod
     @without_check_access
-    def check_period_closed(cls, moves):
-        Period = Pool().get('stock.period')
-        for company, moves in groupby(moves, lambda m: m.company):
+    def check_period_closed(cls, moves, state=None):
+        pool = Pool()
+        Period = pool.get('stock.period')
+
+        def exclude_draft_staging(move):
+            return (state if state else move.state) not in {'draft', 'staging'}
+
+        for company, moves in groupby(
+                filter(exclude_draft_staging, moves), lambda m: m.company):
             periods = Period.search([
                     ('state', '=', 'closed'),
                     ('company', '=', company.id),
@@ -1068,7 +1074,7 @@ class Move(Workflow, ModelSQL, ModelView):
             cls.check_period_closed(moves)
         elif mode == 'write':
             if values.keys() - cls._allow_modify_closed_period:
-                cls.check_period_closed(moves)
+                cls.check_period_closed(moves, state=values.get('state'))
             if values.keys() & cls._deny_modify_assigned:
                 for move in moves:
                     if move.state == 'assigned':

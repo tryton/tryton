@@ -71,7 +71,7 @@ Close the period::
     >>> period, = Period.find([])
     >>> assertEqual(period.state, 'closed')
 
-Try to create a move::
+Create a draft move in closed period::
 
     >>> move = Move()
     >>> move.product = product
@@ -82,6 +82,17 @@ Try to create a move::
     >>> move.unit_price = Decimal('42.0000')
     >>> move.currency = currency
     >>> move.save()
+
+Update draft move in closed period::
+
+    >>> move.quantity = 2
+    >>> move.save()
+
+Try to update a draft move in closed period::
+
+    >>> Move.write(
+    ...     [move], {'state': 'assigned'},
+    ...     {**config._context, '_check_access': False})
     Traceback (most recent call last):
         ...
     AccessError: ...
@@ -94,7 +105,6 @@ Reopen the period::
 
 Close the period with draft move::
 
-    >>> move.save()
     >>> period.click('close')
     >>> period.state
     'closed'
