@@ -1,3 +1,7 @@
+
+Version 8.2.0 - 2026-10-05
+--------------------------
+* Bug fixes (see mercurial logs for details)
 * Escape arguments of report convert command (issue15035)
 * Escape title and text when rendering HTML editor (issue15032)
 * Allow trytond-admin to manage any user

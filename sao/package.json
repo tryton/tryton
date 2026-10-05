@@ -2,7 +2,7 @@
   "name": "tryton-sao",
   "title": "sao",
   "description": "Tryton webclient",
-  "version": "8.1.0",
+  "version": "8.2.0",
   "homepage": "https://www.tryton.org/",
   "author": {
     "name": "Tryton"
@@ -67,6 +67,6 @@
     "grunt-contrib-less": "^3.0"
   },
   "allowScripts": {
-      "puppeteer": true
+    "puppeteer": true
   }
 }

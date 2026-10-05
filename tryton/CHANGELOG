@@ -1,3 +1,7 @@
+
+Version 8.2.0 - 2026-10-05
+--------------------------
+* Bug fixes (see mercurial logs for details)
 * Support icon for login services
 * Edit the selected One2Many rows sequentially
 * Support filename extension for Binary field
