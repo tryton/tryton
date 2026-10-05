@@ -433,6 +433,10 @@ class Purchase(
     def default_invoice_state():
         return 'none'
 
+    @classmethod
+    def default_to_invoice(cls):
+        return False
+
     @staticmethod
     def default_shipment_state():
         return 'none'
@@ -774,7 +778,7 @@ class Purchase(
         default.setdefault('number', None)
         default.setdefault('reference')
         default.setdefault('invoice_state', 'none')
-        default.setdefault('to_invoice')
+        default.setdefault('to_invoice', cls.default_to_invoice())
         default.setdefault('invoices_ignored', None)
         default.setdefault('shipment_state', 'none')
         default.setdefault('purchase_date', None)
