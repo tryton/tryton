@@ -968,6 +968,10 @@ class Identifier(sequence_ordered(), DeactivableMixin, ModelSQL, ModelView):
                             pass
         return code
 
+    @classmethod
+    def default_eu_vat_valid(cls):
+        return False
+
     def pre_validate(self):
         super().pre_validate()
         self.check_code()
@@ -1076,7 +1080,7 @@ class Identifier(sequence_ordered(), DeactivableMixin, ModelSQL, ModelView):
     @classmethod
     def copy(cls, identifiers, default=None):
         default = default.copy() if default is not None else {}
-        default.setdefault('eu_vat_valid')
+        default.setdefault('eu_vat_valid', cls.default_eu_vat_valid())
         default.setdefault('eu_vat_validated_at')
         return super().copy(identifiers, default=default)
 

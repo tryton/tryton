@@ -1571,7 +1571,7 @@ class Line(DescriptionOriginMixin, MoveLineMixin, ModelSQL, ModelView):
         default.setdefault('state', 'draft')
         default.setdefault('move', None)
         default.setdefault('reconciliation', None)
-        default.setdefault('reconciliations_delegated', [])
+        default.setdefault('reconciliations_delegated')
         return super().copy(lines, default=default)
 
     @classmethod

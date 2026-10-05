@@ -728,12 +728,12 @@ class Asset(Workflow, ModelSQL, ModelView):
             default = {}
         else:
             default = default.copy()
-        default.setdefault('lines', [])
-        default.setdefault('update_moves', [])
+        default.setdefault('lines')
+        default.setdefault('update_moves')
         default.setdefault('number', None)
         default.setdefault('supplier_invoice_line', None)
         default.setdefault('move')
-        default.setdefault('revisions', [])
+        default.setdefault('revisions')
         return super().copy(assets, default=default)
 
     @classmethod

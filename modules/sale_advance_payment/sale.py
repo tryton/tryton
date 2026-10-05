@@ -223,7 +223,7 @@ class AdvancePaymentLine(ModelSQL, ModelView):
             default = {}
         else:
             default = default.copy()
-        default.setdefault('invoice_lines', [])
+        default.setdefault('invoice_lines')
         return super().copy(lines, default)
 
     def create_invoice(self):

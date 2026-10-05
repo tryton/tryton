@@ -129,6 +129,10 @@ class Sale(metaclass=PoolMeta):
             'sale_task_creation_method', **pattern)
 
     @classmethod
+    def default_tasks_to_create(cls):
+        return False
+
+    @classmethod
     def check_method(cls, sales, field_names=None):
         super().check_method(sales, field_names=field_names)
         if field_names and not (field_names & {
@@ -148,7 +152,7 @@ class Sale(metaclass=PoolMeta):
     def copy(cls, sales, default=None):
         default = default.copy() if default is not None else {}
         default.setdefault('tasks_state')
-        default.setdefault('tasks_to_create')
+        default.setdefault('tasks_to_create', cls.default_tasks_to_create())
         return super().copy(sales, default=default)
 
     @classmethod

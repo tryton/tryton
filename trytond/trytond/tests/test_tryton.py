@@ -927,6 +927,7 @@ class ModuleTestCase(DBTestCase):
                     continue
                 if not issubclass(model, ModelStorage):
                     continue
+                default_values = model.default_get(with_rec_name=False)
                 with self.subTest(model=mname):
                     model.copy([])
                     if copy.call_args:
@@ -939,6 +940,13 @@ class ModuleTestCase(DBTestCase):
                             fields = {
                                 k.split('.', 1)[0] for k in default.keys()}
                             self.assertLessEqual(fields, klass._fields.keys())
+                            for field_name in fields:
+                                field = getattr(klass, field_name)
+                                if field.readonly:
+                                    with self.subTest(field=field_name):
+                                        self.assertEqual(
+                                            default[field_name],
+                                            default_values.get(field_name))
                     copy.reset_mock()
 
     @with_transaction()

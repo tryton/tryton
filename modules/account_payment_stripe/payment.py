@@ -282,10 +282,6 @@ class Payment(StripeCustomerMethodMixin, CheckoutMixin, metaclass=PoolMeta):
     def default_stripe_capturable(cls):
         return False
 
-    @classmethod
-    def default_stripe_idempotency_key(cls):
-        return uuid.uuid4().hex
-
     @fields.depends('process_method',
         'stripe_token', 'stripe_payment_intent_id',
         'stripe_customer_source', 'stripe_customer_source_selection',
@@ -349,9 +345,7 @@ class Payment(StripeCustomerMethodMixin, CheckoutMixin, metaclass=PoolMeta):
         if mode == 'create':
             if 'stripe_idempotency_key' not in values:
                 # Ensure to get a different key for each record
-                # default methods are called only once
-                values['stripe_idempotency_key'] = (
-                    cls.default_stripe_idempotency_key())
+                values['stripe_idempotency_key'] = uuid.uuid4().hex
         return values
 
     @classmethod
@@ -843,10 +837,6 @@ class Refund(Workflow, ModelSQL, ModelView):
     def get_stripe_amount(self, name):
         return int(self.amount * 10 ** self.currency.digits)
 
-    @classmethod
-    def default_stripe_idempotency_key(cls):
-        return uuid.uuid4().hex
-
     @fields.depends('payment', '_parent_payment.currency')
     def on_change_with_currency(self, name=None):
         return self.payment.currency if self.payment else None
@@ -865,9 +855,7 @@ class Refund(Workflow, ModelSQL, ModelView):
         if mode == 'create':
             if 'stripe_idempotency_key' not in values:
                 # Ensure to get a different key for each record
-                # default methods are called only once
-                values['stripe_idempotency_key'] = (
-                    cls.default_stripe_idempotency_key())
+                values['stripe_idempotency_key'] = uuid.uuid4().hex
         return values
 
     @classmethod

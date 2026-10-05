@@ -1274,7 +1274,7 @@ class Account(
         else:
             default = default.copy()
         default.setdefault('template', None)
-        default.setdefault('deferrals', [])
+        default.setdefault('deferrals')
         new_accounts = super().copy(accounts, default=default)
         cls._rebuild_tree('parent', None, 0)
         return new_accounts
