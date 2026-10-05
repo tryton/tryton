@@ -350,6 +350,7 @@ class ActionMixin(ModelSQL):
         'ir.action', "Action",
         required=True, ondelete='CASCADE',
         states={
+            'required': Eval('id', -1) >= 0,
             'readonly': Eval('id', -1) >= 0,
             })
 
@@ -462,8 +463,9 @@ class ActionMixin(ModelSQL):
             values = values.copy()
             for field in values:
                 if field in Action._fields:
-                    action_values[field] = values[field]
-                if hasattr(getattr(cls, field), 'set'):
+                    if field != 'action':
+                        action_values[field] = values[field]
+                elif hasattr(getattr(cls, field), 'set'):
                     later[field] = values[field]
             for field in later:
                 del values[field]
@@ -474,7 +476,7 @@ class ActionMixin(ModelSQL):
             if database.nextid(transaction.connection, cls._table):
                 database.setnextid(transaction.connection, cls._table,
                     database.currid(transaction.connection, Action._table))
-            if 'action' not in values:
+            if not values.get('action'):
                 action, = Action.create([action_values])
                 values['action'] = action.id
             else:
