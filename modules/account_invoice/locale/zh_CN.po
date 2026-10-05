@@ -1075,9 +1075,15 @@ msgctxt "model:ir.action,name:act_invoice_relate"
 msgid "Invoices"
 msgstr "原始凭证"
 
+#, fuzzy
+msgctxt "model:ir.action,name:act_invoice_relate_period"
+msgid "Invoices"
+msgstr "发票"
+
+#, fuzzy
 msgctxt "model:ir.action,name:act_payment_method_form"
-msgid "Invoice Payment Methods"
-msgstr "原始凭证付款方式"
+msgid "Payment Methods"
+msgstr "支付方式"
 
 msgctxt "model:ir.action,name:act_payment_term_form"
 msgid "Payment Terms"
@@ -1156,6 +1162,21 @@ msgstr "已支付"
 msgctxt "model:ir.action.act_window.domain,name:act_invoice_relate_pending"
 msgid "Pending"
 msgstr "待定"
+
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_invoice_relate_period_all"
+msgid "All"
+msgstr "全部"
+
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_invoice_relate_period_in"
+msgid "Supplier"
+msgstr "供应商"
+
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_invoice_relate_period_out"
+msgid "Customer"
+msgstr "客户"
 
 #, python-format
 msgctxt "model:ir.message,text:msg_cancel_invoice_move"
@@ -1329,6 +1350,13 @@ msgid ""
 " draft state."
 msgstr "非草案状态，无法给原始凭证 \"%(invoice)s\" 添加税。"
 
+#, fuzzy, python-format
+msgctxt "model:ir.message,text:msg_invoice_tax_identifier_invalid"
+msgid ""
+"The tax identifier \"%(identifier)s\" on invoice \"%(invoice)s\" has not "
+"been validated."
+msgstr "记账凭证 \"%(moves)s\" 已经将入账原始凭证 \"%(invoices)s\" 作为缘由。"
+
 #, python-format
 msgctxt "model:ir.message,text:msg_invoice_tax_invalid"
 msgid ""
@@ -1458,9 +1486,10 @@ msgctxt "model:ir.ui.menu,name:menu_invoices"
 msgid "Invoices"
 msgstr "原始凭证"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_payment_method_form"
-msgid "Invoice Payment Methods"
-msgstr "原始票据付款方式"
+msgid "Payment Methods"
+msgstr "支付方式"
 
 msgctxt "model:ir.ui.menu,name:menu_payment_term_form"
 msgid "Payment Terms"

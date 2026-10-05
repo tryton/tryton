@@ -21,3 +21,13 @@ msgstr "Travaille de relevé de temps"
 msgctxt "field:production.work,timesheet_works:"
 msgid "Timesheet Works"
 msgstr "Lignes de relevé de temps des travaux"
+
+msgctxt "field:production.work.center,include_timesheet_cost:"
+msgid "Include Timesheet Cost"
+msgstr "Inclure le coût des relevés de temps"
+
+msgctxt "help:production.work.center,include_timesheet_cost:"
+msgid "Check to add the timesheet cost to the work cost."
+msgstr ""
+"Cochez cette case pour ajouter le coût des relevés de temps au coût des "
+"travaux."

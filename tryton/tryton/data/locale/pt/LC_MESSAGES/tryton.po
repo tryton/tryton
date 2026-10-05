@@ -681,22 +681,26 @@ msgstr "Anterior"
 msgid "Next"
 msgstr "Próximo"
 
-#, python-format
-msgid "Attachment (%s)"
-msgstr "Anexo (%s)"
+#, fuzzy, python-format
+msgid "Attachment (%d)"
+msgid_plural "Attachments (%d)"
+msgstr[0] "Anexo (%s)"
+msgstr[1] "Anexo (%s)"
 
-#, python-format
+#, fuzzy, python-format
 msgid "Note (%d/%d)"
-msgstr "Nota (%d/%d)"
+msgid_plural "Notes (%d/%d)"
+msgstr[0] "Nota (%d/%d)"
+msgstr[1] "Nota (%d/%d)"
 
 msgid "You have to select one record."
 msgstr "É necessário selecionar um registro."
 
-msgid "Are you sure to remove this record?"
-msgstr "Você tem certeza que deseja apagar este registro?"
-
-msgid "Are you sure to remove those records?"
-msgstr "Você tem certeza que deseja apagar estes registros?"
+#, fuzzy, python-format
+msgid "Are you sure you want to delete this record?"
+msgid_plural "Are you sure you want to delete these %(size)d records?"
+msgstr[0] "Você tem certeza que deseja apagar este registro?"
+msgstr[1] "Você tem certeza que deseja apagar este registro?"
 
 msgid "Records not removed."
 msgstr "Registros não excluídos."
@@ -1084,6 +1088,10 @@ msgstr "Busca"
 msgid "New"
 msgstr "Novo"
 
+#, fuzzy
+msgid "Remove"
+msgstr "_Remover"
+
 #, python-format
 msgid "Search %s"
 msgstr "Buscar %s"
@@ -1224,6 +1232,9 @@ msgstr "Selecionar..."
 msgid "Clear"
 msgstr "Limpar"
 
+msgid "All Supported Types"
+msgstr ""
+
 msgid "All files"
 msgstr "Todos os arquivos"
 
@@ -1241,9 +1252,6 @@ msgstr "Adicionar valor"
 msgid "Remove \"%s\""
 msgstr "Remover \"%s\""
 
-msgid "Images"
-msgstr "Imagens"
-
 msgid "Add existing record"
 msgstr "Adicionar um registro existente"
 
@@ -1252,6 +1260,14 @@ msgstr "Remover o registro selecionado"
 
 msgid "Restore selected record"
 msgstr "Restaurar registro selecionado"
+
+#, python-format
+msgid "%s to add"
+msgstr ""
+
+#, fuzzy, python-format
+msgid "%s to remove"
+msgstr "Registros não excluídos."
 
 msgid "Open the record <F2>"
 msgstr "Abrir o registro <F2>"
@@ -1270,6 +1286,10 @@ msgstr "Deletar registro selecionado"
 
 msgid "Undelete selected record"
 msgstr "Desfazer deleção do registro selecionado"
+
+#, python-format
+msgid "%s to delete"
+msgstr ""
 
 #, python-format
 msgid "%s%%"

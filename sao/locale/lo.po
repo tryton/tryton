@@ -134,6 +134,9 @@ msgstr "ຊື່ຜູ້ໃຊ້"
 msgid "Login with"
 msgstr "ເຂົ້າສູ່ລະບົບ"
 
+msgid "Disabled on localhost"
+msgstr ""
+
 msgid "Too many requests. Try again later."
 msgstr ""
 
@@ -315,14 +318,26 @@ msgstr "ບັນທຶກແຖວຂໍ້ມູນນີ້"
 msgid "Reload"
 msgstr "ໂຫຼດຄືນໃໝ່"
 
+#, fuzzy
+msgid "Delete..."
+msgstr "ລຶບ"
+
 msgid "View Logs..."
 msgstr "ເບິ່ງບັນທຶກ..."
 
 msgid "Show revisions..."
 msgstr "ສະແດງການແກ້ໄຂ"
 
+#, fuzzy
+msgid "Attachments..."
+msgstr "ຄັດຕິດ"
+
 msgid "Add an attachment to the record"
 msgstr "ເອົາຂໍ້ມູນຄັດຕິດເຂົ້າໃນແຖວຂໍ້ມູນນີ້"
+
+#, fuzzy
+msgid "Notes..."
+msgstr "ບັນທຶກຂໍ້ຄວາມ"
 
 msgid "Add a note to the record"
 msgstr "ບັນທຶກຂໍ້ຄວາມໃສ່ແຖວຂໍ້ມູນນີ້"
@@ -334,6 +349,18 @@ msgstr ""
 msgid "Chat on the record"
 msgstr "ບັນທຶກຂໍ້ຄວາມໃສ່ແຖວຂໍ້ມູນນີ້"
 
+#, fuzzy
+msgid "Actions..."
+msgstr "ດຳເນີນການ"
+
+#, fuzzy
+msgid "Relate..."
+msgstr "ກ່ຽວພັນກັບ"
+
+#, fuzzy
+msgid "Print..."
+msgstr "ພິມອອກ"
+
 msgid "Email..."
 msgstr ""
 
@@ -341,10 +368,12 @@ msgstr ""
 msgid "Send an email using the record"
 msgstr "ບັນທຶກຂໍ້ຄວາມໃສ່ແຖວຂໍ້ມູນນີ້"
 
-msgid "Export"
+#, fuzzy
+msgid "Export..."
 msgstr "ສ່ົງອອກ"
 
-msgid "Import"
+#, fuzzy
+msgid "Import..."
 msgstr "ນຳເຂົ້າ"
 
 msgid ""
@@ -376,11 +405,10 @@ msgstr "ແຖວຂໍ້ມູນຖືກບັນທຶກໄວ້ແລ້
 msgid "Working now on the duplicated record(s)."
 msgstr "ປັດຈຸບັນເຮັດວຽກກັບແຖວຂໍ້ມູນທີ່ສ້າງຊໍ້າກັນໄວ້"
 
-msgid "Are you sure to remove this record?"
-msgstr "ທ່ານແນ່ໃຈບໍ່ທີ່ຈະລຶບແຖວຂໍ້ມູນນີ້?"
-
-msgid "Are you sure to remove those records?"
-msgstr "ທ່ານແນ່ໃຈບໍ່ທີ່ຈະລຶບແຖວຂໍ້ມູນເຫຼົ່ານີ້?"
+#, fuzzy
+msgid "Are you sure you want to delete this record?"
+msgid_plural "Are you sure you want to delete these %1 records?"
+msgstr[0] "ທ່ານແນ່ໃຈບໍ່ທີ່ຈະລຶບແຖວຂໍ້ມູນນີ້?"
 
 msgid "Records removed."
 msgstr "ແຖວຂໍ້ມູນເຫຼົ່ານີ້ຖືກລຶບອອກແລ້ວ"
@@ -407,10 +435,12 @@ msgstr "ກ່ຽວພັນກັບ"
 
 #, fuzzy
 msgid "Attachment (%1)"
-msgstr "ຄັດຕິດ(%1)"
+msgid_plural "Attachments (%1)"
+msgstr[0] "ຄັດຕິດ(%1)"
 
 msgid "Note (%1/%2)"
-msgstr ""
+msgid_plural "Notes (%1/%2)"
+msgstr[0] ""
 
 msgid "Filters"
 msgstr "ກັ່ນຕອງ"
@@ -530,6 +560,17 @@ msgid "Open"
 msgstr "ໄຂ"
 
 msgid "Undelete"
+msgstr "ເອົາກັບຄືນ"
+
+#, javascript-format
+msgid "%s to add"
+msgstr ""
+
+msgid "%1 to remove"
+msgstr ""
+
+#, fuzzy
+msgid "%1 to delete"
 msgstr "ເອົາກັບຄືນ"
 
 msgid "Restore"
@@ -682,6 +723,9 @@ msgstr "Quote Char:"
 
 msgid "CSV Import: %1"
 msgstr ""
+
+msgid "Import"
+msgstr "ນຳເຂົ້າ"
 
 msgid "Auto-Detect"
 msgstr "ກວດພົບອັດຕະໂນມັດ"

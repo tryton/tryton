@@ -40,7 +40,7 @@ msgstr "Archivo"
 
 msgctxt "field:account.stock.eu.intrastat.declaration.export.result,filename:"
 msgid "File Name"
-msgstr "Nombre del archivo"
+msgstr "Nombre del fichero"
 
 msgctxt "field:account.stock.eu.intrastat.declaration.line,additional_unit:"
 msgid "Additional Unit"

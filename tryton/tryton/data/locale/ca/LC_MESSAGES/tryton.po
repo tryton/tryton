@@ -253,7 +253,7 @@ msgid "Notes..."
 msgstr "Notes..."
 
 msgid "Actions..."
-msgstr "Accions..."
+msgstr "Accións..."
 
 msgid "Relate..."
 msgstr "Relacionat..."
@@ -676,21 +676,25 @@ msgid "Next"
 msgstr "Següent"
 
 #, python-format
-msgid "Attachment (%s)"
-msgstr "Adjunts (%s)"
+msgid "Attachment (%d)"
+msgid_plural "Attachments (%d)"
+msgstr[0] "Adjunt (%d)"
+msgstr[1] "Adjunts (%d)"
 
 #, python-format
 msgid "Note (%d/%d)"
-msgstr "Nota (%d/%d)"
+msgid_plural "Notes (%d/%d)"
+msgstr[0] "Nota (%d/%d)"
+msgstr[1] "Notes (%d/%d)"
 
 msgid "You have to select one record."
 msgstr "Ha de seleccionar un registre."
 
-msgid "Are you sure to remove this record?"
-msgstr "Esteu segur que voleu eliminar aquest registre?"
-
-msgid "Are you sure to remove those records?"
-msgstr "Esteu segur que voleu eliminar aquests registres?"
+#, python-format
+msgid "Are you sure you want to delete this record?"
+msgid_plural "Are you sure you want to delete these %(size)d records?"
+msgstr[0] "Esteu segur que voleu eliminar aquest registre?"
+msgstr[1] "Esteu segur que voleu eliminar aquests %(size)d registres?"
 
 msgid "Records not removed."
 msgstr "Els registres no s'han eliminat."
@@ -1077,6 +1081,9 @@ msgstr "Cerca"
 msgid "New"
 msgstr "Nou"
 
+msgid "Remove"
+msgstr "Elimina"
+
 #, python-format
 msgid "Search %s"
 msgstr "Cerca %s"
@@ -1216,6 +1223,9 @@ msgstr "Selecciona..."
 msgid "Clear"
 msgstr "Neteja"
 
+msgid "All Supported Types"
+msgstr "Tots els tipus suportats"
+
 msgid "All files"
 msgstr "Tots els fitxers"
 
@@ -1233,9 +1243,6 @@ msgstr "Afegeix un valor"
 msgid "Remove \"%s\""
 msgstr "Eliminar \"%s\""
 
-msgid "Images"
-msgstr "Imatges"
-
 msgid "Add existing record"
 msgstr "Afegeix un registre existent"
 
@@ -1244,6 +1251,14 @@ msgstr "Elimina el registre seleccionat"
 
 msgid "Restore selected record"
 msgstr "Restaura el registre seleccionat"
+
+#, python-format
+msgid "%s to add"
+msgstr "%s per afegir"
+
+#, python-format
+msgid "%s to remove"
+msgstr "%s per eliminar"
 
 msgid "Open the record <F2>"
 msgstr "Obre el registre <F2>"
@@ -1262,6 +1277,10 @@ msgstr "Elimina el registre seleccionat"
 
 msgid "Undelete selected record"
 msgstr "Recuperar el registre seleccionat"
+
+#, python-format
+msgid "%s to delete"
+msgstr "%s per esborrar"
 
 #, python-format
 msgid "%s%%"

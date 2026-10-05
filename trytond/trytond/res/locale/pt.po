@@ -82,6 +82,11 @@ msgctxt "field:res.user,actions:"
 msgid "Actions"
 msgstr "Ações"
 
+#, fuzzy
+msgctxt "field:res.user,administrator:"
+msgid "Administrator"
+msgstr "Administração"
+
 msgctxt "field:res.user,applications:"
 msgid "Applications"
 msgstr "Aplicações"
@@ -235,6 +240,10 @@ msgctxt "help:res.user,actions:"
 msgid "Actions that will be run at login."
 msgstr "Ações que serão executadas ao acessar."
 
+msgctxt "help:res.user,administrator:"
+msgid "When checked the user has the access rights of all groups."
+msgstr ""
+
 msgctxt "help:res.user,notifications:"
 msgid "Notifications to subscribe to."
 msgstr ""
@@ -311,6 +320,10 @@ msgstr "Senha para %(login)s"
 msgctxt "model:ir.model.button,help:user_reset_password_button"
 msgid "Send by email a new temporary password to the user"
 msgstr "Enviar por email nova senha temporária ao usuário"
+
+msgctxt "model:ir.model.button,string:notification_mark_read_button"
+msgid "Mark as Read"
+msgstr ""
 
 msgctxt "model:ir.model.button,string:user_application_cancel_button"
 msgid "Cancel"
@@ -475,10 +488,6 @@ msgstr "Permissões de Acesso"
 msgctxt "view:res.user:"
 msgid "Actions"
 msgstr "Ações"
-
-msgctxt "view:res.user:"
-msgid "Group Membership"
-msgstr "Integrantes do Grupo"
 
 msgctxt "view:res.user:"
 msgid "Preferences"

@@ -21,3 +21,12 @@ msgstr "Lucru pe foaie de pontaj"
 msgctxt "field:production.work,timesheet_works:"
 msgid "Timesheet Works"
 msgstr "Lucru pe foaie de pontaj"
+
+#, fuzzy
+msgctxt "field:production.work.center,include_timesheet_cost:"
+msgid "Include Timesheet Cost"
+msgstr "Lucru pe foaie de pontaj"
+
+msgctxt "help:production.work.center,include_timesheet_cost:"
+msgid "Check to add the timesheet cost to the work cost."
+msgstr ""

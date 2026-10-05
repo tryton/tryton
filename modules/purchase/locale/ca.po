@@ -307,6 +307,10 @@ msgctxt "field:purchase.line-recreated-stock.move,purchase_line:"
 msgid "Purchase Line"
 msgstr "Línia de compra"
 
+msgctxt "field:purchase.product_supplier,average_lead_time:"
+msgid "Average Lead Time"
+msgstr "Temps d'espera promig"
+
 msgctxt "field:purchase.product_supplier,code:"
 msgid "Code"
 msgstr "Codi"
@@ -320,6 +324,10 @@ msgid "Currency"
 msgstr "Moneda"
 
 msgctxt "field:purchase.product_supplier,lead_time:"
+msgid "Lead Time"
+msgstr "Temps d'espera"
+
+msgctxt "field:purchase.product_supplier,lead_time_used:"
 msgid "Lead Time"
 msgstr "Temps d'espera"
 
@@ -1162,7 +1170,7 @@ msgstr "Compra - Factura recreada"
 
 msgctxt "model:purchase.product_supplier,string:"
 msgid "Purchase Product Supplier"
-msgstr "Proveedors del producte"
+msgstr "Proveïdors del producte"
 
 msgctxt "model:purchase.product_supplier.price,string:"
 msgid "Purchase Product Supplier Price"

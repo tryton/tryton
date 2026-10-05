@@ -688,6 +688,16 @@ msgid "Body"
 msgstr "Tartalom"
 
 #, fuzzy
+msgctxt "field:ir.email,last_modification:"
+msgid "Last Modification"
+msgstr "Utolsó módosítás"
+
+#, fuzzy
+msgctxt "field:ir.email,last_user:"
+msgid "Last User"
+msgstr "Utolsó felhasználó"
+
+#, fuzzy
 msgctxt "field:ir.email,message_id:"
 msgid "Message-ID"
 msgstr "Használat"
@@ -1320,6 +1330,16 @@ msgid "Event"
 msgstr ""
 
 #, fuzzy
+msgctxt "field:ir.model.log,last_modification:"
+msgid "Last Modification"
+msgstr "Utolsó módosítás"
+
+#, fuzzy
+msgctxt "field:ir.model.log,last_user:"
+msgid "Last User"
+msgstr "Utolsó felhasználó"
+
+#, fuzzy
 msgctxt "field:ir.model.log,resource:"
 msgid "Resource"
 msgstr "Elem"
@@ -1367,9 +1387,9 @@ msgid "Version"
 msgstr "Verzió"
 
 #, fuzzy
-msgctxt "field:ir.module.activate_upgrade.start,module_info:"
-msgid "Modules to update"
-msgstr "Aktualizálásra váró modulok"
+msgctxt "field:ir.module.activate_upgrade.start,modules:"
+msgid "Modules to Activate / Upgrade"
+msgstr "Modul telepítésének aktualizálása megtörtént"
 
 #, fuzzy
 msgctxt "field:ir.module.config.start,modules:"
@@ -1865,6 +1885,11 @@ msgctxt "field:ir.ui.menu,action_keywords:"
 msgid "Action Keywords"
 msgstr "Műveleti kulcsszó"
 
+#, fuzzy
+msgctxt "field:ir.ui.menu,administration:"
+msgid "Administrator"
+msgstr "Adminisztráció"
+
 msgctxt "field:ir.ui.menu,childs:"
 msgid "Children"
 msgstr "Alárendelt rekordok"
@@ -2020,6 +2045,10 @@ msgstr "Minta"
 msgctxt "field:ir.ui.view_tree_optional,model_ref:"
 msgid "Model"
 msgstr "Minta"
+
+msgctxt "field:ir.ui.view_tree_optional,occurrence:"
+msgid "Occurrence"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:ir.ui.view_tree_optional,user:"
@@ -2369,6 +2398,10 @@ msgid ""
 msgstr ""
 "Minimum időszak megadása 'műveleti funkció' hívásokhoz ugyan ahhoz az adathoz.\n"
 "Üres azt jelenti, nincs késés."
+
+msgctxt "help:ir.ui.menu,administration:"
+msgid "Check to restrict access to only administrators."
+msgstr ""
 
 #, fuzzy
 msgctxt "help:ir.ui.view_search,domain:"
@@ -3102,6 +3135,11 @@ msgctxt "model:ir.message,text:msg_access_report_error"
 msgid "You are not allowed to execute report \"%(report)s\"."
 msgstr "You are not allowed to delete this record."
 
+#, fuzzy, python-format
+msgctxt "model:ir.message,text:msg_access_resource_search_error"
+msgid "You are not allowed to search on the \"%(resource)s\" resource."
+msgstr "You are not allowed to delete this record."
+
 #, python-format
 msgctxt "model:ir.message,text:msg_access_rule_error"
 msgid "You are not allowed to access \"%(model)s\"."
@@ -3557,6 +3595,18 @@ msgstr ""
 "A Tigger \"%(trigger)s\" feltételei \"%(condition)s\" nem érvényes Python "
 "kifejezés."
 
+#, fuzzy, python-format
+msgctxt "model:ir.message,text:msg_modification_readonly_field_error"
+msgid "You are not allowed to modify the field \"%(field)s\" of \"%(model)s\"."
+msgstr "A „%(model)s” elem „%(field)s” mezőjét ki kell tölteni."
+
+#, fuzzy, python-format
+msgctxt "model:ir.message,text:msg_modification_readonly_field_record_error"
+msgid ""
+"You are not allowed to modify the field \"%(field)s\" in record "
+"\"%(record)s\" of \"%(model)s\"."
+msgstr "A „%(model)s” elem „%(field)s” mezőjét ki kell tölteni."
+
 msgctxt "model:ir.message,text:msg_module_deactivate_dependency"
 msgid ""
 "Some activated modules depend on the ones you are trying to deactivate:"
@@ -3820,6 +3870,12 @@ msgid "Invalid domain or search criteria \"%(domain)s\" for search \"%(search)s\
 msgstr ""
 "Érvénytelen értéktartomány (Domain) vagy keresési kritérium "
 "\"%(domain)s\"akcióban \"%(action)s\"."
+
+msgctxt ""
+"model:ir.message,text:msg_view_tree_optional_field_occurrence_user_unique"
+msgid ""
+"A user can set only one optional per occurrence of field on the same view."
+msgstr ""
 
 #, python-format
 msgctxt "model:ir.message,text:msg_view_tree_optional_type"
@@ -4660,6 +4716,10 @@ msgid "Remove Deleted Binaries"
 msgstr ""
 
 msgctxt "selection:ir.cron,method:"
+msgid "Retry Queued Tasks"
+msgstr ""
+
+msgctxt "selection:ir.cron,method:"
 msgid "Run On Time Triggers"
 msgstr ""
 
@@ -4948,14 +5008,6 @@ msgctxt "view:ir.module.activate_upgrade.done:"
 msgid "The modules have been upgraded / activated."
 msgstr ""
 
-msgctxt "view:ir.module.activate_upgrade.start:"
-msgid "Note that this operation may take a few minutes."
-msgstr ""
-
-msgctxt "view:ir.module.activate_upgrade.start:"
-msgid "Your system will be upgraded."
-msgstr ""
-
 msgctxt "view:ir.module.config.start:"
 msgid "You can now activate additional modules to the system."
 msgstr ""
@@ -4999,6 +5051,10 @@ msgctxt "view:ir.translation.set.succeed:"
 msgid "Translations set successfully."
 msgstr "A fordítás sikeresen be lett állítva."
 
+msgctxt "view:ir.ui.menu:"
+msgid "Access Permissions"
+msgstr ""
+
 #, fuzzy
 msgctxt "view:ir.ui.menu:"
 msgid "Actions"
@@ -5031,8 +5087,8 @@ msgstr "Mégse"
 
 #, fuzzy
 msgctxt "wizard_button:ir.module.activate_upgrade,start,upgrade:"
-msgid "Start Upgrade"
-msgstr "Start"
+msgid "OK"
+msgstr "OK"
 
 #, fuzzy
 msgctxt "wizard_button:ir.module.config,start,activate:"

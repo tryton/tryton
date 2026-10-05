@@ -191,6 +191,16 @@ msgctxt "field:product.template,tariff_codes_category:"
 msgid "Use Category's Tariff Codes"
 msgstr ""
 
+#, fuzzy
+msgctxt "field:product.template-product.category.customs,category:"
+msgid "Category"
+msgstr "Kategori"
+
+#, fuzzy
+msgctxt "field:product.template-product.category.customs,template:"
+msgid "Template"
+msgstr "Templat"
+
 msgctxt "help:customs.agent,address:"
 msgid "The address of the agent."
 msgstr ""
@@ -314,6 +324,10 @@ msgstr ""
 
 msgctxt "model:product-customs.tariff.code,string:"
 msgid "Product - Customs Tariff Code"
+msgstr ""
+
+msgctxt "model:product.template-product.category.customs,string:"
+msgid "Product Template - Product Category Customs"
 msgstr ""
 
 msgctxt "model:res.group,name:group_customs_admin"

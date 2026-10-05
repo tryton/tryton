@@ -7,12 +7,25 @@ msgid "Edocument Ubl Invoice"
 msgstr "E-Dokument UBL-Rechnung"
 
 #, python-format
+msgctxt "model:ir.message,text:msg_bank_account_not_found"
+msgid "Could not find bank account \"%(account)s\" for party \"%(parties)s\"."
+msgid_plural ""
+"Could not find bank account \"%(account)s\" for any of the parties "
+"\"%(parties)s\"."
+msgstr[0] ""
+"Das Bankkonto \"%(account)s\" für die Partei \"%(parties)s\" konnte nicht "
+"gefunden werden."
+msgstr[1] ""
+"Das Bankkonto \"%(account)s\" für die Parteien \"%(parties)s\" konnte nicht "
+"gefunden werden."
+
+#, python-format
 msgctxt "model:ir.message,text:msg_company_not_found"
 msgid ""
 "Could not find the company for:\n"
 "%(company)s"
 msgstr ""
-"Das Unternehmen konnte nicht gefunden werden:\n"
+"Unternehmen nicht gefunden für:\n"
 "%(company)s"
 
 #, python-format
@@ -23,12 +36,12 @@ msgstr "Nicht unterstützter Storno-Rechnungstyp \"%(type_code)s\"."
 #, python-format
 msgctxt "model:ir.message,text:msg_currency_not_found"
 msgid "Could not find a currency with code \"%(code)s\"."
-msgstr "Es konnte keine Währung mit dem Code \"%(code)s\" gefunden werden."
+msgstr "Die Währung mit dem Code %(code)s konnte nicht gefunden werden."
 
 #, python-format
 msgctxt "model:ir.message,text:msg_invoice_type_code_unsupported"
 msgid "Unsupported invoice type code \"%(type_code)s\"."
-msgstr "Nicht unterstützter Rechnungstyp \"%(type_code)s\"."
+msgstr "Der Rechnungstyp %(type_code)s wird nicht unterstützt."
 
 #, python-format
 msgctxt "model:ir.message,text:msg_tax_not_found"

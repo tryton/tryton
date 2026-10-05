@@ -1075,9 +1075,15 @@ msgctxt "model:ir.action,name:act_invoice_relate"
 msgid "Invoices"
 msgstr "Fakture"
 
+#, fuzzy
+msgctxt "model:ir.action,name:act_invoice_relate_period"
+msgid "Invoices"
+msgstr "Računi"
+
+#, fuzzy
 msgctxt "model:ir.action,name:act_payment_method_form"
-msgid "Invoice Payment Methods"
-msgstr "Plačilni pogoji fakture"
+msgid "Payment Methods"
+msgstr "Plačilni pogoji"
 
 msgctxt "model:ir.action,name:act_payment_term_form"
 msgid "Payment Terms"
@@ -1156,6 +1162,21 @@ msgstr "Plačano"
 msgctxt "model:ir.action.act_window.domain,name:act_invoice_relate_pending"
 msgid "Pending"
 msgstr "V teku"
+
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_invoice_relate_period_all"
+msgid "All"
+msgstr "Vse"
+
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_invoice_relate_period_in"
+msgid "Supplier"
+msgstr "Dobavitelj"
+
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_invoice_relate_period_out"
+msgid "Customer"
+msgstr "Kupec"
 
 #, python-format
 msgctxt "model:ir.message,text:msg_cancel_invoice_move"
@@ -1355,6 +1376,15 @@ msgstr ""
 "Davka pri računu \"%(invoice)s\" ni možno dodati, ker je bodisi knjižen ali "
 "plačan bodisi preklican."
 
+#, fuzzy, python-format
+msgctxt "model:ir.message,text:msg_invoice_tax_identifier_invalid"
+msgid ""
+"The tax identifier \"%(identifier)s\" on invoice \"%(invoice)s\" has not "
+"been validated."
+msgstr ""
+"Ni mogoče urediti postavke \"%(line)s\", saj je faktura \"%(invoice)s\" "
+"knjižena, plačana ali preklicana."
+
 #, python-format
 msgctxt "model:ir.message,text:msg_invoice_tax_invalid"
 msgid ""
@@ -1488,9 +1518,10 @@ msgctxt "model:ir.ui.menu,name:menu_invoices"
 msgid "Invoices"
 msgstr "Računi"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_payment_method_form"
-msgid "Invoice Payment Methods"
-msgstr "Plačilni pogoji fakture"
+msgid "Payment Methods"
+msgstr "Plačilni pogoji"
 
 msgctxt "model:ir.ui.menu,name:menu_payment_term_form"
 msgid "Payment Terms"

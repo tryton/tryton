@@ -1,0 +1,112 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.configuration,default_factur_x_profile:"
+msgid "Default Factur-X Profile"
+msgstr "Perfil Factur-X per defecte"
+
+msgctxt "field:account.configuration.factur_x,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:account.configuration.factur_x,default_factur_x_profile:"
+msgid "Default Factur-X Profile"
+msgstr "Perfil Factur-X per defecte"
+
+msgctxt "field:party.party,factur_x_profile:"
+msgid "Factur-X Profile"
+msgstr "Perfil Factur-X"
+
+msgctxt "field:party.party.factur_x,factur_x_profile:"
+msgid "Factur-X Profile"
+msgstr "Perfil Factur-X"
+
+msgctxt "help:account.configuration,default_factur_x_profile:"
+msgid "Leave this field empty if you do not want to include Factur-X."
+msgstr "Deixeu aquest camp buit si no voleu incloure Factur-X."
+
+msgctxt "help:party.party,factur_x_profile:"
+msgid "Leave this field empty if you do want to include Factur-X."
+msgstr "Deixeu aquest camp buit si voleu incloure Factur-X."
+
+msgctxt "model:account.configuration.factur_x,string:"
+msgid "Account Configuration Factur X"
+msgstr "Configuració comptable Factur-X"
+
+#, python-format
+msgctxt "model:ir.message,text:msg_invoice_pdf_factur_x"
+msgid ""
+"To generate a Factur-X document for the invoice \"%(invoice)s\", you must "
+"set the report output to PDF."
+msgstr ""
+"Per generar un document Factur-X per a la factura \"%(invoice)s\", heu "
+"d'establir la sortida de l'informe en PDF."
+
+msgctxt "model:party.party.factur_x,string:"
+msgid "Party Factur X"
+msgstr "Tercer Factur-X"
+
+msgctxt "selection:account.configuration.factur_x,default_factur_x_profile:"
+msgid "BASIC"
+msgstr "BÀSIC"
+
+msgctxt "selection:account.configuration.factur_x,default_factur_x_profile:"
+msgid "BASIC WL"
+msgstr "BÀSIC WL"
+
+msgctxt "selection:account.configuration.factur_x,default_factur_x_profile:"
+msgid "EN 16931"
+msgstr "EN 16931"
+
+msgctxt "selection:account.configuration.factur_x,default_factur_x_profile:"
+msgid "EXTENDED"
+msgstr "AMPLIAT"
+
+msgctxt "selection:account.configuration.factur_x,default_factur_x_profile:"
+msgid "Minimum"
+msgstr "Mínim"
+
+msgctxt "selection:party.party,factur_x_profile:"
+msgid "BASIC"
+msgstr "BÀSIC"
+
+msgctxt "selection:party.party,factur_x_profile:"
+msgid "BASIC WL"
+msgstr "BÀSIC WL"
+
+msgctxt "selection:party.party,factur_x_profile:"
+msgid "EN 16931"
+msgstr "EN 16931"
+
+msgctxt "selection:party.party,factur_x_profile:"
+msgid "EXTENDED"
+msgstr "AMPLIAT"
+
+msgctxt "selection:party.party,factur_x_profile:"
+msgid "Minimum"
+msgstr "Mínim"
+
+msgctxt "selection:party.party.factur_x,factur_x_profile:"
+msgid "BASIC"
+msgstr "BÀSIC"
+
+msgctxt "selection:party.party.factur_x,factur_x_profile:"
+msgid "BASIC WL"
+msgstr "BÀSIC WL"
+
+msgctxt "selection:party.party.factur_x,factur_x_profile:"
+msgid "EN 16931"
+msgstr "EN 16931"
+
+msgctxt "selection:party.party.factur_x,factur_x_profile:"
+msgid "EXTENDED"
+msgstr "AMPLIAT"
+
+msgctxt "selection:party.party.factur_x,factur_x_profile:"
+msgid "Minimum"
+msgstr "Mínim"
+
+msgctxt "view:account.configuration:"
+msgid "Factur-X"
+msgstr "Factur-X"

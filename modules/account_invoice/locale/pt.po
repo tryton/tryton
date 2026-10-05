@@ -1054,9 +1054,15 @@ msgctxt "model:ir.action,name:act_invoice_relate"
 msgid "Invoices"
 msgstr "Faturas"
 
+#, fuzzy
+msgctxt "model:ir.action,name:act_invoice_relate_period"
+msgid "Invoices"
+msgstr "Faturas"
+
+#, fuzzy
 msgctxt "model:ir.action,name:act_payment_method_form"
-msgid "Invoice Payment Methods"
-msgstr "Métodos de Pagamento de Faturas"
+msgid "Payment Methods"
+msgstr "Método de Pagamento"
 
 msgctxt "model:ir.action,name:act_payment_term_form"
 msgid "Payment Terms"
@@ -1135,6 +1141,21 @@ msgstr "Pago"
 msgctxt "model:ir.action.act_window.domain,name:act_invoice_relate_pending"
 msgid "Pending"
 msgstr "Pendente"
+
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_invoice_relate_period_all"
+msgid "All"
+msgstr "Todo"
+
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_invoice_relate_period_in"
+msgid "Supplier"
+msgstr "Fornecedor"
+
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_invoice_relate_period_out"
+msgid "Customer"
+msgstr "Cliente"
 
 #, python-format
 msgctxt "model:ir.message,text:msg_cancel_invoice_move"
@@ -1343,6 +1364,15 @@ msgstr ""
 "Você não pode adicionar impostos à fatura \"%(invoice)s\" porque ela não "
 "está mais em estado de rascunho."
 
+#, fuzzy, python-format
+msgctxt "model:ir.message,text:msg_invoice_tax_identifier_invalid"
+msgid ""
+"The tax identifier \"%(identifier)s\" on invoice \"%(invoice)s\" has not "
+"been validated."
+msgstr ""
+"Os movimentos \"%(moves)s\" têm como origem as faturas lançadas "
+"\"%(invoices)s\"."
+
 #, python-format
 msgctxt "model:ir.message,text:msg_invoice_tax_invalid"
 msgid ""
@@ -1479,9 +1509,10 @@ msgctxt "model:ir.ui.menu,name:menu_invoices"
 msgid "Invoices"
 msgstr "Faturas"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_payment_method_form"
-msgid "Invoice Payment Methods"
-msgstr "Métodos de Pagamento de Faturas"
+msgid "Payment Methods"
+msgstr "Método de Pagamento"
 
 msgctxt "model:ir.ui.menu,name:menu_payment_term_form"
 msgid "Payment Terms"

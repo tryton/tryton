@@ -695,6 +695,16 @@ msgid "Body"
 msgstr ""
 
 #, fuzzy
+msgctxt "field:ir.email,last_modification:"
+msgid "Last Modification"
+msgstr "Последнее изменение"
+
+#, fuzzy
+msgctxt "field:ir.email,last_user:"
+msgid "Last User"
+msgstr "Последний пользователь"
+
+#, fuzzy
 msgctxt "field:ir.email,message_id:"
 msgid "Message-ID"
 msgstr "Использование"
@@ -1346,6 +1356,16 @@ msgid "Event"
 msgstr ""
 
 #, fuzzy
+msgctxt "field:ir.model.log,last_modification:"
+msgid "Last Modification"
+msgstr "Последнее изменение"
+
+#, fuzzy
+msgctxt "field:ir.model.log,last_user:"
+msgid "Last User"
+msgstr "Последний пользователь"
+
+#, fuzzy
 msgctxt "field:ir.model.log,resource:"
 msgid "Resource"
 msgstr "Ресурс"
@@ -1393,9 +1413,9 @@ msgid "Version"
 msgstr "Версия"
 
 #, fuzzy
-msgctxt "field:ir.module.activate_upgrade.start,module_info:"
-msgid "Modules to update"
-msgstr "Модули для установки (обновления)"
+msgctxt "field:ir.module.activate_upgrade.start,modules:"
+msgid "Modules to Activate / Upgrade"
+msgstr "Установка (обновление) модуля завершено"
 
 #, fuzzy
 msgctxt "field:ir.module.config.start,modules:"
@@ -1902,6 +1922,11 @@ msgctxt "field:ir.ui.menu,action_keywords:"
 msgid "Action Keywords"
 msgstr "Действие ключевых слов"
 
+#, fuzzy
+msgctxt "field:ir.ui.menu,administration:"
+msgid "Administrator"
+msgstr "Administration"
+
 msgctxt "field:ir.ui.menu,childs:"
 msgid "Children"
 msgstr "Подчиненные"
@@ -2057,6 +2082,10 @@ msgstr "Модель"
 msgctxt "field:ir.ui.view_tree_optional,model_ref:"
 msgid "Model"
 msgstr "Модель"
+
+msgctxt "field:ir.ui.view_tree_optional,occurrence:"
+msgid "Occurrence"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:ir.ui.view_tree_optional,user:"
@@ -2414,6 +2443,10 @@ msgctxt "help:ir.trigger,minimum_time_delay:"
 msgid ""
 "Set a minimum time delay between call to \"Action Function\" for the same record.\n"
 "empty for no delay."
+msgstr ""
+
+msgctxt "help:ir.ui.menu,administration:"
+msgid "Check to restrict access to only administrators."
 msgstr ""
 
 #, fuzzy
@@ -3170,6 +3203,11 @@ msgctxt "model:ir.message,text:msg_access_report_error"
 msgid "You are not allowed to execute report \"%(report)s\"."
 msgstr "You are not allowed to delete this record."
 
+#, fuzzy, python-format
+msgctxt "model:ir.message,text:msg_access_resource_search_error"
+msgid "You are not allowed to search on the \"%(resource)s\" resource."
+msgstr "You are not allowed to delete this record."
+
 #, python-format
 msgctxt "model:ir.message,text:msg_access_rule_error"
 msgid "You are not allowed to access \"%(model)s\"."
@@ -3640,6 +3678,18 @@ msgstr ""
 "Условие \"%(condition)s\" не является корректным выражением python для "
 "триггера \"%(trigger)s\"."
 
+#, fuzzy, python-format
+msgctxt "model:ir.message,text:msg_modification_readonly_field_error"
+msgid "You are not allowed to modify the field \"%(field)s\" of \"%(model)s\"."
+msgstr "The value \"%(value)s\" of field \"%(field)s\" on \"%(model)s\" doesn't exist."
+
+#, fuzzy, python-format
+msgctxt "model:ir.message,text:msg_modification_readonly_field_record_error"
+msgid ""
+"You are not allowed to modify the field \"%(field)s\" in record "
+"\"%(record)s\" of \"%(model)s\"."
+msgstr "The value \"%(value)s\" of field \"%(field)s\" on \"%(model)s\" doesn't exist."
+
 msgctxt "model:ir.message,text:msg_module_deactivate_dependency"
 msgid ""
 "Some activated modules depend on the ones you are trying to deactivate:"
@@ -3900,6 +3950,12 @@ msgid "Invalid domain or search criteria \"%(domain)s\" for search \"%(search)s\
 msgstr ""
 "Некорректный домен или условия поиска \"%(domain)s\" у действия "
 "\"%(action)s\"."
+
+msgctxt ""
+"model:ir.message,text:msg_view_tree_optional_field_occurrence_user_unique"
+msgid ""
+"A user can set only one optional per occurrence of field on the same view."
+msgstr ""
 
 #, python-format
 msgctxt "model:ir.message,text:msg_view_tree_optional_type"
@@ -4753,6 +4809,10 @@ msgid "Remove Deleted Binaries"
 msgstr ""
 
 msgctxt "selection:ir.cron,method:"
+msgid "Retry Queued Tasks"
+msgstr ""
+
+msgctxt "selection:ir.cron,method:"
 msgid "Run On Time Triggers"
 msgstr ""
 
@@ -5045,16 +5105,6 @@ msgctxt "view:ir.module.activate_upgrade.done:"
 msgid "The modules have been upgraded / activated."
 msgstr "Модули были установлены (обновлены)!"
 
-#, fuzzy
-msgctxt "view:ir.module.activate_upgrade.start:"
-msgid "Note that this operation may take a few minutes."
-msgstr "Эта операция может занять несколько минут."
-
-#, fuzzy
-msgctxt "view:ir.module.activate_upgrade.start:"
-msgid "Your system will be upgraded."
-msgstr "База данных будет обновлена."
-
 msgctxt "view:ir.module.config.start:"
 msgid "You can now activate additional modules to the system."
 msgstr ""
@@ -5103,6 +5153,10 @@ msgctxt "view:ir.translation.set.succeed:"
 msgid "Translations set successfully."
 msgstr "Перевод должен быть уникальным"
 
+msgctxt "view:ir.ui.menu:"
+msgid "Access Permissions"
+msgstr ""
+
 #, fuzzy
 msgctxt "view:ir.ui.menu:"
 msgid "Actions"
@@ -5137,8 +5191,8 @@ msgstr "Отменить"
 
 #, fuzzy
 msgctxt "wizard_button:ir.module.activate_upgrade,start,upgrade:"
-msgid "Start Upgrade"
-msgstr "Начать установку (обновление)"
+msgid "OK"
+msgstr "Ок"
 
 #, fuzzy
 msgctxt "wizard_button:ir.module.config,start,activate:"

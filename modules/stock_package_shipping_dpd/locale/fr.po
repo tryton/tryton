@@ -64,7 +64,8 @@ msgstr "Identifiants DPD"
 
 msgctxt "model:ir.message,text:msg_dpd_credential_modified"
 msgid "Are you sure you want to modify DPD credentials?"
-msgstr "Êtes-vous sûr de vouloir modifier les identifiants de DPD ?"
+msgstr ""
+"Êtes-vous sûr de vouloir modifier les informations d'identification de DPD ?"
 
 #, python-format
 msgctxt "model:ir.message,text:msg_dpd_login_error"

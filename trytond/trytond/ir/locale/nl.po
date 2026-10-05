@@ -654,6 +654,16 @@ msgctxt "field:ir.email,body:"
 msgid "Body"
 msgstr "Bericht"
 
+#, fuzzy
+msgctxt "field:ir.email,last_modification:"
+msgid "Last Modification"
+msgstr "Laatste wijziging"
+
+#, fuzzy
+msgctxt "field:ir.email,last_user:"
+msgid "Last User"
+msgstr "Laatste gebruiker"
+
 msgctxt "field:ir.email,message_id:"
 msgid "Message-ID"
 msgstr "Bericht-ID"
@@ -1242,6 +1252,16 @@ msgctxt "field:ir.model.log,event:"
 msgid "Event"
 msgstr "Gebeurtenis"
 
+#, fuzzy
+msgctxt "field:ir.model.log,last_modification:"
+msgid "Last Modification"
+msgstr "Laatste wijziging"
+
+#, fuzzy
+msgctxt "field:ir.model.log,last_user:"
+msgid "Last User"
+msgstr "Laatste gebruiker"
+
 msgctxt "field:ir.model.log,resource:"
 msgid "Resource"
 msgstr "Basis"
@@ -1286,9 +1306,10 @@ msgctxt "field:ir.module,version:"
 msgid "Version"
 msgstr "Versie"
 
-msgctxt "field:ir.module.activate_upgrade.start,module_info:"
-msgid "Modules to update"
-msgstr "Modules om bij te werken"
+#, fuzzy
+msgctxt "field:ir.module.activate_upgrade.start,modules:"
+msgid "Modules to Activate / Upgrade"
+msgstr "Module activeren / bijwerken voltooid"
 
 msgctxt "field:ir.module.config.start,modules:"
 msgid "Modules"
@@ -1758,6 +1779,11 @@ msgctxt "field:ir.ui.menu,action_keywords:"
 msgid "Action Keywords"
 msgstr "Actietrefwoorden"
 
+#, fuzzy
+msgctxt "field:ir.ui.menu,administration:"
+msgid "Administrator"
+msgstr "Administratie"
+
 msgctxt "field:ir.ui.menu,childs:"
 msgid "Children"
 msgstr "Onderliggend"
@@ -1901,6 +1927,11 @@ msgstr "Model"
 msgctxt "field:ir.ui.view_tree_optional,model_ref:"
 msgid "Model"
 msgstr "Model"
+
+#, fuzzy
+msgctxt "field:ir.ui.view_tree_optional,occurrence:"
+msgid "Occurrence"
+msgstr "Voorkomen"
 
 msgctxt "field:ir.ui.view_tree_optional,user:"
 msgid "User"
@@ -2254,6 +2285,10 @@ msgid ""
 msgstr ""
 "Stel een minimale tijdsvertraging in voor de \"Action Function\" voor hetzelfde record.\n"
 "zonder vertraging leeg."
+
+msgctxt "help:ir.ui.menu,administration:"
+msgid "Check to restrict access to only administrators."
+msgstr ""
 
 msgctxt "help:ir.ui.view_search,domain:"
 msgid "The PYSON domain."
@@ -2916,6 +2951,11 @@ msgctxt "model:ir.message,text:msg_access_report_error"
 msgid "You are not allowed to execute report \"%(report)s\"."
 msgstr "U bent niet gemachtigd om rapport \"%(report)s\" uit te voeren."
 
+#, fuzzy, python-format
+msgctxt "model:ir.message,text:msg_access_resource_search_error"
+msgid "You are not allowed to search on the \"%(resource)s\" resource."
+msgstr "U bent niet gemachtigd om rapport \"%(report)s\" uit te voeren."
+
 #, python-format
 msgctxt "model:ir.message,text:msg_access_rule_error"
 msgid "You are not allowed to access \"%(model)s\"."
@@ -3378,6 +3418,22 @@ msgstr ""
 "De voorwaarde \"%(condition)s\" is geen geldige PYSON-expressie voor "
 "knopregel \"%(rule)s\"."
 
+#, fuzzy, python-format
+msgctxt "model:ir.message,text:msg_modification_readonly_field_error"
+msgid "You are not allowed to modify the field \"%(field)s\" of \"%(model)s\"."
+msgstr ""
+"U hebt geen rechten om het veld \"%(field)s\" van record \"%(record)s\" van "
+"\"%(model)s\" te wijzigen."
+
+#, fuzzy, python-format
+msgctxt "model:ir.message,text:msg_modification_readonly_field_record_error"
+msgid ""
+"You are not allowed to modify the field \"%(field)s\" in record "
+"\"%(record)s\" of \"%(model)s\"."
+msgstr ""
+"U hebt geen rechten om het veld \"%(field)s\" van record \"%(record)s\" van "
+"\"%(model)s\" te wijzigen."
+
 msgctxt "model:ir.message,text:msg_module_deactivate_dependency"
 msgid ""
 "Some activated modules depend on the ones you are trying to deactivate:"
@@ -3661,6 +3717,13 @@ msgstr "Ongeldige XML voor weergave \"%(name)s\"."
 msgctxt "model:ir.message,text:msg_view_search_invalid_domain"
 msgid "Invalid domain or search criteria \"%(domain)s\" for search \"%(search)s\"."
 msgstr "Ongeldig domein of zoekcriteria \"%(domain)s\" voor zoekactie \"%(search)s\"."
+
+#, fuzzy
+msgctxt ""
+"model:ir.message,text:msg_view_tree_optional_field_occurrence_user_unique"
+msgid ""
+"A user can set only one optional per occurrence of field on the same view."
+msgstr "Een gebruiker kan slechts één breedte per veld weergave instellen."
 
 #, python-format
 msgctxt "model:ir.message,text:msg_view_tree_optional_type"
@@ -4387,6 +4450,10 @@ msgid "Remove Deleted Binaries"
 msgstr "Schoon verwijderde binaire data op"
 
 msgctxt "selection:ir.cron,method:"
+msgid "Retry Queued Tasks"
+msgstr ""
+
+msgctxt "selection:ir.cron,method:"
 msgid "Run On Time Triggers"
 msgstr "Start triggers \"op tijd\""
 
@@ -4662,14 +4729,6 @@ msgctxt "view:ir.module.activate_upgrade.done:"
 msgid "The modules have been upgraded / activated."
 msgstr "De modules zijn bijgewerkt / geïnstalleerd."
 
-msgctxt "view:ir.module.activate_upgrade.start:"
-msgid "Note that this operation may take a few minutes."
-msgstr "Houd er rekening mee dat deze bewerking enkele minuten kan duren."
-
-msgctxt "view:ir.module.activate_upgrade.start:"
-msgid "Your system will be upgraded."
-msgstr "Het systeem wordt bijgewerkt."
-
 msgctxt "view:ir.module.config.start:"
 msgid "You can now activate additional modules to the system."
 msgstr "U kunt nu extra modules voor het systeem activeren."
@@ -4715,6 +4774,10 @@ msgid "Translations set successfully."
 msgstr "Vertalingen zijn succesvol ingesteld."
 
 msgctxt "view:ir.ui.menu:"
+msgid "Access Permissions"
+msgstr ""
+
+msgctxt "view:ir.ui.menu:"
 msgid "Actions"
 msgstr "Acties"
 
@@ -4742,9 +4805,10 @@ msgctxt "wizard_button:ir.module.activate_upgrade,start,end:"
 msgid "Cancel"
 msgstr "Annuleer"
 
+#, fuzzy
 msgctxt "wizard_button:ir.module.activate_upgrade,start,upgrade:"
-msgid "Start Upgrade"
-msgstr "Start bijwerken"
+msgid "OK"
+msgstr "OK"
 
 msgctxt "wizard_button:ir.module.config,start,activate:"
 msgid "Activate"

@@ -59,6 +59,10 @@ msgctxt "field:account.move.line,payments:"
 msgid "Payments"
 msgstr "Pagaments"
 
+msgctxt "field:account.move.line.create_direct_debit.start,companies:"
+msgid "Companies"
+msgstr "Empreses"
+
 msgctxt "field:account.move.line.create_direct_debit.start,date:"
 msgid "Date"
 msgstr "Data"
@@ -279,6 +283,10 @@ msgctxt "help:account.move.line,payment_direct_debit:"
 msgid "Check if the line will be paid by direct debit."
 msgstr "Marca si la línia es paga a través de domiciliació bancària."
 
+msgctxt "help:account.move.line.create_direct_debit.start,companies:"
+msgid "Limit to lines from these companies."
+msgstr "Limita als apunts d'aquestes empreses."
+
 msgctxt "help:account.move.line.create_direct_debit.start,date:"
 msgid "Create direct debit for lines due up to this date."
 msgstr ""
@@ -405,8 +413,8 @@ msgid "Payment Groups"
 msgstr "Remeses"
 
 msgctxt "model:ir.action,name:act_payment_journal_form"
-msgid "Payment Journals"
-msgstr "Diaris de pagament"
+msgid "Journals"
+msgstr "Diaris"
 
 msgctxt "model:ir.action,name:act_process_payments"
 msgid "Process Payments"
@@ -710,8 +718,8 @@ msgid "Payment Groups"
 msgstr "Remeses"
 
 msgctxt "model:ir.ui.menu,name:menu_payment_journal_form"
-msgid "Payment Journals"
-msgstr "Diaris de pagament"
+msgid "Journals"
+msgstr "Diaris"
 
 msgctxt "model:ir.ui.menu,name:menu_payments"
 msgid "Payments"

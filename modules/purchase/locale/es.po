@@ -307,6 +307,10 @@ msgctxt "field:purchase.line-recreated-stock.move,purchase_line:"
 msgid "Purchase Line"
 msgstr "Línea de compra"
 
+msgctxt "field:purchase.product_supplier,average_lead_time:"
+msgid "Average Lead Time"
+msgstr "Tiempo de espera promedio"
+
 msgctxt "field:purchase.product_supplier,code:"
 msgid "Code"
 msgstr "Código"
@@ -320,6 +324,10 @@ msgid "Currency"
 msgstr "Moneda"
 
 msgctxt "field:purchase.product_supplier,lead_time:"
+msgid "Lead Time"
+msgstr "Tiempo de espera"
+
+msgctxt "field:purchase.product_supplier,lead_time_used:"
 msgid "Lead Time"
 msgstr "Tiempo de espera"
 
@@ -894,7 +902,7 @@ msgid ""
 "You cannot add lines to purchase \"%(purchase)s\" because it is no longer in"
 " a draft state."
 msgstr ""
-"No se puede añadir líneas a la compra \"%(purchase)s\", porqué noe està en "
+"No se puede añadir líneas a la compra \"%(purchase)s\", porque no está en "
 "estado borrador."
 
 #, python-format

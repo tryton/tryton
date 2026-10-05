@@ -73,6 +73,11 @@ msgctxt "field:account.dunning,state:"
 msgid "State"
 msgstr "ສະຖານະ"
 
+#, fuzzy
+msgctxt "field:account.dunning.create.start,companies:"
+msgid "Companies"
+msgstr "ສຳນັກງານ/ຫ້ອງການ"
+
 msgctxt "field:account.dunning.create.start,date:"
 msgid "Date"
 msgstr "ວັນທີ"
@@ -140,6 +145,10 @@ msgstr ""
 
 msgctxt "help:account.dunning,line:"
 msgid "The receivable line to dun for."
+msgstr ""
+
+msgctxt "help:account.dunning.create.start,companies:"
+msgid "Limit to lines from these companies."
 msgstr ""
 
 msgctxt "help:account.dunning.create.start,date:"

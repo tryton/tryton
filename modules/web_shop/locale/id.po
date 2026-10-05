@@ -115,6 +115,10 @@ msgctxt "field:web.shop,products_removed:"
 msgid "Products Removed"
 msgstr ""
 
+msgctxt "field:web.shop,sale_draft_abandon_delay:"
+msgid "Sale Draft Abandon Delay"
+msgstr ""
+
 msgctxt "field:web.shop,sale_price_list:"
 msgid "Sale Price List"
 msgstr ""
@@ -225,6 +229,12 @@ msgctxt "help:web.shop,products_removed:"
 msgid "The list of products to unpublish."
 msgstr ""
 
+msgctxt "help:web.shop,sale_draft_abandon_delay:"
+msgid ""
+"The time period after which a sale made via the web shop without modification is cancelled.\n"
+"Leave empty to never cancel any draft sales."
+msgstr ""
+
 msgctxt "help:web.shop,sale_price_list:"
 msgid "The price list to compute sale price of products."
 msgstr ""
@@ -293,6 +303,10 @@ msgstr "Toko"
 
 msgctxt "model:web.shop-stock.location,string:"
 msgid "Web Shop - Stock Location"
+msgstr ""
+
+msgctxt "selection:ir.cron,method:"
+msgid "Cancel Abandoned Sales from Web Shop"
 msgstr ""
 
 msgctxt "view:product.template:"

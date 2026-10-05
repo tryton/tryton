@@ -73,6 +73,11 @@ msgctxt "field:account.dunning,state:"
 msgid "State"
 msgstr "Stare"
 
+#, fuzzy
+msgctxt "field:account.dunning.create.start,companies:"
+msgid "Companies"
+msgstr "Societate"
+
 msgctxt "field:account.dunning.create.start,date:"
 msgid "Date"
 msgstr "Data"
@@ -148,6 +153,10 @@ msgstr "Cand notificarea a atins nivelul."
 msgctxt "help:account.dunning,line:"
 msgid "The receivable line to dun for."
 msgstr "Rândul Client pentru care se face notificare."
+
+msgctxt "help:account.dunning.create.start,companies:"
+msgid "Limit to lines from these companies."
+msgstr ""
 
 msgctxt "help:account.dunning.create.start,date:"
 msgid "Create dunning up to this date."

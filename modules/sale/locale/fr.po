@@ -154,6 +154,10 @@ msgctxt "field:sale.configuration,sale_shipment_method:"
 msgid "Sale Shipment Method"
 msgstr "Méthode d'expédition de vente"
 
+msgctxt "field:sale.configuration,sale_wait_shipment:"
+msgid "Sale Wait Shipment"
+msgstr "Expédition de vente en attente"
+
 msgctxt "field:sale.configuration.quotation,sale_quotation_validity:"
 msgid "Sale Quotation Validity"
 msgstr "Validité du devis de vente"
@@ -165,6 +169,10 @@ msgstr "Méthode de facturation de vente"
 msgctxt "field:sale.configuration.sale_method,sale_shipment_method:"
 msgid "Sale Shipment Method"
 msgstr "Méthode d'expédition de vente"
+
+msgctxt "field:sale.configuration.sale_method,sale_wait_shipment:"
+msgid "Sale Wait Shipment"
+msgstr "Expédition de vente en attente"
 
 msgctxt "field:sale.configuration.sequence,company:"
 msgid "Company"
@@ -768,7 +776,15 @@ msgid ""
 "Applied if a worker queue is activated."
 msgstr ""
 "La période de grâce pendant laquelle une vente confirmée peut toujours être réinitialiser à l'état brouillon.\n"
-"S'applique si une fille d'attente de travailleurs est activée."
+"S'applique si une fille d'attente de travail est activée."
+
+msgctxt "help:sale.configuration,sale_wait_shipment:"
+msgid "Create customer shipments in a waiting state"
+msgstr "Créer les expéditions client en état d'attente"
+
+msgctxt "help:sale.configuration.sale_method,sale_wait_shipment:"
+msgid "Create customer shipments in a waiting state"
+msgstr "Créer les expéditions client en état d'attente"
 
 msgctxt "help:sale.handle.invoice.exception.ask,ignore_invoices:"
 msgid "The selected cancelled invoices will be ignored."

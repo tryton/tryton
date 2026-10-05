@@ -71,6 +71,10 @@ msgctxt "field:account.dunning,state:"
 msgid "State"
 msgstr "Estado"
 
+msgctxt "field:account.dunning.create.start,companies:"
+msgid "Companies"
+msgstr "Empresas"
+
 msgctxt "field:account.dunning.create.start,date:"
 msgid "Date"
 msgstr "Fecha"
@@ -139,6 +143,10 @@ msgstr "Cuando la reclamación alcanzó el nivel."
 msgctxt "help:account.dunning,line:"
 msgid "The receivable line to dun for."
 msgstr "El apunte a cobrar a reclamar."
+
+msgctxt "help:account.dunning.create.start,companies:"
+msgid "Limit to lines from these companies."
+msgstr "Limitar los apuntes de estas empresas."
 
 msgctxt "help:account.dunning.create.start,date:"
 msgid "Create dunning up to this date."

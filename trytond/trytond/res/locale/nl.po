@@ -78,6 +78,11 @@ msgctxt "field:res.user,actions:"
 msgid "Actions"
 msgstr "Acties"
 
+#, fuzzy
+msgctxt "field:res.user,administrator:"
+msgid "Administrator"
+msgstr "Systeembeheer"
+
 msgctxt "field:res.user,applications:"
 msgid "Applications"
 msgstr "Toepassingen"
@@ -230,6 +235,10 @@ msgctxt "help:res.user,actions:"
 msgid "Actions that will be run at login."
 msgstr "Deze acties worden na het inloggen uitgevoerd."
 
+msgctxt "help:res.user,administrator:"
+msgid "When checked the user has the access rights of all groups."
+msgstr ""
+
 msgctxt "help:res.user,notifications:"
 msgid "Notifications to subscribe to."
 msgstr "Meldingen om op te abonneren."
@@ -308,6 +317,10 @@ msgstr "Wachtwoord voor %(login)s"
 msgctxt "model:ir.model.button,help:user_reset_password_button"
 msgid "Send by email a new temporary password to the user"
 msgstr "Stuur per e-mail een tijdelijk wachtwoord naar de gebruiker"
+
+msgctxt "model:ir.model.button,string:notification_mark_read_button"
+msgid "Mark as Read"
+msgstr ""
 
 msgctxt "model:ir.model.button,string:user_application_cancel_button"
 msgid "Cancel"
@@ -466,10 +479,6 @@ msgstr "Toegangsrechten"
 msgctxt "view:res.user:"
 msgid "Actions"
 msgstr "Acties"
-
-msgctxt "view:res.user:"
-msgid "Group Membership"
-msgstr "Groepslidmaatschap"
 
 msgctxt "view:res.user:"
 msgid "Preferences"

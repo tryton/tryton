@@ -27,6 +27,22 @@ msgctxt "field:product.template,lot_sequence:"
 msgid "Lot Sequence"
 msgstr "Nummernkreis Charge"
 
+msgctxt "field:sale.point.sale.line,lot:"
+msgid "Lot"
+msgstr "Charge"
+
+msgctxt "field:sale.point.sale.line,lot_required:"
+msgid "Lot Required"
+msgstr "Charge erforderlich"
+
+msgctxt "field:stock.conversion,input_lot:"
+msgid "Input Lot"
+msgstr "Charge Eingang"
+
+msgctxt "field:stock.conversion,output_lot:"
+msgid "Output Lot"
+msgstr "Charge Ausgang"
+
 msgctxt "field:stock.inventory.count.quantity,lot:"
 msgid "Lot"
 msgstr "Charge"

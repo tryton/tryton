@@ -676,22 +676,23 @@ msgstr "向前"
 msgid "Next"
 msgstr "向后"
 
-#, python-format
-msgid "Attachment (%s)"
-msgstr "附件 (%s)"
+#, fuzzy, python-format
+msgid "Attachment (%d)"
+msgid_plural "Attachments (%d)"
+msgstr[0] "附件 (%s)"
 
-#, python-format
+#, fuzzy, python-format
 msgid "Note (%d/%d)"
-msgstr "批注 (%d/%d)"
+msgid_plural "Notes (%d/%d)"
+msgstr[0] "批注 (%d/%d)"
 
 msgid "You have to select one record."
 msgstr "需要选择一条记录."
 
-msgid "Are you sure to remove this record?"
-msgstr "确定要删除这条记录吗？"
-
-msgid "Are you sure to remove those records?"
-msgstr "确定要删除这些记录？"
+#, fuzzy, python-format
+msgid "Are you sure you want to delete this record?"
+msgid_plural "Are you sure you want to delete these %(size)d records?"
+msgstr[0] "确定要删除这条记录吗？"
 
 msgid "Records not removed."
 msgstr "所选记录未删除成功."
@@ -1080,6 +1081,10 @@ msgstr "查找"
 msgid "New"
 msgstr "新建"
 
+#, fuzzy
+msgid "Remove"
+msgstr "删除(_R)"
+
 #, python-format
 msgid "Search %s"
 msgstr "查找 %s"
@@ -1223,6 +1228,9 @@ msgstr "选择..."
 msgid "Clear"
 msgstr "清除"
 
+msgid "All Supported Types"
+msgstr ""
+
 msgid "All files"
 msgstr "所有文件"
 
@@ -1240,9 +1248,6 @@ msgstr "添加值"
 msgid "Remove \"%s\""
 msgstr "删除\"%s\""
 
-msgid "Images"
-msgstr "图片"
-
 msgid "Add existing record"
 msgstr "添加已存在记录"
 
@@ -1252,6 +1257,14 @@ msgstr "删除所选记录"
 #, fuzzy
 msgid "Restore selected record"
 msgstr "删除所选记录"
+
+#, python-format
+msgid "%s to add"
+msgstr ""
+
+#, fuzzy, python-format
+msgid "%s to remove"
+msgstr "所选记录未删除成功."
 
 msgid "Open the record <F2>"
 msgstr "打开记录 <F2>"
@@ -1271,6 +1284,10 @@ msgstr "删除所选记录"
 #, fuzzy
 msgid "Undelete selected record"
 msgstr "删除所选记录"
+
+#, python-format
+msgid "%s to delete"
+msgstr ""
 
 #, python-format
 msgid "%s%%"

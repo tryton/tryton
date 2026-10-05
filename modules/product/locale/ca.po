@@ -540,10 +540,6 @@ msgctxt "model:ir.action,name:act_category_list"
 msgid "Categories"
 msgstr "Categories"
 
-msgctxt "model:ir.action,name:act_category_product"
-msgid "Add products"
-msgstr "Afegeix productes"
-
 msgctxt "model:ir.action,name:act_category_tree"
 msgid "Categories"
 msgstr "Arbre de categories"
@@ -634,10 +630,6 @@ msgstr "No podeu modificar el rati de la unitat de mesura \"%(uom)s\"."
 msgctxt "model:ir.message,text:msg_uom_no_zero_factor_rate"
 msgid "Rate and factor can not be both equal to zero."
 msgstr "El rati i el factor no poden ser els dos igual a zero."
-
-msgctxt "model:ir.model.button,string:category_add_products_button"
-msgid "Add products"
-msgstr "Afegeix productes"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_category"
 msgid "Category"

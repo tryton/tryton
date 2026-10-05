@@ -1,5 +1,4 @@
 #
-#, fuzzy
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -126,6 +125,10 @@ msgid "On Order Processed"
 msgstr "Sur traitement de l'ordre"
 
 msgctxt "selection:sale.sale,tasks_state:"
+msgid "Fulfilled"
+msgstr "Réalisée"
+
+msgctxt "selection:sale.sale,tasks_state:"
 msgid "None"
 msgstr "Aucun"
 
@@ -136,10 +139,6 @@ msgstr "Partiellement réalisé"
 msgctxt "selection:sale.sale,tasks_state:"
 msgid "Waiting"
 msgstr "En attente"
-
-msgctxt "selection:sale.sale,tasks_state:"
-msgid "fulfilled"
-msgstr "Réalisé"
 
 msgctxt "view:product.project_task:"
 msgid "General"

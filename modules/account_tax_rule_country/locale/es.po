@@ -6,6 +6,10 @@ msgctxt "field:account.tax.rule.line,from_country:"
 msgid "From Country"
 msgstr "Desde el país"
 
+msgctxt "field:account.tax.rule.line,from_organization:"
+msgid "From Organization"
+msgstr "De la organización"
+
 msgctxt "field:account.tax.rule.line,from_subdivision:"
 msgid "From Subdivision"
 msgstr "De la subdivisión"
@@ -13,6 +17,10 @@ msgstr "De la subdivisión"
 msgctxt "field:account.tax.rule.line,to_country:"
 msgid "To Country"
 msgstr "Hacia el país"
+
+msgctxt "field:account.tax.rule.line,to_organization:"
+msgid "To Organization"
+msgstr "A la organización"
 
 msgctxt "field:account.tax.rule.line,to_subdivision:"
 msgid "To Subdivision"
@@ -22,6 +30,10 @@ msgctxt "field:account.tax.rule.line.template,from_country:"
 msgid "From Country"
 msgstr "Desde el país"
 
+msgctxt "field:account.tax.rule.line.template,from_organization:"
+msgid "From Organization"
+msgstr "De la orgnazación"
+
 msgctxt "field:account.tax.rule.line.template,from_subdivision:"
 msgid "From Subdivision"
 msgstr "De la subdivisión"
@@ -30,38 +42,58 @@ msgctxt "field:account.tax.rule.line.template,to_country:"
 msgid "To Country"
 msgstr "Hacia el país"
 
+msgctxt "field:account.tax.rule.line.template,to_organization:"
+msgid "To Organization"
+msgstr "A la organización"
+
 msgctxt "field:account.tax.rule.line.template,to_subdivision:"
 msgid "To Subdivision"
 msgstr "A la subdivisión"
 
 msgctxt "help:account.tax.rule.line,from_country:"
-msgid "Apply only to addresses of this country."
+msgid "Apply only to the addresses from this country."
 msgstr "Aplica solo para las direcciones de este país."
 
+msgctxt "help:account.tax.rule.line,from_organization:"
+msgid "Apply only to the addresses from this organization."
+msgstr "Aplica solo para las direcciones de esta organización."
+
 msgctxt "help:account.tax.rule.line,from_subdivision:"
-msgid "Apply only to addresses in this subdivision."
+msgid "Apply only to the addresses from this subdivision."
 msgstr "Aplica solo para las direcciones de esta subdivisión."
 
 msgctxt "help:account.tax.rule.line,to_country:"
-msgid "Apply only to addresses of this country."
-msgstr "Aplica solo para las direcciones de este país."
+msgid "Apply only to the addresses to this country."
+msgstr "Aplica solo para las direcciones desde este país."
+
+msgctxt "help:account.tax.rule.line,to_organization:"
+msgid "Apply only to the addresses of this organization."
+msgstr "Aplica solo para las direcciones de esta organización."
 
 msgctxt "help:account.tax.rule.line,to_subdivision:"
-msgid "Apply only to addresses in this subdivision."
+msgid "Apply only to the addresses to this subdivision."
 msgstr "Aplica solo para las direcciones de esta subdivisión."
 
 msgctxt "help:account.tax.rule.line.template,from_country:"
-msgid "Apply only to addresses of this country."
-msgstr "Aplica solo para las direcciones de este país."
+msgid "Apply only to the addresses from this country."
+msgstr "Aplica solo para las direcciones desde este país."
+
+msgctxt "help:account.tax.rule.line.template,from_organization:"
+msgid "Apply only to the addresses from this organization."
+msgstr "Aplica solo para las direcciones desde esta organización."
 
 msgctxt "help:account.tax.rule.line.template,from_subdivision:"
-msgid "Apply only to addresses in this subdivision."
-msgstr "Aplica solo para las direcciones de esta subdivisión."
+msgid "Apply only to the addresses from this subdivision."
+msgstr "Aplica solo para las direcciones desde esta subdivisión."
 
 msgctxt "help:account.tax.rule.line.template,to_country:"
-msgid "Apply only to addresses of this country."
-msgstr "Aplica solo para las direcciones de este país."
+msgid "Apply only to the addresses to this country."
+msgstr "Aplica solo para las direcciones desde este país."
+
+msgctxt "help:account.tax.rule.line.template,to_organization:"
+msgid "Apply only to the addresses of this organization."
+msgstr "Aplica solo para las direcciones de esta organización."
 
 msgctxt "help:account.tax.rule.line.template,to_subdivision:"
-msgid "Apply only to addresses in this subdivision."
+msgid "Apply only to the addresses to this subdivision."
 msgstr "Aplica solo para las direcciones de esta subdivisión."

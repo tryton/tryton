@@ -337,6 +337,10 @@ msgctxt "field:purchase.line-recreated-stock.move,purchase_line:"
 msgid "Purchase Line"
 msgstr "Ostu rida"
 
+msgctxt "field:purchase.product_supplier,average_lead_time:"
+msgid "Average Lead Time"
+msgstr ""
+
 msgctxt "field:purchase.product_supplier,code:"
 msgid "Code"
 msgstr "Kood"
@@ -350,6 +354,10 @@ msgid "Currency"
 msgstr "Valuuta"
 
 msgctxt "field:purchase.product_supplier,lead_time:"
+msgid "Lead Time"
+msgstr ""
+
+msgctxt "field:purchase.product_supplier,lead_time_used:"
 msgid "Lead Time"
 msgstr ""
 

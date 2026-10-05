@@ -144,6 +144,9 @@ msgstr "Nome do Usuário"
 msgid "Login with"
 msgstr "Entrar com"
 
+msgid "Disabled on localhost"
+msgstr ""
+
 msgid "Too many requests. Try again later."
 msgstr "Muitas solicitações. Tente novamente depois."
 
@@ -322,14 +325,26 @@ msgstr "Gravar este registro"
 msgid "Reload"
 msgstr "Recarregar"
 
+#, fuzzy
+msgid "Delete..."
+msgstr "Apagar"
+
 msgid "View Logs..."
 msgstr "Ver Logs..."
 
 msgid "Show revisions..."
 msgstr "Mostrar revisões..."
 
+#, fuzzy
+msgid "Attachments..."
+msgstr "Anexos"
+
 msgid "Add an attachment to the record"
 msgstr "Adicionar um anexo ao registro"
+
+#, fuzzy
+msgid "Notes..."
+msgstr "Nota"
 
 msgid "Add a note to the record"
 msgstr "Adicionar uma nota ao registro"
@@ -340,16 +355,30 @@ msgstr "Bater papo"
 msgid "Chat on the record"
 msgstr "Bate-papo no registrado"
 
+#, fuzzy
+msgid "Actions..."
+msgstr "Ação"
+
+#, fuzzy
+msgid "Relate..."
+msgstr "Relacionar"
+
+#, fuzzy
+msgid "Print..."
+msgstr "Imprimir"
+
 msgid "Email..."
 msgstr "Email..."
 
 msgid "Send an email using the record"
 msgstr "Enviar um email utilizando o registro"
 
-msgid "Export"
+#, fuzzy
+msgid "Export..."
 msgstr "Exportar"
 
-msgid "Import"
+#, fuzzy
+msgid "Import..."
 msgstr "Importar"
 
 msgid ""
@@ -381,11 +410,11 @@ msgstr "Registro salvo."
 msgid "Working now on the duplicated record(s)."
 msgstr "Trabalhando agora no(s) registro(s) duplicado(s)."
 
-msgid "Are you sure to remove this record?"
-msgstr "Você tem certeza que deseja apagar este registro?"
-
-msgid "Are you sure to remove those records?"
-msgstr "Você tem certeza que deseja apagar estes registros?"
+#, fuzzy
+msgid "Are you sure you want to delete this record?"
+msgid_plural "Are you sure you want to delete these %1 records?"
+msgstr[0] "Você tem certeza que deseja apagar este registro?"
+msgstr[1] "Você tem certeza que deseja apagar este registro?"
 
 msgid "Records removed."
 msgstr "Registros excluídos."
@@ -408,11 +437,17 @@ msgstr "Gerenciar..."
 msgid "Template"
 msgstr "Modelo"
 
+#, fuzzy
 msgid "Attachment (%1)"
-msgstr "Anexo (%1)"
+msgid_plural "Attachments (%1)"
+msgstr[0] "Anexo (%1)"
+msgstr[1] "Anexo (%1)"
 
+#, fuzzy
 msgid "Note (%1/%2)"
-msgstr "Nota (%1/%2)"
+msgid_plural "Notes (%1/%2)"
+msgstr[0] "Nota (%1/%2)"
+msgstr[1] "Nota (%1/%2)"
 
 msgid "Filters"
 msgstr "Filtros"
@@ -526,6 +561,17 @@ msgid "Open"
 msgstr "Abrir"
 
 msgid "Undelete"
+msgstr "Recuperar"
+
+#, javascript-format
+msgid "%s to add"
+msgstr ""
+
+msgid "%1 to remove"
+msgstr ""
+
+#, fuzzy
+msgid "%1 to delete"
 msgstr "Recuperar"
 
 msgid "Restore"
@@ -669,6 +715,9 @@ msgstr "Caractere de Citação:"
 
 msgid "CSV Import: %1"
 msgstr "Importar CSV: %1"
+
+msgid "Import"
+msgstr "Importar"
 
 msgid "Auto-Detect"
 msgstr "Auto-Detectar"

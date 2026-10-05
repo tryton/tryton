@@ -154,6 +154,11 @@ msgctxt "field:sale.configuration,sale_shipment_method:"
 msgid "Sale Shipment Method"
 msgstr "Metoda de expediere marfă"
 
+#, fuzzy
+msgctxt "field:sale.configuration,sale_wait_shipment:"
+msgid "Sale Wait Shipment"
+msgstr "Creare Expediere"
+
 msgctxt "field:sale.configuration.quotation,sale_quotation_validity:"
 msgid "Sale Quotation Validity"
 msgstr ""
@@ -165,6 +170,11 @@ msgstr "Metoda de facturare al vânzării"
 msgctxt "field:sale.configuration.sale_method,sale_shipment_method:"
 msgid "Sale Shipment Method"
 msgstr "Metoda de expediere a vânzării"
+
+#, fuzzy
+msgctxt "field:sale.configuration.sale_method,sale_wait_shipment:"
+msgid "Sale Wait Shipment"
+msgstr "Creare Expediere"
 
 msgctxt "field:sale.configuration.sequence,company:"
 msgid "Company"
@@ -785,6 +795,14 @@ msgid ""
 msgstr ""
 "Perioada de grație în timpul căreia vânzarea confirmată poate fi încă resetată la draft.\n"
 "Se aplică dacă este activată o coadă de muncitori."
+
+msgctxt "help:sale.configuration,sale_wait_shipment:"
+msgid "Create customer shipments in a waiting state"
+msgstr ""
+
+msgctxt "help:sale.configuration.sale_method,sale_wait_shipment:"
+msgid "Create customer shipments in a waiting state"
+msgstr ""
 
 #, fuzzy
 msgctxt "help:sale.handle.invoice.exception.ask,ignore_invoices:"

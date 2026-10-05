@@ -59,6 +59,10 @@ msgctxt "field:account.move.line,payments:"
 msgid "Payments"
 msgstr "Paiements"
 
+msgctxt "field:account.move.line.create_direct_debit.start,companies:"
+msgid "Companies"
+msgstr "Sociétés"
+
 msgctxt "field:account.move.line.create_direct_debit.start,date:"
 msgid "Date"
 msgstr "Date"
@@ -279,6 +283,10 @@ msgctxt "help:account.move.line,payment_direct_debit:"
 msgid "Check if the line will be paid by direct debit."
 msgstr "Cochez si la ligne sera payée par prélèvement automatique."
 
+msgctxt "help:account.move.line.create_direct_debit.start,companies:"
+msgid "Limit to lines from these companies."
+msgstr "Limite aux lignes de ces sociétés."
+
 msgctxt "help:account.move.line.create_direct_debit.start,date:"
 msgid "Create direct debit for lines due up to this date."
 msgstr ""
@@ -406,8 +414,8 @@ msgid "Payment Groups"
 msgstr "Groupes de paiements"
 
 msgctxt "model:ir.action,name:act_payment_journal_form"
-msgid "Payment Journals"
-msgstr "Journaux de paiement"
+msgid "Journals"
+msgstr "Journaux"
 
 msgctxt "model:ir.action,name:act_process_payments"
 msgid "Process Payments"
@@ -714,8 +722,8 @@ msgid "Payment Groups"
 msgstr "Groupes de paiements"
 
 msgctxt "model:ir.ui.menu,name:menu_payment_journal_form"
-msgid "Payment Journals"
-msgstr "Journaux de paiement"
+msgid "Journals"
+msgstr "Journaux"
 
 msgctxt "model:ir.ui.menu,name:menu_payments"
 msgid "Payments"

@@ -673,6 +673,16 @@ msgid "Body"
 msgstr "正文"
 
 #, fuzzy
+msgctxt "field:ir.email,last_modification:"
+msgid "Last Modification"
+msgstr "最后修改"
+
+#, fuzzy
+msgctxt "field:ir.email,last_user:"
+msgid "Last User"
+msgstr "最近使用的用户"
+
+#, fuzzy
 msgctxt "field:ir.email,message_id:"
 msgid "Message-ID"
 msgstr "消息"
@@ -1294,6 +1304,16 @@ msgctxt "field:ir.model.log,event:"
 msgid "Event"
 msgstr "事件"
 
+#, fuzzy
+msgctxt "field:ir.model.log,last_modification:"
+msgid "Last Modification"
+msgstr "最后修改"
+
+#, fuzzy
+msgctxt "field:ir.model.log,last_user:"
+msgid "Last User"
+msgstr "最近使用的用户"
+
 msgctxt "field:ir.model.log,resource:"
 msgid "Resource"
 msgstr "资源"
@@ -1339,9 +1359,10 @@ msgctxt "field:ir.module,version:"
 msgid "Version"
 msgstr "版本"
 
-msgctxt "field:ir.module.activate_upgrade.start,module_info:"
-msgid "Modules to update"
-msgstr "待更新模块"
+#, fuzzy
+msgctxt "field:ir.module.activate_upgrade.start,modules:"
+msgid "Modules to Activate / Upgrade"
+msgstr "模块安装升级完成"
 
 msgctxt "field:ir.module.config.start,modules:"
 msgid "Modules"
@@ -1833,6 +1854,11 @@ msgctxt "field:ir.ui.menu,action_keywords:"
 msgid "Action Keywords"
 msgstr "动作关键词"
 
+#, fuzzy
+msgctxt "field:ir.ui.menu,administration:"
+msgid "Administrator"
+msgstr "管理"
+
 msgctxt "field:ir.ui.menu,childs:"
 msgid "Children"
 msgstr "子项"
@@ -1987,6 +2013,10 @@ msgstr "模型"
 msgctxt "field:ir.ui.view_tree_optional,model_ref:"
 msgid "Model"
 msgstr "模型"
+
+msgctxt "field:ir.ui.view_tree_optional,occurrence:"
+msgid "Occurrence"
+msgstr ""
 
 msgctxt "field:ir.ui.view_tree_optional,user:"
 msgid "User"
@@ -2323,6 +2353,10 @@ msgid ""
 msgstr ""
 "当同一条记录调用 \"动作函数\" 时, 设置两次动作之间的最小延迟时间.\n"
 "留空表示不延迟."
+
+msgctxt "help:ir.ui.menu,administration:"
+msgid "Check to restrict access to only administrators."
+msgstr ""
 
 msgctxt "help:ir.ui.view_search,domain:"
 msgid "The PYSON domain."
@@ -3020,6 +3054,11 @@ msgctxt "model:ir.message,text:msg_access_report_error"
 msgid "You are not allowed to execute report \"%(report)s\"."
 msgstr "没有运行向导程序 \"%(wizard)s\" 的权限."
 
+#, fuzzy, python-format
+msgctxt "model:ir.message,text:msg_access_resource_search_error"
+msgid "You are not allowed to search on the \"%(resource)s\" resource."
+msgstr "没有运行向导程序 \"%(wizard)s\" 的权限."
+
 #, python-format
 msgctxt "model:ir.message,text:msg_access_rule_error"
 msgid "You are not allowed to access \"%(model)s\"."
@@ -3463,6 +3502,18 @@ msgid ""
 "rule \"%(rule)s\"."
 msgstr "对按钮规则\"%(rule)s\"来说，条件\"%(condition)s\" 不是合法的 PYSON 表达式."
 
+#, fuzzy, python-format
+msgctxt "model:ir.message,text:msg_modification_readonly_field_error"
+msgid "You are not allowed to modify the field \"%(field)s\" of \"%(model)s\"."
+msgstr "不允许修改 \"%(model)s\" 的 \"%(record)s\" 中的字段 \"%(field)s\"。"
+
+#, fuzzy, python-format
+msgctxt "model:ir.message,text:msg_modification_readonly_field_record_error"
+msgid ""
+"You are not allowed to modify the field \"%(field)s\" in record "
+"\"%(record)s\" of \"%(model)s\"."
+msgstr "不允许修改 \"%(model)s\" 的 \"%(record)s\" 中的字段 \"%(field)s\"。"
+
 msgctxt "model:ir.message,text:msg_module_deactivate_dependency"
 msgid ""
 "Some activated modules depend on the ones you are trying to deactivate:"
@@ -3716,6 +3767,12 @@ msgstr "视图 \"%(name)s\" 对应的XML不合法."
 msgctxt "model:ir.message,text:msg_view_search_invalid_domain"
 msgid "Invalid domain or search criteria \"%(domain)s\" for search \"%(search)s\"."
 msgstr "搜索 \"%(search)s\" 的域或搜索条件 \"%(domain)s\" 无效。"
+
+msgctxt ""
+"model:ir.message,text:msg_view_tree_optional_field_occurrence_user_unique"
+msgid ""
+"A user can set only one optional per occurrence of field on the same view."
+msgstr ""
 
 #, python-format
 msgctxt "model:ir.message,text:msg_view_tree_optional_type"
@@ -4498,6 +4555,10 @@ msgid "Remove Deleted Binaries"
 msgstr ""
 
 msgctxt "selection:ir.cron,method:"
+msgid "Retry Queued Tasks"
+msgstr ""
+
+msgctxt "selection:ir.cron,method:"
 msgid "Run On Time Triggers"
 msgstr "运行基于时间的触发器"
 
@@ -4775,14 +4836,6 @@ msgctxt "view:ir.module.activate_upgrade.done:"
 msgid "The modules have been upgraded / activated."
 msgstr "模块已升级/激活."
 
-msgctxt "view:ir.module.activate_upgrade.start:"
-msgid "Note that this operation may take a few minutes."
-msgstr "注意：本操作可能需要几分钟时间."
-
-msgctxt "view:ir.module.activate_upgrade.start:"
-msgid "Your system will be upgraded."
-msgstr "系统将要升级。"
-
 msgctxt "view:ir.module.config.start:"
 msgid "You can now activate additional modules to the system."
 msgstr "您现在可以激活系统的其他模块。"
@@ -4826,6 +4879,10 @@ msgid "Translations set successfully."
 msgstr "翻译设置成功."
 
 msgctxt "view:ir.ui.menu:"
+msgid "Access Permissions"
+msgstr ""
+
+msgctxt "view:ir.ui.menu:"
 msgid "Actions"
 msgstr "操作"
 
@@ -4853,9 +4910,10 @@ msgctxt "wizard_button:ir.module.activate_upgrade,start,end:"
 msgid "Cancel"
 msgstr "取消"
 
+#, fuzzy
 msgctxt "wizard_button:ir.module.activate_upgrade,start,upgrade:"
-msgid "Start Upgrade"
-msgstr "开始升级"
+msgid "OK"
+msgstr "确定"
 
 msgctxt "wizard_button:ir.module.config,start,activate:"
 msgid "Activate"

@@ -1,11 +1,10 @@
 #
-#, fuzzy
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:product.price_list.line,ethanol_volume_uom:"
-msgid "AlcoholVolume UoM"
-msgstr "UdM volumen de alcohol"
+msgid "Alcohol Volume UoM"
+msgstr "UdM del volumen de alcohol"
 
 msgctxt "field:product.product,contain_ethanol:"
 msgid "Contain Alcohol"

@@ -122,9 +122,25 @@ msgctxt "field:res.user,warehouse:"
 msgid "Current Warehouse"
 msgstr "Magatzem actual"
 
+msgctxt "field:stock.configuration,inventory_cost_thresold:"
+msgid "Inventory Cost Thresold"
+msgstr "Llindar de costos d'inventari"
+
+msgctxt "field:stock.configuration,inventory_quantity_tolerance:"
+msgid "Inventory Quantity Tolerance"
+msgstr "Tolerància de la quantitat d'inventari"
+
 msgctxt "field:stock.configuration,inventory_sequence:"
 msgid "Inventory Sequence"
 msgstr "Seqüència d'inventari"
+
+msgctxt "field:stock.configuration,period_closing_delay:"
+msgid "Period Closing Delay"
+msgstr "Retras tancament períodes"
+
+msgctxt "field:stock.configuration,period_creation_interval:"
+msgid "Period Creation Interval"
+msgstr "Interval creació períodes"
 
 msgctxt "field:stock.configuration,shipment_in_return_sequence:"
 msgid "Supplier Return Shipment Sequence"
@@ -150,9 +166,29 @@ msgctxt "field:stock.configuration,shipment_out_sequence:"
 msgid "Customer Shipment Sequence"
 msgstr "Seqüència d'albarà client"
 
+msgctxt "field:stock.configuration.inventory,inventory_cost_thresold:"
+msgid "Inventory Cost Thresold"
+msgstr "Umbral cost d'inventari"
+
+msgctxt "field:stock.configuration.inventory,inventory_quantity_tolerance:"
+msgid "Inventory Quantity Tolerance"
+msgstr "Tolerància de la quantitat d'inventari"
+
 msgctxt "field:stock.configuration.location,shipment_internal_transit:"
 msgid "Internal Shipment Transit"
 msgstr "Trànsit albarans interns"
+
+msgctxt "field:stock.configuration.period,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:stock.configuration.period,period_closing_delay:"
+msgid "Period Closing Delay"
+msgstr "Retras tancament períodes"
+
+msgctxt "field:stock.configuration.period,period_creation_interval:"
+msgid "Period Creation Interval"
+msgstr "Interval creació períodes"
 
 msgctxt "field:stock.configuration.sequence,company:"
 msgid "Company"
@@ -234,6 +270,10 @@ msgctxt "field:stock.inventory.count.search,search:"
 msgid "Search"
 msgstr "Cerca"
 
+msgctxt "field:stock.inventory.line,cost_variation:"
+msgid "Cost Variation"
+msgstr "Variació del cost"
+
 msgctxt "field:stock.inventory.line,expected_quantity:"
 msgid "Expected Quantity"
 msgstr "Quantitat esperada"
@@ -265,6 +305,18 @@ msgstr "Producte"
 msgctxt "field:stock.inventory.line,quantity:"
 msgid "Actual Quantity"
 msgstr "Quantitat actual"
+
+msgctxt "field:stock.inventory.line,quantity_variation:"
+msgid "Quantity Variation"
+msgstr "Variació quantitat"
+
+msgctxt "field:stock.inventory.line,tolerance_cost_variation:"
+msgid "Tolerance Cost Variation"
+msgstr "Tolerància varació del cost"
+
+msgctxt "field:stock.inventory.line,tolerance_quantity_variation:"
+msgid "Tolerance Quantity Variation"
+msgstr "Toleracància variació de la quantitat"
 
 msgctxt "field:stock.inventory.line,unit:"
 msgid "Unit"
@@ -345,10 +397,6 @@ msgstr "Intern"
 msgctxt "field:stock.location,type:"
 msgid "Type"
 msgstr "Tipus"
-
-msgctxt "field:stock.location,warehouse:"
-msgid "Warehouse"
-msgstr "Magatzem"
 
 msgctxt "field:stock.location,waste_locations:"
 msgid "Waste Locations"
@@ -1350,9 +1398,26 @@ msgctxt "help:res.user,warehouse:"
 msgid "The warehouse that the user works at."
 msgstr "El magatzem al que treball l'usuari."
 
+msgctxt "help:stock.configuration,inventory_cost_thresold:"
+msgid "The inventory cost thresold accepted in company currency."
+msgstr ""
+"La tolerància de variació del cost aceptada amb la moneda de l'empresa."
+
+msgctxt "help:stock.configuration,inventory_quantity_tolerance:"
+msgid "The inventory quantity variation accepted in percentage."
+msgstr "La tolerancia de variació de la quantitat acceptada en percentatge."
+
 msgctxt "help:stock.configuration,inventory_sequence:"
 msgid "Used to generate the number given to inventories."
 msgstr "Utilitzat per generar el nombre que es dona als inventaris."
+
+msgctxt "help:stock.configuration,period_closing_delay:"
+msgid "Leave it empty to prevent periods from being closed automatically."
+msgstr "Deixar en blanc per evitar que els períodes es tanquin autmàticament."
+
+msgctxt "help:stock.configuration,period_creation_interval:"
+msgid "Leave it empty to prevent periods from being created automatically."
+msgstr "Deixar en blanc per evitar que els períodes es creein automàticament."
 
 msgctxt "help:stock.configuration,shipment_in_return_sequence:"
 msgid "Used to generate the number given to supplier return shipments."
@@ -1385,6 +1450,15 @@ msgstr ""
 msgctxt "help:stock.configuration,shipment_out_sequence:"
 msgid "Used to generate the number given to customer shipments."
 msgstr "Utilitzat per generar el nombre que es dona als albarans de client."
+
+msgctxt "help:stock.configuration.inventory,inventory_cost_thresold:"
+msgid "The inventory cost thresold accepted in company currency."
+msgstr ""
+"La tolerància de variació del cost aceptada amb la moneda de l'empresa."
+
+msgctxt "help:stock.configuration.inventory,inventory_quantity_tolerance:"
+msgid "The inventory quantity variation accepted in percentage."
+msgstr "La tolerancia de variació de la quantitat acceptada en percentatge."
 
 msgctxt "help:stock.configuration.location,shipment_internal_transit:"
 msgid ""
@@ -1444,6 +1518,10 @@ msgstr "L'inventari al que pertany la línia."
 msgctxt "help:stock.inventory.line,quantity:"
 msgid "The actual quantity found in the location."
 msgstr "La quantitat real que es troba a la ubicació."
+
+msgctxt "help:stock.inventory.line,quantity_variation:"
+msgid "The difference between expected quantity and actual quantity."
+msgstr "La diferència entre la quantitat esperada i la quantitat real."
 
 msgctxt "help:stock.inventory.line,unit:"
 msgid "The unit in which the quantity is specified."
@@ -1905,7 +1983,7 @@ msgstr "Ubicacions"
 
 msgctxt "model:ir.action,name:act_move_form"
 msgid "Moves"
-msgstr "Moviments"
+msgstr "Assentaments"
 
 msgctxt "model:ir.action,name:act_period_list"
 msgid "Periods"
@@ -2301,6 +2379,14 @@ msgid ""
 msgstr ""
 "Per confirmar l'inventari \"%(inventory)s\" heu de seleccionar una opció per"
 " la quantitat buida."
+
+#, python-format
+msgctxt "model:ir.message,text:msg_inventory_over_tolerance"
+msgid "The inventory line \"%(lines)s\" is outside the tolerance range."
+msgid_plural "The inventory lines \"%(lines)s\" are outside the tolerance range."
+msgstr[0] "La linia d'inventari \"%(lines)s\" està fora del rango de tolerància."
+msgstr[1] ""
+"Les linies d'inventari \"%(lines)s\" estan fora del rango de tolerància."
 
 #, python-format
 msgctxt "model:ir.message,text:msg_location_inactive_not_empty"
@@ -2891,7 +2977,7 @@ msgstr "Ubicacions"
 
 msgctxt "model:ir.ui.menu,name:menu_move_form"
 msgid "Moves"
-msgstr "Moviments"
+msgstr "Assentaments"
 
 msgctxt "model:ir.ui.menu,name:menu_period_list"
 msgid "Periods"
@@ -2993,9 +3079,17 @@ msgctxt "model:stock.configuration,string:"
 msgid "Stock Configuration"
 msgstr "Configuració d'existències"
 
+msgctxt "model:stock.configuration.inventory,string:"
+msgid "Stock Configuration Inventory"
+msgstr "Configuració d'invetaris de logística"
+
 msgctxt "model:stock.configuration.location,string:"
 msgid "Stock Configuration Location"
 msgstr "Configuració d'ubicacions d'existències"
+
+msgctxt "model:stock.configuration.period,string:"
+msgid "Stock Configuration Period"
+msgstr "Configuració de períodes de logística"
 
 msgctxt "model:stock.configuration.sequence,string:"
 msgid "Stock Configuration Sequence"
@@ -3430,6 +3524,14 @@ msgid "Assign Shipments"
 msgstr "Reserva albarans"
 
 msgctxt "selection:ir.cron,method:"
+msgid "Close Stock Periods"
+msgstr "Tancar períodes d'existències"
+
+msgctxt "selection:ir.cron,method:"
+msgid "Create Stock Periods"
+msgstr "Crear períodes d'existències"
+
+msgctxt "selection:ir.cron,method:"
 msgid "Recompute Cost Price from Moves"
 msgstr "Recalcula preu de cost a partir dels moviments"
 
@@ -3734,6 +3836,14 @@ msgid "The warehouse that you work at."
 msgstr "El magatzem al que estas treballant."
 
 msgctxt "view:stock.configuration:"
+msgid "%"
+msgstr "%"
+
+msgctxt "view:stock.configuration:"
+msgid "Cost Thresold"
+msgstr "Tolerancia del cost"
+
+msgctxt "view:stock.configuration:"
 msgid "Customer Return Sequence"
 msgstr "Seqüència de devolucions de client"
 
@@ -3754,6 +3864,14 @@ msgid "Inventory"
 msgstr "Inventari"
 
 msgctxt "view:stock.configuration:"
+msgid "Period"
+msgstr "Període"
+
+msgctxt "view:stock.configuration:"
+msgid "Quantity Tolerance"
+msgstr "Tolerància de la quantitat"
+
+msgctxt "view:stock.configuration:"
 msgid "Sequence"
 msgstr "Seqüència"
 
@@ -3768,10 +3886,6 @@ msgstr "Seqüència de devolució de proveïdor"
 msgctxt "view:stock.configuration:"
 msgid "Supplier Sequence"
 msgstr "Seqüència de proveïdor"
-
-msgctxt "view:stock.move:"
-msgid "Cost"
-msgstr "Cost"
 
 msgctxt "view:stock.move:"
 msgid "Move"

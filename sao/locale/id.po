@@ -129,6 +129,9 @@ msgstr ""
 msgid "Login with"
 msgstr ""
 
+msgid "Disabled on localhost"
+msgstr ""
+
 msgid "Too many requests. Try again later."
 msgstr "Terlalu banyak permintaan. Coba lagi nanti."
 
@@ -305,14 +308,26 @@ msgstr ""
 msgid "Reload"
 msgstr ""
 
+#, fuzzy
+msgid "Delete..."
+msgstr "Hapus"
+
 msgid "View Logs..."
 msgstr ""
 
 msgid "Show revisions..."
 msgstr ""
 
+#, fuzzy
+msgid "Attachments..."
+msgstr "Lampiran-Lampiran"
+
 msgid "Add an attachment to the record"
 msgstr ""
+
+#, fuzzy
+msgid "Notes..."
+msgstr "Catatan"
 
 msgid "Add a note to the record"
 msgstr ""
@@ -324,16 +339,27 @@ msgid "Chat on the record"
 msgstr ""
 
 #, fuzzy
+msgid "Actions..."
+msgstr "Tindakan"
+
+msgid "Relate..."
+msgstr ""
+
+#, fuzzy
+msgid "Print..."
+msgstr "Cetak"
+
+#, fuzzy
 msgid "Email..."
 msgstr "E-Mail..."
 
 msgid "Send an email using the record"
 msgstr ""
 
-msgid "Export"
+msgid "Export..."
 msgstr ""
 
-msgid "Import"
+msgid "Import..."
 msgstr ""
 
 msgid ""
@@ -363,11 +389,9 @@ msgstr ""
 msgid "Working now on the duplicated record(s)."
 msgstr ""
 
-msgid "Are you sure to remove this record?"
-msgstr ""
-
-msgid "Are you sure to remove those records?"
-msgstr ""
+msgid "Are you sure you want to delete this record?"
+msgid_plural "Are you sure you want to delete these %1 records?"
+msgstr[0] ""
 
 msgid "Records removed."
 msgstr ""
@@ -390,11 +414,15 @@ msgstr ""
 msgid "Template"
 msgstr "Templat"
 
+#, fuzzy
 msgid "Attachment (%1)"
-msgstr "Lampiran (%1)"
+msgid_plural "Attachments (%1)"
+msgstr[0] "Lampiran (%1)"
 
+#, fuzzy
 msgid "Note (%1/%2)"
-msgstr "Catatan (%1/%2)"
+msgid_plural "Notes (%1/%2)"
+msgstr[0] "Catatan (%1/%2)"
 
 msgid "Filters"
 msgstr ""
@@ -508,6 +536,16 @@ msgid "Open"
 msgstr "Buka"
 
 msgid "Undelete"
+msgstr ""
+
+#, javascript-format
+msgid "%s to add"
+msgstr ""
+
+msgid "%1 to remove"
+msgstr ""
+
+msgid "%1 to delete"
 msgstr ""
 
 msgid "Restore"
@@ -650,6 +688,9 @@ msgid "Quote Char:"
 msgstr ""
 
 msgid "CSV Import: %1"
+msgstr ""
+
+msgid "Import"
 msgstr ""
 
 msgid "Auto-Detect"

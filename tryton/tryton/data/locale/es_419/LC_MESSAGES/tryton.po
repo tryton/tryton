@@ -676,22 +676,26 @@ msgstr "Anterior"
 msgid "Next"
 msgstr "Siguiente"
 
-#, python-format
-msgid "Attachment (%s)"
-msgstr ""
+#, fuzzy, python-format
+msgid "Attachment (%d)"
+msgid_plural "Attachments (%d)"
+msgstr[0] "Adjuntos"
+msgstr[1] "Adjuntos"
 
 #, python-format
 msgid "Note (%d/%d)"
-msgstr ""
+msgid_plural "Notes (%d/%d)"
+msgstr[0] ""
+msgstr[1] ""
 
 msgid "You have to select one record."
 msgstr "Debe elegir un registro."
 
-msgid "Are you sure to remove this record?"
-msgstr "¿Está seguro que quiere eliminar este registro?"
-
-msgid "Are you sure to remove those records?"
-msgstr "¿Está seguro que quiere eliminar estos registros?"
+#, fuzzy, python-format
+msgid "Are you sure you want to delete this record?"
+msgid_plural "Are you sure you want to delete these %(size)d records?"
+msgstr[0] "¿Está seguro que quiere eliminar este registro?"
+msgstr[1] "¿Está seguro que quiere eliminar este registro?"
 
 msgid "Records not removed."
 msgstr "Los registros no se han eliminado."
@@ -1082,6 +1086,10 @@ msgstr "Buscar"
 msgid "New"
 msgstr "Nuevo"
 
+#, fuzzy
+msgid "Remove"
+msgstr "Eliminar archivo"
+
 #, python-format
 msgid "Search %s"
 msgstr ""
@@ -1223,6 +1231,9 @@ msgstr "Seleccionar..."
 msgid "Clear"
 msgstr "Limpiar"
 
+msgid "All Supported Types"
+msgstr ""
+
 msgid "All files"
 msgstr ""
 
@@ -1240,9 +1251,6 @@ msgstr ""
 msgid "Remove \"%s\""
 msgstr ""
 
-msgid "Images"
-msgstr ""
-
 msgid "Add existing record"
 msgstr ""
 
@@ -1252,6 +1260,14 @@ msgstr ""
 #, fuzzy
 msgid "Restore selected record"
 msgstr "Debe elegir un registro."
+
+#, python-format
+msgid "%s to add"
+msgstr ""
+
+#, fuzzy, python-format
+msgid "%s to remove"
+msgstr "Los registros no se han eliminado."
 
 msgid "Open the record <F2>"
 msgstr ""
@@ -1271,6 +1287,10 @@ msgstr ""
 #, fuzzy
 msgid "Undelete selected record"
 msgstr "Registros seleccionados"
+
+#, python-format
+msgid "%s to delete"
+msgstr ""
 
 #, python-format
 msgid "%s%%"

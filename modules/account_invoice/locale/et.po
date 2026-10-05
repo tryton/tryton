@@ -1100,9 +1100,15 @@ msgctxt "model:ir.action,name:act_invoice_relate"
 msgid "Invoices"
 msgstr "Arved"
 
+#, fuzzy
+msgctxt "model:ir.action,name:act_invoice_relate_period"
+msgid "Invoices"
+msgstr "Arved"
+
+#, fuzzy
 msgctxt "model:ir.action,name:act_payment_method_form"
-msgid "Invoice Payment Methods"
-msgstr "Arve tasumise meetodid"
+msgid "Payment Methods"
+msgstr "Maksemeetod"
 
 msgctxt "model:ir.action,name:act_payment_term_form"
 msgid "Payment Terms"
@@ -1185,6 +1191,21 @@ msgstr "Tasutud"
 msgctxt "model:ir.action.act_window.domain,name:act_invoice_relate_pending"
 msgid "Pending"
 msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_invoice_relate_period_all"
+msgid "All"
+msgstr "Kõik"
+
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_invoice_relate_period_in"
+msgid "Supplier"
+msgstr "Hankija"
+
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_invoice_relate_period_out"
+msgid "Customer"
+msgstr "Klient"
 
 #, python-format
 msgctxt "model:ir.message,text:msg_cancel_invoice_move"
@@ -1379,6 +1400,15 @@ msgstr ""
 "või tühistatud."
 
 #, fuzzy, python-format
+msgctxt "model:ir.message,text:msg_invoice_tax_identifier_invalid"
+msgid ""
+"The tax identifier \"%(identifier)s\" on invoice \"%(invoice)s\" has not "
+"been validated."
+msgstr ""
+"Rida\"%(rid)u\" ei saa täiendada, kuna arve \"%(arve)d\" on postitatud, "
+"tasutud või tühistatud."
+
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_invoice_tax_invalid"
 msgid ""
 "The taxes on invoice \"%(invoice)s\" are not valid, you must save it again "
@@ -1519,9 +1549,10 @@ msgctxt "model:ir.ui.menu,name:menu_invoices"
 msgid "Invoices"
 msgstr "Arved"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_payment_method_form"
-msgid "Invoice Payment Methods"
-msgstr "Arve maksemeetod"
+msgid "Payment Methods"
+msgstr "Maksemeetod"
 
 msgctxt "model:ir.ui.menu,name:menu_payment_term_form"
 msgid "Payment Terms"

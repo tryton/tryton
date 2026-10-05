@@ -1042,9 +1042,15 @@ msgctxt "model:ir.action,name:act_invoice_relate"
 msgid "Invoices"
 msgstr "Facturi"
 
+#, fuzzy
+msgctxt "model:ir.action,name:act_invoice_relate_period"
+msgid "Invoices"
+msgstr "Facturi"
+
+#, fuzzy
 msgctxt "model:ir.action,name:act_payment_method_form"
-msgid "Invoice Payment Methods"
-msgstr "Metode Plata Factura"
+msgid "Payment Methods"
+msgstr "Metodă Plata"
 
 msgctxt "model:ir.action,name:act_payment_term_form"
 msgid "Payment Terms"
@@ -1123,6 +1129,21 @@ msgstr "Plătit"
 msgctxt "model:ir.action.act_window.domain,name:act_invoice_relate_pending"
 msgid "Pending"
 msgstr "In Derulare"
+
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_invoice_relate_period_all"
+msgid "All"
+msgstr "Tot"
+
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_invoice_relate_period_in"
+msgid "Supplier"
+msgstr "Furnizor"
+
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_invoice_relate_period_out"
+msgid "Customer"
+msgstr "Client"
 
 #, python-format
 msgctxt "model:ir.message,text:msg_cancel_invoice_move"
@@ -1327,6 +1348,13 @@ msgstr ""
 "Nu se poate adăuga un rând la factura \"%(invoice)s\" pentru că nu mai este "
 "in stare de ciornă."
 
+#, fuzzy, python-format
+msgctxt "model:ir.message,text:msg_invoice_tax_identifier_invalid"
+msgid ""
+"The tax identifier \"%(identifier)s\" on invoice \"%(invoice)s\" has not "
+"been validated."
+msgstr "„%(type)s” de pe factura „%(invoice)s” nu este valid."
+
 #, python-format
 msgctxt "model:ir.message,text:msg_invoice_tax_invalid"
 msgid ""
@@ -1463,9 +1491,10 @@ msgctxt "model:ir.ui.menu,name:menu_invoices"
 msgid "Invoices"
 msgstr "Facturi"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_payment_method_form"
-msgid "Invoice Payment Methods"
-msgstr "Metode Plata Factura"
+msgid "Payment Methods"
+msgstr "Metodă Plata"
 
 msgctxt "model:ir.ui.menu,name:menu_payment_term_form"
 msgid "Payment Terms"

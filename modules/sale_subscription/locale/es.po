@@ -90,6 +90,10 @@ msgctxt "field:sale.subscription,state:"
 msgid "State"
 msgstr "Estado"
 
+msgctxt "field:sale.subscription.create_invoice.start,companies:"
+msgid "Companies"
+msgstr "Empreses"
+
 msgctxt "field:sale.subscription.create_invoice.start,date:"
 msgid "Date"
 msgstr "Fecha"
@@ -193,6 +197,10 @@ msgstr "Cantidad"
 msgctxt "field:sale.subscription.line.consumption,unit:"
 msgid "Unit"
 msgstr "Unidad"
+
+msgctxt "field:sale.subscription.line.consumption.create.start,companies:"
+msgid "Companies"
+msgstr "Empreses"
 
 msgctxt "field:sale.subscription.line.consumption.create.start,date:"
 msgid "Date"
@@ -302,9 +310,17 @@ msgctxt "help:sale.subscription,state:"
 msgid "The current state of the subscription."
 msgstr "El estado actual de la suscripción."
 
+msgctxt "help:sale.subscription.create_invoice.start,companies:"
+msgid "Limit to subscription lines from these companies."
+msgstr "Limitar a las líneas de suscripción de estas empresas."
+
 msgctxt "help:sale.subscription.line,subscription:"
 msgid "Add the line below the subscription."
 msgstr "Añade lineas a la suscripción."
+
+msgctxt "help:sale.subscription.line.consumption.create.start,companies:"
+msgid "Limit to subscription lines from these companies."
+msgstr "Limitar a las líneas de suscripción de estas empresas."
 
 msgctxt "help:sale.subscription.recurrence.rule,bymonth:"
 msgid "A comma separated list of integers."

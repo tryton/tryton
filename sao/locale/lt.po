@@ -135,6 +135,9 @@ msgstr "Naudotojo vardas"
 msgid "Login with"
 msgstr "Prisijungti"
 
+msgid "Disabled on localhost"
+msgstr ""
+
 msgid "Too many requests. Try again later."
 msgstr ""
 
@@ -313,14 +316,25 @@ msgstr "Išsaugoti šį įrašą"
 msgid "Reload"
 msgstr ""
 
+#, fuzzy
+msgid "Delete..."
+msgstr "Naikinti"
+
 msgid "View Logs..."
 msgstr ""
 
 msgid "Show revisions..."
 msgstr "Rodyti pakeitimus..."
 
+msgid "Attachments..."
+msgstr ""
+
 msgid "Add an attachment to the record"
 msgstr "Prisegti failą prie įrašo"
+
+#, fuzzy
+msgid "Notes..."
+msgstr "Pastaba"
 
 msgid "Add a note to the record"
 msgstr "Prisegti pastabą prie įrašo"
@@ -332,6 +346,18 @@ msgstr ""
 msgid "Chat on the record"
 msgstr "Prisegti pastabą prie įrašo"
 
+#, fuzzy
+msgid "Actions..."
+msgstr "Veiksmai"
+
+#, fuzzy
+msgid "Relate..."
+msgstr "Susijęs"
+
+#, fuzzy
+msgid "Print..."
+msgstr "Spausdinimas"
+
 msgid "Email..."
 msgstr ""
 
@@ -339,10 +365,10 @@ msgstr ""
 msgid "Send an email using the record"
 msgstr "Prisegti pastabą prie įrašo"
 
-msgid "Export"
+msgid "Export..."
 msgstr ""
 
-msgid "Import"
+msgid "Import..."
 msgstr ""
 
 msgid ""
@@ -374,11 +400,12 @@ msgstr "Įrašas išsaugotas."
 msgid "Working now on the duplicated record(s)."
 msgstr "Dabar dirbate su įrašo(-ų) kopija(-omis)."
 
-msgid "Are you sure to remove this record?"
-msgstr "Ar tikrai norite ištrinti šį įrašą?"
-
-msgid "Are you sure to remove those records?"
-msgstr "Ar tikrai norite ištrinti šiuos įrašus?"
+#, fuzzy
+msgid "Are you sure you want to delete this record?"
+msgid_plural "Are you sure you want to delete these %1 records?"
+msgstr[0] "Ar tikrai norite ištrinti šį įrašą?"
+msgstr[1] "Ar tikrai norite ištrinti šį įrašą?"
+msgstr[2] "Ar tikrai norite ištrinti šį įrašą?"
 
 msgid "Records removed."
 msgstr "Įrašai ištrinti."
@@ -404,10 +431,16 @@ msgid "Template"
 msgstr "Susijęs"
 
 msgid "Attachment (%1)"
-msgstr ""
+msgid_plural "Attachments (%1)"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
 
 msgid "Note (%1/%2)"
-msgstr ""
+msgid_plural "Notes (%1/%2)"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
 
 msgid "Filters"
 msgstr ""
@@ -522,6 +555,16 @@ msgid "Open"
 msgstr "Atvėrimas"
 
 msgid "Undelete"
+msgstr ""
+
+#, javascript-format
+msgid "%s to add"
+msgstr ""
+
+msgid "%1 to remove"
+msgstr ""
+
+msgid "%1 to delete"
 msgstr ""
 
 msgid "Restore"
@@ -672,6 +715,9 @@ msgid "Quote Char:"
 msgstr ""
 
 msgid "CSV Import: %1"
+msgstr ""
+
+msgid "Import"
 msgstr ""
 
 msgid "Auto-Detect"

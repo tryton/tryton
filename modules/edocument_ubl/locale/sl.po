@@ -7,6 +7,15 @@ msgid "Edocument Ubl Invoice"
 msgstr ""
 
 #, python-format
+msgctxt "model:ir.message,text:msg_bank_account_not_found"
+msgid "Could not find bank account \"%(account)s\" for party \"%(parties)s\"."
+msgid_plural ""
+"Could not find bank account \"%(account)s\" for any of the parties "
+"\"%(parties)s\"."
+msgstr[0] ""
+msgstr[1] ""
+
+#, python-format
 msgctxt "model:ir.message,text:msg_company_not_found"
 msgid ""
 "Could not find the company for:\n"

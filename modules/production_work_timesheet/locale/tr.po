@@ -22,3 +22,12 @@ msgstr "Zaman Çizelgesi İşler"
 msgctxt "field:production.work,timesheet_works:"
 msgid "Timesheet Works"
 msgstr "Zaman Çizelgesi İşler"
+
+#, fuzzy
+msgctxt "field:production.work.center,include_timesheet_cost:"
+msgid "Include Timesheet Cost"
+msgstr "Zaman Çizelgesi İşler"
+
+msgctxt "help:production.work.center,include_timesheet_cost:"
+msgid "Check to add the timesheet cost to the work cost."
+msgstr ""

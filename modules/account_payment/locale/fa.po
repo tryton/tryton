@@ -66,6 +66,11 @@ msgid "Payments"
 msgstr "پرداخت ها"
 
 #, fuzzy
+msgctxt "field:account.move.line.create_direct_debit.start,companies:"
+msgid "Companies"
+msgstr "شرکت"
+
+#, fuzzy
 msgctxt "field:account.move.line.create_direct_debit.start,date:"
 msgid "Date"
 msgstr "تاریخ"
@@ -304,6 +309,10 @@ msgctxt "help:account.move.line,payment_direct_debit:"
 msgid "Check if the line will be paid by direct debit."
 msgstr "تیک بزنید اگر خط با پرداخت مستقیم پرداخت می شود."
 
+msgctxt "help:account.move.line.create_direct_debit.start,companies:"
+msgid "Limit to lines from these companies."
+msgstr ""
+
 msgctxt "help:account.move.line.create_direct_debit.start,date:"
 msgid "Create direct debit for lines due up to this date."
 msgstr ""
@@ -434,9 +443,10 @@ msgctxt "model:ir.action,name:act_payment_group_form"
 msgid "Payment Groups"
 msgstr "گروه های پرداخت"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_payment_journal_form"
-msgid "Payment Journals"
-msgstr "روزنامه های پرداخت"
+msgid "Journals"
+msgstr "روزنامه ها"
 
 msgctxt "model:ir.action,name:act_process_payments"
 msgid "Process Payments"
@@ -750,9 +760,10 @@ msgctxt "model:ir.ui.menu,name:menu_payment_group_form"
 msgid "Payment Groups"
 msgstr "گروه های پرداخت"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_payment_journal_form"
-msgid "Payment Journals"
-msgstr "روزنامه های پرداخت"
+msgid "Journals"
+msgstr "روزنامه ها"
 
 msgctxt "model:ir.ui.menu,name:menu_payments"
 msgid "Payments"

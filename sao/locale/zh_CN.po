@@ -132,6 +132,9 @@ msgstr "用户名"
 msgid "Login with"
 msgstr "登录"
 
+msgid "Disabled on localhost"
+msgstr ""
+
 msgid "Too many requests. Try again later."
 msgstr "请求太多，请稍后重试."
 
@@ -309,14 +312,26 @@ msgstr "保存当前记录"
 msgid "Reload"
 msgstr "重载"
 
+#, fuzzy
+msgid "Delete..."
+msgstr "删除"
+
 msgid "View Logs..."
 msgstr "浏览日志..."
 
 msgid "Show revisions..."
 msgstr "显示修订版本..."
 
+#, fuzzy
+msgid "Attachments..."
+msgstr "附件"
+
 msgid "Add an attachment to the record"
 msgstr "为当前记录添加附件"
+
+#, fuzzy
+msgid "Notes..."
+msgstr "备注"
 
 msgid "Add a note to the record"
 msgstr "为当前记录添加注释"
@@ -329,6 +344,18 @@ msgid "Chat on the record"
 msgstr "打开记录"
 
 #, fuzzy
+msgid "Actions..."
+msgstr "操作"
+
+#, fuzzy
+msgid "Relate..."
+msgstr "关联"
+
+#, fuzzy
+msgid "Print..."
+msgstr "打印"
+
+#, fuzzy
 msgid "Email..."
 msgstr "用电子邮件发送..."
 
@@ -336,10 +363,12 @@ msgstr "用电子邮件发送..."
 msgid "Send an email using the record"
 msgstr "使用当前记录发送电子邮件"
 
-msgid "Export"
+#, fuzzy
+msgid "Export..."
 msgstr "导出"
 
-msgid "Import"
+#, fuzzy
+msgid "Import..."
 msgstr "导入"
 
 msgid ""
@@ -371,11 +400,10 @@ msgstr "记录保存成功."
 msgid "Working now on the duplicated record(s)."
 msgstr "正在处理重复记录."
 
-msgid "Are you sure to remove this record?"
-msgstr "确定要删除这条记录吗？"
-
-msgid "Are you sure to remove those records?"
-msgstr "确定要删除这些记录？"
+#, fuzzy
+msgid "Are you sure you want to delete this record?"
+msgid_plural "Are you sure you want to delete these %1 records?"
+msgstr[0] "确定要删除这条记录吗？"
 
 msgid "Records removed."
 msgstr "记录已成功删除."
@@ -398,11 +426,15 @@ msgstr "管理..."
 msgid "Template"
 msgstr "模板"
 
+#, fuzzy
 msgid "Attachment (%1)"
-msgstr "附件(%1)"
+msgid_plural "Attachments (%1)"
+msgstr[0] "附件(%1)"
 
+#, fuzzy
 msgid "Note (%1/%2)"
-msgstr "备注 (%1/%2)"
+msgid_plural "Notes (%1/%2)"
+msgstr[0] "备注 (%1/%2)"
 
 msgid "Filters"
 msgstr "筛选"
@@ -516,6 +548,17 @@ msgid "Open"
 msgstr "打开"
 
 msgid "Undelete"
+msgstr "回滚"
+
+#, javascript-format
+msgid "%s to add"
+msgstr ""
+
+msgid "%1 to remove"
+msgstr ""
+
+#, fuzzy
+msgid "%1 to delete"
 msgstr "回滚"
 
 msgid "Restore"
@@ -660,6 +703,9 @@ msgstr "限定符:"
 
 msgid "CSV Import: %1"
 msgstr "CSV导入: %s"
+
+msgid "Import"
+msgstr "导入"
 
 msgid "Auto-Detect"
 msgstr "自动侦测"

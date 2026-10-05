@@ -694,22 +694,26 @@ msgstr "Eelmine"
 msgid "Next"
 msgstr "Edasi"
 
-#, python-format
-msgid "Attachment (%s)"
-msgstr "Manus (%s)"
+#, fuzzy, python-format
+msgid "Attachment (%d)"
+msgid_plural "Attachments (%d)"
+msgstr[0] "Manus (%s)"
+msgstr[1] "Manus (%s)"
 
-#, python-format
+#, fuzzy, python-format
 msgid "Note (%d/%d)"
-msgstr "Märkus (%d%d)"
+msgid_plural "Notes (%d/%d)"
+msgstr[0] "Märkus (%d%d)"
+msgstr[1] "Märkus (%d%d)"
 
 msgid "You have to select one record."
 msgstr "Pead valima vähemasti ühe rea."
 
-msgid "Are you sure to remove this record?"
-msgstr "Oled kindel, et kustutada see kirje?"
-
-msgid "Are you sure to remove those records?"
-msgstr "Oled kindel, et kustutada need kirjed?"
+#, fuzzy, python-format
+msgid "Are you sure you want to delete this record?"
+msgid_plural "Are you sure you want to delete these %(size)d records?"
+msgstr[0] "Oled kindel, et kustutada see kirje?"
+msgstr[1] "Oled kindel, et kustutada see kirje?"
 
 msgid "Records not removed."
 msgstr "Kirjeid ei kustutatud."
@@ -1108,6 +1112,10 @@ msgstr "Otsi"
 msgid "New"
 msgstr "Uus"
 
+#, fuzzy
+msgid "Remove"
+msgstr "_Eemalda"
+
 #, python-format
 msgid "Search %s"
 msgstr "Otsi %s"
@@ -1255,6 +1263,9 @@ msgstr "Vali..."
 msgid "Clear"
 msgstr "Tühjenda"
 
+msgid "All Supported Types"
+msgstr ""
+
 msgid "All files"
 msgstr "Kõik failid"
 
@@ -1272,9 +1283,6 @@ msgstr "Lisa väärtus"
 msgid "Remove \"%s\""
 msgstr "Eemalda \"%s\""
 
-msgid "Images"
-msgstr "Pildid"
-
 msgid "Add existing record"
 msgstr "Lisa olemasolev kirje"
 
@@ -1284,6 +1292,14 @@ msgstr "Eemalda valitud kirje"
 #, fuzzy
 msgid "Restore selected record"
 msgstr "Eemalda valitud kirje"
+
+#, python-format
+msgid "%s to add"
+msgstr ""
+
+#, fuzzy, python-format
+msgid "%s to remove"
+msgstr "Kirjeid ei kustutatud."
 
 msgid "Open the record <F2>"
 msgstr "Ava see kirje <F2>"
@@ -1303,6 +1319,10 @@ msgstr "Kustuta valitud kirje"
 #, fuzzy
 msgid "Undelete selected record"
 msgstr "Kustuta valitud kirje"
+
+#, python-format
+msgid "%s to delete"
+msgstr ""
 
 #, python-format
 msgid "%s%%"

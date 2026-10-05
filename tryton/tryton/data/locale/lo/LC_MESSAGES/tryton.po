@@ -714,21 +714,22 @@ msgid "Next"
 msgstr "ຕໍ່ໄປ"
 
 #, fuzzy, python-format
-msgid "Attachment (%s)"
-msgstr "ເອກະສານຄັດຕິດ (%s)"
+msgid "Attachment (%d)"
+msgid_plural "Attachments (%d)"
+msgstr[0] "ເອກະສານຄັດຕິດ (%s)"
 
 #, python-format
 msgid "Note (%d/%d)"
-msgstr ""
+msgid_plural "Notes (%d/%d)"
+msgstr[0] ""
 
 msgid "You have to select one record."
 msgstr "ທ່ານຕ້ອງໄດ້ເລືອກ ໜຶ່ງແຖວຂໍ້ມູນ."
 
-msgid "Are you sure to remove this record?"
-msgstr "ທ່ານແນ່ໃຈບໍ່ທີ່ຈະລຶບແຖວຂໍ້ມູນນີ້?"
-
-msgid "Are you sure to remove those records?"
-msgstr "ທ່ານແນ່ໃຈບໍ່ທີ່ຈະລຶບແຖວຂໍ້ມູນເຫຼົ່ານີ້?"
+#, fuzzy, python-format
+msgid "Are you sure you want to delete this record?"
+msgid_plural "Are you sure you want to delete these %(size)d records?"
+msgstr[0] "ທ່ານແນ່ໃຈບໍ່ທີ່ຈະລຶບແຖວຂໍ້ມູນນີ້?"
 
 msgid "Records not removed."
 msgstr "ແຖວຂໍ້ມູນບໍ່ທັນຖືກເອົາອອກ."
@@ -1126,6 +1127,10 @@ msgstr "ຊອກຫາ"
 msgid "New"
 msgstr "ສ້າງໃໝ່"
 
+#, fuzzy
+msgid "Remove"
+msgstr "_ເອົາອອກ"
+
 #, python-format
 msgid "Search %s"
 msgstr "ຊອກຫາ %s"
@@ -1272,6 +1277,9 @@ msgstr "ເລືອກ..."
 msgid "Clear"
 msgstr "ໃຫ້ເປົ່າ"
 
+msgid "All Supported Types"
+msgstr ""
+
 msgid "All files"
 msgstr "ຟາຍລ໌ ທັງໝົດ"
 
@@ -1289,9 +1297,6 @@ msgstr "ເພີ່ມຄ່າ"
 msgid "Remove \"%s\""
 msgstr "ເອົາ \"%s\" ອອກ"
 
-msgid "Images"
-msgstr "ຮູບ"
-
 msgid "Add existing record"
 msgstr "ເພີ່ມແຖວຂໍ້ມູນທີ່ມີຢູ່"
 
@@ -1301,6 +1306,14 @@ msgstr "ເອົາແຖວຂໍ້ມູນທີ່ເລືອກນີ້
 #, fuzzy
 msgid "Restore selected record"
 msgstr "ເອົາແຖວຂໍ້ມູນທີ່ເລືອກນີ້ອອກ"
+
+#, python-format
+msgid "%s to add"
+msgstr ""
+
+#, fuzzy, python-format
+msgid "%s to remove"
+msgstr "ແຖວຂໍ້ມູນບໍ່ທັນຖືກເອົາອອກ."
 
 msgid "Open the record <F2>"
 msgstr "ໄຂແຖວຂໍ້ມູນ <F2>"
@@ -1323,6 +1336,10 @@ msgstr "ເອົາແຖວຂໍ້ມູນທີ່ເລືອກນີ້
 #, fuzzy
 msgid "Undelete selected record"
 msgstr "ເອົາແຖວຂໍ້ມູນທີ່ເລືອກນີ້ອອກ"
+
+#, python-format
+msgid "%s to delete"
+msgstr ""
 
 #, python-format
 msgid "%s%%"

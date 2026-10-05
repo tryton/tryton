@@ -27,6 +27,22 @@ msgctxt "field:product.template,lot_sequence:"
 msgid "Lot Sequence"
 msgstr "Secuencia de lote"
 
+msgctxt "field:sale.point.sale.line,lot:"
+msgid "Lot"
+msgstr "Lote"
+
+msgctxt "field:sale.point.sale.line,lot_required:"
+msgid "Lot Required"
+msgstr "Lote obligatorio"
+
+msgctxt "field:stock.conversion,input_lot:"
+msgid "Input Lot"
+msgstr "Lote entrada"
+
+msgctxt "field:stock.conversion,output_lot:"
+msgid "Output Lot"
+msgstr "Lote salida"
+
 msgctxt "field:stock.inventory.count.quantity,lot:"
 msgid "Lot"
 msgstr "Lote"

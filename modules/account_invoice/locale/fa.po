@@ -1102,9 +1102,15 @@ msgctxt "model:ir.action,name:act_invoice_relate"
 msgid "Invoices"
 msgstr "صورتحساب ها"
 
+#, fuzzy
+msgctxt "model:ir.action,name:act_invoice_relate_period"
+msgid "Invoices"
+msgstr "صورتحساب ها"
+
+#, fuzzy
 msgctxt "model:ir.action,name:act_payment_method_form"
-msgid "Invoice Payment Methods"
-msgstr "روش پرداخت صورتحساب"
+msgid "Payment Methods"
+msgstr "روش پرداخت"
 
 msgctxt "model:ir.action,name:act_payment_term_form"
 msgid "Payment Terms"
@@ -1187,6 +1193,21 @@ msgstr "پرداخت شده"
 msgctxt "model:ir.action.act_window.domain,name:act_invoice_relate_pending"
 msgid "Pending"
 msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_invoice_relate_period_all"
+msgid "All"
+msgstr "همه"
+
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_invoice_relate_period_in"
+msgid "Supplier"
+msgstr "تامین کننده"
+
+#, fuzzy
+msgctxt "model:ir.action.act_window.domain,name:act_invoice_relate_period_out"
+msgid "Customer"
+msgstr "مشتری"
 
 #, python-format
 msgctxt "model:ir.message,text:msg_cancel_invoice_move"
@@ -1388,6 +1409,15 @@ msgstr ""
 "شما نمیتوانید مالیات را به صورتحساب\"٪s\" اضافه کنید زیرا آن ارسال، پرداخت و"
 " یا لغو شده است."
 
+#, fuzzy, python-format
+msgctxt "model:ir.message,text:msg_invoice_tax_identifier_invalid"
+msgid ""
+"The tax identifier \"%(identifier)s\" on invoice \"%(invoice)s\" has not "
+"been validated."
+msgstr ""
+"شما نمیتوانید سطر: \"%(line)s\" را تغییر دهید، زیرا صورتحساب : \"٪s\" ارسال،"
+" پرداخت و یا لغو شده است."
+
 #, python-format
 msgctxt "model:ir.message,text:msg_invoice_tax_invalid"
 msgid ""
@@ -1526,9 +1556,10 @@ msgctxt "model:ir.ui.menu,name:menu_invoices"
 msgid "Invoices"
 msgstr "صورتحساب ها"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_payment_method_form"
-msgid "Invoice Payment Methods"
-msgstr "روش پرداخت صورتحساب"
+msgid "Payment Methods"
+msgstr "روش پرداخت"
 
 msgctxt "model:ir.ui.menu,name:menu_payment_term_form"
 msgid "Payment Terms"

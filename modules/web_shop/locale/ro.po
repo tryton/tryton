@@ -1,102 +1,103 @@
 #
+#, fuzzy
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:product.attribute,web_shops:"
 msgid "Web Shops"
-msgstr ""
+msgstr "Magazine Web"
 
 msgctxt "field:product.category,web_shops:"
 msgid "Web Shops"
-msgstr ""
+msgstr "Magazine Web"
 
 msgctxt "field:product.image,web_shop:"
 msgid "Web Shop"
-msgstr ""
+msgstr "Magazin Web"
 
 msgctxt "field:product.product,web_shop_description:"
 msgid "Web Shop Description"
-msgstr ""
+msgstr "Descriere Magazin Web"
 
 msgctxt "field:product.product,web_shop_urls:"
 msgid "Web Shop URLs"
-msgstr ""
+msgstr "URL-uri Magazin Web"
 
 msgctxt "field:product.product,web_shops:"
 msgid "Web Shops"
-msgstr ""
+msgstr "Magazine Web"
 
 msgctxt "field:product.template,web_shop_description:"
 msgid "Web Shop Description"
-msgstr ""
+msgstr "Descriere Magazin Web"
 
 msgctxt "field:product.web_shop_url,product:"
 msgid "Product"
-msgstr ""
+msgstr "Produs"
 
 msgctxt "field:product.web_shop_url,shop:"
 msgid "Shop"
-msgstr ""
+msgstr "Magazin"
 
 msgctxt "field:product.web_shop_url,url:"
 msgid "Shop URL"
-msgstr ""
+msgstr "URL Magazin"
 
 msgctxt "field:sale.sale,web_id:"
 msgid "Web ID"
-msgstr ""
+msgstr "ID Web"
 
 msgctxt "field:sale.sale,web_shop:"
 msgid "Web Shop"
-msgstr ""
+msgstr "Magazin Web"
 
 msgctxt "field:sale.sale,web_status_url:"
 msgid "Web Status URL"
-msgstr ""
+msgstr "Status Web URL"
 
 msgctxt "field:sale.sale,web_url:"
 msgid "Web URL"
-msgstr ""
+msgstr "URL Web"
 
 msgctxt "field:web.shop,attributes:"
 msgid "Attributes"
-msgstr ""
+msgstr "Proprietați"
 
 msgctxt "field:web.shop,attributes_removed:"
 msgid "Attributes Removed"
-msgstr ""
+msgstr "Proprietăți Eliminate"
 
 msgctxt "field:web.shop,categories:"
 msgid "Categories"
-msgstr ""
+msgstr "Categorii"
 
 msgctxt "field:web.shop,categories_removed:"
 msgid "Categories Removed"
-msgstr ""
+msgstr "Categorii Eliminate"
 
 msgctxt "field:web.shop,company:"
 msgid "Company"
-msgstr ""
+msgstr "Societate"
 
 msgctxt "field:web.shop,countries:"
 msgid "Countries"
-msgstr ""
+msgstr "Țări"
 
 msgctxt "field:web.shop,currency:"
 msgid "Currency"
-msgstr ""
+msgstr "Valută"
 
 msgctxt "field:web.shop,guest_party:"
 msgid "Guest Party"
-msgstr ""
+msgstr "Parte Gazda"
 
 msgctxt "field:web.shop,language:"
 msgid "Language"
-msgstr ""
+msgstr "Limba"
 
 msgctxt "field:web.shop,name:"
 msgid "Name"
-msgstr ""
+msgstr "Denumire"
 
 msgctxt "field:web.shop,non_sale_price_list:"
 msgid "Non-Sale Price List"
@@ -104,71 +105,75 @@ msgstr ""
 
 msgctxt "field:web.shop,products:"
 msgid "Products"
-msgstr ""
+msgstr "Produse"
 
 msgctxt "field:web.shop,products_removed:"
 msgid "Products Removed"
 msgstr ""
 
+msgctxt "field:web.shop,sale_draft_abandon_delay:"
+msgid "Sale Draft Abandon Delay"
+msgstr ""
+
 msgctxt "field:web.shop,sale_price_list:"
 msgid "Sale Price List"
-msgstr ""
+msgstr "Lista de prețuri de vânzare"
 
 msgctxt "field:web.shop,type:"
 msgid "Type"
-msgstr ""
+msgstr "Tip"
 
 msgctxt "field:web.shop,warehouses:"
 msgid "Warehouses"
-msgstr ""
+msgstr "Depozite"
 
 msgctxt "field:web.shop-country.country,country:"
 msgid "Country"
-msgstr ""
+msgstr "Țară"
 
 msgctxt "field:web.shop-country.country,shop:"
 msgid "Shop"
-msgstr ""
+msgstr "Magazin"
 
 msgctxt "field:web.shop-product.attribute,attribute:"
 msgid "Attribute"
-msgstr ""
+msgstr "Proprietate"
 
 msgctxt "field:web.shop-product.attribute,shop:"
 msgid "Shop"
-msgstr ""
+msgstr "Magazin"
 
 msgctxt "field:web.shop-product.category,category:"
 msgid "Category"
-msgstr ""
+msgstr "Categorie"
 
 msgctxt "field:web.shop-product.category,shop:"
 msgid "Shop"
-msgstr ""
+msgstr "Magazin"
 
 msgctxt "field:web.shop-product.product,product:"
 msgid "Product"
-msgstr ""
+msgstr "Produs"
 
 msgctxt "field:web.shop-product.product,shop:"
 msgid "Shop"
-msgstr ""
+msgstr "Magazin"
 
 msgctxt "field:web.shop-stock.location,shop:"
 msgid "Shop"
-msgstr ""
+msgstr "Magazin"
 
 msgctxt "field:web.shop-stock.location,warehouse:"
 msgid "Warehouse"
-msgstr ""
+msgstr "Depozit"
 
 msgctxt "field:web.user,invoice_address:"
 msgid "Invoice Address"
-msgstr ""
+msgstr "Adresa de facturare"
 
 msgctxt "field:web.user,shipment_address:"
 msgid "Shipment Address"
-msgstr ""
+msgstr "Adresa de expediere"
 
 msgctxt "help:product.attribute,web_shops:"
 msgid "The list of web shops on which the attribute is published."
@@ -219,6 +224,12 @@ msgctxt "help:web.shop,products_removed:"
 msgid "The list of products to unpublish."
 msgstr ""
 
+msgctxt "help:web.shop,sale_draft_abandon_delay:"
+msgid ""
+"The time period after which a sale made via the web shop without modification is cancelled.\n"
+"Leave empty to never cancel any draft sales."
+msgstr ""
+
 msgctxt "help:web.shop,sale_price_list:"
 msgid "The price list to compute sale price of products."
 msgstr ""
@@ -229,7 +240,7 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_shop"
 msgid "Web Shops"
-msgstr ""
+msgstr "Magazine Web"
 
 #, python-format
 msgctxt "model:ir.message,text:msg_sale_invalid_party"
@@ -252,11 +263,11 @@ msgstr ""
 
 msgctxt "model:ir.rule.group,name:rule_group_shop_companies"
 msgid "User in companies"
-msgstr ""
+msgstr "Utilizator în Companii"
 
 msgctxt "model:ir.ui.menu,name:menu_shop"
 msgid "Web Shops"
-msgstr ""
+msgstr "Magazine Web"
 
 msgctxt "model:product.web_shop_url,string:"
 msgid "Product Web Shop Url"
@@ -264,7 +275,7 @@ msgstr ""
 
 msgctxt "model:web.shop,string:"
 msgid "Web Shop"
-msgstr ""
+msgstr "Magazin Web"
 
 msgctxt "model:web.shop-country.country,string:"
 msgid "Web Shop - Country"
@@ -286,14 +297,18 @@ msgctxt "model:web.shop-stock.location,string:"
 msgid "Web Shop - Stock Location"
 msgstr ""
 
+msgctxt "selection:ir.cron,method:"
+msgid "Cancel Abandoned Sales from Web Shop"
+msgstr ""
+
 msgctxt "view:product.template:"
 msgid "Edit"
-msgstr ""
+msgstr "Editare"
 
 msgctxt "view:product.template:"
 msgid "Web Shop"
-msgstr ""
+msgstr "Magazin Web"
 
 msgctxt "view:web.shop:"
 msgid "Products"
-msgstr ""
+msgstr "Produse"

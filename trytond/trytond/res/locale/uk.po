@@ -81,6 +81,11 @@ msgctxt "field:res.user,actions:"
 msgid "Actions"
 msgstr "Дії"
 
+#, fuzzy
+msgctxt "field:res.user,administrator:"
+msgid "Administrator"
+msgstr "Адміністрування"
+
 msgctxt "field:res.user,applications:"
 msgid "Applications"
 msgstr "Програми"
@@ -235,6 +240,10 @@ msgctxt "help:res.user,actions:"
 msgid "Actions that will be run at login."
 msgstr "Дії, які виконуються під час входу до системи."
 
+msgctxt "help:res.user,administrator:"
+msgid "When checked the user has the access rights of all groups."
+msgstr ""
+
 msgctxt "help:res.user,notifications:"
 msgid "Notifications to subscribe to."
 msgstr ""
@@ -313,6 +322,10 @@ msgstr "Пароль для %(login)s"
 msgctxt "model:ir.model.button,help:user_reset_password_button"
 msgid "Send by email a new temporary password to the user"
 msgstr "Надіслати користувачеві ел.поштою новий тимчасовий пароль"
+
+msgctxt "model:ir.model.button,string:notification_mark_read_button"
+msgid "Mark as Read"
+msgstr ""
 
 msgctxt "model:ir.model.button,string:user_application_cancel_button"
 msgid "Cancel"
@@ -483,10 +496,6 @@ msgstr "Права доступу"
 msgctxt "view:res.user:"
 msgid "Actions"
 msgstr "Дії"
-
-msgctxt "view:res.user:"
-msgid "Group Membership"
-msgstr "Членство в групах"
 
 msgctxt "view:res.user:"
 msgid "Preferences"

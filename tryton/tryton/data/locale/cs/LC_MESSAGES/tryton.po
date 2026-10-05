@@ -722,22 +722,29 @@ msgid "Next"
 msgstr "Další"
 
 #, fuzzy, python-format
-msgid "Attachment (%s)"
-msgstr "Příloha(%s)"
+msgid "Attachment (%d)"
+msgid_plural "Attachments (%d)"
+msgstr[0] "Příloha(%s)"
+msgstr[1] "Příloha(%s)"
+msgstr[2] "Příloha(%s)"
 
 #, python-format
 msgid "Note (%d/%d)"
-msgstr ""
+msgid_plural "Notes (%d/%d)"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
 
 #, fuzzy
 msgid "You have to select one record."
 msgstr "Musíte vybrat právě jeden záznam!"
 
-msgid "Are you sure to remove this record?"
-msgstr "Opravdu chcete odstranit tento záznam?"
-
-msgid "Are you sure to remove those records?"
-msgstr "Opravdu chcete odstranit tyto záznamy?"
+#, fuzzy, python-format
+msgid "Are you sure you want to delete this record?"
+msgid_plural "Are you sure you want to delete these %(size)d records?"
+msgstr[0] "Opravdu chcete odstranit tento záznam?"
+msgstr[1] "Opravdu chcete odstranit tento záznam?"
+msgstr[2] "Opravdu chcete odstranit tento záznam?"
 
 #, fuzzy
 msgid "Records not removed."
@@ -1167,6 +1174,10 @@ msgstr "Hledat"
 msgid "New"
 msgstr "_Nový"
 
+#, fuzzy
+msgid "Remove"
+msgstr "_Odstranit"
+
 #, python-format
 msgid "Search %s"
 msgstr ""
@@ -1313,6 +1324,9 @@ msgstr ""
 msgid "Clear"
 msgstr "Vymazat"
 
+msgid "All Supported Types"
+msgstr ""
+
 msgid "All files"
 msgstr "Všechny soubory"
 
@@ -1330,9 +1344,6 @@ msgstr ""
 msgid "Remove \"%s\""
 msgstr ""
 
-msgid "Images"
-msgstr "Obrázky"
-
 #, fuzzy
 msgid "Add existing record"
 msgstr "Uložit tento záznam"
@@ -1344,6 +1355,14 @@ msgstr "Smazat vybraný záznam"
 #, fuzzy
 msgid "Restore selected record"
 msgstr "Smazat vybraný záznam"
+
+#, python-format
+msgid "%s to add"
+msgstr ""
+
+#, fuzzy, python-format
+msgid "%s to remove"
+msgstr "Záznamy neodstraněny!"
 
 #, fuzzy
 msgid "Open the record <F2>"
@@ -1367,6 +1386,10 @@ msgstr "Smazat vybraný záznam"
 #, fuzzy
 msgid "Undelete selected record"
 msgstr "Smazat vybraný záznam"
+
+#, python-format
+msgid "%s to delete"
+msgstr ""
 
 #, python-format
 msgid "%s%%"

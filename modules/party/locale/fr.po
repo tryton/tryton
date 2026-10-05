@@ -162,13 +162,9 @@ msgctxt "field:party.category,parent:"
 msgid "Parent"
 msgstr "Parent"
 
-msgctxt "field:party.check_vies.result,parties_failed:"
-msgid "Parties Failed"
-msgstr "Tiers échoués"
-
-msgctxt "field:party.check_vies.result,parties_succeed:"
-msgid "Parties Succeed"
-msgstr "Tiers réussis"
+msgctxt "field:party.configuration,identifier_eu_vat_validation_period:"
+msgid "European VAT Number Validation Period"
+msgstr "Période de validation du numéro de TVA européen"
 
 msgctxt "field:party.configuration,identifier_types:"
 msgid "Identifier Types"
@@ -273,6 +269,14 @@ msgstr "Code"
 msgctxt "field:party.identifier,code_compact:"
 msgid "Code Compact"
 msgstr "Code Compact"
+
+msgctxt "field:party.identifier,eu_vat_valid:"
+msgid "European VAT Number Valid"
+msgstr "Numéro de TVA européen valide"
+
+msgctxt "field:party.identifier,eu_vat_validated_at:"
+msgid "European VAT Number Validated At"
+msgstr "Numéro de TVA européen validé le"
 
 msgctxt "field:party.identifier,party:"
 msgid "Party"
@@ -489,6 +493,11 @@ msgctxt "help:party.category,parent:"
 msgid "Add the category below the parent."
 msgstr "Ajouter la catégorie sous le parent."
 
+msgctxt "help:party.configuration,identifier_eu_vat_validation_period:"
+msgid "The period during which the number is still considered valid."
+msgstr ""
+"La période pendant laquelle le numéro est encore considéré comme valide."
+
 msgctxt "help:party.configuration,identifier_types:"
 msgid ""
 "Defines which identifier types are available.\n"
@@ -528,6 +537,10 @@ msgstr "Le tiers à effacer."
 msgctxt "help:party.identifier,address:"
 msgid "The address identified by this record."
 msgstr "L'adresse identifiée par cet enregistrement."
+
+msgctxt "help:party.identifier,eu_vat_valid:"
+msgid "Checked if the number has been validated on VIES service."
+msgstr "Coché si le numéro a été validé par le service VIES."
 
 msgctxt "help:party.identifier,party:"
 msgid "The party identified by this record."
@@ -613,10 +626,6 @@ msgctxt "model:ir.action,name:report_label"
 msgid "Labels"
 msgstr "Étiquettes"
 
-msgctxt "model:ir.action,name:wizard_check_vies"
-msgid "Check VIES"
-msgstr "Valider avec VIES"
-
 msgctxt "model:ir.action,name:wizard_erase"
 msgid "Erase"
 msgstr "Effacer"
@@ -693,6 +702,12 @@ msgid "Invalid format \"%(format)s\" with exception \"%(exception)s\"."
 msgstr "Format « %(format)s » non valide avec l'exception « %(exception)s »."
 
 #, python-format
+msgctxt "model:ir.message,text:msg_invalid_format_strip"
+msgid "Invalid format \"%(format)s\". Empty address generates \"%(value)s\"."
+msgstr ""
+"Format invalide « %(format)s ». Une adresse vide génère « %(value)s »."
+
+#, python-format
 msgctxt "model:ir.message,text:msg_invalid_phone_number"
 msgid "The phone number \"%(phone)s\" for party \"%(party)s\" is not valid."
 msgstr ""
@@ -714,6 +729,13 @@ msgid "The party \"%(party)s\" has the same %(type)s \"%(code)s\"."
 msgstr "Le tiers « %(party)s » a le même %(type)s « %(code)s »."
 
 #, python-format
+msgctxt "model:ir.message,text:msg_party_identifier_eu_vat_invalid"
+msgid "The VAT numbers \"%(identifiers)s\" are not valid for the VIES service."
+msgstr ""
+"Les numéros de TVA « %(identifiers)s » ne sont pas valides pour le service "
+"VIES."
+
+#, python-format
 msgctxt "model:ir.message,text:msg_party_set_contact_mechanism"
 msgid ""
 "To change the \"%(field)s\" for party \"%(party)s\", you must edit their "
@@ -725,6 +747,10 @@ msgstr ""
 msgctxt "model:ir.message,text:msg_vies_unavailable"
 msgid "The VIES service is unavailable, try again later."
 msgstr "Le service VIES n'est pas disponible, veuillez essayer plus tard."
+
+msgctxt "model:ir.model.button,string:identifier_check_view_button"
+msgid "Check VIES"
+msgstr "Valider avec VIES"
 
 msgctxt "model:ir.sequence,name:sequence_party"
 msgid "Party"
@@ -794,10 +820,6 @@ msgctxt "model:party.category,string:"
 msgid "Party Category"
 msgstr "Catégorie de tiers"
 
-msgctxt "model:party.check_vies.result,string:"
-msgid "Party Check Vies Result"
-msgstr "Résultat du contrôle VIES de tiers"
-
 msgctxt "model:party.configuration,string:"
 msgid "Party Configuration"
 msgstr "Configuration de tiers"
@@ -845,6 +867,10 @@ msgstr "Remplacer le tiers Demande"
 msgctxt "model:res.group,name:group_party_admin"
 msgid "Party Administration"
 msgstr "Administration des tiers"
+
+msgctxt "selection:ir.cron,method:"
+msgid "Check European VAT Number with VIES"
+msgstr "Vérifier les numéros de TVA européen avec VIES"
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Albanian VAT Number"
@@ -1578,6 +1604,14 @@ msgctxt "view:party.address:"
 msgid "General"
 msgstr "Général"
 
+msgctxt "view:party.identifier:"
+msgid "Valid:"
+msgstr "Valide :"
+
+msgctxt "view:party.identifier:"
+msgid "at"
+msgstr "le"
+
 msgctxt "view:party.party:"
 msgid "General"
 msgstr "Général"
@@ -1589,10 +1623,6 @@ msgstr "Tiers"
 msgctxt "view:party.replace.ask:"
 msgid "Replaced By"
 msgstr "Remplacer par"
-
-msgctxt "wizard_button:party.check_vies,result,end:"
-msgid "OK"
-msgstr "OK"
 
 msgctxt "wizard_button:party.erase,ask,end:"
 msgid "Cancel"

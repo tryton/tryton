@@ -144,7 +144,7 @@ msgstr "Materials de sortida"
 
 msgctxt "field:production.bom,phantom:"
 msgid "Phantom"
-msgstr "Fanstasma"
+msgstr "Fantasma"
 
 msgctxt "field:production.bom,phantom_quantity:"
 msgid "Quantity"
@@ -153,6 +153,10 @@ msgstr "Quantitat"
 msgctxt "field:production.bom,phantom_unit:"
 msgid "Unit"
 msgstr "Unitat"
+
+msgctxt "field:production.bom,tolerance:"
+msgid "Tolerance"
+msgstr "Tolerància"
 
 msgctxt "field:production.bom.input,bom:"
 msgid "BOM"
@@ -296,8 +300,8 @@ msgid "Production"
 msgstr "Producció"
 
 msgctxt "field:stock.move,production_cost_price_updated:"
-msgid "Cost Price Updated"
-msgstr "Preu de cost actualitzat"
+msgid "Production Cost Price Updated"
+msgstr "Preu de cost de la producció actualitzat"
 
 msgctxt "field:stock.move,production_input:"
 msgid "Production Input"
@@ -330,6 +334,10 @@ msgstr "La quantitat de la LdM fantasma"
 msgctxt "help:production.bom,phantom_unit:"
 msgid "The Unit of Measure of the Phantom BoM"
 msgstr "La unitat de mesura de la LdM fantasma"
+
+msgctxt "help:production.bom,tolerance:"
+msgid "The percentage tolerance that is accepted for production."
+msgstr "El percentatge de tolerància que s'accepta per aquesta producció."
 
 msgctxt "help:production.configuration,bom_sequence:"
 msgid "Used to generate the BOM code."
@@ -438,6 +446,24 @@ msgstr ""
 "preu de venda definit."
 
 #, python-format
+msgctxt "model:ir.message,text:msg_over_production_inputs"
+msgid ""
+"The production \"%(production)s\" input of product \"%(product)s\" is "
+"greater than the tolerance (%(actual)s consumed > %(maximal)s)."
+msgstr ""
+"El producte \"%(product)s\" de l'entrada de la producció \"%(production)s\" "
+"és més gran que la seva tolerància (Consumit: %(actual)s >%(maximal)s)."
+
+#, python-format
+msgctxt "model:ir.message,text:msg_over_production_outputs"
+msgid ""
+"The production \"%(production)s\" output of product \"%(product)s\" is "
+"greater than the tolerance (%(actual)s produced > %(maximal)s)."
+msgstr ""
+"El producte \"%(product)s\" de la sortida de la producció \"%(production)s\""
+" és més gran que la seva tolerància (Produït: %(actual)s >%(maximal)s)."
+
+#, python-format
 msgctxt "model:ir.message,text:msg_recursive_bom_bom"
 msgid "You cannot create a recursive BOM for BOM \"%(bom)s\"."
 msgstr "No es pot crear una LdM recursriva per la LdM \"%(bom)s\"."
@@ -451,6 +477,38 @@ msgctxt "model:ir.message,text:msg_stock_move_production_single"
 msgid "Move can not be used for production input and output."
 msgstr ""
 "El moviment no es pot utilitzar per a l'entrada i sortida de la producció."
+
+#, python-format
+msgctxt "model:ir.message,text:msg_under_production_inputs"
+msgid ""
+"The production \"%(production)s\" input of product \"%(product)s\" is lower "
+"than the tolerance (%(actual)s consumed < %(minimal)s)."
+msgstr ""
+"El producte \"%(product)s\" de l'entrada de la producció \"%(production)s\" "
+"és més petit que la seva tolerància (Consumit: %(actual)s <%(minimal)s)."
+
+#, python-format
+msgctxt "model:ir.message,text:msg_under_production_outputs"
+msgid ""
+"The production \"%(production)s\" output of product \"%(product)s\" is lower"
+" than the tolerance (%(actual)s produced < %(minimal)s)."
+msgstr ""
+"El producte \"%(product)s\" de la sortida de la producció \"%(production)s\""
+" és més petit que la seva tolerància (Produït: %(actual)s <%(minimal)s)."
+
+#, python-format
+msgctxt "model:ir.message,text:msg_unexpected_product_production_inputs"
+msgid ""
+"The production \"%(production)s\" input has an unexpected product "
+"\"%(product)s\"."
+msgstr "La producció \"%(production)s\" té una entrada no esperada: \"%(product)s\"."
+
+#, python-format
+msgctxt "model:ir.message,text:msg_unexpected_product_production_outputs"
+msgid ""
+"The production \"%(production)s\" output has an unexpected product "
+"\"%(product)s\"."
+msgstr "La producció \"%(production)s\" té una sortida no esperada: \"%(product)s\"."
 
 msgctxt "model:ir.model.button,confirm:production_done_button"
 msgid "Are you sure you want to complete the production?"
@@ -585,8 +643,8 @@ msgid "Reschedule Productions"
 msgstr "Replanifica les produccions"
 
 msgctxt "selection:ir.cron,method:"
-msgid "Set Cost from Moves"
-msgstr "Estableix cost a partir dels moviments"
+msgid "Set Cost from Production Moves"
+msgstr "Estableix el preu de cost dels movimients de producció"
 
 msgctxt "selection:production,state:"
 msgid "Assigned"
@@ -635,6 +693,10 @@ msgstr "Material"
 msgctxt "view:production.bom.output:"
 msgid "Material"
 msgstr "Materials"
+
+msgctxt "view:production.bom:"
+msgid "%"
+msgstr "%"
 
 msgctxt "view:production.bom:"
 msgid "Lines"

@@ -875,6 +875,15 @@ msgctxt "field:account.general_ledger.account,lines:"
 msgid "Lines"
 msgstr "Líneas"
 
+msgctxt "field:account.general_ledger.account,parties:"
+msgid "Parties"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account,party_required:"
+msgid "Party Required"
+msgstr "Tercero requerido"
+
 msgctxt "field:account.general_ledger.account,start_balance:"
 msgid "Start Balance"
 msgstr ""
@@ -980,6 +989,11 @@ msgstr "Saldo Débito"
 msgctxt "field:account.general_ledger.account.party,line_count:"
 msgid "Line Count"
 msgstr ""
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,lines:"
+msgid "Lines"
+msgstr "Líneas"
 
 msgctxt "field:account.general_ledger.account.party,party:"
 msgid "Party"
@@ -1433,6 +1447,20 @@ msgctxt "field:account.move.line,tax_lines:"
 msgid "Tax Lines"
 msgstr ""
 
+msgctxt "field:account.move.line.context,company:"
+msgid "Company"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.move.line.context,journal:"
+msgid "Journal"
+msgstr "Libro Diario"
+
+#, fuzzy
+msgctxt "field:account.move.line.context,period:"
+msgid "Period"
+msgstr "Periods"
+
 #, fuzzy
 msgctxt "field:account.move.line.delegate.start,description:"
 msgid "Description"
@@ -1573,20 +1601,6 @@ msgstr "Tercero requerido"
 msgctxt "field:account.move.line.template,taxes:"
 msgid "Taxes"
 msgstr ""
-
-msgctxt "field:account.move.open_journal.ask,company:"
-msgid "Company"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:account.move.open_journal.ask,journal:"
-msgid "Journal"
-msgstr "Libro Diario"
-
-#, fuzzy
-msgctxt "field:account.move.open_journal.ask,period:"
-msgid "Period"
-msgstr "Periods"
 
 msgctxt "field:account.move.reconcile.write_off,company:"
 msgid "Company"
@@ -1742,6 +1756,11 @@ msgstr "Año fiscal"
 msgctxt "field:account.period,icon:"
 msgid "Icon"
 msgstr ""
+
+#, fuzzy
+msgctxt "field:account.period,journals:"
+msgid "Journals"
+msgstr "Libro Diario"
 
 #, fuzzy
 msgctxt "field:account.period,move_sequence:"
@@ -2663,6 +2682,10 @@ msgstr ""
 "Las sustituciones de los valores de palabras clave se identifican "
 "escribiéndolas dentro de llaves ('{' y '}')."
 
+msgctxt "help:account.period,journals:"
+msgid "Filled automatically when a first move is created."
+msgstr ""
+
 msgctxt "help:account.period,move_sequence:"
 msgid ""
 "Used to generate the move number when posting.\n"
@@ -2738,12 +2761,18 @@ msgid ""
 "this tax template."
 msgstr ""
 
+#, fuzzy
 msgctxt "help:party.party,customer_tax_rule:"
-msgid "Apply this rule on taxes when party is customer."
+msgid ""
+"Apply this rule to the default taxes when the party is a customer.\n"
+"Leave it empty to keep the default taxes."
 msgstr "Aplicar esta regla en los impuestos cuando el tercero es un cliente."
 
+#, fuzzy
 msgctxt "help:party.party,supplier_tax_rule:"
-msgid "Apply this rule on taxes when party is supplier."
+msgid ""
+"Apply this rule to the default taxes when the party is a supplier.\n"
+"Leave it empty to keep the default taxes."
 msgstr ""
 "Aplicar esta regla en los impuestos cuando el tercero es un proveedor."
 
@@ -2963,6 +2992,11 @@ msgid "Account Move Line"
 msgstr "Línea de asiento contable"
 
 #, fuzzy
+msgctxt "model:account.move.line.context,string:"
+msgid "Account Move Line Context"
+msgstr "Asiento Contable"
+
+#, fuzzy
 msgctxt "model:account.move.line.delegate.start,string:"
 msgid "Account Move Line Delegate Start"
 msgstr "Plantilla de línea de asiento contable"
@@ -2996,11 +3030,6 @@ msgstr "Plantilla de línea de asiento contable"
 msgctxt "model:account.move.line.template,string:"
 msgid "Account Move Line Template"
 msgstr "Plantilla de línea de asiento contable"
-
-#, fuzzy
-msgctxt "model:account.move.open_journal.ask,string:"
-msgid "Account Move Open Journal Ask"
-msgstr "Abrir libro diario - Solicitar"
 
 #, fuzzy
 msgctxt "model:account.move.reconcile.write_off,string:"
@@ -3230,8 +3259,8 @@ msgstr "Año fiscal"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_fiscalyear_form_close"
-msgid "Close Fiscal Years"
-msgstr "Cerrar año fiscal"
+msgid "Fiscal Years"
+msgstr "Año fiscal"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_general_ledger_account_form"
@@ -3273,22 +3302,13 @@ msgstr ""
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_journal_period_form_close"
-msgid "Close Journals - Periods"
-msgstr "Cerrar libros diarios - períodos"
-
-#, fuzzy
-msgctxt "model:ir.action,name:act_journal_period_tree"
 msgid "Journals - Periods"
 msgstr "Libro diario - Período"
 
 #, fuzzy
-msgctxt "model:ir.action,name:act_journal_period_tree2"
-msgid "Journals - Periods"
-msgstr "Libro diario - Período"
-
 msgctxt "model:ir.action,name:act_move_form"
-msgid "Account Moves"
-msgstr "Asiento contable"
+msgid "Moves"
+msgstr "Línea de asiento"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_move_form_delegate"
@@ -3314,6 +3334,11 @@ msgctxt "model:ir.action,name:act_move_line_form"
 msgid "Account Move Lines"
 msgstr "Línea de asiento contable"
 
+#, fuzzy
+msgctxt "model:ir.action,name:act_move_line_form_editable"
+msgid "Lines"
+msgstr "Líneas"
+
 msgctxt "model:ir.action,name:act_move_line_payable_receivable"
 msgid "Payable/Receivable Lines"
 msgstr ""
@@ -3334,11 +3359,6 @@ msgctxt "model:ir.action,name:act_open_account"
 msgid "Open Move Account"
 msgstr ""
 
-#, fuzzy
-msgctxt "model:ir.action,name:act_open_journal"
-msgid "Open Journal"
-msgstr "Abrir libro diario - Solicitar"
-
 msgctxt "model:ir.action,name:act_open_tax_code"
 msgid "Open Tax Code"
 msgstr ""
@@ -3352,9 +3372,10 @@ msgctxt "model:ir.action,name:act_period_form"
 msgid "Periods"
 msgstr "Periods"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_period_form_close"
-msgid "Close Periods"
-msgstr ""
+msgid "Periods"
+msgstr "Periods"
 
 msgctxt "model:ir.action,name:act_reconcile"
 msgid "Reconcile Accounts"
@@ -3497,6 +3518,14 @@ msgstr ""
 msgctxt "model:ir.message,text:msg_account_no_type_lines"
 msgid ""
 "You cannot remove type of account \"%(account)s\" because it has move lines."
+msgstr ""
+"No puede eliminar la cuenta \"%(account)s\" porque tiene líneas de asiento."
+
+#, fuzzy, python-format
+msgctxt "model:ir.message,text:msg_account_party_required_with_moves"
+msgid ""
+"You cannot change the \"Party Required\" field of account \"%(account)s\" "
+"because it contains lines."
 msgstr ""
 "No puede eliminar la cuenta \"%(account)s\" porque tiene líneas de asiento."
 
@@ -4174,17 +4203,18 @@ msgstr "Saldo Diferido"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_close_fiscalyear"
-msgid "Close Fiscal Years"
-msgstr "Cerrar año fiscal"
+msgid "Fiscal Years"
+msgstr "Año fiscal"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_close_journal_period"
-msgid "Close Journals - Periods"
-msgstr "Cerrar libros diarios - períodos"
+msgid "Journals - Periods"
+msgstr "Libro diario - Período"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_close_period"
-msgid "Close Periods"
-msgstr ""
+msgid "Periods"
+msgstr "Periods"
 
 msgctxt "model:ir.ui.menu,name:menu_create_chart"
 msgid "Create Chart of Accounts from Template"
@@ -4227,18 +4257,14 @@ msgid "Journals Cash"
 msgstr ""
 
 #, fuzzy
-msgctxt "model:ir.ui.menu,name:menu_journal_period_tree"
-msgid "Journals - Periods"
-msgstr "Libro diario - Período"
+msgctxt "model:ir.ui.menu,name:menu_move_form"
+msgid "Moves"
+msgstr "Línea de asiento"
 
 #, fuzzy
-msgctxt "model:ir.ui.menu,name:menu_journal_period_tree2"
-msgid "Journals - Periods"
-msgstr "Libro diario - Período"
-
-msgctxt "model:ir.ui.menu,name:menu_move_form"
-msgid "Account Moves"
-msgstr "Asientos contables"
+msgctxt "model:ir.ui.menu,name:menu_move_line_form_editable"
+msgid "Lines"
+msgstr "Líneas"
 
 msgctxt "model:ir.ui.menu,name:menu_move_template_create"
 msgid "Create Move from Template"
@@ -4257,11 +4283,6 @@ msgstr "Estado de Situación Financiera"
 msgctxt "model:ir.ui.menu,name:menu_open_income_statement"
 msgid "Income Statement"
 msgstr "Estado de Resultado Integral"
-
-#, fuzzy
-msgctxt "model:ir.ui.menu,name:menu_open_journal"
-msgid "Open Journal"
-msgstr "Abrir libro diario - Solicitar"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_period_form"
@@ -4535,11 +4556,6 @@ msgstr ""
 msgctxt "report:account.general_ledger:"
 msgid "Move"
 msgstr ""
-
-#, fuzzy
-msgctxt "report:account.general_ledger:"
-msgid "Name"
-msgstr "Nombre"
 
 msgctxt "report:account.general_ledger:"
 msgid "Origin"
@@ -5290,14 +5306,6 @@ msgstr "Saldo"
 
 msgctxt "wizard_button:account.move.line.reschedule,start,preview:"
 msgid "Preview"
-msgstr ""
-
-msgctxt "wizard_button:account.move.open_journal,ask,end:"
-msgid "Cancel"
-msgstr ""
-
-msgctxt "wizard_button:account.move.open_journal,ask,open_:"
-msgid "Open"
 msgstr ""
 
 msgctxt "wizard_button:account.move.reconcile_lines,writeoff,end:"

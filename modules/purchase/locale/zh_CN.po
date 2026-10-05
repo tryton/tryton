@@ -317,6 +317,11 @@ msgctxt "field:purchase.line-recreated-stock.move,purchase_line:"
 msgid "Purchase Line"
 msgstr "采购明细"
 
+#, fuzzy
+msgctxt "field:purchase.product_supplier,average_lead_time:"
+msgid "Average Lead Time"
+msgstr "交付时间"
+
 msgctxt "field:purchase.product_supplier,code:"
 msgid "Code"
 msgstr "代码"
@@ -330,6 +335,11 @@ msgid "Currency"
 msgstr "货币"
 
 msgctxt "field:purchase.product_supplier,lead_time:"
+msgid "Lead Time"
+msgstr "交付时间"
+
+#, fuzzy
+msgctxt "field:purchase.product_supplier,lead_time_used:"
 msgid "Lead Time"
 msgstr "交付时间"
 

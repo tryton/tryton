@@ -1024,8 +1024,12 @@ msgctxt "model:ir.action,name:act_invoice_relate"
 msgid "Invoices"
 msgstr ""
 
+msgctxt "model:ir.action,name:act_invoice_relate_period"
+msgid "Invoices"
+msgstr ""
+
 msgctxt "model:ir.action,name:act_payment_method_form"
-msgid "Invoice Payment Methods"
+msgid "Payment Methods"
 msgstr ""
 
 msgctxt "model:ir.action,name:act_payment_term_form"
@@ -1104,6 +1108,18 @@ msgstr ""
 
 msgctxt "model:ir.action.act_window.domain,name:act_invoice_relate_pending"
 msgid "Pending"
+msgstr ""
+
+msgctxt "model:ir.action.act_window.domain,name:act_invoice_relate_period_all"
+msgid "All"
+msgstr ""
+
+msgctxt "model:ir.action.act_window.domain,name:act_invoice_relate_period_in"
+msgid "Supplier"
+msgstr ""
+
+msgctxt "model:ir.action.act_window.domain,name:act_invoice_relate_period_out"
+msgid "Customer"
 msgstr ""
 
 #, python-format
@@ -1277,6 +1293,13 @@ msgid ""
 msgstr ""
 
 #, python-format
+msgctxt "model:ir.message,text:msg_invoice_tax_identifier_invalid"
+msgid ""
+"The tax identifier \"%(identifier)s\" on invoice \"%(invoice)s\" has not "
+"been validated."
+msgstr ""
+
+#, python-format
 msgctxt "model:ir.message,text:msg_invoice_tax_invalid"
 msgid ""
 "The taxes on invoice \"%(invoice)s\" are not valid, you must save it again "
@@ -1403,7 +1426,7 @@ msgid "Invoices"
 msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_payment_method_form"
-msgid "Invoice Payment Methods"
+msgid "Payment Methods"
 msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_payment_term_form"

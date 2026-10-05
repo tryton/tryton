@@ -549,10 +549,6 @@ msgctxt "model:ir.action,name:act_category_list"
 msgid "Categories"
 msgstr "Categorii"
 
-msgctxt "model:ir.action,name:act_category_product"
-msgid "Add products"
-msgstr "Adăugare Produse"
-
 msgctxt "model:ir.action,name:act_category_tree"
 msgid "Categories"
 msgstr "Categorii"
@@ -643,10 +639,6 @@ msgstr "Nu se poate modifică rata al UM \"%(uom)s\"."
 msgctxt "model:ir.message,text:msg_uom_no_zero_factor_rate"
 msgid "Rate and factor can not be both equal to zero."
 msgstr "Rata şi factor nu pot ambele sa fii egale cu zero."
-
-msgctxt "model:ir.model.button,string:category_add_products_button"
-msgid "Add products"
-msgstr "Adăugare Produse"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_category"
 msgid "Category"

@@ -182,6 +182,14 @@ msgctxt "field:product.template,tariff_codes_category:"
 msgid "Use Category's Tariff Codes"
 msgstr "Usa els codis aranzelaris de la categoria"
 
+msgctxt "field:product.template-product.category.customs,category:"
+msgid "Category"
+msgstr "Categoria"
+
+msgctxt "field:product.template-product.category.customs,template:"
+msgid "Template"
+msgstr "Plantilla"
+
 msgctxt "help:customs.agent,address:"
 msgid "The address of the agent."
 msgstr "La direcció de l'agent."
@@ -310,6 +318,10 @@ msgstr "Codis d'aranzel"
 msgctxt "model:product-customs.tariff.code,string:"
 msgid "Product - Customs Tariff Code"
 msgstr "Producte - Codi aranzelari"
+
+msgctxt "model:product.template-product.category.customs,string:"
+msgid "Product Template - Product Category Customs"
+msgstr "Plantilla de Producte - Categoría d'aduanes"
 
 msgctxt "model:res.group,name:group_customs_admin"
 msgid "Customs Administration"

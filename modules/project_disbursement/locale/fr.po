@@ -1,0 +1,210 @@
+#
+#, fuzzy
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.account.type,disbursement:"
+msgid "Disbursement"
+msgstr "Débours"
+
+msgctxt "field:account.account.type.template,disbursement:"
+msgid "Disbursement"
+msgstr "Débours"
+
+msgctxt "field:account.configuration,default_account_disbursement:"
+msgid "Default Account Disbursement"
+msgstr "Compte de débours par défaut"
+
+msgctxt ""
+"field:account.configuration.default_account,default_account_disbursement:"
+msgid "Default Account Disbursement"
+msgstr "Compte de débours par défaut"
+
+msgctxt "field:project.configuration,disbursement_sequence:"
+msgid "Disbursement Sequence"
+msgstr "Séquence de débours"
+
+msgctxt "field:project.configuration.sequence,disbursement_sequence:"
+msgid "Disbursement Sequence"
+msgstr "Séquence de débours"
+
+msgctxt "field:project.disbursement,amount:"
+msgid "Amount"
+msgstr "Montant"
+
+msgctxt "field:project.disbursement,attachments:"
+msgid "Attachments"
+msgstr "Pièces jointes"
+
+msgctxt "field:project.disbursement,company:"
+msgid "Company"
+msgstr "Société"
+
+msgctxt "field:project.disbursement,currency:"
+msgid "Currency"
+msgstr "Devise"
+
+msgctxt "field:project.disbursement,description:"
+msgid "Description"
+msgstr "Description"
+
+msgctxt "field:project.disbursement,invoice_lines:"
+msgid "Invoice Lines"
+msgstr "Lignes de facture"
+
+msgctxt "field:project.disbursement,number:"
+msgid "Number"
+msgstr "Numéro"
+
+msgctxt "field:project.disbursement,payee:"
+msgid "Payee"
+msgstr "Bénéficiaire"
+
+msgctxt "field:project.disbursement,payment_date:"
+msgid "Date"
+msgstr "Date"
+
+msgctxt "field:project.disbursement,payments:"
+msgid "Payments"
+msgstr "Paiements"
+
+msgctxt "field:project.disbursement,reference:"
+msgid "Reference"
+msgstr "Référence"
+
+msgctxt "field:project.disbursement,reference_type:"
+msgid "Reference Type"
+msgstr "Type de référence"
+
+msgctxt "field:project.disbursement,state:"
+msgid "State"
+msgstr "État"
+
+msgctxt "field:project.disbursement,validated_by:"
+msgid "Validated By"
+msgstr "Validé par"
+
+msgctxt "field:project.disbursement,work:"
+msgid "Work"
+msgstr "Travail"
+
+msgctxt "field:project.disbursement.journal,company:"
+msgid "Company"
+msgstr "Société"
+
+msgctxt "field:project.disbursement.journal,currency:"
+msgid "Currency"
+msgstr "Devise"
+
+msgctxt "field:project.disbursement.journal,journal:"
+msgid "Journal"
+msgstr "Journal"
+
+msgctxt "field:project.disbursement.journal,work:"
+msgid "Work"
+msgstr "Travail"
+
+msgctxt "field:project.work,account_disbursement:"
+msgid "Account Disbursement"
+msgstr "Compte de débours"
+
+msgctxt "field:project.work,disbursement_journals:"
+msgid "Disbursement Journals"
+msgstr "Journaux de débours"
+
+msgctxt "field:project.work,disbursements:"
+msgid "Disbursements"
+msgstr "Débours"
+
+msgctxt "help:project.configuration,disbursement_sequence:"
+msgid "Used to generate the disbursement number."
+msgstr "Utilisé pour générer le numéro de débours."
+
+msgctxt "help:project.configuration.sequence,disbursement_sequence:"
+msgid "Used to generate the disbursement number."
+msgstr "Utilisé pour générer le numéro de débours."
+
+msgctxt "help:project.work,account_disbursement:"
+msgid "Leave empty for the default account."
+msgstr "Laissez vide pour le compte par défaut."
+
+msgctxt "model:ir.action,name:act_project_disbursement_form"
+msgid "Disbursements"
+msgstr "Débours"
+
+#, python-format
+msgctxt "model:ir.message,text:msg_disbursement_cancel_payment"
+msgid ""
+"To cancel disbursement \"%(disbursement)s\", you must fail the payment "
+"\"%(payment)s\"."
+msgstr ""
+"Pour annuler le débours « %(disbursement)s », vous devez échouer le paiement"
+" « %(payment)s »."
+
+msgctxt "model:ir.model.button,string:project_disbursement_cancel_button"
+msgid "Cancel"
+msgstr "Annuler"
+
+msgctxt "model:ir.model.button,string:project_disbursement_draft_button"
+msgid "Draft"
+msgstr "Brouillon"
+
+msgctxt "model:ir.model.button,string:project_disbursement_process_button"
+msgid "Process"
+msgstr "Traiter"
+
+msgctxt "model:ir.model.button,string:project_disbursement_validate_button"
+msgid "Validate"
+msgstr "Valider"
+
+msgctxt "model:ir.rule.group,name:rule_group_project_disbursement_companies"
+msgid "User in companies"
+msgstr "Utilisateur dans les sociétés"
+
+msgctxt "model:ir.sequence,name:sequence_disbursement"
+msgid "Disbursement"
+msgstr "Débours"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_disbursement"
+msgid "Project Disbursement"
+msgstr "Débours de projet"
+
+msgctxt "model:ir.ui.menu,name:menu_project_disbursement_form"
+msgid "Disbursements"
+msgstr "Débours"
+
+msgctxt "model:project.disbursement,string:"
+msgid "Project Disbursement"
+msgstr "Débours de projet"
+
+msgctxt "model:project.disbursement.journal,string:"
+msgid "Project Disbursement Journal"
+msgstr "Journal des débours de projets"
+
+msgctxt "model:res.group,name:group_project_disbursement"
+msgid "Project Disbursement"
+msgstr "Débours de projet"
+
+msgctxt "selection:project.disbursement,state:"
+msgid "Cancelled"
+msgstr "Annulé"
+
+msgctxt "selection:project.disbursement,state:"
+msgid "Draft"
+msgstr "Brouillon"
+
+msgctxt "selection:project.disbursement,state:"
+msgid "Paid"
+msgstr "Payé"
+
+msgctxt "selection:project.disbursement,state:"
+msgid "Validated"
+msgstr "Validé"
+
+msgctxt "view:account.configuration:"
+msgid "Project Disbursement"
+msgstr "Débours de projet"
+
+msgctxt "view:project.disbursement:"
+msgid "Other Info"
+msgstr "Autre information"

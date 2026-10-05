@@ -68,6 +68,11 @@ msgid "Payments"
 msgstr "Оплата"
 
 #, fuzzy
+msgctxt "field:account.move.line.create_direct_debit.start,companies:"
+msgid "Companies"
+msgstr "Учет.орг."
+
+#, fuzzy
 msgctxt "field:account.move.line.create_direct_debit.start,date:"
 msgid "Date"
 msgstr "Дата"
@@ -329,6 +334,10 @@ msgctxt "help:account.move.line,payment_direct_debit:"
 msgid "Check if the line will be paid by direct debit."
 msgstr ""
 
+msgctxt "help:account.move.line.create_direct_debit.start,companies:"
+msgid "Limit to lines from these companies."
+msgstr ""
+
 msgctxt "help:account.move.line.create_direct_debit.start,date:"
 msgid "Create direct debit for lines due up to this date."
 msgstr ""
@@ -461,9 +470,10 @@ msgctxt "model:ir.action,name:act_payment_group_form"
 msgid "Payment Groups"
 msgstr "Payment Groups"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_payment_journal_form"
-msgid "Payment Journals"
-msgstr "Payment Journals"
+msgid "Journals"
+msgstr "Журнал"
 
 msgctxt "model:ir.action,name:act_process_payments"
 msgid "Process Payments"
@@ -774,9 +784,10 @@ msgctxt "model:ir.ui.menu,name:menu_payment_group_form"
 msgid "Payment Groups"
 msgstr "Payment Groups"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_payment_journal_form"
-msgid "Payment Journals"
-msgstr "Payment Journals"
+msgid "Journals"
+msgstr "Журнал"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_payments"

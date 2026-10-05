@@ -321,6 +321,11 @@ msgctxt "field:purchase.line-recreated-stock.move,purchase_line:"
 msgid "Purchase Line"
 msgstr "Wiersz zakupu"
 
+#, fuzzy
+msgctxt "field:purchase.product_supplier,average_lead_time:"
+msgid "Average Lead Time"
+msgstr "Czas realizacji"
+
 msgctxt "field:purchase.product_supplier,code:"
 msgid "Code"
 msgstr "Kod"
@@ -334,6 +339,11 @@ msgid "Currency"
 msgstr "Waluta"
 
 msgctxt "field:purchase.product_supplier,lead_time:"
+msgid "Lead Time"
+msgstr "Czas realizacji"
+
+#, fuzzy
+msgctxt "field:purchase.product_supplier,lead_time_used:"
 msgid "Lead Time"
 msgstr "Czas realizacji"
 

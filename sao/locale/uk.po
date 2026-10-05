@@ -135,6 +135,9 @@ msgstr "Ім'я користувача"
 msgid "Login with"
 msgstr "Логін"
 
+msgid "Disabled on localhost"
+msgstr ""
+
 msgid "Too many requests. Try again later."
 msgstr "Дуже багато запитів. Спробуйте ще раз пізніше."
 
@@ -313,14 +316,26 @@ msgstr "Зберегти цей запис"
 msgid "Reload"
 msgstr "Перезавантажити"
 
+#, fuzzy
+msgid "Delete..."
+msgstr "Видалити"
+
 msgid "View Logs..."
 msgstr "Переглянути журнали..."
 
 msgid "Show revisions..."
 msgstr "Показати ревізії..."
 
+#, fuzzy
+msgid "Attachments..."
+msgstr "Вкладення"
+
 msgid "Add an attachment to the record"
 msgstr "Додати вкладення до запису"
+
+#, fuzzy
+msgid "Notes..."
+msgstr "Примітка"
 
 msgid "Add a note to the record"
 msgstr "Додати примітку до запису"
@@ -333,6 +348,18 @@ msgid "Chat on the record"
 msgstr "Відкрити запис"
 
 #, fuzzy
+msgid "Actions..."
+msgstr "Дія"
+
+#, fuzzy
+msgid "Relate..."
+msgstr "Пов'язані"
+
+#, fuzzy
+msgid "Print..."
+msgstr "Друк"
+
+#, fuzzy
 msgid "Email..."
 msgstr "Ел.пошта..."
 
@@ -340,10 +367,12 @@ msgstr "Ел.пошта..."
 msgid "Send an email using the record"
 msgstr "Надіслати ел.лист, використовуючи запис"
 
-msgid "Export"
+#, fuzzy
+msgid "Export..."
 msgstr "Експорт"
 
-msgid "Import"
+#, fuzzy
+msgid "Import..."
 msgstr "Імпорт"
 
 msgid ""
@@ -375,11 +404,12 @@ msgstr "Запис збережено."
 msgid "Working now on the duplicated record(s)."
 msgstr "Зараз працюємо з дубльованим записом(записами)."
 
-msgid "Are you sure to remove this record?"
-msgstr "Ви впевнені, що бажаєте видалити цей запис?"
-
-msgid "Are you sure to remove those records?"
-msgstr "Ви впевнені, що бажаєте видалити ці записи?"
+#, fuzzy
+msgid "Are you sure you want to delete this record?"
+msgid_plural "Are you sure you want to delete these %1 records?"
+msgstr[0] "Ви впевнені, що бажаєте видалити цей запис?"
+msgstr[1] "Ви впевнені, що бажаєте видалити цей запис?"
+msgstr[2] "Ви впевнені, що бажаєте видалити цей запис?"
 
 msgid "Records removed."
 msgstr "Записи видалено."
@@ -402,11 +432,19 @@ msgstr "Керування..."
 msgid "Template"
 msgstr "Шаблон"
 
+#, fuzzy
 msgid "Attachment (%1)"
-msgstr "Вкладення (%1)"
+msgid_plural "Attachments (%1)"
+msgstr[0] "Вкладення (%1)"
+msgstr[1] "Вкладення (%1)"
+msgstr[2] "Вкладення (%1)"
 
+#, fuzzy
 msgid "Note (%1/%2)"
-msgstr "Примітка (%1/%2)"
+msgid_plural "Notes (%1/%2)"
+msgstr[0] "Примітка (%1/%2)"
+msgstr[1] "Примітка (%1/%2)"
+msgstr[2] "Примітка (%1/%2)"
 
 msgid "Filters"
 msgstr "Фільтри"
@@ -520,6 +558,17 @@ msgid "Open"
 msgstr "Відкрити"
 
 msgid "Undelete"
+msgstr "Відновити"
+
+#, javascript-format
+msgid "%s to add"
+msgstr ""
+
+msgid "%1 to remove"
+msgstr ""
+
+#, fuzzy
+msgid "%1 to delete"
 msgstr "Відновити"
 
 msgid "Restore"
@@ -669,6 +718,9 @@ msgstr "Символ цитати:"
 
 msgid "CSV Import: %1"
 msgstr "Імпорт CSV: %1"
+
+msgid "Import"
+msgstr "Імпорт"
 
 msgid "Auto-Detect"
 msgstr "Автовизначення"

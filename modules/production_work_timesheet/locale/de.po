@@ -21,3 +21,13 @@ msgstr "Aufgabe"
 msgctxt "field:production.work,timesheet_works:"
 msgid "Timesheet Works"
 msgstr "Aufgaben"
+
+msgctxt "field:production.work.center,include_timesheet_cost:"
+msgid "Include Timesheet Cost"
+msgstr "Erfasste Arbeitszeitkosten einbeziehen"
+
+msgctxt "help:production.work.center,include_timesheet_cost:"
+msgid "Check to add the timesheet cost to the work cost."
+msgstr ""
+"Auswählen, um die erfassten Arbeitszeitkosten zu den Arbeitsgangkosten "
+"hinzuzufügen."

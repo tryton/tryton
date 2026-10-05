@@ -841,6 +841,16 @@ msgctxt "field:account.general_ledger.account,lines:"
 msgid "Lines"
 msgstr "Sorok"
 
+#, fuzzy
+msgctxt "field:account.general_ledger.account,parties:"
+msgid "Parties"
+msgstr "Ügyfelek"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account,party_required:"
+msgid "Party Required"
+msgstr "Ügyfél megadása kötelező"
+
 msgctxt "field:account.general_ledger.account,start_balance:"
 msgid "Start Balance"
 msgstr "Nyitó egyenleg"
@@ -937,6 +947,11 @@ msgstr ""
 msgctxt "field:account.general_ledger.account.party,line_count:"
 msgid "Line Count"
 msgstr ""
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,lines:"
+msgid "Lines"
+msgstr "Sorok"
 
 msgctxt "field:account.general_ledger.account.party,party:"
 msgid "Party"
@@ -1381,6 +1396,21 @@ msgid "Tax Lines"
 msgstr "Adóbontás"
 
 #, fuzzy
+msgctxt "field:account.move.line.context,company:"
+msgid "Company"
+msgstr "Cég"
+
+#, fuzzy
+msgctxt "field:account.move.line.context,journal:"
+msgid "Journal"
+msgstr "Napló"
+
+#, fuzzy
+msgctxt "field:account.move.line.context,period:"
+msgid "Period"
+msgstr "Periódus"
+
+#, fuzzy
 msgctxt "field:account.move.line.delegate.start,description:"
 msgid "Description"
 msgstr "Megjegyzés"
@@ -1523,19 +1553,6 @@ msgstr "Ügyfél megadása kötelező"
 msgctxt "field:account.move.line.template,taxes:"
 msgid "Taxes"
 msgstr "Adók"
-
-#, fuzzy
-msgctxt "field:account.move.open_journal.ask,company:"
-msgid "Company"
-msgstr "Cég"
-
-msgctxt "field:account.move.open_journal.ask,journal:"
-msgid "Journal"
-msgstr "Napló"
-
-msgctxt "field:account.move.open_journal.ask,period:"
-msgid "Period"
-msgstr "Periódus"
 
 msgctxt "field:account.move.reconcile.write_off,company:"
 msgid "Company"
@@ -1681,6 +1698,11 @@ msgstr "Üzleti év"
 msgctxt "field:account.period,icon:"
 msgid "Icon"
 msgstr "Ikon"
+
+#, fuzzy
+msgctxt "field:account.period,journals:"
+msgid "Journals"
+msgstr "Pénzügyi naplók"
 
 #, fuzzy
 msgctxt "field:account.period,move_sequence:"
@@ -2584,6 +2606,10 @@ msgid "Keyword value substitutions are identified by braces ('{' and '}')."
 msgstr ""
 "A helyettesítendő kulcsszavakat kapcsos zárójelek { és } közé kell tenni."
 
+msgctxt "help:account.period,journals:"
+msgid "Filled automatically when a first move is created."
+msgstr ""
+
 msgctxt "help:account.period,move_sequence:"
 msgid ""
 "Used to generate the move number when posting.\n"
@@ -2661,12 +2687,18 @@ msgid ""
 "this tax template."
 msgstr ""
 
+#, fuzzy
 msgctxt "help:party.party,customer_tax_rule:"
-msgid "Apply this rule on taxes when party is customer."
+msgid ""
+"Apply this rule to the default taxes when the party is a customer.\n"
+"Leave it empty to keep the default taxes."
 msgstr "Alkalmazza ezt az adószabályt, ha az ügyfél vevő."
 
+#, fuzzy
 msgctxt "help:party.party,supplier_tax_rule:"
-msgid "Apply this rule on taxes when party is supplier."
+msgid ""
+"Apply this rule to the default taxes when the party is a supplier.\n"
+"Leave it empty to keep the default taxes."
 msgstr "Alkalmazza ezt az adószabályt, ha az ügyfél szállító."
 
 #, fuzzy
@@ -2887,6 +2919,11 @@ msgid "Account Move Line"
 msgstr "Könyvelési tétel"
 
 #, fuzzy
+msgctxt "model:account.move.line.context,string:"
+msgid "Account Move Line Context"
+msgstr "Bizonylat"
+
+#, fuzzy
 msgctxt "model:account.move.line.delegate.start,string:"
 msgid "Account Move Line Delegate Start"
 msgstr "Account Move Template"
@@ -2920,11 +2957,6 @@ msgstr "Account Move Template"
 msgctxt "model:account.move.line.template,string:"
 msgid "Account Move Line Template"
 msgstr "Account Move Template"
-
-#, fuzzy
-msgctxt "model:account.move.open_journal.ask,string:"
-msgid "Account Move Open Journal Ask"
-msgstr "Open Journal"
 
 #, fuzzy
 msgctxt "model:account.move.reconcile.write_off,string:"
@@ -3139,9 +3171,10 @@ msgctxt "model:ir.action,name:act_fiscalyear_form"
 msgid "Fiscal Years"
 msgstr "Üzleti évek"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_fiscalyear_form_close"
-msgid "Close Fiscal Years"
-msgstr "Üzleti évek lezárása"
+msgid "Fiscal Years"
+msgstr "Üzleti évek"
 
 msgctxt "model:ir.action,name:act_general_ledger_account_form"
 msgid "General Ledger - Accounts"
@@ -3177,21 +3210,15 @@ msgctxt "model:ir.action,name:act_journal_open_cash"
 msgid "Journals Cash"
 msgstr "Pénztárnaplók"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_journal_period_form_close"
-msgid "Close Journals - Periods"
-msgstr "Naplóperiódusok lezárása"
-
-msgctxt "model:ir.action,name:act_journal_period_tree"
 msgid "Journals - Periods"
 msgstr "Naplóperiódusok"
 
-msgctxt "model:ir.action,name:act_journal_period_tree2"
-msgid "Journals - Periods"
-msgstr "Naplóperiódusok"
-
+#, fuzzy
 msgctxt "model:ir.action,name:act_move_form"
-msgid "Account Moves"
-msgstr "Bizonylatok"
+msgid "Moves"
+msgstr "Könyvelési tételek"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_move_form_delegate"
@@ -3216,6 +3243,11 @@ msgctxt "model:ir.action,name:act_move_line_form"
 msgid "Account Move Lines"
 msgstr "Könyvelési tételek"
 
+#, fuzzy
+msgctxt "model:ir.action,name:act_move_line_form_editable"
+msgid "Lines"
+msgstr "Sorok"
+
 msgctxt "model:ir.action,name:act_move_line_payable_receivable"
 msgid "Payable/Receivable Lines"
 msgstr "Kötelezettség/követelés tételek"
@@ -3236,10 +3268,6 @@ msgctxt "model:ir.action,name:act_open_account"
 msgid "Open Move Account"
 msgstr "Open Move Account"
 
-msgctxt "model:ir.action,name:act_open_journal"
-msgid "Open Journal"
-msgstr "Napló tételei"
-
 msgctxt "model:ir.action,name:act_open_tax_code"
 msgid "Open Tax Code"
 msgstr "Open Tax Code"
@@ -3252,9 +3280,10 @@ msgctxt "model:ir.action,name:act_period_form"
 msgid "Periods"
 msgstr "Periódusok"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_period_form_close"
-msgid "Close Periods"
-msgstr "Periódusok lezárása"
+msgid "Periods"
+msgstr "Periódusok"
 
 msgctxt "model:ir.action,name:act_reconcile"
 msgid "Reconcile Accounts"
@@ -3391,6 +3420,13 @@ msgstr ""
 msgctxt "model:ir.message,text:msg_account_no_type_lines"
 msgid ""
 "You cannot remove type of account \"%(account)s\" because it has move lines."
+msgstr ""
+
+#, python-format
+msgctxt "model:ir.message,text:msg_account_party_required_with_moves"
+msgid ""
+"You cannot change the \"Party Required\" field of account \"%(account)s\" "
+"because it contains lines."
 msgstr ""
 
 #, python-format
@@ -4067,17 +4103,20 @@ msgctxt "model:ir.ui.menu,name:menu_balance_non_deferral"
 msgid "Balance Non-Deferral"
 msgstr "Műveleti számlák egyenlegének átvezetése"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_close_fiscalyear"
-msgid "Close Fiscal Years"
-msgstr "Üzleti évek lezárása"
+msgid "Fiscal Years"
+msgstr "Üzleti évek"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_close_journal_period"
-msgid "Close Journals - Periods"
-msgstr "Naplóperiódusok lezárása"
+msgid "Journals - Periods"
+msgstr "Naplóperiódusok"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_close_period"
-msgid "Close Periods"
-msgstr "Periódusok lezárása"
+msgid "Periods"
+msgstr "Periódusok"
 
 msgctxt "model:ir.ui.menu,name:menu_create_chart"
 msgid "Create Chart of Accounts from Template"
@@ -4115,17 +4154,15 @@ msgctxt "model:ir.ui.menu,name:menu_journal_open_cash"
 msgid "Journals Cash"
 msgstr "Pénztárnaplók"
 
-msgctxt "model:ir.ui.menu,name:menu_journal_period_tree"
-msgid "Journals - Periods"
-msgstr "Naplóperiódusok tételei"
-
-msgctxt "model:ir.ui.menu,name:menu_journal_period_tree2"
-msgid "Journals - Periods"
-msgstr "Naplóperiódusok tételei"
-
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_move_form"
-msgid "Account Moves"
-msgstr "Bizonylatok"
+msgid "Moves"
+msgstr "Könyvelési tételek"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_move_line_form_editable"
+msgid "Lines"
+msgstr "Sorok"
 
 msgctxt "model:ir.ui.menu,name:menu_move_template_create"
 msgid "Create Move from Template"
@@ -4142,10 +4179,6 @@ msgstr "Mérleg"
 msgctxt "model:ir.ui.menu,name:menu_open_income_statement"
 msgid "Income Statement"
 msgstr "Eredménykimutatás"
-
-msgctxt "model:ir.ui.menu,name:menu_open_journal"
-msgid "Open Journal"
-msgstr "Napló tételei"
 
 msgctxt "model:ir.ui.menu,name:menu_period_form"
 msgid "Periods"
@@ -4417,10 +4450,6 @@ msgstr "Főkönyv"
 msgctxt "report:account.general_ledger:"
 msgid "Move"
 msgstr "Bizonylat"
-
-msgctxt "report:account.general_ledger:"
-msgid "Name"
-msgstr "Név"
 
 msgctxt "report:account.general_ledger:"
 msgid "Origin"
@@ -5163,14 +5192,6 @@ msgstr "Mégse"
 msgctxt "wizard_button:account.move.line.reschedule,start,preview:"
 msgid "Preview"
 msgstr ""
-
-msgctxt "wizard_button:account.move.open_journal,ask,end:"
-msgid "Cancel"
-msgstr "Mégse"
-
-msgctxt "wizard_button:account.move.open_journal,ask,open_:"
-msgid "Open"
-msgstr "Megnyitás"
 
 msgctxt "wizard_button:account.move.reconcile_lines,writeoff,end:"
 msgid "Cancel"

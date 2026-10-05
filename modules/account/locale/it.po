@@ -886,6 +886,16 @@ msgctxt "field:account.general_ledger.account,lines:"
 msgid "Lines"
 msgstr "Righe"
 
+#, fuzzy
+msgctxt "field:account.general_ledger.account,parties:"
+msgid "Parties"
+msgstr "Controparti"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account,party_required:"
+msgid "Party Required"
+msgstr "Indicazione controparte obbligatoria"
+
 msgctxt "field:account.general_ledger.account,start_balance:"
 msgid "Start Balance"
 msgstr "Saldo iniziale"
@@ -995,6 +1005,11 @@ msgstr "DARE"
 msgctxt "field:account.general_ledger.account.party,line_count:"
 msgid "Line Count"
 msgstr ""
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,lines:"
+msgid "Lines"
+msgstr "Righe"
 
 #, fuzzy
 msgctxt "field:account.general_ledger.account.party,party:"
@@ -1448,6 +1463,21 @@ msgid "Tax Lines"
 msgstr "Righe Imposta"
 
 #, fuzzy
+msgctxt "field:account.move.line.context,company:"
+msgid "Company"
+msgstr "Azienda"
+
+#, fuzzy
+msgctxt "field:account.move.line.context,journal:"
+msgid "Journal"
+msgstr "Registro"
+
+#, fuzzy
+msgctxt "field:account.move.line.context,period:"
+msgid "Period"
+msgstr "Periodo"
+
+#, fuzzy
 msgctxt "field:account.move.line.delegate.start,description:"
 msgid "Description"
 msgstr "Descrizione"
@@ -1592,19 +1622,6 @@ msgstr "Indicazione controparte obbligatoria"
 msgctxt "field:account.move.line.template,taxes:"
 msgid "Taxes"
 msgstr "Imposte"
-
-#, fuzzy
-msgctxt "field:account.move.open_journal.ask,company:"
-msgid "Company"
-msgstr "Azienda"
-
-msgctxt "field:account.move.open_journal.ask,journal:"
-msgid "Journal"
-msgstr "Registro"
-
-msgctxt "field:account.move.open_journal.ask,period:"
-msgid "Period"
-msgstr "Periodo"
 
 msgctxt "field:account.move.reconcile.write_off,company:"
 msgid "Company"
@@ -1753,6 +1770,11 @@ msgstr "Esercizio"
 msgctxt "field:account.period,icon:"
 msgid "Icon"
 msgstr "Icona"
+
+#, fuzzy
+msgctxt "field:account.period,journals:"
+msgid "Journals"
+msgstr "Giornali"
 
 #, fuzzy
 msgctxt "field:account.period,move_sequence:"
@@ -2702,6 +2724,10 @@ msgid "Keyword value substitutions are identified by braces ('{' and '}')."
 msgstr ""
 "Le sostituzioni di valori di keyword sono identificate da graffe ('{'e'}')"
 
+msgctxt "help:account.period,journals:"
+msgid "Filled automatically when a first move is created."
+msgstr ""
+
 msgctxt "help:account.period,move_sequence:"
 msgid ""
 "Used to generate the move number when posting.\n"
@@ -2779,12 +2805,18 @@ msgstr ""
 "Se l'imposta iniziale è valorizzata, la regola verrà applicata solo per "
 "questo modello di imposta"
 
+#, fuzzy
 msgctxt "help:party.party,customer_tax_rule:"
-msgid "Apply this rule on taxes when party is customer."
+msgid ""
+"Apply this rule to the default taxes when the party is a customer.\n"
+"Leave it empty to keep the default taxes."
 msgstr "Applicare la regola alle imposte quando la controparte è cliente"
 
+#, fuzzy
 msgctxt "help:party.party,supplier_tax_rule:"
-msgid "Apply this rule on taxes when party is supplier."
+msgid ""
+"Apply this rule to the default taxes when the party is a supplier.\n"
+"Leave it empty to keep the default taxes."
 msgstr "Applicare la regola alle imposte quando la controparte è fornitore"
 
 #, fuzzy
@@ -3005,6 +3037,11 @@ msgid "Account Move Line"
 msgstr "Riga di movimento contabile"
 
 #, fuzzy
+msgctxt "model:account.move.line.context,string:"
+msgid "Account Move Line Context"
+msgstr "Movimento contabile"
+
+#, fuzzy
 msgctxt "model:account.move.line.delegate.start,string:"
 msgid "Account Move Line Delegate Start"
 msgstr "Modello Riga Movimento contabile"
@@ -3038,11 +3075,6 @@ msgstr "Modello Riga Movimento contabile"
 msgctxt "model:account.move.line.template,string:"
 msgid "Account Move Line Template"
 msgstr "Modello Riga Movimento contabile"
-
-#, fuzzy
-msgctxt "model:account.move.open_journal.ask,string:"
-msgid "Account Move Open Journal Ask"
-msgstr "Richiesta apertura registro"
 
 #, fuzzy
 msgctxt "model:account.move.reconcile.write_off,string:"
@@ -3266,8 +3298,8 @@ msgstr "Fiscal Years"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_fiscalyear_form_close"
-msgid "Close Fiscal Years"
-msgstr "Chiusura Esercizio"
+msgid "Fiscal Years"
+msgstr "Fiscal Years"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_general_ledger_account_form"
@@ -3308,23 +3340,13 @@ msgstr "Journals Cash"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_journal_period_form_close"
-msgid "Close Journals - Periods"
-msgstr "Chiusura Registri - Periodi"
-
-#, fuzzy
-msgctxt "model:ir.action,name:act_journal_period_tree"
-msgid "Journals - Periods"
-msgstr "Journals - Periods"
-
-#, fuzzy
-msgctxt "model:ir.action,name:act_journal_period_tree2"
 msgid "Journals - Periods"
 msgstr "Journals - Periods"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_move_form"
-msgid "Account Moves"
-msgstr "Account Moves"
+msgid "Moves"
+msgstr "Movimento"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_move_form_delegate"
@@ -3352,6 +3374,11 @@ msgid "Account Move Lines"
 msgstr "Account Move Lines"
 
 #, fuzzy
+msgctxt "model:ir.action,name:act_move_line_form_editable"
+msgid "Lines"
+msgstr "Righe"
+
+#, fuzzy
 msgctxt "model:ir.action,name:act_move_line_payable_receivable"
 msgid "Payable/Receivable Lines"
 msgstr "Payable/Receivable Lines"
@@ -3376,11 +3403,6 @@ msgid "Open Move Account"
 msgstr "Open Move Account"
 
 #, fuzzy
-msgctxt "model:ir.action,name:act_open_journal"
-msgid "Open Journal"
-msgstr "Open Journal"
-
-#, fuzzy
 msgctxt "model:ir.action,name:act_open_tax_code"
 msgid "Open Tax Code"
 msgstr "Open Tax Code"
@@ -3395,8 +3417,8 @@ msgstr "Periodi"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_period_form_close"
-msgid "Close Periods"
-msgstr "Chiusura Periodi"
+msgid "Periods"
+msgstr "Periodi"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_reconcile"
@@ -3547,6 +3569,13 @@ msgctxt "model:ir.message,text:msg_account_no_type_lines"
 msgid ""
 "You cannot remove type of account \"%(account)s\" because it has move lines."
 msgstr ""
+
+#, fuzzy, python-format
+msgctxt "model:ir.message,text:msg_account_party_required_with_moves"
+msgid ""
+"You cannot change the \"Party Required\" field of account \"%(account)s\" "
+"because it contains lines."
+msgstr "Conto non eliminabile perché movimentato"
 
 #, python-format
 msgctxt "model:ir.message,text:msg_cancel_line_delegated"
@@ -4222,18 +4251,18 @@ msgstr "Saldo - non differito"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_close_fiscalyear"
-msgid "Close Fiscal Years"
-msgstr "Chiusura Esercizio"
+msgid "Fiscal Years"
+msgstr "Fiscal Years"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_close_journal_period"
-msgid "Close Journals - Periods"
-msgstr "Chiusura Registri - Periodi"
+msgid "Journals - Periods"
+msgstr "Journals - Periods"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_close_period"
-msgid "Close Periods"
-msgstr "Chiusura Periodi"
+msgid "Periods"
+msgstr "Periodi"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_create_chart"
@@ -4277,19 +4306,14 @@ msgid "Journals Cash"
 msgstr "Journals Cash"
 
 #, fuzzy
-msgctxt "model:ir.ui.menu,name:menu_journal_period_tree"
-msgid "Journals - Periods"
-msgstr "Journals - Periods"
-
-#, fuzzy
-msgctxt "model:ir.ui.menu,name:menu_journal_period_tree2"
-msgid "Journals - Periods"
-msgstr "Journals - Periods"
-
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_move_form"
-msgid "Account Moves"
-msgstr "Account Moves"
+msgid "Moves"
+msgstr "Movimento"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_move_line_form_editable"
+msgid "Lines"
+msgstr "Righe"
 
 msgctxt "model:ir.ui.menu,name:menu_move_template_create"
 msgid "Create Move from Template"
@@ -4308,11 +4332,6 @@ msgstr "Stato Patrimoniale"
 msgctxt "model:ir.ui.menu,name:menu_open_income_statement"
 msgid "Income Statement"
 msgstr "Income Statement"
-
-#, fuzzy
-msgctxt "model:ir.ui.menu,name:menu_open_journal"
-msgid "Open Journal"
-msgstr "Open Journal"
 
 msgctxt "model:ir.ui.menu,name:menu_period_form"
 msgid "Periods"
@@ -4602,10 +4621,6 @@ msgstr "Mastro"
 msgctxt "report:account.general_ledger:"
 msgid "Move"
 msgstr "Movimento"
-
-msgctxt "report:account.general_ledger:"
-msgid "Name"
-msgstr "Nome"
 
 msgctxt "report:account.general_ledger:"
 msgid "Origin"
@@ -5384,14 +5399,6 @@ msgstr "Annulla"
 msgctxt "wizard_button:account.move.line.reschedule,start,preview:"
 msgid "Preview"
 msgstr ""
-
-msgctxt "wizard_button:account.move.open_journal,ask,end:"
-msgid "Cancel"
-msgstr "Annulla"
-
-msgctxt "wizard_button:account.move.open_journal,ask,open_:"
-msgid "Open"
-msgstr "Apertura"
 
 msgctxt "wizard_button:account.move.reconcile_lines,writeoff,end:"
 msgid "Cancel"

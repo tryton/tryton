@@ -14,11 +14,11 @@ msgstr "Valuuta"
 
 msgctxt "field:currency.cron,day:"
 msgid "Day of Month"
-msgstr ""
+msgstr "Kuupäev"
 
 msgctxt "field:currency.cron,frequency:"
 msgid "Frequency"
-msgstr ""
+msgstr "Sagedus"
 
 msgctxt "field:currency.cron,last_update:"
 msgid "Last Update"

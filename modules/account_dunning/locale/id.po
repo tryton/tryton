@@ -72,6 +72,11 @@ msgctxt "field:account.dunning,state:"
 msgid "State"
 msgstr ""
 
+#, fuzzy
+msgctxt "field:account.dunning.create.start,companies:"
+msgid "Companies"
+msgstr "Perusahaan"
+
 msgctxt "field:account.dunning.create.start,date:"
 msgid "Date"
 msgstr "Tanggal"
@@ -139,6 +144,10 @@ msgstr ""
 
 msgctxt "help:account.dunning,line:"
 msgid "The receivable line to dun for."
+msgstr ""
+
+msgctxt "help:account.dunning.create.start,companies:"
+msgid "Limit to lines from these companies."
 msgstr ""
 
 msgctxt "help:account.dunning.create.start,date:"

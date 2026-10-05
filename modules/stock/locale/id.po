@@ -130,8 +130,24 @@ msgctxt "field:res.user,warehouse:"
 msgid "Current Warehouse"
 msgstr "Gudang saat ini"
 
+msgctxt "field:stock.configuration,inventory_cost_thresold:"
+msgid "Inventory Cost Thresold"
+msgstr ""
+
+msgctxt "field:stock.configuration,inventory_quantity_tolerance:"
+msgid "Inventory Quantity Tolerance"
+msgstr ""
+
 msgctxt "field:stock.configuration,inventory_sequence:"
 msgid "Inventory Sequence"
+msgstr ""
+
+msgctxt "field:stock.configuration,period_closing_delay:"
+msgid "Period Closing Delay"
+msgstr ""
+
+msgctxt "field:stock.configuration,period_creation_interval:"
+msgid "Period Creation Interval"
 msgstr ""
 
 msgctxt "field:stock.configuration,shipment_in_return_sequence:"
@@ -158,8 +174,29 @@ msgctxt "field:stock.configuration,shipment_out_sequence:"
 msgid "Customer Shipment Sequence"
 msgstr ""
 
+msgctxt "field:stock.configuration.inventory,inventory_cost_thresold:"
+msgid "Inventory Cost Thresold"
+msgstr ""
+
+msgctxt "field:stock.configuration.inventory,inventory_quantity_tolerance:"
+msgid "Inventory Quantity Tolerance"
+msgstr ""
+
 msgctxt "field:stock.configuration.location,shipment_internal_transit:"
 msgid "Internal Shipment Transit"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:stock.configuration.period,company:"
+msgid "Company"
+msgstr "Perusahaan"
+
+msgctxt "field:stock.configuration.period,period_closing_delay:"
+msgid "Period Closing Delay"
+msgstr ""
+
+msgctxt "field:stock.configuration.period,period_creation_interval:"
+msgid "Period Creation Interval"
 msgstr ""
 
 msgctxt "field:stock.configuration.sequence,company:"
@@ -243,6 +280,10 @@ msgctxt "field:stock.inventory.count.search,search:"
 msgid "Search"
 msgstr ""
 
+msgctxt "field:stock.inventory.line,cost_variation:"
+msgid "Cost Variation"
+msgstr ""
+
 msgctxt "field:stock.inventory.line,expected_quantity:"
 msgid "Expected Quantity"
 msgstr ""
@@ -273,6 +314,19 @@ msgstr "Produk"
 
 msgctxt "field:stock.inventory.line,quantity:"
 msgid "Actual Quantity"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:stock.inventory.line,quantity_variation:"
+msgid "Quantity Variation"
+msgstr "Kuantitas"
+
+msgctxt "field:stock.inventory.line,tolerance_cost_variation:"
+msgid "Tolerance Cost Variation"
+msgstr ""
+
+msgctxt "field:stock.inventory.line,tolerance_quantity_variation:"
+msgid "Tolerance Quantity Variation"
 msgstr ""
 
 #, fuzzy
@@ -356,10 +410,6 @@ msgstr ""
 msgctxt "field:stock.location,type:"
 msgid "Type"
 msgstr ""
-
-msgctxt "field:stock.location,warehouse:"
-msgid "Warehouse"
-msgstr "Gudang"
 
 #, fuzzy
 msgctxt "field:stock.location,waste_locations:"
@@ -1421,8 +1471,24 @@ msgctxt "help:res.user,warehouse:"
 msgid "The warehouse that the user works at."
 msgstr ""
 
+msgctxt "help:stock.configuration,inventory_cost_thresold:"
+msgid "The inventory cost thresold accepted in company currency."
+msgstr ""
+
+msgctxt "help:stock.configuration,inventory_quantity_tolerance:"
+msgid "The inventory quantity variation accepted in percentage."
+msgstr ""
+
 msgctxt "help:stock.configuration,inventory_sequence:"
 msgid "Used to generate the number given to inventories."
+msgstr ""
+
+msgctxt "help:stock.configuration,period_closing_delay:"
+msgid "Leave it empty to prevent periods from being closed automatically."
+msgstr ""
+
+msgctxt "help:stock.configuration,period_creation_interval:"
+msgid "Leave it empty to prevent periods from being created automatically."
 msgstr ""
 
 msgctxt "help:stock.configuration,shipment_in_return_sequence:"
@@ -1448,6 +1514,14 @@ msgstr ""
 
 msgctxt "help:stock.configuration,shipment_out_sequence:"
 msgid "Used to generate the number given to customer shipments."
+msgstr ""
+
+msgctxt "help:stock.configuration.inventory,inventory_cost_thresold:"
+msgid "The inventory cost thresold accepted in company currency."
+msgstr ""
+
+msgctxt "help:stock.configuration.inventory,inventory_quantity_tolerance:"
+msgid "The inventory quantity variation accepted in percentage."
 msgstr ""
 
 msgctxt "help:stock.configuration.location,shipment_internal_transit:"
@@ -1505,6 +1579,10 @@ msgstr ""
 
 msgctxt "help:stock.inventory.line,quantity:"
 msgid "The actual quantity found in the location."
+msgstr ""
+
+msgctxt "help:stock.inventory.line,quantity_variation:"
+msgid "The difference between expected quantity and actual quantity."
 msgstr ""
 
 msgctxt "help:stock.inventory.line,unit:"
@@ -2349,6 +2427,12 @@ msgid ""
 msgstr ""
 
 #, python-format
+msgctxt "model:ir.message,text:msg_inventory_over_tolerance"
+msgid "The inventory line \"%(lines)s\" is outside the tolerance range."
+msgid_plural "The inventory lines \"%(lines)s\" are outside the tolerance range."
+msgstr[0] ""
+
+#, python-format
 msgctxt "model:ir.message,text:msg_location_inactive_not_empty"
 msgid "To inactivate location \"%(location)s\", you must empty it."
 msgstr ""
@@ -3052,8 +3136,18 @@ msgid "Stock Configuration"
 msgstr "Konfigurasi"
 
 #, fuzzy
+msgctxt "model:stock.configuration.inventory,string:"
+msgid "Stock Configuration Inventory"
+msgstr "Konfigurasi"
+
+#, fuzzy
 msgctxt "model:stock.configuration.location,string:"
 msgid "Stock Configuration Location"
+msgstr "Konfigurasi"
+
+#, fuzzy
+msgctxt "model:stock.configuration.period,string:"
+msgid "Stock Configuration Period"
 msgstr "Konfigurasi"
 
 #, fuzzy
@@ -3514,6 +3608,16 @@ msgctxt "selection:ir.cron,method:"
 msgid "Assign Shipments"
 msgstr ""
 
+#, fuzzy
+msgctxt "selection:ir.cron,method:"
+msgid "Close Stock Periods"
+msgstr "Periode"
+
+#, fuzzy
+msgctxt "selection:ir.cron,method:"
+msgid "Create Stock Periods"
+msgstr "Periode"
+
 msgctxt "selection:ir.cron,method:"
 msgid "Recompute Cost Price from Moves"
 msgstr ""
@@ -3832,6 +3936,15 @@ msgctxt "view:res.user:"
 msgid "The warehouse that you work at."
 msgstr ""
 
+#, fuzzy
+msgctxt "view:stock.configuration:"
+msgid "%"
+msgstr "%"
+
+msgctxt "view:stock.configuration:"
+msgid "Cost Thresold"
+msgstr ""
+
 msgctxt "view:stock.configuration:"
 msgid "Customer Return Sequence"
 msgstr ""
@@ -3854,6 +3967,16 @@ msgctxt "view:stock.configuration:"
 msgid "Inventory"
 msgstr ""
 
+#, fuzzy
+msgctxt "view:stock.configuration:"
+msgid "Period"
+msgstr "Periode"
+
+#, fuzzy
+msgctxt "view:stock.configuration:"
+msgid "Quantity Tolerance"
+msgstr "Kuantitas"
+
 msgctxt "view:stock.configuration:"
 msgid "Sequence"
 msgstr "Urutan"
@@ -3870,11 +3993,6 @@ msgstr ""
 msgctxt "view:stock.configuration:"
 msgid "Supplier Sequence"
 msgstr "Pemasok"
-
-#, fuzzy
-msgctxt "view:stock.move:"
-msgid "Cost"
-msgstr "Biaya"
 
 #, fuzzy
 msgctxt "view:stock.move:"

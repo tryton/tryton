@@ -7,6 +7,19 @@ msgid "Edocument Ubl Invoice"
 msgstr "Facture électronique UBL"
 
 #, python-format
+msgctxt "model:ir.message,text:msg_bank_account_not_found"
+msgid "Could not find bank account \"%(account)s\" for party \"%(parties)s\"."
+msgid_plural ""
+"Could not find bank account \"%(account)s\" for any of the parties "
+"\"%(parties)s\"."
+msgstr[0] ""
+"Impossible de trouver le compte bancaire « %(account)s » pour le tiers "
+"« %(parties)s »."
+msgstr[1] ""
+"Impossible de trouver le compte bancaire « %(account)s » pour l’une des "
+"tiers « %(parties)s »."
+
+#, python-format
 msgctxt "model:ir.message,text:msg_company_not_found"
 msgid ""
 "Could not find the company for:\n"

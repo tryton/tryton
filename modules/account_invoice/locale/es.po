@@ -370,7 +370,7 @@ msgstr "Archivo"
 
 msgctxt "field:account.invoice.edocument.result,filename:"
 msgid "File Name"
-msgstr "Nombre del archivo"
+msgstr "Nombre del fichero"
 
 msgctxt "field:account.invoice.edocument.start,format:"
 msgid "Format"
@@ -726,7 +726,7 @@ msgstr "Fecha"
 
 msgctxt "field:account.invoice.report.revision,filename:"
 msgid "File Name"
-msgstr "Nombre del archivo"
+msgstr "Nombre del fichero"
 
 msgctxt "field:account.invoice.report.revision,invoice:"
 msgid "Invoice"
@@ -1028,9 +1028,13 @@ msgctxt "model:ir.action,name:act_invoice_relate"
 msgid "Invoices"
 msgstr "Facturas"
 
+msgctxt "model:ir.action,name:act_invoice_relate_period"
+msgid "Invoices"
+msgstr "Facturas"
+
 msgctxt "model:ir.action,name:act_payment_method_form"
-msgid "Invoice Payment Methods"
-msgstr "Métodos de pago de factura"
+msgid "Payment Methods"
+msgstr "Métodos de pago"
 
 msgctxt "model:ir.action,name:act_payment_term_form"
 msgid "Payment Terms"
@@ -1109,6 +1113,18 @@ msgstr "Pagada"
 msgctxt "model:ir.action.act_window.domain,name:act_invoice_relate_pending"
 msgid "Pending"
 msgstr "Pendiente"
+
+msgctxt "model:ir.action.act_window.domain,name:act_invoice_relate_period_all"
+msgid "All"
+msgstr "Todo"
+
+msgctxt "model:ir.action.act_window.domain,name:act_invoice_relate_period_in"
+msgid "Supplier"
+msgstr "Proveedor"
+
+msgctxt "model:ir.action.act_window.domain,name:act_invoice_relate_period_out"
+msgid "Customer"
+msgstr "Cliente"
 
 #, python-format
 msgctxt "model:ir.message,text:msg_cancel_invoice_move"
@@ -1321,6 +1337,15 @@ msgstr ""
 "estado borrador."
 
 #, python-format
+msgctxt "model:ir.message,text:msg_invoice_tax_identifier_invalid"
+msgid ""
+"The tax identifier \"%(identifier)s\" on invoice \"%(invoice)s\" has not "
+"been validated."
+msgstr ""
+"El identificador fiscal \"%(identifier)s\" de la factura \"%(invoice)s\" no "
+"ha sido validado."
+
+#, python-format
 msgctxt "model:ir.message,text:msg_invoice_tax_invalid"
 msgid ""
 "The taxes on invoice \"%(invoice)s\" are not valid, you must save it again "
@@ -1455,8 +1480,8 @@ msgid "Invoices"
 msgstr "Facturación"
 
 msgctxt "model:ir.ui.menu,name:menu_payment_method_form"
-msgid "Invoice Payment Methods"
-msgstr "Métodos de pago de factura"
+msgid "Payment Methods"
+msgstr "Métodos de pago"
 
 msgctxt "model:ir.ui.menu,name:menu_payment_term_form"
 msgid "Payment Terms"

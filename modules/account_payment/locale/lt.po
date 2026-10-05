@@ -66,6 +66,11 @@ msgid "Payments"
 msgstr "Mokėjimai"
 
 #, fuzzy
+msgctxt "field:account.move.line.create_direct_debit.start,companies:"
+msgid "Companies"
+msgstr "Organizacija"
+
+#, fuzzy
 msgctxt "field:account.move.line.create_direct_debit.start,date:"
 msgid "Date"
 msgstr "Data"
@@ -303,6 +308,10 @@ msgctxt "help:account.move.line,payment_direct_debit:"
 msgid "Check if the line will be paid by direct debit."
 msgstr "Pažymėkite, jei eilutė bus apmokama tiesioginiu debetu."
 
+msgctxt "help:account.move.line.create_direct_debit.start,companies:"
+msgid "Limit to lines from these companies."
+msgstr ""
+
 msgctxt "help:account.move.line.create_direct_debit.start,date:"
 msgid "Create direct debit for lines due up to this date."
 msgstr ""
@@ -435,9 +444,10 @@ msgctxt "model:ir.action,name:act_payment_group_form"
 msgid "Payment Groups"
 msgstr "Mokėjimų grupės"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_payment_journal_form"
-msgid "Payment Journals"
-msgstr "Mokėjimų žurnalai"
+msgid "Journals"
+msgstr "Žurnalai"
 
 msgctxt "model:ir.action,name:act_process_payments"
 msgid "Process Payments"
@@ -751,9 +761,10 @@ msgctxt "model:ir.ui.menu,name:menu_payment_group_form"
 msgid "Payment Groups"
 msgstr "Mokėjimų grupės"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_payment_journal_form"
-msgid "Payment Journals"
-msgstr "Mokėjimų žurnalai"
+msgid "Journals"
+msgstr "Žurnalai"
 
 msgctxt "model:ir.ui.menu,name:menu_payments"
 msgid "Payments"

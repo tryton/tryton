@@ -28,6 +28,25 @@ msgid "Lot Sequence"
 msgstr "批次序列"
 
 #, fuzzy
+msgctxt "field:sale.point.sale.line,lot:"
+msgid "Lot"
+msgstr "批次"
+
+#, fuzzy
+msgctxt "field:sale.point.sale.line,lot_required:"
+msgid "Lot Required"
+msgstr "需要批次"
+
+msgctxt "field:stock.conversion,input_lot:"
+msgid "Input Lot"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:stock.conversion,output_lot:"
+msgid "Output Lot"
+msgstr "重复批次"
+
+#, fuzzy
 msgctxt "field:stock.inventory.count.quantity,lot:"
 msgid "Lot"
 msgstr "批次"

@@ -110,6 +110,10 @@ msgctxt "field:web.shop,products_removed:"
 msgid "Products Removed"
 msgstr "Verwijderde Producten"
 
+msgctxt "field:web.shop,sale_draft_abandon_delay:"
+msgid "Sale Draft Abandon Delay"
+msgstr ""
+
 msgctxt "field:web.shop,sale_price_list:"
 msgid "Sale Price List"
 msgstr "Verkoop prijslijst"
@@ -224,6 +228,12 @@ msgid "The list of products to unpublish."
 msgstr ""
 "De lijst met producten waarvan de publicatie ongedaan moet worden gemaakt."
 
+msgctxt "help:web.shop,sale_draft_abandon_delay:"
+msgid ""
+"The time period after which a sale made via the web shop without modification is cancelled.\n"
+"Leave empty to never cancel any draft sales."
+msgstr ""
+
 msgctxt "help:web.shop,sale_price_list:"
 msgid "The price list to compute sale price of products."
 msgstr "De prijslijst om de verkoopprijs van producten te berekenen."
@@ -292,6 +302,11 @@ msgstr "Webwinkel - Product"
 msgctxt "model:web.shop-stock.location,string:"
 msgid "Web Shop - Stock Location"
 msgstr "Webwinkel - Voorraad locatie"
+
+#, fuzzy
+msgctxt "selection:ir.cron,method:"
+msgid "Cancel Abandoned Sales from Web Shop"
+msgstr "Update van de webwinkel"
 
 msgctxt "view:product.template:"
 msgid "Edit"

@@ -72,6 +72,11 @@ msgid "Shopify Amount to Pay"
 msgstr ""
 
 #, fuzzy
+msgctxt "field:sale.sale,shopify_refunded:"
+msgid "Shopify Refunded"
+msgstr "ID da Shopify"
+
+#, fuzzy
 msgctxt "field:sale.sale,shopify_status_url:"
 msgid "Shopify Status URL"
 msgstr "Shopify UoM"

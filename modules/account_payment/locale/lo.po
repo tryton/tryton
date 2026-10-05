@@ -66,6 +66,11 @@ msgid "Payments"
 msgstr "ການຊໍາລະເງິນ"
 
 #, fuzzy
+msgctxt "field:account.move.line.create_direct_debit.start,companies:"
+msgid "Companies"
+msgstr "ສຳນັກງານ/ຫ້ອງການ"
+
+#, fuzzy
 msgctxt "field:account.move.line.create_direct_debit.start,date:"
 msgid "Date"
 msgstr "ວັນທີ"
@@ -304,6 +309,10 @@ msgctxt "help:account.move.line,payment_direct_debit:"
 msgid "Check if the line will be paid by direct debit."
 msgstr "ໝາຍເອົາຖເາຫາກວ່າລາຍການຈະຈ່າຍດ້ວຍຫັກບັນຊີທະນາຄານ"
 
+msgctxt "help:account.move.line.create_direct_debit.start,companies:"
+msgid "Limit to lines from these companies."
+msgstr ""
+
 msgctxt "help:account.move.line.create_direct_debit.start,date:"
 msgid "Create direct debit for lines due up to this date."
 msgstr ""
@@ -442,8 +451,8 @@ msgstr "Payment Groups"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_payment_journal_form"
-msgid "Payment Journals"
-msgstr "Payment Journals"
+msgid "Journals"
+msgstr "ບັນຊີປະຈໍາວັນ"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_process_payments"
@@ -763,8 +772,8 @@ msgstr "Payment Groups"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_payment_journal_form"
-msgid "Payment Journals"
-msgstr "Payment Journals"
+msgid "Journals"
+msgstr "ບັນຊີປະຈໍາວັນ"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_payments"

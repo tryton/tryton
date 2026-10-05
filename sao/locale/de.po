@@ -128,6 +128,9 @@ msgstr "Benutzername"
 msgid "Login with"
 msgstr "Log-in mit"
 
+msgid "Disabled on localhost"
+msgstr "Auf Localhost deaktiviert"
+
 msgid "Too many requests. Try again later."
 msgstr "Zu viele Anfragen. Bitte versuchen Sie es später erneut."
 
@@ -310,14 +313,23 @@ msgstr "Diesen Datensatz speichern"
 msgid "Reload"
 msgstr "Neu laden"
 
+msgid "Delete..."
+msgstr "Löschen..."
+
 msgid "View Logs..."
 msgstr "Logs anzeigen..."
 
 msgid "Show revisions..."
 msgstr "Bearbeitungen anzeigen..."
 
+msgid "Attachments..."
+msgstr "Anhänge..."
+
 msgid "Add an attachment to the record"
 msgstr "Einen Anhang zum Datensatz hinzufügen"
+
+msgid "Notes..."
+msgstr "Notizen..."
 
 msgid "Add a note to the record"
 msgstr "Eine Notiz zu einem Datensatz hinzufügen"
@@ -328,17 +340,26 @@ msgstr "Chat"
 msgid "Chat on the record"
 msgstr "Chat über den Datensatz"
 
+msgid "Actions..."
+msgstr "Aktionen..."
+
+msgid "Relate..."
+msgstr "Beziehungen..."
+
+msgid "Print..."
+msgstr "Drucken..."
+
 msgid "Email..."
 msgstr "E-Mail..."
 
 msgid "Send an email using the record"
 msgstr "Eine E-Mail basierend auf diesem Datensatz versenden"
 
-msgid "Export"
-msgstr "Export"
+msgid "Export..."
+msgstr "Exportieren..."
 
-msgid "Import"
-msgstr "Import"
+msgid "Import..."
+msgstr "Importieren..."
 
 msgid ""
 "The following action requires to close all tabs.\n"
@@ -369,11 +390,10 @@ msgstr "Der Datensatz wurde gespeichert."
 msgid "Working now on the duplicated record(s)."
 msgstr "Sie arbeiten nun an dem/den duplizierten Datensatz/Datensätzen."
 
-msgid "Are you sure to remove this record?"
-msgstr "Möchten Sie diesen Datensatz wirklich löschen?"
-
-msgid "Are you sure to remove those records?"
-msgstr "Möchten Sie diese Datensätze wirklich löschen?"
+msgid "Are you sure you want to delete this record?"
+msgid_plural "Are you sure you want to delete these %1 records?"
+msgstr[0] "Möchten Sie diesen Datensatz wirklich löschen?"
+msgstr[1] "Möchten Sie diese %1 Datensätze wirklich löschen?"
 
 msgid "Records removed."
 msgstr "Die Datensätze wurden gelöscht."
@@ -397,10 +417,14 @@ msgid "Template"
 msgstr "Vorlage"
 
 msgid "Attachment (%1)"
-msgstr "Anhänge (%1)"
+msgid_plural "Attachments (%1)"
+msgstr[0] "Anhang (%1)"
+msgstr[1] "Anhänge (%1)"
 
 msgid "Note (%1/%2)"
-msgstr "Notiz (%1/%2)"
+msgid_plural "Notes (%1/%2)"
+msgstr[0] "Notiz (%1/%2)"
+msgstr[1] "Notizen (%1/%2)"
 
 msgid "Filters"
 msgstr "Filter"
@@ -517,6 +541,16 @@ msgstr "Öffnen"
 
 msgid "Undelete"
 msgstr "Löschung rückgängig machen"
+
+#, javascript-format
+msgid "%s to add"
+msgstr "%s hinzuzufügen"
+
+msgid "%1 to remove"
+msgstr "%1 zu entfernen"
+
+msgid "%1 to delete"
+msgstr "%1 zu löschen"
 
 msgid "Restore"
 msgstr "Zurücksetzen"
@@ -659,6 +693,9 @@ msgstr "Anführungszeichen:"
 
 msgid "CSV Import: %1"
 msgstr "CSV-Import: %1"
+
+msgid "Import"
+msgstr "Import"
 
 msgid "Auto-Detect"
 msgstr "Automatische Erkennung"

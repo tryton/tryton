@@ -172,13 +172,10 @@ msgctxt "field:party.category,parent:"
 msgid "Parent"
 msgstr "Matična kategorija"
 
-msgctxt "field:party.check_vies.result,parties_failed:"
-msgid "Parties Failed"
-msgstr "Partnerji neuspešno preverjeni"
-
-msgctxt "field:party.check_vies.result,parties_succeed:"
-msgid "Parties Succeed"
-msgstr "Partnerji uspešno preverjeni"
+#, fuzzy
+msgctxt "field:party.configuration,identifier_eu_vat_validation_period:"
+msgid "European VAT Number Validation Period"
+msgstr "Evropski ID za DDV"
 
 msgctxt "field:party.configuration,identifier_types:"
 msgid "Identifier Types"
@@ -284,6 +281,16 @@ msgstr "Šifra"
 msgctxt "field:party.identifier,code_compact:"
 msgid "Code Compact"
 msgstr "Zgoščena vrednost"
+
+#, fuzzy
+msgctxt "field:party.identifier,eu_vat_valid:"
+msgid "European VAT Number Valid"
+msgstr "Evropski ID za DDV"
+
+#, fuzzy
+msgctxt "field:party.identifier,eu_vat_validated_at:"
+msgid "European VAT Number Validated At"
+msgstr "Evropski ID za DDV"
 
 msgctxt "field:party.identifier,party:"
 msgid "Party"
@@ -504,6 +511,10 @@ msgctxt "help:party.category,parent:"
 msgid "Add the category below the parent."
 msgstr "Dodajanje kategorije pod matično kategorijo."
 
+msgctxt "help:party.configuration,identifier_eu_vat_validation_period:"
+msgid "The period during which the number is still considered valid."
+msgstr ""
+
 msgctxt "help:party.configuration,identifier_types:"
 msgid ""
 "Defines which identifier types are available.\n"
@@ -543,6 +554,10 @@ msgstr "Partner za izbris."
 msgctxt "help:party.identifier,address:"
 msgid "The address identified by this record."
 msgstr "Naslov, identificiran s tem zapisom."
+
+msgctxt "help:party.identifier,eu_vat_valid:"
+msgid "Checked if the number has been validated on VIES service."
+msgstr ""
 
 msgctxt "help:party.identifier,party:"
 msgid "The party identified by this record."
@@ -629,10 +644,6 @@ msgctxt "model:ir.action,name:report_label"
 msgid "Labels"
 msgstr "Nalepke"
 
-msgctxt "model:ir.action,name:wizard_check_vies"
-msgid "Check VIES"
-msgstr "Preveri VIES"
-
 msgctxt "model:ir.action,name:wizard_erase"
 msgid "Erase"
 msgstr "Izbriši"
@@ -704,6 +715,11 @@ msgctxt "model:ir.message,text:msg_invalid_format"
 msgid "Invalid format \"%(format)s\" with exception \"%(exception)s\"."
 msgstr "Neveljavna oblika \"%(format)s\", napaka \"%(exception)s\"."
 
+#, fuzzy, python-format
+msgctxt "model:ir.message,text:msg_invalid_format_strip"
+msgid "Invalid format \"%(format)s\". Empty address generates \"%(value)s\"."
+msgstr "Neveljavna oblika \"%(format)s\", napaka \"%(exception)s\"."
+
 #, python-format
 msgctxt "model:ir.message,text:msg_invalid_phone_number"
 msgid "The phone number \"%(phone)s\" for party \"%(party)s\" is not valid."
@@ -724,6 +740,11 @@ msgid "The party \"%(party)s\" has the same %(type)s \"%(code)s\"."
 msgstr "Partner \"%(party)s\" že ima %(type)s \"%(code)s\"."
 
 #, python-format
+msgctxt "model:ir.message,text:msg_party_identifier_eu_vat_invalid"
+msgid "The VAT numbers \"%(identifiers)s\" are not valid for the VIES service."
+msgstr ""
+
+#, python-format
 msgctxt "model:ir.message,text:msg_party_set_contact_mechanism"
 msgid ""
 "To change the \"%(field)s\" for party \"%(party)s\", you must edit their "
@@ -735,6 +756,11 @@ msgstr ""
 msgctxt "model:ir.message,text:msg_vies_unavailable"
 msgid "The VIES service is unavailable, try again later."
 msgstr "VIES storitev ni na voljo, poskusite kasneje."
+
+#, fuzzy
+msgctxt "model:ir.model.button,string:identifier_check_view_button"
+msgid "Check VIES"
+msgstr "Preveri VIES"
 
 msgctxt "model:ir.sequence,name:sequence_party"
 msgid "Party"
@@ -809,10 +835,6 @@ msgctxt "model:party.category,string:"
 msgid "Party Category"
 msgstr "Partner - Kategorija"
 
-msgctxt "model:party.check_vies.result,string:"
-msgid "Party Check Vies Result"
-msgstr ""
-
 #, fuzzy
 msgctxt "model:party.configuration,string:"
 msgid "Party Configuration"
@@ -870,6 +892,11 @@ msgstr ""
 msgctxt "model:res.group,name:group_party_admin"
 msgid "Party Administration"
 msgstr "Skrbništvo partnerjev"
+
+#, fuzzy
+msgctxt "selection:ir.cron,method:"
+msgid "Check European VAT Number with VIES"
+msgstr "Evropski ID za DDV"
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Albanian VAT Number"
@@ -1612,6 +1639,14 @@ msgctxt "view:party.address:"
 msgid "General"
 msgstr "Splošno"
 
+msgctxt "view:party.identifier:"
+msgid "Valid:"
+msgstr ""
+
+msgctxt "view:party.identifier:"
+msgid "at"
+msgstr ""
+
 msgctxt "view:party.party:"
 msgid "General"
 msgstr "Splošno"
@@ -1624,10 +1659,6 @@ msgstr "Partner"
 msgctxt "view:party.replace.ask:"
 msgid "Replaced By"
 msgstr "Zamenjan z"
-
-msgctxt "wizard_button:party.check_vies,result,end:"
-msgid "OK"
-msgstr "V redu"
 
 msgctxt "wizard_button:party.erase,ask,end:"
 msgid "Cancel"

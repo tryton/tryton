@@ -131,6 +131,9 @@ msgstr "Utilizator"
 msgid "Login with"
 msgstr "Autentificare cu"
 
+msgid "Disabled on localhost"
+msgstr ""
+
 msgid "Too many requests. Try again later."
 msgstr "Prea multe cereri. Încercați mai târziu."
 
@@ -308,14 +311,26 @@ msgstr "Salvare înregistrare"
 msgid "Reload"
 msgstr "Reîncare"
 
+#, fuzzy
+msgid "Delete..."
+msgstr "Ștergere"
+
 msgid "View Logs..."
 msgstr "Vizualizare Jurnale..."
 
 msgid "Show revisions..."
 msgstr "Afișați revizii..."
 
+#, fuzzy
+msgid "Attachments..."
+msgstr "Atașamente"
+
 msgid "Add an attachment to the record"
 msgstr "Adăugați un atașament la înregistrare"
+
+#, fuzzy
+msgid "Notes..."
+msgstr "Nota"
 
 msgid "Add a note to the record"
 msgstr "Adăugați o notă la înregistrare"
@@ -328,6 +343,18 @@ msgid "Chat on the record"
 msgstr "Deschidere inregistrare"
 
 #, fuzzy
+msgid "Actions..."
+msgstr "Acțiune"
+
+#, fuzzy
+msgid "Relate..."
+msgstr "Relata"
+
+#, fuzzy
+msgid "Print..."
+msgstr "Tipărire"
+
+#, fuzzy
 msgid "Email..."
 msgstr "E-Mail..."
 
@@ -335,10 +362,12 @@ msgstr "E-Mail..."
 msgid "Send an email using the record"
 msgstr "Trimiteți un e-mail folosind înregistrarea"
 
-msgid "Export"
+#, fuzzy
+msgid "Export..."
 msgstr "Export"
 
-msgid "Import"
+#, fuzzy
+msgid "Import..."
 msgstr "Import"
 
 msgid ""
@@ -370,11 +399,12 @@ msgstr "Înregistrare salvată."
 msgid "Working now on the duplicated record(s)."
 msgstr "Lucrează acum la înregistrările duplicate."
 
-msgid "Are you sure to remove this record?"
-msgstr "Sigur eliminați această înregistrare?"
-
-msgid "Are you sure to remove those records?"
-msgstr "Sigur eliminați această înregistrare?"
+#, fuzzy
+msgid "Are you sure you want to delete this record?"
+msgid_plural "Are you sure you want to delete these %1 records?"
+msgstr[0] "Sigur eliminați această înregistrare?"
+msgstr[1] "Sigur eliminați această înregistrare?"
+msgstr[2] "Sigur eliminați această înregistrare?"
 
 msgid "Records removed."
 msgstr "Înregistrările au fost eliminate."
@@ -397,11 +427,19 @@ msgstr "Gestionare..."
 msgid "Template"
 msgstr "Șablon"
 
+#, fuzzy
 msgid "Attachment (%1)"
-msgstr "Atachment (%1)"
+msgid_plural "Attachments (%1)"
+msgstr[0] "Atachment (%1)"
+msgstr[1] "Atachment (%1)"
+msgstr[2] "Atachment (%1)"
 
+#, fuzzy
 msgid "Note (%1/%2)"
-msgstr "Notă (%1/%2)"
+msgid_plural "Notes (%1/%2)"
+msgstr[0] "Notă (%1/%2)"
+msgstr[1] "Notă (%1/%2)"
+msgstr[2] "Notă (%1/%2)"
 
 msgid "Filters"
 msgstr "Filtre"
@@ -515,6 +553,17 @@ msgid "Open"
 msgstr "Deschidere"
 
 msgid "Undelete"
+msgstr "Anulați ștergerea"
+
+#, javascript-format
+msgid "%s to add"
+msgstr ""
+
+msgid "%1 to remove"
+msgstr ""
+
+#, fuzzy
+msgid "%1 to delete"
 msgstr "Anulați ștergerea"
 
 msgid "Restore"
@@ -658,6 +707,9 @@ msgstr "Caracter de cotatie:"
 
 msgid "CSV Import: %1"
 msgstr "Import CSV: %1"
+
+msgid "Import"
+msgstr "Import"
 
 msgid "Auto-Detect"
 msgstr "Auto-detectare"

@@ -828,6 +828,16 @@ msgctxt "field:account.general_ledger.account,lines:"
 msgid "Lines"
 msgstr "Baris"
 
+#, fuzzy
+msgctxt "field:account.general_ledger.account,parties:"
+msgid "Parties"
+msgstr "Pihak"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account,party_required:"
+msgid "Party Required"
+msgstr "Diperlukan Pihak"
+
 msgctxt "field:account.general_ledger.account,start_balance:"
 msgid "Start Balance"
 msgstr "Saldo Awal"
@@ -925,6 +935,11 @@ msgstr "Debit Akhir"
 msgctxt "field:account.general_ledger.account.party,line_count:"
 msgid "Line Count"
 msgstr ""
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,lines:"
+msgid "Lines"
+msgstr "Baris"
 
 msgctxt "field:account.general_ledger.account.party,party:"
 msgid "Party"
@@ -1369,6 +1384,21 @@ msgid "Tax Lines"
 msgstr ""
 
 #, fuzzy
+msgctxt "field:account.move.line.context,company:"
+msgid "Company"
+msgstr "Perusahaan"
+
+#, fuzzy
+msgctxt "field:account.move.line.context,journal:"
+msgid "Journal"
+msgstr "Jurnal"
+
+#, fuzzy
+msgctxt "field:account.move.line.context,period:"
+msgid "Period"
+msgstr "Periode"
+
+#, fuzzy
 msgctxt "field:account.move.line.delegate.start,description:"
 msgid "Description"
 msgstr "Deskripsi"
@@ -1500,19 +1530,6 @@ msgstr "Diperlukan Pihak"
 msgctxt "field:account.move.line.template,taxes:"
 msgid "Taxes"
 msgstr "Pajak-Pajak"
-
-#, fuzzy
-msgctxt "field:account.move.open_journal.ask,company:"
-msgid "Company"
-msgstr "Perusahaan"
-
-msgctxt "field:account.move.open_journal.ask,journal:"
-msgid "Journal"
-msgstr "Jurnal"
-
-msgctxt "field:account.move.open_journal.ask,period:"
-msgid "Period"
-msgstr "Periode"
 
 msgctxt "field:account.move.reconcile.write_off,company:"
 msgid "Company"
@@ -1656,6 +1673,11 @@ msgstr "Tahun Fiskal"
 msgctxt "field:account.period,icon:"
 msgid "Icon"
 msgstr ""
+
+#, fuzzy
+msgctxt "field:account.period,journals:"
+msgid "Journals"
+msgstr "Jurnal-Jurnal"
 
 #, fuzzy
 msgctxt "field:account.period,move_sequence:"
@@ -2528,6 +2550,10 @@ msgctxt "help:account.move.template,description:"
 msgid "Keyword value substitutions are identified by braces ('{' and '}')."
 msgstr ""
 
+msgctxt "help:account.period,journals:"
+msgid "Filled automatically when a first move is created."
+msgstr ""
+
 msgctxt "help:account.period,move_sequence:"
 msgid ""
 "Used to generate the move number when posting.\n"
@@ -2600,11 +2626,15 @@ msgid ""
 msgstr ""
 
 msgctxt "help:party.party,customer_tax_rule:"
-msgid "Apply this rule on taxes when party is customer."
+msgid ""
+"Apply this rule to the default taxes when the party is a customer.\n"
+"Leave it empty to keep the default taxes."
 msgstr ""
 
 msgctxt "help:party.party,supplier_tax_rule:"
-msgid "Apply this rule on taxes when party is supplier."
+msgid ""
+"Apply this rule to the default taxes when the party is a supplier.\n"
+"Leave it empty to keep the default taxes."
 msgstr ""
 
 #, fuzzy
@@ -2823,6 +2853,11 @@ msgid "Account Move Line"
 msgstr "Baris Perpindahan Akun"
 
 #, fuzzy
+msgctxt "model:account.move.line.context,string:"
+msgid "Account Move Line Context"
+msgstr "Perpindahan Akun"
+
+#, fuzzy
 msgctxt "model:account.move.line.delegate.start,string:"
 msgid "Account Move Line Delegate Start"
 msgstr "Baris Perpindahan Akun"
@@ -2854,11 +2889,6 @@ msgstr "Baris Perpindahan Akun"
 #, fuzzy
 msgctxt "model:account.move.line.template,string:"
 msgid "Account Move Line Template"
-msgstr "Baris Perpindahan Akun"
-
-#, fuzzy
-msgctxt "model:account.move.open_journal.ask,string:"
-msgid "Account Move Open Journal Ask"
 msgstr "Baris Perpindahan Akun"
 
 msgctxt "model:account.move.reconcile.write_off,string:"
@@ -3068,9 +3098,10 @@ msgctxt "model:ir.action,name:act_fiscalyear_form"
 msgid "Fiscal Years"
 msgstr "Tahun Fiskal"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_fiscalyear_form_close"
-msgid "Close Fiscal Years"
-msgstr ""
+msgid "Fiscal Years"
+msgstr "Tahun Fiskal"
 
 msgctxt "model:ir.action,name:act_general_ledger_account_form"
 msgid "General Ledger - Accounts"
@@ -3106,21 +3137,15 @@ msgctxt "model:ir.action,name:act_journal_open_cash"
 msgid "Journals Cash"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_journal_period_form_close"
-msgid "Close Journals - Periods"
-msgstr ""
-
-msgctxt "model:ir.action,name:act_journal_period_tree"
 msgid "Journals - Periods"
-msgstr ""
+msgstr "Konfigurasi Akun"
 
-msgctxt "model:ir.action,name:act_journal_period_tree2"
-msgid "Journals - Periods"
-msgstr ""
-
+#, fuzzy
 msgctxt "model:ir.action,name:act_move_form"
-msgid "Account Moves"
-msgstr ""
+msgid "Moves"
+msgstr "Perpindahan"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_move_form_delegate"
@@ -3145,6 +3170,11 @@ msgctxt "model:ir.action,name:act_move_line_form"
 msgid "Account Move Lines"
 msgstr "Baris Perpindahan Akun"
 
+#, fuzzy
+msgctxt "model:ir.action,name:act_move_line_form_editable"
+msgid "Lines"
+msgstr "Baris"
+
 msgctxt "model:ir.action,name:act_move_line_payable_receivable"
 msgid "Payable/Receivable Lines"
 msgstr "Baris Utang/Piutang"
@@ -3166,10 +3196,6 @@ msgctxt "model:ir.action,name:act_open_account"
 msgid "Open Move Account"
 msgstr ""
 
-msgctxt "model:ir.action,name:act_open_journal"
-msgid "Open Journal"
-msgstr ""
-
 msgctxt "model:ir.action,name:act_open_tax_code"
 msgid "Open Tax Code"
 msgstr ""
@@ -3182,9 +3208,10 @@ msgctxt "model:ir.action,name:act_period_form"
 msgid "Periods"
 msgstr "Periode"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_period_form_close"
-msgid "Close Periods"
-msgstr ""
+msgid "Periods"
+msgstr "Periode"
 
 msgctxt "model:ir.action,name:act_reconcile"
 msgid "Reconcile Accounts"
@@ -3321,6 +3348,15 @@ msgctxt "model:ir.message,text:msg_account_no_type_lines"
 msgid ""
 "You cannot remove type of account \"%(account)s\" because it has move lines."
 msgstr ""
+
+#, fuzzy, python-format
+msgctxt "model:ir.message,text:msg_account_party_required_with_moves"
+msgid ""
+"You cannot change the \"Party Required\" field of account \"%(account)s\" "
+"because it contains lines."
+msgstr ""
+"Anda tidak dapat menutup akun \"%(account)s\" karena telah memiliki baris "
+"perpindahan."
 
 #, python-format
 msgctxt "model:ir.message,text:msg_cancel_line_delegated"
@@ -3994,17 +4030,20 @@ msgctxt "model:ir.ui.menu,name:menu_balance_non_deferral"
 msgid "Balance Non-Deferral"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_close_fiscalyear"
-msgid "Close Fiscal Years"
-msgstr ""
+msgid "Fiscal Years"
+msgstr "Tahun Fiskal"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_close_journal_period"
-msgid "Close Journals - Periods"
-msgstr ""
+msgid "Journals - Periods"
+msgstr "Konfigurasi Akun"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_close_period"
-msgid "Close Periods"
-msgstr ""
+msgid "Periods"
+msgstr "Periode"
 
 msgctxt "model:ir.ui.menu,name:menu_create_chart"
 msgid "Create Chart of Accounts from Template"
@@ -4042,17 +4081,15 @@ msgctxt "model:ir.ui.menu,name:menu_journal_open_cash"
 msgid "Journals Cash"
 msgstr ""
 
-msgctxt "model:ir.ui.menu,name:menu_journal_period_tree"
-msgid "Journals - Periods"
-msgstr ""
-
-msgctxt "model:ir.ui.menu,name:menu_journal_period_tree2"
-msgid "Journals - Periods"
-msgstr ""
-
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_move_form"
-msgid "Account Moves"
-msgstr ""
+msgid "Moves"
+msgstr "Perpindahan"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_move_line_form_editable"
+msgid "Lines"
+msgstr "Baris"
 
 msgctxt "model:ir.ui.menu,name:menu_move_template_create"
 msgid "Create Move from Template"
@@ -4070,10 +4107,6 @@ msgstr "Laporan Neraca"
 msgctxt "model:ir.ui.menu,name:menu_open_income_statement"
 msgid "Income Statement"
 msgstr "Laporan Laba Rugi"
-
-msgctxt "model:ir.ui.menu,name:menu_open_journal"
-msgid "Open Journal"
-msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_period_form"
 msgid "Periods"
@@ -4333,10 +4366,6 @@ msgstr "Buku Besar"
 msgctxt "report:account.general_ledger:"
 msgid "Move"
 msgstr "Perpindahan"
-
-msgctxt "report:account.general_ledger:"
-msgid "Name"
-msgstr "Nama"
 
 msgctxt "report:account.general_ledger:"
 msgid "Origin"
@@ -5072,14 +5101,6 @@ msgstr "Batal"
 msgctxt "wizard_button:account.move.line.reschedule,start,preview:"
 msgid "Preview"
 msgstr ""
-
-msgctxt "wizard_button:account.move.open_journal,ask,end:"
-msgid "Cancel"
-msgstr "Batal"
-
-msgctxt "wizard_button:account.move.open_journal,ask,open_:"
-msgid "Open"
-msgstr "Buka"
 
 msgctxt "wizard_button:account.move.reconcile_lines,writeoff,end:"
 msgid "Cancel"

@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:account.be.vat_customer,company_tax_identifier:"
 msgid "Company Tax Identifier"
-msgstr "Identificator Fiscal Societate"
+msgstr "CIF Societate"
 
 msgctxt "field:account.be.vat_customer,currency:"
 msgid "Currency"
@@ -12,7 +12,7 @@ msgstr "Moneda"
 
 msgctxt "field:account.be.vat_customer,party_tax_identifier:"
 msgid "Party Tax Identifier"
-msgstr ""
+msgstr "CIF Parte"
 
 msgctxt "field:account.be.vat_customer,turnover:"
 msgid "Turnover"

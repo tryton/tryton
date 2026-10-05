@@ -154,6 +154,10 @@ msgctxt "field:sale.configuration,sale_shipment_method:"
 msgid "Sale Shipment Method"
 msgstr "Liefermethode Verkauf"
 
+msgctxt "field:sale.configuration,sale_wait_shipment:"
+msgid "Sale Wait Shipment"
+msgstr "Verkauf Lieferung Warten"
+
 msgctxt "field:sale.configuration.quotation,sale_quotation_validity:"
 msgid "Sale Quotation Validity"
 msgstr "Verkauf Angebotsgültigkeitszeitraum"
@@ -165,6 +169,10 @@ msgstr "Rechnungsstellung Verkauf"
 msgctxt "field:sale.configuration.sale_method,sale_shipment_method:"
 msgid "Sale Shipment Method"
 msgstr "Liefermethode Verkauf"
+
+msgctxt "field:sale.configuration.sale_method,sale_wait_shipment:"
+msgid "Sale Wait Shipment"
+msgstr "Verkauf Lieferung Warten"
 
 msgctxt "field:sale.configuration.sequence,company:"
 msgid "Company"
@@ -769,6 +777,14 @@ msgid ""
 msgstr ""
 "Frist innerhalb der ein bestätigter Verkauf noch auf Entwurf zurückgesetzt werden kann.\n"
 "Wird nur angewandt, wenn die Warteschlange aktiviert ist."
+
+msgctxt "help:sale.configuration,sale_wait_shipment:"
+msgid "Create customer shipments in a waiting state"
+msgstr "Warenausgangslieferung im Status \"Wartend\" erstellen"
+
+msgctxt "help:sale.configuration.sale_method,sale_wait_shipment:"
+msgid "Create customer shipments in a waiting state"
+msgstr "Warenausgangslieferung im Status \"Wartend\" erstellen"
 
 msgctxt "help:sale.handle.invoice.exception.ask,ignore_invoices:"
 msgid "The selected cancelled invoices will be ignored."

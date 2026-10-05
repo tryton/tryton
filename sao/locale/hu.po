@@ -133,6 +133,9 @@ msgstr "Felhasználónév"
 msgid "Login with"
 msgstr "Bejelentkezés"
 
+msgid "Disabled on localhost"
+msgstr ""
+
 msgid "Too many requests. Try again later."
 msgstr ""
 
@@ -315,14 +318,26 @@ msgstr "Rekord mentése"
 msgid "Reload"
 msgstr "Újratöltés"
 
+#, fuzzy
+msgid "Delete..."
+msgstr "Törlés"
+
 msgid "View Logs..."
 msgstr "Napló megtekintése..."
 
 msgid "Show revisions..."
 msgstr "Feldolgozások megtekintése"
 
+#, fuzzy
+msgid "Attachments..."
+msgstr "Mellékletek"
+
 msgid "Add an attachment to the record"
 msgstr "Melléklet hozzáadása a rekordhoz"
+
+#, fuzzy
+msgid "Notes..."
+msgstr "Jegyzetek"
 
 msgid "Add a note to the record"
 msgstr "Jegyzet hozzáadása a rekordhoz"
@@ -334,6 +349,18 @@ msgstr ""
 msgid "Chat on the record"
 msgstr "Rekord megnyitása"
 
+#, fuzzy
+msgid "Actions..."
+msgstr "Művelet"
+
+#, fuzzy
+msgid "Relate..."
+msgstr "Kapcsolat"
+
+#, fuzzy
+msgid "Print..."
+msgstr "Nyomtatás"
+
 msgid "Email..."
 msgstr ""
 
@@ -341,10 +368,12 @@ msgstr ""
 msgid "Send an email using the record"
 msgstr "E-mail küldése a rekord adataival"
 
-msgid "Export"
+#, fuzzy
+msgid "Export..."
 msgstr "Exportálás"
 
-msgid "Import"
+#, fuzzy
+msgid "Import..."
 msgstr "Importálás"
 
 msgid ""
@@ -376,11 +405,11 @@ msgstr "Rekord elmentve."
 msgid "Working now on the duplicated record(s)."
 msgstr "Most az új másolaton(okon) dolgozik."
 
-msgid "Are you sure to remove this record?"
-msgstr "Biztos törölni szeretné?"
-
-msgid "Are you sure to remove those records?"
-msgstr "Biztos törölni szeretné?"
+#, fuzzy
+msgid "Are you sure you want to delete this record?"
+msgid_plural "Are you sure you want to delete these %1 records?"
+msgstr[0] "Biztos törölni szeretné?"
+msgstr[1] "Biztos törölni szeretné?"
 
 msgid "Records removed."
 msgstr "Rekordok törölve."
@@ -403,11 +432,17 @@ msgstr "Módosítás..."
 msgid "Template"
 msgstr "Sablon"
 
+#, fuzzy
 msgid "Attachment (%1)"
-msgstr "Melléklet (%1)"
+msgid_plural "Attachments (%1)"
+msgstr[0] "Melléklet (%1)"
+msgstr[1] "Melléklet (%1)"
 
+#, fuzzy
 msgid "Note (%1/%2)"
-msgstr "Jegyzet (%1/%2)"
+msgid_plural "Notes (%1/%2)"
+msgstr[0] "Jegyzet (%1/%2)"
+msgstr[1] "Jegyzet (%1/%2)"
 
 msgid "Filters"
 msgstr "Szűrők"
@@ -521,6 +556,16 @@ msgid "Open"
 msgstr "Megnyitás"
 
 msgid "Undelete"
+msgstr ""
+
+#, javascript-format
+msgid "%s to add"
+msgstr ""
+
+msgid "%1 to remove"
+msgstr ""
+
+msgid "%1 to delete"
 msgstr ""
 
 msgid "Restore"
@@ -671,6 +716,9 @@ msgstr "Karakterlánc-elválasztó:"
 
 msgid "CSV Import: %1"
 msgstr "Importálás CSV-ből: %1"
+
+msgid "Import"
+msgstr "Importálás"
 
 msgid "Auto-Detect"
 msgstr "Automatikus felismerés"

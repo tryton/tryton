@@ -8,7 +8,7 @@ msgstr "Archivo"
 
 msgctxt "field:account.fr.fec.result,filename:"
 msgid "File Name"
-msgstr "Nombre del archivo"
+msgstr "Nombre del fichero"
 
 msgctxt "field:account.fr.fec.start,deferral_period:"
 msgid "Deferral Period"

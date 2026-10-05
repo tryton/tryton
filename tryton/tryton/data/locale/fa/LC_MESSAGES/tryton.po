@@ -700,21 +700,25 @@ msgid "Next"
 msgstr "بعدی"
 
 #, fuzzy, python-format
-msgid "Attachment (%s)"
-msgstr "پیوستها (%s)"
+msgid "Attachment (%d)"
+msgid_plural "Attachments (%d)"
+msgstr[0] "پیوستها (%s)"
+msgstr[1] "پیوستها (%s)"
 
 #, python-format
 msgid "Note (%d/%d)"
-msgstr ""
+msgid_plural "Notes (%d/%d)"
+msgstr[0] ""
+msgstr[1] ""
 
 msgid "You have to select one record."
 msgstr "شما باید یک پرونده را انتخاب کنید."
 
-msgid "Are you sure to remove this record?"
-msgstr "برای حذف این پرونده اطمینان کامل دارید؟"
-
-msgid "Are you sure to remove those records?"
-msgstr "برای حذف این پرونده ها اطمینان کامل دارید؟"
+#, fuzzy, python-format
+msgid "Are you sure you want to delete this record?"
+msgid_plural "Are you sure you want to delete these %(size)d records?"
+msgstr[0] "برای حذف این پرونده اطمینان کامل دارید؟"
+msgstr[1] "برای حذف این پرونده اطمینان کامل دارید؟"
 
 msgid "Records not removed."
 msgstr "پرونده ها حذف نشدند."
@@ -1114,6 +1118,10 @@ msgstr "جستجو"
 msgid "New"
 msgstr "جدید"
 
+#, fuzzy
+msgid "Remove"
+msgstr "_حذف"
+
 #, python-format
 msgid "Search %s"
 msgstr "جستجو %s"
@@ -1260,6 +1268,9 @@ msgstr "انتخاب..."
 msgid "Clear"
 msgstr "پاک کردن"
 
+msgid "All Supported Types"
+msgstr ""
+
 msgid "All files"
 msgstr "همه فایل ها"
 
@@ -1277,9 +1288,6 @@ msgstr "افزودن مقدار"
 msgid "Remove \"%s\""
 msgstr "حذف \"%s\""
 
-msgid "Images"
-msgstr "تصاویر"
-
 msgid "Add existing record"
 msgstr "افزودن پرونده موجود"
 
@@ -1289,6 +1297,14 @@ msgstr "حذف پرونده انتخابی"
 #, fuzzy
 msgid "Restore selected record"
 msgstr "حذف پرونده انتخابی"
+
+#, python-format
+msgid "%s to add"
+msgstr ""
+
+#, fuzzy, python-format
+msgid "%s to remove"
+msgstr "پرونده ها حذف نشدند."
 
 msgid "Open the record <F2>"
 msgstr "بازکردن پرونده <F2>"
@@ -1310,6 +1326,10 @@ msgstr "حذف پرونده انتخابی"
 #, fuzzy
 msgid "Undelete selected record"
 msgstr "حذف پرونده انتخابی"
+
+#, python-format
+msgid "%s to delete"
+msgstr ""
 
 #, python-format
 msgid "%s%%"

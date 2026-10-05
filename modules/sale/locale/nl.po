@@ -154,6 +154,11 @@ msgctxt "field:sale.configuration,sale_shipment_method:"
 msgid "Sale Shipment Method"
 msgstr "Verkoop Verzendmethode"
 
+#, fuzzy
+msgctxt "field:sale.configuration,sale_wait_shipment:"
+msgid "Sale Wait Shipment"
+msgstr "Maak zending"
+
 msgctxt "field:sale.configuration.quotation,sale_quotation_validity:"
 msgid "Sale Quotation Validity"
 msgstr "Verkoop offerte termijn"
@@ -165,6 +170,11 @@ msgstr "Verkoopfactuur methode"
 msgctxt "field:sale.configuration.sale_method,sale_shipment_method:"
 msgid "Sale Shipment Method"
 msgstr "Verkoop Verzendmethode"
+
+#, fuzzy
+msgctxt "field:sale.configuration.sale_method,sale_wait_shipment:"
+msgid "Sale Wait Shipment"
+msgstr "Maak zending"
 
 msgctxt "field:sale.configuration.sequence,company:"
 msgid "Company"
@@ -769,6 +779,14 @@ msgid ""
 msgstr ""
 "De respijt periode waarin de bevestigde aankoop nog steeds kan worden gereset naar concept.\n"
 "Alleen toegepast als een wachtrij is geactiveerd."
+
+msgctxt "help:sale.configuration,sale_wait_shipment:"
+msgid "Create customer shipments in a waiting state"
+msgstr ""
+
+msgctxt "help:sale.configuration.sale_method,sale_wait_shipment:"
+msgid "Create customer shipments in a waiting state"
+msgstr ""
 
 msgctxt "help:sale.handle.invoice.exception.ask,ignore_invoices:"
 msgid "The selected cancelled invoices will be ignored."

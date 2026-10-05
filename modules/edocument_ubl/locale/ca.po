@@ -7,12 +7,25 @@ msgid "Edocument Ubl Invoice"
 msgstr "Edocument Factura UBL"
 
 #, python-format
+msgctxt "model:ir.message,text:msg_bank_account_not_found"
+msgid "Could not find bank account \"%(account)s\" for party \"%(parties)s\"."
+msgid_plural ""
+"Could not find bank account \"%(account)s\" for any of the parties "
+"\"%(parties)s\"."
+msgstr[0] ""
+"No s'ha pogut trobar el compte bancari \"%(account)s per al tercer "
+"\"%(parties)s\"."
+msgstr[1] ""
+"No s'ha pogut trobar el compte bancari \"%(account)s per cap dels tercers "
+"\"%(parties)s\"."
+
+#, python-format
 msgctxt "model:ir.message,text:msg_company_not_found"
 msgid ""
 "Could not find the company for:\n"
 "%(company)s"
 msgstr ""
-"No s'ha pogut trobar l'empresa per:\n"
+"No s'ha pogut trobar una empresa per:\n"
 "%(company)s"
 
 #, python-format
@@ -23,7 +36,7 @@ msgstr "Tipus de codi d'abonament no soportat: \"%(type_code)s\"."
 #, python-format
 msgctxt "model:ir.message,text:msg_currency_not_found"
 msgid "Could not find a currency with code \"%(code)s\"."
-msgstr "No s'ha pogut trobar una moneda amb codi \"%(code)s\"."
+msgstr "No s'ha pogut trobar una moneda amb codi: \"%(code)s\"."
 
 #, python-format
 msgctxt "model:ir.message,text:msg_invoice_type_code_unsupported"
@@ -48,11 +61,11 @@ msgid_plural ""
 "Could not find a unit with UNECE code \"%(code)s\" and at least %(digits)s "
 "digits."
 msgstr[0] ""
-"No s'ha pogut trobar una unitat amb codi UNECE \"%(code)s i com a mínim "
+"No s'ha trobat una unitat amb codi UNECE \"%(code)s\" i com a mínim "
 "%(digits)s dígit."
 msgstr[1] ""
-"No s'ha pogut trobar cap unitat amb el codi UNECE \"%(code)s\" i com a mínim"
-" %(digits)s dígits."
+"No s'ha trobat una unitat amb codi UNECE \"%(code)s\" i com a mínim "
+"%(digits)s dígits."
 
 msgctxt "selection:account.invoice.edocument.start,format:"
 msgid "UBL"

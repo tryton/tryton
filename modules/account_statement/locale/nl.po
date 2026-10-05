@@ -74,9 +74,83 @@ msgctxt "field:account.statement,validation:"
 msgid "Validation"
 msgstr "Validatie"
 
+#, fuzzy
+msgctxt "field:account.statement.import.csv,account_column:"
+msgid "Account Number"
+msgstr "Grootboek boeking"
+
+#, fuzzy
+msgctxt "field:account.statement.import.csv,amount_column:"
+msgid "Amount"
+msgstr "Bedrag"
+
+#, fuzzy
+msgctxt "field:account.statement.import.csv,date_column:"
+msgid "Date"
+msgstr "Datum"
+
+#, fuzzy
+msgctxt "field:account.statement.import.csv,date_format:"
+msgid "Date Format"
+msgstr "Bestandsformaat"
+
+msgctxt "field:account.statement.import.csv,decimal_point:"
+msgid "Decimal Separator"
+msgstr ""
+
+msgctxt "field:account.statement.import.csv,delimiter:"
+msgid "Delimiter"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.statement.import.csv,description_column:"
+msgid "Description"
+msgstr "Specificatie"
+
+msgctxt "field:account.statement.import.csv,encoding:"
+msgid "Encoding"
+msgstr ""
+
+msgctxt "field:account.statement.import.csv,lines_to_skip:"
+msgid "Lines to Skip"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.statement.import.csv,name:"
+msgid "Name"
+msgstr "Naam"
+
+#, fuzzy
+msgctxt "field:account.statement.import.csv,number_column:"
+msgid "Number"
+msgstr "Nummer"
+
+#, fuzzy
+msgctxt "field:account.statement.import.csv,party_column:"
+msgid "Party"
+msgstr "Relatie"
+
+msgctxt "field:account.statement.import.csv,quotechar:"
+msgid "Quote char"
+msgstr ""
+
+msgctxt "field:account.statement.import.csv,thousands_sep:"
+msgid "Thousands Separator"
+msgstr ""
+
 msgctxt "field:account.statement.import.start,company:"
 msgid "Company"
 msgstr "Bedrijf"
+
+#, fuzzy
+msgctxt "field:account.statement.import.start,csv_format:"
+msgid "CSV Format"
+msgstr "Bestandsformaat"
+
+#, fuzzy
+msgctxt "field:account.statement.import.start,csv_journal:"
+msgid "Journal"
+msgstr "Dagboek"
 
 msgctxt "field:account.statement.import.start,file_:"
 msgid "File"
@@ -85,6 +159,11 @@ msgstr "Bestand"
 msgctxt "field:account.statement.import.start,file_format:"
 msgid "File Format"
 msgstr "Bestandsformaat"
+
+#, fuzzy
+msgctxt "field:account.statement.import.start,file_name:"
+msgid "File Name"
+msgstr "Naam"
 
 msgctxt "field:account.statement.journal,account:"
 msgid "Account"
@@ -302,6 +381,10 @@ msgctxt "field:account.statement.origin,statement_state:"
 msgid "Statement State"
 msgstr "Bankafschrift status"
 
+msgctxt "help:account.statement.import.csv,date_format:"
+msgid "The format of the date using the 1989 C standard."
+msgstr ""
+
 msgctxt "model:account.journal,name:journal_statement"
 msgid "Statement"
 msgstr "Bankafschrift"
@@ -309,6 +392,11 @@ msgstr "Bankafschrift"
 msgctxt "model:account.statement,string:"
 msgid "Account Statement"
 msgstr "Rekeningafschrift"
+
+#, fuzzy
+msgctxt "model:account.statement.import.csv,string:"
+msgid "Account Statement Import Csv"
+msgstr "Importeer bankafschrift start"
 
 msgctxt "model:account.statement.import.start,string:"
 msgid "Account Statement Import Start"
@@ -334,6 +422,11 @@ msgctxt "model:account.statement.origin.information,string:"
 msgid "Account Statement Origin Information"
 msgstr "Bankafschrift oorsprong informatie"
 
+msgctxt ""
+"model:account.statement.origin.information,string:information_csv_row"
+msgid "Row"
+msgstr ""
+
 msgctxt "model:ir.action,name:act_line_group_form"
 msgid "Line Groups"
 msgstr "Gegroepeerde regels"
@@ -358,9 +451,14 @@ msgctxt "model:ir.action,name:act_statement_form"
 msgid "Statements"
 msgstr "Bankafschriften"
 
+#, fuzzy
+msgctxt "model:ir.action,name:act_statement_import_csv_form"
+msgid "CSV Imports"
+msgstr "Importeren"
+
 msgctxt "model:ir.action,name:act_statement_journal_form"
-msgid "Statement Journals"
-msgstr "logboek van verklaringen (neergelegde verkaringen)"
+msgid "Journals"
+msgstr "Dagboeken"
 
 msgctxt "model:ir.action,name:act_statement_journal_list_reporting"
 msgid "Statement Journals"
@@ -440,6 +538,20 @@ msgid "To delete statement \"%(statement)s\" you must cancel it."
 msgstr ""
 "Om het bankafschrift \"%(statement)s\" te verwijderen, moet u deze "
 "annuleren."
+
+#, python-format
+msgctxt "model:ir.message,text:msg_statement_import_csv_invalid_date_format"
+msgid ""
+"Invalid date format \"%(date_format)s\" for the CSV import \"%(record)s\" "
+"with error: \"%(error)s\""
+msgstr ""
+
+#, python-format
+msgctxt "model:ir.message,text:msg_statement_import_error"
+msgid ""
+"The statement file could not be parsed with the following exception: "
+"\"%(exception)s\"."
+msgstr ""
 
 msgctxt "model:ir.message,text:msg_statement_invoice_paid_cancelled"
 msgid ""
@@ -570,9 +682,14 @@ msgctxt "model:ir.ui.menu,name:menu_statement_import"
 msgid "Import Statement"
 msgstr "Importeer bankafschrift"
 
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_statement_import_csv_form"
+msgid "CSV Imports"
+msgstr "Importeren"
+
 msgctxt "model:ir.ui.menu,name:menu_statement_journal_form"
-msgid "Statement Journals"
-msgstr "dagboek Bankafschriften"
+msgid "Journals"
+msgstr "Dagboeken"
 
 msgctxt "model:ir.ui.menu,name:menu_statement_journal_reporting"
 msgid "Statement Journals"
@@ -665,6 +782,15 @@ msgstr "Balans"
 msgctxt "selection:account.statement.journal,validation:"
 msgid "Number of Lines"
 msgstr "Aantal regels"
+
+msgctxt "view:account.statement.import.csv:"
+msgid "Columns"
+msgstr ""
+
+#, fuzzy
+msgctxt "view:account.statement.import.csv:"
+msgid "Format"
+msgstr "Bestandsformaat"
 
 msgctxt "view:account.statement:"
 msgid "Other Info"

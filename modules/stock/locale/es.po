@@ -122,9 +122,25 @@ msgctxt "field:res.user,warehouse:"
 msgid "Current Warehouse"
 msgstr "Almacén actual"
 
+msgctxt "field:stock.configuration,inventory_cost_thresold:"
+msgid "Inventory Cost Thresold"
+msgstr "Umbral de coste de inventario"
+
+msgctxt "field:stock.configuration,inventory_quantity_tolerance:"
+msgid "Inventory Quantity Tolerance"
+msgstr "Tolerancia de cantidad de inventario"
+
 msgctxt "field:stock.configuration,inventory_sequence:"
 msgid "Inventory Sequence"
 msgstr "Secuencia de inventario"
+
+msgctxt "field:stock.configuration,period_closing_delay:"
+msgid "Period Closing Delay"
+msgstr "Retraso cierre períodos"
+
+msgctxt "field:stock.configuration,period_creation_interval:"
+msgid "Period Creation Interval"
+msgstr "Intervalo creación períodos"
 
 msgctxt "field:stock.configuration,shipment_in_return_sequence:"
 msgid "Supplier Return Shipment Sequence"
@@ -150,9 +166,29 @@ msgctxt "field:stock.configuration,shipment_out_sequence:"
 msgid "Customer Shipment Sequence"
 msgstr "Secuencia de albarán cliente"
 
+msgctxt "field:stock.configuration.inventory,inventory_cost_thresold:"
+msgid "Inventory Cost Thresold"
+msgstr "Umbral de coste de inventario"
+
+msgctxt "field:stock.configuration.inventory,inventory_quantity_tolerance:"
+msgid "Inventory Quantity Tolerance"
+msgstr "Tolerancia de cantidad de inventario"
+
 msgctxt "field:stock.configuration.location,shipment_internal_transit:"
 msgid "Internal Shipment Transit"
 msgstr "Transito albaranes internos"
+
+msgctxt "field:stock.configuration.period,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:stock.configuration.period,period_closing_delay:"
+msgid "Period Closing Delay"
+msgstr "Retraso cierre períodos"
+
+msgctxt "field:stock.configuration.period,period_creation_interval:"
+msgid "Period Creation Interval"
+msgstr "Intervalo creación períodos"
 
 msgctxt "field:stock.configuration.sequence,company:"
 msgid "Company"
@@ -234,6 +270,10 @@ msgctxt "field:stock.inventory.count.search,search:"
 msgid "Search"
 msgstr "Buscar"
 
+msgctxt "field:stock.inventory.line,cost_variation:"
+msgid "Cost Variation"
+msgstr "Variación coste"
+
 msgctxt "field:stock.inventory.line,expected_quantity:"
 msgid "Expected Quantity"
 msgstr "Cantidad estimada"
@@ -265,6 +305,18 @@ msgstr "Producto"
 msgctxt "field:stock.inventory.line,quantity:"
 msgid "Actual Quantity"
 msgstr "Cantidad actual"
+
+msgctxt "field:stock.inventory.line,quantity_variation:"
+msgid "Quantity Variation"
+msgstr "Variación cantidad"
+
+msgctxt "field:stock.inventory.line,tolerance_cost_variation:"
+msgid "Tolerance Cost Variation"
+msgstr "Tolerancia variación del coste"
+
+msgctxt "field:stock.inventory.line,tolerance_quantity_variation:"
+msgid "Tolerance Quantity Variation"
+msgstr "Tolerancia variación de la cantidad"
 
 msgctxt "field:stock.inventory.line,unit:"
 msgid "Unit"
@@ -345,10 +397,6 @@ msgstr "Interna"
 msgctxt "field:stock.location,type:"
 msgid "Type"
 msgstr "Tipo"
-
-msgctxt "field:stock.location,warehouse:"
-msgid "Warehouse"
-msgstr "Almacén"
 
 msgctxt "field:stock.location,waste_locations:"
 msgid "Waste Locations"
@@ -1350,9 +1398,28 @@ msgctxt "help:res.user,warehouse:"
 msgid "The warehouse that the user works at."
 msgstr "Al almacén al que trabaja el usuario."
 
+msgctxt "help:stock.configuration,inventory_cost_thresold:"
+msgid "The inventory cost thresold accepted in company currency."
+msgstr ""
+"La tolerancia de variación del coste aceptada en la moneda de la empresa."
+
+msgctxt "help:stock.configuration,inventory_quantity_tolerance:"
+msgid "The inventory quantity variation accepted in percentage."
+msgstr "La tolerancia de variación de la cantidad aceptada en porcentaje."
+
 msgctxt "help:stock.configuration,inventory_sequence:"
 msgid "Used to generate the number given to inventories."
 msgstr "Usado para generar el número asignado a los inventarios."
+
+msgctxt "help:stock.configuration,period_closing_delay:"
+msgid "Leave it empty to prevent periods from being closed automatically."
+msgstr ""
+"Dejar en blanco para evitar que los períodos se cierren automáticamente."
+
+msgctxt "help:stock.configuration,period_creation_interval:"
+msgid "Leave it empty to prevent periods from being created automatically."
+msgstr ""
+"Dejar en blanco para evitar que los períodos se creen automáticamente."
 
 msgctxt "help:stock.configuration,shipment_in_return_sequence:"
 msgid "Used to generate the number given to supplier return shipments."
@@ -1384,6 +1451,15 @@ msgstr ""
 msgctxt "help:stock.configuration,shipment_out_sequence:"
 msgid "Used to generate the number given to customer shipments."
 msgstr "Usado para generar el número asignado a los albaranes de cliente."
+
+msgctxt "help:stock.configuration.inventory,inventory_cost_thresold:"
+msgid "The inventory cost thresold accepted in company currency."
+msgstr ""
+"La tolerancia de variación del coste aceptada en la moneda de la empresa."
+
+msgctxt "help:stock.configuration.inventory,inventory_quantity_tolerance:"
+msgid "The inventory quantity variation accepted in percentage."
+msgstr "La tolerancia de variación de la cantidad aceptada en porcentaje."
 
 msgctxt "help:stock.configuration.location,shipment_internal_transit:"
 msgid ""
@@ -1443,6 +1519,10 @@ msgstr "El inventario al que pertenece la línea."
 msgctxt "help:stock.inventory.line,quantity:"
 msgid "The actual quantity found in the location."
 msgstr "La cantidad actual que se encuentra en la ubicación."
+
+msgctxt "help:stock.inventory.line,quantity_variation:"
+msgid "The difference between expected quantity and actual quantity."
+msgstr "La diferencia entre la cantidad esperada y la cantidad real."
 
 msgctxt "help:stock.inventory.line,unit:"
 msgid "The unit in which the quantity is specified."
@@ -1905,7 +1985,7 @@ msgstr "Ubicaciones"
 
 msgctxt "model:ir.action,name:act_move_form"
 msgid "Moves"
-msgstr "Movimientos"
+msgstr "Asientos"
 
 msgctxt "model:ir.action,name:act_period_list"
 msgid "Periods"
@@ -2302,6 +2382,15 @@ msgid ""
 msgstr ""
 "Para confirmar el inventario \"%(inventory)s\" debe seleccionar una opción "
 "para la cantidad vacía."
+
+#, python-format
+msgctxt "model:ir.message,text:msg_inventory_over_tolerance"
+msgid "The inventory line \"%(lines)s\" is outside the tolerance range."
+msgid_plural "The inventory lines \"%(lines)s\" are outside the tolerance range."
+msgstr[0] ""
+"La linea de inventario \"%(lines)s\" esta fuera del rango de tolerancia."
+msgstr[1] ""
+"Las lineas de inventario \"%(lines)s\" estan fuera del rango de tolerancia."
 
 #, python-format
 msgctxt "model:ir.message,text:msg_location_inactive_not_empty"
@@ -2891,7 +2980,7 @@ msgstr "Ubicaciones"
 
 msgctxt "model:ir.ui.menu,name:menu_move_form"
 msgid "Moves"
-msgstr "Movimientos"
+msgstr "Asientos"
 
 msgctxt "model:ir.ui.menu,name:menu_period_list"
 msgid "Periods"
@@ -2993,9 +3082,17 @@ msgctxt "model:stock.configuration,string:"
 msgid "Stock Configuration"
 msgstr "Configuración de logística"
 
+msgctxt "model:stock.configuration.inventory,string:"
+msgid "Stock Configuration Inventory"
+msgstr "Configuración de inventarios de logística"
+
 msgctxt "model:stock.configuration.location,string:"
 msgid "Stock Configuration Location"
 msgstr "Configuración de ubicaciones de existencias"
+
+msgctxt "model:stock.configuration.period,string:"
+msgid "Stock Configuration Period"
+msgstr "Configuración de períodos de logística"
 
 msgctxt "model:stock.configuration.sequence,string:"
 msgid "Stock Configuration Sequence"
@@ -3430,6 +3527,14 @@ msgid "Assign Shipments"
 msgstr "Reservar albaranes"
 
 msgctxt "selection:ir.cron,method:"
+msgid "Close Stock Periods"
+msgstr "Cerrar períodos de existencias"
+
+msgctxt "selection:ir.cron,method:"
+msgid "Create Stock Periods"
+msgstr "Crear períodos de existencias"
+
+msgctxt "selection:ir.cron,method:"
 msgid "Recompute Cost Price from Moves"
 msgstr "Recalcular precio de coste a partir de los movimientos"
 
@@ -3734,6 +3839,14 @@ msgid "The warehouse that you work at."
 msgstr "El almacén al que estas trabajando."
 
 msgctxt "view:stock.configuration:"
+msgid "%"
+msgstr "%"
+
+msgctxt "view:stock.configuration:"
+msgid "Cost Thresold"
+msgstr "Tolerancia del coste"
+
+msgctxt "view:stock.configuration:"
 msgid "Customer Return Sequence"
 msgstr "Secuencia de devoluciones cliente"
 
@@ -3754,6 +3867,14 @@ msgid "Inventory"
 msgstr "Inventario"
 
 msgctxt "view:stock.configuration:"
+msgid "Period"
+msgstr "Periodo"
+
+msgctxt "view:stock.configuration:"
+msgid "Quantity Tolerance"
+msgstr "Tolerancia de la Cantidad"
+
+msgctxt "view:stock.configuration:"
 msgid "Sequence"
 msgstr "Secuencia"
 
@@ -3768,10 +3889,6 @@ msgstr "Secuencia devoluciones proveedor"
 msgctxt "view:stock.configuration:"
 msgid "Supplier Sequence"
 msgstr "Secuencia proveedores"
-
-msgctxt "view:stock.move:"
-msgid "Cost"
-msgstr "Coste"
 
 msgctxt "view:stock.move:"
 msgid "Move"

@@ -109,6 +109,11 @@ msgctxt "field:ir.cron,companies:"
 msgid "Companies"
 msgstr "شرکت ها"
 
+#, fuzzy
+msgctxt "field:ir.cron,company_needed:"
+msgid "Company Needed"
+msgstr "کارمند کنونی"
+
 msgctxt "field:ir.cron-company.company,company:"
 msgid "Company"
 msgstr "شرکت"

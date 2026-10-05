@@ -124,6 +124,11 @@ msgctxt "selection:sale.sale,task_creation_method:"
 msgid "On Order Processed"
 msgstr "Na verwerking order"
 
+#, fuzzy
+msgctxt "selection:sale.sale,tasks_state:"
+msgid "Fulfilled"
+msgstr "Vervuld"
+
 msgctxt "selection:sale.sale,tasks_state:"
 msgid "None"
 msgstr "Geen"
@@ -135,10 +140,6 @@ msgstr "Gedeeltelijk voldaan"
 msgctxt "selection:sale.sale,tasks_state:"
 msgid "Waiting"
 msgstr "In afwachting"
-
-msgctxt "selection:sale.sale,tasks_state:"
-msgid "fulfilled"
-msgstr "Vervuld"
 
 msgctxt "view:product.project_task:"
 msgid "General"

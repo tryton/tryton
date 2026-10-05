@@ -1,0 +1,207 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.account.type,disbursement:"
+msgid "Disbursement"
+msgstr ""
+
+msgctxt "field:account.account.type.template,disbursement:"
+msgid "Disbursement"
+msgstr ""
+
+msgctxt "field:account.configuration,default_account_disbursement:"
+msgid "Default Account Disbursement"
+msgstr ""
+
+msgctxt ""
+"field:account.configuration.default_account,default_account_disbursement:"
+msgid "Default Account Disbursement"
+msgstr ""
+
+msgctxt "field:project.configuration,disbursement_sequence:"
+msgid "Disbursement Sequence"
+msgstr ""
+
+msgctxt "field:project.configuration.sequence,disbursement_sequence:"
+msgid "Disbursement Sequence"
+msgstr ""
+
+msgctxt "field:project.disbursement,amount:"
+msgid "Amount"
+msgstr ""
+
+msgctxt "field:project.disbursement,attachments:"
+msgid "Attachments"
+msgstr ""
+
+msgctxt "field:project.disbursement,company:"
+msgid "Company"
+msgstr ""
+
+msgctxt "field:project.disbursement,currency:"
+msgid "Currency"
+msgstr ""
+
+msgctxt "field:project.disbursement,description:"
+msgid "Description"
+msgstr ""
+
+msgctxt "field:project.disbursement,invoice_lines:"
+msgid "Invoice Lines"
+msgstr ""
+
+msgctxt "field:project.disbursement,number:"
+msgid "Number"
+msgstr ""
+
+msgctxt "field:project.disbursement,payee:"
+msgid "Payee"
+msgstr ""
+
+msgctxt "field:project.disbursement,payment_date:"
+msgid "Date"
+msgstr ""
+
+msgctxt "field:project.disbursement,payments:"
+msgid "Payments"
+msgstr ""
+
+msgctxt "field:project.disbursement,reference:"
+msgid "Reference"
+msgstr ""
+
+msgctxt "field:project.disbursement,reference_type:"
+msgid "Reference Type"
+msgstr ""
+
+msgctxt "field:project.disbursement,state:"
+msgid "State"
+msgstr ""
+
+msgctxt "field:project.disbursement,validated_by:"
+msgid "Validated By"
+msgstr ""
+
+msgctxt "field:project.disbursement,work:"
+msgid "Work"
+msgstr ""
+
+msgctxt "field:project.disbursement.journal,company:"
+msgid "Company"
+msgstr ""
+
+msgctxt "field:project.disbursement.journal,currency:"
+msgid "Currency"
+msgstr ""
+
+msgctxt "field:project.disbursement.journal,journal:"
+msgid "Journal"
+msgstr ""
+
+msgctxt "field:project.disbursement.journal,work:"
+msgid "Work"
+msgstr ""
+
+msgctxt "field:project.work,account_disbursement:"
+msgid "Account Disbursement"
+msgstr ""
+
+msgctxt "field:project.work,disbursement_journals:"
+msgid "Disbursement Journals"
+msgstr ""
+
+msgctxt "field:project.work,disbursements:"
+msgid "Disbursements"
+msgstr ""
+
+msgctxt "help:project.configuration,disbursement_sequence:"
+msgid "Used to generate the disbursement number."
+msgstr ""
+
+msgctxt "help:project.configuration.sequence,disbursement_sequence:"
+msgid "Used to generate the disbursement number."
+msgstr ""
+
+msgctxt "help:project.work,account_disbursement:"
+msgid "Leave empty for the default account."
+msgstr ""
+
+msgctxt "model:ir.action,name:act_project_disbursement_form"
+msgid "Disbursements"
+msgstr ""
+
+#, python-format
+msgctxt "model:ir.message,text:msg_disbursement_cancel_payment"
+msgid ""
+"To cancel disbursement \"%(disbursement)s\", you must fail the payment "
+"\"%(payment)s\"."
+msgstr ""
+
+msgctxt "model:ir.model.button,string:project_disbursement_cancel_button"
+msgid "Cancel"
+msgstr ""
+
+msgctxt "model:ir.model.button,string:project_disbursement_draft_button"
+msgid "Draft"
+msgstr ""
+
+msgctxt "model:ir.model.button,string:project_disbursement_process_button"
+msgid "Process"
+msgstr ""
+
+msgctxt "model:ir.model.button,string:project_disbursement_validate_button"
+msgid "Validate"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_project_disbursement_companies"
+msgid "User in companies"
+msgstr ""
+
+msgctxt "model:ir.sequence,name:sequence_disbursement"
+msgid "Disbursement"
+msgstr ""
+
+msgctxt "model:ir.sequence.type,name:sequence_type_disbursement"
+msgid "Project Disbursement"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_project_disbursement_form"
+msgid "Disbursements"
+msgstr ""
+
+msgctxt "model:project.disbursement,string:"
+msgid "Project Disbursement"
+msgstr ""
+
+msgctxt "model:project.disbursement.journal,string:"
+msgid "Project Disbursement Journal"
+msgstr ""
+
+msgctxt "model:res.group,name:group_project_disbursement"
+msgid "Project Disbursement"
+msgstr ""
+
+msgctxt "selection:project.disbursement,state:"
+msgid "Cancelled"
+msgstr ""
+
+msgctxt "selection:project.disbursement,state:"
+msgid "Draft"
+msgstr ""
+
+msgctxt "selection:project.disbursement,state:"
+msgid "Paid"
+msgstr ""
+
+msgctxt "selection:project.disbursement,state:"
+msgid "Validated"
+msgstr ""
+
+msgctxt "view:account.configuration:"
+msgid "Project Disbursement"
+msgstr ""
+
+msgctxt "view:project.disbursement:"
+msgid "Other Info"
+msgstr ""

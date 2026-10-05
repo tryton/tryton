@@ -140,7 +140,7 @@ msgid ""
 "Applied if a worker queue is activated."
 msgstr ""
 "Le délai après lequel le courriel doit être envoyé.\n"
-"Appliqué si une file de travail est activée."
+"Appliqué si une file d'attente de travail est activée."
 
 msgctxt "help:notification.email,subject:"
 msgid ""

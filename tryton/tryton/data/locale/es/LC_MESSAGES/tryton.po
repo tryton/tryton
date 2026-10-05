@@ -680,21 +680,25 @@ msgid "Next"
 msgstr "Siguiente"
 
 #, python-format
-msgid "Attachment (%s)"
-msgstr "Adjuntos (%s)"
+msgid "Attachment (%d)"
+msgid_plural "Attachments (%d)"
+msgstr[0] "Adjunto (%d)"
+msgstr[1] "Adjuntos (%d)"
 
 #, python-format
 msgid "Note (%d/%d)"
-msgstr "Nota (%d/%d)"
+msgid_plural "Notes (%d/%d)"
+msgstr[0] "Nota (%d/%d)"
+msgstr[1] "Notas (%d/%d)"
 
 msgid "You have to select one record."
 msgstr "Debe elegir un registro."
 
-msgid "Are you sure to remove this record?"
-msgstr "¿Está seguro que quiere eliminar este registro?"
-
-msgid "Are you sure to remove those records?"
-msgstr "¿Está seguro que quiere eliminar estos registros?"
+#, python-format
+msgid "Are you sure you want to delete this record?"
+msgid_plural "Are you sure you want to delete these %(size)d records?"
+msgstr[0] "¿Está seguro que quiere eliminar este registro?"
+msgstr[1] "¿Está seguro que quiere eliminar estos %(size)d registros?"
 
 msgid "Records not removed."
 msgstr "Los registros no se han eliminado."
@@ -1081,6 +1085,9 @@ msgstr "Buscar"
 msgid "New"
 msgstr "Nuevo"
 
+msgid "Remove"
+msgstr "Eliminar"
+
 #, python-format
 msgid "Search %s"
 msgstr "Buscar %s"
@@ -1220,6 +1227,9 @@ msgstr "Seleccionar…"
 msgid "Clear"
 msgstr "Limpiar"
 
+msgid "All Supported Types"
+msgstr "Todos los tipos soportados"
+
 msgid "All files"
 msgstr "Todos los archivos"
 
@@ -1237,9 +1247,6 @@ msgstr "Añadir un valor"
 msgid "Remove \"%s\""
 msgstr "Eliminar \"%s\""
 
-msgid "Images"
-msgstr "Imágenes"
-
 msgid "Add existing record"
 msgstr "Añadir un registro existente"
 
@@ -1248,6 +1255,14 @@ msgstr "Eliminar registro seleccionado"
 
 msgid "Restore selected record"
 msgstr "Restaurar el registro seleccionado"
+
+#, python-format
+msgid "%s to add"
+msgstr "%s para añadir"
+
+#, python-format
+msgid "%s to remove"
+msgstr "%s para eliminar"
 
 msgid "Open the record <F2>"
 msgstr "Abrir registro <F2>"
@@ -1266,6 +1281,10 @@ msgstr "Eliminar registro seleccionado"
 
 msgid "Undelete selected record"
 msgstr "Recuperar registro seleccionado"
+
+#, python-format
+msgid "%s to delete"
+msgstr "%s para borrar"
 
 #, python-format
 msgid "%s%%"

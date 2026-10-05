@@ -672,22 +672,29 @@ msgstr "Anterior"
 msgid "Next"
 msgstr "Următor"
 
-#, python-format
-msgid "Attachment (%s)"
-msgstr "Atachment (%s)"
+#, fuzzy, python-format
+msgid "Attachment (%d)"
+msgid_plural "Attachments (%d)"
+msgstr[0] "Atachment (%s)"
+msgstr[1] "Atachment (%s)"
+msgstr[2] "Atachment (%s)"
 
-#, python-format
+#, fuzzy, python-format
 msgid "Note (%d/%d)"
-msgstr "Notă (%d/%d)"
+msgid_plural "Notes (%d/%d)"
+msgstr[0] "Notă (%d/%d)"
+msgstr[1] "Notă (%d/%d)"
+msgstr[2] "Notă (%d/%d)"
 
 msgid "You have to select one record."
 msgstr "Trebuie selectaa o singura înregistrare."
 
-msgid "Are you sure to remove this record?"
-msgstr "Sigur eliminați această înregistrare?"
-
-msgid "Are you sure to remove those records?"
-msgstr "Sigur eliminați această înregistrare?"
+#, fuzzy, python-format
+msgid "Are you sure you want to delete this record?"
+msgid_plural "Are you sure you want to delete these %(size)d records?"
+msgstr[0] "Sigur eliminați această înregistrare?"
+msgstr[1] "Sigur eliminați această înregistrare?"
+msgstr[2] "Sigur eliminați această înregistrare?"
 
 msgid "Records not removed."
 msgstr "Înregistrările nu au fost eliminate."
@@ -1080,6 +1087,10 @@ msgstr "Căutare"
 msgid "New"
 msgstr "Nou"
 
+#, fuzzy
+msgid "Remove"
+msgstr "_Elimina"
+
 #, python-format
 msgid "Search %s"
 msgstr "Căutare %s"
@@ -1223,6 +1234,9 @@ msgstr "Selectare..."
 msgid "Clear"
 msgstr "Golire"
 
+msgid "All Supported Types"
+msgstr ""
+
 msgid "All files"
 msgstr "Toate fișierele"
 
@@ -1240,9 +1254,6 @@ msgstr "Adaugă valoare"
 msgid "Remove \"%s\""
 msgstr "Eliminare \"%s\""
 
-msgid "Images"
-msgstr "Imagini"
-
 msgid "Add existing record"
 msgstr "Adăugare înregistrare existentă"
 
@@ -1252,6 +1263,14 @@ msgstr "Eliminare înregistrare selectată"
 #, fuzzy
 msgid "Restore selected record"
 msgstr "Eliminare înregistrare selectată"
+
+#, python-format
+msgid "%s to add"
+msgstr ""
+
+#, fuzzy, python-format
+msgid "%s to remove"
+msgstr "Înregistrările nu au fost eliminate."
 
 msgid "Open the record <F2>"
 msgstr "Deschidere înregistrare <F2>"
@@ -1271,6 +1290,10 @@ msgstr "Ștergere înregistrare selectată"
 #, fuzzy
 msgid "Undelete selected record"
 msgstr "Ștergere înregistrare selectată"
+
+#, python-format
+msgid "%s to delete"
+msgstr ""
 
 #, python-format
 msgid "%s%%"

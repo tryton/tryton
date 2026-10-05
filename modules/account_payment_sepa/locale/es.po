@@ -15,6 +15,10 @@ msgctxt ""
 msgid "SEPA Mandate Sequence"
 msgstr "Secuencia de mandato SEPA"
 
+msgctxt "field:account.move.line,sepa_mandate_available:"
+msgid "SEPA Mandate Available"
+msgstr "Mandato SEPA disponible"
+
 msgctxt "field:account.payment,sepa_end_to_end_id:"
 msgid "SEPA End To End ID"
 msgstr "ID End-to-End SEPA"

@@ -518,10 +518,6 @@ msgctxt "model:ir.action,name:act_category_list"
 msgid "Categories"
 msgstr "Категорії"
 
-msgctxt "model:ir.action,name:act_category_product"
-msgid "Add products"
-msgstr ""
-
 msgctxt "model:ir.action,name:act_category_tree"
 msgid "Categories"
 msgstr "Категорії"
@@ -609,10 +605,6 @@ msgstr ""
 
 msgctxt "model:ir.message,text:msg_uom_no_zero_factor_rate"
 msgid "Rate and factor can not be both equal to zero."
-msgstr ""
-
-msgctxt "model:ir.model.button,string:category_add_products_button"
-msgid "Add products"
 msgstr ""
 
 #, fuzzy

@@ -154,6 +154,10 @@ msgctxt "field:sale.configuration,sale_shipment_method:"
 msgid "Sale Shipment Method"
 msgstr "Mètode d'enviament"
 
+msgctxt "field:sale.configuration,sale_wait_shipment:"
+msgid "Sale Wait Shipment"
+msgstr "Crea albarà en espera"
+
 msgctxt "field:sale.configuration.quotation,sale_quotation_validity:"
 msgid "Sale Quotation Validity"
 msgstr "Validesa del pressupost de venda"
@@ -165,6 +169,10 @@ msgstr "Mètode de facturació"
 msgctxt "field:sale.configuration.sale_method,sale_shipment_method:"
 msgid "Sale Shipment Method"
 msgstr "Mètode d'enviament"
+
+msgctxt "field:sale.configuration.sale_method,sale_wait_shipment:"
+msgid "Sale Wait Shipment"
+msgstr "Crea albarà en espera"
 
 msgctxt "field:sale.configuration.sequence,company:"
 msgid "Company"
@@ -769,6 +777,14 @@ msgid ""
 msgstr ""
 "El període durant el qual una venda confirmada es pot tornar a passar a esborrany.\n"
 "Aplica només si la cua de treballs està activada."
+
+msgctxt "help:sale.configuration,sale_wait_shipment:"
+msgid "Create customer shipments in a waiting state"
+msgstr "Crea els albarans de client en estat en espera"
+
+msgctxt "help:sale.configuration.sale_method,sale_wait_shipment:"
+msgid "Create customer shipments in a waiting state"
+msgstr "Crea els albarans de client en estat en espera"
 
 msgctxt "help:sale.handle.invoice.exception.ask,ignore_invoices:"
 msgid "The selected cancelled invoices will be ignored."
@@ -1540,7 +1556,7 @@ msgstr "Recreada"
 
 msgctxt "selection:ir.cron,method:"
 msgid "Cancel Expired Sale Quotation"
-msgstr "Cancelar pressupostos de venta expirats"
+msgstr "Cancelar pressupostos de venda expirats"
 
 msgctxt "selection:sale.line,type:"
 msgid "Comment"

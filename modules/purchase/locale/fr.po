@@ -307,6 +307,10 @@ msgctxt "field:purchase.line-recreated-stock.move,purchase_line:"
 msgid "Purchase Line"
 msgstr "Ligne d'achat"
 
+msgctxt "field:purchase.product_supplier,average_lead_time:"
+msgid "Average Lead Time"
+msgstr "Délai moyen de livraison"
+
 msgctxt "field:purchase.product_supplier,code:"
 msgid "Code"
 msgstr "Code"
@@ -320,6 +324,10 @@ msgid "Currency"
 msgstr "Devise"
 
 msgctxt "field:purchase.product_supplier,lead_time:"
+msgid "Lead Time"
+msgstr "Délai de livraison"
+
+msgctxt "field:purchase.product_supplier,lead_time_used:"
 msgid "Lead Time"
 msgstr "Délai de livraison"
 
@@ -648,7 +656,7 @@ msgid ""
 "Applied only if a worker queue is activated."
 msgstr ""
 "La période de grâce pendant laquelle un achat confirmé peut toujours être réinitialiser à l'état brouillon.\n"
-"S'applique si une file d'attente de travailleurs est activée."
+"S'applique si une file d'attente de travail est activée."
 
 msgctxt "help:purchase.handle.invoice.exception.ask,ignore_invoices:"
 msgid "The selected cancelled invoices will be ignored."

@@ -99,6 +99,15 @@ msgctxt "model:ir.message,text:msg_account_unique"
 msgid "Only one active rule is allowed by account."
 msgstr "Une seule règle active est autorisée par compte."
 
+#, python-format
+msgctxt "model:ir.message,text:msg_reconciliation_delete_receivable_rule"
+msgid ""
+"The reconciliation \"%(reconciliation)s\" is linked to the line \"%(line)s\" from the receivable rule %(receivable_rule)s.\n"
+"You may need to cancel its move \"%(move)s\"."
+msgstr ""
+"La réconciliation « %(reconciliation)s » est lié à la ligne « %(line)s » de la règle de créance « %(receivable_rule)s ».\n"
+"Vous devrez peut-être annuler son mouvement « %(move)s »."
+
 msgctxt "model:ir.message,text:msg_rule_account_unique"
 msgid "Only one account is allowed by rule."
 msgstr "Un seul compte est autorisé par règle."

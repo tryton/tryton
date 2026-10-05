@@ -128,6 +128,9 @@ msgstr "Nombre de usuario"
 msgid "Login with"
 msgstr "Identificarse con"
 
+msgid "Disabled on localhost"
+msgstr "Descativado en localhost"
+
 msgid "Too many requests. Try again later."
 msgstr "Demasiadas peticiones. Inténtelo de nuevo más tarde."
 
@@ -306,14 +309,23 @@ msgstr "Guardar este registro"
 msgid "Reload"
 msgstr "Recargar"
 
+msgid "Delete..."
+msgstr "Eliminar..."
+
 msgid "View Logs..."
 msgstr "Ver registros..."
 
 msgid "Show revisions..."
 msgstr "Mostrar revisiones..."
 
+msgid "Attachments..."
+msgstr "Adjuntos..."
+
 msgid "Add an attachment to the record"
 msgstr "Añadir un adjunto al registro"
+
+msgid "Notes..."
+msgstr "Notas..."
 
 msgid "Add a note to the record"
 msgstr "Añadir una nota al registro"
@@ -324,17 +336,26 @@ msgstr "Chat"
 msgid "Chat on the record"
 msgstr "Chatear en el registro"
 
+msgid "Actions..."
+msgstr "Acciones..."
+
+msgid "Relate..."
+msgstr "Relacionado..."
+
+msgid "Print..."
+msgstr "Imprimir..."
+
 msgid "Email..."
 msgstr "Correo electrónico..."
 
 msgid "Send an email using the record"
 msgstr "Enviar un correo electrónico usando el registro"
 
-msgid "Export"
-msgstr "Exportar"
+msgid "Export..."
+msgstr "Exportar..."
 
-msgid "Import"
-msgstr "Importar"
+msgid "Import..."
+msgstr "Importar..."
 
 msgid ""
 "The following action requires to close all tabs.\n"
@@ -365,11 +386,10 @@ msgstr "Registro guardado."
 msgid "Working now on the duplicated record(s)."
 msgstr "Ahora está trabajando en el/los registro(s) duplicado(s)."
 
-msgid "Are you sure to remove this record?"
-msgstr "¿Está seguro que quiere eliminar este registro?"
-
-msgid "Are you sure to remove those records?"
-msgstr "¿Está seguro que quiere eliminar estos registros?"
+msgid "Are you sure you want to delete this record?"
+msgid_plural "Are you sure you want to delete these %1 records?"
+msgstr[0] "¿Está seguro que quiere eliminar este registro?"
+msgstr[1] "¿Está seguro que quiere eliminar estos %1 registros?"
 
 msgid "Records removed."
 msgstr "Registros eliminados."
@@ -393,10 +413,14 @@ msgid "Template"
 msgstr "Plantilla"
 
 msgid "Attachment (%1)"
-msgstr "Adjuntos (%1)"
+msgid_plural "Attachments (%1)"
+msgstr[0] "Adjunto (%1)"
+msgstr[1] "Adjuntos (%1)"
 
 msgid "Note (%1/%2)"
-msgstr "Nota (%1/%2)"
+msgid_plural "Notes (%1/%2)"
+msgstr[0] "Nota (%1/%2)"
+msgstr[1] "Notas (%1/%2)"
 
 msgid "Filters"
 msgstr "Filtros"
@@ -511,6 +535,16 @@ msgstr "Abrir"
 
 msgid "Undelete"
 msgstr "Recuperar"
+
+#, javascript-format
+msgid "%s to add"
+msgstr "%s para añadir"
+
+msgid "%1 to remove"
+msgstr "%1 para eliminar"
+
+msgid "%1 to delete"
+msgstr "%1 para borrar"
 
 msgid "Restore"
 msgstr "Restaurar"
@@ -653,6 +687,9 @@ msgstr "Delimitador del texto:"
 
 msgid "CSV Import: %1"
 msgstr "Importación CSV: %1"
+
+msgid "Import"
+msgstr "Importar"
 
 msgid "Auto-Detect"
 msgstr "Detectar automáticamente"

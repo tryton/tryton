@@ -147,6 +147,9 @@ msgstr "نام کاربری"
 msgid "Login with"
 msgstr "ورود"
 
+msgid "Disabled on localhost"
+msgstr ""
+
 msgid "Too many requests. Try again later."
 msgstr ""
 
@@ -328,14 +331,26 @@ msgstr "ذخیره این پرونده"
 msgid "Reload"
 msgstr "بارگذاری مجدد"
 
+#, fuzzy
+msgid "Delete..."
+msgstr "حذف"
+
 msgid "View Logs..."
 msgstr "مشاهده گزارشات..."
 
 msgid "Show revisions..."
 msgstr "مشاهده تجدیدنظر..."
 
+#, fuzzy
+msgid "Attachments..."
+msgstr "پیوست"
+
 msgid "Add an attachment to the record"
 msgstr "پیوست را به پرونده اضافه کنید"
+
+#, fuzzy
+msgid "Notes..."
+msgstr "توجه"
 
 msgid "Add a note to the record"
 msgstr "یک یادداشت به پرونده اضافه کنید"
@@ -347,6 +362,18 @@ msgstr ""
 msgid "Chat on the record"
 msgstr "بازکردن پرونده <F2>"
 
+#, fuzzy
+msgid "Actions..."
+msgstr "اقدام"
+
+#, fuzzy
+msgid "Relate..."
+msgstr "مربوط"
+
+#, fuzzy
+msgid "Print..."
+msgstr "چاپ"
+
 msgid "Email..."
 msgstr ""
 
@@ -354,10 +381,12 @@ msgstr ""
 msgid "Send an email using the record"
 msgstr "یک یادداشت به پرونده اضافه کنید"
 
-msgid "Export"
+#, fuzzy
+msgid "Export..."
 msgstr "صادر کردن"
 
-msgid "Import"
+#, fuzzy
+msgid "Import..."
 msgstr "وارد كردن"
 
 msgid ""
@@ -389,11 +418,11 @@ msgstr "پرونده ذخیره شد."
 msgid "Working now on the duplicated record(s)."
 msgstr "هم اکنون کار بر روی پرونده(ها) تکثیر شده انجام می شود."
 
-msgid "Are you sure to remove this record?"
-msgstr "برای حذف این پرونده اطمینان کامل دارید؟"
-
-msgid "Are you sure to remove those records?"
-msgstr "برای حذف این پرونده ها اطمینان کامل دارید؟"
+#, fuzzy
+msgid "Are you sure you want to delete this record?"
+msgid_plural "Are you sure you want to delete these %1 records?"
+msgstr[0] "برای حذف این پرونده اطمینان کامل دارید؟"
+msgstr[1] "برای حذف این پرونده اطمینان کامل دارید؟"
 
 msgid "Records removed."
 msgstr "پرونده ها حذف شدند."
@@ -420,10 +449,14 @@ msgstr "مربوط"
 
 #, fuzzy
 msgid "Attachment (%1)"
-msgstr "پیوست ها(1%)"
+msgid_plural "Attachments (%1)"
+msgstr[0] "پیوست ها(1%)"
+msgstr[1] "پیوست ها(1%)"
 
 msgid "Note (%1/%2)"
-msgstr ""
+msgid_plural "Notes (%1/%2)"
+msgstr[0] ""
+msgstr[1] ""
 
 msgid "Filters"
 msgstr "فیلترها"
@@ -545,6 +578,17 @@ msgid "Open"
 msgstr "باز"
 
 msgid "Undelete"
+msgstr "بازگردانی"
+
+#, javascript-format
+msgid "%s to add"
+msgstr ""
+
+msgid "%1 to remove"
+msgstr ""
+
+#, fuzzy
+msgid "%1 to delete"
 msgstr "بازگردانی"
 
 msgid "Restore"
@@ -697,6 +741,9 @@ msgstr "کاراکترنقل قول :"
 
 msgid "CSV Import: %1"
 msgstr "وارد کردن (CSV) : 1%"
+
+msgid "Import"
+msgstr "وارد كردن"
 
 msgid "Auto-Detect"
 msgstr "شناسایی - خودکار"

@@ -169,13 +169,9 @@ msgctxt "field:party.category,parent:"
 msgid "Parent"
 msgstr "父类别"
 
-msgctxt "field:party.check_vies.result,parties_failed:"
-msgid "Parties Failed"
-msgstr "参与者增值税号验证失败"
-
-msgctxt "field:party.check_vies.result,parties_succeed:"
-msgid "Parties Succeed"
-msgstr "参与者增值税号验证成功"
+msgctxt "field:party.configuration,identifier_eu_vat_validation_period:"
+msgid "European VAT Number Validation Period"
+msgstr ""
 
 msgctxt "field:party.configuration,identifier_types:"
 msgid "Identifier Types"
@@ -281,6 +277,15 @@ msgstr "代码"
 msgctxt "field:party.identifier,code_compact:"
 msgid "Code Compact"
 msgstr "取值（紧凑型）"
+
+#, fuzzy
+msgctxt "field:party.identifier,eu_vat_valid:"
+msgid "European VAT Number Valid"
+msgstr "阿尔巴尼亚增值税编号"
+
+msgctxt "field:party.identifier,eu_vat_validated_at:"
+msgid "European VAT Number Validated At"
+msgstr ""
 
 msgctxt "field:party.identifier,party:"
 msgid "Party"
@@ -498,6 +503,10 @@ msgctxt "help:party.category,parent:"
 msgid "Add the category below the parent."
 msgstr "将此类别添加到父类下面."
 
+msgctxt "help:party.configuration,identifier_eu_vat_validation_period:"
+msgid "The period during which the number is still considered valid."
+msgstr ""
+
 msgctxt "help:party.configuration,identifier_types:"
 msgid ""
 "Defines which identifier types are available.\n"
@@ -535,6 +544,10 @@ msgstr "参与者已删除."
 msgctxt "help:party.identifier,address:"
 msgid "The address identified by this record."
 msgstr "此记录确认的地址。"
+
+msgctxt "help:party.identifier,eu_vat_valid:"
+msgid "Checked if the number has been validated on VIES service."
+msgstr ""
 
 msgctxt "help:party.identifier,party:"
 msgid "The party identified by this record."
@@ -621,10 +634,6 @@ msgctxt "model:ir.action,name:report_label"
 msgid "Labels"
 msgstr "标签"
 
-msgctxt "model:ir.action,name:wizard_check_vies"
-msgid "Check VIES"
-msgstr "增值税号有效性（VIES）检测"
-
 msgctxt "model:ir.action,name:wizard_erase"
 msgid "Erase"
 msgstr "清除"
@@ -690,6 +699,11 @@ msgctxt "model:ir.message,text:msg_invalid_format"
 msgid "Invalid format \"%(format)s\" with exception \"%(exception)s\"."
 msgstr "无效格式 \"%(format)s\" ，异常为： \"%(exception)s\"."
 
+#, fuzzy, python-format
+msgctxt "model:ir.message,text:msg_invalid_format_strip"
+msgid "Invalid format \"%(format)s\". Empty address generates \"%(value)s\"."
+msgstr "无效格式 \"%(format)s\" ，异常为： \"%(exception)s\"."
+
 #, python-format
 msgctxt "model:ir.message,text:msg_invalid_phone_number"
 msgid "The phone number \"%(phone)s\" for party \"%(party)s\" is not valid."
@@ -710,6 +724,11 @@ msgid "The party \"%(party)s\" has the same %(type)s \"%(code)s\"."
 msgstr "参与者 \"%(party)s\" 具有相同的 %(type)s \"%(code)s\"。"
 
 #, python-format
+msgctxt "model:ir.message,text:msg_party_identifier_eu_vat_invalid"
+msgid "The VAT numbers \"%(identifiers)s\" are not valid for the VIES service."
+msgstr ""
+
+#, python-format
 msgctxt "model:ir.message,text:msg_party_set_contact_mechanism"
 msgid ""
 "To change the \"%(field)s\" for party \"%(party)s\", you must edit their "
@@ -719,6 +738,11 @@ msgstr "若要更改参与者 \"%(party)s\" 的 \"%(field)s\"，必须编辑其�
 msgctxt "model:ir.message,text:msg_vies_unavailable"
 msgid "The VIES service is unavailable, try again later."
 msgstr "增值税号验证（VIES）服务不可用，过一段时间再试."
+
+#, fuzzy
+msgctxt "model:ir.model.button,string:identifier_check_view_button"
+msgid "Check VIES"
+msgstr "增值税号有效性（VIES）检测"
 
 msgctxt "model:ir.sequence,name:sequence_party"
 msgid "Party"
@@ -793,10 +817,6 @@ msgctxt "model:party.category,string:"
 msgid "Party Category"
 msgstr "参与者 - 类别"
 
-msgctxt "model:party.check_vies.result,string:"
-msgid "Party Check Vies Result"
-msgstr ""
-
 #, fuzzy
 msgctxt "model:party.configuration,string:"
 msgid "Party Configuration"
@@ -854,6 +874,10 @@ msgstr ""
 msgctxt "model:res.group,name:group_party_admin"
 msgid "Party Administration"
 msgstr "参与者管理"
+
+msgctxt "selection:ir.cron,method:"
+msgid "Check European VAT Number with VIES"
+msgstr ""
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Albanian VAT Number"
@@ -1594,6 +1618,14 @@ msgctxt "view:party.address:"
 msgid "General"
 msgstr "基本情况"
 
+msgctxt "view:party.identifier:"
+msgid "Valid:"
+msgstr ""
+
+msgctxt "view:party.identifier:"
+msgid "at"
+msgstr ""
+
 msgctxt "view:party.party:"
 msgid "General"
 msgstr "基本情况"
@@ -1606,10 +1638,6 @@ msgstr "参与者"
 msgctxt "view:party.replace.ask:"
 msgid "Replaced By"
 msgstr "替换为"
-
-msgctxt "wizard_button:party.check_vies,result,end:"
-msgid "OK"
-msgstr "确定"
 
 msgctxt "wizard_button:party.erase,ask,end:"
 msgid "Cancel"

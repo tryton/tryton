@@ -27,6 +27,25 @@ msgctxt "field:product.template,lot_sequence:"
 msgid "Lot Sequence"
 msgstr "Batch Reeks"
 
+#, fuzzy
+msgctxt "field:sale.point.sale.line,lot:"
+msgid "Lot"
+msgstr "Batch"
+
+#, fuzzy
+msgctxt "field:sale.point.sale.line,lot_required:"
+msgid "Lot Required"
+msgstr "Batch Vereist"
+
+msgctxt "field:stock.conversion,input_lot:"
+msgid "Input Lot"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:stock.conversion,output_lot:"
+msgid "Output Lot"
+msgstr "Dupliceer batch"
+
 msgctxt "field:stock.inventory.count.quantity,lot:"
 msgid "Lot"
 msgstr "Batch"

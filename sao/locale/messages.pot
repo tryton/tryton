@@ -124,6 +124,9 @@ msgstr ""
 msgid "Login with"
 msgstr ""
 
+msgid "Disabled on localhost"
+msgstr ""
+
 msgid "Too many requests. Try again later."
 msgstr ""
 
@@ -300,13 +303,22 @@ msgstr ""
 msgid "Reload"
 msgstr ""
 
+msgid "Delete..."
+msgstr ""
+
 msgid "View Logs..."
 msgstr ""
 
 msgid "Show revisions..."
 msgstr ""
 
+msgid "Attachments..."
+msgstr ""
+
 msgid "Add an attachment to the record"
+msgstr ""
+
+msgid "Notes..."
 msgstr ""
 
 msgid "Add a note to the record"
@@ -318,16 +330,25 @@ msgstr ""
 msgid "Chat on the record"
 msgstr ""
 
+msgid "Actions..."
+msgstr ""
+
+msgid "Relate..."
+msgstr ""
+
+msgid "Print..."
+msgstr ""
+
 msgid "Email..."
 msgstr ""
 
 msgid "Send an email using the record"
 msgstr ""
 
-msgid "Export"
+msgid "Export..."
 msgstr ""
 
-msgid "Import"
+msgid "Import..."
 msgstr ""
 
 msgid ""
@@ -355,11 +376,10 @@ msgstr ""
 msgid "Working now on the duplicated record(s)."
 msgstr ""
 
-msgid "Are you sure to remove this record?"
-msgstr ""
-
-msgid "Are you sure to remove those records?"
-msgstr ""
+msgid "Are you sure you want to delete this record?"
+msgid_plural "Are you sure you want to delete these %1 records?"
+msgstr[0] ""
+msgstr[1] ""
 
 msgid "Records removed."
 msgstr ""
@@ -383,10 +403,14 @@ msgid "Template"
 msgstr ""
 
 msgid "Attachment (%1)"
-msgstr ""
+msgid_plural "Attachments (%1)"
+msgstr[0] ""
+msgstr[1] ""
 
 msgid "Note (%1/%2)"
-msgstr ""
+msgid_plural "Notes (%1/%2)"
+msgstr[0] ""
+msgstr[1] ""
 
 msgid "Filters"
 msgstr ""
@@ -500,6 +524,16 @@ msgid "Open"
 msgstr ""
 
 msgid "Undelete"
+msgstr ""
+
+#, javascript-format
+msgid "%s to add"
+msgstr ""
+
+msgid "%1 to remove"
+msgstr ""
+
+msgid "%1 to delete"
 msgstr ""
 
 msgid "Restore"
@@ -642,6 +676,9 @@ msgid "Quote Char:"
 msgstr ""
 
 msgid "CSV Import: %1"
+msgstr ""
+
+msgid "Import"
 msgstr ""
 
 msgid "Auto-Detect"

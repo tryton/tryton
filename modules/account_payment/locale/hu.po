@@ -68,6 +68,11 @@ msgid "Payments"
 msgstr "Payments"
 
 #, fuzzy
+msgctxt "field:account.move.line.create_direct_debit.start,companies:"
+msgid "Companies"
+msgstr "Társaság"
+
+#, fuzzy
 msgctxt "field:account.move.line.create_direct_debit.start,date:"
 msgid "Date"
 msgstr "Dátum"
@@ -321,6 +326,10 @@ msgctxt "help:account.move.line,payment_direct_debit:"
 msgid "Check if the line will be paid by direct debit."
 msgstr ""
 
+msgctxt "help:account.move.line.create_direct_debit.start,companies:"
+msgid "Limit to lines from these companies."
+msgstr ""
+
 msgctxt "help:account.move.line.create_direct_debit.start,date:"
 msgid "Create direct debit for lines due up to this date."
 msgstr ""
@@ -451,7 +460,7 @@ msgstr "Payment Groups"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_payment_journal_form"
-msgid "Payment Journals"
+msgid "Journals"
 msgstr "Payment Journals"
 
 msgctxt "model:ir.action,name:act_process_payments"
@@ -761,7 +770,7 @@ msgstr "Payment Groups"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_payment_journal_form"
-msgid "Payment Journals"
+msgid "Journals"
 msgstr "Payment Journals"
 
 msgctxt "model:ir.ui.menu,name:menu_payments"

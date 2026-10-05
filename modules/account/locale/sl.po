@@ -878,6 +878,16 @@ msgctxt "field:account.general_ledger.account,lines:"
 msgid "Lines"
 msgstr "Postavke"
 
+#, fuzzy
+msgctxt "field:account.general_ledger.account,parties:"
+msgid "Parties"
+msgstr "Partnerji"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account,party_required:"
+msgid "Party Required"
+msgstr "Partner obvezen"
+
 msgctxt "field:account.general_ledger.account,start_balance:"
 msgid "Start Balance"
 msgstr "Začetni saldo"
@@ -988,6 +998,11 @@ msgstr "Končni debet"
 msgctxt "field:account.general_ledger.account.party,line_count:"
 msgid "Line Count"
 msgstr ""
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,lines:"
+msgid "Lines"
+msgstr "Postavke"
 
 #, fuzzy
 msgctxt "field:account.general_ledger.account.party,party:"
@@ -1446,6 +1461,21 @@ msgid "Tax Lines"
 msgstr "Davčne postavke"
 
 #, fuzzy
+msgctxt "field:account.move.line.context,company:"
+msgid "Company"
+msgstr "Družba"
+
+#, fuzzy
+msgctxt "field:account.move.line.context,journal:"
+msgid "Journal"
+msgstr "Dnevnik"
+
+#, fuzzy
+msgctxt "field:account.move.line.context,period:"
+msgid "Period"
+msgstr "Obdobje"
+
+#, fuzzy
 msgctxt "field:account.move.line.delegate.start,description:"
 msgid "Description"
 msgstr "Opis"
@@ -1589,19 +1619,6 @@ msgstr "Partner obvezen"
 msgctxt "field:account.move.line.template,taxes:"
 msgid "Taxes"
 msgstr "Davki"
-
-#, fuzzy
-msgctxt "field:account.move.open_journal.ask,company:"
-msgid "Company"
-msgstr "Družba"
-
-msgctxt "field:account.move.open_journal.ask,journal:"
-msgid "Journal"
-msgstr "Dnevnik"
-
-msgctxt "field:account.move.open_journal.ask,period:"
-msgid "Period"
-msgstr "Obdobje"
 
 #, fuzzy
 msgctxt "field:account.move.reconcile.write_off,company:"
@@ -1754,6 +1771,11 @@ msgstr "Poslovno leto"
 msgctxt "field:account.period,icon:"
 msgid "Icon"
 msgstr "Ikona"
+
+#, fuzzy
+msgctxt "field:account.period,journals:"
+msgid "Journals"
+msgstr "Dnevniki"
 
 #, fuzzy
 msgctxt "field:account.period,move_sequence:"
@@ -2662,6 +2684,10 @@ msgid "Keyword value substitutions are identified by braces ('{' and '}')."
 msgstr ""
 "Zamenjave ključnih besed so označene z vijugastimi oklepaji ('{' in '}')."
 
+msgctxt "help:account.period,journals:"
+msgid "Filled automatically when a first move is created."
+msgstr ""
+
 msgctxt "help:account.period,move_sequence:"
 msgid ""
 "Used to generate the move number when posting.\n"
@@ -2737,12 +2763,18 @@ msgstr ""
 "Če je izvorna predloga davka vnešena, velja predpis samo za to predlogo "
 "davka."
 
+#, fuzzy
 msgctxt "help:party.party,customer_tax_rule:"
-msgid "Apply this rule on taxes when party is customer."
+msgid ""
+"Apply this rule to the default taxes when the party is a customer.\n"
+"Leave it empty to keep the default taxes."
 msgstr "Če je partner kupec, uporabi ta davčni predpis."
 
+#, fuzzy
 msgctxt "help:party.party,supplier_tax_rule:"
-msgid "Apply this rule on taxes when party is supplier."
+msgid ""
+"Apply this rule to the default taxes when the party is a supplier.\n"
+"Leave it empty to keep the default taxes."
 msgstr "Če je partner dobavitelj, uporabi ta davčni predpis."
 
 #, fuzzy
@@ -2963,6 +2995,11 @@ msgid "Account Move Line"
 msgstr "Postavka knjižbe"
 
 #, fuzzy
+msgctxt "model:account.move.line.context,string:"
+msgid "Account Move Line Context"
+msgstr "Knjižba"
+
+#, fuzzy
 msgctxt "model:account.move.line.delegate.start,string:"
 msgid "Account Move Line Delegate Start"
 msgstr "Predloga postavke knjižbe"
@@ -2996,11 +3033,6 @@ msgstr "Predloga postavke knjižbe"
 msgctxt "model:account.move.line.template,string:"
 msgid "Account Move Line Template"
 msgstr "Predloga postavke knjižbe"
-
-#, fuzzy
-msgctxt "model:account.move.open_journal.ask,string:"
-msgid "Account Move Open Journal Ask"
-msgstr "Odpri dnevnik"
 
 #, fuzzy
 msgctxt "model:account.move.reconcile.write_off,string:"
@@ -3219,9 +3251,10 @@ msgctxt "model:ir.action,name:act_fiscalyear_form"
 msgid "Fiscal Years"
 msgstr "Poslovna leta"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_fiscalyear_form_close"
-msgid "Close Fiscal Years"
-msgstr "Zapri poslovna leta"
+msgid "Fiscal Years"
+msgstr "Poslovna leta"
 
 msgctxt "model:ir.action,name:act_general_ledger_account_form"
 msgid "General Ledger - Accounts"
@@ -3258,21 +3291,15 @@ msgctxt "model:ir.action,name:act_journal_open_cash"
 msgid "Journals Cash"
 msgstr "Dnevniki Gotovina"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_journal_period_form_close"
-msgid "Close Journals - Periods"
-msgstr "Zapri dnevnike – obdobja"
-
-msgctxt "model:ir.action,name:act_journal_period_tree"
 msgid "Journals - Periods"
 msgstr "Dnevniki - Obdobja"
 
-msgctxt "model:ir.action,name:act_journal_period_tree2"
-msgid "Journals - Periods"
-msgstr "Dnevniki - Obdobja"
-
+#, fuzzy
 msgctxt "model:ir.action,name:act_move_form"
-msgid "Account Moves"
-msgstr "Konto knjižb"
+msgid "Moves"
+msgstr "Knjižba"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_move_form_delegate"
@@ -3297,6 +3324,11 @@ msgctxt "model:ir.action,name:act_move_line_form"
 msgid "Account Move Lines"
 msgstr "Konto knjiženih vrstic"
 
+#, fuzzy
+msgctxt "model:ir.action,name:act_move_line_form_editable"
+msgid "Lines"
+msgstr "Postavke"
+
 msgctxt "model:ir.action,name:act_move_line_payable_receivable"
 msgid "Payable/Receivable Lines"
 msgstr "Vrstice za obveznosti/terjatve"
@@ -3318,10 +3350,6 @@ msgctxt "model:ir.action,name:act_open_account"
 msgid "Open Move Account"
 msgstr "Odpri konto knjižb"
 
-msgctxt "model:ir.action,name:act_open_journal"
-msgid "Open Journal"
-msgstr "Odpri dnevnik"
-
 msgctxt "model:ir.action,name:act_open_tax_code"
 msgid "Open Tax Code"
 msgstr "Odpri davčno šifro"
@@ -3334,9 +3362,10 @@ msgctxt "model:ir.action,name:act_period_form"
 msgid "Periods"
 msgstr "Obdobja"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_period_form_close"
-msgid "Close Periods"
-msgstr "Zapri obdobja"
+msgid "Periods"
+msgstr "Obdobja"
 
 msgctxt "model:ir.action,name:act_reconcile"
 msgid "Reconcile Accounts"
@@ -3484,6 +3513,14 @@ msgstr ""
 msgctxt "model:ir.message,text:msg_account_no_type_lines"
 msgid ""
 "You cannot remove type of account \"%(account)s\" because it has move lines."
+msgstr ""
+"Konta \"%(account)s\" ni možno brisati zaradi obstoječih knjiženih postavk."
+
+#, fuzzy, python-format
+msgctxt "model:ir.message,text:msg_account_party_required_with_moves"
+msgid ""
+"You cannot change the \"Party Required\" field of account \"%(account)s\" "
+"because it contains lines."
 msgstr ""
 "Konta \"%(account)s\" ni možno brisati zaradi obstoječih knjiženih postavk."
 
@@ -4161,18 +4198,18 @@ msgstr "Balance Non-Deferral"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_close_fiscalyear"
-msgid "Close Fiscal Years"
-msgstr "Close Fiscal Years"
+msgid "Fiscal Years"
+msgstr "Poslovna leta"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_close_journal_period"
-msgid "Close Journals - Periods"
-msgstr "Close Journals - Periods"
+msgid "Journals - Periods"
+msgstr "Dnevniki - Obdobja"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_close_period"
-msgid "Close Periods"
-msgstr "Close Periods"
+msgid "Periods"
+msgstr "Obdobja"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_create_chart"
@@ -4220,19 +4257,14 @@ msgid "Journals Cash"
 msgstr "Journals Cash"
 
 #, fuzzy
-msgctxt "model:ir.ui.menu,name:menu_journal_period_tree"
-msgid "Journals - Periods"
-msgstr "Journals - Periods"
-
-#, fuzzy
-msgctxt "model:ir.ui.menu,name:menu_journal_period_tree2"
-msgid "Journals - Periods"
-msgstr "Journals - Periods"
-
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_move_form"
-msgid "Account Moves"
-msgstr "Account Moves"
+msgid "Moves"
+msgstr "Knjižba"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_move_line_form_editable"
+msgid "Lines"
+msgstr "Postavke"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_move_template_create"
@@ -4253,11 +4285,6 @@ msgstr "Balance Sheet"
 msgctxt "model:ir.ui.menu,name:menu_open_income_statement"
 msgid "Income Statement"
 msgstr "Income Statement"
-
-#, fuzzy
-msgctxt "model:ir.ui.menu,name:menu_open_journal"
-msgid "Open Journal"
-msgstr "Open Journal"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_period_form"
@@ -4545,10 +4572,6 @@ msgstr "Glavna knjiga"
 msgctxt "report:account.general_ledger:"
 msgid "Move"
 msgstr "Knjižba"
-
-msgctxt "report:account.general_ledger:"
-msgid "Name"
-msgstr "Naziv"
 
 msgctxt "report:account.general_ledger:"
 msgid "Origin"
@@ -5321,14 +5344,6 @@ msgstr "Prekliči"
 msgctxt "wizard_button:account.move.line.reschedule,start,preview:"
 msgid "Preview"
 msgstr "Predogled"
-
-msgctxt "wizard_button:account.move.open_journal,ask,end:"
-msgid "Cancel"
-msgstr "Prekliči"
-
-msgctxt "wizard_button:account.move.open_journal,ask,open_:"
-msgid "Open"
-msgstr "Odpri"
 
 msgctxt "wizard_button:account.move.reconcile_lines,writeoff,end:"
 msgid "Cancel"

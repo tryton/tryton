@@ -182,6 +182,14 @@ msgctxt "field:product.template,tariff_codes_category:"
 msgid "Use Category's Tariff Codes"
 msgstr "Utiliser les codes tarifaires de la catégorie"
 
+msgctxt "field:product.template-product.category.customs,category:"
+msgid "Category"
+msgstr "Catégorie"
+
+msgctxt "field:product.template-product.category.customs,template:"
+msgid "Template"
+msgstr "Modèle"
+
 msgctxt "help:customs.agent,address:"
 msgid "The address of the agent."
 msgstr "L'adresse de l'agent."
@@ -310,6 +318,10 @@ msgstr "Codes tarifaires"
 msgctxt "model:product-customs.tariff.code,string:"
 msgid "Product - Customs Tariff Code"
 msgstr "Produit - Code du tarif douanier"
+
+msgctxt "model:product.template-product.category.customs,string:"
+msgid "Product Template - Product Category Customs"
+msgstr "Modèle de produit - Catégorie de produit douanière"
 
 msgctxt "model:res.group,name:group_customs_admin"
 msgid "Customs Administration"

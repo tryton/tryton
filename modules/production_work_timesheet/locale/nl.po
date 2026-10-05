@@ -21,3 +21,12 @@ msgstr "aanwezigheidsblad werken"
 msgctxt "field:production.work,timesheet_works:"
 msgid "Timesheet Works"
 msgstr "Tijdsregistratie werken"
+
+#, fuzzy
+msgctxt "field:production.work.center,include_timesheet_cost:"
+msgid "Include Timesheet Cost"
+msgstr "Tijdsregistratie werken"
+
+msgctxt "help:production.work.center,include_timesheet_cost:"
+msgid "Check to add the timesheet cost to the work cost."
+msgstr ""

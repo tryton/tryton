@@ -66,6 +66,11 @@ msgctxt "field:sale.sale,shopify_amount_to_pay:"
 msgid "Shopify Amount to Pay"
 msgstr "Shopify te betalen bedrag"
 
+#, fuzzy
+msgctxt "field:sale.sale,shopify_refunded:"
+msgid "Shopify Refunded"
+msgstr "Shopify koppeling"
+
 msgctxt "field:sale.sale,shopify_status_url:"
 msgid "Shopify Status URL"
 msgstr "Shopify status URL"

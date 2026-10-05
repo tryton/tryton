@@ -932,6 +932,16 @@ msgid "Lines"
 msgstr "Строки"
 
 #, fuzzy
+msgctxt "field:account.general_ledger.account,parties:"
+msgid "Parties"
+msgstr "Контрагенты"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account,party_required:"
+msgid "Party Required"
+msgstr "Обязательный"
+
+#, fuzzy
 msgctxt "field:account.general_ledger.account,start_balance:"
 msgid "Start Balance"
 msgstr "Начальный баланс"
@@ -1047,6 +1057,11 @@ msgstr "Дебет"
 msgctxt "field:account.general_ledger.account.party,line_count:"
 msgid "Line Count"
 msgstr ""
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,lines:"
+msgid "Lines"
+msgstr "Строки"
 
 #, fuzzy
 msgctxt "field:account.general_ledger.account.party,party:"
@@ -1533,6 +1548,21 @@ msgid "Tax Lines"
 msgstr "Строки налога"
 
 #, fuzzy
+msgctxt "field:account.move.line.context,company:"
+msgid "Company"
+msgstr "Организация"
+
+#, fuzzy
+msgctxt "field:account.move.line.context,journal:"
+msgid "Journal"
+msgstr "Журнал"
+
+#, fuzzy
+msgctxt "field:account.move.line.context,period:"
+msgid "Period"
+msgstr "Период"
+
+#, fuzzy
 msgctxt "field:account.move.line.delegate.start,description:"
 msgid "Description"
 msgstr "Описание"
@@ -1683,19 +1713,6 @@ msgstr ""
 msgctxt "field:account.move.line.template,taxes:"
 msgid "Taxes"
 msgstr "Налоги"
-
-#, fuzzy
-msgctxt "field:account.move.open_journal.ask,company:"
-msgid "Company"
-msgstr "Организация"
-
-msgctxt "field:account.move.open_journal.ask,journal:"
-msgid "Journal"
-msgstr "Журнал"
-
-msgctxt "field:account.move.open_journal.ask,period:"
-msgid "Period"
-msgstr "Период"
 
 #, fuzzy
 msgctxt "field:account.move.reconcile.write_off,company:"
@@ -1862,6 +1879,11 @@ msgstr "Финансовый год"
 msgctxt "field:account.period,icon:"
 msgid "Icon"
 msgstr "Иконка"
+
+#, fuzzy
+msgctxt "field:account.period,journals:"
+msgid "Journals"
+msgstr "Journals"
 
 #, fuzzy
 msgctxt "field:account.period,move_sequence:"
@@ -2807,6 +2829,10 @@ msgctxt "help:account.move.template,description:"
 msgid "Keyword value substitutions are identified by braces ('{' and '}')."
 msgstr ""
 
+msgctxt "help:account.period,journals:"
+msgid "Filled automatically when a first move is created."
+msgstr ""
+
 msgctxt "help:account.period,move_sequence:"
 msgid ""
 "Used to generate the move number when posting.\n"
@@ -2884,12 +2910,18 @@ msgstr ""
 "Если исходный шаблон налога заполнен, то правило будет применено только для "
 "этого шаблона налога."
 
+#, fuzzy
 msgctxt "help:party.party,customer_tax_rule:"
-msgid "Apply this rule on taxes when party is customer."
+msgid ""
+"Apply this rule to the default taxes when the party is a customer.\n"
+"Leave it empty to keep the default taxes."
 msgstr "Эти правила применяются когда контрагент - заказчик."
 
+#, fuzzy
 msgctxt "help:party.party,supplier_tax_rule:"
-msgid "Apply this rule on taxes when party is supplier."
+msgid ""
+"Apply this rule to the default taxes when the party is a supplier.\n"
+"Leave it empty to keep the default taxes."
 msgstr "Эти правила применяются когда контрагент - поставщик."
 
 #, fuzzy
@@ -3114,6 +3146,11 @@ msgid "Account Move Line"
 msgstr "Строчка проводки"
 
 #, fuzzy
+msgctxt "model:account.move.line.context,string:"
+msgid "Account Move Line Context"
+msgstr "Проводка"
+
+#, fuzzy
 msgctxt "model:account.move.line.delegate.start,string:"
 msgid "Account Move Line Delegate Start"
 msgstr "Шаблон налогов счета"
@@ -3147,11 +3184,6 @@ msgstr "Шаблон налогов счета"
 msgctxt "model:account.move.line.template,string:"
 msgid "Account Move Line Template"
 msgstr "Шаблон налогов счета"
-
-#, fuzzy
-msgctxt "model:account.move.open_journal.ask,string:"
-msgid "Account Move Open Journal Ask"
-msgstr "Открыть журнал запросов"
 
 #, fuzzy
 msgctxt "model:account.move.reconcile.write_off,string:"
@@ -3381,8 +3413,8 @@ msgstr "Fiscal Years"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_fiscalyear_form_close"
-msgid "Close Fiscal Years"
-msgstr "Закрыть финансовый год"
+msgid "Fiscal Years"
+msgstr "Fiscal Years"
 
 msgctxt "model:ir.action,name:act_general_ledger_account_form"
 msgid "General Ledger - Accounts"
@@ -3422,23 +3454,13 @@ msgstr "Journals Cash"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_journal_period_form_close"
-msgid "Close Journals - Periods"
-msgstr "Закрыть Журналы - Периоды"
-
-#, fuzzy
-msgctxt "model:ir.action,name:act_journal_period_tree"
-msgid "Journals - Periods"
-msgstr "Journals - Periods"
-
-#, fuzzy
-msgctxt "model:ir.action,name:act_journal_period_tree2"
 msgid "Journals - Periods"
 msgstr "Journals - Periods"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_move_form"
-msgid "Account Moves"
-msgstr "Account Moves"
+msgid "Moves"
+msgstr "Перемещение"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_move_form_delegate"
@@ -3465,6 +3487,11 @@ msgctxt "model:ir.action,name:act_move_line_form"
 msgid "Account Move Lines"
 msgstr "Account Move Lines"
 
+#, fuzzy
+msgctxt "model:ir.action,name:act_move_line_form_editable"
+msgid "Lines"
+msgstr "Строки"
+
 msgctxt "model:ir.action,name:act_move_line_payable_receivable"
 msgid "Payable/Receivable Lines"
 msgstr "Payable/Receivable Lines"
@@ -3489,11 +3516,6 @@ msgid "Open Move Account"
 msgstr "Open Move Account"
 
 #, fuzzy
-msgctxt "model:ir.action,name:act_open_journal"
-msgid "Open Journal"
-msgstr "Open Journal"
-
-#, fuzzy
 msgctxt "model:ir.action,name:act_open_tax_code"
 msgid "Open Tax Code"
 msgstr "Open Tax Code"
@@ -3509,8 +3531,8 @@ msgstr "Periods"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_period_form_close"
-msgid "Close Periods"
-msgstr "Закрыть Периоды"
+msgid "Periods"
+msgstr "Периоды"
 
 msgctxt "model:ir.action,name:act_reconcile"
 msgid "Reconcile Accounts"
@@ -3663,6 +3685,13 @@ msgstr ""
 msgctxt "model:ir.message,text:msg_account_no_type_lines"
 msgid ""
 "You cannot remove type of account \"%(account)s\" because it has move lines."
+msgstr "Вы не можете удалить счет \"%(account)s\" так как он содержит проводки."
+
+#, fuzzy, python-format
+msgctxt "model:ir.message,text:msg_account_party_required_with_moves"
+msgid ""
+"You cannot change the \"Party Required\" field of account \"%(account)s\" "
+"because it contains lines."
 msgstr "Вы не можете удалить счет \"%(account)s\" так как он содержит проводки."
 
 #, python-format
@@ -4336,18 +4365,18 @@ msgstr "Balance Non-Deferral"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_close_fiscalyear"
-msgid "Close Fiscal Years"
-msgstr "Закрыть финансовый год"
+msgid "Fiscal Years"
+msgstr "Fiscal Years"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_close_journal_period"
-msgid "Close Journals - Periods"
-msgstr "Закрыть Журналы - Периоды"
+msgid "Journals - Periods"
+msgstr "Journals - Periods"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_close_period"
-msgid "Close Periods"
-msgstr "Закрыть Периоды"
+msgid "Periods"
+msgstr "Периоды"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_create_chart"
@@ -4394,19 +4423,14 @@ msgid "Journals Cash"
 msgstr "Journals Cash"
 
 #, fuzzy
-msgctxt "model:ir.ui.menu,name:menu_journal_period_tree"
-msgid "Journals - Periods"
-msgstr "Journals - Periods"
-
-#, fuzzy
-msgctxt "model:ir.ui.menu,name:menu_journal_period_tree2"
-msgid "Journals - Periods"
-msgstr "Journals - Periods"
-
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_move_form"
-msgid "Account Moves"
-msgstr "Account Moves"
+msgid "Moves"
+msgstr "Перемещение"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_move_line_form_editable"
+msgid "Lines"
+msgstr "Строки"
 
 msgctxt "model:ir.ui.menu,name:menu_move_template_create"
 msgid "Create Move from Template"
@@ -4426,11 +4450,6 @@ msgstr "Balance Sheet"
 msgctxt "model:ir.ui.menu,name:menu_open_income_statement"
 msgid "Income Statement"
 msgstr "Income Statement"
-
-#, fuzzy
-msgctxt "model:ir.ui.menu,name:menu_open_journal"
-msgid "Open Journal"
-msgstr "Open Journal"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_period_form"
@@ -4722,10 +4741,6 @@ msgstr "Основная приходно-расходная книга"
 msgctxt "report:account.general_ledger:"
 msgid "Move"
 msgstr "Перемещение"
-
-msgctxt "report:account.general_ledger:"
-msgid "Name"
-msgstr "Наименование"
 
 msgctxt "report:account.general_ledger:"
 msgid "Origin"
@@ -5515,14 +5530,6 @@ msgstr "Отменить"
 msgctxt "wizard_button:account.move.line.reschedule,start,preview:"
 msgid "Preview"
 msgstr ""
-
-msgctxt "wizard_button:account.move.open_journal,ask,end:"
-msgid "Cancel"
-msgstr "Отменить"
-
-msgctxt "wizard_button:account.move.open_journal,ask,open_:"
-msgid "Open"
-msgstr "Открыть"
 
 msgctxt "wizard_button:account.move.reconcile_lines,writeoff,end:"
 msgid "Cancel"

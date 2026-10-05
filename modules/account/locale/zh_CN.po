@@ -818,6 +818,16 @@ msgctxt "field:account.general_ledger.account,lines:"
 msgid "Lines"
 msgstr "明细"
 
+#, fuzzy
+msgctxt "field:account.general_ledger.account,parties:"
+msgid "Parties"
+msgstr "参与者"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account,party_required:"
+msgid "Party Required"
+msgstr "需要有参与者"
+
 msgctxt "field:account.general_ledger.account,start_balance:"
 msgid "Start Balance"
 msgstr "起始余额"
@@ -913,6 +923,11 @@ msgstr "期末借方"
 msgctxt "field:account.general_ledger.account.party,line_count:"
 msgid "Line Count"
 msgstr "明细行计数"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,lines:"
+msgid "Lines"
+msgstr "明细"
 
 msgctxt "field:account.general_ledger.account.party,party:"
 msgid "Party"
@@ -1341,6 +1356,21 @@ msgctxt "field:account.move.line,tax_lines:"
 msgid "Tax Lines"
 msgstr "税明细"
 
+#, fuzzy
+msgctxt "field:account.move.line.context,company:"
+msgid "Company"
+msgstr "公司"
+
+#, fuzzy
+msgctxt "field:account.move.line.context,journal:"
+msgid "Journal"
+msgstr "日记账"
+
+#, fuzzy
+msgctxt "field:account.move.line.context,period:"
+msgid "Period"
+msgstr "分期"
+
 msgctxt "field:account.move.line.delegate.start,description:"
 msgid "Description"
 msgstr "描述"
@@ -1465,19 +1495,6 @@ msgstr "需要有参与者"
 msgctxt "field:account.move.line.template,taxes:"
 msgid "Taxes"
 msgstr "税"
-
-#, fuzzy
-msgctxt "field:account.move.open_journal.ask,company:"
-msgid "Company"
-msgstr "公司"
-
-msgctxt "field:account.move.open_journal.ask,journal:"
-msgid "Journal"
-msgstr "日记账"
-
-msgctxt "field:account.move.open_journal.ask,period:"
-msgid "Period"
-msgstr "分期"
 
 msgctxt "field:account.move.reconcile.write_off,company:"
 msgid "Company"
@@ -1619,6 +1636,11 @@ msgstr "会计年度"
 msgctxt "field:account.period,icon:"
 msgid "Icon"
 msgstr "图标"
+
+#, fuzzy
+msgctxt "field:account.period,journals:"
+msgid "Journals"
+msgstr "日记账"
 
 #, fuzzy
 msgctxt "field:account.period,move_sequence:"
@@ -2485,6 +2507,10 @@ msgctxt "help:account.move.template,description:"
 msgid "Keyword value substitutions are identified by braces ('{' and '}')."
 msgstr "替换关键字取值用大括号（'{'和'}'）标识."
 
+msgctxt "help:account.period,journals:"
+msgid "Filled automatically when a first move is created."
+msgstr ""
+
 msgctxt "help:account.period,move_sequence:"
 msgid ""
 "Used to generate the move number when posting.\n"
@@ -2556,12 +2582,18 @@ msgid ""
 "this tax template."
 msgstr "如果填写了原始税务模板，则该规则将仅适用于此税务模板."
 
+#, fuzzy
 msgctxt "help:party.party,customer_tax_rule:"
-msgid "Apply this rule on taxes when party is customer."
+msgid ""
+"Apply this rule to the default taxes when the party is a customer.\n"
+"Leave it empty to keep the default taxes."
 msgstr "当参与者是客户时，适用此规则。"
 
+#, fuzzy
 msgctxt "help:party.party,supplier_tax_rule:"
-msgid "Apply this rule on taxes when party is supplier."
+msgid ""
+"Apply this rule to the default taxes when the party is a supplier.\n"
+"Leave it empty to keep the default taxes."
 msgstr "当参与者是供应商时，适用此规则。"
 
 #, fuzzy
@@ -2782,6 +2814,11 @@ msgid "Account Move Line"
 msgstr "记账凭证明细"
 
 #, fuzzy
+msgctxt "model:account.move.line.context,string:"
+msgid "Account Move Line Context"
+msgstr "帐户上下文"
+
+#, fuzzy
 msgctxt "model:account.move.line.delegate.start,string:"
 msgid "Account Move Line Delegate Start"
 msgstr "记账凭证明细模板"
@@ -2815,11 +2852,6 @@ msgstr "记账凭证明细模板"
 msgctxt "model:account.move.line.template,string:"
 msgid "Account Move Line Template"
 msgstr "记账凭证明细模板"
-
-#, fuzzy
-msgctxt "model:account.move.open_journal.ask,string:"
-msgid "Account Move Open Journal Ask"
-msgstr "打开日记账询问"
 
 #, fuzzy
 msgctxt "model:account.move.reconcile.write_off,string:"
@@ -3032,9 +3064,10 @@ msgctxt "model:ir.action,name:act_fiscalyear_form"
 msgid "Fiscal Years"
 msgstr "会计年度"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_fiscalyear_form_close"
-msgid "Close Fiscal Years"
-msgstr "年末结账"
+msgid "Fiscal Years"
+msgstr "会计年度"
 
 msgctxt "model:ir.action,name:act_general_ledger_account_form"
 msgid "General Ledger - Accounts"
@@ -3068,20 +3101,14 @@ msgctxt "model:ir.action,name:act_journal_open_cash"
 msgid "Journals Cash"
 msgstr "现金日记账"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_journal_period_form_close"
-msgid "Close Journals - Periods"
-msgstr "分期日记账结账"
-
-msgctxt "model:ir.action,name:act_journal_period_tree"
 msgid "Journals - Periods"
 msgstr "分期日记账"
 
-msgctxt "model:ir.action,name:act_journal_period_tree2"
-msgid "Journals - Periods"
-msgstr "分期日记账"
-
+#, fuzzy
 msgctxt "model:ir.action,name:act_move_form"
-msgid "Account Moves"
+msgid "Moves"
 msgstr "记账凭证"
 
 msgctxt "model:ir.action,name:act_move_form_delegate"
@@ -3104,6 +3131,11 @@ msgctxt "model:ir.action,name:act_move_line_form"
 msgid "Account Move Lines"
 msgstr "记账凭证明细"
 
+#, fuzzy
+msgctxt "model:ir.action,name:act_move_line_form_editable"
+msgid "Lines"
+msgstr "明细"
+
 msgctxt "model:ir.action,name:act_move_line_payable_receivable"
 msgid "Payable/Receivable Lines"
 msgstr "应付账款/应收账款明细"
@@ -3124,10 +3156,6 @@ msgctxt "model:ir.action,name:act_open_account"
 msgid "Open Move Account"
 msgstr "打开记账凭证账户"
 
-msgctxt "model:ir.action,name:act_open_journal"
-msgid "Open Journal"
-msgstr "打开日记账"
-
 msgctxt "model:ir.action,name:act_open_tax_code"
 msgid "Open Tax Code"
 msgstr "打开税号"
@@ -3140,9 +3168,10 @@ msgctxt "model:ir.action,name:act_period_form"
 msgid "Periods"
 msgstr "分期"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_period_form_close"
-msgid "Close Periods"
-msgstr "期末结账"
+msgid "Periods"
+msgstr "分期"
 
 msgctxt "model:ir.action,name:act_reconcile"
 msgid "Reconcile Accounts"
@@ -3273,6 +3302,13 @@ msgstr "要为帐户\"%(account)s\"设置第二种货币，账户不能有 “�
 msgctxt "model:ir.message,text:msg_account_no_type_lines"
 msgid ""
 "You cannot remove type of account \"%(account)s\" because it has move lines."
+msgstr "账户类型 \"%(account)s\" 已经包含记账凭证明细，所以无法删除."
+
+#, fuzzy, python-format
+msgctxt "model:ir.message,text:msg_account_party_required_with_moves"
+msgid ""
+"You cannot change the \"Party Required\" field of account \"%(account)s\" "
+"because it contains lines."
 msgstr "账户类型 \"%(account)s\" 已经包含记账凭证明细，所以无法删除."
 
 #, python-format
@@ -3927,17 +3963,20 @@ msgctxt "model:ir.ui.menu,name:menu_balance_non_deferral"
 msgid "Balance Non-Deferral"
 msgstr "非结转余额"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_close_fiscalyear"
-msgid "Close Fiscal Years"
-msgstr "年末结账"
+msgid "Fiscal Years"
+msgstr "会计年度"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_close_journal_period"
-msgid "Close Journals - Periods"
-msgstr "分期日记帐结账"
+msgid "Journals - Periods"
+msgstr "分期日记账"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_close_period"
-msgid "Close Periods"
-msgstr "期末结账"
+msgid "Periods"
+msgstr "分期"
 
 msgctxt "model:ir.ui.menu,name:menu_create_chart"
 msgid "Create Chart of Accounts from Template"
@@ -3975,17 +4014,15 @@ msgctxt "model:ir.ui.menu,name:menu_journal_open_cash"
 msgid "Journals Cash"
 msgstr "现金日记账"
 
-msgctxt "model:ir.ui.menu,name:menu_journal_period_tree"
-msgid "Journals - Periods"
-msgstr "分期日记账"
-
-msgctxt "model:ir.ui.menu,name:menu_journal_period_tree2"
-msgid "Journals - Periods"
-msgstr "分期日记账"
-
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_move_form"
-msgid "Account Moves"
+msgid "Moves"
 msgstr "记账凭证"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_move_line_form_editable"
+msgid "Lines"
+msgstr "明细"
 
 msgctxt "model:ir.ui.menu,name:menu_move_template_create"
 msgid "Create Move from Template"
@@ -4002,10 +4039,6 @@ msgstr "资产负债表"
 msgctxt "model:ir.ui.menu,name:menu_open_income_statement"
 msgid "Income Statement"
 msgstr "利润表"
-
-msgctxt "model:ir.ui.menu,name:menu_open_journal"
-msgid "Open Journal"
-msgstr "打开日记账"
 
 msgctxt "model:ir.ui.menu,name:menu_period_form"
 msgid "Periods"
@@ -4257,10 +4290,6 @@ msgstr "总分类帐"
 msgctxt "report:account.general_ledger:"
 msgid "Move"
 msgstr "记账凭证"
-
-msgctxt "report:account.general_ledger:"
-msgid "Name"
-msgstr "名称"
 
 msgctxt "report:account.general_ledger:"
 msgid "Origin"
@@ -4978,14 +5007,6 @@ msgstr "取消"
 msgctxt "wizard_button:account.move.line.reschedule,start,preview:"
 msgid "Preview"
 msgstr "预览"
-
-msgctxt "wizard_button:account.move.open_journal,ask,end:"
-msgid "Cancel"
-msgstr "取消"
-
-msgctxt "wizard_button:account.move.open_journal,ask,open_:"
-msgid "Open"
-msgstr "打开"
 
 msgctxt "wizard_button:account.move.reconcile_lines,writeoff,end:"
 msgid "Cancel"

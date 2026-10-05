@@ -66,6 +66,10 @@ msgctxt "field:sale.sale,shopify_amount_to_pay:"
 msgid "Shopify Amount to Pay"
 msgstr "Import a pagar a Shopify"
 
+msgctxt "field:sale.sale,shopify_refunded:"
+msgid "Shopify Refunded"
+msgstr "Retornat a Shopify"
+
 msgctxt "field:sale.sale,shopify_status_url:"
 msgid "Shopify Status URL"
 msgstr "URL estat Shopify"

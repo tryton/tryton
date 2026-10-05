@@ -154,6 +154,10 @@ msgctxt "field:production.bom,phantom_unit:"
 msgid "Unit"
 msgstr "Einheit"
 
+msgctxt "field:production.bom,tolerance:"
+msgid "Tolerance"
+msgstr "Toleranz"
+
 msgctxt "field:production.bom.input,bom:"
 msgid "BOM"
 msgstr "Stückliste"
@@ -296,8 +300,8 @@ msgid "Production"
 msgstr "Produktion"
 
 msgctxt "field:stock.move,production_cost_price_updated:"
-msgid "Cost Price Updated"
-msgstr "Einstandspreis aktualisiert"
+msgid "Production Cost Price Updated"
+msgstr "Herstellkosten aktualisiert"
 
 msgctxt "field:stock.move,production_input:"
 msgid "Production Input"
@@ -332,6 +336,10 @@ msgstr "Die Menge der Phantomstückliste"
 msgctxt "help:production.bom,phantom_unit:"
 msgid "The Unit of Measure of the Phantom BoM"
 msgstr "Die Maßeinheit der Phantomstückliste"
+
+msgctxt "help:production.bom,tolerance:"
+msgid "The percentage tolerance that is accepted for production."
+msgstr "Die bei der Produktion zulässige prozentuale Toleranz."
 
 msgctxt "help:production.configuration,bom_sequence:"
 msgid "Used to generate the BOM code."
@@ -440,6 +448,25 @@ msgstr ""
 "\"%(production)s\" wurde kein Listenpreis erfasst."
 
 #, python-format
+msgctxt "model:ir.message,text:msg_over_production_inputs"
+msgid ""
+"The production \"%(production)s\" input of product \"%(product)s\" is "
+"greater than the tolerance (%(actual)s consumed > %(maximal)s)."
+msgstr ""
+"Der Eingang des Artikels \"%(product)s\" der Produktion \"%(production)s\" "
+"ist größer als die Toleranz (%(actual)s verbraucht > %(maximal)s)."
+
+#, python-format
+msgctxt "model:ir.message,text:msg_over_production_outputs"
+msgid ""
+"The production \"%(production)s\" output of product \"%(product)s\" is "
+"greater than the tolerance (%(actual)s produced > %(maximal)s)."
+msgstr ""
+"Der Ausgang für den Artikel \"%(product)s\" der Produktion "
+"\"%(production)s\" ist größer als die Toleranz (%(actual)s produziert > "
+"%(maximal)s)."
+
+#, python-format
 msgctxt "model:ir.message,text:msg_recursive_bom_bom"
 msgid "You cannot create a recursive BOM for BOM \"%(bom)s\"."
 msgstr ""
@@ -457,6 +484,44 @@ msgid "Move can not be used for production input and output."
 msgstr ""
 "Eine Warenbewegung kann nicht gleichzeitig für Eingang und Ausgang eines "
 "Produktionsauftrags verwendet werden."
+
+#, python-format
+msgctxt "model:ir.message,text:msg_under_production_inputs"
+msgid ""
+"The production \"%(production)s\" input of product \"%(product)s\" is lower "
+"than the tolerance (%(actual)s consumed < %(minimal)s)."
+msgstr ""
+"Der Eingang für den Artikel \"%(product)s\" der Produktion "
+"\"%(production)s\" ist kleiner als die Toleranz (%(actual)s verbraucht < "
+"%(minimal)s)."
+
+#, python-format
+msgctxt "model:ir.message,text:msg_under_production_outputs"
+msgid ""
+"The production \"%(production)s\" output of product \"%(product)s\" is lower"
+" than the tolerance (%(actual)s produced < %(minimal)s)."
+msgstr ""
+"Der Ausgang für den Artikel \"%(product)s\" der Produktion "
+"\"%(production)s\" ist kleiner als die Toleranz (%(actual)s produziert < "
+"%(minimal)s)."
+
+#, python-format
+msgctxt "model:ir.message,text:msg_unexpected_product_production_inputs"
+msgid ""
+"The production \"%(production)s\" input has an unexpected product "
+"\"%(product)s\"."
+msgstr ""
+"Die Eingang für die Produktion \"%(production)s\" enthält den unerwarteten "
+"Artikel \"%(product)s\"."
+
+#, python-format
+msgctxt "model:ir.message,text:msg_unexpected_product_production_outputs"
+msgid ""
+"The production \"%(production)s\" output has an unexpected product "
+"\"%(product)s\"."
+msgstr ""
+"Der Ausgang der Produktion \"%(production)s\" enthält den unerwarteten "
+"Artikel \"%(product)s\"."
 
 msgctxt "model:ir.model.button,confirm:production_done_button"
 msgid "Are you sure you want to complete the production?"
@@ -591,8 +656,8 @@ msgid "Reschedule Productions"
 msgstr "Produktionsaufträge neu planen"
 
 msgctxt "selection:ir.cron,method:"
-msgid "Set Cost from Moves"
-msgstr "Einstandspreis auf Warenbewegungen setzen"
+msgid "Set Cost from Production Moves"
+msgstr "Einstandspreis auf Produktionswarenbewegungen setzen"
 
 msgctxt "selection:production,state:"
 msgid "Assigned"
@@ -641,6 +706,10 @@ msgstr "Material"
 msgctxt "view:production.bom.output:"
 msgid "Material"
 msgstr "Material"
+
+msgctxt "view:production.bom:"
+msgid "%"
+msgstr "%"
 
 msgctxt "view:production.bom:"
 msgid "Lines"

@@ -6,6 +6,62 @@ msgctxt "model:edocument.uncefact.invoice,string:"
 msgid "Edocument Uncefact Invoice"
 msgstr "Facture e-document UN/CEFACT"
 
+#, python-format
+msgctxt "model:ir.message,text:msg_bank_account_not_found"
+msgid "Could not find bank account \"%(account)s\" for party \"%(parties)s\"."
+msgid_plural ""
+"Could not find bank account \"%(account)s\" for any of the parties "
+"\"%(parties)s\"."
+msgstr[0] ""
+"Impossible de trouver le compte bancaire « %(account)s » pour le tiers "
+"« %(parties)s »."
+msgstr[1] ""
+"Impossible de trouver le compte bancaire « %(account)s » pour l’une des "
+"tiers « %(parties)s »."
+
+#, python-format
+msgctxt "model:ir.message,text:msg_company_not_found"
+msgid ""
+"Could not find the company for:\n"
+"%(company)s"
+msgstr ""
+"Impossible de trouver la société pour :\n"
+"%(company)s"
+
+#, python-format
+msgctxt "model:ir.message,text:msg_currency_not_found"
+msgid "Could not find a currency with code \"%(code)s\"."
+msgstr "Impossible de trouver une devise avec le code « %(code)s »."
+
+#, python-format
+msgctxt "model:ir.message,text:msg_invoice_type_code_unsupported"
+msgid "Unsupported invoice type code \"%(type_code)s\"."
+msgstr "Code de type de facture non pris en charge « %(type_code)s »."
+
+#, python-format
+msgctxt "model:ir.message,text:msg_tax_not_found"
+msgid ""
+"Could not find tax for:\n"
+"%(tax_category)s"
+msgstr ""
+"Impossible de trouver la taxe pour :\n"
+"%(tax_category)s"
+
+#, python-format
+msgctxt "model:ir.message,text:msg_unit_not_found"
+msgid ""
+"Could not find a unit with UNECE code \"%(code)s\" and at least %(digits)s "
+"digit."
+msgid_plural ""
+"Could not find a unit with UNECE code \"%(code)s\" and at least %(digits)s "
+"digits."
+msgstr[0] ""
+"Impossible de trouver une unité avec le code UNECE « %(code)s » et au moins "
+"%(digits)s chiffre."
+msgstr[1] ""
+"Impossible de trouver une unité avec le code UNECE « %(code)s » et au moins "
+"%(digits)s chiffres."
+
 msgctxt "selection:account.invoice.edocument.start,format:"
 msgid "UN/CEFACT"
 msgstr "UN/CEFACT"

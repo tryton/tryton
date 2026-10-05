@@ -66,6 +66,11 @@ msgid "Payments"
 msgstr "Tasumised"
 
 #, fuzzy
+msgctxt "field:account.move.line.create_direct_debit.start,companies:"
+msgid "Companies"
+msgstr "Ettevõte"
+
+#, fuzzy
 msgctxt "field:account.move.line.create_direct_debit.start,date:"
 msgid "Date"
 msgstr "Kuupäev"
@@ -303,6 +308,10 @@ msgctxt "help:account.move.line,payment_direct_debit:"
 msgid "Check if the line will be paid by direct debit."
 msgstr "Märgi kui rida tasutakse otse deebeti meetodil."
 
+msgctxt "help:account.move.line.create_direct_debit.start,companies:"
+msgid "Limit to lines from these companies."
+msgstr ""
+
 msgctxt "help:account.move.line.create_direct_debit.start,date:"
 msgid "Create direct debit for lines due up to this date."
 msgstr ""
@@ -434,9 +443,10 @@ msgctxt "model:ir.action,name:act_payment_group_form"
 msgid "Payment Groups"
 msgstr "Tasumiste grupp"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_payment_journal_form"
-msgid "Payment Journals"
-msgstr "Tasumiste andmik"
+msgid "Journals"
+msgstr "Andmikud"
 
 msgctxt "model:ir.action,name:act_process_payments"
 msgid "Process Payments"
@@ -752,9 +762,10 @@ msgctxt "model:ir.ui.menu,name:menu_payment_group_form"
 msgid "Payment Groups"
 msgstr "Tasumise grupp"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_payment_journal_form"
-msgid "Payment Journals"
-msgstr "Tasumise andmik"
+msgid "Journals"
+msgstr "Andmikud"
 
 msgctxt "model:ir.ui.menu,name:menu_payments"
 msgid "Payments"

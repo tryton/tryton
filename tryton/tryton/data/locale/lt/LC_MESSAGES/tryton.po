@@ -697,21 +697,28 @@ msgid "Next"
 msgstr "Kitas"
 
 #, fuzzy, python-format
-msgid "Attachment (%s)"
-msgstr "Priedai (%s)"
+msgid "Attachment (%d)"
+msgid_plural "Attachments (%d)"
+msgstr[0] "Priedai (%s)"
+msgstr[1] "Priedai (%s)"
+msgstr[2] "Priedai (%s)"
 
-#, python-format
+#, fuzzy, python-format
 msgid "Note (%d/%d)"
-msgstr "Pastaba (%d/%d)"
+msgid_plural "Notes (%d/%d)"
+msgstr[0] "Pastaba (%d/%d)"
+msgstr[1] "Pastaba (%d/%d)"
+msgstr[2] "Pastaba (%d/%d)"
 
 msgid "You have to select one record."
 msgstr "Pasirinkite bent vieną įrašą."
 
-msgid "Are you sure to remove this record?"
-msgstr "Ar tikrai norite ištrinti šį įrašą?"
-
-msgid "Are you sure to remove those records?"
-msgstr "Ar tikrai norite ištrinti šiuos įrašus?"
+#, fuzzy, python-format
+msgid "Are you sure you want to delete this record?"
+msgid_plural "Are you sure you want to delete these %(size)d records?"
+msgstr[0] "Ar tikrai norite ištrinti šį įrašą?"
+msgstr[1] "Ar tikrai norite ištrinti šį įrašą?"
+msgstr[2] "Ar tikrai norite ištrinti šį įrašą?"
 
 msgid "Records not removed."
 msgstr "Įrašai nebuvo ištrinti."
@@ -1111,6 +1118,10 @@ msgstr "Ieškoti"
 msgid "New"
 msgstr "Naujas"
 
+#, fuzzy
+msgid "Remove"
+msgstr "_Ištrinti"
+
 #, python-format
 msgid "Search %s"
 msgstr "Ieškoti %s"
@@ -1255,6 +1266,9 @@ msgstr "Pasirinkti..."
 msgid "Clear"
 msgstr "Valyti"
 
+msgid "All Supported Types"
+msgstr ""
+
 msgid "All files"
 msgstr "Visi failai"
 
@@ -1272,9 +1286,6 @@ msgstr "Pridėti reikšmę"
 msgid "Remove \"%s\""
 msgstr "Šalinti \"%s\""
 
-msgid "Images"
-msgstr "Paveikslėliai"
-
 msgid "Add existing record"
 msgstr "Pridėti turimą įrašą"
 
@@ -1284,6 +1295,14 @@ msgstr "Pašalinti pasirinktą įrašą"
 #, fuzzy
 msgid "Restore selected record"
 msgstr "Pašalinti pasirinktą įrašą"
+
+#, python-format
+msgid "%s to add"
+msgstr ""
+
+#, fuzzy, python-format
+msgid "%s to remove"
+msgstr "Įrašai nebuvo ištrinti."
 
 msgid "Open the record <F2>"
 msgstr "Atverti įrašą <F2>"
@@ -1305,6 +1324,10 @@ msgstr "Pašalinti pasirinktą įrašą"
 #, fuzzy
 msgid "Undelete selected record"
 msgstr "Pašalinti pasirinktą įrašą"
+
+#, python-format
+msgid "%s to delete"
+msgstr ""
 
 #, python-format
 msgid "%s%%"

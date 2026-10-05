@@ -106,6 +106,10 @@ msgctxt "field:ir.cron,companies:"
 msgid "Companies"
 msgstr ""
 
+msgctxt "field:ir.cron,company_needed:"
+msgid "Company Needed"
+msgstr ""
+
 msgctxt "field:ir.cron-company.company,company:"
 msgid "Company"
 msgstr ""

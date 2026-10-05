@@ -71,6 +71,10 @@ msgctxt "field:account.dunning,state:"
 msgid "State"
 msgstr "État"
 
+msgctxt "field:account.dunning.create.start,companies:"
+msgid "Companies"
+msgstr "Sociétés"
+
 msgctxt "field:account.dunning.create.start,date:"
 msgid "Date"
 msgstr "Date"
@@ -139,6 +143,10 @@ msgstr "Quand la relance a atteint le niveau."
 msgctxt "help:account.dunning,line:"
 msgid "The receivable line to dun for."
 msgstr "La ligne à recevoir à relancer."
+
+msgctxt "help:account.dunning.create.start,companies:"
+msgid "Limit to lines from these companies."
+msgstr "Limite aux lignes de ces sociétés."
 
 msgctxt "help:account.dunning.create.start,date:"
 msgid "Create dunning up to this date."

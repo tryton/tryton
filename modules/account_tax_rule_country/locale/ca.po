@@ -6,6 +6,10 @@ msgctxt "field:account.tax.rule.line,from_country:"
 msgid "From Country"
 msgstr "Des del país"
 
+msgctxt "field:account.tax.rule.line,from_organization:"
+msgid "From Organization"
+msgstr "De l'organització"
+
 msgctxt "field:account.tax.rule.line,from_subdivision:"
 msgid "From Subdivision"
 msgstr "De la subdivisió"
@@ -13,6 +17,10 @@ msgstr "De la subdivisió"
 msgctxt "field:account.tax.rule.line,to_country:"
 msgid "To Country"
 msgstr "Cap al país"
+
+msgctxt "field:account.tax.rule.line,to_organization:"
+msgid "To Organization"
+msgstr "A l'organització"
 
 msgctxt "field:account.tax.rule.line,to_subdivision:"
 msgid "To Subdivision"
@@ -22,6 +30,10 @@ msgctxt "field:account.tax.rule.line.template,from_country:"
 msgid "From Country"
 msgstr "Des del país"
 
+msgctxt "field:account.tax.rule.line.template,from_organization:"
+msgid "From Organization"
+msgstr "De l'organització"
+
 msgctxt "field:account.tax.rule.line.template,from_subdivision:"
 msgid "From Subdivision"
 msgstr "De la subdivisió"
@@ -30,38 +42,58 @@ msgctxt "field:account.tax.rule.line.template,to_country:"
 msgid "To Country"
 msgstr "Cap al país"
 
+msgctxt "field:account.tax.rule.line.template,to_organization:"
+msgid "To Organization"
+msgstr "A l'organització"
+
 msgctxt "field:account.tax.rule.line.template,to_subdivision:"
 msgid "To Subdivision"
 msgstr "A la subdiviisió"
 
 msgctxt "help:account.tax.rule.line,from_country:"
-msgid "Apply only to addresses of this country."
+msgid "Apply only to the addresses from this country."
 msgstr "Aplica només a les adreçes d'aquest pais."
+
+msgctxt "help:account.tax.rule.line,from_organization:"
+msgid "Apply only to the addresses from this organization."
+msgstr "Aplica només a les adreçes d'aquesta organització."
 
 msgctxt "help:account.tax.rule.line,from_subdivision:"
-msgid "Apply only to addresses in this subdivision."
-msgstr "Aplica només a les adreçes d'aquesta subdivisió."
+msgid "Apply only to the addresses from this subdivision."
+msgstr "Aplica només a les adreçes des d'aquesta subdivisió."
 
 msgctxt "help:account.tax.rule.line,to_country:"
-msgid "Apply only to addresses of this country."
-msgstr "Aplica només a les adreçes d'aquest pais."
+msgid "Apply only to the addresses to this country."
+msgstr "Aplica només a les adreçes cap aquest pais."
+
+msgctxt "help:account.tax.rule.line,to_organization:"
+msgid "Apply only to the addresses of this organization."
+msgstr "Aplica només a les adreçes des d'aquesta organització."
 
 msgctxt "help:account.tax.rule.line,to_subdivision:"
-msgid "Apply only to addresses in this subdivision."
+msgid "Apply only to the addresses to this subdivision."
 msgstr "Aplica només a les adreçes d'aquesta subdivisió."
 
 msgctxt "help:account.tax.rule.line.template,from_country:"
-msgid "Apply only to addresses of this country."
+msgid "Apply only to the addresses from this country."
 msgstr "Aplica només a les adreçes d'aquest pais."
+
+msgctxt "help:account.tax.rule.line.template,from_organization:"
+msgid "Apply only to the addresses from this organization."
+msgstr "Aplica només a les adreçes des d'aquest pais."
 
 msgctxt "help:account.tax.rule.line.template,from_subdivision:"
-msgid "Apply only to addresses in this subdivision."
-msgstr "Aplica només a les adreçes d'aquesta subdivisió."
+msgid "Apply only to the addresses from this subdivision."
+msgstr "Aplica només a les adreçes des d'aquesta subdivisió."
 
 msgctxt "help:account.tax.rule.line.template,to_country:"
-msgid "Apply only to addresses of this country."
-msgstr "Aplica només a les adreçes d'aquest pais."
+msgid "Apply only to the addresses to this country."
+msgstr "Aplica només a les adreçes cap aquest pais."
+
+msgctxt "help:account.tax.rule.line.template,to_organization:"
+msgid "Apply only to the addresses of this organization."
+msgstr "Aplica només a les adreçes des d'aquesta organització."
 
 msgctxt "help:account.tax.rule.line.template,to_subdivision:"
-msgid "Apply only to addresses in this subdivision."
+msgid "Apply only to the addresses to this subdivision."
 msgstr "Aplica només a les adreçes d'aquesta subdivisió."

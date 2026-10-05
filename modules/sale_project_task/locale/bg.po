@@ -122,6 +122,10 @@ msgid "On Order Processed"
 msgstr ""
 
 msgctxt "selection:sale.sale,tasks_state:"
+msgid "Fulfilled"
+msgstr ""
+
+msgctxt "selection:sale.sale,tasks_state:"
 msgid "None"
 msgstr ""
 
@@ -131,10 +135,6 @@ msgstr ""
 
 msgctxt "selection:sale.sale,tasks_state:"
 msgid "Waiting"
-msgstr ""
-
-msgctxt "selection:sale.sale,tasks_state:"
-msgid "fulfilled"
 msgstr ""
 
 msgctxt "view:product.project_task:"

@@ -539,10 +539,6 @@ msgctxt "model:ir.action,name:act_category_list"
 msgid "Categories"
 msgstr "Categorias"
 
-msgctxt "model:ir.action,name:act_category_product"
-msgid "Add products"
-msgstr "Adicionar Produtos"
-
 msgctxt "model:ir.action,name:act_category_tree"
 msgid "Categories"
 msgstr "Categorias"
@@ -640,10 +636,6 @@ msgctxt "model:ir.message,text:msg_uom_no_zero_factor_rate"
 msgid "Rate and factor can not be both equal to zero."
 msgstr ""
 "O fator e a taxa de conversão não podem ser ambos nulos ao mesmo tempo."
-
-msgctxt "model:ir.model.button,string:category_add_products_button"
-msgid "Add products"
-msgstr "Adicionar Produtos"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_category"
 msgid "Category"

@@ -1,0 +1,210 @@
+#
+#, fuzzy
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.account.type,disbursement:"
+msgid "Disbursement"
+msgstr "Desemborsament"
+
+msgctxt "field:account.account.type.template,disbursement:"
+msgid "Disbursement"
+msgstr "Desemborsament"
+
+msgctxt "field:account.configuration,default_account_disbursement:"
+msgid "Default Account Disbursement"
+msgstr "Compte de desemborsament per defecte"
+
+msgctxt ""
+"field:account.configuration.default_account,default_account_disbursement:"
+msgid "Default Account Disbursement"
+msgstr "Compte de desemborsament per defecte"
+
+msgctxt "field:project.configuration,disbursement_sequence:"
+msgid "Disbursement Sequence"
+msgstr "Seqüència de desemborsament"
+
+msgctxt "field:project.configuration.sequence,disbursement_sequence:"
+msgid "Disbursement Sequence"
+msgstr "Seqüència de desemborsament"
+
+msgctxt "field:project.disbursement,amount:"
+msgid "Amount"
+msgstr "Import"
+
+msgctxt "field:project.disbursement,attachments:"
+msgid "Attachments"
+msgstr "Adjunts"
+
+msgctxt "field:project.disbursement,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:project.disbursement,currency:"
+msgid "Currency"
+msgstr "Moneda"
+
+msgctxt "field:project.disbursement,description:"
+msgid "Description"
+msgstr "Descripció"
+
+msgctxt "field:project.disbursement,invoice_lines:"
+msgid "Invoice Lines"
+msgstr "Línies de factura"
+
+msgctxt "field:project.disbursement,number:"
+msgid "Number"
+msgstr "Número"
+
+msgctxt "field:project.disbursement,payee:"
+msgid "Payee"
+msgstr "Beneficiari"
+
+msgctxt "field:project.disbursement,payment_date:"
+msgid "Date"
+msgstr "Data"
+
+msgctxt "field:project.disbursement,payments:"
+msgid "Payments"
+msgstr "Pagaments"
+
+msgctxt "field:project.disbursement,reference:"
+msgid "Reference"
+msgstr "Referència"
+
+msgctxt "field:project.disbursement,reference_type:"
+msgid "Reference Type"
+msgstr "Tipus de referència"
+
+msgctxt "field:project.disbursement,state:"
+msgid "State"
+msgstr "Estat"
+
+msgctxt "field:project.disbursement,validated_by:"
+msgid "Validated By"
+msgstr "Validat per"
+
+msgctxt "field:project.disbursement,work:"
+msgid "Work"
+msgstr "Treball"
+
+msgctxt "field:project.disbursement.journal,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:project.disbursement.journal,currency:"
+msgid "Currency"
+msgstr "Moneda"
+
+msgctxt "field:project.disbursement.journal,journal:"
+msgid "Journal"
+msgstr "Diari"
+
+msgctxt "field:project.disbursement.journal,work:"
+msgid "Work"
+msgstr "Treball"
+
+msgctxt "field:project.work,account_disbursement:"
+msgid "Account Disbursement"
+msgstr "Compte de desemborsament"
+
+msgctxt "field:project.work,disbursement_journals:"
+msgid "Disbursement Journals"
+msgstr "Diaris de desemborsament"
+
+msgctxt "field:project.work,disbursements:"
+msgid "Disbursements"
+msgstr "Desemborsaments"
+
+msgctxt "help:project.configuration,disbursement_sequence:"
+msgid "Used to generate the disbursement number."
+msgstr "S’utilitza per generar el número de desemborsament."
+
+msgctxt "help:project.configuration.sequence,disbursement_sequence:"
+msgid "Used to generate the disbursement number."
+msgstr "S’utilitza per generar el número de desemborsament."
+
+msgctxt "help:project.work,account_disbursement:"
+msgid "Leave empty for the default account."
+msgstr "Deixeu-ho buit per utilitzar el compte per defecte."
+
+msgctxt "model:ir.action,name:act_project_disbursement_form"
+msgid "Disbursements"
+msgstr "Desemborsaments"
+
+#, python-format
+msgctxt "model:ir.message,text:msg_disbursement_cancel_payment"
+msgid ""
+"To cancel disbursement \"%(disbursement)s\", you must fail the payment "
+"\"%(payment)s\"."
+msgstr ""
+"Per cancel·lar el desemborsament \"%(disbursement)s\", heu de marcar com a "
+"fallit el pagament \"%(payment)s\"."
+
+msgctxt "model:ir.model.button,string:project_disbursement_cancel_button"
+msgid "Cancel"
+msgstr "Cancel·la"
+
+msgctxt "model:ir.model.button,string:project_disbursement_draft_button"
+msgid "Draft"
+msgstr "Esborrany"
+
+msgctxt "model:ir.model.button,string:project_disbursement_process_button"
+msgid "Process"
+msgstr "Processa"
+
+msgctxt "model:ir.model.button,string:project_disbursement_validate_button"
+msgid "Validate"
+msgstr "Valida"
+
+msgctxt "model:ir.rule.group,name:rule_group_project_disbursement_companies"
+msgid "User in companies"
+msgstr "Usuari a les empreses"
+
+msgctxt "model:ir.sequence,name:sequence_disbursement"
+msgid "Disbursement"
+msgstr "Desemborsament"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_disbursement"
+msgid "Project Disbursement"
+msgstr "Desemborsament de projecte"
+
+msgctxt "model:ir.ui.menu,name:menu_project_disbursement_form"
+msgid "Disbursements"
+msgstr "Desemborsaments"
+
+msgctxt "model:project.disbursement,string:"
+msgid "Project Disbursement"
+msgstr "Desemborsament de projecte"
+
+msgctxt "model:project.disbursement.journal,string:"
+msgid "Project Disbursement Journal"
+msgstr "Diari de desemborsaments de projecte"
+
+msgctxt "model:res.group,name:group_project_disbursement"
+msgid "Project Disbursement"
+msgstr "Desemborsament de projecte"
+
+msgctxt "selection:project.disbursement,state:"
+msgid "Cancelled"
+msgstr "Cancel·lat"
+
+msgctxt "selection:project.disbursement,state:"
+msgid "Draft"
+msgstr "Esborrany"
+
+msgctxt "selection:project.disbursement,state:"
+msgid "Paid"
+msgstr "Pagat"
+
+msgctxt "selection:project.disbursement,state:"
+msgid "Validated"
+msgstr "Validat"
+
+msgctxt "view:account.configuration:"
+msgid "Project Disbursement"
+msgstr "Desemborsament de projecte"
+
+msgctxt "view:project.disbursement:"
+msgid "Other Info"
+msgstr "Informació addicional"

@@ -542,10 +542,6 @@ msgctxt "model:ir.action,name:act_category_list"
 msgid "Categories"
 msgstr "Catégories"
 
-msgctxt "model:ir.action,name:act_category_product"
-msgid "Add products"
-msgstr "Ajouter des produits"
-
 msgctxt "model:ir.action,name:act_category_tree"
 msgid "Categories"
 msgstr "Catégories"
@@ -641,10 +637,6 @@ msgstr "Vous ne pouvez pas modifier le taux de l'unité de mesure « %(uom)s �
 msgctxt "model:ir.message,text:msg_uom_no_zero_factor_rate"
 msgid "Rate and factor can not be both equal to zero."
 msgstr "Le taux et le facteur ne peuvent pas être tous deux égaux à zéro."
-
-msgctxt "model:ir.model.button,string:category_add_products_button"
-msgid "Add products"
-msgstr "Ajouter des produits"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_category"
 msgid "Category"

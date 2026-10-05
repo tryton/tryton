@@ -30,6 +30,24 @@ msgid "Lot Sequence"
 msgstr "Serija obvezna"
 
 #, fuzzy
+msgctxt "field:sale.point.sale.line,lot:"
+msgid "Lot"
+msgstr "Serija"
+
+#, fuzzy
+msgctxt "field:sale.point.sale.line,lot_required:"
+msgid "Lot Required"
+msgstr "Serija obvezna"
+
+msgctxt "field:stock.conversion,input_lot:"
+msgid "Input Lot"
+msgstr ""
+
+msgctxt "field:stock.conversion,output_lot:"
+msgid "Output Lot"
+msgstr ""
+
+#, fuzzy
 msgctxt "field:stock.inventory.count.quantity,lot:"
 msgid "Lot"
 msgstr "Serija"

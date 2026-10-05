@@ -179,13 +179,9 @@ msgctxt "field:party.category,parent:"
 msgid "Parent"
 msgstr "منبع"
 
-msgctxt "field:party.check_vies.result,parties_failed:"
-msgid "Parties Failed"
-msgstr "نهادها/سازمان ها ناموفق"
-
-msgctxt "field:party.check_vies.result,parties_succeed:"
-msgid "Parties Succeed"
-msgstr "نهادها/سازمان ها موفق"
+msgctxt "field:party.configuration,identifier_eu_vat_validation_period:"
+msgid "European VAT Number Validation Period"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:party.configuration,identifier_types:"
@@ -298,6 +294,15 @@ msgstr "کد"
 msgctxt "field:party.identifier,code_compact:"
 msgid "Code Compact"
 msgstr "مقدار فشرده"
+
+#, fuzzy
+msgctxt "field:party.identifier,eu_vat_valid:"
+msgid "European VAT Number Valid"
+msgstr "نام ساختمان"
+
+msgctxt "field:party.identifier,eu_vat_validated_at:"
+msgid "European VAT Number Validated At"
+msgstr ""
 
 msgctxt "field:party.identifier,party:"
 msgid "Party"
@@ -514,6 +519,10 @@ msgctxt "help:party.category,parent:"
 msgid "Add the category below the parent."
 msgstr "اضافه کردن زیرمجموعه در منبع."
 
+msgctxt "help:party.configuration,identifier_eu_vat_validation_period:"
+msgid "The period during which the number is still considered valid."
+msgstr ""
+
 msgctxt "help:party.configuration,identifier_types:"
 msgid ""
 "Defines which identifier types are available.\n"
@@ -551,6 +560,10 @@ msgstr "نهاد/سازمان باید حذف شود."
 msgctxt "help:party.identifier,address:"
 msgid "The address identified by this record."
 msgstr "نهاد/سازمان شناسایی شده توسط این پرونده."
+
+msgctxt "help:party.identifier,eu_vat_valid:"
+msgid "Checked if the number has been validated on VIES service."
+msgstr ""
 
 msgctxt "help:party.identifier,party:"
 msgid "The party identified by this record."
@@ -639,10 +652,6 @@ msgctxt "model:ir.action,name:report_label"
 msgid "Labels"
 msgstr "برچسب ها"
 
-msgctxt "model:ir.action,name:wizard_check_vies"
-msgid "Check VIES"
-msgstr "بررسی VIES"
-
 msgctxt "model:ir.action,name:wizard_erase"
 msgid "Erase"
 msgstr "Erase"
@@ -712,6 +721,11 @@ msgid "Invalid format \"%(format)s\" with exception \"%(exception)s\"."
 msgstr "قالب : \"%s\" بااستثناء: \"%s\" نامعتبر است."
 
 #, fuzzy, python-format
+msgctxt "model:ir.message,text:msg_invalid_format_strip"
+msgid "Invalid format \"%(format)s\". Empty address generates \"%(value)s\"."
+msgstr "قالب : \"%s\" بااستثناء: \"%s\" نامعتبر است."
+
+#, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_invalid_phone_number"
 msgid "The phone number \"%(phone)s\" for party \"%(party)s\" is not valid."
 msgstr "شماره تلفن \"%s\" نهاد/سازمان \"%s\" معتبر نیست."
@@ -730,6 +744,11 @@ msgctxt "model:ir.message,text:msg_party_identifier_duplicate"
 msgid "The party \"%(party)s\" has the same %(type)s \"%(code)s\"."
 msgstr ""
 
+#, python-format
+msgctxt "model:ir.message,text:msg_party_identifier_eu_vat_invalid"
+msgid "The VAT numbers \"%(identifiers)s\" are not valid for the VIES service."
+msgstr ""
+
 #, fuzzy, python-format
 msgctxt "model:ir.message,text:msg_party_set_contact_mechanism"
 msgid ""
@@ -740,6 +759,11 @@ msgstr "کد پیش شماره تلفن \"%s\" نهاد/سازمان \"%s\" مع
 msgctxt "model:ir.message,text:msg_vies_unavailable"
 msgid "The VIES service is unavailable, try again later."
 msgstr "سرویس\"سیستم تبادل اطلاعات\" VIES در دسترس نیست، بعدا دوباره امتحان کنید."
+
+#, fuzzy
+msgctxt "model:ir.model.button,string:identifier_check_view_button"
+msgid "Check VIES"
+msgstr "بررسی VIES"
 
 msgctxt "model:ir.sequence,name:sequence_party"
 msgid "Party"
@@ -817,10 +841,6 @@ msgctxt "model:party.category,string:"
 msgid "Party Category"
 msgstr "نهاد/سازمان - زیرمجموعه"
 
-msgctxt "model:party.check_vies.result,string:"
-msgid "Party Check Vies Result"
-msgstr ""
-
 #, fuzzy
 msgctxt "model:party.configuration,string:"
 msgid "Party Configuration"
@@ -878,6 +898,10 @@ msgstr ""
 msgctxt "model:res.group,name:group_party_admin"
 msgid "Party Administration"
 msgstr "مدیریت نهاد/سازمان"
+
+msgctxt "selection:ir.cron,method:"
+msgid "Check European VAT Number with VIES"
+msgstr ""
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Albanian VAT Number"
@@ -1630,6 +1654,14 @@ msgctxt "view:party.address:"
 msgid "General"
 msgstr "عمومی"
 
+msgctxt "view:party.identifier:"
+msgid "Valid:"
+msgstr ""
+
+msgctxt "view:party.identifier:"
+msgid "at"
+msgstr ""
+
 msgctxt "view:party.party:"
 msgid "General"
 msgstr "عمومی"
@@ -1642,10 +1674,6 @@ msgstr "نهاد/سازمان"
 msgctxt "view:party.replace.ask:"
 msgid "Replaced By"
 msgstr "جایگزین شده توسط"
-
-msgctxt "wizard_button:party.check_vies,result,end:"
-msgid "OK"
-msgstr "قبول"
 
 msgctxt "wizard_button:party.erase,ask,end:"
 msgid "Cancel"

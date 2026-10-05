@@ -78,9 +78,77 @@ msgctxt "field:account.statement,validation:"
 msgid "Validation"
 msgstr ""
 
+#, fuzzy
+msgctxt "field:account.statement.import.csv,account_column:"
+msgid "Account Number"
+msgstr "Import Statement"
+
+msgctxt "field:account.statement.import.csv,amount_column:"
+msgid "Amount"
+msgstr ""
+
+msgctxt "field:account.statement.import.csv,date_column:"
+msgid "Date"
+msgstr ""
+
+msgctxt "field:account.statement.import.csv,date_format:"
+msgid "Date Format"
+msgstr ""
+
+msgctxt "field:account.statement.import.csv,decimal_point:"
+msgid "Decimal Separator"
+msgstr ""
+
+msgctxt "field:account.statement.import.csv,delimiter:"
+msgid "Delimiter"
+msgstr ""
+
+msgctxt "field:account.statement.import.csv,description_column:"
+msgid "Description"
+msgstr ""
+
+msgctxt "field:account.statement.import.csv,encoding:"
+msgid "Encoding"
+msgstr ""
+
+msgctxt "field:account.statement.import.csv,lines_to_skip:"
+msgid "Lines to Skip"
+msgstr ""
+
+msgctxt "field:account.statement.import.csv,name:"
+msgid "Name"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.statement.import.csv,number_column:"
+msgid "Number"
+msgstr "Sayı"
+
+#, fuzzy
+msgctxt "field:account.statement.import.csv,party_column:"
+msgid "Party"
+msgstr "Parti"
+
+msgctxt "field:account.statement.import.csv,quotechar:"
+msgid "Quote char"
+msgstr ""
+
+msgctxt "field:account.statement.import.csv,thousands_sep:"
+msgid "Thousands Separator"
+msgstr ""
+
 msgctxt "field:account.statement.import.start,company:"
 msgid "Company"
 msgstr ""
+
+msgctxt "field:account.statement.import.start,csv_format:"
+msgid "CSV Format"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.statement.import.start,csv_journal:"
+msgid "Journal"
+msgstr "Yevmiye Defteri:"
 
 msgctxt "field:account.statement.import.start,file_:"
 msgid "File"
@@ -88,6 +156,10 @@ msgstr ""
 
 msgctxt "field:account.statement.import.start,file_format:"
 msgid "File Format"
+msgstr ""
+
+msgctxt "field:account.statement.import.start,file_name:"
+msgid "File Name"
 msgstr ""
 
 msgctxt "field:account.statement.journal,account:"
@@ -320,6 +392,10 @@ msgctxt "field:account.statement.origin,statement_state:"
 msgid "Statement State"
 msgstr ""
 
+msgctxt "help:account.statement.import.csv,date_format:"
+msgid "The format of the date using the 1989 C standard."
+msgstr ""
+
 #, fuzzy
 msgctxt "model:account.journal,name:journal_statement"
 msgid "Statement"
@@ -328,6 +404,11 @@ msgstr "Açıklama"
 #, fuzzy
 msgctxt "model:account.statement,string:"
 msgid "Account Statement"
+msgstr "Import Statement"
+
+#, fuzzy
+msgctxt "model:account.statement.import.csv,string:"
+msgid "Account Statement Import Csv"
 msgstr "Import Statement"
 
 msgctxt "model:account.statement.import.start,string:"
@@ -358,6 +439,11 @@ msgctxt "model:account.statement.origin.information,string:"
 msgid "Account Statement Origin Information"
 msgstr ""
 
+msgctxt ""
+"model:account.statement.origin.information,string:information_csv_row"
+msgid "Row"
+msgstr ""
+
 #, fuzzy
 msgctxt "model:ir.action,name:act_line_group_form"
 msgid "Line Groups"
@@ -384,9 +470,14 @@ msgctxt "model:ir.action,name:act_statement_form"
 msgid "Statements"
 msgstr "Açıklama"
 
+msgctxt "model:ir.action,name:act_statement_import_csv_form"
+msgid "CSV Imports"
+msgstr ""
+
+#, fuzzy
 msgctxt "model:ir.action,name:act_statement_journal_form"
-msgid "Statement Journals"
-msgstr "Statement Journals"
+msgid "Journals"
+msgstr "Yevmiye Defteri:"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_statement_journal_list_reporting"
@@ -460,6 +551,20 @@ msgstr ""
 #, python-format
 msgctxt "model:ir.message,text:msg_statement_delete_cancel"
 msgid "To delete statement \"%(statement)s\" you must cancel it."
+msgstr ""
+
+#, python-format
+msgctxt "model:ir.message,text:msg_statement_import_csv_invalid_date_format"
+msgid ""
+"Invalid date format \"%(date_format)s\" for the CSV import \"%(record)s\" "
+"with error: \"%(error)s\""
+msgstr ""
+
+#, python-format
+msgctxt "model:ir.message,text:msg_statement_import_error"
+msgid ""
+"The statement file could not be parsed with the following exception: "
+"\"%(exception)s\"."
 msgstr ""
 
 msgctxt "model:ir.message,text:msg_statement_invoice_paid_cancelled"
@@ -574,9 +679,14 @@ msgctxt "model:ir.ui.menu,name:menu_statement_import"
 msgid "Import Statement"
 msgstr "Import Statement"
 
+msgctxt "model:ir.ui.menu,name:menu_statement_import_csv_form"
+msgid "CSV Imports"
+msgstr ""
+
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_statement_journal_form"
-msgid "Statement Journals"
-msgstr "Statement Journals"
+msgid "Journals"
+msgstr "Yevmiye Defteri:"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_statement_journal_reporting"
@@ -678,6 +788,14 @@ msgstr ""
 
 msgctxt "selection:account.statement.journal,validation:"
 msgid "Number of Lines"
+msgstr ""
+
+msgctxt "view:account.statement.import.csv:"
+msgid "Columns"
+msgstr ""
+
+msgctxt "view:account.statement.import.csv:"
+msgid "Format"
 msgstr ""
 
 msgctxt "view:account.statement:"

@@ -78,6 +78,10 @@ msgctxt "field:res.user,actions:"
 msgid "Actions"
 msgstr "Accions"
 
+msgctxt "field:res.user,administrator:"
+msgid "Administrator"
+msgstr "Administrador"
+
 msgctxt "field:res.user,applications:"
 msgid "Applications"
 msgstr "Aplicacions"
@@ -230,6 +234,10 @@ msgctxt "help:res.user,actions:"
 msgid "Actions that will be run at login."
 msgstr "Les accions que s'executaran quan s'identifiqui."
 
+msgctxt "help:res.user,administrator:"
+msgid "When checked the user has the access rights of all groups."
+msgstr "Quan es marca l'usuari te els permisos d'accés de tots els grups."
+
 msgctxt "help:res.user,notifications:"
 msgid "Notifications to subscribe to."
 msgstr "Notificacions a les que subscriure's."
@@ -306,6 +314,10 @@ msgstr "Contrasenya per %(login)s"
 msgctxt "model:ir.model.button,help:user_reset_password_button"
 msgid "Send by email a new temporary password to the user"
 msgstr "Envia per correu electrònic una nova contrasenya temporal al usuari"
+
+msgctxt "model:ir.model.button,string:notification_mark_read_button"
+msgid "Mark as Read"
+msgstr "Marca com a llegit"
 
 msgctxt "model:ir.model.button,string:user_application_cancel_button"
 msgid "Cancel"
@@ -466,10 +478,6 @@ msgstr "Permisos d'accés"
 msgctxt "view:res.user:"
 msgid "Actions"
 msgstr "Accions"
-
-msgctxt "view:res.user:"
-msgid "Group Membership"
-msgstr "Membres del grup"
 
 msgctxt "view:res.user:"
 msgid "Preferences"

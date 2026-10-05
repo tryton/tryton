@@ -59,6 +59,10 @@ msgctxt "field:account.move.line,payments:"
 msgid "Payments"
 msgstr "Zahlungen"
 
+msgctxt "field:account.move.line.create_direct_debit.start,companies:"
+msgid "Companies"
+msgstr "Unternehmen"
+
 msgctxt "field:account.move.line.create_direct_debit.start,date:"
 msgid "Date"
 msgstr "Datum"
@@ -77,7 +81,7 @@ msgstr "Journal"
 
 msgctxt "field:account.move.line.pay.ask_journal,journals:"
 msgid "Journals"
-msgstr "Journal"
+msgstr "Journale"
 
 msgctxt "field:account.move.line.pay.start,date:"
 msgid "Date"
@@ -279,6 +283,10 @@ msgctxt "help:account.move.line,payment_direct_debit:"
 msgid "Check if the line will be paid by direct debit."
 msgstr "Aktivieren wenn die Rechnungsposition per Lastschrift bezahlt wird."
 
+msgctxt "help:account.move.line.create_direct_debit.start,companies:"
+msgid "Limit to lines from these companies."
+msgstr "Auf Buchungszeilen dieser Unternehmen beschränken."
+
 msgctxt "help:account.move.line.create_direct_debit.start,date:"
 msgid "Create direct debit for lines due up to this date."
 msgstr ""
@@ -408,8 +416,8 @@ msgid "Payment Groups"
 msgstr "Zahlungsläufe"
 
 msgctxt "model:ir.action,name:act_payment_journal_form"
-msgid "Payment Journals"
-msgstr "Zahlungsjournale"
+msgid "Journals"
+msgstr "Journale"
 
 msgctxt "model:ir.action,name:act_process_payments"
 msgid "Process Payments"
@@ -720,8 +728,8 @@ msgid "Payment Groups"
 msgstr "Zahlungsläufe"
 
 msgctxt "model:ir.ui.menu,name:menu_payment_journal_form"
-msgid "Payment Journals"
-msgstr "Zahlungsjournale"
+msgid "Journals"
+msgstr "Journale"
 
 msgctxt "model:ir.ui.menu,name:menu_payments"
 msgid "Payments"

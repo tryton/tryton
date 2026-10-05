@@ -173,13 +173,9 @@ msgctxt "field:party.category,parent:"
 msgid "Parent"
 msgstr "Fölérendelt (kategória)"
 
-msgctxt "field:party.check_vies.result,parties_failed:"
-msgid "Parties Failed"
-msgstr "Ügyfelek sikertelen felülvizsgálása"
-
-msgctxt "field:party.check_vies.result,parties_succeed:"
-msgid "Parties Succeed"
-msgstr "Ügyfelek sikeres felülvizsgálása"
+msgctxt "field:party.configuration,identifier_eu_vat_validation_period:"
+msgid "European VAT Number Validation Period"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:party.configuration,identifier_types:"
@@ -290,6 +286,15 @@ msgstr "Kód"
 
 msgctxt "field:party.identifier,code_compact:"
 msgid "Code Compact"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:party.identifier,eu_vat_valid:"
+msgid "European VAT Number Valid"
+msgstr "Szerb adószám (PIB)"
+
+msgctxt "field:party.identifier,eu_vat_validated_at:"
+msgid "European VAT Number Validated At"
 msgstr ""
 
 msgctxt "field:party.identifier,party:"
@@ -509,6 +514,10 @@ msgctxt "help:party.category,parent:"
 msgid "Add the category below the parent."
 msgstr "Ehhez a főkategóriához tartozzon a megnyitott kategória."
 
+msgctxt "help:party.configuration,identifier_eu_vat_validation_period:"
+msgid "The period during which the number is still considered valid."
+msgstr ""
+
 msgctxt "help:party.configuration,identifier_types:"
 msgid ""
 "Defines which identifier types are available.\n"
@@ -546,6 +555,10 @@ msgstr ""
 msgctxt "help:party.identifier,address:"
 msgid "The address identified by this record."
 msgstr "A kategória megnevezése."
+
+msgctxt "help:party.identifier,eu_vat_valid:"
+msgid "Checked if the number has been validated on VIES service."
+msgstr ""
 
 msgctxt "help:party.identifier,party:"
 msgid "The party identified by this record."
@@ -633,10 +646,6 @@ msgctxt "model:ir.action,name:report_label"
 msgid "Labels"
 msgstr "Címkék"
 
-msgctxt "model:ir.action,name:wizard_check_vies"
-msgid "Check VIES"
-msgstr "Uniós adószám ellenőrzése (VIES)"
-
 msgctxt "model:ir.action,name:wizard_erase"
 msgid "Erase"
 msgstr "Személyes adatok törlése"
@@ -706,6 +715,11 @@ msgid "Invalid format \"%(format)s\" with exception \"%(exception)s\"."
 msgstr ""
 
 #, python-format
+msgctxt "model:ir.message,text:msg_invalid_format_strip"
+msgid "Invalid format \"%(format)s\". Empty address generates \"%(value)s\"."
+msgstr ""
+
+#, python-format
 msgctxt "model:ir.message,text:msg_invalid_phone_number"
 msgid "The phone number \"%(phone)s\" for party \"%(party)s\" is not valid."
 msgstr ""
@@ -726,6 +740,11 @@ msgid "The party \"%(party)s\" has the same %(type)s \"%(code)s\"."
 msgstr ""
 
 #, python-format
+msgctxt "model:ir.message,text:msg_party_identifier_eu_vat_invalid"
+msgid "The VAT numbers \"%(identifiers)s\" are not valid for the VIES service."
+msgstr ""
+
+#, python-format
 msgctxt "model:ir.message,text:msg_party_set_contact_mechanism"
 msgid ""
 "To change the \"%(field)s\" for party \"%(party)s\", you must edit their "
@@ -736,6 +755,11 @@ msgstr ""
 msgctxt "model:ir.message,text:msg_vies_unavailable"
 msgid "The VIES service is unavailable, try again later."
 msgstr "A kiszolgáló nem érhető el, próbálkozzon később"
+
+#, fuzzy
+msgctxt "model:ir.model.button,string:identifier_check_view_button"
+msgid "Check VIES"
+msgstr "Uniós adószám ellenőrzése (VIES)"
 
 msgctxt "model:ir.sequence,name:sequence_party"
 msgid "Party"
@@ -811,10 +835,6 @@ msgctxt "model:party.category,string:"
 msgid "Party Category"
 msgstr "Ügyfél - Ügyfélkategória"
 
-msgctxt "model:party.check_vies.result,string:"
-msgid "Party Check Vies Result"
-msgstr ""
-
 #, fuzzy
 msgctxt "model:party.configuration,string:"
 msgid "Party Configuration"
@@ -873,6 +893,10 @@ msgstr ""
 msgctxt "model:res.group,name:group_party_admin"
 msgid "Party Administration"
 msgstr "Party Administration"
+
+msgctxt "selection:ir.cron,method:"
+msgid "Check European VAT Number with VIES"
+msgstr ""
 
 msgctxt "selection:party.configuration,identifier_types:"
 msgid "Albanian VAT Number"
@@ -1642,6 +1666,14 @@ msgctxt "view:party.address:"
 msgid "General"
 msgstr "Általános"
 
+msgctxt "view:party.identifier:"
+msgid "Valid:"
+msgstr ""
+
+msgctxt "view:party.identifier:"
+msgid "at"
+msgstr ""
+
 msgctxt "view:party.party:"
 msgid "General"
 msgstr "Általános"
@@ -1654,10 +1686,6 @@ msgstr "Ügyfél"
 msgctxt "view:party.replace.ask:"
 msgid "Replaced By"
 msgstr "Cserélje le erre"
-
-msgctxt "wizard_button:party.check_vies,result,end:"
-msgid "OK"
-msgstr "OK"
 
 msgctxt "wizard_button:party.erase,ask,end:"
 msgid "Cancel"

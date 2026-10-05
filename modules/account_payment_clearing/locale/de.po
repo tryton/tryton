@@ -8,7 +8,7 @@ msgstr "Konto"
 
 msgctxt "field:account.payment,clearing_move:"
 msgid "Clearing Move"
-msgstr "Abstimmungsbuchungssatz"
+msgstr "Ausgleichsbuchungssatz"
 
 msgctxt "field:account.payment,clearing_reconciled:"
 msgid "Clearing Reconciled"

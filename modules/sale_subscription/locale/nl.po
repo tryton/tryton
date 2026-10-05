@@ -90,6 +90,11 @@ msgctxt "field:sale.subscription,state:"
 msgid "State"
 msgstr "Status"
 
+#, fuzzy
+msgctxt "field:sale.subscription.create_invoice.start,companies:"
+msgid "Companies"
+msgstr "Bedrijf"
+
 msgctxt "field:sale.subscription.create_invoice.start,date:"
 msgid "Date"
 msgstr "datum"
@@ -193,6 +198,11 @@ msgstr "Hoeveelheid"
 msgctxt "field:sale.subscription.line.consumption,unit:"
 msgid "Unit"
 msgstr "Eenheid"
+
+#, fuzzy
+msgctxt "field:sale.subscription.line.consumption.create.start,companies:"
+msgid "Companies"
+msgstr "Bedrijf"
 
 msgctxt "field:sale.subscription.line.consumption.create.start,date:"
 msgid "Date"
@@ -302,9 +312,19 @@ msgctxt "help:sale.subscription,state:"
 msgid "The current state of the subscription."
 msgstr "De huidige status van het abonnement."
 
+#, fuzzy
+msgctxt "help:sale.subscription.create_invoice.start,companies:"
+msgid "Limit to subscription lines from these companies."
+msgstr "Maak het abonnement eigendom van het bedrijf."
+
 msgctxt "help:sale.subscription.line,subscription:"
 msgid "Add the line below the subscription."
 msgstr "Voeg de onderstaande regel toeaan het abonnement."
+
+#, fuzzy
+msgctxt "help:sale.subscription.line.consumption.create.start,companies:"
+msgid "Limit to subscription lines from these companies."
+msgstr "Maak het abonnement eigendom van het bedrijf."
 
 msgctxt "help:sale.subscription.recurrence.rule,bymonth:"
 msgid "A comma separated list of integers."

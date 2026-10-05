@@ -8,17 +8,15 @@ msgstr "Kontaktid"
 
 msgctxt "field:party.address,attn:"
 msgid "Attn"
-msgstr ""
+msgstr "Lp."
 
-#, fuzzy
 msgctxt "field:party.address,building_name:"
 msgid "Building Name"
-msgstr "Hoone"
+msgstr "Hoone nimetus"
 
-#, fuzzy
 msgctxt "field:party.address,building_number:"
 msgid "Building Number"
-msgstr "Hoone"
+msgstr "Hoone number"
 
 msgctxt "field:party.address,city:"
 msgid "City"
@@ -32,10 +30,9 @@ msgctxt "field:party.address,country:"
 msgid "Country"
 msgstr "Riik"
 
-#, fuzzy
 msgctxt "field:party.address,floor_number:"
 msgid "Floor Number"
-msgstr "Slovakkia sünni number"
+msgstr "Korrus"
 
 msgctxt "field:party.address,full_address:"
 msgid "Full Address"
@@ -54,10 +51,9 @@ msgctxt "field:party.address,party_name:"
 msgid "Party Name"
 msgstr "Partneri nimi"
 
-#, fuzzy
 msgctxt "field:party.address,post_box:"
 msgid "Post Box"
-msgstr "Sihtnumber"
+msgstr "Postkasti number"
 
 msgctxt "field:party.address,post_office:"
 msgid "Post Office"
@@ -80,10 +76,9 @@ msgctxt "field:party.address,street:"
 msgid "Street"
 msgstr "Tänav"
 
-#, fuzzy
 msgctxt "field:party.address,street_name:"
 msgid "Street Name"
-msgstr "Tänav"
+msgstr "Tänav nimi"
 
 msgctxt "field:party.address,street_single_line:"
 msgid "Street"
@@ -119,7 +114,7 @@ msgstr "Riigi kood"
 
 msgctxt "field:party.address.format,floor_number_format:"
 msgid "Floor Number Format"
-msgstr ""
+msgstr "Korruse numbri formaat"
 
 msgctxt "field:party.address.format,format_:"
 msgid "Format"
@@ -174,13 +169,10 @@ msgctxt "field:party.category,parent:"
 msgid "Parent"
 msgstr "Ülem"
 
-msgctxt "field:party.check_vies.result,parties_failed:"
-msgid "Parties Failed"
-msgstr "Ebaõnnestunud osapooled"
-
-msgctxt "field:party.check_vies.result,parties_succeed:"
-msgid "Parties Succeed"
-msgstr "Õnnestunud osapooled"
+#, fuzzy
+msgctxt "field:party.configuration,identifier_eu_vat_validation_period:"
+msgid "European VAT Number Validation Period"
+msgstr "Euroopa KMKR"
 
 #, fuzzy
 msgctxt "field:party.configuration,identifier_types:"
@@ -286,6 +278,16 @@ msgstr "Kood"
 msgctxt "field:party.identifier,code_compact:"
 msgid "Code Compact"
 msgstr ""
+
+#, fuzzy
+msgctxt "field:party.identifier,eu_vat_valid:"
+msgid "European VAT Number Valid"
+msgstr "Euroopa KMKR"
+
+#, fuzzy
+msgctxt "field:party.identifier,eu_vat_validated_at:"
+msgid "European VAT Number Validated At"
+msgstr "Euroopa KMKR"
 
 msgctxt "field:party.identifier,party:"
 msgid "Party"
@@ -479,6 +481,10 @@ msgctxt "help:party.category,parent:"
 msgid "Add the category below the parent."
 msgstr "Lisa kategooria ülemjaotuse alla"
 
+msgctxt "help:party.configuration,identifier_eu_vat_validation_period:"
+msgid "The period during which the number is still considered valid."
+msgstr ""
+
 msgctxt "help:party.configuration,identifier_types:"
 msgid ""
 "Defines which identifier types are available.\n"
@@ -514,6 +520,10 @@ msgstr "Kustutatav partner."
 msgctxt "help:party.identifier,address:"
 msgid "The address identified by this record."
 msgstr "Kirje poolt identifitseeritud aadress."
+
+msgctxt "help:party.identifier,eu_vat_valid:"
+msgid "Checked if the number has been validated on VIES service."
+msgstr ""
 
 msgctxt "help:party.identifier,party:"
 msgid "The party identified by this record."
@@ -601,10 +611,6 @@ msgctxt "model:ir.action,name:report_label"
 msgid "Labels"
 msgstr "Etiketid"
 
-msgctxt "model:ir.action,name:wizard_check_vies"
-msgid "Check VIES"
-msgstr "Kontrolli VIES"
-
 msgctxt "model:ir.action,name:wizard_erase"
 msgid "Erase"
 msgstr "Kustuta"
@@ -671,6 +677,11 @@ msgid "Invalid format \"%(format)s\" with exception \"%(exception)s\"."
 msgstr ""
 
 #, python-format
+msgctxt "model:ir.message,text:msg_invalid_format_strip"
+msgid "Invalid format \"%(format)s\". Empty address generates \"%(value)s\"."
+msgstr ""
+
+#, python-format
 msgctxt "model:ir.message,text:msg_invalid_phone_number"
 msgid "The phone number \"%(phone)s\" for party \"%(party)s\" is not valid."
 msgstr ""
@@ -690,6 +701,11 @@ msgid "The party \"%(party)s\" has the same %(type)s \"%(code)s\"."
 msgstr ""
 
 #, python-format
+msgctxt "model:ir.message,text:msg_party_identifier_eu_vat_invalid"
+msgid "The VAT numbers \"%(identifiers)s\" are not valid for the VIES service."
+msgstr ""
+
+#, python-format
 msgctxt "model:ir.message,text:msg_party_set_contact_mechanism"
 msgid ""
 "To change the \"%(field)s\" for party \"%(party)s\", you must edit their "
@@ -699,6 +715,11 @@ msgstr ""
 msgctxt "model:ir.message,text:msg_vies_unavailable"
 msgid "The VIES service is unavailable, try again later."
 msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.model.button,string:identifier_check_view_button"
+msgid "Check VIES"
+msgstr "Kontrolli VIES"
 
 msgctxt "model:ir.sequence,name:sequence_party"
 msgid "Party"
@@ -775,10 +796,6 @@ msgctxt "model:party.category,string:"
 msgid "Party Category"
 msgstr "Partner - Kategooria"
 
-msgctxt "model:party.check_vies.result,string:"
-msgid "Party Check Vies Result"
-msgstr ""
-
 #, fuzzy
 msgctxt "model:party.configuration,string:"
 msgid "Party Configuration"
@@ -836,6 +853,11 @@ msgstr ""
 msgctxt "model:res.group,name:group_party_admin"
 msgid "Party Administration"
 msgstr "Partneri administreerimine"
+
+#, fuzzy
+msgctxt "selection:ir.cron,method:"
+msgid "Check European VAT Number with VIES"
+msgstr "Euroopa KMKR"
 
 #, fuzzy
 msgctxt "selection:party.configuration,identifier_types:"
@@ -1734,6 +1756,14 @@ msgctxt "view:party.address:"
 msgid "General"
 msgstr "Üldine"
 
+msgctxt "view:party.identifier:"
+msgid "Valid:"
+msgstr ""
+
+msgctxt "view:party.identifier:"
+msgid "at"
+msgstr ""
+
 msgctxt "view:party.party:"
 msgid "General"
 msgstr "Üldine"
@@ -1746,10 +1776,6 @@ msgstr "Partner"
 msgctxt "view:party.replace.ask:"
 msgid "Replaced By"
 msgstr "Asendatud"
-
-msgctxt "wizard_button:party.check_vies,result,end:"
-msgid "OK"
-msgstr "OK"
 
 msgctxt "wizard_button:party.erase,ask,end:"
 msgid "Cancel"

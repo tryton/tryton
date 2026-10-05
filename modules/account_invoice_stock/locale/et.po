@@ -4,15 +4,15 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:account.invoice,shipments:"
 msgid "Shipments"
-msgstr ""
+msgstr "Lähetused"
 
 msgctxt "field:account.invoice.line,correction:"
 msgid "Correction"
-msgstr ""
+msgstr "Parandus"
 
 msgctxt "field:account.invoice.line,shipments:"
 msgid "Shipments"
-msgstr ""
+msgstr "Lähetused"
 
 msgctxt "field:account.invoice.line,stock_moves:"
 msgid "Stock Moves"
@@ -20,30 +20,28 @@ msgstr "Laoliikumised"
 
 msgctxt "field:account.invoice.line,warehouse:"
 msgid "Warehouse"
-msgstr ""
+msgstr "Ladu"
 
 msgctxt "field:account.invoice.line-stock.move,invoice_line:"
 msgid "Invoice Line"
-msgstr "Arve reas"
+msgstr "Arve rida"
 
 msgctxt "field:account.invoice.line-stock.move,stock_move:"
 msgid "Stock Move"
-msgstr "Lao liikumised"
+msgstr "Laoliikumised"
 
 msgctxt "field:stock.move,invoice_lines:"
 msgid "Invoice Lines"
 msgstr "Arve read"
 
-#, fuzzy
 msgctxt "field:stock.move,invoice_types:"
 msgid "Invoice Types"
-msgstr "Arve read"
+msgstr "Arve tüübid"
 
 msgctxt "help:account.invoice.line,correction:"
 msgid "Check to correct price of already posted invoice."
 msgstr ""
 
-#, fuzzy
 msgctxt "model:account.invoice.line-stock.move,string:"
 msgid "Account Invoice Line - Stock Move"
 msgstr "Arve rida - lao liikumine"

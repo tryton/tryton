@@ -58,6 +58,10 @@ msgctxt "field:edocument.peppol.service,company:"
 msgid "Company"
 msgstr "Bedrijf"
 
+msgctxt "field:edocument.peppol.service,process_after:"
+msgid "Process Document after"
+msgstr ""
+
 msgctxt "field:edocument.peppol.service,service:"
 msgid "Service"
 msgstr "Service"
@@ -85,6 +89,12 @@ msgstr "Relatie"
 msgctxt "field:party.party.peppol,peppol_types:"
 msgid "Peppol Types"
 msgstr "Peppol soorten"
+
+msgctxt "help:edocument.peppol.service,process_after:"
+msgid ""
+"The time taken to process a document after it has been submitted.\n"
+"Applied if a worker queue is activated."
+msgstr ""
 
 msgctxt "help:edocument.peppol.service,types:"
 msgid "The types of document supported by the service provider."

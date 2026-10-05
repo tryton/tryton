@@ -540,10 +540,6 @@ msgctxt "model:ir.action,name:act_category_list"
 msgid "Categories"
 msgstr "Categorías"
 
-msgctxt "model:ir.action,name:act_category_product"
-msgid "Add products"
-msgstr "Añadir productos"
-
 msgctxt "model:ir.action,name:act_category_tree"
 msgid "Categories"
 msgstr "Árbol de categorías"
@@ -635,10 +631,6 @@ msgstr "No se puede modificar el ratio de la unidad de medida \"%(uom)s\"."
 msgctxt "model:ir.message,text:msg_uom_no_zero_factor_rate"
 msgid "Rate and factor can not be both equal to zero."
 msgstr "El ratio i el factor no pueden ser a la vez zero."
-
-msgctxt "model:ir.model.button,string:category_add_products_button"
-msgid "Add products"
-msgstr "Añadir productos"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_category"
 msgid "Category"

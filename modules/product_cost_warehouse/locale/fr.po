@@ -6,6 +6,10 @@ msgctxt "field:company.company,cost_price_warehouse:"
 msgid "Cost Price per Warehouse"
 msgstr "Prix de revient par entrepôt"
 
+msgctxt "field:ir.cron,warehouse_needed:"
+msgid "Warehouse Needed"
+msgstr "Entrepôt requis"
+
 msgctxt "field:ir.cron,warehouses:"
 msgid "Warehouses"
 msgstr "Entrepôts"

@@ -6,6 +6,10 @@ msgctxt "field:account.tax.rule.line,from_country:"
 msgid "From Country"
 msgstr "Din Ţara"
 
+msgctxt "field:account.tax.rule.line,from_organization:"
+msgid "From Organization"
+msgstr ""
+
 msgctxt "field:account.tax.rule.line,from_subdivision:"
 msgid "From Subdivision"
 msgstr "Din Subdiviziune"
@@ -13,6 +17,10 @@ msgstr "Din Subdiviziune"
 msgctxt "field:account.tax.rule.line,to_country:"
 msgid "To Country"
 msgstr "În țară"
+
+msgctxt "field:account.tax.rule.line,to_organization:"
+msgid "To Organization"
+msgstr ""
 
 msgctxt "field:account.tax.rule.line,to_subdivision:"
 msgid "To Subdivision"
@@ -22,6 +30,10 @@ msgctxt "field:account.tax.rule.line.template,from_country:"
 msgid "From Country"
 msgstr "Din Ţara"
 
+msgctxt "field:account.tax.rule.line.template,from_organization:"
+msgid "From Organization"
+msgstr ""
+
 msgctxt "field:account.tax.rule.line.template,from_subdivision:"
 msgid "From Subdivision"
 msgstr "Din Subdiviziune"
@@ -30,38 +42,70 @@ msgctxt "field:account.tax.rule.line.template,to_country:"
 msgid "To Country"
 msgstr "În țară"
 
+msgctxt "field:account.tax.rule.line.template,to_organization:"
+msgid "To Organization"
+msgstr ""
+
 msgctxt "field:account.tax.rule.line.template,to_subdivision:"
 msgid "To Subdivision"
 msgstr "În Subdiviziune"
 
+#, fuzzy
 msgctxt "help:account.tax.rule.line,from_country:"
-msgid "Apply only to addresses of this country."
+msgid "Apply only to the addresses from this country."
 msgstr "Se aplica numai la adrese al acestei ţari."
 
+#, fuzzy
+msgctxt "help:account.tax.rule.line,from_organization:"
+msgid "Apply only to the addresses from this organization."
+msgstr "Se aplica numai la adrese al acestei ţari."
+
+#, fuzzy
 msgctxt "help:account.tax.rule.line,from_subdivision:"
-msgid "Apply only to addresses in this subdivision."
+msgid "Apply only to the addresses from this subdivision."
 msgstr "Se aplica numai la adrese în aceasta subdiviziune."
 
+#, fuzzy
 msgctxt "help:account.tax.rule.line,to_country:"
-msgid "Apply only to addresses of this country."
+msgid "Apply only to the addresses to this country."
 msgstr "Se aplica numai la adrese al acestei ţari."
 
+#, fuzzy
+msgctxt "help:account.tax.rule.line,to_organization:"
+msgid "Apply only to the addresses of this organization."
+msgstr "Se aplica numai la adrese al acestei ţari."
+
+#, fuzzy
 msgctxt "help:account.tax.rule.line,to_subdivision:"
-msgid "Apply only to addresses in this subdivision."
+msgid "Apply only to the addresses to this subdivision."
 msgstr "Se aplica numai la adrese în aceasta subdiviziune."
 
+#, fuzzy
 msgctxt "help:account.tax.rule.line.template,from_country:"
-msgid "Apply only to addresses of this country."
+msgid "Apply only to the addresses from this country."
 msgstr "Se aplica numai la adrese al acestei ţari."
 
+#, fuzzy
+msgctxt "help:account.tax.rule.line.template,from_organization:"
+msgid "Apply only to the addresses from this organization."
+msgstr "Se aplica numai la adrese al acestei ţari."
+
+#, fuzzy
 msgctxt "help:account.tax.rule.line.template,from_subdivision:"
-msgid "Apply only to addresses in this subdivision."
+msgid "Apply only to the addresses from this subdivision."
 msgstr "Se aplica numai la adrese în aceasta subdiviziune."
 
+#, fuzzy
 msgctxt "help:account.tax.rule.line.template,to_country:"
-msgid "Apply only to addresses of this country."
+msgid "Apply only to the addresses to this country."
 msgstr "Se aplica numai la adrese al acestei ţari."
 
+#, fuzzy
+msgctxt "help:account.tax.rule.line.template,to_organization:"
+msgid "Apply only to the addresses of this organization."
+msgstr "Se aplica numai la adrese al acestei ţari."
+
+#, fuzzy
 msgctxt "help:account.tax.rule.line.template,to_subdivision:"
-msgid "Apply only to addresses in this subdivision."
+msgid "Apply only to the addresses to this subdivision."
 msgstr "Se aplica numai la adrese în aceasta subdiviziune."

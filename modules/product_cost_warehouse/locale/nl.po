@@ -6,6 +6,11 @@ msgctxt "field:company.company,cost_price_warehouse:"
 msgid "Cost Price per Warehouse"
 msgstr "Kostprijs per magazijn"
 
+#, fuzzy
+msgctxt "field:ir.cron,warehouse_needed:"
+msgid "Warehouse Needed"
+msgstr "Magazijn vereist"
+
 msgctxt "field:ir.cron,warehouses:"
 msgid "Warehouses"
 msgstr "Magazijnen"

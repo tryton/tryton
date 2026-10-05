@@ -21,3 +21,12 @@ msgstr "Partes de trabajo"
 msgctxt "field:production.work,timesheet_works:"
 msgid "Timesheet Works"
 msgstr "Partes de trabajo"
+
+msgctxt "field:production.work.center,include_timesheet_cost:"
+msgid "Include Timesheet Cost"
+msgstr "Incluir cost de los partes de trabajo"
+
+msgctxt "help:production.work.center,include_timesheet_cost:"
+msgid "Check to add the timesheet cost to the work cost."
+msgstr ""
+"Marcar para añadir el coste de los partes de trabajo al coste del trabajo."

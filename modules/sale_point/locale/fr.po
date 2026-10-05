@@ -639,7 +639,7 @@ msgstr "Mode de paiement au point de vente"
 
 msgctxt "model:sale.point.sale,string:"
 msgid "Sale Point Sale"
-msgstr "Point de vente"
+msgstr "Vente en point de vente"
 
 msgctxt "model:sale.point.sale.line,string:"
 msgid "Sale Point Sale Line"

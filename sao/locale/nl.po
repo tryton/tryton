@@ -128,6 +128,9 @@ msgstr "Gebruikersnaam"
 msgid "Login with"
 msgstr "Inloggen met"
 
+msgid "Disabled on localhost"
+msgstr ""
+
 msgid "Too many requests. Try again later."
 msgstr "Te veel verzoeken. Probeer het later nog eens."
 
@@ -306,14 +309,26 @@ msgstr "Record opslaan"
 msgid "Reload"
 msgstr "Herladen"
 
+#, fuzzy
+msgid "Delete..."
+msgstr "Verwijderen"
+
 msgid "View Logs..."
 msgstr "Bekijk Logboek..."
 
 msgid "Show revisions..."
 msgstr "Revisies weergeven ..."
 
+#, fuzzy
+msgid "Attachments..."
+msgstr "Bijlagen"
+
 msgid "Add an attachment to the record"
 msgstr "Voeg een bijlage toe aan het record"
+
+#, fuzzy
+msgid "Notes..."
+msgstr "Aantekening"
 
 msgid "Add a note to the record"
 msgstr "Voeg een notitie toe aan het record"
@@ -324,16 +339,30 @@ msgstr "Chat"
 msgid "Chat on the record"
 msgstr "Chat op de record"
 
+#, fuzzy
+msgid "Actions..."
+msgstr "Actie"
+
+#, fuzzy
+msgid "Relate..."
+msgstr "Gerelateerd"
+
+#, fuzzy
+msgid "Print..."
+msgstr "Afdrukken"
+
 msgid "Email..."
 msgstr "Email..."
 
 msgid "Send an email using the record"
 msgstr "Stuur een email met behulp van het record"
 
-msgid "Export"
+#, fuzzy
+msgid "Export..."
 msgstr "Exporteren"
 
-msgid "Import"
+#, fuzzy
+msgid "Import..."
 msgstr "Importeer"
 
 msgid ""
@@ -365,11 +394,11 @@ msgstr "Record opgeslagen."
 msgid "Working now on the duplicated record(s)."
 msgstr "Aan het werk op het(de) gekopieerde record(s)."
 
-msgid "Are you sure to remove this record?"
-msgstr "Weet u zeker dat u dit record wilt verwijderen?"
-
-msgid "Are you sure to remove those records?"
-msgstr "Weet u zeker dat u deze records wilt verwijderen?"
+#, fuzzy
+msgid "Are you sure you want to delete this record?"
+msgid_plural "Are you sure you want to delete these %1 records?"
+msgstr[0] "Weet u zeker dat u dit record wilt verwijderen?"
+msgstr[1] "Weet u zeker dat u dit record wilt verwijderen?"
 
 msgid "Records removed."
 msgstr "Records verwijderd."
@@ -392,11 +421,17 @@ msgstr "Beheren..."
 msgid "Template"
 msgstr "Sjabloon"
 
+#, fuzzy
 msgid "Attachment (%1)"
-msgstr "Bijlage (%1)"
+msgid_plural "Attachments (%1)"
+msgstr[0] "Bijlage (%1)"
+msgstr[1] "Bijlage (%1)"
 
+#, fuzzy
 msgid "Note (%1/%2)"
-msgstr "Opmerking (%1/%2)"
+msgid_plural "Notes (%1/%2)"
+msgstr[0] "Opmerking (%1/%2)"
+msgstr[1] "Opmerking (%1/%2)"
 
 msgid "Filters"
 msgstr "filters"
@@ -510,6 +545,17 @@ msgid "Open"
 msgstr "Openen"
 
 msgid "Undelete"
+msgstr "wissen ongedaan maken"
+
+#, javascript-format
+msgid "%s to add"
+msgstr ""
+
+msgid "%1 to remove"
+msgstr ""
+
+#, fuzzy
+msgid "%1 to delete"
 msgstr "wissen ongedaan maken"
 
 msgid "Restore"
@@ -653,6 +699,9 @@ msgstr "aanhalingstekens :"
 
 msgid "CSV Import: %1"
 msgstr "CSV-Import: %1"
+
+msgid "Import"
+msgstr "Importeer"
 
 msgid "Auto-Detect"
 msgstr "Automatische detectie"

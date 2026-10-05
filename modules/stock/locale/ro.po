@@ -122,9 +122,27 @@ msgctxt "field:res.user,warehouse:"
 msgid "Current Warehouse"
 msgstr "Depozit Curent"
 
+#, fuzzy
+msgctxt "field:stock.configuration,inventory_cost_thresold:"
+msgid "Inventory Cost Thresold"
+msgstr "Mișcări Inventar"
+
+#, fuzzy
+msgctxt "field:stock.configuration,inventory_quantity_tolerance:"
+msgid "Inventory Quantity Tolerance"
+msgstr "Secvenţa Inventar"
+
 msgctxt "field:stock.configuration,inventory_sequence:"
 msgid "Inventory Sequence"
 msgstr "Secvenţa Inventar"
+
+msgctxt "field:stock.configuration,period_closing_delay:"
+msgid "Period Closing Delay"
+msgstr ""
+
+msgctxt "field:stock.configuration,period_creation_interval:"
+msgid "Period Creation Interval"
+msgstr ""
 
 msgctxt "field:stock.configuration,shipment_in_return_sequence:"
 msgid "Supplier Return Shipment Sequence"
@@ -150,9 +168,32 @@ msgctxt "field:stock.configuration,shipment_out_sequence:"
 msgid "Customer Shipment Sequence"
 msgstr "Secvența Transport Client"
 
+#, fuzzy
+msgctxt "field:stock.configuration.inventory,inventory_cost_thresold:"
+msgid "Inventory Cost Thresold"
+msgstr "Mișcări Inventar"
+
+#, fuzzy
+msgctxt "field:stock.configuration.inventory,inventory_quantity_tolerance:"
+msgid "Inventory Quantity Tolerance"
+msgstr "Secvenţa Inventar"
+
 msgctxt "field:stock.configuration.location,shipment_internal_transit:"
 msgid "Internal Shipment Transit"
 msgstr "Transport Intern Tranzit"
+
+#, fuzzy
+msgctxt "field:stock.configuration.period,company:"
+msgid "Company"
+msgstr "Societate"
+
+msgctxt "field:stock.configuration.period,period_closing_delay:"
+msgid "Period Closing Delay"
+msgstr ""
+
+msgctxt "field:stock.configuration.period,period_creation_interval:"
+msgid "Period Creation Interval"
+msgstr ""
 
 msgctxt "field:stock.configuration.sequence,company:"
 msgid "Company"
@@ -234,6 +275,11 @@ msgctxt "field:stock.inventory.count.search,search:"
 msgid "Search"
 msgstr "Căutare"
 
+#, fuzzy
+msgctxt "field:stock.inventory.line,cost_variation:"
+msgid "Cost Variation"
+msgstr "Revizuire a Preţului de Cost"
+
 msgctxt "field:stock.inventory.line,expected_quantity:"
 msgid "Expected Quantity"
 msgstr "Cantitate Așteptată"
@@ -265,6 +311,20 @@ msgstr "Produs"
 msgctxt "field:stock.inventory.line,quantity:"
 msgid "Actual Quantity"
 msgstr "Cantitate Reala"
+
+#, fuzzy
+msgctxt "field:stock.inventory.line,quantity_variation:"
+msgid "Quantity Variation"
+msgstr "Cantitate UM"
+
+msgctxt "field:stock.inventory.line,tolerance_cost_variation:"
+msgid "Tolerance Cost Variation"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:stock.inventory.line,tolerance_quantity_variation:"
+msgid "Tolerance Quantity Variation"
+msgstr "Cantitate Cumulată Început"
 
 msgctxt "field:stock.inventory.line,unit:"
 msgid "Unit"
@@ -345,10 +405,6 @@ msgstr "Depozitare"
 msgctxt "field:stock.location,type:"
 msgid "Type"
 msgstr "Tip"
-
-msgctxt "field:stock.location,warehouse:"
-msgid "Warehouse"
-msgstr "Depozit"
 
 msgctxt "field:stock.location,waste_locations:"
 msgid "Waste Locations"
@@ -1404,9 +1460,26 @@ msgctxt "help:res.user,warehouse:"
 msgid "The warehouse that the user works at."
 msgstr "Depozitul la care lucrează utilizatorul."
 
+#, fuzzy
+msgctxt "help:stock.configuration,inventory_cost_thresold:"
+msgid "The inventory cost thresold accepted in company currency."
+msgstr "Preţul unitar în valuta companiei."
+
+msgctxt "help:stock.configuration,inventory_quantity_tolerance:"
+msgid "The inventory quantity variation accepted in percentage."
+msgstr ""
+
 msgctxt "help:stock.configuration,inventory_sequence:"
 msgid "Used to generate the number given to inventories."
 msgstr "Utilizat pentru a genera numărul dat la inventare."
+
+msgctxt "help:stock.configuration,period_closing_delay:"
+msgid "Leave it empty to prevent periods from being closed automatically."
+msgstr ""
+
+msgctxt "help:stock.configuration,period_creation_interval:"
+msgid "Leave it empty to prevent periods from being created automatically."
+msgstr ""
 
 msgctxt "help:stock.configuration,shipment_in_return_sequence:"
 msgid "Used to generate the number given to supplier return shipments."
@@ -1435,6 +1508,15 @@ msgstr ""
 msgctxt "help:stock.configuration,shipment_out_sequence:"
 msgid "Used to generate the number given to customer shipments."
 msgstr "Utilizat pentru a genera numărul dat la expedieri către client."
+
+#, fuzzy
+msgctxt "help:stock.configuration.inventory,inventory_cost_thresold:"
+msgid "The inventory cost thresold accepted in company currency."
+msgstr "Preţul unitar în valuta companiei."
+
+msgctxt "help:stock.configuration.inventory,inventory_quantity_tolerance:"
+msgid "The inventory quantity variation accepted in percentage."
+msgstr ""
 
 msgctxt "help:stock.configuration.location,shipment_internal_transit:"
 msgid ""
@@ -1493,6 +1575,10 @@ msgstr "Inventarul de care aparţine rândul."
 msgctxt "help:stock.inventory.line,quantity:"
 msgid "The actual quantity found in the location."
 msgstr "Cantitatea faptică găsită în locaţie."
+
+msgctxt "help:stock.inventory.line,quantity_variation:"
+msgid "The difference between expected quantity and actual quantity."
+msgstr ""
 
 msgctxt "help:stock.inventory.line,unit:"
 msgid "The unit in which the quantity is specified."
@@ -2356,6 +2442,14 @@ msgstr ""
 "Pentru a confirma inventarul \"%(inventory)s\" este necesară o selecție "
 "pentru cantitate zero."
 
+#, fuzzy, python-format
+msgctxt "model:ir.message,text:msg_inventory_over_tolerance"
+msgid "The inventory line \"%(lines)s\" is outside the tolerance range."
+msgid_plural "The inventory lines \"%(lines)s\" are outside the tolerance range."
+msgstr[0] "Inventarele \"%(inventories)s\" au data în viitor."
+msgstr[1] "Inventarele \"%(inventories)s\" au data în viitor."
+msgstr[2] "Inventarele \"%(inventories)s\" au data în viitor."
+
 #, python-format
 msgctxt "model:ir.message,text:msg_location_inactive_not_empty"
 msgid "To inactivate location \"%(location)s\", you must empty it."
@@ -3058,9 +3152,19 @@ msgid "Stock Configuration"
 msgstr "Configurare Stoc"
 
 #, fuzzy
+msgctxt "model:stock.configuration.inventory,string:"
+msgid "Stock Configuration Inventory"
+msgstr "Configurare Stoc"
+
+#, fuzzy
 msgctxt "model:stock.configuration.location,string:"
 msgid "Stock Configuration Location"
 msgstr "Locația de configurare a stocului"
+
+#, fuzzy
+msgctxt "model:stock.configuration.period,string:"
+msgid "Stock Configuration Period"
+msgstr "Configurare Stoc"
 
 #, fuzzy
 msgctxt "model:stock.configuration.sequence,string:"
@@ -3532,6 +3636,16 @@ msgctxt "selection:ir.cron,method:"
 msgid "Assign Shipments"
 msgstr "Atribuire Expediere"
 
+#, fuzzy
+msgctxt "selection:ir.cron,method:"
+msgid "Close Stock Periods"
+msgstr "Perioada Stoc"
+
+#, fuzzy
+msgctxt "selection:ir.cron,method:"
+msgid "Create Stock Periods"
+msgstr "Perioada Stoc"
+
 msgctxt "selection:ir.cron,method:"
 msgid "Recompute Cost Price from Moves"
 msgstr "Recalculați prețul din Mutări"
@@ -3849,6 +3963,16 @@ msgctxt "view:res.user:"
 msgid "The warehouse that you work at."
 msgstr "Depozitul la care lucrezi."
 
+#, fuzzy
+msgctxt "view:stock.configuration:"
+msgid "%"
+msgstr "%"
+
+#, fuzzy
+msgctxt "view:stock.configuration:"
+msgid "Cost Thresold"
+msgstr "Cost"
+
 msgctxt "view:stock.configuration:"
 msgid "Customer Return Sequence"
 msgstr "Secvența Retur Transport Client"
@@ -3869,6 +3993,16 @@ msgctxt "view:stock.configuration:"
 msgid "Inventory"
 msgstr "Inventar"
 
+#, fuzzy
+msgctxt "view:stock.configuration:"
+msgid "Period"
+msgstr "Perioadă"
+
+#, fuzzy
+msgctxt "view:stock.configuration:"
+msgid "Quantity Tolerance"
+msgstr "Cantitate UM"
+
 msgctxt "view:stock.configuration:"
 msgid "Sequence"
 msgstr "Secvenţă"
@@ -3884,10 +4018,6 @@ msgstr "Secvența Retur Furnizor"
 msgctxt "view:stock.configuration:"
 msgid "Supplier Sequence"
 msgstr "Secvența Furnizor"
-
-msgctxt "view:stock.move:"
-msgid "Cost"
-msgstr "Cost"
 
 msgctxt "view:stock.move:"
 msgid "Move"

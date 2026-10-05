@@ -6,6 +6,62 @@ msgctxt "model:edocument.uncefact.invoice,string:"
 msgid "Edocument Uncefact Invoice"
 msgstr "Factura digital UN/CEFACT"
 
+#, python-format
+msgctxt "model:ir.message,text:msg_bank_account_not_found"
+msgid "Could not find bank account \"%(account)s\" for party \"%(parties)s\"."
+msgid_plural ""
+"Could not find bank account \"%(account)s\" for any of the parties "
+"\"%(parties)s\"."
+msgstr[0] ""
+"No s'ha pogut trobar el compte bancari \"%(account)s per al tercer "
+"\"%(parties)s\"."
+msgstr[1] ""
+"No s'ha pogut trobar el compte bancari \"%(account)s per cap dels tercers "
+"\"%(parties)s\"."
+
+#, python-format
+msgctxt "model:ir.message,text:msg_company_not_found"
+msgid ""
+"Could not find the company for:\n"
+"%(company)s"
+msgstr ""
+"No s'ha pogut trobar una empresa per:\n"
+"%(company)s"
+
+#, python-format
+msgctxt "model:ir.message,text:msg_currency_not_found"
+msgid "Could not find a currency with code \"%(code)s\"."
+msgstr "No s'ha pogut trobar una moneda amb codi: \"%(code)s\"."
+
+#, python-format
+msgctxt "model:ir.message,text:msg_invoice_type_code_unsupported"
+msgid "Unsupported invoice type code \"%(type_code)s\"."
+msgstr "Tipus de codi de factura no suportat: \"%(type_code)s\"."
+
+#, python-format
+msgctxt "model:ir.message,text:msg_tax_not_found"
+msgid ""
+"Could not find tax for:\n"
+"%(tax_category)s"
+msgstr ""
+"No s'ha trobat un imopst per:\n"
+"%(tax_category)s"
+
+#, python-format
+msgctxt "model:ir.message,text:msg_unit_not_found"
+msgid ""
+"Could not find a unit with UNECE code \"%(code)s\" and at least %(digits)s "
+"digit."
+msgid_plural ""
+"Could not find a unit with UNECE code \"%(code)s\" and at least %(digits)s "
+"digits."
+msgstr[0] ""
+"No s'ha trobat una unitat amb codi UNECE \"%(code)s\" i com a mínim "
+"%(digits)s dígit."
+msgstr[1] ""
+"No s'ha trobat una unitat amb codi UNECE \"%(code)s\" i com a mínim "
+"%(digits)s dígits."
+
 msgctxt "selection:account.invoice.edocument.start,format:"
 msgid "UN/CEFACT"
 msgstr "UN/CEFACT"

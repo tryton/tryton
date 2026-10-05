@@ -1,0 +1,236 @@
+#
+#, fuzzy
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.product,conversion_rules:"
+msgid "Conversion Rules"
+msgstr "Règles de conversion"
+
+msgctxt "field:product.product,reverse_conversion_rules:"
+msgid "Reverse Conversion Rules"
+msgstr "Règles de conversion inverse"
+
+msgctxt "field:stock.configuration,conversion_sequence:"
+msgid "Conversion Sequence"
+msgstr "Séquence de conversion"
+
+msgctxt "field:stock.configuration.sequence,conversion_sequence:"
+msgid "Conversion Sequence"
+msgstr "Séquence de conversion"
+
+msgctxt "field:stock.conversion,company:"
+msgid "Company"
+msgstr "Société"
+
+msgctxt "field:stock.conversion,conversion_rule:"
+msgid "Conversion Rule"
+msgstr "Règle de conversion"
+
+msgctxt "field:stock.conversion,date:"
+msgid "Date"
+msgstr "Date"
+
+msgctxt "field:stock.conversion,done_by:"
+msgid "Done By"
+msgstr "Effectuée par"
+
+msgctxt "field:stock.conversion,input_product:"
+msgid "Input Product"
+msgstr "Produit d'entrée"
+
+msgctxt "field:stock.conversion,input_quantity:"
+msgid "Input Quantity"
+msgstr "Quantité entrante"
+
+msgctxt "field:stock.conversion,input_unit:"
+msgid "Input Unit"
+msgstr "Unité d'entrée"
+
+msgctxt "field:stock.conversion,location:"
+msgid "Location"
+msgstr "Emplacement"
+
+msgctxt "field:stock.conversion,moves:"
+msgid "Moves"
+msgstr "Mouvements"
+
+msgctxt "field:stock.conversion,number:"
+msgid "Number"
+msgstr "Numéro"
+
+msgctxt "field:stock.conversion,output_product:"
+msgid "Output Product"
+msgstr "Produit de sortie"
+
+msgctxt "field:stock.conversion,output_quantity:"
+msgid "Output Quantity"
+msgstr "Quantité sortante"
+
+msgctxt "field:stock.conversion,output_unit:"
+msgid "Output Unit"
+msgstr "Unité de sortie"
+
+msgctxt "field:stock.conversion,state:"
+msgid "State"
+msgstr "État"
+
+msgctxt "field:stock.conversion,warehouse:"
+msgid "Warehouse"
+msgstr "Entrepôt"
+
+msgctxt "field:stock.conversion.rule,input_product:"
+msgid "Input Product"
+msgstr "Produit d'entrée"
+
+msgctxt "field:stock.conversion.rule,input_quantity:"
+msgid "Input Quantity"
+msgstr "Quantité entrante"
+
+msgctxt "field:stock.conversion.rule,input_unit:"
+msgid "Input Unit"
+msgstr "Unité d'entrée"
+
+msgctxt "field:stock.conversion.rule,output_product:"
+msgid "Output Product"
+msgstr "Produit de sortie"
+
+msgctxt "field:stock.conversion.rule,output_quantity:"
+msgid "Output Quantity"
+msgstr "Quantité sortante"
+
+msgctxt "field:stock.conversion.rule,output_unit:"
+msgid "Output Unit"
+msgstr "Unité de sortie"
+
+msgctxt "field:stock.location,conversion_location:"
+msgid "Conversion"
+msgstr "Conversion"
+
+msgctxt "field:stock.move,conversion_cost_price_updated:"
+msgid "Conversion Cost Price Updated"
+msgstr "Prix de revient de conversion mis à jour"
+
+msgctxt "help:stock.configuration,conversion_sequence:"
+msgid "Used to generate the number given to conversion."
+msgstr "Utilisé pour générer le numéro des conversions."
+
+msgctxt "help:stock.location,conversion_location:"
+msgid "Used to convert goods."
+msgstr "Utilisé pour transformer des biens."
+
+msgctxt "model:ir.action,name:act_conversion_list"
+msgid "Conversions"
+msgstr "Conversions"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_conversion_list_domain_all"
+msgid "All"
+msgstr "Toutes"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_conversion_list_domain_draft"
+msgid "Draft"
+msgstr "Brouillons"
+
+msgctxt "model:ir.message,text:msg_conversion_rule_change_product_quantity"
+msgid ""
+"You cannot change the products nor the quantities of a conversion rule which"
+" is already used in a conversion."
+msgstr ""
+"Vous ne pouvez pas modifier les produits ni les quantités d'une règle de "
+"conversion déjà utilisée dans une conversion."
+
+msgctxt "model:ir.message,text:msg_conversion_rule_input_output_unique"
+msgid "The output of each conversion must be unique for each input."
+msgstr "La sortie de chaque conversion doit être unique pour chaque entrée."
+
+#, python-format
+msgctxt "model:ir.message,text:msg_stock_conversion_missing_qty"
+msgid ""
+"You cannot process conversion \"%(conversion)s\" because location "
+"\"%(location)s\" is missing %(quantity)s of product \"%(product)s\""
+msgstr ""
+"Vous ne pouvez pas effectuer la conversion « %(conversion)s » car "
+"l'emplacement « %(location)s » manque %(quantity)s du produit "
+"« %(product)s »"
+
+msgctxt "model:ir.model.button,confirm:stock_conversion_cancel_button"
+msgid "Are your sur you want to cancel the conversion?"
+msgstr "Êtes-vous sûr de vouloir annuler la conversion ?"
+
+msgctxt "model:ir.model.button,string:stock_conversion_cancel_button"
+msgid "Cancel"
+msgstr "Annuler"
+
+msgctxt "model:ir.model.button,string:stock_conversion_wait_button"
+msgid "Do"
+msgstr "Effectuer"
+
+msgctxt "model:ir.rule.group,name:rule_group_stock_conversion_companies"
+msgid "User in companies"
+msgstr "Utilisateur dans les sociétés"
+
+msgctxt "model:ir.sequence,name:sequence_conversion"
+msgid "Stock Conversion"
+msgstr "Conversion de stock"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_conversion"
+msgid "Stock Conversion"
+msgstr "Conversion de stock"
+
+msgctxt "model:ir.ui.menu,name:menu_conversion_list"
+msgid "Conversions"
+msgstr "Conversions"
+
+msgctxt "model:stock.conversion,string:"
+msgid "Stock Conversion"
+msgstr "Conversion de stock"
+
+msgctxt "model:stock.conversion.rule,string:"
+msgid "Stock Conversion Rule"
+msgstr "Règle de conversion de stock"
+
+msgctxt "model:stock.location,name:stock_location_conversion"
+msgid "Conversion"
+msgstr "Conversion"
+
+msgctxt "selection:ir.cron,method:"
+msgid "Set Cost from Conversion Moves"
+msgstr "Établir les coûts à partir des mouvements de conversion"
+
+msgctxt "selection:stock.conversion,state:"
+msgid "Cancelled"
+msgstr "Annulés"
+
+msgctxt "selection:stock.conversion,state:"
+msgid "Done"
+msgstr "Effectuée"
+
+msgctxt "selection:stock.conversion,state:"
+msgid "Draft"
+msgstr "Brouillon"
+
+msgctxt "view:product.product:"
+msgid "Conversion Rules"
+msgstr "Règles de conversion"
+
+msgctxt "view:stock.configuration:"
+msgid "Conversion"
+msgstr "Conversion"
+
+msgctxt "view:stock.conversion.rule:"
+msgid "Input:"
+msgstr "Entrée :"
+
+msgctxt "view:stock.conversion.rule:"
+msgid "Output:"
+msgstr "Sortie :"
+
+msgctxt "view:stock.conversion:"
+msgid "Conversion"
+msgstr "Conversion"
+
+msgctxt "view:stock.conversion:"
+msgid "Other Info"
+msgstr "Autre information"

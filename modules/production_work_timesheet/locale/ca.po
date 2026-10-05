@@ -21,3 +21,11 @@ msgstr "Full de treball"
 msgctxt "field:production.work,timesheet_works:"
 msgid "Timesheet Works"
 msgstr "Treballs del full"
+
+msgctxt "field:production.work.center,include_timesheet_cost:"
+msgid "Include Timesheet Cost"
+msgstr "Incloure el cost dels fulls de treball"
+
+msgctxt "help:production.work.center,include_timesheet_cost:"
+msgid "Check to add the timesheet cost to the work cost."
+msgstr "Marcar per afegir el cost dels fulls de treball al cost del treball."

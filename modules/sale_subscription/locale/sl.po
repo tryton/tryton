@@ -93,6 +93,11 @@ msgctxt "field:sale.subscription,state:"
 msgid "State"
 msgstr "Stanje"
 
+#, fuzzy
+msgctxt "field:sale.subscription.create_invoice.start,companies:"
+msgid "Companies"
+msgstr "Družba"
+
 msgctxt "field:sale.subscription.create_invoice.start,date:"
 msgid "Date"
 msgstr "Datum"
@@ -200,6 +205,11 @@ msgstr "Količina"
 msgctxt "field:sale.subscription.line.consumption,unit:"
 msgid "Unit"
 msgstr "Enota"
+
+#, fuzzy
+msgctxt "field:sale.subscription.line.consumption.create.start,companies:"
+msgid "Companies"
+msgstr "Družba"
 
 msgctxt "field:sale.subscription.line.consumption.create.start,date:"
 msgid "Date"
@@ -313,9 +323,19 @@ msgctxt "help:sale.subscription,state:"
 msgid "The current state of the subscription."
 msgstr "Stanje naroćnine"
 
+#, fuzzy
+msgctxt "help:sale.subscription.create_invoice.start,companies:"
+msgid "Limit to subscription lines from these companies."
+msgstr "Poveži naročnino z družbo."
+
 msgctxt "help:sale.subscription.line,subscription:"
 msgid "Add the line below the subscription."
 msgstr "Dodajanje postavke naročnini."
+
+#, fuzzy
+msgctxt "help:sale.subscription.line.consumption.create.start,companies:"
+msgid "Limit to subscription lines from these companies."
+msgstr "Poveži naročnino z družbo."
 
 msgctxt "help:sale.subscription.recurrence.rule,bymonth:"
 msgid "A comma separated list of integers."

@@ -154,6 +154,11 @@ msgctxt "field:sale.configuration,sale_shipment_method:"
 msgid "Sale Shipment Method"
 msgstr "Método da expedição da venda"
 
+#, fuzzy
+msgctxt "field:sale.configuration,sale_wait_shipment:"
+msgid "Sale Wait Shipment"
+msgstr "Criar Remessa"
+
 msgctxt "field:sale.configuration.quotation,sale_quotation_validity:"
 msgid "Sale Quotation Validity"
 msgstr "Validade da Cotação de Venda"
@@ -165,6 +170,11 @@ msgstr "Método da Fatura de Venda"
 msgctxt "field:sale.configuration.sale_method,sale_shipment_method:"
 msgid "Sale Shipment Method"
 msgstr "Método da Remessa ao Cliente"
+
+#, fuzzy
+msgctxt "field:sale.configuration.sale_method,sale_wait_shipment:"
+msgid "Sale Wait Shipment"
+msgstr "Criar Remessa"
 
 msgctxt "field:sale.configuration.sequence,company:"
 msgid "Company"
@@ -772,6 +782,14 @@ msgid ""
 msgstr ""
 "O período durante o qual uma venda confirmada pode ser revertida a rascunho.\n"
 "Aplica-se quando uma fila de trabalho é ativada."
+
+msgctxt "help:sale.configuration,sale_wait_shipment:"
+msgid "Create customer shipments in a waiting state"
+msgstr ""
+
+msgctxt "help:sale.configuration.sale_method,sale_wait_shipment:"
+msgid "Create customer shipments in a waiting state"
+msgstr ""
 
 msgctxt "help:sale.handle.invoice.exception.ask,ignore_invoices:"
 msgid "The selected cancelled invoices will be ignored."

@@ -6,6 +6,10 @@ msgctxt "field:account.tax.rule.line,from_country:"
 msgid "From Country"
 msgstr "Ursprungsland"
 
+msgctxt "field:account.tax.rule.line,from_organization:"
+msgid "From Organization"
+msgstr "Von Organisation"
+
 msgctxt "field:account.tax.rule.line,from_subdivision:"
 msgid "From Subdivision"
 msgstr "Ursprungslandsregion"
@@ -13,6 +17,10 @@ msgstr "Ursprungslandsregion"
 msgctxt "field:account.tax.rule.line,to_country:"
 msgid "To Country"
 msgstr "Bestimmungsland"
+
+msgctxt "field:account.tax.rule.line,to_organization:"
+msgid "To Organization"
+msgstr "Zu Organisation"
 
 msgctxt "field:account.tax.rule.line,to_subdivision:"
 msgid "To Subdivision"
@@ -22,6 +30,10 @@ msgctxt "field:account.tax.rule.line.template,from_country:"
 msgid "From Country"
 msgstr "Ursprungsland"
 
+msgctxt "field:account.tax.rule.line.template,from_organization:"
+msgid "From Organization"
+msgstr "Von Organisation"
+
 msgctxt "field:account.tax.rule.line.template,from_subdivision:"
 msgid "From Subdivision"
 msgstr "Urspungslandsregion"
@@ -30,38 +42,58 @@ msgctxt "field:account.tax.rule.line.template,to_country:"
 msgid "To Country"
 msgstr "Bestimmungsland"
 
+msgctxt "field:account.tax.rule.line.template,to_organization:"
+msgid "To Organization"
+msgstr "Zu Organisation"
+
 msgctxt "field:account.tax.rule.line.template,to_subdivision:"
 msgid "To Subdivision"
 msgstr "Bestimmungslandsregion"
 
 msgctxt "help:account.tax.rule.line,from_country:"
-msgid "Apply only to addresses of this country."
+msgid "Apply only to the addresses from this country."
 msgstr "Nur auf Adressen dieses Landes anwenden."
 
+msgctxt "help:account.tax.rule.line,from_organization:"
+msgid "Apply only to the addresses from this organization."
+msgstr "Nur auf Adressen dieser Organisation anwenden."
+
 msgctxt "help:account.tax.rule.line,from_subdivision:"
-msgid "Apply only to addresses in this subdivision."
+msgid "Apply only to the addresses from this subdivision."
 msgstr "Nur auf Adressen dieser Region anwenden."
 
 msgctxt "help:account.tax.rule.line,to_country:"
-msgid "Apply only to addresses of this country."
+msgid "Apply only to the addresses to this country."
 msgstr "Nur auf Adressen dieses Landes anwenden."
 
+msgctxt "help:account.tax.rule.line,to_organization:"
+msgid "Apply only to the addresses of this organization."
+msgstr "Nur auf Adressen dieser Organisation anwenden."
+
 msgctxt "help:account.tax.rule.line,to_subdivision:"
-msgid "Apply only to addresses in this subdivision."
+msgid "Apply only to the addresses to this subdivision."
 msgstr "Nur auf Adressen dieser Region anwenden."
 
 msgctxt "help:account.tax.rule.line.template,from_country:"
-msgid "Apply only to addresses of this country."
+msgid "Apply only to the addresses from this country."
 msgstr "Nur auf Adressen dieses Landes anwenden."
 
+msgctxt "help:account.tax.rule.line.template,from_organization:"
+msgid "Apply only to the addresses from this organization."
+msgstr "Nur auf Adressen diese Organisation anwenden."
+
 msgctxt "help:account.tax.rule.line.template,from_subdivision:"
-msgid "Apply only to addresses in this subdivision."
+msgid "Apply only to the addresses from this subdivision."
 msgstr "Nur auf Adressen dieser Region anwenden."
 
 msgctxt "help:account.tax.rule.line.template,to_country:"
-msgid "Apply only to addresses of this country."
+msgid "Apply only to the addresses to this country."
 msgstr "Nur auf Adressen dieses Landes anwenden."
 
+msgctxt "help:account.tax.rule.line.template,to_organization:"
+msgid "Apply only to the addresses of this organization."
+msgstr "Nur auf Adressen dieser Organisation anwenden."
+
 msgctxt "help:account.tax.rule.line.template,to_subdivision:"
-msgid "Apply only to addresses in this subdivision."
+msgid "Apply only to the addresses to this subdivision."
 msgstr "Nur auf Adressen dieser Region anwenden."

@@ -328,6 +328,11 @@ msgctxt "field:purchase.line-recreated-stock.move,purchase_line:"
 msgid "Purchase Line"
 msgstr "Beszerzési rendelés sora"
 
+#, fuzzy
+msgctxt "field:purchase.product_supplier,average_lead_time:"
+msgid "Average Lead Time"
+msgstr "Beszerzési átfutási idő"
+
 msgctxt "field:purchase.product_supplier,code:"
 msgid "Code"
 msgstr "Cikkszám"
@@ -343,6 +348,11 @@ msgstr "Pénznem"
 msgctxt "field:purchase.product_supplier,lead_time:"
 msgid "Lead Time"
 msgstr "Átfutási idő"
+
+#, fuzzy
+msgctxt "field:purchase.product_supplier,lead_time_used:"
+msgid "Lead Time"
+msgstr "Beszerzési átfutási idő"
 
 msgctxt "field:purchase.product_supplier,name:"
 msgid "Name"

@@ -683,21 +683,25 @@ msgid "Next"
 msgstr "Nächster"
 
 #, python-format
-msgid "Attachment (%s)"
-msgstr "Anhang (%s)"
+msgid "Attachment (%d)"
+msgid_plural "Attachments (%d)"
+msgstr[0] "Anhang (%s)"
+msgstr[1] "Anhänge (%s)"
 
 #, python-format
 msgid "Note (%d/%d)"
-msgstr "Notiz (%d/%d)"
+msgid_plural "Notes (%d/%d)"
+msgstr[0] "Notiz (%d/%d)"
+msgstr[1] "Notizen (%d/%d)"
 
 msgid "You have to select one record."
 msgstr "Ein Datensatz muss ausgewählt werden."
 
-msgid "Are you sure to remove this record?"
-msgstr "Möchten Sie diesen Datensatz wirklich löschen?"
-
-msgid "Are you sure to remove those records?"
-msgstr "Möchten Sie diese Datensätze wirklich löschen?"
+#, python-format
+msgid "Are you sure you want to delete this record?"
+msgid_plural "Are you sure you want to delete these %(size)d records?"
+msgstr[0] "Möchten Sie diesen Datensatz wirklich löschen?"
+msgstr[1] "Möchten Sie diese %(size)d Datensätze wirklich löschen?"
 
 msgid "Records not removed."
 msgstr "Die Datensätze wurden nicht gelöscht."
@@ -1084,6 +1088,9 @@ msgstr "Suchen"
 msgid "New"
 msgstr "Neu"
 
+msgid "Remove"
+msgstr "Entfernen"
+
 #, python-format
 msgid "Search %s"
 msgstr "Suche %s"
@@ -1223,6 +1230,9 @@ msgstr "Auswählen..."
 msgid "Clear"
 msgstr "Leeren"
 
+msgid "All Supported Types"
+msgstr "Alle unterstützten Typen"
+
 msgid "All files"
 msgstr "Alle Dateien"
 
@@ -1240,9 +1250,6 @@ msgstr "Wert hinzufügen"
 msgid "Remove \"%s\""
 msgstr "\"%s\" entfernen"
 
-msgid "Images"
-msgstr "Bilder"
-
 msgid "Add existing record"
 msgstr "Bestehenden Datensatz hinzufügen"
 
@@ -1251,6 +1258,14 @@ msgstr "Ausgewählten Datensatz löschen <Entf>"
 
 msgid "Restore selected record"
 msgstr "Ausgewählten Datensatz wiederherstellen"
+
+#, python-format
+msgid "%s to add"
+msgstr "%s hinzuzufügen"
+
+#, python-format
+msgid "%s to remove"
+msgstr "%s zu entfernen"
 
 msgid "Open the record <F2>"
 msgstr "Datensatz öffnen <F2>"
@@ -1269,6 +1284,10 @@ msgstr "Ausgewählten Datensatz löschen"
 
 msgid "Undelete selected record"
 msgstr "Zum Löschen ausgewählten Datensatz zurücksetzen"
+
+#, python-format
+msgid "%s to delete"
+msgstr "%s zu löschen"
 
 #, python-format
 msgid "%s%%"

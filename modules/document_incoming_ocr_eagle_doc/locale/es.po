@@ -1,0 +1,41 @@
+#
+#, fuzzy
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:document.incoming.ocr.service,eagle_doc_api_key:"
+msgid "API Key"
+msgstr "Clave API"
+
+msgctxt "field:document.incoming.ocr.service,eagle_doc_endpoint:"
+msgid "Endpoint"
+msgstr "Punto final"
+
+msgctxt "field:document.incoming.ocr.service,eagle_doc_privacy:"
+msgid "Privacy"
+msgstr "Privacidad"
+
+msgctxt "help:document.incoming.ocr.service,eagle_doc_api_key:"
+msgid "The API key from Eagle Doc app."
+msgstr "La clave API de la aplicación Eagle Doc."
+
+msgctxt "model:ir.message,text:msg_eagle_doc_credential_modified"
+msgid "Are you sure you want to modify Eagle Doc credentials?"
+msgstr "¿Está seguro de que desea modificar las credenciales de Eagle Doc?"
+
+#, python-format
+msgctxt "model:ir.message,text:msg_eagle_doc_webserver_error"
+msgid ""
+"Eagle Doc webservice call failed with the following error message:\n"
+"%(message)s"
+msgstr ""
+"La llamada al servicio web de Eagle Doc ha fallado con el siguiente mensaje de error:\n"
+"%(message)s"
+
+msgctxt "selection:document.incoming.ocr.service,eagle_doc_endpoint:"
+msgid "Invoice"
+msgstr "Factura"
+
+msgctxt "selection:document.incoming.ocr.service,type:"
+msgid "Eagle Doc"
+msgstr "Eagle Doc"

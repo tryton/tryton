@@ -546,10 +546,6 @@ msgctxt "model:ir.action,name:act_category_list"
 msgid "Categories"
 msgstr "Kategorie"
 
-msgctxt "model:ir.action,name:act_category_product"
-msgid "Add products"
-msgstr "Dodaj produkty"
-
 msgctxt "model:ir.action,name:act_category_tree"
 msgid "Categories"
 msgstr "Kategorie"
@@ -640,10 +636,6 @@ msgstr "Nie można modyfikować stawki jednostki miary \"%(uom)s”."
 msgctxt "model:ir.message,text:msg_uom_no_zero_factor_rate"
 msgid "Rate and factor can not be both equal to zero."
 msgstr "Stawka i współczynnik nie mogą być równe zeru."
-
-msgctxt "model:ir.model.button,string:category_add_products_button"
-msgid "Add products"
-msgstr "Dodaj produkty"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_category"
 msgid "Category"

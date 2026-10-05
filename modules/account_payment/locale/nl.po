@@ -59,6 +59,11 @@ msgctxt "field:account.move.line,payments:"
 msgid "Payments"
 msgstr "betalingen"
 
+#, fuzzy
+msgctxt "field:account.move.line.create_direct_debit.start,companies:"
+msgid "Companies"
+msgstr "Bedrijf"
+
 msgctxt "field:account.move.line.create_direct_debit.start,date:"
 msgid "Date"
 msgstr "Datum"
@@ -279,6 +284,10 @@ msgctxt "help:account.move.line,payment_direct_debit:"
 msgid "Check if the line will be paid by direct debit."
 msgstr "Vink aan als de regel via automatische incasso wordt betaald."
 
+msgctxt "help:account.move.line.create_direct_debit.start,companies:"
+msgid "Limit to lines from these companies."
+msgstr ""
+
 msgctxt "help:account.move.line.create_direct_debit.start,date:"
 msgid "Create direct debit for lines due up to this date."
 msgstr ""
@@ -405,8 +414,8 @@ msgid "Payment Groups"
 msgstr "Betalingsgroepen"
 
 msgctxt "model:ir.action,name:act_payment_journal_form"
-msgid "Payment Journals"
-msgstr "Betalingsdagboeken"
+msgid "Journals"
+msgstr "Dagboeken"
 
 msgctxt "model:ir.action,name:act_process_payments"
 msgid "Process Payments"
@@ -712,8 +721,8 @@ msgid "Payment Groups"
 msgstr "Betalingsgroepen"
 
 msgctxt "model:ir.ui.menu,name:menu_payment_journal_form"
-msgid "Payment Journals"
-msgstr "Betalingsdagboeken"
+msgid "Journals"
+msgstr "Dagboeken"
 
 msgctxt "model:ir.ui.menu,name:menu_payments"
 msgid "Payments"

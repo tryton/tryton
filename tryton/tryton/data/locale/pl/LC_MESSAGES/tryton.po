@@ -677,22 +677,29 @@ msgstr "Poprzedni"
 msgid "Next"
 msgstr "Następny"
 
-#, python-format
-msgid "Attachment (%s)"
-msgstr "Załącznik (%s)"
+#, fuzzy, python-format
+msgid "Attachment (%d)"
+msgid_plural "Attachments (%d)"
+msgstr[0] "Załącznik (%s)"
+msgstr[1] "Załącznik (%s)"
+msgstr[2] "Załącznik (%s)"
 
-#, python-format
+#, fuzzy, python-format
 msgid "Note (%d/%d)"
-msgstr "Notatka (%d/%d)"
+msgid_plural "Notes (%d/%d)"
+msgstr[0] "Notatka (%d/%d)"
+msgstr[1] "Notatka (%d/%d)"
+msgstr[2] "Notatka (%d/%d)"
 
 msgid "You have to select one record."
 msgstr "Musisz wybrać rekord."
 
-msgid "Are you sure to remove this record?"
-msgstr "Czy na pewno usunąć wybrany rekord?"
-
-msgid "Are you sure to remove those records?"
-msgstr "Czy na pewno usunąć wybrane rekordy?"
+#, fuzzy, python-format
+msgid "Are you sure you want to delete this record?"
+msgid_plural "Are you sure you want to delete these %(size)d records?"
+msgstr[0] "Czy na pewno usunąć wybrany rekord?"
+msgstr[1] "Czy na pewno usunąć wybrany rekord?"
+msgstr[2] "Czy na pewno usunąć wybrany rekord?"
 
 msgid "Records not removed."
 msgstr "Rekordy nie zostały usunięte."
@@ -1085,6 +1092,10 @@ msgstr "Szukaj"
 msgid "New"
 msgstr "Nowy"
 
+#, fuzzy
+msgid "Remove"
+msgstr "Usuń"
+
 #, python-format
 msgid "Search %s"
 msgstr "Szukaj %s"
@@ -1224,6 +1235,9 @@ msgstr "Wybierz..."
 msgid "Clear"
 msgstr "Wyczyść"
 
+msgid "All Supported Types"
+msgstr ""
+
 msgid "All files"
 msgstr "Wszystkie pliki"
 
@@ -1241,9 +1255,6 @@ msgstr "Dodaj wartość"
 msgid "Remove \"%s\""
 msgstr "Usuń \"%s\""
 
-msgid "Images"
-msgstr "Obrazki"
-
 msgid "Add existing record"
 msgstr "Dodaj istniejący rekord"
 
@@ -1253,6 +1264,14 @@ msgstr "Usuń wybrany rekord"
 #, fuzzy
 msgid "Restore selected record"
 msgstr "Usuń wybrany rekord"
+
+#, python-format
+msgid "%s to add"
+msgstr ""
+
+#, fuzzy, python-format
+msgid "%s to remove"
+msgstr "Rekordy nie zostały usunięte."
 
 msgid "Open the record <F2>"
 msgstr "Otwórz rekord <F2>"
@@ -1272,6 +1291,10 @@ msgstr "Usuń wybrany rekord"
 #, fuzzy
 msgid "Undelete selected record"
 msgstr "Usuń wybrany rekord"
+
+#, python-format
+msgid "%s to delete"
+msgstr ""
 
 #, python-format
 msgid "%s%%"

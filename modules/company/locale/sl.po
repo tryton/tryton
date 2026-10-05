@@ -108,6 +108,11 @@ msgctxt "field:ir.cron,companies:"
 msgid "Companies"
 msgstr "Družbe"
 
+#, fuzzy
+msgctxt "field:ir.cron,company_needed:"
+msgid "Company Needed"
+msgstr "Trenutni zaposlenec"
+
 msgctxt "field:ir.cron-company.company,company:"
 msgid "Company"
 msgstr "Družba"

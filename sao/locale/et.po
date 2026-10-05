@@ -140,6 +140,9 @@ msgstr "Kasutaja nimi"
 msgid "Login with"
 msgstr "Logi sisse"
 
+msgid "Disabled on localhost"
+msgstr ""
+
 msgid "Too many requests. Try again later."
 msgstr ""
 
@@ -320,14 +323,26 @@ msgstr "Salvesta kirje"
 msgid "Reload"
 msgstr "Taaslae"
 
+#, fuzzy
+msgid "Delete..."
+msgstr "Kustuta"
+
 msgid "View Logs..."
 msgstr "Vaata logisid..."
 
 msgid "Show revisions..."
 msgstr "Näita muudatusi..."
 
+#, fuzzy
+msgid "Attachments..."
+msgstr "Manus"
+
 msgid "Add an attachment to the record"
 msgstr "Lisa manus"
+
+#, fuzzy
+msgid "Notes..."
+msgstr "Märkus"
 
 msgid "Add a note to the record"
 msgstr "Lisa märkus"
@@ -339,6 +354,18 @@ msgstr ""
 msgid "Chat on the record"
 msgstr "Ava kirje"
 
+#, fuzzy
+msgid "Actions..."
+msgstr "Toiming"
+
+#, fuzzy
+msgid "Relate..."
+msgstr "Seosta"
+
+#, fuzzy
+msgid "Print..."
+msgstr "Prindi"
+
 msgid "Email..."
 msgstr ""
 
@@ -346,10 +373,12 @@ msgstr ""
 msgid "Send an email using the record"
 msgstr "Lisa märkus"
 
-msgid "Export"
+#, fuzzy
+msgid "Export..."
 msgstr "Eksport"
 
-msgid "Import"
+#, fuzzy
+msgid "Import..."
 msgstr "Import"
 
 msgid ""
@@ -381,11 +410,11 @@ msgstr "Kirje salvestatud."
 msgid "Working now on the duplicated record(s)."
 msgstr ""
 
-msgid "Are you sure to remove this record?"
-msgstr "Kas soovid selle kirje eemaldada?"
-
-msgid "Are you sure to remove those records?"
-msgstr "Kas soovid need kirjed eemaldada?"
+#, fuzzy
+msgid "Are you sure you want to delete this record?"
+msgid_plural "Are you sure you want to delete these %1 records?"
+msgstr[0] "Kas soovid selle kirje eemaldada?"
+msgstr[1] "Kas soovid selle kirje eemaldada?"
 
 msgid "Records removed."
 msgstr "Kirjed eemaldatud."
@@ -410,11 +439,17 @@ msgstr "Halda..."
 msgid "Template"
 msgstr "Seosta"
 
+#, fuzzy
 msgid "Attachment (%1)"
-msgstr "Manus (%1)"
+msgid_plural "Attachments (%1)"
+msgstr[0] "Manus (%1)"
+msgstr[1] "Manus (%1)"
 
+#, fuzzy
 msgid "Note (%1/%2)"
-msgstr "Märkus (%1/%2)"
+msgid_plural "Notes (%1/%2)"
+msgstr[0] "Märkus (%1/%2)"
+msgstr[1] "Märkus (%1/%2)"
 
 msgid "Filters"
 msgstr "Filtrid"
@@ -534,6 +569,17 @@ msgid "Open"
 msgstr "Ava"
 
 msgid "Undelete"
+msgstr "Taasta"
+
+#, javascript-format
+msgid "%s to add"
+msgstr ""
+
+msgid "%1 to remove"
+msgstr ""
+
+#, fuzzy
+msgid "%1 to delete"
 msgstr "Taasta"
 
 msgid "Restore"
@@ -686,6 +732,9 @@ msgstr "Teksti eraldaja:"
 
 msgid "CSV Import: %1"
 msgstr "CSV import: %1"
+
+msgid "Import"
+msgstr "Import"
 
 msgid "Auto-Detect"
 msgstr "Automaattuvastus"

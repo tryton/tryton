@@ -544,10 +544,6 @@ msgctxt "model:ir.action,name:act_category_list"
 msgid "Categories"
 msgstr "类别"
 
-msgctxt "model:ir.action,name:act_category_product"
-msgid "Add products"
-msgstr "添加产品"
-
 msgctxt "model:ir.action,name:act_category_tree"
 msgid "Categories"
 msgstr "类别"
@@ -637,10 +633,6 @@ msgstr "不能修改计量单位 \"%(uom)s\" 的换算率."
 msgctxt "model:ir.message,text:msg_uom_no_zero_factor_rate"
 msgid "Rate and factor can not be both equal to zero."
 msgstr "换算率和换算因子不能同时为零."
-
-msgctxt "model:ir.model.button,string:category_add_products_button"
-msgid "Add products"
-msgstr "添加产品"
 
 #, fuzzy
 msgctxt "model:ir.sequence.type,name:sequence_type_category"

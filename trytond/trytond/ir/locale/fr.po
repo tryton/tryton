@@ -654,6 +654,14 @@ msgctxt "field:ir.email,body:"
 msgid "Body"
 msgstr "Corps"
 
+msgctxt "field:ir.email,last_modification:"
+msgid "Last Modification"
+msgstr "Dernière modification"
+
+msgctxt "field:ir.email,last_user:"
+msgid "Last User"
+msgstr "Dernier utilisateur"
+
 msgctxt "field:ir.email,message_id:"
 msgid "Message-ID"
 msgstr "Message-ID"
@@ -1242,6 +1250,14 @@ msgctxt "field:ir.model.log,event:"
 msgid "Event"
 msgstr "Événement"
 
+msgctxt "field:ir.model.log,last_modification:"
+msgid "Last Modification"
+msgstr "Dernière modification"
+
+msgctxt "field:ir.model.log,last_user:"
+msgid "Last User"
+msgstr "Dernier utilisateur"
+
 msgctxt "field:ir.model.log,resource:"
 msgid "Resource"
 msgstr "Ressource"
@@ -1286,9 +1302,9 @@ msgctxt "field:ir.module,version:"
 msgid "Version"
 msgstr "Version"
 
-msgctxt "field:ir.module.activate_upgrade.start,module_info:"
-msgid "Modules to update"
-msgstr "Modules à mettre à jour"
+msgctxt "field:ir.module.activate_upgrade.start,modules:"
+msgid "Modules to Activate / Upgrade"
+msgstr "Modules à activer / mettre à niveau"
 
 msgctxt "field:ir.module.config.start,modules:"
 msgid "Modules"
@@ -1758,6 +1774,10 @@ msgctxt "field:ir.ui.menu,action_keywords:"
 msgid "Action Keywords"
 msgstr "Mots-clés d'action"
 
+msgctxt "field:ir.ui.menu,administration:"
+msgid "Administrator"
+msgstr "Administrateur"
+
 msgctxt "field:ir.ui.menu,childs:"
 msgid "Children"
 msgstr "Enfants"
@@ -1901,6 +1921,10 @@ msgstr "Modèle"
 msgctxt "field:ir.ui.view_tree_optional,model_ref:"
 msgid "Model"
 msgstr "Modèle"
+
+msgctxt "field:ir.ui.view_tree_optional,occurrence:"
+msgid "Occurrence"
+msgstr "Occurrence"
 
 msgctxt "field:ir.ui.view_tree_optional,user:"
 msgid "User"
@@ -2253,6 +2277,10 @@ msgid ""
 msgstr ""
 "Défini un delai minimal entre l'appel à la « fonction de l'action » pour le même enregistrement.\n"
 "Vide pour aucun délai."
+
+msgctxt "help:ir.ui.menu,administration:"
+msgid "Check to restrict access to only administrators."
+msgstr "Cocher pour limiter l'accès aux seuls administrateurs."
 
 msgctxt "help:ir.ui.view_search,domain:"
 msgid "The PYSON domain."
@@ -2916,6 +2944,13 @@ msgid "You are not allowed to execute report \"%(report)s\"."
 msgstr "Vous n'êtes pas autorisé à exécuter le rapport « %(report)s »."
 
 #, python-format
+msgctxt "model:ir.message,text:msg_access_resource_search_error"
+msgid "You are not allowed to search on the \"%(resource)s\" resource."
+msgstr ""
+"Vous n'êtes pas autorisé à effectuer des recherches sur la ressource « "
+"%(resource)s »."
+
+#, python-format
 msgctxt "model:ir.message,text:msg_access_rule_error"
 msgid "You are not allowed to access \"%(model)s\"."
 msgstr "Vous n'êtes pas autorisé à accéder à « %(model)s »."
@@ -3133,7 +3168,7 @@ msgstr "Domaine"
 
 msgctxt "model:ir.message,text:msg_dict_schema_float"
 msgid "Float"
-msgstr "Float"
+msgstr "Nombre à virgule flottante"
 
 msgctxt "model:ir.message,text:msg_dict_schema_help"
 msgid "Help"
@@ -3385,6 +3420,21 @@ msgid ""
 msgstr ""
 "La condition « %(condition)s » n'est pas une expression PYSON valide pour la"
 " règle de bouton « %(rule)s »."
+
+#, python-format
+msgctxt "model:ir.message,text:msg_modification_readonly_field_error"
+msgid "You are not allowed to modify the field \"%(field)s\" of \"%(model)s\"."
+msgstr ""
+"Vous n'êtes pas autorisé à modifier le champ « %(field)s » de « %(model)s »."
+
+#, python-format
+msgctxt "model:ir.message,text:msg_modification_readonly_field_record_error"
+msgid ""
+"You are not allowed to modify the field \"%(field)s\" in record "
+"\"%(record)s\" of \"%(model)s\"."
+msgstr ""
+"Vous n'êtes pas autorisé à modifier le champ « %(field)s » sur "
+"l'enregistrement « %(record)s » de « %(model)s »."
 
 msgctxt "model:ir.message,text:msg_module_deactivate_dependency"
 msgid ""
@@ -3680,6 +3730,14 @@ msgstr ""
 "Domaine ou critère de recherche « %(domain)s » invalide pour la recherche "
 "« %(search)s »."
 
+msgctxt ""
+"model:ir.message,text:msg_view_tree_optional_field_occurrence_user_unique"
+msgid ""
+"A user can set only one optional per occurrence of field on the same view."
+msgstr ""
+"Un utilisateur ne peut définir qu'une seule facultatif par occurrence de "
+"champ sur la même vue."
+
 #, python-format
 msgctxt "model:ir.message,text:msg_view_tree_optional_type"
 msgid "You cannot store optional on view \"%(view)s\"."
@@ -3886,7 +3944,7 @@ msgstr "Note lue"
 
 msgctxt "model:ir.queue,string:"
 msgid "Queue"
-msgstr "File"
+msgstr "File d'attente"
 
 msgctxt "model:ir.rule,string:"
 msgid "Rule"
@@ -4409,6 +4467,10 @@ msgid "Remove Deleted Binaries"
 msgstr "Enlever les fichiers binaires supprimés"
 
 msgctxt "selection:ir.cron,method:"
+msgid "Retry Queued Tasks"
+msgstr "Réessayer les tâches en file d'attente"
+
+msgctxt "selection:ir.cron,method:"
 msgid "Run On Time Triggers"
 msgstr "Lancer les déclencheurs « À temps »"
 
@@ -4686,14 +4748,6 @@ msgctxt "view:ir.module.activate_upgrade.done:"
 msgid "The modules have been upgraded / activated."
 msgstr "Les modules ont été mis à niveau / activés."
 
-msgctxt "view:ir.module.activate_upgrade.start:"
-msgid "Note that this operation may take a few minutes."
-msgstr "Cette opération peut prendre quelques minutes."
-
-msgctxt "view:ir.module.activate_upgrade.start:"
-msgid "Your system will be upgraded."
-msgstr "Votre système va être mis à niveau."
-
 msgctxt "view:ir.module.config.start:"
 msgid "You can now activate additional modules to the system."
 msgstr ""
@@ -4740,6 +4794,10 @@ msgid "Translations set successfully."
 msgstr "Traductions définies avec succès."
 
 msgctxt "view:ir.ui.menu:"
+msgid "Access Permissions"
+msgstr "Permissions d'accès"
+
+msgctxt "view:ir.ui.menu:"
 msgid "Actions"
 msgstr "Actions"
 
@@ -4768,8 +4826,8 @@ msgid "Cancel"
 msgstr "Annuler"
 
 msgctxt "wizard_button:ir.module.activate_upgrade,start,upgrade:"
-msgid "Start Upgrade"
-msgstr "Démarrer la mise à jour"
+msgid "OK"
+msgstr "OK"
 
 msgctxt "wizard_button:ir.module.config,start,activate:"
 msgid "Activate"

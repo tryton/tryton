@@ -193,6 +193,16 @@ msgctxt "field:product.template,tariff_codes_category:"
 msgid "Use Category's Tariff Codes"
 msgstr ""
 
+#, fuzzy
+msgctxt "field:product.template-product.category.customs,category:"
+msgid "Category"
+msgstr "Kategorija"
+
+#, fuzzy
+msgctxt "field:product.template-product.category.customs,template:"
+msgid "Template"
+msgstr "Prekės šablonas"
+
 msgctxt "help:customs.agent,address:"
 msgid "The address of the agent."
 msgstr ""
@@ -322,6 +332,10 @@ msgstr "Tarifų kodai"
 msgctxt "model:product-customs.tariff.code,string:"
 msgid "Product - Customs Tariff Code"
 msgstr "Prekė - tarifo kodas"
+
+msgctxt "model:product.template-product.category.customs,string:"
+msgid "Product Template - Product Category Customs"
+msgstr ""
 
 msgctxt "model:res.group,name:group_customs_admin"
 msgid "Customs Administration"

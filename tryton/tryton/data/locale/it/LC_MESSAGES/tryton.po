@@ -689,22 +689,26 @@ msgstr "Precedente"
 msgid "Next"
 msgstr "Prossimo"
 
-#, python-format
-msgid "Attachment (%s)"
-msgstr "Allegato (%s)"
+#, fuzzy, python-format
+msgid "Attachment (%d)"
+msgid_plural "Attachments (%d)"
+msgstr[0] "Allegato (%s)"
+msgstr[1] "Allegato (%s)"
 
-#, python-format
+#, fuzzy, python-format
 msgid "Note (%d/%d)"
-msgstr "Appunto (%d/%d)"
+msgid_plural "Notes (%d/%d)"
+msgstr[0] "Appunto (%d/%d)"
+msgstr[1] "Appunto (%d/%d)"
 
 msgid "You have to select one record."
 msgstr "Devi selezionare un record."
 
-msgid "Are you sure to remove this record?"
-msgstr "Sei sicuro di rimuovere questo record?"
-
-msgid "Are you sure to remove those records?"
-msgstr "Sei sicuro di rimuovere questi records?"
+#, fuzzy, python-format
+msgid "Are you sure you want to delete this record?"
+msgid_plural "Are you sure you want to delete these %(size)d records?"
+msgstr[0] "Sei sicuro di rimuovere questo record?"
+msgstr[1] "Sei sicuro di rimuovere questo record?"
 
 msgid "Records not removed."
 msgstr "Record non rimossi."
@@ -1102,6 +1106,10 @@ msgstr "Ricerca"
 msgid "New"
 msgstr "Nuovo"
 
+#, fuzzy
+msgid "Remove"
+msgstr "_Rimuovi"
+
 #, python-format
 msgid "Search %s"
 msgstr ""
@@ -1248,6 +1256,9 @@ msgstr "Seleziona..."
 msgid "Clear"
 msgstr "Pulisci"
 
+msgid "All Supported Types"
+msgstr ""
+
 msgid "All files"
 msgstr "Tutti i files"
 
@@ -1265,9 +1276,6 @@ msgstr "Aggiungi valore"
 msgid "Remove \"%s\""
 msgstr "Rimuovi \"%s\""
 
-msgid "Images"
-msgstr "Immagini"
-
 msgid "Add existing record"
 msgstr "Aggiungi un record esistente"
 
@@ -1277,6 +1285,14 @@ msgstr "Rimuovi i record selezionati"
 #, fuzzy
 msgid "Restore selected record"
 msgstr "Rimuovi i record selezionati"
+
+#, python-format
+msgid "%s to add"
+msgstr ""
+
+#, fuzzy, python-format
+msgid "%s to remove"
+msgstr "Record non rimossi."
 
 msgid "Open the record <F2>"
 msgstr ""
@@ -1298,6 +1314,10 @@ msgstr "Rimuovi i record selezionati"
 #, fuzzy
 msgid "Undelete selected record"
 msgstr "Rimuovi i record selezionati"
+
+#, python-format
+msgid "%s to delete"
+msgstr ""
 
 #, python-format
 msgid "%s%%"

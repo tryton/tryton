@@ -165,6 +165,10 @@ msgctxt "field:production.bom,phantom_unit:"
 msgid "Unit"
 msgstr "enota"
 
+msgctxt "field:production.bom,tolerance:"
+msgid "Tolerance"
+msgstr ""
+
 msgctxt "field:production.bom.input,bom:"
 msgid "BOM"
 msgstr "Kosovnica"
@@ -316,9 +320,10 @@ msgctxt "field:stock.move,production:"
 msgid "Production"
 msgstr "Proizvodnja"
 
+#, fuzzy
 msgctxt "field:stock.move,production_cost_price_updated:"
-msgid "Cost Price Updated"
-msgstr ""
+msgid "Production Cost Price Updated"
+msgstr "Proizvodni dobavni rok"
 
 msgctxt "field:stock.move,production_input:"
 msgid "Production Input"
@@ -350,6 +355,10 @@ msgstr ""
 
 msgctxt "help:production.bom,phantom_unit:"
 msgid "The Unit of Measure of the Phantom BoM"
+msgstr ""
+
+msgctxt "help:production.bom,tolerance:"
+msgid "The percentage tolerance that is accepted for production."
 msgstr ""
 
 msgctxt "help:production.configuration,bom_sequence:"
@@ -470,6 +479,24 @@ msgstr ""
 "Izhodni stroški (%(outputs)s) proizvodnega naloga \"%(production)s\" se ne "
 "ujemajo s proizvodnimi stroški (%(costs)s)."
 
+#, fuzzy, python-format
+msgctxt "model:ir.message,text:msg_over_production_inputs"
+msgid ""
+"The production \"%(production)s\" input of product \"%(product)s\" is "
+"greater than the tolerance (%(actual)s consumed > %(maximal)s)."
+msgstr ""
+"Izhodni stroški (%(outputs)s) proizvodnega naloga \"%(production)s\" se ne "
+"ujemajo s proizvodnimi stroški (%(costs)s)."
+
+#, fuzzy, python-format
+msgctxt "model:ir.message,text:msg_over_production_outputs"
+msgid ""
+"The production \"%(production)s\" output of product \"%(product)s\" is "
+"greater than the tolerance (%(actual)s produced > %(maximal)s)."
+msgstr ""
+"Izhodni stroški (%(outputs)s) proizvodnega naloga \"%(production)s\" se ne "
+"ujemajo s proizvodnimi stroški (%(costs)s)."
+
 #, python-format
 msgctxt "model:ir.message,text:msg_recursive_bom_bom"
 msgid "You cannot create a recursive BOM for BOM \"%(bom)s\"."
@@ -482,6 +509,38 @@ msgstr ""
 
 msgctxt "model:ir.message,text:msg_stock_move_production_single"
 msgid "Move can not be used for production input and output."
+msgstr ""
+
+#, fuzzy, python-format
+msgctxt "model:ir.message,text:msg_under_production_inputs"
+msgid ""
+"The production \"%(production)s\" input of product \"%(product)s\" is lower "
+"than the tolerance (%(actual)s consumed < %(minimal)s)."
+msgstr ""
+"Izhodni stroški (%(outputs)s) proizvodnega naloga \"%(production)s\" se ne "
+"ujemajo s proizvodnimi stroški (%(costs)s)."
+
+#, fuzzy, python-format
+msgctxt "model:ir.message,text:msg_under_production_outputs"
+msgid ""
+"The production \"%(production)s\" output of product \"%(product)s\" is lower"
+" than the tolerance (%(actual)s produced < %(minimal)s)."
+msgstr ""
+"Izhodni stroški (%(outputs)s) proizvodnega naloga \"%(production)s\" se ne "
+"ujemajo s proizvodnimi stroški (%(costs)s)."
+
+#, python-format
+msgctxt "model:ir.message,text:msg_unexpected_product_production_inputs"
+msgid ""
+"The production \"%(production)s\" input has an unexpected product "
+"\"%(product)s\"."
+msgstr ""
+
+#, python-format
+msgctxt "model:ir.message,text:msg_unexpected_product_production_outputs"
+msgid ""
+"The production \"%(production)s\" output has an unexpected product "
+"\"%(product)s\"."
 msgstr ""
 
 msgctxt "model:ir.model.button,confirm:production_done_button"
@@ -637,7 +696,7 @@ msgid "Reschedule Productions"
 msgstr "Productions"
 
 msgctxt "selection:ir.cron,method:"
-msgid "Set Cost from Moves"
+msgid "Set Cost from Production Moves"
 msgstr ""
 
 msgctxt "selection:production,state:"
@@ -691,6 +750,10 @@ msgstr "Izhodi"
 msgctxt "view:production.bom.output:"
 msgid "Material"
 msgstr "Izhodi"
+
+msgctxt "view:production.bom:"
+msgid "%"
+msgstr ""
 
 msgctxt "view:production.bom:"
 msgid "Lines"

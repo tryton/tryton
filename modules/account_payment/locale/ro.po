@@ -63,6 +63,11 @@ msgctxt "field:account.move.line,payments:"
 msgid "Payments"
 msgstr "Plati"
 
+#, fuzzy
+msgctxt "field:account.move.line.create_direct_debit.start,companies:"
+msgid "Companies"
+msgstr "Societate"
+
 msgctxt "field:account.move.line.create_direct_debit.start,date:"
 msgid "Date"
 msgstr "Data"
@@ -284,6 +289,10 @@ msgctxt "help:account.move.line,payment_direct_debit:"
 msgid "Check if the line will be paid by direct debit."
 msgstr "Verifica daca linia va fi platita prin debit direct."
 
+msgctxt "help:account.move.line.create_direct_debit.start,companies:"
+msgid "Limit to lines from these companies."
+msgstr ""
+
 msgctxt "help:account.move.line.create_direct_debit.start,date:"
 msgid "Create direct debit for lines due up to this date."
 msgstr "Creează debit direct pentru rândurile scadente până în această dată."
@@ -413,9 +422,10 @@ msgctxt "model:ir.action,name:act_payment_group_form"
 msgid "Payment Groups"
 msgstr "Grupuri de Plati"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_payment_journal_form"
-msgid "Payment Journals"
-msgstr "Jurnale de Plati"
+msgid "Journals"
+msgstr "Jurnal"
 
 msgctxt "model:ir.action,name:act_process_payments"
 msgid "Process Payments"
@@ -717,9 +727,10 @@ msgctxt "model:ir.ui.menu,name:menu_payment_group_form"
 msgid "Payment Groups"
 msgstr "Grupuri de Plati"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_payment_journal_form"
-msgid "Payment Journals"
-msgstr "Jurnale de Plati"
+msgid "Journals"
+msgstr "Jurnal"
 
 msgctxt "model:ir.ui.menu,name:menu_payments"
 msgid "Payments"
