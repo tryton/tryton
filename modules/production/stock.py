@@ -157,6 +157,10 @@ class Move(metaclass=PoolMeta):
             ('production_output' + nested, operator, operand, *extra),
             ]
 
+    @classmethod
+    def default_production_cost_price_updated(cls):
+        return False
+
     def set_effective_date(self):
         if not self.effective_date and self.production_input:
             self.effective_date = self.production_input.effective_start_date
@@ -174,6 +178,14 @@ class Move(metaclass=PoolMeta):
 
     def _rec_name_origin(self):
         return super()._rec_name_origin() or self.production
+
+    @classmethod
+    def copy(cls, moves, default=None):
+        default = default.copy() if default is not None else {}
+        default.setdefault(
+            'production_cost_price_updated',
+            cls.default_production_cost_price_updated())
+        return super().copy(moves, default=default)
 
 
 class ProductQuantitiesByWarehouseMove(metaclass=PoolMeta):

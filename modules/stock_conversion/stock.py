@@ -602,6 +602,10 @@ class Move(metaclass=PoolMeta):
         cls._allow_modify_closed_period.add('conversion_cost_price_updated')
 
     @classmethod
+    def default_conversion_cost_price_updated(cls):
+        return False
+
+    @classmethod
     def _get_origin(cls):
         return [*super()._get_origin(), 'stock.conversion']
 
@@ -616,3 +620,11 @@ class Move(metaclass=PoolMeta):
                     if m.state == 'done'
                     and isinstance(m.origin, Conversion)],
                 {'conversion_cost_price_updated': True})
+
+    @classmethod
+    def copy(cls, moves, default=None):
+        default = default.copy() if default is not None else {}
+        default.setdefault(
+            'conversion_cost_price_updated',
+            cls.default_conversion_cost_price_updated())
+        return super().copy(moves, default=default)

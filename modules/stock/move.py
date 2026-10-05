@@ -1035,6 +1035,8 @@ class Move(Workflow, ModelSQL, ModelView):
         default.setdefault('internal_quantity', 0)
         default.setdefault('cost_price')
         default.setdefault('outcome_moves', None)
+        default.setdefault(
+            'unit_price_updated', cls.default_unit_price_updated())
         return super().copy(moves, default=default)
 
     def compute_fields(self, field_names=None):
