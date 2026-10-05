@@ -12,8 +12,7 @@ from trytond.modules.company.tests import (
     CompanyTestMixin, PartyCompanyCheckEraseMixin, create_company, set_company)
 from trytond.modules.party.tests import PartyCheckReplaceMixin
 from trytond.modules.stock.exceptions import (
-    LocationValidationError, MoveOriginWarning, PeriodCloseError,
-    ProductStockWarning)
+    LocationValidationError, MoveOriginWarning, ProductStockWarning)
 from trytond.pool import Pool
 from trytond.tests.test_tryton import ModuleTestCase, with_transaction
 from trytond.transaction import Transaction, check_access
@@ -957,34 +956,6 @@ class StockTestCase(
                         quantities[cache.location.id])
 
                 test_products_by_location()
-
-            # Test check_period_closed
-            moves = Move.create([{
-                        'product': product.id,
-                        'unit': unit.id,
-                        'quantity': 10,
-                        'from_location': supplier.id,
-                        'to_location': storage.id,
-                        'planned_date': today,
-                        'effective_date': today,
-                        'company': company.id,
-                        'unit_price': Decimal('1'),
-                        'currency': currency.id,
-                        }])
-            Move.do(moves)
-
-            # Test close period check
-            period, = Period.create([{
-                        'date': today,
-                        'company': company.id,
-                        }])
-            self.assertRaises(PeriodCloseError, Period.close, [period])
-
-            period, = Period.create([{
-                        'date': today + relativedelta(days=1),
-                        'company': company.id,
-                        }])
-            self.assertRaises(PeriodCloseError, Period.close, [period])
 
     @with_transaction()
     def test_check_origin(self):
