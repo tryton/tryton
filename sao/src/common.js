@@ -96,7 +96,7 @@
                 }
                 parent = parent.parentElement;
             }
-            if (!parent.classList.contains('modal')) {
+            if (parent && !parent.classList.contains('modal')) {
                 ancestors.push(window);
             }
             return ancestors;
