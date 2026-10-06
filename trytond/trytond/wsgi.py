@@ -5,6 +5,7 @@ import http.client
 import logging
 import os
 import posixpath
+import re
 import sys
 import time
 import traceback
@@ -38,6 +39,27 @@ from trytond.tools import resolve, safe_join
 __all__ = ['TrytondWSGI', 'app']
 
 logger = logging.getLogger(__name__)
+
+
+class _WebAuthnTokenLogFilter(logging.Filter):
+
+    def filter(self, record):
+        message = record.getMessage()
+        if '/authentication/webauthn/' in message:
+            message = re.sub(
+                r'(/authentication/webauthn/(?:qr|qr-code)/)[^/?\s\'"]+',
+                r'\1<redacted>', message)
+            message = re.sub(
+                r'([?&](?:desktop|mobile)_token=)[^&\s\'"]+',
+                r'\1<redacted>', message)
+            record.msg = message
+            record.args = ()
+        return True
+
+
+_webauthn_token_log_filter = _WebAuthnTokenLogFilter()
+for _logger_name in (__name__, 'werkzeug', 'gevent'):
+    logging.getLogger(_logger_name).addFilter(_webauthn_token_log_filter)
 
 
 def _do_basic_auth(request):
