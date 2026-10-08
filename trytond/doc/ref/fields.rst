@@ -307,6 +307,9 @@ Char
    The field is ordered using the similarity with the context value from the
    key ``<model name>.<field name>.order`` if it is set.
 
+Translated :class:`Char` accepts as written and created value a :py:class:`dict
+<dict>` with language code as key and translated string as value.
+
 :class:`Char` has some extra arguments:
 
 .. attribute:: Char.size

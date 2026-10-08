@@ -1007,6 +1007,7 @@ class ModelSQL(ModelStorage):
         cursor = transaction.connection.cursor(row_factory=backend.scalar_row)
         pool = Pool()
         Translation = pool.get('ir.translation')
+        Config = pool.get('ir.configuration')
 
         vlist_orig = vlist
         vlist = cls._before_create(vlist)
@@ -1117,9 +1118,16 @@ class ModelSQL(ModelStorage):
             current_values = [transaction.user, CurrentTimestamp()]
 
             # Insert record
+            stored_language = Config.get_language()
             for fname, value in sorted(values.items()):
                 field = cls._fields[fname]
                 if not hasattr(field, 'set'):
+                    if (getattr(field, 'translate', False)
+                            and isinstance(value, dict)):
+                        if stored_language in value:
+                            value = value.get(stored_language)
+                        else:
+                            value = value.get(transaction.language)
                     current_columns.append(Column(table, fname))
                     current_values.append(field.sql_format(value))
                     current_column_names.append(fname)
@@ -1147,17 +1155,29 @@ class ModelSQL(ModelStorage):
             field_names = list(sorted(cls._mptt_fields))
             cls._update_mptt(field_names, repeat(new_ids, len(field_names)))
 
-        translation_values = {}
+        translation_values = defaultdict(
+            lambda: defaultdict(lambda: defaultdict(str)))
         fields_to_set = {}
         for values, new_id in zip(vlist, new_ids):
             for fname, value in values.items():
                 field = cls._fields[fname]
-                if (getattr(field, 'translate', False)
-                        and not hasattr(field, 'set')):
-                    translation_values.setdefault(
-                        '%s,%s' % (cls.__name__, fname), {})[new_id] = (
-                            field.sql_format(value))
-                if hasattr(field, 'set'):
+                if not hasattr(field, 'set'):
+                    if getattr(field, 'translate', False):
+                        if isinstance(value, dict):
+                            for language, t_value in value.items():
+                                t_value = field.sql_format(t_value)
+                                translation_values[
+                                    f'{cls.__name__},{fname}'][
+                                        language][
+                                            new_id] = t_value
+
+                        else:
+                            value = field.sql_format(value)
+                            translation_values[
+                                f'{cls.__name__},{fname}'][
+                                    transaction.language][
+                                        new_id] = value
+                else:
                     args = fields_to_set.setdefault(fname, [])
                     actions = iter(args)
                     for ids, val in zip(actions, actions):
@@ -1167,9 +1187,10 @@ class ModelSQL(ModelStorage):
                     else:
                         args.extend(([new_id], value))
 
-        if translation_values:
-            for name, translations in translation_values.items():
-                Translation.set_ids(name, 'model', Transaction().language,
+        for name, languages in translation_values.items():
+            for language, translations in languages.items():
+                Translation.set_ids(
+                    name, 'model', language,
                     list(translations.keys()), list(translations.values()))
 
         for fname in sorted(fields_to_set, key=cls.index_set_field):
@@ -1544,6 +1565,8 @@ class ModelSQL(ModelStorage):
         cls.__check_timestamp(all_ids)
         cls.__check_domain_rule(all_ids, 'write')
 
+        translation_values = defaultdict(
+            lambda: defaultdict(lambda: defaultdict(str)))
         fields_to_set = {}
         actions = iter(args)
         for records, values in zip(actions, actions):
@@ -1561,12 +1584,26 @@ class ModelSQL(ModelStorage):
 
             columns = [table.write_uid, table.write_date]
             update_values = [transaction.user, CurrentTimestamp()]
-            store_translation = Transaction().language == Config.get_language()
+            stored_language = Config.get_language()
+            normalized_values = values.copy()
             for fname, value in values.items():
                 field = cls._fields[fname]
                 if not hasattr(field, 'set'):
-                    if (not getattr(field, 'translate', False)
-                            or store_translation):
+                    translate = getattr(field, 'translate', False)
+                    if translate:
+                        if isinstance(value, dict):
+                            if stored_language in value:
+                                value = value.get(transaction.language)
+                                normalized_values[fname] = value
+                                store_translation = True
+                            else:
+                                store_translation = False
+                        else:
+                            store_translation = (
+                                stored_language == transaction.language)
+                    else:
+                        store_translation = False
+                    if not translate or store_translation:
                         columns.append(Column(table, fname))
                         update_values.append(field.sql_format(value))
 
@@ -1582,23 +1619,34 @@ class ModelSQL(ModelStorage):
                     if isinstance(
                             exception, backend.DatabaseIntegrityError):
                         cls.__raise_integrity_error(
-                            exception, values, list(values.keys()),
+                            exception,
+                            normalized_values, list(normalized_values.keys()),
                             transaction=transaction)
                     elif isinstance(exception, backend.DatabaseDataError):
                         cls.__raise_data_error(
-                            exception, values, list(values.keys()),
+                            exception,
+                            normalized_values, list(normalized_values.keys()),
                             transaction=transaction)
                     raise
 
             for fname, value in values.items():
                 field = cls._fields[fname]
-                if (getattr(field, 'translate', False)
-                        and not hasattr(field, 'set')):
-                    Translation.set_ids(
-                        '%s,%s' % (cls.__name__, fname), 'model',
-                        transaction.language, ids,
-                        [field.sql_format(value)] * len(ids))
-                if hasattr(field, 'set'):
+                if not hasattr(field, 'set'):
+                    if getattr(field, 'translate', False):
+                        if isinstance(value, dict):
+                            for language, t_value in value.items():
+                                t_value = field.sql_format(t_value)
+                                translation_values[
+                                    f'{cls.__name__},{fname}'][
+                                        language].update(
+                                            dict.fromkeys(ids, t_value))
+                        else:
+                            value = field.sql_format(value)
+                            translation_values[
+                                f'{cls.__name__},{fname}'][
+                                    transaction.language].update(
+                                        dict.fromkeys(ids, value))
+                else:
                     fields_to_set.setdefault(fname, []).extend((ids, value))
 
             path_fields = cls._path_fields & values.keys()
@@ -1610,7 +1658,13 @@ class ModelSQL(ModelStorage):
             if mptt_fields:
                 cls._update_mptt(
                     list(sorted(mptt_fields)), repeat(ids, len(mptt_fields)),
-                    values)
+                    values.keys())
+
+        for name, languages in translation_values.items():
+            for language, translations in languages.items():
+                Translation.set_ids(
+                    name, 'model', language,
+                    list(translations.keys()), list(translations.values()))
 
         for fname in sorted(fields_to_set, key=cls.index_set_field):
             fargs = fields_to_set[fname]

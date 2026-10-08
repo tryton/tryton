@@ -665,6 +665,181 @@ class FieldCharTranslatedTestCase(DBTestCase, CommonTestCaseMixin):
             Char.create([{'char': Literal('Foo')}])
 
     @with_transaction()
+    def test_create_with_translations_dict(self):
+        "Test create with translations dictionary"
+        pool = Pool()
+        Language = pool.get('ir.lang')
+        Char = self.Char()
+        transaction = Transaction()
+
+        english, = Language.search([('code', '=', 'en')])
+        english.translatable = True
+        english.save()
+        french, = Language.search([('code', '=', 'fr')])
+        french.translatable = True
+        french.save()
+
+        record, = Char.create([{
+                    'char': {
+                        'en': "foo",
+                        'fr': "bar",
+                        },
+                    }])
+        with transaction.set_context(language='en'):
+            record_en = Char(record.id)
+        with transaction.set_context(language='fr'):
+            record_fr = Char(record.id)
+
+        self.assertEqual(record_en.char, "foo")
+        self.assertEqual(record_fr.char, "bar")
+
+    @with_transaction()
+    def test_write_with_translations_dict(self):
+        "Test write with translations dictionary"
+        pool = Pool()
+        Language = pool.get('ir.lang')
+        Char = self.Char()
+        transaction = Transaction()
+
+        english, = Language.search([('code', '=', 'en')])
+        english.translatable = True
+        english.save()
+        french, = Language.search([('code', '=', 'fr')])
+        french.translatable = True
+        french.save()
+
+        record, = Char.create([{}])
+        Char.write([record], {
+                'char': {
+                    'en': "foo",
+                    'fr': "bar",
+                    },
+                })
+        with transaction.set_context(language='en'):
+            record_en = Char(record.id)
+        with transaction.set_context(language='fr'):
+            record_fr = Char(record.id)
+
+        self.assertEqual(record_en.char, "foo")
+        self.assertEqual(record_fr.char, "bar")
+
+    @with_transaction()
+    def test_create_with_translations_dict_size_valid(self):
+        "Test create with translation and size"
+        pool = Pool()
+        Char = pool.get('test.char_translated_size')
+
+        record, = Char.create([{
+                    'char': {
+                        'en': "foo",
+                        'fr': "bar",
+                        },
+                    }])
+
+    @with_transaction()
+    def test_create_with_translations_dict_size_invalid(self):
+        "Test create with translation and size"
+        pool = Pool()
+        Char = pool.get('test.char_translated_size')
+
+        with self.assertRaises(SizeValidationError):
+            record, = Char.create([{
+                        'char': {
+                            'en': "foobar",
+                            'fr': "bar",
+                            },
+                        }])
+
+    @with_transaction()
+    def test_write_with_translations_dict_size_valid(self):
+        "Test write with translation and size"
+        pool = Pool()
+        Char = pool.get('test.char_translated_size')
+
+        record, = Char.create([{}])
+
+        Char.write([record], {
+                'char': {
+                    'en': "foo",
+                    'fr': "bar",
+                    },
+                })
+
+    @with_transaction()
+    def test_write_with_translations_dict_size_invalid(self):
+        "Test write with translation and size"
+        pool = Pool()
+        Char = pool.get('test.char_translated_size')
+
+        record, = Char.create([{}])
+
+        with self.assertRaises(SizeValidationError):
+            record, = Char.write([record], {
+                    'char': {
+                        'en': "foobar",
+                        'fr': "bar",
+                        },
+                    })
+
+    @with_transaction()
+    def test_create_with_translations_dict_required_with_value(self):
+        "Test create with translation required with value"
+        pool = Pool()
+        Char = pool.get('test.char_translated_required')
+
+        record, = Char.create([{
+                    'char': {
+                        'en': "foo",
+                        'fr': "bar",
+                        },
+                    }])
+
+    @with_transaction()
+    def test_create_with_translations_dict_required_without_value(self):
+        "Test create with translation required without value"
+        pool = Pool()
+        Char = pool.get('test.char_translated_required')
+
+        with self.assertRaises(RequiredValidationError):
+            record, = Char.create([{
+                        'char': {
+                            'en': None,
+                            'fr': "bar",
+                            },
+                        }])
+
+    @with_transaction()
+    def test_write_with_translations_dict_required_with_value(self):
+        "Test write with translation required with value"
+        pool = Pool()
+        Char = pool.get('test.char_translated_required')
+
+        record, = Char.create([{'char': "Test"}])
+
+        Char.write([record], {
+                'char': {
+                    'en': "foo",
+                    'fr': "bar",
+                    },
+                })
+
+    @with_transaction()
+    def test_write_with_translations_dict_required_without_value(self):
+        "Test create with translation required without value"
+        pool = Pool()
+        Char = pool.get('test.char_translated_required')
+
+        record, = Char.create([{'char': "Test"}])
+
+        with self.assertRaises(RequiredValidationError):
+            Char.write([record], {
+                    'char': {
+                        'en': None,
+                        'fr': "bar",
+                        },
+                    })
+
+    @with_transaction()
     def test_translation_default_language_cache(self):
         """Test set translation for default language does not fill
         transactional cache with former value"""

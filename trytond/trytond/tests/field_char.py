@@ -50,6 +50,16 @@ class CharTranslate(ModelSQL):
     char_translated = char.translated('char')
 
 
+class CharTranslateRequired(ModelSQL):
+    __name__ = 'test.char_translated_required'
+    char = fields.Char("Char", translate=True, required=True)
+
+
+class CharTranslateSize(ModelSQL):
+    __name__ = 'test.char_translated_size'
+    char = fields.Char("Char", translate=True, size=5)
+
+
 class CharUnaccentedOn(ModelSQL):
     __name__ = 'test.char_unaccented_on'
     char = fields.Char("Char")
@@ -78,6 +88,8 @@ def register(module):
         CharSize,
         CharSizePYSON,
         CharTranslate,
+        CharTranslateRequired,
+        CharTranslateSize,
         CharUnaccentedOn,
         CharUnaccentedOff,
         CharUnaccentedTranslate,
