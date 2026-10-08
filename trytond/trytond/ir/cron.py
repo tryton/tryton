@@ -99,6 +99,7 @@ class Cron(DeactivableMixin, ModelSQL, ModelView):
             ('ir.cron.log|clean', "Clean Cron Logs"),
             ('ir.filestore.queue|remove', "Remove Deleted Binaries"),
             ('ir.model|refresh_materialized', "Refresh Materialized Models"),
+            ('ir.translation|sync_local', "Synchronize Local Translations"),
             ], "Method", required=True, states=_states)
     method_string = method.translated('method')
 

@@ -1108,6 +1108,35 @@ class Translation(
         else:
             return
 
+    @classmethod
+    def sync_local(cls, languages=None):
+        pool = Pool()
+        Lang = pool.get('ir.lang')
+        TranslationSet = pool.get('ir.translation.set', type='wizard')
+        TranslationClean = pool.get('ir.translation.clean', type='wizard')
+        TranslationUpdate = pool.get('ir.translation.update', type='wizard')
+
+        if languages is None:
+            languages = Lang.search([('translatable', '=', True)])
+
+        with Transaction().set_context(localonly=True):
+            session_id, _, _ = TranslationSet.create()
+            TranslationSet.execute(session_id, {}, 'set_')
+            TranslationSet.delete(session_id)
+
+            session_id, _, _ = TranslationClean.create()
+            TranslationClean.execute(session_id, {}, 'clean')
+            TranslationClean.delete(session_id)
+
+            for language in languages:
+                session_id, _, _ = TranslationUpdate.create()
+                TranslationUpdate.execute(session_id, {
+                        'start': {
+                            'language': language.id,
+                            },
+                        }, 'update')
+                TranslationUpdate.delete(session_id)
+
 
 class TranslationSetStart(ModelView):
     __name__ = 'ir.translation.set.start'
@@ -1205,7 +1234,10 @@ class TranslationSet(Wizard):
         if self.model == Report:
             reports = self.records
         elif not self.model or self.model.__name__ == 'ir.ui.menu':
-            reports = Report.search([('translatable', '=', True)])
+            domain = [('translatable', '=', True)]
+            if Transaction().context.get('localonly', False):
+                domain.append(('module', '=', None))
+            reports = Report.search(domain)
         else:
             return
 
@@ -1365,36 +1397,21 @@ class TranslationSet(Wizard):
     def transition_set_(self):
         pool = Pool()
         Config = pool.get('ir.configuration')
-        default_lang = Config.get_language()
-        if default_lang != INTERNAL_LANG:
-            raise DefaultLanguageError(gettext(
-                    'ir.msg_translation_set_default_lang'))
+        if not Transaction().context.get('localonly', False):
+            default_lang = Config.get_language()
+            if default_lang != INTERNAL_LANG:
+                raise DefaultLanguageError(gettext(
+                        'ir.msg_translation_set_default_lang'))
+            self.set_view()
         self.set_report()
-        self.set_view()
         return 'succeed'
-
-
-class TranslationCleanStart(ModelView):
-    __name__ = 'ir.translation.clean.start'
-
-
-class TranslationCleanSucceed(ModelView):
-    __name__ = 'ir.translation.clean.succeed'
 
 
 class TranslationClean(Wizard):
     __name__ = 'ir.translation.clean'
+    start_state = 'clean'
 
-    start = StateView('ir.translation.clean.start',
-        'ir.translation_clean_start_view_form', [
-            Button('Cancel', 'end', 'tryton-cancel'),
-            Button('Clean', 'clean', 'tryton-ok', default=True),
-            ])
     clean = StateTransition()
-    succeed = StateView('ir.translation.clean.succeed',
-        'ir.translation_clean_succeed_view_form', [
-            Button('OK', 'end', 'tryton-ok', default=True),
-            ])
 
     @staticmethod
     def _clean_field(translation):
@@ -1529,7 +1546,10 @@ class TranslationClean(Wizard):
         to_delete = []
         records = defaultdict(lambda: defaultdict(set))
         keys = set()
-        translations = Translation.search([])
+        domain = []
+        if Transaction().context.get('localonly', False):
+            domain.append(('module', '=', None))
+        translations = Translation.search(domain)
         for translation in translations:
             if getattr(self, '_clean_%s' % translation.type)(translation):
                 to_delete.append(translation.id)
@@ -1562,7 +1582,7 @@ class TranslationClean(Wizard):
                 to_delete.remove(mdata.db_id)
 
         Translation.delete(Translation.browse(to_delete))
-        return 'succeed'
+        return 'end'
 
 
 class TranslationUpdateStart(ModelView):
@@ -1626,6 +1646,10 @@ class TranslationUpdate(Wizard):
                 & translation.name.in_([v.model for v in views]))
         else:
             source_clause = Literal(True)
+        if Transaction().context.get('localonly', False):
+            local_clause = translation.module == Null
+        else:
+            local_clause = Literal(True)
         default_lang = Config.get_language()
 
         columns = [
@@ -1639,10 +1663,12 @@ class TranslationUpdate(Wizard):
         cursor.execute(*(translation.select(*columns,
                     where=(translation.lang == default_lang)
                     & source_clause
+                    & local_clause
                     & translation.type.in_(self._source_types))
                 - translation.select(*columns,
                     where=(translation.lang == lang)
                     & source_clause
+                    & local_clause
                     & translation.type.in_(self._source_types))))
         with Translation.bulk_create() as create:
             create.extend(cursor)
@@ -1652,10 +1678,12 @@ class TranslationUpdate(Wizard):
             cursor.execute(*(translation.select(*columns,
                         where=(translation.lang == parent_lang)
                         & source_clause
+                        & local_clause
                         & translation.type.in_(self._source_types))
                     & translation.select(*columns,
                         where=(translation.lang == lang)
                         & source_clause
+                        & local_clause
                         & translation.type.in_(self._source_types))))
             for row in cursor:
                 cursor_update.execute(*translation.update(
@@ -1680,9 +1708,11 @@ class TranslationUpdate(Wizard):
             translation.module.as_('module')]
         cursor.execute(*(translation.select(*columns,
                     where=(translation.lang == default_lang)
+                    & local_clause
                     & translation.type.in_(self._ressource_types))
                 - translation.select(*columns,
                     where=(translation.lang == lang)
+                    & local_clause
                     & translation.type.in_(self._ressource_types))))
         with Translation.bulk_create() as create:
             create.extend(cursor)
@@ -1691,9 +1721,11 @@ class TranslationUpdate(Wizard):
             columns.append(translation.value)
             cursor.execute(*(translation.select(*columns,
                         where=(translation.lang == parent_lang)
+                        & local_clause
                         & translation.type.in_(self._ressource_types))
                     & translation.select(*columns,
                         where=(translation.lang == lang)
+                        & local_clause
                         & translation.type.in_(self._ressource_types))))
             for row in cursor:
                 cursor_update.execute(*translation.update(
@@ -1715,9 +1747,11 @@ class TranslationUpdate(Wizard):
             ]
         cursor.execute(*(translation.select(*columns,
                     where=(translation.lang == default_lang)
+                    & local_clause
                     & translation.type.in_(self._updatable_types))
                 - translation.select(*columns,
                     where=(translation.lang == lang)
+                    & local_clause
                     & translation.type.in_(self._updatable_types))))
         for row in cursor:
             cursor_update.execute(*translation.update(
@@ -1734,10 +1768,12 @@ class TranslationUpdate(Wizard):
                 translation.src.as_('src'),
                 Max(translation.value).as_('value'),
                 where=(translation.lang == lang)
+                & local_clause
                 & translation.src.in_(
                     translation.select(translation.src,
                         where=((translation.value == '')
                             | (translation.value == Null))
+                        & local_clause
                         & (translation.lang == lang)
                         & (translation.src != '')
                         & (translation.src != Null)))
@@ -1758,7 +1794,8 @@ class TranslationUpdate(Wizard):
                 [translation.fuzzy],
                 [False],
                 where=((translation.value == '') | (translation.value == Null))
-                & (translation.lang == lang)))
+                & (translation.lang == lang)
+                & local_clause))
 
         action['pyson_domain'] = PYSONEncoder().encode([
             ('module', '!=', None),

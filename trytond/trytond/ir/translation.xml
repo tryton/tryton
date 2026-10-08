@@ -101,33 +101,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="model">ir.ui.view,-1</field>
             <field name="action" ref="act_translation_set"/>
         </record>
-        <menuitem
-            parent="menu_localization"
-            action="act_translation_set"
-            sequence="90"
-            id="menu_translation_set"/>
-
-        <record model="ir.ui.view" id="translation_clean_start_view_form">
-            <field name="model">ir.translation.clean.start</field>
-            <field name="type">form</field>
-            <field name="name">translation_clean_start_form</field>
-        </record>
-
-        <record model="ir.ui.view" id="translation_clean_succeed_view_form">
-            <field name="model">ir.translation.clean.succeed</field>
-            <field name="type">form</field>
-            <field name="name">translation_clean_succeed_form</field>
-        </record>
 
         <record model="ir.action.wizard" id="act_translation_clean">
             <field name="name">Clean Translations</field>
             <field name="wiz_name">ir.translation.clean</field>
         </record>
-        <menuitem
-            parent="menu_localization"
-            action="act_translation_clean"
-            sequence="91"
-            id="menu_translation_clean"/>
 
         <record model="ir.ui.view" id="translation_update_start_view_form">
             <field name="model">ir.translation.update.start</field>
@@ -151,11 +129,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="model">ir.ui.view,-1</field>
             <field name="action" ref="act_translation_update"/>
         </record>
-        <menuitem
-            parent="menu_localization"
-            action="act_translation_update"
-            sequence="92"
-            id="menu_translation_update"/>
 
         <record model="ir.ui.view" id="translation_export_start_view_form">
             <field name="model">ir.translation.export.start</field>
@@ -173,10 +146,12 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Export Translations</field>
             <field name="wiz_name">ir.translation.export</field>
         </record>
-        <menuitem
-            parent="menu_localization"
-            action="act_translation_export"
-            sequence="93"
-            id="menu_translation_export"/>
+    </data>
+    <data noupdate="1">
+        <record model="ir.cron" id="cron_translation_sync_local">
+            <field name="method">ir.translation|sync_local</field>
+            <field name="interval_number" eval="1"/>
+            <field name="interval_type">days</field>
+        </record>
     </data>
 </tryton>

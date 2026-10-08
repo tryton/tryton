@@ -1,3 +1,4 @@
+* Add scheduled task to synchronize local translations
 * Support creating and writing translated fields in multiple languages at once
 * Support reading translated fields in any suffixed language
 * Rename delete_many to deletemany in the FileStore

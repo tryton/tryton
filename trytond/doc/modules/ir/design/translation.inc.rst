@@ -6,6 +6,15 @@ Translation
 The *Translation* stores the translated strings for each `Language
 <model-ir.translation>`.
 
+.. seealso::
+
+   Translations are found by opening the main menu item:
+
+      |Administration --> Localization --> Translations|__
+
+      .. |Administration --> Localization --> Translations| replace:: :menuselection:`Administration --> Localization --> Translations`
+      __ https://demo.tryton.org/model/ir.translation
+
 Wizards
 -------
 

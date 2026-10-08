@@ -21,32 +21,16 @@ Tryton supports derivative translations. This means that if the translation of
 a term is missing in one language, it will search on the parent languages.
 Also when activate a children language, you must also activate all parents.
 
-Translation Wizards
-===================
+Translation task
+================
 
-Set Translations
-----------------
+A `scheduled task <model-ir.cron>` updates the local translations frequently.
 
-The wizard adds new translations to the base language ``en``.
+The translation files for a module can be exported with this command:
 
-Clean Translations
-------------------
+.. code-block:: console
 
-The wizard deletes obsolete translations from the database.
-
-Synchronize Translations
-------------------------
-
-The wizard updates the translations of the selected language based on the
-translations of the :ref:`database language <config-database.language>`.
-It will also remove duplicate translations with its direct parent.
-
-Export Translations
--------------------
-
-The wizard requires to select a language and a module and will export the
-translations for this selection into a PO-file.
-
+   $ trytond -c <config file> -d <database> --export-translations -m <module> -l <language>
 
 Override translations
 =====================
