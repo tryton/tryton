@@ -23,28 +23,44 @@ def _func_name(func):
 def activate_modules(modules, *setup):
     if isinstance(modules, str):
         modules = [modules]
-    cache_name = '-'.join(sorted(modules))
+    modules = set(modules)
+    setup = list(setup)
+    cache_prefix_name = cache_name = '-'.join(sorted(modules))
     if setup_name := '|'.join(_func_name(f) for f in setup):
         cache_name += f'--{setup_name}'
-    if restore_db_cache(cache_name):
-        return _get_config()
-    drop_create()
+    setup_to_do = []
+    while True:
+        current_cache_name = cache_prefix_name
+        if setup_name := '|'.join(_func_name(f) for f in setup):
+            current_cache_name += f'--{setup_name}'
 
-    cfg = _get_config()
-    Module = Model.get('ir.module')
-    records = Module.find([
-            ('name', 'in', modules),
-            ])
-    assert len(records) == len(modules), (
-        f"Not found: {', '.join(set(modules) - {r.name for r in records})}")
-    Module.click(records, 'activate')
-    Wizard('ir.module.activate_upgrade').execute('upgrade')
+        restored = restore_db_cache(current_cache_name)
+        if not restored:
+            if setup:
+                setup_to_do.append(setup.pop())
+                continue
+            drop_create()
 
-    for func in setup:
-        func(config=cfg)
+            cfg = _get_config()
 
-    backup_db_cache(cache_name)
-    return cfg
+            Module = Model.get('ir.module')
+            records = Module.find([
+                    ('name', 'in', list(modules)),
+                    ])
+            assert len(records) == len(modules), (
+                f"Not found: {', '.join(modules - {r.name for r in records})}")
+            Module.click(records, 'activate')
+            Wizard('ir.module.activate_upgrade').execute('upgrade')
+        else:
+            cfg = _get_config()
+
+        if setup_to_do:
+            for func in reversed(setup_to_do):
+                func(config=cfg)
+
+        if setup_to_do or not restored:
+            backup_db_cache(cache_name)
+        return cfg
 
 
 def _get_config():
