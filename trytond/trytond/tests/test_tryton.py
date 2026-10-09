@@ -946,7 +946,10 @@ class ModuleTestCase(DBTestCase):
                                     with self.subTest(field=field_name):
                                         self.assertEqual(
                                             default[field_name],
-                                            default_values.get(field_name))
+                                            default_values.get(field_name),
+                                            msg="default copied value of "
+                                            "readonly field must be the same "
+                                            "as the default value")
                     copy.reset_mock()
 
     @with_transaction()
