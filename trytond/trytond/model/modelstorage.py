@@ -736,6 +736,14 @@ class ModelStorage(Model):
             values = {
                 d['id']: d for d in cls.read(ids, fields_names=fields_names)}
         default_values = cls.default_get(fields_names, with_rec_name=False)
+
+        if Transaction().check_access:
+            # force default value to skip access rights
+            for field_name, field in fields_.items():
+                if field.readonly:
+                    default.setdefault(
+                        field_name, default_values.get(field_name))
+
         to_create = []
         for id_ in ids:
             data = convert_data(fields_, values[id_], default_values)
