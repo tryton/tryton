@@ -768,6 +768,69 @@ class AccountTestCase(
                 move.save()
 
     @with_transaction()
+    def test_move_validation(self):
+        "Test move validation"
+        pool = Pool()
+        Party = pool.get('party.party')
+        FiscalYear = pool.get('account.fiscalyear')
+        Journal = pool.get('account.journal')
+        Account = pool.get('account.account')
+        Move = pool.get('account.move')
+        Line = pool.get('account.move.line')
+
+        party = Party(name='Party')
+        party.save()
+
+        company = create_company()
+        with set_company(company):
+            fiscalyear = get_fiscalyear(company)
+            fiscalyear.save()
+            FiscalYear.create_period([fiscalyear])
+            period = fiscalyear.periods[0]
+            create_chart(company)
+
+            journal_revenue, = Journal.search([
+                    ('code', '=', 'REV'),
+                    ])
+            revenue, = Account.search([
+                    ('type.revenue', '=', True),
+                    ('closed', '=', False),
+                    ], limit=1)
+            receivable, = Account.search([
+                    ('type.receivable', '=', True),
+                    ('closed', '=', False),
+                    ], limit=1)
+
+            move = Move()
+            move.period = period
+            move.journal = journal_revenue
+            move.date = period.start_date
+            move.lines = [
+                Line(account=revenue, credit=Decimal(100)),
+                ]
+            move.save()
+
+            line, = move.lines
+            self.assertEqual(line.state, 'draft')
+
+            move.lines += (
+                Line(account=receivable, debit=Decimal(100), party=party),
+                )
+            move.save()
+
+            self.assertEqual([l.state for l in move.lines], ['valid', 'valid'])
+
+            line = move.lines[-1]
+            line.credit = Decimal(50)
+            line.save()
+
+            self.assertEqual(line.state, 'draft')
+
+            line.credit = Decimal(100)
+            line.save()
+            self.assertEqual(line.state, 'valid')
+
+    @with_transaction()
     def test_find_best_reconciliation(self):
         "Test find best reconciliation"
         pool = Pool()
