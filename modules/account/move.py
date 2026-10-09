@@ -1447,16 +1447,13 @@ class Line(DescriptionOriginMixin, MoveLineMixin, ModelSQL, ModelView):
                         }])
 
     @classmethod
-    def check_modification(cls, mode, lines, values=None, external=False):
+    def on_modification(cls, mode, lines, field_names=None):
         pool = Pool()
         Move = pool.get('account.move')
 
-        super().check_modification(
-            mode, lines, values=values, external=external)
+        super().on_modification(mode, lines, field_names=field_names)
 
-        if (mode in {'create', 'delete'}
-                or (mode == 'write'
-                    and values.keys() - cls._check_modify_exclude)):
+        if field_names is None or (field_names - cls._check_modify_exclude):
             journal_period_done = set()
             for line in lines:
                 if line.move.state == 'posted':
@@ -1477,7 +1474,8 @@ class Line(DescriptionOriginMixin, MoveLineMixin, ModelSQL, ModelView):
                             'account.msg_delete_line_reconciled',
                             line=line.rec_name))
         if (mode == 'write'
-                and values.keys() & cls._reconciliation_modify_disallow):
+                and field_names is not None
+                and field_names & cls._reconciliation_modify_disallow):
             for line in lines:
                 if line.reconciliation:
                     raise AccessError(gettext(
