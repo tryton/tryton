@@ -357,9 +357,11 @@ class Move(DescriptionOriginMixin, ModelSQL, ModelView):
         '''
         pool = Pool()
         MoveLine = pool.get('account.move.line')
+        Currency = pool.get('currency.currency')
         line = MoveLine.__table__()
         transaction = Transaction()
         cursor = transaction.connection.cursor()
+        cast = Currency.rounding.sql_cast
 
         for company, moves in groupby(moves, key=lambda m: m.company):
             currency = company.currency
@@ -372,7 +374,7 @@ class Move(DescriptionOriginMixin, ModelSQL, ModelView):
                     group_by=line.move,
                     having=Abs(Round(
                             Sum(line.debit - line.credit),
-                            currency.digits)) < abs(currency.rounding))
+                            currency.digits)) < cast(abs(currency.rounding)))
                 cursor.execute(*line.update(
                         [line.state],
                         ['valid'],
@@ -384,7 +386,7 @@ class Move(DescriptionOriginMixin, ModelSQL, ModelView):
                     group_by=line.move,
                     having=Abs(Round(
                             Sum(line.debit - line.credit),
-                            currency.digits)) >= abs(currency.rounding))
+                            currency.digits)) >= cast(abs(currency.rounding)))
                 cursor.execute(*line.update(
                         [line.state],
                         ['draft'],
