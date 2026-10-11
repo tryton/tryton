@@ -105,6 +105,8 @@ to be grouped together and a single unique payable or receivable account move
 line is created for the net amount of the grouped lines.
 The maturity date used for the newly created account move line is the
 earliest maturity date from the lines that were grouped together.
+If all the selected lines belong to posted account moves, the grouped account
+move will be posted automatically.
 
 .. _wizard-account.move.line.reschedule:
 

@@ -22,3 +22,14 @@ You may want to define some :guilabel:`Reconcile Move Lines Automatically`
 
    Some other processes in Tryton will automatically reconcile account move
    lines when appropriate.
+
+.. _Grouping payable or receivable lines:
+
+Grouping payable or receivable lines
+====================================
+
+Sometimes, you may have several payable or receivable `Account Move Lines
+<model-account.move.line>` for the same `Party <party:model-party.party>` that
+you want to replace with a single net balance.
+This can be done using the `Group Lines <wizard-account.move.line.group>`
+wizard.
