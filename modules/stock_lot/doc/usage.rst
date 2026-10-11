@@ -38,3 +38,15 @@ This then shows the total stock of each lot that is in all the selected location
    However, if you selected multiple locations then only the stock in the
    selected locations is included, any stock in their child locations is
    *not* included.
+
+.. _Setting lots to an assigned move:
+
+Setting lots to an assigned move
+================================
+
+Even when a move is in the :guilabel:`Assigned` state, you can still manually
+set a lot to it.
+
+If the quantity is taken from more than one lot, use the `Split Move
+<stock_split:wizard-stock.move.split>` wizard to split the move into multiple
+moves and assign a lot to each one.
