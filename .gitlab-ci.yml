@@ -164,7 +164,7 @@ check-eslint:
       - .cache/npm
   script:
     - cd sao
-    - npm install --cache ${NODE_CACHE_DIR} --unsafe-perm --legacy-peer-deps
+    - npm install --cache ${NODE_CACHE_DIR} --unsafe-perm
     - npm run check
   rules:
     - if: $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == $CI_DEFAULT_BRANCH
@@ -318,7 +318,7 @@ check-account-chart:
       - .cache/npm
   script:
     - cd "${PACKAGE}"
-    - npm -s install --cache ${NODE_CACHE_DIR} --unsafe-perm --legacy-peer-deps
+    - npm -s install --cache ${NODE_CACHE_DIR} --unsafe-perm
     - npm test
   artifacts:
     reports:
