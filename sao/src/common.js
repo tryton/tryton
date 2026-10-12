@@ -2987,9 +2987,13 @@
             return ((a.isDate == b.isDate) &&
                 (a.isDateTime == b.isDateTime) &&
                 (a.valueOf() == b.valueOf()));
-        } else if ((a instanceof Number) || (b instanceof Number)) {
-            return (Number(a) === Number(b));
         } else {
+            if (a instanceof Number) {
+                a = a.valueOf();
+            }
+            if (b instanceof Number) {
+                b = b.valueOf();
+            }
             return (a === b);
         }
     };
