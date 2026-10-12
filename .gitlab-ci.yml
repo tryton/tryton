@@ -277,6 +277,7 @@ check-account-chart:
   extends: .test-db
   variables:
     DATABASE: sqlite
+    TEST_NETWORK: 0
 
 .test-postgresql:
   extends: .test-db
@@ -285,6 +286,7 @@ check-account-chart:
     DB_CACHE: postgresql://
     POSTGRESQL_URI: postgresql://postgres@postgresql:5432/
     POSTGRES_HOST_AUTH_METHOD: trust
+    TEST_NETWORK: 1
   services:
     - name: ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/postgres
       alias: postgresql
