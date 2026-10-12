@@ -919,6 +919,63 @@ class DomainInversionTestCase(TestCase):
             unique_value(domain, single_value=False), (False, None, None))
 
     def test_evaldomain(self):
+
+        domain = [['x', '=', 42]]
+        self.assertTrue(eval_domain(domain, {'x': 42}))
+        self.assertTrue(eval_domain(domain, {'x': Decimal('42')}))
+        self.assertFalse(eval_domain(domain, {'x': 0}))
+        self.assertFalse(eval_domain(domain, {'x': Decimal('0')}))
+        self.assertFalse(eval_domain(domain, {'x': None}))
+
+        domain = [['x', '=', Decimal('42')]]
+        self.assertTrue(eval_domain(domain, {'x': 42}))
+        self.assertTrue(eval_domain(domain, {'x': Decimal('42')}))
+        self.assertFalse(eval_domain(domain, {'x': 0}))
+        self.assertFalse(eval_domain(domain, {'x': Decimal('0')}))
+        self.assertFalse(eval_domain(domain, {'x': None}))
+
+        domain = [['x', '=', 0]]
+        self.assertTrue(eval_domain(domain, {'x': 0}))
+        self.assertTrue(eval_domain(domain, {'x': Decimal('0')}))
+        self.assertFalse(eval_domain(domain, {'x': None}))
+
+        domain = [['x', '=', Decimal('0')]]
+        self.assertTrue(eval_domain(domain, {'x': 0}))
+        self.assertTrue(eval_domain(domain, {'x': Decimal('0')}))
+        self.assertFalse(eval_domain(domain, {'x': None}))
+
+        domain = [['x', '=', None]]
+        self.assertFalse(eval_domain(domain, {'x': 0}))
+        self.assertFalse(eval_domain(domain, {'x': Decimal('0')}))
+        self.assertTrue(eval_domain(domain, {'x': None}))
+
+        domain = [['x', '!=', 42]]
+        self.assertFalse(eval_domain(domain, {'x': 42}))
+        self.assertFalse(eval_domain(domain, {'x': Decimal('42')}))
+        self.assertTrue(eval_domain(domain, {'x': Decimal('0')}))
+        self.assertTrue(eval_domain(domain, {'x': None}))
+
+        domain = [['x', '!=', Decimal('42')]]
+        self.assertFalse(eval_domain(domain, {'x': 42}))
+        self.assertFalse(eval_domain(domain, {'x': Decimal('42')}))
+        self.assertTrue(eval_domain(domain, {'x': Decimal('0')}))
+        self.assertTrue(eval_domain(domain, {'x': None}))
+
+        domain = [['x', '!=', 0]]
+        self.assertFalse(eval_domain(domain, {'x': 0}))
+        self.assertFalse(eval_domain(domain, {'x': Decimal('0')}))
+        self.assertTrue(eval_domain(domain, {'x': None}))
+
+        domain = [['x', '!=', Decimal('0')]]
+        self.assertFalse(eval_domain(domain, {'x': 0}))
+        self.assertFalse(eval_domain(domain, {'x': Decimal('0')}))
+        self.assertTrue(eval_domain(domain, {'x': None}))
+
+        domain = [['x', '!=', None]]
+        self.assertTrue(eval_domain(domain, {'x': 0}))
+        self.assertTrue(eval_domain(domain, {'x': Decimal('0')}))
+        self.assertFalse(eval_domain(domain, {'x': None}))
+
         domain = [['x', '>', 5]]
         self.assertTrue(eval_domain(domain, {'x': 6}))
         self.assertFalse(eval_domain(domain, {'x': 4}))
