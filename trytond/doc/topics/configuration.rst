@@ -880,7 +880,7 @@ select_timeout
 
 The timeout duration of the select call when listening on a channel.
 
-Default: ``5``
+Default: ``60``
 
 .. _config-report:
 

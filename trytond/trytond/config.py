@@ -105,7 +105,7 @@ class TrytonConfigParser(configparser.ConfigParser):
         self.set('bus', 'allow_subscribe', 'False')
         self.set('bus', 'long_polling_timeout', str(5 * 60))
         self.set('bus', 'cache_timeout', str(5 * 60))
-        self.set('bus', 'select_timeout', '5')
+        self.set('bus', 'select_timeout', '60')
         self.add_section('report')
         self.add_section('html')
         self.add_section('attachment')
