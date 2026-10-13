@@ -80,12 +80,12 @@ class FileStoreTestCase(TestCase):
         with self.assertRaises(IOError):
             filestore.get(id_, prefix='test')
 
-    def test_delete_many(self):
+    def test_deletemany(self):
         "Test multiple deletions"
         id1, id2, id3 = filestore.setmany(
             [self.data(), self.data(), self.data()],
             prefix='test')
-        filestore.delete_many([id1, id2], prefix='test')
+        filestore.deletemany([id1, id2], prefix='test')
 
         for id_ in [id1, id2]:
             with self.assertRaises(IOError):

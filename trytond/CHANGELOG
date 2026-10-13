@@ -1,3 +1,4 @@
+* Rename delete_many to deletemany in the FileStore
 * Restrict the wizard session to the user who created it (issue15206)
 * Only permit administrators to execute wizards without models or groups (issue15205)
 

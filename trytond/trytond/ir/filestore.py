@@ -78,4 +78,4 @@ class Queue(
             to_remove[prefix or ''].extend(deleted_ids - active_ids)
 
         for store_prefix, to_delete in to_remove.items():
-            filestore.delete_many(to_delete, prefix=store_prefix)
+            filestore.deletemany(to_delete, prefix=store_prefix)

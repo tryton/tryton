@@ -41,7 +41,7 @@ FileStore
 
    Remove the data identified by ``id`` in the prefixed directory.
 
-.. method:: FileStore.delete_many(ids[, prefix])
+.. method:: FileStore.deletemany(ids[, prefix])
 
    Remove the sequence of data identified by the sequence of ``ids`` in the
    prefixed directory.

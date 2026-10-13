@@ -3,6 +3,7 @@
 
 import os
 import uuid
+import warnings
 from functools import cache
 
 import trytond.config as config
@@ -72,9 +73,15 @@ class FileStore(object):
         except FileNotFoundError:
             pass
 
-    def delete_many(self, ids, prefix=''):
+    def deletemany(self, ids, prefix=''):
         for id_ in ids:
             self.delete(id_, prefix)
+
+    def delete_many(self, *args, **kwargs):
+        warnings.warn(
+            'delete_many is deprecated, user deletemany',
+            DeprecationWarning)
+        return self.deletemany(*args, **kwargs)
 
 
 if config.get('database', 'class'):
