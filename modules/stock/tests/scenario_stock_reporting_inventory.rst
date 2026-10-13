@@ -50,6 +50,8 @@ Get currency::
 Create product::
 
     >>> unit, = ProductUom.find([('name', '=', 'Unit')])
+    >>> box2, = unit.duplicate(default={'factor': 2, 'rate': .5})
+    >>> box10, = unit.duplicate(default={'factor': 10, 'rate': .1})
 
     >>> template = ProductTemplate()
     >>> template.name = 'Product'
@@ -96,8 +98,8 @@ Fill warehouse::
     >>> move.product = product
     >>> move.from_location = storage_loc
     >>> move.to_location = customer_loc
-    >>> move.unit = unit
-    >>> move.quantity = 2
+    >>> move.unit = box2
+    >>> move.quantity = 1
     >>> move.effective_date = dt.date(2025, 1, 10)
     >>> move.unit_price = Decimal('20.0000')
     >>> move.currency = currency
@@ -111,7 +113,8 @@ Forecast some moves::
     >>> move.product = product
     >>> move.from_location = supplier_loc
     >>> move.to_location = storage_loc
-    >>> move.quantity = 10
+    >>> move.unit = box10
+    >>> move.quantity = 1
     >>> move.effective_date = dt.date(2025, 1, 5)
     >>> move.unit_price = Decimal('10.0000')
     >>> move.currency = currency
