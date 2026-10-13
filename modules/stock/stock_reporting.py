@@ -123,13 +123,13 @@ class _InventoryMixin:
         output_clause = (
             (from_location.left >= left) & (from_location.right <= right))
         start_quantity = Sum(
-            move.quantity * Case((output_clause, -1), else_=1),
+            move.internal_quantity * Case((output_clause, -1), else_=1),
             filter_=(move_date < from_date))
         input_quantity = Sum(
-            move.quantity,
+            move.internal_quantity,
             filter_=input_clause & (move_date >= from_date))
         output_quantity = Sum(
-            move.quantity,
+            move.internal_quantity,
             filter_=output_clause & (move_date >= from_date))
 
         date_column = Greatest(move_date, from_date)
