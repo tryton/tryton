@@ -38,6 +38,10 @@
   "devDependencies": {
     "eslint": "^9.24.0",
     "globals": "^16.0.0",
+    "grunt": "^1.6",
+    "grunt-cli": "^1.5",
+    "grunt-contrib-concat": "^2.1",
+    "grunt-contrib-less": "^3.0",
     "grunt-contrib-nodeunit": "^5.0",
     "grunt-contrib-qunit": "^10.1",
     "grunt-contrib-watch": "^1.1",
@@ -60,11 +64,7 @@
     "fullcalendar": "^3.10.2",
     "mousetrap": "^1.6",
     "bootstrap-rtl-ondemand": "^3.3.4-ondemand",
-    "sortablejs": "^1.8.4",
-    "grunt": "^1.6",
-    "grunt-cli": "^1.5",
-    "grunt-contrib-concat": "^2.1",
-    "grunt-contrib-less": "^3.0"
+    "sortablejs": "^1.8.4"
   },
   "allowScripts": {
     "puppeteer": true

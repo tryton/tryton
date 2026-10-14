@@ -123,7 +123,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-po2json');
   grunt.loadNpmTasks('grunt-qunit-junit');
 
-  grunt.registerTask('default', 'Build for production.', function() {
+  grunt.registerTask('default', 'Build', function() {
     grunt.task.run(['concat', 'less', 'po2json']);
     });
   grunt.registerTask('watch', 'Watch development', function() {
