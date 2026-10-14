@@ -12,7 +12,7 @@ Installation
 Once you've downloaded and unpacked the sao source release, enter the directory
 where the archive was unpacked, and run:
 
-    $ npm install --production
+    $ npm install --omit=dev
 
 Development
 ...........
