@@ -2,9 +2,10 @@
 <!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
 this repository contains the full copyright notices and license terms. -->
 <data>
-    <xpath expr="//field[@name='carrier_cost_method']" position="after">
-        <label name="mode"/>
-        <field name="mode"/>
-        <newline/>
+    <xpath expr="//notebook" position="inside">
+        <page string="Incoterm" id="incoterm">
+            <label name="mode"/>
+            <field name="mode"/>
+        </page>
     </xpath>
 </data>

@@ -170,14 +170,6 @@ class Carrier(metaclass=PoolMeta):
         super().__setup__()
         cls.shipping_service.selection.append(('ups', 'UPS'))
 
-    @classmethod
-    def view_attributes(cls):
-        return super().view_attributes() + [
-            ("/form/separator[@id='ups']", 'states', {
-                    'invisible': Eval('shipping_service') != 'ups',
-                    }),
-            ]
-
     @property
     def shipping_label_mimetype(self):
         mimetype = super().shipping_label_mimetype

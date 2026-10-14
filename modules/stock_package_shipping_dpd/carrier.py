@@ -133,14 +133,6 @@ class Carrier(metaclass=PoolMeta):
 
         super().__register__(module)
 
-    @classmethod
-    def view_attributes(cls):
-        return super().view_attributes() + [
-            ("/form/separator[@id='dpd']", 'states', {
-                    'invisible': Eval('shipping_service') != 'dpd',
-                    }),
-            ]
-
     @property
     def shipping_label_mimetype(self):
         mimetype = super().shipping_label_mimetype

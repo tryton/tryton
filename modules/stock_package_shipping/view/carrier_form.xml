@@ -2,8 +2,10 @@
 <!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
 this repository contains the full copyright notices and license terms. -->
 <data>
-    <xpath expr="/form/field[@name='carrier_cost_method']" position="after">
-        <label name="shipping_service"/>
-        <field name="shipping_service"/>
+    <xpath expr="//notebook" position="inside">
+        <page name="shipping_service">
+            <label name="shipping_service"/>
+            <field name="shipping_service"/>
+        </page>
     </xpath>
 </data>

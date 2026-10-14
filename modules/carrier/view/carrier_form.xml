@@ -6,8 +6,14 @@ this repository contains the full copyright notices and license terms. -->
     <field name="party"/>
     <label name="active"/>
     <field name="active"/>
-    <label name="carrier_product"/>
-    <field name="carrier_product"/>
-    <label name="carrier_cost_method"/>
-    <field name="carrier_cost_method"/>
+    <notebook>
+        <page string="Costs" id="costs" col="2">
+            <label name="carrier_product"/>
+            <field name="carrier_product"/>
+
+            <label name="carrier_cost_method"/>
+            <field name="carrier_cost_method"/>
+            <newline/>
+        </page>
+    </notebook>
 </form>

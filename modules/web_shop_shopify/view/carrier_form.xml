@@ -2,7 +2,9 @@
 <!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
 this repository contains the full copyright notices and license terms. -->
 <data>
-    <xpath expr="/form" position="inside">
-        <field name="shopify_selections" colspan="4"/>
+    <xpath expr="//notebook" position="inside">
+        <page string="Shopify" id="shopify">
+            <field name="shopify_selections" colspan="4"/>
+        </page>
     </xpath>
 </data>

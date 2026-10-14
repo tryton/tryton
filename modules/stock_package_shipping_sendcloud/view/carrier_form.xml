@@ -2,8 +2,8 @@
 <!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
 this repository contains the full copyright notices and license terms. -->
 <data>
-    <xpath expr="/form/field[@name='shipping_service']" position="after">
-        <separator string="Sendcloud" colspan="4" id="sendcloud"/>
+    <xpath expr="//field[@name='shipping_service']" position="after">
+        <newline/>
         <label name="sendcloud_format"/>
         <field name="sendcloud_format"/>
     </xpath>

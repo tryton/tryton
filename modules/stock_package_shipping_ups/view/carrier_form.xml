@@ -2,8 +2,8 @@
 <!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
 this repository contains the full copyright notices and license terms. -->
 <data>
-    <xpath expr="/form/field[@name='shipping_service']" position="after">
-        <separator string="UPS" colspan="4" id="ups"/>
+    <xpath expr="//field[@name='shipping_service']" position="after">
+        <newline/>
         <label name="ups_service_type"/>
         <field name="ups_service_type"/>
         <newline/>
@@ -12,7 +12,7 @@ this repository contains the full copyright notices and license terms. -->
         <label name="ups_label_height"/>
         <field name="ups_label_height"/>
 
-        <label name="ups_notifications"/>
+        <label name="ups_notifications" yalign="0"/>
         <field name="ups_notifications" colspan="3"/>
     </xpath>
 </data>

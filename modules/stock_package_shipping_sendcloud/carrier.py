@@ -344,14 +344,6 @@ class Carrier(metaclass=PoolMeta):
     def default_sendcloud_format(cls):
         return 'label'
 
-    @classmethod
-    def view_attributes(cls):
-        return super().view_attributes() + [
-            ("/form/separator[@id='sendcloud']", 'states', {
-                    'invisible': Eval('shipping_service') != 'sendcloud',
-                    }),
-            ]
-
     @property
     def shipping_label_mimetype(self):
         mimetype = super().shipping_label_mimetype
