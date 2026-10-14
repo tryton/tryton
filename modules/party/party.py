@@ -1252,6 +1252,7 @@ class Replace(Wizard):
                 source_value = source.id
                 destination_value = destination.id
             where = column == source_value
+            where &= self.where_to_replace(model_name, field_name, table)
 
             if transaction.database.has_returning():
                 returning = [table.id]
@@ -1279,6 +1280,10 @@ class Replace(Wizard):
             ('party.contact_mechanism', 'party'),
             ('party.identifier', 'party'),
             ]
+
+    def where_to_replace(self, model, field, table):
+        "Return an SQL clause to restrict rows to replace"
+        return Literal(True)
 
 
 class ReplaceAsk(ModelView):
