@@ -4,7 +4,6 @@
 import datetime as dt
 import logging
 import re
-from collections import defaultdict
 
 import stdnum.exceptions
 from sql import Column, Literal, Null
@@ -1240,7 +1239,6 @@ class Replace(Wizard):
         source.active = False
         source.save()
 
-        models_changed = defaultdict(list)
         cursor = transaction.connection.cursor()
         for model_name, field_name in self.fields_to_replace():
             Model = pool.get(model_name)
@@ -1272,12 +1270,6 @@ class Replace(Wizard):
                 ids = [x[0] for x in cursor]
 
             Model._insert_history(ids)
-            models_changed[Model].append((field_name, ids))
-
-        for Model, modified_fields in models_changed.items():
-            for field_name, ids in modified_fields:
-                Model.on_modification('write', Model.browse(ids), {field_name})
-
         return 'end'
 
     @classmethod
