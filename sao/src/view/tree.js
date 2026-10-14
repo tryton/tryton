@@ -119,9 +119,6 @@
             this.el = jQuery('<div/>', {
                 'class': 'tree-container',
             })
-            // Prevent Chrome based browser to compute a min-content
-            // such that only this table has scrollbar if needed
-                .css('display', 'grid');
             this.scrollbar = jQuery('<div/>')
                 .appendTo(jQuery('<div/>', {
                     'class': 'scrollbar responsive',
@@ -936,6 +933,12 @@
             this.screen.button(button.attributes);
         },
         display: function(selected, expanded) {
+            if (this.screen.group.parent) {
+                // Prevent Chrome based browser to compute a min-content
+                // such that only this table has scrollbar if needed
+                this.el.css('display', 'grid');
+            }
+
             if ((this.display_size === null) && this.screen.group.length) {
                 if (this.screen.group.parent) {
                     this.display_size = 0;
