@@ -4,7 +4,7 @@ sao
 Prerequisites
 -------------
 
- * Node.js 0.8.0 or later (http://nodejs.org/)
+ * Node.js v24 or later (https://nodejs.org/)
 
 Installation
 ------------
