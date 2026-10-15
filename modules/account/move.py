@@ -2919,7 +2919,7 @@ class RescheduleLines(Wizard):
             if self.start.amount:
                 interval = self.start.interval
                 amount = self.start.amount.copy_sign(remaining)
-                while remaining - amount > 0:
+                while abs(remaining) > abs(amount):
                     terms.append({
                             'date': date,
                             'amount': amount,
