@@ -100,6 +100,7 @@ class Cron(DeactivableMixin, ModelSQL, ModelView):
             ('ir.filestore.queue|remove', "Remove Deleted Binaries"),
             ('ir.model|refresh_materialized', "Refresh Materialized Models"),
             ], "Method", required=True, states=_states)
+    method_string = method.translated('method')
 
     logs = fields.One2Many(
         'ir.cron.log', 'cron', "Logs", readonly=True, order=[('id', 'DESC')])
@@ -154,6 +155,9 @@ class Cron(DeactivableMixin, ModelSQL, ModelView):
                 running.update(
                     (i, True) for i in ids if i not in not_running)
         return running
+
+    def get_rec_name(self, name):
+        return f'{self.method_string} ({self.id})'
 
     @classmethod
     def notifications(cls):
