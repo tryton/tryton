@@ -2077,14 +2077,13 @@
                     });
                 }
                 else if (action) {
-                    return Sao.Action.execute(action, {
+                    Sao.Action.execute(action, {
                         model: this.model_name,
                         id: this.current_record.id,
                         ids: ids
-                    }, null, this.context, true).always(() => {
-                        return this.reload(ids, true)
-                            .always(() => this.record_saved());
-                    });
+                    }, null, this.context, true);
+                    return this.reload(ids, true)
+                        .always(() => this.record_saved());
                 } else {
                     return this.reload(ids, true)
                         .always(() => this.record_saved());
