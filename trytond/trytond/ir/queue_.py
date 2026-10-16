@@ -47,6 +47,17 @@ class Queue(ModelSQL):
     def default_enqueued_at(cls):
         return datetime.datetime.now()
 
+    def get_rec_name(self, name):
+        pool = Pool()
+        Model = pool.get('ir.model')
+        Button = pool.get('ir.model.button')
+        model = self.data.get('model', '')
+        model_string = Model.get_name(model)
+        method = self.data.get('method', '')
+        button_attr = Button.get_view_attributes(model, method)
+        method_string = button_attr.get('string', method)
+        return f'{model_string} {method_string} @ {self.name} ({self.id})'
+
     @classmethod
     def copy(cls, records, default=None):
         if default is None:
