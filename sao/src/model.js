@@ -749,7 +749,7 @@
                     continue;
                 }
                 if ((this.model.fields[fname].description.type == 'binary') &&
-                        ~fnames_to_fetch.indexOf(fname, fnames_to_fetch)) {
+                    fnames_to_fetch.includes(fname)) {
                     context[this.model.name + '.' + fname] = 'size';
                 }
             }
