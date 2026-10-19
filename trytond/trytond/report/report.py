@@ -452,15 +452,15 @@ class Report(URLMixin, PoolBase):
                 '--convert-to "%(output_extension)s" '
                 '--outdir "%(directory)s" '
                 '"%(input_path)s"')
-            args = map(lambda s: s % {
-                    'directory': directory,
-                    'input_format': input_format,
-                    'input_extension': input_extension,
-                    'input_path': input_path,
-                    'output_format': output_format,
-                    'output_extension': output_extension,
-                    'output_path': output_path,
-                    }, shlex.split(cmd))
+            args = list(map(lambda s: s % {
+                        'directory': directory,
+                        'input_format': input_format,
+                        'input_extension': input_extension,
+                        'input_path': input_path,
+                        'output_format': output_format,
+                        'output_extension': output_extension,
+                        'output_path': output_path,
+                        }, shlex.split(cmd)))
             for count in range(retry, -1, -1):
                 if count != retry:
                     time.sleep(0.02 * (retry - count))
