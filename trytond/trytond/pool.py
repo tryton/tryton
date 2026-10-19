@@ -129,7 +129,7 @@ class Pool(object):
         :return: database list
         '''
         with cls._lock:
-            return list(cls._pools.keys())
+            return [n for n, p in cls._pools.items() if p]
 
     def init(self, update=None, lang=None, activatedeps=False, indexes=None):
         '''
