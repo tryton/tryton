@@ -23,7 +23,7 @@ class Sale(metaclass=PoolMeta):
         "Web ID", strip=False,
         states={
             'required': Bool(Eval('web_shop')),
-            'readonly': ~Eval('web_id'),
+            'readonly': Eval('id', -1) >= 0,
             })
     web_url = fields.Function(
         fields.Char(
