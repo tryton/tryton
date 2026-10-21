@@ -147,7 +147,7 @@
                     var revision = this.screen.context._datetime;
                     var label;
                     if (revision &&
-                        Sao.common.MODELHISTORY.contains(this.screen.model_name)) {
+                        Sao.common.MODELHISTORY.includes(this.screen.model_name)) {
                         var date_format = Sao.common.date_format(
                             this.screen.context.date_format);
                         var time_format = '%H:%M:%S.%f';
@@ -577,7 +577,7 @@
             var result;
             this.screen.current_view.set_value();
             var readonly = this.screen.group.readonly;
-            if (~['RESPONSE_OK', 'RESPONSE_ACCEPT'].indexOf(response_id) &&
+            if (['RESPONSE_OK', 'RESPONSE_ACCEPT'].includes(response_id) &&
                     !readonly &&
                     this.screen.current_record) {
                 jQuery.when(this.screen.current_record.validate()).then(validate => {
@@ -2138,7 +2138,7 @@
                     this.fields[path] = node;
 
                     // Insert relation only to real field
-                    if (item.name.indexOf('.') == -1) {
+                    if (!item.name.includes('.')) {
                         if (item.field.relation) {
                             node.children = {};
                         } else if (item.field.translate) {
@@ -2780,7 +2780,7 @@
                 for (var print_id in this.print_actions) {
                     var check = this.print_actions[print_id];
                     check.prop(
-                        'checked', ~print_ids.indexOf(parseInt(print_id, 10)));
+                        'checked', print_ids.includes(parseInt(print_id, 10)));
                 }
             });
         },

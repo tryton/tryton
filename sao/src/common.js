@@ -466,7 +466,7 @@
         var parts = text.split(' ');
         for (var i = 0; i < parts.length; i++) {
             var part = parts[i];
-            if (part.contains(':')) {
+            if (part.includes(':')) {
                 var subparts = part.split(':');
                 var subconverter = [
                     converter.h, converter.m, converter.s];
@@ -502,7 +502,7 @@
                 }
             }
         }
-        if (text.contains('-')) {
+        if (text.includes('-')) {
             seconds *= -1;
         }
         return Sao.TimeDelta(null, seconds);
@@ -602,8 +602,8 @@
                 this._models = models;
             });
         },
-        contains: function(model) {
-            return ~this._models.indexOf(model);
+        includes: function(model) {
+            return this._models.includes(model);
         }
     });
     Sao.common.MODELHISTORY = new Sao.common.ModelHistory();
@@ -943,7 +943,7 @@
 
         var _model_evaluator = function(allowed_models) {
             return function(value) {
-                return ~allowed_models.indexOf(value[0]) ||
+                return allowed_models.includes(value[0]) ||
                     jQuery.isEmptyObject(allowed_models);
             };
         };
@@ -1132,21 +1132,21 @@
                     if (!nextchar) {
                         this.state = null;  // end of file
                         break;
-                    } else if (this.whitespace.contains(nextchar)) {
+                    } else if (this.whitespace.includes(nextchar)) {
                         if (this.token || quoted) {
                             break;  // emit current token
                         } else {
                             continue;
                         }
-                    } else if (this.commenters.contains(nextchar)) {
+                    } else if (this.commenters.includes(nextchar)) {
                         // TODO readline
-                    } else if (this.escape.contains(nextchar)) {
+                    } else if (this.escape.includes(nextchar)) {
                         escapedstate = 'a';
                         this.state = nextchar;
-                    } else if (!~this.nowordchars.indexOf(nextchar)) {
+                    } else if (!this.nowordchars.includes(nextchar)) {
                         this.token = nextchar;
                         this.state = 'a';
-                    } else if (this.quotes.contains(nextchar)) {
+                    } else if (this.quotes.includes(nextchar)) {
                         this.state = nextchar;
                     } else if (this.whitespace_split) {
                         this.token = nextchar;
@@ -1159,25 +1159,25 @@
                             continue;
                         }
                     }
-                } else if (this.quotes.contains(this.state)) {
+                } else if (this.quotes.includes(this.state)) {
                     quoted = true;
                     if (!nextchar) {  // end of file
                         throw 'no closing quotation';
                     }
                     if (nextchar == this.state) {
                         this.state = 'a';
-                    } else if (this.escape.contains(nextchar) &&
-                        this.escapedquotes.contains(this.state)) {
+                    } else if (this.escape.includes(nextchar) &&
+                        this.escapedquotes.includes(this.state)) {
                         escapedstate = this.state;
                         this.state = nextchar;
                     } else {
                         this.token = this.token + nextchar;
                     }
-                } else if (this.escape.contains(this.state)) {
+                } else if (this.escape.includes(this.state)) {
                     if (!nextchar) {  // end of file
                         throw 'no escaped character';
                     }
-                    if (this.quotes.contains(escapedstate) &&
+                    if (this.quotes.includes(escapedstate) &&
                         (nextchar != this.state) &&
                         (nextchar != escapedstate)) {
                         this.token = this.token + this.state;
@@ -1188,22 +1188,22 @@
                     if (!nextchar) {
                         this.state = null;  // end of file
                         break;
-                    } else if (this.whitespace.contains(nextchar)) {
+                    } else if (this.whitespace.includes(nextchar)) {
                         this.state = ' ';
                         if (this.token || quoted) {
                             break;  // emit current token
                         } else {
                             continue;
                         }
-                    } else if (this.commenters.contains(nextchar)) {
+                    } else if (this.commenters.includes(nextchar)) {
                         // TODO
-                    } else if (this.quotes.contains(nextchar)) {
+                    } else if (this.quotes.includes(nextchar)) {
                         this.state = nextchar;
-                    } else if (this.escape.contains(nextchar)) {
+                    } else if (this.escape.includes(nextchar)) {
                         escapedstate = 'a';
                         this.state = nextchar;
-                    } else if ((!~this.nowordchars.indexOf(nextchar)) ||
-                            this.quotes.contains(nextchar) ||
+                    } else if ((!this.nowordchars.includes(nextchar)) ||
+                            this.quotes.includes(nextchar) ||
                             this.whitespace_split) {
                         this.token = this.token + nextchar;
                     } else {
@@ -1294,7 +1294,7 @@
                 var is_array = function(e) {
                     return e instanceof Array;
                 };
-                if ((~['AND', 'OR'].indexOf(clause[0]) ||
+                if ((['AND', 'OR'].includes(clause[0]) ||
                             (is_array(clause[0]))) &&
                         clause.slice(1).every(is_array)) {
                     return this.stringable(clause);
@@ -1306,8 +1306,8 @@
                 }
                 if (name in this.fields) {
                     var field = this.fields[name];
-                    if (~['many2one', 'one2one', 'one2many', 'many2many']
-                        .indexOf(field.type)) {
+                    if (['many2one', 'one2one', 'one2many', 'many2many']
+                        .includes(field.type)) {
                         var test = function(value) {
                             return ((typeof value == 'string') ||
                                 (value === null));
@@ -1332,7 +1332,7 @@
             if (!domain) {
                 return true;
             }
-            if (~['AND', 'OR'].indexOf(domain[0])) {
+            if (['AND', 'OR'].includes(domain[0])) {
                 domain = domain.slice(1);
             }
             return domain.every(stringable_);
@@ -1344,7 +1344,7 @@
                     return '';
                 }
                 if ((typeof clause[0] != 'string') ||
-                        ~['AND', 'OR'].indexOf(clause[0])) {
+                        ['AND', 'OR'].includes(clause[0])) {
                     return '(' + this.string(clause) + ')';
                 }
                 var name = clause[0];
@@ -1365,7 +1365,7 @@
                 if (clause.length > 3) {
                     target = clause[3];
                 }
-                if (operator.contains('ilike')) {
+                if (operator.includes('ilike')) {
                     if (this.is_full_text(value)) {
                         value = value.slice(1, -1);
                     } else if (!this.is_like(value)) {
@@ -1380,14 +1380,14 @@
                 var def_operator = this.default_operator(field);
                 if (def_operator == operator.trim()) {
                     operator = '';
-                    if (~this.OPERATORS.indexOf(value)) {
+                    if (this.OPERATORS.includes(value)) {
                         // As the value could be interpreted as an operator
                         // the default operator must be forced
                         operator = '"" ';
                     }
-                } else if ((operator.contains(def_operator) &&
-                            (operator.contains('not') ||
-                             operator.contains('!')))) {
+                } else if ((operator.includes(def_operator) &&
+                            (operator.includes('not') ||
+                             operator.includes('!')))) {
                     operator = operator.replace(def_operator, '')
                         .replace('not', '!').trim();
                 }
@@ -1407,9 +1407,9 @@
                     }
                 }
                 var formatted_value = this.format_value(field, value, target);
-                if (~this.OPERATORS.indexOf(operator) &&
-                        ~['char', 'text', 'selection']
-                        .indexOf(field.type) &&
+                if (this.OPERATORS.includes(operator) &&
+                        ['char', 'text', 'selection']
+                        .includes(field.type) &&
                         (value === '')) {
                     formatted_value = '""';
                 }
@@ -1519,7 +1519,7 @@
                     escaped = value.replace(/%%/g, '__');
                     if (escaped.startsWith('%') || escaped.endsWith('%')) {
                         value = escaped.substring(1, escaped.length - 1);
-                    } else if (~escaped.indexOf('%')) {
+                    } else if (escaped.includes('%')) {
                         value = value.replace(/%%/g, '%');
                     }
                     operator = null;
@@ -1704,7 +1704,7 @@
             var result = [];
             for (const nex of tokens.slice(1)) {
                 if ((nex == '=') && cur &&
-                    ~this.OPERATORS.indexOf(cur + nex)) {
+                    this.OPERATORS.includes(cur + nex)) {
                     result.push(cur + nex);
                     cur = null;
                 } else {
@@ -1749,7 +1749,7 @@
                     result.push(clause);
                 };
                 var i = parts.indexOf(':');
-                if (!~i) {
+                if (i < 0) {
                     parts.forEach(push_result);
                     return result;
                 }
@@ -1785,7 +1785,7 @@
                         // empty string is also the default operator
                         var operators = [''].concat(this.OPERATORS);
                         if (((i + 1) < parts.length) &&
-                                (~operators.indexOf(parts[i + 1]))) {
+                                (operators.includes(parts[i + 1]))) {
                             name = name.concat([parts[i + 1]]);
                             i += 1;
                         } else {
@@ -1961,11 +1961,11 @@
                             operator = '=';
                         }
                     }
-                    if (~[
+                    if ([
                         'integer', 'float', 'numeric',
                         'datetime', 'timestamp', 'date',
-                        'time'].indexOf(field.type)) {
-                        if ((typeof value == 'string') && value.contains('..')) {
+                        'time'].includes(field.type)) {
+                        if ((typeof value == 'string') && value.includes('..')) {
                             var values = value.split('..', 2);
                             var lvalue = this.convert_value(field, values[0], this.context);
                             var rvalue = this.convert_value(field, values[1], this.context);
@@ -2012,7 +2012,7 @@
                     } else {
                         value = this.convert_value(field, value, this.context);
                     }
-                    if (operator.contains('like')) {
+                    if (operator.includes('like')) {
                         value = this.likify(value);
                     }
                     if (target) {
@@ -2034,7 +2034,7 @@
             var escaped = value
                 .replace(escape + '%', '')
                 .replace(escape + '_', '');
-            if (escaped.contains('%') || escaped.contains('_')) {
+            if (escaped.includes('%') || escaped.includes('_')) {
                 return value;
             } else {
                 return '%' + value + '%';
@@ -2050,7 +2050,7 @@
             escaped = escaped
                 .replace(escape + '%', '')
                 .replace(escape + '_', '');
-            if (escaped.contains('%') || escaped.contains('_')) {
+            if (escaped.includes('%') || escaped.includes('_')) {
                 return false;
             }
             return value.startsWith('%') && value.endsWith('%');
@@ -2060,7 +2060,7 @@
             var escaped = value
                 .replace(escape + '%', '')
                 .replace(escape + '_', '');
-            return escaped.contains('%') || escaped.contains('_');
+            return escaped.includes('%') || escaped.includes('_');
         },
         unescape: function(value, escape) {
             escape = escape || '\\';
@@ -2075,24 +2075,24 @@
             if (empty && value === '') {
                 return '""';
             }
-            if (value.contains('\\')) {
+            if (value.includes('\\')) {
                 value = value.replace(new RegExp('\\\\', 'g'), '\\\\');
             }
-            if (value.contains('"')) {
+            if (value.includes('"')) {
                 value = value.replace(new RegExp('"', 'g'), '\\"');
             }
             var tests = [':', ' ', '(', ')'].concat(this.OPERATORS);
             for (var i = 0; i < tests.length; i++) {
                 var test = tests[i];
-                if (value.contains(test)) {
+                if (value.includes(test)) {
                     return '"' + value + '"';
                 }
             }
             return value;
         },
         default_operator: function(field) {
-            if (~['char', 'text', 'many2one', 'many2many', 'one2many',
-                    'reference', 'one2one'].indexOf(field.type)) {
+            if (['char', 'text', 'many2one', 'many2many', 'one2many',
+                'reference', 'one2one'].includes(field.type)) {
                 return 'ilike';
             } else if (field.type == 'multiselection') {
                 return 'in';
@@ -2273,12 +2273,12 @@
                 }
                 var digit = 0;
                 var string = String(value);
-                if (string.contains('e')) {
+                if (string.includes('e')) {
                     var exp = string.split('e')[1];
                     string = string.split('e')[0];
                     digit -= parseInt(exp);
                 }
-                if (string.contains('.')) {
+                if (string.includes('.')) {
                     digit += string.replace(/0+$/, '').split('.')[1].length;
                 }
                 var factor = Number(field.factor || 1);
@@ -2458,7 +2458,7 @@
             if (expression === field_name) {
                 return locale_name;
             }
-            if (expression.contains('.')) {
+            if (expression.includes('.')) {
                 return expression.split('.').slice(1).join('.');
             }
             return expression;
@@ -2485,21 +2485,21 @@
             var field = part[0];
             var operand = part[1];
             var value = part[2];
-            if (field.contains('.')) {
+            if (field.includes('.')) {
                 // In the case where the leaf concerns a m2o then having a
                 // value in the evaluation context is deemed suffisant
                 return Boolean(context[field.split('.')[0]]);
             }
             var context_field = context[field];
-            if (!~['=', '!='].indexOf(operand) &&
+            if (!['=', '!='].includes(operand) &&
                 ((context_field === null) ||
                     (context_field === undefined) ||
                     (value === null) ||
                     (value === undefined)) &&
-                !(~['in', 'not in'].indexOf(operand) &&
+                !(['in', 'not in'].includes(operand) &&
                     ((context_field === null) ||
                         (context_field === undefined)) &&
-                    ((value instanceof Array) && ~value.indexOf(null)))) {
+                    ((value instanceof Array) && value.includes(null)))) {
                 return;
             }
             if (moment.isMoment(context_field) && !value) {
@@ -2526,7 +2526,7 @@
                     (typeof value == 'string') && context_field.length == 2) {
                 context_field = context_field.join(',');
             }
-            if (~['=', '!='].indexOf(operand) &&
+            if (['=', '!='].includes(operand) &&
                     context_field instanceof Array &&
                     typeof value == 'number') {
                 operand = {
@@ -2541,10 +2541,10 @@
             }
         },
         inverse_leaf: function(domain) {
-            if (~['AND', 'OR'].indexOf(domain)) {
+            if (['AND', 'OR'].includes(domain)) {
                 return domain;
             } else if (this.is_leaf(domain)) {
-                if (domain[1].contains('child_of') && !domain[0].contains('.')) {
+                if (domain[1].includes('child_of') && !domain[0].includes('.')) {
                     if (domain.length == 3) {
                         return domain;
                     } else {
@@ -2557,7 +2557,7 @@
             }
         },
         filter_leaf: function(domain, field, model) {
-            if (~['AND', 'OR'].indexOf(domain)) {
+            if (['AND', 'OR'].includes(domain)) {
                 return domain;
             } else if (this.is_leaf(domain)) {
                 if (domain[0].startsWith(field) && (domain.length > 3)) {
@@ -2591,10 +2591,10 @@
             }
         },
         localize_domain: function(domain, field_name, strip_target) {
-            if (~['AND', 'OR', true, false].indexOf(domain)) {
+            if (['AND', 'OR', true, false].includes(domain)) {
                 return domain;
             } else if (this.is_leaf(domain)) {
-                if (domain[1].contains('child_of')) {
+                if (domain[1].includes('child_of')) {
                     if (domain[0].split('.').length > 1) {
                         var target = domain[0].split('.').slice(1).join('.');
                         return [target].concat(domain.slice(1));
@@ -2623,7 +2623,7 @@
                 return [0, domain];
             } else if (this.is_leaf(domain)) {
                 return [1, domain];
-            } else if (~['AND', 'OR'].indexOf(domain)) {
+            } else if (['AND', 'OR'].includes(domain)) {
                 return [0, domain];
             } else {
                 var content = domain.map(this._sort_key.bind(this));
@@ -2659,7 +2659,7 @@
                 return [];
             } else if (this.is_leaf(domain)) {
                 return domain;
-            } else if (~['AND', 'OR'].indexOf(domain)) {
+            } else if (['AND', 'OR'].includes(domain)) {
                 return domain;
             } else {
                 var sorted_elements = domain.map(this.sort.bind(this));
@@ -2675,7 +2675,7 @@
             var value2reference = function(value) {
                 var model = null;
                 var ref_id = null;
-                if ((typeof(value) == 'string') && value.contains(',')) {
+                if ((typeof(value) == 'string') && value.includes(',')) {
                     var split = value.split(',');
                     var result = split.splice(0, 1);
                     result.push(split.join(','));
@@ -2701,7 +2701,7 @@
                 return [model, ref_id];
             };
 
-            if (~['AND', 'OR'].indexOf(domain)) {
+            if (['AND', 'OR'].includes(domain)) {
                 return domain;
             } else if (this.is_leaf(domain)) {
                 if (domain[0] == reference) {
@@ -2749,7 +2749,7 @@
                             }
                             for (model in model_values) {
                                 ref_ids = model_values[model];
-                                if (~ref_ids.indexOf('%')) {
+                                if (ref_ids.includes('%')) {
                                     if (domain[1] == 'in') {
                                         new_domain.push(
                                             [reference + '.id', '!=', null,
@@ -2777,7 +2777,7 @@
             }
         },
         extract_reference_models: function(domain, field_name) {
-            if (~['AND', 'OR'].indexOf(domain)) {
+            if (['AND', 'OR'].includes(domain)) {
                 return [];
             } else if (this.is_leaf(domain)) {
                 var local_part = domain[0].split('.', 1)[0];
@@ -2793,7 +2793,7 @@
                         d, field_name);
                     for (var i=0, len=new_models.length; i < len; i++) {
                         var model = new_models[i];
-                        if (!~models.indexOf(model)) {
+                        if (!models.includes(model)) {
                             models.push(model);
                         }
                     }
@@ -2843,7 +2843,7 @@
         simplify_duplicate: function(domain) {
             var dedup_branches = [];
             var bool_op = null;
-            if (~['AND', 'OR'].indexOf(domain[0])) {
+            if (['AND', 'OR'].includes(domain[0])) {
                 bool_op = domain[0];
                 domain = domain.slice(1);
             }
@@ -2904,7 +2904,7 @@
         },
         merge: function(domain, domoperator) {
             if (jQuery.isEmptyObject(domain) ||
-                    ~['AND', 'OR'].indexOf(domain)) {
+                    ['AND', 'OR'].includes(domain)) {
                 return [];
             }
             var domain_type = domain[0] == 'OR' ? 'OR' : 'AND';
@@ -2974,7 +2974,7 @@
         },
         domain_inversion: function(domain, symbol, context={}) {
             var expression = this.parse(domain);
-            if (!~expression.variables.indexOf(symbol)) {
+            if (!expression.variables.includes(symbol)) {
                 return true;
             }
             return expression.inverse(symbol, context);
@@ -3001,16 +3001,16 @@
         if (a instanceof Array) {
             if (b instanceof Array) {
                 for (var i = 0, len = a.length; i < len; i++) {
-                    if (~b.indexOf(a[i])) {
+                    if (b.includes(a[i])) {
                         return true;
                     }
                 }
                 return false;
             } else {
-                return Boolean(~a.indexOf(b));
+                return a.includes(b);
             }
         } else {
-            return Boolean(~b.indexOf(a));
+            return b.includes(a);
         }
     };
     Sao.common.DomainInversion.sql_like = function(value, pattern, ignore_case)
@@ -3068,7 +3068,7 @@
             }
         },
         base: function(expression) {
-            if (!expression.contains('.')) {
+            if (!expression.includes('.')) {
                 return expression;
             } else {
                 return expression.split('.')[0];
@@ -3082,7 +3082,7 @@
                 if (part instanceof DomainInversion.And) {
                     var part_inversion = part.inverse(symbol, context);
                     var evaluated = typeof part_inversion == 'boolean';
-                    if (!~part.variables.indexOf(symbol)) {
+                    if (!part.variables.includes(symbol)) {
                         continue;
                     }
                     if (!evaluated) {
@@ -3135,7 +3135,7 @@
                 if (part instanceof DomainInversion.And) {
                     var part_inversion = part.inverse(symbol, context);
                     var evaluated = typeof part_inversion == 'boolean';
-                    if (!~part.variables.indexOf(symbol)) {
+                    if (!part.variables.includes(symbol)) {
                         if (evaluated && part_inversion) {
                             return true;
                         }
@@ -3314,7 +3314,7 @@
             if (url !== undefined) {
                 return jQuery.when(url);
             }
-            if (~Sao.common.LOCAL_ICONS.indexOf(icon_name)) {
+            if (Sao.common.LOCAL_ICONS.includes(icon_name)) {
                 return jQuery.get('images/' + icon_name + '.svg', null, null, 'text')
                     .then(icon => {
                         var img_url = this._convert(icon);
@@ -4120,7 +4120,7 @@
         if (!element.is(':visible')) {
             return null;
         }
-        if (~['input', 'select', 'textarea'].indexOf(
+        if (['input', 'select', 'textarea'].includes(
             element[0].tagName.toLowerCase()) &&
             !element.prop('readonly')) {
             return element;
@@ -4245,7 +4245,7 @@
         for (var i=0; i < string.length; i++) {
             var c = string.charAt(i).toLowerCase();
             // Skip sao and browser shortcuts
-            if (!~['d', 'e', 'f', 'i', 'n', 't', 'w'].indexOf(c)) {
+            if (!['d', 'e', 'f', 'i', 'n', 't', 'w'].includes(c)) {
                 return c;
             }
         }

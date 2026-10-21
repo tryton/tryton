@@ -49,7 +49,7 @@
                     description = data.error[1][2];
                     Sao.common.userwarning.run(description, msg)
                         .then(function(result) {
-                            if (!~['always', 'ok'].indexOf(result)) {
+                            if (!['always', 'ok'].includes(result)) {
                                 dfd.reject();
                                 return;
                             }

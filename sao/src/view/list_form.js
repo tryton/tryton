@@ -56,8 +56,8 @@
                     view_form.record = record;
                 }
 
-                if (~this.group.record_deleted.indexOf(record) ||
-                        ~this.group.record_removed.indexOf(record)) {
+                if (this.group.record_deleted.includes(record) ||
+                        this.group.record_removed.includes(record)) {
                     view_form_frame.addClass('disabled');
                 } else {
                     view_form_frame.removeClass('disabled');

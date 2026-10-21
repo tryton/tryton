@@ -36,8 +36,8 @@
                 column.suffixes.push(
                     new Sao.View.Tree.Symbol(attributes, 1));
             }
-            if (~['url', 'email', 'callto', 'sip'
-                    ].indexOf(attributes.widget)) {
+            if (['url', 'email', 'callto', 'sip']
+                .includes(attributes.widget)) {
                 column.prefixes.push(
                     new Sao.View.Tree.Affix(attributes, attributes.widget));
             }
@@ -1296,8 +1296,8 @@
                         }else {
                             sum_ += value;
                         }
-                        if (~records_ids.indexOf(record.id) ||
-                            !selected_records){
+                        if (records_ids.includes(record.id) ||
+                            !selected_records) {
                             if (selected_sum === null){
                                 selected_sum = value;
                             }else {

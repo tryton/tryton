@@ -39,8 +39,11 @@
         in_(obj) {
             return new Sao.PYSON.In(this, obj);
         }
-        contains(k) {
+        includes(k) {
             return new Sao.PYSON.In(k, this);
+        }
+        contains(k) {
+            return this.includes(k);
         }
         toString() {
             const params = this.__string_params__();
@@ -437,7 +440,7 @@
                             'date, datetime or timedelta';
                     }
                 } else {
-                    if (!~['number', 'object'].indexOf(typeof statement)) {
+                    if (!['number', 'object'].includes(typeof statement)) {
                         throw 'statement must be an integer, float, ' +
                             'date, datetime or timedelta';
                     }
@@ -566,13 +569,13 @@
             }
             if (this._else_statement instanceof Sao.PYSON.PYSON) {
                 for (const type of this._else_statement.types()) {
-                    if (!~types.indexOf(type)) {
+                    if (!types.includes(type)) {
                         types.push(type);
                     }
                 }
             } else {
                 const type = typeof this._else_statement;
-                if (!~types.indexOf(type)) {
+                if (!types.includes(type)) {
                     types.push(type);
                 }
             }
@@ -673,7 +676,7 @@
                     throw 'key must be a string or a number';
                 }
             } else {
-                if (!~['string', 'number'].indexOf(typeof key)) {
+                if (!['string', 'number'].includes(typeof key)) {
                     throw 'key must be a string or a number';
                 }
             }
@@ -704,7 +707,7 @@
             if (params[1] instanceof Sao.PYSON.PYSON) {
                 const args = params.slice().map(Sao.PYSON.toString);
                 args.splice(1, 1);
-                return `${params[1]}.contains(` + args.join(', ') + ')';
+                return `${params[1]}.includes(` + args.join(', ') + ')';
             } else {
                 return super.toString();
             }
@@ -716,8 +719,8 @@
 
     Sao.PYSON.In.eval_ = function(value, context) {
         if (value.v) {
-            if (value.v.indexOf) {
-                return Boolean(~value.v.indexOf(value.k));
+            if (value.v.includes) {
+                return value.v.includes(value.k);
             } else {
                 return !!value.v[value.k];
             }

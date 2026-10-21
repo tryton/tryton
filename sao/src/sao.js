@@ -10,12 +10,6 @@ var Sao = {
 (function() {
     'use strict';
 
-    if (!('contains' in String.prototype)) {
-        String.prototype.contains = function(str, startIndex) {
-            return -1 !== String.prototype.indexOf.call(this, str, startIndex);
-        };
-    }
-
     // Browser compatibility: polyfill
     if (!Set.prototype.intersection) {
         Set.prototype.intersection = function(other) {
@@ -379,7 +373,7 @@ var Sao = {
             }
             Sao.i18n.loadJSON(data);
         }, function() {
-            if (~lang.indexOf('_')) {
+            if (lang.includes('_')) {
                 return Sao.i18n.setlang(lang.split('_').slice(0, -1).join('_'));
             }
         });

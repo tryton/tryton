@@ -1232,7 +1232,7 @@
             ['id', '=', -1]));
 
         QUnit.assert.strictEqual(expr.toString(),
-            'If(Not(Eval("context", {}).contains("company")), "=", "!=")');
+            'If(Not(Eval("context", {}).includes("company")), "=", "!=")');
         });
     QUnit.test('PYSON noeval', function() {
         var decoder = new Sao.PYSON.Decoder({}, true);

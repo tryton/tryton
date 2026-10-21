@@ -120,7 +120,7 @@ function eval_pyson(value){
                 widget.labelled.uniqueId();
                 widget.labelled.attr('aria-labelledby', label.el.attr('id'));
                 widget.labelled.attr('accesskey', accesskey);
-                if (~['INPUT', 'SELECT'].indexOf(
+                if (['INPUT', 'SELECT'].includes(
                     widget.labelled.get(0).tagName)) {
                     jQuery('<span/>', {
                         'data-accesskey': accesskey,
@@ -1868,7 +1868,7 @@ function eval_pyson(value){
                     value = this._parse(this._input_format, value);
                     value = this._format(this.get_format(), value);
                     this.date.val(value).change();
-                    if (!~navigator.userAgent.indexOf("Firefox")) {
+                    if (!navigator.userAgent.includes("Firefox")) {
                         // Firefox triggers change when navigate by month/year
                         this.date.focus();
                     }
@@ -2002,7 +2002,7 @@ function eval_pyson(value){
         _parse: Sao.common.parse_time,
         init: function(view, attributes) {
             Sao.View.Form.Time._super.init.call(this, view, attributes);
-            if (~navigator.userAgent.indexOf("Firefox")) {
+            if (navigator.userAgent.includes("Firefox")) {
                 // time input on Firefox does not have a pop-up
                 this.input.parent().sao_hide();
             }
@@ -3020,7 +3020,7 @@ function eval_pyson(value){
                     this.read_access) {
                 event_.preventDefault();
                 this.edit();
-            } else if (~activate_keys.indexOf(event_.which) && editable) {
+            } else if (activate_keys.includes(event_.which) && editable) {
                 if (!this.attributes.completion ||
                         this.attributes.completion == "1") {
                     if (this.el.find('.dropdown').hasClass('open')) {
@@ -3032,7 +3032,7 @@ function eval_pyson(value){
                             this.field_name)) && editable) {
                 var value = this.get_text();
                 if ((value != this.entry.val()) ||
-                        ~delete_keys.indexOf(event_.which)) {
+                        delete_keys.includes(event_.which)) {
                     this.entry.val('');
                     this.record.field_set_client(this.field_name,
                         this.value_from_id(null, ''));
@@ -4055,7 +4055,8 @@ function eval_pyson(value){
                 if (!this.wid_completion) {
                     activate_keys.push(Sao.common.RETURN_KEYCODE);
                 }
-                if (~activate_keys.indexOf(event_.which) && this.wid_text.val()) {
+                if (activate_keys.includes(event_.which) &&
+                    this.wid_text.val()) {
                     this.add(event_);
                 }
             }
@@ -4468,7 +4469,8 @@ function eval_pyson(value){
             } else if (event_.which == Sao.common.F2_KEYCODE) {
                 event_.preventDefault();
                 this.add();
-            } else if (~activate_keys.indexOf(event_.which) && this.entry.val()) {
+            } else if (activate_keys.includes(event_.which)
+                && this.entry.val()) {
                 this.add();
             }
         },

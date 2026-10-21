@@ -470,7 +470,7 @@
                 for (var f in domain_parser.fields) {
                     const field = domain_parser.fields[f];
                     if ((field.searchable || field.searchable === undefined) &&
-                        !field.name.contains('.')) {
+                        !field.name.includes('.')) {
                         fields.push(field);
                     }
                 }
@@ -748,7 +748,7 @@
             build_entry: function(placeholder, el) {
                 var entry = Sao.ScreenContainer.Times._super.build_entry.call(
                     this, placeholder, el);
-                if (~navigator.userAgent.indexOf("Firefox")) {
+                if (navigator.userAgent.includes("Firefox")) {
                     // time input on Firefox does not have a pop-up
                     entry.find('.icon-input').sao_hide();
                 }
@@ -997,7 +997,7 @@
             if (this.current_view) {
                 this.current_view.set_value();
                 if (this.current_record &&
-                        !~this.current_record.group.indexOf(
+                        !this.current_record.group.includes(
                             this.current_record)) {
                     this.current_record = null;
                 }
@@ -1025,8 +1025,8 @@
                     result &= this.current_view.creatable == creatable;
                 }
                 if (searchable !== null) {
-                    result &= Boolean(~['tree', 'graph', 'calendar'].indexOf(
-                        this.current_view.view_type)) == searchable;
+                    result &= ['tree', 'graph', 'calendar'].includes(
+                        this.current_view.view_type) == searchable;
                 }
                 return result;
             };
@@ -1417,8 +1417,8 @@
             var deferreds = [];
             if (this.views && this.current_view) {
                 var search_prm = this.search_active(
-                        ~['tree', 'graph', 'calendar'].indexOf(
-                            this.current_view.view_type));
+                    ['tree', 'graph', 'calendar'].includes(
+                        this.current_view.view_type));
                 deferreds.push(search_prm);
                 for (const view of this.views) {
                     if (view &&
@@ -1454,7 +1454,7 @@
         _get_next_record: function() {
             var view = this.current_view;
             if (view &&
-                ~['tree', 'form', 'list-form'].indexOf(view.view_type) &&
+                ['tree', 'form', 'list-form'].includes(view.view_type) &&
                 this.current_record && this.current_record.group) {
                 var group = this.current_record.group;
                 var record = this.current_record;
@@ -1499,7 +1499,7 @@
         _get_previous_record: function() {
             var view = this.current_view;
             if (view &&
-                ~['tree', 'form', 'list-form'].indexOf(view.view_type) &&
+                ['tree', 'form', 'list-form'].includes(view.view_type) &&
                 this.current_record && this.current_record.group) {
                 var group = this.current_record.group;
                 var record = this.current_record;
@@ -1556,7 +1556,7 @@
         },
         get listed_records() {
             if (this.current_view &&
-                ~['tree', 'calendar', 'list-form'].indexOf(
+                ['tree', 'calendar', 'list-form'].includes(
                     this.current_view.view_type)) {
                 return this.current_view.listed_records;
             } else if (this.current_record) {
@@ -1675,7 +1675,7 @@
         },
         set_on_write: function(name) {
             if(name) {
-                if (!~this.group.on_write.indexOf(name)) {
+                if (!this.group.on_write.includes(name)) {
                     this.group.on_write.push(name);
                 }
             }
@@ -1750,8 +1750,8 @@
         set_cursor: function(new_, reset_view) {
             if (!this.current_view) {
                 return;
-            } else if (~['tree', 'form', 'list-form'].indexOf(
-                    this.current_view.view_type)) {
+            } else if (['tree', 'form', 'list-form']
+                .includes(this.current_view.view_type)) {
                 this.current_view.set_cursor(new_, reset_view);
             }
         },
@@ -1808,11 +1808,11 @@
                         if (record.group.parent) {
                             prms.push(record.group.parent.save(false));
                         }
-                        if (~record.group.record_deleted.indexOf(record)) {
+                        if (record.group.record_deleted.includes(record)) {
                             record.group.record_deleted.splice(
                                 record.group.record_deleted.indexOf(record), 1);
                         }
-                        if (~record.group.record_removed.indexOf(record)) {
+                        if (record.group.record_removed.includes(record)) {
                             record.group.record_removed.splice(
                                 record.group.record_removed.indexOf(record), 1);
                         }
@@ -2181,7 +2181,7 @@
                 return this.switch_view.apply(this, action.split(' ', 3).slice(1));
             } else if (action == 'reload') {
                 if (this.current_view && 
-                    ~['tree', 'graph', 'calendar'].indexOf(this.current_view.view_type) &&
+                    ['tree', 'graph', 'calendar'].includes(this.current_view.view_type) &&
                     !this.group.parent) {
                     return this.search_filter(this.screen_container.get_text());
                 }
@@ -2292,7 +2292,7 @@
                             view.children_field || null] = [
                                 [], [[this.current_record.id]]];
                     }
-                } else if (~['tree', 'list-form'].indexOf(view.view_type)) {
+                } else if (['tree', 'list-form'].includes(view.view_type)) {
                     var paths;
                     if (view.view_type == 'tree') {
                         view.save_width();
@@ -2345,18 +2345,18 @@
             if (!view) {
                 return jQuery.when();
             }
-            if (!~['tree', 'form', 'list-form'].indexOf(view.view_type)) {
+            if (!['tree', 'form', 'list-form'].includes(view.view_type)) {
                 return jQuery.when();
             }
 
-            if (~this.tree_states_done.indexOf(view)) {
+            if (this.tree_states_done.includes(view)) {
                 return jQuery.when();
             }
             if (view.view_type == 'form' &&
                     !jQuery.isEmptyObject(this.tree_states_done)) {
                 return jQuery.when();
             }
-            if ((~['tree', 'list-form'].indexOf(view.view_type)) &&
+            if ((['tree', 'list-form'].includes(view.view_type)) &&
                 !parseInt(view.attributes.tree_state, 10)) {
                 this.tree_states_done.push(view);
             }

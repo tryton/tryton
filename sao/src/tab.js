@@ -70,7 +70,7 @@
                     label: Sao.i18n.gettext('View Logs...'),
                 }, {
                     id: (this.screen &&
-                        Sao.common.MODELHISTORY.contains(this.screen.model_name)) ?
+                        Sao.common.MODELHISTORY.includes(this.screen.model_name)) ?
                         'revision': null,
                     icon: 'tryton-history',
                     label: Sao.i18n.gettext('Show revisions...'),
@@ -407,7 +407,7 @@
         if (Sao.Tab.tabs.length) {
             var tab = Sao.Tab.tabs[0];
             return tab.close().then(function() {
-                if (!~Sao.Tab.tabs.indexOf(tab)) {
+                if (!Sao.Tab.tabs.includes(tab)) {
                     return Sao.Tab.tabs.close();
                 } else {
                     return jQuery.Deferred().reject();
@@ -587,8 +587,8 @@
                     if (screen.current_view.view_type == 'form') {
                         screen.new_();
                     }
-                    if (~['tree', 'graph', 'calendar'].indexOf(
-                            screen.current_view.view_type)) {
+                    if (['tree', 'graph', 'calendar']
+                        .includes(screen.current_view.view_type)) {
                         screen.search_filter();
                     }
                 }
