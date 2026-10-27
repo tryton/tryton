@@ -413,21 +413,9 @@ class Invoice(Model):
                     is not None)):
             invoice.cash_rounding = True
 
-        if tax_exlusive_amount := root.findtext(
+        if tax_exclusive_amount := root.findtext(
                 './{*}LegalMonetaryTotal/{*}TaxExclusiveAmount'):
-            untaxed_amount = Decimal(tax_exlusive_amount)
-
-            if allowance_total_amount := root.findtext(
-                    './{*}LegalMonetaryTotal/{*}AllowanceTotalAmount'):
-                allowance_total_amount = Decimal(allowance_total_amount)
-                untaxed_amount -= allowance_total_amount
-
-            if charge_total_amount := root.findtext(
-                    './{*}LegalMonetaryTotal/{*}ChargeTotalAmount'):
-                charge_total_amount = Decimal(charge_total_amount)
-                untaxed_amount += charge_total_amount
-
-            invoice.source_untaxed_amount = untaxed_amount
+            invoice.source_untaxed_amount = Decimal(tax_exclusive_amount)
 
         tax_amount = sum(Decimal(amount.text) for amount in root.iterfind(
                 './{*}TaxTotal/{*}TaxAmount'))
@@ -738,21 +726,9 @@ class Invoice(Model):
                 is not None):
             invoice.cash_rounding = True
 
-        if tax_exlusive_amount := root.findtext(
+        if tax_exclusive_amount := root.findtext(
                 './{*}LegalMonetaryTotal/{*}TaxExclusiveAmount'):
-            untaxed_amount = Decimal(tax_exlusive_amount)
-
-            if allowance_total_amount := root.findtext(
-                    './{*}LegalMonetaryTotal/{*}AllowanceTotalAmount'):
-                allowance_total_amount = Decimal(allowance_total_amount)
-                untaxed_amount -= allowance_total_amount
-
-            if charge_total_amount := root.findtext(
-                    './{*}LegalMonetaryTotal/{*}ChargeTotalAmount'):
-                charge_total_amount = Decimal(charge_total_amount)
-                untaxed_amount += charge_total_amount
-
-            invoice.source_untaxed_amount = -untaxed_amount
+            invoice.source_untaxed_amount = -Decimal(tax_exclusive_amount)
 
         tax_amount = sum(Decimal(amount.text) for amount in root.iterfind(
                 './{*}TaxTotal/{*}TaxAmount'))
