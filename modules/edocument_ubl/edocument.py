@@ -239,7 +239,7 @@ class Invoice(Model):
                     base += line.base
                     amount += line.amount
                 tax_lines.append(TaxLine(base=base, amount=amount, tax=tax))
-            yield group, tax_lines, amount
+            yield group, tax_lines, tax_amount
 
     def _taxes_key(self, line):
         return ()
