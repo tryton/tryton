@@ -73,6 +73,7 @@ class Category(tree(separator=' / '), ModelSQL, ModelView):
         return [bool_op,
             ('name', operator, operand, *extra),
             ('code', operator, code_value, *extra),
+            super().search_rec_name(name, clause),
             ]
 
     @classmethod
