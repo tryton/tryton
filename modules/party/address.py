@@ -39,7 +39,7 @@ class Address(
     street = fields.Function(fields.Text(
             "Street",
             states={
-                'readonly': (
+                'editable': ~(
                     Eval('street_name')
                     | Eval('building_number')
                     | Eval('unit_number')
