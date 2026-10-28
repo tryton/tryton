@@ -130,15 +130,15 @@
             return process.call(this);
         },
         destroy: function(action) {
-            // TODO
+            // TODO: screen destroy
+            return jQuery.when();
         },
         end: function() {
             return Sao.rpc({
                 'method': 'wizard.' + this.action + '.delete',
                 'params': [this.session_id, this.session.context]
             }, this.session).then(action => {
-                this.destroy(action);
-                this.__prm.resolve();
+                return this.destroy(action).then(() => this.__prm.resolve());
             })
             .fail(() => {
                 Sao.Logger.warn(
@@ -252,18 +252,20 @@
             return button;
         },
         destroy: function(action) {
-            Sao.Wizard.Form._super.destroy.call(this, action);
+            let prm = Sao.Wizard.Form._super.destroy.call(this, action);
+            let promesses = [prm];
             switch (action) {
                 case 'reload menu':
-                    Sao.Session.current_session.reload_context()
+                    promesses.push(Sao.Session.current_session.reload_context()
                         .then(function() {
                             Sao.menu();
-                        });
+                        }));
                     break;
                 case 'reload context':
-                    Sao.Session.current_session.reload_context();
+                    promesses.push(Sao.Session.current_session.reload_context());
                     break;
             }
+            return jQuery.when.apply(jQuery, promesses);
         },
         end: function() {
             return Sao.Wizard.Form._super.end.call(this).always(
@@ -323,7 +325,8 @@
             this.show();
         },
         destroy: function(action) {
-            Sao.Wizard.Dialog._super.destroy.call(this, action);
+            let prm = Sao.Wizard.Dialog._super.destroy.call(this, action);
+            let destroy_prm = jQuery.Deferred();
             const destroy = () => {
                 this.dialog.remove();
                 var dialog = jQuery('.wizard-dialog').filter(':visible')[0];
@@ -341,8 +344,8 @@
                 } else {
                     screen = dialog.screen;
                 }
+                let prm = jQuery.when();
                 if (screen) {
-                    var prm = jQuery.when();
                     if (screen.current_record && !is_menu) {
                         var ids;
                         if (screen.model_name == this.model) {
@@ -355,11 +358,14 @@
                         prm = screen.reload(ids, true);
                     }
                     if (action) {
-                        prm.then(function() {
-                            screen.client_action(action);
+                        prm = prm.then(function() {
+                            return screen.client_action(action);
                         });
                     }
                 }
+                prm.then(
+                    () => destroy_prm.resolve(),
+                    () => destroy_prm.reject());
             };
             if ((this.dialog.data('bs.modal') || {}).isShown) {
                 this.dialog.on('hidden.bs.modal', destroy);
@@ -367,6 +373,7 @@
             } else {
                 destroy();
             }
+            return jQuery.when.apply(jQuery, [prm, destroy_prm]);
         },
         show: function() {
             var view = this.screen.current_view;
