@@ -909,16 +909,10 @@ class Line(DescriptionOriginMixin, MoveLineMixin, ModelSQL, ModelView):
     debit = Monetary(
         "Debit", currency='currency', digits='currency', required=True,
         states=_states,
-        domain=[
-            If(Eval('credit', 0), ('debit', '=', 0), ()),
-            ],
         depends={'credit', 'tax_lines', 'journal'})
     credit = Monetary(
         "Credit", currency='currency', digits='currency', required=True,
         states=_states,
-        domain=[
-            If(Eval('debit', 0), ('credit', '=', 0), ()),
-            ],
         depends={'debit', 'tax_lines', 'journal'})
     account = fields.Many2One('account.account', 'Account', required=True,
         domain=[
