@@ -167,15 +167,18 @@ class Model(
             and model._on_change_notify_depends}
 
     @classmethod
-    def get_name_items(cls, classes=None):
+    def get_name_items(cls, classes=None, *other_classes):
         "Return a list of couple mapping models to names"
         pool = Pool()
-        key = 'items', str(classes)
+        key = 'items', str(classes), str(other_classes)
         items = cls._get_names_cache.get(key)
         if items is None:
             models = cls.search([])
             items = ((m.name, m.string) for m in models)
+            all_classes = list(other_classes)
             if classes:
+                all_classes.append(classes)
+            if all_classes:
                 def pool_get(model):
                     # During update existing model may not yet be in the pool
                     try:
@@ -184,7 +187,7 @@ class Model(
                         return object
                 items = (
                     (m, n) for m, n in items
-                    if issubclass(pool_get(m), classes))
+                    if all(issubclass(pool_get(m), k) for k in all_classes))
             items = list(items)
             cls._get_names_cache.set(key, items)
         else:
@@ -192,12 +195,12 @@ class Model(
         return items
 
     @classmethod
-    def get_names(cls, classes=None):
+    def get_names(cls, classes=None, *other_classes):
         "Return a dictionary mapping models to names"
-        key = 'dict', str(classes)
+        key = 'dict', str(classes), str(other_classes)
         dict_ = cls._get_names_cache.get(key)
         if dict_ is None:
-            dict_ = dict(cls.get_name_items(classes=classes))
+            dict_ = dict(cls.get_name_items(classes=classes, *other_classes))
             cls._get_names_cache.set(key, dict_)
         return dict_
 
