@@ -291,14 +291,16 @@
                 return record.id;
             });
             return root_group.on_write_ids(record_ids).then(reload_ids => {
-                for (const record of records) {
-                    record.destroy();
-                }
                 reload_ids = reload_ids.filter(e => !~record_ids.indexOf(e));
                 return this.model.execute('delete', [record_ids], context)
-                .then(() => {
-                    root_group.reload(reload_ids);
-                });
+                    .then(() => {
+                        for (const record of records) {
+                            record.destroy();
+                        }
+                        if (reload_ids.length) {
+                            root_group.reload(reload_ids);
+                        }
+                    });
             });
         };
         Object.defineProperty(array, 'root_group', {
