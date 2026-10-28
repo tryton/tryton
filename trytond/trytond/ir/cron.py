@@ -36,7 +36,7 @@ def str2bigint(s):
 class Cron(DeactivableMixin, ModelSQL, ModelView):
     __name__ = "ir.cron"
     _states = {
-        'editable': Eval('running', False),
+        'editable': ~Eval('running', False),
         }
     interval_number = fields.Integer(
         "Interval Number", required=True, states=_states)
