@@ -1,11 +1,11 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from trytond.ir.note import NoteCopyMixin
-from trytond.model import ModelSQL
+from trytond.model import ModelSQL, ModelView
 from trytond.pool import Pool
 
 
-class TestResource(ModelSQL, NoteCopyMixin):
+class TestResource(ModelSQL, ModelView, NoteCopyMixin):
     __name__ = 'test.resource'
 
     @classmethod
@@ -13,7 +13,7 @@ class TestResource(ModelSQL, NoteCopyMixin):
         return {'test.resource.other'}
 
 
-class TestResourceOther(ModelSQL):
+class TestResourceOther(ModelSQL, ModelView):
     __name__ = 'test.resource.other'
 
 

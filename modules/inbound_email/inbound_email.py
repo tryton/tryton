@@ -139,7 +139,8 @@ class Email(ModelSQL, ModelView):
     def get_models(cls):
         pool = Pool()
         Model = pool.get('ir.model')
-        return [(None, "")] + Model.get_name_items((ModelStorage, ModelView))
+        return [(None, ""),
+            *Model.get_name_items((ModelStorage,), (ModelView,))]
 
     @classmethod
     def from_webhook(cls, inbox, data, data_type):
