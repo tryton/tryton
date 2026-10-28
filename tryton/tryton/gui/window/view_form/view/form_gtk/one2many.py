@@ -290,11 +290,14 @@ class One2Many(Widget):
         if isinstance(self._position, int):
             first = self._position <= 1
             last = self._position >= self._length
+        has_selection = bool(self.screen.selected_records)
+        searchable = all(r.id >= 0 for r in self.screen.listed_records)
         deletable = (
             self.screen.deletable
             and any(
                 not r.deleted and not r.removed
-                for r in self.screen.group))
+                for r in self.screen.group)
+            and (has_selection or searchable))
         undeletable = any(
             r.deleted or r.removed for r in self.screen.selected_records)
         view_type = self.screen.current_view.view_type
@@ -327,9 +330,10 @@ class One2Many(Widget):
                 self._length
                 and not first))
         if self.attrs.get('add_remove'):
-            removable = any(
-                not r.deleted and not r.removed
-                for r in self.screen.group)
+            removable = (any(
+                    not r.deleted and not r.removed
+                    for r in self.screen.group)
+                and (has_selection or searchable))
             self.but_add.set_sensitive(bool(
                     not self._readonly
                     and not size_limit
@@ -506,7 +510,8 @@ class One2Many(Widget):
         else:
             if not self.delete_access or not deletable:
                 return
-        if not (0 < len(self.screen.selected_records) < 20):
+        if (not (0 < len(self.screen.selected_records) < 20)
+                and all(r.id >= 0 for r in self.screen.listed_records)):
             domain = [('id', 'in', self.field.get_eval(self.record))]
             context = self.field.get_search_context(self.record)
             order = self.field.attrs.get('order')
