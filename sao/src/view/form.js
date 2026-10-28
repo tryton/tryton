@@ -3585,9 +3585,13 @@ function eval_pyson(value){
                 first = this._position <= 1;
                 last = this._position >= this._length;
             }
+            let has_selection = Boolean(this.screen.selected_records.length);
+            let searchable = this.screen.listed_records.every(
+                record => record.id >= 0);
             var deletable =
                 this.screen.deletable &&
-                this.screen.group.some((r) => !r.deleted && !r.removed);
+                this.screen.group.some((r) => !r.deleted && !r.removed) &&
+                (has_selection || searchable);
             var undeletable =
                 this.screen.selected_records.some((r) => r.deleted || r.removed);
             const view_type = this.screen.current_view.view_type;
@@ -3637,7 +3641,8 @@ function eval_pyson(value){
                 first);
             if (this.attributes.add_remove) {
                 let removable =
-                    this.screen.group.some((r) => !r.deleted && !r.removed);
+                    this.screen.group.some((r) => !r.deleted && !r.removed) &&
+                    (has_selection || searchable);
                 this.but_add.prop(
                     'disabled',
                     this._readonly ||
@@ -3807,7 +3812,9 @@ function eval_pyson(value){
         },
         _remove: function(remove=false) {
             let selected_records = this.screen.selected_records;
-            if (selected_records.length <= 0 || selected_records.length >= 2) {
+            let listed_records = this.screen.listed_records;
+            if ((selected_records.length <= 0 || selected_records.length >= 2) &&
+                (listed_records.every(record => record.id >= 0))) {
                 let domain = [['id', 'in', this.field.get_eval(this.record)]];
                 let context = this.field.get_search_context(this.record);
                 let order = this.field.description.order;
