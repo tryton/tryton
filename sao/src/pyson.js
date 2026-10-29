@@ -794,7 +794,7 @@
         }
         if (!date || !date.isDate) {
             date = Sao.Date();
-            date.utc();
+            date.utc(true);
         }
         if (value.y) date.year(value.y);
         if (value.M) date.month(value.M - 1);
