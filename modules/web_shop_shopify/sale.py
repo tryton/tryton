@@ -923,7 +923,7 @@ class Line(IdentifierMixin, metaclass=PoolMeta):
 
     def _set_shopify_quantity(self, product, quantity):
         if product.shopify_uom.category == product.sale_uom.category:
-            setattr_changed(self, 'unit', self.product.shopify_uom)
+            setattr_changed(self, 'unit', product.shopify_uom)
             setattr_changed(self, 'quantity', quantity)
 
     def _set_shopify_unit_price(self, product, unit_price):
