@@ -37,6 +37,10 @@ class Template(metaclass=PoolMeta):
                         })
         return new_templates
 
+    @property
+    def locations_used(self):
+        yield from self.locations
+
 
 class Product(metaclass=PoolMeta):
     __name__ = 'product.product'
@@ -77,3 +81,10 @@ class Product(metaclass=PoolMeta):
                         'template': lambda d: template2new[d['template']],
                         })
         return new_products
+
+    @property
+    def locations_used(self):
+        yield from self.locations
+        for location in self.template.locations_used:
+            if not location.product:
+                yield location
