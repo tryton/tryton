@@ -222,6 +222,7 @@ var Sao = {
         date.date(day);
         date.set({hour: 0, minute: 0, second: 0, millisecond: 0});
         date.isDate = true;
+        date.utc(true);
         return date;
     };
 
@@ -229,9 +230,11 @@ var Sao = {
     Sao.Date.min = moment(new Date((-100000000 + 1) * 86400000));
     Sao.Date.min.set({hour: 0, minute: 0, second: 0, millisecond: 0});
     Sao.Date.min.isDate = true;
+    Sao.Date.min.utc(true);
     Sao.Date.max = moment(new Date(100000000 * 86400000));
     Sao.Date.max.set({hour: 0, minute: 0, second: 0, millisecond: 0});
     Sao.Date.max.isDate = true;
+    Sao.Date.max.utc(true);
 
     Sao.DateTime = function(
         year, month, day,
