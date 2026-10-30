@@ -182,11 +182,19 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Pack Shipment</field>
             <field name="wiz_name">stock.shipment.pack</field>
         </record>
+        <record model="ir.action-res.group" id="wizard_shipment_pack_group_stock">
+            <field name="action" ref="wizard_shipment_pack"/>
+            <field name="group" ref="stock.group_stock"/>
+        </record>
 
         <record model="ir.action.wizard" id="wizard_package_pack">
             <field name="name">Pack Package</field>
             <field name="wiz_name">stock.package.pack</field>
             <field name="model">stock.package</field>
+        </record>
+        <record model="ir.action-res.group" id="wizard_package_pack_group_stock">
+            <field name="action" ref="wizard_package_pack"/>
+            <field name="group" ref="stock.group_stock"/>
         </record>
 
         <record model="ir.ui.view" id="package_pack_move_view_form">

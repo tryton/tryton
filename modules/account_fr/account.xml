@@ -7,6 +7,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Generate FEC</field>
             <field name="wiz_name">account.fr.fec</field>
         </record>
+        <record model="ir.action-res.group" id="act_fec_group_admin">
+            <field name="action" ref="act_fec"/>
+            <field name="group" ref="account.group_account"/>
+        </record>
         <menuitem
             parent="account.menu_reporting"
             action="act_fec"

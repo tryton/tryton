@@ -178,6 +178,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.wizard" id="wizard_intrastat_declaration_export">
             <field name="name">Export Intrastat Declaration</field>
             <field name="wiz_name">account.stock.eu.intrastat.declaration.export</field>
+            <field name="model">account.stock.eu.intrastat.declaration</field>
         </record>
 
         <record model="ir.ui.view" id="intrastat_declaration_export_result_view_form">

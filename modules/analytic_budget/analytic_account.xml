@@ -169,6 +169,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.wizard" id="wizard_budget_copy">
             <field name="wiz_name">analytic_account.budget.copy</field>
             <field name="name">Copy Budget</field>
+            <field name="model">analytic_account.budget</field>
         </record>
 
         <record model="ir.ui.view" id="budget_copy_start_view_form">

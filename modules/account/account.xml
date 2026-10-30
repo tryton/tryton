@@ -325,6 +325,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Create Chart of Accounts from Template</field>
             <field name="wiz_name">account.create_chart</field>
         </record>
+        <record model="ir.action-res.group" id="wizard_create_chart_group_account_admin">
+            <field name="action" ref="wizard_create_chart"/>
+            <field name="group" ref="group_account_admin"/>
+        </record>
         <menuitem
             parent="menu_templates"
             action="wizard_create_chart"
@@ -350,6 +354,10 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.wizard" id="wizard_update_chart">
             <field name="name">Update Chart of Accounts from Template</field>
             <field name="wiz_name">account.update_chart</field>
+        </record>
+        <record model="ir.action-res.group" id="wizard_update_chart_group_account_admin">
+            <field name="action" ref="wizard_update_chart"/>
+            <field name="group" ref="group_account_admin"/>
         </record>
         <menuitem
             parent="menu_templates"
@@ -692,6 +700,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.wizard" id="act_general_ledger_account_party_open">
             <field name="name">Open General Ledger Account Parties</field>
             <field name="wiz_name">account.general_ledger.account.party.open</field>
+            <field name="model">account.general_ledger.account.party</field>
         </record>
         <record model="ir.action.keyword" id="act_general_ledger_account_party_open_keyword1">
             <field name="keyword">tree_open</field>

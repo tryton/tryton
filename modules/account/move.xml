@@ -352,6 +352,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="wiz_name">account.reconcile</field>
             <field name="window" eval="True"/>
         </record>
+        <record model="ir.action-res.group" id="act_reconcile_group_account">
+            <field name="action" ref="act_reconcile"/>
+            <field name="group" ref="group_account"/>
+        </record>
         <menuitem
             parent="menu_processing"
             action="act_reconcile"
@@ -373,6 +377,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.wizard" id="act_cancel_moves">
             <field name="name">Cancel Moves</field>
             <field name="wiz_name">account.move.cancel</field>
+            <field name="model">account.move</field>
         </record>
         <record model="ir.action.keyword" id="act_cancel_moves_keyword1">
             <field name="keyword">form_action</field>
@@ -447,6 +452,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.wizard" id="act_group_lines_wizard">
             <field name="name">Group Lines</field>
             <field name="wiz_name">account.move.line.group</field>
+            <field name="model">account.move.line</field>
         </record>
         <record model="ir.action.keyword" id="act_group_lines_keyword1">
             <field name="keyword">form_action</field>

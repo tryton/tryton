@@ -2088,13 +2088,15 @@ class ReconcileLines(Wizard):
 
     @classmethod
     def check_access(cls, models=None):
+        pool = Pool()
+        User = pool.get('res.user')
         transaction = Transaction()
-        if transaction.user:
+        if not User.is_administrator():
             context = transaction.context
             models = set() if models is None else models.copy()
             models.update({'account.move.line', 'account.general_ledger.line'})
             model = context.get('active_model')
-            if model and model not in models:
+            if not model or model not in models:
                 raise AccessError(gettext(
                         'ir.msg_access_wizard_model_error',
                         wizard=cls.__name__,
@@ -2156,13 +2158,15 @@ class UnreconcileLines(Wizard):
 
     @classmethod
     def check_access(cls, models=None):
+        pool = Pool()
+        User = pool.get('res.user')
         transaction = Transaction()
-        if transaction.user:
+        if not User.is_administrator():
             context = transaction.context
             models = set() if models is None else models.copy()
             models.update({'account.move.line', 'account.general_ledger.line'})
             model = context.get('active_model')
-            if model and model not in models:
+            if not model or model not in models:
                 raise AccessError(gettext(
                         'ir.msg_access_wizard_model_error',
                         wizard=cls.__name__,

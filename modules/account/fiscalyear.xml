@@ -122,6 +122,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.wizard" id="act_create_periods">
             <field name="name">Create Periods</field>
             <field name="wiz_name">account.fiscalyear.create_periods</field>
+            <field name="model">account.fiscalyear</field>
         </record>
 
         <record model="ir.ui.view"
@@ -137,6 +138,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Balance Non-Deferral</field>
             <field
                 name="wiz_name">account.fiscalyear.balance_non_deferral</field>
+        </record>
+        <record model="ir.action-res.group" id="act_balance_non_deferral_group_account_admin">
+            <field name="action" ref="act_balance_non_deferral"/>
+            <field name="group" ref="group_account_admin"/>
         </record>
         <menuitem
             parent="menu_processing"

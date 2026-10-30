@@ -123,6 +123,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Create Move from Template</field>
             <field name="wiz_name">account.move.template.create</field>
         </record>
+        <record model="ir.action-res.group" id="act_move_template_create_group_account">
+            <field name="action" ref="act_move_template_create"/>
+            <field name="group" ref="group_account"/>
+        </record>
         <menuitem
             parent="menu_entries"
             action="act_move_template_create"

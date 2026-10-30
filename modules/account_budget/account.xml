@@ -212,8 +212,9 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.action.wizard" id="wizard_budget_copy">
-            <field name="wiz_name">account.budget.copy</field>
             <field name="name">Copy Budget</field>
+            <field name="wiz_name">account.budget.copy</field>
+            <field name="model">account.budget</field>
         </record>
 
         <record model="ir.ui.view" id="budget_copy_start_view_form">
@@ -223,8 +224,9 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.action.wizard" id="wizard_budget_line_create_periods">
-            <field name="wiz_name">account.budget.line.create_periods</field>
             <field name="name">Create Periods</field>
+            <field name="wiz_name">account.budget.line.create_periods</field>
+            <field name="model">account.budget.line</field>
         </record>
 
         <record model="ir.ui.view" id="budget_create_periods_start_view_form">
