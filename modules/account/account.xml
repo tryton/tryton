@@ -37,10 +37,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="menu" ref="menu_account"/>
             <field name="group" ref="group_account"/>
         </record>
-        <record model="ir.ui.menu-res.group" id="menu_account_group_account_admin">
-            <field name="menu" ref="menu_account"/>
-            <field name="group" ref="group_account_admin"/>
-        </record>
 
         <menuitem
             name="Configuration"
